@@ -3,9 +3,9 @@ package dov.com.qq.im.capture.paster;
 import android.annotation.TargetApi;
 import android.text.TextUtils;
 import android.widget.RelativeLayout;
-import anmz;
-import anna;
-import annc;
+import anvm;
+import anvn;
+import anvp;
 import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -26,10 +26,9 @@ public class QIMInformationPasterManager
   extends IQIMManager
 {
   private static File jdField_a_of_type_JavaIoFile = new File(QIMFileUtils.a(), "information_paster");
-  private static String b = jdField_a_of_type_JavaIoFile.getPath() + File.separator;
+  private static String jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public QIMInformationPasterManager.InformationPasterResDownloader a;
-  private String jdField_a_of_type_JavaLangString;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private ConcurrentLinkedQueue jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   
@@ -39,20 +38,20 @@ public class QIMInformationPasterManager
     this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager$InformationPasterResDownloader = new QIMInformationPasterManager.InformationPasterResDownloader(this);
   }
   
+  public static String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
   public static String a(InfomationFacePackage.Item paramItem)
   {
     paramItem = paramItem.f + "_" + paramItem.e + ".zip";
     return new File(jdField_a_of_type_JavaIoFile, paramItem).getPath();
   }
   
-  public static String b()
-  {
-    return b;
-  }
-  
   public static String b(InfomationFacePackage.Item paramItem)
   {
-    return b + paramItem.f + "_" + paramItem.e + File.separator + paramItem.f;
+    return jdField_a_of_type_JavaLangString + paramItem.f + "_" + paramItem.e + File.separator + paramItem.f;
   }
   
   private boolean c(InfomationFacePackage.Item paramItem)
@@ -115,7 +114,7 @@ public class QIMInformationPasterManager
             bool2 = bool1;
             if (!str.endsWith("tmp"))
             {
-              FileUtils.a(b + str, false);
+              FileUtils.a(jdField_a_of_type_JavaLangString + str, false);
               bool2 = bool1;
             }
           }
@@ -129,11 +128,6 @@ public class QIMInformationPasterManager
     return false;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public void a() {}
   
   public void a(DoodleEmojiItem paramDoodleEmojiItem)
@@ -143,24 +137,19 @@ public class QIMInformationPasterManager
     {
       InfomationFacePackage.Item localItem = (InfomationFacePackage.Item)paramDoodleEmojiItem.next();
       if ((localItem.b == 1) && (!a(localItem))) {
-        a(localItem, new annc(this));
+        a(localItem, new anvp(this));
       }
     }
   }
   
   public void a(InfomationFacePackage.Item paramItem, QIMInformationPasterManager.IInformationPasterResDownloaderCallback paramIInformationPasterResDownloaderCallback)
   {
-    ThreadManager.postImmediately(new anmz(this, paramItem, paramIInformationPasterResDownloaderCallback), null, true);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    ThreadManager.postImmediately(new anvm(this, paramItem, paramIInformationPasterResDownloaderCallback), null, true);
   }
   
   public void a(List paramList)
   {
-    ThreadManager.postImmediately(new anna(this, paramList), null, true);
+    ThreadManager.postImmediately(new anvn(this, paramList), null, true);
   }
   
   public boolean a(InfomationFacePackage.Item paramItem)
@@ -193,7 +182,7 @@ public class QIMInformationPasterManager
     boolean bool = false;
     try
     {
-      File localFile = new File(b + paramItem.f + "_" + paramItem.e);
+      File localFile = new File(jdField_a_of_type_JavaLangString + paramItem.f + "_" + paramItem.e);
       if (!localFile.exists()) {
         localFile.mkdir();
       }

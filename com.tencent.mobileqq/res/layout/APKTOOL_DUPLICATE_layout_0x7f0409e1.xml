@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="188.0dip" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a041e" android:background="#ff181818" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c72" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a7a" android:layout_width="188.0dip" android:layout_height="wrap_content">
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c73" android:layout_width="fill_parent" android:layout_height="46.0dip">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c74" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a79" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <TextView android:textColor="#ffbbbbbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="好友选择器" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2c74" android:layout_centerVertical="true" />
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a78" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c75" android:background="#25ffffff" android:layout_width="fill_parent" android:layout_height="2.0px" />
-        <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d9d" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c76" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
-    </LinearLayout>
-</LinearLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a149f" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_below="@id/title">
+        <com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20bc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="视频" />
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20bd" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20be" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ea8" android:scaleType="center" android:contentDescription="播放" />
+    </FrameLayout>
+    <com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20bf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

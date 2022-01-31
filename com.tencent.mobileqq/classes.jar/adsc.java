@@ -1,35 +1,12 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
 public class adsc
-  implements TVK_SDKMgr.InstallListener
+  implements ArkAppView.Callback
 {
-  public adsc(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  public adsc(FlashChatPanel paramFlashChatPanel) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    PresenceInterfaceImpl.a = false;
-    this.a.a("腾讯视频插件加载失败");
-    if (QLog.isColorLevel()) {
-      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    PresenceInterfaceImpl.a = false;
-    if (!this.a.c)
-    {
-      ThreadManager.getSubThreadHandler().post(new adsd(this));
-      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
-    }
-    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
-  }
+  public void a() {}
 }
 
 

@@ -1,31 +1,17 @@
 import android.os.Bundle;
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 
-public class pbi
-  extends Client.onRemoteRespObserver
+class pbi
+  extends DownloadListener
 {
-  public pbi(HotchatPlugin paramHotchatPlugin) {}
+  pbi(paz parampaz, Bundle paramBundle) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == HotchatPlugin.a(this.a).key))
-    {
-      String str1 = paramBundle.getString("cmd");
-      String str2 = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("request");
-      if ((str1 != null) && ("ipc_hotchat_plugin".equals(str1)) && (paramBundle.getString("key_action").endsWith("updateFavoriteFlag")))
-      {
-        int i = paramBundle.getInt("result", 1);
-        this.a.callJs(str2, new String[] { Integer.toString(i) });
-      }
-    }
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
+    this.jdField_a_of_type_Paz.a.a(87, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

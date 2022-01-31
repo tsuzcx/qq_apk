@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import java.nio.ByteBuffer;
 
 public class ajim
-  implements View.OnClickListener
 {
-  public ajim(ReciteFragment paramReciteFragment) {}
+  public final int a;
+  public final long a;
+  public final long b;
   
-  public void onClick(View paramView)
+  public ajim(ByteBuffer paramByteBuffer)
   {
-    ReciteFragment.a(this.a);
+    this.jdField_a_of_type_Int = (paramByteBuffer.get() & 0xFFFF);
+    this.jdField_a_of_type_Long = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
   }
 }
 

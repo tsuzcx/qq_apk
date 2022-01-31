@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.GameCenterManagerImp;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class sye
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public sye(Leba paramLeba, long paramLong) {}
+  public sye(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GameCenterManagerImp localGameCenterManagerImp = (GameCenterManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getManager(11);
-    if ((localGameCenterManagerImp != null) && ((localGameCenterManagerImp.a(601L)) || ((this.jdField_a_of_type_Long > 0L) && (localGameCenterManagerImp.a(this.jdField_a_of_type_Long))))) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
-    }
+    paramDialogInterface.dismiss();
+    FriendProfileMoreInfoActivity.a(this.a, true);
+    this.a.a("0X80081E6", 2);
   }
 }
 

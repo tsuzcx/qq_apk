@@ -1,37 +1,39 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lat
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public lat(ReadInJoyNaviController paramReadInJoyNaviController) {}
+  public lat(PublicAccountManager paramPublicAccountManager, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = ReadInJoyNaviController.a(this.a).a();
-    ReadInJoyNaviController.a(this.a, 1000L);
-    if ((localObject != null) && (ReadInJoyNaviController.a(this.a)))
+    switch (paramInt)
     {
-      ReadInJoyNaviController.a(this.a, false);
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -((View)localObject).getHeight(), this.a.e);
-      localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new lau(this, (View)localObject));
-      ((View)localObject).startAnimation(localTranslateAnimation);
-      if (ReadInJoyNaviController.a(this.a) != null)
-      {
-        localObject = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
-        ((Animation)localObject).setDuration(200L);
-        ((Animation)localObject).setFillEnabled(true);
-        ((Animation)localObject).setFillAfter(true);
-        ReadInJoyNaviController.a(this.a).startAnimation((Animation)localObject);
-      }
-      ReadInJoyNaviController.a(0, ReadInJoyNaviController.a(0, null));
+    default: 
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    case 0: 
+      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putString("LastScreenShotUri", null).commit();
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
     }
+    PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

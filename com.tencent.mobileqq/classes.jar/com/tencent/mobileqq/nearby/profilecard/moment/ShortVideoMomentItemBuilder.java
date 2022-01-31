@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import afma;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -16,27 +15,15 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.PublishableMomentInfo;
 import com.tencent.mobileqq.nearby.profilecard.moment.data.ShortVideoMomentFeedInfo;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class ShortVideoMomentItemBuilder
   extends PublishableMomentItemBuilder
 {
-  private static VideoFeedsUploader.UploadListener a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadListener = new afma();
-  }
-  
   public ShortVideoMomentItemBuilder(Context paramContext, QQAppInterface paramQQAppInterface)
   {
     super(paramContext, paramQQAppInterface);
@@ -50,10 +37,10 @@ public class ShortVideoMomentItemBuilder
   public View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (ShortVideoMomentItemBuilder.ShortVideoViewHolder)paramMomentViewHolder;
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970479, paramViewGroup, false);
-    paramMomentViewHolder.j = ((TextView)paramViewGroup.findViewById(2131367129));
-    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131366378));
-    paramMomentViewHolder.g = ((ImageView)paramViewGroup.findViewById(2131370839));
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2130970491, paramViewGroup, false);
+    paramMomentViewHolder.i = ((TextView)paramViewGroup.findViewById(2131367129));
+    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131366383));
+    paramMomentViewHolder.g = ((ImageView)paramViewGroup.findViewById(2131370826));
     return paramViewGroup;
   }
   
@@ -71,13 +58,13 @@ public class ShortVideoMomentItemBuilder
     }
   }
   
-  public boolean c(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  public boolean a(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     ShortVideoMomentFeedInfo localShortVideoMomentFeedInfo = (ShortVideoMomentFeedInfo)paramMomentViewHolder.a;
     if ((localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry != null) && (localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.publishState != 0)) {
       return false;
     }
-    return super.c(paramMomentViewHolder);
+    return super.a(paramMomentViewHolder);
   }
   
   public void d(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
@@ -85,25 +72,13 @@ public class ShortVideoMomentItemBuilder
     ShortVideoMomentFeedInfo localShortVideoMomentFeedInfo = (ShortVideoMomentFeedInfo)paramMomentViewHolder.a;
     if ((localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry != null) && (localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.publishState != 0))
     {
-      NearbyMomentUtils.a(this.jdField_a_of_type_AndroidContentContext, localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 2);
+      NearbyMomentUtils.a(this.a, localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 2);
       return;
     }
     super.d(paramMomentViewHolder);
   }
   
   public void e(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
-  {
-    super.e(paramMomentViewHolder);
-    if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, "当前网络不可用，请检查你的网络设置", 0).a();
-      return;
-    }
-    paramMomentViewHolder.i.setVisibility(8);
-    VideoFeedsUploader.a(((PublishableMomentInfo)paramMomentViewHolder.a).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadListener);
-  }
-  
-  public void f(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     ShortVideoMomentItemBuilder.ShortVideoViewHolder localShortVideoViewHolder = (ShortVideoMomentItemBuilder.ShortVideoViewHolder)paramMomentViewHolder;
     ShortVideoMomentFeedInfo localShortVideoMomentFeedInfo = (ShortVideoMomentFeedInfo)localShortVideoViewHolder.a;
@@ -113,9 +88,9 @@ public class ShortVideoMomentItemBuilder
     boolean bool;
     if (TextUtils.isEmpty(localShortVideoMomentFeedInfo.i))
     {
-      localShortVideoViewHolder.j.setVisibility(8);
-      j = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 200.0F);
-      str = (String)localShortVideoViewHolder.f.getTag(2131362360);
+      localShortVideoViewHolder.i.setVisibility(8);
+      j = UIUtils.a(this.a, 200.0F);
+      str = (String)localShortVideoViewHolder.f.getTag(2131362363);
       if (localShortVideoMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry == null) {
         break label513;
       }
@@ -150,7 +125,7 @@ public class ShortVideoMomentItemBuilder
         {
           if (!TextUtils.equals(str, paramMomentViewHolder))
           {
-            localShortVideoViewHolder.f.setTag(2131362360, paramMomentViewHolder);
+            localShortVideoViewHolder.f.setTag(2131362363, paramMomentViewHolder);
             localObject = (FrameLayout.LayoutParams)localShortVideoViewHolder.f.getLayoutParams();
             if (localObject != null) {
               break label413;
@@ -163,13 +138,13 @@ public class ShortVideoMomentItemBuilder
             try
             {
               localObject = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
-              ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
+              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.a.getResources().getDrawable(2130842848);
+              ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.a.getResources().getDrawable(2130842848);
               if (!bool) {
                 continue;
               }
               paramMomentViewHolder = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject);
-              paramMomentViewHolder.setTag(URLDrawableDecodeHandler.a(j, i, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 3.0F)));
+              paramMomentViewHolder.setTag(URLDrawableDecodeHandler.a(j, i, DisplayUtil.a(this.a, 3.0F)));
               paramMomentViewHolder.setDecodeHandler(URLDrawableDecodeHandler.d);
               localShortVideoViewHolder.f.setImageDrawable(paramMomentViewHolder);
               return;
@@ -177,15 +152,15 @@ public class ShortVideoMomentItemBuilder
             catch (Exception paramMomentViewHolder)
             {
               label413:
-              localShortVideoViewHolder.f.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814));
+              localShortVideoViewHolder.f.setImageDrawable(this.a.getResources().getDrawable(2130842848));
               if (!QLog.isColorLevel()) {
                 continue;
               }
               QLog.i("ShortVideoMomentItemBuilder", 1, paramMomentViewHolder.toString());
               return;
             }
-            localShortVideoViewHolder.j.setVisibility(0);
-            localShortVideoViewHolder.j.setText(localShortVideoMomentFeedInfo.i);
+            localShortVideoViewHolder.i.setVisibility(0);
+            localShortVideoViewHolder.i.setText(localShortVideoMomentFeedInfo.i);
             break;
             localObject = localShortVideoMomentFeedInfo.jdField_a_of_type_JavaLangString;
             paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;

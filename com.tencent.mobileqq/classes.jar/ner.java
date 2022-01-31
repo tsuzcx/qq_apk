@@ -1,38 +1,26 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider.DataProviderListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.biz.qqstory.app.QQStoryConstant;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.io.File;
 
 public class ner
-  implements MsgTabVideoPreloaderDataProvider.DataProviderListener
+  extends SimpleJob
 {
-  public ner(MsgTabStoryVideoPreloader paramMsgTabStoryVideoPreloader) {}
+  public ner(VideoCompositeManager paramVideoCompositeManager, String paramString, long paramLong) {}
   
-  public void a(@Nullable MsgTabNodeInfo paramMsgTabNodeInfo, Error paramError)
+  protected String a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("MsgTabStoryVideoPreloader", 2, "MsgTabVideoPreloaderDataProvider load video info error", paramError);
-    }
-    this.a.b();
-  }
-  
-  public void a(@Nullable MsgTabNodeInfo paramMsgTabNodeInfo, @NonNull List paramList)
-  {
-    if (!paramList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "start download video list, list = " + paramList.size() + "\n" + paramList);
-      }
-      MsgTabStoryVideoPreloader.a(this.a, paramList);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("MsgTabStoryVideoPreloader", 2, "can not find first unread video");
-    }
-    this.a.b();
+    SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "start composite vid:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    paramJobContext = VideoCompositeHelper.a(this.jdField_a_of_type_JavaLangString);
+    new File(QQStoryConstant.c).mkdirs();
+    paramVarArgs = QQStoryConstant.c + System.currentTimeMillis() + ".mp4";
+    new VideoCompositeHelper().a(paramJobContext, paramVarArgs, new nes(this, paramJobContext));
+    return null;
   }
 }
 

@@ -1,46 +1,46 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRObserver;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SearchResult;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aghl
-  implements Runnable
+  extends OCRObserver
 {
-  public aghl(ScanTorchActivity paramScanTorchActivity, String paramString) {}
+  public aghl(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void run()
+  public void a(int paramInt, String paramString, OCRTextSearchInfo.SearchResult paramSearchResult)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      ScanTorchActivity.r(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, errorCode=" + paramInt + ", sessionID=" + paramString + ", mSessionId=" + this.a.c);
     }
-    for (;;)
+    if ((paramString == null) || (this.a.c == null) || (!this.a.c.equals(paramString)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.runOnUiThread(new aghm(this));
-      return;
-      Pair localPair = ScannerView.a(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.getBaseContext());
-      if (localPair != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ScanTorchActivity", 2, "scan photo QRCode finish");
-        }
-        Intent localIntent = new Intent();
-        localIntent.putExtra("scannerResult", String.valueOf(localPair.first).trim());
-        localIntent.putExtra("scannerType", String.valueOf(localPair.second).trim());
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.setResult(13, localIntent);
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.finish();
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.overridePendingTransition(0, 0);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, session error");
       }
-      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_JavaLangString);
+      return;
     }
+    this.a.a(false);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null) {
+      this.a.b(1);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), paramInt, paramSearchResult);
+    this.a.a(1);
+    if ((paramInt == 0) && (paramSearchResult.a != null) && (paramSearchResult.a.size() > 0))
+    {
+      ReportController.b(null, "dc00898", "", "", "0X80082E8", "0X80082E8", 0, 0, "", "", "", "");
+      return;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X80082E7", "0X80082E7", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghl
  * JD-Core Version:    0.7.0.1
  */

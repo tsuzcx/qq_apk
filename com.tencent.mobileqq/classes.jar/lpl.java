@@ -1,18 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
 
-public class lpl
-  implements Runnable
+public final class lpl
+  implements lpp
 {
-  public lpl(ArticleInfoModule paramArticleInfoModule) {}
-  
-  public void run()
+  public void a()
   {
-    SosoInterface.a(ArticleInfoModule.a(), "PublicAccountManager");
-    if (QLog.isColorLevel()) {
-      QLog.d("ArticleInfoModule", 2, "0x68b lbs info start location");
-    }
+    ReadinjoySPEventReport.a().a(null, false);
+  }
+  
+  public void b()
+  {
+    ReadinjoySPEventReport.a().a(false);
   }
 }
 

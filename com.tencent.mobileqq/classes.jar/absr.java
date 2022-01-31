@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import android.animation.AnimatorSet;
+import com.tencent.mobileqq.bubble.BubbleNewAIOAnim;
 
 public class absr
-  implements ConfigSimplifier.ConfigDownloadCallback
+  implements Runnable
 {
-  public absr(ConfigServlet paramConfigServlet, QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig) {}
+  public absr(BubbleNewAIOAnim paramBubbleNewAIOAnim) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    VideoFilterTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramString, this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get());
+    if (this.a.a != null) {
+      this.a.a.cancel();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     absr
  * JD-Core Version:    0.7.0.1
  */

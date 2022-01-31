@@ -1,19 +1,37 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.MyVideoCleanStep;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.io.File;
 
 public class nef
-  implements Runnable
+  implements Comparable
 {
-  public nef(MsgTabNodeListLoader paramMsgTabNodeListLoader, boolean paramBoolean) {}
+  public long a;
+  public final File a;
   
-  public void run()
+  public nef(MyVideoCleanStep paramMyVideoCleanStep, File paramFile)
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
-    while (localIterator.hasNext()) {
-      ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    paramMyVideoCleanStep = paramFile.getName();
+    try
+    {
+      this.jdField_a_of_type_Long = Long.parseLong(paramMyVideoCleanStep);
+      return;
     }
+    catch (Exception paramFile)
+    {
+      SLog.d("Q.qqstory.cleaner:MyVideoCleanStep", "Parse %s error , %s", new Object[] { paramMyVideoCleanStep, paramFile.getMessage() });
+    }
+  }
+  
+  public int a(nef paramnef)
+  {
+    if (this.jdField_a_of_type_Long < paramnef.jdField_a_of_type_Long) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_Long == paramnef.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return 1;
   }
 }
 

@@ -291,7 +291,7 @@ public class EmosmUtils
       paramContext.append("[").append(localMessageForMarketFace.mMarkFaceMessage.faceName).append("]");
       return paramContext.toString();
     }
-    return paramContext.getString(2131436276);
+    return paramContext.getString(2131436296);
   }
   
   public static String a(String paramString)
@@ -358,7 +358,7 @@ public class EmosmUtils
   {
     boolean bool = NetworkUtil.d(BaseApplicationImpl.getContext());
     if (!bool) {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131433009, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2131433023, 0).a();
     }
     return bool;
   }

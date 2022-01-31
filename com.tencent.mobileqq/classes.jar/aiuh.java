@@ -1,46 +1,47 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.FaceScoreUtils;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.media.ThumbnailUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class aiuh
-  implements Runnable
+  implements BitmapDecoder
 {
-  public aiuh(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public aiuh(DeviceMsgThumbDownloader paramDeviceMsgThumbDownloader) {}
   
-  public void run()
+  public Bitmap a(URL paramURL)
   {
-    int i;
-    String str1;
-    if (this.a.app != null)
+    LocalMediaInfo localLocalMediaInfo = this.a.a(paramURL);
+    if (localLocalMediaInfo == null) {}
+    for (;;)
     {
-      int j = ((NearbyCardManager)this.a.app.getManager(105)).b();
-      if ((this.a.b <= 0) || (((MediaPreviewInfo)this.a.a.get(0)).a != 2)) {
-        break label108;
+      return null;
+      paramURL = new BitmapFactory.Options();
+      paramURL.inDensity = 160;
+      paramURL.inTargetDensity = 160;
+      paramURL.inScreenDensity = 160;
+      try
+      {
+        paramURL = BitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
+        if (paramURL == null) {
+          continue;
+        }
+        return ThumbnailUtils.extractThumbnail(paramURL, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbHeight, 2);
       }
-      i = 1;
-      if (j != 0) {
-        break label113;
+      catch (OutOfMemoryError paramURL)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("VIdeoThumbDownloader", 2, "DeviceImgBitmapDecoder getBitmap", paramURL);
+          }
+          paramURL = null;
+        }
       }
-      str1 = "1";
-      label69:
-      if (i == 0) {
-        break label119;
-      }
-    }
-    label108:
-    label113:
-    label119:
-    for (String str2 = "2";; str2 = "1")
-    {
-      FaceScoreUtils.a("clk_detail", "", new String[] { "", str1, "", str2 });
-      return;
-      i = 0;
-      break;
-      str1 = "2";
-      break label69;
     }
   }
 }

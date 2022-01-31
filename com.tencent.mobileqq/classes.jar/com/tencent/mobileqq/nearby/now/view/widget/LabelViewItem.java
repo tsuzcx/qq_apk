@@ -30,7 +30,7 @@ public class LabelViewItem
   
   private void a(Context paramContext)
   {
-    setBackgroundResource(2130842879);
+    setBackgroundResource(2130842909);
     setTextSize(2, 11.0F);
     setTextColor(Color.parseColor("#ffaf4efb"));
     int i = a(8.0F);

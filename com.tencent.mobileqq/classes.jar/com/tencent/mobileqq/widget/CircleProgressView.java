@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aksx;
+import alao;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -89,7 +89,7 @@ public class CircleProgressView
     this.jdField_c_of_type_Boolean = true;
     this.e = 0;
     this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler.post(new aksx(this, null));
+    this.jdField_a_of_type_AndroidOsHandler.post(new alao(this, null));
   }
   
   public boolean a()
@@ -226,7 +226,7 @@ public class CircleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleProgressView
  * JD-Core Version:    0.7.0.1
  */

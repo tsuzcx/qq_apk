@@ -1,20 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.troop.utils.TroopGiftManager;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x9e9.cmd0x9e9.RspBody;
 
 public class ajxk
-  implements DialogInterface.OnDismissListener
+  extends ProtoUtils.TroopGiftProtocolObserver
 {
-  public ajxk(TroopShareUtility paramTroopShareUtility) {}
+  public ajxk(TroopGiftManager paramTroopGiftManager, TroopGiftCallback paramTroopGiftCallback) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.jdField_b_of_type_Boolean = false;
-    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) || (((this.a.jdField_a_of_type_Int == 0) || (this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4)) && ((this.a.jdField_b_of_type_Int == 1) || (this.a.jdField_b_of_type_Int == 0)))) {
-      return;
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "requestGiftPoint. onResult error=" + paramInt + " data=" + paramArrayOfByte);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, "sso request error or callback is null.");
+      }
     }
-    ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+    do
+    {
+      return;
+      paramBundle = new cmd0x9e9.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramBundle.int64_total_point.get() / 100L);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.i(".troop.send_gift", 2, "requestGiftPoint. error=" + QLog.getStackTraceString(paramArrayOfByte));
   }
 }
 

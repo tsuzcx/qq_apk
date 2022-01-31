@@ -1,16 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
+import com.tencent.mobileqq.apollo.GLTextureView;
 
 public class yty
-  implements DialogInterface.OnClickListener
+  extends ytr
 {
-  public yty(ApolloStoreActivity paramApolloStoreActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public yty(GLTextureView paramGLTextureView, boolean paramBoolean) {}
 }
 
 

@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-class zoy
+public class zoy
   implements Runnable
 {
-  zoy(zox paramzox, String paramString) {}
+  public zoy(NewFriendManager paramNewFriendManager, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Zox.a.a(this.jdField_a_of_type_JavaLangString);
+    synchronized (NewFriendManager.a(this.jdField_a_of_type_ComTencentMobileqqAppNewFriendManager))
+    {
+      Iterator localIterator = NewFriendManager.a(this.jdField_a_of_type_ComTencentMobileqqAppNewFriendManager).iterator();
+      if (localIterator.hasNext()) {
+        ((NewFriendManager.INewFriendListener)localIterator.next()).a(this.jdField_a_of_type_Int);
+      }
+    }
   }
 }
 

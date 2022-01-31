@@ -1,17 +1,8 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import com.tencent.biz.qqstory.model.SuperManager;
 
 public class ngu
-  extends UploadImageJob
 {
-  public ngu(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
-  
-  public boolean b()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.e = ((String)a("UploadImageJob_out_image_url"));
-    return true;
-  }
+  public static final SuperManager a = new SuperManager(null);
 }
 
 

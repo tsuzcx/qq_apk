@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import abyp;
-import abyq;
+import acgp;
+import acgq;
 import android.annotation.TargetApi;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
@@ -66,7 +66,7 @@ public class ComboResource
       if (!jdField_a_of_type_Boolean)
       {
         jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new abyp(), 5, null, false);
+        ThreadManager.post(new acgp(), 5, null, false);
       }
       return null;
     }
@@ -84,7 +84,7 @@ public class ComboResource
         if (!jdField_a_of_type_Boolean)
         {
           jdField_a_of_type_Boolean = true;
-          ThreadManager.post(new abyq(), 5, null, false);
+          ThreadManager.post(new acgq(), 5, null, false);
         }
         return null;
       }

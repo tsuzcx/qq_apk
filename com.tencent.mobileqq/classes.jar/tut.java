@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
-class tut
+public class tut
   implements Runnable
 {
-  tut(tus paramtus, String paramString) {}
+  public tut(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
   public void run()
   {
-    SubAccountManager localSubAccountManager = (SubAccountManager)this.jdField_a_of_type_Tus.a.app.getManager(60);
-    if (localSubAccountManager != null) {
-      localSubAccountManager.a(this.jdField_a_of_type_JavaLangString, 0, "");
-    }
+    ((PhoneContactManager)this.a.app.getManager(10)).g();
   }
 }
 

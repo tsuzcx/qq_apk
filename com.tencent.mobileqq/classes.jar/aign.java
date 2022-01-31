@@ -1,212 +1,119 @@
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.battery.BatteryLog;
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
+import com.tencent.sveffects.SLog;
+import java.util.HashMap;
 
 public class aign
-  extends Handler
+  implements Runnable
 {
-  public aign(Looper paramLooper)
+  int jdField_a_of_type_Int = 0;
+  
+  public aign(GestureMgrRecognize paramGestureMgrRecognize, int paramInt)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    Object localObject3;
-    Object localObject4;
+    Thread localThread = Thread.currentThread();
     Object localObject2;
-    if (paramMessage.what == 0)
+    aigm localaigm;
+    for (;;)
     {
-      if (BatteryLog.a() == null) {
-        BatteryLog.a(Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/" + "com.tencent.mobileqq".replace(".", File.separator) + "/battery/");
-      }
-      BatteryLog.b(BatteryLog.a() + BatteryLog.b() + "_" + BatteryLog.a() + ".log");
-      BatteryLog.c(BatteryLog.a() + BatteryLog.b() + "_" + BatteryLog.a() + ".rpt");
-      paramMessage = new File(BatteryLog.a());
-      Object localObject1 = new File(BatteryLog.c());
-      localObject3 = new File(BatteryLog.d());
+      HashMap localHashMap;
+      aigm[] arrayOfaigm;
       try
       {
-        if (((File)localObject1).exists()) {
-          ((File)localObject1).delete();
-        }
-        if (((File)localObject3).exists()) {
-          ((File)localObject3).delete();
-        }
-        if (!paramMessage.exists()) {
-          paramMessage.mkdirs();
-        }
-        ((File)localObject1).createNewFile();
-        BatteryLog.a(new BufferedWriter(new FileWriter((File)localObject1), 8192));
-        ((File)localObject3).createNewFile();
-        BatteryLog.b(new BufferedWriter(new FileWriter((File)localObject3), 8192));
-        localObject1 = null;
-        paramMessage = (Message)localObject1;
-        try
+        long[] arrayOfLong1 = new long[15];
+        localHashMap = new HashMap();
+        arrayOfaigm = new aigm[5];
+        i = 0;
+        if (i < 5)
         {
-          localObject3 = BaseApplicationImpl.getApplication().getPackageManager();
-          paramMessage = (Message)localObject1;
-          localObject4 = ((PackageManager)localObject3).getPackageInfo("com.tencent.mobileqq", 128);
-          paramMessage = (Message)localObject1;
-          localObject1 = ((PackageInfo)localObject4).versionName + "." + ((PackageInfo)localObject4).versionCode;
-          paramMessage = (Message)localObject1;
-          localObject3 = ((PackageManager)localObject3).getApplicationInfo("com.tencent.mobileqq", 128).metaData.get("com.tencent.rdm.uuid").toString();
-          paramMessage = (Message)localObject3;
-          localObject3 = localObject1;
-          localObject1 = paramMessage;
+          arrayOfaigm[i] = new aigm(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize);
+          i += 1;
+          continue;
         }
-        catch (Throwable localThrowable1)
+        SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable, ThreadId[%s], token[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int) }));
+        j = 0;
+        i = 0;
+        if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.a()) {
+          continue;
+        }
+        SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable load so fail, ThreadId[%s], token[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int) }));
+        GestureMgrRecognize.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize, localHashMap);
+        GestureMgrRecognize.a(arrayOfLong1, i);
+      }
+      catch (Exception localException1)
+      {
+        SLog.a("GestureMgrRecognize", String.format("RecognizeRunnable occured exception[%s]", new Object[] { localException1.getClass().getName() }), localException1);
+        continue;
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aigl;
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aigl = null;
+        if (localObject2 == null) {
+          break label557;
+        }
+      }
+      SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable, finaly exit, ThreadId[%s], token[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      return;
+      if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c)
+      {
+        SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable exit1, ThreadId[%s], token[%s], curToken[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c) }));
+      }
+      else
+      {
+        localaigm = arrayOfaigm[j];
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aigm.a(localaigm);
+        synchronized (GestureMgrRecognize.jdField_a_of_type_JavaLangObject)
         {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("BatteryStats.Log", 2, "", localThrowable1);
-            }
-            localObject2 = null;
-            localObject3 = paramMessage;
+          localObject2 = GestureMgrRecognize.a(this.jdField_a_of_type_Int, (aigl)localObject2, localaigm.a, localException1, i);
+          if (!localHashMap.containsKey(((GestureKeyInfo)localObject2).a)) {
+            break label552;
+          }
+          k = ((Integer)localHashMap.get(((GestureKeyInfo)localObject2).a)).intValue();
+          label388:
+          localHashMap.put(((GestureKeyInfo)localObject2).a, Integer.valueOf(k + 1));
+          if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c) {
+            SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable exit2, ThreadId[%s], token[%s], curToken[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c) }));
           }
         }
-        BatteryLog.b(new Object[] { "header", localObject3, "351230", "pub", localObject1, Build.MANUFACTURER, Build.MODEL, Integer.valueOf(Build.VERSION.SDK_INT), Long.valueOf(BatteryLog.a()), "1.3" });
-        return;
       }
-      catch (Throwable paramMessage)
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-      }
-      QLog.d("BatteryStats.Log", 2, "", paramMessage);
     }
-    else
+    GestureMgrRecognize.a(this.jdField_a_of_type_Int, localaigm, (GestureKeyInfo)localObject2);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aigm = localaigm;
+    int k = (j + 1) % 5;
+    i += 1;
+    if (i == 15) {
+      GestureMgrRecognize.a(arrayOfLong2, i);
+    }
+    int j = i % 15;
+    int i = k;
+    for (;;)
     {
-      int k;
-      int i;
-      int j;
-      if (paramMessage.what == 2)
+      try
       {
-        if (paramMessage.arg1 == 0)
-        {
-          localObject2 = BatteryLog.a();
-          if (localObject2 != null)
-          {
-            localObject3 = BatteryLog.a();
-            paramMessage = (Object[])paramMessage.obj;
-            k = paramMessage.length;
-            i = 0;
-          }
-        }
-        else
-        {
-          for (;;)
-          {
-            if (i >= k) {
-              break label636;
-            }
-            localObject4 = paramMessage[i];
-            int m;
-            if (((localObject4 instanceof Object[])) || ((localObject4 instanceof String[])))
-            {
-              localObject4 = (Object[])localObject4;
-              m = localObject4.length;
-              j = 0;
-            }
-            for (;;)
-            {
-              if (j < m)
-              {
-                ((StringBuilder)localObject3).append(localObject4[j]);
-                j += 1;
-                continue;
-                localObject2 = BatteryLog.b();
-                break;
-                ((StringBuilder)localObject3).append(localObject4).append("|");
-              }
-            }
-            i += 1;
-          }
-          label636:
-          ((StringBuilder)localObject3).append("\r\n");
-          try
-          {
-            ((BufferedWriter)localObject2).write(((StringBuilder)localObject3).toString());
-            ((BufferedWriter)localObject2).flush();
-            return;
-          }
-          catch (Throwable paramMessage)
-          {
-            if (!QLog.isColorLevel()) {
-              return;
-            }
-          }
-          QLog.d("BatteryStats.Log", 2, "", paramMessage);
-        }
+        Thread.sleep(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Long);
+        k = j;
+        j = i;
+        i = k;
       }
-      else if (paramMessage.what == 1)
+      catch (Exception localException2)
       {
-        if (BatteryLog.a() == null) {
-          BatteryLog.a(Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/com/tencent/mobileqq/battery/");
-        }
-        label822:
-        for (;;)
-        {
-          try
-          {
-            localObject2 = new File(BatteryLog.a()).listFiles();
-            k = localObject2.length;
-            i = 0;
-            if (i >= k) {
-              break;
-            }
-            localObject3 = localObject2[i];
-            try
-            {
-              long l = BatteryLog.a((File)localObject3);
-              if ((l == -1L) || (l <= ((Long)paramMessage.obj).longValue())) {
-                break label822;
-              }
-              j = 0;
-              if (j != 0) {
-                ((File)localObject3).delete();
-              }
-            }
-            catch (Throwable localThrowable3)
-            {
-              try
-              {
-                ((File)localObject3).delete();
-              }
-              catch (Throwable localThrowable2) {}
-              continue;
-            }
-            i += 1;
-            continue;
-            j = 1;
-          }
-          catch (Throwable paramMessage)
-          {
-            return;
-          }
-        }
+        continue;
       }
+      label552:
+      k = 0;
+      break label388;
+      label557:
+      k = i;
+      i = j;
+      j = k;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aign
  * JD-Core Version:    0.7.0.1
  */

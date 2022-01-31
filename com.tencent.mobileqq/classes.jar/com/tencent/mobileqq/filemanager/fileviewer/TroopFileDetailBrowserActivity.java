@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import adcf;
+import adkm;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RelativeLayout.LayoutParams;
@@ -22,7 +22,7 @@ public final class TroopFileDetailBrowserActivity
   
   public TroopFileDetailBrowserActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new adcf(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new adkm(this);
   }
   
   private int a(Context paramContext)

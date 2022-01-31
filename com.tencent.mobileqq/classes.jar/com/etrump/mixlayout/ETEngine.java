@@ -109,7 +109,7 @@ public class ETEngine
   
   public native boolean native_containComplexScript(String paramString);
   
-  public native long native_decorationCreateDescriptor(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ETFont paramETFont);
+  public native long native_decorationCreateDescriptor(String paramString, ETSegment[] paramArrayOfETSegment, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ETFont paramETFont);
   
   public native void native_decorationDeleteDescriptor(long paramLong);
   
@@ -117,11 +117,15 @@ public class ETEngine
   
   public native void native_decorationDrawForeground(long paramLong, int paramInt, ETFont paramETFont, Bitmap paramBitmap);
   
+  public native boolean native_decorationDrawScene(long paramLong, int paramInt1, ETFont paramETFont, Object[] paramArrayOfObject, Bitmap paramBitmap, int paramInt2, int paramInt3);
+  
   public native boolean native_decorationDrawText(long paramLong, int paramInt1, int paramInt2, int paramInt3, ETFont paramETFont, Bitmap paramBitmap, int paramInt4, int paramInt5);
   
   public native int native_decorationGetFrameDelay(long paramLong, int paramInt);
   
   public native int native_decorationGetFrameNum(long paramLong);
+  
+  public native int native_decorationGetType(long paramLong);
   
   public native long native_diyFontCreateNativeConfig(ETFont paramETFont, byte[] paramArrayOfByte);
   
@@ -181,7 +185,7 @@ public class ETEngine
   
   public native boolean native_initEngine(int paramInt1, int paramInt2, boolean paramBoolean);
   
-  public native boolean native_isDecorationFont(String paramString);
+  public native boolean native_isDecorationFont(ETFont paramETFont);
   
   public native boolean native_isFontLoaded(int paramInt);
   
@@ -292,29 +296,52 @@ public class ETEngine
     if (this.mPaint == null) {
       this.mPaint = new Paint();
     }
+    if (this.mCanvas == null) {
+      this.mCanvas = new Canvas();
+    }
+    this.mCanvas.setBitmap(paramBitmap);
+    paramInt6 = Math.abs(paramInt6);
+    this.mPaint.reset();
     this.mPaint.setColor(paramInt2);
     this.mPaint.setAntiAlias(true);
     this.mPaint.setDither(true);
     this.mPaint.setTextSize(paramInt1);
-    this.mPaint.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    this.mPaint.setFakeBoldText(false);
-    if ((paramInt3 & 0x80) > 0) {
-      this.mPaint.setShadowLayer(paramInt10, paramInt8, paramInt9, paramInt7);
+    if (((paramInt3 & 0x80) > 0) && ((paramInt3 & 0x8) > 0)) {
+      if (paramInt10 == 0)
+      {
+        f = 0.01F;
+        this.mPaint.setShadowLayer(f, paramInt8, paramInt9, paramInt7);
+        this.mCanvas.drawText(paramString, paramInt4, paramInt5 + paramInt6, this.mPaint);
+        paramBitmap = new Paint(1);
+        paramBitmap.setStyle(Paint.Style.STROKE);
+        paramBitmap.setColor(paramInt11);
+        paramBitmap.setStrokeWidth(paramInt12 / 2.0F);
+        paramBitmap.setTextSize(paramInt1);
+        this.mCanvas.drawText(paramString, paramInt4, paramInt5 + paramInt6, paramBitmap);
+        this.mPaint.clearShadowLayer();
+      }
     }
-    if (this.mCanvas == null) {
-      this.mCanvas = new Canvas();
-    }
-    paramInt2 = Math.abs(paramInt6);
-    this.mCanvas.setBitmap(paramBitmap);
-    this.mCanvas.drawText(paramString, paramInt4, paramInt5 + paramInt2, this.mPaint);
-    if ((paramInt3 & 0x8) > 0)
+    do
     {
-      paramBitmap = new Paint(1);
-      paramBitmap.setStyle(Paint.Style.STROKE);
-      paramBitmap.setColor(paramInt11);
-      paramBitmap.setStrokeWidth(paramInt12);
-      paramBitmap.setTextSize(paramInt1);
-      this.mCanvas.drawText(paramString, paramInt4, paramInt2 + paramInt5, paramBitmap);
+      this.mCanvas.drawText(paramString, paramInt4, paramInt6 + paramInt5, this.mPaint);
+      return;
+      f = paramInt10;
+      break;
+      if ((paramInt3 & 0x8) > 0)
+      {
+        paramBitmap = new Paint(1);
+        paramBitmap.setStyle(Paint.Style.STROKE);
+        paramBitmap.setColor(paramInt11);
+        paramBitmap.setStrokeWidth(paramInt12 / 2.0F);
+        paramBitmap.setTextSize(paramInt1);
+        this.mCanvas.drawText(paramString, paramInt4, paramInt5 + paramInt6, paramBitmap);
+      }
+    } while ((paramInt3 & 0x80) <= 0);
+    if (paramInt10 == 0) {}
+    for (float f = 0.01F;; f = paramInt10)
+    {
+      this.mPaint.setShadowLayer(f, paramInt8, paramInt9, paramInt7);
+      break;
     }
   }
   

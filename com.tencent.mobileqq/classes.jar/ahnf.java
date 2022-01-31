@@ -1,49 +1,14 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
 
 public class ahnf
-  extends Handler
+  implements Runnable
 {
-  public ahnf(LiteTcpConnection paramLiteTcpConnection, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ahnf(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite) {}
   
-  public void a()
+  public void run()
   {
-    if (LiteTcpConnection.a(this.a) != null) {
-      LiteTcpConnection.a(this.a).sendEmptyMessage(3);
-    }
-  }
-  
-  public void b()
-  {
-    ahnf localahnf = LiteTcpConnection.a(this.a);
-    if (localahnf != null) {
-      localahnf.sendEmptyMessage(2);
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
-    }
-    do
-    {
-      return;
-      if (paramMessage.what == 2)
-      {
-        LiteTcpConnection.a(this.a);
-        return;
-      }
-    } while (paramMessage.what != 3);
-    LiteTcpConnection.a(this.a).quit();
-    LiteTcpConnection.a(this.a, null);
-    LiteTcpConnection.a(this.a, null);
+    GestureMgr.a().b();
   }
 }
 

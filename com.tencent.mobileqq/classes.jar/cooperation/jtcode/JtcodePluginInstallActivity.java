@@ -1,8 +1,8 @@
 package cooperation.jtcode;
 
-import amlm;
-import amlo;
-import amlp;
+import amsy;
+import amta;
+import amtb;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -28,8 +28,8 @@ public class JtcodePluginInstallActivity
   extends BaseActivity
 {
   public long a;
-  private amlp jdField_a_of_type_Amlp;
-  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new amlo(this);
+  private amtb jdField_a_of_type_Amtb;
+  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new amta(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private IPluginManager jdField_a_of_type_CooperationPluginIPluginManager;
   protected QWalletPayProgressDialog a;
@@ -63,7 +63,7 @@ public class JtcodePluginInstallActivity
     this.jdField_a_of_type_JavaLangStringBuilder.append(" ==step2:initPluginManager app.getManager cost=" + (l2 - l1));
     a(true);
     l1 = System.currentTimeMillis();
-    ThreadManager.post(new amlm(this), 8, null, false);
+    ThreadManager.post(new amsy(this), 8, null, false);
     l2 = System.currentTimeMillis();
     this.jdField_a_of_type_JavaLangStringBuilder.append(" ==step3:initPluginManager post runnable cost=" + (l2 - l1) + ";post time=" + l2);
   }
@@ -196,8 +196,8 @@ public class JtcodePluginInstallActivity
     {
       paramBundle = new IntentFilter();
       paramBundle.addAction("bridge.plugin.onresume.broadcast");
-      this.jdField_a_of_type_Amlp = new amlp(this, null);
-      registerReceiver(this.jdField_a_of_type_Amlp, paramBundle);
+      this.jdField_a_of_type_Amtb = new amtb(this, null);
+      registerReceiver(this.jdField_a_of_type_Amtb, paramBundle);
       Intent localIntent = getIntent();
       if (localIntent != null)
       {
@@ -237,8 +237,8 @@ public class JtcodePluginInstallActivity
     StringBuilder localStringBuilder;
     try
     {
-      if (this.jdField_a_of_type_Amlp != null) {
-        unregisterReceiver(this.jdField_a_of_type_Amlp);
+      if (this.jdField_a_of_type_Amtb != null) {
+        unregisterReceiver(this.jdField_a_of_type_Amtb);
       }
       a(false);
       super.doOnDestroy();

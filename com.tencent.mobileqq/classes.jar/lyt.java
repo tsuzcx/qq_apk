@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class lyt
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public lyt(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public lyt(ComponentContentGridImage paramComponentContentGridImage) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ReadInJoyDeliverVideoActivity.d(this.a);
+    ComponentContentGridImage.a(this.a, paramInt, ComponentContentGridImage.a(this.a).a());
   }
 }
 

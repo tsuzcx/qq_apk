@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.MapParcelable;
 
 public final class ancc
-  implements DialogInterface.OnClickListener
+  implements Parcelable.Creator
 {
-  public ancc(QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public MapParcelable a(Parcel paramParcel)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
+    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
+  }
+  
+  public MapParcelable[] a(int paramInt)
+  {
+    return null;
   }
 }
 

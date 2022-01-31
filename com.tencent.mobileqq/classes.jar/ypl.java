@@ -1,33 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.antiphing.AntiphishingUrlConfig;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
 public class ypl
-  implements Observer
+  extends Handler
 {
-  public ypl(ApolloGameStateMachine paramApolloGameStateMachine) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public ypl(AntiphishingUrlConfig paramAntiphishingUrlConfig, Looper paramLooper)
   {
-    if ((paramObject != null) && ((paramObject instanceof Bundle)))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == AntiphishingUrlConfig.a(this.a))
     {
-      paramObservable = (Bundle)paramObject;
-      long l1 = paramObservable.getLong("START_TIME_KEY");
-      long l2 = paramObservable.getLong("END_TIME_KEY");
-      paramObject = paramObservable.getString("MESSAGE");
-      int i = paramObservable.getInt("FROM");
-      int j = paramObservable.getInt("TO");
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
+      QLog.d(AntiphishingUrlConfig.a(this.a), 4, "Receive Message!");
+      this.a.a();
+    }
+    for (;;)
+    {
+      try
+      {
+        ReportController.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
+        return;
+      }
+      catch (Exception paramMessage) {}
+      if (paramMessage.what == AntiphishingUrlConfig.b(this.a))
+      {
+        QLog.d(AntiphishingUrlConfig.a(this.a), 4, "Receive Message!");
+        try
+        {
+          ReportController.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
+          return;
+        }
+        catch (Exception paramMessage) {}
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ypl
  * JD-Core Version:    0.7.0.1
  */

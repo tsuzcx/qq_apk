@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
 import AvatarInfo.QQHeadInfo;
-import ajzw;
+import akhk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 public class FaceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ajzw();
+  public static final Parcelable.Creator CREATOR = new akhk();
   public static int f;
   public static int g = 1;
   public static int h = 2;
@@ -355,7 +355,7 @@ public class FaceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.FaceInfo
  * JD-Core Version:    0.7.0.1
  */

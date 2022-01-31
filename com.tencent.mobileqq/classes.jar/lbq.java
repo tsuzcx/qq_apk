@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class lbq
-  implements Runnable
+public final class lbq
+  implements Parcelable.Creator
 {
-  public lbq(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public void run()
+  public VideoInfo a(Parcel paramParcel)
   {
-    this.a.b(this.a.b);
+    return new VideoInfo(paramParcel);
+  }
+  
+  public VideoInfo[] a(int paramInt)
+  {
+    return new VideoInfo[paramInt];
   }
 }
 

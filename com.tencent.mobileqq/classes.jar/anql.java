@@ -1,19 +1,29 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-import dov.com.qq.im.cropvideo.RenderFilter;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.qq.im.setting.ICameraEntrance;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
 public class anql
-  extends GestureDetector.SimpleOnGestureListener
+  extends BroadcastReceiver
 {
-  public anql(CropVideoActivity paramCropVideoActivity) {}
+  public anql(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramMotionEvent.getX();
-    paramMotionEvent.getY();
-    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
-    return true;
+    paramContext = this.a.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a();
+    if ((paramContext == null) || (paramContext.isFinishing()) || (QIMCameraCaptureUnit.a(this.a))) {}
+    while (!"tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VERSION_CODES", 2, "receive ACTION_START_VIDEO_CHAT.");
+    }
+    this.a.h();
+    this.a.jdField_a_of_type_DovComQqImSettingICameraEntrance.a(2);
   }
 }
 

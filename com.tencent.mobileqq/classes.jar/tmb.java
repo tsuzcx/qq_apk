@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper.VipGrayConfigListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class tmb
-  implements VipGrayConfigHelper.VipGrayConfigListener
+  implements Handler.Callback
 {
-  public tmb(QQSettingMe paramQQSettingMe) {}
+  public tmb(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.a.a != null)
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "enterWordListener");
-      }
-      this.a.b(this.a.a.getAccount());
+    }
+    for (;;)
+    {
+      return true;
+      this.a.c();
     }
   }
 }

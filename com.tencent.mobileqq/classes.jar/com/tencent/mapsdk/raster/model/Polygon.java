@@ -1,16 +1,16 @@
 package com.tencent.mapsdk.raster.model;
 
-import com.tencent.mapsdk.rastercore.e.c;
+import com.tencent.mapsdk.rastercore.e.d;
 import java.util.List;
 
 public final class Polygon
   implements IOverlay
 {
-  private c polygonDelegate;
+  private d polygonDelegate;
   
-  public Polygon(c paramc)
+  public Polygon(d paramd)
   {
-    this.polygonDelegate = paramc;
+    this.polygonDelegate = paramd;
   }
   
   public final boolean contains(LatLng paramLatLng)

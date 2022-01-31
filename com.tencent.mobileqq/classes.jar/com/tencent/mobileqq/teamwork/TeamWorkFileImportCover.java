@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
@@ -29,6 +30,7 @@ public class TeamWorkFileImportCover
   private Activity jdField_a_of_type_AndroidAppActivity;
   Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public AppInterface a;
@@ -78,30 +80,36 @@ public class TeamWorkFileImportCover
   
   public View a(Bundle paramBundle)
   {
-    this.c = LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2130971636, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+    this.c = LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2130971663, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
     paramBundle = new RelativeLayout.LayoutParams(-1, -1);
-    paramBundle.addRule(3, 2131363244);
+    paramBundle.addRule(3, 2131363261);
     paramBundle.topMargin = (-a());
     this.c.setLayoutParams(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.c);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363244).setBackgroundColor(-1);
-    this.jdField_a_of_type_AndroidViewView = a(2131375242);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131375244));
-    this.jdField_b_of_type_AndroidViewView = a(2131375239);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131364797));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363261).setBackgroundColor(-1);
+    this.jdField_a_of_type_AndroidViewView = a(2131375297);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131375299));
+    this.jdField_b_of_type_AndroidViewView = a(2131375294);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131364824));
     paramBundle = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
     paramBundle.height = ViewUtils.b(80.0F);
     paramBundle.width = ViewUtils.b(80.0F);
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(paramBundle);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131375237));
-    this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView = ((AutoVerticalScrollTextView)a(2131375238));
-    this.jdField_a_of_type_ArrayOfJavaLangString[0] = this.jdField_a_of_type_AndroidAppActivity.getString(2131439143);
-    this.jdField_a_of_type_ArrayOfJavaLangString[1] = this.jdField_a_of_type_AndroidAppActivity.getString(2131439144);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131375292));
+    this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView = ((AutoVerticalScrollTextView)a(2131375293));
+    this.jdField_a_of_type_ArrayOfJavaLangString[0] = this.jdField_a_of_type_AndroidAppActivity.getString(2131439170);
+    this.jdField_a_of_type_ArrayOfJavaLangString[1] = this.jdField_a_of_type_AndroidAppActivity.getString(2131439171);
     this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.setTextArray(this.jdField_a_of_type_ArrayOfJavaLangString);
     a(this.jdField_a_of_type_AndroidAppActivity.getIntent(), this.jdField_a_of_type_AndroidAppActivity);
     if (QLog.isColorLevel()) {
       QLog.i("teamConvert", 2, "show loading view start time [" + System.currentTimeMillis() / 1000L + "]");
     }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2130971659, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
+    paramBundle = new RelativeLayout.LayoutParams(-2, -2);
+    paramBundle.addRule(14, -1);
+    paramBundle.addRule(12, -1);
+    paramBundle.bottomMargin = ViewUtils.b(12.0F);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramBundle);
     return this.c;
   }
   
@@ -128,30 +136,30 @@ public class TeamWorkFileImportCover
       this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = ((TeamWorkFileImportInfo)paramIntent.getParcelableExtra("key_team_work_file_import_info"));
       if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131439145));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131439172));
         this.jdField_a_of_type_Int = 2;
         this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("teamwork/tim_data3.json");
         this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(true);
         if (!NetworkUtil.d(BaseApplicationImpl.getContext())) {
-          break label183;
+          break label184;
         }
         if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c <= 20971520L) {
-          break label123;
+          break label124;
         }
         b();
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131439146));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131439173));
       }
     }
     return;
-    label123:
+    label124:
     if (QLog.isColorLevel()) {
       QLog.i("TeamWorkFileImportCover", 2, "---FileImport start, fileName： " + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b + " ---");
     }
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
     return;
-    label183:
-    QQToast.a(paramContext, 2131434811, 0).b(a());
+    label184:
+    QQToast.a(paramContext, 2131434827, 0).b(a());
     b();
   }
   
@@ -169,7 +177,7 @@ public class TeamWorkFileImportCover
     this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363244).setBackgroundColor(Color.parseColor("#f6f7f9"));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363261).setBackgroundColor(Color.parseColor("#f6f7f9"));
     if (QLog.isColorLevel()) {
       QLog.i("teamConvert", 2, "show failed view finish time [" + System.currentTimeMillis() / 1000L + "]");
     }
@@ -177,8 +185,9 @@ public class TeamWorkFileImportCover
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363244).setBackgroundColor(Color.parseColor("#f6f7f9"));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363261).setBackgroundColor(Color.parseColor("#f6f7f9"));
     this.c.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     if (QLog.isColorLevel()) {
       QLog.i("teamConvert", 2, "hide loading view finish time [" + System.currentTimeMillis() / 1000L + "]");
     }
@@ -186,7 +195,7 @@ public class TeamWorkFileImportCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportCover
  * JD-Core Version:    0.7.0.1
  */

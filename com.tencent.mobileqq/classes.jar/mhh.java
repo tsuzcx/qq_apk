@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.view.animation.Interpolator;
 
-class mhh
-  implements Runnable
+public class mhh
+  implements Interpolator
 {
-  mhh(mhf parammhf) {}
-  
-  public void run()
+  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.a.a.notifyDataSetChanged();
-    if ((!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a()) && (!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c())) {
-      ReadInJoyBaseAdapter.a(this.a.a, this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, 0);
-    }
+    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
+  }
+  
+  public float getInterpolation(float paramFloat)
+  {
+    return a(paramFloat, 0.0F, 1.0F, 1.0F);
   }
 }
 

@@ -1,57 +1,48 @@
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QwAdapter;
+import java.util.List;
 
 public class xjb
-  implements View.OnClickListener
+  implements IRedPacket.OnGetSkinListener
 {
-  public xjb(BannerManager paramBannerManager, Bundle paramBundle) {}
+  public xjb(CommonHbFragment paramCommonHbFragment) {}
   
-  public void onClick(View paramView)
+  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
   {
-    if (BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager) != null)
+    HbSkinInfo localHbSkinInfo = HbSkinInfo.a(CommonHbFragment.a(this.a), paramRedPacketInfoBase.skinId);
+    List localList;
+    if (localHbSkinInfo != null)
     {
-      paramView = BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(30);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendMessageDelayed(paramView, 2500L);
-    }
-    paramView = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
-    if (!TextUtils.isEmpty(paramView)) {}
-    try
-    {
-      paramView = Class.forName(paramView);
-      if (paramView != null)
-      {
-        paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getApplicationContext(), paramView);
-        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.setAction(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.addCategory(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.putExtra("url", str);
-        }
-        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        paramView.putExtra("back_from_aio", true);
-        BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView);
+      localList = CommonHbFragment.a(this.a).getList();
+      if (QLog.isColorLevel()) {
+        QLog.d("CommonHbFragment", 2, "redl iscache = " + HbSkinInfo.jdField_a_of_type_Boolean + " info.iscache = " + paramRedPacketInfoBase.isCache);
       }
+      if ((HbSkinInfo.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localHbSkinInfo))) {
+        break label110;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CommonHbFragment", 2, "no add in list...");
+      }
+    }
+    label110:
+    while ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
       return;
     }
-    catch (ClassNotFoundException paramView)
-    {
-      for (;;)
-      {
-        paramView = null;
-      }
+    if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
+      paramRedPacketInfoBase.title = CommonHbFragment.e(this.a);
     }
+    localHbSkinInfo.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = paramRedPacketInfoBase;
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonHbFragment", 2, "redl add to list show!");
+    }
+    localList.add(localHbSkinInfo);
+    HbSkinInfo.a(localList);
+    CommonHbFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

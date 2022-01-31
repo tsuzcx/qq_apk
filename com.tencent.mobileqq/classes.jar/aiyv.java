@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
-public class aiyv
+class aiyv
   implements Runnable
 {
-  public aiyv(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  aiyv(aiyt paramaiyt) {}
   
   public void run()
   {
-    this.a.a(true);
+    this.a.a.g();
   }
 }
 

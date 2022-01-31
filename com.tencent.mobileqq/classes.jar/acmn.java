@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import android.content.Context;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.widget.QQToast;
 
 class acmn
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  acmn(acmj paramacmj) {}
+  acmn(acmm paramacmm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    FileManagerReporter.a("0X80052CF");
+    if (this.a.a.a != null) {
+      QQToast.a(this.a.a.a, this.a.a.a.getString(2131438049), 1).b(this.a.a.g);
+    }
   }
 }
 

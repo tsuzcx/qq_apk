@@ -1,41 +1,37 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import java.io.File;
 
-class otu
-  implements Runnable
+public final class otu
+  extends ExecuteBinResponseCallback
 {
-  otu(ott paramott) {}
+  public otu(ExecuteBinResponseCallback paramExecuteBinResponseCallback, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a.jdField_c_of_type_Int == 1) {
-      this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.a.app.a(this.a.a.jdField_c_of_type_JavaLangString, false);
+    super.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.a();
+  }
+  
+  public void a(String paramString)
+  {
+    StoryReportor.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.b) });
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
     }
-    for (;;)
-    {
-      if (this.a.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a();
-      }
-      return;
-      if (this.a.a.jdField_c_of_type_Int == 2)
-      {
-        this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.a.app.a(this.a.a.jdField_c_of_type_JavaLangString, (byte)3, false, false);
-        if (this.a.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-          this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
-        }
-      }
-      else
-      {
-        Drawable localDrawable = this.a.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.a.a.jdField_c_of_type_JavaLangString, true);
-        if ((localDrawable instanceof BitmapDrawable)) {
-          this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localDrawable).getBitmap();
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.a(paramBoolean);
+  }
+  
+  public void b(String paramString)
+  {
+    StoryReportor.a("music_composite", "video_music_composite", 0, 1, new String[0]);
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.b(paramString);
   }
 }
 

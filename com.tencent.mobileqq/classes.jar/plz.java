@@ -1,169 +1,129 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.text.TextUtils;
-import com.tencent.component.utils.preference.SharedPreferencesWrapper;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.WeakHashMap;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.ImageTaskAttribute;
 
-public class plz
-  extends SharedPreferencesWrapper
+public abstract class plz
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private SharedPreferences.OnSharedPreferenceChangeListener jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener;
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakHashMap jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
-  private final boolean jdField_a_of_type_Boolean;
+  protected static final int MAX_OBJECT_POOL_SIZE = 50;
+  protected static final int RESULT_ON_DECODE_GIF_STREAM_SUCCEED = 17;
+  protected static final int RESULT_ON_DECODE_IMAGE_FAILED = 9;
+  protected static final int RESULT_ON_DECODE_IMAGE_SUCCEED = 8;
+  protected static final int RESULT_ON_DONWNLOAD_CANCELED = 0;
+  protected static final int RESULT_ON_DONWNLOAD_FAILED = 1;
+  protected static final int RESULT_ON_DONWNLOAD_PROGRESS = 3;
+  protected static final int RESULT_ON_DONWNLOAD_SUCCEED = 2;
+  protected static final int RESULT_ON_IMAGE_CANCELED = 5;
+  protected static final int RESULT_ON_IMAGE_FAILED = 4;
+  protected static final int RESULT_ON_IMAGE_LOADED = 6;
+  protected static final int RESULT_ON_IMAGE_PROGRESS = 7;
+  protected static final int RESULT_ON_STREAM_APPLY_IMAGE = 15;
+  protected static final int RESULT_ON_STREAM_END = 16;
+  protected static final int RESULT_ON_STREAM_PROGRESS = 14;
+  protected static final int RESULT_ON_TASK_CANCELED = 13;
+  protected static final int RESULT_ON_TRY_GET_FILE_SUCCEED = 12;
+  protected static final int RESULT_ON_TRY_GET_MEMORY_SUCCEED = 11;
+  public static int mInitAllocatedSize = 25;
+  public static boolean needRecycle = true;
+  public ImageKey mImageKey = null;
+  public plz mNextTask = null;
+  protected plz mPreviousTask = null;
+  protected ImageTaskAttribute mTaskAttribute = null;
   
-  public plz(SharedPreferences paramSharedPreferences, String paramString, boolean paramBoolean)
+  public plz(ImageKey paramImageKey)
   {
-    super(paramSharedPreferences, new pma(paramString));
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener == null)
+    if (paramImageKey != null)
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener = new pmb(this);
-      a().registerOnSharedPreferenceChangeListener(this.jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener);
+      this.mNextTask = null;
+      this.mImageKey = paramImageKey;
+      this.mTaskAttribute = new ImageTaskAttribute();
+      this.mPreviousTask = null;
     }
   }
   
-  private void a(String paramString)
+  public plz(plz paramplz)
   {
-    Object localObject1 = null;
-    synchronized (this.jdField_a_of_type_JavaUtilWeakHashMap)
+    if (paramplz != null)
     {
-      if (!this.jdField_a_of_type_JavaUtilWeakHashMap.isEmpty())
-      {
-        localObject1 = new HashSet(this.jdField_a_of_type_JavaUtilWeakHashMap.keySet());
-        if (localObject1 != null)
-        {
-          localObject1 = ((Collection)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            ??? = (SharedPreferences.OnSharedPreferenceChangeListener)((Iterator)localObject1).next();
-            if (??? != null) {
-              ((SharedPreferences.OnSharedPreferenceChangeListener)???).onSharedPreferenceChanged(this, paramString);
-            }
-          }
-        }
-      }
-      else
-      {
-        b();
-      }
+      this.mNextTask = paramplz;
+      this.mImageKey = paramplz.mImageKey;
+      this.mTaskAttribute = paramplz.mTaskAttribute;
+      this.mPreviousTask = null;
+      paramplz.mPreviousTask = this;
     }
   }
   
-  private void b()
+  public void cancel()
   {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener != null)
-    {
-      a().unregisterOnSharedPreferenceChangeListener(this.jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener);
-      this.jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener = null;
+    ImageTaskAttribute localImageTaskAttribute = this.mTaskAttribute;
+    if (localImageTaskAttribute != null) {
+      localImageTaskAttribute.isCanceled = true;
     }
   }
   
-  private static boolean b(String paramString1, String paramString2)
+  public abstract void excuteTask();
+  
+  public ImageKey getImageKey()
   {
-    return (TextUtils.isEmpty(paramString1)) || ((!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith(paramString1)));
+    return this.mImageKey;
   }
   
-  private static String c(String paramString1, String paramString2)
+  public plz getNextTask()
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return paramString2;
-    }
-    if (paramString2 == null) {
-      throw new RuntimeException("null key is not supported when contains key prefix " + paramString1);
-    }
-    return paramString1 + paramString2;
+    return this.mNextTask;
   }
   
-  private static String d(String paramString1, String paramString2)
+  public plz getPreviousTask()
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return paramString2;
-    }
-    if ((TextUtils.isEmpty(paramString2)) || (!paramString2.startsWith(paramString1))) {
-      return null;
-    }
-    return paramString2.substring(paramString1.length());
+    return this.mPreviousTask;
   }
   
-  public SharedPreferences.Editor edit()
+  public boolean isCanceled()
   {
-    SharedPreferences.Editor localEditor = super.edit();
-    if (localEditor != null) {
-      return new pmc(this, localEditor);
+    ImageTaskAttribute localImageTaskAttribute = this.mTaskAttribute;
+    if (localImageTaskAttribute != null) {
+      return localImageTaskAttribute.isCanceled;
     }
-    return null;
+    return true;
   }
   
-  public Map getAll()
+  public abstract void onResult(int paramInt, Object... paramVarArgs);
+  
+  public void recycle() {}
+  
+  public void reset()
   {
-    Object localObject2 = super.getAll();
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      localObject1 = localObject2;
-      if (localObject2 != null)
-      {
-        localObject1 = localObject2;
-        if (!((Map)localObject2).isEmpty())
-        {
-          localObject1 = new HashMap();
-          localObject2 = ((Map)localObject2).entrySet().iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-            String str = d(this.jdField_a_of_type_JavaLangString, (String)localEntry.getKey());
-            if ((str != null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-              ((Map)localObject1).put(str, localEntry.getValue());
-            }
-          }
-        }
-      }
-    }
-    return localObject1;
+    this.mNextTask = null;
+    this.mPreviousTask = null;
+    this.mImageKey = null;
+    this.mTaskAttribute = null;
   }
   
-  public void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
+  public void setImageKey(ImageKey paramImageKey)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilWeakHashMap)
-    {
-      if (this.jdField_a_of_type_JavaUtilWeakHashMap.isEmpty()) {
-        a();
-      }
-      this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramOnSharedPreferenceChangeListener, jdField_a_of_type_JavaLangObject);
-      return;
-    }
+    this.mNextTask = null;
+    this.mImageKey = paramImageKey;
+    this.mTaskAttribute = new ImageTaskAttribute();
+    this.mPreviousTask = null;
   }
   
-  public void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
+  public void setImageTask(plz paramplz)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilWeakHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramOnSharedPreferenceChangeListener);
-      if (this.jdField_a_of_type_JavaUtilWeakHashMap.isEmpty()) {
-        b();
-      }
-      return;
+    this.mNextTask = paramplz;
+    this.mImageKey = paramplz.mImageKey;
+    this.mTaskAttribute = paramplz.mTaskAttribute;
+    this.mPreviousTask = null;
+    paramplz.mPreviousTask = this;
+  }
+  
+  public void setResult(int paramInt, Object... paramVarArgs)
+  {
+    if (this.mPreviousTask != null) {
+      this.mPreviousTask.onResult(paramInt, paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     plz
  * JD-Core Version:    0.7.0.1
  */

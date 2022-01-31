@@ -1,15 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
 
-class aomo
-  implements CaptureVideoFilterManager.OnResourceDownloadListener
+public class aomo
+  extends Property
 {
-  aomo(aomn paramaomn) {}
-  
-  public void a(boolean paramBoolean)
+  public aomo(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
+    super(paramClass, paramString);
+  }
+  
+  public Integer a(GroundDrawable paramGroundDrawable)
+  {
+    if (paramGroundDrawable != null) {
+      return Integer.valueOf(GroundDrawable.b(paramGroundDrawable));
+    }
+    return Integer.valueOf(0);
+  }
+  
+  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
+  {
+    if (paramGroundDrawable != null) {
+      GroundDrawable.b(paramGroundDrawable, paramInteger.intValue());
     }
   }
 }

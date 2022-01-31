@@ -1,44 +1,64 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.OnAdapterNotify;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.observer.BusinessObserver;
 
-public class vmu
-  implements AIOGalleryAdapter.OnAdapterNotify
+class vmu
+  implements BusinessObserver
 {
-  public vmu(AIOGalleryScene paramAIOGalleryScene) {}
+  vmu(vmt paramvmt, String paramString) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    View localView;
-    if (paramInt == 0)
+    if (paramBoolean) {}
+    for (;;)
     {
-      localView = this.a.a().findViewById(2131370997);
-      if (localView != null) {}
-    }
-    do
-    {
-      do
+      int i;
+      try
       {
-        return;
-        localView.setVisibility(0);
-        AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-        localAlphaAnimation.setDuration(300L);
-        localView.startAnimation(localAlphaAnimation);
-        localView.postDelayed(new vmv(this, localView), 8000L);
-        return;
-        if (1 != paramInt) {
-          break;
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.SubscribeResponse localSubscribeResponse = new mobileqq_mp.SubscribeResponse();
+          localSubscribeResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localSubscribeResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
+          {
+            i = 1;
+            paramInt = 1;
+          }
         }
-      } while ((this.a.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager == null) || (((AIOGalleryScene.av(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)AIOGalleryScene.aw(this.a)).b)) || (!this.a.c));
-      return;
-    } while ((2 != paramInt) || (this.a.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager == null) || (((AIOGalleryScene.ax(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)AIOGalleryScene.ay(this.a)).b)) || (this.a.c));
-    this.a.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a);
+      }
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+      }
+      try
+      {
+        StructingMsgItemBuilder.a(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Vmt.jdField_a_of_type_AndroidAppActivity);
+        ReportController.b(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, "dc00899", "Pb_account_lifeservice", "", "0X8006513", "0X8006513", 0, 0, "" + paramInt, "" + this.jdField_a_of_type_JavaLangString, "", "");
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramInt = i;
+        }
+      }
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Vmt.jdField_a_of_type_AndroidAppActivity);
+      break label236;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Vmt.jdField_a_of_type_AndroidAppActivity);
+      break label236;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Vmt.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      StructingMsgItemBuilder.b(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Vmt.jdField_a_of_type_AndroidAppActivity);
+      label236:
+      paramInt = 0;
+    }
   }
 }
 

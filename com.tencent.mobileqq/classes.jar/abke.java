@@ -1,34 +1,24 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.armap.FrameBmpCache;
+import com.tencent.mobileqq.armap.SdCardImageAnimView;
 
 public class abke
   implements Runnable
 {
-  public abke(SelectCoverActivity paramSelectCoverActivity) {}
+  public abke(SdCardImageAnimView paramSdCardImageAnimView) {}
   
   public void run()
   {
-    if (this.a.b) {}
-    do
+    if (SdCardImageAnimView.a(this.a) != null)
     {
-      do
-      {
-        return;
-      } while ((!this.a.a()) || (this.a.b));
-      int i = 0;
-      while (i < this.a.a)
-      {
-        if (!this.a.b) {
-          this.a.a(i);
-        }
-        i += 1;
-      }
-    } while (this.a.d != 1);
-    SelectCoverActivity.a(this.a);
+      Bitmap localBitmap = SdCardImageAnimView.a(this.a).a(0);
+      this.a.post(new abkf(this, localBitmap));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abke
  * JD-Core Version:    0.7.0.1
  */

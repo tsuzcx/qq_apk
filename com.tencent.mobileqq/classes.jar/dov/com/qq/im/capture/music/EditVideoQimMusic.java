@@ -129,25 +129,25 @@ public class EditVideoQimMusic
     }
   }
   
-  public void aE_()
+  public void aF_()
   {
-    super.aE_();
+    super.aF_();
     this.jdField_a_of_type_Boolean = false;
     if (QLog.isColorLevel()) {
       QLog.d("EditVideoQimMusic", 2, "onResume");
     }
   }
   
-  public void aF_()
+  public void aG_()
   {
-    super.aF_();
+    super.aG_();
     this.jdField_a_of_type_Boolean = true;
     if (this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer != null) {
       this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.d();
     }
   }
   
-  public void as_()
+  public void au_()
   {
     if (this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer == null) {}
     MusicItemInfo localMusicItemInfo;
@@ -168,7 +168,7 @@ public class EditVideoQimMusic
     this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.a(localMusicItemInfo, true, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.c());
   }
   
-  public void at_()
+  public void av_()
   {
     if (QLog.isColorLevel()) {
       QLog.d("EditVideoQimMusic", 2, "resumeClipMusic isPause=" + this.jdField_a_of_type_Boolean);
@@ -179,9 +179,9 @@ public class EditVideoQimMusic
     this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.c();
   }
   
-  public void ax_()
+  public void az_()
   {
-    super.ax_();
+    super.az_();
   }
   
   public void c()

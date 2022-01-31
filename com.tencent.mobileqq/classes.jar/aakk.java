@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aakk
   implements Runnable
 {
-  public aakk(WorldCupMgr paramWorldCupMgr, QQAppInterface paramQQAppInterface, aake paramaake) {}
+  public aakk(ScanEntranceReport paramScanEntranceReport, boolean paramBoolean1, long paramLong1, long paramLong2, boolean paramBoolean2, long paramLong3) {}
   
   public void run()
   {
-    WorldCupMgr.a(this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr, "预下载调度", true, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aake.a, this.jdField_a_of_type_Aake);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("first_init", String.valueOf(this.jdField_a_of_type_Boolean));
+    localHashMap.put("init_delay", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("init_time", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("download_resource", String.valueOf(this.jdField_b_of_type_Boolean));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_init", true, this.c, 0L, localHashMap, "");
   }
 }
 

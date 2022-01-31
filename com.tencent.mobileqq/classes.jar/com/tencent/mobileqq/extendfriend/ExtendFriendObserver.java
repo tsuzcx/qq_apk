@@ -16,6 +16,8 @@ public class ExtendFriendObserver
   
   public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2, long paramLong, boolean paramBoolean3) {}
   
+  public void b(boolean paramBoolean) {}
+  
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     switch (paramInt)
@@ -23,7 +25,7 @@ public class ExtendFriendObserver
     default: 
       return;
     case 1: 
-      a(paramBoolean);
+      b(paramBoolean);
       return;
     case 2: 
       if ((paramObject == null) || (!(paramObject instanceof ExtendFriendSquareInfo.RspBody))) {
@@ -41,6 +43,8 @@ public class ExtendFriendObserver
       }
       paramObject = (Object[])paramObject;
       a(paramBoolean, (List)paramObject[0], ((Boolean)paramObject[1]).booleanValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue());
+      return;
+      a(((Boolean)paramObject).booleanValue());
       return;
     }
   }

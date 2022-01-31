@@ -1,23 +1,31 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-public class nmh
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+public final class nmh
+  implements Parcelable.Creator
 {
-  public nmh(BatchGetVideoInfoHandler paramBatchGetVideoInfoHandler, BatchGetVideoInfo paramBatchGetVideoInfo) {}
-  
-  public void a()
+  public StoryPushMsg a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b(0);
+    int i = paramParcel.readInt();
+    Object localObject = paramParcel.readString();
+    String str1 = paramParcel.readString();
+    long l = paramParcel.readLong();
+    String str2 = paramParcel.readString();
+    String str3 = paramParcel.readString();
+    int j = paramParcel.readInt();
+    String str4 = paramParcel.readString();
+    String str5 = paramParcel.readString();
+    String str6 = paramParcel.readString();
+    paramParcel = paramParcel.readBundle();
+    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
+    ((StoryPushMsg)localObject).a = paramParcel;
+    return localObject;
   }
   
-  public void a(ArrayList paramArrayList)
+  public StoryPushMsg[] a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(0, paramArrayList);
+    return new StoryPushMsg[paramInt];
   }
 }
 

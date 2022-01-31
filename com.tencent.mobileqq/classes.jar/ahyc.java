@@ -1,26 +1,34 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.search.fragment.MessageSearchFragment;
+import com.tencent.mobileqq.search.presenter.IPresenter;
+import com.tencent.mobileqq.search.presenter.SearchResultPresenter;
+import com.tencent.mobileqq.search.view.IView;
+import com.tencent.mobileqq.search.view.SearchResultView;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.widget.ListView;
 
-public final class ahyc
-  implements Runnable
+public class ahyc
+  extends BaseMvpFaceAdapter
 {
-  public void run()
+  public ahyc(MessageSearchFragment paramMessageSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
   {
-    try
-    {
-      SosoInterface.a(QZoneNotifyServlet.a());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "locate exception " + localException);
-    }
+    super(paramListView, paramFaceDecoder);
+  }
+  
+  protected IPresenter a(int paramInt)
+  {
+    return new SearchResultPresenter(this.a.a);
+  }
+  
+  protected IView a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new SearchResultView(paramViewGroup, 2130971565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahyc
  * JD-Core Version:    0.7.0.1
  */

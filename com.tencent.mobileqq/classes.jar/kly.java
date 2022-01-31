@@ -1,27 +1,18 @@
-import android.app.Activity;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.common.util.FileChooserHelper;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.PoiMapActivity;
 
 public class kly
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnTouchListener
 {
-  public kly(FileChooserHelper paramFileChooserHelper, Activity paramActivity, String paramString, ActionSheet paramActionSheet) {}
+  public kly(PoiMapActivity paramPoiMapActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      FileChooserHelper.c(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      FileChooserHelper.a(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

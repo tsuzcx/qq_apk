@@ -1,54 +1,44 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.view.ApolloGameHotChatController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.SdCardUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class tyf
   implements Runnable
 {
-  public tyf(TroopInfoActivity paramTroopInfoActivity) {}
+  public tyf(SplashActivity paramSplashActivity) {}
   
   public void run()
   {
-    try
+    long l = SpaceLowNoticeActiviy.a(this.a.app, "conf_space_low_shreshold", 104857600L);
+    if (SpaceLowNoticeActiviy.a(SpaceLowNoticeActiviy.a(this.a.app, "conf_space_check_interval", 259200000L)))
     {
-      Object localObject = BaseApplication.getContext();
-      String str = Long.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
-      GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a((Context)localObject).a();
-      if ((localGroupCatalogBean != null) && (localGroupCatalogBean.b.equals(str)))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = localGroupCatalogBean.a();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = localGroupCatalogBean.a;
+      if (SdCardUtil.b(this.a) + SdCardUtil.b() >= l) {
+        break label146;
       }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-        return;
-        localObject = GroupCatalogTool.a((Context)localObject).a((Context)localObject, str);
-        if (localObject != null)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = ((GroupCatalogBean)localObject).a();
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = ((GroupCatalogBean)localObject).a;
-        }
+      QLog.i("SplashActivity", 1, "qqclean conf did notice");
+      SpaceLowNoticeActiviy.a(this.a);
+      ReportController.b(this.a.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    }
+    for (;;)
+    {
+      ApolloManager localApolloManager = (ApolloManager)this.a.app.getManager(152);
+      if (localApolloManager != null) {
+        localApolloManager.a().a(this.a.app, this.a);
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.troopinfo", 2, localException.toString());
-      }
+      label146:
+      QLog.i("SplashActivity", 1, "qqclean conf not need notice");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tyf
  * JD-Core Version:    0.7.0.1
  */

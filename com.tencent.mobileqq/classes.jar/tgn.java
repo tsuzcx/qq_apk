@@ -1,14 +1,23 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import android.media.MediaRecorder;
+import android.media.MediaRecorder.OnInfoListener;
+import com.tencent.mobileqq.activity.MakeVideoActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class tgn
-  implements Runnable
+  implements MediaRecorder.OnInfoListener
 {
-  public tgn(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public tgn(MakeVideoActivity paramMakeVideoActivity) {}
   
-  public void run()
+  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
   {
-    this.a.c(this.a.a.getLeft(), this.a.a.getTop() + this.a.a.getMeasuredHeight() - 20);
+    switch (paramInt1)
+    {
+    default: 
+      QLog.i(this.a.a, 4, "start|onInfo|what=" + paramInt1 + ",extra=" + paramInt2);
+      return;
+    }
+    QLog.i(this.a.a, 4, "start|onInfo|max file size reached.extra=" + paramInt2);
+    this.a.b();
   }
 }
 

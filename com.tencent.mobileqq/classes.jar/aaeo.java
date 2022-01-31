@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class aaeo
-  implements Parcelable.Creator
+class aaeo
+  implements DialogInterface.OnClickListener
 {
-  public ArConfigInfo a(Parcel paramParcel)
-  {
-    return new ArConfigInfo(paramParcel);
-  }
+  aaeo(aaen paramaaen) {}
   
-  public ArConfigInfo[] a(int paramInt)
-  {
-    return new ArConfigInfo[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -4,13 +4,13 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
-import phz;
+import pmr;
 
 public class MatrixDrawable
   extends DrawableContainer
 {
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private final phz jdField_a_of_type_Phz;
+  private final pmr jdField_a_of_type_Pmr;
   
   public MatrixDrawable(Drawable paramDrawable)
   {
@@ -19,15 +19,15 @@ public class MatrixDrawable
   
   public MatrixDrawable(Drawable paramDrawable, Matrix paramMatrix)
   {
-    this.jdField_a_of_type_Phz = new phz(paramDrawable, this);
-    setConstantState(this.jdField_a_of_type_Phz);
+    this.jdField_a_of_type_Pmr = new pmr(paramDrawable, this);
+    setConstantState(this.jdField_a_of_type_Pmr);
     setMatrix(paramMatrix);
   }
   
-  private MatrixDrawable(phz paramphz, Resources paramResources)
+  private MatrixDrawable(pmr parampmr, Resources paramResources)
   {
-    this.jdField_a_of_type_Phz = new phz(paramphz, this, paramResources);
-    setConstantState(this.jdField_a_of_type_Phz);
+    this.jdField_a_of_type_Pmr = new pmr(parampmr, this, paramResources);
+    setConstantState(this.jdField_a_of_type_Pmr);
   }
   
   public void draw(Canvas paramCanvas)

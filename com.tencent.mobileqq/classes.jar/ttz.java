@@ -1,37 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import mqq.os.MqqHandler;
 
 public class ttz
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public ttz(SubAccountBindActivity paramSubAccountBindActivity) {}
+  public ttz(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
-    }
-    paramView = (SubAccountManager)this.a.app.getManager(60);
-    if (paramView != null) {}
-    for (int i = paramView.a();; i = 0)
+    switch (paramMessage.what)
     {
-      if (i < 2)
-      {
-        paramView = new Intent(this.a, SubLoginActivity.class);
-        paramView.putExtra("fromWhere", this.a.b);
-        this.a.startActivity(paramView);
-        return;
-      }
-      SubAccountControll.a(this.a.app, this.a);
+    default: 
       return;
     }
+    this.a.finish();
   }
 }
 

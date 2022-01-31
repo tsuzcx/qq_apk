@@ -1,22 +1,28 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class afjs
-  implements NearbyMomentManager.DeleteFeedCallback
+public class afjs
+  implements View.OnClickListener
 {
-  afjs(afjr paramafjr) {}
+  public afjs(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean)
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "删除失败", 0).a();
-      return;
-    }
-    new NowVideoReporter().h("video_public").i("del_failfeed").d("2").c(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder) + "").a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)).e("1").b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a);
+    paramView = new Intent(this.a.a, NearbyVisitorListActivity.class);
+    paramView.putExtra("charmlevel", NearbyProfileDisplayTribePanel.a(this.a).charmLevel);
+    paramView.putExtra("download_tribe_app_url", NearbyProfileDisplayTribePanel.a(this.a).tribeAppDownloadPageUrl);
+    paramView.putExtra("is_show_tribeapp_download_layout", NearbyProfileDisplayTribePanel.a(this.a).isAddPicBtnDownloadAppOpen());
+    this.a.a.startActivity(paramView);
+    NearbyProfileDisplayTribePanel.a(this.a, null);
+    ThreadManager.post(new afjt(this), 5, null, false);
+    ReportController.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,22 +1,35 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import android.content.Intent;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aktk
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public aktk(ContextMenuTextView paramContextMenuTextView) {}
+  public aktk(WebProcessManager paramWebProcessManager) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramView.getId() == 2131375573)
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      paramView = ContextMenuTextView.a(this.a);
-      ContextMenuTextView.a(this.a);
-      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
-    }
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("WebProcessManager", 2, "action=" + paramContext);
+        }
+        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
+          break;
+        }
+        this.a.f();
+      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
+      this.a.i();
+      return;
+    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
+    this.a.i();
   }
 }
 

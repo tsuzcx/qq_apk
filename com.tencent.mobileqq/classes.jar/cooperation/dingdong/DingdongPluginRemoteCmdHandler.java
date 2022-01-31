@@ -1,11 +1,11 @@
 package cooperation.dingdong;
 
 import QQService.AddDiscussMemberInfo;
-import amkx;
-import amkz;
-import amla;
-import amlb;
-import amlc;
+import amsj;
+import amsl;
+import amsm;
+import amsn;
+import amso;
 import android.annotation.TargetApi;
 import android.app.AppOpsManager;
 import android.content.Context;
@@ -57,9 +57,9 @@ import mqq.app.MobileQQ;
 public class DingdongPluginRemoteCmdHandler
 {
   private int jdField_a_of_type_Int = 0;
-  private amlc jdField_a_of_type_Amlc = new amlc(this);
-  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new amlb(this);
-  private RemoteCommand jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand = new amkx(this, "dingDongRemoteCmd");
+  private amso jdField_a_of_type_Amso = new amso(this);
+  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new amsn(this);
+  private RemoteCommand jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand = new amsj(this, "dingDongRemoteCmd");
   private String jdField_a_of_type_JavaLangString = "";
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean;
@@ -92,7 +92,7 @@ public class DingdongPluginRemoteCmdHandler
     Looper localLooper = Looper.getMainLooper();
     if (localLooper != Looper.myLooper())
     {
-      new Handler(localLooper).post(new amla(this, paramInt));
+      new Handler(localLooper).post(new amsm(this, paramInt));
       return;
     }
     b(paramInt);
@@ -177,14 +177,14 @@ public class DingdongPluginRemoteCmdHandler
       return;
       if (paramInt == 0)
       {
-        long l = this.jdField_a_of_type_Amlc.jdField_a_of_type_Long;
+        long l = this.jdField_a_of_type_Amso.jdField_a_of_type_Long;
         localObject5 = new Intent();
         ((Intent)localObject5).putExtra("reqCode", 5);
         if (l > 0L) {}
         for (boolean bool = true;; bool = false)
         {
           ((Intent)localObject5).putExtra("isSuccess", bool);
-          ((Intent)localObject5).putExtra("roomId", this.jdField_a_of_type_Amlc.jdField_a_of_type_Long);
+          ((Intent)localObject5).putExtra("roomId", this.jdField_a_of_type_Amso.jdField_a_of_type_Long);
           ((Intent)localObject5).putExtra("createdFlag", 0);
           ((Intent)localObject5).putExtra("discuss_create_reason", this.b);
           if (l > 0L)
@@ -400,7 +400,7 @@ public class DingdongPluginRemoteCmdHandler
   
   private int d(Bundle paramBundle1, Bundle paramBundle2)
   {
-    if (!this.jdField_a_of_type_Amlc.jdField_a_of_type_Boolean)
+    if (!this.jdField_a_of_type_Amso.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_JavaUtilArrayList = null;
       this.jdField_a_of_type_JavaUtilArrayList = paramBundle1.getParcelableArrayList("resultRecords");
@@ -410,7 +410,7 @@ public class DingdongPluginRemoteCmdHandler
       if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
         return 1;
       }
-      this.jdField_a_of_type_Amlc.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Amso.a(this.jdField_a_of_type_JavaUtilArrayList);
       return 0;
     }
     if (QLog.isColorLevel()) {
@@ -440,7 +440,7 @@ public class DingdongPluginRemoteCmdHandler
       d(paramBundle1, paramBundle2);
       return 0;
     }
-    new amkz(this, localDiscussionManager, str, l, localQQAppInterface).execute(new Void[] { null, null, null });
+    new amsl(this, localDiscussionManager, str, l, localQQAppInterface).execute(new Void[] { null, null, null });
     return 0;
   }
   

@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import kzl;
-import kzm;
-import kzn;
+import lbu;
+import lbv;
+import lbw;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,7 +39,7 @@ public class VideoReporter
   
   static
   {
-    jdField_a_of_type_JavaLangString = "7.6.3".replace(".", "");
+    jdField_a_of_type_JavaLangString = "7.6.8".replace(".", "");
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -268,6 +268,39 @@ public class VideoReporter
     return str;
   }
   
+  public static String a(String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("download", paramString);
+      paramString = a(localJSONObject);
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString2);
+      String str = paramString1;
+      if (paramString1 == null) {
+        str = "";
+      }
+      localJSONObject.put("video_report_info", str);
+      paramString1 = localJSONObject.toString();
+      return paramString1;
+    }
+    catch (Exception paramString1) {}
+    return paramString2;
+  }
+  
   public static String a(String paramString1, String paramString2, int paramInt, JSONObject paramJSONObject)
   {
     return a(null, null, paramString1, paramString2, paramInt, paramJSONObject);
@@ -340,7 +373,7 @@ public class VideoReporter
           localJSONObject.put("network_type", str);
           localJSONObject.put("os", "1");
           if (jdField_a_of_type_JavaLangString == null) {
-            jdField_a_of_type_JavaLangString = "7.6.3".replace(".", "");
+            jdField_a_of_type_JavaLangString = "7.6.8".replace(".", "");
           }
           localJSONObject.put("version", jdField_a_of_type_JavaLangString);
           localJSONObject.put("imei", ReadInJoyUtils.f());
@@ -437,12 +470,12 @@ public class VideoReporter
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, long paramLong)
   {
-    ThreadManager.executeOnSubThread(new kzm(paramInt1, paramQQAppInterface, paramString, paramInt2, paramLong));
+    ThreadManager.executeOnSubThread(new lbv(paramInt1, paramQQAppInterface, paramString, paramInt2, paramLong));
   }
   
   public static void a(MessageRecord paramMessageRecord)
   {
-    ThreadManager.executeOnSubThread(new kzn(paramMessageRecord));
+    ThreadManager.executeOnSubThread(new lbw(paramMessageRecord));
   }
   
   public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -452,7 +485,7 @@ public class VideoReporter
   
   public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, ReportInfo.VideoExtraRepoerData paramVideoExtraRepoerData)
   {
-    ThreadManager.post(new kzl(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramVideoExtraRepoerData), 5, null, true);
+    ThreadManager.post(new lbu(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramVideoExtraRepoerData), 5, null, true);
   }
   
   public static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
@@ -500,6 +533,11 @@ public class VideoReporter
     }
     catch (Exception localException) {}
     return paramString;
+  }
+  
+  public static String c()
+  {
+    return a(null);
   }
 }
 

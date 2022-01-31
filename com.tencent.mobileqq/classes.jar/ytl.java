@@ -1,17 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
+import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
+import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.CheckGameListener;
 
 public class ytl
-  implements Runnable
+  implements ApolloGameWrapper.CheckGameListener
 {
-  public ytl(ApolloGuestsStateActivity paramApolloGuestsStateActivity, int paramInt) {}
+  public ytl(ChatPieApolloViewController paramChatPieApolloViewController) {}
   
-  public void run()
+  public void a(boolean paramBoolean, CmGameMainManager paramCmGameMainManager)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGuestsStateActivity.a != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGuestsStateActivity.a.setText(String.valueOf(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGuestsStateActivity.c = this.jdField_a_of_type_Int;
+    if ((paramBoolean) && (paramCmGameMainManager != null)) {
+      paramCmGameMainManager.d();
     }
   }
 }

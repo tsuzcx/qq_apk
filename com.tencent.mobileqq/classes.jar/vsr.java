@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
 
-public class vsr
+class vsr
   implements Runnable
 {
-  public vsr(FriendChatPie paramFriendChatPie) {}
+  vsr(vsq paramvsq) {}
   
   public void run()
   {
-    this.a.a.a().b("babyq_set_avator");
+    this.a.a.b(2131435890);
+    ReportController.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
+    this.a.a.b();
   }
 }
 

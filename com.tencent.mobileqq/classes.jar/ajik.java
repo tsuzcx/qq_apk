@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import java.lang.ref.WeakReference;
+import java.nio.ByteBuffer;
 
 public class ajik
-  implements FrameSprite.OnFrameEndListener
 {
-  final WeakReference a;
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
   
-  private ajik(SpriteVideoView paramSpriteVideoView)
+  public ajik(long paramLong)
   {
-    this.a = new WeakReference(paramSpriteVideoView);
+    this.a = 2882377846L;
+    this.b = 1007L;
+    this.c = 0L;
+    this.d = paramLong;
   }
   
-  public void a()
+  public ajik(ByteBuffer paramByteBuffer)
   {
-    SpriteVideoView localSpriteVideoView = (SpriteVideoView)this.a.get();
-    if (localSpriteVideoView != null) {
-      localSpriteVideoView.setVisibility(8);
-    }
+    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+  }
+  
+  public void a(ByteBuffer paramByteBuffer)
+  {
+    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
   }
 }
 

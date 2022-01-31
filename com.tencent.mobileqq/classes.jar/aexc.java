@@ -1,17 +1,11 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
 public class aexc
-  implements View.OnClickListener
 {
-  public aexc(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public String a;
+  public boolean a;
   
-  public void onClick(View paramView)
-  {
-    ((Activity)this.a.getContext()).finish();
-  }
+  aexc(GameRoomInviteActivity paramGameRoomInviteActivity) {}
 }
 
 

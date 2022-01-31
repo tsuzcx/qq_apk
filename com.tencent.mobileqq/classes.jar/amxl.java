@@ -1,53 +1,25 @@
-import com.tencent.component.network.downloader.strategy.PortConfigStrategy;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import common.config.service.QzoneConfig.QzoneConfigChangeListener;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class amxl
-  extends PortConfigStrategy
-  implements QzoneConfig.QzoneConfigChangeListener
+  extends QQProgressDialog
 {
-  public amxl()
+  public amxl(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadPortConfig", 2, "defaultPortStrategy={'a[0-9].qpic.cn':[{'port': '80'},{'port': '14000'}],'m.qpic.cn':[{'port': '80'},{'port': '14000'}]}");
-    }
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new amxm(this));
-    QzoneConfig.getInstance().addListener(this);
+    super(paramContext, paramInt);
   }
   
-  private void b()
+  public void onBackPressed()
   {
-    String str = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadAccessPortList");
-    if (str != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginDownloadPortConfig", 2, "initPort, ports=" + str);
-      }
-      a(str);
+    if (this.a.a) {
+      super.onBackPressed();
     }
-  }
-  
-  private void c()
-  {
-    String str = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadAccessPortList");
-    if (str != null) {}
-    for (;;)
-    {
-      a(str);
+    while (!QLog.isColorLevel()) {
       return;
-      str = "{'a[0-9].qpic.cn':[{'port': '80'},{'port': '14000'}],'m.qpic.cn':[{'port': '80'},{'port': '14000'}]}";
     }
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadPortConfig", 2, "QzoneDownloadPortConfig receive change");
-    }
-    b();
+    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

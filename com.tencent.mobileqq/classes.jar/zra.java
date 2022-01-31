@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.automator.step.GetSig;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
-public class zra
-  extends MessageObserver
+class zra
+  implements Runnable
 {
-  private zra(GetSig paramGetSig) {}
+  zra(zqz paramzqz) {}
   
-  protected void k(boolean paramBoolean)
+  public void run()
   {
-    GetSig localGetSig = this.a;
-    if (paramBoolean) {}
-    for (int i = 7;; i = 6)
-    {
-      localGetSig.a(i);
-      return;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.a.jdField_a_of_type_Int, 0, 0, 0);
   }
 }
 

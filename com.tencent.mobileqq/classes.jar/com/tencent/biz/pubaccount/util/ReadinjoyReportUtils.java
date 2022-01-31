@@ -1,24 +1,33 @@
 package com.tencent.biz.pubaccount.util;
 
 import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ForeBackGround;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo.RedPntInfoForReport;
+import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
+import cooperation.qzone.util.NetworkState;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
+import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
@@ -27,6 +36,7 @@ public class ReadinjoyReportUtils
   public static long a;
   public static String a;
   public static Map a;
+  public static final Map b = new HashMap();
   
   static
   {
@@ -82,44 +92,46 @@ public class ReadinjoyReportUtils
     return "FromDTTab";
   }
   
-  public static String a(Context paramContext, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public static String a(Context paramContext, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2)
   {
-    String str = "";
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("network ", GalleryReportedUtils.a(paramContext));
-      localJSONObject.put("version ", "7.6.3");
+      localJSONObject.put("network", GalleryReportedUtils.a(paramContext));
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
-      localJSONObject.put("ads_source ", paramInt1);
+      localJSONObject.put("ads_source", paramInt1);
       localJSONObject.put("card_pos ", paramInt2);
       localJSONObject.put("os", "1");
-      localJSONObject.put("rowkey", paramString);
+      localJSONObject.put("rowkey", paramString1);
       localJSONObject.put("feeds_type", paramInt3);
       localJSONObject.put("is_ugc_as_pgc", paramInt4);
-      paramContext = localJSONObject.toString();
-      return paramContext;
-    }
-    catch (Exception paramString)
-    {
-      do
+      if (TextUtils.isEmpty(paramString2)) {
+        localJSONObject.put("video_report_info", "");
+      }
+      for (;;)
       {
-        paramContext = str;
-      } while (!QLog.isColorLevel());
-      QLog.d("ReadinjoyReportUtils", 2, "getSmallVideoPolymericR5Str:" + paramString.toString());
+        return localJSONObject.toString();
+        localJSONObject.put("video_report_info", paramString2);
+      }
+      return "";
     }
-    return "";
+    catch (Exception paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadinjoyReportUtils", 2, "getSmallVideoPolymericR5Str:" + paramContext.toString());
+      }
+    }
   }
   
-  public static String a(Context paramContext, long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3)
+  public static String a(Context paramContext, long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, String paramString3)
   {
-    String str = "";
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("network ", GalleryReportedUtils.a(paramContext));
+      localJSONObject.put("network", GalleryReportedUtils.a(paramContext));
       localJSONObject.put("channel_id", paramInt2);
-      localJSONObject.put("version ", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
       localJSONObject.put("vid", paramString2);
       localJSONObject.put("rowkey", paramString1);
@@ -134,18 +146,22 @@ public class ReadinjoyReportUtils
         localJSONObject.put("r_session_position", paramContext.first);
         localJSONObject.put("r_session_ispush", paramContext.second);
       }
-      paramContext = localJSONObject.toString();
-    }
-    catch (Exception paramString1)
-    {
-      do
+      if (TextUtils.isEmpty(paramString3)) {
+        localJSONObject.put("video_report_info", "");
+      }
+      for (;;)
       {
-        paramContext = str;
-      } while (!QLog.isColorLevel());
-      QLog.d("ReadinjoyReportUtils", 2, "getSmallVideoWrapperPolymericR5Str:" + paramString1.toString());
+        return localJSONObject.toString();
+        localJSONObject.put("video_report_info", paramString3);
+      }
+      return "";
     }
-    return paramContext;
-    return "";
+    catch (Exception paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadinjoyReportUtils", 2, "getSmallVideoWrapperPolymericR5Str:" + paramContext.toString());
+      }
+    }
   }
   
   public static void a()
@@ -164,12 +180,18 @@ public class ReadinjoyReportUtils
   
   public static void a(int paramInt1, boolean paramBoolean, long paramLong, int paramInt2, int paramInt3)
   {
+    a(paramInt1, paramBoolean, paramLong, paramInt2, paramInt3, true);
+  }
+  
+  public static void a(int paramInt1, boolean paramBoolean1, long paramLong, int paramInt2, int paramInt3, boolean paramBoolean2)
+  {
     ArrayList localArrayList = new ArrayList();
     Object localObject1;
     Object localObject2;
     long l;
-    if (paramBoolean)
+    if (paramBoolean1)
     {
+      ReadinjoySPEventReport.ForeBackGround.a(4);
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(1);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("EnterType");
@@ -217,6 +239,9 @@ public class ReadinjoyReportUtils
       return;
       localObject1 = ReadInJoyUtils.d + "";
       break;
+      if (paramBoolean2) {
+        ReadinjoySPEventReport.ForeBackGround.a();
+      }
       localObject2 = "ExitKD";
       int i = 5;
       localObject1 = new oidb_cmd0x80a.AttributeList();
@@ -263,6 +288,27 @@ public class ReadinjoyReportUtils
         paramInt2 = i;
         localObject1 = localObject2;
       }
+    }
+  }
+  
+  public static void a(BaseArticleInfo paramBaseArticleInfo, long paramLong)
+  {
+    synchronized (b)
+    {
+      ReadinjoyReportUtils.ExposureReportItem localExposureReportItem = (ReadinjoyReportUtils.ExposureReportItem)b.get(Long.valueOf(paramBaseArticleInfo.mArticleID));
+      if (localExposureReportItem != null)
+      {
+        long l = paramLong;
+        if (localExposureReportItem.jdField_a_of_type_Long > paramLong) {
+          l = localExposureReportItem.jdField_a_of_type_Long;
+        }
+        localExposureReportItem.jdField_a_of_type_Long = l;
+        return;
+      }
+      localExposureReportItem = new ReadinjoyReportUtils.ExposureReportItem();
+      localExposureReportItem.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+      localExposureReportItem.jdField_a_of_type_Long = paramLong;
+      b.put(Long.valueOf(paramBaseArticleInfo.mArticleID), localExposureReportItem);
     }
   }
   
@@ -343,6 +389,59 @@ public class ReadinjoyReportUtils
       jdField_a_of_type_JavaLangString = String.valueOf(l1) + "_" + String.valueOf(l2);
       return;
       l1 = paramAppRuntime.getLongAccountUin();
+    }
+  }
+  
+  public static void b()
+  {
+    Object localObject2 = new HashMap();
+    for (;;)
+    {
+      ArticleInfo localArticleInfo;
+      synchronized (b)
+      {
+        ((Map)localObject2).putAll(b);
+        b.clear();
+        Iterator localIterator = ((Map)localObject2).values().iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        ReadinjoyReportUtils.ExposureReportItem localExposureReportItem = (ReadinjoyReportUtils.ExposureReportItem)localIterator.next();
+        localArticleInfo = (ArticleInfo)localExposureReportItem.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+        String str2 = ReadInJoyUtils.a(localArticleInfo);
+        ??? = localArticleInfo.innerUniqueID;
+        localObject2 = ???;
+        if (ReadInJoyUtils.e(localArticleInfo))
+        {
+          localObject2 = ???;
+          if (localArticleInfo.mGroupSubArticleList.size() >= 1) {
+            localObject2 = ((BaseArticleInfo)localArticleInfo.mGroupSubArticleList.get(0)).innerUniqueID;
+          }
+        }
+        String str3 = ReadInJoyUtils.c(localArticleInfo);
+        if (((ReadInJoyBaseAdapter.f(localArticleInfo)) || (ReadInJoyBaseAdapter.g(localArticleInfo)) || (ReadInJoyBaseAdapter.h(localArticleInfo)) || (ReadInJoyBaseAdapter.i(localArticleInfo))) && (!ReadInJoyBaseAdapter.m(localArticleInfo)))
+        {
+          ??? = String.valueOf(localArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Long);
+          localObject2 = ReadInJoyUtils.a(localArticleInfo.mAlgorithmID, ReadInJoyUtils.a(localArticleInfo), (int)localArticleInfo.mChannelID, NetworkState.isWifiConn(), str2, (String)localObject2, str3, 0, localArticleInfo);
+          try
+          {
+            ((JSONObject)localObject2).put("exposure_time", "" + localExposureReportItem.jdField_a_of_type_Long);
+            PublicAccountReportUtils.a(null, "CliOper", "", (String)???, "0X8009332", "0X8009332", 0, 0, Long.toString(localArticleInfo.mFeedId), localArticleInfo.mArticleID + "", localArticleInfo.mStrategyId + "", ((JSONObject)localObject2).toString(), false);
+          }
+          catch (JSONException localJSONException)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
+      String str1;
+      if ((ReadInJoyUtils.d(localArticleInfo)) && (localArticleInfo.mPolymericInfo.jdField_a_of_type_Int == 6)) {
+        str1 = localArticleInfo.mPolymericInfo.b + "";
+      } else if (ReadInJoyUtils.f(localArticleInfo)) {
+        str1 = "";
+      } else {
+        str1 = localArticleInfo.mSubscribeID;
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amdt;
+import amld;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import android.view.View.BaseSavedState;
 public class TCWDatePicker$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new amdt();
+  public static final Parcelable.Creator CREATOR = new amld();
   private final int a;
   private final int b;
   private final int c;

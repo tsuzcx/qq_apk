@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.Size;
-import java.util.Comparator;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.LocalSearchBar;
+import mqq.os.MqqHandler;
 
-public class xqa
-  implements Comparator
+public final class xqa
+  extends MqqHandler
 {
-  public xqa(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public int a(Size paramSize1, Size paramSize2)
+  public xqa(Looper paramLooper, View paramView)
   {
-    if ((paramSize1.a < paramSize2.a) || ((paramSize1.a == paramSize2.a) && (paramSize1.b < paramSize2.b))) {
-      return -1;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    if ((paramSize1.a != paramSize2.a) || (paramSize1.b != paramSize2.b)) {
-      return 1;
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      LocalSearchBar.a(this.a);
     }
-    return 0;
   }
 }
 

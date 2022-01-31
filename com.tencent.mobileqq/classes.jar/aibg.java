@@ -1,29 +1,54 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.sveffects.SLog;
-import com.tencent.ttpic.facedetect.FaceDetector;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.model.IContactSearchModel;
+import com.tencent.mobileqq.search.model.TroopBatchAddFrdsSearchModelMember;
+import com.tencent.mobileqq.search.searchengine.TroopBatchAddFrdsSearchEngine;
+import java.util.Comparator;
 
 public class aibg
-  implements Runnable
+  implements Comparator
 {
-  public aibg(QQFilterRenderManager paramQQFilterRenderManager, aibh paramaibh) {}
+  public aibg(TroopBatchAddFrdsSearchEngine paramTroopBatchAddFrdsSearchEngine) {}
   
-  public void run()
+  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
   {
-    long l1 = SystemClock.elapsedRealtimeNanos();
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a.doFaceDetect(this.jdField_a_of_type_Aibh.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Aibh.jdField_a_of_type_Int, this.jdField_a_of_type_Aibh.b);
+    int i = -1;
+    paramIContactSearchModel1 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel1;
+    paramIContactSearchModel2 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel2;
+    FriendsManager localFriendsManager = (FriendsManager)this.a.a.getManager(50);
+    boolean bool1 = localFriendsManager.b((String)paramIContactSearchModel1.a());
+    boolean bool2 = localFriendsManager.b((String)paramIContactSearchModel2.a());
+    if ((!bool1) && (!bool2))
+    {
+      bool1 = localFriendsManager.c((String)paramIContactSearchModel1.a());
+      bool2 = localFriendsManager.c((String)paramIContactSearchModel2.a());
+      if ((!bool1) && (!bool2)) {
+        return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
+      }
+      if (bool1 != bool2)
+      {
+        if (bool2) {
+          return -1;
+        }
+        return 1;
+      }
+      return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
     }
-    long l2 = SystemClock.elapsedRealtimeNanos();
-    long l3 = (l2 - l1) / 1000L;
-    if (SLog.a()) {
-      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doFaceDetect=" + (l2 - l1) / 1000L + "us]");
+    if (bool1 != bool2)
+    {
+      if (bool2) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
     }
+    return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aibg
  * JD-Core Version:    0.7.0.1
  */

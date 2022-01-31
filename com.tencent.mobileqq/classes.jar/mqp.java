@@ -1,35 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.TextData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
 
 public class mqp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mqp(ReadInJoyGlobalReporter paramReadInJoyGlobalReporter) {}
+  public mqp(WebFastAdapter paramWebFastAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (ReadInJoyGlobalReporter.b(this.a) == 1)
-      {
-        BaseApplicationImpl.getContext().unregisterReceiver(this.a.a);
-        ReadInJoyGlobalReporter.a(this.a, 0);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyGlobalReporter", 2, "unRegisterScreenListener");
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("ReadInJoyGlobalReporter", 2, "unRegisterScreenListener:" + localException.toString());
-    }
+    TextData localTextData = (TextData)WebFastAdapter.a(this.a).a;
+    ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(localTextData.a.toString());
   }
 }
 

@@ -1,28 +1,52 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotify;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotifyAd;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class oyb
-  implements View.OnClickListener
+  implements WXShareHelper.WXShareListener
 {
-  public oyb(TroopNewGuidePopWindow paramTroopNewGuidePopWindow, TroopFeedsDataManager.TroopNotifyAd paramTroopNotifyAd) {}
+  public oyb(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopTipsPopWindow", 2, "mTroopNotifyAdImage onClick--------");
+    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
+      return;
     }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd.b);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
-    ReportController.b(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "clk_ad", 0, 0, this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.b, String.valueOf(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.a), "8020205751015455", "");
+    String str1;
+    label53:
+    String str3;
+    int i;
+    if (this.a.jdField_c_of_type_Int == 2)
+    {
+      if (this.a.h != 2) {
+        break label151;
+      }
+      str1 = "qr_wechat";
+      str3 = this.a.jdField_c_of_type_JavaLangString;
+      i = this.a.a;
+      if (paramBaseResp.errCode != 0) {
+        break label157;
+      }
+    }
+    label151:
+    label157:
+    for (String str2 = "0";; str2 = "1")
+    {
+      TroopReportor.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, String.valueOf(i), str2 });
+      switch (paramBaseResp.errCode)
+      {
+      case -2: 
+      case -1: 
+      default: 
+        QRUtils.a(1, 2131435319);
+        return;
+        str1 = "qr_circle";
+        break label53;
+      }
+    }
+    QRUtils.a(2, 2131435318);
   }
 }
 

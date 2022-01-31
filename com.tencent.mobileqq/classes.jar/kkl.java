@@ -1,20 +1,25 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.addContactTroopView.TroopCardBanner;
+import android.view.View;
+import com.tencent.av.widget.stageview.StageEffectView;
+import java.util.Comparator;
 
-class kkl
-  implements Runnable
+public class kkl
+  implements Comparator
 {
-  kkl(kkk paramkkk) {}
+  public kkl(StageEffectView paramStageEffectView) {}
   
-  public void run()
+  public int a(Integer paramInteger1, Integer paramInteger2)
   {
-    int i = this.a.a.a.getCurrentItem();
-    this.a.a.a.setCurrentItem(i + 1);
+    paramInteger1 = (kkt)this.a.getChildAt(paramInteger1.intValue()).getTag();
+    paramInteger2 = (kkt)this.a.getChildAt(paramInteger2.intValue()).getTag();
+    if (paramInteger1.c < paramInteger2.c) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kkl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,28 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.jsp.EventApiPlugin;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class aeen
-  implements Runnable
+public class aeen
+  extends BroadcastReceiver
 {
-  aeen(aeem paramaeem, String paramString) {}
+  public aeen(EventApiPlugin paramEventApiPlugin) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Aeem.jdField_a_of_type_Int == 1)
+    if ((EventApiPlugin.a != null) && (EventApiPlugin.a.size() > 0))
     {
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label48;
+      Iterator localIterator = EventApiPlugin.a.iterator();
+      while (localIterator.hasNext())
+      {
+        EventApiPlugin localEventApiPlugin = (EventApiPlugin)((WeakReference)localIterator.next()).get();
+        if (localEventApiPlugin != null) {
+          localEventApiPlugin.a(paramContext, paramIntent);
+        }
       }
-      this.jdField_a_of_type_Aeem.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aeem.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      return;
-      label48:
-      this.jdField_a_of_type_Aeem.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(0);
     }
   }
 }

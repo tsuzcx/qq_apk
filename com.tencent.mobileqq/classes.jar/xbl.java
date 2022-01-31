@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import com.tencent.mobileqq.utils.LogTag;
 
 public class xbl
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xbl(SendHbActivity paramSendHbActivity) {}
+  public xbl(AlbumListAdapter paramAlbumListAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    SendHbActivity.a(this.a);
+    LogTag.a();
+    this.a.a();
+    LogTag.a("PEAK", "queryAllAlbumList");
   }
 }
 

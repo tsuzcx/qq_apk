@@ -1,23 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.av.gaudio.BaseGaInvite;
+import com.tencent.av.gaudio.BaseGaInvite.GetGaFaceRunnable.OnGetSink;
 
-class jki
-  implements DialogInterface.OnClickListener
+public class jki
+  implements BaseGaInvite.GetGaFaceRunnable.OnGetSink
 {
-  jki(jkh paramjkh) {}
+  public jki(BaseGaInvite paramBaseGaInvite) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RandomController", 2, " [random room owner] kick member fail because of network bad");
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
     }
-    this.a.a.c = false;
+    for (boolean bool = true;; bool = false)
+    {
+      if (this.a.jdField_b_of_type_AndroidWidgetTextView != null)
+      {
+        paramBitmap = BaseGaInvite.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.jdField_b_of_type_AndroidWidgetTextView, paramString, this.a.jdField_b_of_type_Int, String.valueOf(this.a.jdField_a_of_type_Long), this.a.jdField_a_of_type_ArrayOfLong);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramBitmap);
+      }
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jki
  * JD-Core Version:    0.7.0.1
  */

@@ -16,14 +16,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import lzo;
-import lzp;
+import mdb;
+import mdc;
 
 public class VideoUploadController
   extends FileUploadController
 {
   private long jdField_a_of_type_Long;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new lzp(this);
+  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new mdc(this);
   private TransferRequest jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest;
   private String jdField_a_of_type_JavaLangString;
   private long jdField_b_of_type_Long;
@@ -153,7 +153,7 @@ public class VideoUploadController
   public void c()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-    ThreadManager.executeOnFileThread(new lzo(this));
+    ThreadManager.executeOnFileThread(new mdb(this));
   }
 }
 

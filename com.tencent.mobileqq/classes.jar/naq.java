@@ -1,33 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.util.SwipeBackLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class naq
-  extends Job
+  extends Handler
 {
-  public naq(StoryVideoUploadManager paramStoryVideoUploadManager, String paramString, StoryVideoItem paramStoryVideoItem) {}
+  public naq(SwipeBackLayout paramSwipeBackLayout) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void handleMessage(Message paramMessage)
   {
-    paramJobContext = new DeleteStoryVideoEvent(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
+    switch (paramMessage.what)
     {
-      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
-      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-      if (paramJobContext.a == 0L) {
-        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
-      }
+    default: 
+      super.handleMessage(paramMessage);
     }
-    Dispatchers.get().dispatch(paramJobContext);
-    return null;
+    do
+    {
+      do
+      {
+        return;
+      } while (SwipeBackLayout.a(this.a));
+      SwipeBackLayout.a(this.a, true);
+    } while (!(SwipeBackLayout.a(this.a) instanceof Activity));
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
+    }
+    SwipeBackLayout.b(this.a, true);
+    ((Activity)SwipeBackLayout.a(this.a)).finish();
   }
 }
 

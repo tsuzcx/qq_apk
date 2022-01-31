@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class txz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public txz(TroopInfoActivity paramTroopInfoActivity) {}
+  public txz(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArrayList localArrayList = TroopInfoActivity.a(this.a, this.a.a);
-    if (localArrayList != null) {
-      ThreadManager.getUIHandler().post(new tya(this, localArrayList));
-    }
+    QQSettingCleanActivity.a(this.a);
+    ReportController.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 

@@ -1,43 +1,17 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BrowserAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.data.NotificationRecommendTroopItem;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public final class zmb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public zmb(AppInterface paramAppInterface, int paramInt, String paramString) {}
+  public zmb(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EntityManager localEntityManager;
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof BrowserAppInterface)) {
-      localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(null).createEntityManager();
-    }
-    for (;;)
-    {
-      if (localEntityManager == null) {}
-      for (;;)
-      {
-        return;
-        if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-          break label89;
-        }
-        localEntityManager = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getEntityManagerFactory().createEntityManager();
-        break;
-        if (this.jdField_a_of_type_Int == 2) {}
-        for (Entity localEntity = localEntityManager.a(NotificationRecommendTroopItem.class, this.jdField_a_of_type_JavaLangString); localEntity != null; localEntity = null)
-        {
-          localEntityManager.b(localEntity);
-          return;
-        }
-      }
-      label89:
-      localEntityManager = null;
-    }
+    paramDialogInterface.dismiss();
+    ReportController.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,59 +1,88 @@
-import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
-import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public final class aidv
-  implements INetEngine.INetEngineListener
+  implements Runnable
 {
-  public aidv(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString) {}
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onUpdateProgeress: totalLen=" + paramLong2 + " curOffset=" + paramLong1);
-    }
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    if (paramNetResp.jdField_a_of_type_Int == 0)
+    String str1 = ShortVideoArtResourceMgr.b();
+    String str2 = ShortVideoArtResourceMgr.a();
+    File[] arrayOfFile = new File(str1).listFiles();
+    int j;
+    Object localObject1;
+    int i;
+    Object localObject2;
+    Object localObject3;
+    int m;
+    if ((arrayOfFile != null) && (arrayOfFile.length > 2))
     {
-      paramNetResp = paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
-      if (new File(paramNetResp.c).exists())
+      j = 2147483647;
+      localObject1 = "unknown";
+      int k = 0;
+      i = 0;
+      if (k < arrayOfFile.length)
       {
-        str = RecentDanceConfigMgr.a(paramNetResp.c);
-        if ((str == null) || ("".equals(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5)))
+        if (arrayOfFile[k] == null) {}
+        for (;;)
         {
-          FileUtils.d(paramNetResp.c);
-          FileUtils.d(this.jdField_a_of_type_JavaLangString);
-          if (QLog.isColorLevel()) {
-            QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: item.icon_md5" + this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5 + " md5=" + str);
+          k += 1;
+          break;
+          localObject2 = arrayOfFile[k].getName();
+          if (!str2.equalsIgnoreCase((String)localObject2))
+          {
+            localObject3 = aies.a((String)localObject2);
+            m = ((aiet)localObject3).a();
+            if (m == 0) {
+              break label197;
+            }
+            VideoEnvironment.a("[executeClearArtFilterSoCache] errorCodec=" + m + " filename=" + (String)localObject2, null);
+            localObject2 = new File(str1 + (String)localObject2);
+            if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
+              ((File)localObject2).delete();
+            }
           }
         }
+        label197:
+        localObject3 = ((aiet)localObject3).b();
       }
-      while (!QLog.isColorLevel())
+    }
+    label419:
+    for (;;)
+    {
+      try
       {
-        String str;
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: check success");
+        m = Integer.parseInt((String)localObject3);
+        if (m >= j) {
+          break label419;
         }
-        FileUtils.c(paramNetResp.c, this.jdField_a_of_type_JavaLangString);
-        RecentDanceConfigMgr.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo, this.jdField_a_of_type_JavaLangString);
-        return;
+        j = m;
+        localObject1 = localObject2;
+        i += 1;
       }
-      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp[not exists]: mOutPath" + paramNetResp.c);
+      catch (NumberFormatException localNumberFormatException)
+      {
+        VideoEnvironment.a("[executeClearArtFilterSoCache] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
+      }
+      break;
+      VideoEnvironment.a("[executeClearArtFilterSoCache] deleteName=" + (String)localObject1 + "  validNumPendantCache=" + i + " leastVersion=" + j, null);
+      if (i >= 2)
+      {
+        localObject1 = new File(str1 + (String)localObject1);
+        if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
+        {
+          VideoEnvironment.a("[executeClearArtFilterSoCache] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
+          ((File)localObject1).delete();
+        }
+      }
+      if (new File(VideoFilterTools.c).exists()) {
+        FileUtils.a(VideoFilterTools.c);
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: resp.mResult=" + paramNetResp.jdField_a_of_type_Int);
-    }
-    FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
   }
 }
 

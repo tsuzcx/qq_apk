@@ -1,21 +1,15 @@
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.QuestionElement;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper;
+import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-public class oon
+class oon
   implements Runnable
 {
-  public oon(PollWidgetUtils.WidgetWrapper paramWidgetWrapper) {}
+  oon(oom paramoom) {}
   
   public void run()
   {
-    PollWidgetUtils.WidgetWrapper localWidgetWrapper = this.a;
-    if (!PollWidgetUtils.WidgetWrapper.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PollWidgetUtils.WidgetWrapper.a(localWidgetWrapper, bool);
-      this.a.a.a(PollWidgetUtils.WidgetWrapper.a(this.a));
-      return;
-    }
+    TakeVideoUtils.b(this.a.a.b, false);
+    this.a.a.d(4);
   }
 }
 

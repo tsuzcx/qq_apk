@@ -1,29 +1,22 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class szy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public szy(LoginInfoActivity paramLoginInfoActivity) {}
+  public szy(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
+    paramView = HongbaoShowerActivity.a(this.a);
+    if (!bool) {}
+    for (bool = true;; bool = false)
     {
-      if ((LoginInfoActivity.a(this.a) != null) && (LoginInfoActivity.a(this.a).isShowing()))
-      {
-        LoginInfoActivity.a(this.a).dismiss();
-        LoginInfoActivity.a(this.a).cancel();
-      }
-      LoginInfoActivity.a(this.a, null);
+      paramView.setChecked(bool);
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
     }
   }
 }

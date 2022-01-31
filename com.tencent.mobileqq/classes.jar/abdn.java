@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
 
-public class abdn
-  implements Runnable
+public final class abdn
+  implements ArkAppLocationManager.ArkGetLocationCallback
 {
-  public abdn(ShopScanActivity paramShopScanActivity) {}
+  public abdn(String paramString, Object paramObject, ArkMessageServerLogic.IPassiveSearchIntentByServerHandler paramIPassiveSearchIntentByServerHandler) {}
   
-  public void run()
+  public void a(String paramString, double paramDouble1, double paramDouble2)
   {
-    QQToast.a(this.a.getApplicationContext(), "当前网络不可用，请检查你的网络设置。", 1).b(this.a.getTitleBarHeight());
+    abdt localabdt = new abdt(null);
+    localabdt.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localabdt.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
+    localabdt.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler;
+    ThreadManager.post(new abdo(this, localabdt, paramString, paramDouble1, paramDouble2), 5, null, true);
   }
 }
 

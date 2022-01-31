@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBarData;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class wcz
   implements Runnable
 {
-  public wcz(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
+  public wcz(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    LightalkBlueTipsBarData localLightalkBlueTipsBarData = LightalkBlueTipsBarData.a();
-    if (localLightalkBlueTipsBarData != null)
-    {
-      this.a.a = localLightalkBlueTipsBarData.d;
-      this.a.b = localLightalkBlueTipsBarData.e;
-    }
+    PublicAccountChatPie.b(this.a);
   }
 }
 

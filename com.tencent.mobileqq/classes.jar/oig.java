@@ -1,30 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
 
-public class oig
-  implements Animator.AnimatorListener
+public final class oig
+  implements Parcelable.Creator
 {
-  public oig(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public EditRecordVideoSource a(Parcel paramParcel)
   {
-    this.a.a = false;
+    return new EditRecordVideoSource(paramParcel);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public EditRecordVideoSource[] a(int paramInt)
   {
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
+    return new EditRecordVideoSource[paramInt];
   }
 }
 

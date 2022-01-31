@@ -1,25 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import dov.com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import android.support.annotation.NonNull;
+import dov.com.qq.im.capture.text.MidNightTextItem;
+import dov.com.qq.im.capture.text.PinYinSpan.OnHanZiToPinYinListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class anws
-  implements Runnable
+  implements PinYinSpan.OnHanZiToPinYinListener
 {
-  public anws(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
+  public anws(MidNightTextItem paramMidNightTextItem) {}
   
-  public void run()
+  @NonNull
+  public String a(@NonNull String paramString)
   {
-    QQStoryTakeVideoCloseAnimationActivity localQQStoryTakeVideoCloseAnimationActivity = this.a;
-    Intent localIntent = new Intent(localQQStoryTakeVideoCloseAnimationActivity, SplashActivity.class);
-    localIntent.putExtra("fragment_id", 1);
-    localIntent.putExtra("main_tab_id", 6);
-    localIntent.putExtra("open_now_tab_fragment", true);
-    localIntent.putExtra("extra_from_share", true);
-    localIntent.putExtra("new_video_extra_info", "need_publish_animation");
-    localIntent.setFlags(335544320);
-    localQQStoryTakeVideoCloseAnimationActivity.startActivity(localIntent);
-    localQQStoryTakeVideoCloseAnimationActivity.overridePendingTransition(2131034125, 2131034126);
+    return MidNightTextItem.a().matcher(paramString).replaceAll(" ");
   }
 }
 

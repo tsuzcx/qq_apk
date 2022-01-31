@@ -1,25 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-public final class abub
-  implements Parcelable.Creator
+public class abub
+  implements View.OnClickListener
 {
-  public IPSiteModel.Gxzb a(Parcel paramParcel)
-  {
-    IPSiteModel.Gxzb localGxzb = new IPSiteModel.Gxzb();
-    localGxzb.appid = paramParcel.readInt();
-    localGxzb.appName = paramParcel.readString();
-    localGxzb.cover = paramParcel.readString();
-    localGxzb.feeType = paramParcel.readInt();
-    localGxzb.id = paramParcel.readString();
-    localGxzb.name = paramParcel.readString();
-    return localGxzb;
-  }
+  public abub(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public IPSiteModel.Gxzb[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPSiteModel.Gxzb[paramInt];
+    if ((this.a.a != null) && (this.a.a.isShowing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
   }
 }
 

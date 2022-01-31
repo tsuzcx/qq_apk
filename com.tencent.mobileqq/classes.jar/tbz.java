@@ -1,53 +1,30 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
-import com.tencent.mobileqq.fragment.NearbyBaseFragment;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.observer.QZoneObserver;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class tbz
-  implements ViewPager.OnPageChangeListener
+  extends QZoneObserver
 {
-  public tbz(NearbyActivity paramNearbyActivity) {}
+  public tbz(Leba paramLeba) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      NearbyUtils.a("onPageSelected", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.c), Integer.valueOf(paramInt) });
+      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
     }
-    Object localObject = this.a;
-    int i = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a;
-    ((NearbyActivity)localObject).b = i;
-    NearbyBaseFragment.b = i;
-    if ((this.a.h == 0L) && (this.a.b == 2))
+    if (QLog.isColorLevel())
     {
-      this.a.h = System.currentTimeMillis();
-      if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.h) });
+      if ((paramLong >>> 17 & 1L) != 0L) {
+        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
       }
+      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
     }
-    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.b == 1))
+    if (paramBoolean1)
     {
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_a_of_type_Long) });
+      Leba.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
       }
-    }
-    if (this.a.c != paramInt) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
-    }
-    if (this.a.c != -1) {
-      NearbyUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "switch_tab", this.a.c + 1);
-    }
-    localObject = this.a.a(paramInt);
-    if (localObject != null) {
-      ((NearbyBaseFragment)localObject).ar_();
     }
   }
 }

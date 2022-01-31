@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.model;
 
-import ahuc;
+import ahyt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -14,7 +14,6 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import pb.unite.search.DynamicContentRecommend.RspBody;
 import pb.unite.search.DynamicDiscovery.HotSearchItem;
 import pb.unite.search.DynamicDiscovery.Result;
 
@@ -42,18 +41,6 @@ public abstract class SearchEntryDataModel
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
     this.b = paramInt2;
-  }
-  
-  public static SearchEntryDataModel a(QQAppInterface paramQQAppInterface, DynamicContentRecommend.RspBody paramRspBody, int paramInt)
-  {
-    paramQQAppInterface = new ContentRecommendDataModel(paramQQAppInterface, 4, paramRspBody.toByteArray(), paramInt);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.b();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchEntryDataModel", 2, "convertPbDataToModel, recommendResult = " + paramQQAppInterface);
-    }
-    return paramQQAppInterface;
   }
   
   public static List a(QQAppInterface paramQQAppInterface, List paramList, int paramInt)
@@ -157,7 +144,7 @@ public abstract class SearchEntryDataModel
       }
       return;
     }
-    ThreadManager.post(new ahuc(this), 5, null, true);
+    ThreadManager.post(new ahyt(this), 5, null, true);
   }
 }
 

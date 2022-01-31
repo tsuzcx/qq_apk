@@ -1,14 +1,11 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.MyAdapter;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class vpm
-  implements Runnable
+  extends vpk
 {
-  public vpm(PhotoListPanel.MyAdapter paramMyAdapter, List paramList) {}
-  
-  public void run()
+  public vpm(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$MyAdapter.a(this.jdField_a_of_type_JavaUtilList);
+    super(paramQQAppInterface);
   }
 }
 

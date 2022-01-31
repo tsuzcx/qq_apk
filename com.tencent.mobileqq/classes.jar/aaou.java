@@ -1,35 +1,21 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aaou
-  extends SosoInterface.OnLocationListener
+  implements Runnable
 {
-  public aaou(ArkAppEventObserverManager paramArkAppEventObserverManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aaou(ARReport paramARReport, int paramInt, long paramLong) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onConsecutiveFailure errCode=" + paramInt1 + ", failCount=" + paramInt2);
-    }
-    if (paramInt2 < 3) {
-      return;
-    }
-    ArkAppCenter.a().post(new aaow(this));
-  }
-  
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + paramInt);
-    }
-    ArkAppCenter.a().post(new aaov(this, paramSosoLbsInfo, paramInt));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("ar_model", Build.MODEL);
+    localHashMap.put("result", this.jdField_a_of_type_Int + "");
+    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "AREngine_openCamera", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
 
-class snf
+public class snf
   implements Runnable
 {
-  snf(sne paramsne) {}
+  public snf(Conversation paramConversation) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Sne.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
-    this.jdField_a_of_type_Sne.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Sne.a.jdField_a_of_type_Sne);
-    FontSettingManager.a(this.jdField_a_of_type_Sne.a);
+    if ((Conversation.c(this.a)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.b()) && (SubAccountControll.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sub.uin.all"))) {
+      this.a.a(new sng(this));
+    }
   }
 }
 

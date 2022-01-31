@@ -53,11 +53,11 @@ public class UinListToUidListSegment
   
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent == null) || (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList == null))
+    if ((paramUpdateUserInfoEvent == null) || (paramUpdateUserInfoEvent.errorInfo.isFail()) || (paramUpdateUserInfoEvent.a == null))
     {
       IconLog.b(this.a, "convert user info fail, event=%s", paramUpdateUserInfoEvent);
       if (paramUpdateUserInfoEvent == null) {}
-      for (paramUpdateUserInfoEvent = new ErrorMessage(-1, "event is null");; paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
+      for (paramUpdateUserInfoEvent = new ErrorMessage(-1, "event is null");; paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.errorInfo)
       {
         notifyError(paramUpdateUserInfoEvent);
         return;
@@ -65,7 +65,7 @@ public class UinListToUidListSegment
     }
     IconLog.b(this.a, "convert user info success");
     ArrayList localArrayList = new ArrayList();
-    paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
+    paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.a.iterator();
     while (paramUpdateUserInfoEvent.hasNext()) {
       localArrayList.add(((QQUserUIItem)paramUpdateUserInfoEvent.next()).uid);
     }

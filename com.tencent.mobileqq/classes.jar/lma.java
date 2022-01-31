@@ -1,18 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class lma
-  implements Runnable
+  implements ArticleCommentModule.FetchCommentObserver
 {
-  public lma(KandianMergeManager paramKandianMergeManager, String paramString, long paramLong) {}
+  public lma(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo)
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), 1).edit();
-    localEditor.putString("kandian_push_msg_xml", this.jdField_a_of_type_JavaLangString).putLong("kandian_push_msg_time", this.jdField_a_of_type_Long);
-    ReadInJoyHelper.a(localEditor, true);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentListAdapter", 2, "fetch first level comment failed ,err code =" + paramInt + "err msg =" + paramString);
+    }
   }
 }
 

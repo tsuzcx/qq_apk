@@ -1,33 +1,43 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ar.RemoteArConfigManager;
+import com.tencent.mobileqq.ar.aidl.IArSoCallback.Stub;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aakf
-  implements Runnable
+public class aakf
+  extends IArSoCallback.Stub
 {
-  public aakf(ArrayList paramArrayList1, Resources paramResources, aakm paramaakm, ArrayList paramArrayList2) {}
+  public aakf(RemoteArConfigManager paramRemoteArConfigManager) {}
   
-  public void run()
+  public void a()
   {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      aakq localaakq = (aakq)localIterator.next();
-      if (localaakq.a(this.jdField_a_of_type_AndroidContentResResources))
-      {
-        localArrayList1.add(localaakq);
-      }
-      else
-      {
-        localaakq.c();
-        localArrayList2.add(localaakq);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
     }
-    ThreadManager.getUIHandler().post(new aakg(this, localArrayList1, localArrayList2));
+    Message localMessage = RemoteArConfigManager.a(this.a).obtainMessage();
+    localMessage.what = 100;
+    localMessage.sendToTarget();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
+    }
+    Message localMessage = RemoteArConfigManager.a(this.a).obtainMessage();
+    localMessage.what = 102;
+    localMessage.arg1 = paramInt;
+    localMessage.sendToTarget();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
+    }
+    Message localMessage = RemoteArConfigManager.a(this.a).obtainMessage();
+    localMessage.what = 101;
+    localMessage.sendToTarget();
   }
 }
 

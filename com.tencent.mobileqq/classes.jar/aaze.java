@@ -1,15 +1,33 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.config.POIModelConfig;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class aaze
-  implements Runnable
+  implements aazk
 {
-  aaze(aazd paramaazd, long paramLong, POIModelConfig paramPOIModelConfig) {}
+  aaze(aayw paramaayw, aazj paramaazj, String paramString, aazl paramaazl) {}
   
-  public void run()
+  public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Aazd.a.a.loadPoiModel(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArmapConfigPOIModelConfig);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.b }));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aazl.a(false);
+      return;
+      if (!aayw.b(paramArrayOfByte, this.jdField_a_of_type_Aazj.d))
+      {
+        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.b, this.jdField_a_of_type_Aazj.d }));
+      }
+      else
+      {
+        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString });
+        if (aayw.a(paramArrayOfByte, str)) {
+          break;
+        }
+        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.b, str }));
+      }
+    }
+    this.jdField_a_of_type_Aazl.a(true);
   }
 }
 

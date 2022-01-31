@@ -1,24 +1,37 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWServiceProxy;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class olm
-  extends Handler
+  implements EncodeVideoTask.ResultListener
 {
-  private RMWServiceProxy a;
+  public olm(EditWebVideoActivity paramEditWebVideoActivity) {}
   
-  public olm(RMWServiceProxy paramRMWServiceProxy)
+  public void a(int paramInt)
   {
-    super(Looper.getMainLooper());
-    this.a = paramRMWServiceProxy;
+    this.a.runOnUiThread(new oln(this));
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
   {
-    RMWServiceProxy localRMWServiceProxy = this.a;
-    if (localRMWServiceProxy != null) {
-      localRMWServiceProxy.a(Message.obtain(paramMessage));
+    int i = ((EditWebVideoPartManager)this.a.a).a;
+    EditWebVideoActivity.a(this.a, paramString1);
+    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
+    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
+    paramString1 = this.a;
+    if (i <= 0) {}
+    for (;;)
+    {
+      EditWebVideoActivity.a(paramString1, paramInt3);
+      EditWebVideoActivity.c(this.a, paramString2);
+      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
+      EditWebVideoActivity.b(this.a, paramInt1);
+      EditWebVideoActivity.c(this.a, paramInt2);
+      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
+      return;
+      paramInt3 = i;
     }
   }
 }

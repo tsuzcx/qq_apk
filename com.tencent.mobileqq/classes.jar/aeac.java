@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.hotpic.CircleProgressView;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
 
 public class aeac
-  extends GameCenterObserver
+  implements Runnable
 {
-  public aeac(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeac(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void run()
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
-    {
-      return;
-      if (LebaWithFeeds.b(this.a))
-      {
-        LebaGridShowManager.a().b(this.a.a);
-        this.a.a(new aead(this));
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba_with_feeds", 2, "onGameCenterMsgReceive, " + LebaWithFeeds.c(this.a));
-        return;
-        LebaShowListManager.a |= 0x2;
-      }
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.a.setProgress(this.a.jdField_a_of_type_ComTencentMobileqqHotpicVideoBaseItem.b());
+    if (this.a.jdField_b_of_type_Boolean) {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 100L);
     }
   }
 }

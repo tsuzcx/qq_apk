@@ -1,105 +1,57 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
-import com.tencent.mobileqq.statistics.StatisticHitRateCollector;
-import com.tencent.mobileqq.statistics.battery.BatteryStats;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class zdd
-  extends zeq
+class zdd
+  implements WXShareHelper.WXShareListener
 {
-  protected long a;
-  private String a;
-  protected long b;
+  zdd(zdc paramzdc) {}
   
-  protected void a()
+  public void a(BaseResp paramBaseResp)
   {
-    boolean bool2 = true;
-    super.a();
-    this.jdField_a_of_type_Long += 1L;
-    this.b += 1L;
-    MemoryManager.a().a(0, 0, this.c, this.d, 0L, 0L, 3);
-    if (this.d >= 3L)
+    if (paramBaseResp == null) {}
+    do
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label217;
-      }
-      bool1 = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", this.jdField_a_of_type_JavaLangString });
-      this.d = 0L;
-      if (!bool1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      }
-    }
-    if ((this.jdField_a_of_type_Long >= 15L) && (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_qzone_kill.name())))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null)
+      do
       {
-        bool1 = true;
-        label153:
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:qzone");
-        StatisticHitRateCollector.a().d(StatisticHitRateCollector.a());
-        this.jdField_a_of_type_Long = 0L;
-      }
-    }
-    else if (this.b >= GuardManager.d) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label227;
-      }
-    }
-    label217:
-    label227:
-    for (boolean bool1 = bool2;; bool1 = false)
+        return;
+      } while ((ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare) == null) || (!ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare).equals(paramBaseResp.transaction)));
+      QLog.i("ApolloGameShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
+    } while (paramBaseResp.errCode != 0);
+    paramBaseResp = this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare.a();
+    int j;
+    int i;
+    if (paramBaseResp == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:tool");
-      this.b = 0L;
+      j = -1;
+      if (1 != this.a.jdField_a_of_type_Int) {
+        break label159;
+      }
+      i = 3;
+    }
+    for (;;)
+    {
+      VipUtils.a(ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), "cmshow", "Apollo", "share_url_succeed", j, i, new String[] { Integer.toString(ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare)) });
       return;
-      bool1 = false;
+      j = ApolloUtil.b(paramBaseResp.a.jdField_a_of_type_Int);
       break;
-      bool1 = false;
-      break label153;
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    if (!"com.tencent.mobileqq".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
-      ArkMediaPlayer.a();
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    QQAppInterface.a().d();
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    CoreService.startCoreService(zeo.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
-  }
-  
-  protected void c(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void d(String paramString)
-  {
-    if ("com.tencent.mobileqq".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      ArkMediaPlayer.b();
+      label159:
+      if (2 == this.a.jdField_a_of_type_Int) {
+        i = 4;
+      } else {
+        i = -1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zdd
  * JD-Core Version:    0.7.0.1
  */

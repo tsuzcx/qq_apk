@@ -71,24 +71,24 @@ public class ContactBindedBuilder
     if ((paramView == null) || (!(paramView.getTag() instanceof ContactBindedBuilder.ContactBindedHolder)))
     {
       localContactBindedHolder = new ContactBindedBuilder.ContactBindedHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970497, null);
-      localContactBindedHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366832));
-      localContactBindedHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370864));
-      localContactBindedHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370866);
-      localContactBindedHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370869);
-      localContactBindedHolder.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131370872);
-      localContactBindedHolder.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131370875);
-      localContactBindedHolder.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131370878);
-      localContactBindedHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370867));
-      localContactBindedHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370870));
-      localContactBindedHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370873));
-      localContactBindedHolder.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370876));
-      localContactBindedHolder.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370879));
-      localContactBindedHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370868));
-      localContactBindedHolder.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370871));
-      localContactBindedHolder.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370874));
-      localContactBindedHolder.f = ((TextView)paramView.findViewById(2131370877));
-      localContactBindedHolder.g = ((TextView)paramView.findViewById(2131370880));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970509, null);
+      localContactBindedHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366830));
+      localContactBindedHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370851));
+      localContactBindedHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370853);
+      localContactBindedHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370856);
+      localContactBindedHolder.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131370859);
+      localContactBindedHolder.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131370862);
+      localContactBindedHolder.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131370865);
+      localContactBindedHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370854));
+      localContactBindedHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370857));
+      localContactBindedHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370860));
+      localContactBindedHolder.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370863));
+      localContactBindedHolder.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370866));
+      localContactBindedHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370855));
+      localContactBindedHolder.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370858));
+      localContactBindedHolder.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370861));
+      localContactBindedHolder.f = ((TextView)paramView.findViewById(2131370864));
+      localContactBindedHolder.g = ((TextView)paramView.findViewById(2131370867));
       paramView.setTag(localContactBindedHolder);
     }
     Object localObject1;
@@ -137,7 +137,7 @@ public class ContactBindedBuilder
             paramView.setContentDescription(String.format("还有%d位手机通讯录联系人也在使用QQ，点击查看", new Object[] { Integer.valueOf(j) }));
           }
           if (!this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage.a()) {
-            paramView.setBackgroundResource(2130838589);
+            paramView.setBackgroundResource(2130838595);
           }
           break;
         }
@@ -262,7 +262,7 @@ public class ContactBindedBuilder
         localContactBindedHolder.jdField_e_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqAdapterSystemMsgListAdapter.a(11, localContactBindedHolder.jdField_e_of_type_JavaLangString));
         localContactBindedHolder.g.setText(((PhoneContact)localObject1).name);
         break label508;
-        paramView.setBackgroundResource(2130838585);
+        paramView.setBackgroundResource(2130838591);
       }
     }
   }

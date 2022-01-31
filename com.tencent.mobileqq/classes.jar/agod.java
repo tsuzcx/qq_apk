@@ -1,25 +1,34 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-public class agod
-  extends RecyclerView.ItemDecoration
+public abstract class agod
 {
-  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
+  public long a;
+  public boolean a;
+  public String g = "0";
   
-  private agod(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  agod()
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  abstract void a(AppInterface paramAppInterface, Bundle paramBundle);
+  
+  public final void b(AppInterface paramAppInterface, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    this.jdField_a_of_type_Long = paramBundle.getLong("ar_recoglize_mask");
+    this.g = paramBundle.getString("H5Source");
+    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("ar_show_promotion_entry");
+    a(paramAppInterface, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agod
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flashchat;
 
-import adjy;
+import adse;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -11,29 +11,23 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.image.URLDrawable;
-import java.util.LinkedList;
 import java.util.List;
 
 public class FlashChatTextEffectView$FlashChatAdapter
   extends RecyclerView.Adapter
 {
   public OnHolderItemClickListener a;
-  List jdField_a_of_type_JavaUtilList = new LinkedList();
+  List jdField_a_of_type_JavaUtilList;
   
-  public FlashChatTextEffectView$FlashChatAdapter(FlashChatTextEffectView paramFlashChatTextEffectView, OnHolderItemClickListener paramOnHolderItemClickListener)
+  public adse a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
+    return new adse(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.getContext()).inflate(2130970354, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener, this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.jdField_a_of_type_Int);
   }
   
-  public adjy a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new adjy(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.getContext()).inflate(2130970339, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener, this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.jdField_a_of_type_Int);
-  }
-  
-  public void a(adjy paramadjy, int paramInt)
+  public void a(adse paramadse, int paramInt)
   {
     FlashChatPanel.PluginData localPluginData = (FlashChatPanel.PluginData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = (ViewGroup.MarginLayoutParams)paramadjy.itemView.getLayoutParams();
+    Object localObject = (ViewGroup.MarginLayoutParams)paramadse.itemView.getLayoutParams();
     ((ViewGroup.MarginLayoutParams)localObject).height = FlashChatPanel.f;
     ((ViewGroup.MarginLayoutParams)localObject).width = FlashChatPanel.e;
     if (paramInt % 3 == 0)
@@ -48,15 +42,15 @@ public class FlashChatTextEffectView$FlashChatAdapter
         ((ViewGroup.MarginLayoutParams)localObject).topMargin = 0;
         ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = FlashChatPanel.g;
         label82:
-        paramadjy.itemView.setBackgroundDrawable(new ColorDrawable(0));
-        paramadjy.itemView.setContentDescription("已选定 文字特效 " + localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.jdField_b_of_type_JavaLangString);
+        paramadse.itemView.setBackgroundDrawable(new ColorDrawable(0));
+        paramadse.itemView.setContentDescription("已选定 文字特效 " + localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.jdField_b_of_type_JavaLangString);
         if (localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.f == null) {}
       }
       try
       {
-        paramadjy.itemView.setBackgroundDrawable(new ColorDrawable(Color.parseColor(localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.f)));
-        paramadjy.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramadjy.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramadse.itemView.setBackgroundDrawable(new ColorDrawable(Color.parseColor(localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.f)));
+        paramadse.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramadse.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         if ((localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable))
         {
           localObject = (URLDrawable)localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -64,18 +58,18 @@ public class FlashChatTextEffectView$FlashChatAdapter
             ((URLDrawable)localObject).restartDownload();
           }
         }
-        paramadjy.jdField_a_of_type_AndroidWidgetTextView.setText(localPluginData.jdField_a_of_type_JavaLangString);
+        paramadse.jdField_a_of_type_AndroidWidgetTextView.setText(localPluginData.jdField_a_of_type_JavaLangString);
         if (localPluginData.jdField_a_of_type_Boolean)
         {
-          paramadjy.c.setVisibility(0);
+          paramadse.c.setVisibility(0);
           switch (localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.jdField_b_of_type_Int)
           {
           default: 
-            paramadjy.d.setImageDrawable(null);
-            paramadjy.jdField_a_of_type_Int = localPluginData.jdField_a_of_type_Int;
-            paramadjy.jdField_b_of_type_Int = localPluginData.jdField_b_of_type_Int;
-            paramadjy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem = localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem;
-            paramadjy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatPanel$PluginData = localPluginData;
+            paramadse.d.setImageDrawable(null);
+            paramadse.jdField_a_of_type_Int = localPluginData.jdField_a_of_type_Int;
+            paramadse.jdField_b_of_type_Int = localPluginData.jdField_b_of_type_Int;
+            paramadse.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem = localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem;
+            paramadse.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatPanel$PluginData = localPluginData;
             return;
             if (paramInt % 3 == 2)
             {
@@ -103,11 +97,11 @@ public class FlashChatTextEffectView$FlashChatAdapter
         {
           localException.printStackTrace();
           continue;
-          paramadjy.c.setVisibility(8);
+          paramadse.c.setVisibility(8);
           continue;
-          paramadjy.d.setImageResource(2130842526);
+          paramadse.d.setImageResource(2130842561);
           continue;
-          paramadjy.d.setImageResource(2130842530);
+          paramadse.d.setImageResource(2130842565);
         }
       }
     }

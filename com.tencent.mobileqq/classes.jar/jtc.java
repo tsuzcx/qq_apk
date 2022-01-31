@@ -1,25 +1,30 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
 
 public class jtc
-  implements QavInOutAnimation.QavOutAnimationListener
+  extends Handler
 {
-  public jtc(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
-  
-  public void a()
+  public jtc(CallbackWaitingActivityExt paramCallbackWaitingActivityExt, Looper paramLooper)
   {
-    this.a.l = true;
-    this.a.ah();
+    super(paramLooper);
   }
   
-  public void b()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.l = false;
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jtc
  * JD-Core Version:    0.7.0.1
  */

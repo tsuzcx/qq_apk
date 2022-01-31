@@ -1,18 +1,30 @@
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class kpb
-  implements Runnable
+  implements AsyncBack
 {
-  public kpb(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public kpb(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "saveEqqDetailInSubThread");
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
     }
-    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

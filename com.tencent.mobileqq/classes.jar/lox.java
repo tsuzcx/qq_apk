@@ -1,41 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyRequestParams.Request0x68bParams;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
 import java.util.List;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
-public class lox
+public final class lox
   implements Runnable
 {
-  public lox(ArticleInfoModule paramArticleInfoModule, ReadInJoyRequestParams.Request0x68bParams paramRequest0x68bParams) {}
+  public lox(long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_a_of_type_Boolean = true;
-    ToServiceMsg localToServiceMsg = ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams);
-    HashMap localHashMap;
-    if (localToServiceMsg != null)
+    if (ReadinjoySPEventReport.b(23))
     {
-      localToServiceMsg.getAttributes().put("channelID", new Integer(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_b_of_type_Int));
-      localToServiceMsg.getAttributes().put("isSingleHighLight", Boolean.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.g));
-      localToServiceMsg.getAttributes().put("clientSwithes", Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.f));
-      localHashMap = localToServiceMsg.getAttributes();
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_b_of_type_JavaUtilList == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_b_of_type_JavaUtilList.isEmpty())) {
-        break label176;
-      }
+      oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
+      localAttributeList.att_id.set(1);
+      localAttributeList.att_name.set("time");
+      localAttributeList.att_value.set(String.valueOf(this.a / 1000L));
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localAttributeList);
+      PublicAccountUtil.a(23, "LeaveQQ", localArrayList);
     }
-    label176:
-    for (boolean bool = true;; bool = false)
-    {
-      localHashMap.put("isRedRefreshReq", Boolean.valueOf(bool));
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_b_of_type_Int == 0) && (ReadInJoyUtils.a())) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(-1L, 1, 0);
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(localToServiceMsg);
-      return;
-    }
+    ThreadManager.executeOnSubThread(new loy(this));
   }
 }
 

@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import aoax;
+import aojs;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import dov.com.qq.im.capture.data.IFaceSelectedListener;
 import dov.com.qq.im.capture.util.PasterUtil;
 import dov.com.qq.im.capture.util.PasterUtil.Position;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage.Item;
 import java.util.List;
@@ -19,9 +20,9 @@ public class LocationFaceAdapter
   extends BaseFaceListAdapter
   implements View.OnClickListener
 {
-  public LocationFaceAdapter(Context paramContext)
+  public LocationFaceAdapter(Context paramContext, FaceListPage paramFaceListPage)
   {
-    super(paramContext);
+    super(paramContext, paramFaceListPage);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -30,19 +31,19 @@ public class LocationFaceAdapter
       return paramView;
     }
     if (paramView == null) {}
-    for (paramView = new aoax(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((LocationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((LocationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (aoax)paramView)
+    for (paramView = new aojs(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((LocationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((LocationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (aojs)paramView)
     {
-      paramView.a((LocationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount());
+      paramView.a((LocationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount(), a());
       return paramView;
     }
   }
   
   public void onClick(View paramView)
   {
-    Object localObject1 = (ImageView)paramView.findViewById(2131364387);
-    int i = ((Integer)((ImageView)localObject1).getTag(2131362359)).intValue();
+    Object localObject1 = (ImageView)paramView.findViewById(2131364412);
+    int i = ((Integer)((ImageView)localObject1).getTag(2131362362)).intValue();
     paramView = (LocationFacePackage.Item)((LocationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).jdField_a_of_type_JavaUtilList.get(i);
-    Object localObject2 = (Boolean)((ImageView)localObject1).getTag(2131362361);
+    Object localObject2 = (Boolean)((ImageView)localObject1).getTag(2131362364);
     if ((localObject2 != null) && (((Boolean)localObject2).booleanValue()))
     {
       paramView.a = ((ImageView)localObject1).getDrawable();

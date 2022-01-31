@@ -1,12 +1,15 @@
-import com.tencent.component.network.utils.FileUtils.FileComparator;
-import java.io.File;
+import android.graphics.drawable.Drawable;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
 
-public final class pky
-  implements FileUtils.FileComparator
+class pky
+  implements Runnable
 {
-  public boolean a(File paramFile1, File paramFile2)
+  pky(pkx parampkx, Drawable paramDrawable) {}
+  
+  public void run()
   {
-    return (paramFile1.length() == paramFile2.length()) && (paramFile1.lastModified() == paramFile2.lastModified());
+    this.jdField_a_of_type_Pkx.a.listener.onImageLoaded(this.jdField_a_of_type_Pkx.a.url, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Pkx.a.options);
   }
 }
 

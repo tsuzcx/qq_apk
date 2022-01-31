@@ -1,24 +1,38 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.troop.utils.TroopGiftManager.ShowPicPrice;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import java.util.List;
 
 public class akel
-  implements View.OnClickListener
+  extends TroopGiftCallback
 {
-  public akel(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  public akel(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, String paramString, List paramList)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    if (this.a.isFinishing()) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    paramString = (TroopGiftManager.ShowPicPrice)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
+    if ((paramString == null) || (paramString.jdField_a_of_type_Int == 0)) {}
+    for (paramInt2 = 30; paramInt1 >= paramInt2; paramInt2 = paramString.jdField_a_of_type_Int)
+    {
+      this.a.a(this.a.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    this.a.c();
+    DialogUtil.a(this.a, 230, this.a.getResources().getString(2131430758), this.a.getResources().getString(2131430759), this.a.getResources().getString(2131433029), this.a.getResources().getString(2131430760), new akem(this), new aken(this)).show();
+    TroopPicEffectsController.a("gold_bean", "gap");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akel
  * JD-Core Version:    0.7.0.1
  */

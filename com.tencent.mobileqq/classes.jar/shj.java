@@ -1,18 +1,36 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.biz.helper.TroopCardAppInfoHelper.IGetAppInfoCB;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.model.TroopInfoManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class shj
-  implements Runnable
+  implements TroopCardAppInfoHelper.IGetAppInfoCB
 {
-  public shj(Conversation paramConversation, ApolloSurfaceView paramApolloSurfaceView, int paramInt1, int paramInt2, Intent paramIntent) {}
+  public shj(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(ArrayList paramArrayList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
-    }
+    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    do
+    {
+      return;
+      ArrayList localArrayList = new ArrayList();
+      TroopInfoManager localTroopInfoManager = (TroopInfoManager)this.a.app.getManager(36);
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
+        localTroopInfoManager.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
+        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
+      }
+      localTroopInfoManager.a(this.a.a.troopUin, localArrayList);
+    } while (this.a.k);
   }
 }
 

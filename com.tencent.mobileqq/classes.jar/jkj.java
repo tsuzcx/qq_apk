@@ -1,46 +1,31 @@
-import android.content.res.Resources;
+import android.annotation.SuppressLint;
 import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
-import com.tencent.av.utils.PopupDialog;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.av.gaudio.BaseGaInvite;
 
+@SuppressLint({"HandlerLeak"})
 public class jkj
-  implements Runnable
+  extends Handler
 {
-  public jkj(RandomController paramRandomController) {}
+  public jkj(BaseGaInvite paramBaseGaInvite) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    RandomController.a(this.a).a().removeCallbacks(RandomController.d(this.a));
-    if (!RandomController.a(this.a).a()) {
-      PopupDialog.a(RandomController.a(this.a).getApp().getApplicationContext(), RandomController.a(this.a).getApp().getResources().getString(2131429371), RandomController.a(this.a, RandomController.d(this.a)));
-    }
-    do
+    switch (paramMessage.what)
     {
-      while (RandomController.d(this.a) > 60)
-      {
-        RandomController.a(this.a).a().postDelayed(RandomController.d(this.a), 60000L);
-        RandomController.a(this.a, RandomController.d(this.a) - 60);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("RandomController", 2, "background mRemainBlockTime : " + RandomController.d(this.a));
-        }
-      }
-      if ((RandomController.d(this.a) <= 60) && (RandomController.d(this.a) > 0))
-      {
-        RandomController.a(this.a).a().postDelayed(RandomController.d(this.a), 10000L);
-        RandomController.a(this.a, RandomController.d(this.a) - 10);
-        return;
-      }
-    } while (RandomController.d(this.a) > 0);
-    this.a.c();
+    default: 
+      return;
+    case 0: 
+      this.a.b();
+      return;
+    }
+    this.a.a("Msg");
+    super.sendEmptyMessageDelayed(1, 2000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jkj
  * JD-Core Version:    0.7.0.1
  */

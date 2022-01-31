@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.portal;
 
+import agqg;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -11,6 +14,8 @@ public class BreathEffectView
   extends ImageView
   implements Animation.AnimationListener
 {
+  ObjectAnimator a;
+  
   public BreathEffectView(Context paramContext)
   {
     super(paramContext);
@@ -23,26 +28,33 @@ public class BreathEffectView
   
   public void a()
   {
+    h();
+    setImageResource(2130842618);
     e();
-    setImageResource(2130842583);
-    d();
   }
   
   public void b()
   {
+    h();
+    setImageResource(2130842290);
     e();
-    setImageResource(2130842255);
-    d();
   }
   
   public void c()
   {
+    h();
+    setImageResource(2130842619);
     e();
-    setImageResource(2130842584);
-    d();
   }
   
   public void d()
+  {
+    h();
+    setImageResource(2130843601);
+    f();
+  }
+  
+  public void e()
   {
     setVisibility(0);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.2F, 1.0F);
@@ -53,7 +65,28 @@ public class BreathEffectView
     startAnimation(localAlphaAnimation);
   }
   
-  public void e()
+  public void f()
+  {
+    setVisibility(0);
+    this.a = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F, 0.5F, 1.0F, 0.0F });
+    this.a.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.a.addUpdateListener(new agqg(this));
+    this.a.setDuration(4000L);
+    this.a.setRepeatCount(0);
+    this.a.start();
+  }
+  
+  public void g()
+  {
+    if (this.a != null)
+    {
+      this.a.end();
+      this.a.cancel();
+      this.a = null;
+    }
+  }
+  
+  public void h()
   {
     Animation localAnimation = getAnimation();
     if (localAnimation != null)

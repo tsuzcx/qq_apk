@@ -1,28 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
 
 public class akco
-  implements Runnable
+  implements FrameSprite.OnFrameEndListener
 {
-  public akco(JumpAction paramJumpAction) {}
+  public akco(TroopGiftAnimationController paramTroopGiftAnimationController) {}
   
-  public void run()
+  public void a()
   {
-    if (JumpAction.a(this.a) == null) {}
-    String str;
-    do
-    {
-      return;
-      str = JumpAction.a(this.a).getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.a(str, System.currentTimeMillis());
+    this.a.a.post(new akcp(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akco
  * JD-Core Version:    0.7.0.1
  */

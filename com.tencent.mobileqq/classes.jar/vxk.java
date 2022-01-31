@@ -1,37 +1,53 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack.Stub;
+import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
+import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.widget.XPanelContainer;
+import java.lang.ref.WeakReference;
 
 public class vxk
-  implements Runnable
+  extends ICompressionCallBack.Stub
 {
-  public vxk(PublicAccountChatPie paramPublicAccountChatPie, AccountDetail paramAccountDetail) {}
+  final String jdField_a_of_type_JavaLangString = DeviceMsgChatPie.class.getSimpleName();
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  public vxk(DeviceMsgChatPie paramDeviceMsgChatPie)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDeviceMsgChatPie);
+  }
+  
+  public void a(CompressInfo paramCompressInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "updateUnfollowInfo");
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.V)
+  }
+  
+  public void b(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void c(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+    DeviceMsgChatPie localDeviceMsgChatPie = (DeviceMsgChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localDeviceMsgChatPie == null)
     {
-      int i = PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.accountFlag);
-      if ((i == -3) || (i == -4)) {
-        PublicAccountManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+      if (QLog.isColorLevel()) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
       }
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.b(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
     }
-    PublicAccountChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    PublicAccountChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie).post(new vxl(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
+    localDeviceMsgChatPie.e(paramCompressInfo.e);
+    DeviceMsgChatPie.a(localDeviceMsgChatPie).a();
   }
 }
 

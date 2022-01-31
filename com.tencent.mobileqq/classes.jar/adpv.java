@@ -1,27 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.content.Context;
+import android.os.AsyncTask;
+import com.dataline.core.DirectForwarder;
+import com.dataline.core.DirectForwarder.CallBack;
 
-public class adpv
-  implements ValueAnimator.AnimatorUpdateListener
+public final class adpv
+  extends DirectForwarder.CallBack
 {
-  public adpv(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
+  public adpv(Context paramContext) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(AsyncTask paramAsyncTask, int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
+    try
+    {
+      DirectForwarder.a(this.a, paramAsyncTask, paramInt, new adpw(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
     }
-    XPanelContainer.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adpv
  * JD-Core Version:    0.7.0.1
  */

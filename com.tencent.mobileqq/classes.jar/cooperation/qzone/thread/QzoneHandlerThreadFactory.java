@@ -1,5 +1,6 @@
 package cooperation.qzone.thread;
 
+import android.os.Handler;
 import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -19,6 +20,8 @@ public class QzoneHandlerThreadFactory
   public static final String TAG = "QzoneThread";
   public static final String VideoThread = "Video_HandlerThread";
   static Map mHandlerThreadMap = new HashMap();
+  public static Handler mMainHandler;
+  public static final Object mMainHandlerLock = new Object();
   
   public static QzoneBaseThread getHandlerThread(String paramString)
   {
@@ -63,6 +66,18 @@ public class QzoneHandlerThreadFactory
   public static Looper getHandlerThreadLooper(String paramString)
   {
     return getHandlerThread(paramString).getLooper();
+  }
+  
+  public static Handler getMainHandler()
+  {
+    synchronized (mMainHandlerLock)
+    {
+      if (mMainHandler == null) {
+        mMainHandler = new Handler(Looper.getMainLooper());
+      }
+      Handler localHandler = mMainHandler;
+      return localHandler;
+    }
   }
   
   private static int getPriority(String paramString)

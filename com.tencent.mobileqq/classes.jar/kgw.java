@@ -1,30 +1,22 @@
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.av.utils.SensorReport;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
 
-public final class kgw
-  implements Runnable
+public class kgw
+  implements MenuItem.OnMenuItemClickListener
 {
-  public kgw(Context paramContext, IntentFilter paramIntentFilter) {}
+  public kgw(AVRedBagMgr.TestFlag paramTestFlag) {}
   
-  public void run()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    try
-    {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(SensorReport.a(), this.jdField_a_of_type_AndroidContentIntentFilter);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SensorReport", 2, "registonUserActionReceiver e = " + localException);
-    }
+    AVActivity.b("打印线程");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgw
  * JD-Core Version:    0.7.0.1
  */

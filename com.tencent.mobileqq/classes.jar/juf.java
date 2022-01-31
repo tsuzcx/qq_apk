@@ -1,26 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.av.gaudio.AVPhoneUserInfo;
-import com.tencent.av.ui.GAudioMemberListCtrl;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.utils.TraeHelper;
 
-public final class juf
+public class juf
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  public juf(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  private juf(GAudioMemberListCtrl paramGAudioMemberListCtrl) {}
+  public void run()
+  {
+    TraeHelper.a().a("DoubleVideoCtrlUI.onResumeVideo", this.a.a, 2131230736, null, 0, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     juf
  * JD-Core Version:    0.7.0.1
  */

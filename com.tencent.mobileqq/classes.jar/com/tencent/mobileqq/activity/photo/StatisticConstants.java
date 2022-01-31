@@ -969,7 +969,7 @@ public class StatisticConstants
               paramInt2 = i;
               int m = i2;
               int n = i1;
-              if (paramString.contains(AppConstants.aT))
+              if (paramString.contains(AppConstants.aU))
               {
                 paramString = paramString.split("#");
                 paramInt2 = i;

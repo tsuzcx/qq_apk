@@ -9,7 +9,7 @@ public abstract interface CommentsView
   
   public abstract void a(Comments.Comment paramComment);
   
-  public abstract void a(Comments.Comment paramComment, int paramInt);
+  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
   
   public abstract void a(Comments paramComments);
   

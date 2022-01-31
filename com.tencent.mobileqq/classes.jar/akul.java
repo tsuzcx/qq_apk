@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.widget.GuideViewBuilder;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 
 public class akul
-  implements View.OnClickListener
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public akul(GuideViewBuilder paramGuideViewBuilder, boolean paramBoolean) {}
+  public akul(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
   
-  public void onClick(View paramView)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder.a.dismiss();
-    }
+    this.a.b(paramInteger.intValue());
   }
 }
 

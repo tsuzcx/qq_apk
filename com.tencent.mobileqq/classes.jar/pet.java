@@ -1,19 +1,52 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import com.tencent.biz.ui.IPullRefreshHeader;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class pet
-  implements Runnable
+  implements OverScrollViewListener
 {
-  public pet(BaseApplicationImpl paramBaseApplicationImpl, Intent paramIntent) {}
+  public pet(RefreshView paramRefreshView) {}
   
-  public void run()
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.doSendBroadcast(this.jdField_a_of_type_AndroidContentIntent);
+    if (this.a.jdField_a_of_type_Int == 2)
+    {
+      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.aa_();
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.c(0L);
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2)
+    {
+      RefreshView.a(this.a, false);
+      this.a.b(RefreshView.a(this.a));
+      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a(0L);
+      this.a.jdField_a_of_type_Int = 2;
+      RefreshView.a(this.a);
+    }
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2) {
+      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.b(0L);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pet
  * JD-Core Version:    0.7.0.1
  */

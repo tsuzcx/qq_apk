@@ -1,4 +1,17 @@
-// INTERNAL ERROR //
+import com.tencent.biz.pubaccount.PublicAccountUnfollowTask;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+
+public class lbn
+  implements Runnable
+{
+  public lbn(PublicAccountUnfollowTask paramPublicAccountUnfollowTask) {}
+  
+  public void run()
+  {
+    PublicAccountUtil.a(PublicAccountUnfollowTask.a(this.a), PublicAccountUnfollowTask.a(this.a), PublicAccountUnfollowTask.a(this.a), false, this.a);
+  }
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     lbn

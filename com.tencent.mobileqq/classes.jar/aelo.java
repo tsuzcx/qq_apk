@@ -1,14 +1,31 @@
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
+import android.util.Log;
+import com.tencent.mobileqq.lyric.widget.LyricViewScroll;
+import com.tencent.mobileqq.lyric.widget.LyricViewScroll.LyricViewScrollListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class aelo
-  implements Runnable
+  extends TimerTask
 {
-  public aelo(NearbyAppInterface paramNearbyAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9) {}
+  int jdField_a_of_type_Int;
+  
+  public aelo(LyricViewScroll paramLyricViewScroll) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.f, this.g, this.h, this.i);
+    Log.v("LyricViewScroll", "fling detect running");
+    if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.getScrollY())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      LyricViewScroll.a(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll).b(this.jdField_a_of_type_Int);
+      Log.d("LyricViewScroll", "fling stop");
+      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.jdField_a_of_type_JavaUtilTimer.cancel();
+      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.jdField_a_of_type_Boolean = false;
+      LyricViewScroll.a(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll, false);
+      return;
+    }
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.getScrollY();
+    LyricViewScroll.a(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll).a(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,28 +1,19 @@
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.ar.ARMusicController;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaed
-  implements Runnable
+  implements MediaPlayer.OnErrorListener
 {
-  public aaed(ScanningSurfaceView paramScanningSurfaceView) {}
+  public aaed(ARMusicController paramARMusicController) {}
   
-  public void run()
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    while (ScanningSurfaceView.a(this.a))
-    {
-      long l = System.currentTimeMillis();
-      ScanningSurfaceView.a(this.a);
-      try
-      {
-        Thread.sleep(Math.max(0L, ScanningSurfaceView.a(this.a) - (System.currentTimeMillis() - l)));
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
     }
-    if (ScanningSurfaceView.b(this.a)) {
-      ScanningSurfaceView.a(this.a);
-    }
+    return false;
   }
 }
 

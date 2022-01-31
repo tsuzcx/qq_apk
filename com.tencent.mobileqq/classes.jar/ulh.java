@@ -1,43 +1,46 @@
 import android.graphics.Bitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.activity.UpgradeTipsDialog;
+import com.tencent.mobileqq.jsbridge.JsBridge;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-class ulh
-  implements PreloadManager.OnGetPathListener
+public class ulh
+  extends WebViewClient
 {
-  ulh(ulg paramulg) {}
+  public ulh(UpgradeTipsDialog paramUpgradeTipsDialog) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
-    {
-      Object localObject = paramPathResult + File.separator;
-      localObject = (String)localObject + "aio.png";
-      localObject = SafeBitmapFactory.decodeFile((String)localObject, ImageUtil.a((String)localObject, (int)(CustomizeStrategyFactory.a * 47.0F + 0.5D)));
-      if (localObject != null) {
-        this.a.a.icon = ((Bitmap)localObject);
-      }
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "VOICE_LOCK_RES info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onPageFinished: " + paramString);
     }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onPageStarted: " + paramString);
     }
-    CustomizeStrategyFactory.a().a(this.a.a);
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "onReceivedError: " + paramInt + ", " + paramString1);
+    }
+    ReportController.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
+    while (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
+      return true;
+    }
+    this.a.a.loadUrl(paramString);
+    return true;
   }
 }
 

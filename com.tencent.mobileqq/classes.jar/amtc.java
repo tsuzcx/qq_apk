@@ -1,18 +1,51 @@
-import com.tencent.component.network.downloader.DownloadRequest;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.QzonePreDownloadManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.portal.PortalUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.photoplus.PhotoPlusManager;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class amtc
+  extends DownloadListener
 {
-  public DownloadRequest a;
-  public Downloader.DownloadListener a;
-  public String a;
-  public boolean a;
-  public Downloader.DownloadListener b;
-  public String b;
-  public boolean b;
+  public amtc(PhotoPlusManager paramPhotoPlusManager, String paramString1, String paramString2, String paramString3) {}
   
-  public amtc(QzonePreDownloadManager paramQzonePreDownloadManager) {}
+  public void onCancel(DownloadTask paramDownloadTask)
+  {
+    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+    if (paramDownloadTask.a() == 3)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPlusManager", 2, "[onDone] download finished " + this.b);
+      }
+      if (TextUtils.isEmpty(this.c)) {
+        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      paramDownloadTask = PortalUtils.a(this.jdField_a_of_type_JavaLangString);
+      if (this.c.equalsIgnoreCase(paramDownloadTask))
+      {
+        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPlusManager", 2, "[onDone] checkMd5 failed: " + this.jdField_a_of_type_JavaLangString);
+      }
+      FileUtils.d(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    QLog.d("PhotoPlusManager", 2, "[onDone] downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
+  }
 }
 
 

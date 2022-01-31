@@ -1,37 +1,23 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.io.File;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 class vka
   implements Runnable
 {
-  vka(vjz paramvjz) {}
+  vka(vjz paramvjz, int paramInt) {}
   
   public void run()
   {
-    Object localObject = (List)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.b.get(this.a.b);
+    Object localObject = (ArrayList)this.jdField_a_of_type_Vjz.a.a.get(Integer.valueOf(this.jdField_a_of_type_Int));
     if (localObject != null)
     {
-      localObject = ((List)localObject).iterator();
+      localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((Runnable)((Iterator)localObject).next()).run();
+        ((URLDrawable)((Iterator)localObject).next()).restartDownload();
       }
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.b.remove(this.a.b);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131362148).equals(this.a.jdField_a_of_type_JavaLangString))
-    {
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(this.a.jdField_a_of_type_Int);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(this.a.jdField_a_of_type_Int);
-      localObject = URLDrawable.getDrawable(new File(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int)), (URLDrawable.URLDrawableOptions)localObject);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable((Drawable)localObject);
     }
   }
 }

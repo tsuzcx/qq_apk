@@ -1,17 +1,17 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.dingdong.data.OfficeCenterSharedPref;
 
 public class tpw
-  implements View.OnCreateContextMenuListener
+  implements Runnable
 {
-  public tpw(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public tpw(QQSettingMe paramQQSettingMe) {}
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  public void run()
   {
-    paramContextMenu.clear();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    OfficeCenterSharedPref.a().b("officecenter_red_point_flag_" + localQQAppInterface.getLongAccountUin(), false);
   }
 }
 

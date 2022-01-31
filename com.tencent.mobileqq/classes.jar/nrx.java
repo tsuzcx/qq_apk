@@ -1,46 +1,30 @@
-import android.graphics.Bitmap;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlListToBitmapListSegment;
-import java.util.Arrays;
+import android.app.Dialog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class nrx
-  implements Handler.Callback
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private nrx(UrlListToBitmapListSegment paramUrlListToBitmapListSegment) {}
+  public nrx(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    int k = 0;
-    switch (paramMessage.what)
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
     {
-    default: 
-      return false;
-    case 1: 
-      UrlListToBitmapListSegment.a(this.a, new Error((Throwable)paramMessage.obj));
-      return true;
-    }
-    paramMessage = (Bitmap[])paramMessage.obj;
-    int m = paramMessage.length;
-    int i = 0;
-    for (;;)
-    {
-      int j = k;
-      if (i < m)
-      {
-        if (paramMessage[i] == null) {
-          j = 1;
-        }
+      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
+      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
+      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
+      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.b == 0)) {
+        this.a.a.dismiss();
       }
-      else
-      {
-        if (j == 0) {
-          UrlListToBitmapListSegment.a(this.a, Arrays.asList(paramMessage));
-        }
-        return true;
-      }
-      i += 1;
     }
+    return false;
   }
 }
 

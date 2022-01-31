@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
-import cooperation.qzone.webviewplugin.QZoneGiftFullScreenJsPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.font.FontManager;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class anbn
-  implements QzoneGiftFullScreenViewController.GiftFullScreenPlayListener
+  implements EIPCResultCallback
 {
-  public anbn(QZoneGiftFullScreenJsPlugin paramQZoneGiftFullScreenJsPlugin, String paramString) {}
+  public anbn(FontManager paramFontManager) {}
   
-  public void a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneGiftFullScreenJsPlugin.a != null)
-    {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
-      this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneGiftFullScreenJsPlugin.a.callJs(str);
+    if (QLog.isColorLevel()) {
+      QLog.d("FontManager", 2, "startFontSoDownload download so success");
     }
   }
 }

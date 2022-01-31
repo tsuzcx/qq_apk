@@ -1,13 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeCommonPgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class lww
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lww(ReadInJoyRefreshManager paramReadInJoyRefreshManager, int paramInt, String paramString) {}
+  public lww(FeedItemCellTypeCommonPgcVideo paramFeedItemCellTypeCommonPgcVideo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyRefreshManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    ReadInJoyBaseAdapter.OnSubRegionClickListener localOnSubRegionClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (localOnSubRegionClickListener != null) {
+      localOnSubRegionClickListener.a(paramView, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
   }
 }
 

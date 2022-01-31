@@ -1,18 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView.HorizonListViewTouchListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
-public final class rwq
-  implements DialogInterface.OnClickListener
+public class rwq
+  implements EmotionKeywordHorizonListView.HorizonListViewTouchListener
 {
-  public rwq(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public rwq(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (this.a != null) {
-      this.a.a();
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(67);
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+      return;
     }
-    paramDialogInterface.dismiss();
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, 5000L);
   }
 }
 

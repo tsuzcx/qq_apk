@@ -1,29 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView.VideoInfoListener;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnCompletionListener;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class aeyj
-  implements IVideoView.OnCompletionListener
+  implements Runnable
 {
-  public aeyj(VideoPlayerView paramVideoPlayerView) {}
+  public aeyj(NearbyGuideActivity paramNearbyGuideActivity, String paramString) {}
   
-  public void a(IVideoView paramIVideoView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.a();
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-    paramIVideoView = VideoPlayerView.a(this.a).a;
-    if (this.a.c()) {}
-    for (int i = 1;; i = 2)
-    {
-      QualityReporter.a(paramIVideoView, i);
-      return;
-    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.app, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
   }
 }
 

@@ -1,23 +1,35 @@
+import android.util.Pair;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import java.util.Calendar;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class zoh
   implements Runnable
 {
-  public zoh(TroopHandler paramTroopHandler, MessageForReplyText paramMessageForReplyText, int paramInt) {}
+  public zoh(MessageRoamManager paramMessageRoamManager, int paramInt) {}
   
   public void run()
   {
-    ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq);
-    if (localChatMessage != null) {
-      ThreadManager.getUIHandler().post(new zoi(this, localChatMessage));
+    Object localObject = Calendar.getInstance();
+    int j = this.jdField_a_of_type_Int;
+    int i = 8;
+    while (j < this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((Calendar)localObject).setTimeInMillis(((Long)this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.get(j)).longValue());
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)localObject);
+      Pair localPair = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)((Calendar)localObject).clone());
+      int k = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
+      if (i - k <= 0) {
+        break;
+      }
+      j += 1;
+      i -= k;
     }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatHistoryForC2C.class);
+    ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(0), 0L);
   }
 }
 

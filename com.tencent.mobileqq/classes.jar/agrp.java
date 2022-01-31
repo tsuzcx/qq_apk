@@ -1,52 +1,38 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.portal.ShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class agrp
-  extends GestureDetector.SimpleOnGestureListener
+  implements WXShareHelper.WXShareListener
 {
-  public agrp(ProfileTagView paramProfileTagView) {}
+  public agrp(ShareHelper paramShareHelper, String paramString) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll invoked");
+    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
+      return;
     }
-    this.a.f = true;
-    paramFloat1 = paramFloat2;
-    if (paramMotionEvent1 != null)
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      paramFloat1 = paramFloat2;
-      if (paramMotionEvent2 != null) {
-        paramFloat1 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
-      }
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435319);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "onScroll distance = " + paramFloat1);
-    }
-    if (Math.abs(paramFloat1) > ProfileTagView.a(this.a))
+    for (;;)
     {
-      if ((paramFloat1 > 0.0F) && (this.a.c)) {
-        if (this.a.a())
-        {
-          this.a.f();
-          this.a.a.b(null);
-        }
-      }
-      while ((paramFloat1 >= 0.0F) || (this.a.c)) {
-        return true;
-      }
-      this.a.a();
-      return true;
+      WXShareHelper.a().b(this);
+      return;
+      QRUtils.a(2, 2131435318);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrp
  * JD-Core Version:    0.7.0.1
  */

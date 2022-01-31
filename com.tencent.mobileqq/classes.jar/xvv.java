@@ -1,8 +1,23 @@
-import java.nio.ByteBuffer;
+import android.os.Handler;
+import com.qq.im.poi.LbsPackObserver;
+import com.tencent.mobileqq.activity.richmedia.LBSDetetor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public abstract interface xvv
+public class xvv
+  extends LbsPackObserver
 {
-  public abstract void a(long paramLong, ByteBuffer paramByteBuffer);
+  private xvv(LBSDetetor paramLBSDetetor) {}
+  
+  public void onGetLBSTemplateIds(int paramInt, boolean paramBoolean, ArrayList paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+    }
+    if ((LBSDetetor.a(this.a) != null) && (LBSDetetor.a(this.a).hasMessages(paramInt))) {
+      LBSDetetor.a(this.a, paramBoolean, paramArrayList, paramInt);
+    }
+  }
 }
 
 

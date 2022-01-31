@@ -1,26 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import java.io.File;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class agho
-  implements Runnable
+  implements TextWatcher
 {
-  public agho(ScanTorchActivity paramScanTorchActivity) {}
+  private agho(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    ScanTorchActivity.r(this.a);
-    if ((!TextUtils.isEmpty(ScanTorchActivity.b(this.a))) && (new File(ScanTorchActivity.b(this.a)).exists()))
-    {
-      this.a.runOnUiThread(new aghp(this));
-      return;
-    }
-    this.a.runOnUiThread(new aghr(this));
+    paramEditable = this.a.a.getText().toString();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agho
  * JD-Core Version:    0.7.0.1
  */

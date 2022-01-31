@@ -62,7 +62,7 @@ public class g
       while (localIterator.hasNext())
       {
         AbstractUploadTask localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
-        if ((b(localAbstractUploadTask) == paramb) && ((localAbstractUploadTask.getTaskState() == com.tencent.upload.d.c.f) || (localAbstractUploadTask.getTaskState() == com.tencent.upload.d.c.a) || (localAbstractUploadTask.getTaskState() == com.tencent.upload.d.c.d)))
+        if ((b(localAbstractUploadTask) == paramb) && ((localAbstractUploadTask.getTaskState() == com.tencent.upload.d.c.f) || (localAbstractUploadTask.getTaskState() == com.tencent.upload.d.c.a) || (localAbstractUploadTask.getTaskState() == com.tencent.upload.d.c.b) || (localAbstractUploadTask.getTaskState() == com.tencent.upload.d.c.d)))
         {
           com.tencent.upload.common.b.b("UploadTaskManager", "recovery taskId:" + localAbstractUploadTask.getTaskId() + ", path:" + localAbstractUploadTask.getFilePath());
           localAbstractUploadTask.resetTask();

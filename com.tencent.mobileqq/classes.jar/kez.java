@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.redbag.GuideTip2;
+import android.database.DataSetObserver;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
 
-public class kez
-  implements View.OnClickListener
+class kez
+  extends DataSetObserver
 {
-  public kez(GuideTip2 paramGuideTip2) {}
+  kez(key paramkey, EffectCycleViewPager paramEffectCycleViewPager) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    this.a.a(true, 0);
+    this.jdField_a_of_type_Key.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Key.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kez
  * JD-Core Version:    0.7.0.1
  */

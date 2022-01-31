@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class szr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public szr(LoginActivity paramLoginActivity, String paramString) {}
+  public szr(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity", 2, "-->login success(finish after ls), go to AgentActivity, account:" + this.jdField_a_of_type_JavaLangString);
+    H5MagicPlayerActivity.a(this.a);
+    if ((this.a.d.equals(this.a.c)) && (this.a.a != null))
+    {
+      ReportController.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.finish();
+    ReportController.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
   }
 }
 

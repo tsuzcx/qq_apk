@@ -41,10 +41,10 @@ import mqq.app.NewIntent;
 import mqq.manager.TicketManager;
 import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
-import yoy;
-import yoz;
-import ypa;
-import ypb;
+import yve;
+import yvf;
+import yvg;
+import yvh;
 
 public class CmGameStartChecker
   implements BusinessObserver
@@ -55,7 +55,7 @@ public class CmGameStartChecker
   
   public CmGameStartChecker(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ypb(this);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new yvh(this);
     this.b = new WeakReference(paramAppInterface);
   }
   
@@ -80,7 +80,7 @@ public class CmGameStartChecker
     if (QLog.isColorLevel()) {
       QLog.d("apollo_cmGame_CmGameStartChecker", 2, new Object[] { "startGame startCheckParam:", paramStartCheckParam });
     }
-    ThreadManager.post(new yoy(this, paramStartCheckParam), 5, null, true);
+    ThreadManager.post(new yve(this, paramStartCheckParam), 5, null, true);
   }
   
   public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam, OnGameStartCheckListener paramOnGameStartCheckListener)
@@ -185,17 +185,18 @@ public class CmGameStartChecker
     label248:
     String str1;
     long l2;
+    int j;
     boolean bool;
     if (paramBoolean)
     {
-      int j;
       int k;
+      int m;
       String str2;
       STCheckGame.STCheckGameRsp localSTCheckGameRsp;
       try
       {
-        j = paramStartCheckParam.game.gameId;
-        k = paramStartCheckParam.gameMode;
+        k = paramStartCheckParam.game.gameId;
+        m = paramStartCheckParam.gameMode;
         paramBoolean = paramStartCheckParam.isCreator;
         l1 = paramStartCheckParam.roomId;
         str2 = paramStartCheckParam.from;
@@ -221,15 +222,15 @@ public class CmGameStartChecker
       }
       String str5 = localSTCheckGameRsp.st.get();
       String str6 = localSTCheckGameRsp.stKey.get();
-      int m = localSTCheckGameRsp.remainPlays.get();
-      int n = localSTCheckGameRsp.svrResVer.get();
+      int n = localSTCheckGameRsp.remainPlays.get();
+      int i1 = localSTCheckGameRsp.svrResVer.get();
       String str3 = localSTCheckGameRsp.wordingV2.get();
       if (localSTCheckGameRsp.updateFlag.get() != 1) {
-        break label1094;
+        break label1101;
       }
       i = 1;
       if (localSTCheckGameRsp.isPatch.get() != 1) {
-        break label1100;
+        break label1107;
       }
       paramBoolean = true;
       localObject = localSTCheckGameRsp.patchUrl.get();
@@ -237,6 +238,10 @@ public class CmGameStartChecker
       String str4 = localSTCheckGameRsp.zipMd5.get();
       l1 = localSTCheckGameRsp.packageSize.get();
       l2 = localSTCheckGameRsp.tipsSize.get();
+      if (!localSTCheckGameRsp.appIdSource.has()) {
+        break label1082;
+      }
+      j = localSTCheckGameRsp.appIdSource.get();
       if (localSTCheckGameRsp.ssoCmdRule.has())
       {
         paramBundle = localSTCheckGameRsp.ssoCmdRule.get();
@@ -257,29 +262,27 @@ public class CmGameStartChecker
           paramBundle = new String(localSTCheckGameRsp.extInfo.get().toByteArray());
         }
         if (QLog.isColorLevel()) {
-          QLog.d("apollo_cmGame_CmGameStartChecker", 2, new Object[] { "checkGame done gameId: " + j, ", launchLife=" + m + ", from: " + str2 + ", gameMode: " + k + ",extInfo:" + paramBundle });
+          QLog.d("apollo_cmGame_CmGameStartChecker", 2, new Object[] { "checkGame done gameId: " + k, ", launchLife=" + n + ", from: " + str2 + ", gameMode: " + m + ",extInfo:" + paramBundle });
         }
         paramStartCheckParam.apolloGameSt = str5;
         paramStartCheckParam.apolloGameStkey = str6;
         paramStartCheckParam.openId = localSTCheckGameRsp.openId.get();
         paramStartCheckParam.sessionOpenId = localSTCheckGameRsp.sessionOpenId.get();
         paramStartCheckParam.extInfoFromSvr = paramBundle;
+        paramStartCheckParam.appIdSrc = j;
         ApolloManager.b = str5;
         ApolloManager.c = str6;
-        ApolloManager.d = localSTCheckGameRsp.openId.get();
-        ApolloManager.e = localSTCheckGameRsp.sessionOpenId.get();
-        ApolloManager.f = paramBundle;
         paramBundle = (AppInterface)this.b.get();
         if (paramBundle != null) {
-          ApolloGameUtil.a(paramBundle, m);
+          ApolloGameUtil.a(paramBundle, n);
         }
-        bool = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean("apollo_sp_game_rsc_verify_" + j, false);
+        bool = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean("apollo_sp_game_rsc_verify_" + k, false);
         if (!bool) {
-          break label1081;
+          break label1088;
         }
-        break label1081;
-        label651:
-        QLog.i("apollo_cmGame_CmGameStartChecker", 1, "verify fail or oldVersion is overtime start download new version, isVerifyFail:" + bool + ",oldV:,newV:" + String.valueOf(n));
+        break label1088;
+        label652:
+        QLog.i("apollo_cmGame_CmGameStartChecker", 1, "verify fail or oldVersion is overtime start download new version, isVerifyFail:" + bool + ",oldV:,newV:" + String.valueOf(i1));
         paramStartCheckParam.startT = -1L;
         if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
         {
@@ -300,23 +303,23 @@ public class CmGameStartChecker
         if ((!paramBoolean) || (!localSTCheckGameRsp.patchContent.has()) || (paramBundle.length <= 0)) {
           break;
         }
-        ThreadManager.post(new yoz(this, paramStartCheckParam, paramBundle), 5, null, true);
+        ThreadManager.post(new yvf(this, paramStartCheckParam, paramBundle), 5, null, true);
         return;
         if (QLog.isColorLevel()) {
-          QLog.d("apollo_cmGame_CmGameStartChecker", 2, new Object[] { "ssoCmdRule, no ssoCmdRule for game ", Integer.valueOf(j) });
+          QLog.d("apollo_cmGame_CmGameStartChecker", 2, new Object[] { "ssoCmdRule, no ssoCmdRule for game ", Integer.valueOf(k) });
         }
       }
       bool = NetworkUtil.h(BaseApplicationImpl.getApplication().getApplicationContext());
       if (!QLog.isColorLevel()) {
-        break label1105;
+        break label1112;
       }
       QLog.i("apollo_cmGame_CmGameStartChecker", 2, "is wifi:" + bool + ",pkg size:" + l1 + ",tip size:" + l2);
-      break label1105;
-      label939:
+      break label1112;
+      label940:
       a(paramStartCheckParam, paramBundle);
       return;
-      label946:
-      paramBundle = new ypa(this, paramBoolean, (String)localObject, str1, str2);
+      label947:
+      paramBundle = new yvg(this, paramBoolean, (String)localObject, str1, str2);
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
         localObject = (OnGameStartCheckListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
@@ -327,14 +330,15 @@ public class CmGameStartChecker
         }
       }
       if (!"message".equals(str2)) {
-        break label1134;
+        break label1141;
       }
     }
-    label1081:
-    label1094:
-    label1100:
-    label1105:
-    label1134:
+    label1082:
+    label1088:
+    label1101:
+    label1107:
+    label1112:
+    label1141:
     for (int i = 1;; i = 0)
     {
       VipUtils.a(null, "cmshow", "Apollo", "download_confirm_toast", i, 3, new String[] { String.valueOf(paramStartCheckParam.game.gameId) });
@@ -345,25 +349,27 @@ public class CmGameStartChecker
         return;
         e(paramStartCheckParam);
         return;
+        j = 0;
+        break;
         if (bool) {
-          break;
+          break label652;
         }
       } while (i == 0);
-      break label651;
+      break label652;
       i = 0;
       break;
       paramBoolean = false;
       break label248;
       if ((!bool) && (l1 >= l2)) {
-        break label946;
+        break label947;
       }
       if (paramBoolean)
       {
         paramBundle = (Bundle)localObject;
-        break label939;
+        break label940;
       }
       paramBundle = str1;
-      break label939;
+      break label940;
     }
   }
   
@@ -388,7 +394,7 @@ public class CmGameStartChecker
           localObject = new WebSSOAgent.UniSsoServerReqComm();
           ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
           ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-          ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+          ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
           WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
           localUniSsoServerReq.comm.set((MessageMicro)localObject);
           JSONObject localJSONObject = new JSONObject();

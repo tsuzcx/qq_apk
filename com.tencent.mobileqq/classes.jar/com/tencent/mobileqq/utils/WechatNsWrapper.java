@@ -68,7 +68,7 @@ public final class WechatNsWrapper
   {
     int i = 960;
     super.a(paramInt1, paramInt2, paramInt3);
-    if (this.jdField_b_of_type_Int != 0) {}
+    if (this.jdField_b_of_type_Int == 0) {}
     for (;;)
     {
       try

@@ -1,32 +1,36 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
-import java.io.Serializable;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoStatusListener;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-class msl
-  implements Runnable
+public class msl
+  extends FastWebVideoFeedsPlayManager.VideoStatusListener
 {
-  msl(msi parammsi, Serializable paramSerializable) {}
+  public msl(FastWebVideoFeedsPlayActivity paramFastWebVideoFeedsPlayActivity) {}
   
-  public void run()
+  public void a(FastWebVideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
-    SubscriptFeedsActivity localSubscriptFeedsActivity;
-    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a) != null))
-    {
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a));
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).a = true;
-      localSubscriptFeedsActivity = this.jdField_a_of_type_Msi.a;
-      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).f != 1) {
-        break label110;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayActivity", 2, "video play completion!, move to next position");
     }
-    label110:
-    for (boolean bool = true;; bool = false)
+    boolean bool = FastWebVideoFeedsPlayActivity.a(this.a);
+    if (FastWebVideoFeedsPlayActivity.a(this.a)) {
+      FastWebVideoFeedsPlayActivity.a(this.a).post(new msm(this));
+    }
+    if (FastWebVideoFeedsPlayActivity.b(this.a))
     {
-      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, false, bool);
+      if (!bool) {
+        FastWebVideoFeedsPlayActivity.a(this.a);
+      }
+      FastWebVideoFeedsPlayActivity.a(this.a).a(5);
+    }
+    while (this.a.a() == FastWebVideoFeedsPlayActivity.a(this.a).size() - 1) {
       return;
     }
+    FastWebVideoFeedsPlayActivity.a(this.a).postDelayed(new msn(this), 600L);
   }
 }
 

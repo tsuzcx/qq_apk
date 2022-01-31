@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.app.QvipSpecialCareObserver;
 import com.tencent.qphone.base.util.QLog;
 
-class ylr
-  implements Runnable
+public class ylr
+  extends QvipSpecialCareObserver
 {
-  ylr(ylq paramylq, byte[] paramArrayOfByte, int paramInt) {}
+  public ylr(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void run()
+  public void a(Object paramObject)
   {
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ArrayOfByte != null)) {
-      QLog.d("ApolloRender", 2, "httpLog httpCallBack data.len=" + this.jdField_a_of_type_ArrayOfByte.length);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
     }
-    ((ApolloSurfaceView)this.jdField_a_of_type_Ylq.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(this.jdField_a_of_type_Ylq.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+    if (paramObject != null) {
+      this.a.stopTitleProgress();
+    }
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    }
+    QQSpecialFriendSettingActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ylr
  * JD-Core Version:    0.7.0.1
  */

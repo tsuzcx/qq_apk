@@ -1,12 +1,17 @@
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.mobileqq.app.MessageObserver;
+
 public class wsx
+  extends MessageObserver
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g = 600;
+  private wsx(FriendFragment paramFriendFragment) {}
+  
+  protected void f()
+  {
+    if (FriendFragment.b(this.a)) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
 }
 
 

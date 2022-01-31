@@ -1,15 +1,33 @@
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.view.View;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
 
 public class anwj
   implements Runnable
 {
-  public anwj(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, long paramLong) {}
+  public anwj(DynamicTextItem paramDynamicTextItem, boolean paramBoolean, View paramView, Runnable paramRunnable) {}
   
   public void run()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 13, Long.valueOf(this.jdField_a_of_type_Long / 1000000L)));
+    DynamicTextItem.Pair localPair;
+    if (((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue() != this.jdField_a_of_type_Boolean)
+    {
+      localPair = DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
+      if (((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue()) {
+        break label93;
+      }
+    }
+    label93:
+    for (boolean bool = true;; bool = false)
+    {
+      localPair.b = Boolean.valueOf(bool);
+      this.jdField_a_of_type_AndroidViewView.invalidate();
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
+      }
+      DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem, false);
+      return;
+    }
   }
 }
 

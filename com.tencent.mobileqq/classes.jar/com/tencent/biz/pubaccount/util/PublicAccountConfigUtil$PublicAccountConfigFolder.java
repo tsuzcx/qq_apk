@@ -71,9 +71,9 @@ public class PublicAccountConfigUtil$PublicAccountConfigFolder
     case 1: 
       return String.valueOf(7210);
     case 2: 
-      return String.valueOf(AppConstants.ar);
+      return String.valueOf(AppConstants.as);
     }
-    return String.valueOf(AppConstants.as);
+    return String.valueOf(AppConstants.at);
   }
   
   public Drawable a()

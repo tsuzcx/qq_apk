@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anny;
+import anwl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,7 +17,7 @@ import java.util.Set;
 public class DynamicTextItem$TextMap
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anny();
+  public static final Parcelable.Creator CREATOR = new anwl();
   private Map a = new HashMap();
   
   public DynamicTextItem$TextMap() {}
@@ -37,11 +37,14 @@ public class DynamicTextItem$TextMap
   public DynamicTextItem$TextMap(@NonNull List paramList)
   {
     this();
-    int i = 0;
-    while (i < paramList.size())
+    if (paramList != null)
     {
-      this.a.put(Integer.valueOf(i), paramList.get(i));
-      i += 1;
+      int i = 0;
+      while (i < paramList.size())
+      {
+        this.a.put(Integer.valueOf(i), paramList.get(i));
+        i += 1;
+      }
     }
   }
   

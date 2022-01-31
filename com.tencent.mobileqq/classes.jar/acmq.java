@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class acmq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acmq(FilePreviewActivity paramFilePreviewActivity) {}
+  public acmq(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
-    FilePreviewActivity.a(this.a, TeamWorkConvertUtils.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131439140), false));
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "func updateLastEmoticonPanel begins.");
+    }
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

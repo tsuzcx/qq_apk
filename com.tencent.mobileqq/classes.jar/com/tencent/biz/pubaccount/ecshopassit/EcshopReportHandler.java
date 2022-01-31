@@ -30,7 +30,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lad;
+import lcm;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import tencent.im.oidb.qqshop.qqshop_report.SQQSHPCliLogInfo;
@@ -55,7 +55,7 @@ public class EcshopReportHandler
   public EcshopReportHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new lad(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new lcm(this);
   }
   
   protected Class a()

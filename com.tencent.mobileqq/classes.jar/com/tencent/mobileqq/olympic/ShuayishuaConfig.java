@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic;
 
-import agei;
+import agiu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ShuayishuaConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agei();
+  public static final Parcelable.Creator CREATOR = new agiu();
   public String LUIconImg;
   public String LUIconImgMd5;
   public String actTime;

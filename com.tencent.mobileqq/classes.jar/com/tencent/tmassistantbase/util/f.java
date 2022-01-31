@@ -14,12 +14,17 @@ public class f
   public static Handler a()
   {
     if (b == null) {
-      b = a(g.b);
+      b = b(g.a);
     }
     return b;
   }
   
-  public static Handler a(g paramg)
+  public static Looper a(g paramg)
+  {
+    return b(paramg).getLooper();
+  }
+  
+  private static Handler b(g paramg)
   {
     if (a.containsKey(paramg)) {
       return (Handler)a.get(paramg);
@@ -29,11 +34,6 @@ public class f
     localObject = new Handler(((HandlerThread)localObject).getLooper());
     a.put(paramg, localObject);
     return localObject;
-  }
-  
-  public static Looper b(g paramg)
-  {
-    return a(paramg).getLooper();
   }
 }
 

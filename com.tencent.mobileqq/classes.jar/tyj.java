@@ -1,29 +1,14 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.util.ArrayList;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.activity.StructMsgObserver;
+import com.tencent.mobileqq.activity.WebAccelerator;
 
 public class tyj
-  extends AccountObserver
+  implements Runnable
 {
-  public tyj(TroopInfoActivity paramTroopInfoActivity, TroopAvatarManger paramTroopAvatarManger, ArrayList paramArrayList) {}
+  public tyj(StructMsgObserver paramStructMsgObserver, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public void run()
   {
-    super.onUpdateSKey(paramString1, paramString2);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.c) {
-      return;
-    }
-    if (paramString1 == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.runOnUiThread(new tyk(this));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity));
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(TroopUploadingThread.class, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.app, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a.troopcode, paramString1, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.app.getCurrentAccountUin(), null);
+    WebAccelerator.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

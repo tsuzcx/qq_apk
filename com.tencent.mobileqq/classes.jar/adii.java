@@ -1,19 +1,41 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.PwdQueryMsgRsp;
+import cooperation.weiyun.sdk.api.IWeiyunCallback;
+import cooperation.weiyun.sdk.api.WeiyunApi;
+import mqq.app.MobileQQ;
 
 public class adii
-  implements Runnable
+  implements IWeiyunCallback
 {
-  public adii(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
+  public adii(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void run()
+  public void a(int paramInt, String paramString, WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 1);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
+    }
+    WeiYunLogicCenter.a(this.a).a().a(false, 44, new Object[] { Integer.valueOf(paramInt), paramString, null });
+  }
+  
+  public void a(WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onSucceed  need pwd[" + paramPwdQueryMsgRsp.pwd_open.get() + "]");
+    }
+    WeiyunApi.a(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
+    if (paramPwdQueryMsgRsp.pwd_open.get()) {
+      WeiyunApi.b(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
+    }
+    WeiYunLogicCenter.a(this.a).a().a(true, 44, new Object[] { Integer.valueOf(0), null, Boolean.valueOf(paramPwdQueryMsgRsp.pwd_open.get()) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adii
  * JD-Core Version:    0.7.0.1
  */

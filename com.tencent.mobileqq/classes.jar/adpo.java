@@ -1,28 +1,46 @@
-import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.graphics.Bitmap;
+import com.dataline.util.file.MediaStoreUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public final class adpo
-  extends DownloadListener
+  implements FileManagerUtil.IGetVideoCallback
 {
-  public adpo(String paramString) {}
+  public adpo(String paramString1, String paramString2) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a(Bitmap paramBitmap)
   {
-    PayLikeFloatViewBuilder.a(false);
-    if (paramDownloadTask.a == 0)
-    {
-      paramDownloadTask = new File(this.a + ".tmp");
-      if (paramDownloadTask.exists()) {
-        paramDownloadTask.renameTo(new File(this.a));
-      }
-    }
-    while (!QLog.isColorLevel()) {
+    if (paramBitmap == null) {
       return;
     }
-    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
+    try
+    {
+      FileUtil.a(paramBitmap, this.a);
+      paramBitmap.recycle();
+      int i = MediaStoreUtil.a(this.b);
+      MediaStoreUtil.a(this.a, i);
+      return;
+    }
+    catch (FileNotFoundException paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
+      return;
+    }
+    catch (IOException paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError paramBitmap)
+    {
+      paramBitmap.printStackTrace();
+      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
+    }
   }
 }
 

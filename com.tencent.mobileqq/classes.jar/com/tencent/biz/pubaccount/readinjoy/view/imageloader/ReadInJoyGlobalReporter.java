@@ -13,10 +13,10 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Timer;
 import java.util.TimerTask;
-import mqn;
-import mqo;
-import mqp;
-import mqq;
+import muf;
+import mug;
+import muh;
+import mui;
 import org.json.JSONObject;
 
 public class ReadInJoyGlobalReporter
@@ -32,7 +32,7 @@ public class ReadInJoyGlobalReporter
   final Object jdField_a_of_type_JavaLangObject = new Object();
   Timer jdField_a_of_type_JavaUtilTimer = null;
   TimerTask jdField_a_of_type_JavaUtilTimerTask = null;
-  public mqq a;
+  public mui a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = -1L;
@@ -54,7 +54,7 @@ public class ReadInJoyGlobalReporter
   
   public ReadInJoyGlobalReporter()
   {
-    this.jdField_a_of_type_Mqq = null;
+    this.jdField_a_of_type_Mui = null;
   }
   
   public static ReadInJoyGlobalReporter a()
@@ -137,7 +137,7 @@ public class ReadInJoyGlobalReporter
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if (this.jdField_a_of_type_JavaUtilTimerTask == null) {
-        this.jdField_a_of_type_JavaUtilTimerTask = new mqn(this);
+        this.jdField_a_of_type_JavaUtilTimerTask = new muf(this);
       }
       if (this.jdField_a_of_type_JavaUtilTimer == null)
       {
@@ -272,27 +272,27 @@ public class ReadInJoyGlobalReporter
   
   public void d()
   {
-    if (this.jdField_a_of_type_Mqq == null) {
-      this.jdField_a_of_type_Mqq = new mqq(this, null);
+    if (this.jdField_a_of_type_Mui == null) {
+      this.jdField_a_of_type_Mui = new mui(this, null);
     }
-    mqo localmqo = new mqo(this);
+    mug localmug = new mug(this);
     if (AppSetting.d)
     {
-      ThreadManager.executeOnSubThread(localmqo, true);
+      ThreadManager.executeOnSubThread(localmug, true);
       return;
     }
-    localmqo.run();
+    localmug.run();
   }
   
   public void e()
   {
-    mqp localmqp = new mqp(this);
+    muh localmuh = new muh(this);
     if (AppSetting.d)
     {
-      ThreadManager.executeOnSubThread(localmqp, true);
+      ThreadManager.executeOnSubThread(localmuh, true);
       return;
     }
-    localmqp.run();
+    localmuh.run();
   }
 }
 

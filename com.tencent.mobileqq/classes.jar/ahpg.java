@@ -1,42 +1,27 @@
-import android.graphics.Bitmap;
+import android.annotation.TargetApi;
 import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.jsbridge.JsBridge;
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import com.tencent.widget.ProtectedWebView;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahpg
-  extends WebViewClient
+public final class ahpg
+  implements ValueAnimation.AnimationUpdateListener
 {
-  private ahpg(ActionUrlActivity paramActionUrlActivity) {}
+  public ahpg(View paramView) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  @TargetApi(11)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-    this.a.a();
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    ActionUrlActivity.a(this.a).setVisibility(0);
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    ActionUrlActivity.a(this.a).clearView();
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    ActionUrlActivity.a(this.a).setVisibility(0);
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
+    }
+    paramFloat = paramFloat1.floatValue();
+    if (this.a != null)
+    {
+      this.a.setAlpha(paramFloat);
+      this.a.invalidate();
+    }
   }
 }
 

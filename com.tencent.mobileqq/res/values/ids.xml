@@ -545,11 +545,11 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0253" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0254" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0255" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0256" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0257" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0258" />
     <item type="id" name="qb_troop_list_view" />
     <item type="id" name="lv_discussion" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0258" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0259" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a025a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a025b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a025c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a025d" />
@@ -676,11 +676,11 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02d6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02d7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02d8" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02e5" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02e6" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02e7" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02e8" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02e9" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02d9" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02da" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02db" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02dc" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02dd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02ea" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02eb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02ec" />
@@ -688,14 +688,14 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02ee" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02ef" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02f0" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a030b" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a030c" />
-    <item type="id" name="webview" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a030e" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a030f" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02f1" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02f2" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02f3" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02f4" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a02f5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0310" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0311" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0312" />
+    <item type="id" name="webview" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0313" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0314" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0315" />
@@ -789,12 +789,12 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a036d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a036e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a036f" />
-    <item type="id" name="upgradeLayout" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0370" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0371" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0372" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0373" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0374" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0375" />
+    <item type="id" name="upgradeLayout" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0376" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0377" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0378" />
@@ -836,20 +836,20 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a039c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a039d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a039e" />
-    <item type="id" name="icon" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a039f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03a0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03a1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03a2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03a3" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03a4" />
+    <item type="id" name="icon" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03a5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03a6" />
-    <item type="id" name="loading" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03a7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03a8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03a9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03aa" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03ab" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03ac" />
+    <item type="id" name="loading" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03ad" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03ae" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03af" />
@@ -867,38 +867,38 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03bb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03bc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03bd" />
-    <item type="id" name="new_account" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03be" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03bf" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03c0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03c1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03c2" />
-    <item type="id" name="account" />
-    <item type="id" name="check" />
+    <item type="id" name="new_account" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03c4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03c5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03c6" />
-    <item type="id" name="accountLinearlayout" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03c8" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03c9" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03c7" />
+    <item type="id" name="account" />
+    <item type="id" name="check" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03ca" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03cb" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03cc" />
+    <item type="id" name="accountLinearlayout" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03cd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03ce" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03cf" />
-    <item type="id" name="logoutBtn" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03d0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03d1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03d2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03d3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03d4" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03d5" />
+    <item type="id" name="logoutBtn" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03d6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03d7" />
-    <item type="id" name="dialogText" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03d8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03d9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03da" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03db" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03dc" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03dd" />
+    <item type="id" name="dialogText" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03de" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03df" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03e0" />
@@ -924,20 +924,20 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03f4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03f5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03f6" />
-    <item type="id" name="action_sheet_actionView" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03f7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03f8" />
-    <item type="id" name="action_sheet_btnCancel" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03f9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03fa" />
-    <item type="id" name="action_sheet_button" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03fc" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03fb" />
+    <item type="id" name="action_sheet_actionView" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03fd" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03fe" />
-    <item type="id" name="action_sheet_title" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0400" />
+    <item type="id" name="action_sheet_btnCancel" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a03ff" />
+    <item type="id" name="action_sheet_button" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0401" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0402" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0403" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0404" />
+    <item type="id" name="action_sheet_title" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0405" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0406" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0407" />
@@ -957,12 +957,12 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0415" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0416" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0417" />
-    <item type="id" name="root" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0418" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0419" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a041a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a041b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a041c" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a041d" />
+    <item type="id" name="root" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a041e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a041f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0420" />
@@ -985,12 +985,12 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0431" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0432" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0433" />
-    <item type="id" name="close" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0434" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0435" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0436" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0437" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0438" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0439" />
+    <item type="id" name="close" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a043a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a043b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a043c" />
@@ -1011,12 +1011,12 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a044b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a044c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a044d" />
-    <item type="id" name="nickname" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a044e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a044f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0450" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0451" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0452" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0453" />
+    <item type="id" name="nickname" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0454" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0455" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0456" />
@@ -1078,21 +1078,21 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a048e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a048f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0490" />
-    <item type="id" name="textView1" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0491" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0492" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0493" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0494" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0495" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0496" />
+    <item type="id" name="textView1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0497" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0498" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0499" />
-    <item type="id" name="panelLayout" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a049a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a049b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a049c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a049d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a049e" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a049f" />
+    <item type="id" name="panelLayout" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04a0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04a1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04a2" />
@@ -1147,17 +1147,17 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04d3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04d4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04d5" />
-    <item type="id" name="emoview" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04d6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04d7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04d8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04d9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04da" />
-    <item type="id" name="icon_viewPager" />
+    <item type="id" name="emoview" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04dc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04dd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04de" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04df" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04e0" />
+    <item type="id" name="icon_viewPager" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04e1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04e2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04e3" />
@@ -1174,18 +1174,18 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04ee" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04ef" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04f0" />
-    <item type="id" name="content" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04f1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04f2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04f3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04f4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04f5" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04f6" />
-    <item type="id" name="head" />
+    <item type="id" name="content" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04f7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04f8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04f9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04fa" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04fb" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04fc" />
+    <item type="id" name="head" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04fd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04fe" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a04ff" />
@@ -1317,18 +1317,18 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a057d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a057e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a057f" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0580" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0581" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0582" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0583" />
     <item type="id" name="relativeItem" />
     <item type="id" name="lastMsgTime" />
     <item type="id" name="text1Area" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0583" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0584" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0585" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0586" />
-    <item type="id" name="unreadmsg" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0587" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0588" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0589" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a058a" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a058b" />
+    <item type="id" name="unreadmsg" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a058c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a058d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a058e" />
@@ -1361,8 +1361,8 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05a9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05aa" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05ab" />
-    <item type="id" name="rlCommenTitle" />
-    <item type="id" name="ivTitleBtnLeft" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05ac" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05ad" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05ae" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05af" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05b0" />
@@ -1370,7 +1370,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05b2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05b3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05b4" />
-    <item type="id" name="tabView" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05b5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05b6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05b7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05b8" />
@@ -1378,8 +1378,8 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05ba" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05bb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05bc" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05bd" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05be" />
+    <item type="id" name="rlCommenTitle" />
+    <item type="id" name="ivTitleBtnLeft" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05bf" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05c0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05c1" />
@@ -1387,7 +1387,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05c3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05c4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05c5" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05c6" />
+    <item type="id" name="tabView" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05c7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05c8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a05c9" />
@@ -1495,10 +1495,10 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a062f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0630" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0631" />
-    <item type="id" name="title" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0632" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0633" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0634" />
-    <item type="id" name="ivTitleName" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0635" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0636" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0637" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0638" />
@@ -1514,10 +1514,10 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0642" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0643" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0644" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0645" />
+    <item type="id" name="title" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0646" />
-    <item type="id" name="photo_prievew_progress_dialog_text" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0648" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0647" />
+    <item type="id" name="ivTitleName" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0649" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a064a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a064b" />
@@ -1535,7 +1535,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0657" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0658" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0659" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a065a" />
+    <item type="id" name="photo_prievew_progress_dialog_text" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a065b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a065c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a065d" />
@@ -1545,7 +1545,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0661" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0662" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0663" />
-    <item type="id" name="ivTitleBtnRightText" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0664" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0665" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0666" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0667" />
@@ -1564,7 +1564,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0674" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0675" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0676" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0677" />
+    <item type="id" name="ivTitleBtnRightText" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0678" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0679" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a067a" />
@@ -1590,8 +1590,8 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a068e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a068f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0690" />
-    <item type="id" name="ivTitleBtnLeftButton" />
-    <item type="id" name="ivTitleBtnRightImage" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0691" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0692" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0693" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0694" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0695" />
@@ -1609,14 +1609,14 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06a1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06a2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06a3" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06a4" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06a5" />
-    <item type="id" name="inputBar" />
+    <item type="id" name="ivTitleBtnLeftButton" />
+    <item type="id" name="ivTitleBtnRightImage" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06a6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06a7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06a8" />
-    <item type="id" name="input" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06a9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06aa" />
-    <item type="id" name="fun_btn" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06ab" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06ac" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06ad" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06ae" />
@@ -1624,18 +1624,18 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06b0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06b1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06b2" />
-    <item type="id" name="listView1" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06b3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06b4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06b5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06b6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06b7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06b8" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06b9" />
+    <item type="id" name="inputBar" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06ba" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06bb" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06bc" />
+    <item type="id" name="input" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06bd" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06be" />
+    <item type="id" name="fun_btn" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06bf" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06c0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06c1" />
@@ -1643,7 +1643,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06c3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06c4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06c5" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06c6" />
+    <item type="id" name="listView1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06c7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06c8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06c9" />
@@ -1666,7 +1666,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06da" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06db" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06dc" />
-    <item type="id" name="tv_name" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06dd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06de" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06df" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06e0" />
@@ -1685,7 +1685,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06ed" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06ee" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06ef" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06f0" />
+    <item type="id" name="tv_name" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06f1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06f2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a06f3" />
@@ -1802,7 +1802,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0762" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0763" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0764" />
-    <item type="id" name="checkBoxConfirm" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0765" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0766" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0767" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0768" />
@@ -1812,20 +1812,20 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a076c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a076d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a076e" />
-    <item type="id" name="chatHistory" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a076f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0770" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0771" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0772" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0773" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0774" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0775" />
-    <item type="id" name="flag_new" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0776" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0777" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0778" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0779" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a077a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a077b" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a077c" />
+    <item type="id" name="checkBoxConfirm" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a077d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a077e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a077f" />
@@ -1835,14 +1835,14 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0783" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0784" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0785" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0786" />
+    <item type="id" name="chatHistory" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0787" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0788" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0789" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a078a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a078b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a078c" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a078d" />
+    <item type="id" name="flag_new" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a078e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a078f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0790" />
@@ -1850,7 +1850,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0792" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0793" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0794" />
-    <item type="id" name="common_xlistview" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0795" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0796" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0797" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0798" />
@@ -1871,10 +1871,10 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07a7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07a8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07a9" />
-    <item type="id" name="listViewHistory" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07aa" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07ab" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07ac" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07ad" />
+    <item type="id" name="common_xlistview" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07ae" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07af" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07b0" />
@@ -1882,7 +1882,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07b2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07b3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07b4" />
-    <item type="id" name="buttonDelete" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07b5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07b6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07b7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07b8" />
@@ -1895,7 +1895,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07bf" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07c0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07c1" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07c2" />
+    <item type="id" name="listViewHistory" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07c3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07c4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07c5" />
@@ -1906,7 +1906,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07ca" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07cb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07cc" />
-    <item type="id" name="graybar" />
+    <item type="id" name="buttonDelete" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07ce" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07cf" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07d0" />
@@ -1930,7 +1930,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07e2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07e3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07e4" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07e5" />
+    <item type="id" name="graybar" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07e6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07e7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07e8" />
@@ -1944,7 +1944,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07f0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07f1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07f2" />
-    <item type="id" name="elv_buddies" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07f3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07f4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07f5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07f6" />
@@ -1956,11 +1956,11 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07fc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07fd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07fe" />
-    <item type="id" name="group_item_layout" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a07ff" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0800" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0801" />
-    <item type="id" name="group_name" />
-    <item type="id" name="contact_count" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0802" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0803" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0804" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0805" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0806" />
@@ -1968,7 +1968,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0808" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0809" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a080a" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a080b" />
+    <item type="id" name="elv_buddies" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a080c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a080d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a080e" />
@@ -1980,11 +1980,11 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0814" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0815" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0816" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0817" />
+    <item type="id" name="group_item_layout" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0818" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0819" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a081a" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a081b" />
+    <item type="id" name="group_name" />
+    <item type="id" name="contact_count" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a081c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a081d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a081e" />
@@ -2013,12 +2013,12 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0835" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0836" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0837" />
-    <item type="id" name="text1" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0838" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0839" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a083a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a083b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a083c" />
-    <item type="id" name="text2" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a083d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a083e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a083f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0840" />
@@ -2031,19 +2031,19 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0847" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0848" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0849" />
-    <item type="id" name="discussion_entry_iv" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a084a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a084b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a084c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a084d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a084e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a084f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0850" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0851" />
-    <item type="id" name="local_search" />
-    <item type="id" name="result_layout" />
-    <item type="id" name="search_result_list" />
+    <item type="id" name="text1" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0852" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0853" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0854" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0855" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0856" />
+    <item type="id" name="text2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0857" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0858" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0859" />
@@ -2052,11 +2052,11 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a085c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a085d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a085e" />
-    <item type="id" name="tv_member_count" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a085f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0860" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0861" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0862" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0863" />
+    <item type="id" name="discussion_entry_iv" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0864" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0865" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0866" />
@@ -2064,9 +2064,9 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0868" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0869" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a086a" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a086b" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a086c" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a086d" />
+    <item type="id" name="local_search" />
+    <item type="id" name="result_layout" />
+    <item type="id" name="search_result_list" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a086e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a086f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0870" />
@@ -2077,7 +2077,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0875" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0876" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0877" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0878" />
+    <item type="id" name="tv_member_count" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0879" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a087a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a087b" />
@@ -2089,7 +2089,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0881" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0882" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0883" />
-    <item type="id" name="recent_chat_list" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0884" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0885" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0886" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0887" />
@@ -2097,7 +2097,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0889" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a088a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a088b" />
-    <item type="id" name="no_chat" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a088c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a088d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a088e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a088f" />
@@ -2110,19 +2110,19 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0896" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0897" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0898" />
-    <item type="id" name="cancel" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0899" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a089a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a089b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a089c" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a089d" />
+    <item type="id" name="recent_chat_list" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a089e" />
-    <item type="id" name="title_sub" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a089f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08a0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08a1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08a2" />
-    <item type="id" name="ivTitleBtnRightCall" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08a3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08a4" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08a5" />
+    <item type="id" name="no_chat" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08a6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08a7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08a8" />
@@ -2135,27 +2135,27 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08af" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08b0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08b1" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08b2" />
+    <item type="id" name="cancel" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08b3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08b4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08b5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08b6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08b7" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08b8" />
+    <item type="id" name="title_sub" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08b9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08ba" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08bb" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08bc" />
+    <item type="id" name="ivTitleBtnRightCall" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08bd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08be" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08bf" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08c0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08c1" />
-    <item type="id" name="dialogTitle" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08c2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08c3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08c4" />
-    <item type="id" name="dialogLeftBtn" />
-    <item type="id" name="dialogRightBtn" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08c5" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08c6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08c7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08c8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08c9" />
@@ -2174,13 +2174,13 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08d6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08d7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08d8" />
-    <item type="id" name="head_layout" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08d9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08da" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08db" />
+    <item type="id" name="dialogTitle" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08dc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08dd" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08de" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08df" />
+    <item type="id" name="dialogLeftBtn" />
+    <item type="id" name="dialogRightBtn" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08e0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08e1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08e2" />
@@ -2192,14 +2192,14 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08e8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08e9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08ea" />
-    <item type="id" name="emo_btn" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08eb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08ec" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08ed" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08ee" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08ef" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08f0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08f1" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08f2" />
+    <item type="id" name="head_layout" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08f3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08f4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a08f5" />
@@ -2217,12 +2217,12 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0901" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0902" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0903" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0904" />
+    <item type="id" name="emo_btn" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0905" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0906" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0907" />
-    <item type="id" name="toast_icon" />
-    <item type="id" name="toast_msg" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0908" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0909" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a090a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a090b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a090c" />
@@ -2236,7 +2236,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0914" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0915" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0916" />
-    <item type="id" name="info" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0917" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0918" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0919" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a091a" />
@@ -2246,8 +2246,8 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a091e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a091f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0920" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0921" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0922" />
+    <item type="id" name="toast_icon" />
+    <item type="id" name="toast_msg" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0923" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0924" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0925" />
@@ -2261,7 +2261,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a092d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a092e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a092f" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0930" />
+    <item type="id" name="info" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0931" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0932" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0933" />
@@ -2385,7 +2385,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09a9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09aa" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09ab" />
-    <item type="id" name="delRoamMsg" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09ac" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09ad" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09ae" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09af" />
@@ -2410,7 +2410,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09c2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09c3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09c4" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09c5" />
+    <item type="id" name="delRoamMsg" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09c6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09c7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09c8" />
@@ -2448,10 +2448,10 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09e8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09e9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09ea" />
-    <item type="id" name="letsIcon" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09eb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09ec" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09ed" />
-    <item type="id" name="letsTextView" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09ee" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09ef" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09f0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09f1" />
@@ -2459,7 +2459,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09f3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09f4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09f5" />
-    <item type="id" name="login" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09f6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09f7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09f8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a09f9" />
@@ -2473,10 +2473,10 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a01" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a02" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a03" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a04" />
+    <item type="id" name="letsIcon" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a05" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a06" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a07" />
+    <item type="id" name="letsTextView" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a08" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a09" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a0a" />
@@ -2484,7 +2484,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a0c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a0d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a0e" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a0f" />
+    <item type="id" name="login" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a10" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a11" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a12" />
@@ -2614,16 +2614,16 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a8e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a8f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a90" />
-    <item type="id" name="emotion_panel" />
-    <item type="id" name="viewPager" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a91" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a92" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a93" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a94" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a95" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a96" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a97" />
-    <item type="id" name="container_secondary_tab" />
-    <item type="id" name="tab_sencondary_emoticon" />
-    <item type="id" name="btn_more_emoticon" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a98" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a99" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a9a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a9b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a9c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0a9d" />
@@ -2638,16 +2638,16 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0aa6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0aa7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0aa8" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0aa9" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0aaa" />
+    <item type="id" name="emotion_panel" />
+    <item type="id" name="viewPager" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0aab" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0aac" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0aad" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0aae" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0aaf" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ab0" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ab1" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ab2" />
+    <item type="id" name="container_secondary_tab" />
+    <item type="id" name="tab_sencondary_emoticon" />
+    <item type="id" name="btn_more_emoticon" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ab3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ab4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ab5" />
@@ -2900,7 +2900,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bac" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bad" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bae" />
-    <item type="id" name="hongbao_close_iv" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0baf" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bb0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bb1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bb2" />
@@ -2913,7 +2913,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bb9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bba" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bbb" />
-    <item type="id" name="gallery" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bbc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bbd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bbe" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bbf" />
@@ -2927,7 +2927,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bc7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bc8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bc9" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bca" />
+    <item type="id" name="hongbao_close_iv" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bcb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bcc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bcd" />
@@ -2940,13 +2940,13 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bd4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bd5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bd6" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bd7" />
+    <item type="id" name="gallery" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bd8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bd9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bda" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bdb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bdc" />
-    <item type="id" name="password" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bdd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bde" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bdf" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0be0" />
@@ -2973,7 +2973,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bf5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bf6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bf7" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bf8" />
+    <item type="id" name="password" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bf9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bfa" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0bfb" />
@@ -2990,10 +2990,10 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c06" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c07" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c08" />
-    <item type="id" name="lebasv" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c09" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c0a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c0b" />
-    <item type="id" name="search_box" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c0c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c0d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c0e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c0f" />
@@ -3001,8 +3001,8 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c11" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c12" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c13" />
-    <item type="id" name="btn_login" />
-    <item type="id" name="btn_register" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c14" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c15" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c16" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c17" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c18" />
@@ -3017,10 +3017,10 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c21" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c22" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c23" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c24" />
+    <item type="id" name="lebasv" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c25" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c26" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c27" />
+    <item type="id" name="search_box" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c28" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c29" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c2a" />
@@ -3028,8 +3028,8 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c2c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c2d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c2e" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c2f" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c30" />
+    <item type="id" name="btn_login" />
+    <item type="id" name="btn_register" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c31" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c32" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0c33" />
@@ -3286,7 +3286,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d2e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d2f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d30" />
-    <item type="id" name="midas_loading_message" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d31" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d32" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d33" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d34" />
@@ -3313,7 +3313,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d49" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d4a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d4b" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d4c" />
+    <item type="id" name="midas_loading_message" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d4d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d4e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d4f" />
@@ -3368,7 +3368,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d80" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d81" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d82" />
-    <item type="id" name="txt" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d83" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d84" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d85" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d86" />
@@ -3395,7 +3395,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d9b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d9c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d9d" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d9e" />
+    <item type="id" name="txt" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0d9f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0da0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0da1" />
@@ -3459,21 +3459,21 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ddb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ddc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ddd" />
-    <item type="id" name="dialog_button_cancel" />
-    <item type="id" name="dialog_button_ok" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0dde" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ddf" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0de0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0de1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0de2" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0de3" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0de4" />
+    <item type="id" name="dialog_button_cancel" />
+    <item type="id" name="dialog_button_ok" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0de5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0de6" />
-    <item type="id" name="receive_msg_whenexit" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0de7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0de8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0de9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0dea" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0deb" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0dec" />
+    <item type="id" name="receive_msg_whenexit" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ded" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0dee" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0def" />
@@ -3598,12 +3598,12 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e66" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e67" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e68" />
-    <item type="id" name="phone_enable_btn" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e69" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e6a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e6b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e6c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e6d" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e6e" />
+    <item type="id" name="phone_enable_btn" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e6f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e70" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e71" />
@@ -3636,20 +3636,20 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e8c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e8d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e8e" />
-    <item type="id" name="photo_preview_left" />
-    <item type="id" name="photo_preview_right" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e8f" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e90" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e91" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e92" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e93" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e94" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e95" />
+    <item type="id" name="photo_preview_left" />
+    <item type="id" name="photo_preview_right" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e96" />
-    <item type="id" name="send_btn" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e97" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e98" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e99" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e9a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e9b" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e9c" />
+    <item type="id" name="send_btn" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e9d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e9e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0e9f" />
@@ -3717,13 +3717,13 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0edd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ede" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0edf" />
-    <item type="id" name="plus_btn" />
-    <item type="id" name="audio_btn" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ee0" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ee1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ee2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ee3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ee4" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ee5" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ee6" />
+    <item type="id" name="plus_btn" />
+    <item type="id" name="audio_btn" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ee7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ee8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0ee9" />
@@ -3786,12 +3786,12 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f22" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f23" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f24" />
-    <item type="id" name="searchList" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f25" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f26" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f27" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f28" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f29" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f2a" />
+    <item type="id" name="searchList" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f2b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f2c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f2d" />
@@ -3827,19 +3827,19 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f4b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f4c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f4d" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f4e" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f4f" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f50" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f51" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f52" />
     <item type="id" name="notification_root" />
     <item type="id" name="notification_icon" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f50" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f55" />
     <item type="id" name="notification_title" />
     <item type="id" name="notification_progress" />
     <item type="id" name="notification_content" />
     <item type="id" name="notif_pro_bar_layout" />
     <item type="id" name="notif_pro_bar" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f56" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f57" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f58" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f59" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f5a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f5b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f5c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a0f5d" />
@@ -4468,12 +4468,12 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11cc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11cd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11ce" />
-    <item type="id" name="title_container" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11cf" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11d0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11d1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11d2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11d3" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11d4" />
+    <item type="id" name="title_container" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11d5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11d6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11d7" />
@@ -4485,12 +4485,12 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11dd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11de" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11df" />
-    <item type="id" name="tabhost" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11e0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11e1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11e2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11e3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11e4" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11e5" />
+    <item type="id" name="tabhost" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11e6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11e7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a11e8" />
@@ -4557,9 +4557,9 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1225" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1226" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1227" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1228" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1229" />
     <item type="id" name="listen_panel_send_tv" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1229" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a122a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a122b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a122c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a122d" />
@@ -4597,9 +4597,9 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a124d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a124e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a124f" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1250" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1251" />
     <item type="id" name="ivTitleprogress" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1251" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1252" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1253" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1254" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1255" />
@@ -4755,9 +4755,9 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a12eb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a12ec" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a12ed" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a12ee" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a12ef" />
     <item type="id" name="pic" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a12ef" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a12f0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a12f1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a12f2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a12f3" />
@@ -4906,9 +4906,9 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1382" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1383" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1384" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1385" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1386" />
     <item type="id" name="main" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1386" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1387" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1388" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1389" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a138a" />
@@ -5814,17 +5814,17 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a170e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a170f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1710" />
-    <item type="id" name="change_phone_num_btn" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1711" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1712" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1713" />
-    <item type="id" name="input_note_txt" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1714" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1715" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1716" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1717" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1718" />
+    <item type="id" name="change_phone_num_btn" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1719" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a171a" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a171b" />
+    <item type="id" name="input_note_txt" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a171c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a171d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a171e" />
@@ -5833,15 +5833,15 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1721" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1722" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1723" />
-    <item type="id" name="title_txt" />
-    <item type="id" name="card_info_show" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1724" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1725" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1726" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1727" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1728" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1729" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a172a" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a172b" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a172c" />
+    <item type="id" name="title_txt" />
+    <item type="id" name="card_info_show" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a172d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a172e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a172f" />
@@ -5877,7 +5877,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a174d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a174e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a174f" />
-    <item type="id" name="ivTitleBtnRightMore" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1750" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1751" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1752" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1753" />
@@ -5886,8 +5886,8 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1756" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1757" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1758" />
-    <item type="id" name="use_phone_card" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a175a" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1759" />
+    <item type="id" name="ivTitleBtnRightMore" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a175b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a175c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a175d" />
@@ -5896,7 +5896,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1760" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1761" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1762" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1763" />
+    <item type="id" name="use_phone_card" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1764" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1765" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1766" />
@@ -6438,11 +6438,11 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a197e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a197f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1980" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1981" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1982" />
     <item type="id" name="btn_cancel_search" />
     <item type="id" name="et_search_keyword" />
     <item type="id" name="ib_clear_text" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1984" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1985" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1986" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1987" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1988" />
@@ -7284,19 +7284,19 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1ccc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1ccd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cce" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1ccf" />
     <item type="id" name="account_switch" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cd0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cd1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cd2" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cd3" />
     <item type="id" name="qqsetting2_msg_notify" />
     <item type="id" name="qqsetting2_msg_history" />
     <item type="id" name="qqsetting2_permission_privacy" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cd6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cd7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cd8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cd9" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cda" />
     <item type="id" name="about" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cdb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cdc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cdd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1cde" />
@@ -7582,13 +7582,13 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1df6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1df7" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1df8" />
-    <item type="id" name="press_to_speak_iv" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1df9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1dfa" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1dfb" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1dfc" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1dfd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1dfe" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1dff" />
+    <item type="id" name="press_to_speak_iv" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e00" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e01" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e02" />
@@ -7606,8 +7606,8 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e0e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e0f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e10" />
-    <item type="id" name="album_list" />
-    <item type="id" name="album_item_title" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e11" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e12" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e13" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e14" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e15" />
@@ -7615,8 +7615,8 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e17" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e18" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e19" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e1a" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e1b" />
+    <item type="id" name="album_list" />
+    <item type="id" name="album_item_title" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e1c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e1d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a1e1e" />
@@ -8113,7 +8113,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2009" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a200a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a200b" />
-    <item type="id" name="conversation_head" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a200c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a200d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a200e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a200f" />
@@ -8122,7 +8122,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2012" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2013" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2014" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2015" />
+    <item type="id" name="conversation_head" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2016" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2017" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2018" />
@@ -8175,7 +8175,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2047" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2048" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2049" />
-    <item type="id" name="ug_btn" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a204a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a204b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a204c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a204d" />
@@ -8184,7 +8184,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2050" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2051" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2052" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2053" />
+    <item type="id" name="ug_btn" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2054" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2055" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2056" />
@@ -8430,21 +8430,21 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2146" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2147" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2148" />
-    <item type="id" name="laba_entrys_layout" />
-    <item type="id" name="qzone_feed_entry" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2149" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a214a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a214b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a214c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a214d" />
-    <item type="id" name="qzone_feed_reddot" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a214e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a214f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2150" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2151" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2152" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2153" />
+    <item type="id" name="laba_entrys_layout" />
+    <item type="id" name="qzone_feed_entry" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2154" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2155" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2156" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2157" />
+    <item type="id" name="qzone_feed_reddot" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2158" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2159" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a215a" />
@@ -8583,7 +8583,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21df" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21e0" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21e1" />
-    <item type="id" name="nearby_ok" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21e2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21e3" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21e4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21e5" />
@@ -8592,7 +8592,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21e8" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21e9" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21ea" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21eb" />
+    <item type="id" name="nearby_ok" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21ec" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21ed" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a21ee" />
@@ -9093,11 +9093,11 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23dd" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23de" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23df" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23e0" />
+    <item type="id" name="photo_list_gv" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23e1" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23e2" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23e3" />
-    <item type="id" name="photo_list_gv" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23e4" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23e5" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23e6" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a23e7" />
@@ -9429,9 +9429,9 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a252d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a252e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a252f" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2530" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2531" />
     <item type="id" name="richstatus_txt" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2531" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2532" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2533" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2534" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2535" />
@@ -9441,28 +9441,28 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2539" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a253a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a253b" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a253c" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a253d" />
     <item type="id" name="midcontent_list" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a253f" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a253d" />
     <item type="id" name="mypocket" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2541" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a253f" />
     <item type="id" name="myDressup" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2541" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2542" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2543" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2544" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2545" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2546" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2547" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2548" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2549" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a254a" />
     <item type="id" name="settings" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a254a" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a254b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a254c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a254d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a254e" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a254f" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2550" />
     <item type="id" name="nightmode_txt" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2550" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2551" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2552" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2553" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2554" />
@@ -9480,19 +9480,19 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2560" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2561" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2562" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2563" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2564" />
     <item type="id" name="item_txt" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2564" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2565" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2566" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2567" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2568" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2569" />
     <item type="id" name="qq_setting_sync_msg_switch" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2569" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a256a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a256b" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a256c" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a256d" />
     <item type="id" name="delRecentList" />
     <item type="id" name="delChatHistory" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a256e" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a256f" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2570" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2571" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2572" />
@@ -9502,9 +9502,9 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2576" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2577" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2578" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2579" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a257a" />
     <item type="id" name="qq_setting_qianming_shuoshuo" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a257a" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a257b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a257c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a257d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a257e" />
@@ -10528,10 +10528,21 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2978" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2979" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a297a" />
-    <item type="id" name="btn_back" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a297b" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a297c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a297d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a297e" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a297f" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2980" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2981" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2982" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2983" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2984" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2985" />
+    <item type="id" name="btn_back" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2987" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2988" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2989" />
     <item type="id" name="qvip_pay_input_root" />
     <item type="id" name="qvip_pay_id_buyinput_buyinfo" />
     <item type="id" name="qvip_pay_id_buyinput_close" />
@@ -10549,19 +10560,8 @@
     <item type="id" name="qvip_pay_id_buyinput_pay_discount" />
     <item type="id" name="qvip_pay_id_buyinput_paybtn" />
     <item type="id" name="qvip_pay_keyboard" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2990" />
-    <item type="id" name="qvip_pay_vip_icon" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2992" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2993" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2994" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2995" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2996" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2997" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2998" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2999" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a299a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a299b" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a299c" />
+    <item type="id" name="qvip_pay_vip_icon" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a299d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a299e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a299f" />
@@ -10662,7 +10662,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a29fe" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a29ff" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a00" />
-    <item type="id" name="newer_mask_layout" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a01" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a02" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a03" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a04" />
@@ -10673,7 +10673,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a09" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a0a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a0b" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a0c" />
+    <item type="id" name="newer_mask_layout" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a0d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a0e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a2a0f" />
@@ -13249,7 +13249,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3419" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a341a" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a341b" />
-    <item type="id" name="input_edit" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a341c" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a341d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a341e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a341f" />
@@ -13301,7 +13301,7 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a344d" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a344e" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a344f" />
-    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3450" />
+    <item type="id" name="input_edit" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3451" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3452" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3453" />
@@ -13739,4 +13739,70 @@
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3603" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3604" />
     <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3605" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3606" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3607" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3608" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3609" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a360a" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a360b" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a360c" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a360d" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a360e" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a360f" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3610" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3611" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3612" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3613" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3614" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3615" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3616" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3617" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3618" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3619" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a361a" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a361b" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a361c" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a361d" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a361e" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a361f" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3620" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3621" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3622" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3623" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3624" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3625" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3626" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3627" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3628" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3629" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a362a" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a362b" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a362c" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a362d" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a362e" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a362f" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3630" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3631" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3632" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3633" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3634" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3635" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3636" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3637" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3638" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3639" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a363a" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a363b" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a363c" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a363d" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a363e" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a363f" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3640" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3641" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3642" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3643" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3644" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3645" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3646" />
+    <item type="id" name="APKTOOL_DUPLICATE_id_0x7f0a3647" />
 </resources>

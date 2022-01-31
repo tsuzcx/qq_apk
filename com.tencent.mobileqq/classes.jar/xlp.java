@@ -1,27 +1,50 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.FlowControlDownloadStruct;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import java.util.LinkedList;
 
 public class xlp
-  extends TouchDelegate
+  extends Handler
 {
-  public xlp(DragTextView paramDragTextView, Rect paramRect, View paramView)
+  private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
+  
+  public xlp(PreloadManager paramPreloadManager, Looper paramLooper)
   {
-    super(paramRect, paramView);
+    super(paramLooper);
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  private void a()
   {
-    if (this.a.getVisibility() != 0) {
-      return false;
+    PreloadManager.FlowControlDownloadStruct localFlowControlDownloadStruct = (PreloadManager.FlowControlDownloadStruct)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager, localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_JavaUtilLinkedList.addLast((PreloadManager.FlowControlDownloadStruct)paramMessage.obj);
+      } while (this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Boolean = true;
+      sendEmptyMessage(2);
+      return;
     }
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    boolean bool = super.onTouchEvent(paramMotionEvent);
-    paramMotionEvent.setLocation(f1, f2);
-    return bool;
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+    {
+      a();
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

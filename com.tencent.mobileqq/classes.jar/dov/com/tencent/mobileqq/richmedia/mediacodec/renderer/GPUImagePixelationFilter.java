@@ -11,7 +11,7 @@ import java.io.IOException;
 public class GPUImagePixelationFilter
   extends GPUDrawPartFilter
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.a(BaseApplicationImpl.getContext(), 2131230755);
+  private static String jdField_a_of_type_JavaLangString = GlUtil.a(BaseApplicationImpl.getContext(), 2131230756);
   private float jdField_a_of_type_Float = 30.0F;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private boolean jdField_a_of_type_Boolean;
@@ -50,20 +50,6 @@ public class GPUImagePixelationFilter
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  public void b()
-  {
-    super.b();
-    this.e = GLES20.glGetUniformLocation(a(), "imageWidthFactor");
-    a(this.e, "imageWidthFactor");
-    this.f = GLES20.glGetUniformLocation(a(), "imageHeightFactor");
-    a(this.f, "imageHeightFactor");
-    this.g = GLES20.glGetUniformLocation(a(), "pixel");
-    a(this.g, "mPixelLocation");
-    this.i = GLES20.glGetUniformLocation(a(), "sTexture2");
-    a(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
   public void b(String paramString)
   {
     this.jdField_a_of_type_Boolean = true;
@@ -79,7 +65,21 @@ public class GPUImagePixelationFilter
     }
   }
   
-  protected void d()
+  public void c()
+  {
+    super.c();
+    this.e = GLES20.glGetUniformLocation(a(), "imageWidthFactor");
+    a(this.e, "imageWidthFactor");
+    this.f = GLES20.glGetUniformLocation(a(), "imageHeightFactor");
+    a(this.f, "imageHeightFactor");
+    this.g = GLES20.glGetUniformLocation(a(), "pixel");
+    a(this.g, "mPixelLocation");
+    this.i = GLES20.glGetUniformLocation(a(), "sTexture2");
+    a(this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  protected void e()
   {
     if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
@@ -92,9 +92,9 @@ public class GPUImagePixelationFilter
     }
   }
   
-  protected void e()
+  protected void f()
   {
-    super.e();
+    super.f();
     GLES20.glUniform1f(this.e, this.jdField_b_of_type_Float);
     GLES20.glUniform1f(this.f, this.jdField_c_of_type_Float);
     GLES20.glUniform1f(this.g, this.jdField_a_of_type_Float);

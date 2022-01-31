@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.CUOpenCardGuideMng;
+import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
 
-public class tnt
+class tnt
   implements Runnable
 {
-  public tnt(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  tnt(tns paramtns) {}
   
   public void run()
   {
-    CUOpenCardGuideMng localCUOpenCardGuideMng = (CUOpenCardGuideMng)this.a.app.getManager(220);
-    localCUOpenCardGuideMng.a();
-    this.a.a = localCUOpenCardGuideMng.a(0);
     if (QLog.isColorLevel()) {
-      QLog.i("QQSetting2Activity", 2, String.format(Locale.getDefault(), "cu_open_card_guide later init entry: %s ", new Object[] { this.a.a }));
+      QLog.d("QQLSActivity", 2, "do SmoothFinish at run");
     }
-    this.a.runOnUiThread(new tnu(this));
+    QQLSActivity.g(this.a.a);
+    this.a.a.finish();
   }
 }
 

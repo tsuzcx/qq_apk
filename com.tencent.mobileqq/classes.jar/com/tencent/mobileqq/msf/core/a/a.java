@@ -583,23 +583,81 @@ public class a
     return true;
   }
   
+  /* Error */
   public static void a(boolean paramBoolean)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "msfCore setAutoStaring " + paramBoolean);
-      }
-      A.set(paramBoolean);
-      if (MsfStore.getNativeConfigStore() != null) {
-        MsfStore.getNativeConfigStore().setConfig("_msf_isBootingKey", String.valueOf(paramBoolean));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "storeAutoStaring " + paramBoolean);
-      }
-      return;
-    }
-    finally {}
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   6: ifeq +29 -> 35
+    //   9: ldc 34
+    //   11: iconst_2
+    //   12: new 175	java/lang/StringBuilder
+    //   15: dup
+    //   16: invokespecial 176	java/lang/StringBuilder:<init>	()V
+    //   19: ldc_w 363
+    //   22: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: iload_0
+    //   26: invokevirtual 366	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokestatic 192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: getstatic 118	com/tencent/mobileqq/msf/core/a/a:A	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   38: iload_0
+    //   39: invokevirtual 369	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   42: invokestatic 375	com/tencent/mobileqq/msf/core/MsfStore:getNativeConfigStore	()Lcom/tencent/msf/boot/config/NativeConfigStore;
+    //   45: astore_1
+    //   46: aload_1
+    //   47: ifnull +15 -> 62
+    //   50: invokestatic 375	com/tencent/mobileqq/msf/core/MsfStore:getNativeConfigStore	()Lcom/tencent/msf/boot/config/NativeConfigStore;
+    //   53: ldc 58
+    //   55: iload_0
+    //   56: invokestatic 379	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   59: invokevirtual 385	com/tencent/msf/boot/config/NativeConfigStore:setConfig	(Ljava/lang/String;Ljava/lang/String;)V
+    //   62: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   65: ifeq +29 -> 94
+    //   68: ldc 34
+    //   70: iconst_2
+    //   71: new 175	java/lang/StringBuilder
+    //   74: dup
+    //   75: invokespecial 176	java/lang/StringBuilder:<init>	()V
+    //   78: ldc_w 387
+    //   81: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: iload_0
+    //   85: invokevirtual 366	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: invokestatic 192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   94: ldc 2
+    //   96: monitorexit
+    //   97: return
+    //   98: astore_1
+    //   99: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   102: ifeq -40 -> 62
+    //   105: ldc 34
+    //   107: iconst_2
+    //   108: ldc_w 389
+    //   111: aload_1
+    //   112: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   115: goto -53 -> 62
+    //   118: astore_1
+    //   119: ldc 2
+    //   121: monitorexit
+    //   122: aload_1
+    //   123: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	124	0	paramBoolean	boolean
+    //   45	2	1	localNativeConfigStore	NativeConfigStore
+    //   98	14	1	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
+    //   118	5	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   50	62	98	java/lang/UnsatisfiedLinkError
+    //   3	35	118	finally
+    //   35	46	118	finally
+    //   50	62	118	finally
+    //   62	94	118	finally
+    //   99	115	118	finally
   }
   
   public static boolean a(String paramString)

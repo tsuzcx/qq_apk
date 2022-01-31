@@ -1,22 +1,16 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class uur
-  implements ArkAppCenter.OnGetAppIcon
+public class uur
+  implements Runnable
 {
-  uur(uuq paramuuq) {}
+  public uur(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    if (paramBitmap != null)
-    {
-      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-    }
+    this.a.b();
+    QQToast.a(this.a.a, this.a.a.getString(2131433399), 0).a();
   }
 }
 

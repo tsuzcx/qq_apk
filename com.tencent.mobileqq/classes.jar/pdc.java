@@ -1,61 +1,65 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.webview.swift.SwiftWebViewFragmentSupporter;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.widget.Button;
+import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.biz.troop.file.TroopFileProtocol.CreateFolderObserver;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 public class pdc
-  implements WXShareHelper.WXShareListener
+  extends TroopFileProtocol.CreateFolderObserver
 {
-  public pdc(Share paramShare, String paramString) {}
+  public pdc(MoveFileActivity paramMoveFileActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  protected void a(boolean paramBoolean, int paramInt, TroopFileInfo paramTroopFileInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare.k == null) || (!this.jdField_a_of_type_ComTencentBizWebviewpluginShare.k.equals(paramBaseResp.transaction))) {}
-    int i;
-    String str1;
-    String str2;
-    String str3;
+    if (this.a.getActivity().isFinishing()) {
+      return;
+    }
+    this.a.b();
+    int i = this.a.getActivity().getResources().getDimensionPixelSize(2131558448);
+    if (paramBoolean)
+    {
+      MoveFileActivity.a(this.a).add(0, paramTroopFileInfo);
+      MoveFileActivity.c(this.a, 0);
+      MoveFileActivity.a(this.a).setEnabled(true);
+      MoveFileActivity.a(this.a).setBackgroundResource(2130838514);
+      MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131624424);
+      MoveFileActivity.a(this.a).i(paramTroopFileInfo);
+      MoveFileActivity.a(this.a).notifyDataSetChanged();
+      ReportController.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "new_suc", 0, 0, this.a.jdField_a_of_type_Long + "", paramTroopFileInfo.b, "", "");
+      QQToast.a(this.a.getActivity(), 2, "创建成功", 0).b(i);
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      paramTroopFileInfo = this.a.getString(2131430232);
+      QQToast.a(this.a.getActivity(), 1, paramTroopFileInfo, 0).b(i);
+      return;
+    case -313: 
+      paramTroopFileInfo = this.a.getString(2131429717);
+      ReportController.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "repeat", 0, 0, this.a.jdField_a_of_type_Long + "", "1", "", "");
+    }
     for (;;)
     {
+      this.a.a(this.a.getResources().getString(2131429708), null, this.a.jdField_a_of_type_JavaLangString, paramTroopFileInfo);
       return;
-      BaseApplicationImpl.getContext();
-      switch (paramBaseResp.errCode)
-      {
-      case -2: 
-      case -1: 
-      default: 
-        QRUtils.a(1, 2131435303);
-        return;
-      }
-      QRUtils.a(2, 2131435302);
-      if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a instanceof SwiftWebViewFragmentSupporter))
-      {
-        paramBaseResp = ((SwiftWebViewFragmentSupporter)this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a).b();
-        if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.e == 1) {}
-        for (i = 1009; paramBaseResp != null; i = 1004)
-        {
-          str1 = paramBaseResp.j;
-          str2 = paramBaseResp.i;
-          str3 = AccountDetailActivity.a(paramBaseResp.g);
-          String str4 = paramBaseResp.k;
-          if ((str4 == null) || ("".equals(str4))) {
-            break label200;
-          }
-          PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, str1, paramBaseResp.g, str3, false);
-          return;
-        }
-      }
+      paramTroopFileInfo = this.a.getString(2131429718);
+      ReportController.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "1", "", "");
+      continue;
+      paramTroopFileInfo = this.a.getString(2131429720);
+      QQToast.a(this.a.getActivity(), 1, paramTroopFileInfo, 0).b(i);
+      return;
+      paramTroopFileInfo = this.a.getString(2131429722);
+      QQToast.a(this.a.getActivity(), 1, paramTroopFileInfo, 0).b(i);
+      return;
+      paramTroopFileInfo = this.a.getString(2131429719);
+      QQToast.a(this.a.getActivity(), 1, paramTroopFileInfo, 0).b(i);
     }
-    label200:
-    if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.e == 1) {
-      i = 1003;
-    }
-    PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str2, str1, this.jdField_a_of_type_JavaLangString, str3, false);
   }
 }
 

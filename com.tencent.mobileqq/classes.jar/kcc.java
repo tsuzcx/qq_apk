@@ -1,25 +1,49 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.av.widget.RotateLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
+import com.tencent.qphone.base.util.QLog;
 
 public class kcc
-  implements Animation.AnimationListener
+  implements Animator.AnimatorListener
 {
-  private kcc(VideoLayerUI paramVideoLayerUI) {}
+  public kcc(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    VideoLayerUI.a(this.a).setVisibility(4);
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationCancel");
+    }
+    this.a.b(4, false);
+    QavVideoRecordUICtrl.b(this.a).requestLayout();
+    QavVideoRecordUICtrl.a(this.a, false);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationEnd");
+    }
+    this.a.c(4);
+    QavVideoRecordUICtrl.b(this.a).requestLayout();
+    QavVideoRecordUICtrl.a(this.a, false);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationStart");
+    }
+    QavVideoRecordUICtrl.d(this.a).setVisibility(0);
+    QavVideoRecordUICtrl.d(this.a).setAlpha(0.0F);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcc
  * JD-Core Version:    0.7.0.1
  */

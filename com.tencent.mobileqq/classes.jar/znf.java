@@ -1,66 +1,112 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class znf
+  extends FriendListObserver
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  String h;
+  public znf(MayknowRecommendManager paramMayknowRecommendManager) {}
   
-  public znf(StartAppCheckHandler paramStartAppCheckHandler, String paramString)
+  protected void onAddFriend(String paramString)
   {
-    this.h = paramString;
-    a();
+    if (QLog.isColorLevel()) {
+      QLog.d("MayknowRecommendManager", 2, "onAddFriend " + paramString);
+    }
+    Iterator localIterator;
+    try
+    {
+      localIterator = MayknowRecommendManager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        if (((MayKnowRecommend)localIterator.next()).uin.equals(paramString)) {
+          localIterator.remove();
+        }
+      }
+      localIterator = MayknowRecommendManager.b(this.a).iterator();
+    }
+    finally {}
+    while (localIterator.hasNext()) {
+      if (((MayKnowRecommend)localIterator.next()).uin.equals(paramString)) {
+        localIterator.remove();
+      }
+    }
+    ((FriendListHandler)MayknowRecommendManager.a(this.a).a(1)).a(108, true, null);
   }
   
-  public void a()
+  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
   {
-    if (this.h == null) {
-      return;
+    int m = 0;
+    int k = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("MayknowRecommendManager", 2, "isSuccess :" + paramBoolean + " onAddReqStatesChanged: " + paramString);
     }
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("AppStartedObserver", 0);
-    this.jdField_a_of_type_Long = localSharedPreferences.getLong(this.h + "_timeToWait", 0L);
-    this.jdField_b_of_type_Long = localSharedPreferences.getLong(this.h + "_lastReportTime", 0L);
-    this.jdField_c_of_type_Long = localSharedPreferences.getLong(this.h + "_lastUpdateTime", 0L);
-    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_sigHash", "");
-    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_md5", "");
-    this.jdField_a_of_type_Int = localSharedPreferences.getInt(this.h + "_serverResult", 0);
-    this.jdField_c_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_dlgTitle", "");
-    this.d = localSharedPreferences.getString(this.h + "_dlgContent", "");
-    this.e = localSharedPreferences.getString(this.h + "_dlgLButton", "");
-    this.f = localSharedPreferences.getString(this.h + "_dlgRButoon", "");
-    this.g = localSharedPreferences.getString(this.h + "_dlgUrl", "");
-  }
-  
-  public void b()
-  {
-    if (this.h == null) {
-      return;
+    int i;
+    int j;
+    if (paramBoolean)
+    {
+      i = 0;
+      j = k;
     }
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("AppStartedObserver", 0).edit();
-    localEditor.putLong(this.h + "_timeToWait", this.jdField_a_of_type_Long);
-    localEditor.putLong(this.h + "_lastReportTime", this.jdField_b_of_type_Long);
-    localEditor.putLong(this.h + "_lastUpdateTime", this.jdField_c_of_type_Long);
-    localEditor.putString(this.h + "_sigHash", this.jdField_a_of_type_JavaLangString);
-    localEditor.putString(this.h + "_md5", this.jdField_b_of_type_JavaLangString);
-    localEditor.putInt(this.h + "_serverResult", this.jdField_a_of_type_Int);
-    localEditor.putString(this.h + "_dlgTitle", this.jdField_c_of_type_JavaLangString);
-    localEditor.putString(this.h + "_dlgContent", this.d);
-    localEditor.putString(this.h + "_dlgLButton", this.e);
-    localEditor.putString(this.h + "_dlgRButoon", this.f);
-    localEditor.putString(this.h + "_dlgUrl", this.g);
-    localEditor.commit();
+    for (;;)
+    {
+      try
+      {
+        if (i < MayknowRecommendManager.a(this.a).size())
+        {
+          if (((MayKnowRecommend)MayknowRecommendManager.a(this.a).get(i)).uin.equals(paramString)) {
+            ((MayKnowRecommend)MayknowRecommendManager.a(this.a).get(i)).friendStatus = 1;
+          }
+        }
+        else
+        {
+          if (j < MayknowRecommendManager.b(this.a).size())
+          {
+            if (!((MayKnowRecommend)MayknowRecommendManager.b(this.a).get(j)).uin.equals(paramString)) {
+              break label380;
+            }
+            ((MayKnowRecommend)MayknowRecommendManager.b(this.a).get(j)).friendStatus = 1;
+            break label380;
+            FriendsManager localFriendsManager = (FriendsManager)MayknowRecommendManager.a(this.a).getManager(50);
+            i = 0;
+            j = m;
+            if (i < MayknowRecommendManager.a(this.a).size())
+            {
+              if ((!((MayKnowRecommend)MayknowRecommendManager.a(this.a).get(i)).uin.equals(paramString)) || (localFriendsManager.b(paramString))) {
+                break label389;
+              }
+              ((MayKnowRecommend)MayknowRecommendManager.a(this.a).get(i)).friendStatus = 0;
+              break label389;
+            }
+            if (j < MayknowRecommendManager.b(this.a).size())
+            {
+              if ((!((MayKnowRecommend)MayknowRecommendManager.b(this.a).get(j)).uin.equals(paramString)) || (localFriendsManager.b(paramString))) {
+                break label396;
+              }
+              ((MayKnowRecommend)MayknowRecommendManager.b(this.a).get(j)).friendStatus = 0;
+              break label396;
+            }
+          }
+          ((FriendListHandler)MayknowRecommendManager.a(this.a).a(1)).a(108, true, null);
+          return;
+        }
+      }
+      finally {}
+      i += 1;
+      break;
+      label380:
+      j += 1;
+      continue;
+      label389:
+      i += 1;
+      continue;
+      label396:
+      j += 1;
+    }
   }
 }
 

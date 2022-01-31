@@ -40,9 +40,9 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
-import qau;
-import qav;
-import qaw;
+import qfm;
+import qfn;
+import qfo;
 
 public class DevicePttItemBuilder
   extends PttItemBuilder
@@ -61,7 +61,7 @@ public class DevicePttItemBuilder
     }
     int i;
     if (paramMessageForPtt.isSendFromLocal()) {
-      if ((paramMessageForPtt.url != null) && (paramMessageForPtt.url.startsWith(AppConstants.aI))) {
+      if ((paramMessageForPtt.url != null) && (paramMessageForPtt.url.startsWith(AppConstants.aJ))) {
         if (paramMessageForPtt.fileSize > 0L) {
           i = 1003;
         }
@@ -103,7 +103,7 @@ public class DevicePttItemBuilder
             {
               i = 2005;
             }
-            else if ((paramMessageForPtt.url.startsWith(AppConstants.aI)) && (FileUtils.a(paramMessageForPtt.url)))
+            else if ((paramMessageForPtt.url.startsWith(AppConstants.aJ)) && (FileUtils.a(paramMessageForPtt.url)))
             {
               i = 2003;
             }
@@ -159,17 +159,17 @@ public class DevicePttItemBuilder
     if (localMessageForPtt.isSendFromLocal())
     {
       paramView = ActionSheet.a(this.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131433635);
-      paramView.c(2131433015);
-      paramView.a(new qau(this, localMessageForPtt, paramView));
+      paramView.b(2131433649);
+      paramView.c(2131433029);
+      paramView.a(new qfm(this, localMessageForPtt, paramView));
       paramView.show();
       return;
     }
     ActionSheet localActionSheet = ActionSheet.a(this.jdField_a_of_type_AndroidContentContext);
     localActionSheet.a(2131427799);
     localActionSheet.b(2131427800);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new qav(this, paramView, localMessageForPtt, localActionSheet));
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new qfn(this, paramView, localMessageForPtt, localActionSheet));
     localActionSheet.show();
   }
   
@@ -232,7 +232,7 @@ public class DevicePttItemBuilder
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qaw(this, paramMessageForPtt));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qfo(this, paramMessageForPtt));
   }
   
   protected void a(PttItemBuilder.Holder paramHolder, MessageForPtt paramMessageForPtt, int paramInt, boolean paramBoolean)
@@ -270,7 +270,7 @@ public class DevicePttItemBuilder
       paramView.setId(2131362000);
       TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
       localTextView.setId(2131361999);
-      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494227));
+      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494233));
       Object localObject = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject).addRule(15, -1);
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);

@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.app.MessageRoamManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
 
 public class zhg
   implements Runnable
 {
-  public zhg(MessageRoamManager paramMessageRoamManager) {}
+  public zhg(BaseActivity paramBaseActivity) {}
   
   public void run()
   {
-    this.a.n();
+    ActivityLifecycle.onPause(this.a.getActivity());
   }
 }
 

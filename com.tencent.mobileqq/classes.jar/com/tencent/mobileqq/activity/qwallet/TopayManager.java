@@ -45,12 +45,12 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import xbp;
-import xbr;
-import xbs;
-import xbt;
-import xbw;
-import xbx;
+import xhg;
+import xhi;
+import xhj;
+import xhk;
+import xhn;
+import xho;
 
 public class TopayManager
 {
@@ -70,7 +70,7 @@ public class TopayManager
     jdField_a_of_type_Int = -1;
     jdField_a_of_type_JavaLangString = "recommend";
     jdField_b_of_type_JavaLangString = "tips";
-    jdField_a_of_type_AndroidOsHandler = new xbs(Looper.myLooper());
+    jdField_a_of_type_AndroidOsHandler = new xhj(Looper.myLooper());
     jdField_a_of_type_ComTencentMobileqqAppQWalletAuthObserver = new QWalletAuthObserver(jdField_a_of_type_AndroidOsHandler);
   }
   
@@ -119,7 +119,7 @@ public class TopayManager
       if (jdField_a_of_type_Int == -1)
       {
         jdField_a_of_type_Int = 1;
-        ThreadManager.getFileThreadHandler().post(new xbp(paramInt1, paramInt2, paramBoolean));
+        ThreadManager.getFileThreadHandler().post(new xhg(paramInt1, paramInt2, paramBoolean));
         return paramTopayListener;
       }
     }
@@ -222,10 +222,10 @@ public class TopayManager
       break label135;
       if ((localArrayList == null) || (localArrayList.size() <= 0))
       {
-        QQToast.a(paramSelectMemberActivity, paramSelectMemberActivity.getString(2131432279), 0).a();
+        QQToast.a(paramSelectMemberActivity, paramSelectMemberActivity.getString(2131432290), 0).a();
         return;
       }
-      paramArrayList = new xbt(new WeakReference(paramSelectMemberActivity), localArrayList);
+      paramArrayList = new xhk(new WeakReference(paramSelectMemberActivity), localArrayList);
       localObject1 = paramSelectMemberActivity.getIntent().getExtras();
       paramSelectMemberActivity = DialogUtil.a(paramSelectMemberActivity, (String)localObject2, ((Bundle)localObject1).getString("choose_friend_content"), ((Bundle)localObject1).getString("choose_friend_subcontent"), paramSelectMemberActivity.j, null, paramArrayList, paramArrayList, 36, false);
       ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.windowshow", 0, 0, "", "", "", "");
@@ -355,7 +355,7 @@ public class TopayManager
       if ((paramBoolean2) || (jdField_a_of_type_WalletPfaFriendRsp == null)) {
         break;
       }
-      ThreadManager.getFileThreadHandler().post(new xbr());
+      ThreadManager.getFileThreadHandler().post(new xhi());
       return;
       jdField_a_of_type_WalletPfaFriendRsp = paramPfaFriendRsp;
       break label85;
@@ -412,8 +412,8 @@ public class TopayManager
   
   private static void d(Activity paramActivity, List paramList1, List paramList2)
   {
-    xbw localxbw = new xbw(paramActivity);
-    paramActivity = DialogUtil.a(paramActivity, 230, null, "代付请求已发送", "返回商户", "留在QQ", new xbx(paramActivity, paramList1, paramList2), localxbw);
+    xhn localxhn = new xhn(paramActivity);
+    paramActivity = DialogUtil.a(paramActivity, 230, null, "代付请求已发送", "返回商户", "留在QQ", new xho(paramActivity, paramList1, paramList2), localxhn);
     paramActivity.setCancelable(false);
     paramActivity.setCanceledOnTouchOutside(false);
     paramActivity.show();

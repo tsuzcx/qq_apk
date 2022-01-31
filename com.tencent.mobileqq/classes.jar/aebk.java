@@ -1,27 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.leba.view.LebaFeedsViewBase;
+import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
 
 public class aebk
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public aebk(LebaFeedsViewBase paramLebaFeedsViewBase) {}
+  public aebk(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (!this.a.b) {}
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.a.a(true);
-      return false;
-    }
-    this.a.a(false);
-    return false;
+    ImaxAdVideoPreloadManager.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

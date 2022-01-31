@@ -1,18 +1,38 @@
-import com.tencent.mobileqq.doutu.DoutuManager;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.XListView;
 
 public class abyc
-  implements Runnable
+  implements Handler.Callback
 {
-  public abyc(DoutuManager paramDoutuManager) {}
+  public abyc(SearchResultActivity paramSearchResultActivity) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.d();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      SearchResultActivity.a(this.a);
+      continue;
+      SearchResultActivity.b(this.a);
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      QQToast.a(this.a, 2131434827, 0).b(this.a.getTitleBarHeight());
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abyc
  * JD-Core Version:    0.7.0.1
  */

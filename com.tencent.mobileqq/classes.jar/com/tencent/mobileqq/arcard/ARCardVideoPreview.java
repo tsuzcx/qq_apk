@@ -8,8 +8,8 @@ import com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
 public class ARCardVideoPreview
   extends HWVideoPlayView
 {
-  private int f;
-  private int g;
+  private int h;
+  private int i;
   
   public ARCardVideoPreview(Context paramContext)
   {
@@ -23,13 +23,13 @@ public class ARCardVideoPreview
   
   protected void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    super.a(paramArrayOfFloat1, GPUBaseFilter.a(this.f, this.g, this.b, this.c));
+    super.a(paramArrayOfFloat1, GPUBaseFilter.a(this.h, this.i, this.b, this.c));
   }
   
   public void setVideoSize(int paramInt1, int paramInt2)
   {
-    this.f = paramInt1;
-    this.g = paramInt2;
+    this.h = paramInt1;
+    this.i = paramInt2;
   }
 }
 

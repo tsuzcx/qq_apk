@@ -78,20 +78,20 @@ public class TroopMessageSettingAdapter
     }
     if (paramInt2 <= 1)
     {
-      paramView.setBackgroundResource(2130838623);
+      paramView.setBackgroundResource(2130838629);
       return;
     }
     if (paramInt1 == 0)
     {
-      paramView.setBackgroundResource(2130838635);
+      paramView.setBackgroundResource(2130838641);
       return;
     }
     if (paramInt1 == paramInt2 - 1)
     {
-      paramView.setBackgroundResource(2130838630);
+      paramView.setBackgroundResource(2130838636);
       return;
     }
-    paramView.setBackgroundResource(2130838633);
+    paramView.setBackgroundResource(2130838639);
   }
   
   private void a(List paramList)
@@ -116,7 +116,7 @@ public class TroopMessageSettingAdapter
         {
           localTroopInfo = new TroopInfo();
           localTroopInfo.troopuin = jdField_a_of_type_JavaLangString;
-          localTroopInfo.troopname = this.jdField_a_of_type_AndroidContentContext.getString(2131435827);
+          localTroopInfo.troopname = this.jdField_a_of_type_AndroidContentContext.getString(2131435843);
           this.jdField_a_of_type_AndroidUtilSparseArray.put(i, new ArrayList());
           ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).add(localTroopInfo);
         }
@@ -201,9 +201,9 @@ public class TroopMessageSettingAdapter
       paramViewGroup = localTroopInfo.getTroopName();
       break;
       label84:
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971574, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971600, null);
       localObject = new TroopMessageSettingAdapter.ChildType1ViewHolder(this);
-      ((TroopMessageSettingAdapter.ChildType1ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368580));
+      ((TroopMessageSettingAdapter.ChildType1ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368583));
       paramView.setTag(localObject);
       break label55;
       label135:
@@ -223,12 +223,12 @@ public class TroopMessageSettingAdapter
         }
         ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
         break;
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971573, null);
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971599, null);
         localObject = new TroopMessageSettingAdapter.ChildType0ViewHolder(this);
-        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368579));
-        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368580));
-        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375089));
-        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375088));
+        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368582));
+        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368583));
+        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375141));
+        ((TroopMessageSettingAdapter.ChildType0ViewHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375140));
         paramView.setTag(localObject);
       }
       label351:
@@ -293,13 +293,13 @@ public class TroopMessageSettingAdapter
         localView.setFocusable(true);
         localView.setTag(a(paramInt));
         return localView;
-        i = 2130971652;
+        i = 2130971681;
         continue;
-        i = 2130971655;
+        i = 2130971684;
         continue;
-        i = 2130971653;
+        i = 2130971682;
         continue;
-        i = 2130971654;
+        i = 2130971683;
       }
     }
   }

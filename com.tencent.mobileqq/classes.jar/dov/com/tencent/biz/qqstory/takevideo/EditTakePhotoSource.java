@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import ansf;
+import aoaw;
 import java.io.File;
 
 public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new ansf();
+  public static final Parcelable.Creator CREATOR = new aoaw();
   public final int a;
   @NonNull
   public final String a;

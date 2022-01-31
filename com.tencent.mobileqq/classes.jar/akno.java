@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.widget.ActionSheet;
 
 public class akno
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akno(WebViewFragment paramWebViewFragment) {}
+  public akno(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ThreadManager.postImmediately(new aknp(this), null, false);
+    if (this.a.a.isShowing())
+    {
+      this.a.a.cancel();
+      this.a.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akno
  * JD-Core Version:    0.7.0.1
  */

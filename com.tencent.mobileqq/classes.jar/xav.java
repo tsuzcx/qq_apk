@@ -1,24 +1,20 @@
-import Wallet.WalletSkinRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.phone.PhoneMatchView;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class xav
-  implements BusinessObserver
+  implements Runnable
 {
-  public xav(QWalletSkinHandler paramQWalletSkinHandler, QWalletSkinHandler.SkinListener paramSkinListener) {}
+  public xav(PhoneMatchView paramPhoneMatchView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    paramBundle = (WalletSkinRsp)paramBundle.getSerializable("rsp");
-    if ((paramBoolean) && (paramBundle != null) && (paramBundle.status == 0))
+    int i = this.a.a.c();
+    if ((i == 2) || (i == 3))
     {
-      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, 0);
-      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
+      this.a.a.h();
       return;
     }
-    QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
+    this.a.a.g();
   }
 }
 

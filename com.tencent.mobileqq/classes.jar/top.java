@@ -1,34 +1,99 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
+import com.tencent.proto.lbsshare.LBSShare.LocationResp;
+import com.tencent.proto.lbsshare.LBSShare.NearByShopsResp;
+import com.tencent.qphone.base.util.QLog;
 
-class top
-  implements Runnable
+public class top
+  extends BroadcastReceiver
 {
-  top(too paramtoo, String paramString) {}
+  public top(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
+    }
+    if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
+    {
+      this.a.j = paramIntent.getStringExtra("streetViewUrl");
+      this.a.n();
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
+          {
+            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+            localObject = new LBSShare.LocationResp();
+            paramContext = (Context)localObject;
+            if (arrayOfByte != null) {}
+            try
+            {
+              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
+              paramIntent = paramIntent.getExtras().getBundle("req");
+              this.a.a(paramContext, paramIntent);
+              return;
+            }
+            catch (InvalidProtocolBufferMicroException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  paramContext.printStackTrace();
+                }
+                paramContext = null;
+              }
+            }
+          }
+          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
+            break;
+          }
+          paramContext = paramIntent.getByteArrayExtra("data");
+        } while (paramContext == null);
+        Object localObject = new LBSShare.NearByShopsResp();
+        try
+        {
+          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
+          paramIntent = paramIntent.getExtras().getBundle("req");
+          this.a.a(paramContext, paramIntent);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramContext)
+        {
+          if (QLog.isColorLevel()) {
+            paramContext.printStackTrace();
+          }
+          this.a.a(null, null);
+          return;
+        }
+      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
+      paramContext = paramIntent.getByteArrayExtra("data");
+    } while (paramContext == null);
+    paramIntent = new LBSShare.GetShopsByIdsResp();
+    try
+    {
+      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
+      this.a.a(paramContext);
       return;
     }
-    Object localObject1 = localObject2;
-    if (!((String)localObject2).startsWith("http://"))
+    catch (InvalidProtocolBufferMicroException paramContext)
     {
-      localObject1 = localObject2;
-      if (!((String)localObject2).startsWith("https://")) {
-        localObject1 = "http://" + (String)localObject2;
+      if (QLog.isColorLevel()) {
+        paramContext.printStackTrace();
       }
+      this.a.a(null);
     }
-    localObject2 = new Intent(this.jdField_a_of_type_Too.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("is_register_uin", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("register_uin_msg", 9);
-    ((Intent)localObject2).putExtra("register_uin_class", RegisterActivity.class.getName());
-    this.jdField_a_of_type_Too.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
   }
 }
 

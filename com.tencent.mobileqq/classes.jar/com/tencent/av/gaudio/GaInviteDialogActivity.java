@@ -18,7 +18,7 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
 import com.tencent.mobileqq.utils.QAVHrMeeting;
 import com.tencent.qphone.base.util.QLog;
-import jik;
+import jkn;
 
 public class GaInviteDialogActivity
   extends GaInviteActivity
@@ -52,7 +52,7 @@ public class GaInviteDialogActivity
       String str = String.valueOf(this.jdField_a_of_type_Long);
       if (QAVHrMeeting.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(str)))
       {
-        ChatActivityUtils.ConfIdownloadTask.a(this.jdField_b_of_type_JavaLangString, str, new jik(this));
+        ChatActivityUtils.ConfIdownloadTask.a(this.jdField_b_of_type_JavaLangString, str, new jkn(this));
         return;
       }
       h();
@@ -75,7 +75,7 @@ public class GaInviteDialogActivity
     {
     default: 
       return;
-    case 2131365966: 
+    case 2131365971: 
       QAVGroupConfig.Report.a(false);
       super.e();
       return;
@@ -114,16 +114,16 @@ public class GaInviteDialogActivity
     if ((!NetworkUtil.h(super.getApplicationContext())) && ((NetworkUtil.c(super.getApplicationContext())) || (NetworkUtil.b(super.getApplicationContext())))) {
       this.d = false;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365963));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365962));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365961));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365966));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365967));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838543);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365968));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365967));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365966));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365971));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365972));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838549);
     this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364035);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364060);
     if (!this.d) {
-      ((TextView)super.findViewById(2131365965)).setVisibility(0);
+      ((TextView)super.findViewById(2131365970)).setVisibility(0);
     }
     super.c();
   }
@@ -134,7 +134,7 @@ public class GaInviteDialogActivity
       QLog.d(this.jdField_b_of_type_JavaLangString, 2, "onCreate");
     }
     super.setTheme(2131624599);
-    super.setContentView(2130969286);
+    super.setContentView(2130969284);
     super.onCreate(paramBundle);
   }
   
@@ -152,7 +152,7 @@ public class GaInviteDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteDialogActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -37,9 +37,9 @@ public abstract class GdtBaseVideoCeilingFragment
     PublicFragmentActivity.Launcher.a(paramActivity, paramGdtVideoCeilingData, PublicFragmentActivityForTool.class, paramClass);
   }
   
-  public void a(Activity paramActivity)
+  public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    super.a(paramActivity);
+    super.initWindowStyleAndAnimation(paramActivity);
     if (paramActivity == null) {
       return;
     }
@@ -47,22 +47,22 @@ public abstract class GdtBaseVideoCeilingFragment
     paramActivity.getWindow().addFlags(1024);
   }
   
-  public boolean a()
+  public boolean isWrapContent()
   {
     return false;
   }
   
-  public boolean b()
+  public boolean needImmersive()
   {
     return false;
   }
   
-  public boolean c()
+  public boolean needStatusTrans()
   {
     return false;
   }
   
-  public boolean d()
+  public boolean onBackEvent()
   {
     return (this.a != null) && (this.a.a());
   }
@@ -74,8 +74,8 @@ public abstract class GdtBaseVideoCeilingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969006, paramViewGroup, false);
-    this.a = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131364683));
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969008, paramViewGroup, false);
+    this.a = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131364707));
     this.a.a(paramBundle);
     if ((getArguments() != null) && ((getArguments().getSerializable("data") instanceof GdtVideoCeilingData))) {
       this.a.setData((GdtVideoCeilingData)getArguments().getSerializable("data"));

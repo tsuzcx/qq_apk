@@ -1,49 +1,90 @@
-import android.media.AudioManager;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetail.bean.AccountDetailDynamicInfo;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicDataManager;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class kua
-  implements Runnable
+  extends PublicAccountObserver
 {
-  public kua(VideoCoverFragment paramVideoCoverFragment, int paramInt1, int paramInt2) {}
+  public kua(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  void a()
   {
-    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) == null) {}
-    do
+    if (this.a.jdField_l_of_type_Boolean) {
+      this.a.E();
+    }
+    this.a.jdField_l_of_type_Boolean = true;
+  }
+  
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    super.a(paramInt, paramPublicAccountInfo);
+    a();
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    super.a(paramBoolean, paramInt);
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter == null) {
+      return;
+    }
+    this.a.t = true;
+    if (paramInt == 0)
     {
+      AccountDetailDynamicInfo localAccountDetailDynamicInfo = AccountDetailDynamicDataManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.d);
+      if (localAccountDetailDynamicInfo != null)
+      {
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.a(localAccountDetailDynamicInfo.b(), localAccountDetailDynamicInfo.a);
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.a(localAccountDetailDynamicInfo.b());
+      }
+    }
+    if (paramBoolean) {
+      if (this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.a() == 0)
+      {
+        paramBoolean = bool1;
+        if (paramBoolean) {
+          this.a.u();
+        }
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b(paramBoolean);
+        bool1 = paramBoolean;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "onDynamicListGet: --hasMoreData=" + paramBoolean);
+          bool1 = paramBoolean;
+        }
+        label172:
+        if (paramInt != 1) {
+          break label246;
+        }
+      }
+    }
+    for (this.a.jdField_l_of_type_Int = AccountDetailActivity.j;; this.a.jdField_l_of_type_Int = AccountDetailActivity.k) {
+      label246:
       do
       {
-        do
-        {
-          return;
-          if (!VideoCoverFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment)) {
-            break;
-          }
-          VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).setStreamVolume(3, this.jdField_a_of_type_Int, 0);
-        } while (!QLog.isColorLevel());
-        QLog.d("VideoCoverFragment", 2, "is broken by user click");
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.b(this.a.jdField_l_of_type_Int);
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.notifyDataSetChanged();
         return;
-        if (!PublicAccountAdvertisementActivity.a) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("VideoCoverFragment", 2, "is broken by user slip");
-      return;
-      int i = VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).getStreamVolume(3);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCoverFragment", 2, "change volume is " + i);
-      }
-      if (i < this.jdField_a_of_type_Int)
-      {
-        VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).adjustStreamVolume(3, 1, 0);
-        VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).postDelayed(this, this.b);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoCoverFragment", 2, "smoothAdjustVolume() mTargetMusicVolume = " + this.jdField_a_of_type_Int + ", SET mIsSmoothRaiseFinished = true, FINISHED");
+        paramBoolean = true;
+        break;
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.notifyDataSetChanged();
+        this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.b();
+        bool1 = bool2;
+        break label172;
+      } while ((paramInt != 4) && ((paramInt != 0) || (bool1)));
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    super.a(paramBoolean, paramString);
+    a();
   }
 }
 

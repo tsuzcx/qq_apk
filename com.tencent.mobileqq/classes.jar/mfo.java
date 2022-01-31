@@ -1,23 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public class mfo
-  implements Runnable
+public final class mfo
+  extends PublicAccountObserver
 {
-  public mfo(VideoShareHelper paramVideoShareHelper, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
+  public mfo(boolean paramBoolean) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean + ", isUGC=" + this.a);
     }
-    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
-    {
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-      return;
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
-    }
-    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    VideoFeedsHelper.a(paramBoolean, paramString, this.a);
   }
 }
 

@@ -1,30 +1,32 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.biz.troop.file.TroopFileProtocol;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnPreviewVideoOnlineListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class adlv
   implements Runnable
 {
-  public adlv(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  public adlv(TroopFileModel paramTroopFileModel, FileManagerEntity paramFileManagerEntity, FileBrowserModelBase.OnPreviewVideoOnlineListener paramOnPreviewVideoOnlineListener) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {}
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isZipInnerFile)
     {
+      TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.zipFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId, new adlw(this));
       return;
-      if (QLog.isColorLevel()) {
-        QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->preForward--fetch openid timeout");
+    }
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
+    if (localTroopFileTransferManager == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.e("TroopFileModel<FileAssistant>", 4, "bad troopUin" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
       }
-      this.a.h = true;
-      this.a.t();
-    } while (!ForwardSdkShareOption.a(this.a));
-    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
-    this.a.j();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.c();
+      return;
+    }
+    localTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId, TroopFileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel));
   }
 }
 

@@ -16,10 +16,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import anzw;
-import anzx;
+import aoio;
+import aoip;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.DynamicFaceLayer;
@@ -55,7 +56,7 @@ public class DoodleView
   protected BaseLayer a;
   public DoodleConfig a;
   public DoodleLayout a;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new anzw(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new aoio(this);
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   protected List a;
   protected Map a;
@@ -243,7 +244,7 @@ public class DoodleView
     }
     return;
     label55:
-    if ((paramEditVideoParams.a instanceof EditTakeVideoSource))
+    if (((paramEditVideoParams.a instanceof EditTakeVideoSource)) || ((paramEditVideoParams.a instanceof EditLocalVideoSource)))
     {
       ((MosaicOperator)localObject).a(105);
       return;
@@ -261,19 +262,19 @@ public class DoodleView
     //   5: new 78	java/lang/StringBuilder
     //   8: dup
     //   9: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   12: ldc_w 327
+    //   12: ldc_w 329
     //   15: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   18: aload_3
     //   19: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   25: invokestatic 99	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   28: aload_0
-    //   29: invokevirtual 329	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleView:a	()Landroid/graphics/Bitmap;
+    //   29: invokevirtual 331	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/doodle/DoodleView:a	()Landroid/graphics/Bitmap;
     //   32: astore 8
     //   34: aload 8
     //   36: ifnonnull +14 -> 50
     //   39: ldc 76
-    //   41: ldc_w 331
+    //   41: ldc_w 333
     //   44: invokestatic 99	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   47: iload 4
     //   49: ireturn
@@ -283,45 +284,45 @@ public class DoodleView
     //   54: astore 5
     //   56: aconst_null
     //   57: astore 6
-    //   59: new 333	java/io/File
+    //   59: new 335	java/io/File
     //   62: dup
     //   63: aload_3
-    //   64: invokespecial 334	java/io/File:<init>	(Ljava/lang/String;)V
+    //   64: invokespecial 336	java/io/File:<init>	(Ljava/lang/String;)V
     //   67: astore 9
     //   69: aload 5
     //   71: astore_3
     //   72: aload 9
-    //   74: invokevirtual 337	java/io/File:exists	()Z
+    //   74: invokevirtual 339	java/io/File:exists	()Z
     //   77: ifne +12 -> 89
     //   80: aload 5
     //   82: astore_3
     //   83: aload 9
-    //   85: invokevirtual 340	java/io/File:createNewFile	()Z
+    //   85: invokevirtual 342	java/io/File:createNewFile	()Z
     //   88: pop
     //   89: aload 5
     //   91: astore_3
-    //   92: new 342	java/io/FileOutputStream
+    //   92: new 344	java/io/FileOutputStream
     //   95: dup
     //   96: aload 9
-    //   98: invokespecial 345	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   98: invokespecial 347	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   101: astore 5
     //   103: aload 8
     //   105: aload_1
     //   106: iload_2
     //   107: aload 5
-    //   109: invokevirtual 349	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   109: invokevirtual 351	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   112: pop
     //   113: iconst_1
     //   114: istore 4
     //   116: aload 5
     //   118: ifnull -71 -> 47
     //   121: aload 5
-    //   123: invokevirtual 352	java/io/FileOutputStream:close	()V
+    //   123: invokevirtual 354	java/io/FileOutputStream:close	()V
     //   126: iconst_1
     //   127: ireturn
     //   128: astore_1
     //   129: aload_1
-    //   130: invokevirtual 355	java/io/IOException:printStackTrace	()V
+    //   130: invokevirtual 357	java/io/IOException:printStackTrace	()V
     //   133: iconst_1
     //   134: ireturn
     //   135: astore 5
@@ -330,16 +331,16 @@ public class DoodleView
     //   140: aload_1
     //   141: astore_3
     //   142: aload 5
-    //   144: invokevirtual 356	java/io/FileNotFoundException:printStackTrace	()V
+    //   144: invokevirtual 358	java/io/FileNotFoundException:printStackTrace	()V
     //   147: aload_1
     //   148: ifnull -101 -> 47
     //   151: aload_1
-    //   152: invokevirtual 352	java/io/FileOutputStream:close	()V
+    //   152: invokevirtual 354	java/io/FileOutputStream:close	()V
     //   155: iconst_0
     //   156: ireturn
     //   157: astore_1
     //   158: aload_1
-    //   159: invokevirtual 355	java/io/IOException:printStackTrace	()V
+    //   159: invokevirtual 357	java/io/IOException:printStackTrace	()V
     //   162: iconst_0
     //   163: ireturn
     //   164: astore 5
@@ -348,28 +349,28 @@ public class DoodleView
     //   169: aload_1
     //   170: astore_3
     //   171: aload 5
-    //   173: invokevirtual 355	java/io/IOException:printStackTrace	()V
+    //   173: invokevirtual 357	java/io/IOException:printStackTrace	()V
     //   176: aload_1
     //   177: ifnull -130 -> 47
     //   180: aload_1
-    //   181: invokevirtual 352	java/io/FileOutputStream:close	()V
+    //   181: invokevirtual 354	java/io/FileOutputStream:close	()V
     //   184: iconst_0
     //   185: ireturn
     //   186: astore_1
     //   187: aload_1
-    //   188: invokevirtual 355	java/io/IOException:printStackTrace	()V
+    //   188: invokevirtual 357	java/io/IOException:printStackTrace	()V
     //   191: iconst_0
     //   192: ireturn
     //   193: astore_1
     //   194: aload_3
     //   195: ifnull +7 -> 202
     //   198: aload_3
-    //   199: invokevirtual 352	java/io/FileOutputStream:close	()V
+    //   199: invokevirtual 354	java/io/FileOutputStream:close	()V
     //   202: aload_1
     //   203: athrow
     //   204: astore_3
     //   205: aload_3
-    //   206: invokevirtual 355	java/io/IOException:printStackTrace	()V
+    //   206: invokevirtual 357	java/io/IOException:printStackTrace	()V
     //   209: goto -7 -> 202
     //   212: astore_1
     //   213: aload 5
@@ -666,7 +667,7 @@ public class DoodleView
       }
       return;
     }
-    ThreadManager.getUIHandler().post(new anzx(this, paramLong));
+    ThreadManager.getUIHandler().post(new aoip(this, paramLong));
   }
   
   public void setTopLevelLayer(BaseLayer paramBaseLayer)

@@ -1,29 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.mobileqq.activity.main.LebaTabRedTouch.RefreshCallback;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.profile.TroopMemberCardUtils;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class wpy
-  implements LebaTabRedTouch.RefreshCallback
+  implements View.OnClickListener
 {
-  public wpy(MainAssistObserver paramMainAssistObserver) {}
+  public wpy(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
   
-  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    Object localObject = this.a.a.obtainMessage(1);
-    ((Message)localObject).obj = paramRedTypeInfo;
-    this.a.a.sendMessage((Message)localObject);
-    localObject = ReadinjoySPEventReport.a();
-    if (paramRedTypeInfo != null) {}
-    for (;;)
-    {
-      ((ReadinjoySPEventReport)localObject).a(bool);
-      return;
-      bool = false;
-    }
+    TroopMemberCardUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
-import abur;
-import abus;
+import acck;
+import accl;
 import android.os.Looper;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -49,7 +49,8 @@ public class MessageForPic
   extends MessageForRichText
   implements Parcelable, LoggerInterface, PicUiInterface
 {
-  public static final Parcelable.Creator CREATOR = new abus();
+  public static final Parcelable.Creator CREATOR = new accl();
+  public static final String NOT_GIF_HAS_READ = "not_gif_has_read";
   private static final String TAG = "MessageForPic";
   public static int defaultSuMsgId = -1;
   public long DSKey;
@@ -125,17 +126,13 @@ public class MessageForPic
   public void checkIsGIF()
   {
     File localFile = AbsDownloader.a(URLDrawableHelper.a(this, 1, null).toString());
-    if (localFile != null) {
+    if (localFile != null)
+    {
       if (GifDrawable.isGifFile(localFile)) {
         this.imageType = 2000;
       }
+      saveExtInfoToExtStr("not_gif_has_read", "true");
     }
-    do
-    {
-      return;
-      localFile = AbsDownloader.a(URLDrawableHelper.a(this, 65537, null).toString());
-    } while ((localFile == null) || (!GifDrawable.isGifFile(localFile)));
-    this.imageType = 2000;
   }
   
   public int describeContents()
@@ -169,17 +166,17 @@ public class MessageForPic
             if (QLog.isDevelopLevel()) {
               QLog.d("MessageForPic", 4, "bytes_pb_reserved.has");
             }
-            if ((this.imageType != 3) && (this.imageType != 2000))
+            if ((this.imageType != 3) && (this.imageType != 2000) && (!isSendFromLocal()) && (TextUtils.isEmpty(getExtInfoFromExtStr("not_gif_has_read"))))
             {
               localObject1 = Looper.getMainLooper();
               if (Thread.currentThread() != ((Looper)localObject1).getThread()) {
-                break label1062;
+                break label1080;
               }
-              ThreadManager.post(new abur(this), 10, null, false);
+              ThreadManager.post(new acck(this), 5, null, false);
             }
             this.mIsParsed = true;
             if (((this.extLong & 0x4) <= 0) || (!EmojiStickerManager.e)) {
-              break label1069;
+              break label1102;
             }
             System.currentTimeMillis();
             localObject1 = getExtInfoFromExtStr("sticker_info");
@@ -229,7 +226,7 @@ public class MessageForPic
             this.isMixed = bool;
             TranDbRecord.PicDbRecord localPicDbRecord = new TranDbRecord.PicDbRecord();
             if (!this.isMixed) {
-              break label1051;
+              break label1069;
             }
             localObject4 = ActionMsgUtil.a(this.msg);
             this.action = ((MsgBody)localObject4).action;
@@ -263,25 +260,28 @@ public class MessageForPic
               continue;
               bool = false;
               continue;
-              label1051:
+              label1069:
               localException1.a(this.msg);
             }
           }
         }
-        label1062:
-        checkIsGIF();
-        continue;
-        label1069:
-        if (this.msgtype == -2058)
+        label1080:
+        if (!Thread.currentThread().getName().equals("MSF-Receiver"))
         {
-          Object localObject2 = getExtInfoFromExtStr("sticker_info");
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
+          checkIsGIF();
+          continue;
+          label1102:
+          if (this.msgtype == -2058)
           {
-            localObject2 = EmojiStickerManager.StickerInfo.transformFromJson((String)localObject2);
-            if (localObject2 != null)
+            Object localObject2 = getExtInfoFromExtStr("sticker_info");
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
             {
-              ((EmojiStickerManager.StickerInfo)localObject2).isDisplayed = this.isread;
-              this.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject2);
+              localObject2 = EmojiStickerManager.StickerInfo.transformFromJson((String)localObject2);
+              if (localObject2 != null)
+              {
+                ((EmojiStickerManager.StickerInfo)localObject2).isDisplayed = this.isread;
+                this.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject2);
+              }
             }
           }
         }

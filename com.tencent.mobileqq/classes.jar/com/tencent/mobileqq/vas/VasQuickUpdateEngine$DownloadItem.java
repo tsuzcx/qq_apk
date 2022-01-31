@@ -20,7 +20,7 @@ public class VasQuickUpdateEngine$DownloadItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateEngine.DownloadItem
  * JD-Core Version:    0.7.0.1
  */

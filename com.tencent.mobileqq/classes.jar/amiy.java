@@ -1,18 +1,21 @@
-import cooperation.buscard.BuscardPluginInstallActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.FitSystemWindowsRelativeLayout;
 
-class amiy
-  implements Runnable
+public class amiy
+  implements View.OnTouchListener
 {
-  amiy(amix paramamix) {}
+  public amiy(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    BuscardPluginInstallActivity.a(this.a.a, "initPluginManager");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amiy
  * JD-Core Version:    0.7.0.1
  */

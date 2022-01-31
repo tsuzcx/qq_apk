@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import java.lang.ref.WeakReference;
 
-public final class mux
-  implements Parcelable.Creator
+public class mux
+  extends Handler
 {
-  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
+  private WeakReference a;
+  
+  public mux(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
   {
-    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
+    this.a = new WeakReference(paramReadInJoySkinAnimManager);
   }
   
-  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new ProfileParams.CurLoginUsr[paramInt];
+    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
+    if (localReadInJoySkinAnimManager == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
+      return;
+    }
+    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
   }
 }
 

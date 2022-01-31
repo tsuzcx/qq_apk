@@ -1,31 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.ttpic.util.VideoPrefsUtil;
-import com.tencent.ttpic.util.youtu.VideoFaceDetector;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer;
+import com.tencent.mobileqq.video.IMediaPlayer.OnCompletionListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ylf
-  implements EIPCResultCallback
+public class ylf
+  implements IMediaPlayer.OnCompletionListener
 {
-  public ylf(ApolloRender paramApolloRender) {}
+  public ylf(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(IMediaPlayer paramIMediaPlayer)
   {
-    VideoPrefsUtil.init(BaseApplicationImpl.getContext());
-    VideoGlobalContext.setContext(BaseApplicationImpl.getContext());
-    if (PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), false))
-    {
-      this.a.mDetector = new VideoFaceDetector(PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), null));
-      this.a.mDetector.init();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onCompletion");
+    }
+    if (this.a.j == 10) {
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ylf
  * JD-Core Version:    0.7.0.1
  */

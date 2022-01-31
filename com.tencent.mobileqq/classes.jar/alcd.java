@@ -1,43 +1,24 @@
-import com.tencent.open.agent.OpenSdkFriendService;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback;
-import com.tencent.open.agent.datamodel.ImageLoader;
-import com.tencent.open.agent.datamodel.QZonePortraitData;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.GuideViewBuilder;
+import java.util.ArrayList;
 
 public class alcd
-  implements Runnable
 {
-  public alcd(OpenSdkFriendService.CheckAvatarUpdateCallback paramCheckAvatarUpdateCallback, int paramInt, JSONArray paramJSONArray) {}
+  public View.OnClickListener a;
+  public View a;
+  public ArrayList a;
+  public int[] a;
   
-  public void run()
+  private alcd(GuideViewBuilder paramGuideViewBuilder)
   {
-    int i = 0;
-    for (;;)
-    {
-      if (i < this.jdField_a_of_type_Int) {
-        try
-        {
-          String str = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i).getString("openid");
-          str = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$CheckAvatarUpdateCallback.a.a, str);
-          ImageLoader.a().a(str);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alcd
  * JD-Core Version:    0.7.0.1
  */

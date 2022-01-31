@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ocr;
 
-import agbx;
-import agbz;
-import agca;
+import aggh;
+import aggj;
+import aggk;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -85,7 +85,7 @@ public class SearchQuestionCameraFragment
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), getResources().getDimensionPixelSize(2131558448));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new agca(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new aggk(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
@@ -101,19 +101,19 @@ public class SearchQuestionCameraFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = ((CameraCaptureView)paramView.findViewById(2131366945));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView = ((CameraCaptureView)paramView.findViewById(2131366943));
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCaptureParam(a());
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setDarkModeEnable(false);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setOnTouchListener(this);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.setCaptureListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)paramView.findViewById(2131370907));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)paramView.findViewById(2131370902));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492969), 100, getResources().getColor(2131493308));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(4.5F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView = ((CameraFocusView)paramView.findViewById(2131366946));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363993));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView = ((CameraFocusView)paramView.findViewById(2131366944));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364018));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    ((TextView)paramView.findViewById(2131362875)).setShadowLayer(AIOUtils.a(4.5F, getResources()), 0.0F, 0.0F, 872415232);
+    ((TextView)paramView.findViewById(2131362880)).setShadowLayer(AIOUtils.a(4.5F, getResources()), 0.0F, 0.0F, 872415232);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture = new CameraZoomGesture(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraFocusGesture = new CameraFocusGesture(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView);
     GLGestureProxy.a().a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture);
@@ -145,12 +145,12 @@ public class SearchQuestionCameraFragment
   }
   
   @TargetApi(12)
-  private void h()
+  private void g()
   {
     this.jdField_a_of_type_JavaLangString = getArguments().getString("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME");
   }
   
-  private void i()
+  private void h()
   {
     if (getActivity() == null) {
       return;
@@ -173,7 +173,7 @@ public class SearchQuestionCameraFragment
   
   protected int a()
   {
-    return 2130970504;
+    return 2130970516;
   }
   
   protected CameraCaptureView.CaptureParam a()
@@ -185,22 +185,17 @@ public class SearchQuestionCameraFragment
     localCaptureParam.b(localSize.b());
     localCaptureParam.a(SVParamManager.a().a(i));
     i = SVParamManager.a().a(i) * 1000;
-    localCaptureParam.d(i);
+    localCaptureParam.h(i);
     com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.r = i;
-    localCaptureParam.e(1);
-    localCaptureParam.c(2);
+    localCaptureParam.i(1);
+    localCaptureParam.g(2);
     return localCaptureParam;
   }
   
   public void a(int paramInt)
   {
     QLog.e("SearchQuestionFragment", 2, "onCaptureError. errorCode = " + paramInt);
-    ThreadManager.getUIHandler().post(new agbz(this, paramInt));
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    paramActivity.requestWindowFeature(1);
+    ThreadManager.getUIHandler().post(new aggj(this, paramInt));
   }
   
   public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
@@ -237,61 +232,40 @@ public class SearchQuestionCameraFragment
       if (QLog.isColorLevel()) {
         QLog.d("SearchQuestionFragment", 2, "launchPeak, file is not exist");
       }
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439048, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439072, 0).a();
       return;
     }
     b(paramString);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 1000L);
   }
   
+  public void a(boolean paramBoolean) {}
+  
   public void a(boolean paramBoolean, String paramString)
   {
     if (!paramBoolean) {
-      ThreadManager.getUIHandler().post(new agbx(this, paramString));
+      ThreadManager.getUIHandler().post(new aggh(this, paramString));
     }
     com.tencent.mobileqq.richmedia.capture.util.ReportUtil.b = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a();
   }
   
-  public boolean a()
-  {
-    return true;
-  }
+  public void al_() {}
   
-  public void aj_() {}
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
-  }
-  
-  public boolean d()
-  {
-    i();
-    return true;
-  }
-  
-  public void e()
+  public void d()
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
   }
   
-  public void f()
+  public void e()
   {
     if (QLog.isColorLevel()) {
       QLog.i("SearchQuestionFragment", 2, "capturePhoto!");
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.j();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.i();
   }
   
-  public void g() {}
-  
-  public void g_(boolean paramBoolean) {}
+  public void f() {}
   
   public boolean handleMessage(Message paramMessage)
   {
@@ -307,6 +281,32 @@ public class SearchQuestionCameraFragment
     return true;
   }
   
+  public void initWindowStyleAndAnimation(Activity paramActivity)
+  {
+    paramActivity.requestWindowFeature(1);
+  }
+  
+  public boolean isWrapContent()
+  {
+    return false;
+  }
+  
+  public boolean needImmersive()
+  {
+    return false;
+  }
+  
+  public boolean needStatusTrans()
+  {
+    return true;
+  }
+  
+  public boolean onBackEvent()
+  {
+    h();
+    return true;
+  }
+  
   public void onClick(View paramView)
   {
     switch (paramView.getId())
@@ -315,7 +315,7 @@ public class SearchQuestionCameraFragment
     do
     {
       return;
-      f();
+      e();
       return;
     } while (getActivity() == null);
     getActivity().doOnBackPressed();
@@ -331,7 +331,7 @@ public class SearchQuestionCameraFragment
   {
     paramLayoutInflater = paramLayoutInflater.inflate(a(), paramViewGroup, false);
     a(paramLayoutInflater);
-    h();
+    g();
     return paramLayoutInflater;
   }
   
@@ -356,7 +356,7 @@ public class SearchQuestionCameraFragment
   {
     super.onResume();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.onResume();
-    e();
+    d();
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)

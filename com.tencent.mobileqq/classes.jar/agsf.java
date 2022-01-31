@@ -1,16 +1,25 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.profile.view.ShakeImageView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class agsf
-  implements Runnable
+  extends FriendListObserver
 {
-  public agsf(ShakeImageView paramShakeImageView) {}
+  public agsf(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public void run()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    ShakeImageView.a(this.a, ShakeImageView.a(this.a).getDefaultSensor(9));
-    if (ShakeImageView.a(this.a) != null) {
-      ShakeImageView.a(this.a).registerListener(this.a, ShakeImageView.a(this.a), 1);
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
+    }
+    if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
+    {
+      PersonalityLabelGalleryActivity.a(this.a, ContactUtils.a(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
+      if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
+        PersonalityLabelGalleryActivity.d(this.a);
+      }
     }
   }
 }

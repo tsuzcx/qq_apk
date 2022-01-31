@@ -1,30 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.model.QueryTask.Query;
 
 public class aeqe
-  implements ActionSheet.OnButtonClickListener
+  implements QueryTask.Query
 {
-  public aeqe(NearbyGuideActivity paramNearbyGuideActivity, ActionSheet paramActionSheet) {}
+  public aeqe(EmoticonManager paramEmoticonManager, MarkFaceMessage paramMarkFaceMessage) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public PicEmoticonInfo a(MarkFaceMessage paramMarkFaceMessage)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
+    return this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqe
  * JD-Core Version:    0.7.0.1
  */

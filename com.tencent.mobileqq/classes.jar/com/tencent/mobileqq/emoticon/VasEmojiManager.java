@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticon;
 
-import acdp;
-import acdq;
+import aclq;
+import aclr;
 import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -40,7 +40,7 @@ public class VasEmojiManager
   public VasEmojiManager(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new acdq(this);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new aclr(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager = ((EmojiManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(42));
   }
@@ -284,7 +284,7 @@ public class VasEmojiManager
     localBundle.putLong("vas_download_start", System.currentTimeMillis());
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEmoticonPackage.epId, localBundle);
     a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEmoticonPackage.epId, new TaskStatus(paramEmoticonPackage.epId, null));
-    ThreadManager.post(new acdp(this, str, paramEmoticonPackage), 5, null, true);
+    ThreadManager.post(new aclq(this, str, paramEmoticonPackage), 5, null, true);
   }
   
   public void a(String paramString, int paramInt)

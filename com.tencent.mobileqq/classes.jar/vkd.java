@@ -1,18 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
+import java.lang.ref.WeakReference;
 
-public class vkd
-  implements View.OnTouchListener
+class vkd
+  implements Runnable
 {
-  public vkd(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  vkd(vkc paramvkc, int paramInt1, int paramInt2, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
-    return false;
+    vkb localvkb = (vkb)this.jdField_a_of_type_Vkc.a.get();
+    if (localvkb == null) {
+      return;
+    }
+    localvkb.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

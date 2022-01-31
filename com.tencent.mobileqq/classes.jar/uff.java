@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class uff
-  implements Runnable
+public class uff
+  implements View.OnTouchListener
 {
-  uff(ufe paramufe) {}
+  public uff(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.notifyDataSetChanged();
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.j();
+      paramView = this.a.n;
+      this.a.a("Clk_find", paramView, "");
+    }
+    return true;
   }
 }
 

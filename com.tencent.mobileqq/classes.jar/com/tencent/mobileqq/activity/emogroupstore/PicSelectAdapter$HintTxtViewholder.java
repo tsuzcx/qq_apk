@@ -12,7 +12,7 @@ public class PicSelectAdapter$HintTxtViewholder
   PicSelectAdapter$HintTxtViewholder(View paramView)
   {
     super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131372336));
+    this.a = ((TextView)paramView.findViewById(2131372346));
   }
 }
 

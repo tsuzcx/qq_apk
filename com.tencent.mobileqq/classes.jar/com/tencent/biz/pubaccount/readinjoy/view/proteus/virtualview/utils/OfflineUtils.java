@@ -14,14 +14,14 @@ import cooperation.readinjoy.ReadInJoyHelper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import mqx;
-import mqy;
-import mqz;
+import mup;
+import muq;
+import mur;
 import org.json.JSONException;
 
 public class OfflineUtils
 {
-  private static AsyncBack jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = new mqx();
+  private static AsyncBack jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = new mup();
   private static volatile TemplateFactory jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusFactoryTemplateFactory;
   private static String jdField_a_of_type_JavaLangString = "0";
   private static volatile boolean jdField_a_of_type_Boolean;
@@ -138,7 +138,7 @@ public class OfflineUtils
     b = ReadInJoyHelper.a();
     QLog.d("OfflineUtils", 2, "bid : " + b);
     HtmlOffline.a();
-    ThreadManager.executeOnFileThread(new mqy());
+    ThreadManager.executeOnFileThread(new muq());
   }
   
   /* Error */
@@ -463,7 +463,7 @@ public class OfflineUtils
   
   public static void c()
   {
-    ThreadManager.executeOnFileThread(new mqz());
+    ThreadManager.executeOnFileThread(new mur());
   }
   
   private static void e()

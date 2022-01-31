@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.mobileqq.app.ShortVideoObserver;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
+import com.tencent.biz.anonymous.QQAnonymousDialog;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import mqq.os.MqqHandler;
 
-public class wfb
-  extends ShortVideoObserver
+class wfb
+  implements Runnable
 {
-  public wfb(BlessResultActivity paramBlessResultActivity) {}
+  wfb(wey paramwey) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "VideoRedbag, onCheckRealNameRsp in bless");
+    if (this.a.a.jdField_a_of_type_ComTencentBizAnonymousQQAnonymousDialog != null) {
+      this.a.a.jdField_a_of_type_ComTencentBizAnonymousQQAnonymousDialog.dismiss();
     }
-    if ((paramBoolean) && (paramInt == RedBagVideoManager.a)) {
-      DialogUtil.b(this.a.getActivity(), 0, null, this.a.getString(2131439124), 2131439126, 2131439125, new wfc(this), new wfd(this)).show();
+    this.a.a.p(true);
+    TroopChatPie.d(this.a.a).postDelayed(new wfc(this), 100L);
+    if (!AnonymousChatHelper.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      TroopChatPie.e(this.a.a).postDelayed(new wfd(this), 200L);
     }
   }
 }

@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
 
-class aewc
-  implements Runnable
+public class aewc
+  extends BroadcastReceiver
 {
-  aewc(aewb paramaewb, String paramString) {}
+  public aewc(GameRoomFloatView paramGameRoomFloatView) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Aewb.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo.c = this.jdField_a_of_type_JavaLangString;
-    if ((-1 == this.jdField_a_of_type_Aewb.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager.a(this.jdField_a_of_type_Aewb.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo)) && (QLog.isColorLevel())) {
-      QLog.i("VideoFeedsManager", 2, "uploader is working, upload fail!");
+    int i = paramIntent.getIntExtra("SmallScreenState", 0);
+    if (i == 3) {
+      this.a.a.setVisibility(4);
     }
+    while ((i != 2) && (i != 0)) {
+      return;
+    }
+    this.a.a.setVisibility(0);
   }
 }
 

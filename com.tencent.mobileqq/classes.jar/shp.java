@@ -1,114 +1,44 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.util.Utils;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class shp
-  extends SubAccountBindObserver
+  implements Runnable
 {
-  public shp(Conversation paramConversation) {}
+  public shp(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void run()
   {
-    Object localObject2;
-    Object localObject1;
-    if (QLog.isColorLevel())
+    Object localObject1 = null;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {}
+    do
     {
-      localObject2 = new StringBuilder().append("Conversation.onGetBindSubAccount() return, isSucc=").append(paramBoolean).append(" mSubUin=");
-      if (paramSubAccountBackProtocData == null)
-      {
-        localObject1 = null;
-        QLog.d("SUB_ACCOUNT", 2, (String)localObject1);
-      }
-    }
-    else
-    {
-      if ((paramBoolean) && (paramSubAccountBackProtocData != null)) {
-        break label113;
-      }
-      if (QLog.isDevelopLevel())
-      {
-        localObject1 = new StringBuilder().append("Conversation.onGetBindSubAccount() return:");
-        if (!paramBoolean) {
-          break label107;
-        }
-      }
-    }
-    label107:
-    for (paramSubAccountBackProtocData = "data=null";; paramSubAccountBackProtocData = "isSucc=false")
-    {
-      QLog.d("SUB_ACCOUNT", 4, paramSubAccountBackProtocData);
       return;
-      localObject1 = paramSubAccountBackProtocData.c;
-      break;
-    }
-    label113:
-    if (paramSubAccountBackProtocData.jdField_a_of_type_Int == 1008)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SUB_ACCOUNT", 2, "Conversation.onGetBindSubAccount() delete all subAccountType RU, and add default RU.");
-      }
-      SubAccountControll.a(this.a.a, 0);
-    }
-    if (paramSubAccountBackProtocData.a())
-    {
-      SubAccountControll.a(this.a.a, paramSubAccountBackProtocData.a(), 2);
-      this.a.a.c = true;
-    }
-    if (paramSubAccountBackProtocData.b())
-    {
-      localObject1 = paramSubAccountBackProtocData.b();
-      if (localObject1 != null)
+      localObject2 = this.a.app.getEntityManagerFactory().createEntityManager();
+      if (localObject2 != null)
       {
-        localObject1 = ((ArrayList)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (String)((Iterator)localObject1).next();
-          SubAccountControll.c(this.a.a, (String)localObject2);
-        }
+        localObject1 = ((EntityManager)localObject2).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin }, null, null, null, null);
+        ((EntityManager)localObject2).a();
       }
-    }
-    paramSubAccountBackProtocData.a();
-    this.a.a(0L);
-    Conversation.d(this.a);
-  }
-  
-  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    if (QLog.isColorLevel())
+    } while (localObject1 == null);
+    Object localObject2 = new ArrayList(((List)localObject1).size());
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() isSucc=" + paramBoolean);
-      if (paramSubAccountBackProtocData != null) {
-        QLog.d("SUB_ACCOUNT", 2, "Conversation.onBindSubAccount() mainAccount=" + paramSubAccountBackProtocData.b + " subAccount=" + paramSubAccountBackProtocData.c + " errType=" + paramSubAccountBackProtocData.jdField_a_of_type_Int + " errMsg=" + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
+      TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject1).next();
+      if (Utils.d(localTroopMemberInfo.memberuin)) {
+        ((ArrayList)localObject2).add(localTroopMemberInfo.memberuin);
       }
     }
-    if ((paramBoolean) && (paramSubAccountBackProtocData != null) && (paramSubAccountBackProtocData.c())) {
-      SubAccountControll.a(this.a.a, paramSubAccountBackProtocData.c(), 1);
-    }
-    this.a.a(0L);
-  }
-  
-  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() isSucc=" + paramBoolean);
-      if (paramSubAccountBackProtocData != null) {
-        QLog.d("SUB_ACCOUNT", 2, "Conversation.onUnBindSubAccount() mainAccount=" + paramSubAccountBackProtocData.b + " subAccount=" + paramSubAccountBackProtocData.c + " errType=" + paramSubAccountBackProtocData.jdField_a_of_type_Int + " errMsg=" + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if (paramSubAccountBackProtocData == null) {}
-    while ((!paramBoolean) || (paramSubAccountBackProtocData.c == null) || (paramSubAccountBackProtocData.c.length() <= 4)) {
-      return;
-    }
-    this.a.a.a().c(paramSubAccountBackProtocData.c, 7000);
-    SubAccountControll.c(this.a.a, paramSubAccountBackProtocData.c);
-    this.a.a(0L);
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new shq(this, (ArrayList)localObject2));
   }
 }
 

@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import Wallet.GetSkinListRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class xmo
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  public xmo(LoginView paramLoginView) {}
+  public xmo(RedPacketManager paramRedPacketManager, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramDialogInterface = this.a.a.getText().toString();
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      this.a.b(paramDialogInterface);
-    }
+    GetSkinListRsp localGetSkinListRsp = (GetSkinListRsp)paramBundle.getSerializable("rsp");
+    paramBundle.putBoolean("isCache", false);
+    if (RedPacketManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager) == null) {}
+    do
+    {
+      return;
+      RedPacketManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager).onReceive(paramInt, paramBoolean, paramBundle);
+      ThreadManager.post(new xmp(this, localGetSkinListRsp), 5, null, false);
+    } while (!QLog.isColorLevel());
+    QLog.d("RedPacketManager", 2, "requestRedPacketSkinList onReceive isSuccess:" + paramBoolean);
   }
 }
 

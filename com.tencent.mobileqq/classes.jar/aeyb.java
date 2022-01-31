@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView.OnCloseListener;
+import java.util.List;
 
-public class aeyb
-  implements View.OnClickListener
+public abstract interface aeyb
 {
-  public aeyb(StuffContainerView paramStuffContainerView) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(0);
-    }
-  }
+  public abstract void a(List paramList, boolean paramBoolean);
 }
 
 

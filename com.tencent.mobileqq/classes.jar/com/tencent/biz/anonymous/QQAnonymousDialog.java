@@ -15,8 +15,8 @@ import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.DisplayUtils;
-import kkv;
-import kkw;
+import knc;
+import knd;
 
 public class QQAnonymousDialog
   extends Dialog
@@ -32,12 +32,12 @@ public class QQAnonymousDialog
   public QQAnonymousDialog(Context paramContext)
   {
     super(paramContext, 2131624516);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new kkv(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new knc(this));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969859, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368301));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368300));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969870, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368303));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368302));
   }
   
   public void a()
@@ -46,7 +46,7 @@ public class QQAnonymousDialog
     localLayoutParams.width = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
     localLayoutParams.height = ((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
     super.show();
-    this.jdField_a_of_type_AndroidViewView.postDelayed(new kkw(this), 1000L);
+    this.jdField_a_of_type_AndroidViewView.postDelayed(new knd(this), 1000L);
   }
   
   public void a(int paramInt, String paramString)
@@ -61,20 +61,20 @@ public class QQAnonymousDialog
         do
         {
           return;
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841259);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841285);
           this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
         } while (!AppSetting.b);
         QQAppInterface.f(paramString);
         return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841254);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841280);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
       } while (!AppSetting.b);
       QQAppInterface.f(paramString);
       return;
     }
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841258);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430461));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841284);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430464));
   }
   
   public void dismiss()

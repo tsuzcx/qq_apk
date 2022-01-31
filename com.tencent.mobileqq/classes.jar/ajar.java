@@ -1,15 +1,30 @@
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import android.view.View;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.troop.logic.TroopAvatarWallEditCtrl;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
-public class ajar
-  implements Runnable
+class ajar
+  implements AdapterView.OnItemSelectedListener
 {
-  public ajar(TroopWebviewPlugin paramTroopWebviewPlugin, String paramString) {}
+  ajar(ajap paramajap) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    SensorAPIJavaScript.returnToAio(this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.a, this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.mRuntime.a(), this.jdField_a_of_type_JavaLangString, true);
+    if (paramView == null) {
+      return;
+    }
+    this.a.a.a.jdField_a_of_type_Int = paramInt;
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.a(paramInt);
+    if (this.a.a.a.jdField_a_of_type_Boolean)
+    {
+      ReportController.b(this.a.a.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.a.jdField_a_of_type_JavaLangString, "0", "", "");
+      return;
+    }
+    ReportController.b(this.a.a.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.a.jdField_a_of_type_JavaLangString, "1", "", "");
   }
 }
 

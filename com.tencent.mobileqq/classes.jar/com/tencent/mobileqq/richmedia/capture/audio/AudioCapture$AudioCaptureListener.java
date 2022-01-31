@@ -8,9 +8,9 @@ public abstract interface AudioCapture$AudioCaptureListener
   
   public abstract void b(String paramString);
   
-  public abstract void e();
+  public abstract void d();
   
-  public abstract void f();
+  public abstract void e();
 }
 
 

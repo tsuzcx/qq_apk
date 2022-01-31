@@ -1,11 +1,14 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraProgressView;
 
 public class lkd
+  implements Runnable
 {
-  public TextView a;
+  public lkd(ReadInJoyCameraProgressView paramReadInJoyCameraProgressView) {}
   
-  public lkd(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter) {}
+  public void run()
+  {
+    this.a.invalidate();
+  }
 }
 
 

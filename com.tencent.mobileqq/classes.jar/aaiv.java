@@ -1,27 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.ar.arengine.QRRecognizerController;
+import com.tencent.mobileqq.ar.ArConfigService;
 
-public class aaiv
-  extends Handler
+class aaiv
+  implements Runnable
 {
-  public aaiv(QRRecognizerController paramQRRecognizerController, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aaiv(aaiu paramaaiu, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      QRRecognizerController.a(this.a);
-      return;
-    }
-    QRRecognizerController.b(this.a);
+    ArConfigService.a(this.jdField_a_of_type_Aaiu.a, this.jdField_a_of_type_Int);
   }
 }
 

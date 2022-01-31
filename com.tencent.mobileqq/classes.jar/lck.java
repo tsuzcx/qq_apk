@@ -1,15 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
+import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
 
-public class lck
+class lck
   implements Runnable
 {
-  public lck(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  lck(lcj paramlcj) {}
   
   public void run()
   {
-    ReadInJoyGlobalReporter.a().a();
-    ReadInJoyGlobalReporter.a().b(this.a.app);
+    if ((this.a.a.a != null) && (this.a.a.a.a != null)) {
+      this.a.a.a.a.notifyDataSetChanged();
+    }
   }
 }
 

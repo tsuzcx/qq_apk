@@ -1,16 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
 
 public class aomx
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Property
 {
-  public aomx(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aomx(HintDrawable paramHintDrawable, Class paramClass, String paramString)
   {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(this.a.b);
+    super(paramClass, paramString);
+  }
+  
+  public Integer a(HintDrawable paramHintDrawable)
+  {
+    if (paramHintDrawable != null) {
+      return Integer.valueOf(HintDrawable.a(paramHintDrawable));
+    }
+    return Integer.valueOf(0);
+  }
+  
+  public void a(HintDrawable paramHintDrawable, Integer paramInteger)
+  {
+    if (paramHintDrawable != null) {
+      HintDrawable.a(paramHintDrawable, paramInteger.intValue());
+    }
   }
 }
 

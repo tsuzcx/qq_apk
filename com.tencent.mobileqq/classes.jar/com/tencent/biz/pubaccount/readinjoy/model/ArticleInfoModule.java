@@ -47,6 +47,7 @@ import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -81,41 +82,42 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
-import lox;
-import loy;
-import lpa;
-import lpd;
-import lpe;
-import lpf;
-import lpg;
-import lph;
-import lpi;
-import lpj;
-import lpk;
-import lpl;
-import lpm;
-import lpn;
-import lpo;
-import lpp;
-import lpq;
-import lpr;
-import lps;
-import lpt;
-import lpu;
-import lpw;
-import lpx;
-import lpy;
-import lpz;
-import lqa;
-import lqb;
-import lqc;
-import lqd;
-import lqe;
-import lqf;
-import lqg;
-import lqh;
-import lqi;
+import lsb;
+import lsc;
+import lse;
+import lsh;
+import lsi;
+import lsj;
+import lsk;
+import lsl;
+import lsm;
+import lsn;
+import lso;
+import lsp;
+import lsq;
+import lsr;
+import lss;
+import lst;
+import lsu;
+import lsv;
+import lsw;
+import lsx;
+import lsy;
+import lta;
+import ltb;
+import ltc;
+import ltd;
+import lte;
+import ltf;
+import ltg;
+import lth;
+import lti;
+import ltj;
+import ltk;
+import ltl;
+import ltm;
 import mqq.os.MqqHandler;
 import tencent.im.oidb.cmd0x46f.oidb_cmd0x46f.DislikeParam;
 import tencent.im.oidb.cmd0x46f.oidb_cmd0x46f.ReqBody;
@@ -124,6 +126,7 @@ import tencent.im.oidb.cmd0x46f.oidb_cmd0x46f.UserDisLike;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ExposeTopic;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.InnerMsg;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.LBSInfo;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackInfo;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RefreshHistory;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqAdvertisePara;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqBody;
@@ -370,7 +373,7 @@ public class ArticleInfoModule
       if (System.currentTimeMillis() - this.jdField_b_of_type_Long > jdField_a_of_type_Long)
       {
         this.jdField_b_of_type_Long = System.currentTimeMillis();
-        ThreadManager.post(new lpl(this), 2, null, true);
+        ThreadManager.post(new lsp(this), 2, null, true);
       }
       if ((localObject3 != null) && (((SosoInterface.SosoLbsInfo)localObject3).a != null))
       {
@@ -487,7 +490,7 @@ public class ArticleInfoModule
   private void a(int paramInt)
   {
     this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqg(this, paramInt));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ltk(this, paramInt));
   }
   
   private void a(long paramLong, int paramInt, oidb_cmd0x8c8.SocializeFeedsInfo paramSocializeFeedsInfo)
@@ -552,7 +555,7 @@ public class ArticleInfoModule
   
   private void a(boolean paramBoolean, int paramInt, List paramList)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqe(this, paramBoolean, paramInt, paramList));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lti(this, paramBoolean, paramInt, paramList));
   }
   
   private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List paramList, long paramLong1, long paramLong2)
@@ -686,7 +689,7 @@ public class ArticleInfoModule
   
   private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List paramList1, long paramLong1, long paramLong2, List paramList2, byte[] paramArrayOfByte, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqd(this, paramLong1, paramInt, paramArrayOfByte, paramBoolean1, paramList1, paramBoolean2, paramLong2, paramList2, paramToServiceMsg, paramFromServiceMsg));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lth(this, paramLong1, paramInt, paramArrayOfByte, paramBoolean1, paramList1, paramBoolean2, paramLong2, paramList2, paramToServiceMsg, paramFromServiceMsg));
   }
   
   public static boolean a()
@@ -750,7 +753,7 @@ public class ArticleInfoModule
           {
             localConcurrentHashMap1.put(Long.valueOf(paramArticleInfo.mRecommendSeq), paramArticleInfo);
             if (paramBoolean1) {
-              this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpd(this, paramArticleInfo));
+              this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsh(this, paramArticleInfo));
             }
           }
           return true;
@@ -797,7 +800,7 @@ public class ArticleInfoModule
   
   private void b(int paramInt, List paramList)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqf(this, paramInt, paramList));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ltj(this, paramInt, paramList));
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -873,7 +876,7 @@ public class ArticleInfoModule
         ((ReadInJoyLogicEngine)localObject3).c(bool2);
       }
       if (((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_topic_reddot_update_num.has()) {
-        ReadInJoyLogicEngine.a().g(((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_topic_reddot_update_num.get());
+        ReadInJoyLogicEngine.a().f(((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_topic_reddot_update_num.get());
       }
       if ((((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_refresh_topic_update_info.has()) && (((oidb_cmd0x68b.RspGetFollowTabData)localObject2).uint32_refresh_topic_update_info.get() == 1))
       {
@@ -1136,7 +1139,7 @@ public class ArticleInfoModule
   
   private void c(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpk(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lso(this, paramInt));
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1214,7 +1217,7 @@ public class ArticleInfoModule
         try
         {
           paramToServiceMsg = (ArticleInfo)paramToServiceMsg.getAttribute("0x83e_article");
-          this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpm(this, paramToServiceMsg));
+          this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsq(this, paramToServiceMsg));
           return;
         }
         catch (Exception paramToServiceMsg)
@@ -1241,7 +1244,7 @@ public class ArticleInfoModule
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 1, "handle0x83eBiuAtlasDeliverAction result:" + i);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpn(this, i));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lsr(this, i));
   }
   
   private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1255,7 +1258,7 @@ public class ArticleInfoModule
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 1, "handle0x83eDeliverUGCAction result=" + i + ", feedsId=" + l + ", rowkey=" + paramFromServiceMsg + ", status=" + j + ", comment=" + paramToServiceMsg);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpo(this, i, l, paramFromServiceMsg, j, paramToServiceMsg));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lss(this, i, l, paramFromServiceMsg, j, paramToServiceMsg));
   }
   
   private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1269,7 +1272,7 @@ public class ArticleInfoModule
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 1, "handle0x83eDeliverUpMasterAction result=" + i + ", feedsId=" + l + ", rowkey=" + paramFromServiceMsg + ", status=" + j + ", comment=" + paramToServiceMsg);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpp(this, i, l, paramFromServiceMsg, j, paramToServiceMsg));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lst(this, i, l, paramFromServiceMsg, j, paramToServiceMsg));
   }
   
   private void i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1300,7 +1303,7 @@ public class ArticleInfoModule
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new lpq(this, i));
+      this.jdField_a_of_type_AndroidOsHandler.post(new lsu(this, i));
       return;
       if (i != 33) {}
     }
@@ -1318,12 +1321,12 @@ public class ArticleInfoModule
       if ((localRspBody.rpt_social_feeds_info.has()) && (localRspBody.rpt_social_feeds_info.get() != null))
       {
         paramToServiceMsg = localRspBody.rpt_social_feeds_info.get();
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpt(this, paramToServiceMsg, paramFromServiceMsg, bool));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsx(this, paramToServiceMsg, paramFromServiceMsg, bool));
       }
       if ((localRspBody.rpt_del_feeds_info_list.has()) && (localRspBody.rpt_del_feeds_info_list.get() != null))
       {
         paramToServiceMsg = localRspBody.rpt_del_feeds_info_list.get();
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpu(this, paramToServiceMsg, paramFromServiceMsg));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsy(this, paramToServiceMsg, paramFromServiceMsg));
       }
       return;
     }
@@ -1352,7 +1355,7 @@ public class ArticleInfoModule
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new lqc(this, paramFromServiceMsg));
+      this.jdField_a_of_type_AndroidOsHandler.post(new ltg(this, paramFromServiceMsg));
       return;
       QLog.d("ArticleInfoModule", 2, "handle0xb83GetKeywordList: failed, result: " + i);
     }
@@ -1573,8 +1576,8 @@ public class ArticleInfoModule
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = (ArrayList)c(paramInt1);
-    if ((localObject == null) || (((ArrayList)localObject).size() == 0))
+    Object localObject1 = (ArrayList)c(paramInt1);
+    if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ArticleInfoModule", 2, "no recommend topic feeds");
@@ -1582,46 +1585,90 @@ public class ArticleInfoModule
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    ReadInJoyMSFHandlerUtils.a((List)localObject);
-    localArrayList.addAll((Collection)localObject);
+    ReadInJoyMSFHandlerUtils.a((List)localObject1);
+    localArrayList.addAll((Collection)localObject1);
     int i = 0;
     int j;
     if (i < localArrayList.size())
     {
       j = (int)((ArticleInfo)localArrayList.get(i)).mChannelID;
-      localObject = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(j));
-      if (localObject != null) {
-        break label424;
+      localObject1 = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(j));
+      if (localObject1 != null) {
+        break label676;
       }
-      localObject = new ConcurrentHashMap();
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(j), localObject);
+      localObject1 = new ConcurrentHashMap();
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(j), localObject1);
     }
-    label424:
+    label676:
     for (;;)
     {
-      if ((((ArticleInfo)localArrayList.get(i)).mTopicRecommendFeedsInfo != null) && (((ArticleInfo)localArrayList.get(i)).mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        ((TopicRecommendFeedsInfo.TopicRecommendInfo)((ArticleInfo)localArrayList.get(i)).mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_c_of_type_Int = paramInt2;
-      }
-      ArticleInfo localArticleInfo = ((ArticleInfo)localArrayList.get(i)).clone();
-      if (((ConcurrentHashMap)localObject).get(Long.valueOf(localArticleInfo.mRecommendSeq)) != null)
+      for (;;)
       {
-        a(Integer.valueOf(j), localArticleInfo);
-        if (QLog.isColorLevel()) {
-          QLog.e("ArticleInfoModule", 2, "saveArticleInfo, article duplicated, article been channelID=" + j + ", articleID=" + localArticleInfo.mArticleID + "，seq=" + localArticleInfo.mRecommendSeq);
+        if ((((ArticleInfo)localArrayList.get(i)).mTopicRecommendFeedsInfo != null) && (((ArticleInfo)localArrayList.get(i)).mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+          ((TopicRecommendFeedsInfo.TopicRecommendInfo)((ArticleInfo)localArrayList.get(i)).mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_c_of_type_Int = paramInt2;
+        }
+        int k;
+        Object localObject2;
+        if (((ArticleInfo)localArrayList.get(i)).mPolymericInfo != null)
+        {
+          k = paramInt2 + 1;
+          ((ArticleInfo)localArrayList.get(i)).mPolymericInfo.jdField_e_of_type_Int = k;
+          localObject2 = new oidb_cmd0x68b.PackInfo();
+        }
+        try
+        {
+          ((oidb_cmd0x68b.PackInfo)localObject2).mergeFrom(((ArticleInfo)localArrayList.get(i)).mPackInfoBytes);
+          ((oidb_cmd0x68b.PackInfo)localObject2).uint32_follow_status.set(k, true);
+          ((ArticleInfo)localArrayList.get(i)).mPackInfoBytes = ((oidb_cmd0x68b.PackInfo)localObject2).toByteArray();
+          localObject2 = ((ArticleInfo)localArrayList.get(i)).clone();
+          if (((ConcurrentHashMap)localObject1).get(Long.valueOf(((ArticleInfo)localObject2).mRecommendSeq)) != null)
+          {
+            a(Integer.valueOf(j), (ArticleInfo)localObject2);
+            if (QLog.isColorLevel()) {
+              QLog.e("ArticleInfoModule", 2, "saveArticleInfo, article duplicated, article been channelID=" + j + ", articleID=" + ((ArticleInfo)localObject2).mArticleID + "，seq=" + ((ArticleInfo)localObject2).mRecommendSeq);
+            }
+          }
+          localObject1 = (ArticleInfo)((ConcurrentHashMap)localObject1).get(Long.valueOf(((ArticleInfo)localObject2).mRecommendSeq));
+          if (localObject1 != null)
+          {
+            if ((((ArticleInfo)localObject1).mTopicRecommendFeedsInfo != null) && (((ArticleInfo)localObject1).mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList != null) && (((ArticleInfo)localObject1).mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+              ((TopicRecommendFeedsInfo.TopicRecommendInfo)((ArticleInfo)localObject1).mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_c_of_type_Int = paramInt2;
+            }
+            if (((ArticleInfo)localObject1).mPolymericInfo != null)
+            {
+              j = paramInt2 + 1;
+              ((ArticleInfo)localObject1).mPolymericInfo.jdField_e_of_type_Int = j;
+              localPackInfo = new oidb_cmd0x68b.PackInfo();
+            }
+          }
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+        {
+          try
+          {
+            oidb_cmd0x68b.PackInfo localPackInfo;
+            localPackInfo.mergeFrom(((ArticleInfo)localObject1).mPackInfoBytes);
+            localPackInfo.uint32_follow_status.set(j, true);
+            ((ArticleInfo)localObject1).mPackInfoBytes = localPackInfo.toByteArray();
+            ((ArticleInfo)localObject1).invalidateProteusTemplateBean();
+            this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lte(this, (ArticleInfo)localObject2));
+            i += 1;
+            break;
+            localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
+            QLog.e("ArticleInfoModule", 1, "first setSmallVideoTopicFollowTypeIntoDB article.mPackInfoBytes convert error article.topicID:" + paramInt1 + " e = " + localInvalidProtocolBufferMicroException1);
+            localInvalidProtocolBufferMicroException1.printStackTrace();
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+          {
+            for (;;)
+            {
+              QLog.e("ArticleInfoModule", 1, "first setSmallVideoTopicFollowTypeIntoDB article.mPackInfoBytes convert error article.topicID:" + paramInt1 + " e = " + localInvalidProtocolBufferMicroException2);
+              localInvalidProtocolBufferMicroException2.printStackTrace();
+            }
+          }
         }
       }
-      localObject = (ArticleInfo)((ConcurrentHashMap)localObject).get(Long.valueOf(localArticleInfo.mRecommendSeq));
-      if (localObject != null)
-      {
-        if ((((ArticleInfo)localObject).mTopicRecommendFeedsInfo != null) && (((ArticleInfo)localObject).mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList != null) && (((ArticleInfo)localObject).mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-          ((TopicRecommendFeedsInfo.TopicRecommendInfo)((ArticleInfo)localObject).mTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_c_of_type_Int = paramInt2;
-        }
-        ((ArticleInfo)localObject).invalidateProteusTemplateBean();
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqa(this, localArticleInfo));
-      i += 1;
-      break;
-      this.jdField_a_of_type_AndroidOsHandler.post(new lqb(this, paramInt1, paramInt2));
+      this.jdField_a_of_type_AndroidOsHandler.post(new ltf(this, paramInt1, paramInt2));
       return;
     }
   }
@@ -1632,7 +1679,16 @@ public class ArticleInfoModule
       return;
     }
     List localList = a(Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new loy(this, localList, paramInt1, paramInt2, paramLong, paramBoolean));
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsc(this, localList, paramInt1, paramInt2, paramLong, paramBoolean));
+      return;
+    }
+    catch (RejectedExecutionException localRejectedExecutionException)
+    {
+      QLog.d("ArticleInfoModule", 1, "loadChannelArticle Exception.");
+      localRejectedExecutionException.printStackTrace();
+    }
   }
   
   public void a(int paramInt, long paramLong)
@@ -1683,7 +1739,7 @@ public class ArticleInfoModule
     int j = ((ConcurrentHashMap)localObject2).size() - ((ArrayList)localObject1).size();
     if (j < paramInt2)
     {
-      Collections.sort((List)localObject1, new lqh(this));
+      Collections.sort((List)localObject1, new ltl(this));
       int i = 0;
       for (;;)
       {
@@ -1706,7 +1762,7 @@ public class ArticleInfoModule
       a(Integer.valueOf(paramInt1), localArticleInfo);
     }
     localObject2 = a(Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqi(this, paramInt1, (List)localObject2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ltm(this, paramInt1, (List)localObject2));
     localObject1 = new StringBuilder().append("delete outdated article cache , cnt ").append(((ArrayList)localObject1).size()).append(", reservedCnt : ");
     if (j < paramInt2) {}
     for (;;)
@@ -1765,7 +1821,7 @@ public class ArticleInfoModule
       }
       a(Integer.valueOf(paramInt), paramList);
       ((ConcurrentHashMap)localObject1).remove(Long.valueOf(paramList.mRecommendSeq));
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpf(this, paramList));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsj(this, paramList));
       break label150;
       if (((StringBuilder)localObject2).length() <= 0) {
         break;
@@ -1802,7 +1858,7 @@ public class ArticleInfoModule
   
   public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpr(this, paramLong, paramInt1, paramInt2, paramBoolean));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsv(this, paramLong, paramInt1, paramInt2, paramBoolean));
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt1, HashMap paramHashMap, int paramInt2, String paramString1, String paramString2, String paramString3)
@@ -2275,13 +2331,13 @@ public class ArticleInfoModule
       return;
     }
     jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lox(this, paramRequest0x68bParams));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsb(this, paramRequest0x68bParams));
   }
   
   public void a(ArticleInfo paramArticleInfo)
   {
     if (paramArticleInfo != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lps(this, paramArticleInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsw(this, paramArticleInfo));
     }
   }
   
@@ -2386,7 +2442,7 @@ public class ArticleInfoModule
       a(localChannelTopCookie1);
       try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpj(this, localChannelTopCookie1));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsn(this, localChannelTopCookie1));
         return;
       }
       catch (Exception paramInteger)
@@ -2748,12 +2804,12 @@ public class ArticleInfoModule
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpi(this, paramList));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lsm(this, paramList));
   }
   
   public void a(boolean paramBoolean, int paramInt, List paramList1, List paramList2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new lpx(this, paramBoolean, paramList1, paramList2, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ltb(this, paramBoolean, paramList1, paramList2, paramInt));
   }
   
   public boolean a(int paramInt1, int paramInt2)
@@ -2803,10 +2859,10 @@ public class ArticleInfoModule
         }
         ((ArticleInfo)localObject).invalidateProteusTemplateBean();
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpy(this, localArticleInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ltc(this, localArticleInfo));
       paramInt1 += 1;
       break;
-      this.jdField_a_of_type_AndroidOsHandler.post(new lpz(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new ltd(this));
       return true;
     }
   }
@@ -2817,7 +2873,7 @@ public class ArticleInfoModule
     for (String str = "mChannelID = ? and mRecommendSeq < ?";; str = "mChannelID = ? and mRecommendSeq > ?")
     {
       QLog.i("ArticleInfoModule", 1, "loadMoreChannelArticleList with selection=" + str + "channelId=" + paramInt1 + "recommendSeq=" + paramLong + "count=" + paramInt2);
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpa(this, str, paramInt1, paramLong, paramInt2, paramInt3, paramInt4, paramInt6, paramBoolean, paramInt5));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lse(this, str, paramInt1, paramLong, paramInt2, paramInt3, paramInt4, paramInt6, paramBoolean, paramInt5));
       return true;
     }
   }
@@ -2945,7 +3001,7 @@ public class ArticleInfoModule
     return;
     a(Integer.valueOf(paramInt), localArticleInfo);
     localConcurrentHashMap.remove(Long.valueOf(paramLong));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lpg(this, localArticleInfo));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsk(this, localArticleInfo));
   }
   
   public boolean b(Long paramLong)
@@ -2977,7 +3033,7 @@ public class ArticleInfoModule
     while (localIterator.hasNext()) {
       localArrayList.add((ArticleInfo)paramInteger.get((Long)localIterator.next()));
     }
-    Collections.sort(localArrayList, new lpe(this));
+    Collections.sort(localArrayList, new lsi(this));
     return localArrayList;
   }
   
@@ -3002,7 +3058,7 @@ public class ArticleInfoModule
   
   public void f()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lph(this));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lsl(this));
   }
   
   public void g()
@@ -3015,7 +3071,7 @@ public class ArticleInfoModule
   
   public void h()
   {
-    ThreadManager.getUIHandler().post(new lpw(this));
+    ThreadManager.getUIHandler().post(new lta(this));
   }
 }
 

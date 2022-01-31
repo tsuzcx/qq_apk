@@ -1,22 +1,25 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiIncomingCallUICtr;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
 
-class jvg
-  implements Runnable
+public class jvg
+  implements QavInOutAnimation.QavOutAnimationListener
 {
-  jvg(jvf paramjvf, long paramLong) {}
+  public jvg(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_Jvf.a.jdField_a_of_type_ComTencentAvAppSessionInfo.an = true;
-    if (this.jdField_a_of_type_Jvf.a.b == 1) {
-      this.jdField_a_of_type_Jvf.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
-    }
+    this.a.l = true;
+    this.a.ah();
+  }
+  
+  public void b()
+  {
+    this.a.l = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jvg
  * JD-Core Version:    0.7.0.1
  */

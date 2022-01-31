@@ -11,7 +11,7 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import olg;
+import opv;
 
 public class PermissionListAdapter
   extends BaseAdapter
@@ -34,7 +34,7 @@ public class PermissionListAdapter
   }
   
   @NonNull
-  private olg a(int paramInt)
+  private opv a(int paramInt)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int j;
@@ -43,7 +43,7 @@ public class PermissionListAdapter
       PermissionPart localPermissionPart = (PermissionPart)localIterator.next();
       j = localPermissionPart.a() + i;
       if (paramInt <= j - 1) {
-        return new olg(localPermissionPart, paramInt - i);
+        return new opv(localPermissionPart, paramInt - i);
       }
     }
     throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
@@ -92,15 +92,15 @@ public class PermissionListAdapter
   
   public int getItemViewType(int paramInt)
   {
-    olg localolg = a(paramInt);
-    return localolg.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionPermissionPart.a(localolg.jdField_a_of_type_Int);
+    opv localopv = a(paramInt);
+    return localopv.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionPermissionPart.a(localopv.jdField_a_of_type_Int);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject = a(paramInt);
-    PermissionPart localPermissionPart = ((olg)localObject).jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionPermissionPart;
-    paramInt = ((olg)localObject).jdField_a_of_type_Int;
+    PermissionPart localPermissionPart = ((opv)localObject).jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionPermissionPart;
+    paramInt = ((opv)localObject).jdField_a_of_type_Int;
     localObject = paramView;
     if (paramView == null) {
       localObject = localPermissionPart.a(paramInt, paramViewGroup);

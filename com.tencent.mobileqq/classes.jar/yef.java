@@ -1,32 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class yef
-  extends BroadcastReceiver
+  implements INetInfoHandler
 {
-  public yef(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public yef(LbsFilterStatusManager paramLbsFilterStatusManager) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.d();
+    long l = Thread.currentThread().getId();
+    if (LbsFilterStatusManager.a(this.a) == l) {
+      LbsFilterStatusManager.a(this.a);
     }
-    while (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+    while (LbsFilterStatusManager.a(this.a) == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "ACTION_START_VIDEO_CHAT == >>");
-    }
-    this.a.d();
+    LbsFilterStatusManager.a(this.a).post(new yeg(this));
   }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

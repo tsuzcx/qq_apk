@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import abvv;
-import abvw;
-import abvx;
-import abvy;
-import abvz;
-import abwa;
-import abwb;
-import abwc;
-import abwd;
-import abwe;
+import acds;
+import acdt;
+import acdu;
+import acdv;
+import acdw;
+import acdx;
+import acdy;
+import acdz;
+import acea;
+import aceb;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
@@ -34,7 +34,7 @@ public class DBFixDialogUI
   private static String g = "DBFix";
   private int jdField_a_of_type_Int;
   public Context a;
-  DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new abvv(this);
+  DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new acds(this);
   public QQAppInterface a;
   private DBFixManager jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixManager;
   public String a;
@@ -52,7 +52,7 @@ public class DBFixDialogUI
   {
     QLog.d(g, 1, "DBFixDialogUI showDialog, " + paramString);
     this.h = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abvx(this, paramDialog));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new acdu(this, paramDialog));
   }
   
   private void c()
@@ -65,8 +65,8 @@ public class DBFixDialogUI
   
   private void d()
   {
-    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage("修复成功，请重启QQ。").setPositiveButton("强制关闭", new abwa(this));
-    jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new abwb(this));
+    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage("修复成功，请重启QQ。").setPositiveButton("强制关闭", new acdx(this));
+    jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new acdy(this));
     jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
     a(jdField_a_of_type_AndroidAppDialog, "fix succ");
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_JavaLangString, e, e, 0, 0, "", "", "", "");
@@ -74,14 +74,14 @@ public class DBFixDialogUI
   
   private void e()
   {
-    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage("修复失败，重启QQ重试。").setPositiveButton("重启QQ", new abwc(this));
+    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage("修复失败，重启QQ重试。").setPositiveButton("重启QQ", new acdz(this));
     jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
     a(jdField_a_of_type_AndroidAppDialog, "fix fail");
   }
   
   private void f()
   {
-    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage("手机空间不足，无法修复聊天记录，请清理手机中的缓存垃圾，释放空间后再修复聊天记录。").setPositiveButton("空间清理", new abvw(this)).setNegativeButton("取消", new abwe(this));
+    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage("手机空间不足，无法修复聊天记录，请清理手机中的缓存垃圾，释放空间后再修复聊天记录。").setPositiveButton("空间清理", new acdt(this)).setNegativeButton("取消", new aceb(this));
     jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
     a(jdField_a_of_type_AndroidAppDialog, "memory alert");
   }
@@ -113,12 +113,12 @@ public class DBFixDialogUI
   public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abwd(this, paramInt));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new acea(this, paramInt));
   }
   
   public void b()
   {
-    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage("检测到你的聊天记录出现异常，请立即修复，否则聊天记录将丢失").setPositiveButton("确定", new abvz(this)).setNegativeButton("取消", new abvy(this));
+    jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage("检测到你的聊天记录出现异常，请立即修复，否则聊天记录将丢失").setPositiveButton("确定", new acdw(this)).setNegativeButton("取消", new acdv(this));
     jdField_a_of_type_AndroidAppDialog.setOnCancelListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
     a(jdField_a_of_type_AndroidAppDialog, "checked corrupt");
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_JavaLangString, b, b, 0, 0, "", "", "", "");

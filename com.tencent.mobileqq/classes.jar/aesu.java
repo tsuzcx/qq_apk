@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
 
 public class aesu
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public aesu(SelectLocationFragment paramSelectLocationFragment) {}
+  public aesu(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SelectLocationFragment.a(this.a, SelectLocationFragment.b(this.a));
+    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
+      MusicGeneWebViewPlugin.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesu
  * JD-Core Version:    0.7.0.1
  */

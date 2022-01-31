@@ -1,21 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 
-class yxz
-  implements Animation.AnimationListener
+public class yxz
+  implements Runnable
 {
-  yxz(yxy paramyxy) {}
+  public yxz(CmGameLauncher paramCmGameLauncher, ApolloCmdChannel paramApolloCmdChannel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new yya(this), 300L);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.requestData(CmGameLauncher.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher).getLuaState(), "cs.make_room_min.local", "{}", true, true);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

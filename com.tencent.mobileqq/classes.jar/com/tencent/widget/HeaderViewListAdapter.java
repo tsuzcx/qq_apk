@@ -192,28 +192,28 @@ public class HeaderViewListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = a();
-    if (paramInt < i) {
+    int j = a();
+    if (paramInt < j) {
       return ((ListView.FixedViewInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_AndroidViewView;
     }
-    int j = paramInt - i;
+    int k = paramInt - j;
     paramInt = 0;
     if (this.jdField_a_of_type_AndroidWidgetListAdapter != null)
     {
-      i = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+      int i = this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
       paramInt = i;
-      if (j < i) {
-        return this.jdField_a_of_type_AndroidWidgetListAdapter.getView(j, paramView, paramViewGroup);
+      if (k < i) {
+        return this.jdField_a_of_type_AndroidWidgetListAdapter.getView(k, paramView, paramViewGroup);
       }
     }
     try
     {
-      paramView = ((ListView.FixedViewInfo)this.jdField_b_of_type_JavaUtilArrayList.get(j - paramInt)).jdField_a_of_type_AndroidViewView;
+      paramView = ((ListView.FixedViewInfo)this.jdField_b_of_type_JavaUtilArrayList.get(k - paramInt)).jdField_a_of_type_AndroidViewView;
       return paramView;
     }
     catch (Exception paramView)
     {
-      throw new RuntimeException("adapter index out of bound. adapter count: " + paramInt + ", footCount: " + this.jdField_b_of_type_JavaUtilArrayList.size() + " , position: " + j + ", Adapter: " + this.jdField_a_of_type_AndroidWidgetListAdapter);
+      throw new RuntimeException("adapter index out of bound. adapter count: " + paramInt + ", footCount: " + this.jdField_b_of_type_JavaUtilArrayList.size() + ", numHeaders:" + j + " , position: " + k + ", Adapter: " + this.jdField_a_of_type_AndroidWidgetListAdapter);
     }
   }
   

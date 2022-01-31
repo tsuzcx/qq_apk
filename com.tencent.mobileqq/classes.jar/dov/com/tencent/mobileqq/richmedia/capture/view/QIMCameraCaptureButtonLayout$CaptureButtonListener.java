@@ -4,13 +4,13 @@ public abstract interface QIMCameraCaptureButtonLayout$CaptureButtonListener
 {
   public abstract boolean a();
   
-  public abstract void r();
-  
   public abstract void s();
   
   public abstract void t();
   
   public abstract void u();
+  
+  public abstract void v();
 }
 
 

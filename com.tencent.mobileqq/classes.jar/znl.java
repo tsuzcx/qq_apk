@@ -1,30 +1,29 @@
-import com.tencent.mobileqq.app.Job;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.msf.sdk.QNotificationManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class znl
-  extends znz
+  implements Runnable
 {
-  public znl(BlockingQueue paramBlockingQueue, zjv paramzjv)
-  {
-    super(3, 9, 1L, paramBlockingQueue, paramzjv);
-  }
+  public znl(MessageHandler paramMessageHandler, QNotificationManager paramQNotificationManager) {}
   
-  protected String a()
+  public void run()
   {
-    return "ThreadDownLoadPool";
-  }
-  
-  protected ConcurrentLinkedQueue a()
-  {
-    return Job.b;
-  }
-  
-  protected void beforeExecute(Thread paramThread, Runnable paramRunnable)
-  {
-    ThreadRegulator.a().b();
-    super.beforeExecute(paramThread, paramRunnable);
+    try
+    {
+      Thread.sleep(5000L);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("Q.msg.MessageHandler", 4, "IPADonline time expired cancel now");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel("Q.msg.MessageHandler_IpadOnlineNotifition", MessageHandler.h);
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.msg.MessageHandler", 2, "IPADonline thread Interrupt");
+    }
   }
 }
 

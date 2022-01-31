@@ -8,7 +8,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListAdapter;
-import anpq;
+import anyd;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
@@ -71,7 +71,7 @@ public class QIMFilterProviderView
   
   protected int a()
   {
-    return 2130970125;
+    return 2130970137;
   }
   
   protected Bundle a()
@@ -189,7 +189,7 @@ public class QIMFilterProviderView
         }
         if (paramString != null)
         {
-          postDelayed(new anpq(this, paramInt), 200L);
+          postDelayed(new anyd(this, paramInt), 200L);
           localObject1 = (CaptureComboManager)QIMManager.a(5);
           localObject2 = new Bundle();
           ((Bundle)localObject2).putInt("apply_source", 1);
@@ -213,7 +213,7 @@ public class QIMFilterProviderView
     super.a(paramBundle);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     if (this.jdField_a_of_type_AndroidViewView == null) {}
-    for (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)LayoutInflater.from(getContext()).inflate(2130970125, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_AndroidViewView))
+    for (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)LayoutInflater.from(getContext()).inflate(2130970137, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_AndroidViewView))
     {
       this.jdField_a_of_type_DovComQqImCaptureAdapterFilterProviderPagerAdapter = new FilterProviderPagerAdapter(this.jdField_a_of_type_AndroidContentContext, this.f);
       this.jdField_a_of_type_DovComQqImCaptureAdapterFilterProviderPagerAdapter.a(this);
@@ -245,7 +245,7 @@ public class QIMFilterProviderView
       return;
     }
     paramAdapterView = (QIMFilterCategoryItem)((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(b())).jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (paramAdapterView.d())
+    if (paramAdapterView.e())
     {
       WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext, paramAdapterView);
       return;

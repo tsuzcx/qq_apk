@@ -1,39 +1,28 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.annotation.TargetApi;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qphone.base.util.QLog;
 
 public class uzk
-  extends ClickableSpan
+  implements ArkViewImplement.LoadCallback
 {
-  public uzk(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public uzk(ArkAppItemBubbleBuilder paramArkAppItemBubbleBuilder, ArkAppItemBubbleBuilder.Holder paramHolder, MessageForArkApp paramMessageForArkApp) {}
   
-  public void onClick(View paramView)
+  @TargetApi(14)
+  public void onLoadFinish(int paramInt)
   {
-    if (NetworkUtil.d(this.a.jdField_a_of_type_AndroidContentContext))
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "attachArkView onLoadFinish MessageForArkApp state=" + paramInt);
+    }
+    if (paramInt == 1)
     {
-      paramView = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      paramView.a((short)1, localArrayList, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
       return;
     }
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433009), 1).b(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder$Holder.a.setVisibility(8);
   }
 }
 

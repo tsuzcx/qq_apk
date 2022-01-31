@@ -1,49 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.app.NearFieldDiscussHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 class xyn
-  extends SosoInterface.OnLocationListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  xyn(xym paramxym, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  xyn(xym paramxym, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramInt != 0) || (paramSosoLbsInfo == null))
-    {
-      paramSosoLbsInfo = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-      paramSosoLbsInfo.arg1 = 1;
-      paramSosoLbsInfo.arg2 = 2131438780;
-      paramSosoLbsInfo.sendToTarget();
-      return;
-    }
-    paramSosoLbsInfo = CreateFaceToFaceDiscussionActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramSosoLbsInfo);
-    NearFieldDiscussHandler localNearFieldDiscussHandler = (NearFieldDiscussHandler)this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.app.a(33);
-    switch (this.a.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      localNearFieldDiscussHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_Int, paramSosoLbsInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.b, this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.h);
-      return;
-    case 1: 
-      localNearFieldDiscussHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_Int, paramSosoLbsInfo, 2, this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.h);
-      return;
-    case 2: 
-      localNearFieldDiscussHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_Int, paramSosoLbsInfo, true);
-      return;
-    case 3: 
-      localNearFieldDiscussHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_Int, paramSosoLbsInfo, false);
-      return;
-    }
-    localNearFieldDiscussHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_Int, paramSosoLbsInfo);
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)NewFlowCameraActivity.a(this.jdField_a_of_type_Xym.a).getLayoutParams();
+    paramValueAnimator.width = ((int)((this.jdField_a_of_type_Int - this.b) * f1 + this.b));
+    paramValueAnimator.height = ((int)((this.c - this.d) * f1 + this.d));
+    paramValueAnimator.leftMargin = ((int)((this.e + 0) * f1 + 0.0F));
+    paramValueAnimator.bottomMargin = ((int)(f1 * (this.f + 0) + 0.0F));
+    NewFlowCameraActivity.a(this.jdField_a_of_type_Xym.a).setLayoutParams(paramValueAnimator);
   }
 }
 

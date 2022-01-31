@@ -1,33 +1,59 @@
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.ar.ARScanFragment;
+import com.tencent.mobileqq.ar.arengine.AREngine;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agjk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public agjk(ScanTorchActivity paramScanTorchActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  public agjk(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-    ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    if (this.jdField_a_of_type_Boolean) {
-      ScanTorchActivity.z(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.b);
-    }
-    for (;;)
+    boolean bool2 = false;
+    if ((this.a.a != null) && (this.a.a.a != null))
     {
-      ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, true);
-      ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-      return;
-      ScanTorchActivity.z(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.a.b(false));
+      if (!ScanTorchActivity.g(this.a)) {
+        break label152;
+      }
+      paramView = this.a.a.a;
+      if (ScanTorchActivity.h(this.a)) {
+        break label142;
+      }
+      bool1 = true;
+      if (paramView.b(bool1))
+      {
+        paramView = this.a;
+        if (ScanTorchActivity.h(this.a)) {
+          break label147;
+        }
+        bool1 = true;
+        ScanTorchActivity.k(paramView, bool1);
+        paramView = this.a.a.a;
+        bool1 = bool2;
+        if (!ScanTorchActivity.h(this.a)) {
+          bool1 = true;
+        }
+        paramView.g(bool1);
+        ScanTorchActivity.a(this.a, true);
+        ScanTorchActivity.b(this.a, ScanTorchActivity.h(this.a));
+      }
     }
+    label142:
+    label147:
+    label152:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        boolean bool1 = false;
+        continue;
+        bool1 = false;
+      }
+    }
+    QLog.d("ScanTorchActivity", 2, "initView click mFlashLightTips when view invisble.");
   }
 }
 

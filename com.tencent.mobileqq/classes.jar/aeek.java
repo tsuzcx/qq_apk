@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceCloseListener;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.app.Activity;
+import com.tencent.biz.common.util.Util;
+import com.tencent.mobileqq.jsp.DataApiPlugin;
 
-public class aeek
-  implements MagicfaceActionManager.MagicfaceCloseListener
+class aeek
+  implements Runnable
 {
-  public aeek(MagicfaceViewController paramMagicfaceViewController, MagicfaceActionManager paramMagicfaceActionManager) {}
+  aeek(aeej paramaeej, Activity paramActivity, String paramString, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.h();
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
+    {
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        this.jdField_a_of_type_Aeej.a.callJs(this.jdField_a_of_type_Aeej.c, new String[] { "null", Integer.toString(this.jdField_a_of_type_Int) });
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Aeej.a.callJs(this.jdField_a_of_type_Aeej.c, new String[] { Util.a(this.jdField_a_of_type_JavaLangString), Integer.toString(this.jdField_a_of_type_Int) });
   }
 }
 

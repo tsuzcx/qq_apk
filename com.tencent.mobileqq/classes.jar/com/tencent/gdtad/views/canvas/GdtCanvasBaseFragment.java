@@ -39,9 +39,9 @@ public abstract class GdtCanvasBaseFragment
     PublicFragmentActivity.a(paramActivity, paramGdtCanvasData, paramClass);
   }
   
-  public void a(Activity paramActivity)
+  public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    super.a(paramActivity);
+    super.initWindowStyleAndAnimation(paramActivity);
     if (paramActivity == null) {
       return;
     }
@@ -49,22 +49,22 @@ public abstract class GdtCanvasBaseFragment
     paramActivity.getWindow().addFlags(1024);
   }
   
-  public boolean a()
+  public boolean isWrapContent()
   {
     return false;
   }
   
-  public boolean b()
+  public boolean needImmersive()
   {
     return false;
   }
   
-  public boolean c()
+  public boolean needStatusTrans()
   {
     return false;
   }
   
-  public boolean d()
+  public boolean onBackEvent()
   {
     if (this.a != null) {
       return this.a.a();

@@ -39,9 +39,6 @@ public class HWVideoEncoder
     int i = 0;
     for (;;)
     {
-      if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo == null) && (QLog.isColorLevel())) {
-        QLog.w("HWVideoEncoder", 2, "buffer info i null");
-      }
       int j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
       if (j == -1) {
         if (!paramBoolean) {
@@ -111,7 +108,7 @@ public class HWVideoEncoder
         }
         this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(j, false);
         if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) == 0) {
-          break label576;
+          break label555;
         }
         if (!paramBoolean)
         {
@@ -121,7 +118,7 @@ public class HWVideoEncoder
       } while (!QLog.isColorLevel());
       QLog.d("HWVideoEncoder", 2, "end of stream reached");
       return;
-      label576:
+      label555:
       i = 0;
     }
   }

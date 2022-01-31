@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import ader;
-import adet;
-import adeu;
-import adew;
-import adex;
-import adey;
-import adez;
-import adfa;
-import adfb;
-import adfc;
-import adfe;
-import adfg;
-import adfi;
-import adfk;
-import adfn;
+import admy;
+import adna;
+import adnb;
+import adnd;
+import adne;
+import adnf;
+import adng;
+import adnh;
+import adni;
+import adnj;
+import adnl;
+import adnn;
+import adnp;
+import adnr;
+import adnu;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.media.AudioManager;
@@ -53,12 +53,12 @@ public class VideoFilePresenter
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new adex(this);
+  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new adne(this);
   public AudioManager a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private PowerManager.WakeLock jdField_a_of_type_AndroidOsPowerManager$WakeLock;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adfa(this);
-  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new adfb(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adnh(this);
+  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new adni(this);
   public VideoFileViewer a;
   public TVK_IMediaPlayer a;
   protected TVK_IProxyFactory a;
@@ -73,8 +73,8 @@ public class VideoFilePresenter
   {
     super(paramFileBrowserModelBase, paramActivity);
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = new adey(this);
-    this.jdField_b_of_type_JavaLangRunnable = new adez(this);
+    this.jdField_a_of_type_JavaLangRunnable = new adnf(this);
+    this.jdField_b_of_type_JavaLangRunnable = new adng(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer = new VideoFileViewer(paramActivity);
     a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer);
     o();
@@ -129,7 +129,7 @@ public class VideoFilePresenter
   
   private void n()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(new adfk(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(new adnr(this));
   }
   
   private void o()
@@ -153,13 +153,13 @@ public class VideoFilePresenter
     {
       this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adfn(this));
+      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adnu(this));
     }
   }
   
   private void q()
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adet(this));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adna(this));
   }
   
   private void r()
@@ -182,7 +182,7 @@ public class VideoFilePresenter
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.d();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.f(false);
-    FileVideoManager.a(this.jdField_a_of_type_AndroidAppActivity, new ader(this));
+    FileVideoManager.a(this.jdField_a_of_type_AndroidAppActivity, new admy(this));
     this.jdField_a_of_type_AndroidAppActivity.getWindow().setFlags(1024, 1024);
     if ((FileManagerUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b())) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.i() == 2)) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.f(true);
@@ -204,7 +204,7 @@ public class VideoFilePresenter
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adeu(this, paramInt, paramString));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adnb(this, paramInt, paramString));
   }
   
   public void a(String paramString1, String paramString2) {}
@@ -214,15 +214,15 @@ public class VideoFilePresenter
     return false;
   }
   
-  public void ae_()
+  public void ag_()
   {
     this.jdField_a_of_type_AndroidAppActivity.finish();
     this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2131034423);
   }
   
-  public void af_()
+  public void ah_()
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adew(this));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adnd(this));
   }
   
   public boolean b()
@@ -242,12 +242,12 @@ public class VideoFilePresenter
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c(), this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = FileVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c()).a();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = FileVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c()).a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.b(), this);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new adfc(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new adfe(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new adfg(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new adnj(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new adnl(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new adnn(this));
       m();
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.d(d());
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new adfi(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new adnp(this));
       return;
     }
     catch (Exception localException)

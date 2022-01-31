@@ -1,38 +1,37 @@
-import android.os.Looper;
-import android.os.Process;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.BaseHandler;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
+import cooperation.plugin.IPluginManager.PluginParams;
+import cooperation.qzone.QZoneHelper.StartActivity;
+import cooperation.qzone.QzonePluginProxyActivity;
+import mqq.os.MqqHandler;
 
 public final class anai
-  implements Runnable
+  implements QZoneHelper.StartActivity
 {
-  public void run()
+  public anai(Intent paramIntent, String paramString, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, int paramInt, Activity paramActivity, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    try
-    {
-      int i = ((Integer)BaseHandler.InitalPriority.get()).intValue();
-      int j = Process.getThreadPriority(Process.myTid());
-      long l = Thread.currentThread().getId();
-      BaseHandler.isRegulated.set(Boolean.valueOf(false));
-      BaseHandler.InitalPriority.remove();
-      BaseHandler.access$400(i);
-      if (BaseHandler.access$400(i)) {}
-      for (i = BaseHandler.regulalteCount.decrementAndGet();; i = BaseHandler.regulalteCount.get())
-      {
-        Looper localLooper = Looper.myLooper();
-        if (localLooper != null) {
-          localLooper.setMessageLogging(null);
-        }
-        QLog.i("BaseHandler", 1, "resetPriority ThreadName:" + Thread.currentThread().getName() + "(" + l + ") currentPriority: " + j + ",changed:" + Process.getThreadPriority(Process.myTid()) + " regulated:" + i);
-        return;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.w("BaseHandler", 1, "", localException);
-    }
+    String str = QzonePluginProxyActivity.a(this.jdField_a_of_type_AndroidContentIntent);
+    Class localClass = anal.a(str);
+    this.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
+    this.jdField_a_of_type_AndroidContentIntent.putExtra("click_time", System.currentTimeMillis());
+    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
+    localPluginParams.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
+    localPluginParams.d = "QZone";
+    localPluginParams.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession;
+    localPluginParams.e = str;
+    localPluginParams.jdField_a_of_type_JavaLangClass = localClass;
+    localPluginParams.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
+    localPluginParams.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+    localPluginParams.c = 60000;
+    localPluginParams.f = null;
+    localPluginParams.jdField_a_of_type_Boolean = false;
+    ThreadManager.getUIHandler().post(new anaj(this, str, paramBoolean1, paramBoolean2, localPluginParams));
   }
 }
 

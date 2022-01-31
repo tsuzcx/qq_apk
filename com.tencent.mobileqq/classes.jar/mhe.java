@@ -1,28 +1,57 @@
-import android.app.Activity;
 import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsInterruptedAdManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoStatusListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.MobileQQ;
 
-class mhe
-  implements Runnable
+public class mhe
+  extends VideoFeedsPlayManager.VideoStatusListener
 {
-  mhe(mhd parammhd, int paramInt) {}
+  public mhe(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void run()
+  public void a(VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseAdapter", 2, "scroll " + this.jdField_a_of_type_Int + " to top");
-    }
-    View localView = this.jdField_a_of_type_Mhd.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(this.jdField_a_of_type_Int - this.jdField_a_of_type_Mhd.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getFirstVisiblePosition());
-    if (localView != null)
+    boolean bool;
+    if ((VideoFeedsPlayActivity.d(this.a)) && (VideoFeedsPlayActivity.a(this.a) != null))
     {
-      ReadInJoyBaseAdapter.a(this.jdField_a_of_type_Mhd.a).removeMessages(1001);
-      this.jdField_a_of_type_Mhd.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.smoothScrollBy(localView.getBottom() - AIOUtils.a(175.0F, this.jdField_a_of_type_Mhd.a.jdField_a_of_type_AndroidAppActivity.getResources()), 800);
-      ReadInJoyBaseAdapter.d(this.jdField_a_of_type_Mhd.a, true);
+      bool = VideoFeedsPlayActivity.a(this.a).c();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "video play completion!, in weishi mode! interrupted weishi ad");
+      }
+      if (!bool) {}
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "video play completion!, move to next position");
+      }
+      bool = VideoFeedsPlayActivity.f(this.a);
+      if (VideoFeedsPlayActivity.f(this.a)) {
+        VideoFeedsPlayActivity.a(this.a).post(new mhf(this));
+      }
+      if (VideoFeedsPlayActivity.a(this.a))
+      {
+        if (!bool) {
+          VideoFeedsPlayActivity.d(this.a);
+        }
+        VideoFeedsPlayActivity.a(this.a).b(5);
+        return;
+      }
+    } while ((this.a.a() == VideoFeedsPlayActivity.a(this.a).size() - 1) || (NetworkUtil.b(VideoFeedsPlayActivity.a(this.a).getApplication().getApplicationContext())));
+    if (VideoFeedsPlayActivity.a(this.a).a())
+    {
+      VideoFeedsPlayActivity.d(this.a, true);
+      return;
+    }
+    VideoFeedsPlayActivity.a(this.a).postDelayed(new mhg(this, paramVideoPlayParam), 500L);
   }
 }
 

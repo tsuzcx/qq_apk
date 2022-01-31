@@ -1,18 +1,43 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class uch
-  implements Parcelable.Creator
+public class uch
+  extends BroadcastReceiver
 {
-  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
-  {
-    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
-  }
+  public uch(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new TroopMemberListActivity.TroopAdmin[paramInt];
+    if (paramIntent == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
+      paramContext = paramIntent.getStringExtra("data");
+    } while (paramContext == null);
+    try
+    {
+      paramContext = new JSONObject(paramContext);
+      this.a.a.tribeId = paramContext.optInt("bid");
+      this.a.a.tribeName = paramContext.optString("bname");
+      this.a.e = true;
+      paramContext = new ArrayList();
+      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+        paramContext.add(this.a.a.tribeName);
+      }
+      this.a.a(9, paramContext, true, 1, true);
+      return;
+    }
+    catch (JSONException paramContext) {}
   }
 }
 

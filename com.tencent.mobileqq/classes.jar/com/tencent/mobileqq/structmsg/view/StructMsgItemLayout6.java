@@ -330,7 +330,7 @@ public class StructMsgItemLayout6
               else if ("pavideo".equals(localObject3))
               {
                 localObject1 = ((AbsStructMsgElement)localObject1).a(paramContext, null, paramBundle);
-                ((AnyScaleTypeImageView)localObject1).setImageResource(2130839718);
+                ((AnyScaleTypeImageView)localObject1).setImageResource(2130839733);
                 localObject3 = new LinearLayout.LayoutParams(-1, (int)(BaseChatItemLayout.jdField_a_of_type_Int / 1.8D));
                 if (paramBoolean)
                 {

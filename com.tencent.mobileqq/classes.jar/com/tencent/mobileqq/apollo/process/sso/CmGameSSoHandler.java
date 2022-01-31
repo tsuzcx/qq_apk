@@ -147,7 +147,7 @@ public class CmGameSSoHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -213,7 +213,7 @@ public class CmGameSSoHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3565");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8.3615");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new qqavopensdkSsoTunnel.STAudioVideoReq();
@@ -251,7 +251,7 @@ public class CmGameSSoHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3565");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8.3615");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new qqavopensdkSsoTunnel.STAVCtrlParamReq();
@@ -370,7 +370,7 @@ public class CmGameSSoHandler
       WebSSOAgent.UniSsoServerReqComm localUniSsoServerReqComm = new WebSSOAgent.UniSsoServerReqComm();
       localUniSsoServerReqComm.platform.set(109L);
       localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-      localUniSsoServerReqComm.mqqver.set("7.6.3.3565");
+      localUniSsoServerReqComm.mqqver.set("7.6.8.3615");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
       localUniSsoServerReq.reqdata.set(paramString2);
@@ -388,30 +388,37 @@ public class CmGameSSoHandler
     }
   }
   
-  public void a(String paramString1, String paramString2, long paramLong, int paramInt)
+  public void a(String paramString1, String paramString2, long paramLong, int paramInt, boolean paramBoolean, byte[] paramArrayOfByte)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameSSoHandler", 2, "[doCmGameRequest], cmd:" + paramString1 + ",reqData:" + paramString2 + ",luaR:" + paramLong + ", app: " + this.a);
+      QLog.d("cmgame_process.CmGameSSoHandler", 2, "[doCmGameRequest], cmd:" + paramString1 + ",luaR:" + paramLong + ", app: " + this.a);
     }
     try
     {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3565");
+      WebSSOAgent.UniSsoServerReqComm localUniSsoServerReqComm = new WebSSOAgent.UniSsoServerReqComm();
+      localUniSsoServerReqComm.platform.set(109L);
+      localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
+      localUniSsoServerReqComm.mqqver.set("7.6.8.3615");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localUniSsoServerReq.reqdata.set(paramString2);
-      localObject = new NewIntent(this.a.getApp(), CmGameServlet.class);
-      ((NewIntent)localObject).putExtra("usrdata", paramLong);
-      ((NewIntent)localObject).putExtra("cmd", paramString1);
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("callFrom", paramInt);
-      ((NewIntent)localObject).putExtra("isCMShowJSRequest", true);
-      if ("apollo_aio_game.get_user_uin_or_openid".equals(paramString1)) {
-        ((NewIntent)localObject).putExtra("reqData", paramString2);
+      localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
+      if ((paramBoolean) && (paramArrayOfByte != null)) {
+        localUniSsoServerReq.pbReqData.set(ByteStringMicro.copyFrom(paramArrayOfByte));
       }
-      this.a.startServlet((NewIntent)localObject);
+      for (;;)
+      {
+        paramArrayOfByte = new NewIntent(this.a.getApp(), CmGameServlet.class);
+        paramArrayOfByte.putExtra("usrdata", paramLong);
+        paramArrayOfByte.putExtra("cmd", paramString1);
+        paramArrayOfByte.putExtra("data", localUniSsoServerReq.toByteArray());
+        paramArrayOfByte.putExtra("callFrom", paramInt);
+        paramArrayOfByte.putExtra("isCMShowJSRequest", true);
+        if ("apollo_aio_game.get_user_uin_or_openid".equals(paramString1)) {
+          paramArrayOfByte.putExtra("reqData", paramString2);
+        }
+        this.a.startServlet(paramArrayOfByte);
+        return;
+        localUniSsoServerReq.reqdata.set(paramString2);
+      }
       return;
     }
     catch (Exception paramString1)
@@ -430,7 +437,7 @@ public class CmGameSSoHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3565");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8.3615");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new GetTinyID.STTinyID2UserAccInfoReq();
@@ -455,68 +462,82 @@ public class CmGameSSoHandler
   public void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameSSoHandler", 2, "[handleCMGameResp],data:" + paramArrayOfByte);
+      QLog.d("cmgame_process.CmGameSSoHandler", 2, "[handleCMGameResp]");
     }
-    if ((paramArrayOfByte != null) && (paramFromServiceMsg != null))
+    CmGameManager localCmGameManager = CmGameUtil.a();
+    if ((localCmGameManager == null) || (localCmGameManager.a() == null)) {
+      QLog.w("cmgame_process.CmGameSSoHandler", 1, "gameMgr is null.");
+    }
+    int i;
+    long l;
+    String str;
+    label372:
+    do
     {
       JSONObject localJSONObject;
-      int i;
-      try
+      Object localObject;
+      do
       {
-        if (!paramFromServiceMsg.isSuccess()) {
-          break label319;
-        }
-        WebSSOAgent.UniSsoServerRsp localUniSsoServerRsp = new WebSSOAgent.UniSsoServerRsp();
-        localUniSsoServerRsp.mergeFrom(paramArrayOfByte);
-        localJSONObject = new JSONObject(localUniSsoServerRsp.rspdata.get());
-        paramArrayOfByte = localJSONObject.toString();
-        paramFromServiceMsg = paramArrayOfByte;
-        if (TextUtils.isEmpty(paramArrayOfByte)) {
-          paramFromServiceMsg = "{}";
-        }
-        long l = paramIntent.getLongExtra("usrdata", 0L);
-        paramArrayOfByte = paramIntent.getStringExtra("cmd");
-        i = paramIntent.getIntExtra("callFrom", 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.CmGameSSoHandler", 2, "ret:" + localUniSsoServerRsp.ret.get() + ",data:" + paramFromServiceMsg + ",cmd:" + paramArrayOfByte);
-        }
-        CmGameManager localCmGameManager = CmGameUtil.a();
-        if (localCmGameManager == null)
+        do
         {
-          QLog.e("cmgame_process.CmGameSSoHandler", 1, "gameMgr is null.");
-          return;
-        }
-        if (i != 4) {
-          break label270;
-        }
-        localCmGameManager.a().callbackFromRequest(l, (int)localUniSsoServerRsp.ret.get(), paramArrayOfByte, paramFromServiceMsg);
-        return;
-      }
-      catch (Exception paramIntent)
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-      }
-      QLog.d("cmgame_process.CmGameSSoHandler", 2, "errInfo->" + paramIntent.getMessage());
+          for (;;)
+          {
+            return;
+            try
+            {
+              i = paramIntent.getIntExtra("callFrom", 0);
+              l = paramIntent.getLongExtra("usrdata", 0L);
+              str = paramIntent.getStringExtra("cmd");
+              if (!paramFromServiceMsg.isSuccess()) {
+                break label372;
+              }
+              WebSSOAgent.UniSsoServerRsp localUniSsoServerRsp = new WebSSOAgent.UniSsoServerRsp();
+              localUniSsoServerRsp.mergeFrom(paramArrayOfByte);
+              localJSONObject = new JSONObject(localUniSsoServerRsp.rspdata.get());
+              localObject = localJSONObject.toString();
+              paramArrayOfByte = (byte[])localObject;
+              if (TextUtils.isEmpty((CharSequence)localObject)) {
+                paramArrayOfByte = "{}";
+              }
+              if (QLog.isColorLevel()) {
+                QLog.d("cmgame_process.CmGameSSoHandler", 2, "ret:" + localUniSsoServerRsp.ret.get() + ",cmd:" + str);
+              }
+              if (i == 4)
+              {
+                localCmGameManager.a().callbackFromRequest(l, (int)localUniSsoServerRsp.ret.get(), str, paramArrayOfByte);
+                return;
+              }
+            }
+            catch (Throwable paramArrayOfByte)
+            {
+              QLog.e("cmgame_process.CmGameSSoHandler", 1, "th:" + paramArrayOfByte);
+              try
+              {
+                i = paramIntent.getIntExtra("callFrom", 0);
+                l = paramIntent.getLongExtra("usrdata", 0L);
+                paramIntent = paramIntent.getStringExtra("cmd");
+                if (i == 4)
+                {
+                  localCmGameManager.a().callbackFromRequest(l, paramFromServiceMsg.getResultCode(), paramIntent, "{}");
+                  return;
+                }
+              }
+              catch (Throwable paramIntent)
+              {
+                QLog.e("cmgame_process.CmGameSSoHandler", 1, "th2:" + paramArrayOfByte);
+                return;
+              }
+            }
+          }
+        } while (!"apollo_aio_game.get_user_uin_or_openid".equals(str));
+        paramArrayOfByte = paramIntent.getStringExtra("reqData");
+        localObject = CmGameUtil.a(new JSONObject(paramArrayOfByte).optInt("gameId"));
+      } while (localObject == null);
+      ((CmGameOpenIdFinder)localObject).a(localJSONObject, i, paramArrayOfByte);
       return;
-      label270:
-      if ("apollo_aio_game.get_user_uin_or_openid".equals(paramArrayOfByte))
-      {
-        paramIntent = paramIntent.getStringExtra("reqData");
-        paramFromServiceMsg = CmGameUtil.a(new JSONObject(paramIntent).optInt("gameId"));
-        if (paramFromServiceMsg != null) {
-          paramFromServiceMsg.a(localJSONObject, i, paramIntent);
-        }
-      }
-    }
-    else
-    {
-      label319:
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameSSoHandler", 2, "resp data is err.");
-      }
-    }
+      QLog.w("cmgame_process.CmGameSSoHandler", 1, "resp data is err, errorCode:" + paramFromServiceMsg.getResultCode());
+    } while (i != 4);
+    localCmGameManager.a().callbackFromRequest(l, paramFromServiceMsg.getResultCode(), str, "{}");
   }
 }
 

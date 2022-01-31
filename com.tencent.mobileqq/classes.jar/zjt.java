@@ -1,14 +1,44 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.PrinterStatusHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class zjt
-  extends MessageObserver
+  extends BroadcastReceiver
 {
-  public zjt(PrinterStatusHandler paramPrinterStatusHandler) {}
+  public zjt(DeviceProfileManager paramDeviceProfileManager) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.b();
+    if (QLog.isDevelopLevel()) {
+      QLog.e("DeviceProfileManager", 4, "onReceive");
+    }
+    if (paramIntent == null) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramContext = paramIntent.getExtras();
+          if (paramContext != null)
+          {
+            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
+            if (DeviceProfileManager.a() != null)
+            {
+              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
+              return;
+            }
+          }
+        }
+        catch (Exception paramContext) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 

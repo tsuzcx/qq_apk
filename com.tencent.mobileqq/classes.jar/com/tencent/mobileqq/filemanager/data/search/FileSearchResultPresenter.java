@@ -94,7 +94,7 @@ public class FileSearchResultPresenter
         }
         paramISearchResultModel = URLDrawable.getDrawable(paramISearchResultModel, (URLDrawable.URLDrawableOptions)localObject2);
         if (paramISearchResultModel == null) {
-          localImageView.setImageDrawable(localImageView.getContext().getResources().getDrawable(2130841639));
+          localImageView.setImageDrawable(localImageView.getContext().getResources().getDrawable(2130841666));
         }
         localImageView.setImageDrawable(paramISearchResultModel);
         return;
@@ -112,7 +112,7 @@ public class FileSearchResultPresenter
     {
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localImageView.setImageDrawable(BaseApplicationImpl.getContext().getResources().getDrawable(2130841639));
+        localImageView.setImageDrawable(BaseApplicationImpl.getContext().getResources().getDrawable(2130841666));
         return;
         if (((FileManagerEntity)localObject2).getCloudType() == 2) {
           localObject1 = ((QQAppInterface)localObject1).a().a(((FileManagerEntity)localObject2).WeiYunFileId, ((FileManagerEntity)localObject2).strLargeThumPath, 3, localObject2);

@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class GPULordKelvinFilter
   extends GPUDrawPartFilter
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.a(BaseApplicationImpl.getContext(), 2131230752);
+  private static String jdField_a_of_type_JavaLangString = GlUtil.a(BaseApplicationImpl.getContext(), 2131230753);
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private int e = -1;
   private int f;
@@ -24,12 +24,12 @@ public class GPULordKelvinFilter
     this.d = 5;
   }
   
-  protected void b()
+  protected void c()
   {
-    super.b();
+    super.c();
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(BaseApplicationImpl.getContext().getResources().openRawResource(2130843333));
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeStream(BaseApplicationImpl.getContext().getResources().openRawResource(2130843366));
       this.f = GLES20.glGetUniformLocation(a(), "sTexture2");
       return;
     }
@@ -42,7 +42,7 @@ public class GPULordKelvinFilter
     }
   }
   
-  protected void d()
+  protected void e()
   {
     if (this.e != -1) {
       GlUtil.a(this.e);
@@ -55,9 +55,9 @@ public class GPULordKelvinFilter
     }
   }
   
-  protected void e()
+  protected void f()
   {
-    super.e();
+    super.f();
     GLES20.glActiveTexture(33985);
     if (this.e == -1)
     {

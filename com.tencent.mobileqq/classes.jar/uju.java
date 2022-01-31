@@ -1,11 +1,17 @@
-import android.graphics.drawable.Drawable;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class uju
+  implements View.OnClickListener
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
+  public uju(TroopTransferActivity paramTroopTransferActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.dismiss();
+  }
 }
 
 

@@ -1,17 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher.ItemShowCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public class mma
-  implements ItemShowDispatcher.ItemShowCallback
+class mma
+  implements Runnable
 {
-  public mma(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  mma(mlz parammlz) {}
   
-  public void a()
+  public void run()
   {
-    ReportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.app, (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    this.a.a.l();
   }
 }
 

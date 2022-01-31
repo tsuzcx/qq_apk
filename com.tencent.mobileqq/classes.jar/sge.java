@@ -1,19 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView.NowFloatViewCallBack;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class sge
-  implements HongBao2018ListView.NowFloatViewCallBack
+  implements DialogInterface.OnClickListener
 {
-  public sge(Conversation paramConversation) {}
+  public sge(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.b != null)
-    {
-      this.a.g = true;
-      this.a.b.setVisibility(8);
-    }
+    paramDialogInterface = this.a;
+    sgi localsgi = new sgi(this.a, this.a.jdField_a_of_type_JavaUtilArrayList, true, false);
+    paramDialogInterface.jdField_a_of_type_Sgi = localsgi;
+    ThreadManager.post(localsgi, 5, null, true);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
   }
 }
 

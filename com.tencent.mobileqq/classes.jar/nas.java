@@ -1,15 +1,21 @@
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager.CompositeVideoEvent;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.qqstory.view.WeShiGuideDialog;
 
-public class nas
-  implements Runnable
+public final class nas
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public nas(StoryVideoUploadManager.VideoCompositeRec paramVideoCompositeRec, StoryVideoUploadManager paramStoryVideoUploadManager, VideoCompositeManager.CompositeVideoEvent paramCompositeVideoEvent) {}
+  public nas(WeShiGuideDialog paramWeShiGuideDialog, Activity paramActivity) {}
   
-  public void run()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeManager$CompositeVideoEvent.a, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeManager$CompositeVideoEvent.b);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWeShiGuideDialog.getWindow().getDecorView().setSystemUiVisibility(5894);
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof VideoFeedsPlayActivity)) {
+      ((VideoFeedsPlayActivity)this.jdField_a_of_type_AndroidAppActivity).d();
+    }
   }
 }
 

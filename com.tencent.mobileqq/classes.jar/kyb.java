@@ -1,17 +1,16 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 
 public class kyb
-  extends BroadcastReceiver
+  implements DialogInterface.OnCancelListener
 {
-  public kyb(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
+  public kyb(CustomWebChromeClient paramCustomWebChromeClient, JsPromptResult paramJsPromptResult) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.finish();
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsPromptResult.cancel();
   }
 }
 

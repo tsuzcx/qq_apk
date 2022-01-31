@@ -47,15 +47,15 @@ public class GoldMsgTextItemBuilder
     {
       paramViewHolder = super.a(paramChatMessage, paramViewHolder, paramView, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
       paramView = new RelativeLayout((Context)localObject1);
-      paramView.setId(2131362399);
+      paramView.setId(2131362402);
       paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
       paramBaseChatItemLayout = new LinearLayout((Context)localObject1);
       paramBaseChatItemLayout.setOrientation(0);
       paramBaseChatItemLayout.setGravity(16);
-      paramBaseChatItemLayout.setId(2131362398);
+      paramBaseChatItemLayout.setId(2131362401);
       paramBaseChatItemLayout.setOnClickListener(this);
       TextView localTextView = new TextView((Context)localObject1);
-      localTextView.setId(2131362397);
+      localTextView.setId(2131362400);
       localTextView.setSingleLine();
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       localTextView.setTextSize(2, 14.0F);
@@ -64,9 +64,9 @@ public class GoldMsgTextItemBuilder
       localTextView.setTextColor(GoldMsgChatHelper.i);
       localTextView.setCompoundDrawablePadding(GoldMsgChatHelper.b);
       GoldMsgQueueView localGoldMsgQueueView = new GoldMsgQueueView((Context)localObject1);
-      localGoldMsgQueueView.setId(2131362401);
+      localGoldMsgQueueView.setId(2131362404);
       localObject1 = new TextView((Context)localObject1);
-      ((TextView)localObject1).setId(2131362402);
+      ((TextView)localObject1).setId(2131362405);
       ((TextView)localObject1).setSingleLine();
       ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
       ((TextView)localObject1).setTextSize(2, 14.0F);
@@ -146,10 +146,10 @@ public class GoldMsgTextItemBuilder
     paramContext = (GoldMsgTextItemBuilder.GoldMsgTextHolder)paramViewHolder;
     if (paramChatMessage.isSend())
     {
-      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844112);
+      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844178);
       return;
     }
-    paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844111);
+    paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844177);
   }
 }
 

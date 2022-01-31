@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin.sound;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import andy;
+import anly;
 import com.tencent.component.network.DownloaderFactory;
 import com.tencent.component.network.downloader.Downloader;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -128,7 +128,7 @@ public class QzoneSoundPlugin
         QLog.d("QzoneSoundPlugin", 2, "mDownloadMusicFinalCachePath : " + this.jdField_b_of_type_JavaLangString);
         if (!new File(this.jdField_b_of_type_JavaLangString).exists())
         {
-          DownloaderFactory.getInstance(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a()).getCommonDownloader().download((String)localObject1, this.jdField_b_of_type_JavaLangString, new andy(this, paramVarArgs));
+          DownloaderFactory.getInstance(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a()).getCommonDownloader().download((String)localObject1, this.jdField_b_of_type_JavaLangString, new anly(this, paramVarArgs));
           return;
         }
         if (QLog.isColorLevel()) {

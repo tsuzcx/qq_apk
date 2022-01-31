@@ -3,11 +3,13 @@ package com.tencent.mobileqq.troop.createNewTroop;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.view.View;
 import android.widget.ListView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.service.troop.TroopConstants.CreateTroopSource;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.troop.utils.TroopLinkManager;
 import com.tencent.mobileqq.troop.utils.TroopLinkManager.LinkParams;
 import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
@@ -34,12 +36,16 @@ public class NewTroopCateView
   
   private void g()
   {
-    a(2130969874);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131368334));
+    a(2130969885);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131368336));
     this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter = new CateListAdapter(this);
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter);
     this.jdField_a_of_type_AndroidWidgetListView.setDivider(null);
     this.jdField_a_of_type_AndroidWidgetListView.setDividerHeight(0);
+    this.jdField_a_of_type_AndroidWidgetListView.setOverScrollMode(2);
+    if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
+      findViewById(2131362374).setVisibility(0);
+    }
   }
   
   private void h()
@@ -113,7 +119,7 @@ public class NewTroopCateView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView
  * JD-Core Version:    0.7.0.1
  */

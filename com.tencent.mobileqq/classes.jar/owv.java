@@ -1,14 +1,54 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class owv
-  implements Runnable
+  extends Thread
 {
-  public owv(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, long paramLong, String paramString) {}
+  public owv(CodeMaskManager paramCodeMaskManager, String paramString, SharedPreferences paramSharedPreferences, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramString);
+  }
   
   public void run()
   {
-    new oxm(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, new oww(this), this.jdField_a_of_type_JavaLangString).a();
+    localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localEditor.putLong("updateTemplate2", System.currentTimeMillis());
+    Object localObject = "http://qm.qq.com/cgi-bin/tpl?v=1&os=a&resx=" + this.jdField_a_of_type_Int + "&resy=" + this.b + "&t=" + this.c + "&" + "mType" + "=" + "qb_qrcode";
+    try
+    {
+      String str = HttpUtil.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidAppActivity, (String)localObject, "GET", null, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("QRHttpUtil", 2, "open :" + (String)localObject + ", result: " + str);
+      }
+      localObject = new JSONObject(str);
+      if (((JSONObject)localObject).getInt("r") == 0)
+      {
+        localObject = ((JSONObject)localObject).getJSONArray("tpls");
+        if (((JSONArray)localObject).length() > 0)
+        {
+          this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidOsHandler.post(new oww(this, (JSONArray)localObject));
+          localEditor.putString("tpl_json", str);
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QRHttpUtil", 2, localException.getMessage());
+        }
+        localEditor.putLong("updateTemplate2", 0L);
+      }
+    }
+    localEditor.commit();
+    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_JavaLangThread = null;
   }
 }
 

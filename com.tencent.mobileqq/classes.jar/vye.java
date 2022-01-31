@@ -1,54 +1,49 @@
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.activity.aio.tips.GatherContactsTips;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vye
-  extends SosoInterface.OnLocationListener
+  extends FriendListObserver
 {
-  public vye(PublicAccountChatPie paramPublicAccountChatPie, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public vye(FriendChatPie paramFriendChatPie) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void onSetAsNormalContacts(boolean paramBoolean, List paramList)
   {
-    double d3 = 0.0D;
-    String str;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null))
+    if ((paramBoolean) && (FriendChatPie.a(this.a) != null))
     {
-      str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
-      if ((paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
-        break label206;
-      }
-    }
-    label206:
-    for (double d1 = paramSosoLbsInfo.a.a;; d1 = 0.0D)
-    {
-      double d2 = d3;
-      if (paramSosoLbsInfo != null)
+      if ((FriendChatPie.a(this.a).a()) && (!FriendChatPie.a(this.a).b()))
       {
-        d2 = d3;
-        if (paramSosoLbsInfo.a != null) {
-          d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2 + ", address=" + str);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, d1, d2, str);
+        FriendChatPie.a(this.a).b(1);
+        FriendChatPie.a(this.a).a(2);
       }
       return;
-      str = "";
-      break;
+    }
+    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131437782), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+  }
+  
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List paramList)
+  {
+    if ((paramBoolean) && (FriendChatPie.a(this.a) != null)) {
+      FriendChatPie.a(this.a).b(2);
+    }
+  }
+  
+  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList paramArrayList)
+  {
+    super.onUpdateHotFriendLevel(paramBoolean, paramArrayList);
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.contains(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendChatPie", 2, "onUpdateHotFriendLevel");
+      }
+      this.a.y();
     }
   }
 }

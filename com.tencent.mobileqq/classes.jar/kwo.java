@@ -1,45 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.data.BannerInfo;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
 
 public class kwo
-  implements View.OnClickListener
+  implements Runnable
 {
-  public kwo(AdModuleBase paramAdModuleBase) {}
+  public kwo(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.b == 2)
-    {
-      paramView = new Intent((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.jdField_c_of_type_JavaLangString);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 3, 0);
-    }
-    while (this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.b != 1) {
-      return;
-    }
-    switch (this.a.jdField_c_of_type_Int)
-    {
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      AdModuleBase.a(this.a);
-      return;
-    case 1: 
-      NativeAdUtils.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.f);
-      NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 1, 0);
-      return;
-    }
-    NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo);
-    NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 4, 0);
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager.a(this.jdField_a_of_type_Int);
   }
 }
 

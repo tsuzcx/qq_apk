@@ -244,7 +244,7 @@ public final class v
       localHashMap.put("cmd", Integer.toString(this.d));
       localHashMap.put("platformId", Byte.toString((byte)1));
       this.f.getClass();
-      localHashMap.put("sdkVer", "2.7.4");
+      localHashMap.put("sdkVer", "2.7.8");
       localHashMap.put("strategylastUpdateTime", Long.toString(((StrategyBean)localObject2).o));
       if (!this.i.a(localHashMap))
       {

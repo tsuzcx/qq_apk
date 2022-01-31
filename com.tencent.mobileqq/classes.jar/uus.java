@@ -1,17 +1,16 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class uus
+public class uus
   implements Runnable
 {
-  uus(uuq paramuuq, String paramString) {}
+  public uus(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Uuq.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Uuq.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_Uuq.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.a.b();
+    QQToast.a(this.a.a, this.a.a.getString(2131433400), 0).a();
   }
 }
 

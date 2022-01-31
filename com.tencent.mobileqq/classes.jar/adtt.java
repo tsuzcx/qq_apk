@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.widget.QQToast;
 
-class adtt
-  implements GroupVideoManager.CheckListener
+public class adtt
+  extends Handler
 {
-  adtt(adts paramadts) {}
+  public adtt(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public void a(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if ((!paramBoolean) && (!GroupVideoLoadingFragment.a) && (GroupVideoManager.a(this.a.a) != null)) {
-      this.a.a.a(GroupVideoManager.a(this.a.a).getApp(), "", GroupVideoManager.a(this.a.a).getCurrentAccountUin(), 0, "slientDownload", "", "", null, null, null);
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, "网络异常", 0).a();
     }
+    while (1 != paramMessage.what) {
+      return;
+    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adtt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,16 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.ark.ArkTipsManager;
 
-public class abfd
-  extends SosoInterface.OnLocationListener
+class abfd
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public abfd(ARMapConfigManager paramARMapConfigManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  abfd(abfc paramabfc) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {}
-    for (;;)
-    {
-      try
-      {
-        l = Long.valueOf(paramSosoLbsInfo.a.f).longValue();
-        ARMapConfigManager.a(this.a, paramSosoLbsInfo.a.b);
-        ARMapConfigManager.b(this.a, paramSosoLbsInfo.a.a);
-        this.a.a(l, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("ARMapConfigManager", 2, String.format("onLocationFinish errCode=%s adCode=%s mLongitude=%s mLatitude=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(l), Double.valueOf(ARMapConfigManager.a(this.a)), Double.valueOf(ARMapConfigManager.b(this.a)) }));
-        }
-        return;
-      }
-      catch (Exception paramSosoLbsInfo)
-      {
-        ARMapConfigManager.a(this.a, 0.0D);
-        ARMapConfigManager.b(this.a, 0.0D);
-      }
-      long l = -1L;
+    if (paramBitmap != null) {
+      ArkTipsManager.a(this.a.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
     }
   }
 }

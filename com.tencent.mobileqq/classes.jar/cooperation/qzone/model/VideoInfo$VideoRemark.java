@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amux;
+import anci;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import android.text.TextUtils;
 public class VideoInfo$VideoRemark
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amux();
+  public static final Parcelable.Creator CREATOR = new anci();
   public int a;
   public String a;
   public int b;

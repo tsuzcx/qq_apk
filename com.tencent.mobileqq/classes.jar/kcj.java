@@ -1,30 +1,21 @@
-import com.tencent.av.ui.VideoLayerUIBase;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.SysCallTransparentActivity;
 
-public class kcj
-  implements Observer
+class kcj
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference a;
+  kcj(kcg paramkcg) {}
   
-  public kcj(VideoLayerUIBase paramVideoLayerUIBase)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramVideoLayerUIBase);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    VideoLayerUIBase localVideoLayerUIBase = (VideoLayerUIBase)this.a.get();
-    if (localVideoLayerUIBase == null) {
-      return;
-    }
-    VideoLayerUIBase.a(localVideoLayerUIBase, paramObservable, paramObject);
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcj
  * JD-Core Version:    0.7.0.1
  */

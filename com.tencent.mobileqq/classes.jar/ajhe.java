@@ -1,18 +1,23 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.util.InputMethodUtil;
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.troop.data.NearbyTroops.CustomViewHolder;
 
-public class ajhe
-  implements View.OnClickListener
+public final class ajhe
+  implements TextUtils.EllipsizeCallback
 {
-  public ajhe(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public ajhe(NearbyTroops.CustomViewHolder paramCustomViewHolder, String paramString) {}
   
-  public void onClick(View paramView)
+  public void ellipsized(int paramInt1, int paramInt2)
   {
-    InputMethodUtil.b(paramView);
-    this.a.getActivity().doOnBackPressed();
+    if (paramInt1 == paramInt2)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopDataNearbyTroops$CustomViewHolder.c.setText(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataNearbyTroops$CustomViewHolder.c.setText(new QQText(HttpUtil.b(HttpUtil.c(str + "...")), 3, 14));
   }
 }
 

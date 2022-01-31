@@ -91,14 +91,17 @@ public class CommercialDrainageManager
   public int a(long paramLong, String paramString1, String paramString2, int paramInt)
   {
     SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("commercial_sp" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
-    long l1 = localSharedPreferences.getLong("disPlayInteval", -1L);
-    l2 = l1;
-    if (l1 == -1L) {}
+    long l2 = localSharedPreferences.getLong("disPlayInteval", -1L);
+    l1 = l2;
+    if (l2 == -1L) {}
     for (;;)
     {
       try
       {
         localObject = VasQuickUpdateManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "vip_personal_card.json", false, null);
+        if (localObject == null) {
+          continue;
+        }
         if (!((JSONObject)localObject).has("ipStackConfigDic")) {
           continue;
         }
@@ -118,20 +121,24 @@ public class CommercialDrainageManager
           continue;
         }
         localSharedPreferences.edit().putLong("disPlayInteval", l2).apply();
+        l1 = l2;
       }
       catch (Exception localException)
       {
         Object localObject;
         int i;
-        l2 = jdField_a_of_type_Long;
+        l1 = jdField_a_of_type_Long;
         QLog.e("CommercialDrainageManager", 1, "getShowCount error = " + localException);
+        continue;
+        QLog.e("CommercialDrainageManager", 1, "getShowCount json not exist");
+        l1 = jdField_a_of_type_Long;
         continue;
         boolean bool = false;
         continue;
         localException.commit();
         continue;
       }
-      if (localSharedPreferences.getLong(paramString1 + "_lastDisPlayTime", 9223372036854775807L) + l2 <= paramLong) {
+      if (localSharedPreferences.getLong(paramString1 + "_lastDisPlayTime", 9223372036854775807L) + l1 <= paramLong) {
         continue;
       }
       bool = true;
@@ -148,7 +155,7 @@ public class CommercialDrainageManager
       }
       ((SharedPreferences.Editor)localObject).apply();
       if (QLog.isColorLevel()) {
-        QLog.d("CommercialDrainageManager", 2, "getShowCount, haveShown = " + bool + " count = " + i + " epId = " + paramString1 + " timestamp = " + paramLong + "interval = " + l2 + " name = " + paramString2 + " type = " + paramInt);
+        QLog.d("CommercialDrainageManager", 2, "getShowCount, haveShown = " + bool + " count = " + i + " epId = " + paramString1 + " timestamp = " + paramLong + "interval = " + l1 + " name = " + paramString2 + " type = " + paramInt);
       }
       return i;
       localObject = null;
@@ -156,6 +163,7 @@ public class CommercialDrainageManager
       l1 = -1L;
       continue;
       localSharedPreferences.edit().putLong("disPlayInteval", l2).commit();
+      l1 = l2;
     }
   }
   

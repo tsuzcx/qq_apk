@@ -1,59 +1,32 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule;
+import eipc.EIPCResult;
 
 public class acho
-  implements GestureDetector.OnGestureListener
+  implements Runnable
 {
-  public acho(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public acho(EmoticonIPCModule paramEmoticonIPCModule, Bundle paramBundle, String paramString, EmoticonFromGroupManager paramEmoticonFromGroupManager, int paramInt) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void run()
   {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    int j = 1;
-    if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null)) {
-      if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 50.0F) {
-        break label78;
-      }
-    }
-    label78:
-    for (int i = 1;; i = 0)
-    {
-      if (paramMotionEvent2.getY() - paramMotionEvent1.getY() > 50.0F) {
-        i = j;
-      }
-      for (;;)
+    Object localObject = this.jdField_a_of_type_AndroidOsBundle.getString("pic_md5");
+    if ("action_group_emo_big_pic_add_fav".equals(this.jdField_a_of_type_JavaLangString)) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager.b((String)localObject))
       {
-        if ((i != 0) && (this.a.a != null)) {
-          this.a.a.a();
-        }
-        return false;
+        localObject = EIPCResult.createResult(-102, null);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonIPCModule.callbackResult(this.jdField_a_of_type_Int, (EIPCResult)localObject);
       }
     }
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    while (!"action_group_emo_big_pic_upload_wy".equals(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager.a((String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acho
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,40 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Environment;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class vuo
-  extends TroopObserver
+class vuo
+  implements DialogInterface.OnClickListener
 {
-  public vuo(HotChatPie paramHotChatPie) {}
+  vuo(vun paramvun, BaseActivity paramBaseActivity) {}
   
-  protected void c(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.s != 2) && (paramBoolean) && (this.a.b != null) && (this.a.a != null) && (this.a.a.troopUin.equals(paramString)) && (this.a.a.hasPostRedPoint())) {
-      this.a.b.a(true);
+    if (Environment.getExternalStorageState().equals("mounted"))
+    {
+      if (this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1) {
+        break label97;
+      }
+      PlusPanelUtils.b(this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setCanLock(false);
+      ReportController.b(this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "1", "", "", "");
+      return;
+      label97:
+      paramDialogInterface = new FileManagerReporter.fileAssistantReportData();
+      paramDialogInterface.b = "send_file";
+      paramDialogInterface.a = 1;
+      FileManagerReporter.a(this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramDialogInterface);
+      PlusPanelUtils.a(this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     }
   }
 }

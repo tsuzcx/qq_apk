@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiOperationInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.qlink.QQProxyForQlink;
+import cooperation.qlink.QlinkServiceManager;
 
-public final class amvc
-  implements Parcelable.Creator
+public class amvc
+  extends RemoteCommand
 {
-  public WeishiOperationInfo a(Parcel paramParcel)
+  public amvc(QlinkServiceManager paramQlinkServiceManager, String paramString)
   {
-    return new WeishiOperationInfo(paramParcel);
+    super(paramString);
   }
   
-  public WeishiOperationInfo[] a(int paramInt)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    return new WeishiOperationInfo[paramInt];
+    QlinkServiceManager.a(this.a).a().c(paramBundle);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvc
  * JD-Core Version:    0.7.0.1
  */

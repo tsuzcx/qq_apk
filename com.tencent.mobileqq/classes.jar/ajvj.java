@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan;
 
-class ajvj
-  implements ImageButton.OnClickListener
+public class ajvj
+  implements View.OnClickListener
 {
-  ajvj(ajvi paramajvi) {}
+  public ajvj(SchoolTroopKeywordManager.SchoolTroopHighlightSpan paramSchoolTroopHighlightSpan) {}
   
-  public void a(Sprite paramSprite)
-  {
-    this.a.a.a.a();
-  }
+  public void onClick(View paramView) {}
 }
 
 

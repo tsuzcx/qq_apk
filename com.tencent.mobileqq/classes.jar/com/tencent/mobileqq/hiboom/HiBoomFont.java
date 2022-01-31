@@ -25,7 +25,7 @@ public class HiBoomFont
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + ".hiboom_font/";
+    jdField_a_of_type_JavaLangString = AppConstants.aK + ".hiboom_font/";
   }
   
   private HiBoomFont()
@@ -94,20 +94,13 @@ public class HiBoomFont
             QLog.d("HiBoomFont", 2, "DPC value = " + localObject[2]);
           }
           if ("0".equals(localObject[2])) {
-            break label134;
+            break label100;
           }
         }
       }
     }
-    label134:
-    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HiBoomFont", 2, "getHiBoomAbility isDebugVersion = false mHiBoomAbility = " + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_Int != 1) {
-        break;
-      }
+    label100:
+    for (this.jdField_a_of_type_Int = 1; this.jdField_a_of_type_Int == 1; this.jdField_a_of_type_Int = 0) {
       return true;
     }
     return false;
@@ -119,63 +112,91 @@ public class HiBoomFont
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 172	com/etrump/mixlayout/FontSoLoader:b	()Z
-    //   5: ifne +24 -> 29
-    //   8: invokestatic 178	com/etrump/mixlayout/ETEngine:getInstanceForHiBoom	()Lcom/etrump/mixlayout/ETEngine;
-    //   11: getfield 181	com/etrump/mixlayout/ETEngine:isEngineInited	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   14: iconst_0
-    //   15: iconst_1
-    //   16: invokevirtual 185	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
-    //   19: ifeq +7 -> 26
-    //   22: invokestatic 188	com/etrump/mixlayout/FontSoLoader:c	()Z
-    //   25: pop
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: return
-    //   29: aload_0
-    //   30: invokestatic 178	com/etrump/mixlayout/ETEngine:getInstanceForHiBoom	()Lcom/etrump/mixlayout/ETEngine;
-    //   33: putfield 190	com/tencent/mobileqq/hiboom/HiBoomFont:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   36: aload_0
-    //   37: getfield 190	com/tencent/mobileqq/hiboom/HiBoomFont:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   40: bipush 10
-    //   42: ldc 191
-    //   44: invokevirtual 195	com/etrump/mixlayout/ETEngine:initEngine	(II)Z
-    //   47: istore_1
-    //   48: aload_0
-    //   49: getfield 52	com/tencent/mobileqq/hiboom/HiBoomFont:b	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   52: iload_1
-    //   53: invokevirtual 198	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   56: aload_0
-    //   57: getfield 50	com/tencent/mobileqq/hiboom/HiBoomFont:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   60: iconst_1
-    //   61: invokevirtual 198	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   64: goto -38 -> 26
-    //   67: astore_2
-    //   68: aload_0
-    //   69: monitorexit
-    //   70: aload_2
-    //   71: athrow
-    //   72: astore_2
-    //   73: ldc 90
-    //   75: iconst_1
-    //   76: ldc 200
-    //   78: aload_2
-    //   79: invokestatic 204	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   82: goto -26 -> 56
+    //   2: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: ifeq +11 -> 16
+    //   8: ldc 90
+    //   10: iconst_2
+    //   11: ldc 165
+    //   13: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   16: invokestatic 169	com/etrump/mixlayout/FontSoLoader:b	()Z
+    //   19: ifne +35 -> 54
+    //   22: invokestatic 175	com/etrump/mixlayout/ETEngine:getInstanceForHiBoom	()Lcom/etrump/mixlayout/ETEngine;
+    //   25: getfield 178	com/etrump/mixlayout/ETEngine:isEngineInited	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   28: iconst_0
+    //   29: iconst_1
+    //   30: invokevirtual 182	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   33: ifeq +21 -> 54
+    //   36: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   39: ifeq +11 -> 50
+    //   42: ldc 90
+    //   44: iconst_2
+    //   45: ldc 184
+    //   47: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   50: invokestatic 187	com/etrump/mixlayout/FontSoLoader:c	()Z
+    //   53: pop
+    //   54: invokestatic 169	com/etrump/mixlayout/FontSoLoader:b	()Z
+    //   57: ifeq +69 -> 126
+    //   60: aload_0
+    //   61: invokestatic 175	com/etrump/mixlayout/ETEngine:getInstanceForHiBoom	()Lcom/etrump/mixlayout/ETEngine;
+    //   64: putfield 189	com/tencent/mobileqq/hiboom/HiBoomFont:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
+    //   67: aload_0
+    //   68: getfield 189	com/tencent/mobileqq/hiboom/HiBoomFont:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
+    //   71: bipush 10
+    //   73: ldc 190
+    //   75: invokevirtual 194	com/etrump/mixlayout/ETEngine:initEngine	(II)Z
+    //   78: istore_1
+    //   79: aload_0
+    //   80: getfield 52	com/tencent/mobileqq/hiboom/HiBoomFont:b	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   83: iload_1
+    //   84: invokevirtual 197	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   87: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   90: ifeq +28 -> 118
+    //   93: ldc 90
+    //   95: iconst_2
+    //   96: new 16	java/lang/StringBuilder
+    //   99: dup
+    //   100: invokespecial 19	java/lang/StringBuilder:<init>	()V
+    //   103: ldc 199
+    //   105: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: iload_1
+    //   109: invokevirtual 202	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 34	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   115: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   118: aload_0
+    //   119: getfield 50	com/tencent/mobileqq/hiboom/HiBoomFont:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   122: iconst_1
+    //   123: invokevirtual 197	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   126: aload_0
+    //   127: monitorexit
+    //   128: return
+    //   129: astore_2
+    //   130: ldc 90
+    //   132: iconst_1
+    //   133: ldc 204
+    //   135: aload_2
+    //   136: invokestatic 208	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   139: goto -21 -> 118
+    //   142: astore_2
+    //   143: aload_0
+    //   144: monitorexit
+    //   145: aload_2
+    //   146: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	85	0	this	HiBoomFont
-    //   47	6	1	bool	boolean
-    //   67	4	2	localObject	Object
-    //   72	7	2	localException	java.lang.Exception
+    //   0	147	0	this	HiBoomFont
+    //   78	31	1	bool	boolean
+    //   129	7	2	localException	java.lang.Exception
+    //   142	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	26	67	finally
-    //   29	36	67	finally
-    //   36	56	67	finally
-    //   56	64	67	finally
-    //   73	82	67	finally
-    //   36	56	72	java/lang/Exception
+    //   67	118	129	java/lang/Exception
+    //   2	16	142	finally
+    //   16	50	142	finally
+    //   50	54	142	finally
+    //   54	67	142	finally
+    //   67	118	142	finally
+    //   118	126	142	finally
+    //   130	139	142	finally
   }
 }
 

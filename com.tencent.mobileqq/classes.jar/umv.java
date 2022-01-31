@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
-public final class umv
-  implements Parcelable.Creator
+public class umv
+  implements TabBarView.OnTabChangeListener
 {
-  public SessionInfo a(Parcel paramParcel)
-  {
-    return new SessionInfo(paramParcel);
-  }
+  public umv(VisitorsActivity paramVisitorsActivity) {}
   
-  public SessionInfo[] a(int paramInt)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    return new SessionInfo[paramInt];
+    this.a.a(paramInt2);
   }
 }
 

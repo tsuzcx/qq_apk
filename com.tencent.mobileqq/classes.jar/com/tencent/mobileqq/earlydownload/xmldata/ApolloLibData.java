@@ -5,12 +5,12 @@ public class ApolloLibData
 {
   public String getSharedPreferencesName()
   {
-    return "preload_android.qq.apollo.js.760g3";
+    return "preload_android.qq.apollo.js.765g2";
   }
   
   public String getStrResName()
   {
-    return "android.qq.apollo.js.760g3";
+    return "android.qq.apollo.js.765g2";
   }
 }
 

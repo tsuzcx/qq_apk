@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager;
 
 public class nzr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public nzr(StoryListPresenter paramStoryListPresenter, GuideInfoDialog paramGuideInfoDialog) {}
+  public nzr(KeyboardAndEmojiManager paramKeyboardAndEmojiManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    StoryReportor.a("home_page", "guide_shoot", 0, 0, new String[0]);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistPresenterStoryListPresenter.a.a(false, true, 13, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog.dismiss();
+    KeyboardAndEmojiManager.c(this.a);
   }
 }
 

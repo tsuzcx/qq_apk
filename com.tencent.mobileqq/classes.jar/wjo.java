@@ -1,33 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import java.lang.ref.WeakReference;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView.ZhituPanelAdapter;
 
 public class wjo
-  extends Handler
+  extends GridLayoutManager.SpanSizeLookup
 {
-  private WeakReference a;
+  public wjo(ZhituPanelView.ZhituPanelAdapter paramZhituPanelAdapter) {}
   
-  public wjo(NewFriendActivity paramNewFriendActivity)
+  public int getSpanSize(int paramInt)
   {
-    this.a = new WeakReference(paramNewFriendActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
-    if (localNewFriendActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    switch (this.a.getItemViewType(paramInt))
     {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
     case 1: 
-      localNewFriendActivity.a(paramMessage.arg1);
-      return;
+    default: 
+      return 1;
     }
-    localNewFriendActivity.finish();
+    return 4;
   }
 }
 

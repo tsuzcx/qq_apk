@@ -1,35 +1,48 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class zwd
-  extends BroadcastReceiver
+public class zwd
+  implements Runnable
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public zwd(RecentUserCache paramRecentUserCache, SharedPreferences paramSharedPreferences) {}
+  
+  public void run()
   {
-    if (paramIntent == null) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | start");
+    }
+    try
+    {
+      SQLiteDatabase localSQLiteDatabase = RecentUserCache.c(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).a();
+      String str = RecentUserCache.a(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache, AppConstants.C, 4000);
+      if (RecentUserCache.e(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).containsKey(str)) {
+        RecentUserCache.f(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).remove(str);
+      }
+      int i = localSQLiteDatabase.a("recent", "uin=?", new String[] { AppConstants.C });
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | RecentUser delCount = " + i);
+      }
+      return;
+    }
+    catch (Exception localException)
     {
       do
       {
-        do
-        {
-          return;
-          if (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
-            break;
-          }
-          SosoInterface.b(true);
-        } while (!QLog.isColorLevel());
-        QLog.i("SOSO.LBS", 2, "onReceive action is screen on.");
-        return;
-      } while (!paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"));
-      SosoInterface.b(false);
-      SosoInterface.a().sendEmptyMessage(1002);
-    } while (!QLog.isColorLevel());
-    QLog.i("SOSO.LBS", 2, "onReceive action is screen off.");
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | delete recommend error~");
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("check_newfriend_when_upgrade_V2", false).commit();
+    }
   }
 }
 

@@ -1,21 +1,24 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
 
 public class uhy
-  extends AnimateUtils.AnimationAdapter
+  implements Runnable
 {
-  public uhy(VisitorsActivity paramVisitorsActivity) {}
+  public uhy(TroopRequestActivity paramTroopRequestActivity, TroopInfo paramTroopInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.f = false;
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.d.setVisibility(0);
+    GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, Long.toString(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwGroupClassExt));
+    if (localGroupCatalogBean != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.i = localGroupCatalogBean.a();
+      ThreadManager.getUIHandler().post(new uhz(this));
+    }
   }
 }
 

@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipViewManager;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
+import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
 
 public class utl
+  implements ImageButton.OnClickListener
 {
-  public int a;
-  Object jdField_a_of_type_JavaLangObject;
+  public utl(FriendShipViewManager paramFriendShipViewManager) {}
   
-  public utl(RDBaseListLayout paramRDBaseListLayout, int paramInt, Object paramObject)
+  public void a(Sprite paramSprite)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a.f();
+    this.a.a.postDelayed(new utm(this), 300L);
   }
 }
 

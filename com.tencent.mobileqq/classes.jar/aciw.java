@@ -1,42 +1,72 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.av.VideoController;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qidian.controller.QidianBusinessObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aciw
-  extends RecyclerView.OnScrollListener
+  extends QidianBusinessObserver
 {
-  public aciw(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public aciw(MessengerService paramMessengerService) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  protected void h(boolean paramBoolean, HashMap paramHashMap)
   {
-    if (paramInt == 0)
+    try
     {
-      URLDrawable.resume();
+      QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.j(this.a);
+      if (localQQAppInterface != null)
+      {
+        localQQAppInterface.removeObserver(this);
+        if ((paramBoolean) && (paramHashMap != null) && (!paramHashMap.isEmpty()) && (paramHashMap.containsKey("sigmsg")) && (paramHashMap.containsKey("request_type")) && (paramHashMap.containsKey("uin")))
+        {
+          Object localObject = (byte[])paramHashMap.get("sigmsg");
+          String str1 = String.valueOf(paramHashMap.get("request_type"));
+          String str2 = String.valueOf(paramHashMap.get("uin"));
+          if (localObject != null) {
+            localQQAppInterface.a().c(str2, (byte[])localObject);
+          }
+          int j = CrmUtils.b(localQQAppInterface, str2);
+          localObject = "";
+          if (j == 0) {
+            localObject = ContactUtils.k(localQQAppInterface, str2);
+          }
+          for (;;)
+          {
+            int i = j;
+            if (j != 1024)
+            {
+              i = j;
+              if (j != 1025) {
+                i = VideoController.a(j, false, 1);
+              }
+            }
+            paramBoolean = str1.equals("audio");
+            ChatActivityUtils.a(localQQAppInterface, localQQAppInterface.getApp(), i, str2, (String)localObject, "", paramBoolean, null, true, true, null, "from_internal", null);
+            return;
+            if (paramHashMap.containsKey("nickname")) {
+              localObject = String.valueOf(paramHashMap.get("nickname"));
+            }
+          }
+        }
+      }
       return;
     }
-    URLDrawable.pause();
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if ((!ExtendFriendSquareFragment.a(this.a)) && (!ExtendFriendSquareFragment.b(this.a)) && (ExtendFriendSquareFragment.a(this.a) != null) && (ExtendFriendSquareFragment.a(this.a) != null) && (ExtendFriendSquareFragment.a(this.a).findViewByPosition(ExtendFriendSquareFragment.a(this.a).getItemCount() - 2) != null))
+    catch (Exception paramHashMap)
     {
-      ExtendFriendSquareFragment.a(this.a, true);
-      ExtendFriendSquareFragment.a(this.a).post(new acix(this));
-      ReportController.b(ExtendFriendSquareFragment.a(this.a), "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
-    }
-    if ((ExtendFriendSquareFragment.b(this.a) >= 0) && (ExtendFriendSquareFragment.a(this.a).findViewByPosition(ExtendFriendSquareFragment.b(this.a)) == null)) {
-      this.a.d();
+      if (QLog.isColorLevel()) {
+        QLog.d("MessengerService", 2, "onGetSigmsg ", paramHashMap);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aciw
  * JD-Core Version:    0.7.0.1
  */

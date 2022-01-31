@@ -1,12 +1,18 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
 
-public final class aauw
-  implements FileFilter
+class aauw
+  implements Runnable
 {
-  public boolean accept(File paramFile)
+  aauw(aauv paramaauv) {}
+  
+  public void run()
   {
-    return (paramFile.isFile()) && (paramFile.exists());
+    ArkAppDeviceModule.a(this.a.a.jdField_a_of_type_Aauq.a, this.a.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
+    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Aauq.a.a(this.a.a.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
   }
 }
 

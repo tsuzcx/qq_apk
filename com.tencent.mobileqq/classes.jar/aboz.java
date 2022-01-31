@@ -1,23 +1,13 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
 
 public class aboz
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public aboz(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  public aboz(ARMapLoadingActivity paramARMapLoadingActivity) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((ClearEllipsisEditText.a(this.a)) && (!ClearEllipsisEditText.b(this.a))) {
-      ClearEllipsisEditText.a(this.a, paramCharSequence.toString());
-    }
-    ClearEllipsisEditText.a(this.a, false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

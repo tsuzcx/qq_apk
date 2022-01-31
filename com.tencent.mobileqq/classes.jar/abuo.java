@@ -1,18 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class abuo
-  implements Runnable
+public class abuo
 {
-  abuo(abul paramabul) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void run()
-  {
-    String str = this.a.a(abul.a(this.a), true);
-    this.a.c(str);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE. from file. FaceScoreWording=" + str);
-    }
-  }
+  public abuo(BusinessCardEditActivity paramBusinessCardEditActivity) {}
 }
 
 

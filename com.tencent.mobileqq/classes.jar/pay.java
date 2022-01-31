@@ -1,39 +1,31 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewbase.WebAIOController;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.biz.troop.TroopMemberApiService;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class pay
-  extends Client.onRemoteRespObserver
+  extends WtloginListener
 {
-  public pay(WebAIOController paramWebAIOController) {}
+  public pay(TroopMemberApiService paramTroopMemberApiService, WtloginHelper paramWtloginHelper) {}
   
-  public void onBindedToClient()
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOBanner", 2, "-->onBindedToClient");
-    }
+    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(62, null);
   }
   
-  public void onDisconnectWithService()
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOBanner", 2, "-->onDisconnectWithService");
+    if (paramInt2 == 0)
+    {
+      paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(62, paramString.getExtras());
+      return;
     }
-  }
-  
-  public void onPushMsg(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOBanner", 2, "-->onPushMsg");
-    }
-  }
-  
-  public void onResponse(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOBanner", 2, "-->onResponse");
-    }
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(62, null);
   }
 }
 

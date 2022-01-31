@@ -1,14 +1,19 @@
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler;
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.OnActionSheetButtonClickListener;
+import com.tencent.biz.pubaccount.PublicAccountArticleHandler;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class nbs
   implements Runnable
 {
-  public nbs(FeedCommentEventHandler.OnActionSheetButtonClickListener paramOnActionSheetButtonClickListener) {}
+  public nbs(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
   public void run()
   {
-    FeedCommentEventHandler.a(this.a.a, FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a), FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a));
+    int i = 0;
+    if (PublicAccountImageCollectionMainActivity.d(this.a)) {
+      i = 1;
+    }
+    PublicAccountImageCollectionMainActivity.a(this.a).a(this.a.c, PublicAccountImageCollectionMainActivity.b(this.a), i);
+    PublicAccountImageCollectionMainActivity.a(this.a, "");
   }
 }
 

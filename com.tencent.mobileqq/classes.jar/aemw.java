@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceTextUpdateListener;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
 public class aemw
-  extends NearbyProxyObserver
+  implements MagicfaceActionManager.MagicfaceTextUpdateListener
 {
-  public aemw(NearbyProxy paramNearbyProxy, int paramInt) {}
+  public aemw(MagicfaceViewController paramMagicfaceViewController, int paramInt, TextView paramTextView) {}
   
-  protected void a()
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      NearbyUtils.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
-    }
-    NearbyProxy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.post(new aemx(this, paramString));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.post(new aemy(this, paramString));
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.post(new aemz(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemw
  * JD-Core Version:    0.7.0.1
  */

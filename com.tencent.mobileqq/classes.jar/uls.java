@@ -1,22 +1,27 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class uls
-  implements MediaPlayer.OnCompletionListener
+  extends WtloginObserver
 {
-  public uls(MediaPlayerManager paramMediaPlayerManager) {}
+  public uls(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
   {
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
+    if (QLog.isColorLevel())
+    {
+      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
     }
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
-    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
+    if (paramInt2 == 0) {
       return;
     }
-    this.a.d();
+    VerifyPhoneNumActivity.a(this.a);
+    VerifyPhoneNumActivity.b(this.a);
   }
 }
 

@@ -1,18 +1,27 @@
-import cooperation.qzone.report.lp.LpReport_PicInfo_dc02153;
-import cooperation.qzone.report.lp.MachinelearningReport;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
-public class amyu
-  implements Runnable
+public final class amyu
+  implements Parcelable.Creator
 {
-  public amyu(MachinelearningReport paramMachinelearningReport, LpReport_PicInfo_dc02153 paramLpReport_PicInfo_dc02153) {}
-  
-  public void run()
+  public LbsDataV2.GpsInfo a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153 != null)
+    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
+    if (paramParcel != null)
     {
-      this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153.recheckIfNeed();
-      MachinelearningReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachinelearningReport, 16, this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153);
+      localGpsInfo.lat = paramParcel.readInt();
+      localGpsInfo.lon = paramParcel.readInt();
+      localGpsInfo.alt = paramParcel.readInt();
+      localGpsInfo.gpsType = paramParcel.readInt();
+      localGpsInfo.accuracy = paramParcel.readInt();
     }
+    return localGpsInfo;
+  }
+  
+  public LbsDataV2.GpsInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

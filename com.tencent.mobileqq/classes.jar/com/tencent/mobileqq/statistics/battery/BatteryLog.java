@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics.battery;
 
-import aign;
+import ailg;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -16,7 +16,7 @@ import java.util.List;
 public class BatteryLog
 {
   private static long jdField_a_of_type_Long;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new aign(ThreadManager.getFileThreadLooper());
+  private static Handler jdField_a_of_type_AndroidOsHandler = new ailg(ThreadManager.getFileThreadLooper());
   private static BufferedWriter jdField_a_of_type_JavaIoBufferedWriter;
   private static String jdField_a_of_type_JavaLangString;
   static ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();

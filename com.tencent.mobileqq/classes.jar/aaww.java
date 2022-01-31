@@ -1,43 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppSSO;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IRequestArkAppListHandler;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class aaww
-  implements Runnable
+class aaww
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public aaww(ArkMessageServerLogic.IRequestArkAppListHandler paramIRequestArkAppListHandler) {}
+  aaww(aawv paramaawv, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject == null) {
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, qq app is null");
-    }
-    for (;;)
-    {
-      if (this.a != null) {
-        this.a.b(null);
-      }
-      do
-      {
-        return;
-        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(120);
-        if (localObject == null)
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark center is null");
-          break;
-        }
-        ((ArkAppCenter)localObject).a();
-        localObject = ((ArkAppCenter)localObject).a();
-        if (localObject == null)
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark sso is null");
-          break;
-        }
-      } while (((ArkAppSSO)localObject).a("ArkAppPanel.List", 10000, 0, new aawx(this)));
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, fail send sso request");
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364066)).setImageBitmap(paramBitmap);
     }
   }
 }

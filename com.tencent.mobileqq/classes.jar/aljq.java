@@ -1,14 +1,16 @@
-import com.tencent.open.wadl.WadlJsBridgeCall;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.open.agent.FriendChooser.SearchResultAdapter;
+import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
 
-public final class aljq
-  implements Runnable
+public class aljq
+  implements ImageLoader.ImageLoadListener
 {
-  public aljq(String paramString) {}
+  public aljq(FriendChooser.SearchResultAdapter paramSearchResultAdapter, ImageView paramImageView) {}
   
-  public void run()
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    WadlJsBridgeCall.a().put(this.a, new Boolean(false));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
   }
 }
 

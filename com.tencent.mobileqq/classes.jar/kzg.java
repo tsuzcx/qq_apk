@@ -1,14 +1,29 @@
-import com.tencent.biz.pubaccount.PublicAccountUnfollowTask;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class kzg
-  implements Runnable
+public final class kzg
+  implements BusinessObserver
 {
-  public kzg(PublicAccountUnfollowTask paramPublicAccountUnfollowTask) {}
-  
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    PublicAccountUtil.a(PublicAccountUnfollowTask.a(this.a), PublicAccountUnfollowTask.a(this.a), PublicAccountUnfollowTask.a(this.a), false, this.a);
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, "doAdReport success!");
+        }
+      }
+      return;
+    }
+    catch (Exception paramBundle) {}
   }
 }
 

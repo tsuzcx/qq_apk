@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
 
-public final class ong
-  implements Parcelable.Creator
+public class ong
+  implements LbsManager.LbsUpdateListener
 {
-  public TroopStoryItemInfo a(Parcel paramParcel)
-  {
-    return new TroopStoryItemInfo(paramParcel);
-  }
+  public ong(DoodleEmojiManager paramDoodleEmojiManager, DoodleEmojiManager.POIPostersRequestCallback paramPOIPostersRequestCallback) {}
   
-  public TroopStoryItemInfo[] a(int paramInt)
+  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    return new TroopStoryItemInfo[paramInt];
+    SLog.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramBasicLocation != null))
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager.a(paramBasicLocation.b, paramBasicLocation.a, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback);
+      return;
+    }
+    SLog.e("DoodleEmojiManager", "onLbsUpdate failed.");
   }
 }
 

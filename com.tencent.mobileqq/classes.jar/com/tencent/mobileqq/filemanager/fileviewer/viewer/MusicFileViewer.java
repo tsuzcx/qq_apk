@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import adft;
+import adoa;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -39,14 +39,14 @@ public class MusicFileViewer
     QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: MusicFileViewer initFileView");
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130970045, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368863));
-      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368847));
-      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368729));
-      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368865));
-      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368866));
-      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368864));
-      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368730));
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2130970056, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368866));
+      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368850));
+      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368732));
+      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368868));
+      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368869));
+      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368867));
+      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368733));
     }
   }
   
@@ -105,7 +105,7 @@ public class MusicFileViewer
   {
     if (this.f.getMeasuredWidth() <= 0)
     {
-      this.f.post(new adft(this, paramString));
+      this.f.post(new adoa(this, paramString));
       return;
     }
     this.f.setText(FileManagerUtil.a(paramString, false, this.f.getMeasuredWidth(), this.f.getPaint(), 2));
@@ -115,12 +115,12 @@ public class MusicFileViewer
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841644);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131437401));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841671);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131437421));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841645);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131437400));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841672);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131437420));
   }
   
   public void e(String paramString)

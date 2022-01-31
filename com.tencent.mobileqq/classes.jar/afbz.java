@@ -1,29 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afbz
-  implements DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback
+  implements Runnable
 {
-  public afbz(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  public afbz(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
-    }
-    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
-      return;
-    }
-    this.a.getActivity().runOnUiThread(new afca(this, paramBoolean1));
+    ShortVideoCommentsView.a(this.a, ShortVideoCommentsView.a(this.a));
   }
 }
 

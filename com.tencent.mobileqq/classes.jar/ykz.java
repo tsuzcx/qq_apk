@@ -1,24 +1,27 @@
-import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ykz
-  implements Runnable
+public class ykz
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ykz(ApolloRender paramApolloRender, View paramView, int paramInt) {}
+  public ykz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return;
+    this.a.e = this.a.a.getWidth();
+    this.a.f = this.a.a.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ykz
  * JD-Core Version:    0.7.0.1
  */

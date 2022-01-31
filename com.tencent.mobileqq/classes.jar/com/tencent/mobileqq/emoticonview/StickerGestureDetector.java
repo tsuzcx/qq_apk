@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acgv;
-import acgw;
-import acgx;
-import acgy;
-import acgz;
-import acha;
+import acoy;
+import acoz;
+import acpa;
+import acpb;
+import acpc;
+import acpd;
 import android.animation.Animator.AnimatorListener;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -83,8 +83,8 @@ public class StickerGestureDetector
   public double a;
   public float a;
   int jdField_a_of_type_Int;
-  acha jdField_a_of_type_Acha = new acha(this, null);
-  Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new acgw(this);
+  acpd jdField_a_of_type_Acpd = new acpd(this, null);
+  Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new acoz(this);
   public Context a;
   Rect jdField_a_of_type_AndroidGraphicsRect;
   public View a;
@@ -252,7 +252,7 @@ public class StickerGestureDetector
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new acgx(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new acpa(this));
       EmojiStickerManager.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.m(false);
       this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aN();
@@ -276,7 +276,7 @@ public class StickerGestureDetector
     if (QLog.isColorLevel()) {
       QLog.i("StickerGestureDetector", 2, "showOpenVip invoked");
     }
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle("温馨提示").setMessage("开通超级会员，可以贴收藏表情哦~").setPositiveButton("开通超级会员", new acgz(this)).setNegativeButton("取消", new acgy(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle("温馨提示").setMessage("开通超级会员，可以贴收藏表情哦~").setPositiveButton("开通超级会员", new acpc(this)).setNegativeButton("取消", new acpb(this)).show();
     int i1;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
     {
@@ -518,7 +518,7 @@ public class StickerGestureDetector
     {
       ViewPropertyAnimator localViewPropertyAnimator = this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout.animate();
       localViewPropertyAnimator.translationX(this.q / 2 - (this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout.getWidth() / 2 + paramFloat1)).translationY(this.jdField_e_of_type_Int - this.r + this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getMeasuredHeight() - this.jdField_j_of_type_Int - paramFloat2);
-      localViewPropertyAnimator.setListener(this.jdField_a_of_type_Acha);
+      localViewPropertyAnimator.setListener(this.jdField_a_of_type_Acpd);
       localViewPropertyAnimator.setDuration(200L);
     }
   }
@@ -677,7 +677,7 @@ public class StickerGestureDetector
     if (!paramBoolean)
     {
       if (bool) {}
-      for (i1 = 2130845785;; i1 = 2130845621)
+      for (i1 = 2130845866;; i1 = 2130845702)
       {
         localObject = ((Resources)localObject).getDrawable(i1);
         label112:
@@ -689,7 +689,7 @@ public class StickerGestureDetector
       }
     }
     if (bool) {}
-    for (int i1 = 2130845786;; i1 = 2130845622)
+    for (int i1 = 2130845867;; i1 = 2130845703)
     {
       localObject = ((Resources)localObject).getDrawable(i1);
       break label112;
@@ -2071,7 +2071,7 @@ public class StickerGestureDetector
                                 break;
                               }
                               label6113:
-                              this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new acgv(this));
+                              this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new acoy(this));
                               EmojiStickerManager.jdField_a_of_type_Boolean = false;
                               this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.m(false);
                               this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, false);

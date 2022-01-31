@@ -1,28 +1,49 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.StrangerObserver;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class ucy
-  extends StrangerObserver
+  implements Runnable
 {
-  public ucy(TroopRequestActivity paramTroopRequestActivity) {}
+  public ucy(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField paramPBRepeatMessageField)
+  public void run()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramBoolean)
+    try
     {
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131436918), 0).a();
-      this.a.c.setVisibility(8);
+      Object localObject = BaseApplication.getContext();
+      String str = Long.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+      GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a((Context)localObject).a();
+      if ((localGroupCatalogBean != null) && (localGroupCatalogBean.b.equals(str)))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = localGroupCatalogBean.a();
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = localGroupCatalogBean.a;
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+        return;
+        localObject = GroupCatalogTool.a((Context)localObject).a((Context)localObject, str);
+        if (localObject != null)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = ((GroupCatalogBean)localObject).a();
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = ((GroupCatalogBean)localObject).a;
+        }
+      }
       return;
     }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131436917), 0).a();
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.troopinfo", 2, localException.toString());
+      }
+    }
   }
 }
 

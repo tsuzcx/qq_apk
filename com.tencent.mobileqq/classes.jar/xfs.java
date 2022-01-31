@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
 
 public class xfs
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xfs(PreloadManager paramPreloadManager, WeakReference paramWeakReference) {}
+  public xfs(PayCodeEntryActivity paramPayCodeEntryActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localPreloadManager != null) && (!localPreloadManager.a)) {
-        localPreloadManager.a(false);
-      }
-    }
+    this.a.a("payCodeEntry.contractLink", "actQQWlxclick", "0004");
+    paramView = new Intent();
+    paramView.setClass(this.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://wlx.tenpay.com/traffic/protocol/protocol_list.html?_wv=3");
+    paramView.putExtra("hide_operation_bar", true);
+    paramView.putExtra("hide_more_button", true);
+    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
+    this.a.startActivity(paramView);
   }
 }
 

@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ecb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03a5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="14.0dip" android:textColor="#ffa6a6a6" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0487" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在为你加载..." android:drawablePadding="15.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b3f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="加载失败，点击重试" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02177c" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ecc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ecd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02088a" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ece" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d58" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ee2" android:background="#26000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ee3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0327" />
 </RelativeLayout>

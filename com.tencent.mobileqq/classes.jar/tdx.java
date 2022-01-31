@@ -1,39 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.widget.PullToZoomListView;
 
 public class tdx
-  extends Handler
+  implements Runnable
 {
-  public tdx(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tdx(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    for (;;)
-    {
-      try
-      {
-        int i = paramMessage.what;
-        switch (i)
-        {
-        default: 
-          return;
-        }
-      }
-      finally {}
-      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.g(this.a).setChecked(bool);
-      continue;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.a(this.a, paramMessage);
-      continue;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.b(this.a, paramMessage);
-      continue;
-      bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.h(this.a).setChecked(bool);
+    if (this.a.c == null) {
+      return;
     }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestHeight = this.a.e;
+    localURLDrawableOptions.mRequestWidth = this.a.d;
+    this.a.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.a.b.setImageDrawable(URLDrawable.getDrawable(this.a.c, localURLDrawableOptions));
+    this.a.a.a(true);
   }
 }
 

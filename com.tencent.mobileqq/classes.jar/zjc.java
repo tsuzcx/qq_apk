@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.adapter.ContactBindedAdapter;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import java.util.List;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.PrinterHandler;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgBody;
 
 public class zjc
   implements Runnable
 {
-  public zjc(PhoneContactManagerImp paramPhoneContactManagerImp, List paramList) {}
+  public zjc(DataLineHandler paramDataLineHandler1, DataLineHandler paramDataLineHandler2, msg_comm.Msg paramMsg, C2CType0x211_SubC2CType0x9.MsgBody paramMsgBody) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a = ContactBindedAdapter.a(this.jdField_a_of_type_JavaUtilList, null, true);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a = null;
+    this.b.a.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg, this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x9C2CType0x211_SubC2CType0x9$MsgBody);
   }
 }
 

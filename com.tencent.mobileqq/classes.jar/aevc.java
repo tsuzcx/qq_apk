@@ -1,27 +1,16 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo2.GetFirstMediaThumbnailFunction;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.now.NowProxy;
+import com.tencent.mobileqq.nearby.NearbyProxy;
 
 public class aevc
-  extends SimpleJob
+  implements Runnable
 {
-  public aevc(StoryLocalPublishPart paramStoryLocalPublishPart, View paramView) {}
+  public aevc(NearbyProxy paramNearbyProxy, Context paramContext) {}
   
-  protected Bitmap a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    return new GetFirstMediaThumbnailFunction(this.jdField_a_of_type_AndroidViewView.getContext()).a();
-  }
-  
-  protected void a(@Nullable Bitmap paramBitmap)
-  {
-    new Handler(Looper.getMainLooper()).post(new aevd(this, paramBitmap));
+    ((NowProxy)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy.a.getManager(181)).a(this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

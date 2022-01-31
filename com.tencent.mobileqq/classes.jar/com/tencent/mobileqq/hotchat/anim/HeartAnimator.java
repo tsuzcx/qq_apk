@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hotchat.anim;
 
-import adpl;
-import adpn;
+import adxu;
+import adxw;
 import android.graphics.Path;
 import android.os.Handler;
 import android.os.Looper;
@@ -142,17 +142,17 @@ public class HeartAnimator
   {
     paramView.setTag(2131362176, Boolean.valueOf(true));
     paramViewGroup.addView(paramView, new ViewGroup.LayoutParams(paramInt1, paramInt2));
-    adpn localadpn = new adpn(a((int)paramFloat1, (int)paramFloat2, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, paramViewGroup), a(), paramViewGroup, paramView, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config);
+    adxw localadxw = new adxw(a((int)paramFloat1, (int)paramFloat2, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, paramViewGroup), a(), paramViewGroup, paramView, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config);
     if (paramLong > 0L) {}
     for (;;)
     {
-      localadpn.setDuration(paramLong);
-      localadpn.setInterpolator(this.b);
-      localadpn.jdField_a_of_type_Int = paramInt3;
-      localadpn.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$HeartAnimatorListener = this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$HeartAnimatorListener;
-      localadpn.jdField_a_of_type_AndroidViewAnimationInterpolator = this.jdField_a_of_type_AndroidViewAnimationInterpolator;
-      localadpn.setAnimationListener(new adpl(this, paramViewGroup, paramView));
-      paramView.startAnimation(localadpn);
+      localadxw.setDuration(paramLong);
+      localadxw.setInterpolator(this.b);
+      localadxw.jdField_a_of_type_Int = paramInt3;
+      localadxw.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$HeartAnimatorListener = this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$HeartAnimatorListener;
+      localadxw.jdField_a_of_type_AndroidViewAnimationInterpolator = this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+      localadxw.setAnimationListener(new adxu(this, paramViewGroup, paramView));
+      paramView.startAnimation(localadxw);
       return;
       paramLong = this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config.j;
     }

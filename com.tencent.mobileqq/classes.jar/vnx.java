@@ -1,22 +1,39 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.Process;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.confess.ConfessMsgUtil;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public final class vnx
-  extends Handler
+public class vnx
+  implements AnimationTextView.OnDoubleClick
 {
-  public void handleMessage(Message paramMessage)
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference b;
+  
+  public vnx(TextItemBuilder paramTextItemBuilder, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramActivity);
+  }
+  
+  public void a(View paramView)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.b.get();
+    if ((localActivity == null) || (localQQAppInterface == null)) {
+      QLog.e("ChatItemBuilder", 1, "TextItemBuilder  onDoubleClick  app null fa null");
+    }
+    do
     {
-    default: 
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("PEAK", 2, "self-destory BOOM!!!!");
-    }
-    Process.killProcess(Process.myPid());
+      AIOUtils.m = true;
+    } while ((TextItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder)) || (ConfessMsgUtil.a(AIOUtils.a(paramView))));
+    ChatActivityUtils.a(localQQAppInterface, paramView, localActivity);
   }
 }
 

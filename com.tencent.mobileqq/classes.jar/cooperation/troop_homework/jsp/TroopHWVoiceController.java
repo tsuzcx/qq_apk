@@ -9,8 +9,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.StatFs;
 import android.text.TextUtils;
-import angd;
-import ange;
+import anog;
+import anoh;
 import com.tencent.av.service.QQServiceForAV;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -41,7 +41,7 @@ public class TroopHWVoiceController
   public static String d = "shard_pref_name";
   public int a;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ange(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new anoh(this);
   private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
   private VoicePlayer jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
   private TroopHWVoiceController.RecordCallback jdField_a_of_type_CooperationTroop_homeworkJspTroopHWVoiceController$RecordCallback;
@@ -184,7 +184,7 @@ public class TroopHWVoiceController
     paramRecorderParam = RecordParams.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
     PttBuffer.a(paramString);
     PttBuffer.a(paramString, paramRecorderParam, paramRecorderParam.length);
-    AudioUtil.b(2131230744, false);
+    AudioUtil.b(2131230745, false);
   }
   
   public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
@@ -245,7 +245,7 @@ public class TroopHWVoiceController
       d(str1);
       return;
     }
-    ThreadManager.postImmediately(new angd(this), null, false);
+    ThreadManager.postImmediately(new anog(this), null, false);
   }
   
   public void b(String paramString, int paramInt1, int paramInt2) {}
@@ -314,7 +314,7 @@ public class TroopHWVoiceController
         {
           if (b())
           {
-            QQToast.a(BaseApplication.getContext(), 2131433788, 0).a();
+            QQToast.a(BaseApplication.getContext(), 2131433804, 0).a();
             return;
             i = 0;
             break;
@@ -347,11 +347,11 @@ public class TroopHWVoiceController
           this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(paramString);
           return;
         }
-        QQToast.a(BaseApplication.getContext(), 2131433438, 0).a();
+        QQToast.a(BaseApplication.getContext(), 2131433452, 0).a();
         return;
       }
     }
-    QQToast.a(BaseApplication.getContext(), 2131433437, 0).a();
+    QQToast.a(BaseApplication.getContext(), 2131433451, 0).a();
   }
 }
 

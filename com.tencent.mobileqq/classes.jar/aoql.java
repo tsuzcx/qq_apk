@@ -1,14 +1,29 @@
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
-import dov.com.tencent.mobileqq.shortvideo.util.OffScreenGLSurface;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
 
 public class aoql
   implements Runnable
 {
-  public aoql(OffScreenGLSurface paramOffScreenGLSurface) {}
+  public aoql(RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {
-    OffScreenGLSurface.a(this.a).sendFirstFrameMsg();
+    synchronized (RMVideoStateMgr.a(this.a))
+    {
+      if (this.a.f())
+      {
+        this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.b(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture$OnAudioRecordListener);
+        this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.f();
+        if (QLog.isColorLevel()) {
+          QLog.d("RMVideoStateMgr", 2, "[@][closeAudioRecord]");
+        }
+      }
+      this.a.d = false;
+      this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
+      this.a.e = false;
+      return;
+    }
   }
 }
 

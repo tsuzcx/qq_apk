@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class anxu
-  implements View.OnFocusChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public anxu(EditTextDialog paramEditTextDialog) {}
+  public anxu(MusicProviderView paramMusicProviderView) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a(this.a.a.b(), true);
-    }
-    SLog.b("EditTextDialog", "onFocusChange:" + paramBoolean);
+    paramDialogInterface.dismiss();
   }
 }
 

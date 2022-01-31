@@ -1,25 +1,34 @@
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Container;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkTipsManager;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.arengine.ARWorldCupBaseResDownload;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr.GestureStatusListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aapk
-  implements Runnable
+  implements GestureMgr.GestureStatusListener
 {
-  public aapk(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  public aapk(ARWorldCupBaseResDownload paramARWorldCupBaseResDownload) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
-    if (localObject == null) {}
-    do
+    if ((paramInt >= 0) && (paramInt <= 99))
     {
+      QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes1. download... progress = " + paramInt);
+      ARWorldCupBaseResDownload.a(this.a, 1, paramInt);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (paramBoolean1)
+    {
+      QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes1. download successfully. bEnableGesture = " + paramBoolean2);
+      GestureMgr.a().a(false, this);
+      ARWorldCupBaseResDownload.a(this.a, 1, 100);
       return;
-      localObject = ArkAppContainer.a((ark.Container)localObject);
-    } while ((localObject == null) || ((ArkAppContainer)((WeakReference)localObject).get() == null));
-    ArkTipsManager.a().b();
+    }
+    QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes1. download failed. error code = " + paramInt);
+    GestureMgr.a().a(false, this);
+    ARWorldCupBaseResDownload.a(this.a, 1, -1);
   }
 }
 

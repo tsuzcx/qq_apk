@@ -1,46 +1,20 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserLoginLogic;
 
-class rjp
-  implements Runnable
+public class rjp
+  implements DialogInterface.OnClickListener
 {
-  rjp(rjo paramrjo, String paramString) {}
+  public rjp(UserLoginLogic paramUserLoginLogic) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TextView localTextView;
-    if (AddFriendVerifyActivity.b(this.jdField_a_of_type_Rjo.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).isShown())
-    {
-      localTextView = AddFriendVerifyActivity.b(this.jdField_a_of_type_Rjo.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Rjo.jdField_a_of_type_JavaLangString)) {
-        break label91;
-      }
-      str = this.jdField_a_of_type_JavaLangString;
-      localTextView.setText(str);
-      if (AppSetting.b)
-      {
-        localTextView = AddFriendVerifyActivity.b(this.jdField_a_of_type_Rjo.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Rjo.jdField_a_of_type_JavaLangString)) {
-          break label102;
-        }
-      }
-    }
-    label91:
-    label102:
-    for (String str = this.jdField_a_of_type_JavaLangString;; str = this.jdField_a_of_type_Rjo.jdField_a_of_type_JavaLangString)
-    {
-      localTextView.setContentDescription(str);
-      return;
-      str = this.jdField_a_of_type_Rjo.jdField_a_of_type_JavaLangString;
-      break;
-    }
+    UserLoginLogic.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rjp
  * JD-Core Version:    0.7.0.1
  */

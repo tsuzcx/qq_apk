@@ -13,8 +13,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kmy;
-import kmz;
+import kpf;
+import kpg;
 import mqq.app.NewIntent;
 import tencent.im.oidb.cmd0x8d3.oidb_0x8d3.AppInfo;
 import tencent.im.oidb.cmd0x8d3.oidb_0x8d3.AppTip;
@@ -73,7 +73,7 @@ public class TroopCardAppInfoHelper
     localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), ProtoServlet.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x8d3_1");
     ((NewIntent)localObject).putExtra("data", paramList.toByteArray());
-    ((NewIntent)localObject).setObserver(new kmz(this));
+    ((NewIntent)localObject).setObserver(new kpg(this));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
   }
   
@@ -168,7 +168,7 @@ public class TroopCardAppInfoHelper
       paramIGetAppInfoCB = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), ProtoServlet.class);
       paramIGetAppInfoCB.putExtra("cmd", "OidbSvc.0x8cf_6");
       paramIGetAppInfoCB.putExtra("data", paramString.toByteArray());
-      paramIGetAppInfoCB.setObserver(new kmy(this, paramBoolean));
+      paramIGetAppInfoCB.setObserver(new kpf(this, paramBoolean));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramIGetAppInfoCB);
       return true;
     }

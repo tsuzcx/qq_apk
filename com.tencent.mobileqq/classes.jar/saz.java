@@ -1,25 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class saz
-  extends Handler
+public final class saz
+  implements DialogInterface.OnCancelListener
 {
-  public saz(ChatHistoryForC2C paramChatHistoryForC2C) {}
+  public saz(boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramMessage.what == 1)
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131434483);
-      this.a.a.show();
+    if (this.jdField_a_of_type_Boolean) {
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

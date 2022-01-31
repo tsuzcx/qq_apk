@@ -1,119 +1,39 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadCallback;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
+import android.os.RemoteException;
+import cooperation.qzone.remote.IServiceHandler;
+import cooperation.qzone.remote.RecvMsg;
+import cooperation.qzone.remote.RemoteServiceProxy;
+import cooperation.qzone.remote.SendMsg;
 
 public class anfx
-  implements TroopHomeworkHelper.UploadCallback
+  implements Runnable
 {
-  public anfx(TroopHWJsPlugin.UploadMediaEntry paramUploadMediaEntry) {}
+  public anfx(RemoteServiceProxy paramRemoteServiceProxy, SendMsg paramSendMsg) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    JSONObject localJSONObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Anfw.c, this.a.jdField_a_of_type_Int, this.a.b, "uploading", "", 0);
     try
     {
-      if (this.a.b == 2)
+      if (this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.serviceHandler != null)
       {
-        float f2 = paramInt / 100.0F * 0.85F + 0.1F;
-        f1 = f2;
-        if (f2 <= 1.0F) {}
+        this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.serviceHandler.sendMsg(this.jdField_a_of_type_CooperationQzoneRemoteSendMsg);
+        return;
       }
-      for (float f1 = 1.0F;; f1 = paramInt / 100.0F)
+      try
       {
-        localJSONObject.put("progress", f1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("TroopHWJsPlugin", 4, "id = " + this.a.jdField_a_of_type_Int + " progress = " + paramInt + " realProgress = " + f1);
-        }
-        this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Anfw.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        this.a.jdField_a_of_type_Boolean = true;
+        RecvMsg localRecvMsg = this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.createWaiteRespTimeout(this.jdField_a_of_type_CooperationQzoneRemoteSendMsg, "main thread sendMsgToServiceFailed. serviceHandler is null.");
+        this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.sendFailedRespToApp(this.jdField_a_of_type_CooperationQzoneRemoteSendMsg, localRecvMsg);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
         return;
       }
       return;
     }
-    catch (Exception localException)
+    catch (RemoteException localRemoteException)
     {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHWJsPlugin", 2, "onComplete id = " + this.a.jdField_a_of_type_Int + " url = " + paramString);
-    }
-    if (this.a.b == 0) {}
-    for (int i = 11;; i = 0)
-    {
-      Object localObject = "uploaded";
-      if (this.a.b == 2) {
-        localObject = "uploading";
-      }
-      localObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Anfw.c, this.a.jdField_a_of_type_Int, this.a.b, (String)localObject, paramString, i);
-      this.a.jdField_a_of_type_JavaLangString = paramString;
-      do
-      {
-        for (;;)
-        {
-          try
-          {
-            ((JSONObject)localObject).put("result", 0);
-            if (2 == this.a.b)
-            {
-              ((JSONObject)localObject).put("progress", 0.949999988079071D);
-              if (this.a.b != 2) {
-                this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Anfw.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
-              }
-              this.a.jdField_a_of_type_Boolean = false;
-              if (!this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-                break;
-              }
-              return;
-            }
-            if (this.a.b == 1)
-            {
-              ((JSONObject)localObject).put("progress", 1.0D);
-              ((JSONObject)localObject).put("size", "[0,400,694,1000]");
-              continue;
-            }
-            if (this.a.b != 0) {
-              continue;
-            }
-          }
-          catch (Exception paramString)
-          {
-            paramString.printStackTrace();
-            return;
-          }
-          ((JSONObject)localObject).put("progress", 1.0D);
-        }
-      } while (this.a.b != 2);
-      paramString = new anfy(this);
-      ThreadManager.postImmediately(new angc(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, this.a, paramString), null, false);
-      return;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    QLog.d("TroopHWJsPlugin", 1, "upload failed! errorCode = " + paramInt);
-    this.a.jdField_a_of_type_Boolean = false;
-    JSONObject localJSONObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Anfw.c, this.a.jdField_a_of_type_Int, this.a.b, "uploaded", "", 0);
-    try
-    {
-      localJSONObject.put("result", paramInt);
-      this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Anfw.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("TroopHWJsPlugin", 1, "upload error!", localException);
-      }
+      localRemoteException.printStackTrace();
     }
   }
 }

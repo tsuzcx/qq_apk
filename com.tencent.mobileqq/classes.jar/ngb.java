@@ -1,34 +1,39 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader.Listener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.BitmapUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.qqstory.comment.FeedCommentLego;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.InputViewHideListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class ngb
-  implements UrlBitmapDownloader.Listener
+  implements TextView.OnEditorActionListener
 {
-  public ngb(DownloadPic2FileJob paramDownloadPic2FileJob, String paramString) {}
+  public ngb(StoryInputBarView paramStoryInputBarView) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob))
+    if (paramInt == 4)
     {
-      paramString = ImageUtil.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-      paramBitmap.recycle();
-      bool = BitmapUtils.a(paramString, DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob));
-      paramString.recycle();
-      DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob, bool);
-      return;
+      paramTextView = paramTextView.getText().toString();
+      if (paramTextView.length() <= 0) {
+        break label122;
+      }
+      this.a.setKeyBoardState(false);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      if (StoryInputBarView.a(this.a) != null) {
+        StoryInputBarView.a(this.a).f();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
+      }
     }
-    boolean bool = BitmapUtils.a(paramBitmap, DownloadPic2FileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob));
-    DownloadPic2FileJob.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob, bool);
-  }
-  
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    SLog.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    DownloadPic2FileJob.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobDownloadPic2FileJob, false);
+    return false;
+    label122:
+    return true;
   }
 }
 

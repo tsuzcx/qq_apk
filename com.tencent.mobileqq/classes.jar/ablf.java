@@ -1,26 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.widget.ImageView;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 
-public class ablf
-  extends AnimatorListenerAdapter
+class ablf
+  implements Runnable
 {
-  public ablf(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimHolder paramAnimHolder, ObjectAnimator paramObjectAnimator) {}
+  ablf(abld paramabld) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.setVisibility(0);
+    if ((!ShopScanActivity.a(this.a.a)) && (this.a.a.d.getVisibility() == 0))
+    {
+      this.a.a.d.setVisibility(8);
+      this.a.a.a.setVisibility(0);
+      ShopScanActivity.b(this.a.a);
+      ShopScanActivity.a(this.a.a, true);
     }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 

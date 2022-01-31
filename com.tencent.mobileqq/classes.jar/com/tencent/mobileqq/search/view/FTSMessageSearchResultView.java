@@ -30,10 +30,10 @@ public class FTSMessageSearchResultView
   protected void a()
   {
     super.a();
-    this.a = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131375018));
-    this.b = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131375019));
-    this.c = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131375020));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131375017));
+    this.a = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131375070));
+    this.b = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131375071));
+    this.c = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131375072));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131375069));
   }
   
   public TextView b()

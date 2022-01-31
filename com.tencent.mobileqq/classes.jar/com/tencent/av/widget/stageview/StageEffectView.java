@@ -35,14 +35,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
-import kic;
-import kie;
-import kif;
-import kig;
-import kih;
-import kii;
-import kil;
-import kim;
+import kkj;
+import kkl;
+import kkm;
+import kkn;
+import kko;
+import kkp;
+import kks;
+import kkt;
 
 public class StageEffectView
   extends ViewGroup
@@ -64,16 +64,16 @@ public class StageEffectView
   private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
   private OverScroller jdField_a_of_type_ComTencentAvWidgetStageviewOverScroller;
   private StageEffectView.OnIconClickListener jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$OnIconClickListener;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new kif(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new kkm(this);
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final Comparator jdField_a_of_type_JavaUtilComparator = new kie(this);
+  private final Comparator jdField_a_of_type_JavaUtilComparator = new kkl(this);
   public boolean a;
   private final float[] jdField_a_of_type_ArrayOfFloat = new float[9];
   private final StageMemberView[] jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView = new StageMemberView[8];
   private final Integer[] jdField_a_of_type_ArrayOfJavaLangInteger = new Integer[8];
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private Comparator jdField_b_of_type_JavaUtilComparator = new kig(this);
+  private Comparator jdField_b_of_type_JavaUtilComparator = new kkn(this);
   private final int[] jdField_b_of_type_ArrayOfInt = new int[1];
   private float jdField_c_of_type_Float;
   private int jdField_c_of_type_Int;
@@ -103,10 +103,14 @@ public class StageEffectView
     jdField_b_of_type_Float = (float)Math.cos(-0.3141592653589793D);
     jdField_a_of_type_ArrayOfInt = new int[] { 0, 17500, 2500, 15000, 5000, 12500, 7500, 10000 };
     jdField_a_of_type_ArrayOfDouble = new double[] { 0.0D, 0.6981317007977318D, 2.094395102393195D, 2.879793265790644D, 3.141592653589793D, 3.403392041388943D, 4.188790204786391D, 5.585053606381854D };
-    int[] arrayOfInt1 = { 1, 0 };
-    int[] arrayOfInt2 = { 3, 1, 0, 2, 4 };
-    int[] arrayOfInt3 = { 5, 3, 1, 0, 2, 4, 6, 7 };
-    jdField_a_of_type_Array2dOfInt = new int[][] { new int[0], { 0 }, arrayOfInt1, { 1, 0, 2 }, { 3, 1, 0, 2 }, arrayOfInt2, { 5, 3, 1, 0, 2, 4 }, { 5, 3, 1, 0, 2, 4, 6 }, arrayOfInt3 };
+    int[] arrayOfInt1 = new int[0];
+    int[] arrayOfInt2 = { 1, 0 };
+    int[] arrayOfInt3 = { 1, 0, 2 };
+    int[] arrayOfInt4 = { 3, 1, 0, 2, 4 };
+    int[] arrayOfInt5 = { 5, 3, 1, 0, 2, 4 };
+    int[] arrayOfInt6 = { 5, 3, 1, 0, 2, 4, 6 };
+    int[] arrayOfInt7 = { 5, 3, 1, 0, 2, 4, 6, 7 };
+    jdField_a_of_type_Array2dOfInt = new int[][] { arrayOfInt1, { 0 }, arrayOfInt2, arrayOfInt3, { 3, 1, 0, 2 }, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7 };
     if (Build.VERSION.SDK_INT >= 11) {}
     for (;;)
     {
@@ -163,7 +167,7 @@ public class StageEffectView
     label17:
     Object localObject;
     int i2;
-    kim localkim;
+    kkt localkkt;
     if (i1 < paramInt)
     {
       localObject = paramArrayOfString[i1];
@@ -178,9 +182,9 @@ public class StageEffectView
         {
           i2 += 1;
           break;
-          localkim = (kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[i2].getTag();
-          localkim.jdField_a_of_type_Kim = null;
-        } while (!((String)localObject).equals(localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString));
+          localkkt = (kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[i2].getTag();
+          localkkt.jdField_a_of_type_Kkt = null;
+        } while (!((String)localObject).equals(localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString));
         removeViewInLayout(this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[i2]);
         this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[i2] = null;
         i2 = n + 1;
@@ -201,7 +205,7 @@ public class StageEffectView
       {
         if (i2 < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          if (((String)localObject).equals(((kim)this.jdField_a_of_type_JavaUtilArrayList.get(i2)).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
+          if (((String)localObject).equals(((kkt)this.jdField_a_of_type_JavaUtilArrayList.get(i2)).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
           {
             this.jdField_a_of_type_JavaUtilArrayList.remove(i2);
             i2 = m + 1;
@@ -230,8 +234,8 @@ public class StageEffectView
             }
             else
             {
-              localkim = (kim)((StageMemberView)localObject).getTag();
-              if ((localkim.jdField_a_of_type_Int == 0) && ((localkim.jdField_a_of_type_Int < 0) || (localkim.jdField_a_of_type_Int >= 10000))) {
+              localkkt = (kkt)((StageMemberView)localObject).getTag();
+              if ((localkkt.jdField_a_of_type_Int == 0) && ((localkkt.jdField_a_of_type_Int < 0) || (localkkt.jdField_a_of_type_Int >= 10000))) {
                 break label425;
               }
             }
@@ -261,10 +265,10 @@ public class StageEffectView
                 continue;
                 label425:
                 i2 = paramInt;
-                if (localkim.jdField_a_of_type_Int != jdField_a_of_type_ArrayOfInt[paramArrayOfString[i1]])
+                if (localkkt.jdField_a_of_type_Int != jdField_a_of_type_ArrayOfInt[paramArrayOfString[i1]])
                 {
-                  a((StageMemberView)localObject, localkim, jdField_a_of_type_ArrayOfInt[paramArrayOfString[i1]], -1, 0);
-                  i2 = Math.max(paramInt, localkim.jdField_a_of_type_Kil.jdField_a_of_type_Int);
+                  a((StageMemberView)localObject, localkkt, jdField_a_of_type_ArrayOfInt[paramArrayOfString[i1]], -1, 0);
+                  i2 = Math.max(paramInt, localkkt.jdField_a_of_type_Kks.jdField_a_of_type_Int);
                 }
                 i1 += 1;
                 paramInt = i2;
@@ -284,12 +288,12 @@ public class StageEffectView
                   i2 = paramInt;
                   paramInt = i3;
                   break;
-                  localkim = (kim)((StageMemberView)localObject).getTag();
+                  localkkt = (kkt)((StageMemberView)localObject).getTag();
                   i3 = paramInt;
-                  if (localkim.jdField_a_of_type_Int != jdField_a_of_type_ArrayOfInt[paramArrayOfString[(i5 - 1 - i2)]])
+                  if (localkkt.jdField_a_of_type_Int != jdField_a_of_type_ArrayOfInt[paramArrayOfString[(i5 - 1 - i2)]])
                   {
-                    a((StageMemberView)localObject, localkim, jdField_a_of_type_ArrayOfInt[paramArrayOfString[(i5 - 1 - i2)]], -1, 0);
-                    i3 = Math.max(paramInt, localkim.jdField_a_of_type_Kil.jdField_a_of_type_Int);
+                    a((StageMemberView)localObject, localkkt, jdField_a_of_type_ArrayOfInt[paramArrayOfString[(i5 - 1 - i2)]], -1, 0);
+                    i3 = Math.max(paramInt, localkkt.jdField_a_of_type_Kks.jdField_a_of_type_Int);
                   }
                   paramInt = i2 + 1;
                   i1 += 1;
@@ -335,7 +339,7 @@ public class StageEffectView
     for (m = 4;; m = 1)
     {
       localRotate3dAnimation.setDuration(m * 500);
-      localRotate3dAnimation.setAnimationListener(new kii(this, paramBoolean, paramStageMemberView, paramDrawable, paramImageView, f2, f3));
+      localRotate3dAnimation.setAnimationListener(new kkp(this, paramBoolean, paramStageMemberView, paramDrawable, paramImageView, f2, f3));
       paramStageMemberView.b(false);
       paramImageView.startAnimation(localRotate3dAnimation);
       return;
@@ -367,16 +371,16 @@ public class StageEffectView
         while (m < this.jdField_a_of_type_Int)
         {
           localObject1 = this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m];
-          localObject2 = (kim)((StageMemberView)localObject1).getTag();
-          float f1 = ((kim)localObject2).jdField_d_of_type_Float;
-          f1 = ((kim)localObject2).jdField_e_of_type_Float;
-          a((kim)localObject2, (StageMemberView)localObject1, ((kim)localObject2).jdField_a_of_type_Int + paramInt);
+          localObject2 = (kkt)((StageMemberView)localObject1).getTag();
+          float f1 = ((kkt)localObject2).jdField_d_of_type_Float;
+          f1 = ((kkt)localObject2).jdField_e_of_type_Float;
+          a((kkt)localObject2, (StageMemberView)localObject1, ((kkt)localObject2).jdField_a_of_type_Int + paramInt);
           m += 1;
         }
       }
       if ((n > 8) && (i1 != i2))
       {
-        kim localkim;
+        kkt localkkt;
         if (paramInt > 0)
         {
           n = (i2 + n - i1) % n;
@@ -386,20 +390,20 @@ public class StageEffectView
             if (paramInt >= this.jdField_a_of_type_Int) {
               break label349;
             }
-            localObject1 = (kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[paramInt].getTag();
-            if ((((kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[((paramInt - 1 + 8) % 8)].getTag()).jdField_a_of_type_Int < 10000) && (((kim)localObject1).jdField_a_of_type_Int >= 10000))
+            localObject1 = (kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[paramInt].getTag();
+            if ((((kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[((paramInt - 1 + 8) % 8)].getTag()).jdField_a_of_type_Int < 10000) && (((kkt)localObject1).jdField_a_of_type_Int >= 10000))
             {
               m = 0;
               while (m < n)
               {
-                localObject1 = (kim)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+                localObject1 = (kkt)this.jdField_a_of_type_JavaUtilArrayList.remove(0);
                 localObject2 = this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[((n - 1 - m + paramInt) % 8)];
-                localkim = (kim)((StageMemberView)localObject2).getTag();
-                ((kim)localObject1).a(localkim);
+                localkkt = (kkt)((StageMemberView)localObject2).getTag();
+                ((kkt)localObject1).a(localkkt);
                 ((StageMemberView)localObject2).setTag(localObject1);
-                ((StageMemberView)localObject2).setBackgroundDrawable(((kim)localObject1).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-                ((StageMemberView)localObject2).a(((kim)localObject1).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b, false);
-                a(-1, localkim);
+                ((StageMemberView)localObject2).setBackgroundDrawable(((kkt)localObject1).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+                ((StageMemberView)localObject2).a(((kkt)localObject1).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b, false);
+                a(-1, localkkt);
                 m += 1;
               }
               break;
@@ -419,21 +423,21 @@ public class StageEffectView
               if (paramInt < 0) {
                 break label555;
               }
-              localObject1 = (kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[paramInt].getTag();
-              if ((((kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[((paramInt + 1 + 8) % 8)].getTag()).jdField_a_of_type_Int > 10000) && (((kim)localObject1).jdField_a_of_type_Int < 10000))
+              localObject1 = (kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[paramInt].getTag();
+              if ((((kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[((paramInt + 1 + 8) % 8)].getTag()).jdField_a_of_type_Int > 10000) && (((kkt)localObject1).jdField_a_of_type_Int < 10000))
               {
                 m = 0;
                 while (m < n)
                 {
-                  localObject1 = (kim)this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+                  localObject1 = (kkt)this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
                   i1 = MathUtils.a(paramInt - (n - 1 - m), 8);
                   localObject2 = this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[i1];
-                  localkim = (kim)((StageMemberView)localObject2).getTag();
-                  ((kim)localObject1).a(localkim);
+                  localkkt = (kkt)((StageMemberView)localObject2).getTag();
+                  ((kkt)localObject1).a(localkkt);
                   ((StageMemberView)localObject2).setTag(localObject1);
-                  ((StageMemberView)localObject2).setBackgroundDrawable(((kim)localObject1).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-                  ((StageMemberView)localObject2).a(((kim)localObject1).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b, false);
-                  a(0, localkim);
+                  ((StageMemberView)localObject2).setBackgroundDrawable(((kkt)localObject1).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+                  ((StageMemberView)localObject2).a(((kkt)localObject1).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b, false);
+                  a(0, localkkt);
                   m += 1;
                 }
                 break;
@@ -456,40 +460,40 @@ public class StageEffectView
     paramView.offsetTopAndBottom(paramInt2 - (i1 + i2));
   }
   
-  private void a(int paramInt, kim paramkim)
+  private void a(int paramInt, kkt paramkkt)
   {
-    paramkim.jdField_a_of_type_Kim = null;
-    paramkim.jdField_a_of_type_Kil = null;
+    paramkkt.jdField_a_of_type_Kkt = null;
+    paramkkt.jdField_a_of_type_Kks = null;
     if (paramInt < 0)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramkim);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramkkt);
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramkim);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramkkt);
   }
   
-  private void a(StageMemberView paramStageMemberView, kim paramkim, int paramInt1, int paramInt2, int paramInt3)
+  private void a(StageMemberView paramStageMemberView, kkt paramkkt, int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 > 0) {
       paramStageMemberView.setVisibility(4);
     }
-    paramkim.jdField_a_of_type_Kil = new kil(paramkim.jdField_a_of_type_Int, MathUtils.a(paramInt1, 20000), paramInt2, paramInt3, null);
+    paramkkt.jdField_a_of_type_Kks = new kks(paramkkt.jdField_a_of_type_Int, MathUtils.a(paramInt1, 20000), paramInt2, paramInt3, null);
   }
   
-  private void a(kim paramkim, StageMemberView paramStageMemberView)
+  private void a(kkt paramkkt, StageMemberView paramStageMemberView)
   {
-    kim localkim = paramkim.jdField_a_of_type_Kim;
-    localkim.a(paramkim);
-    paramStageMemberView.setTag(localkim);
-    paramStageMemberView.setBackgroundDrawable(localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    paramStageMemberView.a(localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b, false);
-    if (this.jdField_a_of_type_JavaUtilArrayList.remove(localkim)) {
-      a(-1, paramkim);
+    kkt localkkt = paramkkt.jdField_a_of_type_Kkt;
+    localkkt.a(paramkkt);
+    paramStageMemberView.setTag(localkkt);
+    paramStageMemberView.setBackgroundDrawable(localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    paramStageMemberView.a(localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b, false);
+    if (this.jdField_a_of_type_JavaUtilArrayList.remove(localkkt)) {
+      a(-1, paramkkt);
     }
   }
   
   @TargetApi(11)
-  private void a(kim paramkim, StageMemberView paramStageMemberView, int paramInt)
+  private void a(kkt paramkkt, StageMemberView paramStageMemberView, int paramInt)
   {
     paramInt = MathUtils.a(paramInt, 20000);
     int m = paramInt / 2500;
@@ -497,7 +501,7 @@ public class StageEffectView
     for (double d1 = jdField_a_of_type_ArrayOfDouble[(m + 1)] - jdField_a_of_type_ArrayOfDouble[m];; d1 = 6.283185307179586D - jdField_a_of_type_ArrayOfDouble[m])
     {
       double d2 = (paramInt - m * 2500) / 2500.0D;
-      paramkim.jdField_a_of_type_Int = paramInt;
+      paramkkt.jdField_a_of_type_Int = paramInt;
       d1 = d1 * d2 + jdField_a_of_type_ArrayOfDouble[m];
       this.jdField_g_of_type_Float = ((float)(Math.sin(d1) * 300.0D));
       this.jdField_h_of_type_Float = 0.0F;
@@ -512,27 +516,27 @@ public class StageEffectView
       this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_e_of_type_Float, this.jdField_e_of_type_Float);
       this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_c_of_type_Float, this.jdField_d_of_type_Float);
       this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(this.jdField_a_of_type_ArrayOfFloat);
-      paramkim.jdField_a_of_type_Float = this.j;
-      paramkim.jdField_b_of_type_Float = this.k;
-      paramkim.jdField_c_of_type_Float = this.l;
-      paramkim.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      paramkim.jdField_f_of_type_Float = this.jdField_a_of_type_ArrayOfFloat[0];
+      paramkkt.jdField_a_of_type_Float = this.j;
+      paramkkt.jdField_b_of_type_Float = this.k;
+      paramkkt.jdField_c_of_type_Float = this.l;
+      paramkkt.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_AndroidGraphicsMatrix);
+      paramkkt.jdField_f_of_type_Float = this.jdField_a_of_type_ArrayOfFloat[0];
       if (this.jdField_i_of_type_Float > 150.0F) {
-        paramkim.jdField_f_of_type_Float *= (1.0F - (this.jdField_i_of_type_Float - 150.0F) / 150.0F * 0.4F);
+        paramkkt.jdField_f_of_type_Float *= (1.0F - (this.jdField_i_of_type_Float - 150.0F) / 150.0F * 0.4F);
       }
-      paramkim.jdField_d_of_type_Float = this.jdField_a_of_type_ArrayOfFloat[2];
-      paramkim.jdField_e_of_type_Float = this.jdField_a_of_type_ArrayOfFloat[5];
-      a((int)paramkim.jdField_d_of_type_Float, (int)paramkim.jdField_e_of_type_Float, paramStageMemberView);
+      paramkkt.jdField_d_of_type_Float = this.jdField_a_of_type_ArrayOfFloat[2];
+      paramkkt.jdField_e_of_type_Float = this.jdField_a_of_type_ArrayOfFloat[5];
+      a((int)paramkkt.jdField_d_of_type_Float, (int)paramkkt.jdField_e_of_type_Float, paramStageMemberView);
       if (jdField_b_of_type_Boolean)
       {
-        paramStageMemberView.setScaleX(paramkim.jdField_f_of_type_Float);
-        paramStageMemberView.setScaleY(paramkim.jdField_f_of_type_Float);
+        paramStageMemberView.setScaleX(paramkkt.jdField_f_of_type_Float);
+        paramStageMemberView.setScaleY(paramkkt.jdField_f_of_type_Float);
       }
-      if ((paramkim.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0))
+      if ((paramkkt.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0))
       {
-        paramkim = new int[2];
-        paramStageMemberView.getLocationInWindow(paramkim);
-        this.jdField_b_of_type_Int = paramkim[1];
+        paramkkt = new int[2];
+        paramStageMemberView.getLocationInWindow(paramkkt);
+        this.jdField_b_of_type_Int = paramkkt[1];
       }
       return;
     }
@@ -544,7 +548,7 @@ public class StageEffectView
     while (m < this.jdField_a_of_type_Int)
     {
       StageMemberView localStageMemberView = this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[this.jdField_a_of_type_ArrayOfJavaLangInteger[(this.jdField_a_of_type_Int - 1 - m)].intValue()];
-      localStageMemberView.a(((kim)localStageMemberView.getTag()).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b, true);
+      localStageMemberView.a(((kkt)localStageMemberView.getTag()).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b, true);
       m += 1;
     }
   }
@@ -552,7 +556,7 @@ public class StageEffectView
   private boolean a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = kic.a();
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = kkj.a();
     setChildrenDrawingOrderEnabled(true);
     setWillNotDraw(true);
     setClipChildren(false);
@@ -604,17 +608,17 @@ public class StageEffectView
     return false;
   }
   
-  private boolean a(kim paramkim, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
+  private boolean a(kkt paramkkt, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
   {
     boolean bool = false;
     int m = this.jdField_a_of_type_Int;
     StageMemberView localStageMemberView = new StageMemberView(getContext(), this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsBitmap);
-    localStageMemberView.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect = paramkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect;
-    localStageMemberView.setBackgroundDrawable(paramkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    localStageMemberView.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect = paramkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect;
+    localStageMemberView.setBackgroundDrawable(paramkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     localStageMemberView.layout(-54, -54, 54, 66);
-    localStageMemberView.setTag(paramkim);
+    localStageMemberView.setTag(paramkkt);
     if (this.jdField_c_of_type_Boolean) {
-      localStageMemberView.a(paramkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b, false);
+      localStageMemberView.a(paramkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b, false);
     }
     a(true);
     super.addViewInLayout(localStageMemberView, getChildCount(), generateDefaultLayoutParams());
@@ -622,11 +626,11 @@ public class StageEffectView
     this.jdField_a_of_type_Int += 1;
     if ((paramBoolean2) || (paramInt2 > 0) || (paramBoolean1))
     {
-      a(paramkim, localStageMemberView, jdField_a_of_type_ArrayOfInt[7]);
+      a(paramkkt, localStageMemberView, jdField_a_of_type_ArrayOfInt[7]);
       paramInt1 = jdField_a_of_type_ArrayOfInt[m] + paramInt1;
       paramBoolean1 = bool;
-      if (paramkim.jdField_a_of_type_Int != paramInt1) {
-        a(localStageMemberView, paramkim, paramInt1, -1, paramInt2);
+      if (paramkkt.jdField_a_of_type_Int != paramInt1) {
+        a(localStageMemberView, paramkkt, paramInt1, -1, paramInt2);
       }
     }
     for (paramBoolean1 = true;; paramBoolean1 = bool)
@@ -634,7 +638,7 @@ public class StageEffectView
       this.jdField_a_of_type_ArrayOfJavaLangInteger[m] = Integer.valueOf(m);
       b();
       return paramBoolean1;
-      a(paramkim, localStageMemberView, jdField_a_of_type_ArrayOfInt[m]);
+      a(paramkkt, localStageMemberView, jdField_a_of_type_ArrayOfInt[m]);
       invalidate();
     }
   }
@@ -735,7 +739,7 @@ public class StageEffectView
     long l1 = SystemClock.uptimeMillis();
     int n;
     StageMemberView localStageMemberView;
-    kim localkim;
+    kkt localkkt;
     int i1;
     label86:
     label219:
@@ -749,49 +753,49 @@ public class StageEffectView
       if (m < this.jdField_a_of_type_Int)
       {
         localStageMemberView = this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m];
-        localkim = (kim)localStageMemberView.getTag();
-        i1 = localkim.jdField_a_of_type_Int;
-        if (localkim.jdField_a_of_type_Kil != null)
+        localkkt = (kkt)localStageMemberView.getTag();
+        i1 = localkkt.jdField_a_of_type_Int;
+        if (localkkt.jdField_a_of_type_Kks != null)
         {
-          if (localkim.jdField_a_of_type_Kil.jdField_a_of_type_ArrayOfInt == null) {
+          if (localkkt.jdField_a_of_type_Kks.jdField_a_of_type_ArrayOfInt == null) {
             break label219;
           }
-          n = localkim.jdField_a_of_type_Kil.jdField_a_of_type_ArrayOfInt[0];
-          if (l1 >= localkim.jdField_a_of_type_Kil.jdField_a_of_type_Long) {
+          n = localkkt.jdField_a_of_type_Kks.jdField_a_of_type_ArrayOfInt[0];
+          if (l1 >= localkkt.jdField_a_of_type_Kks.jdField_a_of_type_Long) {
             break label232;
           }
         }
         for (;;)
         {
-          if ((localkim.jdField_a_of_type_Kim != null) && (((localkim.jdField_a_of_type_Kil != null) && (!localkim.jdField_a_of_type_Kil.jdField_a_of_type_Boolean) && (i1 < 10000) && (localkim.jdField_a_of_type_Int >= 10000)) || ((localkim.jdField_a_of_type_Kil != null) && (localkim.jdField_a_of_type_Kil.jdField_a_of_type_Boolean) && (i1 > 10000) && (localkim.jdField_a_of_type_Int <= 10000)) || ((this.jdField_d_of_type_Int == 16) && (localkim.jdField_a_of_type_Kil == null)))) {
-            a(localkim, localStageMemberView);
+          if ((localkkt.jdField_a_of_type_Kkt != null) && (((localkkt.jdField_a_of_type_Kks != null) && (!localkkt.jdField_a_of_type_Kks.jdField_a_of_type_Boolean) && (i1 < 10000) && (localkkt.jdField_a_of_type_Int >= 10000)) || ((localkkt.jdField_a_of_type_Kks != null) && (localkkt.jdField_a_of_type_Kks.jdField_a_of_type_Boolean) && (i1 > 10000) && (localkkt.jdField_a_of_type_Int <= 10000)) || ((this.jdField_d_of_type_Int == 16) && (localkkt.jdField_a_of_type_Kks == null)))) {
+            a(localkkt, localStageMemberView);
           }
           n = 1;
           m += 1;
           break;
-          n = localkim.jdField_a_of_type_Kil.jdField_a_of_type_Int;
+          n = localkkt.jdField_a_of_type_Kks.jdField_a_of_type_Int;
           break label86;
-          if (l1 < localkim.jdField_a_of_type_Kil.jdField_a_of_type_Long + n)
+          if (l1 < localkkt.jdField_a_of_type_Kks.jdField_a_of_type_Long + n)
           {
             localStageMemberView.setVisibility(0);
-            f1 = (float)(l1 - localkim.jdField_a_of_type_Kil.jdField_a_of_type_Long) / n;
-            if (localkim.jdField_a_of_type_Kil.jdField_a_of_type_Boolean) {}
+            f1 = (float)(l1 - localkkt.jdField_a_of_type_Kks.jdField_a_of_type_Long) / n;
+            if (localkkt.jdField_a_of_type_Kks.jdField_a_of_type_Boolean) {}
             float f2;
-            for (n = (int)(localkim.jdField_a_of_type_Kil.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f1) * localkim.jdField_a_of_type_Kil.jdField_d_of_type_Int);; n = (int)(this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f1) * localkim.jdField_a_of_type_Kil.jdField_d_of_type_Int + f2))
+            for (n = (int)(localkkt.jdField_a_of_type_Kks.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f1) * localkkt.jdField_a_of_type_Kks.jdField_d_of_type_Int);; n = (int)(this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f1) * localkkt.jdField_a_of_type_Kks.jdField_d_of_type_Int + f2))
             {
-              i2 = localkim.jdField_a_of_type_Kil.jdField_e_of_type_Int;
-              localkim.jdField_a_of_type_Kil.jdField_e_of_type_Int = n;
-              a(localkim, localStageMemberView, localkim.jdField_a_of_type_Int + (n - i2));
+              i2 = localkkt.jdField_a_of_type_Kks.jdField_e_of_type_Int;
+              localkkt.jdField_a_of_type_Kks.jdField_e_of_type_Int = n;
+              a(localkkt, localStageMemberView, localkkt.jdField_a_of_type_Int + (n - i2));
               break;
-              f2 = localkim.jdField_a_of_type_Kil.jdField_b_of_type_Int;
+              f2 = localkkt.jdField_a_of_type_Kks.jdField_b_of_type_Int;
             }
           }
           localStageMemberView.setVisibility(0);
-          n = localkim.jdField_a_of_type_Kil.jdField_c_of_type_Int;
-          i2 = localkim.jdField_a_of_type_Kil.jdField_e_of_type_Int;
-          localkim.jdField_a_of_type_Kil.jdField_e_of_type_Int = localkim.jdField_a_of_type_Kil.jdField_c_of_type_Int;
-          a(localkim, localStageMemberView, n - i2 + localkim.jdField_a_of_type_Int);
-          localkim.jdField_a_of_type_Kil = null;
+          n = localkkt.jdField_a_of_type_Kks.jdField_c_of_type_Int;
+          i2 = localkkt.jdField_a_of_type_Kks.jdField_e_of_type_Int;
+          localkkt.jdField_a_of_type_Kks.jdField_e_of_type_Int = localkkt.jdField_a_of_type_Kks.jdField_c_of_type_Int;
+          a(localkkt, localStageMemberView, n - i2 + localkkt.jdField_a_of_type_Int);
+          localkkt.jdField_a_of_type_Kks = null;
         }
       }
       m = n;
@@ -839,11 +843,11 @@ public class StageEffectView
               break;
             }
             localStageMemberView = this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[i2];
-            localkim = (kim)localStageMemberView.getTag();
-            m = localkim.jdField_a_of_type_Int;
-            a(localkim, localStageMemberView, localkim.jdField_a_of_type_Int + i1);
-            if ((localkim.jdField_a_of_type_Kim != null) && ((n == 0) || ((this.jdField_f_of_type_Int > 0) && (m < 10000) && (localkim.jdField_a_of_type_Int >= 10000)) || ((this.jdField_f_of_type_Int < 0) && (m > 10000) && (localkim.jdField_a_of_type_Int <= 10000)))) {
-              a(localkim, localStageMemberView);
+            localkkt = (kkt)localStageMemberView.getTag();
+            m = localkkt.jdField_a_of_type_Int;
+            a(localkkt, localStageMemberView, localkkt.jdField_a_of_type_Int + i1);
+            if ((localkkt.jdField_a_of_type_Kkt != null) && ((n == 0) || ((this.jdField_f_of_type_Int > 0) && (m < 10000) && (localkkt.jdField_a_of_type_Int >= 10000)) || ((this.jdField_f_of_type_Int < 0) && (m > 10000) && (localkkt.jdField_a_of_type_Int <= 10000)))) {
+              a(localkkt, localStageMemberView);
             }
             i2 += 1;
           }
@@ -900,17 +904,17 @@ public class StageEffectView
     if (a(paramStageMember.jdField_a_of_type_JavaLangString)) {
       return false;
     }
-    kim localkim = new kim(null);
-    localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember = paramStageMember;
+    kkt localkkt = new kkt(null);
+    localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember = paramStageMember;
     if (paramStageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      paramStageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840293);
+      paramStageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840308);
     }
     if (this.jdField_a_of_type_Int >= 8)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
         Arrays.sort(this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView, this.jdField_b_of_type_JavaUtilComparator);
       }
-      a(-1, localkim);
+      a(-1, localkkt);
       return false;
     }
     int m;
@@ -924,7 +928,7 @@ public class StageEffectView
     label162:
     for (int n = this.jdField_c_of_type_Int - 20000;; n = this.jdField_c_of_type_Int)
     {
-      if (a(localkim, n, paramBoolean, false, 0))
+      if (a(localkkt, n, paramBoolean, false, 0))
       {
         this.jdField_d_of_type_Int |= 0x10;
         if (m == 0) {
@@ -944,7 +948,7 @@ public class StageEffectView
     boolean bool1;
     while (m < this.jdField_a_of_type_Int)
     {
-      if (paramString.equals(((kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag()).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
+      if (paramString.equals(((kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag()).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
       {
         bool1 = true;
         return bool1;
@@ -958,7 +962,7 @@ public class StageEffectView
       if (!localIterator.hasNext()) {
         break;
       }
-    } while (!paramString.equals(((kim)localIterator.next()).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString));
+    } while (!paramString.equals(((kkt)localIterator.next()).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString));
     return true;
   }
   
@@ -971,7 +975,7 @@ public class StageEffectView
       boolean bool1 = bool2;
       if (m < this.jdField_a_of_type_Int)
       {
-        if (paramString.equals(((kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag()).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
+        if (paramString.equals(((kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag()).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
         {
           this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].setIconBadge(3, paramDrawable);
           invalidate();
@@ -990,17 +994,17 @@ public class StageEffectView
     boolean bool = false;
     h();
     int m = 0;
-    kim localkim;
+    kkt localkkt;
     while (m < this.jdField_a_of_type_Int)
     {
-      localkim = (kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag();
-      if (paramString.equals(localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
+      localkkt = (kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag();
+      if (paramString.equals(localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
       {
         if (paramDrawable != null) {
           if (paramBoolean)
           {
             a(0.0F, 90.0F, this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].a(), this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m], paramDrawable, false);
-            localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+            localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
           }
         }
         for (;;)
@@ -1010,7 +1014,7 @@ public class StageEffectView
           this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].setBackgroundDrawable(paramDrawable);
           break;
           if (paramBoolean) {
-            a(0.0F, 360.0F, this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].a(), this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m], localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
+            a(0.0F, 360.0F, this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].a(), this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m], localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
           }
         }
       }
@@ -1023,11 +1027,11 @@ public class StageEffectView
       if (m >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
         break;
       }
-      localkim = (kim)this.jdField_a_of_type_JavaUtilArrayList.get(m);
-      if (paramString.equals(localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
+      localkkt = (kkt)this.jdField_a_of_type_JavaUtilArrayList.get(m);
+      if (paramString.equals(localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
       {
         if (paramDrawable != null) {
-          localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+          localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
         }
         return true;
       }
@@ -1043,14 +1047,14 @@ public class StageEffectView
     for (;;)
     {
       boolean bool1 = bool2;
-      kim localkim;
+      kkt localkkt;
       if (m < this.jdField_a_of_type_Int)
       {
-        localkim = (kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag();
-        if (!paramString1.equals(localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString)) {
+        localkkt = (kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag();
+        if (!paramString1.equals(localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString)) {
           break label165;
         }
-        if (!localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b.equals(paramString2)) {
+        if (!localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b.equals(paramString2)) {
           break label107;
         }
         bool1 = true;
@@ -1066,14 +1070,14 @@ public class StageEffectView
       } while (!paramBoolean);
       for (;;)
       {
-        paramString1 = localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b;
+        paramString1 = localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b;
         this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].a(paramString1, paramBoolean);
         return true;
         bool1 = bool2;
         if (TextUtils.isEmpty(paramString2)) {
           break;
         }
-        localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b = paramString2;
+        localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.b = paramString2;
       }
       label165:
       m += 1;
@@ -1087,10 +1091,10 @@ public class StageEffectView
     boolean bool1;
     while (m < this.jdField_a_of_type_Int)
     {
-      localObject = (kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag();
-      if (paramString.equals(((kim)localObject).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
+      localObject = (kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag();
+      if (paramString.equals(((kkt)localObject).jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString))
       {
-        ((kim)localObject).jdField_a_of_type_Boolean = paramBoolean;
+        ((kkt)localObject).jdField_a_of_type_Boolean = paramBoolean;
         this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].a(paramBoolean);
         bool1 = true;
         return bool1;
@@ -1098,16 +1102,16 @@ public class StageEffectView
       m += 1;
     }
     Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    kim localkim;
+    kkt localkkt;
     do
     {
       bool1 = bool2;
       if (!((Iterator)localObject).hasNext()) {
         break;
       }
-      localkim = (kim)((Iterator)localObject).next();
-    } while (!paramString.equals(localkim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString));
-    localkim.jdField_a_of_type_Boolean = paramBoolean;
+      localkkt = (kkt)((Iterator)localObject).next();
+    } while (!paramString.equals(localkkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember.jdField_a_of_type_JavaLangString));
+    localkkt.jdField_a_of_type_Boolean = paramBoolean;
     return true;
   }
   
@@ -1119,7 +1123,7 @@ public class StageEffectView
     for (int m = 1;; m = 0)
     {
       if ((this.jdField_e_of_type_Boolean) || (this.jdField_d_of_type_Int != 0)) {
-        postDelayed(new kih(this, paramVarArgs), 500L);
+        postDelayed(new kko(this, paramVarArgs), 500L);
       }
       int n = this.jdField_a_of_type_Int;
       i1 = a(paramVarArgs, paramVarArgs.length, this.jdField_b_of_type_ArrayOfInt);
@@ -1134,7 +1138,7 @@ public class StageEffectView
       n = 0;
       while (n < i2)
       {
-        a((kim)this.jdField_a_of_type_JavaUtilArrayList.remove(0), 0, true, true, 0);
+        a((kkt)this.jdField_a_of_type_JavaUtilArrayList.remove(0), 0, true, true, 0);
         n += 1;
       }
     }
@@ -1154,9 +1158,9 @@ public class StageEffectView
   
   protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
-    kim localkim = (kim)paramView.getTag();
+    kkt localkkt = (kkt)paramView.getTag();
     paramTransformation = paramTransformation.getMatrix();
-    paramTransformation.postScale(localkim.jdField_f_of_type_Float, localkim.jdField_f_of_type_Float);
+    paramTransformation.postScale(localkkt.jdField_f_of_type_Float, localkkt.jdField_f_of_type_Float);
     paramTransformation.preTranslate(-paramView.getWidth() / 2.0F, -paramView.getHeight() / 2.0F);
     paramTransformation.postTranslate(paramView.getWidth() / 2.0F, paramView.getHeight() / 2.0F);
     return true;
@@ -1195,9 +1199,9 @@ public class StageEffectView
         while (paramInt1 < this.jdField_a_of_type_Int)
         {
           StageMemberView localStageMemberView = this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[paramInt1];
-          Object localObject = (kim)localStageMemberView.getTag();
-          a((kim)localObject, localStageMemberView, ((kim)localObject).jdField_a_of_type_Int);
-          if ((((kim)localObject).jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0))
+          Object localObject = (kkt)localStageMemberView.getTag();
+          a((kkt)localObject, localStageMemberView, ((kkt)localObject).jdField_a_of_type_Int);
+          if ((((kkt)localObject).jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0))
           {
             localObject = new int[2];
             localStageMemberView.getLocationInWindow((int[])localObject);
@@ -1263,7 +1267,7 @@ public class StageEffectView
               m = 0;
               while (m < this.jdField_a_of_type_Int)
               {
-                ((kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag()).jdField_a_of_type_Kim = null;
+                ((kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag()).jdField_a_of_type_Kkt = null;
                 m += 1;
               }
               this.jdField_e_of_type_Boolean = true;
@@ -1285,12 +1289,12 @@ public class StageEffectView
                   break label398;
                 }
                 localObject1 = getChildAt(this.jdField_a_of_type_ArrayOfJavaLangInteger[m].intValue());
-                localObject2 = (kim)((View)localObject1).getTag();
-                f3 = ((kim)localObject2).jdField_f_of_type_Float * 54.0F;
-                f4 = ((kim)localObject2).jdField_e_of_type_Float;
-                f5 = ((kim)localObject2).jdField_e_of_type_Float;
-                f6 = ((kim)localObject2).jdField_d_of_type_Float;
-                f7 = ((kim)localObject2).jdField_d_of_type_Float;
+                localObject2 = (kkt)((View)localObject1).getTag();
+                f3 = ((kkt)localObject2).jdField_f_of_type_Float * 54.0F;
+                f4 = ((kkt)localObject2).jdField_e_of_type_Float;
+                f5 = ((kkt)localObject2).jdField_e_of_type_Float;
+                f6 = ((kkt)localObject2).jdField_d_of_type_Float;
+                f7 = ((kkt)localObject2).jdField_d_of_type_Float;
                 if ((f1 >= f6 - f3) && (f1 < f7 + f3) && (f2 >= f4 - f3) && (f2 < f5 + f3))
                 {
                   ((View)localObject1).setPressed(true);
@@ -1321,7 +1325,7 @@ public class StageEffectView
             m = 0;
             while (m < this.jdField_a_of_type_Int)
             {
-              ((kim)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag()).jdField_a_of_type_Kim = null;
+              ((kkt)this.jdField_a_of_type_ArrayOfComTencentAvWidgetStageviewStageMemberView[m].getTag()).jdField_a_of_type_Kkt = null;
               m += 1;
             }
             this.jdField_d_of_type_Int &= 0xFFFFFFF0;
@@ -1338,7 +1342,7 @@ public class StageEffectView
           }
         } while (this.jdField_a_of_type_AndroidViewView == null);
         f2 = paramMotionEvent.getY();
-        paramMotionEvent = (kim)this.jdField_a_of_type_AndroidViewView.getTag();
+        paramMotionEvent = (kkt)this.jdField_a_of_type_AndroidViewView.getTag();
         f3 = paramMotionEvent.jdField_f_of_type_Float * 54.0F;
         f4 = paramMotionEvent.jdField_e_of_type_Float;
         f5 = paramMotionEvent.jdField_e_of_type_Float;
@@ -1353,12 +1357,12 @@ public class StageEffectView
       if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$OnIconClickListener != null))
       {
         playSoundEffect(0);
-        paramMotionEvent = (kim)this.jdField_a_of_type_AndroidViewView.getTag();
+        paramMotionEvent = (kkt)this.jdField_a_of_type_AndroidViewView.getTag();
         localObject1 = this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$OnIconClickListener;
         localObject2 = this.jdField_a_of_type_AndroidViewView;
-        if (paramMotionEvent.jdField_a_of_type_Kim != null)
+        if (paramMotionEvent.jdField_a_of_type_Kkt != null)
         {
-          paramMotionEvent = paramMotionEvent.jdField_a_of_type_Kim.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember;
+          paramMotionEvent = paramMotionEvent.jdField_a_of_type_Kkt.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView$StageMember;
           ((StageEffectView.OnIconClickListener)localObject1).a(this, (View)localObject2, paramMotionEvent);
         }
       }
@@ -1406,7 +1410,7 @@ public class StageEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.widget.stageview.StageEffectView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,33 @@
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.ar.ARMusicController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aaef
-  implements Runnable
+  implements MediaPlayer.OnPreparedListener
 {
-  public aaef(ScanningSurfaceView paramScanningSurfaceView, String paramString1, String paramString2) {}
+  public aaef(ARMusicController paramARMusicController) {}
   
-  public void run()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (ScanningSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView).size() > 0)
+    try
     {
-      ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView).add(this.jdField_a_of_type_JavaLangString);
-      ScanningSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.b);
-      ReportController.b(null, "dc00898", "", "", "0X8008350", "0X8008350", 0, 0, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + ARMusicController.b(this.a));
+      }
+      this.a.a.seekTo(0);
+      ARMusicController.b(this.a, true);
+      if (ARMusicController.b(this.a))
+      {
+        this.a.a.start();
+        ARMusicController.c(this.a, false);
+      }
       return;
     }
-    QLog.d("ScanningSurfaceView", 1, "the dataList is null, cancel the jump action.");
+    catch (Exception paramMediaPlayer)
+    {
+      paramMediaPlayer.printStackTrace();
+    }
   }
 }
 

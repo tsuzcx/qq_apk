@@ -1,19 +1,17 @@
-import android.view.animation.Interpolator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.portal.BreathEffectView;
 
-public final class agqg
-  implements Interpolator
+public class agqg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public float getInterpolation(float paramFloat)
-  {
-    if (paramFloat <= 0.3333333F) {
-      return 0.0F;
-    }
-    return (paramFloat - 0.3333333F) * 1.5F;
-  }
+  public agqg(BreathEffectView paramBreathEffectView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqg
  * JD-Core Version:    0.7.0.1
  */

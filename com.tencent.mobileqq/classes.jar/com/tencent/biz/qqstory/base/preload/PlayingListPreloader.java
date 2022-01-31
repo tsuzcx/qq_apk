@@ -26,9 +26,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import nac;
-import nad;
-import nae;
+import ndx;
+import ndy;
+import ndz;
 
 @TargetApi(14)
 public class PlayingListPreloader
@@ -38,7 +38,7 @@ public class PlayingListPreloader
   public PlayingListPreloader.CurrentVid a;
   public PlayingListPreloader.OnVideoDownloadListener a;
   protected List a;
-  public nae a;
+  public ndz a;
   private boolean jdField_a_of_type_Boolean;
   protected List b = new ArrayList();
   protected List c = new ArrayList();
@@ -47,9 +47,9 @@ public class PlayingListPreloader
   {
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader = new VideoPreloader();
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Nae = new nae(this);
+    this.jdField_a_of_type_Ndz = new ndz(this);
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_Nae);
+    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_Ndz);
   }
   
   private boolean a()
@@ -77,8 +77,8 @@ public class PlayingListPreloader
     {
       localObject1 = DownloadTask.a(paramString, 1);
       localObject2 = DownloadTask.a(paramString, 2, bool1);
-      ((DownloadTask)localObject1).f = 0;
-      ((DownloadTask)localObject2).f = 1;
+      ((DownloadTask)localObject1).g = 0;
+      ((DownloadTask)localObject2).g = 1;
       localArrayList2.add(localObject1);
       ((DownloadTask)localObject1).a.put("handleCallback", Boolean.valueOf(true));
       if (paramVarArgs == null) {
@@ -119,11 +119,11 @@ public class PlayingListPreloader
       i += 1;
       break label113;
       localObject1 = DownloadTask.a(paramString, 1);
-      ((DownloadTask)localObject1).f = 0;
+      ((DownloadTask)localObject1).g = 0;
       localObject2 = DownloadTask.a(paramString, 0, bool1);
-      ((DownloadTask)localObject2).f = 0;
+      ((DownloadTask)localObject2).g = 0;
       localObject3 = DownloadTask.a(paramString, 2, bool1);
-      ((DownloadTask)localObject3).f = 1;
+      ((DownloadTask)localObject3).g = 1;
       localArrayList2.add(localObject1);
       localArrayList2.add(localObject2);
       localArrayList2.add(localObject3);
@@ -218,7 +218,7 @@ public class PlayingListPreloader
   public void a(String paramString, String... paramVarArgs)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$CurrentVid = new PlayingListPreloader.CurrentVid(paramString);
-    paramString = new nac(this, paramString, paramVarArgs);
+    paramString = new ndx(this, paramString, paramVarArgs);
     paramString.setJobType(4);
     Bosses.get().postJob(paramString);
   }
@@ -233,9 +233,9 @@ public class PlayingListPreloader
   
   protected void a(boolean paramBoolean)
   {
-    nad localnad = new nad(this, paramBoolean);
-    localnad.setJobType(4);
-    Bosses.get().postJob(localnad);
+    ndy localndy = new ndy(this, paramBoolean);
+    localndy.setJobType(4);
+    Bosses.get().postJob(localndy);
   }
   
   public boolean a(String paramString)
@@ -402,9 +402,9 @@ public class PlayingListPreloader
           localDownloadTask1 = DownloadTask.a(((StoryVideoItem)localObject).mVid, 1);
           DownloadTask localDownloadTask2 = DownloadTask.a(((StoryVideoItem)localObject).mVid, 0, bool);
           localObject = DownloadTask.a(((StoryVideoItem)localObject).mVid, 2, bool);
-          localDownloadTask1.f = 0;
-          localDownloadTask2.f = 0;
-          ((DownloadTask)localObject).f = 1;
+          localDownloadTask1.g = 0;
+          localDownloadTask2.g = 0;
+          ((DownloadTask)localObject).g = 1;
           localArrayList.add(localDownloadTask1);
           if (VideoViewFactory.a(BaseApplicationImpl.getContext()).a()) {
             break label362;

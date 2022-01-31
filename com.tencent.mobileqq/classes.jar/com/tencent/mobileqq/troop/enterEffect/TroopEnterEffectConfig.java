@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import ajfe;
+import ajkg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
 import java.util.Comparator;
@@ -21,7 +21,7 @@ public class TroopEnterEffectConfig
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_JavaUtilComparator = new ajfe(this);
+    this.jdField_a_of_type_JavaUtilComparator = new ajkg(this);
   }
   
   public void a(String paramString)
@@ -74,7 +74,7 @@ public class TroopEnterEffectConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig
  * JD-Core Version:    0.7.0.1
  */

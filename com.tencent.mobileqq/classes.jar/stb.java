@@ -1,54 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
 public class stb
-  extends BroadcastReceiver
+  extends VasQuickUpdateManager.CallBacker
 {
-  public stb(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public stb(FriendProfileCardActivity paramFriendProfileCardActivity, ProfileCardTemplate paramProfileCardTemplate, Card paramCard) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    paramContext = paramIntent.getAction();
-    String str1 = paramIntent.getStringExtra("event");
-    if ((TroopInfo.isHomeworkTroop(this.a.app, this.a.a)) && ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) && ("onHomeworkTroopIdentityChanged".equals(str1)))
+    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
     {
-      paramContext = paramIntent.getStringExtra("data");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label67;
-      }
-    }
-    for (;;)
-    {
-      return;
-      try
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b != null)
       {
-        label67:
-        paramContext = new JSONObject(paramContext);
-        paramIntent = paramContext.optString("groupCode");
-        if (TextUtils.equals(this.a.a, paramIntent))
-        {
-          paramContext.optString("content");
-          paramIntent = paramContext.optString("source");
-          int i = paramContext.optInt("rankId", 333);
-          str1 = paramContext.optString("nickName");
-          String str2 = paramContext.optString("uin");
-          String str3 = paramContext.optString("course");
-          paramContext = paramContext.optString("name");
-          if ("qqProfile".equals(paramIntent))
-          {
-            ThreadManager.post(new stc(this, str2, str1, i, str3, paramContext), 8, null, false);
-            return;
-          }
+        if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.obtainMessage(5, 0, 18, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "send msg of UI_MSG_UPDATE_CARD");
         }
       }
-      catch (JSONException paramContext) {}
+      paramVasQuickUpdateManager.b(this);
     }
   }
 }

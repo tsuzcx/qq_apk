@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
 class wbw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  wbw(wbv paramwbv) {}
+  wbw(wbv paramwbv, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.b(StickerBubbleAnimationViewHolder.a(this.a.a));
+    this.jdField_a_of_type_Wbv.a.a.a(4, 0, 0, this.jdField_a_of_type_Int);
   }
 }
 

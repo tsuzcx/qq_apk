@@ -1,30 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView.PopUpListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
 
 public class agiw
-  implements ScanIconAnimateView.PopUpListener
+  implements View.OnClickListener
 {
-  public agiw(ScanTorchActivity paramScanTorchActivity) {}
+  public agiw(ARTipsManager paramARTipsManager, agjf paramagjf) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "PopUp onStart ");
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "PopUp onEnd  needReportRedDot = " + this.a.n);
-    }
-    if (this.a.n)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a();
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
+    if (this.jdField_a_of_type_Agjf.a != null) {
+      this.jdField_a_of_type_Agjf.a.a();
     }
   }
 }

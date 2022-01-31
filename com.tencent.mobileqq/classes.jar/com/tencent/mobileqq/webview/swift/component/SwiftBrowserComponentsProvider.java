@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import akob;
+import akvs;
 import android.os.Bundle;
 import java.security.InvalidParameterException;
 import java.util.Collection;
@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SwiftBrowserComponentsProvider
 {
   final int jdField_a_of_type_Int;
-  private SwiftBrowserComponentsProvider.SwiftBrowserComponentContext jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext = new akob(this);
+  private SwiftBrowserComponentsProvider.SwiftBrowserComponentContext jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext = new akvs(this);
   final SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentFactory;
   public final SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderContext a;
   final ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
@@ -117,7 +117,7 @@ public class SwiftBrowserComponentsProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider
  * JD-Core Version:    0.7.0.1
  */

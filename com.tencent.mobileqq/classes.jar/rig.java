@@ -1,20 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import android.app.Activity;
+import android.view.Choreographer;
+import com.tencent.mfsdk.LeakInspector.ActivityLeakSolution;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 
-public class rig
-  implements DialogInterface.OnDismissListener
+public final class rig
+  implements Runnable
 {
-  public rig(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public rig(Activity paramActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    try
+    {
+      Choreographer localChoreographer = Choreographer.getInstance();
+      ActivityLeakSolution.a.set(localChoreographer, this.a.getApplicationContext());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("LeakInspector", 2, "", localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rig
  * JD-Core Version:    0.7.0.1
  */

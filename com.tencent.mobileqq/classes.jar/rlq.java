@@ -1,16 +1,11 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.now.enter.NowEnterManager;
-
-public class rlq
-  implements CompoundButton.OnCheckedChangeListener
+class rlq
+  implements Runnable
 {
-  public rlq(AssistantSettingActivity paramAssistantSettingActivity, NowEnterManager paramNowEnterManager) {}
+  rlq(rlp paramrlp) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a(paramBoolean);
+    this.a.a.b = true;
   }
 }
 

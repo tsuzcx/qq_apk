@@ -1,41 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.leba.QZoneEntryController;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
-import com.tencent.mobileqq.leba.model.PluginInfo;
-import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
-import com.tencent.mobileqq.leba.model.pluginactions.QzonePluginAction;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 public class aeau
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public aeau(QZoneEntryController paramQZoneEntryController) {}
+  public aeau(VideoBaseItem paramVideoBaseItem) {}
   
-  public void onClick(View paramView)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    QZoneEntryController.c(this.a);
-    paramView = LebaGridShowManager.a().a(10000);
-    QzonePluginAction localQzonePluginAction = new QzonePluginAction(this.a.jdField_a_of_type_AndroidContentContext);
-    if (paramView == null) {
-      QLog.i("UndealCount.QZoneEntryController", 1, "user clicked qzone feed entry. lebaGridItemInfo is null");
-    }
-    for (;;)
+    switch (paramInt)
     {
-      localQzonePluginAction.c(paramView);
-      paramView = (QZoneManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(9);
-      if (QZoneEntryController.a(this.a) == 4) {
-        ThreadManager.post(new aeav(this, paramView), 5, null, false);
-      }
-      QZoneEntryController.a(this.a, true);
-      paramView.a(true);
-      return;
-      QLog.i("UndealCount.QZoneEntryController", 1, "user clicked qzone feed entry. hasNew:" + localQzonePluginAction.a(paramView.a.isNew, paramView.a.pluginId));
     }
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video start buffering !");
+      }
+      if (VideoBaseItem.a(this.a) != null) {
+        VideoBaseItem.a(this.a).a(this.a.b, 0);
+      }
+      this.a.c = 6;
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video end buffering !");
+      }
+    } while (VideoBaseItem.a(this.a) == null);
+    VideoBaseItem.a(this.a).a(this.a.b, 1);
+    return false;
   }
 }
 

@@ -26,8 +26,8 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.annotation.concurrent.GuardedBy;
-import ndu;
-import ndv;
+import nhp;
+import nhq;
 import org.json.JSONObject;
 
 @TargetApi(11)
@@ -824,7 +824,7 @@ public class VideoFilterManager
   public void c()
   {
     SLog.a("VideoFilterManager", "fireGetFilterListInner %s", this.c);
-    CmdTaskManger.a().a(new VideoFilterManager.GetFilterListRequest(this.c), new ndv(this, null));
+    CmdTaskManger.a().a(new VideoFilterManager.GetFilterListRequest(this.c), new nhq(this, null));
   }
   
   public void d()
@@ -840,7 +840,7 @@ public class VideoFilterManager
       if (localFilterItem != null)
       {
         SLog.d("VideoFilterManager", "start to download filter resource : %s", new Object[] { localFilterItem });
-        new ndu(this, this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloader).executeOnExecutor(Bosses.get().getExecutor(16), new FileDownloadTask.Input[] { new FileDownloadTask.Input(localFilterItem.filterConfigUrl, b(localFilterItem), localFilterItem.filterConfigMd5) });
+        new nhp(this, this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloader).executeOnExecutor(Bosses.get().getExecutor(16), new FileDownloadTask.Input[] { new FileDownloadTask.Input(localFilterItem.filterConfigUrl, b(localFilterItem), localFilterItem.filterConfigMd5) });
       }
       return;
     }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import ajft;
-import ajfv;
+import ajkv;
+import ajkx;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -29,9 +29,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -51,23 +53,22 @@ public class TroopEnterEffectManager
   public QQAppInterface a;
   public TroopEnterEffectConfig a;
   protected HashMap a;
+  protected ConcurrentHashMap a;
   private AtomicBoolean a;
   public int b;
-  private long b;
-  protected HashMap b;
+  private long jdField_b_of_type_Long;
+  private HashMap jdField_b_of_type_JavaUtilHashMap = new HashMap();
   public int c;
-  private HashMap c;
   public int d;
   public int e;
   
   public TroopEnterEffectManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig = new TroopEnterEffectConfig();
     a();
@@ -177,9 +178,13 @@ public class TroopEnterEffectManager
   
   public TroopEnterEffectController.TroopEnterEffectData a(String paramString)
   {
-    paramString = (LinkedList)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((paramString != null) && (!paramString.isEmpty())) {
-      return (TroopEnterEffectController.TroopEnterEffectData)paramString.get(0);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if ((paramString != null) && (!paramString.isEmpty())) {
+        return (TroopEnterEffectController.TroopEnterEffectData)paramString.get(0);
+      }
+      return null;
     }
     return null;
   }
@@ -285,19 +290,25 @@ public class TroopEnterEffectManager
   
   public void a(TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData)
   {
-    LinkedList localLinkedList2 = (LinkedList)this.jdField_a_of_type_JavaUtilHashMap.get(paramTroopEnterEffectData.jdField_b_of_type_JavaLangString);
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
+    List localList1;
+    if ((paramTroopEnterEffectData != null) && (!TextUtils.isEmpty(paramTroopEnterEffectData.jdField_b_of_type_JavaLangString)))
     {
-      localLinkedList1 = new LinkedList();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramTroopEnterEffectData.jdField_b_of_type_JavaLangString, localLinkedList1);
+      List localList2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramTroopEnterEffectData.jdField_b_of_type_JavaLangString);
+      localList1 = localList2;
+      if (localList2 == null)
+      {
+        localList1 = Collections.synchronizedList(new LinkedList());
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramTroopEnterEffectData.jdField_b_of_type_JavaLangString, localList1);
+      }
+      if (paramTroopEnterEffectData.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        localList1.add(0, paramTroopEnterEffectData);
+      }
     }
-    if (paramTroopEnterEffectData.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+    else
     {
-      localLinkedList1.addFirst(paramTroopEnterEffectData);
       return;
     }
-    localLinkedList1.add(paramTroopEnterEffectData);
+    localList1.add(paramTroopEnterEffectData);
   }
   
   public void a(String paramString)
@@ -359,7 +370,7 @@ public class TroopEnterEffectManager
   
   public void a(group_effect_commu.TGetMyEffectRsp0x2 paramTGetMyEffectRsp0x2)
   {
-    paramTGetMyEffectRsp0x2 = new ajfv(this, paramTGetMyEffectRsp0x2);
+    paramTGetMyEffectRsp0x2 = new ajkx(this, paramTGetMyEffectRsp0x2);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
       ThreadManager.post(paramTGetMyEffectRsp0x2, 5, null, true);
@@ -408,40 +419,49 @@ public class TroopEnterEffectManager
   
   public boolean a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig$EffectInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null))
+    if (!TextUtils.isEmpty(paramString))
     {
-      TroopEnterEffectConfig.EffectInfoData localEffectInfoData = (TroopEnterEffectConfig.EffectInfoData)this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (localEffectInfoData == null)
+      if ((this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig$EffectInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopEnterEffect", 2, "isEffectOn troopUin = " + paramString + " globalEffectId = " + this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig$EffectInfo.jdField_b_of_type_Int);
+        TroopEnterEffectConfig.EffectInfoData localEffectInfoData = (TroopEnterEffectConfig.EffectInfoData)this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig$EffectInfo.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        if (localEffectInfoData == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopEnterEffect", 2, "isEffectOn troopUin = " + paramString + " globalEffectId = " + this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig$EffectInfo.jdField_b_of_type_Int);
+          }
+          return this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig$EffectInfo.jdField_b_of_type_Int > 0;
         }
-        return this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig$EffectInfo.jdField_b_of_type_Int > 0;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopEnterEffect", 2, "isEffectOn troopUin = " + paramString + " isOn = " + localEffectInfoData.jdField_a_of_type_Boolean);
+        }
+        return localEffectInfoData.jdField_a_of_type_Boolean;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("TroopEnterEffect", 2, "isEffectOn troopUin = " + paramString + " isOn = " + localEffectInfoData.jdField_a_of_type_Boolean);
+        QLog.d("TroopEnterEffect", 2, "isEffectOn troopUin = " + paramString + " effectInfo is Empty");
       }
-      return localEffectInfoData.jdField_a_of_type_Boolean;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopEnterEffect", 2, "isEffectOn troopUin = " + paramString + " effectInfo is Empty");
     }
     return false;
   }
   
   public void b(TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData)
   {
-    LinkedList localLinkedList = (LinkedList)this.jdField_a_of_type_JavaUtilHashMap.get(paramTroopEnterEffectData.jdField_b_of_type_JavaLangString);
-    if (localLinkedList != null) {
-      localLinkedList.remove(paramTroopEnterEffectData);
+    if ((paramTroopEnterEffectData != null) && (!TextUtils.isEmpty(paramTroopEnterEffectData.jdField_b_of_type_JavaLangString)))
+    {
+      List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramTroopEnterEffectData.jdField_b_of_type_JavaLangString);
+      if (localList != null) {
+        localList.remove(paramTroopEnterEffectData);
+      }
     }
   }
   
   public void b(String paramString)
   {
-    paramString = (LinkedList)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString != null) {
-      paramString.clear();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (paramString != null) {
+        paramString.clear();
+      }
     }
   }
   
@@ -466,7 +486,7 @@ public class TroopEnterEffectManager
       QLog.d("TroopEnterEffect", 2, "notifyEnterTroop troopUin: " + paramString);
     }
     if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      ThreadManager.post(new ajft(this, paramString), 8, null, true);
+      ThreadManager.post(new ajkv(this, paramString), 8, null, true);
     }
     do
     {
@@ -491,14 +511,14 @@ public class TroopEnterEffectManager
       QLog.d("TroopEnterEffect", 2, "notifyEnterTroop is Anonymous");
       return;
       long l = 0L;
-      if (this.jdField_c_of_type_JavaUtilHashMap.containsKey(paramString)) {
-        l = ((Long)this.jdField_c_of_type_JavaUtilHashMap.get(paramString)).longValue();
+      if (this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramString)) {
+        l = ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(paramString)).longValue();
       }
       if (l + this.jdField_a_of_type_Long < System.currentTimeMillis())
       {
         l = Long.parseLong(paramString);
         ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(8192L, l);
-        this.jdField_c_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
+        this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
         return;
       }
     } while (!QLog.isColorLevel());
@@ -508,12 +528,12 @@ public class TroopEnterEffectManager
   public void onDestroy()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_b_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager
  * JD-Core Version:    0.7.0.1
  */

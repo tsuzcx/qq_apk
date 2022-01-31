@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.widget.BubblePopupWindow;
 
-public class akjk
-  implements Runnable
+public final class akjk
+  extends TextView
 {
-  public akjk(HealthStepCounterPlugin paramHealthStepCounterPlugin, String paramString) {}
-  
-  public void run()
+  public akjk(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
   {
-    HealthStepCounterPlugin.b(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthStepCounterPlugin, this.jdField_a_of_type_JavaLangString);
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    boolean bool = super.performClick();
+    this.a.a();
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akjk
  * JD-Core Version:    0.7.0.1
  */

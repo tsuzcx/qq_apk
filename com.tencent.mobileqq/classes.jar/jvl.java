@@ -1,23 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.av.utils.TipsManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class jvl
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public jvl(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public jvl(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a("onClickCancel", true, null, -1);
-    this.a.b("onClickCancel");
-    QAVGroupConfig.Report.a(false);
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.c, 2, "RequestVideoTimeoutRunnale-->VideoControl is null");
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentAvVideoController.f();
+    this.a.h(true);
+    if (this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager != null)
+    {
+      TipsManager.c(103);
+      TipsManager.c(106);
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(106);
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(106);
+    }
+    this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(this.a.b, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jvl
  * JD-Core Version:    0.7.0.1
  */

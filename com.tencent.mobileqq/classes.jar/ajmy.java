@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
 
-class ajmy
+public class ajmy
   implements Runnable
 {
-  ajmy(ajmx paramajmx) {}
+  public ajmy(TroopFileUploadMgr paramTroopFileUploadMgr, int paramInt) {}
   
   public void run()
   {
-    if (this.a.a.a == 3) {
-      this.a.a.a = 1;
-    }
-    this.a.a.g();
+    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadMgr.a(this.jdField_a_of_type_Int, null);
   }
 }
 

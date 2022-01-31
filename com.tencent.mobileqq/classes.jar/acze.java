@@ -1,22 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-class acze
-  extends BroadcastReceiver
+public final class acze
+  implements FMDialogUtil.FMDialogInterface
 {
-  acze(aczd paramaczd) {}
+  public acze(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (paramIntent == null) {
-      return;
-    }
-    paramContext = paramIntent.getBundleExtra("param");
-    paramIntent = paramIntent.getStringExtra("url");
-    UniformDownloadMgr.a().a(paramIntent, paramContext);
+    FileManagerUtil.c(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
   }
+  
+  public void b() {}
 }
 
 

@@ -1,26 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.webso.WebSoService;
 
 public class akva
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akva(MusicPendantView paramMusicPendantView, String paramString, Card paramCard) {}
+  public akva(WebViewFragment paramWebViewFragment, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    paramView.getContext().startActivity(localIntent);
-    ReportController.b(MusicPendantManager.a().a(), "dc00899", "NOW", "", "qq_zlk", "logo_click", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, "", "", "");
+    WebSoService.a().a(this.jdField_a_of_type_JavaLangString, null);
   }
 }
 

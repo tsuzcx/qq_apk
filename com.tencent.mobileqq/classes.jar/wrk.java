@@ -1,19 +1,30 @@
-import android.content.Context;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.widget.SimpleTextView;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import com.tencent.widget.SwipTextViewMenuBuilder;
 
 public class wrk
-  implements View.OnTouchListener
+  extends SwipTextViewMenuBuilder
 {
-  public wrk(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wrk(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  {
+    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
+    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
+      paramSwipRightMenuItem.setTag(paramObject);
+    }
+    return paramSwipRightMenuItem;
+  }
+  
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  {
+    this.a.a(paramInt, paramArrayOfSwipRightMenuItem, paramObject);
   }
 }
 

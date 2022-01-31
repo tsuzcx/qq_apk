@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView.LoadingCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
-class aenx
-  implements WereWolvesLoadingView.LoadingCallback
+public class aenx
+  implements DialogInterface.OnDismissListener
 {
-  aenx(aenw paramaenw) {}
+  public aenx(MedalGuideView paramMedalGuideView) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.a(true);
+    MedalGuideView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenx
  * JD-Core Version:    0.7.0.1
  */

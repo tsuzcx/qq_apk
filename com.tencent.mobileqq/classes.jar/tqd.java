@@ -1,52 +1,14 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-public class tqd
-  extends ContactBindObserver
+class tqd
+  implements Runnable
 {
-  public tqd(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  tqd(tqc paramtqc, RichStatus paramRichStatus) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
-    }
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        RegisterQQNumberActivity.a(this.a, true);
-        RegisterQQNumberActivity.b(this.a);
-        return;
-      }
-      if ((paramBoolean3) && (!TextUtils.isEmpty(paramString)))
-      {
-        RegisterQQNumberActivity.a(this.a);
-        Intent localIntent = new Intent(this.a, VerifyPhoneNumActivity.class);
-        localIntent.putExtra("phonenum", this.a.a);
-        localIntent.putExtra("key", this.a.b);
-        localIntent.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-        localIntent.putExtra("key_register_sign", RegisterQQNumberActivity.a(this.a));
-        localIntent.putExtra("key_register_binduin", paramString);
-        this.a.startActivity(localIntent);
-        this.a.finish();
-        return;
-      }
-      RegisterQQNumberActivity.b(this.a);
-      return;
-    }
-    RegisterQQNumberActivity.b(this.a);
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterQQNumberActivity", 2, "onUploadContact  isSuccess = " + paramBoolean);
-    }
+    this.jdField_a_of_type_Tqc.a.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
   }
 }
 

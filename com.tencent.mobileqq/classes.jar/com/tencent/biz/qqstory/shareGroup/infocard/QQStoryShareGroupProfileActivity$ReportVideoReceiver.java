@@ -19,10 +19,10 @@ public class QQStoryShareGroupProfileActivity$ReportVideoReceiver
   
   public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull ReportEvilHandler.ReportEvent paramReportEvent)
   {
-    if (paramReportEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramReportEvent.errorInfo.isSuccess())
     {
       QQToast.a(PlayModeUtils.a(), 2, "举报成功，客服人员会尽快处理", 0).a();
-      StoryReportor.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramReportEvent.jdField_a_of_type_Int), "5" });
+      StoryReportor.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramReportEvent.a), "5" });
       return;
     }
     QQToast.a(PlayModeUtils.a(), 1, "举报失败，请稍后重试", 0).a();

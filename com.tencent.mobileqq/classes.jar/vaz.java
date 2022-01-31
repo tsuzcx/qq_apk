@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.device.msg.data.DevSingleStructMsgProcessor;
+import com.tencent.device.msg.data.DeviceMsgHandle;
+import com.tencent.mobileqq.activity.aio.item.DeviceSingleStructBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class vaz
-  implements DialogInterface.OnClickListener
+class vaz
+  implements FMDialogUtil.FMDialogInterface
 {
-  public vaz(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
+  vaz(vay paramvay, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    ((DeviceMsgHandle)this.jdField_a_of_type_Vay.a.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    DeviceSingleStructBuilder.a(this.jdField_a_of_type_Vay.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+  }
+  
+  public void b() {}
 }
 
 

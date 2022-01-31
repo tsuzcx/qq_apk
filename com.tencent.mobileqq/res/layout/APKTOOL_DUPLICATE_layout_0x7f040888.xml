@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2744" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2745" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <TextView android:textSize="18.0dip" android:textColor="@android:color/white" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2746" android:clickable="true" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="5.0dip" android:text="返回" />
-    <com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2747" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginBottom="69.0dip" android:layout_alignParentBottom="true" />
-    <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2748" android:layout_width="300.0dip" android:layout_height="35.0dip" android:layout_marginLeft="12.0dip" android:layout_marginBottom="24.0dip" android:text="已截取10秒" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-    <Button android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2749" android:background="@drawable/common_btn_blue" android:layout_width="65.0dip" android:layout_height="35.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="24.0dip" android:text="下一步" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="下一步" />
-</RelativeLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0978" android:layout_width="102.0dip" android:layout_height="163.0dip" android:layout_marginRight="6.0dip" />
+</FrameLayout>

@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.data.ApolloFavActionData;
+import java.util.Comparator;
 
 public class zcm
-  implements Runnable
+  implements Comparator
 {
-  public zcm(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public zcm(ApolloDaoManager paramApolloDaoManager) {}
   
-  public void run()
+  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
+    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
+      return 0;
+    }
+    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zcm
  * JD-Core Version:    0.7.0.1
  */

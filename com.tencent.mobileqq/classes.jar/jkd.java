@@ -1,55 +1,20 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.av.utils.NearbyPeopleProfileHelper.INearbyPeopleProfileCallBack;
-import com.tencent.av.utils.NearbyPeopleProfileHelper.NearbyProfileData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import java.util.Vector;
 
 public class jkd
-  implements NearbyPeopleProfileHelper.INearbyPeopleProfileCallBack
 {
-  public jkd(RandomController paramRandomController) {}
+  public long a;
+  public Vector a;
   
-  public void a(String paramString, NearbyPeopleProfileHelper.NearbyProfileData paramNearbyProfileData)
+  public jkd(AVNotifyCenter paramAVNotifyCenter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RandomController", 2, "onGetNearbyPeopleProfile uin :" + paramString + ", nickname:" + paramNearbyProfileData.b + ", gender:" + paramNearbyProfileData.a);
-    }
-    if (paramString.equals(RandomController.a(this.a).getAccount()))
-    {
-      if (paramNearbyProfileData.a != -1) {
-        RandomController.a(this.a).a(paramNearbyProfileData.a);
-      }
-      if (RandomController.a(this.a).a())
-      {
-        if (!RandomController.a(this.a)) {
-          break label209;
-        }
-        RandomController.b(this.a, false);
-        RandomController.a(this.a).set(0);
-        RandomController.a(this.a).a(RandomController.b(this.a), RandomController.c(this.a), 1, new String[0]);
-        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
-      }
-    }
-    for (;;)
-    {
-      RandomController.a(this.a).a().post(new jke(this));
-      return;
-      label209:
-      if (RandomController.b(this.a))
-      {
-        RandomController.c(this.a, false);
-        RandomController.a(this.a).a(this.a.b, RandomController.b(this.a));
-        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
-      }
-    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilVector = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     jkd
  * JD-Core Version:    0.7.0.1
  */

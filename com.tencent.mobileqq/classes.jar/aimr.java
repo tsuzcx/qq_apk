@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.teamwork.TeamWorkAuthorizeUinListAdapter;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.app.Activity;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class aimr
-  extends FriendListObserver
+class aimr
+  implements PopupWindow.OnDismissListener
 {
-  public aimr(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  aimr(aimq paramaimq) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onDismiss()
   {
-    this.a.a.a(paramString);
+    WindowManager.LayoutParams localLayoutParams = ((Activity)this.a.a).getWindow().getAttributes();
+    localLayoutParams.alpha = 1.0F;
+    ((Activity)this.a.a).getWindow().setAttributes(localLayoutParams);
   }
 }
 

@@ -1,18 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailBaseInfoModel;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qphone.base.util.QLog;
 
-public class ksl
-  implements View.OnClickListener
+class ksl
+  implements Runnable
 {
-  public ksl(AccountDetailActivity paramAccountDetailActivity, Dialog paramDialog) {}
+  ksl(ksk paramksk, AccountDetail paramAccountDetail) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailInSubThread");
     }
+    AccountDetailBaseInfoModel.a(this.jdField_a_of_type_Ksk.a, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
   }
 }
 

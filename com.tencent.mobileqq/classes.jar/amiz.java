@@ -1,56 +1,42 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
+import com.tencent.mobileqq.apollo.script.SpriteContext;
+import com.tencent.mobileqq.apollo.script.SpriteUtil;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardPluginInstallActivity;
-import cooperation.plugin.IPluginManager;
+import com.tencent.widget.FitSystemWindowsRelativeLayout;
 
 public class amiz
-  implements OnPluginInstallListener
+  extends AnimatorListenerAdapter
 {
-  public amiz(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
+  public amiz(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
   
-  public IBinder asBinder()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("BuscardPluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
-    }
-    QQToast.a(this.a.getApplicationContext(), 2131438295, 0);
-    BuscardPluginInstallActivity.a(this.a, false);
-    this.a.finish();
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    BuscardPluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("BuscardPluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
-    }
-    boolean bool = BuscardPluginInstallActivity.a(this.a).isPlugininstalled("BuscardPlugin.apk");
-    BuscardPluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
-    if (bool)
+    int i = 1;
+    super.onAnimationEnd(paramAnimator);
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      BuscardPluginInstallActivity.a(this.a);
-      return;
+      if (SpriteUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c == 1) {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        SpriteCommFunc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "vas_poke", false);
+        if (QLog.isColorLevel()) {
+          QLog.i("placeholder.sprite", 2, "show sprite (normal) in fullscreen.");
+        }
+      }
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+      this.a.removeView(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
     }
-    QQToast.a(this.a.getApplicationContext(), 2131438295, 0);
-    BuscardPluginInstallActivity.a(this.a, false);
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amiz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,19 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import dov.com.qq.im.capture.poi.FacePoiManager;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class aocz
-  implements AbsListView.OnScrollListener
+  extends SimpleJob
 {
-  int jdField_a_of_type_Int = 0;
+  public aocz(EditVideoPartManager paramEditVideoPartManager, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString) {}
   
-  public aocz(PoiListLayout paramPoiListLayout) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if ((paramInt == 0) && (PoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout).a() != null) && (this.jdField_a_of_type_Int == PoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout).a().size() - 1)) {
-      PoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout).a();
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    StoryReportor.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

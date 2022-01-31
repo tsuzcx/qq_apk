@@ -1,18 +1,49 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FoldMsgGrayTipsItemBuilder;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
+import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
+import com.tencent.qphone.base.util.QLog;
 
 public class uxr
-  extends AbstractChatItemBuilder.ViewHolder
+  implements Runnable
 {
-  public ImageView a;
-  public LinearLayout a;
-  public ImageView b;
-  public TextView b;
+  private uxs jdField_a_of_type_Uxs;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public uxr(FoldMsgGrayTipsItemBuilder paramFoldMsgGrayTipsItemBuilder) {}
+  public uxr(LoadDataJob paramLoadDataJob, byte[] paramArrayOfByte, uxs paramuxs)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Uxs = paramuxs;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_Uxs == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_ArrayOfByte == null)
+    {
+      this.jdField_a_of_type_Uxs.a(null);
+      return;
+    }
+    try
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a(this.jdField_a_of_type_ArrayOfByte);
+      if (localObject != null)
+      {
+        localObject = (PathDrawer)PathDrawer.a.a((MyParcel)localObject);
+        this.jdField_a_of_type_Uxs.a((PathDrawer)localObject);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UnmarshallJob", 2, "unmarshall  exception:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a);
+      }
+      this.jdField_a_of_type_Uxs.a(null);
+    }
+  }
 }
 
 

@@ -1,24 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
-import com.tencent.biz.pubaccount.readinjoy.view.RainView.AnimationEndListener;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import java.lang.ref.WeakReference;
 
 public class lbb
-  implements RainView.AnimationEndListener
+  implements Runnable
 {
-  private WeakReference a;
+  public lbb(PublicAccountManager paramPublicAccountManager) {}
   
-  public lbb(ReadInJoyRainAnimationController paramReadInJoyRainAnimationController)
+  public void run()
   {
-    this.a = new WeakReference(paramReadInJoyRainAnimationController);
-  }
-  
-  public void a()
-  {
-    ReadInJoyRainAnimationController localReadInJoyRainAnimationController = (ReadInJoyRainAnimationController)this.a.get();
-    if ((localReadInJoyRainAnimationController == null) || (!localReadInJoyRainAnimationController.b())) {
-      return;
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.get();
+    String str = this.a.jdField_b_of_type_JavaLangString;
+    boolean bool = this.a.jdField_b_of_type_Boolean;
+    if ((this.a.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (localQQAppInterface != null)) {
+      SosoInterface.a(new lbc(this, 1, true, true, 0L, true, false, "PublicAccountManager", str, bool));
     }
-    ReadInJoyRainAnimationController.a(localReadInJoyRainAnimationController).sendEmptyMessage(1);
   }
 }
 

@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.ui.WebViewTitlerBar;
+import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
 
 public class akqz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akqz(WebViewTitlerBar paramWebViewTitlerBar) {}
+  public akqz(HealthStepCounterPlugin paramHealthStepCounterPlugin, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
-    }
+    HealthStepCounterPlugin.b(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthStepCounterPlugin, this.jdField_a_of_type_JavaLangString);
   }
 }
 

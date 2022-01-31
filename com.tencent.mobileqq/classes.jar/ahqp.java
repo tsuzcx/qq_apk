@@ -1,18 +1,72 @@
-import com.tencent.mobileqq.search.ContentRecommendModel;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
 
-class ahqp
-  implements Runnable
+public class ahqp
+  implements ViewPager.OnPageChangeListener
 {
-  ahqp(ahqo paramahqo) {}
+  public int a;
   
-  public void run()
+  public ahqp(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.b(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelContentRecommendDataModel);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (this.jdField_a_of_type_Int == paramInt) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n " + paramInt);
+      }
+    }
+    Object localObject;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "onPageSelected l " + this.jdField_a_of_type_Int + ",n" + paramInt);
+      }
+      FlowCameraMqqAction.a("", "0X8007804", "", "", "", "");
+      this.jdField_a_of_type_Int = paramInt;
+      View localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt);
+      if (localView != null)
+      {
+        localObject = (Runnable)localView.getTag();
+        if (localObject != null)
+        {
+          localView.removeCallbacks((Runnable)localObject);
+          localView.setTag(null);
+        }
+        CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, localView, paramInt, false);
+      }
+      localView = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt - 1);
+      localObject = CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager).a(paramInt + 1);
+      if (localView != null)
+      {
+        localView.removeCallbacks((Runnable)localView.getTag());
+        localView.clearAnimation();
+      }
+    } while (localObject == null);
+    ((View)localObject).removeCallbacks((Runnable)((View)localObject).getTag());
+    ((View)localObject).clearAnimation();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahqp
  * JD-Core Version:    0.7.0.1
  */

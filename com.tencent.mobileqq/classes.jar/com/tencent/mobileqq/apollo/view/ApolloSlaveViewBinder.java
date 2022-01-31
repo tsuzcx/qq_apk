@@ -23,7 +23,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
 import java.util.ArrayList;
 import java.util.List;
-import yzk;
+import zgk;
 
 public class ApolloSlaveViewBinder
   extends ApolloViewBinder
@@ -85,7 +85,7 @@ public class ApolloSlaveViewBinder
           if (i1 < this.jdField_a_of_type_JavaUtilList.size())
           {
             ApolloActionData localApolloActionData = ((ApolloInfo)this.jdField_a_of_type_JavaUtilList.get(i1)).a;
-            localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838141);
+            localViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838143);
             localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
             localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((ApolloInfo)this.jdField_a_of_type_JavaUtilList.get(i1)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density));
             localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localApolloActionData.actionName);
@@ -119,7 +119,7 @@ public class ApolloSlaveViewBinder
                 f = 2.0F;
                 label444:
                 ((RelativeLayout.LayoutParams)localObject1).topMargin = AIOUtils.a(f, this.jdField_a_of_type_AndroidContentContext.getResources());
-                localViewHolder.e.setBackgroundResource(2130838010);
+                localViewHolder.e.setBackgroundResource(2130838009);
                 if (localViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo.d != 1) {
                   break label1083;
                 }
@@ -162,20 +162,20 @@ public class ApolloSlaveViewBinder
                   localViewHolder.jdField_a_of_type_AndroidViewView = null;
                 }
                 Object localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-                ((RelativeLayout.LayoutParams)localObject2).addRule(5, 2131363232);
-                ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131363232);
-                ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131363232);
-                ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131363232);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(5, 2131363237);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131363237);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131363237);
+                ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131363237);
                 RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-                localRelativeLayout.setId(2131362379);
+                localRelativeLayout.setId(2131362382);
                 localRelativeLayout.setBackgroundDrawable(null);
                 ((RelativeLayout)localObject1).addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject2);
                 localViewHolder.jdField_a_of_type_AndroidViewView = localRelativeLayout;
                 localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-                ((ImageView)localObject2).setImageResource(2130838139);
+                ((ImageView)localObject2).setImageResource(2130838141);
                 ((ImageView)localObject2).setVisibility(8);
                 localRelativeLayout.addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
-                ((ImageView)localObject2).postDelayed(new yzk(this, (ImageView)localObject2, localRelativeLayout, (RelativeLayout)localObject1, localViewHolder), 200L);
+                ((ImageView)localObject2).postDelayed(new zgk(this, (ImageView)localObject2, localRelativeLayout, (RelativeLayout)localObject1, localViewHolder), 200L);
                 this.f = -1;
                 label980:
                 localView.setContentDescription(localApolloActionData.actionName);
@@ -221,7 +221,7 @@ public class ApolloSlaveViewBinder
             {
               ((TextView)localObject1).setTextSize(f);
               localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
-              localViewHolder.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838011);
+              localViewHolder.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838010);
               break;
               localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setTextSize(10.0F);
               if (h == 0) {

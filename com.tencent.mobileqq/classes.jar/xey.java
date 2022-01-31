@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager.PayItem;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
 
 public class xey
   implements Runnable
 {
-  public xey(GoldMsgPayManager paramGoldMsgPayManager, GoldMsgPayManager.PayItem paramPayItem) {}
+  public xey(GoldMsgSettingActivity paramGoldMsgSettingActivity, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager$PayItem.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager$PayItem.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    GoldMsgSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

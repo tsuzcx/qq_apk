@@ -187,7 +187,7 @@ public class SpriteScriptManager
   
   public void a(String paramString, int paramInt)
   {
-    QLog.i("cmshow_scripted_SpriteScriptManager", 1, "[onSurfaceReady], aioType:" + paramInt + ",friendUin:" + paramString + ",threadId:" + Thread.currentThread().getId());
+    QLog.i("cmshow_scripted_SpriteScriptManager", 1, "[onSurfaceReady], aioType:" + paramInt + ",friendUin:" + ApolloUtil.d(paramString) + ",threadId:" + Thread.currentThread().getId());
     if ((this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptCreator == null)) {
       return;
     }

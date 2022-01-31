@@ -1,76 +1,36 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
 public class tad
-  extends FriendListObserver
+  implements TextWatcher
 {
-  public tad(LoginInfoActivity paramLoginInfoActivity) {}
+  public tad(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  protected void onGetLoginDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  public void afterTextChanged(Editable paramEditable)
   {
-    LoginInfoActivity.a(this.a);
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult success");
-      }
-      LoginInfoActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = LoginInfoActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
-        {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("LoginInfoActivity.AccDevSec", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
-          }
-        }
-        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
-      }
-      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-      return;
+    paramEditable = paramEditable.toString();
+    int i = 0;
+    if (!TextUtils.isEmpty(paramEditable)) {
+      i = paramEditable.getBytes().length / 3;
     }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult fail isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label288;
-      }
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data is null");
+    if (i <= 40) {
+      this.a.a.setTextColor(this.a.getResources().getColor(2131494270));
     }
     for (;;)
     {
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131436584), 0).b(this.a.getTitleBarHeight());
+      this.a.a.setText("" + (40 - i));
       return;
-      label288:
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+      this.a.a.setTextColor(-65536);
     }
   }
   
-  protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginInfoActivity.AccDevSec", 2, "onKickOutDevFResult isSuccess=" + paramBoolean + " appid=" + paramLong + " result=" + paramInt1 + " index=" + paramInt2);
-    }
-    LoginInfoActivity.a(this.a);
-    if (paramBoolean)
-    {
-      if ((paramInt1 == 0) && (paramInt2 >= 1) && (paramInt2 < LoginInfoActivity.a(this.a).size()))
-      {
-        LoginInfoActivity.a(this.a).remove(paramInt2);
-        LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
-      }
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131436509), 0).b(this.a.getTitleBarHeight());
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

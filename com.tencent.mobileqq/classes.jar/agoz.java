@@ -1,16 +1,73 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.pic.BasePicOprerator;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.PicResult;
+import com.tencent.mobileqq.pic.UiCallBack;
+import java.util.ArrayList;
 
-class agoz
-  implements Runnable
+public class agoz
+  extends Handler
 {
-  agoz(agou paramagou, long paramLong) {}
-  
-  public void run()
+  public agoz(BasePicOprerator paramBasePicOprerator, Looper paramLooper)
   {
-    String str = ShareHelper.a(this.jdField_a_of_type_Agou.a);
-    ThreadManager.getUIHandler().post(new agpa(this, str));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Logger.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        i = paramMessage.arg1;
+        paramMessage = (PicResult)paramMessage.obj;
+        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(i, paramMessage);
+        return;
+      case 1: 
+        paramMessage = (PicResult)paramMessage.obj;
+      }
+    } while (!(paramMessage.a instanceof Integer));
+    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(((Integer)paramMessage.a).intValue(), paramMessage.c);
+    return;
+    int i = paramMessage.arg1;
+    paramMessage = (PicResult)paramMessage.obj;
+    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.d(i, paramMessage);
+    return;
+    i = paramMessage.arg1;
+    paramMessage = (PicResult)paramMessage.obj;
+    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.b(i, paramMessage);
+    return;
+    i = paramMessage.arg1;
+    paramMessage = (PicResult)paramMessage.obj;
+    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.c(i, paramMessage);
+    return;
+    if (paramMessage.obj != null) {}
+    for (;;)
+    {
+      try
+      {
+        ArrayList localArrayList = (ArrayList)paramMessage.obj;
+        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(paramMessage.arg1, localArrayList);
+        return;
+      }
+      catch (ClassCastException localClassCastException)
+      {
+        localObject = null;
+        continue;
+      }
+      paramMessage = (PicResult)paramMessage.obj;
+      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(((Integer)paramMessage.a).intValue());
+      return;
+      Object localObject = null;
+    }
   }
 }
 

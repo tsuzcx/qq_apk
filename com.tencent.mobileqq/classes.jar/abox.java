@@ -1,19 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.businessCard.views.BusinessCardViewScroller;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
 
 public class abox
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public abox(BusinessCardViewScroller paramBusinessCardViewScroller, Runnable paramRunnable) {}
+  public abox(ARMapLoadingActivity paramARMapLoadingActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if (ARMapLoadingActivity.a(this.a) >= 0L)
+    {
+      ARMapLoadingActivity.a(this.a).sendEmptyMessage(101);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a.removeAllListeners();
+    Message localMessage = ARMapLoadingActivity.a(this.a).obtainMessage(104);
+    localMessage.arg1 = 1;
+    ARMapLoadingActivity.a(this.a).sendMessage(localMessage);
   }
 }
 

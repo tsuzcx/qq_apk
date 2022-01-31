@@ -1,20 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Handler;
+import android.os.Message;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener.Stub;
 
 public class amzj
-  extends BroadcastReceiver
+  extends OnQZoneLiveSoDownloadListener.Stub
 {
-  public amzj(QZoneShareActivity paramQZoneShareActivity) {}
+  public amzj(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if ("com.tencent.qq.shareupdate".equals(paramIntent.getAction())) {
-      ThreadManager.postImmediately(new amzk(this), null, true);
-    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 1000;
+    localMessage.arg1 = 1;
+    this.a.a.sendMessage(localMessage);
+    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
+    this.a.a.sendEmptyMessageDelayed(1009, i);
   }
+  
+  public void a(float paramFloat)
+  {
+    this.a.runOnUiThread(new amzk(this, paramFloat));
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a.obtainMessage(1008).sendToTarget();
+  }
+  
+  public void b()
+  {
+    this.a.runOnUiThread(new amzl(this));
+  }
+  
+  public void c() {}
 }
 
 

@@ -1,20 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class own
-  implements TroopTopicMgr.DoLikeCallback
+public class own
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  own(owi paramowi, int paramInt1, int paramInt2) {}
+  public own(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void a(int paramInt, JSONObject paramJSONObject)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramJSONObject = new Bundle();
-    paramJSONObject.putInt("reqType", this.jdField_a_of_type_Int);
-    paramJSONObject.putInt("seq", this.b);
-    paramJSONObject.putInt("errorCode", paramInt);
-    this.jdField_a_of_type_Owi.a.a(60, paramJSONObject);
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

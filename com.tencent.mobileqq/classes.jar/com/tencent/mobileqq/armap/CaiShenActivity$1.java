@@ -39,7 +39,7 @@ class CaiShenActivity$1
       }
       if ((!this.this$0.isFinishing()) && ((CaiShenActivity.access$200(this.this$0) == 6) || (CaiShenActivity.access$200(this.this$0) == 7)))
       {
-        DialogUtil.a(this.this$0, 230, this.this$0.getResources().getString(2131438751), this.this$0.getResources().getString(2131438752), this.this$0.getResources().getString(2131438750), "", null, new CaiShenActivity.1.1(this)).show();
+        DialogUtil.a(this.this$0, 230, this.this$0.getResources().getString(2131438774), this.this$0.getResources().getString(2131438775), this.this$0.getResources().getString(2131438773), "", null, new CaiShenActivity.1.1(this)).show();
         continue;
         this.this$0.finish();
         ReportController.b(null, "dc01440", "", "", "0X8007A38", "0X8007A38", 0, 0, "", "", "", "");

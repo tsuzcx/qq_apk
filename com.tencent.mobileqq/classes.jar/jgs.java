@@ -1,18 +1,28 @@
-import com.tencent.av.camera.CameraObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.GCameraAvailabilityMonitor;
+import com.tencent.qphone.base.util.QLog;
 
 public class jgs
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public jgs(CameraObserver paramCameraObserver, Object paramObject) {}
+  public jgs(GCameraAvailabilityMonitor paramGCameraAvailabilityMonitor) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    CameraObserver.a(this.jdField_a_of_type_ComTencentAvCameraCameraObserver, this.jdField_a_of_type_JavaLangObject);
+    if ((this.a.a() != null) && (paramIntent != null))
+    {
+      this.a.a(paramIntent.getStringExtra("camera_id"), paramIntent.getIntExtra("availability", 1));
+      if (QLog.isColorLevel()) {
+        QLog.d("GCameraAvailabilityMonitor", 2, "update camera availability status cameraId:" + paramIntent.getStringExtra("camera_id") + ", value:" + paramIntent.getIntExtra("availability", 1));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jgs
  * JD-Core Version:    0.7.0.1
  */

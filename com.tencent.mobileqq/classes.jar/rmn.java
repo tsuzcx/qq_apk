@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class rmn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rmn(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public rmn(AddAccountActivity paramAddAccountActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.springBackOverScrollHeaderView();
+    if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.isShown())) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
+    libsafeedit.clearPassBuffer();
   }
 }
 

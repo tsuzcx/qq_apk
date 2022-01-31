@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
-public final class ulp
-  implements Parcelable.Creator
+public class ulp
+  extends Handler
 {
-  public ForwardUtils.Section_Text a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Text(paramParcel);
-  }
-  
-  public ForwardUtils.Section_Text[] a(int paramInt)
-  {
-    return new ForwardUtils.Section_Text[paramInt];
-  }
+  public ulp(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
 }
 
 

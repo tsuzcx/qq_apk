@@ -1,21 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.widget.TextView;
 
 public class ajgx
-  implements DialogInterface.OnClickListener
 {
-  public ajgx(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    PublishHomeWorkFragment.d(this.a);
-  }
+  public TextView a;
 }
 
 

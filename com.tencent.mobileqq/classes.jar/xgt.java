@@ -1,22 +1,23 @@
-import Wallet.GetSkinListRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.OvershootInterpolator;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
 
-class xgt
+public class xgt
   implements Runnable
 {
-  xgt(xgs paramxgs, GetSkinListRsp paramGetSkinListRsp) {}
+  public xgt(RedPacketRecordFragment paramRedPacketRecordFragment) {}
   
   public void run()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("rsp", this.jdField_a_of_type_WalletGetSkinListRsp);
-    localBundle.putBoolean("isCache", true);
-    if (RedPacketManager.a(this.jdField_a_of_type_Xgs.a) == null) {
-      return;
-    }
-    RedPacketManager.a(this.jdField_a_of_type_Xgs.a).onReceive(14, true, localBundle);
+    this.a.a.setAlpha(0.3F);
+    this.a.a.animate().alpha(1.0F).setDuration(200L);
+    this.a.b.setAlpha(0.3F);
+    this.a.b.setPivotX(this.a.b.getWidth() / 2);
+    this.a.b.setPivotY(this.a.b.getHeight() / 2);
+    this.a.b.setScaleX(0.5F);
+    this.a.b.setScaleY(0.5F);
+    this.a.b.animate().alpha(1.0F).scaleX(1.0F).scaleY(1.0F).setDuration(300L).setInterpolator(new OvershootInterpolator(1.6F));
   }
 }
 

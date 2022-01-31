@@ -1,26 +1,34 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.os.Build.VERSION;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnVideoSizeChangedListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class npa
-  implements IMediaPlayer.OnVideoSizeChangedListener
+  implements Runnable
 {
-  public npa(TextureVideoView paramTextureVideoView) {}
+  public npa(NewFriendsPlayMode paramNewFriendsPlayMode, StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2, VideoListFeedItem paramVideoListFeedItem, boolean paramBoolean) {}
   
-  @TargetApi(15)
-  public void a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.a.d = paramIMediaPlayer.c();
-    this.a.e = paramIMediaPlayer.d();
-    if ((this.a.d != 0) && (this.a.e != 0))
+    PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.b.mStoryType, String.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.hashCode()));
+    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a();
+    String str2 = PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.b);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem == null)
     {
-      if (Build.VERSION.SDK_INT >= 15) {
-        this.a.getSurfaceTexture().setDefaultBufferSize(this.a.d, this.a.e);
+      str1 = "";
+      StoryReportor.a("story_grp", "clk_one", i, 0, new String[] { "3", str2, "", str1 });
+      if (!this.jdField_a_of_type_Boolean) {
+        break label130;
       }
-      this.a.requestLayout();
+    }
+    label130:
+    for (String str1 = "2";; str1 = "1")
+    {
+      StoryReportor.a("play_video", "clk_download", 0, 0, new String[] { str1 });
+      return;
+      str1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId;
+      break;
     }
   }
 }

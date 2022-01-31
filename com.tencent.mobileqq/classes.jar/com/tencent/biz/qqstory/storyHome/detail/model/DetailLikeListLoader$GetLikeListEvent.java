@@ -18,7 +18,7 @@ public class DetailLikeListLoader$GetLikeListEvent
   
   public DetailLikeListLoader$GetLikeListEvent(ErrorMessage paramErrorMessage, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.errorInfo = paramErrorMessage;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   

@@ -1,43 +1,19 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
-import android.support.v4.app.FragmentActivity;
+import android.graphics.drawable.Drawable;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.text.TextUtils.LoadSysEmojiCallback;
 import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
 
-public class aisy
+public final class aisy
   implements Runnable
 {
-  public aisy(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
+  public aisy(int paramInt, TextUtils.LoadSysEmojiCallback paramLoadSysEmojiCallback) {}
   
   public void run()
   {
-    try
-    {
-      Object localObject1 = new File(this.jdField_a_of_type_JavaLangString);
-      Object localObject2 = Environment.getExternalStorageDirectory() + "/tencent/QQfile_recv/" + ((File)localObject1).getName();
-      localObject1 = localObject2;
-      if (((String)localObject2).endsWith("mp4.tmp.mp4")) {
-        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 11) + "_" + System.currentTimeMillis() + ".mp4";
-      }
-      FileUtils.d(this.jdField_a_of_type_JavaLangString, (String)localObject1);
-      localObject2 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      ((Intent)localObject2).setData(Uri.parse("file://" + (String)localObject1));
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject2);
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aisz(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aita(this));
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aitb(this));
+    Drawable localDrawable = TextUtils.b(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
+    if ((localDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback.a(localDrawable);
     }
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acec;
-import aced;
-import acee;
+import acmd;
+import acme;
+import acmf;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -35,7 +35,7 @@ public class EmoticonLinearLayout
   private static Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   float jdField_a_of_type_Float;
   public int a;
-  private acee jdField_a_of_type_Acee;
+  private acmf jdField_a_of_type_Acmf;
   public Context a;
   public View a;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
@@ -43,7 +43,7 @@ public class EmoticonLinearLayout
   private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
   public EmoticonCallback a;
   private EmoticonInfo jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo;
-  EmoticonLinearLayout.DataObserver jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$DataObserver = new acec(this);
+  EmoticonLinearLayout.DataObserver jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$DataObserver = new acmd(this);
   public EmoticonLinearLayout.EmoticonAdapter a;
   public Runnable a;
   public List a;
@@ -57,7 +57,7 @@ public class EmoticonLinearLayout
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 6;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangRunnable = new aced(this);
+    this.jdField_a_of_type_JavaLangRunnable = new acme(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_b_of_type_Int = super.getResources().getColor(2131493137);
     setOrientation(1);
@@ -162,7 +162,7 @@ public class EmoticonLinearLayout
     {
       j = (int)(64.0F * f);
       i = (int)(71.0F * f);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837578);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837577);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(k, k, k, k);
       paramView.width = ((int)(28.0F * f));
       paramView.height = ((int)(28.0F * f));
@@ -210,7 +210,7 @@ public class EmoticonLinearLayout
       return;
       j = (int)(110.0F * f);
       i = (int)(110.0F * f);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837577);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837576);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(k, k, k, k);
       paramView.bottomMargin = 0;
       paramView.width = ((int)(100.0F * f));
@@ -242,8 +242,8 @@ public class EmoticonLinearLayout
     for (;;)
     {
       return true;
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Acee != null)) {
-        removeCallbacks(this.jdField_a_of_type_Acee);
+      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Acmf != null)) {
+        removeCallbacks(this.jdField_a_of_type_Acmf);
       }
       if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.jdField_a_of_type_Boolean)) {
         a(this.jdField_a_of_type_AndroidViewView);
@@ -256,19 +256,19 @@ public class EmoticonLinearLayout
       this.jdField_a_of_type_AndroidViewView = a(paramMotionEvent.getX(), paramMotionEvent.getY());
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        if (this.jdField_a_of_type_Acee == null) {
-          this.jdField_a_of_type_Acee = new acee(this);
+        if (this.jdField_a_of_type_Acmf == null) {
+          this.jdField_a_of_type_Acmf = new acmf(this);
         }
-        this.jdField_a_of_type_Acee.a();
-        postDelayed(this.jdField_a_of_type_Acee, ViewConfiguration.getLongPressTimeout());
+        this.jdField_a_of_type_Acmf.a();
+        postDelayed(this.jdField_a_of_type_Acmf, ViewConfiguration.getLongPressTimeout());
         paramMotionEvent = (EmoticonInfo)this.jdField_a_of_type_AndroidViewView.getTag();
         if ((paramMotionEvent != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback != null) && ("delete".equals(paramMotionEvent.a)))
         {
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.b();
           continue;
           setPressed(false);
-          if (this.jdField_a_of_type_Acee != null) {
-            removeCallbacks(this.jdField_a_of_type_Acee);
+          if (this.jdField_a_of_type_Acmf != null) {
+            removeCallbacks(this.jdField_a_of_type_Acmf);
           }
           removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
           a();

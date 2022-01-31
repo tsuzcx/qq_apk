@@ -1,27 +1,31 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EmosmActivity;
+import android.os.Message;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import java.lang.ref.WeakReference;
 
-public class smk
-  implements View.OnClickListener
+class smk
+  implements Runnable
 {
-  public smk(EmosmActivity paramEmosmActivity) {}
+  smk(smi paramsmi, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    while (!EmosmUtils.a(this.a)) {
+    if (this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager != null)
+    {
+      this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a();
+      if (this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Long) == 2)
+      {
+        Message localMessage = new Message();
+        localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(32, localMessage);
+      }
+    }
+    else
+    {
       return;
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    EmojiHomeUiPlugin.openEmojiHomePage((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.app.getAccount(), 2);
-    ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "ForwardEmojiHome", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
   }
 }
 

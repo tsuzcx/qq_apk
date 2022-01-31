@@ -1,6 +1,6 @@
 package com.tencent.qqconnect.wtlogin;
 
-import alwk;
+import amdt;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -101,7 +101,7 @@ public class OpenSDKAppInterface
     String str = MD5.toMD5(paramString);
     str = MD5.toMD5(str + paramString);
     paramString = MD5.toMD5(str + paramString);
-    return AppConstants.bm + paramString + ".png";
+    return AppConstants.bn + paramString + ".png";
   }
   
   public void a(Context paramContext, String paramString)
@@ -110,7 +110,7 @@ public class OpenSDKAppInterface
     {
       paramContext = new AlertDialog.Builder(paramContext);
       paramContext.setMessage(paramString);
-      paramContext.setNegativeButton("确定", new alwk(this));
+      paramContext.setNegativeButton("确定", new amdt(this));
       paramContext.show();
     }
   }
@@ -121,7 +121,7 @@ public class OpenSDKAppInterface
       return;
     }
     this.a.getSharedPreferences("ssoappicon", 0).edit().putLong(paramString, System.currentTimeMillis() / 1000L).commit();
-    File localFile = new File(AppConstants.aJ + "appicon/");
+    File localFile = new File(AppConstants.aK + "appicon/");
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
@@ -153,7 +153,7 @@ public class OpenSDKAppInterface
     String str = MD5.toMD5(paramString);
     str = MD5.toMD5(str + paramString);
     paramString = MD5.toMD5(str + paramString);
-    return AppConstants.bD + paramString + ".png";
+    return AppConstants.bE + paramString + ".png";
   }
   
   public BaseApplication getApp()

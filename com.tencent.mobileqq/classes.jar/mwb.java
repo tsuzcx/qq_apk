@@ -1,19 +1,13 @@
-import android.net.Uri;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
-public final class mwb
+public class mwb
   implements Runnable
 {
-  public mwb(Uri paramUri, String paramString) {}
+  public mwb(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
   public void run()
   {
-    try
-    {
-      ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A68", "0X8006A68", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_JavaLangString, "", "");
-      return;
-    }
-    catch (Exception localException) {}
+    this.a.c();
   }
 }
 

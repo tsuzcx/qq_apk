@@ -1,18 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import java.util.ArrayList;
 
 public class yee
-  implements View.OnClickListener
+  implements Runnable
 {
-  public yee(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public yee(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
-    this.a.startActivity(paramView);
+    LbsFilterStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

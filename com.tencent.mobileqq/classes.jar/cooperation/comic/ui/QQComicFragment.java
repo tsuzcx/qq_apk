@@ -1,6 +1,6 @@
 package cooperation.comic.ui;
 
-import amjy;
+import amrk;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -62,7 +62,7 @@ public class QQComicFragment
   
   public SwiftBrowserComponentsProvider a()
   {
-    return new SwiftBrowserComponentsProvider(this, 127, new amjy(this));
+    return new SwiftBrowserComponentsProvider(this, 127, new amrk(this));
   }
   
   public QQComicJsPlugin a()

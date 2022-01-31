@@ -1,23 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.mobileqq.nearby.now.widget.CommonRecyclerView;
+import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
+import com.tencent.mobileqq.music.IQQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
 
 public class aest
-  implements View.OnClickListener
+  extends IQQPlayerCallback.Stub
 {
-  public aest(SelectLocationFragment paramSelectLocationFragment) {}
+  public aest(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (SelectLocationFragment.a(this.a) != null) {
-      SelectLocationFragment.a(this.a).smoothScrollToPosition(0);
+    MusicGeneWebViewPlugin.a(this.a, paramInt);
+    if (paramInt == 2) {
+      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).c());
+    }
+  }
+  
+  public void a(SongInfo paramSongInfo)
+  {
+    if (MusicGeneWebViewPlugin.a(this.a) != null) {
+      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aest
  * JD-Core Version:    0.7.0.1
  */

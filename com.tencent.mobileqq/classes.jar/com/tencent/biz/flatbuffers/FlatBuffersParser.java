@@ -5,6 +5,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Looper;
+import android.text.TextUtils;
 import com.tencent.biz.AuthorizeConfig;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,7 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
-import kmf;
+import kom;
 import mqq.app.AppRuntime;
 
 public class FlatBuffersParser
@@ -155,19 +156,48 @@ public class FlatBuffersParser
   
   public static boolean c()
   {
-    boolean bool = VideoEnvironment.c();
-    if (!bool)
+    boolean bool1 = VideoEnvironment.c();
+    boolean bool2 = bool1;
+    if (!bool1)
+    {
+      bool2 = bool1;
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        String[] arrayOfString = Build.SUPPORTED_ABIS;
+        int j = arrayOfString.length;
+        int i = 0;
+        for (;;)
+        {
+          bool2 = bool1;
+          if (i >= j) {
+            break;
+          }
+          String str = arrayOfString[i];
+          bool2 = bool1;
+          if (!TextUtils.isEmpty(str))
+          {
+            bool2 = bool1;
+            if (str.toLowerCase().contains("x86")) {
+              bool2 = true;
+            }
+          }
+          i += 1;
+          bool1 = bool2;
+        }
+      }
+    }
+    if (!bool2)
     {
       QLog.d("FlatBuffersParser", 1, "os.arch: " + System.getProperty("os.arch"));
       QLog.d("FlatBuffersParser", 1, "DeviceInfoUtil#getCpuType: " + DeviceInfoUtil.h());
       QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI: " + Build.CPU_ABI);
       QLog.d("FlatBuffersParser", 1, "Build.CPU_ABI2: " + Build.CPU_ABI2);
-      QLog.d("FlatBuffersParser", 1, "isX86: " + bool);
+      QLog.d("FlatBuffersParser", 1, "isX86: " + bool2);
       if (Build.VERSION.SDK_INT >= 21) {
         QLog.d("FlatBuffersParser", 1, "Build.SUPPORTED_ABIS: " + Arrays.toString(Build.SUPPORTED_ABIS));
       }
     }
-    return bool;
+    return bool2;
   }
   
   public static void d()
@@ -268,7 +298,7 @@ public class FlatBuffersParser
       a(localFile, bool);
       return;
     }
-    ThreadManager.post(new kmf(localFile, bool), 5, null, false);
+    ThreadManager.post(new kom(localFile, bool), 5, null, false);
   }
   
   public static void g()

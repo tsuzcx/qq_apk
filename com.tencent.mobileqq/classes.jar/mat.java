@@ -1,21 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-class mat
-  implements DialogInterface.OnClickListener
+public class mat
+  extends CommonSkinRes
 {
-  mat(mas parammas, String paramString) {}
+  public mat(ReadInJoySkinManager paramReadInJoySkinManager, AppInterface paramAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Drawable a()
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Mas.a.a, VideoFeedsAdapter.a(this.jdField_a_of_type_Mas.a).getIntent().getExtras().getString("thumbfile_md5") + ".mp4", true));
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_kandian_selected");
   }
 }
 

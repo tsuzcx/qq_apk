@@ -1,41 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.open.applist.QZoneAppListActivity;
 
 public class almv
-  implements View.OnClickListener
+  extends OnPluginInstallListener.Stub
 {
-  public almv(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public almv(QZoneAppListActivity paramQZoneAppListActivity) {}
   
-  public void onClick(View paramView)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    paramView = QidianProfileCardActivity.a(this.a);
-    int i;
-    if (QidianProfileCardActivity.a(this.a))
-    {
-      i = 1;
-      paramView.setMaxLines(i);
-      paramView = this.a;
-      if (QidianProfileCardActivity.a(this.a)) {
-        break label54;
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.a(paramView, bool);
-      return;
-      i = 3;
-      break;
-      label54:
-      bool = false;
-    }
+    this.a.a(paramInt1 / paramInt2 * 100);
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    this.a.runOnUiThread(new almw(this));
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    QZoneAppListActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     almv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qlink.QQProxyForQlink;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class xij
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xij(BannerManager paramBannerManager) {}
+  public xij(QWalletConfigManager paramQWalletConfigManager, WeakReference paramWeakReference) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    BannerManager.a(this.a).app.a().a("0X800474F", 1);
-    QQProxyForQlink.a(BannerManager.a(this.a), 4, null);
+    QWalletConfigManager localQWalletConfigManager = (QWalletConfigManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQWalletConfigManager != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletConfigManager", 2, "getAllConfigAgain");
+      }
+      localQWalletConfigManager.a(QWalletConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager));
+    }
   }
 }
 

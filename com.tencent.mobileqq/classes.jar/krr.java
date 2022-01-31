@@ -1,41 +1,21 @@
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.FullScreenTopContainerHolder;
 
 public class krr
-  extends PublicAccountObserver
+  implements Animation.AnimationListener
 {
-  private AccountDetailGroupListContainer b;
+  public krr(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
   
-  public krr(AccountDetailGroupListContainer paramAccountDetailGroupListContainer1, AccountDetailGroupListContainer paramAccountDetailGroupListContainer2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.b = paramAccountDetailGroupListContainer2;
+    AccountDetailBaseAdapter.a(this.a, this.a.a.c, this.a.a.d, 100L, 240L);
   }
   
-  public void a()
-  {
-    this.b = null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(boolean paramBoolean, PaConfigAttr.PaConfigInfo paramPaConfigInfo)
-  {
-    if ((paramBoolean) && (paramPaConfigInfo != null)) {
-      if (paramPaConfigInfo.e != 3) {}
-    }
-    while (this.b == null) {
-      for (;;)
-      {
-        PublicAccountUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.jdField_a_of_type_JavaLangString);
-        return;
-        if ((paramPaConfigInfo.e == 6) && (this.b != null)) {
-          AccountDetailGroupListContainer.a(this.b, paramPaConfigInfo);
-        }
-      }
-    }
-    AccountDetailGroupListContainer.a(this.b, 2131430033);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

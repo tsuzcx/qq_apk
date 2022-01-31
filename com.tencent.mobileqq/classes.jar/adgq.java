@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class adgq
+  extends adgb
 {
-  private static FMSettings a = new FMSettings(null);
+  public adgq(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  {
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateSenderCancelSend";
+  }
 }
 
 

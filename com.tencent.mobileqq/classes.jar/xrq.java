@@ -1,53 +1,46 @@
-import android.os.Handler;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import java.util.List;
 
-public class xrq
+public final class xrq
   implements Runnable
 {
-  public xrq(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean, String paramString, int paramInt) {}
+  public xrq(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, null);
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, -1);
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidViewView.isShown())
-      {
-        NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_JavaLangString);
-        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int);
-      }
-    }
-    do
+    List localList = TroopBarAssistantManager.a().a(this.a);
+    int i;
+    int j;
+    label19:
+    Object localObject;
+    if (localList == null)
     {
-      return;
-      if (this.jdField_a_of_type_Int == 1) {}
-      for (long l = 1500L;; l = 3000L)
-      {
-        if (this.jdField_a_of_type_Int == 3) {
-          l = LbsFilterStatusManager.a();
-        }
-        if (this.jdField_a_of_type_JavaLangString == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c.setText(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c.setVisibility(0);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidOsHandler == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidOsHandler.removeCallbacks(NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity));
-        if (l < 0L) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity), l);
+      i = 0;
+      j = 0;
+      if (j >= i) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c.setText("");
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c.setVisibility(8);
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidOsHandler == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidOsHandler.removeCallbacks(NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity));
+      localObject = (TroopBarData)localList.get(j);
+      if (localObject != null) {
+        break label58;
+      }
+    }
+    for (;;)
+    {
+      j += 1;
+      break label19;
+      i = localList.size();
+      break;
+      label58:
+      localObject = this.a.a().a(((TroopBarData)localObject).mUin, 1008);
+      if (localObject != null) {
+        TroopBarAssistantManager.a().a(this.a, ((QQMessageFacade.Message)localObject).time);
+      }
+    }
   }
 }
 

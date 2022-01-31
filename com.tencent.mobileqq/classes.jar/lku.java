@@ -1,14 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager;
+import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
 
-public final class lku
-  implements Runnable
+public class lku
+  implements ThirdVideoManager.UUIDToUrlCallback
 {
-  public lku(QQAppInterface paramQQAppInterface) {}
+  public lku(ReadInJoyVideoDownloadManager paramReadInJoyVideoDownloadManager) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
   {
-    ((KandianMergeManager)this.a.getManager(161)).h();
+    ReadInJoyVideoDownloadManager.a(this.a, paramString1);
   }
 }
 

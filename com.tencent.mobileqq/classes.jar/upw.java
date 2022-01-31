@@ -1,27 +1,40 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
+import com.tencent.mobileqq.activity.aio.qwallet.elem.ThemeRedPkgElem;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class upw
-  extends VasQuickUpdateManager.CallBacker
+  implements CustomizeStrategyFactory.HBCustomizeStrategy
 {
-  public upw(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
+  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public upw(QQAppInterface paramQQAppInterface)
   {
-    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
-    do
-    {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo == null) {
       return;
-      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
-        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
-      }
-      if (paramInt1 == 0) {
-        this.a.a(true);
-      }
-    } while (paramVasQuickUpdateManager == null);
-    paramVasQuickUpdateManager.b(this.a.a);
+    }
+    ThreadManager.post(new upx(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
+  {
+    if ((paramRedPacketInfo != null) && ((paramBaseRedPkgElem instanceof ThemeRedPkgElem))) {
+      paramRedPacketInfo.animInfo = ((ThemeRedPkgElem)paramBaseRedPkgElem).a;
+    }
   }
 }
 

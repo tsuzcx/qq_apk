@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
 
-public class adnk
+class adnk
   implements Runnable
 {
-  public adnk(NearbyHybridFragment paramNearbyHybridFragment) {}
+  adnk(adnj paramadnj, int paramInt) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyHybridFragment.webloading", 2, "startWebSoRequest, url=" + this.a.c);
+    if (this.jdField_a_of_type_Int == 21) {
+      this.jdField_a_of_type_Adnj.a.a.g(true);
     }
-    WebSoService.a().a(this.a.c, null);
+    while (this.jdField_a_of_type_Int != 22) {
+      return;
+    }
+    this.jdField_a_of_type_Adnj.a.a.g(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adnk
  * JD-Core Version:    0.7.0.1
  */

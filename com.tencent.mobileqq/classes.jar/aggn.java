@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.graphics.drawable.ColorDrawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class aggn
   implements Runnable
 {
-  public aggn(ScanTorchActivity paramScanTorchActivity) {}
+  public aggn(ScanOcrActivity paramScanOcrActivity) {}
   
   public void run()
   {
-    ScanTorchActivity.c(this.a, true);
-    ScanTorchActivity.l(this.a);
-    ScanTorchActivity.d(this.a, true);
+    ScanOcrActivity.a(this.a).e();
+    ScanOcrActivity.b(this.a).setImageDrawable(new ColorDrawable(-16777216));
+    ScanOcrActivity.b(this.a).setVisibility(0);
+    ScanOcrActivity.b(this.a).postDelayed(new aggo(this), 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aggn
  * JD-Core Version:    0.7.0.1
  */

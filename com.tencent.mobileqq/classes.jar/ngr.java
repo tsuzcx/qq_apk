@@ -1,16 +1,15 @@
-import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import com.tencent.biz.qqstory.database.StoryEntry;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class ngr
-  extends DownloadPic2FileJob
+  implements Runnable
 {
-  public ngr(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
+  public ngr(StoryManager paramStoryManager, EntityManager paramEntityManager, StoryEntry paramStoryEntry, String paramString, int paramInt) {}
   
-  public boolean b()
+  public void run()
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseStoryEntry, StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(this.jdField_a_of_type_JavaLangString), String.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

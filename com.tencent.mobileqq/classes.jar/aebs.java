@@ -1,25 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PointF;
-import android.util.Log;
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.mobileqq.intervideo.groupvideo.GVideoWebPlugin;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class aebs
-  implements ValueAnimator.AnimatorUpdateListener
+  implements GroupVideoManager.CheckListener
 {
-  private View a;
+  public aebs(GVideoWebPlugin paramGVideoWebPlugin, String paramString) {}
   
-  public aebs(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a = paramView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
-    this.a.setX(paramValueAnimator.x);
-    this.a.setY(paramValueAnimator.y);
-    Log.i("tag", "x:" + paramValueAnimator.x + ",y:" + paramValueAnimator.y);
+    if ((paramBoolean) && (TextUtils.equals("download", this.jdField_a_of_type_JavaLangString)))
+    {
+      GVideoWebPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoWebPlugin).c(2131429510);
+      GVideoWebPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoWebPlugin).show();
+    }
   }
 }
 

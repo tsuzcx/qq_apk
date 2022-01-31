@@ -31,7 +31,7 @@ import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import nwk;
+import oaz;
 
 public class StoryDiscoverAdapter
   extends RecyclerView.Adapter
@@ -62,7 +62,7 @@ public class StoryDiscoverAdapter
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
     this.g = paramInt1;
     this.h = paramInt2;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener = new nwk(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener = new oaz(this);
     paramInt1 = UIUtils.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 5.0F);
     this.jdField_b_of_type_Int = ((ScreenUtil.jdField_a_of_type_Int - paramInt1 * 3) / 2);
     this.jdField_c_of_type_Int = (this.jdField_b_of_type_Int * 17 / 12);
@@ -70,13 +70,13 @@ public class StoryDiscoverAdapter
     this.jdField_a_of_type_Int = UIUtils.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 34.0F);
     this.e = UIUtils.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 4.0F);
     this.f = (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int - UIUtils.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 43.0F));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getResources().getDrawable(2130843443);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getResources().getDrawable(2130843477);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight());
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getResources().getDrawable(2130843442);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getResources().getDrawable(2130843476);
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getMinimumWidth(), this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight());
-    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getResources().getDrawable(2130843785);
+    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getResources().getDrawable(2130843855);
     this.jdField_d_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_d_of_type_AndroidGraphicsDrawableDrawable.getMinimumWidth(), this.jdField_d_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight());
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getResources().getDrawable(2130843444);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getResources().getDrawable(2130843478);
     this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getMinimumWidth(), this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight());
   }
   
@@ -171,7 +171,7 @@ public class StoryDiscoverAdapter
       return;
     }
     paramStoryDiscoverViewHolder.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = this.jdField_d_of_type_Int;
-    a(paramStoryDiscoverViewHolder.jdField_a_of_type_AndroidWidgetTextView, 0, 2130843445, "热门话题");
+    a(paramStoryDiscoverViewHolder.jdField_a_of_type_AndroidWidgetTextView, 0, 2130843479, "热门话题");
     a(paramStoryDiscoverViewHolder.jdField_b_of_type_AndroidWidgetTextView, 4, null, null);
     a(paramStoryDiscoverViewHolder.jdField_b_of_type_AndroidWidgetImageView, 8, null);
     a(paramStoryDiscoverViewHolder.jdField_c_of_type_AndroidWidgetTextView, 0, null, paramActivityCardInfo.a());
@@ -312,7 +312,7 @@ public class StoryDiscoverAdapter
       return;
     }
     paramStoryDiscoverViewHolder.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = this.jdField_c_of_type_Int;
-    a(paramStoryDiscoverViewHolder.jdField_a_of_type_AndroidWidgetTextView, 0, 2130843441, paramOperationCardInfo.a());
+    a(paramStoryDiscoverViewHolder.jdField_a_of_type_AndroidWidgetTextView, 0, 2130843475, paramOperationCardInfo.a());
     String str;
     label82:
     long l;
@@ -388,7 +388,7 @@ public class StoryDiscoverAdapter
   
   public StoryDiscoverAdapter.StoryDiscoverViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = new StoryDiscoverAdapter.StoryDiscoverViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext()).inflate(2130970749, paramViewGroup, false), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener);
+    paramViewGroup = new StoryDiscoverAdapter.StoryDiscoverViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext()).inflate(2130970765, paramViewGroup, false), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener);
     if (paramViewGroup.jdField_c_of_type_AndroidWidgetTextView != null) {
       paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setMaxWidth(this.f);
     }
@@ -522,14 +522,14 @@ public class StoryDiscoverAdapter
       SLog.e("Q.qqstory.discover:StoryDiscoverAdapter", "update header view failed because header view is null.");
       return;
     }
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371802);
-    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371804);
-    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371805);
-    TextView localTextView3 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371806);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371801);
+    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371803);
+    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371804);
+    TextView localTextView3 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371805);
     localTextView1.setText(paramString1);
     localTextView2.setText(String.format("%d次参与", new Object[] { Integer.valueOf(paramInt) }));
     localTextView3.setText(paramString2);
-    UIUtils.a(localImageView, paramString3, UIUtils.jdField_c_of_type_Int, UIUtils.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 180.0F), 0, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getResources().getDrawable(2131493766), "QQStoryDiscoverHeader");
+    UIUtils.a(localImageView, paramString3, UIUtils.jdField_c_of_type_Int, UIUtils.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), 180.0F), 0, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getResources().getDrawable(2131493771), "QQStoryDiscoverHeader");
   }
   
   public void a(List paramList)

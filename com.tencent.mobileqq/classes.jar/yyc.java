@@ -1,61 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.apollo.utils.IResDownloadListener;
-import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 
 public class yyc
-  extends IResDownloadListener
+  implements Runnable
 {
-  public yyc(ApolloPanel paramApolloPanel) {}
+  public yyc(CmGameLauncher paramCmGameLauncher, String paramString, boolean paramBoolean) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "tab download Done");
-    }
-  }
-  
-  public void a(ApolloActionData paramApolloActionData)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "action res done. action=" + paramApolloActionData.actionId);
-    }
-    this.a.a(paramApolloActionData);
-  }
-  
-  public void a(Boolean paramBoolean)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null)) {}
-    MqqHandler localMqqHandler;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getHandler(ChatActivity.class);
-        } while (localMqqHandler == null);
-        localMqqHandler.post(new yyd(this));
-        if (!paramBoolean.booleanValue()) {
-          break;
-        }
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin());
-      } while (this.a.c == null);
-      this.a.c.clear();
-      this.a.d(this.a.b(ApolloPanel.jdField_a_of_type_Int));
-      return;
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloMainViewBinder == null) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloMainViewBinder.c != 3));
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "onJsonDone in panel fail refresh panel");
-    }
-    localMqqHandler.post(new yye(this));
+    CmGameLauncher.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher).a(this.jdField_a_of_type_JavaLangString, CmGameLauncher.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher), this.jdField_a_of_type_Boolean);
+    CmGameLauncher.b(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher, false);
   }
 }
 

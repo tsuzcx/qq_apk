@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import nbj;
+import nfe;
 
 public class NullableObjectFactoryImplement
 {
@@ -25,8 +25,8 @@ public class NullableObjectFactoryImplement
     if (paramClass.isInterface())
     {
       ClassLoader localClassLoader = NullableObjectFactoryImplement.class.getClassLoader();
-      nbj localnbj = new nbj();
-      return Proxy.newProxyInstance(localClassLoader, new Class[] { paramClass }, localnbj);
+      nfe localnfe = new nfe();
+      return Proxy.newProxyInstance(localClassLoader, new Class[] { paramClass }, localnfe);
     }
     throw new IllegalArgumentException(paramClass.getName() + " should be an interface!", new Throwable());
   }

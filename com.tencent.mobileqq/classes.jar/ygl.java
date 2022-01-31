@@ -1,25 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class ygl
-  extends Handler
+public class ygl
+  implements Runnable
 {
-  ygl(ygk paramygk, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ygl(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    TroopHandler localTroopHandler = (TroopHandler)this.a.app.a(20);
+    if (localTroopHandler != null) {}
+    try
     {
-    default: 
+      localTroopHandler.b(Long.valueOf(this.a.c));
+      localTroopHandler.a(Long.valueOf(this.a.c));
       return;
     }
-    VipSpecialCareHandler.a(this.a.a, "-->request timeout");
-    VipSpecialCareHandler.a(this.a.a, -2);
+    catch (NumberFormatException localNumberFormatException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("SelectMemberActivity", 2, "NumberFormatException : mGroupCode = " + this.a.c);
+    }
   }
 }
 

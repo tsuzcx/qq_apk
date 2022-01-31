@@ -1,23 +1,15 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aaog
-  implements ArkAppEventObserverManager.PositionCallback
+public class aaog
+  implements Runnable
 {
-  aaog(aanw paramaanw, long paramLong) {}
+  public aaog(ARMarkerResourceManager paramARMarkerResourceManager) {}
   
-  public void a(long paramLong)
+  public void run()
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aanw.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    ArkAppDeviceModule.a(this.jdField_a_of_type_Aanw.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "场景识别不支持特征追踪！", 1).a();
   }
 }
 

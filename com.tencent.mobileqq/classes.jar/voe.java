@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 
 public class voe
-  implements View.OnClickListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public voe(AIOImageListScene paramAIOImageListScene) {}
+  public ViewGroup a;
+  public AnyScaleTypeImageView a;
+  public TextView b;
   
-  public void onClick(View paramView)
-  {
-    this.a.a(((TextView)paramView).getText().toString());
-    this.a.t();
-  }
+  public voe(ThumbItemBuilder paramThumbItemBuilder) {}
 }
 
 

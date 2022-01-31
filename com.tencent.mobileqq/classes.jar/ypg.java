@@ -1,46 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.mobileqq.apollo.game.ApolloJSContext;
+import android.text.TextUtils;
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantFetcher;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.lang.ref.WeakReference;
+import com.tencent.util.LRULinkedHashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class ypg
-  implements EIPCResultCallback
+  implements Runnable
 {
-  public ypg(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
+  public ypg(DiyPendantFetcher paramDiyPendantFetcher, QQAppInterface paramQQAppInterface) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    try
+    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
+    if ((localList != null) && (localList.size() > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameInterfaceProxy", 2, "get_open_key_back");
-      }
-      paramEIPCResult = paramEIPCResult.data.getString("respData");
-      if ((ApolloGameInterfaceProxy.a(this.a) != null) && (ApolloGameInterfaceProxy.a(this.a).get() != null))
+      Iterator localIterator = localList.iterator();
+      while (localIterator.hasNext())
       {
-        ApolloJSContext localApolloJSContext = (ApolloJSContext)ApolloGameInterfaceProxy.a(this.a).get();
-        if (localApolloJSContext != null) {
-          localApolloJSContext.a(0, "cs.on_get_open_key.local", paramEIPCResult);
+        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)localIterator.next();
+        if (!TextUtils.isEmpty(localDiyPendantEntity.uinAndDiyId)) {
+          this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
         }
       }
-      else
-      {
-        QLog.e("ApolloGameInterfaceProxy", 1, "[send] can not get js context");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.i("DiyPendantFetcher", 2, "initCacheFromDB, size: " + localList.size());
       }
-    }
-    catch (Throwable paramEIPCResult)
-    {
-      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ypg
  * JD-Core Version:    0.7.0.1
  */

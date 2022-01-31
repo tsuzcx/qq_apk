@@ -1,28 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.jtcode.JtcodePluginInstallActivity;
-
-public class amlp
-  extends BroadcastReceiver
+public abstract interface amlp
 {
-  private amlp(JtcodePluginInstallActivity paramJtcodePluginInstallActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("JtcodePluginInstallActivity", 4, "JtcodePluginOnResumeReceiver->onReceive, intent:" + paramIntent);
-    }
-    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
-      return;
-    }
-    this.a.finish();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlp
  * JD-Core Version:    0.7.0.1
  */

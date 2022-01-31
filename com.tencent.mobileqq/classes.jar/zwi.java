@@ -1,14 +1,37 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public final class zwi
-  implements Runnable
+public class zwi
+  implements DeviceProfileManager.DPCObserver
 {
-  public zwi(SosoInterface.OnLocationListener paramOnLocationListener, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
-  
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
+    if (paramBoolean) {
+      paramBoolean = StatisticCollector.a(3);
+    }
+    for (;;)
+    {
+      try
+      {
+        QLog.e("QQInitHandler_WalLog", 1, new Object[] { "onDpcPullFinished, isEnable: ", Boolean.valueOf(paramBoolean) });
+        if (paramBoolean) {
+          continue;
+        }
+        FileUtils.d(SQLiteOpenHelper.a);
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("QQInitHandler", 1, "onDpcPullFinished, get switch error", localThrowable);
+        continue;
+      }
+      DeviceProfileManager.b(this);
+      return;
+      FileUtils.a(SQLiteOpenHelper.a);
+    }
   }
 }
 

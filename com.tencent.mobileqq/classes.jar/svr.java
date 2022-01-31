@@ -1,26 +1,95 @@
-import android.text.format.DateFormat;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.List;
+import android.animation.Keyframe;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.profile.view.ProfileBaseView;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class svr
+class svr
   implements Runnable
 {
-  public svr(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  svr(svq paramsvq, LottieComposition paramLottieComposition) {}
   
   public void run()
   {
-    String str1 = StringUtil.a(this.a.c, 0, 32);
-    String str2 = StringUtil.a(this.a.e, 0, 32);
-    if (this.a.jdField_a_of_type_JavaUtilList != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format("(%d人)", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()) }));
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_Svq.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a instanceof ProfileBaseView))
     {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + " 创建于 " + DateFormat.format("yy-M-d", this.a.jdField_b_of_type_Long));
+      ((ProfileBaseView)this.jdField_a_of_type_Svq.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a).a = 1.0F;
+      if (QLog.isColorLevel()) {
+        QLog.i("MedalWallMng", 2, "update medal anim alpha [2]");
+      }
+    }
+    View localView1;
+    label77:
+    View localView3;
+    label83:
+    View localView4;
+    label90:
+    View localView5;
+    if (this.jdField_a_of_type_Svq.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a == null)
+    {
+      localView2 = null;
+      if (localView2 != null) {
+        break label395;
+      }
+      localView1 = null;
+      if (localView2 != null) {
+        break label405;
+      }
+      localView3 = null;
+      if (localView2 != null) {
+        break label415;
+      }
+      localView4 = null;
+      if (localView2 != null) {
+        break label426;
+      }
+      localView5 = null;
+      label97:
+      if (localView2 != null) {
+        break label437;
+      }
+    }
+    label395:
+    label405:
+    label415:
+    label426:
+    label437:
+    for (View localView2 = null;; localView2 = localView2.findViewById(2131372538))
+    {
+      if ((localView5 != null) && (localView2 != null) && (localView1 != null) && (localView3 != null) && (localView4 != null))
+      {
+        localView1.setAlpha(0.0F);
+        localView3.setAlpha(0.0F);
+        localView4.setAlpha(0.0F);
+        ValueAnimator localValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("txtAlpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(700.0F / 1260.0F, 0.0F), Keyframe.ofFloat(820.0F / 1260.0F, 1.0F), Keyframe.ofFloat(1.0F, 1.0F) }), PropertyValuesHolder.ofKeyframe("redAlpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(1060.0F / 1260.0F, 0.0F), Keyframe.ofFloat(1.0F, 1.0F) }) });
+        localValueAnimator.setDuration(1260.0F);
+        localValueAnimator.setRepeatCount(0);
+        localValueAnimator.addUpdateListener(new svs(this, localView1, localView3, localView4, localView5, localView2));
+        localValueAnimator.start();
+      }
+      this.jdField_a_of_type_Svq.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setFitFullScreenXY();
+      this.jdField_a_of_type_Svq.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.forbiddenLayer();
+      this.jdField_a_of_type_Svq.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition);
+      this.jdField_a_of_type_Svq.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setRepeatCount(0);
+      this.jdField_a_of_type_Svq.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setProgress(0.0F);
+      this.jdField_a_of_type_Svq.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
       return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
+      localView2 = (View)this.jdField_a_of_type_Svq.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a.get("map_key_medal_container");
+      break;
+      localView1 = localView2.findViewById(2131372537);
+      break label77;
+      localView3 = localView2.findViewById(2131372540);
+      break label83;
+      localView4 = localView2.findViewById(2131372539);
+      break label90;
+      localView5 = localView2.findViewById(2131372535);
+      break label97;
     }
   }
 }

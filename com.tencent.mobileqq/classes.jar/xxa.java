@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class xxa
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public xxa(CameraFilterGLView paramCameraFilterGLView) {}
+  public xxa(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    CameraFilterGLView.a(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a("PTV.NewFlowCameraActivity");
+    NewFlowCameraActivity.e(this.a);
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

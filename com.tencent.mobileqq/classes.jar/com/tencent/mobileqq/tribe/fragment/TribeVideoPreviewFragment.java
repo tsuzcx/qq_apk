@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import aisw;
-import aisx;
-import aisy;
+import aixz;
+import aiya;
+import aiyb;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,46 +22,46 @@ public class TribeVideoPreviewFragment
 {
   private TextureVideoView a;
   
-  public void a(Activity paramActivity)
+  public void a(String paramString)
+  {
+    ThreadManager.post(new aiyb(this, paramString), 5, null, true);
+  }
+  
+  public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     paramActivity.requestWindowFeature(1);
     paramActivity.getWindow().setFlags(1024, 1024);
-    super.a(paramActivity);
+    super.initWindowStyleAndAnimation(paramActivity);
   }
   
-  public void a(String paramString)
-  {
-    ThreadManager.post(new aisy(this, paramString), 5, null, true);
-  }
-  
-  public boolean a()
+  public boolean needImmersive()
   {
     return false;
   }
   
-  public boolean b()
+  public boolean needStatusTrans()
   {
     return false;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130971645, paramViewGroup, false);
-    this.a = ((TextureVideoView)paramLayoutInflater.findViewById(2131375259));
-    paramViewGroup = paramLayoutInflater.findViewById(2131375260);
-    paramBundle = (ImageButton)paramLayoutInflater.findViewById(2131375261);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130971674, paramViewGroup, false);
+    this.a = ((TextureVideoView)paramLayoutInflater.findViewById(2131375319));
+    paramViewGroup = paramLayoutInflater.findViewById(2131375320);
+    paramBundle = (ImageButton)paramLayoutInflater.findViewById(2131375321);
     String str = getActivity().getIntent().getStringExtra("path");
     this.a.setVideoPath(str);
     this.a.setLooping(true);
     this.a.setCenterInside(true);
-    paramLayoutInflater.setOnTouchListener(new aisw(this));
+    paramLayoutInflater.setOnTouchListener(new aixz(this));
     this.a.start();
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setFillAfter(true);
     localAlphaAnimation.setDuration(500L);
     localAlphaAnimation.setStartOffset(3000L);
     paramViewGroup.startAnimation(localAlphaAnimation);
-    paramBundle.setOnClickListener(new aisx(this, str));
+    paramBundle.setOnClickListener(new aiya(this, str));
     return paramLayoutInflater;
   }
   
@@ -71,15 +71,15 @@ public class TribeVideoPreviewFragment
     this.a.a();
   }
   
-  public void u_()
+  public void onFinish()
   {
-    super.u_();
+    super.onFinish();
     getActivity().overridePendingTransition(0, 2131034404);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

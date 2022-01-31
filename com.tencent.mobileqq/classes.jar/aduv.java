@@ -1,31 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.intervideo.now.NowDataReporter;
-import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
-import com.tencent.mobileqq.intervideo.now.NowPlugin;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.forward.ForwardVoiceCallOption;
 
 public class aduv
-  implements View.OnClickListener
+  implements ChatActivityUtils.StartVideoListener
 {
-  public aduv(NowLoadingActivity paramNowLoadingActivity, NowProxy paramNowProxy) {}
+  public aduv(ForwardVoiceCallOption paramForwardVoiceCallOption) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.d)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.d = false;
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.c.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowProxy.a.a.a();
-      NowLoadingActivity.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity);
-    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aduv
  * JD-Core Version:    0.7.0.1
  */

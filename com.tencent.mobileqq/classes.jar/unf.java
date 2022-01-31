@@ -1,15 +1,46 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
+import com.tencent.mobileqq.profile.like.PraiseInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class unf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public unf(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
+  public unf(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, PraiseInfo paramPraiseInfo, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(1, 200, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) });
+    int i = 1;
+    int j;
+    int k;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
+    {
+      j = 1;
+      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
+        break label136;
+      }
+      if (!((NearbyLikeLimitManager)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(206)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
+        break label131;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
+      return;
+      j = 0;
+      break;
+      label131:
+      i = 0;
+      continue;
+      label136:
+      i = k;
+    }
   }
 }
 

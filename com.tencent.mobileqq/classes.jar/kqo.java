@@ -1,22 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.qidian.QidianManager.OnLbsStateChangedListener;
 
-public final class kqo
-  implements Runnable
+public class kqo
+  implements QidianManager.OnLbsStateChangedListener
 {
-  public void run()
+  public kqo(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new kqp(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("AccountDetailVideoManager", 2, "installSDK t==" + localThrowable.toString());
-    }
+    this.a.c = true;
+    this.a.b(paramBoolean);
   }
 }
 

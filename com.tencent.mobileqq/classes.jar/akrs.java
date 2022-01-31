@@ -1,18 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
+import android.content.Context;
+import android.hardware.SensorManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vashealth.SportManager;
 
 public class akrs
   implements Runnable
 {
-  public akrs(WebViewJumpPlugin paramWebViewJumpPlugin) {}
+  public akrs(SportManager paramSportManager) {}
   
   public void run()
   {
-    Activity localActivity = this.a.mRuntime.a();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      localActivity.finish();
+    if (SportManager.a == null) {
+      SportManager.a = (SensorManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("sensor");
     }
+    SportManager.a();
   }
 }
 

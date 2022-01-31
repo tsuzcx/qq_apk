@@ -1,15 +1,15 @@
 package com.tencent.widget;
 
-import amax;
-import amay;
-import amaz;
-import amba;
-import ambb;
-import ambc;
-import ambd;
-import ambf;
-import ambh;
-import ambi;
+import amih;
+import amii;
+import amij;
+import amik;
+import amil;
+import amim;
+import amin;
+import amip;
+import amir;
+import amis;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -58,8 +58,8 @@ public class DynamicGridView
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private AbsListView.OnScrollListener jdField_b_of_type_AndroidWidgetAbsListView$OnScrollListener = new ambc(this);
-  private AdapterView.OnItemClickListener jdField_b_of_type_AndroidWidgetAdapterView$OnItemClickListener = new amax(this);
+  private AbsListView.OnScrollListener jdField_b_of_type_AndroidWidgetAbsListView$OnScrollListener = new amim(this);
+  private AdapterView.OnItemClickListener jdField_b_of_type_AndroidWidgetAdapterView$OnItemClickListener = new amih(this);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -1;
   private boolean jdField_c_of_type_Boolean;
@@ -207,10 +207,10 @@ public class DynamicGridView
   @TargetApi(11)
   private void a(View paramView)
   {
-    Object localObject = new amay(this);
+    Object localObject = new amii(this);
     localObject = ObjectAnimator.ofObject(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable, "bounds", (TypeEvaluator)localObject, new Object[] { this.jdField_a_of_type_AndroidGraphicsRect });
-    ((ObjectAnimator)localObject).addUpdateListener(new amaz(this));
-    ((ObjectAnimator)localObject).addListener(new amba(this, paramView));
+    ((ObjectAnimator)localObject).addUpdateListener(new amij(this));
+    ((ObjectAnimator)localObject).addListener(new amik(this, paramView));
     ((ObjectAnimator)localObject).start();
   }
   
@@ -311,7 +311,7 @@ public class DynamicGridView
     ((AnimatorSet)localObject).playTogether(localLinkedList);
     ((AnimatorSet)localObject).setDuration(300L);
     ((AnimatorSet)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
-    ((AnimatorSet)localObject).addListener(new ambb(this));
+    ((AnimatorSet)localObject).addListener(new amil(this));
     ((AnimatorSet)localObject).start();
   }
   
@@ -467,17 +467,17 @@ public class DynamicGridView
       this.jdField_d_of_type_Int = this.jdField_e_of_type_Int;
       this.jdField_c_of_type_Int = this.jdField_f_of_type_Int;
       if ((c()) && (b())) {
-        localObject = new ambd(this, m, k);
+        localObject = new amin(this, m, k);
       }
       for (;;)
       {
         a(this.jdField_a_of_type_Long);
-        ((ambi)localObject).a(n, i1);
+        ((amis)localObject).a(n, i1);
         return;
         if (b()) {
-          localObject = new ambh(this, m, k);
+          localObject = new amir(this, m, k);
         } else {
-          localObject = new ambf(this, m, k);
+          localObject = new amip(this, m, k);
         }
       }
       label611:

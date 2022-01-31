@@ -11,8 +11,8 @@ import com.tencent.av.ui.VideoControlUI;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import kfg;
-import kfh;
+import khm;
+import khn;
 
 public class OtherBtnController
   extends SubHandleBase
@@ -26,7 +26,7 @@ public class OtherBtnController
   {
     super(paramAVRedBagMgr);
     this.jdField_a_of_type_ComTencentAvUiControlUIObserver = null;
-    this.jdField_a_of_type_Int = 2130840132;
+    this.jdField_a_of_type_Int = 2130840147;
   }
   
   static void a(AVActivity paramAVActivity, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -64,8 +64,8 @@ public class OtherBtnController
     if (localAVActivity == null) {
       return;
     }
-    a(localAVActivity, 2131365403, paramBoolean, this.jdField_a_of_type_Int);
-    a(localAVActivity, 2131365391, paramBoolean, 2130840125);
+    a(localAVActivity, 2131365408, paramBoolean, this.jdField_a_of_type_Int);
+    a(localAVActivity, 2131365396, paramBoolean, 2130840140);
   }
   
   public boolean a()
@@ -88,7 +88,7 @@ public class OtherBtnController
     {
       return;
       if (this.jdField_a_of_type_ComTencentAvUiControlUIObserver == null) {
-        this.jdField_a_of_type_ComTencentAvUiControlUIObserver = new kfg(this);
+        this.jdField_a_of_type_ComTencentAvUiControlUIObserver = new khm(this);
       }
       if (this.jdField_a_of_type_JavaLangRunnable != null)
       {
@@ -98,7 +98,7 @@ public class OtherBtnController
       bool = a();
       QLog.w(this.i, 1, "hook, mHook[" + bool + "]");
       if (!bool) {
-        this.jdField_a_of_type_Int = 2130840132;
+        this.jdField_a_of_type_Int = 2130840147;
       }
       a(false);
     } while (bool);
@@ -113,14 +113,14 @@ public class OtherBtnController
       return;
     }
     if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new kfh(this);
+      this.jdField_a_of_type_JavaLangRunnable = new khn(this);
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.redbag.OtherBtnController
  * JD-Core Version:    0.7.0.1
  */

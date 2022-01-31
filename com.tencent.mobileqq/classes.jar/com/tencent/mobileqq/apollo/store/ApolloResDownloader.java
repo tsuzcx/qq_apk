@@ -23,11 +23,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ytr;
-import yts;
-import ytt;
-import ytu;
-import ytv;
+import zaj;
+import zak;
+import zal;
+import zam;
+import zan;
 
 public class ApolloResDownloader
 {
@@ -216,13 +216,13 @@ public class ApolloResDownloader
     ((DownloadTask)localObject).b = 1;
     ((DownloadTask)localObject).o = true;
     ((DownloadTask)localObject).p = true;
-    paramAppInterface.a((DownloadTask)localObject, new ytu(paramInt, paramOnAudioDownloadListener), null);
+    paramAppInterface.a((DownloadTask)localObject, new zam(paramInt, paramOnAudioDownloadListener), null);
   }
   
   public static void a(AppInterface paramAppInterface, String paramString, ApolloResDownloader.OnApolloDownLoadListener paramOnApolloDownLoadListener, int paramInt1, int[] paramArrayOfInt, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     if (paramInt1 >= 0) {
-      b(paramAppInterface, paramString, new ytr(paramAppInterface, paramArrayOfInt, paramOnApolloDownLoadListener, paramBoolean, paramInt1), paramInt1, null, paramInt2, paramInt3, paramBoolean);
+      b(paramAppInterface, paramString, new zaj(paramAppInterface, paramArrayOfInt, paramOnApolloDownLoadListener, paramBoolean, paramInt1), paramInt1, null, paramInt2, paramInt3, paramBoolean);
     }
     while (paramAppInterface == null) {
       return;
@@ -244,7 +244,7 @@ public class ApolloResDownloader
     paramString2.b = 1;
     paramString2.o = true;
     paramString2.p = true;
-    ((DownloaderFactory)paramAppInterface.getManager(46)).a(1).a(paramString2, new ytt(paramString1), null);
+    ((DownloaderFactory)paramAppInterface.getManager(46)).a(1).a(paramString2, new zal(paramString1), null);
   }
   
   public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, Bundle paramBundle, DownloadListener paramDownloadListener)
@@ -486,10 +486,10 @@ public class ApolloResDownloader
                 if ((localObject1 != null) && (((ApolloDress)localObject1).jdField_a_of_type_Int >= 0) && (((ApolloManager)localObject2).a(1, ((ApolloDress)localObject1).jdField_a_of_type_Int) / 1000L != ((ApolloDress)localObject1).jdField_a_of_type_Long))
                 {
                   QLog.i("ApolloPet", 1, "update pet role :" + ((ApolloDress)localObject1).jdField_a_of_type_Int + " to:" + ((ApolloDress)localObject1).jdField_a_of_type_Long);
-                  localArrayList.add(new ytv(1, ((ApolloDress)localObject1).jdField_a_of_type_Int));
+                  localArrayList.add(new zan(1, ((ApolloDress)localObject1).jdField_a_of_type_Int));
                 }
                 if (paramInt1 >= 0) {
-                  localArrayList.add(new ytv(1, paramInt1));
+                  localArrayList.add(new zan(1, paramInt1));
                 }
                 if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
                   break;
@@ -497,12 +497,12 @@ public class ApolloResDownloader
                 i = 0;
                 while (i < paramArrayOfInt.length)
                 {
-                  localArrayList.add(new ytv(2, paramArrayOfInt[i]));
+                  localArrayList.add(new zan(2, paramArrayOfInt[i]));
                   i += 1;
                 }
               }
               if (paramInt2 > 0) {
-                localArrayList.add(new ytv(3, paramInt2));
+                localArrayList.add(new zan(3, paramInt2));
               }
               if (!localArrayList.isEmpty()) {
                 break;
@@ -531,9 +531,9 @@ public class ApolloResDownloader
         int i = 0;
         if (i < j)
         {
-          Object localObject3 = (ytv)localArrayList.get(i);
-          int k = ((ytv)localObject3).jdField_a_of_type_Int;
-          int m = ((ytv)localObject3).b;
+          Object localObject3 = (zan)localArrayList.get(i);
+          int k = ((zan)localObject3).jdField_a_of_type_Int;
+          int m = ((zan)localObject3).b;
           Object localObject4 = b(k, m);
           if (TextUtils.isEmpty((CharSequence)localObject4))
           {
@@ -592,7 +592,7 @@ public class ApolloResDownloader
             ((DownloadTask)localObject4).b = 1;
             ((DownloadTask)localObject4).o = true;
             ((DownloadTask)localObject4).p = true;
-            ((DownloaderInterface)localObject1).a((DownloadTask)localObject4, new yts((File)localObject3, paramAppInterface, k, m, localAtomicInteger2, localAtomicInteger1, (AtomicInteger)localObject2, paramOnApolloDownLoadListener, paramString, paramInt1, paramArrayOfInt, paramInt2), null);
+            ((DownloaderInterface)localObject1).a((DownloadTask)localObject4, new zak((File)localObject3, paramAppInterface, k, m, localAtomicInteger2, localAtomicInteger1, (AtomicInteger)localObject2, paramOnApolloDownLoadListener, paramString, paramInt1, paramArrayOfInt, paramInt2), null);
           }
         }
       } while (((AtomicInteger)localObject2).get() != 0);

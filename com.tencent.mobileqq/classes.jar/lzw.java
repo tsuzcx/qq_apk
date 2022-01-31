@@ -1,24 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import java.net.URL;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.ReportR5Builder;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class lzw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lzw(ReadInJoyWebDataManager paramReadInJoyWebDataManager, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  public lzw(ComponentLastRead paramComponentLastRead) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l = ReadInJoyWebDataManager.a();
-    try
-    {
-      ReadInJoyWebDataManager.a(l);
-      if (ReadInJoyWebDataManager.b() > 52428800L) {
-        return;
-      }
+    paramView = new ReadInJoyUtils.ReportR5Builder().g().a().d().a(this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel.e()).e().f().c().a();
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, ReadInJoyHelper.a(), "", "", paramView, false);
+    if (this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell$CellListener != null) {
+      this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell$CellListener.a(this.a, null);
     }
-    finally {}
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager.a(this.jdField_a_of_type_JavaNetURL.toString(), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

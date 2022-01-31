@@ -1,22 +1,23 @@
-import android.graphics.drawable.Drawable;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.InputDialog;
 
 public class pil
-  implements Runnable
+  implements View.OnClickListener
 {
-  public pil(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl, Drawable paramDrawable, Animation paramAnimation) {}
+  public pil(InputDialog paramInputDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    AsyncImageable.AsyncImageableImpl.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageableImpl).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    AsyncImageable.AsyncImageableImpl.a(AsyncImageable.AsyncImageableImpl.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageableImpl), this.jdField_a_of_type_AndroidViewAnimationAnimation, null);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsInputDialog, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pil
  * JD-Core Version:    0.7.0.1
  */

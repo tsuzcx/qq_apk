@@ -1,35 +1,24 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BaseAnimDrawer;
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterTools.OnResourceDownloadListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class xwn
-  implements Runnable
+class xwn
+  implements VideoFilterTools.OnResourceDownloadListener
 {
-  public xwn(SubtitleLayout paramSubtitleLayout) {}
+  xwn(xwm paramxwm, VideoFilterTools paramVideoFilterTools) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    SubtitleLayout.a(this.a, true);
-    if ((SubtitleLayout.a(this.a) != null) && (SubtitleLayout.a(this.a).b() == 3))
+    if (QLog.isColorLevel()) {
+      QLog.d("PTV.NewFlowCameraActivity", 2, "onResourceDownload isOnlineRes: " + paramBoolean);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterTools.a())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SubtitleLayout", 2, "count down, not in preview state.");
-      }
-      SubtitleLayout.a(this.a, null);
+      this.jdField_a_of_type_Xwm.a.runOnUiThread(new xwo(this));
       return;
     }
-    AudioTranslator.a().a(true, false);
-    this.a.a();
-    if (this.a.a != 0)
-    {
-      SubtitleLayout.a(this.a);
-      SubtitleLayout.b(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SubtitleLayout", 2, "stop auto trans.");
-    }
-    SubtitleLayout.a(this.a, null);
+    QLog.w("PTV.NewFlowCameraActivity", 2, "has not valid video filter!");
   }
 }
 

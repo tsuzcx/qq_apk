@@ -13,18 +13,18 @@ import com.tencent.av.business.manager.zimu.ZimuItem;
 import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Observable;
-import jfc;
+import jhe;
 
 public class BusinessMessageCenter
 {
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private jfc jdField_a_of_type_Jfc;
+  private jhe jdField_a_of_type_Jhe;
   
   public BusinessMessageCenter(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Jfc = new jfc(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Jfc);
+    this.jdField_a_of_type_Jhe = new jhe(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Jhe);
   }
   
   private void a(String paramString, boolean paramBoolean)
@@ -96,7 +96,7 @@ public class BusinessMessageCenter
       {
         paramString = (ZimuItem)((EffectZimuManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0)).a();
         if ((paramString == null) || (TextUtils.isEmpty(paramString.getId()))) {
-          break label397;
+          break label394;
         }
         paramString = (EffectZimuManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
         paramString.c();
@@ -105,7 +105,7 @@ public class BusinessMessageCenter
         a(Integer.valueOf(6010), Integer.valueOf(1));
       }
     }
-    label397:
+    label394:
     for (i = 1;; i = 0)
     {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(0);
@@ -134,7 +134,7 @@ public class BusinessMessageCenter
             {
               bool = false;
               if (bool) {
-                break label380;
+                break label377;
               }
               paramString.a(false, (String)localObject);
               paramString.b(str);
@@ -143,19 +143,19 @@ public class BusinessMessageCenter
               }
               a(Integer.valueOf(6005), str);
               if (localZimuItem2 != null) {
-                break label375;
+                break label372;
               }
               i = 3;
               label302:
               a(Integer.valueOf(6010), Integer.valueOf(i));
               j = i;
-              if (!ZimuToolbar.isShow(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication())) {
+              if (!ZimuToolbar.isShow(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
                 a(Integer.valueOf(6012), Integer.valueOf(i));
               }
             }
           }
-          label375:
-          label380:
+          label372:
+          label377:
           for (j = i;; j = 0)
           {
             this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(0);
@@ -215,7 +215,7 @@ public class BusinessMessageCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.BusinessMessageCenter
  * JD-Core Version:    0.7.0.1
  */

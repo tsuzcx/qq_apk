@@ -18,7 +18,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.Locale;
-import wmn;
+import wrx;
 
 public class CardController
   extends BaseViewController
@@ -41,7 +41,7 @@ public class CardController
   {
     super(paramActivity);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqConfessConfessObserver = new wmn(this);
+    this.jdField_a_of_type_ComTencentMobileqqConfessConfessObserver = new wrx(this);
     if ((paramActivity instanceof SplashActivity)) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)paramActivity).app;
     }
@@ -153,8 +153,8 @@ public class CardController
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131363918));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewCardSlideCardView = ((SlideCardView)paramView.findViewById(2131363919));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131363943));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewCardSlideCardView = ((SlideCardView)paramView.findViewById(2131363944));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewCardSlideCardView.a(false);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewCardSlideCardView.b(true);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewCardSlideCardView.setInterceptListener(this);

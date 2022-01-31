@@ -1,16 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
 
 public class aexk
-  implements View.OnTouchListener
+  implements DialogInterface.OnDismissListener
 {
-  public aexk(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aexk(GameRoomTransActivity paramGameRoomTransActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return paramMotionEvent.getAction() == 2;
+    this.a.finish();
   }
 }
 

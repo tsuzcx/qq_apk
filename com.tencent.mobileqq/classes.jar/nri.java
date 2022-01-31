@@ -1,120 +1,37 @@
-import android.graphics.Bitmap;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ImageUtil;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.VideoInfoObserver;
+import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class nri
-  extends BaseAdapter
+public final class nri
+  extends PlayModeUtils.VideoInfoObserver
 {
-  List jdField_a_of_type_JavaUtilList = new ArrayList();
+  public nri(Activity paramActivity, String paramString1, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, String paramString2, int paramInt4) {}
   
-  public nri(QQStoryShieldListActivity paramQQStoryShieldListActivity, List paramList)
+  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    if (paramList != null)
+    if ((paramInt == 0) && (paramStoryVideoItem != null))
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-      Collections.sort(this.jdField_a_of_type_JavaUtilList);
+      StoryPlayVideoActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, paramStoryVideoItem.mOwnerUid, "", this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_JavaLangString, this.d);
+      return;
     }
-  }
-  
-  public void a(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      Collections.sort(this.jdField_a_of_type_JavaUtilList);
-    }
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
+    if (paramInt == 10100)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity).inflate(2130970836, null);
-      paramViewGroup = new nrj(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362739));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362754));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a.widthPixels - AIOUtils.a(175.0F, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getResources()));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370944));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
-      paramView.setTag(paramViewGroup);
-      localObject = (QQStoryUserInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((QQStoryUserInfo)localObject).uin;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((QQStoryUserInfo)localObject).nick);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(localObject);
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 2) {
-        break label258;
-      }
-      if (paramInt != 0) {
-        break label225;
-      }
-      paramView.setBackgroundResource(2130838635);
+      paramString = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQStoryWarningActivity.class);
+      paramString.putExtra("tipsResource", "该视频已被删除");
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+      return;
     }
-    label258:
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.app.a(((QQStoryUserInfo)localObject).uin, true);
-      if (localObject == null) {
-        break label315;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
-      return paramView;
-      paramViewGroup = (nrj)paramView.getTag();
-      break;
-      label225:
-      if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
-      {
-        paramView.setBackgroundResource(2130838630);
-      }
-      else
-      {
-        paramView.setBackgroundResource(2130838633);
-        continue;
-        if (this.jdField_a_of_type_JavaUtilList.size() == 2)
-        {
-          if (paramInt == 0) {
-            paramView.setBackgroundResource(2130838635);
-          } else {
-            paramView.setBackgroundResource(2130838630);
-          }
-        }
-        else if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-          paramView.setBackgroundResource(2130838630);
-        }
-      }
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, paramString, 0).a();
+      return;
     }
-    label315:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(ImageUtil.a());
-    return paramView;
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, "拉取视频出错：" + paramInt, 0).a();
   }
 }
 

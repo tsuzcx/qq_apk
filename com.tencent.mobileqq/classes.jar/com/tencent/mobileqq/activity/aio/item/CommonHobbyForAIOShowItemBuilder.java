@@ -44,10 +44,10 @@ import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import org.json.JSONException;
 import org.json.JSONObject;
-import uvi;
-import uvj;
-import uvk;
-import uvl;
+import vai;
+import vaj;
+import vak;
+import val;
 
 public class CommonHobbyForAIOShowItemBuilder
   extends AbstractChatItemBuilder
@@ -55,9 +55,9 @@ public class CommonHobbyForAIOShowItemBuilder
 {
   private float jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
   private long jdField_a_of_type_Long;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new uvi(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new vai(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private View.OnClickListener b = new uvj(this);
+  private View.OnClickListener b = new vaj(this);
   
   public CommonHobbyForAIOShowItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
@@ -94,11 +94,11 @@ public class CommonHobbyForAIOShowItemBuilder
         localJSONObject.optString("url");
         l = localJSONObject.optLong("friend_uin");
         j = localJSONObject.optInt("show_both_head");
-        localObject6 = paramView.findViewById(2131364935);
+        localObject6 = paramView.findViewById(2131364962);
         ((View)localObject6).getLayoutParams().width = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-        localObject2 = (ImageView)((View)localObject6).findViewById(2131369941);
-        localObject3 = (ImageView)((View)localObject6).findViewById(2131369942);
-        ((TextView)((View)localObject6).findViewById(2131369943)).setText((CharSequence)localObject4);
+        localObject2 = (ImageView)((View)localObject6).findViewById(2131369951);
+        localObject3 = (ImageView)((View)localObject6).findViewById(2131369952);
+        ((TextView)((View)localObject6).findViewById(2131363703)).setText((CharSequence)localObject4);
         bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
         if (j == 1) {
           break label363;
@@ -112,12 +112,12 @@ public class CommonHobbyForAIOShowItemBuilder
         if (!bool) {
           break label412;
         }
-        ((ImageView)localObject2).setBackgroundResource(2130842373);
-        ((ImageView)localObject3).setBackgroundResource(2130842373);
+        ((ImageView)localObject2).setBackgroundResource(2130842408);
+        ((ImageView)localObject3).setBackgroundResource(2130842408);
       }
       catch (JSONException paramView) {}
-      paramView = ((ViewStub)paramView.findViewById(2131369945)).inflate();
-      paramString = (TextView)paramView.findViewById(2131363810);
+      paramView = ((ViewStub)paramView.findViewById(2131369954)).inflate();
+      paramString = (TextView)paramView.findViewById(2131363834);
       paramString.setText((CharSequence)localObject1);
       paramView.setTag(str);
       paramView.setOnClickListener(this.b);
@@ -138,17 +138,17 @@ public class CommonHobbyForAIOShowItemBuilder
       ((ImageView)localObject3).setImageDrawable((Drawable)localObject6);
     }
     label412:
-    ((ImageView)localObject2).setBackgroundResource(2130842372);
-    ((ImageView)localObject3).setBackgroundResource(2130842372);
+    ((ImageView)localObject2).setBackgroundResource(2130842407);
+    ((ImageView)localObject3).setBackgroundResource(2130842407);
     break label862;
     label429:
-    paramString.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494219));
+    paramString.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494225));
     return;
     label446:
-    Object localObject2 = ((ViewStub)paramView.findViewById(2131369944)).inflate();
-    Object localObject3 = (URLImageView)((View)localObject2).findViewById(2131369702);
-    Object localObject4 = (TextView)((View)localObject2).findViewById(2131369938);
-    paramView = (TextView)((View)localObject2).findViewById(2131369939);
+    Object localObject2 = ((ViewStub)paramView.findViewById(2131369953)).inflate();
+    Object localObject3 = (URLImageView)((View)localObject2).findViewById(2131369712);
+    Object localObject4 = (TextView)((View)localObject2).findViewById(2131369948);
+    paramView = (TextView)((View)localObject2).findViewById(2131369949);
     ((TextView)localObject4).setText((CharSequence)localObject1);
     label516:
     float f;
@@ -188,7 +188,7 @@ public class CommonHobbyForAIOShowItemBuilder
         ((URLImageView)localObject3).setImageDrawable(paramString);
         if (i == 100)
         {
-          paramView = (ImageView)((View)localObject2).findViewById(2131369937);
+          paramView = (ImageView)((View)localObject2).findViewById(2131369947);
           paramView.setVisibility(0);
           this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
           ((URLImageView)localObject3).setTag(localJSONObject);
@@ -216,12 +216,12 @@ public class CommonHobbyForAIOShowItemBuilder
       break label516;
       QLog.i("CommonHobbyForAIOShowItemBuilder", 0, Log.getStackTraceString(paramString));
       break label953;
-      ((TextView)localObject4).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494219));
+      ((TextView)localObject4).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494225));
       return;
       label862:
       do
       {
-        ((TextView)((ViewStub)paramView.findViewById(2131369945)).inflate().findViewById(2131363810)).setText("快来认识一下有趣的他吧！");
+        ((TextView)((ViewStub)paramView.findViewById(2131369954)).inflate().findViewById(2131363834)).setText("快来认识一下有趣的他吧！");
         return;
         if ((i == 1) || (i == 500) || (i == 400) || (i == 401) || (i == 404) || (i == 402) || (i == 403)) {
           break;
@@ -246,7 +246,7 @@ public class CommonHobbyForAIOShowItemBuilder
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970283, null);
+      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970298, null);
       a(paramViewHolder, paramMessageRecord.msg);
     }
     this.jdField_a_of_type_Long = paramMessageRecord.uniseq;
@@ -284,12 +284,12 @@ public class CommonHobbyForAIOShowItemBuilder
     Resources localResources = localImageView.getContext().getResources();
     if ((paramInt == 2) || (paramInt == 1))
     {
-      localImageView.post(new uvk(this, localImageView));
-      localImageView.setContentDescription(localResources.getString(2131437019));
+      localImageView.post(new vak(this, localImageView));
+      localImageView.setContentDescription(localResources.getString(2131437039));
       return;
     }
-    localImageView.post(new uvl(this, localImageView));
-    localImageView.setContentDescription(localResources.getString(2131437018));
+    localImageView.post(new val(this, localImageView));
+    localImageView.setContentDescription(localResources.getString(2131437038));
   }
 }
 

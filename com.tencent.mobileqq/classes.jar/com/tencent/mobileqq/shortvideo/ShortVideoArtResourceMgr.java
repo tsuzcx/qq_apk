@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahze;
+import aidv;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.AppInterface;
@@ -21,7 +21,7 @@ public class ShortVideoArtResourceMgr
   public static String a()
   {
     String str = BaseApplicationImpl.getApplication().getSharedPreferences("QmcfConfig", 4).getString("art_res_sv_md5_version_soname_key", "artfilter000_0");
-    boolean bool = PendantVersionManager.a(str, 4);
+    boolean bool = PendantVersionManager.a(str, 5);
     VideoEnvironment.a("ShortVideoArtResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
     if (bool) {
       return str;
@@ -31,7 +31,7 @@ public class ShortVideoArtResourceMgr
   
   private static void a()
   {
-    ThreadManager.post(new ahze(), 5, null, false);
+    ThreadManager.post(new aidv(), 5, null, false);
   }
   
   public static boolean a()

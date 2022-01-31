@@ -1,32 +1,34 @@
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class muh
-  implements WXShareHelper.WXShareListener
+  implements Runnable
 {
-  public muh(GalleryShareHelper paramGalleryShareHelper, String paramString) {}
+  public muh(ReadInJoyGlobalReporter paramReadInJoyGlobalReporter) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
+    try
+    {
+      if (ReadInJoyGlobalReporter.b(this.a) == 1)
+      {
+        BaseApplicationImpl.getContext().unregisterReceiver(this.a.a);
+        ReadInJoyGlobalReporter.a(this.a, 0);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyGlobalReporter", 2, "unRegisterScreenListener");
+      }
       return;
     }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
+    catch (Exception localException)
     {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435303);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      QRUtils.a(2, 2131435302);
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.e("ReadInJoyGlobalReporter", 2, "unRegisterScreenListener:" + localException.toString());
     }
   }
 }

@@ -1,17 +1,13 @@
-import com.dataline.util.WaitEvent;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.app.TroopManager;
 
-public class zve
+class zve
   implements Runnable
 {
-  public zve(DataLineMsgProxy paramDataLineMsgProxy, DataLineMsgRecord paramDataLineMsgRecord, WaitEvent paramWaitEvent) {}
+  zve(zvd paramzvd) {}
   
   public void run()
   {
-    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, null);
-    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.a.jdField_a_of_type_JavaLangString, this.a.b);
   }
 }
 

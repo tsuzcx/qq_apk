@@ -1,16 +1,22 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class ojo
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public ojo(DoodleLayout paramDoodleLayout) {}
+  public ojo(EditVideoGuide paramEditVideoGuide) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a(true);
-    this.a.b(new View[] { this.a.a });
+    this.a.h();
+    this.a.a.a(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,18 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
 
-public class aisf
-  extends BroadcastReceiver
+class aisf
+  implements Runnable
 {
-  public aisf(InnerDns paramInnerDns) {}
+  aisf(aise paramaise) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ("com.tencent.innerdns.domainAddressDataUpdateAction".equals(paramIntent.getAction())) {
-      InnerDns.a(this.a);
-    }
+    ConfigSetting.a(this.a.a);
   }
 }
 

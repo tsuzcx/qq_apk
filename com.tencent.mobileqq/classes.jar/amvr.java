@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class amvr
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public amvr(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public amvr(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QzoneWebMusicJsPlugin.access$300(this.a, "buttonclick");
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

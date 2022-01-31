@@ -12,7 +12,7 @@ import java.util.TreeSet;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ypc;
+import yvi;
 
 public class ApolloDress
   implements Cloneable
@@ -90,7 +90,7 @@ public class ApolloDress
             if (QLog.isColorLevel())
             {
               i = localApolloDress.jdField_a_of_type_Int;
-              ThreadManager.getUIHandler().post(new ypc(i));
+              ThreadManager.getUIHandler().post(new yvi(i));
             }
           }
           return localApolloDress;

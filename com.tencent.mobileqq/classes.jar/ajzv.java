@@ -1,25 +1,43 @@
-import com.tencent.mobileqq.util.FaceDrawableImpl;
-import com.tencent.mobileqq.util.FaceDrawableImpl.NewTroopFaceObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
 
-public class ajzv
-  implements FaceDrawableImpl.NewTroopFaceObserver
+public final class ajzv
+  implements URLDrawable.URLDrawableListener
 {
-  private ajzv(FaceDrawableImpl paramFaceDrawableImpl) {}
+  public ajzv(ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, String paramString, URLDrawable paramURLDrawable, float paramFloat, int paramInt4) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (paramBoolean2) {
-      this.a.a(paramBoolean1, 101, paramString, this.a.a);
-    }
-    for (;;)
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(Color.parseColor("#e7e7e7"));
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (this.d != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 101);
-      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(this.d);
       return;
-      this.a.a(paramBoolean1, 101, paramString, null);
     }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(Color.parseColor("#e7e7e7"));
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    if ((this.jdField_a_of_type_Int != 0) && (this.b != 0) && (this.c != 0))
+    {
+      ThreadManager.post(new ajzw(this), 5, null, true);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(HotChatPostItemView.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_Float));
   }
 }
 

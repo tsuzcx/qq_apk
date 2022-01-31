@@ -1,14 +1,20 @@
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.VideoInfoListEvent;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarJob;
+import com.tencent.biz.qqstory.shareGroup.icon.RestrictedBitmap;
+import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager.LoadBitmapCallBack;
 
-class nkn
-  implements Runnable
+public class nkn
+  extends ShareGroupIconManager.LoadBitmapCallBack
 {
-  nkn(nkm paramnkm, BatchGetVideoInfoHandler.VideoInfoListEvent paramVideoInfoListEvent) {}
+  public nkn(ShareGroupAvatarJob paramShareGroupAvatarJob) {}
   
-  public void run()
+  protected void a(RestrictedBitmap paramRestrictedBitmap)
   {
-    this.jdField_a_of_type_Nkm.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$VideoInfoListEvent);
+    this.a.a(paramRestrictedBitmap);
+  }
+  
+  protected void a(Error paramError)
+  {
+    this.a.a(paramError);
   }
 }
 

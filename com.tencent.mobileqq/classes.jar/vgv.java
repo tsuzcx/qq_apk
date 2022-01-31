@@ -1,19 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForMedalNews;
 
 public class vgv
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public vgv(SixCombolEffectView paramSixCombolEffectView) {}
+  public vgv(MedalNewsItemBuilder paramMedalNewsItemBuilder, MessageForMedalNews paramMessageForMedalNews) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onClick(View paramView)
+  {
+    if ((vgz)paramView.getTag() == null) {
+      return;
+    }
+    ThreadManager.postImmediately(new vgw(this), null, true);
+  }
 }
 
 

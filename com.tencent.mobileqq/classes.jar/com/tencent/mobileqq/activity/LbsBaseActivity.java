@@ -7,9 +7,9 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.nearby.NearbySPUtil;
 import com.tencent.mobileqq.util.CustomDialogFactory;
 import com.tencent.mobileqq.widget.QQToast;
-import swl;
-import swm;
-import swn;
+import tbg;
+import tbh;
+import tbi;
 
 public class LbsBaseActivity
   extends IphoneTitleBarActivity
@@ -30,15 +30,15 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new swl(this, paramRunnable);
-    this.b = CustomDialogFactory.a(this, 2131433947, a(), 2131433954, 2131433953, new swm(this), new swn(this));
+    paramRunnable = new tbg(this, paramRunnable);
+    this.b = CustomDialogFactory.a(this, 2131433963, a(), 2131433970, 2131433969, new tbh(this), new tbi(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
   public int a()
   {
-    return 2131433948;
+    return 2131433964;
   }
   
   public void a()

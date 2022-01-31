@@ -1,25 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wxr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public wxr(PhotoListActivity paramPhotoListActivity, String paramString) {}
+  public wxr(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 3;
-    String str = PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, this.jdField_a_of_type_JavaLangString);
-    localMessage.obj = str;
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    AlbumUtil.a(localLocalMediaInfo, str);
-    PhotoListActivity.a().put(str, localLocalMediaInfo);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a.sendMessage(localMessage);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
   }
 }
 

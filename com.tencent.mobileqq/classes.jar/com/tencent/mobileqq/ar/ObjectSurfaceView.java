@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar;
 
-import aadf;
-import aadg;
-import aadh;
-import aadi;
-import aadj;
+import aajw;
+import aajx;
+import aajy;
+import aajz;
+import aaka;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -55,7 +55,7 @@ public class ObjectSurfaceView
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
   public FaceUIController a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aadf(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aajw(this);
   private List jdField_a_of_type_JavaUtilList;
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private CopyOnWriteArrayList jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
@@ -199,7 +199,7 @@ public class ObjectSurfaceView
       Object localObject2;
       if (!localObjectBaseData2.jdField_h_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new aadg(this, localObjectBaseData2, localObjectBaseData1));
+        this.jdField_a_of_type_AndroidOsHandler.post(new aajx(this, localObjectBaseData2, localObjectBaseData1));
         if ((localObjectBaseData2.jdField_a_of_type_Boolean) && (!localObjectBaseData2.jdField_b_of_type_Boolean) && (localObjectBaseData2.jdField_g_of_type_Boolean) && (!localObjectBaseData2.jdField_e_of_type_Boolean))
         {
           if (TextUtils.isEmpty(localObjectBaseData2.jdField_d_of_type_JavaLangString)) {
@@ -209,7 +209,7 @@ public class ObjectSurfaceView
           {
             localObject1 = localObjectBaseData2.jdField_d_of_type_JavaLangString;
             localObject2 = localObjectBaseData2.jdField_b_of_type_JavaLangString;
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aadh(this, (String)localObject1, (String)localObject2), 4000L);
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aajy(this, (String)localObject1, (String)localObject2), 4000L);
           }
         }
       }
@@ -455,7 +455,7 @@ public class ObjectSurfaceView
         if (!localObjectBaseData2.jdField_g_of_type_Boolean) {
           break;
         }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aadi(this, localObjectBaseData2), 4000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aajz(this, localObjectBaseData2), 4000L);
         break;
         localObjectBaseData2.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(localObjectBaseData2.v * 255.0F * 0.5D));
         break label246;
@@ -559,12 +559,12 @@ public class ObjectSurfaceView
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a;
         localObject2 = localObjectBaseData2.jdField_h_of_type_JavaLangString;
         str = localObjectBaseData2.jdField_i_of_type_JavaLangString;
-        aadj localaadj = new aadj(this, localObjectBaseData2);
+        aaka localaaka = new aaka(this, localObjectBaseData2);
         if (TextUtils.isEmpty(localObjectBaseData2.jdField_c_of_type_JavaLangString)) {
           break label6467;
         }
         bool = true;
-        ((ARTipsManager)localObject1).a((String)localObject2, str, localaadj, bool);
+        ((ARTipsManager)localObject1).a((String)localObject2, str, localaaka, bool);
       }
       for (int i = 0;; i = k)
       {

@@ -1,7 +1,7 @@
 package cooperation.qqindividuality.ipc;
 
-import amqh;
-import amqi;
+import amxs;
+import amxt;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,7 +28,7 @@ public class QQIndividualityRemoteProxy
     this.jdField_a_of_type_JavaLangString = "QQIndividualityRemoteProxy";
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_AndroidContentServiceConnection = new amqi(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new amxt(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
     a("qqindividuality_signature");
   }
@@ -74,7 +74,7 @@ public class QQIndividualityRemoteProxy
     {
       Looper localLooper = Looper.getMainLooper();
       if (Thread.currentThread() != localLooper.getThread()) {
-        new Handler(localLooper).post(new amqh(this, paramQQIndividualityRemoteProxyCallWrapper));
+        new Handler(localLooper).post(new amxs(this, paramQQIndividualityRemoteProxyCallWrapper));
       }
     }
     else

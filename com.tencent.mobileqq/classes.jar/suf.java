@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
 public class suf
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public suf(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public suf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    ((FriendsManager)this.a.app.getManager(50)).a(this.a.a.a);
   }
 }
 

@@ -29,11 +29,11 @@ import com.tencent.widget.immersive.SystemBarCompact;
 import cooperation.qqfav.QfavBuilder;
 import java.util.ArrayList;
 import java.util.List;
-import lbe;
-import lbf;
-import lbg;
-import lbh;
-import lbi;
+import ldn;
+import ldo;
+import ldp;
+import ldq;
+import ldr;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
@@ -73,7 +73,7 @@ public class ReadInJoyArticleDetailActivity
       return;
     }
     getMainLooper();
-    Looper.myQueue().addIdleHandler(new lbi(this));
+    Looper.myQueue().addIdleHandler(new ldr(this));
   }
   
   public void a()
@@ -81,7 +81,7 @@ public class ReadInJoyArticleDetailActivity
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyArticleDetail", 2, "请求开始时间" + System.currentTimeMillis());
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(this.jdField_a_of_type_JavaLangString, new lbh(this));
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(this.jdField_a_of_type_JavaLangString, new ldq(this));
   }
   
   @TargetApi(23)
@@ -139,7 +139,7 @@ public class ReadInJoyArticleDetailActivity
     WebViewFragment localWebViewFragment = b();
     if ((localWebViewFragment instanceof ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment))
     {
-      ((ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment)localWebViewFragment).f();
+      ((ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment)localWebViewFragment).x_();
       return;
     }
     QLog.e("ReadInJoyArticleDetail", 1, "setWebViewVisibility error curFragment error");
@@ -208,7 +208,7 @@ public class ReadInJoyArticleDetailActivity
     if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof BrowserAppInterface))) {
       this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = ((BrowserAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
     }
-    ThreadManager.getSubThreadHandler().post(new lbe(this));
+    ThreadManager.getSubThreadHandler().post(new ldn(this));
     this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout = new SwipeBackLayout(this);
     this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.a(this);
     return bool;
@@ -217,7 +217,7 @@ public class ReadInJoyArticleDetailActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    ThreadManager.getSubThreadHandler().post(new lbg(this));
+    ThreadManager.getSubThreadHandler().post(new ldp(this));
     if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null) {
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
     }
@@ -247,7 +247,7 @@ public class ReadInJoyArticleDetailActivity
     localReportInfo.mReadTimeLength = ((int)(l / 1000L));
     localReportInfo.mInnerId = this.jdField_e_of_type_JavaLangString;
     localArrayList.add(localReportInfo);
-    ThreadManager.getSubThreadHandler().post(new lbf(this, localArrayList));
+    ThreadManager.getSubThreadHandler().post(new ldo(this, localArrayList));
     if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null) {
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.j();
     }

@@ -36,10 +36,10 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import zer;
-import zet;
-import zeu;
-import zev;
+import zls;
+import zlu;
+import zlv;
+import zlw;
 
 public class HotChatCenterManager
   implements Manager
@@ -141,7 +141,7 @@ public class HotChatCenterManager
       if (i == 0) {
         this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size(), paramHotChatItemData);
       }
-      ThreadManager.getSubThreadHandler().post(new zer(this, paramHotChatItemData));
+      ThreadManager.getSubThreadHandler().post(new zls(this, paramHotChatItemData));
       return;
       i += 1;
       break;
@@ -384,8 +384,8 @@ public class HotChatCenterManager
           ((List)localObject1).add(localHotChatItemData);
         }
       }
-      Collections.sort((List)localObject2, new zet(this));
-      Collections.sort((List)localObject1, new zeu(this));
+      Collections.sort((List)localObject2, new zlu(this));
+      Collections.sort((List)localObject1, new zlv(this));
       this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
@@ -553,7 +553,7 @@ public class HotChatCenterManager
     if (a() == null) {
       return;
     }
-    ThreadManager.post(new zev(this), 5, null, false);
+    ThreadManager.post(new zlw(this), 5, null, false);
   }
   
   public int a()
@@ -782,7 +782,7 @@ public class HotChatCenterManager
     } while (localObject2 == null);
     Object localObject3;
     int i;
-    if (!((RecentUserProxy)localObject1).a(AppConstants.aC, 5001))
+    if (!((RecentUserProxy)localObject1).a(AppConstants.aD, 5001))
     {
       localObject2 = (HotChatItemData)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0);
       if (localObject2 != null)
@@ -795,8 +795,8 @@ public class HotChatCenterManager
         VipUtils.a((AppInterface)localObject3, "cmshow", "Apollo", "reliao_folder_show", i, 0, new String[0]);
       }
     }
-    Object localObject2 = ((RecentUserProxy)localObject1).a(AppConstants.aC, 5001);
-    ((RecentUser)localObject2).uin = AppConstants.aC;
+    Object localObject2 = ((RecentUserProxy)localObject1).a(AppConstants.aD, 5001);
+    ((RecentUser)localObject2).uin = AppConstants.aD;
     ((RecentUser)localObject2).type = 5001;
     if (((RecentUser)localObject2).lastmsgtime < paramLong) {
       ((RecentUser)localObject2).lastmsgtime = paramLong;
@@ -1089,12 +1089,12 @@ public class HotChatCenterManager
     //   138: goto +183 -> 321
     //   141: aload 7
     //   143: ifnull +167 -> 310
-    //   146: new 668	zes
+    //   146: new 668	zlt
     //   149: dup
     //   150: aload_0
     //   151: aload 5
     //   153: aload 7
-    //   155: invokespecial 671	zes:<init>	(Lcom/tencent/mobileqq/app/HotChatCenterManager;Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/data/HotChatItemData;)V
+    //   155: invokespecial 671	zlt:<init>	(Lcom/tencent/mobileqq/app/HotChatCenterManager;Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/data/HotChatItemData;)V
     //   158: bipush 8
     //   160: aconst_null
     //   161: iconst_0
@@ -1112,7 +1112,7 @@ public class HotChatCenterManager
     //   185: iload 4
     //   187: istore_3
     //   188: aload_0
-    //   189: getstatic 587	com/tencent/mobileqq/app/AppConstants:aC	Ljava/lang/String;
+    //   189: getstatic 587	com/tencent/mobileqq/app/AppConstants:aD	Ljava/lang/String;
     //   192: sipush 5001
     //   195: invokespecial 536	com/tencent/mobileqq/app/HotChatCenterManager:b	(Ljava/lang/String;I)V
     //   198: iload 4

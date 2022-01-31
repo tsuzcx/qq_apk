@@ -1,91 +1,32 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Video;
 
-class acbu
-  implements Runnable
+public final class acbu
+  implements Parcelable.Creator
 {
-  acbu(acbg paramacbg, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
-  
-  public void run()
+  public IPSiteModel.Video a(Parcel paramParcel)
   {
-    int i = 0;
-    Object localObject2;
-    Object localObject1;
-    ArrayList localArrayList;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      localObject2 = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
-      JSONObject localJSONObject = new JSONObject();
-      localObject1 = new JSONArray();
-      localArrayList = new ArrayList();
-    }
-    for (;;)
-    {
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(this.jdField_a_of_type_JavaLangString);
-        if (i >= localJSONArray.length()) {
-          break label180;
-        }
-        Object localObject3 = localJSONArray.getJSONObject(i);
-        long l = ((JSONObject)localObject3).optLong("seq");
-        int j = ((JSONObject)localObject3).optInt("actionId");
-        localObject3 = ((ApolloDaoManager)localObject2).a(l);
-        if ((localObject3 == null) || (j != ((ApolloFavActionData)localObject3).acitonId)) {
-          ((JSONArray)localObject1).put(l);
-        } else {
-          localArrayList.add(localObject3);
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
-        }
-      }
-      return;
-      label180:
-      if (localArrayList.size() > 0)
-      {
-        ((ApolloDaoManager)localObject2).g(localArrayList);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-        if (localObject2 != null)
-        {
-          localObject2 = ((MqqHandler)localObject2).obtainMessage(66);
-          ((Message)localObject2).arg1 = 1;
-          ((Message)localObject2).sendToTarget();
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.emoji.web.MessengerService", 2, "del fav action success +" + localJSONException.toString());
-          }
-        }
-      }
-      if (((JSONArray)localObject1).length() > 0) {
-        localJSONException.put("delHasError", true);
-      }
-      for (;;)
-      {
-        localJSONException.put("errorList", ((JSONArray)localObject1).toString());
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putString("delFavListAction", localJSONException.toString());
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-        return;
-        localJSONException.put("delHasError", false);
-      }
-      i += 1;
-    }
+    IPSiteModel.Video localVideo = new IPSiteModel.Video();
+    localVideo.id = paramParcel.readString();
+    localVideo.buttonDesc = paramParcel.readString();
+    localVideo.content = paramParcel.readString();
+    localVideo.cover = paramParcel.readString();
+    localVideo.desc = paramParcel.readString();
+    localVideo.name = paramParcel.readString();
+    localVideo.endTime = paramParcel.readString();
+    localVideo.isShow = paramParcel.readInt();
+    localVideo.newStartTime = paramParcel.readLong();
+    localVideo.newEndTime = paramParcel.readLong();
+    localVideo.redirectUrl = paramParcel.readString();
+    localVideo.videoSource = paramParcel.readString();
+    localVideo.showDate = paramParcel.readString();
+    return localVideo;
+  }
+  
+  public IPSiteModel.Video[] a(int paramInt)
+  {
+    return new IPSiteModel.Video[paramInt];
   }
 }
 

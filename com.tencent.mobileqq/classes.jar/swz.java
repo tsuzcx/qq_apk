@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.widget.Gallery;
 
-public class swz
+class swz
   implements Runnable
 {
-  public swz(Leba paramLeba) {}
+  swz(swy paramswy) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.notifyDataSetChanged();
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(11340005);
+    if (this.a.a.jdField_a_of_type_Int != this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b()) {
+      this.a.a.jdField_a_of_type_Int = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b();
+    }
+    View localView;
+    do
+    {
+      return;
+      localView = this.a.a.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
+    } while (localView == null);
+    this.a.a.jdField_a_of_type_AndroidViewView = localView;
+    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
+    this.a.a.a(this.a.a.jdField_a_of_type_ComTencentWidgetGallery, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.b());
   }
 }
 

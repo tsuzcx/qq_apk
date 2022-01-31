@@ -1,35 +1,54 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.theme.ThemeDownloader;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeUnzipListener;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemPAAudio;
+import com.tencent.mobileqq.transfile.PAAudioPttDownloadProcessor;
+import java.io.File;
 
 public class aioh
-  implements ThemeDownloader.ThemeUnzipListener
+  implements View.OnClickListener
 {
-  public aioh(ThemeSwitchManager paramThemeSwitchManager) {}
+  public aioh(StructMsgItemPAAudio paramStructMsgItemPAAudio) {}
   
-  public void onUnzipCallback(Bundle paramBundle, int paramInt, ThemeDownloader paramThemeDownloader)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeSwitchManager", 2, "mThemeDownloadListener onUnzipCallback stateCode:" + paramInt);
-    }
-    if ((paramInt == 1) || (paramInt == 3)) {
-      if (1 == paramBundle.getInt("themeType", 0))
-      {
-        paramBundle.putBoolean("server_after_download", true);
-        String str1 = paramBundle.getString("themeId");
-        String str2 = paramBundle.getString("version");
-        this.a.a(this.a.a, str1, str2, paramBundle);
-      }
+    if (TextUtils.isEmpty(this.a.y)) {
+      return;
     }
     for (;;)
     {
-      if (paramThemeDownloader != null) {
-        paramThemeDownloader.a();
+      String str;
+      try
+      {
+        str = PAAudioPttDownloadProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.x);
+        if (TextUtils.isEmpty(str))
+        {
+          this.a.a();
+          this.a.a(this.a.y, paramView);
+          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9B", "0X8005C9B", 0, 1, 0, this.a.y, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.w, this.a.x);
+          return;
+        }
       }
-      return;
-      QLog.d("ThemeSwitchManager", 1, "mThemeDownloadListener onUnzipCallback Error stateCode:" + paramInt);
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      if (new File(str).exists())
+      {
+        if (this.a.jdField_a_of_type_Boolean) {
+          this.a.d();
+        } else {
+          this.a.c();
+        }
+      }
+      else
+      {
+        this.a.a();
+        this.a.a(this.a.y, paramView);
+      }
     }
   }
 }

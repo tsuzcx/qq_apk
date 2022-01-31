@@ -1,23 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.model.QueryTask.Query;
 
 public class vgm
-  implements ProgressPieDrawable.OnProgressListener
+  implements QueryTask.Query
 {
-  public vgm(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  public vgm(MarketFaceItemBuilder paramMarketFaceItemBuilder, MarketFaceItemBuilder.Holder paramHolder) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public Void a(MarkFaceMessage paramMarkFaceMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ShortVideoRealItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    paramMarkFaceMessage = ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getManager(13)).a(paramMarkFaceMessage);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo = paramMarkFaceMessage;
+    if ((paramMarkFaceMessage != null) && (paramMarkFaceMessage.a != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getManager(13)).a(paramMarkFaceMessage.a.epId);
     }
-    ShortVideoRealItemBuilder.a(this.a).postDelayed(new vgn(this, paramProgressPieDrawable), 100L);
+    MagicfaceViewController.a();
+    return null;
   }
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

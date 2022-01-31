@@ -1,17 +1,47 @@
-import com.tencent.biz.webviewplugin.NearbyTroopsPlugin;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.OnAnimationPlayEndListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceStatus.ISVConfig;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
-public class pbk
-  implements AIOAnimationControlManager.OnAnimationPlayEndListener
+class pbk
+  implements ShortVideoResourceStatus.ISVConfig
 {
-  public pbk(NearbyTroopsPlugin paramNearbyTroopsPlugin, String paramString) {}
+  pbk(paz parampaz, AppRuntime paramAppRuntime, Bundle paramBundle) {}
   
-  public void a(String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (AIOAnimationControlManager.jdField_a_of_type_JavaLangString.equals(paramString2)) {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNearbyTroopsPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
+    VideoEnvironment.a("TroopMemberApiService", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.a("TroopMemberApiService", "短视频配置解压失败[" + paramInt2 + "]", null);
+        ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
+        ShortVideoErrorReport.a(1, paramInt2);
+        this.jdField_a_of_type_Paz.a.b = false;
+        return;
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.a("TroopMemberApiService", "配置下载成功,插件资源下载中...", null);
+        ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList, new pbl(this));
+        return;
+      }
+      VideoEnvironment.a("TroopMemberApiService", "短视频配置校验失败[" + paramInt1 + "]", null);
+      ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
+      ShortVideoErrorReport.a(1, paramInt1);
+      return;
     }
+    VideoEnvironment.a("TroopMemberApiService", "短视频配置下载失败[" + paramInt2 + "]", null);
+    ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
+    ShortVideoErrorReport.a(1, paramInt2);
+    this.jdField_a_of_type_Paz.a.b = false;
   }
 }
 

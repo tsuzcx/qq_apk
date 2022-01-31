@@ -1,10 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
-public abstract interface nrp
+public class nrp
+  implements TabBarView.OnTabChangeListener
 {
-  @NonNull
-  public abstract Stream a(nrl paramnrl);
+  public nrp(MyVideoVisibilityDialog paramMyVideoVisibilityDialog) {}
+  
+  public void onTabSelected(int paramInt1, int paramInt2)
+  {
+    this.a.a.setCurrentItem(paramInt2);
+  }
 }
 
 

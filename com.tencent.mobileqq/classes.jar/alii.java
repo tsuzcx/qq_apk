@@ -1,14 +1,20 @@
-import com.tencent.open.base.ToastUtil;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.open.agent.AuthorityLoginView;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
 public class alii
   implements Runnable
 {
-  public alii(MyAppApi paramMyAppApi) {}
+  public alii(AuthorityLoginView paramAuthorityLoginView, String paramString, ImageView paramImageView) {}
   
   public void run()
   {
-    ToastUtil.a().a(this.a.a);
+    Bitmap localBitmap = AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView).a(this.jdField_a_of_type_JavaLangString, (int)(58.0F * this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.a), true);
+    if (AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) != null) {
+      ((BaseActivity)AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).runOnUiThread(new alij(this, localBitmap));
+    }
   }
 }
 

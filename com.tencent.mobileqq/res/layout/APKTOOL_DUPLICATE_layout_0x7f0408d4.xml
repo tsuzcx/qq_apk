@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03b3" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02065c" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="4.0dip">
-        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="150.0dip" android:text="hahahahahahahahahhahahaha" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <Button android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a23c0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="移除" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01dd" />
-    </RelativeLayout>
-</LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27c5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27c6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02172c" />
+        <TextView android:textSize="13.0dip" android:textColor="#ffbbbbbb" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27c7" android:layout_width="300.0dip" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:maxLines="2" android:singleLine="false" />
+        <Button android:textSize="16.0dip" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bae" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02177b" android:layout_width="115.0dip" android:layout_height="38.0dip" android:text="重试" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27c8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27c9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021742" />
+        <TextView android:textSize="10.0sp" android:textColor="#ffbbbbbb" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03ad" android:layout_width="300.0dip" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="这里一片荒芜。。。" android:maxLines="2" android:singleLine="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a27c9" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d84" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ProgressBar android:layout_gravity="center" android:visibility="visible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        <TextView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12c3" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27ca" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217cd" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="暂时没有小视频\n你可以在这里查看群内的小视频" />
+    </LinearLayout>
+</RelativeLayout>

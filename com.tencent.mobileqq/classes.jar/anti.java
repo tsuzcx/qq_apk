@@ -1,21 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import dov.com.qq.im.capture.adapter.CaptureModeAdapter;
+import dov.com.qq.im.capture.adapter.CaptureModeAdapter.OnItemClickListener;
+import java.util.List;
 
 public class anti
-  extends QQUIEventReceiver
+  implements View.OnClickListener
 {
-  public anti(@NonNull EditVideoDoodle paramEditVideoDoodle)
-  {
-    super(paramEditVideoDoodle);
-  }
+  public anti(CaptureModeAdapter paramCaptureModeAdapter) {}
   
-  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent paramDoodleEmojiUpdatePoiPostersEvent) {}
-  
-  public Class acceptEventClass()
+  public void onClick(View paramView)
   {
-    return DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent.class;
+    Integer localInteger = (Integer)paramView.getTag();
+    if (localInteger.intValue() == CaptureModeAdapter.a(this.a)) {}
+    do
+    {
+      return;
+      ((TextView)CaptureModeAdapter.a(this.a).get(CaptureModeAdapter.a(this.a))).setTextColor(CaptureModeAdapter.b(this.a));
+      CaptureModeAdapter.a(this.a, localInteger.intValue());
+    } while (CaptureModeAdapter.a(this.a) == null);
+    CaptureModeAdapter.a(this.a).a(localInteger.intValue(), paramView);
   }
 }
 

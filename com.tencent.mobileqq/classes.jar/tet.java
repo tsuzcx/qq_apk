@@ -1,21 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.text.QQBrowserLinkSpan;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class tet
-  extends QQBrowserLinkSpan
+class tet
+  implements Runnable
 {
-  public tet(PermisionPrivacyActivity paramPermisionPrivacyActivity, Context paramContext, String paramString)
-  {
-    super(paramContext, paramString);
-  }
+  tet(tes paramtes) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    super.onClick(paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004E73", "0X8004E73", 0, 0, "", "", "", "");
+    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131436529), 0).b(this.a.a.a.getTitleBarHeight());
   }
 }
 

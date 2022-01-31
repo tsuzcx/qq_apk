@@ -1,91 +1,74 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.messagesearch.BaseMessageResultAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatHistorySearchData;
-import com.tencent.mobileqq.utils.HistoryChatMsgSearchKeyUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 import com.tencent.util.MqqWeakReferenceHandler;
-import java.util.ArrayList;
 
 public class wrb
-  implements Runnable
+  implements TabBarView.OnTabChangeListener
 {
-  public wrb(BaseMessageResultAdapter paramBaseMessageResultAdapter, String paramString, int paramInt, long paramLong) {}
+  public wrb(TroopActivity paramTroopActivity) {}
   
-  public void run()
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i(BaseMessageResultAdapter.b(), 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
     }
-    ??? = null;
-    Object localObject2;
-    Object localObject4;
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a.b != 2)
     {
-      ??? = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-      HistoryChatMsgSearchKeyUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-      localObject2 = new ArrayList();
-      localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.a((ChatHistorySearchData)???, (ArrayList)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.i(BaseMessageResultAdapter.b(), 2, "loadMessageResult, get: messageItems[] = " + localObject2);
-      }
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_JavaLangObject)
+      switch (paramInt2)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
-        {
-          if (this.jdField_a_of_type_Int != 1) {
-            continue;
-          }
-          localBaseMessageResultAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter;
-          if (((ArrayList)localObject2).size() < 20)
-          {
-            localBaseMessageResultAdapter.jdField_a_of_type_Boolean = bool;
-            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
-            ((Message)localObject2).arg1 = 1;
-            localObject4 = new Bundle();
-            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
-            ((Message)localObject2).setData((Bundle)localObject4);
-            ((Message)localObject2).sendToTarget();
-          }
-        }
-        else
-        {
-          return;
-          if (this.jdField_a_of_type_Int != 2) {
-            break;
-          }
-          ??? = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData;
-          break;
-        }
-        bool = false;
-        continue;
-        if (this.jdField_a_of_type_Int != 2) {
-          continue;
-        }
-        BaseMessageResultAdapter localBaseMessageResultAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter;
-        if (((ArrayList)localObject2).size() < 20)
-        {
-          bool = true;
-          localBaseMessageResultAdapter.jdField_a_of_type_Boolean = bool;
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
-          ((Message)localObject2).arg1 = 2;
-          localObject4 = new Bundle();
-          ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-          ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
-          ((Message)localObject2).setData((Bundle)localObject4);
-          ((Message)localObject2).sendToTarget();
-        }
+      default: 
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        ReportController.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
       }
-      bool = false;
+      for (;;)
+      {
+        this.a.a(this.a.jdField_a_of_type_Int);
+        this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1234);
+        TroopActivity.a(this.a, paramInt2);
+        return;
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
+        ReportController.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+        continue;
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
+        ReportController.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
+      }
+    }
+    switch (paramInt2)
+    {
+    default: 
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {
+        break;
+      }
+    }
+    for (String str = "0";; str = "1")
+    {
+      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+      this.a.jdField_a_of_type_Int = 0;
+      break;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {}
+      for (str = "0";; str = "1")
+      {
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 0;
+        break;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {}
+      for (str = "0";; str = "1")
+      {
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
+        this.a.jdField_a_of_type_Int = 1;
+        break;
+      }
     }
   }
 }

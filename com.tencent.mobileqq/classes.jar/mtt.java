@@ -1,32 +1,31 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
+import com.tencent.mobileqq.app.UniteSearchObserver;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class mtt
-  implements Animation.AnimationListener
+  extends UniteSearchObserver
 {
-  public mtt(SubscriptRecommendController paramSubscriptRecommendController) {}
+  public mtt(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(List paramList, int paramInt)
   {
-    if ((this.a.b > 0) && (this.a.c > 0)) {
-      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131368316)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
+    }
+    if (((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel == null) || (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a == null) || (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size() == 0)) && (paramList != null) && (paramList.size() > 0) && ((paramList.get(0) instanceof HotWordSearchEntryDataModel)))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)paramList.get(0));
+      ReadInJoyFeedsHeaderViewController.jdField_a_of_type_Int = 0;
+      this.a.e();
     }
   }
 }

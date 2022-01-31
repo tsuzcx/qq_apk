@@ -1,53 +1,42 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.IphoneTreeView;
 
 public class alci
-  extends Handler
+  implements View.OnTouchListener
 {
-  public alci(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public alci(IphoneTreeView paramIphoneTreeView) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    boolean bool = true;
+    switch (paramMotionEvent.getAction())
     {
+    case 2: 
+    default: 
+      bool = false;
     }
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (Bitmap)paramMessage.obj;
-        } while (paramMessage == null);
-        paramMessage = AuthorityUtil.a(this.a, paramMessage, 50, 50);
-        localMessage = Message.obtain();
-        localMessage.what = 1002;
-        localMessage.obj = paramMessage;
-        this.a.b.sendMessage(localMessage);
-        return;
-        paramMessage = (String)paramMessage.obj;
-      } while (TextUtils.isEmpty(paramMessage));
-      paramMessage = AuthorityActivity.a(paramMessage);
-    } while (paramMessage == null);
-    Message localMessage = Message.obtain();
-    localMessage.what = 1003;
-    localMessage.obj = paramMessage;
-    this.a.b.sendMessage(localMessage);
+      return bool;
+      paramView.setPressed(true);
+      this.a.invalidate();
+      return true;
+      paramView.setPressed(false);
+      this.a.invalidate();
+      break;
+    } while (!paramView.isPressed());
+    paramView.setPressed(false);
+    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
+    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_AndroidViewView = null;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alci
  * JD-Core Version:    0.7.0.1
  */

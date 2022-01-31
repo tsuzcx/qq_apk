@@ -1,28 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
 
-class rnd
+public class rnd
   implements Runnable
 {
-  rnd(rnc paramrnc, String paramString, View paramView) {}
+  public rnd(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
   public void run()
   {
-    try
-    {
-      FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Rnc.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362719);
-      if (localImageView != null) {
-        localImageView.setImageDrawable(localFaceDrawable);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.a.d(ContactUtils.f(this.a.app, this.a.app.getCurrentAccountUin()));
   }
 }
 

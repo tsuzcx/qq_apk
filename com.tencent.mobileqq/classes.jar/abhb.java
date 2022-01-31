@@ -1,15 +1,21 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abhb
-  implements Runnable
+  implements Handler.Callback
 {
-  public abhb(ARMapPOIStarDialog paramARMapPOIStarDialog) {}
+  public abhb(ARMapActivity paramARMapActivity) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.k();
     }
   }
 }

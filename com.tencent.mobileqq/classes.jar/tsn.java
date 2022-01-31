@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class tsn
-  implements DialogInterface.OnClickListener
+  extends ConfigObserver
 {
-  public tsn(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public tsn(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
+    QQSettingSettingActivity.b(this.a);
   }
 }
 

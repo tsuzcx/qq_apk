@@ -1,34 +1,29 @@
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ajqh
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ajqh(TroopRobotManager paramTroopRobotManager) {}
+  public ajqh(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    oidb_0x496.Robot localRobot = new oidb_0x496.Robot();
-    byte[] arrayOfByte = this.a.a();
-    if (arrayOfByte != null) {}
-    try
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    if (!NetworkUtil.g(this.a.jdField_a_of_type_AndroidContentContext)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    }
+    do
     {
-      localRobot.mergeFrom(arrayOfByte);
-      this.a.a(localRobot);
-      TroopRobotManager.a(this.a);
       return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, "file data error");
-        }
-      }
-    }
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    } while (ReciteRecordLayout.a(this.a) == null);
+    ReciteRecordLayout.a(this.a).d();
   }
 }
 

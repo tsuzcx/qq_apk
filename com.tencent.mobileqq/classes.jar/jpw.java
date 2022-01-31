@@ -1,24 +1,20 @@
-import com.tencent.av.gaudio.VideoViewInfo;
-import com.tencent.av.ui.AVActivity;
-import java.util.Comparator;
+import android.telephony.PhoneStateListener;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
 
 public class jpw
-  implements Comparator
+  extends PhoneStateListener
 {
-  public jpw(AVActivity paramAVActivity) {}
+  public jpw(BaseSmallScreenService paramBaseSmallScreenService) {}
   
-  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    if (paramVideoViewInfo1.a) {}
-    while (paramVideoViewInfo2.a) {
-      return 1;
-    }
-    return 0;
+    super.onCallStateChanged(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.nearby.widget.NearbyFacePowerDialog;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnCompletionListener;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
 
 public class afea
-  implements View.OnClickListener
+  implements IMediaPlayer.OnCompletionListener
 {
-  public afea(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, String paramString, NearbyFacePowerDialog paramNearbyFacePowerDialog) {}
+  public afea(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnCompletionListener paramOnCompletionListener) {}
   
-  public void onClick(View paramView)
+  public void a(IMediaPlayer paramIMediaPlayer)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a.startActivity(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyFacePowerDialog.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnCompletionListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl);
   }
 }
 

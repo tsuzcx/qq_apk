@@ -50,6 +50,7 @@ public class MsgTabNodeListRequest
     if (this.jdField_c_of_type_JavaLangString != null) {
       localReqMsgTabNodeList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
     }
+    localReqMsgTabNodeList.version.set(1);
     return localReqMsgTabNodeList.toByteArray();
   }
   

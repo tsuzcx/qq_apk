@@ -1,30 +1,16 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.qq.im.poi.LbsPackPoiListActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.BaseApplication;
 
-class ano
-  implements Runnable
+public class ano
+  implements View.OnClickListener
 {
-  ano(ann paramann) {}
+  public ano(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.a.a.jdField_a_of_type_Boolean)
-    {
-      LbsPackPoiListActivity.a(this.a.a, 800L);
-      localPullRefreshHeader = this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
-      if (!NetworkUtil.d(BaseApplication.getContext())) {
-        break label54;
-      }
-    }
-    label54:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      return;
-    }
+    LbsPackPoiListActivity.a(this.a).cancel();
   }
 }
 

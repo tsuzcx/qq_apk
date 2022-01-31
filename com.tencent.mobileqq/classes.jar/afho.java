@@ -1,29 +1,22 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
 
 public class afho
-  implements IphonePickerView.IphonePickListener
+  implements ConditionSearchManager.IConfigListener
 {
-  public afho(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
+  public afho(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onConfirmBtClicked()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
-    {
-      NearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.b, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.a();
+    if (!paramBoolean) {
+      this.a.b(this.a.getString(2131437318));
     }
-  }
-  
-  public void onItemSelected(int paramInt1, int paramInt2)
-  {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.b.setText(NearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel).getText(0, paramInt1));
+    while ((this.a.e != 1) || (paramInt != 2)) {
+      return;
+    }
+    NearbyPeopleProfileActivity.a(this.a).c();
   }
 }
 

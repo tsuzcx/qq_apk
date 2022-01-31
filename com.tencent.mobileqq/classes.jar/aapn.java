@@ -1,35 +1,33 @@
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Container;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.aidl.IArSoCallback.Stub;
+import com.tencent.mobileqq.ar.config.DownloadDependRes;
+import com.tencent.qphone.base.util.QLog;
 
 public class aapn
-  implements Runnable
+  extends IArSoCallback.Stub
 {
-  public aapn(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  public aapn(DownloadDependRes paramDownloadDependRes) {}
   
-  public void run()
+  public void a()
   {
-    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
-    if (localObject == null) {}
-    ArkFullScreenAppActivity localArkFullScreenAppActivity;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
-        localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
-        localObject = ArkAppContainer.a((ark.Container)localObject);
-      } while (localObject == null);
-      localObject = (ArkAppContainer)((WeakReference)localObject).get();
-    } while (localObject == null);
-    localArkFullScreenAppActivity.a((ArkAppContainer)localObject, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("WorldCupMgr", 2, "onArSoDownloadSuccess");
+    }
+    this.a.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WorldCupMgr", 2, "onArSoDownloadProcess process=" + paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WorldCupMgr", 2, "onArSoDownloadFail");
+    }
+    this.a.a();
   }
 }
 

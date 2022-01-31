@@ -1,27 +1,19 @@
-import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
+import org.json.JSONObject;
 
-public class alhy
-  implements TicketUtils.TicketCallback
+class alhy
+  implements DialogInterface.OnClickListener
 {
-  public alhy(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  alhy(alhw paramalhw, SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse, JSONObject paramJSONObject) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LogUtility.a("MyAppApi", "onGetA1Fail ---");
-    ThreadManager.getSubThreadHandler().post(new alia(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.a("MyAppApi", "onGetA1 ---");
-    ThreadManager.getSubThreadHandler().post(new alhz(this, paramArrayOfByte, paramString));
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Alhw.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$GetAuthApiListResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 

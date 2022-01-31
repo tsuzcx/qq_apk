@@ -1,31 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import java.util.ArrayList;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-class sdv
-  implements Runnable
+public class sdv
+  implements AbsListView.OnScrollListener
 {
-  sdv(sdu paramsdu, ArrayList paramArrayList) {}
+  public sdv(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    View localView;
-    do
+    this.a.m = paramInt;
+    if (paramInt == 0)
     {
+      AbstractGifImage.resumeAll();
       return;
-      localView = this.jdField_a_of_type_Sdu.a.a[33];
-    } while (localView == null);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      localView.setVisibility(8);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Sdu.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
-      return;
-      localView.setVisibility(0);
+    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
+      this.a.a.d();
     }
+    AbstractGifImage.pauseAll();
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

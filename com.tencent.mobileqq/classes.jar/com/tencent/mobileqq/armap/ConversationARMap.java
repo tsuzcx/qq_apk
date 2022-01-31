@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.armap;
 
-import abck;
-import abcl;
-import abcm;
+import abjk;
+import abjl;
+import abjm;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -55,8 +55,8 @@ public class ConversationARMap
   {
     super(paramConversation, paramViewGroup);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener = new abcl(this);
-    this.jdField_a_of_type_JavaLangRunnable = new abcm(this);
+    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener = new abjl(this);
+    this.jdField_a_of_type_JavaLangRunnable = new abjm(this);
     this.jdField_i_of_type_Int = -1;
   }
   
@@ -116,10 +116,10 @@ public class ConversationARMap
     }
     n();
     if (this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.e();
+      this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.h();
     }
     if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView != null) {
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.h();
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.g();
     }
     if (paramBoolean)
     {
@@ -163,7 +163,7 @@ public class ConversationARMap
       return;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversation.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a())) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.b();
+      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.f();
     }
     s();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -174,7 +174,7 @@ public class ConversationARMap
   private void s()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.a(new abck(this));
+      this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.a(new abjk(this));
     }
   }
   
@@ -185,8 +185,8 @@ public class ConversationARMap
     int i1;
     if (this.jdField_a_of_type_Int == -1)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363964));
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView = ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363972));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363989));
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView = ((ARMapHongBaoListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363997));
       this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase = this;
       i2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().getDisplayMetrics().heightPixels;
       i3 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().getDisplayMetrics().widthPixels;
@@ -215,7 +215,7 @@ public class ConversationARMap
         this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_f_of_type_Int = this.jdField_c_of_type_Int;
         this.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.getHeight();
         this.jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.getWidth();
-        this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView = ((BreathEffectView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363979));
+        this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView = ((BreathEffectView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364004));
         SplashBitmapUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView = new ARMapSplashView(this.jdField_a_of_type_AndroidAppActivity);
         this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.setSplashMode(1);
@@ -272,7 +272,7 @@ public class ConversationARMap
       if ((!this.jdField_e_of_type_Boolean) || (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView == null) || (this.jdField_i_of_type_Int != 1)) {
         break;
       }
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.g();
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.f();
       return;
       c();
     }
@@ -323,7 +323,7 @@ public class ConversationARMap
           break label396;
         }
         if ((this.jdField_c_of_type_Boolean) && (this.jdField_i_of_type_Int != 0)) {
-          this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.h();
+          this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.g();
         }
         this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.a(0);
       }
@@ -352,7 +352,7 @@ public class ConversationARMap
       label396:
       this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.a(1);
       if ((this.jdField_c_of_type_Boolean) && (this.jdField_i_of_type_Int != 1)) {
-        this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.g();
+        this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.f();
       }
     }
   }
@@ -368,7 +368,7 @@ public class ConversationARMap
       }
     } while ((paramInt != 2) && (paramInt != 4));
     if ((this.jdField_a_of_type_Int == 3) || (this.jdField_e_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.d();
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.c();
     }
     c();
   }
@@ -393,7 +393,7 @@ public class ConversationARMap
       this.jdField_d_of_type_Boolean = paramBoolean;
       a();
     } while ((!this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView == null) || (this.jdField_d_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.e();
+    this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.h();
   }
   
   public boolean a()
@@ -487,7 +487,7 @@ public class ConversationARMap
           if (!this.jdField_c_of_type_Boolean) {
             break label273;
           }
-          this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.e();
+          this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.d();
           this.jdField_a_of_type_AndroidOsHandler.removeMessages(2002);
           u();
           if (!this.o) {
@@ -504,7 +504,7 @@ public class ConversationARMap
       }
     }
     label262:
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.f();
+    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.e();
     f(true);
     this.o = true;
   }
@@ -521,7 +521,7 @@ public class ConversationARMap
       QLog.d("ConversationARMap", 2, "normalMode");
     }
     c(0);
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.i();
+    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.h();
     this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setEnableTouch(true);
     this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setActiveListViewListener(null);
     f(true);
@@ -543,7 +543,7 @@ public class ConversationARMap
     if (QLog.isColorLevel()) {
       QLog.d("ConversationARMap", 2, "ARMapMode");
     }
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.j();
+    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.i();
     this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setActiveListViewListener(this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener);
   }
   
@@ -576,7 +576,7 @@ public class ConversationARMap
       {
         if (!this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_d_of_type_Boolean)
         {
-          this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.e();
+          this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.d();
           if (this.o)
           {
             ReportController.b(null, "dc01440", "", "", "0X80079C2", "0X80079C2", 0, 0, "", "", "", "");
@@ -644,7 +644,7 @@ public class ConversationARMap
       } while ((!this.jdField_e_of_type_Boolean) || (!this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView == null));
       if (!this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_d_of_type_Boolean)
       {
-        this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.e();
+        this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.d();
         if (this.o)
         {
           ReportController.b(null, "dc01440", "", "", "0X80079C2", "0X80079C2", 0, 0, "", "", "", "");
@@ -652,7 +652,7 @@ public class ConversationARMap
         }
       }
     } while (this.jdField_i_of_type_Int != 1);
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.g();
+    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.f();
   }
   
   public boolean handleMessage(Message paramMessage)

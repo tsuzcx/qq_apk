@@ -1,25 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.activity.VADActivity;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
+import com.tencent.mobileqq.richmedia.conn.SubTitleProtocoDataCodec;
+import com.tencent.qphone.base.util.MsfSocketInputBuffer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ahry
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ahry(UniteSearchActivity paramUniteSearchActivity) {}
+  public ahry(LiteTcpConnection paramLiteTcpConnection) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    VADActivity.a(this.a, 3);
-    if (this.a.a != null) {
-      this.a.a.e();
+    while (LiteTcpConnection.a(this.a).get()) {
+      try
+      {
+        MsfSocketInputBuffer localMsfSocketInputBuffer = LiteTcpConnection.a(this.a);
+        if (localMsfSocketInputBuffer == null) {
+          return;
+        }
+        while (!localMsfSocketInputBuffer.isDataAvailable(10000)) {
+          if (!LiteTcpConnection.a(this.a).get()) {
+            return;
+          }
+        }
+        if (!LiteTcpConnection.a(this.a).get()) {
+          break;
+        }
+        LiteTcpConnection.a(this.a).a(localMsfSocketInputBuffer);
+        localMsfSocketInputBuffer.reset();
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PeakAudioTransHandler LiteTcpConnection", 2, "read exception " + localException.getMessage() + ";");
+        }
+        LiteTcpConnection.a(this.a, 1);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahry
  * JD-Core Version:    0.7.0.1
  */

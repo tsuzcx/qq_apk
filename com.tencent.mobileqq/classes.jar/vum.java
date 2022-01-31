@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.GetTextDraftJob;
-import com.tencent.mobileqq.data.DraftTextInfo;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class vum
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public vum(GetTextDraftJob paramGetTextDraftJob, DraftTextInfo paramDraftTextInfo) {}
+  public vum(PhotoListPanel paramPhotoListPanel) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BaseChatPie localBaseChatPie = (BaseChatPie)GetTextDraftJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGetTextDraftJob).get();
-    if (localBaseChatPie == null) {
-      return;
-    }
-    localBaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
+    ReportController.b(this.a.a, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "0", "", "", "");
   }
 }
 

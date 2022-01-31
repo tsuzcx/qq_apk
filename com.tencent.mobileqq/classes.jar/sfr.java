@@ -1,16 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class sfr
-  extends GameCenterObserver
+  extends Handler
 {
-  public sfr(Contacts paramContacts) {}
+  public sfr(ChatHistoryForC2C paramChatHistoryForC2C) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    if (Contacts.a(this.a)) {
-      Contacts.a(this.a);
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131434499);
+      this.a.a.show();
     }
   }
 }

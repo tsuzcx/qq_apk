@@ -97,7 +97,7 @@ public class RecentFaceDecoder
   public static Pair a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
     int k = -2147483648;
-    int m = 2130839207;
+    int m = 2130839226;
     int n = 1;
     int i = m;
     int j = k;
@@ -119,15 +119,15 @@ public class RecentFaceDecoder
         if (!String.valueOf(AppConstants.H).equals(paramString)) {
           if (String.valueOf(AppConstants.v).equals(paramString))
           {
-            i = 2130839210;
+            i = 2130839229;
             j = k;
           }
           else if (AppConstants.D.equals(paramString))
           {
-            i = 2130839283;
+            i = 2130839302;
             j = k;
           }
-          else if (AppConstants.ar.equals(paramString))
+          else if (AppConstants.as.equals(paramString))
           {
             j = 110;
             i = -2147483648;
@@ -139,17 +139,22 @@ public class RecentFaceDecoder
             continue;
             if (String.valueOf(AppConstants.G).equals(paramString))
             {
-              i = 2130839201;
+              i = 2130839220;
               j = k;
             }
             else if (AppConstants.ag.equals(paramString))
             {
-              i = 2130842819;
+              i = 2130842853;
               j = k;
             }
             else if (AppConstants.ah.equals(paramString))
             {
-              i = 2130842818;
+              i = 2130842852;
+              j = k;
+            }
+            else if (AppConstants.ai.equals(paramString))
+            {
+              i = 2130842854;
               j = k;
             }
             else
@@ -158,10 +163,10 @@ public class RecentFaceDecoder
               i = -2147483648;
               continue;
               j = 102;
-              i = 2130841588;
+              i = 2130841615;
               continue;
               j = 107;
-              i = 2130841586;
+              i = 2130841613;
               continue;
               i = -2147483648;
               j = 104;
@@ -186,7 +191,7 @@ public class RecentFaceDecoder
                 {
                   if (paramInt != 0)
                   {
-                    i = 2130838082;
+                    i = 2130838084;
                     j = k;
                     break;
                     paramInt = 0;
@@ -207,21 +212,21 @@ public class RecentFaceDecoder
                 j = 113;
                 i = -2147483648;
                 continue;
-                i = 2130839200;
+                i = 2130839217;
                 j = k;
                 continue;
-                i = 2130842153;
+                i = 2130842185;
                 j = k;
                 continue;
-                i = 2130839208;
+                i = 2130839227;
                 j = k;
                 continue;
-                i = 2130840596;
+                i = 2130840611;
                 j = k;
                 continue;
                 if (AppConstants.w.equals(paramString))
                 {
-                  i = 2130839206;
+                  i = 2130839225;
                   j = k;
                 }
                 else
@@ -229,10 +234,10 @@ public class RecentFaceDecoder
                   j = 103;
                   i = -2147483648;
                   continue;
-                  i = 2130839203;
+                  i = 2130839222;
                   j = k;
                   continue;
-                  i = 2130838730;
+                  i = 2130838739;
                   j = 104;
                   continue;
                   j = 108;
@@ -245,7 +250,7 @@ public class RecentFaceDecoder
                   i = -2147483648;
                   continue;
                   j = 106;
-                  i = 2130843908;
+                  i = 2130843974;
                   continue;
                   if (TextUtils.isEmpty(PublicAccountConfigUtil.g)) {}
                   for (i = ServiceAccountFolderManager.a();; i = 2147483647)
@@ -253,37 +258,37 @@ public class RecentFaceDecoder
                     j = 112;
                     break;
                   }
-                  i = 2130839204;
+                  i = 2130839223;
                   j = k;
                   continue;
-                  i = 2130838766;
+                  i = 2130838775;
                   j = k;
                   continue;
-                  i = 2130839193;
+                  i = 2130839210;
                   j = k;
                   continue;
                   i = ((ChangeMachineManager)paramQQAppInterface.getManager(182)).a();
                   j = k;
                   continue;
-                  if (TextUtils.equals(paramString, AppConstants.aE))
+                  if (TextUtils.equals(paramString, AppConstants.aF))
                   {
-                    i = 2130842387;
+                    i = 2130842422;
                     j = k;
                   }
-                  else if (TextUtils.equals(paramString, AppConstants.aF))
+                  else if (TextUtils.equals(paramString, AppConstants.aG))
                   {
-                    i = 2130842388;
+                    i = 2130842423;
                     j = k;
                   }
                   else
                   {
-                    i = 2130842387;
+                    i = 2130842422;
                     j = k;
                     continue;
                     i = -2147483648;
                     j = 1;
                     continue;
-                    i = 2130846198;
+                    i = 2130846280;
                     j = k;
                   }
                 }
@@ -394,13 +399,13 @@ public class RecentFaceDecoder
             }
             else if (j == 1034)
             {
-              j = 2130842385;
+              j = 2130842420;
               i = j;
               if ((paramRecentBaseData instanceof RecentItemConfessMsg))
               {
                 i = j;
                 if (((RecentItemConfessMsg)paramRecentBaseData).a.confessorSex == 1) {
-                  i = 2130842386;
+                  i = 2130842421;
                 }
               }
               paramRecentBaseData = BaseApplication.getContext().getResources().getDrawable(i);
@@ -535,7 +540,7 @@ public class RecentFaceDecoder
         label560:
         if (paramInt == 103)
         {
-          paramString = BaseApplication.getContext().getResources().getDrawable(2130839196);
+          paramString = BaseApplication.getContext().getResources().getDrawable(2130839213);
           if ((paramString instanceof SkinnableBitmapDrawable)) {
             ((SkinnableBitmapDrawable)paramString).setGravity(81);
           }

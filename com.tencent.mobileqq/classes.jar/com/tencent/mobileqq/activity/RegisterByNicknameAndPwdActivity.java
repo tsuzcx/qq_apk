@@ -26,9 +26,9 @@ import com.tencent.util.InputMethodUtil;
 import java.io.UnsupportedEncodingException;
 import mqq.manager.AccountManager;
 import mqq.observer.AccountObserver;
-import tpe;
-import tpf;
-import tpg;
+import ttw;
+import ttx;
+import tty;
 
 public class RegisterByNicknameAndPwdActivity
   extends RegisterNewBaseActivity
@@ -37,7 +37,7 @@ public class RegisterByNicknameAndPwdActivity
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tpg(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tty(this);
   private boolean jdField_a_of_type_Boolean = true;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private ClearableEditText b;
@@ -172,36 +172,36 @@ public class RegisterByNicknameAndPwdActivity
     if (getIntent().getBooleanExtra("not_need_verify_sms", false))
     {
       a(50);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131372192));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131372202));
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131372190));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131372200));
       this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364885));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364912));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364930));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364957));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       if (!this.jdField_a_of_type_Boolean) {
         break label207;
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843868);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843934);
       this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("隐藏密码");
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnFocusChangeListener(new tpe(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnFocusChangeListener(new ttw(this));
       if (AccessibilityUtil.a(this))
       {
-        this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(2131434477);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(2131433200);
+        this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(2131434493);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(2131433214);
       }
       return;
       a(80);
       break;
       label207:
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843869);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843935);
       this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("显示密码");
     }
   }
@@ -281,40 +281,40 @@ public class RegisterByNicknameAndPwdActivity
     {
     default: 
       return;
-    case 2131364885: 
+    case 2131364912: 
       ReportController.b(this.app, "CliOper", "", "", "0X8006653", "0X8006653", 0, 0, "", "", "", "");
       if (!NetworkUtil.d(BaseApplication.getContext()))
       {
-        a(2131433009, 0);
+        a(2131433023, 0);
         return;
       }
       paramView = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText());
       if (TextUtils.isEmpty(paramView))
       {
-        a(2131434298, 1);
+        a(2131434314, 1);
         return;
       }
       if (b(paramView))
       {
-        a(2131434282, 1);
+        a(2131434298, 1);
         return;
       }
       if (!a(paramView))
       {
-        a(2131434281, 1);
+        a(2131434297, 1);
         return;
       }
       String str = this.jdField_b_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
       if ((TextUtils.isEmpty(str)) || (str.trim().length() == 0))
       {
-        a(2131434318, 1);
+        a(2131434334, 1);
         return;
       }
       try
       {
         if (a(str) > 24L)
         {
-          a(2131434319, 1);
+          a(2131434335, 1);
           return;
         }
       }
@@ -328,8 +328,8 @@ public class RegisterByNicknameAndPwdActivity
           {
             if (this.jdField_d_of_type_Boolean)
             {
-              localAccountManager.getQuickRegisterAccount(this.app.getCurrentAccountUin(), str, paramView, AppSetting.a, "7.6.3", this.jdField_a_of_type_MqqObserverAccountObserver);
-              b(2131434237);
+              localAccountManager.getQuickRegisterAccount(this.app.getCurrentAccountUin(), str, paramView, AppSetting.a, "7.6.8", this.jdField_a_of_type_MqqObserverAccountObserver);
+              b(2131434253);
               return;
             }
           }
@@ -342,7 +342,7 @@ public class RegisterByNicknameAndPwdActivity
           localAccountManager.sendRegisterBySetPass(paramView, str, this.jdField_c_of_type_JavaLangString, false, this.jdField_a_of_type_MqqObserverAccountObserver);
         }
       }
-    case 2131364930: 
+    case 2131364957: 
       paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
       if (this.jdField_a_of_type_Boolean)
       {
@@ -350,7 +350,7 @@ public class RegisterByNicknameAndPwdActivity
           ReportController.a(this.app, "dc00898", "", "", "0X80072FA", "0X80072FA", 0, 0, "", "", "", "");
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843869);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843935);
         this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("显示密码");
       }
       for (;;)
@@ -364,18 +364,18 @@ public class RegisterByNicknameAndPwdActivity
         this.jdField_a_of_type_Boolean = bool;
         return;
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843868);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843934);
         this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("隐藏密码");
       }
     }
     InputMethodUtil.a(this);
-    new Handler().postDelayed(new tpf(this), 200L);
+    new Handler().postDelayed(new ttx(this), 200L);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130970917);
+    setContentView(2130970935);
     this.jdField_d_of_type_Boolean = getIntent().getBooleanExtra("key_register_from_quick_register", false);
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("key_register_smscode");
     if (this.jdField_c_of_type_JavaLangString == null) {

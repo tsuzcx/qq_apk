@@ -1,32 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.funchat.record.QavRecordButtonView;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class kdg
-  implements View.OnTouchListener
+class kdg
+  implements QavInOutAnimation.QavOutAnimationListener
 {
-  public kdg(QavRecordButtonView paramQavRecordButtonView) {}
+  kdg(kdf paramkdf, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (QavRecordButtonView.a(this.a) != 1) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-    }
-    for (;;)
+    if (this.jdField_a_of_type_Kdf.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      this.jdField_a_of_type_Kdf.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131364272, false);
+      this.jdField_a_of_type_Kdf.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365419, false);
+      this.jdField_a_of_type_Kdf.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365418, false);
+      this.jdField_a_of_type_Kdf.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365416, false);
+      this.jdField_a_of_type_Kdf.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365414, false);
+      this.jdField_a_of_type_Kdf.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131364274, false);
     }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Kdf.a.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Kdf.a.c, 0);
+    this.jdField_a_of_type_Kdf.a.jdField_a_of_type_ComTencentAvVideoController.b(250);
+    this.jdField_a_of_type_Kdf.a.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_Kdf.a.c, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Kdf.a.e = true;
+    this.jdField_a_of_type_Kdf.a.finish();
+    this.jdField_a_of_type_Kdf.a.overridePendingTransition(0, 2131034269);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kdg
  * JD-Core Version:    0.7.0.1
  */

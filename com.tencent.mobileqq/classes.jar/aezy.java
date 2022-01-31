@@ -1,12 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorAdapter;
+import com.tencent.widget.SingleLineTextView;
 
-class aezy
-  implements DialogInterface.OnClickListener
+public class aezy
 {
-  aezy(aezv paramaezv) {}
+  public SingleLineTextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private aezy(NearbyVisitorAdapter paramNearbyVisitorAdapter) {}
 }
 
 

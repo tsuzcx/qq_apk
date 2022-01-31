@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-class lev
-  implements DialogInterface.OnCancelListener
+public class lev
+  implements Runnable
 {
-  lev(leu paramleu) {}
+  public lev(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    paramDialogInterface = new Intent();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("retCode", 1);
-    localBundle.putString("msg", "用户取消");
-    paramDialogInterface.putExtra("Bundle", localBundle);
-    this.a.a.setResult(-1, paramDialogInterface);
-    this.a.a.finish();
+    if (this.a.app != null)
+    {
+      QQMessageFacade localQQMessageFacade = this.a.app.a();
+      if (localQQMessageFacade != null)
+      {
+        int i = localQQMessageFacade.b();
+        ReadInJoyChannelActivity.a(this.a, i);
+      }
+    }
   }
 }
 

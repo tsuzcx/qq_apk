@@ -1,26 +1,15 @@
-import cooperation.weiyun.sdk.download.DownloadJobContext.StatusInfo;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadStatusListener;
-import cooperation.weiyun.utils.WyReportUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public final class anha
-  implements WyDownloader.IDownloadStatusListener
+public class anha
+  implements View.OnClickListener
 {
-  public void a(String paramString) {}
+  public anha(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void a(String paramString, long paramLong, DownloadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      if (paramStatusInfo.a != 5) {
-        break label25;
-      }
-      WyReportUtils.a(paramString, "actFileWyDown", paramStatusInfo, false, paramLong);
-    }
-    label25:
-    while (paramStatusInfo.a != 4) {
-      return;
-    }
-    WyReportUtils.a(paramString, "actFileWyDown", paramStatusInfo, true, paramLong);
+    this.a.j();
   }
 }
 

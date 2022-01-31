@@ -1,30 +1,79 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.QQMapRoutingHelper;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.util.List;
 
 public class tjw
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public tjw(QQMapActivity paramQQMapActivity) {}
+  public tjw(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!NetworkUtil.d(this.a)) {
-      this.a.x();
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
     }
-    for (;;)
+  }
+  
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramBoolean)
     {
-      QQMapRoutingHelper.a("see_streetview");
-      return;
-      if (NetworkUtil.a(this.a)) {
-        this.a.p();
-      } else {
-        DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131436445)).setMessage(2131436444).setPositiveButton(2131436446, new tjy(this)).setNegativeButton(2131433015, new tjx(this)).show();
+      paramArrayOfObject = ((FriendsManager)this.a.app.getManager(50)).b();
+      if ((paramArrayOfObject != null) && (paramArrayOfObject.size() != 0)) {
+        break label51;
       }
+    }
+    label51:
+    for (paramArrayOfObject = "暂无";; paramArrayOfObject = paramArrayOfObject.size() + "人")
+    {
+      PermisionPrivacyActivity.b(this.a).setRightText(paramArrayOfObject);
+      return;
+    }
+  }
+  
+  protected void onSetSpecialCareSwitchesOfAPerson(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (paramBoolean)
+    {
+      paramArrayOfObject = ((FriendsManager)this.a.app.getManager(50)).b();
+      if ((paramArrayOfObject != null) && (paramArrayOfObject.size() != 0)) {
+        break label51;
+      }
+    }
+    label51:
+    for (paramArrayOfObject = "暂无";; paramArrayOfObject = paramArrayOfObject.size() + "人")
+    {
+      PermisionPrivacyActivity.b(this.a).setRightText(paramArrayOfObject);
+      return;
+    }
+  }
+  
+  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1) {
+      this.a.a(2131436084, 1);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List paramList)
+  {
+    if (paramBoolean1)
+    {
+      paramList = ((FriendsManager)this.a.app.getManager(50)).b();
+      if ((paramList != null) && (paramList.size() != 0)) {
+        break label51;
+      }
+    }
+    label51:
+    for (paramList = "暂无";; paramList = paramList.size() + "人")
+    {
+      PermisionPrivacyActivity.b(this.a).setRightText(paramList);
+      return;
     }
   }
 }

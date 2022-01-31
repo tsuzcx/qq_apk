@@ -34,7 +34,7 @@ import mqq.app.BaseActivity;
 import mqq.observer.BusinessObserver;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import qia;
+import qms;
 
 public class LightAppUtil
 {
@@ -63,14 +63,14 @@ public class LightAppUtil
   
   public LightAppUtil()
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new qia(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new qms(this);
     this.jdField_a_of_type_MqqAppAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     this.c = false;
   }
   
   public LightAppUtil(Activity paramActivity)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new qia(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new qms(this);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity))
     {
@@ -86,7 +86,7 @@ public class LightAppUtil
   
   public LightAppUtil(Activity paramActivity, LightAppUtil.GetLightAppSettingListener paramGetLightAppSettingListener)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new qia(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new qms(this);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener = paramGetLightAppSettingListener;
     if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity))
@@ -515,7 +515,7 @@ public class LightAppUtil
     }
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_MqqAppAppRuntime.getAccount();
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      ToastUtil.a().a(2131435615);
+      ToastUtil.a().a(2131435631);
     }
     d();
   }

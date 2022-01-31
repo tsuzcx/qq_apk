@@ -121,7 +121,7 @@ public class ReadInJoyArticleAdapter
         } while (this.c != 0);
         paramArrayList = (BaseArticleInfo)this.b.get(0);
       } while (paramArrayList == null);
-      localObject = PublicAccountUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList);
+      localObject = PublicAccountUtil.b(a(), paramArrayList);
       PublicAccountUtil.a(paramBaseArticleInfo, PublicAccountUtil.a(paramArrayList), String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, true);
       return;
       ReadInJoyLogicEngine.a().a(this.c, 20, 9223372036854775807L, true);
@@ -166,19 +166,19 @@ public class ReadInJoyArticleAdapter
       paramArrayList1 = (QQAppInterface)ReadInJoyUtils.a();
       paramArrayList2 = (KandianMergeManager)paramArrayList1.getManager(161);
       if (this.b.size() <= 0) {
-        break label249;
+        break label248;
       }
       if (this.c == 0)
       {
         paramArrayList2 = (BaseArticleInfo)this.b.get(0);
         if (paramArrayList2 != null)
         {
-          localObject = PublicAccountUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList2);
+          localObject = PublicAccountUtil.b(a(), paramArrayList2);
           PublicAccountUtil.a(paramArrayList1, PublicAccountUtil.a(paramArrayList2), String.valueOf(NetConnInfoCenter.getServerTime()), (String)localObject, true);
         }
       }
     }
-    label249:
+    label248:
     do
     {
       return;

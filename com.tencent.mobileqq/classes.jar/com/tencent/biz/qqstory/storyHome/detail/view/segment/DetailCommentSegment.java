@@ -66,7 +66,7 @@ public class DetailCommentSegment
       SLog.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. data is null.");
       return paramBaseViewHolder.a();
     }
-    paramViewGroup = (TextView)paramBaseViewHolder.a(2131371688);
+    paramViewGroup = (TextView)paramBaseViewHolder.a(2131371686);
     if (((CommentEntry)localObject1).type == 1)
     {
       paramViewGroup.setTextColor(-4473925);
@@ -112,7 +112,7 @@ public class DetailCommentSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970723, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970739, paramViewGroup, false));
   }
   
   public String a()

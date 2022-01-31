@@ -1,16 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.ShortVideoObserver;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class snb
-  implements View.OnClickListener
+  extends ShortVideoObserver
 {
-  public snb(FontSettingActivity paramFontSettingActivity) {}
+  public snb(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    FontSettingActivity.a(this.a).dismiss();
+    if (!this.a.i) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
+      }
+    } while ((!paramBoolean) || (paramInt != RedBagVideoManager.a));
+    DialogUtil.b(this.a.a(), 0, null, this.a.a(2131439151), 2131439153, 2131439152, new snc(this), new snd(this)).show();
   }
 }
 

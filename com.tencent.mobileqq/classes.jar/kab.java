@@ -1,29 +1,27 @@
-import com.tencent.av.ui.RedbagToolbar;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.GuideTip2.OnGuideTipListener;
+import android.content.res.Resources;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class kab
-  implements GuideTip2.OnGuideTipListener
+  implements Runnable
 {
-  public kab(RedbagToolbar paramRedbagToolbar, AVRedBagMgr paramAVRedBagMgr) {}
+  public kab(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {}
-    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
-    {
-      if (!paramBoolean)
-      {
-        this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a(false);
-        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TimeoutRunnable Run");
+    }
+    QQToast.a(MultiVideoEnterPageActivity.c(this.a), 2131429191, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131558448));
+    if (!this.a.jdField_a_of_type_Boolean) {
+      MultiVideoEnterPageActivity.g(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kab
  * JD-Core Version:    0.7.0.1
  */

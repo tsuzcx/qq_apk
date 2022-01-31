@@ -1,10 +1,10 @@
 package cooperation.qzone.video;
 
-import anbh;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anjg;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.IPluginManager;
@@ -21,7 +21,7 @@ public class QzoneLiveVideoPluginProxyActivity
   
   public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
   {
-    Class localClass = anbh.a("com.qzone.adapter.livevideo.QZoneLiveVideoActivity");
+    Class localClass = anjg.a("com.qzone.adapter.livevideo.QZoneLiveVideoActivity");
     paramIntent.putExtra("userQqResources", -1);
     paramIntent.putExtra("useSkinEngine", false);
     paramIntent.putExtra("param_plugin_gesturelock", false);
@@ -105,7 +105,7 @@ public class QzoneLiveVideoPluginProxyActivity
   
   protected Class getProxyActivity(String paramString)
   {
-    return anbh.a(paramString);
+    return anjg.a(paramString);
   }
   
   protected void onCreate(Bundle paramBundle)

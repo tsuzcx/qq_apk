@@ -29,78 +29,84 @@ public class CUKingCardHelper
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     localObject = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + (String)localObject, 4);
-    int i = ((SharedPreferences)localObject).getInt("kingCard", -1);
-    int j = ((SharedPreferences)localObject).getInt("kingCard2", -1);
+    int i = ((SharedPreferences)localObject).getInt("kingCardSdk", -1);
+    int j = ((SharedPreferences)localObject).getInt("kingCard", -1);
+    int k = ((SharedPreferences)localObject).getInt("kingCard2", -1);
     if (QLog.isColorLevel()) {
-      QLog.i("CUKingCardHelper", 2, "getCUKingStatus: status1=" + i + " status2=" + j);
+      QLog.i("CUKingCardHelper", 2, "getCUKingStatus: status1=" + j + " status2=" + k + " sdkStatus=" + i);
     }
-    if ((i < 0) && (j < 0)) {
-      return -1;
+    if (i >= 0) {
+      if (i <= 0) {}
     }
-    if ((i <= 0) && (j <= 0)) {
+    do
+    {
+      return 1;
       return 0;
-    }
-    return 1;
+      if ((j < 0) && (k < 0)) {
+        return -1;
+      }
+    } while ((j > 0) || (k > 0));
+    return 0;
   }
   
   /* Error */
   public static int a(int paramInt, Context paramContext)
   {
     // Byte code:
-    //   0: ldc 84
-    //   2: invokestatic 90	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   0: ldc 88
+    //   2: invokestatic 94	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   5: astore_2
     //   6: aload_1
-    //   7: invokevirtual 96	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   7: invokevirtual 100	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore_1
     //   11: aload_1
     //   12: aload_2
     //   13: iconst_2
-    //   14: anewarray 98	java/lang/String
+    //   14: anewarray 102	java/lang/String
     //   17: dup
     //   18: iconst_0
-    //   19: ldc 100
+    //   19: ldc 104
     //   21: aastore
     //   22: dup
     //   23: iconst_1
-    //   24: ldc 102
+    //   24: ldc 106
     //   26: aastore
-    //   27: ldc 104
+    //   27: ldc 108
     //   29: iconst_1
-    //   30: anewarray 98	java/lang/String
+    //   30: anewarray 102	java/lang/String
     //   33: dup
     //   34: iconst_0
     //   35: iload_0
-    //   36: invokestatic 108	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   36: invokestatic 112	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   39: aastore
     //   40: aconst_null
-    //   41: invokevirtual 114	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   41: invokevirtual 118	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   44: astore_2
     //   45: aload_2
     //   46: ifnull +43 -> 89
     //   49: aload_2
     //   50: astore_1
     //   51: aload_2
-    //   52: invokeinterface 119 1 0
+    //   52: invokeinterface 123 1 0
     //   57: ifeq +32 -> 89
     //   60: aload_2
     //   61: astore_1
     //   62: aload_2
     //   63: aload_2
-    //   64: ldc 100
-    //   66: invokeinterface 123 2 0
-    //   71: invokeinterface 126 2 0
+    //   64: ldc 104
+    //   66: invokeinterface 127 2 0
+    //   71: invokeinterface 130 2 0
     //   76: istore_0
     //   77: aload_2
     //   78: ifnull +9 -> 87
     //   81: aload_2
-    //   82: invokeinterface 129 1 0
+    //   82: invokeinterface 133 1 0
     //   87: iload_0
     //   88: ireturn
     //   89: aload_2
     //   90: ifnull +9 -> 99
     //   93: aload_2
-    //   94: invokeinterface 129 1 0
+    //   94: invokeinterface 133 1 0
     //   99: iconst_m1
     //   100: ireturn
     //   101: astore_3
@@ -108,21 +114,21 @@ public class CUKingCardHelper
     //   103: astore_2
     //   104: aload_2
     //   105: astore_1
-    //   106: ldc 68
+    //   106: ldc 70
     //   108: iconst_1
     //   109: new 36	java/lang/StringBuilder
     //   112: dup
     //   113: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   116: ldc 131
+    //   116: ldc 135
     //   118: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   121: aload_3
-    //   122: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   125: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokestatic 137	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   128: invokestatic 141	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   131: aload_2
     //   132: ifnull -33 -> 99
     //   135: aload_2
-    //   136: invokeinterface 129 1 0
+    //   136: invokeinterface 133 1 0
     //   141: goto -42 -> 99
     //   144: astore_2
     //   145: aconst_null
@@ -130,7 +136,7 @@ public class CUKingCardHelper
     //   147: aload_1
     //   148: ifnull +9 -> 157
     //   151: aload_1
-    //   152: invokeinterface 129 1 0
+    //   152: invokeinterface 133 1 0
     //   157: aload_2
     //   158: athrow
     //   159: astore_2
@@ -208,19 +214,19 @@ public class CUKingCardHelper
         if ((i == 0) || (i == 1))
         {
           i = localSharedPreferences.getInt("popupRate", 0);
-          label351:
+          label365:
           long l;
           StringBuilder localStringBuilder;
-          if ((localSharedPreferences.getInt("kingCard", 0) == 1) || (localSharedPreferences.getInt("kingCard2", 0) == 1))
+          if ((localSharedPreferences.getInt("kingCard", 0) == 1) || (localSharedPreferences.getInt("kingCard", 0) == 1) || (localSharedPreferences.getInt("kingCard2", 0) == 1))
           {
             localCUKingCustomDialogInfo.jdField_a_of_type_Int = 3;
             l = System.currentTimeMillis();
             localStringBuilder = new StringBuilder();
             if (!paramBoolean1) {
-              break label461;
+              break label475;
             }
           }
-          label461:
+          label475:
           for (str = "lastTipTime_";; str = "lastDialogTime_")
           {
             str = str + paramString;
@@ -233,7 +239,7 @@ public class CUKingCardHelper
             localSharedPreferences.edit().putLong(str, l).commit();
             break;
             localCUKingCustomDialogInfo.jdField_a_of_type_Int = 2;
-            break label351;
+            break label365;
           }
         }
         localCUKingCustomDialogInfo.jdField_a_of_type_Int = 4;
@@ -289,7 +295,7 @@ public class CUKingCardHelper
       str1 = "https://mc.vip.qq.com/wkcenter/index?_wv=3&_nav_alpha=0&_wvx=3";
     }
     str2 = "open";
-    if ((localSharedPreferences.getInt("kingCard", 0) == 1) || (localSharedPreferences.getInt("kingCard2", 0) == 1)) {
+    if ((localSharedPreferences.getInt("kingCardSdk", 0) == 1) || (localSharedPreferences.getInt("kingCard", 0) == 1) || (localSharedPreferences.getInt("kingCard2", 0) == 1)) {
       str2 = "update";
     }
     if (!str1.contains("?")) {
@@ -312,10 +318,10 @@ public class CUKingCardHelper
       QLog.e("CUKingCardHelper", 1, "saveCUKingInfo error : trafficInfo = null");
       return;
     }
-    boolean bool1 = paramBundle.getBoolean(VipInfoHandler.d);
-    boolean bool3 = paramBundle.getBoolean(VipInfoHandler.e);
-    String str2 = paramBundle.getString(VipInfoHandler.f);
-    String str1 = paramBundle.getString(VipInfoHandler.g);
+    boolean bool1 = paramBundle.getBoolean(VipInfoHandler.h);
+    boolean bool3 = paramBundle.getBoolean(VipInfoHandler.i);
+    String str2 = paramBundle.getString(VipInfoHandler.j);
+    String str1 = paramBundle.getString(VipInfoHandler.k);
     paramBundle = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + paramBundle, 4);
     SharedPreferences.Editor localEditor = localSharedPreferences.edit();
@@ -341,7 +347,7 @@ public class CUKingCardHelper
         }
         localEditor.putInt("kingCard2", paramTrafficResultInfo.iWkOrderState2);
         if (TextUtils.isEmpty(str1)) {
-          break label767;
+          break label793;
         }
         paramBundle = str1;
         label252:
@@ -349,13 +355,13 @@ public class CUKingCardHelper
         localEditor.putLong("kingCardLastRequest", System.currentTimeMillis() / 1000L);
       }
       if (paramTrafficResultInfo.iDrawerEnable != 1) {
-        break label773;
+        break label799;
       }
       bool1 = true;
       label292:
       localEditor.putBoolean("drawerEnable", bool1);
       if (paramTrafficResultInfo.iGuideEnable != 1) {
-        break label778;
+        break label804;
       }
       bool1 = true;
       label314:
@@ -364,13 +370,14 @@ public class CUKingCardHelper
       {
         paramBundle = new StringBuilder().append("saveCUKingInfo, is in gray : ");
         if (paramTrafficResultInfo.iGuideEnable != 1) {
-          break label783;
+          break label809;
         }
       }
     }
-    label773:
-    label778:
-    label783:
+    label793:
+    label799:
+    label804:
+    label809:
     for (bool1 = bool2;; bool1 = false)
     {
       QLog.i("CUKingCardHelper", 2, bool1);
@@ -395,7 +402,7 @@ public class CUKingCardHelper
           localEditor.putInt("popup_version_v2", paramBundle.iPopupVer);
         }
         if (QLog.isColorLevel()) {
-          QLog.i("CUKingCardHelper", 2, "saveCUKingInfo, popup open : " + paramBundle.iOpen);
+          QLog.i("CUKingCardHelper", 2, "saveCUKingInfo, popup open : " + paramBundle.iOpen + " ver:" + paramBundle.iPopupVer);
         }
       }
       if (paramTrafficResultInfo.toasInfo != null)
@@ -411,14 +418,13 @@ public class CUKingCardHelper
           localEditor.putInt("toast_version", paramTrafficResultInfo.iToastVer);
         }
         if (QLog.isColorLevel()) {
-          QLog.i("CUKingCardHelper", 2, "saveCUKingInfo, toast open : " + paramTrafficResultInfo.iOpen);
+          QLog.i("CUKingCardHelper", 2, "saveCUKingInfo, toast open : " + paramTrafficResultInfo.iOpen + " ver:" + paramTrafficResultInfo.iToastVer);
         }
       }
       localEditor.commit();
       return;
       paramBundle = "";
       break;
-      label767:
       paramBundle = "";
       break label252;
       bool1 = false;
@@ -511,7 +517,7 @@ public class CUKingCardHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vip.CUKingCardHelper
  * JD-Core Version:    0.7.0.1
  */

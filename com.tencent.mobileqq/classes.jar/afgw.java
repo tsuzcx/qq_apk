@@ -1,43 +1,29 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class afgw
-  extends TransProcessorHandler
+  implements DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback
 {
-  public afgw(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public afgw(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString, int paramInt)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-        } while (localFileMsg.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.a);
-        }
-      } while (NearbyProfileEditPanel.a(this.a) == null);
-      NearbyProfileEditPanel.a(this.a).a = NearbyPeoplePhotoUploadProcessor.a;
-      NearbyProfileEditPanel.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+    }
+    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
-    }
-    this.a.a.a();
-    this.a.a.b("上传失败");
+    this.a.getActivity().runOnUiThread(new afgx(this, paramBoolean1));
   }
 }
 

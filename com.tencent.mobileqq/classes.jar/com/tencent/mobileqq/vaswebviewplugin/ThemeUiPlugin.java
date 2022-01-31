@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import akkn;
+import aksc;
 import android.content.Intent;
 import android.os.Handler;
 import com.tencent.biz.pubaccount.CustomWebView;
@@ -58,7 +58,7 @@ public class ThemeUiPlugin
   {
     reportTimes = 0;
     if (reportHandler == null) {
-      reportHandler = new akkn(BaseApplication.getContext().getMainLooper());
+      reportHandler = new aksc(BaseApplication.getContext().getMainLooper());
     }
     reportHandler.removeMessages(1);
     initDownloadedThemeNumForReport = 0;
@@ -111,7 +111,7 @@ public class ThemeUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin
  * JD-Core Version:    0.7.0.1
  */

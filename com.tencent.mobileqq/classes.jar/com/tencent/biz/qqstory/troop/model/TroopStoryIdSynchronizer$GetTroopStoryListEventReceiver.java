@@ -15,7 +15,7 @@ public class TroopStoryIdSynchronizer$GetTroopStoryListEventReceiver
       return;
     }
     List localList = paramGetTroopStoryListEvent.jdField_a_of_type_JavaUtilList;
-    if ((paramGetTroopStoryListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (localList != null) && (!localList.isEmpty()))
+    if ((paramGetTroopStoryListEvent.errorInfo.isSuccess()) && (localList != null) && (!localList.isEmpty()))
     {
       paramTroopStoryIdSynchronizer.a(localList);
       paramTroopStoryIdSynchronizer.jdField_a_of_type_JavaUtilList.addAll(localList);

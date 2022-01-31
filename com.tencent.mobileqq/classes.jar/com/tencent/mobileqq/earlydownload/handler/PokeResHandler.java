@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import abyw;
-import abyx;
+import acgw;
+import acgx;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
@@ -58,14 +58,14 @@ public class PokeResHandler
     if (QLog.isColorLevel()) {
       QLog.d("PokeResHandler_1228", 2, "doOnDownloadSuccess imagePath=" + str);
     }
-    ThreadManager.post(new abyw(this, str, paramString), 8, null, true);
+    ThreadManager.post(new acgw(this, str, paramString), 8, null, true);
     super.a(paramString);
   }
   
   public void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    ThreadManager.executeOnSubThread(new abyx(this));
+    ThreadManager.executeOnSubThread(new acgx(this));
   }
   
   public boolean a()

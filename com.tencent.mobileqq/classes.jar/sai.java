@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class sai
-  implements Runnable
+public final class sai
+  implements DialogInterface.OnClickListener
 {
-  public sai(ChatHistoryFileActivity paramChatHistoryFileActivity, String paramString1, String paramString2, int paramInt) {}
+  public sai(QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = MultiMsgManager.a().a.iterator();
-    while (localIterator.hasNext())
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (this.jdField_a_of_type_Int == 6) {}
+    for (paramInt = 1;; paramInt = 4)
     {
-      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if ((localChatMessage instanceof MessageForStructing)) {
-        ShareMsgHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, ((MessageForStructing)localChatMessage).structingMsg, null);
-      }
+      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", paramInt, 0, "", "", "", "");
+      return;
     }
   }
 }

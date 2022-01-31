@@ -30,14 +30,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
-import pdo;
-import pdp;
+import pig;
+import pih;
 
 public class WebSoPlugin
   extends WebViewPlugin
 {
   private static int jdField_a_of_type_Int = -1;
-  private Handler jdField_a_of_type_AndroidOsHandler = new pdo(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new pig(this, Looper.getMainLooper());
   private WebSoPlugin.WebSoJavaScriptObj jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj;
   public String a;
   private boolean jdField_a_of_type_Boolean;
@@ -281,8 +281,8 @@ public class WebSoPlugin
     }
     if (a(paramCustomWebView))
     {
-      paramCustomWebView.setTag(2131362356, paramString2);
-      paramCustomWebView.setTag(2131362357, Long.valueOf(System.currentTimeMillis()));
+      paramCustomWebView.setTag(2131362359, paramString2);
+      paramCustomWebView.setTag(2131362360, Long.valueOf(System.currentTimeMillis()));
       paramCustomWebView.loadUrl(paramString1);
       return;
     }
@@ -385,7 +385,7 @@ public class WebSoPlugin
   
   void a(String paramString)
   {
-    ThreadManager.post(new pdp(this, paramString), 5, null, false);
+    ThreadManager.post(new pih(this, paramString), 5, null, false);
   }
   
   protected boolean handleEvent(String paramString, long paramLong, Map paramMap)

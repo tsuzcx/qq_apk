@@ -1,35 +1,22 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import com.tencent.mobileqq.gameparty.GamePartyObserver;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Process;
+import com.tencent.qphone.base.util.QLog;
 
-public class vsz
-  extends GamePartyObserver
+public final class vsz
+  extends Handler
 {
-  public vsz(FriendChatPie paramFriendChatPie) {}
-  
-  protected void a()
+  public void handleMessage(Message paramMessage)
   {
-    if (((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      FriendChatPie.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar, new Object[0]);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-  }
-  
-  protected void b()
-  {
-    if (((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("PEAK", 2, "self-destory BOOM!!!!");
     }
-  }
-  
-  protected void c()
-  {
-    if ((((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (FriendChatPie.b(this.a).a() == 14)) {
-      FriendChatPie.c(this.a).a();
-    }
+    Process.killProcess(Process.myPid());
   }
 }
 

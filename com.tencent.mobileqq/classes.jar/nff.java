@@ -1,16 +1,37 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.widget.ListView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.BaseResponse;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
+import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nff
-  implements Runnable
+  implements NetworkRequest.IProtocolListener
 {
-  public nff(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager, int paramInt) {}
+  protected final long a;
+  public CmdTaskManger.CommandCallback a;
+  public NetworkRequest a;
   
-  public void run()
+  public nff(NetworkRequest paramNetworkRequest)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.c == 0) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_Int, 0);
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest = paramNetworkRequest;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  private void b(int paramInt, String paramString, BaseResponse paramBaseResponse)
+  {
+    CmdTaskManger.CommandCallback localCommandCallback = this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback;
+    if (localCommandCallback != null)
+    {
+      localCommandCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest, paramBaseResponse, new ErrorMessage(paramInt, paramString));
+      return;
     }
+    SLog.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
+  }
+  
+  public void a(int paramInt, String paramString, BaseResponse paramBaseResponse)
+  {
+    b(paramInt, paramString, paramBaseResponse);
   }
 }
 

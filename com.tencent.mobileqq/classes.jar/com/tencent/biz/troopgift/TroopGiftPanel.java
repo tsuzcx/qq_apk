@@ -46,14 +46,14 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import oyy;
-import oyz;
-import ozb;
-import ozc;
-import ozd;
-import oze;
-import ozf;
-import ozg;
+import pdq;
+import pdr;
+import pdt;
+import pdu;
+import pdv;
+import pdw;
+import pdx;
+import pdy;
 
 public class TroopGiftPanel
   extends LinearLayout
@@ -215,7 +215,7 @@ public class TroopGiftPanel
     }
     for (;;)
     {
-      return paramString.replace("$GCODE$", a()).replace("$CLIENTVER$", "android7.6.3").replace("$UIN$", localAppInterface.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$ROLE$", (CharSequence)localObject);
+      return paramString.replace("$GCODE$", a()).replace("$CLIENTVER$", "android7.6.8").replace("$UIN$", localAppInterface.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$ROLE$", (CharSequence)localObject);
       if (((TroopInfo)localObject).isAdmin())
       {
         localObject = "1";
@@ -231,7 +231,7 @@ public class TroopGiftPanel
   
   public void a()
   {
-    inflate(getContext(), 2130969897, this);
+    inflate(getContext(), 2130969908, this);
   }
   
   public void a(int paramInt)
@@ -249,7 +249,7 @@ public class TroopGiftPanel
       return;
     }
     paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
-    paramString.setDownloadListener(new oyy(this, paramTextView));
+    paramString.setDownloadListener(new pdq(this, paramTextView));
     paramString.setBounds(0, 0, (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 13.0F), (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 14.0F));
     paramTextView.setCompoundDrawables(paramString, null, null, null);
     paramTextView.setCompoundDrawablePadding((int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
@@ -270,7 +270,7 @@ public class TroopGiftPanel
     if (this.e >= 4) {}
     for (int i = 2;; i = 0)
     {
-      ((TroopGiftManager)localObject).a(str1, j, k, str2, 2, i, new oyz(this, paramOnGetGiveGiftCallback));
+      ((TroopGiftManager)localObject).a(str1, j, k, str2, 2, i, new pdr(this, paramOnGetGiveGiftCallback));
       return;
     }
   }
@@ -285,11 +285,11 @@ public class TroopGiftPanel
     a();
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131362727);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131368395);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131368392));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(getResources().getString(2131430749));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(getResources().getString(2131430750));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131362732);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131368397);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131368394));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(getResources().getString(2131430752));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(getResources().getString(2131430753));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setTabHeight((int)getResources().getDimension(2131559211));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectColor(Color.parseColor("#ff5984"));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setUnselectColor(Color.parseColor("#777777"));
@@ -300,8 +300,8 @@ public class TroopGiftPanel
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this);
     this.jdField_a_of_type_ArrayOfComTencentBizTroopgiftRadioViewPager = new RadioViewPager[2];
     this.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager = new GridListViewPager[2];
-    this.jdField_a_of_type_ArrayOfComTencentBizTroopgiftRadioViewPager[0] = ((RadioViewPager)findViewById(2131368396));
-    this.jdField_a_of_type_ArrayOfComTencentBizTroopgiftRadioViewPager[1] = ((RadioViewPager)findViewById(2131368397));
+    this.jdField_a_of_type_ArrayOfComTencentBizTroopgiftRadioViewPager[0] = ((RadioViewPager)findViewById(2131368398));
+    this.jdField_a_of_type_ArrayOfComTencentBizTroopgiftRadioViewPager[1] = ((RadioViewPager)findViewById(2131368399));
     this.jdField_a_of_type_ArrayOfComTencentBizTroopgiftRadioViewPager[0].setGiftPanel(this);
     this.jdField_a_of_type_ArrayOfComTencentBizTroopgiftRadioViewPager[1].setGiftPanel(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).setBackgroundColor(0);
@@ -319,22 +319,22 @@ public class TroopGiftPanel
       i += 1;
     }
     this.jdField_a_of_type_ArrayOfComTencentBizTroopgiftRadioViewPager[this.jdField_b_of_type_Int].setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366725));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366723));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_b_of_type_Int]);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366726));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366724));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364059);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364084);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366722));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366723));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366720));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366721));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    findViewById(2131366724).setOnClickListener(this);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131368393);
+    findViewById(2131366722).setOnClickListener(this);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131368395);
     this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368394));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368396));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    findViewById(2131366717).setOnClickListener(this);
+    findViewById(2131366715).setOnClickListener(this);
   }
   
   public void a(String paramString)
@@ -363,7 +363,7 @@ public class TroopGiftPanel
     for (paramInt = 2;; paramInt = 1)
     {
       paramGiveGift = this.jdField_a_of_type_AndroidContentContext.getResources();
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, paramGiveGift.getString(2131430755), paramGiveGift.getString(2131430756), paramGiveGift.getString(2131433015), paramGiveGift.getString(2131430757), new ozf(this, paramInt), new ozg(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, paramGiveGift.getString(2131430758), paramGiveGift.getString(2131430759), paramGiveGift.getString(2131433029), paramGiveGift.getString(2131430760), new pdx(this, paramInt), new pdy(this)).show();
       e();
       bool1 = false;
       return bool1;
@@ -481,7 +481,7 @@ public class TroopGiftPanel
     label306:
     for (int n = 1;; n = 0)
     {
-      ((TroopGiftManager)localObject).a("OidbSvc.0x6b6", 1718, i, i1, str, 2, k, l, i2, n, localTroopGiftAioItemData.jdField_a_of_type_Int, j, new oze(this, m, localTroopGiftAioItemData), localTroopGiftAioItemData.e);
+      ((TroopGiftManager)localObject).a("OidbSvc.0x6b6", 1718, i, i1, str, 2, k, l, i2, n, localTroopGiftAioItemData.jdField_a_of_type_Int, j, new pdw(this, m, localTroopGiftAioItemData), localTroopGiftAioItemData.e);
       this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData = null;
       return;
@@ -578,7 +578,7 @@ public class TroopGiftPanel
     {
       localIntent = TroopMemberListActivity.a(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 16);
       localIntent.putExtra("param_is_pop_up_style", true);
-      localIntent.putExtra("custom_title_name", BaseApplication.getContext().getString(2131430746));
+      localIntent.putExtra("custom_title_name", BaseApplication.getContext().getString(2131430749));
       localIntent.setFlags(603979776);
       ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 12006);
     }
@@ -586,7 +586,7 @@ public class TroopGiftPanel
     {
       return;
       localIntent = TroopMemberListActivity.a(BaseApplication.getContext(), a(), 14);
-      localIntent.putExtra("custom_title_name", BaseApplication.getContext().getString(2131430746));
+      localIntent.putExtra("custom_title_name", BaseApplication.getContext().getString(2131430749));
       if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
         localIntent.putExtra("troop_gift_from", ((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin());
       }
@@ -638,12 +638,12 @@ public class TroopGiftPanel
     }
     switch (paramView.getId())
     {
-    case 2131364059: 
+    case 2131364084: 
     default: 
-    case 2131366725: 
-    case 2131366724: 
-    case 2131368393: 
-    case 2131368394: 
+    case 2131366723: 
+    case 2131366722: 
+    case 2131368395: 
+    case 2131368396: 
       do
       {
         Object localObject1;
@@ -723,7 +723,7 @@ public class TroopGiftPanel
               if (((TroopGiftAioItemData)localObject1).jdField_b_of_type_Int == 0) {}
               for (k = 1;; k = 0)
               {
-                ((TroopGiftManager)localObject2).a("OidbSvc.0x6b6", 1718, 8, m, paramView, 2, i, 0L, n, k, ((TroopGiftAioItemData)localObject1).jdField_a_of_type_Int, 0, new ozc(this, j, (TroopGiftAioItemData)localObject1), ((TroopGiftAioItemData)localObject1).e);
+                ((TroopGiftManager)localObject2).a("OidbSvc.0x6b6", 1718, 8, m, paramView, 2, i, 0L, n, k, ((TroopGiftAioItemData)localObject1).jdField_a_of_type_Int, 0, new pdu(this, j, (TroopGiftAioItemData)localObject1), ((TroopGiftAioItemData)localObject1).e);
                 if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnShowOrHideListerner == null) {
                   break;
                 }
@@ -744,7 +744,7 @@ public class TroopGiftPanel
             }
             for (k = 2038;; k = 1718)
             {
-              ((TroopGiftManager)localObject2).a(paramView, k, j, this.e, a(), 2, i, 1, ((TroopGiftAioItemData)localObject1).jdField_a_of_type_Int, new ozd(this, (TroopGiftAioItemData)localObject1));
+              ((TroopGiftManager)localObject2).a(paramView, k, j, this.e, a(), 2, i, 1, ((TroopGiftAioItemData)localObject1).jdField_a_of_type_Int, new pdv(this, (TroopGiftAioItemData)localObject1));
               break;
               j = 1;
               break label846;
@@ -815,8 +815,8 @@ public class TroopGiftPanel
       } while ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData == null) || (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$OperationInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$OperationInfo.jdField_b_of_type_JavaLangString)));
       c();
       return;
-    case 2131366726: 
-    case 2131368399: 
+    case 2131366724: 
+    case 2131368401: 
       label156:
       label703:
       label713:
@@ -1033,7 +1033,7 @@ public class TroopGiftPanel
       if ((this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData.jdField_a_of_type_Boolean) && (l1 >= this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData.jdField_a_of_type_Long) && (l1 <= l2 + 2592000000L) && (!((TroopGiftManager)((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getManager(112)).a())) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a(true, false);
       }
-      a(new ozb(this, paramBoolean));
+      a(new pdt(this, paramBoolean));
       return;
       this.jdField_a_of_type_ArrayOfComTencentBizTroopgiftGridListViewPager[1].setVisibility(8);
       ((View)this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).getParent()).setVisibility(8);

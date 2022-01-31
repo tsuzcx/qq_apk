@@ -1,56 +1,47 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.ComicTipsBar;
+import cooperation.comic.VipComicJumpActivity;
+import cooperation.comic.VipComicReportUtils;
+import org.json.JSONObject;
 
 public class whv
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public whv(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public whv(ComicTipsBar paramComicTipsBar, View paramView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetImageButton;
-    if (str.equals("")) {}
-    for (int i = 8;; i = 0)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_Boolean) {
+      paramView = new JSONObject();
+    }
+    try
     {
-      paramEditable.setVisibility(i);
-      if (this.a.f != ClassificationSearchActivity.c) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131433015));
-      if (AppSetting.b) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
-      }
-      if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
+      paramView.put("from", "19");
+      label27:
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_AndroidAppActivity, VipComicJumpActivity.class);
+      localIntent.putExtra("options", paramView.toString());
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      for (;;)
       {
-        if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d)) {
-          break label219;
+        this.jdField_a_of_type_AndroidViewView.postDelayed(new whw(this), 2500L);
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_Boolean) {
+          break;
         }
-        ClassificationSearchActivity.a(this.a);
+        VipComicReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "3009", "2", "40039", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.b, new String[0]);
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_AndroidAppActivity.finish();
       }
+      VipComicReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "3006", "2", "40025", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.b, new String[] { "2" });
       return;
     }
-    Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
-    if (!str.equals("")) {}
-    for (paramEditable = this.a.getResources().getString(2131433958);; paramEditable = this.a.getResources().getString(2131433015))
+    catch (Exception localException)
     {
-      localButton.setText(paramEditable);
-      break;
+      break label27;
     }
-    label219:
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

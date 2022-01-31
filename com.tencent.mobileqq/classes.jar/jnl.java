@@ -1,49 +1,36 @@
-import android.os.Bundle;
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.av.service.IQQServiceCallback;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
+import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.av.service.IAVRedPacketCallback;
+import com.tencent.mobileqq.armap.ResDownloadManager;
 import com.tencent.qphone.base.util.QLog;
 
-class jnl
-  extends ProtoUtils.TroopProtocolObserver
+public class jnl
+  implements Runnable
 {
-  jnl(jnk paramjnk, String paramString, int paramInt) {}
+  public jnl(AVRedPacketConfigManager paramAVRedPacketConfigManager, IAVRedPacketCallback paramIAVRedPacketCallback) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_Jnk.a.a)
+    StringBuilder localStringBuilder = new StringBuilder().append("downloadRes, threadName[").append(Thread.currentThread().getName()).append("], threadId[").append(Thread.currentThread().getId()).append("], resDownloadManager[");
+    if (this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      int j = this.jdField_a_of_type_Jnk.a.a.beginBroadcast();
-      int i = 0;
-      for (;;)
+      QLog.w("AVRedPacketConfigManger", 1, bool + "]");
+      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback = this.jdField_a_of_type_ComTencentAvServiceIAVRedPacketCallback;
+      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.c = false;
+      if (this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager != null)
       {
-        if (i < j) {
-          try
-          {
-            ((IQQServiceCallback)this.jdField_a_of_type_Jnk.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
-            i += 1;
-          }
-          catch (RemoteException paramArrayOfByte)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
-            }
-          }
-        }
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resMD5, ".zip", true, 4, Integer.valueOf(1));
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResMd5, ".zip", true, 4, Integer.valueOf(2));
       }
-      this.jdField_a_of_type_Jnk.a.a.finishBroadcast();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jnl
  * JD-Core Version:    0.7.0.1
  */

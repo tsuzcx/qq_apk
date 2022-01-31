@@ -1,38 +1,30 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.Conversation;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.theme.diy.ThemeBackground;
-import com.tencent.mobileqq.vas.VasApngUtil;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class sip
   implements Runnable
 {
-  public sip(Conversation paramConversation) {}
+  public sip(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1051);
-    ThemeBackground localThemeBackground = new ThemeBackground();
-    if (ThemeUtil.isNowThemeIsDIY())
+    try
     {
-      localThemeBackground.pageIndex = 100;
-      ThemeBackground.getThemeBackground(this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getContext(), "theme_bg_message_path_png", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localThemeBackground);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1051, localThemeBackground));
-      return;
-      if (ThemeUtil.isNowThemeIsAnimate())
-      {
-        localThemeBackground.path = ThemeUtil.getAnimatePathByTag(2);
-        Drawable localDrawable = this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getContext().getResources().getDrawable(2130845807);
-        localThemeBackground.img = VasApngUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localThemeBackground.path, "-conversation-", localDrawable, VasApngUtil.a, "-conversation-", null);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum = DBUtils.a(this.a.app.getCurrentAccountUin(), "troop_photo_message", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.chatopttroop", 2, "从群空间返回，更新群空间未读计数， troopuin = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin + ", unreadmsgnum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum + ", newphotonum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum);
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("Q.chatopttroop", 2, localException.toString());
     }
   }
 }

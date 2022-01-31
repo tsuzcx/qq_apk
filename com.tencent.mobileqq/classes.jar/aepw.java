@@ -1,58 +1,55 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.ChatBackgroundInfo;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.IPCDownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class aepw
-  extends TransProcessorHandler
+  extends DownloadListener
 {
-  public aepw(NearbyGuideActivity paramNearbyGuideActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public aepw(ChatBackgroundManager paramChatBackgroundManager, String paramString1, String paramString2)
   {
-    if (paramMessage == null) {
-      return;
+    super(paramString1, paramString2);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    super.onDone(paramDownloadTask);
+    ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramDownloadTask.a().get("chatbgInfo");
+    long l1 = paramDownloadTask.h;
+    long l2 = paramDownloadTask.g;
+    int i = paramDownloadTask.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatBackgroundManager", 2, "endDownload  id=" + paramDownloadTask.b() + "result =" + i);
     }
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    switch (paramMessage.what)
+    if (i == 3) {
+      this.a.a(0, String.valueOf(paramDownloadTask.b()), l1 - l2);
+    }
+    for (i = 0;; i = 1)
     {
-    case 1004: 
-    default: 
-      return;
-    case 1002: 
-      if (localFileMsg.a <= 0L) {
-        break;
+      if ((this.a.a != null) && (paramDownloadTask.a().containsKey("callbackId"))) {
+        this.a.a.a(paramDownloadTask.b(), i, paramDownloadTask.a());
       }
+      return;
+      this.a.a(1, String.valueOf(paramDownloadTask.b()), 0L);
+      QLog.d("ChatBackgroundManager", 1, "chatbg downloadfail:id = " + paramDownloadTask.b() + ";result =" + i);
     }
-    for (int i = (int)(localFileMsg.e * 100L / localFileMsg.a); QLog.isColorLevel(); i = 0)
-    {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity .mPicUploadHandler.handleMessage, send process : " + i);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.a);
-      }
-      i = NearbyPeoplePhotoUploadProcessor.a;
-      if (i >= 0) {
-        this.a.a.set(0, Integer.valueOf(i));
-      }
-      this.a.a(this.a.a);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.upload_local_photo", 2, "NearbyGuideActivity.mPicUploadHandler.handleMessage(), upload fail.");
-      }
-      this.a.l();
-      this.a.c("上传失败");
-      this.a.a(true, null);
-      return;
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatBackgroundManager", 2, "startDownload  id=" + paramDownloadTask.b());
     }
+    super.onStart(paramDownloadTask);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepw
  * JD-Core Version:    0.7.0.1
  */

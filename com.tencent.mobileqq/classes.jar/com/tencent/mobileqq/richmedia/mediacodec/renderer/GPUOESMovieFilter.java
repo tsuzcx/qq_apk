@@ -45,7 +45,7 @@ public class GPUOESMovieFilter
     this.jdField_e_of_type_ArrayOfFloat = new float[] { jdField_c_of_type_Float, 1.0F, 0.0F, 1.0F, jdField_c_of_type_Float, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F };
   }
   
-  private void f()
+  private void g()
   {
     int n = a();
     GLES20.glUseProgram(n);
@@ -59,7 +59,7 @@ public class GPUOESMovieFilter
     this.m = GLES20.glGetUniformLocation(n, "x_add_margin");
   }
   
-  private void g()
+  private void h()
   {
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(jdField_a_of_type_ArrayOfShort.length * 2);
     localByteBuffer.order(ByteOrder.nativeOrder());
@@ -69,7 +69,7 @@ public class GPUOESMovieFilter
     this.jdField_c_of_type_JavaNioFloatBuffer = GlUtil.a(this.jdField_c_of_type_ArrayOfFloat);
   }
   
-  private void h()
+  private void i()
   {
     if ((this.jdField_a_of_type_JavaNioFloatBuffer != null) && (this.jdField_b_of_type_JavaNioFloatBuffer != null))
     {
@@ -122,7 +122,7 @@ public class GPUOESMovieFilter
       this.jdField_e_of_type_ArrayOfFloat[9] = (f3 + paramFloat1);
       this.jdField_e_of_type_ArrayOfFloat[12] = (paramFloat2 + (1.0F - f2));
       this.jdField_e_of_type_ArrayOfFloat[13] = (paramFloat1 + (1.0F - f3));
-      h();
+      i();
       return;
       f1 = paramFloat1;
       break;
@@ -177,11 +177,11 @@ public class GPUOESMovieFilter
     }
   }
   
-  protected void b()
+  protected void c()
   {
-    f();
     g();
     h();
+    i();
   }
 }
 

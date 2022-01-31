@@ -1,35 +1,41 @@
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.Holder;
-import com.tencent.mobileqq.activity.aio.item.SignatureView;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.vas.SignatureTemplateInfo;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class vew
-  implements URLDrawable.URLDrawableListener
+  extends ClickableSpan
 {
-  public vew(RichStatItemBuilder paramRichStatItemBuilder, RichStatItemBuilder.Holder paramHolder) {}
+  private WeakReference a;
+  private WeakReference b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public vew(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.a = SignatureManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager, RichStatItemBuilder.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    paramURLDrawable = ((SignatureManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(57)).a(Integer.toString(RichStatItemBuilder.a().tplId));
-    if (!TextUtils.isEmpty(paramURLDrawable.p)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.c = Color.parseColor(paramURLDrawable.p);
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = (QQAppInterface)this.a.get();
+    if (((this.b.get() instanceof Activity)) && (paramView != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GrayTipsItemBuilder", 2, "handleHotChatToSeeTip span click ");
+      }
+      HotChatManager.a(null, false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.invalidate();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

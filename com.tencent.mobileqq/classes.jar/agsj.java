@@ -1,40 +1,65 @@
-import NS_MOBILE_MAIN_PAGE.PhotoWall;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QZonePhotoWall;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PLUploadManager;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class agsj
   implements Runnable
 {
-  public agsj(VipPhotoViewForSimple paramVipPhotoViewForSimple) {}
+  public agsj(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
   public void run()
   {
-    Object localObject1 = (QZonePhotoWall)this.a.a.getEntityManagerFactory().createEntityManager().a(QZonePhotoWall.class, VipPhotoViewForSimple.a(this.a));
-    if (localObject1 != null)
+    ArrayList localArrayList = new ArrayList(9);
+    int i = PersonalityLabelGalleryActivity.a(this.a).size() - 1;
+    if (i >= 0)
     {
-      localObject1 = ((QZonePhotoWall)localObject1).unpackPhotoWallData();
-      Object localObject2 = new ArrayList();
-      int i = 0;
-      while (i < ((ArrayList)localObject1).size())
+      Object localObject = (String)PersonalityLabelGalleryActivity.a(this.a).get(i);
+      if (this.a.e)
       {
-        ((ArrayList)localObject2).add(((PhotoWall)((ArrayList)localObject1).get(i)).photoUrls);
-        i += 1;
+        this.a.runOnUiThread(new agsk(this));
+        return;
       }
-      localObject1 = VipPhotoViewForSimple.a(this.a, "", (List)localObject2);
-      localObject2 = Message.obtain();
-      ((Message)localObject2).what = 200;
-      ((Message)localObject2).obj = localObject1;
-      VipPhotoViewForSimple.a(this.a).sendMessage((Message)localObject2);
-      return;
+      localObject = new CompressInfo((String)localObject, 0);
+      ((CompressInfo)localObject).f = 0;
+      CompressOperator.b((CompressInfo)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("PersonalityLabelGalleryActivity", 2, "personality_label uploadPhoto(), thumb_path = " + ((CompressInfo)localObject).e);
+      }
+      if (!TextUtils.isEmpty(((CompressInfo)localObject).e))
+      {
+        localArrayList.add(localObject);
+        localObject = new File(((CompressInfo)localObject).e);
+      }
+      for (;;)
+      {
+        try
+        {
+          localObject = new URL("file:///" + ((File)localObject).getAbsolutePath());
+          int j = (int)(120.0F * PersonalityLabelGalleryActivity.a(this.a));
+          URLDrawable.getDrawable((URL)localObject, j, j, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).startDownload();
+          i -= 1;
+        }
+        catch (MalformedURLException localMalformedURLException)
+        {
+          localMalformedURLException.printStackTrace();
+          continue;
+        }
+        this.a.runOnUiThread(new agsl(this, i));
+      }
     }
-    VipPhotoViewForSimple.a(this.a).sendEmptyMessage(201);
+    if (localArrayList.size() > 0) {
+      this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a(localArrayList, PersonalityLabelGalleryActivity.a(this.a));
+    }
+    this.a.runOnUiThread(new agsm(this));
   }
 }
 

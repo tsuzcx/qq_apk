@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class sku
-  extends FriendListObserver
+  implements DialogInterface.OnDismissListener
 {
-  public sku(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public sku(Conversation paramConversation) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
     }
+    this.a.a(1134057, 50L, true);
   }
 }
 

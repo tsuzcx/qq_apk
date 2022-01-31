@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.proxy;
 
+import aabt;
 import android.os.HandlerThread;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
@@ -24,7 +25,6 @@ import java.util.Observable;
 import java.util.Set;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import zvi;
 
 public class FTSDBManager
   extends Observable
@@ -152,7 +152,7 @@ public class FTSDBManager
     //   131: invokeinterface 254 1 0
     //   136: getstatic 259	android/os/Build$VERSION:SDK_INT	I
     //   139: bipush 18
-    //   141: if_icmpge +449 -> 590
+    //   141: if_icmpge +477 -> 618
     //   144: aload_0
     //   145: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   148: invokestatic 262	com/tencent/mobileqq/utils/fts/SQLiteFTSUtils:f	(Lcom/tencent/mobileqq/app/QQAppInterface;)I
@@ -222,157 +222,169 @@ public class FTSDBManager
     //   283: invokestatic 265	com/tencent/mobileqq/utils/fts/SQLiteFTSUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;I)V
     //   286: iload_2
     //   287: istore_1
-    //   288: ldc 89
-    //   290: iconst_1
-    //   291: ldc_w 277
-    //   294: invokestatic 95	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   297: aload_0
-    //   298: new 279	com/tencent/mobileqq/persistence/fts/FTSDatatbase
-    //   301: dup
+    //   288: aload_0
+    //   289: getfield 277	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase	Lcom/tencent/mobileqq/fts/FTSDatabase;
+    //   292: ifnull +10 -> 302
+    //   295: aload_0
+    //   296: getfield 277	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase	Lcom/tencent/mobileqq/fts/FTSDatabase;
+    //   299: invokevirtual 280	com/tencent/mobileqq/fts/FTSDatabase:a	()V
     //   302: aload_0
-    //   303: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   306: invokespecial 281	com/tencent/mobileqq/persistence/fts/FTSDatatbase:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   309: putfield 283	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSDatatbase	Lcom/tencent/mobileqq/persistence/fts/FTSDatatbase;
-    //   312: new 285	com/tencent/mobileqq/fts/logger/QLogger
-    //   315: dup
-    //   316: invokespecial 286	com/tencent/mobileqq/fts/logger/QLogger:<init>	()V
-    //   319: invokestatic 291	com/tencent/mobileqq/fts/FTSDatabase:a	(Lcom/tencent/mobileqq/fts/logger/ILogger;)V
-    //   322: aload_0
-    //   323: new 293	com/tencent/mobileqq/fts/QFTSDatabase
-    //   326: dup
-    //   327: invokespecial 294	com/tencent/mobileqq/fts/QFTSDatabase:<init>	()V
-    //   330: putfield 296	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase	Lcom/tencent/mobileqq/fts/FTSDatabase;
-    //   333: aload_0
-    //   334: getfield 283	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSDatatbase	Lcom/tencent/mobileqq/persistence/fts/FTSDatatbase;
-    //   337: invokevirtual 297	com/tencent/mobileqq/persistence/fts/FTSDatatbase:a	()V
-    //   340: new 132	java/lang/StringBuilder
+    //   303: getfield 282	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSDatatbase	Lcom/tencent/mobileqq/persistence/fts/FTSDatatbase;
+    //   306: ifnull +10 -> 316
+    //   309: aload_0
+    //   310: getfield 282	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSDatatbase	Lcom/tencent/mobileqq/persistence/fts/FTSDatatbase;
+    //   313: invokevirtual 285	com/tencent/mobileqq/persistence/fts/FTSDatatbase:b	()V
+    //   316: ldc 89
+    //   318: iconst_1
+    //   319: ldc_w 287
+    //   322: invokestatic 95	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   325: aload_0
+    //   326: new 284	com/tencent/mobileqq/persistence/fts/FTSDatatbase
+    //   329: dup
+    //   330: aload_0
+    //   331: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   334: invokespecial 289	com/tencent/mobileqq/persistence/fts/FTSDatatbase:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   337: putfield 282	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSDatatbase	Lcom/tencent/mobileqq/persistence/fts/FTSDatatbase;
+    //   340: new 291	com/tencent/mobileqq/fts/logger/QLogger
     //   343: dup
-    //   344: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   347: aload_0
-    //   348: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   351: invokevirtual 169	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   354: invokevirtual 175	mqq/app/MobileQQ:getFilesDir	()Ljava/io/File;
-    //   357: invokevirtual 178	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   360: ldc 180
-    //   362: ldc 182
-    //   364: invokevirtual 188	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   367: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   370: getstatic 192	java/io/File:separator	Ljava/lang/String;
-    //   373: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   376: aload_0
-    //   377: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   380: invokevirtual 300	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   383: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   386: ldc 194
-    //   388: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   391: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   394: astore_3
-    //   395: aload_0
-    //   396: getfield 296	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase	Lcom/tencent/mobileqq/fts/FTSDatabase;
-    //   399: aload_3
-    //   400: invokevirtual 302	com/tencent/mobileqq/fts/FTSDatabase:a	(Ljava/lang/String;)V
-    //   403: aload_0
-    //   404: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   407: iconst_1
-    //   408: invokestatic 305	com/tencent/mobileqq/utils/fts/SQLiteFTSUtils:e	(Lcom/tencent/mobileqq/app/QQAppInterface;Z)V
-    //   411: getstatic 259	android/os/Build$VERSION:SDK_INT	I
-    //   414: bipush 18
-    //   416: if_icmpge +37 -> 453
-    //   419: ldc 89
-    //   421: iconst_1
-    //   422: new 132	java/lang/StringBuilder
-    //   425: dup
-    //   426: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   429: ldc_w 307
-    //   432: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   435: iload_1
-    //   436: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   439: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   442: invokestatic 275	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   445: aload_0
-    //   446: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   449: iconst_0
-    //   450: invokestatic 265	com/tencent/mobileqq/utils/fts/SQLiteFTSUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;I)V
-    //   453: aload_0
-    //   454: getfield 31	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   457: invokevirtual 311	java/util/HashMap:keySet	()Ljava/util/Set;
-    //   460: invokeinterface 317 1 0
-    //   465: astore_3
-    //   466: aload_3
-    //   467: invokeinterface 322 1 0
-    //   472: ifeq +104 -> 576
-    //   475: aload_3
-    //   476: invokeinterface 326 1 0
-    //   481: checkcast 60	java/lang/Integer
-    //   484: invokevirtual 330	java/lang/Integer:intValue	()I
-    //   487: istore_1
-    //   488: aload_0
-    //   489: getfield 31	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   492: iload_1
-    //   493: invokestatic 64	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   496: invokevirtual 334	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   499: checkcast 336	com/tencent/mobileqq/app/proxy/fts/FTSIndexOperator
-    //   502: astore 4
-    //   504: aload 4
-    //   506: aload_0
-    //   507: getfield 283	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSDatatbase	Lcom/tencent/mobileqq/persistence/fts/FTSDatatbase;
-    //   510: aload_0
-    //   511: getfield 296	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase	Lcom/tencent/mobileqq/fts/FTSDatabase;
-    //   514: invokevirtual 339	com/tencent/mobileqq/app/proxy/fts/FTSIndexOperator:a	(Lcom/tencent/mobileqq/persistence/fts/FTSDatatbase;Lcom/tencent/mobileqq/fts/FTSDatabase;)Z
-    //   517: ifne -51 -> 466
-    //   520: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   523: ifeq -293 -> 230
-    //   526: ldc 89
-    //   528: iconst_2
-    //   529: iconst_2
-    //   530: anewarray 341	java/lang/Object
-    //   533: dup
-    //   534: iconst_0
-    //   535: ldc_w 343
-    //   538: aastore
-    //   539: dup
-    //   540: iconst_1
-    //   541: aload 4
-    //   543: invokevirtual 347	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   546: invokevirtual 147	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   549: aastore
-    //   550: invokestatic 351	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   553: return
-    //   554: astore_3
-    //   555: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   558: ifeq +13 -> 571
-    //   561: ldc 89
-    //   563: iconst_2
-    //   564: ldc_w 353
-    //   567: aload_3
-    //   568: invokestatic 356	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   571: iconst_0
-    //   572: putstatic 21	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_Boolean	Z
-    //   575: return
-    //   576: aload_0
-    //   577: iconst_1
-    //   578: putfield 210	com/tencent/mobileqq/app/proxy/FTSDBManager:c	Z
+    //   344: invokespecial 292	com/tencent/mobileqq/fts/logger/QLogger:<init>	()V
+    //   347: invokestatic 295	com/tencent/mobileqq/fts/FTSDatabase:a	(Lcom/tencent/mobileqq/fts/logger/ILogger;)V
+    //   350: aload_0
+    //   351: new 297	com/tencent/mobileqq/fts/QFTSDatabase
+    //   354: dup
+    //   355: invokespecial 298	com/tencent/mobileqq/fts/QFTSDatabase:<init>	()V
+    //   358: putfield 277	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase	Lcom/tencent/mobileqq/fts/FTSDatabase;
+    //   361: aload_0
+    //   362: getfield 282	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSDatatbase	Lcom/tencent/mobileqq/persistence/fts/FTSDatatbase;
+    //   365: invokevirtual 299	com/tencent/mobileqq/persistence/fts/FTSDatatbase:a	()V
+    //   368: new 132	java/lang/StringBuilder
+    //   371: dup
+    //   372: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   375: aload_0
+    //   376: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   379: invokevirtual 169	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   382: invokevirtual 175	mqq/app/MobileQQ:getFilesDir	()Ljava/io/File;
+    //   385: invokevirtual 178	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   388: ldc 180
+    //   390: ldc 182
+    //   392: invokevirtual 188	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   395: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   398: getstatic 192	java/io/File:separator	Ljava/lang/String;
+    //   401: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   404: aload_0
+    //   405: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   408: invokevirtual 302	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   411: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   414: ldc 194
+    //   416: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   419: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   422: astore_3
+    //   423: aload_0
+    //   424: getfield 277	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase	Lcom/tencent/mobileqq/fts/FTSDatabase;
+    //   427: aload_3
+    //   428: invokevirtual 304	com/tencent/mobileqq/fts/FTSDatabase:a	(Ljava/lang/String;)V
+    //   431: aload_0
+    //   432: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   435: iconst_1
+    //   436: invokestatic 307	com/tencent/mobileqq/utils/fts/SQLiteFTSUtils:e	(Lcom/tencent/mobileqq/app/QQAppInterface;Z)V
+    //   439: getstatic 259	android/os/Build$VERSION:SDK_INT	I
+    //   442: bipush 18
+    //   444: if_icmpge +37 -> 481
+    //   447: ldc 89
+    //   449: iconst_1
+    //   450: new 132	java/lang/StringBuilder
+    //   453: dup
+    //   454: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   457: ldc_w 309
+    //   460: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   463: iload_1
+    //   464: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   467: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   470: invokestatic 275	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   473: aload_0
+    //   474: getfield 35	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   477: iconst_0
+    //   478: invokestatic 265	com/tencent/mobileqq/utils/fts/SQLiteFTSUtils:b	(Lcom/tencent/mobileqq/app/QQAppInterface;I)V
+    //   481: aload_0
+    //   482: getfield 31	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   485: invokevirtual 313	java/util/HashMap:keySet	()Ljava/util/Set;
+    //   488: invokeinterface 319 1 0
+    //   493: astore_3
+    //   494: aload_3
+    //   495: invokeinterface 324 1 0
+    //   500: ifeq +104 -> 604
+    //   503: aload_3
+    //   504: invokeinterface 328 1 0
+    //   509: checkcast 60	java/lang/Integer
+    //   512: invokevirtual 332	java/lang/Integer:intValue	()I
+    //   515: istore_1
+    //   516: aload_0
+    //   517: getfield 31	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   520: iload_1
+    //   521: invokestatic 64	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   524: invokevirtual 336	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   527: checkcast 338	com/tencent/mobileqq/app/proxy/fts/FTSIndexOperator
+    //   530: astore 4
+    //   532: aload 4
+    //   534: aload_0
+    //   535: getfield 282	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSDatatbase	Lcom/tencent/mobileqq/persistence/fts/FTSDatatbase;
+    //   538: aload_0
+    //   539: getfield 277	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_ComTencentMobileqqFtsFTSDatabase	Lcom/tencent/mobileqq/fts/FTSDatabase;
+    //   542: invokevirtual 341	com/tencent/mobileqq/app/proxy/fts/FTSIndexOperator:a	(Lcom/tencent/mobileqq/persistence/fts/FTSDatatbase;Lcom/tencent/mobileqq/fts/FTSDatabase;)Z
+    //   545: ifne -51 -> 494
+    //   548: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   551: ifeq -321 -> 230
+    //   554: ldc 89
+    //   556: iconst_2
+    //   557: iconst_2
+    //   558: anewarray 343	java/lang/Object
+    //   561: dup
+    //   562: iconst_0
+    //   563: ldc_w 345
+    //   566: aastore
+    //   567: dup
+    //   568: iconst_1
+    //   569: aload 4
+    //   571: invokevirtual 349	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   574: invokevirtual 147	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   577: aastore
+    //   578: invokestatic 353	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   581: return
-    //   582: astore 4
-    //   584: aload_3
-    //   585: astore 5
-    //   587: goto -333 -> 254
-    //   590: iconst_0
-    //   591: istore_1
-    //   592: goto -304 -> 288
+    //   582: astore_3
+    //   583: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   586: ifeq +13 -> 599
+    //   589: ldc 89
+    //   591: iconst_2
+    //   592: ldc_w 355
+    //   595: aload_3
+    //   596: invokestatic 358	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   599: iconst_0
+    //   600: putstatic 21	com/tencent/mobileqq/app/proxy/FTSDBManager:jdField_a_of_type_Boolean	Z
+    //   603: return
+    //   604: aload_0
+    //   605: iconst_1
+    //   606: putfield 210	com/tencent/mobileqq/app/proxy/FTSDBManager:c	Z
+    //   609: return
+    //   610: astore 4
+    //   612: aload_3
+    //   613: astore 5
+    //   615: goto -361 -> 254
+    //   618: iconst_0
+    //   619: istore_1
+    //   620: goto -332 -> 288
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	595	0	this	FTSDBManager
-    //   270	322	1	i	int
+    //   0	623	0	this	FTSDBManager
+    //   270	350	1	i	int
     //   151	136	2	j	int
     //   36	95	3	localCursor	android.database.Cursor
     //   231	1	3	localException	java.lang.Exception
     //   247	5	3	localObject1	Object
-    //   394	82	3	localObject2	Object
-    //   554	31	3	localThrowable	java.lang.Throwable
-    //   1	541	4	localObject3	Object
-    //   582	1	4	localObject4	Object
-    //   39	547	5	localObject5	Object
+    //   422	82	3	localObject2	Object
+    //   582	31	3	localThrowable	java.lang.Throwable
+    //   1	569	4	localObject3	Object
+    //   610	1	4	localObject4	Object
+    //   39	575	5	localObject5	Object
     // Exception table:
     //   from	to	target	type
     //   24	37	231	java/lang/Exception
@@ -380,10 +392,10 @@ public class FTSDBManager
     //   56	83	231	java/lang/Exception
     //   89	126	231	java/lang/Exception
     //   24	37	247	finally
-    //   333	453	554	java/lang/Throwable
-    //   44	53	582	finally
-    //   56	83	582	finally
-    //   89	126	582	finally
+    //   361	481	582	java/lang/Throwable
+    //   44	53	610	finally
+    //   56	83	610	finally
+    //   89	126	610	finally
   }
   
   public FTSIndexOperator a(int paramInt)
@@ -401,7 +413,7 @@ public class FTSDBManager
     if (a()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyFtsFTSSyncHandler.post(new zvi(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyFtsFTSSyncHandler.post(new aabt(this));
   }
   
   public void a(int paramInt)

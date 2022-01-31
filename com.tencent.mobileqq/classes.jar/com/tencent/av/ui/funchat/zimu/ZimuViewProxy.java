@@ -39,7 +39,7 @@ public class ZimuViewProxy
   {
     this.jdField_a_of_type_ComTencentAvBusinessManagerZimuARZimuTask = null;
     this.jdField_a_of_type_ComTencentAvBusinessManagerZimuARZimuTask = ARZimuTaskFactory.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
-    paramString = (GamePlayView)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969284, null);
+    paramString = (GamePlayView)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969282, null);
     if (this.jdField_a_of_type_ComTencentAvBusinessManagerZimuARZimuTask == null) {
       return false;
     }
@@ -306,7 +306,7 @@ public class ZimuViewProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewProxy
  * JD-Core Version:    0.7.0.1
  */

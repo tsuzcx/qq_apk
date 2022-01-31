@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
 
 public class nya
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public nya(StoryMessageListActivity paramStoryMessageListActivity) {}
+  public nya(QQStoryBaseFragment paramQQStoryBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    StoryReportor.a(this.a.a(), "clk_sure", 0, 0, new String[] { "1", "", "", "" });
+    ((UserManager)SuperManager.a(2)).c();
   }
 }
 

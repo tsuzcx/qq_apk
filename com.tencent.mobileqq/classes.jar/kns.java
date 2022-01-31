@@ -1,15 +1,39 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.offline.util.ILog;
+import com.tencent.biz.common.util.NetworkUtil;
 
-public final class kns
-  implements Runnable
+class kns
+  implements AsyncBack
 {
-  public kns(TroopMemberApiClient paramTroopMemberApiClient, Bundle paramBundle, BusinessObserver paramBusinessObserver) {}
+  kns(knr paramknr) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(17, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
+    if (HtmlOffline.a.a()) {
+      HtmlOffline.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
+    }
+    if (paramInt == 0) {
+      if (HtmlOffline.b(this.a.b)) {
+        this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.loaded(null, 0);
+      }
+    }
+    for (;;)
+    {
+      BidDownloader.b(this.a.b);
+      HtmlOffline.a(this.a.b, paramInt, l, NetworkUtil.a(this.a.jdField_a_of_type_AndroidContentContext));
+      return;
+      this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.loaded(null, 6);
+      continue;
+      this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.loaded(null, 2);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.progress(paramInt);
   }
 }
 

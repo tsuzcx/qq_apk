@@ -1,22 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
+import Wallet.GetGroupRedPackListRsp;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import java.lang.ref.SoftReference;
+import java.util.HashMap;
 
-public class xmu
-  implements View.OnTouchListener
+class xmu
+  implements Runnable
 {
-  public xmu(LoginView paramLoginView) {}
+  xmu(xmt paramxmt, GetGroupRedPackListRsp paramGetGroupRedPackListRsp) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
-      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_Xmt.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.b != null)
+    {
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_Xmt.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.b.get(this.jdField_a_of_type_Xmt.b + "_" + this.jdField_a_of_type_Xmt.jdField_a_of_type_Int) != null) {
+        localObject1 = (IRedPacket.OnGetAvailableListListener)((SoftReference)this.jdField_a_of_type_Xmt.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.b.get(this.jdField_a_of_type_Xmt.b + "_" + this.jdField_a_of_type_Xmt.jdField_a_of_type_Int)).get();
+      }
     }
-    return false;
+    if (localObject1 == null) {
+      return;
+    }
+    this.jdField_a_of_type_Xmt.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.a(this.jdField_a_of_type_Xmt.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xmt.b, this.jdField_a_of_type_Xmt.jdField_a_of_type_Int, (IRedPacket.OnGetAvailableListListener)localObject1, this.jdField_a_of_type_WalletGetGroupRedPackListRsp, false);
   }
 }
 

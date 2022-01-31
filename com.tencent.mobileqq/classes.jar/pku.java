@@ -1,7 +1,20 @@
-public abstract class pku
+import com.tencent.component.media.gif.AnimationListener;
+import com.tencent.component.media.gif.NewGifDrawable;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+class pku
+  implements Runnable
 {
-  public int a;
-  public byte[] a;
+  pku(pkt parampkt) {}
+  
+  public void run()
+  {
+    Iterator localIterator = this.a.b.a.iterator();
+    while (localIterator.hasNext()) {
+      ((AnimationListener)localIterator.next()).onAnimationCompleted();
+    }
+  }
 }
 
 

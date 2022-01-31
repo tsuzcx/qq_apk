@@ -1,20 +1,33 @@
-import com.tencent.mapsdk.raster.model.CameraPosition;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapCameraChangeListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import java.lang.ref.WeakReference;
 
 public class agje
-  implements TencentMap.OnMapCameraChangeListener
+  extends Handler
 {
-  public agje(ScanTorchActivity paramScanTorchActivity) {}
+  private WeakReference a;
   
-  public void onCameraChange(CameraPosition paramCameraPosition) {}
-  
-  public void onCameraChangeFinish(CameraPosition paramCameraPosition)
+  public agje(ARTipsManager paramARTipsManager)
   {
-    if ((ScanTorchActivity.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("ScanTorchActivity", 2, "ARLBSPOIDialog onCameraChangeFinish");
+    this.a = new WeakReference(paramARTipsManager);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ARTipsManager localARTipsManager = (ARTipsManager)this.a.get();
+    if (localARTipsManager == null) {
+      return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 100: 
+      ARTipsManager.a(localARTipsManager, (agjf)paramMessage.obj);
+      return;
+    }
+    ARTipsManager.a(localARTipsManager);
   }
 }
 

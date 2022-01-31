@@ -1,33 +1,48 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.utils.PackageUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.MessageRoamManager;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
 
 class sfy
   implements Runnable
 {
-  sfy(sfs paramsfs) {}
+  sfy(sfx paramsfx, int paramInt, DevlockInfo paramDevlockInfo) {}
   
   public void run()
   {
-    UpgradeTIMWrapper localUpgradeTIMWrapper = UpgradeTIMWrapper.a(this.a.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, new Object[] { "UpgradeTIMWrapper MSG_TIM_UPGRADE_BAR_SHOW, tips on: ", Boolean.valueOf(localUpgradeTIMWrapper.a()) });
-    }
-    if (!localUpgradeTIMWrapper.a()) {
-      this.a.a.a(1134058, 0L, true);
-    }
-    do
+    boolean bool2 = true;
+    this.jdField_a_of_type_Sfx.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.d();
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null))
     {
-      return;
-      if (PackageUtil.a(this.a.a.a.getApp(), "com.tencent.tim"))
+      ChatHistoryForC2C localChatHistoryForC2C = this.jdField_a_of_type_Sfx.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C;
+      boolean bool1;
+      if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.DevSetup == 1)
       {
-        this.a.a.a(1134058, 0L, true);
-        return;
+        bool1 = true;
+        if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet != 1) {
+          break label77;
+        }
       }
-    } while ((UpgradeTIMWrapper.b()) || (Conversation.a(this.a.a) != null));
-    this.a.a.a(new sfz(this, localUpgradeTIMWrapper));
+      for (;;)
+      {
+        localChatHistoryForC2C.a(bool1, bool2, this.jdField_a_of_type_Sfx.jdField_a_of_type_Boolean);
+        return;
+        bool1 = false;
+        break;
+        label77:
+        bool2 = false;
+      }
+    }
+    if (1 == this.jdField_a_of_type_Sfx.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.b())
+    {
+      this.jdField_a_of_type_Sfx.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.g();
+      return;
+    }
+    if (!this.jdField_a_of_type_Sfx.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.f())
+    {
+      this.jdField_a_of_type_Sfx.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b();
+      return;
+    }
+    this.jdField_a_of_type_Sfx.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b(this.jdField_a_of_type_Sfx.jdField_a_of_type_Boolean);
   }
 }
 

@@ -22,9 +22,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import klb;
-import kld;
-import kle;
+import kni;
+import knk;
+import knl;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
@@ -293,7 +293,7 @@ public class BidDownloader
   private void a(int paramInt1, int paramInt2)
   {
     if (this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack != null) {
-      this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(null, paramInt1);
+      this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.loaded(null, paramInt1);
     }
   }
   
@@ -409,14 +409,14 @@ public class BidDownloader
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       return false;
     }
-    this.jdField_b_of_type_ComTencentBizCommonOfflineAsyncBack = new klb(this, l);
+    this.jdField_b_of_type_ComTencentBizCommonOfflineAsyncBack = new kni(this, l);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     return true;
   }
   
   public void b()
   {
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new kld(this));
+    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new knk(this));
   }
   
   public boolean b()
@@ -551,7 +551,7 @@ public class BidDownloader
       }
       return;
     }
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new kle(this));
+    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new knl(this));
   }
   
   public boolean handleMessage(Message paramMessage)

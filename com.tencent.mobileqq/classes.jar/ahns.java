@@ -1,26 +1,23 @@
-import java.util.HashMap;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
 
 public class ahns
-  extends ahnt
+  implements Runnable
 {
-  int a = -1;
+  public ahns(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, boolean paramBoolean) {}
   
-  public HashMap a(String paramString)
+  public void run()
   {
-    if ("ShortVideo.Preview".equals(paramString))
+    DanceLog.a("EffectsFragment", "closeEvent begin exe isReady=" + this.jdField_a_of_type_Boolean);
+    if ((this.jdField_a_of_type_Boolean) && (EffectsCameraCaptureFragment.e(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment)))
     {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_playAction", this.a + "");
-      return paramString;
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_Boolean = true;
+      EffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment);
     }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.k();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect("");
+    DanceLog.a("EffectsFragment", "closeEvent end  exe...");
   }
 }
 

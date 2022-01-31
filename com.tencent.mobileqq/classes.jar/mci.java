@@ -1,13 +1,18 @@
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoDeliverController;
 
-public final class mci
-  implements Runnable
+public class mci
+  implements View.OnClickListener
 {
-  public mci(TextView paramTextView, StringBuilder paramStringBuilder) {}
+  public mci(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangStringBuilder);
+    ReadInJoyDeliverVideoActivity.d(this.a, true);
+    ReadInJoyDeliverVideoActivity.e(this.a);
+    ReadInJoyDeliverVideoActivity.a(this.a).a(ReadInJoyDeliverVideoActivity.c(this.a));
   }
 }
 

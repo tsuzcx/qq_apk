@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import mnk;
+import mrc;
 
 public class WebFastRecommendCreator
   implements ItemCreator
@@ -16,7 +16,7 @@ public class WebFastRecommendCreator
   
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new mnk(LayoutInflater.from(paramContext).inflate(2130969614, paramViewGroup, false), paramBaseData);
+    return new mrc(LayoutInflater.from(paramContext).inflate(2130969610, paramViewGroup, false), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

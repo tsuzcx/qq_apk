@@ -1,30 +1,25 @@
-import android.util.Log;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.EGLWindowSurfaceFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
 
 public class aoad
-  implements GLTextureView.EGLWindowSurfaceFactory
+  implements Runnable
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
-  {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
-    }
-    catch (IllegalArgumentException paramEGL10)
-    {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
-    }
-    return null;
-  }
+  public aoad(EditPicSave paramEditPicSave) {}
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  public void run()
   {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    EditPicSave localEditPicSave = this.a;
+    localEditPicSave.jdField_a_of_type_Int += this.a.b;
+    if (this.a.jdField_a_of_type_Int > 99)
+    {
+      this.a.jdField_a_of_type_Int = 99;
+      this.a.a(this.a.jdField_a_of_type_Int);
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_Int);
+    this.a.c();
   }
 }
 

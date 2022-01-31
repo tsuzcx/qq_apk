@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
+import com.tencent.widget.BubblePopupWindow;
 
-public final class akoj
-  implements ThreadExcutor.IThreadListener
+public class akoj
+  extends TextView
 {
-  long a = 0L;
-  
-  public void a()
+  public akoj(QQCustomMenuImageLayout paramQQCustomMenuImageLayout, Context paramContext)
   {
-    this.a = System.currentTimeMillis();
+    super(paramContext);
   }
   
-  public void b()
+  public boolean performClick()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
-    }
-    this.a = 0L;
+    boolean bool = super.performClick();
+    QQCustomMenuImageLayout.a(this.a).a();
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akoj
  * JD-Core Version:    0.7.0.1
  */

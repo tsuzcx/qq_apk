@@ -1,45 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.open.base.LogUtility;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.OpacityAction;
+import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
+import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.Label;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
-public class akdd
-  implements View.OnClickListener
+class akdd
+  implements Action.OnActionEndListener
 {
-  public akdd(NewUpgradeDialog paramNewUpgradeDialog) {}
+  akdd(akdc paramakdc) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    switch (NewUpgradeDialog.a(this.a))
-    {
-    default: 
-      return;
-    case 1: 
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_INIT");
-      NewUpgradeDialog.a(this.a);
-      return;
-    case 4: 
-      NewUpgradeDialog.b(this.a);
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_COMPLETE");
-      return;
-    case 10: 
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_CANCEL");
-      return;
-    case 3: 
-      NewUpgradeDialog.c(this.a);
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_PAUSE");
-      return;
-    case 2: 
-      this.a.c();
-      LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_DOWNLOADING");
-      return;
-    }
-    LogUtility.c("NewUpgradeDialog", "onclick right btn  state = STATE_WAIT");
+    TroopGiftToAllSurfaceView.a(this.a.a).a(new Action[] { new OpacityAction(600, 0, 255), new SequenceAction(new Action[] { new ScaleAction(300, 0.0F, 1.2F), new ScaleAction(300, 1.2F, 1.0F) }) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdd
  * JD-Core Version:    0.7.0.1
  */

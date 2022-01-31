@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.widget.XListView.DrawFinishedListener;
 
-class lfm
-  implements Runnable
+public class lfm
+  implements XListView.DrawFinishedListener
 {
-  lfm(lfl paramlfl, ArrayList paramArrayList) {}
+  public lfm(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   
-  public void run()
+  public void a()
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lfl.a, this.jdField_a_of_type_JavaUtilArrayList);
+    if ((!this.a.a) && (this.a.b))
+    {
+      this.a.a = true;
+      PublicTracker.a("subscribe_tab_cost", null);
+    }
   }
 }
 

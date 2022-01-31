@@ -1,30 +1,24 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
 
-public class ybd
-  implements AdapterView.OnItemClickListener
+class ybd
+  implements Runnable
 {
-  public ybd(SelectMemberActivity paramSelectMemberActivity) {}
+  ybd(ybc paramybc) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = (ResultRecord)paramView.getTag();
-    paramView = paramAdapterView.a;
-    if (this.a.a(paramView))
-    {
-      this.a.e(paramView);
-      this.a.a(paramAdapterView, false);
-      this.a.j();
-      paramInt = this.a.a.a();
-      if ((paramInt == 6) || (paramInt == 7) || (paramInt == 5) || (paramInt == 4) || (paramInt == 1) || (paramInt == 0) || (paramInt == 8) || (paramInt == 9)) {
-        ((SelectMemberInnerFrame)this.a.a.getCurrentView()).f();
-      }
-      this.a.b(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[runOnUIThread][stopWatching-delete-quit]");
+    }
+    Toast.makeText(VideoEnvironment.a(), "视频缓存被恶意篡改了", 1).show();
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    localRMVideoStateMgr.a("RMFileEventNotify");
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.A();
     }
   }
 }

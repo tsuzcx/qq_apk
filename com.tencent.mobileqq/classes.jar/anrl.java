@@ -1,18 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.capture.QIMCaptureController;
 
 public class anrl
-  implements ThreadExcutor.IThreadListener
+  implements Runnable
 {
-  public anrl(EditPicSave paramEditPicSave) {}
+  public anrl(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void a() {}
-  
-  public void b()
+  public void run()
   {
-    this.a.a.a().postDelayed(new anrm(this), 500L);
+    this.a.a.a();
   }
 }
 

@@ -1,29 +1,23 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.EffectSettingBtn;
-import com.tencent.av.utils.UITools;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.utils.PstnUtils;
 
-public class jtl
-  implements ViewTreeObserver.OnPreDrawListener
+class jtl
+  implements DialogInterface.OnClickListener
 {
-  public jtl(EffectSettingBtn paramEffectSettingBtn, TextView paramTextView) {}
+  jtl(jti paramjti) {}
   
-  public boolean onPreDraw()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.a.a().a().ax = true;
-    UITools.a(this.jdField_a_of_type_ComTencentAvUiEffectSettingBtn.a);
-    QLog.d("qav_face_guide", 1, "onPreDraw");
-    return false;
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
+    PstnUtils.a(this.a.a.app, this.a.a, 1, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jtl
  * JD-Core Version:    0.7.0.1
  */

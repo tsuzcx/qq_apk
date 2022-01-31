@@ -1,16 +1,45 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
-import com.tencent.biz.qqstory.takevideo.filter.WeatherFilterData;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.adapter.HotRecommendFeedAdapter;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.adapter.HotRecommendFeedAdapter.OnSubscribeClickListener;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import java.util.List;
 
-class oep
-  implements Runnable
+public class oep
+  extends ChildViewClickListener
 {
-  oep(oeo paramoeo, int paramInt) {}
+  public oep(HotRecommendFeedAdapter paramHotRecommendFeedAdapter) {}
   
-  public void run()
+  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (EditVideoFilterNeo.a(this.jdField_a_of_type_Oeo.a) != null) {
-      EditVideoFilterNeo.a(this.jdField_a_of_type_Oeo.a).a(this.jdField_a_of_type_Int);
-    }
+    if (UIUtils.b()) {}
+    label6:
+    do
+    {
+      do
+      {
+        do
+        {
+          break label6;
+          do
+          {
+            return;
+          } while ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()));
+          paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+        } while (TextUtils.isEmpty(paramObject.mOwnerUid));
+        paramObject = HotRecommendFeedAdapter.a(this.a).b(paramObject.mOwnerUid);
+      } while (paramObject == null);
+      switch (paramView.getId())
+      {
+      default: 
+        return;
+      }
+    } while (HotRecommendFeedAdapter.a(this.a) == null);
+    HotRecommendFeedAdapter.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
   }
 }
 

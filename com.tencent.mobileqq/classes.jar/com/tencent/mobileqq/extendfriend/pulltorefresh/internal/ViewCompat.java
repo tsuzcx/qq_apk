@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.pulltorefresh.internal;
 
-import acju;
+import acsb;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -11,7 +11,7 @@ public class ViewCompat
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      acju.a(paramView, paramDrawable);
+      acsb.a(paramView, paramDrawable);
       return;
     }
     paramView.setBackgroundDrawable(paramDrawable);
@@ -21,7 +21,7 @@ public class ViewCompat
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      acju.a(paramView, paramRunnable);
+      acsb.a(paramView, paramRunnable);
       return;
     }
     paramView.postDelayed(paramRunnable, 16L);

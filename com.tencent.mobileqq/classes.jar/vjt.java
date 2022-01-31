@@ -1,24 +1,34 @@
-import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.data.MessageForTroopFile;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
+import com.tencent.mobileqq.data.MessageForReplyText.LightReplyMsgRich2;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class vjt
-  implements Runnable
+  extends TextItemBuilder.Holder
 {
-  public vjt(TroopFileItemBuilder paramTroopFileItemBuilder, Context paramContext, View paramView, MessageForTroopFile paramMessageForTroopFile) {}
+  public ViewGroup a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ETTextView a;
+  public MessageForReplyText.LightReplyMsgRich2 a;
+  public BubbleImageView a;
+  public View b;
+  public ViewGroup b;
+  public TextView b;
+  public BubbleImageView b;
+  public ViewGroup c;
+  public TextView c;
+  public TextView d;
+  public int e;
   
-  public void run()
-  {
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof MultiForwardActivity)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, bool);
-      return;
-    }
-  }
+  public vjt(ReplyTextItemBuilder paramReplyTextItemBuilder) {}
 }
 
 

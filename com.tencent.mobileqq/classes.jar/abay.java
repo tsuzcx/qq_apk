@@ -1,14 +1,32 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.test.MapTestHelper.ToolEnableChangedListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
-class abay
-  implements MapTestHelper.ToolEnableChangedListener
+public final class abay
+  extends BroadcastReceiver
+  implements Runnable
 {
-  abay(abax paramabax) {}
-  
-  public void a(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.b(paramBoolean);
+    if ("android.intent.action.PROXY_CHANGE".equals(paramIntent.getAction()))
+    {
+      ArkAppCenter.b("ArkApp", "receive broadcast proxy change.");
+      ThreadManager.executeOnSubThread(this);
+    }
+  }
+  
+  public void run()
+  {
+    if (AppNetConnInfo.isWifiConn())
+    {
+      ArkAppContainer.setArkHttpProxy();
+      return;
+    }
+    ArkAppContainer.clearArkHttpProxy();
   }
 }
 

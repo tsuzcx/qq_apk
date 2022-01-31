@@ -1,19 +1,47 @@
-import android.view.View;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
+import com.tencent.qqprotect.qsec.ICloudAVEngine.DetectBundle;
+import com.tencent.qqprotect.qsec.ICloudAVEngine.IAVEngineEventListener;
+import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public class amel
-  implements Runnable
+public final class amel
+  implements ICloudAVEngine.IAVEngineEventListener
 {
-  public amel(CalloutPopupWindow paramCalloutPopupWindow, View paramView, int paramInt1, int paramInt2) {}
+  private int a;
   
-  public void run()
+  public amel(int paramInt)
   {
-    CalloutPopupWindow.a(this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, ICloudAVEngine.DetectBundle paramDetectBundle, ICloudAVEngine.ResultBundle paramResultBundle)
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      if ((paramInt != 1) && (paramInt != 2) && (paramInt != 4)) {
+        break label41;
+      }
+      QSecFramework.a(5, this.jdField_a_of_type_Int, paramInt, 0, null, null, null, null);
+    }
+    label41:
+    while (paramInt != 3) {
+      return;
+    }
+    int j = paramResultBundle.jdField_a_of_type_Int;
+    int k = paramResultBundle.b;
+    int m = paramResultBundle.c;
+    int n = paramResultBundle.d;
+    paramDetectBundle = paramResultBundle.jdField_a_of_type_ArrayOfByte;
+    int i1 = this.jdField_a_of_type_Int;
+    if (paramResultBundle.jdField_a_of_type_Boolean) {
+      i = 1;
+    }
+    QSecFramework.a(5, i1, paramInt, i, null, null, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), paramDetectBundle }, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amel
  * JD-Core Version:    0.7.0.1
  */

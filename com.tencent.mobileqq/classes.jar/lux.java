@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicRecommendUgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class lux
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lux(FeedItemCellTypeTopicRecommendUgcVideo paramFeedItemCellTypeTopicRecommendUgcVideo) {}
+  public lux(SubscriptionInfoModule paramSubscriptionInfoModule) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (paramView != null) {
-      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    ((PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(55)).a();
+    TroopBarAssistantManager localTroopBarAssistantManager = TroopBarAssistantManager.a();
+    localTroopBarAssistantManager.c((QQAppInterface)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (localTroopBarAssistantManager.a((QQAppInterface)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
+      localTroopBarAssistantManager.a(this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (QQAppInterface)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface);
     }
   }
 }

@@ -1,22 +1,21 @@
-import android.widget.EditText;
-import com.tencent.util.InputMethodUtil;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import android.app.Activity;
+import cooperation.plugin.IPluginManager.OnOpenPluginListener;
 
-public class anng
-  implements Runnable
+public final class anng
+  implements IPluginManager.OnOpenPluginListener
 {
-  public anng(FacePoiSearchUI paramFacePoiSearchUI) {}
+  public anng(Activity paramActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.a.a.setFocusableInTouchMode(true);
-    this.a.a.requestFocus();
-    InputMethodUtil.a(this.a.a);
+    if (!paramBoolean) {
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anng
  * JD-Core Version:    0.7.0.1
  */

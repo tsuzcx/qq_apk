@@ -1,20 +1,17 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.armap.ARMapOpenRedPackDialog;
 
-class abiz
-  implements Runnable
+public class abiz
+  implements Animation.AnimationListener
 {
-  abiz(abiy paramabiy, Drawable paramDrawable) {}
+  public abiz(ARMapOpenRedPackDialog paramARMapOpenRedPackDialog) {}
   
-  public void run()
-  {
-    if (("KEY_SPLASH_BG_WEALTH_GOD_SLEEP".equals(this.jdField_a_of_type_Abiy.jdField_a_of_type_JavaLangString)) || ("KEY_SPLASH_BG_WEALTH_GOD_WORK".equals(this.jdField_a_of_type_Abiy.jdField_a_of_type_JavaLangString)) || ("KEY_SPLASH_BG_WEALTH_GOD_BAOXIANG".equals(this.jdField_a_of_type_Abiy.jdField_a_of_type_JavaLangString)))
-    {
-      this.jdField_a_of_type_Abiy.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
-    }
-    this.jdField_a_of_type_Abiy.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

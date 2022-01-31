@@ -55,8 +55,8 @@ import tencent.im.oidb.cmd0x8db.oidb_0x8db.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.s2c.msgtype0x210.submsgtype0x6f.SubMsgType0x6f.ForwardBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x6f.SubMsgType0x6f.RewardInfo;
-import yzx;
-import yzy;
+import zgx;
+import zgy;
 
 public class BabyQHandler
   extends BusinessHandler
@@ -108,7 +108,7 @@ public class BabyQHandler
   {
     paramView.setVisibility(0);
     paramContext = AnimationUtils.loadAnimation(paramContext, 2131034320);
-    paramContext.setAnimationListener(new yzx(paramView));
+    paramContext.setAnimationListener(new zgx(paramView));
     paramView.startAnimation(paramContext);
   }
   
@@ -221,7 +221,7 @@ public class BabyQHandler
     localHttpNetReq.c = c;
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.e = 1;
-    localHttpNetReq.a(new yzy(this, paramInt + 1, paramString1, paramString2));
+    localHttpNetReq.a(new zgy(this, paramInt + 1, paramString1, paramString2));
     localINetEngine.a(localHttpNetReq);
   }
   
@@ -280,7 +280,7 @@ public class BabyQHandler
               if (QLog.isColorLevel()) {
                 QLog.d("Q.BabyQ", 2, "BabyQ funcall handleAddBabyQAsFriend result = " + i + " msg = " + paramToServiceMsg);
               }
-              ((FriendListHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(AppConstants.au, 0, 3999, "", true, false, -1L);
+              ((FriendListHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(AppConstants.av, 0, 3999, "", true, false, -1L);
               a(4, bool, paramFromServiceMsg);
             }
           }
@@ -616,8 +616,8 @@ public class BabyQHandler
     {
       return;
       localObject1 = paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    } while ((localObject1 == null) || (!(localObject1 instanceof yzy)));
-    Object localObject1 = (yzy)localObject1;
+    } while ((localObject1 == null) || (!(localObject1 instanceof zgy)));
+    Object localObject1 = (zgy)localObject1;
     int i;
     label57:
     Object localObject2;
@@ -641,13 +641,13 @@ public class BabyQHandler
       }
       paramNetResp = new File(c);
       localObject2 = PortalUtils.a(paramNetResp.getAbsolutePath());
-      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (((String)localObject2).equalsIgnoreCase(((yzy)localObject1).jdField_b_of_type_JavaLangString))) {
+      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (((String)localObject2).equalsIgnoreCase(((zgy)localObject1).jdField_b_of_type_JavaLangString))) {
         break label211;
       }
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("Q.BabyQ", 2, "onResp|Md5 error，fileMD5 = " + (String)localObject2 + ", configMD5 = " + ((yzy)localObject1).jdField_b_of_type_JavaLangString);
+      QLog.d("Q.BabyQ", 2, "onResp|Md5 error，fileMD5 = " + (String)localObject2 + ", configMD5 = " + ((zgy)localObject1).jdField_b_of_type_JavaLangString);
       FileUtils.a(d, false);
       return;
       i = 0;
@@ -657,7 +657,7 @@ public class BabyQHandler
     a(5, a(paramNetResp.getAbsolutePath(), d), null);
     return;
     label229:
-    a(((yzy)localObject1).jdField_a_of_type_JavaLangString, ((yzy)localObject1).jdField_b_of_type_JavaLangString, ((yzy)localObject1).jdField_a_of_type_Int);
+    a(((zgy)localObject1).jdField_a_of_type_JavaLangString, ((zgy)localObject1).jdField_b_of_type_JavaLangString, ((zgy)localObject1).jdField_a_of_type_Int);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1011,7 +1011,7 @@ public class BabyQHandler
     do
     {
       return;
-      UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(AppConstants.au, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString, 9002, -5040, 655362, MessageCache.a());
+      UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(AppConstants.av, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString, 9002, -5040, 655362, MessageCache.a());
       MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
       localMessageForUniteGrayTip.initGrayTipMsg(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, localUniteGrayTipParam);
       UniteGrayTipUtil.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForUniteGrayTip);

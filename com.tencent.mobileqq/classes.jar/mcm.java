@@ -1,18 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureSoManager.Callback;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
-class mcm
-  implements ReadInJoyCameraCaptureSoManager.Callback
+public class mcm
+  implements View.OnClickListener
 {
-  mcm(mck parammck) {}
+  public mcm(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("VALUE_CAMERA_CAPTURE_SO_DOWNLOAD_STATUS", paramInt);
-    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_CAMERA_CAPTURE_SO_DOWNLOAD", localBundle, null);
+    this.a.getActivity().finish();
   }
 }
 

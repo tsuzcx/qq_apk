@@ -1,25 +1,15 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 
 public class rro
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rro(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
+  public rro(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aI();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.i(0);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.U();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433787, 1).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+    this.a.onBackEvent();
   }
 }
 

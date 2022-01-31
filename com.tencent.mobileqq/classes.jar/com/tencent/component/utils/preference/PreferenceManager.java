@@ -269,7 +269,7 @@ public class PreferenceManager
     //   319: astore_0
     //   320: aload_3
     //   321: ifnull +33 -> 354
-    //   324: new 171	plz
+    //   324: new 171	pqr
     //   327: dup
     //   328: aload_3
     //   329: new 107	java/lang/StringBuilder
@@ -281,7 +281,7 @@ public class PreferenceManager
     //   343: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   346: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   349: iconst_1
-    //   350: invokespecial 176	plz:<init>	(Landroid/content/SharedPreferences;Ljava/lang/String;Z)V
+    //   350: invokespecial 176	pqr:<init>	(Landroid/content/SharedPreferences;Ljava/lang/String;Z)V
     //   353: astore_0
     //   354: getstatic 40	com/tencent/component/utils/preference/PreferenceManager:sSharedPrefs	Lcom/tencent/component/network/module/cache/common/LruCache;
     //   357: aload 8

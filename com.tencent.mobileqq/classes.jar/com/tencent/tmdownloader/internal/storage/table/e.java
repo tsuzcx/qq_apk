@@ -448,34 +448,34 @@ public class e
   public void a(String paramString, int paramInt)
   {
     r.c("SettingTable", "<setInt>key=" + paramString + ", value=" + String.valueOf(paramInt) + ", process:" + m.e());
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new g(this, paramString, paramInt));
+    com.tencent.tmassistantbase.util.f.a().post(new g(this, paramString, paramInt));
     r.c("SettingTable", "<setInt> exit");
   }
   
   public void a(String paramString, long paramLong)
   {
     r.c("SettingTable", "<setLong>key=" + paramString + ", value=" + String.valueOf(paramLong) + ", process:" + m.e());
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new h(this, paramString, paramLong));
+    com.tencent.tmassistantbase.util.f.a().post(new h(this, paramString, paramLong));
     r.c("SettingTable", "<setLong> exit");
   }
   
   public void a(String paramString1, String paramString2)
   {
     r.c("SettingTable", "<setString>key=" + paramString1 + ", value=" + String.valueOf(paramString2) + ", process:" + m.e());
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new i(this, paramString1, paramString2));
+    com.tencent.tmassistantbase.util.f.a().post(new i(this, paramString1, paramString2));
     r.c("SettingTable", "<setString> exit");
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
     r.c("SettingTable", "<setBoolean>key=" + paramString + ", value=" + String.valueOf(paramBoolean) + ",process:" + m.e());
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new k(this, paramString, paramBoolean));
+    com.tencent.tmassistantbase.util.f.a().post(new k(this, paramString, paramBoolean));
   }
   
   public void a(String paramString, byte[] paramArrayOfByte)
   {
     r.c("SettingTable", "<setBlob>key=" + paramString + ", value.length=" + paramArrayOfByte.length + ",process:" + m.e());
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new j(this, paramString, paramArrayOfByte));
+    com.tencent.tmassistantbase.util.f.a().post(new j(this, paramString, paramArrayOfByte));
   }
   
   public boolean a(String paramString)
@@ -557,11 +557,11 @@ public class e
     //   10: new 111	java/lang/StringBuilder
     //   13: dup
     //   14: invokespecial 112	java/lang/StringBuilder:<init>	()V
-    //   17: ldc_w 387
+    //   17: ldc_w 379
     //   20: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: aload_1
     //   24: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: ldc_w 321
+    //   27: ldc_w 313
     //   30: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: invokestatic 242	com/tencent/tmassistantbase/util/m:e	()Ljava/lang/String;
     //   36: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -579,7 +579,7 @@ public class e
     //   64: getfield 22	com/tencent/tmdownloader/internal/storage/table/e:b	Ljava/util/Map;
     //   67: aload_1
     //   68: invokeinterface 220 2 0
-    //   73: checkcast 389	[B
+    //   73: checkcast 381	[B
     //   76: astore_2
     //   77: ldc 40
     //   79: new 111	java/lang/StringBuilder
@@ -589,10 +589,10 @@ public class e
     //   88: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: aload_1
     //   92: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   95: ldc_w 391
+    //   95: ldc_w 383
     //   98: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   101: aload_2
-    //   102: invokevirtual 394	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   102: invokevirtual 386	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   105: ldc 226
     //   107: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -611,7 +611,7 @@ public class e
     //   134: aload_2
     //   135: ifnonnull +16 -> 151
     //   138: ldc 40
-    //   140: ldc_w 396
+    //   140: ldc_w 388
     //   143: invokestatic 48	com/tencent/tmassistantbase/util/r:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   146: aconst_null
     //   147: astore_2
@@ -622,7 +622,7 @@ public class e
     //   157: aload 7
     //   159: ifnonnull +16 -> 175
     //   162: ldc 40
-    //   164: ldc_w 398
+    //   164: ldc_w 390
     //   167: invokestatic 48	com/tencent/tmassistantbase/util/r:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   170: aconst_null
     //   171: astore_2

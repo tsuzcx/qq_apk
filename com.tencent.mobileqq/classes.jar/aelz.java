@@ -1,39 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.nearby.NearbyIconDecoder;
-import com.tencent.mobileqq.util.IIconDecoder.IIconListener;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.magicface.drawable.IMessageHandler;
 
-public class aelz
-  implements Runnable
+public final class aelz
+  extends Handler
 {
-  public aelz(NearbyIconDecoder paramNearbyIconDecoder, String paramString, Bitmap paramBitmap) {}
+  java.lang.ref.WeakReference a;
   
-  public void run()
+  public aelz(IMessageHandler paramIMessageHandler)
   {
-    try
+    super(Looper.getMainLooper());
+    this.a = new mqq.util.WeakReference(paramIMessageHandler);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a == null) {}
+    IMessageHandler localIMessageHandler;
+    do
     {
-      String[] arrayOfString = this.jdField_a_of_type_JavaLangString.split("_s_");
-      if ((arrayOfString.length == 3) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyIconDecoder.a != null))
-      {
-        int i = Integer.parseInt(arrayOfString[0]);
-        int j = Integer.parseInt(arrayOfString[2]);
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyIconDecoder.a.iterator();
-        while (localIterator.hasNext()) {
-          ((IIconDecoder.IIconListener)localIterator.next()).a(i, arrayOfString[1], j, this.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-      }
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+      localIMessageHandler = (IMessageHandler)this.a.get();
+    } while (localIMessageHandler == null);
+    localIMessageHandler.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelz
  * JD-Core Version:    0.7.0.1
  */

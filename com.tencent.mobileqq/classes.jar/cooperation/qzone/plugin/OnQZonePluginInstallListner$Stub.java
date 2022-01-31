@@ -1,10 +1,10 @@
 package cooperation.qzone.plugin;
 
-import amxa;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
+import aneo;
 
 public abstract class OnQZonePluginInstallListner$Stub
   extends Binder
@@ -24,7 +24,7 @@ public abstract class OnQZonePluginInstallListner$Stub
     if ((localIInterface != null) && ((localIInterface instanceof OnQZonePluginInstallListner))) {
       return (OnQZonePluginInstallListner)localIInterface;
     }
-    return new amxa(paramIBinder);
+    return new aneo(paramIBinder);
   }
   
   public IBinder asBinder()

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajrm;
-import ajro;
-import ajrp;
-import ajrq;
-import ajrs;
-import ajru;
-import ajrv;
+import ajyz;
+import ajzb;
+import ajzc;
+import ajzd;
+import ajzf;
+import ajzh;
+import ajzi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -137,7 +137,7 @@ public class AvatarWallAdapter
     this.jdField_h_of_type_Boolean = true;
     this.jdField_e_of_type_Int = 2;
     this.jdField_f_of_type_Int = 6;
-    this.jdField_a_of_type_JavaUtilObserver = new ajrm(this);
+    this.jdField_a_of_type_JavaUtilObserver = new ajyz(this);
     this.jdField_i_of_type_Int = 10;
     this.jdField_j_of_type_Boolean = true;
     this.jdField_b_of_type_AndroidOsHandler = paramHandler;
@@ -217,30 +217,30 @@ public class AvatarWallAdapter
   public static String a(Context paramContext, int paramInt)
   {
     if (paramInt == 1) {
-      return paramContext.getString(2131430217);
-    }
-    if (paramInt == 2) {
-      return paramContext.getString(2131430218);
-    }
-    if (paramInt == 3) {
-      return paramContext.getString(2131430219);
-    }
-    if (paramInt == 5) {
       return paramContext.getString(2131430220);
     }
+    if (paramInt == 2) {
+      return paramContext.getString(2131430221);
+    }
+    if (paramInt == 3) {
+      return paramContext.getString(2131430222);
+    }
+    if (paramInt == 5) {
+      return paramContext.getString(2131430223);
+    }
     if (paramInt == 100) {
-      return paramContext.getString(2131430232);
+      return paramContext.getString(2131430235);
     }
     if (paramInt == 101) {
-      return paramContext.getString(2131430233);
+      return paramContext.getString(2131430236);
     }
     if (paramInt == 102) {
-      return paramContext.getString(2131430227);
+      return paramContext.getString(2131430230);
     }
     if (paramInt == 103) {
-      return paramContext.getString(2131430234);
+      return paramContext.getString(2131430237);
     }
-    return paramContext.getString(2131430216);
+    return paramContext.getString(2131430219);
   }
   
   public static void a(Activity paramActivity, int paramInt)
@@ -437,7 +437,7 @@ public class AvatarWallAdapter
   protected String a(int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      paramInt = 2131430221;
+      paramInt = 2131430224;
     }
     for (;;)
     {
@@ -454,18 +454,18 @@ public class AvatarWallAdapter
           return localActivity.getString(paramInt);
           if (paramInt == 1)
           {
-            paramInt = 2131430222;
+            paramInt = 2131430225;
             break;
           }
           if (paramInt < 4)
           {
-            paramInt = 2131430223;
+            paramInt = 2131430226;
             break;
           }
           if (paramInt < 4) {
             break label86;
           }
-          paramInt = 2131430224;
+          paramInt = 2131430227;
           break;
           return null;
         }
@@ -496,7 +496,7 @@ public class AvatarWallAdapter
         }
       }
       if (((ArrayList)localObject).size() > 0) {
-        QQToast.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), 2131430583, 1).a();
+        QQToast.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), 2131430586, 1).a();
       }
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
@@ -549,7 +549,7 @@ public class AvatarWallAdapter
       for (localObject1 = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();; localObject1 = null)
       {
         if (localObject1 != null) {
-          localObject1 = ((Activity)localObject1).getString(2131430360);
+          localObject1 = ((Activity)localObject1).getString(2131430363);
         }
         for (;;)
         {
@@ -584,10 +584,10 @@ public class AvatarWallAdapter
     while (paramInt1 > 0)
     {
       localObject = this.jdField_a_of_type_AndroidOsHandler;
-      ajro localajro = new ajro(this, paramInt2);
+      ajzb localajzb = new ajzb(this, paramInt2);
       int k = g;
       g = k + 1;
-      ((Handler)localObject).postDelayed(localajro, k * 10);
+      ((Handler)localObject).postDelayed(localajzb, k * 10);
       paramInt1 -= 1;
     }
   }
@@ -617,7 +617,7 @@ public class AvatarWallAdapter
             localObject2 = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
             if (localObject2 != null)
             {
-              DialogUtil.a((Context)localObject2, 230, null, ((Activity)localObject2).getString(2131430236), null, ((Activity)localObject2).getString(2131430237), new DialogUtil.DialogOnClickAdapter(), null).show();
+              DialogUtil.a((Context)localObject2, 230, null, ((Activity)localObject2).getString(2131430239), null, ((Activity)localObject2).getString(2131430240), new DialogUtil.DialogOnClickAdapter(), null).show();
               this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putBoolean("has_shown_same_city_picture_uploaded_dialog", true).commit();
             }
           }
@@ -712,7 +712,7 @@ public class AvatarWallAdapter
         }
         ((TroopInfo)localObject2).mTroopPicList = localArrayList;
         ((TroopInfo)localObject2).mTroopVerifyingPics = localHashSet;
-        ThreadManager.post(new ajrp(this, (TroopManager)localObject1, (TroopInfo)localObject2), 8, null, false);
+        ThreadManager.post(new ajzc(this, (TroopManager)localObject1, (TroopInfo)localObject2), 8, null, false);
         return;
         localObject1 = a(paramInt2);
         if (localObject1 == null) {
@@ -756,7 +756,7 @@ public class AvatarWallAdapter
       if (this.jdField_e_of_type_Int != 1) {
         break label154;
       }
-      localImageView.setBackgroundResource(2130841505);
+      localImageView.setBackgroundResource(2130841532);
       label132:
       localImageView.setLayoutParams(paramViewHolder);
       localImageView.setVisibility(0);
@@ -774,7 +774,7 @@ public class AvatarWallAdapter
           return;
           localBorderURLImageView.setBorderWidth(0);
           break;
-          localImageView.setBackgroundResource(2130841504);
+          localImageView.setBackgroundResource(2130841531);
           paramInt1 = (int)UITools.a(paramContext, 30.0F);
           paramViewHolder.width = paramInt1;
           paramViewHolder.height = paramInt1;
@@ -812,7 +812,7 @@ public class AvatarWallAdapter
                 if (paramViewHolder.jdField_a_of_type_AndroidGraphicsBitmap != null) {
                   break label343;
                 }
-                ThreadManager.post(new ajrq(this, paramString, this.jdField_c_of_type_Int, paramViewHolder, localBorderURLImageView), 8, null, true);
+                ThreadManager.post(new ajzd(this, paramString, this.jdField_c_of_type_Int, paramViewHolder, localBorderURLImageView), 8, null, true);
                 return;
               }
             }
@@ -830,7 +830,7 @@ public class AvatarWallAdapter
       localBorderURLImageView.setImageDrawable(null);
       return;
     } while (paramInt1 != 3);
-    ThreadManager.post(new ajrs(this, localBorderURLImageView, paramString), 8, null, false);
+    ThreadManager.post(new ajzf(this, localBorderURLImageView, paramString), 8, null, false);
   }
   
   protected void a(String paramString)
@@ -1014,7 +1014,7 @@ public class AvatarWallAdapter
         }
       }
     }
-    localActionSheet.a(new ajru(this, paramActivity, localActionSheet));
+    localActionSheet.a(new ajzh(this, paramActivity, localActionSheet));
     localActionSheet.show();
   }
   
@@ -1366,7 +1366,7 @@ public class AvatarWallAdapter
       if ((localActivity == null) || (Thread.currentThread() == localActivity.getMainLooper().getThread())) {
         break label155;
       }
-      localActivity.runOnUiThread(new ajrv(this, paramInt, localLayoutParams));
+      localActivity.runOnUiThread(new ajzi(this, paramInt, localLayoutParams));
       return;
       label123:
       if (!(localLayoutParams instanceof LinearLayout.LayoutParams)) {
@@ -1386,15 +1386,15 @@ public class AvatarWallAdapter
     QQCustomDialog localQQCustomDialog = DialogUtil.a(localActivity, 230);
     localQQCustomDialog.setTitle(null);
     if (paramBoolean) {
-      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131435750));
+      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131435766));
     }
     for (;;)
     {
-      localQQCustomDialog.setPositiveButton(localActivity.getResources().getString(2131430555), new DialogUtil.DialogOnClickAdapter());
-      localQQCustomDialog.setPositiveButtonContentDescription(localActivity.getResources().getString(2131430555));
+      localQQCustomDialog.setPositiveButton(localActivity.getResources().getString(2131430558), new DialogUtil.DialogOnClickAdapter());
+      localQQCustomDialog.setPositiveButtonContentDescription(localActivity.getResources().getString(2131430558));
       localQQCustomDialog.show();
       return;
-      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131435749));
+      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131435765));
     }
   }
   
@@ -1441,68 +1441,61 @@ public class AvatarWallAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Activity localActivity = null;
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
-        break label614;
-      }
-    }
-    label176:
-    label192:
-    label581:
-    label602:
-    label609:
-    label614:
-    for (paramViewGroup = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();; paramViewGroup = null)
+    Object localObject1 = null;
+    if (this.jdField_a_of_type_MqqUtilWeakReference != null) {}
+    for (Activity localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();; localActivity = null)
     {
-      if (paramViewGroup == null) {}
+      paramViewGroup = paramView;
+      if (paramView == null) {
+        if (localActivity != null) {}
+      }
       int k;
       AvatarWallAdapter.AvatarInfo localAvatarInfo;
       do
       {
         return paramView;
-        paramViewGroup = LayoutInflater.from(paramViewGroup).inflate(2130969428, null);
+        paramViewGroup = LayoutInflater.from(localActivity).inflate(2130969424, null);
         k = -1;
         localAvatarInfo = a(paramInt);
         paramView = paramViewGroup;
       } while (localAvatarInfo == null);
-      paramView = localAvatarInfo.d;
-      if (paramView.equals("PLUS"))
+      Object localObject2 = localAvatarInfo.d;
+      if (((String)localObject2).equals("PLUS"))
       {
-        paramView = null;
         k = 1;
+        paramView = (View)localObject1;
+        if (paramViewGroup.getTag() != null) {
+          break label601;
+        }
+        localObject2 = new AvatarWallAdapter.ViewHolder(this);
+        ((AvatarWallAdapter.ViewHolder)localObject2).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131366463));
+        ((AvatarWallAdapter.ViewHolder)localObject2).jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131361845));
+        if (localActivity == null) {}
       }
       for (;;)
       {
-        Object localObject;
-        if (paramViewGroup.getTag() == null)
+        try
         {
-          AvatarWallAdapter.ViewHolder localViewHolder = new AvatarWallAdapter.ViewHolder(this);
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131366465));
-          localViewHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131361845));
-          localViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView = ((BorderURLImageView)paramViewGroup.findViewById(2131362767));
-          localObject = (AbsListView.LayoutParams)paramViewGroup.getLayoutParams();
-          if (localObject == null)
+          ((AvatarWallAdapter.ViewHolder)localObject2).jdField_a_of_type_AndroidWidgetProgressBar.setProgressDrawable(localActivity.getResources().getDrawable(2130841304));
+          ((AvatarWallAdapter.ViewHolder)localObject2).jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView = ((BorderURLImageView)paramViewGroup.findViewById(2131362772));
+          localObject1 = (AbsListView.LayoutParams)paramViewGroup.getLayoutParams();
+          if (localObject1 == null)
           {
-            localObject = new AbsListView.LayoutParams(this.jdField_c_of_type_Int, this.jdField_c_of_type_Int);
-            paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            paramViewGroup.setTag(localViewHolder);
-            localObject = localViewHolder;
-            if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-              localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-            }
+            localObject1 = new AbsListView.LayoutParams(this.jdField_c_of_type_Int, this.jdField_c_of_type_Int);
+            paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            paramViewGroup.setTag(localObject2);
+            localObject1 = localObject2;
             if (localActivity != null)
             {
               paramViewGroup.setContentDescription("图片" + paramInt);
               if (k == 1) {
                 paramViewGroup.setContentDescription("上传头像");
               }
-              a((AvatarWallAdapter.ViewHolder)localObject, localActivity, k, paramView, paramInt, localAvatarInfo.jdField_c_of_type_Boolean);
+              a((AvatarWallAdapter.ViewHolder)localObject1, localActivity, k, paramView, paramInt, localAvatarInfo.jdField_c_of_type_Boolean);
             }
-            paramView = ((AvatarWallAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetProgressBar;
+            paramView = ((AvatarWallAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar;
             if (!localAvatarInfo.jdField_a_of_type_Boolean) {
-              break label572;
+              break label613;
             }
             if (paramView.getVisibility() != 0) {
               paramView.setVisibility(0);
@@ -1511,56 +1504,64 @@ public class AvatarWallAdapter
             this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
             paramView.setProgress(100);
             if (!localAvatarInfo.jdField_b_of_type_Boolean) {
-              break label581;
+              break label622;
             }
-            if (((AvatarWallAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView == null)
+            if (((AvatarWallAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView == null)
             {
-              ((AvatarWallAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView = ((ViewStub)paramViewGroup.findViewById(2131366466)).inflate();
-              paramViewGroup.setTag(localObject);
+              ((AvatarWallAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView = ((ViewStub)paramViewGroup.findViewById(2131366464)).inflate();
+              paramViewGroup.setTag(localObject1);
             }
-            ((AvatarWallAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
+            ((AvatarWallAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
+            if ((!this.jdField_a_of_type_Boolean) || (paramInt != this.jdField_a_of_type_Int) || (this.jdField_b_of_type_Boolean)) {
+              break label643;
+            }
+            paramViewGroup.setVisibility(8);
+            return paramViewGroup;
+            if ((((String)localObject2).equals("AVATAR_URL_STR")) && ((localAvatarInfo.jdField_b_of_type_JavaLangString == null) || (!new File(localAvatarInfo.jdField_b_of_type_JavaLangString).exists())))
+            {
+              paramView = AvatarTroopUtil.a(AvatarTroopUtil.a(localAvatarInfo.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 1));
+              k = 0;
+              break;
+            }
+            if ((((String)localObject2).equals("AVATAR_LOCAL_STR")) || ((localAvatarInfo.jdField_b_of_type_JavaLangString != null) && (new File(localAvatarInfo.jdField_b_of_type_JavaLangString).exists())))
+            {
+              paramView = localAvatarInfo.jdField_b_of_type_JavaLangString;
+              k = 2;
+              break;
+            }
+            paramView = (View)localObject1;
+            if (!((String)localObject2).equals("SYSTEM_PHOTO")) {
+              break;
+            }
+            paramView = AvatarTroopUtil.a(AvatarTroopUtil.a(localAvatarInfo.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0));
+            k = 3;
           }
         }
-        for (;;)
+        catch (OutOfMemoryError localOutOfMemoryError)
         {
-          if ((!this.jdField_a_of_type_Boolean) || (paramInt != this.jdField_a_of_type_Int) || (this.jdField_b_of_type_Boolean)) {
-            break label602;
+          if (!QLog.isColorLevel()) {
+            continue;
           }
-          paramViewGroup.setVisibility(8);
-          return paramViewGroup;
-          if ((paramView.equals("AVATAR_URL_STR")) && ((localAvatarInfo.jdField_b_of_type_JavaLangString == null) || (!new File(localAvatarInfo.jdField_b_of_type_JavaLangString).exists())))
-          {
-            paramView = AvatarTroopUtil.a(AvatarTroopUtil.a(localAvatarInfo.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 1));
-            k = 0;
-            break;
-          }
-          if ((paramView.equals("AVATAR_LOCAL_STR")) || ((localAvatarInfo.jdField_b_of_type_JavaLangString != null) && (new File(localAvatarInfo.jdField_b_of_type_JavaLangString).exists())))
-          {
-            paramView = localAvatarInfo.jdField_b_of_type_JavaLangString;
-            k = 2;
-            break;
-          }
-          if (!paramView.equals("SYSTEM_PHOTO")) {
-            break label609;
-          }
-          paramView = AvatarTroopUtil.a(AvatarTroopUtil.a(localAvatarInfo.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0));
-          k = 3;
-          break;
-          ((AbsListView.LayoutParams)localObject).height = this.jdField_c_of_type_Int;
-          ((AbsListView.LayoutParams)localObject).width = this.jdField_c_of_type_Int;
-          break label176;
-          localObject = (AvatarWallAdapter.ViewHolder)paramViewGroup.getTag();
-          break label192;
-          paramView.setVisibility(8);
-          break label320;
-          if (((AvatarWallAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView != null) {
-            ((AvatarWallAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(8);
-          }
+          QLog.e(jdField_a_of_type_JavaLangString, 2, localOutOfMemoryError, new Object[0]);
+          continue;
+          localOutOfMemoryError.height = this.jdField_c_of_type_Int;
+          localOutOfMemoryError.width = this.jdField_c_of_type_Int;
+          continue;
         }
-        paramViewGroup.setVisibility(0);
-        return paramViewGroup;
-        paramView = null;
+        label601:
+        AvatarWallAdapter.ViewHolder localViewHolder = (AvatarWallAdapter.ViewHolder)paramViewGroup.getTag();
+        continue;
+        label613:
+        paramView.setVisibility(8);
+        continue;
+        label622:
+        if (localViewHolder.jdField_a_of_type_AndroidViewView != null) {
+          localViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        }
       }
+      label643:
+      paramViewGroup.setVisibility(0);
+      return paramViewGroup;
     }
   }
   
@@ -1571,7 +1572,7 @@ public class AvatarWallAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallAdapter
  * JD-Core Version:    0.7.0.1
  */

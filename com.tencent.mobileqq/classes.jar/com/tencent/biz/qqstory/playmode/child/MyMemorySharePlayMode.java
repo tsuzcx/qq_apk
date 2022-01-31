@@ -16,13 +16,13 @@ public class MyMemorySharePlayMode
   extends CommentPlayMode
 {
   public String h;
-  public int l;
+  public int m;
   
   public MyMemorySharePlayMode(int paramInt, StoryVideoPlayer paramStoryVideoPlayer, VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, Bundle paramBundle)
   {
     super(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
     this.h = paramBundle.getString("extra_collection_key");
-    this.l = paramBundle.getInt("extra_share_time_zone", -1);
+    this.m = paramBundle.getInt("extra_share_time_zone", -1);
     b(2);
     this.e = 1;
   }
@@ -45,7 +45,7 @@ public class MyMemorySharePlayMode
       }
     }
     label59:
-    for (this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer = MemorySharePlayingListSync.a(paramBundle, this.jdField_a_of_type_JavaLangString, this.h, this.l);; this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer = MemorySharePlayingListSync.b(paramBundle, this.jdField_a_of_type_JavaLangString, this.g, this.j))
+    for (this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer = MemorySharePlayingListSync.a(paramBundle, this.jdField_a_of_type_JavaLangString, this.h, this.m);; this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer = MemorySharePlayingListSync.a(paramBundle, this.jdField_a_of_type_JavaLangString, this.g, this.j, this.k))
     {
       this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer.a();
       return;

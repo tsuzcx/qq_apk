@@ -1,22 +1,31 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.HotPicManager;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.File;
 
-public class adpz
+public final class adpz
   implements Runnable
 {
-  public adpz(HotPicManager paramHotPicManager, int paramInt) {}
-  
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.a.getApplication().getSharedPreferences("sp_hotpic_" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.a.c(), 0).edit().putInt("hot_pic_last_click", this.jdField_a_of_type_Int).commit();
+    Object localObject2 = FMSettings.a().b();
+    Object localObject1 = FMSettings.a().c();
+    File localFile = new File((String)localObject2);
+    if (!FileUtils.a((String)localObject2)) {
+      localFile.mkdirs();
+    }
+    localObject2 = new File((String)localObject1);
+    if (!FileUtils.a((String)localObject1)) {
+      ((File)localObject2).mkdirs();
+    }
+    localObject1 = new File(FMSettings.a().b() + ".nomedia");
+    if (((File)localObject1).exists()) {
+      ((File)localObject1).delete();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adpz
  * JD-Core Version:    0.7.0.1
  */

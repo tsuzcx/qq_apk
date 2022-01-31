@@ -1,21 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityActivity.AccountInfo;
-import com.tencent.open.agent.CardContainer;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CircleProgressBar;
 
 public class alam
-  implements Runnable
+  extends Handler
 {
-  public alam(AuthorityActivity paramAuthorityActivity, Bitmap paramBitmap) {}
+  public alam(CircleProgressBar paramCircleProgressBar) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.a, "", this.jdField_a_of_type_AndroidGraphicsBitmap, false);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = this.a;
+      paramMessage.i += 3;
+      this.a.postInvalidate();
+    } while (!this.a.a);
+    sendEmptyMessageDelayed(10000, 50L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alam
  * JD-Core Version:    0.7.0.1
  */

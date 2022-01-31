@@ -1,33 +1,15 @@
-import android.content.Context;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.1;
 
 public class xmz
   implements Runnable
 {
-  public xmz(CameraPreviewNew paramCameraPreviewNew, String paramString, int paramInt, Context paramContext) {}
+  public xmz(RedPacketProxy.1 param1, RedPacketInfoBase paramRedPacketInfoBase) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 2002) {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131428347);
-    }
-    localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131428346), new xna(this));
-    try
-    {
-      ((QQCustomDialog)localObject).setCancelable(false);
-      ((QQCustomDialog)localObject).show();
-      return;
-    }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("CameraPreviewNew", 2, "", localBadTokenException);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketProxy$1.a.onGetSkin(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase);
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.component.media.utils.ImageManagerLog;
 import com.tencent.component.media.utils.LruCache;
 import java.util.LinkedList;
 import java.util.TreeMap;
-import phm;
+import pme;
 
 public class ReuseBitmapPool
 {
@@ -27,7 +27,7 @@ public class ReuseBitmapPool
       ImageManagerLog.w("NewBucketPool", "ReuseBitmapPool maxSize<=0:" + paramInt1);
       paramInt2 = 1;
     }
-    this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new phm(this, paramInt2);
+    this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new pme(this, paramInt2);
   }
   
   private Bitmap a(Integer paramInteger)

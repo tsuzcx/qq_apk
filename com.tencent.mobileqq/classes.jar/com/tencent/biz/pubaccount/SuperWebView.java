@@ -10,7 +10,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
 import java.util.Map;
-import kzh;
+import lbo;
 import mqq.os.MqqHandler;
 
 public abstract class SuperWebView
@@ -58,7 +58,7 @@ public abstract class SuperWebView
   {
     this.jdField_a_of_type_Boolean = true;
     if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      ThreadManager.getUIHandler().postDelayed(new kzh(this), 50L);
+      ThreadManager.getUIHandler().postDelayed(new lbo(this), 50L);
     }
   }
   

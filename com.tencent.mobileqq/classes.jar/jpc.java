@@ -1,55 +1,26 @@
-import android.content.Context;
-import android.view.Display;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
-import com.tencent.av.smallscreen.SmallScreenVideoController;
-import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
-import com.tencent.av.ui.AbstractOrientationEventListener;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.av.service.QavWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallCardHandler.OnGetQCallCardListener;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class jpc
-  extends AbstractOrientationEventListener
+  implements QCallCardHandler.OnGetQCallCardListener
 {
-  public jpc(SmallScreenVideoController paramSmallScreenVideoController, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public jpc(QQServiceForAV paramQQServiceForAV) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(String paramString)
   {
-    int j = 0;
-    try
-    {
-      i = (this.a.jdField_a_of_type_AndroidViewDisplay.getRotation() * 90 + paramInt) % 360;
-      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null) {
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.b(i);
-      }
-      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI != null) {
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(paramInt, paramBoolean);
-      }
-      if (this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils != null) {
-        this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(paramInt);
-      }
-      this.a.f = paramInt;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onGetQCallNickName");
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("SmallScreenVideoController", 2, "onVideoOrientationChanged e = " + localException);
-          i = j;
-        }
-      }
-    }
+    new QavWrapper(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new jpd(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpc
  * JD-Core Version:    0.7.0.1
  */

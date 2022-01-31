@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
 
-class mvn
+public class mvn
   implements Runnable
 {
-  mvn(mvm parammvm) {}
+  public mvn(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed) {}
   
   public void run()
   {
-    this.a.a.dismiss();
+    ServiceAccountFolderManager.a().a(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed, true);
   }
 }
 

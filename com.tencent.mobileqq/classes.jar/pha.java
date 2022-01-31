@@ -1,26 +1,26 @@
-import com.tencent.component.media.image.ImageDefaultConfig;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
+import com.tencent.image.URLImageView;
 
 public class pha
-  implements PoolParams
+  implements Animation.AnimationListener
 {
-  public pha(ImageManager paramImageManager) {}
+  public pha(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
-  public PoolParams.BucketParams getBucketParams(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return ImageDefaultConfig.getArtBitmapBucketParams(ImageManager.a(this.a), paramInt);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
   
-  public int getBucketPoolSize()
-  {
-    return ImageDefaultConfig.getArtBitmapPoolSize(ImageManager.a(this.a));
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pha
  * JD-Core Version:    0.7.0.1
  */

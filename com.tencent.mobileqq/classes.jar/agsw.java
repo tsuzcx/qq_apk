@@ -1,35 +1,13 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
-import com.tencent.mobileqq.profile.vote.VoteHelper;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
-public class agsw
-  implements NearbyLikeLimitManager.onDoVoteListener
+class agsw
+  implements Runnable
 {
-  public agsw(VoteHelper paramVoteHelper, CardProfile paramCardProfile, ImageView paramImageView) {}
+  agsw(agsu paramagsu) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile, this.jdField_a_of_type_AndroidWidgetImageView, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
-    {
-      str1 = "1";
-      if (!paramBoolean) {
-        break label69;
-      }
-    }
-    label69:
-    for (String str2 = "2";; str2 = "1")
-    {
-      NearbyLikeLimitManager.a(localQQAppInterface, "detail_like", paramString, str1, "", "", str2);
-      return;
-      str1 = "2";
-      break;
-    }
+    this.a.a.c();
   }
 }
 

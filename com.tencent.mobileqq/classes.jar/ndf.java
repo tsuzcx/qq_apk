@@ -1,13 +1,21 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.base.Copyable;
+import com.tencent.biz.qqstory.base.OneObjectCacheList;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ndf
-  implements Runnable
+  extends LruCache
 {
-  public ndf(TroopNickNameManager paramTroopNickNameManager) {}
-  
-  public void run()
+  public ndf(OneObjectCacheList paramOneObjectCacheList, int paramInt)
   {
-    this.a.c();
+    super(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject, Copyable paramCopyable1, Copyable paramCopyable2)
+  {
+    this.a.a.put(paramObject, new WeakReference(paramCopyable1));
+    this.a.a();
   }
 }
 

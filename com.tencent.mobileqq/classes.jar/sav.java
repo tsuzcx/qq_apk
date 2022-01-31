@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 
-class sav
-  implements Runnable
+public final class sav
+  implements DialogInterface.OnClickListener
 {
-  sav(sau paramsau) {}
+  public sav(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.b)
-    {
-      this.a.a.b = false;
-      MessageRoamManager localMessageRoamManager = (MessageRoamManager)this.a.a.app.getManager(91);
-      if (localMessageRoamManager != null) {
-        localMessageRoamManager.d();
-      }
+    if (this.a != null) {
+      this.a.a();
     }
+    paramDialogInterface.dismiss();
   }
 }
 

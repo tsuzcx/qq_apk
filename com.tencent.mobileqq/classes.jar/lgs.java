@@ -1,17 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class lgs
   implements Runnable
 {
-  public lgs(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lgs(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
   
   public void run()
   {
-    ShortVideoUtils.a(ReadInJoyCameraCaptureActivity.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "ShortVideoUtils.isVideoSoLibLoaded() = " + ShortVideoUtils.a());
+    ReadInJoySelfActivity.a(this.a);
+    ReadInJoyWebDataManager localReadInJoyWebDataManager;
+    String str;
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null)
+    {
+      localReadInJoyWebDataManager = ReadInJoyWebDataManager.a();
+      str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.c() > 0) {
+        break label54;
+      }
+    }
+    label54:
+    for (int i = 0;; i = 1)
+    {
+      localReadInJoyWebDataManager.a(str, i);
+      return;
     }
   }
 }

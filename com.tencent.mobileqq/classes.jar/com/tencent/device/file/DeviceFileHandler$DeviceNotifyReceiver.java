@@ -80,7 +80,7 @@ public class DeviceFileHandler$DeviceNotifyReceiver
                       if (str.lastIndexOf(".") > 0)
                       {
                         paramContext = str.substring(str.lastIndexOf("."));
-                        paramContext = AppConstants.aJ + "/smart_device/" + System.currentTimeMillis() + paramContext;
+                        paramContext = AppConstants.aK + "/smart_device/" + System.currentTimeMillis() + paramContext;
                         FileUtils.b(str, paramContext);
                         paramIntent.strFilePathSrc = paramContext;
                         this.a.b.remove(Long.valueOf(l1));

@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffffcd00" />
-    <corners android:radius="2.0dip" />
-</shape>
+<inset android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ed0" android:insetLeft="7.5dip" android:insetRight="7.5dip" android:insetTop="7.5dip" android:insetBottom="7.5dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

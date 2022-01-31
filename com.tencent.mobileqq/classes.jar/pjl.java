@@ -1,32 +1,19 @@
-import com.tencent.component.network.downloader.UrlKeyGenerator;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class pjl
-  extends UrlKeyGenerator
+  implements Runnable
 {
-  public String b(String paramString)
+  public pjl(BaseApplicationImpl paramBaseApplicationImpl, Intent paramIntent) {}
+  
+  public void run()
   {
-    String str = null;
-    int i;
-    if (UrlKeyGenerator.a(paramString, "http://")) {
-      i = paramString.indexOf("/", "http://".length());
-    }
-    for (;;)
-    {
-      if (i != -1) {
-        str = paramString.substring(i);
-      }
-      return str;
-      if (UrlKeyGenerator.a(paramString, "https://")) {
-        i = paramString.indexOf("/", "https://".length());
-      } else {
-        i = paramString.indexOf("/");
-      }
-    }
+    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.doSendBroadcast(this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pjl
  * JD-Core Version:    0.7.0.1
  */

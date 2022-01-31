@@ -1,63 +1,73 @@
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameRoamData;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
+import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
+import java.util.HashMap;
 import org.json.JSONObject;
 
-class acca
-  implements Runnable
+public class acca
+  extends ClickableSpan
 {
-  acca(acbg paramacbg, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public acca(MessageForFoldMsgGrayTips paramMessageForFoldMsgGrayTips, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = 0;
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.frienduin;
+    Object localObject1 = new JSONObject();
+    paramView = new JSONObject();
     try
     {
-      Object localObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      long l = ((JSONObject)localObject2).optLong("timestamp");
-      Object localObject1 = new ArrayList();
-      localObject2 = ((JSONObject)localObject2).optJSONArray("gameList");
-      while (i < ((JSONArray)localObject2).length())
-      {
-        ApolloGameRoamData localApolloGameRoamData = new ApolloGameRoamData();
-        JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
-        localApolloGameRoamData.gameId = localJSONObject.optInt("gameId");
-        localApolloGameRoamData.type = localJSONObject.optInt("tab");
-        ((ArrayList)localObject1).add(localApolloGameRoamData);
-        i += 1;
+      ((JSONObject)localObject1).put("name", localObject2);
+      ((JSONObject)localObject1).put("grouptype", 1 + "");
+      ((JSONObject)localObject1).put("groupid", str);
+      localObject2 = (PasswdRedBagManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(124);
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagIndex))) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId = ((String)((PasswdRedBagManager)localObject2).g.get(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagIndex));
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MessengerService$IncomingHandler", 2, "IPC_APOLLO_UPDATE_GAME_LIST, update game list");
-        }
-        localObject2 = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
-        ((ApolloDaoManager)localObject2).e();
-        ((ApolloDaoManager)localObject2).c((ArrayList)localObject1);
-        ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l);
-        ((ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152)).d();
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putInt("result", 0);
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId)) {
+        return;
       }
-      return;
+      localObject2 = (String)((PasswdRedBagManager)localObject2).c.get(((PasswdRedBagManager)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.istroop) + "_" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.frienduin + "_" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId);
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        return;
+      }
+      ((JSONObject)localObject1).put("listid", this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsgGrayTips.redBagId);
+      ((JSONObject)localObject1).put("authkey", localObject2);
+      paramView.put("userId", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      paramView.put("viewTag", "redgiftDetail");
+      paramView.put("app_info", "appid#1344242394|bargainor_id#1000030201|channel#graytips");
+      paramView.put("come_from", 2);
+      paramView.put("extra_data", localObject1);
     }
     catch (Exception localException)
     {
-      QLog.e("MessengerService$IncomingHandler", 1, "IPC_APOLLO_UPDATE_GAME_LIST, exception=", localException);
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("result", 1);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      label295:
+      break label295;
     }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("json", paramView.toString());
+    ((Bundle)localObject1).putString("callbackSn", "0");
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, PayBridgeActivity.class);
+    paramView.putExtras((Bundle)localObject1);
+    paramView.putExtra("pay_requestcode", 5);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    return;
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

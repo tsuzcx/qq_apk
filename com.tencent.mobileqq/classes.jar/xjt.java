@@ -1,29 +1,18 @@
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
 
-public class xjt
-  implements View.OnClickListener
+class xjt
+  implements Runnable
 {
-  public xjt(BannerManager paramBannerManager, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  xjt(xjs paramxjs, Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
+    if (ThemeHbFragment.a(this.jdField_a_of_type_Xjs.a) != null) {
+      ThemeHbFragment.a(this.jdField_a_of_type_Xjs.a).setBackgroundDrawable(null);
     }
-    paramView = (QQAppInterface)BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getAppRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.a();
-    UpgradeTIMWrapper.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(20).sendToTarget();
-    ReportController.b(paramView, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
+    ThemeHbFragment.a(this.jdField_a_of_type_Xjs.a).setImageBitmap(ThemeHbFragment.a(this.jdField_a_of_type_Xjs.a, (Bitmap)this.jdField_a_of_type_JavaLangObject));
   }
 }
 

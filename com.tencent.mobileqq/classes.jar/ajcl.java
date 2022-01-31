@@ -1,50 +1,26 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class ajcl
-  implements Runnable
+  implements TextWatcher
 {
-  public ajcl(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, List paramList) {}
+  public ajcl(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject1).hasNext())
+    if ((!TextUtils.isEmpty(this.a.a.b)) && (paramInt1 > 0) && (paramInt1 < this.a.a.b.length() + this.a.a.c.length() + this.a.a.a.length() + this.a.K.length()) && (paramInt2 > paramInt3))
     {
-      localObject2 = (MessageRecord)((Iterator)localObject1).next();
-      TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (MessageRecord)localObject2);
-    }
-    localObject1 = null;
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (((Iterator)localObject2).hasNext())
-    {
-      Object localObject3 = (MessageRecord)((Iterator)localObject2).next();
-      localObject3 = TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (MessageRecord)localObject3);
-      if (localObject3 == null) {
-        break label133;
-      }
-      if (localObject1 != null) {
-        break label130;
-      }
-      localObject1 = new ArrayList();
-      label97:
-      ((List)localObject1).addAll((Collection)localObject3);
-    }
-    label130:
-    label133:
-    for (;;)
-    {
-      break;
-      if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-        TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (List)localObject1);
-      }
+      this.a.e(false);
       return;
-      break label97;
     }
+    TroopBarPublishActivity.b(this.a);
   }
 }
 

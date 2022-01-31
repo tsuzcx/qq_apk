@@ -11,13 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qkv;
+import qpm;
 import tencent.gdt.qq_ad_get.QQAdGet;
 
 public class GdtLoadAdJsCallHandler
   implements GdtJsCallHandler
 {
-  private GdtAdLoader.Listener jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener = new qkv(this);
+  private GdtAdLoader.Listener jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener = new qpm(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   
@@ -30,13 +30,15 @@ public class GdtLoadAdJsCallHandler
     }
     try
     {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      GdtLog.b("GdtLoadAdJsCallHandler", paramVarArgs.toString());
-      GdtAdLoader.Session localSession = new GdtAdLoader.Session();
-      localSession.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), paramVarArgs)));
+      JSONObject localJSONObject = new JSONObject(paramVarArgs[0]);
+      GdtLog.b("GdtLoadAdJsCallHandler", localJSONObject.toString());
+      paramVarArgs = new GdtAdLoader.Session();
+      paramVarArgs.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), localJSONObject)));
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGdtAdWebPlugin);
-      this.jdField_a_of_type_JavaUtilMap.put(localSession, paramString);
-      GdtAdLoader.a(paramGdtAdWebPlugin.mRuntime.a(), localSession, new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener));
+      paramGdtAdWebPlugin = paramGdtAdWebPlugin.mRuntime.a();
+      paramVarArgs = new GdtAdLoader(paramVarArgs, new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener));
+      this.jdField_a_of_type_JavaUtilMap.put(paramVarArgs, paramString);
+      paramVarArgs.a(paramGdtAdWebPlugin);
       return true;
     }
     catch (JSONException paramGdtAdWebPlugin)

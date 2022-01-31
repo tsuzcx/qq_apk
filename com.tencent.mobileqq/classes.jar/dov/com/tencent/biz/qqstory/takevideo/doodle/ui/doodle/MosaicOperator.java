@@ -436,69 +436,80 @@ public class MosaicOperator
       localBitmap = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b();
       this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
     } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
+    int m;
     if (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.e() == 1) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.b() == 8)) && (this.g == 104))
     {
-      int k = UIUtils.a(BaseApplicationImpl.getContext());
-      int m = UIUtils.b(BaseApplicationImpl.getContext());
+      k = UIUtils.a(BaseApplicationImpl.getContext());
+      m = UIUtils.b(BaseApplicationImpl.getContext());
       SLog.b("MosaicOperator", "reset drawRect. drawRect changed from [%d, %d, %d, %d] to [%d, %d, %d, %d].", new Object[] { Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.left), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.top), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.right), Integer.valueOf(this.jdField_a_of_type_AndroidGraphicsRect.bottom), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(k), Integer.valueOf(m) });
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, k, m);
     }
-    Object localObject;
-    for (;;)
+    if (Math.min(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height()) / 8 < 28) {}
+    for (int k = 2;; k = 8)
     {
-      try
+      Object localObject;
+      for (;;)
       {
-        localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsRect.width() / 8, this.jdField_a_of_type_AndroidGraphicsRect.height() / 8, Bitmap.Config.RGB_565);
-        if (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.e() != 1) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.b() != 8)) || (this.g != 104)) {
-          break label508;
+        try
+        {
+          localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsRect.width() / k, this.jdField_a_of_type_AndroidGraphicsRect.height() / k, Bitmap.Config.RGB_565);
+          if (((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.e() != 1) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.b() != 8)) || (this.g != 104)) {
+            break label552;
+          }
+          f1 = localBitmap.getWidth() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+          f3 = localBitmap.getHeight() / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+          if (f1 >= f3) {
+            break label525;
+          }
+          f3 = (localBitmap.getHeight() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * f1) / 2.0F;
+          SLog.a("MosaicOperator", "init matrix. scale[%f, %f]. translate[%f, %f].", Float.valueOf(f1), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3));
+          localObject = new Matrix();
+          ((Matrix)localObject).postScale(f1, f1);
+          ((Matrix)localObject).postTranslate(f2, f3);
+          new Canvas(localBitmap).drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, (Matrix)localObject, null);
+          int n = Math.min(localBitmap.getWidth(), localBitmap.getHeight()) / 28;
+          m = n;
+          if (n == 0) {
+            m = 1;
+          }
+          DoodleUtil.a(localBitmap, m);
+          localObject = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), Bitmap.Config.RGB_565);
+          if (localObject != null) {
+            break label575;
+          }
+          localBitmap.recycle();
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.e("MosaicOperator", 2, "failed to create mosaic bitmap");
+          return;
         }
-        f1 = localBitmap.getWidth() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-        f3 = localBitmap.getHeight() / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-        if (f1 >= f3) {
-          break label481;
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          SLog.c("MosaicOperator", "initMosaicPicMode.", localOutOfMemoryError);
+          return;
         }
-        f3 = (localBitmap.getHeight() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * f1) / 2.0F;
-        SLog.a("MosaicOperator", "init matrix. scale[%f, %f]. translate[%f, %f].", Float.valueOf(f1), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3));
-        localObject = new Matrix();
-        ((Matrix)localObject).postScale(f1, f1);
-        ((Matrix)localObject).postTranslate(f2, f3);
-        new Canvas(localBitmap).drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, (Matrix)localObject, null);
-        DoodleUtil.a(localBitmap, Math.min(localBitmap.getWidth(), localBitmap.getHeight()) / 28);
-        localObject = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), Bitmap.Config.RGB_565);
-        if (localObject != null) {
-          break label531;
-        }
-        localBitmap.recycle();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("MosaicOperator", 2, "failed to create mosaic bitmap");
-        return;
+        localBitmap = null;
+        break label26;
+        label525:
+        f2 = (localOutOfMemoryError.getWidth() - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * f3) / 2.0F;
+        float f1 = f3;
+        float f3 = 0.0F;
+        continue;
+        label552:
+        f1 = localOutOfMemoryError.getWidth() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+        f3 = 0.0F;
+        f2 = 0.0F;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        SLog.c("MosaicOperator", "initMosaicPicMode.", localOutOfMemoryError);
-        return;
-      }
-      localBitmap = null;
-      break label26;
-      label481:
-      f2 = (localOutOfMemoryError.getWidth() - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * f3) / 2.0F;
-      float f1 = f3;
-      float f3 = 0.0F;
-      continue;
-      label508:
-      f1 = localOutOfMemoryError.getWidth() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      f3 = 0.0F;
-      f2 = 0.0F;
+      label575:
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(k, k);
+      localCanvas.drawBitmap(localOutOfMemoryError, localMatrix, null);
+      localOutOfMemoryError.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader((Bitmap)localObject, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+      return;
     }
-    label531:
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    Matrix localMatrix = new Matrix();
-    localMatrix.postScale(8, 8);
-    localCanvas.drawBitmap(localOutOfMemoryError, localMatrix, null);
-    localOutOfMemoryError.recycle();
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader((Bitmap)localObject, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
   }
   
   public void b(int paramInt)
@@ -575,7 +586,7 @@ public class MosaicOperator
   
   public void d()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleMosaicLinePath = null;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleMosaicLinePath = new MosaicLinePath(this.g);
     if (this.g == 104) {
       return;
     }

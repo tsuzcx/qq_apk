@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import adgg;
-import adgh;
-import adgj;
-import adgq;
-import adgr;
+import adon;
+import adoo;
+import adoq;
+import adox;
+import adoy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -54,7 +54,7 @@ public class FMSettings
   
   public static FMSettings a()
   {
-    return adgq.a();
+    return adox.a();
   }
   
   private String a(String paramString)
@@ -74,11 +74,11 @@ public class FMSettings
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 9
+    //   1: astore 8
     //   3: aconst_null
     //   4: astore 7
     //   6: aconst_null
-    //   7: astore 8
+    //   7: astore 9
     //   9: aload_1
     //   10: invokevirtual 99	java/io/File:exists	()Z
     //   13: ifeq +12 -> 25
@@ -194,7 +194,7 @@ public class FMSettings
     //   249: astore_1
     //   250: aconst_null
     //   251: astore 5
-    //   253: aload 9
+    //   253: aload 8
     //   255: astore_1
     //   256: aload 5
     //   258: ifnull +8 -> 266
@@ -287,7 +287,7 @@ public class FMSettings
     //   443: astore_1
     //   444: goto -155 -> 289
     //   447: astore_1
-    //   448: aload 9
+    //   448: aload 8
     //   450: astore_1
     //   451: goto -195 -> 256
     //   454: astore_1
@@ -297,13 +297,13 @@ public class FMSettings
     //   461: astore_1
     //   462: aconst_null
     //   463: astore_1
-    //   464: aload 8
+    //   464: aload 9
     //   466: astore_2
     //   467: goto -291 -> 176
     //   470: astore_1
     //   471: aload 5
     //   473: astore_1
-    //   474: aload 8
+    //   474: aload 9
     //   476: astore_2
     //   477: goto -301 -> 176
     // Local variable table:
@@ -325,8 +325,8 @@ public class FMSettings
     //   315	49	7	localObject1	Object
     //   420	1	7	localObject2	Object
     //   428	7	7	localObject3	Object
-    //   7	468	8	localObject4	Object
-    //   1	448	9	localObject5	Object
+    //   1	448	8	localObject4	Object
+    //   7	468	9	localObject5	Object
     // Exception table:
     //   from	to	target	type
     //   108	119	169	java/io/IOException
@@ -426,7 +426,7 @@ public class FMSettings
         localObject = new File((String)localObject);
         try
         {
-          ThreadManager.post(new adgh(this, str2, (File)localObject, j, paramMoveFileCallback), 8, null, false);
+          ThreadManager.post(new adoo(this, str2, (File)localObject, j, paramMoveFileCallback), 8, null, false);
           i += 1;
         }
         catch (Exception paramList)
@@ -455,9 +455,9 @@ public class FMSettings
     return bool;
   }
   
-  private adgr b()
+  private adoy b()
   {
-    return (adgr)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
+    return (adoy)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
   }
   
   private String b(String paramString)
@@ -470,12 +470,12 @@ public class FMSettings
     return paramString;
   }
   
-  private adgr c()
+  private adoy c()
   {
     if (this.jdField_a_of_type_JavaUtilMap.size() == 1) {
       return null;
     }
-    return (adgr)this.jdField_a_of_type_JavaUtilMap.get("externalSdCard");
+    return (adoy)this.jdField_a_of_type_JavaUtilMap.get("externalSdCard");
   }
   
   private String c(String paramString)
@@ -490,31 +490,31 @@ public class FMSettings
   
   private void c()
   {
-    adgr localadgr = a();
-    if (localadgr == null) {
+    adoy localadoy = a();
+    if (localadoy == null) {
       return;
     }
-    ThreadManager.post(new adgg(this, b(localadgr.jdField_b_of_type_JavaLangString + localadgr.c)), 8, null, false);
+    ThreadManager.post(new adon(this, b(localadoy.jdField_b_of_type_JavaLangString + localadoy.c)), 8, null, false);
   }
   
-  private adgr d()
+  private adoy d()
   {
     a(2, "getDefaultStorage[" + this.jdField_a_of_type_JavaUtilMap.size() + "]");
     Object localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (String)((Iterator)localObject1).next();
-      localObject2 = (adgr)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
-      ((adgr)localObject2).a();
-      if (((adgr)localObject2).jdField_a_of_type_Boolean)
+      localObject2 = (adoy)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+      ((adoy)localObject2).a();
+      if (((adoy)localObject2).jdField_a_of_type_Boolean)
       {
-        a(2, "getDefaultStorage[" + ((adgr)localObject2).jdField_b_of_type_JavaLangString + "] + ext[" + ((adgr)localObject2).c + "]");
+        a(2, "getDefaultStorage[" + ((adoy)localObject2).jdField_b_of_type_JavaLangString + "] + ext[" + ((adoy)localObject2).c + "]");
         return localObject2;
       }
     }
     a(2, "getDefaultStorage nothing is default refresh!");
-    localObject1 = (adgr)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
-    ((adgr)localObject1).a(BaseApplicationImpl.getContext());
+    localObject1 = (adoy)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
+    ((adoy)localObject1).a(BaseApplicationImpl.getContext());
     return localObject1;
   }
   
@@ -535,16 +535,16 @@ public class FMSettings
     return 2147483647L;
   }
   
-  public adgr a()
+  public adoy a()
   {
     a(2, "getOtherStorage[" + this.jdField_a_of_type_JavaUtilMap.size() + "]");
-    adgr localadgr = d();
+    adoy localadoy = d();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (adgr)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-      if (localadgr != localObject) {
+      localObject = (adoy)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+      if (localadoy != localObject) {
         return localObject;
       }
     }
@@ -554,11 +554,11 @@ public class FMSettings
   
   public String a()
   {
-    adgr localadgr = a();
-    if (localadgr == null) {
+    adoy localadoy = a();
+    if (localadoy == null) {
       return null;
     }
-    return a(localadgr.jdField_b_of_type_JavaLangString + localadgr.c);
+    return a(localadoy.jdField_b_of_type_JavaLangString + localadoy.c);
   }
   
   public void a()
@@ -567,7 +567,7 @@ public class FMSettings
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     Map localMap = FileManagerUtil.a(localBaseApplication);
     a(1, "qurey strorages[" + localMap.size() + "]");
-    String str1 = localBaseApplication.getSharedPreferences("FMSETTING_59", 0).getString("DefaultRootPath", AppConstants.aI);
+    String str1 = localBaseApplication.getSharedPreferences("FMSETTING_59", 0).getString("DefaultRootPath", AppConstants.aJ);
     a(1, "qurey defaultRootPath[" + str1 + "]");
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     Iterator localIterator = localMap.keySet().iterator();
@@ -575,29 +575,29 @@ public class FMSettings
     {
       String str2 = (String)localIterator.next();
       Object localObject = ((File)localMap.get(str2)).getPath();
-      adgr localadgr = new adgr(this, null);
-      localadgr.jdField_a_of_type_Boolean = false;
+      adoy localadoy = new adoy(this, null);
+      localadoy.jdField_a_of_type_Boolean = false;
       if (str2.equalsIgnoreCase("sdCard"))
       {
-        localadgr.jdField_a_of_type_JavaLangString = "SD卡";
-        localadgr.jdField_b_of_type_JavaLangString = ((String)localObject);
-        localadgr.c = "";
+        localadoy.jdField_a_of_type_JavaLangString = "SD卡";
+        localadoy.jdField_b_of_type_JavaLangString = ((String)localObject);
+        localadoy.c = "";
       }
       for (;;)
       {
-        a(1, "rootPath[" + localadgr.jdField_b_of_type_JavaLangString + "],bDefault[" + localadgr.jdField_a_of_type_Boolean + "]");
+        a(1, "rootPath[" + localadoy.jdField_b_of_type_JavaLangString + "],bDefault[" + localadoy.jdField_a_of_type_Boolean + "]");
         try
         {
           localObject = new StatFs((String)localObject);
-          localadgr.jdField_a_of_type_Long = (((StatFs)localObject).getAvailableBlocks() * ((StatFs)localObject).getBlockSize());
-          a(4, "defaultRootPath[" + str1 + "].equalsIgnoreCase(si.rootPath[" + localadgr.jdField_b_of_type_JavaLangString + "])");
-          if ((localMap.size() == 1) || (str1.equalsIgnoreCase(localadgr.jdField_b_of_type_JavaLangString)))
+          localadoy.jdField_a_of_type_Long = (((StatFs)localObject).getAvailableBlocks() * ((StatFs)localObject).getBlockSize());
+          a(4, "defaultRootPath[" + str1 + "].equalsIgnoreCase(si.rootPath[" + localadoy.jdField_b_of_type_JavaLangString + "])");
+          if ((localMap.size() == 1) || (str1.equalsIgnoreCase(localadoy.jdField_b_of_type_JavaLangString)))
           {
             a(4, "defaultRootPath.equalsIgnoreCase(si.rootPath) = true");
-            localadgr.jdField_a_of_type_Boolean = true;
-            localadgr.a(localBaseApplication);
+            localadoy.jdField_a_of_type_Boolean = true;
+            localadoy.a(localBaseApplication);
           }
-          localadgr.a();
+          localadoy.a();
         }
         catch (Exception localException)
         {
@@ -607,15 +607,15 @@ public class FMSettings
             localException.printStackTrace();
           }
         }
-        this.jdField_a_of_type_JavaUtilMap.put(str2, localadgr);
+        this.jdField_a_of_type_JavaUtilMap.put(str2, localadoy);
         break;
         if (str2.equalsIgnoreCase("externalSdCard"))
         {
-          localadgr.jdField_a_of_type_JavaLangString = "外置SD卡";
+          localadoy.jdField_a_of_type_JavaLangString = "外置SD卡";
           localBaseApplication.getExternalFilesDir(null);
           str3 = BaseApplicationImpl.sApplication.getPackageName();
-          localadgr.jdField_b_of_type_JavaLangString = ((String)localObject);
-          localadgr.c = ("/Android/data/" + str3 + "/");
+          localadoy.jdField_b_of_type_JavaLangString = ((String)localObject);
+          localadoy.c = ("/Android/data/" + str3 + "/");
         }
       }
     }
@@ -653,16 +653,16 @@ public class FMSettings
       }
       a(1, "showChoosePath, callback[" + paramMoveFileCallback + "]");
       ??? = b();
-      adgr localadgr = c();
-      if (((adgr)???).jdField_a_of_type_Boolean) {
+      adoy localadoy = c();
+      if (((adoy)???).jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_JavaLangString = "本机内存已满，下载失败。为保证以后顺利下载，默认存储路径将为你更换到外置SD卡中：";
       }
       for (this.jdField_b_of_type_JavaLangString = (a().jdField_b_of_type_JavaLangString + a().c + "/Tencent/QQfile_recv/").replace("//", "/"); paramActivity != null; this.jdField_b_of_type_JavaLangString = (a().jdField_b_of_type_JavaLangString + a().c + "/Tencent/QQfile_recv/").replace("//", "/"))
       {
         label213:
-        paramActivity.runOnUiThread(new adgj(this, paramActivity, ???, paramMoveFileCallback));
+        paramActivity.runOnUiThread(new adoq(this, paramActivity, ???, paramMoveFileCallback));
         return;
-        if ((localadgr == null) || (!localadgr.jdField_a_of_type_Boolean)) {
+        if ((localadoy == null) || (!localadoy.jdField_a_of_type_Boolean)) {
           break label213;
         }
         this.jdField_a_of_type_JavaLangString = "外置SD卡已满，下载失败。为保证以后顺利下载，默认存储路径将为你更换到本机内存中：";
@@ -685,7 +685,7 @@ public class FMSettings
         }
         if ("externalSdCard".equalsIgnoreCase(paramString))
         {
-          ((adgr)this.jdField_a_of_type_JavaUtilMap.get("sdCard")).a(BaseApplicationImpl.getContext());
+          ((adoy)this.jdField_a_of_type_JavaUtilMap.get("sdCard")).a(BaseApplicationImpl.getContext());
           return;
         }
       }
@@ -708,7 +708,7 @@ public class FMSettings
     if (localObject == null) {
       return 0L;
     }
-    localObject = ((adgr)localObject).jdField_b_of_type_JavaLangString;
+    localObject = ((adoy)localObject).jdField_b_of_type_JavaLangString;
     try
     {
       localObject = new StatFs((String)localObject);

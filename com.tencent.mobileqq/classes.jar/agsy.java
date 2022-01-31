@@ -1,29 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.mobileqq.profile.vote.VoteHelper;
-import com.tencent.mobileqq.util.VoteUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
-public class agsy
-  implements Runnable
+class agsy
+  implements DialogInterface.OnClickListener
 {
-  public agsy(VoteHelper paramVoteHelper, long paramLong) {}
+  agsy(agsu paramagsu, View paramView, PersonalityLabelInfo paramPersonalityLabelInfo) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VisitorsActivity.VoteHelper", 2, "updateCardProfileFromDb uin:" + this.jdField_a_of_type_Long);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    CardProfile localCardProfile2 = VoteUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, 2);
-    CardProfile localCardProfile1 = localCardProfile2;
-    if (localCardProfile2 == null) {
-      localCardProfile1 = VoteUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, 3);
-    }
-    if (localCardProfile1 != null)
-    {
-      localCardProfile1.updateTime(System.currentTimeMillis() / 1000L);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.jdField_a_of_type_AndroidOsHandler.obtainMessage(9, localCardProfile1).sendToTarget();
+    paramDialogInterface = (agst)this.jdField_a_of_type_AndroidViewView.getTag(2131362745);
+    if (paramDialogInterface != null) {
+      this.jdField_a_of_type_Agsu.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
     }
   }
 }

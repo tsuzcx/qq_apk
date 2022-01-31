@@ -1,22 +1,20 @@
-import com.tencent.av.opengl.ui.animation.GLAnimation.AnimationListenerGL;
-import com.tencent.av.ui.GLVideoView;
-import com.tencent.av.ui.VideoLayerUI;
+import android.content.res.Resources;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
 
 public class kbw
-  implements GLAnimation.AnimationListenerGL
+  implements Runnable
 {
-  public kbw(VideoLayerUI paramVideoLayerUI, GLVideoView paramGLVideoView, boolean paramBoolean) {}
+  public kbw(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUiGLVideoView.k(true);
-    this.jdField_a_of_type_ComTencentAvUiGLVideoView.d(this.jdField_a_of_type_Boolean);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiGLVideoView, this.jdField_a_of_type_Boolean);
+    QavVideoRecordUICtrl.a(this.a, 1004, QavVideoRecordUICtrl.a(this.a).getResources().getString(2131429644), 2000L, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kbw
  * JD-Core Version:    0.7.0.1
  */

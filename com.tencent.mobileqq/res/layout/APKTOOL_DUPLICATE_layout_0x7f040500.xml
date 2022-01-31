@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1961" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="100.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1962" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1827" />
-</FrameLayout>
+<com.tencent.smtt.sdk.WebView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a194d" android:background="#fff8f9fa" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layerType="software"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

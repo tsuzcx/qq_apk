@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 
-class ums
-  implements Runnable
+public class ums
+  extends GameCenterObserver
 {
-  ums(umr paramumr, QQAppInterface paramQQAppInterface) {}
+  public ums(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Umr.a.a(PokeItemHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    this.a.e();
   }
 }
 

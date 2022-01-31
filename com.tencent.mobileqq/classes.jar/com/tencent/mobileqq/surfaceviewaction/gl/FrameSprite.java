@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ailc;
+import aipx;
 import android.content.Context;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -171,7 +171,7 @@ public class FrameSprite
   
   public void a(Context paramContext, SpriteGLView paramSpriteGLView)
   {
-    ThreadManager.post(new ailc(this, paramContext, paramSpriteGLView), 8, null, true);
+    ThreadManager.post(new aipx(this, paramContext, paramSpriteGLView), 8, null, true);
   }
   
   public void a(boolean paramBoolean)

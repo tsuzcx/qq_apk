@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.PowerManager;
 import android.os.SystemClock;
@@ -47,22 +49,25 @@ public class v
   public static final int d = 100;
   private static final String k = "servetTimeDiff";
   private static long l = -1L;
-  private static long m;
+  private static long m = 0L;
+  private static final String n = "dozeWhiteList";
+  private static final String o = "keyDozeLastTime";
+  private static final long p = 86400000L;
   int e;
   int f;
   int g;
   boolean h = true;
   private com.tencent.mobileqq.msf.sdk.a.a i;
   private String j = "MSF.C.NetConnInfoCenter";
-  private ThreadLocal n = new ThreadLocal();
-  private AtomicBoolean o = new AtomicBoolean(false);
-  private ThreadLocal p = new ThreadLocal();
-  private boolean q;
-  private AtomicBoolean r = new AtomicBoolean();
-  private long s;
-  private long t;
-  private int u;
+  private ThreadLocal q = new ThreadLocal();
+  private AtomicBoolean r = new AtomicBoolean(false);
+  private ThreadLocal s = new ThreadLocal();
+  private boolean t;
+  private AtomicBoolean u = new AtomicBoolean();
   private long v;
+  private long w;
+  private int x;
+  private long y;
   
   private v()
   {
@@ -74,16 +79,16 @@ public class v
   
   private void E()
   {
-    this.r.set(false);
-    this.s = 0L;
+    this.u.set(false);
+    this.v = 0L;
   }
   
   private void F()
   {
-    if ((this.i.i() > 0) && (this.r.get()))
+    if ((this.i.i() > 0) && (this.u.get()))
     {
       HashMap localHashMap = new HashMap();
-      localHashMap.put("param_Reason", String.valueOf((System.currentTimeMillis() - this.s) / 1000L));
+      localHashMap.put("param_Reason", String.valueOf((System.currentTimeMillis() - this.v) / 1000L));
       localHashMap.put("param_connecttrycount", String.valueOf(this.i.i()));
       if (b.getStatReporter() != null) {
         b.getStatReporter().a("dim.Msf.NoNetInfoConnSucc", false, 0L, 0L, localHashMap, false, false);
@@ -181,6 +186,75 @@ public class v
       }
     }
     QLog.d("MSF.D.NetCenterNewImpl", 4, "msfCore not inited. can not send checkServerTimeMsg.");
+  }
+  
+  private void L()
+  {
+    int i1;
+    if (Math.random() <= 0.01D)
+    {
+      i1 = 1;
+      if (i1 == 0) {}
+    }
+    label362:
+    label367:
+    label372:
+    for (;;)
+    {
+      try
+      {
+        SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("dozeWhiteList", 0);
+        long l1 = localSharedPreferences.getLong("keyDozeLastTime", 0L);
+        if (Math.abs(System.currentTimeMillis() - l1) >= 86400000L)
+        {
+          if (Build.VERSION.SDK_INT < 23) {
+            break label367;
+          }
+          if (((PowerManager)BaseApplication.getContext().getSystemService("power")).isIgnoringBatteryOptimizations("com.tencent.mobileqq"))
+          {
+            i1 = 1;
+            break label372;
+            if (Build.VERSION.SDK_INT < 24) {
+              break label362;
+            }
+            i2 = ((ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity")).getRestrictBackgroundStatus();
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder(30);
+              ((StringBuilder)localObject).append("report:");
+              ((StringBuilder)localObject).append(", ").append(i1);
+              ((StringBuilder)localObject).append(", ").append(Build.MODEL);
+              ((StringBuilder)localObject).append(", ").append(Build.MANUFACTURER);
+              ((StringBuilder)localObject).append(", ").append(i2);
+              QLog.d("MSF.D.NetCenterNewImpl", 1, ((StringBuilder)localObject).toString());
+            }
+            Object localObject = new HashMap(10);
+            ((HashMap)localObject).put("osVersion", Build.VERSION.SDK_INT + "");
+            ((HashMap)localObject).put("ignoreBat", String.valueOf(i1));
+            ((HashMap)localObject).put("model", Build.MODEL);
+            ((HashMap)localObject).put("manufacture", Build.MANUFACTURER);
+            ((HashMap)localObject).put("restrictBgStatus", String.valueOf(i2));
+            b.statReporter.a("EvtDozeWhiteList", true, 0L, 0L, (Map)localObject, false, false);
+            localSharedPreferences.edit().putLong("keyDozeLastTime", System.currentTimeMillis()).commit();
+          }
+        }
+        else
+        {
+          return;
+          i1 = 0;
+          break;
+        }
+        i1 = 0;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.d("MSF.D.NetCenterNewImpl", 1, "report doze whiteList exception ", localThrowable);
+        return;
+      }
+      int i2 = -1;
+      continue;
+      i1 = -1;
+    }
   }
   
   public static v a()
@@ -296,8 +370,8 @@ public class v
   
   public void a(Context paramContext, NetworkInfo paramNetworkInfo, boolean paramBoolean)
   {
-    this.n.set(Boolean.valueOf(paramBoolean));
-    if (this.o.compareAndSet(false, true)) {
+    this.q.set(Boolean.valueOf(paramBoolean));
+    if (this.r.compareAndSet(false, true)) {
       this.i.a(paramContext, paramNetworkInfo);
     }
   }
@@ -354,7 +428,7 @@ public class v
   public void b()
   {
     long l1 = SystemClock.uptimeMillis();
-    this.p.set(Long.valueOf(l1));
+    this.s.set(Long.valueOf(l1));
   }
   
   protected void b(Context paramContext)
@@ -494,11 +568,11 @@ public class v
   
   public void c()
   {
-    this.o.set(false);
-    long l1 = ((Long)this.p.get()).longValue();
-    if ((!this.q) && (Math.abs(SystemClock.uptimeMillis() - ((Long)this.p.get()).longValue()) > 120000L))
+    this.r.set(false);
+    long l1 = ((Long)this.s.get()).longValue();
+    if ((!this.t) && (Math.abs(SystemClock.uptimeMillis() - ((Long)this.s.get()).longValue()) > 120000L))
     {
-      this.q = true;
+      this.t = true;
       QLog.w("MSF.D.NetCenterNewImpl", 1, "checkConnInfo refresh held 2min!!! enter=" + l1 + " now=" + System.currentTimeMillis());
       MsfCore.sCore.statReporter.a("", 0L);
     }
@@ -620,8 +694,8 @@ public class v
   
   public void k()
   {
-    this.s = System.currentTimeMillis();
-    this.r.set(true);
+    this.v = System.currentTimeMillis();
+    this.u.set(true);
   }
   
   public int l()
@@ -743,26 +817,26 @@ public class v
   {
     System.currentTimeMillis();
     long l1 = SystemClock.elapsedRealtime();
-    if ((l1 - this.v > 0L) && (l1 - this.v <= com.tencent.mobileqq.msf.core.a.a.J()))
+    if ((l1 - this.y > 0L) && (l1 - this.y <= com.tencent.mobileqq.msf.core.a.a.J()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("MSF.D.NetCenterNewImpl", 2, "quit to checkTimeMsg too frequency.");
       }
       return;
     }
-    if (this.u < 10)
+    if (this.x < 10)
     {
       K();
-      this.u += 1;
-      this.v = l1;
+      this.x += 1;
+      this.y = l1;
     }
     for (;;)
     {
       long l2 = System.currentTimeMillis();
-      if ((this.t == 0L) || (l1 - this.t > 600000L))
+      if ((this.w == 0L) || (l1 - this.w > 600000L))
       {
-        this.t = l1;
-        this.u = 0;
+        this.w = l1;
+        this.x = 0;
       }
       l = l2;
       if (MsfStore.getNativeConfigStore() == null) {
@@ -771,7 +845,7 @@ public class v
       MsfStore.getNativeConfigStore().n_setConfig("recordSysTimeKey", String.valueOf(l2));
       return;
       if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.NetCenterNewImpl", 2, "also send checkTimeMsg " + this.u);
+        QLog.d("MSF.D.NetCenterNewImpl", 2, "also send checkTimeMsg " + this.x);
       }
     }
   }
@@ -862,8 +936,11 @@ public class v
         } while (!QLog.isColorLevel());
         QLog.d("MSF.D.NetCenterNewImpl", 2, "idleChaned receive broadcast intent.getAction() == null return");
         return;
-      } while ((!paramIntent.getAction().equals("android.os.action.DEVICE_IDLE_MODE_CHANGED")) || (Build.VERSION.SDK_INT < 23));
-      v.this.b(paramContext);
+      } while (!paramIntent.getAction().equals("android.os.action.DEVICE_IDLE_MODE_CHANGED"));
+      if (Build.VERSION.SDK_INT >= 23) {
+        v.this.b(paramContext);
+      }
+      v.a(v.this);
     }
   }
   

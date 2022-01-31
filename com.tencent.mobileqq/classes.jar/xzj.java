@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class xzj
-  implements DialogInterface.OnClickListener
+public final class xzj
+  implements Runnable
 {
-  xzj(xzg paramxzg) {}
+  public xzj(QQToast paramQQToast) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.a();
+    this.a.a();
   }
 }
 

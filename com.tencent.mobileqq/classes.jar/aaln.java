@@ -1,41 +1,109 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManager;
-import com.tencent.mobileqq.ar.arengine.ARCamera;
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
+import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload;
+import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudFileUploadCallback;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class aaln
-  implements Runnable
+  implements ITransactionCallback
 {
-  public aaln(ARCardCameraRecordFragment paramARCardCameraRecordFragment, boolean paramBoolean) {}
+  public aaln(ARCloudFileUpload paramARCloudFileUpload, ARCloudReqInfo paramARCloudReqInfo, long paramLong) {}
   
-  public void run()
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap paramHashMap)
   {
-    if ((ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment) != 3) || (this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment.a == null))
+    String str = "";
+    for (;;)
     {
-      QLog.i("ARCardCameraRecordFragment", 2, "cancel to close camera. next mCurCameraState = " + ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment));
-      return;
+      synchronized (ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload))
+      {
+        if (ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload) != null)
+        {
+          int i = 0;
+          if (i < ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).size())
+          {
+            if (((aalo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.equals(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a))
+            {
+              paramArrayOfByte = ((aalo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback;
+              str = ((aalo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a;
+              ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).remove(i);
+              QLog.i("AREngine_ARCloudFileUpload", 1, "Upload failed. retCode = " + paramInt + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str);
+              if (paramArrayOfByte != null) {
+                paramArrayOfByte.a(paramInt, str, null);
+              }
+              return;
+            }
+            i += 1;
+          }
+        }
+      }
+      paramArrayOfByte = null;
     }
-    if ((ARCardCameraRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment) != null) && (this.jdField_a_of_type_Boolean)) {
-      ARCardCameraRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment).c();
-    }
-    if (ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment)) {
-      this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment.a.a();
-    }
-    ARCardCameraRecordFragment.b(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, false);
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment.a.a();
-    if (ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment) != 3)
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap paramHashMap)
+  {
+    Object localObject2 = null;
+    String str2 = "";
+    Object localObject3 = ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload);
+    String str1 = str2;
+    Object localObject1 = localObject2;
+    for (;;)
     {
-      QLog.i("ARCardCameraRecordFragment", 2, "cancel to close camera. next mCurCameraState = " + ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment));
-      return;
+      try
+      {
+        if (ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload) != null)
+        {
+          i = 0;
+          str1 = str2;
+          localObject1 = localObject2;
+          if (i < ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).size())
+          {
+            if (!((aalo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.equals(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a)) {
+              continue;
+            }
+            localObject1 = ((aalo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback;
+            str1 = ((aalo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a;
+            ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).remove(i);
+          }
+        }
+        paramArrayOfByte = ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload, paramArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo);
+        if (paramArrayOfByte == null)
+        {
+          QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 9058 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1 + ". deserialize pb failed.");
+          i = 9058;
+          if (localObject1 != null) {
+            ((ARCloudFileUpload.ARCloudFileUploadCallback)localObject1).a(i, str1, paramArrayOfByte);
+          }
+          return;
+          i += 1;
+          continue;
+        }
+        QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 0 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1);
+      }
+      finally {}
+      int i = 0;
     }
-    ARCardCameraRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, 0);
-    ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, false);
-    QLog.i("ARCardCameraRecordFragment", 2, "closeCamera successfully. mCurCameraState = " + ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment));
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    QLog.i("AREngine_ARCloudFileUpload", 1, "Upload start. sessionId = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a);
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARCloudFileUpload", 2, "onUpdateProgress. sessionId = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a + ". total size = " + this.jdField_a_of_type_Long + ", transfered size = " + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaln
  * JD-Core Version:    0.7.0.1
  */

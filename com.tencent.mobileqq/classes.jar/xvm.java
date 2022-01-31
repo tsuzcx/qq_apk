@@ -1,27 +1,28 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class xvm
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public xvm(AudioTranslator paramAudioTranslator) {}
+  public xvm(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    synchronized (this.a)
+    switch (paramInt)
     {
-      if (AudioTranslator.a(this.a) != null)
-      {
-        AudioCapture localAudioCapture = (AudioCapture)AudioTranslator.a(this.a).get();
-        if (localAudioCapture != null)
-        {
-          localAudioCapture.a(false);
-          localAudioCapture.c();
-        }
-      }
+    default: 
       return;
     }
+    if (this.a.a.b.get() == 4) {
+      this.a.a(false);
+    }
+    this.a.a.a("FlowCameraActivity");
+    this.a.d();
+    FlowCameraMqqAction.b("", "0X800656F", "0");
   }
 }
 

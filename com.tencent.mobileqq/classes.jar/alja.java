@@ -1,32 +1,15 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import java.io.File;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.open.agent.BindGroupConfirmActivity;
 
 public class alja
   implements Runnable
 {
-  public alja(UpdateManager paramUpdateManager, String paramString, DownloadInfo paramDownloadInfo) {}
+  public alja(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
   public void run()
   {
-    try
-    {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists())
-      {
-        long l = localFile.length();
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c = l;
-        DownloadManager.a().g(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-        return;
-      }
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk file not exists");
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk>>>", localException);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
     }
   }
 }

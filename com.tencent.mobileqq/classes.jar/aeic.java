@@ -1,77 +1,44 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.data.RecentEmotion;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import cooperation.comic.PluginPreloader;
+import cooperation.comic.QQComicPreloadManager;
+import cooperation.qqreader.QRProcessManager;
 
 public class aeic
   implements Runnable
 {
-  public aeic(EmoticonManager paramEmoticonManager, List paramList) {}
+  public aeic(LebaWithFeeds paramLebaWithFeeds) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a();
-    for (;;)
+    Object localObject = this.a.a.getCurrentAccountUin();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      int i;
-      try
-      {
-        localEntityTransaction.a();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("saveRecentEmotionToDB:");
-        i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-        if (i >= 0)
-        {
-          RecentEmotion localRecentEmotion1 = (RecentEmotion)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (localRecentEmotion1 == null) {
-            break label364;
-          }
-          String str1 = localRecentEmotion1.epId;
-          String str2 = localRecentEmotion1.eId;
-          String str3 = localRecentEmotion1.keyword;
-          localStringBuilder.append("emotion=").append(localRecentEmotion1);
-          if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3))) {
-            break label364;
-          }
-          RecentEmotion localRecentEmotion2 = (RecentEmotion)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a(RecentEmotion.class, "epId=? and eId=? and keyword=?", new String[] { str1, str2, str3 });
-          RecentEmotion localRecentEmotion3 = new RecentEmotion();
-          localRecentEmotion3.epId = str1;
-          localRecentEmotion3.eId = str2;
-          localRecentEmotion3.keyword = str3;
-          localRecentEmotion3.exposeNum = localRecentEmotion1.exposeNum;
-          localRecentEmotion3.setStatus(1000);
-          if (localRecentEmotion2 != null) {
-            this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.b(localRecentEmotion2);
-          }
-          EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localRecentEmotion3);
-        }
+      long l = WebProcessManager.a((String)localObject);
+      if (System.currentTimeMillis() - l < 604800000L) {
+        WebProcessManager.a(LebaWithFeeds.a(), "key_health_dns_parse");
       }
-      catch (Exception localException)
-      {
-        QLog.e("EmoticonManager", 2, "saveRecentEmotionToDB e = " + localException.getMessage());
-        localEntityTransaction.b();
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonManager", 2, "saveRecentEmotionToDB_Time: " + (System.currentTimeMillis() - l));
-        }
-        return;
-        localEntityTransaction.c();
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonManager", 2, localException.toString());
-        }
-        localEntityTransaction.b();
-        continue;
+      l = WebProcessManager.c((String)localObject);
+      if (System.currentTimeMillis() - l < 259200000L) {
+        WebProcessManager.a(LebaWithFeeds.b(), "key_gamecenter_dns_parse");
       }
-      finally
-      {
-        localEntityTransaction.b();
+      l = WebProcessManager.a((String)localObject, "key_reader_click_time");
+      if (System.currentTimeMillis() - l < 259200000L) {
+        WebProcessManager.a(LebaWithFeeds.c(), "key_reader_dns_parse");
       }
-      label364:
-      i -= 1;
     }
+    localObject = (QRProcessManager)this.a.a.getManager(128);
+    if (localObject != null) {
+      ((QRProcessManager)localObject).a(6);
+    }
+    localObject = (QQComicPreloadManager)this.a.a.getManager(141);
+    if (localObject != null) {
+      PluginPreloader.a(((QQComicPreloadManager)localObject).a(6), 500L);
+    }
+    ThreadManager.post(new aeid(this), 5, null, false);
   }
 }
 

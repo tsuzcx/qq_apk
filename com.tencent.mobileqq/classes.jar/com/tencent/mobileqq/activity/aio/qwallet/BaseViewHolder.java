@@ -58,7 +58,7 @@ public class BaseViewHolder
   protected int g;
   protected int h;
   protected int i;
-  protected int j = 2130844048;
+  protected int j = 2130844114;
   protected int k;
   
   public BaseViewHolder(QQAppInterface paramQQAppInterface, QWalletMsgHolder paramQWalletMsgHolder, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, CustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
@@ -180,7 +180,7 @@ public class BaseViewHolder
       this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.c.setBackground((Drawable)localObject);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.c.setBackgroundResource(2130844045);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioQwalletQWalletMsgHolder.c.setBackgroundResource(2130844111);
   }
   
   public boolean b()

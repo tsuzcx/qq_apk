@@ -34,8 +34,8 @@ import com.tencent.mobileqq.widget.BubbleImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import uto;
-import utp;
+import uyo;
+import uyp;
 
 public class ApolloGameItemBuilder
   extends ArkAppItemBubbleBuilder
@@ -49,7 +49,7 @@ public class ApolloGameItemBuilder
   public ApolloGameItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new uto(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new uyo(this);
     this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler = ((ApolloGameManager)paramQQAppInterface.getManager(210)).a();
   }
   
@@ -194,9 +194,9 @@ public class ApolloGameItemBuilder
         ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
         if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage.sendFailCode != 0) || (super.a(paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, paramView.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout)))
         {
-          localActionSheet.a(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131438220), 1);
-          localActionSheet.c(2131433015);
-          localActionSheet.a(new utp(this, paramView, localActionSheet));
+          localActionSheet.a(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131438240), 1);
+          localActionSheet.c(2131433029);
+          localActionSheet.a(new uyp(this, paramView, localActionSheet));
           localActionSheet.show();
         }
       }

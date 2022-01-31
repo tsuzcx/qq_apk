@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
 
-class uod
+public class uod
   implements Runnable
 {
-  uod(uoc paramuoc) {}
+  public uod(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation.c(this.a.jdField_a_of_type_ArrayOfJavaLangObject);
+    if (!this.a.isFinishing())
+    {
+      this.a.setResult(-1);
+      this.a.finish();
+    }
   }
 }
 

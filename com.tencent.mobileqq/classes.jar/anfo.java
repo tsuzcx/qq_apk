@@ -1,14 +1,33 @@
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.QZonePluginManager;
 
-public class anfo
-  implements Runnable
+class anfo
+  extends Handler
 {
-  public anfo(TroopHWFileDownloadManager paramTroopHWFileDownloadManager, String paramString) {}
-  
-  public void run()
+  anfo(anfn paramanfn, Looper paramLooper)
   {
-    TroopHWFileDownloadManager.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWFileDownloadManager).pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginPreInstaller", 2, "handleMessage, retryInstallNum=" + anfn.a());
+    }
+    if (paramMessage.what == 1) {}
+    try
+    {
+      paramMessage = (String)paramMessage.obj;
+      anfn.a(this.a).a(paramMessage, this.a, 2);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      QLog.e("QZonePluginPreInstaller", 1, paramMessage, new Object[0]);
+    }
   }
 }
 

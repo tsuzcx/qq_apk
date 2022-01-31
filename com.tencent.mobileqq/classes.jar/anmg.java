@@ -1,53 +1,30 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.humrecognition.recognize.RecognitionManager;
-import java.io.File;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.plugin.QZonePluginMangerHelper;
+import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
+import cooperation.qzone.widgetai.QzoneWidgetAIInterface;
 
 public final class anmg
-  implements FFmpegExecuteResponseCallback
+  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
 {
-  public anmg(String paramString, RecognitionManager paramRecognitionManager) {}
+  public anmg(String paramString) {}
   
-  public void a()
+  public void a(IQZonePluginManager paramIQZonePluginManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onStart: invoked. info: ");
+    if (paramIQZonePluginManager == null) {
+      QZonePluginMangerHelper.a(QzoneWidgetAIInterface.getContext(), this);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onSuccess: invoked. info: message = " + paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager != null) && (localFile.exists()))
+    do
     {
-      this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.a(localFile);
-      this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.c();
-    }
-    while (!QLog.isColorLevel()) {
       return;
-    }
-    QLog.i("HumUtils", 2, "onFinish: audioFile not exist. audioFile = " + localFile);
+      paramIQZonePluginManager = paramIQZonePluginManager.a(this.a);
+    } while (paramIQZonePluginManager == null);
+    QzoneWidgetAIInterface.access$002(paramIQZonePluginManager.c);
   }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed to convert sample rate. message = " + paramString);
-    }
-  }
-  
-  public void c(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmg
  * JD-Core Version:    0.7.0.1
  */

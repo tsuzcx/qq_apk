@@ -37,7 +37,7 @@ public class FeedsPlayModeBase$ReportVideoReceiver
       }
       paramIEventReceiver = StoryReportor.a(paramIEventReceiver) + "";
       label92:
-      if (!paramReportEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      if (!paramReportEvent.errorInfo.isSuccess()) {
         break label178;
       }
       QQToast.a(PlayModeUtils.a(), 2, "举报成功，客服人员会尽快处理", 0).a();

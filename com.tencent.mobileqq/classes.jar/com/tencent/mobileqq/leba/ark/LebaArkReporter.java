@@ -98,7 +98,7 @@ public class LebaArkReporter
     }
     try
     {
-      BaseApplicationImpl.getApplication().getSharedPreferences("Leba_ark", 0).edit().putInt("crash_count_7.6.3", paramInt).apply();
+      BaseApplicationImpl.getApplication().getSharedPreferences("Leba_ark", 0).edit().putInt("crash_count_7.6.8", paramInt).apply();
       if (QLog.isColorLevel()) {
         QLog.i("LebaArkReporter", 2, "setCrashCount n=" + paramInt);
       }
@@ -126,7 +126,7 @@ public class LebaArkReporter
   {
     try
     {
-      int i = BaseApplicationImpl.getApplication().getSharedPreferences("Leba_ark", 0).getInt("crash_count_7.6.3", 0);
+      int i = BaseApplicationImpl.getApplication().getSharedPreferences("Leba_ark", 0).getInt("crash_count_7.6.8", 0);
       return i;
     }
     catch (Exception localException)

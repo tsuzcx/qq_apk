@@ -35,7 +35,7 @@ import java.util.Set;
 import mqq.manager.Manager;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zhr;
+import zoq;
 
 public class NearbyFlowerManager
   implements Manager
@@ -110,7 +110,7 @@ public class NearbyFlowerManager
           localObject4 = this.d;
           localObject3 = localObject2;
           if (Friends.isValidUin(paramString1)) {
-            localObject3 = String.format("https://imgcache.qq.com/club/client/flower/release/html/gift_mall.html?ADTAG=%s&_bid=2050&sourceType=%d&_handle=1&_wv=2147347&platId=1&qqVersion=%s", new Object[] { "aio.m.xiaohuitiao", Integer.valueOf(1), "7.6.3" });
+            localObject3 = String.format("https://imgcache.qq.com/club/client/flower/release/html/gift_mall.html?ADTAG=%s&_bid=2050&sourceType=%d&_handle=1&_wv=2147347&platId=1&qqVersion=%s", new Object[] { "aio.m.xiaohuitiao", Integer.valueOf(1), "7.6.8" });
           }
           NearbySPUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "sp_file_nearby_flower_tip", 0, "nearby_flower_tip_first_flag", Boolean.valueOf(false));
           ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80060B6", "0X80060B6", 0, 0, "", "", "", "");
@@ -305,7 +305,7 @@ public class NearbyFlowerManager
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    ThreadManager.postImmediately(new zhr(paramQQAppInterface, paramString), null, true);
+    ThreadManager.postImmediately(new zoq(paramQQAppInterface, paramString), null, true);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)

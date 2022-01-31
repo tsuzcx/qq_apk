@@ -1,77 +1,19 @@
-import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
 public class ktr
-  implements INetInfoHandler
+  implements View.OnClickListener
 {
-  private ktr(VideoCoverAdapter paramVideoCoverAdapter) {}
+  public ktr(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, String paramString, PaConfigAttr.PaConfigInfo paramPaConfigInfo) {}
   
-  public void onNetMobile2None()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from mobile to none");
-    }
-    VideoCoverAdapter.a(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from mobile to wifi");
-    }
-    VideoCoverAdapter.a(this.a, false);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from none to mobile");
-    }
-    if (!VideoCoverAdapter.a(this.a))
-    {
-      paramString = this.a.a();
-      if ((paramString != null) && (paramString.isPlaying()))
-      {
-        this.a.c();
-        this.a.d();
-      }
-      VideoCoverAdapter.a(this.a, true);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from none to wifi");
-    }
-    VideoCoverAdapter.a(this.a, false);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from wifi to mobile");
-    }
-    if (!VideoCoverAdapter.a(this.a))
-    {
-      paramString = this.a.a();
-      if ((paramString != null) && (paramString.isPlaying()))
-      {
-        this.a.c();
-        this.a.d();
-      }
-      VideoCoverAdapter.a(this.a, true);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from wifi to none");
-    }
-    VideoCoverAdapter.a(this.a);
+    AccountDetailGroupListContainer.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_JavaLangString);
+    PublicAccountHandler.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
+    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.jdField_a_of_type_JavaLangString);
   }
 }
 

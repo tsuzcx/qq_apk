@@ -1,27 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.util.FaceDrawable;
 
-public class tyt
-  implements DialogInterface.OnClickListener
+class tyt
+  implements Runnable
 {
-  public tyt(TroopInfoActivity paramTroopInfoActivity) {}
+  tyt(tys paramtys, String paramString, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
-    {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
-      paramDialogInterface.dismiss();
-      this.a.i();
-      return;
-    }
+    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Tys.a.app, 1, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Tys.a.runOnUiThread(new tyu(this, localFaceDrawable));
   }
 }
 

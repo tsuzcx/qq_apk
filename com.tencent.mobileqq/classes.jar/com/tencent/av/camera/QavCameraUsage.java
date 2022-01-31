@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.os.Looper;
 import java.util.Iterator;
 import java.util.List;
-import jhb;
+import jje;
 
 public class QavCameraUsage
 {
@@ -74,7 +74,7 @@ public class QavCameraUsage
       if (!paramBoolean) {
         break;
       }
-      new Handler(Looper.getMainLooper()).post(new jhb(paramContext));
+      new Handler(Looper.getMainLooper()).post(new jje(paramContext));
       return bool1;
     }
   }
@@ -86,7 +86,7 @@ public class QavCameraUsage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.camera.QavCameraUsage
  * JD-Core Version:    0.7.0.1
  */

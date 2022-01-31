@@ -1,22 +1,46 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
+import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.Iterator;
+import java.util.List;
 
 public class acui
-  implements Runnable
+  extends AsyncTask
 {
-  public acui(FileTransferHandler paramFileTransferHandler, long paramLong, boolean paramBoolean, String paramString) {}
+  public acui(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public void run()
+  protected Integer a(Void... paramVarArgs)
   {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle query onlinefile upload progress resp. sucess =" + this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    return Integer.valueOf(FileCategoryUtil.d(this.a));
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    super.onPostExecute(paramInteger);
+    this.a.stopTitleProgress();
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)localIterator.next();
+      if (localFileCategoryEntity.e == 4)
+      {
+        localFileCategoryEntity.d = paramInteger.intValue();
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
+      }
+    }
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.a.startTitleProgress();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acui
  * JD-Core Version:    0.7.0.1
  */

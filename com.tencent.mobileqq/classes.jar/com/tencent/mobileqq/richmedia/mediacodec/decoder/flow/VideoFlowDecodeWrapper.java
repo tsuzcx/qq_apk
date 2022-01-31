@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import ahod;
-import ahop;
-import ahoq;
+import ahsv;
+import ahth;
+import ahti;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.support.annotation.Nullable;
 import android.util.AndroidRuntimeException;
@@ -19,10 +19,10 @@ import java.util.List;
 public class VideoFlowDecodeWrapper
   implements IVideoDecoder, FlowDecodeListener
 {
-  private HWDecodeListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener = new ahop(this);
+  private HWDecodeListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener = new ahth(this);
   private VideoFlowDecodeWrapper.FlowListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeWrapper$FlowListener;
   private VideoFlowDecoder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecoder = new VideoFlowDecoder();
-  private Comparator jdField_a_of_type_JavaUtilComparator = new ahoq(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new ahti(this);
   private final List jdField_a_of_type_JavaUtilList = new ArrayList();
   
   private void e()
@@ -31,7 +31,7 @@ public class VideoFlowDecodeWrapper
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       if (localIterator.hasNext()) {
-        ((ahod)localIterator.next()).b();
+        ((ahsv)localIterator.next()).b();
       }
     }
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -49,7 +49,7 @@ public class VideoFlowDecodeWrapper
   public int a(List paramList)
   {
     if (paramList.size() > 0) {
-      SLog.c("FlowEdit_VideoFlowDecodeWrapper", "onFrameReached : size " + paramList.size() + ", range [" + ((ahod)paramList.get(0)).a() + " - " + ((ahod)paramList.get(paramList.size() - 1)).a() + "], cycle " + ((ahod)paramList.get(0)).b() + ", current size " + this.jdField_a_of_type_JavaUtilList.size());
+      SLog.c("FlowEdit_VideoFlowDecodeWrapper", "onFrameReached : size " + paramList.size() + ", range [" + ((ahsv)paramList.get(0)).a() + " - " + ((ahsv)paramList.get(paramList.size() - 1)).a() + "], cycle " + ((ahsv)paramList.get(0)).b() + ", current size " + this.jdField_a_of_type_JavaUtilList.size());
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
@@ -73,14 +73,14 @@ public class VideoFlowDecodeWrapper
   }
   
   @Nullable
-  public ahod a()
+  public ahsv a()
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        ahod localahod = (ahod)this.jdField_a_of_type_JavaUtilList.remove(0);
-        return localahod;
+        ahsv localahsv = (ahsv)this.jdField_a_of_type_JavaUtilList.remove(0);
+        return localahsv;
       }
       return null;
     }
@@ -117,14 +117,14 @@ public class VideoFlowDecodeWrapper
   }
   
   @Nullable
-  public ahod b()
+  public ahsv b()
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        ahod localahod = (ahod)this.jdField_a_of_type_JavaUtilList.get(0);
-        return localahod;
+        ahsv localahsv = (ahsv)this.jdField_a_of_type_JavaUtilList.get(0);
+        return localahsv;
       }
       return null;
     }
@@ -136,14 +136,14 @@ public class VideoFlowDecodeWrapper
   }
   
   @Nullable
-  public ahod c()
+  public ahsv c()
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       if (this.jdField_a_of_type_JavaUtilList.size() >= 2)
       {
-        ahod localahod = (ahod)this.jdField_a_of_type_JavaUtilList.get(1);
-        return localahod;
+        ahsv localahsv = (ahsv)this.jdField_a_of_type_JavaUtilList.get(1);
+        return localahsv;
       }
       return null;
     }

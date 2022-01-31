@@ -1,16 +1,13 @@
-public class aonp
+import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+
+class aonp
+  implements Runnable
 {
-  final int a;
-  public final long a;
-  public final byte[] a;
-  final int b;
+  aonp(aono paramaono) {}
   
-  public aonp(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong)
+  public void run()
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Long = paramLong;
+    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
   }
 }
 

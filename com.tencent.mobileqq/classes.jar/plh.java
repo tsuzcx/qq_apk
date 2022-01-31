@@ -1,20 +1,27 @@
-import com.tencent.component.network.utils.http.pool.AbstractConnPool;
-import com.tencent.component.network.utils.http.pool.FutureCallback;
-import com.tencent.component.network.utils.http.pool.PoolEntry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.utils.BaseHandler;
+import java.util.HashMap;
 
 public class plh
-  extends pli
+  extends BroadcastReceiver
 {
-  public plh(AbstractConnPool paramAbstractConnPool, Lock paramLock, FutureCallback paramFutureCallback, Object paramObject1, Object paramObject2)
-  {
-    super(paramLock, paramFutureCallback);
-  }
+  public plh(ImageManager paramImageManager) {}
   
-  public PoolEntry a(long paramLong, TimeUnit paramTimeUnit)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return AbstractConnPool.a(this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolAbstractConnPool, this.jdField_a_of_type_JavaLangObject, this.b, paramLong, paramTimeUnit, this);
+    if (paramIntent.getAction() == null) {
+      return;
+    }
+    ImageManager.b(null);
+    ImageManager.b().clear();
+    ImageManager.a(false);
+    ImageManager.c().clear();
+    ImageManager.a(this.a);
+    ImageManager.getCachePath(paramContext);
+    ImageManager.a(this.a).post(new pli(this));
   }
 }
 

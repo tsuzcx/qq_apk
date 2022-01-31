@@ -1,15 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 
-class ohm
-  implements Runnable
+public final class ohm
+  implements Parcelable.Creator
 {
-  ohm(ohk paramohk) {}
-  
-  public void run()
+  public EditLocalGifSource a(Parcel paramParcel)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.b = null;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = true;
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Ohj.a, this.a.jdField_a_of_type_Ohj.a.a);
+    return new EditLocalGifSource(paramParcel);
+  }
+  
+  public EditLocalGifSource[] a(int paramInt)
+  {
+    return new EditLocalGifSource[paramInt];
   }
 }
 

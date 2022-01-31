@@ -1,33 +1,55 @@
-import android.util.Log;
-import com.tencent.mobileqq.lyric.data.Lyric;
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import com.tencent.hlyyb.downloader.Downloader;
+import com.tencent.hlyyb.downloader.DownloaderTask;
+import com.tencent.mobileqq.intervideo.now.DownloadEngine.IDownloadListener;
+import com.tencent.mobileqq.intervideo.now.DownloadEngine.IHellyEventListener;
+import com.tencent.mobileqq.intervideo.now.DownloadEngine.NowDownloadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aecy
-  implements Runnable
+  implements IHellyEventListener
 {
-  public aecy(LyricViewController paramLyricViewController, Lyric paramLyric1, Lyric paramLyric2, Lyric paramLyric3) {}
+  public aecy(NowDownloadManager paramNowDownloadManager) {}
   
-  public void run()
+  public void a(DownloaderTask paramDownloaderTask)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) {
-      Log.d("ModuleController", "setLyric -> pronounce is null");
+    QLog.e("DownloadManager_Now_for_qq", 4, "onTaskCompleted----DOWNLOAD_SUCCESS, filePath = " + paramDownloaderTask.getSavePath());
+    if (NowDownloadManager.a(this.a) != null) {
+      NowDownloadManager.a(this.a).deleteTask(paramDownloaderTask, false);
     }
-    if (this.b == null)
-    {
-      Log.d("ModuleController", "setLyric -> qrc is null");
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a(this.c, this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric);
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = this.c;
-      return;
+    if ((NowDownloadManager.a(this.a) != null) && (NowDownloadManager.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((IDownloadListener)NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl())).a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.a(this.b, this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric);
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = this.b;
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.b = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.c();
+  }
+  
+  public void b(DownloaderTask paramDownloaderTask) {}
+  
+  public void c(DownloaderTask paramDownloaderTask)
+  {
+    QLog.e("DownloadManager_Now_for_qq", 4, "onTaskFailed----DOWNLOAD_FAILED");
+    if (NowDownloadManager.a(this.a) != null) {
+      NowDownloadManager.a(this.a).deleteTask(paramDownloaderTask, false);
+    }
+    if ((NowDownloadManager.a(this.a) != null) && (NowDownloadManager.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((IDownloadListener)NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
+    }
+  }
+  
+  public void d(DownloaderTask paramDownloaderTask) {}
+  
+  public void e(DownloaderTask paramDownloaderTask) {}
+  
+  public void f(DownloaderTask paramDownloaderTask)
+  {
+    QLog.e("DownloadManager_Now_for_qq", 4, "onTaskReceived----percent: " + paramDownloaderTask.getPercentage());
+    if ((NowDownloadManager.a(this.a) != null) && (NowDownloadManager.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
+      ((IDownloadListener)NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecy
  * JD-Core Version:    0.7.0.1
  */

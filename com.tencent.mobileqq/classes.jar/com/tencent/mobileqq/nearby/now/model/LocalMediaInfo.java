@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import aetp;
+import afbb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,12 +8,11 @@ import android.os.Parcelable.Creator;
 public class LocalMediaInfo
   implements Parcelable, Comparable
 {
-  public static final Parcelable.Creator CREATOR = new aetp();
+  public static final Parcelable.Creator CREATOR = new afbb();
   public int a;
   public long a;
   public Integer a;
   public String a;
-  public boolean a;
   public int b;
   public long b;
   public String b;

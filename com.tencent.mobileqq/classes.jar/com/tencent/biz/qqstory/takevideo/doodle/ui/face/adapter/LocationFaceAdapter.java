@@ -10,7 +10,7 @@ import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel.OnFaceSelected
 import com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage.Item;
 import java.util.List;
-import okh;
+import oow;
 
 public class LocationFaceAdapter
   extends BaseFaceListAdapter
@@ -27,7 +27,7 @@ public class LocationFaceAdapter
       return paramView;
     }
     if (paramView == null) {}
-    for (paramView = new okh(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (okh)paramView)
+    for (paramView = new oow(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (oow)paramView)
     {
       paramView.a((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount());
       return paramView;
@@ -36,10 +36,10 @@ public class LocationFaceAdapter
   
   public void onClick(View paramView)
   {
-    int i = ((Integer)paramView.getTag(2131362359)).intValue();
+    int i = ((Integer)paramView.getTag(2131362362)).intValue();
     LocationFacePackage.Item localItem = (LocationFacePackage.Item)((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a.get(i);
     paramView = (ImageView)paramView;
-    Boolean localBoolean = (Boolean)paramView.getTag(2131362361);
+    Boolean localBoolean = (Boolean)paramView.getTag(2131362364);
     if ((localBoolean != null) && (localBoolean.booleanValue()))
     {
       localItem.a = paramView.getDrawable();

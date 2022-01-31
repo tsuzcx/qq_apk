@@ -1,15 +1,14 @@
-import android.content.Context;
-import cooperation.qzone.PlatformInfor;
-import cooperation.qzone.SharpPDec;
+import cooperation.comic.ui.QQComicTabBarView;
+import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver;
 
 public class amrn
-  implements Runnable
+  extends QQComicRedTouchManager.PluginRedTouchObserver
 {
-  public amrn(PlatformInfor paramPlatformInfor, Context paramContext) {}
+  public amrn(QQComicTabBarView paramQQComicTabBarView) {}
   
-  public void run()
+  public void a()
   {
-    PlatformInfor.a(this.jdField_a_of_type_CooperationQzonePlatformInfor, SharpPDec.a(this.jdField_a_of_type_AndroidContentContext));
+    this.a.a();
   }
 }
 

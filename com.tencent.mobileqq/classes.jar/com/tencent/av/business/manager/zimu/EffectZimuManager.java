@@ -35,9 +35,10 @@ public class EffectZimuManager
     paramContext.commit();
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean a(VideoAppInterface paramVideoAppInterface)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("qav_zimu_is_show", 0) == 1;
+    ((EffectZimuManager)paramVideoAppInterface.a(0)).b();
+    return PreferenceManager.getDefaultSharedPreferences(paramVideoAppInterface.getApp()).getInt("qav_zimu_is_show", 0) == 1;
   }
   
   private boolean c(String paramString)
@@ -224,7 +225,7 @@ public class EffectZimuManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.zimu.EffectZimuManager
  * JD-Core Version:    0.7.0.1
  */

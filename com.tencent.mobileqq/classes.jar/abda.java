@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.POIInfo;
+import com.tencent.ark.ark.PlayerStub;
+import com.tencent.ark.ark.PlayerStubFactory;
+import com.tencent.mobileqq.ark.ArkMediaPlayer;
 
 public final class abda
-  implements Parcelable.Creator
+  implements ark.PlayerStubFactory
 {
-  public POIInfo a(Parcel paramParcel)
+  public ark.PlayerStub CreateStub()
   {
-    return new POIInfo(paramParcel);
-  }
-  
-  public POIInfo[] a(int paramInt)
-  {
-    return new POIInfo[paramInt];
+    return new ArkMediaPlayer();
   }
 }
 

@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.ApolloManager.IDrawerGameBoxStatus;
-import com.tencent.mobileqq.apollo.script.SpriteActionScript;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 
 public class tmj
-  implements ApolloManager.IDrawerGameBoxStatus
+  implements Runnable
 {
-  public tmj(QQSettingMe paramQQSettingMe) {}
+  public tmj(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).a() != null)) {
-      QQSettingMe.a(this.a).a().a(paramBoolean);
-    }
+    this.a.a.a();
   }
 }
 

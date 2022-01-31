@@ -1,23 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gameparty.GamePartyManager;
+import com.tencent.open.agent.report.ReportCenter;
 
 public class wic
-  extends ReadInJoyObserver
+  implements View.OnClickListener
 {
-  public wic(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public wic(GamePartyTipsBar paramGamePartyTipsBar) {}
   
-  public void e(boolean paramBoolean, List paramList)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      if ((paramList != null) && (!paramList.isEmpty()))
-      {
-        this.a.c.clear();
-        this.a.c.addAll(paramList);
-      }
-      ClassificationSearchActivity.b(this.a, true);
-    }
+    paramView = new Intent(GamePartyTipsBar.a(this.a), QQBrowserActivity.class);
+    paramView.putExtra("url", String.format("http://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { GamePartyTipsBar.a(this.a).getAccount(), GamePartyTipsBar.a(this.a), Integer.valueOf(GamePartyManager.a(GamePartyTipsBar.a(this.a).jdField_a_of_type_Int)), GamePartyTipsBar.a(this.a).jdField_a_of_type_JavaLangString }));
+    GamePartyTipsBar.a(this.a).startActivity(paramView);
+    ReportCenter.a().a(GamePartyTipsBar.a(this.a).getCurrentAccountUin(), "", "", "2000", "2016", "0", false);
   }
 }
 

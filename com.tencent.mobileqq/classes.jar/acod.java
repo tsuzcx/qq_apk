@@ -1,97 +1,48 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class acod
-  implements DownloadListener
+  implements URLDrawableDownListener
 {
-  public acod(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public acod(FavoriteEmotionAdapter paramFavoriteEmotionAdapter, EmoticonInfo paramEmoticonInfo, URLImageView paramURLImageView1, URLImageView paramURLImageView2) {}
   
-  public void a(DownloadInfo paramDownloadInfo)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.a.runOnUiThread(new acoe(this));
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
   }
   
-  public void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    QLog.e("FavoriteEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadError " + paramDownloadInfo.d);
+      QLog.i("FavoriteEmotionAdapter", 2, "onLoadProgressed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
     }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
+    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
   }
   
-  public void a(String paramString1, String paramString2)
-  {
-    if ("1101070898".equals(paramString1))
-    {
-      paramString1 = UniformDownloadActivity.a(this.a);
-      UniformDownloadActivity.a(this.a, paramString1);
-      paramString1 = UniformDownloadActivity.a(this.a, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "tmastUrl=" + paramString1);
-      }
-      UniformDownloadActivity.a(this.a, paramString1);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
-  }
-  
-  public void a(List paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "onDownloadUpdate " + localDownloadInfo.d);
-      }
-      if ((localDownloadInfo != null) && (localDownloadInfo.b.equals("1101070898"))) {
-        this.a.runOnUiThread(new acof(this, localDownloadInfo));
-      }
-    }
-  }
-  
-  public void b(DownloadInfo paramDownloadInfo)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadPause " + paramDownloadInfo.d);
+      QLog.i("FavoriteEmotionAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
     }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898"))) {
-      this.a.runOnUiThread(new acog(this));
-    }
-  }
-  
-  public void b(String paramString1, String paramString2) {}
-  
-  public void c(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadFinish " + paramDownloadInfo.d);
-    }
-    ReportController.b(null, "dc00898", "", "", "0X8008F88", "0X8008F88", 1, 0, "", "", "", "");
-    this.a.runOnUiThread(new acoh(this));
-  }
-  
-  public void c(String paramString1, String paramString2) {}
-  
-  public void d(DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadCancel " + paramDownloadInfo.d);
-    }
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
+    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
   }
 }
 

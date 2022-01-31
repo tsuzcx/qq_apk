@@ -1,18 +1,21 @@
-import com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.MemoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class nhg
-  extends UrlDrawableDownloadJob
+  extends SimpleJob
 {
-  public nhg(ShareModeBase paramShareModeBase, String paramString)
-  {
-    super(paramString);
-  }
+  public nhg(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
   
-  public boolean b()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
-    return true;
+    paramJobContext = ((MemoryManager)SuperManager.a(19)).a(this.a.a);
+    this.a.a(paramJobContext);
+    return null;
   }
 }
 

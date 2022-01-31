@@ -12,15 +12,15 @@ import com.tencent.mobileqq.teamwork.TeamWorkSaveDialog;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import sjo;
-import sjp;
-import sjq;
-import sjr;
-import sjs;
-import sjt;
-import sju;
-import sjv;
-import sjw;
+import soi;
+import soj;
+import sok;
+import sol;
+import som;
+import son;
+import soo;
+import sop;
+import soq;
 
 public class DialogActivity
   extends BaseActivity
@@ -35,8 +35,8 @@ public class DialogActivity
   
   private void a()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131433014), new sjq(this)).setNegativeButton(getString(2131433013), new sjp(this));
-    localQQCustomDialog.setOnCancelListener(new sjr(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230).setMessage(getString(this.e)).setPositiveButton(getString(2131433028), new sok(this)).setNegativeButton(getString(2131433027), new soj(this));
+    localQQCustomDialog.setOnCancelListener(new sol(this));
     a(localQQCustomDialog);
   }
   
@@ -56,20 +56,20 @@ public class DialogActivity
       if (QLog.isColorLevel()) {
         QLog.e("raw_photo", 2, "showDialog ", localBadTokenException);
       }
-      getWindow().getDecorView().post(new sjo(this, paramDialog));
+      getWindow().getDecorView().post(new soi(this, paramDialog));
     }
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230, null, getString(2131438679), getString(2131433015), getString(2131438678), new sjs(this), new sjt(this));
+    this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230, null, getString(2131438702), getString(2131433029), getString(2131438701), new som(this), new son(this));
     a(this.jdField_a_of_type_AndroidAppDialog);
   }
   
   private void c()
   {
     this.jdField_a_of_type_AndroidAppDialog = new MsgNotifyPushDialog(this);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new sju(this));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new soo(this));
     a(this.jdField_a_of_type_AndroidAppDialog);
   }
   
@@ -78,7 +78,7 @@ public class DialogActivity
     if (getIntent() == null) {
       return;
     }
-    new TeamWorkSaveDialog(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new sjv(this), new sjw(this)).show();
+    new TeamWorkSaveDialog(this, getIntent().getStringExtra("key_dialog_title"), getIntent().getStringExtra("key_dialog_content"), new sop(this), new soq(this)).show();
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -87,7 +87,7 @@ public class DialogActivity
     if (localIntent != null)
     {
       this.f = localIntent.getIntExtra("key_dialog_type", jdField_a_of_type_Int);
-      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131436113);
+      this.e = localIntent.getIntExtra("key_dialog_msg_id", 2131436131);
     }
     return super.doOnCreate(paramBundle);
   }

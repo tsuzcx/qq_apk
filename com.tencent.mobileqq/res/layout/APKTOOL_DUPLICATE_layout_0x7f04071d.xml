@@ -1,13 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11ea" android:layout_width="fill_parent" android:layout_height="225.0dip" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00af" android:scaleType="centerCrop" />
-    <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0177" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a11ea" />
-    <RelativeLayout android:paddingTop="75.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2175" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02143a" android:padding="2.0dip" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="3.0dip" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
-        <com.tencent.mobileqq.widget.CircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2176" android:padding="2.0dip" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="3.0dip" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2177" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021439" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2178" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="1.5dip" android:text="人气冠军" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a2177" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2179" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="路德维希" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2177" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>
+<GridView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0311" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@null" android:numColumns="4"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

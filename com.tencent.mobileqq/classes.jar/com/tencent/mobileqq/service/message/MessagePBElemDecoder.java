@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.service.message;
 
-import ahxl;
-import ahxm;
-import ahxn;
+import aicc;
+import aicd;
+import aice;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -620,11 +620,13 @@ public class MessagePBElemDecoder
         Object localObject;
         paramStringBuilder.mergeFrom(paramElem.crm_buf.get().toByteArray());
         int i = paramStringBuilder.crm_flag.get();
+        int j;
         long l1;
+        long l2;
         if ((i == 8) && (paramStringBuilder.qidian_group_msg.has()))
         {
           paramElem = (Crm.QidianGroupMsg)paramStringBuilder.qidian_group_msg.get();
-          int j = paramElem.uint32_group_task_id.get();
+          j = paramElem.uint32_group_task_id.get();
           int k = paramElem.uint32_group_msg_type.get();
           l1 = paramElem.uint64_kfuin.get();
           int m = paramElem.uint32_show_tip.get();
@@ -642,7 +644,7 @@ public class MessagePBElemDecoder
           }
           l1 = paramMsg.msg_head.from_uin.get();
           k = paramMsg.msg_head.msg_seq.get();
-          long l2 = paramMsg.msg_head.msg_uid.get();
+          l2 = paramMsg.msg_head.msg_uid.get();
           m = paramMsg.msg_head.msg_type.get();
           MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, l1, k, l2, m);
           if (j != 0)
@@ -660,14 +662,19 @@ public class MessagePBElemDecoder
         }
         if ((i == 11) && (paramStringBuilder.msg_gray_msg.has()))
         {
-          paramElem = (Crm.GrayMsg)paramStringBuilder.msg_gray_msg.get();
-          i = paramElem.uint32_type.get();
-          paramList = paramElem.str_text.get();
-          l1 = paramElem.uint64_from_uin.get();
+          paramList = (Crm.GrayMsg)paramStringBuilder.msg_gray_msg.get();
+          i = paramList.uint32_type.get();
+          paramElem = paramList.str_text.get();
+          l1 = paramList.uint64_from_uin.get();
+          j = paramMsg.msg_head.msg_seq.get();
+          l2 = paramMsg.msg_head.msg_uid.get();
+          paramList = new StringBuilder();
+          paramList.append(j);
+          paramList.append(l2);
           if (QLog.isColorLevel()) {
-            QLog.d("DecodeMsg", 2, String.format("received qidian gray msg type: %d, tips: %s, fromUin: %d", new Object[] { Integer.valueOf(i), paramList, Long.valueOf(l1) }));
+            QLog.d("DecodeMsg", 2, String.format("received qidian gray msg type: %d, tips: %s, fromUin: %d", new Object[] { Integer.valueOf(i), paramElem, Long.valueOf(l1) }));
           }
-          QidianUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), paramList, 1024);
+          QidianUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), paramElem, 1024, paramList.toString());
         }
         return;
       }
@@ -683,7 +690,7 @@ public class MessagePBElemDecoder
   
   private void a(im_msg_body.Elem paramElem, im_msg_body.NotOnlineImage paramNotOnlineImage, List paramList, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg)
   {
-    BaseApplication.getContext().getString(2131436298);
+    BaseApplication.getContext().getString(2131436318);
     boolean bool;
     if (paramNotOnlineImage != null) {
       bool = true;
@@ -1519,7 +1526,7 @@ public class MessagePBElemDecoder
             if (QLog.isColorLevel()) {
               paramStringBuilder2.append("elemType:OnlineImage;\n");
             }
-            localStringBuilder.append(BaseApplication.getContext().getString(2131436298));
+            localStringBuilder.append(BaseApplication.getContext().getString(2131436318));
             paramList2 = paramStringBuilder1;
             paramStringBuilder1 = paramList1;
             paramList1 = paramList2;
@@ -2434,7 +2441,7 @@ public class MessagePBElemDecoder
                 label887:
                 QLog.d("DecodeMsg", 2, paramMessageInfo);
               }
-              ThreadManager.getSubThreadHandler().postDelayed(new ahxl(this), 1000L);
+              ThreadManager.getSubThreadHandler().postDelayed(new aicc(this), 1000L);
             }
             if (!paramList2.isEmpty())
             {
@@ -2597,7 +2604,7 @@ public class MessagePBElemDecoder
           paramList1 = (MessageRecord)paramList2.get(0);
           paramList1.saveExtInfoToExtStr("welcome_msg", "true");
           if ((i != 2) && (((paramList1 instanceof MessageForText)) || ((paramList1 instanceof MessageForLongMsg)))) {
-            ThreadManager.executeOnSubThread(new ahxm(this, paramMsg));
+            ThreadManager.executeOnSubThread(new aicd(this, paramMsg));
           }
           label1641:
           if (paramList2.isEmpty()) {
@@ -2801,7 +2808,7 @@ public class MessagePBElemDecoder
         StringBuilder localStringBuilder = new StringBuilder("");
         if (paramBoolean)
         {
-          localStringBuilder.append(BaseApplication.getContext().getString(2131436298));
+          localStringBuilder.append(BaseApplication.getContext().getString(2131436318));
           paramElem = (msg_comm.MsgHead)paramMsg.msg_head.get();
           l1 = paramElem.msg_seq.get();
           l2 = paramElem.msg_uid.get();
@@ -3254,7 +3261,7 @@ public class MessagePBElemDecoder
           if (QLog.isColorLevel()) {
             QLog.i("DingdongScheduleMessage", 2, "A Schedule message");
           }
-          ThreadManager.post(new ahxn(this), 5, null, true);
+          ThreadManager.post(new aice(this), 5, null, true);
           int i = ((Qworkflow.Notification)localObject).msg_schedule_change.uint32_main_type.get();
           int j = ((Qworkflow.Notification)localObject).msg_schedule_change.uint32_sub_type.get();
           if ((i != 100) || (j != 1)) {
@@ -4542,15 +4549,15 @@ public class MessagePBElemDecoder
     {
       im_msg_body.Elem localElem = (im_msg_body.Elem)((Iterator)localObject2).next();
       if (!localElem.trans_elem_info.has()) {
-        break label1378;
+        break label1397;
       }
       localObject1 = (im_msg_body.TransElem)localElem.trans_elem_info.get();
     }
     label416:
     label721:
     label723:
-    label1370:
-    label1378:
+    label1389:
+    label1397:
     for (;;)
     {
       break;
@@ -4583,7 +4590,7 @@ public class MessagePBElemDecoder
             default: 
               return;
             case 3: 
-              paramList1 = BaseApplication.getContext().getString(2131436298);
+              paramList1 = BaseApplication.getContext().getString(2131436318);
               paramStringBuilder = (MessageForText)MessageRecordFactory.a(-1000);
               paramStringBuilder.msgtype = -1000;
               paramStringBuilder.msg = paramList1;
@@ -4600,12 +4607,12 @@ public class MessagePBElemDecoder
             paramStringBuilder = a((byte[])localObject1);
           }
           if (paramStringBuilder == null) {
-            break label1370;
+            break label1389;
           }
           try
           {
             if (paramStringBuilder.length <= 0) {
-              break label1370;
+              break label1389;
             }
             paramStringBuilder = new String(paramStringBuilder, "utf-8");
           }
@@ -4776,7 +4783,7 @@ public class MessagePBElemDecoder
               if (!QLog.isColorLevel()) {
                 break;
               }
-              QLog.d("DecodeMsg", 2, ((StringBuilder)localObject1).toString());
+              QLog.d("DecodeMsg", 2, "<TroopFile> " + ((StringBuilder)localObject1).toString());
               return;
               localException1 = localException1;
               localException1.printStackTrace();
@@ -5030,7 +5037,7 @@ public class MessagePBElemDecoder
         }
         paramList1 = (MessageForText)MessageRecordFactory.a(-1000);
         paramList1.msgtype = -1000;
-        paramList1.msg = BaseApplication.getContext().getString(2131436177);
+        paramList1.msg = BaseApplication.getContext().getString(2131436195);
         paramList2.add(paramList1);
         return;
       }
@@ -5667,7 +5674,7 @@ public class MessagePBElemDecoder
     {
       localObject6 = (im_msg_body.Elem)((Iterator)localObject4).next();
       if (!((im_msg_body.Elem)localObject6).rich_msg.has()) {
-        break label4479;
+        break label4488;
       }
       localObject1 = (im_msg_body.RichMsg)((im_msg_body.Elem)localObject6).rich_msg.get();
     }
@@ -5675,21 +5682,20 @@ public class MessagePBElemDecoder
     label1064:
     label1348:
     label1372:
-    label1509:
-    label3560:
-    label4459:
-    label4466:
-    label4479:
+    label3169:
     for (;;)
     {
       if (((im_msg_body.Elem)localObject6).general_flags.has()) {
         localGeneralFlags = (im_msg_body.GeneralFlags)((im_msg_body.Elem)localObject6).general_flags.get();
       }
+      label2017:
       for (;;)
       {
         if (((im_msg_body.Elem)localObject6).text.has()) {
           localObject3 = (im_msg_body.Text)((im_msg_body.Elem)localObject6).text.get();
         }
+        label1509:
+        label4456:
         for (;;)
         {
           break;
@@ -5752,9 +5758,12 @@ public class MessagePBElemDecoder
             }
             localObject1 = ((im_msg_body.RichMsg)localObject1).bytes_msg_resid.get();
             if (localObject1 == null) {
-              break label4466;
+              break label4475;
             }
           }
+          label3569:
+          label4468:
+          label4475:
           for (String str = ((ByteStringMicro)localObject1).toStringUtf8();; str = "")
           {
             Object localObject7;
@@ -5779,7 +5788,7 @@ public class MessagePBElemDecoder
               localObject7 = ((im_msg_body.Elem)localObject4).pub_acc_info.bytes_download_key.get();
               localObject4 = localObject1;
               if (localObject7 == null) {
-                break label4459;
+                break label4468;
               }
               localObject7 = StructLongMessageDownloadProcessor.a(((ByteStringMicro)localObject7).toByteArray());
               localObject4 = localObject1;
@@ -5969,7 +5978,7 @@ public class MessagePBElemDecoder
                   {
                     localObject1 = (msg_comm.GroupInfo)paramMsg.msg_head.group_info.get();
                     if (localObject1 == null) {
-                      break label4447;
+                      break label4456;
                     }
                   }
                 }
@@ -5989,8 +5998,8 @@ public class MessagePBElemDecoder
                     }
                     l2 = paramMsg.msg_head.to_uin.get();
                     paramList2.add(((NearbyFlowerManager)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.getManager(123)).a(Long.toString(l1), Long.toString(l2), localMessageForStructing.istroop, localMessageForStructing.structingMsg));
-                    break label3560;
-                    break label3160;
+                    break label3569;
+                    break label3169;
                   }
                   for (;;)
                   {
@@ -5998,7 +6007,7 @@ public class MessagePBElemDecoder
                     localMessageForStructing.msgData = localMessageForStructing.structingMsg.getBytes();
                     localMessageForStructing.msg = "richMsg";
                     if (localMessageForStructing.structingMsg != null) {
-                      break label3995;
+                      break label4004;
                     }
                     if (QLog.isColorLevel()) {
                       paramStringBuilder.append("c2cMsgContent.data:null;\n");
@@ -6129,7 +6138,9 @@ public class MessagePBElemDecoder
                       {
                         if ((localMessageForStructing.structingMsg instanceof AbsShareMsg))
                         {
-                          PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForStructing, 11);
+                          if (2062433139L != l1) {
+                            PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForStructing, 11);
+                          }
                           ((AbsShareMsg)localMessageForStructing.structingMsg).clearItems();
                           localMessageForStructing.extInt = 1;
                           localMessageForStructing.extLong = 1;

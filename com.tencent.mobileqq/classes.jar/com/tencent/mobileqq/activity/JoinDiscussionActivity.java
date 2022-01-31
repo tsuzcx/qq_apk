@@ -16,11 +16,11 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 import java.util.List;
-import svp;
-import svq;
-import svr;
-import svs;
-import svv;
+import tak;
+import tal;
+import tam;
+import tan;
+import taq;
 
 public class JoinDiscussionActivity
   extends IphoneTitleBarActivity
@@ -33,12 +33,12 @@ public class JoinDiscussionActivity
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public TextView a;
   public DiscussionHandler a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new svq(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tal(this);
   public String a;
   public ArrayList a;
   public List a;
-  private svs jdField_a_of_type_Svs;
-  private svv jdField_a_of_type_Svv;
+  private tan jdField_a_of_type_Tan;
+  private taq jdField_a_of_type_Taq;
   public int b;
   public long b;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
@@ -57,20 +57,20 @@ public class JoinDiscussionActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364815));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364816));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364817));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364818));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364819));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364821));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364842));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364843));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364844));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364845));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364846));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364848));
   }
   
   private void c()
   {
     setTitle("加入多人聊天");
-    setRightButton(2131433015, this);
+    setRightButton(2131433029, this);
     this.leftView.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new svp(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new tak(this));
   }
   
   private void d()
@@ -92,7 +92,7 @@ public class JoinDiscussionActivity
   
   private void e()
   {
-    runOnUiThread(new svr(this));
+    runOnUiThread(new tam(this));
   }
   
   public void a()
@@ -142,12 +142,12 @@ public class JoinDiscussionActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969034);
+    super.setContentView(2130969037);
     paramBundle = getIntent().getExtras();
-    this.jdField_a_of_type_Svv = new svv(this, null);
-    this.jdField_a_of_type_Svs = new svs(this, null);
-    addObserver(this.jdField_a_of_type_Svv);
-    addObserver(this.jdField_a_of_type_Svs);
+    this.jdField_a_of_type_Taq = new taq(this, null);
+    this.jdField_a_of_type_Tan = new tan(this, null);
+    addObserver(this.jdField_a_of_type_Taq);
+    addObserver(this.jdField_a_of_type_Tan);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.jdField_a_of_type_Int = paramBundle.getInt("addDisSource");
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("sig");
@@ -174,8 +174,8 @@ public class JoinDiscussionActivity
   
   protected void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Svv);
-    removeObserver(this.jdField_a_of_type_Svs);
+    removeObserver(this.jdField_a_of_type_Taq);
+    removeObserver(this.jdField_a_of_type_Tan);
     removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     super.doOnDestroy();
   }

@@ -1,15 +1,26 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
+import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.LimitInfo;
 
 public class aeuu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aeuu(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  public aeuu(NearbyLikeLimitManager paramNearbyLikeLimitManager, Activity paramActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(this.a.a, 1);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a;
+    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.a)))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramDialogInterface.a);
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 1028);
+    }
   }
 }
 

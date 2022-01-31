@@ -1,28 +1,13 @@
 package c.t.m.g;
 
-import android.content.Context;
-
-public final class cj
+final class cj
+  implements Runnable
 {
-  public Context a;
-  public String b;
-  public String c;
-  public String d;
+  cj(cg paramcg) {}
   
-  public cj(String paramString1, String paramString2, String paramString3)
+  public final void run()
   {
-    this.b = paramString2;
-    this.c = paramString1;
-    this.d = paramString3;
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    return str;
+    this.a.a();
   }
 }
 

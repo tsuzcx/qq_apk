@@ -1,45 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
-import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 
-public class mzw
-  extends SimpleJob
+public final class mzw
+  implements Runnable
 {
-  public mzw(DownloadUrlManager paramDownloadUrlManager, String paramString, int paramInt) {}
+  public mzw(Uri paramUri, int paramInt1, int paramInt2, String paramString) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    paramJobContext = DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    long l1;
-    if (paramJobContext != null)
+    for (;;)
     {
-      paramVarArgs = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null) {
-        break label132;
+      try
+      {
+        String str = this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id");
+        int i = this.jdField_a_of_type_Int;
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          i = 100;
+          PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006DF8", "0X8006DF8", this.b, 0, str, this.jdField_a_of_type_JavaLangString, "" + i, "", false);
+          PublicAccountReportUtils.a("0X8006DF8", "", str, this.jdField_a_of_type_JavaLangString, "" + i, "" + this.b);
+          return;
+        }
       }
-      l1 = 0L;
-      if (paramJobContext.updatedMs <= 0L) {
-        break label141;
+      catch (Exception localException)
+      {
+        return;
       }
-    }
-    label132:
-    label141:
-    for (long l2 = paramJobContext.updatedMs;; l2 = System.currentTimeMillis())
-    {
-      int i = paramJobContext.compressLevel;
-      StoryReportor.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(i), this.jdField_a_of_type_JavaLangString });
-      SLog.a("Q.qqstory.DownloadUrlManager", "report url level , vid = %s , compress level = %d , cms = %d , dms = %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2));
-      return null;
-      l1 = paramVarArgs.mCreateTime;
-      break;
     }
   }
 }

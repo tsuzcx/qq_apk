@@ -1,29 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.GBatteryMonitor;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.report.VideoNodeManager;
-import com.tencent.av.business.manager.report.VideoNodeReporter;
+import android.support.v4.util.LruCache;
+import com.rookery.translate.model.TransMemCache;
 
 public class jep
-  extends BroadcastReceiver
+  extends LruCache
 {
-  public jep(GBatteryMonitor paramGBatteryMonitor) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public jep(TransMemCache paramTransMemCache, int paramInt)
   {
-    int i = paramIntent.getIntExtra("level", 0);
-    if ((GBatteryMonitor.a(this.a) != null) && (GBatteryMonitor.a(this.a).a != null))
-    {
-      ((VideoNodeReporter)GBatteryMonitor.a(this.a).a(4)).a(i);
-      VideoNodeManager.a(18, i);
-    }
+    super(paramInt);
+  }
+  
+  protected int a(String paramString1, String paramString2)
+  {
+    return paramString2.length() + 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     jep
  * JD-Core Version:    0.7.0.1
  */

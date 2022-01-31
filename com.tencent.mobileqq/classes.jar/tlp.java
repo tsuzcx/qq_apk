@@ -1,13 +1,28 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class tlp
+public class tlp
   implements Runnable
 {
-  tlp(tlo paramtlo) {}
+  public tlp(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
   public void run()
   {
-    this.a.a.p();
+    try
+    {
+      i = this.a.a(this.a.a.a);
+      this.a.b = false;
+      this.a.app.runOnUiThread(new tlq(this, i));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.util;
 
-import alzf;
-import alzg;
+import amgo;
+import amgp;
 import android.app.Notification;
 import android.content.Context;
 import android.os.Handler;
@@ -18,8 +18,10 @@ public class BadgeUtils
 {
   public static int a;
   private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private static Runnable jdField_a_of_type_JavaLangRunnable = new alzg();
+  private static Runnable jdField_a_of_type_JavaLangRunnable = new amgp();
   public static boolean a;
+  public static boolean b;
+  public static boolean c;
   
   static
   {
@@ -98,13 +100,22 @@ public class BadgeUtils
     } while (!QLog.isColorLevel());
     QLog.e("BadgeUtilImpl", 2, "badge not support");
     return;
-    ThreadManager.executeOnSubThread(new alzf(i, paramContext, paramInt));
+    ThreadManager.executeOnSubThread(new amgo(i, paramContext, paramInt));
   }
   
   public static void a(Context paramContext, int paramInt, Notification paramNotification)
   {
-    if (!CommonBadgeUtilImpl.isMIUI6()) {
-      return;
+    if (!c) {
+      if (!b)
+      {
+        c = CommonBadgeUtilImpl.isMIUI6();
+        b = true;
+        if (c) {}
+      }
+      else
+      {
+        return;
+      }
     }
     QLog.d("BadgeUtils_UnreadMonitor", 1, "setMIUI6Badge count: " + paramInt);
     BadgeUtilImpl.setLimitCount(a());

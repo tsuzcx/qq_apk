@@ -1,44 +1,37 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.RemoteException;
+import com.tencent.mobileqq.richmedia.ICallBack;
+import com.tencent.mobileqq.richmedia.LOG;
+import com.tencent.mobileqq.richmedia.RichmediaService;
 
-public class ahlf
-  extends OrientationEventListener
+public final class ahlf
+  implements Runnable
 {
-  public ahlf(CameraCaptureView paramCameraCaptureView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public ahlf(int paramInt, Bundle paramBundle) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void run()
   {
-    this.a.m = paramInt;
-    if (paramInt == -1)
+    if (RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureView", 2, "OrientationEventListener unknown");
+      ICallBack localICallBack = RichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaRichmediaService.jdField_a_of_type_ComTencentMobileqqRichmediaICallBack;
+      if (localICallBack != null) {
+        try
+        {
+          LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest start . ");
+          localICallBack.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+          LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest finish. ");
+          return;
+        }
+        catch (RemoteException localRemoteException)
+        {
+          LOG.a("RichmediaService", "sendICallBackRequest cb.sendRequest ipc fail, RemoteException : " + localRemoteException.getMessage());
+          return;
+        }
       }
-      this.a.n = 90;
-    }
-    if ((paramInt > 315) || (paramInt < 45)) {
-      this.a.n = 90;
-    }
-    for (;;)
-    {
-      if (this.a.f) {
-        this.a.l = this.a.n;
-      }
-      com.tencent.mobileqq.richmedia.capture.util.ReportUtil.a = this.a.l;
+      LOG.a("RichmediaService", "sendICallBackRequest service.mClientCallBack is null");
       return;
-      if ((paramInt > 45) && (paramInt < 135)) {
-        this.a.n = 180;
-      } else if ((paramInt > 135) && (paramInt < 225)) {
-        this.a.n = 270;
-      } else if ((paramInt > 225) && (paramInt < 315)) {
-        this.a.n = 0;
-      }
     }
+    LOG.a("RichmediaService", "sendICallBackRequest Richmedia Service is null");
   }
 }
 

@@ -1,14 +1,22 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
+import android.widget.TextView;
+import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
 
 public class aoak
   implements Runnable
 {
-  public aoak(FaceListPage paramFaceListPage, FacePackage paramFacePackage) {}
+  public aoak(EditProviderPart paramEditProviderPart, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage);
+    if (EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart) == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).setVisibility(0);
+      return;
+    }
+    EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).setVisibility(8);
   }
 }
 

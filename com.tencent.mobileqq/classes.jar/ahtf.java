@@ -1,39 +1,24 @@
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.HotWordSearchEntryModel;
-import com.tencent.mobileqq.search.fragment.HotWordsDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
 public class ahtf
-  extends UniteSearchObserver
 {
-  public ahtf(HotWordsDetailFragment paramHotWordsDetailFragment) {}
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private final long b;
   
-  public void b(int paramInt1, String paramString, int paramInt2)
+  private ahtf(long paramLong1, long paramLong2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(HotWordsDetailFragment.jdField_a_of_type_JavaLangString, 2, "handleSearchDiscoveryError resultCode =" + paramInt1 + "  errorMsg =" + paramString + ", fromType = " + paramInt2);
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void b(List paramList, int paramInt)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(HotWordsDetailFragment.jdField_a_of_type_JavaLangString, 2, "handleSearchDiscoveryResult result =" + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 5)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(HotWordsDetailFragment.jdField_a_of_type_JavaLangString, 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.a();
+    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahtf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
 
 class aecc
-  implements Runnable
+  implements GroupVideoManager.CheckListener
 {
   aecc(aecb paramaecb) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("pic_light_reply_version_new", 0).commit();
+    if ((!paramBoolean) && (!GroupVideoLoadingFragment.a) && (GroupVideoManager.a(this.a.a) != null)) {
+      this.a.a.a(GroupVideoManager.a(this.a.a).getApp(), "", GroupVideoManager.a(this.a.a).getCurrentAccountUin(), 0, "slientDownload", "", "", null, null, null);
+    }
   }
 }
 

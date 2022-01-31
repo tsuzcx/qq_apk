@@ -1,94 +1,52 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.campuscircle.CampusCircleManager;
-import com.tencent.mobileqq.campuscircle.CampusCircleManager.CampusTopicPublisher;
-import com.tencent.mobileqq.campuscircle.CampusCircleManager.CampusTopicReq;
-import com.tencent.mobileqq.campuscircle.CampusCircleManager.TopicPublishSession;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.armap.config.ARMapConfigManager;
+import com.tencent.mobileqq.armap.config.ConfigCheckHander;
+import com.tencent.mobileqq.armap.config.ConfigCheckHander.Listener;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 public class abpi
-  extends TransProcessorHandler
+  implements ConfigCheckHander.Listener
 {
-  public abpi(CampusCircleManager.CampusTopicPublisher paramCampusTopicPublisher) {}
+  public abpi(ARMapLoadingActivity paramARMapLoadingActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    Object localObject = (FileMsg)paramMessage.obj;
-    if ((localObject != null) && (((FileMsg)localObject).b == 54))
-    {
-      if (this.a.a()) {
-        break label49;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCircleManager", 2, "mPhotoUploadHandler.handleMessage(), check wrong");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMapLoadingActivity", 2, String.format("handleCheckAndDownloadResMsg onUpdate progress=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+  }
+  
+  public void a(int paramInt, List paramList)
+  {
+    ARMapLoadingActivity.a(this.a).h = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMapLoadingActivity", 2, String.format("handleCheckAndDownloadResMsg onResult errCode=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    if ((paramInt == 0) && (paramList != null)) {
+      ARMapLoadingActivity.a(this.a).sendEmptyMessage(110);
     }
     for (;;)
     {
+      if (ARMapLoadingActivity.a(this.a) != null)
+      {
+        paramList = ARMapLoadingActivity.a(this.a).a();
+        if (paramList != null) {
+          paramList.a(null);
+        }
+      }
       return;
-      label49:
-      CampusCircleManager.CampusTopicReq localCampusTopicReq = this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager$TopicPublishSession.a;
-      String str1 = ((FileMsg)localObject).q;
-      switch (paramMessage.what)
-      {
-      }
-      while (((paramMessage.what == 1003) || (paramMessage.what == 1005) || (paramMessage.what == 1004)) && (QLog.isColorLevel()))
-      {
-        paramMessage = new StringBuilder();
-        paramMessage.append("mPhotoUploadHandler.handleMessage(), ").append(",").append(str1).append(",").append(localCampusTopicReq.picInfos.size());
-        QLog.i("CampusCircleManager", 2, paramMessage.toString());
-        return;
-        String str2 = ((NearbyPeoplePhotoUploadProcessor)((FileMsg)localObject).a).a;
-        localObject = ((NearbyPeoplePhotoUploadProcessor)((FileMsg)localObject).a).b;
-        if (QLog.isColorLevel()) {
-          QLog.d("CampusCircleManager", 2, "mPhotoUploadHandler.handleMessage(), upload success. photo_url = " + str2 + ",thumb_url=" + (String)localObject);
-        }
-        if (!TextUtils.isEmpty(str1))
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager.jdField_a_of_type_JavaUtilSet.remove(str1);
-          this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager.jdField_a_of_type_JavaUtilHashMap.put(str1, str2);
-        }
-        if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty((CharSequence)localObject)))
-        {
-          this.a.a(1);
-        }
-        else
-        {
-          localCampusTopicReq.updatePicInfo(str2, str1);
-          if (localCampusTopicReq.isPicsUrlReady())
-          {
-            CampusCircleManager.CampusTopicPublisher.a(this.a);
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.d("CampusCircleManager", 2, "mPhotoUploadHandler.handleMessage(), upload photo cancel.");
-            }
-            if (!TextUtils.isEmpty(str1))
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager.jdField_a_of_type_JavaUtilSet.remove(str1);
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("CampusCircleManager", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed.");
-              }
-              if (!TextUtils.isEmpty(str1)) {
-                this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager.jdField_a_of_type_JavaUtilSet.remove(str1);
-              }
-              this.a.a(1);
-            }
-          }
-        }
-      }
+      paramList = ARMapLoadingActivity.a(this.a).obtainMessage(104);
+      paramList.arg1 = 3;
+      paramList.arg2 = paramInt;
+      ARMapLoadingActivity.a(this.a).sendMessage(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abpi
  * JD-Core Version:    0.7.0.1
  */

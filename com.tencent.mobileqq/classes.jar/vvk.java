@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.HotChatRecentUserMgr;
-import com.tencent.mobileqq.data.HotChatInfo;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.TextView;
 
-public class vvk
+class vvk
   implements Runnable
 {
-  public vvk(HotChatPie paramHotChatPie) {}
+  vvk(vvj paramvvj, StateListDrawable paramStateListDrawable) {}
   
   public void run()
   {
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.state;
-    HotChatRecentUserMgr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, i);
-    HotChatRecentUserMgr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Vvj.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
   }
 }
 

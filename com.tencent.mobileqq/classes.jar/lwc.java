@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class lwc
   implements UserOperationModule.Ox978RespCallBack
 {
-  public lwc(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  public lwc(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
   
   public void a(boolean paramBoolean, String paramString, int paramInt)
   {
     if ((paramBoolean) && (paramInt == 1)) {
-      ReadInJoyLogicEngine.a().a((int)ComponentHeaderTopicRecommend.a(this.a).businessId, 0);
+      ThreadManager.post(new lwd(this), 5, null, true);
     }
   }
 }

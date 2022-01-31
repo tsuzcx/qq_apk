@@ -1,28 +1,13 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-class ailu
-  implements MediaPlayer.OnSeekCompleteListener
+public class ailu
+  implements FileFilter
 {
-  ailu(ailt paramailt) {}
-  
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public boolean accept(File paramFile)
   {
-    try
-    {
-      this.a.a.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.a.g = true;
-      this.a.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.a, 33L);
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
-    }
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
 }
 

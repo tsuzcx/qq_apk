@@ -16,18 +16,22 @@ public final class cell_operation
   static ArrayList cache_custom_btn;
   static Map cache_droplist_cookie;
   static Map cache_feed_report_cookie;
+  static Map cache_rank_param;
   static Map cache_recomm_cookie;
   static s_schema cache_schema_info;
   static s_outshare cache_share_info;
   public Map busi_param;
+  public String button_gif_url = "";
   public Map bypass_param;
   public Map click_stream_report;
   public ArrayList custom_btn;
   public Map droplist_cookie;
   public Map feed_report_cookie;
   public String generic_url = "";
+  public long offline_resource_bid;
   public String qboss_trace = "";
   public String qq_url = "";
+  public Map rank_param;
   public Map recomm_cookie;
   public s_schema schema_info;
   public s_outshare share_info;
@@ -53,11 +57,13 @@ public final class cell_operation
     cache_bypass_param.put("", "");
     cache_droplist_cookie = new HashMap();
     cache_droplist_cookie.put(Integer.valueOf(0), "");
+    cache_rank_param = new HashMap();
+    cache_rank_param.put(Integer.valueOf(0), "");
   }
   
   public cell_operation() {}
   
-  public cell_operation(Map paramMap1, String paramString1, String paramString2, s_outshare params_outshare, s_schema params_schema, Map paramMap2, Map paramMap3, String paramString3, ArrayList paramArrayList, Map paramMap4, String paramString4, Map paramMap5, Map paramMap6)
+  public cell_operation(Map paramMap1, String paramString1, String paramString2, s_outshare params_outshare, s_schema params_schema, Map paramMap2, Map paramMap3, String paramString3, ArrayList paramArrayList, Map paramMap4, String paramString4, Map paramMap5, Map paramMap6, Map paramMap7, String paramString5, long paramLong)
   {
     this.busi_param = paramMap1;
     this.weixin_url = paramString1;
@@ -72,6 +78,9 @@ public final class cell_operation
     this.generic_url = paramString4;
     this.bypass_param = paramMap5;
     this.droplist_cookie = paramMap6;
+    this.rank_param = paramMap7;
+    this.button_gif_url = paramString5;
+    this.offline_resource_bid = paramLong;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -89,6 +98,9 @@ public final class cell_operation
     this.generic_url = paramJceInputStream.readString(10, false);
     this.bypass_param = ((Map)paramJceInputStream.read(cache_bypass_param, 11, false));
     this.droplist_cookie = ((Map)paramJceInputStream.read(cache_droplist_cookie, 12, false));
+    this.rank_param = ((Map)paramJceInputStream.read(cache_rank_param, 13, false));
+    this.button_gif_url = paramJceInputStream.readString(14, false);
+    this.offline_resource_bid = paramJceInputStream.read(this.offline_resource_bid, 15, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -132,6 +144,13 @@ public final class cell_operation
     if (this.droplist_cookie != null) {
       paramJceOutputStream.write(this.droplist_cookie, 12);
     }
+    if (this.rank_param != null) {
+      paramJceOutputStream.write(this.rank_param, 13);
+    }
+    if (this.button_gif_url != null) {
+      paramJceOutputStream.write(this.button_gif_url, 14);
+    }
+    paramJceOutputStream.write(this.offline_resource_bid, 15);
   }
 }
 

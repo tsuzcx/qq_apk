@@ -1,28 +1,57 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditDoodleExport;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter.ItemViewGestureListener;
 
 public class oja
-  implements View.OnClickListener
+  implements EditVideoFilter.ItemViewGestureListener
 {
-  public oja(EditTextDialog paramEditTextDialog) {}
+  private long jdField_a_of_type_Long;
   
-  public void onClick(View paramView)
+  public oja(EditVideoFilter paramEditVideoFilter) {}
+  
+  public void a(MotionEvent paramMotionEvent)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.a = this.a.d;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.d = this.a.e;
-    this.a.dismiss();
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 3, 3);
+    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(EditDoodleExport.class);
+    if (localEditDoodleExport != null) {
+      localEditDoodleExport.a(paramMotionEvent);
     }
-    VideoEditReport.a("0X80076C5");
-    VideoEditReport.b("0X80075D9");
+  }
+  
+  public void a(View paramView)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > 300L)
+    {
+      this.jdField_a_of_type_Long = l;
+      paramView = (EditDoodleExport)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(EditDoodleExport.class);
+      if (paramView != null) {
+        paramView.c_();
+      }
+      return;
+    }
+    SLog.b("Q.qqstory.publish.edit.EditVideoFilter", "repeat viewpager click.");
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
+  {
+    if (paramMotionEvent2 != null)
+    {
+      EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter.a(EditDoodleExport.class);
+      if (localEditDoodleExport != null) {}
+      for (boolean bool = localEditDoodleExport.a(paramMotionEvent2);; bool = false)
+      {
+        if (bool)
+        {
+          a(paramMotionEvent1);
+          a(paramMotionEvent2);
+        }
+        return bool;
+      }
+    }
+    return false;
   }
 }
 

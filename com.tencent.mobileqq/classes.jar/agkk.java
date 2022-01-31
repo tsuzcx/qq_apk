@@ -1,28 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agkk
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public agkk(PhoneNumLoginImpl paramPhoneNumLoginImpl) {}
+  public agkk(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
+    ScanTorchActivity.i(this.a);
+    ScanTorchActivity.j(this.a);
+    ScanTorchActivity.k(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agkk
  * JD-Core Version:    0.7.0.1
  */

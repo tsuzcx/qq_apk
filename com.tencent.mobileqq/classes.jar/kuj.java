@@ -1,22 +1,14 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.PrefetchListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class kuj
-  implements TVK_SDKMgr.InstallListener
+public class kuj
+  implements AccountDetailBaseAdapter.PrefetchListener
 {
-  kuj(kui paramkui) {}
+  public kuj(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void a()
   {
-    AdvertisementVideoPreloadManager.c("installSDK onInstalledFailed arg0=" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    AdvertisementVideoPreloadManager.c("installSDK onInstalledSuccessed");
-    AdvertisementVideoPreloadManager.a(this.a.a);
+    this.a.a(this.a.a);
   }
 }
 

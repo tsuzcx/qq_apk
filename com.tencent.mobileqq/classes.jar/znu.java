@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.app.ThreadOptimizer;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ThreadFactory;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public final class znu
-  implements ThreadFactory
+public class znu
+  extends SendMessageHandler.SendMessageRunnable
 {
-  public Thread newThread(Runnable paramRunnable)
+  public znu(MessageHandler paramMessageHandler, msg_svc.PbSendMsgReq paramPbSendMsgReq, int paramInt, long paramLong) {}
+  
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThreadManager", 2, "serialExecutor_thread");
-    }
-    paramRunnable = new Thread(paramRunnable, "serialExecutor_thread");
-    if (ThreadOptimizer.a().c()) {
-      paramRunnable.setPriority(1);
-    }
-    return paramRunnable;
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.PbReceiptRead", null);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
+    localToServiceMsg.extraData.putLong("msgSeq", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putInt("msgtype", 2);
+    localToServiceMsg.extraData.putString("uin", Long.toString(this.jdField_a_of_type_Long));
+    localToServiceMsg.extraData.putLong("timeOut", this.c);
+    localToServiceMsg.extraData.putInt("retryIndex", this.b);
+    localToServiceMsg.setTimeout(this.c);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
   }
 }
 

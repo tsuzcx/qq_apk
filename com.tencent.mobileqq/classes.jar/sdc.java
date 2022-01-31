@@ -1,41 +1,17 @@
-import android.graphics.Color;
 import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class sdc
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public sdc(ChatSettingForTroop paramChatSettingForTroop, ActionSheet paramActionSheet) {}
+  public sdc(ChatHistory paramChatHistory) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ArrayOfAndroidViewView[28];
-    if (paramView != null)
-    {
-      TextView localTextView = (TextView)paramView.findViewById(2131363378);
-      if (localTextView != null) {
-        localTextView.setTextColor(Color.parseColor("#cccccc"));
-      }
-      paramView = (ProgressBar)paramView.findViewById(2131364791);
-      if (paramView != null) {
-        paramView.setVisibility(0);
-      }
-    }
-    ThreadManager.post(new sfc(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop), 5, null, false);
-    TroopReportor.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
+    this.a.k();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
   }
 }
 

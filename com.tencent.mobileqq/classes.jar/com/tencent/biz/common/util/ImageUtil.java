@@ -78,12 +78,12 @@ public class ImageUtil
         return localObject1;
         i = k;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      catch (Throwable localThrowable)
       {
         for (;;)
         {
           if (QLog.isColorLevel()) {
-            QLog.e(jdField_b_of_type_JavaLangString, 2, "scaleBitmap, OutOfMemoryError");
+            QLog.e(jdField_b_of_type_JavaLangString, 2, "scaleBitmap, exp=", localThrowable);
           }
           Object localObject2 = null;
         }
@@ -96,38 +96,38 @@ public class ImageUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 75	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 77	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +7 -> 11
     //   7: aconst_null
     //   8: astore_0
     //   9: aload_0
     //   10: areturn
-    //   11: new 77	android/graphics/BitmapFactory$Options
+    //   11: new 79	android/graphics/BitmapFactory$Options
     //   14: dup
-    //   15: invokespecial 78	android/graphics/BitmapFactory$Options:<init>	()V
+    //   15: invokespecial 80	android/graphics/BitmapFactory$Options:<init>	()V
     //   18: astore 6
     //   20: aload 6
     //   22: iconst_1
-    //   23: putfield 82	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   23: putfield 84	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   26: aload_0
     //   27: aload 6
-    //   29: invokestatic 88	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   29: invokestatic 90	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   32: pop
     //   33: aload 6
-    //   35: getfield 91	android/graphics/BitmapFactory$Options:outWidth	I
+    //   35: getfield 93	android/graphics/BitmapFactory$Options:outWidth	I
     //   38: istore_2
     //   39: aload 6
-    //   41: getfield 94	android/graphics/BitmapFactory$Options:outHeight	I
+    //   41: getfield 96	android/graphics/BitmapFactory$Options:outHeight	I
     //   44: istore_3
     //   45: aload 6
-    //   47: getfield 97	android/graphics/BitmapFactory$Options:mCancel	Z
+    //   47: getfield 99	android/graphics/BitmapFactory$Options:mCancel	Z
     //   50: ifne +21 -> 71
     //   53: aload 6
-    //   55: getfield 91	android/graphics/BitmapFactory$Options:outWidth	I
+    //   55: getfield 93	android/graphics/BitmapFactory$Options:outWidth	I
     //   58: iconst_m1
     //   59: if_icmpeq +12 -> 71
     //   62: aload 6
-    //   64: getfield 94	android/graphics/BitmapFactory$Options:outHeight	I
+    //   64: getfield 96	android/graphics/BitmapFactory$Options:outHeight	I
     //   67: iconst_m1
     //   68: if_icmpne +5 -> 73
     //   71: aconst_null
@@ -136,8 +136,8 @@ public class ImageUtil
     //   74: iload_3
     //   75: if_icmple +108 -> 183
     //   78: aload 6
-    //   80: getstatic 103	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   83: putfield 106	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   80: getstatic 105	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   83: putfield 108	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   86: iload_2
     //   87: iload_1
     //   88: if_icmple +17 -> 105
@@ -147,37 +147,37 @@ public class ImageUtil
     //   96: iload_1
     //   97: iload_1
     //   98: imul
-    //   99: invokestatic 108	com/tencent/biz/common/util/ImageUtil:a	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   102: putfield 111	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   99: invokestatic 110	com/tencent/biz/common/util/ImageUtil:a	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   102: putfield 113	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   105: aload 6
     //   107: iconst_0
-    //   108: putfield 82	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   111: new 113	java/io/BufferedInputStream
+    //   108: putfield 84	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   111: new 115	java/io/BufferedInputStream
     //   114: dup
-    //   115: new 115	java/io/FileInputStream
+    //   115: new 117	java/io/FileInputStream
     //   118: dup
     //   119: aload_0
-    //   120: invokespecial 118	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   123: invokespecial 121	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   120: invokespecial 120	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   123: invokespecial 123	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   126: astore_0
     //   127: aload_0
     //   128: astore 4
     //   130: aload_0
     //   131: aconst_null
     //   132: aload 6
-    //   134: invokestatic 125	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   134: invokestatic 127	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   137: astore 5
     //   139: aload 5
     //   141: astore 4
     //   143: aload_0
     //   144: ifnull +7 -> 151
     //   147: aload_0
-    //   148: invokevirtual 128	java/io/BufferedInputStream:close	()V
+    //   148: invokevirtual 130	java/io/BufferedInputStream:close	()V
     //   151: aload 6
-    //   153: getfield 91	android/graphics/BitmapFactory$Options:outWidth	I
+    //   153: getfield 93	android/graphics/BitmapFactory$Options:outWidth	I
     //   156: istore_2
     //   157: aload 6
-    //   159: getfield 94	android/graphics/BitmapFactory$Options:outHeight	I
+    //   159: getfield 96	android/graphics/BitmapFactory$Options:outHeight	I
     //   162: istore_3
     //   163: iload_2
     //   164: iload_3
@@ -189,7 +189,7 @@ public class ImageUtil
     //   173: if_icmple -164 -> 9
     //   176: aload 4
     //   178: iload_1
-    //   179: invokestatic 130	com/tencent/biz/common/util/ImageUtil:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   179: invokestatic 132	com/tencent/biz/common/util/ImageUtil:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
     //   182: areturn
     //   183: iload_3
     //   184: istore_2
@@ -199,9 +199,9 @@ public class ImageUtil
     //   192: ifeq -41 -> 151
     //   195: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   198: iconst_2
-    //   199: ldc 132
+    //   199: ldc 134
     //   201: aload_0
-    //   202: invokestatic 135	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   202: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   205: goto -54 -> 151
     //   208: astore_0
     //   209: aconst_null
@@ -210,12 +210,12 @@ public class ImageUtil
     //   214: ifeq +12 -> 226
     //   217: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   220: iconst_2
-    //   221: ldc 62
-    //   223: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   221: ldc 136
+    //   223: invokestatic 139	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   226: aload_0
     //   227: ifnull +7 -> 234
     //   230: aload_0
-    //   231: invokevirtual 128	java/io/BufferedInputStream:close	()V
+    //   231: invokevirtual 130	java/io/BufferedInputStream:close	()V
     //   234: aconst_null
     //   235: areturn
     //   236: astore_0
@@ -223,9 +223,9 @@ public class ImageUtil
     //   240: ifeq -6 -> 234
     //   243: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   246: iconst_2
-    //   247: ldc 132
+    //   247: ldc 134
     //   249: aload_0
-    //   250: invokestatic 135	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   250: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   253: goto -19 -> 234
     //   256: astore 5
     //   258: aconst_null
@@ -238,13 +238,13 @@ public class ImageUtil
     //   270: astore 4
     //   272: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   275: iconst_2
-    //   276: ldc 137
+    //   276: ldc 141
     //   278: aload 5
-    //   280: invokestatic 135	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   280: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   283: aload_0
     //   284: ifnull +7 -> 291
     //   287: aload_0
-    //   288: invokevirtual 128	java/io/BufferedInputStream:close	()V
+    //   288: invokevirtual 130	java/io/BufferedInputStream:close	()V
     //   291: aconst_null
     //   292: areturn
     //   293: astore_0
@@ -252,9 +252,9 @@ public class ImageUtil
     //   297: ifeq -6 -> 291
     //   300: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   303: iconst_2
-    //   304: ldc 132
+    //   304: ldc 134
     //   306: aload_0
-    //   307: invokestatic 135	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   307: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   310: goto -19 -> 291
     //   313: astore_0
     //   314: aconst_null
@@ -262,7 +262,7 @@ public class ImageUtil
     //   317: aload 4
     //   319: ifnull +8 -> 327
     //   322: aload 4
-    //   324: invokevirtual 128	java/io/BufferedInputStream:close	()V
+    //   324: invokevirtual 130	java/io/BufferedInputStream:close	()V
     //   327: aload_0
     //   328: athrow
     //   329: astore 4
@@ -270,9 +270,9 @@ public class ImageUtil
     //   334: ifeq -7 -> 327
     //   337: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   340: iconst_2
-    //   341: ldc 132
+    //   341: ldc 134
     //   343: aload 4
-    //   345: invokestatic 135	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   345: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   348: goto -21 -> 327
     //   351: iload_3
     //   352: istore_2
@@ -338,78 +338,78 @@ public class ImageUtil
     //   0: aload_1
     //   1: ifnull +12 -> 13
     //   4: aload_1
-    //   5: ldc 167
-    //   7: invokevirtual 173	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   5: ldc 171
+    //   7: invokevirtual 177	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   10: ifeq +20 -> 30
     //   13: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   16: ifeq +12 -> 28
     //   19: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   22: iconst_2
-    //   23: ldc 175
-    //   25: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   23: ldc 179
+    //   25: invokestatic 182	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   28: aconst_null
     //   29: areturn
-    //   30: new 180	java/io/File
+    //   30: new 184	java/io/File
     //   33: dup
-    //   34: getstatic 185	com/tencent/mobileqq/app/AppConstants:aZ	Ljava/lang/String;
-    //   37: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
+    //   34: getstatic 189	com/tencent/mobileqq/app/AppConstants:ba	Ljava/lang/String;
+    //   37: invokespecial 190	java/io/File:<init>	(Ljava/lang/String;)V
     //   40: astore 4
     //   42: aload 4
-    //   44: invokevirtual 189	java/io/File:mkdirs	()Z
+    //   44: invokevirtual 193	java/io/File:mkdirs	()Z
     //   47: pop
     //   48: aload 4
-    //   50: invokevirtual 192	java/io/File:canWrite	()Z
+    //   50: invokevirtual 196	java/io/File:canWrite	()Z
     //   53: ifne +20 -> 73
     //   56: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   59: ifeq -31 -> 28
     //   62: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   65: iconst_2
-    //   66: ldc 194
-    //   68: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   66: ldc 198
+    //   68: invokestatic 182	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   71: aconst_null
     //   72: areturn
-    //   73: new 196	java/lang/StringBuilder
+    //   73: new 200	java/lang/StringBuilder
     //   76: dup
-    //   77: invokespecial 197	java/lang/StringBuilder:<init>	()V
-    //   80: getstatic 185	com/tencent/mobileqq/app/AppConstants:aZ	Ljava/lang/String;
-    //   83: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: invokespecial 201	java/lang/StringBuilder:<init>	()V
+    //   80: getstatic 189	com/tencent/mobileqq/app/AppConstants:ba	Ljava/lang/String;
+    //   83: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: aload_1
-    //   87: invokestatic 207	com/tencent/mobileqq/transfile/AbsDownloader:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   90: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 211	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokestatic 211	com/tencent/mobileqq/transfile/AbsDownloader:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   90: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   96: astore 4
-    //   98: new 180	java/io/File
+    //   98: new 184	java/io/File
     //   101: dup
     //   102: aload 4
-    //   104: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
+    //   104: invokespecial 190	java/io/File:<init>	(Ljava/lang/String;)V
     //   107: astore 5
     //   109: aload 5
-    //   111: invokevirtual 214	java/io/File:exists	()Z
+    //   111: invokevirtual 218	java/io/File:exists	()Z
     //   114: ifeq +6 -> 120
     //   117: aload 4
     //   119: areturn
     //   120: aload_1
-    //   121: ldc 216
-    //   123: invokevirtual 220	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   121: ldc 220
+    //   123: invokevirtual 224	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   126: ifeq +99 -> 225
     //   129: aload_1
     //   130: bipush 44
-    //   132: invokevirtual 224	java/lang/String:indexOf	(I)I
+    //   132: invokevirtual 228	java/lang/String:indexOf	(I)I
     //   135: istore_3
     //   136: iload_3
     //   137: ifle +206 -> 343
     //   140: aload_1
     //   141: iconst_0
     //   142: iload_3
-    //   143: invokevirtual 228	java/lang/String:substring	(II)Ljava/lang/String;
-    //   146: ldc 230
-    //   148: invokevirtual 233	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   143: invokevirtual 232	java/lang/String:substring	(II)Ljava/lang/String;
+    //   146: ldc 234
+    //   148: invokevirtual 237	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   151: ifeq +192 -> 343
     //   154: aload_1
     //   155: iload_3
-    //   156: invokevirtual 236	java/lang/String:substring	(I)Ljava/lang/String;
+    //   156: invokevirtual 240	java/lang/String:substring	(I)Ljava/lang/String;
     //   159: iconst_0
-    //   160: invokestatic 242	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
+    //   160: invokestatic 246	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
     //   163: astore_0
     //   164: aload_0
     //   165: astore_1
@@ -419,8 +419,8 @@ public class ImageUtil
     //   173: ifeq -145 -> 28
     //   176: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   179: iconst_2
-    //   180: ldc 244
-    //   182: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   180: ldc 248
+    //   182: invokestatic 182	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   185: aconst_null
     //   186: areturn
     //   187: astore_0
@@ -428,44 +428,44 @@ public class ImageUtil
     //   191: ifeq -163 -> 28
     //   194: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   197: iconst_2
-    //   198: new 196	java/lang/StringBuilder
+    //   198: new 200	java/lang/StringBuilder
     //   201: dup
-    //   202: invokespecial 197	java/lang/StringBuilder:<init>	()V
-    //   205: ldc 246
-    //   207: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   202: invokespecial 201	java/lang/StringBuilder:<init>	()V
+    //   205: ldc 250
+    //   207: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   210: aload_0
-    //   211: invokevirtual 247	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   214: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: invokevirtual 211	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   220: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   211: invokevirtual 251	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
+    //   214: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   220: invokestatic 182	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   223: aconst_null
     //   224: areturn
     //   225: aload_0
     //   226: aload_1
-    //   227: ldc 249
+    //   227: ldc 253
     //   229: aconst_null
     //   230: aload_2
-    //   231: invokestatic 254	com/tencent/biz/common/util/HttpUtil:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)[B
+    //   231: invokestatic 258	com/tencent/biz/common/util/HttpUtil:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)[B
     //   234: astore_0
     //   235: goto -71 -> 164
     //   238: astore_0
     //   239: aconst_null
     //   240: astore_1
     //   241: goto -75 -> 166
-    //   244: new 256	java/io/FileOutputStream
+    //   244: new 260	java/io/FileOutputStream
     //   247: dup
     //   248: aload 5
-    //   250: invokespecial 259	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   250: invokespecial 263	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   253: astore_2
     //   254: aload_2
     //   255: astore_0
     //   256: aload_2
     //   257: aload_1
-    //   258: invokevirtual 263	java/io/FileOutputStream:write	([B)V
+    //   258: invokevirtual 267	java/io/FileOutputStream:write	([B)V
     //   261: aload_2
     //   262: ifnull +7 -> 269
     //   265: aload_2
-    //   266: invokevirtual 264	java/io/FileOutputStream:close	()V
+    //   266: invokevirtual 268	java/io/FileOutputStream:close	()V
     //   269: aload 4
     //   271: areturn
     //   272: astore_0
@@ -479,12 +479,12 @@ public class ImageUtil
     //   284: astore_0
     //   285: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   288: iconst_2
-    //   289: ldc_w 266
-    //   292: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   289: ldc_w 270
+    //   292: invokestatic 182	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   295: aload_1
     //   296: ifnull -268 -> 28
     //   299: aload_1
-    //   300: invokevirtual 264	java/io/FileOutputStream:close	()V
+    //   300: invokevirtual 268	java/io/FileOutputStream:close	()V
     //   303: aconst_null
     //   304: areturn
     //   305: astore_0
@@ -496,7 +496,7 @@ public class ImageUtil
     //   311: aload_1
     //   312: ifnull +7 -> 319
     //   315: aload_1
-    //   316: invokevirtual 264	java/io/FileOutputStream:close	()V
+    //   316: invokevirtual 268	java/io/FileOutputStream:close	()V
     //   319: aload_0
     //   320: athrow
     //   321: astore_0
@@ -552,20 +552,20 @@ public class ImageUtil
   public static String a(Bitmap paramBitmap)
   {
     // Byte code:
-    //   0: getstatic 269	com/tencent/biz/common/util/ImageUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3: invokestatic 75	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   0: getstatic 273	com/tencent/biz/common/util/ImageUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   3: invokestatic 77	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: ifeq +12 -> 18
-    //   9: invokestatic 275	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   12: invokevirtual 276	java/io/File:toString	()Ljava/lang/String;
-    //   15: putstatic 269	com/tencent/biz/common/util/ImageUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   18: new 196	java/lang/StringBuilder
+    //   9: invokestatic 279	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   12: invokevirtual 280	java/io/File:toString	()Ljava/lang/String;
+    //   15: putstatic 273	com/tencent/biz/common/util/ImageUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   18: new 200	java/lang/StringBuilder
     //   21: dup
-    //   22: invokespecial 197	java/lang/StringBuilder:<init>	()V
-    //   25: getstatic 269	com/tencent/biz/common/util/ImageUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   28: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: ldc_w 278
-    //   34: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: invokevirtual 211	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   22: invokespecial 201	java/lang/StringBuilder:<init>	()V
+    //   25: getstatic 273	com/tencent/biz/common/util/ImageUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   28: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: ldc_w 282
+    //   34: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   40: astore 4
     //   42: aconst_null
     //   43: astore_2
@@ -573,62 +573,62 @@ public class ImageUtil
     //   45: astore_3
     //   46: aload_2
     //   47: astore_1
-    //   48: new 180	java/io/File
+    //   48: new 184	java/io/File
     //   51: dup
     //   52: aload 4
-    //   54: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
+    //   54: invokespecial 190	java/io/File:<init>	(Ljava/lang/String;)V
     //   57: astore 5
     //   59: aload_2
     //   60: astore_1
     //   61: aload 5
-    //   63: invokevirtual 214	java/io/File:exists	()Z
+    //   63: invokevirtual 218	java/io/File:exists	()Z
     //   66: ifne +11 -> 77
     //   69: aload_2
     //   70: astore_1
     //   71: aload 5
-    //   73: invokevirtual 281	java/io/File:mkdir	()Z
+    //   73: invokevirtual 285	java/io/File:mkdir	()Z
     //   76: pop
     //   77: aload_2
     //   78: astore_1
     //   79: aload_0
-    //   80: invokestatic 284	com/tencent/biz/common/util/ImageUtil:a	(Landroid/graphics/Bitmap;)[B
-    //   83: invokestatic 290	com/tencent/qphone/base/util/MD5:toMD5	([B)Ljava/lang/String;
+    //   80: invokestatic 288	com/tencent/biz/common/util/ImageUtil:a	(Landroid/graphics/Bitmap;)[B
+    //   83: invokestatic 294	com/tencent/qphone/base/util/MD5:toMD5	([B)Ljava/lang/String;
     //   86: astore 5
     //   88: aload_2
     //   89: astore_1
-    //   90: new 196	java/lang/StringBuilder
+    //   90: new 200	java/lang/StringBuilder
     //   93: dup
-    //   94: invokespecial 197	java/lang/StringBuilder:<init>	()V
-    //   97: ldc_w 292
-    //   100: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: invokespecial 201	java/lang/StringBuilder:<init>	()V
+    //   97: ldc_w 296
+    //   100: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: aload 5
-    //   105: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: ldc_w 294
-    //   111: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: invokevirtual 211	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   105: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: ldc_w 298
+    //   111: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   117: astore 5
     //   119: aload_2
     //   120: astore_1
-    //   121: new 196	java/lang/StringBuilder
+    //   121: new 200	java/lang/StringBuilder
     //   124: dup
-    //   125: invokespecial 197	java/lang/StringBuilder:<init>	()V
+    //   125: invokespecial 201	java/lang/StringBuilder:<init>	()V
     //   128: aload 4
-    //   130: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   133: aload 5
-    //   135: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: invokevirtual 211	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   141: astore 4
     //   143: aload_2
     //   144: astore_1
-    //   145: new 180	java/io/File
+    //   145: new 184	java/io/File
     //   148: dup
     //   149: aload 4
-    //   151: invokespecial 186	java/io/File:<init>	(Ljava/lang/String;)V
+    //   151: invokespecial 190	java/io/File:<init>	(Ljava/lang/String;)V
     //   154: astore 5
     //   156: aload_2
     //   157: astore_1
     //   158: aload 5
-    //   160: invokevirtual 214	java/io/File:exists	()Z
+    //   160: invokevirtual 218	java/io/File:exists	()Z
     //   163: ifeq +105 -> 268
     //   166: aload_2
     //   167: astore_1
@@ -638,8 +638,8 @@ public class ImageUtil
     //   175: astore_1
     //   176: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   179: iconst_2
-    //   180: ldc_w 296
-    //   183: invokestatic 299	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   180: ldc_w 300
+    //   183: invokestatic 303	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   186: aload_2
     //   187: astore_1
     //   188: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -648,23 +648,23 @@ public class ImageUtil
     //   195: astore_1
     //   196: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   199: iconst_2
-    //   200: new 196	java/lang/StringBuilder
+    //   200: new 200	java/lang/StringBuilder
     //   203: dup
-    //   204: invokespecial 197	java/lang/StringBuilder:<init>	()V
-    //   207: ldc_w 301
-    //   210: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: invokespecial 201	java/lang/StringBuilder:<init>	()V
+    //   207: ldc_w 305
+    //   210: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   213: aload 5
-    //   215: invokevirtual 305	java/io/File:length	()J
-    //   218: invokevirtual 308	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   221: invokevirtual 211	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   224: invokestatic 299	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   215: invokevirtual 309	java/io/File:length	()J
+    //   218: invokevirtual 312	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   221: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   224: invokestatic 303	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   227: aload 4
     //   229: astore_1
     //   230: iconst_0
     //   231: ifeq +11 -> 242
-    //   234: new 310	java/lang/NullPointerException
+    //   234: new 314	java/lang/NullPointerException
     //   237: dup
-    //   238: invokespecial 311	java/lang/NullPointerException:<init>	()V
+    //   238: invokespecial 315	java/lang/NullPointerException:<init>	()V
     //   241: athrow
     //   242: aload_1
     //   243: areturn
@@ -675,9 +675,9 @@ public class ImageUtil
     //   251: ifeq -9 -> 242
     //   254: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   257: iconst_2
-    //   258: ldc_w 313
+    //   258: ldc_w 317
     //   261: aload_0
-    //   262: invokestatic 135	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   262: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   265: aload 4
     //   267: areturn
     //   268: aload_2
@@ -688,46 +688,46 @@ public class ImageUtil
     //   277: astore_1
     //   278: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   281: iconst_2
-    //   282: ldc_w 315
-    //   285: invokestatic 299	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   282: ldc_w 319
+    //   285: invokestatic 303	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   288: aload_2
     //   289: astore_1
-    //   290: new 317	java/io/BufferedOutputStream
+    //   290: new 321	java/io/BufferedOutputStream
     //   293: dup
-    //   294: new 256	java/io/FileOutputStream
+    //   294: new 260	java/io/FileOutputStream
     //   297: dup
     //   298: aload 5
-    //   300: invokespecial 259	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   303: invokespecial 320	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   300: invokespecial 263	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   303: invokespecial 324	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   306: astore_2
     //   307: aload_0
-    //   308: getstatic 326	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   308: getstatic 330	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   311: bipush 100
     //   313: aload_2
-    //   314: invokevirtual 330	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   314: invokevirtual 334	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   317: pop
     //   318: aload_2
-    //   319: invokevirtual 333	java/io/BufferedOutputStream:flush	()V
+    //   319: invokevirtual 337	java/io/BufferedOutputStream:flush	()V
     //   322: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   325: ifeq +34 -> 359
     //   328: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   331: iconst_2
-    //   332: new 196	java/lang/StringBuilder
+    //   332: new 200	java/lang/StringBuilder
     //   335: dup
-    //   336: invokespecial 197	java/lang/StringBuilder:<init>	()V
-    //   339: ldc_w 301
-    //   342: invokevirtual 201	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   336: invokespecial 201	java/lang/StringBuilder:<init>	()V
+    //   339: ldc_w 305
+    //   342: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   345: aload 5
-    //   347: invokevirtual 305	java/io/File:length	()J
-    //   350: invokevirtual 308	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   353: invokevirtual 211	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   356: invokestatic 299	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   347: invokevirtual 309	java/io/File:length	()J
+    //   350: invokevirtual 312	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   353: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   356: invokestatic 303	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   359: aload 4
     //   361: astore_1
     //   362: aload_2
     //   363: ifnull -121 -> 242
     //   366: aload_2
-    //   367: invokevirtual 334	java/io/BufferedOutputStream:close	()V
+    //   367: invokevirtual 338	java/io/BufferedOutputStream:close	()V
     //   370: aload 4
     //   372: areturn
     //   373: astore_0
@@ -737,9 +737,9 @@ public class ImageUtil
     //   380: ifeq -138 -> 242
     //   383: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   386: iconst_2
-    //   387: ldc_w 313
+    //   387: ldc_w 317
     //   390: aload_0
-    //   391: invokestatic 135	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   391: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   394: aload 4
     //   396: areturn
     //   397: astore_2
@@ -753,18 +753,18 @@ public class ImageUtil
     //   409: astore_1
     //   410: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   413: iconst_2
-    //   414: ldc_w 336
+    //   414: ldc_w 340
     //   417: aload_2
-    //   418: invokestatic 135	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   421: ldc 167
+    //   418: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   421: ldc 171
     //   423: astore_2
     //   424: aload_2
     //   425: astore_1
     //   426: aload_0
     //   427: ifnull -185 -> 242
     //   430: aload_0
-    //   431: invokevirtual 334	java/io/BufferedOutputStream:close	()V
-    //   434: ldc 167
+    //   431: invokevirtual 338	java/io/BufferedOutputStream:close	()V
+    //   434: ldc 171
     //   436: areturn
     //   437: astore_0
     //   438: aload_2
@@ -773,16 +773,16 @@ public class ImageUtil
     //   443: ifeq -201 -> 242
     //   446: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   449: iconst_2
-    //   450: ldc_w 313
+    //   450: ldc_w 317
     //   453: aload_0
-    //   454: invokestatic 135	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   457: ldc 167
+    //   454: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   457: ldc 171
     //   459: areturn
     //   460: astore_0
     //   461: aload_1
     //   462: ifnull +7 -> 469
     //   465: aload_1
-    //   466: invokevirtual 334	java/io/BufferedOutputStream:close	()V
+    //   466: invokevirtual 338	java/io/BufferedOutputStream:close	()V
     //   469: aload_0
     //   470: athrow
     //   471: astore_1
@@ -790,9 +790,9 @@ public class ImageUtil
     //   475: ifeq -6 -> 469
     //   478: getstatic 18	com/tencent/biz/common/util/ImageUtil:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   481: iconst_2
-    //   482: ldc_w 313
+    //   482: ldc_w 317
     //   485: aload_1
-    //   486: invokestatic 135	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   486: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   489: goto -20 -> 469
     //   492: astore_0
     //   493: aload_2

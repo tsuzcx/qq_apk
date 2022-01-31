@@ -31,10 +31,10 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import kio;
-import kip;
-import kis;
-import kit;
+import kkv;
+import kkw;
+import kkz;
+import kla;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
@@ -1076,7 +1076,7 @@ public class AuthorizeConfig
   
   protected void a()
   {
-    ThreadManager.executeOnSubThread(new kio(this));
+    ThreadManager.executeOnSubThread(new kkv(this));
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
@@ -1094,7 +1094,7 @@ public class AuthorizeConfig
     {
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
       localEditor.putLong("lastUpdate", System.currentTimeMillis());
-      localEditor.putString("qqVersion", "2013 7.6.3");
+      localEditor.putString("qqVersion", "2013 7.6.8");
       localEditor.putString(paramString3, paramString2);
       if (QLog.isColorLevel()) {
         QLog.d("AuthorizeConfig", 2, "White list update completed as version=" + paramString2);
@@ -1228,7 +1228,7 @@ public class AuthorizeConfig
     if (b())
     {
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
-      ThreadManager.executeOnNetWorkThread(new kip(this, paramBoolean));
+      ThreadManager.executeOnNetWorkThread(new kkw(this, paramBoolean));
       return true;
     }
     return false;
@@ -1842,7 +1842,7 @@ public class AuthorizeConfig
         arrayOfString[j] = String.format("(%d)%s", new Object[] { Integer.valueOf(134217728), (String)((Iterator)localObject2).next() });
         j += 1;
       }
-      localObject1 = new kis(this, localTicketManager, ((AppRuntime)localObject1).getAccount(), arrayOfString);
+      localObject1 = new kkz(this, localTicketManager, ((AppRuntime)localObject1).getAccount(), arrayOfString);
       if (Looper.myLooper() != Looper.getMainLooper())
       {
         ((Runnable)localObject1).run();
@@ -1967,7 +1967,7 @@ public class AuthorizeConfig
         return;
       }
       this.jdField_c_of_type_Long = l;
-      ThreadManager.post(new kit(this), 5, null, false);
+      ThreadManager.post(new kla(this), 5, null, false);
       return;
     }
     finally {}

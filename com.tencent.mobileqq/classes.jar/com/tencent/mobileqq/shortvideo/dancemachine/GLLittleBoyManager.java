@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import aiaj;
-import aiak;
-import aial;
-import aiam;
+import aifb;
+import aifc;
+import aifd;
+import aife;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -31,7 +31,7 @@ public class GLLittleBoyManager
   private GLViewContext jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Comparator jdField_a_of_type_JavaUtilComparator = new aiam(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new aife(this);
   private TreeSet jdField_a_of_type_JavaUtilTreeSet;
   private boolean jdField_a_of_type_Boolean;
   private RectF[] jdField_a_of_type_ArrayOfAndroidGraphicsRectF = new RectF[2];
@@ -64,7 +64,7 @@ public class GLLittleBoyManager
     paramGLLittleBoy.setFillEnabled(true);
     paramGLLittleBoy.setFillAfter(true);
     paramGLLittleBoy.setInterpolator(new LinearInterpolator());
-    paramGLLittleBoy.setAnimationListener(new aiaj(this));
+    paramGLLittleBoy.setAnimationListener(new aifb(this));
     return paramGLLittleBoy;
   }
   
@@ -116,7 +116,7 @@ public class GLLittleBoyManager
     if (paramGLLittleBoy.e) {
       throw new RuntimeException("状态错误,消失动画的对象是有效对象");
     }
-    paramGLLittleBoy.h_(false);
+    paramGLLittleBoy.f_(false);
     paramGLLittleBoy.e();
     paramGLLittleBoy.d();
     this.jdField_b_of_type_JavaUtilArrayList.add(paramGLLittleBoy);
@@ -154,7 +154,7 @@ public class GLLittleBoyManager
     localAnimationSet.setFillAfter(true);
     localAnimationSet.setDuration(160L);
     localAnimationSet.setInterpolator(new LinearInterpolator());
-    localAnimationSet.setAnimationListener(new aiak(this));
+    localAnimationSet.setAnimationListener(new aifc(this));
     return localAnimationSet;
   }
   
@@ -310,7 +310,7 @@ public class GLLittleBoyManager
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillEnabled(true);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new aial(this));
+    localAnimationSet.setAnimationListener(new aifd(this));
     return localAnimationSet;
   }
   
@@ -433,7 +433,7 @@ public class GLLittleBoyManager
         localObject = this.jdField_a_of_type_ArrayOfAndroidGraphicsRectF[i];
         localGLLittleBoy.b((RectF)localObject);
         localGLLittleBoy.d((RectF)localObject);
-        localGLLittleBoy.h_(true);
+        localGLLittleBoy.f_(true);
         localGLLittleBoy.a(a(localGLLittleBoy, localDancePosture.jdField_b_of_type_Double));
         this.jdField_a_of_type_JavaUtilArrayList.add(localGLLittleBoy);
         localDancePosture.jdField_a_of_type_Boolean = true;

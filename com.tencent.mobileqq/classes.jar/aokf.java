@@ -1,19 +1,19 @@
-import android.os.Message;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
 
 public class aokf
-  extends MqqHandler
+  implements FMDialogUtil.FMDialogInterface
 {
-  public aokf(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aokf(EditTextPanel paramEditTextPanel, DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean, EditTextPanel.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel));
   }
+  
+  public void b() {}
 }
 
 

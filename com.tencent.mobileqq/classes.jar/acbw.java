@@ -1,39 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.ApolloGameManager;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
-class acbw
-  implements Runnable
+public class acbw
+  implements View.OnClickListener
 {
-  acbw(acbg paramacbg, String paramString, Bundle paramBundle, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
+  public acbw(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appId))
     {
-      Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString).getJSONArray("gameList");
-      ArrayList localArrayList = new ArrayList();
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-      {
-        int i = 0;
-        while (i < ((JSONArray)localObject).length())
-        {
-          localArrayList.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
-          i += 1;
-        }
-        localObject = new acbx(this);
-        ApolloGameManager localApolloGameManager = (ApolloGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(210);
-        localApolloGameManager.a = new WeakReference(localObject);
-        localApolloGameManager.a("android.web", "apollo_aio_game.add_games_to_user_gamepanel", localArrayList);
-      }
-      return;
+      MessageForArkApp.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
+      ArkAppDataReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appName, "AIOArkSdkTailClick", 1, 0, 0L, 0L, 0L, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.appView, "");
     }
-    catch (Exception localException) {}
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.widget.itemtouchhelper;
 
-import amet;
-import ameu;
-import amev;
-import amew;
-import amex;
-import amfa;
-import amfb;
+import ammd;
+import amme;
+import ammf;
+import ammg;
+import ammh;
+import ammk;
+import amml;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -38,7 +38,7 @@ public class ItemTouchHelper
   private long jdField_a_of_type_Long;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private RecyclerView.ChildDrawingOrderCallback jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ChildDrawingOrderCallback;
-  private final RecyclerView.OnItemTouchListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnItemTouchListener = new ameu(this);
+  private final RecyclerView.OnItemTouchListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnItemTouchListener = new amme(this);
   public RecyclerView.ViewHolder a;
   public RecyclerView a;
   public VelocityTracker a;
@@ -68,7 +68,7 @@ public class ItemTouchHelper
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = null;
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangRunnable = new amet(this);
+    this.jdField_a_of_type_JavaLangRunnable = new ammd(this);
     this.jdField_a_of_type_AndroidViewView = null;
     this.jdField_d_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback = paramCallback;
@@ -325,8 +325,8 @@ public class ItemTouchHelper
     int i = this.jdField_b_of_type_JavaUtilList.size() - 1;
     while (i >= 0)
     {
-      amfb localamfb = (amfb)this.jdField_b_of_type_JavaUtilList.get(0);
-      this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, localamfb.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+      amml localamml = (amml)this.jdField_b_of_type_JavaUtilList.get(0);
+      this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, localamml.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
       i -= 1;
     }
     this.jdField_b_of_type_JavaUtilList.clear();
@@ -340,7 +340,7 @@ public class ItemTouchHelper
     if (this.jdField_a_of_type_ComTencentWidgetItemtouchhelperGestureDetectorCompat != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetItemtouchhelperGestureDetectorCompat = new GestureDetectorCompat(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), new amfa(this));
+    this.jdField_a_of_type_ComTencentWidgetItemtouchhelperGestureDetectorCompat = new GestureDetectorCompat(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getContext(), new ammk(this));
   }
   
   private void e()
@@ -358,7 +358,7 @@ public class ItemTouchHelper
       return;
     }
     if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ChildDrawingOrderCallback == null) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ChildDrawingOrderCallback = new amex(this);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ChildDrawingOrderCallback = new ammh(this);
     }
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setChildDrawingOrderCallback(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ChildDrawingOrderCallback);
   }
@@ -368,22 +368,22 @@ public class ItemTouchHelper
     int i = this.jdField_b_of_type_JavaUtilList.size() - 1;
     while (i >= 0)
     {
-      amfb localamfb = (amfb)this.jdField_b_of_type_JavaUtilList.get(i);
-      if (localamfb.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == paramViewHolder)
+      amml localamml = (amml)this.jdField_b_of_type_JavaUtilList.get(i);
+      if (localamml.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == paramViewHolder)
       {
-        localamfb.jdField_b_of_type_Boolean |= paramBoolean;
-        if (!localamfb.jdField_c_of_type_Boolean) {
-          localamfb.b();
+        localamml.jdField_b_of_type_Boolean |= paramBoolean;
+        if (!localamml.jdField_c_of_type_Boolean) {
+          localamml.b();
         }
         this.jdField_b_of_type_JavaUtilList.remove(i);
-        return localamfb.jdField_c_of_type_Int;
+        return localamml.jdField_c_of_type_Int;
       }
       i -= 1;
     }
     return 0;
   }
   
-  public amfb a(MotionEvent paramMotionEvent)
+  public amml a(MotionEvent paramMotionEvent)
   {
     if (this.jdField_b_of_type_JavaUtilList.isEmpty())
     {
@@ -397,9 +397,9 @@ public class ItemTouchHelper
       if (i < 0) {
         break label74;
       }
-      amfb localamfb = (amfb)this.jdField_b_of_type_JavaUtilList.get(i);
-      paramMotionEvent = localamfb;
-      if (localamfb.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView == localView) {
+      amml localamml = (amml)this.jdField_b_of_type_JavaUtilList.get(i);
+      paramMotionEvent = localamml;
+      if (localamml.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView == localView) {
         break;
       }
       i -= 1;
@@ -422,7 +422,7 @@ public class ItemTouchHelper
     int i = this.jdField_b_of_type_JavaUtilList.size() - 1;
     while (i >= 0)
     {
-      paramMotionEvent = (amfb)this.jdField_b_of_type_JavaUtilList.get(i);
+      paramMotionEvent = (amml)this.jdField_b_of_type_JavaUtilList.get(i);
       View localView = paramMotionEvent.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView;
       if (a(localView, f1, f2, paramMotionEvent.jdField_e_of_type_Float, paramMotionEvent.f)) {
         return localView;
@@ -440,9 +440,9 @@ public class ItemTouchHelper
     this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
   }
   
-  public void a(amfb paramamfb, int paramInt)
+  public void a(amml paramamml, int paramInt)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new amew(this, paramamfb, paramInt));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new ammg(this, paramamml, paramInt));
   }
   
   public void a(RecyclerView.ViewHolder paramViewHolder)
@@ -531,10 +531,10 @@ public class ItemTouchHelper
           a(this.jdField_a_of_type_ArrayOfFloat);
           float f3 = this.jdField_a_of_type_ArrayOfFloat[0];
           float f4 = this.jdField_a_of_type_ArrayOfFloat[1];
-          localObject = new amev(this, (RecyclerView.ViewHolder)localObject, i, k, f3, f4, f1, f2, j, (RecyclerView.ViewHolder)localObject);
-          ((amfb)localObject).a(this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, i, f1 - f3, f2 - f4));
+          localObject = new ammf(this, (RecyclerView.ViewHolder)localObject, i, k, f3, f4, f1, f2, j, (RecyclerView.ViewHolder)localObject);
+          ((amml)localObject).a(this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, i, f1 - f3, f2 - f4));
           this.jdField_b_of_type_JavaUtilList.add(localObject);
-          ((amfb)localObject).a();
+          ((amml)localObject).a();
           i = 1;
           this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = null;
           if (paramViewHolder != null)
@@ -645,7 +645,7 @@ public class ItemTouchHelper
     int i = 0;
     while (i < j)
     {
-      if (!((amfb)this.jdField_b_of_type_JavaUtilList.get(i)).jdField_c_of_type_Boolean) {
+      if (!((amml)this.jdField_b_of_type_JavaUtilList.get(i)).jdField_c_of_type_Boolean) {
         return true;
       }
       i += 1;

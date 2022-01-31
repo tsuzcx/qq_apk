@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.image.URLDrawable;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import com.tencent.image.URLDrawableHandler;
 
 public class muj
-  implements DialogInterface.OnClickListener
+  implements URLDrawableHandler
 {
-  public muj(GalleryShareHelper paramGalleryShareHelper, URLDrawable paramURLDrawable, String paramString) {}
+  public muj(RunningJob paramRunningJob) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

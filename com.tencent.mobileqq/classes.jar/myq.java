@@ -1,31 +1,22 @@
-import com.tencent.biz.pubaccount.PublicAccountArticleHandler;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.PhotoCollectionInfo;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.biz.pubaccount.util.ProfileParams.Builder;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
-public class myq
-  implements Runnable
+public final class myq
+  implements Parcelable.Creator
 {
-  public myq(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public void run()
+  public ProfileParams a(Parcel paramParcel)
   {
-    PublicAccountImageCollectionMainActivity.a(this.a).c(this.a.b);
-    PublicAccountImageCollectionMainActivity.a(this.a).e(this.a.b);
-    PublicAccountImageCollectionMainActivity.a(this.a).b(this.a.b);
-    PublicAccountImageCollectionMainActivity.a(this.a).d(this.a.b);
-    if (PublicAccountImageCollectionMainActivity.c(this.a))
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a).a(this.a.b, PublicAccountImageCollectionMainActivity.a(this.a), PublicAccountImageCollectionMainActivity.e(this.a), PublicAccountImageCollectionMainActivity.f(this.a));
-      return;
-    }
-    if ((PublicAccountImageCollectionMainActivity.a(this.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a).a != null)) {}
-    for (int i = PublicAccountImageCollectionMainActivity.a(this.a).a.size();; i = 0)
-    {
-      PublicAccountReportUtils.a(null, this.a.a, "0X8007B8A", "0X8007B8A", 0, 0, this.a.b, this.a.c, "" + PublicAccountImageCollectionMainActivity.b(this.a, PublicAccountImageCollectionMainActivity.a(this.a)), "" + i, false);
-      return;
-    }
+    ProfileParams.Builder localBuilder = new ProfileParams.Builder();
+    localBuilder.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
+    return localBuilder.a();
+  }
+  
+  public ProfileParams[] a(int paramInt)
+  {
+    return new ProfileParams[paramInt];
   }
 }
 

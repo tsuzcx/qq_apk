@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="100.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26c1" android:layout_width="100.0dip" android:layout_height="100.0dip" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26c2" android:visibility="gone" android:layout_width="23.0dip" android:layout_height="23.0dip" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26c3" android:background="#e5808080" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26c4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0210e8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26c5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021656" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <dov.com.qq.im.capture.view.QIMCommonLoadingView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a068f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

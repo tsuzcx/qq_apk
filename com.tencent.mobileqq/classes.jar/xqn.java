@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.activity.qwallet.QWalletCameraInterface;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.recent.RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder;
 
 public class xqn
-  implements QWalletCameraInterface
+  extends RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder
 {
-  public xqn(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List paramList)
-  {
-    if ((this.a.F) && (paramInt1 > 0)) {
-      NewFlowCameraActivity.d = true;
-    }
-  }
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

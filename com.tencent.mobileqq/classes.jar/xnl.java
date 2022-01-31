@@ -1,36 +1,22 @@
-import android.view.MotionEvent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.TextUrlClickListener;
 
-public class xnl
-  implements View.OnTouchListener
+public final class xnl
+  extends ClickableSpan
 {
-  public xnl(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public xnl(QWalletTools.TextUrlClickListener paramTextUrlClickListener, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (EditLocalVideoActivity.a(this.a).isPlaying()) {
-        if (EditLocalVideoActivity.a(this.a))
-        {
-          EditLocalVideoActivity.c(this.a, false);
-          EditLocalVideoActivity.a(this.a).pause();
-          EditLocalVideoActivity.b(this.a).setVisibility(0);
-        }
-      }
-      while (!EditLocalVideoActivity.a(this.a)) {
-        return true;
-      }
-      EditLocalVideoActivity.a(this.a).start();
-      EditLocalVideoActivity.c(this.a, true);
-      EditLocalVideoActivity.b(this.a).setVisibility(4);
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletUtilsQWalletTools$TextUrlClickListener.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

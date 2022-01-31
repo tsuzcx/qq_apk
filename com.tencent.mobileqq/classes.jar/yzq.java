@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class yzq
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public yzq(ChatApolloViewListener paramChatApolloViewListener) {}
+  public yzq(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.a) && (!this.a.b))
-    {
-      this.a.c();
-      this.a.a = false;
-    }
+    ApolloGameActivity.a(this.a).setVisibility(4);
+    ApolloGameActivity.a(this.a);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

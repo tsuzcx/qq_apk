@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import adtj;
-import adtk;
+import aebs;
+import aebt;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -27,7 +27,7 @@ public class GVideoWebPlugin
   
   public GVideoWebPlugin()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adtk(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aebt(this);
     this.mPluginNameSpace = "groupVideo";
   }
   
@@ -77,7 +77,7 @@ public class GVideoWebPlugin
         paramVarArgs = ((JSONObject)localObject).optString("openType");
         localObject = ((JSONObject)localObject).optString("extra");
         this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramJsBridgeListener, i, paramString3, paramString1, paramString2, paramVarArgs, (String)localObject);
-        GroupVideoManager.a("group_video", new adtj(this, paramString3));
+        GroupVideoManager.a("group_video", new aebs(this, paramString3));
       }
     }
     catch (Exception paramJsBridgeListener)

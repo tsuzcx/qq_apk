@@ -1,12 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.widget.SwipListView;
 
-public class lif
-  implements IHttpCommunicatorFlowCount
+class lif
+  implements View.OnClickListener
 {
-  public lif(ReadInJoyVideoDownloadManager paramReadInJoyVideoDownloadManager) {}
+  lif(lie paramlie, View paramView) {}
   
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public void onClick(View paramView)
+  {
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lie.a).a(this.jdField_a_of_type_AndroidViewView);
+  }
 }
 
 

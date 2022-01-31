@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.qq.im.poi.LbsPackSendActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.qq.im.poi.LbsPackPoiListAdapter;
+import com.qq.im.poi.LbsPackPoiListAdapter.onClickListener;
+import com.qq.im.poi.PoiInfo;
 
 public class anu
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public anu(LbsPackSendActivity paramLbsPackSendActivity, QQCustomDialog paramQQCustomDialog) {}
+  public anu(LbsPackPoiListAdapter paramLbsPackPoiListAdapter, PoiInfo paramPoiInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter.a != null) {
+      this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter.a.a(this.jdField_a_of_type_ComQqImPoiPoiInfo);
+    }
   }
 }
 

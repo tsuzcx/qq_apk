@@ -1,60 +1,23 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.QzonePreDownloadManager;
-import java.util.Vector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.jtcode.JtcodePluginInstallActivity;
 
 public class amtb
-  implements Downloader.DownloadListener
+  extends BroadcastReceiver
 {
-  public amtb(QzonePreDownloadManager paramQzonePreDownloadManager, amtc paramamtc) {}
+  private amtb(JtcodePluginInstallActivity paramJtcodePluginInstallActivity) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, false);
-    if (QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).size() > 0)
-    {
-      amtc localamtc = (amtc)QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).get(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).remove(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, localamtc);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("JtcodePluginInstallActivity", 4, "JtcodePluginOnResumeReceiver->onReceive, intent:" + paramIntent);
     }
-    if (this.jdField_a_of_type_Amtc.a != null) {
-      this.jdField_a_of_type_Amtc.a.onDownloadCanceled(paramString);
+    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
+      return;
     }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, false);
-    if (QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).size() > 0)
-    {
-      amtc localamtc = (amtc)QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).get(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).remove(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, localamtc);
-    }
-    if (this.jdField_a_of_type_Amtc.a != null) {
-      this.jdField_a_of_type_Amtc.a.onDownloadFailed(paramString, paramDownloadResult);
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    if (this.jdField_a_of_type_Amtc.a != null) {
-      this.jdField_a_of_type_Amtc.a.onDownloadProgress(paramString, paramLong, paramFloat);
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, false);
-    if (QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).size() > 0)
-    {
-      amtc localamtc = (amtc)QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).get(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).remove(0);
-      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, localamtc);
-    }
-    if (this.jdField_a_of_type_Amtc.a != null) {
-      this.jdField_a_of_type_Amtc.a.onDownloadSucceed(paramString, paramDownloadResult);
-    }
+    this.a.finish();
   }
 }
 

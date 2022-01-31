@@ -1,14 +1,21 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
+import java.lang.ref.WeakReference;
 
-public class aojp
+class aojp
   implements Runnable
 {
-  public aojp(ShortVideoPlayActivity paramShortVideoPlayActivity, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  aojp(aojo paramaojo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer);
+    if (this.a.a.a.c.get() != null)
+    {
+      ((BaseFaceListAdapter)this.a.a.a.c.get()).notifyDataSetChanged();
+      if (QLog.isColorLevel()) {
+        QLog.d("InformationFaceAdapter", 2, "onResp , ApngSoLoadCallBack!");
+      }
+    }
   }
 }
 

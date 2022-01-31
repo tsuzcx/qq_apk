@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aifm;
+import aikg;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -83,7 +83,7 @@ public class ProcessInfoUtil
   
   public static void a(String paramString)
   {
-    ThreadManager.post(new aifm(paramString), 5, null, true);
+    ThreadManager.post(new aikg(paramString), 5, null, true);
   }
   
   public static long b(String paramString)

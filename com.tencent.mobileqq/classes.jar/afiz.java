@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.FaceScoreCallBack;
-import com.tencent.mobileqq.nearby.FaceScoreConfig;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.nearby.widget.NearbyFacePowerDialog;
 
 public class afiz
-  extends FaceScoreCallBack
+  implements View.OnClickListener
 {
-  public afiz(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public afiz(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, String paramString, NearbyFacePowerDialog paramNearbyFacePowerDialog) {}
   
-  public void a(FaceScoreConfig paramFaceScoreConfig)
+  public void onClick(View paramView)
   {
-    ThreadManager.post(new afja(this, paramFaceScoreConfig), 8, null, false);
-    this.a.a = paramFaceScoreConfig;
-    this.a.a(paramFaceScoreConfig);
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a.startActivity(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyFacePowerDialog.dismiss();
   }
 }
 

@@ -1,25 +1,21 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.olympic.view.ScannerAnimView.OnScanAnimEndListener;
 
 public class agjl
-  implements OnCompositionLoadedListener
+  implements ScannerAnimView.OnScanAnimEndListener
 {
   public agjl(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void a(boolean paramBoolean)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setImagesAssetsFolder(ScanTorchActivity.d(this.a));
-    localLottieDrawable.setImageAssetDelegate(new agjm(this));
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    ScanTorchActivity.a(this.a, localLottieDrawable);
-    ScanTorchActivity.a(this.a).setImageDrawable(localLottieDrawable);
+    ViewGroup localViewGroup = ScanTorchActivity.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 4)
+    {
+      localViewGroup.setVisibility(i);
+      return;
+    }
   }
 }
 

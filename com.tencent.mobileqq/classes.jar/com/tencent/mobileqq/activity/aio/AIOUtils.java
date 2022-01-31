@@ -45,9 +45,9 @@ import com.tencent.widget.ListView;
 import java.lang.reflect.Field;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ujm;
-import ujn;
-import ujo;
+import uoi;
+import uoj;
+import uok;
 
 public final class AIOUtils
 {
@@ -55,7 +55,7 @@ public final class AIOUtils
   private static SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
   private static Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
   private static String jdField_a_of_type_JavaLangString = "OPPO;R7Plusm;22|OPPO;R7007;18|OPPO;R2017;18|OPPO;N5117;18|OPPO;A33;22|OPPO;OPPO A33;22";
-  private static ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new ujm();
+  private static ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new uoi();
   private static Field jdField_a_of_type_JavaLangReflectField;
   public static volatile boolean a;
   public static volatile int b;
@@ -329,7 +329,7 @@ public final class AIOUtils
     if (paramView == null) {
       return;
     }
-    ((View)paramView.getParent()).post(new ujo(paramView, paramInt1, paramInt2, paramInt3, paramInt4));
+    ((View)paramView.getParent()).post(new uok(paramView, paramInt1, paramInt2, paramInt3, paramInt4));
   }
   
   public static void a(View paramView, Drawable paramDrawable)
@@ -455,7 +455,7 @@ public final class AIOUtils
         if (i1 == 0) {
           break label347;
         }
-        ((WebProcessManager)paramQQAppInterface.getManager(12)).a(1, new ujn());
+        ((WebProcessManager)paramQQAppInterface.getManager(12)).a(1, new uoj());
         return;
         i1 = 10;
         break;
@@ -501,9 +501,15 @@ public final class AIOUtils
     }
   }
   
+  @Deprecated
   public static void a(String paramString1, String paramString2, Exception paramException)
   {
-    QLog.e(paramString1, 1, paramString2);
+    QLog.e(paramString1, 1, paramString2, paramException);
+  }
+  
+  public static void a(String paramString1, String paramString2, RuntimeException paramRuntimeException)
+  {
+    QLog.e(paramString1, 1, paramString2, paramRuntimeException);
   }
   
   public static void a(boolean paramBoolean)
@@ -536,7 +542,7 @@ public final class AIOUtils
       }
       if (i1 == -1)
       {
-        QQToast.a(paramBaseActivity, paramBaseActivity.getString(2131433236), 0).b(paramBaseActivity.getTitleBarHeight());
+        QQToast.a(paramBaseActivity, paramBaseActivity.getString(2131433250), 0).b(paramBaseActivity.getTitleBarHeight());
         return false;
       }
       if (paramIntent.hasExtra("account"))
@@ -553,7 +559,7 @@ public final class AIOUtils
       }
       if ((paramIntent.getBooleanExtra("shortcut", false)) && (!((FriendsManager)paramQQAppInterface.getManager(50)).b(str)))
       {
-        QQToast.a(paramBaseActivity.getApplicationContext(), paramBaseActivity.getString(2131433068), 0).b(paramBaseActivity.getTitleBarHeight());
+        QQToast.a(paramBaseActivity.getApplicationContext(), paramBaseActivity.getString(2131433082), 0).b(paramBaseActivity.getTitleBarHeight());
         return false;
       }
       return true;

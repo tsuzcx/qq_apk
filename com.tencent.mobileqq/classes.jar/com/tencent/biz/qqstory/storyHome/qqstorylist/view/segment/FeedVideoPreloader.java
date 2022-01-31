@@ -12,8 +12,8 @@ import com.tribe.async.async.Bosses;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import oar;
-import oas;
+import ofg;
+import ofh;
 
 public class FeedVideoPreloader
 {
@@ -23,7 +23,7 @@ public class FeedVideoPreloader
   public FeedVideoPreloader.OnVideoDownloadListener a;
   private Object a;
   public List a;
-  public oas a;
+  public ofh a;
   protected List b = new ArrayList();
   
   public FeedVideoPreloader()
@@ -31,9 +31,9 @@ public class FeedVideoPreloader
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader = new VideoPreloader();
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Oas = new oas(this);
+    this.jdField_a_of_type_Ofh = new ofh(this);
     this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(1);
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_Oas);
+    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_Ofh);
   }
   
   private void a(StoryVideoItem paramStoryVideoItem, List paramList, boolean paramBoolean)
@@ -43,9 +43,9 @@ public class FeedVideoPreloader
       DownloadTask localDownloadTask1 = DownloadTask.a(paramStoryVideoItem.mVid, 1);
       DownloadTask localDownloadTask2 = DownloadTask.a(paramStoryVideoItem.mVid, 0);
       paramStoryVideoItem = DownloadTask.a(paramStoryVideoItem.mVid, 2);
-      localDownloadTask1.f = 0;
-      localDownloadTask2.f = 0;
-      paramStoryVideoItem.f = 1;
+      localDownloadTask1.g = 0;
+      localDownloadTask2.g = 0;
+      paramStoryVideoItem.g = 1;
       localDownloadTask2.a.put("handleCallback", Boolean.valueOf(true));
       paramList.add(localDownloadTask1);
       paramList.add(localDownloadTask2);
@@ -71,7 +71,7 @@ public class FeedVideoPreloader
       return;
     }
     paramList = new ArrayList(paramList);
-    Bosses.get().postJob(new oar(this, paramStoryVideoItem, paramList));
+    Bosses.get().postJob(new ofg(this, paramStoryVideoItem, paramList));
   }
   
   public void a(FeedVideoPreloader.OnVideoDownloadListener paramOnVideoDownloadListener)

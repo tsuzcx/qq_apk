@@ -1,43 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.troopshare.TroopShareUtility.OnShareListener;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class sco
-  implements TroopShareUtility.OnShareListener
+  implements Runnable
 {
-  sco(scn paramscn) {}
+  sco(scl paramscl) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    String str1;
-    if ((this.a.a.d == 1) || (this.a.a.a.isMember))
-    {
-      str1 = "";
-      switch (paramInt)
-      {
-      }
-    }
-    while (TextUtils.isEmpty(str1))
-    {
-      return;
-      str1 = "share_circle";
-      continue;
-      str1 = "share_qq";
-      continue;
-      str1 = "share_qzone";
-      continue;
-      str1 = "share_wechat";
-    }
-    String str3 = this.a.a.a.troopUin;
-    String str4 = TroopReportor.a(this.a.a.a);
-    if (paramBoolean) {}
-    for (String str2 = "0";; str2 = "1")
-    {
-      TroopReportor.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
-      return;
-    }
+    Object localObject = BaseApplication.getContext().getSharedPreferences("free_call", 0);
+    long l = MessageCache.a();
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putString(this.a.a, String.valueOf(l * 1000L));
+    ((SharedPreferences.Editor)localObject).commit();
   }
 }
 

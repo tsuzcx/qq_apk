@@ -1,87 +1,31 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.manager.TicketManager;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public final class mwf
+class mwf
   implements Runnable
 {
-  public mwf(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
+  mwf(mwc parammwc, Serializable paramSerializable) {}
   
   public void run()
   {
-    try
+    SubscriptFeedsActivity localSubscriptFeedsActivity;
+    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a) != null))
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        return;
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a));
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a).a = true;
+      localSubscriptFeedsActivity = this.jdField_a_of_type_Mwc.a;
+      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a).f != 1) {
+        break label110;
       }
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        return;
-      }
-      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 == null) || (!(localObject1 instanceof QQAppInterface))) {
-        break label374;
-      }
-      localObject1 = (QQAppInterface)localObject1;
     }
-    catch (Exception localException)
+    label110:
+    for (boolean bool = true;; bool = false)
     {
-      Object localObject1;
-      Object localObject3;
-      Object localObject4;
-      String str;
-      if (!QLog.isColorLevel()) {
-        return;
-      }
-      QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:request Exception " + localException);
+      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, false, bool);
       return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      while (QLog.isColorLevel())
-      {
-        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:request OutOfMemoryError " + localOutOfMemoryError);
-        return;
-        label374:
-        Object localObject2 = null;
-      }
-    }
-    if (localObject1 != null)
-    {
-      localObject3 = ((AppInterface)localObject1).getCurrentAccountUin();
-      if (!TextUtils.isEmpty((CharSequence)localObject3))
-      {
-        localObject1 = (TicketManager)((AppInterface)localObject1).getManager(2);
-        if (localObject1 != null)
-        {
-          localObject4 = ((TicketManager)localObject1).getSkey((String)localObject3);
-          if (!TextUtils.isEmpty((CharSequence)localObject4))
-          {
-            localObject1 = new Bundle();
-            str = String.format("http://c.mp.qq.com/post/pageview/report?ftype=5&ctype=1&aid=%s&vid=%s&rtype=%d&rowkey=%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_b_of_type_JavaLangString });
-            ((Bundle)localObject1).putString("Cookie", "uin=" + (String)localObject3 + "; skey=" + (String)localObject4);
-            localObject3 = new HashMap();
-            ((HashMap)localObject3).put("BUNDLE", localObject1);
-            ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
-            localObject4 = new mwg(this);
-            localObject1 = str;
-            if (this.jdField_a_of_type_Int == 1) {
-              localObject1 = str + "&rcode=" + Integer.toString(this.jdField_b_of_type_Int);
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("PublicAccountUtil", 2, "doVideoPlayRealtimeReport cgiUrl=" + (String)localObject1);
-            }
-            new HttpWebCgiAsyncTask2((String)localObject1, "GET", (HttpWebCgiAsyncTask.Callback)localObject4, 0, null).execute(new HashMap[] { localObject3 });
-            return;
-          }
-        }
-      }
     }
   }
 }

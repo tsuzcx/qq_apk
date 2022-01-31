@@ -1,15 +1,32 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XPanelContainer;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class rrz
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public rrz(BaseChatPie paramBaseChatPie) {}
+  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
   
-  public void run()
+  public rrz(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.k(0);
-    this.a.a.a(1);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+  }
+  
+  public void a(SubAccountInfo paramSubAccountInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
   }
 }
 

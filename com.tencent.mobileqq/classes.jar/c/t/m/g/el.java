@@ -1,10 +1,29 @@
 package c.t.m.g;
 
-import android.os.Parcelable;
+import com.tencent.map.geolocation.TencentDistanceAnalysis;
 
-public abstract interface el
-  extends Parcelable
-{}
+public final class el
+  implements TencentDistanceAnalysis
+{
+  public double a;
+  public int b;
+  public int c;
+  
+  public final double getConfidence()
+  {
+    return this.a;
+  }
+  
+  public final int getGpsCount()
+  {
+    return this.b;
+  }
+  
+  public final int getNetworkCount()
+  {
+    return this.c;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

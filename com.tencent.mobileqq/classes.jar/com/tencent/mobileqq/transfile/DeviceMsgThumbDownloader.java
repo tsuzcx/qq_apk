@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aipe;
-import aipf;
+import aiuh;
+import aiui;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -105,7 +105,7 @@ public class DeviceMsgThumbDownloader
   
   public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return new File(AppConstants.aI);
+    return new File(AppConstants.aJ);
   }
   
   public boolean a()
@@ -179,14 +179,14 @@ public class DeviceMsgThumbDownloader
     return null;
     paramURLDrawableHandler = BaseApplicationImpl.getContext();
     if (FileManagerUtil.a(paramFile.path) == 2) {}
-    for (paramFile = new aipf(this);; paramFile = new aipe(this)) {
+    for (paramFile = new aiui(this);; paramFile = new aiuh(this)) {
       return AlbumThumbManager.a(paramURLDrawableHandler).a(paramDownloadParams.url, paramFile);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

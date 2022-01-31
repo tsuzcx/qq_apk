@@ -24,9 +24,9 @@ import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
-import oco;
-import ocp;
-import ocq;
+import ohd;
+import ohe;
+import ohf;
 
 public class DanceMachineUploadVideoFragment
   extends PublicBaseFragment
@@ -37,7 +37,7 @@ public class DanceMachineUploadVideoFragment
   private long jdField_a_of_type_Long = -1L;
   protected Dialog a;
   public BaseActivity a;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new oco(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ohd(this);
   public QQAppInterface a;
   private MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
   private String jdField_a_of_type_JavaLangString;
@@ -635,39 +635,7 @@ public class DanceMachineUploadVideoFragment
     //   108	148	1096	java/io/FileNotFoundException
   }
   
-  protected void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidAppDialog == null)
-    {
-      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131624516);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130968870);
-      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new ocq(this));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager().getDefaultDisplay();
-      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
-      localLayoutParams.width = ((Display)localObject).getWidth();
-      localLayoutParams.height = ((Display)localObject).getHeight();
-      this.jdField_a_of_type_AndroidAppDialog.getWindow().setAttributes(localLayoutParams);
-      this.jdField_a_of_type_AndroidAppDialog.show();
-    }
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363399);
-    if (TextUtils.isEmpty(paramString)) {
-      ((TextView)localObject).setText(2131434576);
-    }
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_AndroidAppDialog.isShowing())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UploadDanceMachineVideo", 2, "showProgressDialog");
-        }
-        this.jdField_a_of_type_AndroidAppDialog.show();
-      }
-      return;
-      ((TextView)localObject).setText(paramString);
-    }
-  }
-  
-  public void b()
+  public void a()
   {
     try
     {
@@ -687,12 +655,39 @@ public class DanceMachineUploadVideoFragment
     }
   }
   
-  public boolean b()
+  protected void a(String paramString)
   {
-    return false;
+    if (this.jdField_a_of_type_AndroidAppDialog == null)
+    {
+      this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131624516);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130968874);
+      this.jdField_a_of_type_AndroidAppDialog.setOnKeyListener(new ohf(this));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager().getDefaultDisplay();
+      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
+      localLayoutParams.width = ((Display)localObject).getWidth();
+      localLayoutParams.height = ((Display)localObject).getHeight();
+      this.jdField_a_of_type_AndroidAppDialog.getWindow().setAttributes(localLayoutParams);
+      this.jdField_a_of_type_AndroidAppDialog.show();
+    }
+    Object localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363418);
+    if (TextUtils.isEmpty(paramString)) {
+      ((TextView)localObject).setText(2131434592);
+    }
+    for (;;)
+    {
+      if (!this.jdField_a_of_type_AndroidAppDialog.isShowing())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("UploadDanceMachineVideo", 2, "showProgressDialog");
+        }
+        this.jdField_a_of_type_AndroidAppDialog.show();
+      }
+      return;
+      ((TextView)localObject).setText(paramString);
+    }
   }
   
-  public boolean e()
+  public boolean a()
   {
     boolean bool1;
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
@@ -738,11 +733,16 @@ public class DanceMachineUploadVideoFragment
       QLog.d("UploadDanceMachineVideo", 2, "upload time out");
     }
     this.jdField_a_of_type_Long = -1L;
-    b();
-    e();
+    a();
+    a();
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(2);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
     this.jdField_a_of_type_Boolean = false;
+    return false;
+  }
+  
+  public boolean needImmersive()
+  {
     return false;
   }
   
@@ -756,7 +756,7 @@ public class DanceMachineUploadVideoFragment
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      ThreadManager.executeOnSubThread(new ocp(this));
+      ThreadManager.executeOnSubThread(new ohe(this));
       return;
     }
     if (QLog.isColorLevel()) {

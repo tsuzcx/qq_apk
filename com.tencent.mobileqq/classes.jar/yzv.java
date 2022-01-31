@@ -1,49 +1,54 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.Doraemon.APIParam;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class yzv
-  extends BroadcastReceiver
+class yzv
+  implements APICallback
 {
-  public yzv(BabyQFriendStatusWebViewPlugin paramBabyQFriendStatusWebViewPlugin) {}
+  yzv(yzu paramyzu, CmGameInitParams paramCmGameInitParams) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    if (!TextUtils.isEmpty(BabyQFriendStatusWebViewPlugin.a(this.a)))
-    {
-      int i = paramIntent.getIntExtra("result", -1);
-      paramContext = "{ \"ret\": " + i + " }";
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
-      }
-      if (i != 0) {
-        break label176;
-      }
-      if (BabyQFriendStatusWebViewPlugin.a(this.a) != null)
-      {
-        paramContext = new Intent(BabyQFriendStatusWebViewPlugin.a(this.a), ChatActivity.class);
-        paramContext.putExtra("uin", AppConstants.au);
-        paramContext.putExtra("uintype", 0);
-        paramContext.putExtra("uinname", "babyQ");
-        paramContext.putExtra("selfSet_leftViewText", BabyQFriendStatusWebViewPlugin.a(this.a).getString(2131433698));
-        BabyQFriendStatusWebViewPlugin.a(this.a).startActivity(paramContext);
-        BabyQFriendStatusWebViewPlugin.a(this.a).finish();
-      }
+    QLog.w("cmgame_process.ApolloGameActivity", 1, "[onPermission], code:" + paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 2;
     }
-    return;
-    label176:
-    this.a.callJs(BabyQFriendStatusWebViewPlugin.a(this.a) + "(" + paramContext + ");");
+    ApolloGameActivity.a(this.jdField_a_of_type_Yzu.a, this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.w("cmgame_process.ApolloGameActivity", 1, "[onFailure], code:" + paramInt + ",msg:" + paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 2;
+    }
+    ApolloGameActivity.a(this.jdField_a_of_type_Yzu.a, this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams);
+  }
+  
+  public void a(APIParam paramAPIParam)
+  {
+    String str = (String)DoraemonUtil.a(paramAPIParam, "openid", "");
+    paramAPIParam = (String)DoraemonUtil.a(paramAPIParam, "access_token", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.ApolloGameActivity", 2, new Object[] { "[onSuccess], openId", str, ",accessToken:", paramAPIParam });
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.openId = str;
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessToken = paramAPIParam;
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 1;
+    }
+    ApolloGameActivity.a(this.jdField_a_of_type_Yzu.a, this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yzv
  * JD-Core Version:    0.7.0.1
  */

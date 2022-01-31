@@ -1,33 +1,42 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class aevy
-  implements Runnable
+public class aevy
+  implements View.OnClickListener
 {
-  aevy(aevw paramaevw, VideoFeedsUploader.UploadInfo paramUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult) {}
+  public aevy(GameRoomFloatView paramGameRoomFloatView, int paramInt1, long paramLong, String paramString1, String paramString2, int paramInt2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a == 0))
+    if (this.jdField_a_of_type_Int == 1)
     {
-      new NowVideoReporter().h("video_public").i("public_suc").d(SmallVideoCameraCaptureFragment.a).a(1).b(this.jdField_a_of_type_Aevw.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, "发表成功", 1).a();
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_Aevw.a.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi != null) && (this.jdField_a_of_type_Aevw.a.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a() == null)) {}
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a, SplashActivity.class);
+      paramView.putExtra("uin", this.jdField_a_of_type_Long + "");
+      paramView.putExtra("uintype", 1);
+      paramView.putExtra("troop_uin", this.jdField_a_of_type_Long + "");
+      paramView.putExtra("uinname", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("isGameRoom", true);
+      paramView = AIOUtils.a(paramView, new int[] { 1, 2 });
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a.startActivity(paramView);
+      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a instanceof ChatActivity)) {
+        ((ChatActivity)this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a).finish();
+      }
+      ReportController.b(null, "dc00899", "Grp_wolf", "", "in_game", "active_ball", 0, 0, "", "", "", "");
       return;
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "发表失败，请重试", 1).a();
-      QLog.i("VideoFeedsManager", 1, "upload failed, errMsg=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.i + "code=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a);
-      new NowVideoReporter().h("video_public").i("public_fail").d(SmallVideoCameraCaptureFragment.a).a(1).b(this.jdField_a_of_type_Aevw.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
+    paramView = AIOUtils.a(new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a, GameRoomInviteActivity.class), new int[] { 2 });
+    paramView.putExtra("inviteId", this.jdField_b_of_type_JavaLangString);
+    paramView.putExtra("roomNum", this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a.startActivity(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.a();
   }
 }
 

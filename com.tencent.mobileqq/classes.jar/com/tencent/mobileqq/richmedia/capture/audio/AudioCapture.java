@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.capture.audio;
 
-import ahgy;
-import ahgz;
-import ahha;
+import ahlp;
+import ahlq;
+import ahlr;
 import android.media.AudioRecord;
 import android.os.Handler;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -15,7 +15,7 @@ public class AudioCapture
 {
   public static int a;
   public static int b;
-  private ahha jdField_a_of_type_Ahha;
+  private ahlr jdField_a_of_type_Ahlr;
   public AudioRecord a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private AudioCapture.AudioCaptureListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture$AudioCaptureListener;
@@ -118,11 +118,11 @@ public class AudioCapture
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ahha == null) {
+    if (this.jdField_a_of_type_Ahlr == null) {
       a(true);
     }
-    if (this.jdField_a_of_type_Ahha != null) {
-      this.jdField_a_of_type_Ahha.jdField_c_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Ahlr != null) {
+      this.jdField_a_of_type_Ahlr.jdField_c_of_type_Boolean = true;
     }
     c();
   }
@@ -133,9 +133,6 @@ public class AudioCapture
     {
       this.jdField_a_of_type_Boolean = false;
       this.g = -1;
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioCapture", 2, "checkAudioPrivilage[ERR_AUDIO_INVALID_OPERATION]: result=" + paramInt);
-      }
       return;
     }
     if (paramInt == 0)
@@ -158,13 +155,13 @@ public class AudioCapture
       {
         bool = CameraCompatibleList.a(CameraCompatibleList.p);
         if ((!bool) || (this.jdField_d_of_type_Int >= 5)) {
-          break label279;
+          break label248;
         }
         this.jdField_d_of_type_Boolean = PreviewContext.checkIsDisablePrivilage(this.jdField_a_of_type_ArrayOfByte, m);
-        label137:
+        label106:
         this.jdField_d_of_type_Int += 1;
         if (this.jdField_d_of_type_Boolean) {
-          break label287;
+          break label256;
         }
         this.jdField_c_of_type_Boolean = true;
       }
@@ -178,10 +175,10 @@ public class AudioCapture
         }
         QLog.d("AudioCapture", 2, "checkAudioPrivilage: mDisableAudioPrivilage=" + this.jdField_d_of_type_Boolean + " limit=" + m + " mAudioCanUsed=" + this.jdField_a_of_type_Boolean);
         return;
-        label279:
+        label248:
         this.jdField_d_of_type_Boolean = false;
-        break label137;
-        label287:
+        break label106;
+        label256:
         if ((this.jdField_d_of_type_Boolean) && (this.jdField_d_of_type_Int >= 5))
         {
           this.jdField_c_of_type_Boolean = true;
@@ -198,80 +195,80 @@ public class AudioCapture
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2: invokestatic 167	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   5: ifeq +28 -> 33
     //   8: ldc 116
     //   10: iconst_2
     //   11: new 118	java/lang/StringBuilder
     //   14: dup
     //   15: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 192
+    //   18: ldc 190
     //   20: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: iload_1
-    //   24: invokevirtual 178	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   24: invokevirtual 174	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   27: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   30: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   33: iload_1
     //   34: ifne +44 -> 78
     //   37: aload_0
-    //   38: getfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahha	Lahha;
+    //   38: getfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahlr	Lahlr;
     //   41: ifnull +37 -> 78
     //   44: aload_0
     //   45: getfield 91	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
     //   48: ifnull +30 -> 78
     //   51: aload_0
     //   52: getfield 91	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
-    //   55: invokevirtual 197	java/lang/Thread:isAlive	()Z
+    //   55: invokevirtual 195	java/lang/Thread:isAlive	()Z
     //   58: ifeq +20 -> 78
-    //   61: invokestatic 154	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   61: invokestatic 167	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   64: ifeq +11 -> 75
     //   67: ldc 116
     //   69: iconst_2
-    //   70: ldc 199
-    //   72: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   70: ldc 197
+    //   72: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   75: aload_0
     //   76: monitorexit
     //   77: return
     //   78: aload_0
-    //   79: getfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahha	Lahha;
+    //   79: getfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahlr	Lahlr;
     //   82: ifnull +33 -> 115
     //   85: aload_0
-    //   86: getfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahha	Lahha;
+    //   86: getfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahlr	Lahlr;
     //   89: iconst_1
-    //   90: putfield 200	ahha:jdField_b_of_type_Boolean	Z
+    //   90: putfield 198	ahlr:jdField_b_of_type_Boolean	Z
     //   93: aload_0
-    //   94: getfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahha	Lahha;
+    //   94: getfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahlr	Lahlr;
     //   97: iconst_0
-    //   98: putfield 201	ahha:jdField_a_of_type_Boolean	Z
+    //   98: putfield 199	ahlr:jdField_a_of_type_Boolean	Z
     //   101: aload_0
     //   102: getfield 91	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
     //   105: ifnull +10 -> 115
     //   108: aload_0
     //   109: getfield 91	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
-    //   112: invokevirtual 204	java/lang/Thread:interrupt	()V
+    //   112: invokevirtual 202	java/lang/Thread:interrupt	()V
     //   115: aload_0
     //   116: getfield 91	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
     //   119: ifnull +10 -> 129
     //   122: aload_0
     //   123: getfield 91	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
-    //   126: invokevirtual 207	java/lang/Thread:join	()V
+    //   126: invokevirtual 205	java/lang/Thread:join	()V
     //   129: aload_0
-    //   130: new 145	ahha
+    //   130: new 145	ahlr
     //   133: dup
     //   134: aload_0
     //   135: aconst_null
-    //   136: invokespecial 210	ahha:<init>	(Lcom/tencent/mobileqq/richmedia/capture/audio/AudioCapture;Lahgy;)V
-    //   139: putfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahha	Lahha;
+    //   136: invokespecial 208	ahlr:<init>	(Lcom/tencent/mobileqq/richmedia/capture/audio/AudioCapture;Lahlp;)V
+    //   139: putfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahlr	Lahlr;
     //   142: aload_0
     //   143: aload_0
-    //   144: getfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahha	Lahha;
-    //   147: ldc 212
+    //   144: getfield 86	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Ahlr	Lahlr;
+    //   147: ldc 210
     //   149: iconst_5
-    //   150: invokestatic 216	com/tencent/mobileqq/app/ThreadManager:newFreeThread	(Ljava/lang/Runnable;Ljava/lang/String;I)Ljava/lang/Thread;
+    //   150: invokestatic 214	com/tencent/mobileqq/app/ThreadManager:newFreeThread	(Ljava/lang/Runnable;Ljava/lang/String;I)Ljava/lang/Thread;
     //   153: putfield 91	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
     //   156: aload_0
     //   157: getfield 91	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
-    //   160: invokevirtual 219	java/lang/Thread:start	()V
+    //   160: invokevirtual 217	java/lang/Thread:start	()V
     //   163: goto -88 -> 75
     //   166: astore_2
     //   167: aload_0
@@ -280,7 +277,7 @@ public class AudioCapture
     //   170: athrow
     //   171: astore_2
     //   172: aload_2
-    //   173: invokevirtual 222	java/lang/InterruptedException:printStackTrace	()V
+    //   173: invokevirtual 220	java/lang/InterruptedException:printStackTrace	()V
     //   176: goto -47 -> 129
     // Local variable table:
     //   start	length	slot	name	signature
@@ -323,19 +320,19 @@ public class AudioCapture
   
   public void b()
   {
-    if (this.jdField_a_of_type_Ahha != null) {
-      this.jdField_a_of_type_Ahha.jdField_d_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Ahlr != null) {
+      this.jdField_a_of_type_Ahlr.jdField_d_of_type_Boolean = true;
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Ahha != null)
+    if (this.jdField_a_of_type_Ahlr != null)
     {
-      this.jdField_a_of_type_Ahha.jdField_d_of_type_Boolean = false;
-      synchronized (this.jdField_a_of_type_Ahha.jdField_a_of_type_JavaLangObject)
+      this.jdField_a_of_type_Ahlr.jdField_d_of_type_Boolean = false;
+      synchronized (this.jdField_a_of_type_Ahlr.jdField_a_of_type_JavaLangObject)
       {
-        this.jdField_a_of_type_Ahha.jdField_a_of_type_JavaLangObject.notifyAll();
+        this.jdField_a_of_type_Ahlr.jdField_a_of_type_JavaLangObject.notifyAll();
         return;
       }
     }
@@ -343,11 +340,11 @@ public class AudioCapture
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ahha != null)
+    if (this.jdField_a_of_type_Ahlr != null)
     {
-      this.jdField_a_of_type_Ahha.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Ahlr.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_JavaLangThread.interrupt();
-      this.jdField_a_of_type_Ahha = null;
+      this.jdField_a_of_type_Ahlr = null;
     }
   }
   
@@ -356,7 +353,7 @@ public class AudioCapture
     if (QLog.isColorLevel()) {
       QLog.d("AudioCapture", 2, "openMic");
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahgy(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahlp(this));
   }
   
   public void f()
@@ -364,7 +361,7 @@ public class AudioCapture
     if (QLog.isColorLevel()) {
       QLog.d("AudioCapture", 2, "closeMic");
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahgz(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahlq(this));
   }
 }
 

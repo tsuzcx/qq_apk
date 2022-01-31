@@ -23,10 +23,10 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.util.List;
-import nnw;
-import nnx;
-import nny;
-import nnz;
+import nsg;
+import nsh;
+import nsi;
+import nsj;
 
 public class QQStoryWatcherListActivity
   extends QQStoryBaseActivity
@@ -41,7 +41,7 @@ public class QQStoryWatcherListActivity
   protected ChildViewClickListener a;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   public String a;
-  public nnz a;
+  public nsj a;
   public boolean a;
   View jdField_b_of_type_AndroidViewView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -53,7 +53,7 @@ public class QQStoryWatcherListActivity
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new nny(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new nsi(this);
   }
   
   public static void a(Activity paramActivity, String paramString, int paramInt)
@@ -72,7 +72,7 @@ public class QQStoryWatcherListActivity
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new nnx(this, paramBoolean1, paramBoolean2, paramList));
+      new Handler(localLooper).post(new nsh(this, paramBoolean1, paramBoolean2, paramList));
       return;
     }
     b(paramBoolean1, paramBoolean2, paramList);
@@ -148,14 +148,14 @@ public class QQStoryWatcherListActivity
       ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(null);
       continue;
-      if (this.jdField_a_of_type_Nnz.a >= 2000L)
+      if (this.jdField_a_of_type_Nsj.a >= 2000L)
       {
         a(0);
       }
       else
       {
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        String str = String.format("%s人累计浏览%s次", new Object[] { UIUtils.a(this.jdField_a_of_type_Nnz.a), UIUtils.a(this.jdField_a_of_type_Nnz.b) });
+        String str = String.format("%s人累计浏览%s次", new Object[] { UIUtils.a(this.jdField_a_of_type_Nsj.a), UIUtils.a(this.jdField_a_of_type_Nsj.b) });
         this.jdField_c_of_type_AndroidWidgetTextView.setText(str);
         this.jdField_c_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
@@ -173,22 +173,22 @@ public class QQStoryWatcherListActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970902);
+    super.setContentView(2130970919);
     super.setTitle("浏览数");
-    this.leftView.setText(2131433698);
-    super.findViewById(2131362840).setBackgroundColor(getResources().getColor(2131494255));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131372161);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372162));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131372164));
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131372163);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368875));
+    this.leftView.setText(2131433712);
+    super.findViewById(2131362845).setBackgroundColor(getResources().getColor(2131494261));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131372169);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372170));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131372172));
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131372171);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131368878));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130970900, null);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130970917, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_b_of_type_AndroidViewView);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131372160));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131372168));
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter = new QQStoryWatcherListAdapter(this, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new nnw(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new nsg(this));
     this.jdField_a_of_type_JavaLangString = super.getIntent().getStringExtra("feed_id");
     this.jdField_a_of_type_Int = super.getIntent().getIntExtra("source", 0);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
@@ -203,10 +203,10 @@ public class QQStoryWatcherListActivity
       super.setTitle("浏览数" + UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.mViewTotalTime));
     }
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoWatcherlistQQStoryWatcherListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838596);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838602);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight());
-    this.jdField_a_of_type_Nnz = new nnz(this, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Nnz.a();
+    this.jdField_a_of_type_Nsj = new nsj(this, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Nsj.a();
     return true;
   }
   
@@ -221,20 +221,20 @@ public class QQStoryWatcherListActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131368875) {
-      if (this.jdField_a_of_type_Nnz != null)
+    if (i == 2131368878) {
+      if (this.jdField_a_of_type_Nsj != null)
       {
-        this.jdField_a_of_type_Nnz.a();
+        this.jdField_a_of_type_Nsj.a();
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       }
     }
-    while (i != 2131372160) {
+    while (i != 2131372168) {
       return;
     }
     a(1);
-    nnz.a(this.jdField_a_of_type_Nnz);
+    nsj.a(this.jdField_a_of_type_Nsj);
   }
 }
 

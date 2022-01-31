@@ -1,18 +1,18 @@
-import com.tencent.biz.qqstory.newshare.job.ShortenUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
 public class ngn
-  extends ShortenUrlJob
+  extends Job
 {
-  public ngn(ShareModeBase paramShareModeBase, ShareCopyLinkData paramShareCopyLinkData) {}
+  public ngn(DefaultPlayerVideoListSynchronizer paramDefaultPlayerVideoListSynchronizer, int paramInt) {}
   
-  public boolean b()
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)localHashMap.get(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a));
-    return true;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer.b(this.jdField_a_of_type_Int);
+    return null;
   }
 }
 

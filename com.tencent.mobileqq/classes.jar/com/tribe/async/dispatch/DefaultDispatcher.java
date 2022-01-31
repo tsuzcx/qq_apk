@@ -120,20 +120,19 @@ public class DefaultDispatcher
     AssertUtils.checkNotNull(paramSet);
     AssertUtils.checkNotNull(paramSubscriberKey);
     AssertUtils.checkNotNull(paramDispatchable);
-    Iterator localIterator = paramSet.iterator();
-    SLog.d("async.dispatch.DefaultDispatcher", "notifySubscribers key=%s, set=%s", new Object[] { paramSubscriberKey, paramSet });
-    paramSubscriberKey = new ArrayList(1);
-    while (localIterator.hasNext())
+    paramSubscriberKey = paramSet.iterator();
+    ArrayList localArrayList = new ArrayList(1);
+    while (paramSubscriberKey.hasNext())
     {
-      Wrapper localWrapper = (Wrapper)localIterator.next();
+      Wrapper localWrapper = (Wrapper)paramSubscriberKey.next();
       Subscriber localSubscriber = localWrapper.get();
       if (localSubscriber == null) {
-        paramSubscriberKey.add(localWrapper);
+        localArrayList.add(localWrapper);
       } else {
         localSubscriber.handleDispatch(paramDispatchable);
       }
     }
-    paramSubscriberKey = paramSubscriberKey.iterator();
+    paramSubscriberKey = localArrayList.iterator();
     while (paramSubscriberKey.hasNext())
     {
       paramDispatchable = (Wrapper)paramSubscriberKey.next();

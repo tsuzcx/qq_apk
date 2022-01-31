@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.widget.TextView;
 
 class vjs
   implements Runnable
 {
-  vjs(vjr paramvjr) {}
+  vjs(vjr paramvjr, String paramString) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Vjr.a.setText(this.jdField_a_of_type_JavaLangString + " " + this.jdField_a_of_type_Vjr.b);
   }
 }
 

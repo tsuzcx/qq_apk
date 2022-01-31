@@ -1,19 +1,16 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-class aaol
-  implements Runnable
+public class aaol
+  implements INetEngine.INetEngineListener
 {
-  aaol(aaok paramaaok) {}
+  public aaol(ARPreSoResourceDownload paramARPreSoResourceDownload) {}
   
-  public void run()
-  {
-    ArkAppDeviceModule.a(this.a.a.jdField_a_of_type_Aanw.a, this.a.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
-    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Aanw.a.a(this.a.a.jdField_a_of_type_Long);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  
+  public void a(NetResp paramNetResp) {}
 }
 
 

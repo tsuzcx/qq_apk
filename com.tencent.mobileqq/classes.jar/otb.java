@@ -1,17 +1,38 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.OnSelectedChangedListener;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetElement;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper;
 
-class otb
-  implements Runnable
+public class otb
+  implements PollWidgetUtils.OnSelectedChangedListener
 {
-  otb(ota paramota) {}
+  public otb(PollWidgetUtils.WidgetWrapper paramWidgetWrapper) {}
   
-  public void run()
+  public void a(PollWidgetUtils.WidgetElement paramWidgetElement, boolean paramBoolean)
   {
-    if (this.a.a.isFinishing()) {
-      return;
+    int i = 0;
+    if (paramBoolean)
+    {
+      PollWidgetUtils.WidgetElement[] arrayOfWidgetElement = this.a.a();
+      j = arrayOfWidgetElement.length;
+      i = 0;
+      while (i < j)
+      {
+        PollWidgetUtils.WidgetElement localWidgetElement = arrayOfWidgetElement[i];
+        if (localWidgetElement != paramWidgetElement) {
+          localWidgetElement.b(false);
+        }
+        i += 1;
+      }
     }
-    QRUtils.a(1, 2131430003);
+    paramWidgetElement = this.a.a();
+    int j = paramWidgetElement.length;
+    for (;;)
+    {
+      if ((i >= j) || (paramWidgetElement[i].a())) {
+        return;
+      }
+      i += 1;
+    }
   }
 }
 

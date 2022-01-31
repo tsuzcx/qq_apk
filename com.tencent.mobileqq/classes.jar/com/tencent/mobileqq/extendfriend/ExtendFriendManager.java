@@ -1,12 +1,18 @@
 package com.tencent.mobileqq.extendfriend;
 
-import achj;
-import achk;
+import acpm;
+import acpn;
+import acpo;
+import acpp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.CacheData;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
@@ -20,10 +26,13 @@ import org.json.JSONObject;
 public class ExtendFriendManager
   implements ExtendFriendResourceDownloader.ResourceDownloaderListener, Manager
 {
+  public static ExtendFriendSquareFragment.CacheData a;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new acpm(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ExtendFriendManager.ExtendFriendConfig jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager$ExtendFriendConfig;
+  private ExtendFriendObserver jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendObserver = new acpn(this);
   private ExtendFriendResourceDownloader jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -32,8 +41,13 @@ public class ExtendFriendManager
   public ExtendFriendManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader = new ExtendFriendResourceDownloader(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader.a(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendObserver);
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader = new ExtendFriendResourceDownloader(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader.a(this);
+    }
   }
   
   private ExtendFriendManager.ExtendFriendConfig a(String paramString)
@@ -76,15 +90,18 @@ public class ExtendFriendManager
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager$ExtendFriendConfig.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager$ExtendFriendConfig.jdField_h_of_type_JavaLangString);
-      if (!this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader.a()) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader.a())
+      {
         this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader.a();
+        b(false);
       }
-      for (this.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_Boolean = true)
+      for (;;)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ExtendFriendManager", 2, String.format("checkToDownloadResource mResourceReady=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
         }
         return;
+        b(true);
       }
     }
     catch (Exception localException)
@@ -94,6 +111,50 @@ public class ExtendFriendManager
         QLog.e("ExtendFriendManager", 1, "checkToDownloadResource fail.", localException);
       }
     }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
+    for (;;)
+    {
+      try
+      {
+        Card localCard = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+        if (localCard != null)
+        {
+          if (TextUtils.isEmpty(localCard.declaration)) {
+            continue;
+          }
+          bool1 = true;
+          boolean bool2 = localCard.isShowCard;
+          if (QLog.isColorLevel()) {
+            QLog.d("ExtendFriendManager", 2, String.format("updateSwitchInCacheData profileComplete=%s showCard=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+          }
+          if (jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment$CacheData != null)
+          {
+            jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment$CacheData.b = bool1;
+            jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment$CacheData.c = bool2;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        boolean bool1;
+        QLog.e("ExtendFriendManager", 1, "updateSwitchInCacheData fail.", localException);
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendManager", 2, String.format("updateSwitchInCacheData %s", new Object[] { jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment$CacheData }));
+      }
+      return;
+      bool1 = false;
+    }
+  }
+  
+  private void c(boolean paramBoolean)
+  {
+    ((ExtendFriendHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(128)).a(5, true, Boolean.valueOf(paramBoolean));
   }
   
   public int a()
@@ -128,7 +189,7 @@ public class ExtendFriendManager
       if (!TextUtils.isEmpty(str))
       {
         this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager$ExtendFriendConfig = a(str);
-        ThreadManager.getSubThreadHandler().post(new achj(this));
+        ThreadManager.getSubThreadHandler().post(new acpo(this));
       }
     }
     return this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager$ExtendFriendConfig;
@@ -194,12 +255,12 @@ public class ExtendFriendManager
   public void a(String paramString)
   {
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager$ExtendFriendConfig = a(paramString);
-    ThreadManager.getSubThreadHandler().post(new achk(this));
+    ThreadManager.getSubThreadHandler().post(new acpp(this));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    b(paramBoolean);
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendManager", 2, String.format("onResourceDownloadComplete mResourceReady=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
     }
@@ -227,8 +288,19 @@ public class ExtendFriendManager
     return this.jdField_b_of_type_Int;
   }
   
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    c(paramBoolean);
+  }
+  
   public void onDestroy()
   {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendObserver);
+    }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader != null)
     {
@@ -237,6 +309,7 @@ public class ExtendFriendManager
       this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendResourceDownloader = null;
       this.jdField_a_of_type_Boolean = false;
     }
+    jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment$CacheData = null;
   }
 }
 

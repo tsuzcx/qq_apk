@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -36,6 +38,8 @@ import com.tencent.av.ui.ScreenLayoutDoubleScreen;
 import com.tencent.av.ui.VideoControlUI;
 import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.av.utils.TipsManager;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,21 +73,21 @@ public class ZimuViewLive
   private void a(Context paramContext)
   {
     Object localObject2 = getResources();
-    Object localObject1 = ((Resources)localObject2).getDrawable(2130840199);
+    Object localObject1 = ((Resources)localObject2).getDrawable(2130840214);
     this.jdField_b_of_type_AndroidViewView = new View(paramContext);
     localObject2 = new RelativeLayout.LayoutParams(-1, ((Resources)localObject2).getDimensionPixelOffset(2131560131));
     ((RelativeLayout.LayoutParams)localObject2).addRule(12);
     this.jdField_b_of_type_AndroidViewView.setBackground((Drawable)localObject1);
     addView(this.jdField_b_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject2);
-    localObject1 = LayoutInflater.from(paramContext).inflate(2130969282, this);
+    localObject1 = LayoutInflater.from(paramContext).inflate(2130969280, this);
     this.jdField_a_of_type_AndroidWidgetListView = ((ListView)((View)localObject1).findViewById(16908298));
     a(new ZimuViewLiveAdapter(paramContext));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)((View)localObject1).findViewById(2131365947));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)((View)localObject1).findViewById(2131365952));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131365946));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131365951));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject1).findViewById(2131363401);
+    this.jdField_a_of_type_AndroidViewView = ((View)localObject1).findViewById(2131363420);
     getViewTreeObserver().addOnGlobalLayoutListener(this);
     setFitsSystemWindows(true);
     this.jdField_a_of_type_ComTencentAvBusinessManagerZimuZimuLiveManager = ((ZimuLiveManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(9));
@@ -123,16 +127,16 @@ public class ZimuViewLive
     Object localObject1;
     Object localObject2;
     int i2;
+    int i;
     int i1;
     boolean bool2;
-    label72:
+    label81:
     int m;
     int n;
     boolean bool3;
-    label98:
+    label107:
     int j;
     int k;
-    int i;
     if (localAVActivity.c() == 2)
     {
       bool1 = true;
@@ -140,28 +144,30 @@ public class ZimuViewLive
       localObject2 = new Rect();
       ((View)localObject1).getWindowVisibleDisplayFrame((Rect)localObject2);
       i2 = ((Rect)localObject2).bottom;
-      i1 = localAVActivity.findViewById(2131365825).getHeight();
-      if (i2 >= i1) {
-        break label634;
+      localObject2 = localAVActivity.findViewById(2131365830);
+      i = ((View)localObject1).getHeight();
+      i1 = ((View)localObject2).getHeight();
+      if (i2 >= i) {
+        break label643;
       }
       bool2 = true;
       localObject1 = localAVActivity.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
       m = 0;
       n = 2;
-      if (localAVActivity.findViewById(2131366127) == null) {
-        break label640;
+      if (localAVActivity.findViewById(2131366132) == null) {
+        break label649;
       }
       bool3 = true;
       if (localObject1 == null) {
-        break label797;
+        break label806;
       }
       j = ((VideoLayerUI)localObject1).h();
       k = ((VideoLayerUI)localObject1).g();
       if (localObject1.a[1].f() != 0) {
-        break label646;
+        break label655;
       }
       i = 1;
-      label131:
+      label140:
       n = ((VideoLayerUI)localObject1).b();
       m = i;
       i = k;
@@ -169,7 +175,7 @@ public class ZimuViewLive
     for (;;)
     {
       boolean bool4;
-      label163:
+      label172:
       Resources localResources;
       if ((bool1) || (m == 0) || (n != 3))
       {
@@ -181,40 +187,40 @@ public class ZimuViewLive
           localResources = getResources();
           k = localResources.getDimensionPixelOffset(2131560123);
           if (!bool2) {
-            break label657;
+            break label666;
           }
           ((RelativeLayout.LayoutParams)localObject1).bottomMargin = 0;
-          label292:
+          label301:
           if ((!bool1) || (bool2)) {
-            break label666;
+            break label675;
           }
           ((RelativeLayout.LayoutParams)localObject2).height = (ScreenLayoutDoubleScreen.b(i) / 2);
           ((RelativeLayout.LayoutParams)localObject2).bottomMargin = paramInt;
-          label319:
+          label328:
           LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams();
           RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
           RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetEditText.getLayoutParams();
           if (!bool4) {
-            break label687;
+            break label696;
           }
-          label360:
+          label369:
           localLayoutParams.rightMargin = k;
           localLayoutParams1.rightMargin = k;
           localLayoutParams2.rightMargin = k;
           if (!bool2) {
-            break label700;
+            break label709;
           }
           this.jdField_a_of_type_AndroidWidgetEditText.setVisibility(0);
           this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-          label410:
+          label419:
           this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           this.jdField_a_of_type_AndroidWidgetListView.setLayoutParams(localLayoutParams);
           this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams1);
           this.jdField_b_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
           this.jdField_a_of_type_AndroidWidgetEditText.setLayoutParams(localLayoutParams2);
           if (!bool3) {
-            break label786;
+            break label795;
           }
           this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         }
@@ -263,42 +269,42 @@ public class ZimuViewLive
         return;
         bool1 = false;
         break;
-        label634:
+        label643:
         bool2 = false;
-        break label72;
-        label640:
+        break label81;
+        label649:
         bool3 = false;
-        break label98;
-        label646:
+        break label107;
+        label655:
         i = 0;
-        break label131;
+        break label140;
         bool4 = false;
-        break label163;
-        label657:
-        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = paramInt;
-        break label292;
+        break label172;
         label666:
+        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = paramInt;
+        break label301;
+        label675:
         ((RelativeLayout.LayoutParams)localObject2).height = localResources.getDimensionPixelOffset(2131560131);
         ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
-        break label319;
-        label687:
+        break label328;
+        label696:
         k = localResources.getDimensionPixelOffset(2131560124);
-        break label360;
-        label700:
+        break label369;
+        label709:
         this.jdField_a_of_type_AndroidWidgetEditText.setVisibility(4);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_ComTencentAvBusinessManagerZimuZimuLiveManager.c = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
         if ((this.jdField_a_of_type_ComTencentAvBusinessManagerZimuZimuLiveManager.c != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerZimuZimuLiveManager.c.length() > 0))
         {
           this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentAvBusinessManagerZimuZimuLiveManager.c);
-          break label410;
+          break label419;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setText(2131429678);
-        break label410;
-        label786:
+        break label419;
+        label795:
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       }
-      label797:
+      label806:
       i = 0;
       j = 0;
     }
@@ -347,8 +353,18 @@ public class ZimuViewLive
   
   public int c()
   {
-    getResources();
-    return this.e - this.jdField_d_of_type_Int;
+    Resources localResources = getResources();
+    int j = this.e - this.jdField_d_of_type_Int;
+    int i = j;
+    if (Build.MANUFACTURER.equals("vivo"))
+    {
+      i = j;
+      if (Build.VERSION.SDK_INT <= 19) {
+        i = j + AIOUtils.a(24.0F, localResources);
+      }
+    }
+    QLog.d("ZimuViewLive", 2, "WL_DEBUG getSoftBottomOffset mParentHeight = " + this.e + ",mRootDisplayHeight = " + this.jdField_d_of_type_Int + ", result = " + i);
+    return i;
   }
   
   void d() {}
@@ -392,7 +408,7 @@ public class ZimuViewLive
     {
     default: 
       return;
-    case 2131365947: 
+    case 2131365952: 
       DoodleUtils.a("0X8008FEE");
       return;
     }
@@ -424,7 +440,7 @@ public class ZimuViewLive
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewLive
  * JD-Core Version:    0.7.0.1
  */

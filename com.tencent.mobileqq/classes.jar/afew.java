@@ -1,20 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
 
 public class afew
-  extends TroopGiftCallback
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public afew(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public afew(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void a(long paramLong)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramLong > 0L)
-    {
-      NearbyProfileDisplayTribePanel.c(this.a).setText(String.format("获得%d礼物积分", new Object[] { Long.valueOf(paramLong) }));
-      return;
-    }
-    NearbyProfileDisplayTribePanel.c(this.a).setText("我的礼物积分");
+    return true;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

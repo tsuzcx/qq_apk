@@ -1,22 +1,42 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-class ajxe
-  implements Animator.AnimatorListener
+public class ajxe
+  extends TroopObserver
 {
-  ajxe(ajxd paramajxd) {}
+  public ajxe(TroopGagMgr paramTroopGagMgr) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List paramList, long paramLong2, int paramInt2, String paramString)
   {
-    this.a.a.c();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder(150);
+      localStringBuilder.append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong1).append("| nFlag = ").append(paramInt1).append("| strErorMsg = ").append(paramString);
+      QLog.i("TroopGagMgr", 2, localStringBuilder.toString());
+    }
+    if (((paramInt1 == 6) || (paramInt1 == 3)) && (paramBoolean))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        paramString = (oidb_0x899.memberlist)paramList.next();
+        if ((paramString != null) && (paramString.uint64_member_uin.has()) && (paramString.uint32_shutup_timestap.has()))
+        {
+          paramLong2 = paramString.uint32_shutup_timestap.get();
+          long l = paramString.uint64_member_uin.get();
+          ((TroopManager)this.a.a.getManager(51)).a(paramLong1 + "", l + "", paramLong2);
+        }
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,55 +1,14 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonRecDressup;
-import com.tencent.mobileqq.emoticonview.SmallEmotionDownloadedAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.chirp.ChirpWrapper;
+import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler;
 
 public class acgu
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acgu(SmallEmotionDownloadedAdapter paramSmallEmotionDownloadedAdapter, EmoticonRecDressup paramEmoticonRecDressup) {}
+  public acgu(ChirpSoHandler paramChirpSoHandler, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Intent localIntent = new Intent();
-    label41:
-    String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Boolean)
-    {
-      localIntent.putExtra("emoji_to_dressup", true);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label212;
-      }
-      paramView = "";
-      str2 = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-      if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Boolean) {
-        break label226;
-      }
-    }
-    label212:
-    label226:
-    for (String str1 = "1";; str1 = "2")
-    {
-      VasWebviewUtil.reportCommercialDrainage(paramView, "ep_mall", "0X8007192", null, 1, 0, 0, null, str2, str1);
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, localIntent, true);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, "2", "");
-      return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localIntent.putExtra("emoji_is_original", bool);
-        localIntent.putExtra("emoji_author_id", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Int);
-        break;
-      }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSmallEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      break label41;
-    }
+    ChirpWrapper.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

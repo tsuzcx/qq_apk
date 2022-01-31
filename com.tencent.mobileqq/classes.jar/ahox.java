@@ -1,32 +1,13 @@
-import com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.richmedia.capture.fragment.QzoneEffectsCameraCaptureFragment;
 
 public class ahox
   implements Runnable
 {
-  public ahox(HWVideoPlayView paramHWVideoPlayView) {}
+  public ahox(QzoneEffectsCameraCaptureFragment paramQzoneEffectsCameraCaptureFragment) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DIDI", 1, "reStartPlaySolveDanceBlackScreen mHaveSurfaceChangedPlayStart=" + this.a.c);
-    }
-    try
-    {
-      if (!this.a.c)
-      {
-        this.a.b();
-        if (HWVideoPlayView.a(this.a)) {
-          this.a.c();
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("DIDI", 1, "reStartPlaySolveDanceBlackScreen mHaveSurfaceChangedPlayStart=" + this.a.c, localThrowable);
-    }
+    QzoneEffectsCameraCaptureFragment.a(this.a, "正在合成gif...");
   }
 }
 

@@ -39,14 +39,14 @@ public class Face2FaceTroopDetailView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131363867);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131364630);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363690));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364631));
-    this.c = ((TextView)super.findViewById(2131364632));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364633));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131363891);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131364654);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363713));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364655));
+    this.c = ((TextView)super.findViewById(2131364656));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364657));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView);
-    this.e = super.findViewById(2131364628);
+    this.e = super.findViewById(2131364652);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.e.setPadding(AIOUtils.a(10.0F, this.e.getResources()), AIOUtils.a(15.0F, this.e.getResources()) + ImmersiveUtils.a(this.e.getContext()), AIOUtils.a(10.0F, this.e.getResources()), AIOUtils.a(15.0F, this.e.getResources()));
     }
@@ -72,7 +72,7 @@ public class Face2FaceTroopDetailView
         break label163;
       }
       setBtnEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131437923);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131437943);
       if (!paramBoolean) {
         QQToast.a(super.getContext(), 2, "加群成功", 1).a();
       }
@@ -130,14 +130,14 @@ public class Face2FaceTroopDetailView
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         paramFace2FaceUserData = ((Face2FaceGroupProfile)localObject2).b;
       }
-      paramFace2FaceUserData = localQQAppInterface.getApplication().getString(2131437926, new Object[] { paramFace2FaceUserData });
+      paramFace2FaceUserData = localQQAppInterface.getApplication().getString(2131437946, new Object[] { paramFace2FaceUserData });
       this.c.setText(paramFace2FaceUserData);
       this.c.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       if (this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceDetailBaseView$IFace2faceContext.a(((Face2FaceGroupProfile)localObject2).e))
       {
         setBtnEnabled(false);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131437923);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131437943);
       }
     }
     while (!(paramFace2FaceUserData instanceof Face2FaceUserProfile)) {
@@ -146,7 +146,7 @@ public class Face2FaceTroopDetailView
         this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
         return;
         setBtnEnabled(true);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131437925);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131437945);
       }
     }
     Object localObject2 = localQQAppInterface.a(paramFace2FaceUserData.e, (byte)3, true);
@@ -167,7 +167,7 @@ public class Face2FaceTroopDetailView
     {
       this.c.setVisibility(8);
       setBtnEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131437924);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131437944);
       break;
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
@@ -177,11 +177,11 @@ public class Face2FaceTroopDetailView
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838491);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838497);
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838503);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838509);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(null);
   }
 }

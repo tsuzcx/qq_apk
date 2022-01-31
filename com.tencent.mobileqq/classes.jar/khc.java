@@ -1,25 +1,22 @@
-import com.tencent.av.utils.TipsManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
 
 public class khc
-  implements Runnable
+  implements MenuItem.OnMenuItemClickListener
 {
-  public khc(TipsManager paramTipsManager) {}
+  public khc(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void run()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TipsManager", 2, "hideTipsRunnable, mPreviosState[" + this.a.b + "]");
-    }
-    this.a.a();
-    if (this.a.b) {
-      this.a.e();
-    }
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr, 2);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     khc
  * JD-Core Version:    0.7.0.1
  */

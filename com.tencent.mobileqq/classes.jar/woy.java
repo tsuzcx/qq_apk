@@ -1,18 +1,33 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.activity.emogroupstore.FilterAdapter;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import java.lang.ref.WeakReference;
 
 public class woy
-  implements Runnable
+  extends Handler
 {
-  public woy(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  private WeakReference a;
   
-  public void run()
+  public woy(NewFriendActivity paramNewFriendActivity)
   {
-    EmoticonGroupStoreFragment.a(this.a).a(EmoticonGroupStoreFragment.a(this.a));
-    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
-    EmoticonGroupStoreFragment.b(this.a).setText("筛选（共" + EmoticonGroupStoreFragment.c(this.a).size() + "个表情）");
+    this.a = new WeakReference(paramNewFriendActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
+    if (localNewFriendActivity == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localNewFriendActivity.a(paramMessage.arg1);
+      return;
+    }
+    localNewFriendActivity.finish();
   }
 }
 

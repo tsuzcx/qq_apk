@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView.StickerBubbleAnimationCallback;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class whf
-  implements ConditionSearchManager.IConfigListener
+  implements StickerBubbleAnimationView.StickerBubbleAnimationCallback
 {
-  public whf(AddContactsView paramAddContactsView) {}
+  public whf(StickerBubbleAnimationViewHolder paramStickerBubbleAnimationViewHolder) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
-    }
-    if ((paramInt == 2) && (paramBoolean))
-    {
-      this.a.b = true;
-      this.a.e();
-    }
+    StickerBubbleAnimationViewHolder.a(this.a, StickerBubbleAnimationViewHolder.b(this.a));
+    ThreadManager.getUIHandler().post(new whg(this));
+  }
+  
+  public void b()
+  {
+    StickerBubbleAnimationViewHolder.b(this.a, StickerBubbleAnimationViewHolder.b(this.a));
   }
 }
 

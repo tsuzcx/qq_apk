@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class xqf
   implements Runnable
 {
-  public xqf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xqf(RecentAdapter paramRecentAdapter, int paramInt, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    if (VideoFilterTools.a(this.a.getApplicationContext()))
-    {
-      VideoFilterTools localVideoFilterTools = VideoFilterTools.a();
-      localVideoFilterTools.a(this.a.getApplicationContext(), new xqg(this, localVideoFilterTools));
-      return;
-    }
-    QLog.w("PTV.NewFlowCameraActivity", 2, "your device don't support video filter!");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a, "dc01160", "Pb_account_lifeservice", "", "0X800687A", "0X800687A", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, this.b, this.c, String.valueOf(ServiceAccountFolderManager.a().a()));
   }
 }
 

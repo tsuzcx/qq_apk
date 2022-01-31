@@ -1,74 +1,59 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
 
-public class skl
-  implements CompoundButton.OnCheckedChangeListener
+class skl
+  implements Runnable
 {
-  public skl(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  skl(skk paramskk) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    if (AppSetting.b)
+    boolean bool3 = true;
+    int i;
+    boolean bool4;
+    boolean bool1;
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(15) == 2)
     {
-      paramCompoundButton = this.a.getString(2131435342);
-      DiscussionInfoCardActivity.a(this.a).setContentDescription(paramCompoundButton);
+      i = 1;
+      bool4 = PhoneNumLoginImpl.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!bool4) {
+        break label122;
+      }
+      if (i != 0) {
+        break label165;
+      }
+      PhoneNumLoginImpl.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bool1 = false;
     }
-    paramCompoundButton = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a), this.a.app.getCurrentAccountUin());
-    int i = paramCompoundButton.flag;
-    label171:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    for (;;)
     {
-      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag | 0x1));
-      if (i != paramCompoundButton.flag)
+      label69:
+      boolean bool2;
+      if ((bool4) && (i == 0))
       {
-        byte b = (byte)(paramCompoundButton.flag & 0x1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("DiscussionInfoCardActivity", 4, "DiscussionMemberInfo.flag changed save now:" + paramCompoundButton.flag + " flag:" + b);
+        bool2 = true;
+        label80:
+        if ((bool4) || (!bool1) || (i == 0)) {
+          break label160;
         }
-        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b, paramCompoundButton.flag);
-        if (!paramBoolean) {
-          break label341;
-        }
-        paramCompoundButton = "msg_open";
-        TroopReportor.a("Grp_Dis_set", "Dis_info", paramCompoundButton, 0, 0, new String[] { DiscussionInfoCardActivity.a(this.a), TroopReportor.a(this.a.app, this.a.a) });
       }
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label347;
+      label160:
+      for (bool1 = bool3;; bool1 = false)
+      {
+        this.a.a.a(new skm(this, bool2, bool1));
+        return;
+        i = 0;
+        break;
+        label122:
+        bool1 = PhoneNumLoginImpl.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        break label69;
+        bool2 = false;
+        break label80;
       }
-      paramCompoundButton = "1";
-      label231:
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X800629B", "0X800629B", 0, 0, paramCompoundButton, "", "", "");
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label353;
-      }
-    }
-    label341:
-    label347:
-    label353:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8006679", "0X8006679", 0, 0, paramCompoundButton, "", "", "");
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8006668", "0X8006668", 0, 0, "", "", "", "");
-      return;
-      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag & 0xFFFFFFFE));
-      break;
-      paramCompoundButton = "msg_close";
-      break label171;
-      paramCompoundButton = "0";
-      break label231;
+      label165:
+      bool1 = false;
     }
   }
 }

@@ -72,7 +72,7 @@ public class GameCenterActivity
     while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       return false;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130838598);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130838604);
     this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = localTextView.getCompoundDrawables();
     this.jdField_a_of_type_Int = localTextView.getCompoundDrawablePadding();
     localTextView.setCompoundDrawablePadding(10);

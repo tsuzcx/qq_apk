@@ -1,14 +1,34 @@
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xb7e.RspBody;
 
-public class lqz
+class lqz
   implements Runnable
 {
-  public lqz(ChannelInfoModule paramChannelInfoModule, int paramInt) {}
+  lqz(lqy paramlqy, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().d(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ArrayOfByte == null)
+    {
+      ReadInJoyLogicEngineEventDispatcher.a().a(false, null);
+      return;
+    }
+    oidb_0xb7e.RspBody localRspBody = new oidb_0xb7e.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(this.jdField_a_of_type_ArrayOfByte);
+      DiandianTopConfigManager.a(this.jdField_a_of_type_Lqy.a, localRspBody);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(DiandianTopConfigManager.a, 2, "loadDiandianTopConfig, e = " + localException);
+      }
+      ReadInJoyLogicEngineEventDispatcher.a().a(false, null);
+    }
   }
 }
 

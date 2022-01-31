@@ -104,14 +104,14 @@ public class QQFaceDanceDetectFilter
     this.jdField_a_of_type_Boolean = false;
   }
   
+  public boolean f_()
+  {
+    return QQFaceDanceMechineFilter.jdField_a_of_type_Boolean;
+  }
+  
   public void h()
   {
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-  }
-  
-  public boolean i_()
-  {
-    return QQFaceDanceMechineFilter.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,59 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.util.PADetailReportUtil;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
 
 public class wmo
-  extends FriendListObserver
+  extends Handler
 {
-  public wmo(CardViewController paramCardViewController) {}
+  public wmo(AddContactsActivity paramAddContactsActivity) {}
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "onCancelMayKnowRecommend isCancelRemote =" + CardViewController.a(this.a) + "， isSuccess = " + paramBoolean + ", mState = " + CardViewController.a(this.a));
-    }
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      if (CardViewController.a(this.a))
-      {
-        CardViewController.a(this.a);
-        int i = CardViewController.b(this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("CardViewController", 2, "onCancelMayKnowRecommend increaseIgnore times now = " + i);
-        }
-        CardViewController.a(this.a, paramString, null);
-        CardViewController.a(this.a, false);
-      }
-    }
-    else {
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.b();
+      this.a.jdField_a_of_type_Boolean = false;
       return;
     }
-    CardViewController.b(this.a);
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "onGetMayKnowRecommend isSuccess = " + paramBoolean + ", isRefreshingRemote =" + CardViewController.b(this.a) + ", waitingAccountChangeToRefresh =" + CardViewController.c(this.a));
-    }
-    if (CardViewController.b(this.a)) {
-      CardViewController.c(this.a);
-    }
-    while ((!paramBoolean) || (!CardViewController.c(this.a))) {
-      return;
-    }
-    CardViewController.b(this.a, false);
-    CardViewController.a(this.a, false, false);
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "onMayknowStateChanged isSuccess = " + paramBoolean + ", waitingAccountChangeToRefresh =" + CardViewController.c(this.a));
-    }
-    if (paramBoolean) {
-      CardViewController.a(this.a, false, true);
-    }
+    PADetailReportUtil.a().a(300);
   }
 }
 

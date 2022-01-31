@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import adua;
-import adub;
-import adul;
+import aecj;
+import aeck;
+import aecv;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -20,7 +20,7 @@ public class HuayangDowanloadHelper
 {
   private static HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private long jdField_a_of_type_Long;
-  private adul jdField_a_of_type_Adul = new adua(this);
+  private aecv jdField_a_of_type_Aecv = new aecj(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private LoginKeyHelper jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper = new LoginKeyHelper();
   private HuayangPluginNewDownloader jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginNewDownloader;
@@ -62,7 +62,7 @@ public class HuayangDowanloadHelper
     if (QLog.isColorLevel()) {
       QLog.d("HuayangPluginNewDownloader", 2, "开始拉取AI票据：" + localIVPluginInfo.jdField_a_of_type_Int);
     }
-    paramInstalledPlugin = new adub(this, this.d, localIVPluginInfo, paramInstalledPlugin, paramBoolean);
+    paramInstalledPlugin = new aeck(this, this.d, localIVPluginInfo, paramInstalledPlugin, paramBoolean);
     if (localIVPluginInfo.jdField_a_of_type_Int == 1)
     {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -99,7 +99,7 @@ public class HuayangDowanloadHelper
     this.c = paramString4;
     this.e = paramString1;
     this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginNewDownloader.a(this.jdField_a_of_type_Adul);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginNewDownloader.a(this.jdField_a_of_type_Aecv);
     this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginNewDownloader.a(paramString1, paramString4, this.d, paramMap);
   }
 }

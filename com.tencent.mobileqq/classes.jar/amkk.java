@@ -1,24 +1,35 @@
-import android.app.Activity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import cooperation.comic.ui.QQComicTitleBarView;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnGroupClickListener;
+import com.tencent.widget.PinnedHeaderExpandableListView;
+import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
 
 public class amkk
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public amkk(QQComicTitleBarView paramQQComicTitleBarView) {}
+  public amkk(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
-      this.a.a.a.finish();
+    if (paramMotionEvent.getAction() == 1)
+    {
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
+          this.a.b(i);
+        }
+      }
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkk
  * JD-Core Version:    0.7.0.1
  */

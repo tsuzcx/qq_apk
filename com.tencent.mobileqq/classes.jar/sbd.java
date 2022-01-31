@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class sbd
-  implements Animation.AnimationListener
+public final class sbd
+  implements DialogInterface.OnCancelListener
 {
-  public sbd(ChatHistoryForC2C paramChatHistoryForC2C, View paramView, int paramInt) {}
+  public sbd(boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (this.jdField_a_of_type_Boolean) {
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    }
+    paramDialogInterface.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

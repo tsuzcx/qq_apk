@@ -1,34 +1,13 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
 
 public class aeln
   implements Runnable
 {
-  public aeln(NearbyAppInterface paramNearbyAppInterface) {}
+  public aeln(LyricViewInternal paramLyricViewInternal) {}
   
   public void run()
   {
-    synchronized (this.a.a)
-    {
-      boolean bool = this.a.d;
-      if (!bool) {}
-      try
-      {
-        DeviceProfileManager.a(this.a, 214).a(this.a);
-        this.a.d = true;
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("NearbyAppInterface", 2, "onDestroy: ", localException);
-          }
-        }
-      }
-    }
+    this.a.requestLayout();
   }
 }
 

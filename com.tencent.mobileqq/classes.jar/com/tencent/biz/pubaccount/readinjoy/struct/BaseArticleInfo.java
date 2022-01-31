@@ -188,6 +188,7 @@ public class BaseArticleInfo
   public int videoJumpChannelID = -1;
   public String videoJumpChannelName = "";
   public int videoJumpChannelType = -1;
+  public String videoReportInfo;
   
   private IVideoCardUIModel getLazyModel()
   {
@@ -232,6 +233,31 @@ public class BaseArticleInfo
       }
     }
     return this.mCacheVideoURL;
+  }
+  
+  public URL getVideoCoverUrlWithSmartCut(int paramInt1, int paramInt2)
+  {
+    if (this.mPolymericSmallVideoCoverUrl == null)
+    {
+      IVideoCardUIModel localIVideoCardUIModel = getLazyModel();
+      if ((localIVideoCardUIModel instanceof UGCVideoCardUIModel)) {
+        this.mPolymericSmallVideoCoverUrl = ((UGCVideoCardUIModel)localIVideoCardUIModel).a(paramInt1, paramInt2);
+      }
+    }
+    else
+    {
+      return this.mPolymericSmallVideoCoverUrl;
+    }
+    return getVideoCoverURL();
+  }
+  
+  public URL getVideoCoverUrlWithSmartCut(boolean paramBoolean)
+  {
+    IVideoCardUIModel localIVideoCardUIModel = getLazyModel();
+    if ((localIVideoCardUIModel instanceof UGCVideoCardUIModel)) {
+      return ((UGCVideoCardUIModel)localIVideoCardUIModel).a(paramBoolean);
+    }
+    return getVideoCoverURL();
   }
   
   public int getVideoDuration()

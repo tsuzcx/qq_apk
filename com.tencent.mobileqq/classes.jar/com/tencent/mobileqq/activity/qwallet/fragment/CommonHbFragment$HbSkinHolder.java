@@ -65,21 +65,21 @@ public class CommonHbFragment$HbSkinHolder
       if (HbSkinInfo.c != paramHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_id) {
         break label339;
       }
-      paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130841168);
+      paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130841193);
       label174:
       ((View)localObject2).setBackgroundDrawable(paramView);
       localObject2 = this.jdField_c_of_type_AndroidWidgetImageView;
       if (paramHbSkinInfo.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon != null) {
         break label344;
       }
-      paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130844048);
+      paramView = this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130844114);
       label206:
       ((ImageView)localObject2).setBackgroundDrawable(paramView);
       if (-1 != paramHbSkinInfo.b) {
         break label362;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841104);
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130841164));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841124);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentResResources.getDrawable(2130841188));
     }
     for (;;)
     {
@@ -92,7 +92,7 @@ public class CommonHbFragment$HbSkinHolder
       return;
       localObject2 = this.jdField_b_of_type_AndroidWidgetTextView;
       if (TextUtils.isEmpty(paramHbSkinInfo.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title)) {}
-      for (paramView = paramView.getContext().getString(2131431265);; paramView = paramHbSkinInfo.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title)
+      for (paramView = paramView.getContext().getString(2131431277);; paramView = paramHbSkinInfo.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title)
       {
         ((TextView)localObject2).setText(paramView);
         break;
@@ -133,16 +133,16 @@ public class CommonHbFragment$HbSkinHolder
   public View initView(int paramInt, View paramView)
   {
     this.jdField_a_of_type_AndroidContentResResources = paramView.getContext().getResources();
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131367956);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367955);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131367963);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367961));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367959));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367957));
+    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131367971);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367970);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131367978);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367976));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367974));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367972));
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_START);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367962));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367960));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = ((AnimationView)paramView.findViewById(2131367958));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367977));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367975));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = ((AnimationView)paramView.findViewById(2131367973));
     return paramView;
   }
 }

@@ -1,30 +1,32 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.armap.ArMapInterface;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import java.io.File;
+import java.io.FileFilter;
 
-public class abcf
-  implements Runnable
+public final class abcf
+  implements FileFilter
 {
-  public abcf(ArMapInterface paramArMapInterface) {}
+  public abcf(String paramString, boolean paramBoolean) {}
   
-  public void run()
+  public boolean accept(File paramFile)
   {
-    synchronized (ArMapInterface.a(this.a))
+    String str = paramFile.getName();
+    int i = str.lastIndexOf('.');
+    if (i <= 0) {}
+    do
     {
-      boolean bool = ArMapInterface.a(this.a);
-      if (!bool) {}
-      try
+      do
       {
-        DeviceProfileManager.a(this.a, 213).a(this.a);
-        ArMapInterface.a(this.a, true);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
+        return false;
+      } while (!str.substring(i).equalsIgnoreCase(".app"));
+      str = str.substring(0, i);
+    } while ((!ArkLocalAppMgr.b(str)) || (ArkLocalAppMgr.a(str, this.jdField_a_of_type_JavaLangString) >= 0));
+    if (this.jdField_a_of_type_Boolean) {
+      paramFile.deleteOnExit();
+    }
+    for (;;)
+    {
+      return true;
+      paramFile.delete();
     }
   }
 }

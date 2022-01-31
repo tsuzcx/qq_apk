@@ -1,8 +1,8 @@
 package com.tencent.open.downloadnew;
 
-import aliw;
-import alix;
-import aliy;
+import alqo;
+import alqp;
+import alqq;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface.OnClickListener;
@@ -34,7 +34,7 @@ public class MyAppDialog
     paramActivity = new ColorDrawable();
     paramActivity.setAlpha(0);
     getWindow().setBackgroundDrawable(paramActivity);
-    setContentView(2130969249);
+    setContentView(2130969247);
   }
   
   public Activity a()
@@ -56,7 +56,7 @@ public class MyAppDialog
     }
     this.c.setText(paramInt);
     this.c.setVisibility(0);
-    this.c.setOnClickListener(new alix(this, paramOnClickListener, paramInt, paramBoolean));
+    this.c.setOnClickListener(new alqp(this, paramOnClickListener, paramInt, paramBoolean));
     return this;
   }
   
@@ -70,7 +70,7 @@ public class MyAppDialog
   
   public void a(int paramInt1, int paramInt2)
   {
-    ThreadManager.getUIHandler().post(new aliw(this, paramInt1, paramInt2));
+    ThreadManager.getUIHandler().post(new alqo(this, paramInt1, paramInt2));
   }
   
   public MyAppDialog b(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
@@ -82,7 +82,7 @@ public class MyAppDialog
     }
     this.d.setText(paramInt);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new aliy(this, paramOnClickListener, paramInt, paramBoolean));
+    this.d.setOnClickListener(new alqq(this, paramOnClickListener, paramInt, paramBoolean));
     return this;
   }
   
@@ -107,13 +107,13 @@ public class MyAppDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364034));
-    this.b = ((TextView)findViewById(2131362776));
-    this.c = ((TextView)findViewById(2131364037));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364059));
+    this.b = ((TextView)findViewById(2131362781));
+    this.c = ((TextView)findViewById(2131364062));
     this.c.getPaint().setFakeBoldText(true);
-    this.d = ((TextView)findViewById(2131364038));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363005));
-    this.e = ((TextView)findViewById(2131365724));
+    this.d = ((TextView)findViewById(2131364063));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363010));
+    this.e = ((TextView)findViewById(2131365729));
   }
   
   public void setTitle(int paramInt)

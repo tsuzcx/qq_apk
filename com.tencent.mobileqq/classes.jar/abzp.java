@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.confess.ConfessPlugin;
 
-public class abzp
+class abzp
   implements Runnable
 {
-  public abzp(FavroamingDBManager paramFavroamingDBManager, FavroamingDBManager.FavEmotionDataInPanelCallback paramFavEmotionDataInPanelCallback) {}
+  abzp(abzn paramabzn) {}
   
   public void run()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager.b();
-    ThreadManager.getUIHandler().post(new abzq(this, localList));
+    ConfessPlugin.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzp
  * JD-Core Version:    0.7.0.1
  */

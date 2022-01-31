@@ -1,27 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.os.Bundle;
+import com.tencent.gdtad.net.GdtAdObserver;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.util.JSONUtils;
+import org.json.JSONObject;
 
 public class aciv
-  implements Handler.Callback
+  extends GdtAdObserver
 {
-  public aciv(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public aciv(MessengerService paramMessengerService) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(Object paramObject)
   {
-    switch (paramMessage.what)
+    if (this.a.a != null)
     {
-    }
-    for (;;)
-    {
-      return true;
-      ExtendFriendSquareFragment.a(this.a);
+      this.a.a.putString("data", JSONUtils.a(paramObject).toString());
+      this.a.a(this.a.a);
+      this.a.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aciv
  * JD-Core Version:    0.7.0.1
  */

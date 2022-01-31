@@ -1,35 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class tkm
-  extends Handler
+  implements Runnable
 {
-  public tkm(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  public tkm(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (!this.a.isFinishing())
-      {
-        this.a.a.a(this.a.getString(2131434046));
-        this.a.a.d(2130845523);
-        this.a.a.b(false);
-      }
-      sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.a == null) || (!this.a.a.isShowing()));
-    this.a.a.cancel();
-    this.a.a.a(this.a.getString(2131434045));
-    this.a.a.c(true);
-    this.a.a.a(false);
-    this.a.a.b(true);
+    PhoneUnityBindInfoActivity.a(this.a).g();
+    PhoneUnityBindInfoActivity.b(this.a).f = true;
   }
 }
 

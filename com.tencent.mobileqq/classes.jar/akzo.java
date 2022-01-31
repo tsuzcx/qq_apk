@@ -1,64 +1,25 @@
-import android.annotation.SuppressLint;
-import android.app.DownloadManager;
-import android.app.DownloadManager.Query;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import android.os.Handler;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
 
 public class akzo
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public akzo(MSFIntChkStrike paramMSFIntChkStrike, DownloadManager paramDownloadManager) {}
+  public akzo(WereWolvesLoadingView paramWereWolvesLoadingView) {}
   
-  @SuppressLint({"NewApi"})
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    long l = paramIntent.getLongExtra("extra_download_id", -1L);
-    String str;
-    Object localObject;
-    if (MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike) == l)
-    {
-      str = "";
-      localObject = new DownloadManager.Query();
-      ((DownloadManager.Query)localObject).setFilterById(new long[] { l });
-      paramIntent = null;
-    }
-    try
-    {
-      Cursor localCursor = this.jdField_a_of_type_AndroidAppDownloadManager.query((DownloadManager.Query)localObject);
-      localObject = str;
-      if (localCursor != null)
-      {
-        localObject = str;
-        paramIntent = localCursor;
-        if (localCursor.moveToFirst())
-        {
-          paramIntent = localCursor;
-          localObject = localCursor.getString(localCursor.getColumnIndex("local_filename"));
-        }
-      }
-      if (localCursor != null) {
-        localCursor.close();
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        paramIntent = new Intent("android.intent.action.VIEW");
-        paramIntent.setDataAndType(Uri.parse("file://" + (String)localObject), "application/vnd.android.package-archive");
-        paramIntent.setFlags(268435456);
-        paramContext.startActivity(paramIntent);
-      }
+    if ((this.a.jdField_b_of_type_Int > 90) || (this.a.jdField_b_of_type_Boolean)) {
       return;
     }
-    finally
-    {
-      if (paramIntent != null) {
-        paramIntent.close();
-      }
-    }
+    WereWolvesLoadingView localWereWolvesLoadingView1 = this.a;
+    localWereWolvesLoadingView1.jdField_b_of_type_Int += 1;
+    localWereWolvesLoadingView1 = this.a;
+    WereWolvesLoadingView localWereWolvesLoadingView2 = this.a;
+    int i = localWereWolvesLoadingView2.jdField_b_of_type_Int;
+    localWereWolvesLoadingView2.jdField_b_of_type_Int = (i + 1);
+    localWereWolvesLoadingView1.setProgress(i);
+    i = (int)(2.222222F * this.a.jdField_b_of_type_Int + 100.0F);
+    this.a.a.postDelayed(this, i);
   }
 }
 

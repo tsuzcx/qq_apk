@@ -20,9 +20,9 @@ import com.tencent.widget.XPanelContainer;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
-import wdd;
-import wde;
-import wdf;
+import wil;
+import wim;
+import win;
 
 public class QQOperateTips
   implements GrayTipsTask, TipsBarTask
@@ -51,12 +51,12 @@ public class QQOperateTips
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new wdd(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new wil(this));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new wde(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new wim(this));
   }
   
   private void b(QQOperationViopTipTask paramQQOperationViopTipTask)
@@ -109,12 +109,12 @@ public class QQOperateTips
       if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
         return null;
       }
-      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).inflate(2130970190, null);
-      TextView localTextView = (TextView)localView.findViewById(2131369484);
-      Button localButton = (Button)localView.findViewById(2131369483);
+      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).inflate(2130970205, null);
+      TextView localTextView = (TextView)localView.findViewById(2131369493);
+      Button localButton = (Button)localView.findViewById(2131369492);
       localTextView.setText(paramVarArgs.adwords);
       localButton.setText(paramVarArgs.clickableWord);
-      localButton.setOnClickListener(new wdf(this, paramVarArgs));
+      localButton.setOnClickListener(new win(this, paramVarArgs));
       return localView;
     }
     return null;

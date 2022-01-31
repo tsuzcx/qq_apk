@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
-public class advk
+class advk
   implements Runnable
 {
-  public advk(ODLoadingActivity paramODLoadingActivity) {}
+  advk(advi paramadvi) {}
   
   public void run()
   {
-    ODLoadingActivity.a(this.a);
+    this.a.a.j();
   }
 }
 

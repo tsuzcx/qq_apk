@@ -1,33 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCConnector;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog;
+import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog.OnPriceSelectedListener;
 
 public class xgd
-  implements EIPCOnGetConnectionListener
+  implements PriceSettingDialog.OnPriceSelectedListener
 {
-  public xgd(QWalletIPCConnector paramQWalletIPCConnector) {}
+  public xgd(PriceSettingDialog paramPriceSettingDialog) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void a(long paramLong)
   {
-    if (paramEIPCConnection != null) {
-      QWalletIPCConnector.a(this.a, paramEIPCConnection.procName);
-    }
-    QWalletIPCConnector.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
-    }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      QWalletIPCConnector.a(this.a, paramEIPCConnection.procName);
-    }
-    QWalletIPCConnector.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
-    }
+    PriceSettingDialog.a(this.a, paramLong);
   }
 }
 

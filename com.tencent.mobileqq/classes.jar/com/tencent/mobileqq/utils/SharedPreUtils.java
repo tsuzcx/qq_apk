@@ -31,6 +31,13 @@ public class SharedPreUtils
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("green_video_config_version_" + paramString, 0);
   }
   
+  public static void A(Context paramContext, int paramInt, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt("scribble_red_switch_config_ver_" + paramString, paramInt);
+    paramContext.commit();
+  }
+  
   public static void A(Context paramContext, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
@@ -47,7 +54,12 @@ public class SharedPreUtils
   
   public static boolean A(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips_0", false);
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    paramContext = BaseApplicationImpl.getApplication().getRuntime();
+    if (QQAppInterface.class.isInstance(paramContext)) {}
+    for (paramContext = ((QQAppInterface)paramContext).c();; paramContext = "") {
+      return localSharedPreferences.getBoolean(paramString + "_" + "qim_video_combol_lock_info" + "_" + paramContext, true);
+    }
   }
   
   public static int B(Context paramContext)
@@ -77,6 +89,11 @@ public class SharedPreUtils
     paramContext.commit();
   }
   
+  public static boolean B(Context paramContext, String paramString)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips_3", false);
+  }
+  
   public static int C(Context paramContext)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("qim_music_cfg_version", 0);
@@ -90,7 +107,7 @@ public class SharedPreUtils
   public static void C(Context paramContext, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putString("scribble_switch_ver", paramString);
+    paramContext.putBoolean(paramString + "_" + "troop_effect_pic_guide", true);
     paramContext.commit();
   }
   
@@ -99,6 +116,11 @@ public class SharedPreUtils
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
     paramContext.putInt(paramString + "_" + "show", paramInt);
     paramContext.commit();
+  }
+  
+  public static boolean C(Context paramContext, String paramString)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips", false);
   }
   
   public static int D(Context paramContext)
@@ -114,7 +136,7 @@ public class SharedPreUtils
   public static void D(Context paramContext, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putString("scribble_switch_config", paramString);
+    paramContext.putBoolean(paramString + "_" + "troop_online_member_guide", true);
     paramContext.commit();
   }
   
@@ -132,6 +154,11 @@ public class SharedPreUtils
     }
   }
   
+  public static boolean D(Context paramContext, String paramString)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips_0", false);
+  }
+  
   public static int E(Context paramContext)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("qim_faceu_cfg_version", 0);
@@ -144,9 +171,7 @@ public class SharedPreUtils
   
   public static void E(Context paramContext, String paramString)
   {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putBoolean(paramString + "_" + "troop_effect_pic_guide", true);
-    paramContext.commit();
+    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong(paramString + "_readinjoy_skin_guide_time", System.currentTimeMillis()).commit();
   }
   
   public static void E(Context paramContext, String paramString, int paramInt)
@@ -164,7 +189,7 @@ public class SharedPreUtils
   public static void F(Context paramContext, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putBoolean(paramString + "_" + "troop_online_member_guide", true);
+    paramContext.putBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips_3", true);
     paramContext.commit();
   }
   
@@ -182,7 +207,9 @@ public class SharedPreUtils
   
   public static void G(Context paramContext, String paramString)
   {
-    PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong(paramString + "_readinjoy_skin_guide_time", System.currentTimeMillis()).commit();
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips", true);
+    paramContext.commit();
   }
   
   public static void G(Context paramContext, String paramString, int paramInt)
@@ -194,13 +221,13 @@ public class SharedPreUtils
   
   public static int H(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "subscript_recommend_config_version" + "_" + "7.6.3.3565", 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "subscript_recommend_config_version" + "_" + "7.6.8.3615", 0);
   }
   
   public static void H(Context paramContext, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips_3", true);
+    paramContext.putBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips_0", true);
     paramContext.commit();
   }
   
@@ -216,11 +243,20 @@ public class SharedPreUtils
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "redbag_fold_msg_config_version", 0);
   }
   
-  public static void I(Context paramContext, String paramString)
+  private static void I(Context paramContext, String paramString)
   {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips", true);
-    paramContext.commit();
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    String str1 = "ark_qq_version_" + paramString;
+    String str2 = ((SharedPreferences)localObject).getString(str1, "");
+    if (!str2.equals("7.6.8"))
+    {
+      QLog.e("ArkApp.Config", 1, new Object[] { "QQ Version Changed, clear local config version, %s->%s", str2, "7.6.8" });
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putString(str1, "7.6.8");
+      ((SharedPreferences.Editor)localObject).commit();
+      G(paramContext, paramString, 0);
+      z(paramContext, 0, paramString);
+    }
   }
   
   public static void I(Context paramContext, String paramString, int paramInt)
@@ -235,13 +271,6 @@ public class SharedPreUtils
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_bar_config_version", 0);
   }
   
-  public static void J(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips_0", true);
-    paramContext.commit();
-  }
-  
   public static void J(Context paramContext, String paramString, int paramInt)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
@@ -252,22 +281,6 @@ public class SharedPreUtils
   public static int K(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "heads_up_notify_version", 0);
-  }
-  
-  private static void K(Context paramContext, String paramString)
-  {
-    Object localObject = PreferenceManager.getDefaultSharedPreferences(paramContext);
-    String str1 = "ark_qq_version_" + paramString;
-    String str2 = ((SharedPreferences)localObject).getString(str1, "");
-    if (!str2.equals("7.6.3"))
-    {
-      QLog.e("ArkApp.Config", 1, new Object[] { "QQ Version Changed, clear local config version, %s->%s", str2, "7.6.3" });
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putString(str1, "7.6.3");
-      ((SharedPreferences.Editor)localObject).commit();
-      G(paramContext, paramString, 0);
-      z(paramContext, 0, paramString);
-    }
   }
   
   public static void K(Context paramContext, String paramString, int paramInt)
@@ -445,7 +458,7 @@ public class SharedPreUtils
   
   public static int Z(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("readinjoy_crop_and_group_version_3565_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("readinjoy_crop_and_group_version_3615_" + paramString, 0);
   }
   
   public static void Z(Context paramContext, String paramString, int paramInt)
@@ -541,6 +554,11 @@ public class SharedPreUtils
   public static SharedPreferences a(String paramString1, String paramString2)
   {
     return BaseApplicationImpl.getContext().getSharedPreferences(paramString2 + paramString1, 0);
+  }
+  
+  public static Float a(Context paramContext, String paramString)
+  {
+    return Float.valueOf(PreferenceManager.getDefaultSharedPreferences(paramContext).getFloat("scribble_red_version_conf_" + paramString, 0.0F));
   }
   
   public static Object a(Context paramContext, String paramString, int paramInt)
@@ -706,6 +724,20 @@ public class SharedPreUtils
     }
   }
   
+  public static void a(Context paramContext, Boolean paramBoolean, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putBoolean("scribble_red_switch_conf_" + paramString, paramBoolean.booleanValue());
+    paramContext.commit();
+  }
+  
+  public static void a(Context paramContext, Float paramFloat, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putFloat("scribble_red_version_conf_" + paramString, paramFloat.floatValue());
+    paramContext.commit();
+  }
+  
   public static void a(Context paramContext, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
@@ -808,17 +840,18 @@ public class SharedPreUtils
     paramContext.commit();
   }
   
-  public static void a(Context paramContext, String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, int paramInt3, int paramInt4)
+  public static void a(Context paramContext, String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit();
     paramContext.putInt(paramString1 + "_" + "aio_poke_entry_type", paramInt1);
-    paramContext.putInt(paramString1 + "_" + "aio_pe_view_type", paramInt4);
+    paramContext.putInt(paramString1 + "_" + "aio_pe_view_type", paramInt5);
     paramContext.putString(paramString1 + "_" + "poke_emo_res_url", paramString2);
     paramContext.putString(paramString1 + "_" + "poke_emo_res_md5", paramString3);
     paramContext.putString(paramString1 + "_" + "poke_emo_surprice_indexs", paramString4);
     paramContext.putString(paramString1 + "_" + "poke_emo_order", paramString5);
     paramContext.putInt(paramString1 + "_" + "aio_pe_input_switch", paramInt2);
-    paramContext.putInt(paramString1 + "_" + "aio_pe_bubble_limit_count", paramInt3);
+    paramContext.putInt(paramString1 + "_" + "aio_pe_feed_back_switch", paramInt3);
+    paramContext.putInt(paramString1 + "_" + "aio_pe_bubble_limit_count", paramInt4);
     paramContext.commit();
   }
   
@@ -995,11 +1028,6 @@ public class SharedPreUtils
     localEditor.commit();
   }
   
-  public static void a(String paramString, int paramInt)
-  {
-    PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putLong("search_discovery_sp_prefixlast_request_time" + paramString, System.currentTimeMillis()).putLong("search_discovery_sp_prefixcache_time" + paramString, paramInt * 1000).commit();
-  }
-  
   public static void a(String paramString, int paramInt1, int paramInt2)
   {
     PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putLong("search_discovery_sp_prefixlast_update_time" + paramString + "_" + paramInt1, System.currentTimeMillis()).putLong("search_discovery_sp_prefixexpire_time" + paramString + "_" + paramInt1, paramInt2 * 1000).commit();
@@ -1132,65 +1160,60 @@ public class SharedPreUtils
   
   public static int aA(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("contact_recommend_config_version_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("cu_open_card_guide_config_appid_" + paramString, 0);
   }
   
   public static int aB(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("doutu_config_version_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("cu_open_card_guide_" + paramString, 0);
   }
   
   public static int aC(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("cu_open_card_guide_config_appid_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("sticker_config_version_" + paramString, 0);
   }
   
   public static int aD(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("cu_open_card_guide_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("webcgi_whitelist_config_version_" + paramString, 0);
   }
   
   public static int aE(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("sticker_config_version_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "doutu_config_appid", 0);
   }
   
   public static int aF(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("webcgi_whitelist_config_version_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("doutu_smart_default_count_" + paramString, 0);
   }
   
   public static int aG(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "doutu_config_appid", 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "video_redbag_config_appid", 0);
   }
   
   public static int aH(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("doutu_smart_default_count_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("video_redbag_config_version_" + paramString, 0);
   }
   
   public static int aI(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "video_redbag_config_appid", 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "troop_robot_panel_version", 0);
   }
   
   public static int aJ(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("video_redbag_config_version_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("app_guide_tips_config_version_" + paramString, 0);
   }
   
   public static int aK(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "troop_robot_panel_version", 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("scribble_red_switch_config_ver_" + paramString, 0);
   }
   
   public static int aL(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("app_guide_tips_config_version_" + paramString, 0);
-  }
-  
-  public static int aM(Context paramContext, String paramString)
   {
     int i = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "troop_aio_keyword_version", 0);
     if (QLog.isColorLevel()) {
@@ -1199,62 +1222,62 @@ public class SharedPreUtils
     return i;
   }
   
-  public static int aN(Context paramContext, String paramString)
+  public static int aM(Context paramContext, String paramString)
   {
     return BaseApplicationImpl.getApplication().getSharedPreferences(paramString + "_" + "sp_aio_config", 0).getInt(paramString + "_" + "receipt_config_version", 0);
   }
   
-  public static int aO(Context paramContext, String paramString)
+  public static int aN(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "qim_user_special_config_version", 0);
   }
   
-  public static int aP(Context paramContext, String paramString)
+  public static int aO(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "qim_user_special_config_appid", 0);
   }
   
-  public static int aQ(Context paramContext, String paramString)
+  public static int aP(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "tim_user_special_config_version", 0);
   }
   
-  public static int aR(Context paramContext, String paramString)
+  public static int aQ(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "tim_user_special_config_appid", 0);
   }
   
-  public static int aS(Context paramContext, String paramString)
+  public static int aR(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("zhitu_config_version_" + paramString, 0);
   }
   
-  public static int aT(Context paramContext, String paramString)
+  public static int aS(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("zhitu_config_page_len_" + paramString, 8);
   }
   
-  public static int aU(Context paramContext, String paramString)
+  public static int aT(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "aio_story_feed_config_version", 0);
   }
   
-  public static int aV(Context paramContext, String paramString)
+  public static int aU(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "story_halo_config_version", 0);
   }
   
-  public static int aW(Context paramContext, String paramString)
+  public static int aV(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "native_monitor_config_version", 0);
   }
   
-  public static int aX(Context paramContext, String paramString)
+  public static int aW(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "native_monitor_config_appid", 0);
   }
   
-  public static int aY(Context paramContext, String paramString)
+  public static int aX(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "qim_cfg_show_save_button", 0);
   }
@@ -1321,7 +1344,11 @@ public class SharedPreUtils
   
   public static int af(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("love_language_activity_config_" + paramString, 0);
+    int i = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "create_troop_max_invite_num", 100);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop_common_config", 2, "getCreateTroopMaxInviteNum,re:" + i);
+    }
+    return i;
   }
   
   public static void af(Context paramContext, String paramString, int paramInt)
@@ -1333,7 +1360,11 @@ public class SharedPreUtils
   
   public static int ag(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("love_language_activity_gray_config_" + paramString, 0);
+    int i = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "aio_post_tab_plugin", 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat.aio_post_list_plugin", 2, "getHotChatAIOPluginFlag,re:" + i);
+    }
+    return i;
   }
   
   public static void ag(Context paramContext, String paramString, int paramInt)
@@ -1345,11 +1376,7 @@ public class SharedPreUtils
   
   public static int ah(Context paramContext, String paramString)
   {
-    int i = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "create_troop_max_invite_num", 100);
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop_common_config", 2, "getCreateTroopMaxInviteNum,re:" + i);
-    }
-    return i;
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("medal_config_" + paramString, 0);
   }
   
   public static void ah(Context paramContext, String paramString, int paramInt)
@@ -1361,11 +1388,7 @@ public class SharedPreUtils
   
   public static int ai(Context paramContext, String paramString)
   {
-    int i = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "aio_post_tab_plugin", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat.aio_post_list_plugin", 2, "getHotChatAIOPluginFlag,re:" + i);
-    }
-    return i;
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "shortvideo_dynamic_adjustment", 0);
   }
   
   public static void ai(Context paramContext, String paramString, int paramInt)
@@ -1377,89 +1400,89 @@ public class SharedPreUtils
   
   public static int aj(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("medal_config_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "show", 0);
   }
   
   public static int ak(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "shortvideo_dynamic_adjustment", 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "quick_shot_share_to_story_config_version", 0);
   }
   
   public static int al(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "show", 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "msg_box_inter_follow_unread_count", 0);
   }
   
   public static int am(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "quick_shot_share_to_story_config_version", 0);
+    I(paramContext, paramString);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("arkmsgai_disable_version_v2_" + paramString, 0);
   }
   
   public static int an(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "msg_box_inter_follow_unread_count", 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "ark_service_type", 0);
   }
   
   public static int ao(Context paramContext, String paramString)
   {
-    K(paramContext, paramString);
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("arkmsgai_disable_version_v2_" + paramString, 0);
+    I(paramContext, paramString);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("ark_ai_dict_config_version_" + paramString, 0);
   }
   
   public static int ap(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "ark_service_type", 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("ark_at_babyq_guide_last_day_count_" + paramString, 0);
   }
   
   public static int aq(Context paramContext, String paramString)
   {
-    K(paramContext, paramString);
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("ark_ai_dict_config_version_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("ark_at_babyq_guide_total_day_count_" + paramString, 0);
   }
   
   public static int ar(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("ark_at_babyq_guide_last_day_count_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("ark_ai_close_tip_count_" + paramString, 0);
   }
   
   public static int as(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("ark_at_babyq_guide_total_day_count_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("troop_gift_url_config_version_" + paramString, 0);
   }
   
   public static int at(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("ark_ai_close_tip_count_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("troop_pobing_config_version_" + paramString, 0);
   }
   
   public static int au(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("troop_gift_url_config_version_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("qq_pre_down_yyb_ver_" + paramString, 0);
   }
   
   public static int av(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("troop_pobing_config_version_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("buluo_red_dot_config_version_" + paramString, 0);
   }
   
   public static int aw(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("qq_pre_down_yyb_ver_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "qqhead_syncqzone_checkedstate", -1);
   }
   
   public static int ax(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("buluo_red_dot_config_version_" + paramString, 0);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "qqhead_history_numflag", -1);
   }
   
   public static int ay(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "qqhead_syncqzone_checkedstate", -1);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("contact_recommend_config_version_" + paramString, 0);
   }
   
   public static int az(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "qqhead_history_numflag", -1);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("doutu_config_version_" + paramString, 0);
   }
   
   public static int b(Context paramContext)
@@ -1502,6 +1525,11 @@ public class SharedPreUtils
   public static SharedPreferences b(String paramString)
   {
     return BaseApplicationImpl.getContext().getSharedPreferences("aio_jump_lightalk_red_dot" + paramString, 0);
+  }
+  
+  public static Float b(Context paramContext, String paramString)
+  {
+    return Float.valueOf(PreferenceManager.getDefaultSharedPreferences(paramContext).getFloat("scribble_plus_red_version_conf_" + paramString, 0.0F));
   }
   
   public static String b(Context paramContext)
@@ -1567,6 +1595,13 @@ public class SharedPreUtils
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
     paramContext.putInt(paramString2 + "_" + "birthday_splash_version_code", paramInt);
     paramContext.putString("birthday_splash_md5value", paramString1);
+    paramContext.commit();
+  }
+  
+  public static void b(Context paramContext, Float paramFloat, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putFloat("scribble_plus_red_version_conf_" + paramString, paramFloat.floatValue());
     paramContext.commit();
   }
   
@@ -1670,6 +1705,13 @@ public class SharedPreUtils
     paramContext.commit();
   }
   
+  public static void b(Context paramContext, boolean paramBoolean, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putBoolean("scribble_switch_conf_" + paramString, paramBoolean);
+    paramContext.commit();
+  }
+  
   public static void b(String paramString1, String paramString2, long paramLong)
   {
     paramString1 = paramString1 + "_qqstory_feed_sp";
@@ -1690,15 +1732,7 @@ public class SharedPreUtils
   public static boolean b(Context paramContext, String paramString)
   {
     paramString = "config_app_version_" + paramString;
-    return !TextUtils.equals(PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramString, ""), "7.6.3");
-  }
-  
-  public static boolean b(String paramString)
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
-    long l1 = localSharedPreferences.getLong("search_discovery_sp_prefixlast_request_time" + paramString, 0L);
-    long l2 = localSharedPreferences.getLong("search_discovery_sp_prefixcache_time" + paramString, 0L);
-    return System.currentTimeMillis() - l1 >= l2;
+    return !TextUtils.equals(PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramString, ""), "7.6.8");
   }
   
   public static int[] b()
@@ -1859,6 +1893,13 @@ public class SharedPreUtils
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
     paramContext.putBoolean("kandian_video_sound", paramBoolean);
+    paramContext.commit();
+  }
+  
+  public static void c(Context paramContext, boolean paramBoolean, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putBoolean("scribble_plus_red_switch_conf_" + paramString, paramBoolean);
     paramContext.commit();
   }
   
@@ -2320,7 +2361,7 @@ public class SharedPreUtils
   public static void g(Context paramContext, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putString("config_app_version_" + paramString, "7.6.3");
+    paramContext.putString("config_app_version_" + paramString, "7.6.8");
     paramContext.commit();
   }
   
@@ -2541,7 +2582,7 @@ public class SharedPreUtils
   
   public static String j(Context paramContext)
   {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("show_hot_friend_days_setting", "3|30|3|30|3|30|3|30|5");
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("show_hot_friend_days_setting", "3|30|3|30|3|30|3|30|5|7|30");
     if (QLog.isColorLevel()) {
       QLog.d("HotFriend_GET_LOCAL_CONFIG", 2, "result=" + paramContext);
     }
@@ -2819,7 +2860,7 @@ public class SharedPreUtils
   public static void m(Context paramContext, String paramString, int paramInt)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString + "_" + "subscript_recommend_config_version" + "_" + "7.6.3.3565", paramInt);
+    paramContext.putInt(paramString + "_" + "subscript_recommend_config_version" + "_" + "7.6.8.3615", paramInt);
     paramContext.commit();
   }
   
@@ -3192,11 +3233,6 @@ public class SharedPreUtils
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "qav_anychat_time_limit_config_version", 0);
   }
   
-  public static String s(Context paramContext)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("scribble_switch_ver", "");
-  }
-  
   public static String s(Context paramContext, String paramString)
   {
     return BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getString(paramString + "_readinjoy_refresh", null);
@@ -3247,7 +3283,7 @@ public class SharedPreUtils
   
   public static boolean s(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "troop_effect_pic_guide", false);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean("scribble_switch_conf_" + paramString, false);
   }
   
   public static int t(Context paramContext)
@@ -3258,11 +3294,6 @@ public class SharedPreUtils
   public static int t(Context paramContext, String paramString)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "qav_score_config_version", 0);
-  }
-  
-  public static String t(Context paramContext)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("scribble_switch_config", null);
   }
   
   public static String t(Context paramContext, String paramString)
@@ -3315,7 +3346,7 @@ public class SharedPreUtils
   
   public static boolean t(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "troop_online_member_guide", false);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean("scribble_red_switch_conf_" + paramString, false);
   }
   
   public static int u(Context paramContext)
@@ -3393,7 +3424,7 @@ public class SharedPreUtils
   
   public static boolean u(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean("zhitu_config_switch_" + paramString, false);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean("scribble_plus_red_switch_conf_" + paramString, false);
   }
   
   public static int v(Context paramContext)
@@ -3424,7 +3455,7 @@ public class SharedPreUtils
   public static void v(Context paramContext, int paramInt, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("readinjoy_crop_and_group_version_3565_" + paramString, paramInt);
+    paramContext.putInt("readinjoy_crop_and_group_version_3615_" + paramString, paramInt);
     paramContext.commit();
   }
   
@@ -3458,7 +3489,7 @@ public class SharedPreUtils
   
   public static boolean v(Context paramContext, String paramString)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean(paramString + "_readinjoy_skin_volume", false);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "troop_effect_pic_guide", false);
   }
   
   public static int w(Context paramContext)
@@ -3506,7 +3537,7 @@ public class SharedPreUtils
   
   public static boolean w(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean("zhitu_setting_switch_" + paramString, true);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "troop_online_member_guide", false);
   }
   
   public static int x(Context paramContext)
@@ -3557,12 +3588,7 @@ public class SharedPreUtils
   
   public static boolean x(Context paramContext, String paramString)
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramContext);
-    paramContext = BaseApplicationImpl.getApplication().getRuntime();
-    if (QQAppInterface.class.isInstance(paramContext)) {}
-    for (paramContext = ((QQAppInterface)paramContext).c();; paramContext = "") {
-      return localSharedPreferences.getBoolean(paramString + "_" + "qim_video_combol_lock_info" + "_" + paramContext, true);
-    }
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean("zhitu_config_switch_" + paramString, false);
   }
   
   public static int y(Context paramContext)
@@ -3598,7 +3624,7 @@ public class SharedPreUtils
   
   public static boolean y(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips_3", false);
+    return BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean(paramString + "_readinjoy_skin_volume", false);
   }
   
   public static int z(Context paramContext)
@@ -3634,7 +3660,7 @@ public class SharedPreUtils
   
   public static boolean z(Context paramContext, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "user_guide_taste_tracking_sticker_tips", false);
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean("zhitu_setting_switch_" + paramString, true);
   }
 }
 

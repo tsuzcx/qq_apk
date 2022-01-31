@@ -1,24 +1,34 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.QLog;
 
 class jof
-  implements Runnable
+  implements WXShareHelper.WXShareListener
 {
-  jof(joe paramjoe, long paramLong) {}
+  jof(joe paramjoe) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    if ((this.jdField_a_of_type_Joe.a.a() == this.jdField_a_of_type_Long) && (!this.jdField_a_of_type_Joe.a.a.getApp().getApplicationContext().getSharedPreferences("qav_SP", 0).getBoolean("kick_out_self", false))) {
-      this.jdField_a_of_type_Joe.a.f(true);
+    if ((RedPacketShareFragment.d(this.a.a.a) == null) || (!RedPacketShareFragment.d(this.a.a.a).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
+    switch (paramBaseResp.errCode)
+    {
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      RedPacketShareFragment.a("0X8008CF8", 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jof
  * JD-Core Version:    0.7.0.1
  */

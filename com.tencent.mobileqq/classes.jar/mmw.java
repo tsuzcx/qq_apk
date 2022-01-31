@@ -1,16 +1,30 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer.OnTipClickListener;
 
 public class mmw
-  implements BubblePopupWindow.OnDismissListener
+  extends Handler
 {
-  public mmw(WebFastAdapter paramWebFastAdapter, BaseItemViewHolder paramBaseItemViewHolder) {}
-  
-  public void a()
+  public mmw(ReadInJoySearchTipsContainer paramReadInJoySearchTipsContainer, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder.a.setSelected(false);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (this.a.a != null)
+    {
+      if (paramMessage.obj != null) {
+        this.a.a.a((String)paramMessage.obj);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(null);
   }
 }
 

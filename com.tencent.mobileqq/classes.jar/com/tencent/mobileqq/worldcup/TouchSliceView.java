@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.worldcup;
 
-import akya;
-import akyb;
+import alfs;
+import alft;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -34,27 +34,27 @@ public class TouchSliceView
   public Runnable a;
   private Deque jdField_a_of_type_JavaUtilDeque = new ArrayDeque(this.jdField_a_of_type_Int);
   private boolean jdField_a_of_type_Boolean;
-  Runnable jdField_b_of_type_JavaLangRunnable = new akyb(this);
+  Runnable jdField_b_of_type_JavaLangRunnable = new alft(this);
   private Deque jdField_b_of_type_JavaUtilDeque = new ArrayDeque(this.jdField_a_of_type_Int);
   
   public TouchSliceView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new akya(this);
+    this.jdField_a_of_type_JavaLangRunnable = new alfs(this);
     a();
   }
   
   public TouchSliceView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaLangRunnable = new akya(this);
+    this.jdField_a_of_type_JavaLangRunnable = new alfs(this);
     a();
   }
   
   public TouchSliceView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangRunnable = new akya(this);
+    this.jdField_a_of_type_JavaLangRunnable = new alfs(this);
     a();
   }
   
@@ -191,7 +191,7 @@ public class TouchSliceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.worldcup.TouchSliceView
  * JD-Core Version:    0.7.0.1
  */

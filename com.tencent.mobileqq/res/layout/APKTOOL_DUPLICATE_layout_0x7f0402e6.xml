@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.magicface.view.MagicfaceContainerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10ef" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.magicface.view.MagicFaceGLView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10f0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10f1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02195e" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
-</com.tencent.mobileqq.magicface.view.MagicfaceContainerView>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1058" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02066b" android:layout_centerInParent="true" android:contentDescription="@null" />
+    <FrameLayout android:layout_width="30.0dip" android:layout_height="30.0dip">
+        <ImageView android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a105b" android:visibility="gone" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d056d" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d056d" android:layout_marginLeft="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ac3" />
+    </FrameLayout>
+</FrameLayout>

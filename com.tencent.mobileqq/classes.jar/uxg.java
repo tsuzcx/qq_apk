@@ -1,38 +1,22 @@
-import android.graphics.BitmapFactory.Options;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
+import com.tencent.mobileqq.activity.aio.doodle.LineLayer.LineLayerListener;
 
 public class uxg
-  implements Runnable
+  implements LineLayer.LineLayerListener
 {
-  public uxg(FileVideoItemBuilder paramFileVideoItemBuilder, FileManagerEntity paramFileManagerEntity, String paramString) {}
+  public uxg(DoodleView paramDoodleView) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = this.jdField_a_of_type_JavaLangString;
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight > 0) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth > 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileVideoItemBuilder<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]download video thumb success， but entity has size(wh)[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "]");
-      }
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b.post(new uxh(this));
-      return;
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      FilePicURLDrawlableHelper.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath, localOptions);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth = localOptions.outWidth;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight = localOptions.outHeight;
-      if (QLog.isColorLevel()) {
-        QLog.i("FileVideoItemBuilder<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]entity no size, get and use thumb size(wh)[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "]");
-      }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
     }
   }
 }

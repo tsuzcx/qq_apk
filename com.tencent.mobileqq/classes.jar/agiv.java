@@ -1,124 +1,96 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
 
 public class agiv
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public agiv(ScanTorchActivity paramScanTorchActivity, boolean paramBoolean, float paramFloat) {}
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
   
-  public void run()
+  public agiv(ARTipsManager paramARTipsManager) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((!ScanTorchActivity.p(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity)) || (ScanTorchActivity.d(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) == null) || (ScanTorchActivity.e(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) == null) || (ScanTorchActivity.f(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) == null) || (ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) == null) || (ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) == null) || (ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) == null) || (ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) == null) || (ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) == null)) {}
-    double d;
-    do
+    agjg localagjg;
+    float f2;
+    float f1;
+    if (ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager) != null)
     {
-      return;
-      if (this.jdField_a_of_type_Boolean)
+      paramView = (agjf)ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getTag(2131362443);
+      localagjg = (agjg)ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getTag();
+      if ((paramView != null) && (localagjg != null))
       {
-        ScanTorchActivity.d(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.e(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.f(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        return;
+        f2 = paramMotionEvent.getX();
+        f1 = paramMotionEvent.getY();
       }
-      d = Math.toDegrees(this.jdField_a_of_type_Float);
-      if ((d >= -157.5D) && (d < -112.5D))
+    }
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 0: 
+    case 2: 
+      do
       {
-        ScanTorchActivity.d(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-        ScanTorchActivity.e(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.f(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        return;
+        do
+        {
+          do
+          {
+            return true;
+            this.jdField_a_of_type_Float = f2;
+            this.b = f1;
+            this.jdField_a_of_type_Long = System.currentTimeMillis();
+          } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
+          localagjg.a.setPressed(true);
+          return true;
+        } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
+        f2 -= this.jdField_a_of_type_Float;
+        f1 -= this.b;
+      } while ((float)Math.sqrt(f2 * f2 + f1 * f1) < ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop());
+      localagjg.a.setPressed(false);
+      return true;
+    case 1: 
+      f2 -= this.jdField_a_of_type_Float;
+      f1 -= this.b;
+      f2 = (float)Math.sqrt(f2 * f2 + f1 * f1);
+      long l1 = System.currentTimeMillis();
+      long l2 = this.jdField_a_of_type_Long;
+      if (f2 < ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop()) {
+        if (paramView.b == 2)
+        {
+          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
+          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
+          if (paramView.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ButtonClickListener != null) {
+            paramView.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ButtonClickListener.a();
+          }
+        }
       }
-      if ((d >= -112.5D) && (d < -67.5D))
+      for (;;)
       {
-        ScanTorchActivity.d(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.e(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-        ScanTorchActivity.f(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        return;
+        this.jdField_a_of_type_Float = 0.0F;
+        this.b = 0.0F;
+        this.jdField_a_of_type_Long = 0L;
+        localagjg.a.setPressed(false);
+        return true;
+        if ((f2 > ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop()) && (f1 > 50.0F) && ((float)(l1 - l2) < 300.0F) && (paramView.jdField_a_of_type_Int == 1))
+        {
+          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
+          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
+        }
       }
-      if ((d >= -67.5D) && (d < -22.5D))
-      {
-        ScanTorchActivity.d(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.e(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.f(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-        ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        return;
-      }
-      if ((d >= -22.5D) && (d < 22.5D))
-      {
-        ScanTorchActivity.d(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.e(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.f(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-        ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        return;
-      }
-      if ((d >= 22.5D) && (d < 67.5D))
-      {
-        ScanTorchActivity.d(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.e(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.f(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-        ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        return;
-      }
-      if ((d >= 67.5D) && (d < 112.5D))
-      {
-        ScanTorchActivity.d(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.e(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.f(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-        ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        return;
-      }
-      if ((d >= 112.5D) && (d < 157.5D))
-      {
-        ScanTorchActivity.d(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.e(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.f(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-        ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-        return;
-      }
-    } while ((d < 157.5D) && (d >= -157.5D));
-    ScanTorchActivity.d(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.e(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.f(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
+    }
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.jdField_a_of_type_Long = 0L;
+    localagjg.a.setPressed(false);
+    return true;
   }
 }
 

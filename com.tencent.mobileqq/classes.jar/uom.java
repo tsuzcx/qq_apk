@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipViewManager;
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.mobileqq.activity.aio.AppGuideTipsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.PackageUtil;
 
 public class uom
-  implements ImageButton.OnClickListener
+  implements Runnable
 {
-  public uom(FriendShipViewManager paramFriendShipViewManager) {}
+  public uom(AppGuideTipsManager paramAppGuideTipsManager) {}
   
-  public void a(Sprite paramSprite)
+  public void run()
   {
-    this.a.f();
-    this.a.a.postDelayed(new uon(this), 300L);
+    AppGuideTipsManager.b(this.a, PackageUtil.a(AppGuideTipsManager.a(this.a).getApp(), "com.tencent.tim"));
   }
 }
 

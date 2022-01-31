@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208c5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03b9" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="vertical" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        <com.tencent.mobileqq.widget.QQViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f2c" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <RadioGroup android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f2d" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <View android:layout_width="fill_parent" android:layout_height="45.0dip" />
-    </LinearLayout>
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f33" android:clickable="true" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03a8" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03a9" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:scaleType="centerCrop" />
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2b94" android:singleLine="true" android:includeFontPadding="false" />
+</LinearLayout>

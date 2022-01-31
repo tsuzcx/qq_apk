@@ -1,42 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.GetResultSimpleStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.InitParamSimpleStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.network.request.GetProfileFeedIdListRequest;
+import com.tencent.biz.qqstory.network.request.GetProfileFeedIdListRequest.GetProfileFeedIdListResponse;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.UncheckedCallable;
+import com.tribe.async.async.JobContext;
 
-public class obi
-  extends QQStoryObserver
+class obi
+  implements CmdTaskManger.CommandCallback
 {
-  public obi(NewMyStorySegment paramNewMyStorySegment) {}
+  obi(obh paramobh, JobContext paramJobContext, Integer paramInteger) {}
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public void a(@NonNull GetProfileFeedIdListRequest paramGetProfileFeedIdListRequest, @Nullable GetProfileFeedIdListRequest.GetProfileFeedIdListResponse paramGetProfileFeedIdListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((NewMyStorySegment.a(this.a) == null) || (NewMyStorySegment.a(this.a).a == null))
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      SLog.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
+      SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
       return;
     }
-    String str = NewMyStorySegment.a(this.a).a.a;
-    if (!TextUtils.equals(str, paramStoryPushMsg.d))
+    if ((paramErrorMessage.isFail()) || (paramGetProfileFeedIdListResponse == null))
     {
-      SLog.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+      SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      obh.a(this.jdField_a_of_type_Obh, paramErrorMessage);
       return;
     }
-    switch (paramStoryPushMsg.a)
-    {
-    case 16: 
-    case 17: 
-    default: 
-      return;
-    }
-    this.a.a(new Step[] { new SimpleStep.InitParamSimpleStep(GetMyStoryVideoListStep.Result.a(str)), (Step)this.a.b.a(), new SimpleStep.GetResultSimpleStep(new obj(this, str)) });
+    obh.a(this.jdField_a_of_type_Obh).a(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetProfileFeedIdListResponse.jdField_a_of_type_Boolean);
+    ((FeedManager)SuperManager.a(11)).a(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList);
+    paramGetProfileFeedIdListRequest = obh.a(this.jdField_a_of_type_Obh).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    obh.a(this.jdField_a_of_type_Obh, paramGetProfileFeedIdListRequest);
   }
 }
 

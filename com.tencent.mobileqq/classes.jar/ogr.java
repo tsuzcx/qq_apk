@@ -1,21 +1,21 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoSave;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
+import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
 
 public class ogr
-  implements ProgressPieDrawable.OnProgressListener
+  implements View.OnClickListener
 {
-  public ogr(EditVideoSave paramEditVideoSave) {}
+  public ogr(TagAdapter paramTagAdapter) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    TagAdapter.a(this.a, false);
+    this.a.notifyDataSetChanged();
+    if (TagAdapter.a(this.a) != null) {
+      TagAdapter.a(this.a).f();
     }
   }
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

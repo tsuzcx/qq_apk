@@ -1,22 +1,14 @@
-import com.tencent.device.msg.data.DevSingleStructMsgProcessor;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.activity.aio.item.DeviceSingleStructBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 
-class uvz
-  implements FMDialogUtil.FMDialogInterface
+public class uvz
+  implements Runnable
 {
-  uvz(uvy paramuvy, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
+  public uvz(RecordSoundPanel paramRecordSoundPanel) {}
   
-  public void a()
+  public void run()
   {
-    ((DeviceMsgHandle)this.jdField_a_of_type_Uvy.a.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
-    DeviceSingleStructBuilder.a(this.jdField_a_of_type_Uvy.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    this.a.b();
   }
-  
-  public void b() {}
 }
 
 

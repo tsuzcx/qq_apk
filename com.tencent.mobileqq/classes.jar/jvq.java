@@ -1,34 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.av.app.VideoObserver;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.EffectSettingBtn;
+import com.tencent.av.utils.UITools;
 
 public class jvq
-  extends VideoObserver
+  implements View.OnClickListener
 {
-  public jvq(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public jvq(EffectSettingBtn paramEffectSettingBtn) {}
   
-  protected void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "]");
-    if (TextUtils.equals(this.a.c, paramString))
-    {
-      this.a.b("VideoObserver_onClose");
-      this.a.b(paramInt);
-    }
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
-    if (TextUtils.equals(this.a.c, paramString)) {
-      this.a.b("VideoObserver_onDestroyUI");
-    }
+    this.a.a.a().a().ax = true;
+    UITools.a(this.a.a);
+    EffectSettingBtn.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jvq
  * JD-Core Version:    0.7.0.1
  */

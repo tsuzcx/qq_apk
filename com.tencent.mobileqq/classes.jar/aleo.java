@@ -1,26 +1,36 @@
-import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class aleo
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public aleo(OpenJsBridge.OpenJsBridgeListener paramOpenJsBridgeListener, String paramString, WebView paramWebView) {}
+  public aleo(SlideDetectListView paramSlideDetectListView) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    LogUtility.b("Response", "AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':-2,'data':'no such method'});");
-    try
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':-2,'data':'no such method'});");
-      return;
+    this.a.c = paramInt;
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
     }
-    catch (Exception localException) {}
+    if (SlideDetectListView.b(this.a) != null) {
+      SlideDetectListView.b(this.a).a(paramAbsListView, paramInt);
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (SlideDetectListView.a(this.a) != null) {
+      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    if (SlideDetectListView.b(this.a) != null) {
+      SlideDetectListView.b(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aleo
  * JD-Core Version:    0.7.0.1
  */

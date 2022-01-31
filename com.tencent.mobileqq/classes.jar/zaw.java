@@ -1,35 +1,40 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.OnApolloViewListener;
+import com.tencent.mobileqq.apollo.store.ApolloViewController;
+import com.tencent.mobileqq.apollo.store.ApolloViewController.PlayActionData;
+import com.tencent.util.WeakReferenceHandler;
 
 public class zaw
-  implements Runnable
+  implements OnApolloViewListener
 {
-  public zaw(BrowserAppInterface paramBrowserAppInterface) {}
+  public zaw(ApolloViewController paramApolloViewController, DisplayMetrics paramDisplayMetrics, ApolloViewController.PlayActionData paramPlayActionData) {}
   
-  public void run()
+  public void onNotifyLongTouch(String paramString) {}
+  
+  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
   {
-    if ((this.a.isBackground_Stop) && (BaseActivity.sTopActivity == null))
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.jdField_c_of_type_Boolean = true;
+    float f = this.jdField_a_of_type_AndroidUtilDisplayMetrics.density;
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.jdField_c_of_type_Float = (paramInt1 / 2 / f);
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.b != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.a != null) && (ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController) != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BrowserAppInterface", 2, "no activity running, reboot for tbs now");
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.b.onExecDispose();
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController.a.onExecDispose();
+      Message localMessage = ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).obtainMessage(19, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController$PlayActionData.c, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController$PlayActionData.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController$PlayActionData.a) {
+        localMessage.obj = Float.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController$PlayActionData.jdField_b_of_type_Float);
       }
-      localIntent = new Intent();
-      localIntent.putExtra("qq_mode_foreground", true);
-      BrowserAppInterface.a(this.a, localIntent);
+      ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController).sendMessageDelayed(localMessage, 100L);
     }
-    while (!QLog.isColorLevel())
-    {
-      Intent localIntent;
-      return;
-    }
-    QLog.d("BrowserAppInterface", 2, "activity still running, cannot reboot");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zaw
  * JD-Core Version:    0.7.0.1
  */

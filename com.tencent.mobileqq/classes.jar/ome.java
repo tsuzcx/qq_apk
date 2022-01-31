@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
-public class ome
-  implements View.OnClickListener
+class ome
+  implements Runnable
 {
-  public ome(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  ome(omd paramomd) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    SLog.b("SelectColorLayout", "onUndoClick: undoTypeEnable=" + this.a.jdField_a_of_type_Boolean);
-    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
-    while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnUndoViewClickListener == null)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnUndoViewClickListener.a();
+    LocalVideoSelectActivity.a(this.a.a).setVisibility(8);
   }
 }
 

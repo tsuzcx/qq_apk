@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class xxk
+  implements Runnable
 {
-  public AtomicBoolean a;
-  public boolean a;
+  public xxk(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  private xxk(CameraFilterGLView paramCameraFilterGLView)
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    if ((this.a.a != null) && (!this.a.a.isEnabled())) {
+      this.a.a.setEnabled(true);
+    }
   }
 }
 

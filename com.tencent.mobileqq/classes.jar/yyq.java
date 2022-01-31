@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanelAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager;
 
 public class yyq
   implements Runnable
 {
-  public yyq(ApolloPanel paramApolloPanel) {}
+  public yyq(SpriteBackgroundManager paramSpriteBackgroundManager, ApolloTextureView paramApolloTextureView, int paramInt) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter != null) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPanel", 2, "refreshPanel. Thread id = " + Thread.currentThread().getId());
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(this.jdField_a_of_type_Int);
   }
 }
 

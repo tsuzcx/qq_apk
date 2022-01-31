@@ -1,42 +1,35 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.olympic.TorchInfo;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.ObjectOutputStream;
+import com.tencent.mobileqq.app.NowHandler;
+import com.tencent.mobileqq.now.ChannelResponse;
+import com.tencent.mobileqq.now.NowAppHelper;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-public class ageb
-  implements Runnable
+class ageb
+  extends DownloadListener
 {
-  public ageb(OlympicManager paramOlympicManager, TorchInfo paramTorchInfo) {}
+  ageb(agea paramagea) {}
   
-  public void run()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    synchronized (OlympicManager.b(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager))
-    {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      try
-      {
-        ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
-        localObjectOutputStream.writeObject(this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo);
-        localObjectOutputStream.close();
-        localByteArrayOutputStream.close();
-        FileUtils.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_torchinfo_" + this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager.a.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        return;
-      }
+    super.onDone(paramDownloadTask);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppNowHandler.a("downloadApk", "", "", "", "", paramDownloadTask.a());
+    if (QLog.isColorLevel()) {
+      QLog.d(NowAppHelper.a, 2, "doShortCutAction download onDone,task=" + paramDownloadTask);
     }
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(NowAppHelper.a, 2, "doShortCutAction download onStart,apkUrl=" + this.a.jdField_a_of_type_ComTencentMobileqqNowChannelResponse.downloadLink);
+    }
+    return super.onStart(paramDownloadTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ageb
  * JD-Core Version:    0.7.0.1
  */

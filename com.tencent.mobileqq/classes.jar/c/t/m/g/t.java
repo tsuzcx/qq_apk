@@ -7,7 +7,8 @@ final class t
   {
     try
     {
-      o.e();
+      p.d();
+      x.a(p.e(), p.f());
       return;
     }
     catch (Throwable localThrowable) {}

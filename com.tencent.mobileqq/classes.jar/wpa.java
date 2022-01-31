@@ -1,19 +1,15 @@
-import android.view.animation.Animation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
 
 public class wpa
-  extends AnimateUtils.AnimationAdapter
+  implements View.OnClickListener
 {
-  public wpa(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public wpa(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a(true);
-    EmoticonGroupStoreFragment.a(this.a, false);
-    this.a.a.removeView(EmoticonGroupStoreFragment.a(this.a));
-    this.a.a.removeView(EmoticonGroupStoreFragment.b(this.a));
+    this.a.finish();
   }
 }
 

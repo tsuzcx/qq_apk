@@ -1,44 +1,43 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class wef
-  implements INetEngine.INetEngineListener
+class wef
+  implements BusinessObserver
 {
-  private Handler a;
+  wef(wee paramwee) {}
   
-  public wef(Handler paramHandler)
-  {
-    this.a = paramHandler;
-  }
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "FontDownloadListener onResp: " + paramNetResp);
+      QLog.d("Q.aio.BaseChatPie", 2, "requestQidiKefu ... onReceive = " + paramBoolean);
     }
-    if (paramNetResp.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    if (paramNetResp.jdField_a_of_type_Int == 0)
-    {
-      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(ZhituManager.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c)))
+    if (paramBoolean) {
+      try
       {
-        this.a.sendEmptyMessage(100);
-        return;
+        paramBundle = paramBundle.getByteArray("data");
+        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
+        localSendMenuEventResponse.mergeFrom(paramBundle);
+        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.BaseChatPie", 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
+        }
+        if (paramInt == 0)
+        {
+          this.a.a.ak = true;
+          this.a.a.bn();
+          this.a.a.aY();
+          return;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, "font download but md5 is not matched");
-      }
-      this.a.sendEmptyMessage(101);
-      return;
+      catch (Exception paramBundle) {}
     }
-    this.a.sendEmptyMessage(101);
+    this.a.a.w(2131430035);
+    this.a.a.aY();
   }
 }
 

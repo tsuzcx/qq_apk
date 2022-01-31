@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.proteus.bean;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
-import mqu;
+import mum;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -13,24 +13,24 @@ public class ValueBean
   public Map b = new HashMap();
   private Map c = new HashMap();
   
-  private void a(mqu parammqu, String paramString1, String paramString2)
+  private void a(mum parammum, String paramString1, String paramString2)
   {
-    String str1 = parammqu.b;
-    String str2 = (String)this.b.get(parammqu.jdField_a_of_type_JavaLangString);
+    String str1 = parammum.b;
+    String str2 = (String)this.b.get(parammum.jdField_a_of_type_JavaLangString);
     JSONArray localJSONArray = new JSONArray();
-    parammqu.b = str1.replace("\"" + paramString1 + "\"", "\"" + paramString2 + "\"");
+    parammum.b = str1.replace("\"" + paramString1 + "\"", "\"" + paramString2 + "\"");
     if (str2 == null)
     {
-      paramString1 = parammqu.b;
-      QLog.d("ValueBean", 2, "putJsonArray: 样式定义有问题: 样式里没定义 " + parammqu.jdField_a_of_type_JavaLangString + "  ");
+      paramString1 = parammum.b;
+      QLog.d("ValueBean", 2, "putJsonArray: 样式定义有问题: 样式里没定义 " + parammum.jdField_a_of_type_JavaLangString + "  ");
     }
     for (;;)
     {
-      this.b.put(parammqu.jdField_a_of_type_JavaLangString, paramString1);
+      this.b.put(parammum.jdField_a_of_type_JavaLangString, paramString1);
       return;
       try
       {
-        a(new JSONArray(parammqu.b), new JSONArray(str2), localJSONArray);
+        a(new JSONArray(parammum.b), new JSONArray(str2), localJSONArray);
         paramString1 = localJSONArray.toString();
       }
       catch (JSONException paramString1)
@@ -41,14 +41,14 @@ public class ValueBean
     }
   }
   
-  private void a(JSONArray paramJSONArray, mqu parammqu)
+  private void a(JSONArray paramJSONArray, mum parammum)
   {
     int i = 0;
     if (i < paramJSONArray.length())
     {
       Object localObject = paramJSONArray.get(i);
       if ((localObject instanceof JSONArray)) {
-        a((JSONArray)localObject, parammqu);
+        a((JSONArray)localObject, parammum);
       }
       for (;;)
       {
@@ -57,7 +57,7 @@ public class ValueBean
         if (!(localObject instanceof String)) {
           break label69;
         }
-        this.c.put((String)localObject, parammqu);
+        this.c.put((String)localObject, parammum);
       }
       label69:
       throw new IllegalArgumentException("error format");
@@ -112,7 +112,7 @@ public class ValueBean
   {
     try
     {
-      paramString2 = new mqu(paramString2, null);
+      paramString2 = new mum(paramString2, null);
       paramString2.jdField_a_of_type_Boolean = true;
       paramString2.b = paramString1;
       a(new JSONArray(paramString1), paramString2);
@@ -148,26 +148,26 @@ public class ValueBean
       b(paramString1, paramString2);
       return;
     }
-    paramString2 = new mqu(paramString2, (mqu)this.c.get(paramString1));
+    paramString2 = new mum(paramString2, (mum)this.c.get(paramString1));
     this.c.put(paramString1, paramString2);
   }
   
   public void b(String paramString, Object paramObject)
   {
-    mqu localmqu = (mqu)this.c.get(paramString);
-    if (localmqu == null) {
+    mum localmum = (mum)this.c.get(paramString);
+    if (localmum == null) {
       this.a.put(paramString, paramObject);
     }
-    if (localmqu != null)
+    if (localmum != null)
     {
-      if (localmqu.jdField_a_of_type_Boolean) {
-        a(localmqu, paramString, (String)paramObject);
+      if (localmum.jdField_a_of_type_Boolean) {
+        a(localmum, paramString, (String)paramObject);
       }
       for (;;)
       {
-        localmqu = localmqu.jdField_a_of_type_Mqu;
+        localmum = localmum.jdField_a_of_type_Mum;
         break;
-        String str = localmqu.jdField_a_of_type_JavaLangString;
+        String str = localmum.jdField_a_of_type_JavaLangString;
         this.a.put(str, paramObject);
       }
     }

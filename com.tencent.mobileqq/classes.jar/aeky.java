@@ -1,25 +1,20 @@
-public class aeky
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
+
+class aeky
+  implements Runnable
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public final String f;
+  aeky(aekx paramaekx) {}
   
-  public aeky(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  public void run()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
+    if (aekx.a(this.a) != null) {
+      aekx.a(this.a).run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aeky
  * JD-Core Version:    0.7.0.1
  */

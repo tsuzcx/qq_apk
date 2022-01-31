@@ -7,7 +7,7 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 import org.json.JSONObject;
-import paz;
+import pfr;
 
 public class ARMapPlugin
   extends WebViewPlugin
@@ -49,7 +49,7 @@ public class ARMapPlugin
           paramJsBridgeListener = paramString1;
         }
       }
-      SosoInterface.a(new paz(this, 3, true, true, 600000L, false, false, "wealthgod_locate_check", paramJsBridgeListener));
+      SosoInterface.a(new pfr(this, 3, true, true, 600000L, false, false, "wealthgod_locate_check", paramJsBridgeListener));
     }
     return true;
   }

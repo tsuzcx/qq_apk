@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.AndroidAPs;
 
-public class lro
-  implements Runnable
+public final class lro
+  implements Parcelable.Creator
 {
-  public lro(ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, ReadInJoyUserInfoModule.Request0xb81Params paramRequest0xb81Params) {}
-  
-  public void run()
+  public AndroidAPs a(Parcel paramParcel)
   {
-    ToServiceMsg localToServiceMsg = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule$Request0xb81Params);
-    if (localToServiceMsg != null)
-    {
-      localToServiceMsg.addAttribute("user_info_uin_list_key", ReadInJoyUserInfoModule.Request0xb81Params.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule$Request0xb81Params));
-      localToServiceMsg.addAttribute("retry_request_count_key", Integer.valueOf(0));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule.a(localToServiceMsg);
-    }
+    return new AndroidAPs(paramParcel);
+  }
+  
+  public AndroidAPs[] a(int paramInt)
+  {
+    return new AndroidAPs[paramInt];
   }
 }
 

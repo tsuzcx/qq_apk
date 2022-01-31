@@ -1,35 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
-import com.tencent.mobileqq.arcard.ARCardUtils;
-import java.io.File;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
 public class aags
   implements Runnable
 {
-  public aags(AREngine paramAREngine, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject) {}
+  public aags(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, long paramLong) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a())) {
-      switch (this.jdField_a_of_type_Int)
-      {
-      default: 
-        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a(null, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Int == 1001)
-      {
-        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangObject;
-        ARCardUtils.a(localBitmap, new File("/sdcard/test/ARCloudSucessResult.jpg"), true);
-        localBitmap.recycle();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.s();
-    }
+    ARWorldCupGameLogicManager.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.b);
   }
 }
 

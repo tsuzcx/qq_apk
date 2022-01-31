@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.view;
 
-import agsi;
+import agwv;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -183,66 +183,66 @@ public class SingleTouchLayout
     return ((Integer)paramVarArgs.get(paramVarArgs.size() - 1)).intValue();
   }
   
-  agsi a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
+  agwv a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
   {
     Point localPoint1 = new Point(paramInt1, paramInt2);
     Point localPoint2 = new Point(paramInt3, paramInt2);
     Point localPoint3 = new Point(paramInt3, paramInt4);
     Point localPoint4 = new Point(paramInt1, paramInt4);
     Point localPoint5 = new Point((paramInt1 + paramInt3) / 2, (paramInt2 + paramInt4) / 2);
-    agsi localagsi = new agsi(this);
-    localagsi.jdField_a_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint1, paramFloat);
-    localagsi.jdField_b_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint2, paramFloat);
-    localagsi.jdField_c_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint3, paramFloat);
-    localagsi.jdField_d_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint4, paramFloat);
-    paramInt1 = a(new Integer[] { Integer.valueOf(localagsi.jdField_a_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagsi.jdField_b_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagsi.jdField_c_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagsi.jdField_d_of_type_AndroidGraphicsPoint.x) });
-    paramInt2 = b(new Integer[] { Integer.valueOf(localagsi.jdField_a_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagsi.jdField_b_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagsi.jdField_c_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagsi.jdField_d_of_type_AndroidGraphicsPoint.x) });
-    localagsi.jdField_a_of_type_Int = (paramInt1 - paramInt2);
-    paramInt3 = a(new Integer[] { Integer.valueOf(localagsi.jdField_a_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagsi.jdField_b_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagsi.jdField_c_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagsi.jdField_d_of_type_AndroidGraphicsPoint.y) });
-    paramInt4 = b(new Integer[] { Integer.valueOf(localagsi.jdField_a_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagsi.jdField_b_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagsi.jdField_c_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagsi.jdField_d_of_type_AndroidGraphicsPoint.y) });
-    localagsi.jdField_b_of_type_Int = (paramInt3 - paramInt4);
+    agwv localagwv = new agwv(this);
+    localagwv.jdField_a_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint1, paramFloat);
+    localagwv.jdField_b_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint2, paramFloat);
+    localagwv.jdField_c_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint3, paramFloat);
+    localagwv.jdField_d_of_type_AndroidGraphicsPoint = a(localPoint5, localPoint4, paramFloat);
+    paramInt1 = a(new Integer[] { Integer.valueOf(localagwv.jdField_a_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagwv.jdField_b_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagwv.jdField_c_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagwv.jdField_d_of_type_AndroidGraphicsPoint.x) });
+    paramInt2 = b(new Integer[] { Integer.valueOf(localagwv.jdField_a_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagwv.jdField_b_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagwv.jdField_c_of_type_AndroidGraphicsPoint.x), Integer.valueOf(localagwv.jdField_d_of_type_AndroidGraphicsPoint.x) });
+    localagwv.jdField_a_of_type_Int = (paramInt1 - paramInt2);
+    paramInt3 = a(new Integer[] { Integer.valueOf(localagwv.jdField_a_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagwv.jdField_b_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagwv.jdField_c_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagwv.jdField_d_of_type_AndroidGraphicsPoint.y) });
+    paramInt4 = b(new Integer[] { Integer.valueOf(localagwv.jdField_a_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagwv.jdField_b_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagwv.jdField_c_of_type_AndroidGraphicsPoint.y), Integer.valueOf(localagwv.jdField_d_of_type_AndroidGraphicsPoint.y) });
+    localagwv.jdField_b_of_type_Int = (paramInt3 - paramInt4);
     localPoint1 = new Point((paramInt1 + paramInt2) / 2, (paramInt3 + paramInt4) / 2);
-    localagsi.jdField_c_of_type_Int = (localagsi.jdField_a_of_type_Int / 2 - localPoint1.x);
-    localagsi.jdField_d_of_type_Int = (localagsi.jdField_b_of_type_Int / 2 - localPoint1.y);
+    localagwv.jdField_c_of_type_Int = (localagwv.jdField_a_of_type_Int / 2 - localPoint1.x);
+    localagwv.jdField_d_of_type_Int = (localagwv.jdField_b_of_type_Int / 2 - localPoint1.y);
     paramInt2 = this.jdField_e_of_type_Int / 2;
     paramInt1 = this.jdField_f_of_type_Int / 2;
-    localPoint1 = localagsi.jdField_a_of_type_AndroidGraphicsPoint;
-    localPoint1.x += localagsi.jdField_c_of_type_Int + paramInt2;
-    localPoint1 = localagsi.jdField_b_of_type_AndroidGraphicsPoint;
-    localPoint1.x += localagsi.jdField_c_of_type_Int + paramInt2;
-    localPoint1 = localagsi.jdField_c_of_type_AndroidGraphicsPoint;
-    localPoint1.x += localagsi.jdField_c_of_type_Int + paramInt2;
-    localPoint1 = localagsi.jdField_d_of_type_AndroidGraphicsPoint;
+    localPoint1 = localagwv.jdField_a_of_type_AndroidGraphicsPoint;
+    localPoint1.x += localagwv.jdField_c_of_type_Int + paramInt2;
+    localPoint1 = localagwv.jdField_b_of_type_AndroidGraphicsPoint;
+    localPoint1.x += localagwv.jdField_c_of_type_Int + paramInt2;
+    localPoint1 = localagwv.jdField_c_of_type_AndroidGraphicsPoint;
+    localPoint1.x += localagwv.jdField_c_of_type_Int + paramInt2;
+    localPoint1 = localagwv.jdField_d_of_type_AndroidGraphicsPoint;
     paramInt3 = localPoint1.x;
-    localPoint1.x = (paramInt2 + localagsi.jdField_c_of_type_Int + paramInt3);
-    localPoint1 = localagsi.jdField_a_of_type_AndroidGraphicsPoint;
-    localPoint1.y += localagsi.jdField_d_of_type_Int + paramInt1;
-    localPoint1 = localagsi.jdField_b_of_type_AndroidGraphicsPoint;
-    localPoint1.y += localagsi.jdField_d_of_type_Int + paramInt1;
-    localPoint1 = localagsi.jdField_c_of_type_AndroidGraphicsPoint;
-    localPoint1.y += localagsi.jdField_d_of_type_Int + paramInt1;
-    localPoint1 = localagsi.jdField_d_of_type_AndroidGraphicsPoint;
+    localPoint1.x = (paramInt2 + localagwv.jdField_c_of_type_Int + paramInt3);
+    localPoint1 = localagwv.jdField_a_of_type_AndroidGraphicsPoint;
+    localPoint1.y += localagwv.jdField_d_of_type_Int + paramInt1;
+    localPoint1 = localagwv.jdField_b_of_type_AndroidGraphicsPoint;
+    localPoint1.y += localagwv.jdField_d_of_type_Int + paramInt1;
+    localPoint1 = localagwv.jdField_c_of_type_AndroidGraphicsPoint;
+    localPoint1.y += localagwv.jdField_d_of_type_Int + paramInt1;
+    localPoint1 = localagwv.jdField_d_of_type_AndroidGraphicsPoint;
     paramInt2 = localPoint1.y;
-    localPoint1.y = (paramInt1 + localagsi.jdField_d_of_type_Int + paramInt2);
-    localagsi.jdField_e_of_type_AndroidGraphicsPoint = a(this.m, localagsi);
-    localagsi.jdField_f_of_type_AndroidGraphicsPoint = a(this.n, localagsi);
-    return localagsi;
+    localPoint1.y = (paramInt1 + localagwv.jdField_d_of_type_Int + paramInt2);
+    localagwv.jdField_e_of_type_AndroidGraphicsPoint = a(this.m, localagwv);
+    localagwv.jdField_f_of_type_AndroidGraphicsPoint = a(this.n, localagwv);
+    return localagwv;
   }
   
-  Point a(int paramInt, agsi paramagsi)
+  Point a(int paramInt, agwv paramagwv)
   {
     switch (paramInt)
     {
     default: 
-      return paramagsi.jdField_a_of_type_AndroidGraphicsPoint;
+      return paramagwv.jdField_a_of_type_AndroidGraphicsPoint;
     case 0: 
-      return paramagsi.jdField_a_of_type_AndroidGraphicsPoint;
+      return paramagwv.jdField_a_of_type_AndroidGraphicsPoint;
     case 1: 
-      return paramagsi.jdField_b_of_type_AndroidGraphicsPoint;
+      return paramagwv.jdField_b_of_type_AndroidGraphicsPoint;
     case 2: 
-      return paramagsi.jdField_c_of_type_AndroidGraphicsPoint;
+      return paramagwv.jdField_c_of_type_AndroidGraphicsPoint;
     }
-    return paramagsi.jdField_d_of_type_AndroidGraphicsPoint;
+    return paramagwv.jdField_d_of_type_AndroidGraphicsPoint;
   }
   
   public PointF a()
@@ -268,14 +268,14 @@ public class SingleTouchLayout
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130844193, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130844259, localOptions);
       if (this.jdField_c_of_type_AndroidGraphicsBitmap != null) {}
     }
     catch (OutOfMemoryError localOutOfMemoryError2)
     {
       try
       {
-        this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130844194, localOptions);
+        this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130844260, localOptions);
         setIconSize(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
         a();
         return;
@@ -332,18 +332,18 @@ public class SingleTouchLayout
       QLog.d("SingleTouchLayout", 2, "transformDraw(): mActualViewWidth=" + i1 + ", mActualViewHeight=" + i2);
     }
     Object localObject = a(-this.h, -this.h, this.h + i1, i2 + this.h, paramFloat2);
-    if ((a(((agsi)localObject).jdField_a_of_type_Int, ((agsi)localObject).jdField_b_of_type_Int)) || (!this.jdField_d_of_type_Boolean) || (this.jdField_c_of_type_AndroidGraphicsPointF.x == 0.0F) || (this.jdField_c_of_type_AndroidGraphicsPointF.y == 0.0F) || (!this.jdField_a_of_type_Boolean))
+    if ((a(((agwv)localObject).jdField_a_of_type_Int, ((agwv)localObject).jdField_b_of_type_Int)) || (!this.jdField_d_of_type_Boolean) || (this.jdField_c_of_type_AndroidGraphicsPointF.x == 0.0F) || (this.jdField_c_of_type_AndroidGraphicsPointF.y == 0.0F) || (!this.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_AndroidGraphicsPoint = ((agsi)localObject).jdField_a_of_type_AndroidGraphicsPoint;
-      this.jdField_b_of_type_AndroidGraphicsPoint = ((agsi)localObject).jdField_b_of_type_AndroidGraphicsPoint;
-      this.jdField_c_of_type_AndroidGraphicsPoint = ((agsi)localObject).jdField_c_of_type_AndroidGraphicsPoint;
-      this.jdField_d_of_type_AndroidGraphicsPoint = ((agsi)localObject).jdField_d_of_type_AndroidGraphicsPoint;
-      this.jdField_e_of_type_AndroidGraphicsPoint = ((agsi)localObject).jdField_e_of_type_AndroidGraphicsPoint;
-      this.jdField_f_of_type_AndroidGraphicsPoint = ((agsi)localObject).jdField_f_of_type_AndroidGraphicsPoint;
-      this.jdField_a_of_type_Int = ((agsi)localObject).jdField_a_of_type_Int;
-      this.jdField_b_of_type_Int = ((agsi)localObject).jdField_b_of_type_Int;
-      this.k = ((agsi)localObject).jdField_c_of_type_Int;
-      this.l = ((agsi)localObject).jdField_d_of_type_Int;
+      this.jdField_a_of_type_AndroidGraphicsPoint = ((agwv)localObject).jdField_a_of_type_AndroidGraphicsPoint;
+      this.jdField_b_of_type_AndroidGraphicsPoint = ((agwv)localObject).jdField_b_of_type_AndroidGraphicsPoint;
+      this.jdField_c_of_type_AndroidGraphicsPoint = ((agwv)localObject).jdField_c_of_type_AndroidGraphicsPoint;
+      this.jdField_d_of_type_AndroidGraphicsPoint = ((agwv)localObject).jdField_d_of_type_AndroidGraphicsPoint;
+      this.jdField_e_of_type_AndroidGraphicsPoint = ((agwv)localObject).jdField_e_of_type_AndroidGraphicsPoint;
+      this.jdField_f_of_type_AndroidGraphicsPoint = ((agwv)localObject).jdField_f_of_type_AndroidGraphicsPoint;
+      this.jdField_a_of_type_Int = ((agwv)localObject).jdField_a_of_type_Int;
+      this.jdField_b_of_type_Int = ((agwv)localObject).jdField_b_of_type_Int;
+      this.k = ((agwv)localObject).jdField_c_of_type_Int;
+      this.l = ((agwv)localObject).jdField_d_of_type_Int;
       localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
       ((FrameLayout.LayoutParams)localObject).leftMargin = ((this.jdField_a_of_type_Int + this.jdField_e_of_type_Int - this.jdField_a_of_type_AndroidViewView.getWidth()) / 2);
       ((FrameLayout.LayoutParams)localObject).topMargin = ((this.jdField_b_of_type_Int + this.jdField_f_of_type_Int - this.jdField_a_of_type_AndroidViewView.getHeight()) / 2);

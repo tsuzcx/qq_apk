@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.open.business.viareport.OpenSdkStatic;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.view.View;
+import com.tencent.mobileqq.emoticonview.RecommendEmotionAdapter;
+import com.tencent.mobileqq.vas.ClubContentJsonTask.PromotionEmoticonPkg;
+import java.io.File;
 
-class acov
-  implements Runnable
+public class acov
 {
-  acov(acou paramacou) {}
+  public int a;
+  public View a;
+  public ClubContentJsonTask.PromotionEmoticonPkg a;
+  public File a;
+  public boolean a;
   
-  public void run()
-  {
-    DownloadManager.a().a(UniformDownloadActivity.a(this.a.a));
-    MyAppApi.a().a(this.a.a, "http://a.app.qq.com/o/myapp-down?g_f=1001647", "ANDROIDQQ.WIFIDLYYB.GAME", 2, true);
-    OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3004", false);
-  }
+  public acov(RecommendEmotionAdapter paramRecommendEmotionAdapter) {}
 }
 
 

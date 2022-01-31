@@ -24,7 +24,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
-import ywd;
+import zcw;
 
 public class ApolloGameInvitation
   implements DialogInterface.OnDismissListener, AdapterView.OnItemClickListener, ActionSheet.OnButtonClickListener
@@ -49,6 +49,17 @@ public class ApolloGameInvitation
     catch (Throwable paramAppInterface)
     {
       QLog.i("ApolloGameInvitation", 1, "[ApolloGameInvitation], errInfo->" + paramAppInterface.getMessage());
+    }
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo != null)
+    {
+      CmGameLauncher localCmGameLauncher = CmGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.jdField_e_of_type_Int);
+      if (localCmGameLauncher != null) {
+        localCmGameLauncher.a(paramInt1, paramInt2, 0, "");
+      }
     }
   }
   
@@ -78,9 +89,11 @@ public class ApolloGameInvitation
         int i = paramString.optInt("gameId");
         long l = paramString.optLong("roomId");
         int j = paramString.optInt("gameMode");
+        int k = paramString.optInt("activityId");
         Object localObject = CmGameUtil.a(i);
         if (localObject != null)
         {
+          ((CmGameLauncher)localObject).b = k;
           localObject = ((CmGameLauncher)localObject).a();
           if (localObject != null)
           {
@@ -184,7 +197,7 @@ public class ApolloGameInvitation
       QLog.e("ApolloGameInvitation", 1, "fail to invite wxFriend, mGameMsg is null.");
       return;
     }
-    ThreadManager.post(new ywd(this), 5, null, true);
+    ThreadManager.post(new zcw(this), 5, null, true);
   }
   
   public void d()

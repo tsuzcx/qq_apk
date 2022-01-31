@@ -1,36 +1,33 @@
-import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
-import com.tencent.av.service.AVRedPacketConfig;
-import com.tencent.av.service.IAVRedPacketCallback;
-import com.tencent.mobileqq.armap.ResDownloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import com.tencent.av.guild.GuildMultiActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class jlk
-  implements Runnable
+  implements WXShareHelper.WXShareListener
 {
-  public jlk(AVRedPacketConfigManager paramAVRedPacketConfigManager, IAVRedPacketCallback paramIAVRedPacketCallback) {}
+  public jlk(GuildMultiActivity paramGuildMultiActivity) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("downloadRes, threadName[").append(Thread.currentThread().getName()).append("], threadId[").append(Thread.currentThread().getId()).append("], resDownloadManager[");
-    if (this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.w("AVRedPacketConfigManger", 1, bool + "]");
-      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback = this.jdField_a_of_type_ComTencentAvServiceIAVRedPacketCallback;
-      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.c = false;
-      if (this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager != null)
-      {
-        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resURL, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.resMD5, ".zip", true, 4, Integer.valueOf(1));
-        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResMd5, ".zip", true, 4, Integer.valueOf(2));
-      }
+    if ((this.a.b == null) || (!this.a.b.equals(paramBaseResp.transaction))) {
       return;
     }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QQToast.a(this.a, 1, 2131435319, 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+      return;
+    }
+    QQToast.a(this.a, 2, 2131435318, 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jlk
  * JD-Core Version:    0.7.0.1
  */

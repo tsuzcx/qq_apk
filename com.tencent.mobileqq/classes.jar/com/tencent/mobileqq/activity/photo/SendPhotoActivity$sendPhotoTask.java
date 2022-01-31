@@ -27,9 +27,8 @@ import cooperation.peak.PeakUtils;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
-import wyw;
-import wyx;
+import xem;
+import xen;
 
 public class SendPhotoActivity$sendPhotoTask
   implements Runnable
@@ -71,7 +70,7 @@ public class SendPhotoActivity$sendPhotoTask
     if (QLog.isColorLevel()) {
       QLog.d(SendPhotoActivity.a, 2, " sendPhotoTask(),  mBusiType :" + this.jdField_a_of_type_Int + ", mNeedCompress:" + this.jdField_a_of_type_Boolean + ", mCurType:" + this.jdField_b_of_type_Int + ",mIsWaitForResult:" + this.jdField_b_of_type_Boolean + ",picQualityType: " + i + ",mSendBackground = " + this.jdField_c_of_type_Boolean + "mPaths :" + Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray()));
     }
-    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436145);
+    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436163);
   }
   
   private void a(BaseActivity paramBaseActivity, PicReq paramPicReq)
@@ -100,7 +99,7 @@ public class SendPhotoActivity$sendPhotoTask
         ((DeviceMsgHandle)localObject).a().a(DeviceMsgHandle.d, paramPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c, localArrayList);
         return;
       }
-      ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).runOnUiThread(new wyx(this, localSmartDeviceProxyMgr, paramPicReq, paramBaseActivity));
+      ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).runOnUiThread(new xen(this, localSmartDeviceProxyMgr, paramPicReq, paramBaseActivity));
       return;
     }
     int j;
@@ -203,8 +202,8 @@ public class SendPhotoActivity$sendPhotoTask
       this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969178);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363418));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
     }
   }
@@ -226,17 +225,19 @@ public class SendPhotoActivity$sendPhotoTask
     {
       return;
       long l = System.currentTimeMillis();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      int i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        String str = (String)localIterator.next();
-        if (!FileUtils.b(str))
-        {
+        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (!FileUtils.b(str)) {
           QLog.e(SendPhotoActivity.a, 2, "sendPhotoTask. path invalid,path:" + str);
         }
-        else
+        for (;;)
         {
+          i += 1;
+          break;
           this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.PHOTO_SEND_PATH", str);
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("PhotoConst.PHOTO_SEND_PATH_INDEX", i);
           PicReq localPicReq = PicBusiManager.a(2, this.jdField_a_of_type_Int);
           PicUploadInfo localPicUploadInfo = PicBusiManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentIntent);
           Object localObject;
@@ -331,7 +332,7 @@ public class SendPhotoActivity$sendPhotoTask
     } while (!QLog.isColorLevel());
     QLog.d(SendPhotoActivity.a, 2, "mActivity.get() == null");
     return;
-    ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).runOnUiThread(new wyw(this));
+    ((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).runOnUiThread(new xem(this));
   }
 }
 

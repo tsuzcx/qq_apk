@@ -1,31 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.ipc.PreCallUpToolProc;
-import com.tencent.biz.qrcode.ipc.PreCallUpToolProc.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.view.StoryNewGuideDialog;
 
 public class ouv
-  extends BroadcastReceiver
+  implements View.OnTouchListener
 {
-  public ouv(PreCallUpToolProc paramPreCallUpToolProc) {}
+  public ouv(StoryNewGuideDialog paramStoryNewGuideDialog) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
-    }
-    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), PreCallUpToolProc.a(this.a))))
+    switch (paramMotionEvent.getAction())
     {
-      if (PreCallUpToolProc.a(this.a) != null) {
-        PreCallUpToolProc.a(this.a).removeMessages(108);
-      }
-      if (PreCallUpToolProc.a(this.a) != null) {
-        PreCallUpToolProc.a(this.a).a();
-      }
+    }
+    for (;;)
+    {
+      return true;
+      this.a.dismiss();
     }
   }
 }

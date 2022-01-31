@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class wne
-  extends FriendListObserver
+  extends Handler
 {
-  public wne(DeviceFragment paramDeviceFragment) {}
+  public wne(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void onPullIpad()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a == null) {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (List)paramMessage.obj;
+      this.a.a(paramMessage, true);
       return;
     }
-    this.a.a.d();
-    this.a.a.notifyDataSetChanged();
+    paramMessage = (List)paramMessage.obj;
+    this.a.a(paramMessage, false);
   }
 }
 

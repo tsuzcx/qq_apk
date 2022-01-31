@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetNearbyRecommender;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
 
 public class zqy
-  extends CardObserver
+  implements Runnable
 {
-  public zqy(GetNearbyRecommender paramGetNearbyRecommender) {}
+  public zqy(PublicAccountHandler paramPublicAccountHandler) {}
   
-  protected void c(boolean paramBoolean, String paramString, Card paramCard)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "GetNearbyRecommender onGetDetailInfo|uin=" + paramString);
+    EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)this.a.b.getManager(87);
+    if (localEcShopAssistantManager != null) {
+      localEcShopAssistantManager.a(null, "FollowList");
     }
-    if (!GetNearbyRecommender.a(this.a).b.getCurrentAccountUin().equals(paramString)) {
-      return;
-    }
-    if (!paramBoolean)
-    {
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
   }
 }
 

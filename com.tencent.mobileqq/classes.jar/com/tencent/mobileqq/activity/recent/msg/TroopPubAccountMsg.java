@@ -10,7 +10,7 @@ public class TroopPubAccountMsg
 {
   public TroopPubAccountMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = String.format(paramContext.getString(2131430193), new Object[] { "订阅号" });
+    this.jdField_a_of_type_JavaLangString = String.format(paramContext.getString(2131430196), new Object[] { "订阅号" });
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   

@@ -1,67 +1,30 @@
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.util.Log;
+import com.tencent.mobileqq.apollo.GLTextureView.EGLWindowSurfaceFactory;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
-public final class ytt
-  extends DownloadListener
+public class ytt
+  implements GLTextureView.EGLWindowSurfaceFactory
 {
-  public ytt(File paramFile) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
   {
-    super.onDone(paramDownloadTask);
-    if ((3 == paramDownloadTask.a()) && (this.a.exists())) {}
     try
     {
-      ZipUtils.a(this.a, this.a.getParent() + File.separator);
-      label166:
-      return;
+      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
+      return paramEGL10;
     }
-    catch (Exception paramDownloadTask)
+    catch (Throwable paramEGL10)
     {
-      paramDownloadTask = paramDownloadTask;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + paramDownloadTask.getMessage());
-      }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception paramDownloadTask)
-      {
-        return;
-      }
+      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
     }
-    catch (OutOfMemoryError paramDownloadTask)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + paramDownloadTask.getMessage());
-      }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception paramDownloadTask)
-      {
-        return;
-      }
-    }
-    finally
-    {
-      try
-      {
-        this.a.delete();
-        throw paramDownloadTask;
-      }
-      catch (Exception localException)
-      {
-        break label166;
-      }
-    }
+    return null;
+  }
+  
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  {
+    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
   }
 }
 

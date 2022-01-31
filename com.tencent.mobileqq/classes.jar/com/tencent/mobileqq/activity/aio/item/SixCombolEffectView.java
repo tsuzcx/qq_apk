@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
+import com.immersion.stickersampleapp.HapticManager;
 import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -35,21 +36,21 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import vgs;
-import vgt;
-import vgu;
-import vgv;
-import vgw;
-import vgx;
-import vgy;
-import vgz;
-import vha;
-import vhb;
-import vhc;
-import vhd;
-import vhe;
-import vhf;
-import vhg;
+import vlu;
+import vlv;
+import vlw;
+import vlx;
+import vly;
+import vlz;
+import vma;
+import vmb;
+import vmc;
+import vmd;
+import vme;
+import vmf;
+import vmg;
+import vmh;
+import vmi;
 
 public class SixCombolEffectView
   extends View
@@ -69,8 +70,9 @@ public class SixCombolEffectView
   private SixCombolEffectView.ISixAnimationListener jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$ISixAnimationListener;
   private ChatXListView jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
   private MessageForPoke jdField_a_of_type_ComTencentMobileqqDataMessageForPoke;
+  private String jdField_a_of_type_JavaLangString = "chat_item_for_qq666";
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private vhg jdField_a_of_type_Vhg;
+  private vmi jdField_a_of_type_Vmi;
   public float b;
   int jdField_b_of_type_Int = ScreenUtil.a(30.0F);
   private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
@@ -83,13 +85,15 @@ public class SixCombolEffectView
   private boolean jdField_c_of_type_Boolean;
   float jdField_d_of_type_Float = ScreenUtil.a(120.0F);
   int jdField_d_of_type_Int = ScreenUtil.a(13.0F);
+  private boolean jdField_d_of_type_Boolean;
   float jdField_e_of_type_Float;
   int jdField_e_of_type_Int = ScreenUtil.a(50.0F);
   float jdField_f_of_type_Float = ScreenUtil.a(100.0F);
   private int jdField_f_of_type_Int;
   private int g;
   private int h;
-  private int i = ScreenUtil.a(60.0F);
+  private int i;
+  private int j = ScreenUtil.a(60.0F);
   
   static
   {
@@ -119,8 +123,8 @@ public class SixCombolEffectView
     View localView;
     if ((this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null))
     {
-      int j = AIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.uniseq, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1);
-      localView = AIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, j + 1);
+      int k = AIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.uniseq, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1);
+      localView = AIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, k + 1);
       if (localView != null) {}
     }
     else
@@ -131,34 +135,34 @@ public class SixCombolEffectView
   }
   
   @TargetApi(11)
-  private vhg a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  private vmi a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    vhg localvhg = new vhg(this);
-    localvhg.jdField_a_of_type_Int = paramInt1;
-    localvhg.jdField_a_of_type_Boolean = false;
-    localvhg.jdField_b_of_type_Int = paramInt2;
-    localvhg.jdField_d_of_type_Int = paramInt3;
-    localvhg.jdField_f_of_type_Int = paramInt4;
-    localvhg.g = paramInt5;
-    localvhg.jdField_b_of_type_Boolean = false;
-    localvhg.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator = new SixCombolEffectView.BezierEvaluator(this);
-    localvhg.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.2F, this.jdField_e_of_type_Float - 0.15F });
-    localvhg.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration((int)(paramInt5 * 1.2D));
-    localvhg.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new vhf(this, localvhg));
-    localvhg.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vgt(this, localvhg));
-    localvhg.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_e_of_type_Float - 0.15F, this.jdField_e_of_type_Float });
-    localvhg.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(paramInt6);
-    localvhg.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vgu(this, localvhg));
-    localvhg.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 2.5F });
-    localvhg.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(((paramInt6 - paramInt5) * 2.1D));
-    localvhg.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    localvhg.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new vgv(this));
-    localvhg.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vgw(this, localvhg));
-    localvhg.jdField_d_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 2.2F });
-    localvhg.jdField_d_of_type_AndroidAnimationValueAnimator.setDuration(paramInt6 - paramInt5);
-    localvhg.jdField_d_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    localvhg.jdField_d_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vgx(this, localvhg));
-    return localvhg;
+    vmi localvmi = new vmi(this);
+    localvmi.jdField_a_of_type_Int = paramInt1;
+    localvmi.jdField_a_of_type_Boolean = false;
+    localvmi.jdField_b_of_type_Int = paramInt2;
+    localvmi.jdField_d_of_type_Int = paramInt3;
+    localvmi.jdField_f_of_type_Int = paramInt4;
+    localvmi.g = paramInt5;
+    localvmi.jdField_b_of_type_Boolean = false;
+    localvmi.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator = new SixCombolEffectView.BezierEvaluator(this);
+    localvmi.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.2F, this.jdField_e_of_type_Float - 0.15F });
+    localvmi.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration((int)(paramInt5 * 1.2D));
+    localvmi.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new vmh(this, localvmi));
+    localvmi.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vlv(this, localvmi));
+    localvmi.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_e_of_type_Float - 0.15F, this.jdField_e_of_type_Float });
+    localvmi.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(paramInt6);
+    localvmi.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vlw(this, localvmi));
+    localvmi.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 2.5F });
+    localvmi.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(((paramInt6 - paramInt5) * 2.1D));
+    localvmi.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
+    localvmi.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new vlx(this));
+    localvmi.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vly(this, localvmi));
+    localvmi.jdField_d_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 2.2F });
+    localvmi.jdField_d_of_type_AndroidAnimationValueAnimator.setDuration(paramInt6 - paramInt5);
+    localvmi.jdField_d_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
+    localvmi.jdField_d_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vlz(this, localvmi));
+    return localvmi;
   }
   
   private void a(Canvas paramCanvas, Paint paramPaint, Bitmap paramBitmap, float paramFloat1, float paramFloat2)
@@ -185,12 +189,12 @@ public class SixCombolEffectView
     paramCanvas.restore();
   }
   
-  private void a(vhg paramvhg, int paramInt1, int paramInt2, int paramInt3)
+  private void a(vmi paramvmi, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramvhg.jdField_c_of_type_Int = paramInt1;
-    paramvhg.jdField_e_of_type_Int = paramInt2;
-    paramvhg.jdField_b_of_type_Boolean = false;
-    paramvhg.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(new PointF[] { new PointF(paramInt1, paramvhg.jdField_d_of_type_Int), new PointF(paramInt2, paramvhg.jdField_d_of_type_Int - paramInt3), new PointF(paramInt2, paramvhg.jdField_f_of_type_Int) });
+    paramvmi.jdField_c_of_type_Int = paramInt1;
+    paramvmi.jdField_e_of_type_Int = paramInt2;
+    paramvmi.jdField_b_of_type_Boolean = false;
+    paramvmi.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(new PointF[] { new PointF(paramInt1, paramvmi.jdField_d_of_type_Int), new PointF(paramInt2, paramvmi.jdField_d_of_type_Int - paramInt3), new PointF(paramInt2, paramvmi.jdField_f_of_type_Int) });
   }
   
   private void b(Context paramContext)
@@ -202,7 +206,7 @@ public class SixCombolEffectView
       this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramContext.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
       this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = paramContext.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1;
     }
-    setOnTouchListener(new vgs(this));
+    setOnTouchListener(new vlu(this));
     this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inSampleSize = 1;
     this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inMutable = true;
     if (PokeBigResHandler.jdField_a_of_type_Boolean) {}
@@ -220,17 +224,17 @@ public class SixCombolEffectView
           this.jdField_b_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
           this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { -0.2F, 1.0F });
           this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vgy(this));
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new vgz(this));
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vma(this));
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new vmb(this));
           this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F, 0.0F }).setDuration(300L);
           this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
           this.jdField_c_of_type_AndroidAnimationValueAnimator.setRepeatCount(7);
-          this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vha(this));
-          this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new vhb(this));
+          this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vmc(this));
+          this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new vmd(this));
           this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, -0.2F });
           this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(300L);
-          this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vhc(this));
-          this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new vhd(this));
+          this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new vme(this));
+          this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new vmf(this));
           a(getContext());
           return;
           paramContext = paramContext;
@@ -264,28 +268,32 @@ public class SixCombolEffectView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      vhg localvhg = (vhg)localIterator.next();
-      localvhg.jdField_d_of_type_AndroidAnimationValueAnimator.end();
-      localvhg.jdField_a_of_type_AndroidAnimationValueAnimator.end();
-      localvhg.jdField_c_of_type_AndroidAnimationValueAnimator.end();
-      localvhg.jdField_b_of_type_AndroidAnimationValueAnimator.end();
-      localvhg.jdField_a_of_type_Float = 0.0F;
-      localvhg.jdField_b_of_type_Float = 0.0F;
-      localvhg.jdField_a_of_type_Boolean = false;
+      vmi localvmi = (vmi)localIterator.next();
+      localvmi.jdField_d_of_type_AndroidAnimationValueAnimator.end();
+      localvmi.jdField_a_of_type_AndroidAnimationValueAnimator.end();
+      localvmi.jdField_c_of_type_AndroidAnimationValueAnimator.end();
+      localvmi.jdField_b_of_type_AndroidAnimationValueAnimator.end();
+      localvmi.jdField_a_of_type_Float = 0.0F;
+      localvmi.jdField_b_of_type_Float = 0.0F;
+      localvmi.jdField_a_of_type_Boolean = false;
     }
+    if (this.jdField_d_of_type_Boolean) {
+      HapticManager.a().c(this.h);
+    }
+    this.h = 0;
   }
   
   public Bitmap a(Bitmap paramBitmap)
   {
     if (paramBitmap != null)
     {
-      int j = paramBitmap.getWidth();
-      int k = paramBitmap.getHeight();
+      int k = paramBitmap.getWidth();
+      int m = paramBitmap.getHeight();
       Matrix localMatrix = new Matrix();
       localMatrix.postScale(-1.0F, 1.0F);
       try
       {
-        paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, j, k, localMatrix, true);
+        paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, localMatrix, true);
         return paramBitmap;
       }
       catch (OutOfMemoryError paramBitmap)
@@ -304,36 +312,36 @@ public class SixCombolEffectView
   
   public void a()
   {
-    int j;
-    vhg localvhg;
+    int k;
+    vmi localvmi;
     if (this.jdField_b_of_type_Boolean)
     {
-      j = (int)(this.jdField_f_of_type_Int - ScreenUtil.a(50.0F) - this.jdField_c_of_type_Float / 2.0F);
+      k = (int)(this.jdField_f_of_type_Int - ScreenUtil.a(50.0F) - this.jdField_c_of_type_Float / 2.0F);
       localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        localvhg = (vhg)localIterator.next();
-        if (localvhg.jdField_a_of_type_Int == 0) {
-          a(localvhg, j, j / 3 * 2, 0);
-        } else if (localvhg.jdField_a_of_type_Int == 1) {
-          a(localvhg, j, j / 3, 0);
+        localvmi = (vmi)localIterator.next();
+        if (localvmi.jdField_a_of_type_Int == 0) {
+          a(localvmi, k, k / 3 * 2, 0);
+        } else if (localvmi.jdField_a_of_type_Int == 1) {
+          a(localvmi, k, k / 3, 0);
         } else {
-          a(localvhg, j, ScreenUtil.a(10.0F), 50);
+          a(localvmi, k, ScreenUtil.a(10.0F), 50);
         }
       }
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      localvhg = (vhg)localIterator.next();
-      j = (int)(ScreenUtil.a(50.0F) + this.jdField_c_of_type_Float / 2.0F);
-      int k = (int)(this.jdField_f_of_type_Int - ScreenUtil.a(50.0F) - this.jdField_c_of_type_Float / 2.0F);
-      if (localvhg.jdField_a_of_type_Int == 0) {
-        a(localvhg, j, j, 0);
-      } else if (localvhg.jdField_a_of_type_Int == 1) {
-        a(localvhg, j, k / 3 + j, 0);
+      localvmi = (vmi)localIterator.next();
+      k = (int)(ScreenUtil.a(50.0F) + this.jdField_c_of_type_Float / 2.0F);
+      int m = (int)(this.jdField_f_of_type_Int - ScreenUtil.a(50.0F) - this.jdField_c_of_type_Float / 2.0F);
+      if (localvmi.jdField_a_of_type_Int == 0) {
+        a(localvmi, k, k, 0);
+      } else if (localvmi.jdField_a_of_type_Int == 1) {
+        a(localvmi, k, m / 3 + k, 0);
       } else {
-        a(localvhg, j, (int)(this.jdField_f_of_type_Int - this.jdField_f_of_type_Float - ScreenUtil.a(10.0F)), 50);
+        a(localvmi, k, (int)(this.jdField_f_of_type_Int - this.jdField_f_of_type_Float - ScreenUtil.a(10.0F)), 50);
       }
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
@@ -343,37 +351,41 @@ public class SixCombolEffectView
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    int j = DisplayUtil.a(paramContext);
-    int k = getResources().getDisplayMetrics().heightPixels;
-    this.jdField_f_of_type_Int = j;
-    this.g = k;
+    int k = DisplayUtil.a(paramContext);
+    int m = getResources().getDisplayMetrics().heightPixels;
+    this.jdField_f_of_type_Int = k;
+    this.g = m;
     this.jdField_e_of_type_Float = (this.jdField_f_of_type_Float / this.jdField_c_of_type_AndroidGraphicsBitmap.getWidth());
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 800, k - ScreenUtil.a(70.0F), (int)(k * 0.6F), 700, 2000));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 1600, k - ScreenUtil.a(70.0F), (int)(k * 0.6F), 600, 1400));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 1800, k - ScreenUtil.a(70.0F), (int)(k * 0.6F), 600, 1800));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 0, k - ScreenUtil.a(70.0F), (int)(k * 0.6F), 500, 1500));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 600, k - ScreenUtil.a(70.0F), (int)(k * 0.6F), 500, 1400));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 1200, k - ScreenUtil.a(70.0F), (int)(k * 0.6F), 500, 1500));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 2000, k - ScreenUtil.a(70.0F), (int)(k * 0.6F), 500, 1800));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 300, k - ScreenUtil.a(70.0F), (int)(k * 0.6F), 500, 1500));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 1000, k - ScreenUtil.a(70.0F), (int)(k * 0.6F), 500, 1500));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 1400, k - ScreenUtil.a(70.0F), (int)(k * 0.6F), 500, 1900));
-    this.jdField_a_of_type_Vhg = ((vhg)this.jdField_a_of_type_JavaUtilArrayList.get(6));
-    this.jdField_a_of_type_Vhg.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new vhe(this));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 800, m - ScreenUtil.a(70.0F), (int)(m * 0.6F), 700, 2000));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 1600, m - ScreenUtil.a(70.0F), (int)(m * 0.6F), 600, 1400));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 1800, m - ScreenUtil.a(70.0F), (int)(m * 0.6F), 600, 1800));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 0, m - ScreenUtil.a(70.0F), (int)(m * 0.6F), 500, 1500));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 600, m - ScreenUtil.a(70.0F), (int)(m * 0.6F), 500, 1400));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 1200, m - ScreenUtil.a(70.0F), (int)(m * 0.6F), 500, 1500));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 2000, m - ScreenUtil.a(70.0F), (int)(m * 0.6F), 500, 1800));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 300, m - ScreenUtil.a(70.0F), (int)(m * 0.6F), 500, 1500));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 1000, m - ScreenUtil.a(70.0F), (int)(m * 0.6F), 500, 1500));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 1400, m - ScreenUtil.a(70.0F), (int)(m * 0.6F), 500, 1900));
+    this.jdField_a_of_type_Vmi = ((vmi)this.jdField_a_of_type_JavaUtilArrayList.get(6));
+    this.jdField_a_of_type_Vmi.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new vmg(this));
   }
   
-  public void a(GivingHeartItemBuilder.Holder paramHolder)
+  public void a(GivingHeartItemBuilder.Holder paramHolder, boolean paramBoolean)
   {
-    if (jdField_a_of_type_Boolean) {
+    if (jdField_a_of_type_Boolean) {}
+    do
+    {
       return;
-    }
-    d();
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke = ((MessageForPoke)paramHolder.a);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.mFrameState.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend();
-    jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      this.jdField_d_of_type_Boolean = paramBoolean;
+      d();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke = ((MessageForPoke)paramHolder.a);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.mFrameState.jdField_a_of_type_Boolean = true;
+      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend();
+      jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    } while (!this.jdField_d_of_type_Boolean);
+    this.h = HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
   }
   
   public void b()
@@ -417,26 +429,26 @@ public class SixCombolEffectView
       this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
       paramMessage = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (paramMessage.hasNext()) {
-        ((vhg)paramMessage.next()).jdField_a_of_type_Boolean = false;
+        ((vmi)paramMessage.next()).jdField_a_of_type_Boolean = false;
       }
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
       return false;
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
       long l1 = AnimationUtils.currentAnimationTimeMillis();
       long l2 = this.jdField_a_of_type_Long;
-      int j = 0;
-      while (j < this.jdField_a_of_type_JavaUtilArrayList.size())
+      int k = 0;
+      while (k < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        paramMessage = (vhg)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        paramMessage = (vmi)this.jdField_a_of_type_JavaUtilArrayList.get(k);
         if ((l1 - l2 >= paramMessage.jdField_b_of_type_Int) && (!paramMessage.jdField_a_of_type_Boolean))
         {
           paramMessage.jdField_a_of_type_Boolean = true;
           paramMessage.jdField_a_of_type_AndroidAnimationValueAnimator.start();
           paramMessage.jdField_c_of_type_AndroidAnimationValueAnimator.start();
         }
-        j += 1;
+        k += 1;
       }
-    } while (this.jdField_a_of_type_Vhg.jdField_a_of_type_Boolean);
+    } while (this.jdField_a_of_type_Vmi.jdField_a_of_type_Boolean);
     paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
     paramMessage.what = 2;
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 25L);
@@ -459,45 +471,45 @@ public class SixCombolEffectView
       }
       localObject2 = new int[2];
       ((GivingHeartItemBuilder.Holder)localObject1).b.getLocationOnScreen((int[])localObject2);
-      j = localObject2[0];
-      this.h = ((int)(localObject2[1] + this.jdField_d_of_type_Float - this.jdField_e_of_type_Int));
+      k = localObject2[0];
+      this.i = ((int)(localObject2[1] + this.jdField_d_of_type_Float - this.jdField_e_of_type_Int));
     } while ((this.jdField_c_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null));
     Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     float f1;
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (vhg)((Iterator)localObject1).next();
-      if (((vhg)localObject2).jdField_a_of_type_Boolean)
+      localObject2 = (vmi)((Iterator)localObject1).next();
+      if (((vmi)localObject2).jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
         PointF localPointF;
-        if (((vhg)localObject2).jdField_b_of_type_Float <= 1.0F)
+        if (((vmi)localObject2).jdField_b_of_type_Float <= 1.0F)
         {
-          localPointF = ((vhg)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(((vhg)localObject2).jdField_b_of_type_Float, null, null);
-          this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localPointF.x, localPointF.y - (this.g - this.h) + this.jdField_d_of_type_Int);
+          localPointF = ((vmi)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(((vmi)localObject2).jdField_b_of_type_Float, null, null);
+          this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localPointF.x, localPointF.y - (this.g - this.i) + this.jdField_d_of_type_Int);
         }
         for (;;)
         {
-          this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(((vhg)localObject2).jdField_a_of_type_Float, ((vhg)localObject2).jdField_a_of_type_Float);
+          this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(((vmi)localObject2).jdField_a_of_type_Float, ((vmi)localObject2).jdField_a_of_type_Float);
           paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
           break;
-          f1 = ((vhg)localObject2).jdField_b_of_type_Float;
-          j = (int)(this.g * 0.6D * (1.0F - (f1 - 1.0F)));
-          localPointF = ((vhg)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(((vhg)localObject2).jdField_b_of_type_Float, null, null);
-          this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localPointF.x, j - (this.g - this.h) + this.jdField_d_of_type_Int);
+          f1 = ((vmi)localObject2).jdField_b_of_type_Float;
+          k = (int)(this.g * 0.6D * (1.0F - (f1 - 1.0F)));
+          localPointF = ((vmi)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(((vmi)localObject2).jdField_b_of_type_Float, null, null);
+          this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localPointF.x, k - (this.g - this.i) + this.jdField_d_of_type_Int);
         }
       }
     }
-    if (this.jdField_a_of_type_Vhg.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_Vhg.jdField_b_of_type_Float > 1.0F) {
+    if (this.jdField_a_of_type_Vmi.jdField_a_of_type_Boolean) {
+      if (this.jdField_a_of_type_Vmi.jdField_b_of_type_Float > 1.0F) {
         break label489;
       }
     }
     label489:
     double d1;
-    for (int j = (int)(this.jdField_a_of_type_Vhg.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(this.jdField_a_of_type_Vhg.jdField_b_of_type_Float, null, null).y - (this.g - this.h) + this.jdField_d_of_type_Int);; j = (int)((1.0F - (f1 - 1.0F)) * (d1 * 0.6D)) - (this.g - this.h) + this.jdField_d_of_type_Int)
+    for (int k = (int)(this.jdField_a_of_type_Vmi.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(this.jdField_a_of_type_Vmi.jdField_b_of_type_Float, null, null).y - (this.g - this.i) + this.jdField_d_of_type_Int);; k = (int)((1.0F - (f1 - 1.0F)) * (d1 * 0.6D)) - (this.g - this.i) + this.jdField_d_of_type_Int)
     {
-      if (j + this.jdField_c_of_type_AndroidGraphicsBitmap.getHeight() * this.jdField_a_of_type_Vhg.jdField_a_of_type_Float < 0.0F) {
+      if (k + this.jdField_c_of_type_AndroidGraphicsBitmap.getHeight() * this.jdField_a_of_type_Vmi.jdField_a_of_type_Float < 0.0F) {
         b();
       }
       switch (jdField_a_of_type_Int)
@@ -508,28 +520,28 @@ public class SixCombolEffectView
         if (!this.jdField_b_of_type_Boolean) {
           break label538;
         }
-        a(paramCanvas, null, this.jdField_a_of_type_AndroidGraphicsBitmap, 90.0F - this.jdField_a_of_type_Float * 90.0F, getWidth() - this.jdField_c_of_type_Float / 2.0F - this.i, this.h - this.jdField_d_of_type_Float / 2.0F);
+        a(paramCanvas, null, this.jdField_a_of_type_AndroidGraphicsBitmap, 90.0F - this.jdField_a_of_type_Float * 90.0F, getWidth() - this.jdField_c_of_type_Float / 2.0F - this.j, this.i - this.jdField_d_of_type_Float / 2.0F);
         return;
-        f1 = this.jdField_a_of_type_Vhg.jdField_b_of_type_Float;
+        f1 = this.jdField_a_of_type_Vmi.jdField_b_of_type_Float;
         d1 = this.g;
       }
     }
     label538:
-    a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, -90.0F + this.jdField_a_of_type_Float * 90.0F, this.jdField_c_of_type_Float / 2.0F + this.i, this.h - this.jdField_d_of_type_Float / 2.0F);
+    a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, -90.0F + this.jdField_a_of_type_Float * 90.0F, this.jdField_c_of_type_Float / 2.0F + this.j, this.i - this.jdField_d_of_type_Float / 2.0F);
     return;
     if (this.jdField_b_of_type_Boolean)
     {
-      a(paramCanvas, null, this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() - this.jdField_c_of_type_Float + (this.jdField_b_of_type_Float - 0.5F) * 100.0F - this.i, this.h - this.jdField_d_of_type_Float);
+      a(paramCanvas, null, this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() - this.jdField_c_of_type_Float + (this.jdField_b_of_type_Float - 0.5F) * 100.0F - this.j, this.i - this.jdField_d_of_type_Float);
       return;
     }
-    a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, -(this.jdField_b_of_type_Float - 0.5F) * 100.0F + this.i, this.h - this.jdField_d_of_type_Float);
+    a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, -(this.jdField_b_of_type_Float - 0.5F) * 100.0F + this.j, this.i - this.jdField_d_of_type_Float);
     return;
     if (this.jdField_b_of_type_Boolean)
     {
-      a(paramCanvas, null, this.jdField_a_of_type_AndroidGraphicsBitmap, 90.0F - this.jdField_a_of_type_Float * 90.0F, getWidth() - this.jdField_c_of_type_Float / 2.0F - this.i - this.jdField_d_of_type_Int, this.h - this.jdField_d_of_type_Float / 2.0F + this.jdField_d_of_type_Int);
+      a(paramCanvas, null, this.jdField_a_of_type_AndroidGraphicsBitmap, 90.0F - this.jdField_a_of_type_Float * 90.0F, getWidth() - this.jdField_c_of_type_Float / 2.0F - this.j - this.jdField_d_of_type_Int, this.i - this.jdField_d_of_type_Float / 2.0F + this.jdField_d_of_type_Int);
       return;
     }
-    a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, -90.0F + this.jdField_a_of_type_Float * 90.0F, this.jdField_c_of_type_Float / 2.0F + this.i + this.jdField_d_of_type_Int, this.h - this.jdField_d_of_type_Float / 2.0F + this.jdField_d_of_type_Int);
+    a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, -90.0F + this.jdField_a_of_type_Float * 90.0F, this.jdField_c_of_type_Float / 2.0F + this.j + this.jdField_d_of_type_Int, this.i - this.jdField_d_of_type_Float / 2.0F + this.jdField_d_of_type_Int);
   }
   
   public void setListener(SixCombolEffectView.ISixAnimationListener paramISixAnimationListener)

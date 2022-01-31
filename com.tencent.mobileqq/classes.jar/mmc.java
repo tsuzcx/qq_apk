@@ -1,65 +1,21 @@
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySocialMsgTips;
 
 public class mmc
-  extends ReadInJoyObserver
+  implements View.OnClickListener
 {
-  public mmc(FastWebActivity paramFastWebActivity) {}
+  public mmc(ReadInJoyListViewGroup paramReadInJoyListViewGroup, KandianMergeManager paramKandianMergeManager) {}
   
-  public void Z_()
+  public void onClick(View paramView)
   {
-    super.Z_();
-    if ((FastWebActivity.c(this.a)) || (FastWebActivity.a(this.a) == null)) {
-      return;
-    }
-    this.a.runOnUiThread(new mmd(this));
-  }
-  
-  public void a(String paramString)
-  {
-    int j = 0;
-    QLog.d("Q.readinjoy.fast_web", 2, " onWebCallback : " + paramString);
-    if (!FastWebActivity.e(this.a)) {
-      return;
-    }
-    int i;
-    if ("onPageStarted".equals(paramString)) {
-      i = 300;
-    }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().postDelayed(new mme(this), i);
-      return;
-      i = j;
-      if ("onConversationJumpRestoreStack".equals(paramString)) {
-        i = j;
-      }
-    }
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (FastWebActivity.d(this.a)) {
-      return;
-    }
-    TextView localTextView = (TextView)this.a.findViewById(2131366884);
-    if (FastWebActivity.a(this.a).b > 0L) {
-      localTextView.setText(FastWebActivity.a(this.a).b + "");
-    }
-    for (;;)
-    {
-      FastWebActivity.a(this.a).a = FastWebActivity.a(this.a).a;
-      FastWebActivity.a(this.a).notifyDataSetChanged();
-      return;
-      localTextView.setText("");
-    }
+    ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).b();
+    ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).removeHeaderView(ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).a());
+    ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).postInvalidate();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.k();
   }
 }
 

@@ -1,24 +1,25 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.sonic.SonicJsPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sonic.sdk.SonicDiffDataCallback;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import java.lang.ref.SoftReference;
+import java.util.TimerTask;
 
 public class akmm
-  implements SonicDiffDataCallback
+  extends TimerTask
 {
-  public akmm(SonicJsPlugin paramSonicJsPlugin, CustomWebView paramCustomWebView, String paramString) {}
+  public akmm(QQCustomDialogWtihInput paramQQCustomDialogWtihInput) {}
   
-  public void callback(String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "getDiffData callback updated data: " + paramString.toString());
+    Context localContext = (Context)QQCustomDialogWtihInput.a(this.a).get();
+    if (localContext != null) {
+      ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.jdField_a_of_type_JavaLangString, new String[] { paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akmm
  * JD-Core Version:    0.7.0.1
  */

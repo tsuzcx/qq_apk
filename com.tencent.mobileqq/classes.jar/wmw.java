@@ -1,27 +1,18 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class wmw
-  extends ViewPager.SimpleOnPageChangeListener
+  implements MessageQueue.IdleHandler
 {
-  public wmw(ContactsViewController paramContactsViewController) {}
+  public wmw(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public boolean queueIdle()
   {
-    if (paramInt == 1) {
-      ContactsViewController.a(this.a, ContactsViewController.a(this.a).getCurrentItem());
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    ContactsViewController.a(this.a, paramInt);
-    if (!ContactsViewController.a(this.a)) {
-      ReportController.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
-    }
-    ContactsViewController.a(this.a, false);
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

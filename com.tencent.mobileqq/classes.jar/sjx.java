@@ -1,42 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import com.tencent.mobileqq.util.CommonUtil;
-import java.util.ArrayList;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
-public class sjx
-  extends BroadcastReceiver
+class sjx
+  implements Runnable
 {
-  public sjx(DirectForwardActivity paramDirectForwardActivity) {}
+  sjx(sjw paramsjw, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramIntent = paramIntent.getExtras();
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getStringArrayList("procNameList");
-      paramIntent = paramIntent.getString("verify");
-      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (CommonUtil.a(paramIntent, paramContext))) {
-        break label53;
-      }
-    }
-    for (;;)
-    {
+    if (this.jdField_a_of_type_Sjw.jdField_a_of_type_Sjv.a.c) {
       return;
-      label53:
-      int i = 0;
-      while (i < paramContext.size())
-      {
-        if (this.a.a.equals(paramContext.get(i)))
-        {
-          this.a.finish();
-          return;
-        }
-        i += 1;
-      }
     }
+    this.jdField_a_of_type_Sjw.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,57 +1,55 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Handler;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.os.PowerManager.WakeLock;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.smtt.sdk.CookieSyncManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import java.util.HashMap;
 import java.util.Map;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adna
-  implements WtTicketPromise
+  implements Runnable
 {
-  public adna(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public adna(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void Done(Ticket paramTicket)
+  public void run()
   {
-    if (paramTicket != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyHybridFragment", 2, "preGetKeyInPreloadService : Done");
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+      if (FileManagerUtil.c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b())) {
+        QLog.e("FileBrowserPresenter<FileAssistant>", 1, "playVideo video, but mediaplay null!");
       }
-      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
-      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
-      CookieSyncManager.getInstance().sync();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
-      com.tencent.mobileqq.fragment.NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new adnb(this));
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyHybridFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new adnc(this));
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyHybridFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new adnd(this));
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d() != 1);
+      QLog.e("FileBrowserPresenter<FileAssistant>", 1, "playVideo online video, but mediaplay null!");
+      return;
+      VideoFilePresenter.a(this.a).acquire();
+      this.a.c();
+      if (VideoFilePresenter.b(this.a))
+      {
+        VideoFilePresenter.a(this.a, false);
+        VideoFilePresenter.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("shouq_bus_type", "bus_type_filevideo_online_play_again");
+        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
+        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.a.jdField_a_of_type_AndroidAppActivity, VideoFilePresenter.a(this.a), VideoFilePresenter.a(this.a), 0L, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
+      }
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      VideoFilePresenter.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+      VideoFilePresenter.d(this.a);
+    } while ((!FileManagerUtil.c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b())) || (!QLog.isDevelopLevel()));
+    QLog.d("#@#@", 1, "userPos[" + VideoFilePresenter.a(this.a) + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adna
  * JD-Core Version:    0.7.0.1
  */

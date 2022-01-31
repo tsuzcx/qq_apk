@@ -8,10 +8,12 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
 import com.tencent.mobileqq.extendfriend.ExtendFriendManager.ExtendFriendConfig;
+import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.Date;
+import wsi;
 
 public class ExtendFriendController
   extends BaseViewController
@@ -20,6 +22,7 @@ public class ExtendFriendController
   private CommonCardEntry jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)a()).app;
   private ExtendFriendManager jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager;
+  private ExtendFriendObserver jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendObserver = new wsi(this);
   
   public ExtendFriendController(Activity paramActivity, CardController paramCardController)
   {
@@ -63,7 +66,7 @@ public class ExtendFriendController
             str = String.format(localExtendFriendConfig.c, new Object[] { this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager.a() });
             if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry == null)
             {
-              this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry = new CommonCardEntry(0, 2130842486, localExtendFriendConfig.a, localExtendFriendConfig.b, str, null);
+              this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry = new CommonCardEntry(0, 2130842521, localExtendFriendConfig.a, localExtendFriendConfig.b, str, null);
               if (a(localExtendFriendConfig)) {
                 break label245;
               }
@@ -78,7 +81,7 @@ public class ExtendFriendController
             String str;
             for (;;)
             {
-              str = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131439330), new Object[] { this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager.a() });
+              str = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131439362), new Object[] { this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager.a() });
               localException.printStackTrace();
               continue;
               if (!TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry.b, localExtendFriendConfig.b))
@@ -157,11 +160,15 @@ public class ExtendFriendController
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendManager = ((ExtendFriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263));
   }
   
-  public void b() {}
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendObserver);
+  }
   
   public void b(boolean paramBoolean)
   {
     e();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqExtendfriendExtendFriendObserver);
   }
   
   public void c()

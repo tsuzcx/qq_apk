@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aixd;
+import ajcg;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
@@ -66,7 +66,7 @@ public class TroopBarCommentWindow
       localJSONObject.put("bid", Long.parseLong(this.d));
       localJSONObject.put("target_rid", this.g);
       localJSONObject.put("comment", TroopBarPublishUtils.a(paramString, null, null));
-      localJSONObject.put("version", "7.6.3.3565");
+      localJSONObject.put("version", "7.6.8.3615");
       localJSONObject.put("extparam", this.i);
       paramString = new NewIntent(this.jdField_a_of_type_AndroidContentContext, ProtoServlet.class);
       paramString.putExtra("cmd", "MQUpdateSvc_com_qq_xiaoqu.web.recomment");
@@ -75,13 +75,13 @@ public class TroopBarCommentWindow
       localWebSsoRequestBody.data.set(localJSONObject.toString());
       paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      paramString.setObserver(new aixd(this));
+      paramString.setObserver(new ajcg(this));
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime().startServlet(paramString);
       return;
     }
     catch (Exception paramString)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131430308, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131430311, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
       this.jdField_c_of_type_Boolean = false;
     }
   }
@@ -102,7 +102,7 @@ public class TroopBarCommentWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarCommentWindow
  * JD-Core Version:    0.7.0.1
  */

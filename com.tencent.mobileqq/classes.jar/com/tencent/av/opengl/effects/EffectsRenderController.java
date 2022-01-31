@@ -33,8 +33,8 @@ import com.tencent.smtt.utils.ByteUtils;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.BitSet;
-import jjo;
-import jjp;
+import jlr;
+import jls;
 
 @TargetApi(18)
 public class EffectsRenderController
@@ -48,11 +48,11 @@ public class EffectsRenderController
   Context jdField_a_of_type_AndroidContentContext;
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private EffectPendantTips jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips;
-  CameraObserver jdField_a_of_type_ComTencentAvCameraCameraObserver = new jjo(this);
+  CameraObserver jdField_a_of_type_ComTencentAvCameraCameraObserver = new jlr(this);
   EffectsRenderController.TempTime jdField_a_of_type_ComTencentAvOpenglEffectsEffectsRenderController$TempTime = new EffectsRenderController.TempTime(this);
   public FilterProcessRender a;
   private BitSet jdField_a_of_type_JavaUtilBitSet;
-  jjp jdField_a_of_type_Jjp = new jjp();
+  jls jdField_a_of_type_Jls = new jls();
   boolean jdField_a_of_type_Boolean = false;
   private String jdField_b_of_type_JavaLangString;
   
@@ -338,7 +338,7 @@ public class EffectsRenderController
     }
     EffectsRenderController.CameraFrame localCameraFrame = new EffectsRenderController.CameraFrame(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1, paramLong, System.currentTimeMillis());
     localCameraFrame.jdField_d_of_type_Long = AudioHelper.b();
-    this.jdField_a_of_type_Jjp.a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramLong, paramBoolean1, localCameraFrame.jdField_c_of_type_Long);
+    this.jdField_a_of_type_Jls.a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramLong, paramBoolean1, localCameraFrame.jdField_c_of_type_Long);
     this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.jdField_a_of_type_Boolean = paramBoolean2;
     this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.jdField_a_of_type_ArrayOfInt[0] = paramArrayOfInt[0];
     this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.jdField_a_of_type_ArrayOfInt[1] = paramArrayOfInt[1];
@@ -514,7 +514,7 @@ public class EffectsRenderController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.opengl.effects.EffectsRenderController
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,35 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import android.os.Handler;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
-class abeg
+public class abeg
   implements Runnable
 {
-  abeg(abed paramabed) {}
+  public abeg(ArkRecommendController paramArkRecommendController) {}
   
   public void run()
   {
-    if (!ShopScanActivity.a(this.a.a))
-    {
-      this.a.a.e.setVisibility(0);
-      this.a.a.b.setVisibility(8);
-      this.a.a.f.setVisibility(8);
+    ArkRecommendController.a(this.a, null);
+    Object localObject = ArkRecommendController.a(this.a).a.getEditableText();
+    if ((ArkRecommendController.a(this.a) == null) || (ArkRecommendController.a(this.a).a == null) || (ArkRecommendController.a(this.a).a.getText() == null) || (localObject == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkRecommendController", 2, "mChatPie is null or input ctrl is null");
+      }
     }
+    String str;
+    do
+    {
+      return;
+      str = ArkRecommendController.a(this.a).a.getText().toString();
+    } while (str.length() > 80);
+    localObject = (AtTroopMemberSpan[])((Editable)localObject).getSpans(0, localObject.toString().length(), AtTroopMemberSpan.class);
+    ArkRecommendController.a(this.a);
+    ArkRecommendLogic.a().post(new abeh(this, str, (AtTroopMemberSpan[])localObject));
   }
 }
 

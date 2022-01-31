@@ -1,52 +1,51 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-import org.json.JSONObject;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.utils.DisplayUtils;
 
 public class pcq
-  extends Handler
+  implements URLDrawable.URLDrawableListener
 {
-  public pcq(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, Looper paramLooper)
+  public pcq(TroopNewGuidePopWindow paramTroopNewGuidePopWindow, DisplayMetrics paramDisplayMetrics) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.c = false;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    Object localObject;
-    int i;
-    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
-    {
-      paramMessage = (Bundle)paramMessage.obj;
-      localObject = paramMessage.getString("url");
-      if ((paramMessage.getInt("req_state", 0) == 2) && (!TextUtils.isEmpty(QzoneWebViewOfflinePlugin.a(this.a))) && (!TextUtils.isEmpty(QzoneWebViewOfflinePlugin.b(this.a))) && (QzoneWebViewOfflinePlugin.b(this.a).equals(localObject)))
-      {
-        i = paramMessage.getInt("result_code");
-        localObject = new JSONObject();
-        if (i != 0) {
-          break label158;
-        }
+    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.c = false;
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    float f1 = paramURLDrawable.getIntrinsicHeight();
+    float f2 = paramURLDrawable.getIntrinsicWidth();
+    paramURLDrawable = this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    int i = 0;
+    if (f2 != 0.0F) {
+      if (f1 <= DisplayUtils.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F)) {
+        break label109;
       }
     }
-    try
+    label109:
+    for (i = (int)DisplayUtils.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F);; i = (int)((this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - DisplayUtils.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 60.0F)) * (f1 / f2)))
     {
-      ((JSONObject)localObject).put("code", 0);
-      for (;;)
+      if (i > 0)
       {
-        label113:
-        this.a.callJs(QzoneWebViewOfflinePlugin.a(this.a) + "(" + ((JSONObject)localObject).toString() + ");");
-        return;
-        label158:
-        ((JSONObject)localObject).put("code", i);
-        ((JSONObject)localObject).put("msg", paramMessage.getString("error_message"));
+        paramURLDrawable.height = i;
+        this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramURLDrawable);
       }
-    }
-    catch (Exception paramMessage)
-    {
-      break label113;
+      return;
     }
   }
 }

@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class adrz
-  implements Runnable
+public final class adrz
+  implements Handler.Callback
 {
-  public adrz(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
-  
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a.b(3);
-    this.a.f();
+    return false;
   }
 }
 

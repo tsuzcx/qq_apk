@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.StructMsgPicPreDelegate;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agle
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public agle(PicPreDownloader paramPicPreDownloader, MessageForStructing paramMessageForStructing) {}
+  public agle(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StructMsgPicPreDelegate.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a);
+    this.a.startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agle
  * JD-Core Version:    0.7.0.1
  */

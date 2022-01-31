@@ -6,11 +6,11 @@ import java.io.File;
 public abstract interface ExtendFriendVoicePlayer$ExtendFriendVoicePlayerListener
   extends VoicePlayer.VoicePlayerListener
 {
-  public abstract void a(int paramInt);
-  
   public abstract void a(File paramFile);
   
   public abstract void a(boolean paramBoolean);
+  
+  public abstract void f(int paramInt);
 }
 
 

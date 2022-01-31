@@ -1,19 +1,14 @@
-import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper;
-import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityManagerFactory;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONObject;
 
 public class lal
   implements Runnable
 {
-  public lal(PublicAccountEntityHelper paramPublicAccountEntityHelper, PublicAccountEntityManagerFactory paramPublicAccountEntityManagerFactory) {}
+  public lal(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountPersistenceManagerPublicAccountEntityManagerFactory.verifyAuthentication();
-      return;
-    }
-    catch (Exception localException) {}
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

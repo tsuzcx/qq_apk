@@ -59,7 +59,7 @@ public class ContactSearchableSearchHistory
         return 101;
         return 4;
         return 11;
-      } while (!TextUtils.equals(this.a.uin, AppConstants.ar));
+      } while (!TextUtils.equals(this.a.uin, AppConstants.as));
       return 110;
     }
     return 111;

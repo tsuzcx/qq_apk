@@ -1,23 +1,23 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.av.ui.MultiMembersAudioIndicator;
+import android.content.Intent;
+import com.tencent.av.ui.EffectSettingUi;
 
 public class jvr
-  extends RadioButton
+  extends BroadcastReceiver
 {
-  public jvr(MultiMembersAudioIndicator paramMultiMembersAudioIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public jvr(EffectSettingUi paramEffectSettingUi) {}
   
-  public boolean performClick()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return true;
+    if (paramIntent.getAction().equals("com.tencent.redpoint.broadcast.push.av")) {
+      EffectSettingUi.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jvr
  * JD-Core Version:    0.7.0.1
  */

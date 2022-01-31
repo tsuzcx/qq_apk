@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ofk;
+import ojz;
 
 public class EditVideoParams
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ofk();
+  public static final Parcelable.Creator CREATOR = new ojz();
   public int a;
   public final Bundle a;
   public EditVideoParams.EditSource a;
@@ -130,6 +130,7 @@ public class EditVideoParams
     {
     case 7: 
     case 8: 
+    case 9: 
     default: 
       localObject = "Unknown Business id " + this.jdField_a_of_type_Int;
     }

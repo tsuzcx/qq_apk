@@ -1,33 +1,31 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemAnimator;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper.Callback;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class amew
-  implements Runnable
+  extends Handler
 {
-  public amew(ItemTouchHelper paramItemTouchHelper, amfb paramamfb, int paramInt) {}
-  
-  public void run()
+  public amew(QSecFramework paramQSecFramework, Looper paramLooper)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) && (this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isAttachedToWindow()) && (!this.jdField_a_of_type_Amfb.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Amfb.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.getAdapterPosition() != -1))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.what == 1) && (paramMessage.arg1 != 0))
     {
-      RecyclerView.ItemAnimator localItemAnimator = this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator();
-      if (((localItemAnimator == null) || (!localItemAnimator.isRunning(null))) && (!this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.a())) {
-        this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback.a(this.jdField_a_of_type_Amfb.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.d("QSecFramework", 2, "handle native msg for cookie:" + paramMessage.arg1);
       }
+      QSecFramework.a(6, paramMessage.arg1, 0, 0, null, null, null, null);
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amew
  * JD-Core Version:    0.7.0.1
  */

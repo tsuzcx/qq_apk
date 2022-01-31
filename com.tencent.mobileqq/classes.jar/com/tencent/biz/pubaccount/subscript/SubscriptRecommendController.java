@@ -32,15 +32,15 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import mqq.os.MqqHandler;
-import mtl;
-import mtm;
-import mtn;
-import mto;
-import mtp;
-import mtq;
-import mts;
-import mtt;
-import mtu;
+import mxf;
+import mxg;
+import mxh;
+import mxi;
+import mxj;
+import mxk;
+import mxm;
+import mxn;
+import mxo;
 
 public class SubscriptRecommendController
 {
@@ -48,10 +48,10 @@ public class SubscriptRecommendController
   public View a;
   public ViewStub a;
   public ImageButton a;
-  private SubscriptObserver jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptObserver = new mtl(this);
+  private SubscriptObserver jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptObserver = new mxf(this);
   SubscriptPicManager jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager;
   SubscriptRecommendAdapter jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter;
-  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new mtm(this);
+  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new mxg(this);
   public QQAppInterface a;
   HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   public WeakReference a;
@@ -71,7 +71,7 @@ public class SubscriptRecommendController
     this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager = paramSubscriptPicManager;
     this.d = ((int)paramActivity.getResources().getDimension(2131560138));
     i();
-    ThreadManager.getSubThreadHandler().post(new mtn(this));
+    ThreadManager.getSubThreadHandler().post(new mxh(this));
   }
   
   public static int a(QQAppInterface paramQQAppInterface)
@@ -234,7 +234,7 @@ public class SubscriptRecommendController
     }
     Animation localAnimation = AnimationUtils.loadAnimation((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131034281);
     localAnimation.setFillAfter(true);
-    localAnimation.setAnimationListener(new mtt(this));
+    localAnimation.setAnimationListener(new mxn(this));
     a(0);
     this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimation);
   }
@@ -248,10 +248,10 @@ public class SubscriptRecommendController
     if (this.jdField_a_of_type_AndroidViewViewStub == null) {
       if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
       {
-        this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131367504));
+        this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131367511));
         if (this.jdField_a_of_type_AndroidViewViewStub != null)
         {
-          this.jdField_a_of_type_AndroidViewViewStub.setOnInflateListener(new mto(this));
+          this.jdField_a_of_type_AndroidViewViewStub.setOnInflateListener(new mxi(this));
           this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
           b();
           h();
@@ -274,7 +274,7 @@ public class SubscriptRecommendController
     do
     {
       return;
-      localView = ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131364045);
+      localView = ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131364070);
     } while (localView == null);
     localView.setPadding(0, 0, 0, paramInt);
   }
@@ -311,7 +311,7 @@ public class SubscriptRecommendController
     if (localActivity == null) {
       return false;
     }
-    View localView = localActivity.findViewById(2131365275);
+    View localView = localActivity.findViewById(2131365295);
     WindowManager localWindowManager = (WindowManager)localActivity.getSystemService("window");
     int i = localWindowManager.getDefaultDisplay().getWidth();
     int j = localWindowManager.getDefaultDisplay().getHeight();
@@ -334,11 +334,11 @@ public class SubscriptRecommendController
     Object localObject1 = ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources();
     if (bool)
     {
-      i = 2131493595;
+      i = 2131493597;
       i = ((Resources)localObject1).getColor(i);
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(i);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new mtp(this));
-      Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367523);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new mxj(this));
+      Object localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367530);
       if (localObject2 != null)
       {
         if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
@@ -348,16 +348,16 @@ public class SubscriptRecommendController
         label93:
         ((ImageView)localObject2).setBackgroundResource(i);
       }
-      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363378);
+      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363397);
       if (!bool) {
         break label270;
       }
-      i = ((Resources)localObject1).getColor(2131493597);
+      i = ((Resources)localObject1).getColor(2131493599);
       label126:
       ((TextView)localObject2).setTextColor(i);
       if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView == null)
       {
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367524));
+        this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367531));
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)((Resources)localObject1).getDimension(2131560139));
         this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter);
         if (Build.VERSION.SDK_INT >= 9) {
@@ -366,7 +366,7 @@ public class SubscriptRecommendController
       }
       if (this.jdField_a_of_type_AndroidWidgetImageButton == null)
       {
-        this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131362868));
+        this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131362873));
         localObject1 = this.jdField_a_of_type_AndroidWidgetImageButton;
         if (bool) {
           break label281;
@@ -376,16 +376,16 @@ public class SubscriptRecommendController
     label263:
     label270:
     label281:
-    for (int i = 2130840910;; i = 2130840912)
+    for (int i = 2130840930;; i = 2130840932)
     {
       ((ImageButton)localObject1).setImageResource(i);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new mtq(this));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new mxk(this));
       return;
-      i = 2131493590;
+      i = 2131493592;
       break;
       i = 2131493232;
       break label93;
-      i = ((Resources)localObject1).getColor(2131493596);
+      i = ((Resources)localObject1).getColor(2131493598);
       break label126;
     }
   }
@@ -402,7 +402,7 @@ public class SubscriptRecommendController
       return;
     }
     int i = DisplayUtil.a((Context)localObject, 100.0F);
-    Object localObject = (ImageView)((Activity)localObject).findViewById(2131368316);
+    Object localObject = (ImageView)((Activity)localObject).findViewById(2131368318);
     this.b = ((ImageView)localObject).getHeight();
     this.c = ((ImageView)localObject).getWidth();
     ((ImageView)localObject).setLayoutParams(new LinearLayout.LayoutParams(i, i));
@@ -421,7 +421,7 @@ public class SubscriptRecommendController
     }
     Animation localAnimation = AnimationUtils.loadAnimation((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131034282);
     localAnimation.setFillAfter(true);
-    localAnimation.setAnimationListener(new mts(this));
+    localAnimation.setAnimationListener(new mxm(this));
     this.jdField_a_of_type_AndroidViewViewStub.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimation);
@@ -437,7 +437,7 @@ public class SubscriptRecommendController
   
   public void g()
   {
-    ThreadManager.getSubThreadHandler().post(new mtu(this));
+    ThreadManager.getSubThreadHandler().post(new mxo(this));
   }
   
   public void h()

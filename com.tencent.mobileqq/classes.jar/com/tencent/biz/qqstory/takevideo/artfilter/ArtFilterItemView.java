@@ -17,8 +17,9 @@ import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import ohv;
-import ohw;
+import java.util.Arrays;
+import omk;
+import oml;
 
 public class ArtFilterItemView
   extends RelativeLayout
@@ -38,11 +39,11 @@ public class ArtFilterItemView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(paramContext, 2130969186, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365540));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365537));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365538));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365539));
+    inflate(paramContext, 2130969184, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365545));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365542));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365543));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365544));
   }
   
   public void a()
@@ -64,6 +65,7 @@ public class ArtFilterItemView
       localObject = new File(this.jdField_a_of_type_JavaLangString).listFiles();
       if (localObject != null)
       {
+        Arrays.sort((Object[])localObject);
         int i = 0;
         while (i < localObject.length)
         {
@@ -101,7 +103,7 @@ public class ArtFilterItemView
       if (paramBoolean)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setText("100%");
-        postDelayed(new ohv(this), 100L);
+        postDelayed(new omk(this), 100L);
         return;
       }
     } while (this.jdField_a_of_type_AndroidWidgetTextView.getText().equals("100&"));
@@ -133,7 +135,7 @@ public class ArtFilterItemView
     localTranslateAnimation.setFillEnabled(true);
     localTranslateAnimation.setStartTime(0L);
     localTranslateAnimation.setDuration(200L);
-    localTranslateAnimation.setAnimationListener(new ohw(this, paramEditVideoArtFilter));
+    localTranslateAnimation.setAnimationListener(new oml(this, paramEditVideoArtFilter));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
   }
   

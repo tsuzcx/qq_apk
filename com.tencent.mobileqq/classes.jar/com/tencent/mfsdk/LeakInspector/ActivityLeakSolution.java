@@ -33,7 +33,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-import rdo;
+import rig;
 
 public class ActivityLeakSolution
 {
@@ -103,7 +103,7 @@ public class ActivityLeakSolution
         if (jdField_a_of_type_JavaLangReflectField == null) {
           continue;
         }
-        paramActivity.runOnUiThread(new rdo(paramActivity));
+        paramActivity.runOnUiThread(new rig(paramActivity));
         return;
       }
       catch (Throwable localThrowable)

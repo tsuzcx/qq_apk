@@ -1,32 +1,74 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.ArMapUtil;
+import com.tencent.mobileqq.armap.RedPackRainCloudView;
+import com.tencent.mobileqq.armap.wealthgod.WealthGodInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.text.SimpleDateFormat;
 
 public class abhg
-  implements View.OnClickListener
+  implements Runnable
 {
-  public abhg(ARMapPOIStarDialog paramARMapPOIStarDialog, POIInfo paramPOIInfo, int paramInt) {}
+  public abhg(ARMapActivity paramARMapActivity, WealthGodInfo paramWealthGodInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = "" + this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_Long;
-    String str1 = "" + this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo.jdField_a_of_type_Long;
-    String str2 = "" + this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo.b;
-    StringBuilder localStringBuilder = new StringBuilder().append("");
-    if (this.jdField_a_of_type_Int == 0) {}
-    for (int i = 1;; i = 0)
+    boolean bool = false;
+    long l1;
+    long l3;
+    if (!this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.isFinishing())
     {
-      ReportController.b(null, "dc01440", "", "", "0X8007AB2", "0X8007AB2", 0, 0, paramView, str1, str2, i);
-      ThreadManager.postImmediately(new abhh(this), null, false);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842265);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.b.postDelayed(new abhi(this), 500L);
+      l1 = this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodWealthGodInfo.c;
+      long l2 = NetConnInfoCenter.getServerTimeMillis();
+      l3 = l1 - l2;
+      if (ArMapUtil.a(l1, l2)) {
+        break label74;
+      }
+      ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 2);
+      if (this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView.getVisibility() == 0) {
+        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView.setVisibility(4);
+      }
+    }
+    return;
+    label74:
+    Object localObject2;
+    String str1;
+    Object localObject1;
+    if ((l3 > 0L) && (l3 <= 60000L))
+    {
+      localObject2 = ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodWealthGodInfo, false) + "即将天降红包";
+      String str2 = new SimpleDateFormat("mm:ss").format(Long.valueOf(l3));
+      this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.removeCallbacks(ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity));
+      this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity), 1000L);
+      str1 = str2;
+      localObject1 = localObject2;
+      if (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity) != 3)
+      {
+        ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 3);
+        ARMapActivity.i(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity);
+        localObject1 = localObject2;
+        str1 = str2;
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView.getVisibility() != 0) {
+        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView.setVisibility(0);
+      }
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView;
+      if (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity) == 3) {
+        bool = true;
+      }
+      ((RedPackRainCloudView)localObject2).a((String)localObject1, str1, bool);
       return;
+      localObject1 = ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodWealthGodInfo, false) + "天降红包时间";
+      if ((l3 > 0L) && (l3 < this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.b))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.removeCallbacks(ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity));
+        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity), l3 - 60000L);
+      }
+      str1 = new SimpleDateFormat("HH:mm").format(Long.valueOf(l1));
+      ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 2);
     }
   }
 }

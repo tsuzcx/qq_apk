@@ -1,61 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.theme.SkinEngine;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
-public class whq
+public final class whq
   implements Runnable
 {
-  public whq(ClassificationSearchActivity paramClassificationSearchActivity, String paramString) {}
+  public whq(LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchActivity.app.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
-    Object localObject1;
-    if (localObject2 != null)
-    {
-      Iterator localIterator = ((List)localObject2).iterator();
-      while (localIterator.hasNext())
-      {
-        localObject1 = (ReadInJoySearchHistoryEntity)localIterator.next();
-        if (((ReadInJoySearchHistoryEntity)localObject1).keyWord.equals(this.jdField_a_of_type_JavaLangString)) {
-          localEntityManager.b((Entity)localObject1);
-        }
-      }
-    }
-    for (;;)
-    {
-      if (localObject1 != null) {
-        ((List)localObject2).remove(localObject1);
-      }
-      if (((List)localObject2).size() == 20)
-      {
-        localEntityManager.b((Entity)((List)localObject2).get(((List)localObject2).size() - 1));
-        ((List)localObject2).remove(((List)localObject2).size() - 1);
-      }
-      for (localObject1 = localObject2;; localObject1 = new ArrayList())
-      {
-        localObject2 = new ReadInJoySearchHistoryEntity();
-        ((ReadInJoySearchHistoryEntity)localObject2).keyWord = this.jdField_a_of_type_JavaLangString;
-        ((ReadInJoySearchHistoryEntity)localObject2).timestamp = System.currentTimeMillis();
-        localEntityManager.a((Entity)localObject2);
-        ((List)localObject1).add(0, localObject2);
-        localEntityManager.a();
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchActivity.a.obtainMessage(1);
-        ((Message)localObject2).obj = localObject1;
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchActivity.a.sendMessage((Message)localObject2);
-        return;
-      }
-      localObject1 = null;
-    }
+    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845716);
+    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845717);
+    Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845758);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845859);
+    localStateListDrawable.addState(new int[] { -16842910 }, localDrawable4);
+    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845862);
+    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable4);
+    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845863);
+    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable4);
+    ThreadManager.getUIHandler().post(new whr(this, localDrawable1, localDrawable2, localDrawable3, localStateListDrawable));
   }
 }
 

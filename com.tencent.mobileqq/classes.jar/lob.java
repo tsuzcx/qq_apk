@@ -1,15 +1,14 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.KandianSetTopInfo;
 
 public class lob
   implements Runnable
 {
-  public lob(ReadInJoyVideoChannelFragment paramReadInJoyVideoChannelFragment) {}
+  public lob(KandianMergeManager paramKandianMergeManager) {}
   
   public void run()
   {
-    PublicAccountReportUtils.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", VideoReporter.a(56, null), false);
+    KandianMergeManager.a(this.a).trySetTopKandianMsg(KandianMergeManager.a(this.a));
   }
 }
 

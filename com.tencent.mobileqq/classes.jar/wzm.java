@@ -1,29 +1,34 @@
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.XListView;
+import cooperation.qqpim.QQPimDefineList;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimJumpHelper;
+import cooperation.qqpim.QQPimTipsInfo;
+import cooperation.qqpim.QQPimTipsInfoHelper;
 
-class wzm
-  implements View.OnFocusChangeListener
+public class wzm
+  implements View.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public wzm(ContactListView paramContactListView) {}
   
-  wzm(wzk paramwzk) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean) {
-      GoldMsgAioState.a(this.jdField_a_of_type_Wzk.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity.getWindow(), this.jdField_a_of_type_Wzk.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity, paramView);
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Wzk.c = true;
-    } while (this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Wzk.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    this.jdField_a_of_type_Wzk.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Wzk.jdField_a_of_type_AndroidTextTextWatcher);
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006710", "0X8006710", 0, 0, "", "", "", "");
+    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
+    ContactListView.a(this.a, null);
+    QQPimTipsInfoHelper.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
+    QQPimGetTipsInfoIPC.a().c();
+    paramView = ContactListView.a(this.a).getAccount();
+    Bundle localBundle = new Bundle();
+    localBundle.putString(QQPimDefineList.o, QQPimDefineList.j);
+    localBundle.putInt(QQPimDefineList.p, QQPimGetTipsInfoIPC.a().a.b);
+    localBundle.putString(QQPimDefineList.l, paramView);
+    new QQPimJumpHelper().a(ContactListView.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localBundle);
   }
 }
 

@@ -1,45 +1,99 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
 import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.LogTag;
-import dov.com.tencent.mobileqq.richmedia.RichmediaService;
-import dov.com.tencent.mobileqq.richmedia.VideoSendTaskManager;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
 
-public class aolb
-  implements Runnable
+class aolb
+  extends aokz
 {
-  String jdField_a_of_type_JavaLangString;
-  
-  public aolb(VideoSendTaskManager paramVideoSendTaskManager, String paramString)
+  public aolb(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, aola paramaola)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, paramaola);
+  }
+  
+  private void c()
+  {
+    for (;;)
+    {
+      try
+      {
+        localMediaMetadataRetriever1 = new MediaMetadataRetriever();
+        try
+        {
+          localMediaMetadataRetriever1.setDataSource(this.jdField_a_of_type_JavaLangString);
+          this.e = -1;
+          if (QLog.isColorLevel()) {
+            QLog.d("VFLDecodeRunnable", 2, "runWithRetriever, start");
+          }
+          localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
+          if (Thread.interrupted()) {
+            continue;
+          }
+          localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
+          if (a()) {
+            continue;
+          }
+          localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
+          if (this.e >= this.jdField_c_of_type_Int - 1) {
+            continue;
+          }
+          l = a();
+          Bitmap localBitmap1 = localMediaMetadataRetriever1.getFrameAtTime(l, 3);
+          if (localBitmap1 != null) {
+            continue;
+          }
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("VFLDecodeRunnable", 2, "runWithRetriever return null! time:" + l);
+          continue;
+          localException1.printStackTrace();
+        }
+        catch (Exception localException1) {}
+      }
+      catch (Exception localException2)
+      {
+        MediaMetadataRetriever localMediaMetadataRetriever2;
+        long l;
+        Bitmap localBitmap2;
+        MediaMetadataRetriever localMediaMetadataRetriever1 = null;
+        continue;
+      }
+      localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("VFLDecodeRunnable", 2, "runWithRetriever Load video frame execption:" + localException1);
+        localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
+      }
+      if (localMediaMetadataRetriever2 != null) {
+        localMediaMetadataRetriever2.release();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VFLDecodeRunnable", 2, "runWithRetriever, end");
+      }
+      return;
+      localBitmap2 = a(localException1);
+      a(this.e, l, localBitmap2);
+    }
   }
   
   public void run()
   {
-    Object localObject = (TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaVideoSendTaskManager).get(this.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("VFLDecodeRunnable", 2, "RetrieverDecodeRunnable run");
+    }
+    b();
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Int <= 0) || (this.jdField_c_of_type_Long - this.jdField_b_of_type_Long <= 0L) || (this.jdField_c_of_type_Int <= 0))
     {
-      LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]TransferRequest is removed");
+      this.jdField_a_of_type_Boolean = true;
+      a(1);
+      if (QLog.isColorLevel()) {
+        QLog.d("VFLDecodeRunnable", 2, "Retriever param error, path:" + this.jdField_a_of_type_JavaLangString + " height:" + this.jdField_b_of_type_Int + " width:" + this.jdField_a_of_type_Int + "time:" + this.jdField_b_of_type_Long + "-" + this.jdField_c_of_type_Long + " Count:" + this.jdField_c_of_type_Int);
+      }
       return;
     }
-    localObject = (MessageForShortVideo)((TransferRequest)localObject).a;
-    if ((TextUtils.isEmpty(((MessageForShortVideo)localObject).md5)) || (TextUtils.isEmpty(((MessageForShortVideo)localObject).mLocalMd5)))
-    {
-      LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]Remove failed:md5=" + ((MessageForShortVideo)localObject).md5 + ",localMd5=" + ((MessageForShortVideo)localObject).mLocalMd5);
-      return;
-    }
-    VideoSendTaskManager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaVideoSendTaskManager).remove(this.jdField_a_of_type_JavaLangString);
-    localObject = RichmediaService.a();
-    if (localObject != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("vidoe_record_uniseq", this.jdField_a_of_type_JavaLangString);
-      ((RichmediaService)localObject).a(1002, -1, localBundle);
-    }
-    LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]Remove success");
+    c();
+    a(true);
   }
 }
 

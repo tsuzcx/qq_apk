@@ -1,28 +1,36 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
 
 public class xiu
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public xiu(BannerManager paramBannerManager, long paramLong, String paramString) {}
+  public xiu(CommonHbFragment paramCommonHbFragment, View paramView, ImageView paramImageView, URLDrawable paramURLDrawable) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager) != null)
-    {
-      paramView = BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(1134028);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendMessage(paramView);
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
     }
-    paramView = new Intent();
-    paramView.setAction("cooperation.qqreader.aioback2reader");
-    paramView.putExtra("bookid", this.jdField_a_of_type_Long);
-    paramView.putExtra("chapterid", this.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("is_from_conversation", true);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendBroadcast(paramView);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int k = this.jdField_a_of_type_AndroidViewView.getHeight();
+    int j = (int)(k * 3.076923076923077D + 0.5D);
+    int i = j;
+    if (j > CommonHbFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment)) {
+      i = CommonHbFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment);
+    }
+    if ((i > 0) && (k > 0))
+    {
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, k);
+      localLayoutParams.gravity = 5;
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.postInvalidate();
   }
 }
 

@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.AddressCallback;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ar.config.MainDownAni;
 
 public class aaps
-  implements ArkAppLocationManager.AddressCallback
+  implements Runnable
 {
-  public aaps(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  public aaps(MainDownAni paramMainDownAni, aapz paramaapz) {}
   
-  public void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.a(this.jdField_a_of_type_Long, paramBoolean, paramSosoLbsInfo);
+    this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.b(this.jdField_a_of_type_Aapz);
   }
 }
 

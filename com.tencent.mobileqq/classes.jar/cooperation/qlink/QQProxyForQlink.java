@@ -1,14 +1,14 @@
 package cooperation.qlink;
 
-import amnb;
-import amnc;
-import amne;
-import amnf;
-import amng;
-import amnh;
-import amni;
-import amnj;
-import amnk;
+import amum;
+import amun;
+import amup;
+import amuq;
+import amur;
+import amus;
+import amut;
+import amuu;
+import amuv;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -78,7 +78,7 @@ public class QQProxyForQlink
     }
     for (;;)
     {
-      DialogUtil.b(paramActivity, 230, paramActivity.getString(2131431967), paramString, 2131431924, 2131431924, new amnk(this, paramQrHandleResultCallBack), null).show();
+      DialogUtil.b(paramActivity, 230, paramActivity.getString(2131431978), paramString, 2131431935, 2131431935, new amuv(this, paramQrHandleResultCallBack), null).show();
       return;
       if (2 == paramInt) {
         paramString = "你当前正在使用面对面快传" + "接收来着" + paramString + "的文件,请稍候";
@@ -137,10 +137,10 @@ public class QQProxyForQlink
     //   30: putfield 168	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
     //   33: aload_0
     //   34: getfield 168	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
-    //   37: new 177	amnl
+    //   37: new 177	amuw
     //   40: dup
     //   41: aload_0
-    //   42: invokespecial 179	amnl:<init>	(Lcooperation/qlink/QQProxyForQlink;)V
+    //   42: invokespecial 179	amuw:<init>	(Lcooperation/qlink/QQProxyForQlink;)V
     //   45: lconst_0
     //   46: ldc2_w 180
     //   49: invokevirtual 185	java/util/Timer:schedule	(Ljava/util/TimerTask;JJ)V
@@ -182,22 +182,31 @@ public class QQProxyForQlink
   
   private void j()
   {
+    IntentFilter localIntentFilter;
     if (this.jdField_b_of_type_AndroidContentBroadcastReceiver == null)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() == null)) {
-        QLog.e("QQProxyForQlink", 1, "registerAccountReceiver error.");
+      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new amun(this);
+      localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
+      localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
+      localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
+      localIntentFilter.addAction("mqq.intent.action.LOGOUT");
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+        break label95;
       }
     }
-    else {
+    label95:
+    for (BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();; localBaseApplication = null)
+    {
+      if (localBaseApplication != null)
+      {
+        localBaseApplication.registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+        return;
+      }
+      QLog.e("QQProxyForQlink", 1, "registerAccountReceiver error. fail");
+      this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
       return;
     }
-    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new amnc(this);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
-    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
-    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
-    localIntentFilter.addAction("mqq.intent.action.LOGOUT");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
   }
   
   private void k()
@@ -219,62 +228,69 @@ public class QQProxyForQlink
   private void l()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
+    //   0: aconst_null
+    //   1: astore_1
     //   2: aload_0
-    //   3: getfield 32	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   6: ifnull +13 -> 19
-    //   9: aload_0
-    //   10: getfield 32	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   13: invokevirtual 197	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   16: ifnonnull +14 -> 30
-    //   19: ldc 98
-    //   21: iconst_1
-    //   22: ldc 230
-    //   24: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: return
-    //   30: aload_0
-    //   31: getfield 232	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
-    //   34: ifnonnull -7 -> 27
+    //   3: monitorenter
+    //   4: aload_0
+    //   5: getfield 230	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   8: ifnonnull +58 -> 66
+    //   11: aload_0
+    //   12: new 232	amuo
+    //   15: dup
+    //   16: aload_0
+    //   17: invokespecial 233	amuo:<init>	(Lcooperation/qlink/QQProxyForQlink;)V
+    //   20: putfield 230	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   23: new 197	android/content/IntentFilter
+    //   26: dup
+    //   27: invokespecial 198	android/content/IntentFilter:<init>	()V
+    //   30: astore_2
+    //   31: aload_2
+    //   32: ldc 235
+    //   34: invokevirtual 204	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   37: aload_0
-    //   38: new 234	amnd
-    //   41: dup
-    //   42: aload_0
-    //   43: invokespecial 235	amnd:<init>	(Lcooperation/qlink/QQProxyForQlink;)V
-    //   46: putfield 232	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
-    //   49: new 204	android/content/IntentFilter
-    //   52: dup
-    //   53: invokespecial 205	android/content/IntentFilter:<init>	()V
-    //   56: astore_1
-    //   57: aload_1
-    //   58: ldc 237
-    //   60: invokevirtual 211	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   63: aload_0
-    //   64: getfield 32	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   67: invokevirtual 197	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   70: aload_0
-    //   71: getfield 232	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
-    //   74: aload_1
-    //   75: invokevirtual 221	com/tencent/qphone/base/util/BaseApplication:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-    //   78: pop
-    //   79: goto -52 -> 27
-    //   82: astore_1
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: aload_1
-    //   86: athrow
+    //   38: getfield 32	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   41: ifnull +11 -> 52
+    //   44: aload_0
+    //   45: getfield 32	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   48: invokevirtual 215	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   51: astore_1
+    //   52: aload_1
+    //   53: ifnull +16 -> 69
+    //   56: aload_1
+    //   57: aload_0
+    //   58: getfield 230	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   61: aload_2
+    //   62: invokevirtual 219	com/tencent/qphone/base/util/BaseApplication:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   65: pop
+    //   66: aload_0
+    //   67: monitorexit
+    //   68: return
+    //   69: ldc 98
+    //   71: iconst_1
+    //   72: ldc 237
+    //   74: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   77: aload_0
+    //   78: aconst_null
+    //   79: putfield 230	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   82: goto -16 -> 66
+    //   85: astore_1
+    //   86: aload_0
+    //   87: monitorexit
+    //   88: aload_1
+    //   89: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	87	0	this	QQProxyForQlink
-    //   56	19	1	localIntentFilter	IntentFilter
-    //   82	4	1	localObject	Object
+    //   0	90	0	this	QQProxyForQlink
+    //   1	56	1	localBaseApplication	BaseApplication
+    //   85	4	1	localObject	Object
+    //   30	32	2	localIntentFilter	IntentFilter
     // Exception table:
     //   from	to	target	type
-    //   2	19	82	finally
-    //   19	27	82	finally
-    //   30	79	82	finally
+    //   4	37	85	finally
+    //   37	52	85	finally
+    //   56	66	85	finally
+    //   69	82	85	finally
   }
   
   /* Error */
@@ -284,14 +300,14 @@ public class QQProxyForQlink
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 232	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   3: getfield 230	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
     //   6: ifnull +28 -> 34
     //   9: aload_0
     //   10: getfield 32	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   13: ifnull +13 -> 26
     //   16: aload_0
     //   17: getfield 32	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   20: invokevirtual 197	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   20: invokevirtual 215	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   23: ifnonnull +14 -> 37
     //   26: ldc 98
     //   28: iconst_1
@@ -302,13 +318,13 @@ public class QQProxyForQlink
     //   36: return
     //   37: aload_0
     //   38: getfield 32	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   41: invokevirtual 197	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   41: invokevirtual 215	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   44: aload_0
-    //   45: getfield 232	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   45: getfield 230	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
     //   48: invokevirtual 228	com/tencent/qphone/base/util/BaseApplication:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
     //   51: aload_0
     //   52: aconst_null
-    //   53: putfield 232	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   53: putfield 230	cooperation/qlink/QQProxyForQlink:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
     //   56: goto -22 -> 34
     //   59: astore_1
     //   60: aload_0
@@ -340,7 +356,7 @@ public class QQProxyForQlink
   {
     QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppInit");
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() != null)) {
-      ThreadManager.executeOnSubThread(new amnb(this));
+      ThreadManager.executeOnSubThread(new amum(this));
     }
   }
   
@@ -384,10 +400,10 @@ public class QQProxyForQlink
       if (this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mMode == 1)
       {
         a("0X8004854", 1);
-        paramOnClickListener3 = paramActivity.getResources().getString(2131432013) + str1 + paramActivity.getResources().getString(2131432014);
+        paramOnClickListener3 = paramActivity.getResources().getString(2131432024) + str1 + paramActivity.getResources().getString(2131432025);
         if ((paramString != null) && (!paramString.equalsIgnoreCase(this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerUin)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431966), paramOnClickListener3, paramActivity.getResources().getString(2131432015), paramActivity.getResources().getString(2131432015), paramOnClickListener2, null);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431977), paramOnClickListener3, paramActivity.getResources().getString(2131432026), paramActivity.getResources().getString(2131432026), paramOnClickListener2, null);
           label194:
           this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
         }
@@ -397,18 +413,18 @@ public class QQProxyForQlink
         if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
           break label403;
         }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new amnh(this));
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new amus(this));
         return;
         label224:
         str1 = this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerUin;
         break;
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431966), paramOnClickListener3, paramActivity.getResources().getString(2131432015), paramActivity.getResources().getString(2131432016), paramOnClickListener1, paramOnClickListener2);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431977), paramOnClickListener3, paramActivity.getResources().getString(2131432026), paramActivity.getResources().getString(2131432027), paramOnClickListener1, paramOnClickListener2);
         break label194;
         if (this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mMode == 2)
         {
           a("0X8004856", 1);
-          paramOnClickListener1 = str1 + paramActivity.getResources().getString(2131432017);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431966), paramOnClickListener1, paramActivity.getResources().getString(2131432018), paramActivity.getResources().getString(2131432018), paramOnClickListener3, null);
+          paramOnClickListener1 = str1 + paramActivity.getResources().getString(2131432028);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131431977), paramOnClickListener1, paramActivity.getResources().getString(2131432029), paramActivity.getResources().getString(2131432029), paramOnClickListener3, null);
           this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
         }
         else if (QLog.isColorLevel())
@@ -468,7 +484,7 @@ public class QQProxyForQlink
     } while (!paramBoolean);
     paramActivity.finish();
     return;
-    a(paramActivity, new amne(this, paramArrayList, paramActivity, paramInt1, paramBoolean), new amnf(this), new amng(this), paramString);
+    a(paramActivity, new amup(this, paramArrayList, paramActivity, paramInt1, paramBoolean), new amuq(this), new amur(this), paramString);
   }
   
   public void a(Bundle paramBundle)
@@ -610,7 +626,7 @@ public class QQProxyForQlink
     if (paramAppActivity == null) {
       return;
     }
-    DialogUtil.b(paramAppActivity, 230, paramAppActivity.getString(2131432039), paramAppActivity.getString(2131431971), 2131431924, 2131431924, new amnj(this, paramQrHandleResultCallBack), null).show();
+    DialogUtil.b(paramAppActivity, 230, paramAppActivity.getString(2131432050), paramAppActivity.getString(2131431982), 2131431935, 2131431935, new amuu(this, paramQrHandleResultCallBack), null).show();
   }
   
   public void a(AppActivity paramAppActivity, String paramString, QrHandleResultCallBack paramQrHandleResultCallBack)
@@ -621,7 +637,7 @@ public class QQProxyForQlink
     QlinkHelper.QRScanInfo localQRScanInfo = QlinkHelper.a(paramString);
     if (localQRScanInfo == null)
     {
-      DialogUtil.b(paramAppActivity, 230, paramAppActivity.getString(2131431967), paramAppActivity.getString(2131431972), 2131431924, 2131431924, new amni(this, paramQrHandleResultCallBack), null).show();
+      DialogUtil.b(paramAppActivity, 230, paramAppActivity.getString(2131431978), paramAppActivity.getString(2131431983), 2131431935, 2131431935, new amut(this, paramQrHandleResultCallBack), null).show();
       return;
     }
     if (this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mWorking)

@@ -1,14 +1,16 @@
 import android.app.Dialog;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class vmy
   implements Runnable
 {
-  public vmy(AIOGalleryScene paramAIOGalleryScene) {}
+  public vmy(StructingMsgItemBuilder paramStructingMsgItemBuilder, Dialog paramDialog) {}
   
   public void run()
   {
-    AIOGalleryScene.a(this.a).show();
+    if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

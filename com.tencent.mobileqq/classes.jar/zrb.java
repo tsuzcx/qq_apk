@@ -1,15 +1,36 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.automator.step.GetTbsSwitchInfo;
-import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.util.WeakReference;
 
 public class zrb
   implements Runnable
 {
-  public zrb(GetTbsSwitchInfo paramGetTbsSwitchInfo) {}
+  private final WeakReference a;
+  private final WeakReference b;
+  
+  public zrb(QQAppInterface paramQQAppInterface, PublicAccountDataManager paramPublicAccountDataManager)
+  {
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramPublicAccountDataManager);
+  }
   
   public void run()
   {
-    QbSdk.isX5DisabledSync(BaseApplicationImpl.getContext());
+    Object localObject = (QQAppInterface)this.a.get();
+    PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)this.b.get();
+    if ((localObject != null) && (localPublicAccountDataManager != null))
+    {
+      TroopBarAssistantManager.a().a((QQAppInterface)localObject, localPublicAccountDataManager.a());
+      ServiceAccountFolderManager.a().c((QQAppInterface)localObject);
+      TroopBarAssistantManager.a().g((QQAppInterface)localObject);
+      localObject = ReadInJoyLogicEngine.a();
+      if (localObject != null) {
+        ((ReadInJoyLogicEngine)localObject).e();
+      }
+    }
   }
 }
 

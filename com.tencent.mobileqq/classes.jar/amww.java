@@ -1,20 +1,15 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqfav.widget.FavoriteActionSheet;
 
-public final class amww
-  implements IQZonePluginManager.OnPluginReadyListener
+public class amww
+  implements DialogInterface.OnDismissListener
 {
-  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
+  public amww(FavoriteActionSheet paramFavoriteActionSheet) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      IQZonePluginManager.c(paramContext, paramPluginParams);
-    }
+    this.a.a = false;
   }
 }
 

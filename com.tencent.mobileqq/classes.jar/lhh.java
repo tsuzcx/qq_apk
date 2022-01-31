@@ -1,18 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.Switch;
 
 public class lhh
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public lhh(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lhh(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ReadInJoyCameraCaptureActivity.b(this.a, 6);
-    ReadInJoyCameraCaptureActivity.a(this.a);
-    ReadInJoyCameraCaptureActivity.a(this.a).a();
+    paramCompoundButton = this.a;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ReadInJoySettingActivity.a(paramCompoundButton, bool);
+      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
+        break label75;
+      }
+      if (paramBoolean) {
+        break;
+      }
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+      return;
+    }
+    ReadInJoySettingActivity.a(this.a).show();
+    return;
+    label75:
+    this.a.c = false;
   }
 }
 

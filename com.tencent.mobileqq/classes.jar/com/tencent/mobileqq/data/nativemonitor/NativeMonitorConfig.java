@@ -10,6 +10,7 @@ public class NativeMonitorConfig
   private String soWhiteList;
   private long switchFlag;
   private long timeLimited = 1000000L;
+  private long tmChance;
   
   public String getAndroidVersionBlackList()
   {
@@ -51,6 +52,11 @@ public class NativeMonitorConfig
     return this.timeLimited;
   }
   
+  public long getTmChance()
+  {
+    return this.tmChance;
+  }
+  
   public void setCountLimitedDefault()
   {
     this.countLimted = 1000L;
@@ -66,6 +72,11 @@ public class NativeMonitorConfig
     this.timeLimited = 1000000L;
   }
   
+  public void setTmChance(long paramLong)
+  {
+    this.tmChance = paramLong;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -77,6 +88,7 @@ public class NativeMonitorConfig
     localStringBuilder.append("|countLimited:").append(this.countLimted);
     localStringBuilder.append("|memoryLimited:").append(this.memoryLimited);
     localStringBuilder.append("|processBlackList:").append(this.processBlackList);
+    localStringBuilder.append("|tmChance:").append(this.tmChance);
     return localStringBuilder.toString();
   }
   
@@ -90,6 +102,7 @@ public class NativeMonitorConfig
     this.memoryLimited = paramNativeMonitorConfig.getMemoryLimited();
     this.androidVersionBlackList = paramNativeMonitorConfig.getAndroidVersionBlackList();
     this.processBlackList = paramNativeMonitorConfig.getProcessBlackList();
+    this.tmChance = paramNativeMonitorConfig.getTmChance();
   }
 }
 

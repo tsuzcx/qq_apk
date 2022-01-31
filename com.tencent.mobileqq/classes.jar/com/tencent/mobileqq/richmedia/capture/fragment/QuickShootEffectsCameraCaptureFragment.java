@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.fragment;
 
-import ahke;
+import ahov;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,8 +30,8 @@ import java.util.ArrayList;
 public class QuickShootEffectsCameraCaptureFragment
   extends AIOEffectsCameraCaptureFragment
 {
-  private String a;
   private int c;
+  private String e;
   private boolean i;
   
   private void a(Activity paramActivity)
@@ -42,7 +42,7 @@ public class QuickShootEffectsCameraCaptureFragment
     localIntent.putExtra("refer", "schemeActiveFeeds");
     QzonePluginProxyActivity.a(localIntent, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
     localIntent.addFlags(805306368);
-    QZoneHelper.b(paramActivity, localAppInterface.getCurrentAccountUin(), localIntent, -1);
+    QZoneHelper.c(paramActivity, localAppInterface.getCurrentAccountUin(), localIntent, -1);
   }
   
   public int a()
@@ -108,12 +108,12 @@ public class QuickShootEffectsCameraCaptureFragment
     }
   }
   
-  protected void e()
+  protected void d()
   {
-    super.e();
+    super.d();
     if (this.i)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.jdField_c_of_type_Int, this.jdField_e_of_type_JavaLangString);
       PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = CapturePtvTemplateManager.a().a();
       if (localPtvTemplateInfo != null)
       {
@@ -258,7 +258,7 @@ public class QuickShootEffectsCameraCaptureFragment
         if (localObject1 != null) {}
         for (localObject1 = new AIOEffectsCameraCaptureFragment.Session(((SessionInfo)localObject1).jdField_a_of_type_JavaLangString, ((SessionInfo)localObject1).jdField_d_of_type_JavaLangString, ((SessionInfo)localObject1).jdField_a_of_type_Int, ((SessionInfo)localObject1).jdField_b_of_type_JavaLangString);; localObject1 = null)
         {
-          a((AIOEffectsCameraCaptureFragment.Session)localObject1, (PublishParam)localObject3, new ahke(this, localThrowable, paramIntent));
+          a((AIOEffectsCameraCaptureFragment.Session)localObject1, (PublishParam)localObject3, new ahov(this, localThrowable, paramIntent));
           return;
         }
         label735:
@@ -276,7 +276,7 @@ public class QuickShootEffectsCameraCaptureFragment
     paramBundle = getArguments();
     this.i = paramBundle.getBoolean("ARG_UNFOLD_DD", false);
     this.jdField_c_of_type_Int = paramBundle.getInt("ARG_DD_CATEGORY_ID");
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("ARG_DD_ITEM_ID");
+    this.jdField_e_of_type_JavaLangString = paramBundle.getString("ARG_DD_ITEM_ID");
   }
 }
 

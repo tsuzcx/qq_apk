@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.MapParcelable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QQProxyForQlink;
 
-public final class amur
-  implements Parcelable.Creator
+public class amur
+  implements DialogInterface.OnClickListener
 {
-  public MapParcelable a(Parcel paramParcel)
-  {
-    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
-  }
+  public amur(QQProxyForQlink paramQQProxyForQlink) {}
   
-  public MapParcelable[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return null;
+    this.a.a("0X8004857", 1);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amur
  * JD-Core Version:    0.7.0.1
  */

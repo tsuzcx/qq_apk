@@ -14,10 +14,10 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nwu;
-import nwv;
-import nwx;
-import nxa;
+import obj;
+import obk;
+import obm;
+import obp;
 
 public class MemoriesProfilePresenter
   implements IEventReceiver
@@ -26,12 +26,12 @@ public class MemoriesProfilePresenter
   public QQUserUIItem a;
   private MemoriesProfilePresenter.GetYearNodeListReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetYearNodeListReceiver;
   private MemoriesProfilePresenter.ProfilePresenterListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$ProfilePresenterListener;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new nwu(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new obj(this);
   public String a;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private nwv jdField_a_of_type_Nwv;
-  private nwx jdField_a_of_type_Nwx;
-  private nxa jdField_a_of_type_Nxa;
+  private obk jdField_a_of_type_Obk;
+  private obm jdField_a_of_type_Obm;
+  private obp jdField_a_of_type_Obp;
   private int b = -1;
   
   public MemoriesProfilePresenter(String paramString, @NonNull MemoriesProfilePresenter.ProfilePresenterListener paramProfilePresenterListener)
@@ -42,13 +42,13 @@ public class MemoriesProfilePresenter
   
   public void a()
   {
-    this.jdField_a_of_type_Nxa = new nxa(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nxa);
+    this.jdField_a_of_type_Obp = new obp(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Obp);
     PlayModeUtils.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_Nwv = new nwv(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nwv);
-    this.jdField_a_of_type_Nwx = new nwx(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nwx);
+    this.jdField_a_of_type_Obk = new obk(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Obk);
+    this.jdField_a_of_type_Obm = new obm(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Obm);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetYearNodeListReceiver = new MemoriesProfilePresenter.GetYearNodeListReceiver(this);
     Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetYearNodeListReceiver);
   }
@@ -68,10 +68,10 @@ public class MemoriesProfilePresenter
   
   public void b()
   {
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nxa);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Obp);
     PlayModeUtils.a().removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nwv);
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nwx);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Obk);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Obm);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter$GetYearNodeListReceiver);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }

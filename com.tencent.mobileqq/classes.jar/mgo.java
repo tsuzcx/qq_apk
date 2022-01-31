@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianTipFloatingWindow;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianTipFloatingWindow.TipFloatingWindowInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
-public class mgo
+class mgo
   implements Runnable
 {
-  public mgo(KandianTipFloatingWindow paramKandianTipFloatingWindow, KandianTipFloatingWindow.TipFloatingWindowInfo paramTipFloatingWindowInfo, View paramView) {}
+  mgo(mgn parammgn) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianTipFloatingWindow$TipFloatingWindowInfo.a.onClick(this.jdField_a_of_type_AndroidViewView);
+    VideoFeedsPlayActivity.a(this.a.a).a(true);
   }
 }
 

@@ -1,32 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopGift;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.DownloadGftData;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
 import com.tencent.qphone.base.util.QLog;
 
 class vki
   implements Runnable
 {
-  vki(vkh paramvkh, AIOAnimationControlManager.DownloadGftData paramDownloadGftData) {}
+  vki(vkh paramvkh, ProgressPieDrawable paramProgressPieDrawable) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager$DownloadGftData.a)
-    {
-      this.jdField_a_of_type_Vkh.a.isLoading = false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, "GONE uniseq = " + this.jdField_a_of_type_Vkh.a.uniseq);
-      }
-      ((AIOAnimationControlManager)vkh.a(this.jdField_a_of_type_Vkh).getManager(222)).b(this.jdField_a_of_type_Vkh);
-      this.jdField_a_of_type_Vkh.c.setVisibility(8);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.setVisible(false, true);
     if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "VISIBLE uniseq = " + this.jdField_a_of_type_Vkh.a.uniseq);
+      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] set ProgressPieDrawable invisible,ppd = " + this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable);
     }
-    this.jdField_a_of_type_Vkh.a.isLoading = true;
-    this.jdField_a_of_type_Vkh.c.setVisibility(0);
   }
 }
 

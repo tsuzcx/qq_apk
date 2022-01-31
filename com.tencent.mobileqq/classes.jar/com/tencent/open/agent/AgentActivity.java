@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import akzr;
+import alhj;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +21,7 @@ import java.security.MessageDigest;
 public class AgentActivity
   extends BaseActivity
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new akzr(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new alhj(this);
   private Intent jdField_a_of_type_AndroidContentIntent;
   protected Handler a;
   protected String a;

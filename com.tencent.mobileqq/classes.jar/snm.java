@@ -1,25 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class snm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public snm(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public snm(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.app != null)
-    {
-      paramView = new Intent();
-      paramView.putExtras(this.a.getIntent().getExtras());
-      paramView.putExtra("extra_choose_friend_uin", this.a.app.getAccount());
-      paramView.putExtra("extra_choose_friend_name", this.a.app.getCurrentNickname());
-      this.a.setResult(-1, paramView);
-      this.a.finish();
-    }
+    this.a.a.q();
   }
 }
 

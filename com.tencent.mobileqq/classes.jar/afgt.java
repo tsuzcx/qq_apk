@@ -1,25 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.AnchorDisplayAdapter;
+import tencent.im.oidb.cmd0xac5.cmd0xac5.NowFollowAnchor;
 
-class afgt
-  implements DialogInterface.OnClickListener
+public class afgt
 {
-  afgt(afgp paramafgp, QQCustomDialog paramQQCustomDialog) {}
+  public int a;
+  public View a;
+  public TextView a;
+  public URLImageView a;
+  public cmd0xac5.NowFollowAnchor a;
+  public View b;
+  public URLImageView b;
+  public View c;
+  public View d;
+  public View e;
+  public View f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Afgp.a.a.c();
-    paramInt = ((Integer)NearbySPUtil.a(this.jdField_a_of_type_Afgp.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    ReportController.b(this.jdField_a_of_type_Afgp.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, NearbyUtils.a(this.jdField_a_of_type_Afgp.a.a.j), paramInt + "", "", "");
-  }
+  public afgt(AnchorDisplayAdapter paramAnchorDisplayAdapter) {}
 }
 
 

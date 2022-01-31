@@ -1,27 +1,19 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.agent.AuthorityLoginView;
 
-public class alin
-  implements TicketUtils.TicketCallback
+class alin
+  implements Runnable
 {
-  public alin(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
+  alin(alil paramalil) {}
   
-  public void a()
+  public void run()
   {
-    ThreadManager.getSubThreadHandler().post(new aliq(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.c("TIME-STATISTIC", "onGetA1");
-    ThreadManager.getSubThreadHandler().post(new alio(this, paramArrayOfByte, paramString));
+    this.a.a.a.a(true);
+    if (this.a.a.a.a != null)
+    {
+      this.a.a.a.a.dismiss();
+      this.a.a.a.a = null;
+    }
   }
 }
 

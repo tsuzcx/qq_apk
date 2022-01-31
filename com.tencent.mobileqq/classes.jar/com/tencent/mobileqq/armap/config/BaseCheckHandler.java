@@ -371,10 +371,10 @@ public abstract class BaseCheckHandler
     //   65: aload_0
     //   66: invokespecial 137	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   69: astore 8
-    //   71: new 165	java/util/zip/ZipInputStream
+    //   71: new 165	com/tencent/commonsdk/zip/QZipInputStream
     //   74: dup
     //   75: aload 8
-    //   77: invokespecial 166	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   77: invokespecial 166	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
     //   80: astore 9
     //   82: new 47	java/io/File
     //   85: dup
@@ -391,7 +391,7 @@ public abstract class BaseCheckHandler
     //   108: aconst_null
     //   109: astore 12
     //   111: aload 9
-    //   113: invokevirtual 183	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   113: invokevirtual 183	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
     //   116: astore 11
     //   118: aload 11
     //   120: ifnonnull +89 -> 209
@@ -415,7 +415,7 @@ public abstract class BaseCheckHandler
     //   158: aload 9
     //   160: ifnull +8 -> 168
     //   163: aload 9
-    //   165: invokevirtual 212	java/util/zip/ZipInputStream:close	()V
+    //   165: invokevirtual 212	com/tencent/commonsdk/zip/QZipInputStream:close	()V
     //   168: aload 8
     //   170: ifnull +8 -> 178
     //   173: aload 8
@@ -506,7 +506,7 @@ public abstract class BaseCheckHandler
     //   350: iload_3
     //   351: ifne +8 -> 359
     //   354: aload 9
-    //   356: invokevirtual 212	java/util/zip/ZipInputStream:close	()V
+    //   356: invokevirtual 212	com/tencent/commonsdk/zip/QZipInputStream:close	()V
     //   359: aload 10
     //   361: ifnull +8 -> 369
     //   364: aload 10
@@ -594,7 +594,7 @@ public abstract class BaseCheckHandler
     //   538: iconst_0
     //   539: aload 16
     //   541: arraylength
-    //   542: invokevirtual 281	java/util/zip/ZipInputStream:read	([BII)I
+    //   542: invokevirtual 281	com/tencent/commonsdk/zip/QZipInputStream:read	([BII)I
     //   545: istore 7
     //   547: iload 7
     //   549: iconst_m1
@@ -828,7 +828,7 @@ public abstract class BaseCheckHandler
     //   69	531	8	localObject1	Object
     //   807	1	8	localIOException1	java.io.IOException
     //   822	109	8	localObject2	Object
-    //   80	455	9	localZipInputStream	java.util.zip.ZipInputStream
+    //   80	455	9	localQZipInputStream	com.tencent.commonsdk.zip.QZipInputStream
     //   792	1	9	localIOException2	java.io.IOException
     //   797	1	9	localIOException3	java.io.IOException
     //   802	1	9	localIOException4	java.io.IOException

@@ -1,6 +1,5 @@
 package com.tencent.av.ui.funchat.zimu;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
@@ -33,8 +32,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kdl;
-import kdm;
+import kfq;
+import kfr;
 
 public class ZimuToolbar
   extends BaseToolbar
@@ -44,8 +43,8 @@ public class ZimuToolbar
   private static final int ZIMU_CPU_CORE_THRESHOLD = 8;
   private static final int ZIMU_CPU_FREQ_THRESHOLD = 1800000;
   private boolean mARZimuEnable;
-  private kdm mAdapter;
-  private kdl mItemEvent;
+  private kfr mAdapter;
+  private kfq mItemEvent;
   private HorizontalListView mListView;
   private EffectSupportManager mSupportManager;
   BaseToolbar.UIInfo mUIInfo = null;
@@ -108,10 +107,10 @@ public class ZimuToolbar
     return (!bool) || (!this.mARZimuEnable);
   }
   
-  public static boolean isShow(Context paramContext)
+  public static boolean isShow(VideoAppInterface paramVideoAppInterface)
   {
-    if (paramContext != null) {
-      return EffectZimuManager.a(paramContext);
+    if (paramVideoAppInterface != null) {
+      return EffectZimuManager.a(paramVideoAppInterface);
     }
     return false;
   }
@@ -219,9 +218,9 @@ public class ZimuToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 6;
-      this.mUIInfo.g = 2130969359;
+      this.mUIInfo.g = 2130969357;
       this.mUIInfo.e = 103417;
-      this.mUIInfo.f = 2130840347;
+      this.mUIInfo.f = 2130840362;
       this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428746);
     }
     return this.mUIInfo;
@@ -242,7 +241,7 @@ public class ZimuToolbar
     paramArrayList.add(0, localItemInfo);
     localItemInfo = new QavListItemBase.ItemInfo();
     localItemInfo.jdField_a_of_type_JavaLangString = "0";
-    localItemInfo.b = String.valueOf(2130840282);
+    localItemInfo.b = String.valueOf(2130840297);
     localItemInfo.d = "取消字幕";
     paramArrayList.add(1, localItemInfo);
     return paramArrayList;
@@ -268,7 +267,7 @@ public class ZimuToolbar
   {
     super.onCreate(paramAVActivity);
     this.mSupportManager = ((EffectSupportManager)this.mApp.a(5));
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366275));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366280));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mZimuManager = ((EffectZimuManager)this.mApp.a(0));
     ArrayList localArrayList = convertItemInfo(this.mZimuManager.a(null));
@@ -276,11 +275,11 @@ public class ZimuToolbar
     if (localArrayList.size() > 0) {
       localObject = insertEmptyItem(localArrayList);
     }
-    this.mAdapter = new kdm(this.mApp, paramAVActivity, (ArrayList)localObject, this.mListView, this);
+    this.mAdapter = new kfr(this.mApp, paramAVActivity, (ArrayList)localObject, this.mListView, this);
     localObject = this.mListView.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).height = (this.mAdapter.jdField_a_of_type_Int + AIOUtils.a(30.0F, paramAVActivity.getResources()));
     this.mListView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.mItemEvent = new kdl(this);
+    this.mItemEvent = new kfq(this);
     this.mAdapter.a(this.mItemEvent);
     this.mAdapter.a(this);
     this.mAdapter.b(true);
@@ -400,7 +399,7 @@ public class ZimuToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuToolbar
  * JD-Core Version:    0.7.0.1
  */

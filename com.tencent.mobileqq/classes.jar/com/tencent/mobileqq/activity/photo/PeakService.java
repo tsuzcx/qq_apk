@@ -9,7 +9,6 @@ import com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack;
 import com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack.Stub;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.camera.CameraHolder;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
 import com.tencent.mobileqq.pic.CompressInfo;
 import com.tencent.mobileqq.pic.compress.CompressOperator;
 import com.tencent.mobileqq.richmedia.capture.activity.CameraCaptureActivity;
@@ -23,9 +22,12 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BinderWarpper;
+import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.qq.im.QIMStoryEffectCameraCaptureUnit;
+import dov.com.qq.im.capture.data.CaptureComboManager;
 import java.util.Arrays;
 import mqq.os.MqqHandler;
-import wwr;
+import xcf;
 
 public class PeakService
   extends IntentService
@@ -84,7 +86,7 @@ public class PeakService
         paramIntent.removeCallbacks(FileUtils.a);
         paramIntent.postDelayed(FileUtils.a, 1000L);
       }
-      ThreadManager.post(new wwr(this), 1, null, true);
+      ThreadManager.post(new xcf(this), 1, null, true);
     }
     for (;;)
     {
@@ -122,7 +124,6 @@ public class PeakService
         new CameraCaptureActivity();
         new AIOEffectsCameraCaptureFragment();
         new QuickShootEffectsCameraCaptureFragment();
-        new SmallVideoCameraCaptureFragment();
         try
         {
           long l = System.currentTimeMillis();
@@ -145,6 +146,13 @@ public class PeakService
           PtvFilterSoLoad.b();
           if (QLog.isColorLevel()) {
             QLog.d("sv-start", 1, "isSupportBeauty isSupportFaceEffect start use time = " + (System.currentTimeMillis() - l));
+          }
+          l = System.currentTimeMillis();
+          new QIMCameraCaptureActivity();
+          new QIMStoryEffectCameraCaptureUnit(null, null);
+          CaptureComboManager.c();
+          if (QLog.isColorLevel()) {
+            QLog.d("sv-start", 1, "CaptureComboManager.autoInit() use time = " + (System.currentTimeMillis() - l));
           }
         }
         catch (Throwable paramIntent)

@@ -1,8 +1,19 @@
-import dov.com.tencent.mobileqq.shortvideo.ml.decisiontree.ID3.ImpurityFunction;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
 
-public final class aoqc
-  extends ID3.ImpurityFunction
-{}
+class aoqc
+  implements Runnable
+{
+  aoqc(aopy paramaopy) {}
+  
+  public void run()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.r();
+    }
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar

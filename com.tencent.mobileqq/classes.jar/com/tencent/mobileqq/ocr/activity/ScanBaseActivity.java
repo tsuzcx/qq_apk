@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.activity;
 
-import agcb;
+import aggl;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -51,7 +51,7 @@ public class ScanBaseActivity
       if (!bool2)
       {
         QLog.d("ScanBaseActivity", 1, "checkOcrEnable load so failed!");
-        ThreadManager.post(new agcb(this), 5, null, false);
+        ThreadManager.post(new aggl(this), 5, null, false);
       }
       return bool1 & bool2;
     }
@@ -93,18 +93,18 @@ public class ScanBaseActivity
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
-    this.b = ((TextView)findViewById(2131363381));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363262));
+    this.b = ((TextView)findViewById(2131363400));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       int i = ImmersiveUtils.a(this);
-      View localView = findViewById(2131370900);
+      View localView = findViewById(2131370895);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.topMargin = i;
       localView.setLayoutParams(localLayoutParams);
     }
     if (AppSetting.b) {
-      findViewById(2131363245).setContentDescription("返回 按钮");
+      findViewById(2131363262).setContentDescription("返回 按钮");
     }
   }
   

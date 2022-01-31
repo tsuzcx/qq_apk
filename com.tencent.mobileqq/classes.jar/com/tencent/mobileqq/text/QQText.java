@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.text;
 
-import ainp;
-import ainq;
+import aiss;
+import aist;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
@@ -37,6 +37,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import java.lang.reflect.Array;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -79,7 +80,7 @@ public class QQText
     jdField_e_of_type_JavaUtilRegexPattern = Pattern.compile(jdField_c_of_type_JavaLangString);
     jdField_f_of_type_JavaUtilRegexPattern = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+");
     jdField_b_of_type_ArrayOfJavaLangObject = new Object[0];
-    jdField_a_of_type_AndroidTextSpannable$Factory = new ainp();
+    jdField_a_of_type_AndroidTextSpannable$Factory = new aiss();
     try
     {
       StaticLayout.class.getDeclaredMethod("generate2", new Class[] { CharSequence.class, Integer.TYPE, Integer.TYPE, TextPaint.class, Integer.TYPE, Layout.Alignment.class, Float.TYPE, Float.TYPE, Boolean.TYPE, Boolean.TYPE });
@@ -295,37 +296,37 @@ public class QQText
       if ((paramInt3 & 0x4) == 4)
       {
         bool1 = true;
-        if ((i7 == 17) && (((paramInt3 & 0x6) <= 0) || (i7 != 20) || (k >= i5 - 1))) {
-          break label633;
+        if (((paramInt3 & 0x6) <= 0) || (i7 != 20) || (k >= i5 - 1)) {
+          break label626;
         }
         m = paramStringBuilder.charAt(k + 1);
         if (m >= EmotcationConstants.jdField_a_of_type_Int) {
-          break label263;
-        }
-        if (!jdField_a_of_type_Boolean) {
-          break label234;
-        }
-        paramStringBuilder.replace(k, k + 2, "##");
-        label152:
-        if (!bool1) {
           break label256;
         }
+        if (!jdField_a_of_type_Boolean) {
+          break label227;
+        }
+        paramStringBuilder.replace(k, k + 2, "##");
+        label145:
+        if (!bool1) {
+          break label249;
+        }
         i = 0x80000000 | m;
-        label165:
+        label158:
         a(new QQText.EmoticonSpan(this, i, paramInt4, 1), k, k + 2, 33);
         i = k + 1;
         k = j + 1;
         paramInt1 += 1;
         j = i;
         i = k;
-        label214:
+        label207:
         if (i <= 512) {
-          break label1118;
+          break label1111;
         }
       }
     }
-    label234:
-    label1131:
+    label227:
+    label1124:
     for (;;)
     {
       if (paramInt1 > 0) {}
@@ -333,12 +334,13 @@ public class QQText
       bool1 = false;
       break label82;
       if (m != 10) {
-        break label152;
+        break label145;
       }
       paramStringBuilder.setCharAt(k + 1, 'ú');
-      break label152;
+      break label145;
+      label249:
       i = m;
-      break label165;
+      break label158;
       if ((m >= 255) && (k + 4 < i5))
       {
         char[] arrayOfChar = new char[4];
@@ -368,30 +370,31 @@ public class QQText
           a(new QQText.SmallEmojiSpan(this, arrayOfChar, paramInt4, bool1, bool2), k, k + 5, 33);
           i = 2;
           if (i >= 5) {
-            break label516;
+            break label509;
           }
           if (paramStringBuilder.charAt(k + i) != '\n') {
-            break label485;
+            break label478;
           }
           paramStringBuilder.setCharAt(k + i, 'ú');
         }
         for (;;)
         {
           i += 1;
-          break label436;
+          break label429;
           bool2 = false;
           break;
           if (paramStringBuilder.charAt(k + i) == '\r') {
             paramStringBuilder.setCharAt(k + i, 'þ');
           }
         }
+        label509:
         k += 4;
         i = j + 1;
         paramInt1 += 1;
         j = k;
-        break label214;
+        break label207;
       }
-      label633:
+      label626:
       int i3;
       int n;
       if (m == 250)
@@ -427,17 +430,17 @@ public class QQText
               i1 = 1;
             }
             if ((m != -1) && (i1 == 0)) {
-              break label1145;
+              break label1138;
             }
             i1 = EmotcationConstants.a(i7, i);
             if (i1 != -1) {
-              break label974;
+              break label967;
             }
           }
         }
       }
-      label1008:
-      label1145:
+      label1001:
+      label1138:
       for (int i1 = 1;; i1 = 0)
       {
         if (m != -1)
@@ -450,14 +453,14 @@ public class QQText
               }
               i1 = 2;
               if ((i <= 65535) || (i5 < k + 2)) {
-                break label1008;
+                break label1001;
               }
               if (jdField_a_of_type_Boolean) {
                 paramStringBuilder.replace(k + 2, k + 4, "##");
               }
               i = i1 + 2;
               if (n == 0) {
-                break label1131;
+                break label1124;
               }
               i += 1;
             }
@@ -474,47 +477,47 @@ public class QQText
               break;
               n = i3;
               if (i5 <= k + 1) {
-                break label692;
+                break label685;
               }
               int i4 = paramStringBuilder.codePointAt(k + 1);
               n = i3;
               i = i4;
               if (i4 != 65039) {
-                break label692;
+                break label685;
               }
               n = i3;
               i = i4;
               if (i5 <= k + 2) {
-                break label692;
+                break label685;
               }
               i = paramStringBuilder.codePointAt(k + 2);
               n = 1;
-              break label692;
+              break label685;
               m = i1;
-              break label729;
+              break label722;
               if (jdField_a_of_type_Boolean) {
                 paramStringBuilder.replace(k, k + 1, "#");
               }
               i1 = 1;
-              break label784;
+              break label777;
               if (jdField_a_of_type_Boolean) {
                 paramStringBuilder.replace(k + 2, k + 3, "#");
               }
               i = i1 + 1;
-              break label830;
+              break label823;
               if ((i7 > 65535) && (i5 >= k + 2))
               {
                 if (jdField_a_of_type_Boolean) {
                   paramStringBuilder.replace(k, k + 2, "##");
                 }
                 i = 2;
-                break label841;
+                break label834;
               }
               if (jdField_a_of_type_Boolean) {
                 paramStringBuilder.replace(k, k + 1, "#");
               }
               i = 1;
-              break label841;
+              break label834;
             }
             k = j + 1;
             j = i;
@@ -523,7 +526,7 @@ public class QQText
         }
         i = j;
         j = k;
-        break label214;
+        break label207;
       }
     }
   }
@@ -538,29 +541,29 @@ public class QQText
     ActionSheet localActionSheet = ActionSheet.a(paramContext);
     if (paramInt == 0)
     {
-      localActionSheet.a(String.format(paramContext.getString(2131435109), new Object[] { paramString }));
-      localActionSheet.a(2131435092, 1);
-      localActionSheet.a(2131435093, 1);
-      localActionSheet.a(2131433032, 1);
-      localActionSheet.a(2131433049, 1);
+      localActionSheet.a(String.format(paramContext.getString(2131435125), new Object[] { paramString }));
+      localActionSheet.a(2131435108, 1);
+      localActionSheet.a(2131435109, 1);
+      localActionSheet.a(2131433046, 1);
+      localActionSheet.a(2131433063, 1);
     }
     for (;;)
     {
-      localActionSheet.c(2131433015);
-      localActionSheet.a(new ainq(paramInt, paramString, paramContext, localActionSheet));
+      localActionSheet.c(2131433029);
+      localActionSheet.a(new aist(paramInt, paramString, paramContext, localActionSheet));
       localActionSheet.show();
       return;
       if (paramInt == 1)
       {
-        localActionSheet.a(String.format(paramContext.getString(2131435110), new Object[] { paramString }));
-        localActionSheet.a(2131435092, 1);
-        localActionSheet.a(2131435093, 1);
+        localActionSheet.a(String.format(paramContext.getString(2131435126), new Object[] { paramString }));
+        localActionSheet.a(2131435108, 1);
+        localActionSheet.a(2131435109, 1);
       }
       else
       {
-        localActionSheet.a(String.format(paramContext.getString(2131435111), new Object[] { paramString }));
-        localActionSheet.a(2131435094, 1);
-        localActionSheet.a(2131435093, 1);
+        localActionSheet.a(String.format(paramContext.getString(2131435127), new Object[] { paramString }));
+        localActionSheet.a(2131435110, 1);
+        localActionSheet.a(2131435109, 1);
       }
     }
   }
@@ -615,7 +618,7 @@ public class QQText
   
   private static final boolean a()
   {
-    StackTraceElement localStackTraceElement = new java.lang.Exception().getStackTrace()[2];
+    StackTraceElement localStackTraceElement = new Exception().getStackTrace()[2];
     return (("android.text.StaticLayout".equals(localStackTraceElement.getClassName())) && ("generate2".equals(localStackTraceElement.getMethodName()))) || (("android.text.Layout".equals(localStackTraceElement.getClassName())) && ("expandTab".equals(localStackTraceElement.getMethodName())));
   }
   
@@ -867,28 +870,60 @@ public class QQText
     if (i > 0) {
       localObject = paramString.substring(i);
     }
-    paramString = URLUtil.guessUrl(paramString);
+    String str2 = URLUtil.guessUrl(paramString);
+    String str1 = str2;
     if (localObject != null) {
-      paramString = paramString + (String)localObject;
+      str1 = str2 + (String)localObject;
+    }
+    if (TeamWorkUtils.a(str1))
+    {
+      localObject = paramView.getContext();
+      if (NetworkUtil.d(BaseApplication.getContext()))
+      {
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("url", str1);
+        TeamWorkDocEditBrowserActivity.a(paramView.getContext(), (Bundle)localObject, false);
+      }
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X80061B1", "0X80061B1", 0, 0, "", "", "", "");
+      return;
+      QQToast.a((Context)localObject, ((Context)localObject).getResources().getString(2131433023), 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131558448));
+      continue;
+      MttBrowerWrapper.a(paramView.getContext(), str1, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
     for (;;)
     {
-      ReportController.b(null, "CliOper", "", "", "0X80061B1", "0X80061B1", 0, 0, "", "", "", "");
-      if (TeamWorkUtils.a(paramString))
+      try
       {
-        localObject = paramView.getContext();
-        if (NetworkUtil.d(BaseApplication.getContext()))
+        paramView = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        str1 = paramView.frienduin;
+        if (paramView.istroop == 1)
         {
-          localObject = new Bundle();
-          ((Bundle)localObject).putString("url", paramString);
-          TeamWorkDocEditBrowserActivity.a(paramView.getContext(), (Bundle)localObject, false);
+          i = 2;
+          if ((paramString == null) || (paramString.length() <= 150)) {
+            break label335;
+          }
+          paramView = paramString.substring(0, 150);
+          paramString = new URL(paramString).getHost();
+          ReportController.b(null, "CliOper", "", str1, "0X80061B1", "0X80061B1", i, 0, "", "", paramView, paramString);
+          if (!QLog.isDebugVersion()) {
+            break;
+          }
+          QLog.d("QQText", 4, String.format("the report params:%s,%s,%s,%s", new Object[] { "", "", paramView, paramString }));
           return;
         }
-        QQToast.a((Context)localObject, ((Context)localObject).getResources().getString(2131433009), 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131558448));
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
         return;
       }
-      MttBrowerWrapper.a(paramView.getContext(), paramString, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      return;
+      i = 1;
+      continue;
+      label335:
+      paramView = paramString;
     }
   }
   
@@ -1277,7 +1312,7 @@ public class QQText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQText
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ import android.content.res.Resources;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import anek;
-import anel;
+import anmn;
+import anmo;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -316,9 +316,9 @@ public class SmartDevicePluginLoader
     if ((!bool) || (paramOnDismissListener != null))
     {
       paramAppRuntime.a("正在加载...");
-      paramAppRuntime.setOnDismissListener(new anek(this, paramOnDismissListener));
+      paramAppRuntime.setOnDismissListener(new anmn(this, paramOnDismissListener));
       if (bool) {
-        paramAppRuntime.setOnShowListener(new anel(this, paramAppRuntime));
+        paramAppRuntime.setOnShowListener(new anmo(this, paramAppRuntime));
       }
     }
     for (;;)

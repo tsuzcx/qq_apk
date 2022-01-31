@@ -6,8 +6,8 @@ import java.io.OutputStream;
 
 public class AppleEmojiManager
 {
-  public static final String a = AppConstants.aL + "emojiindex";
-  public static final String b = AppConstants.aL + "emojis";
+  public static final String a = AppConstants.aM + "emojiindex";
+  public static final String b = AppConstants.aM + "emojis";
   
   public static final int a(InputStream paramInputStream)
   {
@@ -67,7 +67,7 @@ public class AppleEmojiManager
     //   22: ireturn
     //   23: new 61	java/io/File
     //   26: dup
-    //   27: getstatic 19	com/tencent/mobileqq/app/AppConstants:aL	Ljava/lang/String;
+    //   27: getstatic 19	com/tencent/mobileqq/app/AppConstants:aM	Ljava/lang/String;
     //   30: invokespecial 81	java/io/File:<init>	(Ljava/lang/String;)V
     //   33: astore 5
     //   35: aload 5
@@ -1090,7 +1090,7 @@ public class AppleEmojiManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.text.AppleEmojiManager
  * JD-Core Version:    0.7.0.1
  */

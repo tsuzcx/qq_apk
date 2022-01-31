@@ -286,10 +286,10 @@ public class FTSMsgUpgrader
     //   371: pop2
     //   372: aload_0
     //   373: getfield 33	com/tencent/mobileqq/app/proxy/fts/FTSMsgUpgrader:jdField_a_of_type_ComTencentMobileqqAppProxyFtsFTSSyncHandler	Lcom/tencent/mobileqq/app/proxy/fts/FTSSyncHandler;
-    //   376: new 259	zvp
+    //   376: new 259	aaca
     //   379: dup
     //   380: aload_0
-    //   381: invokespecial 261	zvp:<init>	(Lcom/tencent/mobileqq/app/proxy/fts/FTSMsgUpgrader;)V
+    //   381: invokespecial 261	aaca:<init>	(Lcom/tencent/mobileqq/app/proxy/fts/FTSMsgUpgrader;)V
     //   384: invokevirtual 267	com/tencent/mobileqq/app/proxy/fts/FTSSyncHandler:post	(Ljava/lang/Runnable;)Z
     //   387: pop
     //   388: iconst_0

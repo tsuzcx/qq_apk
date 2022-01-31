@@ -19,7 +19,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.common.ApiCompatibilityUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
@@ -29,7 +28,6 @@ import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVideoIn
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.mobileqq.util.DisplayUtil;
@@ -117,18 +115,16 @@ public class ComponentContentVerticalSmallVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969575, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969571, this, true);
   }
   
   public URL a(IReadInJoyModel paramIReadInJoyModel)
   {
     paramIReadInJoyModel = paramIReadInJoyModel.a();
-    if ((paramIReadInJoyModel.getVideoCoverURL() != null) && (ReadInJoyUtils.b(paramIReadInJoyModel.getVideoCoverURL().getFile())))
-    {
-      paramIReadInJoyModel.mPolymericSmallVideoCoverUrl = PubAccountHttpDownloader.a(ReadInJoyUtils.b(paramIReadInJoyModel.getVideoCoverURL().getFile(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.second).intValue(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.first).intValue(), 3), 3);
-      return paramIReadInJoyModel.mPolymericSmallVideoCoverUrl;
+    URL localURL = paramIReadInJoyModel.getVideoCoverUrlWithSmartCut(((Integer)this.jdField_a_of_type_AndroidUtilPair.first).intValue(), ((Integer)this.jdField_a_of_type_AndroidUtilPair.second).intValue());
+    if (localURL != null) {
+      return localURL;
     }
-    paramIReadInJoyModel.mPolymericSmallVideoCoverUrl = paramIReadInJoyModel.getVideoCoverURL();
     return paramIReadInJoyModel.getVideoCoverURL();
   }
   
@@ -136,13 +132,13 @@ public class ComponentContentVerticalSmallVideo
   {
     super.a(paramView);
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367014));
-    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131366971));
+    this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131366969));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367016));
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367019));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367018));
-    this.d = ((TextView)paramView.findViewById(2131366878));
+    this.d = ((TextView)paramView.findViewById(2131366877));
     this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367015);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362711));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362716));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
@@ -179,10 +175,10 @@ public class ComponentContentVerticalSmallVideo
       b();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.e() == 56)
       {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setForeground(getResources().getDrawable(2130840878));
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setForeground(getResources().getDrawable(2130840896));
         label118:
         if (!this.jdField_a_of_type_Boolean) {
-          break label391;
+          break label388;
         }
         Object localObject = ReadInJoyDisplayUtils.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.e());
         localObject = URLDrawable.getDrawable(a(localIReadInJoyModel), ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue(), new ColorDrawable(-1447447), new ColorDrawable(-1447447));
@@ -195,12 +191,12 @@ public class ComponentContentVerticalSmallVideo
       try
       {
         this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(a(localIReadInJoyModel));
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(getResources().getString(2131439325, new Object[] { paramObject.getCommentCount() + "" }));
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(getResources().getString(2131439357, new Object[] { paramObject.getCommentCount() + "" }));
         if (paramObject.mVideoPlayCount <= 0)
         {
           this.jdField_b_of_type_AndroidWidgetTextView.setText("0");
           if (!ReadInJoyBaseAdapter.o(paramObject)) {
-            break label459;
+            break label456;
           }
           this.jdField_a_of_type_AndroidWidgetTextView.setText(paramObject.mTitle);
           c();
@@ -209,7 +205,7 @@ public class ComponentContentVerticalSmallVideo
           continue;
           this.jdField_a_of_type_AndroidWidgetFrameLayout.setForeground(null);
           break label118;
-          label391:
+          label388:
           this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setVisibility(8);
           this.jdField_a_of_type_AndroidViewView.setVisibility(8);
         }
@@ -222,7 +218,7 @@ public class ComponentContentVerticalSmallVideo
           continue;
           this.jdField_b_of_type_AndroidWidgetTextView.setText(VideoFeedsHelper.c(paramObject.mVideoPlayCount));
           continue;
-          label459:
+          label456:
           this.jdField_a_of_type_AndroidWidgetTextView.setText(((SocializeFeedsInfo.UGCVideoInfo)paramObject.mSocialFeedInfo.a.b.get(0)).e);
         }
       }

@@ -1,20 +1,51 @@
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import android.view.View.OnKeyListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureFragment;
 
 public class oqx
-  implements View.OnClickListener
+  implements View.OnKeyListener
 {
-  public oqx(LeftTabBarView paramLeftTabBarView, int paramInt) {}
+  private oqx(StoryEffectsCameraCaptureFragment paramStoryEffectsCameraCaptureFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    long l = System.currentTimeMillis();
-    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {
-      return;
+    SLog.d("story.publish.CaptureFragment", "onBackPressed");
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (localFragmentActivity != null)
+    {
+      this.a.getActivity().finish();
+      localFragmentActivity.overridePendingTransition(2131034165, 2131034328);
     }
-    LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
+    {
+    default: 
+      bool1 = false;
+    }
+    do
+    {
+      return bool1;
+      bool1 = bool2;
+      switch (paramKeyEvent.getAction())
+      {
+      case 0: 
+      default: 
+        break;
+      case 1: 
+        bool1 = bool2;
+      }
+    } while (paramKeyEvent.isCanceled());
+    a();
+    return true;
   }
 }
 

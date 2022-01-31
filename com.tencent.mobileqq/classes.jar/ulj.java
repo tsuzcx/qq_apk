@@ -1,27 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.FileTransferManager;
-import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class ulj
+  implements Runnable
 {
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  public WeakReference b;
+  private WeakReference a;
   
-  public ulj(FileTransferManager paramFileTransferManager, View paramView, FileTransferManager.Callback paramCallback)
+  public ulj(WeakReference paramWeakReference)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramCallback);
+    this.a = paramWeakReference;
   }
   
-  public View a()
+  public void run()
   {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public FileTransferManager.Callback a()
-  {
-    return (FileTransferManager.Callback)this.b.get();
+    if (this.a != null)
+    {
+      Activity localActivity = (Activity)this.a.get();
+      if ((localActivity != null) && (!localActivity.isFinishing()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("UserGuideWeishiFragment", 2, "FinishDeLay5Seconds");
+        }
+        localActivity.finish();
+      }
+    }
   }
 }
 

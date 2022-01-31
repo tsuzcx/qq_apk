@@ -1,43 +1,52 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.av.ui.VideoInviteFull;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class kbp
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public kbp(VideoInviteFull paramVideoInviteFull) {}
+  public kbp(QavPanel paramQavPanel) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a == null) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("QavPanel", 2, "onTouch action: " + paramMotionEvent.getAction());
+    }
+    if (paramView == this.a.m)
     {
-      do
+      if (paramMotionEvent.getAction() == 0)
       {
-        return;
-        this.a.a.setVisibility(8);
-        this.a.c.setVisibility(8);
-        if ((NetworkUtil.h(VideoInviteFull.a(this.a))) || (NetworkUtil.f(VideoInviteFull.b(this.a)))) {
-          break;
-        }
-        if (NetworkUtil.b(VideoInviteFull.c(this.a)))
+        this.a.d.setAlpha(0.5F);
+        this.a.e.setAlpha(0.5F);
+      }
+      for (;;)
+      {
+        return this.a.a.onTouch(paramView, paramMotionEvent);
+        if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
         {
-          this.a.c.setVisibility(0);
-          this.a.c.setText(2131429067);
+          this.a.d.setAlpha(1.0F);
+          this.a.e.setAlpha(1.0F);
         }
-      } while (!NetworkUtil.c(VideoInviteFull.d(this.a)));
-      this.a.c.setVisibility(0);
-      this.a.c.setText(2131429066);
-      return;
-    } while (!this.a.b);
-    this.a.c.setVisibility(0);
-    this.a.c.setText("");
+      }
+    }
+    if (paramMotionEvent.getAction() == 0) {
+      paramView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kbp
  * JD-Core Version:    0.7.0.1
  */

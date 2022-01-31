@@ -1,17 +1,26 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.PluginConfigProxy;
+import mqq.observer.ServerConfigObserver;
+import protocol.KQQConfig.GetResourceRespV2;
 
-class zqj
-  implements Comparator
+public class zqj
+  implements Runnable
 {
-  zqj(zqf paramzqf) {}
+  private int jdField_a_of_type_Int;
+  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver;
+  private GetResourceRespV2 jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2;
+  private boolean jdField_a_of_type_Boolean;
   
-  public int a(File paramFile1, File paramFile2)
+  public zqj(PluginConfigProxy paramPluginConfigProxy, ServerConfigObserver paramServerConfigObserver, boolean paramBoolean, int paramInt, GetResourceRespV2 paramGetResourceRespV2)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_MqqObserverServerConfigObserver = paramServerConfigObserver;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2 = paramGetResourceRespV2;
+  }
+  
+  public void run()
+  {
+    this.jdField_a_of_type_MqqObserverServerConfigObserver.onGetPluginConfig(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespV2);
   }
 }
 

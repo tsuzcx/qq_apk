@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import ambn;
+import amix;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -41,7 +41,7 @@ public class FastScroller
   private SectionIndexer jdField_a_of_type_AndroidWidgetSectionIndexer;
   public AbsListView a;
   private FastScroller.ScrollFade jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new ambn(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new amix(this);
   private String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean;
   private Object[] jdField_a_of_type_ArrayOfJavaLangObject;

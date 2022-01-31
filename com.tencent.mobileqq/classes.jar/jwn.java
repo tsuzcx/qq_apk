@@ -1,27 +1,58 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
-import com.tencent.av.utils.PstnUtils;
-import java.lang.ref.WeakReference;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
 
 public class jwn
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public jwn(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  public jwn(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().n()) && (this.a.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      PstnUtils.a(null, (Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 2, 11);
+    boolean bool = false;
+    if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().V) {
+      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
+        ReportController.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
+      }
+    }
+    for (;;)
+    {
+      if (!this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().V) {
+        bool = true;
+      }
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a(bool);
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().V = bool;
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a();
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.b();
+      try
+      {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        return;
+      }
+      catch (Throwable paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
+        continue;
+        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
+          ReportController.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
+        } else if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000) {
+          ReportController.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jwn
  * JD-Core Version:    0.7.0.1
  */

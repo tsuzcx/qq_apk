@@ -1,30 +1,55 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
-class owp
-  implements Runnable
+public class owp
+  extends ValueAnimator
 {
-  owp(owi paramowi, TroopManager paramTroopManager, String paramString1, String paramString2, Bundle paramBundle, int paramInt) {}
+  private ValueAnimator.AnimatorUpdateListener a;
   
-  public void run()
+  private owp(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, this.b);
-    if (localMessageRecord != null)
-    {
-      this.jdField_a_of_type_AndroidOsBundle.putLong("lastMsgTime", localMessageRecord.time);
-      this.jdField_a_of_type_AndroidOsBundle.putString("lastMsgContent", localMessageRecord.msg);
-      this.jdField_a_of_type_AndroidOsBundle.putInt("seq", this.jdField_a_of_type_Int);
+    setObjectValues(new Object[] { new ows(paramFloat1, paramFloat2, paramFloat3), new ows(paramFloat4, paramFloat5, paramFloat6) });
+    setEvaluator(new owt(null));
+    this.a = new owq(this, a(paramView));
+    addUpdateListener(this.a);
+  }
+  
+  private CircularRevealCompatLayout a(View paramView)
+  {
+    if ((paramView instanceof CircularRevealCompatLayout)) {
+      return (CircularRevealCompatLayout)paramView;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Owi.a.a(73, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      this.jdField_a_of_type_AndroidOsBundle.putLong("lastMsgTime", 0L);
-      this.jdField_a_of_type_AndroidOsBundle.putString("lastMsgContent", "");
-      this.jdField_a_of_type_AndroidOsBundle.putInt("seq", this.jdField_a_of_type_Int);
+    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
+    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
+      return (CircularRevealCompatLayout)localViewGroup;
     }
+    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    int i = localViewGroup.indexOfChild(paramView);
+    localViewGroup.removeView(paramView);
+    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
+    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
+    return localCircularRevealCompatLayout;
+  }
+  
+  public static owp a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  {
+    return new owp(paramView, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
+  }
+  
+  public static owp a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    return new owp(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
+  }
+  
+  public void removeAllUpdateListeners()
+  {
+    super.removeAllUpdateListeners();
+    addUpdateListener(this.a);
   }
 }
 

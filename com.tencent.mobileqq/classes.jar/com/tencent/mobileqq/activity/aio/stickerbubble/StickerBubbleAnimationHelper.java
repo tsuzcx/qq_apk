@@ -20,8 +20,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import wbq;
-import wbu;
+import wgy;
+import whc;
 
 public class StickerBubbleAnimationHelper
 {
@@ -81,7 +81,7 @@ public class StickerBubbleAnimationHelper
     return (StickerBubbleAnimationHelper.CacheItem)CommonImageCacheHelper.a("StickerBubbleGifCache_" + paramString);
   }
   
-  public static wbu a(int paramInt1, String paramString, int paramInt2, int[] paramArrayOfInt)
+  public static whc a(int paramInt1, String paramString, int paramInt2, int[] paramArrayOfInt)
   {
     boolean bool = a(paramInt2, paramArrayOfInt);
     paramArrayOfInt = new Point(paramInt1 / 2, 0);
@@ -96,13 +96,13 @@ public class StickerBubbleAnimationHelper
     label114:
     for (double d2 = jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = jdField_a_of_type_JavaUtilRandom.nextInt(2000))
     {
-      return new wbu(paramArrayOfInt, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 49);
+      return new whc(paramArrayOfInt, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 49);
       d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(8000) + 4000;
       break;
     }
   }
   
-  public static wbu a(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
+  public static whc a(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
   {
     boolean bool = a(paramInt);
     double d1;
@@ -116,7 +116,7 @@ public class StickerBubbleAnimationHelper
     label102:
     for (double d2 = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000))
     {
-      return new wbu(paramPoint, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 85);
+      return new whc(paramPoint, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 85);
       d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
       break;
     }
@@ -254,7 +254,7 @@ public class StickerBubbleAnimationHelper
     return jdField_a_of_type_ArrayOfInt;
   }
   
-  public static wbu b(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
+  public static whc b(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
   {
     boolean bool = a(paramInt);
     double d1;
@@ -268,7 +268,7 @@ public class StickerBubbleAnimationHelper
     label102:
     for (double d2 = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000))
     {
-      return new wbu(paramPoint, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 81);
+      return new whc(paramPoint, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 81);
       d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
       break;
     }
@@ -280,7 +280,7 @@ public class StickerBubbleAnimationHelper
     if (jdField_a_of_type_AndroidViewAnimationAnimation == null)
     {
       jdField_a_of_type_AndroidViewAnimationAnimation = a(paramView.getContext());
-      jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new wbq());
+      jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new wgy());
     }
     if (QLog.isColorLevel()) {
       QLog.d("StickerBubbleHelper", 2, "start to shake");

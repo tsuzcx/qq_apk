@@ -8,7 +8,7 @@ public class ContactsConstant
   static
   {
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "好友", "群聊", "设备", "通讯录", "公众号" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131362384, 2131362385, 2131362387, 2131362388, 2131362389 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131362387, 2131362388, 2131362390, 2131362391, 2131362392 };
   }
 }
 

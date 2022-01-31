@@ -75,14 +75,14 @@ public class MessageForDevPtt
       if (this.fileSize > 0L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131435570);
+          return ((QQAppInterface)localObject).getApp().getString(2131435586);
         }
         return "一条语音消息";
       }
       if (this.fileSize == -1L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131435570);
+          return ((QQAppInterface)localObject).getApp().getString(2131435586);
         }
         return "一条语音消息";
       }

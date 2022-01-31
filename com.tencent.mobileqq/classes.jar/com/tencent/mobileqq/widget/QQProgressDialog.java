@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akwg;
-import akwh;
+import aldx;
+import aldy;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -43,7 +43,7 @@ public class QQProgressDialog
   
   public QQProgressDialog(Context paramContext, int paramInt)
   {
-    this(paramContext, paramInt, 2130970577, 48);
+    this(paramContext, paramInt, 2130970590, 48);
   }
   
   public QQProgressDialog(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
@@ -53,11 +53,11 @@ public class QQProgressDialog
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt2, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363320));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363337));
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt3;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371218));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363188));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371216));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363192));
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_b_of_type_AndroidWidgetImageView.getDrawable());
   }
   
@@ -120,7 +120,7 @@ public class QQProgressDialog
   
   public void c(boolean paramBoolean)
   {
-    setOnKeyListener(new akwh(this, paramBoolean));
+    setOnKeyListener(new aldy(this, paramBoolean));
   }
   
   public void d(int paramInt)
@@ -196,7 +196,7 @@ public class QQProgressDialog
   
   protected void onStart()
   {
-    this.jdField_b_of_type_AndroidWidgetImageView.postDelayed(new akwg(this), 50L);
+    this.jdField_b_of_type_AndroidWidgetImageView.postDelayed(new aldx(this), 50L);
     super.onStart();
   }
   

@@ -1,19 +1,17 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.widget.ListView;
 
 class srz
   implements Runnable
 {
-  srz(sry paramsry, ExtensionInfo paramExtensionInfo) {}
+  srz(sry paramsry) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Sry.a.b.setVisibility(0);
-    ((AvatarPendantManager)this.jdField_a_of_type_Sry.a.app.getManager(45)).a(this.jdField_a_of_type_Sry.a.a).a(this.jdField_a_of_type_Sry.a.b, 1, PendantInfo.d, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.uin, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+    this.jdField_a_of_type_Sry.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
+    this.jdField_a_of_type_Sry.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Sry.a.jdField_a_of_type_Sry);
+    FontSettingManager.a(this.jdField_a_of_type_Sry.a);
   }
 }
 

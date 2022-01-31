@@ -1,36 +1,38 @@
-import android.util.Pair;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader;
-import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
-import java.util.HashMap;
-import java.util.Queue;
-import mqq.os.MqqHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioViewHolder;
 
 class ajsj
   implements Runnable
 {
-  ajsj(ajsi paramajsi) {}
+  ajsj(ajsh paramajsh) {}
   
   public void run()
   {
-    if (((this.a.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String)) && (!((String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag()).endsWith(this.a.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    try
+    AudioItem.AudioViewHolder localAudioViewHolder = (AudioItem.AudioViewHolder)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.c);
+    if (localAudioViewHolder != null)
     {
-      Pair localPair1 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable), 1);
-      ThreadManager.getUIHandler().post(new ajsk(this, localPair1));
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
-        HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
-        Pair localPair2 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable), 1);
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.a) {
+        break label103;
       }
+      AnimationDrawable localAnimationDrawable = (AnimationDrawable)AudioItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem).getResources().getDrawable(2131034360);
+      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
+      localAnimationDrawable.start();
+    }
+    for (;;)
+    {
+      localAudioViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      localAudioViewHolder.c.setVisibility(0);
+      return;
+      label103:
+      localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843969);
     }
   }
 }

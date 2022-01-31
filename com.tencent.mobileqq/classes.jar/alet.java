@@ -1,30 +1,32 @@
-import com.tencent.open.appcommon.CallBackEvent;
-import com.tencent.open.appcommon.now.download.js.DownloadCallbackWebImpl;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class alet
-  implements Runnable
+  extends AccessibilityDelegateCompat
 {
-  public alet(DownloadCallbackWebImpl paramDownloadCallbackWebImpl, WebView paramWebView, String paramString) {}
+  public alet(TabBarView paramTabBarView) {}
   
-  public void run()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (CallBackEvent.a().a())) {}
-    try
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (this.a.a(paramView) == this.a.h) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
       return;
     }
-    catch (Exception localException)
-    {
-      LogUtility.a("DownloadCallbackWebImpl", "doJsCallBack >>> ", localException);
-    }
+  }
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alet
  * JD-Core Version:    0.7.0.1
  */

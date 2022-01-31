@@ -144,7 +144,7 @@ public abstract class SegmentView
   
   public void e_(int paramInt) {}
   
-  public void f_(boolean paramBoolean)
+  public void e_(boolean paramBoolean)
   {
     if (paramBoolean != this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_Boolean = paramBoolean;

@@ -1,49 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import android.text.TextUtils;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ItemDatasListUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Timer;
 
-public class mpo
+class mpo
   implements Runnable
 {
-  public mpo(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  mpo(mpm parammpm, FastWebArticleInfo paramFastWebArticleInfo, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    if (FastWebVideoFeedsPlayManager.a(this.a) == null) {
-      return;
-    }
-    if (FastWebVideoFeedsPlayManager.a(this.a) != null) {
-      FastWebVideoFeedsPlayManager.a(this.a).cancel();
-    }
-    WeakReference localWeakReference1 = new WeakReference(FastWebVideoFeedsPlayManager.a(this.a));
-    WeakReference localWeakReference2 = new WeakReference(FastWebVideoFeedsPlayManager.a(this.a));
-    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
-    int i;
-    if (l >= 30000L) {
-      i = 100;
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (FastWebActivity.a(this.jdField_a_of_type_Mpm.a) == null) || (!FastWebActivity.a(this.jdField_a_of_type_Mpm.a).innerUniqueID.equals(this.jdField_a_of_type_JavaLangString)))
     {
-      try
-      {
-        FastWebVideoFeedsPlayManager.a(this.a, new Timer());
-        FastWebVideoFeedsPlayManager.a(this.a).schedule(new mpp(this, localWeakReference1, localWeakReference2), 0L, i);
-        return;
-      }
-      catch (Exception localException) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "innerStartShowProgress() mProgressTimer.schedule ERROR = " + localException.getMessage());
+      QLog.d(FastWebActivity.a(this.jdField_a_of_type_Mpm.a), 2, "get article topic info fail, msg not match !");
       return;
-      if ((l >= 10000L) && (l <= 30000L)) {
-        i = 40;
-      } else {
-        i = 20;
-      }
     }
+    ItemDatasListUtils.a(this.jdField_a_of_type_Boolean, FastWebActivity.a(this.jdField_a_of_type_Mpm.a), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, FastWebActivity.a(this.jdField_a_of_type_Mpm.a));
+    FastWebActivity.a(this.jdField_a_of_type_Mpm.a).notifyDataSetChanged();
+    this.jdField_a_of_type_Mpm.a.a(FastWebActivity.a(this.jdField_a_of_type_Mpm.a));
+    QLog.d(FastWebActivity.a(this.jdField_a_of_type_Mpm.a), 2, "get article topic info success! notify ui bindData");
   }
 }
 

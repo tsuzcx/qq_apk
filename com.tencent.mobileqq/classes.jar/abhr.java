@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.armap.test.ARWebTestActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
 public class abhr
   implements Runnable
 {
-  public abhr(ARWebTestActivity paramARWebTestActivity, String paramString) {}
+  public abhr(ARMapActivity paramARMapActivity) {}
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ARWebTestActivity", 4, "call from onPageFinished delay");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArmapTestARWebTestActivity.a(this.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine.updateLocationNative(this.a.jdField_a_of_type_Double, this.a.b, "", 0.0D, 1, "", 0, this.a.i);
   }
 }
 

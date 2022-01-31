@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic;
 
-import agdt;
+import agif;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class OlyimpicConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agdt();
+  public static final Parcelable.Creator CREATOR = new agif();
   public long grabInterval = -1L;
   public int id;
   public long reportActiveInterval = -1L;

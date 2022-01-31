@@ -1,16 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class kwq
-  implements View.OnClickListener
+class kwq
+  implements TVK_SDKMgr.InstallListener
 {
-  public kwq(AdModuleBase paramAdModuleBase) {}
+  kwq(kwp paramkwp) {}
   
-  public void onClick(View paramView)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    this.a.a.dismiss();
+    AdvertisementVideoPreloadManager.c("installSDK onInstalledFailed arg0=" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    AdvertisementVideoPreloadManager.c("installSDK onInstalledSuccessed");
+    AdvertisementVideoPreloadManager.a(this.a.a);
   }
 }
 

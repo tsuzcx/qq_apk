@@ -44,7 +44,7 @@ public abstract class QIMTailItemBubbleBuilder
       paramView.setEllipsize(TextUtils.TruncateAt.END);
       paramView.setTextColor(-1);
       paramView.setTextSize(2, 12.0F);
-      paramView.setBackgroundResource(2130840646);
+      paramView.setBackgroundResource(2130840661);
     }
     for (;;)
     {
@@ -54,9 +54,9 @@ public abstract class QIMTailItemBubbleBuilder
       if (!TextUtils.isEmpty(paramGlobalConfig.d))
       {
         Object localObject = paramGlobalConfig.d;
-        Drawable localDrawable = localResources.getDrawable(2130846094);
+        Drawable localDrawable = localResources.getDrawable(2130846176);
         localDrawable.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
-        paramGlobalConfig = localResources.getDrawable(2130846095);
+        paramGlobalConfig = localResources.getDrawable(2130846177);
         paramGlobalConfig.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
         try
         {

@@ -1,43 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.util.InputMethodUtil;
 
 public class ssj
-  extends FriendListObserver
+  implements Runnable
 {
-  public ssj(FriendProfileImageAvatar paramFriendProfileImageAvatar) {}
+  public ssj(ForwardFriendListActivity paramForwardFriendListActivity, View paramView) {}
   
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  public void run()
   {
-    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
-      }
-    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
-    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (!this.a.b.equals(paramString)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
-    }
-    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-    if (paramBoolean)
-    {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo, false);
-      this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.a = 2;
-    this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    InputMethodUtil.a(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

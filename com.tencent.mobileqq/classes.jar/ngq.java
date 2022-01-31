@@ -1,16 +1,24 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.network.request.GetBlackStatusRequest;
+import com.tencent.biz.qqstory.network.response.GetBlackListStatusResponse;
 
 public class ngq
-  extends UploadImageJob
+  implements CmdTaskManger.CommandCallback
 {
-  public ngq(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
+  public ngq(StoryConfigManager paramStoryConfigManager, long paramLong) {}
   
-  public boolean b()
+  public void a(@NonNull GetBlackStatusRequest paramGetBlackStatusRequest, @Nullable GetBlackListStatusResponse paramGetBlackListStatusResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.e = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    if (paramGetBlackListStatusResponse != null)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status", Integer.valueOf(paramGetBlackListStatusResponse.b));
+      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status_update_interval", Integer.valueOf(paramGetBlackListStatusResponse.c));
+      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
+    }
   }
 }
 

@@ -1,43 +1,20 @@
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.io.IOException;
 
-public class otw
-  implements Runnable
+class otw
 {
-  public otw(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void run()
+  Process a(String[] paramArrayOfString)
   {
-    int i = this.a.jdField_c_of_type_AndroidViewView.getHeight();
-    int j = this.a.b.getHeight();
-    View localView;
-    LinearLayout.LayoutParams localLayoutParams;
-    if (j < i)
+    try
     {
-      localView = this.a.findViewById(2131367543);
-      localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      if (this.a.jdField_c_of_type_Int != 2) {
-        break label79;
-      }
-      localLayoutParams.topMargin = 0;
-      localLayoutParams.bottomMargin = 0;
+      Process localProcess = Runtime.getRuntime().exec(paramArrayOfString);
+      return localProcess;
     }
-    for (;;)
+    catch (IOException localIOException)
     {
-      localView.setLayoutParams(localLayoutParams);
-      return;
-      label79:
-      if (this.a.jdField_c_of_type_Int == 5)
-      {
-        int k = localLayoutParams.topMargin;
-        localLayoutParams.topMargin = ((i - j) / 2 + k);
-      }
-      else
-      {
-        localLayoutParams.topMargin = 50;
-      }
+      SLog.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
     }
+    return null;
   }
 }
 

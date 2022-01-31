@@ -1,141 +1,56 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageRoamManager;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.utils.MessageRoamHandler;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.EcShopFirstRunMsgConfigs;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
 
 public class zwy
-  extends MessageObserver
+  extends DownloadListener
 {
-  private int jdField_a_of_type_Int;
+  public zwy(EcShopFirstRunMsgConfigs paramEcShopFirstRunMsgConfigs) {}
   
-  public zwy(MessageRoamHandler paramMessageRoamHandler, int paramInt)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      return;
-    }
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.b.getHandler(ChatHistoryForC2C.class);
-    if (!paramBoolean)
+    super.onDone(paramDownloadTask);
+    if ((paramDownloadTask.a == 0) && (EcShopFirstRunMsgConfigs.a(this.a).b != null))
     {
-      localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(8), 0L);
-      return;
-    }
-    localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(9), 0L);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {
-      return;
-    }
-    MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.b.getHandler(ChatHistoryForC2C.class);
-    if (!paramBoolean)
-    {
-      localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(7), 0L);
-      return;
-    }
-    localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(6), 0L);
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.jdField_a_of_type_Int != this.jdField_a_of_type_Int) {}
-    Object localObject;
-    long l;
-    boolean bool1;
-    boolean bool2;
-    int j;
-    boolean bool3;
-    do
-    {
-      return;
-      paramObject = (Bundle)paramObject;
-      localObject = paramObject.getString("PEER_UIN");
-      l = paramObject.getLong("BEGTIME");
-      bool1 = paramObject.getBoolean("NO_MSG");
-      i = paramObject.getInt("SVR_CODE");
-      String str = paramObject.getString("SVR_MSG");
-      bool2 = paramObject.getBoolean("FETCH_MORE");
-      j = paramObject.getInt("MSG_COUNT");
-      bool3 = paramObject.getBoolean("IS_PRELOAD_TYPE");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "beginTime: " + l + ",isNoMsg: " + bool1 + ",svrCode: " + i + ",msgCount:" + j + ",fetchMore: " + bool2 + ",svrMsg: " + str + ",isPreloadType:" + bool3);
-      }
-    } while (bool3);
-    if ((paramBoolean) && (bool2) && (j > 0) && (j <= 8))
-    {
-      ThreadManager.getSubThreadHandler().post(new zwz(this, l, j, (String)localObject, bool2));
-      return;
-    }
-    paramObject = this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.b.getHandler(ChatHistoryForC2C.class);
-    int i = 1;
-    if (!paramBoolean) {
-      if (bool1) {
-        i = 2;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "onUpdateGetRoamChat isSuccess: " + paramBoolean + ", whatMsg: " + i + ", beginTime: " + l);
-      }
-      localObject = paramObject.obtainMessage(i);
-      ((Message)localObject).obj = Long.valueOf(l);
-      if (bool2) {}
-      for (i = 1;; i = 0)
+      str = paramDownloadTask.a().getString("path");
+      if ((EcShopFirstRunMsgConfigs.b(this.a).b != null) && (!TextUtils.isEmpty(str)))
       {
-        ((Message)localObject).arg1 = i;
-        paramObject.sendMessageDelayed((Message)localObject, 0L);
-        return;
-        localObject = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.b.getManager(91);
-        if ((bool2) || (((MessageRoamManager)localObject).a(l))) {
-          break label381;
+        if (!EcShopAssistantManager.e.equals(str)) {
+          break label142;
         }
-        i = 4;
-        break;
+        EcShopFirstRunMsgConfigs.c(this.a).b.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_report_json", paramDownloadTask.i).commit();
+        ((EcshopReportHandler)EcShopFirstRunMsgConfigs.d(this.a).b.a(88)).b();
+        if (QLog.isColorLevel()) {
+          QLog.i("Ecshop", 2, "download report json success.");
+        }
       }
-      label381:
-      i = 0;
     }
-  }
-  
-  protected void c(boolean paramBoolean, Object paramObject)
-  {
-    if (paramObject == null) {}
-    Object localObject1;
-    do
+    label142:
+    while (!QLog.isColorLevel())
     {
-      return;
-      localObject2 = (HashMap)paramObject;
-      localObject1 = (String)((HashMap)localObject2).get("KEYWORD");
-      long l = ((Long)((HashMap)localObject2).get("SEARCHSEQUENCE")).longValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.roammsg", 2, "onUpdateRoamMsgSearchResult isSuccess:" + paramBoolean + ",keyword:" + (String)localObject1 + ",sequence:" + l);
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.b.getHandler(C2CMessageSearchDialog.class);
-      if (!paramBoolean)
+      do
       {
-        localObject2 = ((MqqHandler)localObject1).obtainMessage(4);
-        ((Message)localObject2).obj = paramObject;
-        ((MqqHandler)localObject1).sendMessage((Message)localObject2);
-        return;
-      }
-    } while (((HashMap)localObject2).get("SEARCHRESULT") == null);
-    Object localObject2 = ((MqqHandler)localObject1).obtainMessage(5);
-    ((Message)localObject2).obj = paramObject;
-    ((MqqHandler)localObject1).sendMessage((Message)localObject2);
+        String str;
+        do
+        {
+          return;
+        } while (!EcShopAssistantManager.f.equals(str));
+        EcShopFirstRunMsgConfigs.e(this.a).b.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_behaviors_json", paramDownloadTask.i).commit();
+      } while (!QLog.isColorLevel());
+      QLog.i("Ecshop", 2, "download behaviors json success.");
+      return;
+    }
+    QLog.i("Ecshop", 2, "download json failed.");
   }
 }
 

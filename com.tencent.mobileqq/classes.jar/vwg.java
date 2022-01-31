@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
 
 public class vwg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vwg(NearbyChatPie paramNearbyChatPie) {}
+  public vwg(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a });
-    if (localNearbyPeopleCard != null) {
-      this.a.n = localNearbyPeopleCard.gender;
-    }
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    this.a.a.setVisibility(8);
+    this.a.b.setVisibility(0);
   }
 }
 

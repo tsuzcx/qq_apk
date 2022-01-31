@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class lqm
   implements Runnable
 {
-  public lqm(ArticleReadInfoModule paramArticleReadInfoModule, ArticleReadInfo paramArticleReadInfo) {}
+  public lqm(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleReadInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleReadInfo);
+    if (ReadInJoySelfFragment.a(this.a) != null) {
+      ReadInJoySelfFragment.a(this.a).h();
+    }
   }
 }
 

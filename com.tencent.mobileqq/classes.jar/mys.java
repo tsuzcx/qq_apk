@@ -1,18 +1,28 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
+import java.io.FilterOutputStream;
+import java.io.OutputStream;
 
 public class mys
-  implements Runnable
+  extends FilterOutputStream
 {
-  public mys(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public int a;
   
-  public void run()
+  public mys(PubAccountHttpDownloader paramPubAccountHttpDownloader, OutputStream paramOutputStream)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.findViewById(2131365654).setVisibility(8);
-    this.a.a.findViewById(2131365588).setVisibility(8);
-    this.a.a.findViewById(2131365589).setVisibility(8);
+    super(paramOutputStream);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void write(int paramInt)
+  {
+    this.jdField_a_of_type_Int += 1;
+    this.out.write(paramInt);
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int += paramInt2;
+    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
   }
 }
 

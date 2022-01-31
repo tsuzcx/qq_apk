@@ -215,11 +215,14 @@ public class VasQuickUpdateEngine
     if (paramFile.isDirectory())
     {
       localObject = paramFile.listFiles();
-      int i = 0;
-      while (i < localObject.length)
+      if (localObject != null)
       {
-        safeDeleteFile(localObject[i]);
-        i += 1;
+        int i = 0;
+        while (i < localObject.length)
+        {
+          safeDeleteFile(localObject[i]);
+          i += 1;
+        }
       }
     }
     Object localObject = new File(paramFile.getParent() + File.separator + System.currentTimeMillis());
@@ -812,25 +815,27 @@ public class VasQuickUpdateEngine
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateEngine", 2, "DBselectAllItems: table = " + paramInt);
     }
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("quick_update_" + paramInt, 0).getAll();
-    if ((localObject != null) && (((Map)localObject).size() > 0))
+    Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("quick_update_" + paramInt, 0);
+    if (localObject1 == null) {}
+    do
     {
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((Map)localObject).entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        VasQuickUpdateEngine.TagItemRecord localTagItemRecord = new VasQuickUpdateEngine.TagItemRecord(this);
-        localTagItemRecord.itemId = ((String)localEntry.getKey());
-        localTagItemRecord.content = ((String)localEntry.getValue());
-        localArrayList.add(localTagItemRecord);
-        if (QLog.isColorLevel()) {
-          QLog.d("VasQuickUpdateEngine", 2, "DBselectAllItems table = " + paramInt + " itemId = " + localTagItemRecord.itemId + " content = " + localTagItemRecord.content);
-        }
+      return null;
+      localObject2 = ((SharedPreferences)localObject1).getAll();
+    } while ((localObject2 == null) || (((Map)localObject2).size() <= 0));
+    localObject1 = new ArrayList();
+    Object localObject2 = ((Map)localObject2).entrySet().iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+      VasQuickUpdateEngine.TagItemRecord localTagItemRecord = new VasQuickUpdateEngine.TagItemRecord(this);
+      localTagItemRecord.itemId = ((String)localEntry.getKey());
+      localTagItemRecord.content = ((String)localEntry.getValue());
+      ((ArrayList)localObject1).add(localTagItemRecord);
+      if (QLog.isColorLevel()) {
+        QLog.d("VasQuickUpdateEngine", 2, "DBselectAllItems table = " + paramInt + " itemId = " + localTagItemRecord.itemId + " content = " + localTagItemRecord.content);
       }
-      return localArrayList;
     }
-    return null;
+    return localObject1;
   }
   
   public String DBselectItem(int paramInt, String paramString)
@@ -1196,15 +1201,17 @@ public class VasQuickUpdateEngine
     localArrayList.add(new Pair(Long.valueOf(1003L), "emotionRecommendEffect"));
     localArrayList.add(new Pair(Long.valueOf(1004L), "emojiStickerGuideZip_v2"));
     localArrayList.add(new Pair(Long.valueOf(1004L), "libFlatBuffersParser"));
+    localArrayList.add(new Pair(Long.valueOf(1004L), "libtmsdualcore"));
     localArrayList.add(new Pair(Long.valueOf(1004L), "bqmall.android.h5magic."));
     localArrayList.add(new Pair(Long.valueOf(1004L), "libColorFont_760"));
-    localArrayList.add(new Pair(Long.valueOf(1004L), "libVipFont_735"));
-    localArrayList.add(new Pair(Long.valueOf(1004L), "libqgplayer_760"));
+    localArrayList.add(new Pair(Long.valueOf(1004L), "libVipFont_765"));
+    localArrayList.add(new Pair(Long.valueOf(1004L), "libqgplayer_765"));
+    localArrayList.add(new Pair(Long.valueOf(1004L), "libAPNG_765"));
     localArrayList.add(new Pair(Long.valueOf(1002L), "flashchat."));
-    localArrayList.add(new Pair(Long.valueOf(1000L), "xydata.qim.hifont.recommend.json"));
+    localArrayList.add(new Pair(Long.valueOf(1000L), "xydata.qq.hifont.recommend.json"));
     localArrayList.add(new Pair(Long.valueOf(22L), "colorScreen.android."));
     localArrayList.add(new Pair(Long.valueOf(23L), "face."));
-    localArrayList.add(new Pair(Long.valueOf(5L), "font.hifont.android."));
+    localArrayList.add(new Pair(Long.valueOf(5L), "font.hifontQQ.android."));
     localArrayList.add(new Pair(Long.valueOf(1000L), "card.diyFontConfig.json"));
     localArrayList.add(new Pair(Long.valueOf(5L), "font.diycard.android."));
     localArrayList.add(new Pair(Long.valueOf(21L), "poke.item.effect."));
@@ -1223,6 +1230,7 @@ public class VasQuickUpdateEngine
     localArrayList.add(new Pair(Long.valueOf(1000L), "signature.item."));
     localArrayList.add(new Pair(Long.valueOf(1000L), "groupeffect_config.json"));
     localArrayList.add(new Pair(Long.valueOf(25L), "groupeffect_item_"));
+    localArrayList.add(new Pair(Long.valueOf(15L), "card."));
     if ((this.mUpdateManagerInstance != 0L) && (!this.hasRegistered.get()))
     {
       int i = 0;
@@ -1262,7 +1270,7 @@ public class VasQuickUpdateEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateEngine
  * JD-Core Version:    0.7.0.1
  */

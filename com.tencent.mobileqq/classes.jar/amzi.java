@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import cooperation.qzone.plugin.IQZonePluginManager;
 
 public class amzi
   implements Runnable
 {
-  public amzi(QZoneShareActivity paramQZoneShareActivity) {}
+  public amzi(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2, PluginBaseInfo paramPluginBaseInfo) {}
   
   public void run()
   {
-    if ((QZoneShareActivity.a(this.a) != null) && (QZoneShareActivity.a(this.a).isShowing())) {}
     try
     {
-      QZoneShareActivity.a(this.a).dismiss();
+      if (this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.a != null) {
+        this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.a.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.mID, null, this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.c);
+      }
       return;
     }
     catch (Exception localException)
     {
-      QLog.e("QZoneShare", 1, localException.getMessage());
+      QLog.e("QZoneLiveVideoDownLoadActivtyV2", 1, localException, new Object[0]);
     }
   }
 }

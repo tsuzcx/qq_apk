@@ -28,13 +28,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lsh;
-import lsi;
-import lsj;
-import lsk;
-import lsl;
-import lsm;
-import lsn;
+import lvl;
+import lvm;
+import lvn;
+import lvo;
+import lvp;
+import lvq;
+import lvr;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.CommentInfo;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.FriendRecommendInfo;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackInfo;
@@ -159,7 +159,7 @@ public class ReadInJoyFooterPresenter
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setText(((oidb_cmd0x68b.PackJumpInfo)localObject1).str_wording.get());
           localObject2 = ((oidb_cmd0x68b.PackJumpInfo)localObject1).str_url.get();
           localObject1 = ((oidb_cmd0x68b.PackJumpInfo)localObject1).str_wording.get();
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setOnClickListener(new lsm(this, (String)localObject1, (String)localObject2));
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].setOnClickListener(new lvq(this, (String)localObject1, (String)localObject2));
           i = 1;
         }
         paramArticleInfo.remove();
@@ -172,7 +172,7 @@ public class ReadInJoyFooterPresenter
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setText(((oidb_cmd0x68b.PackJumpInfo)paramList.get(paramInt)).str_wording.get());
       paramArticleInfo = ((oidb_cmd0x68b.PackJumpInfo)paramList.get(paramInt)).str_url.get();
       localObject1 = ((oidb_cmd0x68b.PackJumpInfo)paramList.get(paramInt)).str_wording.get();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setOnClickListener(new lsn(this, (String)localObject1, paramArticleInfo));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[paramInt].setOnClickListener(new lvr(this, (String)localObject1, paramArticleInfo));
       if ((paramInt - 1 >= 0) && (paramInt - 1 <= 1)) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfAndroidViewView[(paramInt - 1)].setVisibility(0);
       }
@@ -198,7 +198,7 @@ public class ReadInJoyFooterPresenter
       return;
     case 2: 
     case 3: 
-      paramArticleInfo = new lsk(this, paramPackJumpInfo);
+      paramArticleInfo = new lvo(this, paramPackJumpInfo);
       if (paramPackJumpInfo.enum_style.get() == 2)
       {
         localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].getLayoutParams();
@@ -217,7 +217,7 @@ public class ReadInJoyFooterPresenter
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.h.setOnClickListener(paramArticleInfo);
       return;
     }
-    paramPackJumpInfo = new lsl(this, paramArticleInfo);
+    paramPackJumpInfo = new lvp(this, paramArticleInfo);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfAndroidWidgetTextView[3].getLayoutParams();
     localLayoutParams.addRule(11, 0);
     localLayoutParams.addRule(9, -1);
@@ -333,8 +333,8 @@ public class ReadInJoyFooterPresenter
             this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.d.setText(str3 + ":  ");
             label454:
             this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.e.setText(paramReadInJoyView);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.e.setOnClickListener(new lsh(this, str1, paramIReadInJoyModel));
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.d.setOnClickListener(new lsi(this, l, paramIReadInJoyModel));
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.e.setOnClickListener(new lvl(this, str1, paramIReadInJoyModel));
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.d.setOnClickListener(new lvm(this, l, paramIReadInJoyModel));
             if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel.f()) {
               break label789;
             }
@@ -377,7 +377,7 @@ public class ReadInJoyFooterPresenter
       if ((!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel.g()) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.a())) {
         break;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.m.setOnClickListener(new lsj(this));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.m.setOnClickListener(new lvn(this));
       ReadInJoyLogicEngineEventDispatcher.a().a(null);
       return;
       paramInt = 8;
@@ -385,7 +385,7 @@ public class ReadInJoyFooterPresenter
       label708:
       paramInt = 8;
       break label130;
-      paramReadInJoyView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839762);
+      paramReadInJoyView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839777);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.c.setCompoundDrawablesWithIntrinsicBounds(paramReadInJoyView, null, null, null);
       break label206;
       paramInt = 8;

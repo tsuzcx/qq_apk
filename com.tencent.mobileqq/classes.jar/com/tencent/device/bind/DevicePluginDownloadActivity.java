@@ -21,8 +21,8 @@ import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.app.AppRuntime;
-import pvv;
-import pvw;
+import qan;
+import qao;
 
 public class DevicePluginDownloadActivity
   extends IphoneTitleBarActivity
@@ -72,7 +72,7 @@ public class DevicePluginDownloadActivity
       paramBundle = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("qrurl");
       if (!TextUtils.isEmpty(paramBundle))
       {
-        super.setContentView(2130968913);
+        super.setContentView(2130968915);
         super.setTitle(2131427781);
         super.setLeftViewName(2131427781);
         SmartDeviceReport.a().a(1);
@@ -98,7 +98,7 @@ public class DevicePluginDownloadActivity
       if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra(jdField_a_of_type_JavaLangString, -1) == 0)
       {
         if (!QZoneShareManager.a((AppInterface)super.getAppRuntime(), this, this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("data"), null)) {
-          QRUtils.a(1, 2131435480);
+          QRUtils.a(1, 2131435496);
         }
         super.finish();
         return true;
@@ -119,10 +119,10 @@ public class DevicePluginDownloadActivity
       SmartDevicePluginLoader.a().addObserver(this);
       SmartDevicePluginLoader.a().a();
       return true;
-      super.setContentView(2130968914);
+      super.setContentView(2130968916);
       super.setTitle(2131427531);
       SmartDevicePluginLoader.a().addObserver(this);
-      this.leftView.setText(2131432414);
+      this.leftView.setText(2131432425);
     } while (SmartDevicePluginLoader.a().a(this.app));
     SmartDevicePluginLoader.a().a();
     return true;
@@ -145,8 +145,8 @@ public class DevicePluginDownloadActivity
       if (paramObservable.intValue() != 0)
       {
         paramObservable = DialogUtil.a(this, 230);
-        paramObservable.setNegativeButton(2131433015, new pvv(this));
-        paramObservable.setPositiveButton(2131427788, new pvw(this));
+        paramObservable.setNegativeButton(2131433029, new qan(this));
+        paramObservable.setPositiveButton(2131427788, new qao(this));
         paramObservable.setTitle(2131427791);
         paramObservable.setMessage(2131427792);
         paramObservable.show();

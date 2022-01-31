@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.startup.step;
 
-import aifb;
-import aifc;
-import aifd;
+import aijv;
+import aijw;
+import aijx;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -86,15 +86,15 @@ public class InitUrlDrawable
     URLDrawable.DEBUG = false;
     File localFile;
     if ("mounted".equals(Environment.getExternalStorageState())) {
-      localFile = new File(AppConstants.aJ);
+      localFile = new File(AppConstants.aK);
     }
     try
     {
       for (;;)
       {
-        URLDrawable.init(localBaseApplicationImpl, new aifd(localBaseApplicationImpl));
+        URLDrawable.init(localBaseApplicationImpl, new aijx(localBaseApplicationImpl));
         if (Build.VERSION.SDK_INT >= 11) {
-          URLDrawable.setDebuggableCallback(new aifb());
+          URLDrawable.setDebuggableCallback(new aijv());
         }
         localFile = new File(localFile, "diskcache");
         if (localFile != null) {
@@ -103,7 +103,7 @@ public class InitUrlDrawable
         localFile = Utils.getExternalCacheDir(localBaseApplicationImpl);
         a = new DiskCache(localFile);
         com.tencent.mobileqq.transfile.URLDrawableHelper.a = localFile;
-        JpegExifReader.initJpegExifReader(new aifc());
+        JpegExifReader.initJpegExifReader(new aijw());
         return true;
         localFile = localBaseApplicationImpl.getCacheDir();
       }

@@ -1,18 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
+import com.tencent.mobileqq.nearby.NearbyIconDecoder;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
+import java.util.List;
 
-class aeuk
-  implements Runnable
+public class aeuk
+  extends NearbyProcObserver
 {
-  aeuk(aeui paramaeui) {}
+  public aeuk(NearbyIconDecoder paramNearbyIconDecoder) {}
   
-  public void run()
+  public void a(List paramList1, List paramList2)
   {
-    if ((this.a.a.getActivity() != null) && (!this.a.a.getActivity().isFinishing()))
+    if ((paramList1 == null) || (paramList2 == null) || (paramList1.size() == 0) || (paramList1.size() != paramList2.size())) {}
+    for (;;)
     {
-      this.a.a.a.setVisibility(0);
-      this.a.a.b.setVisibility(0);
+      return;
+      int i = 0;
+      while (i < paramList1.size())
+      {
+        this.a.a((String)paramList1.get(i), (String)paramList2.get(i));
+        i += 1;
+      }
     }
   }
 }

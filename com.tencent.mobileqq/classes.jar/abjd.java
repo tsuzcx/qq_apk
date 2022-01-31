@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResDownload;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.armap.ARTreasurePlayControl;
+import com.tencent.mobileqq.armap.JniCommon;
 
 public class abjd
   implements Runnable
 {
-  public abjd(DynamicAvatarManager paramDynamicAvatarManager) {}
+  public abjd(ARTreasurePlayControl paramARTreasurePlayControl, int paramInt) {}
   
   public void run()
   {
-    if ((!VideoEnvironment.e(DynamicAvatarManager.a(this.a))) && ((DynamicAvatarManager.a(this.a) instanceof QQAppInterface))) {
-      ShortVideoResDownload.a((QQAppInterface)DynamicAvatarManager.a(this.a), false);
-    }
+    JniCommon.nativeSwitchMode(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abjd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
+import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
+import java.lang.ref.WeakReference;
 
-class aole
+public class aole
   implements Runnable
 {
-  aole(aold paramaold, int paramInt) {}
+  public aole(VideoFrameLoader paramVideoFrameLoader) {}
   
   public void run()
   {
-    String str = "";
-    if (this.jdField_a_of_type_Int == -1) {
-      str = "分享失败";
+    VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = null;
+    if (VideoFrameLoader.a(this.a) != null) {
+      localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.a).get();
     }
-    for (;;)
-    {
-      QQToast.a(this.jdField_a_of_type_Aold.a, 1, str, 0).a();
-      return;
-      if (this.jdField_a_of_type_Int == -2) {
-        str = "你未安装微博客户端，无法分享。";
-      }
+    if (localVideoFrameLoaderListener != null) {
+      localVideoFrameLoaderListener.b();
     }
   }
 }

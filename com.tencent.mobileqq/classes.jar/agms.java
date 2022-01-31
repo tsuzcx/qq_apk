@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public final class agms
-  implements Comparator
+public class agms
+  implements Runnable
 {
-  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
+  public agms(ScanTorchActivity paramScanTorchActivity) {}
+  
+  public void run()
   {
-    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
-    if (l > 0L) {
-      return 1;
+    Bitmap localBitmap = ScanTorchActivity.a(this.a, "res/fudai/alertbg.png", false);
+    if (localBitmap != null) {
+      BaseApplicationImpl.sImageCache.put("res/fudai/alertbg.png", localBitmap);
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agms
  * JD-Core Version:    0.7.0.1
  */

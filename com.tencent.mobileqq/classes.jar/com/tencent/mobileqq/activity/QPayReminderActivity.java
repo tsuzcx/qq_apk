@@ -37,7 +37,7 @@ public class QPayReminderActivity
         Object localObject1 = getIntent();
         if (((Intent)localObject1).getIntExtra("URGENCY", 1) == 1)
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844060);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844126);
           this.jdField_a_of_type_Int = ((Intent)localObject1).getIntExtra("TEMPLATE", 1);
           localObject1 = new JSONObject(((Intent)localObject1).getStringExtra("CONTENT"));
           setTitle(((JSONObject)localObject1).getJSONObject("title").getString("text"));
@@ -63,7 +63,7 @@ public class QPayReminderActivity
         }
         else
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844059);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844125);
           continue;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
@@ -84,12 +84,12 @@ public class QPayReminderActivity
   {
     getIntent().putExtra("fling_action_key", 0);
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970981);
-    setLeftButton(2131434937, this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372441));
+    super.setContentView(2130970999);
+    setLeftButton(2131434953, this);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372452));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372440));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372439));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372451));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372450));
     if (!a()) {
       finish();
     }

@@ -1,30 +1,76 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.IBinder;
-import cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface.Stub;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class amqi
-  implements ServiceConnection
+  implements OnPluginInstallListener, Runnable
 {
-  public amqi(QQIndividualityRemoteProxy paramQQIndividualityRemoteProxy) {}
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public amqi(AppRuntime paramAppRuntime, Intent paramIntent)
   {
-    this.a.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface = IQQIndividualityRemoteProxyInterface.Stub.a(paramIBinder);
-    if (this.a.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null)
-    {
-      paramComponentName = new amqj(this);
-      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
-      paramComponentName.start();
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    if (paramIntent != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramIntent.getParcelableExtra("result"));
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public IBinder asBinder()
   {
-    this.a.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    return null;
   }
+  
+  public void onInstallBegin(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BuscardHelper", 2, "onInstallBegin");
+    }
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BuscardHelper", 2, "onInstallDownloadProgress");
+    }
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, null);
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BuscardHelper", 2, "onInstallError");
+    }
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      paramString = new Bundle();
+      paramString.putParcelable("nfcIntent", this.jdField_a_of_type_AndroidContentIntent);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(-2, paramString);
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BuscardHelper", 2, "onInstallFinish");
+    }
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      paramString = new Bundle();
+      paramString.putParcelable("nfcIntent", this.jdField_a_of_type_AndroidContentIntent);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(4, paramString);
+    }
+  }
+  
+  public void run() {}
 }
 
 

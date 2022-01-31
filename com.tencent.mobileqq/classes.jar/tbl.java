@@ -1,72 +1,41 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class tbl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tbl(MainFragment paramMainFragment) {}
+  public tbl(Leba paramLeba) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    for (;;)
+    try
     {
-      try
+      int i = ((Integer)paramView.getTag(-1)).intValue();
+      if (i > -1)
       {
-        if ((MainFragment.a(this.a) != null) && (MainFragment.a(this.a).get("看点") != null))
-        {
-          BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)((RedTouch)MainFragment.a(this.a).get("看点")).getTag(2131362413);
-          JSONObject localJSONObject = ReadInJoyUtils.a();
-          if (localRedTypeInfo == null)
-          {
-            i = 1;
-            if (i == 3)
-            {
-              localRedTypeInfo.red_content.get();
-              localJSONObject.put("tab_status", i);
-              localJSONObject.put("kandian_mode_new", VideoReporter.a());
-              if (i == 3) {
-                localJSONObject.put("reddot_num", localRedTypeInfo.red_content.get());
-              }
-              if (ReadInJoyUtils.f != 0) {
-                continue;
-              }
-              i = 0;
-              localJSONObject.put("button_state", i);
-              PublicAccountReportUtils.a(null, "CliOper", "", null, "0X80081C3", "0X80081C3", 0, 1, null, null, null, localJSONObject.toString(), false);
-            }
-          }
-          else
-          {
-            if (localRedTypeInfo.red_type.get() != 5) {
-              break label179;
-            }
-            i = 3;
-            continue;
-          }
-          continue;
-          i = 1;
-          continue;
-        }
-        else
-        {
-          return;
+        LebaViewItem localLebaViewItem = (LebaViewItem)this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.getItem(i);
+        if ((localLebaViewItem != null) && (localLebaViewItem.a != null) && (localLebaViewItem.a.uiResId == 6005L)) {
+          StoryReportor.a("dynamic", "clk_story", 0, ((TroopRedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).c(), new String[0]);
         }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      label179:
-      int i = 2;
     }
+    catch (NullPointerException localNullPointerException)
+    {
+      for (;;)
+      {
+        QLog.w("Q.lebatab.leba", 2, "" + localNullPointerException);
+      }
+    }
+    this.a.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener.a(this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView, paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
   }
 }
 

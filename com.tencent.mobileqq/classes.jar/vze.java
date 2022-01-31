@@ -1,15 +1,15 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
-class vze
-  implements PublicAccountManager.InitDoneObserver
+public class vze
+  implements DialogInterface.OnClickListener
 {
-  vze(vzd paramvzd) {}
+  public vze(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a.sendEmptyMessage(1);
+    this.a.b(1);
   }
 }
 

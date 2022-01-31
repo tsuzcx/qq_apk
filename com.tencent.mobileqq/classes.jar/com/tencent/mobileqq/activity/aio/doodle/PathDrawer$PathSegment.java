@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.doodle;
 
 import android.graphics.Matrix;
 import android.graphics.Path;
-import usx;
+import uxx;
 
 public class PathDrawer$PathSegment
   implements MyParcelable
@@ -16,7 +16,7 @@ public class PathDrawer$PathSegment
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new usx();
+    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new uxx();
   }
   
   public PathDrawer$PathSegment(Path paramPath)

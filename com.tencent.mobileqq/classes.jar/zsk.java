@@ -1,62 +1,37 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.message.BaseMessageManagerForTroopAndDisc;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.service.QavWrapper;
+import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
+import com.tencent.av.utils.GVideoGrayConfig.Record;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQGAudioMsgHandler;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.groupvideo.GroupVideoWrapper;
 
 public class zsk
-  implements Runnable
+  implements GVideoGrayConfig.GVideoGrayConfigListener
 {
-  public zsk(BaseMessageManagerForTroopAndDisc paramBaseMessageManagerForTroopAndDisc, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
+  public zsk(QQGAudioMsgHandler paramQQGAudioMsgHandler, long paramLong1, int paramInt, long paramLong2) {}
   
-  public void run()
+  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
-    int j = 0;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    ChatMessage localChatMessage;
-    if (localObject != null)
+    if (paramInt1 == 0)
     {
-      localObject = ((List)localObject).iterator();
-      do
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter != null)
       {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        localChatMessage = (ChatMessage)((Iterator)localObject).next();
-      } while (MsgProxyUtils.a(localChatMessage));
+        this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(3, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 20, 1);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(this.jdField_a_of_type_Long, true);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, Long.valueOf(this.jdField_a_of_type_Long).longValue(), 0L);
+      }
+      VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 13, false, Long.toString(this.jdField_a_of_type_Long), Long.toString(this.b), false, null, false, this.jdField_a_of_type_Int, new Object[0]);
+      if (this.jdField_a_of_type_Int == 2) {
+        new GroupVideoWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new zsl(this));
+      }
     }
-    for (int i = (int)localChatMessage.shmsgseq;; i = 0)
+    else
     {
-      if (i <= this.jdField_a_of_type_Long + 1L) {}
-      for (boolean bool = true; (j == i) || (i <= this.jdField_a_of_type_Long); bool = false)
-      {
-        if ((bool) && (this.jdField_a_of_type_Boolean)) {
-          BaseMessageManagerForTroopAndDisc.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext.g = bool;
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a.post(new zsl(this));
-        return;
-      }
-      int k = (int)(i - this.jdField_a_of_type_Long);
-      j = k;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, k).size() != k)
-      {
-        j = k;
-        if (k > 15) {
-          j = 15;
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext.e = j;
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, j, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
-      j = i;
-      break;
+      return;
     }
+    new QavWrapper(BaseApplication.getContext()).a(new zsm(this));
   }
 }
 

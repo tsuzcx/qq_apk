@@ -1,27 +1,29 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class otf
-  implements WXShareHelper.WXShareListener
+public final class otf
+  implements DownloadParams.DecodeHandler
 {
-  public otf(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
-      return;
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    switch (paramBaseResp.errCode)
+    Object localObject;
+    do
     {
-    case -2: 
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435303);
-      return;
-    }
-    QRUtils.a(2, 2131435302);
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return UIUtils.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

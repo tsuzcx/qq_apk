@@ -1,19 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.QQCustomArkDialog;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-public class akdv
-  implements Runnable
+class akdv
+  extends TroopGiftCallback
 {
-  public akdv(QQCustomArkDialog paramQQCustomArkDialog, Bundle paramBundle) {}
+  akdv(akdj paramakdj) {}
   
-  public void run()
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
   {
-    QQCustomArkDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomArkDialog, this.jdField_a_of_type_AndroidOsBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdv
  * JD-Core Version:    0.7.0.1
  */

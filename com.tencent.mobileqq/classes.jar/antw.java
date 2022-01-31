@@ -1,22 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Handler.Callback;
+import android.os.Message;
+import dov.com.qq.im.capture.data.CaptureComboManager;
+import dov.com.qq.im.capture.data.CaptureSet;
 
 public class antw
-  implements Animation.AnimationListener
+  implements Handler.Callback
 {
-  public antw(EditVideoGuide paramEditVideoGuide) {}
+  public antw(CaptureComboManager paramCaptureComboManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.j();
-    this.a.a.a(0);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMessage.obj instanceof CaptureSet)) {
+        paramMessage = (CaptureSet)paramMessage.obj;
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

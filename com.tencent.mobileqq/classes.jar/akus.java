@@ -1,17 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.LeftPopupMenuDialog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.ui.WebViewTopTabHelper;
 
 public class akus
-  implements View.OnClickListener
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public akus(LeftPopupMenuDialog paramLeftPopupMenuDialog) {}
+  public akus(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper.a))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper.a(paramInt);
     }
+    TouchWebView localTouchWebView;
+    do
+    {
+      do
+      {
+        return;
+        localTouchWebView = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a();
+      } while (localTouchWebView == null);
+      String str = localTouchWebView.getUrl();
+      paramRadioGroup = str;
+      if (TextUtils.isEmpty(str))
+      {
+        paramRadioGroup = str;
+        if (this.a.jdField_a_of_type_AndroidContentIntent != null) {
+          paramRadioGroup = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
+        }
+      }
+    } while (TextUtils.isEmpty(paramRadioGroup));
+    localTouchWebView.loadUrl(paramRadioGroup.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
   }
 }
 

@@ -15,10 +15,10 @@ public class AutoPlayManager$GetVideoBasicInfoListReceiver
   
   public void a(@NonNull AutoPlayManager paramAutoPlayManager, @NonNull VidToBasicInfoHandler.GetVideoBasicInfoListEvent paramGetVideoBasicInfoListEvent)
   {
-    if ((paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null)) {
+    if ((paramGetVideoBasicInfoListEvent.errorInfo.isFail()) || (paramGetVideoBasicInfoListEvent.a == null)) {
       return;
     }
-    paramAutoPlayManager.b(paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList);
+    paramAutoPlayManager.b(paramGetVideoBasicInfoListEvent.a);
   }
   
   public Class acceptEventClass()

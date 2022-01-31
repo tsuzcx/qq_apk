@@ -1,32 +1,32 @@
-import com.tencent.mobileqq.profile.like.PraiseInfo;
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseLoadListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.portal.ConversationHongBao;
 
 public class agqi
-  implements PraiseManager.OnPraiseLoadListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public PraiseManager.OnPraiseLoadListener a;
-  public int b;
+  public agqi(ConversationHongBao paramConversationHongBao, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public agqi(PraiseManager paramPraiseManager) {}
-  
-  public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramInt1 = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt1 == this.b)
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener.a(0, null, 0, "");
-      }
-    }
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao) * f);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f);
+    this.b.setAlpha(1.0F - f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqi
  * JD-Core Version:    0.7.0.1
  */

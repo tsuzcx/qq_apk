@@ -1,69 +1,25 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable.IWorldCupGameEndCallBack;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog;
-import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog.IBackConfirmDialogCallBack;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager.RenderProxy;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
 
 public class akxu
-  implements ARWorldCupBackConfirmDialog.IBackConfirmDialogCallBack
+  implements Runnable
 {
-  public akxu(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
+  public akxu(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    int i = 2;
-    String str;
-    if (this.a.a() <= 9) {
-      str = "2";
-    }
-    for (;;)
+    TextView localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.a);
+    localTextView.setBackgroundColor(2130706432);
+    localTextView.setTextColor(2147483647);
+    StringBuilder localStringBuilder = new StringBuilder().append("当前内核:");
+    if (this.jdField_a_of_type_Int == 0) {}
+    for (String str = "系统WebView";; str = "x5 " + this.jdField_a_of_type_Int)
     {
-      ReportController.b(null, "dc00898", "", "", "0X8009321", "0X8009321", i, 0, str, "", "", "");
-      ARWorldCupGameLogicManager.a(this.a);
+      localTextView.setText(str);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.a.addContentView(localTextView, new RelativeLayout.LayoutParams(-2, -2));
       return;
-      str = "3";
-      i = 3;
-    }
-  }
-  
-  public void b()
-  {
-    int i = 2;
-    String str;
-    if (this.a.a() <= 9) {
-      str = "2";
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X8009322", "0X8009322", i, 0, str, "", "", "");
-      if (ARWorldCupGameLogicManager.a(this.a) != null) {
-        ARWorldCupGameLogicManager.a(this.a).h();
-      }
-      ARWorldCupGameLogicManager.a(this.a).dismiss();
-      return;
-      str = "3";
-      i = 3;
-    }
-  }
-  
-  public void c()
-  {
-    int i = 2;
-    String str;
-    if (this.a.a() <= 9) {
-      str = "2";
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X8009323", "0X8009323", i, 0, str, "", "", "");
-      ARWorldCupGameLogicManager.a(this.a).dismiss();
-      if ((this.a.a() == 13) && (this.a.a != null)) {
-        this.a.a.a(13);
-      }
-      return;
-      str = "3";
-      i = 3;
     }
   }
 }

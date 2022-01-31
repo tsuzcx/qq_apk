@@ -1,41 +1,31 @@
-import com.tencent.plato.mqq.network.ProgressListener;
-import com.tencent.plato.mqq.network.ProgressRequestBody;
-import okio.Buffer;
-import okio.ForwardingSink;
-import okio.Sink;
+import android.os.Process;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 
 public class alkc
-  extends ForwardingSink
+  extends Thread
 {
-  long jdField_a_of_type_Long = 0L;
-  long b = 0L;
+  public alkc(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public alkc(ProgressRequestBody paramProgressRequestBody, Sink paramSink)
+  public void run()
   {
-    super(paramSink);
-  }
-  
-  public void write(Buffer paramBuffer, long paramLong)
-  {
-    super.write(paramBuffer, paramLong);
-    if (this.b == 0L) {
-      this.b = this.jdField_a_of_type_ComTencentPlatoMqqNetworkProgressRequestBody.contentLength();
-    }
-    this.jdField_a_of_type_Long += paramLong;
-    paramBuffer = ProgressRequestBody.a(this.jdField_a_of_type_ComTencentPlatoMqqNetworkProgressRequestBody);
-    paramLong = this.jdField_a_of_type_Long;
-    long l = this.b;
-    if (this.jdField_a_of_type_Long == this.b) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      paramBuffer.a(paramLong, l, bool);
+      Thread.sleep(1000L);
+      Process.killProcess(Process.myPid());
       return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        localInterruptedException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alkc
  * JD-Core Version:    0.7.0.1
  */

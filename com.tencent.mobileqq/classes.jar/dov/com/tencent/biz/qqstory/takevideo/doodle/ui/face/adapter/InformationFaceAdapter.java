@@ -5,8 +5,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import aoap;
-import aoas;
+import aojg;
+import aojj;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -16,6 +16,7 @@ import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
 import dov.com.qq.im.capture.util.PasterUtil;
 import dov.com.qq.im.capture.util.PasterUtil.Position;
 import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
 import java.net.MalformedURLException;
@@ -25,9 +26,9 @@ public class InformationFaceAdapter
   extends BaseFaceListAdapter
   implements View.OnClickListener
 {
-  public InformationFaceAdapter(Context paramContext)
+  public InformationFaceAdapter(Context paramContext, FaceListPage paramFaceListPage)
   {
-    super(paramContext);
+    super(paramContext, paramFaceListPage);
   }
   
   private void a(ImageView paramImageView, Boolean paramBoolean, InfomationFacePackage.Item paramItem)
@@ -46,10 +47,10 @@ public class InformationFaceAdapter
       return paramView;
     }
     if (paramView == null) {}
-    for (paramView = new aoas(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (aoas)paramView) {
+    for (paramView = new aojj(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this, this);; paramView = (aojj)paramView) {
       try
       {
-        paramView.a((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount());
+        paramView.a((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount(), a());
         return paramView;
       }
       catch (MalformedURLException paramViewGroup)
@@ -62,11 +63,11 @@ public class InformationFaceAdapter
   
   public void onClick(View paramView)
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131371828);
-    QIMCommonLoadingView localQIMCommonLoadingView = (QIMCommonLoadingView)paramView.findViewById(2131371829);
-    int i = ((Integer)localImageView.getTag(2131362359)).intValue();
+    ImageView localImageView = (ImageView)paramView.findViewById(2131371827);
+    QIMCommonLoadingView localQIMCommonLoadingView = (QIMCommonLoadingView)paramView.findViewById(2131371828);
+    int i = ((Integer)localImageView.getTag(2131362362)).intValue();
     InfomationFacePackage.Item localItem = (InfomationFacePackage.Item)((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).jdField_a_of_type_JavaUtilList.get(i);
-    Boolean localBoolean = (Boolean)localImageView.getTag(2131362361);
+    Boolean localBoolean = (Boolean)localImageView.getTag(2131362364);
     QIMInformationPasterManager localQIMInformationPasterManager = (QIMInformationPasterManager)QIMManager.a().c(12);
     if (NetworkUtil.h(paramView.getContext()))
     {
@@ -86,7 +87,7 @@ public class InformationFaceAdapter
       a(localImageView, localBoolean, localItem);
       return;
     }
-    localQIMInformationPasterManager.a((InfomationFacePackage.Item)((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).jdField_a_of_type_JavaUtilList.get(i), new aoap(this, localQIMCommonLoadingView, localImageView));
+    localQIMInformationPasterManager.a((InfomationFacePackage.Item)((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).jdField_a_of_type_JavaUtilList.get(i), new aojg(this, localQIMCommonLoadingView, localImageView));
   }
 }
 

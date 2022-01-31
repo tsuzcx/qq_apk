@@ -1,25 +1,19 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.view.SplitedProgressBar;
 
 public class oud
-  implements Comparator
+  implements Runnable
 {
-  public oud(QRDisplayActivity paramQRDisplayActivity) {}
+  public oud(StoryVideoPlayer paramStoryVideoPlayer) {}
   
-  public int a(String paramString1, String paramString2)
+  public void run()
   {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+    if (!this.a.d)
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    while (paramString1 != null) {
-      return i;
-    }
-    if (paramString2 != null) {
-      return -1;
-    }
-    return 0;
   }
 }
 

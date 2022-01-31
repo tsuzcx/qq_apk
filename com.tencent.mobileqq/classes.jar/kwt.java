@@ -1,23 +1,25 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class kwt
   implements Runnable
 {
-  public kwt(AdModuleBase paramAdModuleBase) {}
+  public kwt(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton != null)
+    PublicAccountEntityHelper localPublicAccountEntityHelper = AdvertisementVideoPreloadManager.a(this.a);
+    if (localPublicAccountEntityHelper != null)
     {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130838508);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.a.jdField_a_of_type_AndroidContentContext.getText(2131438694));
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-1);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(0);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(true);
+      localPublicAccountEntityHelper.a(PAAdPreloadTask.class.getSimpleName());
+      Iterator localIterator = AdvertisementVideoPreloadManager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        localPublicAccountEntityHelper.a((PAAdPreloadTask)localIterator.next());
+      }
     }
-    this.a.c = 2;
   }
 }
 

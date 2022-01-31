@@ -1,26 +1,16 @@
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-class kxt
-  implements Runnable
+public class kxt
+  implements DialogInterface.OnClickListener
 {
-  kxt(kxs paramkxs) {}
+  public kxt(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      boolean bool = SubscriptRecommendController.a(this.a.a.a, false, this.a.a.g);
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 

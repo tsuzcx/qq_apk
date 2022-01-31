@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.now.datasource;
 
-import aesj;
-import aesk;
-import aesl;
+import afau;
+import afav;
+import afaw;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.biz.ProtoUtils;
@@ -50,13 +50,29 @@ public class CommentsDataSourceImpl
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("7.6.3");
+      paramReqBody.version.set("7.6.8");
       paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
       return true;
     }
     return false;
+  }
+  
+  public int a()
+  {
+    try
+    {
+      int i = Integer.parseInt("7.6.8".replace(".", ""));
+      return i;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("CommentsDataSource", 2, "getVersionInt exp:" + localException.toString());
+      }
+    }
+    return 0;
   }
   
   public void a(int paramInt, CommentsDataSource.LoadCommentsCallback paramLoadCommentsCallback)
@@ -81,7 +97,7 @@ public class CommentsDataSourceImpl
     localReqBody.cmd.set(857);
     localReqBody.subcmd.set(1);
     localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetCommentListReq.toByteArray()));
-    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aesj(this, paramLoadCommentsCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new afau(this, paramLoadCommentsCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
   }
   
   public void a(Comments.Comment paramComment, CommentsDataSource.DeleteCommentCallback paramDeleteCommentCallback)
@@ -98,7 +114,7 @@ public class CommentsDataSourceImpl
       localDelCommentReq.feed_id.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString.getBytes()));
       localDelCommentReq.comment_id.set(paramComment.jdField_a_of_type_Long);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localDelCommentReq.toByteArray()));
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aesl(this, paramDeleteCommentCallback, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new afaw(this, paramDeleteCommentCallback, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
       return;
     }
     paramDeleteCommentCallback.a(paramComment, -1);
@@ -113,7 +129,7 @@ public class CommentsDataSourceImpl
     if (!a(localReqBody))
     {
       QLog.i("CommentsDataSource", 1, "oidb_0xada configCommonFileds failed");
-      paramPublishCommentCallback.a(paramComment, -1);
+      paramPublishCommentCallback.a(paramComment, -1, "");
       return;
     }
     NowNearbyVideoCommentProto.AddCommentReq localAddCommentReq = new NowNearbyVideoCommentProto.AddCommentReq();
@@ -139,7 +155,12 @@ public class CommentsDataSourceImpl
       localReqBody.cmd.set(857);
       localReqBody.subcmd.set(2);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localAddCommentReq.toByteArray()));
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aesk(this, paramPublishCommentCallback, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      int i = a();
+      QLog.i("CommentsDataSource", 1, "publishComment, qqver=" + i);
+      if (i > 0) {
+        localReqBody.version_code.set(i);
+      }
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new afav(this, paramPublishCommentCallback, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
       return;
       localAddCommentReq.feed_type.set(4L);
     }

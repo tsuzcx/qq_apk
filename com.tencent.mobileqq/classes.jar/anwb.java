@@ -1,25 +1,14 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegUtils.ExtractAudioListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import com.tencent.widget.XListView;
+import dov.com.qq.im.capture.poi.FacePoiUI;
 
 public class anwb
-  implements FFmpegUtils.ExtractAudioListener
+  implements Runnable
 {
-  public anwb(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
+  public anwb(FacePoiUI paramFacePoiUI) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.record.HWEditImportVideoPlayer", 2, "extractAudioFromMp4 success");
-    }
-    this.a.a(new anwc(this), 0L);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.record.HWEditImportVideoPlayer", 2, "extractAudioFromMp4 fail " + paramString);
-    }
+    this.a.a.springBackOverScrollHeaderView();
   }
 }
 

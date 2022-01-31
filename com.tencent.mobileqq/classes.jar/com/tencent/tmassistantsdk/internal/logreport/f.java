@@ -37,7 +37,7 @@ class f
         }
       }
     }
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new g(this));
+    com.tencent.tmassistantbase.util.f.a().post(new g(this));
   }
 }
 

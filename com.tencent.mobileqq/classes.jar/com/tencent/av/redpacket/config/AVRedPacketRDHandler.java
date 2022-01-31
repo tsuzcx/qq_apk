@@ -15,7 +15,7 @@ public class AVRedPacketRDHandler
   public static String a()
   {
     if (SystemUtil.a()) {
-      return AppConstants.aJ + "pddata/prd/" + "av_redpacket";
+      return AppConstants.aK + "pddata/prd/" + "av_redpacket";
     }
     return BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/" + "av_redpacket";
   }
@@ -72,7 +72,7 @@ public class AVRedPacketRDHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.redpacket.config.AVRedPacketRDHandler
  * JD-Core Version:    0.7.0.1
  */

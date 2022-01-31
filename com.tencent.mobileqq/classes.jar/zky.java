@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BadgeUtils;
+import com.tencent.mobileqq.app.FriendListHandler;
+import java.util.ArrayList;
 
 public class zky
   implements Runnable
 {
-  public zky(QQAppInterface paramQQAppInterface) {}
+  public zky(FriendListHandler paramFriendListHandler, ArrayList paramArrayList1, String paramString, int paramInt1, int paramInt2, ArrayList paramArrayList2) {}
   
   public void run()
   {
-    if ((!this.a.isLogin()) || (this.a.l)) {}
-    for (int i = 0;; i = this.a.f())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQAppInterface", 2, String.format("unread: %d islogin: %s isReleased: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.a.isLogin()), Boolean.valueOf(this.a.l) }));
-      }
-      BadgeUtils.a(QQAppInterface.l(this.a), i);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaUtilArrayList);
   }
 }
 

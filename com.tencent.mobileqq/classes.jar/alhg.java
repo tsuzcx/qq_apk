@@ -1,51 +1,69 @@
+import android.annotation.SuppressLint;
+import android.app.DownloadManager;
+import android.app.DownloadManager.Query;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.AppNotificationManager;
-import com.tencent.open.downloadnew.common.AppNotificationManager.NoticeIdentity;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
 
 public class alhg
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public alhg(DownloadManager paramDownloadManager) {}
+  public alhg(MSFIntChkStrike paramMSFIntChkStrike, DownloadManager paramDownloadManager) {}
   
-  public void run()
+  @SuppressLint({"NewApi"})
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject1 = AppUtil.b(CommonDataAdapter.a().a());
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
+    long l = paramIntent.getLongExtra("extra_download_id", -1L);
+    String str;
+    Object localObject;
+    if (MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike) == l)
     {
-      localObject1 = AppNotificationManager.a().a();
-      if (localObject1 != null)
+      str = "";
+      localObject = new DownloadManager.Query();
+      ((DownloadManager.Query)localObject).setFilterById(new long[] { l });
+      paramIntent = null;
+    }
+    try
+    {
+      Cursor localCursor = this.jdField_a_of_type_AndroidAppDownloadManager.query((DownloadManager.Query)localObject);
+      localObject = str;
+      if (localCursor != null)
       {
-        Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
-        while (localIterator.hasNext())
+        localObject = str;
+        paramIntent = localCursor;
+        if (localCursor.moveToFirst())
         {
-          AppNotificationManager.NoticeIdentity localNoticeIdentity = (AppNotificationManager.NoticeIdentity)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
-          if (localNoticeIdentity != null)
-          {
-            Object localObject2 = this.a.a(localNoticeIdentity.b);
-            if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).c)))
-            {
-              localObject2 = this.a.a(((DownloadInfo)localObject2).c);
-              if ((localObject2 != null) && (4 != DownloadManager.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
-                AppNotificationManager.a().a(localNoticeIdentity.a);
-              }
-            }
-          }
+          paramIntent = localCursor;
+          localObject = localCursor.getString(localCursor.getColumnIndex("local_filename"));
         }
+      }
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramIntent = new Intent("android.intent.action.VIEW");
+        paramIntent.setDataAndType(Uri.parse("file://" + (String)localObject), "application/vnd.android.package-archive");
+        paramIntent.setFlags(268435456);
+        paramContext.startActivity(paramIntent);
+      }
+      return;
+    }
+    finally
+    {
+      if (paramIntent != null) {
+        paramIntent.close();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alhg
  * JD-Core Version:    0.7.0.1
  */

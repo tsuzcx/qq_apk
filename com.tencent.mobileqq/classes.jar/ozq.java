@@ -1,23 +1,46 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.ui.CustomAnimationAdapter;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.QRCodeEncodeCallback;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class ozq
-  implements ViewTreeObserver.OnPreDrawListener
+public final class ozq
+  implements BusinessObserver
 {
-  public ozq(CustomAnimationAdapter paramCustomAnimationAdapter, View paramView) {}
+  public ozq(QRCodeEncodeCallback paramQRCodeEncodeCallback) {}
   
-  public boolean onPreDraw()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    CustomAnimationAdapter.a(this.jdField_a_of_type_ComTencentBizUiCustomAnimationAdapter, this.jdField_a_of_type_AndroidViewView);
-    return false;
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
+    {
+      try
+      {
+        paramBundle = new JSONObject(paramBundle);
+        if (paramBundle.getInt("r") != 0) {
+          continue;
+        }
+        paramBundle = paramBundle.getString("url");
+        if (paramBundle != null)
+        {
+          this.a.a(true, paramBundle);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle = null;
+        }
+      }
+      this.a.a(false, null);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ozq
  * JD-Core Version:    0.7.0.1
  */

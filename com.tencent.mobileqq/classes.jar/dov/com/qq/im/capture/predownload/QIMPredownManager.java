@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.persistence.Entity;
@@ -86,7 +86,10 @@ public class QIMPredownManager
       {
         QIMPredownManager.Config localConfig = QIMPredownManager.Config.a(paramString);
         File localFile = new File(a(), "predownload11111.cfg");
-        BaseApplicationImpl.getApplication().getSharedPreferences("qim_pre_down11111", 0).edit().putString("leftRaw", null).apply();
+        SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("qim_pre_down11111", 0).edit();
+        if (localEditor != null) {
+          localEditor.remove("leftRaw").apply();
+        }
         FileUtils.a(localFile.getAbsolutePath(), paramString);
         a(localConfig);
         d();
@@ -443,7 +446,7 @@ public class QIMPredownManager
       }
       paramMessage = paramMessage.a(QIMPredownHistory.class, true, "resId=? and resType=?", new String[] { localObject1, jdField_a_of_type_ArrayOfJavaLangString[m] }, null, null, null, null);
       if ((paramMessage == null) || (paramMessage.isEmpty())) {
-        break label875;
+        break label872;
       }
       i = 1;
       label649:
@@ -453,7 +456,7 @@ public class QIMPredownManager
       ((QIMReadWriteReportItem)localObject2).h = ((String)localObject1);
       ((QIMReadWriteReportItem)localObject2).i = String.valueOf(SharedPreUtils.B(BaseApplicationImpl.context));
       if (j == 0) {
-        break label880;
+        break label877;
       }
       paramMessage = "2";
       label705:
@@ -470,7 +473,7 @@ public class QIMPredownManager
       } while ((!TextUtils.equals((CharSequence)localObject1, ((QIMPredownManager.Config.Item)localObject3).jdField_a_of_type_JavaLangString)) || (m != ((QIMPredownManager.Config.Item)localObject3).c));
       j = ((QIMPredownManager.Config.Item)localObject3).b;
       if ((j == -1) && (i == 0)) {
-        break label887;
+        break label884;
       }
       paramMessage = "1";
       label788:
@@ -483,34 +486,34 @@ public class QIMPredownManager
       if (paramMessage != null)
       {
         if (paramMessage.a() != 3) {
-          break label894;
+          break label891;
         }
         i = 1;
       }
       label835:
       if (i == 0) {
-        break label899;
+        break label896;
       }
     }
-    label899:
+    label896:
     for (paramMessage = "1";; paramMessage = "2")
     {
       ((QIMReadWriteReportItem)localObject2).l = paramMessage;
       ((QIMReadWriteReportItem)localObject2).m = String.valueOf(j);
-      QIMReportController.b(a(), (QIMReadWriteReportItem)localObject2);
+      QIMReportController.b(null, (QIMReadWriteReportItem)localObject2);
       break;
       j = 0;
       break label548;
-      label875:
+      label872:
       i = 0;
       break label649;
-      label880:
+      label877:
       paramMessage = "1";
       break label705;
-      label887:
+      label884:
       paramMessage = "2";
       break label788;
-      label894:
+      label891:
       i = 0;
       break label835;
     }

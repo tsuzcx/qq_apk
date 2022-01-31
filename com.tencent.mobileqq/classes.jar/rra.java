@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-public class rra
+class rra
   implements Runnable
 {
-  public rra(BaseChatPie paramBaseChatPie) {}
+  rra(rqz paramrqz) {}
   
   public void run()
   {
-    this.a.a.showOverScrollHeader();
+    if (this.a.a.a != null) {
+      this.a.a.a.springBackOverScrollHeaderView();
+    }
   }
 }
 

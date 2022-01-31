@@ -1,50 +1,39 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.LOG;
 
 public class ahla
-  extends AnimatorListenerAdapter
+  extends Handler
 {
-  public ahla(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public ahla(Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
+    super(paramLooper);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
+    LOG.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
+    switch (paramMessage.what)
     {
-      this.a.a.set(true);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
-      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
+    case 1: 
+    default: 
       return;
-      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
-      CameraCaptureButtonLayout.a(this.a);
-      CameraCaptureButtonLayout.a(this.a, 1.0F);
+    case 2: 
+      i = paramMessage.arg1;
+      paramMessage = paramMessage.getData();
+      LOG.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
+      return;
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
+    int i = paramMessage.arg1;
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
     }
+    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    LOG.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
   }
 }
 

@@ -27,15 +27,15 @@ public class CoreService
     if (paramBoolean)
     {
       localObject = new Notification();
-      ((Notification)localObject).icon = 2130839193;
-      ((Notification)localObject).contentView = new RemoteViews(BaseApplicationImpl.sApplication.getPackageName(), 2130969245);
+      ((Notification)localObject).icon = 2130839210;
+      ((Notification)localObject).contentView = new RemoteViews(BaseApplicationImpl.sApplication.getPackageName(), 2130969243);
       return localObject;
     }
     Object localObject = new Intent(BaseApplicationImpl.sApplication, SplashActivity.class);
     ((Intent)localObject).addFlags(67108864);
     localObject = PendingIntent.getActivity(BaseApplicationImpl.sApplication, 0, (Intent)localObject, 402653184);
     NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(BaseApplicationImpl.sApplication);
-    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130839193);
+    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130839210);
     localBuilder.setContentIntent((PendingIntent)localObject);
     return localBuilder.build();
   }

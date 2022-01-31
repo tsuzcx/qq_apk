@@ -1,21 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
-import com.tencent.mobileqq.openapi.OpenApiManager;
-import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agkh
-  implements FileTransferManager.Callback
+  implements Runnable
 {
-  public agkh(OpenApiManager paramOpenApiManager) {}
+  public agkh(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.a.onFileTransStatusChanged(paramFileMsg, paramInt1, paramInt2);
+    ScanTorchActivity.l(this.a);
+    ScanTorchActivity.k(this.a);
+    ScanTorchActivity.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agkh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,37 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.OnGetUserInfoCallback;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.OnFetchUserInfoCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class nrf
-  extends ProtoUtils.TroopProtocolObserver
+public final class nrf
+  implements GetUserInfoHandler.OnGetUserInfoCallback
 {
-  public nrf(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate, boolean paramBoolean) {}
+  public nrf(PlayModeUtils.OnFetchUserInfoCallback paramOnFetchUserInfoCallback, String paramString1, String paramString2) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if (paramInt != 0)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$OnFetchUserInfoCallback != null)
     {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
+      boolean bool = paramUpdateUserInfoEvent.errorInfo.isSuccess();
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.a;
+      if ((bool) && (paramUpdateUserInfoEvent != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals(paramUpdateUserInfoEvent.uid)))
       {
-        paramArrayOfByte.a(7, bool);
-        this.a.a(0, this.a.a.getString(2131435374));
-        return;
+        if (QLog.isDevelopLevel()) {
+          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "[az]PlayModeUtils.fetchUserInfo: ohhh! bad guy!!! require " + this.jdField_a_of_type_JavaLangString + " and the return uid is " + paramUpdateUserInfoEvent.uid);
+        }
+        paramUpdateUserInfoEvent.uid = this.jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(this.b)) {
+          paramUpdateUserInfoEvent.qq = this.b;
+        }
+        ((UserManager)SuperManager.a(2)).a(paramUpdateUserInfoEvent);
       }
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$OnFetchUserInfoCallback.a(bool, paramUpdateUserInfoEvent, true);
     }
-    ((StoryConfigManager)SuperManager.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
   }
 }
 

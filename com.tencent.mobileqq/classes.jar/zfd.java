@@ -1,20 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 
-public final class zfd
-  implements DialogInterface.OnDismissListener
+class zfd
+  implements Runnable
 {
-  public zfd(Activity paramActivity, int paramInt) {}
+  zfd(zfc paramzfc) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
+    if (this.a.a.a != null) {
+      this.a.a.a.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zfd
  * JD-Core Version:    0.7.0.1
  */

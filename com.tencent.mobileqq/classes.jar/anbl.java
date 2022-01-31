@@ -1,16 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qzone.webviewplugin.QZoneFeedActionJsPlugin;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import cooperation.qzone.cache.FileCacheService;
+import cooperation.qzone.cache.FileStorageHandler;
+import cooperation.qzone.cache.FileStorageHandler.Collector;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class anbl
-  extends BroadcastReceiver
+  implements ThreadPool.Job
 {
-  public anbl(QZoneFeedActionJsPlugin paramQZoneFeedActionJsPlugin) {}
+  public anbl(FileStorageHandler paramFileStorageHandler, boolean paramBoolean) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public Object run(ThreadPool.JobContext paramJobContext)
   {
-    QZoneFeedActionJsPlugin.a(this.a, paramContext, paramIntent);
+    paramJobContext.setMode(1);
+    paramJobContext = FileStorageHandler.a(this.jdField_a_of_type_CooperationQzoneCacheFileStorageHandler).a();
+    if (paramJobContext != null)
+    {
+      paramJobContext = paramJobContext.iterator();
+      while (paramJobContext.hasNext())
+      {
+        Object localObject = (FileCacheService)paramJobContext.next();
+        int i = ((FileCacheService)localObject).a(this.jdField_a_of_type_Boolean);
+        localObject = ((FileCacheService)localObject).a();
+        this.jdField_a_of_type_CooperationQzoneCacheFileStorageHandler.a((String)localObject, i);
+      }
+    }
+    return null;
   }
 }
 

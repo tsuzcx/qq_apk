@@ -1,50 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import com.tencent.mobileqq.filemanager.offlinefile.OfflineFileUpload.OfflineFileUploadPara;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class acvp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acvp(FileManagerRSWorker paramFileManagerRSWorker) {}
+  public acvp(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "running OfflineFileHitReq:" + MessageCache.a());
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
     }
-    OfflineFileUploadPara localOfflineFileUploadPara = new OfflineFileUploadPara();
-    localOfflineFileUploadPara.jdField_a_of_type_JavaLangString = this.a.e;
-    localOfflineFileUploadPara.jdField_a_of_type_Long = this.a.d;
-    this.a.jdField_a_of_type_ArrayOfByte = FileManagerUtil.c(this.a.jdField_b_of_type_JavaLangString);
-    this.a.jdField_b_of_type_ArrayOfByte = FileManagerUtil.a(this.a.jdField_b_of_type_JavaLangString);
-    this.a.c = FileManagerUtil.b(this.a.jdField_b_of_type_JavaLangString);
-    if ((this.a.jdField_a_of_type_ArrayOfByte == null) || (this.a.jdField_b_of_type_ArrayOfByte == null) || (this.a.c == null))
+    paramView = (Button)paramView.findViewById(2131364626);
+    if (paramView.getTag() != null)
     {
-      this.a.a(null, 0);
-      return;
-    }
-    localOfflineFileUploadPara.c = this.a.jdField_a_of_type_ArrayOfByte;
-    localOfflineFileUploadPara.d = this.a.jdField_b_of_type_ArrayOfByte;
-    localOfflineFileUploadPara.e = this.a.c;
-    try
-    {
-      localOfflineFileUploadPara.jdField_b_of_type_ArrayOfByte = FileManagerUtil.a(this.a.jdField_b_of_type_JavaLangString).getBytes("utf-8");
-      localOfflineFileUploadPara.jdField_a_of_type_ArrayOfByte = this.a.jdField_b_of_type_JavaLangString.getBytes("utf-8");
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localOfflineFileUploadPara, FileManagerRSWorker.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      return;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        localUnsupportedEncodingException.printStackTrace();
+      this.a.d = ((Integer)paramView.getTag()).intValue();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
       }
     }
+    this.a.l();
   }
 }
 

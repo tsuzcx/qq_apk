@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
-public class ybl
+class ybl
+  implements Runnable
 {
-  public int a;
-  public Friends a;
+  ybl(ybf paramybf) {}
   
-  public ybl(Friends paramFriends, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
+    RMVideoStateMgr.a().b(0, "麦克风参数初始化失败", false);
   }
 }
 

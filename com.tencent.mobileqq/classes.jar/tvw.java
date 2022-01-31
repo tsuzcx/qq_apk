@@ -1,30 +1,47 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import java.util.ArrayList;
 
 public class tvw
-  implements Runnable
+  extends BaseAdapter
 {
-  public tvw(TroopAssistantActivity paramTroopAssistantActivity, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  private tvw(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void run()
+  public int getCount()
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
+    return SearchFriendListActivity.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return SearchFriendListActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = this.a.getLayoutInflater().inflate(2130971547, paramViewGroup, false);
+      paramView = new tvx();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362874));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362875));
+      paramView.b = ((TextView)localView.findViewById(2131375061));
+      localView.setTag(paramView);
+      localView.setOnClickListener(this.a);
     }
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
-    }
+    this.a.a(localView, paramInt);
+    return localView;
   }
 }
 

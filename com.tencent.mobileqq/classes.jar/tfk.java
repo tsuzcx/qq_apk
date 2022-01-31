@@ -1,47 +1,56 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.observer.SubAccountObserver;
 
 public class tfk
-  extends BroadcastReceiver
+  extends SubAccountObserver
 {
-  public tfk(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public tfk(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    if (paramIntent == null) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: mainAccount=" + paramString1 + " subAccount=" + paramString2);
+    }
+    if (TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12005");
+      paramString1.put("fail_step", "getKeyEmpty");
+      paramString1.put("fail_location", "subLogin");
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", false, 0L, 0L, paramString1, "");
+      this.a.c();
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack:subLogin ...has Failed key  =  null");
+      }
+      this.a.a(2131436376, 0);
+    }
     do
     {
-      do
-      {
-        return;
-        localObject = paramIntent.getAction();
-      } while ((TextUtils.isEmpty((CharSequence)localObject)) || (!TextUtils.equals((CharSequence)localObject, "mqq.intent.action.DEVLOCK_ROAM")));
-      if (paramContext != null) {
-        paramContext.unregisterReceiver(this);
+      return;
+      paramString1 = new HashMap();
+      paramString1.put("param_FailCode", "12006");
+      paramString1.put("fail_step", "getKeyNotEmpty");
+      paramString1.put("fail_location", "subLogin");
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "actSBGeykey", true, 0L, 0L, paramString1, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: key not null");
       }
-      Object localObject = DevlockPhoneStatus.a();
-      if (paramIntent.getIntExtra("guardphone_state", DevlockPhoneStatus.d) == DevlockPhoneStatus.c)
-      {
-        paramIntent = paramIntent.getStringExtra("guardphone_mask");
-        paramContext = paramIntent;
-        if (paramIntent == null) {
-          paramContext = "";
-        }
-        ((DevlockPhoneStatus)localObject).a(this.a, paramContext);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "subaccount onGetKeyBack goto bind");
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneUnityManager.a = true;
-      paramContext = (SecSvcHandler)this.a.app.a(34);
-    } while (paramContext == null);
-    this.a.app.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
-    PhoneUnityBindInfoActivity.a(this.a, this.a.c, 2, 1);
-    paramContext.a(4, 31, null, null);
+      paramString1 = (SubAccountProtocManager)this.a.app.getManager(27);
+      if (paramString1 != null) {
+        paramString1.a(paramString2, paramString3, LoginVerifyCodeActivity.a(this.a));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("LoginVerifyCodeActivity", 2, "onGetKeyBack: success .........");
   }
 }
 

@@ -1,29 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.playmode.child.CommentPlayMode;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeAdapter;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.mobileqq.app.AutomatorObserver;
 
 public class njh
-  extends QQUIEventReceiver
+  extends AutomatorObserver
 {
-  public njh(@NonNull CommentPlayMode paramCommentPlayMode)
-  {
-    super(paramCommentPlayMode);
-  }
+  public njh(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
-  public void a(@NonNull CommentPlayMode paramCommentPlayMode, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  protected void a(int paramInt)
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)) {
-      CommentPlayMode.a(paramCommentPlayMode, paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+    if (paramInt == 1)
+    {
+      SLog.b(MsgTabStoryNodeListManager.a() + ".VASH", "Friend Cache Inited!");
+      MsgTabStoryNodeListManager.g = true;
+      this.a.a.notifyDataSetChanged();
     }
-    SLog.b(this.TAG, "UpdateUserInfoEventReceiver. ", paramUpdateUserInfoEvent);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
   }
 }
 

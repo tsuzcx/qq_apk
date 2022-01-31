@@ -1,13 +1,13 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class aohl
+public class aohl
   implements Runnable
 {
-  aohl(aohe paramaohe) {}
+  public aohl(DoodleLayout paramDoodleLayout) {}
   
   public void run()
   {
-    RMVideoStateMgr.a().b(0, "麦克风参数初始化失败", false);
+    this.a.a(0, Boolean.valueOf(false));
   }
 }
 

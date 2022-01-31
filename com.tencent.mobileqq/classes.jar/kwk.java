@@ -1,21 +1,4 @@
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-
-public class kwk
-  implements Runnable
-{
-  public kwk(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
-  
-  public void run()
-  {
-    ReadInJoyNativeAdFragment.a(this.a).setBackgroundResource(2130838508);
-    ReadInJoyNativeAdFragment.a(this.a).setText(this.a.getText(2131438693));
-    ReadInJoyNativeAdFragment.a(this.a).setTextColor(-1);
-    ReadInJoyNativeAdFragment.a(this.a).setProgress(0);
-    ReadInJoyNativeAdFragment.a(this.a).setClickable(true);
-    ReadInJoyNativeAdFragment.c(this.a, 0);
-  }
-}
+public class kwk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

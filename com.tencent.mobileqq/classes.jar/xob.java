@@ -1,22 +1,30 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
+import mqq.os.MqqHandler;
 
-class xob
-  implements Runnable
+public class xob
+  implements PhoneContactManager.IPhoneContactListener
 {
-  xob(xoa paramxoa) {}
+  public xob(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (!FileUtils.d(EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xnz.a))) {
-      QLog.d("EditLocalVideoActivity", 2, "delete origin final mp4 failed!" + EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xnz.a));
-    }
-    for (;;)
+    BannerManager.a(this.a).removeMessages(11);
+    BannerManager.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if ((paramInt & 0x1) != 0)
     {
-      EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xnz.a, this.a.jdField_a_of_type_JavaLangString);
-      return;
-      QLog.d("EditLocalVideoActivity", 2, "delete origin final mp4 success!" + EditLocalVideoActivity.f(this.a.jdField_a_of_type_Xnz.a));
+      BannerManager.a(this.a).removeMessages(11);
+      BannerManager.a(this.a).sendEmptyMessageDelayed(11, 1000L);
     }
   }
 }

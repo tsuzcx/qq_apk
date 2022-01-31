@@ -1,29 +1,38 @@
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.FTSDBManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
-import com.tencent.mobileqq.utils.DBUtils;
+import android.os.Handler;
+import com.tencent.biz.common.util.OpenIdObserver;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class rna
-  implements Runnable
+  extends OpenIdObserver
 {
-  public rna(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, boolean paramBoolean, String paramString) {}
+  public rna(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Boolean)) {}
+    do
     {
-      ProxyManager localProxyManager = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app.a();
-      if (localProxyManager != null)
+      do
       {
-        localProxyManager.d();
-        FTSDBManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app, this.jdField_a_of_type_JavaLangString, true);
-        new MessageRecordManagerImpl().a(this.jdField_a_of_type_JavaLangString);
-        DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.runOnUiThread(new rnb(this));
+        return;
+        AddFriendLogicActivity.a(this.a).hide();
+        if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("qqBaseActivity", 2, "openIdObserver success");
+        }
+      } while (paramOpenID.openID.equals(AddFriendLogicActivity.jdField_a_of_type_JavaLangString));
+      this.a.a();
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("qqBaseActivity", 2, "openIdObserver fail");
   }
 }
 

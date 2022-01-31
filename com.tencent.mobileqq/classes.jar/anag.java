@@ -1,9 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
+
 public final class anag
-  extends ThreadLocal
+  implements DialogInterface.OnClickListener
 {
-  protected Boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return Boolean.valueOf(false);
+    if (LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false)) {
+      LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

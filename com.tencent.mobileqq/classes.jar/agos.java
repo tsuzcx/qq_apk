@@ -1,31 +1,27 @@
 import android.content.Intent;
-import android.net.Uri;
-import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.qphone.base.util.QLog;
 
-class agos
+public class agos
   implements Runnable
 {
-  agos(agor paramagor, boolean paramBoolean, String paramString) {}
+  public agos(OpenApiManager paramOpenApiManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_Agor.a.sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_Agor.a.getString(2131430001, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_Agor.a.getTitleBarHeight());
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenApi.Manager", 2, "onRuntimeCreate, app = " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface + ", current = " + OpenApiManager.access$000(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager) + ", bg = " + BaseApplicationImpl.sIsBgStartup);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Agor.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Agor.a.b = true;
-      return;
-      QRUtils.a(1, 2131430002);
+    this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager.onRuntimeDestroy(OpenApiManager.access$000(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager));
+    OpenApiManager.access$002(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Intent localIntent = new Intent("com.tencent.mobileqq.openapi.ACTION_LOGIN");
+    if (BaseApplicationImpl.sIsBgStartup) {
+      localIntent.putExtra("imm_reg", true);
     }
+    BaseApplicationImpl.sApplication.sendBroadcast(localIntent);
+    OpenApiManager.access$000(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager).addObserver(OpenApiManager.access$100(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager), true);
   }
 }
 

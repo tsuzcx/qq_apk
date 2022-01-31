@@ -1,23 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class akvx
-  implements Runnable
+public final class akvx
+  implements WtTicketPromise
 {
-  akvx(akvw paramakvw) {}
-  
-  public void run()
+  public void Done(Ticket paramTicket)
   {
-    if (!this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume()) {}
-    View localView;
-    do
-    {
-      return;
-      localView = (View)this.a.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_troop_mem_recent_said");
-    } while ((!this.a.a.e) || (localView == null));
-    ProfileCardMoreInfoView.a(localView, this.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService : Done");
+    }
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    }
   }
 }
 

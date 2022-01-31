@@ -1,60 +1,31 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.tribe.view.TEditText.OnSelectionChangedListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
 public class aixg
-  implements TEditText.OnSelectionChangedListener
+  implements EIPClientConnectListener
 {
-  public aixg(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aixg(InnerDns paramInnerDns) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void connectFailed()
   {
-    int k = 1;
-    if (this.a.b.getText().length() <= 0) {}
-    for (;;)
-    {
-      return;
-      if (paramInt1 < 0)
-      {
-        if (paramInt2 > this.a.H.length() + 1) {}
-        for (;;)
-        {
-          this.a.b.setSelection(paramInt2);
-          return;
-          paramInt2 = this.a.H.length() + 1;
-        }
-      }
-      if (paramInt2 < 0)
-      {
-        if (paramInt1 > this.a.H.length() + 1) {}
-        for (;;)
-        {
-          this.a.b.setSelection(paramInt1);
-          return;
-          paramInt1 = this.a.H.length() + 1;
-        }
-      }
-      if (!TextUtils.isEmpty(this.a.H))
-      {
-        int i = 0;
-        int j = paramInt1;
-        if (paramInt1 < this.a.H.length() + 1)
-        {
-          j = this.a.H.length() + 1;
-          i = 1;
-        }
-        if (paramInt2 < this.a.H.length() + 1) {
-          paramInt2 = this.a.H.length() + 1;
-        }
-        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
-        {
-          this.a.b.setSelection(j, paramInt2);
-          return;
-        }
-      }
+    InnerDns.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "connectFailed");
     }
+  }
+  
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      InnerDns.a(this.a, paramEIPCConnection.procName);
+    }
+    InnerDns.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "connectSuccess");
+    }
+    InnerDns.a(this.a);
   }
 }
 

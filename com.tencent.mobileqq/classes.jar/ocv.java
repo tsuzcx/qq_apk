@@ -1,26 +1,32 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditJumpToPtu;
-import com.tencent.biz.qqstory.takevideo.EditJumpToPtu.UIHandler;
-import com.tencent.biz.qqstory.takevideo.EditPicConstants;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ocv
-  implements Runnable
+  extends QQUIEventReceiver
 {
-  public ocv(EditJumpToPtu paramEditJumpToPtu) {}
-  
-  public void run()
+  public ocv(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    EditJumpToPtu.a(this.a, EditPicConstants.a + "qq_pic_Jump_" + System.currentTimeMillis() + ".png");
-    if (this.a.a(EditJumpToPtu.a(this.a)))
+    super(paramStoryMessageListActivity);
+  }
+  
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  {
+    if (paramUpdateUserInfoEvent.errorInfo.isSuccess())
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditJumpToPtu$UIHandler.sendEmptyMessage(1);
-      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramUpdateUserInfoEvent.a);
+      }
+      paramStoryMessageListActivity.e();
     }
-    EditJumpToPtu.a(this.a, null);
-    SLog.e("EditJumpToPtu", "get rawBitmap error!");
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditJumpToPtu$UIHandler.sendEmptyMessage(3);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return GetUserInfoHandler.UpdateUserInfoEvent.class;
   }
 }
 

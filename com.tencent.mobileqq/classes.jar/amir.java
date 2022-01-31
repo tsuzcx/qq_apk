@@ -1,21 +1,26 @@
-import common.qzone.component.cache.common.SoftHashMap;
+import com.tencent.widget.DynamicGridView;
 
 public class amir
-  extends amiq
+  implements amis
 {
-  amir(SoftHashMap paramSoftHashMap)
+  private int jdField_a_of_type_Int;
+  private int b;
+  
+  public amir(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
   {
-    super(paramSoftHashMap);
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public Object next()
+  public void a(int paramInt1, int paramInt2)
   {
-    return a().getKey();
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
+    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amir
  * JD-Core Version:    0.7.0.1
  */

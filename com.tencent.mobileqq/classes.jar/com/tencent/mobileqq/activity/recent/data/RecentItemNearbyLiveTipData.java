@@ -19,6 +19,7 @@ public class RecentItemNearbyLiveTipData
   public RecentItemNearbyLiveTipData(MessageRecord paramMessageRecord)
   {
     super(paramMessageRecord);
+    this.f |= 0x200000;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)

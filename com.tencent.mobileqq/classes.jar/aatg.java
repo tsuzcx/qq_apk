@@ -1,30 +1,22 @@
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.arcard.ARCardShareHelper;
 
 public class aatg
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aatg(ArkAppCGI paramArkAppCGI, QQAppInterface paramQQAppInterface, aati paramaati, HttpNetReq paramHttpNetReq) {}
+  public aatg(ARCardShareHelper paramARCardShareHelper, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI) == null) || (!NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
-    {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", "runTask_retry, network not available");
-      ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI, this.jdField_a_of_type_Aati, false, null);
-      return;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
     }
-    ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aatg
  * JD-Core Version:    0.7.0.1
  */

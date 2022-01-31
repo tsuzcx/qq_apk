@@ -1,17 +1,23 @@
+import com.tencent.mobileqq.app.HotChatCenterManager;
+import com.tencent.mobileqq.data.HotChatItemData;
 import java.util.Comparator;
 
 public class zlu
   implements Comparator
 {
-  public int a(zlt paramzlt1, zlt paramzlt2)
+  public zlu(HotChatCenterManager paramHotChatCenterManager) {}
+  
+  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
   {
-    if (paramzlt1.b < paramzlt2.b) {
-      return -1;
-    }
-    if (paramzlt1.b > paramzlt2.b) {
+    long l1 = paramHotChatItemData1.mMakeTopTime;
+    long l2 = paramHotChatItemData2.mMakeTopTime;
+    if (l1 < l2) {
       return 1;
     }
-    return 0;
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

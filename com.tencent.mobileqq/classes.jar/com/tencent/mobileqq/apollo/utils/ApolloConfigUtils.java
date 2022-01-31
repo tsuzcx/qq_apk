@@ -119,7 +119,7 @@ public class ApolloConfigUtils
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    return paramString.replace("[client]", "androidQQ").replace("[version]", "7.6.3.3565").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
+    return paramString.replace("[client]", "androidQQ").replace("[version]", "7.6.8.3615").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE).replace("[systemInt]", Integer.toString(Build.VERSION.SDK_INT));
   }
   
   public static void a(String paramString)
@@ -198,61 +198,60 @@ public class ApolloConfigUtils
             QLog.e("ApolloConfigUtils", 1, "[parseConfigJson] parse game id error, e=", paramString);
           }
         }
-        if (!((JSONObject)localObject1).has("errorAction")) {
-          break label354;
+        if (((JSONObject)localObject1).has("errorAction"))
+        {
+          paramString = ((JSONObject)localObject1).optString("errorAction");
+          if (!TextUtils.isEmpty(paramString))
+          {
+            localObject2 = paramString.split(",");
+            if (localObject2 != null)
+            {
+              i = 0;
+              if (i < paramString.length())
+              {
+                jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(Integer.parseInt(localObject2[i])));
+                if (!QLog.isColorLevel()) {
+                  break label923;
+                }
+                QLog.d("ApolloConfigUtils", 2, "errorAction =" + localObject2[i]);
+                break label923;
+                QLog.e("ApolloConfigUtils", 1, "[parseConfigJson] sSwitchSet null");
+                continue;
+              }
+            }
+          }
         }
-        paramString = ((JSONObject)localObject1).optString("errorAction");
-        if (TextUtils.isEmpty(paramString)) {
-          break label354;
-        }
-        localObject2 = paramString.split(",");
-        if (localObject2 == null) {
-          break label354;
-        }
-        i = 0;
-        if (i >= paramString.length()) {
-          break label354;
-        }
-        jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(Integer.parseInt(localObject2[i])));
-        if (!QLog.isColorLevel()) {
-          break label924;
-        }
-        QLog.d("ApolloConfigUtils", 2, "errorAction =" + localObject2[i]);
-        break label924;
-        QLog.e("ApolloConfigUtils", 1, "[parseConfigJson] sSwitchSet null");
-        continue;
-        if (!QLog.isColorLevel()) {
-          break;
+        if (!((JSONObject)localObject1).has("shopUrl")) {
+          break label460;
         }
       }
-      catch (Exception paramString) {}
-      QLog.e("ApolloConfigUtils", 2, "aplloConfig parse json exception = " + paramString.toString());
-      return;
-      label354:
-      if (((JSONObject)localObject1).has("shopUrl"))
+      catch (Exception paramString)
       {
-        paramString = ((JSONObject)localObject1).optJSONArray("shopUrl");
-        if (paramString != null) {
-          i = 0;
-        }
+        QLog.e("ApolloConfigUtils", 1, "aplloConfig parse json exception = " + paramString);
+        return;
+      }
+      paramString = ((JSONObject)localObject1).optJSONArray("shopUrl");
+      if (paramString != null) {
+        i = 0;
       }
       for (;;)
       {
         if (i < paramString.length())
         {
           localObject2 = paramString.getJSONObject(i);
-          if (!a("7.6.3", ((JSONObject)localObject2).optString("minVersion"), ((JSONObject)localObject2).optString("maxVersion"))) {
-            break label917;
+          if (!a("7.6.8", ((JSONObject)localObject2).optString("minVersion"), ((JSONObject)localObject2).optString("maxVersion"))) {
+            break label916;
           }
           localObject2 = ((JSONObject)localObject2).optString("url");
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label917;
+            break label916;
           }
           c((String)localObject2);
           if (QLog.isColorLevel()) {
             QLog.d("ApolloConfigUtils", 2, "localversion target.url=" + (String)localObject2);
           }
         }
+        label460:
         if (((JSONObject)localObject1).has("urlConfig"))
         {
           paramString = ((JSONObject)localObject1).optJSONObject("urlConfig");
@@ -272,7 +271,8 @@ public class ApolloConfigUtils
             a(paramString, "game_center");
             a(paramString, "new_interact");
             a(paramString, "game_city");
-            a(paramString, "apollo_drawer_game_box");
+            a(paramString, "apollo_drawer_game_box_lottie");
+            a(paramString, "apollo_plus_url");
           }
         }
         if (((JSONObject)localObject1).has("freqConfig"))
@@ -319,23 +319,23 @@ public class ApolloConfigUtils
         localObject1 = ((JSONObject)localObject2).optString("gamePanelBg");
         localObject2 = ((JSONObject)localObject2).optString("gamePanelBgColor");
         if (!TextUtils.isEmpty(paramString)) {
-          ApolloConstant.ah = paramString;
+          ApolloConstant.ai = paramString;
         }
         if (!TextUtils.isEmpty(paramContext)) {
-          ApolloConstant.ai = paramContext;
+          ApolloConstant.aj = paramContext;
         }
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          ApolloConstant.aj = ((String)localObject1).trim();
+          ApolloConstant.ak = ((String)localObject1).trim();
         }
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           break;
         }
-        ApolloConstant.ak = ((String)localObject2).trim();
+        ApolloConstant.al = ((String)localObject2).trim();
         return;
-        label917:
+        label916:
         i += 1;
       }
-      label924:
+      label923:
       i += 1;
     }
   }
@@ -448,8 +448,13 @@ public class ApolloConfigUtils
       } while (!QLog.isColorLevel());
       QLog.d("ApolloConfigUtils", 2, new Object[] { "[handleConfigUrl] sApolloGameCityUrl=", ApolloConstant.ac });
       return;
-    } while (!"apollo_drawer_game_box".equals(paramString1));
-    ApolloConstant.ad = paramString2;
+      if ("apollo_drawer_game_box_lottie".equals(paramString1))
+      {
+        ApolloConstant.ad = paramString2;
+        return;
+      }
+    } while ((!"apollo_plus_url".equals(paramString1)) || (TextUtils.isEmpty(paramString2)));
+    ApolloConstant.ae = paramString2;
   }
   
   public static void a(JSONObject paramJSONObject, String paramString)
@@ -465,7 +470,7 @@ public class ApolloConfigUtils
           if (i < paramJSONObject.length())
           {
             JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-            if (!a("7.6.3", localJSONObject.optString("minVersion"), localJSONObject.optString("maxVersion"))) {
+            if (!a("7.6.8", localJSONObject.optString("minVersion"), localJSONObject.optString("maxVersion"))) {
               continue;
             }
             String str = localJSONObject.optString("androidUrl");

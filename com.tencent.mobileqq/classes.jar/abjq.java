@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-class abjq
-  implements DialogInterface.OnClickListener
+public class abjq
+  extends AnimateUtils.AnimationAdapter
 {
-  abjq(abjp paramabjp) {}
+  public abjq(ConversationPullDownActiveBase paramConversationPullDownActiveBase) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.finish();
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abjq
  * JD-Core Version:    0.7.0.1
  */

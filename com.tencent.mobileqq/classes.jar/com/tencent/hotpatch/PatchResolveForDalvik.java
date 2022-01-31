@@ -5,12 +5,14 @@ import android.os.Build;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.hotpatch.config.DexPatchConfigDalvik;
+import com.tencent.hotpatch.config.DexPatchItemConfigDalvik;
+import com.tencent.hotpatch.config.PatchConfig;
 import com.tencent.hotpatch.utils.PatchReporter;
 import com.tencent.mobileqq.app.InjectUtils;
 import com.tencent.mobileqq.app.SystemClassLoaderInjector;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -69,9 +71,9 @@ public class PatchResolveForDalvik
     return nativeResolvePatchClass(arrayOfString, arrayOfInt, paramInt);
   }
   
-  public static void a(Context paramContext, DexPatchConfigDalvik paramDexPatchConfigDalvik)
+  public static void a(Context paramContext, PatchConfig paramPatchConfig)
   {
-    String str;
+    Object localObject;
     if (!jdField_a_of_type_Boolean)
     {
       if ((Build.CPU_ABI.toLowerCase(Locale.US).contains("x86")) || (SoLoadUtil.a())) {
@@ -84,9 +86,9 @@ public class PatchResolveForDalvik
         break label132;
       }
       jdField_a_of_type_Int = 609;
-      str = SystemClassLoaderInjector.a(BaseApplicationImpl.sApplication, 0);
-      QLog.d("PatchLogTag", 1, "PatchResolveForDalvik tryResolvePatchClass unload as resolve lib load failed unloadResult=" + str);
-      if ("Success".equals(str))
+      localObject = SystemClassLoaderInjector.a(BaseApplicationImpl.sApplication, 0);
+      QLog.d("PatchLogTag", 1, "PatchResolveForDalvik tryResolvePatchClass unload as resolve lib load failed unloadResult=" + (String)localObject);
+      if ("Success".equals(localObject))
       {
         DexPatchInstaller.jdField_a_of_type_Int = 0;
         DexPatchInstaller.jdField_a_of_type_JavaLangString = "";
@@ -94,18 +96,19 @@ public class PatchResolveForDalvik
     }
     for (;;)
     {
-      PatchReporter.a(paramContext, "", "actPatchResolve", jdField_a_of_type_Int, paramDexPatchConfigDalvik.jdField_c_of_type_JavaLangString);
+      PatchReporter.a(paramContext, "", "actPatchResolve", jdField_a_of_type_Int, paramPatchConfig.b());
       return;
       jdField_a_of_type_Boolean = SoLoadUtilNew.loadSoByName(paramContext, "qq_patch");
       break;
       label132:
-      int i = a(paramDexPatchConfigDalvik.a, paramDexPatchConfigDalvik.jdField_c_of_type_Int);
+      localObject = ((DexPatchItemConfigDalvik)paramPatchConfig.a()).a();
+      int i = a((List)localObject, ((ArrayList)localObject).size());
       jdField_a_of_type_Int = i % 10 + 600;
       if (jdField_a_of_type_Int != 600)
       {
-        str = SystemClassLoaderInjector.a(BaseApplicationImpl.sApplication, 0);
-        QLog.d("PatchLogTag", 1, "PatchResolveForDalvik tryResolvePatchClass unload as resolve patch class failed unloadResult=" + str + ", resolveResult=" + i);
-        if ("Success".equals(str))
+        localObject = SystemClassLoaderInjector.a(BaseApplicationImpl.sApplication, 0);
+        QLog.d("PatchLogTag", 1, "PatchResolveForDalvik tryResolvePatchClass unload as resolve patch class failed unloadResult=" + (String)localObject + ", resolveResult=" + i);
+        if ("Success".equals(localObject))
         {
           DexPatchInstaller.jdField_a_of_type_Int = 0;
           DexPatchInstaller.jdField_a_of_type_JavaLangString = "";

@@ -1,48 +1,16 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.animation.Transformation;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.mobileqq.widget.RatioLayout;
+import com.tencent.mobileqq.profile.PersonalityLabel.PLUploadManager;
+import com.tencent.mobileqq.profile.PersonalityLabel.PLUploadManager.UploadListener;
+import java.util.List;
 
 public class agrw
-  implements ValueAnimation.AnimationUpdateListener
+  implements Runnable
 {
-  public agrw(ProfileTagView paramProfileTagView) {}
+  public agrw(PLUploadManager paramPLUploadManager, List paramList, long paramLong) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void run()
   {
-    paramTransformation = this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.getLayoutParams();
-    if (paramTransformation != null)
-    {
-      paramTransformation.height = paramInteger.intValue();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.setLayoutParams(paramTransformation);
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramInteger = (FrameLayout)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908290);
-        if ((paramInteger != null) && (paramInteger.getChildCount() > 0))
-        {
-          paramInteger = paramInteger.getChildAt(0);
-          if (paramInteger != null)
-          {
-            paramInteger = paramInteger.getBackground();
-            if ((paramInteger instanceof BitmapDrawable))
-            {
-              int j = (int)(255.0F * paramFloat);
-              int i = j;
-              if (paramValueAnimation == this.a.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation) {
-                i = 255 - j;
-              }
-              paramInteger.setAlpha(i);
-            }
-          }
-        }
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long);
     }
   }
 }

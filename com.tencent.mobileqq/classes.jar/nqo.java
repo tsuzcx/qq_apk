@@ -1,17 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.VideoLocalCacheFilter;
 
 public class nqo
-  implements nqm
+  implements BatchGetVideoInfo.VideoLocalCacheFilter
 {
-  public nqo(MediaPlayer paramMediaPlayer) {}
+  public nqo(BatchGetVideoInfo paramBatchGetVideoInfo) {}
   
-  public void a(nqk paramnqk)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    if ((this.a.jdField_a_of_type_Nqr != null) && (!this.a.jdField_a_of_type_Nqr.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Nqi.b() < 2000000L) && (!this.a.jdField_a_of_type_Nqi.b()))
-    {
-      this.a.e = true;
-      this.a.jdField_a_of_type_Nqq.sendMessage(this.a.jdField_a_of_type_Nqq.obtainMessage(200, 701, 0));
-    }
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 

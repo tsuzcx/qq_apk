@@ -1,15 +1,17 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QQProxyForQlink;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class amvl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public amvl(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public amvl(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RemoteHandleManager.a().a().b();
+    QQProxyForQlink.a(this.a, 5, null);
+    this.a.finish();
   }
 }
 

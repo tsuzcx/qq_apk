@@ -1,29 +1,21 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
+import com.tencent.mobileqq.lyric.widget.LyricViewController;
 
 public class aelh
-  implements Runnable
+  extends TimerTaskManager.TimerTaskRunnable
 {
-  public aelh(MyBusinessManager paramMyBusinessManager) {}
+  public aelh(LyricViewController paramLyricViewController) {}
   
-  public void run()
+  public void a()
   {
-    RespondQueryQQBindingStat localRespondQueryQQBindingStat = ((PhoneContactManagerImp)this.a.a.getManager(10)).a();
-    String str = "";
-    int i = 0;
-    if (localRespondQueryQQBindingStat != null)
-    {
-      str = localRespondQueryQQBindingStat.mobileNo;
-      i = localRespondQueryQQBindingStat.type;
+    if (!a()) {
+      LyricViewController.a(this.a);
     }
-    this.a.a(str, i, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aelh
  * JD-Core Version:    0.7.0.1
  */

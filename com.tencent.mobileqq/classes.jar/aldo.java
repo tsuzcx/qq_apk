@@ -1,32 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.open.appcommon.js.AppInterface;
-import com.tencent.open.appcommon.js.BaseInterface;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import java.util.HashMap;
 
 class aldo
   implements Runnable
 {
-  aldo(aldn paramaldn, String paramString) {}
+  aldo(aldn paramaldn) {}
   
   public void run()
   {
-    try
+    if (!this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume()) {}
+    View localView;
+    do
     {
-      if ((this.jdField_a_of_type_Aldn.a.webView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_Aldn.a.webView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      }
       return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.a(BaseInterface.TAG, "webview loadUrl>>> ", localException);
-    }
+      localView = (View)this.a.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_troop_mem_recent_said");
+    } while ((!this.a.a.e) || (localView == null));
+    ProfileCardMoreInfoView.a(localView, this.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aldo
  * JD-Core Version:    0.7.0.1
  */

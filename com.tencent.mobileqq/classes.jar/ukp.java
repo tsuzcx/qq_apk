@@ -1,18 +1,16 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class ukp
-  extends QQLruCache
+  implements DialogInterface.OnClickListener
 {
-  public ukp(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public ukp(UpgradeActivity paramUpgradeActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString, BaseRedPkgElem paramBaseRedPkgElem1, BaseRedPkgElem paramBaseRedPkgElem2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.entryRemoved(paramBoolean, paramString, paramBaseRedPkgElem1, paramBaseRedPkgElem2);
+    UpgradeActivity.b(this.a);
+    this.a.finish();
   }
 }
 

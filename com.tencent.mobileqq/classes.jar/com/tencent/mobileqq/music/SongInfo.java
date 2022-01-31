@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.music;
 
-import aekg;
+import aesq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import cooperation.qzone.music.BroadcastMusicInfo;
 public class SongInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aekg();
+  public static final Parcelable.Creator CREATOR = new aesq();
   public int a;
   public long a;
   public BroadcastMusicInfo a;

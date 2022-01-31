@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
+import android.os.Handler;
+import com.tencent.mobileqq.secspy.SecSpyFileManager;
+import com.tencent.mobileqq.secspy.SecSpyFileManager.UploadProgressInfo;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
 
 public class aibr
+  implements Runnable
 {
-  public int a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
+  public aibr(SecSpyFileManager paramSecSpyFileManager, SecSpyFileManager.UploadProgressInfo paramUploadProgressInfo, long paramLong) {}
   
-  public aibr(GestureMgrRecognize paramGestureMgrRecognize, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void run()
   {
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_ArrayOfByte = ((byte[])paramArrayOfByte.clone());
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    if (SecSpyFileManager.UploadProgressInfo.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo)) {
+      return;
+    }
+    float f = SecSpyFileManager.UploadProgressInfo.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo) / SecSpyFileManager.UploadProgressInfo.b(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo);
+    this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager.a(this.jdField_a_of_type_Long, 3, new Object[] { Integer.valueOf((int)(f * 100.0F)) });
+    this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager.a.a().postDelayed(this, 20000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aibr
  * JD-Core Version:    0.7.0.1
  */

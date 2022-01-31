@@ -5,14 +5,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Process;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
@@ -40,18 +46,30 @@ import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
 import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.apollo.view.ApolloPanel.GameMsgInfo;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
+import com.tencent.mobileqq.ar.config.WorldCup;
+import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
+import com.tencent.mobileqq.ar.config.WorldCupStaticInstance;
 import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.mobileqq.nearby.NearbyCardManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
+import ywm;
 
 public class CmGameUtil
 {
@@ -216,305 +234,142 @@ public class CmGameUtil
     return null;
   }
   
-  /* Error */
+  public static Class a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        int i = paramString.indexOf(')');
+        if (-1 != i)
+        {
+          paramString = a(paramString.substring(i + 1));
+          if ((paramString != null) && (paramString.length != 0))
+          {
+            paramString = paramString[0];
+            return paramString;
+          }
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("cmgame_process.CmGameUtil", 1, paramString, new Object[0]);
+      }
+    }
+    return null;
+  }
+  
   public static String a(CmGameInitParams paramCmGameInitParams)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +6 -> 7
-    //   4: ldc 137
-    //   6: areturn
-    //   7: new 139	org/json/JSONObject
-    //   10: dup
-    //   11: invokespecial 140	org/json/JSONObject:<init>	()V
-    //   14: astore 5
-    //   16: aload 5
-    //   18: ldc 142
-    //   20: aload_0
-    //   21: getfield 148	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mRoomId	J
-    //   24: invokestatic 154	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   27: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   30: pop
-    //   31: ldc 160
-    //   33: aload_0
-    //   34: getfield 164	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mGameName	Ljava/lang/String;
-    //   37: invokevirtual 168	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   40: ifne +15 -> 55
-    //   43: ldc 170
-    //   45: aload_0
-    //   46: getfield 164	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mGameName	Ljava/lang/String;
-    //   49: invokevirtual 168	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   52: ifeq +342 -> 394
-    //   55: aload 5
-    //   57: ldc 172
-    //   59: aload_0
-    //   60: getfield 164	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mGameName	Ljava/lang/String;
-    //   63: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   66: pop
-    //   67: aload 5
-    //   69: ldc 174
-    //   71: aload_0
-    //   72: getfield 177	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mVersion	Ljava/lang/String;
-    //   75: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   78: pop
-    //   79: aload 5
-    //   81: ldc 179
-    //   83: ldc 181
-    //   85: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   88: pop
-    //   89: aload 5
-    //   91: ldc 183
-    //   93: ldc 185
-    //   95: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   98: pop
-    //   99: getstatic 190	com/tencent/mobileqq/apollo/game/ApolloGameStateMachine:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   102: iconst_0
-    //   103: invokevirtual 196	java/util/concurrent/atomic/AtomicBoolean:getAndSet	(Z)Z
-    //   106: ifeq +329 -> 435
-    //   109: getstatic 199	com/tencent/mobileqq/apollo/game/ApolloGameStateMachine:jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo	Lcom/tencent/mobileqq/apollo/game/ApolloGameStateMachine$HardwareInfo;
-    //   112: ifnull +323 -> 435
-    //   115: aload 5
-    //   117: ldc 201
-    //   119: getstatic 199	com/tencent/mobileqq/apollo/game/ApolloGameStateMachine:jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo	Lcom/tencent/mobileqq/apollo/game/ApolloGameStateMachine$HardwareInfo;
-    //   122: getfield 205	com/tencent/mobileqq/apollo/game/ApolloGameStateMachine$HardwareInfo:jdField_b_of_type_Long	J
-    //   125: invokevirtual 208	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   128: pop
-    //   129: aload 5
-    //   131: ldc 210
-    //   133: getstatic 199	com/tencent/mobileqq/apollo/game/ApolloGameStateMachine:jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo	Lcom/tencent/mobileqq/apollo/game/ApolloGameStateMachine$HardwareInfo;
-    //   136: getfield 213	com/tencent/mobileqq/apollo/game/ApolloGameStateMachine$HardwareInfo:jdField_c_of_type_Long	J
-    //   139: invokevirtual 208	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   142: pop
-    //   143: aload 5
-    //   145: ldc 215
-    //   147: getstatic 217	com/tencent/mobileqq/apollo/game/ApolloGameStateMachine$HardwareInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   150: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   153: pop
-    //   154: aload 5
-    //   156: ldc 219
-    //   158: getstatic 221	com/tencent/mobileqq/apollo/game/ApolloGameStateMachine$HardwareInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   161: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   164: pop
-    //   165: aload_0
-    //   166: getfield 224	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:openId	Ljava/lang/String;
-    //   169: invokestatic 230	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   172: ifne +15 -> 187
-    //   175: aload 5
-    //   177: ldc 231
-    //   179: aload_0
-    //   180: getfield 224	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:openId	Ljava/lang/String;
-    //   183: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   186: pop
-    //   187: aload_0
-    //   188: getfield 234	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mGameParam	Ljava/lang/String;
-    //   191: astore 4
-    //   193: aload 4
-    //   195: invokestatic 230	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   198: ifne +59 -> 257
-    //   201: aload 4
-    //   203: ldc 236
-    //   205: invokevirtual 239	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   208: istore_2
-    //   209: aload 4
-    //   211: astore_3
-    //   212: iload_2
-    //   213: ifeq +35 -> 248
-    //   216: new 139	org/json/JSONObject
-    //   219: dup
-    //   220: aload 4
-    //   222: invokespecial 242	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   225: astore 6
-    //   227: aload 4
-    //   229: astore_3
-    //   230: aload 6
-    //   232: ldc 236
-    //   234: invokevirtual 246	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   237: ifeq +11 -> 248
-    //   240: aload 6
-    //   242: ldc 236
-    //   244: invokevirtual 250	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   247: astore_3
-    //   248: aload 5
-    //   250: ldc 252
-    //   252: aload_3
-    //   253: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   256: pop
-    //   257: aload 5
-    //   259: ldc 254
-    //   261: aload_0
-    //   262: getfield 258	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mSrc	I
-    //   265: invokevirtual 261	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   268: pop
-    //   269: aload 5
-    //   271: ldc_w 263
-    //   274: invokestatic 267	com/tencent/mobileqq/apollo/utils/ApolloGameBasicEventUtil:b	()I
-    //   277: invokevirtual 261	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   280: pop
-    //   281: invokestatic 271	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   284: ldc_w 273
-    //   287: iconst_0
-    //   288: invokevirtual 279	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   291: astore_3
-    //   292: aload_3
-    //   293: ifnull +242 -> 535
-    //   296: aload_3
-    //   297: new 281	java/lang/StringBuilder
-    //   300: dup
-    //   301: invokespecial 282	java/lang/StringBuilder:<init>	()V
-    //   304: ldc_w 284
-    //   307: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   310: aload_0
-    //   311: getfield 164	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mGameName	Ljava/lang/String;
-    //   314: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   317: aload_0
-    //   318: getfield 291	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mSelfUin	Ljava/lang/String;
-    //   321: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   324: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   327: iconst_0
-    //   328: invokeinterface 301 3 0
-    //   333: istore_2
-    //   334: aload_0
-    //   335: getfield 304	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mGameMode	I
-    //   338: iconst_1
-    //   339: if_icmpeq +11 -> 350
-    //   342: aload_0
-    //   343: getfield 304	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mGameMode	I
-    //   346: iconst_2
-    //   347: if_icmpne +156 -> 503
-    //   350: aload 5
-    //   352: ldc_w 306
-    //   355: iconst_1
-    //   356: invokevirtual 261	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   359: pop
-    //   360: goto +180 -> 540
-    //   363: aload 5
-    //   365: ldc_w 308
-    //   368: iload_1
-    //   369: invokevirtual 261	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   372: pop
-    //   373: aload 5
-    //   375: ldc_w 310
-    //   378: aload_0
-    //   379: getfield 313	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:gender	I
-    //   382: invokevirtual 261	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   385: pop
-    //   386: aload 5
-    //   388: invokevirtual 314	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   391: astore_0
-    //   392: aload_0
-    //   393: areturn
-    //   394: aload 5
-    //   396: ldc 172
-    //   398: aload_0
-    //   399: getfield 164	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mGameName	Ljava/lang/String;
-    //   402: invokestatic 320	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   405: invokevirtual 261	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   408: pop
-    //   409: goto -342 -> 67
-    //   412: astore_3
-    //   413: aload_3
-    //   414: invokevirtual 323	java/lang/Exception:printStackTrace	()V
-    //   417: goto -350 -> 67
-    //   420: astore_0
-    //   421: ldc 81
-    //   423: iconst_2
-    //   424: aload_0
-    //   425: invokevirtual 326	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   428: invokestatic 328	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   431: ldc_w 330
-    //   434: areturn
-    //   435: aload 5
-    //   437: ldc 201
-    //   439: invokestatic 335	android/os/Process:myPid	()I
-    //   442: invokestatic 340	com/tencent/mobileqq/utils/DeviceInfoUtil:a	(I)J
-    //   445: invokevirtual 208	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   448: pop
-    //   449: aload 5
-    //   451: ldc 210
-    //   453: invokestatic 343	com/tencent/mobileqq/utils/DeviceInfoUtil:g	()J
-    //   456: invokevirtual 208	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   459: pop
-    //   460: aload 5
-    //   462: ldc 215
-    //   464: invokestatic 346	com/tencent/mobileqq/utils/DeviceInfoUtil:f	()Ljava/lang/String;
-    //   467: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   470: pop
-    //   471: aload 5
-    //   473: ldc 219
-    //   475: invokestatic 349	com/tencent/mobileqq/utils/DeviceInfoUtil:j	()Ljava/lang/String;
-    //   478: invokevirtual 158	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   481: pop
-    //   482: goto -317 -> 165
-    //   485: astore_3
-    //   486: ldc 81
-    //   488: iconst_1
-    //   489: aload_3
-    //   490: iconst_0
-    //   491: anewarray 4	java/lang/Object
-    //   494: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   497: aload 4
-    //   499: astore_3
-    //   500: goto -252 -> 248
-    //   503: aload_0
-    //   504: getfield 353	com/tencent/mobileqq/apollo/process/data/CmGameInitParams:mIsMaster	Z
-    //   507: ifeq +18 -> 525
-    //   510: iconst_1
-    //   511: istore_1
-    //   512: aload 5
-    //   514: ldc_w 306
-    //   517: iload_1
-    //   518: invokevirtual 261	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   521: pop
-    //   522: goto +18 -> 540
-    //   525: iconst_0
-    //   526: istore_1
-    //   527: goto -15 -> 512
-    //   530: iconst_1
-    //   531: istore_1
-    //   532: goto -169 -> 363
-    //   535: iconst_1
-    //   536: istore_2
-    //   537: goto -203 -> 334
-    //   540: iload_2
-    //   541: ifeq -11 -> 530
-    //   544: iconst_0
-    //   545: istore_1
-    //   546: goto -183 -> 363
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	549	0	paramCmGameInitParams	CmGameInitParams
-    //   368	178	1	i	int
-    //   208	333	2	bool	boolean
-    //   211	86	3	localObject	Object
-    //   412	2	3	localException	Exception
-    //   485	5	3	localThrowable	Throwable
-    //   499	1	3	str1	String
-    //   191	307	4	str2	String
-    //   14	499	5	localJSONObject1	JSONObject
-    //   225	16	6	localJSONObject2	JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   394	409	412	java/lang/Exception
-    //   7	55	420	java/lang/Exception
-    //   55	67	420	java/lang/Exception
-    //   67	165	420	java/lang/Exception
-    //   165	187	420	java/lang/Exception
-    //   187	209	420	java/lang/Exception
-    //   216	227	420	java/lang/Exception
-    //   230	248	420	java/lang/Exception
-    //   248	257	420	java/lang/Exception
-    //   257	292	420	java/lang/Exception
-    //   296	334	420	java/lang/Exception
-    //   334	350	420	java/lang/Exception
-    //   350	360	420	java/lang/Exception
-    //   363	392	420	java/lang/Exception
-    //   413	417	420	java/lang/Exception
-    //   435	482	420	java/lang/Exception
-    //   486	497	420	java/lang/Exception
-    //   503	510	420	java/lang/Exception
-    //   512	522	420	java/lang/Exception
-    //   216	227	485	java/lang/Throwable
-    //   230	248	485	java/lang/Throwable
+    if (paramCmGameInitParams == null) {
+      return "";
+    }
+    for (;;)
+    {
+      try
+      {
+        localJSONObject1 = new JSONObject();
+        localJSONObject1.put("roomId", String.valueOf(paramCmGameInitParams.mRoomId));
+        if (("1".equals(paramCmGameInitParams.mGameName)) || ("2".equals(paramCmGameInitParams.mGameName)))
+        {
+          localJSONObject1.put("gameId", paramCmGameInitParams.mGameName);
+          localJSONObject1.put("gameVersion", paramCmGameInitParams.mVersion);
+          localJSONObject1.put("QQVer", "7.6.8.3615");
+          localJSONObject1.put("platform", "android");
+          if ((!ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) || (ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo == null)) {
+            break label479;
+          }
+          localJSONObject1.put("freeMemory", ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo.jdField_b_of_type_Long);
+          localJSONObject1.put("totalMemory", ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo.jdField_c_of_type_Long);
+          localJSONObject1.put("osVersion", ApolloGameStateMachine.HardwareInfo.jdField_a_of_type_JavaLangString);
+          localJSONObject1.put("model", ApolloGameStateMachine.HardwareInfo.jdField_b_of_type_JavaLangString);
+          str2 = paramCmGameInitParams.mGameParam;
+          if (!TextUtils.isEmpty(str2))
+          {
+            bool = str2.contains("extendInfo");
+            localObject = str2;
+            if (!bool) {}
+          }
+        }
+      }
+      catch (Exception paramCmGameInitParams)
+      {
+        Object localObject;
+        JSONObject localJSONObject2;
+        label407:
+        QLog.e("cmgame_process.CmGameUtil", 2, paramCmGameInitParams.getMessage());
+        return "{}";
+      }
+      try
+      {
+        localJSONObject2 = new JSONObject(str2);
+        localObject = str2;
+        if (localJSONObject2.has("extendInfo")) {
+          localObject = localJSONObject2.optString("extendInfo");
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("cmgame_process.CmGameUtil", 1, localThrowable, new Object[0]);
+        String str1 = str2;
+        continue;
+        if (!paramCmGameInitParams.mIsMaster) {
+          break label569;
+        }
+        i = 1;
+        localJSONObject1.put("isMaster", i);
+        break label584;
+        i = 0;
+        while (!bool)
+        {
+          i = 1;
+          break label407;
+          bool = true;
+          break;
+        }
+        i = 0;
+        continue;
+      }
+      localJSONObject1.put("gameParam", localObject);
+      localJSONObject1.put("src", paramCmGameInitParams.mSrc);
+      localJSONObject1.put("networkType", ApolloGameBasicEventUtil.b());
+      localJSONObject1.put("connType", NetworkUtil.a(BaseApplicationImpl.getContext()));
+      if (!TextUtils.isEmpty(paramCmGameInitParams.openId)) {
+        localJSONObject1.put("openId", paramCmGameInitParams.openId);
+      }
+      localJSONObject1.put("accessTokenCode", paramCmGameInitParams.accessTokenRet);
+      localJSONObject1.put("accessToken", paramCmGameInitParams.accessToken);
+      localObject = BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0);
+      if (localObject == null) {
+        break label579;
+      }
+      bool = ((SharedPreferences)localObject).getBoolean("is_ever_play_cmgame" + paramCmGameInitParams.mGameName + paramCmGameInitParams.mSelfUin, false);
+      if ((paramCmGameInitParams.mGameMode != 1) && (paramCmGameInitParams.mGameMode != 2)) {
+        break;
+      }
+      localJSONObject1.put("isMaster", 1);
+      break label584;
+      localJSONObject1.put("isFirstPlay", i);
+      localJSONObject1.put("sex", paramCmGameInitParams.gender);
+      paramCmGameInitParams = localJSONObject1.toString();
+      return paramCmGameInitParams;
+      try
+      {
+        localJSONObject1.put("gameId", Integer.parseInt(paramCmGameInitParams.mGameName));
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      continue;
+      label479:
+      localJSONObject1.put("freeMemory", DeviceInfoUtil.a(Process.myPid()));
+      localJSONObject1.put("totalMemory", DeviceInfoUtil.g());
+      localJSONObject1.put("osVersion", DeviceInfoUtil.f());
+      localJSONObject1.put("model", DeviceInfoUtil.j());
+    }
   }
   
   public static void a(int paramInt)
@@ -540,6 +395,16 @@ public class CmGameUtil
     Bundle localBundle = new Bundle();
     localBundle.putInt("status", paramInt1);
     localBundle.putInt("gameId", paramInt2);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "game_activity_lifecycle", localBundle, null);
+  }
+  
+  public static void a(int paramInt1, int paramInt2, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    QLog.i("cmgame_process.CmGameUtil", 1, "[sendActLifeCycleIpc], gameId:" + paramInt2 + ",status:" + paramInt1);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("status", paramInt1);
+    localBundle.putInt("gameId", paramInt2);
+    localBundle.putSerializable("para", paramStartCheckParam);
     QIPCClientHelper.getInstance().callServer("cm_game_module", "game_activity_lifecycle", localBundle, null);
   }
   
@@ -598,6 +463,73 @@ public class CmGameUtil
     }
   }
   
+  public static void a(Activity paramActivity)
+  {
+    if (paramActivity != null)
+    {
+      Intent localIntent = new Intent(paramActivity, SplashActivity.class);
+      localIntent.putExtra("fragment_id", 1);
+      localIntent.putExtra("tab_index", MainFragment.jdField_a_of_type_Int);
+      localIntent.putExtra("fromApolloNewUser", 1);
+      localIntent.setFlags(67174400);
+      paramActivity.startActivity(localIntent);
+    }
+  }
+  
+  public static void a(Activity paramActivity, Conversation paramConversation)
+  {
+    if (a() == null) {}
+    WorldCupConfigInfo localWorldCupConfigInfo;
+    ApolloManager localApolloManager;
+    do
+    {
+      return;
+      localWorldCupConfigInfo = WorldCup.a(a());
+      localApolloManager = (ApolloManager)a().getManager(152);
+      if (WorldCupConfigInfo.d(localWorldCupConfigInfo)) {
+        localApolloManager.l = true;
+      }
+    } while ((localApolloManager == null) || (!localApolloManager.k) || (paramActivity == null) || (!(paramActivity instanceof SplashActivity)) || (paramActivity.isFinishing()) || (!((SplashActivity)paramActivity).isResume()) || (WorldCupStaticInstance.a().c) || (WorldCupConfigInfo.d(localWorldCupConfigInfo)) || (paramConversation == null));
+    if (FrameHelperActivity.a())
+    {
+      FrameHelperActivity.b(true);
+      FrameHelperActivity.o();
+    }
+    a(paramConversation.b);
+    localApolloManager.k = false;
+    paramConversation.f = true;
+  }
+  
+  public static void a(View paramView)
+  {
+    if (paramView != null)
+    {
+      Object localObject = new Rect();
+      paramView.getGlobalVisibleRect((Rect)localObject);
+      int i = (int)((float)DeviceInfoUtil.l() - DeviceInfoUtil.a * 7.0F - DeviceInfoUtil.a * 159.0F);
+      int j = (int)(((Rect)localObject).bottom - 6.0F * DeviceInfoUtil.a);
+      localObject = new PopupWindow(paramView.getContext());
+      TextView localTextView = new TextView(paramView.getContext());
+      localTextView.setText("手Q可以玩轻游戏啦");
+      localTextView.setGravity(17);
+      localTextView.setTextSize(16.0F);
+      localTextView.setTextColor(-1);
+      localTextView.setPadding(0, (int)(DeviceInfoUtil.a * 7.0F), 0, 0);
+      localTextView.setWidth((int)(DeviceInfoUtil.a * 159.0F));
+      localTextView.setHeight((int)(DeviceInfoUtil.a * 42.0F));
+      localTextView.setBackgroundResource(2130838151);
+      ((PopupWindow)localObject).setContentView(localTextView);
+      ((PopupWindow)localObject).setOutsideTouchable(true);
+      ((PopupWindow)localObject).setBackgroundDrawable(new ColorDrawable(0));
+      ((PopupWindow)localObject).showAtLocation(paramView.getRootView(), 0, i, j);
+      ((PopupWindow)localObject).update(i, j, (int)(DeviceInfoUtil.a * 159.0F), (int)(DeviceInfoUtil.a * 42.0F));
+      b(1);
+      ThreadManager.getUIHandler().postDelayed(new ywm((PopupWindow)localObject), 10000L);
+      QLog.d("cmgame_process.CmGameUtil", 1, "showNewPlusGuidePop");
+      VipUtils.a(a(), "cmshow", "Apollo", "plusbubbleexposure", 0, 0, new String[] { "" + c(), "" + ApolloManager.a() });
+    }
+  }
+  
   public static void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
     if (QLog.isColorLevel()) {
@@ -643,7 +575,7 @@ public class CmGameUtil
       } while (!"apollo_aio_game.cancel_game_room".equals(paramString1));
       localCmGameSSoHandler = a();
     } while (localCmGameSSoHandler == null);
-    localCmGameSSoHandler.a(paramString1, paramString2, -1L, 4);
+    localCmGameSSoHandler.a(paramString1, paramString2, -1L, 4, false, null);
   }
   
   public static boolean a()
@@ -712,13 +644,223 @@ public class CmGameUtil
     return true;
   }
   
+  public static Class[] a(String paramString)
+  {
+    int i1 = 0;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (TextUtils.isEmpty(paramString.trim())) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i2 = paramString.length();
+    int k = 0;
+    int j = 0;
+    int m;
+    if (k < i2)
+    {
+      m = paramString.charAt(k);
+      if (41 != m) {}
+    }
+    else
+    {
+      if (localArrayList.size() != 0) {
+        break label726;
+      }
+      return null;
+    }
+    int n = k;
+    int i = j;
+    switch (m)
+    {
+    default: 
+      i = j;
+      n = k;
+    }
+    for (;;)
+    {
+      k = n + 1;
+      j = i;
+      break;
+      localArrayList.add(Void.TYPE);
+      n = k;
+      i = j;
+      continue;
+      i = 1;
+      n = k;
+      continue;
+      if (j != 0)
+      {
+        localArrayList.add([Z.class);
+        i = 0;
+        n = k;
+      }
+      else
+      {
+        localArrayList.add(Boolean.TYPE);
+        n = k;
+        i = j;
+        continue;
+        if (j != 0)
+        {
+          localArrayList.add([B.class);
+          i = 0;
+          n = k;
+        }
+        else
+        {
+          localArrayList.add(Byte.TYPE);
+          n = k;
+          i = j;
+          continue;
+          if (j != 0)
+          {
+            localArrayList.add([C.class);
+            i = 0;
+            n = k;
+          }
+          else
+          {
+            localArrayList.add(Character.TYPE);
+            n = k;
+            i = j;
+            continue;
+            if (j != 0)
+            {
+              localArrayList.add([S.class);
+              i = 0;
+              n = k;
+            }
+            else
+            {
+              localArrayList.add(Short.TYPE);
+              n = k;
+              i = j;
+              continue;
+              if (j != 0)
+              {
+                localArrayList.add([I.class);
+                i = 0;
+                n = k;
+              }
+              else
+              {
+                localArrayList.add(Integer.TYPE);
+                n = k;
+                i = j;
+                continue;
+                if (j != 0)
+                {
+                  localArrayList.add([J.class);
+                  i = 0;
+                  n = k;
+                }
+                else
+                {
+                  localArrayList.add(Long.TYPE);
+                  n = k;
+                  i = j;
+                  continue;
+                  if (j != 0)
+                  {
+                    localArrayList.add([F.class);
+                    i = 0;
+                    n = k;
+                  }
+                  else
+                  {
+                    localArrayList.add(Float.TYPE);
+                    n = k;
+                    i = j;
+                    continue;
+                    if (j != 0)
+                    {
+                      localArrayList.add([D.class);
+                      i = 0;
+                      n = k;
+                    }
+                    else
+                    {
+                      localArrayList.add(Double.TYPE);
+                      n = k;
+                      i = j;
+                      continue;
+                      n = k + 1;
+                      k = n;
+                      for (i = m; (k < i2) && (i != 59); i = paramString.charAt(k)) {
+                        k += 1;
+                      }
+                      m = j;
+                      try
+                      {
+                        Object localObject = paramString.substring(n, k);
+                        m = j;
+                        if (QLog.isColorLevel())
+                        {
+                          m = j;
+                          QLog.d("cmgame_process.CmGameUtil", 2, new Object[] { "clsName:", localObject });
+                        }
+                        m = j;
+                        String str = ((String)localObject).replace('/', '.');
+                        i = j;
+                        localObject = str;
+                        if (j != 0)
+                        {
+                          m = j;
+                          localObject = "[L" + str + ";";
+                          i = 0;
+                        }
+                        m = i;
+                        localArrayList.add(Class.forName((String)localObject));
+                        n = k;
+                      }
+                      catch (Throwable localThrowable)
+                      {
+                        QLog.e("cmgame_process.CmGameUtil", 1, localThrowable, new Object[0]);
+                        n = k;
+                        i = m;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    label726:
+    paramString = new Class[localArrayList.size()];
+    Iterator localIterator = localArrayList.iterator();
+    i = i1;
+    while (localIterator.hasNext())
+    {
+      paramString[i] = ((Class)localIterator.next());
+      i += 1;
+    }
+    return paramString;
+  }
+  
+  public static int b()
+  {
+    if (a() == null) {
+      return 0;
+    }
+    ApolloManager localApolloManager = (ApolloManager)a().getManager(152);
+    if ((localApolloManager != null) && (localApolloManager.g())) {
+      return 1;
+    }
+    return 0;
+  }
+  
   public static CmGameLauncher b(int paramInt)
   {
     CmGameManager localCmGameManager = a();
     if (localCmGameManager == null) {
       return null;
     }
-    return localCmGameManager.b(paramInt);
+    return localCmGameManager.c(paramInt);
   }
   
   public static CmGameLauncher b(long paramLong)
@@ -753,7 +895,7 @@ public class CmGameUtil
         {
           localJSONObject1.put("gameId", paramCmGameInitParams.mGameName);
           if ((!ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) || (ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo == null)) {
-            break label849;
+            break label906;
           }
           localJSONObject1.put("freeMemory", ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo.jdField_b_of_type_Long);
           localJSONObject1.put("totalMemory", ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo.jdField_c_of_type_Long);
@@ -763,7 +905,7 @@ public class CmGameUtil
           localJSONObject1.put("cpuNumber", ApolloGameStateMachine.HardwareInfo.jdField_a_of_type_Int);
           localJSONObject1.put("cpuFrequency", ApolloGameStateMachine.HardwareInfo.jdField_a_of_type_Long);
           localJSONObject1.put("gameVersion", paramCmGameInitParams.mVersion);
-          localJSONObject1.put("QQVer", "7.6.3.3565");
+          localJSONObject1.put("QQVer", "7.6.8.3615");
           localJSONObject1.put("platform", "android");
           localJSONObject1.put("gameMode", paramCmGameInitParams.mGameMode);
           if (!TextUtils.isEmpty(paramCmGameInitParams.openId)) {
@@ -800,7 +942,7 @@ public class CmGameUtil
         continue;
         localJSONObject1.put("aioType", paramCmGameInitParams.mSessionType);
         if (!paramCmGameInitParams.mIsMaster) {
-          break label991;
+          break label1048;
         }
         for (i = 1;; i = 0)
         {
@@ -810,7 +952,7 @@ public class CmGameUtil
         bool2 = false;
         bool1 = true;
         if (!bool1) {
-          break label1017;
+          break label1074;
         }
         i = 0;
         continue;
@@ -821,24 +963,26 @@ public class CmGameUtil
       }
       localJSONObject1.put("gameParam", localObject);
       if (!paramCmGameInitParams.isWhiteUsr) {
-        break label1012;
+        break label1069;
       }
       i = 1;
       localJSONObject1.put("isWhiteUser", i);
-      localJSONObject1.put("extInfo", paramCmGameInitParams.extInfoFromSvr);
       localJSONObject1.put("src", paramCmGameInitParams.mSrc);
       localJSONObject1.put("networkType", ApolloGameBasicEventUtil.b());
+      localJSONObject1.put("connType", NetworkUtil.a(BaseApplicationImpl.getContext()));
+      localJSONObject1.put("accessTokenCode", paramCmGameInitParams.accessTokenRet);
+      localJSONObject1.put("accessToken", paramCmGameInitParams.accessToken);
       localObject = BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0);
       if (localObject == null) {
-        break label996;
+        break label1053;
       }
       bool1 = ((SharedPreferences)localObject).getBoolean("is_ever_play_cmgame" + paramCmGameInitParams.mGameName + paramCmGameInitParams.mSelfUin, false);
       bool2 = ((SharedPreferences)localObject).getBoolean("is_first_install_cmgame" + paramCmGameInitParams.mGameName + paramCmGameInitParams.mSelfUin, true);
       if (!bool2) {
-        break label1003;
+        break label1060;
       }
       ((SharedPreferences)localObject).edit().putBoolean("is_first_install_cmgame" + paramCmGameInitParams.mGameName + paramCmGameInitParams.mSelfUin, false).commit();
-      break label1003;
+      break label1060;
       localJSONObject1.put("isFirstPlay", i);
       localJSONObject1.put("isFirstInstall", bool2);
       localJSONObject1.put("sessionId", String.valueOf(new Random(System.currentTimeMillis()).nextInt(100000)));
@@ -852,6 +996,8 @@ public class CmGameUtil
       }
       localJSONObject1.put("sex", paramCmGameInitParams.gender);
       localJSONObject1.put("apolloStatus", paramCmGameInitParams.apolloStatus);
+      localJSONObject1.put("gameType", paramCmGameInitParams.gameType);
+      localJSONObject1.put("redUrl", paramCmGameInitParams.redUrl);
       QLog.i("cmgame_process.CmGameUtil", 1, "gameId:" + paramCmGameInitParams.mGameName + ",gameMode:" + paramCmGameInitParams.mGameMode + ",src:" + paramCmGameInitParams.mSrc + ",roomId:" + paramCmGameInitParams.mRoomId);
       paramCmGameInitParams = localJSONObject1.toString();
       return paramCmGameInitParams;
@@ -864,7 +1010,7 @@ public class CmGameUtil
         localException.printStackTrace();
       }
       continue;
-      label849:
+      label906:
       localJSONObject1.put("freeMemory", DeviceInfoUtil.a(Process.myPid()));
       localJSONObject1.put("totalMemory", DeviceInfoUtil.g());
       localJSONObject1.put("osVersion", DeviceInfoUtil.f());
@@ -873,6 +1019,18 @@ public class CmGameUtil
       localJSONObject1.put("cpuNumber", DeviceInfoUtil.b());
       localJSONObject1.put("cpuFrequency", DeviceInfoUtil.a());
     }
+  }
+  
+  public static void b(int paramInt)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("type", paramInt);
+      ((VasExtensionHandler)a().getBusinessHandler(71)).a("apollo_router_game.game_extend_linkcmd_set_plus_flag", localJSONObject.toString(), -1L, 0);
+      return;
+    }
+    catch (Exception localException) {}
   }
   
   public static boolean b()
@@ -894,6 +1052,27 @@ public class CmGameUtil
       QLog.i("cmgame_process.CmGameUtil", 1, "isRingerVibrate error: " + localThrowable.getMessage());
     }
     return false;
+  }
+  
+  public static int c()
+  {
+    if (a() == null) {
+      return 0;
+    }
+    ApolloManager localApolloManager = (ApolloManager)a().getManager(152);
+    if ((localApolloManager != null) && (localApolloManager.f)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public static CmGameLauncher c(int paramInt)
+  {
+    CmGameManager localCmGameManager = a();
+    if (localCmGameManager == null) {
+      return null;
+    }
+    return localCmGameManager.b(paramInt);
   }
   
   public static boolean c()

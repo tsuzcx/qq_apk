@@ -1,39 +1,43 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.WeatherDataProvider;
-import com.tencent.biz.qqstory.model.WeatherDataProvider.WeatherInfo;
-import com.tencent.biz.qqstory.network.request.GetWeatherRequest;
-import com.tencent.biz.qqstory.network.response.GetWeatherResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.util.LruCache;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
+import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class nds
-  implements CmdTaskManger.CommandCallback
+  extends SimpleJob
 {
-  public nds(WeatherDataProvider paramWeatherDataProvider) {}
+  public nds(DownloadUrlManager paramDownloadUrlManager, String paramString, int paramInt) {}
   
-  public void a(@NonNull GetWeatherRequest paramGetWeatherRequest, @Nullable GetWeatherResponse paramGetWeatherResponse, @NonNull ErrorMessage paramErrorMessage)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    SLog.b("WeatherDataProvider", "requestWeather Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetWeatherResponse != null))
+    try
     {
-      SLog.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramGetWeatherResponse.b));
-      this.a.jdField_a_of_type_JavaLangObject = new WeatherDataProvider.WeatherInfo(paramGetWeatherResponse.b);
-      SLog.c("WeatherDataProvider", "update local weather data.");
-      paramGetWeatherRequest = (StoryConfigManager)SuperManager.a(10);
-      paramGetWeatherRequest.b("edit_video_weather_filter_data", Integer.valueOf(paramGetWeatherResponse.b));
-      paramGetWeatherRequest.b("edit_video_weather_expiry_time", Long.valueOf(System.currentTimeMillis() + 14400000L));
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).lock();
+      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).remove(paramJobContext);
+      paramJobContext = QQStoryContext.a().a().createEntityManager();
+      paramVarArgs = StoryManager.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
+      if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
+      {
+        paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
+        paramVarArgs.setStatus(1000);
+        paramVarArgs.bIsDownloadCompleted = 1;
+        paramJobContext.b(paramVarArgs);
+      }
+      return null;
     }
-    for (;;)
+    finally
     {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-      SLog.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetWeatherRequest });
-      this.a.a(false, null);
+      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).unlock();
     }
   }
 }

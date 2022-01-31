@@ -1,12 +1,27 @@
-public class ajhl
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
+import com.tencent.qphone.base.util.QLog;
+
+class ajhl
+  extends TroopAioKeywordTipManager.Callback
 {
-  public int a;
-  public Object a;
+  ajhl(ajhk paramajhk) {}
   
-  public ajhl(int paramInt, Object paramObject)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if (!this.a.a.a.a) {}
+    do
+    {
+      return;
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
+    return;
+    TroopAioKeywordTipBar.a(this.a.a.a, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 

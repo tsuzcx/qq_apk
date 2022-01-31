@@ -1,20 +1,49 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource.DownloadListenerWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import java.io.File;
+import java.util.Map;
 
-public final class xlc
-  implements Animation.AnimationListener
+public class xlc
+  extends PreloadResource.DownloadListenerWrapper
 {
-  public xlc(View paramView, Animation paramAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public xlc(PreloadComDownloader paramPreloadComDownloader, DownloadListener paramDownloadListener)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    super(paramDownloadListener);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onDoneFile(DownloadTask paramDownloadTask)
+  {
+    long l2 = -1L;
+    super.onDoneFile(paramDownloadTask);
+    if ((paramDownloadTask != null) && (paramDownloadTask.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(paramDownloadTask.jdField_a_of_type_JavaLangString)))
+    {
+      File localFile = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      if (localFile != null)
+      {
+        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (localObject != null)
+        {
+          localObject = (PreDownloadController)((QQAppInterface)localObject).getManager(192);
+          String str = paramDownloadTask.jdField_a_of_type_JavaLangString;
+          long l1 = l2;
+          if (paramDownloadTask.jdField_a_of_type_Int == 0)
+          {
+            l1 = l2;
+            if (localFile.exists()) {
+              l1 = localFile.length();
+            }
+          }
+          ((PreDownloadController)localObject).a(str, l1);
+        }
+      }
+    }
+  }
 }
 
 

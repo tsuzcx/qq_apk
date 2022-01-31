@@ -1,58 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.hotpic.DiskStorageManager;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class adxy
-  implements TroopMemberApiClient.Callback
+  implements Runnable
 {
-  public adxy(UiApiPlugin paramUiApiPlugin, Integer paramInteger, String paramString) {}
+  private final File jdField_a_of_type_JavaIoFile;
   
-  public void a(Bundle paramBundle)
+  public adxy(DiskStorageManager paramDiskStorageManager, File paramFile)
   {
-    if (paramBundle.getBoolean("isSuccess", false))
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+  }
+  
+  public void run()
+  {
+    try
     {
-      int i = paramBundle.getInt("appid");
-      Object localObject = paramBundle.getString("openId");
-      if ((i != this.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_JavaLangString))) {
-        break label178;
-      }
-      str1 = paramBundle.getString("uin");
-      bool = paramBundle.getBoolean("isFriend", false);
-      localObject = paramBundle.getString("nickName");
-      str2 = paramBundle.getString("remark");
-      if (!TextUtils.isEmpty(str1))
-      {
-        if (!bool) {
-          break label163;
-        }
-        paramBundle = new ProfileActivity.AllInOne(str1, 1);
-        paramBundle.h = ((String)localObject);
-        paramBundle.i = str2;
-        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
-        ((Intent)localObject).putExtra("AllInOne", paramBundle);
-        ((Intent)localObject).addFlags(536870912);
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
-      }
+      DiskStorageManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicDiskStorageManager, this.jdField_a_of_type_JavaIoFile);
+      return;
     }
-    label163:
-    label178:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        String str1;
-        boolean bool;
-        String str2;
-        return;
-        paramBundle = new ProfileActivity.AllInOne(str1, 78);
-      }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+      QLog.d("DiskStorageManager", 2, "IO exception run error in background", localIOException);
     }
-    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
   }
 }
 

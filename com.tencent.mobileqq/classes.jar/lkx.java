@@ -1,28 +1,13 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverSimpleAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoTopicTextView;
 
-public final class lkx
-  implements CUKingCardHelper.CUKingDialogListener
+public class lkx
 {
-  public lkx(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
+  public ChannelCoverInfo a;
+  public ReadInJoyVideoTopicTextView a;
   
-  public void callback(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyUtils", 2, "showMobileNetConfirmDlg(), on CUKingCardHelper Callback：type=" + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      this.a.onClick(null, -1);
-      return;
-    }
-    this.b.onClick(null, -1);
-  }
+  public lkx(ChannelCoverSimpleAdapter paramChannelCoverSimpleAdapter) {}
 }
 
 

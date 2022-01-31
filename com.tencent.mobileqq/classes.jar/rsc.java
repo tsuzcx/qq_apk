@@ -1,34 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class rsc
   implements Runnable
 {
-  public rsc(BaseChatPie paramBaseChatPie) {}
+  public rsc(AuthDevActivity paramAuthDevActivity) {}
   
   public void run()
   {
-    ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
-    BaseChatPie.b(this.a);
     try
     {
-      this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843959);
-      this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843960);
-      this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837580);
+      if ((AuthDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
+        AuthDevActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
+      }
+      if ((AuthDevActivity.a(this.a) != null) && (!AuthDevActivity.a(this.a).isShowing())) {
+        AuthDevActivity.a(this.a).show();
+      }
       return;
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.aio.BaseChatPie", 2, "emo qvip_emoji_aio_face_new_default_fail, e=" + localException.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("Q.aio.BaseChatPie", 1, "emo qvip_emoji_aio_face oom, e= " + localOutOfMemoryError);
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }

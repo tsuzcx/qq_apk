@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.leba.view.LebaGridIndicator;
 
 public class aejx
-  implements Runnable
+  extends RadioButton
 {
-  public aejx(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, int paramInt) {}
-  
-  public void run()
+  public aejx(LebaGridIndicator paramLebaGridIndicator, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlayStateChanged(this.jdField_a_of_type_Int);
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    if (AppSetting.b) {
+      return super.performClick();
+    }
+    return true;
   }
 }
 

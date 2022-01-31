@@ -1,36 +1,33 @@
-import android.view.View;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResCallback;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.CaptureParam;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import java.util.Map;
 
 public class ahqj
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  int b;
-  public WeakReference b;
+  public ahqj(CameraCaptureView paramCameraCaptureView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public ahqj(ScribbleResMgr paramScribbleResMgr, int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramResCallback);
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public ScribbleResMgr.ResCallback a()
-  {
-    return (ScribbleResMgr.ResCallback)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a.containsKey(CameraCaptureView.CaptureParam.c)) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a.put(CameraCaptureView.CaptureParam.c, new RenderBuffer(this.jdField_a_of_type_Int, this.b, 33984));
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a.containsKey(CameraCaptureView.CaptureParam.d)) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a.put(CameraCaptureView.CaptureParam.d, new RenderBuffer(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.f, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.g, 33984));
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a.containsKey(CameraCaptureView.CaptureParam.e)) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a.put(CameraCaptureView.CaptureParam.e, new RenderBuffer(this.c, this.d, 33984));
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a.containsKey(CameraCaptureView.CaptureParam.f)) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a.put(CameraCaptureView.CaptureParam.f, new RenderBuffer(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.h, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.i, 33984));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.d(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahqj
  * JD-Core Version:    0.7.0.1
  */

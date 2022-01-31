@@ -8,12 +8,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
 import android.graphics.drawable.ShapeDrawable;
-import pih;
+import pmz;
 
 public class XfermodeDrawable
   extends DrawableContainer
 {
-  private pih a;
+  private pmz a;
   
   public XfermodeDrawable(Drawable paramDrawable)
   {
@@ -25,13 +25,13 @@ public class XfermodeDrawable
     if (!support(paramDrawable)) {
       throw new RuntimeException("No xfermode support for " + paramDrawable.getClass().getSimpleName());
     }
-    this.a = new pih(paramDrawable, this, paramXfermode);
+    this.a = new pmz(paramDrawable, this, paramXfermode);
     setConstantState(this.a);
   }
   
-  private XfermodeDrawable(pih parampih, Resources paramResources)
+  private XfermodeDrawable(pmz parampmz, Resources paramResources)
   {
-    this.a = parampih;
+    this.a = parampmz;
     setConstantState(this.a);
   }
   

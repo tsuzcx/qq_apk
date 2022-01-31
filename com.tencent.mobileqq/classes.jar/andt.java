@@ -1,23 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.qzone.QZoneHelper.QZoneCoverConstants;
-import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class andt
-  implements View.OnClickListener
+  implements andz
 {
-  public andt(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin) {}
+  public andt(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((this.a.mRuntime.a() != null) && (this.a.mRuntime.a() != null))
-    {
-      paramView = QZoneHelper.QZoneCoverConstants.a("qzone", String.valueOf(1), this.a.mRuntime.a().getAccount(), this.a.mRuntime.a().getAccount());
-      this.a.mRuntime.a().loadUrl(paramView);
-    }
+    QzoneWebMusicJsPlugin.access$000(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString);
   }
 }
 

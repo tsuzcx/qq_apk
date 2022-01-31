@@ -1,25 +1,26 @@
-import com.tencent.biz.pubaccount.ecshopassit.BusinessReporter;
-import com.tencent.biz.webviewplugin.BusinessReportPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.gdtad.log.GdtLog;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public final class kzt
-  implements Runnable
+public class kzt
+  implements FMDialogUtil.FMDialogInterface
 {
-  public kzt(String paramString, WebViewPluginEngine paramWebViewPluginEngine) {}
+  public kzt(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void run()
+  public void a()
   {
-    
-    if ((BusinessReporter.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null))
+    GdtLog.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(new String[] { "JD_REPORT" });
-      WebViewPlugin localWebViewPlugin = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a("JD_REPORT");
-      if (localWebViewPlugin != null) {
-        ((BusinessReportPlugin)localWebViewPlugin).b(this.jdField_a_of_type_JavaLangString);
-      }
+      ReadInJoyNativeAdAppVideoView.a(this.a).start();
+      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
+      ReadInJoyNativeAdAppVideoView.a(this.a);
+      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
     }
   }
+  
+  public void b() {}
 }
 
 

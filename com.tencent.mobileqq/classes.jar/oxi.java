@@ -1,30 +1,15 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
-class oxi
-  implements VideoCombineHelper.Callback
+public class oxi
+  implements DialogInterface.OnDismissListener
 {
-  oxi(oxf paramoxf, long paramLong) {}
+  public oxi(QRCardActivity paramQRCardActivity) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Oxf.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.e = paramString1;
-      this.jdField_a_of_type_Oxf.jdField_a_of_type_Oxe.a.b(this.jdField_a_of_type_Oxf.jdField_a_of_type_Oxe);
-      this.jdField_a_of_type_Oxf.jdField_a_of_type_Oxe.b();
-      return;
-    }
-    this.jdField_a_of_type_Oxf.jdField_a_of_type_Oxe.d = paramString2;
-    this.jdField_a_of_type_Oxf.jdField_a_of_type_Oxe.a.a(this.jdField_a_of_type_Oxf.jdField_a_of_type_Oxe);
+    this.a.c = false;
   }
 }
 

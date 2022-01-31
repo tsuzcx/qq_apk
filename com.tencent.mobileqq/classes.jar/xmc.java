@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
-class xmc
+public class xmc
   implements Runnable
 {
-  xmc(xmb paramxmb, Object paramObject) {}
+  public xmc(QWalletIPCModule paramQWalletIPCModule, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangObject != null)
-    {
-      this.jdField_a_of_type_Xmb.a.a.a(true, this.jdField_a_of_type_JavaLangObject);
-      return;
-    }
-    if (LoginView.b(this.jdField_a_of_type_Xmb.a))
-    {
-      this.jdField_a_of_type_Xmb.a.a.a(true, null);
-      return;
-    }
-    this.jdField_a_of_type_Xmb.a.a.a(false, null);
+    ((QWalletConfigManager)((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getManager(244)).a(1L, new xmd(this), null);
   }
 }
 

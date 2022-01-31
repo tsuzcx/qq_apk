@@ -1,25 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeArticleCommentSummaryView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
-public class lmx
-  implements Runnable
+class lmx
+  implements View.OnClickListener
 {
-  public lmx(WeishiManager paramWeishiManager) {}
+  lmx(lmv paramlmv) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (WeishiManager.a(this.a) == null) {
-      return;
-    }
-    SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.aH;
-    localSessionInfo.jdField_a_of_type_Int = 1008;
-    ChatActivityFacade.a(WeishiManager.a(this.a), localSessionInfo);
-    WeishiManager.a(this.a).a().c(AppConstants.aH, 1008);
+    NativeArticleCommentSummaryView.a((ArticleInfo)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a());
   }
 }
 

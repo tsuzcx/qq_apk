@@ -4,8 +4,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLSurfaceView.Renderer;
-import anzu;
-import anzv;
+import aoim;
+import aoin;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -52,7 +52,7 @@ public class DoodleTextureView
     if (QLog.isColorLevel()) {
       QLog.d("DoodleTextureView", 2, "onDestroy start");
     }
-    b(new anzv(this));
+    b(new aoin(this));
   }
   
   public void onDrawFrame(GL10 paramGL10)
@@ -93,7 +93,7 @@ public class DoodleTextureView
   {
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController = paramDoodleOpController;
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(this);
-    super.b(new anzu(this));
+    super.b(new aoim(this));
   }
 }
 

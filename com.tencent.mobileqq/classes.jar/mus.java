@@ -1,53 +1,88 @@
-import android.support.v4.util.MQLruCache;
-import com.tencent.biz.pubaccount.util.PreloadManager;
-import com.tencent.mobileqq.app.AppConstants;
-import java.io.File;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
 
 public class mus
-  extends Thread
+  extends View
 {
-  public mus(PreloadManager paramPreloadManager) {}
+  private int jdField_a_of_type_Int = 0;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private int jdField_b_of_type_Int;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g = -16777216;
   
-  public void run()
+  public mus(Context paramContext)
   {
-    int j = 0;
-    if (PreloadManager.a(this.a) != null) {
-      PreloadManager.a(this.a).releaseLargeCache();
-    }
-    long l = System.currentTimeMillis();
-    Object localObject1 = new File(AppConstants.cn);
-    int k;
-    int i;
-    Object localObject2;
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    super(paramContext);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.e = paramInt;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.f = paramInt;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.g = paramInt;
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Int != 0)
     {
-      localObject1 = ((File)localObject1).listFiles();
-      k = localObject1.length;
-      i = 0;
-      while (i < k)
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
-        localObject2 = localObject1[i];
-        if (l - localObject2.lastModified() > 172800000L) {
-          localObject2.delete();
-        }
-        i += 1;
+        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       }
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+      VirtualViewUtils.b(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
     }
-    localObject1 = new File(AppConstants.co);
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    super.onDraw(paramCanvas);
+    if (this.f > 0)
     {
-      localObject1 = ((File)localObject1).listFiles();
-      k = localObject1.length;
-      i = j;
-      while (i < k)
+      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
       {
-        localObject2 = localObject1[i];
-        if (l - localObject2.lastModified() > 172800000L) {
-          localObject2.delete();
-        }
-        i += 1;
+        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+        this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       }
+      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
+      VirtualViewUtils.a(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
     }
+  }
+  
+  public void setBackgroundColor(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

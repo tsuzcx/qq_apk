@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
 
-public class admz
+class admz
   implements Runnable
 {
-  public admz(NearbyHybridFragment paramNearbyHybridFragment) {}
+  admz(admy paramadmy) {}
   
   public void run()
   {
-    this.a.j();
+    this.a.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     admz
  * JD-Core Version:    0.7.0.1
  */

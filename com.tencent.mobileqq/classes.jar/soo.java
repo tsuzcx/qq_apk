@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
-class soo
-  implements Runnable
+public class soo
+  implements DialogInterface.OnDismissListener
 {
-  soo(son paramson) {}
+  public soo(DialogActivity paramDialogActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) {
-      this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.g(this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-    }
-    this.a.a.a.a(2131435787, 1);
+    this.a.finish();
   }
 }
 

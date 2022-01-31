@@ -1,161 +1,71 @@
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.scribble.ScribbleDownloadInfo;
-import com.tencent.mobileqq.scribble.ScribbleDownloader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import android.graphics.SurfaceTexture;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 
 public class ahqa
+  implements Runnable
 {
-  public final int a;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private PriorityBlockingQueue jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
-  private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-  public final int b = 0;
-  public final int c = 1;
-  public final int d = 2;
-  public final int e = 0;
-  public final int f = -1;
+  public ahqa(CameraCaptureView paramCameraCaptureView, SurfaceTexture paramSurfaceTexture) {}
   
-  public ahqa(ScribbleDownloader paramScribbleDownloader)
+  /* Error */
+  public void run()
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
-    {
-      int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      ScribbleDownloader.a(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleDownloader, "getDownloadingSize", "downing size is " + i);
-      return i;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  public int a(MessageForScribble paramMessageForScribble)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-        {
-          i = 0;
-          if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-          {
-            if (paramMessageForScribble.uniseq == ((ScribbleDownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq)
-            {
-              this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-              i = 0;
-              return i;
-            }
-            i += 1;
-            continue;
-          }
-        }
-        int i = -1;
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-    }
-  }
-  
-  public int a(ScribbleDownloadInfo paramScribbleDownloadInfo)
-  {
-    int k = 1;
-    int m = -1;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-        {
-          i = 0;
-          if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-          {
-            if (paramScribbleDownloadInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq == ((ScribbleDownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq)
-            {
-              j = 1;
-              i = 1;
-              if ((j == 0) && (this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.size() > 0))
-              {
-                Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
-                if (localIterator.hasNext())
-                {
-                  ScribbleDownloadInfo localScribbleDownloadInfo = (ScribbleDownloadInfo)localIterator.next();
-                  if (localScribbleDownloadInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq != paramScribbleDownloadInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq) {
-                    continue;
-                  }
-                  if (localScribbleDownloadInfo.jdField_a_of_type_Int >= paramScribbleDownloadInfo.jdField_a_of_type_Int) {
-                    break label214;
-                  }
-                  localScribbleDownloadInfo.jdField_a_of_type_Int = paramScribbleDownloadInfo.jdField_a_of_type_Int;
-                  break label214;
-                  if (j == 0)
-                  {
-                    this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(paramScribbleDownloadInfo);
-                    i = 0;
-                  }
-                  return i;
-                }
-              }
-            }
-            else
-            {
-              i += 1;
-              continue;
-            }
-            continue;
-          }
-        }
-      }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-      int j = 0;
-      int i = m;
-      continue;
-      label214:
-      i = 2;
-      j = k;
-    }
-  }
-  
-  public ScribbleDownloadInfo a()
-  {
-    ScribbleDownloadInfo localScribbleDownloadInfo = null;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.size() > 0)
-      {
-        localScribbleDownloadInfo = (ScribbleDownloadInfo)this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.poll();
-        this.jdField_a_of_type_JavaUtilArrayList.add(localScribbleDownloadInfo);
-      }
-      return localScribbleDownloadInfo;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 13	ahqa:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;
+    //   4: getfield 25	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:jdField_a_of_type_AndroidGraphicsSurfaceTexture	Landroid/graphics/SurfaceTexture;
+    //   7: astore_1
+    //   8: aload_1
+    //   9: monitorenter
+    //   10: aload_0
+    //   11: getfield 15	ahqa:jdField_a_of_type_AndroidGraphicsSurfaceTexture	Landroid/graphics/SurfaceTexture;
+    //   14: invokevirtual 30	android/graphics/SurfaceTexture:updateTexImage	()V
+    //   17: aload_1
+    //   18: monitorexit
+    //   19: aload_0
+    //   20: getfield 13	ahqa:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;
+    //   23: invokevirtual 33	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:requestRender	()V
+    //   26: return
+    //   27: astore_2
+    //   28: aload_1
+    //   29: monitorexit
+    //   30: aload_2
+    //   31: athrow
+    //   32: astore_1
+    //   33: ldc 35
+    //   35: iconst_2
+    //   36: aload_1
+    //   37: iconst_0
+    //   38: anewarray 4	java/lang/Object
+    //   41: invokestatic 41	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   44: aload_0
+    //   45: getfield 13	ahqa:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;
+    //   48: invokestatic 44	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:a	(Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;)Z
+    //   51: ifne -25 -> 26
+    //   54: aload_1
+    //   55: invokestatic 49	com/tencent/mobileqq/richmedia/mediacodec/utils/ShortVideoExceptionReporter:a	(Ljava/lang/Throwable;)V
+    //   58: aload_0
+    //   59: getfield 13	ahqa:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;
+    //   62: iconst_1
+    //   63: invokestatic 53	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:b	(Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;Z)Z
+    //   66: pop
+    //   67: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	68	0	this	ahqa
+    //   32	23	1	localException	java.lang.Exception
+    //   27	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   10	19	27	finally
+    //   28	30	27	finally
+    //   0	10	32	java/lang/Exception
+    //   19	26	32	java/lang/Exception
+    //   30	32	32	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahqa
  * JD-Core Version:    0.7.0.1
  */

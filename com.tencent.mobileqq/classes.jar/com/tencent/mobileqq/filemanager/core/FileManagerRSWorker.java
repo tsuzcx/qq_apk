@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acve;
-import acvl;
-import acvm;
-import acvn;
-import acvo;
-import acvp;
-import acvq;
+import addl;
+import adds;
+import addt;
+import addu;
+import addv;
+import addw;
+import addx;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -67,7 +67,7 @@ public class FileManagerRSWorker
   public int a;
   public long a;
   public QQAppInterface a;
-  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new acve(this);
+  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new addl(this);
   private HttpUrlProcessor jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor;
   public WeiyunTask a;
   public FileManagerEntity a;
@@ -259,7 +259,7 @@ public class FileManagerRSWorker
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false);
     paramChangeNewPath = new ArrayList();
     paramChangeNewPath.add(this.jdField_d_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a(paramLong, paramChangeNewPath, SplashActivity.sTopActivity, new acvq(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a(paramLong, paramChangeNewPath, SplashActivity.sTopActivity, new addx(this));
   }
   
   private void a(long paramLong, String paramString)
@@ -520,7 +520,7 @@ public class FileManagerRSWorker
     if (QLog.isColorLevel()) {
       QLog.i("FileManagerRSWorker<FileAssistant>", 1, "start Rsworker OfflineFileHitReq:" + MessageCache.a());
     }
-    FileManagerUtil.FileExecutor.a().execute(new acvp(this));
+    FileManagerUtil.FileExecutor.a().execute(new addw(this));
   }
   
   public int a()
@@ -1037,11 +1037,11 @@ public class FileManagerRSWorker
     //   866: new 936	android/os/Handler
     //   869: dup
     //   870: invokespecial 937	android/os/Handler:<init>	()V
-    //   873: new 939	acvj
+    //   873: new 939	addq
     //   876: dup
     //   877: aload_0
     //   878: lload 5
-    //   880: invokespecial 942	acvj:<init>	(Lcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker;J)V
+    //   880: invokespecial 942	addq:<init>	(Lcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker;J)V
     //   883: ldc2_w 943
     //   886: invokevirtual 948	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   889: pop
@@ -1470,10 +1470,10 @@ public class FileManagerRSWorker
     //   1830: aload_0
     //   1831: aload_0
     //   1832: getfield 58	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_d_of_type_Long	J
-    //   1835: new 1014	acvk
+    //   1835: new 1014	addr
     //   1838: dup
     //   1839: aload_0
-    //   1840: invokespecial 1015	acvk:<init>	(Lcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker;)V
+    //   1840: invokespecial 1015	addr:<init>	(Lcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker;)V
     //   1843: invokespecial 462	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:a	(JLcom/tencent/mobileqq/filemanager/core/FileManagerRSWorker$ChangeNewPath;)V
     //   1846: aload_0
     //   1847: getfield 159	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -2553,7 +2553,7 @@ public class FileManagerRSWorker
               if (n == 9056) {
                 i1 = 0;
               }
-              new Handler().postDelayed(new acvl(this), i1);
+              new Handler().postDelayed(new adds(this), i1);
               QLog.w("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.jdField_c_of_type_Long + "] after [" + i1 + "] time retry!");
               if (9048 != n) {
                 break label1388;
@@ -2700,97 +2700,98 @@ public class FileManagerRSWorker
     //   8: monitorexit
     //   9: aload_0
     //   10: getfield 1349	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   13: ifnull +11 -> 24
+    //   13: ifnull +13 -> 26
     //   16: aload_0
     //   17: getfield 1349	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   20: invokestatic 1355	com/tencent/mobileqq/app/ThreadManager:remove	(Ljava/lang/Runnable;)Z
-    //   23: pop
-    //   24: aload_0
-    //   25: getfield 64	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   28: invokevirtual 1356	java/io/InputStream:close	()V
-    //   31: aload_0
-    //   32: aconst_null
-    //   33: putfield 64	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   36: aload_0
-    //   37: getfield 76	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadOfflineFileHttpUploder	Lcom/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder;
-    //   40: ifnull +10 -> 50
-    //   43: aload_0
-    //   44: getfield 76	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadOfflineFileHttpUploder	Lcom/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder;
-    //   47: invokevirtual 1357	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:a	()V
-    //   50: aload_0
-    //   51: getfield 435	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg	Lcom/tencent/mobileqq/utils/httputils/HttpMsg;
-    //   54: ifnull +78 -> 132
-    //   57: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   60: ifeq +58 -> 118
-    //   63: ldc 211
-    //   65: iconst_2
-    //   66: new 213	java/lang/StringBuilder
-    //   69: dup
-    //   70: invokespecial 214	java/lang/StringBuilder:<init>	()V
-    //   73: ldc 216
-    //   75: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   78: aload_0
-    //   79: getfield 56	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_c_of_type_Long	J
-    //   82: invokestatic 233	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   85: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: ldc_w 1007
-    //   91: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: aload_0
-    //   95: getfield 435	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg	Lcom/tencent/mobileqq/utils/httputils/HttpMsg;
-    //   98: invokevirtual 886	com/tencent/mobileqq/utils/httputils/HttpMsg:a	()I
-    //   101: invokestatic 420	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   104: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   107: ldc 235
-    //   109: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   115: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   118: aload_0
-    //   119: getfield 159	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   122: invokevirtual 428	com/tencent/mobileqq/app/QQAppInterface:getHttpCommunicatort	()Lcom/tencent/mobileqq/utils/httputils/HttpCommunicator;
-    //   125: aload_0
-    //   126: getfield 435	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg	Lcom/tencent/mobileqq/utils/httputils/HttpMsg;
-    //   129: invokevirtual 1012	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lcom/tencent/mobileqq/utils/httputils/HttpMsg;)V
-    //   132: aload_0
-    //   133: getfield 105	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask	Lcom/tencent/mobileqq/filemanager/core/WeiyunTask;
-    //   136: ifnull +53 -> 189
-    //   139: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   142: ifeq +40 -> 182
-    //   145: ldc 211
-    //   147: iconst_2
-    //   148: new 213	java/lang/StringBuilder
-    //   151: dup
-    //   152: invokespecial 214	java/lang/StringBuilder:<init>	()V
-    //   155: ldc 216
-    //   157: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: aload_0
-    //   161: getfield 56	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_c_of_type_Long	J
-    //   164: invokestatic 233	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   167: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: ldc_w 1359
-    //   173: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   179: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   182: aload_0
-    //   183: getfield 105	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask	Lcom/tencent/mobileqq/filemanager/core/WeiyunTask;
-    //   186: invokevirtual 1362	com/tencent/mobileqq/filemanager/core/WeiyunTask:a	()V
-    //   189: return
-    //   190: astore_1
-    //   191: aload_0
-    //   192: monitorexit
-    //   193: aload_1
-    //   194: athrow
-    //   195: astore_1
-    //   196: goto -160 -> 36
+    //   20: bipush 64
+    //   22: invokestatic 1355	com/tencent/mobileqq/app/ThreadManager:removeJobFromThreadPool	(Ljava/lang/Runnable;I)Z
+    //   25: pop
+    //   26: aload_0
+    //   27: getfield 64	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   30: invokevirtual 1356	java/io/InputStream:close	()V
+    //   33: aload_0
+    //   34: aconst_null
+    //   35: putfield 64	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   38: aload_0
+    //   39: getfield 76	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadOfflineFileHttpUploder	Lcom/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder;
+    //   42: ifnull +10 -> 52
+    //   45: aload_0
+    //   46: getfield 76	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadOfflineFileHttpUploder	Lcom/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder;
+    //   49: invokevirtual 1357	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:a	()V
+    //   52: aload_0
+    //   53: getfield 435	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg	Lcom/tencent/mobileqq/utils/httputils/HttpMsg;
+    //   56: ifnull +78 -> 134
+    //   59: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   62: ifeq +58 -> 120
+    //   65: ldc 211
+    //   67: iconst_2
+    //   68: new 213	java/lang/StringBuilder
+    //   71: dup
+    //   72: invokespecial 214	java/lang/StringBuilder:<init>	()V
+    //   75: ldc 216
+    //   77: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: aload_0
+    //   81: getfield 56	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_c_of_type_Long	J
+    //   84: invokestatic 233	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   87: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: ldc_w 1007
+    //   93: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: aload_0
+    //   97: getfield 435	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg	Lcom/tencent/mobileqq/utils/httputils/HttpMsg;
+    //   100: invokevirtual 886	com/tencent/mobileqq/utils/httputils/HttpMsg:a	()I
+    //   103: invokestatic 420	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   106: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: ldc 235
+    //   111: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   117: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   120: aload_0
+    //   121: getfield 159	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   124: invokevirtual 428	com/tencent/mobileqq/app/QQAppInterface:getHttpCommunicatort	()Lcom/tencent/mobileqq/utils/httputils/HttpCommunicator;
+    //   127: aload_0
+    //   128: getfield 435	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg	Lcom/tencent/mobileqq/utils/httputils/HttpMsg;
+    //   131: invokevirtual 1012	com/tencent/mobileqq/utils/httputils/HttpCommunicator:a	(Lcom/tencent/mobileqq/utils/httputils/HttpMsg;)V
+    //   134: aload_0
+    //   135: getfield 105	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask	Lcom/tencent/mobileqq/filemanager/core/WeiyunTask;
+    //   138: ifnull +53 -> 191
+    //   141: invokestatic 209	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   144: ifeq +40 -> 184
+    //   147: ldc 211
+    //   149: iconst_2
+    //   150: new 213	java/lang/StringBuilder
+    //   153: dup
+    //   154: invokespecial 214	java/lang/StringBuilder:<init>	()V
+    //   157: ldc 216
+    //   159: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: aload_0
+    //   163: getfield 56	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_c_of_type_Long	J
+    //   166: invokestatic 233	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   169: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: ldc_w 1359
+    //   175: invokevirtual 220	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: invokevirtual 238	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   181: invokestatic 241	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   184: aload_0
+    //   185: getfield 105	com/tencent/mobileqq/filemanager/core/FileManagerRSWorker:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask	Lcom/tencent/mobileqq/filemanager/core/WeiyunTask;
+    //   188: invokevirtual 1362	com/tencent/mobileqq/filemanager/core/WeiyunTask:a	()V
+    //   191: return
+    //   192: astore_1
+    //   193: aload_0
+    //   194: monitorexit
+    //   195: aload_1
+    //   196: athrow
+    //   197: astore_1
+    //   198: goto -160 -> 38
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	199	0	this	FileManagerRSWorker
-    //   190	4	1	localObject	Object
-    //   195	1	1	localException	Exception
+    //   0	201	0	this	FileManagerRSWorker
+    //   192	4	1	localObject	Object
+    //   197	1	1	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   2	9	190	finally
-    //   191	193	190	finally
-    //   24	36	195	java/lang/Exception
+    //   2	9	192	finally
+    //   193	195	192	finally
+    //   26	38	197	java/lang/Exception
   }
   
   public void d()
@@ -2858,7 +2859,7 @@ public class FileManagerRSWorker
     try
     {
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangRunnable = new acvm(this);
+      this.jdField_a_of_type_JavaLangRunnable = new addt(this);
       if (QLog.isColorLevel()) {
         QLog.i("FileManagerRSWorker<FileAssistant>", 1, "Run RSWorker" + MessageCache.a());
       }
@@ -2897,7 +2898,7 @@ public class FileManagerRSWorker
     }
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
     this.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(localFileManagerEntity, null, new acvn(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(localFileManagerEntity, null, new addu(this));
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask == null)
     {
       QLog.e("FileManagerRSWorker<FileAssistant>", 1, "create download task is fail! nSessionId[" + this.jdField_c_of_type_Long + "]fileid[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId + "] filename[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName + "] filesize[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize + "] modifytime[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime + "]");
@@ -2925,7 +2926,7 @@ public class FileManagerRSWorker
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
       this.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), null, new acvo(this));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), null, new addv(this));
     } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiyunTask != null);
     QLog.e("FileManagerRSWorker<FileAssistant>", 1, "create upload task is fail! nSessionId[" + this.jdField_c_of_type_Long + "] filePath[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath() + "]");
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Int, 38, null, 11, null);

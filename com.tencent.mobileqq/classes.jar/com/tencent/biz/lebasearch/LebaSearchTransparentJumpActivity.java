@@ -72,7 +72,7 @@ public class LebaSearchTransparentJumpActivity
       ((Intent)localObject1).addFlags(805306368);
       QZoneHelper.b(this, this.app.getCurrentAccountUin(), (Intent)localObject1, -1);
       continue;
-      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131433698));
+      ((Intent)localObject1).putExtra("selfSet_leftViewText", getString(2131433712));
       QfavHelper.a(this, this.app.getAccount(), (Intent)localObject1, -1, false);
       continue;
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
@@ -86,7 +86,7 @@ public class LebaSearchTransparentJumpActivity
           localObject1 = ContactUtils.j(this.app, String.valueOf(l));
         }
         localUserInfo.b = ((String)localObject1);
-        QZoneHelper.a(this, localUserInfo, Long.valueOf(l), 0, false, -1);
+        QZoneHelper.b(this, localUserInfo, Long.valueOf(l), 0, false, -1);
       }
       catch (Exception localException1)
       {

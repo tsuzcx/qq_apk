@@ -1,37 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
 
-public class aoes
-  implements Animator.AnimatorListener
+class aoes
+  implements Runnable
 {
-  public aoes(PickerContainer paramPickerContainer) {}
+  aoes(aoer paramaoer) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    if (PickerContainer.a(this.a))
-    {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
-      }
-      PickerContainer.a(this.a, false);
-    }
+    HWEditImportVideoPlayer.a(this.a.a, HWEditImportVideoPlayer.a(this.a.a) + "_split.m4a");
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (PickerContainer.a(this.a))
-    {
-      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
-        this.a.setVisibility(4);
-      }
-      PickerContainer.a(this.a, false);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,50 +1,73 @@
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class wod
-  extends PublicAccountObserver
+  implements ContactSearchFacade.ISearchListener
 {
-  public wod(PublicAccountFragment paramPublicAccountFragment) {}
+  public wod(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
-    }
+    int i = 3;
+    this.a.i();
     if (paramBoolean)
     {
-      if (PublicAccountFragment.a(this.a))
+      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
       {
-        if (this.a.a != null) {
-          this.a.a.a(4, true, null);
+        paramObject = (ArrayList)paramObject;
+        if (paramObject.size() != 0) {
+          break label94;
         }
-        PublicAccountFragment.a(this.a, false);
+        if (this.a.a != null)
+        {
+          paramObject = this.a.a;
+          if (!this.a.b) {
+            break label89;
+          }
+          paramInt1 = 3;
+          paramObject.sendEmptyMessage(paramInt1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
+        }
       }
-      this.a.i();
+      for (;;)
+      {
+        return;
+        label89:
+        paramInt1 = 2;
+        break;
+        label94:
+        if (paramObject.size() > 0) {}
+        try
+        {
+          paramString = (SearchResult)paramObject.get(0);
+          if ((this.a.a(paramObject)) && (this.a.a != null))
+          {
+            this.a.a.sendEmptyMessage(0);
+            return;
+          }
+        }
+        catch (Exception paramObject)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
+          }
+          paramObject = this.a.a;
+          if (!this.a.b) {}
+        }
+      }
+      for (paramInt1 = i;; paramInt1 = 2)
+      {
+        paramObject.sendEmptyMessage(paramInt1);
+        return;
+      }
     }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
+    this.a.a(paramInt1, paramObject, paramInt2, paramString);
   }
 }
 

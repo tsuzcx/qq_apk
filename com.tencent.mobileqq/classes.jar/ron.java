@@ -1,27 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.data.Card;
 
-public class ron
-  implements View.OnClickListener
+class ron
+  implements Runnable
 {
-  public ron(AutoRemarkActivity paramAutoRemarkActivity) {}
+  ron(rom paramrom, Card paramCard) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
-    try
-    {
-      this.a.a.dismiss();
-      label46:
-      this.a.a = null;
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      break label46;
-    }
+    this.jdField_a_of_type_Rom.a.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
   }
 }
 

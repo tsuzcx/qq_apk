@@ -1,39 +1,36 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.nearby.NearByGeneralManager;
+import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import cooperation.qzone.LocalMultiProcConfig;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class ted
-  implements CompoundButton.OnCheckedChangeListener
+  extends NearbyRelevantObserver
 {
-  public ted(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public ted(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131434207) + this.a.a, paramBoolean);
-    if (AppSetting.b) {
-      NotifyPushSettingActivity.e(this.a).setContentDescription("与我相关的通知");
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
     }
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      if (!paramBoolean) {
-        break label106;
-      }
+    if (paramBoolean1) {
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
     }
-    label106:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+  }
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (!paramBoolean1)
     {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, paramCompoundButton, "", "", "");
-      return;
-      i = 0;
-      break;
+      QQToast.a(this.a, 1, 2131436084, 0).b(this.a.getTitleBarHeight());
+      paramBoolean1 = ((NearByGeneralManager)this.a.app.getManager(160)).a();
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
     }
   }
 }

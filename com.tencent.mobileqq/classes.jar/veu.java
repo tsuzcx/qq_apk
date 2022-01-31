@@ -1,33 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureHandler;
-import com.tencent.mobileqq.data.MessageForRichState;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class veu
-  implements Runnable
+  extends ClickableSpan
 {
-  public veu(RichStatItemBuilder paramRichStatItemBuilder, MessageForRichState paramMessageForRichState) {}
+  public veu(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(RichStatItemBuilder.a().feedsId))
+    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X800491B", "0X800491B", 0, 0, "", "", "", "");
+    try
     {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.a.a(1)).b(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin });
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, "sign feedid is is null reget friend sign");
-      }
-    }
-    SignatureHandler localSignatureHandler;
-    do
-    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
       return;
-      localSignatureHandler = (SignatureHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.a.a(41);
-    } while (localSignatureHandler == null);
-    localSignatureHandler.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.feedId);
+    }
+    catch (ActivityNotFoundException paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-16732929);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.adapter.HotChatPostListAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class vvg
-  implements AbsListView.OnScrollListener
+  implements Runnable
 {
-  public vvg(HotChatPie paramHotChatPie) {}
+  public vvg(QIMUserManager paramQIMUserManager, String paramString1, String paramString2, boolean paramBoolean) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a() != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a()))
+    if (QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
+      if (QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, this.b))
+      {
+        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager);
+        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 2);
+      }
+    }
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.b();
-      HotChatPie.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a(), 10);
+      if (QLog.isColorLevel()) {
+        QLog.i("QIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadQimTheme QimIconsState " + QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager));
+      }
+      return;
+      QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 4);
+      continue;
+      QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 3);
     }
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

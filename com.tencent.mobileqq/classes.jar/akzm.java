@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
 
 public class akzm
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public akzm(MSFIntChkStrike paramMSFIntChkStrike) {}
+  public akzm(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    MSFIntChkStrike.a(this.a, false);
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getSystemService("input_method");
+    if ((localInputMethodManager != null) && (this.a.getCurrentFocus() != null)) {
+      localInputMethodManager.hideSoftInputFromWindow(this.a.getCurrentFocus().getWindowToken(), 0);
+    }
   }
 }
 

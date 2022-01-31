@@ -1,38 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.MessageForQQWalletTips;
-import java.lang.ref.SoftReference;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class abuu
-  extends ClickableSpan
+  implements AdapterView.OnItemClickListener
 {
-  public abuu(MessageForQQWalletTips paramMessageForQQWalletTips, String paramString, SoftReference paramSoftReference, int paramInt) {}
+  public abuu(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void onClick(View paramView)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    do
+    if (!this.a.isFinishing())
     {
-      return;
-      paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-    } while (paramView == null);
-    Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-    paramView.startActivity(localIntent);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.clearShadowLayer();
+      this.a.overridePendingTransition(0, 2131034423);
+      this.a.finish();
+    }
   }
 }
 

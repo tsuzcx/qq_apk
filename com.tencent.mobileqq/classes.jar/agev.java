@@ -1,34 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.now.NowProxy;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class agev
-  implements View.OnClickListener
+public final class agev
+  implements Runnable
 {
-  public agev(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
-  
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
+    if (AppUtil.a("com.tencent.now"))
     {
-    default: 
-      return;
-    case 2131371246: 
-      this.a.b();
-      return;
-    case 2131371249: 
-      this.a.d();
-      return;
-    case 2131371252: 
-      this.a.e();
+      QLog.i("NowAnswerPreloadManager", 3, "openAnswerRoom----NOW APP is Exist, will preload It!");
+      Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse("preload://xxx/xx"));
+      localIntent.setFlags(268435456);
+      BaseApplicationImpl.getContext().startActivity(localIntent);
       return;
     }
-    this.a.doOnBackPressed();
+    QLog.i("NowAnswerPreloadManager", 3, "openAnswerRoom----NOW APP is not Exist, will preload Plugin!");
+    ((NowProxy)((QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null)).getManager(181)).a(BaseApplicationImpl.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agev
  * JD-Core Version:    0.7.0.1
  */

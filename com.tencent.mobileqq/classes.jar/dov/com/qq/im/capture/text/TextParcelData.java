@@ -4,7 +4,7 @@ import android.graphics.PointF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anon;
+import anxa;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
@@ -14,7 +14,7 @@ import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 public class TextParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anon();
+  public static final Parcelable.Creator CREATOR = new anxa();
   private float jdField_a_of_type_Float;
   public SegmentKeeper a;
   private DynamicTextItem jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;

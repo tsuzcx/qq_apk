@@ -83,6 +83,7 @@ public final class g
       catch (Exception paramObject)
       {
         paramObject.printStackTrace();
+        SGLog.b("gkpeng", "e = " + paramObject.getMessage());
         SixGodReporter.reportException("ReflectExp", paramObject);
       }
     }

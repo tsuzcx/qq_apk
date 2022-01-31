@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.IApolloRenderView;
+import com.tencent.mobileqq.apollo.script.SpriteAioScript;
 
 public class yym
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public yym(ApolloPanel paramApolloPanel) {}
+  public yym(SpriteAioScript paramSpriteAioScript, IApolloRenderView paramIApolloRenderView, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.m();
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker() != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker().a != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

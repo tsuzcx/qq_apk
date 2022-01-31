@@ -1,27 +1,19 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.content.Context;
+import com.tencent.biz.common.offline.AsyncCallBack;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.offline.util.ILog;
 
-public class knm
-  implements URLDrawable.URLDrawableListener
+public final class knm
+  implements Runnable
 {
-  public knm(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  public knm(Context paramContext, String paramString, AsyncCallBack paramAsyncCallBack) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    paramURLDrawable = ImageUtil.a(paramURLDrawable);
-    Bitmap localBitmap = ImageUtil.c(paramURLDrawable, 110, 110);
-    this.a.c.setImageBitmap(localBitmap);
-    paramURLDrawable.recycle();
+    if (HtmlOffline.a.a()) {
+      HtmlOffline.a.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
+    }
+    new knt(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncCallBack).a();
   }
 }
 

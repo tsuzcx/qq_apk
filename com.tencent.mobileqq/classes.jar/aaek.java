@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public final class aaek
-  implements Parcelable.Creator
+public class aaek
+  implements Runnable
 {
-  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
-  {
-    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
-  }
+  public aaek(ARRecordReport paramARRecordReport, boolean paramBoolean) {}
   
-  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  public void run()
   {
-    return new ARCommonConfigInfo.NativeSoRes[paramInt];
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.a(BaseApplication.getContext()).a("", "ar_record_active_record_start", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
   }
 }
 

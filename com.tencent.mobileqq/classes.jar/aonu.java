@@ -1,23 +1,79 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailProgress;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil.FrameWithoutBlackResult;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
+import java.util.ArrayList;
 
-public final class aonu
-  implements Callbacks.Callback
+public class aonu
+  extends BaseAdapter
 {
-  public aonu(MediaUtil.FrameWithoutBlackResult paramFrameWithoutBlackResult) {}
+  int jdField_a_of_type_Int = -1;
+  Context jdField_a_of_type_AndroidContentContext;
+  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailProgress paramThumbnailProgress)
+  public aonu(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
   {
-    if (paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    HorizontalStroke localHorizontalStroke = (HorizontalStroke)getItem(paramInt);
+    View localView;
+    if (paramView == null)
     {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.a.jdField_a_of_type_Long = paramThumbnailProgress.jdField_a_of_type_Long;
-      QLog.e(MediaUtil.a(), 2, "MediaCodecThumbnailGenerator progress " + paramThumbnailProgress.jdField_a_of_type_Long);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968954, paramViewGroup, false);
+      paramView = new aonv(this);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364403));
+      paramView.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131364402));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
     }
-    return null;
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localHorizontalStroke.a);
+      if (paramInt != this.jdField_a_of_type_Int) {
+        break;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getResources().getDrawable(2130842507));
+      return localView;
+      paramViewGroup = (aonv)paramView.getTag();
+      localView = paramView;
+    }
+    paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(null);
+    return localView;
   }
 }
 

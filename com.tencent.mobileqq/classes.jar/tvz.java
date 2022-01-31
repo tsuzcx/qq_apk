@@ -1,17 +1,22 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SecurityPickproofActivity;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
-class tvz
+public class tvz
   implements Runnable
 {
-  tvz(tvy paramtvy) {}
+  public tvz(SecurityPickproofActivity paramSecurityPickproofActivity) {}
   
   public void run()
   {
-    if ((this.a.a.a.getAdapter() instanceof BaseAdapter)) {
-      ((BaseAdapter)this.a.a.a.getAdapter()).notifyDataSetChanged();
-    }
+    SecurityPickproofActivity.a(this.a, false);
+    FMToastUtil.a(2131434629);
+    SecurityPickproofActivity.a(this.a).setText(SecurityPickproofActivity.a(this.a));
+    SecurityPickproofActivity.b(this.a).setVisibility(0);
+    SecurityPickproofActivity.a(this.a).setVisibility(0);
+    SecurityPickproofActivity.a(this.a).setVisibility(8);
   }
 }
 

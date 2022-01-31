@@ -1,17 +1,10 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-public class aexo
+public final class aexo
   implements DialogInterface.OnClickListener
 {
-  public aexo(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ShortVideoCommentsView.c(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

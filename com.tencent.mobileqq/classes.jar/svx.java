@@ -1,15 +1,35 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
+import cooperation.qzone.util.QZLog;
 
-class svx
+public class svx
   implements Runnable
 {
-  svx(svw paramsvw, Bitmap paramBitmap) {}
+  public svx(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Svw.a.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    try
+    {
+      if (!TextUtils.isEmpty(this.a.a.a.a))
+      {
+        Object localObject = this.a.a.a.a;
+        if (this.a.a.a.a.startsWith("+")) {
+          localObject = this.a.a.a.a.substring(1);
+        }
+        localObject = new LpReportInfo_pf00064(699, 1, Long.valueOf((String)localObject).longValue());
+        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QZLog.e("QzoneReport", "LpReportInfoProfile", localException);
+    }
   }
 }
 

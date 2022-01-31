@@ -1,66 +1,140 @@
-import android.graphics.SurfaceTexture;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.RemoteException;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.PicBusiManager;
+import com.tencent.mobileqq.richmedia.ICallBack;
+import com.tencent.mobileqq.richmedia.ICallBack.Stub;
+import com.tencent.mobileqq.richmedia.LOG;
+import com.tencent.mobileqq.richmedia.RichmediaService;
+import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
+import com.tencent.mobileqq.transfile.ShortVideoPresendStats;
+import com.tencent.mobileqq.transfile.ShortVideoUploadABTest;
+import com.tencent.mobileqq.transfile.VideoSliceInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BinderWarpper;
+import java.lang.ref.WeakReference;
 
 public class ahlg
-  implements Runnable
+  extends Handler
 {
-  public ahlg(CameraCaptureView paramCameraCaptureView, SurfaceTexture paramSurfaceTexture) {}
+  final WeakReference a;
   
-  /* Error */
-  public void run()
+  public ahlg(Looper paramLooper, RichmediaService paramRichmediaService)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 13	ahlg:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;
-    //   4: getfield 25	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:jdField_a_of_type_AndroidGraphicsSurfaceTexture	Landroid/graphics/SurfaceTexture;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: monitorenter
-    //   10: aload_0
-    //   11: getfield 15	ahlg:jdField_a_of_type_AndroidGraphicsSurfaceTexture	Landroid/graphics/SurfaceTexture;
-    //   14: invokevirtual 30	android/graphics/SurfaceTexture:updateTexImage	()V
-    //   17: aload_1
-    //   18: monitorexit
-    //   19: aload_0
-    //   20: getfield 13	ahlg:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;
-    //   23: invokevirtual 33	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:requestRender	()V
-    //   26: return
-    //   27: astore_2
-    //   28: aload_1
-    //   29: monitorexit
-    //   30: aload_2
-    //   31: athrow
-    //   32: astore_1
-    //   33: ldc 35
-    //   35: iconst_2
-    //   36: aload_1
-    //   37: iconst_0
-    //   38: anewarray 4	java/lang/Object
-    //   41: invokestatic 41	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   44: aload_0
-    //   45: getfield 13	ahlg:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;
-    //   48: invokestatic 44	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:a	(Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;)Z
-    //   51: ifne -25 -> 26
-    //   54: aload_1
-    //   55: invokestatic 49	com/tencent/mobileqq/richmedia/mediacodec/utils/ShortVideoExceptionReporter:a	(Ljava/lang/Throwable;)V
-    //   58: aload_0
-    //   59: getfield 13	ahlg:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView	Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;
-    //   62: iconst_1
-    //   63: invokestatic 53	com/tencent/mobileqq/richmedia/capture/view/CameraCaptureView:b	(Lcom/tencent/mobileqq/richmedia/capture/view/CameraCaptureView;Z)Z
-    //   66: pop
-    //   67: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	68	0	this	ahlg
-    //   32	23	1	localException	java.lang.Exception
-    //   27	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   10	19	27	finally
-    //   28	30	27	finally
-    //   0	10	32	java/lang/Exception
-    //   19	26	32	java/lang/Exception
-    //   30	32	32	java/lang/Exception
+    super(paramLooper);
+    this.a = new WeakReference(paramRichmediaService);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = false;
+    Object localObject1 = (RichmediaService)this.a.get();
+    if (localObject1 == null) {
+      return;
+    }
+    Bundle localBundle = paramMessage.getData();
+    if (localBundle != null) {
+      localBundle.setClassLoader(getClass().getClassLoader());
+    }
+    for (int i = localBundle.getInt("msg_sub_cmd");; i = 0)
+    {
+      switch (paramMessage.what)
+      {
+      }
+      while ((localBundle != null) && (paramMessage.what >= 100) && (paramMessage.what <= 106) && (QQAppInterface.class.isInstance(RichmediaService.b((RichmediaService)localObject1))))
+      {
+        Object localObject2 = localBundle.getString("vidoe_record_uniseq");
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label332;
+        }
+        throw new IllegalArgumentException("VideoData id is " + (String)localObject2 + ", msg is " + paramMessage.what);
+        LOG.a("RichmediaService", "handleMessage MSG_C2S_REGISTER_CLIENT");
+        ((RichmediaService)localObject1).b = paramMessage.replyTo;
+        if (localBundle != null)
+        {
+          localObject2 = (BinderWarpper)localBundle.getParcelable("ICallBack_BinderWrapper");
+          if (localObject2 != null)
+          {
+            ((RichmediaService)localObject1).a = ICallBack.Stub.a(((BinderWarpper)localObject2).a);
+            localObject2 = new Bundle();
+            int[] arrayOfInt = PicBusiManager.a((QQAppInterface)RichmediaService.a((RichmediaService)localObject1));
+            try
+            {
+              ((Bundle)localObject2).putIntArray("key_compress_config", arrayOfInt);
+              ((RichmediaService)localObject1).a.a(6, (Bundle)localObject2);
+            }
+            catch (RemoteException localRemoteException)
+            {
+              LOG.a("RichmediaService", "ICALLBACK_CMD_INIT_COMPRESS_CONFIG remote error:" + localRemoteException);
+              localRemoteException.printStackTrace();
+            }
+            continue;
+            LOG.a("RichmediaService", "handleMessage MSG_C2S_UNREGISTER_CLIENT");
+            ((RichmediaService)localObject1).b = null;
+            ((RichmediaService)localObject1).a = null;
+          }
+        }
+      }
+      break;
+      label332:
+      localObject1 = (QQAppInterface)RichmediaService.c((RichmediaService)localObject1);
+      switch (paramMessage.what)
+      {
+      default: 
+        super.handleMessage(paramMessage);
+        return;
+      case 100: 
+        paramMessage = new VideoSliceInfo();
+        paramMessage.jdField_a_of_type_JavaLangString = localBundle.getString("video_slice_path");
+        paramMessage.jdField_a_of_type_Int = localBundle.getInt("video_slice_index");
+        paramMessage.jdField_c_of_type_Int = localBundle.getInt("video_slice_width");
+        paramMessage.d = localBundle.getInt("video_slice_height");
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, paramMessage);
+        return;
+      case 102: 
+        paramMessage = new VideoSliceInfo();
+        paramMessage.jdField_a_of_type_Boolean = true;
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, paramMessage);
+        return;
+      case 103: 
+        VideoSendTaskManager.a().b((QQAppInterface)localObject1, localRemoteException, localBundle);
+        return;
+      case 104: 
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, localBundle);
+        return;
+      case 101: 
+        if (i == 2) {
+          bool = true;
+        }
+        i = localBundle.getInt("roll_back_reason");
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, bool, i);
+        return;
+      case 105: 
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException);
+        paramMessage = new VideoSliceInfo();
+        paramMessage.b = true;
+        paramMessage.jdField_c_of_type_Boolean = localBundle.getBoolean("video_full_slice_sync_to_story", false);
+        if (QLog.isColorLevel()) {
+          QLog.d("PTV", 2, "clickSend si.mVideoSyncStory = " + paramMessage.jdField_c_of_type_Boolean);
+        }
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, paramMessage);
+        return;
+      }
+      paramMessage = localBundle.getString("vidoe_record_uniseq");
+      i = localBundle.getInt("ab_test_video_duration");
+      long l1 = localBundle.getLong("ab_test_send_btn_click_time");
+      long l2 = localBundle.getLong("video_record_touch_up_time");
+      int j = localBundle.getInt("video_record_touch_up_times");
+      if (ShortVideoUploadABTest.a()) {
+        ShortVideoUploadABTest.a((QQAppInterface)localObject1, Long.valueOf(paramMessage).longValue(), l1, i);
+      }
+      ShortVideoPresendStats.a((QQAppInterface)localObject1, Long.valueOf(paramMessage).longValue(), l1, i, l2, j);
+      return;
+    }
   }
 }
 

@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-public class sue
+class sue
   implements Runnable
 {
-  public sue(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  sue(sud paramsud) {}
   
   public void run()
   {
-    this.a.a.a();
+    this.a.a.n();
   }
 }
 

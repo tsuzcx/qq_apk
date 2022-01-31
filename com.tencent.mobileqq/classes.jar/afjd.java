@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
 
-class afjd
-  implements Runnable
+public class afjd
+  implements View.OnClickListener
 {
-  afjd(afjc paramafjc) {}
+  public afjd(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ConnectNearbyProcService.a(4144);
+    if (!this.a.a.onBackEvent())
+    {
+      this.a.a.finish();
+      this.a.a.b(false);
+    }
   }
 }
 

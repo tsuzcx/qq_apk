@@ -1,40 +1,17 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public class oxo
-  implements FFmpegExecuteResponseCallback
+class oxo
+  implements View.OnClickListener
 {
-  oxo(VideoCombineHelper paramVideoCombineHelper) {}
+  oxo(oxm paramoxm) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onStart");
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    b(true);
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(String paramString)
-  {
-    b(false);
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
-    }
-  }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
+    paramView = (TextView)this.a.a.findViewById(2131363062);
+    if ((paramView.getText() instanceof String)) {
+      this.a.a((String)paramView.getText());
     }
   }
 }

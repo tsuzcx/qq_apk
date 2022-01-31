@@ -1,20 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypePgcGrid;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage.OnNoItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
+import com.tencent.commonsdk.cache.QQLruCache;
+import java.util.List;
 
 public class lug
-  implements ComponentContentGridImage.OnNoItemClickListener
+  extends QQLruCache
 {
-  public lug(FeedItemCellTypePgcGrid paramFeedItemCellTypePgcGrid) {}
-  
-  public void a()
+  public lug(FastWebModule paramFastWebModule, int paramInt1, int paramInt2, int paramInt3)
   {
-    ReadInJoyBaseAdapter.OnSubRegionClickListener localOnSubRegionClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (localOnSubRegionClickListener != null) {
-      localOnSubRegionClickListener.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, List paramList1, List paramList2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
   }
 }
 

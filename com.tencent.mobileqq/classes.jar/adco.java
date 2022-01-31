@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
 
-public class adco
-  implements IUploadController
+class adco
+  implements Runnable
 {
-  public adco(DatalineFileModel paramDatalineFileModel) {}
+  adco(adcm paramadcm, byte[] paramArrayOfByte, FMTransC2CMsgInfo paramFMTransC2CMsgInfo) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a(true, FileModel.a(this.a.a.a()), this.a.b(), new adcp(this));
-  }
-  
-  public void b()
-  {
-    DatalineFileModel.b(this.a);
+    this.jdField_a_of_type_Adcm.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a(this.jdField_a_of_type_Adcm.jdField_a_of_type_JavaLangString, 529, 4, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adco
  * JD-Core Version:    0.7.0.1
  */

@@ -32,11 +32,11 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import zpq;
-import zpr;
-import zps;
-import zpt;
-import zpu;
+import zwb;
+import zwc;
+import zwd;
+import zwe;
+import zwf;
 
 public class RecentUserCache
   extends FullCache
@@ -49,8 +49,8 @@ public class RecentUserCache
   {
     super(paramQQAppInterface, paramDBDelayManager, RecentUser.class);
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(64);
-    this.jdField_a_of_type_JavaUtilComparator = new zpu(true);
-    this.jdField_b_of_type_JavaUtilComparator = new zpu(false);
+    this.jdField_a_of_type_JavaUtilComparator = new zwf(true);
+    this.jdField_b_of_type_JavaUtilComparator = new zwf(false);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new RecentUserCache.CacheMap(this, null);
     d();
   }
@@ -127,7 +127,7 @@ public class RecentUserCache
     {
       paramList.remove(localObject2);
       long l = localObject2.getId();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zpq(this, l));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zwb(this, l));
     }
   }
   
@@ -146,7 +146,7 @@ public class RecentUserCache
       do
       {
         return;
-        ThreadManager.getSubThreadHandler().post(new zpr(this, localSharedPreferences));
+        ThreadManager.getSubThreadHandler().post(new zwc(this, localSharedPreferences));
       } while (!localSharedPreferences.getBoolean("check_newfriend_when_upgrade_V2", true));
       if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
         break;
@@ -154,7 +154,7 @@ public class RecentUserCache
     } while (!QLog.isColorLevel());
     QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | descRecentList == null");
     return;
-    ThreadManager.getSubThreadHandler().post(new zps(this, localSharedPreferences));
+    ThreadManager.getSubThreadHandler().post(new zwd(this, localSharedPreferences));
   }
   
   private void f()
@@ -171,7 +171,7 @@ public class RecentUserCache
     }
     return;
     label71:
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zpt(this, localSharedPreferences));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zwe(this, localSharedPreferences));
   }
   
   private void g()
@@ -196,7 +196,7 @@ public class RecentUserCache
             QLog.d("Q.db.Cache.RecentUserCache", 2, "remove kandian merge");
           }
         }
-        if ((ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (((localRecentUser.type == 1008) && (TextUtils.equals(localRecentUser.uin, AppConstants.ar))) || (localRecentUser.type == 7210)))
+        if ((ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (((localRecentUser.type == 1008) && (TextUtils.equals(localRecentUser.uin, AppConstants.as))) || (localRecentUser.type == 7210)))
         {
           localIterator.remove();
           if (QLog.isColorLevel()) {
@@ -321,7 +321,7 @@ public class RecentUserCache
         }
         localRecentUser = (RecentUser)((Map.Entry)localIterator.next()).getValue();
         localRecentUser.parse();
-        if ((TextUtils.equals(localRecentUser.uin, AppConstants.ar)) || (TextUtils.equals(localRecentUser.uin, AppConstants.Y)))
+        if ((TextUtils.equals(localRecentUser.uin, AppConstants.as)) || (TextUtils.equals(localRecentUser.uin, AppConstants.Y)))
         {
           if (!ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
             break label344;
@@ -333,7 +333,7 @@ public class RecentUserCache
           localArrayList.add(localRecentUser);
           continue;
         }
-        if (!TextUtils.equals(localRecentUser.uin, AppConstants.as)) {
+        if (!TextUtils.equals(localRecentUser.uin, AppConstants.at)) {
           break label208;
         }
       }
@@ -368,7 +368,7 @@ public class RecentUserCache
             i = 0;
             break;
           }
-          if ((TextUtils.equals(localRecentUser.uin, AppConstants.aG)) && (!TeamWorkUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+          if ((TextUtils.equals(localRecentUser.uin, AppConstants.aH)) && (!TeamWorkUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
           {
             i = 0;
             break;
@@ -640,7 +640,7 @@ public class RecentUserCache
     Object localObject2;
     if (PublicAccountUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
     {
-      localObject1 = AppConstants.aq;
+      localObject1 = AppConstants.ar;
       localObject2 = Integer.toString(150);
       localObject1 = localEntityManager.a(RecentUser.class, false, "uin!=?", new String[] { localObject1 }, null, null, "showUpTime desc, lastmsgtime desc", (String)localObject2);
     }

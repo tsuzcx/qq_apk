@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tribe.videoupload;
 
-import aitd;
+import aiyg;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
@@ -25,7 +25,7 @@ public class TribeVideoUploadTask
     super(paramTribeVideoTaskInfo);
     paramTribeVideoTaskInfo.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
     TribeVideoFileObject localTribeVideoFileObject = new TribeVideoFileObject(paramTribeVideoTaskInfo.jdField_a_of_type_JavaLangString);
-    localTribeVideoFileObject.a(new aitd(this, paramTribeVideoTaskInfo));
+    localTribeVideoFileObject.a(new aiyg(this, paramTribeVideoTaskInfo));
     paramTribeVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localTribeVideoFileObject);
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
@@ -72,7 +72,7 @@ public class TribeVideoUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.videoupload.TribeVideoUploadTask
  * JD-Core Version:    0.7.0.1
  */

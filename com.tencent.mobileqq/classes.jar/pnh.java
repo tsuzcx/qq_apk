@@ -1,0 +1,16 @@
+import android.graphics.Rect;
+
+public final class pnh
+  extends ThreadLocal
+{
+  protected Rect a()
+  {
+    return new Rect();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     pnh
+ * JD-Core Version:    0.7.0.1
+ */

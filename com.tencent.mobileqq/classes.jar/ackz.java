@@ -1,249 +1,96 @@
-import android.content.res.Resources;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.vas.VasReportUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ackz
-  extends MessageObserver
+  extends DownloadListener
 {
-  public ackz(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  protected void a(String paramString)
+  public ackz(EmojiManager paramEmojiManager, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError.bengin 同意添加好友失败" + paramString);
-    }
-    long l2 = FriendSystemMsgController.a().b();
-    long l1 = l2;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      l1 = Long.parseLong(paramString);
-      Object localObject = FriendSystemMsgController.a().a(Long.valueOf(l1));
-      if (localObject != null)
-      {
-        localObject = String.valueOf(((structmsg.StructMsg)localObject).req_uin.get());
-        Message localMessage = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
-        localMessage.what = 2;
-        localMessage.arg1 = 3;
-        localMessage.obj = localObject;
-        Face2FaceAddFriendActivity.a(this.a).sendMessage(localMessage);
-        Face2FaceAddFriendActivity.a(this.a, 3, (String)localObject);
-        this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.b((String)localObject);
-        localObject = this.a.getResources().getString(2131437921);
-        QQToast.a(this.a, 0, (CharSequence)localObject, 0).b(this.a.getTitleBarHeight());
-        super.a(paramString);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        l1 = l2;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError structMsg = null");
-        }
-      }
-    }
+    super(paramString1, paramString2);
   }
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin 同意加对方好友回调 issuc" + paramBoolean + "logStr=" + paramString1 + ";actionType=" + paramInt1 + ";msgDetail=" + paramString2 + ";resultCode=" + paramInt2 + ";respType=" + paramInt3 + ";msgFail=" + paramString3 + ";msgInvalidDecided=" + paramString4 + ";remarkRet=" + paramInt4);
-    }
-    long l2 = FriendSystemMsgController.a().b();
-    Object localObject;
-    if ((!paramBoolean) && (paramInt2 == 32))
+    try
     {
-      QQToast.a(this.a, 0, paramString3, 0).b(this.a.getTitleBarHeight());
-      localObject = FriendSystemMsgController.a().a(Long.valueOf(l2));
-      if (localObject != null)
+      super.onDone(paramDownloadTask);
+      Bundle localBundle = paramDownloadTask.a();
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
+      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEmoticonPackage.epId);
+      int i = localBundle.getInt("businessType");
+      if (paramDownloadTask.a() != 3) {}
+      for (boolean bool = true;; bool = false)
       {
-        localObject = String.valueOf(((structmsg.StructMsg)localObject).req_uin.get());
-        Message localMessage = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
-        localMessage.what = 2;
-        localMessage.arg1 = 3;
-        localMessage.obj = localObject;
-        Face2FaceAddFriendActivity.a(this.a).sendMessage(localMessage);
-        Face2FaceAddFriendActivity.a(this.a, 3, (String)localObject);
+        long l1 = paramDownloadTask.h;
+        long l2 = paramDownloadTask.g;
+        this.a.a(localBundle, paramDownloadTask, bool, paramDownloadTask.jdField_a_of_type_Int, paramDownloadTask.d, l1 - l2, i);
+        return;
       }
-      super.a(paramBoolean, paramString1, paramInt1, paramString2, paramInt2, paramInt3, paramString3, paramString4, paramInt4);
       return;
     }
-    long l1 = l2;
-    if (!TextUtils.isEmpty(paramString1)) {}
-    try
+    catch (Exception paramDownloadTask)
     {
-      l1 = Long.parseLong(paramString1);
-      localObject = FriendSystemMsgController.a().a(Long.valueOf(l1));
-      if (localObject != null)
-      {
-        localObject = String.valueOf(((structmsg.StructMsg)localObject).req_uin.get());
-        if ((QLog.isColorLevel()) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-          QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin 同意加对方好友回调 =" + ((String)localObject).substring(0, 4));
-        }
-        this.a.e.add(localObject);
-        super.a(paramBoolean, paramString1, paramInt1, paramString2, paramInt2, paramInt3, paramString3, paramString4, paramInt4);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        l1 = l2;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionFin structMsg = null");
-        }
-      }
+      QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "onDone failed", paramDownloadTask);
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onSendSystemMsgActionError.benginisSuccess=" + paramBoolean + "uin" + paramString);
-    }
-    super.a(paramBoolean, paramString, paramLong);
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin.bengin");
-    }
-    if (paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin.success");
-      }
-    }
     for (;;)
     {
-      Object localObject;
       int i;
       try
       {
-        new ArrayList();
-        localObject = this.a.app.a().b(AppConstants.K, 0);
+        Object localObject = paramDownloadTask.a();
+        i = ((Bundle)localObject).getInt(paramDownloadTask.c);
+        localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
         if (QLog.isColorLevel()) {
-          QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin mDataList size=" + ((List)localObject).size());
+          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + paramDownloadTask);
         }
-        i = ((List)localObject).size() - 1;
-        if (i >= 0)
+        EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.b((EmoticonPackage)localObject, (int)paramDownloadTask.jdField_a_of_type_Long, (int)paramDownloadTask.b);
+        if (paramDownloadTask.jdField_a_of_type_Int != 0)
         {
-          MessageForSystemMsg localMessageForSystemMsg = (MessageForSystemMsg)((List)localObject).get(i);
-          if (localMessageForSystemMsg == null) {
-            return;
+          QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "onDoneFile : ondone error , reportCode = " + paramDownloadTask.jdField_a_of_type_Int);
+          if (EmojiManager.a(i)) {
+            EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, -1, paramDownloadTask.jdField_a_of_type_Int);
           }
-          if (QLog.isColorLevel())
-          {
-            QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "msg_type=" + localMessageForSystemMsg.structMsg.msg_type.get() + "source id" + localMessageForSystemMsg.structMsg.msg.src_id.get() + "senderuin" + localMessageForSystemMsg.senderuin);
-            QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin" + localMessageForSystemMsg.senderuin + "请求加好友");
+          VasReportUtils.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", paramDownloadTask.jdField_a_of_type_Int + "", "", "", "");
+          return;
+        }
+        if (EmojiManager.a(i))
+        {
+          EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, 0, 0);
+          if ((((EmoticonPackage)localObject).jobType != 3) && (((EmoticonPackage)localObject).jobType != 5)) {
+            break;
           }
-          if ((localMessageForSystemMsg.structMsg.msg.src_id.get() == 3021) || (localMessageForSystemMsg.structMsg.msg.src_id.get() == 2021)) {
-            break label319;
-          }
-          if (!QLog.isColorLevel()) {
-            break label667;
-          }
-          QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "此请求加好友来源不是面对面不予处理");
+          this.a.b(paramDownloadTask);
           return;
         }
       }
-      catch (Exception localException)
+      catch (Exception paramDownloadTask)
       {
-        localException.printStackTrace();
-      }
-      super.a(paramBoolean1, paramBoolean2);
-      return;
-      label319:
-      if (localException.structMsg.msg_type.get() == 1)
-      {
-        Face2FaceFriendBubbleView localFace2FaceFriendBubbleView = Face2FaceAddFriendActivity.a(this.a, localException.senderuin, 1);
-        int j;
-        if (localFace2FaceFriendBubbleView == null)
-        {
-          this.a.c.put(localException.senderuin, Integer.valueOf(3));
-          if (QLog.isColorLevel()) {
-            QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin getViewFromUin=null");
-          }
-        }
-        else
-        {
-          Iterator localIterator = this.a.e.iterator();
-          String str2;
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            str2 = (String)localIterator.next();
-          } while (!localException.senderuin.equals(str2));
-          for (boolean bool = true;; bool = false)
-          {
-            if ((localFace2FaceFriendBubbleView != null) && (bool) && (Face2FaceAddFriendActivity.a(this.a, localException.senderuin)))
-            {
-              if (!QLog.isColorLevel()) {
-                break label667;
-              }
-              QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin isAddFriend=true" + bool);
-              return;
-            }
-            j = localException.structMsg.msg.sub_type.get();
-            if (!QLog.isColorLevel()) {
-              break label668;
-            }
-            QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetSystemMsgFin subType=" + j);
-            break label668;
-            localObject = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
-            ((Message)localObject).what = 2;
-            ((Message)localObject).arg1 = 3;
-            ((Message)localObject).obj = localException.senderuin;
-            Face2FaceAddFriendActivity.a(this.a).sendMessage((Message)localObject);
-            Face2FaceAddFriendActivity.a(this.a, 3, localException.senderuin);
-            return;
-            if (!paramBoolean2) {
-              break;
-            }
-            String str1 = this.a.getResources().getString(2131433177);
-            QQToast.a(this.a, 1, str1, 0).b(this.a.getTitleBarHeight());
-            break;
-          }
-        }
+        QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "onDoneFile failed", paramDownloadTask);
         return;
-        switch (j)
-        {
-        }
       }
-      label667:
-      label668:
-      i -= 1;
+      if (i == 7) {
+        this.a.a(paramDownloadTask);
+      }
     }
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramDownloadTask.a().getSerializable("emoticonPackage");
+    EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(localEmoticonPackage);
+    super.onStart(paramDownloadTask);
+    return true;
   }
 }
 

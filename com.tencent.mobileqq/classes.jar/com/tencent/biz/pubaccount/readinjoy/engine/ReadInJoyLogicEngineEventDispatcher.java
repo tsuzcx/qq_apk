@@ -245,7 +245,7 @@ public class ReadInJoyLogicEngineEventDispatcher
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       if (localIterator.hasNext()) {
-        ((ReadInJoyObserver)localIterator.next()).Z_();
+        ((ReadInJoyObserver)localIterator.next()).ab_();
       }
     }
   }

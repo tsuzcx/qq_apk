@@ -56,8 +56,8 @@ import java.util.Locale;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import yii;
-import yik;
+import yon;
+import yop;
 
 public class SystemMsgListAdapter
   extends XBaseAdapter
@@ -69,7 +69,7 @@ public class SystemMsgListAdapter
   private ContactBindedBuilder jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendContactBindedBuilder;
   public SystemMsgListView a;
   private FlingHandler jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new yik(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new yop(this);
   private NewFriendManager jdField_a_of_type_ComTencentMobileqqAppNewFriendManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
@@ -105,10 +105,10 @@ public class SystemMsgListAdapter
   
   private void k()
   {
-    ThreadManager.postImmediately(new yii(this), null, true);
+    ThreadManager.postImmediately(new yon(this), null, true);
   }
   
-  public void Q_()
+  public void R_()
   {
     if (QLog.isColorLevel()) {
       QLog.d("SystemMsgListAdapter", 2, "onMayKnowStatesChanged");

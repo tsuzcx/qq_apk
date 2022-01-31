@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ee2" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2112" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0097">
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2113" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0284" />
-    </FrameLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a245f" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2460" android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="0.6dip" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
-    </LinearLayout>
-</LinearLayout>
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04c2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="62.0dip" android:layout_marginRight="62.0dip" android:maxHeight="4.0dip" android:max="10000" android:progress="30" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020052" android:minHeight="4.0dip" android:layout_centerInParent="true" style="?android:attr/progressBarStyleHorizontal" />
+    <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a23f5" android:paddingTop="10.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a04c2" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -161,7 +161,7 @@ public class StoryAtVideoActivity
       {
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeAtvideoViewStoryAtVideoThumbAdapter = new StoryAtVideoThumbAdapter(getActivity(), getActivity(), 0, 0);
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeAtvideoViewStoryAtVideoThumbAdapter);
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setDividerWidth(getResources().getDimensionPixelSize(2131560280));
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setDividerWidth(getResources().getDimensionPixelSize(2131560281));
       }
       paramDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a();
       Object localObject1 = new ArrayList();
@@ -300,7 +300,7 @@ public class StoryAtVideoActivity
   {
     this.mUseOptimizMode = true;
     super.doOnCreate(paramBundle);
-    setContentView(2130970686);
+    setContentView(2130970703);
     paramBundle = getIntent();
     if (paramBundle == null) {
       return false;
@@ -309,12 +309,12 @@ public class StoryAtVideoActivity
     this.jdField_b_of_type_JavaLangString = paramBundle.getStringExtra("extra_at_video_scroll_to_feed_id");
     setTitle("选择@的小视频");
     setLeftButton("取消", null);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView = ((StoryHomeHorizontalListView)a(2131371650));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131371646));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView = ((QQStoryAutoPlayView)a(2131371647));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371648));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371649));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131371651));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView = ((StoryHomeHorizontalListView)a(2131371651));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131371647));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView = ((QQStoryAutoPlayView)a(2131371648));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371649));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371650));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131371652));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager = ((FeedVideoManager)SuperManager.a(12));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller = new DetailFeedAllInfoPuller(this.jdField_a_of_type_JavaLangString, this, false);
     a(true);

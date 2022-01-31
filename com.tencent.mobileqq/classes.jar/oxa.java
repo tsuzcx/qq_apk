@@ -1,25 +1,15 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate.CallBack;
 
 public class oxa
-  extends oxo
+  implements Runnable
 {
-  public oxa(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, String paramString)
-  {
-    super(paramVideoCombineHelper);
-  }
+  public oxa(CustomAccessibilityDelegate paramCustomAccessibilityDelegate) {}
   
-  public void b(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitVideoUnit end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a));
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a = System.currentTimeMillis();
-    }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, false, "splitVideo done.");
+    if (CustomAccessibilityDelegate.a(this.a) != null) {
+      CustomAccessibilityDelegate.a(this.a).b();
     }
   }
 }

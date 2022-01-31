@@ -1,17 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextPaint;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class vbp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vbp(MarketFaceItemBuilder paramMarketFaceItemBuilder, MarketFaceItemBuilder.Holder paramHolder) {}
+  public vbp(FileItemBuilder paramFileItemBuilder, vbs paramvbs, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ThreadManager.post(new vbq(this), 5, null, true);
+    TextView localTextView = this.jdField_a_of_type_Vbs.a;
+    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
+    boolean bool = FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder);
+    int j = this.jdField_a_of_type_Vbs.a.getMeasuredWidth();
+    TextPaint localTextPaint = this.jdField_a_of_type_Vbs.a.getPaint();
+    if (FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder)) {}
+    for (int i = 2;; i = 3)
+    {
+      localTextView.setText(FileManagerUtil.a(str, bool, j, localTextPaint, i));
+      return;
+    }
   }
 }
 

@@ -1,35 +1,27 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.redbag.GuideTip2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import java.lang.ref.WeakReference;
 
 public class kfb
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public kfb(GuideTip2 paramGuideTip2) {}
+  WeakReference a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public kfb(EffectFilterPanel paramEffectFilterPanel)
   {
-    try
-    {
-      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
-      this.a.a(false, 3);
-      return true;
-    }
-    catch (Exception paramMotionEvent)
-    {
-      for (;;)
-      {
-        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
-      }
+    this.a = new WeakReference(paramEffectFilterPanel);
+  }
+  
+  public void run()
+  {
+    EffectFilterPanel localEffectFilterPanel = (EffectFilterPanel)this.a.get();
+    if (localEffectFilterPanel != null) {
+      localEffectFilterPanel.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kfb
  * JD-Core Version:    0.7.0.1
  */

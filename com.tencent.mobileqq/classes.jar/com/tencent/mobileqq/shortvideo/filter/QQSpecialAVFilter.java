@@ -148,6 +148,11 @@ public class QQSpecialAVFilter
     }
   }
   
+  public boolean f_()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
   public void h()
   {
     QQAVImageFilter localQQAVImageFilter = a(a().f(), a().g());
@@ -197,11 +202,6 @@ public class QQSpecialAVFilter
       this.jdField_a_of_type_Boolean = false;
       return;
     }
-  }
-  
-  public boolean i_()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

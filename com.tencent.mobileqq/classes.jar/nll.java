@@ -1,21 +1,19 @@
-import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareQQData;
 
 public class nll
-  extends OnPlayModeShareListener
+  extends EncryptUrlJob
 {
-  public nll(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode, VideoPlayModeBase paramVideoPlayModeBase, ShareGroupItem paramShareGroupItem)
+  public nll(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareQQData paramShareQQData)
   {
-    super(paramVideoPlayModeBase);
+    super(paramString1, paramString2, paramBoolean);
   }
   
-  public void a(int paramInt)
+  public boolean b()
   {
-    super.a(paramInt);
-    StoryReportor.a("share_story", "single_suc", 0, paramInt, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.h = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

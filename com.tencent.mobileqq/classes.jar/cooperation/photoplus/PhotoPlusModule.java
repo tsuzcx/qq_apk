@@ -1,6 +1,6 @@
 package cooperation.photoplus;
 
-import amls;
+import amte;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -51,7 +51,7 @@ public class PhotoPlusModule
       if ("action_get_sticker_templates".equals(paramString))
       {
         paramBundle.b(true);
-        ThreadManager.postImmediately(new amls(this, paramBundle, paramInt), null, true);
+        ThreadManager.postImmediately(new amte(this, paramBundle, paramInt), null, true);
         return null;
       }
       if ("action_exit_sticker".equals(paramString))

@@ -19,7 +19,7 @@ import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mzg;
+import nda;
 
 public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
   extends BaseAdapter
@@ -54,15 +54,15 @@ public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
     int i;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(PublicAccountImageCollectionRecommendViewWrapper.a()).inflate(2130969197, paramViewGroup, false);
-      paramViewGroup = new mzg(this);
+      paramView = LayoutInflater.from(PublicAccountImageCollectionRecommendViewWrapper.a()).inflate(2130969195, paramViewGroup, false);
+      paramViewGroup = new nda(this);
       localObject1 = paramView.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject1).height = ((PublicAccountImageCollectionRecommendViewWrapper.b() - AIOUtils.a(110.0F, PublicAccountImageCollectionRecommendViewWrapper.a().getResources())) / 3);
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of item is" + ((ViewGroup.LayoutParams)localObject1).height);
       }
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131365564));
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131365569));
       localObject2 = paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject2).width = ((PublicAccountImageCollectionRecommendViewWrapper.c() - AIOUtils.a(2.0F, PublicAccountImageCollectionRecommendViewWrapper.a().getResources())) / 2);
       ((ViewGroup.LayoutParams)localObject2).height = (((ViewGroup.LayoutParams)localObject2).width * 9 / 16);
@@ -70,7 +70,7 @@ public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of image is" + ((ViewGroup.LayoutParams)localObject2).height);
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365565));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365570));
       if (((ViewGroup.LayoutParams)localObject1).height - ((ViewGroup.LayoutParams)localObject2).height - AIOUtils.a(40.0F, PublicAccountImageCollectionRecommendViewWrapper.a().getResources()) > AIOUtils.a(16.0F, PublicAccountImageCollectionRecommendViewWrapper.a().getResources()))
       {
         i = 2;
@@ -114,7 +114,7 @@ public class PublicAccountImageCollectionRecommendViewWrapper$PhotoAdapter
       return paramView;
       i = 1;
       break;
-      paramViewGroup = (mzg)paramView.getTag();
+      paramViewGroup = (nda)paramView.getTag();
     }
   }
 }

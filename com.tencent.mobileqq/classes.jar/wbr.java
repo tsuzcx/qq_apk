@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationItem;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
-import java.util.List;
-import java.util.Map;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
 
 public class wbr
   implements Runnable
 {
-  public wbr(StickerBubbleAnimationView paramStickerBubbleAnimationView, StickerBubbleAnimationItem paramStickerBubbleAnimationItem) {}
+  public wbr(NearbyChatPie paramNearbyChatPie) {}
   
   public void run()
   {
-    List localList = (List)StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).get(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem.a());
-    if ((localList == null) || (!localList.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem)))
-    {
-      localList = (List)StickerBubbleAnimationView.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).get(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem.a());
-      if (localList != null) {
-        localList.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem);
-      }
-    }
+    Intent localIntent = this.a.a.getIntent();
+    localIntent.putExtra("uintype", 0);
+    NearbyChatPie.a(this.a, localIntent);
   }
 }
 

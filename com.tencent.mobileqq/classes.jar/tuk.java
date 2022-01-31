@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
 
 public class tuk
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public tuk(SubLoginActivity paramSubLoginActivity) {}
+  public tuk(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.b = false;
+    this.a.onBackEvent();
   }
 }
 

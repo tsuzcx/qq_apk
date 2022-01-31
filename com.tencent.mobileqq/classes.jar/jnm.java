@@ -1,123 +1,99 @@
-import android.app.Application;
-import android.content.Intent;
-import android.os.IBinder.DeathRecipient;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
 import android.os.RemoteException;
-import android.text.TextUtils;
-import com.tencent.av.AVLog;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.av.utils.QAVNotification;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
+import com.tencent.av.service.IAVRedPacketCallback;
+import com.tencent.av.ui.funchat.record.QavRecordDpc;
+import com.tencent.av.ui.funchat.record.QavRecordReporter;
+import com.tencent.av.ui.funchat.record.QavRecordUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class jnm
-  implements IBinder.DeathRecipient
+public class jnm
+  implements Runnable
 {
-  jnm(jnk paramjnk) {}
+  public jnm(AVRedPacketConfigManager paramAVRedPacketConfigManager, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3) {}
   
-  public void binderDied()
+  public void run()
   {
-    AVLog.d("QQServiceForAV", "binderDied, video process died!");
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.a();
-    if (localQQAppInterface != null) {
-      localQQAppInterface.a = null;
+    QLog.d("AVRedPacketConfigManger", 1, "onDownloadFinish,subHandler runnable start,threadName = " + Thread.currentThread().getName());
+    boolean bool;
+    if (this.jdField_a_of_type_Int == 0) {
+      bool = true;
     }
-    try
+    for (;;)
     {
-      this.a.a();
-      if ((TextUtils.isEmpty(this.a.a.c)) && (localQQAppInterface != null)) {
-        this.a.a.c = localQQAppInterface.getCurrentAccountUin();
-      }
-      str3 = this.a.a.jdField_b_of_type_JavaLangString;
-      str4 = this.a.a.c;
-      if ((this.a.a.jdField_a_of_type_Int == 1004) || (this.a.a.jdField_a_of_type_Int == 1000) || (this.a.a.jdField_a_of_type_Int == 1020))
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4);
+      if ((bool) && (localFile.exists()))
       {
-        str2 = this.a.a.d;
-        Object localObject = str3;
-        if ((localQQAppInterface != null) && (localQQAppInterface.c()))
-        {
-          AVLog.d("QQServiceForAV", "video chatting!");
-          AVLog.d("QQServiceForAV", "linkToVideoProcessDeath-->uinType=" + this.a.a.jdField_a_of_type_Int + " friendUin=" + (String)localObject + " senderUin=" + str2);
-          if ((localObject == null) || (((String)localObject).length() <= 2)) {
-            break label915;
-          }
-          i = 1;
-          if ((this.a.a.jdField_b_of_type_Boolean) && (i != 0)) {
-            VideoMsgTools.a(localQQAppInterface, this.a.a.jdField_a_of_type_Int, 45, true, (String)localObject, str2, true, null, true, new Object[0]);
-          }
+        long l1 = localSharedPreferences.getLong(this.jdField_b_of_type_JavaLangString, -1L);
+        long l2 = localFile.lastModified();
+        if ((l1 != -1L) && (l1 != l2)) {
+          localSharedPreferences.edit().putInt("pcm_" + this.jdField_b_of_type_JavaLangString, 0).commit();
         }
-        localObject = new Intent();
-        ((Intent)localObject).setAction("tencent.av.v2q.StopVideoChat");
-        ((Intent)localObject).putExtra("uinType", this.a.a.jdField_a_of_type_Int);
-        ((Intent)localObject).putExtra("bindType", this.a.a.jdField_b_of_type_Int);
-        ((Intent)localObject).putExtra("bindId", this.a.a.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("peerUin", this.a.a.jdField_b_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("extraUin", this.a.a.d);
-        ((Intent)localObject).putExtra("stopReason", 0);
-        ((Intent)localObject).setPackage(this.a.a.getApplication().getPackageName());
-        if ((this.a.a.jdField_b_of_type_JavaLangString != null) && ((this.a.a.jdField_a_of_type_Int != 1006) || (this.a.a.d != null)))
+        if ((this.jdField_b_of_type_Int == 2) && (l1 != l2))
         {
-          AVLog.d("QQServiceForAV", "ACTION_STOP_VIDEO_CHAT, stopReason = VideoConstants.CLOSE_DOUBLE, mUinType = " + this.a.a.jdField_a_of_type_Int + ", peerUin = " + this.a.a.jdField_b_of_type_JavaLangString);
-          this.a.a.sendBroadcast((Intent)localObject);
-        }
-        if (localQQAppInterface != null)
-        {
-          long l1 = localQQAppInterface.a().b();
-          i = localQQAppInterface.a().a();
-          int j = (int)localQQAppInterface.a().a(i, l1);
-          if ((l1 > 0L) && (this.a.a.jdField_b_of_type_Boolean))
-          {
-            long l2 = Long.valueOf(localQQAppInterface.getCurrentAccountUin()).longValue();
-            localObject = new Intent();
-            ((Intent)localObject).setAction("tencent.av.v2q.MultiVideo");
-            ((Intent)localObject).putExtra("type", 23);
-            ((Intent)localObject).putExtra("friendUin", l2);
-            ((Intent)localObject).putExtra("relationType", i);
-            ((Intent)localObject).putExtra("relationId", l1);
-            ((Intent)localObject).putExtra("from", "QQServiceForAV");
-            ((Intent)localObject).putExtra("MultiAVType", localQQAppInterface.a().b(l1));
-            if (j <= 1) {
-              break label920;
-            }
-            ((Intent)localObject).putExtra("roomUserNum", j - 1);
-            ((Intent)localObject).setPackage(this.a.a.getApplication().getPackageName());
-            AVLog.d("QQServiceForAV", "linkToVideoProcessDeath MULTI_VIDEO_V2Q -->uinType=" + this.a.a.jdField_a_of_type_Int + " roomNum=" + j);
-            this.a.a.sendBroadcast((Intent)localObject);
+          QavRecordDpc localQavRecordDpc = QavRecordDpc.a();
+          if ((localQavRecordDpc == null) || (localQavRecordDpc.g != 1) || (!QavRecordUtils.a(this.jdField_b_of_type_JavaLangString))) {
+            break label629;
           }
-          this.a.a.jdField_b_of_type_Boolean = false;
-          localQQAppInterface.a().a(0, 0);
+          AVRedPacketConfigManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager).removeMessages(100);
+          AVRedPacketConfigManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager).sendEmptyMessageDelayed(100, 60000L);
+          l2 = System.currentTimeMillis();
+          QavRecordUtils.a(this.jdField_a_of_type_JavaLangString);
+          long l3 = System.currentTimeMillis();
+          AVRedPacketConfigManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager).removeMessages(100);
+          QavRecordReporter.a(l3 - l2);
         }
-        QAVNotification.a(this.a.a.getApplicationContext());
-        QQServiceForAV.jdField_a_of_type_AndroidOsIBinder = null;
+        label262:
+        l2 = localFile.lastModified();
+        localSharedPreferences.edit().putLong(this.jdField_b_of_type_JavaLangString, l2).commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + this.c + ",md5 = " + this.jdField_b_of_type_JavaLangString + ",errCode = " + this.jdField_a_of_type_Int + ",path = " + this.jdField_a_of_type_JavaLangString + ",modifyTime = " + l2 + ", spModifiedTime=" + l1);
+        }
       }
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
+      if (this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback != null)
       {
-        String str3;
-        String str4;
-        int i;
-        localRemoteException.printStackTrace();
-        AVLog.e("QQServiceForAV", "linkToDeath stopPumpMessage exception msg = " + localRemoteException.getMessage());
+        if (this.jdField_b_of_type_Int != 1) {
+          break label640;
+        }
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+        label419:
+        if (QLog.isColorLevel()) {
+          QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + this.c + ",md5 = " + this.jdField_b_of_type_JavaLangString + ",errCode = " + this.jdField_a_of_type_Int + ",path = " + this.jdField_a_of_type_JavaLangString + ",downloadBgMusicFinish = " + this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.c + ",downloadResFinish = " + this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_Boolean + ",downloadCallBack = " + this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback);
+        }
+        if ((!this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.c)) {}
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback.a(bool, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_JavaLangString);
+        if (bool) {
+          localSharedPreferences.edit().putBoolean("res_exist", true).commit();
+        }
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback = null;
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.a("onDownloadFinish");
+        return;
+        bool = false;
         continue;
-        String str1 = str3;
-        String str2 = str4;
-        if (this.a.a.jdField_a_of_type_Int == 1006)
+        label629:
+        QLog.i("AVRedPacketConfigManger", 1, "convertMp3ToPcm dpc != 1 or is rubbish device");
+        break label262;
+        label640:
+        if (this.jdField_b_of_type_Int != 2) {
+          break label419;
+        }
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.c = true;
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        for (;;)
         {
-          str1 = str3;
-          str2 = str4;
-          if (!str3.startsWith("+"))
-          {
-            str1 = this.a.a.d;
-            str2 = str4;
-            continue;
-            label915:
-            i = 0;
-            continue;
-            label920:
-            str1.putExtra("roomUserNum", 0);
-          }
+          localRemoteException.printStackTrace();
         }
       }
     }
@@ -125,7 +101,7 @@ class jnm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jnm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,22 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class aihb
-  implements FileFilter
+class aihb
+  implements Camera.AutoFocusCallback
 {
-  public boolean accept(File paramFile)
+  aihb(aiha paramaiha) {}
+  
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraProxy", 2, "Request Focus onAutoFocus");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aihb
  * JD-Core Version:    0.7.0.1
  */

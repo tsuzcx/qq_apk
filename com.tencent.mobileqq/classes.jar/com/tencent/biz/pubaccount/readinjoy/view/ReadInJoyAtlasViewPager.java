@@ -10,8 +10,8 @@ import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qphone.base.util.QLog;
-import mgt;
-import mgu;
+import mkg;
+import mkh;
 
 public class ReadInJoyAtlasViewPager
   extends ViewPager
@@ -61,7 +61,7 @@ public class ReadInJoyAtlasViewPager
       }
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setFloatValues(new float[] { j, i + j });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new mgt(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new mkg(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return;
     }
@@ -76,7 +76,7 @@ public class ReadInJoyAtlasViewPager
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setFloatValues(new float[] { i, i - i });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new mgu(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new mkh(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -127,9 +127,6 @@ public class ReadInJoyAtlasViewPager
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "dispatchTouchEvent()  action=" + i);
-    }
     float f1;
     if (i == 0)
     {

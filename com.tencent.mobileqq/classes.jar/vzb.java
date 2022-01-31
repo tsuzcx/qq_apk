@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import mqq.os.MqqHandler;
 
 public class vzb
   implements Runnable
 {
-  public vzb(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vzb(GameRoomChatPie paramGameRoomChatPie) {}
   
   public void run()
   {
-    boolean bool = false;
-    PublicAccountChatPie localPublicAccountChatPie = this.a;
-    if ((this.a.b(true)) || (this.a.b(false))) {
-      bool = true;
+    synchronized (this.a)
+    {
+      this.a.a.a(this.a.a(), this.a);
+      GameRoomChatPie.a(this.a).post(new vzc(this));
+      return;
     }
-    localPublicAccountChatPie.an = bool;
   }
 }
 

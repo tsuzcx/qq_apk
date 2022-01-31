@@ -483,15 +483,22 @@ public class ChatFontJsPlugin
                 getDiyFontInfo(i, j, paramString1);
                 return true;
               }
-              if (!"setMagicFontType".equals(paramString3)) {
-                break;
+              if ("setMagicFontType".equals(paramString3))
+              {
+                paramJsBridgeListener = "setupFontEffect";
+                k = paramString2.optInt("id");
+                if (QLog.isColorLevel()) {
+                  QLog.i("ChatFontJsPlugin", 2, "fontEffectId: " + k);
+                }
+                this.mReqBundle.putInt("fontEffectId", k);
               }
-              paramJsBridgeListener = "setupFontEffect";
-              k = paramString2.optInt("id");
-              if (QLog.isColorLevel()) {
-                QLog.i("ChatFontJsPlugin", 2, "fontEffectId: " + k);
+              else
+              {
+                if (!"paymentNotice".equals(paramString3)) {
+                  break;
+                }
+                paramJsBridgeListener = "ipc_hiboom_payment_notice";
               }
-              this.mReqBundle.putInt("fontEffectId", k);
             }
           }
         }
@@ -510,7 +517,7 @@ public class ChatFontJsPlugin
   void initHYEngine(String paramString)
   {
     int j = -1;
-    int k = VasUtils.a(VasUtils.a(), "libvipfont.so");
+    int k = VasUtils.a(VasUtils.a(), "libvipfont765.so");
     if (QLog.isColorLevel()) {
       QLog.d("ChatFontJsPlugin", 2, "initHYEngine result = " + k);
     }
@@ -563,7 +570,7 @@ public class ChatFontJsPlugin
       if (this.isUseFont) {
         break;
       }
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(this.mRuntime.a(), 230).setTitle(this.mRuntime.a().getString(2131433265)).setMessage(this.mRuntime.a().getString(2131433617)).setPositiveButton(this.mRuntime.a().getString(2131433618), new ChatFontJsPlugin.3(this, localJSONObject, paramString)).setNegativeButton(this.mRuntime.a().getString(2131433619), new ChatFontJsPlugin.2(this, localJSONObject, paramString));
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(this.mRuntime.a(), 230).setTitle(this.mRuntime.a().getString(2131433279)).setMessage(this.mRuntime.a().getString(2131433631)).setPositiveButton(this.mRuntime.a().getString(2131433632), new ChatFontJsPlugin.3(this, localJSONObject, paramString)).setNegativeButton(this.mRuntime.a().getString(2131433633), new ChatFontJsPlugin.2(this, localJSONObject, paramString));
       localQQCustomDialog.show();
       localQQCustomDialog.setOnCancelListener(new ChatFontJsPlugin.4(this, localJSONObject, paramString));
       return;
@@ -918,7 +925,7 @@ public class ChatFontJsPlugin
     QLog.d("ChatFontJsPlugin", 2, "tryInitHYEngine has inited");
     return;
     ETEngine.getInstance().isEngineInited.set(true);
-    int k = VasUtils.a(VasUtils.a(), "libvipfont.so");
+    int k = VasUtils.a(VasUtils.a(), "libvipfont765.so");
     if (QLog.isColorLevel()) {
       QLog.d("ChatFontJsPlugin", 2, "tryInitHYEngine loadSoResult = " + k);
     }
@@ -965,7 +972,7 @@ public class ChatFontJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatFontJsPlugin
  * JD-Core Version:    0.7.0.1
  */

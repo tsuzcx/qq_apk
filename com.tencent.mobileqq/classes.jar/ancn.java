@@ -1,27 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiFeedInfo;
 
-public class ancn
-  extends Handler
+public final class ancn
+  implements Parcelable.Creator
 {
-  public ancn(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
-  
-  public void handleMessage(Message paramMessage)
+  public WeishiFeedInfo a(Parcel paramParcel)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String[])));
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = (String[])paramMessage.obj;
-    localArrayList.add(QzoneDynamicAlbumPlugin.a(this.a, arrayOfString));
-    this.a.a(localArrayList, paramMessage.arg1);
+    return new WeishiFeedInfo(paramParcel);
+  }
+  
+  public WeishiFeedInfo[] a(int paramInt)
+  {
+    return new WeishiFeedInfo[paramInt];
   }
 }
 

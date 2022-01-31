@@ -1,8 +1,8 @@
 package cooperation.buscard;
 
-import amix;
-import amiz;
-import amja;
+import amqj;
+import amql;
+import amqm;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -29,8 +29,8 @@ public class BuscardPluginInstallActivity
   extends BaseActivity
 {
   public long a;
-  private amja jdField_a_of_type_Amja;
-  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new amiz(this);
+  private amqm jdField_a_of_type_Amqm;
+  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new amql(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private IPluginManager jdField_a_of_type_CooperationPluginIPluginManager;
   protected QWalletPayProgressDialog a;
@@ -95,8 +95,8 @@ public class BuscardPluginInstallActivity
     this.jdField_a_of_type_JavaLangStringBuilder.append(" ==step2:initPluginManager app.getManager cost=" + (l2 - l1));
     a(true);
     l1 = System.currentTimeMillis();
-    amix localamix = new amix(this);
-    ThreadManager.getSubThreadHandler().post(localamix);
+    amqj localamqj = new amqj(this);
+    ThreadManager.getSubThreadHandler().post(localamqj);
     l2 = System.currentTimeMillis();
     this.jdField_a_of_type_JavaLangStringBuilder.append(" ==step3:initPluginManager post runnable cost=" + (l2 - l1) + ";post time=" + l2);
   }
@@ -345,8 +345,8 @@ public class BuscardPluginInstallActivity
     {
       paramBundle = new IntentFilter();
       paramBundle.addAction("bridge.plugin.onresume.broadcast");
-      this.jdField_a_of_type_Amja = new amja(this, null);
-      registerReceiver(this.jdField_a_of_type_Amja, paramBundle);
+      this.jdField_a_of_type_Amqm = new amqm(this, null);
+      registerReceiver(this.jdField_a_of_type_Amqm, paramBundle);
       Intent localIntent = getIntent();
       if (localIntent != null)
       {
@@ -385,8 +385,8 @@ public class BuscardPluginInstallActivity
     StringBuilder localStringBuilder;
     try
     {
-      if (this.jdField_a_of_type_Amja != null) {
-        unregisterReceiver(this.jdField_a_of_type_Amja);
+      if (this.jdField_a_of_type_Amqm != null) {
+        unregisterReceiver(this.jdField_a_of_type_Amqm);
       }
       a(false);
       super.doOnDestroy();

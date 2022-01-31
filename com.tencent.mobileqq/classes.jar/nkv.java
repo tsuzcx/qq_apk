@@ -1,43 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.handler.DeleteStoryVideoHandler;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoManager;
-import com.tencent.biz.qqstory.troop.TroopStoryManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
 
 public class nkv
-  implements DialogInterface.OnClickListener
+  extends UploadImageJob
 {
-  public nkv(NewFriendsPlayMode paramNewFriendsPlayMode, StoryVideoItem paramStoryVideoItem) {}
+  public nkv(ShareModeBase paramShareModeBase, ShareQZoneData paramShareQZoneData) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.s();
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a("");
-    if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
-    {
-      ((StoryVideoUploadManager)SuperManager.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mGroupId);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
-    {
-      ((TroopStoryManager)PlayModeUtils.a().getManager(207)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new nkw(this));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.g, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.p, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    new DeleteStoryVideoHandler().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

@@ -1,30 +1,220 @@
 package com.tencent.mapsdk.rastercore.e;
 
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.PointF;
 import com.tencent.mapsdk.raster.model.LatLng;
+import com.tencent.mapsdk.raster.model.LatLngBounds;
+import com.tencent.mapsdk.raster.model.LatLngBounds.Builder;
+import com.tencent.mapsdk.raster.model.PolygonOptions;
+import com.tencent.mapsdk.rastercore.d.a;
+import com.tencent.mapsdk.rastercore.d.f;
+import com.tencent.mapsdk.rastercore.f.b;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public abstract interface d
-  extends b
+public class d
+  implements c
 {
-  public abstract float a();
+  private List<LatLng> a = new ArrayList();
+  private int b;
+  private int c;
+  private LatLngBounds d = null;
+  private boolean e = true;
+  private float f;
+  private float g = 0.0F;
+  private String h;
+  private f i;
+  private a j;
   
-  public abstract void a(float paramFloat);
+  public d(f paramf, PolygonOptions paramPolygonOptions)
+  {
+    this.i = paramf;
+    this.j = paramf.e();
+    this.h = getId();
+    this.b = paramPolygonOptions.getFillColor();
+    b(paramPolygonOptions.getPoints());
+    this.e = paramPolygonOptions.isVisible();
+    this.f = paramPolygonOptions.getStrokeWidth();
+    this.g = paramPolygonOptions.getZIndex();
+    this.c = paramPolygonOptions.getStrokeColor();
+  }
   
-  public abstract void a(int paramInt);
+  private void b(List<LatLng> paramList)
+  {
+    LatLngBounds.Builder localBuilder = LatLngBounds.builder();
+    this.a.clear();
+    if (paramList != null)
+    {
+      Iterator localIterator = paramList.iterator();
+      paramList = null;
+      while (localIterator.hasNext())
+      {
+        LatLng localLatLng = (LatLng)localIterator.next();
+        if (!localLatLng.equals(paramList))
+        {
+          this.a.add(localLatLng);
+          localBuilder.include(localLatLng);
+          paramList = localLatLng;
+        }
+      }
+      int k = this.a.size();
+      if ((k > 1) && (((LatLng)this.a.get(0)).equals((LatLng)this.a.get(k - 1)))) {
+        this.a.remove(k - 1);
+      }
+    }
+    this.d = localBuilder.build();
+  }
   
-  public abstract void a(List<LatLng> paramList);
+  public float a()
+  {
+    return this.f;
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public void a(float paramFloat)
+  {
+    this.f = paramFloat;
+    this.i.a(false, false);
+  }
   
-  public abstract int b();
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+    this.i.a(false, false);
+  }
   
-  public abstract void b(boolean paramBoolean);
+  public void a(List<LatLng> paramList)
+  {
+    b(paramList);
+    this.i.a(false, false);
+  }
   
-  public abstract List<LatLng> c();
+  public boolean a(LatLng paramLatLng)
+  {
+    return b.a(paramLatLng, c());
+  }
   
-  public abstract boolean d();
+  public int b()
+  {
+    return this.b;
+  }
   
-  public abstract boolean e();
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
+    this.i.a(false, false);
+  }
+  
+  public List<LatLng> c()
+  {
+    return this.a;
+  }
+  
+  public boolean checkInBounds()
+  {
+    if (this.d == null) {}
+    LatLngBounds localLatLngBounds;
+    do
+    {
+      return false;
+      localLatLngBounds = this.i.b().c();
+      if (localLatLngBounds == null) {
+        return true;
+      }
+    } while ((!this.d.contains(localLatLngBounds)) && (!this.d.intersects(localLatLngBounds)));
+    return true;
+  }
+  
+  public int d()
+  {
+    return this.c;
+  }
+  
+  public void destroy() {}
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if ((this.a == null) || (this.a.size() == 0)) {}
+    Path localPath;
+    Object localObject;
+    do
+    {
+      return;
+      localPath = new Path();
+      localObject = (LatLng)this.a.get(0);
+      new PointF();
+      localObject = this.i.b().a((LatLng)localObject);
+      localPath.moveTo(((PointF)localObject).x, ((PointF)localObject).y);
+      int k = 1;
+      while (k < this.a.size())
+      {
+        localObject = (LatLng)this.a.get(k);
+        new PointF();
+        localObject = this.i.b().a((LatLng)localObject);
+        localPath.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
+        k += 1;
+      }
+      localObject = new Paint();
+      ((Paint)localObject).setColor(b());
+      ((Paint)localObject).setAntiAlias(true);
+      ((Paint)localObject).setStyle(Paint.Style.FILL);
+      localPath.close();
+      paramCanvas.drawPath(localPath, (Paint)localObject);
+    } while (b.a(a(), 0.0F));
+    ((Paint)localObject).setStyle(Paint.Style.STROKE);
+    ((Paint)localObject).setColor(d());
+    ((Paint)localObject).setStrokeWidth(a());
+    paramCanvas.drawPath(localPath, (Paint)localObject);
+  }
+  
+  public boolean equalsRemote(c paramc)
+  {
+    return (equals(paramc)) || (paramc.getId().equals(getId()));
+  }
+  
+  public String getId()
+  {
+    if (this.h == null) {
+      this.h = a.a("Polygon");
+    }
+    return this.h;
+  }
+  
+  public float getZIndex()
+  {
+    return this.g;
+  }
+  
+  public int hashCodeRemote()
+  {
+    return super.hashCode();
+  }
+  
+  public boolean isVisible()
+  {
+    return this.e;
+  }
+  
+  public void remove()
+  {
+    this.j.b(getId());
+  }
+  
+  public void setVisible(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+    this.i.a(false, false);
+  }
+  
+  public void setZIndex(float paramFloat)
+  {
+    this.g = paramFloat;
+    this.j.c();
+    this.i.a(false, false);
+  }
 }
 
 

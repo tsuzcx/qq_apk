@@ -1,53 +1,38 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
-import com.tencent.mobileqq.ark.ArkAppInfo.AppDownloadInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask.Result;
-import java.util.HashMap;
-import java.util.Locale;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aauv
-  implements aawd
+class aauv
+  implements DialogInterface.OnClickListener
 {
-  public aauv(ArkLocalAppMgr paramArkLocalAppMgr) {}
+  aauv(aaut paramaaut, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, Object arg2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    for (;;)
+    ArkAppCenter.a().post(new aauw(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      synchronized (ArkLocalAppMgr.a(this.a))
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaut.a, "ark_authority_api_location", this.jdField_a_of_type_Aaut.c, 2);
+      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438843), 2131435285, 2131435285, new DialogUtil.DialogOnClickAdapter(), null);
+      try
       {
-        ArkLocalAppMgr.a(this.a).remove(paramUpdateAppByNameTask.jdField_b_of_type_JavaLangString);
-        if ((paramUpdateAppByNameTask.jdField_a_of_type_Int == 1) || (paramUpdateAppByNameTask.jdField_a_of_type_Int == 2))
-        {
-          String str = "";
-          ??? = str;
-          if (paramUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo != null)
-          {
-            ??? = str;
-            if (paramUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a != null)
-            {
-              ??? = str;
-              if (!TextUtils.isEmpty(paramUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a.jdField_b_of_type_JavaLangString)) {
-                ??? = paramUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a.jdField_b_of_type_JavaLangString;
-              }
-            }
-          }
-          if (paramUpdateAppByNameTask.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo == null) {
-            break label198;
-          }
-          i = paramUpdateAppByNameTask.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_Int;
-          ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format(Locale.CHINA, "runUpdateLocalAppTask, updateAppByName success, result=%s, app-name=%s, app-version=%s, update-period=%d", new Object[] { ArkLocalAppMgr.UpdateAppByNameTask.Result.a(paramUpdateAppByNameTask.jdField_a_of_type_Int), paramUpdateAppByNameTask.jdField_b_of_type_JavaLangString, ???, Integer.valueOf(i) }));
-          return;
-        }
+        paramDialogInterface.show();
+        return;
       }
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("runUpdateLocalAppTask, updateAppByName fail, result=%s, app-name=%s", new Object[] { ArkLocalAppMgr.UpdateAppByNameTask.Result.a(paramUpdateAppByNameTask.jdField_a_of_type_Int), paramUpdateAppByNameTask.jdField_b_of_type_JavaLangString }));
-      return;
-      label198:
-      int i = 0;
+      catch (Exception paramDialogInterface) {}
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label38;
     }
   }
 }

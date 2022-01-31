@@ -1,14 +1,39 @@
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.util.WeakReference;
+
 public class mua
+  implements GifDrawable.OnGIFPlayOnceListener
 {
-  public int a;
-  public boolean a;
-  public int b;
+  AbstractGifImage a;
   
-  public mua(int paramInt1, int paramInt2, boolean paramBoolean)
+  public mua(AbstractGifImage paramAbstractGifImage)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramAbstractGifImage;
+  }
+  
+  public void onPlayOnce()
+  {
+    Object localObject = (List)ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.a().get(this.a);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if (localWeakReference.get() != null) {
+          ((ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener)localWeakReference.get()).a();
+        }
+      }
+    }
+    this.a.setGIFPlayOnceListener(null);
+    ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.b().remove(this.a);
+    ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.a().remove(this.a);
   }
 }
 

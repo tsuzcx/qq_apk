@@ -16,13 +16,13 @@ import com.tencent.av.AVLog;
 import com.tencent.av.business.handler.SentenceInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import kdk;
+import kfp;
 
 public class ZimuItemViewFilm
   extends ZimuItemView
 {
   private long jdField_a_of_type_Long;
-  Handler jdField_a_of_type_AndroidOsHandler = new kdk(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new kfp(this);
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_b_of_type_AndroidGraphicsCanvas = new Canvas();
   Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint(2);
@@ -369,7 +369,7 @@ public class ZimuItemViewFilm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuItemViewFilm
  * JD-Core Version:    0.7.0.1
  */

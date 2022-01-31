@@ -1,17 +1,17 @@
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
-import com.tencent.util.InputMethodUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class ogi
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ogi(EditVideoPoiSearch paramEditVideoPoiSearch) {}
+  public ogi(GuideInfoDialog paramGuideInfoDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.setFocusableInTouchMode(true);
-    this.a.a.requestFocus();
-    InputMethodUtil.a(this.a.a);
+    StoryReportor.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.a.dismiss();
   }
 }
 

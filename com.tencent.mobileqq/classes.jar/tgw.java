@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
-class tgw
-  implements Runnable
+public class tgw
+  extends Handler
 {
-  tgw(tgv paramtgv, int paramInt) {}
+  public tgw(NearbyActivity paramNearbyActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Tgv.a.b(2131434456, 2);
-    }
-    do
+    if (!this.a.c)
     {
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_Tgv.a.b(2131427331, 2);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != -1);
-    this.jdField_a_of_type_Tgv.a.b(2131427330, 1);
+      this.a.f();
+      this.a.b.removeMessages(this.a.d);
+      sendEmptyMessageDelayed(this.a.d, this.a.n);
+    }
   }
 }
 

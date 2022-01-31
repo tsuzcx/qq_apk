@@ -43,8 +43,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ykt;
-import yku;
+import yqx;
+import yqy;
 
 public class ApolloPanelManager
 {
@@ -175,7 +175,7 @@ public class ApolloPanelManager
         if (QLog.isColorLevel()) {
           QLog.d("Apollo_PanelManager", 2, new Object[] { "my slave info", paramString1.toString() });
         }
-        ThreadManager.getUIHandler().post(new yku(this));
+        ThreadManager.getUIHandler().post(new yqy(this));
         return;
       }
       catch (Throwable paramString1)
@@ -212,7 +212,7 @@ public class ApolloPanelManager
     this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo = paramApolloInfo;
     if ((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 120000L) && (paramApolloInfo != null))
     {
-      ThreadManager.getUIHandler().post(new ykt(this, paramApolloInfo));
+      ThreadManager.getUIHandler().post(new yqx(this, paramApolloInfo));
       return;
     }
     for (;;)
@@ -280,7 +280,7 @@ public class ApolloPanelManager
       if (localApolloActionData.currencyNum <= i)
       {
         localObject2 = "金币购买动作";
-        localObject5 = String.format(localBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources().getString(2131438225), new Object[] { Integer.valueOf(localApolloActionData.currencyNum), Integer.valueOf(j) });
+        localObject5 = String.format(localBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources().getString(2131438245), new Object[] { Integer.valueOf(localApolloActionData.currencyNum), Integer.valueOf(j) });
         localObject4 = "购买";
         localObject3 = "requestSSO";
         localObject1 = localObject5;
@@ -314,7 +314,7 @@ public class ApolloPanelManager
         ((Message)localObject1).sendToTarget();
         return;
         localObject5 = "余额不足";
-        Object localObject6 = String.format(localBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438226), new Object[] { Integer.valueOf(localApolloActionData.currencyNum), Integer.valueOf(j) });
+        Object localObject6 = String.format(localBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438246), new Object[] { Integer.valueOf(localApolloActionData.currencyNum), Integer.valueOf(j) });
         String str1 = "充值";
         String str2 = ApolloConstant.P + "&adtag=authGold";
         localObject3 = str2;
@@ -373,7 +373,7 @@ public class ApolloPanelManager
       if ((localObject1 == null) || (((String)localObject1).length() <= 99)) {
         break;
       }
-      ChatActivityUtils.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131433378, 1);
+      ChatActivityUtils.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131433392, 1);
       return;
     }
     Object localObject1 = new ArrayList();

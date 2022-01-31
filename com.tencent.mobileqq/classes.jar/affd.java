@@ -1,20 +1,23 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.widget.ActionSheet;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
 
 public class affd
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public affd(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public affd(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = ActionSheet.a(this.a.a);
-    paramView.a(2131432526, 1);
-    paramView.c(2131433015);
-    paramView.a(new affe(this, paramView));
-    paramView.show();
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131370599).setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131370599).setAlpha(1.0F);
+    }
   }
 }
 

@@ -1,21 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.image.GifDrawable;
-import java.io.File;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeSmallSocial;
 
 public class lya
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public lya(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity, File paramFile) {}
+  public lya(FeedItemCellTypeSmallSocial paramFeedItemCellTypeSmallSocial, LinearLayout paramLinearLayout, RelativeLayout paramRelativeLayout) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ReadInJoyDeliverUGCActivity localReadInJoyDeliverUGCActivity = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity;
-    if (GifDrawable.isGifFile(this.jdField_a_of_type_JavaIoFile)) {}
-    for (int i = 2;; i = 1)
+    if (paramMotionEvent.getAction() == 0)
     {
-      ReadInJoyDeliverUGCActivity.a(localReadInJoyDeliverUGCActivity, i);
-      return;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
     }
+    return false;
   }
 }
 

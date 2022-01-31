@@ -4,7 +4,7 @@ public abstract interface IFileViewMusicEvent
 {
   public abstract void a(String paramString);
   
-  public abstract void ab_();
+  public abstract void ad_();
 }
 
 

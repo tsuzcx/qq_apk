@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
+import android.content.Context;
+import com.tencent.mobileqq.intervideo.huayang.Monitor;
+import com.tencent.mobileqq.intervideo.huayang.MonitorConfig;
+import java.util.Map;
 
-public class aecx
-  extends TimerTaskManager.TimerTaskRunnable
+public final class aecx
+  implements Runnable
 {
-  public aecx(LyricViewController paramLyricViewController) {}
+  public aecx(Context paramContext, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    if (!a()) {
-      LyricViewController.a(this.a);
+    MonitorConfig.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    if (MonitorConfig.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString) != null)
+    {
+      Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString)).jdField_a_of_type_Int));
+      return;
     }
+    Monitor.b("3235983");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecx
  * JD-Core Version:    0.7.0.1
  */

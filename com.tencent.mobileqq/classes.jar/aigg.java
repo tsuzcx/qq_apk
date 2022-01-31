@@ -1,28 +1,19 @@
-import android.os.FileObserver;
-import com.tencent.mobileqq.statistics.ThreadTraceHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.shortvideo.filter.QQTransferFilter;
+import com.tencent.mobileqq.shortvideo.videotransfer.TransferRender;
 
 public class aigg
-  extends FileObserver
+  implements Runnable
 {
-  public aigg(String paramString, int paramInt)
-  {
-    super(paramString, paramInt);
-  }
+  public aigg(QQTransferFilter paramQQTransferFilter, float paramFloat) {}
   
-  public void onEvent(int paramInt, String arg2)
+  public void run()
   {
-    QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces onEvent " + ???);
-    synchronized (ThreadTraceHelper.a())
-    {
-      notifyAll();
-      return;
-    }
+    QQTransferFilter.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQTransferFilter).a(this.jdField_a_of_type_Float);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aigg
  * JD-Core Version:    0.7.0.1
  */

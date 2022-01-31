@@ -36,35 +36,35 @@ public class TroopAIOImageEmptyFragment
     PublicFragmentActivity.a(paramActivity, localIntent, TroopAIOImageEmptyFragment.class);
   }
   
-  protected int a()
+  public void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return 2130969870;
-  }
-  
-  protected void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    this.a = paramBundle.getString("title");
-    this.b = paramBundle.getString("url");
-    this.c = paramBundle.getString("text");
-  }
-  
-  public void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    a(this.a);
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    setTitle(this.a);
     if (!TextUtils.isEmpty(this.b))
     {
-      paramLayoutInflater = this.e.getContext().getResources();
+      paramLayoutInflater = this.mContentView.getContext().getResources();
       paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
       paramViewGroup.mRequestWidth = AIOUtils.a(320.0F, paramLayoutInflater);
       paramViewGroup.mRequestHeight = AIOUtils.a(177.5F, paramLayoutInflater);
       paramViewGroup.mLoadingDrawable = URLDrawableHelper.a;
       paramViewGroup.mFailedDrawable = URLDrawableHelper.a;
       paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
-      ((ImageView)this.e.findViewById(2131364191)).setImageDrawable(paramLayoutInflater);
+      ((ImageView)this.mContentView.findViewById(2131364216)).setImageDrawable(paramLayoutInflater);
     }
-    ((TextView)this.e.findViewById(2131365553)).setText(this.c);
+    ((TextView)this.mContentView.findViewById(2131365558)).setText(this.c);
+  }
+  
+  protected int getContentLayoutId()
+  {
+    return 2130969881;
+  }
+  
+  protected void init(Bundle paramBundle)
+  {
+    super.init(paramBundle);
+    this.a = paramBundle.getString("title");
+    this.b = paramBundle.getString("url");
+    this.c = paramBundle.getString("text");
   }
 }
 

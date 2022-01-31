@@ -114,7 +114,7 @@ public class GetUserInfoHandler
         }
         paramConvertUinAndUnionIdResponse.add(localUserManager.a(localQQUserUIItem));
       }
-      localUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      localUpdateUserInfoEvent.errorInfo = paramErrorMessage;
       localUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList = paramConvertUinAndUnionIdResponse;
       localUpdateUserInfoEvent.jdField_a_of_type_JavaLangString = paramConvertUinAndUnionIdRequest.jdField_a_of_type_JavaLangString;
       if (paramConvertUinAndUnionIdResponse.size() == 1)
@@ -140,7 +140,7 @@ public class GetUserInfoHandler
       }
       return;
       SLog.b("Q.qqstory.user.GetUserInfoHandler", "get server info fail , %s, time :%d", paramErrorMessage);
-      localUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      localUpdateUserInfoEvent.errorInfo = paramErrorMessage;
       localUpdateUserInfoEvent.jdField_a_of_type_JavaLangString = paramConvertUinAndUnionIdRequest.jdField_a_of_type_JavaLangString;
       Dispatchers.get().dispatch(localUpdateUserInfoEvent);
       c();

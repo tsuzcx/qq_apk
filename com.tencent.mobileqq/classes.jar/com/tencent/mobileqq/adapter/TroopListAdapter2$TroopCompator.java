@@ -28,6 +28,15 @@ public class TroopListAdapter2$TroopCompator
   
   public int a(TroopListAdapter2.TroopListItemWithMask paramTroopListItemWithMask1, TroopListAdapter2.TroopListItemWithMask paramTroopListItemWithMask2)
   {
+    if ((paramTroopListItemWithMask1 == null) && (paramTroopListItemWithMask2 == null)) {
+      return 0;
+    }
+    if (paramTroopListItemWithMask1 == null) {
+      return -1;
+    }
+    if (paramTroopListItemWithMask2 == null) {
+      return 1;
+    }
     if (a(paramTroopListItemWithMask1) == a(paramTroopListItemWithMask2)) {
       return (int)(a(paramTroopListItemWithMask2) - a(paramTroopListItemWithMask1));
     }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import abbx;
-import abby;
+import abix;
+import abiy;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -31,7 +31,7 @@ public class ARMapManager
   implements Manager
 {
   private int jdField_a_of_type_Int = 1;
-  private abby jdField_a_of_type_Abby;
+  private abiy jdField_a_of_type_Abiy;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   ARMapDownloader jdField_a_of_type_ComTencentMobileqqArmapARMapDownloader;
   ArMapInterface jdField_a_of_type_ComTencentMobileqqArmapArMapInterface;
@@ -44,10 +44,10 @@ public class ARMapManager
     this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface = paramArMapInterface;
     this.jdField_a_of_type_ComTencentMobileqqArmapIpcArMapIPC = ArMapIPC.a();
     a();
-    this.jdField_a_of_type_Abby = new abby(this, null);
+    this.jdField_a_of_type_Abiy = new abiy(this, null);
     try
     {
-      paramArMapInterface.getApp().registerReceiver(this.jdField_a_of_type_Abby, new IntentFilter("com.tencent.portal.req.action"), "com.tencent.msg.permission.pushnotify", null);
+      paramArMapInterface.getApp().registerReceiver(this.jdField_a_of_type_Abiy, new IntentFilter("com.tencent.portal.req.action"), "com.tencent.msg.permission.pushnotify", null);
       return;
     }
     catch (Exception paramArMapInterface)
@@ -146,10 +146,10 @@ public class ARMapManager
       }
     }
     label246:
-    for (paramString1 = SplashBitmapUtils.a(paramContext, paramString1.getAbsolutePath(), 2130845842);; paramString1 = null)
+    for (paramString1 = SplashBitmapUtils.a(paramContext, paramString1.getAbsolutePath(), 2130845922);; paramString1 = null)
     {
       if (paramString2.exists()) {}
-      for (paramString2 = SplashBitmapUtils.a(paramContext, paramString2.getAbsolutePath(), 2130845841);; paramString2 = null)
+      for (paramString2 = SplashBitmapUtils.a(paramContext, paramString2.getAbsolutePath(), 2130845921);; paramString2 = null)
       {
         if ((paramString1 != null) && (paramString2 != null))
         {
@@ -171,7 +171,7 @@ public class ARMapManager
         if (QLog.isColorLevel()) {
           QLog.d("ARMapManager", 2, "getMapTopRightLogoDrawable no bg, use white btn");
         }
-        return paramContext.getResources().getDrawable(2130838525);
+        return paramContext.getResources().getDrawable(2130838537);
       }
     }
   }
@@ -353,7 +353,7 @@ public class ARMapManager
         this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(str);
         this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
         this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(true);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new abbx(this));
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new abix(this));
         return;
       }
     }
@@ -418,7 +418,7 @@ public class ARMapManager
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.getApp().unregisterReceiver(this.jdField_a_of_type_Abby);
+      this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.getApp().unregisterReceiver(this.jdField_a_of_type_Abiy);
       return;
     }
     catch (Exception localException)

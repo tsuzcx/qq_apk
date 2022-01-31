@@ -1,39 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.model.MemoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller.GetMemoryCollectionKeyEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedIdVidListEvent;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedVidListObserver;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
 
 public class nxg
-  extends SimpleJob
+  extends ShareGroupManager.GetFeedVidListObserver
 {
-  public nxg(MemoryDataPuller paramMemoryDataPuller, String paramString) {}
+  public nxg(ShareGroupManager paramShareGroupManager, int paramInt1, String paramString, int paramInt2) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
-    paramJobContext = (MemoryManager)SuperManager.a(19);
-    paramVarArgs = paramJobContext.a(DateCollectionListPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.b));
-    MemoryDataPuller.GetMemoryCollectionKeyEvent localGetMemoryCollectionKeyEvent = new MemoryDataPuller.GetMemoryCollectionKeyEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.c);
-    ArrayList localArrayList = new ArrayList();
-    localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
-    localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_Int == paramVideoCollectionItem.videoVidList.size())
     {
-      localGetMemoryCollectionKeyEvent.jdField_a_of_type_Boolean = bool;
-      Dispatchers.get().dispatch(localGetMemoryCollectionKeyEvent);
-      SLog.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localGetMemoryCollectionKeyEvent.jdField_a_of_type_JavaUtilList);
-      return null;
+      boolean bool = true;
+      paramBoolean = bool;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("Q.qqstory.discover.ShareGroupManager", 2, "currentVidListSize == videoCollectionItem.videoVidList.size():" + paramVideoCollectionItem.toString());
+        paramBoolean = bool;
+      }
     }
+    if (paramBoolean)
+    {
+      ShareGroupManager.GetFeedIdVidListEvent localGetFeedIdVidListEvent = new ShareGroupManager.GetFeedIdVidListEvent();
+      localGetFeedIdVidListEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localGetFeedIdVidListEvent.jdField_a_of_type_JavaUtilArrayList = paramVideoCollectionItem.videoVidList;
+      Dispatchers.get().dispatch(localGetFeedIdVidListEvent);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupManager.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

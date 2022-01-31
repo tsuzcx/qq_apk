@@ -1,35 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class anbj
-  implements Runnable
+public final class anbj
+  implements FilenameFilter
 {
-  public anbj(QZoneDNSAnalyzeJsPlugin paramQZoneDNSAnalyzeJsPlugin, String paramString1, String paramString2) {}
-  
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    Object localObject = "";
-    try
-    {
-      String str = InetAddress.getByName(this.jdField_a_of_type_JavaLangString).getHostAddress();
-      localObject = str;
-      if (!TextUtils.isEmpty(str))
-      {
-        localObject = str;
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "Analyze " + this.jdField_a_of_type_JavaLangString + " ip address : " + str);
-        localObject = str;
-        QZoneDNSAnalyzeJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneDNSAnalyzeJsPlugin, this.b, 0, str);
-      }
-      return;
-    }
-    catch (UnknownHostException localUnknownHostException)
-    {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "UnknownHostException:Analyze " + this.jdField_a_of_type_JavaLangString + " ip address failed");
-      QZoneDNSAnalyzeJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneDNSAnalyzeJsPlugin, this.b, -1, (String)localObject);
-    }
+    return !paramString.endsWith("OldVersion.version");
   }
 }
 

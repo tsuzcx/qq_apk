@@ -1,20 +1,35 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class abef
+public class abef
   implements Runnable
 {
-  abef(abed paramabed) {}
+  public abef(ArkRecommendController paramArkRecommendController, ChatMessage paramChatMessage, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
-    if ((!ShopScanActivity.a(this.a.a)) && (this.a.a.d.getVisibility() == 0))
+    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) == null) {
+      return;
+    }
+    int i = "@babyQ".length();
+    String str;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.length() > i) {
+      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.charAt(i) != ' ') {
+        str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.substring(i);
+      }
+    }
+    for (;;)
     {
-      this.a.a.d.setVisibility(8);
-      this.a.a.a.setVisibility(0);
-      ShopScanActivity.b(this.a.a);
-      ShopScanActivity.a(this.a.a, true);
+      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController);
+      ArkAppDataReport.e(ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a);
+      return;
+      str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.substring(i + 1);
+      continue;
+      str = "";
     }
   }
 }

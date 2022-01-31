@@ -1,48 +1,66 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import com.tencent.mobileqq.magicface.drawable.PngFrameDrawable;
+import com.tencent.mobileqq.magicface.drawable.PngPlayParam;
+import com.tencent.qphone.base.util.QLog;
 
 public final class aelq
-  implements Runnable
+  extends Drawable.ConstantState
 {
-  public aelq(QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public Paint a;
+  Shader.TileMode a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  Shader.TileMode b;
+  public String[] b;
+  int c = 119;
+  public int d = 160;
   
-  public void run()
+  public aelq(PngPlayParam paramPngPlayParam)
   {
-    this.a.a(this.a.getCurrentAccountUin(), 200, true);
-    long l1 = ((Long)NearbySPUtil.a(this.a.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
-    long l2 = l1;
-    EntityManager localEntityManager;
-    if (l1 == 0L)
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_AndroidGraphicsShader$TileMode = null;
+    this.jdField_b_of_type_AndroidGraphicsShader$TileMode = null;
+    if (paramPngPlayParam == null)
     {
-      localEntityManager = this.a.getEntityManagerFactory(this.a.getAccount()).createEntityManager();
-      l2 = l1;
-      if (localEntityManager != null)
-      {
-        NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
-        if (localNearbyPeopleCard == null) {
-          break label143;
-        }
-        l1 = localNearbyPeopleCard.tinyId;
+      if (QLog.isColorLevel()) {
+        QLog.e("PngFrameDrawable", 2, "【ramdom magic】 png frame param is null.");
       }
+      throw new IllegalArgumentException("【ramdom magic】 png frame param is null.");
     }
-    label143:
-    for (;;)
-    {
-      localEntityManager.a();
-      l2 = l1;
-      if (l2 != 0L) {
-        this.a.a(String.valueOf(l2), 202, true);
-      }
-      return;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramPngPlayParam.jdField_a_of_type_ArrayOfJavaLangString;
+    this.jdField_b_of_type_ArrayOfJavaLangString = paramPngPlayParam.jdField_b_of_type_ArrayOfJavaLangString;
+    this.jdField_a_of_type_Int = paramPngPlayParam.c;
+    this.jdField_b_of_type_Int = paramPngPlayParam.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Boolean = paramPngPlayParam.jdField_a_of_type_Boolean;
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return 0;
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new PngFrameDrawable(this, null, null);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func newDrawable");
     }
+    return new PngFrameDrawable(this, paramResources, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelq
  * JD-Core Version:    0.7.0.1
  */

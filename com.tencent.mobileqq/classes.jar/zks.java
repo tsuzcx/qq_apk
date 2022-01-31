@@ -1,36 +1,43 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.SkinEngine;
-import java.io.File;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
 
 public class zks
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public zks(QQAppInterface paramQQAppInterface, int paramInt) {}
+  public zks(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.g();
-    if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.h()) && (bool2) && (!bool1) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.k()) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.l()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.m()) && (QQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+    switch (paramMotionEvent.getAction())
     {
-      Object localObject = SkinEngine.getInstances().getSkinRootPath();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = new StringBuilder((String)localObject);
-        ((StringBuilder)localObject).append(File.separatorChar).append("voice").append(File.separatorChar).append("tab").append(this.jdField_a_of_type_Int).append(".mp3");
-        File localFile = new File(((StringBuilder)localObject).toString());
-        if (QLog.isColorLevel()) {
-          QLog.d("playThemeVoice", 2, "Uri:" + ((StringBuilder)localObject).toString());
-        }
-        if (localFile.exists()) {
-          AudioUtil.a(Uri.fromFile(localFile), false, false);
-        }
-      }
     }
+    do
+    {
+      do
+      {
+        return false;
+      } while (!SubAccountControll.c(this.a.getActivity().app, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(13, 200L);
+      return false;
+      if (!this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(13)) {
+        break;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.clearAnimation();
+      }
+    } while (this.a.jdField_a_of_type_AndroidWidgetImageView == null);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    return false;
+    FrameHelperActivity.a(this.a);
+    return false;
   }
 }
 

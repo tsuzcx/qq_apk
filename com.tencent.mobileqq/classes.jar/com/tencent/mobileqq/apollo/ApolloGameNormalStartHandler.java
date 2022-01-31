@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
-import yjx;
+import yqb;
 
 public class ApolloGameNormalStartHandler
 {
@@ -51,7 +51,7 @@ public class ApolloGameNormalStartHandler
     }
     this.jdField_a_of_type_Long = l;
     this.b = new WeakReference(paramActivity);
-    paramActivity.runOnUiThread(new yjx(this, paramInt1, paramInt2, paramInt3, localQQAppInterface, paramString2, paramInt4, paramString1, paramActivity));
+    paramActivity.runOnUiThread(new yqb(this, paramInt1, paramInt2, paramInt3, localQQAppInterface, paramString2, paramInt4, paramString1, paramActivity));
   }
   
   public void a(String paramString)

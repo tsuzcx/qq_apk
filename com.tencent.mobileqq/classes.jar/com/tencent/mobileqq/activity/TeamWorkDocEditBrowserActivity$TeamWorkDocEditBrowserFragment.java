@@ -54,6 +54,8 @@ import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportCover;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils;
 import com.tencent.mobileqq.utils.AlbumConstants;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -63,6 +65,7 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -77,25 +80,25 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tux;
-import tuy;
-import tuz;
-import tva;
-import tvb;
-import tvc;
-import tvd;
-import tve;
-import tvf;
-import tvg;
+import tzp;
+import tzq;
+import tzr;
+import tzs;
+import tzt;
+import tzu;
+import tzv;
+import tzw;
+import tzx;
+import tzy;
 
 public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   extends WebViewFragment
 {
   public int a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new tux(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new tzp(this);
   Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
-  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new tvg(this);
+  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new tzy(this);
   public Button a;
   public EditText a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -108,7 +111,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   String jdField_a_of_type_JavaLangString = "";
   public boolean a;
   public int b;
-  Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new tuz(this);
+  Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new tzr(this);
   ImageView jdField_b_of_type_AndroidWidgetImageView;
   public String b;
   public boolean b;
@@ -137,12 +140,12 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     this.jdField_d_of_type_Int = -1;
   }
   
-  private void E()
+  private void D()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new tvb(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new tzt(this);
   }
   
-  private void F()
+  private void E()
   {
     Bundle localBundle = new Bundle();
     if (a().getParcelableExtra("key_team_work_file_import_info") != null) {
@@ -156,13 +159,14 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     this.v = true;
   }
   
-  private void G()
+  private void F()
   {
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     Object localObject = a();
-    ColorStateList localColorStateList = getResources().getColorStateList(2131494211);
+    ColorStateList localColorStateList = getResources().getColorStateList(2131494217);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setTextColor(localColorStateList);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839142);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839157);
     if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover == null) || (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover.a())) {
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(Color.parseColor("#f6f7f9"));
     }
@@ -170,11 +174,11 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setTextColor(Color.parseColor("#333333"));
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setMaxEms(13);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.getLayoutParams().height = -2;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363469));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363488));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(12.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setMaxEms(13);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363475));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363494));
     this.jdField_d_of_type_Int = ((Intent)localObject).getIntExtra("key_team_work_pad_list_type", -1);
     boolean bool;
     if ((((Intent)localObject).getBooleanExtra("temp_preview_from_qq", false)) && (b() != null) && (b().contains("preview=1")))
@@ -185,13 +189,13 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
         QLog.i("WebLog_WebViewFragment", 2, "getShareUrl:" + e() + "  tempPreviewFromQQ:" + this.t);
       }
       if (!this.t) {
-        break label548;
+        break label549;
       }
       localObject = (TeamWorkFileImportInfo)a().getParcelableExtra("key_team_work_file_import_info");
       if ((this.jdField_a_of_type_Int == 0) && (localObject != null))
       {
         if (((TeamWorkFileImportInfo)localObject).jdField_d_of_type_Int != 3) {
-          break label401;
+          break label413;
         }
         this.jdField_a_of_type_Int = 1;
       }
@@ -199,7 +203,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     for (;;)
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover == null) || (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover.a())) {
-        break label418;
+        break label430;
       }
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(8);
@@ -207,13 +211,12 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       return;
       bool = false;
       break;
-      label401:
+      label413:
       if (((TeamWorkFileImportInfo)localObject).jdField_d_of_type_Int == 6) {
         this.jdField_a_of_type_Int = 2;
       }
     }
-    label418:
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    label430:
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     m();
@@ -224,9 +227,9 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText("关闭");
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
     this.n = 1;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(new tvd(this));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(new tzv(this));
     return;
-    label548:
+    label549:
     if (((Intent)localObject).getBooleanExtra("temp_preview_from_qq", false))
     {
       this.n = 3;
@@ -262,7 +265,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
         break;
       }
     }
-    for (Object localObject1 = getResources().getString(2131439157);; localObject1 = (String)localObject1 + "\n" + (String)localObject2)
+    for (Object localObject1 = getResources().getString(2131439185);; localObject1 = (String)localObject1 + "\n" + (String)localObject2)
     {
       localObject2 = new Intent(getActivity(), DialogActivity.class);
       ((Intent)localObject2).addFlags(268435456);
@@ -302,17 +305,12 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(null);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839142);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(2131432414);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839157);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(2131432425);
     this.n = 2;
     i();
     l();
     this.f = false;
-    if (!BaseApplicationImpl.getApplication().getSharedPreferences("tim_convert_teamwork_pre_" + getActivity().getCurrentAccountUin(), 4).getBoolean("tim_teamwork_hide_authorize_setting", false))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      return;
-    }
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
   
@@ -342,31 +340,31 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_WebViewFragment", 2, "-->service KEY_TEMP_SHOW_LOADING");
       }
-      E();
+      D();
       WebIPCOperator.a().a(this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver);
       if (WebIPCOperator.a().a()) {
-        F();
+        E();
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b = ((ViewGroup)super.getActivity().findViewById(2131363454));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b = ((ViewGroup)super.getActivity().findViewById(2131363473));
     }
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-    LayoutInflater.from(super.getActivity()).inflate(2130971635, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b);
+    LayoutInflater.from(super.getActivity()).inflate(2130971662, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.R;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 7119;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131375229));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375230));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131375284));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375285));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375231));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375286));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375232));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375287));
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout = ((InputLinearLayout)super.getActivity().findViewById(2131375233));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.getActivity().findViewById(2131375235));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout = ((InputLinearLayout)super.getActivity().findViewById(2131375288));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.getActivity().findViewById(2131375290));
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(1);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new tva(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.getActivity().findViewById(2131375236));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new tzs(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.getActivity().findViewById(2131375291));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (this.jdField_a_of_type_Int == 1)
     {
@@ -375,7 +373,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     }
     while (this.jdField_a_of_type_Int != 2)
     {
-      G();
+      F();
       return i;
     }
     if (this.jdField_b_of_type_Boolean) {
@@ -486,7 +484,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover.a()))
     {
       this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover.c();
-      G();
+      F();
       if (this.o != -1000)
       {
         a(this.u, this.o);
@@ -557,7 +555,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       Drawable localDrawable;
       if ((!paramBoolean) || (paramInt == 0)) {
         if (!paramBoolean) {
-          localDrawable = getResources().getDrawable(2130846154);
+          localDrawable = getResources().getDrawable(2130846236);
         }
       }
       while (localDrawable != null)
@@ -567,7 +565,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
         return;
         if (paramInt == 0)
         {
-          localDrawable = getResources().getDrawable(2130846153);
+          localDrawable = getResources().getDrawable(2130846235);
           continue;
           this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         }
@@ -614,6 +612,19 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     return true;
   }
   
+  public void b()
+  {
+    SwiftBrowserShareMenuHandler localSwiftBrowserShareMenuHandler = (SwiftBrowserShareMenuHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(4);
+    if (localSwiftBrowserShareMenuHandler != null)
+    {
+      Share localShare = b();
+      if ((localShare != null) && (TeamWorkUtils.a(localShare.a()))) {
+        localSwiftBrowserShareMenuHandler.a = new TeamWorkShareActionSheetBuilder(a());
+      }
+      localSwiftBrowserShareMenuHandler.a(localShare, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Long);
+    }
+  }
+  
   public void b(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
@@ -658,16 +669,16 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       ImageUtil.a(super.getActivity(), paramIntent);
       if (!FileUtils.e(paramIntent))
       {
-        QQToast.a(super.getActivity(), super.getString(2131434504), 0).b(b());
+        QQToast.a(super.getActivity(), super.getString(2131434520), 0).b(b());
         return;
       }
       if (!new File(paramIntent).exists()) {
-        QQToast.a(super.getActivity(), getString(2131434505), 0).b(b());
+        QQToast.a(super.getActivity(), getString(2131434521), 0).b(b());
       }
     }
     else
     {
-      QQToast.a(super.getActivity(), getString(2131434505), 0).b(b());
+      QQToast.a(super.getActivity(), getString(2131434521), 0).b(b());
       return;
     }
     localObject = new Intent();
@@ -689,7 +700,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   public void b(String paramString)
   {
     a(17);
-    ThreadManager.executeOnNetWorkThread(new tve(this, paramString));
+    ThreadManager.executeOnNetWorkThread(new tzw(this, paramString));
   }
   
   public void b(ArrayList paramArrayList)
@@ -788,7 +799,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   {
     int i = super.e(paramBundle);
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131433698));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131433712));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView != null) {
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -845,16 +856,16 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       this.t = bool1;
       if (this.t)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(getResources().getString(2131439154));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(getResources().getString(2131439182));
         return;
       }
       if (this.jdField_a_of_type_Int == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131439153);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131439181);
         return;
       }
     } while (this.jdField_a_of_type_Int != 1);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131439152);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131439181);
   }
   
   void j()
@@ -892,44 +903,35 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   public void k()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover.a())) {}
-    label141:
-    label180:
-    label195:
-    label208:
+    label130:
+    label143:
     for (;;)
     {
       return;
       a();
       String str = e();
-      boolean bool1;
+      boolean bool;
       if ((!TextUtils.isEmpty(str)) && (str.contains(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())))
       {
-        bool1 = true;
-        boolean bool2 = BaseApplicationImpl.getApplication().getSharedPreferences("tim_convert_teamwork_pre_" + getActivity().getCurrentAccountUin(), 4).getBoolean("tim_teamwork_hide_authorize_setting", false);
+        bool = true;
         if (!TextUtils.isEmpty(str))
         {
-          if ((!bool1) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView == null) || (this.t)) {
-            break label195;
+          if ((!bool) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView == null) || (this.t)) {
+            break label130;
           }
-          if (bool2) {
-            break label180;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          l();
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
           this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(8);
         }
       }
       for (;;)
       {
         if (this.t) {
-          break label208;
+          break label143;
         }
         this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
         return;
-        bool1 = a().c();
+        bool = a().c();
         break;
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        break label141;
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
     }
@@ -937,8 +939,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   public void l()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846155);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new tvc(this));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846237);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new tzu(this));
   }
   
   public void m()
@@ -947,11 +949,11 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     {
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
       Object localObject = new StateListDrawable();
-      Drawable localDrawable = getResources().getDrawable(2130846261);
+      Drawable localDrawable = getResources().getDrawable(2130846343);
       ((StateListDrawable)localObject).addState(new int[] { 16842919 }, localDrawable);
-      localDrawable = getResources().getDrawable(2130846260);
+      localDrawable = getResources().getDrawable(2130846342);
       ((StateListDrawable)localObject).addState(new int[] { 16842910 }, localDrawable);
-      localDrawable = getResources().getDrawable(2130846261);
+      localDrawable = getResources().getDrawable(2130846343);
       ((StateListDrawable)localObject).addState(new int[0], localDrawable);
       this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       this.jdField_d_of_type_AndroidWidgetImageView.setClickable(true);
@@ -961,7 +963,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       localObject = (SwiftBrowserShareMenuHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(4);
       ((SwiftBrowserShareMenuHandler)localObject).a(true);
       ((SwiftBrowserShareMenuHandler)localObject).jdField_b_of_type_Boolean = true;
-      this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new tvf(this));
+      this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new tzx(this));
     }
   }
   
@@ -973,6 +975,14 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       localHashMap.put("target", Integer.valueOf(2));
       if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.a(localHashMap)) {
         o();
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.c = false;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.g();
       }
     }
     super.n();
@@ -989,7 +999,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131363245) {
+    if (paramView.getId() != 2131363262) {
       super.onClick(paramView);
     }
     int i = paramView.getId();
@@ -1006,11 +1016,11 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       {
         a(15);
         paramView = (ActionSheet)ActionSheetHelper.a(getActivity(), null);
-        paramView.a(getResources().getString(2131439156));
-        paramView.a(getResources().getString(2131439158), 5);
-        paramView.a(getResources().getString(2131439159), 5);
-        paramView.c(2131433015);
-        paramView.a(new tuy(this, paramView));
+        paramView.a(getResources().getString(2131439184));
+        paramView.a(getResources().getString(2131439186), 5);
+        paramView.a(getResources().getString(2131439187), 5);
+        paramView.c(2131433029);
+        paramView.a(new tzq(this, paramView));
         paramView.show();
         return;
       }
@@ -1141,13 +1151,13 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       return;
     }
     Object localObject1 = super.getActivity();
-    Object localObject2 = new File(AppConstants.aJ + "photo/");
+    Object localObject2 = new File(AppConstants.aK + "photo/");
     if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs()))
     {
-      QQToast.a((Context)localObject1, 2131434770, 0).a();
+      QQToast.a((Context)localObject1, 2131434786, 0).a();
       return;
     }
-    localObject2 = AppConstants.aJ + "photo/" + System.currentTimeMillis() + ".jpg";
+    localObject2 = AppConstants.aK + "photo/" + System.currentTimeMillis() + ".jpg";
     localObject1 = Uri.fromFile(new File((String)localObject2));
     PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).edit().putString("camera_photo_path", (String)localObject2).commit();
     localObject2 = new Intent("android.media.action.IMAGE_CAPTURE");

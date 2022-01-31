@@ -1,63 +1,51 @@
-import cooperation.qzone.QzoneFeedsPluginProxyActivity;
-import cooperation.qzone.QzoneFullscreenPluginProxyActivity;
-import cooperation.qzone.QzoneGPUPluginProxyActivity;
-import cooperation.qzone.QzoneNOGPUPluginProxyActivity;
-import cooperation.qzone.QzoneOrientationPluginProxyActivity;
-import cooperation.qzone.QzonePictureExtPluginProxyActivity;
-import cooperation.qzone.QzonePicturePluginProxyActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.QzonePublishMoodProxyActivity;
-import cooperation.qzone.QzoneTransNoTitlePluginProxyActivity;
-import cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity;
-import cooperation.qzone.QzoneTranslucentGPUPluginProxyActivity;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.jtcode.JtcodePluginInstallActivity;
+import cooperation.plugin.IPluginManager;
 
 public class amta
+  implements OnPluginInstallListener
 {
-  public static Class a(String paramString)
+  public amta(JtcodePluginInstallActivity paramJtcodePluginInstallActivity) {}
+  
+  public IBinder asBinder()
   {
-    if (QzonePluginProxyActivity.a(QzonePluginProxyActivity.a(), paramString)) {
-      return QzonePicturePluginProxyActivity.class;
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("JtcodePluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
     }
-    if (QzonePluginProxyActivity.a(QzonePluginProxyActivity.b(), paramString)) {
-      return QzoneTransNoTitlePluginProxyActivity.class;
+    QQToast.a(this.a.getApplicationContext(), 2131438315, 0);
+    JtcodePluginInstallActivity.a(this.a, false);
+    this.a.finish();
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    JtcodePluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
+    if (QLog.isDevelopLevel()) {
+      QLog.i("JtcodePluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
     }
-    if ("com.qzone.common.activities.FeedActionPanelActivity".equals(paramString)) {
-      return QzoneTransWithKeyboardPluginProxyActivity.class;
+    boolean bool = JtcodePluginInstallActivity.a(this.a).isPlugininstalled("wlx_jtcode.apk");
+    JtcodePluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
+    if (bool)
+    {
+      JtcodePluginInstallActivity.a(this.a);
+      return;
     }
-    if ("com.qzone.common.activities.QZoneRapidCommentActivity".equals(paramString)) {
-      return QzoneTransNoTitlePluginProxyActivity.class;
-    }
-    if ("com.qzone.face.ui.QzoneMarkFaceActivity".equals(paramString)) {
-      return QzonePictureExtPluginProxyActivity.class;
-    }
-    if (("com.qzone.preview.QZoneVideoFloatActivity".equals(paramString)) || ("com.qzone.preview.QZoneAdvertiseVideoFloatActivity".equals(paramString)) || ("com.qzone.preview.QZoneEncourageAdvActivity".equals(paramString)) || ("com.qzone.preview.VideoPlayerActivity".equals(paramString)) || ("com.qzone.commoncode.module.videorecommend.ui.QzoneVideoFullscreenRecommendActivity".equals(paramString))) {
-      return QzoneOrientationPluginProxyActivity.class;
-    }
-    if ("com.qzone.commoncode.module.videorecommend.ui.QzoneVideoRecommendActivity".equals(paramString)) {
-      return QzoneTranslucentGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.video.activity.TrimVideoActivity".equals(paramString)) {
-      return QzoneNOGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.video.activity.PreviewVideoActivity".equals(paramString)) {
-      return QzoneNOGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QZonePublishMoodActivity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QZonePublishMoodTabActivity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QzonePublishSecretShuoShuoH5Activity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.qzone.feed.ui.activity.QZoneFriendFeedActivity".equals(paramString)) {
-      return QzoneFeedsPluginProxyActivity.class;
-    }
-    if ("com.qzone.common.activities.QzoneDialogActivity".equals(paramString)) {
-      return QzoneFullscreenPluginProxyActivity.class;
-    }
-    return QzoneGPUPluginProxyActivity.class;
+    QQToast.a(this.a.getApplicationContext(), 2131438315, 0);
+    JtcodePluginInstallActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 

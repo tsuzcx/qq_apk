@@ -1,37 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
-class tqa
-  implements Runnable
+public class tqa
+  implements IIconListener
 {
-  tqa(tpz paramtpz, String paramString) {}
+  public tqa(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
-      return;
+    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
+      this.a.B();
     }
-    Object localObject1 = localObject2;
-    if (!((String)localObject2).startsWith("http://"))
-    {
-      localObject1 = localObject2;
-      if (!((String)localObject2).startsWith("https://")) {
-        localObject1 = "http://" + (String)localObject2;
-      }
-    }
-    localObject2 = new Intent(this.jdField_a_of_type_Tpz.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("is_register_uin", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("register_uin_msg", 104);
-    ((Intent)localObject2).putExtra("register_uin_class", RegisterPhoneNumActivity.class.getName());
-    this.jdField_a_of_type_Tpz.a.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
-    ((Intent)localObject2).putExtra("selfSet_leftViewText", "返回");
-    ReportController.b(this.jdField_a_of_type_Tpz.a.app, "CliOper", "", "", "0X800665A", "0X800665A", 0, 0, "", "", "", "");
   }
 }
 

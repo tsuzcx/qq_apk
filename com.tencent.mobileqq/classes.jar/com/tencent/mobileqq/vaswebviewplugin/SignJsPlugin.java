@@ -24,7 +24,7 @@ public class SignJsPlugin
   private static final byte REQUEST_LOCATION = 100;
   private static final String TAG = "SignJsPlugin";
   private final String SIGNATURE_SYNC_IMG_TEMP_FILE = this.SIGNATURE_SYNC_IMG_TEMP_PATH + "temp.png";
-  private final String SIGNATURE_SYNC_IMG_TEMP_PATH = AppConstants.bx + "temp/";
+  private final String SIGNATURE_SYNC_IMG_TEMP_PATH = AppConstants.by + "temp/";
   private BrowserAppInterface browserApp;
   private boolean isSync;
   private String mActionCallback;
@@ -1759,7 +1759,7 @@ public class SignJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.SignJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,31 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class sji
-  extends Handler
+  implements View.OnTouchListener
 {
-  public sji(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public sji(ChatSettingForTroop paramChatSettingForTroop) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent != null)
+    {
+      paramView = this.a.a[15];
+      if (paramView != null) {
+        if (paramMotionEvent.getAction() != 0) {
+          break label36;
+        }
+      }
+    }
+    label36:
+    for (float f = 0.5F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return false;
+    }
+  }
 }
 
 

@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import java.util.Comparator;
 
 public class achf
-  implements DialogInterface.OnClickListener
+  implements Comparator
 {
-  public achf(DevlockPhoneStatus paramDevlockPhoneStatus) {}
+  public achf(EmoticonFromGroupManager paramEmoticonFromGroupManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(String paramString1, String paramString2)
   {
-    paramDialogInterface.dismiss();
+    return paramString2.compareTo(paramString1);
   }
 }
 

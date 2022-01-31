@@ -50,11 +50,11 @@ public class PlusPanelAdapter
     PlusPanel.PluginData localPluginData;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup).inflate(2130968772, null);
+      paramView = LayoutInflater.from(paramViewGroup).inflate(2130968776, null);
       paramViewGroup = new PlusPanelAdapter.ViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363701));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131363702));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362961));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363724));
+      paramViewGroup.b = ((ImageView)paramView.findViewById(2131363725));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362966));
       paramView.setTag(paramViewGroup);
       localPluginData = (PlusPanel.PluginData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable);

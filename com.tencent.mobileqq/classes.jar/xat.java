@@ -1,16 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class xat
-  implements DialogInterface.OnClickListener
+  extends ContactBindObserver
 {
-  public xat(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  public xat(PhoneMatchActivity paramPhoneMatchActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    this.a.getActivity().finish();
+    this.a.b();
+    if (paramBoolean)
+    {
+      this.a.finish();
+      return;
+    }
+    this.a.b("更新失败，请稍后重试。");
+  }
+  
+  protected void e(boolean paramBoolean, int paramInt)
+  {
+    this.a.b();
+    if (paramBoolean)
+    {
+      ContactBindedActivity.a(this.a.app, 222);
+      this.a.finish();
+      return;
+    }
+    this.a.b("更新失败，请稍后重试。");
   }
 }
 

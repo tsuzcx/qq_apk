@@ -1,6 +1,6 @@
 package com.tencent.open.component.cache.database;
 
-import alfy;
+import alnq;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,7 +12,7 @@ import java.util.List;
 public class DbCacheManager
   extends AbstractDbCacheManager
 {
-  protected alfy a;
+  protected alnq a;
   protected Cursor a;
   protected String b;
   protected final ArrayList b;
@@ -104,9 +104,9 @@ public class DbCacheManager
     finally {}
   }
   
-  void a(alfy paramalfy)
+  void a(alnq paramalnq)
   {
-    this.jdField_a_of_type_Alfy = paramalfy;
+    this.jdField_a_of_type_Alnq = paramalnq;
   }
   
   protected void a(SQLiteDatabase paramSQLiteDatabase, int paramInt)

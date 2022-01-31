@@ -1,15 +1,19 @@
 package c.t.m.g;
 
-public enum cs
+import java.io.File;
+
+public final class cs
 {
-  static
-  {
-    cs localcs = a;
-    localcs = b;
-    localcs = c;
-  }
+  String a = "";
+  String b = "";
+  public boolean c = false;
   
-  private cs() {}
+  public cs(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.c = false;
+    this.b = paramString2;
+  }
 }
 
 

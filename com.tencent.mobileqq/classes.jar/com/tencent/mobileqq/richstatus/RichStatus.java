@@ -36,7 +36,7 @@ public class RichStatus
   public static final float OFFSET_IMAGE_SPAN = -0.1F;
   public static final int SPAN_ALIGN_MODE = 0;
   private static RichStatus a;
-  public static final ColorStateList sActionColor = new ColorStateList(new int[][] { { 16842919 }, new int[0] }, new int[] { -2039584, -8947849 });
+  public static final ColorStateList sActionColor;
   private static final long serialVersionUID = 1L;
   public int actId;
   public int actionId = 0;
@@ -61,6 +61,12 @@ public class RichStatus
   public long time;
   public int tplId;
   public int tplType;
+  
+  static
+  {
+    int[] arrayOfInt = new int[0];
+    sActionColor = new ColorStateList(new int[][] { { 16842919 }, arrayOfInt }, new int[] { -2039584, -8947849 });
+  }
   
   public RichStatus(String paramString)
   {
@@ -479,7 +485,7 @@ public class RichStatus
       localObject1 = new SpannableString((String)localObject1);
       try
       {
-        localObject2 = BitmapFactory.decodeResource(paramResources, 2130845461);
+        localObject2 = BitmapFactory.decodeResource(paramResources, 2130845542);
         int i = (int)(0.9F * paramFloat + 0.5F);
         int j = ((Bitmap)localObject2).getWidth() * i / ((Bitmap)localObject2).getHeight();
         paramResources = new StatableBitmapDrawable(paramResources, (Bitmap)localObject2, false, true);

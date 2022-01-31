@@ -1,16 +1,13 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
 
-class myc
-  implements Runnable
+public class myc
+  implements DialogInterface.OnClickListener
 {
-  myc(myb parammyb) {}
+  public myc(GalleryShareHelper paramGalleryShareHelper) {}
   
-  public void run()
-  {
-    if (PublicAccountImageCollectionMainActivity.a(this.a.a) != null) {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).c(PublicAccountImageCollectionMainActivity.e(this.a.a));
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

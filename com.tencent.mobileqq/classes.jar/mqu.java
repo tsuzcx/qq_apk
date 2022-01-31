@@ -1,14 +1,46 @@
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentHeaderData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.SimpleViewCreator;
+
 public class mqu
+  extends BaseItemViewHolder
 {
-  public String a;
-  public mqu a;
-  public boolean a;
-  public String b;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View b;
+  private View c;
   
-  public mqu(String paramString, mqu parammqu)
+  public mqu(SimpleViewCreator paramSimpleViewCreator, View paramView, BaseData paramBaseData)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Mqu = parammqu;
+    super(paramView, paramBaseData);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361926));
+    this.b = paramView.findViewById(2131363985);
+    this.c = paramView.findViewById(2131367128);
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    paramBaseData1 = "";
+    if (paramBaseData2.d == 7)
+    {
+      paramBaseData1 = ((RecommendTitleData)paramBaseData2).a;
+      this.b.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.c.setVisibility(0);
+      return;
+      if (paramBaseData2.d == 13)
+      {
+        paramBaseData1 = ((CommentHeaderData)paramBaseData2).a;
+        this.b.setVisibility(8);
+      }
+    }
   }
 }
 

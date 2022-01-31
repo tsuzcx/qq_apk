@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.config;
 
-import ajgi;
-import ajgj;
+import ajnu;
+import ajnv;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -60,12 +60,12 @@ public class BeginnerGuideDownloadManager
   
   private static File a()
   {
-    return new File(AppConstants.aJ + "homework_troop");
+    return new File(AppConstants.aK + "homework_troop");
   }
   
   private void a(Handler paramHandler, int paramInt, boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new ajgi(this, paramHandler, paramInt, paramBoolean), null, true);
+    ThreadManager.postImmediately(new ajnu(this, paramHandler, paramInt, paramBoolean), null, true);
     paramHandler.sendEmptyMessage(1111);
   }
   
@@ -264,7 +264,7 @@ public class BeginnerGuideDownloadManager
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.jdField_a_of_type_Boolean = true;
     localHttpNetReq.jdField_e_of_type_Boolean = true;
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ajgj(this, paramHandler, paramInt, paramBoolean);
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ajnv(this, paramHandler, paramInt, paramBoolean);
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
     localHttpNetReq.c = localFile.getAbsolutePath();
@@ -278,7 +278,7 @@ public class BeginnerGuideDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager
  * JD-Core Version:    0.7.0.1
  */

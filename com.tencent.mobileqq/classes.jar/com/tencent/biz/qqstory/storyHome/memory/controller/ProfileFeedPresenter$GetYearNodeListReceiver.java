@@ -17,7 +17,7 @@ public class ProfileFeedPresenter$GetYearNodeListReceiver
   {
     if (paramGetYearNodeListEvent.jdField_a_of_type_Boolean)
     {
-      if (paramGetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+      if (paramGetYearNodeListEvent.errorInfo.isSuccess())
       {
         ProfileFeedPresenter.a(paramProfileFeedPresenter, paramGetYearNodeListEvent.jdField_a_of_type_JavaUtilList, true);
         ProfileFeedPresenter.a(paramProfileFeedPresenter).a(true);

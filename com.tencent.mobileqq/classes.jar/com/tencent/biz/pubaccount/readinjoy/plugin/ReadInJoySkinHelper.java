@@ -53,7 +53,7 @@ public class ReadInJoySkinHelper
     }
     for (;;)
     {
-      boolean bool = SharedPreUtils.v(((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getApp().getApplicationContext(), ((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getCurrentAccountUin());
+      boolean bool = SharedPreUtils.y(((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getApp().getApplicationContext(), ((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getCurrentAccountUin());
       Bundle localBundle = new Bundle();
       localBundle.putInt("seq", paramBundle.getInt("seq"));
       localBundle.putInt("retCode", 0);

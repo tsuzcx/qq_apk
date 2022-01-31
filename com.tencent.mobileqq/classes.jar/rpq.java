@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.ImageSentListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class rpq
-  implements PhotoListPanel.ImageSentListener
+class rpq
+  implements DialogInterface.OnClickListener
 {
-  public rpq(BaseChatPie paramBaseChatPie) {}
+  rpq(rpp paramrpp) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.G) {
-      this.a.aP();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

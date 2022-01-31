@@ -1,28 +1,72 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import android.media.AudioManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class mjq
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public mjq(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  public mjq(VideoVolumeControl paramVideoVolumeControl) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.a.setScaleX(1.0F);
-    this.a.setScaleY(1.0F);
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
-    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
-      this.a.a(0);
+    if (VideoVolumeControl.a(this.a)) {
+      if (VideoVolumeControl.a(this.a) != null)
+      {
+        VideoVolumeControl.a(this.a).requestAudioFocus(null, 3, 2);
+        break label71;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "mRequestOrAbandonAudioFocusCallBack isFocusAudio:" + VideoVolumeControl.a(this.a));
+      }
+      label71:
+      return;
+      if (VideoVolumeControl.a(this.a) != null)
+      {
+        Iterator localIterator = VideoVolumeControl.a(this.a).keySet().iterator();
+        Object localObject;
+        for (;;)
+        {
+          if (localIterator.hasNext())
+          {
+            localObject = (VideoPlayManager)localIterator.next();
+            if ((localObject != null) && (((VideoPlayManager)localObject).a()))
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "checkPlayState  IsPlaying When abandonAudioFocus:" + localObject);
+              return;
+            }
+          }
+        }
+        localIterator = VideoVolumeControl.b(this.a).keySet().iterator();
+        for (;;)
+        {
+          if (localIterator.hasNext())
+          {
+            localObject = (VideoFeedsPlayManager)localIterator.next();
+            if ((localObject != null) && (((VideoFeedsPlayManager)localObject).c()))
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "checkPlayState  IsPlaying When abandonAudioFocus:" + localObject);
+              return;
+            }
+          }
+        }
+        VideoVolumeControl.a(this.a).abandonAudioFocus(null);
+      }
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,16 +1,27 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class npq
-  implements Runnable
+public class npq
+  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  npq(npp paramnpp, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
+  public npq(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode, BatchGetVideoInfo paramBatchGetVideoInfo, Bundle paramBundle) {}
   
-  public void run()
+  public void a()
   {
-    if (this.jdField_a_of_type_Npp.a.a != null) {
-      this.jdField_a_of_type_Npp.a.a.a(this.jdField_a_of_type_Npp.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    ThreadManager.getUIHandler().post(new npt(this));
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildShareGroupHotSortPlayMode.a.post(new npr(this, paramArrayList));
   }
 }
 

@@ -30,7 +30,7 @@ public abstract class LabelBaseCtrl
   static
   {
     jdField_a_of_type_ArrayOfInt = new int[] { 5, 6, 7, 1, 2, 3, 4, 8 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130839507, 2130839516, 2130839501, 2130839510, 2130839497, 2130839491, 2130839515 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130839522, 2130839531, 2130839516, 2130839525, 2130839512, 2130839506, 2130839530 };
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5" };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "#777777", "#777777", "#777777", "#777777", "#777777", "#777777", "#777777", "#AF4EFB" };
   }

@@ -1,32 +1,58 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.InitSkin;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.shortvideo.common.Observable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class aiez
-  implements Runnable
 {
-  public aiez(InitSkin paramInitSkin) {}
+  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void run()
+  public aiez(Observable paramObservable) {}
+  
+  public ArrayList a(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("InitSkin", 2, "start asynInitSkin");
-    }
-    InitSkin.initSkin(BaseApplicationImpl.sApplication);
-    InitSkin.c = true;
-    synchronized (InitSkin.a)
+    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramObject);
+  }
+  
+  public void a(Object paramObject)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      InitSkin.a.notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.i("InitSkin", 2, "end asynInitSkin");
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      ArrayList localArrayList = (ArrayList)localEntry.getValue();
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        Object localObject = localArrayList.get(i);
+        if ((localObject == paramObject) || ((localObject != null) && (localObject.equals(paramObject)))) {
+          ((ArrayList)localEntry.getValue()).remove(paramObject);
+        } else {
+          i += 1;
+        }
       }
-      return;
+    }
+  }
+  
+  public void a(Object paramObject1, Object paramObject2)
+  {
+    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramObject1);
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null)
+    {
+      localArrayList1 = new ArrayList();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramObject1, localArrayList1);
+    }
+    if (!localArrayList1.contains(paramObject2)) {
+      localArrayList1.add(paramObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiez
  * JD-Core Version:    0.7.0.1
  */

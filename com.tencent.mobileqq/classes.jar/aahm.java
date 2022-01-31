@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
 
 public class aahm
+  implements Runnable
 {
-  public ArCloudConfigInfo a;
-  public String a = "";
-  public boolean a;
-  public String b = "";
-  public boolean b;
+  public aahm(GreetingCardRender paramGreetingCardRender) {}
+  
+  public void run()
+  {
+    GreetingCardRender.a(this.a);
+    GreetingCardRender.a(this.a, false);
+  }
 }
 
 

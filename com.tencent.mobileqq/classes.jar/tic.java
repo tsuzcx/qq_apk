@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 class tic
-  implements View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  tic(tib paramtib, long paramLong) {}
+  tic(tib paramtib) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DialogUtil.a(this.jdField_a_of_type_Tib.a, 230).setTitle(this.jdField_a_of_type_Tib.a.getString(2131434941)).setItems(2131296268, new tid(this)).show();
-    return true;
+    ThreadManager.getSubThreadHandler().post(new tid(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tic
  * JD-Core Version:    0.7.0.1
  */

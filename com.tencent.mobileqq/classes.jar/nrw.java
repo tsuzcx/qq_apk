@@ -1,31 +1,22 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader.Listener;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlListToBitmapListSegment;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.boundaries.StoryApi;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
 
 public class nrw
-  implements UrlBitmapDownloader.Listener
+  extends ChildViewClickListener
 {
-  public nrw(UrlListToBitmapListSegment paramUrlListToBitmapListSegment, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
+  public nrw(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    IconLog.b(UrlListToBitmapListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlListToBitmapListSegment), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
-  }
-  
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    IconLog.c(UrlListToBitmapListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlListToBitmapListSegment), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
+    if ((paramObject instanceof QQUserUIItem))
+    {
+      paramView = (QQUserUIItem)paramObject;
+      StoryApi.a(this.a.a, 10, paramView.uid);
+    }
   }
 }
 

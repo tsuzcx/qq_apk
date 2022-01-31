@@ -50,25 +50,55 @@ public class ContainerActivity
   
   private Parcelable a(Bundle paramBundle)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramBundle != null) {
-      localObject1 = localObject2;
-    }
-    try
+    boolean bool2 = true;
+    boolean bool1;
+    label30:
+    Object localObject;
+    if ((paramBundle != null) && (paramBundle.containsKey("android:fragments")))
     {
-      if (paramBundle.containsKey("android:fragments"))
-      {
-        localObject1 = paramBundle.getParcelable("android:fragments");
-        paramBundle.remove("android:fragments");
+      bool1 = true;
+      if ((paramBundle == null) || (!paramBundle.containsKey("android:support:fragments"))) {
+        break label219;
       }
-      super.onCreate(paramBundle);
-      return localObject1;
+      SGLog.a("callSuperOnCreate, ret=" + bool1 + ", ret2=" + bool2);
+      if (bool2)
+      {
+        localObject = paramBundle.getParcelable("android:support:fragments");
+        if (localObject != null) {
+          SGLog.a("support Parcelable classloader" + localObject.getClass().getClassLoader() + ", bundle classLoader=" + paramBundle.getClassLoader() + "this classloader=" + getClassLoader());
+        }
+      }
+      if (!bool1) {
+        break label233;
+      }
     }
-    catch (Exception paramBundle)
+    for (;;)
     {
-      SixGodReporter.reportException("CallSuperCreateExp", paramBundle);
-      throw paramBundle;
+      try
+      {
+        Parcelable localParcelable = paramBundle.getParcelable("android:fragments");
+        paramBundle.remove("android:fragments");
+        localObject = localParcelable;
+        if (localParcelable != null)
+        {
+          SGLog.a("Parcelable classloader" + localParcelable.getClass().getClassLoader() + ", bundle classLoader=" + paramBundle.getClassLoader() + "this classloader=" + getClassLoader());
+          localObject = localParcelable;
+        }
+        super.onCreate(paramBundle);
+        return localObject;
+      }
+      catch (Exception paramBundle)
+      {
+        label219:
+        SixGodReporter.reportException("CallSuperCreateExp", paramBundle);
+        throw paramBundle;
+      }
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label30;
+      label233:
+      localObject = null;
     }
   }
   
@@ -118,6 +148,7 @@ public class ContainerActivity
     }
     try
     {
+      SGLog.a("initLoader callSuperOnCreate 1");
       paramIntent = a(paramBundle);
       if (paramIntent != null) {
         paramBundle.putParcelable("android:fragments", paramIntent);
@@ -125,22 +156,23 @@ public class ContainerActivity
       finish();
       return false;
     }
-    catch (Exception paramIntent)
-    {
-      return false;
-    }
+    catch (Exception paramIntent) {}
     paramIntent.putExtra("load_plugin_retry_idx", i1 + 1);
     setTheme(16973840);
     new Thread(new c(this)).start();
     try
     {
+      SGLog.a("initLoader callSuperOnCreate 2");
       paramIntent = a(paramBundle);
       if (paramIntent != null) {
         paramBundle.putParcelable("android:fragments", paramIntent);
       }
       return true;
     }
-    catch (Exception paramIntent) {}
+    catch (Exception paramIntent)
+    {
+      return false;
+    }
     this.e = SixGodHelper.getPluginLoader(this.d.pkgName);
     if (this.e != null)
     {
@@ -300,29 +332,34 @@ public class ContainerActivity
   
   protected void onCreate(Bundle paramBundle)
   {
-    SGLog.a("ContainerActivity onCreate; " + hashCode());
-    this.k = paramBundle;
-    if (paramBundle != null) {}
+    Object localObject = new StringBuilder("ContainerActivity onCreate; ").append(hashCode()).append(", savedInstanceState isNull?");
+    boolean bool;
+    if (paramBundle == null)
+    {
+      bool = true;
+      SGLog.a(bool);
+      this.k = paramBundle;
+      if (paramBundle == null) {}
+    }
     for (;;)
     {
-      Object localObject1;
       try
       {
         paramBundle.containsKey("a");
-        localObject1 = super.getIntent();
-        this.d = PluginLoadParams.parseFromJson(((Intent)localObject1).getStringExtra("plugin_load_params"));
-        this.h = ((Intent)localObject1).getBooleanExtra("is_special_activity", false);
-        this.i = ((Intent)localObject1).getIntExtra("special_type", -1);
-        this.n = ((Intent)localObject1).getStringExtra("packageName");
-        this.f = ((Intent)localObject1).getBooleanExtra("is_main", false);
+        localObject = super.getIntent();
+        this.d = PluginLoadParams.parseFromJson(((Intent)localObject).getStringExtra("plugin_load_params"));
+        this.h = ((Intent)localObject).getBooleanExtra("is_special_activity", false);
+        this.i = ((Intent)localObject).getIntExtra("special_type", -1);
+        this.n = ((Intent)localObject).getStringExtra("packageName");
+        this.f = ((Intent)localObject).getBooleanExtra("is_main", false);
         if (!isLoadPluginOnCreate()) {
-          break;
+          break label698;
         }
-        if (!a((Intent)localObject1, paramBundle))
-        {
-          finish();
-          return;
+        if (a((Intent)localObject, paramBundle)) {
+          break label169;
         }
+        finish();
+        return;
       }
       catch (Exception paramBundle)
       {
@@ -330,46 +367,51 @@ public class ContainerActivity
         finish();
         return;
       }
+      bool = false;
+      break;
+      label169:
       if (this.e != null)
       {
         if (paramBundle != null) {
           paramBundle.getClassLoader();
         }
-        Object localObject2;
+        String str;
         if (paramBundle != null)
         {
-          localObject1 = this.c;
-          localObject2 = this.n;
-          localObject1 = (com.sixgod.pluginsdk.apkmanager.c)((com.sixgod.pluginsdk.apkmanager.a)localObject1).e.get(localObject2);
-          if (localObject1 != null) {
-            break label319;
+          localObject = this.c;
+          str = this.n;
+          localObject = (com.sixgod.pluginsdk.apkmanager.c)((com.sixgod.pluginsdk.apkmanager.a)localObject).e.get(str);
+          if (localObject != null) {
+            break label355;
           }
-          localObject1 = null;
-          if (localObject1 != null)
+          localObject = null;
+          if (localObject != null)
           {
-            localObject1 = this.c;
-            localObject2 = this.n;
-            localObject1 = (com.sixgod.pluginsdk.apkmanager.c)((com.sixgod.pluginsdk.apkmanager.a)localObject1).e.get(localObject2);
-            if (localObject1 != null) {
-              break label329;
+            SGLog.a("onCreate change savedInstanceState's classLoader");
+            localObject = this.c;
+            str = this.n;
+            localObject = (com.sixgod.pluginsdk.apkmanager.c)((com.sixgod.pluginsdk.apkmanager.a)localObject).e.get(str);
+            if (localObject != null) {
+              break label365;
             }
           }
         }
-        label319:
-        label329:
-        for (localObject1 = null;; localObject1 = ((com.sixgod.pluginsdk.apkmanager.c)localObject1).b)
+        label355:
+        label365:
+        for (localObject = null;; localObject = ((com.sixgod.pluginsdk.apkmanager.c)localObject).b)
         {
-          paramBundle.setClassLoader((ClassLoader)localObject1);
+          paramBundle.setClassLoader((ClassLoader)localObject);
           if (paramBundle != null) {
             paramBundle.getClassLoader();
           }
           try
           {
-            localObject1 = a(paramBundle);
-            localObject2 = this.c;
-            String str = this.n;
-            if ((com.sixgod.pluginsdk.apkmanager.c)((com.sixgod.pluginsdk.apkmanager.a)localObject2).e.get(str) != null) {
-              break label345;
+            SGLog.a("onCreate callSuperOnCreate 1");
+            a(paramBundle);
+            localObject = this.c;
+            str = this.n;
+            if ((com.sixgod.pluginsdk.apkmanager.c)((com.sixgod.pluginsdk.apkmanager.a)localObject).e.get(str) != null) {
+              break label381;
             }
             SGLog.b("create Activity Failed! msg = appInfo null, not installed or unLaunched!");
             SixGodReporter.reportInfo("StartActivity", 0, 1, this.a, "", SixGodReporter.sDevInfo, "get PluginAppInfo null");
@@ -381,15 +423,16 @@ public class ContainerActivity
             finish();
             return;
           }
-          localObject1 = ((com.sixgod.pluginsdk.apkmanager.c)localObject1).b;
+          localObject = ((com.sixgod.pluginsdk.apkmanager.c)localObject).b;
           break;
         }
-        label345:
-        if (localObject1 != null) {}
+        label381:
+        if (paramBundle != null) {}
         long l1;
         try
         {
-          paramBundle.putParcelable("android:fragments", (Parcelable)localObject1);
+          paramBundle.remove("android:fragments");
+          paramBundle.remove("android:support:fragments");
           l1 = System.currentTimeMillis();
           this.l = this.e.a(this, getIntent(), paramBundle);
           if (this.l == null)
@@ -404,8 +447,8 @@ public class ContainerActivity
         {
           SGLog.b("create Activity Failed! msg = " + paramBundle.getMessage());
           paramBundle.printStackTrace();
-          localObject1 = "create ActivityFailed! msg = " + paramBundle.getMessage();
-          SixGodReporter.reportInfo("StartActivity", 0, 1, this.a, "", SixGodReporter.sDevInfo, (String)localObject1);
+          localObject = "create ActivityFailed! msg = " + paramBundle.getMessage();
+          SixGodReporter.reportInfo("StartActivity", 0, 1, this.a, "", SixGodReporter.sDevInfo, (String)localObject);
           SixGodReporter.reportException("CreateActivityExp", paramBundle);
           if (this.f) {
             this.e.p.a(getClass().getName(), 5, paramBundle.getMessage());
@@ -429,6 +472,8 @@ public class ContainerActivity
     }
     try
     {
+      label698:
+      SGLog.a("onCreate callSuperOnCreate 2");
       a(paramBundle);
       return;
     }
@@ -595,6 +640,11 @@ public class ContainerActivity
     {
       SGLog.a("onRestoreInstanceState fragments has");
       paramBundle.remove("android:fragments");
+    }
+    if (paramBundle.getParcelable("android:support:fragments") != null)
+    {
+      SGLog.a("onRestoreInstanceState support fragments has");
+      paramBundle.remove("android:support:fragments");
     }
   }
   

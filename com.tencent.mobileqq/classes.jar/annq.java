@@ -1,19 +1,19 @@
-import dov.com.qq.im.capture.text.CaptureComboText;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
 
 public class annq
   implements Runnable
 {
-  public annq(CaptureComboText paramCaptureComboText, DoodleLayout paramDoodleLayout) {}
+  public annq(TroopHWFileDownloadManager paramTroopHWFileDownloadManager, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(0, Boolean.valueOf(false));
+    TroopHWFileDownloadManager.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWFileDownloadManager).startDownloadTask(this.jdField_a_of_type_JavaLangString, "resource/tm.android.unknown", this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annq
  * JD-Core Version:    0.7.0.1
  */

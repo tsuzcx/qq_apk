@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.OcrClickListener;
 
-class agiy
-  implements Runnable
+public class agiy
+  implements View.OnClickListener
 {
-  agiy(agix paramagix) {}
+  public agiy(ARTipsManager paramARTipsManager, agjf paramagjf) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.d(false);
-    ScanTorchActivity.a(this.a.a, 5, 0, "");
-    ScanTorchActivity.z(this.a.a);
-    ScanTorchActivity.c(this.a.a, true, 0);
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Agjf.a.a();
   }
 }
 

@@ -1,16 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class mkf
-  implements Runnable
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public mkf(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public mkf(ReadInJoyAllInOneBar paramReadInJoyAllInOneBar) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    ReadInJoyGlobalReporter.a().a(this.a.a, NetConnInfoCenter.getServerTimeMillis(), ReadInJoyUtils.e(), ReadInJoyUtils.d);
+    if ((paramInt != 1000) || (paramJSONObject != null)) {}
+    for (;;)
+    {
+      try
+      {
+        if (paramJSONObject.optInt("ret") == 0) {
+          break label61;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e(ReadInJoyAllInOneBar.a, 1, "requestCode == REQUEST_CODE_COMMENT. parse result failed. result=" + paramJSONObject);
+        return;
+      }
+      ReadInJoyAllInOneBar.a(this.a, bool);
+      return;
+      label61:
+      boolean bool = true;
+      continue;
+      bool = false;
+    }
   }
 }
 

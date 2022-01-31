@@ -8,7 +8,7 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 public class QQCustomContextMenuDialog
   extends QQCustomDialog
 {
-  private int jdField_a_of_type_Int = 2130968846;
+  private int jdField_a_of_type_Int = 2130968850;
   QQCustomMenu jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
   
   public QQCustomContextMenuDialog(Context paramContext, int paramInt)

@@ -1,26 +1,22 @@
-import android.os.Handler;
-import com.tencent.av.utils.PhoneStatusMonitor;
-import com.tencent.av.utils.PhoneStatusTools;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.app.VideoObserver;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
 
 public class kgc
-  implements Runnable
+  extends VideoObserver
 {
-  public kgc(PhoneStatusMonitor paramPhoneStatusMonitor) {}
+  public kgc(AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void run()
+  protected void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable run");
-    }
-    if ((this.a.jdField_a_of_type_AndroidContentContext != null) && (!PhoneStatusTools.d(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.jdField_a_of_type_AndroidOsHandler != null)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new kgd(this));
-    }
+    super.c();
+    this.a.a("onConnected_init_when_not_support");
+    AVRedBagMgr.a(this.a).b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,15 @@
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
 
-class aoar
-  implements Runnable
+public class aoar
+  implements DialogInterface.OnClickListener
 {
-  aoar(aoap paramaoap, boolean paramBoolean, InfomationFacePackage.Item paramItem) {}
+  public aoar(EditRecognitionPart paramEditRecognitionPart) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aoap.a(this.jdField_a_of_type_Aoap).setVisibility(8);
-    if (this.jdField_a_of_type_Boolean) {
-      InformationFaceAdapter.a(this.jdField_a_of_type_Aoap.a, aoap.a(this.jdField_a_of_type_Aoap), aoap.a(this.jdField_a_of_type_Aoap), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceInfomationFacePackage$Item);
-    }
-    this.jdField_a_of_type_Aoap.a();
+    paramDialogInterface.dismiss();
   }
 }
 

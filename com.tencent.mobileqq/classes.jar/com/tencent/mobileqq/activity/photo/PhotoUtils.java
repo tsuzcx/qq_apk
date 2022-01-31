@@ -50,34 +50,39 @@ public class PhotoUtils
     return (int)((d2 / 3600.0D + (d1 + d3)) * 1000000.0D);
   }
   
+  public static long a()
+  {
+    return System.currentTimeMillis();
+  }
+  
   /* Error */
   public static android.graphics.Bitmap a(String paramString, BitmapFactory.Options paramOptions)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 62	java/io/FileInputStream
+    //   2: new 68	java/io/FileInputStream
     //   5: dup
     //   6: aload_0
-    //   7: invokespecial 63	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   7: invokespecial 69	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   10: astore_2
     //   11: aload_1
     //   12: ifnull +47 -> 59
     //   15: aload_2
     //   16: astore_0
     //   17: aload_1
-    //   18: getfield 69	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   18: getfield 75	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   21: ifeq +38 -> 59
     //   24: aload_2
     //   25: astore_0
-    //   26: new 71	java/io/BufferedInputStream
+    //   26: new 77	java/io/BufferedInputStream
     //   29: dup
     //   30: aload_2
     //   31: sipush 8192
-    //   34: invokespecial 74	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   34: invokespecial 80	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   37: aconst_null
     //   38: aload_1
-    //   39: invokestatic 80	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   39: invokestatic 86	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   42: astore_1
     //   43: aload_1
     //   44: astore_0
@@ -86,21 +91,21 @@ public class PhotoUtils
     //   47: aload_2
     //   48: ifnull +9 -> 57
     //   51: aload_2
-    //   52: invokevirtual 85	java/io/InputStream:close	()V
+    //   52: invokevirtual 91	java/io/InputStream:close	()V
     //   55: aload_0
     //   56: astore_1
     //   57: aload_1
     //   58: areturn
     //   59: aload_2
     //   60: astore_0
-    //   61: new 71	java/io/BufferedInputStream
+    //   61: new 77	java/io/BufferedInputStream
     //   64: dup
     //   65: aload_2
     //   66: sipush 8192
-    //   69: invokespecial 74	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   69: invokespecial 80	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   72: aconst_null
     //   73: aload_1
-    //   74: invokestatic 80	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   74: invokestatic 86	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   77: astore_1
     //   78: aload_1
     //   79: astore_0
@@ -110,21 +115,21 @@ public class PhotoUtils
     //   85: astore_2
     //   86: aload_2
     //   87: astore_0
-    //   88: invokestatic 91	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   88: invokestatic 97	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   91: ifeq +14 -> 105
     //   94: aload_2
     //   95: astore_0
-    //   96: ldc 93
+    //   96: ldc 99
     //   98: iconst_2
-    //   99: ldc 95
+    //   99: ldc 101
     //   101: aload_1
-    //   102: invokestatic 99	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   102: invokestatic 105	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   105: aload_3
     //   106: astore_1
     //   107: aload_2
     //   108: ifnull -51 -> 57
     //   111: aload_2
-    //   112: invokevirtual 85	java/io/InputStream:close	()V
+    //   112: invokevirtual 91	java/io/InputStream:close	()V
     //   115: aconst_null
     //   116: areturn
     //   117: astore_0
@@ -135,21 +140,21 @@ public class PhotoUtils
     //   122: astore_2
     //   123: aload_2
     //   124: astore_0
-    //   125: invokestatic 91	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   125: invokestatic 97	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   128: ifeq +14 -> 142
     //   131: aload_2
     //   132: astore_0
-    //   133: ldc 93
+    //   133: ldc 99
     //   135: iconst_2
-    //   136: ldc 95
+    //   136: ldc 101
     //   138: aload_1
-    //   139: invokestatic 99	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   139: invokestatic 105	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   142: aload_3
     //   143: astore_1
     //   144: aload_2
     //   145: ifnull -88 -> 57
     //   148: aload_2
-    //   149: invokevirtual 85	java/io/InputStream:close	()V
+    //   149: invokevirtual 91	java/io/InputStream:close	()V
     //   152: aconst_null
     //   153: areturn
     //   154: astore_0
@@ -161,7 +166,7 @@ public class PhotoUtils
     //   160: aload_0
     //   161: ifnull +7 -> 168
     //   164: aload_0
-    //   165: invokevirtual 85	java/io/InputStream:close	()V
+    //   165: invokevirtual 91	java/io/InputStream:close	()V
     //   168: aload_1
     //   169: athrow
     //   170: astore_1
@@ -388,7 +393,7 @@ public class PhotoUtils
         localIntent = new Intent();
       }
       if (paramInt1 != 7001) {
-        break label155;
+        break label157;
       }
       paramIntent = paramActivity.getIntent();
       String str1 = paramIntent.getStringExtra("UploadPhoto.key_album_id");
@@ -408,7 +413,7 @@ public class PhotoUtils
       paramActivity.finish();
       AlbumUtil.a(paramActivity, false, false);
       return;
-      label155:
+      label157:
       paramIntent = paramActivity.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
       localIntent.setClassName(paramActivity.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME"), paramIntent);
       if (!paramBoolean)

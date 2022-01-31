@@ -30,8 +30,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-import ocv;
-import ocw;
+import ohk;
+import ohl;
 
 public class EditJumpToPtu
   extends EditVideoPart
@@ -64,7 +64,7 @@ public class EditJumpToPtu
         paramIntent = ((Uri)paramIntent.getParcelableExtra("android.intent.extra.STREAM")).toString();
         SLog.b("EditJumpToPtu", "onActivityResult PI_TU, new path " + paramIntent);
         if (!TextUtils.isEmpty(paramIntent)) {
-          ThreadManager.post(new ocw(this, paramIntent), 5, null, true);
+          ThreadManager.post(new ohl(this, paramIntent), 5, null, true);
         }
         if (this.jdField_a_of_type_JavaLangString != null)
         {
@@ -101,7 +101,7 @@ public class EditJumpToPtu
     VideoEditReport.b("0X80080E2", VideoEditReport.a);
     if (a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a()))
     {
-      ThreadManager.post(new ocv(this), 5, null, true);
+      ThreadManager.post(new ohk(this), 5, null, true);
       b("请稍候");
       return;
     }

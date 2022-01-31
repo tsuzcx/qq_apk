@@ -1,15 +1,18 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiBottomButton;
 
-public class ancl
-  implements Runnable
+public final class ancl
+  implements Parcelable.Creator
 {
-  public ancl(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin, String paramString) {}
-  
-  public void run()
+  public WeishiBottomButton a(Parcel paramParcel)
   {
-    RemoteHandleManager.a().a().b(this.jdField_a_of_type_JavaLangString);
+    return new WeishiBottomButton(paramParcel);
+  }
+  
+  public WeishiBottomButton[] a(int paramInt)
+  {
+    return new WeishiBottomButton[paramInt];
   }
 }
 

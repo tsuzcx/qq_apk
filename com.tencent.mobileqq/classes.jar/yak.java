@@ -1,23 +1,31 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class yak
-  implements ChatActivityUtils.StartVideoListener
+class yak
+  extends ExecuteBinResponseCallback
 {
-  public yak(SelectMemberActivity paramSelectMemberActivity, Intent paramIntent) {}
+  yak(yaj paramyaj, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void a() {}
-  
-  public void b()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.g = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
+    }
+    FileUtils.d(this.jdField_a_of_type_JavaLangString);
+    if (paramBoolean)
+    {
+      yaj.a(this.jdField_a_of_type_Yaj, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+      return;
+    }
+    yaj.a(this.jdField_a_of_type_Yaj, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
   }
   
-  public void c()
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.finish();
+    yaj.a(this.jdField_a_of_type_Yaj, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
   }
 }
 

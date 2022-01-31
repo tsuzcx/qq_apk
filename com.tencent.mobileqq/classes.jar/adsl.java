@@ -1,41 +1,33 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.pic.PicResult;
+import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import java.net.URL;
 
-public class adsl
-  implements TVK_IMediaPlayer.OnInfoListener
+class adsl
+  extends UiCallBack.DownAdapter
 {
-  public adsl(VideoBaseItem paramVideoBaseItem) {}
+  adsl(adsk paramadsk, MessageForPic paramMessageForPic) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void a(int paramInt, PicResult paramPicResult)
   {
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_Adsk.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a.setProgressBarVisibility(8);
+    paramPicResult = AbsDownloader.d(URLDrawableHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
     }
-    do
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video start buffering !");
-      }
-      if (VideoBaseItem.a(this.a) != null) {
-        VideoBaseItem.a(this.a).a(this.a.b, 0);
-      }
-      this.a.c = 6;
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video end buffering !");
-      }
-    } while (VideoBaseItem.a(this.a) == null);
-    VideoBaseItem.a(this.a).a(this.a.b, 1);
-    return false;
+    ForwardBaseOption.a(this.jdField_a_of_type_Adsk.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramPicResult, this.jdField_a_of_type_Adsk.jdField_a_of_type_JavaLangString);
   }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsl
  * JD-Core Version:    0.7.0.1
  */

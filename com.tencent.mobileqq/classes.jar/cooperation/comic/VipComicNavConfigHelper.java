@@ -8,8 +8,10 @@ import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -20,22 +22,25 @@ import org.json.JSONObject;
 
 public class VipComicNavConfigHelper
 {
-  private static Map jdField_a_of_type_JavaUtilMap;
+  private static final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+  private static final Map jdField_a_of_type_JavaUtilMap;
   public static volatile boolean a;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "NavConfig", "FavNavConfig", "CateNavConfig", "MoreNavConfig", "GroupNavConfig" };
+  private static Map b;
   
   static
   {
+    jdField_a_of_type_JavaUtilArrayList.add("index");
+    jdField_a_of_type_JavaUtilArrayList.add("fav");
+    jdField_a_of_type_JavaUtilArrayList.add("category");
+    jdField_a_of_type_JavaUtilArrayList.add("more");
+    jdField_a_of_type_JavaUtilArrayList.add("group");
+    jdField_a_of_type_JavaUtilMap = new HashMap(5);
+    jdField_a_of_type_JavaUtilMap.put("NavConfig", "index");
+    jdField_a_of_type_JavaUtilMap.put("FavNavConfig", "fav");
+    jdField_a_of_type_JavaUtilMap.put("CateNavConfig", "category");
+    jdField_a_of_type_JavaUtilMap.put("MoreNavConfig", "more");
+    jdField_a_of_type_JavaUtilMap.put("GroupNavConfig", "group");
     jdField_a_of_type_Boolean = a();
-  }
-  
-  public static VipComicNavConfigHelper.TabItemData a(String paramString)
-  {
-    Map localMap = a();
-    if ((localMap != null) && (localMap.containsKey(paramString))) {
-      return (VipComicNavConfigHelper.TabItemData)localMap.get(paramString);
-    }
-    return null;
   }
   
   public static File a()
@@ -45,25 +50,38 @@ public class VipComicNavConfigHelper
   
   public static String a(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (jdField_a_of_type_Boolean)
-    {
-      paramString = a(paramString);
-      localObject1 = localObject2;
-      if (paramString != null) {
-        localObject1 = new File(c(), paramString.c).getAbsolutePath();
-      }
+    if (jdField_a_of_type_Boolean) {
+      return new File(c(), paramString).getAbsolutePath();
     }
-    return localObject1;
+    return null;
+  }
+  
+  public static List a()
+  {
+    Object localObject = a();
+    if ((localObject != null) && (!((Map)localObject).isEmpty()))
+    {
+      ArrayList localArrayList = new ArrayList();
+      localObject = ((Map)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        VipComicNavConfigHelper.TabItemData localTabItemData = (VipComicNavConfigHelper.TabItemData)((Iterator)localObject).next();
+        if (localTabItemData.jdField_a_of_type_Int >= 0) {
+          localArrayList.add(localTabItemData);
+        }
+      }
+      Collections.sort(localArrayList);
+      return localArrayList;
+    }
+    return null;
   }
   
   public static Map a()
   {
-    if (jdField_a_of_type_JavaUtilMap == null) {
+    if (b == null) {
       a();
     }
-    return jdField_a_of_type_JavaUtilMap;
+    return b;
   }
   
   public static JSONObject a()
@@ -77,54 +95,55 @@ public class VipComicNavConfigHelper
   
   public static void a()
   {
-    try
+    for (;;)
     {
-      JSONObject localJSONObject1 = a();
-      if (localJSONObject1 != null)
+      int i;
+      try
       {
-        if (jdField_a_of_type_JavaUtilMap != null) {
-          jdField_a_of_type_JavaUtilMap.clear();
-        }
-        jdField_a_of_type_JavaUtilMap = new HashMap();
-        String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-        int k = arrayOfString.length;
-        int i = 0;
-        if (i < k)
+        JSONObject localJSONObject1 = a();
+        if (localJSONObject1 != null)
         {
-          String str = arrayOfString[i];
-          Object localObject = localJSONObject1.optJSONArray(str);
-          int j;
-          if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
-            j = ((JSONArray)localObject).length() - 1;
+          if (b != null) {
+            b.clear();
           }
-          for (;;)
+          b = new HashMap();
+          Iterator localIterator = localJSONObject1.keys();
+          if (localIterator.hasNext())
           {
-            if (j >= 0)
-            {
-              JSONObject localJSONObject2 = ((JSONArray)localObject).optJSONObject(j);
-              if ((localJSONObject2 != null) && (SwiftWebViewUtils.a(localJSONObject2, str)))
-              {
-                localObject = new VipComicNavConfigHelper.TabItemData();
-                ((VipComicNavConfigHelper.TabItemData)localObject).a = localJSONObject2.optString("tabName");
-                ((VipComicNavConfigHelper.TabItemData)localObject).b = localJSONObject2.optString("tabUrl");
-                ((VipComicNavConfigHelper.TabItemData)localObject).c = localJSONObject2.optString("tabIcon");
-                jdField_a_of_type_JavaUtilMap.put(str, localObject);
-              }
+            String str = (String)localIterator.next();
+            Object localObject = localJSONObject1.optJSONArray(str);
+            if ((localObject == null) || (((JSONArray)localObject).length() <= 0)) {
+              continue;
             }
-            else
-            {
-              i += 1;
-              break;
+            i = ((JSONArray)localObject).length() - 1;
+            if (i < 0) {
+              continue;
             }
-            j -= 1;
+            JSONObject localJSONObject2 = ((JSONArray)localObject).optJSONObject(i);
+            if ((localJSONObject2 == null) || (!SwiftWebViewUtils.a(localJSONObject2, str))) {
+              break label247;
+            }
+            localObject = new VipComicNavConfigHelper.TabItemData();
+            ((VipComicNavConfigHelper.TabItemData)localObject).jdField_a_of_type_JavaLangString = localJSONObject2.optString("tabKey");
+            if ((TextUtils.isEmpty(((VipComicNavConfigHelper.TabItemData)localObject).jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaUtilMap.containsKey(str))) {
+              ((VipComicNavConfigHelper.TabItemData)localObject).jdField_a_of_type_JavaLangString = ((String)jdField_a_of_type_JavaUtilMap.get(str));
+            }
+            ((VipComicNavConfigHelper.TabItemData)localObject).jdField_a_of_type_Int = localJSONObject2.optInt("sequence");
+            ((VipComicNavConfigHelper.TabItemData)localObject).b = localJSONObject2.optString("tabName");
+            ((VipComicNavConfigHelper.TabItemData)localObject).c = localJSONObject2.optString("tabUrl");
+            ((VipComicNavConfigHelper.TabItemData)localObject).d = localJSONObject2.optString("tabIcon");
+            b.put(str, localObject);
+            continue;
           }
         }
+        return;
       }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("VipComicNavConfigHelper", 1, localJSONException, new Object[0]);
+      catch (JSONException localJSONException)
+      {
+        QLog.e("VipComicNavConfigHelper", 1, localJSONException, new Object[0]);
+      }
+      label247:
+      i -= 1;
     }
   }
   
@@ -175,7 +194,7 @@ public class VipComicNavConfigHelper
         localObject2 = Arrays.asList((Object[])localObject2);
         localObject1 = ((Map)localObject1).values().iterator();
         while (((Iterator)localObject1).hasNext()) {
-          if (!((List)localObject2).contains(((VipComicNavConfigHelper.TabItemData)((Iterator)localObject1).next()).c)) {
+          if (!((List)localObject2).contains(((VipComicNavConfigHelper.TabItemData)((Iterator)localObject1).next()).d)) {
             return false;
           }
         }

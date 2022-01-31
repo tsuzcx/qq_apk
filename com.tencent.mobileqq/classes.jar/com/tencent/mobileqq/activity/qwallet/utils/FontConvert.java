@@ -6,7 +6,7 @@ import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
-import xho;
+import xnj;
 
 public class FontConvert
 {
@@ -16,7 +16,7 @@ public class FontConvert
   
   public static FontConvert a()
   {
-    return xho.a;
+    return xnj.a;
   }
   
   public String a()
@@ -87,10 +87,10 @@ public class FontConvert
     //   17: dup
     //   18: invokestatic 119	com/tencent/mobileqq/app/ThreadManager:getSubThreadLooper	()Landroid/os/Looper;
     //   21: invokespecial 122	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   24: new 124	xhn
+    //   24: new 124	xni
     //   27: dup
     //   28: aload_0
-    //   29: invokespecial 127	xhn:<init>	(Lcom/tencent/mobileqq/activity/qwallet/utils/FontConvert;)V
+    //   29: invokespecial 127	xni:<init>	(Lcom/tencent/mobileqq/activity/qwallet/utils/FontConvert;)V
     //   32: invokevirtual 131	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   35: pop
     //   36: goto -25 -> 11

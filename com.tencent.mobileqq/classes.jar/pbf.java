@@ -1,25 +1,20 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
+import org.json.JSONObject;
 
-public class pbf
-  implements View.OnClickListener
+class pbf
+  implements TroopTopicMgr.DoLikeCallback
 {
-  public pbf(HotchatPlugin paramHotchatPlugin, String paramString, Activity paramActivity) {}
+  pbf(paz parampaz, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.a(this.jdField_a_of_type_JavaLangString);
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
-    {
-      paramView = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((paramView instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)paramView).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
-      }
-    }
+    paramJSONObject = new Bundle();
+    paramJSONObject.putInt("reqType", this.jdField_a_of_type_Int);
+    paramJSONObject.putInt("seq", this.b);
+    paramJSONObject.putInt("errorCode", paramInt);
+    this.jdField_a_of_type_Paz.a.a(60, paramJSONObject);
   }
 }
 

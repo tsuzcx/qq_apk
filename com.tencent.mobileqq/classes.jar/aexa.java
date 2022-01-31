@@ -1,49 +1,32 @@
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
-public class aexa
-  implements AdapterView.OnItemClickListener
+class aexa
+  implements WerewolvesHandler.Callback
 {
-  public aexa(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  aexa(aewz paramaewz) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    ShortVideoCommentsView.a(this.a, (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt));
-    if (ShortVideoCommentsView.a(this.a) == null) {
-      return;
-    }
-    paramLong = this.a.a.getLongAccountUin();
-    if (ShortVideoCommentsView.a(this.a).c == paramLong)
+    if (paramInt == 0)
     {
-      this.a.a("不能回复自己的评论");
-      ShortVideoCommentsView.a(this.a, null);
-      return;
+      paramRspBody = paramRspBody.poi_info;
+      String str = paramRspBody.bytes_uid.get().toStringUtf8();
+      this.a.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
     }
-    paramAdapterView = new StringBuilder();
-    paramAdapterView.append("回复 ");
-    if (ShortVideoCommentsView.a(this.a).b.length() >= 6)
+    do
     {
-      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b.substring(0, 5));
-      paramAdapterView.append("...");
-    }
-    for (;;)
-    {
-      ShortVideoCommentsView.a(this.a).setText("");
-      ShortVideoCommentsView.a(this.a).setHint(paramAdapterView);
-      if (!ShortVideoCommentsView.f(this.a)) {
-        break;
-      }
-      this.a.l();
       return;
-      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b);
-    }
-    ShortVideoCommentsView.a(this.a, 1);
+      this.a.a.a(paramInt, paramRspBody, "开始游戏失败");
+    } while (!QLog.isColorLevel());
+    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
   }
 }
 

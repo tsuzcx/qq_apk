@@ -1,45 +1,29 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.agent.datamodel.FriendGroup;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView.DropdownCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public final class alcv
-  implements DbCacheData.DbCreator
+class alcv
+  implements Runnable
 {
-  public int a()
-  {
-    return 0;
-  }
+  alcv(alcu paramalcu, View paramView) {}
   
-  public FriendGroup a(Cursor paramCursor)
+  public void run()
   {
-    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    if (localObject == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewStyleDropdownView", 2, "arrow clicked and postDelayed 250 run, set icon up and isLastDropDown true");
     }
-    paramCursor = Parcel.obtain();
-    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-    paramCursor.setDataPosition(0);
-    localObject = new FriendGroup();
-    ((FriendGroup)localObject).a(paramCursor);
-    paramCursor.recycle();
-    return localObject;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("groupId", "INTEGER UNIQUE"), new DbCacheData.Structure("data", "BLOB") };
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Alcu.a.b);
+    if (this.jdField_a_of_type_Alcu.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
+      this.jdField_a_of_type_Alcu.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.b();
+    }
+    this.jdField_a_of_type_Alcu.a.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alcv
  * JD-Core Version:    0.7.0.1
  */

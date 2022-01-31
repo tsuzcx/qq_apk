@@ -1,16 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
 public class tbh
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tbh(MainFragment paramMainFragment) {}
+  public tbh(LbsBaseActivity paramLbsBaseActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (BaseApplicationImpl.getContext() != null) {
-      SharedPreUtils.a(BaseApplicationImpl.getContext(), "");
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
     }
   }
 }

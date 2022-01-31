@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.qq.im.QIMCameraUtil;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
-public final class anrc
-  implements Parcelable.Creator
+public class anrc
+  implements Runnable
 {
-  public EditLocalGifSource a(Parcel paramParcel)
-  {
-    return new EditLocalGifSource(paramParcel);
-  }
+  public anrc(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public EditLocalGifSource[] a(int paramInt)
+  public void run()
   {
-    return new EditLocalGifSource[paramInt];
+    try
+    {
+      QIMCameraCaptureUnit.a(this.a, QIMCameraUtil.a(this.a.a.a(), true));
+      if ((QIMCameraCaptureUnit.a(this.a) != null) && (!QIMCameraCaptureUnit.a(this.a).isRecycled())) {
+        QIMCameraCaptureUnit.a(this.a, ImageUtil.b(QIMCameraCaptureUnit.a(this.a), ViewUtils.a(3.0F), QIMCameraCaptureUnit.a(this.a).getWidth(), QIMCameraCaptureUnit.a(this.a).getHeight()));
+      }
+      this.a.a.a().runOnUiThread(new anrd(this));
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import mqq.os.MqqHandler;
 
-class tfg
-  implements Runnable
+public class tfg
+  extends MqqHandler
 {
-  tfg(tfe paramtfe) {}
+  public tfg(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.b(this.a.a.app.o());
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

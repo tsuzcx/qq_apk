@@ -1,29 +1,31 @@
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.data.OpenID;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
-class mwq
-  implements Runnable
+public class mwq
+  implements AsyncBack
 {
-  mwq(mwp parammwp, Object paramObject) {}
+  public mwq(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof OpenID))
-    {
-      OpenID localOpenID = (OpenID)this.jdField_a_of_type_JavaLangObject;
-      if (PublicAccountUtil.a(this.jdField_a_of_type_Mwp.jdField_a_of_type_AndroidAppActivity, localOpenID, this.jdField_a_of_type_Mwp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Mwp.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams)) {
-        break label77;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
     }
-    label77:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        PublicAccountUtil.b(this.jdField_a_of_type_Mwp.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Mwp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Mwp.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
-      }
-      return;
-    }
+    this.a.app.getApplication();
+    int i = NetworkUtil.a(MobileQQ.getContext());
+    paramString = new HashMap();
+    paramString.put("network", "" + i);
+    paramString.put("status_code", "" + paramInt);
+    StatisticCollector.a(this.a).a(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

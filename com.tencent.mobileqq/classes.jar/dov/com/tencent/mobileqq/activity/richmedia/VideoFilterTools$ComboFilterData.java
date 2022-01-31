@@ -7,6 +7,7 @@ import dov.com.qq.im.capture.data.ComboLockManager;
 import dov.com.qq.im.capture.data.FilterCategory;
 import dov.com.qq.im.capture.data.LockedCategory;
 import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import dov.com.qq.im.capture.data.TransitionCategoryItem;
 import dov.com.qq.im.capture.paster.PasterDataManager;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,6 +41,37 @@ public class VideoFilterTools$ComboFilterData
     VideoFilterTools.a().a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
   }
   
+  public VideoFilterTools$ComboFilterData(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$DataSet = new VideoFilterTools.DataSet();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = a(paramString);
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$DataSet = VideoFilterTools.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, true, false);
+    this.b = VideoFilterTools.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, false, true);
+    this.c = VideoFilterTools.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, false, false);
+    if (!paramBoolean) {
+      VideoFilterTools.a().a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
+    }
+  }
+  
+  private TransitionCategoryItem a(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  {
+    TransitionCategoryItem localTransitionCategoryItem = new TransitionCategoryItem();
+    localTransitionCategoryItem.jdField_a_of_type_JavaLangString = (paramInt1 + "");
+    localTransitionCategoryItem.b = paramString1;
+    localTransitionCategoryItem.c = paramString4;
+    localTransitionCategoryItem.h = paramString3;
+    localTransitionCategoryItem.jdField_a_of_type_Int = paramInt2;
+    localTransitionCategoryItem.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    localTransitionCategoryItem.jdField_a_of_type_JavaUtilArrayList.add(paramString2);
+    localTransitionCategoryItem.i = paramString5;
+    localTransitionCategoryItem.j = paramString7;
+    localTransitionCategoryItem.k = paramString8;
+    localTransitionCategoryItem.l = paramString6;
+    return localTransitionCategoryItem;
+  }
+  
   private void a(VideoFilterTools.DataSet paramDataSet1, VideoFilterTools.DataSet paramDataSet2)
   {
     PasterDataManager localPasterDataManager = (PasterDataManager)QIMManager.a(4);
@@ -60,6 +92,11 @@ public class VideoFilterTools$ComboFilterData
     paramDataSet2.jdField_b_of_type_DovComQqImCaptureDataQIMFilterCategoryItem = paramDataSet1.jdField_b_of_type_DovComQqImCaptureDataQIMFilterCategoryItem;
   }
   
+  public TransitionCategoryItem a()
+  {
+    return a(4, "默认", 103, "tran_default", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_default.png", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_default_static.png", "LinearBlur", "1", "1", "Basic");
+  }
+  
   public VideoFilterTools.DataSet a(int paramInt)
   {
     VideoFilterTools.DataSet localDataSet2 = new VideoFilterTools.DataSet();
@@ -77,6 +114,21 @@ public class VideoFilterTools$ComboFilterData
       continue;
       localDataSet1 = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$DataSet;
     }
+  }
+  
+  public ArrayList a()
+  {
+    ArrayList localArrayList1 = new ArrayList(5);
+    FilterCategory localFilterCategory = new FilterCategory(1001, "基础效果", false, false, 0);
+    ArrayList localArrayList2 = new ArrayList(10);
+    localArrayList2.add(a(4, "默认", 103, "tran_default", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_default.png", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_default_static.png", "LinearBlur", "1", "1", "Basic"));
+    localArrayList2.add(a(5, "叠黑", 103, "tran_fade", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_fadecolor.png", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_fadecolor_static.png", "fadecolor", "1", "2", "Basic"));
+    localArrayList2.add(a(6, "放大", 103, "tran_zoom", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_zoom.png", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_zoom_static.png", "simpleZoom", "1", "3", "Basic"));
+    localArrayList2.add(a(7, "擦除", 103, "tran_wipe", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_wipe.png", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_wipe_static.png", "directionalwipe", "1", "4", "Basic"));
+    localArrayList2.add(a(1, "瞬移", 103, "tran_move", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_move.png", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_move_static.png", "speedWipe", "1", "5", "Basic"));
+    localFilterCategory.a = localArrayList2;
+    localArrayList1.add(localFilterCategory);
+    return localArrayList1;
   }
   
   public CopyOnWriteArrayList a(String paramString)
@@ -122,9 +174,10 @@ public class VideoFilterTools$ComboFilterData
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
-      VideoFilterTools.a().a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-    }
+    a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$DataSet = VideoFilterTools.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, true, false);
+    this.b = VideoFilterTools.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, false, true);
+    this.c = VideoFilterTools.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, false, false);
   }
   
   public void a(CopyOnWriteArrayList paramCopyOnWriteArrayList)
@@ -167,12 +220,13 @@ public class VideoFilterTools$ComboFilterData
     }
   }
   
-  public void b()
+  public ArrayList b()
   {
-    a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$DataSet = VideoFilterTools.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, true, false);
-    this.b = VideoFilterTools.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, false, true);
-    this.c = VideoFilterTools.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList, false, false);
+    ArrayList localArrayList = new ArrayList(10);
+    localArrayList.add(a(6, "放大", 103, "tran_zoom", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_zoom.png", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_zoom_static.png", "simpleZoom", "0", "3", "Basic"));
+    localArrayList.add(a(7, "擦除", 103, "tran_wipe", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_wipe.png", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_wipe_static.png", "directionalwipe", "0", "4", "Basic"));
+    localArrayList.add(a(1, "瞬移", 103, "tran_move", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_move.png", "http://d.url.cn/myapp/qq_desk/shortvideo/transition/trans_move_static.png", "speedWipe", "0", "5", "Basic"));
+    return localArrayList;
   }
 }
 

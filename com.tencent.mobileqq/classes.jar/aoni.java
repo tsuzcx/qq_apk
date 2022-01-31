@@ -1,31 +1,26 @@
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.FilterFactory;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUDrawPartFilter;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
 
 public class aoni
-  implements Runnable
+  extends Property
 {
-  public aoni(GpuImagePartsFilterGroup paramGpuImagePartsFilterGroup, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void run()
+  public aoni(PickerContainer paramPickerContainer, Class paramClass, String paramString)
   {
-    GPUDrawPartFilter localGPUDrawPartFilter1 = null;
-    GPUDrawPartFilter localGPUDrawPartFilter2 = GpuImagePartsFilterGroup.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup);
-    GpuImagePartsFilterGroup.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, null);
-    if ((GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup) == null) || (GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).b() != this.jdField_a_of_type_Int))
-    {
-      localGPUDrawPartFilter1 = GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup);
-      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, (GPUDrawPartFilter)FilterFactory.a(this.jdField_a_of_type_Int));
-      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a();
-      GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(this.b, this.c);
+    super(paramClass, paramString);
+  }
+  
+  public Float a(PickerContainer paramPickerContainer)
+  {
+    if (paramPickerContainer != null) {
+      return PickerContainer.a(paramPickerContainer);
     }
-    GpuImagePartsFilterGroup.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(false, 0.0F);
-    GpuImagePartsFilterGroup.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, 0.0F);
-    if (localGPUDrawPartFilter2 != null) {
-      localGPUDrawPartFilter2.c();
-    }
-    if (localGPUDrawPartFilter1 != null) {
-      localGPUDrawPartFilter1.c();
+    return Float.valueOf(1.0F);
+  }
+  
+  public void a(PickerContainer paramPickerContainer, Float paramFloat)
+  {
+    if (paramPickerContainer != null) {
+      PickerContainer.a(paramPickerContainer, paramFloat);
     }
   }
 }

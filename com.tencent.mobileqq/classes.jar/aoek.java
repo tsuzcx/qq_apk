@@ -1,27 +1,15 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import java.util.Map;
 
-public class aoek
-  extends Property
+class aoek
+  implements Runnable
 {
-  public aoek(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  aoek(aoej paramaoej, Map paramMap) {}
   
-  public Float a(MarkDrawable paramMarkDrawable)
+  public void run()
   {
-    if (paramMarkDrawable != null) {
-      return Float.valueOf(MarkDrawable.a(paramMarkDrawable));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(MarkDrawable paramMarkDrawable, Float paramFloat)
-  {
-    if (paramMarkDrawable != null) {
-      MarkDrawable.a(paramMarkDrawable, paramFloat.floatValue());
-    }
+    this.jdField_a_of_type_Aoej.a.a.a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

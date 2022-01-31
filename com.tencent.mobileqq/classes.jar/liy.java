@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class liy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public liy(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public liy(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyCommentComponentFragment.a(this.a, 1);
+    this.a.a();
   }
 }
 

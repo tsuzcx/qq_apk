@@ -1,17 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
 
 public class aoml
-  implements Runnable
+  extends Property
 {
-  public aoml(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
-  
-  public void run()
+  public aoml(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onCaptureVideoFilterRefresh");
+    super(paramClass, paramString);
+  }
+  
+  public Float a(GroundDrawable paramGroundDrawable)
+  {
+    if (paramGroundDrawable != null) {
+      return Float.valueOf(GroundDrawable.a(paramGroundDrawable));
     }
-    this.a.b();
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
+  {
+    if (paramGroundDrawable != null) {
+      GroundDrawable.a(paramGroundDrawable, paramFloat.floatValue());
+    }
   }
 }
 

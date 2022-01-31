@@ -1,37 +1,28 @@
-import android.view.MotionEvent;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public class anxx
-  implements View.OnTouchListener
+public final class anxx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private final int jdField_a_of_type_Int = 10;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public float a;
+  final View a;
   
-  public anxx(EditTextDialog paramEditTextDialog) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public anxx(View paramView)
   {
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        this.b = ((int)f);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      } while (Math.abs(f - this.b) <= 10.0F);
-      this.jdField_a_of_type_Boolean = true;
-      return false;
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_Float = f;
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
     }
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

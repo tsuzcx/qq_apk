@@ -1,15 +1,14 @@
-import cooperation.qzone.QzoneGiftFullScreenActionManager;
-import cooperation.qzone.QzoneGiftFullScreenActionManager.MagicfaceCloseListener;
-import cooperation.qzone.QzoneGiftFullScreenViewController;
+import cooperation.dingdong.data.ScheduleReminderMgr;
 
 public class amsp
-  implements QzoneGiftFullScreenActionManager.MagicfaceCloseListener
+  implements Runnable
 {
-  public amsp(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController, QzoneGiftFullScreenActionManager paramQzoneGiftFullScreenActionManager) {}
+  public amsp(ScheduleReminderMgr paramScheduleReminderMgr) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a();
+    this.a.b(ScheduleReminderMgr.a(this.a));
+    ScheduleReminderMgr.a(this.a, null);
   }
 }
 

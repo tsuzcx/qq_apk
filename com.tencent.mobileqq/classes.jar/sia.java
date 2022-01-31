@@ -1,28 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.DBUtils;
 
-public class sia
-  extends BroadcastReceiver
+class sia
+  implements Runnable
 {
-  public sia(Conversation paramConversation) {}
+  sia(shy paramshy, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ("login".equals(paramIntent.getStringExtra("status")))
-    {
-      this.a.a.a(9, 2);
-      this.a.a.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("loginInfo");
-      this.a.a.c = paramIntent.getStringExtra("loginAppId");
-      this.a.a.jdField_b_of_type_Int = paramIntent.getIntExtra("appType", -1);
-      this.a.a.d = paramIntent.getStringExtra("bannerTips");
-      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
-      this.a.a.a(-1, null);
-      return;
-    }
-    this.a.a.b();
+    DBUtils.a(this.jdField_a_of_type_Shy.a.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
   }
 }
 

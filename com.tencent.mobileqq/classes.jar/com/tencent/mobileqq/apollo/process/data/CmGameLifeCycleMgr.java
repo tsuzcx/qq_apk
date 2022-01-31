@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.apollo.process.data;
 
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -56,20 +58,51 @@ public class CmGameLifeCycleMgr
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt1, int paramInt2, CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    CmGameLifeCycle localCmGameLifeCycle = b(paramInt1);
-    if (localCmGameLifeCycle != null)
+    CmGameLifeCycle localCmGameLifeCycle2 = b(paramInt1);
+    CmGameLifeCycle localCmGameLifeCycle1 = localCmGameLifeCycle2;
+    if (localCmGameLifeCycle2 == null)
     {
-      localCmGameLifeCycle.a(paramInt1, paramInt2);
+      localCmGameLifeCycle1 = localCmGameLifeCycle2;
+      if (paramInt2 == 1)
+      {
+        localCmGameLifeCycle2 = a(paramInt1);
+        localCmGameLifeCycle1 = localCmGameLifeCycle2;
+        if (localCmGameLifeCycle2 != null)
+        {
+          localCmGameLifeCycle1 = localCmGameLifeCycle2;
+          if (paramStartCheckParam != null)
+          {
+            if (BaseActivity.sTopActivity == null) {
+              break label109;
+            }
+            localCmGameLifeCycle2.a(BaseActivity.sTopActivity, paramStartCheckParam);
+            localCmGameLifeCycle1 = localCmGameLifeCycle2;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("cmgame_process.CmGameLifeCycleMgr", 2, "[handleActLifeCycle] rebuild game");
+              localCmGameLifeCycle1 = localCmGameLifeCycle2;
+            }
+          }
+        }
+      }
+    }
+    if (localCmGameLifeCycle1 != null)
+    {
+      localCmGameLifeCycle1.a(paramInt1, paramInt2);
       if (paramInt2 != 2) {
-        break label27;
+        break label120;
       }
       a(paramInt1);
     }
-    label27:
-    while (paramInt2 != 4) {
+    label109:
+    label120:
+    while (paramInt2 != 4)
+    {
       return;
+      QLog.e("cmgame_process.CmGameLifeCycleMgr", 1, "[handleActLifeCycle] context is null");
+      break;
     }
     b(paramInt1);
   }

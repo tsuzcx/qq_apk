@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acep
-  implements Runnable
+class acep
+  implements DialogInterface.OnClickListener
 {
-  public acep(EmoticonMainPanel paramEmoticonMainPanel) {}
+  acep(aceo paramaceo) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "func updateLastEmoticonPanel begins.");
-    }
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

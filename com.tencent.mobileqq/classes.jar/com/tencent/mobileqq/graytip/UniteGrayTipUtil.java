@@ -233,7 +233,7 @@ public class UniteGrayTipUtil
         paramMessageForUniteGrayTip.editState = 1;
         paramMessageForUniteGrayTip.editTime = NetConnInfoCenter.getServerTimeMillis();
         paramMessageForUniteGrayTip.editMsgData = localStringBuilder.toString();
-        localObject = BaseApplicationImpl.getApplication().getString(2131438103);
+        localObject = BaseApplicationImpl.getApplication().getString(2131438123);
         paramString = paramString.concat(" ");
         j = paramString.length();
         k = ((String)localObject).length() + j;
@@ -444,7 +444,7 @@ public class UniteGrayTipUtil
           }
           paramMessageForUniteGrayTip.editState = 0;
           paramMessageForUniteGrayTip.editTime = 0L;
-          String str = " " + BaseApplicationImpl.getApplication().getString(2131438103);
+          String str = " " + BaseApplicationImpl.getApplication().getString(2131438123);
           if ((paramMessageForUniteGrayTip.tipParam != null) && (paramMessageForUniteGrayTip.tipParam.jdField_c_of_type_JavaLangString != null)) {
             paramMessageForUniteGrayTip.tipParam.jdField_c_of_type_JavaLangString = paramMessageForUniteGrayTip.tipParam.jdField_c_of_type_JavaLangString.replace(str, "");
           }

@@ -1,31 +1,13 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
 
-public class mjv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class mjv
+  implements Runnable
 {
-  public mjv(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  mjv(mju parammju) {}
   
-  @SuppressLint({"NewApi"})
-  public void onGlobalLayout()
+  public void run()
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
-      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
-      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
-      this.a.invalidate();
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    VideoVolumeControl.d(this.a.a, false);
   }
 }
 

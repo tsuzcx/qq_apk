@@ -1,11 +1,32 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.ChangeNewPath;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
 class acvf
-  implements FileManagerRSWorker.ChangeNewPath
+  implements Runnable
 {
-  acvf(acve paramacve, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, long paramLong2) {}
+  acvf(acvc paramacvc) {}
+  
+  public void run()
+  {
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    try
+    {
+      String str = (String)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.getText();
+      if ((str == null) || (str.length() == 0)) {
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject = null;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.clearAnimation();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.setVisibility(0);
+    }
+  }
 }
 
 

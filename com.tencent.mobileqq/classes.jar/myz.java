@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.PublicAccountArticleHandler;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.widget.ActionSheet;
 
 public class myz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public myz(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, PublicAccountArticleHandler paramPublicAccountArticleHandler, String paramString) {}
+  public myz(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountArticleHandler.a(this.jdField_a_of_type_JavaLangString, "", 0, 1);
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.j();
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.dismiss();
   }
 }
 

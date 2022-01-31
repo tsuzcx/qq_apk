@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
+import com.tencent.mobileqq.app.NearbyHandler;
+import com.tencent.mobileqq.nearby.NearbyReportManager;
+import com.tencent.mobileqq.nearby.NearbyReportManager.ReportRecord;
+import com.tencent.util.LongSparseArray;
+import java.util.ArrayList;
 
-class aevj
+public class aevj
   implements Runnable
 {
-  aevj(aevi paramaevi) {}
+  public aevj(NearbyReportManager paramNearbyReportManager, LongSparseArray paramLongSparseArray, NearbyHandler paramNearbyHandler, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((ImageFeedsUploader.a(this.a.a) != null) && (ImageFeedsUploader.a(this.a.a).a() != null)) {
-      ImageFeedsUploader.a(this.a.a).a(0, null, 0, 0);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.jdField_a_of_type_ComTencentUtilLongSparseArray.a())
+    {
+      localArrayList.add((NearbyReportManager.ReportRecord)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i));
+      i += 1;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppNearbyHandler.a(localArrayList, this.jdField_a_of_type_Boolean);
   }
 }
 

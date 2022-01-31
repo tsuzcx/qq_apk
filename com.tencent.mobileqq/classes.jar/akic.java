@@ -1,81 +1,101 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.vas.VasMonitorHandler;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import android.os.Bundle;
+import com.tencent.biz.webviewplugin.NewReportPlugin;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.open.base.http.HttpBaseUtil.Statistic;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class akic
+public final class akic
   implements Runnable
 {
-  public akic(VasMonitorHandler paramVasMonitorHandler, AppRuntime paramAppRuntime, boolean paramBoolean) {}
+  public akic(int paramInt, String paramString1, BaseActivity paramBaseActivity, String paramString2, String paramString3, QQProgressDialog paramQQProgressDialog) {}
   
   public void run()
   {
-    boolean bool2 = true;
-    int i = 0;
-    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime;
-    boolean bool1;
-    Object localObject3;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      bool1 = true;
-      localObject3 = VasQuickUpdateManager.a((AppRuntime)localObject1, "monitorAppid", bool1, null);
-      if (localObject3 == null) {}
-    }
+    Object localObject = "";
     for (;;)
     {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqVasVasMonitorHandler.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        localObject1 = ((JSONObject)localObject3).optJSONArray("allAppidControl");
-        if (localObject1 == null) {
-          break label229;
-        }
-        localObject1 = ((JSONArray)localObject1).optJSONObject(0);
-        AtomicBoolean localAtomicBoolean = this.jdField_a_of_type_ComTencentMobileqqVasVasMonitorHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-        if ((localObject1 == null) || (!((JSONObject)localObject1).optBoolean("stopAllReport"))) {
-          break label235;
-        }
-        bool1 = bool2;
-        localAtomicBoolean.set(bool1);
-        if (this.jdField_a_of_type_ComTencentMobileqqVasVasMonitorHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          return;
-        }
-        localObject3 = ((JSONObject)localObject3).optJSONArray("individualMonitorAppidList");
-        if (localObject3 != null) {
-          if (i < ((JSONArray)localObject3).length())
+        switch (this.jdField_a_of_type_Int)
+        {
+        default: 
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("system=android");
+          localStringBuilder.append("&");
+          localStringBuilder.append("version=7.6.8");
+          localStringBuilder.append("&");
+          localStringBuilder.append("uintype=1");
+          localStringBuilder.append("&");
+          localStringBuilder.append("eviluin=" + this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append("&");
+          localStringBuilder.append("appname=KQQ");
+          localStringBuilder.append("&");
+          localStringBuilder.append("appid=2400002");
+          localStringBuilder.append("&");
+          localStringBuilder.append("subapp=" + (String)localObject);
+          localStringBuilder.append("&");
+          if (this.jdField_a_of_type_Int == 10000)
           {
-            localObject1 = ((JSONArray)localObject3).optJSONObject(i);
-            if (localObject1 != null)
-            {
-              localObject1 = ((JSONObject)localObject1).optString("appid");
-              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                this.jdField_a_of_type_ComTencentMobileqqVasVasMonitorHandler.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject1);
-              }
-              i += 1;
-              continue;
-            }
-            localObject1 = null;
-            continue;
+            localStringBuilder.append("scene=10028");
+            localStringBuilder.append("&");
+            localStringBuilder.append("srv_para=" + ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.b, this.c, this.jdField_a_of_type_Int));
+            str2 = "abcdabcdabcdabcd";
+            localObject = str2;
           }
+          break;
         }
+      }
+      catch (Exception localException1)
+      {
+        StringBuilder localStringBuilder;
+        String str2;
+        String str3;
+        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new akie(this, localException1));
         return;
       }
-      catch (Exception localException)
+      try
       {
-        QLog.i("VasMonitorHandler", 2, "parseBlackList err:" + localException.getMessage());
+        str3 = HttpBaseUtil.a("http://jubao.qq.com/uniform_impeach/impeach_cryptokey", "GET", new Bundle()).jdField_a_of_type_JavaLangString;
+        localObject = str2;
+        QLog.d("cryptograph", 1, "get cryptograph step1 : get response=" + str3);
+        localObject = str2;
+        str2 = NewReportPlugin.a(str3);
+        localObject = str2;
+        QLog.d("cryptograph", 1, "get cryptograph step2 : get encryptedKey=" + str2);
+        localObject = str2;
       }
-      bool1 = false;
-      break;
-      label229:
-      Object localObject2 = null;
+      catch (Exception localException2)
+      {
+        QLog.d("cryptograph", 1, "get cryptograph exception" + localException2.getMessage());
+        continue;
+      }
+      localObject = NewReportPlugin.a("d41d8cd98f00b204e9800998ecf8427e", (String)localObject);
+      QLog.d("cryptograph", 1, "get cryptograph step3 : get decryptedKey=" + (String)localObject);
+      localObject = MD5Utils.d("android_7.6.8_" + this.jdField_a_of_type_Int + "_" + (String)localObject);
+      localObject = MD5Utils.d(this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getCurrentAccountUin() + "_" + (String)localObject);
+      QLog.d("cryptograph", 1, "get cryptograph step4 : get cryptograph=" + (String)localObject);
+      localStringBuilder.append("&cryptograph=");
+      localStringBuilder.append((String)localObject);
+      if (this.jdField_a_of_type_Int == 10000)
+      {
+        localStringBuilder.append("|groupid:");
+        localStringBuilder.append(this.c);
+        localStringBuilder.append("|SubEntrence:4");
+      }
+      localObject = localStringBuilder.toString();
+      QLog.d("cryptograph", 1, "postData=" + (String)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new akid(this, (String)localObject));
+      return;
+      localStringBuilder.append("scene=" + this.jdField_a_of_type_Int);
       continue;
-      label235:
-      bool1 = false;
+      continue;
+      String str1 = "nearby_info";
+      continue;
+      str1 = "nearby_chat";
     }
   }
 }

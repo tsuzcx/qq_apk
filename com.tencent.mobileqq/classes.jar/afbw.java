@@ -1,24 +1,30 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.AnchorDisplayAdapter;
-import tencent.im.oidb.cmd0xac5.cmd0xac5.NowFollowAnchor;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afbw
+  implements AdapterView.OnItemLongClickListener
 {
-  public int a;
-  public View a;
-  public TextView a;
-  public URLImageView a;
-  public cmd0xac5.NowFollowAnchor a;
-  public View b;
-  public URLImageView b;
-  public View c;
-  public View d;
-  public View e;
-  public View f;
+  public afbw(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public afbw(AnchorDisplayAdapter paramAnchorDisplayAdapter) {}
+  public boolean onItemLongClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt);
+    if (paramAdapterView == null) {
+      return true;
+    }
+    paramLong = Long.parseLong(this.a.a.getCurrentAccountUin());
+    if (paramAdapterView.c == paramLong)
+    {
+      ShortVideoCommentsView.b(this.a, paramAdapterView);
+      return true;
+    }
+    return false;
+  }
 }
 
 

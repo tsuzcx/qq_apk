@@ -28,10 +28,10 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import mqq.manager.WtloginManager;
 import mqq.observer.WtloginObserver;
-import oug;
-import ouh;
-import oui;
-import ouj;
+import oyx;
+import oyy;
+import oyz;
+import oza;
 
 public class QRLoginActivity
   extends IphoneTitleBarActivity
@@ -49,7 +49,7 @@ public class QRLoginActivity
   public QQProgressDialog a;
   public String a;
   private WtloginManager jdField_a_of_type_MqqManagerWtloginManager;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new oug(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new oyx(this);
   protected boolean a;
   protected byte[] a;
   public int b;
@@ -72,7 +72,7 @@ public class QRLoginActivity
     this.jdField_b_of_type_Int = 2;
     this.jdField_d_of_type_Int = 3;
     this.jdField_e_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new ouj(this);
+    this.jdField_a_of_type_AndroidOsHandler = new oza(this);
   }
   
   public static byte[] a(byte[] paramArrayOfByte, int paramInt)
@@ -183,8 +183,8 @@ public class QRLoginActivity
     if (!HttpUtil.a(this))
     {
       localObject = DialogUtil.a(this, 230);
-      ((QQCustomDialog)localObject).setMessage(2131429914);
-      ((QQCustomDialog)localObject).setPositiveButton(2131433016, new oui(this));
+      ((QQCustomDialog)localObject).setMessage(2131429915);
+      ((QQCustomDialog)localObject).setPositiveButton(2131433030, new oyz(this));
       ((QQCustomDialog)localObject).show();
     }
     if (paramString != null)
@@ -194,7 +194,7 @@ public class QRLoginActivity
     }
     else
     {
-      localObject = getString(2131429963);
+      localObject = getString(2131429964);
     }
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -202,7 +202,7 @@ public class QRLoginActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131429917);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131429918);
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
   }
   
@@ -210,8 +210,8 @@ public class QRLoginActivity
   {
     ((ActivateFriendsManager)this.app.getManager(84)).b();
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131430012);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(new ouh(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131430014);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(new oyy(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     Object localObject1 = QRUtils.a(this.app.a());
     Object localObject2 = ByteBuffer.allocate(localObject1.length + 4);
@@ -264,7 +264,7 @@ public class QRLoginActivity
       localIntent.setFlags(67108864);
       super.startActivity(localIntent);
     }
-    Toast.makeText(getApplicationContext(), 2131429964, 0).show();
+    Toast.makeText(getApplicationContext(), 2131429965, 0).show();
     if (this.jdField_c_of_type_JavaLangString.equals("QQ"))
     {
       localIntent = new Intent("com.tencent.mobileqq.action.PC_STATUS_MANAGE");
@@ -288,17 +288,17 @@ public class QRLoginActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969709);
-    super.setTitle(2131429916);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131367567));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131367572));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131367573));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367569));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367570));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367571));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367568));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367565));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131367574));
+    super.setContentView(2130969706);
+    super.setTitle(2131429917);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131367574));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131367579));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131367580));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367576));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367577));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367578));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367575));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367572));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131367581));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_JavaLangString = this.app.getCurrentAccountUin();
@@ -325,14 +325,14 @@ public class QRLoginActivity
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131367572) && (this.jdField_a_of_type_Boolean))
+    if ((paramView.getId() == 2131367579) && (this.jdField_a_of_type_Boolean))
     {
       paramView = new Intent(this, ScannerActivity.class);
       paramView.setFlags(67108864);
       startActivity(paramView);
       return;
     }
-    if (paramView.getId() == 2131367572) {}
+    if (paramView.getId() == 2131367579) {}
     for (int i = this.jdField_a_of_type_Int; i == 0; i = this.jdField_c_of_type_Int)
     {
       finish();

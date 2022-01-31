@@ -1,26 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.qq.im.capture.view.QIMCommonLoadingProgress;
-import dov.com.tencent.mobileqq.activity.richmedia.ShortVideoMtaReport;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin;
 
 public class anld
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public anld(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
+  public anld(QzoneRecommedPhotoJsPlugin paramQzoneRecommedPhotoJsPlugin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(), this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, QIMPtvTemplateAdapter.a(this.a));
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.downloading = true;
-    QIMCommonLoadingProgress.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo).a();
-    ShortVideoMtaReport.a("shortvideo_download_effects", null);
+    RemoteHandleManager.a().a().r();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anld
  * JD-Core Version:    0.7.0.1
  */

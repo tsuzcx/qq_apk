@@ -15,7 +15,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import kkh;
+import kmo;
 import mqq.app.NewIntent;
 import mqq.manager.TicketManager;
 import mqq.observer.BusinessObserver;
@@ -53,7 +53,7 @@ public class AddContactTroopHandler
       paramSosoLbsInfo.plat_type.set(2);
       paramSosoLbsInfo.str_app_version.set(DeviceInfoUtil.d());
       localUserInfo.app_info.set(paramSosoLbsInfo);
-      localUserInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+      localUserInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
       paramSosoLbsInfo = (TicketManager)this.a.getManager(2);
       localObject = this.a.getAccount();
       if (!TextUtils.isEmpty(paramSosoLbsInfo.getSkey((String)localObject))) {
@@ -101,7 +101,7 @@ public class AddContactTroopHandler
   
   public void a(AddContactTroopHandler.IGetPopClassAndSearchCB paramIGetPopClassAndSearchCB1, AddContactTroopHandler.IGetPopClassAndSearchCB paramIGetPopClassAndSearchCB2)
   {
-    SosoInterface.a(new kkh(this, 0, true, false, 60000L, false, false, "AddContactTroopHandler", paramIGetPopClassAndSearchCB1, paramIGetPopClassAndSearchCB2));
+    SosoInterface.a(new kmo(this, 0, true, false, 60000L, false, false, "AddContactTroopHandler", paramIGetPopClassAndSearchCB1, paramIGetPopClassAndSearchCB2));
   }
   
   public void b(AddContactTroopHandler.IGetPopClassAndSearchCB paramIGetPopClassAndSearchCB1, AddContactTroopHandler.IGetPopClassAndSearchCB paramIGetPopClassAndSearchCB2)

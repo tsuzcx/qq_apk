@@ -90,13 +90,13 @@ public class SoLoadCore
     //   3: aconst_null
     //   4: astore 4
     //   6: aconst_null
-    //   7: astore 12
+    //   7: astore 5
     //   9: aconst_null
     //   10: astore 10
     //   12: aconst_null
     //   13: astore 9
     //   15: aconst_null
-    //   16: astore 5
+    //   16: astore 12
     //   18: aconst_null
     //   19: astore 11
     //   21: aload_0
@@ -124,17 +124,17 @@ public class SoLoadCore
     //   65: aload_1
     //   66: invokevirtual 100	java/util/zip/ZipFile:close	()V
     //   69: return
-    //   70: aload 5
+    //   70: aload 12
     //   72: astore 6
-    //   74: aload 12
+    //   74: aload 5
     //   76: astore 7
     //   78: aload_1
     //   79: aload_0
     //   80: invokevirtual 104	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   83: astore_0
-    //   84: aload 5
+    //   84: aload 12
     //   86: astore 6
-    //   88: aload 12
+    //   88: aload 5
     //   90: astore 7
     //   92: aload_0
     //   93: astore 4
@@ -293,7 +293,7 @@ public class SoLoadCore
     //   138	11	3	i	int
     //   4	331	4	localObject1	Object
     //   357	6	4	localIOException1	IOException
-    //   16	311	5	localObject2	Object
+    //   7	320	5	localObject2	Object
     //   346	14	5	localIOException2	IOException
     //   364	1	5	localIOException3	IOException
     //   72	15	6	localObject3	Object
@@ -305,7 +305,7 @@ public class SoLoadCore
     //   13	195	9	localFile	File
     //   10	303	10	localObject7	Object
     //   19	330	11	localObject8	Object
-    //   7	82	12	localObject9	Object
+    //   16	69	12	localObject9	Object
     // Exception table:
     //   from	to	target	type
     //   131	139	155	java/io/IOException

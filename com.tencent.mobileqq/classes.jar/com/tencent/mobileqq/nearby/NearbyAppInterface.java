@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
-import aelm;
-import aeln;
-import aelo;
-import aelp;
+import aetw;
+import aetx;
+import aety;
+import aetz;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
@@ -68,7 +68,7 @@ public class NearbyAppInterface
   public static boolean b;
   public int a;
   public long a;
-  aelp jdField_a_of_type_Aelp = null;
+  aetz jdField_a_of_type_Aetz = null;
   public NearbyEntityManagerFactory a;
   private NearbyIconDecoder jdField_a_of_type_ComTencentMobileqqNearbyNearbyIconDecoder;
   public NearbyService a;
@@ -297,7 +297,7 @@ public class NearbyAppInterface
     if (!TextUtils.isEmpty(str)) {
       throw new IllegalArgumentException(str);
     }
-    ThreadManager.post(new aelo(this, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9), 2, null, false);
+    ThreadManager.post(new aety(this, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9), 2, null, false);
   }
   
   public void a(oidb_0x8dd.SelfInfo paramSelfInfo)
@@ -468,7 +468,7 @@ public class NearbyAppInterface
       if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyEntityManagerFactory == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyEntityManagerFactory = new NearbyEntityManagerFactory(paramString);
-        ThreadManager.getSubThreadHandler().postDelayed(new aelm(this), 1000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new aetw(this), 1000L);
       }
       return this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyEntityManagerFactory;
     }
@@ -561,7 +561,7 @@ public class NearbyAppInterface
     this.jdField_c_of_type_JavaUtilList = new Vector();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
     ((NearbyProcManager)getManager(213)).a();
-    ThreadManager.post(new aeln(this), 8, null, true);
+    ThreadManager.post(new aetx(this), 8, null, true);
   }
   
   protected void onDestroy()
@@ -670,8 +670,8 @@ public class NearbyAppInterface
   
   public void start(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Aelp = new aelp(this, null);
-    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Aelp);
+    this.jdField_a_of_type_Aetz = new aetz(this, null);
+    AppNetConnInfo.registerConnectionChangeReceiver(getApplication(), this.jdField_a_of_type_Aetz);
     super.start(paramBoolean);
   }
 }

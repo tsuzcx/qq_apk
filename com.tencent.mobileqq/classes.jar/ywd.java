@@ -1,69 +1,113 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.GameMsgInfo;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.DefaultGameCheckListener;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URLEncoder;
-import org.json.JSONObject;
+import com.tencent.util.WeakReferenceHandler;
 
 public class ywd
-  implements Runnable
+  extends CmGameStartChecker.DefaultGameCheckListener
 {
-  public ywd(ApolloGameInvitation paramApolloGameInvitation) {}
-  
-  public void run()
+  public ywd(ApolloWebGameActivity paramApolloWebGameActivity, AppInterface paramAppInterface)
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(ApolloConstant.n).append(ApolloGameInvitation.a(this.a).jdField_e_of_type_Int).append("/inviteIcon.png");
-    try
+    super(paramAppInterface);
+  }
+  
+  public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameStartChecker.ICmGameConfirmListener paramICmGameConfirmListener, long paramLong)
+  {
+    if (ApolloWebGameActivity.a(this.a)) {}
+    do
     {
-      if (new File(((StringBuilder)localObject1).toString()).exists()) {
-        localObject1 = BitmapFactory.decodeFile(((StringBuilder)localObject1).toString());
-      } else {
-        localObject1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130838155);
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("ApolloGameInvitation", 1, "fail to invite wxFriend, oom happens, errInfo->" + localOutOfMemoryError.getMessage());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameInvitation", 1, "fail to invite wxFriend, error happens, errInfo->" + localThrowable.getMessage());
-      return;
-    }
-    while (localException != null)
-    {
-      Bitmap localBitmap = TroopShareUtility.a(localThrowable);
-      ApolloGameInvitation.a(this.a, String.valueOf(System.currentTimeMillis()));
-      String str1 = "一起来玩" + ApolloGameInvitation.a(this.a).jdField_e_of_type_JavaLangString;
-      Object localObject2 = new JSONObject();
-      try
+      do
       {
-        ((JSONObject)localObject2).put("gameId", ApolloGameInvitation.a(this.a).jdField_e_of_type_Int);
-        ((JSONObject)localObject2).put("roomId", ApolloGameInvitation.a(this.a).b);
-        ((JSONObject)localObject2).put("gameMode", ApolloGameInvitation.a(this.a).g);
-        ((JSONObject)localObject2).put("extendInfo", ApolloGameInvitation.a(this.a).f);
-        localObject2 = URLEncoder.encode(((JSONObject)localObject2).toString(), "UTF-8");
-        String str2 = URLEncoder.encode(str1, "UTF-8");
-        StringBuilder localStringBuilder = new StringBuilder("http://cmshow.qq.com/apollo/html/redirect/mqqapi_cmshow.html");
-        localStringBuilder.append("?").append("cmd=game_invite&title=").append(str2).append("&data=").append((String)localObject2);
-        WXShareHelper.a().a(new ywe(this));
-        WXShareHelper.a().a(ApolloGameInvitation.a(this.a), str1, localBitmap, ApolloGameInvitation.b(this.a), localStringBuilder.toString(), 1);
+        do
+        {
+          return;
+          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onDownloadConfirm mStartCheckParam == null || mStartCheckParam.game == null");
+        return;
+        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onDownloadConfirm startCheckParam.requestCode != mStartCheckParam.requestCode");
+      return;
+    } while (paramICmGameConfirmListener == null);
+    paramICmGameConfirmListener.a(paramStartCheckParam);
+  }
+  
+  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    QLog.d("cmgame_process.ApolloWebGameActivity", 1, "[onDownloadGameResFail]");
+    paramStartCheckParam = ApolloWebGameActivity.a(this.a).obtainMessage(17);
+    paramStartCheckParam.obj = "下载失败，请稍后重试~";
+    ApolloWebGameActivity.a(this.a).sendMessage(paramStartCheckParam);
+  }
+  
+  public void onGameCheckFinish(int paramInt, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (ApolloWebGameActivity.a(this.a)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          QLog.d("cmgame_process.ApolloWebGameActivity", 1, new Object[] { "[onGameCheckFinish] resultCode=", Integer.valueOf(paramInt) });
+          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish mStartCheckParam == null || mStartCheckParam.game == null");
+        return;
+        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+      return;
+      if (paramInt != 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish resultCode != 0");
+        }
+        paramCmGameInitParams = ApolloWebGameActivity.a(this.a).obtainMessage(17);
+        paramCmGameInitParams.obj = paramStartCheckParam.wordingV2;
+        ApolloWebGameActivity.a(this.a).sendMessage(paramCmGameInitParams);
         return;
       }
-      catch (Exception localException)
-      {
-        QLog.w("ApolloGameInvitation", 1, "[inviteWeChatFriend], errInfo->" + localException.getMessage());
-        return;
+      ApolloGameStateMachine.a().a(1, "ApolloWebGameActivity.openGame");
+      ApolloGameStateMachine.a().a(2, "ApolloWebGameActivity.openGame");
+    } while (ApolloWebGameActivity.a(this.a) == null);
+    ApolloWebGameActivity.a(this.a).a(this.a, paramCmGameInitParams);
+  }
+  
+  public void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (ApolloWebGameActivity.a(this.a)) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      if (paramStartCheckParam != null) {
+        break label37;
       }
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "showGameLifeTip mStartCheckParam is null");
+    }
+    for (;;)
+    {
+      onGameCheckFinish(-1, paramStartCheckParam, null);
+      return;
+      label37:
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, new Object[] { "showGameLifeTip mStartCheckParam:", paramStartCheckParam });
     }
   }
 }

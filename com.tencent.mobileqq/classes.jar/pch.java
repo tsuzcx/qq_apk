@@ -1,24 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
+import com.tencent.biz.troop.VideoCombineHelper.Task;
+import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
 
 public class pch
-  implements Animation.AnimationListener
+  extends VideoCombineHelper.Task
 {
-  public pch(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, URLDrawable paramURLDrawable, ScaleAnimation paramScaleAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public pch(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.TaskListener paramTaskListener, String paramString)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    super(paramVideoCombineHelper, paramTaskListener, paramString);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a.a();
+    VideoCombineHelper.CombineParams localCombineParams = a();
+    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a.a(localCombineParams.e, localCombineParams.jdField_a_of_type_JavaLangString, localCombineParams.jdField_a_of_type_Int, new pci(this));
+    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this);
+    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new pbv(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener, this.c);
+    b();
+  }
 }
 
 

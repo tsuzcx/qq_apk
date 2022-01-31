@@ -1,42 +1,26 @@
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
-import com.tencent.mobileqq.richmedia.conn.SubTitleProtocoDataCodec;
-import com.tencent.qphone.base.util.MsfSocketInputBuffer;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ahng
   implements Runnable
 {
-  public ahng(LiteTcpConnection paramLiteTcpConnection) {}
+  public ahng(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    while (LiteTcpConnection.a(this.a).get()) {
-      try
-      {
-        MsfSocketInputBuffer localMsfSocketInputBuffer = LiteTcpConnection.a(this.a);
-        if (localMsfSocketInputBuffer == null) {
-          return;
-        }
-        while (!localMsfSocketInputBuffer.isDataAvailable(10000)) {
-          if (!LiteTcpConnection.a(this.a).get()) {
-            return;
-          }
-        }
-        if (!LiteTcpConnection.a(this.a).get()) {
-          break;
-        }
-        LiteTcpConnection.a(this.a).a(localMsfSocketInputBuffer);
-        localMsfSocketInputBuffer.reset();
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PeakAudioTransHandler LiteTcpConnection", 2, "read exception " + localException.getMessage() + ";");
-        }
-        LiteTcpConnection.a(this.a, 1);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "onStatusChanged: " + this.jdField_a_of_type_Boolean + " error:" + this.jdField_a_of_type_Int);
     }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), 2131432992, 0).a();
+      CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, -1);
+      return;
+    }
+    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, 101);
+    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, "onStatusChanged");
   }
 }
 

@@ -1,17 +1,13 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.PhoneUnityManager;
 
-class zqh
-  implements Comparator
+public class zqh
+  implements Runnable
 {
-  zqh(zqf paramzqf) {}
+  public zqh(PhoneUnityManager paramPhoneUnityManager) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void run()
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    PhoneUnityManager.a(this.a);
   }
 }
 

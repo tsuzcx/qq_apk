@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.Callback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.MessageHandler;
 
-public class xro
-  implements CameraExceptionHandler.Callback
+public final class xro
+  implements Runnable
 {
-  public xro(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xro(MessageHandler paramMessageHandler, String paramString, int paramInt) {}
   
-  public void a(RuntimeException paramRuntimeException)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
   }
 }
 

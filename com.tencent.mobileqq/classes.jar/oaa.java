@@ -1,45 +1,36 @@
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.adapter.HotRecommendFeedAdapter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.adapter.HotRecommendFeedAdapter.OnSubscribeClickListener;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import java.util.List;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class oaa
-  extends ChildViewClickListener
+  extends QQStoryObserver
 {
-  public oaa(HotRecommendFeedAdapter paramHotRecommendFeedAdapter) {}
+  public oaa(StoryDetailPresenter paramStoryDetailPresenter) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    if (UIUtils.b()) {}
-    label6:
-    do
+    if ((!TextUtils.equals(StoryDetailPresenter.a(this.a), paramStoryPushMsg.d)) || (StoryDetailPresenter.a(this.a) == null))
     {
-      do
+      SLog.a("Q.qqstory.detail.StoryDetailPresenter", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, StoryDetailPresenter.a(this.a));
+      return;
+    }
+    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    {
+      SLog.a("Q.qqstory.detail.StoryDetailPresenter", "Receive new comment PUSH: %s, refreshing comments......", paramStoryPushMsg);
+      StoryDetailPresenter.a(this.a);
+    }
+    for (;;)
+    {
+      this.a.i();
+      return;
+      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 16) || (paramStoryPushMsg.a == 18))
       {
-        do
-        {
-          break label6;
-          do
-          {
-            return;
-          } while ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilList.size()));
-          paramObject = (StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-        } while (TextUtils.isEmpty(paramObject.mOwnerUid));
-        paramObject = HotRecommendFeedAdapter.a(this.a).b(paramObject.mOwnerUid);
-      } while (paramObject == null);
-      switch (paramView.getId())
-      {
-      default: 
-        return;
+        SLog.a("Q.qqstory.detail.StoryDetailPresenter", "Receive new like PUSH: %s, refreshing likes......", paramStoryPushMsg);
+        StoryDetailPresenter.b(this.a);
       }
-    } while (HotRecommendFeedAdapter.a(this.a) == null);
-    HotRecommendFeedAdapter.a(this.a).a(paramView, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramObject, paramInt);
+    }
   }
 }
 

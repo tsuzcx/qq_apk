@@ -1,50 +1,44 @@
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloInfo;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 
 public class yxx
-  implements Runnable
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int;
+  public yxx(CmGameLauncher paramCmGameLauncher) {}
   
-  public yxx(ApolloLinearLayout paramApolloLinearLayout) {}
-  
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = ApolloLinearLayout.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout);
-  }
-  
-  public void run()
-  {
-    ViewParent localViewParent = ApolloLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout);
-    ApolloLinearLayout.ViewHolder localViewHolder;
-    if ((localViewParent != null) && (this.jdField_a_of_type_Int == ApolloLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout)) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_AndroidViewView != null))
-    {
-      localViewHolder = (ApolloLinearLayout.ViewHolder)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_AndroidViewView.getTag();
-      if ((localViewHolder != null) && (localViewHolder.a != null) && (localViewHolder.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData != null) && (localViewHolder.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.status == 1)) {
-        break label86;
-      }
-    }
-    label86:
+    if (CmGameLauncher.a(this.a) == null) {}
     do
     {
       do
       {
+        do
+        {
+          return;
+          if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
+            break;
+          }
+          if (CmGameLauncher.a(this.a))
+          {
+            CmGameLauncher.a(this.a).queueEvent(CmGameLauncher.a(this.a));
+            return;
+          }
+        } while (CmGameLauncher.a(this.a) == null);
+        CmGameLauncher.a(this.a).onResume();
         return;
-        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.b = true;
-        localViewParent.requestDisallowInterceptTouchEvent(true);
-        ApolloLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout, 2);
-      } while ((localViewHolder.a == null) || (localViewHolder.a.b == 1) || (localViewHolder.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData == null));
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_AndroidViewView, localViewHolder.a);
-    } while ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
-    VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "long_press_icon", this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { "" + localViewHolder.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId, "" + localViewHolder.a.jdField_a_of_type_Int, "", String.valueOf(System.currentTimeMillis() / 1000L) });
+      } while (!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()));
+      if (!CmGameLauncher.a(this.a)) {
+        break;
+      }
+    } while (CmGameLauncher.a(this.a) == null);
+    CmGameLauncher.a(this.a).queueEvent(CmGameLauncher.b(this.a));
+    return;
+    CmGameLauncher.a(this.a).setPreserveEGLContextOnPause(true);
+    CmGameLauncher.a(this.a).onPause();
   }
 }
 

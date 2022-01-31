@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import mqq.os.MqqHandler;
+import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase.EglHelper.FakeGLSurfaceView;
 
 public class ahsw
-  implements Runnable
+  implements FlowDecodeScreenSurfaceBase.EglHelper.FakeGLSurfaceView
 {
-  public ahsw(BaseSearchFragment paramBaseSearchFragment, boolean paramBoolean) {}
+  public ahsw(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase) {}
   
-  public void run()
+  public GLSurfaceView.EGLConfigChooser a()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.c)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.a.a();
-      this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.c = true;
-    }
-    ThreadManager.getUIHandler().post(new ahsx(this));
+    return new ahta(this.a, true);
+  }
+  
+  public GLSurfaceView.EGLContextFactory a()
+  {
+    return new ahsx(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahsw
  * JD-Core Version:    0.7.0.1
  */

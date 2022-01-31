@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.widget;
 
-import aikd;
+import aioy;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
@@ -41,7 +41,7 @@ public class CountdownTextView
     CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
     if (localCountDownTimer != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new aikd(this, paramLong, paramTimerCallback);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new aioy(this, paramLong, paramTimerCallback);
       localCountDownTimer.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
     }
   }

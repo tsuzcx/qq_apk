@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView.OnCloseListener;
 
 public class afcy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public afcy(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public afcy(StuffContainerView paramStuffContainerView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a(1);
+    if (this.a.a != null) {
+      this.a.a.a(0);
+    }
   }
 }
 

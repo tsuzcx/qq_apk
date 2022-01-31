@@ -1,53 +1,41 @@
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.redbag.BaseRedBag;
-import com.tencent.av.ui.redbag.ResultUI;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.av.ui.funchat.record.QavVideoAudioRecorder;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeInputSurface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 
 public class kfn
-  extends ClickableSpan
+  implements Runnable
 {
-  public kfn(ResultUI paramResultUI, boolean paramBoolean, String paramString1, String paramString2) {}
+  public kfn(QavVideoAudioRecorder paramQavVideoAudioRecorder, EncodeInputSurface paramEncodeInputSurface, HandlerThread paramHandlerThread) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiRedbagResultUI.i, 1, "closeUI showNoNameDialog, realName[" + this.jdField_a_of_type_Boolean + "]");
-    this.jdField_a_of_type_ComTencentAvUiRedbagResultUI.a(this.jdField_a_of_type_JavaLangString);
-    paramView = this.jdField_a_of_type_ComTencentAvUiRedbagResultUI.a();
-    if (paramView == null) {
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeInputSurface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeInputSurface.a();
     }
-    paramView.finish();
-    if (this.jdField_a_of_type_Boolean)
+    try
     {
-      BaseRedBag.a(this.jdField_a_of_type_ComTencentAvUiRedbagResultUI.a, this.b);
+      if (VersionUtils.h())
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quitSafely();
+        QLog.i("QavVideoAudioRecorder", 1, "onDestroy quitSafely");
+        return;
+      }
+      this.jdField_a_of_type_AndroidOsHandlerThread.getLooper().quit();
+      QLog.i("QavVideoAudioRecorder", 1, "onDestroy quit");
       return;
     }
-    paramView = AIOUtils.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
-    paramView.putExtra("uin", this.jdField_a_of_type_ComTencentAvUiRedbagResultUI.a.a().a().c);
-    paramView.putExtra("uintype", 0);
-    paramView.putExtra("uinname", this.jdField_a_of_type_ComTencentAvUiRedbagResultUI.a.a().a().d);
-    paramView.putExtra("entrance", 8);
-    BaseApplicationImpl.getApplication().startActivity(paramView);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
+    catch (Exception localException)
+    {
+      QLog.e("QavVideoAudioRecorder", 1, "onDestroy Exception", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kfn
  * JD-Core Version:    0.7.0.1
  */

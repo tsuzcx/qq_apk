@@ -1,9 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public final class lkr
-  implements Runnable
+public class lkr
+  implements VideoCompositeHelper.VideoCompositeCallBack
 {
-  public void run() {}
+  public lkr(ReadInJoyVideoCompositeManager paramReadInJoyVideoCompositeManager, PublishVideoEntry paramPublishVideoEntry, Context paramContext) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    if (paramInt != 0)
+    {
+      ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramInt, paramString1);
+      return;
+    }
+    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_AndroidContentContext, paramString2);
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.worldcup;
 
-import akxy;
-import akxz;
+import alfq;
+import alfr;
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.opengl.GLES20;
@@ -42,7 +42,7 @@ public class ARWorldCupMediaPlayerWrapper
   private TextureRender jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender;
   private ARWorldCupMediaPlayerWrapper.OnPlayMediaStatusListener jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper$OnPlayMediaStatusListener;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new akxy(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new alfq(this);
   volatile boolean jdField_a_of_type_Boolean = false;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
   private int[] jdField_a_of_type_ArrayOfInt = new int[3];
@@ -256,7 +256,7 @@ public class ARWorldCupMediaPlayerWrapper
   public void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean)
   {
     QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupMediaPlayerWrapper.drawFrame softWare");
-    paramArrayOfByte1 = new akxz(this, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramInt1, paramInt2);
+    paramArrayOfByte1 = new alfr(this, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramInt1, paramInt2);
     if (this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper$OnPlayMediaStatusListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper$OnPlayMediaStatusListener.a(paramArrayOfByte1);
     }
@@ -476,7 +476,7 @@ public class ARWorldCupMediaPlayerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper
  * JD-Core Version:    0.7.0.1
  */

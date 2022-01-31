@@ -1,30 +1,62 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.HiBoomManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.vas.VasH5PayUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.util.concurrent.atomic.AtomicBoolean;
+import tencent.hiboom.hiboomauth.hiboom_auth.TTipsInfo;
 
-class adxl
-  implements Runnable
+public final class adxl
+  implements DialogInterface.OnClickListener
 {
-  adxl(adxk paramadxk, boolean paramBoolean) {}
+  public adxl(int paramInt, String paramString, Context paramContext, hiboom_auth.TTipsInfo paramTTipsInfo) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str;
-    if (this.jdField_a_of_type_Boolean)
+    switch (this.jdField_a_of_type_Int)
     {
-      str = UiApiPlugin.a("0", null, null, this.jdField_a_of_type_Adxk.d);
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_result", 0, 1, 0, "", "", "", "");
+    default: 
+    case 1: 
+      for (;;)
+      {
+        paramDialogInterface.dismiss();
+        return;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, -1L, null, false, -1);
+        }
+      }
     }
-    for (int i = 2131430705;; i = 2131430706)
+    Object localObject = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_vip_type.get();
+    String str1 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_month.get();
+    String str2 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_aid.get();
+    if (((String)localObject).startsWith("!")) {
+      localObject = ((String)localObject).substring(1, ((String)localObject).length());
+    }
+    for (boolean bool1 = true;; bool1 = false)
     {
-      QQToast.a(this.jdField_a_of_type_Adxk.jdField_a_of_type_AndroidAppActivity, i, 0).b(this.jdField_a_of_type_Adxk.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_dialog_click", 0, 1, 0, "", "", "", "");
-      this.jdField_a_of_type_Adxk.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_Adxk.e, new String[] { str });
-      return;
-      str = UiApiPlugin.a("-3", null, "createShortcut failed, iconUrl is invalide: " + this.jdField_a_of_type_Adxk.c, this.jdField_a_of_type_Adxk.d);
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "jsapi_addShortcut_result", 0, 1, -1, "", "", "", "");
+      if (str1.startsWith("!")) {
+        str1 = str1.substring(1, str1.length());
+      }
+      for (boolean bool2 = true;; bool2 = false)
+      {
+        VasH5PayUtil.a(this.jdField_a_of_type_AndroidContentContext, str2, (String)localObject, Integer.parseInt(str1), bool2, bool1);
+        if (!(this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {
+          break;
+        }
+        localObject = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
+        if ((((FragmentActivity)localObject).getChatFragment() == null) || (((FragmentActivity)localObject).getChatFragment().a() == null)) {
+          break;
+        }
+        ((HiBoomManager)((FragmentActivity)localObject).getChatFragment().a().a.getManager(218)).b.set(false);
+        break;
+      }
     }
   }
 }

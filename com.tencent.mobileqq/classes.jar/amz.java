@@ -1,26 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.qq.im.poi.LbsPackInfo;
 import com.qq.im.poi.LbsPackListAdapter;
 import com.qq.im.poi.LbsPackListAdapter.LbsPackItemCallback;
 import java.util.List;
 
 public class amz
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public amz(LbsPackListAdapter paramLbsPackListAdapter, int paramInt) {}
+  public amz(LbsPackListAdapter paramLbsPackListAdapter, int paramInt, LbsPackInfo paramLbsPackInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter.a.remove(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter.notifyDataSetChanged();
-    if (LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter) != null) {
-      LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter).a(this.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_Int < 0) || (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter.a.size())) {}
+    while (LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter) == null) {
+      return;
     }
+    LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter).c(this.jdField_a_of_type_ComQqImPoiLbsPackInfo, this.jdField_a_of_type_Int);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

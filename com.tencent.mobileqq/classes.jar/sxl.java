@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.widget.ActionSheet;
 
 public class sxl
-  extends PublicAccountObserver
+  implements IphonePickerView.IphonePickListener
 {
-  public sxl(Leba paramLeba) {}
+  public sxl(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onConfirmBtClicked()
   {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a.notifyDataSetChanged();
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+  }
+  
+  public void onItemSelected(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {}
+    for (paramInt1 = 0;; paramInt1 = 1)
+    {
+      this.a.c = true;
+      this.a.a(paramInt1, true);
+      return;
     }
   }
 }

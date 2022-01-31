@@ -1,15 +1,23 @@
-import com.tencent.biz.qrcode.activity.QRLoginActivity;
-import com.tencent.mobileqq.util.FaceDrawable;
+import android.database.DataSetObserver;
+import android.support.v4.view.PagerAdapter;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
 
-class ouk
-  extends Thread
+public class ouk
+  extends DataSetObserver
 {
-  ouk(ouj paramouj, String paramString) {}
+  public ouk(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  public void run()
+  public void onChanged()
   {
-    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Ouj.a.app, 1, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Ouj.a.runOnUiThread(new oul(this, localFaceDrawable));
+    PagerAdapter localPagerAdapter = this.a.getAdapter();
+    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
+    {
+      this.a.a(8);
+      EmptySupportViewPager.a(this.a, 0);
+      return;
+    }
+    this.a.a(0);
+    EmptySupportViewPager.b(this.a, 8);
   }
 }
 

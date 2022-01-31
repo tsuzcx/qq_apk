@@ -1,18 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.profile.like.PraiseConfigHelper;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.StrangerObserver;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class uhs
-  implements Runnable
+  extends StrangerObserver
 {
-  public uhs(VisitorsActivity paramVisitorsActivity) {}
+  public uhs(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, PBRepeatMessageField paramPBRepeatMessageField)
   {
-    PraiseConfigHelper.a(this.a.app);
-    Message localMessage = this.a.a.obtainMessage(13, 0, 0);
-    this.a.a.sendMessageDelayed(localMessage, 100L);
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131436938), 0).a();
+      this.a.c.setVisibility(8);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131436937), 0).a();
   }
 }
 

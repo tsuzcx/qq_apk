@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
-class agib
-  implements Runnable
+public class agib
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  agib(agia paramagia) {}
+  public agib(ScanOcrView paramScanOcrView, agic paramagic) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.a.a.a(false, null, null, null);
-    ScanTorchActivity.a(this.a.a.a.a).b(ScanTorchActivity.b(this.a.a.a.a), 10, 0, ScanTorchActivity.c(this.a.a.a.a));
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_Agic.e = i;
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agib
  * JD-Core Version:    0.7.0.1
  */

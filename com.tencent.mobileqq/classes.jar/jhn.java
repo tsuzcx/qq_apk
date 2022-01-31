@@ -1,22 +1,19 @@
-import com.tencent.av.core.VcControllerImpl;
+import com.tencent.av.business.manager.EffectOperateManager;
+import java.lang.ref.WeakReference;
 
-public class jhn
+public abstract class jhn
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public byte[] b;
-  public long c;
-  public long d;
+  WeakReference a;
   
-  public jhn(VcControllerImpl paramVcControllerImpl) {}
+  public jhn(EffectOperateManager paramEffectOperateManager)
+  {
+    this.a = new WeakReference(paramEffectOperateManager);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhn
  * JD-Core Version:    0.7.0.1
  */

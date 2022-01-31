@@ -1,16 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetApkNameCallback;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
 public class aczl
-  implements UniformDownloadUtil.GetApkNameCallback
+  implements View.OnLongClickListener
 {
-  public aczl(UniformDownloadMgr paramUniformDownloadMgr, String paramString) {}
+  public aczl(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void a(String paramString)
+  public boolean onLongClick(View paramView)
   {
-    new Handler(Looper.getMainLooper()).post(new aczm(this, paramString));
+    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
+      return false;
+    }
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131362745, paramView.getContext().getString(2131434057));
+    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new aczm(this, paramView), new aczo(this, paramView));
+    return true;
   }
 }
 

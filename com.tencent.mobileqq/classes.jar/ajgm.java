@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
-import java.util.List;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class ajgm
-  implements Runnable
+  extends FriendListObserver
 {
-  public ajgm(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment, List paramList) {}
+  public ajgm(NewTroopContactView paramNewTroopContactView) {}
   
-  public void run()
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (HomeWorkTroopSelectorFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment)) {
-      HomeWorkTroopSelectorFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment, this.jdField_a_of_type_JavaUtilList);
+    if (paramBoolean1) {
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

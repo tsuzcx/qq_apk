@@ -1,30 +1,35 @@
-import android.util.SparseArray;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.BaseToolbar;
-import com.tencent.av.ui.EffectSettingUi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.telephony.TelephonyManager;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class jto
-  implements Animation.AnimationListener
+  extends BroadcastReceiver
 {
-  public jto(EffectSettingUi paramEffectSettingUi) {}
+  public jto(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramAnimation = (BaseToolbar)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
-    if (paramAnimation != null) {
-      paramAnimation.hideToolbar();
+    if (paramIntent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL")) {
+      return;
     }
-    this.a.setVisibility(8);
+    switch (((TelephonyManager)paramContext.getSystemService("phone")).getCallState())
+    {
+    default: 
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(CallbackWaitingActivityExt.a(), 2, "state is TelephonyManager.CALL_STATE_RINGING");
+    }
+    AudioUtil.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jto
  * JD-Core Version:    0.7.0.1
  */

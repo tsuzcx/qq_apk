@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import ahnk;
-import ahnz;
+import ahsc;
+import ahsr;
 import android.content.Context;
 import android.os.SystemClock;
 
@@ -9,7 +9,7 @@ public class DCAIOPreviewProgressive
   extends DataCollector
   implements ReportEvent
 {
-  private ahnk a;
+  private ahsc a;
   private boolean b;
   
   public DCAIOPreviewProgressive(Context paramContext)
@@ -21,8 +21,8 @@ public class DCAIOPreviewProgressive
   {
     if ((this.a != null) && (!this.b))
     {
-      ahnz localahnz = new ahnz("Pic.AioPreview.Progressive", this.a.a("Pic.AioPreview.Progressive"));
-      DataReport.a().a(localahnz);
+      ahsr localahsr = new ahsr("Pic.AioPreview.Progressive", this.a.a("Pic.AioPreview.Progressive"));
+      DataReport.a().a(localahsr);
       this.b = true;
     }
   }
@@ -31,31 +31,31 @@ public class DCAIOPreviewProgressive
   {
     if ((this.a == null) && (!this.b))
     {
-      ahnk localahnk = new ahnk(null);
-      ahnk.a(localahnk, paramBoolean);
-      ahnk.a(localahnk, SystemClock.uptimeMillis());
-      this.a = localahnk;
+      ahsc localahsc = new ahsc(null);
+      ahsc.a(localahsc, paramBoolean);
+      ahsc.a(localahsc, SystemClock.uptimeMillis());
+      this.a = localahsc;
     }
   }
   
   public void b()
   {
     if ((this.a != null) && (!this.b)) {
-      ahnk.b(this.a, SystemClock.uptimeMillis());
+      ahsc.b(this.a, SystemClock.uptimeMillis());
     }
   }
   
   public void c()
   {
     if ((this.a != null) && (!this.b)) {
-      ahnk.c(this.a, SystemClock.uptimeMillis());
+      ahsc.c(this.a, SystemClock.uptimeMillis());
     }
   }
   
   public void d()
   {
     if ((this.a != null) && (!this.b)) {
-      ahnk.b(this.a, true);
+      ahsc.b(this.a, true);
     }
   }
 }

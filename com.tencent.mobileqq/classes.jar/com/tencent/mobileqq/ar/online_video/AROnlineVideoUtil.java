@@ -62,7 +62,7 @@ public class AROnlineVideoUtil
   private static String a()
   {
     if (SystemUtil.a()) {
-      return AppConstants.aJ + "iar" + File.separator;
+      return AppConstants.aK + "iar" + File.separator;
     }
     return BaseApplicationImpl.getApplication().getFilesDir() + File.separator + "iar" + File.separator;
   }

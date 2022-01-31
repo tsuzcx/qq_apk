@@ -1,32 +1,24 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import java.util.ArrayList;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper;
 
 public class zay
   implements Runnable
 {
-  public zay(CardHandler paramCardHandler, int paramInt, ArrayList paramArrayList) {}
+  public zay(ApolloVoiceDIYHelper paramApolloVoiceDIYHelper, ApolloTextureView paramApolloTextureView, double paramDouble) {}
   
   public void run()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b.getCurrentAccountUin();
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b.getManager(50);
-    Card localCard = localFriendsManager.a(str);
-    if (localCard != null)
-    {
-      localCard.iVoteIncrement = this.jdField_a_of_type_Int;
-      localFriendsManager.a(localCard);
-    }
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      CardHandler.a(str, this.jdField_a_of_type_JavaUtilArrayList);
+    ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender();
+    if ((localApolloRender != null) && (localApolloRender.getSavaWrapper() != null)) {
+      localApolloRender.getSavaWrapper().a(this.jdField_a_of_type_Double);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zay
  * JD-Core Version:    0.7.0.1
  */

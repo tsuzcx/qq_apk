@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.utils;
 
-import acjy;
+import acsf;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -20,17 +20,17 @@ import java.io.File;
 
 public class ProfileGuideDialogUtils
 {
-  public static final View.OnTouchListener a = new acjy();
+  public static final View.OnTouchListener a = new acsf();
   
   public static Dialog a(Context paramContext, int paramInt, View.OnClickListener paramOnClickListener)
   {
-    Object localObject1 = LayoutInflater.from(paramContext).inflate(2130970335, null);
-    Object localObject3 = ((View)localObject1).findViewById(2131363264);
+    Object localObject1 = LayoutInflater.from(paramContext).inflate(2130970350, null);
+    Object localObject3 = ((View)localObject1).findViewById(2131363281);
     ((View)localObject3).setOnTouchListener(a);
     ((View)localObject3).setOnClickListener(paramOnClickListener);
-    ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131369919);
-    TextView localTextView = (TextView)((View)localObject1).findViewById(2131362832);
-    Button localButton = (Button)((View)localObject1).findViewById(2131370094);
+    ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131369929);
+    TextView localTextView = (TextView)((View)localObject1).findViewById(2131362837);
+    Button localButton = (Button)((View)localObject1).findViewById(2131370103);
     localButton.setOnClickListener(paramOnClickListener);
     paramOnClickListener = new ViewGroup.LayoutParams(AIOUtils.a(320.0F, paramContext.getResources()), -2);
     Dialog localDialog = new Dialog(paramContext, 2131624727);
@@ -41,7 +41,7 @@ public class ProfileGuideDialogUtils
     {
     default: 
       localObject1 = ExtendFriendResourceUtil.a("expand_guide_profile.png");
-      paramOnClickListener = "填写扩列资料，才可以加好友哦~";
+      paramOnClickListener = "填写QQ扩列资料，才可以加好友哦~";
       localObject3 = "去填写";
       i = AIOUtils.a(163.0F, paramContext.getResources());
       paramInt = AIOUtils.a(102.0F, paramContext.getResources());
@@ -71,7 +71,7 @@ public class ProfileGuideDialogUtils
         QLog.e("ProfileGuideDialogUtils", 1, "showFirstGuide decode bitmap fail.", localException);
       }
       localObject1 = ExtendFriendResourceUtil.a("expand_guide_switch.png");
-      paramOnClickListener = "哼，不展示扩列资料卡还想加好友？";
+      paramOnClickListener = "哼，不展示QQ扩列资料卡还想加好友？";
       localObject3 = "去打开";
       i = AIOUtils.a(180.0F, paramContext.getResources());
       paramInt = AIOUtils.a(102.0F, paramContext.getResources());

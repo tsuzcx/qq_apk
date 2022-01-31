@@ -37,7 +37,7 @@ public class AIOVideoPlayController
   {
     paramView = (PAVideoView)paramView.findViewById(2131362177);
     if (paramView != null) {
-      paramView.a();
+      paramView.b();
     }
   }
   

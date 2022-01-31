@@ -1,25 +1,40 @@
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
 
-public class algp
+class algp
   implements Runnable
 {
-  public algp(DownloadManager paramDownloadManager) {}
+  algp(algo paramalgo) {}
   
   public void run()
   {
-    if (!this.a.a)
+    MessageRecord localMessageRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.a.b, this.a.c, this.a.jdField_a_of_type_Long);
+    if (localMessageRecord == null) {
+      return;
+    }
+    MQPSensitiveMsgUtil.a(localMessageRecord);
+    try
     {
-      if (!MyAppApi.a().b()) {
-        this.a.a(true);
-      }
-      this.a.a = true;
+      localMessageRecord.saveExtInfoToExtStr("sens_msg_confirmed", "1");
+      localMessageRecord.removeExtInfoToExtStr("sens_msg_original_text");
+      localMessageRecord.removeExtInfoToExtStr("sens_msg_need_parse");
+      localMessageRecord.removeExtInfoToExtStr("sens_msg_need_mask");
+      localMessageRecord.removeExtInfoToExtStr("sens_msg_attr");
+      localMessageRecord.removeExtInfoToExtStr("sens_msg_has_not_confirmed_msg");
+      this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(this.a.b, this.a.c, this.a.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     algp
  * JD-Core Version:    0.7.0.1
  */

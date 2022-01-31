@@ -1,36 +1,83 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.biz.qqstory.takevideo.dancemachine.PKVideoSharer;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
-import com.tencent.util.MqqWeakReferenceHandler;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelAllMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class ocj
-  implements Runnable
+  extends ProtoUtils.StoryProtocolObserver
 {
-  public ocj(CommonPicUploadFragment paramCommonPicUploadFragment, String paramString1, String paramString2) {}
+  public ocj(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  public void run()
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment).sendEmptyMessage(1001);
-    if (CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment) == 2)
-    {
-      String str = RecentDanceConfigMgr.a();
-      str = CapturePtvTemplateManager.jdField_a_of_type_JavaLangString + str + File.separator;
-      str = str + "qq_richmedia_capture_dance_share_bg.png";
-      CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment, PKVideoSharer.a(str, 2130843176, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 200), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname(), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment.jdField_a_of_type_ComTencentMobileqqAppBaseActivity));
+    int j = -1;
+    paramBundle = new qqstory_struct.ErrorInfo();
+    qqstory_710_del_message.RspDelAllMessage localRspDelAllMessage;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      localRspDelAllMessage = new qqstory_710_del_message.RspDelAllMessage();
     }
-    if (!TextUtils.isEmpty(CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment)))
+    for (;;)
     {
-      CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment, SystemClock.elapsedRealtime());
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment.b(CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment));
-      CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment).sendEmptyMessageDelayed(1002, 10000L);
-      return;
+      int m;
+      int k;
+      try
+      {
+        localRspDelAllMessage.mergeFrom(paramArrayOfByte);
+        if (!localRspDelAllMessage.errinfo.error_code.has()) {
+          break label236;
+        }
+        i = localRspDelAllMessage.errinfo.error_code.get();
+        j = i;
+        if (j == 0) {
+          i = 1;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        m = 0;
+        k = j;
+      }
+      try
+      {
+        paramBundle.error_code.set(localRspDelAllMessage.errinfo.error_code.get());
+        paramBundle.error_desc.set(localRspDelAllMessage.errinfo.error_desc.get());
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.msgList", 2, "receive delete all msg, code=" + paramInt + " bizCode=" + j);
+        }
+        if (i == 0) {
+          QQToast.a(this.a.getApplicationContext(), 1, "清空失败，请重试", 0).a();
+        }
+        return paramBundle;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          k = j;
+          m = i;
+        }
+      }
+      int i = 0;
+      continue;
+      j = k;
+      i = m;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelAllMessage", paramArrayOfByte);
+        j = k;
+        i = m;
+        continue;
+        label236:
+        i = 0;
+      }
     }
-    CommonPicUploadFragment.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCommonPicUploadFragment).sendEmptyMessage(1003);
   }
 }
 

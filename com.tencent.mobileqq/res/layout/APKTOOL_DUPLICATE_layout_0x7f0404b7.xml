@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center" android:background="#fff8f9fa" android:padding="8.0px" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a173c" android:layout_width="21.0dip" android:layout_height="21.0dip" android:indeterminateDrawable="@drawable/common_loading6" />
-    <TextView android:textSize="13.0sp" android:textColor="#ffa6a6a6" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f8" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="正在加载数据..." />
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1747" android:layout_width="21.0dip" android:layout_height="21.0dip" android:indeterminateDrawable="@drawable/common_loading6" />
+    <TextView android:textSize="13.0sp" android:textColor="#ffa6a6a6" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1807" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="正在加载数据..." />
 </LinearLayout>

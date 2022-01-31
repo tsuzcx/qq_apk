@@ -1,18 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public final class yrg
-  implements EIPCResultCallback
+  implements Runnable
 {
-  public yrg(long paramLong) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    CmGameUtil.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).toggleSoftInput(1, 1);
   }
 }
 

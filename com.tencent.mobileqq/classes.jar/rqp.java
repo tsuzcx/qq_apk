@@ -1,25 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class rqp
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public rqp(BaseChatPie paramBaseChatPie) {}
+  public rqp(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      ReportController.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
-      return;
-    }
-    ReportController.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
-    this.a.b(0);
+    paramView = new Intent(this.a, QQStoryBasicSettingsActivity.class);
+    this.a.startActivity(paramView);
+    StoryReportor.a("browse_friend_settings", "clk_set", 0, 0, new String[] { "", "", "", "" });
   }
 }
 

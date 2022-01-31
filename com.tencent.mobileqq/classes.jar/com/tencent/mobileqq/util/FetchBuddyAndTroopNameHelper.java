@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import akab;
+import akhp;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ public class FetchBuddyAndTroopNameHelper
   
   private FetchInfoListManager a()
   {
-    FetchInfoListManager localFetchInfoListManager = new FetchInfoListManager(new akab(this));
+    FetchInfoListManager localFetchInfoListManager = new FetchInfoListManager(new akhp(this));
     if (QLog.isColorLevel()) {
       QLog.i("FetchInfoListManager", 2, "createFetchInfoListManager fm: " + localFetchInfoListManager);
     }
@@ -73,7 +73,7 @@ public class FetchBuddyAndTroopNameHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.FetchBuddyAndTroopNameHelper
  * JD-Core Version:    0.7.0.1
  */

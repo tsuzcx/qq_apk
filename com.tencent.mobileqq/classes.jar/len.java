@@ -1,23 +1,18 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.model.QueryCallback;
 
-public class len
-  implements ActionSheet.OnButtonClickListener
+public final class len
+  implements QueryCallback
 {
-  public len(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public len(EditText paramEditText) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(char[] paramArrayOfChar)
   {
-    ReadInJoySettingActivity.c(this.a).d(paramInt);
-    ((TextView)this.a.findViewById(2131367303)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
-    ReadInJoyUtils.a(Integer.toString(paramInt));
-    PublicAccountReportUtils.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
-    ReadInJoySettingActivity.c(this.a).cancel();
+    int i = this.a.getSelectionStart();
+    int j = this.a.getSelectionEnd();
+    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
+    this.a.requestFocus();
   }
 }
 

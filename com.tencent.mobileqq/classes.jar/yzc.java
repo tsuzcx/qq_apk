@@ -1,16 +1,14 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class yzc
+public final class yzc
   implements Runnable
 {
-  public yzc(ApolloPanel paramApolloPanel) {}
-  
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.setImageDrawable(ApolloPanel.a(this.a));
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131438244), 1).a();
   }
 }
 

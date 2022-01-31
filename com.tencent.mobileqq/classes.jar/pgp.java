@@ -1,32 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.utils.BaseHandler;
-import java.util.HashMap;
+import com.tencent.biz.webviewplugin.OfflinePlugin;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class pgp
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public pgp(ImageManager paramImageManager) {}
+  public pgp(OfflinePlugin paramOfflinePlugin) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent.getAction() == null) {
+    if ((this.a.a == null) || (this.a.a.size() == 0)) {
       return;
     }
-    ImageManager.b(null);
-    ImageManager.b().clear();
-    ImageManager.a(false);
-    ImageManager.c().clear();
-    ImageManager.a(this.a);
-    ImageManager.getCachePath(paramContext);
-    ImageManager.a(this.a).post(new pgq(this));
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      this.a.b(str);
+    }
+    this.a.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pgp
  * JD-Core Version:    0.7.0.1
  */

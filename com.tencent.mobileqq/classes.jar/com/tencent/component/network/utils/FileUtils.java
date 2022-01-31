@@ -6,16 +6,16 @@ import com.tencent.component.network.module.base.QDLog;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileFilter;
-import pky;
-import pkz;
+import ppq;
+import ppr;
 
 public class FileUtils
 {
   private static final int ASSET_SPLIT_BASE = 0;
   private static final int BUFFER_SIZE = 8192;
   private static final int BUFFER_SIZE_MMAP = 8388608;
-  public static final FileUtils.AssetFileComparator SIMPLE_ASSET_COMPARATOR = new pkz();
-  public static final FileUtils.FileComparator SIMPLE_COMPARATOR = new pky();
+  public static final FileUtils.AssetFileComparator SIMPLE_ASSET_COMPARATOR = new ppr();
+  public static final FileUtils.FileComparator SIMPLE_COMPARATOR = new ppq();
   private static final String TAG = "FileUtils";
   private static final BytesBufferPool sBytesBufferPool = new BytesBufferPool(2, 8192);
   

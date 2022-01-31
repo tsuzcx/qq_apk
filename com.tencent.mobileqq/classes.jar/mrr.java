@@ -1,35 +1,104 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.ResponseCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.util.SpellTool;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.manager.TicketManager;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class mrr
-  implements ActionSheet.OnButtonClickListener
+public final class mrr
+  implements Runnable
 {
-  public mrr(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed, int paramInt, ActionSheet paramActionSheet) {}
+  public mrr(String paramString1, String paramString2, String paramString3, FastWebRequestUtil.ResponseCallback paramResponseCallback) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = (QQAppInterface)ReadInJoyUtils.a();
+    Object localObject3 = ((QQAppInterface)localObject1).getAccount();
+    Object localObject4 = ((TicketManager)((QQAppInterface)localObject1).getManager(2)).getSkey((String)localObject3);
+    label120:
+    boolean bool;
+    try
     {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+      localObject3 = new HashMap();
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        localObject1 = "0";
+        ((Map)localObject3).put("p", localObject1);
+        ((Map)localObject3).put("id", this.b);
+        ((Map)localObject3).put("rowkey", this.c);
+        ((Map)localObject3).put("mqv", "7.6.8");
+        if (localObject4 != null) {
+          break label370;
+        }
+        localObject1 = "";
+        ((Map)localObject3).put("token", localObject1);
+        ((Map)localObject3).put("net_type", HttpUtil.a() + "");
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("c_version", "7.6.8".replace(".", ""));
+        ((Map)localObject3).put("extInfo", URLEncoder.encode(((JSONObject)localObject1).toString()));
+        localObject1 = new StringBuilder(FastWebRequestUtil.b);
+        localObject3 = ((Map)localObject3).entrySet().iterator();
+        for (;;)
+        {
+          if (((Iterator)localObject3).hasNext())
+          {
+            localObject4 = (Map.Entry)((Iterator)localObject3).next();
+            ((StringBuilder)localObject1).append("&" + (String)((Map.Entry)localObject4).getKey() + "=" + (String)((Map.Entry)localObject4).getValue());
+            continue;
+            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebRequestUtil$ResponseCallback == null) {
+              break;
+            }
+          }
+        }
+      }
     }
-    ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter, this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
-    paramInt = this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.b;
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_Int != 1) {
-      paramInt = 0;
+    catch (Exception localException)
+    {
+      QLog.e("Q.readinjoy.fast_web", 2, localException, new Object[] { "" + SpellTool.a });
+      bool = false;
     }
     for (;;)
     {
-      long l = ServiceAccountFolderManager.a().a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
-      ReportController.b(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebRequestUtil$ResponseCallback.a(bool, localArrayList);
+      return;
+      Object localObject2 = this.jdField_a_of_type_JavaLangString;
       break;
+      label370:
+      localObject2 = ReadInJoyWebDataManager.a((String)localObject4);
+      break label120;
+      QLog.d("Q.readinjoy.fast_web", 2, "" + localObject2);
+      localObject3 = new Bundle();
+      HttpUtil.a((Bundle)localObject3);
+      localObject2 = new String(HttpUtil.a(BaseApplicationImpl.getContext(), ((StringBuilder)localObject2).toString(), "GET", null, (Bundle)localObject3));
+      QLog.d("Q.readinjoy.fast_web", 2, "" + (String)localObject2);
+      localObject2 = new JSONObject((String)localObject2).getJSONObject("data").getJSONArray("recommend_other");
+      int i = 0;
+      while (i < ((JSONArray)localObject2).length())
+      {
+        localObject3 = FastWebRequestUtil.a(((JSONArray)localObject2).getJSONObject(i));
+        if (localObject3 != null) {
+          localArrayList.add(localObject3);
+        }
+        i += 1;
+      }
+      bool = true;
     }
   }
 }

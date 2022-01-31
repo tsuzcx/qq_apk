@@ -1,57 +1,24 @@
-import android.os.AsyncTask;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.app.MessageRoamManager;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class saq
-  extends AsyncTask
+public final class saq
+  implements DialogInterface.OnClickListener
 {
-  saq(sap paramsap) {}
+  public saq(QQAppInterface paramQQAppInterface, Context paramContext, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    if (paramVarArgs[0].time <= this.a.a.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a())
-    {
-      i = ((QSlowTableManager)this.a.a.app.getManager(200)).a(paramVarArgs[0], true);
-      if (i > 0) {
-        this.a.a.c = true;
-      }
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 1, 16);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.c();
     }
-    for (;;)
-    {
-      if ((paramVarArgs[0] instanceof MessageForApollo)) {
-        SpriteCommFunc.a(this.a.a.app, "chat_history_c2c_del_all_msg");
-      }
-      return null;
-      if ((i == 0) && (paramVarArgs[0].time == this.a.a.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a()))
-      {
-        this.a.a.app.a().a(paramVarArgs[0], true);
-        continue;
-        this.a.a.app.a().a(paramVarArgs[0], true);
-      }
-    }
-  }
-  
-  protected void onPostExecute(Object paramObject)
-  {
-    super.onPostExecute(paramObject);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if ((this.a.a.c) && (this.a.a.b))
-    {
-      this.a.a.b = false;
-      this.a.a.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.d();
-    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80067FC", "0X80067FC", 1, 0, "", "", "", "");
   }
 }
 

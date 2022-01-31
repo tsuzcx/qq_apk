@@ -7,7 +7,7 @@ import com.tencent.av.AVLog;
 import com.tencent.av.service.AVServiceForQQ;
 import com.tencent.av.service.IAVServiceForQQ;
 import com.tencent.qphone.base.util.QLog;
-import jeb;
+import jgd;
 import mqq.app.MobileQQ;
 
 public class AVServiceProxy
@@ -15,7 +15,7 @@ public class AVServiceProxy
   private static String jdField_a_of_type_JavaLangString = "AVServiceProxy";
   protected VideoAppInterface a;
   public IAVServiceForQQ a;
-  protected jeb a;
+  protected jgd a;
   private boolean jdField_a_of_type_Boolean = true;
   
   public AVServiceProxy(VideoAppInterface paramVideoAppInterface)
@@ -27,8 +27,8 @@ public class AVServiceProxy
   {
     Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), AVServiceForQQ.class);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().startService(localIntent);
-    this.jdField_a_of_type_Jeb = new jeb(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().bindService(localIntent, this.jdField_a_of_type_Jeb, 1);
+    this.jdField_a_of_type_Jgd = new jgd(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().bindService(localIntent, this.jdField_a_of_type_Jgd, 1);
   }
   
   public void a(boolean paramBoolean, Notification paramNotification)
@@ -62,7 +62,7 @@ public class AVServiceProxy
     if (this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unbindService(this.jdField_a_of_type_Jeb);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unbindService(this.jdField_a_of_type_Jgd);
       return;
     }
     catch (Exception localException)
@@ -73,7 +73,7 @@ public class AVServiceProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.AVServiceProxy
  * JD-Core Version:    0.7.0.1
  */

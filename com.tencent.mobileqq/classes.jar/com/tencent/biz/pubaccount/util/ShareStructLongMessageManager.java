@@ -14,11 +14,12 @@ import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.vas.VipLongMsgShareDomainHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import mwv;
+import nap;
 
 public class ShareStructLongMessageManager
 {
@@ -120,6 +121,7 @@ public class ShareStructLongMessageManager
   
   public static boolean a(AbsStructMsg paramAbsStructMsg)
   {
+    boolean bool;
     if ((paramAbsStructMsg instanceof StructMsgForGeneralShare))
     {
       if (((StructMsgForGeneralShare)paramAbsStructMsg).mIsPAVideoStructMsg)
@@ -143,6 +145,22 @@ public class ShareStructLongMessageManager
         }
         return true;
       }
+      if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl))
+      {
+        String str = paramAbsStructMsg.mMsgUrl;
+        try
+        {
+          Uri localUri = Uri.parse(str);
+          bool = VipLongMsgShareDomainHelper.a().a(localUri.getHost());
+          if (bool) {
+            return true;
+          }
+        }
+        catch (Exception localException)
+        {
+          QLog.e("ShareStructLongMessageManager", 1, "shouldShareStructLongMessage vip url exception, url = " + str, localException);
+        }
+      }
     }
     if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgUrl))
     {
@@ -163,9 +181,9 @@ public class ShareStructLongMessageManager
     }
     try
     {
-      boolean bool = PublicAccountConfigUtil.c(new URL(paramAbsStructMsg.mMsgUrl).getHost());
+      bool = PublicAccountConfigUtil.c(new URL(paramAbsStructMsg.mMsgUrl).getHost());
       if (!bool) {
-        break label207;
+        break label271;
       }
       return true;
     }
@@ -173,7 +191,7 @@ public class ShareStructLongMessageManager
     if (!TextUtils.isEmpty(paramAbsStructMsg.mMsgActionData)) {
       return b(paramAbsStructMsg);
     }
-    label207:
+    label271:
     return false;
   }
   
@@ -249,7 +267,7 @@ public class ShareStructLongMessageManager
         ((MessageHandler)paramQQAppInterface.a(0)).a(MessageHandler.c(paramMessageRecord.istroop), false, new Object[] { paramMessageObserver, Integer.valueOf(i), Integer.valueOf(-1), null, Long.valueOf(0L), Long.valueOf(l) });
         return;
       }
-      paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.selfuin, paramMessageRecord.istroop, paramMessageRecord.uniseq + 1L, 1035, new mwv(this, paramMessageRecord, paramQQAppInterface, paramMessageObserver, paramBoolean));
+      paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.selfuin, paramMessageRecord.istroop, paramMessageRecord.uniseq + 1L, 1035, new nap(this, paramMessageRecord, paramQQAppInterface, paramMessageObserver, paramBoolean));
       if (!paramBoolean) {
         break;
       }

@@ -1,12 +1,21 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import com.tencent.mobileqq.text.QQText;
 
 public final class aiss
-  extends DialogUtil.DialogOnClickAdapter
+  extends Spannable.Factory
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Spannable newSpannable(CharSequence paramCharSequence)
   {
-    paramDialogInterface.dismiss();
+    if ((!QQText.b) && ((paramCharSequence instanceof QQText))) {
+      try
+      {
+        QQText localQQText = (QQText)((QQText)paramCharSequence).clone();
+        return localQQText;
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    }
+    return super.newSpannable(paramCharSequence);
   }
 }
 

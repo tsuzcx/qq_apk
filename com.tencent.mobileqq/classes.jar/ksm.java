@@ -1,18 +1,17 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicDataManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ksm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ksm(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
+  public ksm(AccountDetailDynamicDataManager paramAccountDetailDynamicDataManager, long paramLong, byte[] paramArrayOfByte) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.startActivity(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailModelAccountDetailDynamicDataManager.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailDynamicDataManager", 2, "updateAccountDetailDynamicInfoDB end");
+    }
   }
 }
 

@@ -1,24 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeBigSocial;
 
 public class lwr
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public lwr(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
+  public lwr(FeedItemCellTypeBigSocial paramFeedItemCellTypeBigSocial, LinearLayout paramLinearLayout) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ReadInJoyUtils.a = ComponentTopicItemMulti.a(this.a);
-    ReadInJoyUtils.a(this.a.getContext(), this.a.a.b);
-    paramView = ReadInJoyUtils.a(ComponentTopicItemMulti.a(this.a).mAlgorithmID, ReadInJoyUtils.a(ComponentTopicItemMulti.a(this.a)), ComponentTopicItemMulti.a(this.a), 0, 0, NetworkUtil.h(this.a.getContext()), ComponentTopicItemMulti.a(this.a).mSubscribeID, null, ComponentTopicItemMulti.a(this.a).innerUniqueID, null, ComponentTopicItemMulti.a(this.a));
-    PublicAccountReportUtils.a(null, ComponentTopicItemMulti.a(this.a).mSubscribeID, "0X8007625", "0X8007625", 0, 0, ComponentTopicItemMulti.a(this.a).mFeedId + "", String.valueOf(this.a.a.a), String.valueOf(ComponentTopicItemMulti.a(this.a).mAlgorithmID), paramView, false);
-    ReadInJoyUtils.a(ComponentTopicItemMulti.a(this.a), ComponentTopicItemMulti.a(this.a));
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

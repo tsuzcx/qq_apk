@@ -1,55 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.arcard.ARCardHeadIconManager;
-import java.util.ArrayList;
-import java.util.Hashtable;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudLBSLocationCheckCallback;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.ARCloudControlCallback;
+import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
+import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class aalv
-  extends BroadcastReceiver
+  implements ARCloudFileUpload.ARCloudLBSLocationCheckCallback
 {
-  public aalv(ARCardHeadIconManager paramARCardHeadIconManager) {}
+  public aalv(ARCloudControl paramARCloudControl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult)
   {
-    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
-    {
-      ArrayList localArrayList = paramIntent.getExtras().getStringArrayList("uinList");
-      paramIntent = paramIntent.getExtras().getStringArrayList("headPathList");
-      if ((localArrayList != null) && (paramIntent != null))
-      {
-        int i = 0;
-        if (i < localArrayList.size())
-        {
-          String str1 = (String)paramIntent.get(i);
-          if (str1 != null)
-          {
-            String str2 = (String)localArrayList.get(i);
-            paramContext = (aalw)ARCardHeadIconManager.a(this.a).get(str2);
-            if (paramContext != null) {
-              break label147;
-            }
-            paramContext = new aalw(this.a);
-            paramContext.jdField_a_of_type_JavaLangString = str1;
-            ARCardHeadIconManager.a(this.a).put(str2, paramContext);
-          }
-          for (;;)
-          {
-            paramContext.jdField_a_of_type_Boolean = false;
-            i += 1;
-            break;
-            label147:
-            paramContext.jdField_a_of_type_JavaLangString = str1;
-          }
-        }
-      }
+    ARCloudControl.f(this.a, false);
+    if (ARCloudControl.a(this.a)) {
+      return;
     }
+    if (ARCloudControl.a(this.a) != null) {
+      ARCloudControl.a(this.a).removeMessages(2);
+    }
+    QLog.i("AREngine_ARCloudControl", 1, "onARCloudLBSLocationCheckComplete. retCode = " + paramARCloudLBSLocationCheckResult.jdField_a_of_type_Int + ", imageId = " + paramARCloudLBSLocationCheckResult.jdField_a_of_type_JavaLangString);
+    if (ARCloudControl.a(this.a) != null)
+    {
+      ARCloudRecogResult.a(this.a.a.recognitions, ARCloudControl.a(this.a), paramARCloudLBSLocationCheckResult);
+      ARCloudControl.a(this.a).a(0, ARCloudControl.a(this.a));
+    }
+    ARCloudControl.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aalv
  * JD-Core Version:    0.7.0.1
  */

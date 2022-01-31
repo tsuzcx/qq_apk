@@ -1,27 +1,29 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.olympic.activity.ARTipsCircleProgress;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
 
 public class agjg
-  implements View.OnTouchListener
 {
-  public agjg(ScanTorchActivity paramScanTorchActivity) {}
+  public View a;
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public ARTipsCircleProgress a;
+  public ViewGroup b;
+  public TextView b;
+  public ViewGroup c;
+  public TextView c;
+  public ViewGroup d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1) {
-      ScanTorchActivity.m(this.a).setAlpha(255);
-    }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 0) {
-        ScanTorchActivity.m(this.a).setAlpha(100);
-      }
-    }
-  }
+  private agjg(ARTipsManager paramARTipsManager) {}
 }
 
 

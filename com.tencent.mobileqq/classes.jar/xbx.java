@@ -1,17 +1,67 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TopayManager;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 public final class xbx
-  implements DialogInterface.OnClickListener
+  implements Parcelable.Creator
 {
-  public xbx(Activity paramActivity, List paramList1, List paramList2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public LocalMediaInfo a(Parcel paramParcel)
   {
-    TopayManager.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.b);
+    boolean bool2 = true;
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo._id = paramParcel.readLong();
+    localLocalMediaInfo.path = paramParcel.readString();
+    localLocalMediaInfo.fileSize = paramParcel.readLong();
+    localLocalMediaInfo.addedDate = paramParcel.readLong();
+    localLocalMediaInfo.modifiedDate = paramParcel.readLong();
+    localLocalMediaInfo.orientation = paramParcel.readInt();
+    localLocalMediaInfo.rotation = paramParcel.readInt();
+    localLocalMediaInfo.mDuration = paramParcel.readLong();
+    if (paramParcel.readByte() == 1)
+    {
+      bool1 = true;
+      localLocalMediaInfo.mChecked = bool1;
+      localLocalMediaInfo.selectStatus = paramParcel.readInt();
+      localLocalMediaInfo.thumbWidth = paramParcel.readInt();
+      localLocalMediaInfo.thumbHeight = paramParcel.readInt();
+      localLocalMediaInfo.index = paramParcel.readInt();
+      localLocalMediaInfo.position = Integer.valueOf(paramParcel.readInt());
+      localLocalMediaInfo.mMimeType = paramParcel.readString();
+      localLocalMediaInfo.mediaWidth = paramParcel.readInt();
+      localLocalMediaInfo.mediaHeight = paramParcel.readInt();
+      if (paramParcel.readByte() != 1) {
+        break label282;
+      }
+      bool1 = true;
+      label184:
+      localLocalMediaInfo.isSystemMeidaStore = bool1;
+      if (paramParcel.readByte() != 1) {
+        break label287;
+      }
+    }
+    label282:
+    label287:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localLocalMediaInfo.isRegionThumbUseNewDecoder = bool1;
+      localLocalMediaInfo.longitude = paramParcel.readInt();
+      localLocalMediaInfo.latitude = paramParcel.readInt();
+      localLocalMediaInfo.panoramaPhotoType = paramParcel.readInt();
+      localLocalMediaInfo.mCloudPhotoOwnerUin = paramParcel.readLong();
+      localLocalMediaInfo.mCloudPhotoOwnerAlbumId = paramParcel.readString();
+      localLocalMediaInfo.mCloudPhotoId = paramParcel.readString();
+      localLocalMediaInfo.mTransferPosList = paramParcel.readArrayList(Long.class.getClassLoader());
+      return localLocalMediaInfo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label184;
+    }
+  }
+  
+  public LocalMediaInfo[] a(int paramInt)
+  {
+    return new LocalMediaInfo[0];
   }
 }
 

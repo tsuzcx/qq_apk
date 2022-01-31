@@ -20,13 +20,13 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import jew;
-import jex;
+import jgy;
+import jgz;
 
 public class QQServiceProxy
 {
   int jdField_a_of_type_Int = -1;
-  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new jex(this);
+  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new jgz(this);
   private MQLruCache jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
   public VideoAppInterface a;
   public IQQServiceCallback.Stub a;
@@ -39,7 +39,7 @@ public class QQServiceProxy
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = null;
-    this.jdField_a_of_type_ComTencentAvServiceIQQServiceCallback$Stub = new jew(this);
+    this.jdField_a_of_type_ComTencentAvServiceIQQServiceCallback$Stub = new jgy(this);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
   }
   
@@ -1339,7 +1339,7 @@ public class QQServiceProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.QQServiceProxy
  * JD-Core Version:    0.7.0.1
  */

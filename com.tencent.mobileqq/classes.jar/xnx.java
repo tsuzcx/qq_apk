@@ -1,15 +1,32 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class xnx
-  implements Runnable
+public class xnx
+  implements WtTicketPromise
 {
-  xnx(xnu paramxnu) {}
+  public xnx(VoiceRedPacketHelper paramVoiceRedPacketHelper, xny paramxny) {}
   
-  public void run()
+  public void Done(Ticket paramTicket)
   {
-    EditLocalVideoActivity.a(this.a.a.a).setVisibility(8);
-    EditLocalVideoActivity.b(this.a.a.a, false);
+    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
+    {
+      paramTicket = new String(paramTicket._sig);
+      this.jdField_a_of_type_Xny.a(paramTicket);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey is null");
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey failed");
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey time out");
   }
 }
 

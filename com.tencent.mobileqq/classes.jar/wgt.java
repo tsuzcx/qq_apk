@@ -1,28 +1,36 @@
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class wgt
-  implements AbsListView.OnScrollListener
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public wgt(TroopChatPie paramTroopChatPie, boolean paramBoolean) {}
   
-  public wgt(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c) || (this.b <= 0)) {}
-    while ((paramInt != 0) || (this.b > this.jdField_a_of_type_Int)) {
+    try
+    {
+      Thread.sleep(700L);
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.ab) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar.a())))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.ab = true;
+        TroopChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie).post(new wgu(this));
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Wgy.getCount();
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(localInterruptedException));
+        }
+      }
+    }
   }
 }
 

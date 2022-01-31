@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search;
 
-import ahqt;
-import ahqu;
-import ahqv;
+import ahvg;
+import ahvh;
+import ahvi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
@@ -227,7 +227,7 @@ public class FunctionModuleConfigManager
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(11, "厘米秀", "https://pub.idqqimg.com/pc/misc/files/20170310/c83498c5dfd54489af3147b027c091b0.png", "http://cmshow.qq.com/apollo/html/intro.html?_wv=3&adtag=search"));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(12, "兴趣部落", "https://pub.idqqimg.com/pc/misc/files/20170310/e8310f3460fa41b487b5922a0df671c5.png", "https://buluo.qq.com/mobile/buluoindex.html?_wv=16778243&_bid=128&from=dongtai&target=hot&_nav_txtclr=000000&_wwv=265&plg_auth=1"));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(13, "游戏", "https://pub.idqqimg.com/pc/misc/files/20170310/ee1b6352ec7340bba07949a15b9adc19.png", "https://m.gamecenter.qq.com/directout/index?st=1489458002385&uin=3043939851&status=-1&number=0&path=489&plat=qq&gamecenter=1&_wv=1031&gc_version=2&ADTAG=neisou&_nav_bgclr=18b4ed&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=255&asyncMode=3&_wwv=64"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(14, "日迹", "https://pub.idqqimg.com/pc/misc/files/20170310/6a09f5f91fff46e0ada71ff7b2a667f4.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(14, "小视频", "https://pub.idqqimg.com/pc/misc/files/20170310/6a09f5f91fff46e0ada71ff7b2a667f4.png", ""));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(15, "QQ看点", "https://sqimg.qq.com/qq_product_operations/kan/images/QQkandian_symbol.png", ""));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(16, "京东购物", "https://pub.idqqimg.com/pc/misc/files/20170310/43121a2425204707868e3e271a9969a7.png", "https://wq.jd.com/mcoss/wxmall/home?ptype=4&_wv=67113987&fetchCode=1"));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(17, "阅读", "https://pub.idqqimg.com/pc/misc/files/20170310/cd28b2e8ba7f4d9e98a2d244ced31789.png", ""));
@@ -382,8 +382,8 @@ public class FunctionModuleConfigManager
           break;
           i += 1;
           break label312;
-          Collections.sort(localArrayList2, new ahqt(this));
-          Collections.sort(localArrayList3, new ahqu(this));
+          Collections.sort(localArrayList2, new ahvg(this));
+          Collections.sort(localArrayList3, new ahvh(this));
           localArrayList1.addAll(localArrayList2);
           localArrayList1.addAll(localArrayList3);
           i = localArrayList1.size();
@@ -412,7 +412,7 @@ public class FunctionModuleConfigManager
     while (paramString.equals(a())) {
       return;
     }
-    ThreadManager.post(new ahqv(this, paramString), 8, null, false);
+    ThreadManager.post(new ahvi(this, paramString), 8, null, false);
   }
   
   public void c(String paramString)

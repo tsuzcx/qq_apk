@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkActionAppMgr.IGetAppNameByActionCallback;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.util.Set;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
 
-public class aauz
-  implements ArkActionAppMgr.IGetAppNameByActionCallback
+class aauz
+  implements ArkAppEventObserverManager.PositionCallback
 {
-  public aauz(ArkLocalAppMgr paramArkLocalAppMgr, aavw paramaavw) {}
+  aauz(aauy paramaauy) {}
   
-  public void a(Object paramObject, Set paramSet)
+  public void a(long paramLong)
   {
-    ThreadManager.post(new aava(this, paramSet), 5, null, true);
+    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Aauq.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    ArkAppDeviceModule.a(this.a.a.a.jdField_a_of_type_Aauq.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

@@ -7,11 +7,11 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import ankx;
-import anky;
-import anlc;
-import anld;
-import anle;
+import antk;
+import antl;
+import antp;
+import antq;
+import antr;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.common.Observer;
@@ -49,7 +49,7 @@ public class QIMPtvTemplateAdapter
   public GridView a;
   public QIMPtvTemplateAdapter.IPtvTemplateItemCallback a;
   private ProviderView.ProviderViewListener jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener;
-  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new anky(this);
+  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new antl(this);
   public PtvTemplateManager.PtvTemplateInfo a;
   public QIMPtvTemplateManager a;
   public ArrayList a;
@@ -67,7 +67,7 @@ public class QIMPtvTemplateAdapter
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateAdapter$IPtvTemplateItemCallback = new ankx(this);
+    this.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateAdapter$IPtvTemplateItemCallback = new antk(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_ComTencentWidgetGridView = paramGridView;
@@ -204,7 +204,7 @@ public class QIMPtvTemplateAdapter
         if ((this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.kind == 3) && (NetworkUtil.b(this.jdField_a_of_type_AndroidContentContext)))
         {
           if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-            this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle("下载挂件").setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131439216)).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131433016), new anld(this)).setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131433015), new anlc(this));
+            this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle("下载挂件").setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131439248)).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131433030), new antq(this)).setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131433029), new antp(this));
           }
           try
           {
@@ -217,7 +217,7 @@ public class QIMPtvTemplateAdapter
         }
         else
         {
-          ThreadManager.postImmediately(new anle(this), null, true);
+          ThreadManager.postImmediately(new antr(this), null, true);
           QIMCommonLoadingProgress.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo).a();
           ShortVideoMtaReport.a("shortvideo_download_effects", null);
         }

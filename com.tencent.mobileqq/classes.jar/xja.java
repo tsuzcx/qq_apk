@@ -1,16 +1,23 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
+import cooperation.qwallet.plugin.TenUtils;
 
 class xja
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  xja(xiz paramxiz) {}
+  xja(xiy paramxiy, HbSkinInfo paramHbSkinInfo) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(26, 2);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(26, this.a.jdField_a_of_type_AndroidOsMessage);
-    this.a.jdField_a_of_type_AndroidOsMessage.recycle();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentHbSkinInfo.a.pop_dialog.right_url;
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      TenUtils.startQQBrowser(this.jdField_a_of_type_Xiy.a.getActivity(), paramDialogInterface);
+    }
   }
 }
 

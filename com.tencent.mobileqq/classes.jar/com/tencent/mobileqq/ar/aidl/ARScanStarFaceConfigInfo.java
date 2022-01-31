@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aaem;
+import aald;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -17,7 +17,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARScanStarFaceConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aaem();
+  public static final Parcelable.Creator CREATOR = new aald();
   static boolean a;
   static String b;
   public String a;

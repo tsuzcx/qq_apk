@@ -1,10 +1,10 @@
 package cooperation.troop_homework.jsp;
 
 import android.graphics.Bitmap;
-import anfw;
-import anfx;
-import anfz;
-import anga;
+import annz;
+import anoa;
+import anoc;
+import anod;
 import com.tencent.mobileqq.app.ThreadManager;
 import cooperation.troop_homework.TroopHomeworkHelper.UploadCallback;
 import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
@@ -14,7 +14,7 @@ public class TroopHWJsPlugin$UploadMediaEntry
 {
   public int a;
   public Bitmap a;
-  public anfw a;
+  public annz a;
   TroopHomeworkHelper.UploadCallback a;
   public TroopHomeworkHelper.UploadFileTask a;
   public String a;
@@ -26,17 +26,17 @@ public class TroopHWJsPlugin$UploadMediaEntry
   public TroopHWJsPlugin$UploadMediaEntry(TroopHWJsPlugin paramTroopHWJsPlugin)
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback = new anfx(this);
+    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback = new anoa(this);
   }
   
   public void a()
   {
-    ThreadManager.postImmediately(new anfz(this), null, false);
+    ThreadManager.postImmediately(new anoc(this), null, false);
   }
   
   public void b()
   {
-    ThreadManager.postImmediately(new anga(this), null, false);
+    ThreadManager.postImmediately(new anod(this), null, false);
   }
 }
 

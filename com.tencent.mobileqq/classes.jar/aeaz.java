@@ -1,83 +1,75 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.DownloadIconsListener;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.hotpic.VideoItemEventManager;
+import com.tencent.mobileqq.hotpic.VideoItemEventManager.onVideoItemEventListener;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.URL;
-import java.util.List;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aeaz
-  implements Runnable
+  implements INetInfoHandler
 {
-  public aeaz(LebaGridShowManager paramLebaGridShowManager, QQAppInterface paramQQAppInterface, URL paramURL, File paramFile, String paramString) {}
+  public aeaz(VideoItemEventManager paramVideoItemEventManager) {}
   
-  public void run()
+  public void onNetMobile2None()
   {
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaIoFile))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("LebaGridShowManager", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "suc--------");
-          }
-          Object localObject1 = null;
-          if (BaseApplicationImpl.sImageCache != null)
-          {
-            localObject1 = "LebaIcon://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-            localObject1 = (Bitmap)BaseApplicationImpl.sImageCache.get(localObject1);
-          }
-          if (QLog.isColorLevel())
-          {
-            ??? = new StringBuilder().append("get Bitmap from cache, result=");
-            if (localObject1 == null) {
-              break label346;
-            }
-            bool = true;
-            QLog.d("LebaGridShowManager", 2, bool);
-          }
-          if (localObject1 != null) {
-            break label343;
-          }
-          localObject1 = LebaGridShowManager.a(this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager, this.jdField_a_of_type_JavaIoFile);
-          if (localObject1 != null) {
-            if (QLog.isColorLevel()) {
-              QLog.d("LebaGridShowManager", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "notify UI++++++++");
-            }
-          }
-          synchronized (this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager.jdField_a_of_type_JavaUtilList)
-          {
-            if (i < this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager.jdField_a_of_type_JavaUtilList.size())
-            {
-              ((DownloadIconsListener)this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager.jdField_a_of_type_JavaUtilList.get(i)).a(this.jdField_a_of_type_JavaLangString, (Bitmap)localObject1);
-              i += 1;
-              continue;
-            }
-            LebaGridShowManager.a(this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager, this.jdField_a_of_type_JavaLangString);
-            return;
-          }
-        }
-        this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager.jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_JavaLangString);
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager.jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_JavaLangString);
-        LebaGridShowManager.b(this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      LebaGridShowManager.b(this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager, this.jdField_a_of_type_JavaLangString);
-      return;
-      label343:
-      continue;
-      label346:
-      boolean bool = false;
+    Iterator localIterator = VideoItemEventManager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((VideoItemEventManager.onVideoItemEventListener)localIterator.next()).a(5);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetMobile2None onConnClose");
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    paramString = VideoItemEventManager.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((VideoItemEventManager.onVideoItemEventListener)paramString.next()).a(4);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetMobile2Wifi onConnOK");
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    paramString = VideoItemEventManager.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((VideoItemEventManager.onVideoItemEventListener)paramString.next()).a(3);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetNone2Mobile onConnOK");
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    paramString = VideoItemEventManager.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((VideoItemEventManager.onVideoItemEventListener)paramString.next()).a(2);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetNone2Wifi onConnOK");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    paramString = VideoItemEventManager.a(this.a).iterator();
+    while (paramString.hasNext()) {
+      ((VideoItemEventManager.onVideoItemEventListener)paramString.next()).a(1);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    Iterator localIterator = VideoItemEventManager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((VideoItemEventManager.onVideoItemEventListener)localIterator.next()).a(0);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoItemEventManager", 2, "onNetWifi2None onConnClose");
     }
   }
 }

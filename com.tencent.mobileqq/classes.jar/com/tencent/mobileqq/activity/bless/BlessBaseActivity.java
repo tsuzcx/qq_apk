@@ -20,7 +20,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
-import wex;
+import wkh;
 
 public abstract class BlessBaseActivity
   extends BaseActivity
@@ -42,7 +42,7 @@ public abstract class BlessBaseActivity
   
   public BlessBaseActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wex(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wkh(this);
   }
   
   private void a(String paramString, int paramInt, boolean paramBoolean)
@@ -122,22 +122,22 @@ public abstract class BlessBaseActivity
           }
           if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals("")) || (this.jdField_b_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString.equals("")))
           {
-            a("no token or amount", 2131434455, true);
+            a("no token or amount", 2131434471, true);
             return;
           }
         }
         catch (Throwable paramIntent)
         {
           paramIntent.printStackTrace();
-          a("order result not OK", 2131434455, false);
+          a("order result not OK", 2131434471, false);
           return;
         }
         float f = Float.valueOf(this.jdField_b_of_type_JavaLangString).floatValue() / 100.0F;
-        paramIntent = String.format(getResources().getString(2131438281), new Object[] { Float.valueOf(f) });
+        paramIntent = String.format(getResources().getString(2131438301), new Object[] { Float.valueOf(f) });
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramIntent);
         return;
       }
-      a("order result not OK", 2131434455, false);
+      a("order result not OK", 2131434471, false);
       return;
     }
     paramIntent = paramIntent.getStringExtra("result");
@@ -207,13 +207,13 @@ public abstract class BlessBaseActivity
   protected void doOnPostCreate(Bundle paramBundle)
   {
     super.doOnPostCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131363405));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363406));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363407));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131363424));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363425));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363426));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    findViewById(2131362868).setOnClickListener(this);
-    findViewById(2131363374).setOnClickListener(this);
-    findViewById(2131363372).setOnClickListener(this);
+    findViewById(2131362873).setOnClickListener(this);
+    findViewById(2131363393).setOnClickListener(this);
+    findViewById(2131363391).setOnClickListener(this);
   }
   
   protected boolean isWrapContent()

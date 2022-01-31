@@ -1,14 +1,26 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.ViewTag;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.widget.ImageAnimationView;
+import com.tencent.widget.Gallery;
 
 public class ajbg
-  extends ContactListAdapter.ViewTag
+  implements Animation.AnimationListener
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public ajbg(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setVisibility(4);
+    this.a.finish();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
+  }
 }
 
 

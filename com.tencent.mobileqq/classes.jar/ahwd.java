@@ -1,14 +1,35 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
 public class ahwd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahwd(MessageSearchEngine paramMessageSearchEngine, String paramString) {}
+  public ahwd(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.a(this.jdField_a_of_type_JavaLangString);
+    this.a.c();
+    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCursorVisible(false);
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.removeTextChangedListener(this.a);
+    if ((ActiveEntitySearchActivity.a(this.a) == 1) && (!TextUtils.isEmpty(this.a.b)))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText(this.a.b);
+      ActiveEntitySearchActivity.a(this.a, ActiveEntitySearchActivity.a(this.a));
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.addTextChangedListener(this.a);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText("");
+      ActiveEntitySearchActivity.a(this.a, 2);
+    }
   }
 }
 

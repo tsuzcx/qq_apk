@@ -1,28 +1,15 @@
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.lebasearch.SearchProtocol;
+import com.tencent.mobileqq.activity.Leba;
 
 public class tbv
-  extends FriendListObserver
+  implements Runnable
 {
-  public tbv(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public tbv(Leba paramLeba) {}
   
-  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  public void run()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    MoveToGroupActivity.a(this.a);
-    if (paramString == null) {
-      QQToast.a(this.a, this.a.getString(2131434517), 0).b(this.a.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      MoveToGroupActivity.b(this.a);
-      this.a.removeObserver(MoveToGroupActivity.a(this.a));
-      return;
-      QQToast.a(this.a, 2, this.a.getString(2131434515), 0).b(this.a.getTitleBarHeight());
-    }
+    SearchProtocol.a += 1;
+    Leba.a(this.a, this.a.a);
   }
 }
 

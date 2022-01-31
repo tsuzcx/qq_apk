@@ -1,58 +1,47 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.StoryManager;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager.ServerInfo;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller.StoryVidListReceiver;
-import com.tencent.biz.qqstory.network.handler.UidToVidHandler;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tribe.async.async.JobContext;
 import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONObject;
 
 public class ndo
   extends SimpleJob
 {
-  public ndo(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
+  public ndo(VideoServerInfoManager paramVideoServerInfoManager) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
   {
-    paramJobContext = (StoryManager)SuperManager.a(5);
-    if (!this.a.jdField_a_of_type_Boolean) {
-      if (this.a.jdField_b_of_type_Int == 3) {
-        paramJobContext = paramJobContext.f(this.a.jdField_b_of_type_JavaLangString);
-      }
-    }
-    for (;;)
+    Object localObject = (String)((StoryConfigManager)SuperManager.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
+    synchronized (this.a.b)
     {
-      paramVarArgs = paramJobContext;
-      if (paramJobContext == null) {
-        paramVarArgs = new ArrayList();
-      }
-      if (paramVarArgs.size() > 0)
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        this.a.a(paramVarArgs);
-        SLog.d("Q.qqstory.net:VidToVideoInfoPuller", String.format("Found %s vid list from local , pullType is %d , %s", new Object[] { this.a.jdField_b_of_type_JavaLangString, Integer.valueOf(this.a.jdField_b_of_type_Int), paramVarArgs }));
+        long l = this.a.a.jdField_a_of_type_Long;
+        if (l != 0L) {}
+      }
+      try
+      {
+        paramVarArgs = new VideoServerInfoManager.ServerInfo();
+        localObject = new JSONObject((String)localObject);
+        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
+        paramVarArgs.jdField_a_of_type_ArrayOfByte = HexUtil.a(((JSONObject)localObject).getString("ak"));
+        this.a.a = paramVarArgs;
+        SLog.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
         return null;
-        paramJobContext = paramJobContext.c(this.a.jdField_b_of_type_JavaLangString);
       }
-      else
+      catch (Exception paramVarArgs)
       {
-        SLog.d("Q.qqstory.net:VidToVideoInfoPuller", String.format("Cannot found %s vid list from local , pullType is %d , request from net", new Object[] { this.a.jdField_b_of_type_JavaLangString, Integer.valueOf(this.a.jdField_b_of_type_Int) }));
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver == null)
+        for (;;)
         {
-          this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver = new VidToVideoInfoPuller.StoryVidListReceiver(this.a);
-          Dispatchers.get().registerSubscriber(this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver);
+          SLog.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
         }
-        paramJobContext = new ArrayList();
-        paramJobContext.add(this.a.jdField_b_of_type_JavaLangString);
-        this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerUidToVidHandler = new UidToVidHandler(paramJobContext, this.a.jdField_b_of_type_Int);
-        this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerUidToVidHandler.a();
-        return null;
-        paramJobContext = null;
       }
     }
   }

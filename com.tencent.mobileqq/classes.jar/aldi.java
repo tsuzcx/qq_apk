@@ -1,48 +1,35 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.appcommon.AppClient;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.MyAppApi;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aldi
-  implements Runnable
+public class aldi
+  implements URLDrawableDownListener
 {
-  public aldi(String paramString1, String paramString2, Activity paramActivity, boolean paramBoolean) {}
+  public aldi(ProfileCardMoreInfoView paramProfileCardMoreInfoView, String paramString, URLImageView paramURLImageView) {}
   
-  public void run()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (MyAppApi.a().b())
-    {
-      Bundle localBundle = new Bundle();
-      String str = DownloadConstants.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_JavaLangString == null) {}
-      for (localObject = "";; localObject = this.jdField_a_of_type_JavaLangString)
-      {
-        localBundle.putString(str, (String)localObject);
-        localBundle.putString(DownloadConstants.b, "");
-        localBundle.putString(DownloadConstants.c, "");
-        localBundle.putString(DownloadConstants.e, this.b);
-        localBundle.putInt(DownloadConstants.d, 0);
-        localBundle.putString(DownloadConstants.h, "ANDROIDQQ.SHARESOURCE");
-        ThreadManager.getSubThreadHandler().post(new aldj(this, localBundle));
-        return;
-      }
-    }
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("uin", "");
-    ((Bundle)localObject).putString("sid", "");
-    ((Bundle)localObject).putString("via", "ANDROIDQQ.SHARESOURCE");
-    ((Bundle)localObject).putBoolean("autoDownload", false);
-    ((Bundle)localObject).putString("packageName", this.b);
-    ((Bundle)localObject).putString("subpagetype", "SHARESOURCE");
-    AppClient.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 2462, (Bundle)localObject);
+    QLog.e("Q.profilecard.FrdProfileCard", 1, "showDiamondImage onLoadFailed iconUrl = " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aldi
  * JD-Core Version:    0.7.0.1
  */

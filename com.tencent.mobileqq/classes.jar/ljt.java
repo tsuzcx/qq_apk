@@ -1,28 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CommentLikeObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter.SecondCommentOperationCallback;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
+import com.tencent.mobileqq.widget.CircleProgress;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class ljt
-  implements ArticleCommentModule.CommentLikeObserver
+class ljt
+  implements Runnable
 {
-  public ljt(int paramInt, ReadInJoySecondCommentListAdapter.SecondCommentOperationCallback paramSecondCommentOperationCallback) {}
+  ljt(ljs paramljs, boolean paramBoolean, String paramString) {}
   
-  public void a(ArticleInfo paramArticleInfo, String paramString, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentUtils", 2, "zan cancel success,comment type =" + this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a) == 5) {
+        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a, 2);
+      }
+      for (;;)
+      {
+        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a, this.jdField_a_of_type_JavaLangString);
+        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a).setSourceVideoPath(this.jdField_a_of_type_JavaLangString);
+        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a).setVisibility(8);
+        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a).setVisibility(8);
+        return;
+        ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_Ljs.a, 2);
+        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a);
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter$SecondCommentOperationCallback != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter$SecondCommentOperationCallback.a(paramString, null, 4, null);
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentUtils", 2, "zan cancel failed,comment type =" + this.jdField_a_of_type_Int + "comment id =" + paramString1 + "err code = " + paramInt + "errMsg =" + paramString2);
-    }
+    QQToast.a(BaseApplication.getContext(), 1, 2131428454, 0).a(this.jdField_a_of_type_Ljs.a.e()).show();
   }
 }
 

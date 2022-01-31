@@ -1,17 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyFixPosArticleManager;
+import com.tencent.biz.pubaccount.readinjoy.model.FixPosArticleInterface.FixPosArticleAsyncListener;
 
-public class lrh
-  implements Runnable
+class lrh
+  implements FixPosArticleInterface.FixPosArticleAsyncListener
 {
-  public lrh(InterestLabelInfoModule paramInterestLabelInfoModule) {}
+  lrh(lrg paramlrg) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    List localList = this.a.a.a(InterestLabelInfo.class, true, null, null, null, null, null, null);
-    this.a.c(localList);
+    ReadinjoyFixPosArticleManager.a(this.a.a, paramInt);
   }
 }
 

@@ -1,57 +1,35 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.share.FilterComboSharePlugin;
+import android.content.Context;
+import cooperation.weiyun.sdk.download.WyDownloader;
+import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
+import cooperation.weiyun.utils.SoHelper.SoListener;
+import java.io.File;
 
-public class anqj
-  implements WXShareHelper.WXShareListener
+public final class anqj
+  implements WyDownloader.IDownloadListener
 {
-  public anqj(FilterComboSharePlugin paramFilterComboSharePlugin, int paramInt) {}
+  public anqj(String paramString1, String paramString2, SoHelper.SoListener paramSoListener, Context paramContext, File paramFile1, File paramFile2) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(String paramString, long paramLong, float paramFloat)
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.b == null) || (!this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.b.equals(paramBaseResp.transaction)))
-    {
-      if (!QLog.isColorLevel()) {
-        break label162;
-      }
-      QLog.i("FilterComboShare", 2, "on share null");
-      bool = false;
+    if (this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener != null) {
+      this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener.a(paramLong, paramFloat);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FilterComboShare", 2, "on share code " + paramBaseResp.errCode + " result " + bool);
-      }
-      if (bool)
-      {
-        FilterComboSharePlugin.a(this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin, this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.a, bool);
-        this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.a(bool, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.a();
-      }
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  {
+    if (paramBoolean) {
+      WyDownloader.a().a("http://dldir1.qq.com/weiyun/android/qq/librarySize1002.txt", this.jdField_a_of_type_JavaLangString, "SoHelper", new anqk(this));
+    }
+    while (this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener == null) {
       return;
-      switch (paramBaseResp.errCode)
-      {
-      case -1: 
-      default: 
-        QRUtils.a(1, 2131435303);
-        bool = false;
-        break;
-      case 0: 
-        QRUtils.a(2, 2131435302);
-        break;
-      case -2: 
-        label162:
-        bool = false;
-      }
     }
+    this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener.a(paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqj
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
-import lrs;
+import luw;
 import tencent.im.oidb.cmd0x97b.oidb_cmd0x97b.CountDetailInfo;
 import tencent.im.oidb.cmd0x97b.oidb_cmd0x97b.FollowCountInfo;
 import tencent.im.oidb.cmd0x97b.oidb_cmd0x97b.LimitInfo;
@@ -87,7 +87,7 @@ public class SelfInfoModule
         ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, k, m, paramFromServiceMsg);
         ReadInJoyHelper.j(this.jdField_a_of_type_ComTencentCommonAppAppInterface, bool);
         ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramObject, (String)localObject, i);
-        this.jdField_a_of_type_AndroidOsHandler.post(new lrs(this, j, k, m, bool));
+        this.jdField_a_of_type_AndroidOsHandler.post(new luw(this, j, k, m, bool));
         return;
       }
     }

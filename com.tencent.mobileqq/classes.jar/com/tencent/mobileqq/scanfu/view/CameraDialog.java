@@ -13,8 +13,8 @@ public class CameraDialog
   public CameraDialog(Context paramContext)
   {
     super(paramContext, 2131624516);
-    setContentView(2130970230);
-    this.a = ((Button)findViewById(2131369739));
+    setContentView(2130970245);
+    this.a = ((Button)findViewById(2131369749));
   }
   
   public void a(View.OnClickListener paramOnClickListener)

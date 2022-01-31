@@ -39,16 +39,17 @@ public class QQStoryConfigServlet
   
   static
   {
-    jdField_a_of_type_Array2dOfInt = new int[][] { { 2131689489, -127 }, { 2131689490, -128 }, { 2131689491, -150 }, { 2131689492, -151 }, { 2131689493, -208 }, { 2131689494, -220 }, { 2131689495, 152 }, { 2131689496, 317 }, { 2131689497, 318 }, { -1, 219 } };
+    Object localObject1 = { 2131689493, -208 };
+    jdField_a_of_type_Array2dOfInt = new int[][] { { 2131689489, -127 }, { 2131689490, -128 }, { 2131689491, -150 }, { 2131689492, -151 }, localObject1, { 2131689494, -220 }, { 2131689495, 152 }, { 2131689496, 317 }, { 2131689497, 318 }, { -1, 219 } };
     jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray(jdField_a_of_type_Array2dOfInt.length);
-    int[][] arrayOfInt = jdField_a_of_type_Array2dOfInt;
-    int j = arrayOfInt.length;
+    localObject1 = jdField_a_of_type_Array2dOfInt;
+    int j = localObject1.length;
     int i = 0;
     if (i < j)
     {
-      int[] arrayOfInt1 = arrayOfInt[i];
-      int k = arrayOfInt1[0];
-      int m = arrayOfInt1[1];
+      Object localObject2 = localObject1[i];
+      int k = localObject2[0];
+      int m = localObject2[1];
       if (k != -1) {
         jdField_a_of_type_AndroidUtilSparseIntArray.put(StoryApi.a(k), m);
       }

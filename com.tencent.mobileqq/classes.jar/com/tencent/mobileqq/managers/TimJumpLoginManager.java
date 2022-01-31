@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.managers;
 
-import aefc;
-import aefd;
-import aefe;
+import aenm;
+import aenn;
+import aeno;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
@@ -277,7 +277,7 @@ public class TimJumpLoginManager
         localObject3 = localObject2;
       }
     }
-    DialogUtil.a(BaseActivity.sTopActivity, 230, str5, str6, (String)localObject3, (String)localObject1, new aefc(this), new aefd(this)).show();
+    DialogUtil.a(BaseActivity.sTopActivity, 230, str5, str6, (String)localObject3, (String)localObject1, new aenm(this), new aenn(this)).show();
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80085D9", "0X80085D9", 0, 0, "", "", "", "");
   }
   
@@ -301,7 +301,7 @@ public class TimJumpLoginManager
   {
     if (!PackageUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "com.tencent.tim", "775E696D09856872FDD8AB4F3F06B1E0"))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131439132, 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131439159, 0).a();
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "jumpTimLogin tim not install ");
       }
@@ -322,7 +322,7 @@ public class TimJumpLoginManager
         if (j != 0) {
           continue;
         }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131439132, 0).a();
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131439159, 0).a();
         return;
       }
       catch (Exception localException)
@@ -333,9 +333,9 @@ public class TimJumpLoginManager
         WtloginHelper localWtloginHelper = new WtloginHelper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext());
         localWtloginHelper.SetTimeOut(20);
         localWtloginHelper.SetMsfTransportFlag(1);
-        localWtloginHelper.SetListener(new aefe(this, localQQProgressDialog, localWtloginHelper, paramBundle));
+        localWtloginHelper.SetListener(new aeno(this, localQQProgressDialog, localWtloginHelper, paramBundle));
         paramBundle = util.getPkgSigFromApkName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "com.tencent.tim");
-        i = localWtloginHelper.GetA1WithA1(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "7.6.3".getBytes(), paramBundle, new WUserSigInfo(), new WFastLoginInfo());
+        i = localWtloginHelper.GetA1WithA1(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "7.6.8".getBytes(), paramBundle, new WUserSigInfo(), new WFastLoginInfo());
       }
       if (i == -1001) {
         break;
@@ -346,10 +346,10 @@ public class TimJumpLoginManager
       if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
         localQQProgressDialog.dismiss();
       }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131439134, 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131439161, 0).a();
       return;
     } while (j >= i);
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131439133, 0).a();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131439160, 0).a();
   }
   
   public boolean handleMessage(Message paramMessage)

@@ -1,51 +1,26 @@
-import MyCarrier.Carrier;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.mobileqq.app.AutomatorObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class wtu
-  implements View.OnClickListener
+  extends AutomatorObserver
 {
-  public wtu(ContactListView paramContactListView) {}
+  public wtu(TroopFragment paramTroopFragment) {}
   
-  private void a()
+  protected void a(int paramInt)
   {
-    Context localContext = this.a.getContext();
-    Object localObject = ((MyBusinessManager)this.a.a.getManager(48)).a();
-    if ((localObject == null) || (TextUtils.isEmpty(((Carrier)localObject).carrierURL))) {
-      return;
-    }
-    localObject = ((Carrier)localObject).carrierURL;
-    Intent localIntent = new Intent(localContext, MyBusinessActivity.class);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("uin", this.a.a.getCurrentAccountUin());
-    localIntent.putExtra("title", localContext.getString(2131437122));
-    localIntent.putExtra("url", (String)localObject);
-    localIntent.putExtra("hideRightButton", true);
-    this.a.a(localIntent, 1000);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
+    switch (paramInt)
     {
-    case 2131369974: 
-    default: 
-      return;
-    case 2131369975: 
-      ContactListView.a(this.a, true);
-      ContactListView.a(this.a, "P_CliOper", "QQwangting", "txl_close_bluebar", "close_bluebar");
-      return;
     }
-    ContactListView.a(this.a, true);
-    ContactListView.a(this.a, "P_CliOper", "QQwangting", "txl_clk_bluebar", "clk_bluebar");
-    a();
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.d();
   }
 }
 

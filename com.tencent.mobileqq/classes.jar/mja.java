@@ -1,30 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class mja
-  extends Handler
+  implements DialogInterface.OnDismissListener
 {
-  private WeakReference a;
+  public mja(VideoShareHelper paramVideoShareHelper) {}
   
-  public mja(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = new WeakReference(paramReadInJoyNavigationGridview);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
-    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (VideoShareHelper.a(this.a) != null) {
+      VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), false, false);
     }
-    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
+    VideoShareHelper.a(this.a, true);
+    VideoShareHelper.b(this.a, false);
   }
 }
 

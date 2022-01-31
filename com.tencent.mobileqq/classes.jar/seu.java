@@ -1,37 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import java.util.List;
 
-class seu
-  implements DialogInterface.OnClickListener
+public class seu
+  implements FMDialogUtil.FMDialogInterface
 {
-  seu(set paramset) {}
+  public seu(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.cancel();
-      return;
-    }
-    try
-    {
-      ForwardSdkShareOption.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, true, "action_game_join_group", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c).longValue(), -1, this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.cancel();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
+    FileManagerUtil.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
   }
+  
+  public void b() {}
 }
 
 

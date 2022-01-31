@@ -1,44 +1,31 @@
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.video.QzoneLiveVideoInterface;
-import cooperation.qzone.webviewwrapper.IWebviewOnClassLoaded;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import cooperation.qzone.WatchActivityManager;
 
-public final class anbf
-  implements Runnable
+public class anbf
+  extends BroadcastReceiver
 {
-  public anbf(IWebviewOnClassLoaded paramIWebviewOnClassLoaded) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  private anbf(WatchActivityManager paramWatchActivityManager) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    for (;;)
+    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      try
-      {
-        if (1 != QzoneLiveVideoInterface.getIntConfig("LiveSetting", "qzone_webview_need_preload_dex_classes", 1)) {
-          return;
-        }
-        if (!QzoneLiveVideoInterface.isBestPerformanceDevice()) {
-          break;
-        }
-        if (!SwiftWebAccelerator.TbsAccelerator.a())
-        {
-          long l = System.currentTimeMillis();
-          SwiftWebAccelerator.TbsAccelerator.b();
-          QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator init cost " + (System.currentTimeMillis() - l));
-          if (this.a == null) {
-            break;
-          }
-          this.a.a();
-          return;
-        }
+      if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label40;
       }
-      catch (Exception localException)
-      {
-        QLog.e("QzoneLiveVideoInterface", 1, localException, new Object[0]);
-        return;
-      }
-      QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator is inited");
+      WatchActivityManager.a(this.jdField_a_of_type_CooperationQzoneWatchActivityManager, true);
     }
+    label40:
+    while (!this.jdField_a_of_type_JavaLangString.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      return;
+    }
+    WatchActivityManager.b(this.jdField_a_of_type_CooperationQzoneWatchActivityManager, true);
   }
 }
 

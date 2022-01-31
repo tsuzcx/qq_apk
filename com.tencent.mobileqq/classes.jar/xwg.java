@@ -1,17 +1,49 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDConfigServletProxy.RDConfigServletProxyListener;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraOperator;
+import com.tencent.qphone.base.util.QLog;
 
 public class xwg
-  implements RDConfigServletProxy.RDConfigServletProxyListener
+  extends OrientationEventListener
 {
-  public xwg(RDBaseDataManager paramRDBaseDataManager) {}
-  
-  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public xwg(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
   {
-    if ((paramInt1 != this.a.a) && (this.a.a != 0)) {
-      return false;
-    }
-    return RDBaseDataManager.a(this.a, paramInt1, paramInt2, paramString, paramInt3, paramInt4);
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    NewFlowCameraActivity.a(this.a).a(paramInt);
+    if (this.a.j) {}
+    do
+    {
+      return;
+      if (paramInt == -1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
+        }
+        this.a.o = 90;
+        return;
+      }
+      if ((paramInt > 315) || (paramInt < 45))
+      {
+        this.a.o = 90;
+        return;
+      }
+      if ((paramInt > 45) && (paramInt < 135))
+      {
+        this.a.o = 180;
+        return;
+      }
+      if ((paramInt > 135) && (paramInt < 225))
+      {
+        this.a.o = 270;
+        return;
+      }
+    } while ((paramInt <= 225) || (paramInt >= 315));
+    this.a.o = 0;
   }
 }
 

@@ -1,81 +1,33 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
+import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodePullVideoBasicInfoSegment;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVideoInfo;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeVidListRequest.MsgTabNodeVidListResponse;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoData;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
 public class nel
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+  extends Job
 {
-  public nel(MsgTabNodePullVideoBasicInfoSegment paramMsgTabNodePullVideoBasicInfoSegment, List paramList, MsgTabNodeVidListRequest.MsgTabNodeVidListResponse paramMsgTabNodeVidListResponse) {}
+  public nel(StoryVideoUploadManager paramStoryVideoUploadManager, String paramString, StoryVideoItem paramStoryVideoItem) {}
   
-  public void a()
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    QLog.e("Q.qqstory.msgTab.jobPullBasicInfo", 1, "pull video info failed, info=" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabNodeVidListRequest$MsgTabNodeVidListResponse.a);
-    MsgTabNodePullVideoBasicInfoSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodePullVideoBasicInfoSegment, new ErrorMessage(102, "pull video info failed"));
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    if (paramArrayList == null)
+    paramJobContext = new DeleteStoryVideoEvent(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
     {
-      SLog.e("Q.qqstory.msgTab.jobPullBasicInfo", "video list empty !");
-      MsgTabNodePullVideoBasicInfoSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodePullVideoBasicInfoSegment, new ErrorMessage(102, "video list empty !"));
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilList.size() == paramArrayList.size()) {}
-    HashMap localHashMap;
-    Object localObject1;
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      localHashMap = new HashMap();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        localObject1 = (StoryVideoItem)paramArrayList.next();
-        localHashMap.put(((StoryVideoItem)localObject1).mVid, localObject1);
+      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
+      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramJobContext.a == 0L) {
+        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
       }
     }
-    paramArrayList = new ArrayList();
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < j)
-    {
-      localObject1 = (MsgTabVideoData)this.jdField_a_of_type_JavaUtilList.get(i);
-      Object localObject2 = (StoryVideoItem)localHashMap.get(((MsgTabVideoData)localObject1).b);
-      if (localObject2 == null)
-      {
-        SLog.e("Q.qqstory.msgTab.jobPullBasicInfo", "not found video!");
-        i += 1;
-      }
-      else
-      {
-        ((MsgTabVideoData)localObject1).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject2);
-        localObject2 = MsgTabNodeVideoInfo.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabNodeVidListRequest$MsgTabNodeVidListResponse.a.jdField_a_of_type_JavaUtilList, ((StoryVideoItem)localObject2).mVideoIndex);
-        if ((localObject2 == null) || (((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Boolean)) {}
-        for (bool = true;; bool = false)
-        {
-          ((MsgTabVideoData)localObject1).jdField_a_of_type_Boolean = bool;
-          paramArrayList.add(localObject1);
-          break;
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info succeed, info=" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabNodeVidListRequest$MsgTabNodeVidListResponse.a);
-    }
-    MsgTabNodePullVideoBasicInfoSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodePullVideoBasicInfoSegment, paramArrayList);
+    Dispatchers.get().dispatch(paramJobContext);
+    return null;
   }
 }
 

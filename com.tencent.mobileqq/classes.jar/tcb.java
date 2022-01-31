@@ -1,34 +1,33 @@
-import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.app.LebaUtil;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class tcb
-  extends LbsManager.OnLocationListener
+  extends GameCenterObserver
 {
-  public tcb(NearbyActivity paramNearbyActivity, String paramString)
-  {
-    super(paramString);
-  }
+  public tcb(Leba paramLeba) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if ((!paramBoolean1) || (paramInt == 2)) {}
+    for (;;)
     {
-      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
-      if (paramSosoLbsInfo == null) {
-        break label75;
-      }
-    }
-    label75:
-    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
-    {
-      QLog.d("nearby.heart_beat", 2, localSosoLocation);
-      this.a.a.a(1, paramSosoLbsInfo);
       return;
+      if (Leba.b(this.a))
+      {
+        ArrayList localArrayList = new ArrayList();
+        LebaUtil.a(localArrayList, LebaShowListManager.a().a(this.a.a));
+        this.a.a(new tcc(this, localArrayList));
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
+        return;
+        LebaShowListManager.a |= 0x2;
+      }
     }
   }
 }

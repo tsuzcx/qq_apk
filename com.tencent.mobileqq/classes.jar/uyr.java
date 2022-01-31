@@ -1,19 +1,15 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.Holder;
 
-public class uyr
-  extends ClickableSpan
+class uyr
+  implements Runnable
 {
-  public uyr(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  uyr(uyq paramuyq) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void run()
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    this.a.a.d.setVisibility(8);
+    this.a.a.c.setVisibility(8);
   }
 }
 

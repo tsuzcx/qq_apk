@@ -1,58 +1,39 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.medalwall.ShareHelper;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.widget.ActionSheet;
+import android.app.Activity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aefx
-  implements AdapterView.OnItemClickListener
+  extends DownloadListener
 {
-  public aefx(ShareHelper paramShareHelper) {}
+  public aefx(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if (this.a.a.a().isShowing()) {
-      this.a.a.a().dismiss();
+    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
+      return;
     }
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131435319;
-      }
-    }
-    for (;;)
+    if (paramDownloadTask.a == 0)
     {
-      if (paramInt != -1)
+      paramDownloadTask = new File(AbsDownloader.d(this.jdField_a_of_type_JavaLangString));
+      if (paramDownloadTask.exists())
       {
-        QRUtils.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435320;
+        if (QLog.isColorLevel()) {
+          QLog.d("UiApiPlugin", 2, "shareImageToAIO->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
         }
-      }
-      else
-      {
-        switch ((int)paramLong)
-        {
-        default: 
-          return;
-        case 0: 
-          ShareHelper.a(this.a);
-          return;
-        case 1: 
-          ShareHelper.b(this.a);
-          return;
-        case 2: 
-          ShareHelper.c(this.a);
-          return;
-        }
-        ShareHelper.d(this.a);
+        localActivity.runOnUiThread(new aefy(this, paramDownloadTask));
         return;
       }
-      paramInt = -1;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("UiApiPlugin", 2, "shareImageToAIO->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+    }
+    localActivity.runOnUiThread(new aefz(this));
   }
 }
 

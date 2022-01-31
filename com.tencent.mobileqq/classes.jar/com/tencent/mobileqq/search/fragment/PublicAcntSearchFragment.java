@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahtm;
-import ahtn;
+import ahyd;
+import ahye;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.PublicAccountDataManager;
@@ -36,29 +37,30 @@ public class PublicAcntSearchFragment
   extends BaseSearchFragment
   implements AbsListView.OnScrollListener
 {
-  private static int b;
+  private static int c;
   private long a;
   protected UniteSearchObserver a;
   public String a;
   public byte[] a;
+  protected int b;
   public boolean e;
   public boolean f;
   
   static
   {
-    jdField_b_of_type_Int = -1;
+    jdField_c_of_type_Int = -1;
   }
   
   public PublicAcntSearchFragment()
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ahtn(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ahye(this);
   }
   
   public static PublicAcntSearchFragment a(int paramInt)
   {
-    jdField_b_of_type_Int = paramInt;
+    jdField_c_of_type_Int = paramInt;
     return new PublicAcntSearchFragment();
   }
   
@@ -74,22 +76,25 @@ public class PublicAcntSearchFragment
   
   protected ISearchEngine a()
   {
-    return new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_b_of_type_Int);
+    return new PublicAccountSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_c_of_type_Int);
   }
   
   protected String a()
   {
-    if (jdField_b_of_type_Int == 12) {
+    if (jdField_c_of_type_Int == 12) {
       return PublicAccountConfigUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
     }
     return "关注的公众号";
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
   
   public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter == null) || (this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter.getCount() == 0)) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter == null) || (this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter.getCount() == 0) || (this.jdField_b_of_type_Int == 0)) {}
     while ((paramInt3 - paramInt1 - paramInt2 >= 10) || (this.e) || (this.f)) {
       return;
     }
@@ -100,7 +105,7 @@ public class PublicAcntSearchFragment
   {
     super.a(paramList, paramInt);
     String str;
-    if ((SearchUtils.a(jdField_b_of_type_Int)) && (!this.jdField_a_of_type_Boolean))
+    if ((SearchUtils.a(jdField_c_of_type_Int)) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
       str = "" + this.jdField_b_of_type_JavaLangString;
@@ -143,13 +148,22 @@ public class PublicAcntSearchFragment
     return false;
   }
   
+  protected void d(List paramList)
+  {
+    super.d(paramList);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    b(false);
+    c(false);
+  }
+  
   protected void e(List paramList)
   {
     this.e = true;
     if (QLog.isColorLevel()) {
       QLog.i("PublicAcntSearchFragment", 2, "sendNetPublicAcntRequest ,keyword=" + this.jdField_b_of_type_JavaLangString);
     }
-    ThreadManager.getUIHandler().post(new ahtm(this));
+    ThreadManager.getUIHandler().post(new ahyd(this));
     Object localObject1 = ((PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55)).a();
     ArrayList localArrayList = new ArrayList();
     if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
@@ -162,7 +176,7 @@ public class PublicAcntSearchFragment
       paramList = (UniteSearchHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(111);
       localObject1 = new Bundle();
       ((Bundle)localObject1).putBoolean("isLoadMore", true);
-      ((Bundle)localObject1).putInt("fromType", jdField_b_of_type_Int);
+      ((Bundle)localObject1).putInt("fromType", jdField_c_of_type_Int);
       Object localObject2 = new ArrayList();
       ((List)localObject2).add(Long.valueOf(1003L));
       paramList.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 20, (List)localObject2, localArrayList, this.jdField_a_of_type_ArrayOfByte, 0.0D, 0.0D, (Bundle)localObject1);

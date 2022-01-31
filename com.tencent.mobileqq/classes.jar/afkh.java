@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class afkh
-  extends NearbyMomentManager.MomentDataChangeObserver
+  implements Runnable
 {
-  public afkh(NearbyMomentFailedFragment paramNearbyMomentFailedFragment) {}
+  public afkh(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  void a(String paramString)
+  public void run()
   {
-    NearbyMomentFailedFragment.a(this.a);
+    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
+    if (localEntityManager != null)
+    {
+      localEntityManager.a(NearbyProfileDisplayTribePanel.a(this.a));
+      localEntityManager.a();
+    }
   }
 }
 

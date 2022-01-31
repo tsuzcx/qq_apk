@@ -3,12 +3,12 @@ package com.qq.im.poi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aob;
+import aod;
 
 public class PoiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aob();
+  public static final Parcelable.Creator CREATOR = new aod();
   public int a;
   public long a;
   public String a;

@@ -1,27 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class tka
-  implements View.OnClickListener
+class tka
+  implements Runnable
 {
-  public tka(QQMapActivity paramQQMapActivity) {}
+  tka(tjy paramtjy) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.l)
-    {
-      this.a.w();
-      return;
-    }
-    if ("group_activity".equals(this.a.o))
-    {
-      this.a.k();
-      return;
-    }
-    this.a.setResult(-1, this.a.a());
-    this.a.finish();
-    this.a.d();
+    this.a.a.b(this.a.a.app.o());
   }
 }
 

@@ -30,7 +30,7 @@ import com.tencent.mobileqq.widget.QQProgressNotifier;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.Switch;
 import java.util.ArrayList;
-import nrg;
+import nvw;
 
 public class QQStoryShieldActivity
   extends IphoneTitleBarActivity
@@ -40,7 +40,7 @@ public class QQStoryShieldActivity
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   QQStoryHandler jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler;
   QQStoryManager jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
-  QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nrg(this);
+  QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nvw(this);
   public QQProgressNotifier a;
   public Switch a;
   String jdField_a_of_type_JavaLangString;
@@ -49,9 +49,9 @@ public class QQStoryShieldActivity
   
   protected View a(int paramInt, String paramString)
   {
-    View localView = View.inflate(this, 2130970656, null);
-    ((TextView)localView.findViewById(2131363378)).setText(paramString);
-    ((TextView)localView.findViewById(2131364119)).setText("");
+    View localView = View.inflate(this, 2130970669, null);
+    ((TextView)localView.findViewById(2131363397)).setText(paramString);
+    ((TextView)localView.findViewById(2131364144)).setText("");
     localView.setTag(Integer.valueOf(paramInt));
     localView.setOnClickListener(this);
     return localView;
@@ -78,21 +78,21 @@ public class QQStoryShieldActivity
     this.app.addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
     paramBundle = new LinearLayout(this);
     Object localObject = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838215);
+    paramBundle.setBackgroundResource(2130838220);
     paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
     paramBundle.setOrientation(1);
     paramBundle.setPadding(0, AIOUtils.a(20.0F, getResources()), 0, 0);
     this.jdField_a_of_type_AndroidViewViewGroup = paramBundle;
     paramBundle = a(0, "查看个人资料卡");
-    paramBundle.setBackgroundResource(2130838630);
+    paramBundle.setBackgroundResource(2130838636);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
     if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 2)) {
       paramBundle.setVisibility(8);
     }
     paramBundle = new FormSwitchItem(this, null);
     this.jdField_a_of_type_ArrayOfAndroidViewView[1] = paramBundle;
-    paramBundle.setText("不看他的日迹");
-    paramBundle.setContentDescription("不看他的日迹");
+    paramBundle.setText("不看他的小视频");
+    paramBundle.setContentDescription("不看他的小视频");
     paramBundle.setBgType(2);
     paramBundle.setTag(Integer.valueOf(1));
     paramBundle.a().setTextSize(1, 18.0F);
@@ -107,8 +107,8 @@ public class QQStoryShieldActivity
     }
     paramBundle = new FormSwitchItem(this, null);
     this.jdField_a_of_type_ArrayOfAndroidViewView[2] = paramBundle;
-    paramBundle.setText("不让他看我的日迹");
-    paramBundle.setContentDescription("不让他看我的日迹");
+    paramBundle.setText("不让他看我的小视频");
+    paramBundle.setContentDescription("不让他看我的小视频");
     paramBundle.setBgType(3);
     paramBundle.setTag(Integer.valueOf(2));
     paramBundle.a().setTextSize(1, 18.0F);
@@ -143,9 +143,9 @@ public class QQStoryShieldActivity
       if (this.jdField_a_of_type_Int != 3) {
         break label604;
       }
-      super.setTitle("日迹设置");
+      super.setTitle("小视频设置");
       label509:
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2130970578);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2130970591);
       if (NetworkUtil.g(this)) {
         break label655;
       }
@@ -166,7 +166,7 @@ public class QQStoryShieldActivity
       {
         if (QQStoryContext.a().a(this.jdField_a_of_type_JavaLangString))
         {
-          super.setTitle("日迹设置");
+          super.setTitle("小视频设置");
           break label509;
         }
         super.setTitle("屏蔽");
@@ -221,7 +221,7 @@ public class QQStoryShieldActivity
         if (i != 0)
         {
           this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.a(paramCompoundButton, true, paramBoolean);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433007, 0);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433021, 0);
           break;
         }
         paramCompoundButton = this.jdField_a_of_type_ComTencentWidgetSwitch;
@@ -234,7 +234,7 @@ public class QQStoryShieldActivity
         if (i != 0)
         {
           this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.a(paramCompoundButton, false, paramBoolean);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433007, 0);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433021, 0);
           break;
         }
         paramCompoundButton = this.b;

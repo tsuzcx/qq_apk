@@ -1,27 +1,18 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.qwallet.FrameAnimHelper;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-public class wzd
-  extends AsyncTask
+class wzd
+  implements DialogInterface.OnClickListener
 {
-  private wzd(FrameAnimHelper paramFrameAnimHelper) {}
+  wzd(wyz paramwyz) {}
   
-  protected AnimationView.AnimationInfo a(String... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ("1".equals(paramVarArgs[1])) {
-      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
+    if (this.a.a.a != null) {
+      this.a.a.a.setText("");
     }
-    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
-  }
-  
-  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
-    }
-    this.a.a(paramAnimationInfo);
   }
 }
 

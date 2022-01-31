@@ -1,44 +1,22 @@
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class zfh
   implements Runnable
 {
-  HotChatInfo jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = null;
-  
-  public zfh(HotChatManager paramHotChatManager, HotChatInfo paramHotChatInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = paramHotChatInfo;
-  }
+  public zfh(ApolloPanel paramApolloPanel, String paramString, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.jdField_a_of_type_JavaUtilMap.get(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin)) == null) {
-        break label63;
-      }
-      if (QLog.isColorLevel()) {
-        NearbyUtils.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable already exist", this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin });
-      }
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a != null)) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a, 2, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Int);
     }
-    return;
-    label63:
-    if (QLog.isColorLevel()) {
-      NearbyUtils.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable", this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin });
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, 4);
-    ((HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zfh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,61 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.qrcode.CodeMaskManager;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.utils.DateUtils;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
 
 public class osf
-  extends Thread
+  extends SwipRightMenuBuilder.SwipItemBaseHolder
 {
-  public osf(CodeMaskManager paramCodeMaskManager, SharedPreferences paramSharedPreferences, int paramInt1, int paramInt2, int paramInt3) {}
+  public View a;
+  public TextView a;
+  public URLImageView a;
+  public TextView b;
+  public URLImageView b;
   
-  public void run()
+  public osf(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.putLong("updateTemplate2", System.currentTimeMillis());
-    Object localObject = "http://qm.qq.com/cgi-bin/tpl?v=1&os=a&resx=" + this.jdField_a_of_type_Int + "&resy=" + this.b + "&t=" + this.c + "&" + "mType" + "=" + "qb_qrcode";
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367037));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362759));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366702));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131371877));
+  }
+  
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  {
+    TroopStoryMemoriesListAdapter.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(DateUtils.c(paramTroopStoryItemInfo.publishTime));
+    Drawable localDrawable = this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130843867);
     try
     {
-      String str = HttpUtil.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidAppActivity, (String)localObject, "GET", null, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRHttpUtil", 2, "open :" + (String)localObject + ", result: " + str);
-      }
-      localObject = new JSONObject(str);
-      if (((JSONObject)localObject).getInt("r") == 0)
-      {
-        localObject = ((JSONObject)localObject).getJSONArray("tpls");
-        if (((JSONArray)localObject).length() > 0)
-        {
-          this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidOsHandler.post(new osg(this, (JSONArray)localObject));
-          localEditor.putString("tpl_json", str);
-        }
-      }
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = localDrawable;
+      localURLDrawableOptions.mFailedDrawable = localDrawable;
+      localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
+      paramTroopStoryItemInfo = URLDrawable.getDrawable(paramTroopStoryItemInfo.videoThumbUrl, localURLDrawableOptions);
+      paramTroopStoryItemInfo.setTag(URLDrawableDecodeHandler.a(UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
+      paramTroopStoryItemInfo.setDecodeHandler(URLDrawableDecodeHandler.g);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new osg(this, paramInt));
+      return;
     }
-    catch (Exception localException)
+    catch (Exception paramTroopStoryItemInfo)
     {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("QRHttpUtil", 2, localException.getMessage());
-        }
-        localEditor.putLong("updateTemplate2", 0L);
+        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
       }
     }
-    localEditor.commit();
-    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_JavaLangThread = null;
   }
 }
 

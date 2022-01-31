@@ -1,9 +1,37 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.ChangeNewPath;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.widget.FileWebView.TitilebarEventInterface;
 
-class acvh
-  implements FileManagerRSWorker.ChangeNewPath
+public class acvh
+  implements FileWebView.TitilebarEventInterface
 {
-  acvh(acve paramacve, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2) {}
+  public acvh(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b()
+  {
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.f)) {
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.l = "3";
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.e = System.currentTimeMillis();
+    }
+    this.a.runOnUiThread(new acvi(this));
+  }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

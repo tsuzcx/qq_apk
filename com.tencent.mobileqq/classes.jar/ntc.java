@@ -1,17 +1,19 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnHorizontalScrollListener;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public class ntc
-  implements HorizontalListView.OnScrollStateChangedListener
+public final class ntc
+  implements Runnable
 {
-  public ntc(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
+  public ntc(TVKPreloader.PreloadItem paramPreloadItem) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if ((paramInt == 4097) && (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener != null)) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter.a);
+    Iterator localIterator = TVKPreloader.a().iterator();
+    while (localIterator.hasNext()) {
+      ((TVKPreloader.PreloadListener)localIterator.next()).c(this.a);
     }
   }
 }

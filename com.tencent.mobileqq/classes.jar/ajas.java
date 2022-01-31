@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
-public class ajas
-  implements DialogInterface.OnDismissListener
+class ajas
+  implements AdapterView.OnItemLongClickListener
 {
-  public ajas(TroopWebviewPlugin paramTroopWebviewPlugin) {}
+  ajas(ajap paramajap) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if ((this.a.a.a.c) || (this.a.a.a.b)) {
+      TroopAvatarWallEditActivity.a(this.a.a.a);
     }
+    return true;
   }
 }
 

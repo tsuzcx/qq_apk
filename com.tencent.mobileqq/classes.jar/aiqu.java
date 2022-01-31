@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.transfile.ScribblePicDownloadProcessor;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aiqu
   implements Runnable
 {
-  public aiqu(ScribblePicDownloadProcessor paramScribblePicDownloadProcessor) {}
+  public aiqu(GroupSystemMsgController paramGroupSystemMsgController, QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    this.a.f();
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putString("group_display", this.jdField_a_of_type_JavaLangString).commit();
+    }
   }
 }
 

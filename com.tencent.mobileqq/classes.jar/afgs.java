@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
-class afgs
-  implements DialogInterface.OnClickListener
+public final class afgs
+  implements Parcelable.Creator
 {
-  afgs(afgp paramafgp, QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public PicInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Afgp.a.f();
+    return new PicInfo(paramParcel);
+  }
+  
+  public PicInfo[] a(int paramInt)
+  {
+    return new PicInfo[paramInt];
   }
 }
 

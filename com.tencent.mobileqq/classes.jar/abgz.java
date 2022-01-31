@@ -1,15 +1,30 @@
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
-import java.util.List;
+import android.graphics.Point;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.tencentmap.mapsdk.map.MapView;
+import com.tencent.tencentmap.mapsdk.map.Projection;
+import com.tencent.tencentmap.mapsdk.map.TencentMap;
+import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapLoadedListener;
 
-class abgz
-  implements Runnable
+public class abgz
+  implements TencentMap.OnMapLoadedListener
 {
-  abgz(abgx paramabgx, POIInfo paramPOIInfo, List paramList, int paramInt) {}
+  public abgz(ARMapActivity paramARMapActivity) {}
   
-  public void run()
+  public void onMapLoaded()
   {
-    this.jdField_a_of_type_Abgx.a.a(this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int);
+    this.a.e = true;
+    if (this.a.a != null)
+    {
+      Projection localProjection = this.a.a.getProjection();
+      TencentMap localTencentMap = this.a.a.getMap();
+      if ((localProjection != null) && (localTencentMap != null))
+      {
+        Point localPoint = localProjection.toScreenLocation(localTencentMap.getMapCenter());
+        localPoint.offset(0, AIOUtils.a(60.0F, this.a.getResources()) * -1);
+        localTencentMap.setCenter(localProjection.fromScreenLocation(localPoint));
+      }
+    }
   }
 }
 

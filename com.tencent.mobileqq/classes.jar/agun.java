@@ -1,31 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.managers.ShieldMsgManger;
-import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 class agun
-  implements DialogInterface.OnClickListener
+  extends DownloadListener
 {
-  agun(aguk paramaguk, QQCustomDialog paramQQCustomDialog, ShieldMsgManger paramShieldMsgManger, ArrayList paramArrayList) {}
+  agun(agum paramagum) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style end download, url : %s, resultCode : %d ", new Object[] { paramDownloadTask.jdField_a_of_type_JavaLangString, Integer.valueOf(paramDownloadTask.jdField_a_of_type_Int) }));
     }
-    while (paramInt != 1) {
-      return;
+  }
+  
+  public void onProgress(DownloadTask paramDownloadTask)
+  {
+    int i = (int)paramDownloadTask.jdField_a_of_type_Float;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style progress, url : %s, progress : %d", new Object[] { paramDownloadTask.jdField_a_of_type_JavaLangString, Integer.valueOf(i) }));
     }
-    this.jdField_a_of_type_ComTencentMobileqqManagersShieldMsgManger.b(this.jdField_a_of_type_Aguk.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
-    QCallDetailActivity.a(this.jdField_a_of_type_Aguk.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a((byte)0);
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style start download, url : %s, position : %s ", new Object[] { paramDownloadTask.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agun
  * JD-Core Version:    0.7.0.1
  */

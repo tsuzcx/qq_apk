@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.model;
 
-import aehs;
-import aeht;
-import aehu;
-import aehv;
-import aehw;
-import aehx;
-import aehy;
-import aehz;
-import aeia;
-import aeib;
-import aeic;
-import aeid;
-import aeie;
-import aeif;
-import aeig;
-import aeii;
-import aeij;
-import aeil;
-import aeim;
-import aein;
-import aeio;
-import aeip;
-import aeiq;
-import aeir;
-import aeis;
+import aeqc;
+import aeqd;
+import aeqe;
+import aeqf;
+import aeqg;
+import aeqh;
+import aeqi;
+import aeqj;
+import aeqk;
+import aeql;
+import aeqm;
+import aeqn;
+import aeqo;
+import aeqp;
+import aeqq;
+import aeqs;
+import aeqt;
+import aeqv;
+import aeqw;
+import aeqx;
+import aeqy;
+import aeqz;
+import aera;
+import aerb;
+import aerc;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -149,7 +149,7 @@ public class EmoticonManager
     this.jdField_d_of_type_JavaUtilMap = new HashMap();
     this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
     this.jdField_d_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver = new aeif(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver = new aeqp(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     jdField_a_of_type_JavaUtilHashMap.put(Double.valueOf(4.7D), Integer.valueOf(300));
@@ -166,7 +166,7 @@ public class EmoticonManager
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
     this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap = new EmoticonManager.1(this, 1001, 0, 500);
     this.jdField_b_of_type_JavaUtilMap = new EmoticonManager.2(this, 1002, 0, 80);
-    ThreadManager.postImmediately(new aeim(this), null, true);
+    ThreadManager.postImmediately(new aeqw(this), null, true);
   }
   
   private double a()
@@ -492,7 +492,7 @@ public class EmoticonManager
       QLog.e("EmoticonManager", 1, "writeRecommendInfoFromFileToCache fileThreadHandler == null");
       return;
     }
-    this.jdField_b_of_type_AndroidOsHandler.post(new aeij(this, paramInt));
+    this.jdField_b_of_type_AndroidOsHandler.post(new aeqt(this, paramInt));
   }
   
   private void a(Runnable paramRunnable, int paramInt)
@@ -666,7 +666,7 @@ public class EmoticonManager
         QLog.d("EmoticonManager", 2, "saveRecommendEpInfoToFile businessType = " + paramInt);
       }
     } while (this.jdField_b_of_type_AndroidOsHandler == null);
-    this.jdField_b_of_type_AndroidOsHandler.post(new aeil(this, paramInt, localSubCmd0x5RspBQRecommend));
+    this.jdField_b_of_type_AndroidOsHandler.post(new aeqv(this, paramInt, localSubCmd0x5RspBQRecommend));
   }
   
   private void b(Emoticon paramEmoticon)
@@ -718,7 +718,7 @@ public class EmoticonManager
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonManager", 2, "saveKeywordReqTimeToDB");
     }
-    ThreadManager.post(new aeie(this, paramEmoticonKeywords), 5, null, true);
+    ThreadManager.post(new aeqo(this, paramEmoticonKeywords), 5, null, true);
   }
   
   private boolean b(int paramInt)
@@ -1244,7 +1244,7 @@ public class EmoticonManager
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonManager", 2, "can not find small emotion in cache, but pkg in cache: epId = " + paramString1 + ", eId = " + paramString2);
       }
-      a(new aeip(this, paramString1, paramString2), 5);
+      a(new aeqz(this, paramString1, paramString2), 5);
       return "";
     }
     return localEmoticon.character;
@@ -1585,7 +1585,7 @@ public class EmoticonManager
   
   public void a(int paramInt, QueryCallback paramQueryCallback)
   {
-    new QueryTask(new aeht(this), paramQueryCallback).a(Integer.valueOf(paramInt));
+    new QueryTask(new aeqd(this), paramQueryCallback).a(Integer.valueOf(paramInt));
   }
   
   public void a(Emoticon paramEmoticon)
@@ -1593,7 +1593,7 @@ public class EmoticonManager
     if (paramEmoticon == null) {
       return;
     }
-    a(new aeis(this, paramEmoticon), 8);
+    a(new aerc(this, paramEmoticon), 8);
   }
   
   public void a(EmoticonKeywords paramEmoticonKeywords)
@@ -1624,7 +1624,7 @@ public class EmoticonManager
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonManager", 2, "saveEmoticonPackages, pkgCache.size:" + this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.size() + ",epId:" + paramEmoticonPackage.epId + ",status:" + paramEmoticonPackage.getStatus());
       }
-      a(new aeir(this, paramEmoticonPackage), 8);
+      a(new aerb(this, paramEmoticonPackage), 8);
     }
   }
   
@@ -1709,12 +1709,12 @@ public class EmoticonManager
   
   public void a(MarkFaceMessage paramMarkFaceMessage, QueryCallback paramQueryCallback)
   {
-    new QueryTask(new aehu(this, paramMarkFaceMessage), paramQueryCallback).a(paramMarkFaceMessage);
+    new QueryTask(new aeqe(this, paramMarkFaceMessage), paramQueryCallback).a(paramMarkFaceMessage);
   }
   
   public void a(RecentEmotion paramRecentEmotion)
   {
-    ThreadManager.post(new aeib(this, paramRecentEmotion), 5, null, true);
+    ThreadManager.post(new aeql(this, paramRecentEmotion), 5, null, true);
   }
   
   public void a(ClubContentJsonTask.PromotionEmoticonPkg paramPromotionEmoticonPkg)
@@ -1741,7 +1741,7 @@ public class EmoticonManager
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonManager", 2, "saveAndUpdateRecommendEmosInfo");
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new aeii(this, paramSubCmd0x5RspBQRecommend, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aeqs(this, paramSubCmd0x5RspBQRecommend, paramInt));
   }
   
   /* Error */
@@ -1944,16 +1944,16 @@ public class EmoticonManager
         }
       } while (this.jdField_a_of_type_JavaUtilList.contains(paramString));
       this.jdField_a_of_type_JavaUtilList.add(0, paramString);
-      ThreadManager.post(new aehw(this, paramString), 5, null, true);
+      ThreadManager.post(new aeqg(this, paramString), 5, null, true);
       return;
     } while (this.jdField_b_of_type_JavaUtilList.contains(paramString));
     this.jdField_b_of_type_JavaUtilList.add(0, paramString);
-    ThreadManager.post(new aehv(this, paramString), 5, null, true);
+    ThreadManager.post(new aeqf(this, paramString), 5, null, true);
   }
   
   public void a(String paramString, int paramInt, QueryCallback paramQueryCallback)
   {
-    new QueryTask(new aeio(this), paramQueryCallback).a(new Pair(paramString, Integer.valueOf(paramInt)));
+    new QueryTask(new aeqy(this), paramQueryCallback).a(new Pair(paramString, Integer.valueOf(paramInt)));
   }
   
   public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3)
@@ -1961,7 +1961,7 @@ public class EmoticonManager
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonManager", 2, "saveEmoticonPkgUpdateStatus epId = " + paramString1 + " businessType = " + paramInt3);
     }
-    EmoticonPackage localEmoticonPackage = b(paramString1, paramInt3);
+    EmoticonPackage localEmoticonPackage = c(paramString1, paramInt3);
     if (localEmoticonPackage != null)
     {
       paramInt3 = localEmoticonPackage.latestVersion;
@@ -2126,7 +2126,7 @@ public class EmoticonManager
   
   public void a(String paramString1, String paramString2, QueryCallback paramQueryCallback)
   {
-    new QueryTask(new aein(this), paramQueryCallback).a(new Pair(paramString1, paramString2));
+    new QueryTask(new aeqx(this), paramQueryCallback).a(new Pair(paramString1, paramString2));
   }
   
   public void a(String paramString, List paramList)
@@ -2190,7 +2190,7 @@ public class EmoticonManager
           }
         }
       }
-      ThreadManager.post(new aeiq(this, paramList), 5, null, true);
+      ThreadManager.post(new aera(this, paramList), 5, null, true);
     }
   }
   
@@ -2224,7 +2224,7 @@ public class EmoticonManager
         paramInt += 1;
       }
     }
-    ThreadManager.post(new aehz(this), 5, null, true);
+    ThreadManager.post(new aeqj(this), 5, null, true);
   }
   
   public boolean a()
@@ -2615,27 +2615,28 @@ public class EmoticonManager
   
   public EmoticonPackage b(String paramString)
   {
-    return b(paramString, 0);
+    return c(paramString, 0);
   }
   
   public EmoticonPackage b(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("EmoticonManager", 2, "syncFindTabEmoticonPackageById epId = " + paramString + " businessType = " + paramInt);
+      QLog.d("EmoticonManager", 2, "syncFindEmoticonPackageInCache epId = " + paramString + ", type = " + paramInt);
     }
-    if (paramString == null) {}
+    paramString = (EmoticonPackage)this.jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap.get(paramString);
+    if ((paramString == null) || (paramInt == -1)) {}
     do
     {
       do
       {
-        return null;
-        switch (paramInt)
-        {
+        return paramString;
+        if (paramInt != 0) {
+          break;
         }
-      } while (!this.jdField_a_of_type_JavaUtilList.contains(paramString));
-      return a(paramString, paramInt);
-    } while (!this.jdField_b_of_type_JavaUtilList.contains(paramString));
-    return a(paramString, paramInt);
+      } while (paramString.aio);
+      return null;
+    } while ((paramInt != 1) || (paramString.kandian));
+    return null;
   }
   
   public List b(int paramInt)
@@ -2793,7 +2794,7 @@ public class EmoticonManager
       localArrayList = new ArrayList(this.jdField_d_of_type_JavaUtilList);
       this.jdField_d_of_type_JavaUtilList.clear();
     } while ((localArrayList.size() <= 0) || (this.jdField_c_of_type_AndroidOsHandler == null));
-    this.jdField_c_of_type_AndroidOsHandler.post(new aeic(this, localArrayList));
+    this.jdField_c_of_type_AndroidOsHandler.post(new aeqm(this, localArrayList));
   }
   
   public void b(EmotionKeyword paramEmotionKeyword, boolean paramBoolean)
@@ -2841,7 +2842,7 @@ public class EmoticonManager
     }
     for (;;)
     {
-      ThreadManager.post(new aehy(this, paramString, bool2, bool1), 5, null, true);
+      ThreadManager.post(new aeqi(this, paramString, bool2, bool1), 5, null, true);
       return;
       this.jdField_b_of_type_JavaUtilList.remove(paramString);
       bool2 = false;
@@ -2854,7 +2855,7 @@ public class EmoticonManager
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonManager", 2, "asyncFindTabEmoticonPackageById epId = " + paramString + " businessType = " + paramInt);
     }
-    new QueryTask(new aehx(this), paramQueryCallback).a(new Pair(paramString, Integer.valueOf(paramInt)));
+    new QueryTask(new aeqh(this), paramQueryCallback).a(new Pair(paramString, Integer.valueOf(paramInt)));
   }
   
   public void b(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3)
@@ -2862,7 +2863,7 @@ public class EmoticonManager
     if (QLog.isColorLevel()) {
       QLog.i("EmoticonManager", 2, "saveEmoticonPackageKeywordJson epId = " + paramString1 + " businessType = " + paramInt3);
     }
-    paramString2 = b(paramString1, paramInt3);
+    paramString2 = c(paramString1, paramInt3);
     if (paramString2 == null) {
       return;
     }
@@ -2884,7 +2885,27 @@ public class EmoticonManager
     if (paramList == null) {
       return;
     }
-    a(new aehs(this, paramList), 8);
+    a(new aeqc(this, paramList), 8);
+  }
+  
+  public EmoticonPackage c(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EmoticonManager", 2, "syncFindTabEmoticonPackageById epId = " + paramString + " businessType = " + paramInt);
+    }
+    if (paramString == null) {}
+    do
+    {
+      do
+      {
+        return null;
+        switch (paramInt)
+        {
+        }
+      } while (!this.jdField_a_of_type_JavaUtilList.contains(paramString));
+      return a(paramString, paramInt);
+    } while (!this.jdField_b_of_type_JavaUtilList.contains(paramString));
+    return a(paramString, paramInt);
   }
   
   public List c(String paramString)
@@ -2931,7 +2952,7 @@ public class EmoticonManager
       }
       localList = this.jdField_c_of_type_JavaUtilList;
     } while ((localList.size() <= 0) || (this.jdField_c_of_type_AndroidOsHandler == null));
-    this.jdField_c_of_type_AndroidOsHandler.post(new aeid(this, localList));
+    this.jdField_c_of_type_AndroidOsHandler.post(new aeqn(this, localList));
   }
   
   public void c(String paramString, int paramInt)
@@ -2952,7 +2973,7 @@ public class EmoticonManager
     }
     for (;;)
     {
-      a(new aeia(this), 5);
+      a(new aeqk(this), 5);
       return;
       this.jdField_b_of_type_JavaUtilList.remove(paramString);
       this.jdField_b_of_type_JavaUtilList.add(0, paramString);
@@ -2966,7 +2987,7 @@ public class EmoticonManager
       QLog.d("EmoticonManager", 2, "parseCloudKeywordsJson user vip type = " + i);
     }
     if (this.jdField_b_of_type_AndroidOsHandler != null) {
-      this.jdField_b_of_type_AndroidOsHandler.post(new aeig(this, i));
+      this.jdField_b_of_type_AndroidOsHandler.post(new aeqq(this, i));
     }
   }
   

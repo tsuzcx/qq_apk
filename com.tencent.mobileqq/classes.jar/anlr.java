@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import cooperation.qzone.cache.FileCacheService;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
 
 public final class anlr
-  implements Parcelable.Creator
+  implements ThreadPool.Job
 {
-  public QIMFilterCategoryItem a(Parcel paramParcel)
-  {
-    return new QIMFilterCategoryItem(paramParcel);
-  }
+  public anlr(String paramString1, String paramString2) {}
   
-  public QIMFilterCategoryItem[] a(int paramInt)
+  public Object run(ThreadPool.JobContext paramJobContext)
   {
-    return new QIMFilterCategoryItem[paramInt];
+    QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$000(this.a, this.b)), true);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlr
  * JD-Core Version:    0.7.0.1
  */

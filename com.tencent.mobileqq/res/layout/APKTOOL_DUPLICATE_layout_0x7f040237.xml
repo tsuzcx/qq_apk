@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0430" android:layout_centerHorizontal="true"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0sp" android:textColor="#fffbdba9" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dec" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="释放立即刷新" />
-    <TextView android:textSize="16.0sp" android:textColor="#fffbdba9" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ded" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="继续下拉抽红包" />
-</LinearLayout>
+    <com.tencent.widget.TCWNumberPickerButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0df3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02227c" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <EditText android:textSize="30.0sp" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0df4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022277" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="?android:attr/textAppearanceLargeInverse" />
+    <com.tencent.widget.TCWNumberPickerButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0df5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022271" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</merge>

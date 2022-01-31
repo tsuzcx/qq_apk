@@ -153,7 +153,7 @@ public class ThemeDIYDownloader
                 i = 0;
               }
             }
-            paramOutputStream = new File(AppConstants.aJ);
+            paramOutputStream = new File(AppConstants.aK);
             QLog.e("themediydownloader", 1, "downloadImage Error url=" + paramURLDrawableHandler + ", path=" + str);
             i = 0;
             break;
@@ -197,7 +197,7 @@ public class ThemeDIYDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ThemeDIYDownloader
  * JD-Core Version:    0.7.0.1
  */

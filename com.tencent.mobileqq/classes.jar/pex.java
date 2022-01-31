@@ -1,28 +1,60 @@
-import android.view.animation.Animation;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.OfflineEnvHelper;
+import com.tencent.biz.viewplugin.ViewPluginLoader;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class pex
-  extends AnimateUtils.AnimationAdapter
+  implements AsyncBack
 {
-  public pex(AbstractGalleryScene paramAbstractGalleryScene) {}
+  public pex(ViewPluginLoader paramViewPluginLoader, QQAppInterface paramQQAppInterface) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void loaded(String paramString, int paramInt)
   {
-    this.a.a.a().e();
-    this.a.a.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      String str;
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
+        str = paramString.optString("url");
+        paramInt = paramString.optInt("filesize");
+        if ((str != null) && (str.endsWith("patch")))
+        {
+          FileUtils.a(OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a) + this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a);
+          this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.b();
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
+        return;
+      }
+      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
+      {
+        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
   }
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a.a().d();
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pex
  * JD-Core Version:    0.7.0.1
  */

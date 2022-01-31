@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import com.tencent.mobileqq.shortvideo.ptvfilter.FilterProcessRender;
 
 public class ydq
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ydq(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ydq(CameraFilterGLView paramCameraFilterGLView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.s();
+    this.a.a.a();
+    this.a.a.f();
   }
 }
 

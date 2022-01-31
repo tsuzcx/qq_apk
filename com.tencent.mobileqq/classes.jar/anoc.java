@@ -1,25 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.JourneyTextItem;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
 
 public class anoc
-  implements annx
+  implements Runnable
 {
-  public anoc(JourneyTextItem paramJourneyTextItem) {}
+  public anoc(TroopHWJsPlugin.UploadMediaEntry paramUploadMediaEntry) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void run()
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = TroopFileUtils.b(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHWJsPlugin", 2, "start upload!id = " + this.a.jdField_a_of_type_Int + " type = " + this.a.b);
     }
-    return str;
+    this.a.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anoc
  * JD-Core Version:    0.7.0.1
  */

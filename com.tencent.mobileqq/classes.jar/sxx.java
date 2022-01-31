@@ -1,14 +1,18 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import mqq.os.MqqHandler;
 
-public class sxx
+class sxx
   implements Runnable
 {
-  public sxx(Leba paramLeba, int paramInt, Drawable paramDrawable) {}
+  sxx(sxw paramsxw, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4) {}
   
   public void run()
   {
-    Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba, Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    ((TroopManager)this.jdField_a_of_type_Sxw.a.app.getManager(51)).a(this.jdField_a_of_type_Sxw.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c, this.d);
+    ThreadManager.getUIHandler().post(new sxy(this));
   }
 }
 

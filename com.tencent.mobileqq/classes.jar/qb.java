@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.Vas.ColorFont.FastColorFontHelper;
 import com.etrump.mixlayout.ETEngine;
 import com.etrump.mixlayout.FontManager;
+import com.etrump.mixlayout.FontSoLoader;
 import com.tencent.mobileqq.hiboom.HiBoomFont;
 import com.tencent.mobileqq.utils.VasUtils;
 import com.tencent.mobileqq.vip.IPCDownloadListener;
@@ -43,7 +44,7 @@ public class qb
       localObject1 = "libfounderColorFont_760.so";
       break;
       localObject2 = FontManager.jdField_a_of_type_JavaLangString + File.separator + "libVipFont.zip";
-      localObject1 = "libvipfont.so";
+      localObject1 = "libvipfont765.so";
       break;
       FastColorFontHelper.a().b.set(true);
       continue;
@@ -58,6 +59,7 @@ public class qb
       ETEngine.isSOLoaded.set(true);
       BaseApplication.getContext().getSharedPreferences("early_qq.android.native.vipfont.v5", 0).edit().putBoolean("vip_font_so_downloaded", true).commit();
       HiBoomFont.a().a();
+      FontSoLoader.a.set(true);
       this.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(false);
     }
   }

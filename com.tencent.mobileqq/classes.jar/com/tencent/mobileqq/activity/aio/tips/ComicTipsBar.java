@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import wcn;
+import whv;
 
 public class ComicTipsBar
   implements TipsBarTask
@@ -42,8 +42,8 @@ public class ComicTipsBar
   public View a(Object... paramVarArgs)
   {
     View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130968664, null);
-    localView.setOnClickListener(new wcn(this, localView));
-    TextView localTextView = (TextView)localView.findViewById(2131363089);
+    localView.setOnClickListener(new whv(this, localView));
+    TextView localTextView = (TextView)localView.findViewById(2131363093);
     paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
     int j = (int)(localTextView.getPaint().measureText(this.c) / this.c.length());
     int i;

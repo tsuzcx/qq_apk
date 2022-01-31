@@ -1,60 +1,88 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
+import com.tencent.mobileqq.richstatus.RichStatusEditText.RichStatusEditListener;
+import com.tencent.mobileqq.widget.ClickableImageSpan;
 
 public class ahuf
-  implements View.OnLongClickListener
+  implements TextWatcher
 {
-  public ahuf(ContactSearchResultPresenter paramContactSearchResultPresenter, ISearchResultModel paramISearchResultModel) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
-  public boolean onLongClick(View paramView)
+  public ahuf(RichStatusEditText paramRichStatusEditText) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramView = new AlertDialog.Builder(paramView.getContext());
-    paramView.setTitle("匹配详情");
-    long l = ((IContactSearchModel)this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel).b();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = SearchConfigManager.contactSearchPinyinBaseBit;
-    int j = SearchConfigManager.contactSearchPinyinBaseBit;
-    localStringBuilder.append("拼音匹配：");
-    localStringBuilder.append((9223372036854775807L << i & l) >> j);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchRecentBaseBit;
-    j = SearchConfigManager.contactSearchRecentBaseBit;
-    int k = SearchConfigManager.contactSearchRecentBaseBit;
-    localStringBuilder.append("最近联系人排序：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 10) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchIndexBaseBit;
-    j = SearchConfigManager.contactSearchIndexBaseBit;
-    k = SearchConfigManager.contactSearchIndexBaseBit;
-    localStringBuilder.append("字符串匹配度：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchTypeBaseBit;
-    j = SearchConfigManager.contactSearchTypeBaseBit;
-    k = SearchConfigManager.contactSearchTypeBaseBit;
-    localStringBuilder.append("数据类型：");
-    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    i = SearchConfigManager.contactSearchFieldBaseBit;
-    j = SearchConfigManager.contactSearchFieldBaseBit;
-    k = SearchConfigManager.contactSearchFieldBaseBit;
-    localStringBuilder.append("字段类型：");
-    localStringBuilder.append((l & 9223372036854775807L >> 63 - (i + 8) & 9223372036854775807L << j) >> k);
-    localStringBuilder.append('\n');
-    paramView.setMessage(localStringBuilder.toString());
-    paramView.create().show();
-    return false;
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.getText().replace(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setSelection(this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.length());
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (paramInt3 > 0)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt3;
+      RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText);
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setCursorVisible(true);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    paramCharSequence = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, false, false);
+    if (paramCharSequence != null)
+    {
+      paramInt3 = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).getSpanStart(paramCharSequence);
+      if (paramInt3 != paramInt1)
+      {
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_Int = paramInt3;
+        this.jdField_b_of_type_Int = (paramInt1 - paramInt3);
+        this.jdField_a_of_type_JavaLangString = "";
+      }
+    }
+    RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1, paramInt2);
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      ClickableImageSpan localClickableImageSpan = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1 + paramInt3, true, false);
+      if ((localClickableImageSpan != null) && (RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText) != null) && (!RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).a(localClickableImageSpan)))
+      {
+        this.jdField_a_of_type_JavaLangString = "";
+        this.jdField_b_of_type_Boolean = true;
+        return;
+      }
+      this.jdField_a_of_type_JavaLangString = paramCharSequence.subSequence(paramInt1, paramInt1 + paramInt3).toString();
+    } while (!this.jdField_a_of_type_JavaLangString.contains("\n"));
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("\n", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahuf
  * JD-Core Version:    0.7.0.1
  */

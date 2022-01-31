@@ -1,17 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
 
-public class uws
+class uws
   implements Runnable
 {
-  public uws(FilePicItemBuilder paramFilePicItemBuilder, FileManagerEntity paramFileManagerEntity) {}
+  uws(uwr paramuwr) {}
   
   public void run()
   {
-    FilePicURLDrawlableHelper.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.b.post(new uwt(this));
+    this.a.a.d();
   }
 }
 

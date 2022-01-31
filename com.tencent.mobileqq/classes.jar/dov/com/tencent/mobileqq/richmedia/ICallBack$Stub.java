@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import aokt;
+import aotm;
 import com.tencent.mobileqq.pic.CompressInfo;
 
 public abstract class ICallBack$Stub
@@ -27,7 +27,7 @@ public abstract class ICallBack$Stub
     if ((localIInterface != null) && ((localIInterface instanceof ICallBack))) {
       return (ICallBack)localIInterface;
     }
-    return new aokt(paramIBinder);
+    return new aotm(paramIBinder);
   }
   
   public IBinder asBinder()

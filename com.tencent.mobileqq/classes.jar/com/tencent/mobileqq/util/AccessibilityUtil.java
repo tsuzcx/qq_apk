@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.util;
 
-import ajyz;
-import ajza;
-import ajzb;
-import ajzc;
-import ajzd;
+import akgn;
+import akgo;
+import akgp;
+import akgq;
+import akgr;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION;
@@ -28,7 +28,7 @@ public class AccessibilityUtil
     if (!((AccessibilityManager)paramContext.getSystemService("accessibility")).isEnabled()) {
       return;
     }
-    paramView.postDelayed(new ajzc(paramView), 200L);
+    paramView.postDelayed(new akgq(paramView), 200L);
   }
   
   @TargetApi(14)
@@ -41,14 +41,14 @@ public class AccessibilityUtil
       }
       return;
     }
-    paramView.postDelayed(new ajza(paramView), 200L);
+    paramView.postDelayed(new akgo(paramView), 200L);
   }
   
   @TargetApi(14)
   public static void a(View paramView, CharSequence paramCharSequence, String paramString)
   {
     if (Build.VERSION.SDK_INT >= 14) {
-      paramView.setAccessibilityDelegate(new ajzd(paramCharSequence, paramString));
+      paramView.setAccessibilityDelegate(new akgr(paramCharSequence, paramString));
     }
   }
   
@@ -79,7 +79,7 @@ public class AccessibilityUtil
     if ((AppSetting.b) && (Build.VERSION.SDK_INT >= 14))
     {
       paramEditText.setContentDescription(paramString);
-      paramEditText.setAccessibilityDelegate(new ajyz());
+      paramEditText.setAccessibilityDelegate(new akgn());
     }
   }
   
@@ -136,7 +136,7 @@ public class AccessibilityUtil
     if ((localAccessibilityManager != null) && (Build.VERSION.SDK_INT >= 14) && (localAccessibilityManager.isEnabled()))
     {
       paramView.setFocusable(true);
-      paramView.setAccessibilityDelegate(new ajzb());
+      paramView.setAccessibilityDelegate(new akgp());
     }
   }
   
@@ -211,7 +211,7 @@ public class AccessibilityUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.AccessibilityUtil
  * JD-Core Version:    0.7.0.1
  */

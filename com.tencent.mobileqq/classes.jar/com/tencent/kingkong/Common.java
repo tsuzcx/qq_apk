@@ -78,25 +78,28 @@ public class Common
     //   36: putstatic 68	com/tencent/kingkong/Common:jdField_a_of_type_ComTencentKingkongReportThread	Lcom/tencent/kingkong/ReportThread;
     //   39: getstatic 68	com/tencent/kingkong/Common:jdField_a_of_type_ComTencentKingkongReportThread	Lcom/tencent/kingkong/ReportThread;
     //   42: invokevirtual 100	com/tencent/kingkong/ReportThread:start	()V
-    //   45: new 102	rcp
-    //   48: dup
-    //   49: invokespecial 103	rcp:<init>	()V
-    //   52: invokevirtual 104	rcp:start	()V
-    //   55: goto -40 -> 15
-    //   58: astore_0
-    //   59: ldc 2
-    //   61: monitorexit
-    //   62: aload_0
-    //   63: athrow
+    //   45: invokestatic 106	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
+    //   48: new 108	rhg
+    //   51: dup
+    //   52: invokespecial 109	rhg:<init>	()V
+    //   55: ldc2_w 110
+    //   58: invokevirtual 117	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   61: pop
+    //   62: goto -47 -> 15
+    //   65: astore_0
+    //   66: ldc 2
+    //   68: monitorexit
+    //   69: aload_0
+    //   70: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	64	0	paramContext	Context
-    //   0	64	1	paramString	String
+    //   0	71	0	paramContext	Context
+    //   0	71	1	paramString	String
     // Exception table:
     //   from	to	target	type
-    //   3	11	58	finally
-    //   19	45	58	finally
-    //   45	55	58	finally
+    //   3	11	65	finally
+    //   19	45	65	finally
+    //   45	62	65	finally
   }
   
   public static void SetContext(Context paramContext)
@@ -126,7 +129,7 @@ public class Common
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 146	com/tencent/kingkong/Common:a	()Z
+    //   3: invokestatic 159	com/tencent/kingkong/Common:a	()Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifne +7 -> 15
@@ -137,17 +140,17 @@ public class Common
     //   18: ifnull -7 -> 11
     //   21: iload_0
     //   22: ifeq -11 -> 11
-    //   25: getstatic 148	com/tencent/kingkong/Common:jdField_a_of_type_Boolean	Z
+    //   25: getstatic 161	com/tencent/kingkong/Common:jdField_a_of_type_Boolean	Z
     //   28: ifne -17 -> 11
-    //   31: getstatic 150	com/tencent/kingkong/Common:jdField_b_of_type_Boolean	Z
+    //   31: getstatic 163	com/tencent/kingkong/Common:jdField_b_of_type_Boolean	Z
     //   34: ifne -23 -> 11
     //   37: iconst_1
-    //   38: putstatic 150	com/tencent/kingkong/Common:jdField_b_of_type_Boolean	Z
-    //   41: invokestatic 152	com/tencent/kingkong/Common:b	()V
-    //   44: new 154	rcq
+    //   38: putstatic 163	com/tencent/kingkong/Common:jdField_b_of_type_Boolean	Z
+    //   41: invokestatic 165	com/tencent/kingkong/Common:b	()V
+    //   44: new 167	rhi
     //   47: dup
-    //   48: invokespecial 155	rcq:<init>	()V
-    //   51: invokevirtual 156	rcq:start	()V
+    //   48: invokespecial 168	rhi:<init>	()V
+    //   51: invokevirtual 169	rhi:start	()V
     //   54: goto -43 -> 11
     //   57: astore_2
     //   58: ldc 2
@@ -421,7 +424,7 @@ public class Common
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 313	com/tencent/kingkong/Common:jdField_c_of_type_Boolean	Z
+    //   3: getstatic 326	com/tencent/kingkong/Common:jdField_c_of_type_Boolean	Z
     //   6: istore_0
     //   7: iload_0
     //   8: ifeq +7 -> 15
@@ -429,18 +432,18 @@ public class Common
     //   13: monitorexit
     //   14: return
     //   15: iconst_1
-    //   16: putstatic 313	com/tencent/kingkong/Common:jdField_c_of_type_Boolean	Z
+    //   16: putstatic 326	com/tencent/kingkong/Common:jdField_c_of_type_Boolean	Z
     //   19: getstatic 92	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   22: ldc 118
+    //   22: ldc 131
     //   24: iconst_0
-    //   25: invokevirtual 122	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   28: putstatic 159	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   31: getstatic 159	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   34: invokeinterface 128 1 0
-    //   39: putstatic 250	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentSharedPreferences$Editor	Landroid/content/SharedPreferences$Editor;
+    //   25: invokevirtual 135	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   28: putstatic 172	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
+    //   31: getstatic 172	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
+    //   34: invokeinterface 141 1 0
+    //   39: putstatic 263	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentSharedPreferences$Editor	Landroid/content/SharedPreferences$Editor;
     //   42: getstatic 92	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   45: invokevirtual 317	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   48: invokevirtual 320	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   45: invokevirtual 330	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   48: invokevirtual 333	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   51: putstatic 23	com/tencent/kingkong/Common:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   54: new 48	java/lang/StringBuilder
     //   57: dup
@@ -449,11 +452,11 @@ public class Common
     //   64: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   67: getstatic 34	com/tencent/kingkong/Common:d	Ljava/lang/String;
     //   70: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: ldc_w 322
+    //   73: ldc_w 335
     //   76: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: getstatic 34	com/tencent/kingkong/Common:d	Ljava/lang/String;
     //   82: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: ldc_w 324
+    //   85: ldc_w 337
     //   88: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   94: putstatic 25	com/tencent/kingkong/Common:jdField_b_of_type_JavaLangString	Ljava/lang/String;
@@ -464,11 +467,11 @@ public class Common
     //   107: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: getstatic 34	com/tencent/kingkong/Common:d	Ljava/lang/String;
     //   113: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: ldc_w 322
+    //   116: ldc_w 335
     //   119: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   122: getstatic 34	com/tencent/kingkong/Common:d	Ljava/lang/String;
     //   125: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: ldc_w 326
+    //   128: ldc_w 339
     //   131: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   137: putstatic 27	com/tencent/kingkong/Common:jdField_c_of_type_JavaLangString	Ljava/lang/String;
@@ -479,7 +482,7 @@ public class Common
     //   150: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   153: getstatic 34	com/tencent/kingkong/Common:d	Ljava/lang/String;
     //   156: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: ldc_w 328
+    //   159: ldc_w 341
     //   162: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   165: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   168: putstatic 36	com/tencent/kingkong/Common:e	Ljava/lang/String;
@@ -490,15 +493,15 @@ public class Common
     //   181: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   184: getstatic 34	com/tencent/kingkong/Common:d	Ljava/lang/String;
     //   187: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: ldc_w 330
+    //   190: ldc_w 343
     //   193: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   196: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   199: putstatic 38	com/tencent/kingkong/Common:f	Ljava/lang/String;
-    //   202: new 332	com/tencent/kingkong/Utils$InterProcessLock
+    //   202: new 345	com/tencent/kingkong/Utils$InterProcessLock
     //   205: dup
     //   206: getstatic 36	com/tencent/kingkong/Common:e	Ljava/lang/String;
-    //   209: invokespecial 334	com/tencent/kingkong/Utils$InterProcessLock:<init>	(Ljava/lang/String;)V
-    //   212: putstatic 336	com/tencent/kingkong/Common:jdField_a_of_type_ComTencentKingkongUtils$InterProcessLock	Lcom/tencent/kingkong/Utils$InterProcessLock;
+    //   209: invokespecial 347	com/tencent/kingkong/Utils$InterProcessLock:<init>	(Ljava/lang/String;)V
+    //   212: putstatic 349	com/tencent/kingkong/Common:jdField_a_of_type_ComTencentKingkongUtils$InterProcessLock	Lcom/tencent/kingkong/Utils$InterProcessLock;
     //   215: goto -204 -> 11
     //   218: astore_1
     //   219: ldc 2

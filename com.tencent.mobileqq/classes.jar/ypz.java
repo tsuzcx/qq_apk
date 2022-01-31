@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.apollo.process.CmGameClientQIPCModule;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ypz
+  implements Runnable
 {
-  private static CmGameClientQIPCModule a = new CmGameClientQIPCModule("cm_game_client_module");
+  public ypz(ApolloGameManager paramApolloGameManager) {}
+  
+  public void run()
+  {
+    if (ApolloGameManager.a(this.a) != null) {
+      ((ApolloManager)ApolloGameManager.a(this.a).getManager(152)).d();
+    }
+  }
 }
 
 

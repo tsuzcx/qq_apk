@@ -9,8 +9,8 @@ import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.vip.DownloaderInterface;
 import java.io.File;
-import yzs;
-import yzt;
+import zgs;
+import zgt;
 
 public class QQFrameZipDecoder
   extends SimpleFrameZipDecoder
@@ -39,7 +39,7 @@ public class QQFrameZipDecoder
     localDownloadTask.b = 1;
     localDownloadTask.o = true;
     localDownloadTask.p = true;
-    localDownloadTask.a(new yzs(this, paramString1, paramString2, paramString3));
+    localDownloadTask.a(new zgs(this, paramString1, paramString2, paramString3));
     paramSimpleFrameZipDecoder = BaseApplicationImpl.getApplication();
     if (paramSimpleFrameZipDecoder != null)
     {
@@ -62,7 +62,7 @@ public class QQFrameZipDecoder
       for (int i = 0;; i = 1)
       {
         if (i != 0) {
-          ThreadManager.executeOnNetWorkThread(new yzt(this, localDownloadTask));
+          ThreadManager.executeOnNetWorkThread(new zgt(this, localDownloadTask));
         }
         return;
       }

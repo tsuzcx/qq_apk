@@ -13,13 +13,13 @@ public class QzoneQunFeedJsPlugin$LoadingDialog
   QzoneQunFeedJsPlugin$LoadingDialog(Context paramContext)
   {
     super(paramContext, 2131624314);
-    setContentView(2130971163);
+    setContentView(2130971186);
     getWindow().setFlags(1024, 2048);
   }
   
   public void a(String paramString)
   {
-    ((TextView)findViewById(2131363378)).setText(paramString);
+    ((TextView)findViewById(2131363397)).setText(paramString);
   }
   
   public void dismiss()

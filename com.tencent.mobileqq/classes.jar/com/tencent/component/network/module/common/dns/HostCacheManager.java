@@ -3,7 +3,7 @@ package com.tencent.component.network.module.common.dns;
 import com.tencent.component.network.NetworkManager;
 import com.tencent.component.network.module.base.QDLog;
 import java.net.InetAddress;
-import pkm;
+import ppe;
 
 public class HostCacheManager
 {
@@ -29,17 +29,17 @@ public class HostCacheManager
     if (QDLog.a()) {
       QDLog.a("dnstest", "$$$addCache[" + paramString + "]");
     }
-    pkm localpkm = new pkm(this, null);
-    localpkm.jdField_a_of_type_Long = paramLong;
-    localpkm.jdField_a_of_type_ArrayOfJavaNetInetAddress = paramArrayOfInetAddress;
+    ppe localppe = new ppe(this, null);
+    localppe.jdField_a_of_type_Long = paramLong;
+    localppe.jdField_a_of_type_ArrayOfJavaNetInetAddress = paramArrayOfInetAddress;
     if (NetworkManager.isMobile()) {}
     for (paramArrayOfInetAddress = NetworkManager.getApnValue();; paramArrayOfInetAddress = NetworkManager.getBSSID())
     {
-      localpkm.jdField_a_of_type_JavaLangString = paramArrayOfInetAddress;
+      localppe.jdField_a_of_type_JavaLangString = paramArrayOfInetAddress;
       if (this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager$Cache.containsKey(paramString)) {
         this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager$Cache.remove(paramString);
       }
-      this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager$Cache.put(paramString, localpkm);
+      this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsHostCacheManager$Cache.put(paramString, localppe);
       return;
     }
   }

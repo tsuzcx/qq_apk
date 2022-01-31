@@ -1,17 +1,18 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.addContactTroopView.AddContactTroopManage;
+import tencent.im.troop_view.troopviewInfo.RspBody;
 
 public class kmp
-  implements SoundPool.OnLoadCompleteListener
+  implements Runnable
 {
-  public kmp(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public kmp(AddContactTroopManage paramAddContactTroopManage, troopviewInfo.RspBody paramRspBody) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
+    synchronized (this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopManage)
+    {
+      this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopManage.jdField_a_of_type_TencentImTroop_viewTroopviewInfo$RspBody = this.jdField_a_of_type_TencentImTroop_viewTroopviewInfo$RspBody;
+      AddContactTroopManage.a(this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopManage, this.jdField_a_of_type_TencentImTroop_viewTroopviewInfo$RspBody);
+      return;
     }
   }
 }

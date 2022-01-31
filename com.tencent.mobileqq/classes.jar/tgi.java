@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.PreloadWebService;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
 public class tgi
-  extends WebViewClient
+  implements View.OnClickListener
 {
-  public tgi(PreloadWebService paramPreloadWebService) {}
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void onClick(View paramView)
   {
-    return true;
+    ((ViewGroup)paramView.getParent()).performClick();
   }
 }
 

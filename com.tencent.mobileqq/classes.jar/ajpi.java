@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.Map;
-import java.util.UUID;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 
 public class ajpi
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ajpi(TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID, TroopFileInfo paramTroopFileInfo, int paramInt1, int paramInt2) {}
+  public ajpi(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c();
-    TroopFileTransferManager.Item localItem2 = (TroopFileTransferManager.Item)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b.get(this.jdField_a_of_type_JavaUtilUUID);
-    TroopFileTransferManager.Item localItem1 = localItem2;
-    if (localItem2 == null)
+    switch (paramInt)
     {
-      localItem1 = new TroopFileTransferManager.Item(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b.put(this.jdField_a_of_type_JavaUtilUUID, localItem1);
+    default: 
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(localItem1, this.jdField_a_of_type_Int, this.b);
+    SubmitHomeWorkFragment.a(this.a);
   }
 }
 

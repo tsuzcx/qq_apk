@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.pluginsdk.PluginInterface;
-import com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper.OnPluginInterfaceLoadedListener;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class akjr
-  implements PluginInterfaceHelper.OnPluginInterfaceLoadedListener
+public final class akjr
+  implements View.OnClickListener
 {
-  public akjr(PathTraceManager paramPathTraceManager) {}
+  public akjr(QQCustomDialog paramQQCustomDialog) {}
   
-  public void onPluginInterfaceLoaded(PluginInterface paramPluginInterface)
+  public void onClick(View paramView)
   {
-    PathTraceManager.a(this.a, paramPluginInterface);
+    if (this.a != null) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akjr
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.Iterator;
 import java.util.List;
-import nwz;
+import obo;
 
 public class MemoriesProfilePresenter$GetYearNodeListReceiver
   extends QQUIEventReceiver
@@ -20,9 +20,9 @@ public class MemoriesProfilePresenter$GetYearNodeListReceiver
   
   public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull ProfileFeedPresenter.GetYearNodeListEvent paramGetYearNodeListEvent)
   {
-    if (paramGetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetYearNodeListEvent.errorInfo.isSuccess())
     {
-      paramGetYearNodeListEvent = paramGetYearNodeListEvent.jdField_a_of_type_JavaUtilList.iterator();
+      paramGetYearNodeListEvent = paramGetYearNodeListEvent.a.iterator();
       for (int i = 0; paramGetYearNodeListEvent.hasNext(); i = ((MomeriesYearNode)paramGetYearNodeListEvent.next()).videoCount + i) {}
       if (i >= 0)
       {
@@ -31,7 +31,7 @@ public class MemoriesProfilePresenter$GetYearNodeListReceiver
         if (paramMemoriesProfilePresenter.a != null)
         {
           paramMemoriesProfilePresenter.a.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
-          ThreadManager.post(new nwz(this, paramMemoriesProfilePresenter), 5, null, false);
+          ThreadManager.post(new obo(this, paramMemoriesProfilePresenter), 5, null, false);
         }
       }
     }

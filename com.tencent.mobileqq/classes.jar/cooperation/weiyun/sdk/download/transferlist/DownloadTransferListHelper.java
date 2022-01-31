@@ -77,7 +77,7 @@ public class DownloadTransferListHelper
     //   51: astore 4
     //   53: aload_3
     //   54: ldc 38
-    //   56: getstatic 146	anif:a	[Ljava/lang/String;
+    //   56: getstatic 146	anqi:a	[Ljava/lang/String;
     //   59: aload 4
     //   61: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   64: iconst_1

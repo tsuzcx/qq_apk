@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
 
-public class vcl
-  extends UiCallBack.DownAdapter
+class vcl
+  implements Runnable
 {
-  public vcl(PicItemBuilder paramPicItemBuilder, BaseChatItemLayout paramBaseChatItemLayout) {}
+  vcl(vck paramvck) {}
   
-  public void a(int paramInt, PicResult paramPicResult)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
-    }
+    ChatActivityUtils.a(this.a.a.a, 2131433744, 1);
   }
 }
 

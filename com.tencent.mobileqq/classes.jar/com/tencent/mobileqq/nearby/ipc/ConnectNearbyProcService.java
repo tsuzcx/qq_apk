@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.ipc;
 
-import aerf;
+import aezq;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.Message;
@@ -16,7 +16,7 @@ public class ConnectNearbyProcService
   private static NearbyProcessInterface jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface;
   private static Object jdField_a_of_type_JavaLangObject = new Object();
   private NearbyProxy jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy;
-  private MainProcessInterface jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface = new aerf(this);
+  private MainProcessInterface jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface = new aezq(this);
   
   public static Message a(Message paramMessage)
   {

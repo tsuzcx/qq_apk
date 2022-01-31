@@ -1,21 +1,13 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase.EglHelper.FakeGLSurfaceView;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
 public class ahoe
-  implements FlowDecodeScreenSurfaceBase.EglHelper.FakeGLSurfaceView
+  implements Runnable
 {
-  public ahoe(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase) {}
+  public ahoe(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public GLSurfaceView.EGLConfigChooser a()
+  public void run()
   {
-    return new ahoi(this.a, true);
-  }
-  
-  public GLSurfaceView.EGLContextFactory a()
-  {
-    return new ahof(this);
+    EffectsCameraCaptureFragment.a(this.a);
   }
 }
 

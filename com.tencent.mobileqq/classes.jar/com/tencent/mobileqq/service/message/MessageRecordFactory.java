@@ -77,6 +77,7 @@ import com.tencent.mobileqq.data.MessageForSplitLineTips;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageForTribeShortVideo;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
 import com.tencent.mobileqq.data.MessageForTroopEffectPic;
 import com.tencent.mobileqq.data.MessageForTroopFee;
 import com.tencent.mobileqq.data.MessageForTroopFile;
@@ -814,7 +815,7 @@ public class MessageRecordFactory
         if (MessageUtils.a(paramInt))
         {
           if (paramInt != -1002) {
-            break label1700;
+            break label1719;
           }
           localObject2 = new MessageForSafeGrayTips();
         }
@@ -974,6 +975,8 @@ public class MessageRecordFactory
       break;
       localObject1 = new MessageForConfessCard();
       break;
+      localObject1 = new MessageForTroopConfess();
+      break;
       localObject1 = new MessageForTroopEffectPic();
       break;
       localObject1 = new MessageForArkBabyqReply();
@@ -984,7 +987,7 @@ public class MessageRecordFactory
       break;
       localObject1 = new MessageForTribeShortVideo();
       break;
-      label1700:
+      label1719:
       if ((paramInt == -5000) || (paramInt == -5001) || (paramInt == -2037)) {
         localObject2 = new MessageForNewGrayTips();
       } else if (paramInt == -5002) {

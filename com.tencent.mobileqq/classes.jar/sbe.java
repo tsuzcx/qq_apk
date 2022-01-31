@@ -1,64 +1,40 @@
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
-import com.tencent.mobileqq.app.MessageRoamManager;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import java.util.Map;
 
-public class sbe
-  implements DialogInterface.OnDismissListener
+public final class sbe
+  implements DialogInterface.OnClickListener
 {
-  public sbe(ChatHistoryForC2C paramChatHistoryForC2C, View paramView1, int paramInt, View paramView2, TranslateAnimation paramTranslateAnimation) {}
+  public sbe(boolean paramBoolean1, int paramInt1, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, ChatActivityUtils.StartVideoListener paramStartVideoListener, String paramString5, Map paramMap, boolean paramBoolean2, boolean paramBoolean3) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.b.setVisibility(0);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    Object localObject = (C2CMessageSearchDialog)paramDialogInterface;
-    boolean bool = ((C2CMessageSearchDialog)localObject).a();
-    int i = ((C2CMessageSearchDialog)localObject).a();
-    paramDialogInterface = (MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app.getManager(91);
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatHistoryForC2C", 2, "onDismiss, recordCount : " + i + ",showRoamFlag" + paramDialogInterface.d());
-    }
-    localObject = ((C2CMessageSearchDialog)localObject).a();
-    if (localObject != null)
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Boolean)
     {
-      Calendar localCalendar1 = Calendar.getInstance();
-      localCalendar1.setTimeInMillis(((MessageRecord)localObject).time * 1000L);
-      localCalendar1.set(11, 0);
-      localCalendar1.set(12, 0);
-      localCalendar1.set(13, 0);
-      localCalendar1.set(14, 0);
-      Calendar localCalendar2 = paramDialogInterface.c();
-      if ((localCalendar2 != null) && (!localCalendar1.after(localCalendar2))) {
-        break label251;
+      if (this.jdField_a_of_type_Int != 2) {
+        break label138;
       }
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "1", "", "", "");
+    }
+    for (;;)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.d, false, false, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.e, this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean, false);
       if (QLog.isColorLevel()) {
-        QLog.i("ChatHistoryForC2C", 2, "search message's date beyond the dateline, should rebuild the dateline");
+        QLog.d("chenlong", 2, "" + (System.currentTimeMillis() - l));
+      }
+      return;
+      label138:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "1", "", "", "");
       }
     }
-    while (bool)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.leftView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.getString(2131433698));
-      return;
-      label251:
-      paramDialogInterface.a((MessageRecord)localObject);
-    }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.getIntent().getExtras().getString("leftViewText");
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.leftView.setText(paramDialogInterface);
   }
 }
 

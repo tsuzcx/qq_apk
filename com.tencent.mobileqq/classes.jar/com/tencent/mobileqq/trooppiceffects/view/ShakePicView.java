@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.trooppiceffects.view;
 
-import ajxf;
+import akes;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
@@ -88,7 +88,7 @@ public class ShakePicView
     localAnimatorSet.play((Animator)localObject2).with((Animator)localObject3).with((Animator)localObject1);
     localAnimatorSet.start();
     this.c.setTag(localAnimatorSet);
-    localAnimatorSet.addListener(new ajxf(this));
+    localAnimatorSet.addListener(new akes(this));
   }
   
   public void setBitmap(Bitmap paramBitmap)
@@ -100,7 +100,7 @@ public class ShakePicView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.ShakePicView
  * JD-Core Version:    0.7.0.1
  */

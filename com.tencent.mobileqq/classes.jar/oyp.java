@@ -1,32 +1,38 @@
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qidian.controller.QidianBusinessObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class oyp
-  implements WXShareHelper.WXShareListener
+public class oyp
+  extends QidianBusinessObserver
 {
-  public oyp(String paramString) {}
+  public oyp(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  protected void a(boolean paramBoolean, HashMap paramHashMap)
   {
-    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, "mBusinessObserver onQidianGroupInfo qrcode url: " + paramBoolean);
+    }
+    if ((this.a.b) || (this.a.isFinishing())) {
       return;
     }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
+    if (!paramBoolean)
     {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435303);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
+      this.a.g();
       return;
-      QRUtils.a(2, 2131435302);
     }
+    String str = (String)paramHashMap.get("uin");
+    paramHashMap = (String)paramHashMap.get("url");
+    this.a.a(str, 2, paramHashMap);
+    paramHashMap = QRUtils.a(paramHashMap, -1);
+    if (paramHashMap != null)
+    {
+      this.a.a = paramHashMap;
+      this.a.f();
+      return;
+    }
+    this.a.g();
   }
 }
 

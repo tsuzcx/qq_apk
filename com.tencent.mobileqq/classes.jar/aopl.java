@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.transfile.NetResp;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterListDownloader;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class aopl
-  implements Runnable
 {
-  public aopl(ShortVideoResourceManager paramShortVideoResourceManager, NetResp paramNetResp) {}
+  public int a;
+  public long a;
+  public WeakReference a;
+  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public int b;
+  public int c;
   
-  public void run()
-  {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoResourceManager, this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp);
-  }
+  public aopl(VideoFilterListDownloader paramVideoFilterListDownloader) {}
 }
 
 

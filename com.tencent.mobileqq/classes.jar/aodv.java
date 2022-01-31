@@ -1,27 +1,21 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 
 public class aodv
-  extends Property
+  implements DialogInterface.OnDismissListener
 {
-  public aodv(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aodv(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide) {}
   
-  public Integer a(GroundDrawable paramGroundDrawable)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.a(paramGroundDrawable));
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "showSyncStoryGuide ->onDismiss-------");
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.a(paramGroundDrawable, paramInteger.intValue());
-    }
+    SharedPreUtils.b(this.a.a.a());
   }
 }
 

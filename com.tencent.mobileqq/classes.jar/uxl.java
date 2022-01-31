@@ -1,22 +1,21 @@
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-public class uxl
-  extends BaseBubbleBuilder.ViewHolder
+class uxl
+  implements Runnable
 {
-  public RelativeLayout a;
-  public URLDrawable a;
-  public BubbleImageView a;
-  public MessageProgressView a;
-  public RelativeLayout b;
-  public int e;
-  public int f;
+  uxl(uxk paramuxk, int paramInt, Bitmap paramBitmap) {}
   
-  public uxl(FileVideoItemBuilder paramFileVideoItemBuilder) {}
+  public void run()
+  {
+    if (uxk.a(this.jdField_a_of_type_Uxk) != null)
+    {
+      uxt localuxt = (uxt)uxk.a(this.jdField_a_of_type_Uxk).get();
+      if (localuxt != null) {
+        localuxt.a(uxk.a(this.jdField_a_of_type_Uxk), this.jdField_a_of_type_Int, uxk.b(this.jdField_a_of_type_Uxk), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+    }
+  }
 }
 
 

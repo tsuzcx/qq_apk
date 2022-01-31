@@ -1,16 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnSeekCompleteListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
+import com.tencent.biz.qqstory.playmode.util.DiscoverVideoDataProvider;
+import java.util.ArrayList;
 
 public class nqw
-  implements MediaPlayer.OnSeekCompleteListener
+  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public nqw(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
+  public nqw(DiscoverVideoDataProvider paramDiscoverVideoDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilDiscoverVideoDataProvider.a(false, null);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilDiscoverVideoDataProvider.a(true, paramArrayList);
   }
 }
 

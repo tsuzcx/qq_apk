@@ -1,27 +1,51 @@
-import com.tencent.open.appcommon.js.BaseInterface;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
 
 public class aldt
-  implements Runnable
+  extends Handler
 {
-  public aldt(BaseInterface paramBaseInterface, long paramLong, String paramString, WebView paramWebView) {}
+  public int a;
   
-  public void run()
+  public aldt(ProgressPieDrawable paramProgressPieDrawable) {}
+  
+  public void a(int paramInt)
   {
-    String str = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('batchCallback',{guid:" + this.jdField_a_of_type_Long + ",'r':-2,'data':['" + this.jdField_a_of_type_JavaLangString + "']})};";
-    LogUtility.e("Response<callBatch>", str);
-    try
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.isVisible())
     {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(str);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b = this.jdField_a_of_type_Int;
       return;
     }
-    catch (Exception localException) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b > this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b - 1);
+      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.e);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b < this.jdField_a_of_type_Int)
+    {
+      int i = this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b + this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.f;
+      if (i <= this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(i);
+      }
+      for (;;)
+      {
+        sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.e);
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(this.jdField_a_of_type_Int);
+      }
+    }
+    removeMessages(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aldt
  * JD-Core Version:    0.7.0.1
  */

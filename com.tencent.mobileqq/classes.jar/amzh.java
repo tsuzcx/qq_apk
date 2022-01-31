@@ -1,28 +1,17 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
 public class amzh
-  implements Runnable
+  implements View.OnClickListener
 {
-  public amzh(QZoneShareActivity paramQZoneShareActivity, int paramInt) {}
+  public amzh(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) == null) {
-      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, new QQProgressDialog(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.getResources().getDimensionPixelSize(2131558448)));
-    }
-    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).c(this.jdField_a_of_type_Int);
-    try
-    {
-      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).show();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QZoneShare", 1, localException.getMessage());
-    }
+    this.a.a = true;
+    this.a.d();
+    this.a.a();
   }
 }
 

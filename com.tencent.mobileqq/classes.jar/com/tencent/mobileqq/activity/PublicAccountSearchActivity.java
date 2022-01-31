@@ -30,8 +30,8 @@ public class PublicAccountSearchActivity
     localIntent.putExtra("fromLocalUrl", true);
     localIntent.putExtra("hide_operation_bar", true);
     localIntent.putExtra("hideRightButton", true);
-    localIntent.putExtra("leftViewText", paramActivity.getString(2131437771));
-    localIntent.putExtra("assignBackText", paramActivity.getString(2131437771));
+    localIntent.putExtra("leftViewText", paramActivity.getString(2131437791));
+    localIntent.putExtra("assignBackText", paramActivity.getString(2131437791));
     if (TextUtils.isEmpty(paramString)) {
       localIntent.putExtra("url", PublicAccountConfigUtil.b);
     }

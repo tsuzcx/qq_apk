@@ -1,20 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import java.util.Stack;
 
 public class alcl
-  implements Runnable
 {
-  public alcl(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Bitmap paramBitmap) {}
+  private Stack jdField_a_of_type_JavaUtilStack = new Stack();
   
-  public void run()
+  public alcl(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
+  
+  public ChatThumbView a()
   {
-    this.jdField_a_of_type_ComTencentOpenAgentQuickLoginAuthorityActivity.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentQuickLoginAuthorityActivity.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_AndroidGraphicsBitmap, true);
+    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+      return null;
+    }
+    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
+  }
+  
+  public void a(ChatThumbView paramChatThumbView)
+  {
+    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alcl
  * JD-Core Version:    0.7.0.1
  */

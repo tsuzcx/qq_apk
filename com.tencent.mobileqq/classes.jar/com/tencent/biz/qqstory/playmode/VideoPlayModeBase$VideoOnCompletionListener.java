@@ -8,7 +8,7 @@ import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import njc;
+import nnm;
 
 public class VideoPlayModeBase$VideoOnCompletionListener
   implements IVideoView.OnCompletionListener
@@ -53,7 +53,7 @@ public class VideoPlayModeBase$VideoOnCompletionListener
       this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b), 0L, paramIVideoView.b(), null);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidOsHandler.post(new njc(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidOsHandler.post(new nnm(this));
   }
 }
 

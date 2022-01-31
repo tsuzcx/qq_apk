@@ -1,24 +1,28 @@
-import com.tencent.av.random.RandomWebProtocol;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.guild.GuildMultiActivity;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
 
 public class jla
-  extends jkv
+  extends BroadcastReceiver
 {
-  String b;
+  public jla(GuildMultiActivity paramGuildMultiActivity) {}
   
-  jla(RandomWebProtocol paramRandomWebProtocol) {}
-  
-  void a(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramString);
-    if ((this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) {
-      this.b = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
+    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (this.a.a != null) && (paramContext.equals("homekey")) && (GuildMultiActivity.a(this.a) != null)) {
+        GuildMultiActivity.a(this.a).b(this.a.isResume());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jla
  * JD-Core Version:    0.7.0.1
  */

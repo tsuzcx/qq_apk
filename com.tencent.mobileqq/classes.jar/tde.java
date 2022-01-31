@@ -1,28 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.DownloadInfo;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class tde
-  implements DialogInterface.OnClickListener
+public final class tde
+  implements Runnable
 {
-  public tde(NotificationActivity paramNotificationActivity) {}
+  public tde(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, HttpDownloadUtil.HttpDownloadListener paramHttpDownloadListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = new Intent("qqplayer_exit_action");
-    this.a.sendBroadcast(paramDialogInterface);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("password", null);
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
-    this.a.finish();
+    boolean bool = false;
+    try
+    {
+      Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
+      localObject = new DownloadInfo(this.jdField_a_of_type_JavaLangString, (File)localObject, 0);
+      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DownloadInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqUtilsHttpDownloadUtil$HttpDownloadListener) == 0) {
+        bool = true;
+      }
+      if (bool)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("LebaIconDownloader", 2, "download ok");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.i("LebaIconDownloader", 2, "download error,error code:" + bool);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LebaIconDownloader", 2, localException.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tde
  * JD-Core Version:    0.7.0.1
  */

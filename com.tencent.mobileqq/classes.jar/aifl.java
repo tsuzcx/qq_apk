@@ -1,25 +1,42 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.NewRuntime;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import java.util.List;
 
 public class aifl
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aifl(NewRuntime paramNewRuntime) {}
+  public aifl(DanceReadyFilter paramDanceReadyFilter) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_hack_dvm", 4);
-    if (NewRuntime.b == 15) {
-      localSharedPreferences.edit().putInt("key_continuous_crash_count", 0);
+    if (DanceReadyFilter.a(this.a) > 0)
+    {
+      DanceReadyFilter.e(this.a).a((String)DanceReadyFilter.a(this.a).a.a.get(DanceReadyFilter.a(this.a) - 1));
+      if (DanceReadyFilter.c(this.a) != null)
+      {
+        DanceReadyFilter.c(this.a).setStartOffset(300L);
+        DanceReadyFilter.e(this.a).e();
+        DanceReadyFilter.e(this.a).a(DanceReadyFilter.c(this.a));
+      }
+      return;
     }
-    localSharedPreferences.edit().putLong("key_last_hack_verify_time", 0L).commit();
+    DanceReadyFilter.e(this.a).f_(false);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    DanceReadyFilter.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aifl
  * JD-Core Version:    0.7.0.1
  */

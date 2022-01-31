@@ -1,18 +1,42 @@
-import android.accounts.AccountManagerCallback;
-import android.accounts.AccountManagerFuture;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.TaskHttpDownload;
 
 public class abtm
-  implements AccountManagerCallback
+  implements Runnable
 {
-  public abtm(ContactSyncManager paramContactSyncManager) {}
+  public abtm(WordMatchManager paramWordMatchManager, int paramInt) {}
   
-  public void run(AccountManagerFuture paramAccountManagerFuture)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
+    if (this.jdField_a_of_type_Int == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a, 1);
     }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.e)
+        {
+          ThreadManager.post(new WordMatchManager.TaskHttpDownload(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager, 3), 8, null, true);
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(true);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 3)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.e)
+        {
+          ThreadManager.post(new WordMatchManager.TaskHttpDownload(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager, 4), 8, null, true);
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(true);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 4);
+    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(true);
   }
 }
 

@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 
-public final class aaws
-  implements ArkAppLocationManager.ArkGetLocationCallback
+class aaws
+  implements Runnable
 {
-  public aaws(String paramString, Object paramObject, ArkMessageServerLogic.IPassiveSearchIntentByServerHandler paramIPassiveSearchIntentByServerHandler) {}
+  aaws(aawr paramaawr) {}
   
-  public void a(String paramString, double paramDouble1, double paramDouble2)
+  public void run()
   {
-    aawy localaawy = new aawy(null);
-    localaawy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localaawy.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
-    localaawy.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler;
-    ThreadManager.post(new aawt(this, localaawy, paramString, paramDouble1, paramDouble2), 5, null, true);
+    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, 16L, this.a.a.b, 2);
   }
 }
 

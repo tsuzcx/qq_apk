@@ -1,16 +1,28 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class rmm
-  implements Runnable
+  implements TextWatcher
 {
-  public rmm(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public rmm(AddAccountActivity paramAddAccountActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.a != null) {
-      this.a.a.springBackOverScrollHeaderView();
+    if (paramCharSequence.length() > 0) {
+      if (this.a.a != null) {
+        this.a.a.setVisibility(0);
+      }
     }
+    while ((this.a.a == null) || (!this.a.a.isShown())) {
+      return;
+    }
+    this.a.a.setVisibility(8);
   }
 }
 

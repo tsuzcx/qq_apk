@@ -134,7 +134,7 @@ public class QZonePublishSecretShuoShuoH5Plugin
   public static void f()
   {
     if ((jdField_a_of_type_CooperationQzoneWebviewpluginQZonePublishSecretShuoShuoH5Plugin != null) && (jdField_a_of_type_CooperationQzoneWebviewpluginQZonePublishSecretShuoShuoH5Plugin.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null)) {
-      jdField_a_of_type_CooperationQzoneWebviewpluginQZonePublishSecretShuoShuoH5Plugin.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZMoodVoiceJSInterface.onRecordCancel()");
+      jdField_a_of_type_CooperationQzoneWebviewpluginQZonePublishSecretShuoShuoH5Plugin.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("try { window.QZMoodVoiceJSInterface.onRecordCancel() } catch (error) {}");
     }
   }
   

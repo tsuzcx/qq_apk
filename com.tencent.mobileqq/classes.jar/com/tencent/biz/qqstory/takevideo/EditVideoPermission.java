@@ -19,7 +19,7 @@ import com.tencent.mobileqq.troop.widget.RedDotImageView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import oft;
+import oki;
 
 public class EditVideoPermission
   extends EditVideoPart
@@ -29,7 +29,7 @@ public class EditVideoPermission
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private RedDotImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new oft(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new oki(this);
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
@@ -146,34 +146,34 @@ public class EditVideoPermission
     switch (this.jdField_b_of_type_Int)
     {
     default: 
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131438715));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131438738));
       return;
     case 10004: 
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131438714));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131438737));
       return;
     case 10000: 
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131438715));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131438738));
       return;
     case 10001: 
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131438716));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131438739));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131438719));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131438742));
   }
   
-  public void N_()
+  public void O_()
   {
     SLog.b("Q.qqstory.publish.edit.EditVideoPermission", "onStop, set jump flag false.");
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    super.N_();
+    super.O_();
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131372082));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = ((RedDotImageView)a(2131372083));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131372090));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = ((RedDotImageView)a(2131372091));
     this.jdField_a_of_type_Int = a();
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
     h();

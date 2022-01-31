@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARScanAR;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public final class aaby
-  implements Parcelable.Creator
+public class aaby
+  implements Runnable
 {
-  public ARScanAR a(Parcel paramParcel)
-  {
-    return new ARScanAR(paramParcel);
-  }
+  public aaby(ProxyManager paramProxyManager) {}
   
-  public ARScanAR[] a(int paramInt)
+  public void run()
   {
-    return new ARScanAR[paramInt];
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaby
  * JD-Core Version:    0.7.0.1
  */

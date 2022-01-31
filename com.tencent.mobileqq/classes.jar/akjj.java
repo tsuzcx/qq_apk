@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
 
-public class akjj
-  implements Runnable
+public final class akjj
+  implements WebProcessManager.WebProcessStartListener
 {
-  public akjj(HealthStepCounterPlugin paramHealthStepCounterPlugin, String paramString) {}
+  public akjj(PreloadProcHitSession paramPreloadProcHitSession) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    HealthStepCounterPlugin.a(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthStepCounterPlugin, this.jdField_a_of_type_JavaLangString);
+    if ((paramBoolean) && (this.a != null)) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akjj
  * JD-Core Version:    0.7.0.1
  */

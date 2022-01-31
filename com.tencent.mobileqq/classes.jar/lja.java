@@ -1,41 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class lja
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lja(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment, String paramString) {}
+  public lja(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!new File(this.jdField_a_of_type_JavaLangString).exists())
+    if ((ReadInJoyDeliverBiuActivity.d(this.a)) && ((!ReadInJoyDeliverBiuActivity.e(this.a)) || (ReadInJoyDeliverBiuActivity.m(this.a) != -1)))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.f();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.getString(2131438884));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "startUploadPic file not exist, path=" + this.jdField_a_of_type_JavaLangString);
-      }
+      this.a.c(ReadInJoyDeliverBiuActivity.n(this.a));
       return;
     }
-    TransFileController localTransFileController = ReadInJoyCommentComponentFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment).app.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a.a(new Class[] { BDHCommonUploadProcessor.class });
-    localTransFileController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentComponentFragment.a);
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.jdField_a_of_type_Boolean = true;
-    localTransferRequest.jdField_c_of_type_Int = 10;
-    localTransferRequest.i = this.jdField_a_of_type_JavaLangString;
-    localTransferRequest.jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-    localTransferRequest.jdField_c_of_type_JavaLangString = "0";
-    localTransferRequest.b = 24;
-    localTransferRequest.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
-    localTransFileController.a(localTransferRequest);
+    this.a.finish();
+    PublicAccountReportUtils.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.n(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+    ReadInJoyDeliverBiuActivity.a(this.a, false);
   }
 }
 

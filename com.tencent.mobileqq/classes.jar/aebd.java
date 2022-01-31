@@ -1,16 +1,29 @@
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.imaxad.ImaxAdNetPresenter;
+import com.tencent.mobileqq.imaxad.ImaxAdRecentUserManager;
+import com.tencent.mobileqq.imaxad.ImaxAdUtil;
+import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aebd
   implements Runnable
 {
-  public aebd(PluginAction paramPluginAction, QQAppInterface paramQQAppInterface, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  public aebd(ImaxAdRecentUserManager paramImaxAdRecentUserManager, boolean paramBoolean, QQAppInterface paramQQAppInterface, AdvertisementItem paramAdvertisementItem, RecentUser paramRecentUser) {}
   
   public void run()
   {
-    ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(35)).a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+    if (this.jdField_a_of_type_Boolean) {
+      ImaxAdNetPresenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
+    }
+    ImaxAdUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.iterator();
+    while (localIterator.hasNext()) {
+      ImaxAdVideoPreloadManager.a(((VideoCoverItem)localIterator.next()).b);
+    }
   }
 }
 

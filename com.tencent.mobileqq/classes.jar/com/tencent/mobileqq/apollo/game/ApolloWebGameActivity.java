@@ -35,10 +35,10 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.util.Observable;
 import java.util.Observer;
-import ypt;
-import ypu;
-import ypv;
-import ypw;
+import ywa;
+import ywb;
+import ywc;
+import ywd;
 
 public class ApolloWebGameActivity
   extends BaseActivity
@@ -51,7 +51,7 @@ public class ApolloWebGameActivity
   private CmGameLauncher jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher;
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private ypw jdField_a_of_type_Ypw;
+  private ywd jdField_a_of_type_Ywd;
   private boolean jdField_a_of_type_Boolean;
   
   private void a(String paramString)
@@ -89,7 +89,7 @@ public class ApolloWebGameActivity
       VipUtils.a(this.app, "cmshow", "Apollo", "share_url_succeed", ApolloUtil.b(i), 0, new String[] { Integer.toString(j) });
     }
     if ((paramInt2 == -1) && (paramIntent != null) && ((paramInt1 == 14006) || (paramInt1 == 14005)) && (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a().queueEvent(new ypv(this, paramInt1, paramInt2, paramIntent));
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a().queueEvent(new ywc(this, paramInt1, paramInt2, paramIntent));
     }
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -103,7 +103,7 @@ public class ApolloWebGameActivity
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838596);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838602);
     paramBundle = new RelativeLayout.LayoutParams(AIOUtils.a(25.0F, super.getResources()), AIOUtils.a(25.0F, super.getResources()));
     paramBundle.addRule(13, -1);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramBundle);
@@ -123,9 +123,9 @@ public class ApolloWebGameActivity
       this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a(paramBundle);
     }
     paramBundle = CmGameUtil.a();
-    this.jdField_a_of_type_Ypw = new ypw(this, paramBundle);
+    this.jdField_a_of_type_Ywd = new ywd(this, paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker = new CmGameStartChecker(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, this.jdField_a_of_type_Ypw);
+    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, this.jdField_a_of_type_Ywd);
     CmGameUtil.a(1, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);
     QLog.d("cmgame_process.ApolloWebGameActivity", 2, "doOnCreate");
     ApolloGameTimeReporter.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
@@ -144,7 +144,7 @@ public class ApolloWebGameActivity
     if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.d();
-      CmGameUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a());
+      CmGameUtil.c(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a());
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game != null)) {
       CmGameUtil.a(4, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);
@@ -206,8 +206,8 @@ public class ApolloWebGameActivity
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      paramMessage = new ypt(this);
-      localObject = new ypu(this);
+      paramMessage = new ywa(this);
+      localObject = new ywb(this);
     }
     try
     {

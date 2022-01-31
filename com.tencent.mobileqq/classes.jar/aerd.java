@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow;
-import com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.model.QueryTask;
+import com.tencent.mobileqq.model.QueryTask.Query;
+import mqq.os.MqqHandler;
 
 public class aerd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aerd(ShowTagNamePopupWindow paramShowTagNamePopupWindow) {}
+  public aerd(QueryTask paramQueryTask, Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (ShowTagNamePopupWindow.a(this.a) != null) {
-      ShowTagNamePopupWindow.a(this.a).a(ShowTagNamePopupWindow.a(this.a));
-    }
-    this.a.dismiss();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqModelQueryTask.a.a(this.jdField_a_of_type_JavaLangObject);
+    ThreadManager.getUIHandler().post(new aere(this, localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerd
  * JD-Core Version:    0.7.0.1
  */

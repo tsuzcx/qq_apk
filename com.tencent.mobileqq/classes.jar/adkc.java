@@ -1,20 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
 
-public class adkc
+class adkc
   implements DialogInterface.OnClickListener
 {
-  public adkc(ForwardBaseOption paramForwardBaseOption) {}
+  adkc(adjz paramadjz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.n();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adkc
  * JD-Core Version:    0.7.0.1
  */

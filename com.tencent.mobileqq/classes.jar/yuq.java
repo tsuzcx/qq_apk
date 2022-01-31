@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor;
-import com.tencent.mobileqq.apollo.store.webview.ApolloWebStatistics;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.ai.ApolloAIActivity;
 
 public class yuq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yuq(ApolloUrlInterceptor paramApolloUrlInterceptor) {}
+  public yuq(ApolloAIActivity paramApolloAIActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runSonicFlow in AsyncThread start!");
-    }
-    ApolloWebStatistics localApolloWebStatistics = ApolloUrlInterceptor.a(this.a);
-    long l = System.currentTimeMillis();
-    localApolloWebStatistics.g = l;
-    ApolloUrlInterceptor.a(this.a);
-    ApolloUrlInterceptor.b(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runSonicFlow use:" + (System.currentTimeMillis() - l));
-    }
-    ApolloUrlInterceptor.a(this.a).h = System.currentTimeMillis();
+    paramDialogInterface.dismiss();
   }
 }
 

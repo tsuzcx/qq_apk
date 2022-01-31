@@ -1,19 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 
 public class uvu
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public uvu(DeviceFileItemBuilder paramDeviceFileItemBuilder, MessageForDeviceFile paramMessageForDeviceFile, ActionSheet paramActionSheet) {}
+  public uvu(RecordSoundPanel paramRecordSoundPanel, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceFileItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceFileItemBuilder.b();
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.a.b(this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.b();
   }
 }
 

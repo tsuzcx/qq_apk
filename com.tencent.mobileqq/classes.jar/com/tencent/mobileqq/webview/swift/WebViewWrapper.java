@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.webview.swift;
 
-import aknu;
-import aknv;
-import aknw;
-import aknx;
-import akny;
+import akvl;
+import akvm;
+import akvn;
+import akvo;
+import akvp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -54,9 +54,9 @@ public class WebViewWrapper
   
   private void b(TouchWebView paramTouchWebView)
   {
-    aknv localaknv = new aknv(this);
-    paramTouchWebView.setWebChromeClient(localaknv);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebChromeClient = localaknv;
+    akvm localakvm = new akvm(this);
+    paramTouchWebView.setWebChromeClient(localakvm);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebChromeClient = localakvm;
   }
   
   public CustomWebChromeClient a()
@@ -170,11 +170,11 @@ public class WebViewWrapper
           label539:
           paramBoolean = paramIntent.getBooleanExtra("fromArkAppDownload", false);
           ((TouchWebView)localObject1).setFocusableInTouchMode(true);
-          ((TouchWebView)localObject1).setDownloadListener(new aknu(this, (TouchWebView)localObject1, paramBoolean, paramActivity));
+          ((TouchWebView)localObject1).setDownloadListener(new akvl(this, (TouchWebView)localObject1, paramBoolean, paramActivity));
           CookieSyncManager.createInstance(paramAppInterface.getApplication().getApplicationContext());
           if (((TouchWebView)localObject1).getX5WebViewExtension() != null)
           {
-            ((TouchWebView)localObject1).getX5WebViewExtension().setWebViewClientExtension(new akny(this, (TouchWebView)localObject1, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback));
+            ((TouchWebView)localObject1).getX5WebViewExtension().setWebViewClientExtension(new akvp(this, (TouchWebView)localObject1, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback));
             AIOOpenWebMonitor.b(paramIntent, "use_x5", "1");
           }
           for (;;)
@@ -268,7 +268,7 @@ public class WebViewWrapper
   void a(TouchWebView paramTouchWebView)
   {
     if (Build.VERSION.SDK_INT >= 21) {}
-    for (Object localObject = new aknw(this);; localObject = new aknx(this))
+    for (Object localObject = new akvn(this);; localObject = new akvo(this))
     {
       paramTouchWebView.setWebViewClient((WebViewClient)localObject);
       return;
@@ -283,7 +283,7 @@ public class WebViewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewWrapper
  * JD-Core Version:    0.7.0.1
  */

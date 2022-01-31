@@ -18,14 +18,14 @@ import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.vas.VasExtensionManager;
 import java.util.LinkedList;
 import java.util.List;
-import wpj;
+import wuu;
 
 public class ImgPreviewAdapter
   extends PagerAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wpj(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wuu(this);
   private EmoticonFromGroupManager jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager;
   private LinkedList jdField_a_of_type_JavaUtilLinkedList;
   private List jdField_a_of_type_JavaUtilList;

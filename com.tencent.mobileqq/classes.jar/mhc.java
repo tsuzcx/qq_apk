@@ -1,16 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoAutoPlayController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class mhc
-  implements Runnable
+public class mhc
+  extends Handler
 {
-  mhc(mhb parammhb, ReadInJoyBaseListView paramReadInJoyBaseListView) {}
-  
-  public void run()
+  public mhc(VideoFeedsPlayActivity paramVideoFeedsPlayActivity, Looper paramLooper)
   {
-    ReadInJoyBaseAdapter.a(this.jdField_a_of_type_Mhb.a).a(false);
-    ReadInJoyBaseAdapter.a(this.jdField_a_of_type_Mhb.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, 0);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    VideoFeedsPlayActivity.b(this.a);
   }
 }
 

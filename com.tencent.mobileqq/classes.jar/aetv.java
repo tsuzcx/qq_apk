@@ -1,67 +1,53 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.NearbyAlumniServlet;
+import com.tencent.mobileqq.nearby.OldBigDataChannelManager;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 public class aetv
-  extends ProtoUtils.TroopGiftProtocolObserver
+  implements INetEngine.INetEngineListener
 {
-  public aetv(CsTask paramCsTask) {}
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public aetv(NearbyAlumniServlet paramNearbyAlumniServlet, Intent paramIntent, byte[] paramArrayOfByte)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  
+  public void a(NetResp paramNetResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAlumniServlet", 2, "NearbyAlumniDownloadListener.onResp()");
+    }
+    if ((paramNetResp == null) || (paramNetResp.jdField_a_of_type_Int != 0))
     {
-      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
-      try
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        localRspBody.mergeFrom(paramArrayOfByte);
-        QLog.i("QQ_NOW_TASK", 2, "err_msg:   " + localRspBody.err_msg.get());
-        if (!localRspBody.busi_buf.has()) {
-          break label202;
+        localStringBuilder = new StringBuilder().append("NearbyAlumniDownloadListener.onResp() | resp = ").append(paramNetResp).append(" | mResult=");
+        if (paramNetResp == null) {
+          break label110;
         }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback != null) && (paramInt == 0))
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
-          return;
+      }
+      label110:
+      for (int i = paramNetResp.jdField_a_of_type_Int;; i = -1)
+      {
+        QLog.i("NearbyAlumniServlet", 2, i);
+        NearbyAlumniServlet.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAlumniServlet, this.jdField_a_of_type_AndroidContentIntent, -10, null, new byte[1]);
+        paramNetResp = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAlumniServlet.a();
+        if (paramNetResp != null) {
+          paramNetResp.a();
         }
-        QLog.i("QQ_NOW_TASK", 1, "err_msg1:   " + localRspBody.err_msg.get());
-        if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError == null) {
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, paramArrayOfByte);
         return;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        QLog.i("QQ_NOW_TASK", 1, "err_msg3:   ");
-        if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError == null) {
-          return;
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
-      return;
-      label202:
-      QLog.i("QQ_NOW_TASK", 1, "err_msg2:   ");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
-      }
     }
-    else
-    {
-      QLog.i("QQ_NOW_TASK", 1, "err_msg4:   ");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
-      }
-    }
+    NearbyAlumniServlet.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAlumniServlet, this.jdField_a_of_type_AndroidContentIntent, 0, paramNetResp.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

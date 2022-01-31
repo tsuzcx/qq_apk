@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 
-class aeyu
-  implements Runnable
+public class aeyu
+  implements View.OnClickListener
 {
-  aeyu(aeyt paramaeyt, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
+  public aeyu(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aeyt.a.a != null) {
-      this.jdField_a_of_type_Aeyt.a.a.a(this.jdField_a_of_type_Aeyt.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    if ((this.a.a != null) && (!this.a.isFinishing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+      this.a.e("0X800590A");
     }
   }
 }

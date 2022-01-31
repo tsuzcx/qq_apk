@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.homework.recite.utils;
 
-import ajka;
-import ajkb;
-import ajkc;
-import ajkd;
+import ajrm;
+import ajrn;
+import ajro;
+import ajrp;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.biz.common.offline.BidDownloader;
@@ -66,9 +66,9 @@ public class SoLibraryChecker
     }
     for (;;)
     {
-      ajkc localajkc = new ajkc(this, str, bool2, bool1);
+      ajro localajro = new ajro(this, str, bool2, bool1);
       if (!TextUtils.isEmpty(str)) {
-        ThreadManager.post(new ajkd(this, paramJSONObject, str, localajkc), 8, null, false);
+        ThreadManager.post(new ajrp(this, paramJSONObject, str, localajro), 8, null, false);
       }
       return;
       if ((i == 3) || (i == 2))
@@ -228,14 +228,14 @@ public class SoLibraryChecker
       }
       return;
     }
-    HtmlOffline.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new ajka(this), false);
+    HtmlOffline.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new ajrm(this), false);
   }
   
   private void c()
   {
     String str = "http://" + this.b + "?_bid=" + this.jdField_a_of_type_JavaLangString;
     long l = System.currentTimeMillis();
-    if ((!HtmlOffline.a(BaseApplicationImpl.getContext(), str, new ajkb(this, l))) && (QLog.isColorLevel())) {
+    if ((!HtmlOffline.a(BaseApplicationImpl.getContext(), str, new ajrn(this, l))) && (QLog.isColorLevel())) {
       QLog.i("SoLibraryLoader", 2, "so file = " + this.b + " transToLocalUrl: return false");
     }
   }
@@ -254,7 +254,7 @@ public class SoLibraryChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.utils.SoLibraryChecker
  * JD-Core Version:    0.7.0.1
  */

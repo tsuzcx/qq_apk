@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aiqn;
+import aivq;
 import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 
@@ -12,7 +12,7 @@ public class ProtoReqManager$ProtoResp
   public ProtoReqManager.ProtoReq a;
   public FromServiceMsg a;
   boolean a;
-  public aiqn[] a;
+  public aivq[] a;
   
   public ProtoReqManager$ProtoResp()
   {

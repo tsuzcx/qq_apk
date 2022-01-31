@@ -17,6 +17,8 @@ public class ArkAppCGI$ArkAppCGICallback
   public void a(boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2, Object paramObject) {}
   
   public void a(boolean paramBoolean, byte[] paramArrayOfByte, Object paramObject) {}
+  
+  public void b(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte) {}
 }
 
 

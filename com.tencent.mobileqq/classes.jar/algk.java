@@ -1,61 +1,41 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
 
-public final class algk
+class algk
   implements Runnable
 {
-  public algk(List paramList, DownloadQueryListener paramDownloadQueryListener) {}
+  algk(algj paramalgj, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    LogUtility.a(DownloadApi.a, "getQueryDownloadAction enter");
-    DownloadManager.a().a();
+    if (this.jdField_a_of_type_Algj.a.getActivity() == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_Algj.a.getActivity().sendBroadcast(localIntent);
+      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_Algj.a.getString(2131439415), 1).a();
+      WorldCupShareFragment.c(this.jdField_a_of_type_Algj.a, this.jdField_a_of_type_JavaLangString);
+      WorldCupShareFragment.a("0X800931C");
+    }
     for (;;)
     {
-      int i;
-      try
-      {
-        ArrayList localArrayList = new ArrayList();
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        i = 0;
-        if (i < j)
-        {
-          DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (DownloadManager.a().a(localDownloadInfo))
-          {
-            LogUtility.a(DownloadApi.a, "refreshDownloadInfo true " + localDownloadInfo);
-            localArrayList.add(localDownloadInfo);
-          }
-        }
-        else
-        {
-          if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
-            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.b_(localArrayList);
-          }
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        LogUtility.c(DownloadApi.a, "Exception>>>", localException);
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
-        return;
-      }
-      i += 1;
+      this.jdField_a_of_type_Algj.a.jdField_a_of_type_Boolean = true;
+      return;
+      QRUtils.a(1, 2131430004);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     algk
  * JD-Core Version:    0.7.0.1
  */

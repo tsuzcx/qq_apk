@@ -1,20 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class lef
-  extends ReadInJoyObserver
+  implements View.OnClickListener
 {
-  public lef(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  public lef(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.self.ReadInJoySelfActivity", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden = " + paramBoolean);
-    }
-    if (paramInt1 == 0) {
-      ReadInJoySelfActivity.b(this.a);
-    }
+    ReadInJoyBaseDeliverActivity.a(this.a);
   }
 }
 

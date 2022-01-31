@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
-
 class aayz
   implements Runnable
 {
-  aayz(aayw paramaayw, double paramDouble1, double paramDouble2) {}
+  aayz(aayy paramaayy) {}
   
   public void run()
   {
-    ARMapEngine localARMapEngine = this.jdField_a_of_type_Aayw.a.a;
-    ARMapEngine.rotateToLngLat(this.jdField_a_of_type_Double, this.b);
+    this.a.a.a();
   }
 }
 

@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
 public class woc
-  extends FriendListObserver
+  extends Handler
 {
-  public woc(PublicAccountFragment paramPublicAccountFragment) {}
+  public woc(SearchBaseActivity paramSearchBaseActivity) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean) {
-      this.a.i();
-    }
+    this.a.a.clearFocus();
   }
 }
 

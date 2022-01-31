@@ -41,15 +41,16 @@ public class ApolloConstant
   public static String ab;
   public static String ac;
   public static String ad;
-  public static final String ae;
+  public static String ae;
   public static final String af;
   public static final String ag;
-  public static String ah = "和好友同场PK，就来玩一玩";
-  public static String ai = "点击这里可以探索更多游戏哦";
-  public static String aj = "http://cmshow.gtimg.cn/client/img/apollo_aio_game_guide2.png";
-  public static String ak = "#FFE746";
-  public static String al = "http://cmshow.qq.com/apollo/html/game-platform/game-center.html?_wv=16777219&_wwv=4&_bid=2695";
-  public static String am = "当前好友超越你的成绩时会出现~";
+  public static final String ah;
+  public static String ai = "和好友同场PK，就来玩一玩";
+  public static String aj = "点击这里可以探索更多游戏哦";
+  public static String ak = "http://cmshow.gtimg.cn/client/img/apollo_aio_game_guide2.png";
+  public static String al = "#FFE746";
+  public static String am = "http://cmshow.qq.com/apollo/html/game-platform/game-center.html?_wv=16777219&_wwv=4&_bid=2695";
+  public static String an = "当前好友超越你的成绩时会出现~";
   public static int b;
   public static long b;
   public static String b;
@@ -83,7 +84,7 @@ public class ApolloConstant
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "/.apollo";
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "/.apollo";
     jdField_b_of_type_JavaLangString = BaseApplicationImpl.getApplication().getFilesDir() + "/apollo";
     jdField_c_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/action/";
     jdField_d_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/audio/";
@@ -129,7 +130,7 @@ public class ApolloConstant
     K = "http://cmshow.qq.com/apollo/html/not_support.html?_wv=1027";
     L = "http://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326&actionId=";
     StringBuilder localStringBuilder = new StringBuilder("http://cmshow.qq.com/apollo/html/index_v2.html");
-    localStringBuilder.append("?client=androidQQ").append("&version=").append("7.6.3.3565").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE);
+    localStringBuilder.append("?client=androidQQ").append("&version=").append("7.6.8.3615").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE);
     M = localStringBuilder.toString();
     N = "http://cmshow.qq.com/apollo/html/game-platform/index.html?_wv=16777219&_bid=2695&adtag=aio";
     O = "http://cmshow.qq.com/apollo/html/game-platform/my-coins.html?_wv=1027&_bid=2695&adtag=aio";
@@ -141,15 +142,16 @@ public class ApolloConstant
     U = "http://cmshow.qq.com/apollo/html/game-platform/my-game.html?_wv=1027&_bid=2695";
     V = "http://sqimg.qq.com/qq_product_operations/tmg_sdk/QAVOPENSDK_1.9.6.16.zip";
     W = "dd3d6659ce42a5face3777902679834b";
-    ad = "http://cmshow.gtimg.cn/client/zip/apollo_drawer_game_box.zip";
+    ad = "http://cmshow.gtimg.cn/client/zip/apollo_drawer_game_box_lottie.zip";
+    ae = "http://cmshow.qq.com/apollo/html/game-platform/game-feeds-gc.html?_wv=3&tab=hotplay&from=gamecenter&_bid=3143";
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "103100.103200.103201", "103100.103200.103210.103211", "103100.103200.103201.103202", "103100.103200.103220" };
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(103100).append(".").append(103200).append(".").append(103240).append(".").append(103244);
-    ag = localStringBuilder.toString();
+    ah = localStringBuilder.toString();
     localStringBuilder.append(".").append(103245);
-    af = localStringBuilder.toString();
+    ag = localStringBuilder.toString();
     localStringBuilder.append(".").append(103246);
-    ae = localStringBuilder.toString();
+    af = localStringBuilder.toString();
   }
 }
 

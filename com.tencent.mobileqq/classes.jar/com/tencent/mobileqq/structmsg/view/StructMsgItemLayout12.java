@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aiir;
-import aiis;
+import ainm;
+import ainn;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -56,7 +56,7 @@ public class StructMsgItemLayout12
   public StructMsgItemLayout12()
   {
     this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiir(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ainm(this);
   }
   
   private FrameLayout a(Context paramContext)
@@ -159,7 +159,7 @@ public class StructMsgItemLayout12
   @TargetApi(11)
   private void e(View paramView)
   {
-    paramView.setOnTouchListener(new aiis(this, paramView));
+    paramView.setOnTouchListener(new ainn(this, paramView));
   }
   
   public void a()

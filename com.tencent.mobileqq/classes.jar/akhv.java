@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.vas.PendantInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
 
-public class akhv
+public final class akhv
+  implements Runnable
 {
-  public String a;
+  public akhv(NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle) {}
   
-  public akhv(PendantInfo paramPendantInfo, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, null, null, false, false, false);
   }
 }
 

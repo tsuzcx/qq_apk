@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.nearby.now.location.TLocationManager;
-import com.tencent.util.LogUtil;
-
-class aetj
-  implements Runnable
+public class aetj
 {
-  aetj(aeti paramaeti) {}
+  public final long a;
+  public final String a;
+  public final boolean a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public void run()
+  public aetj(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    LogUtil.i("TLocationManager", "get location time out");
-    this.a.a.a(this.a, aeti.a(this.a));
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetj
  * JD-Core Version:    0.7.0.1
  */

@@ -20,8 +20,8 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.widget.HorizontalListView;
 import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.List;
-import mjo;
-import mjp;
+import mnf;
+import mng;
 
 public class ReadInjoySelfInnerListViewAdapter
   extends BaseAdapter
@@ -35,23 +35,23 @@ public class ReadInjoySelfInnerListViewAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(new mjo(this, paramContext));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(new mnf(this, paramContext));
   }
   
   private void a(SelfInfoModule.BusinessCountInfo paramBusinessCountInfo, View paramView)
   {
-    mjp localmjp = (mjp)paramView.getTag();
+    mng localmng = (mng)paramView.getTag();
     Object localObject = paramView.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    mjp.a(localmjp).setText(paramBusinessCountInfo.a);
-    mjp.b(localmjp).setText(ReadInJoyHelper.a(paramBusinessCountInfo.jdField_c_of_type_Int));
+    mng.a(localmng).setText(paramBusinessCountInfo.a);
+    mng.b(localmng).setText(ReadInJoyHelper.a(paramBusinessCountInfo.jdField_c_of_type_Int));
     paramView = URLDrawable.URLDrawableOptions.obtain();
     localObject = new ColorDrawable(0);
     paramView.mFailedDrawable = ((Drawable)localObject);
     paramView.mLoadingDrawable = ((Drawable)localObject);
     paramBusinessCountInfo = URLDrawable.getDrawable(paramBusinessCountInfo.jdField_c_of_type_JavaLangString, paramView);
-    mjp.a(localmjp).setImageDrawable(paramBusinessCountInfo);
+    mng.a(localmng).setImageDrawable(paramBusinessCountInfo);
   }
   
   public void a(List paramList)
@@ -106,11 +106,11 @@ public class ReadInjoySelfInnerListViewAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970680, paramViewGroup, false);
-      paramView = new mjp(this, null);
-      mjp.a(paramView, (ImageView)localView.findViewById(2131371629));
-      mjp.a(paramView, (TextView)localView.findViewById(2131371630));
-      mjp.b(paramView, (TextView)localView.findViewById(2131371631));
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970694, paramViewGroup, false);
+      paramView = new mng(this, null);
+      mng.a(paramView, (ImageView)localView.findViewById(2131371627));
+      mng.a(paramView, (TextView)localView.findViewById(2131371628));
+      mng.b(paramView, (TextView)localView.findViewById(2131371629));
       localView.setTag(paramView);
     }
     paramView = (SelfInfoModule.BusinessCountInfo)getItem(paramInt);

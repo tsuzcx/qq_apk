@@ -1,39 +1,35 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceDecoderImpl;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.text.TextPaint;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class ajzs
-  extends FriendListObserver
+  extends TextView
 {
-  private ajzs(FaceDecoderImpl paramFaceDecoderImpl) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public ajzs(FollowImageTextView paramFollowImageTextView, Context paramContext)
   {
-    this.a.a(paramBoolean, 1, paramString, 0);
+    super(paramContext);
   }
   
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  protected void onDraw(Canvas paramCanvas)
   {
-    this.a.a(paramBoolean, 11, paramString, 0);
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 16, paramString, paramInt);
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 32, paramString, paramInt);
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 4, paramString, 0);
+    if (FollowImageTextView.a(this.a))
+    {
+      super.onDraw(paramCanvas);
+      return;
+    }
+    Object localObject = getPaint();
+    ((TextPaint)localObject).setColor(getCurrentTextColor());
+    ((TextPaint)localObject).drawableState = getDrawableState();
+    localObject = FollowImageTextView.a(this.a);
+    ((ajzu)localObject).a(FollowImageTextView.a(this.a) - 1);
+    ((ajzu)localObject).a(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzs
  * JD-Core Version:    0.7.0.1
  */

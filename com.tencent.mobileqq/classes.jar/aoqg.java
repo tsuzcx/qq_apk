@@ -1,14 +1,18 @@
-import dov.com.tencent.mobileqq.shortvideo.ptvfilter.material.GameEvent;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class aoqg
+  implements Runnable
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = false;
-  float b = 0.0F;
+  public aoqg(RMVideoRecordState paramRMVideoRecordState, RMVideoStateMgr paramRMVideoStateMgr) {}
   
-  private aoqg(GameEvent paramGameEvent) {}
+  public void run()
+  {
+    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null) {
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.unlockFrameSync();
+    }
+  }
 }
 
 

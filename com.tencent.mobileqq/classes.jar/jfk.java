@@ -1,19 +1,21 @@
-import com.tencent.av.business.manager.EffectOperateManager;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 
-public abstract class jfk
+public class jfk
   implements Runnable
 {
-  WeakReference a;
+  public jfk(VideoController paramVideoController, int paramInt, long paramLong) {}
   
-  public jfk(EffectOperateManager paramEffectOperateManager)
+  public void run()
   {
-    this.a = new WeakReference(paramEffectOperateManager);
+    this.jdField_a_of_type_ComTencentAvVideoController.i = null;
+    this.jdField_a_of_type_ComTencentAvVideoController.a().a("acceptGAudioChat", 0);
+    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 16, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jfk
  * JD-Core Version:    0.7.0.1
  */

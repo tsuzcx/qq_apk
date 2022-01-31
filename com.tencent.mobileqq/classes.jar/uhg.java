@@ -1,97 +1,25 @@
-import android.annotation.TargetApi;
+import android.os.Handler;
 import android.os.Message;
-import android.util.Pair;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
+import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class uhg
-  extends CardObserver
+class uhg
+  implements Runnable
 {
-  public uhg(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  uhg(uhf paramuhf, TroopInfo paramTroopInfo) {}
   
-  @TargetApi(9)
-  public void e(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipProfileCardDiyActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
-    }
-    this.a.b.set(false);
-    this.a.a.removeMessages(6);
-    this.a.i();
-    if ((paramBoolean) && (paramObject != null)) {
-      if ((paramObject instanceof Card)) {
-        ThreadManager.post(new uhh(this, (Card)paramObject), 5, null, true);
-      }
-    }
-    for (;;)
+    GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Uhf.a, Long.toString(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.dwGroupClassExt));
+    if (localGroupCatalogBean != null)
     {
-      this.a.e = null;
-      this.a.j = 0;
-      return;
-      if ((paramObject instanceof Pair))
-      {
-        paramObject = (Pair)paramObject;
-        QLog.e("VipProfileCardDiyActivity", 1, "set diy card failed, code=" + paramObject.first + ", msg=" + (String)paramObject.second);
-        if (((Integer)paramObject.first).intValue() == 101107)
-        {
-          this.a.n = 1;
-          this.a.a.obtainMessage(2, paramObject.second).sendToTarget();
-          if (VipUtils.b(this.a.app)) {}
-          for (paramObject = "3";; paramObject = "2")
-          {
-            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
-            break;
-          }
-        }
-        if (((Integer)paramObject.first).intValue() == 101108)
-        {
-          this.a.n = 2;
-          this.a.a.obtainMessage(2, paramObject.second).sendToTarget();
-          if (VipUtils.a(this.a.app)) {}
-          for (paramObject = "3";; paramObject = "2")
-          {
-            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
-            break;
-          }
-        }
-        if (((Integer)paramObject.first).intValue() == 401019)
-        {
-          this.a.a.obtainMessage(8, paramObject.second).sendToTarget();
-        }
-        else if (((Integer)paramObject.first).intValue() == 401020)
-        {
-          this.a.a.obtainMessage(7, paramObject.second).sendToTarget();
-        }
-        else
-        {
-          if (((Integer)paramObject.first).intValue() == 401009)
-          {
-            this.a.n = 2;
-            this.a.a.obtainMessage(2, paramObject.second).sendToTarget();
-            if (VipUtils.a(this.a.app)) {}
-            for (paramObject = "3";; paramObject = "2")
-            {
-              VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
-              break;
-            }
-          }
-          Message localMessage = this.a.a.obtainMessage(1);
-          if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
-            localMessage.obj = paramObject.second;
-          }
-          this.a.a.sendMessage(localMessage);
-          continue;
-          paramObject = this.a.a.obtainMessage(1);
-          this.a.a.sendMessage(paramObject);
-        }
-      }
+      Message localMessage = new Message();
+      localMessage.what = 2;
+      localMessage.obj = localGroupCatalogBean.a();
+      this.jdField_a_of_type_Uhf.a.a.sendMessage(localMessage);
     }
   }
 }

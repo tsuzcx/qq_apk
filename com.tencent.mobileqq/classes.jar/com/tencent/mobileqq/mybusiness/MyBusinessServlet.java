@@ -10,7 +10,7 @@ import MyCarrier.MQQ.PreLoadCarrierReq;
 import MyCarrier.ReqCarrier;
 import MyCarrier.RspCarrier;
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import aeli;
+import aets;
 import android.content.Intent;
 import android.os.Bundle;
 import com.qq.taf.jce.JceStruct;
@@ -93,7 +93,7 @@ public class MyBusinessServlet
         str = paramIntent.getStringExtra("opt_info");
         localObject1 = new LBSInfo();
         this.a = SosoInterface.a();
-        SosoInterface.a(new aeli(this, 0, false, true, 60000L, false, false, "MyBusinessServlet"));
+        SosoInterface.a(new aets(this, 0, false, true, 60000L, false, false, "MyBusinessServlet"));
         if ((this.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation != null))
         {
           localGPS = new GPS((int)(this.a.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c * 1000000.0D), (int)(this.a.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d * 1000000.0D), -1, 0);
@@ -141,7 +141,7 @@ public class MyBusinessServlet
       localObject1 = new LBSInfo(localGPS, (ArrayList)localObject3, localArrayList, (Attr)localObject1);
       for (;;)
       {
-        localObject1 = new ReqCarrier((String)localObject2, i, (LBSInfo)localObject1, str, "7.6.3", 1);
+        localObject1 = new ReqCarrier((String)localObject2, i, (LBSInfo)localObject1, str, "7.6.8", 1);
         paramPacket.setSSOCommand("CarrierEntry.queryCarrier");
         paramPacket.setServantName("CarrierEntry");
         paramPacket.setFuncName("queryCarrier");
@@ -177,7 +177,7 @@ public class MyBusinessServlet
         paramIntent = ((RespondQueryQQBindingStat)localObject2).mobileNo;
       }
     }
-    paramIntent = new PreLoadCarrierReq(paramIntent, i, 1, "7.6.3.3565", NetworkUtil.a(BaseApplication.getContext()));
+    paramIntent = new PreLoadCarrierReq(paramIntent, i, 1, "7.6.8.3615", NetworkUtil.a(BaseApplication.getContext()));
     paramPacket.setSSOCommand("CarrierBizSvr.preLoadCarrierInfo");
     paramPacket.setServantName("MQQ.CarrierBizServer.CarrierBizObj");
     paramPacket.setFuncName("preLoadCarrierInfo");

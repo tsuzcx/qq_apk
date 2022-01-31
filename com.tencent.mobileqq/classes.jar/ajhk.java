@@ -1,21 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
+import java.util.List;
 
-public class ajhk
-  implements DialogInterface.OnClickListener
+class ajhk
+  extends TroopAioKeywordTipManager.Callback
 {
-  public ajhk(PublishHomeWorkFragment paramPublishHomeWorkFragment, CompoundButton paramCompoundButton) {}
+  ajhk(ajhj paramajhj, List paramList, TroopAioKeywordTipManager paramTroopAioKeywordTipManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    switch (paramInt)
+    if (!this.jdField_a_of_type_Ajhj.a.a) {}
+    do
     {
-    default: 
       return;
-    }
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(true);
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
+      }
+    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (TroopAioKeywordTipBar.a(this.jdField_a_of_type_Ajhj.a)));
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.a(this.jdField_a_of_type_JavaUtilList, null, 2, new ajhl(this));
+    return;
+    TroopAioKeywordTipBar.a(this.jdField_a_of_type_Ajhj.a, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 

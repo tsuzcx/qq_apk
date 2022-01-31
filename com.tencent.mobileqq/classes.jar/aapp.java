@@ -1,21 +1,18 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.ar.config.MainDownAni;
+import com.tencent.mobileqq.ar.config.WorldCupStaticInstance;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aapp
-  extends WtloginObserver
+  implements PopupWindow.OnDismissListener
 {
-  public aapp(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  public aapp(MainDownAni paramMainDownAni, aapz paramaapz) {}
   
-  public void OnGetOpenKeyWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, ErrMsg paramErrMsg)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp", 2, "OnGetOpenKeyWithoutPasswd userAccount=" + paramString + ", dwSrcAppid=" + paramLong1 + ", dwDstAppid=" + paramLong2 + ", dwMainSigMap=" + paramInt1 + ", ret=" + paramInt2);
-    }
-    ArkAppCenter.a().post(new aapq(this, paramInt2, paramArrayOfByte1, paramArrayOfByte2, paramLong2, paramString));
+    QLog.w(MainDownAni.a(this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni), 1, "modifyMenu, onDismiss");
+    WorldCupStaticInstance.a().a = false;
+    this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a(this.jdField_a_of_type_Aapz.d);
   }
 }
 

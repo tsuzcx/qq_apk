@@ -91,14 +91,14 @@ public class FilterProviderGridAdapter
     }
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970278, paramViewGroup, false);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970293, paramViewGroup, false);
     }
-    TextView localTextView = (TextView)localView.findViewById(2131369932);
-    ImageView localImageView3 = (ImageView)localView.findViewById(2131369931);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131362719);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131363403);
-    URLImageView localURLImageView = (URLImageView)localView.findViewById(2131369933);
-    CaptureCommonLoadingView localCaptureCommonLoadingView = (CaptureCommonLoadingView)localView.findViewById(2131369066);
+    TextView localTextView = (TextView)localView.findViewById(2131369942);
+    ImageView localImageView3 = (ImageView)localView.findViewById(2131369941);
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131362724);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131363422);
+    URLImageView localURLImageView = (URLImageView)localView.findViewById(2131369943);
+    CaptureCommonLoadingView localCaptureCommonLoadingView = (CaptureCommonLoadingView)localView.findViewById(2131369067);
     FilterCategoryItem localFilterCategoryItem = (FilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     paramView = CaptureVideoFilterManager.a().a();
     boolean bool = false;
@@ -123,7 +123,7 @@ public class FilterProviderGridAdapter
       paramView.height = this.jdField_b_of_type_Int;
       if (localFilterCategoryItem.a())
       {
-        localImageView1.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843186));
+        localImageView1.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843219));
         if (bool)
         {
           localImageView3.setVisibility(0);
@@ -147,8 +147,8 @@ public class FilterProviderGridAdapter
           localImageView3.setVisibility(0);
           localTextView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492976));
           paramView = URLDrawable.URLDrawableOptions.obtain();
-          paramView.mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843182);
-          paramView.mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843182);
+          paramView.mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843215);
+          paramView.mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843215);
           localCaptureCommonLoadingView.setMax(10000);
           localCaptureCommonLoadingView.setVisibility(8);
           paramView = URLDrawable.getDrawable(localFilterCategoryItem.d, URLDrawable.URLDrawableOptions.obtain());
@@ -195,7 +195,7 @@ public class FilterProviderGridAdapter
         localImageView2.setVisibility(0);
       } while (!bool);
       label649:
-      localImageView2.setImageResource(2130843190);
+      localImageView2.setImageResource(2130843223);
       return localView;
       label695:
       localImageView2.setVisibility(8);

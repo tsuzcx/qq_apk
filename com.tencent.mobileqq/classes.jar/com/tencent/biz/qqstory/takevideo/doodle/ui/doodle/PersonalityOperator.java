@@ -30,7 +30,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import okc;
+import oor;
 
 public class PersonalityOperator
   extends DoodleOperator
@@ -419,7 +419,7 @@ public class PersonalityOperator
         }
       }
       this.jdField_a_of_type_ComTencentTtpicModelVideoMaterial = paramQQVideoMaterial;
-      paramQQVideoMaterial = new okc(this, paramQQVideoMaterial);
+      paramQQVideoMaterial = new oor(this, paramQQVideoMaterial);
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLineListener != null) {
         this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLineListener.a(paramQQVideoMaterial);
       }

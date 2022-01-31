@@ -1,25 +1,30 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomSingleButtonDialog;
 
 public class akna
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akna(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI, TextView paramTextView1, TextView paramTextView2, String paramString) {}
+  int jdField_a_of_type_Int;
   
-  public void run()
+  public akna(QQCustomSingleButtonDialog paramQQCustomSingleButtonDialog, int paramInt)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()))
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a != null)
     {
-      this.b.setText(this.jdField_a_of_type_JavaLangString);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akna
  * JD-Core Version:    0.7.0.1
  */

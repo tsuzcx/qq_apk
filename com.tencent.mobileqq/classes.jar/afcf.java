@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afcf
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public afcf(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public afcf(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.equals(this.a.app.getCurrentAccountUin()))) {
-      ((LocalRedTouchManager)this.a.app.getManager(159)).a(false);
-    }
+    return paramMotionEvent.getAction() == 2;
   }
 }
 

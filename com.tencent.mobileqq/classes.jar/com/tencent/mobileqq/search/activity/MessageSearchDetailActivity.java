@@ -114,7 +114,7 @@ public class MessageSearchDetailActivity
       finish();
       return false;
     }
-    super.setContentView(2130968794);
+    super.setContentView(2130968798);
     if (this.b.user.type == 3000) {
       a(ContactUtils.a(this.app, this.b.user.uin, this.b.user.type), this.b.user.uin, this.centerView);
     }
@@ -123,7 +123,7 @@ public class MessageSearchDetailActivity
       Object localObject = super.getSupportFragmentManager();
       paramBundle = MessageSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131362369, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131362372, paramBundle);
       ((FragmentTransaction)localObject).commit();
       this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver = new MessageSearchDetailActivity.CancelReceiver(this);
       paramBundle = new IntentFilter();

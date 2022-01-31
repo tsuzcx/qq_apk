@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ucp
-  extends FriendListObserver
+  implements ActionSheet.OnButtonClickListener
 {
-  public ucp(TroopRequestActivity paramTroopRequestActivity) {}
+  public ucp(TroopInfoActivity paramTroopInfoActivity, ActionSheet paramActionSheet) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((!paramBoolean) || (paramString == null)) {
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, 13);
       return;
     }
-    ThreadManager.post(new ucq(this, paramString), 5, null, true);
+    AvatarWallAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, 8);
   }
 }
 

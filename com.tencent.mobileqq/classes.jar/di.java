@@ -15,11 +15,11 @@ public class di
   @SuppressLint({"NewApi"})
   public void onClick(View paramView)
   {
-    if (2131375572 == paramView.getId())
+    if (2131375638 == paramView.getId())
     {
       paramView = new dj(this);
       dk localdk = new dk(this);
-      DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131427500), this.jdField_a_of_type_AndroidContentContext.getString(2131427526), 2131433015, 2131427501, paramView, localdk).show();
+      DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131427500), this.jdField_a_of_type_AndroidContentContext.getString(2131427526), 2131433029, 2131427501, paramView, localdk).show();
     }
   }
 }

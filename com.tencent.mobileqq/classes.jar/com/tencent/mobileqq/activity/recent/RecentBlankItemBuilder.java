@@ -15,7 +15,7 @@ public class RecentBlankItemBuilder
   {
     paramObject = paramView;
     if (paramView == null) {
-      paramObject = LayoutInflater.from(paramContext).inflate(2130968792, null);
+      paramObject = LayoutInflater.from(paramContext).inflate(2130968796, null);
     }
     paramObject.setOnClickListener(paramOnClickListener);
     paramObject.setOnLongClickListener(paramOnLongClickListener);

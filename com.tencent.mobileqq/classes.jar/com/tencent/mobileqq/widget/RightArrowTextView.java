@@ -29,7 +29,7 @@ public class RightArrowTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    Drawable localDrawable = getResources().getDrawable(2130845943);
+    Drawable localDrawable = getResources().getDrawable(2130846025);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
     SpannableString localSpannableString = new SpannableString(paramCharSequence.toString() + "[arrow]");
     localSpannableString.setSpan(new ImageSpan(localDrawable, 1), paramCharSequence.length(), paramCharSequence.length() + "[arrow]".length(), 17);
@@ -39,7 +39,7 @@ public class RightArrowTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RightArrowTextView
  * JD-Core Version:    0.7.0.1
  */

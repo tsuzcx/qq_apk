@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
 
 class abao
   implements Runnable
 {
-  abao(aban paramaban) {}
+  abao(aban paramaban, abax paramabax) {}
   
   public void run()
   {
-    ARMapActivity.j(this.a.a);
+    this.jdField_a_of_type_Aban.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$OnGetAppIcon.a(this.jdField_a_of_type_Aban.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abax.a);
   }
 }
 

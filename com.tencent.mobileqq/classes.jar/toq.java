@@ -1,14 +1,31 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.QQMapRoutingHelper;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class toq
-  implements Runnable
+public class toq
+  implements View.OnClickListener
 {
-  toq(too paramtoo) {}
+  public toq(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, "请重新发送短信");
+    if (!NetworkUtil.d(this.a)) {
+      this.a.x();
+    }
+    for (;;)
+    {
+      QQMapRoutingHelper.a("see_streetview");
+      return;
+      if (NetworkUtil.a(this.a)) {
+        this.a.p();
+      } else {
+        DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131436465)).setMessage(2131436464).setPositiveButton(2131436466, new tos(this)).setNegativeButton(2131433029, new tor(this)).show();
+      }
+    }
   }
 }
 

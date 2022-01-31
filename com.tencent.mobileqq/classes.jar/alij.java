@@ -1,14 +1,30 @@
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.widget.ImageView;
+import com.tencent.open.agent.AuthorityLoginView;
+import com.tencent.qphone.base.util.QLog;
 
-public class alij
+class alij
   implements Runnable
 {
-  public alij(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
+  alij(alii paramalii, Bitmap paramBitmap) {}
   
   public void run()
   {
-    StaticAnalyz.a("202", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_Alii.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    do
+    {
+      return;
+      try
+      {
+        this.jdField_a_of_type_Alii.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_Alii.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.getResources(), 2130839319));
+        return;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("AuthorityLoginView", 2, "-->updateAccountFace oom");
   }
 }
 

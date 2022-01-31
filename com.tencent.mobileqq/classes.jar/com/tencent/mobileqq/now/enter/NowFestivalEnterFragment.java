@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.now.enter;
 
-import agaj;
+import agem;
+import agen;
+import ageo;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
@@ -17,30 +19,40 @@ import android.widget.TextView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.now.enter.widget.NowAnswerPreloadManager;
 import com.tencent.mobileqq.statistics.ReportTask;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class NowFestivalEnterFragment
   extends PublicBaseFragment
   implements View.OnClickListener
 {
+  private long jdField_a_of_type_Long;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private NowEnterManager.WebProcessBindCallback jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager$WebProcessBindCallback = new agen(this);
   private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  private boolean d;
   
-  public boolean b()
+  private void a()
   {
-    return false;
+    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
+      return;
+    }
+    ThreadManagerV2.excute(new ageo(this), 16, null, true);
   }
   
-  public boolean d()
+  public boolean needImmersive()
   {
-    new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("year_icon").d("middle_click").a(new String[] { "2" }).a();
-    return super.d();
+    return false;
   }
   
   public void onAttach(Activity paramActivity)
@@ -48,6 +60,12 @@ public class NowFestivalEnterFragment
     super.onAttach(paramActivity);
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = ((FragmentActivity)paramActivity);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app;
+  }
+  
+  public boolean onBackEvent()
+  {
+    new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("year_icon").d("middle_click").a(new String[] { "2" }).a();
+    return super.onBackEvent();
   }
   
   public void onClick(View paramView)
@@ -70,13 +88,13 @@ public class NowFestivalEnterFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969144, paramViewGroup, false);
-    paramViewGroup = paramLayoutInflater.findViewById(2131362854);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969142, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.findViewById(2131362859);
     if (paramViewGroup != null) {
       new ImmersionBar(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 0, paramViewGroup);
     }
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131362855);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131362856));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131362860);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131362861));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     paramViewGroup = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 0.7F, 1.0F });
     paramBundle = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 0.7F, 1.0F });
@@ -86,9 +104,31 @@ public class NowFestivalEnterFragment
     localAnimatorSet.play(paramViewGroup).with(paramBundle);
     localAnimatorSet.start();
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("url");
-    ThreadManager.getUIHandler().postDelayed(new agaj(this), 400L);
+    NowAnswerPreloadManager.a(new agem(this));
+    NowAnswerPreloadManager.a(true);
+    ((NowEnterManager)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(264)).a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager$WebProcessBindCallback);
     new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("year_icon").d("middle_view").a();
     return paramLayoutInflater;
+  }
+  
+  public void onDestroyView()
+  {
+    ((NowEnterManager)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(264)).b(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager$WebProcessBindCallback);
+    super.onDestroyView();
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      ((WebProcessManager)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(12)).e();
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.i("NowFestivalEnterFragment", 2, "preStartWebProcess, startTime=" + this.jdField_a_of_type_Long);
+      }
+    }
   }
 }
 

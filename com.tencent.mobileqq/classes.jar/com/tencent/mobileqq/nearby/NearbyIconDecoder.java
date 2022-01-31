@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
-import aelz;
-import aema;
+import aeuj;
+import aeuk;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -27,7 +27,7 @@ public class NearbyIconDecoder
 {
   Handler jdField_a_of_type_AndroidOsHandler;
   NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
-  NearbyProcObserver jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcObserver = new aema(this);
+  NearbyProcObserver jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcObserver = new aeuk(this);
   BitmapDecoder jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder;
   StringBuilder jdField_a_of_type_JavaLangStringBuilder;
   HashMap jdField_a_of_type_JavaUtilHashMap;
@@ -70,14 +70,14 @@ public class NearbyIconDecoder
       }
       try
       {
-        localBitmap2 = BitmapManager.a(BaseApplicationImpl.getApplication().getResources(), 2130845455);
+        localBitmap2 = BitmapManager.a(BaseApplicationImpl.getApplication().getResources(), 2130845536);
         localBitmap1 = localBitmap2;
         BaseApplicationImpl.sImageCache.put("StatusIcon_RichStatusDefaultSmall", localBitmap2, (byte)0);
         localBitmap1 = localBitmap2;
         return localBitmap1;
       }
       catch (OutOfMemoryError localOutOfMemoryError2) {}
-      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getApplication().getResources(), 2130845455);
+      localBitmap1 = BitmapManager.a(BaseApplicationImpl.getApplication().getResources(), 2130845536);
       return localBitmap1;
       if (BaseApplicationImpl.sImageCache != null)
       {
@@ -85,14 +85,14 @@ public class NearbyIconDecoder
         localBitmap1 = localBitmap2;
         if (localBitmap2 == null)
         {
-          localBitmap1 = BitmapManager.a(BaseApplicationImpl.getApplication().getResources(), 2130845456);
+          localBitmap1 = BitmapManager.a(BaseApplicationImpl.getApplication().getResources(), 2130845537);
           BaseApplicationImpl.sImageCache.put("StatusIcon_RichStatusDefaultSmall", localBitmap1, (byte)0);
           return localBitmap1;
         }
       }
       else
       {
-        return BitmapManager.a(BaseApplicationImpl.getApplication().getResources(), 2130845456);
+        return BitmapManager.a(BaseApplicationImpl.getApplication().getResources(), 2130845537);
         throw new IllegalArgumentException("type[" + paramInt1 + "] is not valid");
       }
     }
@@ -167,7 +167,7 @@ public class NearbyIconDecoder
   protected void a(String paramString, Bitmap paramBitmap)
   {
     NearbyUtils.a("NearbyIconDecoder", "notifyGetIcon", new Object[] { paramString, paramBitmap });
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.runOnUiThread(new aelz(this, paramString, paramBitmap));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.runOnUiThread(new aeuj(this, paramString, paramBitmap));
   }
   
   public void a(String paramString1, String paramString2)

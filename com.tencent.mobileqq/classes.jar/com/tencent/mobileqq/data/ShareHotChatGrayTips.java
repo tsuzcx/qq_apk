@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abvj;
+import acdg;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -119,7 +119,7 @@ public class ShareHotChatGrayTips
       }
       SpannableString localSpannableString = new SpannableString(this.mMsgContent);
       if ((i >= 0) && (j > i)) {
-        localSpannableString.setSpan(new abvj(paramQQAppInterface, paramContext, this, this.mHotnamecode), i, j, 33);
+        localSpannableString.setSpan(new acdg(paramQQAppInterface, paramContext, this, this.mHotnamecode), i, j, 33);
       }
       return localSpannableString;
     }

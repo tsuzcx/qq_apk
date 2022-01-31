@@ -1,56 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.DownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
 
 public class xfu
-  extends DownloadListener
+  implements View.OnClickListener
 {
-  public xfu(PreloadManager paramPreloadManager, String paramString, PreloadManager.DownloadCallback paramDownloadCallback) {}
+  public xfu(PayCodeEntryActivity paramPayCodeEntryActivity, xfw paramxfw) {}
   
-  public void onDoneFile(DownloadTask paramDownloadTask)
+  public void onClick(View paramView)
   {
-    int i = -5;
-    super.onDoneFile(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "downloadModule|done" + paramDownloadTask.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.a("payCodeEntry.cheCode", "actQQWlxclick", "0002");
+    paramView = new Intent("com.tencent.mobileqq.action.jtcode");
+    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity, JumpActivity.class);
+    if (!TextUtils.isEmpty(PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity))) {
+      paramView.putExtra("city_name", PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity));
     }
-    Object localObject = paramDownloadTask.a();
-    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
-    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
-    if (QWalletTools.c(localPreloadModule.mid, this.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadManager", 2, "downloadModule|done code" + paramDownloadTask.jdField_a_of_type_Int);
-      }
-      if (paramDownloadTask.jdField_a_of_type_Int != 0) {
-        break label168;
-      }
-      i = 0;
-      if (localObject != null) {
-        break label183;
-      }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.b)) {
+      paramView.putExtra("city_code", this.jdField_a_of_type_Xfw.b);
     }
-    label168:
-    label183:
-    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$DownloadCallback.onDownloadResFinished(localPreloadModule.mid, i, ((File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
-      return;
-      if (paramDownloadTask.jdField_a_of_type_Int == -5) {
-        break;
-      }
-      i = -6;
-      break;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.a)) {
+      paramView.putExtra("ykt_id", this.jdField_a_of_type_Xfw.a);
     }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.c)) {
+      paramView.putExtra("show_name", this.jdField_a_of_type_Xfw.c);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.startActivityForResult(paramView, 102);
   }
 }
 

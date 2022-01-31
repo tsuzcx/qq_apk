@@ -1,54 +1,47 @@
-import com.tencent.mobileqq.app.EmoticonHandler;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.EmojiManager.SyncFetchEmoticonKeyObserver;
-import com.tencent.mobileqq.emoticon.ReqInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.mobileqq.data.RespProcessor;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import cooperation.qzone.QZoneCommonRequest;
+import cooperation.qzone.util.ProtocolUtils;
+import mqq.app.MSFServlet;
 
-public class acdb
-  extends EmojiManager.SyncFetchEmoticonKeyObserver
+public final class acdb
+  implements RespProcessor
 {
-  public acdb(EmojiManager paramEmojiManager, EmoticonHandler paramEmoticonHandler, ReqInfo paramReqInfo, Object paramObject)
+  public void a(MSFServlet paramMSFServlet, QzoneCommonIntent paramQzoneCommonIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramEmojiManager, paramEmoticonHandler);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
-    }
-    ??? = (EmoticonHandler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    int i = paramEmoticonResp.epId;
-    int j = paramEmoticonResp.timestamp;
-    Object localObject1 = (ArrayList)paramEmoticonResp.data;
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
+    boolean bool = true;
+    Object localObject = paramQzoneCommonIntent.getRequest();
+    String str = ((QZoneCommonRequest)localObject).uniKey();
+    int i = ((QZoneCommonRequest)localObject).a();
+    int[] arrayOfInt = new int[1];
+    if (!paramFromServiceMsg.isSuccess())
     {
-      ((EmoticonHandler)???).b(this);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonReqInfo.b = paramEmoticonResp.timeoutReason;
+      arrayOfInt[0] = (paramFromServiceMsg.getResultCode() + 300000);
+      paramFromServiceMsg = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneCommonIntent", 2, String.format("cmd :%s, success:%b,code:%d", new Object[] { ((QZoneCommonRequest)localObject).getCmdString(), Boolean.valueOf(QzoneCommonIntent.succeeded(arrayOfInt[0])), Integer.valueOf(arrayOfInt[0]) }));
+      }
+      localObject = new Bundle();
+      ((Bundle)localObject).putSerializable("key_response", paramFromServiceMsg);
+      ((Bundle)localObject).putInt("key_response_code", arrayOfInt[0]);
+      if (paramQzoneCommonIntent.getObserver() == null) {
+        QLog.e("QzoneCommonIntent", 1, "observer ==null,无法回调，请检查是否有调用setObserver");
+      }
+      if ((paramFromServiceMsg == null) || (!QzoneCommonIntent.succeeded(arrayOfInt[0]))) {
+        break label185;
+      }
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        ??? = this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
-        if (localObject1 == null)
-        {
-          localObject1 = "null";
-          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
-          return;
-        }
-      }
-      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
+      paramMSFServlet.notifyObserver(paramQzoneCommonIntent, i, bool, (Bundle)localObject, null);
+      return;
+      paramFromServiceMsg = ProtocolUtils.a(paramFromServiceMsg.getWupBuffer(), str, arrayOfInt);
+      break;
+      label185:
+      bool = false;
     }
   }
 }

@@ -1,128 +1,26 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.PublicAccountItem;
-import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class almf
-  implements View.OnClickListener
+  implements Runnable
 {
-  private long jdField_a_of_type_Long;
+  public almf(OpenJsBridge.OpenJsBridgeListener paramOpenJsBridgeListener, String paramString1, String paramString2, WebView paramWebView) {}
   
-  public almf(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void onClick(View paramView)
+  public void run()
   {
-    if (paramView == null) {}
-    do
+    LogUtility.b("Response", "AsyncInterface_end:javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':0,'data':" + this.b + "});");
+    try
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              l = System.currentTimeMillis();
-            } while (Math.abs(l - this.jdField_a_of_type_Long) < 1000L);
-            this.jdField_a_of_type_Long = l;
-            paramView = (DataTag)paramView.getTag();
-            switch (paramView.jdField_a_of_type_Int)
-            {
-            default: 
-              return;
-            case 4: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.b(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 7: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f();
-              return;
-            case 20: 
-              ReportController.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "1", "1", "", "");
-              if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 6)
-              {
-                ChatActivityUtils.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, 1024, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo.nickname, null, true, null, true, true, null, "from_internal");
-                return;
-              }
-              FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-              return;
-            case 55: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-              return;
-            case 8: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d(((Integer)paramView.jdField_a_of_type_JavaLangObject).intValue());
-              return;
-            case 52: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 47: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 48: 
-              localObject = (String[])paramView.jdField_a_of_type_JavaLangObject;
-              paramView = localObject[0];
-              localObject = localObject[1];
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(paramView, (String)localObject);
-              return;
-            case 49: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 50: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a((PublicAccountItem)paramView.jdField_a_of_type_JavaLangObject);
-              return;
-            case 51: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d(String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-              return;
-            case 53: 
-              this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.d();
-              return;
-            case 54: 
-              paramView = JumpParser.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-            }
-          } while (paramView == null);
-          paramView.b();
-          return;
-          QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, String.valueOf(paramView.jdField_a_of_type_JavaLangObject));
-          return;
-          paramView = String.valueOf(paramView.jdField_a_of_type_JavaLangObject);
-        } while ((TextUtils.isEmpty(paramView)) || (!paramView.contains("|")));
-        paramView = paramView.split("\\|");
-      } while ((paramView == null) || (paramView.length != 2));
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, paramView[0], paramView[1]);
-      return;
-    } while (QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity));
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, true);
-    if ((this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null))
-    {
-      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback('interface." + this.jdField_a_of_type_JavaLangString + "',{guid:" + this.jdField_a_of_type_ComTencentOpenAppcommonJsOpenJsBridge$OpenJsBridgeListener.b + ",'r':0,'data':" + this.b + "});");
       return;
     }
-    this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.a(2131430029);
-    paramView = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler;
-    Object localObject = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentAccountUin();
-    String str = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
-    long l = ProfileActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, false);
-    paramView.a((String)localObject, str, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", l, 10004, new byte[] { 0 }, (byte)0);
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     almf
  * JD-Core Version:    0.7.0.1
  */

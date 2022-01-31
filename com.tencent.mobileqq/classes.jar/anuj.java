@@ -1,19 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager.LoadMusicStepListener;
+import java.util.Iterator;
+import java.util.List;
 
 public class anuj
-  extends SimpleJob
+  implements Runnable
 {
-  public anuj(EditVideoPartManager paramEditVideoPartManager, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString) {}
+  public anuj(QIMMusicConfigManager paramQIMMusicConfigManager, int paramInt, boolean paramBoolean, Object paramObject) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    StoryReportor.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    Iterator localIterator = QIMMusicConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager).iterator();
+    while (localIterator.hasNext()) {
+      ((QIMMusicConfigManager.LoadMusicStepListener)localIterator.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+    }
   }
 }
 

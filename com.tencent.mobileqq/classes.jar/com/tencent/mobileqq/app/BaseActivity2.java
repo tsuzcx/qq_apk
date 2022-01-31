@@ -33,21 +33,21 @@ import com.tencent.theme.SkinnableActivityProcesser.Callback;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import mqq.app.BaseActivity;
-import zan;
-import zao;
+import zhn;
+import zho;
 
 public class BaseActivity2
   extends BaseActivity
   implements SkinnableActivityProcesser.Callback
 {
-  public static boolean T = true;
+  public static boolean V = true;
   public static BaseActivity2 a;
   private static ShakeListener jdField_a_of_type_ComTencentMobileqqAppShakeListener;
   private static boolean jdField_a_of_type_Boolean;
-  public boolean R = true;
-  protected boolean S = true;
-  public boolean U = true;
-  public boolean V = true;
+  public boolean T = true;
+  protected boolean U = true;
+  public boolean W = true;
+  public boolean X = true;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private FlingHandler jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler;
   public ScreenShot a;
@@ -81,7 +81,7 @@ public class BaseActivity2
   {
     if (paramBoolean) {
       if (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
-        ThreadManager.post(new zan(this), 5, null, true);
+        ThreadManager.post(new zhn(this), 5, null, true);
       }
     }
     while (jdField_a_of_type_ComTencentMobileqqAppShakeListener == null) {
@@ -220,16 +220,16 @@ public class BaseActivity2
         for (;;)
         {
           registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-          if ((this.U) && (ImmersiveUtils.isSupporImmersive() == 1))
+          if ((this.W) && (ImmersiveUtils.isSupporImmersive() == 1))
           {
             getWindow().addFlags(67108864);
-            if (this.V)
+            if (this.X)
             {
-              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131494254));
+              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131494260));
               if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
                 break;
               }
-              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130843344));
+              this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setStatusDrawable(getResources().getDrawable(2130843377));
             }
           }
           return;
@@ -273,21 +273,21 @@ public class BaseActivity2
         }
       }
       else {
-        this.S = paramBundle.getBoolean("PhotoConst.ALLOW_LOCK", true);
+        this.U = paramBundle.getBoolean("PhotoConst.ALLOW_LOCK", true);
       }
     }
     else
     {
       if (!jdField_a_of_type_Boolean)
       {
-        if (SettingCloneUtil.readValue(this, null, getString(2131433581), "qqsetting_screenshot_key", false)) {
+        if (SettingCloneUtil.readValue(this, null, getString(2131433595), "qqsetting_screenshot_key", false)) {
           a(true);
         }
         jdField_a_of_type_Boolean = true;
       }
       paramBundle = new IntentFilter();
       paramBundle.addAction("android.intent.action.SCREEN_OFF");
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new zao(this, null);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new zho(this, null);
     }
     label373:
   }
@@ -325,7 +325,7 @@ public class BaseActivity2
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " onPause");
     }
-    this.R = true;
+    this.T = true;
     StatisticCollector.a(this).c(this);
     a();
   }
@@ -341,7 +341,7 @@ public class BaseActivity2
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " onResume ");
     }
-    this.R = false;
+    this.T = false;
     StatisticCollector.a(this).b(this);
     jdField_a_of_type_ComTencentMobileqqAppBaseActivity2 = this;
     int i;
@@ -356,25 +356,25 @@ public class BaseActivity2
       }
       localEditor.apply();
       label130:
-      T = GesturePWDUtils.getAppForground(this);
+      V = GesturePWDUtils.getAppForground(this);
       if (QLog.isDevelopLevel()) {
-        QLog.d("BaseActivity2", 4, "onResume.mAppForground = " + T + ",mCanLock=" + this.S);
+        QLog.d("BaseActivity2", 4, "onResume.mAppForground = " + V + ",mCanLock=" + this.U);
       }
-      if ((T) || (!this.S) || (this.q == null) || (!GesturePWDUtils.getJumpLock(this, this.q))) {
+      if ((V) || (!this.U) || (this.q == null) || (!GesturePWDUtils.getJumpLock(this, this.q))) {
         break label283;
       }
       S();
     }
     for (;;)
     {
-      if (!T)
+      if (!V)
       {
-        T = true;
-        GesturePWDUtils.setAppForground(this, T);
+        V = true;
+        GesturePWDUtils.setAppForground(this, V);
       }
       this.v = 0;
-      this.S = true;
-      if ((this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null) && (this.V)) {
+      this.U = true;
+      if ((this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null) && (this.X)) {
         this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.init();
       }
       return;
@@ -384,7 +384,7 @@ public class BaseActivity2
       localEditor.commit();
       break label130;
       label283:
-      if ((!T) && (this.S)) {
+      if ((!V) && (this.U)) {
         T();
       }
     }
@@ -408,9 +408,9 @@ public class BaseActivity2
       QLog.d("BaseActivity2", 2, "[" + hashCode() + "]" + this.jdField_a_of_type_JavaLangString + " onStop");
     }
     this.v = 1;
-    T = GesturePWDUtils.isAppOnForegroundByTasks(this);
-    if (!T) {
-      GesturePWDUtils.setAppForground(this, T);
+    V = GesturePWDUtils.isAppOnForegroundByTasks(this);
+    if (!V) {
+      GesturePWDUtils.setAppForground(this, V);
     }
     if (QLog.isColorLevel()) {
       QLog.d("BaseActivity2", 2, "zsw subaccount onStop stop get sub msg AbsAppInter.visibleActCnt = ?");
@@ -421,7 +421,7 @@ public class BaseActivity2
   {
     this.v = 2;
     if (a(paramIntent)) {
-      this.S = false;
+      this.U = false;
     }
     switch (2)
     {

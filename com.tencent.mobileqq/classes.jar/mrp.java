@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.RecommendAndAd;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.ResponseCallback;
+import java.util.List;
 
-public class mrp
-  implements Runnable
+public final class mrp
+  implements FastWebRequestUtil.ResponseCallback
 {
-  public mrp(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
+  public mrp(FastWebRequestUtil.RecommendAndAd paramRecommendAndAd) {}
   
-  public void run()
+  public void a(boolean paramBoolean, List paramList)
   {
-    this.a.b(false);
+    this.a.b(paramList);
   }
 }
 

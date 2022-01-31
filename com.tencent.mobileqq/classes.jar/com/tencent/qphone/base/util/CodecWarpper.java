@@ -132,12 +132,40 @@ public abstract class CodecWarpper
   
   public static byte[] nativeEncodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, boolean paramBoolean)
   {
-    return encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramArrayOfByte2, paramBoolean);
+    Object localObject = null;
+    try
+    {
+      paramString1 = encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramArrayOfByte2, paramBoolean);
+      return paramString1;
+    }
+    catch (Exception paramString2)
+    {
+      do
+      {
+        paramString1 = localObject;
+      } while (!QLog.isColorLevel());
+      QLog.i(tag, 2, "nativeEncodeRequest 2 exception", paramString2);
+    }
+    return null;
   }
   
   public static byte[] nativeEncodeRequest(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, String paramString6, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, boolean paramBoolean)
   {
-    return encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramArrayOfByte2, paramArrayOfByte3, paramBoolean);
+    Object localObject = null;
+    try
+    {
+      paramString1 = encodeRequest(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramArrayOfByte1, paramInt2, paramInt3, paramString6, paramByte1, paramByte2, paramArrayOfByte2, paramArrayOfByte3, paramBoolean);
+      return paramString1;
+    }
+    catch (Exception paramString2)
+    {
+      do
+      {
+        paramString1 = localObject;
+      } while (!QLog.isColorLevel());
+      QLog.i(tag, 2, "nativeEncodeRequest 1 exception", paramString2);
+    }
+    return null;
   }
   
   public static void nativeOnConnClose() {}

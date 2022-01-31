@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.graytip;
 
-import adou;
+import adxc;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -151,7 +151,7 @@ public class MessageForUniteGrayTip
     if ((this.tipParam == null) || (this.tipParam.jdField_a_of_type_JavaUtilArrayList == null) || (this.tipParam.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
       return new SpannableStringBuilder(this.msg);
     }
-    Collections.sort(this.tipParam.jdField_a_of_type_JavaUtilArrayList, new adou(this));
+    Collections.sort(this.tipParam.jdField_a_of_type_JavaUtilArrayList, new adxc(this));
     StringBuilder localStringBuilder = new StringBuilder(256);
     localStringBuilder.append("revoke msg GrayTips -> msg=").append(this.msg);
     Object localObject3 = "";

@@ -1,11 +1,11 @@
 package cooperation.qzone.util;
 
-import anau;
-import anav;
-import anaw;
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
+import anit;
+import aniu;
+import aniv;
 import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -421,8 +421,8 @@ public class QZoneAppCtrlUploadFileLogic
       {
         return;
       } while ((paramLong1 <= 0L) || (paramLong2 <= paramLong1));
-      localObject1 = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace").listFiles(new anau(paramLong1, paramLong2));
-      localObject2 = new anav();
+      localObject1 = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "trace").listFiles(new anit(paramLong1, paramLong2));
+      localObject2 = new aniu();
       paramContext = new ArrayList();
       if ((localObject1 != null) && (localObject1.length > 0))
       {
@@ -639,12 +639,12 @@ public class QZoneAppCtrlUploadFileLogic
   public static void b(Context paramContext, String paramString, long paramLong1, long paramLong2)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    anaw localanaw;
+    aniv localaniv;
     do
     {
       return;
       paramContext = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "mobileqq" + File.separator + "log" + File.separator + "avsdk");
-      localanaw = new anaw(paramLong1, paramLong2);
+      localaniv = new aniv(paramLong1, paramLong2);
     } while ((!paramContext.isDirectory()) || (paramContext.listFiles() == null));
     Object localObject = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + b + File.separator + "avsdk";
     String str = (String)localObject + File.separator + "upload.log.zip";
@@ -652,7 +652,7 @@ public class QZoneAppCtrlUploadFileLogic
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    a(paramContext, localanaw, str, paramString);
+    a(paramContext, localaniv, str, paramString);
   }
   
   /* Error */

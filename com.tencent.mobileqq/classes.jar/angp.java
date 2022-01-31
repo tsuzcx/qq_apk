@@ -1,46 +1,17 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.wadl.ipc.IWadlProxyServiceMonitor;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.share.QZoneShareActivity;
+import mqq.os.MqqHandler;
 
-public final class angp
-  extends Handler
+public class angp
+  implements Runnable
 {
-  public angp(WadlProxyServiceManager paramWadlProxyServiceManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public angp(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.b();
-      continue;
-      this.a.c();
-      continue;
-      Bundle localBundle = paramMessage.getData();
-      this.a.a.post(new angq(this, localBundle));
-      continue;
-      localBundle = paramMessage.getData();
-      this.a.a.post(new angr(this, localBundle));
-      continue;
-      if (WadlProxyServiceManager.a(this.a) != null)
-      {
-        WadlProxyServiceManager.a(this.a).a();
-        continue;
-        if (WadlProxyServiceManager.a(this.a) != null) {
-          WadlProxyServiceManager.a(this.a).b();
-        }
-      }
-    }
+    int i = this.a.b();
+    int j = this.a.a();
+    ThreadManager.getUIHandler().post(new angq(this, i - j));
   }
 }
 

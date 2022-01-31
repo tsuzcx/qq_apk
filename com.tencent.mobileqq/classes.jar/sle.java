@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.portal.PortalManager;
 
 public class sle
-  implements Comparator
+  implements View.OnTouchListener
 {
-  private sle(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public sle(Conversation paramConversation) {}
   
-  public int a(slc paramslc1, slc paramslc2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return paramslc1.c.compareToIgnoreCase(paramslc2.c);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      Conversation.a(this.a).removeView(Conversation.a(this.a));
+      paramView = (PortalManager)this.a.a.getManager(78);
+      if (paramView != null) {
+        paramView.a(this.a.a(), true);
+      }
+      Conversation.a(this.a, null);
+    }
+    return true;
   }
 }
 

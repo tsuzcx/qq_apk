@@ -1,64 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.widget.QQTabWidget.onTabWidgetTouchMoveListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class tfw
-  implements ActionSheet.OnButtonClickListener
+  implements QQTabWidget.onTabWidgetTouchMoveListener
 {
-  public tfw(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity, String paramString1, String paramString2, ActionSheet paramActionSheet) {}
+  public tfw(MainFragment paramMainFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    paramView = paramView.getContext();
-    switch (paramInt)
+    int i = GesturePWDUtils.getGesturePWDState(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
+    int j = GesturePWDUtils.getGesturePWDMode(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
+    if ((i == 2) && (j == 20))
     {
-    default: 
-      return;
-    case 0: 
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "CliOper", "", "", "0X8005B7C", "0X8005B7C", 0, 0, "", "", "", "");
-      if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity))
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getString(2131433009), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.getTitleBarHeight());
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("mainactivity", 2, "gesturepwd manual move.");
       }
-      paramView = (SecSvcHandler)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app.a(34);
-      if (paramView != null) {
-        paramView.a(3, this.jdField_a_of_type_JavaLangString, this.b);
-      }
-      PhoneUnityBindInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity);
-      PhoneUnityBindInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131434453, 1000L, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.b = false;
-      return;
-    case 1: 
-      if (!NetworkUtil.d(paramView))
-      {
-        PhoneUnityBindInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity, 2131434613);
-        return;
-      }
-      paramView = new Intent(paramView, BindNumberActivity.class);
-      paramView.putExtra("cmd_param_is_from_uni", true);
-      paramView.putExtra("cmd_param_is_from_change_bind", true);
-      paramView.putExtra("kNeedUnbind", true);
-      paramView.putExtra("kUnityOther", true);
-      paramView.putExtra("kSrouce", this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.a);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.startActivityForResult(paramView, 1004);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "CliOper", "", "", "0X8005B7D", "0X8005B7D", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.b = false;
-      return;
+      ((SplashActivity)this.a.getActivity()).startUnlockActivity();
+      this.a.getActivity().overridePendingTransition(2131034134, 2131034131);
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.app, "CliOper", "", "", "0X8005B7E", "0X8005B7E", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.b = true;
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneUnityBindInfoActivity.finish();
   }
 }
 

@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.List;
 
 public class yii
   implements Runnable
 {
-  public yii(SystemMsgListAdapter paramSystemMsgListAdapter) {}
+  public yii(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame, String paramString, List paramList) {}
   
   public void run()
   {
-    SystemMsgListAdapter.a(this.a).a(true);
-    ArrayList localArrayList = SystemMsgListAdapter.a(this.a).b();
-    this.a.a(localArrayList);
-    SystemMsgListAdapter.a(this.a).runOnUiThread(new yij(this, localArrayList));
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopAddFrdsInnerFrame.a.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_send", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_JavaUtilList.size()), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yii
  * JD-Core Version:    0.7.0.1
  */

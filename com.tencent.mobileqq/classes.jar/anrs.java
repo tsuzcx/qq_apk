@@ -1,47 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.paster.PasterDataManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anrs
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  public anrs(EditProviderPart paramEditProviderPart) {}
+  public anrs(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (EditProviderPart.a(this.a) == null) {
-      EditProviderPart.a(this.a, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a());
-    }
-    if (EditProviderPart.a(this.a).c()) {
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      }
-    }
-    while (((PasterDataManager)QIMManager.a(4)).a())
+    if (QIMEffectCameraCaptureUnit.d(this.a) != null)
     {
-      return false;
-      this.a.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.a.b = paramMotionEvent.getY();
-      continue;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      if ((Math.abs(f1 - this.a.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.a.b) < 10.0F))
-      {
-        paramView = (EditDoodleExport)this.a.a(EditDoodleExport.class);
-        if (paramView != null) {
-          paramView.j_();
-        }
-      }
+      QIMEffectCameraCaptureUnit.d(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.d(this.a).setVisibility(8);
     }
-    return EditProviderPart.a(this.a).a(paramMotionEvent);
+    this.a.j = false;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.j = true;
   }
 }
 

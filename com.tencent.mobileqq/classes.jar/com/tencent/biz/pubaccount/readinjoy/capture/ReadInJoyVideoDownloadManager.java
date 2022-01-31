@@ -10,16 +10,16 @@ import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import java.io.File;
 import java.io.IOException;
-import lif;
-import lig;
-import lih;
+import lkt;
+import lku;
+import lkv;
 
 public class ReadInJoyVideoDownloadManager
 {
   private ReadInJoyVideoDownloadManager.VideoDownloadCallback jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoDownloadManager$VideoDownloadCallback;
   private HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = new HttpNetReq();
   private OldHttpEngine jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine;
-  private IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new lif(this);
+  private IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new lkt(this);
   private String jdField_a_of_type_JavaLangString;
   private String b;
   private String c;
@@ -29,7 +29,7 @@ public class ReadInJoyVideoDownloadManager
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoDownloadManager$VideoDownloadCallback = paramVideoDownloadCallback;
-    this.b = AppConstants.ck;
+    this.b = AppConstants.cl;
     this.c = (this.b + this.jdField_a_of_type_JavaLangString);
     paramString = new HttpCommunicator(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount, 128);
     paramString.a();
@@ -43,7 +43,7 @@ public class ReadInJoyVideoDownloadManager
   private void a(String paramString)
   {
     this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = new HttpNetReq();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new lih(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new lkv(this);
     this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.c = this.c;
@@ -62,7 +62,7 @@ public class ReadInJoyVideoDownloadManager
       }
       return;
     }
-    ThirdVideoManager.a().a(this.jdField_a_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new lig(this));
+    ThirdVideoManager.a().a(this.jdField_a_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new lku(this));
   }
   
   public boolean a()

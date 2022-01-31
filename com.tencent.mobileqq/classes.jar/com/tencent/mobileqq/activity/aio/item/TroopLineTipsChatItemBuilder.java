@@ -18,7 +18,7 @@ import com.tencent.mobileqq.data.MessageForSplitLineTips;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import vkl;
+import vpo;
 
 public class TroopLineTipsChatItemBuilder
   extends AbstractChatItemBuilder
@@ -32,11 +32,11 @@ public class TroopLineTipsChatItemBuilder
   {
     if (paramView == null)
     {
-      paramViewHolder = (vkl)paramViewHolder;
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968788, null);
-      paramLinearLayout = (TextView)paramView.findViewById(2131363789);
-      paramOnLongClickAndTouchListener = (TextView)paramView.findViewById(2131363801);
-      TextView localTextView = (TextView)paramView.findViewById(2131363802);
+      paramViewHolder = (vpo)paramViewHolder;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968792, null);
+      paramLinearLayout = (TextView)paramView.findViewById(2131363813);
+      paramOnLongClickAndTouchListener = (TextView)paramView.findViewById(2131363825);
+      TextView localTextView = (TextView)paramView.findViewById(2131363826);
       paramLinearLayout.setMovementMethod(null);
       paramLinearLayout.setGravity(17);
       paramViewHolder.b = paramLinearLayout;
@@ -47,8 +47,8 @@ public class TroopLineTipsChatItemBuilder
       if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
         break label208;
       }
-      paramViewHolder.c.setBackgroundResource(2130840579);
-      paramViewHolder.d.setBackgroundResource(2130840579);
+      paramViewHolder.c.setBackgroundResource(2130840594);
+      paramViewHolder.d.setBackgroundResource(2130840594);
       label120:
       if ((paramMessageRecord.istroop != 1) || (!AnonymousChatHelper.a().a(paramMessageRecord.senderuin))) {
         break label229;
@@ -65,11 +65,11 @@ public class TroopLineTipsChatItemBuilder
       default: 
         paramViewHolder.b.setText(paramMessageRecord.msgContent);
         return paramView;
-        paramViewHolder = (vkl)paramView.getTag();
+        paramViewHolder = (vpo)paramView.getTag();
         break label92;
         label208:
-        paramViewHolder.c.setBackgroundResource(2130840578);
-        paramViewHolder.d.setBackgroundResource(2130840578);
+        paramViewHolder.c.setBackgroundResource(2130840593);
+        paramViewHolder.d.setBackgroundResource(2130840593);
         break label120;
         label229:
         paramViewHolder.b.setTextColor(paramView.getResources().getColorStateList(2131492892));
@@ -81,7 +81,7 @@ public class TroopLineTipsChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new vkl(this);
+    return new vpo(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

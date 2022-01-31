@@ -42,7 +42,7 @@ public class EmptyPart
   {
     paramViewGroup = new RelativeLayout(this.a);
     paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
-    paramViewGroup.setBackgroundResource(2130845870);
+    paramViewGroup.setBackgroundResource(2130845950);
     paramInt = -2170912;
     QQStoryContext.a();
     if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {

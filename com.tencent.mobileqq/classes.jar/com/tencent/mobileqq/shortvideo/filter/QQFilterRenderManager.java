@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import aibf;
-import aibg;
-import aibh;
+import aifx;
+import aify;
+import aifz;
 import android.annotation.SuppressLint;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -53,7 +53,7 @@ public class QQFilterRenderManager
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 0L;
-  private aibh jdField_a_of_type_Aibh = new aibh(null);
+  private aifz jdField_a_of_type_Aifz = new aifz(null);
   private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
   private MovieFilterGesture jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureMovieFilterGesture;
   private QQDanceEventHandler jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQDanceEventHandler;
@@ -114,7 +114,7 @@ public class QQFilterRenderManager
         {
           i += 1;
           break;
-          r();
+          t();
           continue;
           a();
           continue;
@@ -128,11 +128,14 @@ public class QQFilterRenderManager
           continue;
           h();
           continue;
-          s();
-          continue;
-          m();
+          u();
           continue;
           n();
+          continue;
+          o();
+          continue;
+          a();
+          p();
           continue;
           a();
           continue;
@@ -142,21 +145,21 @@ public class QQFilterRenderManager
     }
   }
   
-  private void a(int paramInt, aibh paramaibh)
+  private void a(int paramInt, aifz paramaifz)
   {
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
     int i = RetrieveDataManager.DATA_TYPE.RGBA.value;
     if (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector != null) {
       i = this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.getDataType().value;
     }
-    paramaibh.jdField_a_of_type_ArrayOfByte = RetrieveDataManager.getInstance().retrieveData(i, paramInt, paramaibh.jdField_a_of_type_Int, paramaibh.jdField_b_of_type_Int);
+    paramaifz.jdField_a_of_type_ArrayOfByte = RetrieveDataManager.getInstance().retrieveData(i, paramInt, paramaifz.jdField_a_of_type_Int, paramaifz.jdField_b_of_type_Int);
     this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
     if (SLog.a()) {
       SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doFaceDetectInitAndFlip " + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L + "us]");
     }
   }
   
-  private void a(aibh paramaibh, boolean paramBoolean)
+  private void a(aifz paramaifz, boolean paramBoolean)
   {
     try
     {
@@ -170,20 +173,20 @@ public class QQFilterRenderManager
           SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doTrackProceses=" + l + "us] forceDetect=" + paramBoolean);
         }
         if ((paramBoolean) || (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.needDetectFace())) {
-          this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.postJob(new aibg(this, paramaibh));
+          this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.postJob(new aify(this, paramaifz));
         }
         if (!this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.detectExpression(2)) {
           break;
         }
         this.jdField_a_of_type_Boolean = true;
         return;
-        this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.doTrack(paramaibh.jdField_a_of_type_ArrayOfByte, paramaibh.jdField_a_of_type_Int, paramaibh.jdField_b_of_type_Int);
+        this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.doTrack(paramaifz.jdField_a_of_type_ArrayOfByte, paramaifz.jdField_a_of_type_Int, paramaifz.jdField_b_of_type_Int);
       }
       this.jdField_a_of_type_Boolean = false;
     }
-    catch (Throwable paramaibh)
+    catch (Throwable paramaifz)
     {
-      paramaibh.printStackTrace();
+      paramaifz.printStackTrace();
       return;
     }
   }
@@ -212,6 +215,20 @@ public class QQFilterRenderManager
     }
   }
   
+  private void c(List paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        FilterDesc localFilterDesc = (FilterDesc)paramList.next();
+        this.jdField_a_of_type_JavaUtilList.add(localFilterDesc);
+      }
+    }
+  }
+  
   private void d(FilterDesc paramFilterDesc)
   {
     List localList = a(90);
@@ -228,21 +245,7 @@ public class QQFilterRenderManager
     QmcfManager.a().a(i, paramFilterDesc.b(SdkContext.a().a().a().a()));
   }
   
-  private void d(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        FilterDesc localFilterDesc = (FilterDesc)paramList.next();
-        this.jdField_a_of_type_JavaUtilList.add(localFilterDesc);
-      }
-    }
-  }
-  
-  private void q()
+  private void s()
   {
     this.jdField_g_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
@@ -250,25 +253,25 @@ public class QQFilterRenderManager
     GestureMgrRecognize.a().b();
   }
   
-  private void r()
+  private void t()
   {
     a(new QQPtvVideoFilter(40, this));
   }
   
-  private void s()
+  private void u()
   {
     a(new QQMovieFilter(this));
   }
   
-  private void t()
+  private void v()
   {
     VideoPreviewFaceOutlineDetector.getInstance().setFaceDetectMode(FaceDetector.FACE_DETECT_MODE.MULTIPLE);
     RendererUtils.setEnableLog(false);
   }
   
-  private void u()
+  private void w()
   {
-    q();
+    s();
     a(null);
     this.jdField_a_of_type_JavaUtilMap.clear();
   }
@@ -394,7 +397,7 @@ public class QQFilterRenderManager
       while (((Iterator)localObject).hasNext())
       {
         QQBaseFilter localQQBaseFilter = (QQBaseFilter)((Iterator)localObject).next();
-        if (localQQBaseFilter.i_()) {
+        if (localQQBaseFilter.f_()) {
           return localQQBaseFilter;
         }
       }
@@ -433,6 +436,15 @@ public class QQFilterRenderManager
     QQSpecialAVFilter localQQSpecialAVFilter = new QQSpecialAVFilter(80, this);
     a(localQQSpecialAVFilter);
     return localQQSpecialAVFilter;
+  }
+  
+  public QQTransferFilter a()
+  {
+    QQTransferFilter localQQTransferFilter = new QQTransferFilter(this);
+    a(localQQTransferFilter);
+    localQQTransferFilter.d();
+    localQQTransferFilter.b(this.jdField_f_of_type_Int, this.jdField_g_of_type_Int);
+    return localQQTransferFilter;
   }
   
   public List a()
@@ -497,19 +509,14 @@ public class QQFilterRenderManager
     e();
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_Aibh.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Aibh.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      this.jdField_a_of_type_Aifz.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Aifz.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
       if (this.jdField_f_of_type_Boolean)
       {
-        a(paramInt, this.jdField_a_of_type_Aibh);
-        a(this.jdField_a_of_type_Aibh, false);
+        a(paramInt, this.jdField_a_of_type_Aifz);
+        a(this.jdField_a_of_type_Aifz, false);
       }
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    a(new QQScaleFilter(150, this, paramInt1, paramInt2));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -518,9 +525,12 @@ public class QQFilterRenderManager
     this.jdField_e_of_type_Int = paramInt4;
     this.jdField_f_of_type_Int = paramInt1;
     this.jdField_g_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Int = ((int)(this.jdField_f_of_type_Int * VideoMaterialUtil.SCALE_FACE_DETECT));
-    this.jdField_b_of_type_Int = ((int)(this.jdField_g_of_type_Int * VideoMaterialUtil.SCALE_FACE_DETECT));
-    this.jdField_c_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Int * 4);
+    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int == 0) || (this.jdField_c_of_type_Int == 0) || (this.jdField_a_of_type_Int < 90) || (this.jdField_b_of_type_Int < 120))
+    {
+      this.jdField_a_of_type_Int = ((int)(this.jdField_f_of_type_Int * VideoMaterialUtil.SCALE_FACE_DETECT));
+      this.jdField_b_of_type_Int = ((int)(this.jdField_g_of_type_Int * VideoMaterialUtil.SCALE_FACE_DETECT));
+      this.jdField_c_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Int * 4);
+    }
     if (SLog.a()) {
       SLog.d("QQFilterRenderManager", "updatePreviewSize:: mSufaceWidth=" + this.jdField_d_of_type_Int + ";mSufaceHeight=" + this.jdField_e_of_type_Int + ";mFilterWidth=" + this.jdField_f_of_type_Int + ";mFilterHeight=" + this.jdField_g_of_type_Int + ";mFaceDetectWidth" + this.jdField_a_of_type_Int + ";mFaceDetectHeight=" + this.jdField_b_of_type_Int);
     }
@@ -553,7 +563,7 @@ public class QQFilterRenderManager
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramFilterDesc);
-    d(localArrayList);
+    c(localArrayList);
     if (paramFilterDesc == null)
     {
       b(null);
@@ -748,7 +758,7 @@ public class QQFilterRenderManager
   
   public void a(List paramList)
   {
-    d(paramList);
+    c(paramList);
     b(null);
     c(null);
     if ((paramList == null) || (paramList.size() == 0)) {
@@ -797,7 +807,7 @@ public class QQFilterRenderManager
       FaceDanceDetectTask.a("mFaceDetector.doTrack", l, SystemClock.elapsedRealtimeNanos());
       if (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.needDetectFace())
       {
-        this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.postJob(new aibf(this, paramArrayOfByte, paramInt1, paramInt2, paramIFaceDetectCallBack));
+        this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.postJob(new aifx(this, paramArrayOfByte, paramInt1, paramInt2, paramIFaceDetectCallBack));
         return;
       }
       if (paramIFaceDetectCallBack == null) {
@@ -840,6 +850,21 @@ public class QQFilterRenderManager
     return (a() != null) && (a().size() > 0);
   }
   
+  public boolean a(int paramInt)
+  {
+    boolean bool2 = false;
+    List localList = a(paramInt);
+    boolean bool1 = bool2;
+    if (localList != null)
+    {
+      bool1 = bool2;
+      if (localList.size() > 0) {
+        bool1 = ((QQBaseFilter)localList.get(0)).f_();
+      }
+    }
+    return bool1;
+  }
+  
   public boolean a(String paramString)
   {
     paramString = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
@@ -852,7 +877,7 @@ public class QQFilterRenderManager
   public byte[] a()
   {
     if (this.jdField_b_of_type_Boolean) {
-      return this.jdField_a_of_type_Aibh.jdField_a_of_type_ArrayOfByte;
+      return this.jdField_a_of_type_Aifz.jdField_a_of_type_ArrayOfByte;
     }
     return null;
   }
@@ -880,6 +905,20 @@ public class QQFilterRenderManager
   public long b()
   {
     return this.jdField_d_of_type_Long;
+  }
+  
+  public List b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      QQBaseFilter localQQBaseFilter = (QQBaseFilter)localIterator.next();
+      if (localQQBaseFilter.f_()) {
+        localArrayList.add(localQQBaseFilter);
+      }
+    }
+    return localArrayList;
   }
   
   public List b(int paramInt)
@@ -927,15 +966,10 @@ public class QQFilterRenderManager
     }
   }
   
-  public void b(int paramInt1, int paramInt2)
-  {
-    a(new QQGaussianBlurFilter(145, this, paramInt1, paramInt2));
-  }
-  
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     QQFilterLogManager.b("surfaceCreate");
-    t();
+    v();
     a(paramInt1, paramInt2, paramInt3, paramInt4);
     Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
@@ -977,10 +1011,21 @@ public class QQFilterRenderManager
     {
       bool1 = bool2;
       if (localList.size() > 0) {
-        bool1 = ((QQMovieFilter)localList.get(0)).i_();
+        bool1 = ((QQMovieFilter)localList.get(0)).f_();
       }
     }
     return bool1;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      if (((QQBaseFilter)localIterator.next()).c() == paramInt) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public int c()
@@ -1044,18 +1089,6 @@ public class QQFilterRenderManager
     QQFilterLogManager.c("surfaceChange");
   }
   
-  public void c(List paramList)
-  {
-    List localList = a(150);
-    if ((localList != null) && (localList.size() > 0)) {
-      ((QQScaleFilter)localList.get(0)).a(paramList);
-    }
-    localList = a(145);
-    if ((localList != null) && (localList.size() > 0)) {
-      ((QQGaussianBlurFilter)localList.get(0)).a(paramList);
-    }
-  }
-  
   public void c(boolean paramBoolean)
   {
     VideoPrefsUtil.setMaterialMute(paramBoolean);
@@ -1080,7 +1113,7 @@ public class QQFilterRenderManager
   {
     Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      if (((QQBaseFilter)localIterator.next()).i_()) {
+      if (((QQBaseFilter)localIterator.next()).f_()) {
         return true;
       }
     }
@@ -1116,18 +1149,6 @@ public class QQFilterRenderManager
       while (localIterator.hasNext()) {
         ((QQBaseFilter)localIterator.next()).f();
       }
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    List localList = a(150);
-    if ((localList != null) && (localList.size() > 0)) {
-      ((QQScaleFilter)localList.get(0)).a(paramInt);
-    }
-    localList = a(145);
-    if ((localList != null) && (localList.size() > 0)) {
-      ((QQGaussianBlurFilter)localList.get(0)).a(paramInt);
     }
   }
   
@@ -1192,18 +1213,6 @@ public class QQFilterRenderManager
         SLog.a("QQFilterRenderManager", "QQFilterRenderManager Exception:", localError);
         this.jdField_f_of_type_Boolean = false;
       }
-    }
-  }
-  
-  public void e(int paramInt)
-  {
-    List localList = a(150);
-    if ((localList != null) && (localList.size() > 0)) {
-      ((QQScaleFilter)localList.get(0)).c(paramInt);
-    }
-    localList = a(145);
-    if ((localList != null) && (localList.size() > 0)) {
-      ((QQGaussianBlurFilter)localList.get(0)).c(paramInt);
     }
   }
   
@@ -1317,26 +1326,36 @@ public class QQFilterRenderManager
   
   public void m()
   {
-    a(new QQDynamicStickersFilter(120, this));
+    a(new QQImage2FrameFilter(this));
   }
   
   public void n()
   {
-    a(new QQTrackerStickersFilter(110, this));
+    a(new QQDynamicStickersFilter(120, this));
   }
   
   public void o()
+  {
+    a(new QQTrackerStickersFilter(110, this));
+  }
+  
+  public void p()
+  {
+    a(new QQImgHazeRmoveFilter(13, this));
+  }
+  
+  public void q()
   {
     QQFilterLogManager.b("surfaceDestroyed");
     Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
       ((QQBaseFilter)localIterator.next()).e();
     }
-    u();
+    w();
     QQFilterLogManager.c("surfaceDestroyed");
   }
   
-  public void p()
+  public void r()
   {
     Object localObject = a(40);
     if ((localObject != null) && (((List)localObject).size() > 0))

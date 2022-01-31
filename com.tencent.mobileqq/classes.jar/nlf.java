@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
 
-class nlf
-  implements View.OnClickListener
+public class nlf
+  extends DownloadPic2FileJob
 {
-  nlf(nlc paramnlc) {}
+  public nlf(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
   
-  public void onClick(View paramView)
+  public boolean b()
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a(this.a.jdField_a_of_type_AndroidOsBundle);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
+    return true;
   }
 }
 

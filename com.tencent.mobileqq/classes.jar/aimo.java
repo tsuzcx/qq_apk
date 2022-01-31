@@ -1,53 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
-import com.tencent.mobileqq.teamwork.TeamWorkHandler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class aimo
-  implements WtTicketPromise
+class aimo
+  implements Runnable
 {
-  public aimo(TeamWorkHandler paramTeamWorkHandler, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
+  aimo(aimm paramaimm, StructingMsgItemBuilder.StructingMsgViewHolder paramStructingMsgViewHolder, QQAppInterface paramQQAppInterface) {}
   
-  public void Done(Ticket paramTicket)
+  public void run()
   {
-    int i;
-    if (paramTicket == null) {
-      i = 1;
+    int i = 1;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PortalManager", 4, "qiang hong bao lala ......struct msg getView report.........");
+    }
+    String str2 = "";
+    String str1;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+      {
+        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+        str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
+      }
     }
     for (;;)
     {
-      QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Done,result: " + i);
-      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler.a.getCurrentAccountUin());
-      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
+      PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(78);
+      if (localPortalManager != null) {}
+      for (int j = localPortalManager.a();; j = -1)
       {
-        TeamWorkHandler.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, 0);
-        QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server success!");
-      }
-      TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-      return;
-      if ((paramTicket != null) && (paramTicket._sig == null)) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004FFA", "0X8004FFA", 0, 0, "" + j, "" + i, "" + str1, str2);
+        return;
         i = 2;
-      } else {
-        i = 0;
+        break;
       }
+      str1 = "";
+      i = 0;
     }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Failed, " + paramErrMsg);
-    TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getSkeyFromServerAndRetry get skey from server : Timeout, " + paramErrMsg);
-    TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
   }
 }
 

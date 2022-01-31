@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.view.TouchDelegate;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 
 public class wqv
-  extends ReadInJoyObserver
+  implements Runnable
 {
-  public wqv(MainAssistObserver paramMainAssistObserver) {}
+  public wqv(TroopActivity paramTroopActivity, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
-    }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
-      this.a.g();
+    Object localObject = new Rect();
+    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
+    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
+    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
+    ((Rect)localObject).bottom += this.b;
+    ((Rect)localObject).left -= this.c;
+    ((Rect)localObject).right += this.d;
+    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
+    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
+      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
     }
   }
 }

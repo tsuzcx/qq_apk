@@ -1,24 +1,24 @@
-import com.tencent.av.random.RandomController;
-import com.tencent.av.random.RandomController.RandomListener;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
-class jke
-  implements Runnable
+public class jke
 {
-  jke(jkd paramjkd) {}
+  public int a;
+  public long a;
   
-  public void run()
+  public jke(AVNotifyCenter paramAVNotifyCenter, long paramLong, int paramInt)
   {
-    Iterator localIterator = RandomController.a(this.a.a).iterator();
-    while (localIterator.hasNext()) {
-      ((RandomController.RandomListener)localIterator.next()).a();
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "OtherTerChatingRoomInfo:mRoomId=" + this.jdField_a_of_type_Long + ", mSessionType=" + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     jke
  * JD-Core Version:    0.7.0.1
  */

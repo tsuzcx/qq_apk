@@ -1,19 +1,17 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class aayb
-  implements ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler
 {
-  public aayb(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference1, WeakReference paramWeakReference2, SessionInfo paramSessionInfo) {}
+  public long a;
+  public String a;
+  public final ArrayList a;
+  public long b = 0L;
+  public String b;
   
-  public void a(String paramString, Object paramObject, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, boolean paramBoolean)
+  public aayb()
   {
-    ArkAppCenter.a().postDelayed(new aayc(this, paramSearchArkBabyQInfo, paramBoolean), 200L);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

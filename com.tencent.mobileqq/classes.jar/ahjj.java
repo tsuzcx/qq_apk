@@ -1,34 +1,23 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
 public class ahjj
-  implements View.OnClickListener
+  implements TabBarView.OnTabChangeListener
 {
-  public ahjj(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public ahjj(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void onClick(View paramView)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    paramView = CapturePtvTemplateManager.a().a();
-    if ((paramView != null) && (!TextUtils.isEmpty(paramView.advertiseWebUrl)))
-    {
-      Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView.advertiseWebUrl);
-      this.a.getActivity().startActivity(localIntent);
-      CaptureReportUtil.l();
+    if (paramInt1 == paramInt2) {
+      return;
     }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setCurrentItem(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjj
  * JD-Core Version:    0.7.0.1
  */

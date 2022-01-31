@@ -1,87 +1,47 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import com.tencent.mobileqq.gameparty.GamePartyManager.AsyncRequestCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.ref.WeakReference;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import mqq.manager.TicketManager;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import java.lang.reflect.Field;
 
-public class ador
-  implements Runnable
+class ador
+  implements DialogInterface.OnClickListener
 {
-  public ador(GamePartyManager paramGamePartyManager, String paramString, GamePartyManager.AsyncRequestCallback paramAsyncRequestCallback) {}
+  ador(adoq paramadoq, TextView paramTextView, ProgressBar paramProgressBar) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject3 = (QQAppInterface)GamePartyManager.a(this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyManager).get();
-    if (localObject3 == null) {}
-    label308:
-    do
+    this.jdField_a_of_type_Adoq.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a().a(this.jdField_a_of_type_Adoq.jdField_a_of_type_AndroidAppActivity);
+    try
     {
-      do
-      {
-        for (;;)
-        {
-          return;
-          try
-          {
-            Object localObject1 = (HttpURLConnection)new URL(this.jdField_a_of_type_JavaLangString).openConnection();
-            ((HttpURLConnection)localObject1).setRequestMethod("GET");
-            ((HttpURLConnection)localObject1).setConnectTimeout(30000);
-            ((HttpURLConnection)localObject1).setReadTimeout(30000);
-            localObject2 = ((QQAppInterface)localObject3).getCurrentAccountUin();
-            Object localObject4 = (TicketManager)((QQAppInterface)localObject3).getManager(2);
-            localObject3 = ((TicketManager)localObject4).getSkey((String)localObject2);
-            localObject4 = ((TicketManager)localObject4).getPskey((String)localObject2, "openmobile.qq.com");
-            ((HttpURLConnection)localObject1).setRequestProperty("Cookie", "uin=o" + (String)localObject2 + "; skey=" + (String)localObject3 + "; p_uin=o" + (String)localObject2 + "; p_skey=" + (String)localObject4);
-            if (((HttpURLConnection)localObject1).getResponseCode() != 200) {
-              break label308;
-            }
-            localObject1 = new BufferedReader(new InputStreamReader(((HttpURLConnection)localObject1).getInputStream()));
-            localObject2 = new StringBuffer();
-            for (;;)
-            {
-              localObject3 = ((BufferedReader)localObject1).readLine();
-              if (localObject3 == null) {
-                break;
-              }
-              ((StringBuffer)localObject2).append((String)localObject3);
-            }
-          }
-          catch (MalformedURLException localMalformedURLException)
-          {
-            Object localObject2;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("GamePartyManager", 2, "http request, url invalid, url = " + this.jdField_a_of_type_JavaLangString);
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("GamePartyManager", 2, "http request succeeded, url = " + this.jdField_a_of_type_JavaLangString);
-              }
-              if (this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyManager$AsyncRequestCallback != null)
-              {
-                this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyManager$AsyncRequestCallback.a(((StringBuffer)localObject2).toString());
-                return;
-              }
-            }
-          }
-          catch (IOException localIOException) {}
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("GamePartyManager", 2, "http request, ioexception");
+      Field localField = paramDialogInterface.getClass().getSuperclass().getDeclaredField("mShowing");
+      localField.setAccessible(true);
+      localField.set(paramDialogInterface, Boolean.valueOf(false));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("默认存储路径更换中，请稍等。");
+      paramDialogInterface = this.jdField_a_of_type_Adoq.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131494246);
+      this.jdField_a_of_type_Adoq.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a.getBtnight().setEnabled(false);
+      this.jdField_a_of_type_Adoq.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a.getBtnight().setTextColor(paramDialogInterface);
+      this.jdField_a_of_type_Adoq.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a.getBtnLeft().setTextColor(paramDialogInterface);
+      this.jdField_a_of_type_Adoq.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.a.getBtnLeft().setEnabled(false);
+      FMSettings.a(this.jdField_a_of_type_Adoq.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings, this.jdField_a_of_type_Adoq.jdField_a_of_type_JavaUtilList, new ados(this));
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("GamePartyManager", 2, "http request failed, url = " + this.jdField_a_of_type_JavaLangString);
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ador
  * JD-Core Version:    0.7.0.1
  */

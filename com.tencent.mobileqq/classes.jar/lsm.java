@@ -1,17 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
+import java.util.Iterator;
+import java.util.List;
 
 public class lsm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lsm(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, String paramString1, String paramString2) {}
+  public lsm(ArticleInfoModule paramArticleInfoModule, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), this.b);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        ChannelTopCookie localChannelTopCookie = (ChannelTopCookie)localIterator.next();
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(localChannelTopCookie);
+      }
+    }
   }
 }
 

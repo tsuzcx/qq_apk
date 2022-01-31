@@ -6,10 +6,10 @@ import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import zfi;
-import zfj;
-import zfk;
-import zfm;
+import zmj;
+import zmk;
+import zml;
+import zmn;
 
 public class HotChatShare
 {
@@ -26,12 +26,12 @@ public class HotChatShare
   {
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zfi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zmj(this);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = paramHotChatInfo;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    ThreadManager.post(new zfj(this, paramQQAppInterface), 8, null, true);
+    ThreadManager.post(new zmk(this, paramQQAppInterface), 8, null, true);
   }
   
   private void d()
@@ -115,8 +115,8 @@ public class HotChatShare
       }
     }
     b();
-    ThreadManager.post(new zfk(this), 8, null, false);
-    new Handler().postDelayed(new zfm(this), 30000L);
+    ThreadManager.post(new zml(this), 8, null, false);
+    new Handler().postDelayed(new zmn(this), 30000L);
   }
   
   public void b()
@@ -126,7 +126,7 @@ public class HotChatShare
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435070);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435086);
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       return;

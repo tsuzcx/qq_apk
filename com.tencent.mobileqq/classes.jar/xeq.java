@@ -1,52 +1,56 @@
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.GoldConfigObserver;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper.GoldMsgFriendSet;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.activity.qfileJumpActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import mqq.app.MobileQQ;
 
-public final class xeq
+public class xeq
   implements Runnable
 {
-  public xeq(String paramString) {}
+  public xeq(qfileJumpActivity paramqfileJumpActivity) {}
   
   public void run()
   {
+    StatisticAssist.a(this.a.app.getApplication().getApplicationContext(), this.a.app.getCurrentAccountUin(), "dl_share_my_pc");
+    Intent localIntent = this.a.getIntent();
+    Object localObject1 = null;
     try
     {
-      localObject = BaseApplicationImpl.getApplication().getFilesDir() + "/QWallet/.tmp/goldmsg_friends";
-      if (!new File((String)localObject).exists()) {
-        return;
-      }
-      localObject = FileUtils.a((String)localObject);
-      if (localObject != null) {
-        GoldMsgChatHelper.GoldMsgFriendSet.a(new String((byte[])localObject, "utf-8"));
-      }
+      localObject2 = localIntent.getExtras();
+      localObject1 = localObject2;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        Object localObject;
-        Bundle localBundle;
+        Object localObject2;
         localException.printStackTrace();
       }
     }
-    localObject = QWalletTools.a();
-    if (localObject != null)
-    {
-      localBundle = new Bundle();
-      localBundle.putString("friendUin", this.a);
-      ((QQAppInterface)localObject).notifyObservers(GoldConfigObserver.class, 9, true, localBundle);
-      return;
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = new Bundle();
     }
+    ((Bundle)localObject2).putString("leftBackText", "消息");
+    ((Bundle)localObject2).putBoolean("isBack2Root", true);
+    localObject1 = new Intent(this.a, LiteActivity.class);
+    ((Intent)localObject1).addFlags(268435456);
+    ((Intent)localObject1).addFlags(67108864);
+    ((Intent)localObject1).putExtra("dataline_share_finish", false);
+    ((Intent)localObject1).putExtras((Bundle)localObject2);
+    ((Intent)localObject1).putExtra("targetUin", this.a.a);
+    ((Intent)localObject1).putExtras(localIntent);
+    ((Intent)localObject1).setAction(localIntent.getAction());
+    ((Intent)localObject1).setType(localIntent.getType());
+    this.a.startActivity((Intent)localObject1);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xeq
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ public class GdtImpressionPolicy
     do
     {
       return paramView;
-      paramView = paramView.getTag(2131362462);
+      paramView = paramView.getTag(2131362465);
       if (paramView == null) {
         return null;
       }
@@ -189,7 +189,7 @@ public class GdtImpressionPolicy
         }
         else
         {
-          localObject = paramMessage.getTag(2131362463);
+          localObject = paramMessage.getTag(2131362466);
           if (localObject == null)
           {
             GdtLog.a("GdtImpressionPolicy", "break: o2 == null " + localGdtAd.getTraceId());

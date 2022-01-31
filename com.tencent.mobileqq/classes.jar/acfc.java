@@ -1,16 +1,19 @@
-import android.view.GestureDetector;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import com.tencent.mobileqq.dating.CarrierHelper;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
 
-public class acfc
+class acfc
   implements Runnable
 {
-  public acfc(EmoticonMainPanel paramEmoticonMainPanel, TopGestureLayout paramTopGestureLayout, GestureDetector paramGestureDetector) {}
+  acfc(acfb paramacfb) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(((StickerGestureDetector)this.jdField_a_of_type_AndroidViewGestureDetector).a);
+    if (MsgBoxListActivity.a(this.a.a) != null)
+    {
+      MsgBoxListActivity.a(this.a.a).a(2, null);
+      MsgBoxListActivity.a(this.a.a);
+      MsgBoxListActivity.b(this.a.a);
+    }
   }
 }
 

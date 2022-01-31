@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import sbr;
-import sbs;
+import sgj;
+import sgk;
 
 public class ChatHistoryStructMsgView
   extends ChatHistoryViewBase
@@ -71,7 +71,7 @@ public class ChatHistoryStructMsgView
     if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
       return;
     }
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new sbr(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new sgj(this);
   }
   
   public View a()
@@ -93,13 +93,13 @@ public class ChatHistoryStructMsgView
     this.jdField_a_of_type_Int = paramIntent.getIntExtra("uintype", 0);
     this.jdField_c_of_type_JavaLangString = paramIntent.getStringExtra("uinname");
     f();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130971599, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368831));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130971625, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368834));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375179));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375231));
     this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130971598, null);
+    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130971624, null);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
     a(true);
@@ -165,7 +165,7 @@ public class ChatHistoryStructMsgView
   
   public void a(boolean paramBoolean)
   {
-    ThreadManager.post(new sbs(this, paramBoolean), 10, null, true);
+    ThreadManager.post(new sgk(this, paramBoolean), 10, null, true);
   }
   
   public boolean a()

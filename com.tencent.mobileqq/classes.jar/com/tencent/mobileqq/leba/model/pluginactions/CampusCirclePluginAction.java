@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.leba.model.pluginactions;
 
-import aeba;
+import aejk;
 import android.content.Context;
 import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -178,7 +178,7 @@ public class CampusCirclePluginAction
   {
     QQAppInterface localQQAppInterface = a();
     super.b(paramLebaGridItemInfo);
-    ThreadManager.post(new aeba(this, localQQAppInterface), 5, null, false);
+    ThreadManager.post(new aejk(this, localQQAppInterface), 5, null, false);
   }
 }
 

@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager.SubtitleDataManagerListener;
-import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem;
-import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem.FontItem;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
 
 public class xwl
   implements Runnable
 {
-  public xwl(SubtitleDataManager paramSubtitleDataManager, SubtitleItem.FontItem paramFontItem) {}
+  public xwl(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      SubtitleDataManager.SubtitleDataManagerListener localSubtitleDataManagerListener = (SubtitleDataManager.SubtitleDataManagerListener)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.jdField_a_of_type_JavaLangRefWeakReference.get();
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        SubtitleItem localSubtitleItem = (SubtitleItem)localIterator.next();
-        if ((localSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem) && (localSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem != null)) {
-          localSubtitleDataManagerListener.a(localSubtitleItem.jdField_a_of_type_Int, 0, localSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.f);
-        }
-      }
-    }
+    int i = (int)(this.a.a.getHeight() * 0.35F);
+    ViewGroup.LayoutParams localLayoutParams = this.a.c.getLayoutParams();
+    localLayoutParams.height = (i - this.a.d.getHeight());
+    this.a.c.setLayoutParams(localLayoutParams);
   }
 }
 

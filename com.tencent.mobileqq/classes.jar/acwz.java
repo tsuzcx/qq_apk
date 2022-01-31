@@ -1,32 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.widget.ActionSheet;
 
-class acwz
-  extends BroadcastReceiver
+public class acwz
+  implements DialogInterface.OnKeyListener
 {
-  acwz(acwy paramacwy) {}
+  public acwz(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramIntent != null)
+    boolean bool = false;
+    if (paramInt == 4)
     {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && (paramContext.equals("com.tencent.mobileqq.intent.logout")))
+      if (this.a.a != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "OLfilesession[] logout.....!");
-        }
-        this.a.a.a();
+        this.a.a.dismiss();
+        this.a.a = null;
       }
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      bool = true;
     }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acwz
  * JD-Core Version:    0.7.0.1
  */

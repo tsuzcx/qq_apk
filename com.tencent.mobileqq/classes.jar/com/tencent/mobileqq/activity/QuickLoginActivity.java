@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import mqq.observer.AccountObserver;
-import tny;
-import tnz;
+import tsq;
+import tsr;
 
 public class QuickLoginActivity
   extends BaseActivity
@@ -17,11 +17,11 @@ public class QuickLoginActivity
   ListView jdField_a_of_type_AndroidWidgetListView;
   SimpleAdapter jdField_a_of_type_AndroidWidgetSimpleAdapter;
   public ArrayList a;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tnz(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tsr(this);
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131362772));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131362777));
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     c();
     b();
@@ -38,9 +38,9 @@ public class QuickLoginActivity
       localHashMap2.put("text", (String)localHashMap1.get("qq") + " " + (String)localHashMap1.get("password"));
       localArrayList.add(localHashMap2);
     }
-    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, localArrayList, 2130968594, new String[] { "text" }, new int[] { 2131362773 });
+    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, localArrayList, 2130968594, new String[] { "text" }, new int[] { 2131362778 });
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_AndroidWidgetSimpleAdapter);
-    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new tny(this));
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new tsq(this));
   }
   
   /* Error */

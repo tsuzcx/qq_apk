@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.arcard.ARCardShareHelper;
+import mqq.os.MqqHandler;
 
-public class aate
-  implements aath
+class aate
+  implements Runnable
 {
-  public aate(ArkAppCGI paramArkAppCGI) {}
+  aate(aasz paramaasz, int paramInt) {}
   
-  public void a(aati paramaati, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void run()
   {
-    this.a.a((aatl)paramaati, paramBoolean, paramArrayOfByte);
+    boolean bool = ARCardShareHelper.a(this.jdField_a_of_type_Aasz.a);
+    String str = ARCardShareHelper.b(this.jdField_a_of_type_Aasz.a);
+    ThreadManager.getUIHandler().post(new aatf(this, bool, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aate
  * JD-Core Version:    0.7.0.1
  */

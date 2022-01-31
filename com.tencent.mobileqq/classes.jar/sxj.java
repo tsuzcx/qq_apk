@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
-public class sxj
-  extends ReadInJoyObserver
+class sxj
+  implements Runnable
 {
-  public sxj(Leba paramLeba) {}
+  sxj(sxh paramsxh) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
-    }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
-      this.a.a(new sxk(this));
-    }
+    FriendProfileMoreInfoActivity.a(this.a.a, this.a.a.a, true);
   }
 }
 

@@ -1,26 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.NativeWebVideoCoverGetCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.VideoData;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-class mnr
-  implements ReadInJoyUtils.NativeWebVideoCoverGetCallback
+public class mnr
+  extends AnimateUtils.AnimationAdapter
 {
-  mnr(mnq parammnq, VideoData paramVideoData) {}
+  public mnr(ReadinjoyTabFrame paramReadinjoyTabFrame, View paramView) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_JavaLangString, paramString1)))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_JavaLangString = paramString2;
-      if ((paramInt1 > 0) && (paramInt2 > 0))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_Int = paramInt2;
-      }
-      ThreadManager.getUIHandler().post(new mns(this));
-    }
+    paramAnimation = new ScaleAnimation(1.05F, 0.72F, 1.05F, 0.72F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(170L);
+    paramAnimation.setAnimationListener(new mns(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
   }
 }
 

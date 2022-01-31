@@ -1,9 +1,16 @@
-import android.graphics.Path;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
 
-public abstract interface utf
+class utf
+  implements Runnable
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Path paramPath, List paramList);
+  utf(utd paramutd) {}
+  
+  public void run()
+  {
+    this.a.a.a(true, this.a.a.a.b);
+    this.a.a.d();
+  }
 }
 
 

@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.flashchat.FlashChatObserver;
 
 public class zkk
-  implements Comparator
+  extends FlashChatObserver
 {
-  public zkk(QIMNewFriendManager paramQIMNewFriendManager) {}
+  public zkk(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public int a(QIMNotifyAddFriend paramQIMNotifyAddFriend1, QIMNotifyAddFriend paramQIMNotifyAddFriend2)
+  public void b()
   {
-    return (int)(paramQIMNotifyAddFriend2.pushTime - paramQIMNotifyAddFriend1.pushTime);
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
+    }
+    this.a.a.sendEmptyMessage(17);
   }
 }
 

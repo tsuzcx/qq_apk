@@ -94,6 +94,13 @@ public class GroupSearchModeTitle
   
   public long a()
   {
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel != null)
+    {
+      int i = SearchUtil.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel);
+      if (i > 0) {
+        return i;
+      }
+    }
     if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel != null) && ((this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel instanceof GroupBaseNetSearchModel))) {
       return ((GroupBaseNetSearchModel)this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel).jdField_a_of_type_Long;
     }

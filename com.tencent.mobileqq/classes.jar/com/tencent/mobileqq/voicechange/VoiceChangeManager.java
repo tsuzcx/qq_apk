@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.voicechange;
 
-import akln;
+import akte;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
@@ -33,14 +33,14 @@ public class VoiceChangeManager
   static
   {
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "voiceChange/";
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "voiceChange/";
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { null, null, null };
   }
   
   public VoiceChangeManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new akln(this);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new akte(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
@@ -353,7 +353,7 @@ public class VoiceChangeManager
           if (((JSONObject)localObject2).has("QQVersion"))
           {
             i = j;
-            if (IndividuationConfigInfo.a(((JSONObject)localObject2).getString("QQVersion"), "7.6.3"))
+            if (IndividuationConfigInfo.a(((JSONObject)localObject2).getString("QQVersion"), "7.6.8"))
             {
               j = 0;
               i = j;
@@ -526,7 +526,7 @@ public class VoiceChangeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.voicechange.VoiceChangeManager
  * JD-Core Version:    0.7.0.1
  */

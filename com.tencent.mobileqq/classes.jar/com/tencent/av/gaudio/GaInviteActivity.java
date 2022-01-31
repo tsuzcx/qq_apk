@@ -31,14 +31,14 @@ import com.tencent.mobileqq.vipav.VipFunCallManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import jii;
-import jij;
+import jkl;
+import jkm;
 
 public class GaInviteActivity
   extends BaseGaInvite
 {
   AudioManager jdField_a_of_type_AndroidMediaAudioManager = null;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jii(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jkl(this);
   SessionInfo jdField_a_of_type_ComTencentAvAppSessionInfo = null;
   QAVNotification jdField_a_of_type_ComTencentAvUtilsQAVNotification = null;
   VExtensionInfoManager jdField_a_of_type_ComTencentAvUtilsVExtensionInfoManager = null;
@@ -127,9 +127,9 @@ public class GaInviteActivity
   public void f()
   {
     QLog.w(this.jdField_b_of_type_JavaLangString, 1, "quitGAudioDialog");
-    jij localjij1 = new jij(this, 0);
-    jij localjij2 = new jij(this, 1);
-    DialogUtil.b(this, 230, null, getString(2131428983), 2131428675, 2131429053, localjij1, localjij2).show();
+    jkm localjkm1 = new jkm(this, 0);
+    jkm localjkm2 = new jkm(this, 1);
+    DialogUtil.b(this, 230, null, getString(2131428983), 2131428675, 2131429053, localjkm1, localjkm2).show();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -281,7 +281,7 @@ public class GaInviteActivity
           if (this.jdField_c_of_type_Long != 0L) {
             break label269;
           }
-          TraeHelper.a().a("GaInviteActivity.onResume.1", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230741, -1, null);
+          TraeHelper.a().a("GaInviteActivity.onResume.1", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230742, -1, null);
         }
       }
       else
@@ -320,7 +320,7 @@ public class GaInviteActivity
         ReportController.b(null, "CliOper", "", "", "0X8005004", "0X8005004", 0, 0, "", this.jdField_c_of_type_Long + "", "", "");
         break label112;
       }
-      TraeHelper.a().a("GaInviteActivity.onResume.2", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230741, -1, null);
+      TraeHelper.a().a("GaInviteActivity.onResume.2", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230742, -1, null);
       localObject = new Intent();
       ((Intent)localObject).setAction("tencent.video.v2q.commingRingDownload");
       ((Intent)localObject).setPackage(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName());
@@ -373,7 +373,7 @@ public class GaInviteActivity
     for (;;)
     {
       QLog.w(this.jdField_b_of_type_JavaLangString, 1, "onWindowFocusChanged, uinType_Invite[" + i + "], inviteFriendName[" + str + "]");
-      findViewById(2131365959).setContentDescription(str);
+      findViewById(2131365964).setContentDescription(str);
       return;
       label176:
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
@@ -383,7 +383,7 @@ public class GaInviteActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,10 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import dov.com.qq.im.capture.data.CaptureComboObeserver;
+import dov.com.qq.im.capture.view.ComboProviderView;
 
 public class anxi
-  implements ValueAnimator.AnimatorUpdateListener
+  extends CaptureComboObeserver
 {
-  public anxi(TextLayer.TextItem paramTextItem) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.k();
-  }
+  public anxi(ComboProviderView paramComboProviderView) {}
 }
 
 

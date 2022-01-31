@@ -1,23 +1,12 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.qzone.statistic.Singleton;
+import cooperation.qzone.statistic.serverip.WebAppIpManager;
 
-public class ania
-  implements ThreadPool.Job
+public final class ania
+  extends Singleton
 {
-  public ania(WyDownloader paramWyDownloader, List paramList) {}
-  
-  public Void a(ThreadPool.JobContext paramJobContext)
+  protected WebAppIpManager a(Void paramVoid)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.a(l);
-    }
-    return null;
+    return new WebAppIpManager();
   }
 }
 

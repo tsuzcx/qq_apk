@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.data.Card;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
-class sza
-  implements Runnable
+public class sza
+  implements DialogInterface.OnClickListener
 {
-  sza(syz paramsyz, Card paramCard) {}
+  public sza(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Syz.a.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    paramDialogInterface.dismiss();
   }
 }
 

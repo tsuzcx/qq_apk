@@ -1,20 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevb
-  implements ProviderContainerView.ContainerViewListener
+  implements ConditionSearchManager.IConfigListener
 {
-  public aevb(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  public aevb(NearbyProxy paramNearbyProxy) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.a.d();
-  }
-  
-  public void y_()
-  {
-    this.a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.dating", 2, "onGetConfig, resultCode:" + paramInt + ",isSuccess:" + paramBoolean);
+    }
+    NearbyProxy.a(this.a, 4131, new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
   }
 }
 

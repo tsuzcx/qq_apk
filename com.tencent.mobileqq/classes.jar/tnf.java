@@ -1,25 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.utils.QQLSSensor;
 
-class tnf
+public class tnf
   implements Runnable
 {
-  tnf(tne paramtne) {}
+  public tnf(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    this.a.a.app.a().e(true);
-    this.a.a.app.a().h();
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-    MqqHandler localMqqHandler = this.a.a.app.getHandler(Conversation.class);
-    if (localMqqHandler != null) {
-      localMqqHandler.sendEmptyMessage(1009);
-    }
+    this.a.a = new QQLSSensor(this.a.getApplicationContext(), this.a);
+    this.a.a.a();
   }
 }
 

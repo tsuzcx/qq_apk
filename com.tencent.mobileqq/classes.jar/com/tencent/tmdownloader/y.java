@@ -19,7 +19,7 @@ class y
     {
       try
       {
-        r.c("TMAssistantDownloadSDKService", "onLogPrint : ");
+        r.c("TMADownloadSDKService", "onLogPrint : ");
         int j = this.a.a.mCallbacks.beginBroadcast();
         int i = 0;
         for (;;)
@@ -34,7 +34,7 @@ class y
             {
               for (;;)
               {
-                r.c("TMAssistantDownloadSDKService", "exception: ", localRemoteException);
+                r.c("TMADownloadSDKService", "exception: ", localRemoteException);
               }
             }
           }
@@ -42,7 +42,7 @@ class y
         try
         {
           this.a.a.mCallbacks.finishBroadcast();
-          Log.e("TMAssistantDownloadSDKService", getClass().getSimpleName() + " finishBroadcast mRemoteListeners");
+          Log.e("TMADownloadSDKService", getClass().getSimpleName() + " finishBroadcast mRemoteListeners");
           for (;;)
           {
             return;
@@ -55,13 +55,13 @@ class y
         {
           for (;;)
           {
-            Log.w("TMAssistantDownloadSDKService", "Error while diffusing message to listener finishBroadcast:", paramList);
+            Log.w("TMADownloadSDKService", "Error while diffusing message to listener finishBroadcast:", paramList);
           }
         }
       }
       catch (Throwable paramList)
       {
-        Log.e("TMAssistantDownloadSDKService", "exception: ", paramList);
+        Log.e("TMADownloadSDKService", "exception: ", paramList);
       }
     }
   }

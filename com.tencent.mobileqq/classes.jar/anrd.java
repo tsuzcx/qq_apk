@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.Button;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
-public final class anrd
-  implements Parcelable.Creator
+class anrd
+  implements Runnable
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
+  anrd(anrc paramanrc) {}
   
-  public EditLocalPhotoSource[] a(int paramInt)
+  public void run()
   {
-    return new EditLocalPhotoSource[paramInt];
+    if ((QIMCameraCaptureUnit.a(this.a.a) != null) && (this.a.a.e != null))
+    {
+      BitmapDrawable localBitmapDrawable = new BitmapDrawable(QIMCameraCaptureUnit.a(this.a.a));
+      this.a.a.e.setBackgroundDrawable(localBitmapDrawable);
+      this.a.a.e.setVisibility(0);
+      this.a.a.e.setEnabled(true);
+      return;
+    }
+    this.a.a.e.setVisibility(8);
+    this.a.a.e.setEnabled(false);
   }
 }
 

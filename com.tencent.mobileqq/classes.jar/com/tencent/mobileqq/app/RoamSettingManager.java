@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import mqq.manager.Manager;
-import zmg;
-import zmh;
-import zmi;
+import ztc;
+import ztd;
+import zte;
 
 public class RoamSettingManager
   implements Manager
@@ -258,7 +258,7 @@ public class RoamSettingManager
   
   public void a()
   {
-    ThreadManager.post(new zmg(this), 8, null, false);
+    ThreadManager.post(new ztc(this), 8, null, false);
   }
   
   public void a(int paramInt)
@@ -295,7 +295,6 @@ public class RoamSettingManager
     {
       try
       {
-        int i;
         if (a(paramRoamSetting.value))
         {
           this.b.put(paramRoamSetting.path, paramRoamSetting);
@@ -304,26 +303,31 @@ public class RoamSettingManager
           if ((j == 1) && (i == 0)) {
             break;
           }
-          ThreadManager.post(new zmh(this, paramRoamSetting), 5, null, false);
+          if (Looper.myLooper() == Looper.getMainLooper()) {
+            break label182;
+          }
+          a(paramRoamSetting);
           return;
         }
-        if (QLog.isColorLevel())
-        {
-          QLog.e("RoamSettingManager", 2, "isTroopRoamSettingLegal false. path:" + paramRoamSetting.path + ", value:" + paramRoamSetting.value);
-          i = 0;
-          continue;
-          this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(paramRoamSetting.path, paramRoamSetting);
-          i = 1;
+        if (!QLog.isColorLevel()) {
+          break label199;
         }
-        else
-        {
-          i = 0;
-        }
+        QLog.e("RoamSettingManager", 2, "isTroopRoamSettingLegal false. path:" + paramRoamSetting.path + ", value:" + paramRoamSetting.value);
+        i = 0;
+        continue;
+        this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(paramRoamSetting.path, paramRoamSetting);
+        i = 1;
+        continue;
+        ThreadManagerV2.excute(new ztd(this, paramRoamSetting), 32, null, false);
       }
       finally
       {
         this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
       }
+      label182:
+      return;
+      label199:
+      int i = 0;
     }
   }
   
@@ -345,7 +349,7 @@ public class RoamSettingManager
         if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
           break;
         }
-        ThreadManager.post(new zmi(this, localRoamSetting), 5, null, false);
+        ThreadManager.post(new zte(this, localRoamSetting), 5, null, false);
         return;
         this.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.remove(localRoamSetting.path);
       }

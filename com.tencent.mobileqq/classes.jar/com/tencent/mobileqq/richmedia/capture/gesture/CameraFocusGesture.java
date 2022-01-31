@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.gesture;
 
-import ahkl;
+import ahpc;
 import android.opengl.GLSurfaceView;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -36,7 +36,7 @@ public class CameraFocusGesture
     this.f = paramCameraFocusView.getScaledTouchSlop();
     this.jdField_a_of_type_Int = paramCameraFocusView.getScaledDoubleTapSlop();
     this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidOsHandler = new ahkl(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ahpc(this);
   }
   
   private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)

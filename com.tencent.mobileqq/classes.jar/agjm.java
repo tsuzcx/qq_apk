@@ -1,21 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-class agjm
-  implements ImageAssetDelegate
+public class agjm
+  implements Runnable
 {
-  agjm(agjl paramagjl) {}
+  public agjm(ScanTorchActivity paramScanTorchActivity, ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult, ArLBSActivity paramArLBSActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void run()
   {
-    paramLottieImageAsset = paramLottieImageAsset.getFileName();
-    Bitmap localBitmap = (Bitmap)this.a.a.a.get(paramLottieImageAsset);
-    QLog.i("ScanTorchActivity", 1, "loadWorldCupGuideAnimation. fetchBitmap. name = " + paramLottieImageAsset);
-    return localBitmap;
+    ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
   }
 }
 

@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.config.ConfigManager;
 
-class acaa
-  implements Runnable
+public class acaa
 {
-  acaa(abzz paramabzz, FileMsg paramFileMsg) {}
+  public byte a;
+  public String a;
+  public byte b;
+  public String b = "";
   
-  public void run()
+  public acaa(ConfigManager paramConfigManager)
   {
-    if (this.jdField_a_of_type_Abzz.a.a == null)
-    {
-      QLog.e("FavroamingManager", 1, "app is null");
-      return;
-    }
-    ((FavroamingDBManager)this.jdField_a_of_type_Abzz.a.a.getManager(148)).a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.g);
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acaa
  * JD-Core Version:    0.7.0.1
  */

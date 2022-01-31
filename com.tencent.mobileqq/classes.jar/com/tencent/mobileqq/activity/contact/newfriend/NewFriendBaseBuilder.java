@@ -14,13 +14,13 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SwipRightMenuBuilder;
 import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
-import wjp;
+import woz;
 
 public abstract class NewFriendBaseBuilder
 {
   private static final int[] a;
-  private static final int[] b = { 2130838682 };
-  private static final int[] c = { 2131370002 };
+  private static final int[] b = { 2130838690 };
+  private static final int[] c = { 2131370011 };
   protected Context a;
   public SystemMsgListAdapter a;
   public QQAppInterface a;
@@ -29,7 +29,7 @@ public abstract class NewFriendBaseBuilder
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131434041 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131434057 };
   }
   
   public NewFriendBaseBuilder(Context paramContext, QQAppInterface paramQQAppInterface, SystemMsgListAdapter paramSystemMsgListAdapter, NewFriendMessage paramNewFriendMessage)
@@ -65,7 +65,7 @@ public abstract class NewFriendBaseBuilder
     paramContext = c;
     int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
     int[] arrayOfInt2 = b;
-    return new wjp(this, 1, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+    return new woz(this, 1, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
   }
   
   protected void a() {}
@@ -97,7 +97,7 @@ public abstract class NewFriendBaseBuilder
       return;
       if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433009), 0).b(b());
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433023), 0).b(b());
         return;
       }
       Object localObject1 = paramView.getTag(-1);

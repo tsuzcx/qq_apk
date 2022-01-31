@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.statistics;
 
-import aift;
-import aifu;
+import aikn;
+import aiko;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,7 +23,7 @@ public class DcReportUtil
     }
     if (paramQQAppInterface == null)
     {
-      ThreadManager.post(new aifu(paramString1, paramString2), 5, null, true);
+      ThreadManager.post(new aiko(paramString1, paramString2), 5, null, true);
       return;
     }
     a(paramQQAppInterface, paramString1, paramString2, 1);
@@ -59,7 +59,7 @@ public class DcReportUtil
     }
     if (paramQQAppInterface == null)
     {
-      ThreadManager.post(new aift(paramString1, paramString2), 5, null, true);
+      ThreadManager.post(new aikn(paramString1, paramString2), 5, null, true);
       return;
     }
     a(paramQQAppInterface, paramString1, paramString2, 1);

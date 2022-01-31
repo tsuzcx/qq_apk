@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
-class vrn
-  implements Runnable
+public class vrn
+  implements TroopMemberApiClient.Callback
 {
-  vrn(vrm paramvrm) {}
+  public vrn(AIOGalleryAdapter paramAIOGalleryAdapter, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, AIOImageData paramAIOImageData) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    this.a.a.a.p();
+    paramBundle = paramBundle.getString("ThumbnailFile_Large");
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a.runOnUiThread(new vro(this, paramBundle));
   }
 }
 

@@ -1,100 +1,43 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.troop.file.TroopFileProtocol.OnGetZipFileList;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter.FileData;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.URLUtil;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.app.UniformDownload;
 
-public class adcu
-  implements HttpWebCgiAsyncTask.Callback
+class adcu
+  implements Runnable
 {
-  public adcu(DefaultFileModel paramDefaultFileModel, List paramList, String paramString1, FileManagerEntity paramFileManagerEntity, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, TroopFileProtocol.OnGetZipFileList paramOnGetZipFileList) {}
+  adcu(adct paramadct, String paramString, long paramLong) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramJSONObject != null) {}
-    try
-    {
-      ZipFilePresenter.FileData localFileData;
-      if (!paramJSONObject.isNull("dirs"))
-      {
-        paramBundle = paramJSONObject.getJSONArray("dirs");
-        paramInt = 0;
-        while (paramInt < paramBundle.length())
-        {
-          localFileData = new ZipFilePresenter.FileData();
-          localFileData.jdField_a_of_type_Boolean = true;
-          localFileData.jdField_a_of_type_JavaLangString = paramBundle.getString(paramInt);
-          this.jdField_a_of_type_JavaUtilList.add(localFileData);
-          paramInt += 1;
-        }
-      }
-      if ((paramJSONObject != null) && (!paramJSONObject.isNull("files")))
-      {
-        paramBundle = paramJSONObject.getJSONArray("files");
-        paramInt = 0;
-        if (paramInt < paramBundle.length())
-        {
-          localFileData = new ZipFilePresenter.FileData();
-          paramJSONObject = paramBundle.getJSONObject(paramInt);
-          localFileData.jdField_a_of_type_JavaLangString = paramJSONObject.getString("filename");
-          localFileData.jdField_a_of_type_Long = paramJSONObject.getLong("size");
-          if (this.jdField_a_of_type_JavaLangString.equals("/")) {}
-          for (paramJSONObject = "/" + localFileData.jdField_a_of_type_JavaLangString;; paramJSONObject = this.jdField_a_of_type_JavaLangString + "/" + localFileData.jdField_a_of_type_JavaLangString)
-          {
-            FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-            localFileManagerEntity.fileName = localFileData.jdField_a_of_type_JavaLangString;
-            localFileManagerEntity.fileSize = localFileData.jdField_a_of_type_Long;
-            localFileManagerEntity.nRelatedSessionId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-            localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-            localFileManagerEntity.nSessionId = FileManagerUtil.a().longValue();
-            if (this.jdField_a_of_type_Boolean)
-            {
-              localFileManagerEntity.WeiYunFileId = this.b;
-              localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-              localFileManagerEntity.nRelatedSessionId = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-            }
-            localFileManagerEntity.zipFileId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-            if (localFileManagerEntity.mContext == null) {
-              QLog.i("FileBrowserModelBase", 1, "zip list file content is empty. zipSessionId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] zipIsWeiyunFile[" + this.jdField_a_of_type_Boolean + "] zipCouldType[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType + "] fileSessionId[" + localFileManagerEntity.nSessionId + "]");
-            }
-            localFileManagerEntity.strServerPath = ("http://" + this.c + ":" + this.d + "/ftn_compress_getfile/rkey=" + this.e + "&filetype=" + this.jdField_a_of_type_Int + "&path=" + URLUtil.a(paramJSONObject) + "&");
-            localFileManagerEntity.zipInnerPath = paramJSONObject;
-            localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-            localFileManagerEntity.peerUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-            localFileManagerEntity.peerType = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
-            localFileManagerEntity.busId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
-            localFileManagerEntity.cloudType = 1;
-            localFileManagerEntity.isZipInnerFile = true;
-            localFileManagerEntity.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-            localFileManagerEntity.zipType = this.jdField_a_of_type_Int;
-            localFileManagerEntity.TroopUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
-            localFileData.b = localFileManagerEntity.nSessionId;
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel.a.a().a(localFileManagerEntity);
-            this.jdField_a_of_type_JavaUtilList.add(localFileData);
-            paramInt += 1;
-            break;
-          }
-        }
-      }
-      return;
+    Intent localIntent = new Intent(this.jdField_a_of_type_Adct.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a, UniformDownloadActivity.class);
+    String str1 = this.jdField_a_of_type_Adct.jdField_a_of_type_AndroidOsBundle.getString("param_content_memo");
+    String str2 = this.jdField_a_of_type_Adct.jdField_a_of_type_AndroidOsBundle.getString("param_icon_path");
+    String str3 = this.jdField_a_of_type_Adct.jdField_a_of_type_AndroidOsBundle.getString("param_mime_type");
+    if (str1 != null) {
+      localIntent.putExtra(UniformDownloadActivity.h, str1);
     }
-    catch (JSONException paramJSONObject)
+    if (str2 != null) {
+      localIntent.putExtra(UniformDownloadActivity.g, str2);
+    }
+    boolean bool = this.jdField_a_of_type_Adct.jdField_a_of_type_AndroidOsBundle.getBoolean("param_isqbdownload", false);
+    localIntent.putExtra(UniformDownloadActivity.i, bool);
+    localIntent.putExtra(UniformDownloadActivity.b, this.jdField_a_of_type_Adct.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra(UniformDownloadActivity.d, this.jdField_a_of_type_JavaLangString);
+    localIntent.setFlags(536870912);
+    if (this.jdField_a_of_type_Adct.jdField_a_of_type_Long != 0L) {}
+    for (long l = this.jdField_a_of_type_Adct.jdField_a_of_type_Long;; l = this.jdField_a_of_type_Long)
     {
-      paramJSONObject.printStackTrace();
-      if (this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$OnGetZipFileList != null) {
-        this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$OnGetZipFileList.a(this.jdField_a_of_type_JavaUtilList);
+      localIntent.putExtra(UniformDownloadActivity.e, l);
+      localIntent.putExtra(UniformDownloadActivity.j, str3);
+      if (this.jdField_a_of_type_Adct.b == 1L) {
+        localIntent.putExtra(UniformDownloadActivity.c, this.jdField_a_of_type_Adct.b);
       }
+      localIntent.putExtra("fromArkAppDownload", this.jdField_a_of_type_Adct.jdField_a_of_type_AndroidOsBundle.getBoolean("fromArkAppDownload", false));
+      this.jdField_a_of_type_Adct.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.startActivity(localIntent);
+      this.jdField_a_of_type_Adct.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.overridePendingTransition(0, 0);
+      return;
     }
   }
 }

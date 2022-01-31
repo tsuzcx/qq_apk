@@ -1,75 +1,33 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter;
-import com.tencent.mobileqq.emoticonview.EmoticonRecDressup;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class acds
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public acds(BigEmotionDownloadedAdapter paramBigEmotionDownloadedAdapter, EmoticonRecDressup paramEmoticonRecDressup) {}
+  public acds(DBFixDialogUI paramDBFixDialogUI) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramView = new Intent();
-    label80:
-    String str1;
-    label106:
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Boolean)
+    if (DBFixDialogUI.a(this.a).equals("checked corrupt"))
     {
-      paramView.putExtra("emoji_to_dressup", true);
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, paramView, false);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label243;
-      }
-      paramView = "";
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-      if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Boolean) {
-        break label257;
-      }
-      str1 = "1";
-      VasWebviewUtil.reportCommercialDrainage(paramView, "ep_mall", "0X8007192", null, 1, 0, 0, null, str2, str1);
-      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) <= 0) {
-        break label264;
-      }
-      i = 3;
+      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
+      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_Cancel").commit();
+      QLog.d(DBFixDialogUI.a(), 1, "dialog cancel");
     }
-    for (;;)
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, i + "", "");
-      return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramView.putExtra("emoji_is_original", bool);
-        paramView.putExtra("emoji_author_id", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Int);
-        break;
-      }
-      label243:
-      paramView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      break label80;
-      label257:
-      str1 = "2";
-      break label106;
-      label264:
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.subType == 4) {
-        i = 4;
-      } else {
-        i = 1;
-      }
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acds
  * JD-Core Version:    0.7.0.1
  */

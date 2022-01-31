@@ -1,27 +1,13 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class abgl
-  implements NonMainAppHeadLoader.FaceObserver
+class abgl
+  implements Runnable
 {
-  public abgl(ARGridMapViewDialog paramARGridMapViewDialog) {}
+  abgl(abgj paramabgj) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (TextUtils.equals(paramString1, ARGridMapViewDialog.a(this.a))) && (paramBitmap != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapBaseDialog", 2, "ARMapPOIDialog onFaceUpdate uin:" + paramString1);
-      }
-      if (this.a.c == 2) {
-        ThreadManager.getUIHandler().post(new abgm(this, paramBitmap));
-      }
-    }
+    ReportController.b(null, "dc01440", "", "", "0X800784A", "0X800784A", 0, 0, "", "", "", "");
   }
 }
 

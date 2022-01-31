@@ -112,13 +112,13 @@ public class ValueSelector
           }
           catch (Exception localException)
           {
-            QQToast.a(getContext(), 2131432288, 0).a();
+            QQToast.a(getContext(), 2131432299, 0).a();
             return null;
           }
         }
         else
         {
-          QQToast.a(getContext(), 2131432288, 0).a();
+          QQToast.a(getContext(), 2131432299, 0).a();
           return null;
         }
       }
@@ -198,8 +198,8 @@ public class ValueSelector
       i = 0;
       while (i < j)
       {
-        View localView = LayoutInflater.from((Context)localObject1).inflate(2130969016, null);
-        Button localButton = (Button)localView.findViewById(2131364734);
+        View localView = LayoutInflater.from((Context)localObject1).inflate(2130969018, null);
+        Button localButton = (Button)localView.findViewById(2131364758);
         Long localLong = (Long)this.mValues.get(i);
         localButton.setText(NumAnim.formatNumber(localLong.longValue() / 100.0D, false) + "元");
         localButton.setTag(localLong);
@@ -210,8 +210,8 @@ public class ValueSelector
         addView(localView, (ViewGroup.LayoutParams)localObject2);
         i += 1;
       }
-      localObject1 = LayoutInflater.from((Context)localObject1).inflate(2130969015, null);
-      this.mValueEt = ((EditText)((View)localObject1).findViewById(2131364733));
+      localObject1 = LayoutInflater.from((Context)localObject1).inflate(2130969017, null);
+      this.mValueEt = ((EditText)((View)localObject1).findViewById(2131364757));
       this.mValueEt.setOnFocusChangeListener(this);
       this.mValueEt.addTextChangedListener(this.mWatcher);
       this.mValueEt.setInputType(8194);
@@ -230,8 +230,8 @@ public class ValueSelector
     this.mMinValue = paramLong1;
     this.mMaxValue = paramLong2;
     Resources localResources = getContext().getResources();
-    this.mMinWarn = String.format(localResources.getString(2131432300), new Object[] { NumAnim.formatNumber(paramLong1 / 100.0D, false) });
-    this.mMaxWarn = String.format(localResources.getString(2131432301), new Object[] { NumAnim.formatNumber(paramLong2 / 100.0D, false) });
+    this.mMinWarn = String.format(localResources.getString(2131432311), new Object[] { NumAnim.formatNumber(paramLong1 / 100.0D, false) });
+    this.mMaxWarn = String.format(localResources.getString(2131432312), new Object[] { NumAnim.formatNumber(paramLong2 / 100.0D, false) });
     this.mWatcher = new PriceSettingDialog.PriceTextWater(getContext(), paramLong1, paramLong2, this.mMinWarn, this.mMaxWarn);
     if (this.mValueEt != null) {
       this.mValueEt.addTextChangedListener(this.mWatcher);

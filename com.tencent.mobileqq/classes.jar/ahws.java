@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SearchHistoryManager;
-import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ahws
-  implements Runnable
+class ahws
+  extends SosoInterface.OnLocationListener
 {
-  public ahws(int paramInt, String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  ahws(ahwr paramahwr, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    SearchHistory localSearchHistory = new SearchHistory();
-    localSearchHistory.type = this.jdField_a_of_type_Int;
-    localSearchHistory.uin = this.jdField_a_of_type_JavaLangString;
-    localSearchHistory.troopUin = this.b;
-    localSearchHistory.displayName = this.c;
-    SearchHistoryManager localSearchHistoryManager = (SearchHistoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(54);
-    if (localSearchHistoryManager == null) {
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
       return;
     }
-    localSearchHistoryManager.a(localSearchHistory);
-    com.tencent.mobileqq.search.activity.UniteSearchActivity.b = true;
+    com.tencent.mobileqq.search.activity.UniteSearchActivity.a = paramSosoLbsInfo.a.a;
+    com.tencent.mobileqq.search.activity.UniteSearchActivity.b = paramSosoLbsInfo.a.b;
   }
 }
 

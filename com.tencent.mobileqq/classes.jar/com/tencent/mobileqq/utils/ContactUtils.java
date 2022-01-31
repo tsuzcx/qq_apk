@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import akbz;
+import akjm;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -256,6 +256,61 @@ public class ContactUtils
     }
   }
   
+  public static ContactUtils.NameInfo a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    Friends localFriends = ((FriendsManager)paramQQAppInterface.getManager(50)).a(paramString2);
+    if ((localFriends != null) && (!TextUtils.isEmpty(localFriends.remark))) {
+      return new ContactUtils.NameInfo(localFriends.remark, false);
+    }
+    paramString1 = ((TroopManager)paramQQAppInterface.getManager(51)).a(paramString1, paramString2);
+    boolean bool;
+    if (paramString1 != null) {
+      if (!TextUtils.isEmpty(paramString1.troopnick))
+      {
+        paramString2 = paramString1.troopnick;
+        bool = false;
+      }
+    }
+    for (;;)
+    {
+      return new ContactUtils.NameInfo(paramString2, bool);
+      if ((localFriends != null) && (!TextUtils.isEmpty(localFriends.name)))
+      {
+        paramString2 = localFriends.name;
+        bool = false;
+      }
+      else
+      {
+        if (paramString2.equals(paramQQAppInterface.getCurrentAccountUin()))
+        {
+          if (!TextUtils.isEmpty(paramString1.friendnick))
+          {
+            paramString2 = paramString1.friendnick;
+            bool = false;
+          }
+        }
+        else
+        {
+          if (!TextUtils.isEmpty(paramString1.autoremark))
+          {
+            paramString2 = paramString1.autoremark;
+            bool = false;
+            continue;
+          }
+          if (!TextUtils.isEmpty(paramString1.friendnick))
+          {
+            paramString2 = paramString1.friendnick;
+            bool = false;
+            continue;
+            bool = true;
+            continue;
+          }
+        }
+        bool = false;
+      }
+    }
+  }
+  
   public static String a()
   {
     return jdField_c_of_type_JavaLangString;
@@ -379,7 +434,7 @@ public class ContactUtils
     }
     else
     {
-      paramDiscussionInfo = paramContext.getResources().getString(2131434000);
+      paramDiscussionInfo = paramContext.getResources().getString(2131434016);
     }
     return paramDiscussionInfo;
   }
@@ -845,13 +900,13 @@ public class ContactUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ContactUtils.OnGetTroopMemberNameCallback paramOnGetTroopMemberNameCallback)
   {
-    ThreadManager.post(new akbz(paramQQAppInterface, paramString1, paramString2, paramOnGetTroopMemberNameCallback), 5, null, false);
+    ThreadManager.post(new akjm(paramQQAppInterface, paramString1, paramString2, paramOnGetTroopMemberNameCallback), 5, null, false);
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
   {
     if (d == null) {
-      d = paramQQAppInterface.getApp().getString(2131433304);
+      d = paramQQAppInterface.getApp().getString(2131433318);
     }
     return (((0x40 & paramLong) >>> 6 == 1L) && ((0x20000000 & paramLong) >>> 29 == 1L)) || (paramString == null) || (paramString.matches(d)) || (paramString.length() == 0);
   }

@@ -1,5 +1,10 @@
 package com.tencent.mobileqq.app.msgnotify;
 
+import aaba;
+import aabb;
+import aabc;
+import aabd;
+import aabf;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
@@ -36,11 +41,6 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
 import org.xmlpull.v1.XmlPullParser;
-import zup;
-import zuq;
-import zur;
-import zus;
-import zuu;
 
 public class MsgNotifyPushDialog
   extends Dialog
@@ -82,7 +82,7 @@ public class MsgNotifyPushDialog
     jdField_a_of_type_JavaLangString = "PushOpenNotify";
     jdField_c_of_type_Long = -1L;
     jdField_a_of_type_Long = 86400000L;
-    jdField_b_of_type_JavaLangString = AppConstants.aJ + "MsgPushNotify" + File.separator;
+    jdField_b_of_type_JavaLangString = AppConstants.aK + "MsgPushNotify" + File.separator;
     jdField_c_of_type_JavaLangString = jdField_b_of_type_JavaLangString + "msgnotify_pic" + File.separator;
     jdField_d_of_type_JavaLangString = "msgnotify_pic.zip";
     jdField_e_of_type_JavaLangString = "msgnotify_pic_%d.jpg";
@@ -380,7 +380,7 @@ public class MsgNotifyPushDialog
     jdField_a_of_type_ComTencentMobileqqVipDownloadTask.l = true;
     paramQQAppInterface = ((DownloaderFactory)paramQQAppInterface.getManager(46)).a(1);
     QLog.d(jdField_a_of_type_JavaLangString, 1, "start download ");
-    paramQQAppInterface.a(jdField_a_of_type_ComTencentMobileqqVipDownloadTask, new zuu(str), null);
+    paramQQAppInterface.a(jdField_a_of_type_ComTencentMobileqqVipDownloadTask, new aabf(str), null);
     return false;
   }
   
@@ -388,12 +388,12 @@ public class MsgNotifyPushDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130968857);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364078));
-    paramBundle = (TextView)findViewById(2131364034);
-    TextView localTextView = (TextView)findViewById(2131364079);
-    Button localButton = (Button)findViewById(2131364080);
-    ImageView localImageView = (ImageView)findViewById(2131363978);
+    super.setContentView(2130968861);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364103));
+    paramBundle = (TextView)findViewById(2131364059);
+    TextView localTextView = (TextView)findViewById(2131364104);
+    Button localButton = (Button)findViewById(2131364105);
+    ImageView localImageView = (ImageView)findViewById(2131364003);
     try
     {
       Bitmap localBitmap = BitmapFactory.decodeFile(String.format(jdField_c_of_type_JavaLangString + jdField_e_of_type_JavaLangString, new Object[] { Integer.valueOf(0) }));
@@ -401,9 +401,9 @@ public class MsgNotifyPushDialog
       paramBundle.setText(h);
       localTextView.setText(i);
       localButton.setText("马上设置");
-      localButton.setOnClickListener(new zup(this));
-      localImageView.setOnClickListener(new zuq(this));
-      localImageView.setOnTouchListener(new zur(this, localImageView));
+      localButton.setOnClickListener(new aaba(this));
+      localImageView.setOnClickListener(new aabb(this));
+      localImageView.setOnTouchListener(new aabc(this, localImageView));
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -419,7 +419,7 @@ public class MsgNotifyPushDialog
   {
     super.onWindowFocusChanged(paramBoolean);
     if (!this.jdField_e_of_type_Boolean) {
-      ThreadManager.post(new zus(this), 10, null, true);
+      ThreadManager.post(new aabd(this), 10, null, true);
     }
   }
 }

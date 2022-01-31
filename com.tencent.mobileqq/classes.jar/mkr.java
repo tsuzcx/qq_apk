@@ -1,43 +1,27 @@
+import android.app.Activity;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 class mkr
-  implements View.OnClickListener
+  implements Runnable
 {
-  mkr(mkp parammkp, FrameLayout paramFrameLayout) {}
+  mkr(mkq parammkq, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (ReadInJoyRefreshManager)this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getManager(269);
-    if (paramView.a() == 1)
-    {
-      paramView.a(false);
-      paramView = paramView.a(this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a());
-      if (paramView != null)
-      {
-        paramView.isShown = false;
-        SharedPreUtils.v(this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getCurrentAccountUin(), paramView.toJson().toString());
-      }
-    }
-    ((ReadInJoySkinManager)this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getManager(260)).a(1, this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.id);
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(ReadinjoyTabFrame.a(this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame));
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, null);
-    SharedPreUtils.u(this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getCurrentAccountUin(), this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.toJson().toString());
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabFrame", 2, "set skin ：id = " + this.jdField_a_of_type_Mkp.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.id);
+      QLog.d("ReadInJoyBaseAdapter", 2, "scroll " + this.jdField_a_of_type_Int + " to top");
+    }
+    View localView = this.jdField_a_of_type_Mkq.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(this.jdField_a_of_type_Int - this.jdField_a_of_type_Mkq.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getFirstVisiblePosition());
+    if (localView != null)
+    {
+      ReadInJoyBaseAdapter.a(this.jdField_a_of_type_Mkq.a).removeMessages(1001);
+      this.jdField_a_of_type_Mkq.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.smoothScrollBy(localView.getBottom() - AIOUtils.a(175.0F, this.jdField_a_of_type_Mkq.a.jdField_a_of_type_AndroidAppActivity.getResources()), 800);
+      ReadInJoyBaseAdapter.d(this.jdField_a_of_type_Mkq.a, true);
     }
   }
 }

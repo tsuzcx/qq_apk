@@ -22,7 +22,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
 import java.util.ArrayList;
 import java.util.List;
-import yxc;
+import zdw;
 
 public class ApolloFavViewBinder
   extends ApolloViewBinder
@@ -169,7 +169,7 @@ public class ApolloFavViewBinder
             localViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo = ((ApolloInfo)this.jdField_a_of_type_JavaUtilList.get(i1));
             if (localViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo.jdField_b_of_type_Int == 2)
             {
-              localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838115);
+              localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838117);
               localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
               localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localApolloActionData.actionName);
               localViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo.c = 0;
@@ -200,7 +200,7 @@ public class ApolloFavViewBinder
               f = 2.0F;
               label383:
               ((RelativeLayout.LayoutParams)localObject1).topMargin = AIOUtils.a(f, this.jdField_b_of_type_AndroidContentContext.getResources());
-              localViewHolder.e.setBackgroundResource(2130838010);
+              localViewHolder.e.setBackgroundResource(2130838009);
               if (localViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo.d != 1) {
                 break label1135;
               }
@@ -249,20 +249,20 @@ public class ApolloFavViewBinder
                 localViewHolder.jdField_a_of_type_AndroidViewView = null;
               }
               Object localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-              ((RelativeLayout.LayoutParams)localObject2).addRule(5, 2131363232);
-              ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131363232);
-              ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131363232);
-              ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131363232);
+              ((RelativeLayout.LayoutParams)localObject2).addRule(5, 2131363237);
+              ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131363237);
+              ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131363237);
+              ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131363237);
               RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_b_of_type_AndroidContentContext);
-              localRelativeLayout.setId(2131362379);
+              localRelativeLayout.setId(2131362382);
               localRelativeLayout.setBackgroundDrawable(null);
               ((RelativeLayout)localObject1).addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject2);
               localViewHolder.jdField_a_of_type_AndroidViewView = localRelativeLayout;
               localObject2 = new ImageView(this.jdField_b_of_type_AndroidContentContext);
-              ((ImageView)localObject2).setImageResource(2130838139);
+              ((ImageView)localObject2).setImageResource(2130838141);
               ((ImageView)localObject2).setVisibility(8);
               localRelativeLayout.addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
-              ((ImageView)localObject2).postDelayed(new yxc(this, (ImageView)localObject2, localRelativeLayout, (RelativeLayout)localObject1, localViewHolder), 200L);
+              ((ImageView)localObject2).postDelayed(new zdw(this, (ImageView)localObject2, localRelativeLayout, (RelativeLayout)localObject1, localViewHolder), 200L);
               this.f = -1;
               localView.setContentDescription(localApolloActionData.actionName + "按钮");
             }
@@ -305,7 +305,7 @@ public class ApolloFavViewBinder
             {
               ((TextView)localObject1).setTextSize(f);
               localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
-              localViewHolder.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838011);
+              localViewHolder.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838010);
               break;
               localViewHolder.jdField_c_of_type_AndroidWidgetTextView.setTextSize(10.0F);
               if (h == 0) {

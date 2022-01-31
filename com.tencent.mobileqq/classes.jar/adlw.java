@@ -1,49 +1,67 @@
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.text.TextUtils;
+import com.tencent.biz.troop.file.TroopFileProtocol.GetFilePreviewObserver;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnPreviewVideoOnlineListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.URLUtil;
 
-public class adlw
-  extends OpenIdObserver
+class adlw
+  extends TroopFileProtocol.GetFilePreviewObserver
 {
-  public adlw(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  adlw(adlv paramadlv) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.h)) {}
+    paramByteStringMicro1 = FileManagerUtil.a(paramByteStringMicro1);
+    paramString2 = null;
+    paramString1 = paramString2;
+    if (paramBoolean)
+    {
+      paramString1 = paramString2;
+      if (!TextUtils.isEmpty(paramByteStringMicro1))
+      {
+        paramInt1 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.zipType;
+        paramString1 = "http://" + paramString3 + ":" + paramInt3 + "/ftn_compress_getfile/rkey=" + paramByteStringMicro1 + "&filetype=" + paramInt1 + "&path=" + URLUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.zipInnerPath) + "&";
+      }
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.a(paramString1, paramString4);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("zivonchen", 2, "url = " + paramString1 + ", cookies = " + paramString4);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a.a() != null)
+      {
+        paramString1 = String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a.a().TroopUin);
+        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a.a() == null) {
+          break label299;
+        }
+        paramString2 = FileManagerUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelTroopFileModel.a.a().nFileType);
+        label269:
+        ReportController.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramString1, "", paramString2, "1");
+      }
+    }
+    label299:
     do
     {
       return;
-      this.a.t();
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      paramString1 = "";
+      break;
+      paramString2 = "unknow";
+      break label269;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.c();
       }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(this.a.f))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->onGetOpenId--openid doesn't equal current openid");
-          }
-          this.a.z();
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver fail");
-      }
-    } while (!ForwardSdkShareOption.a(this.a));
-    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
-    this.a.j();
+    } while (!QLog.isColorLevel());
+    QLog.e("zivonchen", 2, "url = " + paramString1 + ", cookies = " + paramString4);
   }
 }
 

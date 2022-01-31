@@ -1,17 +1,11 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.Mp4ReEncoder.EncodeFilterRender;
 
-public class omc
-  implements AdapterView.OnItemClickListener
+class omc
+  implements Mp4ReEncoder.EncodeFilterRender
 {
-  public omc(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  omc(oly paramoly) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-  }
+  public void a() {}
 }
 
 

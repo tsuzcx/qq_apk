@@ -1,18 +1,34 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.util.InputMethodUtil;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.TroopHandler.KeywordTipInfoObserver;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import java.util.Iterator;
+import java.util.List;
 
-public class ajhq
-  implements View.OnClickListener
+class ajhq
+  extends TroopHandler.KeywordTipInfoObserver
 {
-  public ajhq(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  ajhq(ajhp paramajhp) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, List paramList)
   {
-    InputMethodUtil.b(paramView);
-    this.a.getActivity().doOnBackPressed();
+    SparseArray localSparseArray;
+    if (paramBoolean)
+    {
+      localSparseArray = this.a.a.b;
+      if (paramList != null) {
+        try
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
+            this.a.a.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
+          }
+        }
+        finally {}
+      }
+    }
   }
 }
 

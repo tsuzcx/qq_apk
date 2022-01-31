@@ -7,7 +7,7 @@ import com.tencent.component.network.module.base.QDLog;
 import com.tencent.component.network.utils.thread.Future;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import java.util.concurrent.atomic.AtomicInteger;
-import pkh;
+import poz;
 
 public class FileStorageHandler
   implements FileCacheService.StorageHandler
@@ -76,7 +76,7 @@ public class FileStorageHandler
     }
     finally {}
     paramFileCacheService = paramFileCacheService.a();
-    this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFuture = PriorityThreadPool.getDefault().submit(new pkh(this, paramBoolean, paramFileCacheService));
+    this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFuture = PriorityThreadPool.getDefault().submit(new poz(this, paramBoolean, paramFileCacheService));
   }
 }
 

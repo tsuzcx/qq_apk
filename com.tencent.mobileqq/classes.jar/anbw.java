@@ -1,16 +1,29 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData.PackageInfo;
 
-public class anbw
-  implements Runnable
+public final class anbw
+  implements Parcelable.Creator
 {
-  public anbw(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime) {}
-  
-  public void run()
+  public CoverCacheData.PackageInfo a(Parcel paramParcel)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin$PluginRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).a();
+    CoverCacheData.PackageInfo localPackageInfo = new CoverCacheData.PackageInfo();
+    if (paramParcel != null)
+    {
+      localPackageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_a_of_type_Int = paramParcel.readInt();
+      localPackageInfo.jdField_b_of_type_Int = paramParcel.readInt();
+      localPackageInfo.jdField_c_of_type_Int = paramParcel.readInt();
+      localPackageInfo.d = paramParcel.readString();
+    }
+    return localPackageInfo;
+  }
+  
+  public CoverCacheData.PackageInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

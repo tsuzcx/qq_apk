@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 class uay
   implements Runnable
 {
-  uay(uax paramuax) {}
+  uay(uax paramuax, int paramInt, String paramString) {}
   
   public void run()
   {
-    this.a.a.m();
+    if ((this.jdField_a_of_type_Int <= 0) && (this.jdField_a_of_type_Uax.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.e)) {
+      this.jdField_a_of_type_Uax.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    }
+    this.jdField_a_of_type_Uax.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

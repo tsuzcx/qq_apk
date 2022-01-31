@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.ImageTagInfo;
 
-public class anca
-  implements Runnable
+public final class anca
+  implements Parcelable.Creator
 {
-  public anca(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, int paramInt, String paramString) {}
-  
-  public void run()
+  public ImageTagInfo a(Parcel paramParcel)
   {
-    try
-    {
-      if ((this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a != null) && (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime != null)) {
-        QQToast.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).a();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QZLog.w("QZoneSharePictureJsPlugin", 1, localException, new Object[0]);
-    }
+    return new ImageTagInfo(paramParcel, null);
+  }
+  
+  public ImageTagInfo[] a(int paramInt)
+  {
+    return new ImageTagInfo[paramInt];
   }
 }
 

@@ -35,7 +35,7 @@ public class Util
     if (QLog.isColorLevel()) {
       QLog.d("Q.redtouch.util", 2, "card.medalSwitchDisable=" + bool);
     }
-    if (SharedPreUtils.al(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {}
+    if (SharedPreUtils.aj(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {}
     for (int i = 1;; i = 0)
     {
       if ((i != 0) && (QLog.isColorLevel())) {

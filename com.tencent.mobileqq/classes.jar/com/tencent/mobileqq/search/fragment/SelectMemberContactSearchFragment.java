@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahtq;
-import ahtr;
+import ahyh;
+import ahyi;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -25,7 +25,7 @@ public class SelectMemberContactSearchFragment
   
   protected BaseMvpAdapter a()
   {
-    return new ahtr(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new ahyi(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
   }
   
   protected ISearchEngine a()
@@ -53,7 +53,7 @@ public class SelectMemberContactSearchFragment
       return;
     }
     this.e = true;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838214);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838219);
   }
   
   protected boolean b()
@@ -79,7 +79,7 @@ public class SelectMemberContactSearchFragment
     {
       this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493241);
       this.e = false;
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahtq(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahyh(this));
     }
   }
 }

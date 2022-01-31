@@ -1,43 +1,23 @@
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
 
 public class zad
   implements Runnable
 {
-  public zad(BaseActivity paramBaseActivity) {}
+  public zad(ApolloGuestsStateActivity paramApolloGuestsStateActivity, int paramInt) {}
   
   public void run()
   {
-    int i = 0;
-    if (!SettingCloneUtil.readValue(this.a, null, this.a.getString(2131433581), "qqsetting_screenshot_key", false)) {}
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGuestsStateActivity.a != null)
     {
-      if (i != 0) {
-        this.a.turnOnShake();
-      }
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      BaseActivity.access$102(new zak(null));
-      try
-      {
-        this.a.getApplicationContext().registerReceiver(BaseActivity.access$100(), localIntentFilter);
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("qqBaseActivity", 1, "", localException);
-      }
-      i = 1;
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGuestsStateActivity.a.setText(String.valueOf(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGuestsStateActivity.c = this.jdField_a_of_type_Int;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zad
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.view.helper;
 
-import agss;
-import agst;
+import agxf;
+import agxg;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -16,7 +16,7 @@ public class HeartRiseLayerDrawable
 {
   public HeartRiseLayerDrawable(int paramInt, Resources paramResources)
   {
-    super(agst.a(paramInt, paramResources, a(paramResources)));
+    super(agxg.a(paramInt, paramResources, a(paramResources)));
   }
   
   public static Bitmap a(Resources paramResources)
@@ -39,11 +39,11 @@ public class HeartRiseLayerDrawable
     int i = 0;
     if (i < getNumberOfLayers())
     {
-      agss localagss = new agss(this, i, paramInt1, paramInt2);
+      agxf localagxf = new agxf(this, i, paramInt1, paramInt2);
       if (i % 2 == 0) {}
       for (long l = i * 200;; l = i * 130)
       {
-        paramHandler.postDelayed(localagss, l);
+        paramHandler.postDelayed(localagxf, l);
         i += 1;
         break;
       }

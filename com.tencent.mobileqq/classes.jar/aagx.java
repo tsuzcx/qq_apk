@@ -1,34 +1,22 @@
-import com.tencent.av.avgesture.AVGestureWrapper;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
 import com.tencent.qphone.base.util.QLog;
 
-class aagx
+public class aagx
   implements Runnable
 {
-  aagx(aagw paramaagw) {}
+  public aagx(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, int paramInt, float paramFloat1, float paramFloat2, long paramLong) {}
   
   public void run()
   {
-    try
+    ARWorldCupGlobalSceneRenderable.b(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable);
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.b != 1) {}
+    do
     {
-      AVGestureWrapper.clearCache();
-      ARWorldCupGameLogicManager.a().e();
       return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        QLog.i("AREngine_AREngine", 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.i("AREngine_AREngine", 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
-      }
-    }
+      ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).native_onTouchBegin(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b, 5, this.jdField_a_of_type_Long, ARWorldCupGlobalSceneRenderable.c(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable));
+    } while (!QLog.isColorLevel());
+    QLog.d("ARWorldCupGlobalSceneRenderable", 2, "ACTION_POINTER_DOWN native_onTouchBegin");
   }
 }
 

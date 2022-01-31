@@ -38,7 +38,7 @@ public abstract class FeedItem
     {
     case 4: 
     default: 
-      AssertUtils.a("It can not create the illegal type:%s feed!", new Object[] { Integer.valueOf(paramInt) });
+      SLog.e("Q.qqstory", "It can not create the illegal type:%s feed!", new Object[] { Integer.valueOf(paramInt) });
       return null;
     case 1: 
       return new GeneralFeedItem();

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acwc;
-import acwd;
-import acwe;
-import acwg;
-import acwh;
-import acwi;
-import acwj;
-import acwk;
-import acwl;
-import acwo;
+import adek;
+import adel;
+import adem;
+import adep;
+import adeq;
+import ader;
+import ades;
+import adet;
+import adeu;
+import adex;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -48,7 +48,7 @@ public class FileVideoManager$VideoControl
 {
   public int a;
   long jdField_a_of_type_Long = 0L;
-  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new acwi(this);
+  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new ader(this);
   public FileManagerEntity a;
   public TVK_IDownloadMgr a;
   public TVK_IMediaPlayer a;
@@ -110,7 +110,7 @@ public class FileVideoManager$VideoControl
       QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]getc2cPlayData");
     }
     if (!TextUtils.isEmpty(paramFileManagerEntity.Uuid)) {
-      ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(paramFileManagerEntity.Uuid, paramFileManagerEntity.bSend, new acwg(this, paramFileManagerEntity, paramFileVideoManagerCallback));
+      ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(paramFileManagerEntity.Uuid, paramFileManagerEntity.bSend, new adep(this, paramFileManagerEntity, paramFileVideoManagerCallback));
     }
   }
   
@@ -134,7 +134,7 @@ public class FileVideoManager$VideoControl
     if (QLog.isDevelopLevel()) {
       QLog.i("FileVideoManager<FileAssistant>", 1, "set new Download Callback");
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.setCallBackListener(20160714, new acwe(this, localQQAppInterface));
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.setCallBackListener(20160714, new adem(this, localQQAppInterface));
     if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.setCookie(20160714, this.jdField_c_of_type_JavaLangString);
     }
@@ -151,7 +151,7 @@ public class FileVideoManager$VideoControl
       return;
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    localQQAppInterface.a().a(paramFileManagerEntity.nSessionId, paramFileManagerEntity.fileName, Long.parseLong(paramFileManagerEntity.peerUin), paramFileManagerEntity.Uuid, new acwh(this, paramFileManagerEntity, localQQAppInterface, paramFileVideoManagerCallback));
+    localQQAppInterface.a().a(paramFileManagerEntity.nSessionId, paramFileManagerEntity.fileName, Long.parseLong(paramFileManagerEntity.peerUin), paramFileManagerEntity.Uuid, new adeq(this, paramFileManagerEntity, localQQAppInterface, paramFileVideoManagerCallback));
   }
   
   private void d()
@@ -171,13 +171,13 @@ public class FileVideoManager$VideoControl
     {
       localObject = (FileVideoManager.FileVideoManagerCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (localObject != null) {
-        ((FileVideoManager.FileVideoManagerCallback)localObject).af_();
+        ((FileVideoManager.FileVideoManagerCallback)localObject).ah_();
       }
     }
     Object localObject = Looper.getMainLooper();
     if (((Looper)localObject).getThread() != Thread.currentThread())
     {
-      new Handler((Looper)localObject).post(new acwj(this, localQQAppInterface));
+      new Handler((Looper)localObject).post(new ades(this, localQQAppInterface));
       return;
     }
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null)
@@ -292,7 +292,7 @@ public class FileVideoManager$VideoControl
     {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFileVideoManagerCallback);
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(paramContext, (IVideoViewBase)paramView);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new acwc(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new adek(this));
     }
     return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   }
@@ -307,7 +307,7 @@ public class FileVideoManager$VideoControl
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new acwo(this));
+      new Handler(localLooper).post(new adex(this));
       return;
     }
     f();
@@ -322,7 +322,7 @@ public class FileVideoManager$VideoControl
       }
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new acwl(this, paramFileManagerEntity, paramFileVideoManagerCallback));
+    new Handler(Looper.getMainLooper()).post(new adeu(this, paramFileManagerEntity, paramFileVideoManagerCallback));
   }
   
   public void a(FileManagerEntity paramFileManagerEntity, boolean paramBoolean)
@@ -358,7 +358,7 @@ public class FileVideoManager$VideoControl
       if (QLog.isDevelopLevel()) {
         QLog.i("FileVideoManager<FileAssistant>", 1, "[" + paramFileManagerEntity.nSessionId + "]url is null ,get it!");
       }
-      a(paramFileManagerEntity, new acwk(this, paramFileManagerEntity, paramBoolean));
+      a(paramFileManagerEntity, new adet(this, paramFileManagerEntity, paramBoolean));
       return;
     }
     c();
@@ -412,7 +412,7 @@ public class FileVideoManager$VideoControl
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-      localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, "", "当前网络不稳定，无法播放及下载视频，请稍后重试。", null, "我知道了", new acwd(this), null);
+      localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, "", "当前网络不稳定，无法播放及下载视频，请稍后重试。", null, "我知道了", new adel(this), null);
       if (!localQQCustomDialog.isShowing()) {
         localQQCustomDialog.show();
       }

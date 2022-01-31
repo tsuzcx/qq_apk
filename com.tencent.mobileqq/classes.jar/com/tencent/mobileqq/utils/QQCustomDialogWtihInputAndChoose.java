@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.utils;
 
-import akez;
-import akfa;
-import akfb;
-import akfc;
-import akfd;
-import akfe;
-import akfg;
-import akfh;
+import akmn;
+import akmo;
+import akmp;
+import akmq;
+import akmr;
+import akms;
+import akmu;
+import akmv;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
@@ -73,7 +73,7 @@ public class QQCustomDialogWtihInputAndChoose
     this.jdField_c_of_type_Float = 39.0F;
     this.jdField_c_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new akfa(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new akmo(this);
     this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramContext);
     getWindow().setSoftInputMode(19);
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
@@ -103,15 +103,15 @@ public class QQCustomDialogWtihInputAndChoose
     if (this.jdField_a_of_type_AndroidWidgetEditText != null)
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new akfb(this, paramInt));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new akmp(this, paramInt));
     }
   }
   
   void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout = ((MyLinearLayout)View.inflate(paramContext, 2130968863, null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131364088).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.setDispatchKeyEventListener(new akfc(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout = ((MyLinearLayout)View.inflate(paramContext, 2130968867, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131364113).setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.setDispatchKeyEventListener(new akmq(this));
   }
   
   public void a(String paramString)
@@ -130,16 +130,16 @@ public class QQCustomDialogWtihInputAndChoose
     }
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     float f = getContext().getResources().getDisplayMetrics().density;
-    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131364089);
+    LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131364114);
     localLinearLayout.removeAllViews();
     int i = 0;
     while (i < paramArrayList.size())
     {
-      View localView = View.inflate(getContext(), 2130968864, null);
+      View localView = View.inflate(getContext(), 2130968868, null);
       localView.setTag(Integer.valueOf(i));
       localView.setClickable(true);
       localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      ((TextView)localView.findViewById(2131364090)).setText((CharSequence)paramArrayList.get(i));
+      ((TextView)localView.findViewById(2131364115)).setText((CharSequence)paramArrayList.get(i));
       localLinearLayout.addView(localView, new LinearLayout.LayoutParams(-1, (int)(45.5F * f)));
       i += 1;
     }
@@ -168,37 +168,37 @@ public class QQCustomDialogWtihInputAndChoose
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364087)
+    if (paramView.getId() == 2131364112)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout != null)
       {
         if (this.jdField_b_of_type_Boolean)
         {
           a();
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844124);
-          this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130844124));
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akfd(this), 200L);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844190);
+          this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130844190));
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akmr(this), 200L);
         }
       }
       else {
         return;
       }
       paramView = this.jdField_a_of_type_AndroidWidgetImageView.getTag();
-      if ((paramView != null) && ((paramView instanceof Integer)) && (((Integer)paramView).intValue() == 2130844546))
+      if ((paramView != null) && ((paramView instanceof Integer)) && (((Integer)paramView).intValue() == 2130844610))
       {
         InputMethodUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844124);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130844124));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844190);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130844190));
         this.jdField_b_of_type_Boolean = false;
         return;
       }
       InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844546);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130844546));
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akfe(this), 200L);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844610);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130844610));
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akms(this), 200L);
       return;
     }
-    if (paramView.getId() == 2131364088)
+    if (paramView.getId() == 2131364113)
     {
       a();
       return;
@@ -222,13 +222,13 @@ public class QQCustomDialogWtihInputAndChoose
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364032));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131363497));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364087));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364057));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131363516));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364112));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    findViewById(2131364073).setOnClickListener(this);
+    findViewById(2131364098).setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new akez(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new akmn(this));
     Context localContext = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
     if (localContext == null) {
       return;
@@ -239,7 +239,7 @@ public class QQCustomDialogWtihInputAndChoose
   
   public QQCustomDialog setMessage(CharSequence paramCharSequence)
   {
-    TextView localTextView = (TextView)findViewById(2131364086);
+    TextView localTextView = (TextView)findViewById(2131364111);
     if (!TextUtils.isEmpty(paramCharSequence))
     {
       localTextView.setText(paramCharSequence);
@@ -261,7 +261,7 @@ public class QQCustomDialogWtihInputAndChoose
     this.lBtn.setText(paramInt);
     this.lBtn.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131427457));
     this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new akfg(this, paramOnClickListener));
+    this.lBtn.setOnClickListener(new akmu(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -276,7 +276,7 @@ public class QQCustomDialogWtihInputAndChoose
     this.rBtn.setText(paramInt);
     this.rBtn.setContentDescription(getContext().getString(paramInt));
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new akfh(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new akmv(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }

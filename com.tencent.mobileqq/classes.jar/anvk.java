@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoVote;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import dov.com.qq.im.capture.paster.PasterDataManager;
 
 public class anvk
-  implements DialogInterface.OnClickListener
+  extends LbsManager.OnLocationListener
 {
-  public anvk(EditVideoVote paramEditVideoVote) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public anvk(PasterDataManager paramPasterDataManager, String paramString, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    super(paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    super.a(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      SLog.b("PasterDataManager", "onLocationUpdate() latitude=" + paramSosoLbsInfo.a.a + " longitude=" + paramSosoLbsInfo.a.b);
+      this.jdField_a_of_type_DovComQqImCapturePasterPasterDataManager.b(this.jdField_a_of_type_Boolean);
+      return;
+    }
+    SLog.b("PasterDataManager", "onLocationUpdate() error");
   }
 }
 

@@ -1,26 +1,50 @@
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager.QIMUserIcon;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.UnlimitedState;
 
-class vqi
-  implements Runnable
+public class vqi
+  implements Animator.AnimatorListener
 {
-  vqi(vqh paramvqh) {}
+  private vqi(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext())
+    if (UnlimitedBladeWorks.a(this.a).a)
     {
-      QIMUserManager.QIMUserIcon localQIMUserIcon = (QIMUserManager.QIMUserIcon)localIterator.next();
-      if (localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView != null) {
-        localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setImageDrawable(localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
+        break label55;
       }
-      localQIMUserIcon.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView = null;
-      localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      UnlimitedBladeWorks.a(this.a);
+      UnlimitedBladeWorks.a(this.a, 5);
     }
-    this.a.a.clear();
+    for (;;)
+    {
+      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
+      return;
+      label55:
+      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a(new vqj(this));
+      UnlimitedBladeWorks.a(this.a).c();
+      UnlimitedBladeWorks.a(this.a, 1);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (UnlimitedBladeWorks.a(this.a))
+    {
+      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      return;
+    }
+    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
   }
 }
 

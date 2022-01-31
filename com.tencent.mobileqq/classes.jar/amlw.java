@@ -1,31 +1,36 @@
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
+import java.lang.ref.WeakReference;
 
-public final class amlw
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class amlw
+  extends Handler
 {
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public amlw()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
-    }
-    IPluginManager.a(paramPluginManagerClient);
-    IPluginManager.a(null);
-    while (!IPluginManager.a().isEmpty())
+    super(Looper.getMainLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      paramPluginManagerClient = (ammb)IPluginManager.a().poll();
-      if (paramPluginManagerClient != null) {
-        IPluginManager.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
-      }
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMessage.obj == null);
+      paramMessage = ((WeakReference)paramMessage.obj).get();
+    } while ((paramMessage == null) || (!(paramMessage instanceof CalloutPopupWindow)));
+    ((CalloutPopupWindow)paramMessage).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlw
  * JD-Core Version:    0.7.0.1
  */

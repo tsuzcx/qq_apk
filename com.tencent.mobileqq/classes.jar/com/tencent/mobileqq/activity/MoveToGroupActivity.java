@@ -19,21 +19,21 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.util.List;
-import tbv;
-import tbw;
-import tbx;
+import tgp;
+import tgq;
+import tgr;
 
 public class MoveToGroupActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
   public byte a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tbv(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tgp(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private String jdField_a_of_type_JavaLangString;
   public List a;
-  private tbx jdField_a_of_type_Tbx;
+  private tgr jdField_a_of_type_Tgr;
   private boolean jdField_a_of_type_Boolean;
   private byte b;
   
@@ -74,19 +74,19 @@ public class MoveToGroupActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969104);
-    setTitle(getString(2131434541));
-    paramBundle = (TextView)findViewById(2131363245);
+    super.setContentView(2130969107);
+    setTitle(getString(2131434557));
+    paramBundle = (TextView)findViewById(2131363262);
     paramBundle.setContentDescription("返回好友管理");
     this.jdField_a_of_type_JavaLangString = getIntent().getExtras().getString("friendUin");
     this.jdField_a_of_type_Boolean = getIntent().getExtras().getBoolean("key_from_babyq_web_plugin", false);
     this.b = getIntent().getExtras().getByte("mgid");
     this.jdField_a_of_type_Byte = this.b;
     this.jdField_a_of_type_JavaUtilList = ((FriendsManager)this.app.getManager(50)).d();
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131365173));
-    this.jdField_a_of_type_Tbx = new tbx(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Tbx);
-    paramBundle.setOnClickListener(new tbw(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131365200));
+    this.jdField_a_of_type_Tgr = new tgr(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Tgr);
+    paramBundle.setOnClickListener(new tgq(this));
     return true;
   }
   
@@ -110,8 +110,8 @@ public class MoveToGroupActivity
   {
     int i = ((Integer)paramView.getTag()).intValue();
     this.jdField_a_of_type_Byte = ((byte)((Groups)this.jdField_a_of_type_JavaUtilList.get(i)).group_id);
-    if (this.jdField_a_of_type_Tbx != null) {
-      this.jdField_a_of_type_Tbx.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Tgr != null) {
+      this.jdField_a_of_type_Tgr.notifyDataSetChanged();
     }
     if (getIntent().getBooleanExtra("PARAM_EXECUTE_IMMEDIATELY", true))
     {
@@ -125,12 +125,12 @@ public class MoveToGroupActivity
           a();
           return;
         }
-        QQToast.a(this.app.getApp(), getString(2131434612), 1).b(getTitleBarHeight());
+        QQToast.a(this.app.getApp(), getString(2131434628), 1).b(getTitleBarHeight());
         finish();
         return;
       }
       if (this.jdField_a_of_type_Byte == this.b) {
-        QQToast.a(this, getString(2131434516), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131434532), 0).b(getTitleBarHeight());
       }
     }
     c();

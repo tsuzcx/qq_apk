@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
 
-public final class ulo
-  implements Parcelable.Creator
+public class ulo
+  implements View.OnClickListener
 {
-  public ForwardUtils.Section_Pic a(Parcel paramParcel)
-  {
-    return new ForwardUtils.Section_Pic(paramParcel);
-  }
+  public ulo(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public ForwardUtils.Section_Pic[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ForwardUtils.Section_Pic[paramInt];
+    if (!this.a.b) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ulo
  * JD-Core Version:    0.7.0.1
  */

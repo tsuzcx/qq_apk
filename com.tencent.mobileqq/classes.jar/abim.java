@@ -1,19 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashBgView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abim
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnDismissListener
 {
-  public abim(ARMapSplashBgView paramARMapSplashBgView) {}
+  public abim(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (ARMapSplashBgView.a(this.a) != null) {
-      ARMapSplashBgView.a(this.a).setTranslationY(paramValueAnimator.floatValue() * ARMapSplashBgView.a(this.a));
-    }
+    ARMapActivity.q(this.a);
   }
 }
 

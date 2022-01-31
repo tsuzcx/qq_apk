@@ -1,19 +1,47 @@
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListEvent;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class oad
-  implements ActionSheet.OnDismissListener
+  extends UIBaseEventReceiver
 {
-  public oad(FeedSegment paramFeedSegment, int paramInt) {}
-  
-  public void onDismiss()
+  public oad(StoryDetailPresenter paramStoryDetailPresenter)
   {
-    StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a.a().get(this.jdField_a_of_type_Int);
-    FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, localStoryHomeFeed, "clk_hide");
+    super(paramStoryDetailPresenter);
   }
+  
+  public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent)
+  {
+    if ((!paramGetLikeListEvent.jdField_a_of_type_Boolean) || (!paramGetLikeListEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (paramGetLikeListEvent.errorInfo.isFail()) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null))
+    {
+      SLog.b(this.TAG, "ignore this like list event. %s.", paramGetLikeListEvent.toString());
+      return;
+    }
+    SLog.a(this.TAG, "receive like list event. %s.", paramGetLikeListEvent.toString());
+    boolean bool2 = StoryDetailPresenter.a(paramStoryDetailPresenter);
+    if (paramGetLikeListEvent.jdField_a_of_type_Int == 0) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      StoryDetailPresenter.a(paramStoryDetailPresenter).b(bool1, paramGetLikeListEvent.b);
+      StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true, bool1);
+      if (bool2 != bool1) {
+        break;
+      }
+      paramStoryDetailPresenter.a();
+      return;
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DetailLikeListLoader.GetLikeListEvent.class;
+  }
+  
+  public void b(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent) {}
 }
 
 

@@ -1,15 +1,33 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.text.CaptureComboText;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.IDynamicTextResDownloadCallback;
 
-class anwe
-  implements Runnable
+public class anwe
+  implements DynamicTextConfigManager.IDynamicTextResDownloadCallback
 {
-  anwe(anwd paramanwd, Map paramMap) {}
+  public anwe(CaptureComboText paramCaptureComboText) {}
   
-  public void run()
+  public void a(float paramFloat, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Anwd.a.a.a(this.jdField_a_of_type_JavaUtilMap);
+    if (QLog.isColorLevel()) {
+      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
+    }
+    CaptureComboText.a(this.a, paramFloat);
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      CaptureComboText.a(this.a, 3);
+      this.a.b();
+      return;
+    }
+    CaptureComboText.a(this.a, 2);
+    this.a.a(1);
   }
 }
 

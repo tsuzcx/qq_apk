@@ -1,27 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper.MediaPlayListenerAdapter;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.Properties;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import java.util.List;
 
 public class mez
   implements Runnable
 {
-  public mez(VideoPlayerWrapper paramVideoPlayerWrapper, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public mez(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getStreamDumpInfo();
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    VideoInfo localVideoInfo = (VideoInfo)VideoFeedsAdapter.a(this.a).get(0);
+    if (VideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
     {
-      localObject = ReadInJoyUtils.a((String)localObject);
-      if (localObject != null)
+      Object localObject = VideoFeedsAdapter.a(this.a).getChildAt(VideoFeedsAdapter.a(this.a).getHeaderViewsCount());
+      if ((localObject != null) && ((((View)localObject).getTag() instanceof VideoFeedsAdapter.VideoItemHolder)))
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a = Long.valueOf(((Properties)localObject).getProperty("VideoBitRate")).longValue();
-        if (VideoPlayerWrapper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper) != null) {
-          VideoPlayerWrapper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a);
-        }
+        localObject = (VideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
+        ((VideoFeedsAdapter.VideoItemHolder)localObject).e.setText(localVideoInfo.c);
+        ((VideoFeedsAdapter.VideoItemHolder)localObject).n.setText(localVideoInfo.c);
       }
     }
   }

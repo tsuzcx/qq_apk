@@ -1,64 +1,49 @@
-import com.tencent.mobileqq.doutu.DoutuManager;
-import com.tencent.mobileqq.doutu.DuiButtonImageView;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class abyd
-  extends DownloadListener
+  implements OverScrollViewListener
 {
-  public abyd(DoutuManager paramDoutuManager, String paramString1, String paramString2, String paramString3) {}
+  public abyd(SearchResultActivity paramSearchResultActivity) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    boolean bool;
-    int i;
-    if (paramDownloadTask.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] download finished " + this.jdField_a_of_type_JavaLangString);
-      }
-      paramDownloadTask = DoutuManager.a(this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager, this.b);
-      if (this.c.equalsIgnoreCase(paramDownloadTask))
-      {
-        DoutuManager.a(this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager, this.b);
-        DoutuManager.a(this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager, DoutuManager.jdField_a_of_type_JavaLangString + "doutuResInfo", this.c);
-        SharedPreUtils.e(BaseApplication.getContext(), false);
-        DuiButtonImageView.a();
-        bool = true;
-        i = 0;
-      }
+    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
+    if (NetworkUtil.d(this.a)) {
+      SearchResultActivity.c(this.a);
     }
     for (;;)
     {
-      paramDownloadTask = new HashMap();
-      paramDownloadTask.put("param_FailCode", String.valueOf(i));
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "doutuResDownload", bool, 0L, 0L, paramDownloadTask, "");
-      DoutuManager.jdField_a_of_type_Boolean = false;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "[onDone] checkMd5 failed: " + this.b);
-      }
-      i = 80704;
-      FileUtils.d(this.b);
-      bool = false;
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.d("DoutuManager", 2, "checkAndDownloadRes : [onDone] downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
-      }
-      i = paramDownloadTask.a;
-      bool = false;
+      SearchResultActivity.a(this.a, System.currentTimeMillis());
+      return true;
+      SearchResultActivity.a(this.a).a(1);
+      paramView = Message.obtain();
+      paramView.what = 3;
+      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
     }
   }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abyd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.logic;
 
-import ajmb;
+import ajtn;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -50,7 +50,7 @@ public class TroopAvatarWallEditCtrl
   public TroopAvatarWallEditCtrl()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_MqqObserverAccountObserver = new ajmb(this);
+    this.jdField_a_of_type_MqqObserverAccountObserver = new ajtn(this);
   }
   
   public void a()
@@ -91,7 +91,7 @@ public class TroopAvatarWallEditCtrl
     this.jdField_a_of_type_Long = paramLong;
     this.c = paramInt1;
     this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopManager)paramQQAppInterface.getManager(51)).a(paramString);
-    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramBaseActivity.findViewById(2131368314));
+    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramBaseActivity.findViewById(2131368316));
     this.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(0);
     this.jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetGridView.setEdgeEffectEnabled(false);
@@ -100,7 +100,7 @@ public class TroopAvatarWallEditCtrl
     paramString = new DisplayMetrics();
     paramBaseActivity.getWindowManager().getDefaultDisplay().getMetrics(paramString);
     paramInt1 = (paramString.widthPixels - DisplayUtil.a(paramBaseActivity, 12.0F) * 2 - DisplayUtil.a(paramBaseActivity, 10.0F) * 3) / 4;
-    ((RelativeLayout)paramBaseActivity.findViewById(2131364059)).setMinimumHeight(paramInt1 * 2 + UIUtils.a(paramBaseActivity, 10.0F));
+    ((RelativeLayout)paramBaseActivity.findViewById(2131364084)).setMinimumHeight(paramInt1 * 2 + UIUtils.a(paramBaseActivity, 10.0F));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a(paramInt1);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.e(1);
     this.jdField_a_of_type_Int = paramBaseActivity.getTitleBarHeight();
@@ -249,7 +249,7 @@ public class TroopAvatarWallEditCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.logic.TroopAvatarWallEditCtrl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,24 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.utils.BatchAddFriendData;
-import com.tencent.mobileqq.troop.utils.TroopMemberGlobalLevelUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 public class vzo
-  implements Runnable
+  implements WerewolvesHandler.Callback
 {
-  public vzo(TroopChatPie paramTroopChatPie) {}
+  public vzo(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void run()
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    TroopMemberGlobalLevelUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-    BatchAddFriendData.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+    if ((paramInt == 0) && (this.a.X))
+    {
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, "已成功退出游戏房间", 0).a();
+      SharedPreUtils.l(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.a(this.a.jdField_a_of_type_AndroidContentContext);
+    }
   }
 }
 

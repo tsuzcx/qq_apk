@@ -79,6 +79,7 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean predownload;
   public boolean renderfirst = true;
   public String resurl;
+  public double sizeFree;
   long startDownloadTime;
   public String storeurl;
   public int templateStyle;

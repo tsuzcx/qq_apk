@@ -2,6 +2,7 @@ package com.tencent.mfsdk.reporter;
 
 import android.os.Build;
 import android.os.HandlerThread;
+import android.text.TextUtils;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
 import com.tencent.qphone.base.util.QLog;
@@ -33,10 +34,9 @@ public class QCloudReporter
       return false;
     }
     JSONObject localJSONObject = paramResultObject.params;
-    Object localObject2 = localJSONObject.optJSONObject("fileObj");
+    Object localObject3 = localJSONObject.optJSONObject("fileObj");
     Object localObject1 = localJSONObject.optJSONObject("clientinfo");
     int i;
-    Iterator localIterator;
     String str1;
     for (;;)
     {
@@ -45,11 +45,11 @@ public class QCloudReporter
         if (localJSONObject.has("newplugin"))
         {
           i = localJSONObject.getInt("newplugin");
-          localIterator = ((JSONObject)localObject1).keys();
-          if (!localIterator.hasNext()) {
+          localObject2 = ((JSONObject)localObject1).keys();
+          if (!((Iterator)localObject2).hasNext()) {
             break;
           }
-          str1 = (String)localIterator.next();
+          str1 = (String)((Iterator)localObject2).next();
           localJSONObject.put(str1, ((JSONObject)localObject1).getString(str1));
           continue;
         }
@@ -66,7 +66,12 @@ public class QCloudReporter
     localJSONObject.put("version", MagnifierSDK.jdField_a_of_type_JavaLangString);
     localJSONObject.put("manu", Build.BRAND);
     localJSONObject.put("device", Build.MODEL);
-    localJSONObject.put("rdmuuid", ((JSONObject)localObject1).getString("rdmuuid"));
+    Object localObject2 = ((JSONObject)localObject1).getString("rdmuuid");
+    localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "0";
+    }
+    localJSONObject.put("rdmuuid", localObject1);
     localJSONObject.put("api_ver", 1);
     localJSONObject.put("plugin_ver", 1);
     localJSONObject.put("client_identify", UUID.randomUUID());
@@ -74,17 +79,17 @@ public class QCloudReporter
     localJSONObject.put("plugin", i);
     localJSONObject.remove("clientinfo");
     localObject1 = new StringBuffer(1024);
-    if ((localObject2 != null) && (i != 102))
+    if ((localObject3 != null) && (i != 102))
     {
-      localObject2 = ((JSONObject)localObject2).getString("fileObj1");
+      localObject2 = ((JSONObject)localObject3).getString("fileObj1");
       localJSONObject.put("fileObj", localObject2);
-      localIterator = localJSONObject.keys();
-      str1 = (String)localIterator.next();
+      localObject3 = localJSONObject.keys();
+      str1 = (String)((Iterator)localObject3).next();
       String str2 = localJSONObject.getString(str1);
       ((StringBuffer)localObject1).append(str1).append("=").append(URLEncoder.encode(str2, "UTF-8"));
-      while (localIterator.hasNext())
+      while (((Iterator)localObject3).hasNext())
       {
-        str1 = (String)localIterator.next();
+        str1 = (String)((Iterator)localObject3).next();
         str2 = localJSONObject.getString(str1);
         ((StringBuffer)localObject1).append("&").append(str1).append("=").append(URLEncoder.encode(str2, "UTF-8"));
       }

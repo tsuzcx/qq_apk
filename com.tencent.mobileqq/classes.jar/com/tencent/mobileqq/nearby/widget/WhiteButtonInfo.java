@@ -10,7 +10,7 @@ public class WhiteButtonInfo
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838525);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838537);
     this.jdField_a_of_type_Int = -16777216;
   }
 }

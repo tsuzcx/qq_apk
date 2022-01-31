@@ -1,20 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import java.util.List;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySwipeView.OnSlidingFinishListener;
 
 public class lqe
-  implements Runnable
+  implements ReadInJoySwipeView.OnSlidingFinishListener
 {
-  public lqe(ArticleInfoModule paramArticleInfoModule, boolean paramBoolean, int paramInt, List paramList) {}
+  public lqe(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
   
-  public void run()
+  public void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
-    List localList = ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_JavaUtilList);
-    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int, localList);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("exitType", 2);
+    localBundle.putSerializable("lastShowImageModel", this.a.a.b());
+    ReadInJoyAtlasFragment.a(this.a).a(-2, localBundle);
+    ReadInJoyAtlasFragment.b(this.a, true);
+    ReadInJoyAtlasFragment.a(this.a).finish();
   }
 }
 

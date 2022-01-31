@@ -1,51 +1,23 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
-public class aknf
-  implements View.OnLayoutChangeListener
+public final class aknf
+  implements Parcelable.Creator
 {
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Rect b = new Rect();
-  
-  public aknf(WebViewFragment paramWebViewFragment) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public QQRecorder.RecorderParam a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(this.b);
-    paramView.getWindowVisibleDisplayFrame(this.b);
-    if (this.jdField_a_of_type_AndroidGraphicsRect.width() == this.b.width())
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a == null) {
-        break label100;
-      }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.a();
-      if (paramView != null)
-      {
-        paramInt1 = this.jdField_a_of_type_AndroidGraphicsRect.height() - this.b.height();
-        if (paramInt1 >= -100) {
-          break label105;
-        }
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.g, 8589934614L, null);
-      }
-    }
-    label100:
-    label105:
-    while (paramInt1 <= 100)
-    {
-      return;
-      paramView = null;
-      break;
-    }
-    paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.g, 8589934613L, null);
+    return new QQRecorder.RecorderParam(paramParcel);
+  }
+  
+  public QQRecorder.RecorderParam[] a(int paramInt)
+  {
+    return new QQRecorder.RecorderParam[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aknf
  * JD-Core Version:    0.7.0.1
  */

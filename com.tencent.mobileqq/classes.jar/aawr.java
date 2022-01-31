@@ -1,25 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAiInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppViewByIntentCallback;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class aawr
-  implements ArkLocalAppMgr.IGetAppViewByIntentCallback
+  implements DialogInterface.OnClickListener
 {
-  aawr(aawq paramaawq, ArkAiInfo paramArkAiInfo, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, int paramInt1, int paramInt2) {}
+  aawr(aawp paramaawp, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4)))
+    ArkAppCenter.a().post(new aaws(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d = paramString3;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.b = paramString4;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo.a.add(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aawp.a, "ark_authority_api_login", this.jdField_a_of_type_Aawp.c, 2);
+      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438843), 2131435285, 2131435285, new DialogUtil.DialogOnClickAdapter(), null);
+      try
+      {
+        paramDialogInterface.show();
+        return;
+      }
+      catch (Exception paramDialogInterface) {}
     }
-    if ((this.jdField_a_of_type_Int == this.b - 1) && (this.jdField_a_of_type_Aawq.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler != null)) {
-      this.jdField_a_of_type_Aawq.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler.a(this.jdField_a_of_type_Aawq.a.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aawq.a.a.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo, false);
+    catch (Exception paramDialogInterface)
+    {
+      break label38;
     }
   }
 }

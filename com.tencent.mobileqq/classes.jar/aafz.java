@@ -1,50 +1,88 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecog;
-import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult;
-import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult.ARCircleResult;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARRecord.worldcup.ARWorldCupStateListener;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable.IWorldCupGameEndCallBack;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
+import mqq.os.MqqHandler;
 
 public class aafz
   implements Runnable
 {
-  public aafz(AREngine paramAREngine) {}
+  public aafz(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, int paramInt) {}
   
   public void run()
   {
-    int i = 0;
-    if (i < 2)
+    boolean bool = false;
+    switch (this.jdField_a_of_type_Int)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g <= this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.e - 1) {
-        break label75;
-      }
-      this.a.c = true;
-    }
-    label75:
-    while (this.a.c == true)
-    {
-      if (!this.a.c) {
-        AREngine.a(this.a.jdField_a_of_type_JavaLangRunnable, this.a.b);
-      }
+    default: 
+    case 2: 
+    case 3: 
+    case 5: 
+    case 7: 
+    case 8: 
+    case 9: 
+    case 13: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.jdField_a_of_type_Int != 0) || (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.b != 2));
+          ARWorldCupGlobalSceneRenderable.c(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable);
+          ARWorldCupGameLogicManager.a().a(ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a() + "/res/worldcup/");
+          ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable, 3, ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a() + "/res/worldcup/360.mp4", false);
+          ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a(true);
+          return;
+          if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null) {
+            this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeCallbacks(ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable));
+          }
+          ThreadManager.getSubThreadHandler().post(new aaga(this));
+        } while (ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) == null);
+        ARWorldCupGameLogicManager.a().a();
+        QLog.d("ARWorldCupGlobalSceneRenderable", 2, "nativeCallBack status " + this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.a(4);
+        ARWorldCupGlobalSceneRenderable.b(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable);
+        return;
+        ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).c();
+        ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable, 6, ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a() + "/res/worldcup/get_ball.mp4", false);
+        return;
+        ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).c();
+        ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable, 8, ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a() + "/res/worldcup/ready_batch.mp4", true);
+        return;
+        if (ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) == null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder().append("mTouchView.initView()  ");
+          if (ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) == null) {
+            bool = true;
+          }
+          QLog.d("ARWorldCupGlobalSceneRenderable", 2, bool);
+          return;
+        }
+        ReportController.b(null, "dc00898", "", "", "0X8009315", "0X8009315", 0, 0, "", "", "", "");
+        bool = ARWorldCupGlobalSceneRenderable.b(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable);
+        ThreadManager.getUIHandler().post(new aagb(this, bool));
+        return;
+        ARWorldCupGlobalSceneRenderable.d(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable);
+        return;
+      } while ((ARWorldCupGameLogicManager.a().b()) || (ARWorldCupGameLogicManager.a().a == null));
+      ARWorldCupGameLogicManager.a().a.a(13);
       return;
     }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.b[this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g];
-    localObject = ARLocalGestureCircleRecog.a(AREngine.f(this.a), AREngine.g(this.a), AREngine.h(this.a), AREngine.i(this.a), (PointF)localObject);
-    int j = (int)((PointF)localObject).x;
-    int k = (int)((PointF)localObject).y;
-    int m = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.a[this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g];
-    localObject = ARWorldCupGameLogicManager.a();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((ARWorldCupGameLogicManager)localObject).a(new int[] { j }, new int[] { k }, new int[] { m }, bool);
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a;
-      ((ARLocalGestureCircleRecogResult.ARCircleResult)localObject).g += 1;
-      QLog.i("AREngine_AREngine", 1, "DrawCircle. mDrawCirclePuase = " + this.a.c + ", genIdx = " + this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g);
-      i += 1;
-      break;
+    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a(false);
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.jdField_a_of_type_Boolean = true;
+    ARWorldCupGameLogicManager.a().f();
+    if (ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) != null) {
+      ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a(3, null);
     }
+    ThreadManager.getSubThreadHandler().post(new aagc(this));
   }
 }
 

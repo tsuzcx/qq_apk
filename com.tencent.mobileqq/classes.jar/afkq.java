@@ -1,30 +1,51 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.galleryactivity.AnimationUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.ArrayList;
 
 public class afkq
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  public afkq(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public afkq(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    if (NearbyMomentFragment.a(this.a) == 0) {
-      NearbyMomentFragment.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (NearbyMomentFragment.a(this.a) == 0)
+    if (this.a.p)
     {
-      NearbyMomentFragment.a(this.a).setVisibility(0);
-      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
+      NearbyProfileDisplayTribePanel.b(this.a);
+      return;
+    }
+    PicInfo localPicInfo = (PicInfo)paramView.getTag();
+    paramView = AnimationUtils.a(paramView);
+    int i = 0;
+    label33:
+    if (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (localPicInfo.jdField_a_of_type_Int != ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int) {}
+    }
+    for (;;)
+    {
+      this.a.a.a(i, paramView);
+      ReportController.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
+      if (this.a.a.e == 3) {}
+      for (paramView = "2";; paramView = "1")
+      {
+        ReportController.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, paramView, "", "", "");
+        if (!NearbyProxy.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, this.a.a.e)) {
+          break;
+        }
+        this.a.a.app.a().b(localPicInfo.jdField_a_of_type_JavaLangString);
+        return;
+        i += 1;
+        break label33;
+      }
+      i = 0;
     }
   }
 }

@@ -1,14 +1,17 @@
-import com.tencent.biz.common.offline.util.OfflineDownloader;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import java.io.File;
+import java.util.Comparator;
 
 class zwr
-  implements Runnable
+  implements Comparator
 {
-  zwr(zwp paramzwp) {}
+  zwr(zwq paramzwq) {}
   
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    UpgradeTIMManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMManager).a(this.a.jdField_a_of_type_JavaLangString);
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 

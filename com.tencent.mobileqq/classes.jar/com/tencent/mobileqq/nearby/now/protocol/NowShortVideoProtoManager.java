@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.nearby.now.protocol;
 
-import aetw;
-import aetx;
-import aety;
-import aetz;
-import aeua;
-import aeub;
-import aeuc;
+import afbi;
+import afbj;
+import afbk;
+import afbl;
+import afbm;
+import afbn;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.ProtoUtils;
@@ -18,7 +17,6 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.pb.now.FeedsProtocol.GetMediaDetailReq;
-import com.tencent.pb.now.LbsShare.LocationReq;
 import com.tencent.pb.now.ilive_feeds_like.FeedsLikeReq;
 import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeReq;
 import com.tencent.pb.now.ilive_feeds_source.CollectFeedsDataReq;
@@ -48,7 +46,7 @@ public class NowShortVideoProtoManager
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("7.6.3");
+      paramReqBody.version.set("7.6.8");
       paramReqBody.original_id.set(this.a.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
@@ -80,7 +78,7 @@ public class NowShortVideoProtoManager
     {
       localPBUInt32Field.set(paramInt);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localFollowActionReq.toByteArray()));
-      ProtoUtils.a(this.a, new aeua(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.a, new afbm(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
       return;
     }
   }
@@ -98,19 +96,7 @@ public class NowShortVideoProtoManager
       }
       localGetShortVideoVideoLabelReq.uid.set(paramLong);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetShortVideoVideoLabelReq.toByteArray()));
-      ProtoUtils.a(this.a, new aeub(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
-    }
-  }
-  
-  public void a(LbsShare.LocationReq paramLocationReq, NowShortVideoProtoManager.Callback paramCallback)
-  {
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    if (a(localReqBody))
-    {
-      localReqBody.cmd.set(21296);
-      localReqBody.subcmd.set(1);
-      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(paramLocationReq.toByteArray()));
-      ProtoUtils.a(this.a, new aeuc(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.a, new afbn(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
   }
   
@@ -125,7 +111,7 @@ public class NowShortVideoProtoManager
       localCollectFeedsDataReq.client_type.set(2);
       localCollectFeedsDataReq.feeds_id.set(ByteStringMicro.copyFromUtf8(paramString));
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localCollectFeedsDataReq.toByteArray()));
-      ProtoUtils.a(this.a, new aetx(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.a, new afbj(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
   }
   
@@ -139,7 +125,7 @@ public class NowShortVideoProtoManager
       ilive_feeds_like.FeedsLikeReq localFeedsLikeReq = new ilive_feeds_like.FeedsLikeReq();
       localFeedsLikeReq.id.set(ByteStringMicro.copyFromUtf8(paramString));
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localFeedsLikeReq.toByteArray()));
-      ProtoUtils.a(this.a, new aetw(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, paramBundle, 0L);
+      ProtoUtils.a(this.a, new afbi(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, paramBundle, 0L);
     }
   }
   
@@ -156,7 +142,7 @@ public class NowShortVideoProtoManager
       FeedsProtocol.GetMediaDetailReq localGetMediaDetailReq = new FeedsProtocol.GetMediaDetailReq();
       localGetMediaDetailReq.querystring.set(ByteStringMicro.copyFrom(paramString.getBytes()));
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetMediaDetailReq.toByteArray()));
-      ProtoUtils.a(this.a, new aetz(this, paramString, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.a, new afbl(this, paramString, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
   }
   
@@ -170,7 +156,7 @@ public class NowShortVideoProtoManager
       ilive_feeds_like.FeedsUnLikeReq localFeedsUnLikeReq = new ilive_feeds_like.FeedsUnLikeReq();
       localFeedsUnLikeReq.id.set(ByteStringMicro.copyFromUtf8(paramString));
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localFeedsUnLikeReq.toByteArray()));
-      ProtoUtils.a(this.a, new aety(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, paramBundle, 0L);
+      ProtoUtils.a(this.a, new afbk(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, paramBundle, 0L);
     }
   }
 }

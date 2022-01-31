@@ -1,26 +1,28 @@
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
-class aieu
+public final class aieu
   implements Runnable
 {
-  aieu(aies paramaies, String paramString1, boolean paramBoolean, String paramString2) {}
-  
   public void run()
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "成功，文件路径为" + this.b;; str = "失败")
+    try
     {
-      QQToast.a(localBaseApplicationImpl, str, 2000).a();
+      SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "GIFEngine");
+      ShortVideoUtils.a(true);
       return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      localUnsatisfiedLinkError.printStackTrace();
+      ShortVideoUtils.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aieu
  * JD-Core Version:    0.7.0.1
  */

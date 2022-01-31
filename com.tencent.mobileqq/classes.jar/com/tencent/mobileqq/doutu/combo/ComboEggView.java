@@ -94,8 +94,8 @@ public class ComboEggView
   public void a(ComboUIManager paramComboUIManager, QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = ((ImageView)findViewById(2131362964));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362963));
+    this.b = ((ImageView)findViewById(2131362969));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362968));
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getFileThreadLooper());
     this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboUIManager = paramComboUIManager;
     this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboObject = new ComboObject(null, 0);

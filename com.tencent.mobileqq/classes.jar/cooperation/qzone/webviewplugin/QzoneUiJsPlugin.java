@@ -1,15 +1,15 @@
 package cooperation.qzone.webviewplugin;
 
-import ande;
-import andf;
-import andg;
-import andh;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anle;
+import anlf;
+import anlg;
+import anlh;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -31,7 +31,7 @@ public class QzoneUiJsPlugin
   extends QzoneInternalWebViewPlugin
   implements WebEventListener
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new andh(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new anlh(this);
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private String b;
@@ -118,7 +118,7 @@ public class QzoneUiJsPlugin
           {
             localObject = ((JSONObject)localObject).optString("videoPath");
             if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new ande(this, (String)localObject));
+              this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new anle(this, (String)localObject));
             }
           }
           localObject = new Intent();
@@ -268,7 +268,7 @@ public class QzoneUiJsPlugin
         QLog.e("QzoneUiJsPlugin", 1, "handleUploadVideo video_info is empty");
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new andf(this, paramString));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new anlf(this, paramString));
       return;
     }
     catch (JSONException paramString)
@@ -291,7 +291,7 @@ public class QzoneUiJsPlugin
         this.b = str;
         paramString = paramString.getString("timestamp");
         if (!TextUtils.isEmpty(paramString)) {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new andg(this, paramString));
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new anlg(this, paramString));
         }
       }
       return;

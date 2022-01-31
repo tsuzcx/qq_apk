@@ -44,11 +44,11 @@ public class NewFlowCameraActivity$EncodeTask
     //   10: ldc 59
     //   12: iconst_0
     //   13: invokestatic 65	cooperation/qzone/thread/QzoneHandlerThreadFactory:getHandlerThread	(Ljava/lang/String;Z)Lcooperation/qzone/thread/QzoneBaseThread;
-    //   16: new 67	xsb
+    //   16: new 67	xyi
     //   19: dup
     //   20: aload_0
     //   21: aload_1
-    //   22: invokespecial 70	xsb:<init>	(Lcom/tencent/mobileqq/activity/richmedia/NewFlowCameraActivity$EncodeTask;Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
+    //   22: invokespecial 70	xyi:<init>	(Lcom/tencent/mobileqq/activity/richmedia/NewFlowCameraActivity$EncodeTask;Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
     //   25: invokevirtual 76	cooperation/qzone/thread/QzoneBaseThread:post	(Ljava/lang/Runnable;)V
     //   28: invokestatic 57	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
     //   31: ifeq +202 -> 233

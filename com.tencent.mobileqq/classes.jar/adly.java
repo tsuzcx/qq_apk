@@ -1,36 +1,63 @@
-import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.open.agent.report.ReportCenter;
-import cooperation.qqfav.QfavHelper;
-import cooperation.qqfav.QfavReport;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IThumbController;
+import com.tencent.mobileqq.filemanager.fileviewer.data.DefaultImageInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.ImageFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnThumbEventListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
 public class adly
-  implements DialogInterface.OnClickListener
+  implements IThumbController
 {
-  public adly(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  public adly(TroopFileModel paramTroopFileModel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(FileBrowserModelBase.ImageFileInfo paramImageFileInfo)
   {
-    if (this.a.c) {
-      ReportCenter.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false);
-    }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "addToQQFavorites" })));
-    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
-    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("is_share_flag", true);
-    if (this.a.jdField_a_of_type_Long > 0L) {
-      localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
-    }
-    QfavHelper.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
-    QfavReport.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0);
+    paramImageFileInfo = ((DefaultImageInfo)paramImageFileInfo).a();
+    if (paramImageFileInfo == null) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+      } while ((FileManagerUtil.a(paramImageFileInfo.a()) != 0) || (TextUtils.isEmpty(paramImageFileInfo.a())) || (!TextUtils.isEmpty(paramImageFileInfo.g())));
+      FileManagerEntity localFileManagerEntity = paramImageFileInfo.a();
+      if (localFileManagerEntity == null)
+      {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : can not get the troop file entity, return.");
+        return;
+      }
+      localObject = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.strTroopFileID, localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : troopUin[" + localFileManagerEntity.TroopUin + "] troopFileId[" + localFileManagerEntity.strTroopFileID + "] troopFilePath[" + localFileManagerEntity.strTroopFilePath + "]");
+      }
+      if (TextUtils.isEmpty(((TroopFileStatusInfo)localObject).c))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can not find local thumb file, download.");
+        }
+        localObject = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin);
+        if (localFileManagerEntity.strTroopFileID == null)
+        {
+          ((TroopFileTransferManager)localObject).a(localFileManagerEntity.strTroopFilePath, paramImageFileInfo.a(), localFileManagerEntity.busId, 640);
+          return;
+        }
+        ((TroopFileTransferManager)localObject).a(UUID.fromString(localFileManagerEntity.strTroopFileID), 640);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can find local thumb file, refresh the picture browser.");
+      }
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(((TroopFileStatusInfo)localObject).e, ((TroopFileStatusInfo)localObject).c);
   }
 }
 

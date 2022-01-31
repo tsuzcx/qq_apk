@@ -1,54 +1,43 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONException;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
+import com.tencent.mobileqq.filemanager.data.FMConfig;
+import com.tencent.mobileqq.troop.data.TroopFilePreviewController;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.PreviewInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ajjx
-  implements View.OnClickListener
+  extends BizTroopObserver
 {
-  public ajjx(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
+  public ajjx(TroopFilePreviewController paramTroopFilePreviewController) {}
   
-  public void onClick(View paramView)
+  protected void c(Object paramObject)
   {
-    try
-    {
-      if (!SelectReciteParagraphFragment.a(this.a).isEmpty()) {
-        if (SelectReciteParagraphFragment.a(this.a).size() != SelectReciteParagraphFragment.a(this.a).getCount())
-        {
-          paramView = new ArrayList(SelectReciteParagraphFragment.a(this.a));
-          SelectReciteParagraphFragment.a(this.a, HWReciteInfo.a(SelectReciteParagraphFragment.a(this.a), SelectReciteParagraphFragment.a(this.a).title, SelectReciteParagraphFragment.a(this.a).kid, paramView));
-          this.a.getActivity().finish();
-          TroopReportor.a("Grp_edu", "Grp_recite", "Clk_Success", 0, 0, new String[] { SelectReciteParagraphFragment.a(this.a), String.valueOf(SelectReciteParagraphFragment.a(this.a).type - 1) });
-          String str1 = SelectReciteParagraphFragment.a(this.a);
-          String str2 = SelectReciteParagraphFragment.a(this.a).title;
-          if (paramView != null) {}
-          int i;
-          for (paramView = String.valueOf(paramView.size());; paramView = String.valueOf(i))
-          {
-            TroopReportor.a("Grp_edu", "Grp_recite", "Section_Count", 0, 0, new String[] { str1, str2, paramView });
-            return;
-            i = SelectReciteParagraphFragment.a(this.a).paragraphs.size();
-          }
-        }
-      }
+    TroopFileTransferManager.PreviewInfo localPreviewInfo = (TroopFileTransferManager.PreviewInfo)paramObject;
+    String str1 = localPreviewInfo.c;
+    if (!NetworkUtil.g(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
+      str1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428327);
     }
-    catch (JSONException paramView)
+    String str2;
+    if (str1 != null)
     {
-      while (QLog.isColorLevel())
-      {
-        QLog.e("SelectReciteParagraphFragment", 2, paramView, new Object[0]);
-        return;
-        paramView = null;
-      }
+      str2 = str1;
+      if (str1.length() >= 1) {}
     }
+    else
+    {
+      str2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435117);
+    }
+    if (FMConfig.jdField_a_of_type_Boolean)
+    {
+      localPreviewInfo.jdField_a_of_type_JavaLangString = "183.61.37.13";
+      localPreviewInfo.b = "443";
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback.a(localPreviewInfo.jdField_a_of_type_Boolean, localPreviewInfo.jdField_a_of_type_JavaLangString, localPreviewInfo.b, localPreviewInfo.jdField_a_of_type_Int, str2, localPreviewInfo.d, null, localPreviewInfo.e);
+    }
+    super.c(paramObject);
   }
 }
 

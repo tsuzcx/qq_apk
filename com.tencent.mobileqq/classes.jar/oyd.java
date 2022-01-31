@@ -1,22 +1,56 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class oyd
-  implements TextUtils.EllipsizeCallback
+class oyd
+  implements Runnable
 {
-  public oyd(MoveFileActivity paramMoveFileActivity, TextView paramTextView) {}
+  oyd(oyc paramoyc, String paramString) {}
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (paramInt1 == paramInt2)
+    if (this.jdField_a_of_type_Oyc.a.isFinishing()) {}
+    do
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
+      do
+      {
+        do
+        {
+          return;
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+            break;
+          }
+          QRUtils.a(1, 2131430006);
+        } while (this.jdField_a_of_type_Oyc.a.jdField_c_of_type_Int != 2);
+        if (this.jdField_a_of_type_Oyc.a.h == 2) {}
+        for (String str = "qr_wechat";; str = "qr_circle")
+        {
+          TroopReportor.a("Grp_share", "grpData_admin", str, 0, 0, new String[] { this.jdField_a_of_type_Oyc.a.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Oyc.a.a), "1" });
+          return;
+        }
+        if (this.jdField_a_of_type_Oyc.a.h != 2) {
+          break;
+        }
+        WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Oyc.a.b, 0);
+        if (this.jdField_a_of_type_Oyc.a.jdField_c_of_type_Int == 2)
+        {
+          ReportController.b(this.jdField_a_of_type_Oyc.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_wechat", 0, 0, this.jdField_a_of_type_Oyc.a.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Oyc.a.a), "");
+          return;
+        }
+      } while (this.jdField_a_of_type_Oyc.a.jdField_c_of_type_Int != 5);
+      ReportController.b(this.jdField_a_of_type_Oyc.a.app, "CliOper", "", "", "0X8006676", "0X8006676", 0, 0, "", "", "", "");
       return;
-    }
-    String str1 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(0, paramInt1);
-    String str2 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(paramInt2, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).length());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "..." + str2);
+      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Oyc.a.b, 1);
+      if (this.jdField_a_of_type_Oyc.a.jdField_c_of_type_Int == 2)
+      {
+        ReportController.b(this.jdField_a_of_type_Oyc.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_circle", 0, 0, this.jdField_a_of_type_Oyc.a.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Oyc.a.a), "");
+        return;
+      }
+    } while (this.jdField_a_of_type_Oyc.a.jdField_c_of_type_Int != 5);
+    ReportController.b(this.jdField_a_of_type_Oyc.a.app, "CliOper", "", "", "0X8006677", "0X8006677", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,21 +1,16 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder;
+import com.tencent.mobileqq.pic.PicPreDownloader;
 
-public class adxe
-  implements View.OnClickListener
+class adxe
+  implements Runnable
 {
-  public adxe(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
+  adxe(adxd paramadxd) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
-    paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
-    if (!TextUtils.isEmpty(paramView)) {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(paramView, new String[] { String.valueOf(0) });
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipItemBuilder.a.a().a((MessageForPic)this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 2);
   }
 }
 

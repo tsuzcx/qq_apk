@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aiqx;
-import aiqy;
+import aiwa;
+import aiwb;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.activity.shortvideo.ProgressiveUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -57,7 +57,7 @@ public class ShortVideoDownloadProcessor
     super(paramTransFileController, paramTransferRequest);
     this.jdField_l_of_type_JavaLangString = "";
     this.jdField_o_of_type_Int = 0;
-    this.jdField_b_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aiqy(this);
+    this.jdField_b_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aiwb(this);
     paramTransFileController = paramTransferRequest.i;
     if (paramTransFileController != null)
     {
@@ -981,7 +981,7 @@ public class ShortVideoDownloadProcessor
     this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.a((NetReq)localObject1);
   }
   
-  public void ap_()
+  public void ar_()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoDownloadProcessor", 2, "start()----runningTasks.contains(mTaskKey) = " + jdField_a_of_type_JavaUtilHashSet.contains(this.f));
@@ -1014,7 +1014,7 @@ public class ShortVideoDownloadProcessor
       d(2001);
       this.jdField_j_of_type_Int = 0;
       this.jdField_j_of_type_JavaLangString = "";
-      this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a.post(new aiqx(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a.post(new aiwa(this));
     }
     return 0;
   }
@@ -1102,7 +1102,7 @@ public class ShortVideoDownloadProcessor
       localStringBuilder.append(localServerAddr.jdField_a_of_type_Int);
     }
     localStringBuilder.append("/qqdownload?ver=");
-    localStringBuilder.append("3565");
+    localStringBuilder.append("3615");
     localStringBuilder.append("&rkey=");
     localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
     localStringBuilder.append("&filetype=");
@@ -1327,7 +1327,7 @@ public class ShortVideoDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

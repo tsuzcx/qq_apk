@@ -1,26 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.av.utils.PopupDialogQQSide;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
 
 public class kgm
-  implements DialogInterface.OnDismissListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  public kgm(PopupDialogQQSide paramPopupDialogQQSide) {}
+  public kgm(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
-    }
-    if (this.a.getActivity() != null) {
-      this.a.getActivity().doOnBackPressed();
-    }
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.b(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgm
  * JD-Core Version:    0.7.0.1
  */

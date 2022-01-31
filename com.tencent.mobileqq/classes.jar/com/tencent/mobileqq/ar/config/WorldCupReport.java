@@ -71,7 +71,7 @@ public class WorldCupReport
     a("0X800930C", 0);
   }
   
-  static void c()
+  public static void c()
   {
     a("0X800930D", 0);
   }

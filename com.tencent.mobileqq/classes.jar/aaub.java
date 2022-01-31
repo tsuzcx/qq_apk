@@ -1,42 +1,20 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
 
-public final class aaub
-  implements Runnable
+public class aaub
+  implements DialogInterface.OnClickListener
 {
-  public void run()
+  public aaub(ARVideoPreviewActivity paramARVideoPreviewActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    for (;;)
-    {
-      try
-      {
-        if ("open".equals(ArkAiAppCenter.b()))
-        {
-          bool = true;
-          ark.SetArkHttpsSwitch(bool);
-          if (bool)
-          {
-            ArkAppCenter.b("SetArkHttpsSwitch", "ArkHttpsSwitch is Opened ");
-            return;
-          }
-          ArkAppCenter.b("SetArkHttpsSwitch", "ArkHttpsSwitch is Closed ");
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.w("ArkApp", 1, "SetArkHttpsSwitch is failed and message=" + localException.getMessage());
-        return;
-      }
-      boolean bool = false;
-    }
+    ARVideoPreviewActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaub
  * JD-Core Version:    0.7.0.1
  */

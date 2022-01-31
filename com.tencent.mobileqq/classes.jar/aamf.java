@@ -1,90 +1,30 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import java.io.File;
+import java.io.FileFilter;
 
-public class aamf
-  implements AdapterView.OnItemClickListener
+public final class aamf
+  implements FileFilter
 {
-  public aamf(ARCardShareHelper paramARCardShareHelper) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean accept(File paramFile)
   {
-    paramAdapterView = paramView.getTag();
-    if (QLog.isColorLevel())
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
     {
-      paramView = new StringBuilder().append("onItemClick, tag = ");
-      if (paramAdapterView == null) {
-        break label80;
-      }
-    }
-    label80:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("ARCardShareHelper", 2, bool);
-      if (this.a.a.a().isShowing()) {
-        this.a.a.a().dismiss();
-      }
-      if (paramAdapterView != null) {
-        break;
-      }
-      return;
-    }
-    int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.c;
-    if (!this.a.a())
-    {
-      QRUtils.a(1, 2131433135);
-      return;
-    }
-    switch (i)
-    {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return;
-    case 2: 
-      ThreadManager.postImmediately(new aamg(this, i), null, true);
-      return;
-    case 3: 
-      ThreadManager.postImmediately(new aami(this), null, true);
-      return;
-    }
-    if (!WXShareHelper.a().a()) {
-      paramInt = 2131435319;
-    }
-    for (;;)
-    {
-      if (paramInt != -1)
+      int i = 3;
+      while (i < paramFile.length())
       {
-        QRUtils.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435320;
+        if (!Character.isDigit(paramFile.charAt(i))) {
+          return false;
         }
+        i += 1;
       }
-      else
-      {
-        ThreadManager.postImmediately(new aamk(this, i), null, true);
-        return;
-      }
-      paramInt = -1;
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aamf
  * JD-Core Version:    0.7.0.1
  */

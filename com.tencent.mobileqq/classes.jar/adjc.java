@@ -1,34 +1,29 @@
-import android.app.Application;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
-import java.util.HashMap;
+import com.tencent.mobileqq.filemanager.data.search.FileManagerSearchEngine;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
+import java.util.List;
 
 public class adjc
-  implements TabBarView.OnTabChangeListener
+  implements Runnable
 {
-  public adjc(QfileTabBarView paramQfileTabBarView) {}
+  public ISearchListener a;
+  public SearchRequest a;
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  private adjc(FileManagerSearchEngine paramFileManagerSearchEngine) {}
+  
+  public void run()
   {
-    if (this.a.a(paramInt2) == null) {}
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelected(true);
-      this.a.b(paramInt2);
-    } while (!this.a.jdField_a_of_type_Boolean);
+    SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
+    String str = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a;
+    List localList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine.a(localSearchRequest);
     try
     {
-      SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-      localEditor.putInt("last_select_tab_view", ((Integer)this.a.c.get(Integer.valueOf(paramInt2))).intValue());
-      localEditor.commit();
+      if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a))) {
+        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+      }
       return;
     }
-    catch (Exception localException) {}
+    finally {}
   }
 }
 

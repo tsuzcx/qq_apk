@@ -1,32 +1,20 @@
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.io.File;
+import java.util.Comparator;
 
-public class anbk
-  implements Runnable
+public final class anbk
+  implements Comparator
 {
-  public anbk(QZoneDNSAnalyzeJsPlugin paramQZoneDNSAnalyzeJsPlugin, int paramInt) {}
-  
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    int i = HttpUtil.a();
-    if ((i != 0) && (i != -1)) {
-      try
-      {
-        String str = InetAddress.getByName("h5.qzone.qq.com").getHostAddress();
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.jdField_a_of_type_Int + ", Analyze h5.qzone.qq.com ip address : " + str);
-        return;
-      }
-      catch (UnknownHostException localUnknownHostException)
-      {
-        localUnknownHostException.printStackTrace();
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.jdField_a_of_type_Int + ", UnknownHostException:Analyze  h5.qzone.qq.com  ip address failed");
-        return;
-      }
+    long l1 = paramFile1.lastModified();
+    long l2 = paramFile2.lastModified();
+    if (l1 > l2) {
+      return -1;
     }
-    QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.jdField_a_of_type_Int + ", No ActiveNetwork, Analyze  h5.qzone.qq.com  ip address failed");
+    if (l1 < l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 

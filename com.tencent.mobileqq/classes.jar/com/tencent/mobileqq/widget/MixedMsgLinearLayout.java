@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akuu;
-import akuv;
+import alcl;
+import alcm;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -34,8 +34,8 @@ import java.util.List;
 public class MixedMsgLinearLayout
   extends LinearLayout
 {
-  private akuu jdField_a_of_type_Akuu = new akuu(this);
-  private akuv jdField_a_of_type_Akuv = new akuv(this);
+  private alcl jdField_a_of_type_Alcl = new alcl(this);
+  private alcm jdField_a_of_type_Alcm = new alcm(this);
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
   public AnimationTextView.OnDoubleClick a;
   private MotionEvent b;
@@ -169,8 +169,8 @@ public class MixedMsgLinearLayout
   private AnimationTextView a()
   {
     AnimationTextView localAnimationTextView = new AnimationTextView(getContext());
-    localAnimationTextView.setTextColor(getContext().getResources().getColorStateList(2131494227));
-    localAnimationTextView.setLinkTextColor(getContext().getResources().getColorStateList(2131494224));
+    localAnimationTextView.setTextColor(getContext().getResources().getColorStateList(2131494233));
+    localAnimationTextView.setLinkTextColor(getContext().getResources().getColorStateList(2131494230));
     localAnimationTextView.setSpannableFactory(QQText.a);
     localAnimationTextView.setMaxWidth(BaseChatItemLayout.e);
     localAnimationTextView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -234,7 +234,7 @@ public class MixedMsgLinearLayout
       localObject1 = (View)((ArrayList)localObject3).get(i);
       detachViewFromParent((View)localObject1);
       ((AnimationTextView)localObject1).setText("");
-      this.jdField_a_of_type_Akuv.a((AnimationTextView)localObject1);
+      this.jdField_a_of_type_Alcm.a((AnimationTextView)localObject1);
       i += 1;
     }
     j = paramList.size();
@@ -248,8 +248,8 @@ public class MixedMsgLinearLayout
         ((LinearLayout)localObject1).setOrientation(1);
         ((LinearLayout)localObject1).addView(ReplyTextItemBuilder.a(getContext()));
         localObject2 = new ETTextView(getContext());
-        ((ETTextView)localObject2).setTextColor(getContext().getResources().getColorStateList(2131494227));
-        ((ETTextView)localObject2).setLinkTextColor(getContext().getResources().getColorStateList(2131494224));
+        ((ETTextView)localObject2).setTextColor(getContext().getResources().getColorStateList(2131494233));
+        ((ETTextView)localObject2).setLinkTextColor(getContext().getResources().getColorStateList(2131494230));
         ((ETTextView)localObject2).setEditableFactory(QQTextBuilder.a);
         ((ETTextView)localObject2).setSpannableFactory(QQText.a);
         ((ETTextView)localObject2).setMaxWidth(BaseChatItemLayout.d);
@@ -268,7 +268,7 @@ public class MixedMsgLinearLayout
           if (!(localObject2 instanceof MessageForText)) {
             break label472;
           }
-          localObject2 = this.jdField_a_of_type_Akuv.a();
+          localObject2 = this.jdField_a_of_type_Alcm.a();
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = a();
@@ -276,7 +276,7 @@ public class MixedMsgLinearLayout
           addViewInLayout((View)localObject1, i, ((AnimationTextView)localObject1).getLayoutParams(), true);
         }
       } while (!(localObject2 instanceof MessageForPic));
-      localObject1 = this.jdField_a_of_type_Akuu.a();
+      localObject1 = this.jdField_a_of_type_Alcl.a();
       if (localObject1 != null) {
         break label635;
       }
@@ -309,7 +309,7 @@ public class MixedMsgLinearLayout
         {
           ((ChatThumbView)paramList).setImageDrawable(null);
           ((ChatThumbView)paramList).setURLDrawableDownListener(null);
-          this.jdField_a_of_type_Akuu.a((ChatThumbView)paramList);
+          this.jdField_a_of_type_Alcl.a((ChatThumbView)paramList);
         }
         i += 1;
       }
@@ -354,7 +354,7 @@ public class MixedMsgLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MixedMsgLinearLayout
  * JD-Core Version:    0.7.0.1
  */

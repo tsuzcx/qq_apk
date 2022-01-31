@@ -1,15 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-public final class adgx
-  implements Runnable
+public class adgx
+  extends adgb
 {
-  public adgx(int paramInt) {}
-  
-  public void run()
+  public adgx(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 0).b(FMToastUtil.a());
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateUploadoneWhenPause";
   }
 }
 

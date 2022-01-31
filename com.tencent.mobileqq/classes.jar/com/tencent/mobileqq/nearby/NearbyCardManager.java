@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby;
 
-import aelq;
-import aelr;
-import aels;
+import aeua;
+import aeub;
+import aeuc;
 import android.app.Activity;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -67,7 +67,7 @@ public class NearbyCardManager
       }
       localEntityManager.a();
     }
-    ThreadManager.getSubThreadHandler().postDelayed(new aelq(paramQQAppInterface), 2000L);
+    ThreadManager.getSubThreadHandler().postDelayed(new aeua(paramQQAppInterface), 2000L);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, Oidb_0x686.CharmEvent paramCharmEvent, Oidb_0x686.NearbyCharmNotify paramNearbyCharmNotify)
@@ -118,7 +118,7 @@ public class NearbyCardManager
     }
     for (;;)
     {
-      DialogUtil.a(paramActivity, 230).setMessage(paramString1).setNegativeButton("取消", new aels()).setPositiveButton("立即下载", new aelr(paramString2, paramInt, paramActivity)).show();
+      DialogUtil.a(paramActivity, 230).setMessage(paramString1).setNegativeButton("取消", new aeuc()).setPositiveButton("立即下载", new aeub(paramString2, paramInt, paramActivity)).show();
       return true;
       if (paramInt == 2) {
         ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "exp_pic", 0, 0, "", "", "", "");
@@ -195,6 +195,22 @@ public class NearbyCardManager
     return 4;
   }
   
+  public void a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public void a(int paramInt)
   {
     if (paramInt != this.jdField_b_of_type_Int)
@@ -204,20 +220,61 @@ public class NearbyCardManager
     }
   }
   
+  /* Error */
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())) {}
-    while (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 29	com/tencent/mobileqq/nearby/NearbyCardManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   6: ifnull +15 -> 21
+    //   9: aload_0
+    //   10: getfield 29	com/tencent/mobileqq/nearby/NearbyCardManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   13: invokevirtual 278	java/util/concurrent/ConcurrentHashMap:isEmpty	()Z
+    //   16: istore_2
+    //   17: iload_2
+    //   18: ifeq +6 -> 24
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: return
+    //   24: aload_0
+    //   25: getfield 29	com/tencent/mobileqq/nearby/NearbyCardManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   28: aload_1
+    //   29: invokevirtual 282	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   32: ifeq -11 -> 21
+    //   35: aload_0
+    //   36: getfield 29	com/tencent/mobileqq/nearby/NearbyCardManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   39: aload_1
+    //   40: invokevirtual 286	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   43: pop
+    //   44: goto -23 -> 21
+    //   47: astore_1
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: aload_1
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	52	0	this	NearbyCardManager
+    //   0	52	1	paramString	String
+    //   16	2	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	47	finally
+    //   24	44	47	finally
   }
   
   public void a(String paramString, long paramLong)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramLong > 0L)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(paramLong));
+    try
+    {
+      if ((!TextUtils.isEmpty(paramString)) && (paramLong > 0L)) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(paramLong));
+      }
+      return;
     }
+    finally {}
   }
   
   public void a(oidb_0x8dd.SelfInfo paramSelfInfo)
@@ -390,9 +447,13 @@ public class NearbyCardManager
       return true;
     }
     if (51 == paramInt) {
-      if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramNearbyPeopleCard.uin)) {
-        return true;
+      try
+      {
+        if (!this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramNearbyPeopleCard.uin)) {
+          return true;
+        }
       }
+      finally {}
     }
     for (long l = ((Long)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramNearbyPeopleCard.uin)).longValue();; l = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramNearbyPeopleCard.uin)).longValue())
     {
@@ -401,7 +462,7 @@ public class NearbyCardManager
         break;
       }
       if (l < 300000L) {
-        break label303;
+        break label316;
       }
       return true;
       if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramNearbyPeopleCard.uin)) {
@@ -411,7 +472,7 @@ public class NearbyCardManager
     if (l >= 300000L) {
       return true;
     }
-    label303:
+    label316:
     return (!TextUtils.isEmpty(paramNearbyPeopleCard.uin)) && (((NearbyLikeLimitManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(206)).a(paramNearbyPeopleCard.uin));
   }
   
@@ -499,7 +560,12 @@ public class NearbyCardManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      return;
+    }
+    finally {}
   }
 }
 

@@ -1,18 +1,22 @@
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem.FakeVideoUIItem;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.ArrayList;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
 
-class nsx
-  implements Runnable
+public final class nsx
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  nsx(nsw paramnsw, String paramString, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, boolean paramBoolean) {}
-  
-  public void run()
+  public void onComplete(String arg1, String paramString2)
   {
-    StoryPlayVideoActivity.a(this.jdField_a_of_type_Nsw.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.getActivity(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Nsw.jdField_a_of_type_Int, this.b, new ArrayList(this.jdField_a_of_type_Nsw.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.a), this.jdField_a_of_type_Nsw.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Boolean, 86);
-    SLog.b("StoryPickerFragment", "go to player , collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_Nsw.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Nsw.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem$FakeVideoUIItem.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Nsw.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilArrayList });
+    SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo onComplete, %s", paramString2);
+    synchronized (TVKPreloader.a())
+    {
+      SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo onComplete, preloadItem = %s, downloadString = %s,  cost %d ms", TVKPreloader.a(), paramString2, Long.valueOf(SystemClock.uptimeMillis() - TVKPreloader.a()));
+      paramString2 = TVKPreloader.a();
+      TVKPreloader.a().post(new nsy(this, paramString2));
+      return;
+    }
   }
 }
 

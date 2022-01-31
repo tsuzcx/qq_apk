@@ -1,15 +1,20 @@
-import dov.com.tencent.mobileqq.shortvideo.filter.QQEncodeFilterRender;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicSoundFile.ProgressListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class aopr
-  implements MusicSoundFile.ProgressListener
+class aopr
+  implements Animation.AnimationListener
 {
-  public aopr(QQEncodeFilterRender paramQQEncodeFilterRender) {}
+  aopr(aopq paramaopq) {}
   
-  public boolean a(double paramDouble)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return QQEncodeFilterRender.a(this.a);
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

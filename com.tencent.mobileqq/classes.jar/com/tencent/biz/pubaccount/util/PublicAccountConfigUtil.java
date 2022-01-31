@@ -26,7 +26,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import muz;
+import myt;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
@@ -99,11 +99,11 @@ public class PublicAccountConfigUtil
     switch (paramInt)
     {
     default: 
-      return paramContext.getResources().getDrawable(2130839132);
+      return paramContext.getResources().getDrawable(2130839147);
     case 1: 
-      return paramContext.getResources().getDrawable(2130839204);
+      return paramContext.getResources().getDrawable(2130839223);
     }
-    return paramContext.getResources().getDrawable(2130839209);
+    return paramContext.getResources().getDrawable(2130839228);
   }
   
   public static PublicAccountConfigUtil.PublicAccountConfigFolder a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
@@ -208,14 +208,14 @@ public class PublicAccountConfigUtil
     }
     if (!c(paramQQAppInterface, paramContext, SharedPreUtils.e(paramContext)))
     {
-      localObject = new PublicAccountConfigUtil.PublicAccountConfigFolder(paramQQAppInterface, paramContext, 1, 2131430079, 2130839204);
+      localObject = new PublicAccountConfigUtil.PublicAccountConfigFolder(paramQQAppInterface, paramContext, 1, 2131430081, 2130839223);
       jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(1), localObject);
     }
     Object localObject = SharedPreUtils.h(paramContext);
     String str = SharedPreUtils.i(paramContext);
     if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str)))
     {
-      paramQQAppInterface = new PublicAccountConfigUtil.PublicAccountConfigFolder(paramQQAppInterface, paramContext, 2, 2131428437, 2130839209);
+      paramQQAppInterface = new PublicAccountConfigUtil.PublicAccountConfigFolder(paramQQAppInterface, paramContext, 2, 2131428437, 2130839228);
       jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(2), paramQQAppInterface);
     }
     for (;;)
@@ -869,7 +869,7 @@ public class PublicAccountConfigUtil
     default: 
       return null;
     case 1: 
-      return paramContext.getString(2131430079);
+      return paramContext.getString(2131430081);
     }
     return paramContext.getString(2131428437);
   }
@@ -1139,7 +1139,7 @@ public class PublicAccountConfigUtil
   
   public static void c(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.executeOnFileThread(new muz(paramQQAppInterface));
+    ThreadManager.executeOnFileThread(new myt(paramQQAppInterface));
   }
   
   private static boolean c(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
@@ -1601,8 +1601,10 @@ public class PublicAccountConfigUtil
       return false;
     }
     Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.equalsIgnoreCase((String)localIterator.next())) {
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if ((!TextUtils.isEmpty(str)) && (paramString.indexOf(str) != -1) && (paramString.endsWith(str))) {
         return true;
       }
     }

@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.nearby;
 
-import aemb;
-import aeme;
-import aemf;
-import aemg;
+import aeul;
+import aeuo;
+import aeup;
+import aeuq;
+import aeur;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -28,18 +29,19 @@ import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.NearbyHandler;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.emosm.DataFactory;
 import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.fragment.MineFragment;
 import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 import com.tencent.mobileqq.fragment.NowLiveFragment;
 import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.nearby.now.send.PublishManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedFragment;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -52,20 +54,22 @@ import com.tencent.mobileqq.util.FaceDrawable.OnLoadingStateChangeListener;
 import com.tencent.mobileqq.util.NearByFaceDrawable;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.AbsWebView;
 import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
+import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.ReqBody;
@@ -83,21 +87,23 @@ public class NearbyJsInterface
   private String jdField_a_of_type_JavaLangString;
   public HashMap a;
   private String b;
+  private String c;
   
   public NearbyJsInterface()
   {
+    this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private void a(aemg paramaemg)
+  private void a(aeur paramaeur)
   {
     if (QLog.isColorLevel()) {
       QLog.d("NearbyJsInterface", 2, "openNearbyAio, from = " + this.jdField_a_of_type_Int);
     }
     Activity localActivity = this.mRuntime.a();
     Intent localIntent = new Intent(localActivity, ChatActivity.class);
-    localIntent.putExtra("PREVIOUS_UIN", paramaemg.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("uin", paramaemg.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("PREVIOUS_UIN", paramaeur.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uin", paramaeur.jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_Int == 1) {}
     for (int i = 10002;; i = 1001)
     {
@@ -107,6 +113,33 @@ public class NearbyJsInterface
       localActivity.startActivity(localIntent);
       return;
     }
+  }
+  
+  public void clearFilterList(String paramString)
+  {
+    NearbyAppInterface localNearbyAppInterface = (NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby");
+    Object localObject = this.mRuntime.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyJsInterface", 2, "clearFilterList: param=" + paramString + ", app=" + localNearbyAppInterface + ", activity=" + localObject);
+    }
+    if ((localNearbyAppInterface != null) && ((localObject instanceof BaseActivity)))
+    {
+      paramString = (BaseActivity)localObject;
+      if ((NetworkUtil.d(BaseApplication.getContext())) && (!paramString.isFinishing()))
+      {
+        localObject = (NearbyHandler)localNearbyAppInterface.a(3);
+        if (localObject != null) {
+          ((NearbyHandler)localObject).b();
+        }
+        MineFragment.a(localNearbyAppInterface);
+        ThreadManager.getUIHandler().postDelayed(new aeuq(this, paramString), 300L);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QQToast.a(BaseApplication.getContext(), 1, paramString.getString(2131433227), 0).b(paramString.getTitleBarHeight());
   }
   
   public void contentLoaded()
@@ -175,19 +208,13 @@ public class NearbyJsInterface
   public void filterList(String paramString)
   {
     NearbyHandler localNearbyHandler = (NearbyHandler)((NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby")).a(3);
-    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.mRuntime.a();
     if (QLog.isColorLevel()) {
       QLog.d("NearbyJsInterface", 2, "save filterList: params=" + paramString);
     }
-    if (localQQBrowserActivity != null)
-    {
-      localQQBrowserActivity.finish();
-      localQQBrowserActivity.overridePendingTransition(0, 2131034135);
-    }
     try
     {
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("filter") == 0)
+      Object localObject = new JSONObject(paramString);
+      if (((JSONObject)localObject).optInt("filter") == 0)
       {
         if (QLog.isColorLevel()) {
           QLog.e("NearbyJsInterface", 2, "filter==0, return");
@@ -195,8 +222,25 @@ public class NearbyJsInterface
       }
       else
       {
-        localNearbyHandler.a(paramString.optInt("sex"), paramString.optInt("time"), paramString.optInt("age"), paramString.optInt("interest"), paramString.optInt("profession"), paramString.optInt("country"), paramString.optInt("province"), paramString.optInt("city"), paramString.optInt("contellation"), paramString.optString("strCountry"), paramString.optString("strProvince"), paramString.optString("strCity"));
-        return;
+        int i = ((JSONObject)localObject).optInt("sex");
+        int j = ((JSONObject)localObject).optInt("time");
+        int k = ((JSONObject)localObject).optInt("age");
+        int m = ((JSONObject)localObject).optInt("interest");
+        int n = ((JSONObject)localObject).optInt("profession");
+        int i1 = ((JSONObject)localObject).optInt("country");
+        int i2 = ((JSONObject)localObject).optInt("province");
+        int i3 = ((JSONObject)localObject).optInt("city");
+        int i4 = ((JSONObject)localObject).optInt("contellation");
+        paramString = ((JSONObject)localObject).optString("strCountry");
+        String str1 = ((JSONObject)localObject).optString("strProvince");
+        String str2 = ((JSONObject)localObject).optString("strCity");
+        localObject = ((JSONObject)localObject).optString("callback");
+        localNearbyHandler.a(i, j, k, m, n, i1, i2, i3, i4, paramString, str1, str2);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          callJs((String)localObject, new String[] { "" });
+          return;
+        }
       }
     }
     catch (Exception paramString)
@@ -219,7 +263,7 @@ public class NearbyJsInterface
       localJSONObject.remove("callback");
       localWebSsoRequestBody.data.set(localJSONObject.toString());
       ((NewIntent)localObject).putExtra("data", localWebSsoRequestBody.toByteArray());
-      ((NewIntent)localObject).setObserver(new aemf(this, paramString));
+      ((NewIntent)localObject).setObserver(new aeup(this, paramString));
       this.mRuntime.a().startServlet((NewIntent)localObject);
       return;
     }
@@ -330,10 +374,10 @@ public class NearbyJsInterface
   
   public void getMatchPeople(String paramString, int paramInt)
   {
-    aemg localaemg = (aemg)this.jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramString));
-    if ((localaemg != null) && (!TextUtils.isEmpty(localaemg.jdField_a_of_type_JavaLangString)) && (!localaemg.jdField_a_of_type_JavaLangString.equals("0")))
+    aeur localaeur = (aeur)this.jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramString));
+    if ((localaeur != null) && (!TextUtils.isEmpty(localaeur.jdField_a_of_type_JavaLangString)) && (!localaeur.jdField_a_of_type_JavaLangString.equals("0")))
     {
-      a(localaemg);
+      a(localaeur);
       return;
     }
     getMatchPeopleInfo(paramString, true, paramInt);
@@ -363,7 +407,7 @@ public class NearbyJsInterface
       localObject1 = new NewIntent(BaseApplication.getContext(), ProtoServlet.class);
       ((NewIntent)localObject1).putExtra("cmd", "OidbSvc.0x8c1_1");
       ((NewIntent)localObject1).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-      ((NewIntent)localObject1).setObserver(new aeme(this, paramString, paramBoolean));
+      ((NewIntent)localObject1).setObserver(new aeuo(this, paramString, paramBoolean));
       this.mRuntime.a().startServlet((NewIntent)localObject1);
       return;
     }
@@ -543,47 +587,58 @@ public class NearbyJsInterface
     }
   }
   
-  public void getVideoPublishFailedNum(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      List localList = PublishManager.b();
-      if (localList == null)
-      {
-        callJs(paramString.optString("callback"), new String[] { "0" });
-        return;
-      }
-      callJs(paramString.optString("callback"), new String[] { localList.size() + "" });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.w("getVideoPublishFailedNum js api", 1, " no data! error" + paramString);
-    }
-  }
-  
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
     super.onActivityResult(paramIntent, paramByte, paramInt);
     if (QLog.isColorLevel()) {
-      QLog.i("NearbyJsInterface", 2, "onActivityResult() called with: intent = [" + paramIntent + "], requestCode = [" + paramByte + "], resultCode = [" + paramInt + "]");
+      QLog.d("NearbyJsInterface", 2, "onActivityResult, intent=" + paramIntent + ", requestCode=" + paramByte + ", resultCode=" + paramInt);
     }
-    Object localObject = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4);
-    paramIntent = ((SharedPreferences)localObject).getString("nearby_now_edit_profile_js_callback", "");
-    paramInt = ((SharedPreferences)localObject).getInt("nearby_now_edit_profile_code_int", 1);
-    localObject = new JSONObject();
-    try
+    if ((paramByte == 100) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)))
     {
-      ((JSONObject)localObject).put("retcode", paramInt);
-      callJs(paramIntent, new String[] { "" + localObject });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      try
       {
-        localJSONException.printStackTrace();
+        paramIntent = new JSONObject();
+        if (paramInt == -1) {
+          paramIntent.put("retcode", 0);
+        }
+        for (;;)
+        {
+          callJs(this.jdField_c_of_type_JavaLangString, new String[] { paramIntent.toString() });
+          if (QLog.isColorLevel()) {
+            QLog.d("NearbyJsInterface", 2, "callJs, mBindPhoneCallback=" + this.jdField_c_of_type_JavaLangString + ", ret=" + paramIntent);
+          }
+          this.jdField_c_of_type_JavaLangString = "";
+          return;
+          paramIntent.put("retcode", 1);
+        }
+        QLog.e("NearbyJsInterface", 2, "onActivityResult, exp:" + paramIntent.toString());
+      }
+      catch (Exception paramIntent)
+      {
+        this.jdField_c_of_type_JavaLangString = "";
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
+    }
+    else
+    {
+      Object localObject = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4);
+      paramIntent = ((SharedPreferences)localObject).getString("nearby_now_edit_profile_js_callback", "");
+      paramInt = ((SharedPreferences)localObject).getInt("nearby_now_edit_profile_code_int", 1);
+      localObject = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject).put("retcode", paramInt);
+        callJs(paramIntent, new String[] { "" + localObject });
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
       }
     }
   }
@@ -634,6 +689,29 @@ public class NearbyJsInterface
           QLog.d("NearbyJsInterface", 2, "getNearbyPeopleAvatar failed:" + localException);
         }
       }
+    }
+  }
+  
+  public void openBindPhonePage(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyJsInterface", 2, "openBindPhonePage:" + paramString);
+    }
+    try
+    {
+      this.jdField_c_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+      if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+      {
+        paramString = new Intent(this.mRuntime.a(), BindNumberActivity.class);
+        paramString.putExtra("kSrouce", 20);
+        startActivityForResult(paramString, (byte)100);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NearbyJsInterface", 2, "openBindPhonePage exp:" + paramString.toString());
     }
   }
   
@@ -768,7 +846,7 @@ public class NearbyJsInterface
         k = paramString.optInt("age");
         paramString = TroopMemberApiClient.a();
         paramString.a();
-        paramString.c(new aemb(this, paramString, j, i, k));
+        paramString.c(new aeul(this, paramString, j, i, k));
         return;
       }
       catch (JSONException paramString)
@@ -778,14 +856,6 @@ public class NearbyJsInterface
       QLog.e("NearbyJsInterface", 1, "openVideoChat web params error!");
       k = 0;
     }
-  }
-  
-  public void openVideoPublishFailedPage()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyJsInterface", 2, "openVideoPublishFailedPage");
-    }
-    PublicFragmentActivity.a(this.mRuntime.a(), NearbyMomentFailedFragment.class);
   }
   
   public void preloadImage(String paramString)

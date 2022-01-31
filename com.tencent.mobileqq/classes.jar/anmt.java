@@ -1,46 +1,51 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import android.os.Bundle;
+import android.os.RemoteException;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.IFaceSelectedListener;
-import dov.com.qq.im.capture.paster.CaptureComboNormalPaster;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.model.SelectedItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
-import java.util.HashMap;
+import cooperation.smartdevice.ipc.ISmartDeviceService;
+import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
+import java.util.ArrayList;
 
-public final class anmt
-  implements URLDrawable.URLDrawableListener
+public class anmt
+  implements Runnable
 {
-  public anmt(String paramString1, int paramInt1, float paramFloat1, String paramString2, NormalFacePackage paramNormalFacePackage, int paramInt2, IFaceSelectedListener paramIFaceSelectedListener, float paramFloat2, int paramInt3, float paramFloat3, SegmentKeeper paramSegmentKeeper) {}
+  public anmt(SmartDeviceIPCHost paramSmartDeviceIPCHost) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void run()
   {
-    CaptureComboNormalPaster.a.remove(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "applyNormalPaster onLoadFialed");
+    for (;;)
+    {
+      Bundle localBundle;
+      if (!this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      {
+        localBundle = (Bundle)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        if (localBundle != null) {}
+      }
+      else
+      {
+        return;
+      }
+      String str = localBundle.getString("notify_cmd");
+      try
+      {
+        localBundle.setClassLoader(getClass().getClassLoader());
+        if (QLog.isColorLevel()) {
+          QLog.d("SmartDeviceIPCHost", 2, "qq->plugin post to main thread doPostCachedMsg strNotifyCmd:" + str + " thread:" + Thread.currentThread());
+        }
+        this.a.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService.a("com.qqsmartdevice.action.notify", localBundle);
+      }
+      catch (RemoteException localRemoteException)
+      {
+        localRemoteException.printStackTrace();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SmartDeviceIPCHost", 2, "mSmartDeviceService.transfer failed strNotifyCmd:" + str);
+      }
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    CaptureComboNormalPaster.a.remove(this.jdField_a_of_type_JavaLangString);
-    int i = paramURLDrawable.getIntrinsicWidth();
-    paramURLDrawable.setBounds(0, 0, i, paramURLDrawable.getIntrinsicHeight());
-    float f = this.jdField_a_of_type_Int * this.jdField_a_of_type_Float / i;
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "applyNormalPaster onLoadSuccessed w=" + i + " scale=" + f + " name=" + this.jdField_b_of_type_JavaLangString);
-    }
-    paramURLDrawable = new SelectedItem(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramURLDrawable, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener.a(paramURLDrawable, this.jdField_a_of_type_Int * this.jdField_b_of_type_Float, this.jdField_c_of_type_Int * this.jdField_c_of_type_Float, f, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmt
  * JD-Core Version:    0.7.0.1
  */

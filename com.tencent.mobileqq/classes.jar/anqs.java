@@ -1,48 +1,33 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
 public class anqs
-  implements FFmpegExecuteResponseCallback
+  implements Runnable
 {
-  public anqs(CropVideoActivity paramCropVideoActivity) {}
+  public anqs(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, boolean paramBoolean) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
+    if (!QIMCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit))
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        break label73;
+      }
+      if (!QIMCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit))
+      {
+        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setVisibility(0);
+        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setSelected(true);
+        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.a.c(this.jdField_a_of_type_Boolean);
+        QIMCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit, false);
+      }
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
-    }
-    this.a.a.sendEmptyMessage(3);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
-    }
-    this.a.a.sendEmptyMessage(4);
-  }
-  
-  public void c(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
-    }
+    return;
+    label73:
+    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setVisibility(8);
+    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setSelected(false);
+    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.a.c(this.jdField_a_of_type_Boolean);
+    QIMCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit, false);
   }
 }
 

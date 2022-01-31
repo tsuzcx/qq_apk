@@ -1,23 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aamy
+class aamy
   implements Runnable
 {
-  public aamy(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  aamy(aamx paramaamx) {}
   
   public void run()
   {
-    if (ARGreetingCardListManager.e(this.a) > 0) {
-      ARGreetingCardListManager.a(this.a).b();
-    }
-    ARGreetingCardListManager.a(this.a).setVisibility(4);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "下载资源失败,请重试！", 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aamy
  * JD-Core Version:    0.7.0.1
  */

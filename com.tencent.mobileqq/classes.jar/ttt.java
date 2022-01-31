@@ -1,23 +1,14 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ttt
-  extends MqqHandler
+class ttt
+  implements DialogInterface.OnClickListener
 {
-  public ttt(SubAccountBindActivity paramSubAccountBindActivity) {}
+  ttt(tts paramtts) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1981: 
-      this.a.finish();
-      return;
-    }
-    this.a.d();
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a042e" android:visibility="visible" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040100" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0433" android:visibility="visible" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040104" />
     <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a042f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:divider="@null" />
-        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057d" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0430" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂时没有可能认识的人" />
+        <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0434" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:divider="@null" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0583" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0435" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂时没有可能认识的人" />
     </FrameLayout>
 </LinearLayout>

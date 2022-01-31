@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1169" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c47" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip" android:layout_centerHorizontal="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0406aa" />
-    <ViewStub android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fd8" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0406a8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fd9" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0406a9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <View android:layout_width="fill_parent" android:layout_height="10.0dip" />
-</LinearLayout>
+    <com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a141f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqstory.takevideo.CameraFocusView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1420" android:paddingLeft="50.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021690" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0a53" />
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1429" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200d0" android:focusable="true" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="7.5dip" android:layout_alignParentRight="true" />
+    <Button android:id="@id/cancel" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021678" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="7.5dip" android:layout_marginTop="7.5dip" android:layout_alignParentLeft="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b273e" />
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c34" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020fc6" android:focusable="true" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginTop="7.5dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1429" android:contentDescription="打开闪光灯" />
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c36" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020fca" android:focusable="true" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginTop="7.5dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1c34" android:contentDescription="夜拍模式" />
+    <com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bfd" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

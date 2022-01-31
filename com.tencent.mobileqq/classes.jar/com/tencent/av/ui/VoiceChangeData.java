@@ -16,7 +16,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import kcr;
+import kev;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +95,7 @@ public class VoiceChangeData
     localObject = URLDrawable.getDrawable(localVoiceInfo.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
     ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.a(paramInt, paramInt));
     ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.a);
-    ((URLDrawable)localObject).setURLDrawableListener(new kcr(this, paramGetDrawableCallack, (URLDrawable)localObject, paramResources, localVoiceInfo));
+    ((URLDrawable)localObject).setURLDrawableListener(new kev(this, paramGetDrawableCallack, (URLDrawable)localObject, paramResources, localVoiceInfo));
     if (((URLDrawable)localObject).getStatus() == 1) {
       return a((URLDrawable)localObject, paramResources);
     }
@@ -184,7 +184,7 @@ public class VoiceChangeData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.VoiceChangeData
  * JD-Core Version:    0.7.0.1
  */

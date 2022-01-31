@@ -1,27 +1,21 @@
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
-import com.tencent.open.appcommon.now.download.IDownloadCallback;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.widget.SlideTabWidget;
+import com.tencent.mobileqq.widget.SlideTabWidget.OnTabSlideCompleteListener;
 
 public class aleq
-  implements INetEventHandler
+  implements Runnable
 {
-  public aleq(DownloadCenterImpl paramDownloadCenterImpl) {}
+  public aleq(SlideTabWidget paramSlideTabWidget) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void run()
   {
-    int i = HttpUtil.a();
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).a(i);
+    if (SlideTabWidget.a(this.a) != null) {
+      SlideTabWidget.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aleq
  * JD-Core Version:    0.7.0.1
  */

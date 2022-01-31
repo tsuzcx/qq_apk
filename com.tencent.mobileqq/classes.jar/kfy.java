@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.utils.InviteBaseData;
+import com.tencent.av.ui.redbag.AVRedBag;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.qphone.base.util.QLog;
 
-public final class kfy
-  implements Parcelable.Creator
+class kfy
+  implements Runnable
 {
-  public InviteBaseData a(Parcel paramParcel)
-  {
-    return new InviteBaseData(paramParcel);
-  }
+  kfy(kfx paramkfx) {}
   
-  public InviteBaseData[] a(int paramInt)
+  public void run()
   {
-    return new InviteBaseData[paramInt];
+    AVRedBagMgr localAVRedBagMgr = this.a.a.a();
+    if (localAVRedBagMgr == null) {
+      if (QLog.isDevelopLevel()) {
+        QLog.w(this.a.a.i, 1, "onAVActivityResume, AVRedBagMgr为空");
+      }
+    }
+    do
+    {
+      return;
+      if (localAVRedBagMgr.a()) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.w("AVRedBag", 1, "onAVActivityResume, 不是GameMode");
+    return;
+    localAVRedBagMgr.c("onAVActivityResume");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kfy
  * JD-Core Version:    0.7.0.1
  */

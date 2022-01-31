@@ -1,21 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
 
-public class ahjo
-  extends AnimatorListenerAdapter
+class ahjo
+  implements Runnable
 {
-  public ahjo(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  ahjo(ahjm paramahjm, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(8);
+    ReceiptMessageReadMemberListContainerFragment.f(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageReadMemberListContainerFragment);
+    this.jdField_a_of_type_Ahjm.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjo
  * JD-Core Version:    0.7.0.1
  */

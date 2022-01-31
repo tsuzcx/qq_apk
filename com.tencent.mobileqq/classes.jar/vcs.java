@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.FoldMsgGrayTipsItemBuilder;
 
-class vcs
-  implements Runnable
+public class vcs
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  vcs(vcr paramvcr, boolean paramBoolean) {}
+  public ImageView a;
+  public LinearLayout a;
+  public ImageView b;
+  public TextView b;
   
-  public void run()
-  {
-    this.jdField_a_of_type_Vcr.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a(this.jdField_a_of_type_Vcr.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_Vcr.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_Vcr.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener, this.jdField_a_of_type_Vcr.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder$Holder, this.jdField_a_of_type_Boolean);
-  }
+  public vcs(FoldMsgGrayTipsItemBuilder paramFoldMsgGrayTipsItemBuilder) {}
 }
 
 

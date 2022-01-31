@@ -5,6 +5,7 @@ public class SchoolTroopKeywordManager$KeywordResult
   public int a;
   public long a;
   public String a;
+  public boolean a;
   public int b;
   public String b;
   public int c;
@@ -45,7 +46,7 @@ public class SchoolTroopKeywordManager$KeywordResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.KeywordResult
  * JD-Core Version:    0.7.0.1
  */

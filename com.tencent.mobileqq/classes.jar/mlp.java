@@ -1,14 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DropDownAppInPushNotification;
+import android.util.Pair;
+import java.net.URL;
 
-class mlp
-  implements Runnable
+public class mlp
 {
-  mlp(mlo parammlo) {}
+  public Pair a;
+  public URL a;
   
-  public void run()
+  public static mlp a(URL paramURL, Pair paramPair)
   {
-    this.a.a.a.a();
+    mlp localmlp = new mlp();
+    localmlp.jdField_a_of_type_JavaNetURL = paramURL;
+    localmlp.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localmlp;
   }
 }
 

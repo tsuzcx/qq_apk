@@ -61,8 +61,13 @@ public class FlingGestureHandler
         return;
       }
     } while (a());
+    if ((this.mTopLayout != null) && (this.mTopLayout.getParent() != null)) {
+      ((ViewGroup)this.mTopLayout.getParent()).removeView(this.mTopLayout);
+    }
     localViewGroup.addView(this.mTopLayout);
-    localViewGroup.removeView(this.jdField_a_of_type_AndroidViewView);
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() != null)) {
+      ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+    }
     this.mTopLayout.addView(this.jdField_a_of_type_AndroidViewView);
   }
   

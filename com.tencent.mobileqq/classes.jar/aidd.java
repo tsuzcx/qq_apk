@@ -1,46 +1,58 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aidd
-  implements View.OnTouchListener
+  implements INetEngine.INetEngineListener
 {
-  public aidd(RedBagVideoManager paramRedBagVideoManager) {}
+  public aidd(PtvTemplateManager paramPtvTemplateManager, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, PtvTemplateManager.IPtvTemplateDownloadListener paramIPtvTemplateDownloadListener) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      bool1 = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(100L * paramLong1 / paramLong2));
     }
-    do
+  }
+  
+  public void a(NetResp paramNetResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.c);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+    paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.c.iterator();
+    while (paramNetResp.hasNext())
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (RedBagVideoManager.a(this.a) == null);
-        paramView = RedBagVideoManager.a(this.a).getText().toString().trim();
-        bool1 = bool2;
-      } while ("红包已发".trim().equals(paramView));
-      RedBagVideoManager.a(this.a).setAlpha(0.5F);
-      return true;
-      if (RedBagVideoManager.a(this.a) != null) {
-        RedBagVideoManager.a(this.a).setAlpha(1.0F);
+      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)paramNetResp.next();
+      if (localPtvTemplateInfo.id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+        localPtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
       }
-      RedBagVideoManager.a(this.a, RedBagVideoManager.a(this.a));
-      RedBagVideoManager.b(this.a, System.currentTimeMillis());
-      bool1 = bool2;
-    } while (RedBagVideoManager.a(this.a) - RedBagVideoManager.b(this.a) < 300L);
-    RedBagVideoManager.a(this.a);
-    return true;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
+    try
+    {
+      ZipUtils.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
+      }
+      return;
+    }
+    catch (IOException paramNetResp)
+    {
+      for (;;)
+      {
+        paramNetResp.printStackTrace();
+      }
+    }
   }
 }
 

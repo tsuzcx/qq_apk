@@ -1,24 +1,13 @@
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class ajwm
+public final class ajwm
   implements Runnable
 {
-  public ajwm(TroopInteractGiftAnimationController paramTroopInteractGiftAnimationController) {}
+  public ajwm(TroopFileTransferManager paramTroopFileTransferManager) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.d.removeView(this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton != null) {
-      this.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = null;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton = null;
+    this.a.c();
   }
 }
 

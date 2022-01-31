@@ -40,12 +40,17 @@ class b
     MsfMessagePair localMsfMessagePair2;
     label51:
     Object localObject1;
-    boolean bool2;
+    boolean bool1;
     label65:
+    boolean bool3;
+    label91:
+    boolean bool2;
     Object localObject2;
     int k;
-    boolean bool1;
-    label233:
+    label259:
+    label326:
+    label460:
+    label467:
     long l;
     if (!paramc.i.isEmpty())
     {
@@ -67,73 +72,70 @@ class b
           localObject1 = paramc.c();
           if (localObject1 == null)
           {
-            bool2 = true;
-            if (bool2)
-            {
-              bool2 = false;
-              localObject2 = localMsfMessagePair2.fromServiceMsg.getServiceCmd();
-              localObject1 = BaseConstants.CMD_NeedBootPushCmdHeads;
-              k = localObject1.length;
-              j = 0;
+            bool1 = true;
+            if ((TextUtils.isEmpty(paramc.b())) || (localMsfMessagePair2.fromServiceMsg.getAttribute("resp_needBootApp") == null)) {
+              break label447;
             }
+            bool3 = true;
+            if (!bool1) {
+              break label467;
+            }
+            bool2 = false;
+            localObject2 = localMsfMessagePair2.fromServiceMsg.getServiceCmd();
+            localObject1 = BaseConstants.CMD_NeedBootPushCmdHeads;
+            k = localObject1.length;
+            j = 0;
           }
-          else
+          for (;;)
           {
-            for (;;)
+            bool1 = bool2;
+            Object localObject3;
+            if (j < k)
             {
-              bool1 = bool2;
-              Object localObject3;
-              if (j < k)
-              {
-                localObject3 = localObject1[j];
-                if ((localObject2 == null) || (!((String)localObject2).startsWith((String)localObject3))) {
-                  break label444;
-                }
-                paramc.a = false;
-                paramc.c = false;
-                if ((!"LongConn.OffPicUp".equalsIgnoreCase((String)localObject2)) && (!"ImgStore.GroupPicUp".equalsIgnoreCase((String)localObject2))) {
-                  break label1348;
-                }
-                localObject3 = new StringBuilder().append("dispatchMsg:").append((String)localObject2).append(" resp:").append(localMsfMessagePair2.fromServiceMsg.getStringForLog()).append(" req:");
-                if (localMsfMessagePair2.toServiceMsg == null) {
-                  break label437;
-                }
+              localObject3 = localObject1[j];
+              if ((localObject2 == null) || (!((String)localObject2).startsWith((String)localObject3))) {
+                break label460;
               }
-              label290:
-              label428:
-              label437:
-              for (localObject1 = localMsfMessagePair2.toServiceMsg.getStringForLog();; localObject1 = "null")
-              {
-                QLog.d("MSF.S.AppProcessManager", 1, (String)localObject1);
-                bool1 = true;
-                if (QLog.isColorLevel()) {
-                  QLog.d("MSF.S.AppProcessManager", 2, paramString + "'s callBack is null; " + (String)localObject2 + " is cared: " + bool1);
-                }
-                boolean bool3 = true;
-                bool2 = bool1;
-                bool1 = bool3;
-                if (("LongConn.OffPicUp".equalsIgnoreCase(localMsfMessagePair2.fromServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(localMsfMessagePair2.fromServiceMsg.getServiceCmd()))) {
-                  QLog.d("MSF.S.AppProcessManager", 1, "dispatchMsg:" + localMsfMessagePair2.fromServiceMsg.getStringForLog() + " processDied:" + bool2 + " isSendToSink:" + bool1);
-                }
-                if ((TextUtils.isEmpty(paramc.b())) || (localMsfMessagePair2.fromServiceMsg.getAttribute("resp_needBootApp") == null)) {
-                  break label868;
-                }
-                bool1 = true;
-                if (bool2) {
-                  break label874;
-                }
-                paramc.i.poll();
-                if (bool1) {
-                  paramc.a(3, localMsfMessagePair2.fromServiceMsg);
-                }
-                break;
-                bool2 = false;
-                break label65;
+              paramc.a = false;
+              paramc.c = false;
+              if ((!"LongConn.OffPicUp".equalsIgnoreCase((String)localObject2)) && (!"ImgStore.GroupPicUp".equalsIgnoreCase((String)localObject2))) {
+                break label1382;
               }
-              label400:
-              label444:
-              j += 1;
+              localObject3 = new StringBuilder().append("dispatchMsg:").append((String)localObject2).append(" resp:").append(localMsfMessagePair2.fromServiceMsg.getStringForLog()).append(" req:");
+              if (localMsfMessagePair2.toServiceMsg == null) {
+                break label453;
+              }
             }
+            label438:
+            label447:
+            label453:
+            for (localObject1 = localMsfMessagePair2.toServiceMsg.getStringForLog();; localObject1 = "null")
+            {
+              QLog.d("MSF.S.AppProcessManager", 1, (String)localObject1);
+              bool1 = true;
+              if (QLog.isColorLevel()) {
+                QLog.d("MSF.S.AppProcessManager", 2, paramString + "'s callBack is null; " + (String)localObject2 + " is cared: " + bool1 + ", needBoot: " + bool3);
+              }
+              boolean bool4 = true;
+              bool2 = bool1;
+              bool1 = bool4;
+              if (("LongConn.OffPicUp".equalsIgnoreCase(localMsfMessagePair2.fromServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(localMsfMessagePair2.fromServiceMsg.getServiceCmd()))) {
+                QLog.d("MSF.S.AppProcessManager", 1, "dispatchMsg:" + localMsfMessagePair2.fromServiceMsg.getStringForLog() + " processDied:" + bool2 + " isSendToSink:" + bool1);
+              }
+              if (bool2) {
+                break label908;
+              }
+              paramc.i.poll();
+              if (bool3) {
+                paramc.a(3, localMsfMessagePair2.fromServiceMsg);
+              }
+              break;
+              bool1 = false;
+              break label65;
+              bool3 = false;
+              break label91;
+            }
+            j += 1;
           }
           if ((paramc.c == true) && (localMsfMessagePair2.fromServiceMsg.getMsfCommand() != MsfCommand.setMsfConnStatus))
           {
@@ -157,11 +159,11 @@ class b
         if (QLog.isColorLevel())
         {
           if (localMsfMessagePair2.toServiceMsg == null) {
-            break label1365;
+            break label1403;
           }
           j = localMsfMessagePair2.toServiceMsg.getWupBuffer().length;
           if (localMsfMessagePair2.fromServiceMsg == null) {
-            break label1370;
+            break label1408;
           }
           k = localMsfMessagePair2.fromServiceMsg.getWupBuffer().length;
           QLog.d("MSF.S.AppProcessManager", 2, "send push " + paramString + ", to=" + j + " from=" + k);
@@ -169,42 +171,40 @@ class b
         if (localMsfMessagePair2.toServiceMsg == null)
         {
           ((IMsfServiceCallbacker)localObject1).onRecvPushResp(localMsfMessagePair2.fromServiceMsg);
-          QLog.i("MSF.S.AppProcessManager", 1, "SendToApp PUSH process:" + paramString + " fromServiceMsg: " + localMsfMessagePair2.fromServiceMsg.getShortStringForLog() + " cost=" + (System.currentTimeMillis() - l));
+          QLog.i("MSF.S.AppProcessManager", 1, "SendToApp PUSH process:" + paramString + " fromServiceMsg: " + localMsfMessagePair2.fromServiceMsg.getShortStringForLog() + " cost=" + (System.currentTimeMillis() - l) + " needBoot=" + bool3);
         }
         else
         {
           ((IMsfServiceCallbacker)localObject1).onResponse(localMsfMessagePair2.toServiceMsg, localMsfMessagePair2.fromServiceMsg);
-          QLog.i("MSF.S.AppProcessManager", 1, "SendToApp process:" + paramString + " fromServiceMsg: " + localMsfMessagePair2.fromServiceMsg.getShortStringForLog() + " cost=" + (System.currentTimeMillis() - l));
+          QLog.i("MSF.S.AppProcessManager", 1, "SendToApp process:" + paramString + " fromServiceMsg: " + localMsfMessagePair2.fromServiceMsg.getShortStringForLog() + " cost=" + (System.currentTimeMillis() - l) + " needBoot=" + bool3);
         }
       }
       catch (DeadObjectException localDeadObjectException)
       {
-        paramc.a(localDeadObjectException, bool2);
+        paramc.a(localDeadObjectException, bool1);
         bool2 = true;
         bool1 = false;
         paramc.d();
         QLog.w("MSF.S.AppProcessManager", 1, "DeadObjectException process=" + paramString + " cost=" + (System.currentTimeMillis() - l), localDeadObjectException);
-        break label290;
+        break label326;
       }
       catch (Exception localException1)
       {
         QLog.w("MSF.S.AppProcessManager", 1, localException1.getMessage(), localException1);
+        bool2 = bool1;
         bool1 = false;
       }
-      break label290;
-      label868:
-      bool1 = false;
-      break label400;
-      label874:
+      break label326;
+      label908:
       if (QLog.isColorLevel()) {
-        QLog.d("MSF.S.AppProcessManager", 2, "need boot " + bool1 + " " + paramString + " from:" + localMsfMessagePair2.fromServiceMsg);
+        QLog.d("MSF.S.AppProcessManager", 2, "need boot " + bool3 + " " + paramString + " from:" + localMsfMessagePair2.fromServiceMsg);
       }
       try
       {
         if ((localMsfMessagePair2.fromServiceMsg.getServiceCmd().equals("MessageSvc.PushNotify")) && (d.e.getStatReporter() != null)) {
           d.e.getStatReporter().a("dim.Msf.PushRecvFail", true, 0L, 0L, null, true, false);
         }
-        if (!bool1) {}
+        if (!bool3) {}
       }
       catch (Exception localException2)
       {
@@ -237,7 +237,7 @@ class b
           }
           catch (Exception localException3)
           {
-            QLog.d("MSF.S.AppProcessManager", 1, "needBoot:" + bool1, localException3);
+            QLog.d("MSF.S.AppProcessManager", 1, "needBoot:" + bool3, localException3);
           }
           localException2 = localException2;
           if (QLog.isColorLevel()) {
@@ -246,20 +246,21 @@ class b
         }
         paramc.i.poll();
       }
-      break label428;
-      break label428;
+      break label438;
+      break label438;
       return false;
-      label1348:
+      label1382:
       bool1 = true;
-      break label233;
+      break label259;
       j = i;
       break;
+      bool2 = bool1;
       bool1 = true;
-      break label290;
-      label1365:
+      break label326;
+      label1403:
       j = 0;
       continue;
-      label1370:
+      label1408:
       k = 0;
     }
   }
@@ -473,7 +474,6 @@ class b
         }
       }
     }
-    d.f.a(2);
     this.b = true;
     for (;;)
     {

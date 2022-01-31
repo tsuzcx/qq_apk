@@ -1,20 +1,27 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
-class aldj
-  implements Runnable
+public class aldj
+  implements URLDrawable.URLDrawableListener
 {
-  aldj(aldi paramaldi, Bundle paramBundle) {}
+  public aldj(ProfileCardMoreInfoView paramProfileCardMoreInfoView, TextView paramTextView) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    MyAppApi.a().a(this.jdField_a_of_type_Aldi.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Aldi.jdField_a_of_type_Boolean, false);
+    this.jdField_a_of_type_AndroidWidgetTextView.postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aldj
  * JD-Core Version:    0.7.0.1
  */

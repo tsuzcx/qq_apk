@@ -1,41 +1,32 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlCallBack;
-import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlResult;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
-import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.ShortVideoDownResp;
-import com.tencent.mobileqq.transfile.protohandler.RichProtoProc.RichProtoCallback;
-import java.util.List;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
 
 public class adrg
-  implements RichProtoProc.RichProtoCallback
+  extends DataSetObserver
 {
-  public adrg(HotVideoData paramHotVideoData, HotVideoData.HotVideoGetUrlResult paramHotVideoGetUrlResult, HotVideoData.HotVideoGetUrlCallBack paramHotVideoGetUrlCallBack) {}
+  public adrg(QfileHorizontalListView paramQfileHorizontalListView) {}
   
-  public void a(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
+  public void onChanged()
   {
-    if (paramRichProtoResp != null) {
-      if (paramRichProtoResp.a.size() > 0)
-      {
-        paramRichProtoReq = (RichProto.RichProtoResp.ShortVideoDownResp)paramRichProtoResp.a.get(0);
-        this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.a(paramRichProtoReq);
-      }
-    }
-    for (;;)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlCallBack.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult);
+      QfileHorizontalListView.a(this.a, true);
+      this.a.invalidate();
+      this.a.requestLayout();
       return;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_JavaLangString = "Unknown error！";
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_JavaLangString = "Unknown error！";
     }
+  }
+  
+  public void onInvalidated()
+  {
+    QfileHorizontalListView.a(this.a);
+    this.a.invalidate();
+    this.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adrg
  * JD-Core Version:    0.7.0.1
  */

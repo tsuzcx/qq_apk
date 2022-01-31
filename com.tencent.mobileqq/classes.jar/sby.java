@@ -1,18 +1,14 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.av.utils.DataReport;
 
-public class sby
+public final class sby
   implements DialogInterface.OnClickListener
 {
-  public sby(ChatSettingActivity paramChatSettingActivity) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
-    }
+    paramDialogInterface.dismiss();
+    DataReport.b();
   }
 }
 

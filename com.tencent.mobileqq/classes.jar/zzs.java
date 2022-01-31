@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.message.HCTopicMessageProcessor;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class zzs
-  implements Runnable
+  implements Comparator
 {
-  public zzs(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public zzs(HCTopicMessageProcessor paramHCTopicMessageProcessor) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    ARWorldCupGlobalSceneRenderable.a(this.a, new zzt(this));
-    QLog.d("ARWorldCupGlobalSceneRenderable", 2, "post mRepeatCheckRunnable ");
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zzs
  * JD-Core Version:    0.7.0.1
  */

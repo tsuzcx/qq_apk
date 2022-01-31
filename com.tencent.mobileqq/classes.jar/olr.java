@@ -1,25 +1,35 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView.JustLogPlayProgressListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
 
-class olr
-  implements MediaScanner.OnMediaInfoScannerListener
+public class olr
+  extends NeoVideoFilterPlayView.JustLogPlayProgressListener
 {
-  olr(olq paramolq, String paramString) {}
+  public olr(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void a()
   {
-    if (QQStoryFlowCallback.a(this.jdField_a_of_type_Olq.a.a.a, paramLocalMediaInfo))
-    {
-      paramLocalMediaInfo.addedDate = 0L;
-      this.jdField_a_of_type_Olq.a.a.a.runOnUiThread(new ols(this, paramLocalMediaInfo));
+    super.a();
+    this.a.l();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
     }
-    while (!QLog.isColorLevel()) {
+    super.a(paramLong);
+    try
+    {
+      this.a.a(1000L * paramLong);
       return;
     }
-    QLog.d("SlideShowPhotoListManager", 2, "isValidMedia, false:" + paramLocalMediaInfo.toString());
+    catch (InterruptedException localInterruptedException) {}
   }
 }
 

@@ -94,7 +94,7 @@ public class MemorialActivatePage
     if (QLog.isColorLevel()) {
       QLog.d("MemorialActivatePage", 2, "time=" + paramString2.toString());
     }
-    paramContext = String.format(paramContext.getString(2131438726), new Object[] { Integer.valueOf(Math.abs(paramString3.get(1) - paramString2.get(1))) });
+    paramContext = String.format(paramContext.getString(2131438749), new Object[] { Integer.valueOf(Math.abs(paramString3.get(1) - paramString2.get(1))) });
     paramInt1 = new Long(Math.abs(l1 - this.jdField_a_of_type_Long * 1000L) / 86400000L).intValue();
     this.jdField_f_of_type_JavaLangString = (paramContext + paramString5);
     if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder == null)
@@ -132,7 +132,7 @@ public class MemorialActivatePage
         break label617;
       }
       this.jdField_b_of_type_JavaLangString = String.format(jdField_g_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString });
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130842162);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130842194);
       this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131493168));
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a()) {
@@ -151,7 +151,7 @@ public class MemorialActivatePage
     }
     label617:
     this.jdField_b_of_type_JavaLangString = String.format(jdField_h_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString });
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130842163);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130842195);
     this.jdField_f_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ff455e"));
     this.jdField_f_of_type_AndroidWidgetTextView.setAlpha(0.8F);
   }
@@ -196,25 +196,25 @@ public class MemorialActivatePage
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970178, this, false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369420));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970191, this, false);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369425));
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366704));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369426));
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369427));
-    this.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369428));
-    this.m = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369430));
-    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369429));
-    this.n = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369431));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369422));
-    this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369424));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364606));
-    this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369425));
-    this.k = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366782));
-    this.l = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362756));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366702));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369431));
+    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369432));
+    this.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369433));
+    this.m = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369435));
+    this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369434));
+    this.n = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369436));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369427));
+    this.i = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369429));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364630));
+    this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369430));
+    this.k = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366780));
+    this.l = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362761));
     this.k.setOnClickListener(this);
     this.l.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369402));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369407));
     a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     addView(this.jdField_a_of_type_AndroidViewView);
   }
@@ -240,7 +240,7 @@ public class MemorialActivatePage
     {
     default: 
       return;
-    case 2131366782: 
+    case 2131366780: 
       if (((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).b(this.jdField_a_of_type_JavaLangString))
       {
         c();

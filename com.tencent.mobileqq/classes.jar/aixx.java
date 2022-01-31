@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class aixx
-  implements Runnable
+public final class aixx
+  extends SimpleObserver
 {
-  public aixx(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aixx(aixy paramaixy) {}
   
-  public void run()
+  public void a(Void paramVoid)
   {
-    this.a.j();
+    super.onNext(paramVoid);
+    QLog.d("tribe_publish_TakeVideoHelper", 4, "generate video manifest success.");
+    this.a.a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    QLog.d("tribe_publish_TakeVideoHelper", 4, "generate video manifest failed.");
+    this.a.b();
   }
 }
 

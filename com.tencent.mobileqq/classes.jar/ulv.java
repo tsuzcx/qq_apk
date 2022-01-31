@@ -1,15 +1,30 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class ulv
   implements Runnable
 {
-  public ulv(MediaPlayerManager paramMediaPlayerManager) {}
+  public ulv(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
   public void run()
   {
-    MediaPlayerManager.a(this.a).unregisterListener(MediaPlayerManager.a(this.a));
-    MediaPlayerManager.a(this.a).unregisterListener(this.a);
+    try
+    {
+      if ((VerifyPhoneNumActivity.a(this.a) != null) && (VerifyPhoneNumActivity.a(this.a).isShowing()))
+      {
+        VerifyPhoneNumActivity.a(this.a).dismiss();
+        VerifyPhoneNumActivity.a(this.a).cancel();
+      }
+      VerifyPhoneNumActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

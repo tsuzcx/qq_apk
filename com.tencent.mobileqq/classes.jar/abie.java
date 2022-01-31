@@ -1,37 +1,27 @@
-import android.os.Handler;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
 import com.tencent.qphone.base.util.QLog;
 
 public class abie
-  extends AnimatorListenerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abie(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  public abie(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, String.format("onAnimationCancel mNeedLaunchARMapOnAnimEnd=%s", new Object[] { Boolean.valueOf(ARMapLoadingActivity.a(this.a)) }));
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, String.format("onAnimationEnd mNeedLaunchARMapOnAnimEnd=%s", new Object[] { Boolean.valueOf(ARMapLoadingActivity.a(this.a)) }));
-    }
-    if (ARMapLoadingActivity.a(this.a))
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    if (ARMapActivity.b(this.a) != paramValueAnimator.intValue())
     {
-      ARMapLoadingActivity.a(this.a).sendEmptyMessage(103);
-      ARMapLoadingActivity.b(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapActivity", 2, String.format("updateProgress mCurProgress=%s", new Object[] { Integer.valueOf(ARMapActivity.b(this.a)) }));
+      }
+      ARMapActivity.b(this.a, paramValueAnimator.intValue());
+      if (ARMapActivity.a(this.a) != null) {
+        ARMapActivity.a(this.a).setProgress(ARMapActivity.b(this.a));
+      }
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ARMapLoadingActivity.a(this.a).setLoadStatus(1);
   }
 }
 

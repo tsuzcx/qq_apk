@@ -1,52 +1,67 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 public class afeq
-  implements View.OnClickListener
+  implements NowShortVideoProtoManager.Callback
 {
-  public afeq(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel, String paramString) {}
+  public afeq(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString + "&type" + NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel).gender);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.e != 2) {
-      if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel).gender == 0)
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      paramBundle = new oidb_0xada.RspBody();
+      try
       {
-        paramView = "他";
-        ((Intent)localObject).putExtra("title", paramView + "的更新");
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.startActivity((Intent)localObject);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app;
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.e != 2) {
-          break label254;
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + PlayOperationViewModel.c(this.a));
+        }
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (QLog.isColorLevel()) {
+            QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + PlayOperationViewModel.c(this.a));
+          }
+          if (paramArrayOfByte.ret.get() == 0)
+          {
+            PlayOperationViewModel.c(this.a, true);
+            if (PlayOperationViewModel.d(this.a))
+            {
+              ThreadManager.getUIHandler().post(new afer(this));
+              PlayOperationViewModel.d(this.a, false);
+            }
+            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a = true;
+            new NowVideoReporter().h("video").i("playpage_focus").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            return;
+          }
+          if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
+          {
+            QQToast.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
+            return;
+          }
         }
       }
-    }
-    label254:
-    for (paramView = "1";; paramView = "2")
-    {
-      ReportController.b((QQAppInterface)localObject, "dc00899", "grp_lbs", "", "data_card", "clk_pub", 0, 0, paramView, "", "", "");
-      return;
-      paramView = "她";
-      break;
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app == null)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        QLog.w("NearbyProfileDisplayTribePanel", 2, "mActivity.app == null is true!");
-        return;
+        paramArrayOfByte.printStackTrace();
       }
-      ((NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app.getManager(105)).d.put(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app.getCurrentAccountUin(), Integer.valueOf(1));
-      paramView = "我";
-      break;
     }
   }
 }

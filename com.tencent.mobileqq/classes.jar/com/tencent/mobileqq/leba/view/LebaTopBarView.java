@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.leba.view;
 
-import aebo;
-import aebp;
+import aejy;
+import aejz;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -93,14 +93,14 @@ public class LebaTopBarView
   {
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { paramFloat1, paramFloat2 });
     localObjectAnimator.setDuration(this.jdField_f_of_type_Int);
-    localObjectAnimator.addUpdateListener(new aebp(this, paramFloat2, paramBoolean, paramView));
+    localObjectAnimator.addUpdateListener(new aejz(this, paramFloat2, paramBoolean, paramView));
     localObjectAnimator.start();
   }
   
   private void a(View paramView, int paramInt1, int paramInt2)
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt1, paramInt2 });
-    localValueAnimator.addUpdateListener(new aebo(this, paramView));
+    localValueAnimator.addUpdateListener(new aejy(this, paramView));
     localValueAnimator.setDuration(this.jdField_e_of_type_Int);
     localValueAnimator.start();
   }
@@ -181,7 +181,7 @@ public class LebaTopBarView
   
   public void a(Context paramContext)
   {
-    inflate(paramContext, 2130970393, this);
+    inflate(paramContext, 2130970408, this);
   }
   
   public void a(View paramView, int paramInt, LebaGridMenuView paramLebaGridMenuView)
@@ -215,6 +215,7 @@ public class LebaTopBarView
     if (this.jdField_a_of_type_ComTencentMobileqqLebaQZoneEntryController != null) {
       this.jdField_a_of_type_ComTencentMobileqqLebaQZoneEntryController.a(paramQQAppInterface);
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     b(false);
     setVisibility(4);
   }
@@ -223,22 +224,22 @@ public class LebaTopBarView
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131370347));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131370346);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131370350);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362841);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370339));
-    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaGridMenuView = ((LebaGridMenuView)findViewById(2131370340));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131370356));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131370355);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131370359);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362846);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370348));
+    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaGridMenuView = ((LebaGridMenuView)findViewById(2131370349));
     paramBaseActivity = LebaGridShowManager.a().b(paramQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqLebaLebaTopBarAdapter = new LebaTopBarAdapter(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     this.jdField_a_of_type_ComTencentMobileqqLebaLebaTopBarAdapter.a(paramBaseActivity);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqLebaLebaTopBarAdapter);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370351);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131370360);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_e_of_type_AndroidViewView = findViewById(2131370348);
-    this.jdField_f_of_type_AndroidViewView = findViewById(2131362371);
-    this.g = findViewById(2131370349);
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131370345));
+    this.jdField_e_of_type_AndroidViewView = findViewById(2131370357);
+    this.jdField_f_of_type_AndroidViewView = findViewById(2131362374);
+    this.g = findViewById(2131370358);
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131370354));
     a();
     paramBaseActivity = LebaGridShowManager.a().a().iterator();
     while (paramBaseActivity.hasNext()) {

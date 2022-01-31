@@ -5,6 +5,7 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.os.Build;
 import android.view.animation.LinearInterpolator;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +37,11 @@ public abstract class TrackingItem
   {
     String str = Build.MODEL;
     return (Build.MANUFACTURER.equalsIgnoreCase("vivo")) && (str.contains("Y51A"));
+  }
+  
+  private static boolean e()
+  {
+    return PtvFilterSoLoad.b() == 1;
   }
   
   public void a(ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener, AnimatorListenerAdapter paramAnimatorListenerAdapter)
@@ -79,7 +85,7 @@ public abstract class TrackingItem
   
   public void b(boolean paramBoolean)
   {
-    if ((paramBoolean) && (!d())) {}
+    if ((paramBoolean) && (!d()) && (e())) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
       this.c = paramBoolean;

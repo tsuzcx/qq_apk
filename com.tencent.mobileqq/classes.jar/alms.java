@@ -1,55 +1,32 @@
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.app.Activity;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.now.download.local.DownloadNativeApi;
+import com.tencent.open.appcommon.now.download.local.DownloadTaskInfo;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class alms
   implements Runnable
 {
-  public alms(QidianProfileCardActivity paramQidianProfileCardActivity, int paramInt) {}
+  public alms(DownloadNativeApi paramDownloadNativeApi, DownloadInfo paramDownloadInfo, DownloadTaskInfo paramDownloadTaskInfo, Activity paramActivity) {}
   
   public void run()
   {
-    int i = 1;
-    int j = 0;
-    if (this.jdField_a_of_type_Int == 6) {
-      if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo != null) {}
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.b(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c(this.jdField_a_of_type_Int);
-      }
-      return;
-      i = 0;
-      continue;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo != null)
-        {
-          i = j;
-          if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null) {}
-        }
-        else
-        {
-          i = 1;
-        }
-      }
-      else if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 0))
-      {
-        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo != null) {
-          i = 0;
-        }
-      }
-      else {
-        i = 0;
-      }
+    Object localObject = new almt(this);
+    almu localalmu = new almu(this);
+    LogUtility.b("DownloadNativeApi", "dialog create and show");
+    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131428555)).setPositiveButton(2131428552, localalmu).setNegativeButton(2131428553, (DialogInterface.OnClickListener)localObject).create();
+    ((Dialog)localObject).setCanceledOnTouchOutside(false);
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      ((Dialog)localObject).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alms
  * JD-Core Version:    0.7.0.1
  */

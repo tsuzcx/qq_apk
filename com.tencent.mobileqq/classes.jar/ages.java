@@ -1,38 +1,40 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.now.enter.NowHongbaoPushManager;
+import com.tencent.mobileqq.now.enter.NowHongbaoPushManager.Callback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class ages
-  extends Handler
+  implements Runnable
 {
-  private WeakReference a;
+  public ages(NowHongbaoPushManager paramNowHongbaoPushManager, int paramInt1, int paramInt2) {}
   
-  public ages(ARTipsManager paramARTipsManager)
+  public void run()
   {
-    this.a = new WeakReference(paramARTipsManager);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ARTipsManager localARTipsManager = (ARTipsManager)this.a.get();
-    if (localARTipsManager == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager) != null)
     {
-    default: 
-      return;
-    case 100: 
-      ARTipsManager.a(localARTipsManager, (aget)paramMessage.obj);
-      return;
+      if (this.jdField_a_of_type_Int != 2) {
+        break label108;
+      }
+      NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager).b();
     }
-    ARTipsManager.a(localARTipsManager);
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NowHongbaoPushManager", 2, (String)NowHongbaoPushManager.a().get(Integer.valueOf(this.jdField_a_of_type_Int)) + ",隐藏---type=" + this.jdField_a_of_type_Int + ", reason = " + (String)NowHongbaoPushManager.b().get(Integer.valueOf(this.b)));
+      }
+      return;
+      label108:
+      if (this.jdField_a_of_type_Int == 3) {
+        NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager).a();
+      } else if (this.jdField_a_of_type_Int == 1) {
+        NowHongbaoPushManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager).c();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ages
  * JD-Core Version:    0.7.0.1
  */

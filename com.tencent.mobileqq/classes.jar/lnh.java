@@ -1,30 +1,33 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import android.content.Context;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class lnh
-  implements Animator.AnimatorListener
+public final class lnh
+  implements Runnable
 {
-  public lnh(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  public lnh(HashMap paramHashMap, boolean paramBoolean, Context paramContext, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    ReadInJoyAtlasFragment.a(this.a, false);
-    if (ReadInJoyAtlasFragment.a(this.a) != null)
+    if (QLog.isColorLevel())
     {
-      ReadInJoyAtlasFragment.b(this.a, true);
-      ReadInJoyAtlasFragment.a(this.a).finish();
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (this.jdField_a_of_type_JavaUtilHashMap != null)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          localStringBuilder.append((String)localEntry.getKey()).append(":").append((String)localEntry.getValue()).append(" ");
+        }
+      }
+      QLog.d("Q.readinjoy.video", 2, "reportKandianVideoInfo, success =" + this.jdField_a_of_type_Boolean + ", data=" + localStringBuilder.toString());
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ReadInJoyAtlasFragment.a(this.a, true);
+    StatisticCollector.a(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, "actKandianVideo", this.jdField_a_of_type_Boolean, -1L, 0L, this.jdField_a_of_type_JavaUtilHashMap, null);
   }
 }
 

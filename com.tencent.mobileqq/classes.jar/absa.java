@@ -1,40 +1,62 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.confess.ConfessPlugin;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
+import com.tencent.mobileqq.bubble.BubbleDiyHandler;
+import com.tencent.mobileqq.bubble.VipBubbleDrawable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class absa
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public absa(ConfessPlugin paramConfessPlugin) {}
+  public absa(BubbleDiyFetcher paramBubbleDiyFetcher, QQAppInterface paramQQAppInterface) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
+    if (!this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
     {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof TextView))
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleDiyFetcher", 2, "now query mUnCacheDiyId: " + TextUtils.join(",", this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (!this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
       {
-        int i = ((TextView)paramView).getCurrentTextColor();
-        ((TextView)paramView).setTextColor(Color.argb(128, Color.red(i), Color.green(i), Color.blue(i)));
-        continue;
-        if ((paramView instanceof TextView))
-        {
-          i = ((TextView)paramView).getCurrentTextColor();
-          ((TextView)paramView).setTextColor(Color.argb(255, Color.red(i), Color.green(i), Color.blue(i)));
+        ((BubbleDiyHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(70)).a(new ArrayList(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet), null);
+        this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
+      }
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.isEmpty()) {
+      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b();
+    }
+    Object localObject;
+    if (!this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.c.isEmpty())
+    {
+      localIterator = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.c.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (String)localIterator.next();
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.c((String)localObject);
         }
       }
     }
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (VipBubbleDrawable)localIterator.next();
+      if ((localObject == null) || (((VipBubbleDrawable)localObject).getCallback() == null)) {
+        this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject);
+      }
+    }
+    BubbleDiyFetcher.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     absa
  * JD-Core Version:    0.7.0.1
  */

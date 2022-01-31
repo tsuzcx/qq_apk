@@ -1,15 +1,13 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.troop.model.TroopStorySingleVideoSynchronizer;
-import java.util.Collections;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class onz
   implements Runnable
 {
-  public onz(TroopStorySingleVideoSynchronizer paramTroopStorySingleVideoSynchronizer, StoryVideoItem paramStoryVideoItem) {}
+  public onz(DoodleLayout paramDoodleLayout) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStorySingleVideoSynchronizer.a(Collections.singletonList(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem), true);
+    DoodleLayout.a(this.a);
   }
 }
 

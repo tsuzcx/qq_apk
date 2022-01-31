@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.AppConstants;
 
 public abstract interface StructMsgConstants
 {
-  public static final String D = AppConstants.aJ + "photo" + "/temp/";
+  public static final String D = AppConstants.aK + "photo" + "/temp/";
 }
 
 

@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import xwn;
-import xwo;
+import ycw;
+import ycx;
 
 public class SubtitleLayout
   extends RelativeLayout
@@ -79,7 +79,7 @@ public class SubtitleLayout
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new xwo(this), paramInt);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ycx(this), paramInt);
   }
   
   private void g()
@@ -96,7 +96,7 @@ public class SubtitleLayout
     }
     this.jdField_c_of_type_Boolean = false;
     this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_b_of_type_AndroidOsHandler.postDelayed(new xwn(this), 180000L);
+    this.jdField_b_of_type_AndroidOsHandler.postDelayed(new ycw(this), 180000L);
   }
   
   private void h()
@@ -172,10 +172,10 @@ public class SubtitleLayout
     //   11: getfield 169	com/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout:jdField_a_of_type_JavaUtilTimerTask	Ljava/util/TimerTask;
     //   14: ifnonnull +15 -> 29
     //   17: aload_0
-    //   18: new 178	xwp
+    //   18: new 178	ycy
     //   21: dup
     //   22: aload_0
-    //   23: invokespecial 179	xwp:<init>	(Lcom/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout;)V
+    //   23: invokespecial 179	ycy:<init>	(Lcom/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout;)V
     //   26: putfield 169	com/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout:jdField_a_of_type_JavaUtilTimerTask	Ljava/util/TimerTask;
     //   29: aload_0
     //   30: getfield 167	com/tencent/mobileqq/activity/richmedia/subtitles/SubtitleLayout:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;

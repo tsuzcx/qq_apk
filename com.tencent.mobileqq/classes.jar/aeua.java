@@ -1,17 +1,42 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
-public class aeua
-  extends ProtoUtils.TroopGiftProtocolObserver
+public final class aeua
+  implements Runnable
 {
-  public aeua(NowShortVideoProtoManager paramNowShortVideoProtoManager, NowShortVideoProtoManager.Callback paramCallback) {}
+  public aeua(QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback.a(paramInt, paramArrayOfByte, paramBundle);
+    this.a.a(this.a.getCurrentAccountUin(), 200, true);
+    long l1 = ((Long)NearbySPUtil.a(this.a.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
+    long l2 = l1;
+    EntityManager localEntityManager;
+    if (l1 == 0L)
+    {
+      localEntityManager = this.a.getEntityManagerFactory(this.a.getAccount()).createEntityManager();
+      l2 = l1;
+      if (localEntityManager != null)
+      {
+        NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.getCurrentAccountUin() });
+        if (localNearbyPeopleCard == null) {
+          break label143;
+        }
+        l1 = localNearbyPeopleCard.tinyId;
+      }
+    }
+    label143:
+    for (;;)
+    {
+      localEntityManager.a();
+      l2 = l1;
+      if (l2 != 0L) {
+        this.a.a(String.valueOf(l2), 202, true);
+      }
+      return;
     }
   }
 }

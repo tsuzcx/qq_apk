@@ -1,16 +1,18 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.DiscoverTab;
 
-public class anbx
-  implements Runnable
+public final class anbx
+  implements Parcelable.Creator
 {
-  public anbx(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime) {}
-  
-  public void run()
+  public DiscoverTab a(Parcel paramParcel)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin$PluginRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).a();
+    return new DiscoverTab(paramParcel);
+  }
+  
+  public DiscoverTab[] a(int paramInt)
+  {
+    return new DiscoverTab[paramInt];
   }
 }
 

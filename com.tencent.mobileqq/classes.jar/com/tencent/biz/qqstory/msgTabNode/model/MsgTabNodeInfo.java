@@ -49,12 +49,6 @@ public class MsgTabNodeInfo
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public MsgTabNodeInfo(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
   public MsgTabNodeInfo(int paramInt, String paramString)
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -255,8 +249,8 @@ public class MsgTabNodeInfo
         i += 1;
       }
       JSONObject localJSONObject;
-      if (this.jdField_a_of_type_Int != 11) {
-        break label344;
+      if (this.jdField_a_of_type_Int == 11) {
+        break label338;
       }
     }
     catch (JSONException localJSONException)
@@ -279,7 +273,9 @@ public class MsgTabNodeInfo
             this.jdField_b_of_type_JavaUtilList.add(localObject);
             i += 1;
           }
-          if (this.jdField_a_of_type_Int == 10) {}
+          if (this.jdField_a_of_type_Int == 10) {
+            break label338;
+          }
         }
         catch (JSONException paramMsgTabNodeEntity)
         {
@@ -287,11 +283,16 @@ public class MsgTabNodeInfo
         }
       }
     }
-    if (MsgTabStoryManager.b(this)) {}
+    if (this.jdField_a_of_type_Int == 3) {
+      label338:
+      if (!MsgTabStoryManager.b(this)) {
+        break label353;
+      }
+    }
+    label353:
     for (int i = j;; i = 1)
     {
       this.jdField_b_of_type_Int = i;
-      label344:
       return;
     }
   }
@@ -340,18 +341,31 @@ public class MsgTabNodeInfo
     if (paramMsgTabNodeInfo.video_cover.has()) {
       this.f = paramMsgTabNodeInfo.video_cover.get().toStringUtf8();
     }
-    if ((this.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_Int == 11)) {
+    if ((this.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_Int == 11) || (this.jdField_a_of_type_Int == 3)) {
       if (!MsgTabStoryManager.b(this)) {
-        break label351;
+        break label359;
       }
     }
-    label351:
+    label359:
     for (int i = 0;; i = 1)
     {
       this.jdField_b_of_type_Int = i;
       this.jdField_d_of_type_Int = paramMsgTabNodeInfo.no_update.get();
       return;
     }
+  }
+  
+  public boolean a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)localIterator.next();
+      if ((TextUtils.isEmpty(localMsgTabNodeVideoInfo.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localMsgTabNodeVideoInfo.jdField_b_of_type_JavaLangString))) {
+        return false;
+      }
+    }
+    return true;
   }
   
   public void copy(Object paramObject)

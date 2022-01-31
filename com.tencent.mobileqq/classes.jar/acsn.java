@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class acsn
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  acsn(acsi paramacsi) {}
+  acsn(acsm paramacsm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.e();
+    this.a.a.a = false;
+    this.a.a.doOnBackPressed();
   }
 }
 

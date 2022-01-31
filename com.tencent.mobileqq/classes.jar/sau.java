@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.DataReport;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 
-public class sau
-  extends ProxyObserver
+public final class sau
+  implements DialogInterface.OnClickListener
 {
-  public sau(ChatHistoryForC2C paramChatHistoryForC2C) {}
+  public sau(ChatActivityUtils.StartVideoListener paramStartVideoListener, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.runOnUiThread(new sav(this));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    }
+    paramDialogInterface.dismiss();
+    DataReport.b(this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,15 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import com.tencent.biz.pubaccount.readinjoy.model.AtlasModel;
-import com.tencent.biz.pubaccount.readinjoy.model.AtlasModelImage;
 
 public abstract interface ReadInJoyAtlasViewPagerAdapter$OnChildGalleryEventListener
 {
-  public abstract void a(int paramInt, AtlasModelImage paramAtlasModelImage);
+  public abstract void a();
   
-  public abstract void a(int paramInt, AtlasModelImage paramAtlasModelImage, AtlasModel paramAtlasModel);
+  public abstract void a(int paramInt, AtlasModel paramAtlasModel);
   
-  public abstract void b(int paramInt, AtlasModelImage paramAtlasModelImage);
+  public abstract void a(int paramInt, AtlasModel paramAtlasModel1, AtlasModel paramAtlasModel2);
+  
+  public abstract void b(int paramInt, AtlasModel paramAtlasModel);
 }
 
 

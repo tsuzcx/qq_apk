@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aaht;
-import aahu;
-import aahv;
-import aahw;
+import aaok;
+import aaol;
+import aaom;
+import aaon;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -30,7 +30,7 @@ public class ARPreSoResourceDownload
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aahw();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aaon();
   }
   
   public ARPreSoResourceDownload(QQAppInterface paramQQAppInterface)
@@ -47,8 +47,8 @@ public class ARPreSoResourceDownload
     if ((paramDownloadInfo == null) || (paramARResourceDownloadCallback == null)) {
       return false;
     }
-    Object localObject1 = new aaht(this, paramDownloadInfo);
-    ??? = new aahu(this);
+    Object localObject1 = new aaok(this, paramDownloadInfo);
+    ??? = new aaol(this);
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = ((INetEngine.INetEngineListener)???);
     localHttpNetReq.jdField_a_of_type_JavaLangString = paramDownloadInfo.jdField_a_of_type_JavaLangString;
@@ -66,7 +66,7 @@ public class ARPreSoResourceDownload
         {
         default: 
           i = 1;
-          localObject1 = new aahv(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDownloadInfo.b, (HttpEngineTask.IHttpEngineTask)localObject1, localHttpNetReq, paramDownloadInfo, paramARResourceDownloadCallback);
+          localObject1 = new aaom(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDownloadInfo.b, (HttpEngineTask.IHttpEngineTask)localObject1, localHttpNetReq, paramDownloadInfo, paramARResourceDownloadCallback);
           this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.a(10065, "prd", paramDownloadInfo.b, 0, paramDownloadInfo.jdField_a_of_type_JavaLangString, localHttpNetReq.c, i, 0, false, (AbsPreDownloadTask)localObject1);
           this.jdField_a_of_type_JavaUtilHashMap.put(paramDownloadInfo.b, paramARResourceDownloadCallback);
           QLog.i("AREngine_ARPreSoResourceDownload", 1, "submitDownloadTask. url = " + paramDownloadInfo.jdField_a_of_type_JavaLangString);

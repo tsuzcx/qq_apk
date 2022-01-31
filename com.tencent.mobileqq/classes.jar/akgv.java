@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.utils.VoicePlayer;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
 public class akgv
-  implements Runnable
+  extends WeakReference
 {
-  public akgv(VoicePlayer paramVoicePlayer) {}
+  private final String a;
   
-  public void run()
+  public akgv(String paramString, Object paramObject, ReferenceQueue paramReferenceQueue)
   {
-    VoicePlayer.a(this.a, false);
+    super(paramObject, paramReferenceQueue);
+    this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akgv
  * JD-Core Version:    0.7.0.1
  */

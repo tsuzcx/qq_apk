@@ -1,156 +1,32 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-public abstract class aoce
+public class aoce
   implements Runnable
 {
-  protected double a;
-  protected int a;
-  protected long a;
-  protected String a;
-  protected WeakReference a;
-  protected boolean a;
-  protected int b;
-  protected long b;
-  protected int c;
-  protected long c;
-  protected int d;
-  protected int e = -1;
+  public aoce(EditVideoFilterNeo paramEditVideoFilterNeo, AddressDataProvider.AddressInfo paramAddressInfo) {}
   
-  public aoce(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, aocf paramaocf)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaocf);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Long = (1000L * paramLong1);
-    this.jdField_c_of_type_Long = (1000L * paramLong2);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.e = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("VFLDecodeRunnable", 2, "decode param, path:" + this.jdField_a_of_type_JavaLangString + " framesize:" + this.jdField_a_of_type_Int + "-" + this.jdField_b_of_type_Int + " framecount:" + this.jdField_c_of_type_Int + " rotation:" + this.d + "range:" + this.jdField_b_of_type_Long + "-" + this.jdField_c_of_type_Long);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilterNeo.a.a(Message.obtain(null, 5, 0, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo));
+    String str;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.c)) {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.b)) {
+        str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.a;
+      }
     }
-    if ((this.jdField_c_of_type_Long - this.jdField_b_of_type_Long <= 0L) || (this.jdField_c_of_type_Int <= 0))
+    for (;;)
     {
-      a(1);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilterNeo.a.a.a.putString("extra_local_address_city_name", str);
       return;
-    }
-    this.jdField_a_of_type_Double = ((float)(this.jdField_c_of_type_Long - this.jdField_b_of_type_Long) * 1.0F / this.jdField_c_of_type_Int);
-  }
-  
-  protected long a()
-  {
-    if (this.e < this.jdField_c_of_type_Int) {
-      this.e += 1;
-    }
-    this.jdField_a_of_type_Long = ((this.e * this.jdField_a_of_type_Double));
-    this.jdField_a_of_type_Long += this.jdField_b_of_type_Long;
-    if (this.jdField_a_of_type_Long < 0L) {
-      this.jdField_a_of_type_Long = 0L;
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_Long > this.jdField_c_of_type_Long) {
-        this.jdField_a_of_type_Long = this.jdField_c_of_type_Long;
-      }
-    }
-  }
-  
-  public Bitmap a(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    Object localObject = new Matrix();
-    if (this.d != 0)
-    {
-      float f1 = this.jdField_a_of_type_Int / paramBitmap.getHeight();
-      float f2 = this.jdField_b_of_type_Int / paramBitmap.getWidth();
-      ((Matrix)localObject).postRotate(this.d);
-      ((Matrix)localObject).postScale(f1, f2);
-    }
-    for (;;)
-    {
-      localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
-      paramBitmap.recycle();
-      return localObject;
-      ((Matrix)localObject).postScale(this.jdField_a_of_type_Int / paramBitmap.getWidth(), this.jdField_b_of_type_Int / paramBitmap.getHeight());
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  protected void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      aocf localaocf = (aocf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaocf != null) {
-        localaocf.a(paramInt);
-      }
-    }
-  }
-  
-  protected void a(int paramInt, long paramLong, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      aocf localaocf = (aocf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaocf != null) {
-        localaocf.a(paramInt, paramLong, paramBitmap);
-      }
-    }
-  }
-  
-  protected void a(List paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    aocf localaocf;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localaocf = (aocf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localaocf == null);
-    localaocf.a(paramList);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      aocf localaocf = (aocf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaocf != null) {
-        localaocf.a(paramBoolean);
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      aocf localaocf = (aocf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaocf != null) {
-        localaocf.a();
-      }
+      str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.b;
+      continue;
+      str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.c;
     }
   }
 }

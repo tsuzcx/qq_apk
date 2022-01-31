@@ -1,69 +1,41 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class jtg
-  implements Runnable
+  implements Handler.Callback
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  long b;
+  public jtg(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
-  public jtg(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, int paramInt, long paramLong1, long paramLong2)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-  }
-  
-  void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(true, 1, paramLong1);
-    }
-    do
+    switch (paramMessage.what)
     {
-      do
+    }
+    for (;;)
+    {
+      return false;
+      if (!CallbackWaitingActivityExt.a(this.a))
       {
-        return;
-        if (paramInt == 2)
-        {
-          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(false, 1, paramLong1);
-          return;
-        }
-        if (paramInt == 3)
-        {
-          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(true, 2, paramLong1);
-          return;
-        }
-        if (paramInt == 4)
-        {
-          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.a(false, 2, paramLong1);
-          return;
-        }
-        if (paramInt == 5)
-        {
-          this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
-          DoubleVideoMeetingCtrlUI.e(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI);
-          return;
-        }
-        if (paramInt != 6) {
-          break;
-        }
-      } while (paramLong1 == this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.b);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.c(true);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.e(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.c, 2, "ERROR-->The RefreshType is Error. Type = " + paramInt);
-  }
-  
-  public void run()
-  {
-    a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b);
+        CallbackWaitingActivityExt.a(this.a).a().f = true;
+        paramMessage = CallbackWaitingActivityExt.a(this.a).getApp();
+        Intent localIntent = new Intent(paramMessage, PSTNC2CActivity.class);
+        localIntent.setFlags(268566528);
+        paramMessage.startActivity(localIntent);
+        continue;
+        CallbackWaitingActivityExt.b(this.a);
+        this.a.a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jtg
  * JD-Core Version:    0.7.0.1
  */

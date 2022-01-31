@@ -1,60 +1,40 @@
-import com.tencent.YTFace.cluster.FaceCluster;
-import com.tencent.YTFace.model.FaceStatus;
-import com.tencent.mobileqq.ar.FaceScanModelsLoader;
-import com.tencent.mobileqq.ar.arengine.ARCloudPretreatmentManager;
-import com.tencent.mobileqq.ar.arengine.ARFaceDataCollector;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManagerImpl;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderResourceInfo;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenerArumentManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
 
 public class aafn
   implements Runnable
 {
-  public aafn(ARCloudPretreatmentManager paramARCloudPretreatmentManager, FaceStatus[] paramArrayOfFaceStatus, FaceCluster paramFaceCluster, byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
+  public aafn(ARRenderManagerImpl paramARRenderManagerImpl, ARBaseRender paramARBaseRender, ARRenderResourceInfo paramARRenderResourceInfo) {}
   
   public void run()
   {
-    int j = 0;
-    long l1 = System.currentTimeMillis();
+    ARBaseRender localARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
+    ARRenderManagerImpl localARRenderManagerImpl = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl;
+    int i = ARRenderManagerImpl.jdField_a_of_type_Int;
+    localARRenderManagerImpl = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl;
+    localARBaseRender.a_(i, ARRenderManagerImpl.b);
+    localARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
     if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARCloudPretreatmentManagert", 2, "[DEBUG_SCAN_yt_face] pretreat, extractFaceFeature start");
+      QLog.d("HSRender", 2, "onARStateChanged, queueEvent");
     }
-    int i = j;
-    if (this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus != null)
+    if ((localARBaseRender != null) && (localARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
+      localARBaseRender.d();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2048L))) {}
+    for (boolean bool = true;; bool = false)
     {
-      i = j;
-      if (this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length > 0)
-      {
-        j = this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length;
-        i = 0;
-        if (i < j)
-        {
-          long l2 = System.currentTimeMillis();
-          if (FaceScanModelsLoader.b) {
-            this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].feature = this.jdField_a_of_type_ComTencentYTFaceClusterFaceCluster.calcuFaceFeature(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].xys, 0);
-          }
-          for (;;)
-          {
-            long l3 = System.currentTimeMillis();
-            if (QLog.isColorLevel())
-            {
-              QLog.d("AREngine_ARCloudPretreatmentManagert", 2, "  calcuFaceFeature TimeCost = " + (l3 - l2));
-              if (this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].feature != null) {
-                QLog.d("AREngine_ARCloudPretreatmentManagert", 2, "  calcuFaceFeature feature = " + Arrays.toString(this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i].feature));
-              }
-            }
-            i += 1;
-            break;
-            QLog.d("AREngine_ARCloudPretreatmentManagert", 1, "[DEBUG_SCAN_yt_face] pretreat, FaceModel not init!");
-          }
-        }
-        i = j;
-      }
-    }
-    l1 = System.currentTimeMillis() - l1;
-    ARFaceDataCollector.a().e = l1;
-    ARFaceDataCollector.a().jdField_a_of_type_Int = i;
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARCloudPretreatmentManagert", 2, "[DEBUG_SCAN_yt_face] pretreat, extractFaceFeature TimeCost = " + l1);
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a();
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a(bool, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo);
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a();
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.b();
+      return;
     }
   }
 }

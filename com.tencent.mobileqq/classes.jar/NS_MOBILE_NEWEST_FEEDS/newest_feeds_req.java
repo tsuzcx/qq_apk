@@ -4,14 +4,18 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class newest_feeds_req
   extends JceStruct
 {
+  static Map cache_mapUinTimes;
   static ArrayList cache_vec_uinlist = new ArrayList();
   public int cmd;
   public long last_feed_time;
   public long login_uin;
+  public Map mapUinTimes;
   public String strQua = "";
   public String str_attach = "";
   public ArrayList vec_uinlist;
@@ -19,11 +23,13 @@ public final class newest_feeds_req
   static
   {
     cache_vec_uinlist.add(Long.valueOf(0L));
+    cache_mapUinTimes = new HashMap();
+    cache_mapUinTimes.put(Long.valueOf(0L), Long.valueOf(0L));
   }
   
   public newest_feeds_req() {}
   
-  public newest_feeds_req(int paramInt, long paramLong1, ArrayList paramArrayList, long paramLong2, String paramString1, String paramString2)
+  public newest_feeds_req(int paramInt, long paramLong1, ArrayList paramArrayList, long paramLong2, String paramString1, String paramString2, Map paramMap)
   {
     this.cmd = paramInt;
     this.login_uin = paramLong1;
@@ -31,6 +37,7 @@ public final class newest_feeds_req
     this.last_feed_time = paramLong2;
     this.str_attach = paramString1;
     this.strQua = paramString2;
+    this.mapUinTimes = paramMap;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -41,6 +48,7 @@ public final class newest_feeds_req
     this.last_feed_time = paramJceInputStream.read(this.last_feed_time, 3, false);
     this.str_attach = paramJceInputStream.readString(4, false);
     this.strQua = paramJceInputStream.readString(5, false);
+    this.mapUinTimes = ((Map)paramJceInputStream.read(cache_mapUinTimes, 6, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -56,6 +64,9 @@ public final class newest_feeds_req
     }
     if (this.strQua != null) {
       paramJceOutputStream.write(this.strQua, 5);
+    }
+    if (this.mapUinTimes != null) {
+      paramJceOutputStream.write(this.mapUinTimes, 6);
     }
   }
 }

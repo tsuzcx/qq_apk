@@ -1,17 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 class owq
-  extends DownloadListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  owq(owi paramowi, Bundle paramBundle) {}
+  owq(owp paramowp, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
-    this.jdField_a_of_type_Owi.a.a(87, this.jdField_a_of_type_AndroidOsBundle);
+    paramValueAnimator = (ows)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
   }
 }
 

@@ -1,17 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DropDownAppInPushNotification;
 
 class mph
   implements Runnable
 {
-  mph(mpg parammpg, VideoPlayerWrapper paramVideoPlayerWrapper) {}
+  mph(mpg parammpg) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.h();
-    }
-    FastWebVideoFeedsPlayManager.b(this.jdField_a_of_type_Mpg.a);
+    this.a.a.a.a();
   }
 }
 

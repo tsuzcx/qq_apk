@@ -1,21 +1,16 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class kyu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public kyu(PublicAccountManager paramPublicAccountManager) {}
+  public kyu(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.get();
-    String str = this.a.jdField_b_of_type_JavaLangString;
-    boolean bool = this.a.jdField_b_of_type_Boolean;
-    if ((this.a.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (localQQAppInterface != null)) {
-      SosoInterface.a(new kyv(this, 1, true, true, 0L, true, false, "PublicAccountManager", str, bool));
-    }
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
   }
 }
 

@@ -1,59 +1,35 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.vipgift.VipGiftManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class aktd
-  extends ExploreByTouchHelper
+  implements AsyncBack
 {
-  public aktd(ConfigClearableEditText paramConfigClearableEditText, View paramView)
-  {
-    super(paramView);
-  }
+  public aktd(VipGiftManager paramVipGiftManager, long paramLong1, String paramString1, long paramLong2, String paramString2) {}
   
-  protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
-  {
-    if ((ConfigClearableEditText.c(this.a)) && (paramFloat1 > this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth())) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  protected void getVisibleVirtualViews(List paramList)
-  {
-    if (ConfigClearableEditText.c(this.a)) {
-      paramList.add(Integer.valueOf(0));
-    }
-  }
-  
-  protected boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  public void loaded(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ConfigClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
+      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid loaded,code:" + paramInt + ",cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    return false;
+    if (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("280")) {
+      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a("http://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+    }
+    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {
+      if (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a(2L, this.jdField_b_of_type_Long)) {
+        this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Long);
+      }
+    }
+    while ((!this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a(5L, this.jdField_b_of_type_Long)) || (this.jdField_b_of_type_JavaLangString == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
   }
   
-  protected void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  public void progress(int paramInt)
   {
-    if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription("删除 按钮");
-    }
-  }
-  
-  protected void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    if (paramInt == 0)
-    {
-      paramAccessibilityNodeInfoCompat.setContentDescription("删除 按钮");
-      paramAccessibilityNodeInfoCompat.addAction(16);
-      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth(), this.a.getPaddingTop(), this.a.getWidth() - this.a.getPaddingRight(), this.a.getHeight() - this.a.getPaddingBottom()));
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGiftManager", 2, "checkUpAndNotifyByBid progress:" + paramInt);
     }
   }
 }

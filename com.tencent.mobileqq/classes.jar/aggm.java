@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
 public class aggm
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public aggm(ScanTorchActivity paramScanTorchActivity) {}
+  public aggm(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.setVisibility(8);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (paramView == ScanOcrActivity.a(this.a))
+      {
+        paramView.setAlpha(0.7F);
+      }
+      else
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aggm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,75 @@
 package c.t.m.g;
 
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
 
 public final class n
-  implements ThreadFactory
 {
-  private static final AtomicInteger a = new AtomicInteger(1);
-  private final ThreadGroup b;
-  private final AtomicInteger c = new AtomicInteger(1);
-  private final String d;
+  public String a = "";
+  public int b = -1;
+  public int c = -1;
+  public int d = -1;
+  public byte e;
+  private byte f = 1;
+  private String[] g;
+  
+  public n() {}
   
   public n(String paramString)
   {
-    Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.b = ((ThreadGroup)localObject);
-      this.d = (paramString + "-" + a.getAndIncrement() + "-thread-");
-      return;
-    }
+    this.a = paramString;
+    this.b = -1;
   }
   
-  public final Thread newThread(Runnable paramRunnable)
+  public final String a()
   {
-    paramRunnable = new Thread(this.b, paramRunnable, this.d + this.c.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
-    }
-    try
+    return this.a + ":" + this.b;
+  }
+  
+  public final boolean a(n paramn)
+  {
+    return (paramn != null) && (this.a.equals(paramn.a)) && (this.b == paramn.b);
+  }
+  
+  public final boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      paramRunnable.setPriority(5);
-      return paramRunnable;
+      return false;
+      this.g = paramString.split(":");
+      if (this.g.length == 2)
+      {
+        this.a = this.g[0];
+        if (cn.d(this.a)) {
+          try
+          {
+            this.b = Integer.parseInt(this.g[1]);
+            if (this.b >= 0)
+            {
+              int i = this.b;
+              if (i <= 65535) {
+                return true;
+              }
+            }
+          }
+          catch (NumberFormatException paramString)
+          {
+            paramString.printStackTrace();
+          }
+        }
+      }
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return paramRunnable;
+    return false;
+  }
+  
+  public final boolean b()
+  {
+    return this.e == 3;
+  }
+  
+  public final String toString()
+  {
+    return this.a + ":" + this.b + ",protocalType:" + this.f + ",ipType:" + this.e;
   }
 }
 

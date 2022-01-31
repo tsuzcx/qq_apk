@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.musicpendant.MusicPendantManager;
 
-public final class aetm
-  implements Parcelable.Creator
+public class aetm
+  implements Runnable
 {
-  public Comments.Comment a(Parcel paramParcel)
-  {
-    return new Comments.Comment(paramParcel);
-  }
+  public aetm(MusicPendantManager paramMusicPendantManager) {}
   
-  public Comments.Comment[] a(int paramInt)
+  public void run()
   {
-    return new Comments.Comment[paramInt];
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetm
  * JD-Core Version:    0.7.0.1
  */

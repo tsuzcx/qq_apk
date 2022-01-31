@@ -1,14 +1,25 @@
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class nnx
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public nnx(QQStoryWatcherListActivity paramQQStoryWatcherListActivity, boolean paramBoolean1, boolean paramBoolean2, List paramList) {}
+  public nnx(FeedsPlayModeBase paramFeedsPlayModeBase, Boolean[] paramArrayOfBoolean, StoryVideoItem paramStoryVideoItem) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    QQStoryWatcherListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a.dismiss();
+    if (paramView != null)
+    {
+      String str = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a.a(paramInt);
+      if (!TextUtils.isEmpty(str)) {
+        this.jdField_a_of_type_ArrayOfJavaLangBoolean[0] = Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a(paramView, str, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem));
+      }
+    }
   }
 }
 

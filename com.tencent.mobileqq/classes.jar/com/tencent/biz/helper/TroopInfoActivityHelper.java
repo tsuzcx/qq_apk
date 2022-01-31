@@ -17,8 +17,8 @@ import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kna;
-import knb;
+import kph;
+import kpi;
 import mqq.app.NewIntent;
 import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.GroupInfo;
 import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.ReqBody;
@@ -53,7 +53,7 @@ public class TroopInfoActivityHelper
     localObject = new NewIntent(paramQQAppInterface.getApplication(), ProtoServlet.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x79a_1");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
-    ((NewIntent)localObject).setObserver(new kna(paramQQAppInterface, paramIGetSameCityCheckTypeInfo));
+    ((NewIntent)localObject).setObserver(new kph(paramQQAppInterface, paramIGetSameCityCheckTypeInfo));
     paramQQAppInterface.startServlet((NewIntent)localObject);
   }
   
@@ -109,7 +109,7 @@ public class TroopInfoActivityHelper
     paramString1 = new NewIntent(paramQQAppInterface.getApplication(), ProtoServlet.class);
     paramString1.putExtra("cmd", "OidbSvc.0x79b_1");
     paramString1.putExtra("data", paramString2.toByteArray());
-    paramString1.setObserver(new knb(paramQQAppInterface, paramISetSameCityCheckTypeInfo));
+    paramString1.setObserver(new kpi(paramQQAppInterface, paramISetSameCityCheckTypeInfo));
     paramQQAppInterface.startServlet(paramString1);
   }
   

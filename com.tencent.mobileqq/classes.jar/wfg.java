@@ -1,60 +1,47 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.mobileqq.activity.bless.BlessResultActivity.VideoInfo;
-import com.tencent.mobileqq.troop.data.TroopBarShortVideoUploadUtil.OnUploadVideoListener;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.SelfGagInfo;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class wfg
-  implements TroopBarShortVideoUploadUtil.OnUploadVideoListener
+  extends Handler
 {
-  public wfg(BlessResultActivity paramBlessResultActivity) {}
-  
-  public void a()
+  public wfg(TroopChatPie paramTroopChatPie, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.g = this.a.b(this.a.d);
-    if (this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1003)) {
-      this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1001);
+    super(paramLooper);
   }
   
-  public void a(long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
+    switch (paramMessage.what)
+    {
+    case 3: 
+    default: 
+    case 1: 
+    case 2: 
+    case 4: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.a(null, false);
+          return;
+          paramMessage = paramMessage.obj;
+        } while (!(paramMessage instanceof TroopGagMgr.SelfGagInfo));
+        this.a.a((TroopGagMgr.SelfGagInfo)paramMessage);
+        return;
+      } while (TroopChatPie.k(this.a) == null);
+      TroopChatPie.l(this.a).a();
+      return;
     }
-    if (this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1003)) {
-      this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1003);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    long l = FileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoInfo.a);
-    int i = (int)(100L * paramLong / l);
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
-    }
+    String str = (String)paramMessage.obj;
+    int i = paramMessage.arg1;
+    QQToast.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
   }
 }
 

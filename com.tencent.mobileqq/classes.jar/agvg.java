@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class agvg
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public agvg(QCallFacade paramQCallFacade) {}
+  public agvg(BreatheEffectView paramBreatheEffectView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QCallFacade.a(this.a).x();
+    this.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agvg
  * JD-Core Version:    0.7.0.1
  */

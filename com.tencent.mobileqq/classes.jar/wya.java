@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class wya
   implements Runnable
 {
-  public wya(PhotoListActivity.QueryPhotoTask paramQueryPhotoTask) {}
+  public wya(AvatarPendantActivity paramAvatarPendantActivity, String paramString) {}
   
   public void run()
   {
-    this.a.a.d();
+    AvatarPendantActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -31,6 +31,7 @@ public class QQWalletTransferMsgElem
   public int contentBgColor;
   public int contentColor;
   public int effectsId;
+  public int hbFrom;
   public int icon;
   public String iconUrl;
   public String jumpUrl;
@@ -213,9 +214,12 @@ public class QQWalletTransferMsgElem
             }
           }
         }
-        if (localqqwalletaio_elem_resv.uint32_subjectid.has())
-        {
+        if (localqqwalletaio_elem_resv.uint32_subjectid.has()) {
           this.themeId = localqqwalletaio_elem_resv.uint32_subjectid.get();
+        }
+        if (localqqwalletaio_elem_resv.uint32_hb_from.has())
+        {
+          this.hbFrom = localqqwalletaio_elem_resv.uint32_hb_from.get();
           return;
         }
       }

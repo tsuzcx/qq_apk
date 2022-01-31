@@ -1,23 +1,24 @@
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder;
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.core.VcControllerImpl;
 
 public class jft
   implements Runnable
 {
-  public jft(MagicfaceBaseDecoder paramMagicfaceBaseDecoder, String paramString) {}
+  public jft(VideoController paramVideoController) {}
   
   public void run()
   {
-    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a.get();
-    if (localMagicPlayListener != null) {
-      localMagicPlayListener.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.a.a().a) && (this.a.a().i) && (this.a.a().d == 2))
+    {
+      this.a.a().f = false;
+      this.a.a.pauseVideo(this.a.a().c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jft
  * JD-Core Version:    0.7.0.1
  */

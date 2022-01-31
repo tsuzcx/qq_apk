@@ -1,46 +1,62 @@
-import android.media.ExifInterface;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.reflect.Field;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExpiredPushBanner;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.struct.PushBanner;
+import java.util.List;
 
-public class xpg
-  implements CameraCover.PictureCallback
+class xpg
+  implements Runnable
 {
-  public xpg(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
+  xpg(xpf paramxpf, int paramInt, List paramList) {}
   
-  public void a_(String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FlowCameraActivity", 2, "onPictureToken path " + paramString);
-    }
-    ImageUtil.a(paramString, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_Double);
-    if (QLog.isColorLevel()) {}
-    try
+    int k = 0;
+    EntityManager localEntityManager = BannerManager.a(this.jdField_a_of_type_Xpf.a).app.getEntityManagerFactory().createEntityManager();
+    Object localObject = localEntityManager.a(ExpiredPushBanner.class, false, null, null, null, null, "endtime", null);
+    int j = k;
+    if (localObject != null)
     {
-      Object localObject = Class.forName("android.media.ExifInterface").getDeclaredField("mAttributes");
-      ((Field)localObject).setAccessible(true);
-      localObject = (HashMap)((Field)localObject).get(new ExifInterface(paramString));
-      QLog.i("FlowCameraActivity", 2, "exif " + localObject);
-      if (paramString != null)
+      int m = ((List)localObject).size() + this.jdField_a_of_type_Int - 10;
+      j = k;
+      if (m > 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(this.jdField_a_of_type_JavaIoFile);
-        return;
+        int i = 0;
+        for (;;)
+        {
+          j = k;
+          if (i >= m) {
+            break;
+          }
+          localEntityManager.b((ExpiredPushBanner)((List)localObject).get(i));
+          i += 1;
+        }
       }
     }
-    catch (Exception localException)
+    while (j < this.jdField_a_of_type_JavaUtilList.size())
     {
-      for (;;)
+      localObject = (PushBanner)this.jdField_a_of_type_JavaUtilList.get(j);
+      if (localObject != null)
       {
-        localException.printStackTrace();
+        long l2 = 0L;
+        long l1 = l2;
+        if (((PushBanner)localObject).c != null)
+        {
+          l1 = l2;
+          if (((PushBanner)localObject).c.contains("|")) {
+            l1 = Long.parseLong(((PushBanner)localObject).c.substring(((PushBanner)localObject).c.indexOf("|") + 1));
+          }
+        }
+        ExpiredPushBanner localExpiredPushBanner = new ExpiredPushBanner();
+        localExpiredPushBanner.cid = Long.parseLong(((PushBanner)localObject).a);
+        localExpiredPushBanner.md5 = ((PushBanner)localObject).m;
+        localExpiredPushBanner.endtime = l1;
+        localEntityManager.a(localExpiredPushBanner);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.c.setEnabled(true);
+      j += 1;
     }
   }
 }

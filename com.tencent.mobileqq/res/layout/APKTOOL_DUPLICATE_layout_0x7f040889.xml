@@ -1,15 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a274a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021721" android:layout_width="fill_parent" android:layout_height="94.0dip"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a274b" android:clickable="true" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="32.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021768" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_marginStart="32.0dip" android:layout_alignParentStart="true" />
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a274b" android:layout_centerVertical="true" android:layout_marginStart="32.0dip" android:layout_toEndOf="@id/APKTOOL_DUPLICATE_id_0x7f0a274b">
-            <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a274c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="和好友分享你的近况" />
-            <Button android:textColor="#ff12b7f5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a274d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021349" android:layout_width="87.0dip" android:layout_height="30.0dip" android:layout_marginTop="10.0dip" android:text="立即分享" />
-        </LinearLayout>
-        <com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.ThumbSlideShowView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a274e" android:layout_width="55.0dip" android:layout_height="78.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
-        <TextView android:textSize="20.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a274f" android:layout_width="55.0dip" android:layout_height="78.0dip" android:layout_marginRight="12.0dip" android:text="0" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
-    </RelativeLayout>
-    <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220ae" android:layout_width="fill_parent" android:layout_height="12.0dip" />
-</LinearLayout>
+<com.tencent.biz.qqstory.comment.StoryInputBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2714" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

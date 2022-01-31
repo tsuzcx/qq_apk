@@ -1,46 +1,56 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManagerImpl;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderResourceInfo;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenerArumentManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.app.message.BaseMessageProcessorForTroopAndDisc;
+import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.data.MessageInfo;
+import com.tencent.mobileqq.troop.data.MessageNavInfo;
+import java.util.Map;
+import tencent.im.oidb.cmd0x6ef.oidb_cmd0x6ef.RspBody;
 
 public class zyz
-  implements Runnable
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public zyz(ARRenderManagerImpl paramARRenderManagerImpl, ARBaseRender paramARBaseRender, ARRenderResourceInfo paramARRenderResourceInfo) {}
-  
-  public void run()
+  public zyz(BaseMessageProcessorForTroopAndDisc paramBaseMessageProcessorForTroopAndDisc, boolean paramBoolean, MessageInfo paramMessageInfo, long paramLong1, long paramLong2, RecentUser paramRecentUser, String paramString, MessageRecord paramMessageRecord, Map paramMap)
   {
-    ARBaseRender localARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
-    ARRenderManagerImpl localARRenderManagerImpl = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl;
-    int i = ARRenderManagerImpl.jdField_a_of_type_Int;
-    localARRenderManagerImpl = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl;
-    localARBaseRender.a_(i, ARRenderManagerImpl.b);
-    localARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
-    if (QLog.isColorLevel()) {
-      QLog.d("HSRender", 2, "onARStateChanged, queueEvent");
-    }
-    if ((localARBaseRender != null) && (localARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
-      localARBaseRender.d();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender == null) {
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2048L))) {}
-    for (boolean bool = true;; bool = false)
+    super(paramBoolean);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a();
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a(bool, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo);
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a();
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.b();
       return;
+      try
+      {
+        paramBundle = new oidb_cmd0x6ef.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((paramBundle.is_create.get() == 1) || (paramBundle.is_join.get() == 1))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo.j.a(this.jdField_a_of_type_Long, this.b);
+          if (18 >= this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType = 18;
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = MessageInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageProcessorForTroopAndDisc.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageInfo, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, true);
+            this.jdField_a_of_type_JavaUtilMap.put(MsgProxyUtils.a(this.jdField_a_of_type_JavaLangString, 1), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+            return;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zyz
  * JD-Core Version:    0.7.0.1
  */

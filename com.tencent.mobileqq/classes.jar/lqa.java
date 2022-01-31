@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
 
 public class lqa
   implements Runnable
 {
-  public lqa(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
+  public lqa(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    this.a.a(3, "当前网络不可用，请检查你的网络设置\n点击屏幕刷新");
   }
 }
 

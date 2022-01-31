@@ -1,34 +1,36 @@
-import android.view.View;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
-import com.tencent.biz.qqstory.pgc.adapter.PgcSearchResultAdapter.ListItemData;
-import com.tencent.biz.qqstory.pgc.model.UserInfo;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class nhz
-  implements AdapterView.OnItemClickListener
+class nhz
+  implements Runnable
 {
-  public nhz(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
+  nhz(nhy paramnhy, GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
-    if (paramAdapterView != null)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) {
+      this.jdField_a_of_type_Nhy.a.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+    }
+    Object localObject2;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null)
     {
-      paramAdapterView = ((PgcSearchResultAdapter.ListItemData)paramAdapterView).a;
-      if ((paramAdapterView != null) && (paramAdapterView.type != 0)) {
-        break label43;
+      ??? = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject2 = (QQUserUIItem)((Iterator)???).next();
+        this.jdField_a_of_type_Nhy.a.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserInfoHandler$UpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
       }
     }
-    for (;;)
+    synchronized (this.jdField_a_of_type_Nhy.a.c)
     {
-      StoryReportor.a("search", "clk_detail", 0, 0, new String[0]);
-      return;
-      label43:
-      if (paramAdapterView.type == 1) {
-        StoryApi.a(this.a.a, 19, paramAdapterView.uid);
+      localObject2 = this.jdField_a_of_type_Nhy.a.c.iterator();
+      if (((Iterator)localObject2).hasNext()) {
+        ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)((Iterator)localObject2).next()).a();
       }
     }
   }

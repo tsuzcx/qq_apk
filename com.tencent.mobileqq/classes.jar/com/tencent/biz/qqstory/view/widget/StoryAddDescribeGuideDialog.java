@@ -11,8 +11,8 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import ori;
-import orj;
+import ovx;
+import ovy;
 
 public class StoryAddDescribeGuideDialog
   extends Dialog
@@ -27,7 +27,7 @@ public class StoryAddDescribeGuideDialog
     super(paramContext);
     super.requestWindowFeature(1);
     super.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    paramContext = LayoutInflater.from(paramContext).inflate(2130970683, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130970700, null);
     super.setCanceledOnTouchOutside(true);
     super.setContentView(paramContext);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131371636));
@@ -43,7 +43,7 @@ public class StoryAddDescribeGuideDialog
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(paramContext);
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAnimationSet);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new ori(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new ovx(this));
   }
   
   private void a()
@@ -57,7 +57,7 @@ public class StoryAddDescribeGuideDialog
     localAlphaAnimation.setDuration(300L);
     localAlphaAnimation.setFillAfter(true);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localAlphaAnimation);
-    localAlphaAnimation.setAnimationListener(new orj(this));
+    localAlphaAnimation.setAnimationListener(new ovy(this));
   }
   
   public void a(String paramString)

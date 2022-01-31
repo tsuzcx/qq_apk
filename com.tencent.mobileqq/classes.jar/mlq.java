@@ -1,19 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.PrefetchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 
 public class mlq
-  implements AppInPushNotification.OnDismissListener
+  implements ReadInJoyBaseAdapter.PrefetchListener
 {
-  public mlq(KandianAppInPush paramKandianAppInPush) {}
+  public mlq(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    KandianAppInPush.a(this.a, null);
-    KandianAppInPush.a(this.a, null);
-    if ((paramBoolean) && (KandianAppInPush.a(this.a) != null)) {
-      ThreadManager.getSubThreadHandler().postDelayed(new mlr(this), 500L);
+    if ((this.a.d != 70) || ((this.a.c == 0) && (!this.a.b))) {
+      ReadInJoyBaseListView.a(this.a, 4);
     }
   }
 }

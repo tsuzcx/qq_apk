@@ -1,26 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.File;
 
 public final class ahlt
-  extends BroadcastReceiver
+  implements Runnable
 {
-  private ahlt(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  public ahlt(String paramString1, String paramString2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      CaptureVideoFilterManager.a().b();
-      CaptureVideoFilterManager.a().a(new ahlu(this));
-      this.a.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
+    FileUtils.a(CapturePtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "save Config to file finish.");
     }
   }
 }

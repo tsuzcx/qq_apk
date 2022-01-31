@@ -1,27 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
-public class xsu
-  implements Runnable
+class xsu
+  implements Animation.AnimationListener
 {
-  public xsu(NewPreFlowCamera paramNewPreFlowCamera, boolean paramBoolean, int paramInt) {}
+  xsu(xst paramxst) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewPreFlowCamera", 2, "onStatusChanged: " + this.jdField_a_of_type_Boolean + " error:" + this.jdField_a_of_type_Int);
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131432978, 0).a();
-      NewPreFlowCamera.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera, -1);
-      return;
-    }
-    NewPreFlowCamera.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera, 101);
-    NewPreFlowCamera.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera, "onStatusChanged");
+    this.a.a.c.setVisibility(0);
+    this.a.a.c.clearAnimation();
+    this.a.a.c.setAnimation(null);
+    this.a.a.a.invalidate();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

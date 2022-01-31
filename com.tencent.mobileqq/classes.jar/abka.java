@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.util.DynamicFaceDrawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.POIInfo;
 
-public class abka
-  implements Runnable
+public final class abka
+  implements Parcelable.Creator
 {
-  public abka(DynamicAvatarView paramDynamicAvatarView) {}
-  
-  public void run()
+  public POIInfo a(Parcel paramParcel)
   {
-    if (this.a.a != null) {
-      this.a.setImageDrawable(this.a.a.a());
-    }
+    return new POIInfo(paramParcel);
+  }
+  
+  public POIInfo[] a(int paramInt)
+  {
+    return new POIInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abka
  * JD-Core Version:    0.7.0.1
  */

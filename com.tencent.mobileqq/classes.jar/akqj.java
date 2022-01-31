@@ -1,17 +1,30 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class akqj
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public akqj(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
+  public akqj(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void onClick(View paramView)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
+    }
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      paramTVK_IMediaPlayer.pause();
+      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+      return;
+      paramTVK_IMediaPlayer.start();
     }
   }
 }

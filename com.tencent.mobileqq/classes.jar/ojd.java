@@ -1,21 +1,23 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
+import com.tencent.biz.qqstory.model.WeatherDataProvider.WeatherInfo;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
 
 public class ojd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DataProvider.DataUpdateListener
 {
-  private ojd(EditTextDialog paramEditTextDialog) {}
+  public ojd(EditVideoFilterNeo paramEditVideoFilterNeo) {}
   
-  public void onGlobalLayout()
+  public void a(boolean paramBoolean, WeatherDataProvider.WeatherInfo paramWeatherInfo)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
+    SLog.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramWeatherInfo != null))
     {
-      this.a.dismiss();
-      return;
+      SLog.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramWeatherInfo.a));
+      int i = paramWeatherInfo.a;
+      EditVideoFilterNeo.a(this.a).post(new oje(this, i));
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener.a(this.a.a());
   }
 }
 

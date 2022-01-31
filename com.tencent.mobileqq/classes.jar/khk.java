@@ -1,75 +1,43 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.av.business.handler.AVC2CDataHandler;
+import com.tencent.av.business.handler.AVC2CDataHandler.C2CDataHandler;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.SubHandleBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class khk
-  extends RelativeLayout
+  extends SubHandleBase
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
+  public int a;
+  public AVC2CDataHandler.C2CDataHandler a;
+  public boolean a;
+  public boolean b;
   
-  public khk(Context paramContext, int paramInt, CharSequence paramCharSequence)
+  public khk(AVRedBagMgr paramAVRedBagMgr)
   {
-    super(paramContext);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(paramContext.getResources().getDimensionPixelSize(2131559107), 0, 0, 0);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(9, -1);
-    this.b = new ImageView(paramContext);
-    this.b.setImageResource(paramInt);
-    this.b.setLayoutParams(localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, 0, paramContext.getResources().getDimensionPixelSize(2131559107), 0);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(11, -1);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840333);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(14, -1);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, paramContext.getResources().getDimension(2131558405));
-    addView(this.b);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    setBackgroundResource(2130837528);
-    setId(2131362810);
-    setMinimumHeight(paramContext.getResources().getDimensionPixelSize(2131558527));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b.setImageResource(paramInt);
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
+    super(paramAVRedBagMgr);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler = new khl(this);
+    paramAVRedBagMgr = AVC2CDataHandler.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (paramAVRedBagMgr != null)
     {
-      localImageView.setVisibility(i);
+      paramAVRedBagMgr.a(11, this.jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler);
       return;
+    }
+    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.i, 1, "resetData[" + paramString + "]");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     khk
  * JD-Core Version:    0.7.0.1
  */

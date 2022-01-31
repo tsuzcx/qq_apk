@@ -1,31 +1,27 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.qphone.base.util.QLog;
+import java.net.HttpURLConnection;
 
-public class zbl
+class zbl
   implements Runnable
 {
-  public zbl(ConditionSearchManager paramConditionSearchManager, boolean paramBoolean) {}
+  zbl(zbk paramzbk, HttpURLConnection paramHttpURLConnection) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a != null)
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ConditionSearchManager.IConfigListener)localIterator.next()).a(1, this.jdField_a_of_type_Boolean);
-      }
+      this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
+      return;
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.c)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a());
+    catch (Throwable localThrowable)
+    {
+      QLog.e("apollo_client_ApolloUrlInterceptor", 2, "disconnect error:" + localThrowable.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zbl
  * JD-Core Version:    0.7.0.1
  */

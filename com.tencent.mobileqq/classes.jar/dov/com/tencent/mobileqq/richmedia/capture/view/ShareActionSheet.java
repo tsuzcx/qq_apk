@@ -15,9 +15,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aonb;
-import aonc;
-import aond;
+import aovr;
+import aovs;
+import aovt;
 import com.tencent.biz.widgets.ElasticHorScrView;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
@@ -108,9 +108,9 @@ public class ShareActionSheet
   @TargetApi(9)
   protected View a()
   {
-    View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130968798, null);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet$AdViewManager.a((RelativeLayout)localView.findViewById(2131363814));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363815));
+    View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130968802, null);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet$AdViewManager.a((RelativeLayout)localView.findViewById(2131363838));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363839));
     Object localObject2;
     Object localObject1;
     if (this.jdField_b_of_type_Boolean)
@@ -119,8 +119,8 @@ public class ShareActionSheet
       if (this.jdField_a_of_type_JavaLangCharSequence != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
       }
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131363817));
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131363819));
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131363841));
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131363843));
       localObject2 = a();
       if (localObject2.length <= 0) {
         break label376;
@@ -159,7 +159,7 @@ public class ShareActionSheet
         int i;
         if (j != 0)
         {
-          localObject4 = (GridView)localView.findViewById(2131363818);
+          localObject4 = (GridView)localView.findViewById(2131363842);
           if (Build.VERSION.SDK_INT >= 9) {
             this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
           }
@@ -191,12 +191,12 @@ public class ShareActionSheet
           this.jdField_a_of_type_Int = ((ViewGroup.LayoutParams)localObject5).width;
           ((ViewGroup.LayoutParams)localObject5).height = (this.e + this.g + ((StaticLayout)localObject3).getHeight() + m);
           ((GridView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
-          ((GridView)localObject4).setAdapter(new aond(this.jdField_a_of_type_AndroidContentContext, (List)localObject1));
+          ((GridView)localObject4).setAdapter(new aovt(this.jdField_a_of_type_AndroidContentContext, (List)localObject1));
           ((GridView)localObject4).setSelector(new ColorDrawable(0));
           ((GridView)localObject4).setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
           if (k != 0)
           {
-            localObject1 = (GridView)localView.findViewById(2131363820);
+            localObject1 = (GridView)localView.findViewById(2131363844);
             if (Build.VERSION.SDK_INT >= 9) {
               this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
             }
@@ -224,19 +224,19 @@ public class ShareActionSheet
             ((ViewGroup.LayoutParams)localObject4).height = (this.e + this.g + ((StaticLayout)localObject3).getHeight() + m);
             ((GridView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
             ((GridView)localObject1).setNumColumns(i);
-            ((GridView)localObject1).setAdapter(new aond(this.jdField_a_of_type_AndroidContentContext, (List)localObject2));
+            ((GridView)localObject1).setAdapter(new aovt(this.jdField_a_of_type_AndroidContentContext, (List)localObject2));
             ((GridView)localObject1).setSelector(new ColorDrawable(0));
             ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
-            localObject1 = (TextView)localView.findViewById(2131363821);
-            ((TextView)localObject1).setText(2131433015);
-            ((TextView)localObject1).setOnClickListener(new aonb(this));
+            localObject1 = (TextView)localView.findViewById(2131363845);
+            ((TextView)localObject1).setText(2131433029);
+            ((TextView)localObject1).setOnClickListener(new aovr(this));
             if (j == 0) {
               this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
             }
             if (k == 0) {
               this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
             }
-            localView.post(new aonc(this));
+            localView.post(new aovs(this));
             return localView;
           }
         }

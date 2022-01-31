@@ -1,26 +1,14 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-public class kxm
-  implements FMDialogUtil.FMDialogInterface
+class kxm
+  implements Runnable
 {
-  public kxm(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  kxm(kxl paramkxl) {}
   
-  public void a()
+  public void run()
   {
-    GdtLog.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 5)
-    {
-      ReadInJoyNativeAdAppVideoView.a(this.a).start();
-      ReadInJoyNativeAdAppVideoView.e(this.a, 4);
-      ReadInJoyNativeAdAppVideoView.a(this.a);
-      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
-    }
+    VideoCoverView.a(this.a.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView, this.a.a.jdField_a_of_type_AndroidContentContext);
   }
-  
-  public void b() {}
 }
 
 

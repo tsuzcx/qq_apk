@@ -154,7 +154,7 @@ public class DeviceScanner
       return;
     }
     paramActivity = DialogUtil.a(paramActivity, 230);
-    paramActivity.setNegativeButton(2131433016, new DeviceScanner.1(paramQrHandleResultCallBack));
+    paramActivity.setNegativeButton(2131433030, new DeviceScanner.1(paramQrHandleResultCallBack));
     paramActivity.setTitle(paramInt1);
     paramActivity.setMessage(paramInt2);
     paramActivity.show();

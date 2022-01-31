@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView.CaptureListener;
 
 public class ydv
   implements Runnable
 {
-  public ydv(ShortVideoPlayActivity paramShortVideoPlayActivity, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public ydv(CameraGLSurfaceView paramCameraGLSurfaceView, CameraGLSurfaceView.CaptureListener paramCaptureListener) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener;
   }
 }
 

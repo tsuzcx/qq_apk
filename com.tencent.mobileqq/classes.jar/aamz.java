@@ -1,21 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
 
 public class aamz
   implements Runnable
 {
-  public aamz(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aamz(AREngine paramAREngine) {}
   
   public void run()
   {
-    ARGreetingCardListManager.a(this.a).setVisibility(4);
-    ARGreetingCardListManager.a(this.a).a();
+    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null)) {
+      AREngine.a(this.a).a(0, 4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aamz
  * JD-Core Version:    0.7.0.1
  */

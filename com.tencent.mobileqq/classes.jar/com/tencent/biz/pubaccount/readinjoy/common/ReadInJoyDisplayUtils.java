@@ -147,7 +147,7 @@ public class ReadInJoyDisplayUtils
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ui", 2, "configImage url is empty! use default preload image");
       }
-      paramKandianUrlImageView.setImageResource(2130839721);
+      paramKandianUrlImageView.setImageResource(2130839736);
       return;
     }
     if ((paramContext instanceof BaseActivity)) {}
@@ -160,7 +160,7 @@ public class ReadInJoyDisplayUtils
         {
           if (!paramBoolean)
           {
-            paramKandianUrlImageView.setImageResource(2130839721);
+            paramKandianUrlImageView.setImageResource(2130839736);
             return;
           }
           paramKandianUrlImageView.setImageDrawable(new ColorDrawable(paramContext.getResources().getColor(2131492971)));
@@ -170,10 +170,10 @@ public class ReadInJoyDisplayUtils
         {
           if (paramKandianUrlImageView.a())
           {
-            paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130839230)).a(paramURL);
+            paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130839249)).a(paramURL);
             return;
           }
-          paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130839721)).a(paramURL);
+          paramKandianUrlImageView.a(paramContext.getResources().getDrawable(2130839736)).a(paramURL);
           return;
         }
         paramKandianUrlImageView.setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131492971)));

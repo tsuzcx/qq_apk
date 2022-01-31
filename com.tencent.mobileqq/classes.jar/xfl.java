@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadConfig;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagInfo;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import java.util.Iterator;
+import java.util.List;
 
 public class xfl
   implements Runnable
 {
-  public xfl(PreloadConfig paramPreloadConfig) {}
+  public xfl(PasswdRedBagManager paramPasswdRedBagManager) {}
   
   public void run()
   {
-    synchronized (this.a.mSaveLock)
+    Iterator localIterator = PasswdRedBagManager.a(this.a).a().iterator();
+    while (localIterator.hasNext())
     {
-      if (this.a.isModulesChange(this.a.mLastModules))
-      {
-        QWalletTools.a(this.a, this.a.mSavePath);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadManager", 2, "really save:" + this.a);
-        }
-        this.a.mLastModules = this.a.getCloneModules();
-      }
-      return;
+      PasswdRedBagInfo localPasswdRedBagInfo = (PasswdRedBagInfo)localIterator.next();
+      PasswdRedBagManager.a(this.a, localPasswdRedBagInfo);
+      this.a.a(false, localPasswdRedBagInfo.a, localPasswdRedBagInfo.b);
     }
   }
 }

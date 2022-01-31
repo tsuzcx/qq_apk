@@ -1,24 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
 
-public class vbx
-  extends AbstractChatItemBuilder.ViewHolder
+class vbx
+  implements Runnable
 {
-  public long a;
-  public ImageView a;
-  public URLImageView a;
-  public CornerImageView a;
-  public String a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  vbx(vbw paramvbw) {}
   
-  public vbx(MedalNewsItemBuilder paramMedalNewsItemBuilder) {}
+  public void run()
+  {
+    ChatActivityUtils.a(this.a.a.a, 2131433744, 1);
+  }
 }
 
 

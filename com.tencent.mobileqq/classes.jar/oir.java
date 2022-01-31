@@ -1,23 +1,28 @@
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import android.os.Handler;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent;
 import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import java.util.Collections;
+import java.util.List;
 
 public class oir
-  implements LbsManager.LbsUpdateListener
+  implements DoodleEmojiManager.POIPostersRequestCallback
 {
-  public oir(DoodleEmojiManager paramDoodleEmojiManager, DoodleEmojiManager.POIPostersRequestCallback paramPOIPostersRequestCallback) {}
+  public oir(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
+  public void a(int paramInt, List paramList)
   {
-    SLog.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramBasicLocation != null))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager.a(paramBasicLocation.b, paramBasicLocation.a, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback);
-      return;
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    List localList = paramList;
+    if (paramList == null) {
+      localList = Collections.EMPTY_LIST;
     }
-    SLog.e("DoodleEmojiManager", "onLbsUpdate failed.");
+    Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent(paramInt, localList));
   }
 }
 

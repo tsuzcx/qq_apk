@@ -1,16 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.GuideHelper;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.capture.view.ProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class anyg
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public anyg(GuideHelper paramGuideHelper, ViewGroup paramViewGroup) {}
+  public anyg(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiGuideHelper.a(this.jdField_a_of_type_AndroidViewViewGroup);
+    if (QIMProviderContainerView.a(this.a) != null)
+    {
+      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
+      QIMProviderContainerView.a(this.a).setVisibility(0);
+    }
   }
 }
 

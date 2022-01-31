@@ -1,19 +1,28 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.transfile.FileMsg;
 
-public class mfz
-  implements Runnable
+class mfz
+  implements FileTransferManager.Callback
 {
-  public mfz(VideoUIManager paramVideoUIManager) {}
+  mfz(mfy parammfy, MessageForShortVideo paramMessageForShortVideo) {}
   
-  public void run()
+  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
-    if ((VideoUIManager.a(this.a) != null) && (VideoUIManager.a(this.a).a != null)) {
-      PublicAccountReportUtils.a(null, "", "0X8008ACF", "0X8008ACF", 0, 0, "", "", "", VideoReporter.a(VideoUIManager.a(this.a).a.mVideoVid, VideoUIManager.a(this.a).a.innerUniqueID, (int)VideoUIManager.a(this.a).a.mChannelID, null), false);
+    if ((paramFileMsg == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (paramFileMsg.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)) {}
+    while ((paramFileMsg.jdField_b_of_type_Int != 6) && (paramFileMsg.jdField_b_of_type_Int != 17) && (paramFileMsg.jdField_b_of_type_Int != 9) && (paramFileMsg.jdField_b_of_type_Int != 20)) {
+      return;
     }
+    paramView = new Bundle();
+    paramView.putInt("VALUE_SHORTVIDEO_RESP_FILE_STATUS", paramFileMsg.d);
+    paramView.putString("VALUE_SHORTVIDEO_RESP_FILE_DOMAIN", paramFileMsg.u);
+    paramView.putStringArray("VALUE_SHORTVIDEO_RESP_FILE_URLS", paramFileMsg.c);
+    paramView.putLong("VALUE_SHORTVIDEO_RESP_FILE_UNISEQ", paramFileMsg.jdField_b_of_type_Long);
+    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_SHORTVIDEO_REQUEST_MANUAL_DOWNLOAD", paramView, null);
   }
 }
 

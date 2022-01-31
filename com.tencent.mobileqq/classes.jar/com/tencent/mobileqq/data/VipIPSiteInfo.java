@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abvk;
+import acdh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.util.List;
 public class VipIPSiteInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abvk();
+  public static final Parcelable.Creator CREATOR = new acdh();
   public int extId;
   public String extStr;
   public String ipContent;

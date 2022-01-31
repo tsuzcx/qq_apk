@@ -1,37 +1,26 @@
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.CardHandler;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.managers.TimUpgradeHongdianManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rkh
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public rkh(AddRequestActivity paramAddRequestActivity, ActionSheet paramActionSheet) {}
+  public rkh(AboutActivity paramAboutActivity, TimUpgradeHongdianManager paramTimUpgradeHongdianManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqManagersTimUpgradeHongdianManager.d))
     {
+      ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getManager(255)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_ComTencentMobileqqManagersTimUpgradeHongdianManager.d);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X800865C", "0X800865C", 0, 0, "", "", "", "");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (NetworkUtil.d(BaseApplication.getContext()))
-      {
-        long l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin()).longValue();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(l, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.jdField_a_of_type_JavaLangString).longValue(), 1);
-      }
-      else
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131434811, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqManagersTimUpgradeHongdianManager.a();
+    AboutActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, null);
   }
 }
 

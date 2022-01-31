@@ -1,23 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LebaEnabledPluginsActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
 
 public class tdf
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public tdf(NotificationActivity paramNotificationActivity) {}
+  public tdf(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent.getAction().equals("com.tencent.mobileqq.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
-      this.a.finish();
-    }
+    paramView = new Intent(this.a, LebaEnabledPluginsActivity.class);
+    this.a.startActivityForResult(paramView, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tdf
  * JD-Core Version:    0.7.0.1
  */

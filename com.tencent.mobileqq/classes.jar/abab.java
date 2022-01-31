@@ -1,22 +1,25 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import mqq.app.MobileQQ;
 
 public class abab
-  implements Handler.Callback
+  implements Runnable
 {
-  public abab(ARMapActivity paramARMapActivity) {}
+  public abab(ArkAppCGI paramArkAppCGI, QQAppInterface paramQQAppInterface, abad paramabad, HttpNetReq paramHttpNetReq) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if ((ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI) == null) || (!NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext())))
     {
+      ArkAppCenter.b("ArkApp.ArkAppCGI", "runTask_retry, network not available");
+      ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI, this.jdField_a_of_type_Abad, false, null);
+      return;
     }
-    for (;;)
-    {
-      return true;
-      this.a.k();
-    }
+    ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 

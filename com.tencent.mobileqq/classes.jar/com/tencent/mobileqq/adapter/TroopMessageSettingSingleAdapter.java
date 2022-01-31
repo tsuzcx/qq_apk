@@ -40,20 +40,20 @@ public class TroopMessageSettingSingleAdapter
     }
     if (paramInt2 <= 1)
     {
-      paramView.setBackgroundResource(2130838623);
+      paramView.setBackgroundResource(2130838629);
       return;
     }
     if (paramInt1 == 0)
     {
-      paramView.setBackgroundResource(2130838635);
+      paramView.setBackgroundResource(2130838641);
       return;
     }
     if (paramInt1 == paramInt2 - 1)
     {
-      paramView.setBackgroundResource(2130838630);
+      paramView.setBackgroundResource(2130838636);
       return;
     }
-    paramView.setBackgroundResource(2130838633);
+    paramView.setBackgroundResource(2130838639);
   }
   
   public void a(List paramList)
@@ -102,14 +102,14 @@ public class TroopMessageSettingSingleAdapter
       paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopInfo.getTroopName());
       paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       a(paramViewGroup, paramInt, getCount());
-      paramViewGroup.setBackgroundResource(2130838623);
+      paramViewGroup.setBackgroundResource(2130838629);
       return paramViewGroup;
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971573, null);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971599, null);
       paramView = new TroopMessageSettingSingleAdapter.ViewHolder(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368579));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131368580));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131375089));
-      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131375088));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368582));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131368583));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131375141));
+      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131375140));
       paramViewGroup.setTag(paramView);
       break;
       label194:

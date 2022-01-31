@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.magicface.magicfaceaction;
 
-import aedu;
+import aeme;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -46,7 +46,7 @@ public class ActionGlobalData
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangString = "send";
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilTimerTask = new aedu(this);
+    this.jdField_a_of_type_JavaUtilTimerTask = new aeme(this);
   }
   
   public void a()

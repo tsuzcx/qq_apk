@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
 
 public class acdz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public acdz(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
+  public acdz(DBFixDialogUI paramDBFixDialogUI) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    paramDialogInterface.cancel();
+    DBFixDialogUI.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdz
  * JD-Core Version:    0.7.0.1
  */

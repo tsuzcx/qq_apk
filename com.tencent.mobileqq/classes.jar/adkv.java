@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
 
 public class adkv
-  implements DialogInterface.OnClickListener
+  implements IUploadController
 {
-  public adkv(ForwardFileOption paramForwardFileOption) {}
+  public adkv(DatalineFileModel paramDatalineFileModel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    this.a.a(true, FileModel.a(this.a.a.a()), this.a.b(), new adkw(this));
+  }
+  
+  public void b()
+  {
+    DatalineFileModel.b(this.a);
+  }
 }
 
 

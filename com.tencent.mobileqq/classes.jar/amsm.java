@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.QZoneVideoDownloadActivity;
+import cooperation.dingdong.DingdongPluginRemoteCmdHandler;
 
 public class amsm
   implements Runnable
 {
-  public amsm(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
+  public amsm(DingdongPluginRemoteCmdHandler paramDingdongPluginRemoteCmdHandler, int paramInt) {}
   
   public void run()
   {
-    QQToast.a(this.a.getApplicationContext(), "网络已断,请连接网络后继续下载", 1).a();
+    DingdongPluginRemoteCmdHandler.a(this.jdField_a_of_type_CooperationDingdongDingdongPluginRemoteCmdHandler, this.jdField_a_of_type_Int);
   }
 }
 

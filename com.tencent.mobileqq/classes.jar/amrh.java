@@ -1,35 +1,57 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GeoInfo;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.jsp.QQComicJsPlugin;
+import cooperation.comic.utils.QQComicPluginBridge;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-public final class amrh
-  implements Parcelable.Creator
+public class amrh
+  implements Runnable
 {
-  public LbsDataV2.GeoInfo a(Parcel paramParcel)
-  {
-    LbsDataV2.GeoInfo localGeoInfo = new LbsDataV2.GeoInfo();
-    if (paramParcel != null)
-    {
-      localGeoInfo.address = paramParcel.readString();
-      localGeoInfo.iDistrictCode = paramParcel.readInt();
-      localGeoInfo.iRange = paramParcel.readInt();
-      localGeoInfo.strCountry = paramParcel.readString();
-      localGeoInfo.strProvince = paramParcel.readString();
-      localGeoInfo.strCity = paramParcel.readString();
-      localGeoInfo.strDistrict = paramParcel.readString();
-      localGeoInfo.strTown = paramParcel.readString();
-      localGeoInfo.strVillage = paramParcel.readString();
-      localGeoInfo.strRoad = paramParcel.readString();
-      localGeoInfo.strDefaultName = paramParcel.readString();
-      localGeoInfo.gpsInfo = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-    }
-    return localGeoInfo;
-  }
+  public amrh(QQComicJsPlugin paramQQComicJsPlugin, long paramLong, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
-  public LbsDataV2.GeoInfo[] a(int paramInt)
+  public void run()
   {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicDebug", 2, "waitPluginAndHandleJsCall start");
+    }
+    if (!QQComicPluginBridge.a)
+    {
+      QQComicPluginBridge.a(BaseApplication.getContext());
+      for (long l = 0L; (!QQComicPluginBridge.a) && (l < this.jdField_a_of_type_Long); l += 50L) {
+        SystemClock.sleep(50L);
+      }
+    }
+    if (QQComicPluginBridge.a) {
+      ThreadManager.getUIHandler().post(new amri(this));
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicDebug", 2, "waitPluginAndHandleJsCall end");
+      }
+      return;
+      if (TextUtils.isEmpty(this.b)) {
+        continue;
+      }
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("code", 2001);
+        localJSONObject.put("message", "QQComic is not ready");
+        QQComicJsPlugin.b(this.jdField_a_of_type_CooperationComicJspQQComicJsPlugin, this.b, new String[] { localJSONObject.toString() });
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

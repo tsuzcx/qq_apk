@@ -22,22 +22,22 @@ public class HeartView
   public HeartView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130842644;
-    this.jdField_b_of_type_Int = 2130842643;
+    this.jdField_a_of_type_Int = 2130842679;
+    this.jdField_b_of_type_Int = 2130842678;
   }
   
   public HeartView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130842644;
-    this.jdField_b_of_type_Int = 2130842643;
+    this.jdField_a_of_type_Int = 2130842679;
+    this.jdField_b_of_type_Int = 2130842678;
   }
   
   public HeartView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 2130842644;
-    this.jdField_b_of_type_Int = 2130842643;
+    this.jdField_a_of_type_Int = 2130842679;
+    this.jdField_b_of_type_Int = 2130842678;
   }
   
   public static Bitmap a(int paramInt1, int paramInt2)
@@ -198,7 +198,7 @@ public class HeartView
       super.setImageBitmap(localBitmap);
       return;
     }
-    super.setImageResource(2130842644);
+    super.setImageResource(2130842679);
   }
 }
 

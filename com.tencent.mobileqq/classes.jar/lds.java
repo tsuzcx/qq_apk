@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
 
 class lds
-  implements View.OnClickListener
+  extends Client.onRemoteRespObserver
 {
-  lds(ldr paramldr, FrameLayout paramFrameLayout) {}
+  lds(ldr paramldr) {}
   
-  public void onClick(View paramView)
+  public void onBindedToClient()
   {
-    this.jdField_a_of_type_Ldr.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_Ldr.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a);
-    if (260 == this.jdField_a_of_type_Ldr.jdField_a_of_type_Int) {
-      SharedPreUtils.u(this.jdField_a_of_type_Ldr.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity, this.jdField_a_of_type_Ldr.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.app.getCurrentAccountUin(), null);
-    }
+    ReadInJoyArticleDetailActivity.a(this.a.a);
   }
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
 
-class wsk
-  implements Runnable
+public class wsk
+  extends View.AccessibilityDelegate
 {
-  wsk(wsj paramwsj) {}
+  public wsk(ContactsBaseFragment paramContactsBaseFragment) {}
   
-  public void run()
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setFaceDrawable(this.a.a.app, 1, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, 640, true, true, true, false, 7);
+    int i = paramInt;
+    if (paramInt == 8) {
+      i = 32768;
     }
+    super.sendAccessibilityEvent(paramView, i);
   }
 }
 

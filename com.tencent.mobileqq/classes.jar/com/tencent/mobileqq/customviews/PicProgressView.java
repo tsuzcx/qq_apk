@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.customviews;
 
-import abtr;
+import acbe;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -13,7 +13,7 @@ public class PicProgressView
   extends MessageProgressView
 {
   int jdField_a_of_type_Int = 0;
-  public abtr a;
+  public acbe a;
   private BaseTransProcessor jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
   public String a;
   public boolean a;
@@ -62,18 +62,18 @@ public class PicProgressView
             QLog.d("PicProgressView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.a() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
           }
           setProgress(i);
-          if (this.jdField_a_of_type_Abtr != null) {
+          if (this.jdField_a_of_type_Acbe != null) {
             break;
           }
-          this.jdField_a_of_type_Abtr = new abtr(this, i, paramInt2);
-          postDelayed(this.jdField_a_of_type_Abtr, l);
+          this.jdField_a_of_type_Acbe = new acbe(this, i, paramInt2);
+          postDelayed(this.jdField_a_of_type_Acbe, l);
           return;
           i = paramInt1;
         } while (paramInt1 < 100);
         this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = null;
         return;
       } while (paramInt2 == 1);
-      this.jdField_a_of_type_Abtr.a(paramInt2);
+      this.jdField_a_of_type_Acbe.a(paramInt2);
       return;
       if (QLog.isColorLevel()) {
         QLog.d("PicProgressView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.a() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
@@ -113,10 +113,10 @@ public class PicProgressView
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor == paramBaseTransProcessor) {
       return;
     }
-    if (this.jdField_a_of_type_Abtr != null)
+    if (this.jdField_a_of_type_Acbe != null)
     {
-      removeCallbacks(this.jdField_a_of_type_Abtr);
-      this.jdField_a_of_type_Abtr = null;
+      removeCallbacks(this.jdField_a_of_type_Acbe);
+      this.jdField_a_of_type_Acbe = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = paramBaseTransProcessor;
   }

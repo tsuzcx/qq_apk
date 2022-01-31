@@ -102,8 +102,7 @@ public class QzoneSettingJsPlugin
         bool = true;
         continue;
       }
-      LocalMultiProcConfig.putBool("qzone_barrage_effect_enabled", bool);
-      RemoteHandleManager.a().a().a();
+      RemoteHandleManager.a().a().b(bool);
       QLog.i("QzoneSettingJsPlugin", 4, "---handleShowCommentBubbleSetting-:" + bool);
       return true;
       bool = true;
@@ -136,7 +135,7 @@ public class QzoneSettingJsPlugin
         continue;
       }
       QLog.i("QzoneSettingJsPlugin", 4, "---handleShowQzoneRemindfeedSetting-:" + bool);
-      LocalMultiProcConfig.putBooleanAsync(localActivity.getString(2131434207) + l, bool);
+      LocalMultiProcConfig.putBooleanAsync(localActivity.getString(2131434223) + l, bool);
       return true;
       bool = true;
     }
@@ -167,7 +166,7 @@ public class QzoneSettingJsPlugin
         paramArrayOfString.printStackTrace();
       }
     }
-    bool = LocalMultiProcConfig.getBool(localActivity.getString(2131434207) + l, true);
+    bool = LocalMultiProcConfig.getBool(localActivity.getString(2131434223) + l, true);
     if (bool) {
       i = 1;
     }
@@ -326,7 +325,7 @@ public class QzoneSettingJsPlugin
     }
     paramWebViewPlugin.sendBroadcast(new Intent("com.tencent.qq.syncNoPhotoSetting"));
     QLog.i("QzoneSettingJsPlugin", 4, "---handlePictureModeSetting-:" + i);
-    LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131434210), i);
+    LocalMultiProcConfig.putInt(paramWebViewPlugin.getResources().getString(2131434226), i);
     return true;
   }
   
@@ -343,7 +342,7 @@ public class QzoneSettingJsPlugin
     try
     {
       paramArrayOfString = new JSONObject(paramArrayOfString[0]).getString("callback");
-      int i = LocalMultiProcConfig.getInt(localActivity.getResources().getString(2131434210), 0);
+      int i = LocalMultiProcConfig.getInt(localActivity.getResources().getString(2131434226), 0);
       paramWebViewPlugin.callJs("window." + paramArrayOfString + "({new_value:" + i + "})");
       QLog.i("QzoneSettingJsPlugin", 4, "---handlePictureModeGet-:" + i);
       return true;
@@ -382,8 +381,7 @@ public class QzoneSettingJsPlugin
         bool = true;
         continue;
       }
-      LocalMultiProcConfig.putBool("qzone_font_enabled", bool);
-      RemoteHandleManager.a().a().a();
+      RemoteHandleManager.a().a().a(bool);
       QLog.i("QzoneSettingJsPlugin", 4, "---handleShowFontSetting-:" + bool);
       return true;
       bool = true;
@@ -445,8 +443,7 @@ public class QzoneSettingJsPlugin
         bool = true;
         continue;
       }
-      LocalMultiProcConfig.putBool("qzone_super_font_enabled", bool);
-      RemoteHandleManager.a().a().a();
+      RemoteHandleManager.a().a().c(bool);
       QLog.i("QzoneSettingJsPlugin", 4, "---handleShowSparkleFontSetting-:" + bool);
       return true;
       bool = true;
@@ -571,7 +568,7 @@ public class QzoneSettingJsPlugin
         continue;
       }
       LocalMultiProcConfig.putBool("qzone_feed_skin_enable", bool);
-      RemoteHandleManager.a().a().b();
+      RemoteHandleManager.a().a().a();
       QLog.i("QzoneSettingJsPlugin", 4, "---handlefeedSkinEnable-:" + bool);
       return true;
       bool = true;

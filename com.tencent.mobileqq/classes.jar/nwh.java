@@ -1,20 +1,19 @@
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.takevideo.TakeVideoButtonMainPart.OnTakeVideoButtonClickListener;
+import android.support.annotation.NonNull;
 
-public class nwh
-  implements TakeVideoButtonMainPart.OnTakeVideoButtonClickListener
+class nwh
+  implements nwd
 {
-  public nwh(StoryDiscoverActivity paramStoryDiscoverActivity) {}
+  nwh(nwg paramnwg) {}
   
-  public void a()
+  public void a(@NonNull nwb paramnwb)
   {
-    if (this.a.a())
-    {
-      this.a.a();
-      return;
+    paramnwb = paramnwb.a();
+    if (paramnwb != null) {
+      nwg.a(this.a, paramnwb);
     }
-    this.a.a(false, true, null);
   }
+  
+  public void b(@NonNull nwb paramnwb) {}
 }
 
 

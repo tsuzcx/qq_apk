@@ -531,11 +531,11 @@ public class TraeMediaPlayer
     //   920: invokespecial 279	java/util/Timer:<init>	()V
     //   923: putfield 122	com/tencent/sharp/jni/TraeMediaPlayer:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
     //   926: aload_0
-    //   927: new 281	alzd
+    //   927: new 281	amgm
     //   930: dup
     //   931: aload_0
     //   932: lload 12
-    //   934: invokespecial 284	alzd:<init>	(Lcom/tencent/sharp/jni/TraeMediaPlayer;J)V
+    //   934: invokespecial 284	amgm:<init>	(Lcom/tencent/sharp/jni/TraeMediaPlayer;J)V
     //   937: putfield 129	com/tencent/sharp/jni/TraeMediaPlayer:jdField_a_of_type_JavaUtilTimerTask	Ljava/util/TimerTask;
     //   940: aload_0
     //   941: getfield 122	com/tencent/sharp/jni/TraeMediaPlayer:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;

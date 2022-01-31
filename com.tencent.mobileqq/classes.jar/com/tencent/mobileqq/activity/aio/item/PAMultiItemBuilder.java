@@ -39,8 +39,8 @@ import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import java.util.ArrayList;
-import vcd;
-import vce;
+import vhf;
+import vhg;
 
 public class PAMultiItemBuilder
   extends AbstractChatItemBuilder
@@ -50,7 +50,7 @@ public class PAMultiItemBuilder
   public PAMultiItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vcd(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vhf(this);
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -77,7 +77,7 @@ public class PAMultiItemBuilder
       ((LinearLayout.LayoutParams)localObject1).bottomMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
       ((LinearLayout.LayoutParams)localObject1).gravity = 17;
       paramViewHolder.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      paramViewHolder.setBackgroundResource(2130842181);
+      paramViewHolder.setBackgroundResource(2130842213);
       paramViewHolder.setPadding(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 9.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 9.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F));
       paramViewHolder.setTextColor(-1);
       paramViewHolder.setTextSize(12.0F);
@@ -88,22 +88,22 @@ public class PAMultiItemBuilder
     ImageView localImageView;
     if (i < localArrayList.size())
     {
-      localObject1 = new vce(this);
+      localObject1 = new vhg(this);
       PAMessage.Item localItem = (PAMessage.Item)localArrayList.get(i);
-      ((vce)localObject1).jdField_b_of_type_Int = 5;
-      ((vce)localObject1).jdField_c_of_type_JavaLangString = localItem.url;
-      ((vce)localObject1).jdField_c_of_type_Int = localPAMessage.type;
-      ((vce)localObject1).jdField_b_of_type_JavaLangString = localItem.actionUrl;
-      ((vce)localObject1).jdField_a_of_type_JavaLangString = localItem.nativeJumpString;
-      ((vce)localObject1).jdField_a_of_type_Long = paramLinearLayout.uniseq;
-      ((vce)localObject1).d = i;
+      ((vhg)localObject1).jdField_b_of_type_Int = 5;
+      ((vhg)localObject1).jdField_c_of_type_JavaLangString = localItem.url;
+      ((vhg)localObject1).jdField_c_of_type_Int = localPAMessage.type;
+      ((vhg)localObject1).jdField_b_of_type_JavaLangString = localItem.actionUrl;
+      ((vhg)localObject1).jdField_a_of_type_JavaLangString = localItem.nativeJumpString;
+      ((vhg)localObject1).jdField_a_of_type_Long = paramLinearLayout.uniseq;
+      ((vhg)localObject1).d = i;
       Object localObject2;
       int j;
       if (i == 0)
       {
-        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968754, null);
-        localObject2 = (TextView)paramViewHolder.findViewById(2131363580);
-        localImageView = (ImageView)paramViewHolder.findViewById(2131363581);
+        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968757, null);
+        localObject2 = (TextView)paramViewHolder.findViewById(2131363599);
+        localImageView = (ImageView)paramViewHolder.findViewById(2131363600);
         String str = Util.c(localItem.title);
         ((TextView)localObject2).setText(str);
         if (localItem.mVideoFlag == 1)
@@ -112,7 +112,7 @@ public class PAMultiItemBuilder
           if (i != 0) {
             break label830;
           }
-          j = 2130840680;
+          j = 2130840696;
           label428:
           localObject3 = ((Resources)localObject3).getDrawable(j);
           j = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
@@ -145,7 +145,7 @@ public class PAMultiItemBuilder
         catch (Exception localException)
         {
           label830:
-          localImageView.setImageResource(2130837618);
+          localImageView.setImageResource(2130837617);
           continue;
         }
         localViewGroup.addView(paramViewHolder);
@@ -159,18 +159,18 @@ public class PAMultiItemBuilder
         {
           paramViewHolder = new ImageView(this.jdField_a_of_type_AndroidContentContext);
           paramViewHolder.setLayoutParams(new ViewGroup.LayoutParams(-1, k));
-          paramViewHolder.setBackgroundResource(2130839689);
+          paramViewHolder.setBackgroundResource(2130839704);
           localViewGroup.addView(paramViewHolder);
-          paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968752, null);
+          paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968755, null);
           break label362;
         }
         paramViewHolder = new ImageView(this.jdField_a_of_type_AndroidContentContext);
         paramViewHolder.setLayoutParams(new ViewGroup.LayoutParams(-1, k));
-        paramViewHolder.setBackgroundResource(2130839689);
+        paramViewHolder.setBackgroundResource(2130839704);
         localViewGroup.addView(paramViewHolder);
-        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968753, null);
+        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968756, null);
         break label362;
-        j = 2130840681;
+        j = 2130840697;
         break label428;
         j = AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = j;
@@ -182,7 +182,7 @@ public class PAMultiItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new vce(this);
+    return new vhg(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -214,7 +214,7 @@ public class PAMultiItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131375567, this.jdField_a_of_type_AndroidContentContext.getString(2131433638), 2130838309);
+    paramView.a(2131375633, this.jdField_a_of_type_AndroidContentContext.getString(2131433652), 2130838314);
     return paramView.a();
   }
 }

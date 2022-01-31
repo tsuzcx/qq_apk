@@ -1,8 +1,13 @@
 package com.tencent.biz.qqstory.utils;
 
 import android.text.TextUtils;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -10,9 +15,36 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class RedPointUtils
 {
+  public static int a(int paramInt)
+  {
+    Object localObject = QQStoryContext.a();
+    if (localObject == null)
+    {
+      SLog.c("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId() error, app is null", new Throwable());
+      return 0;
+    }
+    localObject = ((TroopRedTouchManager)((QQAppInterface)localObject).getManager(69)).a(paramInt);
+    if (localObject == null)
+    {
+      SLog.a("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId(%d) info is null", Integer.valueOf(paramInt));
+      return 0;
+    }
+    SLog.a("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId(%d) info is %s", Integer.valueOf(paramInt), PBUtils.a((MessageMicro)localObject));
+    paramInt = ((oidb_0x791.RedDotInfo)localObject).uint32_number.get();
+    boolean bool = ((oidb_0x791.RedDotInfo)localObject).bool_display_reddot.get();
+    long l = ((oidb_0x791.RedDotInfo)localObject).uint32_last_time.get();
+    if ((paramInt > 0) && (bool)) {}
+    for (;;)
+    {
+      return paramInt;
+      paramInt = 0;
+    }
+  }
+  
   public static int a(QQAppInterface paramQQAppInterface)
   {
     return ((MsgTabStoryNodeConfigManager)paramQQAppInterface.getManager(251)).a;

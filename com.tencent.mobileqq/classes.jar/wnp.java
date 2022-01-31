@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.activity.contacts.adapter.PhoneContactAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class wnp
-  implements Runnable
+public class wnp
 {
-  wnp(wno paramwno, boolean paramBoolean) {}
-  
-  public void run()
-  {
-    PhoneContactFragment.a(this.jdField_a_of_type_Wno.a, this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Wno.a.a != null) {
-      this.jdField_a_of_type_Wno.a.a.notifyDataSetChanged();
-    }
-  }
+  public ProgressBar a;
+  public TextView a;
 }
 
 

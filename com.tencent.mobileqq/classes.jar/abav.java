@@ -1,14 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class abav
-  implements Runnable
+public final class abav
+  implements ArkEnvironmentManager.LibraryLoader
 {
-  public abav(ARMapActivity paramARMapActivity, String paramString) {}
-  
-  public void run()
+  public boolean Load()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.b.setText(this.jdField_a_of_type_JavaLangString);
+    ArkAppCenter.e();
+    return ArkAppCenter.b;
+  }
+  
+  public boolean isLibraryLoad()
+  {
+    return ArkAppCenter.b;
   }
 }
 

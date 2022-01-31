@@ -1,20 +1,34 @@
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteLock;
 
-public class kdz
-  implements kfo
+class kdz
+  implements QavInOutAnimation.QavOutAnimationListener
 {
-  public kdz(AVRedBagMgr paramAVRedBagMgr) {}
+  kdz(kdy paramkdy) {}
   
   public void a()
   {
-    QLog.w("AVRedBag", 1, "mResultUI 关闭了");
-    this.a.a = null;
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.setViewEnable(2131364272, false);
+      this.a.a.a.setViewEnable(2131365419, false);
+      this.a.a.a.setViewEnable(2131365418, false);
+      this.a.a.a.setViewEnable(2131365416, false);
+      this.a.a.a.setViewEnable(2131365414, false);
+      this.a.a.a.setViewEnable(2131364274, false);
+    }
+  }
+  
+  public void b()
+  {
+    VideoInviteLock.b(this.a.a);
+    VideoInviteLock.a(this.a.a, 0, 2131034269);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kdz
  * JD-Core Version:    0.7.0.1
  */

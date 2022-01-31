@@ -32,13 +32,13 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
-import vdl;
+import vin;
 
 public class QQStoryFeedItemBuilder
   extends AbstractChatItemBuilder
 {
   private static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new vdl(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new vin(this);
   private QQStoryFeedManager jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryFeedManager;
   private QQStoryFeedItemBuilder.FeedViewHolder jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder;
   private MessageForQQStoryFeed jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed;
@@ -54,14 +54,14 @@ public class QQStoryFeedItemBuilder
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968761, null);
-      paramFeedViewHolder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363637));
-      paramFeedViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131363640));
-      paramFeedViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363638));
-      paramFeedViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363647));
-      paramFeedViewHolder.c = ((TextView)paramView.findViewById(2131363644));
-      paramFeedViewHolder.d = ((TextView)paramView.findViewById(2131363645));
-      paramFeedViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363646));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968764, null);
+      paramFeedViewHolder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363656));
+      paramFeedViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131363659));
+      paramFeedViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363657));
+      paramFeedViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363666));
+      paramFeedViewHolder.c = ((TextView)paramView.findViewById(2131363663));
+      paramFeedViewHolder.d = ((TextView)paramView.findViewById(2131363664));
+      paramFeedViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363665));
       c();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryFeedItemBuilder$FeedViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(b());
@@ -107,7 +107,7 @@ public class QQStoryFeedItemBuilder
     if (jdField_a_of_type_JavaTextSimpleDateFormat == null) {
       jdField_a_of_type_JavaTextSimpleDateFormat = (SimpleDateFormat)DateFormat.getDateFormat(paramContext);
     }
-    jdField_a_of_type_JavaTextSimpleDateFormat.applyPattern(String.format("M%sd%s HH:mm", new Object[] { paramContext.getString(2131434657), paramContext.getString(2131434658) }));
+    jdField_a_of_type_JavaTextSimpleDateFormat.applyPattern(String.format("M%sd%s HH:mm", new Object[] { paramContext.getString(2131434673), paramContext.getString(2131434674) }));
     return DateFormat.format(jdField_a_of_type_JavaTextSimpleDateFormat.toLocalizedPattern(), paramLong);
   }
   
@@ -197,7 +197,7 @@ public class QQStoryFeedItemBuilder
     String str1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mUnionId;
     String str2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mFeedId;
     StoryReportor.a("aio_msg", "aio_clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.frienduin });
-    StoryPlayVideoActivity.a(BaseActivity.sTopActivity, str1, str2, 1, 109);
+    StoryPlayVideoActivity.a(BaseActivity.sTopActivity, str1, str2, 1, 109, 1);
   }
   
   private void c()

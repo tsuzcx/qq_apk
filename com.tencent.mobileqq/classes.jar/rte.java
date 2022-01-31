@@ -1,33 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class rte
-  implements DialogInterface.OnClickListener
+public class rte
+  implements View.OnTouchListener
 {
-  rte(rtc paramrtc, int paramInt, boolean paramBoolean) {}
+  public rte(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface = ApolloConstant.I + "&actionId=" + this.jdField_a_of_type_Int + "&_bid=2282";
-    Intent localIntent = new Intent(this.jdField_a_of_type_Rtc.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramDialogInterface);
-    this.jdField_a_of_type_Rtc.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(localIntent);
-    paramDialogInterface = this.jdField_a_of_type_Rtc.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int i = ApolloUtil.b(this.jdField_a_of_type_Rtc.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 0;; paramInt = 1)
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      VipUtils.a(paramDialogInterface, "cmshow", "Apollo", "level_alert_view", i, paramInt, new String[] { "" + this.jdField_a_of_type_Int, "1" });
-      return;
     }
+    do
+    {
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

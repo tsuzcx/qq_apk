@@ -8,13 +8,13 @@ import android.os.RemoteException;
 import android.util.Log;
 import com.tencent.component.network.DownloaderFactory;
 import com.tencent.component.network.downloader.Downloader;
-import pjx;
-import pjy;
+import pop;
+import poq;
 
 public class DownloadSerice
   extends Service
 {
-  private final Messenger a = new Messenger(new pjy(this));
+  private final Messenger a = new Messenger(new poq(this));
   
   private void a(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)
   {
@@ -27,7 +27,7 @@ public class DownloadSerice
     if (i == 2) {
       localDownloader = DownloaderFactory.getInstance(this).getCommonDownloader();
     }
-    localDownloader.download(paramSimpleRequest.jdField_a_of_type_JavaLangString, paramSimpleRequest.a(), true, new pjx(this, paramMessenger));
+    localDownloader.download(paramSimpleRequest.jdField_a_of_type_JavaLangString, paramSimpleRequest.a(), true, new pop(this, paramMessenger));
   }
   
   private void b(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)

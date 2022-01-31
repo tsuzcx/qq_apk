@@ -1,22 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.UniPayHandler.UniPayUpdateListener;
-import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import common.qzone.component.cache.common.SoftHashMap;
 
 public class amqd
-  extends UniPayHandler.UniPayUpdateListener
+  extends amqc
 {
-  public amqd(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
-  
-  public void a()
+  amqd(SoftHashMap paramSoftHashMap)
   {
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 2, new Bundle());
+    super(paramSoftHashMap);
+  }
+  
+  public Object next()
+  {
+    return a().getKey();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amqd
  * JD-Core Version:    0.7.0.1
  */

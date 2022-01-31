@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.lyric.data.Sentence;
-import java.util.Comparator;
+import com.tencent.mobileqq.intervideo.huayang.HuayangPluginNewDownloader;
+import com.tencent.mobileqq.intervideo.huayang.Monitor;
 
 public class aecu
-  implements Comparator
+  implements Runnable
 {
-  public int a(Sentence paramSentence1, Sentence paramSentence2)
+  public aecu(HuayangPluginNewDownloader paramHuayangPluginNewDownloader) {}
+  
+  public void run()
   {
-    if (paramSentence1.a >= paramSentence2.a) {
-      return 1;
-    }
-    return -1;
+    Monitor.a("3228167");
+    HuayangPluginNewDownloader.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecu
  * JD-Core Version:    0.7.0.1
  */

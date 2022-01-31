@@ -1,39 +1,166 @@
 package com.tencent.beacon.a.b;
 
-public final class g
+import java.io.Serializable;
+import java.util.Map;
+
+public class g
+  implements Serializable
 {
   private long a = -1L;
-  private int b = -1;
-  private byte[] c = null;
+  private String b;
+  private long c;
+  private String d;
+  private Map<String, String> e;
+  private boolean f;
   
   public final long a()
   {
-    return this.a;
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.b = paramInt;
+    try
+    {
+      long l = this.a;
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public final void a(long paramLong)
   {
-    this.a = paramLong;
+    try
+    {
+      this.a = paramLong;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final void a(byte[] paramArrayOfByte)
+  public final void a(String paramString)
   {
-    this.c = paramArrayOfByte;
+    try
+    {
+      this.b = paramString;
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
   
-  public final int b()
+  public final void a(Map<String, String> paramMap)
   {
-    return this.b;
+    try
+    {
+      this.e = paramMap;
+      return;
+    }
+    finally
+    {
+      paramMap = finally;
+      throw paramMap;
+    }
   }
   
-  public final byte[] c()
+  public final void a(boolean paramBoolean)
   {
-    return this.c;
+    this.f = paramBoolean;
+  }
+  
+  public final String b()
+  {
+    try
+    {
+      String str = this.b;
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void b(long paramLong)
+  {
+    try
+    {
+      this.c = paramLong;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void b(String paramString)
+  {
+    try
+    {
+      this.d = paramString;
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public final long c()
+  {
+    try
+    {
+      long l = this.c;
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final String d()
+  {
+    try
+    {
+      String str = this.d;
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final Map<String, String> e()
+  {
+    try
+    {
+      Map localMap = this.e;
+      return localMap;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean f()
+  {
+    return this.f;
   }
 }
 

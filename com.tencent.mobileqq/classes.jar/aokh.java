@@ -1,52 +1,19 @@
-import android.media.MediaPlayer;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import mqq.os.MqqHandler;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.SimpleAnimatorListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class aokh
-  implements SeekBar.OnSeekBarChangeListener
+  extends AnimatorFactory.SimpleAnimatorListener
 {
-  public aokh(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aokh(ElasticImageView paramElasticImageView) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void a(ValueAnimator paramValueAnimator)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
-    this.a.jdField_a_of_type_AndroidMediaMediaPlayer.pause();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
-    }
-    if (this.a.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      if (this.a.e == 2) {
-        this.a.d();
-      }
-      this.a.c.setImageResource(2130843336);
-      this.a.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(i);
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
-      this.a.b(1);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131439319);
-      this.a.b.setEnabled(false);
-      this.a.b.setTextColor(-2130706433);
-    }
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    SLog.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
   }
 }
 

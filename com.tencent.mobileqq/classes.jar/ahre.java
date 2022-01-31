@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.search.HotWordSearchEntryModel;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.util.UiThreadUtil;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.OnProviderContainerTriggerLisener;
 
 public class ahre
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public ahre(HotWordSearchEntryModel paramHotWordSearchEntryModel, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  public ahre(ProviderContainerView paramProviderContainerView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
-    UiThreadUtil.a(new ahrf(this));
+    this.a.c.setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (ProviderContainerView.a(this.a) != null) {
+      ProviderContainerView.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahre
  * JD-Core Version:    0.7.0.1
  */

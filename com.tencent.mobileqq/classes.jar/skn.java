@@ -1,34 +1,36 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.DiscussionHandler.ReqDiscussInfo;
-import com.tencent.mobileqq.app.DiscussionManager;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.os.MqqHandler;
 
-public class skn
+class skn
   implements Runnable
 {
-  public skn(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, boolean paramBoolean) {}
+  skn(skk paramskk) {}
   
   public void run()
   {
-    ArrayList localArrayList = DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity));
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(localArrayList);
-    if (this.jdField_a_of_type_Boolean) {}
-    try
+    long l = SharedPreUtils.a(this.a.a.a.getApplication(), this.a.a.a.getCurrentAccountUin());
+    if (System.currentTimeMillis() - l >= 86400000L)
     {
-      DiscussionHandler.ReqDiscussInfo localReqDiscussInfo = new DiscussionHandler.ReqDiscussInfo();
-      localReqDiscussInfo.a = String.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity));
-      localReqDiscussInfo.b = localArrayList.size();
-      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).a(localReqDiscussInfo);
+      localUpgradeTIMWrapper = UpgradeTIMWrapper.a();
+      if (localUpgradeTIMWrapper != null)
+      {
+        localMessage = this.a.a.b.obtainMessage(1134045);
+        localMessage.obj = localUpgradeTIMWrapper;
+        this.a.a.a(new sko(this, localMessage));
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      UpgradeTIMWrapper localUpgradeTIMWrapper;
+      Message localMessage;
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("DiscussionInfoCardActivity", 2, "initDiscussionView getDiscussInfo error disUin=" + DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), localException);
-    }
+    QLog.e("UpgradeTIMWrapper", 2, "Conversation onReceiveShowTIMUpgradeTips smaller than 24 hours");
   }
 }
 

@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import abuk;
-import abut;
-import abuu;
+import accd;
+import accm;
+import acco;
+import accp;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Message;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -13,6 +15,7 @@ import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 import com.tencent.mobileqq.activity.qwallet.QWalletSetting;
 import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
@@ -20,6 +23,7 @@ import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
@@ -28,10 +32,15 @@ import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 import com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData;
 import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.ContactUtils.NameInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class MessageForQQWalletTips
@@ -64,9 +73,10 @@ public class MessageForQQWalletTips
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     StringBuilder localStringBuilder = new StringBuilder();
     Matcher localMatcher = Pattern.compile("<([^>])+").matcher(paramString);
-    label297:
-    label300:
-    label994:
+    LinkedList localLinkedList = new LinkedList();
+    label306:
+    label309:
+    label1228:
     for (;;)
     {
       Object localObject3;
@@ -84,7 +94,7 @@ public class MessageForQQWalletTips
         {
           localObject3 = new JSONObject((String)localObject1);
           if (!((JSONObject)localObject3).has("icon")) {
-            break label300;
+            break label309;
           }
           localObject3 = ((JSONObject)localObject3).optString("icon");
           localObject1 = new SpannableString((CharSequence)localObject1);
@@ -100,7 +110,7 @@ public class MessageForQQWalletTips
           }
           else if ((((String)localObject3).startsWith("http://")) || (((String)localObject3).startsWith("https://")))
           {
-            ((SpannableString)localObject1).setSpan(new abuk(paramContext, 0, (String)localObject3), 0, ((SpannableString)localObject1).length(), 33);
+            ((SpannableString)localObject1).setSpan(new accd(paramContext, 0, (String)localObject3), 0, ((SpannableString)localObject1).length(), 33);
             localSpannableStringBuilder.append((CharSequence)localObject1);
             localSpannableStringBuilder.append(" ");
           }
@@ -127,12 +137,20 @@ public class MessageForQQWalletTips
         localObject2 = ContactUtils.n(paramQQAppInterface, this.memberUin);
         continue;
         localObject2 = (HotChatManager)paramQQAppInterface.getManager(59);
+        ContactUtils.NameInfo localNameInfo;
         if ((localObject2 != null) && (((HotChatManager)localObject2).b(this.frienduin)))
         {
           localObject2 = ((FriendsManager)paramQQAppInterface.getManager(50)).c(this.memberUin);
           if ((localObject2 != null) && (((Friends)localObject2).isFriend()) && (!this.memberUin.equals(paramQQAppInterface.getCurrentAccountUin())))
           {
-            localObject2 = ContactUtils.b(paramQQAppInterface, this.frienduin, this.memberUin);
+            localNameInfo = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
+            localObject3 = localNameInfo.jdField_a_of_type_JavaLangString;
+            localObject2 = localObject3;
+            if (localNameInfo.jdField_a_of_type_Boolean)
+            {
+              localLinkedList.add(this.memberUin);
+              localObject2 = localObject3;
+            }
           }
           else
           {
@@ -141,66 +159,104 @@ public class MessageForQQWalletTips
               QLog.i("MessageForQQWalletTips", 4, "hotname=" + (String)localObject3);
             }
             localObject2 = localObject3;
-            if (TextUtils.isEmpty((CharSequence)localObject3)) {
-              localObject2 = ContactUtils.b(paramQQAppInterface, this.frienduin, this.memberUin);
+            if (TextUtils.isEmpty((CharSequence)localObject3))
+            {
+              localNameInfo = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
+              localObject3 = localNameInfo.jdField_a_of_type_JavaLangString;
+              localObject2 = localObject3;
+              if (localNameInfo.jdField_a_of_type_Boolean)
+              {
+                localLinkedList.add(this.memberUin);
+                localObject2 = localObject3;
+              }
             }
           }
         }
         else
         {
-          localObject2 = ContactUtils.b(paramQQAppInterface, this.frienduin, this.memberUin);
-          continue;
-          localObject2 = ((DiscussionManager)paramQQAppInterface.getManager(52)).a(this.frienduin, this.memberUin);
-          if (localObject2 != null)
+          localNameInfo = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
+          localObject3 = localNameInfo.jdField_a_of_type_JavaLangString;
+          localObject2 = localObject3;
+          if (localNameInfo.jdField_a_of_type_Boolean)
           {
-            localObject2 = ((DiscussionMemberInfo)localObject2).inteRemark;
-          }
-          else
-          {
-            localObject2 = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
+            localLinkedList.add(this.memberUin);
+            localObject2 = localObject3;
             continue;
-            localObject2 = ContactUtils.b(paramQQAppInterface, ((TroopManager)paramQQAppInterface.getManager(51)).c(this.senderuin), this.memberUin);
-            continue;
-            localObject2 = ContactUtils.a(paramQQAppInterface, this.senderuin, this.memberUin);
-            continue;
-            localObject2 = ((FriendsManager)paramQQAppInterface.getManager(50)).c(this.memberUin);
-            if ((localObject2 != null) && (((Friends)localObject2).isFriend()) && (!this.memberUin.equals(paramQQAppInterface.getCurrentAccountUin())))
+            localObject2 = ((DiscussionManager)paramQQAppInterface.getManager(52)).a(this.frienduin, this.memberUin);
+            if (localObject2 != null)
             {
-              localObject2 = ContactUtils.b(paramQQAppInterface, this.frienduin, this.memberUin);
+              localObject2 = ((DiscussionMemberInfo)localObject2).inteRemark;
             }
             else
             {
-              localObject3 = ((JSONObject)localObject3).optString("hotname");
-              if (QLog.isDevelopLevel()) {
-                QLog.i("MessageForQQWalletTips", 4, "hotname=" + (String)localObject3);
-              }
+              localObject2 = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
+              continue;
+              localObject2 = (TroopManager)paramQQAppInterface.getManager(51);
+              localNameInfo = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
+              localObject3 = localNameInfo.jdField_a_of_type_JavaLangString;
               localObject2 = localObject3;
-              if (TextUtils.isEmpty((CharSequence)localObject3))
+              if (localNameInfo.jdField_a_of_type_Boolean)
               {
-                localObject2 = ContactUtils.b(paramQQAppInterface, this.frienduin, this.memberUin);
+                localLinkedList.add(this.memberUin);
+                localObject2 = localObject3;
                 continue;
-                if ((!((JSONObject)localObject3).has("cmd")) && (!((JSONObject)localObject3).has("jump"))) {
-                  break label297;
-                }
-                localObject2 = parseTag((JSONObject)localObject3, paramQQAppInterface, paramContext, paramString);
-                if (localObject2 != null) {
-                  localSpannableStringBuilder.append((CharSequence)localObject2);
-                }
-                if (((JSONObject)localObject3).has("cmd"))
+                localObject2 = ContactUtils.a(paramQQAppInterface, this.senderuin, this.memberUin);
+                continue;
+                localObject2 = ((FriendsManager)paramQQAppInterface.getManager(50)).c(this.memberUin);
+                if ((localObject2 != null) && (((Friends)localObject2).isFriend()) && (!this.memberUin.equals(paramQQAppInterface.getCurrentAccountUin())))
                 {
-                  localStringBuilder.append(((JSONObject)localObject3).optString("text", ""));
-                  break label994;
+                  localNameInfo = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
+                  localObject3 = localNameInfo.jdField_a_of_type_JavaLangString;
+                  localObject2 = localObject3;
+                  if (localNameInfo.jdField_a_of_type_Boolean)
+                  {
+                    localLinkedList.add(this.memberUin);
+                    localObject2 = localObject3;
+                  }
                 }
-                localStringBuilder.append(((JSONObject)localObject3).optString("desc", ""));
-                break label994;
-                if (i != paramString.length())
+                else
                 {
-                  localSpannableStringBuilder.append(paramString.subSequence(i, paramString.length()));
-                  localStringBuilder.append(paramString.subSequence(i, paramString.length()));
+                  localObject3 = ((JSONObject)localObject3).optString("hotname");
+                  if (QLog.isDevelopLevel()) {
+                    QLog.i("MessageForQQWalletTips", 4, "hotname=" + (String)localObject3);
+                  }
+                  localObject2 = localObject3;
+                  if (TextUtils.isEmpty((CharSequence)localObject3))
+                  {
+                    localNameInfo = ContactUtils.a(paramQQAppInterface, this.frienduin, this.memberUin);
+                    localObject3 = localNameInfo.jdField_a_of_type_JavaLangString;
+                    localObject2 = localObject3;
+                    if (localNameInfo.jdField_a_of_type_Boolean)
+                    {
+                      localLinkedList.add(this.memberUin);
+                      localObject2 = localObject3;
+                      continue;
+                      if ((!((JSONObject)localObject3).has("cmd")) && (!((JSONObject)localObject3).has("jump"))) {
+                        break label306;
+                      }
+                      localObject2 = parseTag((JSONObject)localObject3, paramQQAppInterface, paramContext, paramString);
+                      if (localObject2 != null) {
+                        localSpannableStringBuilder.append((CharSequence)localObject2);
+                      }
+                      if (((JSONObject)localObject3).has("cmd"))
+                      {
+                        localStringBuilder.append(((JSONObject)localObject3).optString("text", ""));
+                        break label1228;
+                      }
+                      localStringBuilder.append(((JSONObject)localObject3).optString("desc", ""));
+                      break label1228;
+                      if (i != paramString.length())
+                      {
+                        localSpannableStringBuilder.append(paramString.subSequence(i, paramString.length()));
+                        localStringBuilder.append(paramString.subSequence(i, paramString.length()));
+                      }
+                      this.summary = localStringBuilder.toString();
+                      tryGetMemberInfosAsync(localLinkedList, paramQQAppInterface, this.frienduin);
+                      return localSpannableStringBuilder;
+                      break;
+                    }
+                  }
                 }
-                this.summary = localStringBuilder.toString();
-                return localSpannableStringBuilder;
-                break;
               }
             }
           }
@@ -264,92 +320,92 @@ public class MessageForQQWalletTips
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 368	java/io/ByteArrayInputStream
+    //   2: new 385	java/io/ByteArrayInputStream
     //   5: dup
     //   6: aload_0
-    //   7: getfield 372	com/tencent/mobileqq/data/MessageForQQWalletTips:msgData	[B
-    //   10: invokespecial 375	java/io/ByteArrayInputStream:<init>	([B)V
+    //   7: getfield 389	com/tencent/mobileqq/data/MessageForQQWalletTips:msgData	[B
+    //   10: invokespecial 392	java/io/ByteArrayInputStream:<init>	([B)V
     //   13: astore_2
-    //   14: new 377	java/io/ObjectInputStream
+    //   14: new 394	java/io/ObjectInputStream
     //   17: dup
     //   18: aload_2
-    //   19: invokespecial 380	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   19: invokespecial 397	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   22: astore 4
     //   24: aload_0
     //   25: aload 4
-    //   27: invokevirtual 383	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
-    //   30: putfield 314	com/tencent/mobileqq/data/MessageForQQWalletTips:senderUin	Ljava/lang/String;
+    //   27: invokevirtual 400	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
+    //   30: putfield 331	com/tencent/mobileqq/data/MessageForQQWalletTips:senderUin	Ljava/lang/String;
     //   33: aload_0
     //   34: aload 4
-    //   36: invokevirtual 383	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
-    //   39: putfield 320	com/tencent/mobileqq/data/MessageForQQWalletTips:reciverUin	Ljava/lang/String;
+    //   36: invokevirtual 400	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
+    //   39: putfield 337	com/tencent/mobileqq/data/MessageForQQWalletTips:reciverUin	Ljava/lang/String;
     //   42: aload_0
     //   43: aload 4
-    //   45: invokevirtual 383	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
-    //   48: putfield 316	com/tencent/mobileqq/data/MessageForQQWalletTips:senderContent	Ljava/lang/String;
+    //   45: invokevirtual 400	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
+    //   48: putfield 333	com/tencent/mobileqq/data/MessageForQQWalletTips:senderContent	Ljava/lang/String;
     //   51: aload_0
     //   52: aload 4
-    //   54: invokevirtual 383	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
-    //   57: putfield 322	com/tencent/mobileqq/data/MessageForQQWalletTips:reciverContent	Ljava/lang/String;
+    //   54: invokevirtual 400	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
+    //   57: putfield 339	com/tencent/mobileqq/data/MessageForQQWalletTips:reciverContent	Ljava/lang/String;
     //   60: aload_0
     //   61: aload 4
-    //   63: invokevirtual 383	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
-    //   66: putfield 385	com/tencent/mobileqq/data/MessageForQQWalletTips:authKey	Ljava/lang/String;
+    //   63: invokevirtual 400	java/io/ObjectInputStream:readUTF	()Ljava/lang/String;
+    //   66: putfield 402	com/tencent/mobileqq/data/MessageForQQWalletTips:authKey	Ljava/lang/String;
     //   69: aload_0
     //   70: iconst_0
-    //   71: putfield 387	com/tencent/mobileqq/data/MessageForQQWalletTips:type	I
+    //   71: putfield 404	com/tencent/mobileqq/data/MessageForQQWalletTips:type	I
     //   74: aload_0
     //   75: iconst_0
-    //   76: putfield 389	com/tencent/mobileqq/data/MessageForQQWalletTips:subType	I
+    //   76: putfield 406	com/tencent/mobileqq/data/MessageForQQWalletTips:subType	I
     //   79: aload 4
-    //   81: invokevirtual 392	java/io/ObjectInputStream:available	()I
+    //   81: invokevirtual 409	java/io/ObjectInputStream:available	()I
     //   84: ifle +21 -> 105
     //   87: aload_0
     //   88: aload 4
-    //   90: invokevirtual 395	java/io/ObjectInputStream:readInt	()I
-    //   93: putfield 387	com/tencent/mobileqq/data/MessageForQQWalletTips:type	I
+    //   90: invokevirtual 412	java/io/ObjectInputStream:readInt	()I
+    //   93: putfield 404	com/tencent/mobileqq/data/MessageForQQWalletTips:type	I
     //   96: aload_0
     //   97: aload 4
-    //   99: invokevirtual 395	java/io/ObjectInputStream:readInt	()I
-    //   102: putfield 389	com/tencent/mobileqq/data/MessageForQQWalletTips:subType	I
+    //   99: invokevirtual 412	java/io/ObjectInputStream:readInt	()I
+    //   102: putfield 406	com/tencent/mobileqq/data/MessageForQQWalletTips:subType	I
     //   105: aload 4
     //   107: ifnull +8 -> 115
     //   110: aload 4
-    //   112: invokevirtual 398	java/io/ObjectInputStream:close	()V
+    //   112: invokevirtual 415	java/io/ObjectInputStream:close	()V
     //   115: aload_2
     //   116: ifnull +7 -> 123
     //   119: aload_2
-    //   120: invokevirtual 399	java/io/ByteArrayInputStream:close	()V
+    //   120: invokevirtual 416	java/io/ByteArrayInputStream:close	()V
     //   123: return
     //   124: astore_1
     //   125: aload_1
-    //   126: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   126: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   129: goto -14 -> 115
     //   132: astore_1
     //   133: aload_1
-    //   134: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   134: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   137: return
     //   138: astore_1
     //   139: aconst_null
     //   140: astore_2
     //   141: aload_1
-    //   142: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   142: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   145: aload_3
     //   146: ifnull +7 -> 153
     //   149: aload_3
-    //   150: invokevirtual 398	java/io/ObjectInputStream:close	()V
+    //   150: invokevirtual 415	java/io/ObjectInputStream:close	()V
     //   153: aload_2
     //   154: ifnull -31 -> 123
     //   157: aload_2
-    //   158: invokevirtual 399	java/io/ByteArrayInputStream:close	()V
+    //   158: invokevirtual 416	java/io/ByteArrayInputStream:close	()V
     //   161: return
     //   162: astore_1
     //   163: aload_1
-    //   164: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   164: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   167: return
     //   168: astore_1
     //   169: aload_1
-    //   170: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   170: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   173: goto -20 -> 153
     //   176: astore_1
     //   177: aconst_null
@@ -359,20 +415,20 @@ public class MessageForQQWalletTips
     //   181: aload_2
     //   182: ifnull +7 -> 189
     //   185: aload_2
-    //   186: invokevirtual 398	java/io/ObjectInputStream:close	()V
+    //   186: invokevirtual 415	java/io/ObjectInputStream:close	()V
     //   189: aload_3
     //   190: ifnull +7 -> 197
     //   193: aload_3
-    //   194: invokevirtual 399	java/io/ByteArrayInputStream:close	()V
+    //   194: invokevirtual 416	java/io/ByteArrayInputStream:close	()V
     //   197: aload_1
     //   198: athrow
     //   199: astore_2
     //   200: aload_2
-    //   201: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   201: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   204: goto -15 -> 189
     //   207: astore_2
     //   208: aload_2
-    //   209: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   209: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   212: goto -15 -> 197
     //   215: astore_1
     //   216: aconst_null
@@ -577,7 +633,7 @@ public class MessageForQQWalletTips
         }
       }
       localObject1 = new SoftReference(paramQQAppInterface);
-      ((SpannableString)localObject2).setSpan(new abut(this, new SoftReference(paramContext), (SoftReference)localObject1, paramJSONObject, i), 0, ((SpannableString)localObject2).length(), 33);
+      ((SpannableString)localObject2).setSpan(new acco(this, new SoftReference(paramContext), (SoftReference)localObject1, paramJSONObject, i), 0, ((SpannableString)localObject2).length(), 33);
       paramQQAppInterface = (PasswdRedBagManager)paramQQAppInterface.getManager(124);
       if (paramString.contains("运气王")) {
         paramQQAppInterface.a(paramJSONObject);
@@ -654,7 +710,7 @@ public class MessageForQQWalletTips
     if (TextUtils.isEmpty(str)) {}
     for (;;)
     {
-      ((SpannableString)localObject).setSpan(new abuu(this, paramJSONObject.optString("data"), new SoftReference(paramContext), i), 0, ((SpannableString)localObject).length(), 33);
+      ((SpannableString)localObject).setSpan(new accp(this, paramJSONObject.optString("data"), new SoftReference(paramContext), i), 0, ((SpannableString)localObject).length(), 33);
       return localObject;
       i = 0xFF000000 | (int)Long.parseLong(str.substring(2), 16);
     }
@@ -677,83 +733,83 @@ public class MessageForQQWalletTips
   protected void prewrite()
   {
     // Byte code:
-    //   0: new 527	java/io/ByteArrayOutputStream
+    //   0: new 544	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 528	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 545	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore 4
-    //   9: new 530	java/io/ObjectOutputStream
+    //   9: new 547	java/io/ObjectOutputStream
     //   12: dup
     //   13: aload 4
-    //   15: invokespecial 533	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   15: invokespecial 550	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   18: astore_2
     //   19: aload_2
     //   20: astore_1
     //   21: aload_2
     //   22: aload_0
-    //   23: getfield 314	com/tencent/mobileqq/data/MessageForQQWalletTips:senderUin	Ljava/lang/String;
-    //   26: invokevirtual 536	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   23: getfield 331	com/tencent/mobileqq/data/MessageForQQWalletTips:senderUin	Ljava/lang/String;
+    //   26: invokevirtual 553	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
     //   29: aload_2
     //   30: astore_1
     //   31: aload_2
     //   32: aload_0
-    //   33: getfield 320	com/tencent/mobileqq/data/MessageForQQWalletTips:reciverUin	Ljava/lang/String;
-    //   36: invokevirtual 536	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   33: getfield 337	com/tencent/mobileqq/data/MessageForQQWalletTips:reciverUin	Ljava/lang/String;
+    //   36: invokevirtual 553	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
     //   39: aload_2
     //   40: astore_1
     //   41: aload_2
     //   42: aload_0
-    //   43: getfield 316	com/tencent/mobileqq/data/MessageForQQWalletTips:senderContent	Ljava/lang/String;
-    //   46: invokevirtual 536	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   43: getfield 333	com/tencent/mobileqq/data/MessageForQQWalletTips:senderContent	Ljava/lang/String;
+    //   46: invokevirtual 553	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
     //   49: aload_2
     //   50: astore_1
     //   51: aload_2
     //   52: aload_0
-    //   53: getfield 322	com/tencent/mobileqq/data/MessageForQQWalletTips:reciverContent	Ljava/lang/String;
-    //   56: invokevirtual 536	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   53: getfield 339	com/tencent/mobileqq/data/MessageForQQWalletTips:reciverContent	Ljava/lang/String;
+    //   56: invokevirtual 553	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
     //   59: aload_2
     //   60: astore_1
     //   61: aload_2
     //   62: aload_0
-    //   63: getfield 385	com/tencent/mobileqq/data/MessageForQQWalletTips:authKey	Ljava/lang/String;
-    //   66: invokevirtual 536	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   63: getfield 402	com/tencent/mobileqq/data/MessageForQQWalletTips:authKey	Ljava/lang/String;
+    //   66: invokevirtual 553	java/io/ObjectOutputStream:writeUTF	(Ljava/lang/String;)V
     //   69: aload_2
     //   70: astore_1
     //   71: aload_2
     //   72: aload_0
-    //   73: getfield 387	com/tencent/mobileqq/data/MessageForQQWalletTips:type	I
-    //   76: invokevirtual 539	java/io/ObjectOutputStream:writeInt	(I)V
+    //   73: getfield 404	com/tencent/mobileqq/data/MessageForQQWalletTips:type	I
+    //   76: invokevirtual 556	java/io/ObjectOutputStream:writeInt	(I)V
     //   79: aload_2
     //   80: astore_1
     //   81: aload_2
     //   82: aload_0
-    //   83: getfield 389	com/tencent/mobileqq/data/MessageForQQWalletTips:subType	I
-    //   86: invokevirtual 539	java/io/ObjectOutputStream:writeInt	(I)V
+    //   83: getfield 406	com/tencent/mobileqq/data/MessageForQQWalletTips:subType	I
+    //   86: invokevirtual 556	java/io/ObjectOutputStream:writeInt	(I)V
     //   89: aload_2
     //   90: astore_1
     //   91: aload_2
-    //   92: invokevirtual 540	java/io/ObjectOutputStream:close	()V
+    //   92: invokevirtual 557	java/io/ObjectOutputStream:close	()V
     //   95: aload_2
     //   96: astore_1
     //   97: aload_0
     //   98: aload 4
-    //   100: invokevirtual 543	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   103: putfield 372	com/tencent/mobileqq/data/MessageForQQWalletTips:msgData	[B
+    //   100: invokevirtual 560	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   103: putfield 389	com/tencent/mobileqq/data/MessageForQQWalletTips:msgData	[B
     //   106: aload_2
     //   107: ifnull +7 -> 114
     //   110: aload_2
-    //   111: invokevirtual 540	java/io/ObjectOutputStream:close	()V
+    //   111: invokevirtual 557	java/io/ObjectOutputStream:close	()V
     //   114: aload 4
     //   116: ifnull +8 -> 124
     //   119: aload 4
-    //   121: invokevirtual 544	java/io/ByteArrayOutputStream:close	()V
+    //   121: invokevirtual 561	java/io/ByteArrayOutputStream:close	()V
     //   124: return
     //   125: astore_1
     //   126: aload_1
-    //   127: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   127: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   130: goto -16 -> 114
     //   133: astore_1
     //   134: aload_1
-    //   135: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   135: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   138: return
     //   139: astore_3
     //   140: aconst_null
@@ -761,23 +817,23 @@ public class MessageForQQWalletTips
     //   142: aload_2
     //   143: astore_1
     //   144: aload_3
-    //   145: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   145: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   148: aload_2
     //   149: ifnull +7 -> 156
     //   152: aload_2
-    //   153: invokevirtual 540	java/io/ObjectOutputStream:close	()V
+    //   153: invokevirtual 557	java/io/ObjectOutputStream:close	()V
     //   156: aload 4
     //   158: ifnull -34 -> 124
     //   161: aload 4
-    //   163: invokevirtual 544	java/io/ByteArrayOutputStream:close	()V
+    //   163: invokevirtual 561	java/io/ByteArrayOutputStream:close	()V
     //   166: return
     //   167: astore_1
     //   168: aload_1
-    //   169: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   169: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   172: return
     //   173: astore_1
     //   174: aload_1
-    //   175: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   175: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   178: goto -22 -> 156
     //   181: astore_2
     //   182: aconst_null
@@ -785,20 +841,20 @@ public class MessageForQQWalletTips
     //   184: aload_1
     //   185: ifnull +7 -> 192
     //   188: aload_1
-    //   189: invokevirtual 540	java/io/ObjectOutputStream:close	()V
+    //   189: invokevirtual 557	java/io/ObjectOutputStream:close	()V
     //   192: aload 4
     //   194: ifnull +8 -> 202
     //   197: aload 4
-    //   199: invokevirtual 544	java/io/ByteArrayOutputStream:close	()V
+    //   199: invokevirtual 561	java/io/ByteArrayOutputStream:close	()V
     //   202: aload_2
     //   203: athrow
     //   204: astore_1
     //   205: aload_1
-    //   206: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   206: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   209: goto -17 -> 192
     //   212: astore_1
     //   213: aload_1
-    //   214: invokevirtual 161	java/lang/Exception:printStackTrace	()V
+    //   214: invokevirtual 164	java/lang/Exception:printStackTrace	()V
     //   217: goto -15 -> 202
     //   220: astore_2
     //   221: goto -37 -> 184
@@ -851,6 +907,32 @@ public class MessageForQQWalletTips
     //   81	89	224	java/lang/Exception
     //   91	95	224	java/lang/Exception
     //   97	106	224	java/lang/Exception
+  }
+  
+  public void tryGetMemberInfosAsync(List paramList, QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramList != null) && (paramList.size() > 0) && (paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramQQAppInterface = new WeakReference(paramQQAppInterface);
+      ThreadManager.getFileThreadHandler().post(new accm(this, paramQQAppInterface, paramList, paramString));
+    }
+  }
+  
+  public void updateMsg(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
+    } while (paramQQAppInterface == null);
+    Message localMessage = new Message();
+    localMessage.what = 78;
+    localMessage.arg1 = 891;
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("messageUniseq", this.uniseq);
+    localMessage.setData(localBundle);
+    paramQQAppInterface.sendMessage(localMessage);
   }
 }
 

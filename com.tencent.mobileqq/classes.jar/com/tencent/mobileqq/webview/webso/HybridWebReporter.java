@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.webso;
 
-import akrd;
+import akyu;
 import android.os.SystemClock;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -39,7 +39,7 @@ public class HybridWebReporter
       ArrayList localArrayList2 = new ArrayList(jdField_a_of_type_JavaUtilArrayList);
       jdField_a_of_type_JavaUtilArrayList.clear();
       jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      ThreadManager.executeOnNetWorkThread(new akrd(localArrayList2));
+      ThreadManager.executeOnNetWorkThread(new akyu(localArrayList2));
       return;
     }
   }
@@ -109,7 +109,7 @@ public class HybridWebReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HybridWebReporter
  * JD-Core Version:    0.7.0.1
  */

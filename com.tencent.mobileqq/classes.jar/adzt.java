@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
 
-class adzt
+public class adzt
   implements Runnable
 {
-  adzt(adzs paramadzs) {}
+  public adzt(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout, int paramInt) {}
   
   public void run()
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.a.getManager(12);
-    if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
-      localWebProcessManager.a(202, new adzu(this));
-    }
-    if (NearbyUtils.b()) {
-      NearbyUtils.a("Q.lebatab.", new Object[] { "preload nearby process/tool process" });
-    }
-    NearbyProcessMonitor.a(this.a.a.a.getAccount(), 0);
+    HotVideoMongoliaRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
   }
 }
 

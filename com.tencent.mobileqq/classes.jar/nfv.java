@@ -1,34 +1,29 @@
-import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
+import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
-public class nfv
-  implements Runnable
+class nfv
+  extends OnSimpleShareListener
 {
-  public nfv(ReportEvilToXinanHandler paramReportEvilToXinanHandler, String paramString) {}
+  nfv(nfs paramnfs) {}
   
-  public void run()
+  public void a()
   {
-    try
-    {
-      i = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("rtn_code");
-      if (i == 0)
-      {
-        QQToast.a(BaseApplication.getContext(), "举报成功，客服人员将尽快处理", 0).a();
-        return;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        int i = -1;
-      }
-      QQToast.a(BaseApplication.getContext(), "举报失败，请稍后重试", 0).a();
-    }
+    super.a();
+    FeedCommentLikeLego.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    StoryReportor.a("home_page", "suc_share", 1, paramInt, new String[] { StoryReportor.b(this.a.a.a) + "", StoryReportor.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    StoryReportor.a("home_page", "share_chanel", 1, paramInt, new String[] { StoryReportor.b(this.a.a.a) + "", StoryReportor.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

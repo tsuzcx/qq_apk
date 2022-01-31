@@ -6,7 +6,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.text.QQText;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kma;
+import koh;
 
 public class CrmIvrText
   extends QQText
@@ -25,7 +25,7 @@ public class CrmIvrText
   
   static void a(View paramView, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
   {
-    paramView.post(new kma(paramQQAppInterface, paramView, paramString1));
+    paramView.post(new koh(paramQQAppInterface, paramView, paramString1));
   }
   
   protected void a()

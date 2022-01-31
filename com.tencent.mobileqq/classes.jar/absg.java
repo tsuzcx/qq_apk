@@ -1,36 +1,31 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.confess.ConfessPlugin;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
 
-class absg
-  implements WXShareHelper.WXShareListener
+public class absg
+  extends AnimatorListenerAdapter
 {
-  absg(absf paramabsf) {}
+  public absg(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimHolder paramAnimHolder, ObjectAnimator paramObjectAnimator) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfessPlugin", 2, "onWXShareResp resp.errCode=" + paramBaseResp.errCode);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.setVisibility(0);
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      ConfessPlugin.a(this.a.a.a, false);
-      ConfessPlugin.a(this.a.a.a, 1, 2131435303);
-      return;
-    case 0: 
-      ConfessPlugin.a(this.a.a.a, true);
-      ConfessPlugin.a(this.a.a.a, 2, 2131435302);
-      return;
-    }
-    ConfessPlugin.a(this.a.a.a, false);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     absg
  * JD-Core Version:    0.7.0.1
  */

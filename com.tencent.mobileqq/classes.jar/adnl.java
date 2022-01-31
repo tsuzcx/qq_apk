@@ -1,42 +1,21 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
 
 public class adnl
-  implements Runnable
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  public adnl(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public adnl(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void run()
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyHybridFragment", 2, "start preload peak process");
-    }
-    Intent localIntent;
-    if (this.a.getActivity() != null)
-    {
-      localIntent = new Intent(this.a.getActivity(), PeakService.class);
-      if (VideoEnvironment.d(this.a.a)) {
-        localIntent.putExtra("ServiceAction", 2);
-      }
-    }
-    try
-    {
-      this.a.getActivity().startService(localIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NearbyHybridFragment", 1, "preLoadPeak startService ", localException);
-    }
+    this.a.a.runOnUiThread(new adnm(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adnl
  * JD-Core Version:    0.7.0.1
  */

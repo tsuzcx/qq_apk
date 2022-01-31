@@ -1,29 +1,35 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler.FileUploadInfo;
-import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class acwi
-  extends FileTransferObserver
+  implements View.OnClickListener
 {
-  public acwi(FileVideoManager.VideoControl paramVideoControl) {}
+  public acwi(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  protected void b(boolean paramBoolean, FileTransferHandler.FileUploadInfo paramFileUploadInfo, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void onClick(View paramView)
   {
-    super.b(paramBoolean, paramFileUploadInfo, paramStatictisInfo);
-    paramStatictisInfo = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramBoolean) && ((paramFileUploadInfo.c == 2) || (paramFileUploadInfo.c == 0)) && (!this.a.a.bSend))
+    if (NetworkUtil.d(this.a.getActivity()))
     {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "=_= v! [SetFileDownloadStatus Replay] onDownloadFileSuc isSuccess[" + paramBoolean + "],retCode[" + paramFileUploadInfo.jdField_a_of_type_Int + "],retMsg[" + paramFileUploadInfo.jdField_a_of_type_JavaLangString + "],retStat[" + paramFileUploadInfo.c + "]. need to send file receipt");
-      paramStatictisInfo.a().a(this.a.a.peerUin, this.a.a.fileName, this.a.a.Uuid, this.a.a.fileSize, 0L);
+      UniformDownloadActivity.a(this.a).setVisibility(8);
+      if (FileManagerUtil.a())
+      {
+        FMDialogUtil.a(this.a.getActivity(), 2131428241, 2131428268, new acwj(this));
+        return;
+      }
+      UniformDownloadActivity.a(this.a);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
       return;
     }
-    QLog.i("FileVideoManager<FileAssistant>", 1, "=_= v! [SetFileDownloadStatus Replay] onDownloadFileSuc isSuccess[" + paramBoolean + "],retCode[" + paramFileUploadInfo.jdField_a_of_type_Int + "],retMsg[" + paramFileUploadInfo.jdField_a_of_type_JavaLangString + "],retStat[" + paramFileUploadInfo.c + "]. don't need to send file receipt");
+    FMToastUtil.a(2131428327);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

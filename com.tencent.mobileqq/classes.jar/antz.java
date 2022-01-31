@@ -1,27 +1,44 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoLabel;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import dov.com.qq.im.capture.data.ComboLockManager;
+import dov.com.qq.im.capture.data.LockedCategory;
 
 public class antz
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public antz(EditVideoLabel paramEditVideoLabel) {}
+  public antz(ComboLockManager paramComboLockManager, Context paramContext) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.b(this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.a.a);
+    this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.a = null;
+    if (paramInt == 1)
     {
+      this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager.c = true;
+      if ((BaseActivity.sTopActivity instanceof SplashActivity))
+      {
+        paramDialogInterface = (SplashActivity)BaseActivity.sTopActivity;
+        Intent localIntent = new Intent();
+        localIntent.putExtra("main_tab_id", 8);
+        localIntent.putExtra("fragment_id", 1);
+        localIntent.putExtra("switch_anim", true);
+        paramDialogInterface.b(localIntent);
+      }
     }
-    for (;;)
+    else
     {
-      return false;
-      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
-      continue;
-      this.a.a.setTextColor(Color.parseColor("#ffffff"));
+      return;
     }
+    paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.a);
+    paramDialogInterface.putExtra("fragment_id", 1);
+    paramDialogInterface.setFlags(67108864);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

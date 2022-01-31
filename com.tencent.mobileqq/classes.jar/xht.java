@@ -1,28 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView.CircleHolder;
-import java.util.Iterator;
-import java.util.List;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class xht
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public xht(RecordMicView paramRecordMicView) {}
+  public xht(TransactionActivity paramTransactionActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = RecordMicView.a(this.a).iterator();
-    while (paramValueAnimator.hasNext())
-    {
-      RecordMicView.CircleHolder localCircleHolder = (RecordMicView.CircleHolder)paramValueAnimator.next();
-      localCircleHolder.jdField_c_of_type_Float = (localCircleHolder.f + (localCircleHolder.g - localCircleHolder.f) * f);
-      localCircleHolder.d = (localCircleHolder.h + (localCircleHolder.i - localCircleHolder.h) * f);
-      localCircleHolder.e = (localCircleHolder.j + (localCircleHolder.k - localCircleHolder.j) * f);
-      localCircleHolder.a = (localCircleHolder.b + (int)((localCircleHolder.jdField_c_of_type_Int - localCircleHolder.b) * f));
-    }
-    this.a.invalidate();
+    MotionEvent localMotionEvent1 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 0, 0.0F, 0.0F, 0);
+    TransactionActivity.b(this.a).dispatchTouchEvent(localMotionEvent1);
+    MotionEvent localMotionEvent2 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 1, 0.0F, 0.0F, 0);
+    TransactionActivity.b(this.a).dispatchTouchEvent(localMotionEvent2);
+    localMotionEvent1.recycle();
+    localMotionEvent2.recycle();
   }
 }
 

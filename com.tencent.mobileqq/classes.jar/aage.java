@@ -1,14 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameTouchView;
 
-class aage
+public class aage
   implements Runnable
 {
-  aage(aagd paramaagd) {}
+  public aage(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "下载资源失败,请重试！", 1).a();
+    ARWorldCupGlobalSceneRenderable.a(this.a).c();
+    ARWorldCupGlobalSceneRenderable.a(this.a).setClickable(false);
+    ARWorldCupGlobalSceneRenderable.a(this.a).setVisibility(8);
   }
 }
 

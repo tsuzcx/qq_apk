@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import java.util.List;
 
 public class mcr
-  implements Runnable
+  extends ReadInJoyObserver
 {
-  public mcr(VideoFeedsListView paramVideoFeedsListView) {}
+  public mcr(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void run()
+  public void c(List paramList)
   {
-    this.a.setIsScrollItemToTop(true, false);
+    ReadInJoyVideoTagSelectionFragment.a(this.a).addAll(paramList);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this);
   }
 }
 

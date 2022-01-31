@@ -1,19 +1,68 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.BackListener;
-import com.tencent.open.downloadnew.MyAppApi.ClickListenerProxy;
+import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.AuthorityLoginView;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.Login;
+import java.util.ArrayList;
 
-public class alil
+class alil
   implements Runnable
 {
-  public alil(MyAppApi paramMyAppApi, Activity paramActivity, int paramInt1, int paramInt2, String paramString, DialogInterface.OnClickListener paramOnClickListener, MyAppApi.ClickListenerProxy paramClickListenerProxy, MyAppApi.BackListener paramBackListener, int paramInt3, boolean paramBoolean, Bundle paramBundle) {}
+  alil(alik paramalik) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$ClickListenerProxy, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$BackListener, this.c, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.o));
+    this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.c(this.a.jdField_a_of_type_JavaLangString);
+    Object localObject = ((TextView)this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_AndroidViewView.findViewById(2131365731)).getText().toString();
+    if ((localObject != null) && (((String)localObject).equals(this.a.jdField_a_of_type_JavaLangString)))
+    {
+      if (this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_JavaUtilArrayList.size() != 1) {
+        break label294;
+      }
+      if ((AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) == null) || (!(AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) instanceof AuthorityActivity))) {
+        break label228;
+      }
+      localObject = new Intent(AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView), Login.class);
+      ((Intent)localObject).putExtra("key_req_src", 1);
+      ((Intent)localObject).putExtra("is_first_login", true);
+      ((AuthorityActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).jdField_a_of_type_JavaLangString = null;
+      ((AuthorityActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).startActivityForResult((Intent)localObject, 1);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AuthorityLoginView", 2, "--> after delete account");
+      }
+      this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.b();
+      ((BaseActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).runOnUiThread(new alin(this));
+      return;
+      label228:
+      if ((AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) != null) && ((AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) instanceof QuickLoginAuthorityActivity)))
+      {
+        ((QuickLoginAuthorityActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).jdField_a_of_type_JavaLangString = null;
+        ((QuickLoginAuthorityActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).a(null);
+      }
+    }
+    label294:
+    int i = 0;
+    label296:
+    if (i < this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      localObject = (String)this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (this.a.jdField_a_of_type_JavaLangString.equals(localObject)) {}
+    }
+    for (;;)
+    {
+      ((BaseActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).runOnUiThread(new alim(this, (String)localObject));
+      break;
+      i += 1;
+      break label296;
+      localObject = null;
+    }
   }
 }
 

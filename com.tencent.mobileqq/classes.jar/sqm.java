@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class sqm
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public sqm(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sqm(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.K();
+    this.a.l();
   }
 }
 

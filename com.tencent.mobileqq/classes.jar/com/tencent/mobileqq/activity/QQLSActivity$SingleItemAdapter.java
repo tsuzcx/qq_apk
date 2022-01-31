@@ -44,8 +44,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XBaseAdapter;
 import java.util.ArrayList;
 import java.util.List;
-import tjo;
-import tjp;
+import toi;
+import toj;
 
 public class QQLSActivity$SingleItemAdapter
   extends XBaseAdapter
@@ -62,15 +62,15 @@ public class QQLSActivity$SingleItemAdapter
     if (paramView != null)
     {
       paramViewGroup = paramView.getTag();
-      if (!(paramViewGroup instanceof tjp)) {}
+      if (!(paramViewGroup instanceof toj)) {}
     }
-    for (paramViewGroup = (tjp)paramViewGroup;; paramViewGroup = null)
+    for (paramViewGroup = (toj)paramViewGroup;; paramViewGroup = null)
     {
       if (paramViewGroup == null)
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getLayoutInflater().inflate(2130970413, null);
-        paramViewGroup = new tjp();
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370440));
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getLayoutInflater().inflate(2130970428, null);
+        paramViewGroup = new toj();
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370449));
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(10);
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-4210755);
@@ -78,7 +78,7 @@ public class QQLSActivity$SingleItemAdapter
       }
       for (;;)
       {
-        Object localObject = (ImageView)paramView.findViewById(2131370443);
+        Object localObject = (ImageView)paramView.findViewById(2131370452);
         if (localObject != null)
         {
           if (QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a() != 7432) {
@@ -109,7 +109,7 @@ public class QQLSActivity$SingleItemAdapter
     if ((paramView == null) || (!(paramView.getTag() instanceof QQLSActivity.SinglePttHolder)))
     {
       paramViewGroup = new QQLSActivity.SinglePttHolder();
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getLayoutInflater().inflate(2130970408, null);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getLayoutInflater().inflate(2130970423, null);
       paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361999));
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362000));
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityAioItemBreathAnimationLayout = ((BreathAnimationLayout)paramView.findViewById(2131362002));
@@ -124,7 +124,7 @@ public class QQLSActivity$SingleItemAdapter
       {
         localMessageForPtt = (MessageForPtt)localMessageRecord;
         localObject = QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, localMessageRecord);
-        ((TextView)paramView.findViewById(2131370438)).setText((CharSequence)localObject);
+        ((TextView)paramView.findViewById(2131370447)).setText((CharSequence)localObject);
         localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityAioItemBreathAnimationLayout.getLayoutParams();
         if (((String)localObject).equals("")) {
           break label557;
@@ -238,14 +238,14 @@ public class QQLSActivity$SingleItemAdapter
       if (paramView != null)
       {
         paramViewGroup = paramView;
-        if ((paramView.getTag() instanceof tjo)) {}
+        if ((paramView.getTag() instanceof toi)) {}
       }
       else
       {
-        paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getLayoutInflater().inflate(2130970412, null);
-        paramView = new tjo();
-        localObject1 = (TextView)paramViewGroup.findViewById(2131370440);
-        localObject2 = (ImageView)paramViewGroup.findViewById(2131370439);
+        paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getLayoutInflater().inflate(2130970427, null);
+        paramView = new toi();
+        localObject1 = (TextView)paramViewGroup.findViewById(2131370449);
+        localObject2 = (ImageView)paramViewGroup.findViewById(2131370448);
         ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
         ((TextView)localObject1).setMaxLines(10);
         paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject1);
@@ -255,7 +255,7 @@ public class QQLSActivity$SingleItemAdapter
       paramView = paramViewGroup;
     } while (paramInt >= this.jdField_a_of_type_JavaUtilList.size());
     MessageRecord localMessageRecord = (MessageRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject2 = (tjo)paramViewGroup.getTag();
+    Object localObject2 = (toi)paramViewGroup.getTag();
     if (localMessageRecord.istroop == 7000)
     {
       paramView = null;
@@ -279,10 +279,10 @@ public class QQLSActivity$SingleItemAdapter
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (((String)localObject1).equals("")) && ((localMessageRecord.msgtype == -2016) || (localMessageRecord.msgtype == -2009) || (localMessageRecord.msgtype == -2026)))
       {
         localObject1 = localMessageRecord.msg;
-        ((tjo)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextColor(-570319);
-        ((tjo)localObject2).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        ((toi)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextColor(-570319);
+        ((toi)localObject2).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         label371:
-        ((tjo)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(new QQText((CharSequence)localObject1, 5, 16, QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a()));
+        ((toi)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(new QQText((CharSequence)localObject1, 5, 16, QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a()));
         return paramViewGroup;
         if ((localMessageRecord.istroop == 1001) || (localMessageRecord.istroop == 1010) || (localMessageRecord.istroop == 10002))
         {
@@ -292,7 +292,7 @@ public class QQLSActivity$SingleItemAdapter
             paramView.msgData = localMessageRecord.msgData;
             paramView.parse();
             localObject1 = paramView.nickName;
-            paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getString(2131437862) + (String)localObject1 + paramView.msg;
+            paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getString(2131437882) + (String)localObject1 + paramView.msg;
             continue;
           }
           localObject1 = ContactUtils.q(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), localMessageRecord.senderuin);
@@ -303,9 +303,9 @@ public class QQLSActivity$SingleItemAdapter
           Object localObject3;
           if (localMessageRecord.frienduin.equals(AppConstants.ad))
           {
-            ((TextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370422)).setText(BaseApplicationImpl.getApplication().getString(2131437976));
-            localObject1 = BaseApplicationImpl.getApplication().getString(2131437977);
-            ((DragTextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370426)).setVisibility(8);
+            ((TextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370431)).setText(BaseApplicationImpl.getApplication().getString(2131437996));
+            localObject1 = BaseApplicationImpl.getApplication().getString(2131437997);
+            ((DragTextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370435)).setVisibility(8);
             localObject3 = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.OneyWayDateMsgNotifyCfg.name());
             paramView = (View)localObject1;
             if (((String)localObject3).length() <= 0) {
@@ -316,15 +316,15 @@ public class QQLSActivity$SingleItemAdapter
             if (localObject3.length < 6) {
               break label1357;
             }
-            ((TextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370422)).setText(localObject3[4]);
+            ((TextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370431)).setText(localObject3[4]);
             paramView = localObject3[5];
             continue;
           }
           if (localMessageRecord.frienduin.equals(AppConstants.ac))
           {
-            ((TextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370422)).setText(BaseApplicationImpl.getApplication().getString(2131437978));
-            localObject1 = BaseApplicationImpl.getApplication().getString(2131437979);
-            ((DragTextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370426)).setVisibility(8);
+            ((TextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370431)).setText(BaseApplicationImpl.getApplication().getString(2131437998));
+            localObject1 = BaseApplicationImpl.getApplication().getString(2131437999);
+            ((DragTextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370435)).setVisibility(8);
             localObject3 = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.OneyWayLBSFriendMsgNotifyCfg.name());
             paramView = (View)localObject1;
             if (((String)localObject3).length() <= 0) {
@@ -335,7 +335,7 @@ public class QQLSActivity$SingleItemAdapter
             if (localObject3.length < 6) {
               break label1357;
             }
-            ((TextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370422)).setText(localObject3[4]);
+            ((TextView)QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).findViewById(2131370431)).setText(localObject3[4]);
             paramView = localObject3[5];
             continue;
           }
@@ -367,7 +367,7 @@ public class QQLSActivity$SingleItemAdapter
         }
         if (AnonymousChatHelper.a(localMessageRecord))
         {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getResources().getString(2131430287) + QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a().a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, localMessageRecord, false);
+          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.getResources().getString(2131430290) + QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a().a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, localMessageRecord, false);
           continue;
         }
         if ((localMessageRecord.istroop == 1) && ((localMessageRecord instanceof MessageForPubAccount))) {
@@ -387,8 +387,8 @@ public class QQLSActivity$SingleItemAdapter
         }
         paramView = QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity).a().a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, localMessageRecord, false);
         break;
-        ((tjo)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextColor(-4210755);
-        ((tjo)localObject2).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        ((toi)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextColor(-4210755);
+        ((toi)localObject2).jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         break label371;
       }
     }

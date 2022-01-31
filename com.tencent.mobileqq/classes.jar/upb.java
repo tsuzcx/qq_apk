@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 
-public class upb
+class upb
   implements Runnable
 {
-  public upb(GoldMsgNumAnim paramGoldMsgNumAnim) {}
+  upb(upa paramupa, String paramString) {}
   
   public void run()
   {
-    this.a.a();
+    this.jdField_a_of_type_Upa.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTag(2131361863, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Upa.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnLongClickListener(this.jdField_a_of_type_Upa.jdField_a_of_type_AndroidViewView$OnLongClickListener);
   }
 }
 

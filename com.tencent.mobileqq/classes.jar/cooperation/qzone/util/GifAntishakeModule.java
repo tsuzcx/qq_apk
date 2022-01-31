@@ -1,11 +1,11 @@
 package cooperation.qzone.util;
 
-import anao;
-import anap;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
 import android.util.LruCache;
+import anin;
+import anio;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -34,7 +34,7 @@ public class GifAntishakeModule
   private float jdField_a_of_type_Float = Float.parseFloat(QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeMinSimilarity", "0.6"));
   private long jdField_a_of_type_Long = Long.parseLong(QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeMaxGroupShootTime", "60000"));
   private GifAntishakeModule.postProgressListener jdField_a_of_type_CooperationQzoneUtilGifAntishakeModule$postProgressListener;
-  private String jdField_a_of_type_JavaLangString = AppConstants.aI + "/tencent/Qzone/AntishakeGif/";
+  private String jdField_a_of_type_JavaLangString = AppConstants.aJ + "/tencent/Qzone/AntishakeGif/";
   private long jdField_b_of_type_Long = Long.parseLong(QzoneConfig.getInstance().getConfig("QZoneSetting", "GifAntishakeMaxFrameShootTime", "3000"));
   private String jdField_b_of_type_JavaLangString = ".nomedia";
   private boolean jdField_b_of_type_Boolean;
@@ -196,7 +196,7 @@ public class GifAntishakeModule
     int i = 1;
     while (i < paramArrayList.size())
     {
-      jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new anap(this, paramArrayList, i, localCountDownLatch, localBitmap, arrayOfBoolean));
+      jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new anio(this, paramArrayList, i, localCountDownLatch, localBitmap, arrayOfBoolean));
       i += 1;
     }
     try
@@ -261,7 +261,7 @@ public class GifAntishakeModule
       i = 1;
       while (i < j)
       {
-        jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new anao(this, i, k, m, paramArrayList, localBitmap1, n, i1, arrayOfString, (CountDownLatch)localObject));
+        jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(new anin(this, i, k, m, paramArrayList, localBitmap1, n, i1, arrayOfString, (CountDownLatch)localObject));
         i += 1;
       }
     }
@@ -314,7 +314,10 @@ public class GifAntishakeModule
   
   public boolean a(ArrayList paramArrayList)
   {
-    String str = AppConstants.aI + "/tencent/Qzone/AlbumAutoVConvGif/";
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
+      return false;
+    }
+    String str = AppConstants.aJ + "/tencent/Qzone/AlbumAutoVConvGif/";
     if (((String)paramArrayList.get(0)).startsWith(str))
     {
       if (QLog.isColorLevel()) {

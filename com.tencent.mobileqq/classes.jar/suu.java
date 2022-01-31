@@ -1,46 +1,52 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.util.WeakReferenceHandler;
 
 public class suu
-  implements DragSortListView.RemoveListener
+  implements Runnable
 {
-  public suu(GroupManagerActivity paramGroupManagerActivity) {}
+  public suu(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
-    }
-    paramInt -= 1;
-    byte b;
-    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
+    int j = 0;
+    Object localObject = (FriendsManager)this.a.app.getManager(50);
+    if (localObject == null)
     {
-      Object localObject = (Groups)this.a.a.get(paramInt);
-      b = (byte)((Groups)localObject).group_id;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
+      localObject = null;
+      if (localObject != null) {
+        break label164;
       }
-      if (b == 0)
-      {
-        localObject = new QQToast(this.a);
-        ((QQToast)localObject).d(2000);
-        ((QQToast)localObject).c(2131436516);
-        ((QQToast)localObject).a();
-      }
+      localObject = new Card();
     }
-    else
+    label164:
+    for (int i = 1;; i = 0)
     {
-      return;
+      ((Card)localObject).feedPreviewTime = System.currentTimeMillis();
+      ((Card)localObject).strQzoneFeedsDesc = "";
+      Message localMessage = Message.obtain();
+      localMessage.obj = localObject;
+      if (i != 0) {}
+      for (localMessage.what = 6;; localMessage.what = 5)
+      {
+        if (this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) {
+          this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+        }
+        i = j;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null) {
+          i = this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.h;
+        }
+        this.a.e(i);
+        return;
+        localObject = ((FriendsManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+        break;
+      }
     }
-    GroupManagerActivity.a(this.a, b);
-    ReportController.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
   }
 }
 

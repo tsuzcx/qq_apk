@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
 
 public class wja
-  extends SosoInterface.OnLocationListener
+  implements Runnable
 {
-  public wja(SearchContactsFragment paramSearchContactsFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public wja(ZhituManager paramZhituManager) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    if (paramInt == 0)
-    {
-      SearchContactsFragment.a(this.a, paramSosoLbsInfo.a.a);
-      SearchContactsFragment.b(this.a, paramSosoLbsInfo.a.b);
-    }
+    ZhituManager.a(this.a, Looper.myQueue());
   }
 }
 

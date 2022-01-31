@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.hotpic;
 
-import adrh;
-import adri;
-import adrj;
-import adrk;
+import adzq;
+import adzr;
+import adzs;
+import adzt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -140,7 +140,7 @@ public class HotVideoMongoliaRelativeLayout
     }
     for (;;)
     {
-      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131364787);
+      FrameLayout localFrameLayout = (FrameLayout)findViewById(2131364814);
       localFrameLayout.removeAllViews();
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$VideoInfo.jdField_a_of_type_Int, -1);
       localFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
@@ -154,20 +154,20 @@ public class HotVideoMongoliaRelativeLayout
   private void g()
   {
     QLog.d("HotVideoRelativeLayout", 2, "mVideoTitle is" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$VideoInfo.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364789));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364790));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131364788);
-    this.jdField_a_of_type_ComTencentMobileqqHotpicCircleProgressView = ((CircleProgressView)findViewById(2131364794));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131364791));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364816));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364817));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131364815);
+    this.jdField_a_of_type_ComTencentMobileqqHotpicCircleProgressView = ((CircleProgressView)findViewById(2131364821));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131364818));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(10000);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364792));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364793));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364819));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364820));
     f();
     b(2);
     setOnTouchListener(this);
-    setOnClickListener(new adrh(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new adri(this));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new adrj(this));
+    setOnClickListener(new adzq(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new adzr(this));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new adzs(this));
   }
   
   public void a()
@@ -216,7 +216,7 @@ public class HotVideoMongoliaRelativeLayout
       if (!paramBoolean) {
         break label70;
       }
-      i = 2130837601;
+      i = 2130837600;
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getContext().getResources().getDrawable(i));
       localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
       if (!paramBoolean) {
@@ -232,7 +232,7 @@ public class HotVideoMongoliaRelativeLayout
         this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout$PresenceInterface.a(paramBoolean);
       }
       return;
-      i = 2130837602;
+      i = 2130837601;
       break;
     }
   }
@@ -265,7 +265,7 @@ public class HotVideoMongoliaRelativeLayout
     }
     if (!a())
     {
-      ThreadManager.getUIHandler().post(new adrk(this, paramInt));
+      ThreadManager.getUIHandler().post(new adzt(this, paramInt));
       return;
     }
     a(this.jdField_a_of_type_Int, paramInt);

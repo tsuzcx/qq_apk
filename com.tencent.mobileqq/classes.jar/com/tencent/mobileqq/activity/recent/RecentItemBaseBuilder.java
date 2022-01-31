@@ -13,19 +13,19 @@ import com.tencent.mobileqq.nearby.NearbyUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SwipRightMenuBuilder;
 import java.util.List;
-import xkr;
+import xqo;
 
 public abstract class RecentItemBaseBuilder
 {
   public static final int[] a;
-  public static final int[] b = { 2130838682, 2130838681, 2130838681, 2130838681, 2130838683, 2130838683, 2130838683, 2130838681, 2130838681 };
-  public static final int[] c = { 2131370002, 2131370003, 2131370005, 2131370004, 2131370006, 2131370007, 2131370008, 2131370010, 2131370011 };
+  public static final int[] b = { 2130838690, 2130838689, 2130838689, 2130838689, 2130838691, 2130838691, 2130838691, 2130838689, 2130838689 };
+  public static final int[] c = { 2131370011, 2131370012, 2131370014, 2131370013, 2131370015, 2131370016, 2131370017, 2131370019, 2131370020 };
   protected RecentAdapter a;
   protected SwipRightMenuBuilder a;
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131434041, 2131435581, 2131437150, 2131437149, 2131437153, 2131437154, 2131437155, 2131435388, 2131435389 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131434057, 2131435597, 2131437170, 2131437169, 2131437173, 2131437174, 2131437175, 2131435404, 2131435405 };
   }
   
   public int a()
@@ -58,7 +58,7 @@ public abstract class RecentItemBaseBuilder
     paramContext = c;
     int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
     int[] arrayOfInt2 = b;
-    return new xkr(this, k, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+    return new xqo(this, k, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
   }
   
   public List a(RecentBaseData paramRecentBaseData, Context paramContext)

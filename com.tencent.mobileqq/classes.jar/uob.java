@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class uob
-  implements Runnable
+  implements View.OnClickListener
 {
-  public uob(XBubbleAnimation paramXBubbleAnimation) {}
+  public uob(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.d();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

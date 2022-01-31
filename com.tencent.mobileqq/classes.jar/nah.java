@@ -1,17 +1,21 @@
-import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.CacheCleaner;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-public class nah
-  implements Runnable
+public final class nah
+  implements BusinessObserver
 {
-  public nah(PreloadDownloaderManager paramPreloadDownloaderManager) {}
+  public nah(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.b();
-    this.a.jdField_a_of_type_JavaLangRunnable = null;
-    CacheCleaner.a().a(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    ThreadManager.getSubThreadHandler().postDelayed(new nai(this, paramBoolean, paramBundle), 10L);
   }
 }
 

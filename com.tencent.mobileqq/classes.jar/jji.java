@@ -1,33 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.av.SessionMgr;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.SessionInfo.GuildInfo;
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
 
 public class jji
-  implements DialogInterface.OnClickListener
 {
-  public jji(GuildMultiActivity paramGuildMultiActivity) {}
+  public int a;
+  public boolean a;
+  public int b = 0;
+  public int c = 0;
+  public int d = 0;
+  public int e = 0;
+  public int f = 0;
+  public int g = 0;
+  public int h = 0;
+  public int i = 0;
+  public int j = 0;
+  public int k = 0;
+  public int l = 0;
+  public int m = 0;
+  public int n = 0;
+  public int o = 0;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public jji(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
   {
-    SessionInfo localSessionInfo = SessionMgr.a().a(this.a.e);
-    if (localSessionInfo != null)
-    {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("url", localSessionInfo.a.f);
-      this.a.startActivity(localIntent);
-      this.a.a(localSessionInfo, 1);
-    }
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jji
  * JD-Core Version:    0.7.0.1
  */

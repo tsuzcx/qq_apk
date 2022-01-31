@@ -3,15 +3,13 @@ package com.tencent.mapsdk.rastercore.e.a;
 import android.content.Context;
 import com.tencent.mapsdk.raster.model.TileOverlayOptions;
 import com.tencent.mapsdk.raster.model.TileProvider;
-import com.tencent.mapsdk.rastercore.d.e;
 import com.tencent.mapsdk.rastercore.tile.a.1;
-import com.tencent.mapsdk.rastercore.tile.a.a;
 import java.io.File;
 
 public final class f
 {
   private static int h = 0;
-  private e a;
+  private com.tencent.mapsdk.rastercore.d.f a;
   private final String b;
   private boolean c = true;
   private float d = (1.0F / -1.0F);
@@ -19,24 +17,21 @@ public final class f
   private TileProvider f;
   private String g;
   
-  public f(e parame, TileOverlayOptions paramTileOverlayOptions)
+  public f(com.tencent.mapsdk.rastercore.d.f paramf, TileOverlayOptions paramTileOverlayOptions)
   {
     StringBuilder localStringBuilder = new StringBuilder("TileOverlay_");
     int i = h;
     h = i + 1;
     this.b = i;
-    this.a = parame;
-    this.g = (e.a().getPackageName() + File.separator + this.b);
+    this.a = paramf;
+    this.g = (com.tencent.mapsdk.rastercore.d.f.a().getPackageName() + File.separator + this.b);
     this.e = paramTileOverlayOptions.getDiskCacheEnabled();
     this.f = paramTileOverlayOptions.getTileProvider();
     this.d = paramTileOverlayOptions.getZIndex();
     this.c = paramTileOverlayOptions.isVisible();
   }
   
-  public static void c()
-  {
-    a.a().b();
-  }
+  public static void c() {}
   
   public final float a()
   {

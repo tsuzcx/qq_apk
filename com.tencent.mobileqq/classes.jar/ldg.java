@@ -1,15 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
-public class ldg
-  implements Runnable
+class ldg
+  implements Animation.AnimationListener
 {
-  public ldg(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  ldg(ldf paramldf) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyGlobalReporter.a().b(this.a.app);
+    ReadInJoyNaviController.a(this.a.a, true);
+    ReadInJoyNaviController.a(this.a.a).setAlpha(0.0F);
+    ReadInJoyNaviController.a(this.a.a).removeView(ReadInJoyNaviController.a(this.a.a));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

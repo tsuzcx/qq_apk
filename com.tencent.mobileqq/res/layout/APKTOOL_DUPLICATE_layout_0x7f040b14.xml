@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qzone.module.feedcomponent.ui.FeedCanvasAdRecommAction android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ebd" android:paddingLeft="2.0dip" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="26.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AvatarImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31e2" android:clickable="false" android:layout_width="22.0dip" android:layout_height="22.0dip" android:scaleType="centerCrop" />
+    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="12.0sp" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31e3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="7.0dip" android:text="弹幕" android:maxLines="1" />
+</LinearLayout>

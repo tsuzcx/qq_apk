@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.troop.widget.TroopPickerViewHelper.OnConfirmListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import com.tencent.widget.XPanelContainer;
 
 public class adye
-  implements TroopPickerViewHelper.OnConfirmListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adye(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public adye(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
   
-  public void a(long paramLong)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramLong) });
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i == this.jdField_a_of_type_Int) {
+      AbstractGifImage.resumeAll();
+    }
+    XPanelContainer.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
   }
 }
 

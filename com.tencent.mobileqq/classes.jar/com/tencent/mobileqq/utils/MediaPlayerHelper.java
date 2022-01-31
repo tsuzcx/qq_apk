@@ -180,13 +180,13 @@ public class MediaPlayerHelper
     //   17: invokespecial 28	android/media/MediaPlayer:<init>	()V
     //   20: putfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
     //   23: aconst_null
-    //   24: astore 9
+    //   24: astore 7
     //   26: aconst_null
-    //   27: astore 7
+    //   27: astore 8
     //   29: aconst_null
     //   30: astore 10
     //   32: aconst_null
-    //   33: astore 8
+    //   33: astore 9
     //   35: aload 10
     //   37: astore 6
     //   39: aload_0
@@ -292,7 +292,7 @@ public class MediaPlayerHelper
     //   222: istore 4
     //   224: goto -129 -> 95
     //   227: astore_2
-    //   228: aload 8
+    //   228: aload 9
     //   230: astore_1
     //   231: aload_1
     //   232: astore 6
@@ -316,7 +316,7 @@ public class MediaPlayerHelper
     //   267: istore 4
     //   269: goto -174 -> 95
     //   272: astore_2
-    //   273: aload 9
+    //   273: aload 7
     //   275: astore_1
     //   276: aload_1
     //   277: astore 6
@@ -340,7 +340,7 @@ public class MediaPlayerHelper
     //   312: istore 4
     //   314: goto -219 -> 95
     //   317: astore_2
-    //   318: aload 7
+    //   318: aload 8
     //   320: astore_1
     //   321: aload_1
     //   322: astore 6
@@ -402,9 +402,9 @@ public class MediaPlayerHelper
     //   183	7	6	localIllegalStateException1	IllegalStateException
     //   232	132	6	localContext	Context
     //   408	1	6	localIllegalStateException2	IllegalStateException
-    //   27	292	7	localObject2	Object
-    //   33	196	8	localObject3	Object
-    //   24	250	9	localObject4	Object
+    //   24	250	7	localObject2	Object
+    //   27	292	8	localObject3	Object
+    //   33	196	9	localObject4	Object
     //   30	86	10	localObject5	Object
     // Exception table:
     //   from	to	target	type

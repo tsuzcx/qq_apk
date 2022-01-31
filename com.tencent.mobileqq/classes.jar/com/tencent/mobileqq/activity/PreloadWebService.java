@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import java.io.File;
 import mqq.app.MobileQQ;
-import tgi;
+import tlc;
 
 public class PreloadWebService
   extends Service
@@ -30,7 +30,7 @@ public class PreloadWebService
     if (this.a == null)
     {
       this.a = new CustomWebView(getBaseContext());
-      this.a.setWebViewClient(new tgi(this));
+      this.a.setWebViewClient(new tlc(this));
       WebSettings localWebSettings = this.a.getSettings();
       localWebSettings.setJavaScriptEnabled(true);
       localWebSettings.setCacheMode(-1);

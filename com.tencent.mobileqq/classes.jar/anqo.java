@@ -1,22 +1,19 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
 public class anqo
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public anqo(CropVideoActivity paramCropVideoActivity) {}
+  public anqo(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, boolean paramBoolean) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
-    CropVideoActivity.a(this.a).a(paramMotionEvent);
-    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    if (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c) {
+      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.h(true);
+    }
+    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.g();
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.e();
+    }
   }
 }
 

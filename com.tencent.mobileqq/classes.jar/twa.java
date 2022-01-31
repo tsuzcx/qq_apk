@@ -1,11 +1,14 @@
-class twa
+import com.tencent.mobileqq.activity.SecurityProtectActivity;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+
+public class twa
   implements Runnable
 {
-  twa(tvy paramtvy, String paramString) {}
+  public twa(SecurityProtectActivity paramSecurityProtectActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Tvy.a(this.jdField_a_of_type_JavaLangString);
+    HttpDownloadUtil.a(this.a.a, this.a);
   }
 }
 

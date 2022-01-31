@@ -1,23 +1,51 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class vzh
-  extends BroadcastReceiver
+  implements ActionSheet.OnButtonClickListener
 {
-  private vzh(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vzh(GameRoomChatPie paramGameRoomChatPie, boolean paramBoolean, ActionSheet paramActionSheet) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      PublicAccountChatPie.a(this.a, 1);
+    switch (paramInt)
+    {
     }
-    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
-      return;
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bj();
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bh();
+        continue;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bh();
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bg();
+          continue;
+          if (this.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bg();
+          }
+        }
+      }
     }
-    PublicAccountChatPie.a(this.a, 1);
   }
 }
 

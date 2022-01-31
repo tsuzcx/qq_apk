@@ -1,21 +1,39 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.utils.QQLSSensor;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class tix
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public tix(QQLSActivity paramQQLSActivity) {}
+  public tix(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSSensor", 2, "====shutSensor===" + Thread.currentThread().getId());
+    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131434223) + this.a.a, paramBoolean);
+    if (AppSetting.b) {
+      NotifyPushSettingActivity.e(this.a).setContentDescription("与我相关的通知");
     }
-    if (this.a.a != null)
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
     {
-      this.a.a.b();
-      this.a.a = null;
+      i = 1;
+      if (!paramBoolean) {
+        break label106;
+      }
+    }
+    label106:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, paramCompoundButton, "", "", "");
+      return;
+      i = 0;
+      break;
     }
   }
 }

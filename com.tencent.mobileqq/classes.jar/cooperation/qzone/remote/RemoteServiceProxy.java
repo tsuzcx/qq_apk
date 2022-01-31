@@ -1,13 +1,13 @@
 package cooperation.qzone.remote;
 
-import amyi;
-import amyj;
-import amyk;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.DeadObjectException;
 import android.os.Looper;
 import android.os.RemoteException;
+import anfv;
+import anfw;
+import anfx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -21,7 +21,7 @@ public class RemoteServiceProxy
 {
   private static final String tag = "RemoteServiceProxy";
   private Class clazz;
-  protected ServiceConnection conn = new amyi(this);
+  protected ServiceConnection conn = new anfv(this);
   protected volatile long lastStartSerivceTime = -1L;
   private IActionListener mActionListener;
   private String mUin;
@@ -56,9 +56,9 @@ public class RemoteServiceProxy
   
   public void onBaseServiceConnected()
   {
-    amyj localamyj = new amyj(this);
-    localamyj.setName("handleWaitSendProxyMsgThread");
-    localamyj.start();
+    anfw localanfw = new anfw(this);
+    localanfw.setName("handleWaitSendProxyMsgThread");
+    localanfw.start();
   }
   
   public void sendFailedRespToApp(SendMsg paramSendMsg, RecvMsg paramRecvMsg)
@@ -118,7 +118,7 @@ public class RemoteServiceProxy
   {
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      ThreadManager.post(new amyk(this, paramSendMsg), 10, null, false);
+      ThreadManager.post(new anfx(this, paramSendMsg), 10, null, false);
       return;
     }
     this.serviceHandler.sendMsg(paramSendMsg);

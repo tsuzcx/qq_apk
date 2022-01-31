@@ -1,36 +1,65 @@
 import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateCallback;
-import com.tencent.mobileqq.troop.logic.TroopSearchLogic.TroopSearchCallback;
-import com.tencent.mobileqq.troop.utils.TroopNameHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.Contacts.OverScrollViewTag;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
 public class ajdk
-  implements TroopSearchLogic.TroopSearchCallback
+  implements OverScrollViewListener
 {
-  public ajdk(TroopCreateLogic paramTroopCreateLogic, ArrayList paramArrayList1, BaseActivity paramBaseActivity, TroopCreateLogic.TroopCreateCallback paramTroopCreateCallback, ArrayList paramArrayList2) {}
+  public ajdk(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
   
-  public void a(ArrayList paramArrayList)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    if (paramArrayList.size() > 0)
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      paramArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        paramArrayList.add(((ajds)localIterator.next()).a);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.c = TroopNameHelper.a(paramArrayList);
-      new Handler(Looper.getMainLooper()).post(new ajdl(this));
+      paramView.c(l);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(TroopCreateLogic.class).post(new ajdm(this));
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!NetworkUtil.g(this.a.getActivity())) {
+        break label97;
+      }
+      this.a.a(0, true);
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new ajdl(this), 300L);
+    }
+    for (;;)
+    {
+      ((Contacts.OverScrollViewTag)paramView.getTag()).a = true;
+      return true;
+      l = this.a.jdField_a_of_type_Long;
+      break;
+      label97:
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new ajdm(this), 300L);
+    }
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

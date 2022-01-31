@@ -1,48 +1,45 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.setting.ICameraEntrance;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import android.support.annotation.NonNull;
+import cooperation.qzone.thread.QzoneThreadMonitor;
 
 public class anij
-  implements Runnable
+  implements Comparable
 {
-  public anij(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
   
-  public void run()
+  public anij(QzoneThreadMonitor paramQzoneThreadMonitor, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, long paramLong, int paramInt2)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
-          Activity localActivity = this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a();
-          if ((localActivity != null) && (!localActivity.isFinishing())) {
-            this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_DovComQqImSettingICameraEntrance.a(2);
-          }
-        } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.x();
-        return;
-        QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
-        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.e();
-      } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.w();
-      return;
-      QQToast.a(BaseApplicationImpl.getContext(), "拍照出现异常，请重试", 0).a();
-    } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.w();
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public int a(@NonNull anij paramanij)
+  {
+    return (int)(this.jdField_a_of_type_Long - paramanij.jdField_a_of_type_Long);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof anij)) && (this.jdField_a_of_type_JavaLangString.equals(((anij)paramObject).jdField_a_of_type_JavaLangString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anij
  * JD-Core Version:    0.7.0.1
  */

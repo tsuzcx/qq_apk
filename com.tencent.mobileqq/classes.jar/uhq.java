@@ -1,26 +1,35 @@
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.StrangerHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class uhq
   implements View.OnClickListener
 {
-  public uhq(VisitorsActivity paramVisitorsActivity) {}
+  public uhq(TroopRequestActivity paramTroopRequestActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof uil))
+    paramView = (StrangerHandler)this.a.app.a(26);
+    ArrayList localArrayList = new ArrayList();
+    try
     {
-      paramView = (uil)paramView.getTag();
-      ReportController.a(this.a.app, "CliOper", "", "", "0X8004447", "0X8004447", 0, 0, "", "", "", "");
-      VisitorsActivity.a(this.a, (CardProfile)paramView.a);
-    }
-    while (!(paramView.getTag() instanceof uin)) {
+      if (!TextUtils.isEmpty(this.a.b)) {
+        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
+      }
+      paramView.a(localArrayList);
       return;
     }
-    this.a.b();
+    catch (NumberFormatException paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", paramView);
+    }
   }
 }
 

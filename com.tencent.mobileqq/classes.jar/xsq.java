@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
-public class xsq
-  implements DialogInterface.OnClickListener
+class xsq
+  implements Runnable
 {
-  public xsq(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  xsq(xsp paramxsp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    NewFlowEditVideoActivity.b(this.a, false);
-    NewFlowEditVideoActivity.b(this.a).setSelected(false);
+    String str = this.a.a.a.getText().toString();
+    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
+      this.a.a.a.setText("");
+    }
   }
 }
 

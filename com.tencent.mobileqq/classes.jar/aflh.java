@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.PublishManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
 
 public class aflh
-  implements Runnable
+  implements TextWatcher
 {
-  public aflh(NearbyMomentManager paramNearbyMomentManager, String paramString, NearbyMomentManager.DeleteFeedCallback paramDeleteFeedCallback) {}
+  public aflh(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    boolean bool = PublishManager.a(this.jdField_a_of_type_JavaLangString);
-    ThreadManager.getUIHandler().post(new afli(this, bool));
+    NearbyUtils.a(this.a.e, 90);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

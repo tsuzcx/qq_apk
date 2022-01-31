@@ -1,31 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class anxd
-  extends AnimatorListenerAdapter
+public final class anxd
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public anxd(FaceLayer.FaceItem paramFaceItem) {}
+  public anxd(View paramView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  @TargetApi(11)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    SLog.b(FaceLayer.a, "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    SLog.b(FaceLayer.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.i = false;
-    this.a.b.k();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    SLog.b(FaceLayer.a, "scaleAnimator start!");
-    this.a.i = true;
+    if (QLog.isColorLevel()) {
+      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
+    }
+    paramFloat = paramFloat1.floatValue();
+    if (this.a != null)
+    {
+      this.a.setAlpha(paramFloat);
+      this.a.invalidate();
+    }
   }
 }
 

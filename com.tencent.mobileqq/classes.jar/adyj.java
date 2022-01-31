@@ -1,28 +1,27 @@
-import com.tencent.mobileqq.jsp.X5ApiPlugin;
-import com.tencent.mobileqq.jsp.X5ApiPlugin.PreloadTask;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils.OfflineData;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.hotpic.HotPicManager;
+import java.io.File;
+import java.util.Comparator;
 
 public class adyj
-  implements Runnable
+  implements Comparator
 {
-  public adyj(X5ApiPlugin paramX5ApiPlugin, X5ApiPlugin.PreloadTask paramPreloadTask, WebView paramWebView) {}
+  public adyj(HotPicManager paramHotPicManager) {}
   
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (SwiftOfflineDataUtils.a(this.jdField_a_of_type_ComTencentMobileqqJspX5ApiPlugin$PreloadTask.a))
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {}
+    do
     {
-      SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.a(this.jdField_a_of_type_ComTencentMobileqqJspX5ApiPlugin$PreloadTask.a);
-      localObject1 = localObject2;
-      if (localOfflineData != null) {
-        localObject1 = localOfflineData.b;
+      return -1;
+      if (paramFile1.lastModified() != paramFile2.lastModified()) {
+        break;
       }
-    }
-    SwiftBrowserTBSHandler.a(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_ComTencentMobileqqJspX5ApiPlugin$PreloadTask.a, (String)localObject1);
+      if (paramFile1.length() > paramFile2.length()) {
+        return 1;
+      }
+    } while (paramFile1.length() < paramFile2.length());
+    return 0;
+    return 1;
   }
 }
 

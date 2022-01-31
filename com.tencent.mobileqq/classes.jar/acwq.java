@@ -1,14 +1,16 @@
-public abstract interface acwq
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+
+class acwq
+  implements Runnable
 {
-  public abstract void a(int paramInt, String paramString);
+  acwq(acwp paramacwp) {}
   
-  public abstract void a(int paramInt, String paramString1, String paramString2);
-  
-  public abstract void a(long paramLong, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
+  public void run()
+  {
+    UniformDownloadActivity.b(this.a.a).setVisibility(4);
+    this.a.a.finish();
+  }
 }
 
 

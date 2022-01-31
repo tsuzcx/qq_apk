@@ -1,17 +1,26 @@
-import com.tencent.biz.qqstory.model.item.HotTopicInfoItem;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.qqstory.shareGroup.addvideo.AddVideoController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class nwa
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public nwa(DiscoverPresenter paramDiscoverPresenter, HotTopicInfoItem paramHotTopicInfoItem) {}
+  public nwa(AddVideoController paramAddVideoController, ActionSheet paramActionSheet, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemHotTopicInfoItem);
-    SLog.b("Q.qqstory.discover.DiscoverPresenter", "topic %d info %s", Long.valueOf(DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter)), this.jdField_a_of_type_ComTencentBizQqstoryModelItemHotTopicInfoItem);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupAddvideoAddVideoController.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupAddvideoAddVideoController.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
   }
 }
 

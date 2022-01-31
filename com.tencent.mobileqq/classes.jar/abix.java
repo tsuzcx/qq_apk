@@ -1,39 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.armap.ARMapManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class abix
-  extends Handler
+  implements MediaPlayer.OnPreparedListener
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public abix(ARMapManager paramARMapManager) {}
   
-  public abix(ARMapSplashView paramARMapSplashView1, Looper paramLooper, ARMapSplashView paramARMapSplashView2)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramARMapSplashView2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ARMapSplashView localARMapSplashView = (ARMapSplashView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localARMapSplashView == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapSplashView", 2, String.format("handleMessage msg=%s", new Object[] { Integer.valueOf(paramMessage.what) }));
-    }
-    switch (paramMessage.what)
+    if ((ARMapManager.a(this.a) == 0) && (paramMediaPlayer != null)) {}
+    try
     {
-    default: 
-      return;
-    case 1: 
-      ARMapSplashView.a(localARMapSplashView);
+      paramMediaPlayer.start();
       return;
     }
-    ARMapSplashView.b(localARMapSplashView);
+    catch (Exception paramMediaPlayer)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ARMapManager", 2, "playMapBGSound2-----" + paramMediaPlayer.getMessage());
+    }
   }
 }
 

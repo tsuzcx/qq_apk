@@ -1,56 +1,91 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.opengl.GlStringParser;
-import com.tencent.av.opengl.texture.YUVTexture;
-import com.tencent.av.opengl.texture.YUVTexture.GLRenderListener;
+import com.tencent.av.gameplay.QAVGamePlaySoConfigInfo;
+import com.tencent.av.gameplay.QavGPDownloader;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class jjx
-  extends Handler
+class jjx
+  implements INetEngine.INetEngineListener
 {
-  public jjx(YUVTexture paramYUVTexture, Looper paramLooper)
+  jjx(jjw paramjjw, String paramString, QAVGamePlaySoConfigInfo paramQAVGamePlaySoConfigInfo, int paramInt) {}
+  
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    super(paramLooper);
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      QavGPDownloader.a(i / this.jdField_a_of_type_Jjw.jdField_a_of_type_Int + this.jdField_a_of_type_Jjw.b);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(NetResp paramNetResp)
   {
-    switch (paramMessage.what)
-    {
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
+    if (this.jdField_a_of_type_Jjw.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
+      this.jdField_a_of_type_Jjw.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
     }
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("QavGPDownloadManager", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.jdField_a_of_type_JavaLangString, Integer.valueOf(paramNetResp.jdField_a_of_type_Int), Integer.valueOf(paramNetResp.c), this.jdField_a_of_type_JavaLangString }));
+    }
+    int i;
+    if (paramNetResp.jdField_a_of_type_Int == 0)
     {
-      do
+      paramNetResp = new File(localHttpNetReq.c);
+      if (paramNetResp.exists())
       {
-        do
+        try
         {
-          do
+          String str = paramNetResp.getParent();
+          FileUtils.a(localHttpNetReq.c, str, false);
+          QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载成功了. path[%s]", new Object[] { str }));
+          QavGPDownloader.a(this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo);
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
           {
-            return;
-          } while (YUVTexture.a(this.a) == null);
-          YUVTexture.a(this.a).a();
+            localException.printStackTrace();
+            i = 0;
+          }
+          QavGPDownloader.a(-1);
           return;
-        } while (YUVTexture.a(this.a) == null);
-        YUVTexture.a(this.a).b();
-        return;
-      } while (YUVTexture.a(this.a) == null);
-      YUVTexture.a(this.a).c();
-      return;
-    } while (YUVTexture.a(this.a) == null);
-    if (YUVTexture.a(this.a) == null) {
-      YUVTexture.a(this.a, new GlStringParser('=', ';'));
+        }
+        paramNetResp.delete();
+      }
     }
-    paramMessage = (String)paramMessage.obj;
-    YUVTexture.a(this.a).a(paramMessage);
-    int i = YUVTexture.a(this.a).a("width");
-    int j = YUVTexture.a(this.a).a("height");
-    int k = YUVTexture.a(this.a).a("angle");
-    YUVTexture.a(this.a).a(i, j, k);
+    for (;;)
+    {
+      if (i != 0)
+      {
+        QavGPDownloader.a(100 / this.jdField_a_of_type_Jjw.jdField_a_of_type_Int + this.jdField_a_of_type_Jjw.b);
+        paramNetResp = this.jdField_a_of_type_Jjw;
+        paramNetResp.b += 100 / this.jdField_a_of_type_Jjw.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_Jjw.a(this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo, this.jdField_a_of_type_Int - 1)) {
+          this.jdField_a_of_type_Jjw.jdField_a_of_type_Boolean = false;
+        }
+        return;
+      }
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jjx
  * JD-Core Version:    0.7.0.1
  */

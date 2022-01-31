@@ -7,7 +7,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import wgz;
+import wmj;
 
 @SuppressLint({"UseSparseArrays"})
 public class OnlineStatusIconHelper
@@ -38,8 +38,8 @@ public class OnlineStatusIconHelper
     try
     {
       SAXParser localSAXParser = SAXParserFactory.newInstance().newSAXParser();
-      wgz localwgz = new wgz(this);
-      localSAXParser.parse(paramContext.getAssets().open("online_status_icon_config.xml"), localwgz);
+      wmj localwmj = new wmj(this);
+      localSAXParser.parse(paramContext.getAssets().open("online_status_icon_config.xml"), localwmj);
       return;
     }
     catch (Exception paramContext) {}

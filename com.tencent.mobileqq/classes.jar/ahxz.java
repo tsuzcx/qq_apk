@@ -1,38 +1,33 @@
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import com.tencent.common.config.provider.QZoneConfigConst;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import cooperation.qzone.UndealCount.QZoneCountInfo;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.app.UniteSearchObserver;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ahxz
-  implements Runnable
+  extends UniteSearchObserver
 {
-  public ahxz(QZoneManagerImp paramQZoneManagerImp, QZoneCountInfo paramQZoneCountInfo, int paramInt) {}
+  public ahxz(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    if (QZoneManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp) == null) {
-      return;
+    super.a(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
     }
-    ContentValues localContentValues = this.jdField_a_of_type_CooperationQzoneUndealCountQZoneCountInfo.a();
-    localContentValues.put("own_uin", QZoneManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp).getAccount());
-    localContentValues.put("type", Integer.valueOf(this.jdField_a_of_type_Int));
-    try
-    {
-      QZoneManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp).getApplication().getContentResolver().insert(QZoneConfigConst.h, localContentValues);
-      return;
-    }
-    catch (Exception localException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp.a(localException);
+  }
+  
+  public void a(int paramInt, List paramList)
+  {
+    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
+    HotWordsForSubBussFragment.a(this.a, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxz
  * JD-Core Version:    0.7.0.1
  */

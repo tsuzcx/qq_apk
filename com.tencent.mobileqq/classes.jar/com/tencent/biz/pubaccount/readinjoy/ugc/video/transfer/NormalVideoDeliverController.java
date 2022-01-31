@@ -9,8 +9,8 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import lzm;
-import lzn;
+import mcz;
+import mda;
 
 public class NormalVideoDeliverController
   implements VideoCompressTask.VideoCompressTaskListener, VideoDeliverController
@@ -18,14 +18,14 @@ public class NormalVideoDeliverController
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private VideoCompressTask jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoVideoCompressTask;
-  private FileUploadController.FileUploadListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener = new lzm(this);
+  private FileUploadController.FileUploadListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener = new mcz(this);
   private FileUploadController jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
-  private FileUploadController.FileUploadListener jdField_b_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener = new lzn(this);
+  private FileUploadController.FileUploadListener jdField_b_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener = new mda(this);
   private FileUploadController jdField_b_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController;
   private String jdField_b_of_type_JavaLangString;
   private WeakReference jdField_b_of_type_JavaLangRefWeakReference;

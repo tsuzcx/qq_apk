@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.precover.ipc;
 
-import agng;
+import agrv;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -20,7 +20,7 @@ public class PrecoverIPCServer
   private static PrecoverIPCServer jdField_a_of_type_ComTencentMobileqqPrecoverIpcPrecoverIPCServer;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PrecoverManager jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new agng(this, "PrecoverIPCServer_MODEL");
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new agrv(this, "PrecoverIPCServer_MODEL");
   
   private PrecoverIPCServer()
   {

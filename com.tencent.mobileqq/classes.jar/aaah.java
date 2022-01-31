@@ -1,50 +1,20 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
-import com.tencent.mobileqq.armap.sensor.ARSensorManager;
-import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class aaah
-  implements Runnable
+  implements Comparator
 {
-  public aaah(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aaah(QQMessageFacade paramQQMessageFacade) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (ARWorldCupGlobalSceneRenderable.a(this.a) == 6)
-    {
-      if ((ARWorldCupGlobalSceneRenderable.a(this.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a)))
-      {
-        ARWorldCupGlobalSceneRenderable.a(this.a).a(1, 0);
-        ARWorldCupGlobalSceneRenderable.a(this.a, false);
-      }
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
-        ARWorldCupGlobalSceneRenderable.a(this.a).a();
-      }
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
-        ARWorldCupGlobalSceneRenderable.a(this.a).a(ARWorldCupGlobalSceneRenderable.a(this.a).a);
-      }
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) == 6) {
-        ARWorldCupGlobalSceneRenderable.a(this.a, 7);
-      }
-    }
-    synchronized (ARWorldCupGlobalSceneRenderable.a(this.a))
-    {
-      ARWorldCupGlobalSceneRenderable.a(this.a).clear();
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
-        ARWorldCupGlobalSceneRenderable.a(this.a, null);
-      }
-      ARWorldCupGlobalSceneRenderable.a(this.a).d();
-      ARWorldCupGlobalSceneRenderable.a(this.a);
-      ARWorldCupGlobalSceneRenderable.a(this.a, null);
-      return;
-    }
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaah
  * JD-Core Version:    0.7.0.1
  */

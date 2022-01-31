@@ -1,13 +1,12 @@
 precision lowp float;
-varying vec2 vTextureCoord;
-uniform sampler2D sTexture;
 
-uniform float percent;//百分比
-uniform float drawPart;//画左边1.0；画右边2.0
-uniform float direction;//切分方向，X轴1.0， Y轴2.0
-//side:左1，右2
-//part:左1，右2
-//part-side:0, 1, -1 只有为0的地方才需要处理
+varying highp vec2 vTextureCoord;
+uniform sampler2D sTexture;
+uniform sampler2D sTexture2;
+
+uniform float percent;
+uniform float drawPart;
+uniform float direction;
 float getAlpha(){
     float side;
     if(direction < 2.0){
@@ -19,9 +18,12 @@ float getAlpha(){
     return step(side, 0.5);
 }
 
-void main(){
+void main()
+{
     vec3 texel = texture2D(sTexture, vTextureCoord).rgb;
+    texel.r = texture2D(sTexture2, vec2(texel.r, .16666)).r;
+    texel.g = texture2D(sTexture2, vec2(texel.g, .5)).g;
+    texel.b = texture2D(sTexture2, vec2(texel.b, .83333)).b;
 
-    float alpha = getAlpha();
-    gl_FragColor = vec4(texel, alpha);
+    gl_FragColor = vec4(texel, getAlpha());
 }

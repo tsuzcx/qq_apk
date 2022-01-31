@@ -1,22 +1,26 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import com.tencent.qphone.base.util.QLog;
 
-class aiwv
+public class aiwv
   implements Runnable
 {
-  aiwv(aiwu paramaiwu) {}
+  public volatile boolean a;
+  
+  public aiwv(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
   public void run()
   {
-    if (this.a.a.jdField_b_of_type_AndroidViewView == null) {}
-    do
-    {
-      return;
-      this.a.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    } while ((this.a.a.jdField_b_of_type_AndroidWidgetTextView == null) || (TextUtils.isEmpty(this.a.a.jdField_b_of_type_AndroidWidgetTextView.getText())));
-    this.a.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> PreUpload timeout");
+        }
+        ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, 2);
+        ShortVideoUploadProcessor.c(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, 2);
+        return;
+      }
+    }
   }
 }
 

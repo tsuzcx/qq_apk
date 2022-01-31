@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import akdt;
+import aklh;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -63,7 +63,7 @@ public class QAVHrMeeting
   
   public static String a()
   {
-    return BaseApplicationImpl.getApplication().getResources().getString(2131438803);
+    return BaseApplicationImpl.getApplication().getResources().getString(2131438827);
   }
   
   public static String a(DiscussionManager paramDiscussionManager, String paramString1, String paramString2)
@@ -210,7 +210,7 @@ public class QAVHrMeeting
   {
     AudioHelper.b("获取hr信息_delay_" + paramString2);
     String str = "http://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/get_nickname_video_meeting_for_hr?uin=" + paramString2 + "&discid=" + paramString1;
-    ThreadManager.post(new akdt("QAVHrMeeting_" + AudioHelper.a(), str, paramString2, paramQQAppInterface, paramString1, paramOnGetNickNameOfMaskDisc), 5, null, false);
+    ThreadManager.post(new aklh("QAVHrMeeting_" + AudioHelper.a(), str, paramString2, paramQQAppInterface, paramString1, paramOnGetNickNameOfMaskDisc), 5, null, false);
   }
   
   public static void a(String paramString, QQAppInterface paramQQAppInterface, DiscussionInfo paramDiscussionInfo)

@@ -1,212 +1,52 @@
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
-import android.os.RemoteException;
-import android.provider.Settings.Secure;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetAdapter;
-import com.tencent.widget.ActionSheetHelper;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.log.ReportLog;
 
-public class aeko
-  implements View.OnClickListener
+public final class aeko
+  extends Handler
 {
-  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  
-  public aeko(MusicPlayerActivity paramMusicPlayerActivity) {}
-  
-  private boolean a(String paramString)
+  public aeko(Looper paramLooper)
   {
-    PackageManager localPackageManager = this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.getPackageManager();
-    try
-    {
-      localPackageManager.getPackageInfo(paramString, 1);
-      return true;
-    }
-    catch (PackageManager.NameNotFoundException paramString) {}
-    return false;
+    super(paramLooper);
   }
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject2 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity);
-    switch (paramView.getId())
+    if (paramMessage.what == 10000001)
     {
+      paramMessage = (ProgressBar)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131362780);
+      localDrawable = ReportLog.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130838759);
+      paramMessage.setIndeterminateDrawable(localDrawable);
+      paramMessage.setBackgroundDrawable(localDrawable);
+      ((TextView)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131362781)).setText(2131435069);
+      ReportLog.a().sendEmptyMessageDelayed(10000002, 2000L);
     }
-    for (;;)
+    while ((paramMessage.what != 10000002) || (ReportLog.jdField_a_of_type_AndroidAppProgressDialog == null))
     {
+      Drawable localDrawable;
       return;
-      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.finish();
+    }
+    try
+    {
+      ReportLog.jdField_a_of_type_Boolean = false;
+      ReportLog.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
       return;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682A", "0X800682A", 0, 0, "", "", "", "");
-      Object localObject1 = paramView.getTag();
-      paramView = paramView.getContext();
-      if ((!(localObject1 instanceof aeky)) || (paramView == null)) {
-        continue;
-      }
-      localObject1 = (aeky)localObject1;
-      localObject2 = new ArrayList();
-      int i = 0;
-      while (i <= 3)
-      {
-        ((List)localObject2).add(ActionSheetAdapter.a(i));
-        i += 1;
-      }
-      Object localObject3 = new ActionSheetAdapter(paramView);
-      ((ActionSheetAdapter)localObject3).a((List)localObject2);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheetAdapter.a(paramView, (ActionSheetAdapter)localObject3, new aekp(this, (aeky)localObject1), null, null, true);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
       return;
-      if (localObject2 == null) {
-        continue;
-      }
-      localObject1 = Settings.Secure.getString(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.getContentResolver(), "android_id");
-      try
-      {
-        localObject2 = ((IQQPlayerService)localObject2).a();
-        if (localObject2 == null) {
-          continue;
-        }
-        localObject2 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (SongInfo)localObject2);
-        if (!MusicPlayerActivity.a().containsKey(localObject2)) {
-          continue;
-        }
-        localObject3 = paramView.getTag();
-        if (paramView.isSelected())
-        {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X8006829", "0X8006829", 0, 0, "", "", "", "");
-          MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).a((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app.getLongAccountUin(), ((Long)MusicPlayerActivity.a().get(localObject2)).longValue(), false);
-          paramView.setSelected(false);
-          MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).setImageResource(2130839453);
-          if (!(localObject3 instanceof Integer)) {
-            continue;
-          }
-          i = ((Integer)localObject3).intValue();
-          MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, 2130839453, i);
-          return;
-        }
-      }
-      catch (RemoteException paramView)
-      {
-        QLog.e("MusicPlayerActivity", 1, "add favourite RemoteException ", paramView);
-        return;
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X8006828", "0X8006828", 0, 0, "", "", "", "");
-      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).a((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app.getLongAccountUin(), ((Long)MusicPlayerActivity.a().get(localObject2)).longValue(), true);
-      paramView.setSelected(true);
-      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).setImageResource(2130839452);
-      if (!(localObject3 instanceof Integer)) {
-        continue;
-      }
-      i = ((Integer)localObject3).intValue();
-      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, 2130839452, i);
-      return;
-      if (localObject2 == null) {
-        continue;
-      }
-      try
-      {
-        switch (((IQQPlayerService)localObject2).a())
-        {
-        case 2: 
-          localObject1 = ((IQQPlayerService)localObject2).a();
-          if ((localObject1 == null) || (localObject1.length <= 0)) {
-            continue;
-          }
-          i = ((IQQPlayerService)localObject2).g();
-          if (i >= 0) {
-            if (i < localObject1.length) {}
-          }
-          break;
-        case 3: 
-        default: 
-          for (;;)
-          {
-            for (;;)
-            {
-              label540:
-              localObject3 = ((IQQPlayerService)localObject2).a();
-              if (TextUtils.isEmpty((CharSequence)localObject3)) {
-                break;
-              }
-              ((IQQPlayerService)localObject2).a((String)localObject3, (SongInfo[])localObject1, i);
-              if (paramView == null) {
-                break;
-              }
-              localObject1 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, paramView);
-              if (!MusicPlayerActivity.b().containsKey(localObject1)) {
-                break;
-              }
-              localObject1 = (aekz)MusicPlayerActivity.b().get(localObject1);
-              paramView = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (IQQPlayerService)localObject2, paramView, ((aekz)localObject1).a);
-              MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (aekz)localObject1, paramView);
-              return;
-              ((IQQPlayerService)localObject2).a();
-              return;
-              ((IQQPlayerService)localObject2).b();
-              return;
-              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682B", "0X800682B", 0, 0, "", "", "", "");
-              if (a("com.tencent.qqmusic"))
-              {
-                localObject1 = null;
-                paramView = (View)localObject1;
-                if (localObject2 != null) {}
-                try
-                {
-                  paramView = ((IQQPlayerService)localObject2).a();
-                  if (paramView == null) {
-                    break;
-                  }
-                  paramView = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, paramView);
-                  if (!MusicPlayerActivity.a().containsKey(paramView)) {
-                    break;
-                  }
-                  paramView = new Intent("android.intent.action.VIEW", Uri.parse(String.format("androidqqmusic://form=webpage&mid=23&k1=0&k2=%s&download=1&action=download", new Object[] { String.valueOf(MusicPlayerActivity.a().get(paramView)) })));
-                  this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.startActivity(paramView);
-                  ReportController.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682C", "0X800682C", 0, 0, "", "", "", "");
-                  return;
-                }
-                catch (RemoteException paramView)
-                {
-                  for (;;)
-                  {
-                    QLog.e("MusicPlayerActivity", 1, "music player activity RemoteException ", paramView);
-                    paramView = (View)localObject1;
-                  }
-                }
-              }
-            }
-            localObject1 = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, null);
-            ((ActionSheet)localObject1).a(2131438478);
-            ((ActionSheet)localObject1).a(2131438477, 2);
-            ((ActionSheet)localObject1).c(2131438476);
-            ((ActionSheet)localObject1).a(new aekr(this, paramView, (ActionSheet)localObject1));
-            ((ActionSheet)localObject1).show();
-            return;
-            paramView = null;
-            continue;
-            break label540;
-            paramView = localObject1[0];
-            i = 0;
-          }
-          return;
-        }
-      }
-      catch (RemoteException paramView) {}
+    }
+    finally
+    {
+      ReportLog.jdField_a_of_type_AndroidAppProgressDialog = null;
     }
   }
 }

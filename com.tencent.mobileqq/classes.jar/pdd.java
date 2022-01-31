@@ -1,40 +1,101 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.ArrayList;
 
 public class pdd
-  implements Runnable
+  extends BaseAdapter
+  implements AbsListView.OnScrollListener
 {
-  public pdd(Share paramShare, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void run()
+  private pdd(MoveFileActivity paramMoveFileActivity) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
+    if (paramInt == 0)
+    {
+      QLog.e("IphoneTitleBarActivity", 4, "onScrollStateChanged=SCROLL_STATE_IDLE");
+      if (this.jdField_a_of_type_Int == this.b - 2)
+      {
+        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
+          break label44;
+        }
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
+      }
     }
-    String str = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
-    if (QLog.isColorLevel()) {
-      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina path:" + str);
+    label44:
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
+    } while (TroopFileUtils.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a) == 0);
+    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.b = paramInt3;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public int getCount()
+  {
+    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2130969905, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
+      paramView = new pde(null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131368391));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368390));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131368392));
+      paramViewGroup.setTag(paramView);
     }
-    Intent localIntent = new Intent("android.intent.action.SEND");
-    localIntent.setFlags(268435456);
-    localIntent.setType("image/*");
-    localIntent.putExtra("android.intent.extra.TEXT", this.b + this.c);
-    if (!TextUtils.isEmpty(str)) {
-      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(str)));
+    paramView = (pde)paramViewGroup.getTag();
+    TroopFileInfo localTroopFileInfo = (TroopFileInfo)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
+    if (localTroopFileInfo != null)
+    {
+      if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt)) {
+        break label162;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopFileInfo.c);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841350);
     }
-    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
-    this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start weibo!");
+    while (paramInt == MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity))
+    {
+      paramView.b.setVisibility(0);
+      return paramViewGroup;
+      label162:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText("移出文件夹");
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841352);
     }
+    paramView.b.setVisibility(4);
+    return paramViewGroup;
   }
 }
 

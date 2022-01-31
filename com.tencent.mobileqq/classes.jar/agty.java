@@ -1,55 +1,59 @@
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.av.app.PstnSessionInfo;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardWebviewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
+import com.tencent.util.URLUtil;
 
-public final class agty
-  implements ActionSheet.OnButtonClickListener
+public class agty
+  extends BroadcastReceiver
 {
-  public agty(ActionSheet paramActionSheet, int[] paramArrayOfInt, int paramInt1, QQAppInterface paramQQAppInterface, Context paramContext, PstnSessionInfo paramPstnSessionInfo, int paramInt2, String paramString) {}
+  public agty(ProfileCardWebviewPlugin paramProfileCardWebviewPlugin) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    if (paramIntent == null) {}
+    do
     {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-        if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2))
-        {
-          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, this.b);
-          return;
-        }
-      } while (this.jdField_a_of_type_Int != 5);
-      PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 1, 3);
+      return;
+      paramContext = this.a.mRuntime.a();
+    } while ((paramContext == null) || (paramContext.isFinishing()));
+    paramIntent = this.a.mRuntime.a(this.a.mRuntime.a());
+    if ((paramIntent != null) && ((paramIntent instanceof WebUiUtils.WebUiMethodInterface)))
+    {
+      paramIntent = ((WebUiUtils.WebUiMethodInterface)paramIntent).b();
+      if ((TextUtils.isEmpty(paramIntent)) || (!paramIntent.contains("entryId"))) {
+        break label232;
+      }
+    }
+    label232:
+    for (this.a.a = URLUtil.a(URLUtil.a(paramIntent), "entryId", 2);; this.a.a = 2)
+    {
+      paramContext.finish();
+      paramContext = new Intent(this.a.mRuntime.a(), FriendProfileCardActivity.class);
+      paramIntent = new ProfileActivity.AllInOne(this.a.mRuntime.a().getCurrentAccountUin(), 0);
+      if (this.a.a == 0) {
+        paramContext.setFlags(67108864);
+      }
+      paramContext.putExtra("AllInOne", paramIntent);
+      this.a.mRuntime.a().startActivity(paramContext);
+      paramContext = new Intent();
+      paramContext.putExtra("closeSpecialLogic", true);
+      this.a.mRuntime.a().setResult(-1, paramContext);
+      this.a.mRuntime.a().finish();
       return;
     }
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    if ((!MobileIssueSettings.a) && (KapalaiAdapterUtil.a().a())) {
-      KapalaiAdapterUtil.a().a(paramView);
-    }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    long l = MessageCache.a();
-    paramView.a(this.jdField_a_of_type_JavaLangString, 26, -1, l, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agty
  * JD-Core Version:    0.7.0.1
  */

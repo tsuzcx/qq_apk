@@ -1,8 +1,8 @@
 package com.tencent.widget.itemtouchhelper;
 
-import amey;
-import amez;
-import amfb;
+import ammi;
+import ammj;
+import amml;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.os.Build.VERSION;
@@ -17,9 +17,9 @@ import java.util.List;
 
 public abstract class ItemTouchHelper$Callback
 {
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new amey();
+  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new ammi();
   private static final ItemTouchUIUtil jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchUIUtil = new ItemTouchUIUtilImpl.Honeycomb();
-  private static final Interpolator b = new amez();
+  private static final Interpolator b = new ammj();
   private int jdField_a_of_type_Int = -1;
   
   static
@@ -219,10 +219,10 @@ public abstract class ItemTouchHelper$Callback
     int i = 0;
     while (i < j)
     {
-      amfb localamfb = (amfb)paramList.get(i);
-      localamfb.c();
+      amml localamml = (amml)paramList.get(i);
+      localamml.c();
       int k = paramCanvas.save();
-      a(paramCanvas, paramRecyclerView, localamfb.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localamfb.e, localamfb.f, localamfb.jdField_b_of_type_Int, false);
+      a(paramCanvas, paramRecyclerView, localamml.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localamml.e, localamml.f, localamml.jdField_b_of_type_Int, false);
       paramCanvas.restoreToCount(k);
       i += 1;
     }
@@ -307,9 +307,9 @@ public abstract class ItemTouchHelper$Callback
     int i = 0;
     while (i < j)
     {
-      amfb localamfb = (amfb)paramList.get(i);
+      amml localamml = (amml)paramList.get(i);
       int k = paramCanvas.save();
-      b(paramCanvas, paramRecyclerView, localamfb.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localamfb.e, localamfb.f, localamfb.jdField_b_of_type_Int, false);
+      b(paramCanvas, paramRecyclerView, localamml.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localamml.e, localamml.f, localamml.jdField_b_of_type_Int, false);
       paramCanvas.restoreToCount(k);
       i += 1;
     }
@@ -323,7 +323,7 @@ public abstract class ItemTouchHelper$Callback
     i = j - 1;
     if (i >= 0)
     {
-      paramCanvas = (amfb)paramList.get(i);
+      paramCanvas = (amml)paramList.get(i);
       if ((paramCanvas.c) && (!paramCanvas.a)) {
         paramList.remove(i);
       }

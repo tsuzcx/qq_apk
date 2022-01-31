@@ -1,13 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
 
 class obn
   implements Runnable
 {
-  obn(obm paramobm) {}
+  obn(obm paramobm, MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
   
   public void run()
   {
-    this.a.a.c(false);
+    ((UserManager)SuperManager.a(2)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a);
   }
 }
 

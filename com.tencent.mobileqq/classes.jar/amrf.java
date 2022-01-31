@@ -1,23 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.CrashGuard;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import cooperation.comic.jsp.QQComicJsCallback;
+import cooperation.comic.jsp.QQComicJsPlugin;
 
 public class amrf
-  implements Runnable
+  implements QQComicJsCallback
 {
-  public amrf(CrashGuard paramCrashGuard, long paramLong) {}
+  public amrf(QQComicJsPlugin paramQQComicJsPlugin) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_CooperationQzoneCrashGuard.isTimeOvered.set(true);
-    QLog.i("QZLog", 1, "clear crash count with no crash");
-    LocalMultiProcConfig.putInt4Uin("key_crash_count", 0, this.jdField_a_of_type_Long);
+    if (!TextUtils.isEmpty(paramString1)) {
+      QQComicJsPlugin.a(this.a, paramString1, new String[] { paramString2 });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrf
  * JD-Core Version:    0.7.0.1
  */

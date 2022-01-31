@@ -1,25 +1,40 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.opengl.GLES20;
+import com.tencent.qphone.base.util.QLog;
 
-public class aail
+class aail
   implements Runnable
 {
-  public aail(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
+  aail(aaii paramaaii, byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
+    if (aaii.c(this.jdField_a_of_type_Aaii) != -1) {
+      GLES20.glDeleteTextures(1, new int[] { aaii.c(this.jdField_a_of_type_Aaii) }, 0);
     }
-    for (;;)
+    if (aaii.d(this.jdField_a_of_type_Aaii) != -1) {
+      GLES20.glDeleteTextures(1, new int[] { aaii.d(this.jdField_a_of_type_Aaii) }, 0);
+    }
+    if (aaii.e(this.jdField_a_of_type_Aaii) != -1) {
+      GLES20.glDeleteTextures(1, new int[] { aaii.e(this.jdField_a_of_type_Aaii) }, 0);
+    }
+    try
     {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalControlInt", true, 0L, 0L, localHashMap, "");
+      aaii.b(this.jdField_a_of_type_Aaii, aaii.a(this.jdField_a_of_type_Aaii, 1, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
+      aaii.c(this.jdField_a_of_type_Aaii, aaii.a(this.jdField_a_of_type_Aaii, 2, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_Int / 2, (this.jdField_b_of_type_Int + 1) / 2));
+      aaii.d(this.jdField_a_of_type_Aaii, aaii.a(this.jdField_a_of_type_Aaii, 3, this.c, this.jdField_a_of_type_Int / 2, (this.jdField_b_of_type_Int + 1) / 2));
+      aaii.a(this.jdField_a_of_type_Aaii, true);
       return;
-      localHashMap.put("result", "1");
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("AREngine_OnlineVideoARRenderable", 2, "drawFrame_soft exception=" + localException.getMessage());
+          localException.printStackTrace();
+        }
+      }
     }
   }
 }

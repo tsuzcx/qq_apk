@@ -1,28 +1,24 @@
-import android.graphics.Rect;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class liz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  public liz(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public liz(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    Rect localRect = new Rect();
-    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.getWindowVisibleDisplayFrame(localRect);
-    int j = localRect.bottom;
-    int i = j;
-    if (!this.a.d) {
-      i = j - this.a.g;
-    }
-    if (i != this.a.f)
+    if ((ReadInJoyDeliverBiuActivity.b(this.a)) && ((!ReadInJoyDeliverBiuActivity.c(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1)))
     {
-      this.a.f = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = this.a.f;
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+      this.a.c(ReadInJoyDeliverBiuActivity.l(this.a));
+      return;
     }
+    PublicAccountReportUtils.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+    this.a.finish();
+    ReadInJoyDeliverBiuActivity.a(this.a, false);
   }
 }
 

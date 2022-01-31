@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 
 public class zqv
-  extends FriendListObserver
+  implements Runnable
 {
-  private zqv(GetGeneralSettings paramGetGeneralSettings) {}
+  public zqv(PublicAccountDataManager paramPublicAccountDataManager) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      GetGeneralSettings.a(this.a).a = 3;
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
+    this.a.a();
   }
 }
 

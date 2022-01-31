@@ -68,9 +68,9 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_OSK_PLAYER = "osk_exoplayer2_bundle.jar";
   public static final String QZONE_MODULE_OSK_PLAYER_CONFIG_DEFAULT = "http://d3g.qq.com/sngapp/app/update/20170728155227_6686/osk_exoplayer2_bundle.jar|f9d35ec8e90af758354bb174abc12df4";
   public static final String QZONE_MODULE_OSK_PLAYER_CONFIG_SECONDARY_KEY = "libOskPlayerJarConfig";
-  public static final String QZONE_MODULE_P2VEFFECT_DEFAULT_MD5 = "f46b795a00826a0ae12250591da7b9d9";
+  public static final String QZONE_MODULE_P2VEFFECT_DEFAULT_MD5 = "a224ca83ac93e70cb401a5062a3c142b";
   public static final String QZONE_MODULE_P2VEFFECT_DEFAULT_MD5_SECONDARY_KEY = "p2vEffectJarMD5";
-  public static final String QZONE_MODULE_P2VEFFECT_DEFAULT_URL = "http://d3g.qq.com/sngapp/app/update/20180319162123_1828/p2v_effect.jar";
+  public static final String QZONE_MODULE_P2VEFFECT_DEFAULT_URL = "https://d3g.qq.com/sngapp/app/update/20180523193621_6462/p2v_effect.jar";
   public static final String QZONE_MODULE_P2VEFFECT_DEFAULT_URL_SECONDARY_KEY = "p2vEffectUrl";
   public static final String QZONE_MODULE_P2VEFFECT_JAR = "p2v_effect.jar";
   public static final String QZONE_MODULE_P2VEFFECT_MATERIAL = "p2v_material.zip";
@@ -78,6 +78,7 @@ public class QzoneModuleConst
   public static final String QZONE_MODULE_P2VEFFECT_MATERIAL_MD5_SECONDARY_KEY = "p2vMaterialMD5";
   public static final String QZONE_MODULE_P2VEFFECT_MATERIAL_URL = "http://d3g.qq.com/sngapp/app/update/20180124144756_2643/p2v_material.zip";
   public static final String QZONE_MODULE_P2VEFFECT_MATERIAL_URL_SECONDARY_KEY = "p2vMaterialUrl";
+  public static final String QZONE_MODULE_PIC_BEAUTY_SO = "libandroidndkbeauty.so";
   public static final String QZONE_MODULE_PTU_ALGORITHM_JNI_SO = "libalgo_rithm_jni.so";
   public static final String QZONE_MODULE_PTU_FILTER_ENGINE_JAR = "filterengine.bundle.jar";
   public static final String QZONE_MODULE_SUPER_RESOLUTION_JAR = "libsuperresolution.jar";
@@ -150,34 +151,34 @@ public class QzoneModuleConst
     //   1: istore_3
     //   2: ldc 2
     //   4: monitorenter
-    //   5: ldc_w 324
+    //   5: ldc_w 327
     //   8: aload_0
-    //   9: invokestatic 328	cooperation/qzone/networkedmodule/QzoneModuleConst:getSpKeyById	(Ljava/lang/String;)Ljava/lang/String;
+    //   9: invokestatic 331	cooperation/qzone/networkedmodule/QzoneModuleConst:getSpKeyById	(Ljava/lang/String;)Ljava/lang/String;
     //   12: iconst_0
-    //   13: invokestatic 395	cooperation/qzone/LocalMultiProcConfig:getInt	(Ljava/lang/String;Ljava/lang/String;I)I
+    //   13: invokestatic 398	cooperation/qzone/LocalMultiProcConfig:getInt	(Ljava/lang/String;Ljava/lang/String;I)I
     //   16: istore_1
-    //   17: ldc_w 268
+    //   17: ldc_w 271
     //   20: iconst_1
-    //   21: new 358	java/lang/StringBuilder
+    //   21: new 361	java/lang/StringBuilder
     //   24: dup
-    //   25: invokespecial 359	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 397
-    //   31: invokevirtual 371	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokespecial 362	java/lang/StringBuilder:<init>	()V
+    //   28: ldc_w 400
+    //   31: invokevirtual 374	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: iload_1
-    //   35: invokevirtual 400	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 379	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 403	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: invokevirtual 403	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 382	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokestatic 406	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   44: iload_1
     //   45: iconst_2
     //   46: if_icmpne +28 -> 74
     //   49: iload_3
     //   50: istore_2
-    //   51: invokestatic 407	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   51: invokestatic 410	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   54: ifeq +15 -> 69
-    //   57: ldc_w 268
+    //   57: ldc_w 271
     //   60: iconst_2
-    //   61: ldc_w 409
-    //   64: invokestatic 412	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   61: ldc_w 412
+    //   64: invokestatic 415	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   67: iload_3
     //   68: istore_2
     //   69: ldc 2

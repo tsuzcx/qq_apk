@@ -1,33 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
-public class mrf
-  extends Handler
+class mrf
+  implements Runnable
 {
-  private WeakReference a;
+  mrf(mre parammre) {}
   
-  public mrf(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
+  public void run()
   {
-    this.a = new WeakReference(paramReadInJoySkinAnimManager);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
-    if (localReadInJoySkinAnimManager == null) {
-      return;
+    PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)BaseApplicationImpl.getApplication().getRuntime().getManager(55);
+    mre.a(this.a, localPublicAccountDataManager.a(Long.valueOf(mre.a(this.a))));
+    if ((!mre.a(this.a)) && (mre.b(this.a))) {
+      mre.b(this.a, true);
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
-      return;
-    }
-    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
+    ThreadManager.getUIHandler().post(new mrg(this));
   }
 }
 

@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.data.EmoticonTab;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class aehy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aehy(EmoticonManager paramEmoticonManager, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  public aehy(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    EmoticonTab localEmoticonTab = (EmoticonTab)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a(EmoticonTab.class, this.jdField_a_of_type_JavaLangString);
-    if (localEmoticonTab != null)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        localEmoticonTab.aioHave = false;
-      }
-      if (this.b) {
-        localEmoticonTab.kandianHave = false;
-      }
-      if ((!localEmoticonTab.aioHave) && (!localEmoticonTab.kandianHave)) {
-        this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.b(localEmoticonTab);
-      }
-    }
-    else
-    {
-      return;
-    }
-    EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localEmoticonTab);
+    this.a.a.a(LebaWithFeeds.a(this.a), paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
   }
 }
 

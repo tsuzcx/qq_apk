@@ -1,22 +1,34 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.app.VideoObserver;
-import com.tencent.av.ui.redbag.AVRedBagConfig;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteFull;
 
-public class kdv
-  extends VideoObserver
+class kdv
+  implements QavInOutAnimation.QavOutAnimationListener
 {
-  public kdv(AVRedBagConfig paramAVRedBagConfig) {}
+  kdv(kdu paramkdu) {}
   
-  protected void a()
+  public void a()
   {
-    ThreadManager.post(new kdw(this), 10, null, true);
-    this.a.a.b(this);
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.setViewEnable(2131364272, false);
+      this.a.a.a.setViewEnable(2131365419, false);
+      this.a.a.a.setViewEnable(2131365418, false);
+      this.a.a.a.setViewEnable(2131365416, false);
+      this.a.a.a.setViewEnable(2131365414, false);
+      this.a.a.a.setViewEnable(2131364274, false);
+    }
+  }
+  
+  public void b()
+  {
+    VideoInviteFull.a(this.a.a);
+    VideoInviteFull.a(this.a.a, 0, 2131034269);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kdv
  * JD-Core Version:    0.7.0.1
  */

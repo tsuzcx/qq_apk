@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingTop="11.5dip" android:paddingRight="15.0dip" android:paddingBottom="6.5dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2803" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2824" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="12.0dip" />
-    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip">
-            <TextView android:textSize="14.0sp" android:textColor="#99ffffff" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2825" android:layout_width="0.0dip" android:layout_height="wrap_content" android:lines="1" android:layout_weight="1.0" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2826" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="16.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02185c" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26d0" android:visibility="gone" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.5dip" android:layout_marginTop="1.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020444" />
-            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ffff4222" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26d1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="评论失败" android:drawableRight="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d62" />
-        </LinearLayout>
-        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26a8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lineSpacingExtra="5.0dip" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2804" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26ec" android:paddingBottom="100.0dip" android:focusable="false" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00ffffff" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a2805" />
+        <com.tencent.biz.qqstory.comment.StoryInputBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2805" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2727" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a2804" />
+    <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2730" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="85.0dip" android:layout_height="85.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218b3" android:scaleType="centerInside" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:fromAlpha="1.0" android:toAlpha="1.0" />
+    <FrameLayout android:paddingRight="20.0dip" android:layout_width="170.0dip" android:layout_height="150.0dip" android:layout_marginBottom="26.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <com.tencent.biz.qqstory.storyHome.StoryRecordButtonAnimationView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bd8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</RelativeLayout>

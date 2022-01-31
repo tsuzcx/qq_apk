@@ -1,27 +1,32 @@
-import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ApkGetCodeListener;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mqq.MqqImageLoader;
+import com.tencent.plato.sdk.IImageLoader.Listener;
 
 public class alhb
-  implements ApkGetCodeListener
+  implements URLDrawable.URLDrawableListener
 {
-  public alhb(DownloadManager paramDownloadManager) {}
+  public alhb(MqqImageLoader paramMqqImageLoader, IImageLoader.Listener paramListener) {}
   
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    LogUtility.c(DownloadManager.a, "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
-    paramBundle = new Bundle();
-    paramBundle.putString("PackageName", paramString1);
-    paramBundle.putString("Code", paramString2);
-    paramBundle.putInt("VersionCode", paramInt);
-    paramBundle.putBoolean("IsSuccess", paramBoolean);
-    DownloadManager.a(this.a, paramBundle);
+    if (this.jdField_a_of_type_ComTencentPlatoSdkIImageLoader$Listener != null)
+    {
+      paramURLDrawable = paramURLDrawable.getCurrDrawable();
+      this.jdField_a_of_type_ComTencentPlatoSdkIImageLoader$Listener.onLoad((BitmapDrawable)paramURLDrawable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alhb
  * JD-Core Version:    0.7.0.1
  */

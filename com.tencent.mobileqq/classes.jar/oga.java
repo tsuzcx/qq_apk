@@ -1,16 +1,13 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
 
-public class oga
+class oga
   implements Runnable
 {
-  public oga(EditVideoPlayer paramEditVideoPlayer, int paramInt) {}
+  oga(ofz paramofz) {}
   
   public void run()
   {
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "setPlayMode %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    VideoSourceHelper.nativeSetPlayMode(this.jdField_a_of_type_Int);
+    this.a.a.c(true);
   }
 }
 

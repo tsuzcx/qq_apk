@@ -223,15 +223,11 @@ public class QIMReportController
   
   public static void b(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    if (!TextUtils.isEmpty(paramString2))
+    if ((!TextUtils.isEmpty(paramString2)) && (paramQQAppInterface != null))
     {
       String str = paramString2;
-      if (paramQQAppInterface != null)
-      {
-        str = paramString2;
-        if (paramString2.contains("${network_unknown}")) {
-          str = paramString2.replace("${network_unknown}", a(paramQQAppInterface));
-        }
+      if (paramString2.contains("${network_unknown}")) {
+        str = paramString2.replace("${network_unknown}", a(paramQQAppInterface));
       }
       paramQQAppInterface = paramQQAppInterface.a();
       if (paramQQAppInterface != null) {

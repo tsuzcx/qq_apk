@@ -3,10 +3,10 @@ package com.tencent.map.geolocation.internal;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
-import c.t.m.g.cl;
-import c.t.m.g.cm;
-import c.t.m.g.cu;
-import c.t.m.g.f.a;
+import c.t.m.g.cp;
+import c.t.m.g.cy;
+import c.t.m.g.cy.a;
+import c.t.m.g.ev;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationRequest;
 import com.tencent.map.geolocation.TencentLocationUtils;
@@ -78,8 +78,8 @@ public class TencentExtraKeys
               if (paramTencentLog == null)
               {
                 paramTencentLog = null;
-                cu.a(paramTencentLog);
-                cl.a(paramTencentLog);
+                cy.a(paramTencentLog);
+                cp.a(paramTencentLog);
               }
             }
             else
@@ -238,8 +238,8 @@ public class TencentExtraKeys
   {
     try
     {
-      cu.a(null);
-      cl.a(null);
+      cy.a(null);
+      cp.a(null);
       boolean bool = sTencentLogs.remove(paramTencentLog);
       return bool;
     }
@@ -295,22 +295,22 @@ public class TencentExtraKeys
   }
   
   static class LogCallback
-    implements cm
+    implements cy.a
   {
     private void onLogImpl(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
     {
       if (paramThrowable == null)
       {
         if (paramInt == 3) {
-          f.a.a(paramString1, paramString2);
+          ev.a(paramString1, 4, paramString2);
         }
         while (paramInt != 6) {
           return;
         }
-        f.a.b(paramString1, paramString2);
+        ev.a(paramString1, 6, paramString2);
         return;
       }
-      f.a.a(paramString1, paramString2, paramThrowable);
+      ev.a(paramString1, paramString2, paramThrowable);
     }
     
     public void onLog(int paramInt, String paramString1, String paramString2)

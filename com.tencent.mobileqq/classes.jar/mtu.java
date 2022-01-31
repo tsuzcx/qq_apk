@@ -1,18 +1,17 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.util.UiThreadUtil;
 
 public class mtu
   implements Runnable
 {
-  public mtu(SubscriptRecommendController paramSubscriptRecommendController) {}
+  public mtu(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.a.a(str);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.a.a();
+    UiThreadUtil.a(new mtv(this));
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm.vipcomic;
 
-import acar;
+import acir;
 import android.content.ContentValues;
 import android.content.Context;
 import android.os.Handler;
@@ -100,9 +100,9 @@ public class VipComicMqqManager
   public String a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      return AppConstants.aU + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "-" + paramString.toUpperCase() + ".jpg";
+      return AppConstants.aV + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "-" + paramString.toUpperCase() + ".jpg";
     }
-    return AppConstants.aU + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "-" + paramString + ".jpg";
+    return AppConstants.aV + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "-" + paramString + ".jpg";
   }
   
   public List a(int paramInt)
@@ -258,7 +258,7 @@ public class VipComicMqqManager
           localDownloadTask.n = true;
           localDownloadTask.f = "comic_emoticon";
           localDownloadTask.b = 3;
-          paramContext.a(localDownloadTask, new acar(this, localFile, localCustomEmotionData, localFavroamingDBManager, localArrayList1, paramIPicDownloadListener, localArrayList2, localEntityManager, (VipComicFavorEmoStructMsgInfo)localObject, localAtomicInteger2, localAtomicInteger1), null);
+          paramContext.a(localDownloadTask, new acir(this, localFile, localCustomEmotionData, localFavroamingDBManager, localArrayList1, paramIPicDownloadListener, localArrayList2, localEntityManager, (VipComicFavorEmoStructMsgInfo)localObject, localAtomicInteger2, localAtomicInteger1), null);
         }
       }
     } while (paramIPicDownloadListener == null);

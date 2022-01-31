@@ -2,8 +2,8 @@ package com.tencent.mobileqq.servlet;
 
 import QzoneCombine.PushInfo;
 import QzoneCombine.SingleMsg;
-import ahxt;
-import ahxu;
+import aick;
+import aicl;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.BroadcastReceiver;
@@ -65,8 +65,8 @@ public class CliNotifyPush
   public static volatile boolean a;
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "baseSdk.Msf.NotifyResp", "CliNotifySvc.SvcReqPush", "MessageSvc.WNSQzone" };
   public static int b;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahxu(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ahxt(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aicl(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aick(this);
   private volatile ArrayList jdField_a_of_type_JavaUtilArrayList;
   private volatile ArrayList b;
   private int c;
@@ -686,7 +686,7 @@ public class CliNotifyPush
         return true;
       }
     } while ((paramInt != 1) && (paramInt != 300));
-    return LocalMultiProcConfig.getBool(paramQQAppInterface.getApp().getApplicationContext().getString(2131434207) + paramQQAppInterface.getAccount(), true);
+    return LocalMultiProcConfig.getBool(paramQQAppInterface.getApp().getApplicationContext().getString(2131434223) + paramQQAppInterface.getAccount(), true);
   }
   
   private boolean a(SinglePushMsg paramSinglePushMsg)
@@ -885,7 +885,7 @@ public class CliNotifyPush
             if (bool) {
               break label855;
             }
-            str1 = localQQAppInterface.getApp().getApplicationContext().getString(2131434690) + i + localQQAppInterface.getApp().getApplicationContext().getString(2131434691);
+            str1 = localQQAppInterface.getApp().getApplicationContext().getString(2131434706) + i + localQQAppInterface.getApp().getApplicationContext().getString(2131434707);
           }
           label845:
           label855:

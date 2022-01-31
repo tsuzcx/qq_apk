@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class sqp
+class sqp
   implements Runnable
 {
-  public sqp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  sqp(sqn paramsqn, int paramInt) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView == null)) {
+    this.jdField_a_of_type_Sqn.a.a.setText(this.jdField_a_of_type_Sqn.a.jdField_c_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Sqn.a.jdField_c_of_type_Int)
+    {
+      this.jdField_a_of_type_Sqn.a.a.setTextColor(-65536);
+      this.jdField_a_of_type_Sqn.a.rightViewText.setEnabled(false);
       return;
     }
-    int i = (int)this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getManRectMaxHeight();
-    this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a(i);
+    this.jdField_a_of_type_Sqn.a.a.setTextColor(Color.rgb(119, 119, 119));
+    this.jdField_a_of_type_Sqn.a.rightViewText.setEnabled(true);
   }
 }
 

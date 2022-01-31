@@ -1,30 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-public class sca
-  implements Runnable
+public final class sca
+  implements DialogInterface.OnClickListener
 {
-  public sca(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
+  public sca(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, Map paramMap) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Message localMessage = null;
-    Object localObject = localMessage;
-    if (this.jdField_a_of_type_JavaLangStringBuilder != null)
-    {
-      localObject = localMessage;
-      if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
-        localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
-      }
-    }
-    if (ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, ChatSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), this.jdField_a_of_type_JavaLangStringBuilder) > 0)
-    {
-      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.a.obtainMessage();
-      localMessage.what = 18;
-      localMessage.obj = localObject;
-      localMessage.sendToTarget();
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

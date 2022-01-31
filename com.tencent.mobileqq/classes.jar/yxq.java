@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class yxq
-  implements View.OnClickListener
+public final class yxq
+  implements EIPCResultCallback
 {
-  public yxq(ApolloGameViewBinder paramApolloGameViewBinder) {}
+  public yxq(long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (ApolloGameViewBinder.a(this.a) != null)
-    {
-      paramView = (ApolloGameManager)ApolloGameViewBinder.a(this.a).getManager(210);
-      if (paramView != null) {
-        paramView.e();
-      }
-    }
+    paramEIPCResult = paramEIPCResult.data.getString("respData");
+    CmGameUtil.a().callbackFromRequest(this.a, 0, "cs.on_get_open_key.local", paramEIPCResult);
   }
 }
 

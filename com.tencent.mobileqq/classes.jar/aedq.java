@@ -1,54 +1,22 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.magicface.drawable.PngGifEngine;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
 
 public class aedq
-  implements Runnable
+  extends FriendListObserver
 {
-  public aedq(PngGifEngine paramPngGifEngine) {}
+  public aedq(ShareToQQActivity paramShareToQQActivity) {}
   
-  public void run()
+  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngGifEngine", 2, "func run begins.");
-    }
-    Object localObject1 = this.a.a();
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      return;
-    }
-    long l2 = SystemClock.uptimeMillis();
-    Object localObject2 = PngGifEngine.a((String)localObject1);
-    if (QLog.isColorLevel()) {
-      QLog.d("PngGifEngine", 2, "func run, bitmap:" + localObject2);
-    }
-    localObject1 = this.a;
-    if (localObject2 != null) {}
-    for (;;)
+    if ((paramLong != 0L) && (this.a.a != null) && (this.a.a.equals(paramLong + "")))
     {
-      long l1;
-      try
-      {
-        if ((!((Bitmap)localObject2).isRecycled()) && (this.a.jdField_a_of_type_AndroidOsHandler != null))
-        {
-          l1 = SystemClock.uptimeMillis();
-          l2 += this.a.jdField_a_of_type_Aedr.b;
-          localObject2 = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localObject2);
-          if (l1 > l2) {
-            this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      finally {}
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, l2 - l1);
+      paramString = new Intent();
+      paramString.putExtra("isSuccess", paramBoolean2);
+      paramString.putExtra("isCancelShield", false);
+      this.a.setResult(-1, paramString);
     }
+    this.a.finish();
   }
 }
 

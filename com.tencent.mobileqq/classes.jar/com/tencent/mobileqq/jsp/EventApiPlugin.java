@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import adwd;
+import aeen;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -86,7 +86,7 @@ public class EventApiPlugin
   
   private void b()
   {
-    jdField_a_of_type_AndroidContentBroadcastReceiver = new adwd(this);
+    jdField_a_of_type_AndroidContentBroadcastReceiver = new aeen(this);
     if (QLog.isColorLevel()) {
       QLog.d("EventApiPlugin", 2, "init dispatch Event Receiver!");
     }

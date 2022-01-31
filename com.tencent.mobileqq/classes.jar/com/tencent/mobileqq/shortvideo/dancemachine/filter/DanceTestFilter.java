@@ -78,16 +78,16 @@ public class DanceTestFilter
   
   public void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(true);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(true);
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    this.b.h_(true);
+    this.b.f_(true);
     this.b.a(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
     this.b.a();
-    this.c.h_(true);
+    this.c.f_(true);
     this.c.a(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
     this.c.a();
-    this.d.h_(true);
+    this.d.f_(true);
     this.d.a(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
     this.d.a();
   }

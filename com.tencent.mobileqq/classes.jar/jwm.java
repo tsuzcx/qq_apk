@@ -1,32 +1,20 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
-class jwm
-  implements Runnable
+public class jwm
+  implements View.OnClickListener
 {
-  jwm(jwj paramjwj) {}
+  public jwm(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (this.a.a.a != null) {
-      i = this.a.a.a.b();
-    }
-    for (;;)
-    {
-      if (i < MultiVideoCtrlLayerUIBase.a) {
-        this.a.a.M();
-      }
-      return;
-      AVLog.e(this.a.a.c, "mVideoController == null");
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jwm
  * JD-Core Version:    0.7.0.1
  */

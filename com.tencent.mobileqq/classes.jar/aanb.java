@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipReqInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aanb
+class aanb
+  implements Runnable
 {
-  public ARRelationShipFileUpload.ARRelationShipFileUploadCallBack a;
-  public ARRelationShipFileUpload.ARRelationShipReqInfo a;
-  public Transaction a;
+  aanb(aana paramaana) {}
   
-  public aanb()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-    this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipFileUploadCallBack = null;
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "下载资源失败,请重试！", 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aanb
  * JD-Core Version:    0.7.0.1
  */

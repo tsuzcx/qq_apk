@@ -32,11 +32,11 @@ public class az
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity);
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setId(2131361888);
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDrawable(2130838373));
+        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDrawable(2130838378));
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838373);
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getColorStateList(2131494260));
+        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130838378);
+        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getColorStateList(2131494266));
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.setPadding((int)(LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity) * 10.0F), this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.getPaddingTop(), (int)(LiteActivity.b(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity) * 10.0F), this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView.getPaddingBottom());
         localObject = new RelativeLayout.LayoutParams(-1, (int)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDimension(2131558669));
         this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
@@ -136,7 +136,7 @@ public class az
             if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.msgtype != -1024) {
               break label388;
             }
-            localObject = String.format(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getString(2131437666), new Object[] { str1 });
+            localObject = String.format(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getString(2131437686), new Object[] { str1 });
             break label388;
           }
           str2 = ContactUtils.q(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$Message.frienduin);

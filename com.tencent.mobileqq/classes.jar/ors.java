@@ -1,16 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-public class ors
-  implements ValueAnimator.AnimatorUpdateListener
+public final class ors
+  implements Parcelable.Creator
 {
-  public ors(RotateCircleImageView paramRotateCircleImageView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public TroopStoryItemInfo a(Parcel paramParcel)
   {
-    RotateCircleImageView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    return new TroopStoryItemInfo(paramParcel);
+  }
+  
+  public TroopStoryItemInfo[] a(int paramInt)
+  {
+    return new TroopStoryItemInfo[paramInt];
   }
 }
 

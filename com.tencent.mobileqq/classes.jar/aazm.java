@@ -1,18 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.qq.im.poi.LbsPackSendActivity;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import java.lang.ref.WeakReference;
 
-public class aazm
-  implements DialogInterface.OnClickListener
+class aazm
 {
-  public aazm(ARMapActivity paramARMapActivity, QQCustomDialog paramQQCustomDialog) {}
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private aazm()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    LbsPackSendActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 105);
+    this.a = false;
   }
 }
 

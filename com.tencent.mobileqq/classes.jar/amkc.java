@@ -1,34 +1,27 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedTouchUI;
-import cooperation.comic.jsp.QQComicDownloadCountObserver;
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.comic.utils.SimpleBiMap;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.MultiImageTextView;
+import com.tencent.widget.SpanAdapter;
 
 public class amkc
-  implements QQComicDownloadCountObserver
+  extends SpanAdapter
 {
-  public amkc(QQComicTabBarView paramQQComicTabBarView) {}
+  public Drawable a;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public amkc(MultiImageTextView paramMultiImageTextView) {}
+  
+  public void a(SpannableString paramSpannableString)
   {
-    if ((paramBoolean) && (this.a.a() != 1)) {
-      this.a.a(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("spanStyle", 2, "[ImageStyle] start:" + this.b + " end:" + this.c);
     }
-    RedTouchUI localRedTouchUI;
-    RedAppInfo localRedAppInfo;
-    do
-    {
-      return;
-      localRedTouchUI = (RedTouchUI)this.a.a.get("1113.100801");
-      localRedAppInfo = (RedAppInfo)this.a.b.get(1);
-    } while ((localRedTouchUI == null) || (!localRedTouchUI.a()) || (localRedAppInfo == null) || (localRedTouchUI.a != localRedAppInfo));
-    this.a.b(1);
+    paramSpannableString.setSpan(new amkb(this.jdField_a_of_type_ComTencentWidgetMultiImageTextView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 1), this.b, this.c, 17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkc
  * JD-Core Version:    0.7.0.1
  */

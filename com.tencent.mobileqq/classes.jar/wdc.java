@@ -1,20 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.tips.MovieTicketTipsBar;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
-public class wdc
-  implements View.OnClickListener
+class wdc
+  implements Runnable
 {
-  public wdc(MovieTicketTipsBar paramMovieTicketTipsBar) {}
+  wdc(wdb paramwdb, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(MovieTicketTipsBar.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", MovieTicketTipsBar.a(this.a));
-    MovieTicketTipsBar.a(this.a).startActivity(paramView);
+    AccountDetail localAccountDetail = new AccountDetail(this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
+    EntityManager localEntityManager = this.jdField_a_of_type_Wdb.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_Wdb.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).createEntityManager();
+    if (localEntityManager != null) {
+      localEntityManager.b(localAccountDetail);
+    }
+    this.jdField_a_of_type_Wdb.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(localAccountDetail, 0L);
+    this.jdField_a_of_type_Wdb.a.a(this.jdField_a_of_type_Wdb.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
   }
 }
 

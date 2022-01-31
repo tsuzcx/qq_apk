@@ -1,36 +1,38 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class aimu
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public aimu(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, ActionSheet paramActionSheet) {}
+  public aimu(StructMsgForGeneralShare.GeneralClickHandler paramGeneralClickHandler, Bundle paramBundle) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    if ((this.jdField_a_of_type_AndroidOsBundle.containsKey("msgSeq")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("uin")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("sessionType")))
     {
-      paramInt = -1;
-      switch (paramInt)
-      {
-      }
+      l = this.jdField_a_of_type_AndroidOsBundle.getLong("msgSeq");
+      localObject = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
+      i = this.jdField_a_of_type_AndroidOsBundle.getInt("sessionType");
+      localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare$GeneralClickHandler.a.a();
+      localObject = localQQMessageFacade.a((String)localObject, i, l);
+      ((MessageRecord)localObject).saveExtInfoToExtStr("receipt_msg_is_read", "1");
+      localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject).extLong));
+      localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extStr", ((MessageRecord)localObject).extStr);
     }
-    for (;;)
+    while (!QLog.isColorLevel())
     {
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
+      long l;
+      Object localObject;
+      int i;
+      QQMessageFacade localQQMessageFacade;
       return;
-      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
-      break;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
-      continue;
-      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 3);
     }
+    QLog.w(StructMsgForGeneralShare.access$000(), 2, "set receipt msg read missing param");
   }
 }
 

@@ -1,41 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Message;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class smj
-  implements View.OnClickListener
+class smj
+  implements Runnable
 {
-  public smj(EmosmActivity paramEmosmActivity) {}
+  smj(smi paramsmi, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.a.b)
+    if (this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager != null)
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131436073);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(true);
-      this.a.b = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
-      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpsEdit", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a();
+      if (this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Long) == 2)
+      {
+        Message localMessage = new Message();
+        localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(32, localMessage);
+      }
     }
-    while ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 1)) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131436070);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(false);
-    this.a.e();
-    this.a.b = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
-    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a();
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
   }
 }
 

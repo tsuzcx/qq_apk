@@ -1,34 +1,27 @@
-import android.content.Intent;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 
 public class xaf
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public xaf(PayCodeEntryActivity paramPayCodeEntryActivity, xag paramxag) {}
+  public xaf(NewStyleCountryActivity paramNewStyleCountryActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.a("payCodeEntry.cheCode2", "actQQWlxclick", "0003");
-    paramView = new Intent("com.tencent.mobileqq.action.jtcode");
-    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity, JumpActivity.class);
-    if (!TextUtils.isEmpty(PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity))) {
-      paramView.putExtra("city_name", PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity));
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_Xam.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      NewStyleCountryActivity.a(this.a).setVisibility(8);
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xag.b)) {
-      paramView.putExtra("city_code", this.jdField_a_of_type_Xag.b);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xag.a)) {
-      paramView.putExtra("ykt_id", this.jdField_a_of_type_Xag.a);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xag.c)) {
-      paramView.putExtra("show_name", this.jdField_a_of_type_Xag.c);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.startActivityForResult(paramView, 102);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

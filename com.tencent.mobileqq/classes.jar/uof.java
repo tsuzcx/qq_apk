@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
-import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.AIOInputTypeHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class uof
+public final class uof
   implements Runnable
 {
-  uof(uoe paramuoe) {}
+  public uof(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.a.a.a(false, this.a.a.a.b);
+    AIOInputTypeHelper.a(this.a).edit().putBoolean("ptt_guide_have_show", false).commit();
   }
 }
 

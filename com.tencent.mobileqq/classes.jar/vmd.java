@@ -1,15 +1,33 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
-class vmd
-  implements Runnable
+public class vmd
+  extends AnimatorListenerAdapter
 {
-  vmd(vmb paramvmb, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
+  public vmd(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (vma.c(this.jdField_a_of_type_Vmb.a) != null) {
-      ((AIOGalleryScene)vma.d(this.jdField_a_of_type_Vmb.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+      return;
     }
+    SixCombolEffectView.b(this.a).start();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 2;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 2 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

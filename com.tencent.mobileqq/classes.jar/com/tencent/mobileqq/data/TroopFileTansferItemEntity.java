@@ -35,10 +35,22 @@ public class TroopFileTansferItemEntity
   public int UploadTime;
   public String _sId;
   public String _sStatus;
+  public int duration;
   public long entrySessionID;
+  public int height;
   public boolean isFromAIO;
+  public boolean isZipInnerFile;
+  public String largeThumbnailFile;
   public String mParentId;
+  public String middleThumbnailFile;
+  public long origLastModifyTime;
+  public String smallThumbFile;
   public long troopuin;
+  public int width;
+  public int zipBusId;
+  public String zipFilePath;
+  public String zipInnerPath;
+  public int zipType;
   
   protected Class getClassForTable()
   {
@@ -56,6 +68,11 @@ public class TroopFileTansferItemEntity
     this._sStatus = null;
     this.Id = UUID.fromString(this._sId);
     this._sId = null;
+  }
+  
+  public void preupdate()
+  {
+    prewrite();
   }
   
   protected void prewrite()

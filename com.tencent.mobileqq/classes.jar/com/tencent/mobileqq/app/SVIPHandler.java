@@ -5,6 +5,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import com.etrump.mixlayout.FontInfo;
 import com.etrump.mixlayout.FontManager;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
@@ -14,17 +15,21 @@ import com.tencent.mobileqq.bubble.BubbleManager.LruLinkedHashMap;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.hiboom.HiBoomManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TCheckReq;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TCheckRsp;
 import com.tencent.pb.vipfontupdate.VipFontUpdate.TDiyFontReq;
 import com.tencent.pb.vipfontupdate.VipFontUpdate.TDiyFontReq.TDiyFontReqInfo;
 import com.tencent.pb.vipfontupdate.VipFontUpdate.TDiyFontRsp;
@@ -36,6 +41,7 @@ import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontMd5CheckRsp;
 import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontMd5CheckRsp.TMd5Ret;
 import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontSsoReq;
 import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontSsoRsp;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TTipsInfo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -186,6 +192,69 @@ public class SVIPHandler
     QLog.e("VasFont", 1, "handleGetDiyFontConfig not success errorcode = " + paramFromServiceMsg.getResultCode() + " seq = " + paramFromServiceMsg.getRequestSsoSeq());
   }
   
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = paramToServiceMsg.extraData.getInt("hiboom_auth_type");
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      paramObject = new VipFontUpdate.TFontSsoRsp();
+      try
+      {
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        if (paramObject.i32_ret.get() != 0)
+        {
+          a(102, false, null);
+          return;
+        }
+        paramFromServiceMsg = (VipFontUpdate.TCheckRsp)paramObject.st_check_rsp.get();
+        if (paramFromServiceMsg == null) {
+          break label292;
+        }
+        switch (i)
+        {
+        case 1: 
+          a(102, true, new Object[] { Integer.valueOf(paramFromServiceMsg.i32_ret.get()), ((VipFontUpdate.TTipsInfo)paramFromServiceMsg.st_tips_info.get()).toByteArray(), Integer.valueOf(paramToServiceMsg.extraData.getInt("hiboom_id")), paramToServiceMsg.extraData.getString("hiboom_text") });
+          return;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("SVIPHandler", 1, "handleAuthHiBoom error: " + paramToServiceMsg.getLocalizedMessage() + Log.getStackTraceString(paramToServiceMsg));
+        if (i != 1) {
+          break label386;
+        }
+      }
+      a(102, false, null);
+      return;
+      int j = paramFromServiceMsg.i32_ret.get();
+      long l = paramFromServiceMsg.valid_time.get();
+      ((HiBoomManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(218)).a(j, l);
+      a(103, true, new Object[] { Integer.valueOf(j), Long.valueOf(l) });
+      return;
+      label292:
+      QLog.e("SVIPHandler", 1, "handleAuthHiBoom fail authRsp is null");
+      if (i == 1) {
+        a(102, false, null);
+      }
+    }
+    else
+    {
+      paramToServiceMsg = new StringBuilder().append("handleAuthHiBoom fail isSuccess = ").append(paramFromServiceMsg.isSuccess()).append(" data is null : ");
+      if (paramObject == null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        QLog.e("SVIPHandler", 1, bool);
+        if (i != 1) {
+          break;
+        }
+        a(102, false, null);
+        return;
+      }
+    }
+    label386:
+    return;
+  }
+  
   /* Error */
   public int a()
   {
@@ -203,7 +272,7 @@ public class SVIPHandler
     //   19: checkcast 195	com/tencent/mobileqq/app/FriendsManager
     //   22: aload_0
     //   23: getfield 50	com/tencent/mobileqq/app/SVIPHandler:jdField_b_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   26: invokevirtual 303	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   26: invokevirtual 385	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
     //   29: invokevirtual 257	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/ExtensionInfo;
     //   32: astore_2
     //   33: aload_2
@@ -216,12 +285,12 @@ public class SVIPHandler
     //   42: ireturn
     //   43: aload_0
     //   44: aload_2
-    //   45: getfield 307	com/tencent/mobileqq/data/ExtensionInfo:uVipFont	J
+    //   45: getfield 389	com/tencent/mobileqq/data/ExtensionInfo:uVipFont	J
     //   48: l2i
     //   49: putfield 25	com/tencent/mobileqq/app/SVIPHandler:d	I
     //   52: aload_0
     //   53: aload_2
-    //   54: getfield 310	com/tencent/mobileqq/data/ExtensionInfo:vipFontType	I
+    //   54: getfield 392	com/tencent/mobileqq/data/ExtensionInfo:vipFontType	I
     //   57: putfield 27	com/tencent/mobileqq/app/SVIPHandler:e	I
     //   60: aload_0
     //   61: getfield 25	com/tencent/mobileqq/app/SVIPHandler:d	I
@@ -341,6 +410,29 @@ public class SVIPHandler
     finally {}
   }
   
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    VipFontUpdate.TFontSsoReq localTFontSsoReq = new VipFontUpdate.TFontSsoReq();
+    localTFontSsoReq.u32_cmd.set(2);
+    Object localObject = new Random();
+    localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
+    localTFontSsoReq.i32_implat.set(109);
+    localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
+    localTFontSsoReq.str_mqqver.set("7.6.8.3615");
+    localObject = new VipFontUpdate.TCheckReq();
+    ((VipFontUpdate.TCheckReq)localObject).i32_font_id.set(paramInt1);
+    ((VipFontUpdate.TCheckReq)localObject).i32_type.set(paramInt2);
+    ((VipFontUpdate.TCheckReq)localObject).str_message_test.set(paramString);
+    localTFontSsoReq.st_check_req.set((MessageMicro)localObject);
+    localObject = new ToServiceMsg("mobileqq.service", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Font.fresh");
+    ((ToServiceMsg)localObject).putWupBuffer(localTFontSsoReq.toByteArray());
+    ((ToServiceMsg)localObject).extraData.putInt("CMD", 2);
+    ((ToServiceMsg)localObject).extraData.putInt("hiboom_id", paramInt1);
+    ((ToServiceMsg)localObject).extraData.putString("hiboom_text", paramString);
+    ((ToServiceMsg)localObject).extraData.putInt("hiboom_auth_type", paramInt2);
+    b((ToServiceMsg)localObject);
+  }
+  
   /* Error */
   public void a(int paramInt, boolean paramBoolean)
   {
@@ -361,7 +453,7 @@ public class SVIPHandler
     //   26: new 62	java/lang/StringBuilder
     //   29: dup
     //   30: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   33: ldc_w 428
+    //   33: ldc_w 588
     //   36: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: iload_1
     //   40: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -372,17 +464,17 @@ public class SVIPHandler
     //   51: putfield 21	com/tencent/mobileqq/app/SVIPHandler:jdField_b_of_type_Int	I
     //   54: aload_0
     //   55: getfield 50	com/tencent/mobileqq/app/SVIPHandler:jdField_b_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   58: invokevirtual 363	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   58: invokevirtual 436	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   61: aload_0
     //   62: getfield 50	com/tencent/mobileqq/app/SVIPHandler:jdField_b_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   65: invokevirtual 396	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   65: invokevirtual 468	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   68: iconst_0
-    //   69: invokevirtual 369	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   72: invokeinterface 400 1 0
-    //   77: ldc_w 430
+    //   69: invokevirtual 442	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   72: invokeinterface 472 1 0
+    //   77: ldc_w 590
     //   80: iload_1
-    //   81: invokeinterface 408 3 0
-    //   86: invokeinterface 411 1 0
+    //   81: invokeinterface 480 3 0
+    //   86: invokeinterface 483 1 0
     //   91: pop
     //   92: iload_1
     //   93: ifle +53 -> 146
@@ -391,9 +483,9 @@ public class SVIPHandler
     //   100: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   103: aload_0
     //   104: getfield 50	com/tencent/mobileqq/app/SVIPHandler:jdField_b_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   107: invokevirtual 303	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   107: invokevirtual 385	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
     //   110: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: ldc_w 432
+    //   113: ldc_w 592
     //   116: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: iload_1
     //   120: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -401,27 +493,27 @@ public class SVIPHandler
     //   126: astore_3
     //   127: iload_2
     //   128: ifeq +26 -> 154
-    //   131: new 434	zmq
+    //   131: new 594	ztm
     //   134: dup
     //   135: aload_0
     //   136: aload_3
-    //   137: invokespecial 437	zmq:<init>	(Lcom/tencent/mobileqq/app/SVIPHandler;Ljava/lang/String;)V
+    //   137: invokespecial 597	ztm:<init>	(Lcom/tencent/mobileqq/app/SVIPHandler;Ljava/lang/String;)V
     //   140: iconst_5
     //   141: aconst_null
     //   142: iconst_0
-    //   143: invokestatic 443	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   143: invokestatic 603	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   146: aload_0
     //   147: iconst_0
-    //   148: putfield 413	com/tencent/mobileqq/app/SVIPHandler:jdField_a_of_type_Boolean	Z
+    //   148: putfield 485	com/tencent/mobileqq/app/SVIPHandler:jdField_a_of_type_Boolean	Z
     //   151: aload_0
     //   152: monitorexit
     //   153: return
-    //   154: invokestatic 448	com/tencent/mobileqq/bubble/BubbleDiyFetcher:a	()Lcom/tencent/mobileqq/bubble/BubbleDiyFetcher;
+    //   154: invokestatic 608	com/tencent/mobileqq/bubble/BubbleDiyFetcher:a	()Lcom/tencent/mobileqq/bubble/BubbleDiyFetcher;
     //   157: aload_0
     //   158: getfield 50	com/tencent/mobileqq/app/SVIPHandler:jdField_b_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   161: aload_3
     //   162: aconst_null
-    //   163: invokevirtual 451	com/tencent/mobileqq/bubble/BubbleDiyFetcher:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/app/BusinessObserver;)V
+    //   163: invokevirtual 611	com/tencent/mobileqq/bubble/BubbleDiyFetcher:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/app/BusinessObserver;)V
     //   166: goto -20 -> 146
     //   169: astore_3
     //   170: aload_0
@@ -488,14 +580,16 @@ public class SVIPHandler
     if ("Font.fresh".equals(paramFromServiceMsg.getServiceCmd())) {}
     switch (paramToServiceMsg.extraData.getInt("CMD"))
     {
-    case 2: 
     default: 
       return;
     case 1: 
       b(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
+    case 3: 
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
     }
-    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    d(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
   public void a(String paramString, int paramInt)
@@ -520,7 +614,7 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("7.6.3.3565");
+    localTFontSsoReq.str_mqqver.set("7.6.8.3615");
     localObject = new VipFontUpdate.TDiyFontReq();
     Iterator localIterator = paramMap.keySet().iterator();
     while (localIterator.hasNext())
@@ -569,7 +663,7 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject1).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("7.6.3.3565");
+    localTFontSsoReq.str_mqqver.set("7.6.8.3615");
     localObject1 = new VipFontUpdate.TFontFreshReq();
     ((VipFontUpdate.TFontFreshReq)localObject1).i32_local_font_id.set(a());
     localTFontSsoReq.st_fresh_req.set((MessageMicro)localObject1);
@@ -603,7 +697,7 @@ public class SVIPHandler
         continue;
       }
       ((VipFontUpdate.TFontMd5CheckReq)localObject1).rpt_md5_info.add(localTMd5Info);
-      localTFontSsoReq.st_Md5_Check_req.set((MessageMicro)localObject1);
+      localTFontSsoReq.st_md5_check_req.set((MessageMicro)localObject1);
       localObject1 = new ToServiceMsg("mobileqq.service", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "Font.fresh");
       ((ToServiceMsg)localObject1).putWupBuffer(localTFontSsoReq.toByteArray());
       ((ToServiceMsg)localObject1).extraData.putInt("CMD", 1);
@@ -654,7 +748,7 @@ public class SVIPHandler
     //   26: new 62	java/lang/StringBuilder
     //   29: dup
     //   30: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   33: ldc_w 719
+    //   33: ldc_w 800
     //   36: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: iload_1
     //   40: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -670,9 +764,9 @@ public class SVIPHandler
     //   62: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   65: aload_0
     //   66: getfield 50	com/tencent/mobileqq/app/SVIPHandler:jdField_b_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   69: invokevirtual 303	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   69: invokevirtual 385	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
     //   72: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: ldc_w 432
+    //   75: ldc_w 592
     //   78: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: iload_1
     //   82: invokevirtual 155	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -680,27 +774,27 @@ public class SVIPHandler
     //   88: astore_3
     //   89: iload_2
     //   90: ifeq +26 -> 116
-    //   93: new 721	zms
+    //   93: new 802	zto
     //   96: dup
     //   97: aload_0
     //   98: aload_3
-    //   99: invokespecial 722	zms:<init>	(Lcom/tencent/mobileqq/app/SVIPHandler;Ljava/lang/String;)V
+    //   99: invokespecial 803	zto:<init>	(Lcom/tencent/mobileqq/app/SVIPHandler;Ljava/lang/String;)V
     //   102: iconst_5
     //   103: aconst_null
     //   104: iconst_0
-    //   105: invokestatic 443	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   105: invokestatic 603	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   108: aload_0
     //   109: iconst_0
-    //   110: putfield 413	com/tencent/mobileqq/app/SVIPHandler:jdField_a_of_type_Boolean	Z
+    //   110: putfield 485	com/tencent/mobileqq/app/SVIPHandler:jdField_a_of_type_Boolean	Z
     //   113: aload_0
     //   114: monitorexit
     //   115: return
-    //   116: invokestatic 727	com/tencent/mobileqq/addon/DiyPendantFetcher:a	()Lcom/tencent/mobileqq/addon/DiyPendantFetcher;
+    //   116: invokestatic 808	com/tencent/mobileqq/addon/DiyPendantFetcher:a	()Lcom/tencent/mobileqq/addon/DiyPendantFetcher;
     //   119: aload_0
     //   120: getfield 50	com/tencent/mobileqq/app/SVIPHandler:jdField_b_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   123: aload_3
     //   124: aconst_null
-    //   125: invokevirtual 730	com/tencent/mobileqq/addon/DiyPendantFetcher:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/app/BusinessObserver;)Lcom/tencent/mobileqq/addon/DiyPendantEntity;
+    //   125: invokevirtual 811	com/tencent/mobileqq/addon/DiyPendantFetcher:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/app/BusinessObserver;)Lcom/tencent/mobileqq/addon/DiyPendantEntity;
     //   128: pop
     //   129: goto -21 -> 108
     //   132: astore_3
@@ -836,16 +930,16 @@ public class SVIPHandler
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 764	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
-    //   5: getstatic 770	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:MsgLengthByBubble	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
-    //   8: invokevirtual 773	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
-    //   11: ldc_w 775
-    //   14: invokevirtual 778	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   2: invokestatic 845	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
+    //   5: getstatic 851	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:MsgLengthByBubble	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
+    //   8: invokevirtual 854	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
+    //   11: ldc_w 856
+    //   14: invokevirtual 859	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   17: astore_3
     //   18: iconst_0
     //   19: istore_2
     //   20: aload_3
-    //   21: invokestatic 359	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   21: invokestatic 432	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   24: istore_1
     //   25: aload_0
     //   26: monitorexit
@@ -859,7 +953,7 @@ public class SVIPHandler
     //   38: ldc 60
     //   40: iconst_2
     //   41: aload_3
-    //   42: invokevirtual 779	java/lang/NumberFormatException:getMessage	()Ljava/lang/String;
+    //   42: invokevirtual 860	java/lang/NumberFormatException:getMessage	()Ljava/lang/String;
     //   45: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   48: iload_2
     //   49: istore_1

@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter.OnActionListener;
-
 public class ahug
-  implements View.OnClickListener
 {
-  public ahug(ContactSearchResultPresenter paramContactSearchResultPresenter) {}
+  public int a;
+  public int b;
   
-  public void onClick(View paramView)
+  public ahug(int paramInt1, int paramInt2)
   {
-    ContactSearchResultPresenter.a(this.a).a(paramView);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahug
  * JD-Core Version:    0.7.0.1
  */

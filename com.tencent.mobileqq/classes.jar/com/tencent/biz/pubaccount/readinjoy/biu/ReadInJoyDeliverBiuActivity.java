@@ -85,19 +85,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import lge;
-import lgf;
-import lgg;
-import lgh;
-import lgj;
-import lgk;
-import lgl;
-import lgm;
-import lgn;
-import lgo;
-import lgp;
-import lgq;
-import lgr;
+import lis;
+import lit;
+import liu;
+import liv;
+import lix;
+import liy;
+import liz;
+import lja;
+import ljb;
+import ljc;
+import ljd;
+import lje;
+import ljf;
 import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
@@ -112,11 +112,11 @@ public class ReadInJoyDeliverBiuActivity
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lgq(this);
+  ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lje(this);
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   private ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new lgh(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new liv(this);
   PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver;
   private FixSizeImageView jdField_a_of_type_ComTencentWidgetFixSizeImageView;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
@@ -303,7 +303,7 @@ public class ReadInJoyDeliverBiuActivity
   
   private void a(ArrayList paramArrayList)
   {
-    ThreadManager.post(new lgf(this, paramArrayList), 5, null, true);
+    ThreadManager.post(new lit(this, paramArrayList), 5, null, true);
   }
   
   public static boolean a(int paramInt)
@@ -353,7 +353,7 @@ public class ReadInJoyDeliverBiuActivity
   
   private void c(String paramString)
   {
-    ThreadManager.post(new lgg(this, paramString), 5, null, true);
+    ThreadManager.post(new liu(this, paramString), 5, null, true);
   }
   
   private void e(boolean paramBoolean)
@@ -487,7 +487,7 @@ public class ReadInJoyDeliverBiuActivity
       if (!c().equals(localObject))
       {
         i();
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new lgo(this);
+        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new ljc(this);
         super.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver);
         c((String)localObject);
       }
@@ -548,7 +548,7 @@ public class ReadInJoyDeliverBiuActivity
   
   private void n()
   {
-    ThreadManager.post(new lgr(this), 5, null, true);
+    ThreadManager.post(new ljf(this), 5, null, true);
   }
   
   private void o()
@@ -636,7 +636,7 @@ public class ReadInJoyDeliverBiuActivity
               {
                 localObject3 = "";
                 localSpannableStringBuilder.append((CharSequence)localObject1).append((CharSequence)localObject3);
-                localSpannableStringBuilder.setSpan(new lgj(this), i2, ((String)localObject1).length() + i2, 17);
+                localSpannableStringBuilder.setSpan(new lix(this), i2, ((String)localObject1).length() + i2, 17);
                 i2 = localSpannableStringBuilder.length();
                 i1 -= 1;
               }
@@ -678,32 +678,32 @@ public class ReadInJoyDeliverBiuActivity
     this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367069));
     this.jdField_f_of_type_Int = 178;
     this.jdField_f_of_type_Int = ViewUtils.b(this.jdField_f_of_type_Int);
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new lge(this);
+    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new lis(this);
     super.a();
     this.s = ViewUtils.c();
     Object localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComTencentWidgetXPanelContainer.getLayoutParams();
     ((ViewGroup.MarginLayoutParams)localObject).topMargin = (this.s * 8 / 100);
     this.jdField_a_of_type_ComTencentWidgetXPanelContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)findViewById(2131363378));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362754));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)findViewById(2131363397));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362759));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131361846));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367070));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366891));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366890));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367071));
     this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367072));
     getTitleBarView().setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366979));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new lgk(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366977));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new liy(this));
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("" + this.jdField_c_of_type_Int);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-4473925);
     }
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362868));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new lgl(this));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365620);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new lgm(this));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131362840);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362873));
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new liz(this));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365625);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new lja(this));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131362845);
     this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367057));
     this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367065));
     this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367073));
@@ -723,7 +723,7 @@ public class ReadInJoyDeliverBiuActivity
     this.jdField_b_of_type_AndroidViewView.startAnimation((Animation)localObject);
     localObject = AnimationUtils.loadAnimation(this, 2131034278);
     this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
-    ThreadManager.getUIHandler().postDelayed(new lgn(this), 250L);
+    ThreadManager.getUIHandler().postDelayed(new ljb(this), 250L);
   }
   
   protected void a(int paramInt)
@@ -772,7 +772,7 @@ public class ReadInJoyDeliverBiuActivity
     if (!super.a()) {
       return false;
     }
-    a(2131430107, 2131438867, this.n);
+    a(2131430109, 2131438891, this.n);
     Object localObject4 = new ArrayList();
     bool = a((ArrayList)localObject4);
     Object localObject1;
@@ -948,7 +948,7 @@ public class ReadInJoyDeliverBiuActivity
     super.b();
     this.jdField_a_of_type_JavaLangString = "：";
     this.jdField_b_of_type_JavaLangString = "0X800865F";
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(getResources().getDrawable(2130845409));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(getResources().getDrawable(2130845490));
     Object localObject1 = getIntent();
     this.jdField_j_of_type_Int = ((Intent)localObject1).getIntExtra("arg_from_type", 0);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -1240,9 +1240,9 @@ public class ReadInJoyDeliverBiuActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969596);
+    super.setContentView(2130969592);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    a(2131438861);
+    a(2131438885);
     a();
     b();
     Object localObject = "";
@@ -1349,7 +1349,7 @@ public class ReadInJoyDeliverBiuActivity
     localAnimation = AnimationUtils.loadAnimation(this, 2131034280);
     localAnimation.setFillAfter(true);
     this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimation);
-    ThreadManager.getUIHandler().postDelayed(new lgp(this), 300L);
+    ThreadManager.getUIHandler().postDelayed(new ljd(this), 300L);
   }
   
   public void i()

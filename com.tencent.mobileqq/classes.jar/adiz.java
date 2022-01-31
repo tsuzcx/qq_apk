@@ -1,27 +1,18 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
 
-public class adiz
-  extends DataSetObserver
+public final class adiz
+  implements Parcelable.Creator
 {
-  public adiz(QfileHorizontalListView paramQfileHorizontalListView) {}
-  
-  public void onChanged()
+  public OfflineFileInfo a(Parcel paramParcel)
   {
-    synchronized (this.a)
-    {
-      QfileHorizontalListView.a(this.a, true);
-      this.a.invalidate();
-      this.a.requestLayout();
-      return;
-    }
+    return new OfflineFileInfo(paramParcel);
   }
   
-  public void onInvalidated()
+  public OfflineFileInfo[] a(int paramInt)
   {
-    QfileHorizontalListView.a(this.a);
-    this.a.invalidate();
-    this.a.requestLayout();
+    return new OfflineFileInfo[paramInt];
   }
 }
 

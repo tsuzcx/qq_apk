@@ -1,28 +1,25 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
 
-public class algs
-  implements Runnable
+public final class algs
+  extends BroadcastReceiver
 {
-  public algs(DownloadManager paramDownloadManager, String paramString) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
       return;
     }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
-    }
+    MQPSensitiveMsgUtil.a(paramIntent.getStringExtra("account"));
+    MQPSensitiveMsgUtil.b(MQPSensitiveMsgUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     algs
  * JD-Core Version:    0.7.0.1
  */

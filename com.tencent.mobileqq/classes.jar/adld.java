@@ -1,31 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class adld
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public adld(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public adld(DefaultFileModel paramDefaultFileModel) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 0: 
-      ForwardSdkBaseOption.a(this.a);
-    }
-    for (;;)
-    {
-      return true;
-      ForwardSdkBaseOption.b(this.a);
-      continue;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (this.a.jdField_a_of_type_Adls != null)) {
-        this.a.jdField_a_of_type_Adls.a();
-      }
-    }
+    FileManagerUtil.a(this.a.a, this.a.b());
   }
 }
 

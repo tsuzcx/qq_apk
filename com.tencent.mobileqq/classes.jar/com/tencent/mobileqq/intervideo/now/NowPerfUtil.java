@@ -7,36 +7,17 @@ public class NowPerfUtil
   private static long c;
   private static long d;
   private static long e;
-  private static long f;
-  private static long g;
-  private static long h;
   
   public static void a()
   {
-    a = System.currentTimeMillis();
+    b = System.currentTimeMillis();
+    d = b - a;
   }
   
   public static void b()
   {
-    b = System.currentTimeMillis();
-  }
-  
-  public static void c()
-  {
     c = System.currentTimeMillis();
-    f = c - b;
-  }
-  
-  public static void d()
-  {
-    d = System.currentTimeMillis();
-    g = d - c;
-  }
-  
-  public static void e()
-  {
-    e = System.currentTimeMillis();
-    h = e - d;
+    e = c - b;
   }
 }
 

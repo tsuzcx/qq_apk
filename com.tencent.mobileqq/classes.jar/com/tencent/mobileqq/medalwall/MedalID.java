@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.medalwall;
 
-import aefv;
+import aeof;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class MedalID
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aefv();
+  public static final Parcelable.Creator CREATOR = new aeof();
   public int a;
   public int b;
   

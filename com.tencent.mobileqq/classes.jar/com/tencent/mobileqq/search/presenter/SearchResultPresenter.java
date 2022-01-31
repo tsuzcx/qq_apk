@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahun;
+import ahze;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -63,9 +63,9 @@ public class SearchResultPresenter
       }
       try
       {
-        Object localObject = (ImageView)paramISearchResultView.a().findViewById(2131371256);
-        ImageView localImageView = (ImageView)paramISearchResultView.a().findViewById(2131364477);
-        TextView localTextView = (TextView)paramISearchResultView.a().findViewById(2131371257);
+        Object localObject = (ImageView)paramISearchResultView.a().findViewById(2131371254);
+        ImageView localImageView = (ImageView)paramISearchResultView.a().findViewById(2131364504);
+        TextView localTextView = (TextView)paramISearchResultView.a().findViewById(2131371255);
         if ((localObject != null) && (localImageView != null) && (localTextView != null))
         {
           ((ImageView)localObject).setVisibility(4);
@@ -144,7 +144,7 @@ public class SearchResultPresenter
       }
     }
     SearchViewUtils.a(paramISearchResultModel.c(), paramISearchResultModel.d(), paramISearchResultView);
-    paramISearchResultModel = paramISearchResultView.findViewById(2131365685);
+    paramISearchResultModel = paramISearchResultView.findViewById(2131365690);
     boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
     Object localObject = paramISearchResultView.getResources();
     if (paramISearchResultModel != null)
@@ -152,26 +152,26 @@ public class SearchResultPresenter
       if (bool)
       {
         paramISearchResultView.setBackgroundColor(((Resources)localObject).getColor(2131492948));
-        paramISearchResultModel.setBackgroundResource(2130838580);
+        paramISearchResultModel.setBackgroundResource(2130838586);
         return;
       }
       paramISearchResultView.setBackgroundColor(((Resources)localObject).getColor(2131492969));
-      paramISearchResultModel.setBackgroundResource(2130838579);
+      paramISearchResultModel.setBackgroundResource(2130838585);
       return;
     }
     if (bool)
     {
-      paramISearchResultView.setBackgroundResource(2130838580);
+      paramISearchResultView.setBackgroundResource(2130838586);
       return;
     }
-    paramISearchResultView.setBackgroundResource(2130838579);
+    paramISearchResultView.setBackgroundResource(2130838585);
   }
   
   protected void d(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     paramISearchResultView = paramISearchResultView.a();
     if (paramISearchResultView != null) {
-      paramISearchResultView.setOnClickListener(new ahun(this, paramISearchResultModel));
+      paramISearchResultView.setOnClickListener(new ahze(this, paramISearchResultModel));
     }
   }
 }

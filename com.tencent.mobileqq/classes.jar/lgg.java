@@ -1,23 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-public class lgg
-  implements Runnable
+class lgg
+  implements View.OnClickListener
 {
-  public lgg(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity, String paramString) {}
+  lgg(lgf paramlgf, FrameLayout paramFrameLayout) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInJoyDeliverBiuActivity.app.getCurrentAccountUin();
-    localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + (String)localObject, 4);
-    if (localObject != null)
-    {
-      ((SharedPreferences)localObject).edit().putString("readinjoy_deliver_biu_guide_time", this.jdField_a_of_type_JavaLangString);
-      ((SharedPreferences)localObject).edit().commit();
+    this.jdField_a_of_type_Lgf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.a();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_Lgf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a);
+    if (260 == this.jdField_a_of_type_Lgf.jdField_a_of_type_Int) {
+      SharedPreUtils.u(this.jdField_a_of_type_Lgf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity, this.jdField_a_of_type_Lgf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.app.getCurrentAccountUin(), null);
     }
   }
 }

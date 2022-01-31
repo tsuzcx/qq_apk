@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-public final class ansf
-  implements Parcelable.Creator
+public class ansf
+  implements Runnable
 {
-  public EditTakePhotoSource a(Parcel paramParcel)
-  {
-    return new EditTakePhotoSource(paramParcel);
-  }
+  public ansf(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public EditTakePhotoSource[] a(int paramInt)
+  public void run()
   {
-    return new EditTakePhotoSource[paramInt];
+    CaptureReportUtil.h();
+    this.a.E();
   }
 }
 

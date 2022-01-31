@@ -1,105 +1,80 @@
-import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
-import java.net.HttpURLConnection;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.util.FaceDecodeTask;
+import com.tencent.mobileqq.util.FaceDecodeTask.DecodeCompletionListener;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public class akha
-  extends Handler
+public final class akha
+  extends MqqHandler
 {
-  public int a;
-  public HttpMsg a;
-  public AtomicBoolean a;
-  public AtomicBoolean b = new AtomicBoolean();
-  
-  public akha(HttpCommunicator paramHttpCommunicator, Looper paramLooper)
+  public akha(Looper paramLooper)
   {
     super(paramLooper);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    if (paramMessage == null) {}
+    label4:
+    FaceDecodeTask.DecodeCompletionListener localDecodeCompletionListener;
+    label143:
+    label150:
+    do
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null)
+      do
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, "requeustInterupt", "msgId:" + this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.jdField_a_of_type_JavaLangString + " thread id:" + this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.b.set(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.jdField_a_of_type_JavaNetHttpURLConnection != null)
+        int i;
+        do
         {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
-          getLooper().getThread().interrupt();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a(9361, 0, "preempted by higher msg");
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a().b(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void a(HttpMsg paramHttpMsg)
-  {
-    sendMessage(obtainMessage(0, paramHttpMsg));
-  }
-  
-  public void handleMessage(Message arg1)
-  {
-    if (???.what == 0) {
-      if ((???.obj != null) && ((???.obj instanceof HttpMsg)))
-      {
-        localHttpMsg = (HttpMsg)???.obj;
-        if (localHttpMsg.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          break label179;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(localHttpMsg, this, false);
-        if (localHttpMsg.jdField_a_of_type_JavaLangObject != null) {
-          localHttpMsg.c.set(true);
-        }
-      }
-    }
-    label179:
-    while (???.what != 1)
-    {
-      synchronized (localHttpMsg.jdField_a_of_type_JavaLangObject)
-      {
-        HttpMsg localHttpMsg;
-        localHttpMsg.jdField_a_of_type_JavaLangObject.notify();
-        if (this.b.get())
+          break label4;
+          do
+          {
+            return;
+          } while (paramMessage.what != FaceDecodeTask.jdField_a_of_type_Int);
+          if (FaceDecodeTask.b.size() <= 0) {
+            break label150;
+          }
+          i = 0;
+          if (i >= FaceDecodeTask.b.size()) {
+            break label143;
+          }
+          paramMessage = (FaceDecodeTask)FaceDecodeTask.b.get(i);
+          if ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+            break;
+          }
+          localDecodeCompletionListener = (FaceDecodeTask.DecodeCompletionListener)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (localDecodeCompletionListener == null);
+        if (paramMessage.jdField_a_of_type_Boolean)
         {
-          getLooper().quit();
-          return;
+          paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
+          localDecodeCompletionListener.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
         }
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
-      ???.obj = null;
-      synchronized (HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator))
-      {
-        HttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a("handleMsgFin thread index:" + this.jdField_a_of_type_Int);
+        for (;;)
+        {
+          i += 1;
+          break;
+          localDecodeCompletionListener.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+        }
+        FaceDecodeTask.b.clear();
         return;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
-      ???.obj = null;
+        paramMessage = (FaceDecodeTask)paramMessage.obj;
+      } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+      localDecodeCompletionListener = (FaceDecodeTask.DecodeCompletionListener)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localDecodeCompletionListener == null);
+    if (paramMessage.jdField_a_of_type_Boolean)
+    {
+      paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
+      localDecodeCompletionListener.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
       return;
     }
-    getLooper().quit();
+    localDecodeCompletionListener.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akha
  * JD-Core Version:    0.7.0.1
  */

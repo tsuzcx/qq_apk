@@ -1,20 +1,16 @@
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRLoginActivity;
 
 public class oyy
-  implements URLDrawable.DownloadListener
+  implements DialogInterface.OnCancelListener
 {
-  public oyy(TroopGiftPanel paramTroopGiftPanel, TextView paramTextView) {}
+  public oyy(QRLoginActivity paramQRLoginActivity) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    this.a.finish();
   }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

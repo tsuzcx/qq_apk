@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.utils;
 
+import aadl;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -29,7 +30,6 @@ import java.util.HashSet;
 import java.util.Set;
 import mqq.os.MqqHandler;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import zwy;
 
 public class MessageRoamHandler
   extends BusinessHandler
@@ -392,8 +392,8 @@ public class MessageRoamHandler
     this.jdField_a_of_type_Int = paramInt;
     if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
     {
-      zwy localzwy = new zwy(this, paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localzwy);
+      aadl localaadl = new aadl(this, paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localaadl);
     }
     return (MessageObserver)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }

@@ -1,24 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.font.FontInterface.TrueTypeResult;
-import cooperation.qzone.webviewplugin.QzonePersonalizeJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastMusicInfo;
 
-public class anct
-  implements FontInterface.TrueTypeResult
+public final class anct
+  implements Parcelable.Creator
 {
-  public anct(QzonePersonalizeJsPlugin paramQzonePersonalizeJsPlugin) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2)
+  public BroadcastMusicInfo a(Parcel paramParcel)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      QzonePersonalizeJsPlugin.a(this.a, paramString2, -2, "font download failed.");
-      return;
-    }
-    QzonePersonalizeJsPlugin.a(this.a, paramString2, 0, "success");
+    return new BroadcastMusicInfo(paramParcel);
+  }
+  
+  public BroadcastMusicInfo[] a(int paramInt)
+  {
+    return new BroadcastMusicInfo[paramInt];
   }
 }
 

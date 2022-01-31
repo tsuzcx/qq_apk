@@ -1,31 +1,42 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsNewActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
 
 public class mte
-  implements Runnable
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private WeakReference a;
+  public mte(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
   
-  public mte(SubscriptFeedsNewActivity paramSubscriptFeedsNewActivity)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramSubscriptFeedsNewActivity);
+    if ((FastWebVideoFeedsPlayManager.a(this.a) == null) || (!paramBoolean)) {
+      return;
+    }
+    FastWebVideoFeedsPlayManager.b(this.a, System.currentTimeMillis());
+    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
+    double d = paramInt / 100.0D;
+    paramInt = (int)(l * d);
+    VideoFeedsHelper.a(FastWebVideoFeedsPlayManager.a(this.a).a, paramInt);
   }
   
-  public void run()
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    if ((this.a != null) && (this.a.get() != null))
-    {
-      WebProcessManager localWebProcessManager = (WebProcessManager)((SubscriptFeedsNewActivity)this.a.get()).app.getManager(12);
-      if (localWebProcessManager != null) {
-        localWebProcessManager.a(1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarActivity", 2, "enter folder preload web process");
-      }
+    FastWebVideoFeedsPlayManager.d(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (FastWebVideoFeedsPlayManager.a(this.a) == null) {
+      return;
     }
+    FastWebVideoFeedsPlayManager.d(this.a, false);
+    int i = paramSeekBar.getProgress();
+    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
+    i = (int)(i / 100.0D * l);
+    FastWebVideoFeedsPlayManager.a(this.a).a(i);
   }
 }
 

@@ -1,33 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnGalleryImageClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
 public class lts
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lts(FeedItemCellTypeGalleryBiu paramFeedItemCellTypeGalleryBiu) {}
+  public lts(ChannelCoverInfoModule paramChannelCoverInfoModule, ChannelCoverInfo paramChannelCoverInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter == null) {}
-    int i;
-    ReadInJoyBaseAdapter.OnGalleryImageClickListener localOnGalleryImageClickListener;
-    do
-    {
-      do
-      {
-        return;
-        paramView = ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a();
-      } while (paramView == null);
-      i = ComponentContentGalleryBiu.a(paramView, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter);
-      localOnGalleryImageClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    } while (localOnGalleryImageClickListener == null);
-    localOnGalleryImageClickListener.a(this.a.jdField_a_of_type_AndroidContentContext, paramView, 0, paramView.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo);
   }
 }
 

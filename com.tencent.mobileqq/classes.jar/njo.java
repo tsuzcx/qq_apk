@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class njo
-  implements DialogInterface.OnCancelListener
+  implements ActionSheet.OnDismissListener
 {
-  public njo(FeedsPlayModeBase paramFeedsPlayModeBase) {}
+  public njo(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager, MsgTabNodeInfo paramMsgTabNodeInfo) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onDismiss()
   {
-    StoryReportor.a("story_grp", "clk_one", this.a.a(), 0, new String[] { "6", PlayModeUtils.a(this.a.a, this.a.b), "", "" });
+    StoryReportor.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString });
   }
 }
 

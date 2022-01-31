@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
-public final class xws
-  implements Parcelable.Creator
+public class xws
+  implements Runnable
 {
-  public WordingItem a(Parcel paramParcel)
-  {
-    return new WordingItem(paramParcel);
-  }
+  public xws(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public WordingItem[] a(int paramInt)
+  public void run()
   {
-    return new WordingItem[paramInt];
+    Bitmap localBitmap = null;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
+      localBitmap = this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.a(false);
+    }
+    if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new xyl(localBitmap, this.a.e));
+    }
   }
 }
 

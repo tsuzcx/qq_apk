@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
 
-public class xzo
-  implements DialogInterface.OnClickListener
+class xzo
+  implements Runnable
 {
-  public xzo(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
+  xzo(xzn paramxzn, int paramInt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.a.app, this.a, 2, 12);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 1, 0, "", "", "", "");
+    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_Xzn.a).setProgress(this.jdField_a_of_type_Int);
+    QzDynamicVideoPreviewActivity.c(this.jdField_a_of_type_Xzn.a).setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

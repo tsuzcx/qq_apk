@@ -1,14 +1,15 @@
-import com.tencent.biz.pubaccount.PublicAccountUnfollowTask;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleSinglePic;
 
-public class kzf
-  implements Runnable
+class kzf
+  implements View.OnClickListener
 {
-  public kzf(PublicAccountUnfollowTask paramPublicAccountUnfollowTask) {}
+  kzf(kze paramkze) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PublicAccountUtil.a(PublicAccountUnfollowTask.a(this.a), PublicAccountUnfollowTask.a(this.a), PublicAccountUnfollowTask.a(this.a), false, this.a);
+    this.a.a.d();
   }
 }
 

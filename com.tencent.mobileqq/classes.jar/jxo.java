@@ -1,24 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
 public class jxo
   implements View.OnClickListener
 {
-  public jxo(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public jxo(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
   public void onClick(View paramView)
   {
-    QAVGroupConfig.Report.c();
-    ReportController.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.b, "", "", "");
-    this.a.c(10);
+    this.a.c(2);
+    this.a.a("onClickIgnore", true, null, -1);
+    this.a.b("onClickIgnore");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jxo
  * JD-Core Version:    0.7.0.1
  */

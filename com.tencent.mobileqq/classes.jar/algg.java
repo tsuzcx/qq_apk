@@ -1,42 +1,21 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
+import mqq.os.MqqHandler;
 
-public final class algg
-  implements ITMAssistantExchangeURLListenner
+public class algg
+  implements Runnable
 {
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  public algg(WorldCupShareFragment paramWorldCupShareFragment) {}
+  
+  public void run()
   {
-    LogUtility.b(DownloadApi.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
-    {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            DownloadApi.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (DownloadApi.jdField_a_of_type_JavaLangObject)
-    {
-      DownloadApi.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
+    String str = WorldCupShareFragment.b(this.a);
+    ThreadManager.getUIHandler().post(new algh(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     algg
  * JD-Core Version:    0.7.0.1
  */

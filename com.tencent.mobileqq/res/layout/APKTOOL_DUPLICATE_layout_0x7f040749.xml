@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d6b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0958" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2239" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0400db" />
-</RelativeLayout>
+    <TextView android:textSize="31.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="人脸检测失败" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="视频中没有出现完整的脸\n无法通过真实认证哦" />
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a202f" android:layout_width="220.0dip" android:layout_height="40.0dip" android:layout_marginTop="38.0dip" android:text="重拍" android:contentDescription="重拍" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
+</LinearLayout>

@@ -1,47 +1,33 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransformation;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.BitmapUtils;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.PeakService;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class xrh
   implements Runnable
 {
-  public xrh(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
+  public xrh(RecentOptPopBar paramRecentOptPopBar) {}
   
   public void run()
   {
-    int i = AIOUtils.a(47.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
-    int j = AIOUtils.a(75.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
-    Bitmap localBitmap1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false);
-    if (localBitmap1 == null) {
-      SLog.e("PTV.NewFlowCameraActivity", "resizeThumb = null.");
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), PeakService.class);
+    if (VideoEnvironment.d(this.a.a.app)) {
+      localIntent.putExtra("ServiceAction", 2);
     }
-    Bitmap localBitmap2;
-    do
+    try
     {
+      BaseApplicationImpl.getContext().startService(localIntent);
       return;
-      localBitmap2 = new RoundedTransformation(AIOUtils.a(3.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
-      if (localBitmap2 == null)
-      {
-        SLog.e("PTV.NewFlowCameraActivity", "roundThumb = null.");
-        return;
-      }
-      i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      float f1 = ScreenUtil.a;
-      float f2 = ScreenUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getApplicationContext());
-      if (i / j > f1 / f2) {}
-      for (localBitmap1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, (int)(f2 / f1 * i), true))
-      {
-        SLog.e("PTV.NewFlowCameraActivity", "animBitmap = null.");
-        return;
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a == null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.post(new xsf(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, localBitmap1, localBitmap2));
+    }
+    catch (SecurityException localSecurityException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("RecentOptPopBar", 2, "onShow_otherThings, e = " + localSecurityException.getStackTrace());
+    }
   }
 }
 

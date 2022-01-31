@@ -1,25 +1,24 @@
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityLoginView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.widget.AudioAnimationView;
 
-class alak
+public class alak
   implements Runnable
 {
-  alak(alae paramalae) {}
+  private alak(AudioAnimationView paramAudioAnimationView) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorityActivity", 2, "--> handler message UPDATE_DROP_DOWN_VIEWS");
+    this.a.b();
+    if (this.a.a) {
+      AudioAnimationView.a(this.a).postDelayed(this, 100L);
     }
-    this.a.a.a.a.b();
-    this.a.a.runOnUiThread(new alal(this));
+    this.a.requestLayout();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alak
  * JD-Core Version:    0.7.0.1
  */

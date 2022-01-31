@@ -120,9 +120,9 @@ public class PublicFragmentActivity
       finish();
       return false;
     }
-    this.mNeedStatusTrans = this.a.a();
-    this.mActNeedImmersive = this.a.b();
-    this.a.a(this);
+    this.mNeedStatusTrans = this.a.needStatusTrans();
+    this.mActNeedImmersive = this.a.needImmersive();
+    this.a.initWindowStyleAndAnimation(this);
     if (paramBundle != null)
     {
       if (QLog.isColorLevel()) {
@@ -133,7 +133,7 @@ public class PublicFragmentActivity
     super.doOnCreate(paramBundle);
     setContentView(2130968611);
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131362861, this.a);
+    paramBundle.replace(2131362866, this.a);
     paramBundle.commit();
     return true;
   }
@@ -141,14 +141,14 @@ public class PublicFragmentActivity
   protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    this.a.a(paramIntent);
+    this.a.onNewIntent(paramIntent);
   }
   
   public void finish()
   {
     super.finish();
     if (this.a != null) {
-      this.a.u_();
+      this.a.onFinish();
     }
   }
   
@@ -162,13 +162,13 @@ public class PublicFragmentActivity
   
   public boolean isSupportScreenShot()
   {
-    return (this.a == null) || (this.a.i());
+    return (this.a == null) || (this.a.isSupportScreenShot());
   }
   
   protected boolean isWrapContent()
   {
     if (this.a != null) {
-      return this.a.c();
+      return this.a.isWrapContent();
     }
     return super.isWrapContent();
   }
@@ -177,7 +177,7 @@ public class PublicFragmentActivity
   {
     super.onAccountChanged();
     if (this.a != null) {
-      this.a.m();
+      this.a.onAccountChanged();
     }
   }
   
@@ -186,14 +186,14 @@ public class PublicFragmentActivity
     if (this.a == null) {
       return super.onBackEvent();
     }
-    return this.a.d();
+    return this.a.onBackEvent();
   }
   
   public void onPostThemeChanged()
   {
     super.onPostThemeChanged();
     if (this.a != null) {
-      this.a.l();
+      this.a.onPostThemeChanged();
     }
   }
   
@@ -201,7 +201,7 @@ public class PublicFragmentActivity
   {
     super.onPreThemeChanged();
     if (this.a != null) {
-      this.a.k();
+      this.a.onPreThemeChanged();
     }
   }
   
@@ -209,7 +209,7 @@ public class PublicFragmentActivity
   {
     super.onWindowFocusChanged(paramBoolean);
     if (this.a != null) {
-      this.a.b(paramBoolean);
+      this.a.onWindowFocusChanged(paramBoolean);
     }
   }
   

@@ -27,7 +27,7 @@ public class SendBlessRecentItemData
     int i;
     if (!localBlessManager.h())
     {
-      this.jdField_b_of_type_JavaLangString = paramContext.getResources().getString(2131438250);
+      this.jdField_b_of_type_JavaLangString = paramContext.getResources().getString(2131438270);
       this.jdField_c_of_type_JavaLangCharSequence = localBlessManager.b();
       this.jdField_d_of_type_JavaLangCharSequence = "";
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800618A", "0X800618A", 0, 0, "", "", "", "");
@@ -73,7 +73,7 @@ public class SendBlessRecentItemData
       if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence))
       {
         this.jdField_d_of_type_JavaLangCharSequence = ("[" + this.jdField_d_of_type_JavaLangCharSequence + "] ");
-        this.e = paramContext.getResources().getColor(2131494288);
+        this.e = paramContext.getResources().getColor(2131494294);
       }
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800632B", "0X800632B", 0, 0, "", "", "", "");
       break;

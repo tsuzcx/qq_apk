@@ -1,34 +1,13 @@
-import com.tencent.mobileqq.ar.arengine.ARWorldCupBaseResDownload;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr.GestureStatusListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ArConfigService;
 
-public class aait
-  implements GestureMgr.GestureStatusListener
+class aait
+  implements Runnable
 {
-  public aait(ARWorldCupBaseResDownload paramARWorldCupBaseResDownload) {}
+  aait(aaiq paramaaiq) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if ((paramInt >= 0) && (paramInt <= 99))
-    {
-      QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes1. download... progress = " + paramInt);
-      ARWorldCupBaseResDownload.a(this.a, 1, paramInt);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    if (paramBoolean1)
-    {
-      QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes1. download successfully. bEnableGesture = " + paramBoolean2);
-      GestureMgr.a().a(false, this);
-      ARWorldCupBaseResDownload.a(this.a, 1, 100);
-      return;
-    }
-    QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes1. download failed. error code = " + paramInt);
-    GestureMgr.a().a(false, this);
-    ARWorldCupBaseResDownload.a(this.a, 1, -1);
+    ArConfigService.e(this.a.a);
   }
 }
 

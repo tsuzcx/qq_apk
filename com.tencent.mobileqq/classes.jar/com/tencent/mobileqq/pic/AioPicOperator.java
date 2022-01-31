@@ -201,7 +201,7 @@ public class AioPicOperator
       localPicFowardDbRecordData.jdField_a_of_type_Int = paramPicFowardInfo.jdField_b_of_type_Int;
       localPicFowardDbRecordData.b = paramPicFowardInfo.jdField_g_of_type_JavaLangString;
     }
-    localMessageForPic.picExtraFlag = TranDbRecord.PicDbRecord.f;
+    localMessageForPic.picExtraFlag = TranDbRecord.PicDbRecord.jdField_f_of_type_Int;
     localMessageForPic.picExtraObject = localPicFowardDbRecordData;
     if (localPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo$RetryInfo != null)
     {
@@ -273,11 +273,11 @@ public class AioPicOperator
         Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "bindUrlKeyAndUniseq", localMessageForPic.localUUID + "|" + localMessageForPic.uniseq);
         localMessageForPic.md5 = a(localMessageForPic.path);
         if (!GeneralConfigUtils.a()) {
-          break label816;
+          break label908;
         }
         localMessageForPic.bigThumbMsgUrl = paramPicUploadInfo.jdField_h_of_type_JavaLangString;
         localMessageForPic.thumbWidth = paramPicUploadInfo.jdField_e_of_type_Int;
-        localMessageForPic.thumbHeight = paramPicUploadInfo.f;
+        localMessageForPic.thumbHeight = paramPicUploadInfo.jdField_f_of_type_Int;
         localObject = new File(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
         if (((File)localObject).exists())
         {
@@ -305,15 +305,17 @@ public class AioPicOperator
         localMessageForPic.sync2Story = paramPicUploadInfo.jdField_g_of_type_Boolean;
         String str = MessageConstants.n;
         if (!localMessageForPic.sync2Story) {
-          break label828;
+          break label920;
         }
         localObject = "1";
         label507:
         localMessageForPic.saveExtInfoToExtStr(str, (String)localObject);
-        ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForPic, paramPicUploadInfo.c, paramPicUploadInfo.jdField_b_of_type_Int, paramPicUploadInfo.o);
-        if (paramPicUploadInfo.jdField_b_of_type_Int == 0) {
-          ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForPic, paramPicUploadInfo.c);
+        ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForPic, paramPicUploadInfo.c, paramPicUploadInfo.jdField_b_of_type_Int, paramPicUploadInfo.jdField_o_of_type_Int);
+        if (paramPicUploadInfo.jdField_b_of_type_Int != 0) {
+          break label928;
         }
+        ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForPic, paramPicUploadInfo.c);
+        label557:
         if (paramPicUploadInfo.jdField_a_of_type_Int == 1036) {
           DatingUtil.a(localMessageForPic);
         }
@@ -329,10 +331,19 @@ public class AioPicOperator
         if (paramPicUploadInfo.jdField_a_of_type_Int == 1044) {
           DoutuUtils.a(localMessageForPic, paramPicUploadInfo);
         }
+        if (paramPicUploadInfo.p == 1)
+        {
+          localMessageForPic.saveExtInfoToExtStr("msg_extra_key_is_sync_qzone", String.valueOf(1));
+          localMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_album_id", paramPicUploadInfo.jdField_o_of_type_JavaLangString);
+          localMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_batch_id", String.valueOf(paramPicUploadInfo.jdField_f_of_type_Long));
+          localMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_is_raw", String.valueOf(paramPicUploadInfo.jdField_g_of_type_Int));
+          localMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_batch_count", String.valueOf(paramPicUploadInfo.jdField_g_of_type_Long));
+          localMessageForPic.saveExtInfoToExtStr("msg_extra_key_qzone_photo_index", String.valueOf(paramPicUploadInfo.jdField_h_of_type_Long));
+        }
         localMessageForPic.imageType = PeakUtils.a(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
         localObject = paramPicUploadInfo.jdField_a_of_type_JavaUtilArrayList;
         if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
-          break label836;
+          break label952;
         }
         a(paramPicUploadInfo, localMessageForPic);
         localMessageForPic.imageType = 1003;
@@ -348,13 +359,19 @@ public class AioPicOperator
         return localMessageForPic;
         bool = false;
         break;
-        label816:
+        label908:
         localMessageForPic.thumbMsgUrl = paramPicUploadInfo.jdField_h_of_type_JavaLangString;
         break label229;
-        label828:
+        label920:
         localObject = "0";
         break label507;
-        label836:
+        label928:
+        if (paramPicUploadInfo.jdField_b_of_type_Int != 1) {
+          break label557;
+        }
+        ConfessMsgUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForPic, paramPicUploadInfo.c);
+        break label557;
+        label952:
         if (QLog.isColorLevel()) {
           QLog.d("peak_pgjpeg", 2, "Slice infos is null");
         }
@@ -407,7 +424,7 @@ public class AioPicOperator
       localBuilder.d(1009);
       localBuilder.a((String)localObject1);
       localBuilder.c(str1);
-      localBuilder.c(TranDbRecord.PicDbRecord.f);
+      localBuilder.c(TranDbRecord.PicDbRecord.jdField_f_of_type_Int);
       localBuilder.g((int)l3);
       localBuilder.h((int)l4);
       Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "createForwardPicInfo(Intent obj)", "image_width = " + l3 + ",image_height = " + l4);
@@ -495,7 +512,7 @@ public class AioPicOperator
         localBuilder.d(1009);
         localBuilder.a(paramMessageForPic.path);
         localBuilder.c(paramString3);
-        localBuilder.c(TranDbRecord.PicDbRecord.f);
+        localBuilder.c(TranDbRecord.PicDbRecord.jdField_f_of_type_Int);
         localBuilder.g((int)paramMessageForPic.width);
         localBuilder.h((int)paramMessageForPic.height);
         Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "createForwardPicInfo", "picMsg.width = " + paramMessageForPic.width + ",picMsg.height = " + paramMessageForPic.height);
@@ -597,6 +614,16 @@ public class AioPicOperator
       localObject = localBuilder.a();
       HotPicHelper.a((PicUploadInfo)localObject, paramIntent, k);
       DoutuUtils.a(paramIntent, (PicUploadInfo)localObject);
+      i = paramIntent.getIntExtra("key_is_sync_qzone", 0);
+      if (i == 1)
+      {
+        str1 = paramIntent.getStringExtra("key_qzone_album_id");
+        ((PicUploadInfo)localObject).p = i;
+        ((PicUploadInfo)localObject).jdField_o_of_type_JavaLangString = str1;
+        ((PicUploadInfo)localObject).jdField_f_of_type_Long = paramIntent.getLongExtra("key_qzone_batch_id", 0L);
+        ((PicUploadInfo)localObject).jdField_g_of_type_Long = paramIntent.getIntExtra("PhotoConst.PHOTO_COUNT", 0);
+        ((PicUploadInfo)localObject).jdField_h_of_type_Long = paramIntent.getIntExtra("PhotoConst.PHOTO_SEND_PATH_INDEX", 0);
+      }
       Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "createPicUploadInfo", "");
       return localObject;
     }

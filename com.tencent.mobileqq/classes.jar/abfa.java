@@ -1,49 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.armap.ResDownloadManager.IResDownloadListener;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.mobileqq.armap.config.PreloadMapRDHandler.UserData;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.ark.ArkTipsManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Iterator;
+import java.util.List;
 
 public class abfa
-  implements ResDownloadManager.IResDownloadListener
+  extends MessageObserver
 {
-  public abfa(ARMapConfigManager paramARMapConfigManager) {}
+  public abfa(ArkTipsManager paramArkTipsManager) {}
   
-  public void a(String paramString1, String paramString2, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    long l;
-    if ((paramObject instanceof PreloadMapRDHandler.UserData))
+    if ((ArkTipsManager.a(this.a) != null) && (paramList != null))
     {
-      paramString2 = (PreloadMapRDHandler.UserData)paramObject;
-      if (paramInt != 0) {
-        break label155;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if ((localMessageRecord != null) && (localMessageRecord.uniseq == ArkTipsManager.a(this.a).b)) {
+          this.a.a(localMessageRecord.uniseq);
+        }
       }
-      l = new File(paramString3).length() / 1024L;
-      paramString3 = new HashMap();
-      paramString3.put("failReason", String.valueOf(paramInt));
-      paramString3.put("fileSize", String.valueOf(l));
-      if (!paramString2.jdField_a_of_type_Boolean) {
-        break label161;
-      }
-    }
-    label155:
-    label161:
-    for (paramString1 = "1";; paramString1 = "0")
-    {
-      paramString3.put("isFileExist", paramString1);
-      paramString3.put("areaCode", String.valueOf(paramString2.jdField_a_of_type_Int));
-      StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ARMAP_OFFLINE_FILESIZE", true, 0L, 0L, paramString3, "", false);
-      if (paramInt != 0) {
-        QLog.d("ARMapConfigManager.preloadMap", 1, "preload armap errCode:" + paramInt);
-      }
-      return;
-      l = 0L;
-      break;
     }
   }
 }

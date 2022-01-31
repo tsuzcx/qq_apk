@@ -1,34 +1,74 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView.IFace2faceContext;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.SogouEmoji;
+import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aclm
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public aclm(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
+  public aclm(SogouEmoji paramSogouEmoji, List paramList) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.setVisibility(4);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.b();
-    this.a.c.setBackgroundDrawable(null);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceDetailBaseView$IFace2faceContext.d();
     if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationEnd " + hashCode());
+      QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey begins, allPackId:" + this.jdField_a_of_type_JavaUtilList);
     }
-    Face2FaceDetailBaseView.a(this.a, true);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationStart " + hashCode());
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey ends, param packid is null.");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey,size:" + this.jdField_a_of_type_JavaUtilList.size());
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      ArrayList localArrayList = null;
+      label360:
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(str);
+        if (localObject == null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(str, EmojiManager.b);
+          if (QLog.isColorLevel()) {
+            QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey, packId=" + str + ",fail to search 【the pack】 from db, try get json from svr.");
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey, packId=" + str + ",type:" + ((EmoticonPackage)localObject).type + ",json exists in local db.");
+          }
+          localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(str, true);
+          if ((localObject instanceof ArrayList))
+          {
+            localArrayList = (ArrayList)localObject;
+            localArrayList = this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(localArrayList);
+          }
+          for (;;)
+          {
+            if (localArrayList == null) {
+              break label360;
+            }
+            if (localArrayList.size() == 0) {
+              break;
+            }
+            this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(str, localArrayList);
+            if (QLog.isColorLevel()) {
+              QLog.d("SogouEmoji", 2, "func pullMultipleEmojiKey ends, packId=" + str + ", try get keys from svr.");
+            }
+            break;
+          }
+        }
+      }
     }
   }
 }

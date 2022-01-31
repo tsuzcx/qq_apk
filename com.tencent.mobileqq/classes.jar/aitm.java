@@ -1,21 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import android.os.Bundle;
+import com.tencent.mobileqq.theme.ThemeSwitchManager;
 
 public class aitm
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public aitm(AbsPublishActivity paramAbsPublishActivity) {}
+  public aitm(ThemeSwitchManager paramThemeSwitchManager, Bundle paramBundle) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.clearAnimation();
+    this.jdField_a_of_type_ComTencentMobileqqThemeThemeSwitchManager.a(this.jdField_a_of_type_AndroidOsBundle);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

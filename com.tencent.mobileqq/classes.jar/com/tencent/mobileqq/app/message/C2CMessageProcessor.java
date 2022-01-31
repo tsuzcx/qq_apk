@@ -17,6 +17,7 @@ import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
 import com.tencent.mobileqq.activity.qwallet.QWalletSetting;
 import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
 import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HotChatHandler;
 import com.tencent.mobileqq.app.HotChatManager;
@@ -115,11 +116,11 @@ import tencent.im.msg.im_msg_body.ElemFlags2;
 import tencent.im.msg.im_msg_body.MsgBody;
 import tencent.im.msg.im_msg_body.PubAccInfo;
 import tencent.im.msg.im_msg_body.RichText;
-import zss;
-import zsu;
-import zsv;
-import zsw;
-import zsy;
+import zzd;
+import zzf;
+import zzg;
+import zzh;
+import zzj;
 
 public class C2CMessageProcessor
   extends BaseMessageProcessor
@@ -200,14 +201,14 @@ public class C2CMessageProcessor
         i1 = n;
         localObject2 = localObject1;
         if (!QLog.isColorLevel()) {
-          break label3005;
+          break label3023;
         }
         l4 = l2;
         l3 = l1;
         i1 = n;
         localObject2 = localObject1;
         QLog.d("Q.msg.C2CMessageProcessor", 2, "<---decodeC2CMessagePackage: msgList[" + i2 + "] : msg doesn't has msgHead.");
-        break label3005;
+        break label3023;
       }
       l4 = l2;
       l3 = l1;
@@ -230,7 +231,7 @@ public class C2CMessageProcessor
       localObject2 = localObject1;
       l5 = ((msg_comm.MsgHead)localObject5).msg_time.get();
       if (l5 <= paramLong) {
-        break label2996;
+        break label3014;
       }
       paramBoolean3 = false;
       bool = false;
@@ -406,11 +407,15 @@ public class C2CMessageProcessor
                   if (((MessageForStructing)localObject2).structingMsg.mMsgServiceID == 500)
                   {
                     n = i1;
-                    if (!ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject5)) {
-                      break label2354;
+                    if (!AppConstants.aI.equals(((MessageForStructing)localObject2).senderuin))
+                    {
+                      n = i1;
+                      if (!ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject5)) {
+                        break label2372;
+                      }
+                      n = i1;
+                      ((MessageRecord)localObject5).time = NetConnInfoCenter.getServerTime();
                     }
-                    n = i1;
-                    ((MessageRecord)localObject5).time = NetConnInfoCenter.getServerTime();
                   }
                 }
               }
@@ -445,27 +450,27 @@ public class C2CMessageProcessor
                       n = i1;
                       l3 = QWalletSetting.a(str, (String)localObject6, -1L);
                       if (l3 < 0L) {
-                        break label2990;
+                        break label3008;
                       }
                       n = i1;
                       localObject7 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(((MessageForStructing)localObject2).frienduin, ((MessageForStructing)localObject2).istroop, l3);
                       n = i1;
                       if (!(localObject7 instanceof MessageForStructing)) {
-                        break label2990;
+                        break label3008;
                       }
                       n = i1;
                       localObject7 = (MessageForStructing)localObject7;
                       n = i1;
                       if (((MessageForStructing)localObject7).structingMsg == null) {
-                        break label2990;
+                        break label3008;
                       }
                       n = i1;
                       if (((MessageForStructing)localObject7).structingMsg.mMsgServiceID != 112) {
-                        break label2990;
+                        break label3008;
                       }
                       n = i1;
                       if (((MessageForStructing)localObject2).structingMsg.mSortKey <= ((MessageForStructing)localObject7).structingMsg.mSortKey) {
-                        break label2386;
+                        break label2404;
                       }
                       n = i1;
                       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((MessageRecord)localObject7, true);
@@ -545,7 +550,7 @@ public class C2CMessageProcessor
               {
                 n = i1;
                 if (!"1".equals(((MessageRecord)localObject5).getExtInfoFromExtStr("is_AdArrive_Msg"))) {
-                  break label2404;
+                  break label2422;
                 }
                 n = i1;
                 localObject2 = ((MessageRecord)localObject5).getExtInfoFromExtStr("gdt_msgImp");
@@ -640,7 +645,7 @@ public class C2CMessageProcessor
             StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForStructing)localObject5);
             continue;
             if (!QLog.isColorLevel()) {
-              break label2343;
+              break label2361;
             }
           }
           catch (Exception localException1)
@@ -649,11 +654,11 @@ public class C2CMessageProcessor
             l4 = l1;
           }
           QLog.w("Q.msg.C2CMessageProcessor", 2, "decodeC2CMessage error,", localException1);
-          label2343:
+          label2361:
           l1 = l4;
           l2 = l3;
-          break label3017;
-          label2354:
+          break label3035;
+          label2372:
           n = i1;
           ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localException1);
           l3 = l2;
@@ -661,12 +666,12 @@ public class C2CMessageProcessor
           l1 = l3;
           n = i1;
           break;
-          label2386:
+          label2404:
           n = i1;
           localArrayList1.remove(localObject5);
           n = 0;
           continue;
-          label2404:
+          label2422:
           n = i1;
           if ("2290230341".equals(((MessageRecord)localObject5).frienduin))
           {
@@ -678,7 +683,7 @@ public class C2CMessageProcessor
       l3 = l1;
       l1 = l2;
       l2 = l3;
-      break label3017;
+      break label3035;
       if (localObject1 != null)
       {
         paramUinPairMsg = (msg_comm.UinPairMsg)localObject1;
@@ -719,10 +724,10 @@ public class C2CMessageProcessor
         ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList1);
         paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
         if ((!paramBoolean3) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Stop)) {
-          break label2967;
+          break label2985;
         }
       }
-      label2967:
+      label2985:
       for (paramBoolean1 = true;; paramBoolean1 = false)
       {
         paramString.a(localArrayList1, str, paramBoolean1);
@@ -747,10 +752,10 @@ public class C2CMessageProcessor
     for (;;)
     {
       Object localObject3;
-      label2990:
-      label2996:
-      label3005:
-      label3017:
+      label3008:
+      label3014:
+      label3023:
+      label3035:
       i2 += 1;
       l3 = l2;
       l2 = l1;
@@ -844,7 +849,7 @@ public class C2CMessageProcessor
         if ((paramInt == -126) || (paramInt == 2))
         {
           localObject1 = paramMsgHead + " 加入了本群";
-          localObject2 = paramQQAppInterface.getApp().getApplicationContext().getString(2131433102);
+          localObject2 = paramQQAppInterface.getApp().getApplicationContext().getString(2131433116);
           paramString2 = (String)localObject1;
           if (a(str1)) {
             paramString2 = (String)localObject1 + "，" + (String)localObject2;
@@ -898,7 +903,7 @@ public class C2CMessageProcessor
           {
             localObject3 = (String)localObject1 + "邀请 ";
             localObject4 = (String)localObject3 + paramMsgHead + " 加入群聊";
-            String str2 = paramQQAppInterface.getApp().getApplicationContext().getString(2131433102);
+            String str2 = paramQQAppInterface.getApp().getApplicationContext().getString(2131433116);
             localObject2 = localObject4;
             if (a(str1)) {
               localObject2 = (String)localObject4 + "，" + str2;
@@ -966,52 +971,52 @@ public class C2CMessageProcessor
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 736	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   4: ldc_w 758
+    //   1: getfield 742	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   4: ldc_w 764
     //   7: iconst_1
-    //   8: invokevirtual 761	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
+    //   8: invokevirtual 767	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
     //   11: istore 9
     //   13: aload_1
-    //   14: getfield 736	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   17: ldc_w 763
+    //   14: getfield 742	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   17: ldc_w 769
     //   20: iconst_1
-    //   21: invokevirtual 761	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
+    //   21: invokevirtual 767	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
     //   24: istore 11
     //   26: aload_1
-    //   27: getfield 736	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   30: ldc_w 765
+    //   27: getfield 742	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   30: ldc_w 771
     //   33: iconst_0
-    //   34: invokevirtual 761	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
+    //   34: invokevirtual 767	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
     //   37: istore 10
-    //   39: invokestatic 770	java/lang/System:currentTimeMillis	()J
+    //   39: invokestatic 776	java/lang/System:currentTimeMillis	()J
     //   42: lstore 12
-    //   44: new 772	msf/msgsvc/msg_svc$PbGetMsgResp
+    //   44: new 778	msf/msgsvc/msg_svc$PbGetMsgResp
     //   47: dup
-    //   48: invokespecial 773	msf/msgsvc/msg_svc$PbGetMsgResp:<init>	()V
+    //   48: invokespecial 779	msf/msgsvc/msg_svc$PbGetMsgResp:<init>	()V
     //   51: astore 20
     //   53: aload 20
     //   55: aload_3
-    //   56: checkcast 775	[B
-    //   59: checkcast 775	[B
-    //   62: invokevirtual 779	msf/msgsvc/msg_svc$PbGetMsgResp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   65: checkcast 772	msf/msgsvc/msg_svc$PbGetMsgResp
+    //   56: checkcast 781	[B
+    //   59: checkcast 781	[B
+    //   62: invokevirtual 785	msf/msgsvc/msg_svc$PbGetMsgResp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   65: checkcast 778	msf/msgsvc/msg_svc$PbGetMsgResp
     //   68: astore 20
     //   70: aload 20
     //   72: ifnonnull +35 -> 107
-    //   75: invokestatic 782	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   78: invokestatic 787	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   75: invokestatic 788	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   78: invokestatic 793	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   81: aload_0
     //   82: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   85: invokevirtual 73	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   88: ldc_w 789
+    //   88: ldc_w 795
     //   91: iconst_0
     //   92: lconst_0
     //   93: lconst_0
     //   94: new 110	java/util/HashMap
     //   97: dup
     //   98: invokespecial 111	java/util/HashMap:<init>	()V
-    //   101: ldc_w 433
-    //   104: invokevirtual 792	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   101: ldc_w 441
+    //   104: invokevirtual 798	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   107: new 107	java/lang/StringBuilder
     //   110: dup
     //   111: invokespecial 108	java/lang/StringBuilder:<init>	()V
@@ -1019,11 +1024,11 @@ public class C2CMessageProcessor
     //   116: aload 20
     //   118: ifnull +25 -> 143
     //   121: aload 20
-    //   123: getfield 795	msf/msgsvc/msg_svc$PbGetMsgResp:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   126: invokevirtual 796	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   123: getfield 801	msf/msgsvc/msg_svc$PbGetMsgResp:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   126: invokevirtual 802	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   129: ifeq +14 -> 143
     //   132: aload 20
-    //   134: getfield 795	msf/msgsvc/msg_svc$PbGetMsgResp:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   134: getfield 801	msf/msgsvc/msg_svc$PbGetMsgResp:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   137: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   140: ifeq +175 -> 315
     //   143: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1032,100 +1037,100 @@ public class C2CMessageProcessor
     //   151: iconst_0
     //   152: invokevirtual 223	java/lang/StringBuilder:setLength	(I)V
     //   155: aload 22
-    //   157: ldc_w 798
+    //   157: ldc_w 804
     //   160: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: aload_1
-    //   164: invokevirtual 801	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
+    //   164: invokevirtual 807	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
     //   167: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   170: ldc_w 803
+    //   170: ldc_w 809
     //   173: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: astore 21
     //   178: aload 20
     //   180: ifnonnull +105 -> 285
-    //   183: ldc_w 805
+    //   183: ldc_w 811
     //   186: astore_3
     //   187: aload 21
     //   189: aload_3
-    //   190: invokevirtual 489	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   193: ldc_w 807
+    //   190: invokevirtual 495	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   193: ldc_w 813
     //   196: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   199: astore 21
     //   201: aload 20
     //   203: ifnonnull +97 -> 300
-    //   206: ldc_w 805
+    //   206: ldc_w 811
     //   209: astore_3
     //   210: aload 21
     //   212: aload_3
-    //   213: invokevirtual 489	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   216: ldc_w 809
+    //   213: invokevirtual 495	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   216: ldc_w 815
     //   219: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   222: iload 9
-    //   224: invokevirtual 714	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   227: ldc_w 811
+    //   224: invokevirtual 720	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   227: ldc_w 817
     //   230: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: iload 11
-    //   235: invokevirtual 714	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   235: invokevirtual 720	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   238: pop
     //   239: ldc 162
     //   241: iconst_2
     //   242: aload 22
     //   244: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   247: invokestatic 813	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   247: invokestatic 819	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   250: aload_0
-    //   251: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   251: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   254: aload_1
     //   255: aload_2
-    //   256: invokevirtual 815	com/tencent/mobileqq/app/MessageHandler:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)V
+    //   256: invokevirtual 821	com/tencent/mobileqq/app/MessageHandler:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;)V
     //   259: return
     //   260: astore 20
     //   262: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   265: ifeq +14 -> 279
     //   268: ldc 162
     //   270: iconst_2
-    //   271: ldc_w 817
+    //   271: ldc_w 823
     //   274: aload 20
-    //   276: invokestatic 819	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   276: invokestatic 825	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   279: aconst_null
     //   280: astore 20
     //   282: goto -212 -> 70
     //   285: aload 20
-    //   287: getfield 795	msf/msgsvc/msg_svc$PbGetMsgResp:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   287: getfield 801	msf/msgsvc/msg_svc$PbGetMsgResp:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   290: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   293: invokestatic 99	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   296: astore_3
     //   297: goto -110 -> 187
     //   300: aload 20
-    //   302: getfield 822	msf/msgsvc/msg_svc$PbGetMsgResp:sync_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   305: invokevirtual 506	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   308: invokestatic 827	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   302: getfield 828	msf/msgsvc/msg_svc$PbGetMsgResp:sync_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   305: invokevirtual 512	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   308: invokestatic 833	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   311: astore_3
     //   312: goto -102 -> 210
     //   315: aconst_null
     //   316: astore_2
     //   317: aload 20
-    //   319: getfield 822	msf/msgsvc/msg_svc$PbGetMsgResp:sync_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   322: invokevirtual 506	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   319: getfield 828	msf/msgsvc/msg_svc$PbGetMsgResp:sync_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   322: invokevirtual 512	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   325: ifeq +15 -> 340
     //   328: aload 20
-    //   330: getfield 822	msf/msgsvc/msg_svc$PbGetMsgResp:sync_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   333: invokevirtual 512	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   336: invokevirtual 518	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   330: getfield 828	msf/msgsvc/msg_svc$PbGetMsgResp:sync_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   333: invokevirtual 518	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   336: invokevirtual 524	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   339: astore_2
     //   340: aload 20
-    //   342: getfield 830	msf/msgsvc/msg_svc$PbGetMsgResp:uin_pair_msgs	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   342: getfield 836	msf/msgsvc/msg_svc$PbGetMsgResp:uin_pair_msgs	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   345: invokevirtual 85	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   348: astore 23
     //   350: aload_0
-    //   351: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   351: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   354: iconst_0
-    //   355: putfield 831	com/tencent/mobileqq/app/MessageHandler:f	I
+    //   355: putfield 837	com/tencent/mobileqq/app/MessageHandler:f	I
     //   358: aload 20
-    //   360: getfield 835	msf/msgsvc/msg_svc$PbGetMsgResp:sync_flag	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   363: invokevirtual 838	com/tencent/mobileqq/pb/PBEnumField:has	()Z
+    //   360: getfield 841	msf/msgsvc/msg_svc$PbGetMsgResp:sync_flag	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   363: invokevirtual 844	com/tencent/mobileqq/pb/PBEnumField:has	()Z
     //   366: ifeq +1829 -> 2195
     //   369: aload 20
-    //   371: getfield 835	msf/msgsvc/msg_svc$PbGetMsgResp:sync_flag	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   374: invokevirtual 839	com/tencent/mobileqq/pb/PBEnumField:get	()I
+    //   371: getfield 841	msf/msgsvc/msg_svc$PbGetMsgResp:sync_flag	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   374: invokevirtual 845	com/tencent/mobileqq/pb/PBEnumField:get	()I
     //   377: istore 5
     //   379: iload 5
     //   381: iconst_2
@@ -1136,37 +1141,37 @@ public class C2CMessageProcessor
     //   389: aconst_null
     //   390: astore 21
     //   392: aload 20
-    //   394: getfield 842	msf/msgsvc/msg_svc$PbGetMsgResp:pubaccount_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   397: invokevirtual 506	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   394: getfield 848	msf/msgsvc/msg_svc$PbGetMsgResp:pubaccount_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   397: invokevirtual 512	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   400: ifeq +16 -> 416
     //   403: aload 20
-    //   405: getfield 842	msf/msgsvc/msg_svc$PbGetMsgResp:pubaccount_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   408: invokevirtual 512	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   411: invokevirtual 518	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   405: getfield 848	msf/msgsvc/msg_svc$PbGetMsgResp:pubaccount_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   408: invokevirtual 518	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   411: invokevirtual 524	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   414: astore 21
     //   416: iconst_0
     //   417: istore 6
     //   419: aload 20
-    //   421: getfield 845	msf/msgsvc/msg_svc$PbGetMsgResp:msg_rsp_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   424: invokevirtual 796	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   421: getfield 851	msf/msgsvc/msg_svc$PbGetMsgResp:msg_rsp_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   424: invokevirtual 802	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   427: ifeq +13 -> 440
     //   430: aload 20
-    //   432: getfield 845	msf/msgsvc/msg_svc$PbGetMsgResp:msg_rsp_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   432: getfield 851	msf/msgsvc/msg_svc$PbGetMsgResp:msg_rsp_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   435: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   438: istore 6
     //   440: iload 6
     //   442: tableswitch	default:+26 -> 468, 0:+906->1348, 1:+947->1389, 2:+969->1411
     //   469: istore 8
     //   471: aload_0
-    //   472: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
-    //   475: invokevirtual 847	com/tencent/mobileqq/app/MessageHandler:a	()Z
+    //   472: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   475: invokevirtual 853	com/tencent/mobileqq/app/MessageHandler:a	()Z
     //   478: ifeq +6 -> 484
     //   481: iconst_1
     //   482: istore 8
     //   484: iload 4
     //   486: ifle +25 -> 511
     //   489: aload_0
-    //   490: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   490: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   493: iload 4
     //   495: aload_2
     //   496: iload 5
@@ -1176,57 +1181,57 @@ public class C2CMessageProcessor
     //   504: aconst_null
     //   505: iload 6
     //   507: aconst_null
-    //   508: invokevirtual 850	com/tencent/mobileqq/app/MessageHandler:a	(B[BIZZZLjava/lang/String;ILjava/lang/Object;)V
+    //   508: invokevirtual 856	com/tencent/mobileqq/app/MessageHandler:a	(B[BIZZZLjava/lang/String;ILjava/lang/Object;)V
     //   511: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   514: ifeq +154 -> 668
     //   517: aload 22
     //   519: iconst_0
     //   520: invokevirtual 223	java/lang/StringBuilder:setLength	(I)V
     //   523: aload 22
-    //   525: ldc_w 798
+    //   525: ldc_w 804
     //   528: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   531: aload_1
-    //   532: invokevirtual 801	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
+    //   532: invokevirtual 807	com/tencent/qphone/base/remote/ToServiceMsg:getRequestSsoSeq	()I
     //   535: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   538: ldc_w 803
+    //   538: ldc_w 809
     //   541: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   544: aload 20
-    //   546: getfield 795	msf/msgsvc/msg_svc$PbGetMsgResp:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   546: getfield 801	msf/msgsvc/msg_svc$PbGetMsgResp:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   549: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   552: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   555: ldc_w 852
+    //   555: ldc_w 858
     //   558: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   561: aload 20
-    //   563: getfield 822	msf/msgsvc/msg_svc$PbGetMsgResp:sync_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   566: invokevirtual 506	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   569: invokevirtual 714	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   572: ldc_w 854
+    //   563: getfield 828	msf/msgsvc/msg_svc$PbGetMsgResp:sync_cookie	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   566: invokevirtual 512	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   569: invokevirtual 720	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   572: ldc_w 860
     //   575: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   578: iload 4
     //   580: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   583: ldc_w 856
+    //   583: ldc_w 862
     //   586: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   589: iload 5
     //   591: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   594: ldc_w 858
+    //   594: ldc_w 864
     //   597: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   600: iload 9
-    //   602: invokevirtual 714	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   605: ldc_w 811
+    //   602: invokevirtual 720	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   605: ldc_w 817
     //   608: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   611: iload 11
-    //   613: invokevirtual 714	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   616: ldc_w 860
+    //   613: invokevirtual 720	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   616: ldc_w 866
     //   619: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   622: aload 23
     //   624: invokeinterface 91 1 0
     //   629: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   632: ldc_w 862
+    //   632: ldc_w 868
     //   635: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   638: aload_3
-    //   639: invokevirtual 867	java/lang/Object:hashCode	()I
+    //   639: invokevirtual 873	java/lang/Object:hashCode	()I
     //   642: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   645: ldc_w 869
+    //   645: ldc_w 875
     //   648: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   651: iload 6
     //   653: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1242,11 +1247,11 @@ public class C2CMessageProcessor
     //   673: aload 23
     //   675: invokeinterface 91 1 0
     //   680: if_icmpge +858 -> 1538
-    //   683: invokestatic 770	java/lang/System:currentTimeMillis	()J
+    //   683: invokestatic 776	java/lang/System:currentTimeMillis	()J
     //   686: lstore 12
     //   688: aload 23
     //   690: iload 7
-    //   692: invokeinterface 594 2 0
+    //   692: invokeinterface 600 2 0
     //   697: checkcast 75	msf/msgcomm/msg_comm$UinPairMsg
     //   700: astore 20
     //   702: aload 20
@@ -1255,10 +1260,10 @@ public class C2CMessageProcessor
     //   710: invokestatic 211	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   713: astore_2
     //   714: aload 20
-    //   716: getfield 872	msf/msgcomm/msg_comm$UinPairMsg:last_read_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   716: getfield 878	msf/msgcomm/msg_comm$UinPairMsg:last_read_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   719: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   722: i2l
-    //   723: ldc2_w 873
+    //   723: ldc2_w 879
     //   726: land
     //   727: lstore 14
     //   729: aload 20
@@ -1266,11 +1271,11 @@ public class C2CMessageProcessor
     //   734: invokevirtual 85	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   737: astore_3
     //   738: aload 20
-    //   740: getfield 877	msf/msgcomm/msg_comm$UinPairMsg:msg_completed	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   743: invokevirtual 796	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   740: getfield 883	msf/msgcomm/msg_comm$UinPairMsg:msg_completed	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   743: invokevirtual 802	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   746: ifeq +688 -> 1434
     //   749: aload 20
-    //   751: getfield 877	msf/msgcomm/msg_comm$UinPairMsg:msg_completed	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   751: getfield 883	msf/msgcomm/msg_comm$UinPairMsg:msg_completed	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   754: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   757: ifeq +677 -> 1434
     //   760: iconst_1
@@ -1281,28 +1286,28 @@ public class C2CMessageProcessor
     //   771: iconst_0
     //   772: invokevirtual 223	java/lang/StringBuilder:setLength	(I)V
     //   775: aload 22
-    //   777: ldc_w 879
+    //   777: ldc_w 885
     //   780: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   783: aload_2
     //   784: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   787: ldc_w 881
+    //   787: ldc_w 887
     //   790: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   793: iload 8
-    //   795: invokevirtual 714	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   798: ldc_w 883
+    //   795: invokevirtual 720	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   798: ldc_w 889
     //   801: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   804: lload 14
     //   806: invokevirtual 230	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   809: ldc_w 885
+    //   809: ldc_w 891
     //   812: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   815: astore 21
     //   817: aload_3
     //   818: ifnonnull +622 -> 1440
-    //   821: ldc_w 805
+    //   821: ldc_w 811
     //   824: astore_1
     //   825: aload 21
     //   827: aload_1
-    //   828: invokevirtual 489	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   828: invokevirtual 495	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   831: pop
     //   832: ldc 162
     //   834: iconst_2
@@ -1319,31 +1324,31 @@ public class C2CMessageProcessor
     //   862: iconst_1
     //   863: if_icmple +15 -> 878
     //   866: aload_3
-    //   867: new 887	zst
+    //   867: new 893	zze
     //   870: dup
     //   871: aload_0
-    //   872: invokespecial 890	zst:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
-    //   875: invokestatic 896	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   872: invokespecial 896	zze:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
+    //   875: invokestatic 902	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   878: aload_0
     //   879: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   882: bipush 50
-    //   884: invokevirtual 383	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   887: checkcast 898	com/tencent/mobileqq/app/FriendsManager
+    //   884: invokevirtual 391	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   887: checkcast 904	com/tencent/mobileqq/app/FriendsManager
     //   890: aload_3
     //   891: iconst_0
-    //   892: invokeinterface 594 2 0
+    //   892: invokeinterface 600 2 0
     //   897: checkcast 135	msf/msgcomm/msg_comm$Msg
     //   900: getfield 139	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
     //   903: invokevirtual 144	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
     //   906: checkcast 141	msf/msgcomm/msg_comm$MsgHead
     //   909: getfield 190	msf/msgcomm/msg_comm$MsgHead:from_uin	Lcom/tencent/mobileqq/pb/PBUInt64Field;
     //   912: invokevirtual 187	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   915: invokevirtual 901	com/tencent/mobileqq/app/FriendsManager:a	(J)V
+    //   915: invokevirtual 907	com/tencent/mobileqq/app/FriendsManager:a	(J)V
     //   918: aload_0
-    //   919: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   919: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   922: aload_2
     //   923: iconst_0
-    //   924: invokevirtual 904	com/tencent/mobileqq/app/MessageHandler:a	(Ljava/lang/String;I)Ljava/lang/Object;
+    //   924: invokevirtual 910	com/tencent/mobileqq/app/MessageHandler:a	(Ljava/lang/String;I)Ljava/lang/Object;
     //   927: astore 21
     //   929: aload 21
     //   931: monitorenter
@@ -1354,16 +1359,16 @@ public class C2CMessageProcessor
     //   938: iload 8
     //   940: iload 9
     //   942: iload 10
-    //   944: invokespecial 906	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(Ljava/lang/String;Lmsf/msgcomm/msg_comm$UinPairMsg;JZZZ)Landroid/util/Pair;
+    //   944: invokespecial 912	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(Ljava/lang/String;Lmsf/msgcomm/msg_comm$UinPairMsg;JZZZ)Landroid/util/Pair;
     //   947: astore_2
     //   948: aload_2
-    //   949: getfield 910	android/util/Pair:first	Ljava/lang/Object;
+    //   949: getfield 916	android/util/Pair:first	Ljava/lang/Object;
     //   952: checkcast 208	java/lang/String
     //   955: astore_1
     //   956: aload_2
-    //   957: getfield 913	android/util/Pair:second	Ljava/lang/Object;
+    //   957: getfield 919	android/util/Pair:second	Ljava/lang/Object;
     //   960: checkcast 95	java/lang/Integer
-    //   963: invokevirtual 916	java/lang/Integer:intValue	()I
+    //   963: invokevirtual 922	java/lang/Integer:intValue	()I
     //   966: istore 5
     //   968: aload 21
     //   970: monitorexit
@@ -1373,11 +1378,11 @@ public class C2CMessageProcessor
     //   977: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   980: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   983: aload_1
-    //   984: invokevirtual 918	com/tencent/mobileqq/service/message/MessageCache:f	(Ljava/lang/String;)J
+    //   984: invokevirtual 924	com/tencent/mobileqq/service/message/MessageCache:f	(Ljava/lang/String;)J
     //   987: lstore 16
     //   989: aload_3
     //   990: iconst_0
-    //   991: invokeinterface 594 2 0
+    //   991: invokeinterface 600 2 0
     //   996: checkcast 135	msf/msgcomm/msg_comm$Msg
     //   999: getfield 139	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
     //   1002: invokevirtual 144	msf/msgcomm/msg_comm$MsgHead:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
@@ -1393,19 +1398,19 @@ public class C2CMessageProcessor
     //   1026: new 107	java/lang/StringBuilder
     //   1029: dup
     //   1030: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   1033: ldc_w 920
+    //   1033: ldc_w 926
     //   1036: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1039: aload_1
     //   1040: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1043: ldc_w 922
+    //   1043: ldc_w 928
     //   1046: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1049: lload 16
     //   1051: invokevirtual 230	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1054: ldc_w 924
+    //   1054: ldc_w 930
     //   1057: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1060: lload 18
     //   1062: invokevirtual 230	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1065: ldc_w 854
+    //   1065: ldc_w 860
     //   1068: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1071: iload 4
     //   1073: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1425,7 +1430,7 @@ public class C2CMessageProcessor
     //   1104: aload_1
     //   1105: lload 18
     //   1107: lconst_0
-    //   1108: invokevirtual 927	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/lang/String;JJ)V
+    //   1108: invokevirtual 933	com/tencent/mobileqq/service/message/MessageCache:b	(Ljava/lang/String;JJ)V
     //   1111: iload 4
     //   1113: ifle +16 -> 1129
     //   1116: aload_0
@@ -1433,13 +1438,13 @@ public class C2CMessageProcessor
     //   1120: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1123: aload_1
     //   1124: lload 18
-    //   1126: invokevirtual 929	com/tencent/mobileqq/service/message/MessageCache:f	(Ljava/lang/String;J)V
+    //   1126: invokevirtual 935	com/tencent/mobileqq/service/message/MessageCache:f	(Ljava/lang/String;J)V
     //   1129: iload 4
     //   1131: ifne +13 -> 1144
     //   1134: aload_0
     //   1135: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1138: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
-    //   1141: invokevirtual 931	com/tencent/mobileqq/service/message/MessageCache:c	()V
+    //   1141: invokevirtual 937	com/tencent/mobileqq/service/message/MessageCache:c	()V
     //   1144: iload 9
     //   1146: ifeq +193 -> 1339
     //   1149: iload 5
@@ -1448,10 +1453,10 @@ public class C2CMessageProcessor
     //   1157: aload_0
     //   1158: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1161: bipush 10
-    //   1163: invokevirtual 383	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1166: checkcast 933	com/tencent/mobileqq/model/PhoneContactManager
+    //   1163: invokevirtual 391	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   1166: checkcast 939	com/tencent/mobileqq/model/PhoneContactManager
     //   1169: aload_1
-    //   1170: invokeinterface 935 2 0
+    //   1170: invokeinterface 941 2 0
     //   1175: astore_2
     //   1176: aload_2
     //   1177: ifnull +1009 -> 2186
@@ -1464,54 +1469,54 @@ public class C2CMessageProcessor
     //   1191: new 107	java/lang/StringBuilder
     //   1194: dup
     //   1195: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   1198: ldc_w 937
+    //   1198: ldc_w 943
     //   1201: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1204: aload_1
     //   1205: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1208: ldc_w 939
+    //   1208: ldc_w 945
     //   1211: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1214: iload 5
     //   1216: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1219: ldc_w 941
+    //   1219: ldc_w 947
     //   1222: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1225: lload 14
     //   1227: invokevirtual 230	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   1230: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1233: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1236: iload 5
-    //   1238: invokestatic 944	com/tencent/mobileqq/app/message/MsgProxyUtils:a	(I)I
+    //   1238: invokestatic 950	com/tencent/mobileqq/app/message/MsgProxyUtils:a	(I)I
     //   1241: sipush 1032
     //   1244: if_icmpne +939 -> 2183
     //   1247: iconst_0
     //   1248: istore 5
-    //   1250: new 946	android/os/Message
+    //   1250: new 952	android/os/Message
     //   1253: dup
-    //   1254: invokespecial 947	android/os/Message:<init>	()V
+    //   1254: invokespecial 953	android/os/Message:<init>	()V
     //   1257: astore_2
     //   1258: aload_2
     //   1259: iconst_1
-    //   1260: putfield 950	android/os/Message:what	I
-    //   1263: new 656	android/os/Bundle
+    //   1260: putfield 956	android/os/Message:what	I
+    //   1263: new 662	android/os/Bundle
     //   1266: dup
-    //   1267: invokespecial 657	android/os/Bundle:<init>	()V
+    //   1267: invokespecial 663	android/os/Bundle:<init>	()V
     //   1270: astore_3
     //   1271: aload_3
-    //   1272: ldc_w 952
+    //   1272: ldc_w 958
     //   1275: lload 14
-    //   1277: invokevirtual 745	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   1277: invokevirtual 751	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   1280: aload_3
-    //   1281: ldc_w 954
+    //   1281: ldc_w 960
     //   1284: aload_1
-    //   1285: invokevirtual 668	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1285: invokevirtual 674	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1288: aload_3
-    //   1289: ldc_w 956
+    //   1289: ldc_w 962
     //   1292: iload 5
-    //   1294: invokevirtual 663	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1294: invokevirtual 669	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1297: aload_2
     //   1298: aload_3
-    //   1299: invokevirtual 960	android/os/Message:setData	(Landroid/os/Bundle;)V
+    //   1299: invokevirtual 966	android/os/Message:setData	(Landroid/os/Bundle;)V
     //   1302: aload_0
-    //   1303: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   1303: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1306: astore_3
     //   1307: iload 4
     //   1309: ifgt +209 -> 1518
@@ -1520,14 +1525,14 @@ public class C2CMessageProcessor
     //   1315: aload_3
     //   1316: aload_2
     //   1317: iload 8
-    //   1319: invokevirtual 963	com/tencent/mobileqq/app/MessageHandler:a	(Landroid/os/Message;Z)V
+    //   1319: invokevirtual 969	com/tencent/mobileqq/app/MessageHandler:a	(Landroid/os/Message;Z)V
     //   1322: iload 6
     //   1324: iconst_2
     //   1325: if_icmpne +199 -> 1524
     //   1328: aload_0
     //   1329: getfield 33	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_b_of_type_JavaUtilSet	Ljava/util/Set;
     //   1332: aload_1
-    //   1333: invokeinterface 964 2 0
+    //   1333: invokeinterface 970 2 0
     //   1338: pop
     //   1339: iload 7
     //   1341: iconst_1
@@ -1538,40 +1543,40 @@ public class C2CMessageProcessor
     //   1349: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1352: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1355: aload_2
-    //   1356: invokevirtual 967	com/tencent/mobileqq/service/message/MessageCache:a	([B)V
+    //   1356: invokevirtual 973	com/tencent/mobileqq/service/message/MessageCache:a	([B)V
     //   1359: aload_0
     //   1360: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1363: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1366: aload_2
-    //   1367: invokevirtual 969	com/tencent/mobileqq/service/message/MessageCache:b	([B)V
+    //   1367: invokevirtual 975	com/tencent/mobileqq/service/message/MessageCache:b	([B)V
     //   1370: aload_0
-    //   1371: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   1371: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1374: iconst_0
-    //   1375: invokevirtual 971	com/tencent/mobileqq/app/MessageHandler:b	(Z)V
+    //   1375: invokevirtual 977	com/tencent/mobileqq/app/MessageHandler:b	(Z)V
     //   1378: aload_0
-    //   1379: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   1379: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1382: iconst_0
-    //   1383: invokevirtual 973	com/tencent/mobileqq/app/MessageHandler:c	(Z)V
+    //   1383: invokevirtual 979	com/tencent/mobileqq/app/MessageHandler:c	(Z)V
     //   1386: goto -918 -> 468
     //   1389: aload_0
     //   1390: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1393: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1396: aload_2
-    //   1397: invokevirtual 967	com/tencent/mobileqq/service/message/MessageCache:a	([B)V
+    //   1397: invokevirtual 973	com/tencent/mobileqq/service/message/MessageCache:a	([B)V
     //   1400: aload_0
-    //   1401: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   1401: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1404: iconst_0
-    //   1405: invokevirtual 971	com/tencent/mobileqq/app/MessageHandler:b	(Z)V
+    //   1405: invokevirtual 977	com/tencent/mobileqq/app/MessageHandler:b	(Z)V
     //   1408: goto -940 -> 468
     //   1411: aload_0
     //   1412: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1415: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1418: aload 21
-    //   1420: invokevirtual 969	com/tencent/mobileqq/service/message/MessageCache:b	([B)V
+    //   1420: invokevirtual 975	com/tencent/mobileqq/service/message/MessageCache:b	([B)V
     //   1423: aload_0
-    //   1424: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   1424: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1427: iconst_0
-    //   1428: invokevirtual 973	com/tencent/mobileqq/app/MessageHandler:c	(Z)V
+    //   1428: invokevirtual 979	com/tencent/mobileqq/app/MessageHandler:c	(Z)V
     //   1431: goto -963 -> 468
     //   1434: iconst_0
     //   1435: istore 8
@@ -1594,21 +1599,21 @@ public class C2CMessageProcessor
     //   1469: new 107	java/lang/StringBuilder
     //   1472: dup
     //   1473: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   1476: ldc_w 975
+    //   1476: ldc_w 981
     //   1479: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1482: aload_1
-    //   1483: invokevirtual 489	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1483: invokevirtual 495	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1486: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1489: aload_1
-    //   1490: invokestatic 819	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1490: invokestatic 825	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1493: goto -154 -> 1339
     //   1496: aload_0
     //   1497: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1500: invokevirtual 356	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   1500: invokevirtual 364	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   1503: aload_2
     //   1504: iconst_0
-    //   1505: invokevirtual 978	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;
-    //   1508: getfield 981	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
+    //   1505: invokevirtual 984	com/tencent/mobileqq/app/message/QQMessageFacade:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/app/message/QQMessageFacade$Message;
+    //   1508: getfield 987	com/tencent/mobileqq/app/message/QQMessageFacade$Message:istroop	I
     //   1511: istore 5
     //   1513: aload_2
     //   1514: astore_1
@@ -1619,49 +1624,49 @@ public class C2CMessageProcessor
     //   1524: aload_0
     //   1525: getfield 31	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
     //   1528: aload_1
-    //   1529: invokeinterface 964 2 0
+    //   1529: invokeinterface 970 2 0
     //   1534: pop
     //   1535: goto -196 -> 1339
     //   1538: iload 4
     //   1540: ifgt +536 -> 2076
     //   1543: aload_0
-    //   1544: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
-    //   1547: invokevirtual 983	com/tencent/mobileqq/app/MessageHandler:d	()V
+    //   1544: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   1547: invokevirtual 989	com/tencent/mobileqq/app/MessageHandler:d	()V
     //   1550: iload 9
     //   1552: ifeq +444 -> 1996
     //   1555: aload_0
     //   1556: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1559: invokevirtual 986	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/ConversationFacade;
-    //   1562: invokevirtual 990	com/tencent/mobileqq/app/message/ConversationFacade:a	()Ljava/util/Set;
-    //   1565: invokeinterface 496 1 0
+    //   1559: invokevirtual 992	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/ConversationFacade;
+    //   1562: invokevirtual 996	com/tencent/mobileqq/app/message/ConversationFacade:a	()Ljava/util/Set;
+    //   1565: invokeinterface 502 1 0
     //   1570: astore_1
     //   1571: aload_1
     //   1572: invokeinterface 251 1 0
     //   1577: ifeq +404 -> 1981
     //   1580: aload_1
     //   1581: invokeinterface 255 1 0
-    //   1586: checkcast 992	com/tencent/mobileqq/data/ConversationInfo
+    //   1586: checkcast 998	com/tencent/mobileqq/data/ConversationInfo
     //   1589: astore_2
     //   1590: aload_2
-    //   1591: getfield 995	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
+    //   1591: getfield 1001	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
     //   1594: ifnull -23 -> 1571
     //   1597: aload_2
-    //   1598: getfield 998	com/tencent/mobileqq/data/ConversationInfo:type	I
-    //   1601: invokestatic 944	com/tencent/mobileqq/app/message/MsgProxyUtils:a	(I)I
+    //   1598: getfield 1004	com/tencent/mobileqq/data/ConversationInfo:type	I
+    //   1601: invokestatic 950	com/tencent/mobileqq/app/message/MsgProxyUtils:a	(I)I
     //   1604: sipush 1032
     //   1607: if_icmpeq -36 -> 1571
     //   1610: iload 6
     //   1612: iconst_1
     //   1613: if_icmpne +13 -> 1626
     //   1616: aload_2
-    //   1617: getfield 998	com/tencent/mobileqq/data/ConversationInfo:type	I
+    //   1617: getfield 1004	com/tencent/mobileqq/data/ConversationInfo:type	I
     //   1620: sipush 1008
     //   1623: if_icmpeq -52 -> 1571
     //   1626: iload 6
     //   1628: iconst_2
     //   1629: if_icmpne +13 -> 1642
     //   1632: aload_2
-    //   1633: getfield 998	com/tencent/mobileqq/data/ConversationInfo:type	I
+    //   1633: getfield 1004	com/tencent/mobileqq/data/ConversationInfo:type	I
     //   1636: sipush 1008
     //   1639: if_icmpne -68 -> 1571
     //   1642: iload 6
@@ -1669,33 +1674,33 @@ public class C2CMessageProcessor
     //   1645: if_icmpeq +31 -> 1676
     //   1648: aload_0
     //   1649: getfield 31	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
-    //   1652: invokeinterface 999 1 0
+    //   1652: invokeinterface 1005 1 0
     //   1657: ifle +19 -> 1676
     //   1660: aload_0
     //   1661: getfield 31	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
     //   1664: aload_2
-    //   1665: getfield 995	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
-    //   1668: invokeinterface 1002 2 0
+    //   1665: getfield 1001	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
+    //   1668: invokeinterface 1008 2 0
     //   1673: ifne -102 -> 1571
     //   1676: iload 6
     //   1678: iconst_2
     //   1679: if_icmpne +31 -> 1710
     //   1682: aload_0
     //   1683: getfield 33	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_b_of_type_JavaUtilSet	Ljava/util/Set;
-    //   1686: invokeinterface 999 1 0
+    //   1686: invokeinterface 1005 1 0
     //   1691: ifle +19 -> 1710
     //   1694: aload_0
     //   1695: getfield 33	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_b_of_type_JavaUtilSet	Ljava/util/Set;
     //   1698: aload_2
-    //   1699: getfield 995	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
-    //   1702: invokeinterface 1002 2 0
+    //   1699: getfield 1001	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
+    //   1702: invokeinterface 1008 2 0
     //   1707: ifne -136 -> 1571
     //   1710: aload_2
-    //   1711: getfield 998	com/tencent/mobileqq/data/ConversationInfo:type	I
-    //   1714: invokestatic 412	com/tencent/mobileqq/app/message/MsgProxyUtils:c	(I)Z
+    //   1711: getfield 1004	com/tencent/mobileqq/data/ConversationInfo:type	I
+    //   1714: invokestatic 420	com/tencent/mobileqq/app/message/MsgProxyUtils:c	(I)Z
     //   1717: ifeq -146 -> 1571
     //   1720: aload_2
-    //   1721: invokestatic 1005	com/tencent/mobileqq/app/message/ConversationFacade:b	(Lcom/tencent/mobileqq/data/ConversationInfo;)I
+    //   1721: invokestatic 1011	com/tencent/mobileqq/app/message/ConversationFacade:b	(Lcom/tencent/mobileqq/data/ConversationInfo;)I
     //   1724: ifle -153 -> 1571
     //   1727: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1730: ifeq +45 -> 1775
@@ -1704,33 +1709,33 @@ public class C2CMessageProcessor
     //   1736: new 107	java/lang/StringBuilder
     //   1739: dup
     //   1740: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   1743: ldc_w 1007
+    //   1743: ldc_w 1013
     //   1746: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1749: aload_2
-    //   1750: getfield 995	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
+    //   1750: getfield 1001	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
     //   1753: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1756: ldc_w 1009
+    //   1756: ldc_w 1015
     //   1759: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1762: aload_2
-    //   1763: getfield 998	com/tencent/mobileqq/data/ConversationInfo:type	I
+    //   1763: getfield 1004	com/tencent/mobileqq/data/ConversationInfo:type	I
     //   1766: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1769: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1772: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1775: aload_2
-    //   1776: getfield 995	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
-    //   1779: invokevirtual 677	java/lang/String:length	()I
+    //   1776: getfield 1001	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
+    //   1779: invokevirtual 683	java/lang/String:length	()I
     //   1782: iconst_4
     //   1783: if_icmple -212 -> 1571
     //   1786: aload_2
-    //   1787: getfield 998	com/tencent/mobileqq/data/ConversationInfo:type	I
+    //   1787: getfield 1004	com/tencent/mobileqq/data/ConversationInfo:type	I
     //   1790: sipush 1001
     //   1793: if_icmpne +134 -> 1927
     //   1796: aload_0
     //   1797: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1800: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
     //   1803: aload_2
-    //   1804: getfield 995	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
-    //   1807: invokevirtual 1012	com/tencent/mobileqq/service/message/MessageCache:m	(Ljava/lang/String;)[B
+    //   1804: getfield 1001	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
+    //   1807: invokevirtual 1018	com/tencent/mobileqq/service/message/MessageCache:m	(Ljava/lang/String;)[B
     //   1810: astore_3
     //   1811: aload_3
     //   1812: ifnull -241 -> 1571
@@ -1744,65 +1749,65 @@ public class C2CMessageProcessor
     //   1829: new 107	java/lang/StringBuilder
     //   1832: dup
     //   1833: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   1836: ldc_w 1014
+    //   1836: ldc_w 1020
     //   1839: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1842: aload_3
-    //   1843: invokevirtual 489	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1843: invokevirtual 495	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1846: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1849: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1852: new 946	android/os/Message
+    //   1852: new 952	android/os/Message
     //   1855: dup
-    //   1856: invokespecial 947	android/os/Message:<init>	()V
+    //   1856: invokespecial 953	android/os/Message:<init>	()V
     //   1859: astore_3
     //   1860: aload_3
     //   1861: iconst_1
-    //   1862: putfield 950	android/os/Message:what	I
-    //   1865: new 656	android/os/Bundle
+    //   1862: putfield 956	android/os/Message:what	I
+    //   1865: new 662	android/os/Bundle
     //   1868: dup
-    //   1869: invokespecial 657	android/os/Bundle:<init>	()V
+    //   1869: invokespecial 663	android/os/Bundle:<init>	()V
     //   1872: astore 20
     //   1874: aload 20
-    //   1876: ldc_w 952
-    //   1879: ldc2_w 1015
-    //   1882: invokevirtual 745	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   1876: ldc_w 958
+    //   1879: ldc2_w 1021
+    //   1882: invokevirtual 751	android/os/Bundle:putLong	(Ljava/lang/String;J)V
     //   1885: aload 20
-    //   1887: ldc_w 954
+    //   1887: ldc_w 960
     //   1890: aload_2
-    //   1891: getfield 995	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
-    //   1894: invokevirtual 668	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1891: getfield 1001	com/tencent/mobileqq/data/ConversationInfo:uin	Ljava/lang/String;
+    //   1894: invokevirtual 674	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   1897: aload 20
-    //   1899: ldc_w 956
+    //   1899: ldc_w 962
     //   1902: aload_2
-    //   1903: getfield 998	com/tencent/mobileqq/data/ConversationInfo:type	I
-    //   1906: invokevirtual 663	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   1903: getfield 1004	com/tencent/mobileqq/data/ConversationInfo:type	I
+    //   1906: invokevirtual 669	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   1909: aload_3
     //   1910: aload 20
-    //   1912: invokevirtual 960	android/os/Message:setData	(Landroid/os/Bundle;)V
+    //   1912: invokevirtual 966	android/os/Message:setData	(Landroid/os/Bundle;)V
     //   1915: aload_0
-    //   1916: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   1916: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   1919: aload_3
     //   1920: iconst_1
-    //   1921: invokevirtual 963	com/tencent/mobileqq/app/MessageHandler:a	(Landroid/os/Message;Z)V
+    //   1921: invokevirtual 969	com/tencent/mobileqq/app/MessageHandler:a	(Landroid/os/Message;Z)V
     //   1924: goto -353 -> 1571
     //   1927: aload_2
-    //   1928: getfield 998	com/tencent/mobileqq/data/ConversationInfo:type	I
+    //   1928: getfield 1004	com/tencent/mobileqq/data/ConversationInfo:type	I
     //   1931: sipush 10002
     //   1934: if_icmpne +21 -> 1955
     //   1937: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1940: ifeq -88 -> 1852
     //   1943: ldc 162
     //   1945: iconst_2
-    //   1946: ldc_w 1018
+    //   1946: ldc_w 1024
     //   1949: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1952: goto -100 -> 1852
     //   1955: aload_2
-    //   1956: getfield 1021	com/tencent/mobileqq/data/ConversationInfo:isImax	Z
+    //   1956: getfield 1027	com/tencent/mobileqq/data/ConversationInfo:isImax	Z
     //   1959: ifeq -107 -> 1852
     //   1962: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1965: ifeq -394 -> 1571
-    //   1968: ldc_w 1023
+    //   1968: ldc_w 1029
     //   1971: iconst_2
-    //   1972: ldc_w 1025
+    //   1972: ldc_w 1031
     //   1975: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1978: goto -407 -> 1571
     //   1981: iload 6
@@ -1810,30 +1815,30 @@ public class C2CMessageProcessor
     //   1984: if_icmpne +142 -> 2126
     //   1987: aload_0
     //   1988: getfield 33	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_b_of_type_JavaUtilSet	Ljava/util/Set;
-    //   1991: invokeinterface 1028 1 0
-    //   1996: invokestatic 1033	com/tencent/util/MsgAutoMonitorUtil:a	()Lcom/tencent/util/MsgAutoMonitorUtil;
-    //   1999: invokevirtual 1035	com/tencent/util/MsgAutoMonitorUtil:e	()V
+    //   1991: invokeinterface 1034 1 0
+    //   1996: invokestatic 1039	com/tencent/util/MsgAutoMonitorUtil:a	()Lcom/tencent/util/MsgAutoMonitorUtil;
+    //   1999: invokevirtual 1041	com/tencent/util/MsgAutoMonitorUtil:e	()V
     //   2002: iload 6
     //   2004: tableswitch	default:+28 -> 2032, 0:+134->2138, 1:+155->2159, 2:+167->2171
     //   2033: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   2036: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/service/message/MessageCache;
-    //   2039: invokevirtual 1037	com/tencent/mobileqq/service/message/MessageCache:i	()V
+    //   2039: invokevirtual 1043	com/tencent/mobileqq/service/message/MessageCache:i	()V
     //   2042: aload_0
-    //   2043: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
-    //   2046: invokevirtual 847	com/tencent/mobileqq/app/MessageHandler:a	()Z
+    //   2043: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   2046: invokevirtual 853	com/tencent/mobileqq/app/MessageHandler:a	()Z
     //   2049: ifeq +27 -> 2076
     //   2052: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2055: ifeq +12 -> 2067
     //   2058: ldc 162
     //   2060: iconst_2
-    //   2061: ldc_w 1039
+    //   2061: ldc_w 1045
     //   2064: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2067: aload_0
-    //   2068: getfield 509	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
+    //   2068: getfield 515	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppMessageHandler	Lcom/tencent/mobileqq/app/MessageHandler;
     //   2071: iconst_0
     //   2072: iconst_0
-    //   2073: invokevirtual 1042	com/tencent/mobileqq/app/MessageHandler:a	(ZI)V
-    //   2076: invokestatic 770	java/lang/System:currentTimeMillis	()J
+    //   2073: invokevirtual 1048	com/tencent/mobileqq/app/MessageHandler:a	(ZI)V
+    //   2076: invokestatic 776	java/lang/System:currentTimeMillis	()J
     //   2079: lload 12
     //   2081: lsub
     //   2082: lstore 12
@@ -1844,42 +1849,42 @@ public class C2CMessageProcessor
     //   2093: new 107	java/lang/StringBuilder
     //   2096: dup
     //   2097: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   2100: ldc_w 1044
+    //   2100: ldc_w 1050
     //   2103: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2106: lload 12
     //   2108: invokevirtual 230	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   2111: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2114: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2117: ldc_w 1046
+    //   2117: ldc_w 1052
     //   2120: lload 12
-    //   2122: invokestatic 1048	com/tencent/mobileqq/app/message/MessageStatisticHelper:a	(Ljava/lang/String;J)V
+    //   2122: invokestatic 1054	com/tencent/mobileqq/app/message/MessageStatisticHelper:a	(Ljava/lang/String;J)V
     //   2125: return
     //   2126: aload_0
     //   2127: getfield 31	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
-    //   2130: invokeinterface 1028 1 0
+    //   2130: invokeinterface 1034 1 0
     //   2135: goto -139 -> 1996
     //   2138: aload_0
     //   2139: sipush 4016
     //   2142: iconst_1
     //   2143: aconst_null
-    //   2144: invokevirtual 755	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   2144: invokevirtual 761	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
     //   2147: aload_0
     //   2148: sipush 4001
     //   2151: iconst_1
     //   2152: aconst_null
-    //   2153: invokevirtual 755	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   2153: invokevirtual 761	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
     //   2156: goto -124 -> 2032
     //   2159: aload_0
     //   2160: sipush 4001
     //   2163: iconst_1
     //   2164: aconst_null
-    //   2165: invokevirtual 755	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   2165: invokevirtual 761	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
     //   2168: goto -136 -> 2032
     //   2171: aload_0
     //   2172: sipush 4016
     //   2175: iconst_1
     //   2176: aconst_null
-    //   2177: invokevirtual 755	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   2177: invokevirtual 761	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
     //   2180: goto -148 -> 2032
     //   2183: goto -933 -> 1250
     //   2186: goto -1004 -> 1182
@@ -1953,7 +1958,7 @@ public class C2CMessageProcessor
         MessageRecord localMessageRecord = (MessageRecord)paramList.next();
         if (localMessageRecord.istroop == 1008) {
           if ((!TextUtils.isEmpty(localMessageRecord.getExtInfoFromExtStr("public_account_send_flag"))) && (!TextUtils.isEmpty(localMessageRecord.getExtInfoFromExtStr("public_account_msg_id"))) && (!TextUtils.equals(localMessageRecord.frienduin, localMessageRecord.selfuin))) {
-            ThreadManager.post(new zsy(this, localMessageRecord.frienduin, localMessageRecord.selfuin, localMessageRecord.getExtInfoFromExtStr("public_account_msg_id"), localMessageRecord.time, l1, localMessageRecord.getExtInfoFromExtStr("public_account_send_flag")), 5, null, false);
+            ThreadManager.post(new zzj(this, localMessageRecord.frienduin, localMessageRecord.selfuin, localMessageRecord.getExtInfoFromExtStr("public_account_msg_id"), localMessageRecord.time, l1, localMessageRecord.getExtInfoFromExtStr("public_account_send_flag")), 5, null, false);
           } else if (QLog.isColorLevel()) {
             QLog.d("Q.msg.C2CMessageProcessor", 2, "reportPubAccMsg exception, public_account_send_flag null || public_account_msg_id null || ");
           }
@@ -2322,7 +2327,7 @@ public class C2CMessageProcessor
         }
         if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
         {
-          Collections.sort((List)localObject3, new zsu(this));
+          Collections.sort((List)localObject3, new zzf(this));
           if (localObject1 == null) {}
         }
         try
@@ -2568,7 +2573,7 @@ public class C2CMessageProcessor
     label479:
     if (paramObject.size() > 0)
     {
-      Collections.sort(paramObject, new zsv(this));
+      Collections.sort(paramObject, new zzg(this));
       l1 = ((MessageRecord)paramObject.get(0)).time;
     }
     for (paramToServiceMsg = paramObject;; paramToServiceMsg = null)
@@ -2668,66 +2673,66 @@ public class C2CMessageProcessor
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 736	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   4: ldc_w 1069
-    //   7: invokevirtual 1073	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   1: getfield 742	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   4: ldc_w 1075
+    //   7: invokevirtual 1079	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   10: istore 4
     //   12: new 110	java/util/HashMap
     //   15: dup
     //   16: iconst_1
-    //   17: invokespecial 1051	java/util/HashMap:<init>	(I)V
+    //   17: invokespecial 1057	java/util/HashMap:<init>	(I)V
     //   20: astore 14
     //   22: aload 14
-    //   24: ldc_w 1053
+    //   24: ldc_w 1059
     //   27: aload_1
-    //   28: getfield 736	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   31: ldc_w 1055
-    //   34: invokevirtual 1057	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   37: invokevirtual 1061	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   28: getfield 742	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   31: ldc_w 1061
+    //   34: invokevirtual 1063	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   37: invokevirtual 1067	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   40: pop
     //   41: aload 14
-    //   43: ldc_w 1063
+    //   43: ldc_w 1069
     //   46: aload_1
-    //   47: getfield 736	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   50: ldc_w 1065
-    //   53: invokevirtual 741	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   56: invokestatic 600	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   59: invokevirtual 1061	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   47: getfield 742	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   50: ldc_w 1071
+    //   53: invokevirtual 747	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   56: invokestatic 606	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   59: invokevirtual 1067	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   62: pop
     //   63: aload 14
-    //   65: ldc_w 1067
+    //   65: ldc_w 1073
     //   68: iload 4
     //   70: invokestatic 99	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   73: invokevirtual 1061	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   73: invokevirtual 1067	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   76: pop
-    //   77: new 1516	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp
+    //   77: new 1522	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp
     //   80: dup
-    //   81: invokespecial 1517	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp:<init>	()V
+    //   81: invokespecial 1523	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp:<init>	()V
     //   84: astore 13
     //   86: aload 13
     //   88: aload_3
-    //   89: checkcast 775	[B
-    //   92: checkcast 775	[B
-    //   95: invokevirtual 1518	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   98: checkcast 1516	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp
+    //   89: checkcast 781	[B
+    //   92: checkcast 781	[B
+    //   95: invokevirtual 1524	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   98: checkcast 1522	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp
     //   101: astore 13
     //   103: aload 13
     //   105: ifnull +67 -> 172
-    //   108: new 1520	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody
+    //   108: new 1526	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody
     //   111: dup
-    //   112: invokespecial 1521	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody:<init>	()V
+    //   112: invokespecial 1527	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody:<init>	()V
     //   115: astore_3
     //   116: aload 13
-    //   118: getfield 1524	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp:serialize_rspbody	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   121: invokevirtual 506	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   118: getfield 1530	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp:serialize_rspbody	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   121: invokevirtual 512	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   124: ifeq +139 -> 263
     //   127: aload_3
     //   128: aload 13
-    //   130: getfield 1524	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp:serialize_rspbody	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   133: invokevirtual 512	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   136: invokevirtual 518	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   139: invokevirtual 1525	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   142: checkcast 1520	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody
+    //   130: getfield 1530	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp:serialize_rspbody	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   133: invokevirtual 518	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   136: invokevirtual 524	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   139: invokevirtual 1531	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   142: checkcast 1526	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody
     //   145: astore_3
     //   146: aload_3
     //   147: ifnonnull +121 -> 268
@@ -2735,22 +2740,22 @@ public class C2CMessageProcessor
     //   153: ifeq +12 -> 165
     //   156: ldc 162
     //   158: iconst_2
-    //   159: ldc_w 1527
-    //   162: invokestatic 1079	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   159: ldc_w 1533
+    //   162: invokestatic 1085	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   165: aload_0
     //   166: aload_1
     //   167: aload_2
     //   168: iconst_0
-    //   169: invokespecial 1529	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Z)V
+    //   169: invokespecial 1535	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Z)V
     //   172: return
     //   173: astore_3
     //   174: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   177: ifeq +13 -> 190
     //   180: ldc 162
     //   182: iconst_2
-    //   183: ldc_w 1531
+    //   183: ldc_w 1537
     //   186: aload_3
-    //   187: invokestatic 457	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   187: invokestatic 463	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   190: aconst_null
     //   191: astore 13
     //   193: goto -90 -> 103
@@ -2759,9 +2764,9 @@ public class C2CMessageProcessor
     //   200: ifeq +13 -> 213
     //   203: ldc 162
     //   205: iconst_2
-    //   206: ldc_w 1533
+    //   206: ldc_w 1539
     //   209: aload_3
-    //   210: invokestatic 457	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   210: invokestatic 463	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   213: aconst_null
     //   214: astore 13
     //   216: goto -113 -> 103
@@ -2770,9 +2775,9 @@ public class C2CMessageProcessor
     //   223: ifeq +13 -> 236
     //   226: ldc 162
     //   228: iconst_2
-    //   229: ldc_w 1535
+    //   229: ldc_w 1541
     //   232: aload_3
-    //   233: invokestatic 457	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   233: invokestatic 463	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   236: aconst_null
     //   237: astore_3
     //   238: goto -92 -> 146
@@ -2781,9 +2786,9 @@ public class C2CMessageProcessor
     //   245: ifeq +13 -> 258
     //   248: ldc 162
     //   250: iconst_2
-    //   251: ldc_w 1537
+    //   251: ldc_w 1543
     //   254: aload_3
-    //   255: invokestatic 457	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   255: invokestatic 463	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   258: aconst_null
     //   259: astore_3
     //   260: goto -114 -> 146
@@ -2791,8 +2796,8 @@ public class C2CMessageProcessor
     //   264: astore_3
     //   265: goto -119 -> 146
     //   268: aload_3
-    //   269: getfield 1539	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody:result	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   272: invokevirtual 839	com/tencent/mobileqq/pb/PBEnumField:get	()I
+    //   269: getfield 1545	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody:result	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   272: invokevirtual 845	com/tencent/mobileqq/pb/PBEnumField:get	()I
     //   275: istore 5
     //   277: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   280: ifeq +41 -> 321
@@ -2801,23 +2806,23 @@ public class C2CMessageProcessor
     //   286: new 107	java/lang/StringBuilder
     //   289: dup
     //   290: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   293: ldc_w 1541
+    //   293: ldc_w 1547
     //   296: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   299: iload 5
     //   301: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   304: ldc_w 1543
+    //   304: ldc_w 1549
     //   307: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   310: iload 4
     //   312: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   315: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   318: invokestatic 1079	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   318: invokestatic 1085	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   321: iload 5
     //   323: ifeq +9 -> 332
     //   326: iload 5
     //   328: iconst_1
     //   329: if_icmpne +699 -> 1028
     //   332: aload 13
-    //   334: getfield 1544	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp:msg	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   334: getfield 1550	msf/msgsvc/msg_svc$PbSearchRoamMsgInCloudResp:msg	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   337: invokevirtual 85	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   340: astore 15
     //   342: aload 15
@@ -2826,8 +2831,8 @@ public class C2CMessageProcessor
     //   350: ifeq -178 -> 172
     //   353: ldc 162
     //   355: iconst_2
-    //   356: ldc_w 1546
-    //   359: invokestatic 1079	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   356: ldc_w 1552
+    //   359: invokestatic 1085	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   362: return
     //   363: new 59	java/util/ArrayList
     //   366: dup
@@ -2877,19 +2882,19 @@ public class C2CMessageProcessor
     //   462: ifeq +13 -> 475
     //   465: aload_2
     //   466: getfield 148	msf/msgcomm/msg_comm$Msg:msg_body	Ltencent/im/msg/im_msg_body$MsgBody;
-    //   469: invokevirtual 499	tencent/im/msg/im_msg_body$MsgBody:has	()Z
+    //   469: invokevirtual 505	tencent/im/msg/im_msg_body$MsgBody:has	()Z
     //   472: ifne +113 -> 585
     //   475: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   478: ifeq -48 -> 430
     //   481: new 107	java/lang/StringBuilder
     //   484: dup
     //   485: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   488: ldc_w 1548
+    //   488: ldc_w 1554
     //   491: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   494: astore 19
     //   496: aload_2
     //   497: ifnonnull +45 -> 542
-    //   500: ldc_w 1550
+    //   500: ldc_w 1556
     //   503: astore_2
     //   504: ldc 162
     //   506: iconst_2
@@ -2904,24 +2909,24 @@ public class C2CMessageProcessor
     //   526: ifeq -96 -> 430
     //   529: ldc 162
     //   531: iconst_2
-    //   532: ldc_w 1552
+    //   532: ldc_w 1558
     //   535: aload_2
-    //   536: invokestatic 457	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   536: invokestatic 463	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   539: goto -109 -> 430
     //   542: new 107	java/lang/StringBuilder
     //   545: dup
     //   546: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   549: ldc_w 1554
+    //   549: ldc_w 1560
     //   552: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   555: aload_2
     //   556: getfield 139	msf/msgcomm/msg_comm$Msg:msg_head	Lmsf/msgcomm/msg_comm$MsgHead;
-    //   559: invokevirtual 489	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   562: ldc_w 1556
+    //   559: invokevirtual 495	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   562: ldc_w 1562
     //   565: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   568: aload_2
     //   569: getfield 148	msf/msgcomm/msg_comm$Msg:msg_body	Ltencent/im/msg/im_msg_body$MsgBody;
-    //   572: invokevirtual 499	tencent/im/msg/im_msg_body$MsgBody:has	()Z
-    //   575: invokevirtual 714	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   572: invokevirtual 505	tencent/im/msg/im_msg_body$MsgBody:has	()Z
+    //   575: invokevirtual 720	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   578: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   581: astore_2
     //   582: goto -78 -> 504
@@ -2950,7 +2955,7 @@ public class C2CMessageProcessor
     //   636: ifeq -206 -> 430
     //   639: ldc 162
     //   641: iconst_2
-    //   642: ldc_w 1558
+    //   642: ldc_w 1564
     //   645: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   648: goto -218 -> 430
     //   651: aload 17
@@ -2964,11 +2969,11 @@ public class C2CMessageProcessor
     //   666: aload_2
     //   667: ifnull -237 -> 430
     //   670: aload_2
-    //   671: invokevirtual 1390	java/util/ArrayList:isEmpty	()Z
+    //   671: invokevirtual 1396	java/util/ArrayList:isEmpty	()Z
     //   674: ifne -244 -> 430
     //   677: aload 13
     //   679: aload_2
-    //   680: invokevirtual 1389	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
+    //   680: invokevirtual 1395	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
     //   683: pop
     //   684: goto -254 -> 430
     //   687: goto -36 -> 651
@@ -2976,11 +2981,11 @@ public class C2CMessageProcessor
     //   692: invokevirtual 130	java/util/ArrayList:size	()I
     //   695: ifle +16 -> 711
     //   698: aload 13
-    //   700: new 1560	zsx
+    //   700: new 1566	zzi
     //   703: dup
     //   704: aload_0
-    //   705: invokespecial 1561	zsx:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
-    //   708: invokestatic 896	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   705: invokespecial 1567	zzi:<init>	(Lcom/tencent/mobileqq/app/message/C2CMessageProcessor;)V
+    //   708: invokestatic 902	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   711: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   714: ifeq +63 -> 777
     //   717: ldc 162
@@ -2988,29 +2993,29 @@ public class C2CMessageProcessor
     //   720: new 107	java/lang/StringBuilder
     //   723: dup
     //   724: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   727: ldc_w 1563
+    //   727: ldc_w 1569
     //   730: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   733: aload 15
     //   735: invokeinterface 91 1 0
     //   740: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   743: ldc_w 1565
+    //   743: ldc_w 1571
     //   746: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   749: aload 16
     //   751: invokevirtual 130	java/util/ArrayList:size	()I
     //   754: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   757: ldc_w 1567
+    //   757: ldc_w 1573
     //   760: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   763: aload 13
     //   765: invokevirtual 130	java/util/ArrayList:size	()I
     //   768: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   771: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   774: invokestatic 1079	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   774: invokestatic 1085	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   777: aload_3
-    //   778: getfield 1570	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody:friends	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   781: invokevirtual 1571	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   778: getfield 1576	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody:friends	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   781: invokevirtual 1577	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
     //   784: ifeq +124 -> 908
     //   787: aload_3
-    //   788: getfield 1570	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody:friends	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   788: getfield 1576	tencent/im/oidb/searcher/oidb_c2c_searcher$RspBody:friends	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   791: invokevirtual 85	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   794: astore_2
     //   795: aload_2
@@ -3022,13 +3027,13 @@ public class C2CMessageProcessor
     //   808: new 107	java/lang/StringBuilder
     //   811: dup
     //   812: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   815: ldc_w 1573
+    //   815: ldc_w 1579
     //   818: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   821: aload_2
     //   822: invokeinterface 91 1 0
     //   827: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   830: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   833: invokestatic 1079	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   833: invokestatic 1085	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   836: aload 13
     //   838: invokevirtual 130	java/util/ArrayList:size	()I
     //   841: ifne +126 -> 967
@@ -3036,32 +3041,32 @@ public class C2CMessageProcessor
     //   846: iconst_1
     //   847: if_icmpeq +120 -> 967
     //   850: aload_1
-    //   851: getfield 736	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   854: ldc_w 1075
-    //   857: invokevirtual 1073	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   851: getfield 742	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   854: ldc_w 1081
+    //   857: invokevirtual 1079	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   860: istore 5
     //   862: iload 5
     //   864: iconst_4
     //   865: if_icmpge +66 -> 931
     //   868: aload_0
     //   869: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   872: invokevirtual 1082	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/MessageHandler;
+    //   872: invokevirtual 1088	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/MessageHandler;
     //   875: iload 4
     //   877: aconst_null
     //   878: aload_1
-    //   879: getfield 736	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   882: ldc_w 1055
-    //   885: invokevirtual 1057	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   879: getfield 742	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   882: ldc_w 1061
+    //   885: invokevirtual 1063	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   888: aload_1
-    //   889: getfield 736	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   892: ldc_w 1065
-    //   895: invokevirtual 741	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   889: getfield 742	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   892: ldc_w 1071
+    //   895: invokevirtual 747	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   898: aload_2
     //   899: iload 5
     //   901: iconst_1
     //   902: iadd
     //   903: lconst_0
-    //   904: invokevirtual 1576	com/tencent/mobileqq/app/MessageHandler:a	(ILjava/util/List;Ljava/lang/String;JLjava/util/List;IJ)V
+    //   904: invokevirtual 1582	com/tencent/mobileqq/app/MessageHandler:a	(ILjava/util/List;Ljava/lang/String;JLjava/util/List;IJ)V
     //   907: return
     //   908: aconst_null
     //   909: astore_2
@@ -3070,35 +3075,35 @@ public class C2CMessageProcessor
     //   916: ifeq -80 -> 836
     //   919: ldc 162
     //   921: iconst_2
-    //   922: ldc_w 1578
-    //   925: invokestatic 1079	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   922: ldc_w 1584
+    //   925: invokestatic 1085	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   928: goto -92 -> 836
     //   931: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   934: ifeq +12 -> 946
     //   937: ldc 162
     //   939: iconst_2
-    //   940: ldc_w 1580
-    //   943: invokestatic 1079	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   940: ldc_w 1586
+    //   943: invokestatic 1085	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   946: aload 14
-    //   948: ldc_w 1582
+    //   948: ldc_w 1588
     //   951: aload_2
-    //   952: invokevirtual 1061	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   952: invokevirtual 1067	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   955: pop
     //   956: aload_0
     //   957: sipush 8015
     //   960: iconst_0
     //   961: aload 14
-    //   963: invokevirtual 755	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   963: invokevirtual 761	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
     //   966: return
     //   967: aload 14
-    //   969: ldc_w 1582
+    //   969: ldc_w 1588
     //   972: aload_2
-    //   973: invokevirtual 1061	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   973: invokevirtual 1067	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   976: pop
     //   977: aload 14
-    //   979: ldc_w 1584
+    //   979: ldc_w 1590
     //   982: aload 13
-    //   984: invokevirtual 1061	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   984: invokevirtual 1067	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   987: pop
     //   988: iload 5
     //   990: iconst_1
@@ -3106,16 +3111,16 @@ public class C2CMessageProcessor
     //   994: iconst_1
     //   995: istore 12
     //   997: aload 14
-    //   999: ldc_w 1586
+    //   999: ldc_w 1592
     //   1002: iload 12
-    //   1004: invokestatic 827	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   1007: invokevirtual 1061	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1004: invokestatic 833	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   1007: invokevirtual 1067	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1010: pop
     //   1011: aload_0
     //   1012: sipush 8015
     //   1015: iconst_1
     //   1016: aload 14
-    //   1018: invokevirtual 755	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
+    //   1018: invokevirtual 761	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(IZLjava/lang/Object;)V
     //   1021: return
     //   1022: iconst_0
     //   1023: istore 12
@@ -3124,7 +3129,7 @@ public class C2CMessageProcessor
     //   1029: aload_1
     //   1030: aload_2
     //   1031: iconst_0
-    //   1032: invokespecial 1529	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Z)V
+    //   1032: invokespecial 1535	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Z)V
     //   1035: return
     //   1036: lload 6
     //   1038: lload 10
@@ -3914,7 +3919,7 @@ public class C2CMessageProcessor
                         }
                         localObject2 = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
                         if (localObject2 != null) {
-                          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(getClass()).postDelayed(new zss(this, (TroopHandler)localObject2, (String)localObject1), 2000L);
+                          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(getClass()).postDelayed(new zzd(this, (TroopHandler)localObject2, (String)localObject1), 2000L);
                         }
                         MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, l5, i7, l6, i6);
                       }
@@ -4094,7 +4099,7 @@ public class C2CMessageProcessor
         }
       }
       if ((localMessageRecord.mQidianMasterUin != 0L) && (!TextUtils.isEmpty(localMessageRecord.mQidianTipText)) && (localMessageRecord.mIsShowQidianTips == 1)) {
-        ThreadManager.executeOnSubThread(new zsw(this, localMessageRecord));
+        ThreadManager.executeOnSubThread(new zzh(this, localMessageRecord));
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(paramArrayList);
@@ -4160,17 +4165,17 @@ public class C2CMessageProcessor
     //   5: invokevirtual 130	java/util/ArrayList:size	()I
     //   8: ifne +4 -> 12
     //   11: return
-    //   12: invokestatic 2325	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   12: invokestatic 2331	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   15: aload_0
     //   16: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   19: invokevirtual 73	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   22: invokestatic 2328	com/tencent/mobileqq/activity/UserguideActivity:a	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   22: invokestatic 2334	com/tencent/mobileqq/activity/UserguideActivity:a	(Landroid/content/Context;Ljava/lang/String;)Z
     //   25: ifne -14 -> 11
-    //   28: invokestatic 2325	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   31: invokevirtual 2329	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   28: invokestatic 2331	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   31: invokevirtual 2335	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
     //   34: aload_0
     //   35: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   38: invokestatic 2334	com/tencent/mobileqq/util/NoDisturbUtil:a	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
+    //   38: invokestatic 2340	com/tencent/mobileqq/util/NoDisturbUtil:a	(Landroid/content/Context;Lcom/tencent/common/app/AppInterface;)Z
     //   41: ifeq -30 -> 11
     //   44: aload_1
     //   45: invokevirtual 246	java/util/ArrayList:iterator	()Ljava/util/Iterator;
@@ -4184,21 +4189,21 @@ public class C2CMessageProcessor
     //   70: astore 8
     //   72: aload 8
     //   74: getfield 271	com/tencent/mobileqq/data/MessageRecord:istroop	I
-    //   77: invokestatic 1951	com/tencent/mobileqq/app/message/MsgProxyUtils:r	(I)Z
+    //   77: invokestatic 1957	com/tencent/mobileqq/app/message/MsgProxyUtils:r	(I)Z
     //   80: ifeq -30 -> 50
     //   83: aload 8
-    //   85: invokestatic 2335	com/tencent/mobileqq/app/message/MsgProxyUtils:c	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
+    //   85: invokestatic 2341	com/tencent/mobileqq/app/message/MsgProxyUtils:c	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
     //   88: ifeq -38 -> 50
     //   91: aload_0
     //   92: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   95: aload 8
-    //   97: invokestatic 2337	com/tencent/mobileqq/app/message/MsgProxyUtils:c	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/MessageRecord;)Z
+    //   97: invokestatic 2343	com/tencent/mobileqq/app/message/MsgProxyUtils:c	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/MessageRecord;)Z
     //   100: ifne -50 -> 50
     //   103: aload 8
-    //   105: invokevirtual 2027	com/tencent/mobileqq/data/MessageRecord:isSend	()Z
+    //   105: invokevirtual 2033	com/tencent/mobileqq/data/MessageRecord:isSend	()Z
     //   108: ifne -58 -> 50
     //   111: aload 8
-    //   113: getfield 1196	com/tencent/mobileqq/data/MessageRecord:isread	Z
+    //   113: getfield 1202	com/tencent/mobileqq/data/MessageRecord:isread	Z
     //   116: ifne -66 -> 50
     //   119: iconst_1
     //   120: istore_3
@@ -4207,16 +4212,16 @@ public class C2CMessageProcessor
     //   125: aload_0
     //   126: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   129: bipush 50
-    //   131: invokevirtual 383	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   134: checkcast 898	com/tencent/mobileqq/app/FriendsManager
+    //   131: invokevirtual 391	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   134: checkcast 904	com/tencent/mobileqq/app/FriendsManager
     //   137: aload_0
     //   138: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   141: invokevirtual 73	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   144: invokevirtual 2340	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   144: invokevirtual 2346	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   147: astore 7
     //   149: aload_0
     //   150: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   153: invokevirtual 356	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   153: invokevirtual 364	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
     //   156: astore 10
     //   158: aload 7
     //   160: ifnonnull +566 -> 726
@@ -4224,54 +4229,54 @@ public class C2CMessageProcessor
     //   166: ifeq +1472 -> 1638
     //   169: ldc 162
     //   171: iconst_2
-    //   172: ldc_w 2342
+    //   172: ldc_w 2348
     //   175: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   178: iconst_1
     //   179: istore 4
     //   181: aload_0
     //   182: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   185: bipush 105
-    //   187: invokevirtual 383	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   190: checkcast 2344	com/tencent/mobileqq/nearby/NearbyCardManager
-    //   193: invokevirtual 2345	com/tencent/mobileqq/nearby/NearbyCardManager:a	()Z
+    //   187: invokevirtual 391	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   190: checkcast 2350	com/tencent/mobileqq/nearby/NearbyCardManager
+    //   193: invokevirtual 2351	com/tencent/mobileqq/nearby/NearbyCardManager:a	()Z
     //   196: istore 6
     //   198: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   201: ifeq +42 -> 243
-    //   204: ldc_w 2347
+    //   204: ldc_w 2353
     //   207: iconst_2
     //   208: new 107	java/lang/StringBuilder
     //   211: dup
     //   212: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   215: ldc_w 2349
+    //   215: ldc_w 2355
     //   218: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   221: iload 4
     //   223: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   226: ldc_w 2351
+    //   226: ldc_w 2357
     //   229: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   232: iload 6
-    //   234: invokevirtual 714	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   234: invokevirtual 720	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   237: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   240: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   243: aload_0
-    //   244: getfield 2352	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_Boolean	Z
+    //   244: getfield 2358	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_Boolean	Z
     //   247: ifne +293 -> 540
-    //   250: invokestatic 2357	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
-    //   253: getstatic 2363	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:OneyWayDateMsgNotifyCfg	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
-    //   256: invokevirtual 2365	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
-    //   259: invokevirtual 2367	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   250: invokestatic 2363	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
+    //   253: getstatic 2369	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:OneyWayDateMsgNotifyCfg	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
+    //   256: invokevirtual 2371	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
+    //   259: invokevirtual 2373	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;)Ljava/lang/String;
     //   262: astore 8
-    //   264: invokestatic 2357	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
-    //   267: getstatic 2370	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:OneyWayLBSFriendMsgNotifyCfg	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
-    //   270: invokevirtual 2365	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
-    //   273: invokevirtual 2367	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   264: invokestatic 2363	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
+    //   267: getstatic 2376	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:OneyWayLBSFriendMsgNotifyCfg	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
+    //   270: invokevirtual 2371	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
+    //   273: invokevirtual 2373	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;)Ljava/lang/String;
     //   276: astore 7
     //   278: aload 8
-    //   280: ldc_w 2372
-    //   283: invokevirtual 2376	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   280: ldc_w 2378
+    //   283: invokevirtual 2382	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   286: astore 8
     //   288: aload 7
-    //   290: ldc_w 2372
-    //   293: invokevirtual 2376	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   290: ldc_w 2378
+    //   293: invokevirtual 2382	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   296: astore 7
     //   298: aload 8
     //   300: arraylength
@@ -4285,105 +4290,105 @@ public class C2CMessageProcessor
     //   315: aload 8
     //   317: iconst_0
     //   318: aaload
-    //   319: invokestatic 2379	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   319: invokestatic 2385	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   322: putfield 35	com/tencent/mobileqq/app/message/C2CMessageProcessor:d	I
     //   325: aload_0
     //   326: aload 8
     //   328: iconst_1
     //   329: aaload
-    //   330: invokestatic 2379	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   330: invokestatic 2385	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   333: putfield 37	com/tencent/mobileqq/app/message/C2CMessageProcessor:e	I
     //   336: aload_0
     //   337: aload 8
     //   339: iconst_2
     //   340: aaload
-    //   341: invokestatic 2379	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   341: invokestatic 2385	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   344: putfield 39	com/tencent/mobileqq/app/message/C2CMessageProcessor:f	I
     //   347: aload_0
     //   348: aload 8
     //   350: iconst_3
     //   351: aaload
-    //   352: invokestatic 2379	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   352: invokestatic 2385	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   355: putfield 41	com/tencent/mobileqq/app/message/C2CMessageProcessor:g	I
     //   358: aload_0
     //   359: aload 7
     //   361: iconst_0
     //   362: aaload
-    //   363: invokestatic 2379	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   363: invokestatic 2385	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   366: putfield 43	com/tencent/mobileqq/app/message/C2CMessageProcessor:i	I
     //   369: aload_0
     //   370: aload 7
     //   372: iconst_1
     //   373: aaload
-    //   374: invokestatic 2379	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   374: invokestatic 2385	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   377: putfield 45	com/tencent/mobileqq/app/message/C2CMessageProcessor:j	I
     //   380: aload_0
     //   381: aload 7
     //   383: iconst_2
     //   384: aaload
-    //   385: invokestatic 2379	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   385: invokestatic 2385	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   388: putfield 47	com/tencent/mobileqq/app/message/C2CMessageProcessor:k	I
     //   391: aload_0
     //   392: aload 7
     //   394: iconst_3
     //   395: aaload
-    //   396: invokestatic 2379	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   396: invokestatic 2385	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   399: putfield 49	com/tencent/mobileqq/app/message/C2CMessageProcessor:l	I
-    //   402: invokestatic 2382	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   402: invokestatic 2388	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   405: ifeq +130 -> 535
-    //   408: ldc_w 2384
+    //   408: ldc_w 2390
     //   411: iconst_4
     //   412: new 107	java/lang/StringBuilder
     //   415: dup
     //   416: invokespecial 108	java/lang/StringBuilder:<init>	()V
-    //   419: ldc_w 2386
+    //   419: ldc_w 2392
     //   422: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   425: aload_0
     //   426: getfield 35	com/tencent/mobileqq/app/message/C2CMessageProcessor:d	I
     //   429: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   432: ldc_w 2154
+    //   432: ldc_w 2160
     //   435: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   438: aload_0
     //   439: getfield 37	com/tencent/mobileqq/app/message/C2CMessageProcessor:e	I
     //   442: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   445: ldc_w 2154
+    //   445: ldc_w 2160
     //   448: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   451: aload_0
     //   452: getfield 39	com/tencent/mobileqq/app/message/C2CMessageProcessor:f	I
     //   455: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   458: ldc_w 2154
+    //   458: ldc_w 2160
     //   461: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   464: aload_0
     //   465: getfield 41	com/tencent/mobileqq/app/message/C2CMessageProcessor:g	I
     //   468: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   471: ldc_w 2388
+    //   471: ldc_w 2394
     //   474: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   477: aload_0
     //   478: getfield 43	com/tencent/mobileqq/app/message/C2CMessageProcessor:i	I
     //   481: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   484: ldc_w 2154
+    //   484: ldc_w 2160
     //   487: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   490: aload_0
     //   491: getfield 45	com/tencent/mobileqq/app/message/C2CMessageProcessor:j	I
     //   494: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   497: ldc_w 2154
+    //   497: ldc_w 2160
     //   500: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   503: aload_0
     //   504: getfield 47	com/tencent/mobileqq/app/message/C2CMessageProcessor:k	I
     //   507: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   510: ldc_w 2154
+    //   510: ldc_w 2160
     //   513: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   516: aload_0
     //   517: getfield 49	com/tencent/mobileqq/app/message/C2CMessageProcessor:l	I
     //   520: invokevirtual 171	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   523: ldc_w 1848
+    //   523: ldc_w 1854
     //   526: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   529: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   532: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   535: aload_0
     //   536: iconst_1
-    //   537: putfield 2352	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_Boolean	Z
-    //   540: invokestatic 2325	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   537: putfield 2358	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_Boolean	Z
+    //   540: invokestatic 2331	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   543: new 107	java/lang/StringBuilder
     //   546: dup
     //   547: invokespecial 108	java/lang/StringBuilder:<init>	()V
@@ -4391,15 +4396,15 @@ public class C2CMessageProcessor
     //   551: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   554: invokevirtual 73	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   557: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   560: ldc_w 2390
+    //   560: ldc_w 2396
     //   563: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   566: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   569: iconst_0
-    //   570: invokevirtual 2394	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   570: invokevirtual 2400	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   573: astore 11
-    //   575: ldc_w 433
+    //   575: ldc_w 441
     //   578: astore 8
-    //   580: ldc_w 433
+    //   580: ldc_w 441
     //   583: astore 9
     //   585: aload 8
     //   587: astore 7
@@ -4426,15 +4431,15 @@ public class C2CMessageProcessor
     //   630: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   633: invokevirtual 73	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   636: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   639: ldc_w 2396
+    //   639: ldc_w 2402
     //   642: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   645: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   648: ldc_w 433
-    //   651: invokeinterface 2401 3 0
+    //   648: ldc_w 441
+    //   651: invokeinterface 2407 3 0
     //   656: astore 8
     //   658: aload 8
-    //   660: ldc_w 2372
-    //   663: invokevirtual 2376	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   660: ldc_w 2378
+    //   663: invokevirtual 2382	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   666: astore 12
     //   668: aload 12
     //   670: arraylength
@@ -4451,7 +4456,7 @@ public class C2CMessageProcessor
     //   688: aaload
     //   689: astore 7
     //   691: aload 7
-    //   693: invokevirtual 677	java/lang/String:length	()I
+    //   693: invokevirtual 683	java/lang/String:length	()I
     //   696: ifle +23 -> 719
     //   699: aload 7
     //   701: invokestatic 119	java/lang/Long:parseLong	(Ljava/lang/String;)J
@@ -4461,7 +4466,7 @@ public class C2CMessageProcessor
     //   709: aload_0
     //   710: getfield 51	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
     //   713: aload 7
-    //   715: invokevirtual 2402	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   715: invokevirtual 2408	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   718: pop
     //   719: iload_3
     //   720: iconst_1
@@ -4469,7 +4474,7 @@ public class C2CMessageProcessor
     //   722: istore_3
     //   723: goto -48 -> 675
     //   726: aload 7
-    //   728: getfield 2407	com/tencent/mobileqq/data/Card:shGender	S
+    //   728: getfield 2413	com/tencent/mobileqq/data/Card:shGender	S
     //   731: istore 4
     //   733: goto -552 -> 181
     //   736: aload_0
@@ -4499,15 +4504,15 @@ public class C2CMessageProcessor
     //   783: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   786: invokevirtual 73	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   789: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   792: ldc_w 2409
+    //   792: ldc_w 2415
     //   795: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   798: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   801: ldc_w 433
-    //   804: invokeinterface 2401 3 0
+    //   801: ldc_w 441
+    //   804: invokeinterface 2407 3 0
     //   809: astore 9
     //   811: aload 9
-    //   813: ldc_w 2372
-    //   816: invokevirtual 2376	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   813: ldc_w 2378
+    //   816: invokevirtual 2382	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   819: astore 12
     //   821: aload 12
     //   823: arraylength
@@ -4524,7 +4529,7 @@ public class C2CMessageProcessor
     //   841: aaload
     //   842: astore 8
     //   844: aload 8
-    //   846: invokevirtual 677	java/lang/String:length	()I
+    //   846: invokevirtual 683	java/lang/String:length	()I
     //   849: ifle +23 -> 872
     //   852: aload 8
     //   854: invokestatic 119	java/lang/Long:parseLong	(Ljava/lang/String;)J
@@ -4534,7 +4539,7 @@ public class C2CMessageProcessor
     //   862: aload_0
     //   863: getfield 53	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_b_of_type_JavaUtilHashSet	Ljava/util/HashSet;
     //   866: aload 8
-    //   868: invokevirtual 2402	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   868: invokevirtual 2408	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   871: pop
     //   872: iload_3
     //   873: iconst_1
@@ -4564,7 +4569,7 @@ public class C2CMessageProcessor
     //   918: astore 9
     //   920: aload_0
     //   921: aload 13
-    //   923: invokevirtual 2410	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
+    //   923: invokevirtual 2416	com/tencent/mobileqq/app/message/C2CMessageProcessor:a	(Lcom/tencent/mobileqq/data/MessageRecord;)Z
     //   926: ifeq +641 -> 1567
     //   929: aload_1
     //   930: astore 9
@@ -4579,23 +4584,23 @@ public class C2CMessageProcessor
     //   952: aload_0
     //   953: getfield 51	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
     //   956: aload 13
-    //   958: getfield 413	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
-    //   961: invokevirtual 2411	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   958: getfield 421	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   961: invokevirtual 2417	java/util/HashSet:contains	(Ljava/lang/Object;)Z
     //   964: ifne +89 -> 1053
     //   967: aload_0
     //   968: getfield 51	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
     //   971: aload 13
-    //   973: getfield 413	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
-    //   976: invokevirtual 2402	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   973: getfield 421	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   976: invokevirtual 2408	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   979: pop
     //   980: aload 7
-    //   982: invokevirtual 677	java/lang/String:length	()I
+    //   982: invokevirtual 683	java/lang/String:length	()I
     //   985: ifne +237 -> 1222
     //   988: aload 13
-    //   990: getfield 413	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   990: getfield 421	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
     //   993: astore 7
     //   995: aload 11
-    //   997: invokeinterface 2415 1 0
+    //   997: invokeinterface 2421 1 0
     //   1002: new 107	java/lang/StringBuilder
     //   1005: dup
     //   1006: invokespecial 108	java/lang/StringBuilder:<init>	()V
@@ -4603,15 +4608,15 @@ public class C2CMessageProcessor
     //   1010: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1013: invokevirtual 73	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   1016: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1019: ldc_w 2396
+    //   1019: ldc_w 2402
     //   1022: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1025: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1028: aload 7
-    //   1030: invokeinterface 2420 3 0
+    //   1030: invokeinterface 2426 3 0
     //   1035: pop
     //   1036: aload 11
-    //   1038: invokeinterface 2415 1 0
-    //   1043: invokeinterface 2423 1 0
+    //   1038: invokeinterface 2421 1 0
+    //   1043: invokeinterface 2429 1 0
     //   1048: pop
     //   1049: aload 7
     //   1051: astore 8
@@ -4625,10 +4630,10 @@ public class C2CMessageProcessor
     //   1068: aload_0
     //   1069: aload_0
     //   1070: getfield 51	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   1073: invokevirtual 2424	java/util/HashSet:size	()I
-    //   1076: putfield 2426	com/tencent/mobileqq/app/message/C2CMessageProcessor:h	I
+    //   1073: invokevirtual 2430	java/util/HashSet:size	()I
+    //   1076: putfield 2432	com/tencent/mobileqq/app/message/C2CMessageProcessor:h	I
     //   1079: aload_0
-    //   1080: getfield 2426	com/tencent/mobileqq/app/message/C2CMessageProcessor:h	I
+    //   1080: getfield 2432	com/tencent/mobileqq/app/message/C2CMessageProcessor:h	I
     //   1083: iload_3
     //   1084: irem
     //   1085: ifne +113 -> 1198
@@ -4636,12 +4641,12 @@ public class C2CMessageProcessor
     //   1089: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1092: aload 13
     //   1094: iload_2
-    //   1095: invokevirtual 2427	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/data/MessageRecord;Z)V
+    //   1095: invokevirtual 2433	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/data/MessageRecord;Z)V
     //   1098: aload_0
     //   1099: getfield 51	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   1102: invokevirtual 2428	java/util/HashSet:clear	()V
+    //   1102: invokevirtual 2434	java/util/HashSet:clear	()V
     //   1105: aload 11
-    //   1107: invokeinterface 2415 1 0
+    //   1107: invokeinterface 2421 1 0
     //   1112: new 107	java/lang/StringBuilder
     //   1115: dup
     //   1116: invokespecial 108	java/lang/StringBuilder:<init>	()V
@@ -4649,31 +4654,31 @@ public class C2CMessageProcessor
     //   1120: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1123: invokevirtual 73	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   1126: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1129: ldc_w 2396
+    //   1129: ldc_w 2402
     //   1132: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1135: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1138: invokeinterface 2431 2 0
+    //   1138: invokeinterface 2437 2 0
     //   1143: pop
     //   1144: aload 11
-    //   1146: invokeinterface 2415 1 0
-    //   1151: invokeinterface 2423 1 0
+    //   1146: invokeinterface 2421 1 0
+    //   1151: invokeinterface 2429 1 0
     //   1156: pop
     //   1157: iload 6
     //   1159: ifeq +39 -> 1198
     //   1162: aload_0
     //   1163: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1166: ldc_w 467
-    //   1169: ldc_w 433
-    //   1172: ldc_w 433
-    //   1175: ldc_w 2433
-    //   1178: ldc_w 2433
+    //   1166: ldc_w 473
+    //   1169: ldc_w 441
+    //   1172: ldc_w 441
+    //   1175: ldc_w 2439
+    //   1178: ldc_w 2439
     //   1181: iconst_0
     //   1182: iconst_0
-    //   1183: ldc_w 433
-    //   1186: ldc_w 433
-    //   1189: ldc_w 433
-    //   1192: ldc_w 433
-    //   1195: invokestatic 474	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1183: ldc_w 441
+    //   1186: ldc_w 441
+    //   1189: ldc_w 441
+    //   1192: ldc_w 441
+    //   1195: invokestatic 480	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   1198: aload_1
     //   1199: astore 7
     //   1201: aload 8
@@ -4695,10 +4700,10 @@ public class C2CMessageProcessor
     //   1226: invokespecial 108	java/lang/StringBuilder:<init>	()V
     //   1229: aload 7
     //   1231: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1234: ldc_w 2154
+    //   1234: ldc_w 2160
     //   1237: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1240: aload 13
-    //   1242: getfield 413	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   1242: getfield 421	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
     //   1245: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1248: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1251: astore 7
@@ -4732,23 +4737,23 @@ public class C2CMessageProcessor
     //   1313: aload_0
     //   1314: getfield 53	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_b_of_type_JavaUtilHashSet	Ljava/util/HashSet;
     //   1317: aload 13
-    //   1319: getfield 413	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
-    //   1322: invokevirtual 2411	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   1319: getfield 421	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   1322: invokevirtual 2417	java/util/HashSet:contains	(Ljava/lang/Object;)Z
     //   1325: ifne +85 -> 1410
     //   1328: aload_0
     //   1329: getfield 53	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_b_of_type_JavaUtilHashSet	Ljava/util/HashSet;
     //   1332: aload 13
-    //   1334: getfield 413	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
-    //   1337: invokevirtual 2402	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   1334: getfield 421	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   1337: invokevirtual 2408	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   1340: pop
     //   1341: aload_1
-    //   1342: invokevirtual 677	java/lang/String:length	()I
+    //   1342: invokevirtual 683	java/lang/String:length	()I
     //   1345: ifne +232 -> 1577
     //   1348: aload 13
-    //   1350: getfield 413	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   1350: getfield 421	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
     //   1353: astore_1
     //   1354: aload 11
-    //   1356: invokeinterface 2415 1 0
+    //   1356: invokeinterface 2421 1 0
     //   1361: new 107	java/lang/StringBuilder
     //   1364: dup
     //   1365: invokespecial 108	java/lang/StringBuilder:<init>	()V
@@ -4756,15 +4761,15 @@ public class C2CMessageProcessor
     //   1369: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1372: invokevirtual 73	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   1375: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1378: ldc_w 2409
+    //   1378: ldc_w 2415
     //   1381: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1384: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1387: aload_1
-    //   1388: invokeinterface 2420 3 0
+    //   1388: invokeinterface 2426 3 0
     //   1393: pop
     //   1394: aload 11
-    //   1396: invokeinterface 2415 1 0
-    //   1401: invokeinterface 2423 1 0
+    //   1396: invokeinterface 2421 1 0
+    //   1401: invokeinterface 2429 1 0
     //   1406: pop
     //   1407: aload_1
     //   1408: astore 8
@@ -4778,12 +4783,12 @@ public class C2CMessageProcessor
     //   1425: aload_0
     //   1426: aload_0
     //   1427: getfield 53	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_b_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   1430: invokevirtual 2424	java/util/HashSet:size	()I
-    //   1433: putfield 2435	com/tencent/mobileqq/app/message/C2CMessageProcessor:m	I
+    //   1430: invokevirtual 2430	java/util/HashSet:size	()I
+    //   1433: putfield 2441	com/tencent/mobileqq/app/message/C2CMessageProcessor:m	I
     //   1436: aload 8
     //   1438: astore 9
     //   1440: aload_0
-    //   1441: getfield 2435	com/tencent/mobileqq/app/message/C2CMessageProcessor:m	I
+    //   1441: getfield 2441	com/tencent/mobileqq/app/message/C2CMessageProcessor:m	I
     //   1444: iload_3
     //   1445: irem
     //   1446: ifne +121 -> 1567
@@ -4791,12 +4796,12 @@ public class C2CMessageProcessor
     //   1450: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1453: aload 13
     //   1455: iload_2
-    //   1456: invokevirtual 2427	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/data/MessageRecord;Z)V
+    //   1456: invokevirtual 2433	com/tencent/mobileqq/app/QQAppInterface:a	(Lcom/tencent/mobileqq/data/MessageRecord;Z)V
     //   1459: aload_0
     //   1460: getfield 53	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_b_of_type_JavaUtilHashSet	Ljava/util/HashSet;
-    //   1463: invokevirtual 2428	java/util/HashSet:clear	()V
+    //   1463: invokevirtual 2434	java/util/HashSet:clear	()V
     //   1466: aload 11
-    //   1468: invokeinterface 2415 1 0
+    //   1468: invokeinterface 2421 1 0
     //   1473: new 107	java/lang/StringBuilder
     //   1476: dup
     //   1477: invokespecial 108	java/lang/StringBuilder:<init>	()V
@@ -4804,14 +4809,14 @@ public class C2CMessageProcessor
     //   1481: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1484: invokevirtual 73	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   1487: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1490: ldc_w 2409
+    //   1490: ldc_w 2415
     //   1493: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1496: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1499: invokeinterface 2431 2 0
+    //   1499: invokeinterface 2437 2 0
     //   1504: pop
     //   1505: aload 11
-    //   1507: invokeinterface 2415 1 0
-    //   1512: invokeinterface 2423 1 0
+    //   1507: invokeinterface 2421 1 0
+    //   1512: invokeinterface 2429 1 0
     //   1517: pop
     //   1518: aload 8
     //   1520: astore 9
@@ -4819,18 +4824,18 @@ public class C2CMessageProcessor
     //   1524: ifeq +43 -> 1567
     //   1527: aload_0
     //   1528: getfield 63	com/tencent/mobileqq/app/message/C2CMessageProcessor:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1531: ldc_w 467
-    //   1534: ldc_w 433
-    //   1537: ldc_w 433
-    //   1540: ldc_w 2433
-    //   1543: ldc_w 2433
+    //   1531: ldc_w 473
+    //   1534: ldc_w 441
+    //   1537: ldc_w 441
+    //   1540: ldc_w 2439
+    //   1543: ldc_w 2439
     //   1546: iconst_0
     //   1547: iconst_0
-    //   1548: ldc_w 433
-    //   1551: ldc_w 433
-    //   1554: ldc_w 433
-    //   1557: ldc_w 433
-    //   1560: invokestatic 474	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1548: ldc_w 441
+    //   1551: ldc_w 441
+    //   1554: ldc_w 441
+    //   1557: ldc_w 441
+    //   1560: invokestatic 480	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   1563: aload 8
     //   1565: astore 9
     //   1567: aload 7
@@ -4843,10 +4848,10 @@ public class C2CMessageProcessor
     //   1581: invokespecial 108	java/lang/StringBuilder:<init>	()V
     //   1584: aload_1
     //   1585: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1588: ldc_w 2154
+    //   1588: ldc_w 2160
     //   1591: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1594: aload 13
-    //   1596: getfield 413	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   1596: getfield 421	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
     //   1599: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1602: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1605: astore_1

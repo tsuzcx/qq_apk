@@ -6,13 +6,21 @@ import java.net.URL;
 public final class e
   extends a
 {
-  private String[] a = { "https://p0.map.gtimg.com/sateTiles", "https://p1.map.gtimg.com/sateTiles", "https://p2.map.gtimg.com/sateTiles", "https://p3.map.gtimg.com/sateTiles" };
+  private static final String[] a = { "https://rtt2.map.qq.com", "https://rtt2a.map.qq.com", "https://rtt2b.map.qq.com", "https://rtt2c.map.qq.com" };
+  
+  public e(int paramInt)
+  {
+    super(paramInt);
+  }
   
   public final URL getTileUrl(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs)
   {
+    if (paramInt3 < 10) {
+      return null;
+    }
+    paramVarArgs = a[((paramInt1 + paramInt2) % a.length)];
     paramInt2 = (int)(Math.pow(2.0D, paramInt3) - paramInt2 - 1.0D);
-    int i = a(paramInt1 + paramInt2, 4);
-    paramVarArgs = this.a[i] + '/' + paramInt3 + '/' + (paramInt1 >> 4) + '/' + (paramInt2 >> 4) + '/' + paramInt1 + '_' + paramInt2 + ".jpg";
+    paramVarArgs = paramVarArgs + "/rtt/?z=" + paramInt3 + "&x=" + paramInt1 + "&y=" + paramInt2 + "&ref=android2DSdk&timeKey=" + System.currentTimeMillis();
     try
     {
       URL localURL = new URL(paramVarArgs);
@@ -20,7 +28,8 @@ public final class e
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      new StringBuilder("Unable to new URL with ").append(paramVarArgs);
+      getClass().getSimpleName();
+      new StringBuilder("Can not convert ").append(paramVarArgs).append(" to URL.");
     }
     return null;
   }

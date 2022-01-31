@@ -1,17 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class lqj
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public lqj(ArticleReadInfoModule paramArticleReadInfoModule) {}
+  public lqj(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    List localList = this.a.a.a(ArticleReadInfo.class, true, null, null, null, null, null, null);
-    ArticleReadInfoModule.a(this.a, localList);
+    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131428461), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
+      return;
+    }
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
   }
 }
 

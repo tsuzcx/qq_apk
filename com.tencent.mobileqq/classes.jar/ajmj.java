@@ -1,23 +1,24 @@
-import android.view.WindowManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenMgr;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.io.File;
 
-class ajmj
+public class ajmj
   implements Runnable
 {
-  ajmj(ajmi paramajmi) {}
+  public ajmj(TroopFileThumbnailMgr paramTroopFileThumbnailMgr, TroopFileTransferManager.Item paramItem, long paramLong, int paramInt) {}
   
   public void run()
   {
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView != null) {
-      RobotResourcesManager.a(this.a.a.a).removeView(this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView);
+    String str = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.jdField_a_of_type_Long, 640);
+    if (FileUtil.b(str)) {
+      TroopFileThumbnailMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailMgr).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, str);
     }
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView = null;
-    this.a.a.a.jdField_a_of_type_JavaLangString = null;
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.notifyDataSetChanged();
+    while ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile == null) || (!new File(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).exists())) {
+      return;
     }
+    TroopFileThumbnailMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailMgr).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, null);
   }
 }
 

@@ -1,18 +1,19 @@
-import com.tencent.common.app.AppInterface;
+import android.widget.TextView;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
-public final class aemz
+class aemz
   implements Runnable
 {
-  public aemz(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  aemz(aemw paramaemw, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, this.e);
+    this.jdField_a_of_type_Aemw.a.b.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemz
  * JD-Core Version:    0.7.0.1
  */

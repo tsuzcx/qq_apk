@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.AlbumLibDownloaderUtil;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import cooperation.qzone.font.FontManager;
+import java.lang.ref.WeakReference;
 
 public class anbs
-  implements Runnable
 {
-  public anbs(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
+  public int a;
+  public String a;
+  public WeakReference a;
+  public int b;
   
-  public void run()
-  {
-    if (AlbumLibDownloaderUtil.a().a(AlbumLibDownloaderUtil.a, true))
-    {
-      QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime, this.jdField_a_of_type_ArrayOfJavaLangString);
-      return;
-    }
-    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString);
-  }
+  private anbs(FontManager paramFontManager) {}
 }
 
 

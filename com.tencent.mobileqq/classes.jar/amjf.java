@@ -1,45 +1,27 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.PluginPreloadReportUtils;
-import cooperation.comic.PluginPreloadStrategy;
-import cooperation.comic.PluginPreloader.ExtraResult;
-import mqq.app.AppRuntime;
+import com.tencent.widget.GestureSelectGridView;
+import com.tencent.widget.GestureSelectGridView.OnSelectListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class amjf
-  implements OnPluginInstallListener
+public class amjf
+  implements Runnable
 {
-  public amjf(AppRuntime paramAppRuntime, PluginPreloadStrategy paramPluginPreloadStrategy, PluginPreloader.ExtraResult paramExtraResult, int paramInt) {}
+  public amjf(GestureSelectGridView paramGestureSelectGridView) {}
   
-  public IBinder asBinder()
+  public void run()
   {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloader", 2, "pluginType:" + this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.b + " preload:fail:installerror");
+    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    if ((!this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.a.jdField_b_of_type_Int != -1))
+    {
+      if (this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener != null) {
+        this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.b(this.a.jdField_b_of_type_Int);
+      }
+      this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
-    PluginPreloadReportUtils.a(this.jdField_a_of_type_MqqAppAppRuntime, 1, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.b, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.c, 3, "preload:fail:installerror", this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.d) });
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloader", 2, "plugin install success, do preload.");
-    }
-    PluginPreloadReportUtils.a(this.jdField_a_of_type_MqqAppAppRuntime, 0, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.b, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.c, this.jdField_a_of_type_CooperationComicPluginPreloader$ExtraResult.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationComicPluginPreloader$ExtraResult.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.d) });
-    this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjf
  * JD-Core Version:    0.7.0.1
  */

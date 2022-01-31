@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_alignParentBottom="false" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008c">
-        <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040208" />
-        <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ccd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d6" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d8" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d8" android:text="验证码已发至手机133****23" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0084" />
-        </LinearLayout>
-        <LinearLayout android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d6" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d6" android:layout_marginBottom="10.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e009c">
-            <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cce" android:hint="请输入验证码" android:inputType="number" style="@style/APKTOOL_DUPLICATE_style_0x7f0e009b" />
-            <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ccf" style="@style/midas_input_cell_button_clear" />
-            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cd0" android:text="获取验证码" style="@style/APKTOOL_DUPLICATE_style_0x7f0e009d" />
-        </LinearLayout>
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cd1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d6" android:text="请输入正确的验证码" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0086" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cd2" android:layout_marginTop="30.0dip" android:text="验证" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0098" />
-        <TextView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cd3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d9" android:text="无法验证？换个方式" android:textAlignment="center" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0087" />
+    <com.pay.ui.common.APHead android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cd9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cda" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:text="账户余额" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0085" />
+    <LinearLayout android:layout_marginTop="8.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ac">
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cdb" android:text="Q币" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ad" />
+        <TextView android:textColor="#ffff8444" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cdc" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:text="200" android:layout_weight="1.0" android:textAlignment="textEnd" />
+        <TextView android:textColor="#ffff8444" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cdd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="Qb" android:textAlignment="textEnd" />
     </LinearLayout>
-    <com.tenpay.api.MyKeyboardWindow android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cd4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0cde" android:layout_marginTop="30.0dip" android:text="刷新余额" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0098" />
 </LinearLayout>

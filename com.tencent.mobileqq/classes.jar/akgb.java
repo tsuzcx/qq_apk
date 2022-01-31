@@ -1,28 +1,54 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 
-public class akgb
-  implements Runnable
+public final class akgb
+  implements DownloadParams.DecodeHandler
 {
-  public akgb(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
-  
-  public void run()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    while (this.a.b.getWidth() < ShareActionSheetBuilder.a(this.a))
+    do
     {
-      this.a.b.setMove(true);
-      return;
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    float f2 = DeviceInfoUtil.a();
+    float f1 = f2;
+    if (f2 < 0.01F) {
+      f1 = 1.0F;
     }
-    this.a.b.setMove(false);
+    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+    paramDownloadParams = ImageUtil.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    paramBitmap = new Canvas(paramDownloadParams);
+    Object localObject = new Paint();
+    ((Paint)localObject).setAntiAlias(true);
+    ((Paint)localObject).setStyle(Paint.Style.STROKE);
+    ((Paint)localObject).setColor(Color.argb(20, 0, 0, 0));
+    ((Paint)localObject).setStrokeWidth(0.5F);
+    f1 = paramDownloadParams.getWidth() * 0.5F;
+    paramBitmap.drawCircle(f1, f1, f1 - 0.5F, (Paint)localObject);
+    return paramDownloadParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,23 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
+import com.tencent.biz.troop.TroopMemberApiClient;
 
 public class kpl
-  extends URLDrawableDownListener.Adapter
+  extends Handler
 {
-  public kpl(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public kpl(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void handleMessage(Message paramMessage)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadCancelled");
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (!this.a.f) {
-      this.a.l();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseAdapter", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    do
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      this.a.k();
-      if ((paramView instanceof ImageView))
-      {
-        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
+    }
+    paramMessage = (Bundle)paramMessage.obj;
+    this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(17, paramMessage, this.a.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
   }
 }
 

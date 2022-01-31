@@ -1,36 +1,46 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.app.MobileQQ;
 
 public class akiu
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  extends SecSvcObserver
 {
-  public akiu(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  public akiu(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  protected void b(int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "onVideoPrepared video");
+    Object localObject = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localObject != null) {
+      ((QQAppInterface)localObject).removeObserver(AntiFraudConfigFileUtil.a(this.a));
     }
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      paramTVK_IMediaPlayer.pause();
-      this.a.jdField_a_of_type_AndroidOsHandler.post(this.a.b);
+    if (paramInt != 1) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SecSvcObserver", 2, "invalid notification type for onGetUinSafetyWordingConfig:" + Integer.toString(paramInt));
+      }
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
+    while (paramBundle == null) {
       return;
-      paramTVK_IMediaPlayer.start();
     }
+    String str = paramBundle.getString("config_name");
+    localObject = str;
+    if (!TextUtils.isEmpty(str))
+    {
+      localObject = str;
+      if (TextUtils.equals("SenstiveMessageTipsCfg", str)) {
+        localObject = "SensMsgTipsCfg";
+      }
+    }
+    ThreadManager.post(new akiv(this, (String)localObject, paramBundle.getInt("effect_time", 0), paramBundle.getString("md5"), paramBundle.getString("download_url")), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akiu
  * JD-Core Version:    0.7.0.1
  */

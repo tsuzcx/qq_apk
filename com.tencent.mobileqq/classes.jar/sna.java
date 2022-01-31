@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.PstnManager;
+import com.tencent.mobileqq.qcall.PstnObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class sna
-  implements View.OnClickListener
+  extends PstnObserver
 {
-  public sna(FontSettingActivity paramFontSettingActivity) {}
+  public sna(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void a(Boolean paramBoolean, int paramInt)
   {
-    this.a.c();
+    super.a(paramBoolean, paramInt);
+    PstnManager localPstnManager = (PstnManager)this.a.a.getManager(142);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "onPstnGrayFlag|isSuccess:" + paramBoolean + " lastPstnGrayFlag:" + this.a.f + " grayFlag:" + paramInt + " mIsChatList:" + this.a.g);
+    }
   }
 }
 

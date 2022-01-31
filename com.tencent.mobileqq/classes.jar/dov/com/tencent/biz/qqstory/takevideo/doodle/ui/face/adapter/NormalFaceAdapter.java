@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import aoaz;
-import aoba;
-import aobc;
+import aoju;
+import aojv;
+import aojx;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -21,6 +21,7 @@ import dov.com.qq.im.capture.util.PasterUtil;
 import dov.com.qq.im.capture.util.PasterUtil.Position;
 import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.model.SelectedItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
 import java.io.File;
 
@@ -30,16 +31,16 @@ public class NormalFaceAdapter
 {
   private NormalFaceAdapter.CacheRefMap a;
   
-  public NormalFaceAdapter(Context paramContext)
+  public NormalFaceAdapter(Context paramContext, FaceListPage paramFaceListPage)
   {
-    super(paramContext);
+    super(paramContext, paramFaceListPage);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter$CacheRefMap = new NormalFaceAdapter.CacheRefMap();
   }
   
   private void a(View paramView)
   {
     ImageView localImageView = (ImageView)paramView;
-    int k = ((Integer)localImageView.getTag(2131362359)).intValue();
+    int k = ((Integer)localImageView.getTag(2131362362)).intValue();
     NormalFacePackage localNormalFacePackage = (NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage;
     int j = localNormalFacePackage.a(k);
     paramView = Uri.parse(localNormalFacePackage.a(k)).getPath();
@@ -106,7 +107,7 @@ public class NormalFaceAdapter
           {
             ((URLDrawable)localObject3).restartDownload();
             label309:
-            ((URLDrawable)localObject3).setURLDrawableListener(new aoba(this, (String)localObject1, localNormalFacePackage, localImageView, str));
+            ((URLDrawable)localObject3).setURLDrawableListener(new aojv(this, (String)localObject1, localNormalFacePackage, localImageView, str));
           }
         }
         for (;;)
@@ -167,16 +168,16 @@ public class NormalFaceAdapter
       return paramView;
     }
     if (paramView == null) {}
-    for (paramView = new aobc(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (aobc)paramView)
+    for (paramView = new aojx(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (aojx)paramView)
     {
-      paramView.a((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount());
+      paramView.a((NormalFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount(), a());
       return paramView;
     }
   }
   
   public void onClick(View paramView)
   {
-    ThreadManager.postImmediately(new aoaz(this, paramView), null, true);
+    ThreadManager.postImmediately(new aoju(this, paramView), null, true);
   }
 }
 

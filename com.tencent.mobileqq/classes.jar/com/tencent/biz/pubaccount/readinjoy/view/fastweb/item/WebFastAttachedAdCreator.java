@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import mnd;
+import mqv;
 
 public class WebFastAttachedAdCreator
   implements ItemCreator
@@ -16,7 +16,7 @@ public class WebFastAttachedAdCreator
   
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new mnd(LayoutInflater.from(paramContext).inflate(2130969608, paramViewGroup, false), paramBaseData);
+    return new mqv(LayoutInflater.from(paramContext).inflate(2130969604, paramViewGroup, false), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

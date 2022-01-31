@@ -1,6 +1,6 @@
 package cooperation.buscard;
 
-import amiw;
+import amqi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -188,12 +188,12 @@ public class BuscardHelper
       {
         paramString1 = PendingIntent.getActivity(paramActivity, 0, new Intent(paramActivity, paramActivity.getClass()).addFlags(536870912), 0);
         paramString2 = IsoDep.class.getName();
-        paramReaderCallback = NfcV.class.getName();
-        String str1 = NfcF.class.getName();
-        String str2 = MifareClassic.class.getName();
-        String str3 = NfcA.class.getName();
-        String str4 = NfcB.class.getName();
-        localNfcAdapter.enableForegroundDispatch(paramActivity, paramString1, new IntentFilter[] { new IntentFilter("android.nfc.action.TECH_DISCOVERED", "*/*") }, new String[][] { { paramString2 }, { paramReaderCallback }, { str1 }, { str2 }, { str3 }, { str4 } });
+        String[] arrayOfString1 = { NfcV.class.getName() };
+        paramReaderCallback = NfcF.class.getName();
+        String[] arrayOfString2 = { MifareClassic.class.getName() };
+        String[] arrayOfString3 = { NfcA.class.getName() };
+        String str = NfcB.class.getName();
+        localNfcAdapter.enableForegroundDispatch(paramActivity, paramString1, new IntentFilter[] { new IntentFilter("android.nfc.action.TECH_DISCOVERED", "*/*") }, new String[][] { { paramString2 }, arrayOfString1, { paramReaderCallback }, arrayOfString2, arrayOfString3, { str } });
         return;
       }
     }
@@ -302,7 +302,7 @@ public class BuscardHelper
       paramAppRuntime.putParcelable("nfcIntent", localIntent);
       localResultReceiver.send(4, paramAppRuntime);
       return;
-      localIPluginManager.installPlugin(paramIntent, new amiw(paramAppRuntime, localIntent));
+      localIPluginManager.installPlugin(paramIntent, new amqi(paramAppRuntime, localIntent));
     } while (!QLog.isColorLevel());
     QLog.i("BuscardHelper", 2, "Plugin not installed,install first.");
   }

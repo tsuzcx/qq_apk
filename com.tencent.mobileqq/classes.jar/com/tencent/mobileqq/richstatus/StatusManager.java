@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richstatus;
 
 import PersonalState.UserProfile;
-import ahpt;
-import ahpu;
-import ahpv;
+import ahul;
+import ahum;
+import ahun;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
@@ -85,7 +85,7 @@ public class StatusManager
     if (this.jdField_a_of_type_AndroidOsAsyncTask != null) {
       return 100;
     }
-    this.jdField_a_of_type_AndroidOsAsyncTask = new ahpt(this).execute(new Void[0]);
+    this.jdField_a_of_type_AndroidOsAsyncTask = new ahul(this).execute(new Void[0]);
     return 100;
   }
   
@@ -135,7 +135,7 @@ public class StatusManager
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new ahpu(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new ahum(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
   }
   
@@ -383,7 +383,7 @@ public class StatusManager
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new ahpv(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver = new ahun(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusObserver);
   }
   
@@ -524,7 +524,7 @@ public class StatusManager
     }
     try
     {
-      localObject5 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130845455);
+      localObject5 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130845536);
       localObject1 = localObject5;
       BaseApplicationImpl.sImageCache.put("StatusIcon_RichStatusDefaultSmall", localObject5, (byte)0);
       localObject3 = localObject7;
@@ -550,7 +550,7 @@ public class StatusManager
       break;
       localObject1 = null;
       break;
-      localObject1 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130845455);
+      localObject1 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130845536);
       localObject3 = localObject7;
       break label209;
       if (paramInt2 != 200) {
@@ -562,12 +562,12 @@ public class StatusManager
         if (localObject3 != null) {
           break label377;
         }
-        localObject3 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130845456);
+        localObject3 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130845537);
         BaseApplicationImpl.sImageCache.put("StatusIcon_RichStatusDefaultSmall", localObject3, (byte)0);
         localObject1 = null;
         break label209;
       }
-      localObject3 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130845456);
+      localObject3 = BitmapManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), 2130845537);
       localObject1 = null;
       break label209;
     }

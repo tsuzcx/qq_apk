@@ -13,7 +13,7 @@ public class HorizontalStroke
   static
   {
     jdField_a_of_type_ArrayOfInt = new int[] { -845543, -27392, -10233288, -16745729, -1 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130843695, 2130843693, 2130843697, 2130843696, 2130843692 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130843765, 2130843763, 2130843767, 2130843766, 2130843762 };
   }
   
   public HorizontalStroke(Drawable paramDrawable, int paramInt1, int paramInt2)

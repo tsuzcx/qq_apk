@@ -27,7 +27,7 @@ public class WorldCupShareFragment$LengthFilter
       i = str.length() + paramInt1;
       if (paramInt2 != i)
       {
-        QQToast.a(BaseApplication.getContext(), 2131439379, 0).a();
+        QQToast.a(BaseApplication.getContext(), 2131439418, 0).a();
         WorldCupShareFragment.a("0X8009319", 3);
       }
       paramInt2 = this.jdField_a_of_type_Int - (paramSpanned.length() - (paramInt4 - paramInt3));
@@ -51,7 +51,7 @@ public class WorldCupShareFragment$LengthFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.worldcup.WorldCupShareFragment.LengthFilter
  * JD-Core Version:    0.7.0.1
  */

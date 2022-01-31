@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acfr;
-import acfs;
+import acns;
+import acnt;
 import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
@@ -13,8 +13,8 @@ import com.tencent.mobileqq.emoticon.EmotionPanelPayBackListenerManager;
 public abstract class EmotionNeedDownloadAdapter
   extends BaseEmotionAdapter
 {
-  EmoticonPackageDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new acfs(this);
-  EmotionPanelPayBackListener jdField_a_of_type_ComTencentMobileqqEmoticonEmotionPanelPayBackListener = new acfr(this);
+  EmoticonPackageDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new acnt(this);
+  EmotionPanelPayBackListener jdField_a_of_type_ComTencentMobileqqEmoticonEmotionPanelPayBackListener = new acns(this);
   protected int h = 2;
   
   public EmotionNeedDownloadAdapter(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonCallback paramEmoticonCallback)

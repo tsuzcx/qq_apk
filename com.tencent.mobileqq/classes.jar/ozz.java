@@ -1,22 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.PopupWindow;
-import com.tencent.biz.ui.PopupWindows;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class ozz
-  implements View.OnTouchListener
+class ozz
+  implements TVK_SDKMgr.InstallListener
 {
-  public ozz(PopupWindows paramPopupWindows) {}
+  ozz(ozy paramozy) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onInstallProgress(float paramFloat)
   {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
     }
-    return false;
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, "plugin fail errorCode = " + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 1, "plugin success");
+    }
   }
 }
 

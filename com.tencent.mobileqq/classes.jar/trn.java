@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.storage.StorageReport;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-public class trn
-  implements DialogInterface.OnClickListener
+class trn
+  implements Runnable
 {
-  public trn(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  trn(trm paramtrm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.b = true;
-    SendMultiPictureHelper.b(this.a);
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    QQSettingMsgHistoryActivity.a(this.a.a, this.a.a.app);
+    StorageReport.a().a(true);
+    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    SharedPreUtils.a(this.a.a.app.c());
   }
 }
 

@@ -35,20 +35,20 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import tencent.im.oidb.searcher.oidb_c2c_searcher.Iterator;
-import wrf;
-import wrg;
-import wrh;
-import wri;
-import wrj;
-import wrk;
-import wrl;
-import wrm;
+import wwq;
+import wwr;
+import wws;
+import wwt;
+import wwu;
+import wwv;
+import www;
+import wwx;
 
 public class C2CMessageSearchDialog
   extends BaseMessageSearchDialog
 {
   public long a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wri(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new wwt(this);
   View jdField_a_of_type_AndroidViewView;
   public LinearLayout a;
   public TextView a;
@@ -122,7 +122,7 @@ public class C2CMessageSearchDialog
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setClickable(true);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494170));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494176));
       this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
       return;
     case 3: 
@@ -132,7 +132,7 @@ public class C2CMessageSearchDialog
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setClickable(false);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494264));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494270));
       this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
       return;
     case 4: 
@@ -147,9 +147,9 @@ public class C2CMessageSearchDialog
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131368322));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131368324));
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(15) });
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new wrf(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new wwq(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
     BaseMessageSearchDialog.EnterForSearch localEnterForSearch = new BaseMessageSearchDialog.EnterForSearch(this);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(localEnterForSearch);
@@ -170,39 +170,39 @@ public class C2CMessageSearchDialog
   
   private void g()
   {
-    ((ImageButton)findViewById(2131368323)).setOnClickListener(new wrg(this));
-    Button localButton = (Button)findViewById(2131368321);
+    ((ImageButton)findViewById(2131368325)).setOnClickListener(new wwr(this));
+    Button localButton = (Button)findViewById(2131368323);
     localButton.setVisibility(0);
-    localButton.setOnClickListener(new wrh(this));
+    localButton.setOnClickListener(new wws(this));
   }
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131363924));
-    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130969070, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131363949));
+    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2130969073, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.jdField_a_of_type_AndroidViewView, null, false);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363049));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363054));
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setClickable(false);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364982));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365009));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364980));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364981));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365007));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365008));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364984));
+    this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365011));
     this.jdField_d_of_type_AndroidWidgetLinearLayout.setClickable(false);
-    this.jdField_b_of_type_AndroidViewView = getLayoutInflater().inflate(2130970932, null);
+    this.jdField_b_of_type_AndroidViewView = getLayoutInflater().inflate(2130970950, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_b_of_type_AndroidViewView, null, false);
     this.jdField_b_of_type_AndroidViewView.setClickable(false);
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131363049));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364983));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131433858));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131363054));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131365010));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131433874));
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter = new C2CMessageResultAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new wrj(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new wrk(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new wrl(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemLongClickListener(new wrm(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new wwu(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new wwv(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new www(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemLongClickListener(new wwx(this));
   }
   
   public void a()
@@ -231,13 +231,13 @@ public class C2CMessageSearchDialog
     }
     for (;;)
     {
-      a(2131433652);
+      a(2131433666);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005FCA", "0X8005FCA", 0, 0, "", "", "", "");
       return;
       this.jdField_b_of_type_Int = 0;
       this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, 1);
       if (this.jdField_b_of_type_Boolean) {
-        a(3, this.jdField_a_of_type_AndroidContentContext.getString(2131433860));
+        a(3, this.jdField_a_of_type_AndroidContentContext.getString(2131433876));
       } else {
         a(0, null);
       }
@@ -356,7 +356,7 @@ public class C2CMessageSearchDialog
       if (((1 == paramMessage.arg1) && (((List)localObject2).size() > 0) && (((List)localObject2).size() != 20)) || ((2 == paramMessage.arg1) && (((List)localObject2).size() == 0)))
       {
         this.jdField_c_of_type_AndroidWidgetTextView.setText("已展示全部搜索结果");
-        this.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131368928).setVisibility(8);
+        this.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131368931).setVisibility(8);
         this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
         if (2 == paramMessage.arg1)
@@ -524,7 +524,7 @@ public class C2CMessageSearchDialog
             if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.getCount() < 20))
             {
               this.jdField_c_of_type_AndroidWidgetTextView.setText("已展示全部搜索结果");
-              this.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131368928).setVisibility(8);
+              this.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131368931).setVisibility(8);
               this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
               this.jdField_b_of_type_AndroidViewView.setVisibility(0);
             }

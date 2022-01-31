@@ -1,15 +1,15 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
 
 public class lfp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lfp(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, lfu paramlfu, Bitmap paramBitmap) {}
+  public lfp(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    lfu.a(this.jdField_a_of_type_Lfu).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.a.onBackEvent();
   }
 }
 

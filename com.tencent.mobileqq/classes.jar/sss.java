@@ -1,26 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.open.agent.report.ReportCenter;
 
 public class sss
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public sss(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public sss(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    if (this.a.l)
-    {
-      this.a.a("0X80081E7", 3);
-      return;
+    paramView = new Bundle();
+    paramView.putString("uin", String.valueOf(AppConstants.y));
+    paramView.putInt("uintype", -1);
+    paramView.putBoolean("forward_report_confirm", true);
+    paramView.putString("forward_report_confirm_action_name", "0X8005A13");
+    paramView.putString("forward_report_confirm_reverse2", "0");
+    this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(ForwardAbility.ForwardAbilityType.f.intValue(), paramView);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
+    if (this.a.jdField_a_of_type_Boolean) {
+      ReportCenter.a().a(this.a.app.getAccount(), "", this.a.b, "1000", "34", "0", false);
     }
-    this.a.a("0X80081E4", 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     sss
  * JD-Core Version:    0.7.0.1
  */

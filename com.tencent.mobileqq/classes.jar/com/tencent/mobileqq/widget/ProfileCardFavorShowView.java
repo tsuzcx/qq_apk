@@ -32,11 +32,11 @@ public class ProfileCardFavorShowView
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969136, this, true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365324));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365321));
-    this.b = ((LinearLayout)findViewById(2131365325));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494214));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969134, this, true);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365329));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365326));
+    this.b = ((LinearLayout)findViewById(2131365330));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494220));
   }
   
   public int a()
@@ -76,7 +76,7 @@ public class ProfileCardFavorShowView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileCardFavorShowView
  * JD-Core Version:    0.7.0.1
  */

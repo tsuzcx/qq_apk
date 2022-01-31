@@ -4,7 +4,7 @@ public class GdtVersionUtil
 {
   public static String a()
   {
-    return "7.6.3";
+    return "7.6.8";
   }
 }
 

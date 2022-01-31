@@ -1,40 +1,42 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddInteractViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.AddressDataProvider;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
+import com.tencent.biz.qqstory.network.request.GetLocationRequest;
+import com.tencent.biz.qqstory.network.response.GetLocationResponse;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 public class ngm
-  extends AddInteractViewJob
+  implements CmdTaskManger.CommandCallback
 {
-  public ngm(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem)
-  {
-    super(paramStoryVideoItem);
-  }
+  public ngm(AddressDataProvider paramAddressDataProvider) {}
   
-  public boolean b()
+  public void a(@NonNull GetLocationRequest paramGetLocationRequest, @Nullable GetLocationResponse paramGetLocationResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    Object localObject = (String)a("result");
-    try
+    SLog.b("AddressDataProvider", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramGetLocationResponse != null))
     {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
-      {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
-      }
+      SLog.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramGetLocationResponse.toString());
+      this.a.jdField_a_of_type_JavaLangObject = new AddressDataProvider.AddressInfo(paramGetLocationResponse.a, paramGetLocationResponse.c, paramGetLocationResponse.d, paramGetLocationResponse.e, paramGetLocationResponse.f, paramGetLocationRequest.d, paramGetLocationRequest.e);
+      this.a.a("country", paramGetLocationResponse.a);
+      this.a.a("province", paramGetLocationResponse.c);
+      this.a.a("city", paramGetLocationResponse.d);
+      this.a.a("district", paramGetLocationResponse.e);
+      this.a.a("street", paramGetLocationResponse.f);
+      this.a.a("longitude", paramGetLocationRequest.d);
+      this.a.a("latitude", paramGetLocationRequest.e);
+      this.a.a("time", System.currentTimeMillis());
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
-    catch (URISyntaxException localURISyntaxException)
+    for (;;)
     {
-      SLog.c(this.b, "Error: 评分投票失败", localURISyntaxException);
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      SLog.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetLocationRequest });
+      this.a.a(false, null);
     }
-    return false;
   }
 }
 

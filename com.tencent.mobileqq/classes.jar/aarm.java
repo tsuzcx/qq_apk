@@ -1,14 +1,18 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArAwardInfo;
 
-public class aarm
-  implements Runnable
+public final class aarm
+  implements Parcelable.Creator
 {
-  public aarm(ArkAiAppCenter paramArkAiAppCenter, String[] paramArrayOfString) {}
-  
-  public void run()
+  public ArAwardInfo a(Parcel paramParcel)
   {
-    ark.Application.SetUrlCheckingList(this.jdField_a_of_type_ArrayOfJavaLangString, 0);
+    return new ArAwardInfo(paramParcel);
+  }
+  
+  public ArAwardInfo[] a(int paramInt)
+  {
+    return new ArAwardInfo[paramInt];
   }
 }
 

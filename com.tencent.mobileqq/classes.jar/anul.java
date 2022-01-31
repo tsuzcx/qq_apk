@@ -1,162 +1,67 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import cooperation.qzone.QZoneHelper;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPart;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayerExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.TicketManagerImpl;
 
-public class anul
-  extends SimpleObserver
+public final class anul
+  extends anuo
 {
-  public anul(EditVideoPartManager paramEditVideoPartManager, long paramLong) {}
-  
-  public void a(GenerateContext paramGenerateContext)
+  public anul(QIMMusicConfigManager paramQIMMusicConfigManager)
   {
-    super.onNext(paramGenerateContext);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.o();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_b_of_type_Boolean = false;
-    SLog.e("Q.qqstory.publish.edit.EditVideoPartManager", "PUBLISH onNext");
-    Object localObject1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ((EditVideoPart)((Iterator)localObject1).next()).b(paramGenerateContext);
-    }
-    int i;
-    if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
-    {
-      i = 1;
-      StoryReportor.b("edit_video", "publish_cost", 0, 0, new String[] { String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long), String.valueOf(i) });
-      if (EditVideoPartManager.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager, paramGenerateContext)) {
-        EditVideoPartManager.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager);
-      }
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet() <= 0) {
-        break label219;
-      }
-      SLog.d("Q.qqstory.publish.edit.EditVideoPartManager", "waiting for another observer finish");
-    }
-    label219:
-    do
-    {
-      return;
-      if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
-      {
-        i = 2;
-        break;
-      }
-      if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakePhotoSource))
-      {
-        i = 3;
-        break;
-      }
-      if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalPhotoSource))
-      {
-        i = 4;
-        break;
-      }
-      if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
-      {
-        i = 5;
-        break;
-      }
-      i = 0;
-      break;
-      if ((EditVideoPartManager.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b, 262144)) && (EditVideoPartManager.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager) > 0))
-      {
-        i = EditVideoPartManager.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager);
-        if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d()) {
-          break label438;
-        }
-      }
-      for (localObject1 = "0";; localObject1 = "1")
-      {
-        StoryReportor.a("video_edit", "pub_edit_one", 0, 0, new String[] { String.valueOf(i), localObject1 });
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.f();
-        if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_b_of_type_JavaUtilList.isEmpty()) {
-          break label657;
-        }
-        localObject1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
-        if (localObject1 == null) {
-          break;
-        }
-        if (!(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource)) {
-          break label469;
-        }
-        paramGenerateContext = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(paramGenerateContext);
-        localObject2 = paramGenerateContext.getStringExtra("PhotoConst.PLUGIN_APK");
-        boolean bool = paramGenerateContext.getBooleanExtra("DirectBackToQzone", false);
-        if ((!"qzone_plugin.apk".equals(localObject2)) || (!bool)) {
-          break label445;
-        }
-        QZoneHelper.a((Activity)localObject1, "", paramGenerateContext, -1);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(-1, null, 2131034158, 0);
-        return;
-      }
-      ((Activity)localObject1).startActivity(paramGenerateContext);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(-1, null, 2131034158, 0);
-      return;
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a() == 1) {
-        StoryTransitionActivity.a((Context)localObject1);
-      }
-      Object localObject2 = new anum(this, paramGenerateContext);
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a() == 6)
-      {
-        QQAppInterface localQQAppInterface = ((BaseActivity)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity()).app;
-        localObject2 = new EditWebVideoHallowenUpload((EditVideoActivity)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity(), localQQAppInterface, true, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("WebSceneType", FlowCameraConstant.d), new anun(this, (Runnable)localObject2), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("succUrl"), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("failedUrl"));
-        paramGenerateContext = paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishPublishParam;
-        ((EditWebVideoHallowenUpload)localObject2).a((Activity)localObject1, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource, paramGenerateContext);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a("上传中...");
-        return;
-      }
-      ((Runnable)localObject2).run();
-      return;
-      paramGenerateContext = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_b_of_type_JavaUtilList.iterator();
-      while (paramGenerateContext.hasNext()) {
-        SLog.c("Q.qqstory.publish.edit.EditVideoPartManager", "publish error %s", (Error)paramGenerateContext.next());
-      }
-      QQToast.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_b_of_type_JavaUtilList.size() + "次发表失败，请重试", 0).a();
-      paramGenerateContext = (EditVideoPlayerExport)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(EditVideoPlayerExport.class);
-    } while (paramGenerateContext == null);
-    label438:
-    label445:
-    label469:
-    paramGenerateContext.m();
-    label657:
+    super(paramQIMMusicConfigManager);
   }
   
-  public void onCancel()
+  anum a()
   {
-    super.onCancel();
+    return new anum(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager);
   }
   
-  public void onError(@NonNull Error paramError)
+  public void a(NetResp paramNetResp)
   {
-    super.onError(paramError);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(paramError);
+    if (paramNetResp.c == 200)
+    {
+      if (paramNetResp.a != null)
+      {
+        anum localanum = a();
+        localanum.jdField_a_of_type_JavaLangString = new String(paramNetResp.a);
+        localanum.a();
+        this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(0, true, localanum.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      a(false);
+      this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(0, false, "Have no data.");
+      return;
+    }
+    a(false);
+    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(0, false, "Http Request fail, code=" + paramNetResp.c);
+  }
+  
+  public void run()
+  {
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.jdField_a_of_type_Int = 0;
+    localHttpNetReq.e = 1;
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
+    long l = System.currentTimeMillis() / 1000L;
+    String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2)).getSkey(this.c);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("app_id", "2000000025");
+    localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
+    localHashMap.put("device_id", DeviceInfoUtil.a());
+    localHashMap.put("timestamp", String.valueOf(l));
+    localHashMap.put("sign", a(l));
+    localHashMap.putAll(a(this.c, str));
+    localHttpNetReq.jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_self.fcg", localHashMap);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMMusicConfigManager", 2, "QQMusicReq SongList api request, req url=" + localHttpNetReq.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.a(localHttpNetReq);
   }
 }
 

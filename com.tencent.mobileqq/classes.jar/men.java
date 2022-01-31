@@ -1,6 +1,24 @@
-public abstract interface men
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.widgets.ElasticHorScrView;
+
+public class men
+  implements Runnable
 {
-  public abstract void c();
+  public men(VideoFeedsAdapter paramVideoFeedsAdapter, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    }
+    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+      return;
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    }
+    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+  }
 }
 
 

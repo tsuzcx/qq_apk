@@ -1,74 +1,42 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.msf.sdk.QNotificationManager;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 
 public class tyb
-  extends BizTroopObserver
+  implements Runnable
 {
-  public tyb(TroopInfoActivity paramTroopInfoActivity) {}
+  public tyb(SplashActivity paramSplashActivity) {}
   
-  protected void a(long paramLong1, long paramLong2, long paramLong3, String paramString)
+  public void run()
   {
-    if (paramLong1 != 0L) {}
-    this.a.jdField_a_of_type_Long = paramLong2;
-    this.a.jdField_b_of_type_Long = paramLong3;
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) && (paramBoolean))
+    try
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt == 2) {}
-      TroopManager localTroopManager;
-      TroopInfo localTroopInfo;
-      StringBuffer localStringBuffer;
-      for (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 3;; this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
-      {
-        localTroopManager = (TroopManager)this.a.app.getManager(51);
-        localTroopInfo = localTroopManager.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        if (localTroopInfo == null) {
-          break label359;
-        }
-        localTroopInfo.troopname = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName;
-        localTroopInfo.dwGroupClassExt = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt;
-        localTroopInfo.mGroupClassExtText = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText;
-        localTroopInfo.mRichFingerMemo = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mRichFingerMemo;
-        localTroopInfo.hasSetNewTroopName = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName;
-        localTroopInfo.strLocation = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopLocation;
-        localTroopInfo.troopLat = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopLat;
-        localTroopInfo.troopLon = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopLon;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags.size() <= 0)) {
-          break label352;
-        }
-        localStringBuffer = new StringBuffer();
-        Iterator localIterator = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          localStringBuffer.append(str + "\n");
-        }
+      QNotificationManager localQNotificationManager = new QNotificationManager(this.a);
+      localQNotificationManager.cancel("SplashActivity", 120);
+      QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.a.app.getManager(9);
+      if (localQZoneManagerImp != null) {
+        localQZoneManagerImp.a(1, 0);
       }
-      localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
-      localTroopInfo.mTags = localStringBuffer.toString();
-      label352:
-      localTroopManager.b(localTroopInfo);
+      localQNotificationManager.cancel("SplashActivity", 121);
+      localQNotificationManager.cancel("SplashActivity", 122);
+      localQNotificationManager.cancel("SplashActivity", 123);
+      localQNotificationManager.cancel("SplashActivity", 129);
+      localQNotificationManager.cancel("SplashActivity", 144);
+      localQNotificationManager.cancel("SplashActivity", 193);
+      localQNotificationManager.cancel("SplashActivity", 194);
+      localQNotificationManager.cancel("SplashActivity", 211);
+      SplashActivity.a(this.a, new tyc(this));
+      this.a.registerReceiver(SplashActivity.a(this.a), new IntentFilter("before_account_change"));
+      return;
     }
-    label359:
-    if ((this.a.jdField_a_of_type_Int == 0) || (1 == this.a.jdField_a_of_type_Int)) {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "ordinary_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_b_of_type_JavaLangString, "", "");
-    }
-    TroopInfoActivity.a(this.a, paramBoolean, paramLong, paramString, 0L, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tyb
  * JD-Core Version:    0.7.0.1
  */

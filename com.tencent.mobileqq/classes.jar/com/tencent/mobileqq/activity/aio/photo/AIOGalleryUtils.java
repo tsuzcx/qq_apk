@@ -50,11 +50,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import vnt;
-import vnu;
-import vnv;
-import vnw;
-import vnx;
+import vsv;
+import vsw;
+import vsx;
+import vsy;
+import vsz;
 
 public class AIOGalleryUtils
 {
@@ -64,7 +64,7 @@ public class AIOGalleryUtils
   {
     if (BaseApplicationImpl.sApplication.getProcessName().endsWith(":peak"))
     {
-      a = new vnx();
+      a = new vsz();
       return;
     }
   }
@@ -129,7 +129,7 @@ public class AIOGalleryUtils
       ((CustomEmotionData)localObject).emoPath = paramString;
       ((CustomEmotionData)localObject).md5 = str;
       localFavroamingDBManager.c((CustomEmotionData)localObject);
-      if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(AppConstants.bt))) {
+      if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(AppConstants.bu))) {
         ReportController.b(null, "CliOper", "", "", "ep_mall", "0X800695C", 0, 0, "", "", "", "");
       }
       paramContext = (FavroamingManager)paramContext.getManager(102);
@@ -196,7 +196,7 @@ public class AIOGalleryUtils
     if ((paramPicMessageExtraData != null) && (paramPicMessageExtraData.isDiyDouTu())) {
       ((CustomEmotionData)localObject).eId = paramPicMessageExtraData.emojiPkgId;
     }
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(AppConstants.bt))) {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(AppConstants.bu))) {
       ReportController.b(null, "CliOper", "", "", "ep_mall", "0X800695C", 0, 0, "", "", "", "");
     }
     paramContext = new EmoAddedAuthCallback(localQQAppInterface, paramContext, (CustomEmotionData)localObject, paramStructMsgForImageShare, 0);
@@ -421,14 +421,14 @@ public class AIOGalleryUtils
   
   public static void a(Activity paramActivity, File paramFile, String paramString)
   {
-    new File(AppConstants.aP).mkdirs();
+    new File(AppConstants.aQ).mkdirs();
     String str = paramString;
     if (paramString.indexOf(".") == -1)
     {
       str = FileUtils.a(paramFile.getAbsolutePath());
       str = paramString + "." + str;
     }
-    paramString = new File(AppConstants.aP, str);
+    paramString = new File(AppConstants.aQ, str);
     if (!paramString.exists()) {
       try
       {
@@ -441,13 +441,13 @@ public class AIOGalleryUtils
       {
         do
         {
-          QQToast.a(paramActivity, paramActivity.getString(2131434583), 0).a();
+          QQToast.a(paramActivity, paramActivity.getString(2131434599), 0).a();
         } while (!QLog.isColorLevel());
         QLog.e("AIOGalleryUtils", 2, "", paramFile);
         return;
       }
     }
-    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131434586)).setMessage(paramActivity.getString(2131434588)).setPositiveButton(paramActivity.getString(2131434587), new vnu(paramActivity, paramFile, paramString)).setNegativeButton(paramActivity.getString(2131433012), new vnt()).show();
+    DialogUtil.a(paramActivity, 230).setTitle(paramActivity.getString(2131434602)).setMessage(paramActivity.getString(2131434604)).setPositiveButton(paramActivity.getString(2131434603), new vsw(paramActivity, paramFile, paramString)).setNegativeButton(paramActivity.getString(2131433026), new vsv()).show();
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, AIORichMediaInfo paramAIORichMediaInfo, boolean paramBoolean, String paramString3)
@@ -550,7 +550,7 @@ public class AIOGalleryUtils
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, URLDrawable paramURLDrawable, String paramString, int paramInt, StructMsgForImageShare paramStructMsgForImageShare, PicMessageExtraData paramPicMessageExtraData)
   {
-    new vnw(paramContext, paramInt, paramURLDrawable, paramQQAppInterface, paramStructMsgForImageShare, paramPicMessageExtraData).execute(new Void[0]);
+    new vsy(paramContext, paramInt, paramURLDrawable, paramQQAppInterface, paramStructMsgForImageShare, paramPicMessageExtraData).execute(new Void[0]);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, CustomEmotionData paramCustomEmotionData)
@@ -576,7 +576,7 @@ public class AIOGalleryUtils
   
   private static void b(Activity paramActivity, File paramFile1, File paramFile2)
   {
-    new vnv(paramFile2, paramFile1, paramActivity).execute(new Void[0]);
+    new vsx(paramFile2, paramFile1, paramActivity).execute(new Void[0]);
   }
   
   public static void b(QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, CustomEmotionData paramCustomEmotionData)

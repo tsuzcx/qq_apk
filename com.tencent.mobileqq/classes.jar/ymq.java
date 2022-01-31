@@ -1,18 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-
-class ymq
-  implements Runnable
+public class ymq
 {
-  ymq(ymp paramymp) {}
-  
-  public void run()
-  {
-    QLog.d("ApolloSurfaceView", 1, "[onEnterGame] apollosurfaceview visiable");
-  }
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ymq
  * JD-Core Version:    0.7.0.1
  */

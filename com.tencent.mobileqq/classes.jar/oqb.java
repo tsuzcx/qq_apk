@@ -1,30 +1,25 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import com.tencent.biz.qqstory.view.PagerIndicator;
-import com.tencent.biz.qqstory.view.PagerIndicator.IndicatorAdapter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWServiceProxy;
 
 public class oqb
-  extends DataSetObserver
-  implements ViewPager.OnPageChangeListener
+  extends Handler
 {
-  private oqb(PagerIndicator paramPagerIndicator) {}
+  private RMWServiceProxy a;
   
-  public void onChanged()
+  public oqb(RMWServiceProxy paramRMWServiceProxy)
   {
-    Log.d("PagerIndicator", "onChanged");
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    super(Looper.getMainLooper());
+    this.a = paramRMWServiceProxy;
   }
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    RMWServiceProxy localRMWServiceProxy = this.a;
+    if (localRMWServiceProxy != null) {
+      localRMWServiceProxy.a(Message.obtain(paramMessage));
+    }
   }
 }
 

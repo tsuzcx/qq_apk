@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
 
 public class ulr
   implements Runnable
 {
-  public ulr(MediaPlayerManager paramMediaPlayerManager) {}
+  public ulr(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
   public void run()
   {
-    try
-    {
-      AudioUtil.a(2131230730, 1, MediaPlayerManager.a(this.a), MediaPlayerManager.a(this.a));
-      return;
-    }
-    catch (Throwable localThrowable) {}
+    ((PhoneContactManager)this.a.app.getManager(10)).g();
   }
 }
 

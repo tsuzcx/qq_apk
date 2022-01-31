@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.utils.VideoActionSheet;
+import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
 
-class vqo
-  implements Runnable
+public final class vqo
+  implements View.OnClickListener
 {
-  vqo(vqn paramvqn) {}
+  public vqo(boolean paramBoolean, VideoActionSheet paramVideoActionSheet) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(this.a.a.a.a, "连接已经建立...", 0).a();
+    QAVGroupConfig.Report.a(this.jdField_a_of_type_Boolean, 2);
+    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
   }
 }
 

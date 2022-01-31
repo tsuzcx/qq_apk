@@ -1,34 +1,19 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
 
 public class ajjp
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public ajjp(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public ajjp(TroopFileItemOperation paramTroopFileItemOperation, FileManagerEntity paramFileManagerEntity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramEditable.length() == 0)
-    {
-      SearchReciteArticleFragment.a(this.a);
-      SearchReciteArticleFragment.a(this.a, false);
-      return;
+    if (paramInt == 1) {
+      TroopFileItemOperation.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
     }
-    SearchReciteArticleFragment.a(this.a).a();
-    SearchReciteArticleFragment.a(this.a).notifyDataSetChanged();
-    SearchReciteArticleFragment.a(this.a).a.a(false);
-    SearchReciteArticleFragment.a(this.a, 0);
-    SearchReciteArticleFragment.a(this.a, true);
-    paramEditable = paramEditable.toString();
-    SearchReciteArticleFragment.a(this.a, paramEditable);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

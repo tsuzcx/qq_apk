@@ -1,22 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
 
-public final class aebl
-  implements View.OnTouchListener
+public class aebl
+  implements Runnable
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aebl(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager, int paramInt) {}
+  
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    ImaxAdVideoPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdVideoPreloadManager, this.jdField_a_of_type_Int);
   }
 }
 

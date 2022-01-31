@@ -8,23 +8,17 @@ public class SixgodLog
 {
   public void d(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 1, paramString2);
-    }
+    QLog.d(paramString1, 1, paramString2);
   }
   
   public void e(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 1, paramString2);
-    }
+    QLog.e(paramString1, 1, paramString2);
   }
   
   public void i(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 1, paramString2);
-    }
+    QLog.i(paramString1, 1, paramString2);
   }
   
   public void w(String paramString1, String paramString2)

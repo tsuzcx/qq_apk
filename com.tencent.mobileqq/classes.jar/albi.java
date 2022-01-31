@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.agent.BindGroupConfirmActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
 
 public class albi
-  implements Runnable
+  implements View.OnClickListener
 {
-  public albi(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  public albi(CustomedTabWidget paramCustomedTabWidget) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
+    this.a.setCurrentTab(this.a.indexOfChild(paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     albi
  * JD-Core Version:    0.7.0.1
  */

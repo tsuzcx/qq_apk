@@ -15,19 +15,23 @@ public final class i
   public boolean d = true;
   public int e = -1;
   public String f = "";
-  public int g = 0;
-  public boolean h = true;
-  CountDownLatch i = new CountDownLatch(1);
-  public volatile boolean j = false;
-  public long k;
-  private volatile boolean l = false;
-  private aj m;
+  public d g;
+  public ab h;
+  public volatile boolean i = false;
+  public int j = 0;
+  public boolean k = true;
+  CountDownLatch l = new CountDownLatch(1);
+  public volatile boolean m = false;
+  public long n;
+  private boolean o = false;
+  private int p = 0;
+  private ao q;
   
   public i(String paramString, byte[] paramArrayOfByte)
   {
     this.a = paramString;
     this.b = paramArrayOfByte;
-    this.f = ch.d();
+    this.f = cn.d();
   }
   
   public final String a()
@@ -35,17 +39,17 @@ public final class i
     return this.f;
   }
   
-  public final void a(aj paramaj)
+  public final void a(ao paramao)
   {
     try
     {
-      this.m = paramaj;
+      this.q = paramao;
       return;
     }
     finally
     {
-      paramaj = finally;
-      throw paramaj;
+      paramao = finally;
+      throw paramao;
     }
   }
   
@@ -61,26 +65,26 @@ public final class i
   
   public final void b()
   {
-    this.g = 15000;
+    this.j = 15000;
   }
   
   public final boolean c()
   {
     try
     {
-      boolean bool = this.i.await(this.g, TimeUnit.MILLISECONDS);
+      boolean bool = this.l.await(this.j, TimeUnit.MILLISECONDS);
       return bool;
     }
     catch (InterruptedException localInterruptedException) {}
     return true;
   }
   
-  public final aj d()
+  public final ao d()
   {
     try
     {
-      aj localaj = this.m;
-      return localaj;
+      ao localao = this.q;
+      return localao;
     }
     finally
     {
@@ -93,7 +97,7 @@ public final class i
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("url:" + this.a);
-    localStringBuilder.append(",body:" + ch.b(this.b));
+    localStringBuilder.append(",body:" + cn.b(this.b));
     localStringBuilder.append(",isGet:false");
     localStringBuilder.append(",timeout:" + this.e);
     localStringBuilder.append(",tag:" + null);
@@ -102,7 +106,7 @@ public final class i
     localStringBuilder.append(",httpCallback:" + null);
     localStringBuilder.append(",testMode:0");
     localStringBuilder.append(",followRedirects:" + this.d);
-    localStringBuilder.append(",isAbort:false");
+    localStringBuilder.append(",isAbort:" + this.i);
     localStringBuilder.append(",headers:" + this.c);
     return localStringBuilder.toString();
   }

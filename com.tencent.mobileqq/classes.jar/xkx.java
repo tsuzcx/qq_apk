@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import android.content.Intent;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class xkx
-  implements Runnable
+  extends ClickableSpan
 {
-  xkx(xku paramxku) {}
+  xkx(xkv paramxkv, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.f();
+    if (BaseActivity.sTopActivity == null) {
+      return;
+    }
+    paramView = new Intent(BaseActivity.sTopActivity, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
+    BaseActivity.sTopActivity.startActivityForResult(paramView, -1);
   }
 }
 

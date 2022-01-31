@@ -1,29 +1,38 @@
-import com.tencent.open.wadl.WLog;
-import com.tencent.open.wadl.WadlJsBridge;
-import com.tencent.tmassistantbase.util.GlobalUtil;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.open.agent.datamodel.FriendDataManager;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aljn
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public aljn(WadlJsBridge paramWadlJsBridge) {}
+  public aljn(FriendChooser paramFriendChooser) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
-    {
-      WLog.b("WadlJsBridge", "initYYBSDKService start restoreTaskFromYYB=false");
-      GlobalUtil.getInstance().setContext(WadlJsBridge.a(this.a));
+    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a))) {
       return;
     }
-    catch (Exception localException)
+    if (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.c() >= this.a.jdField_a_of_type_Int)
     {
-      localException.printStackTrace();
+      this.a.h();
       return;
     }
-    finally
-    {
-      WLog.b("WadlJsBridge", "initYYBSDKService end");
-    }
+    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
+    this.a.b.add(paramAdapterView);
+    this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a);
+    this.a.e();
+    paramView.g();
+    this.a.b(false);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
   }
 }
 

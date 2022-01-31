@@ -1,42 +1,38 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
 
-class uap
-  extends ProtoUtils.TroopProtocolObserver
+public class uap
+  extends BizTroopObserver
 {
-  uap(uao paramuao) {}
+  public uap(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    do
+    if (paramInt2 != 0)
     {
-      for (;;)
+      paramString1 = paramString2;
+      if (!this.a.isFinishing())
       {
-        return;
-        try
+        paramString1 = paramString2;
+        if (this.a.isResume())
         {
-          paramBundle = new oidb_cmd0x74f.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
-          {
-            TroopMemberListActivity.a(this.a.a, paramBundle.range.get());
-            TroopMemberListActivity.c(this.a.a);
-            TroopMemberListActivity.a(this.a.a, paramBundle.uint64_next_pull_time.get());
-            return;
+          paramString1 = paramString2;
+          if (TextUtils.isEmpty(paramString2)) {
+            paramString1 = this.a.getResources().getString(2131435596);
           }
+          QQToast.a(this.a, 1, paramString1, 0).a();
         }
-        catch (Exception paramArrayOfByte) {}
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopMemberListActivityget_troop_member", 2, "initListView, get0x74f：failed");
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopAssistantActivity", 2, "onSetCommonUsedTroop error, retCode = " + paramInt2 + " , wording = " + paramString1);
+      }
+      return;
+    }
+    this.a.c();
   }
 }
 

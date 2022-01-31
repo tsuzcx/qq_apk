@@ -1,36 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.QzoneSyncQQStoryTool;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class xoe
-  implements View.OnClickListener
+class xoe
+  implements DialogInterface.OnClickListener
 {
-  public xoe(EditLocalVideoActivity paramEditLocalVideoActivity, long paramLong) {}
+  xoe(xoc paramxoc) {}
   
-  public void onClick(View paramView)
-  {
-    boolean bool = true;
-    if (EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity))
-    {
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setSelected(false);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity;
-      if (EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity)) {
-        break label73;
-      }
-    }
-    for (;;)
-    {
-      EditLocalVideoActivity.b(paramView, bool);
-      QzoneSyncQQStoryTool.a(this.jdField_a_of_type_Long, EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity));
-      return;
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setSelected(true);
-      break;
-      label73:
-      bool = false;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

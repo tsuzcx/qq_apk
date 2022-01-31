@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.businessCard.utilities;
 
-import abop;
-import aboq;
+import abvq;
+import abvr;
 import android.annotation.SuppressLint;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -29,7 +29,7 @@ public class BusinessCardGroupLogic
     this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardListActivity = paramBusinessCardListActivity;
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    a(this.jdField_a_of_type_AndroidWidgetTextView, 2130843856, 10);
+    a(this.jdField_a_of_type_AndroidWidgetTextView, 2130843922, 10);
   }
   
   @SuppressLint({"InlinedApi"})
@@ -38,9 +38,9 @@ public class BusinessCardGroupLogic
     if (this.jdField_a_of_type_AndroidViewView != null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = ((ViewStub)this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardListActivity.findViewById(2131368659)).inflate();
-    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368697);
-    SwipListView localSwipListView = (SwipListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368698);
+    this.jdField_a_of_type_AndroidViewView = ((ViewStub)this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardListActivity.findViewById(2131368662)).inflate();
+    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368700);
+    SwipListView localSwipListView = (SwipListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368701);
     if (VersionUtils.c()) {
       localSwipListView.setOverScrollMode(2);
     }
@@ -49,10 +49,10 @@ public class BusinessCardGroupLogic
     ViewGroup.LayoutParams localLayoutParams = localSwipListView.getLayoutParams();
     localLayoutParams.width = (localDisplayMetrics.widthPixels * 4 / 5);
     localSwipListView.setLayoutParams(localLayoutParams);
-    localView.setOnClickListener(new abop(this));
+    localView.setOnClickListener(new abvq(this));
     this.jdField_a_of_type_ComTencentMobileqqBusinessCardUtilitiesBusinessCardGroupLogic$BusinessCardGroupAdapter = new BusinessCardGroupLogic.BusinessCardGroupAdapter(this, this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardListActivity);
     localSwipListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqBusinessCardUtilitiesBusinessCardGroupLogic$BusinessCardGroupAdapter);
-    localSwipListView.setOnItemClickListener(new aboq(this));
+    localSwipListView.setOnItemClickListener(new abvr(this));
   }
   
   public void a()
@@ -64,7 +64,7 @@ public class BusinessCardGroupLogic
         this.jdField_a_of_type_ComTencentMobileqqBusinessCardUtilitiesBusinessCardGroupLogic$BusinessCardGroupAdapter.notifyDataSetChanged();
       }
     }
-    a(this.jdField_a_of_type_AndroidWidgetTextView, 2130843857, 10);
+    a(this.jdField_a_of_type_AndroidWidgetTextView, 2130843923, 10);
   }
   
   public void a(TextView paramTextView, int paramInt1, int paramInt2)
@@ -81,7 +81,7 @@ public class BusinessCardGroupLogic
     if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    a(this.jdField_a_of_type_AndroidWidgetTextView, 2130843856, 10);
+    a(this.jdField_a_of_type_AndroidWidgetTextView, 2130843922, 10);
   }
   
   public void onClick(View paramView)

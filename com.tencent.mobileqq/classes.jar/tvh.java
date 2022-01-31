@@ -1,39 +1,37 @@
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ImageView;
-import com.etrump.mixlayout.FontManager;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.mobileqq.widget.ContainerView.NoSelLinkMovementMethod;
-import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
+import android.text.Selection;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 
-public class tvh
-  extends Handler
+class tvh
+  extends ClickableSpan
 {
-  public tvh(TextPreviewActivity paramTextPreviewActivity, Looper paramLooper)
+  tvh(tvg paramtvg, String paramString) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramLooper);
+    Selection.removeSelection(SpannableString.valueOf(this.jdField_a_of_type_JavaLangString));
+    if (TextUtils.isEmpty(RegisterVerifyCodeActivity.b(this.jdField_a_of_type_Tvg.a))) {}
+    while (!RegisterVerifyCodeActivity.a(this.jdField_a_of_type_Tvg.a)) {
+      return;
+    }
+    RegisterVerifyCodeActivity.a(this.jdField_a_of_type_Tvg.a, false);
+    this.jdField_a_of_type_Tvg.a.a.postDelayed(new tvi(this), 1000L);
+    paramView = new Intent(this.jdField_a_of_type_Tvg.a, QQBrowserActivity.class);
+    paramView.putExtra("url", RegisterVerifyCodeActivity.b(this.jdField_a_of_type_Tvg.a));
+    paramView.putExtra("hide_more_button", true);
+    this.jdField_a_of_type_Tvg.a.startActivity(paramView);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTextQQText != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(this.a.jdField_a_of_type_ComTencentMobileqqTextQQText);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a.setMovementMethod(ContainerView.NoSelLinkMovementMethod.a());
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.a.d));
-      return;
-    } while (!(paramMessage.obj instanceof Drawable));
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)paramMessage.obj);
+    paramTextPaint.setColor(-16734752);
   }
 }
 

@@ -1,8 +1,5 @@
 package cooperation.qzone.webviewplugin;
 
-import ando;
-import andp;
-import andq;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -16,6 +13,9 @@ import android.graphics.Rect;
 import android.graphics.Shader.TileMode;
 import android.util.Base64;
 import android.util.DisplayMetrics;
+import anlo;
+import anlp;
+import anlq;
 import com.google.zxing.common.BitMatrix;
 import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -271,7 +271,7 @@ public class QzoneWidgetAIJsPlugin
         return;
       }
     }
-    ThreadManager.executeOnSubThread(new andp(this, i, WidgetAIFileUtil.a("QzoneShowShare" + a() + ".png", paramJSONObject, this.a.mRuntime.a()), str));
+    ThreadManager.executeOnSubThread(new anlp(this, i, WidgetAIFileUtil.a("QzoneShowShare" + a() + ".png", paramJSONObject, this.a.mRuntime.a()), str));
   }
   
   private void a(String... paramVarArgs)
@@ -283,7 +283,7 @@ public class QzoneWidgetAIJsPlugin
     {
       return;
       QLog.i("QzoneWidgetAIJsPlugin", 1, "publish gif mood start");
-      ThreadManager.executeOnSubThread(new andq(this, paramVarArgs[0]));
+      ThreadManager.executeOnSubThread(new anlq(this, paramVarArgs[0]));
     } while (this.a.mRuntime.a() == null);
     this.a.mRuntime.a().finish();
   }
@@ -317,7 +317,7 @@ public class QzoneWidgetAIJsPlugin
         if (i != 2) {
           continue;
         }
-        ThreadManager.executeOnSubThread(new ando(this, paramJsBridgeListener));
+        ThreadManager.executeOnSubThread(new anlo(this, paramJsBridgeListener));
         return true;
       }
       catch (Exception paramJsBridgeListener) {}

@@ -1,25 +1,18 @@
-import com.tencent.biz.qqstory.model.AddressDataProvider;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProviderManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import dov.com.tencent.biz.qqstory.takevideo.music.MusicGridAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-class aocu
-  implements Runnable
+public class aocu
+  implements DialogInterface.OnDismissListener
 {
-  aocu(aoct paramaoct, AddressDataProvider.AddressInfo paramAddressInfo) {}
+  public aocu(EditVideoMusic paramEditVideoMusic) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "address update, refresh ui.");
-    if (((AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo))
-    {
-      QLog.d("zivonchen", 2, "isInternationalUser --------------------2");
-      this.jdField_a_of_type_Aoct.a.a.a();
-    }
+    this.a.a.a(0);
+    VideoEditReport.a("0X80076DD");
   }
 }
 

@@ -1,23 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.QIMCaptureController;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-public class ankq
-  implements View.OnClickListener
+public final class ankq
+  implements Runnable
 {
-  public ankq(QIMCaptureController paramQIMCaptureController) {}
+  public ankq(CustomWebView paramCustomWebView, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CaptureController", 2, "banner tip clicked");
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankq
  * JD-Core Version:    0.7.0.1
  */

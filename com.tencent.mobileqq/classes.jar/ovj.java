@@ -1,34 +1,82 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 
 public class ovj
-  implements Runnable
+  extends Thread
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private ovj(AutoStartProgressBar paramAutoStartProgressBar) {}
   
-  public ovj(TribeVideoPlugin paramTribeVideoPlugin, boolean paramBoolean)
+  private boolean a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTribeVideoPlugin);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    boolean bool = false;
+    if (this.a.jdField_a_of_type_Boolean) {
+      bool = a(this.a.c, 400, 0.3300000131130219D, false);
+    }
+    return bool;
+  }
+  
+  private boolean a(int paramInt1, int paramInt2)
+  {
+    return a(paramInt1, paramInt2, 1.0D, true);
+  }
+  
+  private boolean a(int paramInt1, int paramInt2, double paramDouble)
+  {
+    return a(paramInt1, paramInt2, paramDouble, true);
+  }
+  
+  private boolean a(int paramInt1, int paramInt2, double paramDouble, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramInt1 < 0) || (paramInt2 < 0)) {
+      bool1 = false;
+    }
+    do
+    {
+      return bool1;
+      if (this.a.e >= paramInt1) {
+        break;
+      }
+      int i = (paramInt1 - this.a.e) / (paramInt2 / AutoStartProgressBar.jdField_a_of_type_Int);
+      paramInt2 = i;
+      if (i == 0) {
+        paramInt2 = 1;
+      }
+      bool1 = bool2;
+    } while (this.a.e > paramInt1);
+    if ((paramBoolean) && (a())) {
+      return false;
+    }
+    AutoStartProgressBar localAutoStartProgressBar = this.a;
+    localAutoStartProgressBar.e += paramInt2;
+    this.a.setAnimProgress(this.a.e, this.a.jdField_a_of_type_JavaLangString);
+    this.a.postInvalidate();
+    for (;;)
+    {
+      try
+      {
+        double d2 = AutoStartProgressBar.jdField_a_of_type_Int;
+        if (paramDouble >= 0.0D) {
+          break label170;
+        }
+        d1 = AutoStartProgressBar.a(this.a, (int)paramDouble);
+        Thread.sleep((d1 * d2));
+      }
+      catch (InterruptedException localInterruptedException) {}
+      break;
+      label170:
+      double d1 = paramDouble;
+    }
+    return false;
   }
   
   public void run()
   {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localTribeVideoPlugin == null) || (TribeVideoPlugin.a(localTribeVideoPlugin) == null)) {
+    if (!a((int)(40.0D + Math.random() * 31.0D) * this.a.c / 100, 1500)) {}
+    while (!a(this.a.c * 90 / 100, 1500)) {
       return;
     }
-    String str = ((BaseActivity)TribeVideoPlugin.a(localTribeVideoPlugin)).getCurrentAccountUin();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(NetworkUtil.b(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
-      return;
-    }
+    a(this.a.c * 99 / 100, AutoStartProgressBar.jdField_a_of_type_Int * 10, AutoStartProgressBar.b);
   }
 }
 

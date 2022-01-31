@@ -12,7 +12,7 @@ import android.widget.Adapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.AdapterDataSetObserver;
-import mid;
+import mlr;
 
 public class ReadInJoyFlowLayout
   extends AdapterView
@@ -20,7 +20,7 @@ public class ReadInJoyFlowLayout
   private float jdField_a_of_type_Float;
   private final int jdField_a_of_type_Int = AIOUtils.a(8.0F, getResources());
   private Adapter jdField_a_of_type_AndroidWidgetAdapter;
-  private AdapterView.AdapterDataSetObserver jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver = new mid(this);
+  private AdapterView.AdapterDataSetObserver jdField_a_of_type_ComTencentWidgetAdapterView$AdapterDataSetObserver = new mlr(this);
   private float b;
   
   public ReadInJoyFlowLayout(Context paramContext)

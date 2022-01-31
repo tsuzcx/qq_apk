@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig.WealthGodConfig;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.ServerCheckCallback;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public final class abey
-  implements Parcelable.Creator
+public class abey
+  implements ArkMessageServerLogic.ServerCheckCallback
 {
-  public ARMapConfig.WealthGodConfig a(Parcel paramParcel)
-  {
-    return new ARMapConfig.WealthGodConfig(paramParcel);
-  }
+  public abey(ArkRecommendLogic paramArkRecommendLogic, RecommendCommonMessage paramRecommendCommonMessage, WeakReference paramWeakReference) {}
   
-  public ARMapConfig.WealthGodConfig[] a(int paramInt)
+  public void a(ArrayList paramArrayList)
   {
-    return new ARMapConfig.WealthGodConfig[paramInt];
+    if (paramArrayList != null) {
+      ArkRecommendLogic.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendLogic, paramArrayList, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_JavaLangRefWeakReference, 4);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ArkApp.ArkRecommendLogic", 2, "ContextItem is null.");
   }
 }
 

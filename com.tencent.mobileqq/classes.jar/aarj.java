@@ -1,50 +1,94 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
-import com.tencent.mobileqq.ark.ArkAppHandler;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.util.DisplayMetrics;
+import android.view.View;
+import com.tencent.av.ui.redbag.RedBagUtil;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.ar.config.MainEntryAni;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class aarj
-  implements ArkAppRootLayout.ArkSearchReportCallback
+  extends aark
 {
-  public aarj(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg) {}
+  aaqg jdField_a_of_type_Aaqg;
+  public Bitmap a;
+  String jdField_a_of_type_JavaLangString;
+  HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
+  public JSONObject a;
   
-  public void a()
+  public aarj(String paramString)
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    int i;
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    String str5;
-    if (localObject != null)
-    {
-      localObject = (ArkAppHandler)((QQAppInterface)localObject).a(95);
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.isFromArkServer) {
-        break label142;
-      }
-      i = 2;
-      str1 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.arkServerExtraInfo;
-      str2 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.arkServerMsgId;
-      str3 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName;
-      str4 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView;
-      str5 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.msg;
-      if (!"1".equals(this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.getExtInfoFromExtStr("ark_text_analysis_flag"))) {
-        break label148;
-      }
+    super(paramString);
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_Aaqg = null;
+  }
+  
+  public void a(String paramString, DragFrameLayout paramDragFrameLayout, View paramView)
+  {
+    this.jdField_a_of_type_Aaqg = MainEntryAni.a(paramView);
+    if (this.jdField_a_of_type_Aaqg != null) {
+      MainEntryAni.a(this.jdField_a_of_type_Aaqg, paramDragFrameLayout);
     }
-    label142:
-    label148:
-    for (int j = 1;; j = 0)
-    {
-      ((ArkAppHandler)localObject).a(i, 4, 2, str1, str2, str3, str4, str5, j, 0);
-      return;
-      i = 100;
-      break;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  boolean a(Resources paramResources)
+  {
+    if (this.jdField_a_of_type_Aaqg == null) {
+      return false;
     }
+    String str = this.jdField_a_of_type_JavaLangString + "addbtn_moving/";
+    int i = 0;
+    for (;;)
+    {
+      if (i >= 4) {
+        break label132;
+      }
+      localObject = "img_" + i + ".png";
+      Bitmap localBitmap = RedBagUtil.a(str + "images/" + (String)localObject, paramResources.getDisplayMetrics().densityDpi, paramResources.getDisplayMetrics().densityDpi);
+      if (localBitmap == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(localObject, localBitmap);
+      i += 1;
+    }
+    label132:
+    Object localObject = new File(str, "roll.json");
+    if (!((File)localObject).exists())
+    {
+      QLog.i(this.c, 1, "ResInfoForRollAni, json文件不存在");
+      return false;
+    }
+    if (!new File(str, "images").exists())
+    {
+      QLog.i(this.c, 1, "ResInfoForRollAni, images不存在");
+      return false;
+    }
+    str = WorldCupMgr.a(((File)localObject).getAbsolutePath());
+    this.jdField_a_of_type_OrgJsonJSONObject = WorldCupMgr.a(this.c, str, (int)(this.jdField_a_of_type_Aaqg.a * 2 / paramResources.getDisplayMetrics().density), 0);
+    if (this.jdField_a_of_type_OrgJsonJSONObject == null)
+    {
+      QLog.i(this.c, 1, "ResInfoForRollAni, json解析失败");
+      return false;
+    }
+    if (QLog.isDevelopLevel()) {
+      WorldCupMgr.a(this.c, this.jdField_a_of_type_OrgJsonJSONObject, ((File)localObject).getAbsolutePath() + "_.json");
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = RedBagUtil.a(this.jdField_a_of_type_JavaLangString + "addbtn_fixed/0.png", paramResources.getDisplayMetrics().densityDpi, paramResources.getDisplayMetrics().densityDpi);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      QLog.i(this.c, 1, "ResInfoForRollAni, Football不存在");
+      return false;
+    }
+    return true;
   }
 }
 

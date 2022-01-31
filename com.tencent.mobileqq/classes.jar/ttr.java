@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.StructMsgObserver;
-import com.tencent.mobileqq.activity.WebAccelerator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class ttr
-  implements Runnable
+  extends Handler
 {
-  public ttr(StructMsgObserver paramStructMsgObserver, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public ttr(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    WebAccelerator.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131434857);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

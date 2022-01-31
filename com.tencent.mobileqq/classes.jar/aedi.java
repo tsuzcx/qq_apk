@@ -1,31 +1,28 @@
+import android.graphics.Color;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.IMagicCallback;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
+import android.widget.TextView;
+import com.tencent.biz.ui.RoundProgressBar;
+import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
+import com.tencent.mobileqq.utils.ViewUtils;
 
-class aedi
-  implements View.OnClickListener
+public class aedi
+  implements Runnable
 {
-  aedi(aedh paramaedh) {}
+  public aedi(NowLoadingActivity paramNowLoadingActivity, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0);
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.e(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$IMagicCallback == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$IMagicCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setCircleColor(-12829636);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setRoundWidth(ViewUtils.b(10.0F));
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setTextSize(ViewUtils.b(43.0F));
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setTextColor(-1);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setPercentMarkTextSize(ViewUtils.b(43.0F));
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setCircleProgressColor(Color.parseColor("#50ffcd"));
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setProgress(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setNeedShowProgreeText(false);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.b.setText(this.jdField_a_of_type_Int + "%");
+    NowLoadingActivity.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity, this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.getString(2131430835), true);
   }
 }
 

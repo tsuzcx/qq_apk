@@ -1,36 +1,18 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.AlbumLibDownloaderUtil;
-import cooperation.qzone.util.FileUtils;
-import java.io.File;
+import com.tencent.component.network.downloader.DownloadRequest;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.QzonePreDownloadManager;
 
 public class anan
-  implements ModuleDownloadListener
 {
-  public anan(AlbumLibDownloaderUtil paramAlbumLibDownloaderUtil) {}
+  public DownloadRequest a;
+  public Downloader.DownloadListener a;
+  public String a;
+  public boolean a;
+  public Downloader.DownloadListener b;
+  public String b;
+  public boolean b;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("pictureMarkerSo.so")) {
-      return;
-    }
-    String str = AlbumLibDownloaderUtil.a.getPath();
-    paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-    if (paramString.exists()) {
-      paramString.renameTo(new File(AlbumLibDownloaderUtil.a.getPath() + "/photoQulatitySo.zip"));
-    }
-    paramString = new File(str);
-    if (!paramString.exists()) {
-      paramString.mkdirs();
-    }
-    FileUtils.b(new File(AlbumLibDownloaderUtil.a.getPath() + "/photoQulatitySo.zip"), paramString);
-  }
+  public anan(QzonePreDownloadManager paramQzonePreDownloadManager) {}
 }
 
 

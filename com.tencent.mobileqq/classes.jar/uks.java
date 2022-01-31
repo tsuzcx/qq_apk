@@ -1,36 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 class uks
   implements Runnable
 {
-  uks(ukr paramukr, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  uks(ukr paramukr) {}
   
   public void run()
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy");
-      }
-      if ((this.jdField_a_of_type_Ukr.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager == null) || (this.jdField_a_of_type_Ukr.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId)))
-      {
-        CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
-        return;
-      }
-      String str = this.jdField_a_of_type_Ukr.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager.a("redPackPanel", "http://i.gtimg.cn/channel/imglib/201803/", new String[] { "themeInfo", "prefix" });
-      str = str + this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId + ".png";
-      this.jdField_a_of_type_Ukr.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.b(str, new ukt(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    this.a.a.finish();
   }
 }
 

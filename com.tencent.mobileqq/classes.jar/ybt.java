@@ -1,98 +1,239 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator.AudioTranslatorListener;
+import com.tencent.mobileqq.richmedia.conn.HostInfo;
+import com.tencent.mobileqq.richmedia.server.TransObserver;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x777.cmd0x777.AddFrdInfo;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class ybt
-  extends FriendListObserver
+  extends TransObserver
 {
-  public ybt(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
+  public ybt(AudioTranslator paramAudioTranslator) {}
   
-  public void onAddBatchTroopFrd(boolean paramBoolean, String paramString, ArrayList paramArrayList)
-  {
-    int j = 0;
-    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {}
-    label155:
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        if (!paramBoolean) {
-          break label155;
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        QLog.i("TroopAddFrdsInnerFrame", 2, String.format("onAddBatchTroopFrd suc:%d troopUin:%s size:%d", new Object[] { Integer.valueOf(i), paramString, Integer.valueOf(paramArrayList.size()) }));
-        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.runOnUiThread(new ybu(this, paramArrayList));
-        paramString = new ArrayList();
-        i = j;
-        while (i < paramArrayList.size())
-        {
-          paramString.add(Long.toString(((cmd0x777.AddFrdInfo)paramArrayList.get(i)).uint64_uin.get()));
-          i += 1;
-        }
-      }
-    } while (paramString.size() <= 0);
-    paramArrayList = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-    paramArrayList.obj = paramString;
-    paramArrayList.sendToTarget();
-  }
-  
-  protected void onAddFriend(String paramString)
+  protected void a(long paramLong, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("TroopAddFrdsInnerFrame", 2, String.format("onAddFriend %s", new Object[] { paramString }));
+      QLog.d(AudioTranslator.a(), 2, "onSessionClose sessionid:" + paramLong + " result:" + paramInt);
     }
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(paramString);
-    paramString = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-    paramString.obj = localArrayList;
-    paramString.sendToTarget();
+    synchronized (this.a)
+    {
+      if (AudioTranslator.a(this.a) == null) {
+        return;
+      }
+      if (AudioTranslator.a(this.a).jdField_a_of_type_Long != paramLong) {
+        return;
+      }
+    }
+    AudioTranslator.a(this.a, false);
+    AudioTranslator.a(this.a).jdField_b_of_type_Int = 0;
+    AudioTranslator.c(this.a);
   }
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  protected void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
-    int k = 0;
-    int i;
-    if (QLog.isColorLevel())
+    if (QLog.isColorLevel()) {
+      QLog.d(AudioTranslator.a(), 2, "onTranslate:  sessionid:" + paramLong + " startseq:" + paramInt1 + " endseq:" + paramInt2 + "[" + paramInt2 * 1.0F + "] status:" + paramInt3 + " CN:" + paramString1 + " EN:" + paramString2);
+    }
+    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    paramInt2 *= 2;
+    AudioTranslator.AudioTranslatorListener localAudioTranslatorListener = null;
+    synchronized (this.a)
     {
-      if (!paramBoolean1) {
-        break label125;
-      }
-      i = 1;
-      if (!paramBoolean2) {
-        break label131;
+      if (AudioTranslator.a(this.a) == null) {
+        return;
       }
     }
-    label131:
-    for (int j = 1;; j = 0)
+    if (AudioTranslator.a(this.a).jdField_a_of_type_Long != paramLong)
     {
-      if (paramBoolean3) {
-        k = 1;
-      }
-      QLog.i("TroopAddFrdsInnerFrame", 2, String.format("onUpdateAddFriend isSuc:%d addSuc:%d addDirec:%d uin:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), paramString }));
-      if (paramBoolean1)
-      {
-        paramBundle = new ArrayList(1);
-        paramBundle.add(paramString);
-        paramString = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-        paramString.obj = paramBundle;
-        paramString.sendToTarget();
+      if (QLog.isColorLevel()) {
+        QLog.d(AudioTranslator.a(), 2, "onTranslate, session not match:" + paramLong + "-" + AudioTranslator.a(this.a).jdField_a_of_type_Long);
       }
       return;
-      label125:
-      i = 0;
-      break;
     }
+    if (!this.a.a()) {
+      return;
+    }
+    if (AudioTranslator.a(this.a).jdField_a_of_type_JavaLangRefWeakReference != null) {
+      localAudioTranslatorListener = (AudioTranslator.AudioTranslatorListener)AudioTranslator.a(this.a).jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(AudioTranslator.a(), 2, "onTranslate, :  localtime:" + AudioTranslator.a(this.a).c);
+    }
+    ycz localycz = (ycz)AudioTranslator.a(this.a).jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    long l1;
+    label460:
+    long l2;
+    if (localycz == null)
+    {
+      l1 = (int)(paramInt2 * 1.0F) * 20 * AudioTranslator.a(this.a).jdField_a_of_type_Int - 500;
+      paramLong = System.currentTimeMillis() - AudioTranslator.a(this.a).c - 500L;
+      if (!QLog.isColorLevel()) {
+        break label751;
+      }
+      QLog.d(AudioTranslator.a(), 2, "onTranslate startiem: " + l1 + "-" + paramLong);
+      break label751;
+      localycz = new ycz(paramLong, paramInt1, paramInt2);
+      AudioTranslator.a(this.a).jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt1), localycz);
+      l1 = paramLong;
+      paramLong = (int)(paramInt2 * 1.0F) * 20 * AudioTranslator.a(this.a).jdField_a_of_type_Int;
+      l2 = System.currentTimeMillis() - AudioTranslator.a(this.a).c - 500L;
+      if (!QLog.isColorLevel()) {
+        break label776;
+      }
+      QLog.d(AudioTranslator.a(), 2, "onTranslate endtime: " + paramLong + "-" + l2);
+      break label776;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(AudioTranslator.a(), 2, "onTranslate, starttime-endtime: " + l1 + "-" + l2);
+      }
+      if (localAudioTranslatorListener != null) {
+        if (paramInt3 != 2) {
+          break label739;
+        }
+      }
+      label739:
+      for (boolean bool = true;; bool = false)
+      {
+        localAudioTranslatorListener.a(l1, l2, paramString1, paramString2, bool);
+        if (!AudioTranslator.a(this.a)) {
+          break;
+        }
+        paramString1 = String.valueOf(System.currentTimeMillis() - AudioTranslator.a(this.a));
+        paramString2 = new HashMap();
+        paramString2.put("startTranslateCost", paramString1);
+        if (QLog.isColorLevel()) {
+          QLog.d("PeakAudioTransHandler", 2, "startTranslateCost:" + paramString1);
+        }
+        StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "actSubtitleTranslate", true, 0L, 0L, paramString2, null);
+        AudioTranslator.a(this.a, false);
+        return;
+        l1 = localycz.jdField_a_of_type_Long;
+        break label460;
+      }
+      for (;;)
+      {
+        break label786;
+        for (;;)
+        {
+          break;
+          label751:
+          if (l1 > paramLong) {
+            l1 = paramLong;
+          }
+        }
+        paramLong = l1;
+        if (l1 >= 0L) {
+          break;
+        }
+        paramLong = 0L;
+        break;
+        label776:
+        if (paramLong > l2) {
+          paramLong = l2;
+        }
+      }
+      label786:
+      l2 = paramLong;
+      if (paramLong <= l1) {
+        l2 = 1000L + l1;
+      }
+    }
+  }
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2, HostInfo paramHostInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(AudioTranslator.a(), 2, "onSessionOpen sessionid:" + paramLong + " combineNum:" + paramInt1 + " heratbeat:" + paramInt2 + ",endPoint = " + paramHostInfo);
+    }
+    synchronized (this.a)
+    {
+      if (AudioTranslator.a(this.a) == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(AudioTranslator.a(), 2, "TransContext is null");
+        }
+        return;
+      }
+      if (AudioTranslator.a(this.a).jdField_b_of_type_Int != 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(AudioTranslator.a(), 2, "onSessionOpen state error:" + AudioTranslator.a(this.a).jdField_b_of_type_Int);
+        }
+        return;
+      }
+    }
+    if ((AudioTranslator.a(this.a).jdField_a_of_type_Long != -1L) && (QLog.isColorLevel())) {
+      QLog.d(AudioTranslator.a(), 2, "onSessionOpen, old session not closed " + AudioTranslator.a(this.a).jdField_a_of_type_Long);
+    }
+    AudioTranslator.a(this.a).jdField_a_of_type_Long = paramLong;
+    AudioTranslator.a(this.a).jdField_a_of_type_Int = paramInt1;
+    AudioTranslator.a(this.a).jdField_b_of_type_Int = 3;
+    AudioTranslator.a(this.a).jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo = paramHostInfo;
+    if (AudioTranslator.a(this.a).jdField_b_of_type_Boolean) {
+      AudioTranslator.b(this.a);
+    }
+    if (AudioTranslator.a(this.a).jdField_a_of_type_Ycd != null) {
+      AudioTranslator.a(this.a).jdField_a_of_type_Ycd.a(paramLong, paramInt1);
+    }
+    for (;;)
+    {
+      AudioTranslator.a(this.a, AudioTranslator.a(this.a), true, paramInt2);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(AudioTranslator.a(), 2, "onSessionOpen encoderunnable error" + paramLong);
+      }
+    }
+  }
+  
+  protected void b(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(AudioTranslator.a(), 2, "onSessionChanged sessionid:" + paramLong + " combinenum:" + paramInt);
+    }
+    synchronized (this.a)
+    {
+      if (AudioTranslator.a(this.a) == null) {
+        return;
+      }
+      if ((AudioTranslator.a(this.a).jdField_a_of_type_Long == paramLong) && (AudioTranslator.a(this.a).jdField_a_of_type_Int != paramInt))
+      {
+        AudioTranslator.a(this.a).jdField_a_of_type_Int = paramInt;
+        if (AudioTranslator.a(this.a).jdField_a_of_type_Ycd != null) {
+          AudioTranslator.a(this.a).jdField_a_of_type_Ycd.a(paramLong, paramInt);
+        }
+      }
+      return;
+    }
+  }
+  
+  protected void c(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(AudioTranslator.a(), 2, "onSessionError sessionid:" + paramLong + " result:" + paramInt);
+    }
+    synchronized (this.a)
+    {
+      if (AudioTranslator.a(this.a) == null) {
+        return;
+      }
+      if ((AudioTranslator.a(this.a).jdField_a_of_type_Long != -1L) && (AudioTranslator.a(this.a).jdField_a_of_type_Long != paramLong)) {
+        return;
+      }
+    }
+    if ((AudioTranslator.a(this.a).jdField_a_of_type_Long != paramLong) && (AudioTranslator.a(this.a).jdField_a_of_type_JavaLangRefWeakReference == null)) {
+      return;
+    }
+    AudioTranslator.a(this.a).jdField_b_of_type_Int = 0;
+    AudioTranslator.c(this.a);
+    AudioTranslator.a(this.a, paramInt);
   }
 }
 

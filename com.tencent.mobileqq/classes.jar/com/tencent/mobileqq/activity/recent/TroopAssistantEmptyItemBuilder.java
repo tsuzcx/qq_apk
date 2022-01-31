@@ -26,7 +26,7 @@ public class TroopAssistantEmptyItemBuilder
       paramRecentFaceDecoder = null;
       if (!"TroopAssistantEmptyItemBuilder".equals(paramRecentFaceDecoder))
       {
-        paramView = View.inflate(paramContext, 2130971657, null);
+        paramView = View.inflate(paramContext, 2130971686, null);
         paramView.setTag("TroopAssistantEmptyItemBuilder");
         paramRecentFaceDecoder = paramContext.getResources();
         this.b = paramRecentFaceDecoder.getDimensionPixelSize(2131558588);
@@ -47,11 +47,11 @@ public class TroopAssistantEmptyItemBuilder
       if ((paramObject instanceof Integer))
       {
         paramObject = (Integer)paramObject;
-        paramRecentFaceDecoder = (TextView)paramView.findViewById(2131375279);
+        paramRecentFaceDecoder = (TextView)paramView.findViewById(2131375339);
         if (paramObject.intValue() != 4) {
           break label219;
         }
-        paramRecentFaceDecoder.setText(2131435701);
+        paramRecentFaceDecoder.setText(2131435717);
       }
     }
     for (;;)
@@ -64,7 +64,7 @@ public class TroopAssistantEmptyItemBuilder
       i = this.c;
       break label124;
       label219:
-      paramRecentFaceDecoder.setText(2131436130);
+      paramRecentFaceDecoder.setText(2131436148);
     }
   }
 }

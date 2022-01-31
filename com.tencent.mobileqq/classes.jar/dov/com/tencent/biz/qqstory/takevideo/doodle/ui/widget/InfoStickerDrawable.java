@@ -11,8 +11,8 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.view.animation.DecelerateInterpolator;
-import aobo;
-import aobp;
+import aokj;
+import aokk;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.ArrayList;
 
@@ -86,8 +86,8 @@ public abstract class InfoStickerDrawable
   {
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetAnimStateTypeEvaluator, new Object[] { this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetAnimStateTypeEvaluator.b(), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetAnimStateTypeEvaluator.a() });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aobo(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aobp(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aokj(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aokk(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetAnimStateTypeEvaluator.a());
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }

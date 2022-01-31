@@ -17,19 +17,19 @@ import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.LayoutParams;
-import mjc;
-import mjd;
+import mmt;
+import mmu;
 
 public class ReadInJoyPullToZoomListView
   extends ReadInJoyBaseListView
 {
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new mjc();
+  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new mmt();
   private static boolean jdField_d_of_type_Boolean;
   float jdField_a_of_type_Float = -1.0F;
   private View jdField_a_of_type_AndroidViewView;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ReadInJoyPullToZoomListView.OnTopCallback jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyPullToZoomListView$OnTopCallback;
-  private mjd jdField_a_of_type_Mjd;
+  private mmu jdField_a_of_type_Mmu;
   float jdField_b_of_type_Float = -1.0F;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   float jdField_c_of_type_Float = 1.401F;
@@ -151,7 +151,7 @@ public class ReadInJoyPullToZoomListView
     if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 8))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      Drawable localDrawable = getResources().getDrawable(2130838598);
+      Drawable localDrawable = getResources().getDrawable(2130838604);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
       this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
       ((Animatable)localDrawable).start();
@@ -186,7 +186,7 @@ public class ReadInJoyPullToZoomListView
       b(false);
       return;
     }
-    this.jdField_a_of_type_Mjd.a(300L);
+    this.jdField_a_of_type_Mmu.a(300L);
   }
   
   protected void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -195,7 +195,7 @@ public class ReadInJoyPullToZoomListView
     if (Build.VERSION.SDK_INT >= 9) {
       setOverScrollMode(2);
     }
-    this.jdField_a_of_type_Mjd = new mjd(this);
+    this.jdField_a_of_type_Mmu = new mmu(this);
   }
   
   public void a(AbsListView paramAbsListView, int paramInt)
@@ -231,8 +231,8 @@ public class ReadInJoyPullToZoomListView
     {
       return super.onTouchEvent(paramMotionEvent);
       this.jdField_e_of_type_Int = ((int)paramMotionEvent.getRawY());
-      if (!this.jdField_a_of_type_Mjd.a) {
-        this.jdField_a_of_type_Mjd.a();
+      if (!this.jdField_a_of_type_Mmu.a) {
+        this.jdField_a_of_type_Mmu.a();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getY();
       this.jdField_b_of_type_Float = (this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() / this.f);

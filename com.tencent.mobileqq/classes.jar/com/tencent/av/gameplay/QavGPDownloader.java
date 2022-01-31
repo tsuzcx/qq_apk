@@ -17,12 +17,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
-import jht;
+import jjw;
 
 public class QavGPDownloader
 {
   QAVGamePlaySoConfigInfo jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo = null;
-  jht jdField_a_of_type_Jht = null;
+  jjw jdField_a_of_type_Jjw = null;
   boolean jdField_a_of_type_Boolean = false;
   
   QavGPDownloader()
@@ -30,7 +30,7 @@ public class QavGPDownloader
     if (QLog.isDevelopLevel()) {
       QLog.d("QavGPDownloadManager", 4, "QavGPDownloader in QQAppInterface");
     }
-    this.jdField_a_of_type_Jht = new jht();
+    this.jdField_a_of_type_Jjw = new jjw();
   }
   
   public static void a(int paramInt)
@@ -119,7 +119,7 @@ public class QavGPDownloader
       if (bool)
       {
         QLog.d("QavGPDownloadManager", 2, "downloadTask.start");
-        return this.jdField_a_of_type_Jht.a((QAVGamePlaySoConfigInfo)localObject);
+        return this.jdField_a_of_type_Jjw.a((QAVGamePlaySoConfigInfo)localObject);
       }
       QLog.d("QavGPDownloadManager", 2, "bDownloading = false");
       return bool;
@@ -311,7 +311,7 @@ public class QavGPDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.gameplay.QavGPDownloader
  * JD-Core Version:    0.7.0.1
  */

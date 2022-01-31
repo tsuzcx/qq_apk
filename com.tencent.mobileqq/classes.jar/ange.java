@@ -1,43 +1,14 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.mobileqq.utils.QQRecorder;
-import cooperation.troop_homework.jsp.TroopHWVoiceController;
-import cooperation.troop_homework.jsp.TroopHWVoiceController.RecordCallback;
-import java.lang.ref.WeakReference;
+import cooperation.qzone.report.lp.LpReportInfo;
+import cooperation.qzone.report.lp.LpReportManager;
 
 public class ange
-  extends Handler
+  implements Runnable
 {
-  public ange(TroopHWVoiceController paramTroopHWVoiceController) {}
+  public ange(LpReportManager paramLpReportManager, int paramInt, LpReportInfo paramLpReportInfo, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (TroopHWVoiceController.a(this.a) != null) {
-            TroopHWVoiceController.a(this.a).a(1, TroopHWVoiceController.a(this.a));
-          }
-        } while (!(paramMessage.obj instanceof String));
-        paramMessage = (String)paramMessage.obj;
-        this.a.d(paramMessage);
-        this.a.c(paramMessage);
-        return;
-        TroopHWVoiceController.a(this.a).c();
-        AudioUtil.b(2131230743, false);
-      } while (this.a.a == null);
-      paramMessage = (Context)this.a.a.get();
-    } while (paramMessage == null);
-    AudioUtil.a(paramMessage, false);
+    LpReportManager.access$000(this.jdField_a_of_type_CooperationQzoneReportLpLpReportManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

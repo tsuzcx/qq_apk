@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
+import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
 
 public class vtt
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public vtt(GameRoomChatPie paramGameRoomChatPie) {}
+  public vtt(AIOPhotoListAdapter paramAIOPhotoListAdapter, AIOFilePicData paramAIOFilePicData) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFilePicData.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFilePicData.f, 16);
+  }
 }
 
 

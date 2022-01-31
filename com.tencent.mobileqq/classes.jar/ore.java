@@ -1,20 +1,32 @@
-import com.tencent.biz.qqstory.view.widget.RateWidget;
+import android.util.AndroidRuntimeException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
+import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
 
 public class ore
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ore(RateWidget paramRateWidget) {}
+  public ore(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    RateWidget localRateWidget = this.a;
-    if (!RateWidget.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
+    SLog.d("story.publish.StoryLocalPublishPart", "onClick %s", new Object[] { paramView });
+    switch (paramView.getId())
     {
-      RateWidget.a(localRateWidget, bool);
-      this.a.c(RateWidget.a(this.a));
+    default: 
       return;
     }
+    StoryReportor.a("video_edit", "clk_local", 0, 0, new String[0]);
+    paramView = StoryPublishLauncher.a();
+    if (paramView.a())
+    {
+      paramView.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryEffectsCameraCaptureFragment, this.a.a(), this.a.jdField_a_of_type_Int);
+      return;
+    }
+    throw new AndroidRuntimeException("StoryPublishLauncher is not support");
   }
 }
 

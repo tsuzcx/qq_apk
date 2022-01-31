@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.widget.XListView;
 
 public class wqo
-  implements Runnable
+  extends Handler
 {
-  public wqo(MainAssistObserver paramMainAssistObserver) {}
+  public wqo(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "-->onGetOpenId timeout.");
+    switch (paramMessage.what)
+    {
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) {
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
       return;
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
     }
-    this.a.c = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
   }
 }
 

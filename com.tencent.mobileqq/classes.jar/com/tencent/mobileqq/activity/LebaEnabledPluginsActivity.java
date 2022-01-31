@@ -44,7 +44,7 @@ public class LebaEnabledPluginsActivity
     this.jdField_a_of_type_Char = this.app.a().a().charAt(2);
     if (this.jdField_a_of_type_ComTencentWidgetXListView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)View.inflate(this, 2130970386, null));
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)View.inflate(this, 2130970401, null));
       this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
@@ -54,7 +54,7 @@ public class LebaEnabledPluginsActivity
     }
     super.setContentView(this.jdField_a_of_type_ComTencentWidgetXListView);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter);
-    setTitle(2131433929);
+    setTitle(2131433945);
     return true;
   }
   

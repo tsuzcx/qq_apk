@@ -45,7 +45,7 @@ public class StructMsgItemVote
       if (this.jdField_a_of_type_JavaUtilArrayList == null) {
         break label320;
       }
-      localDrawable = paramContext.getResources().getDrawable(2130846101);
+      localDrawable = paramContext.getResources().getDrawable(2130846183);
       localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
       if (!TextUtils.isEmpty(this.x)) {
         break label184;

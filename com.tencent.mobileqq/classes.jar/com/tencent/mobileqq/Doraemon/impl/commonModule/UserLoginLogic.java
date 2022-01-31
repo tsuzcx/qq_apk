@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.Doraemon.impl.commonModule;
 
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -27,11 +28,11 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import mqq.manager.TicketManager;
-import rew;
-import rex;
-import rey;
-import rez;
-import rfa;
+import rjo;
+import rjp;
+import rjq;
+import rjr;
+import rjs;
 
 public class UserLoginLogic
 {
@@ -69,33 +70,30 @@ public class UserLoginLogic
     catch (NumberFormatException localNumberFormatException)
     {
       label39:
-      Object localObject1;
+      AppRuntime localAppRuntime;
+      String str;
+      Object localObject;
       break label39;
     }
     localGetAuthApiListRequest.client_id.set(l1);
-    if (Build.VERSION.RELEASE == null) {}
-    for (localObject1 = "";; localObject1 = Build.VERSION.RELEASE)
-    {
-      localGetAuthApiListRequest.os.set((String)localObject1);
-      localGetAuthApiListRequest.qqv.set(CommonDataAdapter.a().d());
-      localGetAuthApiListRequest.pf.set("openmobile_android");
-      localGetAuthApiListRequest.scope.set("");
-      localGetAuthApiListRequest.sdkp.set("android");
-      localGetAuthApiListRequest.sdkv.set("1.5.9");
-      localGetAuthApiListRequest.need_pay.set(1);
-      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      String str = ((AppRuntime)localObject1).getAccount();
-      Object localObject2 = ((TicketManager)((AppRuntime)localObject1).getManager(2)).getSkey(str);
-      localGetAuthApiListRequest.skey.set((String)localObject2);
-      localObject2 = new NewIntent(BaseApplicationImpl.getApplication(), OpensdkServlet.class);
-      ((NewIntent)localObject2).setWithouLogin(true);
-      ((NewIntent)localObject2).putExtra("uin", str);
-      ((NewIntent)localObject2).putExtra("data", localGetAuthApiListRequest.toByteArray());
-      ((NewIntent)localObject2).putExtra("cmd", "ConnAuthSvr.get_auth_api_list");
-      ((NewIntent)localObject2).setObserver(new rew(this, str));
-      ((AppRuntime)localObject1).startServlet((NewIntent)localObject2);
-      return;
-    }
+    localGetAuthApiListRequest.os.set(Build.VERSION.RELEASE + "|android os|" + Build.MODEL);
+    localGetAuthApiListRequest.qqv.set(CommonDataAdapter.a().d());
+    localGetAuthApiListRequest.pf.set("openmobile_android");
+    localGetAuthApiListRequest.scope.set("all");
+    localGetAuthApiListRequest.sdkp.set(DoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int));
+    localGetAuthApiListRequest.sdkv.set("1.5.9");
+    localGetAuthApiListRequest.need_pay.set(1);
+    localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    str = localAppRuntime.getAccount();
+    localObject = ((TicketManager)localAppRuntime.getManager(2)).getSkey(str);
+    localGetAuthApiListRequest.skey.set((String)localObject);
+    localObject = new NewIntent(BaseApplicationImpl.getApplication(), OpensdkServlet.class);
+    ((NewIntent)localObject).setWithouLogin(true);
+    ((NewIntent)localObject).putExtra("uin", str);
+    ((NewIntent)localObject).putExtra("data", localGetAuthApiListRequest.toByteArray());
+    ((NewIntent)localObject).putExtra("cmd", "ConnAuthSvr.get_auth_api_list");
+    ((NewIntent)localObject).setObserver(new rjo(this, str));
+    localAppRuntime.startServlet((NewIntent)localObject);
   }
   
   private boolean a(SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse)
@@ -130,7 +128,7 @@ public class UserLoginLogic
     if (TextUtils.isEmpty(((AppInfo)localObject).jdField_b_of_type_JavaLangString)) {}
     for (localObject = "当前应用";; localObject = ((AppInfo)localObject).jdField_b_of_type_JavaLangString + "需要访问你的帐号进行登录")
     {
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("用户授权", (String)localObject, "允许", new rex(this), "拒绝", new rey(this), new rez(this));
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("用户授权", (String)localObject, "允许", new rjp(this), "拒绝", new rjq(this), new rjr(this));
       return;
     }
   }
@@ -145,7 +143,6 @@ public class UserLoginLogic
     localAuthorizeRequest.client_id.set(l);
     localAuthorizeRequest.need_pay.set(1);
     Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (CardContainer.Permission)((Iterator)localObject1).next();
@@ -153,28 +150,23 @@ public class UserLoginLogic
         localAuthorizeRequest.openapi.add(Integer.valueOf(((CardContainer.Permission)localObject2).jdField_b_of_type_Int));
       }
     }
-    if (Build.VERSION.RELEASE == null) {}
-    for (localObject1 = "";; localObject1 = Build.VERSION.RELEASE)
-    {
-      localAuthorizeRequest.os.set((String)localObject1);
-      localAuthorizeRequest.qqv.set(CommonDataAdapter.a().d());
-      localAuthorizeRequest.pf.set("openmobile_android");
-      localAuthorizeRequest.sdkp.set("android");
-      localAuthorizeRequest.sdkv.set("1.5.9");
-      localAuthorizeRequest.response_type.set("token");
-      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      localObject2 = ((AppRuntime)localObject1).getAccount();
-      Object localObject3 = ((TicketManager)((AppRuntime)localObject1).getManager(2)).getSkey((String)localObject2);
-      localAuthorizeRequest.skey.set((String)localObject3);
-      localObject3 = new NewIntent(BaseApplicationImpl.getApplication(), OpensdkServlet.class);
-      ((NewIntent)localObject3).setWithouLogin(true);
-      ((NewIntent)localObject3).putExtra("uin", (String)localObject2);
-      ((NewIntent)localObject3).putExtra("data", localAuthorizeRequest.toByteArray());
-      ((NewIntent)localObject3).putExtra("cmd", "ConnAuthSvr.sdk_auth_api");
-      ((NewIntent)localObject3).setObserver(new rfa(this, (String)localObject2));
-      ((AppRuntime)localObject1).startServlet((NewIntent)localObject3);
-      return;
-    }
+    localAuthorizeRequest.os.set(Build.VERSION.RELEASE + "|android os|" + Build.MODEL);
+    localAuthorizeRequest.qqv.set(CommonDataAdapter.a().d());
+    localAuthorizeRequest.pf.set("openmobile_android");
+    localAuthorizeRequest.sdkp.set(DoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int));
+    localAuthorizeRequest.sdkv.set("1.5.9");
+    localAuthorizeRequest.response_type.set("token");
+    localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject2 = ((AppRuntime)localObject1).getAccount();
+    Object localObject3 = ((TicketManager)((AppRuntime)localObject1).getManager(2)).getSkey((String)localObject2);
+    localAuthorizeRequest.skey.set((String)localObject3);
+    localObject3 = new NewIntent(BaseApplicationImpl.getApplication(), OpensdkServlet.class);
+    ((NewIntent)localObject3).setWithouLogin(true);
+    ((NewIntent)localObject3).putExtra("uin", (String)localObject2);
+    ((NewIntent)localObject3).putExtra("data", localAuthorizeRequest.toByteArray());
+    ((NewIntent)localObject3).putExtra("cmd", "ConnAuthSvr.sdk_auth_api");
+    ((NewIntent)localObject3).setObserver(new rjs(this, (String)localObject2));
+    ((AppRuntime)localObject1).startServlet((NewIntent)localObject3);
   }
   
   public void a(APIParam paramAPIParam, APICallback paramAPICallback)

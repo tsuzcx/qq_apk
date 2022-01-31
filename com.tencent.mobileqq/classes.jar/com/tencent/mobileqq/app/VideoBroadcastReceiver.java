@@ -75,18 +75,18 @@ import java.util.HashMap;
 import java.util.Map;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import zph;
-import zpi;
-import zpj;
-import zpk;
-import zpl;
+import zvs;
+import zvt;
+import zvu;
+import zvv;
+import zvw;
 
 public class VideoBroadcastReceiver
   extends BroadcastReceiver
 {
   static VideoBroadcastReceiver jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver;
   public static String a;
-  INetEngine.INetEngineListener jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new zpk(this);
+  INetEngine.INetEngineListener jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new zvv(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   MqqHandler jdField_a_of_type_MqqOsMqqHandler = null;
   boolean jdField_a_of_type_Boolean = false;
@@ -99,7 +99,7 @@ public class VideoBroadcastReceiver
   VideoBroadcastReceiver(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_MqqOsMqqHandler = new zpl(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new zvw(Looper.getMainLooper(), this);
   }
   
   public static void a()
@@ -389,8 +389,8 @@ public class VideoBroadcastReceiver
       bool2 = bool3;
       if (QQUtils.a(paramIntent.getApp()))
       {
-        bool1 = SettingCloneUtil.readValue(paramIntent.getApp(), paramIntent.getCurrentAccountUin(), paramIntent.getApp().getString(2131435404), "qqsetting_lock_screen_whenexit_key", true);
-        bool2 = SettingCloneUtil.readValue(paramIntent.getApp(), paramIntent.getCurrentAccountUin(), paramIntent.getApp().getString(2131434202), "qqsetting_notify_showcontent_key", true);
+        bool1 = SettingCloneUtil.readValue(paramIntent.getApp(), paramIntent.getCurrentAccountUin(), paramIntent.getApp().getString(2131435420), "qqsetting_lock_screen_whenexit_key", true);
+        bool2 = SettingCloneUtil.readValue(paramIntent.getApp(), paramIntent.getCurrentAccountUin(), paramIntent.getApp().getString(2131434218), "qqsetting_notify_showcontent_key", true);
         if ((!bool1) || (!bool2)) {
           break label705;
         }
@@ -1503,7 +1503,7 @@ public class VideoBroadcastReceiver
     for (int i = 2131429225;; i = 2131429226)
     {
       paramContext = String.format(paramIntent.getString(i), new Object[] { paramContext });
-      paramContext = DialogUtil.b(localQQAppInterface.getApp().getApplicationContext(), 230, str3, paramContext, 2131433015, 2131429056, new zph(this, localQQAppInterface, j, k, bool1, str1, str2, bool2), null);
+      paramContext = DialogUtil.b(localQQAppInterface.getApp().getApplicationContext(), 230, str3, paramContext, 2131433029, 2131429056, new zvs(this, localQQAppInterface, j, k, bool1, str1, str2, bool2), null);
       paramContext.getWindow().setType(2003);
       paramContext.show();
       DataReport.a(localQQAppInterface.isBackground_Pause, bool1);
@@ -1537,7 +1537,7 @@ public class VideoBroadcastReceiver
     for (;;)
     {
       paramContext = String.format(((QQAppInterface)localObject).getApp().getString(2131429227), new Object[] { paramContext });
-      paramContext = DialogUtil.b(((QQAppInterface)localObject).getApp().getApplicationContext(), 230, str4, paramContext, 2131433015, 2131429056, new zpi(this, (QQAppInterface)localObject, i, j, str2, str1, paramIntent, str3), null);
+      paramContext = DialogUtil.b(((QQAppInterface)localObject).getApp().getApplicationContext(), 230, str4, paramContext, 2131433029, 2131429056, new zvt(this, (QQAppInterface)localObject, i, j, str2, str1, paramIntent, str3), null);
       paramContext.getWindow().setType(2003);
       paramContext.show();
       DataReport.c(((QQAppInterface)localObject).isBackground_Pause);
@@ -1573,11 +1573,11 @@ public class VideoBroadcastReceiver
     {
       return;
       VideoMsgTools.a(localQQAppInterface, i, j, bool1, paramContext, str, bool2, paramIntent, bool3);
-      bool1 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131434202), "qqsetting_notify_showcontent_key", true);
+      bool1 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131434218), "qqsetting_notify_showcontent_key", true);
       if (QQUtils.a(localQQAppInterface.getApp()))
       {
-        bool2 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131435404), "qqsetting_lock_screen_whenexit_key", true);
-        bool1 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131434202), "qqsetting_notify_showcontent_key", true);
+        bool2 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131435420), "qqsetting_lock_screen_whenexit_key", true);
+        bool1 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131434218), "qqsetting_notify_showcontent_key", true);
       }
       for (;;)
       {
@@ -1615,10 +1615,13 @@ public class VideoBroadcastReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     Object localObject1 = paramIntent.getAction();
-    Object localObject4 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "onReceive app = " + localObject4 + ",action = " + (String)localObject1);
-    if (localObject4 == null) {}
-    label1769:
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "onReceive action = " + (String)localObject1);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    Object localObject4;
+    label1793:
+    label2207:
+    label2293:
+    label2300:
     do
     {
       do
@@ -1651,7 +1654,12 @@ public class VideoBroadcastReceiver
                             {
                               do
                               {
-                                return;
+                                do
+                                {
+                                  return;
+                                  localObject4 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+                                  QLog.d(jdField_a_of_type_JavaLangString, 1, "onReceive app = " + localObject4);
+                                } while (localObject4 == null);
                                 if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(((QQAppInterface)localObject4).getApp().getPackageName())))
                                 {
                                   QLog.d(jdField_a_of_type_JavaLangString, 1, "onReceive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + (String)localObject1);
@@ -1932,7 +1940,7 @@ public class VideoBroadcastReceiver
                   ChatActivityUtils.a((QQAppInterface)localObject4, BaseActivity.sTopActivity, 1, paramIntent.getStringExtra("relationId"), true, true, null, paramContext);
                   return;
                   if (!((String)localObject1).equals("tencent.video.v2q.ACTION_DEAL_INVITE_TO_ENTER_GROUP_VEDIO")) {
-                    break label1769;
+                    break label1793;
                   }
                   paramContext = paramIntent.getStringExtra("relationId");
                   l = paramIntent.getLongExtra("friendUin", 0L);
@@ -1989,9 +1997,9 @@ public class VideoBroadcastReceiver
         }
         if (((String)localObject1).equals("tencent.av.v2q.multiPsntTryEnd"))
         {
-          localObject1 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438405);
-          localObject2 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438406);
-          localObject3 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438407);
+          localObject1 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438425);
+          localObject2 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438426);
+          localObject3 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438427);
           localObject4 = (PstnManager)((QQAppInterface)localObject4).getManager(142);
           String str2 = ((PstnManager)localObject4).a("key_pstn_multi_try_over_recharge_title");
           String str1 = ((PstnManager)localObject4).a("key_pstn_multi_try_over_recharge_content");
@@ -1999,10 +2007,10 @@ public class VideoBroadcastReceiver
           if (TextUtils.isEmpty(str2))
           {
             if (!TextUtils.isEmpty(str1)) {
-              break label2269;
+              break label2293;
             }
             if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-              break label2276;
+              break label2300;
             }
           }
           for (;;)
@@ -2018,7 +2026,7 @@ public class VideoBroadcastReceiver
             localObject1 = str2;
             break;
             localObject2 = str1;
-            break label2183;
+            break label2207;
             localObject3 = localObject4;
           }
         }
@@ -2030,11 +2038,8 @@ public class VideoBroadcastReceiver
       paramContext.b();
       return;
     } while (!((String)localObject1).equals("tencent.video.v2q.AddMembersToGroup"));
-    label2183:
-    label2269:
-    label2276:
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addGroupMember");
+      AudioHelper.a(jdField_a_of_type_JavaLangString + ".addGroupMember", paramIntent.getExtras(), true);
     }
     VideoMsgTools.c((QQAppInterface)localObject4, paramIntent.getStringExtra("discussUin"));
   }
@@ -2147,7 +2152,7 @@ public class VideoBroadcastReceiver
     }
     paramIntent = paramContext.getApp().getString(2131429045);
     String str = paramContext.getApp().getString(2131429041);
-    paramContext = DialogUtil.b(paramContext.getApp().getApplicationContext(), 230, str, paramIntent, 2131433015, 2131429056, new zpj(this), null);
+    paramContext = DialogUtil.b(paramContext.getApp().getApplicationContext(), 230, str, paramIntent, 2131433029, 2131429056, new zvu(this), null);
     paramContext.getWindow().setType(2003);
     paramContext.show();
     paramIntent = new Message();

@@ -1,28 +1,18 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.business.manager.report.VideoNodeReporter;
 
-class jio
-  implements QavInOutAnimation.QavOutAnimationListener
+public class jio
+  implements Runnable
 {
-  jio(jin paramjin) {}
+  public jio(VideoNodeReporter paramVideoNodeReporter, long paramLong1, int paramInt, long paramLong2) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.setViewEnable(2131364247, false);
-    }
-  }
-  
-  public void b()
-  {
-    GaInviteLockActivity.a(this.a.a);
-    GaInviteLockActivity.a(this.a.a, 0, 2131034269);
+    VideoNodeReporter.a(this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jio
  * JD-Core Version:    0.7.0.1
  */

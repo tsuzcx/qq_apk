@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridView android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:verticalSpacing="5.0dip" android:numColumns="2"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:custom="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.mobileqq.profile.view.VipScaledViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03f9" android:layout_width="fill_parent" android:layout_height="fill_parent" custom:matchChildId="@id/APKTOOL_DUPLICATE_id_0x7f0a2a12" />
+</RelativeLayout>

@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class acyy
-  implements Runnable
+  extends FMObserver
 {
-  public acyy(ThumbDownloadManager paramThumbDownloadManager, long paramLong, String paramString1, String paramString2) {}
+  public acyy(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    if (ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
-      ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager);
+    if (QfileFileAssistantActivity.b(this.a)) {
+      return;
+    }
+    this.a.runOnUiThread(new acyz(this, paramBoolean));
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    if (!QfileFileAssistantActivity.b(this.a)) {
+      FMToastUtil.a(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acyy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import com.tencent.mobileqq.jsp.DataApiPlugin;
 
 public class aeei
   implements Runnable
 {
-  public aeei(MagicfaceViewController paramMagicfaceViewController) {}
+  public aeei(DataApiPlugin paramDataApiPlugin, String paramString) {}
   
   public void run()
   {
-    this.a.f();
+    this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

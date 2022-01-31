@@ -50,7 +50,7 @@ public class ArConfigUtils
   public static String a()
   {
     if (a()) {
-      return AppConstants.aJ;
+      return AppConstants.aK;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ArConfig_Utils", 2, "no_sdcard");
@@ -97,14 +97,14 @@ public class ArConfigUtils
     //   41: astore 4
     //   43: aload 4
     //   45: invokevirtual 161	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
-    //   48: astore 6
+    //   48: astore 7
     //   50: sipush 8192
     //   53: newarray byte
-    //   55: astore 7
-    //   57: aload 6
+    //   55: astore 6
+    //   57: aload 7
     //   59: invokeinterface 166 1 0
     //   64: ifeq +330 -> 394
-    //   67: aload 6
+    //   67: aload 7
     //   69: invokeinterface 170 1 0
     //   74: checkcast 172	java/util/zip/ZipEntry
     //   77: astore 5
@@ -206,9 +206,9 @@ public class ArConfigUtils
     //   283: invokevirtual 223	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   286: astore 5
     //   288: aload 5
-    //   290: aload 7
+    //   290: aload 6
     //   292: iconst_0
-    //   293: aload 7
+    //   293: aload 6
     //   295: arraylength
     //   296: invokevirtual 229	java/io/InputStream:read	([BII)I
     //   299: istore_2
@@ -216,7 +216,7 @@ public class ArConfigUtils
     //   301: iconst_m1
     //   302: if_icmpeq +52 -> 354
     //   305: aload_0
-    //   306: aload 7
+    //   306: aload 6
     //   308: iconst_0
     //   309: iload_2
     //   310: invokevirtual 233	java/io/FileOutputStream:write	([BII)V
@@ -329,9 +329,9 @@ public class ArConfigUtils
     //   41	437	4	localQZipFile	com.tencent.commonsdk.zip.QZipFile
     //   77	286	5	localObject1	Object
     //   484	7	5	localObject2	Object
-    //   48	20	6	localEnumeration	java.util.Enumeration
+    //   55	252	6	arrayOfByte	byte[]
     //   316	8	6	localObject3	Object
-    //   55	252	7	arrayOfByte	byte[]
+    //   48	20	7	localEnumeration	java.util.Enumeration
     //   172	206	8	localObject4	Object
     //   253	127	9	localFile	File
     // Exception table:

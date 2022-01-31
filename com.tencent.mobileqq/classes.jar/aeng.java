@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicUtils;
+import android.text.TextUtils;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class aeng
+public class aeng
   implements Runnable
 {
-  public aeng(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public aeng(CUOpenCardGuideMng.CUOpenCardClickableSpan paramCUOpenCardClickableSpan) {}
   
   public void run()
   {
-    DynamicUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 39, this.jdField_a_of_type_Int, 640);
+    String str;
+    if (this.a.a == 1) {
+      str = "0X8008127";
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(str)) {
+        ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      }
+      return;
+      if (this.a.a == 2) {
+        str = "0X8008125";
+      } else if ((this.a.a == 3) || (this.a.a == 4)) {
+        str = "0X800813F";
+      } else {
+        str = null;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeng
  * JD-Core Version:    0.7.0.1
  */

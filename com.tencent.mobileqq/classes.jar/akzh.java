@@ -1,21 +1,17 @@
-import com.tencent.mqp.app.sec.d;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
 
-public final class akzh
+public class akzh
   implements Runnable
 {
-  public akzh(int paramInt, Object[] paramArrayOfObject, byte[] paramArrayOfByte) {}
+  public akzh(WebViewJumpPlugin paramWebViewJumpPlugin) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_ArrayOfJavaLangObject != null) && (this.jdField_a_of_type_ArrayOfByte != null)) {}
-    try
-    {
-      d.e(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_ArrayOfByte);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    Activity localActivity = this.a.mRuntime.a();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      localActivity.finish();
     }
   }
 }

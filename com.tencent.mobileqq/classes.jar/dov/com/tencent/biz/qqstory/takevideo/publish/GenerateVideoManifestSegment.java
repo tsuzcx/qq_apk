@@ -15,11 +15,11 @@ public class GenerateVideoManifestSegment
     //   13: ldc 33
     //   15: iconst_0
     //   16: invokestatic 39	cooperation/qzone/thread/QzoneHandlerThreadFactory:getHandlerThread	(Ljava/lang/String;Z)Lcooperation/qzone/thread/QzoneBaseThread;
-    //   19: new 41	aodi
+    //   19: new 41	aomd
     //   22: dup
     //   23: aload_0
     //   24: aload_2
-    //   25: invokespecial 44	aodi:<init>	(Ldov/com/tencent/biz/qqstory/takevideo/publish/GenerateVideoManifestSegment;Ldov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
+    //   25: invokespecial 44	aomd:<init>	(Ldov/com/tencent/biz/qqstory/takevideo/publish/GenerateVideoManifestSegment;Ldov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
     //   28: invokevirtual 50	cooperation/qzone/thread/QzoneBaseThread:post	(Ljava/lang/Runnable;)V
     //   31: invokestatic 31	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
     //   34: ifeq +155 -> 189

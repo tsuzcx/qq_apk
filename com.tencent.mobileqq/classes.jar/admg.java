@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.ApkSimpleFilePresenter;
 
-class admg
-  implements Runnable
+public class admg
+  implements View.OnClickListener
 {
-  admg(admf paramadmf) {}
+  public admg(ApkSimpleFilePresenter paramApkSimpleFilePresenter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.j();
+    this.a.a.e();
   }
 }
 

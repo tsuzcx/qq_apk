@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-class tyi
-  implements Runnable
+public class tyi
+  implements DialogInterface.OnClickListener
 {
-  tyi(tyh paramtyh, TroopUploadingThread.UploadState paramUploadState) {}
+  public tyi(SplashActivity paramSplashActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Tyh.a.c) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Tyh.a.o();
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a == 1)
-      {
-        this.jdField_a_of_type_Tyh.a.m();
-        return;
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 2);
-    String str = AvatarWallAdapter.a(this.jdField_a_of_type_Tyh.a.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.b);
-    QQToast.a(BaseApplication.getContext(), 1, str, 0).a();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tyi
  * JD-Core Version:    0.7.0.1
  */

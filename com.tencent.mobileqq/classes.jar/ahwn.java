@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.search.model.PublicAccountSearchResultModel;
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class ahwn
-  implements Comparator
+public class ahwn
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a(PublicAccountSearchResultModel paramPublicAccountSearchResultModel1, PublicAccountSearchResultModel paramPublicAccountSearchResultModel2)
+  public ahwn(MixSearchWebFragment paramMixSearchWebFragment) {}
+  
+  public void onGlobalLayout()
   {
-    int j = Long.signum(paramPublicAccountSearchResultModel2.b() - paramPublicAccountSearchResultModel1.b());
-    int i = j;
-    if (j == 0) {
-      i = PublicAccountSearchEngine.a(paramPublicAccountSearchResultModel1, paramPublicAccountSearchResultModel2);
+    InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    if (localInputMethodManager != null)
+    {
+      this.a.a.requestFocus();
+      localInputMethodManager.showSoftInput(this.a.a, 0);
     }
-    return i;
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

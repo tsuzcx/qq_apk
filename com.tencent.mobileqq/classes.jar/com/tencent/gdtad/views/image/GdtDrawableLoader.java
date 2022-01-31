@@ -9,8 +9,8 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
-import qms;
-import qmt;
+import qrj;
+import qrk;
 
 public class GdtDrawableLoader
 {
@@ -36,7 +36,7 @@ public class GdtDrawableLoader
   
   private URLDrawable.URLDrawableListener a()
   {
-    return new qms(this);
+    return new qrj(this);
   }
   
   private String a()
@@ -98,7 +98,7 @@ public class GdtDrawableLoader
       }
       while ((i != 0) && (!this.jdField_a_of_type_Boolean))
       {
-        new Handler(Looper.getMainLooper()).postDelayed(new qmt(this), 100L);
+        new Handler(Looper.getMainLooper()).postDelayed(new qrk(this), 100L);
         return;
         if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 4)
         {

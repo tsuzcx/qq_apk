@@ -26,13 +26,13 @@ public class NetSearchTemplateBannerTitleView
   {
     super.a();
     View localView = a(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363378));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366372));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362767));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366373));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364447));
-    this.c = ((TextView)localView.findViewById(2131366374));
-    this.d = ((TextView)localView.findViewById(2131365659));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363397));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366377));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362772));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366378));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364472));
+    this.c = ((TextView)localView.findViewById(2131366379));
+    this.d = ((TextView)localView.findViewById(2131365664));
   }
 }
 

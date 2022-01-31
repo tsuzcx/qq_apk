@@ -1,73 +1,29 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class low
-  implements BusinessObserver
+  implements Runnable
 {
-  public low(AdvertisementInfoModule paramAdvertisementInfoModule, AdvertisementInfo paramAdvertisementInfo) {}
+  public low(ReadinjoySPEventReport paramReadinjoySPEventReport, String paramString, long paramLong) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    int i = -1;
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "type = " + paramInt + " is success:" + paramBoolean);
-    }
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody;
-      if (paramBundle != null)
-      {
-        localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if (!localWebSsoResponseBody.ret.has()) {
-          break label253;
-        }
-      }
-      label253:
-      for (paramInt = localWebSsoResponseBody.ret.get();; paramInt = -1)
-      {
-        if (paramInt == 0)
-        {
-          paramBundle = localWebSsoResponseBody.data.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("AdvertisementInfoModule", 2, "back json " + paramBundle);
-          }
-          paramBundle = new JSONObject(paramBundle);
-          paramInt = i;
-          if (paramBundle.has("ret")) {
-            paramInt = paramBundle.getInt("ret");
-          }
-          if (paramInt == 0)
-          {
-            paramBundle = paramBundle.optJSONArray("data");
-            if ((paramBundle != null) && (paramBundle.length() > 0))
-            {
-              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson = paramBundle.getJSONObject(0).toString();
-              if (QLog.isColorLevel()) {
-                QLog.d("AdvertisementInfoModule", 2, "back  data json " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson);
-              }
-              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
-            }
-          }
-        }
-        return;
-      }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    ArrayList localArrayList = new ArrayList();
+    oidb_cmd0x80a.AttributeList localAttributeList1 = new oidb_cmd0x80a.AttributeList();
+    localAttributeList1.att_id.set(1);
+    localAttributeList1.att_name.set("uin");
+    localAttributeList1.att_value.set("" + this.jdField_a_of_type_JavaLangString);
+    oidb_cmd0x80a.AttributeList localAttributeList2 = new oidb_cmd0x80a.AttributeList();
+    localAttributeList2.att_id.set(2);
+    localAttributeList2.att_name.set("time");
+    localAttributeList2.att_value.set(String.valueOf(ReadinjoySPEventReport.a(this.jdField_a_of_type_Long) / 1000L));
+    localArrayList.add(localAttributeList1);
+    localArrayList.add(localAttributeList2);
+    PublicAccountUtil.a(21, "ExitMsgBusiness", localArrayList);
   }
 }
 

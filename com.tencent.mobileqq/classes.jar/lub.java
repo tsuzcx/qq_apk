@@ -1,20 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeNoImageSocial;
+import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 
 public class lub
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public lub(FeedItemCellTypeNoImageSocial paramFeedItemCellTypeNoImageSocial, RelativeLayout paramRelativeLayout) {}
+  public lub(ChannelInfoModule paramChannelInfoModule, ChannelInfo paramChannelInfo) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo);
   }
 }
 

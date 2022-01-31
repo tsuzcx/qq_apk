@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import android.hardware.SensorEvent;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.OrientationCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class aavs
-  implements aawb
+  implements Runnable
 {
-  public aavs(ArkLocalAppMgr paramArkLocalAppMgr) {}
+  public aavs(ArkAppEventObserverManager paramArkAppEventObserverManager, long paramLong, SensorEvent paramSensorEvent) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (!paramBoolean)
-    {
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", "updateInstalledApps, network not available.");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onOrientationSensorChange curTime=" + this.jdField_a_of_type_Long + ", event[0]=" + this.jdField_a_of_type_AndroidHardwareSensorEvent.values[0] + ", event[1]=" + this.jdField_a_of_type_AndroidHardwareSensorEvent.values[1] + ", event[2]=" + this.jdField_a_of_type_AndroidHardwareSensorEvent.values[2]);
     }
-    this.a.c();
-    ArkLocalAppMgr.b(this.a);
+    ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager, 360.0F - this.jdField_a_of_type_AndroidHardwareSensorEvent.values[0]);
+    ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager, -this.jdField_a_of_type_AndroidHardwareSensorEvent.values[1]);
+    ArkAppEventObserverManager.c(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager, -this.jdField_a_of_type_AndroidHardwareSensorEvent.values[2]);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onOrientationSensorChange update alpha=" + ArkAppEventObserverManager.c(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) + ", update beta=" + ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) + ", update gamma=" + ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager));
+    }
+    if (ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) != null) {
+      ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager).a(true, ArkAppEventObserverManager.c(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager), ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager), ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager));
+    }
   }
 }
 

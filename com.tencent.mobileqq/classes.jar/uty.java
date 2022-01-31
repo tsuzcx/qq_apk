@@ -1,62 +1,34 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForApollo;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgAnimatorCtr;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgLayAnim;
+import com.tencent.qphone.base.util.QLog;
 
 public class uty
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  int jdField_a_of_type_Int;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference b;
-  WeakReference c;
+  public uty(GoldMsgLayAnim paramGoldMsgLayAnim) {}
   
-  public uty(ApolloItemBuilder paramApolloItemBuilder, ApolloItemBuilder.Holder paramHolder, MessageForApollo paramMessageForApollo, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.b = new WeakReference(paramApolloItemBuilder);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHolder);
-    this.c = new WeakReference(paramMessageForApollo);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void run()
-  {
-    ApolloItemBuilder localApolloItemBuilder = (ApolloItemBuilder)this.b.get();
-    ApolloItemBuilder.Holder localHolder = (ApolloItemBuilder.Holder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    MessageForApollo localMessageForApollo = (MessageForApollo)this.c.get();
-    if ((localApolloItemBuilder == null) || (localHolder == null) || (localMessageForApollo == null)) {
-      break label45;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f = i / 100.0F;
+    int j = (int)(this.a.jdField_b_of_type_Int * f);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("GoldMsgLayAnim", 4, "updateTextView currentValue=" + i + ",fraction=" + f + ",textOldWidth=" + this.a.jdField_b_of_type_Int + ",textNewWidth=" + j);
     }
-    label45:
-    while (!(localHolder instanceof ApolloItemBuilder.Holder)) {
+    this.a.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().width = j;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(f);
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+    if ((paramValueAnimator == this.a.jdField_a_of_type_AndroidAnimationValueAnimator) && (i == 100)) {
+      this.a.a();
+    }
+    while ((paramValueAnimator != this.a.jdField_b_of_type_AndroidAnimationValueAnimator) || (i != 0)) {
       return;
     }
-    if (this.jdField_a_of_type_Int == 0) {
-      if (!(localHolder.c.getContext() instanceof MultiForwardActivity))
-      {
-        if (!localMessageForApollo.isSend()) {
-          break label148;
-        }
-        localHolder.c.setVisibility(0);
-        localHolder.d.setVisibility(8);
-      }
-    }
-    for (;;)
-    {
-      ApolloItemBuilder.a(localApolloItemBuilder, true);
-      if ((this.jdField_a_of_type_Int != 1) || (ApolloItemBuilder.a(localApolloItemBuilder) != localMessageForApollo.uniseq)) {
-        break;
-      }
-      localHolder.c.setVisibility(8);
-      localHolder.d.setVisibility(8);
-      ApolloItemBuilder.a(localApolloItemBuilder, 0L);
-      return;
-      label148:
-      localHolder.c.setVisibility(8);
-      localHolder.d.setVisibility(0);
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgAnimatorCtr.a();
   }
 }
 

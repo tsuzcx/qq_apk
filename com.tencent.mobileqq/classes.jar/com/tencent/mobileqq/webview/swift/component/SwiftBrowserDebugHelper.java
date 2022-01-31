@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import akon;
-import akoo;
-import akop;
-import akoq;
-import akor;
+import akwe;
+import akwf;
+import akwg;
+import akwh;
+import akwi;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -74,19 +74,19 @@ public class SwiftBrowserDebugHelper
       Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        ((StringBuilder)localObject1).append(((akor)((Iterator)localObject2).next()).toString());
+        ((StringBuilder)localObject1).append(((akwi)((Iterator)localObject2).next()).toString());
         ((StringBuilder)localObject1).append("\r\n");
       }
       localObject1 = ((StringBuilder)localObject1).toString();
       localObject2 = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a(), 230);
-      ((QQCustomDialog)localObject2).setContentView(2130968852);
+      ((QQCustomDialog)localObject2).setContentView(2130968856);
       ((QQCustomDialog)localObject2).getMessageTextView().setMovementMethod(ScrollingMovementMethod.getInstance());
       ((QQCustomDialog)localObject2).setTitle("JsAPI调用记录(仅支持非外发版本)");
       ((QQCustomDialog)localObject2).setMessage((CharSequence)localObject1);
       ((QQCustomDialog)localObject2).getMessageTextView().setMaxLines(20);
       ((QQCustomDialog)localObject2).getMessageTextView().setEllipsize(TextUtils.TruncateAt.END);
-      ((QQCustomDialog)localObject2).setPositiveButton("Close", new akon(this));
-      ((QQCustomDialog)localObject2).setNegativeButton("Copy", new akoo(this, (String)localObject1));
+      ((QQCustomDialog)localObject2).setPositiveButton("Close", new akwe(this));
+      ((QQCustomDialog)localObject2).setNegativeButton("Copy", new akwf(this, (String)localObject1));
       ((QQCustomDialog)localObject2).show();
     }
   }
@@ -162,14 +162,14 @@ public class SwiftBrowserDebugHelper
       localStringBuilder.append("首屏可交互打点:").append(localSwiftBrowserStatistics.J).append("ms.\r\n");
       localObject1 = localStringBuilder.toString();
       localObject2 = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a(), 230);
-      ((QQCustomDialog)localObject2).setContentView(2130968852);
+      ((QQCustomDialog)localObject2).setContentView(2130968856);
       ((QQCustomDialog)localObject2).getMessageTextView().setMovementMethod(ScrollingMovementMethod.getInstance());
       ((QQCustomDialog)localObject2).setTitle("WebView耗时统计(仅支持非外发版本)");
       ((QQCustomDialog)localObject2).setMessage((CharSequence)localObject1);
       ((QQCustomDialog)localObject2).getMessageTextView().setMaxLines(20);
       ((QQCustomDialog)localObject2).getMessageTextView().setEllipsize(TextUtils.TruncateAt.END);
-      ((QQCustomDialog)localObject2).setPositiveButton("Close", new akop(this));
-      ((QQCustomDialog)localObject2).setNegativeButton("Copy", new akoq(this, (String)localObject1));
+      ((QQCustomDialog)localObject2).setPositiveButton("Close", new akwg(this));
+      ((QQCustomDialog)localObject2).setNegativeButton("Copy", new akwh(this, (String)localObject1));
       ((QQCustomDialog)localObject2).show();
       return;
       if (SwiftBrowserStatistics.o)
@@ -205,7 +205,7 @@ public class SwiftBrowserDebugHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper
  * JD-Core Version:    0.7.0.1
  */

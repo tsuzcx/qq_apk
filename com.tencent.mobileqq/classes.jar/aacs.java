@@ -1,35 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
 
-public final class aacs
+class aacs
   implements Runnable
 {
-  public aacs(String paramString, byte paramByte, SharedPreferences paramSharedPreferences) {}
+  aacs(aacr paramaacr, SosoInterface.OnLocationListener paramOnLocationListener, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("param_soLoaderName", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("param_FailCode", String.valueOf(this.jdField_a_of_type_Byte));
-    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
-    if (this.jdField_a_of_type_Byte == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.a(null, "AREnable", bool, 0L, 0L, (HashMap)localObject, null);
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject).putInt("ar_native_so_load_result" + this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Byte);
-      SharedPreUtils.a((SharedPreferences.Editor)localObject);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aacs
  * JD-Core Version:    0.7.0.1
  */

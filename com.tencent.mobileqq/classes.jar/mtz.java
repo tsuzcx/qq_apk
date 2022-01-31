@@ -1,30 +1,22 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import com.tencent.biz.pubaccount.util.DiffUtil.DiffResult;
-import com.tencent.biz.pubaccount.util.ListUpdateCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 
-public class mtz
-  implements ListUpdateCallback
+class mtz
+  implements View.OnClickListener
 {
-  public mtz(DiffUtil.DiffResult paramDiffResult, RecyclerView.Adapter paramAdapter) {}
+  mtz(mty parammty, View.OnClickListener paramOnClickListener) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemRangeRemoved(paramInt1, paramInt2);
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemMoved(paramInt1, paramInt2);
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onClick: " + mty.a(this.jdField_a_of_type_Mty).mChannelCoverName);
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    ReadInJoyHelper.a(mty.a(this.jdField_a_of_type_Mty).mChannelCoverId, true);
+    mty.a(this.jdField_a_of_type_Mty);
   }
 }
 

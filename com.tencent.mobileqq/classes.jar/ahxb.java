@@ -1,43 +1,21 @@
-import com.tencent.common.app.BaseProtocolCoder;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.compatible.ActionListener;
-import com.tencent.mobileqq.service.MobileQQService;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.search.activity.VADActivity;
 
 public class ahxb
-  extends ActionListener
+  implements DialogInterface.OnClickListener
 {
-  public ahxb(MobileQQService paramMobileQQService) {}
+  public ahxb(VADActivity paramVADActivity) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramFromServiceMsg != null) && ("VideoSvc.Send".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
-    {
-      localObject = this.a.a("VideoSvc.Send");
-      if (localObject != null)
-      {
-        localObject = ((BaseProtocolCoder)localObject).a(paramToServiceMsg, paramFromServiceMsg);
-        localMessageHandler = MobileQQService.a(this.a).a();
-        if ((localMessageHandler != null) && (localObject != null)) {
-          localMessageHandler.a(paramToServiceMsg, paramFromServiceMsg, localObject);
-        }
-      }
-    }
-    while (paramFromServiceMsg == null)
-    {
-      Object localObject;
-      MessageHandler localMessageHandler;
-      return;
-    }
-    this.a.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxb
  * JD-Core Version:    0.7.0.1
  */

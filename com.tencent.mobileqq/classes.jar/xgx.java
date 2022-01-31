@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.OnCustomizeListener;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
 
 public class xgx
-  implements CustomizeStrategyFactory.OnCustomizeListener
+  implements Runnable
 {
-  public xgx(RedPacketManager paramRedPacketManager, RedPacketInfoBase paramRedPacketInfoBase, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
+  public xgx(RedPacketRecordFragment paramRedPacketRecordFragment) {}
   
-  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void run()
   {
-    paramRedPacketInfo.isCache = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.isCache;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
+    if (!this.a.a()) {
+      this.a.getActivity().runOnUiThread(new xgy(this));
+    }
   }
 }
 

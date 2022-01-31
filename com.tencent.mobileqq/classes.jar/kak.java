@@ -1,25 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.utils.UITools;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class kak
-  implements DialogInterface.OnClickListener
+  implements Handler.Callback
 {
-  public kak(VideoControlUI paramVideoControlUI) {}
+  public kak(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      UITools.a((AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (!PSTNC2CActivity.a(this.a))
+      {
+        this.a.a.a().f = true;
+        paramMessage = this.a.a.getApp();
+        Intent localIntent = new Intent(paramMessage, PSTNC2CActivity.class);
+        localIntent.setFlags(268566528);
+        paramMessage.startActivity(localIntent);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kak
  * JD-Core Version:    0.7.0.1
  */

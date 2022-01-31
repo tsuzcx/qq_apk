@@ -61,10 +61,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import wit;
-import wiu;
-import wiv;
-import wiw;
+import wod;
+import woe;
+import wof;
+import wog;
 
 public class SearchBaseFragment
   extends Fragment
@@ -78,7 +78,7 @@ public class SearchBaseFragment
   protected ContactSearchFacade a;
   CustomerLoadingDialog jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactCustomerLoadingDialog;
   protected BaseActivity a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wiw(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wog(this);
   public QQAppInterface a;
   protected IIconListener a;
   protected StatusManager a;
@@ -98,9 +98,9 @@ public class SearchBaseFragment
   public SearchBaseFragment()
   {
     this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener = new wit(this);
-    this.jdField_a_of_type_AndroidOsHandler = new wiu(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new wiv(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade$ISearchListener = new wod(this);
+    this.jdField_a_of_type_AndroidOsHandler = new woe(this);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new wof(this);
   }
   
   private static int a(String paramString1, String paramString2)
@@ -345,12 +345,12 @@ public class SearchBaseFragment
       localStringBuilder.append(((StringBuilder)localObject).toString());
       a(paramItemViewHolder, paramrecord.richStatus);
       return localStringBuilder.toString();
-      j = 2130839248;
-      i = 2130842895;
+      j = 2130839267;
+      i = 2130842925;
       localObject = "男";
       break;
-      j = 2130839243;
-      i = 2130842886;
+      j = 2130839262;
+      i = 2130842916;
       localObject = "女";
       break;
       paramItemViewHolder.c.setVisibility(0);
@@ -642,7 +642,7 @@ public class SearchBaseFragment
     paramItemViewHolder.c.setBackgroundResource(0);
     if ((paramrecord.video_account.has()) && (paramrecord.video_account.get() == 1))
     {
-      paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839767, 0);
+      paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839782, 0);
       paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding((int)DisplayUtils.a(BaseApplicationImpl.getContext(), 6.0F));
       if ((!paramrecord.class_index.has()) || (paramrecord.class_index.get() != 1)) {
         break label285;
@@ -660,12 +660,12 @@ public class SearchBaseFragment
     }
     for (;;)
     {
-      int i = BaseApplicationImpl.getContext().getResources().getColor(2131494264);
+      int i = BaseApplicationImpl.getContext().getResources().getColor(2131494270);
       paramItemViewHolder.c.setTextColor(i);
       return localStringBuilder.toString();
       if ((paramrecord.flag.has()) && (paramrecord.flag.get() == 1L))
       {
-        paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839751, 0);
+        paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839766, 0);
         paramItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding((int)DisplayUtils.a(BaseApplicationImpl.getContext(), 6.0F));
         break;
       }
@@ -807,7 +807,7 @@ public class SearchBaseFragment
     this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(a());
     this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2130846443);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2130846525);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     return this.jdField_a_of_type_AndroidWidgetLinearLayout;

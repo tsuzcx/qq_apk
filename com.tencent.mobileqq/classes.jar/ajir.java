@@ -1,34 +1,101 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.protofile.homework.hw_recite_score.hw_recite_score.RspReciteScore;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateCallback;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateInfo;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateResult;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class ajir
-  extends ProtoUtils.TroopProtocolObserver
+  extends BizTroopObserver
 {
-  public ajir(ReciteFragment paramReciteFragment, int paramInt1, int paramInt2) {}
+  public ajir(TroopCreateLogic paramTroopCreateLogic) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void j(boolean paramBoolean, Object paramObject)
   {
-    if (paramArrayOfByte == null) {}
-    do
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    for (Activity localActivity = null;; localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get())
     {
-      return;
-      paramBundle = new hw_recite_score.RspReciteScore();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramInt = paramBundle.score_grade.get();
-        ReciteFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).post(new ajis(this, paramInt - 1));
-        return;
+      this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback != null) {
+        break;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("ReciteFragment", 2, "InvalidProtocolBufferMicroException");
+      TroopCreateLogic.a(this.a);
+      return;
+    }
+    int i = -1;
+    if (paramObject == null)
+    {
+      TroopCreateLogic.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.a(-1, "");
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
+      return;
+    }
+    if (!paramBoolean) {}
+    try
+    {
+      int j = ((TroopCreateLogic.TroopCreateResult)paramObject).jdField_a_of_type_Int;
+      i = j;
+    }
+    catch (Exception paramObject)
+    {
+      label127:
+      String str;
+      break label127;
+    }
+    TroopCreateLogic.a(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.a(i, "");
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
+    return;
+    paramObject = (TroopInfo)paramObject;
+    str = paramObject.troopuin;
+    if (TextUtils.isEmpty(str))
+    {
+      TroopCreateLogic.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.a(-1, "");
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.f = str;
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_create", "", "new_create", "number", 0, 0, str, Integer.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_Int), "", "");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_JavaUtilArrayList == null)
+    {
+      i = 1;
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "suc_create", "person_create", 0, 0, str, "" + this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.d, "" + i, "");
+      ThreadManager.post(new ajis(this, str, paramObject, i), 8, null, true);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.b)
+      {
+        paramObject = localActivity;
+        if (localActivity == null) {
+          paramObject = BaseApplicationImpl.getContext();
+        }
+        this.a.a(paramObject, str);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.a(0, str);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+        break label508;
+      }
+      ((TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(str, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_JavaUtilArrayList, "");
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
+    }
+    for (;;)
+    {
+      TroopCreateLogic.a(this.a);
+      return;
+      i = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.jdField_a_of_type_JavaUtilArrayList.size();
+      break;
+      label508:
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
+    }
   }
 }
 

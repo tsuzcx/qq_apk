@@ -11,7 +11,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastRead
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import lst;
+import lvx;
 
 public class ProteusItemView
   extends LinearLayout
@@ -67,7 +67,7 @@ public class ProteusItemView
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(paramIReadInJoyModel);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(new lst(this, paramOnLastReadRefreshListener));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(new lvx(this, paramOnLastReadRefreshListener));
       return;
       label116:
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a().setVisibility(0);

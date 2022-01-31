@@ -1,73 +1,116 @@
 package c.t.m.g;
 
-final class bt
-  implements Runnable
+import android.os.Handler;
+import java.util.Iterator;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public final class bt
+  extends br
 {
-  bt(bo parambo) {}
+  bs a = new bs("HttpSchedulerHandler");
   
-  /* Error */
-  public final void run()
+  public final void a()
   {
-    // Byte code:
-    //   0: invokestatic 24	c/t/m/g/o:e	()V
-    //   3: invokestatic 28	c/t/m/g/o:b	()Ljava/lang/String;
-    //   6: astore 4
-    //   8: aload_0
-    //   9: getfield 12	c/t/m/g/bt:a	Lc/t/m/g/bo;
-    //   12: aload 4
-    //   14: invokestatic 33	c/t/m/g/bo:a	(Lc/t/m/g/bo;Ljava/lang/String;)Lc/t/m/g/bo$a;
-    //   17: astore 4
-    //   19: invokestatic 39	android/os/SystemClock:elapsedRealtime	()J
-    //   22: lstore_2
-    //   23: aload_0
-    //   24: getfield 12	c/t/m/g/bt:a	Lc/t/m/g/bo;
-    //   27: astore 5
-    //   29: aload 4
-    //   31: getfield 44	c/t/m/g/bo$a:b	I
-    //   34: invokestatic 47	c/t/m/g/bo:b	(I)I
-    //   37: istore_1
-    //   38: lload_2
-    //   39: aload 4
-    //   41: getfield 50	c/t/m/g/bo$a:a	J
-    //   44: lsub
-    //   45: iload_1
-    //   46: i2l
-    //   47: lcmp
-    //   48: ifle +38 -> 86
-    //   51: aload_0
-    //   52: getfield 12	c/t/m/g/bt:a	Lc/t/m/g/bo;
-    //   55: invokestatic 53	c/t/m/g/bo:b	(Lc/t/m/g/bo;)Landroid/os/Handler;
-    //   58: aload_0
-    //   59: getfield 12	c/t/m/g/bt:a	Lc/t/m/g/bo;
-    //   62: invokestatic 56	c/t/m/g/bo:a	(Lc/t/m/g/bo;)Ljava/lang/Runnable;
-    //   65: invokevirtual 62	android/os/Handler:removeCallbacks	(Ljava/lang/Runnable;)V
-    //   68: aload_0
-    //   69: getfield 12	c/t/m/g/bt:a	Lc/t/m/g/bo;
-    //   72: invokestatic 53	c/t/m/g/bo:b	(Lc/t/m/g/bo;)Landroid/os/Handler;
-    //   75: aload_0
-    //   76: getfield 12	c/t/m/g/bt:a	Lc/t/m/g/bo;
-    //   79: invokestatic 56	c/t/m/g/bo:a	(Lc/t/m/g/bo;)Ljava/lang/Runnable;
-    //   82: invokevirtual 66	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   85: pop
-    //   86: return
-    //   87: astore 4
-    //   89: aload 4
-    //   91: athrow
-    //   92: astore 4
-    //   94: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	95	0	this	bt
-    //   37	9	1	i	int
-    //   22	17	2	l	long
-    //   6	34	4	localObject1	Object
-    //   87	3	4	localObject2	Object
-    //   92	1	4	localThrowable	java.lang.Throwable
-    //   27	1	5	localbo	bo
-    // Exception table:
-    //   from	to	target	type
-    //   0	86	87	finally
-    //   0	86	92	java/lang/Throwable
+    m.j().post(new bu(this, null, null));
+  }
+  
+  public final void a(bn parambn)
+  {
+    try
+    {
+      localJSONObject2 = new JSONObject();
+      Object localObject = this.a;
+      x.e();
+      localObject = ((bs)localObject).a(x.b());
+      if (!cn.a((byte[])localObject))
+      {
+        localObject = new JSONObject(new String((byte[])localObject));
+        if (localObject != null)
+        {
+          localObject = ((JSONObject)localObject).optJSONObject("resultMap");
+          if (localObject != null)
+          {
+            Iterator localIterator = ((JSONObject)localObject).keys();
+            while (localIterator.hasNext())
+            {
+              String str = (String)localIterator.next();
+              JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray(str);
+              if (localJSONArray != null)
+              {
+                JSONObject localJSONObject3 = new JSONObject();
+                int i = 0;
+                while (i < localJSONArray.length())
+                {
+                  JSONObject localJSONObject4 = localJSONArray.getJSONObject(i);
+                  localJSONObject3.put(localJSONObject4.optString("unit"), localJSONObject4.optString("schedulecode"));
+                  i += 1;
+                }
+                localJSONObject2.put(str, localJSONObject3);
+              }
+            }
+          }
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        try
+        {
+          localJSONObject1 = new JSONObject();
+          localJSONObject1.put(m.c(), new JSONObject());
+          parambn.a.put("directScheduleCodes", localJSONObject1);
+          return;
+        }
+        catch (Exception parambn)
+        {
+          JSONObject localJSONObject2;
+          parambn.printStackTrace();
+          return;
+        }
+        localJSONObject2.put(m.c(), new JSONObject());
+        parambn.a.put("directScheduleCodes", localJSONObject2);
+        return;
+        localJSONObject2.put(m.c(), new JSONObject());
+        continue;
+        JSONObject localJSONObject1 = null;
+      }
+    }
+  }
+  
+  public final void a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("AccessScheduleRsp");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = paramJSONObject.toString();
+        if (!cn.a(paramJSONObject))
+        {
+          paramJSONObject = paramJSONObject.getBytes();
+          if (!cn.a(paramJSONObject))
+          {
+            String str = x.b();
+            this.a.a(str, paramJSONObject);
+            m.j().post(new bu(this, str, paramJSONObject));
+          }
+        }
+      }
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
+  
+  public final String c()
+  {
+    return "accessscheduler";
   }
 }
 

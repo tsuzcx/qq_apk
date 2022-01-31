@@ -1,32 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporter.OnFrequenceDataUpdateListener;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain;
+import java.util.HashMap;
 
 public class rjx
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public rjx(AddRequestActivity paramAddRequestActivity) {}
+  public rjx(DoraemonAPIReporterMain paramDoraemonAPIReporterMain, DoraemonAPIReporter.OnFrequenceDataUpdateListener paramOnFrequenceDataUpdateListener, String paramString, HashMap paramHashMap) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (NetworkUtil.d(BaseApplication.getContext()))
-    {
-      long l = Long.valueOf(this.a.app.getCurrentAccountUin()).longValue();
-      this.a.showDialog(2);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(l, Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue(), 1);
-      return;
-    }
-    QQToast.a(this.a, 2131434811, 0).b(this.a.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter$OnFrequenceDataUpdateListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rjx
  * JD-Core Version:    0.7.0.1
  */

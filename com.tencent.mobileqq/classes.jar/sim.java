@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.util.Pair;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 import java.util.ArrayList;
 
-class sim
+public class sim
   implements Runnable
 {
-  sim(sil paramsil) {}
+  public sim(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void run()
   {
-    if (this.a.a.j) {}
-    for (;;)
-    {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
       return;
-      SubAccountControll localSubAccountControll = (SubAccountControll)this.a.a.a.getManager(61);
-      if (localSubAccountControll != null)
-      {
-        ArrayList localArrayList = localSubAccountControll.a("sub.uin.all");
-        int j = localArrayList.size();
-        int i = 0;
-        while (i < j)
-        {
-          Pair localPair = (Pair)localArrayList.get(i);
-          localSubAccountControll.a(this.a.a.a, this.a.a.a(), localPair, new sin(this, localSubAccountControll, localPair));
-          i += 1;
-        }
-      }
     }
+    ArrayList localArrayList = TroopInfoActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new sin(this, localArrayList));
   }
 }
 

@@ -1,23 +1,16 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
 
 public class aeip
-  implements Runnable
+  extends GetRedPointExObserver
 {
-  public aeip(EmoticonManager paramEmoticonManager, String paramString1, String paramString2) {}
+  public aeip(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void run()
+  protected void a(Object paramObject)
   {
-    Emoticon localEmoticon = (Emoticon)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(Emoticon.class, "epId=? and eId=?", new String[] { this.jdField_a_of_type_JavaLangString, this.b });
-    if (localEmoticon != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(localEmoticon.getMapKey(), localEmoticon);
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonManager", 2, "hit db, put into cache");
-      }
+    if (this.a.a != null) {
+      this.a.a.a();
     }
   }
 }

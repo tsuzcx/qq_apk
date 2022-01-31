@@ -1,16 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.troop.logic.TroopAvatarWallEditCtrl.IGridItemStatusCallBack;
+import com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter;
+import com.tencent.widget.Gallery;
+import java.util.List;
 
 public class ajat
-  implements DialogInterface.OnDismissListener
+  implements TroopAvatarWallEditCtrl.IGridItemStatusCallBack
 {
-  public ajat(TroopWebviewPlugin paramTroopWebviewPlugin) {}
+  public ajat(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt)
   {
-    if (paramDialogInterface == this.a.a) {
-      this.a.a = null;
+    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getSelectedItemPosition() != paramInt) {
+      this.a.jdField_a_of_type_ComTencentWidgetGallery.setSelection(paramInt);
+    }
+    TroopAvatarWallEditActivity.a(this.a, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.jdField_a_of_type_JavaUtilList.add(paramString);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.notifyDataSetChanged();
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_JavaUtilList.size() > paramInt)
+    {
+      this.a.jdField_a_of_type_JavaUtilList.remove(paramInt);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.notifyDataSetChanged();
     }
   }
 }

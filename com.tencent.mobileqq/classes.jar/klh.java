@@ -1,17 +1,26 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.util.ILog;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import com.tencent.biz.PoiMapActivity;
 
-public final class klh
-  implements AsyncBack
+public class klh
+  implements View.OnKeyListener
 {
-  public void a(int paramInt) {}
+  public klh(PoiMapActivity paramPoiMapActivity) {}
   
-  public void a(String paramString, int paramInt)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 0) && (HtmlOffline.a.a())) {
-      HtmlOffline.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
+    {
+      paramView = ((TextView)paramView).getText().toString();
+      if (!TextUtils.isEmpty(paramView)) {
+        this.a.a(paramView);
+      }
+      return true;
     }
+    return false;
   }
 }
 

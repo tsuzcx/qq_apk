@@ -1,16 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.MixedImageOnclickListener;
+import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
 
 public class vha
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public vha(SixCombolEffectView paramSixCombolEffectView) {}
+  public vha(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    if (MixedMsgItemBuilder.a(this.a)) {
+      return;
+    }
+    MixedMsgItemBuilder.a(this.a).onClick(paramView);
   }
 }
 

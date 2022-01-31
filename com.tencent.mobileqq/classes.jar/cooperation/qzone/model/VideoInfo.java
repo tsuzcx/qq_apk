@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amuw;
+import anch;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.util.Map;
 public class VideoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amuw();
+  public static final Parcelable.Creator CREATOR = new anch();
   public byte a;
   public int a;
   public long a;

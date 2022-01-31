@@ -1,12 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class lft
+class lft
+  implements AsyncBack
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  lft(lfq paramlfq) {}
   
-  private lft(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  public void loaded(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
+    }
+  }
+  
+  public void progress(int paramInt) {}
 }
 
 

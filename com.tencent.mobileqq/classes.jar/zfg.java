@@ -1,36 +1,31 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanelAdapter;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
-import tencent.im.oidb.cmd0x66b.Oidb_0x66b.ReqBody;
 
 public class zfg
   implements Runnable
 {
-  public zfg(HotChatManager paramHotChatManager) {}
+  public zfg(ApolloPanel paramApolloPanel) {}
   
   public void run()
   {
-    CardHandler localCardHandler = (CardHandler)this.a.a.a(2);
-    oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
-    Oidb_0x66b.ReqBody localReqBody1 = new Oidb_0x66b.ReqBody();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Long.valueOf(Long.parseLong(this.a.a.getCurrentAccountUin())));
-    localReqBody.rpt_uint64_uins.set(localArrayList);
-    localReqBody1.bytes_reqbody_5eb.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    localReqBody1.uint32_req_pansocialinfo.set(1);
-    localCardHandler.a(localReqBody1);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter != null) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanel", 2, "func showGameViewOnly begins. Thread id = " + Thread.currentThread().getId());
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.notifyDataSetChanged();
+      this.a.jdField_a_of_type_JavaUtilList.clear();
+      this.a.jdField_a_of_type_JavaUtilList.add(this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameViewBinder);
+      ApolloPanel.b(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.a(this.a.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zfg
  * JD-Core Version:    0.7.0.1
  */

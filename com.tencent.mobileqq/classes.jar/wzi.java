@@ -1,13 +1,51 @@
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import MyCarrier.Carrier;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.activity.phone.MyBusinessActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mybusiness.MyBusinessManager;
 
 public class wzi
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wzi(GoldMsgSettingActivity paramGoldMsgSettingActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  public wzi(ContactListView paramContactListView) {}
   
-  public void run()
+  private void a()
   {
-    GoldMsgSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity, this.jdField_a_of_type_Boolean, this.b);
+    Context localContext = this.a.getContext();
+    Object localObject = ((MyBusinessManager)this.a.a.getManager(48)).a();
+    if ((localObject == null) || (TextUtils.isEmpty(((Carrier)localObject).carrierURL))) {
+      return;
+    }
+    localObject = ((Carrier)localObject).carrierURL;
+    Intent localIntent = new Intent(localContext, MyBusinessActivity.class);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("uin", this.a.a.getCurrentAccountUin());
+    localIntent.putExtra("title", localContext.getString(2131437142));
+    localIntent.putExtra("url", (String)localObject);
+    localIntent.putExtra("hideRightButton", true);
+    this.a.a(localIntent, 1000);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    case 2131369983: 
+    default: 
+      return;
+    case 2131369984: 
+      ContactListView.a(this.a, true);
+      ContactListView.a(this.a, "P_CliOper", "QQwangting", "txl_close_bluebar", "close_bluebar");
+      return;
+    }
+    ContactListView.a(this.a, true);
+    ContactListView.a(this.a, "P_CliOper", "QQwangting", "txl_clk_bluebar", "clk_bluebar");
+    a();
   }
 }
 

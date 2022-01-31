@@ -15,12 +15,12 @@ public class LabelDisplayCtrl
   
   protected int a()
   {
-    return 2130970424;
+    return 2130970439;
   }
   
   protected LabelContainer a(View paramView, int paramInt1, InterestTag paramInterestTag, int paramInt2)
   {
-    paramInterestTag = (ImageView)paramView.findViewById(2131368335);
+    paramInterestTag = (ImageView)paramView.findViewById(2131368337);
     if (paramInt1 == 7) {
       paramInterestTag.setVisibility(8);
     }
@@ -34,7 +34,7 @@ public class LabelDisplayCtrl
       }
       paramInt1 = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
       paramInt2 = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-      paramView = (LabelContainer)paramView.findViewById(2131370494);
+      paramView = (LabelContainer)paramView.findViewById(2131370503);
       paramView.setSpace(paramInt1, paramInt2);
       return paramView;
       paramInterestTag.setImageResource(b[paramInt1]);

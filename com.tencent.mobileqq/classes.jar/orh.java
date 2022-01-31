@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
 
 public class orh
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public orh(SlideTabViewPager paramSlideTabViewPager) {}
+  public orh(StoryMultiFragmentPart paramStoryMultiFragmentPart) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = (Integer)paramView.getTag();
-    this.a.setTab(paramView.intValue());
+    if (StoryMultiFragmentPart.b(this.a) != null) {
+      StoryMultiFragmentPart.b(this.a).setVisibility(4);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

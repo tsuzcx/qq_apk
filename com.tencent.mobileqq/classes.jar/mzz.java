@@ -1,60 +1,89 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader;
-import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.DownloadResult;
-import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerAIOShortVideoDownloader;
-import com.tencent.biz.qqstory.base.preload.DownloadTask;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.pic.DownCallBack.DownResult;
-import com.tencent.mobileqq.shortvideo.ShortVideoResult;
-import com.tencent.mobileqq.shortvideo.UiCallBack;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Map;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.manager.TicketManager;
 
-public class mzz
-  implements UiCallBack
+public final class mzz
+  implements Runnable
 {
-  public mzz(AsyncFileDownloader.InnerAIOShortVideoDownloader paramInnerAIOShortVideoDownloader, String paramString) {}
+  public mzz(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, ShortVideoResult paramShortVideoResult)
+  public void run()
   {
-    DownloadTask localDownloadTask;
-    if (paramShortVideoResult.jdField_a_of_type_Int == 0)
+    try
     {
-      paramShortVideoResult = (DownCallBack.DownResult)paramShortVideoResult.jdField_a_of_type_JavaLangObject;
-      localDownloadTask = (DownloadTask)this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader.a.a.remove(this.jdField_a_of_type_JavaLangString);
-      if (localDownloadTask != null)
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        return;
+      }
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        return;
+      }
+      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 == null) || (!(localObject1 instanceof QQAppInterface))) {
+        break label374;
+      }
+      localObject1 = (QQAppInterface)localObject1;
+    }
+    catch (Exception localException)
+    {
+      Object localObject1;
+      Object localObject3;
+      Object localObject4;
+      String str;
+      if (!QLog.isColorLevel()) {
+        return;
+      }
+      QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:request Exception " + localException);
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      while (QLog.isColorLevel())
       {
-        if (!new File(paramShortVideoResult.b).exists()) {
-          break label99;
-        }
-        localDownloadTask.b = (System.currentTimeMillis() - localDownloadTask.jdField_a_of_type_Long);
-        if (localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult != null) {
-          localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult.a(localDownloadTask, new ErrorMessage(0, "onDownload"));
+        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:request OutOfMemoryError " + localOutOfMemoryError);
+        return;
+        label374:
+        Object localObject2 = null;
+      }
+    }
+    if (localObject1 != null)
+    {
+      localObject3 = ((AppInterface)localObject1).getCurrentAccountUin();
+      if (!TextUtils.isEmpty((CharSequence)localObject3))
+      {
+        localObject1 = (TicketManager)((AppInterface)localObject1).getManager(2);
+        if (localObject1 != null)
+        {
+          localObject4 = ((TicketManager)localObject1).getSkey((String)localObject3);
+          if (!TextUtils.isEmpty((CharSequence)localObject4))
+          {
+            localObject1 = new Bundle();
+            str = String.format("http://c.mp.qq.com/post/pageview/report?ftype=5&ctype=1&aid=%s&vid=%s&rtype=%d&rowkey=%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_b_of_type_JavaLangString });
+            ((Bundle)localObject1).putString("Cookie", "uin=" + (String)localObject3 + "; skey=" + (String)localObject4);
+            localObject3 = new HashMap();
+            ((HashMap)localObject3).put("BUNDLE", localObject1);
+            ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
+            localObject4 = new naa(this);
+            localObject1 = str;
+            if (this.jdField_a_of_type_Int == 1) {
+              localObject1 = str + "&rcode=" + Integer.toString(this.jdField_b_of_type_Int);
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("PublicAccountUtil", 2, "doVideoPlayRealtimeReport cgiUrl=" + (String)localObject1);
+            }
+            new HttpWebCgiAsyncTask2((String)localObject1, "GET", (HttpWebCgiAsyncTask.Callback)localObject4, 0, null).execute(new HashMap[] { localObject3 });
+            return;
+          }
         }
       }
     }
-    label99:
-    do
-    {
-      do
-      {
-        return;
-        SLog.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-        return;
-        SLog.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.jdField_a_of_type_JavaLangString, String.valueOf(paramShortVideoResult.jdField_a_of_type_Int) });
-        localDownloadTask = (DownloadTask)this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader.a.a.remove(this.jdField_a_of_type_JavaLangString);
-      } while (localDownloadTask == null);
-      localDownloadTask.b = (System.currentTimeMillis() - localDownloadTask.jdField_a_of_type_Long);
-    } while (localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult == null);
-    localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult.a(localDownloadTask, new ErrorMessage(paramShortVideoResult.jdField_a_of_type_Int, "onFailed"));
   }
-  
-  public void a(int paramInt, ArrayList paramArrayList) {}
-  
-  public void b(int paramInt, ShortVideoResult paramShortVideoResult) {}
 }
 
 

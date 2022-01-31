@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.util;
 
-import ajzx;
-import ajzy;
-import ajzz;
-import akaa;
+import akhl;
+import akhm;
+import akhn;
+import akho;
 import android.graphics.Bitmap;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
@@ -31,9 +31,9 @@ import mqq.os.MqqHandler;
 public class FaceManager
   implements Manager
 {
-  ajzy jdField_a_of_type_Ajzy;
-  ajzz jdField_a_of_type_Ajzz;
-  akaa jdField_a_of_type_Akaa;
+  akhm jdField_a_of_type_Akhm;
+  akhn jdField_a_of_type_Akhn;
+  akho jdField_a_of_type_Akho;
   MQLruCache jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
   NearByFaceDownloader jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -54,12 +54,12 @@ public class FaceManager
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
-    this.jdField_a_of_type_Ajzz = new ajzz(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ajzz);
-    this.jdField_a_of_type_Ajzy = new ajzy(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Ajzy);
-    this.jdField_a_of_type_Akaa = new akaa(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akaa);
+    this.jdField_a_of_type_Akhn = new akhn(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Akhn);
+    this.jdField_a_of_type_Akhm = new akhm(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Akhm);
+    this.jdField_a_of_type_Akho = new akho(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akho);
     this.jdField_a_of_type_JavaUtilList = new Vector();
     this.b = new Vector();
     this.c = new Vector();
@@ -89,7 +89,7 @@ public class FaceManager
     {
       if (bool)
       {
-        paramObject = new ajzx(this, paramObject, paramInt, paramBoolean, paramVarArgs);
+        paramObject = new akhl(this, paramObject, paramInt, paramBoolean, paramVarArgs);
         ThreadManager.getUIHandler().post(paramObject);
         if (QLog.isColorLevel()) {
           QLog.d("FaceManager", 2, "dispatchMessage , needDis:" + bool + ",type: " + paramInt + ",args: " + paramVarArgs);
@@ -166,7 +166,7 @@ public class FaceManager
   {
     StringBuilder localStringBuilder = new StringBuilder(256);
     if (SystemUtil.a()) {
-      localStringBuilder.append(AppConstants.bo);
+      localStringBuilder.append(AppConstants.bp);
     }
     for (;;)
     {
@@ -345,16 +345,16 @@ public class FaceManager
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajzz);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akhn);
       this.b.clear();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajzy);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akaa);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akhm);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akho);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.FaceManager
  * JD-Core Version:    0.7.0.1
  */

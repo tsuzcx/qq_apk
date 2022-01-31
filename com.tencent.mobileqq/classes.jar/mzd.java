@@ -1,29 +1,16 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 
 public class mzd
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  public mzd(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager) {}
+  public mzd(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    ??? = PublicAccountImageCollectionPreloadManager.a(this.a).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      String str = (String)((Iterator)???).next();
-      PublicAccountImageCollectionPreloadManager.a(this.a, str);
-    }
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      PublicAccountImageCollectionPreloadManager.a(this.a).clear();
-      if (PublicAccountImageCollectionPreloadManager.b(this.a).size() > 0)
-      {
-        PublicAccountImageCollectionPreloadManager.a(this.a);
-        return;
-      }
-      this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.a != null) {
+      this.a.k();
     }
   }
 }

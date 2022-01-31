@@ -1,106 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsPresenter;
-import com.tencent.mobileqq.apollo.store.IApolloGuestsView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.GLTextureView.EGLContextFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class ytg
-  extends VasExtensionObserver
+  implements GLTextureView.EGLContextFactory
 {
-  public ytg(ApolloGuestsPresenter paramApolloGuestsPresenter) {}
+  private ytg(ApolloTextureView paramApolloTextureView) {}
   
-  protected void i(boolean paramBoolean, Object paramObject)
+  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    if ((paramObject == null) || (ApolloGuestsPresenter.a(this.a) == null) || (ApolloGuestsPresenter.a(this.a) == null)) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloGuestsPresenter", 2, "set zanCount = " + paramObject);
+      QLog.d("ApolloTextureView", 2, "[createContext], id:" + Thread.currentThread().getId());
     }
-    if (paramBoolean) {}
-    label378:
-    for (;;)
-    {
-      try
-      {
-        localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-        Calendar localCalendar = Calendar.getInstance();
-        ((SharedPreferences)localObject).edit().putBoolean(ApolloGuestsPresenter.a(this.a).getCurrentAccountUin() + "apollo_today_has_vote" + ApolloGuestsPresenter.a(this.a) + localCalendar.get(1) + localCalendar.get(2) + localCalendar.get(5), true).commit();
-        if (((Integer)paramObject).intValue() <= 99999) {
-          break label378;
-        }
-        paramObject = Integer.valueOf(99999);
-        ApolloGuestsPresenter.a(this.a).b(((Integer)paramObject).intValue());
-        return;
-      }
-      catch (Exception paramObject) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("ApolloGuestsPresenter", 2, "set zanCount error= " + paramObject.toString());
-      return;
-      if (((Long)paramObject).longValue() != -501010L) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "today has vote to " + ApolloGuestsPresenter.a(this.a));
-      }
-      paramObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-      Object localObject = Calendar.getInstance();
-      paramObject.edit().putBoolean(ApolloGuestsPresenter.a(this.a).getCurrentAccountUin() + "apollo_today_has_vote" + ApolloGuestsPresenter.a(this.a) + ((Calendar)localObject).get(1) + ((Calendar)localObject).get(2) + ((Calendar)localObject).get(5), true).commit();
-      return;
+    if (this.a.mIsDestroy != null) {
+      this.a.mIsDestroy.set(false);
     }
+    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
   }
   
-  protected void j(boolean paramBoolean, Object paramObject)
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    if ((!paramBoolean) || (paramObject == null) || (ApolloGuestsPresenter.a(this.a) == null)) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloGuestsPresenter", 2, "get zanCount = " + paramObject);
+      QLog.d("ApolloTextureView", 2, "[destroyContext], id:" + Thread.currentThread().getId());
     }
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-    int i = ((SharedPreferences)localObject).getInt("apollo_zan_count" + ApolloGuestsPresenter.a(this.a), 0);
-    ((SharedPreferences)localObject).edit().putInt("apollo_zan_count" + ApolloGuestsPresenter.a(this.a), ((Integer)paramObject).intValue()).commit();
-    if (((Integer)paramObject).intValue() > 99999) {
-      paramObject = Integer.valueOf(99999);
+    if (this.a.mIsDestroy != null) {
+      this.a.mIsDestroy.set(true);
     }
-    for (;;)
-    {
-      localObject = String.valueOf(paramObject);
-      if (((Integer)paramObject).intValue() >= 99999)
-      {
-        paramObject = Integer.valueOf(99999);
-        localObject = paramObject + "+";
-      }
-      for (;;)
-      {
-        ApolloGuestsPresenter.a(this.a).a((String)localObject, i, ((Integer)paramObject).intValue());
-        return;
-      }
+    if (this.a.mRender != null) {
+      this.a.mRender.onDestroy();
     }
-  }
-  
-  protected void k(boolean paramBoolean, Object paramObject) {}
-  
-  protected void l(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ApolloGuestsPresenter", 2, "ApolloDressChange uin=" + paramObject);
-        if (ApolloGuestsPresenter.a(this.a) != null) {
-          ApolloGuestsPresenter.a(this.a).e();
-        }
-      }
-      this.a.c();
-    }
+    paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
   }
 }
 

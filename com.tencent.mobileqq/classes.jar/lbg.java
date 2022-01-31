@@ -1,18 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicManager;
-import com.tencent.mobileqq.app.BrowserAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountManager;
 
 public class lbg
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public lbg(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public lbg(PublicAccountManager paramPublicAccountManager) {}
   
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.a().b();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

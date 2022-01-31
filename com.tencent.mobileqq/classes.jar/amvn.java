@@ -1,15 +1,32 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class amvn
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public amvn(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public amvn(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RemoteHandleManager.a().a().g();
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
+        FileManagerUtil.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 777, false, 0);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
+      return;
+      FileManagerUtil.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
+      continue;
+      paramDialogInterface = new Intent(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, ScannerActivity.class);
+      paramDialogInterface.putExtra("from", "qlink");
+      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(paramDialogInterface);
+    }
   }
 }
 

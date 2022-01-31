@@ -1,31 +1,14 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.child.TroopStoryForAIOPlayMode;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.newshare.model.Job;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor;
 
 public class nlu
-  extends IPlayVideoStatusChangeListener
+  implements Runnable
 {
-  public nlu(TroopStoryForAIOPlayMode paramTroopStoryForAIOPlayMode) {}
+  public nlu(JobExecutor paramJobExecutor, Job paramJob) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (paramInt == this.a.j) {
-      return;
-    }
-    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.a.a.a.get(paramInt);
-    if (this.a.a(localStoryVideoItem)) {
-      ReportController.b(null, "dc00898", "", "", "0X8007424", "0X8007424", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X8007427", "0X8007427", 0, 0, "", "", "", "");
-      this.a.j = paramInt;
-      return;
-      ReportController.b(null, "dc00898", "", "", "0X8007FC9", "0X8007FC9", 0, 0, "", "", "", "");
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.b());
   }
 }
 

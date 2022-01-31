@@ -1,36 +1,35 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ChildDrawingOrderCallback;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
 
 public class amex
-  implements RecyclerView.ChildDrawingOrderCallback
+  implements QSecFramework.IGoingUpHandler
 {
-  public amex(ItemTouchHelper paramItemTouchHelper) {}
+  public amex(QSecFramework paramQSecFramework) {}
   
-  public int onGetChildDrawingOrder(int paramInt1, int paramInt2)
+  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    if (this.a.jdField_a_of_type_AndroidViewView == null) {}
-    int i;
-    do
+    if (paramInt1 != 0)
     {
-      return paramInt2;
-      int j = this.a.d;
-      i = j;
-      if (j == -1)
-      {
-        i = this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.indexOfChild(this.a.jdField_a_of_type_AndroidViewView);
-        this.a.d = i;
+      if (QLog.isColorLevel()) {
+        QLog.d("QSecFramework", 2, String.format("Native msg, cookie: %08X, delay: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
       }
-      if (paramInt2 == paramInt1 - 1) {
-        return i;
+      if (paramInt2 != 0) {
+        QSecFramework.a(this.a).sendMessageDelayed(QSecFramework.a(this.a).obtainMessage(1, paramInt1, 0), paramInt2 * 1000);
       }
-    } while (paramInt2 < i);
-    return paramInt2 + 1;
+    }
+    else
+    {
+      return 0;
+    }
+    QSecFramework.a(this.a).sendMessage(QSecFramework.a(this.a).obtainMessage(1, paramInt1, 0));
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amex
  * JD-Core Version:    0.7.0.1
  */

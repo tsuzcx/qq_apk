@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.armap.wealthgod;
 
-import abim;
-import abin;
-import abio;
-import abip;
+import abpn;
+import abpo;
+import abpp;
+import abpq;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
@@ -50,7 +50,7 @@ public class ARMapSplashBgView
   public ARMapSplashBgView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2130970234, this, true);
+    LayoutInflater.from(paramContext).inflate(2130970249, this, true);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     c();
   }
@@ -58,19 +58,19 @@ public class ARMapSplashBgView
   private void c()
   {
     Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369760));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369762));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369763));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369765));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369766));
-    this.f = ((ImageView)findViewById(2131369764));
-    this.g = ((ImageView)findViewById(2131369767));
-    this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapFlakeView = ((ARMapFlakeView)findViewById(2131369761));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369770));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369772));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369773));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369775));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369776));
+    this.f = ((ImageView)findViewById(2131369774));
+    this.g = ((ImageView)findViewById(2131369777));
+    this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapFlakeView = ((ARMapFlakeView)findViewById(2131369771));
     this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapFlakeView.setDataType(100);
     this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapFlakeView.setVisibility(8);
-    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131560254);
+    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131560255);
     this.jdField_c_of_type_Int = localResources.getInteger(2131689486);
-    this.jdField_d_of_type_Int = localResources.getDimensionPixelSize(2131560258);
+    this.jdField_d_of_type_Int = localResources.getDimensionPixelSize(2131560259);
     this.jdField_e_of_type_Int = localResources.getInteger(2131689487);
   }
   
@@ -96,7 +96,7 @@ public class ARMapSplashBgView
       localValueAnimator1.setDuration(l1);
       localValueAnimator1.setRepeatMode(1);
       localValueAnimator1.setRepeatCount(-1);
-      localValueAnimator1.addUpdateListener(new abim(this));
+      localValueAnimator1.addUpdateListener(new abpn(this));
       localValueAnimator2 = ValueAnimator.ofFloat(new float[] { 0.0F, -1.0F, 0.0F, 1.0F, 0.0F });
       if (this.jdField_a_of_type_Int != 1) {
         break label186;
@@ -109,7 +109,7 @@ public class ARMapSplashBgView
       localValueAnimator2.setDuration(l1);
       localValueAnimator2.setRepeatMode(1);
       localValueAnimator2.setRepeatCount(-1);
-      localValueAnimator2.addUpdateListener(new abin(this));
+      localValueAnimator2.addUpdateListener(new abpo(this));
       this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localValueAnimator1, localValueAnimator2 });
       return;
@@ -134,7 +134,7 @@ public class ARMapSplashBgView
       localValueAnimator1.setDuration(l1);
       localValueAnimator1.setRepeatMode(1);
       localValueAnimator1.setRepeatCount(-1);
-      localValueAnimator1.addUpdateListener(new abio(this));
+      localValueAnimator1.addUpdateListener(new abpp(this));
       localValueAnimator2 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F, 0.0F, -1.0F, 0.0F });
       if (this.jdField_a_of_type_Int != 1) {
         break label186;
@@ -147,7 +147,7 @@ public class ARMapSplashBgView
       localValueAnimator2.setDuration(l1);
       localValueAnimator2.setRepeatMode(1);
       localValueAnimator2.setRepeatCount(-1);
-      localValueAnimator2.addUpdateListener(new abip(this));
+      localValueAnimator2.addUpdateListener(new abpq(this));
       this.jdField_b_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
       this.jdField_b_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localValueAnimator1, localValueAnimator2 });
       return;

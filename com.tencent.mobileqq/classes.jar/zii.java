@@ -1,44 +1,20 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.ContactBinded;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import java.util.Comparator;
 
 public class zii
-  implements Runnable
+  implements Comparator
 {
-  public zii(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zii(ConditionSearchManager paramConditionSearchManager) {}
   
-  public void run()
+  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
   {
-    Object localObject1 = PhoneContactManagerImp.a(this.a).a();
-    ((EntityTransaction)localObject1).a();
-    try
-    {
-      Iterator localIterator = PhoneContactManagerImp.a(this.a).values().iterator();
-      while (localIterator.hasNext())
-      {
-        PhoneContact localPhoneContact = (PhoneContact)localIterator.next();
-        if (localPhoneContact.isNewRecommend)
-        {
-          localPhoneContact.isNewRecommend = false;
-          PhoneContactManagerImp.a(this.a).a(localPhoneContact);
-        }
-      }
+    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
+    int i = j;
+    if (j == 0) {
+      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
     }
-    finally
-    {
-      ((EntityTransaction)localObject1).b();
-    }
-    ((EntityTransaction)localObject1).b();
-    localObject1 = PhoneContactManagerImp.a(this.a);
-    if (localObject1 != null) {
-      ((ContactBinded)localObject1).isReaded = true;
-    }
-    PhoneContactManagerImp.c(this.a, false);
+    return i;
   }
 }
 

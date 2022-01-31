@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.dingdong.DingdongPluginBridgeActivity;
+import com.tencent.widget.RangeButtonView;
 
 public class amkr
-  implements DialogInterface.OnDismissListener
 {
-  public amkr(DingdongPluginBridgeActivity paramDingdongPluginBridgeActivity) {}
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
+  public float e;
+  public float f;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public amkr(RangeButtonView paramRangeButtonView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkr
  * JD-Core Version:    0.7.0.1
  */

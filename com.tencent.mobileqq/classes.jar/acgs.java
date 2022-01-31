@@ -1,18 +1,4 @@
-import android.view.View;
-import com.tencent.mobileqq.emoticonview.RecommendEmotionAdapter;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.PromotionEmoticonPkg;
-import java.io.File;
-
-public class acgs
-{
-  public int a;
-  public View a;
-  public ClubContentJsonTask.PromotionEmoticonPkg a;
-  public File a;
-  public boolean a;
-  
-  public acgs(RecommendEmotionAdapter paramRecommendEmotionAdapter) {}
-}
+public class acgs {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

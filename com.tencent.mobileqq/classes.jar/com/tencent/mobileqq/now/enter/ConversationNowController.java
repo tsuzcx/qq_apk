@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.now.enter;
 
-import agaa;
-import agab;
-import agac;
-import agad;
-import agae;
-import agaf;
-import agag;
+import agec;
+import aged;
+import agee;
+import agef;
+import ageg;
+import ageh;
+import agei;
+import agej;
 import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.os.Handler.Callback;
@@ -14,7 +15,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -25,8 +25,6 @@ import android.view.animation.AnimationSet;
 import android.view.animation.Interpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.nineoldandroids.animation.Animator.AnimatorListener;
@@ -36,8 +34,10 @@ import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView;
+import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView.NowPendantClickListener;
 import com.tencent.mobileqq.now.enter.widget.HongbaoListViewEventCallback;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.ReportTask;
@@ -48,17 +48,16 @@ import com.tencent.util.WeakReferenceHandler;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class ConversationNowController
-  implements Handler.Callback, HongbaoListViewEventCallback
+  implements Handler.Callback, HongBao2018ListView.NowPendantClickListener, HongbaoListViewEventCallback
 {
   protected final int a;
   protected long a;
   private Resources jdField_a_of_type_AndroidContentResResources;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new agaa(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new agec(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new AccelerateDecelerateInterpolator();
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private Animator.AnimatorListener jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener;
   private ValueAnimator jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator;
@@ -66,11 +65,11 @@ public class ConversationNowController
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private HongBao2018ListView jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView;
   public WeakReferenceHandler a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new agae(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ageg(this);
   private String jdField_a_of_type_JavaLangString;
   protected boolean a;
   protected final int b;
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
+  private long jdField_b_of_type_Long;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private Animator.AnimatorListener jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener;
   private ValueAnimator jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator;
@@ -103,8 +102,8 @@ public class ConversationNowController
     this.jdField_a_of_type_ComTencentMobileqqActivityConversation = paramConversation;
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363964));
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView = ((HongBao2018ListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363972));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363989));
+    this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView = ((HongBao2018ListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363997));
     this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908307);
     this.jdField_e_of_type_Int = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 10.0F);
     this.jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
@@ -148,8 +147,8 @@ public class ConversationNowController
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new agab(this, paramView2, paramView1, paramView3));
-      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new agac(this, paramView3);
+      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new aged(this, paramView2, paramView1, paramView3));
+      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new agee(this, paramView3);
     }
     this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
     this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
@@ -172,45 +171,13 @@ public class ConversationNowController
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new agaf(this, paramView2, paramView1, paramView3));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new agag(this, paramView3, paramView1);
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new ageh(this, paramView2, paramView1, paramView3));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new agei(this, paramView3, paramView1);
     }
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addListener(this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener);
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.start();
-  }
-  
-  private void e(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConversationNowController", 2, new Object[] { "[showPullRefreshBanner] isFake=", Boolean.valueOf(paramBoolean) });
-    }
-    if (((paramBoolean) && (this.g == 2)) || ((!paramBoolean) && (this.g == 1))) {
-      return;
-    }
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent() == null))
-    {
-      m = (int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131559471);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, m);
-      localLayoutParams.topMargin = this.k;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, localLayoutParams);
-      this.l = (m + this.k);
-    }
-    if (this.jdField_b_of_type_AndroidViewViewGroup == null)
-    {
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130969143, null));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365356));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365357));
-    }
-    if (paramBoolean) {}
-    for (int m = 2;; m = 1)
-    {
-      b(m);
-      this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.setNewYearOverScrollHeader(null);
-      this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.setNewYearOverScrollHeader(this.jdField_b_of_type_AndroidViewViewGroup);
-      return;
-    }
   }
   
   private void n()
@@ -233,8 +200,8 @@ public class ConversationNowController
       e();
       return;
     }
-    d(false);
-    h();
+    c(false);
+    g();
   }
   
   public void a()
@@ -315,7 +282,7 @@ public class ConversationNowController
             }
           } while (this.jdField_b_of_type_AndroidWidgetTextView == null);
           this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversation != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.i))
+          if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversation != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.j))
           {
             this.jdField_b_of_type_AndroidWidgetTextView.setText("正在刷新...");
             return;
@@ -325,7 +292,7 @@ public class ConversationNowController
           if ((m >= this.i) && ((m < this.i) || (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView == null) || (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.a()))) {
             break label240;
           }
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversation == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityConversation.i)) {
+          if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversation == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityConversation.j)) {
             break;
           }
           if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
@@ -350,40 +317,6 @@ public class ConversationNowController
     } while (this.jdField_b_of_type_AndroidWidgetTextView == null);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setText("继续下拉进入全民闯关");
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.d("ConversationNowController", 1, "[showNowRefreshEntrance] ,url:" + paramString);
-    View localView;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
-    {
-      localView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131364934);
-      if (localView == null) {}
-    }
-    try
-    {
-      localView.setBackgroundResource(2130839544);
-      this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.setHongbaoEventCallback(this);
-      this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.c();
-      e(false);
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        QLog.e("ConversationNowController", 1, "[showNowRefreshEntrance] frame.setBackgroundResource oom=", localOutOfMemoryError);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("ConversationNowController", 1, "[showNowRefreshEntrance] frame.setBackgroundResource error=", localException);
-      }
-    }
   }
   
   public void a(boolean paramBoolean)
@@ -411,6 +344,19 @@ public class ConversationNowController
     }
   }
   
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {}
+    for (int m = 2;; m = 1)
+    {
+      this.jdField_d_of_type_Int = m;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.a(true, paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.setNowPendantClickListener(this);
+      return;
+    }
+  }
+  
   public boolean a()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityConversation == null)) {}
@@ -425,6 +371,7 @@ public class ConversationNowController
     this.jdField_d_of_type_Int = 0;
     if (this.g == 0) {}
     this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.a(false, false);
+    this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.setNowPendantClickListener(null);
   }
   
   public void b(int paramInt)
@@ -453,7 +400,7 @@ public class ConversationNowController
       if (((m >= this.h) && (m <= this.i)) || ((m > this.i) && (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView != null) && (!this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.a()))) {
         if (this.g == 1)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.i) {
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.j) {
             break label293;
           }
           if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
@@ -499,13 +446,24 @@ public class ConversationNowController
   
   public void b(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int m = 2;; m = 1)
+    if (paramBoolean)
     {
-      this.jdField_d_of_type_Int = m;
-      this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.a(true, paramBoolean);
+      if ((this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator != null) && (this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.isRunning()))
+      {
+        this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
+        this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
+      }
+      f();
+      this.jdField_c_of_type_Boolean = true;
+    }
+    while (this.jdField_c_of_type_Boolean) {
       return;
     }
+    this.jdField_c_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ConversationNowController", 2, "[showTitle]");
+    }
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c());
   }
   
   public void c()
@@ -537,34 +495,6 @@ public class ConversationNowController
   
   public void c(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      if ((this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator != null) && (this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.isRunning()))
-      {
-        this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
-        this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
-      }
-      g();
-      this.jdField_c_of_type_Boolean = true;
-    }
-    while (this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.jdField_c_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ConversationNowController", 2, "[showTitle]");
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c());
-  }
-  
-  public void d()
-  {
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public void d(boolean paramBoolean)
-  {
     if ((!this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityConversation == null)) {
       return;
     }
@@ -589,6 +519,12 @@ public class ConversationNowController
     this.jdField_c_of_type_Boolean = false;
   }
   
+  public void d()
+  {
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
   public void e()
   {
     if (QLog.isColorLevel()) {
@@ -596,32 +532,8 @@ public class ConversationNowController
     }
   }
   
-  public void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConversationNowController", 2, "[onActivePendantClick]");
-    }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(3, 100L);
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      long l1 = ((NowHongbaoPushManager)localQQAppInterface.getManager(265)).a(3);
-      ReportController.b(localQQAppInterface, "dc00899", "Grp_AIO", "", "year_icon", "upicon_click", 0, 0, l1 + "", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("now_enter.pendant", 2, "report Pendant click, pushId=" + l1);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("now_enter.pendant", 2, "report Pendant click, exception:" + localException);
-    }
-  }
-  
   @TargetApi(11)
-  public void g()
+  public void f()
   {
     View localView1 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
     View localView2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c();
@@ -640,7 +552,7 @@ public class ConversationNowController
     }
   }
   
-  public void h()
+  public void g()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ConversationNowController", 2, "[hideList]");
@@ -677,7 +589,7 @@ public class ConversationNowController
       ((AlphaAnimation)localObject2).setDuration(l1);
       ((AlphaAnimation)localObject2).setFillAfter(true);
       this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.clearAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.postDelayed(new agad(this), l1);
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new agef(this), l1);
       this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.a(false);
       this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.startAnimation((Animation)localObject1);
       if (this.jdField_a_of_type_AndroidViewView != null)
@@ -694,6 +606,16 @@ public class ConversationNowController
       new ReportTask((QQAppInterface)localObject1).a("dc00899").b("Grp_AIO").c("year_icon").d("scroll_down").a(new String[] { String.valueOf(m) }).a(new String[] { "2" }).a();
       return;
     }
+  }
+  
+  public void h()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ConversationNowController", 2, "onResume enter");
+    }
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 0L);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -713,34 +635,24 @@ public class ConversationNowController
   
   public void i()
   {
-    this.jdField_b_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ConversationNowController", 2, "onResume enter");
-    }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 0L);
-  }
-  
-  public void j()
-  {
     this.jdField_b_of_type_Boolean = false;
     if (QLog.isColorLevel()) {
       QLog.d("ConversationNowController", 2, "onPause enter");
     }
   }
   
-  public void k()
+  public void j()
   {
     QLog.d("ConversationNowController", 1, "onAfterAccountChanged");
   }
   
-  public void l()
+  public void k()
   {
     QLog.d("ConversationNowController", 1, "onBeforeAccountChanged:");
     a();
   }
   
-  public void m()
+  public void l()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ConversationNowController", 2, "onDestory enter");
@@ -748,6 +660,44 @@ public class ConversationNowController
     a();
     this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void m()
+  {
+    if (System.currentTimeMillis() - this.jdField_b_of_type_Long <= 2000L) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ConversationNowController", 2, "onNowPendantClick too frequency");
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        this.jdField_b_of_type_Long = System.currentTimeMillis();
+        if (QLog.isColorLevel()) {
+          QLog.d("ConversationNowController", 2, "[onActivePendantClick]");
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("ConversationNowController", 2, "open detail url=" + this.jdField_a_of_type_JavaLangString);
+        }
+        Object localObject = this.jdField_a_of_type_JavaLangString;
+        ThreadManagerV2.excute(new agej(this, System.currentTimeMillis(), (String)localObject), 16, null, true);
+        try
+        {
+          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          long l1 = ((NowHongbaoPushManager)((QQAppInterface)localObject).getManager(265)).a(3);
+          ReportController.b((QQAppInterface)localObject, "dc00899", "Grp_AIO", "", "year_icon", "upicon_click", 0, 0, l1 + "", "", "", "");
+          if (QLog.isColorLevel())
+          {
+            QLog.i("now_enter.pendant", 2, "report Pendant click, pushId=" + l1);
+            return;
+          }
+        }
+        catch (Exception localException) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("now_enter.pendant", 2, "report Pendant click, exception:" + localException);
   }
 }
 

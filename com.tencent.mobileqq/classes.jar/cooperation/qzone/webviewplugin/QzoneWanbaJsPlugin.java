@@ -1,9 +1,9 @@
 package cooperation.qzone.webviewplugin;
 
-import andn;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
+import anln;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import cooperation.qzone.util.QZLog;
@@ -11,7 +11,7 @@ import cooperation.qzone.util.QZLog;
 public class QzoneWanbaJsPlugin
   extends QzoneInternalWebViewPlugin
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new andn(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new anln(this);
   private volatile boolean jdField_a_of_type_Boolean;
   
   private void b()

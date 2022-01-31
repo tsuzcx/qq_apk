@@ -1,39 +1,28 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo;
-import dov.com.tencent.mobileqq.shortvideo.filter.QQEncodeFilterRender;
+import android.view.ViewParent;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerBarLayout;
 
 public class aong
-  implements HWEncodeListener
+  implements Runnable
 {
-  public aong(MergeEditVideo paramMergeEditVideo, QQEncodeFilterRender paramQQEncodeFilterRender, int paramInt1, int paramInt2) {}
+  private int jdField_a_of_type_Int;
+  
+  public aong(PickerBarLayout paramPickerBarLayout) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender.a(this.jdField_a_of_type_Int, this.b);
-    }
+    this.jdField_a_of_type_Int = PickerBarLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout);
   }
   
-  public void a(String arg1)
+  public void run()
   {
-    synchronized (MergeEditVideo.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecMergeEditVideo))
+    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.getParent() != null) && (this.jdField_a_of_type_Int == PickerBarLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout)))
     {
-      MergeEditVideo.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecMergeEditVideo, true);
-      MergeEditVideo.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecMergeEditVideo).notifyAll();
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender != null) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender.a();
-      }
-      return;
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.a = true;
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.getParent().requestDisallowInterceptTouchEvent(true);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.sendAccessibilityEvent(2);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.a(PickerBarLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout));
     }
   }
-  
-  public void a_(int paramInt, Throwable paramThrowable)
-  {
-    SLog.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + paramThrowable);
-  }
-  
-  public void b() {}
 }
 
 

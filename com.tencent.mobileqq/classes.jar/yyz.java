@@ -1,14 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class yyz
   implements Runnable
 {
-  public yyz(ApolloPanel paramApolloPanel) {}
+  public yyz(SpriteUIHandler paramSpriteUIHandler, String paramString) {}
   
   public void run()
   {
-    this.a.a.setVisibility(0);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 1).a();
+    }
   }
 }
 

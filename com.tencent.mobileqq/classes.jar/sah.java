@@ -1,63 +1,30 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class sah
-  extends TroopObserver
+public final class sah
+  implements DialogInterface.OnClickListener
 {
-  public sah(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public sah(QQAppInterface paramQQAppInterface, Context paramContext, ChatActivityUtils.StartVideoListener paramStartVideoListener, int paramInt) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
-    {
-      HashMap localHashMap = new HashMap();
-      if ((!paramBoolean) && ((paramObject instanceof Integer))) {
-        i = ((Integer)paramObject).intValue();
-      }
-      for (;;)
-      {
-        localHashMap.put("result", i + "");
-        localHashMap.put("netType", NetworkUtil.a(BaseApplication.getContext()) + "");
-        StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "multiMsgNickTimeoutR", false, 30000L, 0L, localHashMap, "");
-        return;
-        if (paramBoolean) {
-          i = 0;
-        }
-      }
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 2, 12);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    MultiMsgManager.a().b.clear();
-    if ((paramBoolean) && (paramObject != null))
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (this.jdField_a_of_type_Int == 6) {}
+    for (paramInt = 1;; paramInt = 4)
     {
-      MultiMsgManager.a().b.putAll((Map)paramObject);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MultiMsg", 4, "onBatchTroopCardDefaultNick = " + paramObject);
-      }
-    }
-    while (MultiMsgManager.a().b.size() == 0)
-    {
-      QQToast.a(this.a, 2131433424, 0).b(this.a.getTitleBarHeight());
+      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063F9", "0X80063F9", paramInt, 0, "", "", "", "");
       return;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MultiMsg", 4, "onBatchTroopCardDefaultNick failed");
-      }
     }
-    this.a.a((Map)paramObject, MultiMsgManager.a().a);
   }
 }
 

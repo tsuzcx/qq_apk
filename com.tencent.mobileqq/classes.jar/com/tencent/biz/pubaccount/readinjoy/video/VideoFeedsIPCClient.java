@@ -7,12 +7,12 @@ import eipc.EIPCClient;
 import eipc.EIPCResult;
 import java.util.List;
 import java.util.Vector;
-import mcj;
+import mfx;
 
 public class VideoFeedsIPCClient
 {
   private static VideoFeedsIPCClient jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new mcj(this, "Module_VideoFeedsIPCServer");
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new mfx(this, "Module_VideoFeedsIPCServer");
   private List jdField_a_of_type_JavaUtilList = new Vector();
   
   private VideoFeedsIPCClient()

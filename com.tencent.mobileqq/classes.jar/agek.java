@@ -1,27 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.now.enter.NowEnterManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class agek
-  implements View.OnClickListener
+  implements Runnable
 {
-  public agek(ARTipsManager paramARTipsManager, aget paramaget) {}
+  public agek(NowEnterManager paramNowEnterManager, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
-    if (this.jdField_a_of_type_Aget.a != null) {
-      this.jdField_a_of_type_Aget.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("NowEnterManager", 2, "start preload image~");
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a(this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a, this.jdField_a_of_type_JavaLangString);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      URLDrawable.getDrawable(this.b, localURLDrawableOptions).downloadImediatly();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("NowEnterManager", 1, localException, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agek
  * JD-Core Version:    0.7.0.1
  */

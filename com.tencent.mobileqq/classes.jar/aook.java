@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
 public class aook
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aook(PtvTemplateManager paramPtvTemplateManager, String paramString) {}
+  public aook(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    FileUtils.a(PtvTemplateManager.b.getPath() + File.separator, "dov_doodle_template_new.cfg", this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.i("DOV_Doodle_Strokes_PtvTemplateManager", 2, "save Config to file finish.");
-    }
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
   }
 }
 

@@ -1,17 +1,25 @@
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicDataManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.now.NowVideoController;
 
 public class kqf
-  implements Runnable
+  extends Handler
 {
-  public kqf(AccountDetailDynamicDataManager paramAccountDetailDynamicDataManager, long paramLong, byte[] paramArrayOfByte) {}
-  
-  public void run()
+  public kqf(NowVideoController paramNowVideoController, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailModelAccountDetailDynamicDataManager.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailDynamicDataManager", 2, "updateAccountDetailDynamicInfoDB end");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    this.a.a = true;
+    NowVideoController.a(this.a);
   }
 }
 

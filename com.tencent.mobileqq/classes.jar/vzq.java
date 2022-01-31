@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
-class vzq
-  implements Runnable
+public class vzq
+  implements DialogInterface.OnClickListener
 {
-  vzq(vzp paramvzp) {}
+  public vzq(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void run()
-  {
-    this.a.a.a.setStackFromBottomWithoutRequestLayoutIfNecessary(true);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

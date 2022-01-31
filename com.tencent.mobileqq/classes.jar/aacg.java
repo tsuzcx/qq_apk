@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.mobileqq.app.qim.QIMUndecideNotifyDialog;
+import java.util.ArrayList;
 
-class aacg
-  implements Runnable
+public class aacg
+  implements View.OnClickListener
 {
-  aacg(aacf paramaacf, int paramInt) {}
+  public aacg(QIMUndecideNotifyDialog paramQIMUndecideNotifyDialog, ArrayList paramArrayList, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArConfigService.a(this.jdField_a_of_type_Aacf.a, this.jdField_a_of_type_Int);
+    StoryPlayVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.a, paramView, this.jdField_a_of_type_JavaUtilArrayList, null, this.jdField_a_of_type_Int, 120, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aacg
  * JD-Core Version:    0.7.0.1
  */

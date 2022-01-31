@@ -1,18 +1,18 @@
-import android.view.animation.DecelerateInterpolator;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
 
 public class aiya
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aiya(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public aiya(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a, "scrollY", new int[] { this.jdField_a_of_type_Int }).setDuration(this.b);
-    localObjectAnimator.setInterpolator(new DecelerateInterpolator());
-    localObjectAnimator.addListener(new aiyb(this));
-    localObjectAnimator.start();
+    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
   }
 }
 

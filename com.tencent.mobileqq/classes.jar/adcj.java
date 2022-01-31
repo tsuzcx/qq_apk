@@ -1,38 +1,34 @@
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class adcj
-  implements IDownloadController
+  implements Runnable
 {
-  public adcj(C2CFileModel paramC2CFileModel) {}
+  public adcj(FileTransferHandler paramFileTransferHandler, String paramString, int paramInt, short paramShort, long paramLong1, long paramLong2) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new adck(this));
-  }
-  
-  public void b()
-  {
-    this.a.d();
-    int i = this.a.d();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (i == 0)
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if (localFileManagerEntity != null)
     {
-      localQQAppInterface.a().a(this.a.c());
-      return;
+      localFileManagerEntity.msgSeq = this.jdField_a_of_type_Short;
+      localFileManagerEntity.msgUid = this.jdField_a_of_type_Long;
+      localFileManagerEntity.msgTime = this.b;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().f(localFileManagerEntity);
+      if (QLog.isColorLevel()) {
+        QLog.d("FileTransferHandler<FileAssistant>", 2, "online change to offline, update offline msg seq , uid and msgTime" + FileManagerUtil.a(localFileManagerEntity));
+      }
     }
-    localQQAppInterface.a().a(this.a.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adcj
  * JD-Core Version:    0.7.0.1
  */

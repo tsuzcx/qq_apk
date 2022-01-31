@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.qphone.base.util.QLog;
+import IMMsgBodyPack.MsgType0x210;
+import com.tencent.av.service.QavWrapper;
+import com.tencent.av.service.QavWrapper.OnReadyListener;
+import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
 
 public class aaaa
-  implements Runnable
+  implements QavWrapper.OnReadyListener
 {
-  public aaaa(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aaaa(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210) {}
   
-  public void run()
+  public void a(QavWrapper paramQavWrapper)
   {
-    QLog.i("ARWorldCupGlobalSceneRenderable", 1, "zoomOutWorldCupSparks.");
-    if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
-      ARWorldCupGlobalSceneRenderable.a(this.a).native_hiddenBigScreen();
-    }
+    paramQavWrapper.b(this.jdField_a_of_type_IMMsgBodyPackMsgType0x210.vProtobuf);
+    paramQavWrapper.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaaa
  * JD-Core Version:    0.7.0.1
  */

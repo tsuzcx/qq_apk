@@ -1,19 +1,13 @@
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.lightReply.LightReplyEmojs;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager.LightReplyEmotionClickListener;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class vnc
-  implements LightReplyMenuManager.LightReplyEmotionClickListener
+  implements DialogInterface.OnClickListener
 {
-  public vnc(AIOGalleryScene paramAIOGalleryScene, TroopMemberApiClient paramTroopMemberApiClient) {}
+  public vnc(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void a(int paramInt1, String paramString, long paramLong, int paramInt2, LightReplyEmojs paramLightReplyEmojs)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a.put(paramInt1 + paramString + paramLong, paramLightReplyEmojs);
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramInt1, paramString, paramLong, paramInt2, paramLightReplyEmojs);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

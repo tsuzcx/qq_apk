@@ -1,64 +1,31 @@
-import android.annotation.TargetApi;
-import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class adbe
-  implements IFileViewListener
+class adbe
+  implements ActionSheet.OnButtonClickListener
 {
-  public adbe(FileBrowserActivity paramFileBrowserActivity) {}
+  adbe(adbd paramadbd, FileManagerEntity paramFileManagerEntity, ActionSheet paramActionSheet) {}
   
-  @TargetApi(14)
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
-    {
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.a.findViewById(2131365517);
-      localRelativeLayout.setFitsSystemWindows(true);
-      localRelativeLayout.setPadding(0, ImmersiveUtils.a(this.a), 0, 0);
+    if (QfileBaseRecentFileTabView.o(this.jdField_a_of_type_Adbd.a.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId)) {}
+    this.jdField_a_of_type_Adbd.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid)) && (3000 != this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType)) {
+      QfileBaseRecentFileTabView.p(this.jdField_a_of_type_Adbd.a.a).a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    FileBrowserActivity.a(this.a);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    FileBrowserActivity.a(this.a, paramBoolean);
-    View localView = this.a.findViewById(2131368856);
-    if (!FileBrowserActivity.b(this.a))
-    {
-      localView.setVisibility(0);
-      if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
-      {
-        int i = this.a.getResources().getColor(2131494254);
-        this.a.mSystemBarComp.setStatusColor(i);
-        this.a.mSystemBarComp.setStatusBarColor(i);
-        if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-          this.a.mSystemBarComp.setStatusBarDrawable(this.a.getResources().getDrawable(2130843344));
-        }
-      }
-      this.a.getWindow().setFlags(0, 1024);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM = true;
+    QfileBaseRecentFileTabView.q(this.jdField_a_of_type_Adbd.a.a).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_Adbd.a.a.e();
+    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
-    localView.setVisibility(8);
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
-    {
-      this.a.mSystemBarComp.setStatusColor(0);
-      this.a.mSystemBarComp.setStatusBarColor(0);
-      if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        this.a.mSystemBarComp.setStatusBarDrawable(null);
-      }
-    }
-    this.a.getWindow().setFlags(1024, 1024);
   }
 }
 

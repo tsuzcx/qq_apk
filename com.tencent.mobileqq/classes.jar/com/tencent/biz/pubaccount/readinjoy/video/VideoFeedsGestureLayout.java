@@ -17,7 +17,7 @@ import com.tencent.biz.pubaccount.VideoReporter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.qphone.base.util.QLog;
-import mbw;
+import mfj;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,7 +29,7 @@ public class VideoFeedsGestureLayout
   private long jdField_a_of_type_Long;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new mbw(this));
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new mfj(this));
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   private VideoFeedsGestureLayout.CustomClickListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout$CustomClickListener;
   private VideoFeedsGestureUIManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureUIManager;

@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity.LoadingTimeStamp;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-public final class abil
-  implements Parcelable.Creator
+public class abil
+  implements ClickableColorSpanTextView.SpanClickListener
 {
-  public ARMapLoadingActivity.LoadingTimeStamp a(Parcel paramParcel)
-  {
-    return new ARMapLoadingActivity.LoadingTimeStamp(paramParcel);
-  }
+  public abil(ARMapActivity paramARMapActivity) {}
   
-  public ARMapLoadingActivity.LoadingTimeStamp[] a(int paramInt)
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    return new ARMapLoadingActivity.LoadingTimeStamp[paramInt];
+    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://wa.qq.com/help/info.html");
+    this.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

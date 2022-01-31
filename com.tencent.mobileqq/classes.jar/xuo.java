@@ -1,24 +1,47 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.RDMEtraMsgCollector;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
 
 public class xuo
-  implements DataProvider.DataUpdateListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public xuo(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  public xuo(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
   
-  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
+  public void OnClick(View paramView, int paramInt)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
-    if ((paramBoolean) && (paramAddressInfo != null))
-    {
-      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
-      this.a.a.post(new xup(this, paramAddressInfo));
-      return;
+    paramView = new StringBuilder();
+    paramView.append("[Actvity]").append(getClass().getSimpleName()).append(" QQCustomDialog click :").append("立即上传");
+    RDMEtraMsgCollector.a().c(paramView.toString());
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
+    if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
+      RemoteHandleManager.a().a("cmd.publishVideoMood", this.jdField_a_of_type_AndroidOsBundle, false);
     }
-    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
+    for (;;)
+    {
+      if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.setResult(-1);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.finish();
+      return;
+      if (EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 1)
+      {
+        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.getIntent());
+        paramView.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+        String str = paramView.getStringExtra("PhotoConst.PLUGIN_APK");
+        boolean bool = paramView.getBooleanExtra("DirectBackToQzone", false);
+        if (("qzone_plugin.apk".equals(str)) && (bool))
+        {
+          paramView.setFlags(603979776);
+          QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, "", paramView, -1);
+        }
+      }
+    }
   }
 }
 

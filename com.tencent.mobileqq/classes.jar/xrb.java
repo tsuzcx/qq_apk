@@ -1,27 +1,15 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
 
 public class xrb
-  implements Camera.AutoFocusCallback
+  implements View.OnClickListener
 {
-  public xrb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xrb(RecentOptPopBar paramRecentOptPopBar) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "single tap focus " + paramBoolean);
-    }
-    NewFlowCameraReporter.a(paramBoolean);
-    if (paramBoolean)
-    {
-      NewFlowCameraActivity.h(this.a, true);
-      return;
-    }
-    this.a.a.f();
+    this.a.c();
   }
 }
 

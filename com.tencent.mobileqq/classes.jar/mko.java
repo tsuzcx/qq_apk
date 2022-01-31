@@ -1,57 +1,40 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoAutoPlayController;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView.OnDrawCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.qphone.base.util.QLog;
 
 public class mko
-  extends Handler
+  implements ReadInJoyBaseListView.OnDrawCompleteListener
 {
-  public mko(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public mko(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      i = paramMessage.arg1;
-      if (i > 0)
-      {
-        paramMessage = new BusinessInfoCheckUpdate.RedTypeInfo();
-        paramMessage.red_content.set(String.valueOf(i));
-        paramMessage.red_desc.set("{'cn':'#FF0000'}");
-        paramMessage.red_type.set(5);
-        ReadinjoyTabFrame.a(this.a).a(paramMessage);
-        ReadinjoyTabFrame.a(this.a).invalidate();
-      }
-      for (;;)
-      {
-        QLog.d("Q.readinjoy.4tab", 2, "update self icon red point, value : " + i);
-        return;
-        ReadinjoyTabFrame.a(this.a).b();
-        ReadinjoyTabFrame.a(this.a).invalidate();
-      }
-    }
-    int i = paramMessage.arg1;
-    int j = paramMessage.arg2;
-    if ((i <= 0) || ((j == 2131362409) && ((this.a.a() instanceof ReadInJoyVideoChannelFragment))))
-    {
-      ReadinjoyTabFrame.a(this.a).a(j);
+    ReadInJoyBaseAdapter.e(this.a, false);
+    if (!ReadInJoyBaseAdapter.d(this.a)) {
       return;
     }
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    localRedTypeInfo.red_type.set(0);
-    localRedTypeInfo.red_content.set(String.valueOf(i));
-    localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-    QLog.d("Q.readinjoy.4tab", 2, "update indicator red point , index : " + paramMessage.obj + ", value : " + i);
+    ReadInJoyBaseAdapter.b(this.a, false);
+    if ((this.a.a()) && (ReadInJoyBaseAdapter.a(this.a) != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
+      }
+      if (!ReadInJoyBaseAdapter.a(this.a).b()) {
+        break label122;
+      }
+      ReadInJoyBaseAdapter.a(this.a).postDelayed(new mkp(this, paramReadInJoyBaseListView), 1200L);
+    }
+    for (;;)
+    {
+      ReadInJoyBaseAdapter.a(this.a, this.a.a.getLastVisiblePosition() + 1, ReadInJoyBaseAdapter.b());
+      return;
+      label122:
+      ReadInJoyBaseAdapter.a(this.a, paramReadInJoyBaseListView, ReadInJoyBaseAdapter.b);
+    }
   }
 }
 

@@ -1,9 +1,9 @@
 package cooperation.weiyun.channel;
 
 import android.os.Bundle;
-import anhm;
-import anhn;
-import anho;
+import anpp;
+import anpq;
+import anpr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -19,7 +19,7 @@ import mqq.app.NewIntent;
 
 public final class WySender
 {
-  private static Singleton jdField_a_of_type_ComTencentWeiyunUtilsSingleton = new anho();
+  private static Singleton jdField_a_of_type_ComTencentWeiyunUtilsSingleton = new anpr();
   private long jdField_a_of_type_Long = 1L;
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
@@ -46,11 +46,11 @@ public final class WySender
     }
     for (int i = Integer.parseInt(arrayOfString[(arrayOfString.length - 1)]);; i = Integer.parseInt(paramString))
     {
-      paramArrayOfByte = new anhm(i, paramArrayOfByte);
+      paramArrayOfByte = new anpp(i, paramArrayOfByte);
       paramString = new ToServiceMsg("mobileqq.service", localAppRuntime.getAccount(), paramString);
       paramString.setTimeout(Math.min(60000L, (30000.0D * Math.pow(this.jdField_a_of_type_Long, 0.15D))));
       paramString.setEnableFastResend(true);
-      paramString.putWupBuffer(anhn.a(paramArrayOfByte));
+      paramString.putWupBuffer(anpq.a(paramArrayOfByte));
       paramString.extraData.putInt("sequence", paramInt);
       paramString.extraData.putLong("sendtimekey", System.currentTimeMillis());
       paramArrayOfByte = new NewIntent(localAppRuntime.getApplication(), WyServlet.class);
@@ -66,7 +66,7 @@ public final class WySender
     int k = paramToServiceMsg.extraData.getInt("sequence");
     int i;
     label40:
-    anhm localanhm;
+    anpp localanpp;
     if (paramFromServiceMsg.isSuccess())
     {
       i = 0;
@@ -77,7 +77,7 @@ public final class WySender
       if (i != 0) {
         break label156;
       }
-      localanhm = anhn.a(paramFromServiceMsg.getWupBuffer());
+      localanpp = anpq.a(paramFromServiceMsg.getWupBuffer());
       label53:
       paramFromServiceMsg = paramFromServiceMsg.getBusinessFailMsg();
       paramToServiceMsg = paramFromServiceMsg;
@@ -87,7 +87,7 @@ public final class WySender
       if (i != 0) {
         break label205;
       }
-      if (localanhm != null) {
+      if (localanpp != null) {
         break label162;
       }
       i = 1810023;
@@ -102,11 +102,11 @@ public final class WySender
       label99:
       WySender.ICallback localICallback = (WySender.ICallback)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(k));
       if (localICallback != null) {
-        if (localanhm != null) {
+        if (localanpp != null) {
           break label196;
         }
       }
-      for (paramFromServiceMsg = localObject;; paramFromServiceMsg = localanhm.a())
+      for (paramFromServiceMsg = localObject;; paramFromServiceMsg = localanpp.a())
       {
         localICallback.a(i, paramToServiceMsg, paramFromServiceMsg);
         return;
@@ -114,9 +114,9 @@ public final class WySender
         break;
         this.jdField_a_of_type_Long = 1L;
         break label40;
-        localanhm = null;
+        localanpp = null;
         break label53;
-        paramFromServiceMsg = localanhm.a();
+        paramFromServiceMsg = localanpp.a();
         int j = paramFromServiceMsg.retcode.get();
         if (j == 0) {
           break label205;

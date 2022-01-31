@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alzm;
+import amgw;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.RectF;
@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.armap.ARMapPendantHolder;
 import com.tencent.mobileqq.armap.ConversationActivePendantHolderBase;
 import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
@@ -18,9 +19,11 @@ import com.tencent.qphone.base.util.QLog;
 public class ARMapHongBaoListView
   extends HongBaoListView
 {
+  private int jdField_a_of_type_Int;
   public ConversationActivePendantHolderBase a;
   public ConversationPullDownActiveBase a;
   private ARMapHongBaoListView.ConversationActiveListViewListener jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener;
+  private ARMapHongBaoListView.QQStoryListViewListener jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener;
   private boolean jdField_a_of_type_Boolean = true;
   private Handler b;
   public boolean d;
@@ -30,13 +33,13 @@ public class ARMapHongBaoListView
   public ARMapHongBaoListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new alzm(this));
+    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new amgw(this));
   }
   
   public ARMapHongBaoListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new alzm(this));
+    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new amgw(this));
   }
   
   private void c(int paramInt)
@@ -78,11 +81,31 @@ public class ARMapHongBaoListView
     return true;
   }
   
-  public void d()
+  public void c()
   {
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(1);
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(2);
     setIsShowingPreguide(false);
+  }
+  
+  public void d()
+  {
+    if (!this.h) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SwipListView", 2, "showActivePendant");
+    }
+    g();
+    this.jdField_d_of_type_Boolean = true;
+  }
+  
+  protected void dispatchDraw(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener != null) {
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener.a(this.jdField_a_of_type_Int, getScrollY());
+    }
+    super.dispatchDraw(paramCanvas);
   }
   
   public void draw(Canvas paramCanvas)
@@ -109,28 +132,16 @@ public class ARMapHongBaoListView
   
   public void e()
   {
-    if (!this.h) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("SwipListView", 2, "showActivePendant");
+      QLog.d("SwipListView", 2, "hideActivePendant");
     }
-    h();
-    this.jdField_d_of_type_Boolean = true;
+    g();
+    this.jdField_d_of_type_Boolean = false;
   }
   
   public void f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SwipListView", 2, "hideActivePendant");
-    }
-    h();
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public void g()
-  {
-    h();
+    g();
     if (QLog.isColorLevel()) {
       QLog.d("SwipListView", 2, "startActiveSanHua");
     }
@@ -140,7 +151,7 @@ public class ARMapHongBaoListView
     invalidate();
   }
   
-  public void h()
+  public void g()
   {
     if (QLog.isColorLevel()) {
       QLog.d("SwipListView", 2, "stopActiveSanHua");
@@ -150,11 +161,33 @@ public class ARMapHongBaoListView
     }
   }
   
-  public void i()
+  protected int getSpringbackOffset()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SwipListView", 2, "story getSpringbackOffset, scrollY:" + getScrollY());
+    }
+    if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener == null) {
+      return super.getSpringbackOffset();
+    }
+    int i = getScrollY();
+    if ((this.mEnableStory) && (this.mOverscrollHeaderViewContainer != null) && (i <= 0))
+    {
+      if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener.a() == 2)
+      {
+        SLog.b("SwipListView", "story node start refresh getSpringbackOffset.");
+        this.mOverscrollHeadState = 2;
+        super.getSpringbackOffset();
+      }
+      return this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener.b(this);
+    }
+    return super.getSpringbackOffset();
+  }
+  
+  public void h()
   {
     this.mForHongBao = false;
     super.setOverScrollListener(this.jdField_b_of_type_ComTencentWidgetOverScrollViewListener);
-    l();
+    k();
     setActiveListViewListener(null);
     super.setOverscrollHeader(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable);
     super.setOverScrollHeader(this.jdField_b_of_type_AndroidViewView);
@@ -165,12 +198,12 @@ public class ARMapHongBaoListView
     this.f = false;
     if (this.jdField_d_of_type_Boolean)
     {
-      h();
+      g();
       this.jdField_d_of_type_Boolean = false;
     }
   }
   
-  public void j()
+  public void i()
   {
     if (this.g) {
       return;
@@ -236,7 +269,7 @@ public class ARMapHongBaoListView
       else
       {
         this.j = false;
-        d();
+        c();
       }
     }
   }
@@ -256,16 +289,33 @@ public class ARMapHongBaoListView
     boolean bool3 = true;
     boolean bool2 = false;
     boolean bool1;
-    if ((!this.g) || (!this.h)) {
+    if ((this.mEnableStory) && (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener != null))
+    {
+      ARMapHongBaoListView.QQStoryListViewListener localQQStoryListViewListener = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener;
+      if ((this.mTouchMode == 3) || (this.mTouchMode == 5))
+      {
+        bool1 = true;
+        localQQStoryListViewListener.a(this, bool1, paramMotionEvent);
+      }
+    }
+    else
+    {
+      if ((this.g) && (this.h)) {
+        break label86;
+      }
       bool1 = super.onTouchEvent(paramMotionEvent);
     }
+    label86:
+    label107:
     do
     {
       do
       {
         return bool1;
+        bool1 = false;
+        break;
         if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase == null) {
-          break;
+          break label107;
         }
         bool1 = bool3;
       } while (!this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.c);
@@ -324,6 +374,27 @@ public class ARMapHongBaoListView
       QLog.d("SwipListView", 2, "setEnableTouch, enableTouch:" + paramBoolean);
     }
     this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void setQQStoryListViewListener(ARMapHongBaoListView.QQStoryListViewListener paramQQStoryListViewListener)
+  {
+    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener = paramQQStoryListViewListener;
+  }
+  
+  public void setScrollState(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void springBackOverScrollHeaderView()
+  {
+    if ((this.mEnableStory) && (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener != null))
+    {
+      this.mOverscrollHeadState = 0;
+      super.springBackOverScrollHeaderView(this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener.a(this));
+      return;
+    }
+    super.springBackOverScrollHeaderView();
   }
 }
 

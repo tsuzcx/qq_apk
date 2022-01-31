@@ -33,9 +33,9 @@ import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Constants;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import oeo;
-import oeq;
-import oer;
+import ojd;
+import ojf;
+import ojg;
 
 public class EditVideoFilterNeo
   extends EditVideoFilter
@@ -44,7 +44,7 @@ public class EditVideoFilterNeo
   public static final String[] a;
   public static final int[] b;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private DataProvider.DataUpdateListener jdField_a_of_type_ComTencentBizQqstoryModelDataProvider$DataUpdateListener = new oeo(this);
+  private DataProvider.DataUpdateListener jdField_a_of_type_ComTencentBizQqstoryModelDataProvider$DataUpdateListener = new ojd(this);
   private WeatherFilterData jdField_a_of_type_ComTencentBizQqstoryTakevideoFilterWeatherFilterData;
   private SparseArray b;
   
@@ -133,7 +133,7 @@ public class EditVideoFilterNeo
               }
               else
               {
-                localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843478, 2);
+                localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843512, 2);
                 continue;
                 localObject = localFilterData;
                 if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoFilterPOIFilterData != null)
@@ -157,7 +157,7 @@ public class EditVideoFilterNeo
                   }
                   else
                   {
-                    localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843477, 1);
+                    localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843511, 1);
                     continue;
                     if (!(paramEditSource instanceof EditRecordVideoSource))
                     {
@@ -187,7 +187,7 @@ public class EditVideoFilterNeo
                         }
                         else
                         {
-                          localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843479, 3);
+                          localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843513, 3);
                           continue;
                           localObject = new TimeFilterData(0, paramString, paramInt2);
                           continue;
@@ -261,7 +261,7 @@ public class EditVideoFilterNeo
   {
     SLog.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress([lat]%d, [lng]%d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
     GetLocationRequest localGetLocationRequest = new GetLocationRequest(1, paramInt2, paramInt1);
-    CmdTaskManger.a().a(localGetLocationRequest, new oeq(this));
+    CmdTaskManger.a().a(localGetLocationRequest, new ojf(this));
   }
   
   private boolean b()
@@ -282,7 +282,7 @@ public class EditVideoFilterNeo
     {
       Activity localActivity = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
       if (localActivity != null) {
-        localActivity.runOnUiThread(new oer(this, paramAddressInfo));
+        localActivity.runOnUiThread(new ojg(this, paramAddressInfo));
       }
     }
     else

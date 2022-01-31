@@ -1,15 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import android.os.Bundle;
+import cooperation.photoplus.PhotoPlusManager;
+import cooperation.photoplus.PhotoPlusModule;
+import cooperation.photoplus.sticker.Sticker;
+import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 
 public class amte
-  extends Handler
+  implements Runnable
 {
-  public amte(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public amte(PhotoPlusModule paramPhotoPlusModule, PhotoPlusManager paramPhotoPlusManager, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    this.a.a(QzoneVerticalVideoDownloadActivity.a(this.a), paramMessage);
+    Object localObject = this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a();
+    JSONArray localJSONArray = new JSONArray();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Sticker localSticker = (Sticker)((Iterator)localObject).next();
+        if (localSticker.toJsonObject() != null) {
+          localJSONArray.put(localSticker.toJsonObject());
+        }
+      }
+    }
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("param_sticker_templates", localJSONArray.toString());
+    this.jdField_a_of_type_CooperationPhotoplusPhotoPlusModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult((Bundle)localObject));
   }
 }
 

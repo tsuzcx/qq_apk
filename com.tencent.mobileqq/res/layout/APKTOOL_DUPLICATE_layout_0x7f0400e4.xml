@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0089" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02131e" android:paddingLeft="10.0dip" android:paddingTop="15.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="点击快速添加多名好友"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0809" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0646" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0433" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0646">
+            <TextView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a080a" android:background="@drawable/top_button_right_selector" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="96.0dip" android:minWidth="52.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b228e" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+            <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b176b" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
+            <com.tencent.mobileqq.widget.RedDotTextView android:id="@id/ivTitleBtnRightText" android:layout_marginRight="2.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1b83" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02d5" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0400df" />
+    <com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView android:id="@id/elv_buddies" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null" />
+</LinearLayout>

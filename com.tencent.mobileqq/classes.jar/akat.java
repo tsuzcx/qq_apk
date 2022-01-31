@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLImageView;
 
-class akat
-  implements Runnable
+public class akat
 {
-  akat(akar paramakar, Exception paramException) {}
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void run()
-  {
-    this.jdField_a_of_type_Akar.a.dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
-    }
-  }
+  akat(akas paramakas) {}
 }
 
 

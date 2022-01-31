@@ -63,13 +63,13 @@ public class SearchPoiListActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130970825);
+    setContentView(2130970842);
     super.setTitle("所在位置");
     this.rightViewImg.setVisibility(8);
     this.rightViewText.setVisibility(8);
-    setLeftViewName(2131433698);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout = new PoiListLayout(findViewById(2131371617), this);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout = new SearchPoiListLayout(findViewById(2131371987), this);
+    setLeftViewName(2131433712);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout = new PoiListLayout(findViewById(2131371615), this);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout = new SearchPoiListLayout(findViewById(2131371995), this);
     paramBundle = getIntent();
     if (paramBundle != null)
     {

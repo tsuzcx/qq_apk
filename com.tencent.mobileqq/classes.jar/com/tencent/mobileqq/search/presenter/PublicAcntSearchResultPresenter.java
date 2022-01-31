@@ -30,7 +30,7 @@ public class PublicAcntSearchResultPresenter
     {
       if (this.a == null)
       {
-        this.a = paramISearchResultView.e().getContext().getResources().getDrawable(2130839751);
+        this.a = paramISearchResultView.e().getContext().getResources().getDrawable(2130839766);
         this.a.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
       }
       paramTextView.setCompoundDrawables(null, null, this.a, null);

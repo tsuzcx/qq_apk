@@ -1,13 +1,12 @@
-import cooperation.thirdpay.ThirdPayGate;
-
-public class anfa
+class anfa
   implements Runnable
 {
-  public boolean a;
+  anfa(anez paramanez) {}
   
-  anfa(ThirdPayGate paramThirdPayGate) {}
-  
-  public void run() {}
+  public void run()
+  {
+    anez.a(this.a);
+  }
 }
 
 

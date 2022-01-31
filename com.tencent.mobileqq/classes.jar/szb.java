@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class szb
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public szb(LikeRankingListActivity paramLikeRankingListActivity) {}
+  public szb(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.app.getManager(159);
-    RedTouchItem localRedTouchItem1 = localLocalRedTouchManager.a(100601);
-    if (localLocalRedTouchManager.a(localRedTouchItem1, false))
+    if (!GesturePWDUnlockActivity.a(this.a))
     {
-      RedTouchItem localRedTouchItem2 = localLocalRedTouchManager.a(100500);
-      if ((localLocalRedTouchManager.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
-        localRedTouchItem2.unReadFlag = false;
-      }
-      localLocalRedTouchManager.a(100601);
+      GesturePWDUnlockActivity.a(this.a, true);
+      return;
     }
+    this.a.e();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    StatisticCollector.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

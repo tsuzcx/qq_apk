@@ -1,37 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.recent.OnRecentUserOpsListener;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-import java.util.List;
+import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
 
-public class yog
-  extends RecentAdapter
+class yog
+  implements Runnable
 {
-  public yog(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, OnRecentUserOpsListener paramOnRecentUserOpsListener, int paramInt)
-  {
-    super(paramContext, paramQQAppInterface, paramXListView, paramOnRecentUserOpsListener, paramInt);
-  }
+  yog(yof paramyof) {}
   
-  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
-  }
-  
-  public void b(RecentBaseData paramRecentBaseData, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
-      notifyDataSetChanged();
-    }
+    NewFriendMoreSysMsgAdapter.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yog
  * JD-Core Version:    0.7.0.1
  */

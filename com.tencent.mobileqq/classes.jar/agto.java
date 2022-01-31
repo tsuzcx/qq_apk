@@ -1,38 +1,21 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.ptt.player.AmrPlayer;
-import com.tencent.mobileqq.ptt.player.IPttPlayerListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
+import mqq.os.MqqHandler;
 
-public class agto
+class agto
   implements Runnable
 {
-  public agto(AmrPlayer paramAmrPlayer) {}
+  agto(agtj paramagtj, long paramLong) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AmrPlayer", 2, "playAmr " + AmrPlayer.a(this.a));
-    }
-    try
-    {
-      AmrPlayer.a(this.a).b();
-      AmrPlayer.a(this.a).start();
-      if (AmrPlayer.a(this.a, AmrPlayer.a(this.a) - 1000) > 0) {
-        AmrPlayer.a(this.a).seekTo(AmrPlayer.a(this.a));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (AmrPlayer.a(this.a) == null) {}
-      AmrPlayer.a(this.a).sendEmptyMessage(1);
-    }
+    String str = ShareHelper.a(this.jdField_a_of_type_Agtj.a);
+    ThreadManager.getUIHandler().post(new agtp(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agto
  * JD-Core Version:    0.7.0.1
  */

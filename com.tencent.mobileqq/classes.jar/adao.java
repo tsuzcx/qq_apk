@@ -1,23 +1,21 @@
-import android.content.ContentValues;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import java.util.Comparator;
 
 public class adao
-  implements Runnable
+  implements Comparator
 {
-  public adao(FileManagerProxy paramFileManagerProxy, ContentValues paramContentValues, long paramLong) {}
+  public adao(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void run()
+  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(FileManagerEntity.tableName(), this.jdField_a_of_type_AndroidContentContentValues, "nSessionId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) }, null);
-      return;
+    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
+      return 1;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
+      return -1;
     }
+    return 0;
   }
 }
 

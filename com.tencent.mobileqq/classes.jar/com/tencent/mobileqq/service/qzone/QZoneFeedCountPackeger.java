@@ -4,7 +4,7 @@ import QMF_PROTOCAL.QmfBusiControl;
 import QMF_PROTOCAL.QmfDownstream;
 import QMF_PROTOCAL.mobile_get_config_req;
 import QMF_PROTOCAL.mobile_get_config_rsp;
-import ahxr;
+import aici;
 import android.text.TextUtils;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.taf.jce.JceStruct;
@@ -69,7 +69,7 @@ public class QZoneFeedCountPackeger
         ((UniAttribute)localObject2).setEncodeName("utf-8");
         ((UniAttribute)localObject2).decode(((QmfDownstream)localObject1).BusiBuff);
         paramString = (JceStruct)((UniAttribute)localObject2).get(paramString);
-        ThreadManager.post(new ahxr(paramArrayOfByte, paramQQAppInterface), 8, null, true);
+        ThreadManager.post(new aici(paramArrayOfByte, paramQQAppInterface), 8, null, true);
         return paramString;
       }
       if (localObject1 != null)

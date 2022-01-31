@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySubscriptionListViewGroup;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.widget.XListView.DrawFinishedListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
 
 public class mjk
-  implements XListView.DrawFinishedListener
+  implements Runnable
 {
-  public mjk(ReadInJoySubscriptionListViewGroup paramReadInJoySubscriptionListViewGroup) {}
+  public mjk(VideoUIManager paramVideoUIManager) {}
   
-  public void a()
+  public void run()
   {
-    if ((!this.a.b) && (this.a.c))
-    {
-      this.a.b = true;
-      PublicTracker.a("SUBSCRIPT_FEEDS_COST", null);
-      PublicTracker.a("KANDIAN_TO_SUBSCRIPT_COST", null);
+    if ((VideoUIManager.a(this.a) != null) && (VideoUIManager.a(this.a).a != null)) {
+      PublicAccountReportUtils.a(null, "", "0X8008ACD", "0X8008ACD", 0, 0, "", "", "", VideoReporter.a(VideoUIManager.a(this.a).a.mVideoVid, VideoUIManager.a(this.a).a.innerUniqueID, (int)VideoUIManager.a(this.a).a.mChannelID, null), false);
     }
   }
 }

@@ -1,125 +1,160 @@
-import Wallet.GroupGoldMsgGrabReq;
-import Wallet.GroupGoldMsgGrabRsp;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.MessageQueue;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity.sendPhotoTask;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.compress.Utils;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.utils.AlbumConstants;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.observer.BusinessObserver;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class xek
-  implements BusinessObserver
+  extends Handler
 {
-  public xek(GoldMsgChatHelper paramGoldMsgChatHelper) {}
+  private final WeakReference a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public xek(SendPhotoActivity paramSendPhotoActivity)
   {
-    int j = 1;
-    switch (paramInt)
+    this.a = new WeakReference(paramSendPhotoActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    SendPhotoActivity localSendPhotoActivity = (SendPhotoActivity)this.a.get();
+    if (localSendPhotoActivity != null) {}
+    Object localObject2;
+    Object localObject1;
+    int i;
+    switch (paramMessage.what)
     {
     default: 
+      super.handleMessage(paramMessage);
+    case 1: 
+      return;
+    case 2: 
+      if (localSendPhotoActivity.jdField_a_of_type_AndroidOsHandler.hasMessages(2))
+      {
+        Logger.b(SendPhotoActivity.jdField_a_of_type_JavaLangString, "handleMessage", "remove delayed Message:MSG_CANCLE_PROGRESS");
+        localSendPhotoActivity.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      }
+      localObject2 = localSendPhotoActivity.getIntent().getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+      localObject1 = new String[((ArrayList)localObject2).size()];
+      ((ArrayList)localObject2).toArray((Object[])localObject1);
+      i = localSendPhotoActivity.getIntent().getIntExtra("uintype", 1003);
+      localObject2 = localSendPhotoActivity.app;
+      if ((paramMessage.obj != null) && ("TimeOut".equals(paramMessage.obj.toString())))
+      {
+        bool = true;
+        ThreadManager.post(new xel(this, bool, (String[])localObject1, i, (QQAppInterface)localObject2), 5, null, true);
+        if ((localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask == null) || (localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask.jdField_a_of_type_AndroidAppProgressDialog == null) || (!localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
+          break label811;
+        }
+      }
       break;
     }
-    label24:
-    do
+    label811:
+    for (boolean bool = true;; bool = false)
     {
-      return;
-    } while (paramBundle == null);
-    Object localObject2 = (GroupGoldMsgGrabReq)paramBundle.getSerializable("req");
-    Object localObject1 = (GroupGoldMsgGrabRsp)paramBundle.getSerializable("rsp");
-    paramInt = paramBundle.getInt("msfRetCode");
-    paramBundle = "";
-    if (localObject2 != null) {
-      paramBundle = ((GroupGoldMsgGrabReq)localObject2).listid;
-    }
-    if (localObject1 != null) {}
-    for (localObject1 = ((GroupGoldMsgGrabRsp)localObject1).retcode;; localObject1 = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GoldMsgChatHelper", 2, "mGapObserver listId:" + paramBundle + " retCode:" + (String)localObject1 + " msfRetCode:" + paramInt);
-      }
-      if (paramBundle == null) {
-        break;
-      }
-      int i;
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        if ("0".equals(localObject1))
-        {
-          paramInt = 1;
-          i = 0;
-        }
-      }
       for (;;)
       {
-        for (;;)
+        if (localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask != null) {}
+        try
         {
-          localObject1 = QWalletTools.a();
-          if (localObject1 == null) {
-            break;
+          localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask.a();
+          localObject2 = localSendPhotoActivity.getIntent();
+          ((Intent)localObject2).putExtra(AlbumConstants.h, 2);
+          if (!((Intent)localObject2).hasExtra("extra_image_sender_tag")) {
+            ((Intent)localObject2).putExtra("extra_image_sender_tag", "SendPhotoActivity.handlePhoto");
           }
-          Long localLong = (Long)this.a.b.get(paramBundle);
-          if ((localLong != null) && (localObject2 != null) && (((GroupGoldMsgGrabReq)localObject2).grouptype != null) && (((GroupGoldMsgGrabReq)localObject2).groupuin != null))
+          localObject1 = null;
+          Object localObject3 = paramMessage.getData();
+          int j = 0;
+          localArrayList = new ArrayList();
+          i = j;
+          paramMessage = (Message)localObject1;
+          if (localObject3 != null)
           {
-            if (!((GroupGoldMsgGrabReq)localObject2).grouptype.equals("1")) {
-              break label370;
-            }
-            localObject1 = ((QQAppInterface)localObject1).a().a(((GroupGoldMsgGrabReq)localObject2).groupcode, j, localLong.longValue());
-            if (localObject1 != null) {
-              localObject2 = ((MessageRecord)localObject1).getExtInfoFromExtStr("goldmsg_grap_times");
-            }
-          }
-          try
-          {
-            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            ((Bundle)localObject3).setClassLoader(CompressInfo.class.getClassLoader());
+            localObject1 = ((Bundle)localObject3).getParcelableArrayList("flag_compressinfolist");
+            i = j;
+            paramMessage = (Message)localObject1;
+            if (localObject1 != null)
             {
-              j = Integer.valueOf((String)localObject2).intValue();
-              if (i == 0) {
-                break label391;
+              paramMessage = ((ArrayList)localObject1).iterator();
+              while (paramMessage.hasNext())
+              {
+                localObject3 = (CompressInfo)paramMessage.next();
+                Logger.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "handleMessage print CompressInfo", "info:" + localObject3);
+                localArrayList.add(((CompressInfo)localObject3).e);
+                continue;
+                bool = false;
               }
-              i = j + 1;
-              ((MessageRecord)localObject1).saveExtInfoToExtStr("goldmsg_grap_times", String.valueOf(i));
-              GoldMsgChatHelper.a((MessageRecord)localObject1, false);
-              if (QLog.isColorLevel()) {
-                QLog.d("GoldMsgChatHelper", 2, "mGapObserver saveToMsgRecord");
-              }
-              if ((paramInt != 0) || (TextUtils.isEmpty(paramBundle))) {
-                break label24;
-              }
-              this.a.b.remove(paramBundle);
-              return;
-              paramInt = 0;
-              i = 1;
-              continue;
-              if (paramInt != 1002) {
-                break label397;
-              }
-              paramInt = 0;
-              i = 1;
-              continue;
-              label370:
-              j = 3000;
             }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localException.printStackTrace();
-              j = 0;
-              continue;
-              label391:
-              i = 3;
-            }
-            label397:
-            paramInt = 0;
-            i = 0;
           }
         }
+        catch (Exception localException)
+        {
+          ArrayList localArrayList;
+          for (;;)
+          {
+            localException.printStackTrace();
+          }
+          i = localException.size();
+          paramMessage = localException;
+          long l1 = System.nanoTime();
+          long l2 = (l1 - localSendPhotoActivity.b) / 1000000L;
+          Logger.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "CompressLog", "compress startTime = " + localSendPhotoActivity.b + "ns,finishTime = " + l1 + "ns,duration = " + l2 + "ms,count = " + i + ",isShowing = " + bool);
+          StatisticConstants.a(l2, i, bool);
+          localSendPhotoActivity.app.a().a(l1);
+          Logger.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "TimeCompare", "CompressFinish Time = " + l1 + "ns");
+          ((Intent)localObject2).putExtra("open_chatfragment_fromphoto", true);
+          SendPhotoActivity.a(localSendPhotoActivity, localArrayList);
+          ((Intent)localObject2).removeExtra("PhotoConst.SEND_BUSINESS_TYPE");
+          localSendPhotoActivity.setResult(-1, localSendPhotoActivity.getIntent());
+          localSendPhotoActivity.finish();
+          bool = localSendPhotoActivity.getIntent().getBooleanExtra("PhotoConst.HANDLE_DEST_RESULT", false);
+          if (QLog.isColorLevel()) {
+            QLog.d("forward", 2, "sendPhotoActivity isWaitForResult=" + bool);
+          }
+          if (!bool)
+          {
+            Intent localIntent = localSendPhotoActivity.getIntent();
+            localObject2 = localIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+            localIntent.setClassName(localIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME"), (String)localObject2);
+            localIntent.addFlags(603979776);
+            localSendPhotoActivity.startActivity(localIntent);
+          }
+          Utils.a(BaseApplication.getContext(), paramMessage);
+          return;
+        }
       }
+      if (QLog.isColorLevel()) {
+        QLog.e(SendPhotoActivity.jdField_a_of_type_JavaLangString, 2, "idleHandler time out");
+      }
+      if (localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask != null) {
+        break;
+      }
+      Looper.myQueue().removeIdleHandler(localSendPhotoActivity.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
+      localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask = new SendPhotoActivity.sendPhotoTask(localSendPhotoActivity, null);
+      if (localSendPhotoActivity.jdField_a_of_type_Long != 0L) {
+        localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - localSendPhotoActivity.jdField_a_of_type_Long);
+      }
+      ThreadManager.post(localSendPhotoActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask, 8, null, false);
+      return;
     }
   }
 }

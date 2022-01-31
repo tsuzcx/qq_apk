@@ -1,88 +1,40 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.util.Utils;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public class vzj
-  extends ShieldListObserver
+class vzj
+  implements WerewolvesHandler.Callback
 {
-  public vzj(StrangerChatPie paramStrangerChatPie) {}
+  vzj(vzi paramvzi) {}
   
-  protected void a(boolean paramBoolean, List paramList)
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.werewolf.GameRoomChatPie", 2, "exitRoom: errorCode = " + paramInt);
     }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
-    }
-    for (;;)
+    if ((paramInt == 0) || (paramInt == 1285))
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
+      if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
+        this.a.a.d.dismiss();
       }
-      if (k == 0) {
-        break;
-      }
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.k();
+      new Intent().putExtra("isNeedFinish", true);
+      SharedPreUtils.l(this.a.a.a(), this.a.a.a.getCurrentAccountUin(), false);
+      GameRoomAVController.a().d();
+      this.a.a.W = true;
+      this.a.a.b(1);
       return;
     }
-  }
-  
-  protected void b(boolean paramBoolean, List paramList)
-  {
-    int k = 0;
-    ChatActivityUtils.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      return;
+    if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
+      this.a.a.d.dismiss();
     }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      ChatActivityUtils.b();
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.k();
-      return;
-    }
+    QQToast.a(this.a.a.a(), 1, "退出游戏失败", 0).b(this.a.a.a());
   }
 }
 

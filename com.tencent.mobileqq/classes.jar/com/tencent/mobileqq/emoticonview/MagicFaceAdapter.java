@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acgi;
+import acoj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -86,7 +86,7 @@ public class MagicFaceAdapter
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       boolean bool = paramPicEmoticonInfo.getBoolean("magic_promotion_is_new_content_" + (String)localObject, false);
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843959);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844025);
       if (bool)
       {
         paramPicEmoticonInfo = paramPicEmoticonInfo.getString("magic_promotion_gifUrl", "");
@@ -148,8 +148,8 @@ public class MagicFaceAdapter
       if (paramPicEmoticonInfo != null)
       {
         localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837572);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841350);
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837571);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841377);
         paramPicEmoticonInfo = URLDrawable.getDrawable(paramPicEmoticonInfo, (URLDrawable.URLDrawableOptions)localObject);
         paramPicEmoticonInfo.setTag(localEmoticon);
         paramPicEmoticonInfo.addHeader("my_uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
@@ -217,7 +217,7 @@ public class MagicFaceAdapter
     ProgressBar localProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
     localProgressBar.setVisibility(8);
     localProgressBar.setId(2131361975);
-    localProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838596));
+    localProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838602));
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams((int)(16.0F * this.jdField_a_of_type_Float), (int)(16.0F * this.jdField_a_of_type_Float));
     localLayoutParams2.addRule(14, -1);
     localLayoutParams2.topMargin = ((int)(20.0F * this.jdField_a_of_type_Float));
@@ -284,7 +284,7 @@ public class MagicFaceAdapter
           localObject2 = ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(paramEmotionPanelData.epId);
           if ((localObject2 != null) && (!((EmoticonPackage)localObject2).valid))
           {
-            ((ImageView)localObject1).setImageResource(2130843968);
+            ((ImageView)localObject1).setImageResource(2130844034);
             ((ImageView)localObject1).setVisibility(0);
           }
           paramView.setVisibility(8);
@@ -431,7 +431,7 @@ public class MagicFaceAdapter
     if (QLog.isColorLevel()) {
       QLog.d("MagicFaceAdapter", 2, "refreshPanelData");
     }
-    EmotionPanelDataBuilder.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, null, -1, 0, false, new acgi(this));
+    EmotionPanelDataBuilder.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, null, -1, 0, false, new acoj(this));
   }
   
   public void b(EmoticonPackage paramEmoticonPackage)

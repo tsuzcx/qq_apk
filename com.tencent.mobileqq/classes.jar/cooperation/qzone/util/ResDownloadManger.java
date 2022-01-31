@@ -1,7 +1,5 @@
 package cooperation.qzone.util;
 
-import anba;
-import anbb;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
@@ -10,6 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
+import aniz;
+import anja;
 import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
@@ -35,7 +35,7 @@ public class ResDownloadManger
   private static String b;
   private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
   private LruCache jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  private Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new anbb(this);
+  private Downloader.DownloadListener jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = new anja(this);
   private QzonePreDownloadManager jdField_a_of_type_CooperationQzoneQzonePreDownloadManager;
   private final MultiHashMap jdField_a_of_type_CooperationQzoneUtilMultiHashMap = new MultiHashMap();
   
@@ -553,7 +553,7 @@ public class ResDownloadManger
       localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramInt + " " + paramString);
       localObject = localBitmap;
     } while (localBitmap != null);
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new anba(this, paramInt, paramString, paramResLoadListener, paramOptions));
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new aniz(this, paramInt, paramString, paramResLoadListener, paramOptions));
     return localBitmap;
   }
   

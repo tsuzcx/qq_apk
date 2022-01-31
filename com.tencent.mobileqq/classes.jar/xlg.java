@@ -1,30 +1,14 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadFlowControlConfig;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 
-public final class xlg
+public class xlg
   implements Runnable
 {
-  public xlg(QQAppInterface paramQQAppInterface, int paramInt) {}
+  public xlg(PreloadFlowControlConfig paramPreloadFlowControlConfig) {}
   
   public void run()
   {
-    String str = "0X80067EA";
-    ServiceAccountFolderManager localServiceAccountFolderManager = ServiceAccountFolderManager.a();
-    int i = localServiceAccountFolderManager.b();
-    int j = localServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (j == 1) {
-      str = "0X80067E8";
-    }
-    for (;;)
-    {
-      long l = localServiceAccountFolderManager.a();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "Pb_account_lifeservice", "", str, str, 0, 0, "" + l, "" + j, "" + i, String.valueOf(this.jdField_a_of_type_Int + 1));
-      return;
-      if (j == 2) {
-        str = "0X80067E9";
-      }
-    }
+    QWalletTools.a(this.a, PreloadFlowControlConfig.access$000(this.a));
   }
 }
 

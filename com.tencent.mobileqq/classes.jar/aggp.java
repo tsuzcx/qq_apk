@@ -1,37 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.QQBroadcastReceiver;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
 public class aggp
-  extends QQBroadcastReceiver
+  implements Runnable
 {
-  public aggp(ScanTorchActivity paramScanTorchActivity) {}
+  public aggp(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramAppRuntime = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
-      }
-      if ("com.tencent.mobileqq__alive".equals(paramAppRuntime))
-      {
-        ScanTorchActivity.a(this.a);
-        return;
-      }
-    } while (!"tencent.ar.worldcup.finishScanTorch".equals(paramAppRuntime));
-    this.a.finish();
+    ScanOcrActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aggp
  * JD-Core Version:    0.7.0.1
  */

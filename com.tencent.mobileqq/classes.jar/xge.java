@@ -1,44 +1,13 @@
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCConnector;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.PublicQuickPayManager;
 
 public class xge
-  implements EIPClientConnectListener
+  implements DialogInterface.OnClickListener
 {
-  public xge(QWalletIPCConnector paramQWalletIPCConnector, long paramLong) {}
+  public xge(PublicQuickPayManager paramPublicQuickPayManager) {}
   
-  public void connectFailed()
-  {
-    QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, false);
-    QWalletIPCConnector.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, false);
-    synchronized (QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector))
-    {
-      QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector));
-      }
-      return;
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection arg1)
-  {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, ???.procName);
-    }
-    QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, true);
-    QWalletIPCConnector.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector, false);
-    synchronized (QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector))
-    {
-      QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + QWalletIPCConnector.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadQWalletIPCConnector) + "|" + (l - this.jdField_a_of_type_Long));
-      }
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

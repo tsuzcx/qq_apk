@@ -1,5 +1,6 @@
 package com.tencent.av.ui;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
@@ -51,13 +52,13 @@ import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import jzh;
-import jzi;
-import jzj;
-import jzk;
-import jzl;
-import jzm;
-import jzn;
+import kbl;
+import kbm;
+import kbn;
+import kbo;
+import kbp;
+import kbq;
+import kbr;
 import mqq.app.BaseActivity;
 
 public class QavPanel
@@ -73,7 +74,8 @@ public class QavPanel
   private static double jdField_g_of_type_Double = 0.15067D;
   private static double jdField_h_of_type_Double = 0.16D;
   int jdField_a_of_type_Int = 0;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jzj(this);
+  public AnimatorSet a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kbn(this);
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
   LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = null;
   public View.OnTouchListener a;
@@ -92,7 +94,7 @@ public class QavPanel
   ShimmerTextView jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = null;
   public BubbleTextView a;
   RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
-  jzn jdField_a_of_type_Jzn = null;
+  kbr jdField_a_of_type_Kbr = null;
   boolean jdField_a_of_type_Boolean = false;
   ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = null;
   int jdField_b_of_type_Int = 0;
@@ -144,7 +146,7 @@ public class QavPanel
   
   static
   {
-    jdField_e_of_type_Int = 2131362541;
+    jdField_e_of_type_Int = 2131362546;
   }
   
   public QavPanel(Context paramContext)
@@ -166,6 +168,7 @@ public class QavPanel
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
     a();
   }
   
@@ -188,6 +191,7 @@ public class QavPanel
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
     a();
   }
   
@@ -210,6 +214,7 @@ public class QavPanel
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
     a();
   }
   
@@ -473,13 +478,13 @@ public class QavPanel
       this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
       this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = new ImageView(getContext());
       this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setAlpha(0.0F);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setImageResource(2130840198);
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setImageResource(2130840213);
       this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = new ImageView(getContext());
       this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1].setAlpha(0.0F);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1].setImageResource(2130840198);
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1].setImageResource(2130840213);
       this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = new ImageView(getContext());
       this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2].setAlpha(0.0F);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2].setImageResource(2130840198);
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2].setImageResource(2130840213);
       Object localObject1 = new int[2];
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLocationInWindow((int[])localObject1);
       Object localObject2 = new int[2];
@@ -560,53 +565,53 @@ public class QavPanel
     default: 
       QLog.d("QavPanel", 1, "turnViewType2View, WRONG BTN TYPE --> " + paramInt);
       return null;
-    case 2131365397: 
-      return this.jdField_j_of_type_AndroidWidgetButton;
-    case 2131365399: 
-      return this.jdField_k_of_type_AndroidWidgetButton;
-    case 2131365391: 
-      return this.jdField_h_of_type_AndroidWidgetButton;
-    case 2131365414: 
-      return this.jdField_a_of_type_AndroidWidgetButton;
-    case 2131364247: 
-      return this.jdField_c_of_type_AndroidWidgetButton;
-    case 2131365413: 
-      return this.jdField_b_of_type_AndroidWidgetButton;
-    case 2131365405: 
-      return this.n;
-    case 2131365403: 
-      return this.m;
-    case 2131365401: 
-      return this.jdField_l_of_type_AndroidWidgetButton;
-    case 2131365388: 
-      return this.jdField_a_of_type_AndroidWidgetImageButton;
-    case 2131365395: 
-      return this.jdField_g_of_type_AndroidWidgetButton;
-    case 2131365411: 
-      return this.jdField_d_of_type_AndroidWidgetButton;
-    case 2131364249: 
-      return this.jdField_f_of_type_AndroidWidgetButton;
-    case 2131364248: 
-      return this.jdField_c_of_type_AndroidViewView;
-    case 2131365409: 
-      return this.jdField_e_of_type_AndroidWidgetButton;
-    case 2131365398: 
-      return this.jdField_e_of_type_AndroidWidgetFrameLayout;
-    case 2131365390: 
-      return this.jdField_b_of_type_AndroidWidgetFrameLayout;
-    case 2131365406: 
-      return this.o;
-    case 2131365396: 
-      return this.jdField_d_of_type_AndroidWidgetFrameLayout;
-    case 2131365394: 
-      return this.jdField_a_of_type_AndroidWidgetFrameLayout;
-    case 2131365400: 
-      return this.jdField_f_of_type_AndroidWidgetFrameLayout;
     case 2131365402: 
+      return this.jdField_j_of_type_AndroidWidgetButton;
+    case 2131365404: 
+      return this.jdField_k_of_type_AndroidWidgetButton;
+    case 2131365396: 
+      return this.jdField_h_of_type_AndroidWidgetButton;
+    case 2131365419: 
+      return this.jdField_a_of_type_AndroidWidgetButton;
+    case 2131364272: 
+      return this.jdField_c_of_type_AndroidWidgetButton;
+    case 2131365418: 
+      return this.jdField_b_of_type_AndroidWidgetButton;
+    case 2131365410: 
+      return this.n;
+    case 2131365408: 
+      return this.m;
+    case 2131365406: 
+      return this.jdField_l_of_type_AndroidWidgetButton;
+    case 2131365393: 
+      return this.jdField_a_of_type_AndroidWidgetImageButton;
+    case 2131365400: 
+      return this.jdField_g_of_type_AndroidWidgetButton;
+    case 2131365416: 
+      return this.jdField_d_of_type_AndroidWidgetButton;
+    case 2131364274: 
+      return this.jdField_f_of_type_AndroidWidgetButton;
+    case 2131364273: 
+      return this.jdField_c_of_type_AndroidViewView;
+    case 2131365414: 
+      return this.jdField_e_of_type_AndroidWidgetButton;
+    case 2131365403: 
+      return this.jdField_e_of_type_AndroidWidgetFrameLayout;
+    case 2131365395: 
+      return this.jdField_b_of_type_AndroidWidgetFrameLayout;
+    case 2131365411: 
+      return this.o;
+    case 2131365401: 
+      return this.jdField_d_of_type_AndroidWidgetFrameLayout;
+    case 2131365399: 
+      return this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    case 2131365405: 
+      return this.jdField_f_of_type_AndroidWidgetFrameLayout;
+    case 2131365407: 
       return this.jdField_g_of_type_AndroidWidgetFrameLayout;
-    case 2131364252: 
+    case 2131364277: 
       return this.jdField_a_of_type_AndroidWidgetImageView;
-    case 2131365392: 
+    case 2131365397: 
       return this.jdField_c_of_type_AndroidWidgetFrameLayout;
     }
     return this.jdField_i_of_type_AndroidWidgetButton;
@@ -681,11 +686,11 @@ public class QavPanel
         addView(this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView);
         bringChildToFront(this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView);
         c();
-        this.jdField_a_of_type_Jzn = new jzn(this);
+        this.jdField_a_of_type_Kbr = new kbr(this);
         localObject = new IntentFilter();
         ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
         ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
-        getContext().registerReceiver(this.jdField_a_of_type_Jzn, (IntentFilter)localObject);
+        getContext().registerReceiver(this.jdField_a_of_type_Kbr, (IntentFilter)localObject);
         getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.redpoint.broadcast.push.av"));
         if (QLog.isColorLevel()) {
           QLog.d("QavPanel", 2, "[red dot]  register red dot receiver");
@@ -710,33 +715,33 @@ public class QavPanel
         return;
         paramInt = 1;
         break;
-        this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969332, this, false);
-        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365386);
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365414));
-        this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365413));
-        this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364247));
-        this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365411));
-        this.jdField_e_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365409));
+        this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969330, this, false);
+        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365391);
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365419));
+        this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365418));
+        this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364272));
+        this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365416));
+        this.jdField_e_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365414));
         this.jdField_d_of_type_AndroidWidgetButton.setOnTouchListener(this.jdField_b_of_type_AndroidViewView$OnTouchListener);
         b(false);
         continue;
-        this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969331, this, false);
-        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365386);
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364252));
-        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364254));
-        this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = ((ShimmerTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364253));
-        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364251));
-        this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364248);
-        this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364249));
-        this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365413));
-        this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364247));
+        this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969329, this, false);
+        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365391);
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364277));
+        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364279));
+        this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = ((ShimmerTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364278));
+        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364276));
+        this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364273);
+        this.jdField_f_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364274));
+        this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365418));
+        this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364272));
         this.jdField_a_of_type_ComTencentAvUiQavPanelSlideTouchListener = new QavPanelSlideTouchListener(getContext(), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView, this.jdField_c_of_type_AndroidWidgetImageView);
         if (bool)
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getResources().getString(2131428827));
           this.jdField_a_of_type_AndroidWidgetImageView.setFocusable(true);
           this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
-          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new jzh(this));
+          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new kbl(this));
         }
         for (;;)
         {
@@ -744,46 +749,46 @@ public class QavPanel
           break;
           this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_ComTencentAvUiQavPanelSlideTouchListener);
         }
-        this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969337, this, false);
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364252));
-        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364254));
-        this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = ((ShimmerTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364253));
-        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364251));
-        this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364248);
-        this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364247));
+        this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969335, this, false);
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364277));
+        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364279));
+        this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = ((ShimmerTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364278));
+        this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364276));
+        this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364273);
+        this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364272));
         this.jdField_a_of_type_ComTencentAvUiQavPanelSlideTouchListener = new QavPanelSlideTouchListener(getContext(), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView, this.jdField_c_of_type_AndroidWidgetImageView);
         if (bool)
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getResources().getString(2131428827));
           this.jdField_a_of_type_AndroidWidgetImageView.setFocusable(true);
           this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
-          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new jzi(this));
+          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new kbm(this));
         }
         else
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_ComTencentAvUiQavPanelSlideTouchListener);
           continue;
-          this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969330, this, false);
-          this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365386);
-          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365388));
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365389));
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365404));
-          this.n = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365405));
-          this.o = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365406));
-          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365394));
-          this.jdField_g_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365395));
-          this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365390));
-          this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365391));
-          this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365392));
-          this.jdField_i_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365393));
-          this.jdField_d_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365396));
-          this.jdField_j_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365397));
-          this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365398));
-          this.jdField_k_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365399));
-          this.jdField_f_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365400));
-          this.jdField_l_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365401));
-          this.jdField_g_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365402));
-          this.m = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365403));
+          this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969328, this, false);
+          this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365391);
+          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365393));
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365394));
+          this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365409));
+          this.n = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365410));
+          this.o = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365411));
+          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365399));
+          this.jdField_g_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365400));
+          this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365395));
+          this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365396));
+          this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365397));
+          this.jdField_i_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365398));
+          this.jdField_d_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365401));
+          this.jdField_j_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365402));
+          this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365403));
+          this.jdField_k_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365404));
+          this.jdField_f_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365405));
+          this.jdField_l_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365406));
+          this.jdField_g_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365407));
+          this.m = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365408));
           this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(getContext(), this.m).a(53).a();
           if (paramBoolean2) {}
           for (paramInt = 2;; paramInt = 1)
@@ -791,59 +796,59 @@ public class QavPanel
             a(paramBoolean1, paramInt, false);
             break;
           }
-          this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969336, this, false);
-          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365388));
-          this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365386);
-          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365394));
-          this.jdField_g_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365395));
-          this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365390));
-          this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365391));
-          this.jdField_d_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365396));
-          this.jdField_j_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365397));
-          this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365398));
-          this.jdField_k_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365399));
-          this.jdField_f_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365400));
-          this.jdField_l_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365401));
-          this.jdField_g_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365402));
-          this.m = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365403));
+          this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969334, this, false);
+          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365393));
+          this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365391);
+          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365399));
+          this.jdField_g_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365400));
+          this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365395));
+          this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365396));
+          this.jdField_d_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365401));
+          this.jdField_j_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365402));
+          this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365403));
+          this.jdField_k_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365404));
+          this.jdField_f_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365405));
+          this.jdField_l_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365406));
+          this.jdField_g_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365407));
+          this.m = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365408));
           if (paramBoolean2) {}
           for (paramInt = 2;; paramInt = 1)
           {
             a(false, paramInt);
             break;
           }
-          this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969334, this, false);
-          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365388));
-          this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365386);
-          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365394));
-          this.jdField_g_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365395));
-          this.jdField_d_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365396));
-          this.jdField_j_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365397));
-          this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365398));
-          this.jdField_k_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365399));
-          this.jdField_f_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365400));
-          this.jdField_l_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365401));
-          this.jdField_g_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365402));
-          this.m = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365403));
+          this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969332, this, false);
+          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365393));
+          this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365391);
+          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365399));
+          this.jdField_g_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365400));
+          this.jdField_d_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365401));
+          this.jdField_j_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365402));
+          this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365403));
+          this.jdField_k_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365404));
+          this.jdField_f_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365405));
+          this.jdField_l_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365406));
+          this.jdField_g_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365407));
+          this.m = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365408));
           if (paramBoolean2) {}
           for (paramInt = 2;; paramInt = 1)
           {
             b(false, paramInt);
             break;
           }
-          this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969333, this, false);
-          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365388));
-          this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365386);
-          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365394));
-          this.jdField_g_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365395));
-          this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365390));
-          this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365391));
-          this.jdField_d_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365396));
-          this.jdField_j_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365397));
-          this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365398));
-          this.jdField_k_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365399));
-          this.jdField_f_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365400));
-          this.jdField_l_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365401));
+          this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969331, this, false);
+          this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131365393));
+          this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365391);
+          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365399));
+          this.jdField_g_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365400));
+          this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365395));
+          this.jdField_h_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365396));
+          this.jdField_d_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365401));
+          this.jdField_j_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365402));
+          this.jdField_e_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365403));
+          this.jdField_k_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365404));
+          this.jdField_f_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365405));
+          this.jdField_l_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131365406));
           a(false);
         }
       }
@@ -908,12 +913,12 @@ public class QavPanel
     this.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_e_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    localObject = new jzl(this);
+    localObject = new kbp(this);
     this.jdField_d_of_type_AndroidWidgetImageView.setOnTouchListener((View.OnTouchListener)localObject);
     this.jdField_e_of_type_AndroidWidgetImageView.setOnTouchListener((View.OnTouchListener)localObject);
     this.m.setOnTouchListener((View.OnTouchListener)localObject);
-    localObject = new AnimatorSet();
-    ((AnimatorSet)localObject).addListener(new jzm(this, paramString, paramInt1, paramInt2));
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new kbq(this, paramString, paramInt1, paramInt2));
     paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds();
     paramInt1 = paramString.width() - (int)UITools.a(getContext(), 4.0F);
     paramInt2 = paramString.height() - (int)UITools.a(getContext(), 4.0F);
@@ -948,36 +953,36 @@ public class QavPanel
     float f1 = UITools.a(getContext(), -6.0F);
     paramString = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetImageView, "translationX", new float[] { 0.0F, f1, 0.0F });
     paramString.setDuration(500L);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.8F });
+    localObject = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 0.8F });
+    ((ObjectAnimator)localObject).setDuration(500L);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.8F });
     localObjectAnimator1.setDuration(500L);
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 0.8F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.8F });
     localObjectAnimator2.setDuration(500L);
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.8F });
-    localObjectAnimator3.setDuration(500L);
-    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.8F, 0.0F });
-    localObjectAnimator4.setDuration(270L);
-    localObjectAnimator4.setStartDelay(500L);
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.jdField_d_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.8F, 0.0F });
+    localObjectAnimator3.setDuration(270L);
+    localObjectAnimator3.setStartDelay(500L);
     f1 = UITools.a(getContext(), 7.5F);
-    ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this.jdField_e_of_type_AndroidWidgetImageView, "translationX", new float[] { 0.0F, f1, 0.0F });
-    localObjectAnimator5.setDuration(500L);
-    ObjectAnimator localObjectAnimator6 = ObjectAnimator.ofFloat(this.jdField_e_of_type_AndroidWidgetImageView, "scaleX", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.jdField_e_of_type_AndroidWidgetImageView, "translationX", new float[] { 0.0F, f1, 0.0F });
+    localObjectAnimator4.setDuration(500L);
+    ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this.jdField_e_of_type_AndroidWidgetImageView, "scaleX", new float[] { 0.0F, 1.0F });
+    localObjectAnimator5.setDuration(400L);
+    ObjectAnimator localObjectAnimator6 = ObjectAnimator.ofFloat(this.jdField_e_of_type_AndroidWidgetImageView, "scaleY", new float[] { 0.0F, 1.0F });
     localObjectAnimator6.setDuration(400L);
-    ObjectAnimator localObjectAnimator7 = ObjectAnimator.ofFloat(this.jdField_e_of_type_AndroidWidgetImageView, "scaleY", new float[] { 0.0F, 1.0F });
-    localObjectAnimator7.setDuration(400L);
-    ObjectAnimator localObjectAnimator8 = ObjectAnimator.ofFloat(this.jdField_e_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.0F, 1.0F });
-    localObjectAnimator8.setDuration(500L);
+    ObjectAnimator localObjectAnimator7 = ObjectAnimator.ofFloat(this.jdField_e_of_type_AndroidWidgetImageView, "alpha", new float[] { 0.0F, 1.0F });
+    localObjectAnimator7.setDuration(500L);
     i();
-    ObjectAnimator localObjectAnimator9 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0], "alpha", new float[] { 0.0F, 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator8 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0], "alpha", new float[] { 0.0F, 1.0F, 0.0F });
+    localObjectAnimator8.setDuration(600L);
+    localObjectAnimator8.setStartDelay(900L);
+    ObjectAnimator localObjectAnimator9 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1], "alpha", new float[] { 0.0F, 1.0F, 0.0F });
     localObjectAnimator9.setDuration(600L);
-    localObjectAnimator9.setStartDelay(900L);
-    ObjectAnimator localObjectAnimator10 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1], "alpha", new float[] { 0.0F, 1.0F, 0.0F });
+    localObjectAnimator9.setStartDelay(1500L);
+    ObjectAnimator localObjectAnimator10 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2], "alpha", new float[] { 0.0F, 1.0F, 0.0F });
     localObjectAnimator10.setDuration(600L);
-    localObjectAnimator10.setStartDelay(1500L);
-    ObjectAnimator localObjectAnimator11 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2], "alpha", new float[] { 0.0F, 1.0F, 0.0F });
-    localObjectAnimator11.setDuration(600L);
-    localObjectAnimator11.setStartDelay(500L);
-    ((AnimatorSet)localObject).play(paramString).with(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3).with(localObjectAnimator4).with(localObjectAnimator5).with(localObjectAnimator6).with(localObjectAnimator7).with(localObjectAnimator8).with(localObjectAnimator9).with(localObjectAnimator10).with(localObjectAnimator11);
-    ((AnimatorSet)localObject).start();
+    localObjectAnimator10.setStartDelay(500L);
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(paramString).with((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3).with(localObjectAnimator4).with(localObjectAnimator5).with(localObjectAnimator6).with(localObjectAnimator7).with(localObjectAnimator8).with(localObjectAnimator9).with(localObjectAnimator10);
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
   
   public void a(boolean paramBoolean)
@@ -1001,11 +1006,11 @@ public class QavPanel
     for (;;)
     {
       int i3 = (int)(localDisplayMetrics.widthPixels * jdField_a_of_type_Double);
-      a(2131365396, i2, i3);
-      a(2131365390, i2 + 10, i3 - 5);
+      a(2131365401, i2, i3);
+      a(2131365395, i2 + 10, i3 - 5);
       i3 = (int)(localDisplayMetrics.widthPixels * jdField_c_of_type_Double);
-      a(2131365398, i2, i3);
-      a(2131365400, i2, i3);
+      a(2131365403, i2, i3);
+      a(2131365405, i2, i3);
       if (this.jdField_a_of_type_AndroidWidgetImageButton != null)
       {
         i3 = (int)(localDisplayMetrics.widthPixels * jdField_e_of_type_Double);
@@ -1015,12 +1020,12 @@ public class QavPanel
         localLayoutParams.leftMargin = i3;
         this.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams(localLayoutParams);
       }
-      a(2131365394, i2, (int)(localDisplayMetrics.widthPixels * jdField_e_of_type_Double) * 2 + (int)(localDisplayMetrics.widthPixels * jdField_h_of_type_Double) - 5);
-      AudioHelper.a(getResources(), this.jdField_j_of_type_AndroidWidgetButton, paramBoolean, 2130840140);
-      AudioHelper.a(getResources(), this.jdField_g_of_type_AndroidWidgetButton, paramBoolean, 2130840136);
-      AudioHelper.a(getResources(), this.jdField_k_of_type_AndroidWidgetButton, paramBoolean, 2130840131);
-      AudioHelper.a(getResources(), this.jdField_l_of_type_AndroidWidgetButton, paramBoolean, 2130840134);
-      AudioHelper.a(getResources(), this.jdField_h_of_type_AndroidWidgetButton, paramBoolean, 2130840125);
+      a(2131365399, i2, (int)(localDisplayMetrics.widthPixels * jdField_e_of_type_Double) * 2 + (int)(localDisplayMetrics.widthPixels * jdField_h_of_type_Double) - 5);
+      AudioHelper.a(getResources(), this.jdField_j_of_type_AndroidWidgetButton, paramBoolean, 2130840155);
+      AudioHelper.a(getResources(), this.jdField_g_of_type_AndroidWidgetButton, paramBoolean, 2130840151);
+      AudioHelper.a(getResources(), this.jdField_k_of_type_AndroidWidgetButton, paramBoolean, 2130840146);
+      AudioHelper.a(getResources(), this.jdField_l_of_type_AndroidWidgetButton, paramBoolean, 2130840149);
+      AudioHelper.a(getResources(), this.jdField_h_of_type_AndroidWidgetButton, paramBoolean, 2130840140);
       return;
       this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView.setVisibility(0);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
@@ -1055,12 +1060,12 @@ public class QavPanel
     for (;;)
     {
       int i3 = (int)(localDisplayMetrics.widthPixels * jdField_b_of_type_Double);
-      a(2131365396, i2, i3);
-      a(2131365390, i2 + 10, i3 - 5);
+      a(2131365401, i2, i3);
+      a(2131365395, i2 + 10, i3 - 5);
       i3 = (int)(localDisplayMetrics.widthPixels * jdField_d_of_type_Double);
-      a(2131365398, i2, i3);
-      a(2131365400, i2, i3);
-      a(2131365402, i2 + 10, i3 - 5);
+      a(2131365403, i2, i3);
+      a(2131365405, i2, i3);
+      a(2131365407, i2 + 10, i3 - 5);
       if (this.jdField_a_of_type_AndroidWidgetImageButton != null)
       {
         i3 = (int)(localDisplayMetrics.widthPixels * jdField_f_of_type_Double);
@@ -1070,12 +1075,12 @@ public class QavPanel
         localLayoutParams.leftMargin = i3;
         this.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams(localLayoutParams);
       }
-      a(2131365394, i2, (int)(localDisplayMetrics.widthPixels * jdField_f_of_type_Double) * 2 + (int)(localDisplayMetrics.widthPixels * jdField_h_of_type_Double) - 5);
-      AudioHelper.a(getResources(), this.jdField_j_of_type_AndroidWidgetButton, paramBoolean, 2130840140);
-      AudioHelper.a(getResources(), this.jdField_g_of_type_AndroidWidgetButton, paramBoolean, 2130840136);
-      AudioHelper.a(getResources(), this.jdField_k_of_type_AndroidWidgetButton, paramBoolean, 2130840131);
-      AudioHelper.a(getResources(), this.jdField_l_of_type_AndroidWidgetButton, paramBoolean, 2130840134);
-      AudioHelper.a(getResources(), this.jdField_h_of_type_AndroidWidgetButton, paramBoolean, 2130840125);
+      a(2131365399, i2, (int)(localDisplayMetrics.widthPixels * jdField_f_of_type_Double) * 2 + (int)(localDisplayMetrics.widthPixels * jdField_h_of_type_Double) - 5);
+      AudioHelper.a(getResources(), this.jdField_j_of_type_AndroidWidgetButton, paramBoolean, 2130840155);
+      AudioHelper.a(getResources(), this.jdField_g_of_type_AndroidWidgetButton, paramBoolean, 2130840151);
+      AudioHelper.a(getResources(), this.jdField_k_of_type_AndroidWidgetButton, paramBoolean, 2130840146);
+      AudioHelper.a(getResources(), this.jdField_l_of_type_AndroidWidgetButton, paramBoolean, 2130840149);
+      AudioHelper.a(getResources(), this.jdField_h_of_type_AndroidWidgetButton, paramBoolean, 2130840140);
       a(paramInt, paramBoolean);
       return;
       this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView.setVisibility(0);
@@ -1121,15 +1126,15 @@ public class QavPanel
     for (;;)
     {
       this.jdField_b_of_type_Int = i1;
-      AudioHelper.a(getResources(), this.jdField_j_of_type_AndroidWidgetButton, paramBoolean2, 2130840140);
-      AudioHelper.a(getResources(), this.jdField_g_of_type_AndroidWidgetButton, paramBoolean2, 2130840136);
-      AudioHelper.a(getResources(), this.jdField_k_of_type_AndroidWidgetButton, paramBoolean2, 2130840131);
-      AudioHelper.a(getResources(), this.jdField_l_of_type_AndroidWidgetButton, paramBoolean2, 2130840134);
+      AudioHelper.a(getResources(), this.jdField_j_of_type_AndroidWidgetButton, paramBoolean2, 2130840155);
+      AudioHelper.a(getResources(), this.jdField_g_of_type_AndroidWidgetButton, paramBoolean2, 2130840151);
+      AudioHelper.a(getResources(), this.jdField_k_of_type_AndroidWidgetButton, paramBoolean2, 2130840146);
+      AudioHelper.a(getResources(), this.jdField_l_of_type_AndroidWidgetButton, paramBoolean2, 2130840149);
       a(paramInt, paramBoolean2);
-      AudioHelper.a(getResources(), this.jdField_i_of_type_AndroidWidgetButton, paramBoolean2, 2130840143);
-      a("BtnAddMember", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_h_of_type_AndroidWidgetButton, paramBoolean2, 2130840125);
-      AudioHelper.a(getResources(), this.n, paramBoolean2, 2130840145);
-      AudioHelper.a(getResources(), this.o, paramBoolean2, 2130840155);
+      AudioHelper.a(getResources(), this.jdField_i_of_type_AndroidWidgetButton, paramBoolean2, 2130840158);
+      a("BtnAddMember", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_h_of_type_AndroidWidgetButton, paramBoolean2, 2130840140);
+      AudioHelper.a(getResources(), this.n, paramBoolean2, 2130840160);
+      AudioHelper.a(getResources(), this.o, paramBoolean2, 2130840170);
       return;
       paramBoolean2 = false;
       break;
@@ -1368,7 +1373,7 @@ public class QavPanel
         if (paramInt != 1) {
           break label208;
         }
-        if ((a("BtnEffect", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.m, paramBoolean1, 2130840149)) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
+        if ((a("BtnEffect", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.m, paramBoolean1, 2130840164)) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
         {
           this.m.setSelected(false);
           return;
@@ -1384,7 +1389,7 @@ public class QavPanel
         break label252;
       }
       if (!this.jdField_d_of_type_Boolean) {
-        a("BtnEffect", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.m, paramBoolean1, 2130840132);
+        a("BtnEffect", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.m, paramBoolean1, 2130840147);
       }
     } while (paramBoolean2);
     label208:
@@ -1399,10 +1404,10 @@ public class QavPanel
     if (paramBoolean)
     {
       if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-        this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131493511));
+        this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131493513));
       }
       if (this.jdField_c_of_type_AndroidWidgetButton != null) {
-        this.jdField_c_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131493511));
+        this.jdField_c_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131493513));
       }
     }
     for (;;)
@@ -1411,10 +1416,10 @@ public class QavPanel
         this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView.a(paramBoolean);
       }
       if (this.jdField_e_of_type_AndroidWidgetButton != null) {
-        AudioHelper.a(getResources(), this.jdField_e_of_type_AndroidWidgetButton, paramBoolean, 2130840129);
+        AudioHelper.a(getResources(), this.jdField_e_of_type_AndroidWidgetButton, paramBoolean, 2130840144);
       }
       if (this.jdField_b_of_type_AndroidWidgetButton != null) {
-        AudioHelper.a(getResources(), this.jdField_b_of_type_AndroidWidgetButton, paramBoolean, 2130840108);
+        AudioHelper.a(getResources(), this.jdField_b_of_type_AndroidWidgetButton, paramBoolean, 2130840123);
       }
       return;
       if (this.jdField_a_of_type_AndroidWidgetButton != null) {
@@ -1453,11 +1458,11 @@ public class QavPanel
     for (;;)
     {
       int i3 = (int)(localDisplayMetrics.widthPixels * jdField_a_of_type_Double);
-      a(2131365396, i2, i3);
-      a(2131365402, i2 + 10, i3 - 5);
+      a(2131365401, i2, i3);
+      a(2131365407, i2 + 10, i3 - 5);
       i3 = (int)(localDisplayMetrics.widthPixels * jdField_c_of_type_Double);
-      a(2131365398, i2, i3);
-      a(2131365400, i2, i3);
+      a(2131365403, i2, i3);
+      a(2131365405, i2, i3);
       if (this.jdField_a_of_type_AndroidWidgetImageButton != null)
       {
         i3 = (int)(localDisplayMetrics.widthPixels * jdField_e_of_type_Double);
@@ -1467,11 +1472,11 @@ public class QavPanel
         localLayoutParams.leftMargin = i3;
         this.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams(localLayoutParams);
       }
-      a(2131365394, i2, (int)(localDisplayMetrics.widthPixels * jdField_e_of_type_Double) * 2 + (int)(localDisplayMetrics.widthPixels * jdField_h_of_type_Double) - 5);
-      AudioHelper.a(getResources(), this.jdField_j_of_type_AndroidWidgetButton, paramBoolean, 2130840140);
-      AudioHelper.a(getResources(), this.jdField_g_of_type_AndroidWidgetButton, paramBoolean, 2130840136);
-      AudioHelper.a(getResources(), this.jdField_k_of_type_AndroidWidgetButton, paramBoolean, 2130840131);
-      AudioHelper.a(getResources(), this.jdField_l_of_type_AndroidWidgetButton, paramBoolean, 2130840134);
+      a(2131365399, i2, (int)(localDisplayMetrics.widthPixels * jdField_e_of_type_Double) * 2 + (int)(localDisplayMetrics.widthPixels * jdField_h_of_type_Double) - 5);
+      AudioHelper.a(getResources(), this.jdField_j_of_type_AndroidWidgetButton, paramBoolean, 2130840155);
+      AudioHelper.a(getResources(), this.jdField_g_of_type_AndroidWidgetButton, paramBoolean, 2130840151);
+      AudioHelper.a(getResources(), this.jdField_k_of_type_AndroidWidgetButton, paramBoolean, 2130840146);
+      AudioHelper.a(getResources(), this.jdField_l_of_type_AndroidWidgetButton, paramBoolean, 2130840149);
       a(paramInt, paramBoolean);
       return;
       this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView.setVisibility(0);
@@ -1592,23 +1597,23 @@ public class QavPanel
           ((RelativeLayout.LayoutParams)localObject).height = i4;
           this.jdField_b_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
-        a(2131365396, 4, i3);
-        a(2131365398, 4, i3);
-        a(2131365400, 4, i3);
-        a(2131365402, 4, i3);
+        a(2131365401, 4, i3);
+        a(2131365403, 4, i3);
+        a(2131365405, 4, i3);
+        a(2131365407, 4, i3);
         if (this.jdField_a_of_type_Int == 6) {
-          a(2131365402, 4, getResources().getDimensionPixelSize(2131560005));
+          a(2131365407, 4, getResources().getDimensionPixelSize(2131560005));
         }
         for (;;)
         {
           if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3))
           {
-            a(2131364247, 4, i2);
-            a(2131364249, 4, i2);
-            a(2131365413, 4, i2);
+            a(2131364272, 4, i2);
+            a(2131364274, 4, i2);
+            a(2131365418, 4, i2);
           }
           return;
-          a(2131365402, 4, i3);
+          a(2131365407, 4, i3);
         }
         i6 = i1;
       }
@@ -1621,13 +1626,13 @@ public class QavPanel
       this.jdField_a_of_type_ComTencentAvUiQavPanelSoundWaveView.a(paramBoolean);
     }
     if (this.jdField_f_of_type_AndroidWidgetButton != null) {
-      AudioHelper.a(getResources(), this.jdField_f_of_type_AndroidWidgetButton, paramBoolean, 2130840129);
+      AudioHelper.a(getResources(), this.jdField_f_of_type_AndroidWidgetButton, paramBoolean, 2130840144);
     }
     if (this.jdField_b_of_type_AndroidWidgetButton != null) {
-      AudioHelper.a(getResources(), this.jdField_b_of_type_AndroidWidgetButton, paramBoolean, 2130840108);
+      AudioHelper.a(getResources(), this.jdField_b_of_type_AndroidWidgetButton, paramBoolean, 2130840123);
     }
     if (this.jdField_c_of_type_AndroidWidgetButton != null) {
-      AudioHelper.a(getResources(), this.jdField_c_of_type_AndroidWidgetButton, paramBoolean, 2130840261);
+      AudioHelper.a(getResources(), this.jdField_c_of_type_AndroidWidgetButton, paramBoolean, 2130840276);
     }
   }
   
@@ -1698,7 +1703,7 @@ public class QavPanel
         this.jdField_l_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 2, f2, 1, 0.0F, 1, 0.0F);
         this.jdField_l_of_type_AndroidViewAnimationAnimation.setFillAfter(true);
         this.jdField_l_of_type_AndroidViewAnimationAnimation.setDuration(150L);
-        this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new jzk(this);
+        this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new kbo(this);
         this.jdField_g_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
         this.jdField_h_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
         return;
@@ -1718,7 +1723,6 @@ public class QavPanel
       }
     }
     label42:
-    EffectOperateManager localEffectOperateManager;
     do
     {
       return;
@@ -1745,9 +1749,12 @@ public class QavPanel
       }
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
       this.m.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      localEffectOperateManager = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
-    } while (localEffectOperateManager == null);
-    localEffectOperateManager.c(false);
+      EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
+      if (localEffectOperateManager != null) {
+        localEffectOperateManager.c(false);
+      }
+    } while (this.jdField_a_of_type_AndroidAnimationAnimatorSet == null);
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
   }
   
   public void e()
@@ -1781,10 +1788,10 @@ public class QavPanel
   
   public void h()
   {
-    if (this.jdField_a_of_type_Jzn != null)
+    if (this.jdField_a_of_type_Kbr != null)
     {
-      getContext().unregisterReceiver(this.jdField_a_of_type_Jzn);
-      this.jdField_a_of_type_Jzn = null;
+      getContext().unregisterReceiver(this.jdField_a_of_type_Kbr);
+      this.jdField_a_of_type_Kbr = null;
     }
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
     {
@@ -1876,12 +1883,12 @@ public class QavPanel
   
   public void setMultiPstnCallback(boolean paramBoolean)
   {
-    Button localButton1 = (Button)findViewById(2131366159);
-    Button localButton2 = (Button)findViewById(2131366160);
-    Button localButton3 = (Button)findViewById(2131366161);
+    Button localButton1 = (Button)findViewById(2131366164);
+    Button localButton2 = (Button)findViewById(2131366165);
+    Button localButton3 = (Button)findViewById(2131366166);
     if (localButton1 != null)
     {
-      AudioHelper.a(getResources(), localButton1, false, 2130840140);
+      AudioHelper.a(getResources(), localButton1, false, 2130840155);
       localButton1.setEnabled(false);
       if (paramBoolean) {
         localButton1.setVisibility(0);
@@ -1891,7 +1898,7 @@ public class QavPanel
     {
       if (localButton2 != null)
       {
-        AudioHelper.a(getResources(), localButton2, false, 2130840131);
+        AudioHelper.a(getResources(), localButton2, false, 2130840146);
         localButton2.setEnabled(false);
         if (!paramBoolean) {
           break label169;
@@ -1901,7 +1908,7 @@ public class QavPanel
       label94:
       if (localButton3 != null)
       {
-        AudioHelper.a(getResources(), localButton3, false, 2130840134);
+        AudioHelper.a(getResources(), localButton3, false, 2130840149);
         localButton3.setEnabled(false);
         if (!paramBoolean) {
           break label178;
@@ -1914,9 +1921,9 @@ public class QavPanel
       if (!paramBoolean) {
         break label188;
       }
-      setViewVisibility(2131365397, 8);
-      setViewVisibility(2131365399, 8);
-      setViewVisibility(2131365401, 8);
+      setViewVisibility(2131365402, 8);
+      setViewVisibility(2131365404, 8);
+      setViewVisibility(2131365406, 8);
       return;
       localButton1.setVisibility(8);
       break;
@@ -1927,9 +1934,9 @@ public class QavPanel
       localButton3.setVisibility(8);
     }
     label188:
-    setViewVisibility(2131365397, 0);
-    setViewVisibility(2131365399, 0);
-    setViewVisibility(2131365401, 0);
+    setViewVisibility(2131365402, 0);
+    setViewVisibility(2131365404, 0);
+    setViewVisibility(2131365406, 0);
   }
   
   public void setTipsManager(TipsManager paramTipsManager)
@@ -1969,7 +1976,7 @@ public class QavPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.QavPanel
  * JD-Core Version:    0.7.0.1
  */

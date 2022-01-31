@@ -45,7 +45,7 @@ public class SystemEmoticonPanel
       Field localField = Class.forName("android.view.LayoutInflater").getDeclaredField("sConstructorMap");
       localField.setAccessible(true);
       ((HashMap)localField.get(LayoutInflater.from(paramContext))).remove("android.support.v4.view.ViewPager");
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130968975, this);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130968977, this);
       a(paramContext, paramEmoticonCallback);
       return;
     }
@@ -81,8 +81,8 @@ public class SystemEmoticonPanel
   
   protected void a(Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131364569));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131364498));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131364593));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131364522));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);

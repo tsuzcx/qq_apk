@@ -23,6 +23,8 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.ThreadPoolParams;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -38,8 +40,6 @@ import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.http.Header;
 import org.apache.http.client.CookieStore;
@@ -585,27 +585,33 @@ public class URLDrawable
     if (sDefaultDrawableParms != null) {
       throw new IllegalArgumentException("please don't call setURLDrawableParams twice");
     }
-    if (paramURLDrawableParams.mURLDrawableExecutor == null) {
-      paramURLDrawableParams.mURLDrawableExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, 1L, TimeUnit.SECONDS, sPoolWorkQueue, sThreadFactory);
+    Object localObject;
+    if (paramURLDrawableParams.mURLDrawableExecutor == null)
+    {
+      localObject = new ThreadPoolParams();
+      ((ThreadPoolParams)localObject).corePoolsize = CORE_POOL_SIZE;
+      ((ThreadPoolParams)localObject).maxPooolSize = MAXIMUM_POOL_SIZE;
+      ((ThreadPoolParams)localObject).keepAliveTime = 1;
+      ((ThreadPoolParams)localObject).poolThreadName = "URLDrawable";
+      paramURLDrawableParams.mURLDrawableExecutor = ThreadManagerV2.newFreeThreadPool((ThreadPoolParams)localObject);
     }
-    HandlerThread localHandlerThread;
     if (paramURLDrawableParams.mSubHandler == null)
     {
-      localHandlerThread = new HandlerThread("URLDrawableSubThread");
-      localHandlerThread.start();
-      paramURLDrawableParams.mSubHandler = new Handler(localHandlerThread.getLooper());
+      localObject = ThreadManagerV2.newFreeHandlerThread("URLDrawableSub", 0);
+      ((HandlerThread)localObject).start();
+      paramURLDrawableParams.mSubHandler = new Handler(((HandlerThread)localObject).getLooper());
     }
     if (paramURLDrawableParams.mFileHandler == null)
     {
-      localHandlerThread = new HandlerThread("URLDrawableFileThread");
-      localHandlerThread.start();
-      paramURLDrawableParams.mFileHandler = new Handler(localHandlerThread.getLooper());
+      localObject = ThreadManagerV2.newFreeHandlerThread("URLDrawableFile", 0);
+      ((HandlerThread)localObject).start();
+      paramURLDrawableParams.mFileHandler = new Handler(((HandlerThread)localObject).getLooper());
     }
     if (paramURLDrawableParams.mBatchHandler == null)
     {
-      localHandlerThread = new HandlerThread("URLDrawableBatchThread");
-      localHandlerThread.start();
-      paramURLDrawableParams.mBatchHandler = new Handler(localHandlerThread.getLooper());
+      localObject = ThreadManagerV2.newFreeHandlerThread("URLDrawableBatch", 0);
+      ((HandlerThread)localObject).start();
+      paramURLDrawableParams.mBatchHandler = new Handler(((HandlerThread)localObject).getLooper());
     }
     sDefaultDrawableParms = paramURLDrawableParams;
     if (paramURLDrawableParams.mMemoryCache == null) {}

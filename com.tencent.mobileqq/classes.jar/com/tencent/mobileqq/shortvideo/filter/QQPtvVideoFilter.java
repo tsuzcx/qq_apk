@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import aibl;
-import aibm;
+import aigd;
+import aige;
 import android.annotation.TargetApi;
 import android.opengl.EGL14;
 import android.opengl.GLES20;
@@ -258,8 +258,8 @@ public class QQPtvVideoFilter
           FabbyManager.setModelPath(str);
           long l = System.currentTimeMillis();
           this.jdField_a_of_type_ComTencentTtpicThreadSegmentGLThread = new SegmentGLThread(EGL14.eglGetCurrentContext());
-          this.jdField_a_of_type_ComTencentTtpicThreadSegmentGLThread.setOnDataReadyListener(new aibl(this));
-          a(new aibm(this));
+          this.jdField_a_of_type_ComTencentTtpicThreadSegmentGLThread.setOnDataReadyListener(new aigd(this));
+          a(new aige(this));
           if (SLog.a()) {
             SLog.d("QQPtvVideoFilter", "initSegmentGLThread create, cost:" + (float)(System.currentTimeMillis() - l) / 1000.0F);
           }
@@ -272,6 +272,14 @@ public class QQPtvVideoFilter
       localObject = finally;
       throw localObject;
     }
+  }
+  
+  public double a()
+  {
+    if ((a().a() == 0) || (a().f() == 0)) {
+      return VideoMaterialUtil.SCALE_FACE_DETECT;
+    }
+    return a().a() * 1.0F / a().f();
   }
   
   public int a()
@@ -305,7 +313,7 @@ public class QQPtvVideoFilter
           this.jdField_b_of_type_Boolean = true;
         }
         if ((localObject4 == null) || (((List)localObject4).isEmpty()) || ((this.d) && (!QQSharpFaceFilter.jdField_a_of_type_Boolean))) {
-          break label1056;
+          break label1058;
         }
         if (this.jdField_a_of_type_Boolean) {
           break label218;
@@ -362,7 +370,7 @@ public class QQPtvVideoFilter
           if (this.jdField_a_of_type_ComTencentTtpicThreadSegmentGLThread == null)
           {
             if (!SoLoader.f()) {
-              break label1092;
+              break label1094;
             }
             j();
             paramInt = 0;
@@ -381,7 +389,7 @@ public class QQPtvVideoFilter
               GestureMgrRecognize.a().a(i, (byte[])localObject3, a().a(), a().b(), a().f(), a().g());
               localObject3 = GestureMgrRecognize.a().a();
               if ((localObject3 == null) || (!((GestureKeyInfo)localObject3).jdField_a_of_type_Boolean) || (!((GestureKeyInfo)localObject3).jdField_a_of_type_JavaLangString.equalsIgnoreCase(GestureFilterManager.jdField_a_of_type_JavaLangString))) {
-                break label922;
+                break label924;
               }
               i = 1;
               if (i != 0)
@@ -390,7 +398,7 @@ public class QQPtvVideoFilter
                 a().jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo.jdField_a_of_type_Long = System.currentTimeMillis();
               }
               if (a().jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo != null) {
-                break label927;
+                break label929;
               }
               a().d = false;
             }
@@ -418,23 +426,23 @@ public class QQPtvVideoFilter
                 if (((VideoFilterList)localObject3).a())
                 {
                   QQFilterLogManager.d();
-                  localFrame = ((VideoFilterList)localObject3).a(localFrame.getFBO(), localFrame.getTextureId(), a().f(), a().g(), VideoMaterialUtil.SCALE_FACE_DETECT, a().jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector, l);
+                  localFrame = ((VideoFilterList)localObject3).a(localFrame.getFBO(), localFrame.getTextureId(), a().f(), a().g(), a(), a().jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector, l);
                   QQFilterLogManager.d("挂件内部渲染耗时");
                   if (paramInt == 0) {
-                    break label1069;
+                    break label1071;
                   }
-                  localFrame = ((VideoFilterList)localObject3).a((Frame)localObject2, localFrame, VideoPreviewFaceOutlineDetector.getInstance().getAllFaces(), VideoPreviewFaceOutlineDetector.getInstance().getAllFaceAngles(), VideoPreviewFaceOutlineDetector.getInstance().getFaceActionCounter(), VideoMaterialUtil.SCALE_FACE_DETECT);
+                  localFrame = ((VideoFilterList)localObject3).a((Frame)localObject2, localFrame, VideoPreviewFaceOutlineDetector.getInstance().getAllFaces(), VideoPreviewFaceOutlineDetector.getInstance().getAllFaceAngles(), VideoPreviewFaceOutlineDetector.getInstance().getFaceActionCounter(), a());
                 }
               }
               GLES20.glFinish();
               if (this.jdField_a_of_type_ComTencentTtpicUtilOnSegmentReadyListener == null) {
-                break label1085;
+                break label1087;
               }
               if (SLog.a()) {
                 SLog.d("QQPtvVideoFilter", "fabby wait start!");
               }
               if (this.e) {
-                break label1079;
+                break label1081;
               }
               synchronized (this.jdField_a_of_type_JavaLangObject)
               {
@@ -453,7 +461,7 @@ public class QQPtvVideoFilter
                 }
                 this.e = false;
                 if ((localSegmentDataPipe == null) || (localSegmentDataPipe.mTexFrame.width != localFrame.width) || (localObject2 == null)) {
-                  break label1072;
+                  break label1074;
                 }
                 localFrame = ((VideoFilterList)localObject2).a(localSegmentDataPipe.mTexFrame, localSegmentDataPipe.mMaskFrame);
                 this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(localSegmentDataPipe.mTexFrame.getTextureId(), localSegmentDataPipe.mTexFrame.width, localSegmentDataPipe.mTexFrame.height, -1, 0.0D, this.jdField_c_of_type_ComTencentFilterFrame);
@@ -463,10 +471,10 @@ public class QQPtvVideoFilter
                 }
               }
             }
-            label922:
+            label924:
             i = 0;
             break;
-            label927:
+            label929:
             if (a().jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo.jdField_a_of_type_Long + 2000L >= System.currentTimeMillis()) {
               a().d = true;
             } else {
@@ -485,7 +493,7 @@ public class QQPtvVideoFilter
           QQFilterLogManager.d("第二次翻转texture耗时");
           QQFilterLogManager.a("QQPtvVideoFilter", true);
           return paramInt;
-          label1056:
+          label1058:
           QQFilterLogManager.a("QQPtvVideoFilter", false);
           return paramInt;
         }
@@ -495,18 +503,18 @@ public class QQPtvVideoFilter
         for (;;)
         {
           continue;
-          label1069:
+          label1071:
           continue;
-          label1072:
+          label1074:
           Object localObject2 = localError;
           continue;
-          label1079:
+          label1081:
           SegmentDataPipe localSegmentDataPipe = null;
           continue;
-          label1085:
+          label1087:
           localObject2 = localError;
           continue;
-          label1092:
+          label1094:
           paramInt = 0;
           localObject2 = localError;
         }
@@ -601,7 +609,7 @@ public class QQPtvVideoFilter
   public void b(int paramInt1, int paramInt2)
   {
     super.b(paramInt1, paramInt2);
-    a(paramInt1, paramInt2, VideoMaterialUtil.SCALE_FACE_DETECT);
+    a(paramInt1, paramInt2, a());
   }
   
   public void c()
@@ -647,14 +655,14 @@ public class QQPtvVideoFilter
     }
   }
   
+  public boolean f_()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
   public void h()
   {
     this.jdField_b_of_type_Int = b(a(this.jdField_a_of_type_Int));
-  }
-  
-  public boolean i_()
-  {
-    return this.jdField_c_of_type_Boolean;
   }
 }
 

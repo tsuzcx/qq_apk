@@ -1,54 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
 import com.tencent.qphone.base.util.QLog;
 
 public class mqq
-  extends BroadcastReceiver
+  implements Runnable
 {
-  private String jdField_a_of_type_JavaLangString;
+  public mqq(ItemShowDispatcher paramItemShowDispatcher) {}
   
-  private mqq(ReadInJoyGlobalReporter paramReadInJoyGlobalReporter) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON appstatus=" + ReadInJoyGlobalReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReadInJoyGlobalReporter));
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF appstatus = " + ReadInJoyGlobalReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReadInJoyGlobalReporter));
-            }
-          } while (ReadInJoyGlobalReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReadInJoyGlobalReporter) != 2);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReadInJoyGlobalReporter.a();
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReadInJoyGlobalReporter.c();
-          return;
-        } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyGlobalReporter", 2, "ScreenBroadcastReceiver ACTION_USER_PRESENT app status=" + ReadInJoyGlobalReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReadInJoyGlobalReporter));
-        }
-      } while ((ReadInJoyGlobalReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReadInJoyGlobalReporter) != 2) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)));
-      paramContext = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    } while (paramContext == null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReadInJoyGlobalReporter.a(paramContext, NetConnInfoCenter.getServerTimeMillis());
+    QLog.d("ItemShowDispatcher_time", 2, "  1秒到了 ");
+    ItemShowDispatcher.a(this.a);
   }
 }
 

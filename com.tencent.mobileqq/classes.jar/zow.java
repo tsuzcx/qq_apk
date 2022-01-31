@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-public class zow
+class zow
   implements Runnable
 {
-  public zow(TroopManager paramTroopManager, String paramString) {}
+  zow(zov paramzov, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_JavaLangString, -1L);
+    if (this.jdField_a_of_type_Boolean) {
+      synchronized (NewFriendManager.a(this.jdField_a_of_type_Zov.a))
+      {
+        Iterator localIterator = NewFriendManager.a(this.jdField_a_of_type_Zov.a).iterator();
+        if (localIterator.hasNext()) {
+          ((NewFriendManager.INewFriendListener)localIterator.next()).R_();
+        }
+      }
+    }
   }
 }
 

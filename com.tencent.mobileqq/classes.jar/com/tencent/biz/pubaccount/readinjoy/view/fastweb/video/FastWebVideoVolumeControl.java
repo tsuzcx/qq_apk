@@ -21,9 +21,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.WeakHashMap;
-import mpu;
-import mpv;
 import mqq.util.WeakReference;
+import mtm;
+import mtn;
 
 public class FastWebVideoVolumeControl
 {
@@ -35,8 +35,8 @@ public class FastWebVideoVolumeControl
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Map jdField_a_of_type_JavaUtilMap = new WeakHashMap();
   private Timer jdField_a_of_type_JavaUtilTimer;
-  private mpu jdField_a_of_type_Mpu;
-  private mpv jdField_a_of_type_Mpv;
+  private mtm jdField_a_of_type_Mtm;
+  private mtn jdField_a_of_type_Mtn;
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int = -1;
   private Map jdField_b_of_type_JavaUtilMap = new WeakHashMap();
@@ -124,17 +124,17 @@ public class FastWebVideoVolumeControl
     }
     this.jdField_a_of_type_JavaLangString = paramActivity.getClass().getName();
     this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("audio"));
-    this.jdField_a_of_type_Mpv = new mpv(this, null);
+    this.jdField_a_of_type_Mtn = new mtn(this, null);
     paramActivity = new IntentFilter();
     paramActivity.addAction("android.media.VOLUME_CHANGED_ACTION");
     paramActivity.addAction("android.intent.action.HEADSET_PLUG");
     paramActivity.addAction("android.media.AUDIO_BECOMING_NOISY");
     paramActivity.addAction("android.media.RINGER_MODE_CHANGED");
     this.j = true;
-    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.jdField_a_of_type_Mpv, paramActivity);
+    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.jdField_a_of_type_Mtn, paramActivity);
     paramActivity = (TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone");
-    this.jdField_a_of_type_Mpu = new mpu(this);
-    paramActivity.listen(this.jdField_a_of_type_Mpu, 32);
+    this.jdField_a_of_type_Mtm = new mtm(this);
+    paramActivity.listen(this.jdField_a_of_type_Mtm, 32);
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaAudioManager.getRingerMode();
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
   }
@@ -228,7 +228,7 @@ public class FastWebVideoVolumeControl
           if (!paramBoolean) {
             break label400;
           }
-          ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130840887));
+          ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130840905));
           ((ImageView)paramString.get()).setContentDescription("取消静音");
         }
       }
@@ -238,7 +238,7 @@ public class FastWebVideoVolumeControl
       }
       return;
       label400:
-      ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130840888));
+      ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130840906));
       ((ImageView)paramString.get()).setContentDescription("静音");
       break label454;
       label442:
@@ -272,11 +272,11 @@ public class FastWebVideoVolumeControl
       label95:
       if (!"".equals(this.jdField_a_of_type_JavaLangString))
       {
-        BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(this.jdField_a_of_type_Mpv);
-        ((TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone")).listen(this.jdField_a_of_type_Mpu, 0);
+        BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(this.jdField_a_of_type_Mtn);
+        ((TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone")).listen(this.jdField_a_of_type_Mtm, 0);
       }
-      this.jdField_a_of_type_Mpu = null;
-      this.jdField_a_of_type_Mpv = null;
+      this.jdField_a_of_type_Mtm = null;
+      this.jdField_a_of_type_Mtn = null;
       this.jdField_a_of_type_JavaLangString = "";
       this.jdField_a_of_type_AndroidMediaAudioManager = null;
       if (!this.e)

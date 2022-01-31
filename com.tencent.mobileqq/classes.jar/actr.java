@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import android.view.animation.Interpolator;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
 
 public class actr
-  implements Runnable
+  implements Interpolator
 {
-  public actr(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public actr(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
   
-  public void run()
+  public float getInterpolation(float paramFloat)
   {
-    QfileRecentPicFileTabView.a(this.a);
-    this.a.e();
+    paramFloat -= 1.0F;
+    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
   }
 }
 

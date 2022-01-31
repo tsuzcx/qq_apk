@@ -57,8 +57,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import uvy;
-import uwa;
+import vay;
+import vba;
 
 public class DeviceSingleStructBuilder
   extends AbstractChatItemBuilder
@@ -70,7 +70,7 @@ public class DeviceSingleStructBuilder
   public DeviceSingleStructBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new uvy(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vay(this);
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     paramQQAppInterface = new Intent();
     paramQQAppInterface.setAction("SmartDevice_clickOnDeviceList");
@@ -148,17 +148,17 @@ public class DeviceSingleStructBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramLinearLayout.setPadding(0, AIOUtils.a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0);
-    paramLinearLayout = (uwa)paramViewHolder;
+    paramLinearLayout = (vba)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968745, null);
-      paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363540));
-      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131363541));
-      paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363543));
-      paramLinearLayout.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363544));
-      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131363545));
-      paramLinearLayout.e = ((TextView)paramViewHolder.findViewById(2131363547));
+      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968748, null);
+      paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363559));
+      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131363560));
+      paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363562));
+      paramLinearLayout.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363563));
+      paramLinearLayout.d = ((TextView)paramViewHolder.findViewById(2131363564));
+      paramLinearLayout.e = ((TextView)paramViewHolder.findViewById(2131363566));
     }
     if ((paramLinearLayout.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForDeviceSingleStruct)) {}
     for (paramMessageRecord = (MessageForDeviceSingleStruct)paramMessageRecord;; paramMessageRecord = null)
@@ -249,7 +249,7 @@ public class DeviceSingleStructBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new uwa(this);
+    return new vba(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -285,8 +285,8 @@ public class DeviceSingleStructBuilder
   
   public void a(View paramView, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct)
   {
-    uwa localuwa = (uwa)AIOUtils.a(paramView);
-    if (localuwa == null) {
+    vba localvba = (vba)AIOUtils.a(paramView);
+    if (localvba == null) {
       if (QLog.isColorLevel()) {
         QLog.d("DeviceSingleStructBuilder", 2, "error get holder in updateview");
       }
@@ -297,20 +297,20 @@ public class DeviceSingleStructBuilder
       {
         return;
         paramView = null;
-        if ((localuwa.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForDeviceSingleStruct)) {
-          paramView = (MessageForDeviceSingleStruct)localuwa.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        if ((localvba.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForDeviceSingleStruct)) {
+          paramView = (MessageForDeviceSingleStruct)localvba.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
         }
       } while (paramView == null);
       if ((paramView.uniseq == paramMessageForDeviceSingleStruct.uniseq) && (paramView.nCoverSessionID == paramMessageForDeviceSingleStruct.nCoverSessionID))
       {
         paramView.strCoverPath = paramMessageForDeviceSingleStruct.strCoverPath;
-        a(paramView, localuwa);
+        a(paramView, localvba);
       }
     } while ((paramView.uniseq != paramMessageForDeviceSingleStruct.uniseq) || (paramView.nMediaSessionID != paramMessageForDeviceSingleStruct.nMediaSessionID));
     paramView.strMediaPath = paramMessageForDeviceSingleStruct.strMediaPath;
   }
   
-  protected void a(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct, uwa paramuwa)
+  protected void a(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct, vba paramvba)
   {
     if ((paramMessageForDeviceSingleStruct.nDataType == 1) && (FileUtils.b(paramMessageForDeviceSingleStruct.strMediaPath))) {}
     for (;;)
@@ -330,13 +330,13 @@ public class DeviceSingleStructBuilder
         if (paramMessageForDeviceSingleStruct != null)
         {
           paramMessageForDeviceSingleStruct = URLDrawable.getDrawable(paramMessageForDeviceSingleStruct);
-          paramuwa.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramMessageForDeviceSingleStruct);
+          paramvba.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramMessageForDeviceSingleStruct);
         }
         return;
       }
       catch (Exception paramMessageForDeviceSingleStruct)
       {
-        paramuwa.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837616);
+        paramvba.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837615);
         return;
       }
       if (FileUtils.b(paramMessageForDeviceSingleStruct.strCoverPath)) {
@@ -352,24 +352,24 @@ public class DeviceSingleStructBuilder
           if (paramMessageForDeviceSingleStruct != null)
           {
             paramMessageForDeviceSingleStruct = URLDrawable.getDrawable(paramMessageForDeviceSingleStruct);
-            paramuwa.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramMessageForDeviceSingleStruct);
+            paramvba.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramMessageForDeviceSingleStruct);
             return;
           }
         }
         catch (Exception paramMessageForDeviceSingleStruct)
         {
-          paramuwa.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837616);
+          paramvba.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837615);
           return;
         }
       }
     }
-    paramuwa.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837616);
+    paramvba.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837615);
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131375567, this.jdField_a_of_type_AndroidContentContext.getString(2131433638), 2130838309);
+    paramView.a(2131375633, this.jdField_a_of_type_AndroidContentContext.getString(2131433652), 2130838314);
     int i = 0;
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000))
     {
@@ -381,7 +381,7 @@ public class DeviceSingleStructBuilder
       i = 1;
     }
     if ((i != 0) && (MultiMsgManager.a().a())) {
-      paramView.a(2131375577, this.jdField_a_of_type_AndroidContentContext.getString(2131433761), 2130838320);
+      paramView.a(2131375643, this.jdField_a_of_type_AndroidContentContext.getString(2131433775), 2130838325);
     }
     return paramView.a();
   }

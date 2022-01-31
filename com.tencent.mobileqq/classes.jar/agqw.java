@@ -1,33 +1,39 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
+import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.portal.FormalView;
 
 public class agqw
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public agqw(PhotoViewForShopping paramPhotoViewForShopping, ProfileCardInfo paramProfileCardInfo) {}
+  public agqw(FormalView paramFormalView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null))
+    this.a.f();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.f();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    FormalView.a(this.a).setVisibility(0);
+    if (this.a.a == 1)
     {
-      ProfileShoppingPhotoInfo localProfileShoppingPhotoInfo = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-      if ((localProfileShoppingPhotoInfo != null) && (PhotoViewForShopping.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping) != null))
-      {
-        Message localMessage = Message.obtain();
-        localMessage.what = 200;
-        localMessage.obj = localProfileShoppingPhotoInfo;
-        PhotoViewForShopping.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping).sendMessage(localMessage);
-      }
+      FormalView.b(this.a).setVisibility(0);
+      return;
     }
+    FormalView.b(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqw
  * JD-Core Version:    0.7.0.1
  */

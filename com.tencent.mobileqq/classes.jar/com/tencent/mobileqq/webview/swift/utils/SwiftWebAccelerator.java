@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import akqp;
-import akqq;
-import akqr;
-import akqs;
-import akqt;
-import akqv;
-import akqw;
+import akyg;
+import akyh;
+import akyi;
+import akyj;
+import akyk;
+import akym;
+import akyn;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class SwiftWebAccelerator
   private static SwiftWebAccelerator jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator;
   public static final Object a;
   public int a;
-  final SwiftBrowserStateMachineScheduler jdField_a_of_type_ComTencentMobileqqWebviewSwiftSchedulerSwiftBrowserStateMachineScheduler = new SwiftBrowserStateMachineScheduler(new akqp(this));
+  final SwiftBrowserStateMachineScheduler jdField_a_of_type_ComTencentMobileqqWebviewSwiftSchedulerSwiftBrowserStateMachineScheduler = new SwiftBrowserStateMachineScheduler(new akyg(this));
   public boolean a;
   public int b = 0;
   
@@ -56,7 +56,7 @@ public class SwiftWebAccelerator
   {
     long l = System.currentTimeMillis();
     if (WebViewPluginEngine.a == null) {
-      ThreadManager.postImmediately(new akqw(l), null, false);
+      ThreadManager.postImmediately(new akyn(l), null, false);
     }
   }
   
@@ -78,7 +78,7 @@ public class SwiftWebAccelerator
       QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment start! " + bool);
       if (bool)
       {
-        ThreadManager.postImmediately(new akqr(this, l, paramBundle), null, false);
+        ThreadManager.postImmediately(new akyi(this, l, paramBundle), null, false);
         return -1;
       }
       SwiftWebAccelerator.TbsAccelerator.b();
@@ -117,7 +117,7 @@ public class SwiftWebAccelerator
       QLog.i("WebLog_SwiftWebAccelerator", 1, "smartSchedule say no because is in real world now.");
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new akqq(this, paramBundle));
+    new Handler(Looper.getMainLooper()).post(new akyh(this, paramBundle));
   }
   
   public int b(Bundle paramBundle)
@@ -133,7 +133,7 @@ public class SwiftWebAccelerator
   public void b(Bundle paramBundle)
   {
     this.jdField_a_of_type_Int |= 0x400;
-    ThreadManager.postImmediately(new akqt(this, System.currentTimeMillis(), paramBundle), null, false);
+    ThreadManager.postImmediately(new akyk(this, System.currentTimeMillis(), paramBundle), null, false);
   }
   
   public int c(Bundle paramBundle)
@@ -148,7 +148,7 @@ public class SwiftWebAccelerator
       localIntent.putExtra("ignoreLoginWeb", true);
       localSwiftReuseTouchWebView.setIntent(localIntent);
       localSwiftReuseTouchWebView.a(paramBundle);
-      new Handler(Looper.getMainLooper()).postDelayed(new akqs(this, localSwiftReuseTouchWebView), 300L);
+      new Handler(Looper.getMainLooper()).postDelayed(new akyj(this, localSwiftReuseTouchWebView), 300L);
     }
     SwiftBrowserStatistics.E = System.currentTimeMillis() - l;
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doMainStep_WarnUpWebView:load " + paramBundle + ", cost " + SwiftBrowserStatistics.E + "ms.");
@@ -158,7 +158,7 @@ public class SwiftWebAccelerator
   public void c(Bundle paramBundle)
   {
     this.jdField_a_of_type_Int |= 0x800;
-    ThreadManager.postImmediately(new akqv(this, System.currentTimeMillis()), null, false);
+    ThreadManager.postImmediately(new akym(this, System.currentTimeMillis()), null, false);
   }
   
   public int d(Bundle paramBundle)
@@ -199,7 +199,7 @@ public class SwiftWebAccelerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator
  * JD-Core Version:    0.7.0.1
  */

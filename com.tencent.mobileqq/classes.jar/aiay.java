@@ -1,48 +1,42 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLMaskImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.TrAsyncTextureLoad;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
-import com.tencent.mobileqq.shortvideo.filter.QQDanceEventHandler;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import java.util.ArrayList;
 
-public class aiay
-  implements Animation.AnimationListener
+class aiay
+  extends FriendListObserver
 {
-  public aiay(DanceReadyFilter paramDanceReadyFilter) {}
+  aiay(aiax paramaiax) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong)
   {
-    DanceReadyFilter.d(this.a).h_(true);
-    DanceReadyFilter.g(this.a).h_(true);
-    DanceReadyFilter.a(this.a).h_(false);
-    DanceReadyFilter.d(this.a).a(DanceReadyFilter.e(this.a));
-    DanceReadyFilter.g(this.a).a(DanceReadyFilter.f(this.a));
-    paramAnimation = this.a.a().a();
-    if (paramAnimation != null)
-    {
-      DanceLog.a("DanceReadyFilter", "readySceneBegin begin...");
-      paramAnimation.c(DanceReadyFilter.a(this.a));
-      DanceLog.a("DanceReadyFilter", "readySceneBegin end...");
-      DanceReadyFilter.a(this.a, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver != null) {
+      NetSearchEngine.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     }
-    DanceReadyFilter.a(this.a);
-    TrAsyncTextureLoad.a().b();
-    DanceLog.a("DanceReadyFilter", "TrAsyncTextureLoad[enter ready]");
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    DanceReadyFilter.a(this.a).h_(false);
+    if (aiax.a(this.a)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramInt1 != 88) || (paramBoolean2));
+        if (!paramBoolean1) {
+          break;
+        }
+      } while (!(paramObject instanceof ArrayList));
+      ThreadManager.post(new aiaz(this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine, aiax.a(this.a), (ArrayList)paramObject, aiax.a(this.a)), 10, null, true);
+      return;
+    } while (aiax.a(this.a) == null);
+    aiax.a(this.a).a(null, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiay
  * JD-Core Version:    0.7.0.1
  */

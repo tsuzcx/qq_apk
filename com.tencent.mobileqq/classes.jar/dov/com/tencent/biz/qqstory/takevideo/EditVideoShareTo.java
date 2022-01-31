@@ -63,15 +63,15 @@ public class EditVideoShareTo
     }
   }
   
-  private void j()
+  private void i()
   {
     EditButtonExport localEditButtonExport = (EditButtonExport)super.a(EditButtonExport.class);
     if (VideoSpreadGroupList.a((VideoSpreadGroupList)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a())))
     {
-      localEditButtonExport.b(2130843742);
+      localEditButtonExport.b(2130843815);
       return;
     }
-    localEditButtonExport.b(2130843743);
+    localEditButtonExport.b(2130843816);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -87,7 +87,7 @@ public class EditVideoShareTo
         }
       }
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-      j();
+      i();
     }
   }
   
@@ -124,7 +124,7 @@ public class EditVideoShareTo
     for (;;)
     {
       return super.a(paramMessage);
-      j();
+      i();
     }
   }
   

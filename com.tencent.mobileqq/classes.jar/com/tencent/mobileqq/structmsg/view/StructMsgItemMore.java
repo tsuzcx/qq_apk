@@ -34,9 +34,9 @@ public class StructMsgItemMore
   {
     paramBundle = paramView;
     if (paramView == null) {
-      paramBundle = LayoutInflater.from(paramContext).inflate(2130971594, null);
+      paramBundle = LayoutInflater.from(paramContext).inflate(2130971620, null);
     }
-    paramContext = (TextView)paramBundle.findViewById(2131375172);
+    paramContext = (TextView)paramBundle.findViewById(2131375224);
     if (TextUtils.isEmpty(this.u)) {
       this.u = "阅读全文";
     }

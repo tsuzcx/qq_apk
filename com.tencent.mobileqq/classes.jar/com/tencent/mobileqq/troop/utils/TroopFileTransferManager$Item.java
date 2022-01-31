@@ -8,6 +8,7 @@ import com.tencent.mobileqq.filemanager.util.IForwardCallBack;
 import com.tencent.mobileqq.troop.data.TroopFileInfo;
 import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.security.MessageDigest;
 import java.util.UUID;
 
@@ -19,11 +20,13 @@ public class TroopFileTransferManager$Item
   public transient MessageDigest DigestMd5;
   public transient MessageDigest DigestSha;
   public transient MessageDigest DigestSha3;
+  public transient String DownloadDNS;
   public transient String DownloadIp;
   public transient String DownloadUrl;
   public transient boolean IsNewStatus;
   public transient int Pausing;
   public transient long ScanPos;
+  public transient String ServerDns;
   public transient long StatusUpdateTimeMs;
   public transient boolean ThumbnailDownloading_Large;
   public transient boolean ThumbnailDownloading_Middle;
@@ -34,17 +37,16 @@ public class TroopFileTransferManager$Item
   public transient TroopFileTransferManager.Item.W2MPauseEnum W2MPause;
   public transient String cookieValue;
   public transient String downUrlStr4Report;
-  public int duration;
-  public int height;
+  public transient boolean genThumb_Middle_OnGettedLargeOrOrigPic;
   public transient boolean isFileExist;
-  public boolean isZipInnerFile;
   public IForwardCallBack mForwardCallback;
   public transient int retryTimes;
   public transient String rspHeadStr;
   public transient long transferBeginTime;
   public transient long transferedSize;
   public transient String uploadUrl;
-  public int width;
+  
+  public TroopFileTransferManager$Item() {}
   
   public TroopFileTransferManager$Item(TroopFileTansferItemEntity paramTroopFileTansferItemEntity)
   {
@@ -67,6 +69,7 @@ public class TroopFileTransferManager$Item
     this.ThumbnailFileTimeMS_Large = paramTroopFileTansferItemEntity.ThumbnailFileTimeMS_Large;
     this.HasThumbnailFile_Middle = paramTroopFileTansferItemEntity.HasThumbnailFile_Middle;
     this.ThumbnailFileTimeMS_Middle = paramTroopFileTansferItemEntity.ThumbnailFileTimeMS_Middle;
+    this.PreviewUrl = paramTroopFileTansferItemEntity.PreviewUrl;
     this.NickName = paramTroopFileTansferItemEntity.NickName;
     this.RandomNum = paramTroopFileTansferItemEntity.RandomNum;
     this.NameForSave = paramTroopFileTansferItemEntity.NameForSave;
@@ -75,6 +78,17 @@ public class TroopFileTransferManager$Item
     this.ForwardBusId = paramTroopFileTansferItemEntity.ForwardBusId;
     this.ForwardTroopuin = paramTroopFileTansferItemEntity.ForwardTroopuin;
     this.mParentId = paramTroopFileTansferItemEntity.mParentId;
+    this.width = paramTroopFileTansferItemEntity.width;
+    this.height = paramTroopFileTansferItemEntity.height;
+    this.duration = paramTroopFileTansferItemEntity.duration;
+    this.isZipInnerFile = paramTroopFileTansferItemEntity.isZipInnerFile;
+    this.zipType = paramTroopFileTansferItemEntity.zipType;
+    this.zipFilePath = paramTroopFileTansferItemEntity.zipFilePath;
+    this.zipBusId = paramTroopFileTansferItemEntity.zipBusId;
+    this.zipInnerPath = paramTroopFileTansferItemEntity.zipInnerPath;
+    this.smallThumbFile = paramTroopFileTansferItemEntity.smallThumbFile;
+    this.largeThumbnailFile = paramTroopFileTansferItemEntity.largeThumbnailFile;
+    this.middleThumbnailFile = paramTroopFileTansferItemEntity.middleThumbnailFile;
   }
   
   public TroopFileTransferManager$Item(TroopFileInfo paramTroopFileInfo)
@@ -148,6 +162,28 @@ public class TroopFileTransferManager$Item
       }
     } while ((this.ThumbnailDownloading_Middle) || ((this.ThumbnailFileTimeMS_Middle != 0L) && (l <= 300000L) && (l >= 0L)));
     return true;
+  }
+  
+  public final void deleteThumbnailFile(long paramLong, int paramInt)
+  {
+    if (paramInt == 128) {
+      if (this.HasThumbnailFile_Small) {
+        new File(getThumbnailFile(paramLong, 128)).delete();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt != 383) {
+          break;
+        }
+      } while (!this.HasThumbnailFile_Middle);
+      new File(getThumbnailFile(paramLong, 383)).delete();
+      return;
+    } while ((paramInt != 640) || (!this.HasThumbnailFile_Large));
+    new File(getThumbnailFile(paramLong, 640)).delete();
   }
   
   public final TroopFileStatusInfo getInfo(long paramLong)
@@ -232,17 +268,17 @@ public class TroopFileTransferManager$Item
   public final String getThumbnailFile(long paramLong, int paramInt)
   {
     if (paramInt == 128) {
-      return AppConstants.ba + "[Thumb]" + paramLong + "-" + this.Id.toString();
+      return AppConstants.bb + "[Thumb]" + paramLong + "-" + this.Id.toString();
     }
     if (paramInt == 383) {
-      return AppConstants.ba + "[Thumb]" + 320 + paramLong + "-" + this.Id.toString();
+      return AppConstants.bb + "[Thumb]" + 320 + paramLong + "-" + this.Id.toString();
     }
-    return AppConstants.ba + "[Thumb]" + paramInt + paramLong + "-" + this.Id.toString();
+    return AppConstants.bb + "[Thumb]" + paramInt + paramLong + "-" + this.Id.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item
  * JD-Core Version:    0.7.0.1
  */

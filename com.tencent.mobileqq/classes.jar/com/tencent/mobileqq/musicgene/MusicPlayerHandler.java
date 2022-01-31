@@ -27,8 +27,8 @@ public class MusicPlayerHandler
   {
     long l = 0L;
     String str;
-    if (!TextUtils.isEmpty("7.6.3")) {
-      str = "7.6.3".replace(".", "");
+    if (!TextUtils.isEmpty("7.6.8")) {
+      str = "7.6.8".replace(".", "");
     }
     try
     {

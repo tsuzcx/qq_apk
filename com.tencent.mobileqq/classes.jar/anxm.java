@@ -1,15 +1,32 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.os.Message;
+import com.tencent.util.WeakReferenceHandler;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager.GetSingleMusicInfoCallback;
+import dov.com.qq.im.capture.view.MusicFragmentProviderView;
 
 public class anxm
-  implements FilenameFilter
+  implements QIMMusicConfigManager.GetSingleMusicInfoCallback
 {
-  public anxm(DoodleEmojiManager paramDoodleEmojiManager) {}
+  public anxm(MusicFragmentProviderView paramMusicFragmentProviderView) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
+    Message localMessage;
+    if (this.a.a != null)
+    {
+      localMessage = this.a.a.obtainMessage();
+      if (!paramBoolean) {
+        break label61;
+      }
+    }
+    label61:
+    for (int i = 1;; i = 0)
+    {
+      localMessage.arg1 = i;
+      localMessage.obj = paramObject;
+      localMessage.what = 7;
+      this.a.a.sendMessage(localMessage);
+      return;
+    }
   }
 }
 

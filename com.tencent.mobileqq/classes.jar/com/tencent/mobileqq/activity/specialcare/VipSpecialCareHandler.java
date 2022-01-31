@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import ygk;
+import ymt;
 
 public class VipSpecialCareHandler
   extends QvipSpecialCareObserver
@@ -29,7 +29,7 @@ public class VipSpecialCareHandler
   
   public VipSpecialCareHandler()
   {
-    ThreadManager.post(new ygk(this), 8, null, true);
+    ThreadManager.post(new ymt(this), 8, null, true);
   }
   
   private final void a(int paramInt)

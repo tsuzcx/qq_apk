@@ -11,7 +11,7 @@ public abstract interface EditMultiSegmentExport
   
   public abstract void a(List paramList);
   
-  public abstract void aA_();
+  public abstract void b();
   
   public abstract void c();
   

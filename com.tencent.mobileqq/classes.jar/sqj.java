@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.vas.ClubContentJsonTask;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class sqj
-  implements Runnable
+  extends Handler
 {
-  public sqj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void run()
-  {
-    ClubContentJsonTask.b(this.a.app);
-  }
+  public sqj(EditInfoActivity paramEditInfoActivity) {}
 }
 
 

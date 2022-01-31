@@ -1,67 +1,91 @@
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.TouchableSpan;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class smc
-  extends LinkMovementMethod
+  extends CardObserver
 {
-  private EditInfoActivity.TouchableSpan jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan;
+  public smc(Conversation paramConversation) {}
   
-  private smc(EditInfoActivity paramEditInfoActivity) {}
-  
-  private EditInfoActivity.TouchableSpan a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    int k = paramTextView.getTotalPaddingLeft();
-    int m = paramTextView.getTotalPaddingTop();
-    int n = paramTextView.getScrollX();
-    int i1 = paramTextView.getScrollY();
-    paramTextView = paramTextView.getLayout();
-    i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
-    paramTextView = (EditInfoActivity.TouchableSpan[])paramSpannable.getSpans(i, i, EditInfoActivity.TouchableSpan.class);
-    if (paramTextView.length > 0) {
-      return paramTextView[0];
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (paramObject != null) && (!Utils.a(paramObject.uin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+        this.a.a(8, paramObject.uin, -2147483648);
+      }
+      return;
     }
-    return null;
   }
   
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (paramBoolean1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan = a(paramTextView, paramSpannable, paramMotionEvent);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan.a(true);
-        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan), paramSpannable.getSpanEnd(this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan));
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " conversation onGetCalReactiveDays isAllow= " + paramBoolean2);
       }
+      this.a.a(0L);
     }
-    do
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject instanceof Card)) {}
+    for (Object localObject = (Card)paramObject;; localObject = null)
     {
-      return true;
-      if (paramMotionEvent.getAction() != 2) {
+      if ((paramBoolean) && (localObject != null) && (!Utils.a(((Card)localObject).uin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+        this.a.a(8, ((Card)localObject).uin, 1029);
+      }
+      if (QLog.isDevelopLevel())
+      {
+        if (localObject == null) {
+          break label120;
+        }
+        paramObject = ((Card)localObject).uin;
+        if (localObject == null) {
+          break label126;
+        }
+      }
+      label120:
+      label126:
+      for (localObject = ((Card)localObject).strCampusName;; localObject = "")
+      {
+        QLog.i("Q.recent", 4, String.format(Locale.getDefault(), "onGetCampusInfo isSuccess: %b uin: %s name: %s", new Object[] { Boolean.valueOf(paramBoolean), Utils.b(paramObject), Utils.b((String)localObject) }));
+        return;
+        paramObject = "";
         break;
       }
-      paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan == null) || (paramTextView == this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan));
-    this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan = null;
-    Selection.removeSelection(paramSpannable);
-    return true;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan.a(false);
-      super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan = null;
-    Selection.removeSelection(paramSpannable);
-    return true;
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "Conversation.onUpdateAvatar: uin:" + paramString + ", success :" + paramBoolean);
+    }
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.sendEmptyMessage(3);
+    }
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
+      }
+      this.a.a(8, AppConstants.G, 1001);
+    }
   }
 }
 

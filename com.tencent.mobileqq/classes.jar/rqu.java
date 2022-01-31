@@ -1,17 +1,30 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgAnimatorCtr;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class rqu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rqu(BaseChatPie paramBaseChatPie, long paramLong1, long paramLong2, MessageRecord paramMessageRecord) {}
+  public rqu(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgAnimatorCtr != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgAnimatorCtr.a(new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq) });
+    boolean bool = false;
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
+    paramView = (SubAccountManager)this.a.app.getManager(60);
+    if ((paramView != null) && (paramView.a() >= 2)) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
+      }
+      AssociatedAccountActivity.a(this.a, bool);
+      return;
+      bool = true;
     }
   }
 }

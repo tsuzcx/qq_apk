@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import andw;
+import anlw;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.component.network.utils.FileUtils;
@@ -64,7 +64,7 @@ public class QZoneFacadeJsHandleLogic
   
   public static String a(String paramString)
   {
-    Object localObject = andw.a();
+    Object localObject = anlw.a();
     if (localObject == null) {
       localObject = null;
     }

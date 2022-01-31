@@ -1,33 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.JNICallCenter.DataPoint;
+import com.tencent.component.media.ILog;
+import com.tencent.component.media.ImageManagerEnv;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.StreamDecodeGifTask;
 
-public final class pmf
-  implements Parcelable.Creator
+public class pmf
+  implements Runnable
 {
-  public DataPoint a(Parcel paramParcel)
+  private ImageKey jdField_a_of_type_ComTencentComponentMediaImageImageKey = null;
+  String jdField_a_of_type_JavaLangString = null;
+  String b = null;
+  
+  public pmf(StreamDecodeGifTask paramStreamDecodeGifTask, ImageKey paramImageKey, String paramString1, String paramString2)
   {
-    DataPoint localDataPoint = new DataPoint();
-    localDataPoint.mDin = paramParcel.readLong();
-    localDataPoint.mSendUinType = paramParcel.readInt();
-    localDataPoint.mApiName = paramParcel.readString();
-    localDataPoint.mProperityId = paramParcel.readInt();
-    localDataPoint.mValueType = paramParcel.readString();
-    localDataPoint.mValue = paramParcel.readString();
-    localDataPoint.mRetCode = paramParcel.readInt();
-    localDataPoint.mErrMsg = paramParcel.readString();
-    localDataPoint.mSeq = paramParcel.readString();
-    return localDataPoint;
+    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey = paramImageKey;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public DataPoint[] a(int paramInt)
+  public void run()
   {
-    return new DataPoint[paramInt];
+    try
+    {
+      if (!this.jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask.isCanceled()) {
+        StreamDecodeGifTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey, this.jdField_a_of_type_JavaLangString, this.b);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ImageManagerEnv.getLogger().e("StreamDecodeGifTask-decoding-thread", new Object[] { "DecodeStreamTask error : " + localThrowable.toString() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     pmf
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.SparseArray;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.data.EmoticonResp;
@@ -86,7 +86,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -98,15 +100,36 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class EmoticonHandler
   extends BusinessHandler
 {
-  private SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private CopyOnWriteArrayList jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private SparseArray b;
-  private SparseArray c = new SparseArray();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  private ConcurrentHashMap b;
+  private ConcurrentHashMap c = new ConcurrentHashMap();
+  private ConcurrentHashMap d = new ConcurrentHashMap();
   
   public EmoticonHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  private void a(int paramInt, ArrayList paramArrayList)
+  {
+    String str = "svr emoticon tab order list " + paramInt + " =";
+    StringBuilder localStringBuilder = AIOUtils.a();
+    localStringBuilder.append(str);
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      localStringBuilder.append((String)paramArrayList.next());
+      localStringBuilder.append(",");
+      if (localStringBuilder.length() >= 500)
+      {
+        QLog.d("EmoticonHandler", 1, localStringBuilder.toString());
+        localStringBuilder.setLength(str.length());
+      }
+    }
+    QLog.d("EmoticonHandler", 1, localStringBuilder.toString());
   }
   
   private void a(ToServiceMsg paramToServiceMsg, Object paramObject)
@@ -122,7 +145,7 @@ public class EmoticonHandler
         {
         case 1: 
           if (i != 0) {
-            break label1467;
+            break label1468;
           }
           Object localObject1 = paramToServiceMsg.extraData.getString("epId");
           int k = paramObject.ipId.get();
@@ -259,7 +282,7 @@ public class EmoticonHandler
               ((EmoticonPackage)localObject1).ipSiteInfoBytes = ((EmoticonManager)localObject3).a((VipIPSiteInfo)localObject2);
               ((EmoticonPackage)localObject1).richIPReqTime = l;
               if (paramObject.goodsList.size() <= 0) {
-                break label1461;
+                break label1462;
               }
               bool = true;
               ((EmoticonPackage)localObject1).hasIpProduct = bool;
@@ -282,10 +305,10 @@ public class EmoticonHandler
         QLog.e("EmoticonHandler", 1, "onReceive error = ", paramToServiceMsg);
         return;
       }
-      label1461:
+      label1462:
       boolean bool = false;
     }
-    label1467:
+    label1468:
     QLog.e("EmoticonHandler", 1, "onReceive error result = " + i);
     return;
   }
@@ -308,13 +331,13 @@ public class EmoticonHandler
   
   public void a(int paramInt1, int paramInt2)
   {
-    a(paramInt1, paramInt2, 0);
+    a(paramInt1, paramInt2, 0, 0);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("EmoticonHandler", 2, "func fetchEmoticonsPackages, timestamp:" + paramInt1 + ",dividemask:" + paramInt2 + " businessType = " + paramInt3);
+      QLog.d("EmoticonHandler", 2, "func fetchEmoticonsPackages, timestamp:" + paramInt1 + ",dividemask:" + paramInt2 + " businessType = " + paramInt3 + " fetchSeq:" + paramInt4);
     }
     Object localObject = new EmosmPb.SubCmd0x2ReqFetchTab();
     ((EmosmPb.SubCmd0x2ReqFetchTab)localObject).fixed32_timestamp.set(paramInt1);
@@ -324,12 +347,30 @@ public class EmoticonHandler
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     localReqBody.msg_subcmd0x2_req_fetchtab.set((MessageMicro)localObject);
     localReqBody.int32_plat_id.set(109);
-    localReqBody.str_app_version.set("7.6.3");
+    localReqBody.str_app_version.set("7.6.8");
     localReqBody.uint32_business_id.set(paramInt3);
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "BQMallSvc.TabOpReq");
-    ((ToServiceMsg)localObject).extraData.putInt("EmosmSubCmd", 2);
-    ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
-    super.b((ToServiceMsg)localObject);
+    if (paramInt4 == 0)
+    {
+      paramInt2 = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      paramInt1 = paramInt2;
+      if (paramInt2 == 0) {
+        paramInt1 = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      }
+      this.d.remove(Integer.valueOf(paramInt1));
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt1));
+      this.c.remove(Integer.valueOf(paramInt1));
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt1));
+    }
+    for (;;)
+    {
+      localObject = new ToServiceMsg("mobileqq.service", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "BQMallSvc.TabOpReq");
+      ((ToServiceMsg)localObject).extraData.putInt("EmosmSubCmd", 2);
+      ((ToServiceMsg)localObject).extraData.putInt("EmosmFetchSeq", paramInt1);
+      ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
+      super.b((ToServiceMsg)localObject);
+      return;
+      paramInt1 = paramInt4;
+    }
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
@@ -337,7 +378,7 @@ public class EmoticonHandler
     EmosmPb.ReqBody localReqBody = new EmosmPb.ReqBody();
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     localReqBody.int32_plat_id.set(109);
-    localReqBody.str_app_version.set("7.6.3");
+    localReqBody.str_app_version.set("7.6.8");
     Object localObject;
     if (6 == paramInt1)
     {
@@ -459,17 +500,13 @@ public class EmoticonHandler
       }
     }
     boolean bool2;
-    label901:
-    label982:
-    label1113:
-    label1277:
+    label940:
+    label1021:
     boolean bool3;
-    label1196:
-    label1465:
-    label1630:
-    label1765:
-    label2156:
-    label3949:
+    label1152:
+    label1235:
+    label1504:
+    label2148:
     do
     {
       long l;
@@ -488,7 +525,7 @@ public class EmoticonHandler
                 {
                   paramFromServiceMsg = (EmosmPb.RspBody)paramFromServiceMsg.mergeFrom((byte[])paramObject);
                   if (paramFromServiceMsg == null) {
-                    break label3304;
+                    break label3505;
                   }
                   m = paramFromServiceMsg.int32_result.get();
                   k = paramFromServiceMsg.uint32_business_id.get();
@@ -559,10 +596,11 @@ public class EmoticonHandler
                               EmojiListenerManager.a().b(paramFromServiceMsg);
                             }
                             break;
+                            m = paramToServiceMsg.extraData.getInt("EmosmFetchSeq");
                             Object localObject3 = (EmosmPb.SubCmd0x2RspFetchTab)paramFromServiceMsg.msg_subcmd0x2_rsp_fetchtab.get();
-                            m = ((EmosmPb.SubCmd0x2RspFetchTab)localObject3).int32_segment_flag.get();
+                            j = ((EmosmPb.SubCmd0x2RspFetchTab)localObject3).int32_segment_flag.get();
                             if (QLog.isColorLevel()) {
-                              QLog.d("EmoticonHandler", 2, "cur segement:" + m);
+                              QLog.d("EmoticonHandler", 2, "fetchSeq:" + m + " cur segement:" + j + " mapSize:" + this.d.size());
                             }
                             paramToServiceMsg = ((EmosmPb.SubCmd0x2RspFetchTab)localObject3).rpt_msg_tabinfo.get();
                             localObject1 = ((EmosmPb.SubCmd0x2RspFetchTab)localObject3).rpt_magic_tabinfo.get();
@@ -576,16 +614,15 @@ public class EmoticonHandler
                               }
                             }
                             n = ((EmosmPb.SubCmd0x2RspFetchTab)paramFromServiceMsg.msg_subcmd0x2_rsp_fetchtab.get()).fixed32_timestamp.get();
-                            if ((m == 0) || (m == -1))
+                            if ((j == 0) || (j == -1))
                             {
                               localEmoticonResp.timestamp = n;
                               paramFromServiceMsg = new ArrayList();
-                              if (this.jdField_a_of_type_AndroidUtilSparseArray.get(j) == null) {
-                                break label4617;
+                              if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(m)) == null) {
+                                break label4819;
                               }
-                              ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).addAll(paramToServiceMsg);
-                              paramToServiceMsg = (List)this.jdField_a_of_type_AndroidUtilSparseArray.get(j);
-                              this.jdField_a_of_type_AndroidUtilSparseArray.remove(j);
+                              ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(m))).addAll(paramToServiceMsg);
+                              paramToServiceMsg = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(m));
                               paramToServiceMsg = paramToServiceMsg.iterator();
                               if (paramToServiceMsg.hasNext())
                               {
@@ -600,7 +637,7 @@ public class EmoticonHandler
                                   localEmoticonPackage.wordingId = ((EmosmPb.SubCmd0x2RspFetchTab.TabInfo)localObject3).int32_wording_id.get();
                                   localEmoticonPackage.name = ((EmosmPb.SubCmd0x2RspFetchTab.TabInfo)localObject3).str_tab_name.get();
                                   if (k != 0) {
-                                    break label1113;
+                                    break label1152;
                                   }
                                   localEmoticonPackage.aio = true;
                                 }
@@ -616,7 +653,7 @@ public class EmoticonHandler
                                   QLog.d("EmoticonHandler", 2, "TYPE_EMOSM_PS_FETCH: normal emotion ep = " + localEmoticonPackage);
                                   break;
                                   bool2 = false;
-                                  break label982;
+                                  break label1021;
                                   if (k == 1) {
                                     localEmoticonPackage.kandian = true;
                                   }
@@ -624,12 +661,11 @@ public class EmoticonHandler
                               }
                               localEmoticonResp.data = paramFromServiceMsg;
                               paramFromServiceMsg = new ArrayList();
-                              if (this.jdField_b_of_type_AndroidUtilSparseArray.get(j) == null) {
-                                break label4611;
+                              if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(m)) == null) {
+                                break label4813;
                               }
-                              ((List)this.jdField_b_of_type_AndroidUtilSparseArray.get(j)).addAll((Collection)localObject1);
-                              paramToServiceMsg = (List)this.jdField_b_of_type_AndroidUtilSparseArray.get(j);
-                              this.jdField_b_of_type_AndroidUtilSparseArray.remove(j);
+                              ((List)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(m))).addAll((Collection)localObject1);
+                              paramToServiceMsg = (List)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(m));
                               paramToServiceMsg = paramToServiceMsg.iterator();
                               if (paramToServiceMsg.hasNext())
                               {
@@ -644,14 +680,14 @@ public class EmoticonHandler
                                   ((EmoticonPackage)localObject3).wordingId = ((EmosmPb.SubCmd0x2RspFetchTab.TabInfo)localObject1).int32_wording_id.get();
                                   ((EmoticonPackage)localObject3).name = ((EmosmPb.SubCmd0x2RspFetchTab.TabInfo)localObject1).str_tab_name.get();
                                   if (k != 0) {
-                                    break label1450;
+                                    break label1489;
                                   }
                                   ((EmoticonPackage)localObject3).aio = true;
                                   if (((EmosmPb.SubCmd0x2RspFetchTab.TabInfo)localObject1).int32_tab_type.has())
                                   {
                                     ((EmoticonPackage)localObject3).type = ((EmosmPb.SubCmd0x2RspFetchTab.TabInfo)localObject1).int32_tab_type.get();
                                     if (((EmosmPb.SubCmd0x2RspFetchTab.TabInfo)localObject1).int32_tab_type.get() != 1) {
-                                      break label1465;
+                                      break label1504;
                                     }
                                     ((EmoticonPackage)localObject3).jobType = 3;
                                   }
@@ -667,12 +703,12 @@ public class EmoticonHandler
                                   paramFromServiceMsg.add(localObject3);
                                   break;
                                   bool2 = false;
-                                  break label1277;
+                                  break label1316;
                                   if (k != 1) {
-                                    break label1322;
+                                    break label1361;
                                   }
                                   ((EmoticonPackage)localObject3).kandian = true;
-                                  break label1322;
+                                  break label1361;
                                   if (((EmosmPb.SubCmd0x2RspFetchTab.TabInfo)localObject1).int32_tab_type.get() == 4) {
                                     ((EmoticonPackage)localObject3).jobType = 5;
                                   }
@@ -680,12 +716,11 @@ public class EmoticonHandler
                               }
                               localEmoticonResp.magicData = paramFromServiceMsg;
                               paramFromServiceMsg = new ArrayList();
-                              if (this.c.get(j) == null) {
-                                break label4606;
+                              if (this.c.get(Integer.valueOf(m)) == null) {
+                                break label4808;
                               }
-                              ((List)this.c.get(j)).addAll(paramObject);
-                              paramToServiceMsg = (List)this.c.get(j);
-                              this.c.remove(j);
+                              ((List)this.c.get(Integer.valueOf(m))).addAll(paramObject);
+                              paramToServiceMsg = (List)this.c.remove(Integer.valueOf(m));
                               paramToServiceMsg = paramToServiceMsg.iterator();
                               if (paramToServiceMsg.hasNext())
                               {
@@ -701,7 +736,7 @@ public class EmoticonHandler
                                   ((EmoticonPackage)localObject1).name = paramObject.str_tab_name.get();
                                   ((EmoticonPackage)localObject1).jobType = 4;
                                   if (k != 0) {
-                                    break label1765;
+                                    break label1804;
                                   }
                                   ((EmoticonPackage)localObject1).aio = true;
                                 }
@@ -717,51 +752,71 @@ public class EmoticonHandler
                                   QLog.d("EmoticonHandler", 2, "TYPE_EMOSM_PS_FETCH: small emotion ep = " + localObject1);
                                   break;
                                   bool2 = false;
-                                  break label1630;
+                                  break label1669;
                                   if (k == 1) {
                                     ((EmoticonPackage)localObject1).kandian = true;
                                   }
                                 }
                               }
                               localEmoticonResp.smallEmoticonData = paramFromServiceMsg;
-                              localEmoticonResp.tabOrderList = new ArrayList();
+                              localEmoticonResp.tabOrderList = ((List)this.d.remove(Integer.valueOf(m)));
+                              if (localEmoticonResp.tabOrderList == null) {
+                                localEmoticonResp.tabOrderList = new ArrayList();
+                              }
                               j = ((ArrayList)localObject2).size() - 1;
                               while (j >= 0)
                               {
                                 localEmoticonResp.tabOrderList.add(((ArrayList)localObject2).get(j));
                                 j -= 1;
                               }
-                              QLog.d("EmoticonHandler", 1, "svr big emoticon data size = " + localEmoticonResp.data.size() + ", magic size = " + localEmoticonResp.magicData.size() + ", small emotion size = " + localEmoticonResp.smallEmoticonData.size() + ", tab size = " + ((ArrayList)localObject2).size());
-                              if (QLog.isColorLevel()) {
-                                QLog.d("EmoticonHandler", 2, "svr big emoticon list=" + localEmoticonResp.data + "svr magic emoticon list=" + localEmoticonResp.magicData + "svr small emoticon list=" + localEmoticonResp.smallEmoticonData + "svr emoticon tab order list=" + localObject2);
+                              QLog.d("EmoticonHandler", 1, "svr big emoticon data size = " + localEmoticonResp.data.size() + ", magic size = " + localEmoticonResp.magicData.size() + ", small emotion size = " + localEmoticonResp.smallEmoticonData.size() + ", tab size = " + localEmoticonResp.tabOrderList.size());
+                              if (QLog.isColorLevel())
+                              {
+                                QLog.d("EmoticonHandler", 2, "svr big emoticon list=" + localEmoticonResp.data + "svr magic emoticon list=" + localEmoticonResp.magicData + "svr small emoticon list=" + localEmoticonResp.smallEmoticonData);
+                                a(m, (ArrayList)localObject2);
                               }
-                              ((ArrayList)localObject2).clear();
                               break;
                             }
-                            if (this.jdField_a_of_type_AndroidUtilSparseArray.get(j) != null)
+                            if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(m)) != null)
                             {
-                              ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(j)).addAll(paramToServiceMsg);
-                              if (this.jdField_b_of_type_AndroidUtilSparseArray.get(j) == null) {
-                                break label2142;
+                              ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(m))).addAll(paramToServiceMsg);
+                              if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(m)) == null) {
+                                break label2245;
                               }
-                              ((List)this.jdField_b_of_type_AndroidUtilSparseArray.get(j)).addAll((Collection)localObject1);
-                              if (this.c.get(j) == null) {
-                                break label2156;
+                              ((List)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(m))).addAll((Collection)localObject1);
+                              if (this.c.get(Integer.valueOf(m)) == null) {
+                                break label2263;
                               }
-                              ((List)this.c.get(j)).addAll(paramObject);
+                              ((List)this.c.get(Integer.valueOf(m))).addAll(paramObject);
                             }
                             for (;;)
                             {
-                              if (QLog.isColorLevel()) {
-                                QLog.d("EmoticonHandler", 2, "--------secend fetch--------:");
+                              paramToServiceMsg = new ArrayList();
+                              i = ((ArrayList)localObject2).size() - 1;
+                              while (i >= 0)
+                              {
+                                paramToServiceMsg.add(((ArrayList)localObject2).get(i));
+                                i -= 1;
                               }
-                              a(n, m, k);
-                              return;
-                              this.jdField_a_of_type_AndroidUtilSparseArray.put(j, paramToServiceMsg);
+                              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(m), paramToServiceMsg);
                               break;
-                              this.jdField_b_of_type_AndroidUtilSparseArray.put(j, localObject1);
-                              break label2072;
-                              this.c.put(j, paramObject);
+                              this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(m), localObject1);
+                              break label2148;
+                              this.c.put(Integer.valueOf(m), paramObject);
+                            }
+                            if (this.d.get(Integer.valueOf(m)) != null) {
+                              ((List)this.d.get(Integer.valueOf(m))).addAll(paramToServiceMsg);
+                            }
+                            for (;;)
+                            {
+                              if (QLog.isColorLevel())
+                              {
+                                QLog.d("EmoticonHandler", 2, "--------secend fetch--------:");
+                                a(m, (ArrayList)localObject2);
+                              }
+                              a(n, j, k, m);
+                              return;
+                              this.d.put(Integer.valueOf(m), paramToServiceMsg);
                             }
                             paramToServiceMsg = (ArrayList)localEmoticonResp.data;
                             localEmoticonResp.epId = j;
@@ -945,7 +1000,7 @@ public class EmoticonHandler
             paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
             paramToServiceMsg.mergeFrom((byte[])paramObject);
             if (paramToServiceMsg.uint32_result.get() != 0) {
-              break label3943;
+              break label4144;
             }
             i = 1;
             if (i != 0)
@@ -953,7 +1008,7 @@ public class EmoticonHandler
               paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
               l = paramToServiceMsg.getInt();
               if (paramToServiceMsg.get() != 1) {
-                break label3949;
+                break label4150;
               }
               bool1 = true;
               this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("mobileQQ", 0).edit().putBoolean("emosm_has_download_emosmpackage_tag_" + this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), bool1).commit();
@@ -976,7 +1031,7 @@ public class EmoticonHandler
             return;
           }
           i = 0;
-          break label3729;
+          break label3930;
           i = 0;
           continue;
           bool1 = false;
@@ -985,27 +1040,31 @@ public class EmoticonHandler
       i = paramToServiceMsg.extraData.getInt("EmoticonRetry");
       QLog.e("EmoticonHandler", 1, "CMD_EMOSM_CHECK_OIDB, error:" + paramFromServiceMsg.getResultCode());
     } while ((paramFromServiceMsg.getResultCode() != 1002) || (i >= 2));
-    label1322:
-    label2142:
-    label3304:
+    label1316:
+    label1361:
+    label2263:
+    label3930:
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonHandler", 2, "CMD_EMOSM_CHECK_OIDB try index: " + i);
     }
-    label1450:
-    label3943:
+    label1489:
     paramToServiceMsg.extraData.putInt("EmoticonRetry", i + 1);
-    label1553:
-    label2072:
+    label1592:
+    label2245:
     super.b(paramToServiceMsg);
-    label3729:
+    label1669:
+    label1804:
+    label3505:
+    label4150:
     return;
+    label4144:
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x5eb_99"))
     {
       if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {
-        break label4639;
+        break label4841;
       }
       i = 1;
-      label4092:
+      label4293:
       bool3 = false;
       bool2 = false;
       if (i == 0) {}
@@ -1029,21 +1088,21 @@ public class EmoticonHandler
             paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
             j = paramFromServiceMsg.rpt_msg_uin_data.size();
             if (!QLog.isColorLevel()) {
-              break label4620;
+              break label4822;
             }
             QLog.d("EmoticonHandler", 2, "CMD_EMOSM_CHECK_KANDIAN_OIDB infoNum = " + j);
-            break label4620;
+            break label4822;
             if (i < j)
             {
               if ((((oidb_0x5eb.UdcUinData)paramFromServiceMsg.rpt_msg_uin_data.get(i)).uint32_vas_emoticon_usage_info.get() & 0x1) != 1) {
-                break label4645;
+                break label4847;
               }
               bool1 = true;
               if (!bool1) {
-                break label4630;
+                break label4832;
               }
               this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("mobileQQ", 0).edit().putBoolean("emosm_has_download_emosmpackage_kandian_tag_" + this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), bool1).commit();
-              break label4630;
+              break label4832;
             }
           }
         }
@@ -1056,7 +1115,7 @@ public class EmoticonHandler
         if (QLog.isColorLevel()) {
           QLog.w("EmoticonHandler", 2, "CMD_EMOSM_CHECK_KANDIAN_OIDB, initEmoticon");
         }
-        a(0, 0, 1);
+        a(0, 0, 1, 0);
         return;
       }
       catch (Exception paramToServiceMsg)
@@ -1085,25 +1144,25 @@ public class EmoticonHandler
       }
       QLog.d("EmoticonHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
       return;
-      label4606:
+      label4808:
       paramToServiceMsg = paramObject;
-      break label1553;
-      label4611:
+      break label1592;
+      label4813:
       paramToServiceMsg = (ToServiceMsg)localObject1;
-      break label1196;
-      label4617:
-      break label901;
-      label4620:
+      break label1235;
+      label4819:
+      break label940;
+      label4822:
       i = 0;
       bool1 = bool2;
       continue;
-      label4630:
+      label4832:
       i += 1;
       continue;
-      label4639:
+      label4841:
       i = 0;
-      break label4092;
-      label4645:
+      break label4293;
+      label4847:
       bool1 = false;
     }
   }
@@ -1119,7 +1178,7 @@ public class EmoticonHandler
     paramString.uint32_sub_cmd.set(8);
     paramString.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     paramString.int32_plat_id.set(109);
-    paramString.str_app_version.set("7.6.3");
+    paramString.str_app_version.set("7.6.8");
     paramString.msg_subcmd0x8_req_addtab.set((MessageMicro)localObject);
     paramString.uint32_business_id.set(paramInt);
     paramString.setHasFlag(true);
@@ -1149,7 +1208,7 @@ public class EmoticonHandler
     paramList2.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     paramList2.int32_plat_id.set(109);
     paramList2.uint32_sub_cmd.set(9);
-    paramList2.str_app_version.set("7.6.3");
+    paramList2.str_app_version.set("7.6.8");
     EmosmPb.SubCmd0x9BqAssocReq localSubCmd0x9BqAssocReq = new EmosmPb.SubCmd0x9BqAssocReq();
     localSubCmd0x9BqAssocReq.str_key_word.set(paramString);
     localSubCmd0x9BqAssocReq.rpt_str_bq_item_id.set((List)localObject);
@@ -1178,7 +1237,7 @@ public class EmoticonHandler
     ((ComicIPSite.ModuleInfo)localObject).isRetSummary.set(paramBoolean);
     ComicIPSite.ModuleReq localModuleReq = new ComicIPSite.ModuleReq();
     localModuleReq.platform.set(109L);
-    localModuleReq.mqqver.set("7.6.3");
+    localModuleReq.mqqver.set("7.6.8");
     localModuleReq.uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.c()).longValue());
     localModuleReq.sub_cmd.set(1);
     localModuleReq.moduleInfo.set((MessageMicro)localObject);
@@ -1250,7 +1309,7 @@ public class EmoticonHandler
         paramList.uint32_sub_cmd.set(16);
         paramList.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
         paramList.int32_plat_id.set(109);
-        paramList.str_app_version.set("7.6.3");
+        paramList.str_app_version.set("7.6.8");
         paramList.msg_subcmd0x10_req.set((MessageMicro)localObject);
         paramList.uint32_business_id.set(paramInt);
         paramList.setHasFlag(true);
@@ -1293,7 +1352,7 @@ public class EmoticonHandler
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     localReqBody.msg_subcmd0x18_req.set((MessageMicro)localObject);
     localReqBody.int32_plat_id.set(109);
-    localReqBody.str_app_version.set("7.6.3");
+    localReqBody.str_app_version.set("7.6.8");
     localObject = new ToServiceMsg("mobileqq.service", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "BQMallSvc.TabOpReq");
     ((ToServiceMsg)localObject).extraData.putInt("EmosmSubCmd", 24);
     ((ToServiceMsg)localObject).extraData.putInt("tabId", paramInt);
@@ -1331,7 +1390,7 @@ public class EmoticonHandler
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     localReqBody.int32_plat_id.set(109);
     localReqBody.uint32_sub_cmd.set(19);
-    localReqBody.str_app_version.set("7.6.3");
+    localReqBody.str_app_version.set("7.6.8");
     Object localObject1 = ((CommonUsedSystemEmojiManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(171)).b();
     if (localObject1 == null)
     {
@@ -1386,7 +1445,7 @@ public class EmoticonHandler
     localReqBody.uint64_uin.set(Long.valueOf(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
     localReqBody.int32_plat_id.set(109);
     localReqBody.uint32_sub_cmd.set(5);
-    localReqBody.str_app_version.set("7.6.3");
+    localReqBody.str_app_version.set("7.6.8");
     localReqBody.uint32_business_id.set(paramInt);
     Object localObject = new EmosmPb.SubCmd0x5ReqBQRecommend();
     int j = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).getInt("recommendEmotion_sp_lastversion" + this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);

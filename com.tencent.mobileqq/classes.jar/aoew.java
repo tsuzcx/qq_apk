@@ -1,36 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.network.request.GetTagListRequest;
-import com.tencent.biz.qqstory.network.response.GetTagListResponse;
+import android.os.Message;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import dov.com.tencent.biz.qqstory.takevideo.tag.IEditVideoTagView;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class aoew
-  extends CmdTaskManger.UIThreadCallback
+class aoew
+  implements Runnable
 {
-  public aoew(EditVideoTagPresenter paramEditVideoTagPresenter) {}
+  aoew(aoev paramaoev) {}
   
-  public void a(@NonNull GetTagListRequest paramGetTagListRequest, @Nullable GetTagListResponse paramGetTagListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void run()
   {
-    SLog.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetTagListResponse != null))
+    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      SLog.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramGetTagListResponse.toString());
-      EditVideoTagPresenter.a(this.a).addAll(paramGetTagListResponse.jdField_a_of_type_JavaUtilList);
-      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.jdField_a_of_type_JavaLangString);
-      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.b);
-      ThreadManager.executeOnSubThread(new aoex(this));
+      HWEditLocalVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditLocalVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
     }
     for (;;)
     {
-      EditVideoTagPresenter.a(this.a).b(paramErrorMessage.errorCode, EditVideoTagPresenter.a(this.a), this.a.a());
+      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
+      HWEditLocalVideoPlayer.a(this.a.a, this.a.a.jdField_a_of_type_Int);
+      HWEditLocalVideoPlayer.a(this.a.a).set(true);
+      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true);
       return;
-      SLog.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
+      SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
     }
   }
 }

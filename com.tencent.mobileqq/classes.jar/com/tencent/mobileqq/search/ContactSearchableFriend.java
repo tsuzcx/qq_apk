@@ -81,7 +81,7 @@ public class ContactSearchableFriend
   public String a()
   {
     if (CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 0)) {
-      return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131435508);
+      return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131435524);
     }
     return this.e;
   }

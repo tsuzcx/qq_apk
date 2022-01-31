@@ -1,24 +1,48 @@
-import com.tencent.open.appcommon.CallBackEvent;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.WebViewDownloadListener;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import mqq.observer.BusinessObserver;
 
 public class aljb
-  implements Runnable
+  implements BusinessObserver
 {
-  public aljb(WebViewDownloadListener paramWebViewDownloadListener, WebView paramWebView, String paramString) {}
+  public aljb(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (CallBackEvent.a().a())) {}
-    try
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.a.app.getCurrentAccountUin().equals(localObject)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
       return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.a(WebViewDownloadListener.jdField_a_of_type_JavaLangString, "doJsCallBack >>> ", localException);
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+      if (paramBoolean)
+      {
+        localObject = new GetAppInfoProto.GetAppinfoResponse();
+        try
+        {
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle != null)
+          {
+            ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
+            if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
+            {
+              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+              paramBundle.what = 3;
+              paramBundle.obj = localObject;
+              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
+              return;
+            }
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
+      }
     }
   }
 }

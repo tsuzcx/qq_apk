@@ -1,81 +1,56 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.FriendsManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.Config;
-import com.tencent.mobileqq.config.struct.ADMsg;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
-class tif
-  implements View.OnClickListener
+public class tif
+  implements DialogInterface.OnClickListener
 {
-  tif(tib paramtib, ADMsg paramADMsg, SharedPreferences paramSharedPreferences, String paramString) {}
+  public tif(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.e;
-    paramView = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.f;
-    if ((((String)localObject).equals("TMTWAPI")) || (((String)localObject).equals("WAPI")))
+    this.a.finish();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("password", null);
+    if (!PhoneNumLoginImpl.a().a(this.a.app, this.a.app.getCurrentAccountUin()))
     {
-      paramView = Config.a(paramView, 0, null);
-      localObject = new Intent(this.jdField_a_of_type_Tib.a, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Tib.a.app.getCurrentAccountUin());
-      this.jdField_a_of_type_Tib.a.startActivity(((Intent)localObject).putExtra("url", paramView));
+      this.a.app.updateSubAccountLogin(this.a.app.getCurrentAccountUin(), false);
+      this.a.app.getApplication().refreAccountList();
     }
-    for (;;)
+    paramDialogInterface = (SubAccountManager)this.a.app.getManager(60);
+    if (paramDialogInterface != null) {}
+    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-      this.jdField_a_of_type_Tib.a.a.sendEmptyMessageDelayed(1010, 1000L);
-      return;
-      if ((((String)localObject).equals("TMTWAP")) || (((String)localObject).equals("WAP")))
+      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
       {
-        localObject = new Intent(this.jdField_a_of_type_Tib.a, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Tib.a.app.getCurrentAccountUin());
-        this.jdField_a_of_type_Tib.a.startActivity(((Intent)localObject).putExtra("url", paramView));
-      }
-      else if (((String)localObject).equals("LOCAL"))
-      {
-        if ("CARD".equalsIgnoreCase(paramView))
+        paramDialogInterface = paramDialogInterface.iterator();
+        while (paramDialogInterface.hasNext())
         {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.g.split(",")[0];
-          if (("".equals(paramView)) || (this.jdField_a_of_type_Tib.a.app.getCurrentAccountUin().equals(paramView))) {}
-          for (paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_Tib.a.app.getCurrentAccountUin(), 0);; paramView = new ProfileActivity.AllInOne(paramView, 19))
+          String str = (String)paramDialogInterface.next();
+          if (!PhoneNumLoginImpl.a().a(this.a.app, str))
           {
-            ProfileActivity.b(this.jdField_a_of_type_Tib.a, paramView);
-            break;
+            this.a.app.updateSubAccountLogin(str, false);
+            this.a.app.getApplication().refreAccountList();
           }
-        }
-        if ("CHAT".equalsIgnoreCase(paramView))
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.g.split(",")[0];
-          if (!"".equals(paramView)) {
-            if (((FriendsManager)this.jdField_a_of_type_Tib.a.app.getManager(50)).b(paramView)) {
-              this.jdField_a_of_type_Tib.a(paramView, 0, ContactUtils.k(this.jdField_a_of_type_Tib.a.app, paramView));
-            } else {
-              this.jdField_a_of_type_Tib.a(paramView, 1001, ContactUtils.k(this.jdField_a_of_type_Tib.a.app, paramView));
-            }
-          }
-        }
-        else if ("NEARBY".equalsIgnoreCase(paramView))
-        {
-          this.jdField_a_of_type_Tib.a.startActivity(new Intent(this.jdField_a_of_type_Tib.a, NearbyActivity.class));
         }
       }
+      this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(localBundle).addFlags(67108864));
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tif
  * JD-Core Version:    0.7.0.1
  */

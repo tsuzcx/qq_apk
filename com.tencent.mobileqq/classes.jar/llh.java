@@ -1,24 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CommentLikeObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentLikeObserver;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONObject;
 
 public class llh
-  implements Runnable
+  implements NativeCommentServlet.CommentLikeObserver
 {
-  public llh(KandianMergeManager paramKandianMergeManager, int paramInt) {}
+  public llh(ArticleCommentModule paramArticleCommentModule, ArticleCommentModule.CommentLikeObserver paramCommentLikeObserver, int paramInt) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
   {
-    Object localObject = ReadInJoyHelper.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), true, false);
-    if (localObject != null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString1, paramInt, paramString2);
+    }
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, String paramString, JSONObject paramJSONObject)
+  {
+    try
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putInt("kandian_follow_data_length", this.jdField_a_of_type_Int);
-        ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString, this.jdField_a_of_type_Int);
       }
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver == null) {}
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString, -1, "parser local data error");
     }
   }
 }

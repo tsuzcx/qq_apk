@@ -8,6 +8,7 @@ import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,8 +23,8 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import java.io.File;
-import vqm;
-import vqu;
+import vvq;
+import vvy;
 
 public class ArkDebugChatPie
   extends BaseChatPie
@@ -71,13 +72,14 @@ public class ArkDebugChatPie
     int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, i);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(str, i);
+    ArkAioContainerWrapper.a(2);
   }
   
   private void aZ()
   {
     long l = NetConnInfoCenter.getServerTime();
     RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-    RecentUser localRecentUser = localRecentUserProxy.a(AppConstants.aD, 1031);
+    RecentUser localRecentUser = localRecentUserProxy.a(AppConstants.aE, 1031);
     if (localRecentUser.lastmsgtime < l) {
       localRecentUser.lastmsgtime = l;
     }
@@ -103,13 +105,13 @@ public class ArkDebugChatPie
   {
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow().addFlags(128);
     ArkAppCenter.a(true);
-    ArkDispatchTask.getInstance().post(new vqm(this));
+    ArkDispatchTask.getInstance().post(new vvq(this));
     return super.a(paramBoolean);
   }
   
   protected void z()
   {
-    ArkDispatchTask.getInstance().post(new vqu(this));
+    ArkDispatchTask.getInstance().post(new vvy(this));
     super.z();
   }
 }

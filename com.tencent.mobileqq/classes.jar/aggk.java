@@ -1,27 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ocr.SearchQuestionCameraFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aggk
-  implements View.OnClickListener
+public class aggk
+  implements DialogInterface.OnDismissListener
 {
-  aggk(aggj paramaggj) {}
+  public aggk(SearchQuestionCameraFragment paramSearchQuestionCameraFragment) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
+    SearchQuestionCameraFragment.a(this.a, -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchQuestionFragment", 2, "mProgressDialog dismiss");
     }
-    ScanTorchActivity.k(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    ScanTorchActivity.j(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.a.setOnClickListener(this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aggk
  * JD-Core Version:    0.7.0.1
  */

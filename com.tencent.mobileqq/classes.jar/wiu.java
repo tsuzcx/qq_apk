@@ -1,32 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wiu
-  extends Handler
+  implements View.OnClickListener
 {
-  public wiu(SearchBaseFragment paramSearchBaseFragment) {}
+  public wiu(TroopAssistTipsBar paramTroopAssistTipsBar) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (SearchBaseFragment.a(this.a) != null) {
-      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
-    }
-    switch (paramMessage.what)
+    TroopAssistTipsBar.a(this.a).a(TroopAssistTipsBar.a(this.a).a, Integer.valueOf(4));
+    TroopAssistTipsBar.a(this.a).a();
+    TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.a).a, TroopAssistTipsBar.a(this.a));
+    TroopAssistantManager.a().c(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
+    ReportController.b(TroopAssistTipsBar.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, TroopAssistTipsBar.a(this.a).a, "", "", "");
+    QQAppInterface localQQAppInterface = TroopAssistTipsBar.a(this.a);
+    String str = TroopAssistTipsBar.a(this.a).a;
+    if (TroopAssistTipsBar.a(this.a).b(TroopAssistTipsBar.a(this.a).a) == 3) {}
+    for (paramView = "1";; paramView = "0")
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      this.a.a((String)paramMessage.obj);
-      return;
-    case 2: 
-      this.a.g();
+      ReportController.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_confirm", 0, 0, str, paramView, "", "");
       return;
     }
-    this.a.c();
   }
 }
 

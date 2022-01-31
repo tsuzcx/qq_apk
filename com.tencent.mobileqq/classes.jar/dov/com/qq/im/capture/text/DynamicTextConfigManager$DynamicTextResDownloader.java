@@ -2,7 +2,7 @@ package dov.com.qq.im.capture.text;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import annu;
+import anwh;
 import com.tencent.av.AVNetEngine;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -100,7 +100,7 @@ public class DynamicTextConfigManager$DynamicTextResDownloader
       localArrayList.add(new WeakReference(paramIDynamicTextResDownloadCallback));
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, localArrayList);
       paramIDynamicTextResDownloadCallback = new HttpNetReq();
-      paramIDynamicTextResDownloadCallback.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new annu(this);
+      paramIDynamicTextResDownloadCallback.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new anwh(this);
       paramIDynamicTextResDownloadCallback.jdField_a_of_type_JavaLangString = ((String)localObject);
       paramIDynamicTextResDownloadCallback.jdField_a_of_type_Int = 0;
       paramIDynamicTextResDownloadCallback.jdField_c_of_type_JavaLangString = DynamicTextConfigManager.a(paramDynamicTextFontInfo);

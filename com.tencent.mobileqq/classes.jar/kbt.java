@@ -1,43 +1,28 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.av.ui.VideoInviteLock;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.os.Handler;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
+import com.tencent.av.ui.funchat.record.FileSwapHelper;
 
 public class kbt
   implements Runnable
 {
-  public kbt(VideoInviteLock paramVideoInviteLock) {}
+  public kbt(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
   public void run()
   {
-    if ((this.a.a == null) || (this.a.c == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        this.a.a.setVisibility(8);
-        this.a.c.setVisibility(8);
-        if ((NetworkUtil.h(VideoInviteLock.a(this.a))) || (NetworkUtil.f(VideoInviteLock.b(this.a)))) {
-          break;
-        }
-        if (NetworkUtil.b(VideoInviteLock.c(this.a)))
-        {
-          this.a.c.setVisibility(0);
-          this.a.c.setText(2131429067);
-        }
-      } while (!NetworkUtil.c(VideoInviteLock.d(this.a)));
-      this.a.c.setVisibility(0);
-      this.a.c.setText(2131429066);
+    QavVideoRecordUICtrl.a(this.a, this.a.a());
+    QavVideoRecordUICtrl.b(this.a, FileSwapHelper.a());
+    if (QavVideoRecordUICtrl.a(this.a) < 31457280L) {
+      QavVideoRecordUICtrl.a(this.a).post(new kbu(this));
+    }
+    while (!QavVideoRecordUICtrl.b) {
       return;
-    } while (!this.a.b);
-    this.a.c.setVisibility(0);
-    this.a.c.setText(2131428696);
+    }
+    QavVideoRecordUICtrl.a(this.a).sendEmptyMessageDelayed(11, 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kbt
  * JD-Core Version:    0.7.0.1
  */

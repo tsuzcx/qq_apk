@@ -1,13 +1,24 @@
-import cooperation.qzone.report.lp.MachinelearningReport;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.WifiInfo;
 
-public class amyw
-  implements Runnable
+public final class amyw
+  implements Parcelable.Creator
 {
-  public amyw(MachinelearningReport paramMachinelearningReport) {}
-  
-  public void run()
+  public LbsDataV2.WifiInfo a(Parcel paramParcel)
   {
-    MachinelearningReport.access$200(this.a);
+    LbsDataV2.WifiInfo localWifiInfo = new LbsDataV2.WifiInfo();
+    if (paramParcel != null)
+    {
+      localWifiInfo.mac = paramParcel.readString();
+      localWifiInfo.rssi = paramParcel.readInt();
+    }
+    return localWifiInfo;
+  }
+  
+  public LbsDataV2.WifiInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

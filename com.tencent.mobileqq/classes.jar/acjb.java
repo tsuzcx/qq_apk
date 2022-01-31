@@ -1,62 +1,104 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import android.os.Bundle;
+import android.util.Pair;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class acjb
-  implements View.OnClickListener
+  extends CardObserver
 {
-  public acjb(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public acjb(MessengerService paramMessengerService) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131363264: 
-      if ((ExtendFriendSquareFragment.a(this.a) != null) && (ExtendFriendSquareFragment.a(this.a).isShowing())) {
-        ExtendFriendSquareFragment.a(this.a).dismiss();
-      }
-      if (!ExtendFriendSquareFragment.c(this.a))
-      {
-        ReportController.b(ExtendFriendSquareFragment.a(this.a), "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
-        return;
-      }
-      ReportController.b(ExtendFriendSquareFragment.a(this.a), "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
-      return;
+    long l2 = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.d("MessengerService.onCardDownload", 2, "received onCardDownload");
     }
-    if (!ExtendFriendSquareFragment.c(this.a)) {
-      PublicFragmentActivity.a(this.a.getActivity(), ExtendFriendEditFragment.class, 1031);
+    Object localObject;
+    long l1;
+    int i;
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
+    {
+      paramObject = (Card)paramObject;
+      localObject = (QQAppInterface)MessengerService.h(this.a);
+      if ((localObject != null) && (Utils.a(((QQAppInterface)localObject).getCurrentAccountUin(), paramObject.uin))) {
+        if ((paramObject.templateRet == 0) || (paramObject.templateRet == 101107) || (paramObject.templateRet == 101108))
+        {
+          l1 = paramObject.lCurrentBgId;
+          l2 = paramObject.lCurrentStyleId;
+          i = 0;
+        }
+      }
     }
     for (;;)
     {
-      if ((ExtendFriendSquareFragment.a(this.a) != null) && (ExtendFriendSquareFragment.a(this.a).isShowing())) {
-        ExtendFriendSquareFragment.a(this.a).dismiss();
+      paramObject = new Bundle();
+      paramObject.putLong("currentId", l1);
+      paramObject.putLong("styleId", l2);
+      paramObject.putInt("result", i);
+      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+      {
+        localObject = (Bundle)this.a.jdField_a_of_type_JavaUtilList.remove(0);
+        ((Bundle)localObject).putBundle("response", paramObject);
+        this.a.a((Bundle)localObject);
       }
-      if (ExtendFriendSquareFragment.c(this.a)) {
-        break;
-      }
-      ReportController.b(ExtendFriendSquareFragment.a(this.a), "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
       return;
-      paramView = new ProfileActivity.AllInOne(ExtendFriendSquareFragment.a(this.a).c(), 97);
-      paramView = ProfileCardUtil.a(new Intent(ExtendFriendSquareFragment.a(this.a), FriendProfileMoreInfoActivity.class), ExtendFriendSquareFragment.a(this.a).c(), ExtendFriendSquareFragment.a(this.a), paramView, null);
-      this.a.startActivityForResult(paramView, 2);
+      i = -1;
+      l1 = 0L;
+      continue;
+      i = -1;
+      l1 = 0L;
+      continue;
+      QLog.e("Q.emoji.web.MessengerService", 1, "onCardDownload fail isSuccess = " + paramBoolean + "data = " + paramObject);
+      i = -1;
+      l1 = 0L;
     }
-    ReportController.b(ExtendFriendSquareFragment.a(this.a), "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
+  }
+  
+  public void e(boolean paramBoolean, Object paramObject)
+  {
+    int i = -1;
+    String str = "";
+    if ((paramBoolean) && (paramObject != null)) {
+      if ((paramObject instanceof Card)) {
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.emoji.web.MessengerService", 2, "onSetCardTemplateReturn...resultCode=" + i);
+      }
+      if (this.a.jdField_a_of_type_AndroidOsBundle != null)
+      {
+        paramObject = new Bundle();
+        this.a.jdField_a_of_type_AndroidOsBundle.putString("cmd", "card_setSummaryCard");
+        paramObject.putInt("result", i);
+        paramObject.putString("message", str);
+        this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
+        this.a.a(this.a.jdField_a_of_type_AndroidOsBundle);
+        this.a.jdField_a_of_type_AndroidOsBundle = null;
+      }
+      return;
+      if ((paramObject instanceof Pair))
+      {
+        paramObject = (Pair)paramObject;
+        i = ((Integer)paramObject.first).intValue();
+        str = (String)paramObject.second;
+        continue;
+        QLog.e("Q.emoji.web.MessengerService", 1, "onSetCardTemplateReturn fail isSuccess = " + paramBoolean + "obj = " + paramObject);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acjb
  * JD-Core Version:    0.7.0.1
  */

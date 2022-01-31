@@ -38,12 +38,12 @@ public class DownloadTask
   public String e;
   public int f;
   public String f;
+  public int g = 1;
   
   public DownloadTask()
   {
     this.jdField_d_of_type_Int = -1;
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_f_of_type_Int = 1;
   }
   
   public static DownloadTask a(String paramString, int paramInt)
@@ -51,7 +51,7 @@ public class DownloadTask
     DownloadUrlManager.DownloadUrlQueryResult localDownloadUrlQueryResult = ((DownloadUrlManager)SuperManager.a(28)).a(paramString, paramInt);
     paramString = a(paramString, localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString, paramInt, false);
     paramString.jdField_a_of_type_Boolean = localDownloadUrlQueryResult.jdField_a_of_type_Boolean;
-    paramString.jdField_e_of_type_Int = localDownloadUrlQueryResult.c;
+    paramString.jdField_f_of_type_Int = localDownloadUrlQueryResult.c;
     return paramString;
   }
   
@@ -60,7 +60,7 @@ public class DownloadTask
     DownloadUrlManager.DownloadUrlQueryResult localDownloadUrlQueryResult = ((DownloadUrlManager)SuperManager.a(28)).a(paramString, paramInt);
     paramString = a(paramString, localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString, paramInt, paramBoolean);
     paramString.jdField_a_of_type_Boolean = localDownloadUrlQueryResult.jdField_a_of_type_Boolean;
-    paramString.jdField_e_of_type_Int = localDownloadUrlQueryResult.c;
+    paramString.jdField_f_of_type_Int = localDownloadUrlQueryResult.c;
     return paramString;
   }
   
@@ -70,7 +70,7 @@ public class DownloadTask
     StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(paramString1);
     if ((localStoryVideoItem != null) && (localStoryVideoItem.isMine()))
     {
-      localDownloadTask.jdField_e_of_type_JavaLangString = FileCacheUtils.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, false, false);
+      localDownloadTask.e = FileCacheUtils.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, false, false);
       localDownloadTask.jdField_f_of_type_JavaLangString = FileCacheUtils.a(paramString1, localStoryVideoItem.mCreateTime, paramInt, true, false);
       localDownloadTask.jdField_b_of_type_Int = 0;
       localDownloadTask.jdField_b_of_type_JavaLangString = paramString1;
@@ -90,7 +90,7 @@ public class DownloadTask
       localDownloadTask.jdField_d_of_type_JavaLangString = paramString2;
       localDownloadTask.jdField_c_of_type_Boolean = paramBoolean;
       return localDownloadTask;
-      localDownloadTask.jdField_e_of_type_JavaLangString = FileCacheUtils.a(paramString1, paramInt, false, false);
+      localDownloadTask.e = FileCacheUtils.a(paramString1, paramInt, false, false);
       localDownloadTask.jdField_f_of_type_JavaLangString = FileCacheUtils.a(paramString1, paramInt, true, false);
       break;
     }
@@ -106,7 +106,7 @@ public class DownloadTask
     if ((paramObject instanceof DownloadTask))
     {
       paramObject = (DownloadTask)paramObject;
-      if ((TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_e_of_type_JavaLangString, paramObject.jdField_e_of_type_JavaLangString))) {
+      if ((TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString)) && (TextUtils.equals(this.e, paramObject.e))) {
         return true;
       }
     }
@@ -115,7 +115,7 @@ public class DownloadTask
   
   public String toString()
   {
-    return "DownloadTask{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", fileType=" + QQStoryConstant.a(this.jdField_a_of_type_Int) + ", status=" + this.jdField_b_of_type_Int + ", downloadUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", localPath='" + this.jdField_e_of_type_JavaLangString + '\'' + ", localTmpPath='" + this.jdField_f_of_type_JavaLangString + '\'' + '}';
+    return "DownloadTask{vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", fileType=" + QQStoryConstant.a(this.jdField_a_of_type_Int) + ", status=" + this.jdField_b_of_type_Int + ", downloadUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", localPath='" + this.e + '\'' + ", localTmpPath='" + this.jdField_f_of_type_JavaLangString + '\'' + '}';
   }
 }
 

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e0092"
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0d" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0093" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0e" android:text="微信支付" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0094" />
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0f" android:text="95折" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0099" />
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d10" android:text="抽 iPhone X" style="@style/APKTOOL_DUPLICATE_style_0x7f0e009a" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d20" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02079a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="25.0dip" android:layout_marginRight="25.0dip" android:layout_marginBottom="25.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip">
+                <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0250" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="温馨提示" android:singleLine="true" android:layout_centerHorizontal="true" />
+                <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d22" android:layout_marginTop="0.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" style="@style/midas_ic_tipsclose" />
+            </RelativeLayout>
+        </LinearLayout>
+        <com.tencent.smtt.sdk.WebView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d1f" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d11" android:text="余额：909" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0096" />
-    <ImageView style="@style/APKTOOL_DUPLICATE_style_0x7f0e0097" />
 </LinearLayout>

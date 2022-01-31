@@ -23,13 +23,13 @@ public class TroopAddFrdsSrchResultView
   
   protected void a()
   {
-    this.j = ((TextView)this.d.findViewById(2131362894));
-    this.e = ((ImageView)this.d.findViewById(2131366545));
-    this.k = ((TextView)this.d.findViewById(2131369982));
-    this.a = ((Button)this.d.findViewById(2131368973));
+    this.h = ((TextView)this.d.findViewById(2131362899));
+    this.e = ((ImageView)this.d.findViewById(2131366543));
+    this.i = ((TextView)this.d.findViewById(2131369991));
+    this.a = ((Button)this.d.findViewById(2131368974));
     this.a.setText("添加");
-    this.m = ((TextView)this.d.findViewById(2131369984));
-    this.l = ((TextView)this.d.findViewById(2131368974));
+    this.k = ((TextView)this.d.findViewById(2131369993));
+    this.j = ((TextView)this.d.findViewById(2131368975));
   }
 }
 

@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.data.MessageForFoldMsg;
-import java.util.LinkedHashSet;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
+import com.tencent.av.utils.GVideoGrayConfig.Record;
+import com.tencent.mobileqq.app.QQGAudioMsgHandler;
 
 public class zsh
+  implements GVideoGrayConfig.GVideoGrayConfigListener
 {
-  public int a;
-  public long a;
-  public MessageForFoldMsg a;
-  public LinkedHashSet a;
-  public boolean a;
-  public long b;
-  public MessageForFoldMsg b;
-  public boolean b;
+  public zsh(QQGAudioMsgHandler paramQQGAudioMsgHandler, long paramLong, int paramInt) {}
   
-  public zsh()
+  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
-    this.jdField_a_of_type_Long = 9223372036854775807L;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-    this.jdField_b_of_type_Boolean = true;
+    if (paramInt1 == 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(7, this.jdField_a_of_type_Long, 2, 21, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
+    }
   }
 }
 

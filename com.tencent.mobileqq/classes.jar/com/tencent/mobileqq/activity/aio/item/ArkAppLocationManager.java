@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
 import java.util.ArrayList;
 import java.util.Iterator;
-import uut;
+import uzt;
 
 public class ArkAppLocationManager
 {
@@ -20,7 +20,7 @@ public class ArkAppLocationManager
   
   public ArkAppLocationManager(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new uut(this, 3, true, true, paramLong, true, true, "ArkAppLocationManager");
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new uzt(this, 3, true, true, paramLong, true, true, "ArkAppLocationManager");
   }
   
   public void a()

@@ -1,18 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.troop.data.TroopEntranceBar;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.troop.utils.TroopBindPublicAccountMgr;
+import org.json.JSONObject;
 
-public class ajiz
-  implements Runnable
+class ajiz
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public ajiz(ReciteRecordLayout paramReciteRecordLayout) {}
+  ajiz(ajiy paramajiy, TroopBindPublicAccountMgr paramTroopBindPublicAccountMgr, int paramInt) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    QQToast.a(this.a.a, this.a.a.getString(2131433386), 0).a();
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).c();
+    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopBindPublicAccountMgr.a(this.jdField_a_of_type_Ajiy.a.a.a, 0, this.jdField_a_of_type_Int);
     }
   }
 }

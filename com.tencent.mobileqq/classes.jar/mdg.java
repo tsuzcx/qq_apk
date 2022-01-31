@@ -1,23 +1,51 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings.System;
+import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
+import com.tencent.qphone.base.util.QLog;
 
 public class mdg
-  implements Animation.AnimationListener
+  extends ContentObserver
 {
-  public mdg(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public mdg(OrientationDetector paramOrientationDetector, Handler paramHandler)
   {
-    paramAnimation = (ImageView)this.a.findViewById(2131365588);
-    ImageView localImageView = (ImageView)this.a.findViewById(2131365589);
-    VideoFeedsPlayActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
+    super(paramHandler);
+    this.jdField_a_of_type_AndroidContentContentResolver = OrientationDetector.a(paramOrientationDetector).getContentResolver();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    int i = Settings.System.getInt(OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).getContentResolver(), "accelerometer_rotation", -1);
+    if (i == 1)
+    {
+      OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, true);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector.a(true);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(OrientationDetector.a, 2, "RotationObserver.onChange() : rotateState=" + i);
+      }
+      return;
+      OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector.a(false);
+    }
+  }
 }
 
 

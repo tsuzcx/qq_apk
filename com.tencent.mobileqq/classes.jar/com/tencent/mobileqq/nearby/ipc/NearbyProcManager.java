@@ -258,13 +258,13 @@ public class NearbyProcManager
     //   40: astore 6
     //   42: aload_0
     //   43: getfield 42	com/tencent/mobileqq/nearby/ipc/NearbyProcManager:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   46: new 280	aerh
+    //   46: new 280	aezs
     //   49: dup
     //   50: aload_0
     //   51: aload 6
     //   53: iload_1
     //   54: aload_2
-    //   55: invokespecial 283	aerh:<init>	(Lcom/tencent/mobileqq/nearby/ipc/NearbyProcManager;Lcom/tencent/mobileqq/nearby/ipc/NearbyProcObserver;I[Ljava/lang/Object;)V
+    //   55: invokespecial 283	aezs:<init>	(Lcom/tencent/mobileqq/nearby/ipc/NearbyProcManager;Lcom/tencent/mobileqq/nearby/ipc/NearbyProcObserver;I[Ljava/lang/Object;)V
     //   58: invokevirtual 289	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   61: pop
     //   62: iload_3
@@ -294,13 +294,13 @@ public class NearbyProcManager
     //   110: astore 6
     //   112: aload_0
     //   113: getfield 47	com/tencent/mobileqq/nearby/ipc/NearbyProcManager:jdField_b_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   116: new 291	aeri
+    //   116: new 291	aezt
     //   119: dup
     //   120: aload_0
     //   121: aload 6
     //   123: iload_1
     //   124: aload_2
-    //   125: invokespecial 292	aeri:<init>	(Lcom/tencent/mobileqq/nearby/ipc/NearbyProcManager;Lcom/tencent/mobileqq/nearby/ipc/NearbyProcObserver;I[Ljava/lang/Object;)V
+    //   125: invokespecial 292	aezt:<init>	(Lcom/tencent/mobileqq/nearby/ipc/NearbyProcManager;Lcom/tencent/mobileqq/nearby/ipc/NearbyProcObserver;I[Ljava/lang/Object;)V
     //   128: invokevirtual 289	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   131: pop
     //   132: iload_3

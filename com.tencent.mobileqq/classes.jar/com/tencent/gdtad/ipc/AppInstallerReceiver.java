@@ -9,7 +9,7 @@ import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.util.GdtAppOpenUtil;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import qkr;
+import qpi;
 
 public class AppInstallerReceiver
   extends BroadcastReceiver
@@ -19,7 +19,7 @@ public class AppInstallerReceiver
   
   public static AppInstallerReceiver a()
   {
-    return qkr.a;
+    return qpi.a;
   }
   
   public void a(Context paramContext)

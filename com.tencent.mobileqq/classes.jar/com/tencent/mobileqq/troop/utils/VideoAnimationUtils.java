@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajri;
-import ajrj;
+import ajyv;
+import ajyw;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -18,7 +18,7 @@ import mqq.os.MqqHandler;
 
 public class VideoAnimationUtils
 {
-  private static final String a = AppConstants.aJ + ".troop/hw_anim_video/";
+  private static final String a = AppConstants.aK + ".troop/hw_anim_video/";
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
@@ -54,7 +54,7 @@ public class VideoAnimationUtils
       paramString2.b = 2;
       localObject = new Bundle();
     } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(paramString2, new ajri(paramSpriteVideoView, paramString1, paramOnFrameEndListener), (Bundle)localObject);
+    paramQQAppInterface.a(paramString2, new ajyv(paramSpriteVideoView, paramString1, paramOnFrameEndListener), (Bundle)localObject);
   }
   
   private static void b(WeakReference paramWeakReference, String paramString, FrameSprite.OnFrameEndListener paramOnFrameEndListener)
@@ -65,14 +65,14 @@ public class VideoAnimationUtils
         QLog.d("VideoAnimationUtils", 2, "playVideoAnim");
       }
       if ((SpriteVideoView)paramWeakReference.get() != null) {
-        ThreadManager.getUIHandler().post(new ajrj(paramWeakReference, paramString, paramOnFrameEndListener));
+        ThreadManager.getUIHandler().post(new ajyw(paramWeakReference, paramString, paramOnFrameEndListener));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.VideoAnimationUtils
  * JD-Core Version:    0.7.0.1
  */

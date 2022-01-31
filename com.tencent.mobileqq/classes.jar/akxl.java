@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.widget.Workspace.SavedState;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akxl
-  implements Parcelable.Creator
+public class akxl
+  implements TroopMemberApiClient.Callback
 {
-  public Workspace.SavedState a(Parcel paramParcel)
-  {
-    return new Workspace.SavedState(paramParcel, null);
-  }
+  public akxl(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
   
-  public Workspace.SavedState[] a(int paramInt)
+  public void a(Bundle paramBundle)
   {
-    return new Workspace.SavedState[paramInt];
+    int i = paramBundle.getInt("readinjoy_to_wx_config");
+    if (QLog.isColorLevel()) {
+      QLog.d("SwiftBrowserScreenShotHandler", 2, "config = " + i);
+    }
+    if (i == 0) {
+      WxShareHelperFromReadInjoy.a().a(this.a.g, this.a.b, 1, false);
+    }
+    for (;;)
+    {
+      this.a.b.recycle();
+      this.a.b = null;
+      return;
+      WXShareHelper.a().a(this.a.g, this.a.b, 1, false);
+    }
   }
 }
 

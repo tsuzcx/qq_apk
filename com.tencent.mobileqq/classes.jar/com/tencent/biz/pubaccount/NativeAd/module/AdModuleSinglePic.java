@@ -11,7 +11,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
 import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.net.URL;
-import kwx;
+import kze;
 import org.json.JSONObject;
 
 public class AdModuleSinglePic
@@ -50,7 +50,7 @@ public class AdModuleSinglePic
   public View a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, BannerInfo paramBannerInfo, boolean paramBoolean)
   {
     super.a(paramContext, paramString1, paramString2, paramString3, paramInt, paramBannerInfo, paramBoolean);
-    paramString1 = LayoutInflater.from(paramContext).inflate(2130969635, null);
+    paramString1 = LayoutInflater.from(paramContext).inflate(2130969631, null);
     paramString2 = (ResizeURLImageView)paramString1.findViewById(2131367248);
     if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {}
     try
@@ -65,9 +65,9 @@ public class AdModuleSinglePic
         a(paramContext, paramString1);
         return paramString1;
         this.jdField_a_of_type_Int = 1;
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageDownListener = new kwx(this, paramString1, paramString2);
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageDownListener = new kze(this, paramString1, paramString2);
         paramString2.setPublicAccountImageDownListener(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageDownListener);
-        paramString1.findViewById(2131366521).setVisibility(0);
+        paramString1.findViewById(2131366519).setVisibility(0);
       }
     }
     catch (Exception paramString2)
@@ -107,7 +107,7 @@ public class AdModuleSinglePic
   public void d()
   {
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131366521).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131366519).setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.findViewById(2131367249).setVisibility(8);
     try
     {

@@ -1,58 +1,44 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import com.tencent.component.media.image.drawable.SliceBitmapDrawable;
-import com.tencent.component.media.image.drawable.SliceBitmapDrawable.SliceBitmap;
+import com.tencent.biz.SoftKeyboardObserver.OnSoftKeyboardToggledListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.webviewplugin.UrlCheckPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-public final class pid
-  extends Drawable.ConstantState
+public class pid
+  implements SoftKeyboardObserver.OnSoftKeyboardToggledListener
 {
-  public int a;
-  public Paint a;
-  public SliceBitmapDrawable.SliceBitmap a;
-  public int b = 160;
+  public pid(UrlCheckPlugin paramUrlCheckPlugin) {}
   
-  public pid(Bitmap paramBitmap)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap = new SliceBitmapDrawable.SliceBitmap(paramBitmap);
-  }
-  
-  public pid(SliceBitmapDrawable.SliceBitmap paramSliceBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap = paramSliceBitmap;
-  }
-  
-  public pid(pid parampid)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap = parampid.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap;
-    this.jdField_a_of_type_Int = parampid.jdField_a_of_type_Int;
-    this.b = parampid.b;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(parampid.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new SliceBitmapDrawable(this, null, null);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new SliceBitmapDrawable(this, paramResources, null);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.TAG, 2, "onSoftKeyboardToggled");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.TAG, 2, "isCheatDialogShow:" + this.a.e);
+    }
+    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.a.f < 1) || (this.a.f > 2) || (this.a.jdField_a_of_type_Boolean));
+      if (this.a.e != UrlCheckPlugin.c) {
+        break;
+      }
+    } while (this.a.f != 2);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.a();
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.a(2131437487);
+    return;
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.a(2131437487);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pid
  * JD-Core Version:    0.7.0.1
  */

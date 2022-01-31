@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.ar;
 
+import aadt;
+import aadu;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -20,8 +22,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 import mqq.manager.Manager;
-import zxf;
-import zxg;
 
 public class ARGlobalConfigManager
   implements Manager
@@ -39,7 +39,7 @@ public class ARGlobalConfigManager
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("ar_global_config" + paramQQAppInterface.getAccount(), 0);
-    ThreadManager.post(new zxf(this), 8, null, true);
+    ThreadManager.post(new aadt(this), 8, null, true);
   }
   
   public int a()
@@ -159,7 +159,7 @@ public class ARGlobalConfigManager
     for (;;)
     {
       return this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
-      ThreadManager.postImmediately(new zxg(this), null, false);
+      ThreadManager.postImmediately(new aadu(this), null, false);
     }
   }
   

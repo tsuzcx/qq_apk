@@ -1,274 +1,157 @@
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.util.Pair;
-import com.tencent.mobileqq.statistics.battery.BatteryIPCModule;
-import com.tencent.mobileqq.statistics.battery.BatteryLog;
-import com.tencent.mobileqq.statistics.battery.BatteryStatsImpl;
-import com.tencent.mobileqq.statistics.battery.HighFrequencyStringDetector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import mqq.app.MainService;
-import mqq.util.IServiceCmdCallback;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
 
-public class aigq
-  extends aigp
-  implements IServiceCmdCallback
+class aigq
 {
-  private int jdField_a_of_type_Int = 20;
-  private long jdField_a_of_type_Long = 2000L;
-  private HighFrequencyStringDetector jdField_a_of_type_ComTencentMobileqqStatisticsBatteryHighFrequencyStringDetector;
-  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  private int jdField_b_of_type_Int = 30;
-  private long jdField_b_of_type_Long;
-  private Map jdField_b_of_type_JavaUtilMap = new HashMap();
-  private int jdField_c_of_type_Int = 40;
-  private Map jdField_c_of_type_JavaUtilMap = new HashMap();
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  long[] jdField_a_of_type_ArrayOfLong = new long[3];
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long;
+  long[] jdField_b_of_type_ArrayOfLong = new long[3];
+  int jdField_c_of_type_Int = 0;
+  long jdField_c_of_type_Long;
+  int jdField_d_of_type_Int = 0;
+  long jdField_d_of_type_Long;
+  long e;
+  long f;
+  long g;
+  long h;
+  long i;
+  long j;
+  long k;
+  long l;
+  long m;
+  long n;
+  long o;
+  long p;
+  long q = 9223372036854775807L;
+  long r = 0L;
+  long s = 9223372036854775807L;
+  long t = 0L;
   
-  public aigq(BatteryStatsImpl paramBatteryStatsImpl, String paramString)
+  aigq(aigo paramaigo) {}
+  
+  long a()
   {
-    super(paramBatteryStatsImpl, paramString);
-    MainService.setServiceCmdCallback(this);
-    if ((this.jdField_a_of_type_Array2dOfJavaLangString.length >= 1) && (this.jdField_a_of_type_Array2dOfJavaLangString[0].length >= 4))
-    {
-      this.jdField_a_of_type_Long = (Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][0]).intValue() * 1000L);
-      this.jdField_b_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][1]).intValue();
-      this.jdField_c_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][2]).intValue();
-      this.jdField_a_of_type_Int = Integer.valueOf(this.jdField_a_of_type_Array2dOfJavaLangString[0][3]).intValue();
-      this.jdField_b_of_type_Int *= 3;
-      this.jdField_c_of_type_Int *= 8;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqStatisticsBatteryHighFrequencyStringDetector = new HighFrequencyStringDetector(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x58b_0", Integer.valueOf(150));
-    this.jdField_a_of_type_JavaUtilMap.put("IncreaseURLSvr.QQHeadUrlReq", Integer.valueOf(100));
-    this.jdField_a_of_type_JavaUtilMap.put("AvatarInfoSvr.QQHeadUrlReq", Integer.valueOf(100));
-    this.jdField_a_of_type_JavaUtilMap.put("OnlinePush.RespPush", Integer.valueOf(120));
-    this.jdField_a_of_type_JavaUtilMap.put("CliLogSvc.UploadReq", Integer.valueOf(50));
-    this.jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x787_1", Integer.valueOf(90));
-    this.jdField_a_of_type_JavaUtilMap.put("friendlist.getTroopMemberList", Integer.valueOf(40));
-    this.jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbDeleteMsg", Integer.valueOf(100));
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long;
   }
   
-  public void a(Bundle paramBundle)
+  void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (paramBundle.getInt("key_action") != 7) {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_a_of_type_Int < 3))
+    {
+      arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+      i1 = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i1 + 1);
+      arrayOfLong[i1] = System.currentTimeMillis();
+    }
+    while (this.jdField_b_of_type_Int >= 3) {
       return;
     }
-    String str = paramBundle.getString("key_log");
-    int i = paramBundle.getInt("key_count");
-    if (QLog.isColorLevel()) {
-      QLog.d("BatteryStats", 2, new Object[] { "CMD.onOtherProcReport:", str, ", count:" + i });
+    long[] arrayOfLong = this.jdField_b_of_type_ArrayOfLong;
+    int i1 = this.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Int = (i1 + 1);
+    arrayOfLong[i1] = System.currentTimeMillis();
+  }
+  
+  long b()
+  {
+    if (this.jdField_c_of_type_Int < 3) {
+      return 0L;
     }
-    synchronized (this.jdField_b_of_type_JavaUtilMap)
+    return this.jdField_a_of_type_ArrayOfLong[0];
+  }
+  
+  void b(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_c_of_type_Int < 3))
     {
-      HashSet localHashSet;
-      if (this.jdField_b_of_type_Boolean)
+      this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int] = (System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[this.jdField_c_of_type_Int]);
+      this.jdField_c_of_type_Int += 1;
+      if (this.jdField_c_of_type_Int == 3)
       {
-        localHashSet = (HashSet)this.jdField_b_of_type_JavaUtilMap.get(str);
-        paramBundle = localHashSet;
-        if (localHashSet == null)
-        {
-          paramBundle = new HashSet();
-          this.jdField_b_of_type_JavaUtilMap.put(str, paramBundle);
-        }
-        paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
+        this.jdField_a_of_type_Aigo.a.a("hw_video_time_used_msg", "videoEncodeTime:cnt20=" + this.jdField_a_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_a_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_a_of_type_ArrayOfLong[2]);
+        this.jdField_a_of_type_ArrayOfLong[0] = ((this.jdField_a_of_type_ArrayOfLong[0] + this.jdField_a_of_type_ArrayOfLong[1] + this.jdField_a_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
+        this.jdField_a_of_type_Aigo.a.a("hw_video_time_used_msg", "videoEncodeTime:timeout=" + this.jdField_a_of_type_ArrayOfLong[0]);
       }
-      if ((this.jdField_c_of_type_Boolean) && (this.d))
-      {
-        localHashSet = (HashSet)this.jdField_c_of_type_JavaUtilMap.get(str);
-        paramBundle = localHashSet;
-        if (localHashSet == null)
-        {
-          paramBundle = new HashSet();
-          this.jdField_c_of_type_JavaUtilMap.put(str, paramBundle);
-        }
-        paramBundle.add(new Pair(Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i)));
-      }
-      return;
     }
-  }
-  
-  public void b()
-  {
-    super.b();
-    synchronized (this.jdField_b_of_type_JavaUtilMap)
+    do
     {
-      this.jdField_c_of_type_JavaUtilMap.clear();
-      return;
-    }
-  }
-  
-  public void e()
-  {
-    super.e();
-    if ((BatteryStatsImpl.a()) && (this.jdField_a_of_type_Boolean)) {}
-    label290:
-    for (;;)
-    {
-      synchronized (this.jdField_b_of_type_JavaUtilMap)
+      do
       {
-        Iterator localIterator1 = this.jdField_b_of_type_JavaUtilMap.values().iterator();
-        int i = 0;
-        if (localIterator1.hasNext())
-        {
-          i = ((HashSet)localIterator1.next()).size() + i;
-          continue;
-        }
-        BatteryStatsImpl.b(this.jdField_b_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl, new String[] { "fg30CmdCount", "|", String.valueOf(i) });
-        localIterator1 = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
-        if (localIterator1.hasNext())
-        {
-          String str = (String)localIterator1.next();
-          HashSet localHashSet = (HashSet)this.jdField_b_of_type_JavaUtilMap.get(str);
-          StringBuilder localStringBuilder = BatteryLog.a();
-          Iterator localIterator2 = localHashSet.iterator();
-          i = 0;
-          if (localIterator2.hasNext())
-          {
-            Pair localPair = (Pair)localIterator2.next();
-            localStringBuilder.append(localPair.first).append(",").append(localPair.second);
-            i += 1;
-            if (i >= localHashSet.size()) {
-              break label290;
-            }
-            localStringBuilder.append("#");
-            break label290;
-          }
-          BatteryStatsImpl.b(this.jdField_b_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl, new String[] { "fg30CmdAlarm", "|", str, "|", localStringBuilder.toString() });
-        }
-      }
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      return;
-    }
+        return;
+      } while (this.jdField_d_of_type_Int >= 3);
+      this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int] = (System.currentTimeMillis() - this.jdField_b_of_type_ArrayOfLong[this.jdField_d_of_type_Int]);
+      this.jdField_d_of_type_Int += 1;
+    } while (this.jdField_d_of_type_Int != 3);
+    this.jdField_a_of_type_Aigo.a.a("hw_video_time_used_msg", "audioEncodeTime:cnt20=" + this.jdField_b_of_type_ArrayOfLong[0] + " cnt1=" + this.jdField_b_of_type_ArrayOfLong[1] + " cnt2" + this.jdField_b_of_type_ArrayOfLong[2]);
+    this.jdField_b_of_type_ArrayOfLong[0] = ((this.jdField_b_of_type_ArrayOfLong[0] + this.jdField_b_of_type_ArrayOfLong[1] + this.jdField_b_of_type_ArrayOfLong[2]) / 3L * 1000L / 2L);
+    this.jdField_a_of_type_Aigo.a.a("hw_video_time_used_msg", "audioEncodeTime:timeout=" + this.jdField_b_of_type_ArrayOfLong[0]);
   }
   
-  public void f()
+  long c()
   {
-    super.f();
-    if ((BatteryStatsImpl.a()) && (this.jdField_a_of_type_Boolean)) {}
-    label292:
-    for (;;)
+    if (this.jdField_d_of_type_Int < 3) {
+      return 0L;
+    }
+    return this.jdField_b_of_type_ArrayOfLong[0];
+  }
+  
+  void c(boolean paramBoolean)
+  {
+    long l1 = a();
+    if (paramBoolean)
     {
-      synchronized (this.jdField_b_of_type_JavaUtilMap)
-      {
-        Iterator localIterator1 = this.jdField_c_of_type_JavaUtilMap.values().iterator();
-        int i = 0;
-        if (localIterator1.hasNext())
-        {
-          i = ((HashSet)localIterator1.next()).size() + i;
-          continue;
-        }
-        BatteryStatsImpl.b(this.jdField_b_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl, new String[] { "bg5CmdCount", "|", String.valueOf(i) });
-        localIterator1 = this.jdField_c_of_type_JavaUtilMap.keySet().iterator();
-        if (localIterator1.hasNext())
-        {
-          String str = (String)localIterator1.next();
-          HashSet localHashSet = (HashSet)this.jdField_c_of_type_JavaUtilMap.get(str);
-          StringBuilder localStringBuilder = BatteryLog.a();
-          Iterator localIterator2 = localHashSet.iterator();
-          i = 0;
-          if (localIterator2.hasNext())
-          {
-            Pair localPair = (Pair)localIterator2.next();
-            localStringBuilder.append(localPair.first).append(",").append(localPair.second);
-            i += 1;
-            if (i >= localHashSet.size()) {
-              break label292;
-            }
-            localStringBuilder.append("#");
-            break label292;
-          }
-          BatteryStatsImpl.b(this.jdField_b_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl, new String[] { "bg5CmdAlarm", "|", str, "|", localStringBuilder.toString() });
-        }
+      if (l1 > this.r) {
+        this.r = l1;
       }
-      this.jdField_c_of_type_JavaUtilMap.clear();
-      return;
-    }
-  }
-  
-  public void onCmdRequest(String paramString)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqStatisticsBatteryHighFrequencyStringDetector.a();
+      if (l1 < this.q) {
+        this.q = l1;
+      }
     }
     do
     {
       return;
-      if (this.jdField_b_of_type_Long == 0L) {
-        this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+      if (l1 > this.t) {
+        this.t = l1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqStatisticsBatteryHighFrequencyStringDetector.a(paramString);
-    } while (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long <= this.jdField_a_of_type_Long);
-    Map localMap = this.jdField_a_of_type_ComTencentMobileqqStatisticsBatteryHighFrequencyStringDetector.a();
-    StringBuilder localStringBuilder;
-    int i;
-    Object localObject;
-    if ((localMap == null) || ((localMap != null) && (localMap.size() > 0)))
-    {
-      localStringBuilder = new StringBuilder(localMap.size() * 20);
-      paramString = null;
-      Iterator localIterator = localMap.keySet().iterator();
-      i = 0;
-      if (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.append("#");
-        }
-        localStringBuilder.append("[").append((String)localObject).append(",").append(localMap.get(localObject)).append("]");
-        if (((Integer)localMap.get(localObject)).intValue() <= i) {
-          break label439;
-        }
-        i = ((Integer)localMap.get(localObject)).intValue();
-        paramString = (String)localObject;
-      }
-    }
-    label439:
-    for (;;)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_action", 7);
-      localBundle.putString("key_log", (String)localObject);
-      localBundle.putInt("key_count", ((Integer)localMap.get(localObject)).intValue());
-      if (!BatteryStatsImpl.a()) {
-        BatteryIPCModule.a().a(localBundle);
-      }
-      for (;;)
-      {
-        break;
-        a(localBundle);
-      }
-      BatteryStatsImpl.a(this.jdField_b_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl, new String[] { "cmd|", localStringBuilder.toString() });
-      localObject = this.jdField_b_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl;
-      if (i > this.jdField_c_of_type_Int)
-      {
-        i = 1;
-        BatteryStatsImpl.a((BatteryStatsImpl)localObject, 3, 0, i, "发现高频命令字:" + paramString, "2秒钟命令字请求次数：" + localStringBuilder.toString());
-      }
-      for (;;)
-      {
-        this.jdField_b_of_type_Long = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqStatisticsBatteryHighFrequencyStringDetector.a();
-        return;
-        i = 0;
-        break;
-        if ((BatteryStatsImpl.a(this.jdField_b_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl) != null) && (QLog.isColorLevel())) {
-          BatteryStatsImpl.a(this.jdField_b_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl, "No high frequnecy cmd in last 2seconds");
-        }
-      }
-    }
+    } while (l1 >= this.s);
+    this.s = l1;
   }
   
-  public void onCmdResponse(String paramString) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mThumbGen=").append(this.l).append(" ");
+    localStringBuilder.append("mThumbGenFunc=").append(this.m).append(" ");
+    localStringBuilder.append("mMuxerCreate=").append(this.n).append(" ");
+    localStringBuilder.append("mMuxerAdd=").append(this.o).append(" ");
+    localStringBuilder.append("mMuxerStart=").append(this.p).append(" ");
+    localStringBuilder.append("mWriteVideoMax=").append(this.r).append(" ");
+    localStringBuilder.append("mWriteVideoMIn=").append(this.q).append(" ");
+    localStringBuilder.append("mWriteAudioMax=").append(this.t).append(" ");
+    localStringBuilder.append("mWriteAudioMIn=").append(this.s).append(" ");
+    localStringBuilder.append("vConfig=").append(this.jdField_b_of_type_Long).append(" ");
+    localStringBuilder.append("vInit=").append(this.jdField_c_of_type_Long).append(" ");
+    localStringBuilder.append("vStart=").append(this.jdField_d_of_type_Long).append(" ");
+    localStringBuilder.append("vStop=").append(this.e).append(" ");
+    localStringBuilder.append("vRelease=").append(this.f).append(" ");
+    localStringBuilder.append("aConfig=").append(this.g).append(" ");
+    localStringBuilder.append("aInit=").append(this.h).append(" ");
+    localStringBuilder.append("aStart=").append(this.i).append(" ");
+    localStringBuilder.append("aStop=").append(this.j).append(" ");
+    localStringBuilder.append("aRelease=").append(this.k).append(" ");
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aigq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class wrq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wrq(MessageSearchDialog paramMessageSearchDialog) {}
+  public wrq(ContactsTroopAdapter paramContactsTroopAdapter, TroopManager paramTroopManager, RecentUserProxy paramRecentUserProxy) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.dismiss();
+    ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a();
+    ArrayList localArrayList2 = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a.getManager(52)).a();
+    ThreadManager.getUIHandler().post(new wrr(this, localArrayList1, localArrayList2));
   }
 }
 

@@ -1,19 +1,37 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.network.request.GetPoiFacesRequest;
+import com.tencent.biz.qqstory.network.response.GetPoiFacesResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
 public class onh
-  implements View.OnLongClickListener
+  implements CmdTaskManger.CommandCallback
 {
-  public onh(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
+  public onh(DoodleEmojiManager paramDoodleEmojiManager, WeakReference paramWeakReference) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(@NonNull GetPoiFacesRequest paramGetPoiFacesRequest, @Nullable GetPoiFacesResponse paramGetPoiFacesResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    if (paramGetPoiFacesResponse == null)
+    {
+      paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramGetPoiFacesRequest != null) {
+        paramGetPoiFacesRequest.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
+      return;
     }
-    return true;
+    paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramGetPoiFacesRequest != null)
+    {
+      paramGetPoiFacesRequest.a(0, paramGetPoiFacesResponse.a);
+      return;
+    }
+    SLog.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

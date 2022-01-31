@@ -1,50 +1,35 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.graphics.Bitmap;
 import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.view.StoryFaceDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory;
 
 public class aomh
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public aomh(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public aomh(StoryFaceDrawableFactory paramStoryFaceDrawableFactory, String paramString1, String paramString2) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
+    Bitmap localBitmap = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.a(this.jdField_a_of_type_JavaLangString);
+    if (localBitmap != null)
     {
-      this.a.a.set(true);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
-      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
+      StoryFaceDrawable localStoryFaceDrawable = (StoryFaceDrawable)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.b);
+      if (localStoryFaceDrawable != null)
+      {
+        localStoryFaceDrawable.a(localBitmap);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.jdField_a_of_type_AndroidOsHandler.obtainMessage(1002).sendToTarget();
+        return;
+      }
+      SLog.d("Q.qqstory.record.StoryFaceDrawableFactory", "Find faceDrawable is not in cache after decoding bitmap!");
+      localStoryFaceDrawable = new StoryFaceDrawable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.jdField_a_of_type_Int, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.b);
+      localStoryFaceDrawable.a(localBitmap);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.b, localStoryFaceDrawable);
       return;
-      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
-      CameraCaptureButtonLayout.a(this.a);
-      CameraCaptureButtonLayout.a(this.a, 1.0F);
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
+    SLog.e("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath return null!.");
   }
 }
 

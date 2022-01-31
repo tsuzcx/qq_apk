@@ -13,7 +13,7 @@ import com.tencent.mobileqq.profile.DataTag;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.List;
-import kxr;
+import kzy;
 import org.json.JSONArray;
 
 public class PhotoWallViewForAccountDetail$PhotoAdapter
@@ -69,16 +69,16 @@ public class PhotoWallViewForAccountDetail$PhotoAdapter
           paramViewGroup = paramViewGroup.optString(0);
           if (paramView == null)
           {
-            localkxr = new kxr(this);
-            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969183, null);
+            localkzy = new kzy(this);
+            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969181, null);
             paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.a, this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.b));
-            localkxr.a = ((URLImageView)paramView.findViewById(2131365533));
-            paramView.setTag(localkxr);
-            localkxr.a.setTag(new DataTag(25, Integer.valueOf(paramInt)));
+            localkzy.a = ((URLImageView)paramView.findViewById(2131365538));
+            paramView.setTag(localkzy);
+            localkzy.a.setTag(new DataTag(25, Integer.valueOf(paramInt)));
             if (!TextUtils.isEmpty(paramViewGroup)) {
               continue;
             }
-            localkxr.a.setImageResource(2130838719);
+            localkzy.a.setImageResource(2130838728);
             return paramView;
           }
         }
@@ -91,10 +91,10 @@ public class PhotoWallViewForAccountDetail$PhotoAdapter
         paramViewGroup.printStackTrace();
         paramViewGroup = null;
         continue;
-        kxr localkxr = (kxr)paramView.getTag();
+        kzy localkzy = (kzy)paramView.getTag();
         continue;
         paramViewGroup = URLDrawable.getDrawable(paramViewGroup);
-        localkxr.a.setImageDrawable(paramViewGroup);
+        localkzy.a.setImageDrawable(paramViewGroup);
         return paramView;
       }
       paramViewGroup = null;

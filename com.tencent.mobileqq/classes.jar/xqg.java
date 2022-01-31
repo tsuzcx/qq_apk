@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterTools.OnResourceDownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class xqg
-  implements VideoFilterTools.OnResourceDownloadListener
+public class xqg
+  implements DialogInterface.OnClickListener
 {
-  xqg(xqf paramxqf, VideoFilterTools paramVideoFilterTools) {}
+  public xqg(RecentAdapter paramRecentAdapter) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PTV.NewFlowCameraActivity", 2, "onResourceDownload isOnlineRes: " + paramBoolean);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterTools.a())
-    {
-      this.jdField_a_of_type_Xqf.a.runOnUiThread(new xqh(this));
-      return;
-    }
-    QLog.w("PTV.NewFlowCameraActivity", 2, "has not valid video filter!");
+    ((CardHandler)this.a.a.a(2)).j(false);
   }
 }
 

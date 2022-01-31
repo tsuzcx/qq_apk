@@ -1,17 +1,37 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
+import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-public final class aatx
-  implements FileFilter
+class aatx
+  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
 {
-  public boolean accept(File paramFile)
+  aatx(aatw paramaatw) {}
+  
+  public void a(int paramInt)
   {
-    return paramFile.getName().startsWith("hc_");
+    this.a.a.a(2, paramInt);
   }
+  
+  public void a(String paramString)
+  {
+    ARVideoPreviewActivity.a(this.a.a).post(new aaty(this));
+  }
+  
+  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp)
+  {
+    paramString = paramStoryVideoExtRsp.bytes_cdn_url.get().toStringUtf8();
+    this.a.a.a(2, paramString);
+  }
+  
+  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aatx
  * JD-Core Version:    0.7.0.1
  */

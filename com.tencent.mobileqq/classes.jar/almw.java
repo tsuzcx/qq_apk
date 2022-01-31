@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.widget.TextView;
+import com.tencent.open.applist.QZoneAppListActivity;
 
-public class almw
-  implements View.OnClickListener
+class almw
+  implements Runnable
 {
-  public almw(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  almw(almv paramalmv) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
+    QZoneAppListActivity.a(this.a.a).setText("安装失败");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     almw
  * JD-Core Version:    0.7.0.1
  */

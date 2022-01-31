@@ -55,7 +55,7 @@ public class NewFriendsPlayMode$DownloadStatusUpdateReceiver
       for (str = "2";; str = "1")
       {
         StoryReportor.a("play_video", "down_suc", 0, 0, new String[] { str, "", "", paramDownloadStatusChangeEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        QQToast.a(VideoPlayModeBase.a(), 2, StoryApi.a(2131432100), 0).a();
+        QQToast.a(VideoPlayModeBase.a(), 2, StoryApi.a(2131432111), 0).a();
         break;
       }
     }

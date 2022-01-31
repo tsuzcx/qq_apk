@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acdz;
-import acea;
-import aceb;
+import acma;
+import acmb;
+import acmc;
 import android.util.SparseIntArray;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -164,36 +164,35 @@ public class CommonUsedSystemEmojiManager
       }
       for (;;)
       {
-        Object localObject1;
-        Object localObject2;
+        Object localObject;
         if (QLog.isColorLevel())
         {
-          localObject1 = new StringBuilder("mergeAndSortSystemEmojiInfo:");
+          localObject = new StringBuilder("mergeAndSortSystemEmojiInfo:");
           if (paramList1 != null)
           {
-            ((StringBuilder)localObject1).append("befor sort list1 : ");
+            ((StringBuilder)localObject).append("befor sort list1 : ");
             i = 0;
             while (i < paramList1.size())
             {
-              localObject2 = (EmosmPb.SmallYellowItem)paramList1.get(i);
-              ((StringBuilder)localObject1).append("type = " + ((EmosmPb.SmallYellowItem)localObject2).type.get()).append(";id = " + ((EmosmPb.SmallYellowItem)localObject2).id.get()).append(";ts = " + ((EmosmPb.SmallYellowItem)localObject2).ts.get());
+              EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)paramList1.get(i);
+              ((StringBuilder)localObject).append("type = " + localSmallYellowItem.type.get()).append(";id = " + localSmallYellowItem.id.get()).append(";ts = " + localSmallYellowItem.ts.get());
               i += 1;
             }
           }
           if (paramList2 != null)
           {
-            ((StringBuilder)localObject1).append("befor sort list2 : ");
+            ((StringBuilder)localObject).append("befor sort list2 : ");
             i = 0;
             while (i < paramList2.size())
             {
               paramList1 = (EmosmPb.SmallYellowItem)paramList2.get(i);
-              ((StringBuilder)localObject1).append("type = " + paramList1.type.get()).append(";id = " + paramList1.id.get()).append(";ts = " + paramList1.ts.get());
+              ((StringBuilder)localObject).append("type = " + paramList1.type.get()).append(";id = " + paramList1.id.get()).append(";ts = " + paramList1.ts.get());
               i += 1;
             }
           }
-          QLog.d("CommonUsedSystemEmojiManager", 2, "mergeAndSortSystemEmojiInfo merge:" + ((StringBuilder)localObject1).toString());
+          QLog.d("CommonUsedSystemEmojiManager", 2, "mergeAndSortSystemEmojiInfo merge:" + ((StringBuilder)localObject).toString());
         }
-        Collections.sort(localList, new acea(this));
+        Collections.sort(localList, new acmb(this));
         if (QLog.isColorLevel())
         {
           paramList1 = new StringBuilder("mergeAndSortSystemEmojiInfo:");
@@ -211,12 +210,12 @@ public class CommonUsedSystemEmojiManager
         paramList2 = localList.iterator();
         while (paramList2.hasNext())
         {
-          localObject1 = (EmosmPb.SmallYellowItem)paramList2.next();
-          localObject2 = ((EmosmPb.SmallYellowItem)localObject1).type.get() + "-" + ((EmosmPb.SmallYellowItem)localObject1).id.get();
-          if ((paramList1.contains(localObject2)) || ((((EmosmPb.SmallYellowItem)localObject1).type.get() == 1) && (((EmosmPb.SmallYellowItem)localObject1).id.get() == 117))) {
+          localObject = (EmosmPb.SmallYellowItem)paramList2.next();
+          localObject = ((EmosmPb.SmallYellowItem)localObject).type.get() + "-" + ((EmosmPb.SmallYellowItem)localObject).id.get();
+          if (paramList1.contains(localObject)) {
             paramList2.remove();
           } else {
-            paramList1.add(localObject2);
+            paramList1.add(localObject);
           }
         }
         paramList1 = localList;
@@ -321,7 +320,7 @@ public class CommonUsedSystemEmojiManager
     if (QLog.isColorLevel()) {
       QLog.d("CommonUsedSystemEmojiManager", 2, "updateCacheFromFile");
     }
-    ThreadManager.getFileThreadHandler().post(new acdz(this));
+    ThreadManager.getFileThreadHandler().post(new acma(this));
   }
   
   public void a(EmosmPb.SmallYellowItem paramSmallYellowItem)
@@ -702,7 +701,7 @@ public class CommonUsedSystemEmojiManager
     if (QLog.isColorLevel()) {
       QLog.d("CommonUsedSystemEmojiManager", 2, "saveSystemEmojiInfoToFile");
     }
-    ThreadManager.getFileThreadHandler().post(new aceb(this));
+    ThreadManager.getFileThreadHandler().post(new acmc(this));
   }
   
   public void onDestroy()

@@ -29,7 +29,7 @@ public class StoryEffectsCameraCaptureView
     paramGL10 = this.a;
     if (paramGL10 != null)
     {
-      paramGL10.a(GlUtil.a(a(this.k), this.f, this.g, 0));
+      paramGL10.a(GlUtil.a(a(this.s), this.n, this.o, 0));
       this.a = null;
     }
   }

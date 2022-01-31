@@ -1,15 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.widget.ActionSheet.WatchDismissActions;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 
-public class mbb
-  implements ActionSheet.WatchDismissActions
+public final class mbb
+  implements Parcelable.Creator
 {
-  public mbb(VideoFeedsAdapter paramVideoFeedsAdapter) {}
-  
-  public void a()
+  public DislikeInfo a(Parcel paramParcel)
   {
-    VideoFeedsAdapter.a(this.a).d();
+    return new DislikeInfo(paramParcel);
+  }
+  
+  public DislikeInfo[] a(int paramInt)
+  {
+    return new DislikeInfo[paramInt];
   }
 }
 

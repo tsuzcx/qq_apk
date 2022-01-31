@@ -1,14 +1,22 @@
-import android.view.animation.Interpolator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.addContactTroopView.TroopCardBanner;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class wop
-  implements Interpolator
+public class wop
+  implements View.OnClickListener
 {
-  private float a = 1.6F;
+  public wop(TroopView paramTroopView) {}
   
-  public float getInterpolation(float paramFloat)
+  public void onClick(View paramView)
   {
-    paramFloat -= 1.0F;
-    return (paramFloat * (this.a + 1.0F) + this.a) * (paramFloat * paramFloat) + 1.0F;
+    if (TroopView.a(this.a) != null) {
+      TroopView.a(this.a).c();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a();
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
   }
 }
 

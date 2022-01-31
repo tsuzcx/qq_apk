@@ -1,39 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.drawable.TransitionDrawable;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
 
-class agul
-  implements DialogInterface.OnClickListener
+public class agul
+  implements Runnable
 {
-  agul(aguk paramaguk, QQCustomDialog paramQQCustomDialog, long paramLong) {}
+  public agul(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, TransitionDrawable paramTransitionDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    paramDialogInterface = QCallDetailActivity.a(this.jdField_a_of_type_Aguk.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-    long l = this.jdField_a_of_type_Long;
-    if (!this.jdField_a_of_type_Aguk.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      paramDialogInterface.a(l, bool);
-      QCallDetailActivity.a(this.jdField_a_of_type_Aguk.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a((byte)0);
-      return;
-      bool = false;
-    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableTransitionDrawable.reverseTransition(1500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agul
  * JD-Core Version:    0.7.0.1
  */

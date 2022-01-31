@@ -1,19 +1,25 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.List;
 
-class szj
+public class szj
+  implements AdapterView.OnItemClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  public szj(GroupManagerActivity paramGroupManagerActivity) {}
   
-  szj(szh paramszh) {}
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if ((paramInt - 1 < 0) || (this.a.a.size() <= paramInt - 1)) {
+      return;
+    }
+    GroupManagerActivity.a(this.a, (Groups)this.a.a.get(paramInt - 1));
+    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131435554, 2131435555, GroupManagerActivity.a(this.a).group_name, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 1);
+  }
 }
 
 

@@ -1,18 +1,18 @@
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteEvaluateViewHolder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-public class ajij
-  implements URLDrawable.DownloadListener
+public final class ajij
+  implements Parcelable.Creator
 {
-  public ajij(ReciteEvaluateViewHolder paramReciteEvaluateViewHolder) {}
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public TroopBarPOI a(Parcel paramParcel)
   {
-    ReciteEvaluateViewHolder.a(this.a);
+    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
+  
+  public TroopBarPOI[] a(int paramInt)
+  {
+    return null;
   }
 }
 

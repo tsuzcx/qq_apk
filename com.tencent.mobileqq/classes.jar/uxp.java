@@ -1,24 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
+import java.util.List;
 
 public class uxp
-  implements Runnable
+  implements uxs
 {
-  public uxp(FlashPicItemBuilder.FlashPicAIOThumbView paramFlashPicAIOThumbView) {}
+  public uxp(LoadDataJob paramLoadDataJob, List paramList) {}
   
-  public void run()
+  public void a(PathDrawer paramPathDrawer)
   {
-    try
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      synchronized (BaseApplicationImpl.sImageCache) {}
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.hotchat", 2, "cache flashpic abumb exception:" + localException);
+      this.jdField_a_of_type_JavaUtilList.add(paramPathDrawer);
+      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
+        this.jdField_a_of_type_JavaUtilList.notifyAll();
       }
+      return;
     }
   }
 }

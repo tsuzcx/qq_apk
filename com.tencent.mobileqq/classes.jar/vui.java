@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-public class vui
-  implements WerewolvesHandler.Callback
+class vui
+  implements Runnable
 {
-  public vui(GameRoomChatPie paramGameRoomChatPie) {}
+  vui(vug paramvug) {}
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public void run()
   {
-    if ((paramInt == 0) && (this.a.X))
-    {
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, "已成功退出游戏房间", 0).a();
-      SharedPreUtils.l(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.a(this.a.jdField_a_of_type_AndroidContentContext);
-    }
+    PhotoListPanel.c(this.a.a);
   }
 }
 

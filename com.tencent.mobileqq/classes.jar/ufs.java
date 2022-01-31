@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class ufs
-  implements DialogInterface.OnClickListener
+class ufs
+  implements Runnable
 {
-  public ufs(UpgradeActivity paramUpgradeActivity) {}
+  ufs(ufq paramufq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
+    this.a.a.m();
   }
 }
 

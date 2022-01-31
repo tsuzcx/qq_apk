@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppCGI;
 
-class aazu
-  implements DialogInterface.OnDismissListener
+public class aazu
+  implements abac
 {
-  aazu(aazs paramaazs) {}
+  public aazu(ArkAppCGI paramArkAppCGI) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(abad paramabad, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    ARMapActivity.a(this.a.a, null);
+    ArkAppCGI.a(this.a, (abaj)paramabad, paramBoolean, paramArrayOfByte);
   }
 }
 

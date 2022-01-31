@@ -1,25 +1,64 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Releaser;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Utils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.List;
 
-public class mud
-  implements View.OnClickListener
+class mud
+  implements Releaser
 {
-  public mud(GalleryShareHelper paramGalleryShareHelper) {}
+  mud(mub parammub) {}
   
-  public void onClick(View paramView)
+  public void a(Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryShareHelper", 2, "mShareActionSheet cancle button OnClick");
+    if (paramBitmap == null) {
+      return;
     }
-    PublicAccountReportUtils.a(null, "", "0X8008E35", "0X8008E35", 0, 0, "", "", "", GalleryReportedUtils.a(GalleryShareHelper.a(this.a), GalleryShareHelper.a(this.a).getCurrentAccountUin(), GalleryShareHelper.a(this.a), GalleryShareHelper.a(this.a), GalleryShareHelper.a(this.a)), false);
-    if (GalleryShareHelper.a(this.a).isShowing()) {
-      GalleryShareHelper.a(this.a).dismiss();
+    Utils.a(mub.a, "recycle:" + paramBitmap);
+    if (!Utils.a())
+    {
+      paramBitmap.recycle();
+      return;
+    }
+    for (;;)
+    {
+      synchronized (this.a.b)
+      {
+        ArrayList localArrayList = new ArrayList();
+        i = 0;
+        if (i >= this.a.b.size()) {
+          break label226;
+        }
+        Bitmap localBitmap = (Bitmap)((SoftReference)this.a.b.get(i)).get();
+        if (localBitmap != null)
+        {
+          if (localBitmap != paramBitmap) {
+            break label231;
+          }
+          i = 1;
+          if (!localArrayList.isEmpty()) {
+            this.a.b.removeAll(localArrayList);
+          }
+          if (i == 0)
+          {
+            paramBitmap = new SoftReference(paramBitmap);
+            this.a.b.add(paramBitmap);
+          }
+        }
+        else
+        {
+          localArrayList.add(this.a.b.get(i));
+        }
+      }
+      QLog.e(mub.a, 1, "reuse same bitmap " + paramBitmap);
+      return;
+      label226:
+      int i = 0;
+      continue;
+      label231:
+      i += 1;
     }
   }
 }

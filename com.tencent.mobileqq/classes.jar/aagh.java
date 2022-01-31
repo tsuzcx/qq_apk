@@ -1,14 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.qphone.base.util.QLog;
 
-class aagh
+public class aagh
   implements Runnable
 {
-  aagh(aagg paramaagg) {}
+  public aagh(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "下载资源失败,请重试！", 1).a();
+    ARWorldCupGlobalSceneRenderable.a(this.a, new aagi(this));
+    QLog.d("ARWorldCupGlobalSceneRenderable", 2, "post mRepeatCheckRunnable ");
   }
 }
 

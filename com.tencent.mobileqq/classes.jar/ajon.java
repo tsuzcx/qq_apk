@@ -1,40 +1,34 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.biz.troop.file.TroopFileProtocol.DeleteFileObserver;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajon
-  extends TroopFileProtocol.DeleteFileObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ajon(TroopFileManager paramTroopFileManager) {}
+  public ajon(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramBundle == null) {
-      return;
-    }
-    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448);
-    paramBundle = paramBundle.getString("fileId");
-    if (paramBoolean)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      this.a.a(paramBundle);
-      return;
+      localStringBuilder = new StringBuilder().append("口算开关状态改变 ");
+      if (!paramBoolean) {
+        break label71;
+      }
     }
-    switch (paramInt)
+    label71:
+    for (paramCompoundButton = "on";; paramCompoundButton = "off")
     {
-    default: 
-      QQToast.a(BaseApplicationImpl.getApplication(), "操作失败,请重试", 0).b(i);
-      return;
-    case -302: 
-    case -301: 
-    case -103: 
-      QQToast.a(BaseApplicationImpl.getApplication(), "删除失败,目标文件不存在", 0).b(i);
-      this.a.a(paramBundle);
+      QLog.d("PublishHomeWorkFragment", 2, paramCompoundButton);
+      PublishHomeWorkFragment.c(this.a, paramBoolean);
+      if (PublishHomeWorkFragment.e(this.a)) {
+        PublishHomeWorkFragment.a(this.a).setChecked(true);
+      }
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), "仅群主管理员和文件所有者可以删除该文件", 0).b(i);
   }
 }
 

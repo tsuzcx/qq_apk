@@ -23,24 +23,24 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import wmo;
-import wmp;
-import wmq;
-import wmr;
-import wms;
-import wmt;
-import wmu;
+import wry;
+import wrz;
+import wsa;
+import wsb;
+import wsc;
+import wsd;
+import wse;
 
 public class CardViewController
   extends BaseViewController
 {
   private int jdField_a_of_type_Int;
-  SharedPreferences.OnSharedPreferenceChangeListener jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener = new wmp(this);
+  SharedPreferences.OnSharedPreferenceChangeListener jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener = new wrz(this);
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private CardConfigManager.CardConfigs jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardConfigManager$CardConfigs;
   private CardConfigManager jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardConfigManager;
   private CardController jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wmo(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wry(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private boolean jdField_a_of_type_Boolean;
@@ -174,9 +174,9 @@ public class CardViewController
     a().edit().putString("card_displaying_list_sp", paramString).commit();
   }
   
-  private void a(String paramString, wmu paramwmu)
+  private void a(String paramString, wse paramwse)
   {
-    new wmq(this, paramString, paramwmu).execute(new Void[] { null, null, null });
+    new wsa(this, paramString, paramwse).execute(new Void[] { null, null, null });
   }
   
   private void a(List paramList)
@@ -337,7 +337,7 @@ public class CardViewController
     if (QLog.isColorLevel()) {
       QLog.d("CardViewController", 2, "getLocalDisplayingList ");
     }
-    new wmt(this, paramBoolean2, paramBoolean1).execute(new Void[] { null, null, null });
+    new wsd(this, paramBoolean2, paramBoolean1).execute(new Void[] { null, null, null });
   }
   
   private boolean b()
@@ -415,7 +415,7 @@ public class CardViewController
       if (QLog.isColorLevel()) {
         QLog.d("CardViewController", 2, "getDisplayListAsync  moveUin  start");
       }
-      a((String)localObject, new wmr(this));
+      a((String)localObject, new wsb(this));
       return;
     }
     g();
@@ -426,7 +426,7 @@ public class CardViewController
     if (QLog.isColorLevel()) {
       QLog.d("CardViewController", 2, "getDisplayListAsync  dealSourceList ");
     }
-    new wms(this).execute(new Void[] { null, null, null });
+    new wsc(this).execute(new Void[] { null, null, null });
   }
   
   private void h()

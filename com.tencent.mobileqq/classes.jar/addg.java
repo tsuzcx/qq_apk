@@ -1,19 +1,39 @@
-import com.tencent.mobileqq.filemanager.activity.MPFileFailedView.MPFileFailedEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class addg
-  implements MPFileFailedView.MPFileFailedEvent
+  extends MqqHandler
 {
-  public addg(MPcFileModel paramMPcFileModel) {}
-  
-  public void a(long paramLong)
+  public addg(FileManagerNotifyCenter paramFileManagerNotifyCenter, Looper paramLooper)
   {
-    MPcFileModel.b(this.a, paramLong);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerNotifyCenter<FileAssistant>", 1, "recv Netchang event!");
+    }
+    this.a.a.a().a(true);
+    this.a.a.a().b(-1);
+    FileVideoManager.a(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     addg
  * JD-Core Version:    0.7.0.1
  */

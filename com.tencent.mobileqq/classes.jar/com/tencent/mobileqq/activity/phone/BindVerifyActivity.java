@@ -29,8 +29,8 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import wtr;
-import wts;
+import wzf;
+import wzg;
 
 public class BindVerifyActivity
   extends DialogBaseActivity
@@ -77,13 +77,13 @@ public class BindVerifyActivity
       int i = ((String)localObject).indexOf(paramIntent);
       int j = ((String)localObject).indexOf(paramIntent);
       localSpannableString.setSpan(localForegroundColorSpan, i, paramIntent.length() + j, 33);
-      ((TextView)findViewById(2131365443)).setText(localSpannableString);
+      ((TextView)findViewById(2131365448)).setText(localSpannableString);
       setTitle("输入短信验证码");
     }
     for (;;)
     {
       if (this.jdField_a_of_type_Boolean) {
-        findViewById(2131365442).setVisibility(0);
+        findViewById(2131365447).setVisibility(0);
       }
       this.jdField_c_of_type_AndroidWidgetTextView.setText("重新发送");
       this.jdField_c_of_type_AndroidWidgetTextView.setEnabled(false);
@@ -109,12 +109,12 @@ public class BindVerifyActivity
   {
     if (!NetworkUtil.d(this))
     {
-      b(2131434613);
+      b(2131434629);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wts(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wzg(this);
       this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
     if (getIntent().getBooleanExtra("k_is_block", false)) {
@@ -127,7 +127,7 @@ public class BindVerifyActivity
       ReportController.b(this.app, "dc00898", "", "", "0X8006AA7", "0X8006AA7", 0, 0, "", "", "", "");
     }
     this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean);
-    a(2131434453, 1000L, true);
+    a(2131434469, 1000L, true);
   }
   
   public void a()
@@ -202,20 +202,20 @@ public class BindVerifyActivity
     if ((this.jdField_b_of_type_Int == 10) || (this.jdField_b_of_type_Int == 11) || (this.jdField_b_of_type_Int == 15) || (this.jdField_b_of_type_Int == 17))
     {
       getWindow().setSoftInputMode(16);
-      setContentView(2130969159);
-      setRightButton(2131434534, this);
-      setLeftViewName(2131432414);
+      setContentView(2130969157);
+      setRightButton(2131434550, this);
+      setLeftViewName(2131432425);
       this.leftView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365439));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365440));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365444));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365445));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365432));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365437));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364065));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364090));
       this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365434));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365439));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365441));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365446));
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
       if (!this.jdField_b_of_type_Boolean) {
@@ -230,7 +230,7 @@ public class BindVerifyActivity
       this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent = new SmsContent(null, System.currentTimeMillis());
       this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent.a(this, this);
       return true;
-      setContentView(2130969158);
+      setContentView(2130969156);
       break;
       label412:
       setTitle("验证手机号码");
@@ -302,8 +302,8 @@ public class BindVerifyActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131363245: 
-    case 2131363428: 
+    case 2131363262: 
+    case 2131363447: 
       do
       {
         return;
@@ -312,13 +312,13 @@ public class BindVerifyActivity
       } while ((this.jdField_b_of_type_Int != 10) && (this.jdField_b_of_type_Int != 11) && (this.jdField_b_of_type_Int != 15) && (this.jdField_b_of_type_Int != 17));
       b();
       return;
-    case 2131365432: 
+    case 2131365437: 
       b();
       return;
-    case 2131365441: 
+    case 2131365446: 
       if (this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
       {
-        this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wtr(this);
+        this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wzf(this);
         this.app.registObserver(this.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       }
       if ((this.jdField_b_of_type_Int == 10) || (this.jdField_b_of_type_Int == 11) || (this.jdField_b_of_type_Int == 15) || (this.jdField_b_of_type_Int == 17))
@@ -334,7 +334,7 @@ public class BindVerifyActivity
         if (getIntent().getBooleanExtra("k_is_block", false)) {
           ReportController.b(this.app, "CliOper", "", "", "0X800568C", "0X800568C", 1, 0, "", "", "", "");
         }
-        a(2131434453, 1000L, true);
+        a(2131434469, 1000L, true);
         return;
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
         break;

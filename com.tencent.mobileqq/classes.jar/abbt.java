@@ -1,13 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import java.io.File;
+import java.io.FileFilter;
 
-public class abbt
-  implements DialogInterface.OnClickListener
+public final class abbt
+  implements FileFilter
 {
-  public abbt(ARMapActivity paramARMapActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean accept(File paramFile)
+  {
+    if (!paramFile.isDirectory()) {}
+    while (!ArkLocalAppMgr.a(paramFile.getName())) {
+      return false;
+    }
+    return true;
+  }
 }
 
 

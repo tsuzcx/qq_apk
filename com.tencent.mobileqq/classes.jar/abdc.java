@@ -1,35 +1,16 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.ark.ArkMediaPlayer;
 
-public final class abdc
-  implements INetEngine.IBreakDownFix
+public class abdc
+  implements Runnable
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public abdc(ArkMediaPlayer paramArkMediaPlayer) {}
+  
+  public void run()
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramNetReq instanceof HttpNetReq));
-      paramNetReq = (HttpNetReq)paramNetReq;
-      paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
-      paramNetResp.c = 0L;
-      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
-      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
-      if (paramNetResp.contains("range="))
-      {
-        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.jdField_a_of_type_JavaLangString = (str + "range=" + paramNetReq.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + paramNetResp);
+    ArkMediaPlayer.a(this.a, false);
+    if (this.a.Pause()) {
+      ArkMediaPlayer.a(this.a, ArkMediaPlayer.d(this.a));
+    }
   }
 }
 

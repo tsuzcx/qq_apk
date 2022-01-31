@@ -1,20 +1,35 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import java.util.TimerTask;
 
 public class uwr
-  extends BaseBubbleBuilder.ViewHolder
+  extends TimerTask
 {
-  public ProgressBar a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public int e;
+  public uwr(DoodleMsgView paramDoodleMsgView, long paramLong1, long paramLong2) {}
   
-  public uwr(FileItemBuilder paramFileItemBuilder) {}
+  public void run()
+  {
+    if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.a(new uws(this));
+    }
+    do
+    {
+      return;
+      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) < 0L) {
+        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView, this.jdField_a_of_type_Long);
+      }
+      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) < this.jdField_a_of_type_Long) {
+        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView, DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) + this.b);
+      }
+      DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView).a(DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView), true);
+      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) >= this.jdField_a_of_type_Long)
+      {
+        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView);
+        return;
+      }
+    } while (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView));
+    DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView).a(this.jdField_a_of_type_Long, true);
+  }
 }
 
 

@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.storage.ReadInJoyNotifyRedTouchInfo;
 import java.util.Iterator;
 import java.util.List;
-import wps;
+import wvd;
 
 public class LebaTabRedTouch
 {
@@ -100,7 +100,7 @@ public class LebaTabRedTouch
   
   public Runnable a(LebaTabRedTouch.RefreshCallback paramRefreshCallback)
   {
-    return new wps(this, paramRefreshCallback);
+    return new wvd(this, paramRefreshCallback);
   }
   
   public void a()

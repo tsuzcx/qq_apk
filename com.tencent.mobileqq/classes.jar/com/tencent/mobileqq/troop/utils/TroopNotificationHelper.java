@@ -932,8 +932,13 @@ public class TroopNotificationHelper
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (jdField_c_of_type_JavaUtilHashMap.containsKey(paramString)) {
-      return ((Boolean)jdField_c_of_type_JavaUtilHashMap.get(paramString)).booleanValue();
+    if (jdField_c_of_type_JavaUtilHashMap.containsKey(paramString))
+    {
+      paramQQAppInterface = (Boolean)jdField_c_of_type_JavaUtilHashMap.get(paramString);
+      if (paramQQAppInterface != null) {
+        return paramQQAppInterface.booleanValue();
+      }
+      return false;
     }
     return BaseApplicationImpl.getContext().getSharedPreferences("new_notify_" + paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean(paramString, false);
   }
@@ -1111,7 +1116,7 @@ public class TroopNotificationHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopNotificationHelper
  * JD-Core Version:    0.7.0.1
  */

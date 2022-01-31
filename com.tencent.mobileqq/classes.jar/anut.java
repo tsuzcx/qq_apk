@@ -1,67 +1,49 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.humrecognition.recognize.RecognitionManager;
+import java.io.File;
 
-public class anut
-  implements Runnable
+public final class anut
+  implements FFmpegExecuteResponseCallback
 {
-  public anut(EditVideoPlayer paramEditVideoPlayer, int paramInt, Bitmap[] paramArrayOfBitmap, CountDownLatch paramCountDownLatch) {}
+  public anut(String paramString, RecognitionManager paramRecognitionManager) {}
   
-  /* Error */
-  public void run()
+  public void a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 15	anut:jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPlayer	Ldov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer;
-    //   4: getfield 31	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer:a	Ljava/util/List;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnull +56 -> 65
-    //   12: aload_0
-    //   13: getfield 17	anut:jdField_a_of_type_Int	I
-    //   16: aload_1
-    //   17: invokeinterface 37 1 0
-    //   22: if_icmpge +43 -> 65
-    //   25: aload_1
-    //   26: aload_0
-    //   27: getfield 17	anut:jdField_a_of_type_Int	I
-    //   30: invokeinterface 41 2 0
-    //   35: checkcast 43	dov/com/tencent/biz/qqstory/takevideo/MultiBlockVideoPlayer$RecordVideoBlockInfo
-    //   38: astore_1
-    //   39: aload_1
-    //   40: ifnull +17 -> 57
-    //   43: aload_0
-    //   44: getfield 19	anut:jdField_a_of_type_ArrayOfAndroidGraphicsBitmap	[Landroid/graphics/Bitmap;
-    //   47: iconst_0
-    //   48: aload_0
-    //   49: getfield 15	anut:jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPlayer	Ldov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer;
-    //   52: aload_1
-    //   53: invokevirtual 46	dov/com/tencent/biz/qqstory/takevideo/EditVideoPlayer:a	(Ldov/com/tencent/biz/qqstory/takevideo/MultiBlockVideoPlayer$RecordVideoBlockInfo;)Landroid/graphics/Bitmap;
-    //   56: aastore
-    //   57: aload_0
-    //   58: getfield 21	anut:jdField_a_of_type_JavaUtilConcurrentCountDownLatch	Ljava/util/concurrent/CountDownLatch;
-    //   61: invokevirtual 51	java/util/concurrent/CountDownLatch:countDown	()V
-    //   64: return
-    //   65: aconst_null
-    //   66: astore_1
-    //   67: goto -28 -> 39
-    //   70: astore_1
-    //   71: aload_0
-    //   72: getfield 21	anut:jdField_a_of_type_JavaUtilConcurrentCountDownLatch	Ljava/util/concurrent/CountDownLatch;
-    //   75: invokevirtual 51	java/util/concurrent/CountDownLatch:countDown	()V
-    //   78: aload_1
-    //   79: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	80	0	this	anut
-    //   7	60	1	localObject1	Object
-    //   70	9	1	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	8	70	finally
-    //   12	39	70	finally
-    //   43	57	70	finally
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onStart: invoked. info: ");
+    }
   }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onSuccess: invoked. info: message = " + paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager != null) && (localFile.exists()))
+    {
+      this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.a(localFile);
+      this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.c();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("HumUtils", 2, "onFinish: audioFile not exist. audioFile = " + localFile);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed to convert sample rate. message = " + paramString);
+    }
+  }
+  
+  public void c(String paramString) {}
 }
 
 

@@ -22,7 +22,7 @@ class u
       GlobalUtil.getInstance().setContext(this.a);
     }
     ApkDownloadManager.getInstance().init();
-    r.c("TMAssistantDownloadSDKService", "<onCreate>exit");
+    r.c("TMADownloadSDKService", "<onCreate>exit");
   }
 }
 

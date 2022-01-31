@@ -1,24 +1,32 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import android.content.IntentFilter;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
 import com.tencent.qphone.base.util.QLog;
 
 public class jtf
   implements Runnable
 {
-  public String a;
-  
-  public jtf(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
+  public jtf(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.c, 2, "QueryPeerVideoRunnable-->Function Name = " + this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      this.a.a = new jts(this.a);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.a.registerReceiver(this.a.a, localIntentFilter);
+      return;
     }
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.D();
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(CallbackWaitingActivityExt.a(), 2, "Exception", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jtf
  * JD-Core Version:    0.7.0.1
  */

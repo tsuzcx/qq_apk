@@ -1,14 +1,25 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppViewByIntentCallback;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
 
 public class aawa
+  implements SensorEventListener
 {
-  public ArkLocalAppMgr.IGetAppViewByIntentCallback a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public aawa(ArkAppEventObserverManager paramArkAppEventObserverManager) {}
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 1) {
+      ArkAppEventObserverManager.a(this.a, paramSensorEvent);
+    }
+    while (paramSensorEvent.sensor.getType() != 3) {
+      return;
+    }
+    ArkAppEventObserverManager.b(this.a, paramSensorEvent);
+  }
 }
 
 

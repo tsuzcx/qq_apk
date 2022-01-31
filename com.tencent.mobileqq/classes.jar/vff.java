@@ -1,22 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
-public final class vff
-  implements ProgressPieDrawable.OnProgressListener
+public class vff
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vff(Handler paramHandler) {}
+  public vff(HeartCombolEffectView paramHeartCombolEffectView, vfh paramvfh) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    this.jdField_a_of_type_Vfh.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Vfh.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Vfh.jdField_b_of_type_Float > 0.0F)) {
+      this.jdField_a_of_type_Vfh.jdField_b_of_type_Boolean = true;
     }
-    this.a.postDelayed(new vfg(this, paramProgressPieDrawable), 100L);
   }
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

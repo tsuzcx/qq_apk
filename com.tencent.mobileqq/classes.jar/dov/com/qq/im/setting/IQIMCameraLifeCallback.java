@@ -13,8 +13,6 @@ public abstract interface IQIMCameraLifeCallback
   
   public abstract FlowPanel a();
   
-  public abstract void a();
-  
   public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
   public abstract void a(Intent paramIntent);
@@ -26,6 +24,8 @@ public abstract interface IQIMCameraLifeCallback
   public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
   
   public abstract void b(Bundle paramBundle);
+  
+  public abstract void d();
   
   public abstract void e(boolean paramBoolean);
   
@@ -39,7 +39,7 @@ public abstract interface IQIMCameraLifeCallback
   
   public abstract void n();
   
-  public abstract void p();
+  public abstract void q();
 }
 
 

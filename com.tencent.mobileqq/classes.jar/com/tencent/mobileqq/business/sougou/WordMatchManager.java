@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.business.sougou;
 
-import abmg;
-import abmh;
-import abmi;
-import abmk;
-import abml;
+import abth;
+import abti;
+import abtj;
+import abtl;
+import abtm;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -46,7 +46,7 @@ public class WordMatchManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aI + "/Tencent/QQ_business";
+    jdField_a_of_type_JavaLangString = AppConstants.aJ + "/Tencent/QQ_business";
   }
   
   public WordMatchManager(QQAppInterface paramQQAppInterface)
@@ -57,7 +57,7 @@ public class WordMatchManager
     this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$Environment = new WordMatchManager.Environment();
     this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$DictLocalMetaInfo = new WordMatchManager.DictLocalMetaInfo();
     this.jdField_b_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$DictLocalMetaInfo = new WordMatchManager.DictLocalMetaInfo();
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new abmk(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new abtl(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     paramQQAppInterface.getApp();
     try
@@ -139,7 +139,7 @@ public class WordMatchManager
     if (this.c) {
       return this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$WordMatcher;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abmg(this, paramMatcherCallback));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abth(this, paramMatcherCallback));
     return null;
   }
   
@@ -181,7 +181,7 @@ public class WordMatchManager
   
   protected void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abml(this, paramInt));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abtm(this, paramInt));
   }
   
   protected void a(int paramInt, long paramLong)
@@ -201,7 +201,7 @@ public class WordMatchManager
     paramQQAppInterface.putString("type", "" + paramInt);
     paramQQAppInterface.putString("id", c(paramInt));
     paramQQAppInterface.putString("md5", "" + d(paramInt));
-    paramQQAppInterface.putString("version", "7.6.3");
+    paramQQAppInterface.putString("version", "7.6.8");
     paramQQAppInterface.putString("platform", "android");
     paramQQAppInterface.putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + (String)localObject2);
     localObject1 = new HashMap();
@@ -232,12 +232,12 @@ public class WordMatchManager
   
   public void a(WordMatchManager.MatcherCallback paramMatcherCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abmh(this, paramMatcherCallback));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abti(this, paramMatcherCallback));
   }
   
   public void a(boolean paramBoolean)
   {
-    ThreadManager.post(new abmi(this, paramBoolean), 5, null, true);
+    ThreadManager.post(new abtj(this, paramBoolean), 5, null, true);
     if (QLog.isDevelopLevel()) {
       QLog.d(".business.sougou.DicFileDownloader", 4, "handleUpdateCompleted:" + paramBoolean);
     }

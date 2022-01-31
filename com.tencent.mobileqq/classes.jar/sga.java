@@ -1,21 +1,19 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
 
 class sga
   implements Runnable
 {
-  sga(sfs paramsfs) {}
+  sga(sfz paramsfz, boolean paramBoolean) {}
   
   public void run()
   {
-    MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager = (MsgTabStoryNodeConfigManager)this.a.a.a.getManager(251);
-    if (localMsgTabStoryNodeConfigManager.a)
+    this.jdField_a_of_type_Sfz.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.d();
+    if (this.jdField_a_of_type_Boolean)
     {
-      ((MsgTabStoryManager)this.a.a.a.getManager(250)).a();
-      this.a.a.a(new sgb(this, localMsgTabStoryNodeConfigManager));
+      this.jdField_a_of_type_Sfz.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b(this.jdField_a_of_type_Sfz.jdField_a_of_type_Boolean);
+      return;
     }
+    this.jdField_a_of_type_Sfz.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.g();
   }
 }
 

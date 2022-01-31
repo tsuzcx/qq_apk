@@ -26,7 +26,7 @@ import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
-import mle;
+import mow;
 
 public class VariableSizeTextView
   extends RelativeLayout
@@ -62,14 +62,16 @@ public class VariableSizeTextView
   public VariableSizeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.VariableSizeTextView);
-    this.jdField_a_of_type_Float = paramContext.getDimensionPixelSize(0, 0);
-    paramContext.recycle();
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.VariableSizeTextView);
+    this.jdField_a_of_type_Float = paramAttributeSet.getDimensionPixelSize(0, 0);
+    paramAttributeSet.recycle();
     setClickable(true);
     setFocusable(true);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#E8E8E8"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 16.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(DisplayUtil.a(paramContext, 3.0F), 1.0F);
     paramContext = new RelativeLayout.LayoutParams(-1, -2);
     paramContext.addRule(10);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, paramContext);
@@ -174,7 +176,7 @@ public class VariableSizeTextView
     }
     float f1;
     int m;
-    label472:
+    label474:
     do
     {
       do
@@ -194,7 +196,7 @@ public class VariableSizeTextView
         paramMotionEvent = ValueAnimator.ofFloat(new float[] { k, this.jdField_b_of_type_Float });
         paramMotionEvent.setDuration(300L);
         paramMotionEvent.setInterpolator(new DecelerateInterpolator());
-        paramMotionEvent.addUpdateListener(new mle(this, localLayoutParams));
+        paramMotionEvent.addUpdateListener(new mow(this, localLayoutParams));
         setFocusable(false);
         setClickable(false);
         paramMotionEvent.start();
@@ -226,10 +228,10 @@ public class VariableSizeTextView
           continue;
         }
         if (!this.jdField_a_of_type_Boolean) {
-          break label543;
+          break label545;
         }
         if (f1 >= 0.0F) {
-          break label537;
+          break label539;
         }
         k = -1;
       }
@@ -244,11 +246,11 @@ public class VariableSizeTextView
         this.jdField_b_of_type_Boolean = true;
         break;
         k = 1;
-        break label472;
+        break label474;
       }
     } while (((m >= this.jdField_a_of_type_Float) || (f1 <= 0.0F)) && (k < this.jdField_a_of_type_Float));
-    label537:
-    label543:
+    label539:
+    label545:
     localLayoutParams.height = k;
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView$OnSizeChangedListener.a(m, k);
@@ -272,12 +274,17 @@ public class VariableSizeTextView
     localObject = new SpannableStringBuilder((CharSequence)localObject);
     ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(DisplayUtil.a(getContext(), 17.0F)), 0, paramInt1, 33);
     ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(DisplayUtil.a(getContext(), 12.0F)), paramInt1, paramInt2 + paramInt1 + 1, 33);
-    ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#77FFFFFF")), paramInt1, paramInt2 + paramInt1 + 1, 33);
+    ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#E8E8E8")), paramInt1, paramInt2 + paramInt1 + 1, 33);
     ((SpannableStringBuilder)localObject).append("  ");
     if (!TextUtils.isEmpty(paramCharSequence)) {
       ((SpannableStringBuilder)localObject).append(paramCharSequence);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+  }
+  
+  public void setText(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
   }
 }
 

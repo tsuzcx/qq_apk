@@ -19,7 +19,7 @@ public class co
       if ((localList == null) || (localList.size() > 0)) {
         break label79;
       }
-      this.a.findViewById(2131364167).setVisibility(0);
+      this.a.findViewById(2131364192).setVisibility(0);
       this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)

@@ -1,37 +1,34 @@
-import android.support.annotation.NonNull;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.protofile.homework.hw_recite_score.hw_recite_score.RspReciteScore;
+import com.tencent.qphone.base.util.QLog;
 
-class ajqd
-  implements Comparable
+public class ajqd
+  extends ProtoUtils.TroopProtocolObserver
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  String c;
-  String d;
-  String e;
-  String f;
+  public ajqd(ReciteFragment paramReciteFragment, int paramInt1, int paramInt2) {}
   
-  ajqd(ajqc paramajqc) {}
-  
-  public int a(@NonNull ajqd paramajqd)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = -1;
-    if ((this.f != null) && (paramajqd.f != null)) {
-      i = this.f.compareTo(paramajqd.f);
-    }
+    if (paramArrayOfByte == null) {}
     do
     {
-      do
+      return;
+      paramBundle = new hw_recite_score.RspReciteScore();
+      try
       {
-        return i;
-        if (this.f != null) {
-          break;
-        }
-      } while (paramajqd.f == null);
-      return 1;
-    } while (paramajqd.f == null);
-    return 0;
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramInt = paramBundle.score_grade.get();
+        ReciteFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).post(new ajqe(this, paramInt - 1));
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("ReciteFragment", 2, "InvalidProtocolBufferMicroException");
   }
 }
 

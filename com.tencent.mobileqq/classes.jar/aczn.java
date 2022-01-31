@@ -1,29 +1,45 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.io.File;
 
-public class aczn
-  implements Runnable
+class aczn
+  implements ActionSheet.OnButtonClickListener
 {
-  public aczn(UniformDownloadMgr paramUniformDownloadMgr) {}
+  aczn(aczm paramaczm, FileInfo paramFileInfo, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
+    if ((!FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) || (FileUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
+    {
+      FileManagerUtil.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
+      this.jdField_a_of_type_Aczm.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    }
     try
     {
-      if (UniformDownloadMgr.a(this.a) != null)
-      {
-        BaseApplicationImpl.getApplication().unregisterReceiver(UniformDownloadMgr.a(this.a));
-        UniformDownloadMgr.a(this.a, null);
-        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr unRegister UNIDOWNLOAD_BORDCAST");
-        return;
+      paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
+      this.jdField_a_of_type_Aczm.a.a.a.sendBroadcast(paramView);
+      label104:
+      this.jdField_a_of_type_Aczm.a.a.d();
+      if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       }
-      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr unRegister UNIDOWNLOAD_BORDCAST, had unRegister");
+      return;
+      FMToastUtil.a(2131428144);
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramView)
     {
-      localException.printStackTrace();
+      break label104;
     }
   }
 }

@@ -1,15 +1,15 @@
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.qidian.QidianManager.OnLbsStateChangedListener;
+import android.view.View;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class koh
-  implements QidianManager.OnLbsStateChangedListener
+public final class koh
+  implements Runnable
 {
-  public koh(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public koh(QQAppInterface paramQQAppInterface, View paramView, String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    this.a.c = true;
-    this.a.b(paramBoolean);
+    CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_JavaLangString, CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
   }
 }
 

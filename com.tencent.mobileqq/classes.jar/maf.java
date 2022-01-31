@@ -1,21 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
 
 public class maf
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public maf(TopicShareHelper paramTopicShareHelper) {}
+  public maf(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (TopicShareHelper.a(this.a) != null) {
-      TopicShareHelper.a(this.a).a(TopicShareHelper.a(this.a), TopicShareHelper.b(this.a), false, false);
-    }
-    TopicShareHelper.a(this.a, true);
-    TopicShareHelper.b(this.a, false);
-  }
+  public void onClick(View paramView) {}
 }
 
 

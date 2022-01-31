@@ -1,17 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.nearby.now.view.StoryViewRelayoutListener;
-import com.tencent.mobileqq.nearby.now.view.widget.FitXImageView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-class afay
-  implements Runnable
+public final class afay
+  implements Parcelable.Creator
 {
-  afay(afav paramafav, Bitmap paramBitmap) {}
-  
-  public void run()
+  public Comments.Comment a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Afav.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    ImageDisplayView.a(this.jdField_a_of_type_Afav.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView).a(this.jdField_a_of_type_Afav.jdField_a_of_type_Int, this.jdField_a_of_type_Afav.b);
+    return new Comments.Comment(paramParcel);
+  }
+  
+  public Comments.Comment[] a(int paramInt)
+  {
+    return new Comments.Comment[paramInt];
   }
 }
 

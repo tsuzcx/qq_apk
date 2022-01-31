@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.Doraemon.DoraemonBridge;
 import com.tencent.qphone.base.util.BaseApplication;
-import rfg;
+import rjy;
 
 public class DoraemonAPIReporterProxy
   implements DoraemonAPIReporter
@@ -24,9 +24,9 @@ public class DoraemonAPIReporterProxy
           IntentFilter localIntentFilter = new IntentFilter();
           localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update");
           localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update_batch");
-          rfg localrfg = new rfg(this);
-          BaseApplicationImpl.getContext().registerReceiver(localrfg, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-          this.jdField_a_of_type_AndroidContentBroadcastReceiver = localrfg;
+          rjy localrjy = new rjy(this);
+          BaseApplicationImpl.getContext().registerReceiver(localrjy, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          this.jdField_a_of_type_AndroidContentBroadcastReceiver = localrjy;
         }
         return;
       }

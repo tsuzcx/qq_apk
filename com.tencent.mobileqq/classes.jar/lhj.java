@@ -1,16 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
 
-public class lhj
-  implements Runnable
+class lhj
+  implements DialogInterface.OnCancelListener
 {
-  public lhj(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  lhj(lhi paramlhi) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    FileUtils.a(ReadInJoyCameraCaptureActivity.a(this.a).c());
-    FileUtils.a(ReadInJoyCameraCaptureActivity.a(this.a).d());
+    paramDialogInterface = new Intent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("retCode", 1);
+    localBundle.putString("msg", "用户取消");
+    paramDialogInterface.putExtra("Bundle", localBundle);
+    this.a.a.setResult(-1, paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

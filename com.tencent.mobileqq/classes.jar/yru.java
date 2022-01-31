@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.ApolloPanelManager;
-import com.tencent.mobileqq.apollo.script.SpriteActionMessage;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
 
-public class yru
-  implements Runnable
+public final class yru
+  extends ApolloHttpCallBack
 {
-  public yru(SpriteActionMessage paramSpriteActionMessage, int paramInt, boolean paramBoolean) {}
+  public yru(View paramView, long paramLong) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage) != null) && (SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage).a() != null))
-    {
-      ApolloPanelManager localApolloPanelManager = ((ApolloManager)SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage).a().getManager(152)).a();
-      if (localApolloPanelManager != null)
-      {
-        localApolloPanelManager.a.set(this.jdField_a_of_type_Int);
-        localApolloPanelManager.a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
-      }
+    if ((this.jdField_a_of_type_AndroidViewView instanceof ApolloSurfaceView)) {
+      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new yrv(this, paramArrayOfByte, paramInt));
     }
   }
 }

@@ -4,7 +4,7 @@ import android.view.animation.AnimationUtils;
 import com.tencent.mobileqq.utils.PerformanceReportUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CopyOnWriteArrayList;
-import rdt;
+import ril;
 
 public class FPSCalculator
 {
@@ -19,7 +19,7 @@ public class FPSCalculator
     if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 1) {
       return;
     }
-    new rdt(this).execute(new Void[0]);
+    new ril(this).execute(new Void[0]);
   }
   
   public void a(int paramInt)

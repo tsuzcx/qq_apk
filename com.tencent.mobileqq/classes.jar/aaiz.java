@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ar.config.MainDownAni;
-import com.tencent.widget.PopupMenuDialog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.ArConfigService;
 
-public class aaiz
-  implements View.OnClickListener
+class aaiz
+  implements Runnable
 {
-  public aaiz(MainDownAni paramMainDownAni, aaji paramaaji) {}
+  aaiz(aaiy paramaaiy, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (PopupMenuDialog)this.jdField_a_of_type_Aaji.d.get();
-    if (paramView != null) {
-      paramView.dismiss();
-    }
+    ArConfigService.a(this.jdField_a_of_type_Aaiy.a, this.jdField_a_of_type_Int);
   }
 }
 

@@ -91,8 +91,8 @@ public class QzoneOfflinePluginJsForQQ
     Object localObject1;
     if ((paramWebView != null) && (WebSoPlugin.a(paramWebView)) && (WebSoUtils.b(paramString1)) && (!a(paramString1)) && (!b(paramString1)))
     {
-      localObject2 = paramWebView.getTag(2131362356);
-      localObject1 = paramWebView.getTag(2131362357);
+      localObject2 = paramWebView.getTag(2131362359);
+      localObject1 = paramWebView.getTag(2131362360);
       if ((localObject2 instanceof String))
       {
         localObject2 = (String)localObject2;
@@ -104,8 +104,8 @@ public class QzoneOfflinePluginJsForQQ
       try
       {
         paramAppInterface = new BufferedInputStream(new ByteArrayInputStream(((String)localObject2).getBytes("UTF-8")), jdField_a_of_type_Int);
-        paramWebView.setTag(2131362356, null);
-        paramWebView.setTag(2131362357, null);
+        paramWebView.setTag(2131362359, null);
+        paramWebView.setTag(2131362360, null);
         paramWebView = new WebResourceResponse("text/html", "UTF-8", paramAppInterface);
         if (QLog.isColorLevel())
         {

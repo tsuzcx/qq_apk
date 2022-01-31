@@ -1,45 +1,24 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentHeaderData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.SimpleViewCreator;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySubscriptionListViewGroup;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class mnc
-  extends BaseItemViewHolder
+  implements ActionSheet.OnButtonClickListener
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private View b;
-  private View c;
+  public mnc(ReadInJoySubscriptionListViewGroup paramReadInJoySubscriptionListViewGroup, String paramString, ActionSheet paramActionSheet) {}
   
-  public mnc(SimpleViewCreator paramSimpleViewCreator, View paramView, BaseData paramBaseData)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361926));
-    this.b = paramView.findViewById(2131363960);
-    this.c = paramView.findViewById(2131367128);
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    paramBaseData1 = "";
-    if (paramBaseData2.d == 7)
+    switch (paramInt)
     {
-      paramBaseData1 = ((RecommendTitleData)paramBaseData2).a;
-      this.b.setVisibility(0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.c.setVisibility(0);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      if (paramBaseData2.d == 13)
-      {
-        paramBaseData1 = ((CommentHeaderData)paramBaseData2).a;
-        this.b.setVisibility(8);
-      }
+      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySubscriptionListViewGroup.a());
     }
   }
 }

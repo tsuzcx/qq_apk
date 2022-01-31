@@ -1,14 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ForeBackGround;
 
-public class lpn
-  implements Runnable
+public final class lpn
+  implements lpp
 {
-  public lpn(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
-  
-  public void run()
+  public void a()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int);
+    WeishiReportUtil.a(9, "", "", "", "");
+  }
+  
+  public void b()
+  {
+    WeishiReportUtil.a(9, "", "", "", "", ReadinjoySPEventReport.ForeBackGround.c, "", false);
   }
 }
 

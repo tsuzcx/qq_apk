@@ -10,7 +10,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.R.styleable;
-import khx;
+import kke;
 
 public class RatingBar
   extends LinearLayout
@@ -37,7 +37,7 @@ public class RatingBar
     while (i < this.jdField_a_of_type_Int)
     {
       localObject = a(paramContext, paramAttributeSet);
-      ((ImageView)localObject).setOnClickListener(new khx(this));
+      ((ImageView)localObject).setOnClickListener(new kke(this));
       addView((View)localObject);
       i += 1;
     }
@@ -123,7 +123,7 @@ public class RatingBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.widget.RatingBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
-import com.tencent.widget.TCWNumberPicker.Formatter;
-import java.util.Formatter;
+import com.tencent.ims.SafeReport.ReqBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqprotect.common.QSecRptController;
 
 public final class amdu
-  implements TCWNumberPicker.Formatter
+  implements Runnable
 {
-  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
+  public amdu(QQAppInterface paramQQAppInterface, SafeReport.ReqBody paramReqBody) {}
   
-  public String a(int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
-    return this.jdField_a_of_type_JavaUtilFormatter.toString();
+    QSecRptController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentImsSafeReport$ReqBody);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amdu
  * JD-Core Version:    0.7.0.1
  */

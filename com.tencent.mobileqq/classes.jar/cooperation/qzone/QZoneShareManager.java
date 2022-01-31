@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amsd;
+import amzo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
@@ -137,7 +137,7 @@ public class QZoneShareManager
     localRequestCustomSig.reserved = new byte[0];
     ((HashMap)localObject).put("RequestCustomSig", localRequestCustomSig);
     ((HashMap)localObject).put("OpenAppid", paramString);
-    paramAppRuntime.changeToken((HashMap)localObject, new amsd(paramString, paramBusinessObserver));
+    paramAppRuntime.changeToken((HashMap)localObject, new amzo(paramString, paramBusinessObserver));
     return null;
   }
   

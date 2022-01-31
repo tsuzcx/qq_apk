@@ -13,6 +13,7 @@ public class ArkViewModelBase
 {
   public static final int ARKAPP_TYPE_DESTROY = 2;
   public static final int ARKAPP_TYPE_PAUSE = 0;
+  public static final int ARKAPP_TYPE_RELOAD = 3;
   public static final int ARKAPP_TYPE_RESUME = 1;
   protected static final ArkEnvironmentManager ENV = ;
   protected static final String KEY_FORMAT = "%s_%s";
@@ -21,6 +22,7 @@ public class ArkViewModelBase
   protected static HashMap<String, Size> sAppSizeHint = new HashMap();
   protected ark.ApplicationCallback mAppCallback;
   protected AppInfo mAppInfo = new AppInfo();
+  protected int mAppScriptType = 0;
   protected ark.Application mApplication;
   protected volatile boolean mAttached = false;
   protected ark.Container mContainer;
@@ -128,6 +130,11 @@ public class ArkViewModelBase
       label69:
       ark.arkHTTPSetDefaultHttpProxy(str, i);
     }
+  }
+  
+  public int GetAppScriptType()
+  {
+    return this.mAppScriptType;
   }
   
   public boolean InputCanRedo()
@@ -344,16 +351,23 @@ public class ArkViewModelBase
       public void run()
       {
         ArkViewModelBase.this.mIsActivated = paramBoolean;
-        if (ArkViewModelBase.this.mContainer == null) {}
-        do
+        if (ArkViewModelBase.this.mContainer == null)
         {
-          do
-          {
-            return;
-          } while (!ArkViewModelBase.this.mHasLoaded);
-          ArkViewModelBase.this.changeContainerActivateStatus(paramBoolean);
-        } while (!paramBoolean);
-        ArkVsync.getInstance().addFrameCallback(ArkViewModelBase.this);
+          ArkViewModelBase.ENV.logE("ArkApp.ArkViewModelBase", "activateView error mContainer is null");
+          return;
+        }
+        if (!ArkViewModelBase.this.mHasLoaded)
+        {
+          ArkViewModelBase.ENV.logE("ArkApp.ArkViewModelBase", "activateView error mHasLoaded is false");
+          return;
+        }
+        ArkViewModelBase.this.changeContainerActivateStatus(paramBoolean);
+        if (paramBoolean)
+        {
+          ArkVsync.getInstance().addFrameCallback(ArkViewModelBase.this);
+          return;
+        }
+        ArkVsync.getInstance().removeFrameCallback(ArkViewModelBase.this);
       }
     });
   }
@@ -611,25 +625,32 @@ public class ArkViewModelBase
           ArkViewModelBase.this.onRunAppFailed();
           return;
           ArkViewModelBase.this.applicationCreate(ArkViewModelBase.this.mApplication);
+          ArkViewModelBase.this.mAppScriptType = ArkViewModelBase.this.mApplication.GetScriptType();
           ArkViewModelBase.this.mTimeRecord.beginOfRunApplication = System.currentTimeMillis();
-          ArkViewModelBase.this.mApplication.Run(paramString3, null, paramString2, ArkViewModelBase.this.mAppCallback);
-          if (ArkViewModelBase.this.mContainer != null)
+          if (!ArkViewModelBase.this.mApplication.Run(paramString3, null, paramString2, ArkViewModelBase.this.mAppCallback))
           {
-            ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", "loadArkApp.mContainer.not.null");
-            ArkViewModelBase.this.mContainer.DeletePtr();
-          }
-          ArkViewModelBase.this.mTimeRecord.beginOfCreateContainer = System.currentTimeMillis();
-          ArkViewModelBase.this.beforeContainerCreate();
-          ArkViewModelBase.this.mContainer = new ark.Container();
-          ArkViewModelBase.this.mContainer.SetContainerCallback(ArkViewModelBase.this);
-          if (!ArkViewModelBase.this.mContainer.CreateRootView(ArkViewModelBase.this.mApplication, localAppInfo.name, localAppInfo.path, localAppInfo.view))
-          {
-            ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", "loadArkApp.CreateRootView.fail!!");
             i = 0;
           }
           else
           {
-            i = 1;
+            if (ArkViewModelBase.this.mContainer != null)
+            {
+              ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", "loadArkApp.mContainer.not.null");
+              ArkViewModelBase.this.mContainer.DeletePtr();
+            }
+            ArkViewModelBase.this.mTimeRecord.beginOfCreateContainer = System.currentTimeMillis();
+            ArkViewModelBase.this.beforeContainerCreate();
+            ArkViewModelBase.this.mContainer = new ark.Container();
+            ArkViewModelBase.this.mContainer.SetContainerCallback(ArkViewModelBase.this);
+            if (!ArkViewModelBase.this.mContainer.CreateRootView(ArkViewModelBase.this.mApplication, localAppInfo.name, localAppInfo.path, localAppInfo.view))
+            {
+              ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", "loadArkApp.CreateRootView.fail!!");
+              i = 0;
+            }
+            else
+            {
+              i = 1;
+            }
           }
         }
         ArkViewModelBase.this.mTimeRecord.beginOfInitContainer = System.currentTimeMillis();
@@ -722,8 +743,14 @@ public class ArkViewModelBase
         }
       });
       return;
-    } while (paramInt != 2);
-    destroy();
+      if (paramInt == 2)
+      {
+        destroy();
+        return;
+      }
+    } while ((paramInt != 3) || (this.mAppScriptType != 2));
+    this.mErrorInfo.retCode = -1;
+    reinitArkContainer();
   }
   
   protected void endDraw()

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abuv;
+import accq;
 import android.annotation.TargetApi;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -29,7 +29,7 @@ public class MessageForShortVideo
   public static final int BUSI_TYPE_SHORT_VIDEO = 1;
   public static final int BUSI_TYPE_SHORT_VIDEO_PTV = 2;
   public static final int BUSI_TYPE_VIDEO = 0;
-  public static final Parcelable.Creator CREATOR = new abuv();
+  public static final Parcelable.Creator CREATOR = new accq();
   public static final int EXTRA_FLAG_FORWARD = 2;
   public static final int EXTRA_FLAG_UPLOAD = 1;
   public static final int FORWARD_CHAT_TYPE_DISCUS = 2;

@@ -1,29 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-class sdn
-  implements Runnable
+public class sdn
+  implements DialogInterface.OnClickListener
 {
-  sdn(sdm paramsdm, ArrayList paramArrayList) {}
+  public sdn(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    View localView = this.jdField_a_of_type_Sdm.a.a.a[33];
-    if (localView != null)
-    {
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)) {
-        break label67;
-      }
-      localView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Sdm.a.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
-      return;
-      label67:
-      localView.setVisibility(0);
-    }
+    this.a.a.setEnabled(true);
+    this.a.c.dismiss();
   }
 }
 

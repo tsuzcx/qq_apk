@@ -1,25 +1,38 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.opengl.GLES20;
+import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManagerImpl;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
+import java.util.Map;
 
-public final class aafo
-  implements FileFilter
+public class aafo
+  implements Runnable
 {
-  public boolean accept(File paramFile)
+  public aafo(ARRenderManagerImpl paramARRenderManagerImpl) {}
+  
+  public void run()
   {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null)
     {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if (!Character.isDigit(paramFile.charAt(i))) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
+      this.a.jdField_a_of_type_JavaUtilMap.remove(this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a());
+      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
+      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = null;
     }
-    return false;
+    if (ARRenderManagerImpl.a(this.a) != null)
+    {
+      GLES20.glDeleteTextures(1, new int[] { ARRenderManagerImpl.a(this.a).a() }, 0);
+      ARRenderManagerImpl.a(this.a).d();
+      ARRenderManagerImpl.a(this.a, null);
+    }
+    if (ARRenderManagerImpl.a(this.a) != null)
+    {
+      ARRenderManagerImpl.a(this.a).a();
+      ARRenderManagerImpl.a(this.a, null);
+    }
+    if (ARRenderManagerImpl.a(this.a) != null) {
+      ARRenderManagerImpl.a(this.a).d();
+    }
   }
 }
 

@@ -1,58 +1,49 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.activity.PubAccountMoreInfoActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.biz.helper.TroopCardAppInfoHelper;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class kpg
   implements BusinessObserver
 {
-  public kpg(PubAccountMoreInfoActivity paramPubAccountMoreInfoActivity) {}
+  public kpg(TroopCardAppInfoHelper paramTroopCardAppInfoHelper) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMoreInfoActivity", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.a(2131430033);
-    }
-    for (;;)
-    {
+    if (this.a.a) {
       return;
-      if (paramBoolean) {
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle != null)
-          {
-            mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-            localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-            if (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-            {
-              if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) || ((localGetPublicAccountDetailInfoResponse.seqno.has()) && (localGetPublicAccountDetailInfoResponse.seqno.get() != this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno)))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PubAccountMoreInfoActivity", 2, "sendPublicAccountDetailInfoRequest: need update local data , new seqno = " + localGetPublicAccountDetailInfoResponse.seqno.get());
-                }
-                this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse = localGetPublicAccountDetailInfoResponse;
-                this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = new AccountDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
-                PubAccountMoreInfoActivity.a(this.a);
-              }
-            }
-            else
-            {
-              this.a.a(2131430033);
-              return;
-            }
-          }
-        }
-        catch (Exception paramBundle) {}
-      }
     }
+    if ((!paramBoolean) || (paramBundle == null))
+    {
+      TroopCardAppInfoHelper.a(this.a);
+      return;
+    }
+    do
+    {
+      oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+        localOIDBSSOPkg.mergeFrom(paramBundle);
+        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
+        {
+          TroopCardAppInfoHelper.a(this.a);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        TroopCardAppInfoHelper.a(this.a);
+        return;
+      }
+      paramBundle = TroopCardAppInfoHelper.b(this.a, localOIDBSSOPkg);
+    } while ((paramBundle == null) || (paramBundle.size() <= 0));
+    TroopCardAppInfoHelper.a(this.a, paramBundle);
   }
 }
 

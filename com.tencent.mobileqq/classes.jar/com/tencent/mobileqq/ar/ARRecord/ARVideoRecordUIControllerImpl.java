@@ -1,5 +1,13 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
+import aaet;
+import aaeu;
+import aaev;
+import aaew;
+import aaex;
+import aaey;
+import aaez;
+import aafa;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Handler;
@@ -10,14 +18,6 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import zyf;
-import zyg;
-import zyh;
-import zyi;
-import zyj;
-import zyk;
-import zyl;
-import zym;
 
 public class ARVideoRecordUIControllerImpl
   implements Handler.Callback, ARVideoRecordViewPresenter.onMonitorUserOperationListener, VideoRecordController.RecordListener
@@ -57,7 +57,7 @@ public class ARVideoRecordUIControllerImpl
   
   public static ARVideoRecordUIControllerImpl a()
   {
-    return zym.a();
+    return aafa.a();
   }
   
   private void a(Runnable paramRunnable)
@@ -137,7 +137,7 @@ public class ARVideoRecordUIControllerImpl
         this.m = -1;
         a("0X8008A57");
         return;
-        ThreadManager.getUIHandler().post(new zyh(this));
+        ThreadManager.getUIHandler().post(new aaev(this));
         continue;
         this.jdField_c_of_type_Boolean = false;
       }
@@ -157,7 +157,7 @@ public class ARVideoRecordUIControllerImpl
       this.jdField_d_of_type_Boolean = false;
       n();
       break;
-      ThreadManager.getUIHandler().post(new zyi(this));
+      ThreadManager.getUIHandler().post(new aaew(this));
       continue;
       this.jdField_c_of_type_Boolean = false;
     }
@@ -365,13 +365,13 @@ public class ARVideoRecordUIControllerImpl
   public void a(int paramInt1, int paramInt2)
   {
     QLog.d("ARVideoRecordUIControllerImpl", 2, String.format("onRecordUpdate duration=%s fileSize=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    a(new zyk(this, paramInt1, paramInt2));
+    a(new aaey(this, paramInt1, paramInt2));
   }
   
   public void a(int paramInt, String paramString)
   {
     QLog.d("ARVideoRecordUIControllerImpl", 2, String.format("onRecordFinish finishType=%s", new Object[] { Integer.valueOf(paramInt) }));
-    a(new zyl(this, paramInt));
+    a(new aaez(this, paramInt));
   }
   
   @Deprecated
@@ -495,7 +495,7 @@ public class ARVideoRecordUIControllerImpl
     if ((!this.jdField_e_of_type_Boolean) || (!this.jdField_f_of_type_Boolean)) {
       return;
     }
-    a(new zyf(this));
+    a(new aaet(this));
   }
   
   public void c(int paramInt)
@@ -517,7 +517,7 @@ public class ARVideoRecordUIControllerImpl
     if ((!this.jdField_e_of_type_Boolean) || (!this.jdField_f_of_type_Boolean)) {
       return;
     }
-    a(new zyg(this));
+    a(new aaeu(this));
   }
   
   public void e()
@@ -628,7 +628,7 @@ public class ARVideoRecordUIControllerImpl
   public void i()
   {
     QLog.d("ARVideoRecordUIControllerImpl", 2, "onRecordStart");
-    a(new zyj(this));
+    a(new aaex(this));
   }
 }
 

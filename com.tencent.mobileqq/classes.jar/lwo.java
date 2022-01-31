@@ -1,49 +1,30 @@
-import android.graphics.Color;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
+import java.util.ArrayList;
 
-class lwo
-  implements Runnable
+public class lwo
+  implements Animation.AnimationListener
 {
-  lwo(lwn paramlwn) {}
+  public lwo(FeedItemCell paramFeedItemCell, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a.jdField_a_of_type_Boolean)
+    try
     {
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843369);
-      if (this.a.a.jdField_a_of_type_Int > 0)
-      {
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.a(this.a.a.jdField_a_of_type_Int));
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#07D0B0"));
-        if (QLog.isColorLevel()) {
-          QLog.d("ComponentSocialOperation", 2, "revert upvote to true, set num:" + this.a.a.a(this.a.a.jdField_a_of_type_Int));
-        }
-      }
-    }
-    label314:
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.a.a.jdField_b_of_type_AndroidViewAnimationScaleAnimation);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell.a().post(new lwp(this));
       return;
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843372);
-      this.a.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
-      if (this.a.a.jdField_a_of_type_Int > 0) {
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(this.a.a.a(this.a.a.jdField_a_of_type_Int));
-      }
-      for (;;)
-      {
-        if (!QLog.isColorLevel()) {
-          break label314;
-        }
-        QLog.d("ComponentSocialOperation", 2, "revert upvote to false, set num:" + this.a.a.a(this.a.a.jdField_a_of_type_Int));
-        break;
-        this.a.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131428487);
-      }
+    }
+    catch (Exception paramAnimation)
+    {
+      paramAnimation.printStackTrace();
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

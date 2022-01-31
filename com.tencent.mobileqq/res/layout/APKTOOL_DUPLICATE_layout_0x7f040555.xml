@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="16.0sp" android:textColor="#ffa6a6a6" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a45" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0152" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/title" android:layout_width="fill_parent" android:layout_marginRight="12.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1829" android:drawableRight="@drawable/common_arrow_right_selector" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b3" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/title" android:layout_alignLeft="@id/title" android:layout_alignRight="@id/title">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec7" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bf0" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0158" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0158" android:scaleType="fitXY" />
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a38" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec7" android:layout_centerVertical="true">
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a39" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="郑凯部落" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04e2" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a3a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

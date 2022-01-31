@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.business.sougou.WordMatchManager;
 
 public class abtj
   implements Runnable
 {
-  public abtj(ContactSyncManager paramContactSyncManager) {}
+  public abtj(WordMatchManager paramWordMatchManager, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.b();
+    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a();
+    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a.runOnUiThread(new abtk(this));
   }
 }
 

@@ -1,15 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.mobileqq.hotpic.PublicAccountGifListener;
 
 public class leo
-  implements ActionSheet.OnDismissListener
+  implements PublicAccountGifListener
 {
-  public leo(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public leo(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onDismiss()
+  public void a(HotPicData paramHotPicData)
   {
-    ReadInJoySettingActivity.c(this.a).cancel();
+    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
+      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
+    }
   }
 }
 

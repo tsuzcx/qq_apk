@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPObserver;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.newfriend.ContactMatchBuilder;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
 
-public class wow
-  extends SVIPObserver
+class wow
+  implements Runnable
 {
-  public wow(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  wow(wov paramwov) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonFromGroup_Fragment", 2, "vip status change in EmoticonGroupStoreFragment.");
-    }
-    FavroamingManager localFavroamingManager = (FavroamingManager)EmoticonGroupStoreFragment.a(this.a).getManager(102);
-    if (localFavroamingManager != null) {
-      localFavroamingManager.a();
-    }
+    this.a.a.a.c();
   }
 }
 

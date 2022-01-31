@@ -1,47 +1,21 @@
-import QQService.DiscussMemberInfo;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-public class svs
-  extends FriendListObserver
+class svs
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private svs(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  svs(svr paramsvr, View paramView1, View paramView2, View paramView3, View paramView4, View paramView5) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.app.getCurrentAccountUin().equals(paramString))) {}
-    label192:
-    for (;;)
-    {
-      return;
-      Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-      } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) || (this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
-          break label192;
-        }
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        localObject = new StringBuilder();
-        JoinDiscussionActivity localJoinDiscussionActivity = this.a;
-        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != this.a.b) {
-          break;
-        }
-        ThreadManager.post(new svt(this), 8, null, true);
-        return;
-      }
-    }
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue("txtAlpha")).floatValue();
+    float f2 = ((Float)paramValueAnimator.getAnimatedValue("redAlpha")).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(f1);
+    this.b.setAlpha(f2);
+    this.c.setAlpha(f2);
+    this.d.setAlpha(1.0F);
+    this.e.setAlpha(1.0F);
   }
 }
 

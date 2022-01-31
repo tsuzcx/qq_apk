@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.leba.header;
 
-import aeax;
+import aejh;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -46,52 +46,59 @@ public class LebaGridMenuAdapter
   
   protected View a(int paramInt1, View paramView, ViewGroup paramViewGroup, int paramInt2)
   {
-    int i = this.d;
+    int i = this.d * paramInt2 + paramInt1;
     Object localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject1 = (LebaGridItemInfo)this.jdField_a_of_type_JavaUtilList.get(i * paramInt2 + paramInt1);
-    label235:
+    if ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilList.size()))
+    {
+      paramViewGroup = paramView;
+      return paramViewGroup;
+    }
+    Object localObject1 = (LebaGridItemInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+    label222:
     String str;
     if (paramView == null)
     {
-      paramView = ((LayoutInflater)localObject2).inflate(2130970380, paramViewGroup, false);
+      paramView = ((LayoutInflater)localObject2).inflate(2130970395, paramViewGroup, false);
       localObject2 = paramView.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject2).height = this.h;
       ((ViewGroup.LayoutParams)localObject2).width = this.h;
       paramViewGroup = new LebaGridMenuAdapter.LebaGridItemViewHolder(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366364));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366363));
-      paramViewGroup.b = paramView.findViewById(2131370309);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363259);
-      paramViewGroup.c = paramView.findViewById(2131369750);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366369));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366368));
+      paramViewGroup.b = paramView.findViewById(2131370318);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363276);
+      paramViewGroup.c = paramView.findViewById(2131369760);
       paramView = new RedTouch(this.jdField_a_of_type_AndroidContentContext, paramView).a(49).d(13).b(17).g(1).b(10, 0, 18, 0).f(20).a();
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       paramView.setTag(paramViewGroup);
       if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        break label525;
+        break label555;
       }
       paramViewGroup.b.setBackgroundColor(Color.parseColor("#1D2A3D"));
       paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#1D2A3D"));
+      label258:
       if (((LebaGridItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo != null)
       {
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((LebaGridItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.resName);
         paramViewGroup.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo = ((LebaGridItemInfo)localObject1);
       }
       if (((LebaGridItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo == null) {
-        break label615;
+        break label645;
       }
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqLebaHeaderPluginActionFactory$PluginPool.a(((LebaGridItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pluginId, this.jdField_a_of_type_AndroidContentContext);
       if (((LebaGridItemInfo)localObject1).jdField_a_of_type_JavaLangString == null) {
-        break label595;
+        break label625;
       }
       str = ((LebaGridItemInfo)localObject1).jdField_a_of_type_JavaLangString;
       Bitmap localBitmap = (Bitmap)BaseApplicationImpl.sImageHashMap.get(str);
       if (localBitmap == null) {
-        break label554;
+        break label584;
       }
       if (localObject2 != null) {
         ((PluginAction)localObject2).a(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, localBitmap);
       }
     }
+    label645:
     for (;;)
     {
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
@@ -107,39 +114,44 @@ public class LebaGridMenuAdapter
         }
       }
       ((LebaGridItemInfo)localObject1).c = paramInt2;
-      if (AppSetting.b)
-      {
-        boolean bool = ((RedTouch)paramView).a();
-        if ((((LebaGridItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo != null) && (!TextUtils.isEmpty(((LebaGridItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.resName)))
-        {
-          localObject1 = ((LebaGridItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.resName + "按钮";
-          paramViewGroup = (ViewGroup)localObject1;
-          if (bool) {
-            paramViewGroup = (String)localObject1 + "有更新";
-          }
-          paramView.setContentDescription(paramViewGroup);
-        }
+      paramViewGroup = paramView;
+      if (!AppSetting.b) {
+        break;
       }
+      boolean bool = ((RedTouch)paramView).a();
+      paramViewGroup = paramView;
+      if (((LebaGridItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo == null) {
+        break;
+      }
+      paramViewGroup = paramView;
+      if (TextUtils.isEmpty(((LebaGridItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.resName)) {
+        break;
+      }
+      localObject1 = ((LebaGridItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.resName + "按钮";
+      paramViewGroup = (ViewGroup)localObject1;
+      if (bool) {
+        paramViewGroup = (String)localObject1 + "有更新";
+      }
+      paramView.setContentDescription(paramViewGroup);
       return paramView;
       paramViewGroup = (LebaGridMenuAdapter.LebaGridItemViewHolder)paramView.getTag();
-      break;
-      label525:
+      break label222;
+      label555:
       paramViewGroup.b.setBackgroundColor(Color.parseColor("#DEDFE0"));
       paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#DEDFE0"));
-      break label235;
-      label554:
+      break label258;
+      label584:
       if (localObject2 != null) {
-        ((PluginAction)localObject2).a(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, 2130842664);
+        ((PluginAction)localObject2).a(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, 2130842699);
       }
-      ThreadManager.post(new aeax(this, (LebaGridItemInfo)localObject1, str, (PluginAction)localObject2, paramViewGroup), 5, null, true);
+      ThreadManager.post(new aejh(this, (LebaGridItemInfo)localObject1, str, (PluginAction)localObject2, paramViewGroup), 5, null, true);
       continue;
-      label595:
+      label625:
       if (localObject2 != null)
       {
-        ((PluginAction)localObject2).a(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, 2130842664);
+        ((PluginAction)localObject2).a(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, 2130842699);
         continue;
-        label615:
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842664);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842699);
         if (QLog.isColorLevel()) {
           QLog.d("raymondguo", 2, "info is null :" + paramInt1);
         }
@@ -202,6 +214,11 @@ public class LebaGridMenuAdapter
         }
       }
     }
+  }
+  
+  public List a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a(View.OnClickListener paramOnClickListener)

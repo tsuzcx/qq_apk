@@ -1,53 +1,24 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter.FeedItemCellHolder;
-import com.tencent.image.URLDrawable;
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoStatusListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class msr
-  implements AbsListView.OnScrollListener
+class msr
+  implements Runnable
 {
-  public msr(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  msr(msq parammsq) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    if (FastWebVideoFeedsPlayManager.a(this.a.a) != null)
     {
-    default: 
-      DropFrameMonitor.a().a("list_subscript");
-    }
-    for (;;)
-    {
-      return;
-      DropFrameMonitor.a().a("list_subscript", false);
-      paramInt = 0;
-      while (paramInt <= paramAbsListView.getChildCount())
-      {
-        Object localObject = paramAbsListView.getChildAt(paramInt);
-        if ((localObject != null) && ((((View)localObject).getTag() instanceof SubscriptFeedsAdapter.FeedItemCellHolder)))
-        {
-          localObject = (SubscriptFeedsAdapter.FeedItemCellHolder)((View)localObject).getTag();
-          Drawable localDrawable = ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject).b.getDrawable();
-          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject).a);
-            }
-            ((URLDrawable)localDrawable).startDownload();
-            ((URLDrawable)localDrawable).setAutoDownload(true);
-          }
-        }
-        paramInt += 1;
+      Iterator localIterator = FastWebVideoFeedsPlayManager.a(this.a.a).iterator();
+      while (localIterator.hasNext()) {
+        ((FastWebVideoFeedsPlayManager.VideoStatusListener)localIterator.next()).a(FastWebVideoFeedsPlayManager.a(this.a.a));
       }
     }
+    this.a.a.a(0);
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

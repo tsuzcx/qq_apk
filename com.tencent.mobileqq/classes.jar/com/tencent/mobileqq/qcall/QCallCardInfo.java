@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.qcall;
 
-import aguc;
+import agyp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -16,7 +16,7 @@ public class QCallCardInfo
 {
   public static final int CARD_BLACK = 2;
   public static final int CARD_FREE = 1;
-  public static final Parcelable.Creator CREATOR = new aguc();
+  public static final Parcelable.Creator CREATOR = new agyp();
   public static int HIDE = 1;
   public static final int NONE = 0;
   public static int SHOW;

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
-import aemh;
-import aemi;
-import aemj;
-import aemk;
+import aeus;
+import aeut;
+import aeuu;
+import aeuv;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -242,7 +242,7 @@ public class NearbyLikeLimitManager
           i = 1;
           if (i != 0)
           {
-            paramActivity = DialogUtil.a(paramActivity, 0, null, localSpannableString, "继续，且今日不再提醒", "提升等级，获得更多赞", "取消", new aemh(this, bool1, paramString1, paramonDoVoteListener, paramQQAppInterface, paramString2, paramActivity), new aemi(this, paramActivity, paramQQAppInterface, paramString2));
+            paramActivity = DialogUtil.a(paramActivity, 0, null, localSpannableString, "继续，且今日不再提醒", "提升等级，获得更多赞", "取消", new aeus(this, bool1, paramString1, paramonDoVoteListener, paramQQAppInterface, paramString2, paramActivity), new aeut(this, paramActivity, paramQQAppInterface, paramString2));
             paramActivity.getBtnLeft().setTextColor(-14698765);
             paramActivity.show();
           }
@@ -281,7 +281,7 @@ public class NearbyLikeLimitManager
   
   public void a(Activity paramActivity, String paramString)
   {
-    DialogUtil.a(paramActivity, 230).setTitle("金豆数量不足").setMessage("你拥有的金豆数量不足，是否购买更多").setNegativeButton("取消", new aemk(this)).setPositiveButton("购买", new aemj(this, paramActivity)).show();
+    DialogUtil.a(paramActivity, 230).setTitle("金豆数量不足").setMessage("你拥有的金豆数量不足，是否购买更多").setNegativeButton("取消", new aeuv(this)).setPositiveButton("购买", new aeuu(this, paramActivity)).show();
   }
   
   public void a(NearbyLikeLimitManager.LimitInfo paramLimitInfo, List paramList, int paramInt)

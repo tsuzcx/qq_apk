@@ -1,23 +1,14 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.pubaccount.PublicAccountUnfollowTask.UnFollowPublicAccountListenner;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import java.util.List;
 
 public class lfn
-  implements PublicAccountUnfollowTask.UnFollowPublicAccountListenner
+  implements Runnable
 {
-  public lfn(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, Context paramContext) {}
+  public lfn(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, List paramList) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      new Handler(Looper.getMainLooper()).postDelayed(new lfo(this), 500L);
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, "取消关注失败，请检查网络设置！", 0).a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,22 +1,27 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.data.ApolloPandora;
 import com.tencent.qphone.base.util.QLog;
 
 public class yqm
   implements Runnable
 {
-  public yqm(CmGameAvHandler paramCmGameAvHandler, int paramInt1, int paramInt2) {}
+  public yqm(ApolloManager paramApolloManager, String paramString) {}
   
   public void run()
   {
-    QLog.e("CmGameAvHandler", 1, "initAudioRoom ApolloConstant.sGameAVSoUrl=" + ApolloConstant.V + ", ApolloConstant.sGameAVSoMd5=" + ApolloConstant.W);
-    AVEngineWalper.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler.a);
-    AVEngineWalper.a().a(0, ApolloConstant.V, ApolloConstant.W);
-    AVEngineWalper.a().a(BaseApplicationImpl.getContext(), CmGameUtil.a().getCurrentAccountUin(), "" + this.jdField_a_of_type_Int, "" + this.b);
+    ApolloPandora localApolloPandora = this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a(this.jdField_a_of_type_JavaLangString, true);
+    if (localApolloPandora != null)
+    {
+      localApolloPandora.hadStolen = 1;
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a(localApolloPandora);
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, "setCapsuleHadStolenAsync uin had Stolen");
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ApolloManager", 2, "setCapsuleHadStolenAsync local not save apolloPandora");
   }
 }
 

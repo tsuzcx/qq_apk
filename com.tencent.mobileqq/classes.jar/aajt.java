@@ -1,26 +1,39 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.FramePerformanceMonitor;
+import com.tencent.mobileqq.ar.FramePerformanceMonitor.FrameRefreshListener;
+import com.tencent.mobileqq.ar.GapDataCollector;
+import com.tencent.mobileqq.ar.GapDataCollector.RefreshData;
 
-class aajt
-  implements ImageAssetDelegate
+public class aajt
+  implements Runnable
 {
-  aajt(aajs paramaajs) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  private aajt(FramePerformanceMonitor paramFramePerformanceMonitor) {}
+  
+  public void run()
   {
-    String str = paramLottieImageAsset.getFileName();
-    Bitmap localBitmap = (Bitmap)this.a.a.b.get(str);
-    paramLottieImageAsset = localBitmap;
-    if (localBitmap == null)
+    for (;;)
     {
-      QLog.w("WorldCupMgr", 1, "loadBtnAnimation, 加载图片失败, image[" + str + "]");
-      paramLottieImageAsset = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
+      try
+      {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a() == 0) {
+            Thread.sleep(FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor));
+          }
+        }
+        else {
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      GapDataCollector.RefreshData localRefreshData = FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a();
+      FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a(localRefreshData);
+      Thread.sleep(FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor));
     }
-    return paramLottieImageAsset;
   }
 }
 

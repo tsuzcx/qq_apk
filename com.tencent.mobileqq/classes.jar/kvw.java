@@ -1,29 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.SetCookiesCallback;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class kvw
-  implements SwiftBrowserCookieMonster.SetCookiesCallback
+  implements View.OnClickListener
 {
-  public kvw(CustomWebView paramCustomWebView, kwa paramkwa) {}
+  public kvw(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  public void a(String paramString, Bundle paramBundle, long paramLong)
+  public void onClick(View paramView)
   {
-    switch (this.jdField_a_of_type_Kwa.a)
-    {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(paramString);
-      return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Kwa.c, this.jdField_a_of_type_Kwa.d);
-      return;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Kwa.b, this.jdField_a_of_type_Kwa.c, this.jdField_a_of_type_Kwa.d, this.jdField_a_of_type_Kwa.e);
   }
 }
 

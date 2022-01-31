@@ -1,20 +1,24 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.util.List;
 
 public class nhd
-  extends AddPollViewJob
+  implements BatchHandlerListPuller.IPullResultCallback
 {
-  public nhd(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareWeChatData paramShareWeChatData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public nhd(TroopVidToVideoInfoPuller paramTroopVidToVideoInfoPuller, List paramList) {}
   
-  public boolean b()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.e = ((String)a("result"));
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder().append("Vid list to video info list finish !");
+    if (paramBoolean) {}
+    for (String str = "Every task success";; str = "Some task error")
+    {
+      SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", str);
+      this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller.a(this.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
+      return;
+    }
   }
 }
 

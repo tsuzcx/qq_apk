@@ -1,19 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class kys
+public class kys
   implements Runnable
 {
-  kys(kyr paramkyr, mobileqq_mp.GetPublicAccountMenuResponse paramGetPublicAccountMenuResponse, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public kys(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Kyr.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.jdField_a_of_type_Kyr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Kyr.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountMenuResponse);
-    if (this.jdField_a_of_type_Kyr.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-      this.jdField_a_of_type_Kyr.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
-    }
+    ReadInJoyNativeAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdFragmentReadInJoyNativeAdFragment).setProgress(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g);
   }
 }
 

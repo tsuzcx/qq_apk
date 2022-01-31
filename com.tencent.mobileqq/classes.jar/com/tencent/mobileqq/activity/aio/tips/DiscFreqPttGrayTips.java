@@ -45,7 +45,7 @@ public class DiscFreqPttGrayTips
     paramVarArgs = MessageRecordFactory.a(-1016);
     long l = MessageCache.a();
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131433043), l, -1017, 3000, l);
+    paramVarArgs.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131433057), l, -1017, 3000, l);
     paramVarArgs.isread = true;
     return paramVarArgs;
   }

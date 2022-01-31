@@ -1,27 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.OnViewPagerItemVisiableChangeListener;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class xqi
-  implements VideoFilterViewPager.OnViewPagerItemVisiableChangeListener
+public class xqi
+  implements Runnable
 {
-  xqi(xqh paramxqh) {}
+  public xqi(RecentAdapter paramRecentAdapter, String paramString, int paramInt) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (paramInt == 0)
-    {
-      NewFlowCameraActivity.b(this.a.a.a.a, true);
-      if (this.a.a.a.a.d.getVisibility() == 0)
-      {
-        this.a.a.a.a.d.setVisibility(8);
-        this.a.a.a.a.a.a(NewFlowCameraActivity.a(this.a.a.a.a));
-      }
-      return;
-    }
-    NewFlowCameraActivity.b(this.a.a.a.a, false);
-    this.a.a.a.a.a.a(NewFlowCameraActivity.a(this.a.a.a.a));
+    ((MessageHandler)this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a.a(0)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
   }
 }
 

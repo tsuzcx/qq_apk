@@ -71,51 +71,51 @@ class SupercellActivity$9
     //   118: iconst_1
     //   119: putfield 67	com/tencent/mobileqq/armap/SupercellActivity:hasOpen	Z
     //   122: aconst_null
-    //   123: astore 9
+    //   123: astore 10
     //   125: aconst_null
     //   126: astore_3
     //   127: aload_0
     //   128: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
     //   131: invokestatic 71	com/tencent/mobileqq/armap/SupercellActivity:access$1500	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Ljava/lang/String;
-    //   134: astore 14
+    //   134: astore 9
     //   136: aload_0
     //   137: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
     //   140: aload 11
     //   142: invokestatic 75	com/tencent/mobileqq/armap/SupercellActivity:access$1600	(Lcom/tencent/mobileqq/armap/SupercellActivity;Lcom/tencent/mobileqq/armap/ItemInfo;)Ljava/lang/String;
-    //   145: astore 10
+    //   145: astore 12
     //   147: aload_0
     //   148: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
     //   151: new 77	java/lang/StringBuilder
     //   154: dup
     //   155: invokespecial 78	java/lang/StringBuilder:<init>	()V
-    //   158: aload 14
+    //   158: aload 9
     //   160: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   163: aload 10
+    //   163: aload 12
     //   165: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   168: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   171: invokevirtual 90	com/tencent/mobileqq/armap/SupercellActivity:getVideoSrcPath	(Ljava/lang/String;)Ljava/lang/String;
-    //   174: astore 12
+    //   174: astore 14
     //   176: new 77	java/lang/StringBuilder
     //   179: dup
     //   180: invokespecial 78	java/lang/StringBuilder:<init>	()V
-    //   183: aload 14
+    //   183: aload 9
     //   185: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: aload 10
+    //   188: aload 12
     //   190: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   193: aload 12
+    //   193: aload 14
     //   195: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   198: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   201: astore 13
     //   203: new 77	java/lang/StringBuilder
     //   206: dup
     //   207: invokespecial 78	java/lang/StringBuilder:<init>	()V
-    //   210: aload 14
+    //   210: aload 9
     //   212: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   215: ldc 92
     //   217: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   220: aload 10
+    //   220: aload 12
     //   222: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   225: aload 12
+    //   225: aload 14
     //   227: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   233: astore 12
@@ -143,12 +143,12 @@ class SupercellActivity$9
     //   284: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   287: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   290: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   293: aload 9
-    //   295: astore 10
+    //   293: aload 10
+    //   295: astore 9
     //   297: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   300: ifeq +33 -> 333
-    //   303: aload 9
-    //   305: astore 10
+    //   303: aload 10
+    //   305: astore 9
     //   307: ldc 100
     //   309: iconst_2
     //   310: new 77	java/lang/StringBuilder
@@ -160,41 +160,41 @@ class SupercellActivity$9
     //   324: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   327: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   330: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   333: aload 9
-    //   335: astore 10
+    //   333: aload 10
+    //   335: astore 9
     //   337: aload 13
     //   339: invokestatic 114	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   342: ifeq +58 -> 400
-    //   345: aload 9
-    //   347: astore 10
+    //   345: aload 10
+    //   347: astore 9
     //   349: aload_0
     //   350: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
     //   353: iconst_0
     //   354: invokestatic 63	com/tencent/mobileqq/armap/SupercellActivity:access$1402	(Lcom/tencent/mobileqq/armap/SupercellActivity;Z)Z
     //   357: pop
-    //   358: aload 9
-    //   360: astore 10
+    //   358: aload 10
+    //   360: astore 9
     //   362: new 116	java/io/FileNotFoundException
     //   365: dup
     //   366: invokespecial 117	java/io/FileNotFoundException:<init>	()V
     //   369: athrow
-    //   370: astore 9
+    //   370: astore 10
     //   372: aload_3
-    //   373: astore 10
-    //   375: aload 9
+    //   373: astore 9
+    //   375: aload 10
     //   377: invokevirtual 120	java/lang/Exception:printStackTrace	()V
     //   380: aload_3
     //   381: ifnull +481 -> 862
     //   384: aload_3
     //   385: invokevirtual 125	java/io/FileInputStream:close	()V
     //   388: aload_3
-    //   389: ifnonnull +350 -> 739
+    //   389: ifnonnull +346 -> 735
     //   392: return
     //   393: ldc 127
     //   395: astore 9
     //   397: goto -379 -> 18
-    //   400: aload 9
-    //   402: astore 10
+    //   400: aload 10
+    //   402: astore 9
     //   404: aload 13
     //   406: aload_0
     //   407: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
@@ -213,12 +213,12 @@ class SupercellActivity$9
     //   436: aload_3
     //   437: invokevirtual 140	java/io/IOException:printStackTrace	()V
     //   440: return
-    //   441: aload 9
-    //   443: astore 10
+    //   441: aload 10
+    //   443: astore 9
     //   445: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   448: ifeq +38 -> 486
-    //   451: aload 9
-    //   453: astore 10
+    //   451: aload 10
+    //   453: astore 9
     //   455: ldc 100
     //   457: iconst_2
     //   458: new 77	java/lang/StringBuilder
@@ -232,175 +232,175 @@ class SupercellActivity$9
     //   477: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   480: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   483: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   486: aload 9
-    //   488: astore 10
+    //   486: aload 10
+    //   488: astore 9
     //   490: aload_0
     //   491: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
     //   494: aload 13
     //   496: invokestatic 146	com/tencent/mobileqq/armap/SupercellActivity:access$1702	(Lcom/tencent/mobileqq/armap/SupercellActivity;Ljava/lang/String;)Ljava/lang/String;
     //   499: pop
-    //   500: aload 9
-    //   502: astore 10
+    //   500: aload 10
+    //   502: astore 9
     //   504: new 148	java/io/File
     //   507: dup
     //   508: aload 13
     //   510: invokespecial 151	java/io/File:<init>	(Ljava/lang/String;)V
     //   513: astore 13
-    //   515: aload 9
-    //   517: astore 10
+    //   515: aload 10
+    //   517: astore 9
     //   519: aload 13
     //   521: invokevirtual 154	java/io/File:exists	()Z
-    //   524: ifne +32 -> 556
-    //   527: aload 9
-    //   529: astore 10
+    //   524: ifne +28 -> 552
+    //   527: aload 10
+    //   529: astore 9
     //   531: new 116	java/io/FileNotFoundException
     //   534: dup
     //   535: invokespecial 117	java/io/FileNotFoundException:<init>	()V
     //   538: athrow
     //   539: astore_3
-    //   540: aload 10
-    //   542: astore 9
-    //   544: aload 9
-    //   546: ifnull +8 -> 554
-    //   549: aload 9
-    //   551: invokevirtual 125	java/io/FileInputStream:close	()V
-    //   554: aload_3
-    //   555: athrow
-    //   556: aload 9
-    //   558: astore 10
-    //   560: new 122	java/io/FileInputStream
-    //   563: dup
-    //   564: aload 13
-    //   566: invokespecial 157	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   569: astore 9
-    //   571: aload 9
-    //   573: invokevirtual 161	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   576: astore 10
-    //   578: aload_0
-    //   579: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
-    //   582: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
-    //   585: ifnull +34 -> 619
-    //   588: aload_0
-    //   589: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
-    //   592: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
-    //   595: aconst_null
-    //   596: invokevirtual 171	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
-    //   599: aload_0
-    //   600: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
-    //   603: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
-    //   606: invokevirtual 174	android/media/MediaPlayer:stop	()V
-    //   609: aload_0
-    //   610: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
-    //   613: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
-    //   616: invokevirtual 177	android/media/MediaPlayer:release	()V
-    //   619: aload_0
-    //   620: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
-    //   623: new 167	android/media/MediaPlayer
-    //   626: dup
-    //   627: invokespecial 178	android/media/MediaPlayer:<init>	()V
-    //   630: invokestatic 182	com/tencent/mobileqq/armap/SupercellActivity:access$1802	(Lcom/tencent/mobileqq/armap/SupercellActivity;Landroid/media/MediaPlayer;)Landroid/media/MediaPlayer;
-    //   633: pop
-    //   634: aload_0
-    //   635: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
-    //   638: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
-    //   641: aload 10
-    //   643: invokevirtual 186	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   646: aload_0
-    //   647: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
-    //   650: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
-    //   653: new 188	com/tencent/mobileqq/armap/SupercellActivity$9$1
-    //   656: dup
-    //   657: aload_0
-    //   658: invokespecial 191	com/tencent/mobileqq/armap/SupercellActivity$9$1:<init>	(Lcom/tencent/mobileqq/armap/SupercellActivity$9;)V
-    //   661: invokevirtual 171	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
-    //   664: aload 9
-    //   666: invokevirtual 125	java/io/FileInputStream:close	()V
-    //   669: aload 9
-    //   671: astore_3
-    //   672: aload 9
-    //   674: ifnull -286 -> 388
-    //   677: aload 9
-    //   679: invokevirtual 125	java/io/FileInputStream:close	()V
-    //   682: aload 9
+    //   540: aload 9
+    //   542: ifnull +8 -> 550
+    //   545: aload 9
+    //   547: invokevirtual 125	java/io/FileInputStream:close	()V
+    //   550: aload_3
+    //   551: athrow
+    //   552: aload 10
+    //   554: astore 9
+    //   556: new 122	java/io/FileInputStream
+    //   559: dup
+    //   560: aload 13
+    //   562: invokespecial 157	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   565: astore 10
+    //   567: aload 10
+    //   569: invokevirtual 161	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   572: astore 9
+    //   574: aload_0
+    //   575: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
+    //   578: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
+    //   581: ifnull +34 -> 615
+    //   584: aload_0
+    //   585: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
+    //   588: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
+    //   591: aconst_null
+    //   592: invokevirtual 171	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   595: aload_0
+    //   596: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
+    //   599: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
+    //   602: invokevirtual 174	android/media/MediaPlayer:stop	()V
+    //   605: aload_0
+    //   606: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
+    //   609: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
+    //   612: invokevirtual 177	android/media/MediaPlayer:release	()V
+    //   615: aload_0
+    //   616: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
+    //   619: new 167	android/media/MediaPlayer
+    //   622: dup
+    //   623: invokespecial 178	android/media/MediaPlayer:<init>	()V
+    //   626: invokestatic 182	com/tencent/mobileqq/armap/SupercellActivity:access$1802	(Lcom/tencent/mobileqq/armap/SupercellActivity;Landroid/media/MediaPlayer;)Landroid/media/MediaPlayer;
+    //   629: pop
+    //   630: aload_0
+    //   631: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
+    //   634: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
+    //   637: aload 9
+    //   639: invokevirtual 186	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   642: aload_0
+    //   643: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
+    //   646: invokestatic 165	com/tencent/mobileqq/armap/SupercellActivity:access$1800	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Landroid/media/MediaPlayer;
+    //   649: new 188	com/tencent/mobileqq/armap/SupercellActivity$9$1
+    //   652: dup
+    //   653: aload_0
+    //   654: invokespecial 191	com/tencent/mobileqq/armap/SupercellActivity$9$1:<init>	(Lcom/tencent/mobileqq/armap/SupercellActivity$9;)V
+    //   657: invokevirtual 171	android/media/MediaPlayer:setOnCompletionListener	(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    //   660: aload 10
+    //   662: invokevirtual 125	java/io/FileInputStream:close	()V
+    //   665: aload 10
+    //   667: astore_3
+    //   668: aload 10
+    //   670: ifnull -282 -> 388
+    //   673: aload 10
+    //   675: invokevirtual 125	java/io/FileInputStream:close	()V
+    //   678: aload 10
+    //   680: astore_3
+    //   681: goto -293 -> 388
     //   684: astore_3
-    //   685: goto -297 -> 388
-    //   688: astore_3
-    //   689: aload_3
-    //   690: invokevirtual 140	java/io/IOException:printStackTrace	()V
-    //   693: aload 9
+    //   685: aload_3
+    //   686: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   689: aload 10
+    //   691: astore_3
+    //   692: goto -304 -> 388
     //   695: astore_3
-    //   696: goto -308 -> 388
-    //   699: astore_3
-    //   700: aload_3
-    //   701: invokevirtual 120	java/lang/Exception:printStackTrace	()V
-    //   704: goto -85 -> 619
-    //   707: astore 10
-    //   709: aload 9
-    //   711: astore_3
-    //   712: aload 10
-    //   714: astore 9
-    //   716: goto -344 -> 372
-    //   719: astore 9
-    //   721: aload 9
-    //   723: invokevirtual 140	java/io/IOException:printStackTrace	()V
-    //   726: goto -338 -> 388
-    //   729: astore 9
-    //   731: aload 9
-    //   733: invokevirtual 140	java/io/IOException:printStackTrace	()V
-    //   736: goto -182 -> 554
-    //   739: aload_0
-    //   740: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
-    //   743: aload 12
-    //   745: invokevirtual 195	com/tencent/mobileqq/armap/SupercellActivity:initMediaEnd	(Ljava/lang/String;)Z
-    //   748: pop
-    //   749: aload_0
-    //   750: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
-    //   753: invokestatic 199	com/tencent/mobileqq/armap/SupercellActivity:access$200	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Lcom/tencent/mobileqq/armap/ARGLSurfaceView;
-    //   756: new 201	com/tencent/mobileqq/armap/SupercellActivity$9$2
-    //   759: dup
-    //   760: aload_0
-    //   761: invokespecial 202	com/tencent/mobileqq/armap/SupercellActivity$9$2:<init>	(Lcom/tencent/mobileqq/armap/SupercellActivity$9;)V
-    //   764: invokevirtual 208	com/tencent/mobileqq/armap/ARGLSurfaceView:queueEvent	(Ljava/lang/Runnable;)V
-    //   767: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   770: ifeq -378 -> 392
-    //   773: ldc 100
-    //   775: iconst_2
-    //   776: new 77	java/lang/StringBuilder
-    //   779: dup
-    //   780: invokespecial 78	java/lang/StringBuilder:<init>	()V
-    //   783: ldc 210
-    //   785: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   788: iload_1
-    //   789: invokevirtual 213	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   792: ldc 215
-    //   794: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   797: iload_2
-    //   798: invokevirtual 218	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   801: ldc 220
-    //   803: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   806: iload 4
-    //   808: invokevirtual 213	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   811: ldc 222
-    //   813: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   816: iload 5
-    //   818: invokevirtual 218	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   821: ldc 224
-    //   823: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   826: iload 6
-    //   828: invokevirtual 218	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   831: ldc 226
-    //   833: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   836: aload 11
-    //   838: invokevirtual 229	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   841: ldc 231
-    //   843: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   846: iload 7
-    //   848: invokevirtual 213	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   851: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   854: invokestatic 234	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   857: return
-    //   858: astore_3
-    //   859: goto -315 -> 544
+    //   696: aload_3
+    //   697: invokevirtual 120	java/lang/Exception:printStackTrace	()V
+    //   700: goto -85 -> 615
+    //   703: astore 9
+    //   705: aload 10
+    //   707: astore_3
+    //   708: aload 9
+    //   710: astore 10
+    //   712: goto -340 -> 372
+    //   715: astore 9
+    //   717: aload 9
+    //   719: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   722: goto -334 -> 388
+    //   725: astore 9
+    //   727: aload 9
+    //   729: invokevirtual 140	java/io/IOException:printStackTrace	()V
+    //   732: goto -182 -> 550
+    //   735: aload_0
+    //   736: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
+    //   739: aload 12
+    //   741: invokevirtual 195	com/tencent/mobileqq/armap/SupercellActivity:initMediaEnd	(Ljava/lang/String;)Z
+    //   744: pop
+    //   745: aload_0
+    //   746: getfield 10	com/tencent/mobileqq/armap/SupercellActivity$9:this$0	Lcom/tencent/mobileqq/armap/SupercellActivity;
+    //   749: invokestatic 199	com/tencent/mobileqq/armap/SupercellActivity:access$200	(Lcom/tencent/mobileqq/armap/SupercellActivity;)Lcom/tencent/mobileqq/armap/ARGLSurfaceView;
+    //   752: new 201	com/tencent/mobileqq/armap/SupercellActivity$9$2
+    //   755: dup
+    //   756: aload_0
+    //   757: invokespecial 202	com/tencent/mobileqq/armap/SupercellActivity$9$2:<init>	(Lcom/tencent/mobileqq/armap/SupercellActivity$9;)V
+    //   760: invokevirtual 208	com/tencent/mobileqq/armap/ARGLSurfaceView:queueEvent	(Ljava/lang/Runnable;)V
+    //   763: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   766: ifeq -374 -> 392
+    //   769: ldc 100
+    //   771: iconst_2
+    //   772: new 77	java/lang/StringBuilder
+    //   775: dup
+    //   776: invokespecial 78	java/lang/StringBuilder:<init>	()V
+    //   779: ldc 210
+    //   781: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   784: iload_1
+    //   785: invokevirtual 213	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   788: ldc 215
+    //   790: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   793: iload_2
+    //   794: invokevirtual 218	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   797: ldc 220
+    //   799: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   802: iload 4
+    //   804: invokevirtual 213	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   807: ldc 222
+    //   809: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   812: iload 5
+    //   814: invokevirtual 218	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   817: ldc 224
+    //   819: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   822: iload 6
+    //   824: invokevirtual 218	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   827: ldc 226
+    //   829: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   832: aload 11
+    //   834: invokevirtual 229	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   837: ldc 231
+    //   839: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   842: iload 7
+    //   844: invokevirtual 213	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   847: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   850: invokestatic 234	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   853: return
+    //   854: astore_3
+    //   855: aload 10
+    //   857: astore 9
+    //   859: goto -319 -> 540
     //   862: goto -474 -> 388
     // Local variable table:
     //   start	length	slot	name	signature
@@ -413,17 +413,18 @@ class SupercellActivity$9
     //   0	865	6	paramInt3	int
     //   0	865	7	paramBoolean3	boolean
     //   416	3	8	bool	boolean
-    //   16	343	9	str1	java.lang.String
-    //   370	6	9	localException1	java.lang.Exception
-    //   395	320	9	localObject1	java.lang.Object
-    //   719	3	9	localIOException1	java.io.IOException
-    //   729	3	9	localIOException2	java.io.IOException
-    //   145	497	10	localObject2	java.lang.Object
-    //   707	6	10	localException2	java.lang.Exception
-    //   43	794	11	localItemInfo	ItemInfo
-    //   174	570	12	str2	java.lang.String
-    //   201	364	13	localObject3	java.lang.Object
-    //   134	77	14	str3	java.lang.String
+    //   16	622	9	localObject1	java.lang.Object
+    //   703	6	9	localException1	java.lang.Exception
+    //   715	3	9	localIOException1	java.io.IOException
+    //   725	3	9	localIOException2	java.io.IOException
+    //   857	1	9	localObject2	java.lang.Object
+    //   123	236	10	localObject3	java.lang.Object
+    //   370	183	10	localException2	java.lang.Exception
+    //   565	291	10	localObject4	java.lang.Object
+    //   43	790	11	localItemInfo	ItemInfo
+    //   145	595	12	str1	java.lang.String
+    //   201	360	13	localObject5	java.lang.Object
+    //   174	52	14	str2	java.lang.String
     // Exception table:
     //   from	to	target	type
     //   297	303	370	java/lang/Exception
@@ -438,7 +439,7 @@ class SupercellActivity$9
     //   504	515	370	java/lang/Exception
     //   519	527	370	java/lang/Exception
     //   531	539	370	java/lang/Exception
-    //   560	571	370	java/lang/Exception
+    //   556	567	370	java/lang/Exception
     //   427	435	435	java/io/IOException
     //   297	303	539	finally
     //   307	333	539	finally
@@ -453,18 +454,18 @@ class SupercellActivity$9
     //   504	515	539	finally
     //   519	527	539	finally
     //   531	539	539	finally
-    //   560	571	539	finally
-    //   677	682	688	java/io/IOException
-    //   599	619	699	java/lang/Exception
-    //   571	599	707	java/lang/Exception
-    //   619	669	707	java/lang/Exception
-    //   700	704	707	java/lang/Exception
-    //   384	388	719	java/io/IOException
-    //   549	554	729	java/io/IOException
-    //   571	599	858	finally
-    //   599	619	858	finally
-    //   619	669	858	finally
-    //   700	704	858	finally
+    //   556	567	539	finally
+    //   673	678	684	java/io/IOException
+    //   595	615	695	java/lang/Exception
+    //   567	595	703	java/lang/Exception
+    //   615	665	703	java/lang/Exception
+    //   696	700	703	java/lang/Exception
+    //   384	388	715	java/io/IOException
+    //   545	550	725	java/io/IOException
+    //   567	595	854	finally
+    //   595	615	854	finally
+    //   615	665	854	finally
+    //   696	700	854	finally
   }
 }
 

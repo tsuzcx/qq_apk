@@ -1,31 +1,26 @@
-import android.app.Activity;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.base.LogUtility;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
 
 public final class alev
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public alev(Bundle paramBundle, Activity paramActivity, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2) {}
+  private final TabDragAnimationView a;
   
-  public void run()
+  public alev(TabDragAnimationView paramTabDragAnimationView)
   {
-    Object localObject = new alew(this);
-    alex localalex = new alex(this);
-    LogUtility.b("DownloadJSApi", "dialog create and show");
-    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131428555)).setPositiveButton(2131428552, localalex).setNegativeButton(2131428553, (DialogInterface.OnClickListener)localObject).create();
-    ((Dialog)localObject).setCanceledOnTouchOutside(false);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      ((Dialog)localObject).show();
-    }
+    this.a = paramTabDragAnimationView;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(f, 0.0F, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alev
  * JD-Core Version:    0.7.0.1
  */

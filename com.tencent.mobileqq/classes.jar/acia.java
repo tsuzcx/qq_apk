@@ -1,47 +1,27 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public class acia
-  extends RecyclerView.OnScrollListener
+class acia
+  implements Runnable
 {
-  public acia(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  acia(achz paramachz, FileMsg paramFileMsg) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void run()
   {
-    if (paramInt == 0)
+    if (this.jdField_a_of_type_Achz.a.a == null)
     {
-      URLDrawable.resume();
+      QLog.e("FavroamingManager", 1, "app is null");
       return;
     }
-    URLDrawable.pause();
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if ((!ExtendFriendGroupFragment.a(this.a)) && (!ExtendFriendGroupFragment.b(this.a)) && (this.a.a != null) && (ExtendFriendGroupFragment.a(this.a) != null) && (ExtendFriendGroupFragment.a(this.a).a() > 0) && (this.a.a.findViewByPosition(ExtendFriendGroupFragment.a(this.a).getItemCount() - 1) != null))
-    {
-      if (NetworkUtil.g(ExtendFriendGroupFragment.a(this.a)))
-      {
-        ExtendFriendGroupFragment.a(this.a, true);
-        ExtendFriendGroupFragment.a(this.a).a(0, true);
-        ReportController.b(ExtendFriendGroupFragment.a(this.a), "dc00898", "", "", "0X80092D9", "0X80092D9", 0, 0, "", "", "", "");
-      }
-    }
-    else {
-      return;
-    }
-    ExtendFriendGroupFragment.a(this.a).a(1, true);
+    ((FavroamingDBManager)this.jdField_a_of_type_Achz.a.a.getManager(148)).a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acia
  * JD-Core Version:    0.7.0.1
  */

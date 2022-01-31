@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.ar.config;
 
-import aajq;
-import aajs;
-import aajv;
-import aajw;
-import aajx;
-import aajy;
-import aajz;
-import aaka;
-import aakb;
-import aakc;
-import aakd;
+import aaqh;
+import aaqj;
+import aaqk;
+import aaqn;
+import aaqo;
+import aaqp;
+import aaqr;
+import aaqs;
+import aaqt;
+import aaqu;
+import aaqv;
+import aaqw;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -37,6 +38,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.File;
@@ -51,16 +53,19 @@ public class SplashPopupWin
 {
   public static int a;
   public static int b;
-  public aakd a;
+  public aaqw a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextureVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
   private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  boolean jdField_a_of_type_Boolean = false;
-  private ImageView b;
-  private int c;
+  Runnable jdField_a_of_type_JavaLangRunnable;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private Runnable jdField_b_of_type_JavaLangRunnable;
+  private int jdField_c_of_type_Int;
+  private Runnable jdField_c_of_type_JavaLangRunnable;
   
   static
   {
@@ -70,13 +75,13 @@ public class SplashPopupWin
   
   public SplashPopupWin()
   {
-    this.jdField_a_of_type_Aakd = new aakd();
+    this.jdField_a_of_type_Aaqw = new aaqw("WorldCupMgr");
   }
   
-  private Point a(AppInterface paramAppInterface, View paramView, aakd paramaakd)
+  private Point a(AppInterface paramAppInterface, View paramView, aaqw paramaaqw)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setBackgroundDrawable((Drawable)paramaakd.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0)));
-    paramAppInterface = (ImageView)this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().findViewById(2131364642);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setBackgroundDrawable((Drawable)paramaaqw.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0)));
+    paramAppInterface = (ImageView)this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().findViewById(2131364666);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramAppInterface.getLayoutParams();
     localLayoutParams.height = -1;
     localLayoutParams.width = -1;
@@ -84,14 +89,14 @@ public class SplashPopupWin
     localLayoutParams.addRule(10);
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(11);
-    Point localPoint = a(false, paramaakd.jdField_a_of_type_Int, paramaakd.jdField_b_of_type_Int, paramView.getWidth(), paramView.getHeight());
+    Point localPoint = a(false, paramaaqw.jdField_a_of_type_Int, paramaaqw.jdField_b_of_type_Int, paramView.getWidth(), paramView.getHeight());
     int i = (paramView.getWidth() - localPoint.x) / 2;
     int j = (paramView.getHeight() - localPoint.y) / 2;
-    QLog.w("WorldCupMgr", 1, "SplashPopupWin.setImage, Image[" + paramaakd.jdField_a_of_type_Int + ", " + paramaakd.jdField_b_of_type_Int + "], anchorView[" + paramView.getWidth() + ", " + paramView.getHeight() + "], New[" + localPoint.x + ", " + localPoint.y + "], offset_x[" + i + "], offset_y[" + j + "]");
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin.setImage, Image[" + paramaaqw.jdField_a_of_type_Int + ", " + paramaaqw.jdField_b_of_type_Int + "], anchorView[" + paramView.getWidth() + ", " + paramView.getHeight() + "], New[" + localPoint.x + ", " + localPoint.y + "], offset_x[" + i + "], offset_y[" + j + "]");
     localLayoutParams.setMargins(i, j, i, j);
     paramAppInterface.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setLayoutParams(localLayoutParams);
-    paramAppInterface.setImageDrawable((Drawable)paramaakd.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0)));
+    paramAppInterface.setImageDrawable((Drawable)paramaaqw.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(0)));
     return new Point(i, j);
   }
   
@@ -122,42 +127,47 @@ public class SplashPopupWin
   
   private void a(Activity paramActivity, View paramView, boolean paramBoolean)
   {
-    int i = 0;
-    if (ImmersiveUtils.isSupporImmersive() != 1) {
-      i = ImmersiveUtils.a(BaseApplicationImpl.getApplication());
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null) {
+      QLog.w("WorldCupMgr", 1, "setSystemUiVisibility, mPopupWindow为空", new Throwable("打印调用栈"));
     }
-    QLog.w("WorldCupMgr", 1, "setSystemUiVisibility, isSupporImmersive[" + ImmersiveUtils.isSupporImmersive() + "], statusBarHeight[" + i + "]");
-    paramView = (FragmentActivity)paramActivity;
-    if (Build.VERSION.SDK_INT >= 19)
+    int i;
+    do
     {
-      if (paramBoolean)
-      {
-        paramActivity.getWindow().addFlags(128);
-        this.c = this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().getSystemUiVisibility();
-        i = c();
-        a(paramActivity);
-        QLog.w("WorldCupMgr", 1, "setSystemUiVisibility, enable, uiOptions[" + i + "], mPopupWindow[" + this.c + "->" + this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().getSystemUiVisibility() + "]");
+      return;
+      i = 0;
+      if (ImmersiveUtils.isSupporImmersive() != 1) {
+        i = ImmersiveUtils.a(BaseApplicationImpl.getApplication());
       }
-    }
-    else {
+      QLog.w("WorldCupMgr", 1, "setSystemUiVisibility, isSupporImmersive[" + ImmersiveUtils.isSupporImmersive() + "], statusBarHeight[" + i + "]");
+      paramView = (FragmentActivity)paramActivity;
+    } while (Build.VERSION.SDK_INT < 19);
+    if (paramBoolean)
+    {
+      paramActivity.getWindow().addFlags(128);
+      this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().getSystemUiVisibility();
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+      i = c();
+      a(paramActivity);
+      QLog.w("WorldCupMgr", 1, "setSystemUiVisibility, enable, uiOptions[" + i + "], mPopupWindow[" + this.jdField_c_of_type_Int + "->" + this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().getSystemUiVisibility() + "]");
       return;
     }
     paramActivity.getWindow().clearFlags(128);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().setSystemUiVisibility(this.c);
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().setSystemUiVisibility(this.jdField_c_of_type_Int);
     b(paramActivity);
-    QLog.w("WorldCupMgr", 1, "setSystemUiVisibility, disable, mSystemUiVisibility[" + this.c + "], getSystemUiVisibility[" + this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().getSystemUiVisibility() + "]");
+    QLog.w("WorldCupMgr", 1, "setSystemUiVisibility, disable, mSystemUiVisibility[" + this.jdField_c_of_type_Int + "], getSystemUiVisibility[" + this.jdField_a_of_type_AndroidWidgetPopupWindow.getContentView().getSystemUiVisibility() + "]");
     paramView.setImmersiveStatus();
   }
   
   static void a(ImageView paramImageView)
   {
     paramImageView.setClickable(true);
-    paramImageView.setOnTouchListener(new aaka(paramImageView));
+    paramImageView.setOnTouchListener(new aaqu(paramImageView));
   }
   
-  private boolean a(ImageView paramImageView, aakd paramaakd)
+  private boolean a(ImageView paramImageView, aaqw paramaaqw)
   {
-    Object localObject2 = paramaakd.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.a(0) + "splash/";
+    Object localObject2 = paramaaqw.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.a(0) + "splash/";
     Object localObject1 = new File((String)localObject2, "button.json");
     if (!((File)localObject1).exists())
     {
@@ -174,8 +184,8 @@ public class SplashPopupWin
     try
     {
       localObject1 = new FileInputStream((File)localObject1);
-      paramaakd = new aajs(this, new WeakReference(paramImageView), paramaakd, (String)localObject2);
-      LottieComposition.Factory.fromInputStream(paramImageView.getContext(), (InputStream)localObject1, paramaakd);
+      paramaaqw = new aaqk(this, new WeakReference(paramImageView), paramaaqw, (String)localObject2);
+      LottieComposition.Factory.fromInputStream(paramImageView.getContext(), (InputStream)localObject1, paramaaqw);
       return true;
     }
     catch (Exception paramImageView)
@@ -199,7 +209,7 @@ public class SplashPopupWin
     }
     if (this.jdField_a_of_type_AndroidWidgetPopupWindow == null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramBaseActivity).inflate(2130968996, null));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramBaseActivity).inflate(2130968998, null));
       this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_AndroidWidgetRelativeLayout, -1, -1);
       localObject = this.jdField_a_of_type_AndroidWidgetPopupWindow;
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-16777216);
@@ -209,32 +219,31 @@ public class SplashPopupWin
       localLayoutParams.addRule(10);
       localLayoutParams.addRule(9);
       localLayoutParams.addRule(11);
-      localTextureVideoView.setOnPreparedListener(new aajq(this, (PopupWindow)localObject, localTextureVideoView));
-      localTextureVideoView.setOnErrorListener(new aajv(this));
-      localTextureVideoView.setOnInfoListener(new aajw(this, (PopupWindow)localObject, localTextureVideoView));
-      localTextureVideoView.setOnCompletionListener(new aajx(this, (PopupWindow)localObject, paramQQAppInterface, localTextureVideoView));
+      localTextureVideoView.setOnPreparedListener(new aaqh(this, (PopupWindow)localObject, localTextureVideoView));
+      localTextureVideoView.setOnErrorListener(new aaqn(this));
+      localTextureVideoView.setOnInfoListener(new aaqo(this, (PopupWindow)localObject, localTextureVideoView));
+      localTextureVideoView.setOnCompletionListener(new aaqp(this, (PopupWindow)localObject, paramQQAppInterface, localTextureVideoView));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localTextureVideoView, localLayoutParams);
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView = localTextureVideoView;
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-1);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-1);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#BFFFFFFF")));
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new aajy(this, paramBaseActivity, paramView));
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new aaqr(this, paramBaseActivity, paramView));
     }
-    if (!a())
+    if (!b())
     {
       b();
       return false;
     }
-    Object localObject = a(paramQQAppInterface, paramView, this.jdField_a_of_type_Aakd);
-    a(paramQQAppInterface, paramBaseActivity, this.jdField_a_of_type_Aakd, (Point)localObject);
+    Object localObject = a(paramQQAppInterface, paramView, this.jdField_a_of_type_Aaqw);
+    a(paramQQAppInterface, paramBaseActivity, this.jdField_a_of_type_Aaqw, (Point)localObject);
     a(8);
-    WorldCupStaticInstance.a().c = true;
-    a(paramBaseActivity, paramView, true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, 0, 0);
-    WorldCupConfigInfo.b(this.jdField_a_of_type_Aakd.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.l, WorldCupConfigInfo.a());
-    WorldCupReport.c();
-    WorldCup.a(paramQQAppInterface);
+    if (this.jdField_a_of_type_JavaLangRunnable == null) {
+      this.jdField_a_of_type_JavaLangRunnable = new aaqs(this, paramBaseActivity, paramView, paramQQAppInterface);
+    }
+    paramView.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+    paramView.post(this.jdField_a_of_type_JavaLangRunnable);
     return true;
   }
   
@@ -245,7 +254,7 @@ public class SplashPopupWin
     return 5894;
   }
   
-  void a()
+  public void a()
   {
     b();
   }
@@ -274,7 +283,7 @@ public class SplashPopupWin
     }
   }
   
-  void a(AppInterface paramAppInterface, BaseActivity paramBaseActivity, aakd paramaakd, Point paramPoint)
+  void a(AppInterface paramAppInterface, BaseActivity paramBaseActivity, aaqw paramaaqw, Point paramPoint)
   {
     int i;
     int j;
@@ -285,8 +294,8 @@ public class SplashPopupWin
       ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
       this.jdField_a_of_type_AndroidWidgetImageView = localImageView;
       localImageView.setVisibility(4);
-      i = paramaakd.c;
-      j = paramaakd.d;
+      i = paramaaqw.jdField_c_of_type_Int;
+      j = paramaaqw.d;
       k = AIOUtils.a(30, (Resources)localObject);
       localObject = new RelativeLayout.LayoutParams(i, j);
       ((RelativeLayout.LayoutParams)localObject).addRule(12, -1);
@@ -295,8 +304,8 @@ public class SplashPopupWin
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localImageView, (ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.bringChildToFront(localImageView);
       a(localImageView);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aakb(this, paramaakd, paramAppInterface, paramBaseActivity));
-      a(this.jdField_a_of_type_AndroidWidgetImageView, paramaakd);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aaqv(this, paramaaqw, paramAppInterface, paramBaseActivity));
+      a(this.jdField_a_of_type_AndroidWidgetImageView, paramaaqw);
     }
     if (this.jdField_b_of_type_AndroidWidgetImageView == null)
     {
@@ -304,9 +313,9 @@ public class SplashPopupWin
       paramAppInterface = new ImageView(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
       this.jdField_b_of_type_AndroidWidgetImageView = paramAppInterface;
       paramAppInterface.setVisibility(4);
-      paramAppInterface.setImageDrawable(paramaakd.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-      i = paramaakd.e;
-      j = paramaakd.f;
+      paramAppInterface.setImageDrawable(paramaaqw.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
+      i = paramaaqw.e;
+      j = paramaaqw.f;
       k = AIOUtils.a(12, paramBaseActivity);
       int m = paramPoint.y;
       int n = AIOUtils.a(12, paramBaseActivity);
@@ -317,11 +326,11 @@ public class SplashPopupWin
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramAppInterface, paramBaseActivity);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.bringChildToFront(paramAppInterface);
       a(paramAppInterface);
-      paramAppInterface.setOnClickListener(new aakc(this));
+      paramAppInterface.setOnClickListener(new aaqj(this));
     }
   }
   
-  void a(String paramString)
+  public void a(String paramString)
   {
     if (this.jdField_a_of_type_Boolean)
     {
@@ -337,15 +346,7 @@ public class SplashPopupWin
   
   boolean a()
   {
-    String str = this.jdField_a_of_type_Aakd.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.a(0);
-    str = str + "splash/splash.mp4";
-    if (!FileUtil.a(str))
-    {
-      QLog.w("WorldCupMgr", 1, "setVideo, 文件不存在");
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoPath(str);
-    return true;
+    return this.jdField_a_of_type_Boolean;
   }
   
   boolean a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, View paramView)
@@ -356,18 +357,18 @@ public class SplashPopupWin
       return false;
     }
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Aakd.b())
+    if (this.jdField_a_of_type_Aaqw.b())
     {
       QLog.w("WorldCupMgr", 1, "SplashPopupWin, 图片加载中");
       return true;
     }
-    if (this.jdField_a_of_type_Aakd.a())
+    if (this.jdField_a_of_type_Aaqw.a())
     {
-      this.jdField_a_of_type_Aakd.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = WorldCup.a(paramQQAppInterface);
+      this.jdField_a_of_type_Aaqw.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = WorldCup.a(paramQQAppInterface);
       QLog.w("WorldCupMgr", 1, "SplashPopupWin, 请求异步加载图片");
       ArrayList localArrayList = new ArrayList(1);
-      localArrayList.add(this.jdField_a_of_type_Aakd);
-      WorldCupMgr.a(paramBaseActivity.getResources(), localArrayList, new aajz(this, paramQQAppInterface, paramBaseActivity, paramView));
+      localArrayList.add(this.jdField_a_of_type_Aaqw);
+      WorldCupMgr.a(paramBaseActivity.getResources(), localArrayList, new aaqt(this, paramQQAppInterface, paramBaseActivity, paramView));
       return false;
     }
     return b(paramQQAppInterface, paramBaseActivity, paramView);
@@ -382,11 +383,14 @@ public class SplashPopupWin
   
   public void b()
   {
-    if (QLog.isDevelopLevel()) {
+    if (AudioHelper.e()) {
       QLog.w("WorldCupMgr", 1, "释放闪屏资源");
     }
     if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
     {
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+        a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), null, false);
+      }
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(null);
       this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
     }
@@ -404,16 +408,34 @@ public class SplashPopupWin
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
     }
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    if (this.jdField_b_of_type_JavaLangRunnable != null)
     {
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+      this.jdField_b_of_type_JavaLangRunnable = null;
+    }
+    if (this.jdField_c_of_type_JavaLangRunnable != null)
+    {
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
+      this.jdField_c_of_type_JavaLangRunnable = null;
     }
     this.jdField_a_of_type_AndroidWidgetImageView = null;
     this.jdField_b_of_type_AndroidWidgetImageView = null;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Aakd.c();
+    this.jdField_a_of_type_Aaqw.c();
     WorldCupStaticInstance.a().c = false;
+  }
+  
+  boolean b()
+  {
+    String str = this.jdField_a_of_type_Aaqw.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.a(0);
+    str = str + "splash/splash.mp4";
+    if (!FileUtil.a(str))
+    {
+      QLog.w("WorldCupMgr", 1, "setVideo, 文件不存在");
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoPath(str);
+    return true;
   }
   
   int c()

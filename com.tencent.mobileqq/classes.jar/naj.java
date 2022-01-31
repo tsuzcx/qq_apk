@@ -1,27 +1,18 @@
-import com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep;
-import java.io.File;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class naj
-  implements Comparable
+public final class naj
+  implements BusinessObserver
 {
-  public final long a;
-  public final File a;
+  public naj(Activity paramActivity, QQAppInterface paramQQAppInterface, ProfileParams paramProfileParams) {}
   
-  public naj(CapacityCleanStep paramCapacityCleanStep, File paramFile)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
-  }
-  
-  public int a(naj paramnaj)
-  {
-    if (this.jdField_a_of_type_Long < paramnaj.jdField_a_of_type_Long) {
-      return -1;
+    if (paramBoolean) {
+      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new nak(this, paramObject));
     }
-    if (this.jdField_a_of_type_Long == paramnaj.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
   }
 }
 

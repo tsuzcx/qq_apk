@@ -1,15 +1,16 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.ZanCombolEffectView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class vlu
-  implements Runnable
+public class vlu
+  implements View.OnTouchListener
 {
-  vlu(vlt paramvlt) {}
+  public vlu(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    HapticManager.a().a();
-    ZanCombolEffectView.a(this.a.a, HapticManager.a().a(ZanCombolEffectView.a(this.a.a), 2));
+    return true;
   }
 }
 

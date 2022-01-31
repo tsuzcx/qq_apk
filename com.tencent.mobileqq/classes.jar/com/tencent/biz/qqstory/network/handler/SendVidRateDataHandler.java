@@ -86,7 +86,7 @@ public class SendVidRateDataHandler
         break label213;
       }
       SLog.e("Q.qqstory.pollData.SendVidRateDataHandler", "onCmdRespond Request Error:%s", new Object[] { paramErrorMessage.toString() });
-      localSendVidRateDataResultEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      localSendVidRateDataResultEvent.errorInfo = paramErrorMessage;
       localSendVidRateDataResultEvent.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
       localSendVidRateDataResultEvent.jdField_b_of_type_JavaLangString = this.c;
       localSendVidRateDataResultEvent.jdField_a_of_type_Int = i;
@@ -115,7 +115,7 @@ public class SendVidRateDataHandler
       try
       {
         paramErrorMessage.mergeFrom(paramCommonResponse.a);
-        localSendVidRateDataResultEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramErrorMessage.result.error_code.get(), paramErrorMessage.result.error_desc.get().toStringUtf8());
+        localSendVidRateDataResultEvent.errorInfo = new ErrorMessage(paramErrorMessage.result.error_code.get(), paramErrorMessage.result.error_desc.get().toStringUtf8());
         localSendVidRateDataResultEvent.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
         localSendVidRateDataResultEvent.jdField_b_of_type_JavaLangString = this.c;
         localSendVidRateDataResultEvent.jdField_a_of_type_Int = this.jdField_a_of_type_Int;

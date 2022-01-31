@@ -22,13 +22,13 @@ public class FeedsPlayModeBase$StoryVideoDeleteReceiver
     if (QLog.isColorLevel()) {
       QLog.i(this.TAG, 2, "delelte onEvent");
     }
-    if (paramDeleteStoryVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+    if (paramDeleteStoryVideoEvent.errorInfo.isSuccess()) {
       paramFeedsPlayModeBase.a(paramDeleteStoryVideoEvent.jdField_a_of_type_JavaLangString, paramDeleteStoryVideoEvent.b, paramDeleteStoryVideoEvent.c);
     }
-    if ((!paramDeleteStoryVideoEvent.jdField_a_of_type_Boolean) && (paramDeleteStoryVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+    if ((!paramDeleteStoryVideoEvent.jdField_a_of_type_Boolean) && (paramDeleteStoryVideoEvent.errorInfo.isFail()))
     {
       if (QLog.isColorLevel()) {
-        QLog.w(this.TAG, 2, "删除失败：" + paramDeleteStoryVideoEvent.a());
+        QLog.w(this.TAG, 2, "删除失败：" + paramDeleteStoryVideoEvent.getErrorMessage());
       }
       QQToast.a(paramFeedsPlayModeBase.a.getContext(), 1, "删除失败，请稍后重试", 0).a();
     }

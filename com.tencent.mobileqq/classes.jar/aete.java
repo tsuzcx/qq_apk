@@ -1,25 +1,52 @@
-import android.os.Handler;
-import com.tencent.mobileqq.nearby.now.location.TLocationManager;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
+import com.tencent.mobileqq.music.IQQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.musicgene.MusicPlayerHandler;
+import java.util.HashMap;
 
-class aete
-  implements Runnable
+public class aete
+  extends IQQPlayerCallback.Stub
 {
-  aete(aetd paramaetd) {}
+  public aete(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    LocationInfo localLocationInfo = new LocationInfo();
-    localLocationInfo.lng = String.valueOf(this.a.jdField_a_of_type_Double);
-    localLocationInfo.lat = String.valueOf(this.a.b);
-    localLocationInfo.city = "";
-    TLocationManager.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationTLocationManager, this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationLocationListener, localLocationInfo);
-    TLocationManager.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationTLocationManager).sendEmptyMessage(1);
+    Message.obtain(MusicPlayerActivity.a(this.a), 50, paramInt, 0).sendToTarget();
+  }
+  
+  public void a(SongInfo paramSongInfo)
+  {
+    if (paramSongInfo != null)
+    {
+      localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
+      if (!MusicPlayerActivity.b().containsKey(localObject)) {
+        break label64;
+      }
+      localObject = (aetj)MusicPlayerActivity.b().get(localObject);
+      paramSongInfo = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, ((aetj)localObject).a);
+      MusicPlayerActivity.a(this.a, (aetj)localObject, paramSongInfo);
+    }
+    label64:
+    while (MusicPlayerActivity.a().containsKey(localObject)) {
+      return;
+    }
+    Object localObject = MusicPlayerActivity.a(this.a);
+    if (localObject != null) {}
+    for (int i = ((IQQPlayerService)localObject).c();; i = 0)
+    {
+      localObject = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, -1L);
+      MusicPlayerActivity.a(this.a, paramSongInfo.b, paramSongInfo.g, paramSongInfo.d, (String)localObject, false, false);
+      MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.b, paramSongInfo.g, paramSongInfo.f, String.valueOf(paramSongInfo.a), paramSongInfo.c, i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aete
  * JD-Core Version:    0.7.0.1
  */

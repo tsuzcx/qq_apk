@@ -1,26 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import java.io.File;
+import java.util.Comparator;
 
-public class zdt
-  implements Runnable
+public final class zdt
+  implements Comparator
 {
-  public zdt(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    if ((!ThemeUtil.isNowThemeIsDIY()) && (!ThemeUtil.isNowThemeIsAnimate())) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramFile1.exists()) && (paramFile2.exists()))
     {
-      this.a.a.removeMessages(16);
-      this.a.a.sendMessage(this.a.a.obtainMessage(16, Boolean.valueOf(bool)));
-      return;
+      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
+        return 1;
+      }
+      return -1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zdt
  * JD-Core Version:    0.7.0.1
  */

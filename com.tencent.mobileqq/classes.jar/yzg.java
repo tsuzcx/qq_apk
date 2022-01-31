@@ -1,32 +1,29 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloRecentViewBinder;
-import com.tencent.mobileqq.apollo.view.ApolloViewBinder;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 public class yzg
   implements Runnable
 {
-  public yzg(ApolloPanel paramApolloPanel) {}
+  public yzg(ApolloBoxEnterView paramApolloBoxEnterView) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "func updateLastApolloPanel begins. Thread id = " + Thread.currentThread().getId());
-    }
-    if (this.a.jdField_a_of_type_JavaUtilList == null) {}
-    ApolloViewBinder localApolloViewBinder;
+    if (ApolloBoxEnterView.a(this.a) == null) {}
     do
     {
-      return;
-      localApolloViewBinder = (ApolloViewBinder)this.a.jdField_a_of_type_JavaUtilList.get(0);
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (!(localApolloViewBinder instanceof ApolloRecentViewBinder)));
-    if (localApolloViewBinder.c == 2) {
-      localApolloViewBinder.c = 0;
-    }
-    ((ApolloRecentViewBinder)localApolloViewBinder).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.a.j();
+      do
+      {
+        return;
+        localObject = (QQAppInterface)ApolloBoxEnterView.a(this.a).get();
+      } while ((ApolloBoxEnterView.a(this.a) == null) || (localObject == null));
+      Object localObject = (ApolloManager)((QQAppInterface)localObject).getManager(152);
+      ApolloBoxEnterView.a(this.a).hadStolen = 1;
+      ((ApolloManager)localObject).a(ApolloBoxEnterView.a(this.a));
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloBoxEnterView", 2, "updateApolloPandora");
   }
 }
 

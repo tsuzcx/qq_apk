@@ -10,7 +10,7 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
 import java.util.ArrayList;
-import nne;
+import nro;
 
 public class ShareGroupVideoDataProvider
   extends MultiGroupVideoDataProvider
@@ -66,12 +66,12 @@ public class ShareGroupVideoDataProvider
       return;
     }
     VideoData localVideoData = new VideoData();
-    if (paramPlayerVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    if (paramPlayerVideoListEvent.errorInfo.isFail())
     {
       if (QLog.isColorLevel()) {
         QLog.i("ShareGroupVideoDataProvider", 2, "handleVideoListEvent: event.errorInfo.isFail()");
       }
-      localVideoData.jdField_b_of_type_Int = paramPlayerVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode;
+      localVideoData.jdField_b_of_type_Int = paramPlayerVideoListEvent.errorInfo.errorCode;
       localVideoData.jdField_a_of_type_Boolean = true;
       localVideoData.jdField_a_of_type_Int = this.e;
     }
@@ -95,7 +95,7 @@ public class ShareGroupVideoDataProvider
   public void a(String paramString, ArrayList paramArrayList)
   {
     paramArrayList = new BatchGetVideoInfo(paramArrayList);
-    paramArrayList.a(new nne(this, paramArrayList, paramString));
+    paramArrayList.a(new nro(this, paramArrayList, paramString));
     paramArrayList.b();
   }
   

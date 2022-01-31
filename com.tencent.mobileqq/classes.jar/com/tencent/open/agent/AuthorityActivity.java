@@ -1,17 +1,17 @@
 package com.tencent.open.agent;
 
-import akzs;
-import akzt;
-import akzu;
-import akzv;
-import akzw;
-import akzy;
-import akzz;
-import alaa;
-import alac;
-import alad;
-import alae;
-import alam;
+import alhk;
+import alhl;
+import alhm;
+import alhn;
+import alho;
+import alhq;
+import alhr;
+import alhs;
+import alhu;
+import alhv;
+import alhw;
+import alie;
 import android.annotation.TargetApi;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -171,7 +171,7 @@ public class AuthorityActivity
   
   static
   {
-    jdField_b_of_type_JavaLangString = AppConstants.aJ + "qqconnect/";
+    jdField_b_of_type_JavaLangString = AppConstants.aK + "qqconnect/";
     jdField_a_of_type_Boolean = true;
   }
   
@@ -181,12 +181,12 @@ public class AuthorityActivity
     this.jdField_c_of_type_ComTencentOpenAgentReportReportDef$AuthCmdCost$Record = new ReportDef.AuthCmdCost.Record();
     this.jdField_d_of_type_ComTencentOpenAgentReportReportDef$AuthCmdCost$Record = new ReportDef.AuthCmdCost.Record();
     this.jdField_b_of_type_Int = 6;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new akzs(this);
-    this.jdField_a_of_type_JavaLangRunnable = new alaa(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new alhk(this);
+    this.jdField_a_of_type_JavaLangRunnable = new alhs(this);
     this.jdField_g_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new alae(this);
+    this.jdField_a_of_type_AndroidOsHandler$Callback = new alhw(this);
     this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus = new HandlerPlus(this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_b_of_type_JavaLangRunnable = new akzv(this);
+    this.jdField_b_of_type_JavaLangRunnable = new alhn(this);
   }
   
   public static Bitmap a(String paramString)
@@ -226,7 +226,7 @@ public class AuthorityActivity
       if (this.jdField_e_of_type_JavaLangString.length() > 12) {
         localObject = this.jdField_e_of_type_JavaLangString.substring(0, 12) + "...";
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131435602), new Object[] { localObject }));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131435618), new Object[] { localObject }));
     }
     Object localObject = new WloginSimpleInfo();
     this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString, (WloginSimpleInfo)localObject);
@@ -325,7 +325,7 @@ public class AuthorityActivity
       }
       localNewIntent.putExtra("data", (byte[])localObject1);
       localNewIntent.putExtra("cmd", (String)localObject2);
-      localNewIntent.setObserver(new alac(this));
+      localNewIntent.setObserver(new alhu(this));
       super.getAppRuntime().startServlet(localNewIntent);
       this.jdField_c_of_type_ComTencentOpenAgentReportReportDef$AuthCmdCost$Record.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_c_of_type_ComTencentOpenAgentReportReportDef$AuthCmdCost$Record.jdField_a_of_type_JavaLangString = ((String)localObject2);
@@ -367,7 +367,7 @@ public class AuthorityActivity
         paramGetAuthApiListRequest = this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
         paramGetAuthApiListRequest.what = 6;
         paramGetAuthApiListRequest.arg1 = 3000;
-        paramGetAuthApiListRequest.obj = getResources().getString(2131435606);
+        paramGetAuthApiListRequest.obj = getResources().getString(2131435622);
         this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramGetAuthApiListRequest);
         return;
       }
@@ -378,7 +378,7 @@ public class AuthorityActivity
     localNewIntent.putExtra("data", paramGetAuthApiListRequest);
     localNewIntent.putExtra("cmd", str);
     this.jdField_a_of_type_Int = 0;
-    localNewIntent.setObserver(new akzz(this));
+    localNewIntent.setObserver(new alhr(this));
     super.getAppRuntime().startServlet(localNewIntent);
     this.jdField_b_of_type_ComTencentOpenAgentReportReportDef$AuthCmdCost$Record.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_b_of_type_ComTencentOpenAgentReportReportDef$AuthCmdCost$Record.jdField_a_of_type_JavaLangString = str;
@@ -408,7 +408,7 @@ public class AuthorityActivity
       this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_JavaLangString, (String)localObject1, (Bitmap)localObject2, false);
       return;
     }
-    ThreadManager.executeOnSubThread(new akzw(this, (String)localObject1));
+    ThreadManager.executeOnSubThread(new alho(this, (String)localObject1));
   }
   
   @TargetApi(17)
@@ -420,19 +420,19 @@ public class AuthorityActivity
         break label54;
       }
       if (!isDestroyed()) {
-        DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(super.getString(2131434136)).setPositiveButton(17039370, paramOnClickListener).show();
+        DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(super.getString(2131434152)).setPositiveButton(17039370, paramOnClickListener).show();
       }
     }
     return;
     label54:
-    DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(super.getString(2131434136)).setPositiveButton(17039370, paramOnClickListener).show();
+    DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(super.getString(2131434152)).setPositiveButton(17039370, paramOnClickListener).show();
   }
   
   public void a(String paramString, Bitmap paramBitmap)
   {
     LogUtility.c("AuthorityActivity", "-->onTaskCompleted identifier = " + paramString + " - b = " + paramBitmap);
     if ((this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo != null) && (paramString.equals(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString)) && (paramBitmap != null)) {
-      runOnUiThread(new alam(this, paramBitmap));
+      runOnUiThread(new alie(this, paramBitmap));
     }
   }
   
@@ -893,10 +893,10 @@ public class AuthorityActivity
   {
     j();
     if (TextUtils.isEmpty(paramString)) {
-      a(String.format(super.getString(2131435604), new Object[] { Integer.valueOf(paramInt) }), new akzt(this));
+      a(String.format(super.getString(2131435620), new Object[] { Integer.valueOf(paramInt) }), new alhl(this));
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131435606);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131435622);
     d(paramInt, paramString);
   }
   
@@ -1067,9 +1067,9 @@ public class AuthorityActivity
     localJSONObject.put("ret", paramInt);
     localJSONObject.put("msg", paramString);
     if (TextUtils.isEmpty(paramString)) {}
-    for (paramString = String.format(super.getString(2131435604), new Object[] { Integer.valueOf(paramInt) });; paramString = String.format(super.getString(2131435609), new Object[] { paramString, Integer.valueOf(paramInt) }))
+    for (paramString = String.format(super.getString(2131435620), new Object[] { Integer.valueOf(paramInt) });; paramString = String.format(super.getString(2131435625), new Object[] { paramString, Integer.valueOf(paramInt) }))
     {
-      a(paramString, new akzu(this, paramInt, localJSONObject));
+      a(paramString, new alhm(this, paramInt, localJSONObject));
       return;
     }
   }
@@ -1088,26 +1088,26 @@ public class AuthorityActivity
   
   protected void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362840);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131365767);
-    this.jdField_c_of_type_JavaLangString = ((String)super.getText(2131435591));
-    this.jdField_d_of_type_JavaLangString = ((String)super.getText(2131435599));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365768));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365769));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)super.findViewById(2131363769));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362845);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131365772);
+    this.jdField_c_of_type_JavaLangString = ((String)super.getText(2131435607));
+    this.jdField_d_of_type_JavaLangString = ((String)super.getText(2131435615));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365773));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365774));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)super.findViewById(2131363793));
     this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131365757));
+    this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131365762));
     if (this.n) {
       this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setTag(Boolean.valueOf(this.n));
     }
-    super.setLeftViewName(2131435601);
+    super.setLeftViewName(2131435617);
     if (this.n)
     {
-      super.setTitle(2131435597);
-      this.jdField_d_of_type_JavaLangString = ((String)super.getText(2131435598));
+      super.setTitle(2131435613);
+      this.jdField_d_of_type_JavaLangString = ((String)super.getText(2131435614));
       this.jdField_c_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
       this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_d_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131365752).setVisibility(8);
+      this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131365757).setVisibility(8);
       this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setVisibility(4);
     }
     for (;;)
@@ -1115,9 +1115,9 @@ public class AuthorityActivity
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new akzy(this));
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new alhq(this));
       return;
-      super.setTitle(2131435596);
+      super.setTitle(2131435612);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       if (AppSetting.jdField_b_of_type_Boolean) {
@@ -1247,7 +1247,7 @@ public class AuthorityActivity
       QLog.d("AuthorityActivity", 1, "send | cmd: g_t_n_p | uin : *" + AuthorityUtil.a(this.jdField_a_of_type_JavaLangString));
       AccountManage.a().a(this.jdField_a_of_type_JavaLangString, 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver, false);
       this.jdField_a_of_type_ComTencentOpenAgentReportReportDef$AuthCmdCost$Record.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131435608));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131435624));
       if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
       try
       {
@@ -1291,7 +1291,7 @@ public class AuthorityActivity
     if (QLog.isColorLevel()) {
       QLog.d("AuthorityActivity", 2, "-->loginSSO--");
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131435605));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131435621));
     if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
     try
     {
@@ -1434,7 +1434,7 @@ public class AuthorityActivity
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("doAuthorize", true);
     this.jdField_a_of_type_AndroidOsBundle.putString("need_pay", "1");
     this.jdField_a_of_type_AndroidOsBundle.putString("appid_for_getting_config", this.jdField_a_of_type_AndroidOsBundle.getString("client_id") + "");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131435605));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131435621));
     if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
@@ -1540,7 +1540,7 @@ public class AuthorityActivity
     }
     ((NewIntent)localObject5).putExtra("data", (byte[])localObject1);
     ((NewIntent)localObject5).putExtra("cmd", (String)localObject3);
-    ((NewIntent)localObject5).setObserver(new alad(this));
+    ((NewIntent)localObject5).setObserver(new alhv(this));
     super.getAppRuntime().startServlet((NewIntent)localObject5);
     this.jdField_d_of_type_ComTencentOpenAgentReportReportDef$AuthCmdCost$Record.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_d_of_type_ComTencentOpenAgentReportReportDef$AuthCmdCost$Record.jdField_a_of_type_JavaLangString = ((String)localObject3);
@@ -1708,14 +1708,14 @@ public class AuthorityActivity
       }
       if (this.jdField_a_of_type_Int == 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131435608));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131435624));
         if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         }
         i();
         return;
       }
-      if (this.jdField_a_of_type_AndroidWidgetButton.getText().equals(super.getString(2131435606)))
+      if (this.jdField_a_of_type_AndroidWidgetButton.getText().equals(super.getString(2131435622)))
       {
         f();
         return;
@@ -1756,12 +1756,17 @@ public class AuthorityActivity
       QLog.d("AuthorityActivity", 2, "-->onCreate--");
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    super.setContentView(2130969254);
+    super.setContentView(2130969252);
     if (!(super.getAppRuntime() instanceof OpenSDKAppInterface)) {
       return;
     }
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)super.getAppRuntime());
     this.jdField_a_of_type_AndroidOsBundle = super.getIntent().getBundleExtra("key_params");
+    if (this.jdField_a_of_type_AndroidOsBundle == null)
+    {
+      b(-5, "params is null", "params is null", "params is null");
+      return;
+    }
     jdField_f_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("client_id");
     this.n = super.getIntent().getBooleanExtra("internal_authority", false);
     this.m = getIntent().getBooleanExtra("authority_start_qq_login", false);
@@ -1797,19 +1802,19 @@ public class AuthorityActivity
         i1 = 0;
       }
       if (Build.VERSION.SDK_INT < 17) {
-        break label758;
+        break label781;
       }
       int i1 = Settings.Global.getInt(getContentResolver(), "always_finish_activities", 0);
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label758;
+        break label781;
       }
       boolean bool = a(this.jdField_a_of_type_JavaLangString);
       if ((i1 != 1) || (!bool)) {
-        break label758;
+        break label781;
       }
       this.o = true;
       if (!this.o) {
-        break label882;
+        break label905;
       }
     }
     this.jdField_a_of_type_AndroidOsBundle.putString("sign", paramBundle);
@@ -1833,26 +1838,26 @@ public class AuthorityActivity
     this.jdField_c_of_type_AndroidContentSharedPreferences = OpensdkPreference.a(this, "openid_encrytoken");
     if (this.m)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, 0, 2130970579, 17);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, 0, 2130970592, 17);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(-1);
       if (this.jdField_e_of_type_JavaLangString != null) {
         this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_e_of_type_JavaLangString, null);
       }
       if (Build.VERSION.SDK_INT <= 10) {
-        break label700;
+        break label723;
       }
       i1 = 4;
       this.jdField_a_of_type_AndroidContentSharedPreferences = super.getSharedPreferences("accountList", i1);
       paramBundle = super.getIntent().getStringExtra("key_action");
       this.jdField_a_of_type_MqqManagerWtloginManager = ((WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1));
       if ((!this.n) && (!"action_login".equals(paramBundle))) {
-        break label829;
+        break label852;
       }
       jdField_a_of_type_Boolean = true;
       this.jdField_b_of_type_Boolean = false;
       paramBundle = super.getAppRuntime().getAccount();
       if ((this.n) || (!GesturePWDUtils.getJumpLock(this, paramBundle)) || (GesturePWDUtils.getAppForground(this))) {
-        break label705;
+        break label728;
       }
       if (QLog.isColorLevel()) {
         QLog.d("AuthorityActivity", 2, "-->onCreate--has gesture password, will start unlock activity");
@@ -1862,17 +1867,17 @@ public class AuthorityActivity
       paramBundle.putExtra("key_gesture_from_authority", true);
       super.startActivityForResult(paramBundle, 100);
     }
-    label700:
-    label705:
-    label758:
+    label723:
+    label728:
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       a("" + this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString));
     }
+    label781:
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     b(this.jdField_a_of_type_JavaLangString, false);
     for (;;)
     {
-      label829:
+      label852:
       this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(1);
       ReportCenter.a().a(this.jdField_a_of_type_JavaLangString, "", jdField_f_of_type_JavaLangString, "1", "1", "0", false);
       if (!this.m) {
@@ -1881,7 +1886,7 @@ public class AuthorityActivity
       this.jdField_b_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a();
       return;
-      label882:
+      label905:
       e();
     }
   }

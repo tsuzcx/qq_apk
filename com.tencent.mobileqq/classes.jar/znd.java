@@ -1,28 +1,13 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
-import java.util.Queue;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
 
 public class znd
-  extends Handler
+  implements Runnable
 {
-  public znd(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public znd(MayknowRecommendManager paramMayknowRecommendManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (zng)paramMessage.obj;
-    this.a.a.remove(paramMessage);
-    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
+    MayknowRecommendManager.a(this.a);
   }
 }
 

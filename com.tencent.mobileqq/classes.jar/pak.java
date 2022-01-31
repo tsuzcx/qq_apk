@@ -1,24 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.viewplugin.ViewPluginManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class pak
-  implements Runnable
+  implements BusinessObserver
 {
-  public pak(ViewPluginManager paramViewPluginManager) {}
+  public pak(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    String str = "http://" + this.a.b + "?_bid=" + this.a.jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(str)) {
+    if (QLog.isColorLevel()) {
+      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
+    }
+    if (!paramBoolean)
+    {
+      EditUniqueTitleActivity.a(this.a, -1);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ViewPluginManager", 2, "checkOfflineUpNotCallback.");
+    paramBundle = paramBundle.getByteArray("data");
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    try
+    {
+      localOIDBSSOPkg.mergeFrom(paramBundle);
+      paramInt = localOIDBSSOPkg.uint32_result.get();
+      EditUniqueTitleActivity.a(this.a, paramInt);
+      return;
     }
-    HtmlOffline.b(str, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      EditUniqueTitleActivity.a(this.a, -1);
+    }
   }
 }
 

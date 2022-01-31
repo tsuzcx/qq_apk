@@ -1,35 +1,17 @@
-import com.tencent.mobileqq.armap.Sound;
+import android.os.Handler;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class aber
+  implements ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler
 {
-  public int a;
-  public int b;
-  public int c;
+  public aber(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
   
-  public aber(Sound paramSound, int paramInt1, int paramInt2)
+  public void a(String paramString, Object paramObject, ArrayList paramArrayList)
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
-  }
-  
-  public boolean a()
-  {
-    return this.c == 1;
-  }
-  
-  public boolean b()
-  {
-    return this.c == 2;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 3;
-  }
-  
-  public boolean d()
-  {
-    return this.c == 4;
+    ArkRecommendLogic.a().post(new abes(this, paramArrayList));
   }
 }
 

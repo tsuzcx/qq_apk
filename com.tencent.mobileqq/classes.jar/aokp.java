@@ -1,30 +1,83 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import dov.com.tencent.biz.qqstory.takevideo.filter.FilterData.FilterPageItem;
+import dov.com.tencent.biz.qqstory.takevideo.filter.TimeFilterData;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class aokp
-  implements DialogInterface.OnClickListener
+  extends FilterData.FilterPageItem
 {
-  public aokp(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372056);
+  private ImageView b = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372057);
+  private ImageView c = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372058);
+  private ImageView d = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372059);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private aokp(TimeFilterData paramTimeFilterData, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    Object localObject = ShortVideoPreviewActivity.a(this.a);
-    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
-    Intent localIntent = new Intent();
-    localIntent.setClassName((String)localObject, paramDialogInterface);
-    localIntent.addFlags(603979776);
-    localIntent.putExtra("file_send_path", this.a.d);
-    localIntent.putExtra("file_send_size", this.a.a);
-    localIntent.putExtra("file_send_duration", this.a.b);
-    localIntent.putExtra("file_source", this.a.c);
-    this.a.startActivity(localIntent);
-    ShortVideoPreviewActivity.a(this.a);
-    localObject = new Intent("key_video_select_confirm_ok_click");
-    ((Intent)localObject).putExtra("className", paramDialogInterface);
-    this.a.sendBroadcast((Intent)localObject);
+    super(paramContext, paramViewGroup);
+  }
+  
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(paramContext).inflate(2130970872, paramViewGroup, false);
+  }
+  
+  void a(ImageView paramImageView, char paramChar)
+  {
+    switch (paramChar)
+    {
+    default: 
+      return;
+    case '0': 
+      paramImageView.setImageResource(2130843682);
+      return;
+    case '1': 
+      paramImageView.setImageResource(2130843683);
+      return;
+    case '2': 
+      paramImageView.setImageResource(2130843684);
+      return;
+    case '3': 
+      paramImageView.setImageResource(2130843685);
+      return;
+    case '4': 
+      paramImageView.setImageResource(2130843686);
+      return;
+    case '5': 
+      paramImageView.setImageResource(2130843687);
+      return;
+    case '6': 
+      paramImageView.setImageResource(2130843688);
+      return;
+    case '7': 
+      paramImageView.setImageResource(2130843689);
+      return;
+    case '8': 
+      paramImageView.setImageResource(2130843690);
+      return;
+    }
+    paramImageView.setImageResource(2130843691);
+  }
+  
+  public void a(TimeFilterData paramTimeFilterData, int paramInt)
+  {
+    super.a(paramTimeFilterData, paramInt);
+    paramTimeFilterData = new SimpleDateFormat("HH:mm");
+    ((TimeFilterData)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoFilterFilterData).c = paramTimeFilterData.format(new Date());
+    SLog.b("TimeFilterData", "TimeFilterData time:" + ((TimeFilterData)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoFilterFilterData).c);
+    a(this.jdField_a_of_type_AndroidWidgetImageView, ((TimeFilterData)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoFilterFilterData).c.charAt(0));
+    a(this.b, ((TimeFilterData)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoFilterFilterData).c.charAt(1));
+    a(this.c, ((TimeFilterData)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoFilterFilterData).c.charAt(3));
+    a(this.d, ((TimeFilterData)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoFilterFilterData).c.charAt(4));
+    paramInt = UIUtils.b(this.jdField_a_of_type_AndroidViewView.getContext());
+    this.jdField_a_of_type_AndroidViewView.setPadding(0, paramInt / 3 * 2, 0, 0);
   }
 }
 

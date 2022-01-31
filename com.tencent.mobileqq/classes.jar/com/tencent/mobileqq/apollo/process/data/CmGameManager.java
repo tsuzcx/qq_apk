@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import yrr;
+import yye;
 
 public class CmGameManager
   implements Manager
@@ -29,7 +29,7 @@ public class CmGameManager
     QLog.i("cmgame_process.CmGameManager", 1, "[CmGameManager] created.");
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel = new ApolloCmdChannel(CmGameUtil.a());
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new yrr();
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new yye();
     paramAppInterface = new IntentFilter();
     paramAppInterface.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
     try

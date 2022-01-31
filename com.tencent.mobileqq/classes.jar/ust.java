@@ -1,8 +1,14 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.aio.anim.SigTlpAnimation;
 
-public abstract interface ust
+public class ust
+  implements Runnable
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
+  public ust(SigTlpAnimation paramSigTlpAnimation) {}
+  
+  public void run()
+  {
+    this.a.d();
+  }
 }
 
 

@@ -1,38 +1,36 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdateEvent;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class oiw
-  implements TextWatcher
+  extends QQUIEventReceiver
 {
-  public oiw(EditTextDialog paramEditTextDialog) {}
-  
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public oiw(@NonNull EditVideoDoodle paramEditVideoDoodle)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener == null) {}
-    do
+    super(paramEditVideoDoodle);
+  }
+  
+  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiUpdateEvent paramDoodleEmojiUpdateEvent)
+  {
+    oiy localoiy = paramEditVideoDoodle.a;
+    if (localoiy != null) {
+      localoiy.a(paramEditVideoDoodle.a());
+    }
+    for (;;)
     {
+      StoryReportor.b("edit_video", "face_list_success", 0, paramDoodleEmojiUpdateEvent.errorInfo.errorCode, new String[0]);
       return;
-      paramInt2 = this.a.a(paramCharSequence.toString());
-      if (paramInt2 > 420)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, paramInt1));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramInt1);
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener != null) {
-          this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener.b(420);
-        }
-      }
-    } while (paramInt2 <= 0);
-    this.a.b.setTextColor(Color.parseColor("#12b7f5"));
-    this.a.b.setEnabled(true);
+      SLog.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DoodleEmojiManager.DoodleEmojiUpdateEvent.class;
   }
 }
 

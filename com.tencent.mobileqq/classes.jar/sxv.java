@@ -1,18 +1,14 @@
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class sxv
   implements Runnable
 {
-  public sxv(Leba paramLeba) {}
+  public sxv(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, String paramString, int paramInt) {}
   
   public void run()
   {
-    TroopRedTouchManager localTroopRedTouchManager = (TroopRedTouchManager)this.a.a.getManager(69);
-    oidb_0x791.RedDotInfo localRedDotInfo = localTroopRedTouchManager.a(7);
-    this.a.a(new sxw(this, localRedDotInfo, localTroopRedTouchManager));
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.app, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
 }
 

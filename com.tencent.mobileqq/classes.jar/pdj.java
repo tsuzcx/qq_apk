@@ -1,137 +1,52 @@
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.ShareApiPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebShareInterface;
-import com.tencent.open.agent.report.ReportCenter;
+import com.tencent.biz.troopgift.AIOGiftPanelContainer;
+import com.tencent.biz.troopgift.TroopGiftAioPanelData;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.troop.utils.TroopGiftManager;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
+import java.io.File;
 
-public class pdj
-  implements BusinessObserver
+class pdj
+  extends TroopGiftCallback
 {
-  public pdj(ShareApiPlugin paramShareApiPlugin, WebUiUtils.WebShareInterface paramWebShareInterface) {}
+  pdj(pdi parampdi, long paramLong, TroopGiftManager paramTroopGiftManager, AIOAnimationControlManager paramAIOAnimationControlManager) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, String paramString)
   {
-    int j = 1;
     if (QLog.isColorLevel()) {
-      QLog.d("ShareApiPlugin", 2, "onReceive, getUrlInfo, isSuccess=" + paramBoolean);
+      QLog.d("AIOGiftPanelContainer", 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
-    Object localObject1 = new Bundle();
-    if (paramBoolean)
-    {
-      Object localObject2;
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c)) || (this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c.startsWith("http://")) || (this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c.startsWith("https://")))
-      {
-        localObject2 = paramBundle.getString("extra_summary");
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label626;
-        }
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c = ((String)localObject2);
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareApiPlugin", 2, "Use share summary parsed by server");
-        }
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.d))
-      {
-        localObject2 = paramBundle.getStringArrayList("extra_images");
-        if ((localObject2 == null) || (((ArrayList)localObject2).size() <= 0)) {
-          break label643;
-        }
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.d = ((String)((ArrayList)localObject2).get(0));
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareApiPlugin", 2, "Use share thumb parsed by server");
-        }
-      }
-      label193:
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.b))
-      {
-        localObject2 = paramBundle.getString("extra_title");
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label660;
-        }
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.b = ((String)localObject2);
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareApiPlugin", 2, "Use share title parsed by server");
-        }
-      }
-      label245:
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.a))
-      {
-        paramBundle = paramBundle.getString("extra_url");
-        if (TextUtils.isEmpty(paramBundle)) {
-          break label677;
-        }
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.a = paramBundle;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareApiPlugin", 2, "Use share url parsed by server");
-        }
-      }
-      label294:
-      if (QLog.isColorLevel()) {
-        QLog.e("shareWebPage", 2, "Share info after QZone rich: title=" + this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.b + ", summary=" + this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c + ", thumb=" + this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.d + ", shareURL=" + this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.a);
-      }
-      ((Bundle)localObject1).putInt("extra_url_info_from", 5);
-      label384:
-      this.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareInterface.a(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.b, this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c, this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.a, this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.d, (Bundle)localObject1);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.d)) {
-        break label705;
-      }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGiftPanelContainer", 2, "onGetExtraData() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", configURL = " + paramString);
     }
-    label643:
-    label660:
-    label677:
-    label705:
-    for (int i = 1;; i = 0)
-    {
-      paramInt = i;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.c)) {
-        paramInt = i | 0x2;
-      }
-      i = paramInt;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.b)) {
-        i = paramInt | 0x4;
-      }
-      paramBundle = new Bundle();
-      paramBundle.putString("report_type", "102");
-      paramBundle.putString("act_type", "91");
-      localObject1 = new StringBuilder().append("");
-      paramInt = j;
-      if (i == 0) {
-        paramInt = 0;
-      }
-      paramBundle.putString("intext_1", paramInt);
-      paramBundle.putString("intext_2", "" + i);
-      paramBundle.putString("stringext_1", "" + this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.a);
-      ReportCenter.a().a(paramBundle, "", this.jdField_a_of_type_ComTencentBizWebviewpluginShareApiPlugin.mRuntime.a().getAccount(), false);
+    int i = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(this.jdField_a_of_type_Pdi.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Pdi.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData = TroopGiftAioPanelData.a(this.jdField_a_of_type_Pdi.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, this.jdField_a_of_type_Pdi.jdField_a_of_type_Int);
+    if ((paramInt <= i) && (this.jdField_a_of_type_Pdi.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData != null)) {
+      this.jdField_a_of_type_Pdi.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a(0);
+    }
+    while (TextUtils.isEmpty(paramString)) {
       return;
-      label626:
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ShareApiPlugin", 2, "Server can't resolve summary");
-      break;
-      if (!QLog.isColorLevel()) {
-        break label193;
-      }
-      QLog.d("ShareApiPlugin", 2, "Server can't resolve thumb");
-      break label193;
-      if (!QLog.isColorLevel()) {
-        break label245;
-      }
-      QLog.d("ShareApiPlugin", 2, "Server can't resolve title");
-      break label245;
-      if (!QLog.isColorLevel()) {
-        break label294;
-      }
-      QLog.d("ShareApiPlugin", 2, "Server can't resolve url");
-      break label294;
-      ((Bundle)localObject1).putInt("extra_url_info_from", 3);
-      break label384;
     }
+    Object localObject = new File(AppConstants.bb);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    localObject = AppConstants.bb + "troopGiftConfig.tmp";
+    paramString = new DownloadTask(paramString, new File((String)localObject));
+    paramString.b = 3;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("filePath", (String)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a().a(paramString, new pdk(this, paramInt), localBundle);
   }
 }
 

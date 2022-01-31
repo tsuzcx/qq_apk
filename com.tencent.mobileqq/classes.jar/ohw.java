@@ -1,27 +1,36 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
+import com.tencent.mobileqq.activity.richmedia.QzoneSyncQQStoryTool;
 
 public class ohw
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public ohw(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
+  public ohw(EditPicQzonePublishActivity paramEditPicQzonePublishActivity, long paramLong) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
+    boolean bool = true;
+    if (EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity))
+    {
+      EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity).setSelected(false);
+      paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity;
+      if (EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity)) {
+        break label73;
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
+    for (;;)
+    {
+      EditPicQzonePublishActivity.b(paramView, bool);
+      QzoneSyncQQStoryTool.a(this.jdField_a_of_type_Long, EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity));
+      return;
+      EditPicQzonePublishActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicQzonePublishActivity).setSelected(true);
+      break;
+      label73:
+      bool = false;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

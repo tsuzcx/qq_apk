@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.data.LebaFeedInfo;
-import java.util.HashMap;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.widget.QQToastNotifier;
 
-public abstract interface adyp
+class adyp
+  implements Runnable
 {
-  public abstract void a(LebaFeedInfo paramLebaFeedInfo);
+  adyp(adyo paramadyo) {}
   
-  public abstract void a(LebaFeedInfo paramLebaFeedInfo, HashMap paramHashMap);
-  
-  public abstract void ag_();
-  
-  public abstract void b();
-  
-  public abstract void b(LebaFeedInfo paramLebaFeedInfo);
+  public void run()
+  {
+    HotVideoData localHotVideoData = this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a();
+    if ((localHotVideoData == null) || (this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.jdField_a_of_type_Int != 1) || (localHotVideoData.picIndex != this.a.a.jdField_a_of_type_Int))
+    {
+      new QQToastNotifier(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a).a("视频插件安装成功", 100, 0, 2);
+      return;
+    }
+    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.c(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder, this.a.a.jdField_a_of_type_Int);
+  }
 }
 
 

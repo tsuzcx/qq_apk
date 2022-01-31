@@ -1,16 +1,16 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qqfav.QfavBuilder;
+import cooperation.qqfav.QfavHelper;
 
 public class amwi
   implements Runnable
 {
-  public amwi(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt, ArrayList paramArrayList) {}
+  public amwi(QfavBuilder paramQfavBuilder, Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    RemoteHandleManager.a().a().a(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    QfavHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

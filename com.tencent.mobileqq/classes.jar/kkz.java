@@ -1,30 +1,33 @@
-import com.tencent.biz.authorize.FlatBuffersConfig;
-import java.io.File;
-import java.nio.ByteBuffer;
+import android.text.TextUtils;
+import com.tencent.biz.AuthorizeConfig;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
 
 public class kkz
   implements Runnable
 {
-  public kkz(FlatBuffersConfig paramFlatBuffersConfig, ByteBuffer paramByteBuffer, File paramFile, boolean paramBoolean) {}
+  public kkz(AuthorizeConfig paramAuthorizeConfig, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
   
   public void run()
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      if ((i >= 3) || (this.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a(this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean))) {
+      if (this.jdField_a_of_type_MqqManagerTicketManager != null) {
+        if ((this.jdField_a_of_type_MqqManagerTicketManager.GetPskey(this.jdField_a_of_type_JavaLangString, 16L, this.jdField_a_of_type_ArrayOfJavaLangString, null) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_JavaLangString)))) {
+          break label78;
+        }
+      }
+      label78:
+      for (boolean bool = true;; bool = false)
+      {
+        QLog.d("AuthorizeConfig", 1, "pre hits result : " + bool);
         return;
       }
-      try
-      {
-        Thread.sleep(100L);
-        label36:
-        i += 1;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        break label36;
-      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("AuthorizeConfig", 1, "preload k exception ");
     }
   }
 }

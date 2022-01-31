@@ -1,27 +1,59 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class akxc
-  extends AccessibilityDelegateCompat
+  implements Runnable
 {
-  public akxc(TabBarView paramTabBarView) {}
+  public akxc(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler, String paramString, Bundle paramBundle, boolean paramBoolean) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void run()
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.a.a(paramView) == this.a.h) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool3 = false;
+    String str = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
+      boolean bool2 = bool3;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        bool2 = bool3;
+        if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.h)) {
+          bool2 = true;
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d("SwiftBrowserScreenShotHandler", 2, "doMultiShare download Finish!");
+        QLog.d("SwiftBrowserScreenShotHandler", 2, "isGif:" + this.jdField_a_of_type_Boolean + ", imgUrl:" + this.jdField_a_of_type_JavaLangString);
+        QLog.d("SwiftBrowserScreenShotHandler", 2, "isLastMultiShare:" + bool2 + ", mLastMultiShareUrl:" + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.h);
+        QLog.d("SwiftBrowserScreenShotHandler", 2, "isDialogShowing:" + bool1 + ", localPath:" + str);
+      }
+      if ((bool1) && (bool2))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_AndroidOsHandler.post(new akxd(this));
+        if (TextUtils.isEmpty(str)) {
+          break label304;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.e = str;
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.b = 3;
+        if (!this.jdField_a_of_type_Boolean) {
+          break;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.g(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.e);
+      }
       return;
     }
-  }
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_AndroidOsHandler.post(new akxe(this));
+    return;
+    label304:
+    QRUtils.a(1, 2131438492);
   }
 }
 

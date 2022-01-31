@@ -1,18 +1,17 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
 
 public class wjd
+  implements Runnable
 {
-  public int a;
-  public AccountSearchPb.ResultItem a;
-  public AccountSearchPb.hotwordrecord a;
-  public AccountSearchPb.record a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public wjd(ZhituManager paramZhituManager) {}
+  
+  public void run()
+  {
+    ZhituManager.a(this.a, ZhituManager.a(this.a));
+    ZhituManager.a(this.a, false);
+    Looper.myLooper().quit();
+  }
 }
 
 

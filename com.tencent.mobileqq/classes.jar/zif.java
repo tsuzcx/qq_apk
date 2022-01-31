@@ -1,19 +1,30 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.ClubContentUpdateHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class zif
   implements Runnable
 {
-  public zif(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zif(ClubContentUpdateHandler paramClubContentUpdateHandler, int paramInt, String paramString) {}
   
   public void run()
   {
-    PhoneContactManagerImp.a(this.a, this.a.a());
-    PhoneContactManagerImp.a(this.a);
-    this.a.e = this.a.a.getLong("key_contacts_switches", 0L);
-    ContactSyncManager localContactSyncManager = (ContactSyncManager)PhoneContactManagerImp.a(this.a).getManager(40);
+    try
+    {
+      ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppClubContentUpdateHandler.a.getManager(152);
+      int i = ApolloUtil.a(1);
+      if (i != this.jdField_a_of_type_Int) {
+        localApolloManager.a(1);
+      }
+      QLog.i("ClubContentUpdateHandler", 1, "handleApolloPanelRelTimeUpdate name: " + this.jdField_a_of_type_JavaLangString + ", ver: " + this.jdField_a_of_type_Int + ", locver: " + i);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ClubContentUpdateHandler", 1, "handleApolloPanelRealTimeUpdate failed" + localException);
+    }
   }
 }
 

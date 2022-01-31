@@ -1,20 +1,44 @@
-import com.tencent.mobileqq.config.AboutConfig;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import java.io.File;
+import org.json.JSONArray;
 
-public final class absn
+public class absn
   implements Runnable
 {
-  public absn(AboutConfig paramAboutConfig, ResourcePluginInfo paramResourcePluginInfo) {}
+  public absn(BubbleManager paramBubbleManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
-    this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig.b();
+    synchronized (this.a)
+    {
+      Object localObject1 = new File(this.a.a(), "bubble_local.cfg");
+      boolean bool = ((File)localObject1).exists();
+      if (bool) {}
+      try
+      {
+        localObject1 = this.a.a(((File)localObject1).getAbsolutePath());
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          this.a.a = new JSONArray((String)localObject1);
+        }
+        if (this.a.a == null) {
+          this.a.a = new JSONArray();
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     absn
  * JD-Core Version:    0.7.0.1
  */

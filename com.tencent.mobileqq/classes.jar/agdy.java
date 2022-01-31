@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.olympic.OlympicManager;
-import java.util.List;
+import EncounterSvc.RespEncounterInfo;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
+import com.tencent.mobileqq.util.FaceDecoder;
 
 public class agdy
   implements Runnable
 {
-  public agdy(OlympicManager paramOlympicManager, List paramList1, List paramList2) {}
+  public agdy(ChatPushCarrierHelper paramChatPushCarrierHelper, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
   
   public void run()
   {
-    OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager, "olympic_predown_act", this.jdField_a_of_type_JavaUtilList, this.b);
+    FaceDecoder localFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
+    for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
+    {
+      localFaceDecoder.a(32, str, 202, l);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agdy
  * JD-Core Version:    0.7.0.1
  */

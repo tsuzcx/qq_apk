@@ -1,23 +1,44 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.profile.DataTag;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-public class sui
-  extends BroadcastReceiver
+class sui
+  implements View.OnClickListener
 {
-  public sui(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  sui(sug paramsug) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent != null)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag == null) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
+      return;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a instanceof String)) {
+        paramView = (String)this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a;
       }
-      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-        this.a.finish();
+      while (paramView != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b(paramView);
+        ThreadManager.post(new suj(this), 5, null, true);
+        return;
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a instanceof ProfileActivity.CardContactInfo))
+        {
+          paramView = (ProfileActivity.CardContactInfo)this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a;
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a.a == 33)) {
+            paramView = paramView.c;
+          } else {
+            paramView = paramView.a + " " + paramView.c;
+          }
+        }
+        else
+        {
+          paramView = null;
+        }
       }
     }
   }

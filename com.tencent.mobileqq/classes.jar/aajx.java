@@ -1,24 +1,20 @@
-import android.widget.PopupWindow;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.config.SplashPopupWin;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
 
 public class aajx
-  implements IMediaPlayer.OnCompletionListener
+  implements Runnable
 {
-  public aajx(SplashPopupWin paramSplashPopupWin, PopupWindow paramPopupWindow, QQAppInterface paramQQAppInterface, TextureVideoView paramTextureVideoView) {}
+  public aajx(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData1, ObjectBaseData paramObjectBaseData2) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer)
+  public void run()
   {
-    QLog.w("WorldCupMgr", 1, "SplashPopupWin, 播放结束, popupWindow[" + this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing() + "]");
-    if ((AudioHelper.d()) && (AudioHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVisibility(4);
+    ObjectBaseData localObjectBaseData = this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData;
+    if ((this.b != null) && (this.b.a) && (this.b.f) && (!this.b.e)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localObjectBaseData.a(bool);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a(0);
   }
 }
 

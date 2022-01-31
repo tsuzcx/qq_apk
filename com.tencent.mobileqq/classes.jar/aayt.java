@@ -1,21 +1,65 @@
-import android.view.View;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAiDictMgr;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.VasUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.wordsegment.WordSegment;
+import java.lang.ref.WeakReference;
+import java.util.Locale;
 
-class aayt
-  implements ActionSheet.OnButtonClickListener
+public class aayt
+  implements Runnable
 {
-  aayt(aayr paramaayr, ActionSheet paramActionSheet) {}
+  public aayt(ArkAiDictMgr paramArkAiDictMgr) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Aayr.a.f();
-    this.jdField_a_of_type_Aayr.a.g();
-    this.jdField_a_of_type_Aayr.a.h();
-    this.jdField_a_of_type_Aayr.a.i();
-    this.jdField_a_of_type_Aayr.a.b("本地所有数据已删除成功");
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.b("ArkApp.Dict", "initWordData, qq app is null, return.");
+      return;
+    }
+    int j = -1;
+    for (int i = j;; i = j)
+    {
+      try
+      {
+        WordSegment.setLogCallback(new aayu(this));
+        i = j;
+        if (!ArkAiDictMgr.a(localQQAppInterface)) {
+          break label124;
+        }
+        i = j;
+        j = WordSegment.init(ArkAppCenter.e() + '/');
+        i = j;
+        ArkAppCenter.b("ArkApp.Dict", String.format("getWordInitState, WordSegment_Init State is opened", new Object[0]));
+        i = j;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        for (;;)
+        {
+          label124:
+          j = i;
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ArkApp.Dict", 2, "initWordData, UnsatisfiedLinkError, err:" + localUnsatisfiedLinkError.getMessage());
+            i = j;
+          }
+        }
+        ArkAiDictMgr.b = true;
+        VasUtils.a(localQQAppInterface);
+      }
+      if (i == 0) {
+        break;
+      }
+      ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "initWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));
+      return;
+      i = j;
+      ArkAppCenter.b("ArkApp.Dict", String.format("getWordInitState, WordSegment_Init State is closed", new Object[0]));
+    }
   }
 }
 

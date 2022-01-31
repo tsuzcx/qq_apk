@@ -1,23 +1,40 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class tit
-  implements Animation.AnimationListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public tit(QQLSActivity paramQQLSActivity) {}
+  public tit(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QQLSActivity.a(this.a) != null) {
-      QQLSActivity.a(this.a).post(new tiu(this));
+    if (NotifyPushSettingActivity.a())
+    {
+      NotifyPushSettingActivity.a(this.a).setChecked(false);
+      NotifyPushSettingActivity.a(this.a).setVisibility(8);
+      SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131434218), "qqsetting_notify_showcontent_key", paramBoolean);
+      if (!paramBoolean) {
+        break label127;
+      }
+    }
+    label127:
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
+      return;
+      if (paramBoolean)
+      {
+        NotifyPushSettingActivity.a(this.a).setVisibility(0);
+        break;
+      }
+      NotifyPushSettingActivity.a(this.a).setVisibility(8);
+      break;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

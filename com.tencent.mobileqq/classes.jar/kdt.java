@@ -1,35 +1,43 @@
-import com.tencent.av.ui.redbag.AVRedBag;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.av.ui.VideoInviteFull;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-class kdt
+public class kdt
   implements Runnable
 {
-  kdt(kds paramkds) {}
+  public kdt(VideoInviteFull paramVideoInviteFull) {}
   
   public void run()
   {
-    AVRedBagMgr localAVRedBagMgr = this.a.a.a();
-    if (localAVRedBagMgr == null) {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.a.a.i, 1, "onAVActivityResume, AVRedBagMgr为空");
-      }
-    }
+    if (this.a.a == null) {}
     do
     {
+      do
+      {
+        return;
+        this.a.a.setVisibility(8);
+        this.a.c.setVisibility(8);
+        if ((NetworkUtil.h(VideoInviteFull.a(this.a))) || (NetworkUtil.f(VideoInviteFull.b(this.a)))) {
+          break;
+        }
+        if (NetworkUtil.b(VideoInviteFull.c(this.a)))
+        {
+          this.a.c.setVisibility(0);
+          this.a.c.setText(2131429067);
+        }
+      } while (!NetworkUtil.c(VideoInviteFull.d(this.a)));
+      this.a.c.setVisibility(0);
+      this.a.c.setText(2131429066);
       return;
-      if (localAVRedBagMgr.a()) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.w("AVRedBag", 1, "onAVActivityResume, 不是GameMode");
-    return;
-    localAVRedBagMgr.c("onAVActivityResume");
+    } while (!this.a.b);
+    this.a.c.setVisibility(0);
+    this.a.c.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kdt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,20 @@
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.filemanager.data.FMConfig;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
-class veq
-  implements Runnable
+public class veq
+  implements FileManagerUtil.TipsClickedInterface
 {
-  veq(vep paramvep, String paramString) {}
+  public veq(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_Vep.a.setText(this.jdField_a_of_type_JavaLangString + " " + this.jdField_a_of_type_Vep.b);
+    paramView = FMConfig.a();
+    FileManagerUtil.a(this.a.a, paramView);
+    FileManagerReporter.a("0X8007FA2");
   }
 }
 

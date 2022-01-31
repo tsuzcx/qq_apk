@@ -1,16 +1,20 @@
-import android.app.Dialog;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class niy
   implements Runnable
 {
-  public niy(VideoPlayModeBase paramVideoPlayModeBase) {}
+  public niy(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
+    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2)) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a.a()))
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", true, true);
+      return;
     }
+    SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "exp_story not report because changeType = %b, visible = %b", Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a.a()));
   }
 }
 

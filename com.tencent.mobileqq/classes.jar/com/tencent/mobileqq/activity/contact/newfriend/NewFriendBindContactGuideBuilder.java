@@ -31,7 +31,7 @@ public class NewFriendBindContactGuideBuilder
     }
     else
     {
-      localView = LayoutInflater.from(this.a).inflate(2130970640, null);
+      localView = LayoutInflater.from(this.a).inflate(2130970653, null);
     }
     localView.setOnClickListener(this);
     localView.setTag(new NewFriendBindContactGuideBuilder.MyHolder());

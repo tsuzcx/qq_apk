@@ -1,20 +1,27 @@
-import com.tencent.av.VideoController.GAudioFriends;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
 
-class jye
-  implements Runnable
+public class jye
+  extends ClickableSpan
 {
-  jye(jyd paramjyd) {}
+  public jye(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_Jyf.jdField_a_of_type_Long == this.a.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_Long) && (this.a.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
-      this.a.jdField_a_of_type_Jyc.a(this.a.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends, this.a.jdField_a_of_type_Jyf);
-    }
+    this.a.y();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jye
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.search.ISearchable;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
 
-public final class ahrm
-  implements Comparator
+public class ahrm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
+  public ahrm(QQSlidingTabView paramQQSlidingTabView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    long l1 = paramISearchable1.c();
-    long l2 = paramISearchable2.c();
-    if (l1 < l2) {}
-    do
-    {
-      return 1;
-      if (l1 > l2) {
-        return -1;
-      }
-      l1 = paramISearchable1.b();
-      l2 = paramISearchable2.b();
-    } while (l1 < l2);
-    if (l1 > l2) {
-      return -1;
-    }
-    return 0;
+    QQSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahrm
  * JD-Core Version:    0.7.0.1
  */

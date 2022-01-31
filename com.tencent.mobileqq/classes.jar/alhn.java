@@ -1,28 +1,60 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.res.Resources;
+import android.os.Message;
+import android.os.SystemClock;
+import android.widget.Button;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class alhn
   implements Runnable
 {
-  public alhn(DownloadManager paramDownloadManager, String paramString, DownloadInfo paramDownloadInfo) {}
+  public alhn(AuthorityActivity paramAuthorityActivity) {}
   
   public void run()
   {
-    try
+    Object localObject = this.a;
+    int i = ((AuthorityActivity)localObject).jdField_b_of_type_Int;
+    ((AuthorityActivity)localObject).jdField_b_of_type_Int = (i - 1);
+    if (i > 0)
     {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
-      DownloadDBHelper.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
+      localObject = (String)this.a.getResources().getText(2131435628);
+      AuthorityActivity localAuthorityActivity = this.a;
+      i = localAuthorityActivity.c;
+      localAuthorityActivity.c = (i + 1);
+      switch (i % 3)
+      {
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 500L);
+        return;
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "·  ");
+        continue;
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "·· ");
+        continue;
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText((String)localObject + "···");
+      }
+    }
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    this.a.h = true;
+    this.a.i = false;
+    if (this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SDKQQAgentPref", 2, "AutoAuth:" + SystemClock.elapsedRealtime());
+      }
+      localObject = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+      ((Message)localObject).what = 1;
+      ((Message)localObject).obj = this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse;
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject);
+      this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
       return;
     }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKQQAgentPref", 2, "AutoAuth -- doAuthorize(): " + SystemClock.elapsedRealtime());
     }
+    this.a.k();
   }
 }
 

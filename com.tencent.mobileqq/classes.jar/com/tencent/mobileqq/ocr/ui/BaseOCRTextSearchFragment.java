@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.ui;
 
-import agcz;
+import aghj;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.view.View.OnTouchListener;
@@ -16,7 +16,7 @@ public class BaseOCRTextSearchFragment
   
   public BaseOCRTextSearchFragment()
   {
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new agcz(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new aghj(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
   }
   

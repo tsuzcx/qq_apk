@@ -66,6 +66,8 @@ public class NativeMemoryMonitor
     }
   }
   
+  private native void nativeDump();
+  
   private native int nativeGetJavaThreadPeakCount();
   
   private native void nativeInit(long paramLong1, String paramString1, String paramString2, String[] paramArrayOfString, long paramLong2, long paramLong3, long paramLong4);
@@ -73,6 +75,20 @@ public class NativeMemoryMonitor
   private native void nativeThreadCreateHookInit(String paramString);
   
   private native void nativeThreadHook();
+  
+  public void dump()
+  {
+    try
+    {
+      nativeDump();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
   
   public int getJavaThreadPeakCount()
   {
@@ -128,9 +144,9 @@ public class NativeMemoryMonitor
     //   22: putfield 63	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:mInitThreadHook	Z
     //   25: aload_0
     //   26: aload_1
-    //   27: invokespecial 160	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadCreateHookInit	(Ljava/lang/String;)V
+    //   27: invokespecial 164	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadCreateHookInit	(Ljava/lang/String;)V
     //   30: aload_0
-    //   31: invokespecial 162	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadHook	()V
+    //   31: invokespecial 166	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadHook	()V
     //   34: goto -24 -> 10
     //   37: astore_1
     //   38: aload_0

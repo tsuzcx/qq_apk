@@ -3,8 +3,7 @@ package com.tencent.hotpatch;
 import android.content.Context;
 import android.os.Looper;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.hotpatch.config.BasePatchConfig;
-import com.tencent.hotpatch.config.DexPatchConfigDalvik;
+import com.tencent.hotpatch.config.PatchConfig;
 import com.tencent.hotpatch.config.PatchConfigManager;
 import com.tencent.hotpatch.utils.PatchCommonUtil;
 import com.tencent.hotpatch.utils.PatchReporter;
@@ -13,7 +12,7 @@ import com.tencent.mobileqq.app.SystemClassLoaderInjector;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import qnm;
+import qsd;
 
 public class DexPatchInstaller
 {
@@ -29,24 +28,24 @@ public class DexPatchInstaller
   public static void a(Context paramContext)
   {
     long l = System.currentTimeMillis();
-    BasePatchConfig localBasePatchConfig = PatchConfigManager.a(paramContext, "dex");
-    if ((jdField_a_of_type_Int == 0) && (a(paramContext, localBasePatchConfig)))
+    PatchConfig localPatchConfig = PatchConfigManager.a(paramContext, "dex");
+    if ((jdField_a_of_type_Int == 0) && (a(paramContext, localPatchConfig)))
     {
-      a(localBasePatchConfig);
+      a(localPatchConfig);
       if ((500 == jdField_a_of_type_Int) && (PatchCommonUtil.a())) {
-        PatchResolveForDalvik.a(paramContext, (DexPatchConfigDalvik)localBasePatchConfig);
+        PatchResolveForDalvik.a(paramContext, localPatchConfig);
       }
-      a(paramContext, localBasePatchConfig);
-      PatchReporter.a(paramContext, "", "actPatchInstall", jdField_a_of_type_Int, localBasePatchConfig.c);
+      a(paramContext, localPatchConfig);
+      PatchReporter.a(paramContext, "", "actPatchInstall", jdField_a_of_type_Int, localPatchConfig.b());
       QLog.d("PatchLogTag", 1, "DexPatchInstaller installDexPatch total cost time=" + (System.currentTimeMillis() - l) + " ms.");
       return;
     }
     QLog.d("PatchLogTag", 1, "DexPatchInstaller installDexPatch Not inject patch, status=" + jdField_a_of_type_Int);
   }
   
-  private static void a(Context paramContext, BasePatchConfig paramBasePatchConfig)
+  private static void a(Context paramContext, PatchConfig paramPatchConfig)
   {
-    paramContext = new qnm(paramContext, paramBasePatchConfig);
+    paramContext = new qsd(paramPatchConfig, paramContext);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
       ThreadManager.post(paramContext, 5, null, true);
@@ -55,16 +54,17 @@ public class DexPatchInstaller
     paramContext.run();
   }
   
-  private static void a(BasePatchConfig paramBasePatchConfig)
+  private static void a(PatchConfig paramPatchConfig)
   {
     long l = System.currentTimeMillis();
     try
     {
-      String str = PatchCommonUtil.a("dex", paramBasePatchConfig.c);
+      paramPatchConfig = paramPatchConfig.b();
+      String str = PatchCommonUtil.a(paramPatchConfig);
       if ("Success".equals(SystemClassLoaderInjector.a(BaseApplicationImpl.sApplication, str, null, false)))
       {
         jdField_a_of_type_Int = 500;
-        jdField_a_of_type_JavaLangString = paramBasePatchConfig.c;
+        jdField_a_of_type_JavaLangString = paramPatchConfig;
       }
       for (;;)
       {
@@ -73,49 +73,50 @@ public class DexPatchInstaller
         jdField_a_of_type_Int = 501;
       }
     }
-    catch (Throwable paramBasePatchConfig)
+    catch (Throwable paramPatchConfig)
     {
       for (;;)
       {
         jdField_a_of_type_Int = 502;
-        QLog.d("PatchLogTag", 1, "DexPatchInstaller injectDexPatch throwable=" + paramBasePatchConfig);
+        QLog.d("PatchLogTag", 1, "DexPatchInstaller injectDexPatch throwable=" + paramPatchConfig);
       }
     }
   }
   
-  private static boolean a(Context paramContext, BasePatchConfig paramBasePatchConfig)
+  private static boolean a(Context paramContext, PatchConfig paramPatchConfig)
   {
-    if (paramBasePatchConfig == null) {
+    if (paramPatchConfig == null) {
       QLog.d("PatchLogTag", 1, "DexPatchInstaller checkDexPatchConfigAndStatus patch config is null");
     }
-    while (!paramBasePatchConfig.a(paramContext, true)) {
+    while (!paramPatchConfig.a(paramContext, true)) {
       return false;
     }
-    File localFile = new File(PatchCommonUtil.a("dex", paramBasePatchConfig.c));
+    String str = paramPatchConfig.b();
+    File localFile = new File(PatchCommonUtil.a(str));
     if (!localFile.exists())
     {
       QLog.d("PatchLogTag", 1, "DexPatchInstaller checkDexPatchConfigAndStatus patch file not exist");
       return false;
     }
-    if (localFile.length() != paramBasePatchConfig.b)
+    if (localFile.length() != paramPatchConfig.b())
     {
       QLog.d("PatchLogTag", 1, "DexPatchInstaller checkDexPatchConfigAndStatus patch file length not match");
       return false;
     }
-    if (!PatchSharedPreUtil.a(paramContext, paramBasePatchConfig.c))
+    if (!PatchSharedPreUtil.a(paramContext, str))
     {
       QLog.d("PatchLogTag", 1, "DexPatchInstaller checkDexPatchConfigAndStatus verify failed");
       return false;
     }
-    if (PatchSharedPreUtil.a(paramContext, BaseApplicationImpl.processName, paramBasePatchConfig.c) >= 3)
+    if (PatchSharedPreUtil.a(paramContext, BaseApplicationImpl.processName, str) >= 3)
     {
       QLog.d("PatchLogTag", 1, "DexPatchInstaller checkDexPatchConfigAndStatus install patch failed max count");
       return false;
     }
-    if (PatchSharedPreUtil.b(paramContext, BaseApplicationImpl.processName, paramBasePatchConfig.c) > 5)
+    if (PatchSharedPreUtil.b(paramContext, BaseApplicationImpl.processName, str) > 5)
     {
       jdField_a_of_type_Int = 503;
-      PatchReporter.a(paramContext, "", "actPatchInstall", 503, paramBasePatchConfig.c);
+      PatchReporter.a(paramContext, "", "actPatchInstall", 503, str);
       QLog.d("PatchLogTag", 1, "DexPatchInstaller checkDexPatchConfigAndStatus start failed max count as install patch");
       return false;
     }

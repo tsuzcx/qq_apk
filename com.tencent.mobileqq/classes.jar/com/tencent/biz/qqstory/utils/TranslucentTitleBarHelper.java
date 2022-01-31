@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import oop;
+import ote;
 
 public class TranslucentTitleBarHelper
 {
@@ -26,6 +26,7 @@ public class TranslucentTitleBarHelper
   ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
   boolean jdField_a_of_type_Boolean = false;
   TextView b;
+  TextView c;
   
   public TranslucentTitleBarHelper(BaseActivity paramBaseActivity, int paramInt)
   {
@@ -61,23 +62,26 @@ public class TranslucentTitleBarHelper
     }
     if (paramFloat > 0.5D)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839147);
-      this.b.setBackgroundResource(2130846264);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839162);
+      this.b.setBackgroundResource(2130846346);
       this.b.setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+      this.c.setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841302);
-    this.b.setBackgroundResource(2130841301);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841328);
+    this.b.setBackgroundResource(2130841327);
     this.b.setTextColor(-1);
+    this.c.setTextColor(-1);
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363380));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363381));
-    this.b = ((TextView)paramView.findViewById(2131363245));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363474));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131363379));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363399));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363400));
+    this.b = ((TextView)paramView.findViewById(2131363262));
+    this.c = ((TextView)paramView.findViewById(2131363447));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363493));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131363398));
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
@@ -117,7 +121,7 @@ public class TranslucentTitleBarHelper
     {
       ValueAnimator localValueAnimator = new ValueAnimator();
       localValueAnimator.setFloatValues(new float[] { this.jdField_a_of_type_Float, f });
-      localValueAnimator.addUpdateListener(new oop(this));
+      localValueAnimator.addUpdateListener(new ote(this));
       localValueAnimator.setDuration(500L);
       localValueAnimator.start();
     }

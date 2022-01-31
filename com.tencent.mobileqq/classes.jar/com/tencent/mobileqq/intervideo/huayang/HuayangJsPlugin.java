@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import adud;
-import adue;
+import aecm;
+import aecn;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,7 +22,7 @@ public class HuayangJsPlugin
   private long jdField_a_of_type_Long;
   protected BroadcastReceiver a;
   public Context a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new adue(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new aecn(this, Looper.getMainLooper());
   public TroopMemberApiClient a;
   public String a;
   private int b;
@@ -32,7 +32,7 @@ public class HuayangJsPlugin
   
   public HuayangJsPlugin()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adud(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aecm(this);
     this.mPluginNameSpace = "huayang";
   }
   
@@ -123,10 +123,10 @@ public class HuayangJsPlugin
     //   39: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: astore_2
     //   43: aload 5
-    //   45: ifnull +435 -> 480
+    //   45: ifnull +455 -> 500
     //   48: aload 5
     //   50: arraylength
-    //   51: ifle +429 -> 480
+    //   51: ifle +449 -> 500
     //   54: aload 5
     //   56: iconst_0
     //   57: aaload
@@ -140,7 +140,7 @@ public class HuayangJsPlugin
     //   71: ldc 152
     //   73: aload 4
     //   75: invokevirtual 144	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   78: ifeq +457 -> 535
+    //   78: ifeq +477 -> 555
     //   81: ldc 154
     //   83: invokestatic 157	com/tencent/mobileqq/intervideo/huayang/Monitor:a	(Ljava/lang/String;)V
     //   86: aconst_null
@@ -158,7 +158,7 @@ public class HuayangJsPlugin
     //   104: aload 8
     //   106: astore_1
     //   107: aload 5
-    //   109: ifnull +208 -> 317
+    //   109: ifnull +228 -> 337
     //   112: aload 6
     //   114: astore_3
     //   115: aload 7
@@ -167,7 +167,7 @@ public class HuayangJsPlugin
     //   120: astore_1
     //   121: aload 5
     //   123: arraylength
-    //   124: ifle +193 -> 317
+    //   124: ifle +213 -> 337
     //   127: aload 4
     //   129: astore_1
     //   130: new 74	org/json/JSONObject
@@ -215,274 +215,284 @@ public class HuayangJsPlugin
     //   211: ldc 180
     //   213: invokevirtual 164	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   216: putfield 182	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	Ljava/lang/String;
-    //   219: aload_1
-    //   220: astore_2
-    //   221: aload_1
-    //   222: ifnull +10 -> 232
-    //   225: aload_1
-    //   226: ldc 184
-    //   228: invokestatic 190	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   231: astore_2
-    //   232: aload 4
-    //   234: astore_1
-    //   235: aload_0
-    //   236: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   239: invokestatic 194	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   242: ifeq +9 -> 251
-    //   245: aload_0
-    //   246: ldc 131
-    //   248: putfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   251: new 196	android/content/IntentFilter
-    //   254: dup
+    //   219: aload 5
+    //   221: ldc 184
+    //   223: invokevirtual 164	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   226: astore_2
+    //   227: aload_0
+    //   228: getfield 97	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   231: aload_0
+    //   232: getfield 182	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	Ljava/lang/String;
+    //   235: aload_2
+    //   236: invokestatic 189	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+    //   239: aload_1
+    //   240: astore_2
+    //   241: aload_1
+    //   242: ifnull +10 -> 252
+    //   245: aload_1
+    //   246: ldc 191
+    //   248: invokestatic 197	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   251: astore_2
+    //   252: aload 4
+    //   254: astore_1
     //   255: aload_0
     //   256: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   259: invokestatic 198	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   262: invokespecial 199	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
-    //   265: astore 4
-    //   267: aload 4
-    //   269: aload_0
-    //   270: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   273: invokestatic 201	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   276: invokevirtual 204	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   279: aload 4
-    //   281: aload_0
-    //   282: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   285: invokestatic 206	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   288: invokevirtual 204	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   291: aload 4
-    //   293: aload_0
-    //   294: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   297: invokestatic 208	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:d	(Ljava/lang/String;)Ljava/lang/String;
-    //   300: invokevirtual 204	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   303: aload_0
-    //   304: getfield 97	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   307: aload_0
-    //   308: getfield 28	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   259: invokestatic 201	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   262: ifeq +9 -> 271
+    //   265: aload_0
+    //   266: ldc 131
+    //   268: putfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   271: new 203	android/content/IntentFilter
+    //   274: dup
+    //   275: aload_0
+    //   276: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   279: invokestatic 205	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   282: invokespecial 206	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
+    //   285: astore 4
+    //   287: aload 4
+    //   289: aload_0
+    //   290: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   293: invokestatic 208	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   296: invokevirtual 211	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   299: aload 4
+    //   301: aload_0
+    //   302: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   305: invokestatic 213	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   308: invokevirtual 211	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   311: aload 4
-    //   313: invokevirtual 212	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-    //   316: pop
-    //   317: aload_0
-    //   318: invokestatic 218	java/lang/System:currentTimeMillis	()J
-    //   321: putfield 220	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_Long	J
-    //   324: aload_0
-    //   325: getfield 55	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:d	Ljava/lang/String;
-    //   328: ldc 222
-    //   330: invokestatic 127	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   333: ifeq +74 -> 407
-    //   336: aload_0
-    //   337: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   340: ldc 121
-    //   342: invokestatic 127	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   345: ifeq +62 -> 407
-    //   348: aload_0
-    //   349: getfield 97	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   352: invokestatic 228	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
-    //   355: invokeinterface 234 1 0
-    //   360: astore 4
-    //   362: aload 4
-    //   364: new 58	java/lang/StringBuilder
-    //   367: dup
-    //   368: invokespecial 59	java/lang/StringBuilder:<init>	()V
-    //   371: ldc 236
-    //   373: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   376: aload_0
-    //   377: getfield 240	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   380: invokevirtual 245	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   383: invokevirtual 250	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   386: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   389: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: iconst_1
-    //   393: invokeinterface 256 3 0
-    //   398: pop
-    //   399: aload 4
-    //   401: invokeinterface 259 1 0
-    //   406: pop
-    //   407: aload_0
-    //   408: getfield 261	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
-    //   411: aload_0
-    //   412: getfield 182	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	Ljava/lang/String;
-    //   415: aload_3
-    //   416: aload_2
-    //   417: aload_0
-    //   418: getfield 55	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:d	Ljava/lang/String;
-    //   421: aload_0
-    //   422: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   425: aload_1
-    //   426: invokevirtual 266	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   429: ldc 43
-    //   431: ldc_w 268
-    //   434: aload_0
-    //   435: getfield 51	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_Int	I
-    //   438: invokestatic 218	java/lang/System:currentTimeMillis	()J
+    //   313: aload_0
+    //   314: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   317: invokestatic 215	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   320: invokevirtual 211	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   323: aload_0
+    //   324: getfield 97	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   327: aload_0
+    //   328: getfield 28	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
+    //   331: aload 4
+    //   333: invokevirtual 219	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   336: pop
+    //   337: aload_0
+    //   338: invokestatic 225	java/lang/System:currentTimeMillis	()J
+    //   341: putfield 227	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_Long	J
+    //   344: aload_0
+    //   345: getfield 55	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:d	Ljava/lang/String;
+    //   348: ldc 229
+    //   350: invokestatic 127	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   353: ifeq +74 -> 427
+    //   356: aload_0
+    //   357: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   360: ldc 121
+    //   362: invokestatic 127	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   365: ifeq +62 -> 427
+    //   368: aload_0
+    //   369: getfield 97	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   372: invokestatic 235	android/preference/PreferenceManager:getDefaultSharedPreferences	(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    //   375: invokeinterface 241 1 0
+    //   380: astore 4
+    //   382: aload 4
+    //   384: new 58	java/lang/StringBuilder
+    //   387: dup
+    //   388: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   391: ldc 243
+    //   393: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   396: aload_0
+    //   397: getfield 247	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   400: invokevirtual 252	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   403: invokevirtual 257	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   406: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   409: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   412: iconst_1
+    //   413: invokeinterface 263 3 0
+    //   418: pop
+    //   419: aload 4
+    //   421: invokeinterface 266 1 0
+    //   426: pop
+    //   427: aload_0
+    //   428: getfield 268	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   431: aload_0
+    //   432: getfield 182	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	Ljava/lang/String;
+    //   435: aload_3
+    //   436: aload_2
+    //   437: aload_0
+    //   438: getfield 55	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:d	Ljava/lang/String;
     //   441: aload_0
-    //   442: getfield 220	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_Long	J
-    //   445: lsub
-    //   446: l2i
-    //   447: iconst_4
-    //   448: anewarray 141	java/lang/String
-    //   451: dup
-    //   452: iconst_0
-    //   453: aload_0
-    //   454: getfield 55	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:d	Ljava/lang/String;
-    //   457: aastore
-    //   458: dup
-    //   459: iconst_1
-    //   460: aconst_null
-    //   461: aastore
-    //   462: dup
-    //   463: iconst_2
-    //   464: aload_0
-    //   465: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   468: aastore
-    //   469: dup
-    //   470: iconst_3
-    //   471: ldc_w 270
-    //   474: aastore
-    //   475: invokestatic 275	com/tencent/biz/qqstory/support/report/StoryReportor:a	(Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
-    //   478: iconst_1
-    //   479: ireturn
-    //   480: ldc_w 277
-    //   483: astore_1
-    //   484: goto -425 -> 59
-    //   487: astore_2
-    //   488: aload_2
-    //   489: invokevirtual 278	java/io/UnsupportedEncodingException:printStackTrace	()V
-    //   492: aconst_null
-    //   493: astore_2
-    //   494: goto -262 -> 232
-    //   497: astore 4
-    //   499: aconst_null
-    //   500: astore_2
-    //   501: aconst_null
-    //   502: astore 5
-    //   504: aload_1
-    //   505: astore_3
-    //   506: aload 5
-    //   508: astore_1
-    //   509: invokestatic 113	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   512: ifeq +15 -> 527
-    //   515: ldc 115
-    //   517: iconst_2
-    //   518: aload 4
-    //   520: iconst_0
-    //   521: anewarray 280	java/lang/Object
-    //   524: invokestatic 284	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   527: aload 4
-    //   529: invokestatic 289	com/tencent/mobileqq/intervideo/huayang/HuayangCrashReport:a	(Ljava/lang/Throwable;)V
-    //   532: goto -297 -> 235
-    //   535: ldc_w 291
+    //   442: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   445: aload_1
+    //   446: invokevirtual 273	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   449: ldc 43
+    //   451: ldc_w 275
+    //   454: aload_0
+    //   455: getfield 51	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_Int	I
+    //   458: invokestatic 225	java/lang/System:currentTimeMillis	()J
+    //   461: aload_0
+    //   462: getfield 227	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_Long	J
+    //   465: lsub
+    //   466: l2i
+    //   467: iconst_4
+    //   468: anewarray 141	java/lang/String
+    //   471: dup
+    //   472: iconst_0
+    //   473: aload_0
+    //   474: getfield 55	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:d	Ljava/lang/String;
+    //   477: aastore
+    //   478: dup
+    //   479: iconst_1
+    //   480: aconst_null
+    //   481: aastore
+    //   482: dup
+    //   483: iconst_2
+    //   484: aload_0
+    //   485: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   488: aastore
+    //   489: dup
+    //   490: iconst_3
+    //   491: ldc_w 277
+    //   494: aastore
+    //   495: invokestatic 282	com/tencent/biz/qqstory/support/report/StoryReportor:a	(Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   498: iconst_1
+    //   499: ireturn
+    //   500: ldc_w 284
+    //   503: astore_1
+    //   504: goto -445 -> 59
+    //   507: astore_2
+    //   508: aload_2
+    //   509: invokevirtual 285	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   512: aconst_null
+    //   513: astore_2
+    //   514: goto -262 -> 252
+    //   517: astore 4
+    //   519: aconst_null
+    //   520: astore_2
+    //   521: aconst_null
+    //   522: astore 5
+    //   524: aload_1
+    //   525: astore_3
+    //   526: aload 5
+    //   528: astore_1
+    //   529: invokestatic 113	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   532: ifeq +15 -> 547
+    //   535: ldc 115
+    //   537: iconst_2
     //   538: aload 4
-    //   540: invokevirtual 144	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   543: ifeq +86 -> 629
-    //   546: aload_0
-    //   547: getfield 261	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
-    //   550: aload_0
-    //   551: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   554: invokevirtual 293	com/tencent/biz/troop/TroopMemberApiClient:b	(Ljava/lang/String;)V
-    //   557: aload_0
-    //   558: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   561: invokestatic 295	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:a	(Ljava/lang/String;)Z
-    //   564: ifeq +67 -> 631
-    //   567: ldc_w 297
-    //   570: invokestatic 157	com/tencent/mobileqq/intervideo/huayang/Monitor:a	(Ljava/lang/String;)V
-    //   573: aload_0
-    //   574: invokespecial 299	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:a	()V
-    //   577: ldc 43
-    //   579: ldc_w 291
-    //   582: aload_0
-    //   583: getfield 51	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_Int	I
-    //   586: invokestatic 218	java/lang/System:currentTimeMillis	()J
-    //   589: aload_0
-    //   590: getfield 220	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_Long	J
-    //   593: lsub
-    //   594: l2i
-    //   595: iconst_4
-    //   596: anewarray 141	java/lang/String
-    //   599: dup
-    //   600: iconst_0
-    //   601: aload_0
-    //   602: getfield 21	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_Int	I
-    //   605: invokestatic 302	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   608: aastore
-    //   609: dup
-    //   610: iconst_1
-    //   611: aconst_null
-    //   612: aastore
-    //   613: dup
-    //   614: iconst_2
-    //   615: aload_0
-    //   616: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   619: aastore
-    //   620: dup
-    //   621: iconst_3
-    //   622: ldc_w 270
-    //   625: aastore
-    //   626: invokestatic 275	com/tencent/biz/qqstory/support/report/StoryReportor:a	(Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
-    //   629: iconst_0
-    //   630: ireturn
-    //   631: aload_0
-    //   632: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   635: invokestatic 304	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:b	(Ljava/lang/String;)Z
-    //   638: ifeq +12 -> 650
-    //   641: ldc_w 306
-    //   644: invokestatic 157	com/tencent/mobileqq/intervideo/huayang/Monitor:a	(Ljava/lang/String;)V
-    //   647: goto -74 -> 573
-    //   650: invokestatic 309	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:a	()V
-    //   653: getstatic 312	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:a	Ljava/util/Map;
-    //   656: aload_0
-    //   657: getfield 182	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	Ljava/lang/String;
-    //   660: invokeinterface 318 2 0
-    //   665: ifnull -92 -> 573
-    //   668: getstatic 312	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:a	Ljava/util/Map;
-    //   671: aload_0
-    //   672: getfield 182	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	Ljava/lang/String;
-    //   675: invokeinterface 318 2 0
-    //   680: checkcast 308	com/tencent/mobileqq/intervideo/huayang/MonitorConfig
-    //   683: getfield 321	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:h	I
-    //   686: invokestatic 302	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   689: invokestatic 322	com/tencent/mobileqq/intervideo/huayang/Monitor:b	(Ljava/lang/String;)V
-    //   692: goto -119 -> 573
-    //   695: astore 4
-    //   697: aload_1
-    //   698: astore_2
-    //   699: aconst_null
-    //   700: astore_1
-    //   701: goto -192 -> 509
-    //   704: astore 5
-    //   706: aload_1
-    //   707: astore_2
-    //   708: aload 4
-    //   710: astore_1
-    //   711: aload 5
-    //   713: astore 4
-    //   715: goto -206 -> 509
+    //   540: iconst_0
+    //   541: anewarray 287	java/lang/Object
+    //   544: invokestatic 291	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   547: aload 4
+    //   549: invokestatic 296	com/tencent/mobileqq/intervideo/huayang/HuayangCrashReport:a	(Ljava/lang/Throwable;)V
+    //   552: goto -297 -> 255
+    //   555: ldc_w 298
+    //   558: aload 4
+    //   560: invokevirtual 144	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   563: ifeq +90 -> 653
+    //   566: aload_0
+    //   567: getfield 268	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   570: aload_0
+    //   571: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   574: aload_0
+    //   575: getfield 182	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	Ljava/lang/String;
+    //   578: invokevirtual 301	com/tencent/biz/troop/TroopMemberApiClient:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   581: aload_0
+    //   582: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   585: invokestatic 303	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:a	(Ljava/lang/String;)Z
+    //   588: ifeq +67 -> 655
+    //   591: ldc_w 305
+    //   594: invokestatic 157	com/tencent/mobileqq/intervideo/huayang/Monitor:a	(Ljava/lang/String;)V
+    //   597: aload_0
+    //   598: invokespecial 307	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:a	()V
+    //   601: ldc 43
+    //   603: ldc_w 298
+    //   606: aload_0
+    //   607: getfield 51	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_Int	I
+    //   610: invokestatic 225	java/lang/System:currentTimeMillis	()J
+    //   613: aload_0
+    //   614: getfield 227	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_Long	J
+    //   617: lsub
+    //   618: l2i
+    //   619: iconst_4
+    //   620: anewarray 141	java/lang/String
+    //   623: dup
+    //   624: iconst_0
+    //   625: aload_0
+    //   626: getfield 21	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_a_of_type_Int	I
+    //   629: invokestatic 310	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   632: aastore
+    //   633: dup
+    //   634: iconst_1
+    //   635: aconst_null
+    //   636: aastore
+    //   637: dup
+    //   638: iconst_2
+    //   639: aload_0
+    //   640: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   643: aastore
+    //   644: dup
+    //   645: iconst_3
+    //   646: ldc_w 277
+    //   649: aastore
+    //   650: invokestatic 282	com/tencent/biz/qqstory/support/report/StoryReportor:a	(Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   653: iconst_0
+    //   654: ireturn
+    //   655: aload_0
+    //   656: getfield 176	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   659: invokestatic 312	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:b	(Ljava/lang/String;)Z
+    //   662: ifeq +12 -> 674
+    //   665: ldc_w 314
+    //   668: invokestatic 157	com/tencent/mobileqq/intervideo/huayang/Monitor:a	(Ljava/lang/String;)V
+    //   671: goto -74 -> 597
+    //   674: getstatic 317	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:a	Ljava/util/Map;
+    //   677: aload_0
+    //   678: getfield 182	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	Ljava/lang/String;
+    //   681: invokeinterface 323 2 0
+    //   686: ifnull -89 -> 597
+    //   689: getstatic 317	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:a	Ljava/util/Map;
+    //   692: aload_0
+    //   693: getfield 182	com/tencent/mobileqq/intervideo/huayang/HuayangJsPlugin:c	Ljava/lang/String;
+    //   696: invokeinterface 323 2 0
+    //   701: checkcast 186	com/tencent/mobileqq/intervideo/huayang/MonitorConfig
+    //   704: getfield 326	com/tencent/mobileqq/intervideo/huayang/MonitorConfig:h	I
+    //   707: invokestatic 310	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   710: invokestatic 328	com/tencent/mobileqq/intervideo/huayang/Monitor:b	(Ljava/lang/String;)V
+    //   713: goto -116 -> 597
+    //   716: astore 4
+    //   718: aload_1
+    //   719: astore_2
+    //   720: aconst_null
+    //   721: astore_1
+    //   722: goto -193 -> 529
+    //   725: astore 5
+    //   727: aload_1
+    //   728: astore_2
+    //   729: aload 4
+    //   731: astore_1
+    //   732: aload 5
+    //   734: astore 4
+    //   736: goto -207 -> 529
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	718	0	this	HuayangJsPlugin
-    //   0	718	1	paramJsBridgeListener	com.tencent.mobileqq.webview.swift.JsBridgeListener
-    //   0	718	2	paramString1	String
-    //   0	718	3	paramString2	String
-    //   0	718	4	paramString3	String
-    //   0	718	5	paramVarArgs	String[]
+    //   0	739	0	this	HuayangJsPlugin
+    //   0	739	1	paramJsBridgeListener	com.tencent.mobileqq.webview.swift.JsBridgeListener
+    //   0	739	2	paramString1	String
+    //   0	739	3	paramString2	String
+    //   0	739	4	paramString3	String
+    //   0	739	5	paramVarArgs	String[]
     //   90	23	6	localObject1	java.lang.Object
     //   93	23	7	localObject2	java.lang.Object
     //   96	23	8	localObject3	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   225	232	487	java/io/UnsupportedEncodingException
-    //   130	143	497	org/json/JSONException
-    //   146	154	497	org/json/JSONException
-    //   156	164	497	org/json/JSONException
-    //   166	208	695	org/json/JSONException
-    //   208	219	704	org/json/JSONException
-    //   225	232	704	org/json/JSONException
-    //   488	492	704	org/json/JSONException
+    //   245	252	507	java/io/UnsupportedEncodingException
+    //   130	143	517	org/json/JSONException
+    //   146	154	517	org/json/JSONException
+    //   156	164	517	org/json/JSONException
+    //   166	208	716	org/json/JSONException
+    //   208	239	725	org/json/JSONException
+    //   245	252	725	org/json/JSONException
+    //   508	512	725	org/json/JSONException
   }
   
   protected void onCreate()
   {
     super.onCreate();
-    MonitorConfig.a(this.mRuntime.a());
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
     this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a().getApplicationContext();
@@ -493,7 +503,7 @@ public class HuayangJsPlugin
   {
     if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null)
     {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.c(this.jdField_b_of_type_JavaLangString, this.c);
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
     }
     super.onDestroy();

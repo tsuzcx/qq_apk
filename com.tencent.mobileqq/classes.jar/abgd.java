@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
-import com.tencent.mobileqq.armap.ipc.IAsyncObserver;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.armap.ARGLSurfaceView;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.config.POICheckHander.Listener;
+import com.tencent.mobileqq.armap.config.POIModelConfig;
 
 public class abgd
-  implements Runnable
+  implements POICheckHander.Listener
 {
-  public abgd(ArMapIPCProxy paramArMapIPCProxy, IAsyncObserver paramIAsyncObserver, String paramString, EIPCResult paramEIPCResult) {}
+  public abgd(ARMapActivity paramARMapActivity) {}
   
-  public void run()
+  public void a(POIModelConfig paramPOIModelConfig, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapIpcIAsyncObserver.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine != null) && (paramPOIModelConfig.isVaild())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abge(this, paramLong, paramPOIModelConfig));
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abgf(this, paramString3, paramLong, paramString1, paramString2));
+    }
   }
 }
 

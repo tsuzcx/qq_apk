@@ -1,22 +1,12 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class uka
-  extends View.AccessibilityDelegate
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public uka(BaseBubbleBuilder paramBaseBubbleBuilder) {}
-  
-  @TargetApi(16)
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
-  {
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramAccessibilityNodeInfo.setVisibleToUser(false);
-    }
-  }
+  public TextView a;
+  public TroopTransferActivity.TroopMemberItem a;
 }
 
 

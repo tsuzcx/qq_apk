@@ -1,18 +1,43 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
 
 public class mhw
-  implements Runnable
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public mhw(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, BaseArticleInfo paramBaseArticleInfo) {}
+  public mhw(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-      PublicAccountReportUtils.a(null, "", "0X8008AD1", "0X8008AD1", 0, 0, "", "", "", VideoReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mChannelID, null), false);
+    if ((VideoFeedsPlayManager.a(this.a) == null) || (!paramBoolean) || (VideoFeedsPlayManager.a(this.a) == null)) {
+      return;
     }
+    VideoFeedsPlayManager.b(this.a, System.currentTimeMillis());
+    long l = VideoFeedsPlayManager.a(this.a).b();
+    double d = paramInt / 100.0D;
+    paramInt = (int)(l * d);
+    VideoFeedsHelper.a(VideoFeedsPlayManager.a(this.a).a, paramInt);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    VideoFeedsPlayManager.e(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (VideoFeedsPlayManager.a(this.a) == null) {
+      return;
+    }
+    VideoFeedsPlayManager.e(this.a, false);
+    int i = paramSeekBar.getProgress();
+    long l = VideoFeedsPlayManager.a(this.a).b();
+    i = (int)(i / 100.0D * l);
+    VideoFeedsPlayManager.a(this.a).a(i);
+    VideoFeedsPlayManager.c(this.a, false);
   }
 }
 

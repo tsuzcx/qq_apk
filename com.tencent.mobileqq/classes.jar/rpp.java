@@ -1,21 +1,55 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SelectLimitListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class rpp
-  implements PhotoListPanel.SelectLimitListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public rpp(BaseChatPie paramBaseChatPie) {}
+  public rpp(ArkFullScreenAppActivity paramArkFullScreenAppActivity, ActionSheet paramActionSheet) {}
   
-  public boolean a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    String str = String.format(this.a.a().getString(2131439000), new Object[] { Integer.valueOf(paramInt) });
-    QQToast.a(this.a.a(), str, 0).b(this.a.a().getResources().getDimensionPixelSize(2131558448));
-    ReportController.b(this.a.a, "CliOper", "", "", "0x80083EC", "0x80083EC", 0, 0, "", "", "", "");
-    return true;
+    if (ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity) != null)
+    {
+      ArkAppDataReport.c(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity.app, ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).jdField_a_of_type_JavaLangString, ArkAppDataReport.d);
+      ArkAppDataReport.l(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity.app, ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).jdField_a_of_type_JavaLangString);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("share click:");
+      if (ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity) == null)
+      {
+        paramView = "none";
+        QLog.d("ArkFullScreenAppActivity", 2, paramView);
+      }
+    }
+    else
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity.a(ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer);
+      if (paramView == null) {
+        break label153;
+      }
+      ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity, paramView, 100);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      paramView = ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).jdField_a_of_type_JavaLangString;
+      break;
+      label153:
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkFullScreenAppActivity", 2, "showActionSheet share: intent == null");
+      }
+      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity, 230, "提示", "无法分享该页面。", new rpq(this), null).show();
+    }
   }
 }
 

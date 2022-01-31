@@ -1,19 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.nearby.NearbyEnterUpdateObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class sxp
-  extends NearbyEnterUpdateObserver
+  implements ActionSheet.OnDismissListener
 {
-  public sxp(Leba paramLeba) {}
+  public sxp(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
-    }
-    Leba.d(this.a);
+    this.a.a("0X80081E5", 4);
   }
 }
 

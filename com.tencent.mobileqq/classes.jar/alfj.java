@@ -1,28 +1,34 @@
-import android.widget.Toast;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.ToastUtil;
+import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class alfj
   implements Runnable
 {
-  public alfj(ToastUtil paramToastUtil, String paramString, int paramInt) {}
+  public alfj(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a == null)
+    boolean bool = true;
+    if ((ARWorldCupGameLogicManager.a(this.a) != null) && (ARWorldCupGameLogicManager.a(this.a).isShowing()))
     {
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a = Toast.makeText(CommonDataAdapter.a().a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
+      QLog.d(ARWorldCupGameLogicManager.a, 2, "TryDismissDialog success");
+      ARWorldCupGameLogicManager.a(this.a).dismiss();
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setDuration(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
+    String str = ARWorldCupGameLogicManager.a;
+    if ("TryDismissDialog failed " + ARWorldCupGameLogicManager.a(this.a) != null) {}
+    for (;;)
+    {
+      QLog.d(str, 2, new Object[] { Boolean.valueOf(bool) });
+      return;
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alfj
  * JD-Core Version:    0.7.0.1
  */

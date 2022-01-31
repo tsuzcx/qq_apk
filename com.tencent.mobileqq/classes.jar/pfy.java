@@ -1,30 +1,50 @@
-import android.util.Log;
-import com.tencent.component.media.gif.NewGifDecoder;
-import com.tencent.component.media.gif.NewGifDrawable;
-import com.tencent.component.media.utils.ImageManagerLog;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.biz.webviewplugin.HotchatPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pfy
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  private pfy(NewGifDrawable paramNewGifDrawable) {}
+  public pfy(HotchatPlugin paramHotchatPlugin, String paramString) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    NewGifDrawable.a(this.a);
+    Object localObject = null;
+    String str;
+    if (paramBundle != null)
+    {
+      str = paramBundle.getString("content");
+      paramBundle = paramBundle.getString("url");
+    }
     try
     {
-      this.a.a.stop();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("content", str);
+      localJSONObject.put("url", paramBundle);
+      paramBundle = localJSONObject.toString();
+      this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
       return;
     }
-    catch (Throwable localThrowable)
+    catch (JSONException localJSONException)
     {
-      ImageManagerLog.e("NewGifDrawable", Log.getStackTraceString(localThrowable));
+      for (;;)
+      {
+        paramBundle = localObject;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("HotchatPlugin", 2, localJSONException.getMessage());
+          paramBundle = localObject;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pfy
  * JD-Core Version:    0.7.0.1
  */

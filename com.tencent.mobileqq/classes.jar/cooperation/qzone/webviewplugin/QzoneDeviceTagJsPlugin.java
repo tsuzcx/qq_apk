@@ -1,9 +1,9 @@
 package cooperation.qzone.webviewplugin;
 
-import anch;
-import anci;
 import android.os.Bundle;
 import android.text.TextUtils;
+import ankh;
+import anki;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -26,12 +26,12 @@ public class QzoneDeviceTagJsPlugin
   
   private static void a(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new anch(paramArrayOfString));
+    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new ankh(paramArrayOfString));
   }
   
   private static void b(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new anci());
+    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new anki());
   }
   
   public void a()

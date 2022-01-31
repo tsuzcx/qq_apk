@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.armap;
 
-import abbz;
-import abca;
-import abcb;
+import abiz;
+import abja;
+import abjb;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -63,12 +63,12 @@ public class ARMapOpenRedPackDialog
   public ARMapOpenRedPackDialog(Context paramContext, AppInterface paramAppInterface, boolean paramBoolean)
   {
     super(paramContext, 2131624516);
-    setContentView(2130970221);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369692));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369693));
-    findViewById(2131369571).setOnClickListener(this);
-    findViewById(2131369572).setOnClickListener(this);
-    findViewById(2131369695).setOnClickListener(this);
+    setContentView(2130970236);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369702));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369703));
+    findViewById(2131369581).setOnClickListener(this);
+    findViewById(2131369582).setOnClickListener(this);
+    findViewById(2131369705).setOnClickListener(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -126,13 +126,13 @@ public class ARMapOpenRedPackDialog
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363212));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363214));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363216));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363218));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 2, -1.0F, 2, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new abcb(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new abjb(this));
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(800L);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new abbz(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new abiz(this));
     int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
     int j = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
     this.jdField_a_of_type_ComTencentMobileqqPortalSanHuaView = new SanHuaView(this.jdField_a_of_type_AndroidContentContext, i / 2, j / 2);
@@ -142,7 +142,7 @@ public class ARMapOpenRedPackDialog
   
   private void b()
   {
-    ThreadManager.getUIHandler().postDelayed(new abca(this), 500L);
+    ThreadManager.getUIHandler().postDelayed(new abja(this), 500L);
   }
   
   private void c()

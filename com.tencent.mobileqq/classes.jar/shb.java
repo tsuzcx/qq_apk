@@ -1,18 +1,41 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.utils.DialogUtil;
+import android.content.res.Resources;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class shb
-  implements Runnable
+public class shb
+  implements View.OnTouchListener
 {
-  shb(sha paramsha, String paramString1, String paramString2, String paramString3) {}
+  public shb(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    shc localshc = new shc(this);
-    this.jdField_a_of_type_Sha.a.a = DialogUtil.a(this.jdField_a_of_type_Sha.a.a(), 230, this.b, this.c, "退出登录", "立即验证", localshc, localshc);
-    this.jdField_a_of_type_Sha.a.a.setCancelable(false);
-    this.jdField_a_of_type_Sha.a.a.show();
+    int i;
+    if ((TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 512)))
+    {
+      i = 1;
+      if ((!this.a.a.isMember) && (i != 0)) {
+        break label66;
+      }
+    }
+    label66:
+    do
+    {
+      return false;
+      i = 0;
+      break;
+      if (paramMotionEvent.getAction() == 0) {
+        paramView.getBackground().setColorFilter(new LightingColorFilter(0, -950263));
+      }
+    } while ((paramMotionEvent.getX() < this.a.getResources().getDisplayMetrics().widthPixels - 2) && (paramMotionEvent.getX() > 0.0F) && (paramMotionEvent.getY() > 0.0F) && (paramMotionEvent.getY() <= this.a.getResources().getDimensionPixelSize(2131558669) - 2) && (paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
+    paramView.getBackground().setColorFilter(new LightingColorFilter(0, -158425));
+    return false;
   }
 }
 

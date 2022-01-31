@@ -1,16 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.richmedia.CompoundProcessor;
+import com.tencent.mobileqq.richmedia.RichmediaClient;
+import com.tencent.mobileqq.utils.LogTag;
 
 public class ahkz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public ahkz(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public ahkz(CompoundProcessor paramCompoundProcessor) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    CameraCaptureButtonLayout.a(this.a, f);
+    RichmediaClient localRichmediaClient = RichmediaClient.a();
+    String str = this.a.a(this.a.jdField_b_of_type_JavaLangString);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("vidoe_record_uniseq", this.a.a);
+    localBundle.putString("full_video_path", str);
+    localBundle.putInt("video_slices_total_time_length", this.a.jdField_b_of_type_Int);
+    localRichmediaClient.a(103, -1, localBundle);
+    LogTag.a(this.a.a, "clicompCompoundProcessor.compressSourceYUV", "path = " + str + ",totalTime = " + this.a.jdField_b_of_type_Int);
   }
 }
 

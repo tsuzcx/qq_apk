@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import anqf;
-import anqg;
+import anys;
+import anyt;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 import dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker;
@@ -38,7 +38,7 @@ public class VideoSegmentPickerProviderView
   
   protected int a()
   {
-    return 2130970144;
+    return 2130970157;
   }
   
   public void a(long paramLong)
@@ -56,12 +56,12 @@ public class VideoSegmentPickerProviderView
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970144, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970157, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = ((SegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131369209));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369210).setOnClickListener(new anqf(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369211).setOnClickListener(new anqg(this));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = ((SegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131369213));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369214).setOnClickListener(new anys(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369215).setOnClickListener(new anyt(this));
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
       paramBundle = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();

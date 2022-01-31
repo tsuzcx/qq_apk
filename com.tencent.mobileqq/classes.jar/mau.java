@@ -1,12 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
 
-class mau
-  implements DialogInterface.OnClickListener
+public class mau
+  extends BaseSkinRes
 {
-  mau(mas parammas) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public mau(ReadInJoySkinManager paramReadInJoySkinManager) {}
 }
 
 

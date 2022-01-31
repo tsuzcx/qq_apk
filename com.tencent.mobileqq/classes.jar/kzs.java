@@ -1,29 +1,18 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class kzs
-  extends PublicAccountObserver
+  implements Runnable
 {
-  public kzs(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public kzs(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("已关注");
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText("关注");
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130843941);
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    QQToast.a(ReadInJoyNativeAdAppVideoView.a(this.a), 1, "视频加载失败，请稍后重试", 0).a();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
   }
 }
 

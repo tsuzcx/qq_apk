@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
 
-public class aavx
+class aavx
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public ArkLocalAppMgr.AppPathInfo a;
-  public ArkLocalAppMgr.IGetAppPathByNameCallback a;
-  public WeakReferenceHandler a;
-  public Object a;
-  public String a;
-  public String b;
-  public String c;
+  aavx(aavt paramaavt) {}
   
-  public aavx()
+  public void run()
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"cellular".equals(ArkAppEventObserverManager.a(this.a.a))))
+    {
+      ArkAppEventObserverManager.a(this.a.a).a(true, "cellular");
+      ArkAppEventObserverManager.a(this.a.a, "cellular");
+    }
   }
 }
 

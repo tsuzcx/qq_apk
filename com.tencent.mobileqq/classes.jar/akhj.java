@@ -1,18 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import com.tencent.mobileqq.util.FaceDrawableImpl;
+import com.tencent.mobileqq.util.FaceDrawableImpl.NewTroopFaceObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class akhj
-  extends QQCustomDialog
+  implements FaceDrawableImpl.NewTroopFaceObserver
 {
-  public akhj(ColorRingPlayer paramColorRingPlayer, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  private akhj(FaceDrawableImpl paramFaceDrawableImpl) {}
   
-  public void onBackPressed()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    super.onBackPressed();
+    if (paramBoolean2) {
+      this.a.a(paramBoolean1, 101, paramString, this.a.a);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 101);
+      }
+      return;
+      this.a.a(paramBoolean1, 101, paramString, null);
+    }
   }
 }
 

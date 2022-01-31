@@ -1,43 +1,14 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
-import com.tencent.mobileqq.widget.ConfigClearableEditText.OnTextClearedListener;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.vipgift.VipGiftManager;
 
 public class aktb
-  implements View.OnTouchListener
+  implements AsyncBack
 {
-  public aktb(ConfigClearableEditText paramConfigClearableEditText) {}
+  public aktb(VipGiftManager paramVipGiftManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = 1;
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    label107:
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
-        for (;;)
-        {
-          if (i == 0) {
-            break label107;
-          }
-          this.a.setText("");
-          this.a.setClearButtonVisible(false);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText$OnTextClearedListener == null) {
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText$OnTextClearedListener.a();
-          return false;
-          i = 0;
-        }
-      }
-    }
-  }
+  public void loaded(String paramString, int paramInt) {}
+  
+  public void progress(int paramInt) {}
 }
 
 

@@ -259,11 +259,11 @@ public class AioAnimationConfigHelper
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: aconst_null
-    //   7: astore_3
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore 5
+    //   5: aconst_null
+    //   6: astore 4
     //   8: aload 5
     //   10: astore_2
     //   11: new 30	java/io/File
@@ -354,34 +354,34 @@ public class AioAnimationConfigHelper
     //   183: putfield 278	com/tencent/mobileqq/activity/aio/anim/AioAnimationConfigHelper:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   186: iconst_1
     //   187: ireturn
-    //   188: astore_2
-    //   189: aload_3
-    //   190: astore_1
-    //   191: aload_2
-    //   192: astore_3
-    //   193: aload_1
-    //   194: astore_2
-    //   195: invokestatic 199	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   198: ifeq +15 -> 213
-    //   201: aload_1
-    //   202: astore_2
-    //   203: ldc 201
-    //   205: iconst_2
-    //   206: ldc_w 280
-    //   209: aload_3
-    //   210: invokestatic 283	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   213: aload_1
-    //   214: ifnull -122 -> 92
-    //   217: aload_1
-    //   218: invokevirtual 277	java/io/FileInputStream:close	()V
-    //   221: iconst_0
-    //   222: ireturn
-    //   223: astore_1
-    //   224: iconst_0
-    //   225: ireturn
-    //   226: astore_3
-    //   227: aload 4
-    //   229: astore_1
+    //   188: astore_3
+    //   189: aload 4
+    //   191: astore_1
+    //   192: aload_1
+    //   193: astore_2
+    //   194: invokestatic 199	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   197: ifeq +15 -> 212
+    //   200: aload_1
+    //   201: astore_2
+    //   202: ldc 201
+    //   204: iconst_2
+    //   205: ldc_w 280
+    //   208: aload_3
+    //   209: invokestatic 283	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   212: aload_1
+    //   213: ifnull -121 -> 92
+    //   216: aload_1
+    //   217: invokevirtual 277	java/io/FileInputStream:close	()V
+    //   220: iconst_0
+    //   221: ireturn
+    //   222: astore_1
+    //   223: iconst_0
+    //   224: ireturn
+    //   225: astore_2
+    //   226: aload_3
+    //   227: astore_1
+    //   228: aload_2
+    //   229: astore_3
     //   230: aload_1
     //   231: astore_2
     //   232: invokestatic 199	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -425,23 +425,24 @@ public class AioAnimationConfigHelper
     //   293: astore_3
     //   294: goto -64 -> 230
     //   297: astore_3
-    //   298: goto -105 -> 193
+    //   298: goto -106 -> 192
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	301	0	this	AioAnimationConfigHelper
     //   0	301	1	paramString	String
-    //   10	173	2	localObject1	Object
-    //   188	4	2	localException1	Exception
-    //   194	75	2	str1	String
+    //   10	192	2	localObject1	Object
+    //   225	4	2	localOutOfMemoryError1	OutOfMemoryError
+    //   231	38	2	str1	String
     //   281	1	2	localIOException	java.io.IOException
     //   287	1	2	str2	String
-    //   7	203	3	localObject2	Object
-    //   226	21	3	localOutOfMemoryError1	OutOfMemoryError
-    //   285	4	3	localObject3	Object
+    //   1	1	3	localObject2	Object
+    //   188	39	3	localException1	Exception
+    //   229	18	3	localObject3	Object
+    //   285	4	3	localObject4	Object
     //   293	1	3	localOutOfMemoryError2	OutOfMemoryError
     //   297	1	3	localException2	Exception
-    //   1	227	4	localObject4	Object
-    //   4	131	5	localObject5	Object
+    //   6	184	4	localObject5	Object
+    //   3	132	5	localObject6	Object
     // Exception table:
     //   from	to	target	type
     //   11	20	188	java/lang/Exception
@@ -452,15 +453,15 @@ public class AioAnimationConfigHelper
     //   97	103	188	java/lang/Exception
     //   106	134	188	java/lang/Exception
     //   137	146	188	java/lang/Exception
-    //   217	221	223	java/io/IOException
-    //   11	20	226	java/lang/OutOfMemoryError
-    //   23	30	226	java/lang/OutOfMemoryError
-    //   33	40	226	java/lang/OutOfMemoryError
-    //   43	49	226	java/lang/OutOfMemoryError
-    //   52	80	226	java/lang/OutOfMemoryError
-    //   97	103	226	java/lang/OutOfMemoryError
-    //   106	134	226	java/lang/OutOfMemoryError
-    //   137	146	226	java/lang/OutOfMemoryError
+    //   216	220	222	java/io/IOException
+    //   11	20	225	java/lang/OutOfMemoryError
+    //   23	30	225	java/lang/OutOfMemoryError
+    //   33	40	225	java/lang/OutOfMemoryError
+    //   43	49	225	java/lang/OutOfMemoryError
+    //   52	80	225	java/lang/OutOfMemoryError
+    //   97	103	225	java/lang/OutOfMemoryError
+    //   106	134	225	java/lang/OutOfMemoryError
+    //   137	146	225	java/lang/OutOfMemoryError
     //   254	258	260	java/io/IOException
     //   11	20	263	finally
     //   23	30	263	finally
@@ -470,8 +471,8 @@ public class AioAnimationConfigHelper
     //   97	103	263	finally
     //   106	134	263	finally
     //   137	146	263	finally
-    //   195	201	263	finally
-    //   203	213	263	finally
+    //   194	200	263	finally
+    //   202	212	263	finally
     //   232	238	263	finally
     //   240	250	263	finally
     //   84	92	274	java/io/IOException

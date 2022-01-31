@@ -1,27 +1,28 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.search.util.SearchUtils;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 public class aiaw
-  implements Animation.AnimationListener
+  implements ISearchListener
 {
-  public aiaw(DanceReadyFilter paramDanceReadyFilter) {}
+  public aiaw(NetSearchEngine paramNetSearchEngine, List paramList) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(List paramList) {}
+  
+  public void a(List paramList, int paramInt)
   {
-    DanceReadyFilter.d(this.a).h_(false);
-    DanceReadyFilter.f(this.a).a(DanceReadyFilter.d(this.a));
-    DanceReadyFilter.f(this.a).h_(true);
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    SearchUtils.a();
+    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiaw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,12 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
 public class afgg
-  implements Runnable
+  extends RecyclerView.ViewHolder
 {
-  public afgg(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
-  
-  public void run()
+  public afgg(View paramView)
   {
-    int i = this.a.h.getTop();
-    int j = (int)(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a * 20.0F);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollTo(0, i - j);
+    super(paramView);
   }
 }
 

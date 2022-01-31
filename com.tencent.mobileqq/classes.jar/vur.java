@@ -1,34 +1,22 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.HotchatSCHelper;
-import com.tencent.mobileqq.app.HotchatSCHelper.OnShowNoteListener;
-import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.view.TouchDelegate;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.MyAdapter;
 
 public class vur
-  implements HotchatSCHelper.OnShowNoteListener
+  implements Runnable
 {
-  public vur(HotChatPie paramHotChatPie) {}
+  public vur(PhotoListPanel.MyAdapter paramMyAdapter, View paramView1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView2) {}
   
-  public boolean a(HotchatSCMng.HotchatNote paramHotchatNote)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      NearbyUtils.a("Q.aio.BaseTroopChatPie", "onShowHotchatNote", new Object[] { paramHotchatNote });
-    }
-    if (paramHotchatNote == null)
-    {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.b) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
-      }
-      return false;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic = new TroopFeedsCenterLogic(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, HotChatPie.a(this.a), HotChatPie.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips, this.a.Q, null);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramHotchatNote.a, paramHotchatNote.b);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.b = true;
-    return true;
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getHitRect(localRect);
+    localRect.left -= this.jdField_a_of_type_Int;
+    localRect.top -= this.jdField_b_of_type_Int;
+    localRect.right += this.c;
+    localRect.bottom += this.d;
+    this.jdField_b_of_type_AndroidViewView.setTouchDelegate(new TouchDelegate(localRect, this.jdField_a_of_type_AndroidViewView));
   }
 }
 

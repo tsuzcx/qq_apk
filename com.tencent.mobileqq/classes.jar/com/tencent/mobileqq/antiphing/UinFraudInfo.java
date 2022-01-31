@@ -3,7 +3,7 @@ package com.tencent.mobileqq.antiphing;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
-import yjj;
+import ypo;
 
 public class UinFraudInfo
 {
@@ -24,13 +24,13 @@ public class UinFraudInfo
     long l = System.currentTimeMillis();
     if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
     {
-      yjj localyjj = (yjj)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      if (l - localyjj.jdField_a_of_type_Long < 3600000L)
+      ypo localypo = (ypo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+      if (l - localypo.jdField_a_of_type_Long < 3600000L)
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
         }
-        return localyjj.jdField_a_of_type_Int;
+        return localypo.jdField_a_of_type_Int;
       }
       if (QLog.isDevelopLevel()) {
         QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
@@ -74,13 +74,13 @@ public class UinFraudInfo
   public void a(long paramLong, int paramInt)
   {
     long l = System.currentTimeMillis();
-    yjj localyjj = new yjj(this);
-    localyjj.jdField_a_of_type_Int = paramInt;
-    localyjj.jdField_a_of_type_Long = l;
+    ypo localypo = new ypo(this);
+    localypo.jdField_a_of_type_Int = paramInt;
+    localypo.jdField_a_of_type_Long = l;
     if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
       this.jdField_a_of_type_JavaUtilMap.clear();
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localyjj);
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localypo);
     if (this.b.containsKey(Long.valueOf(paramLong))) {
       this.b.remove(Long.valueOf(paramLong));
     }
@@ -91,7 +91,7 @@ public class UinFraudInfo
     long l = System.currentTimeMillis();
     if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
     {
-      if (l - ((yjj)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
+      if (l - ((ypo)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
       {
         if (QLog.isDevelopLevel()) {
           QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");

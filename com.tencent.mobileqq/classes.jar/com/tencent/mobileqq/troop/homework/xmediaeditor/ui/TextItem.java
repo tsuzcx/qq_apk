@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import ajld;
-import ajlf;
-import ajlg;
-import ajlh;
-import ajli;
-import ajlj;
+import ajsp;
+import ajsr;
+import ajss;
+import ajst;
+import ajsu;
+import ajsv;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.text.TextUtils;
@@ -37,9 +37,9 @@ public class TextItem
   
   public TextItem.TextViewHolder a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = new TextItem.TextViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970649, paramViewGroup, false));
+    paramViewGroup = new TextItem.TextViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970662, paramViewGroup, false));
     QLog.i("xmediaEditor", 1, "onCreateViewHolder. vh hash=" + paramViewGroup.hashCode());
-    paramViewGroup.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new ajld(this));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new ajsp(this));
     return paramViewGroup;
   }
   
@@ -99,17 +99,17 @@ public class TextItem
       paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setText(paramTextInfo.jdField_a_of_type_JavaLangString);
       QLog.i("xmediaEditor", 1, "mData.position:" + paramTextInfo.c + ", text:" + paramTextInfo.jdField_a_of_type_JavaLangString);
       paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(null);
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new ajlf(this, paramTextViewHolder));
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new ajlg(this, paramTextViewHolder));
-      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new ajlh(this, paramTextInfo, paramTextViewHolder));
-      paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher = new ajli(this, paramTextViewHolder, paramTextInfo);
+      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new ajsr(this, paramTextViewHolder));
+      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new ajss(this, paramTextViewHolder));
+      paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new ajst(this, paramTextInfo, paramTextViewHolder));
+      paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher = new ajsu(this, paramTextViewHolder, paramTextInfo);
       QLog.i("xmediaEditor", 1, "addTextChangedListener, mData.position:" + paramTextInfo.c + ", text:" + paramTextInfo.jdField_a_of_type_JavaLangString + ",Listener:" + paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher.toString());
       paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(paramTextViewHolder.jdField_a_of_type_AndroidTextTextWatcher);
       if (paramTextInfo.jdField_a_of_type_Boolean)
       {
         paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
         paramTextViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
-        ThreadManager.getUIHandler().post(new ajlj(this, paramTextViewHolder, paramTextInfo));
+        ThreadManager.getUIHandler().post(new ajsv(this, paramTextViewHolder, paramTextInfo));
       }
       while (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a()) {
         if ((((TextInfo)paramTextViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase).c == 1) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getAdapter().getItemCount() == 2))
@@ -157,7 +157,7 @@ public class TextItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem
  * JD-Core Version:    0.7.0.1
  */

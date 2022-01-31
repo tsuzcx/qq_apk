@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
 public class afhe
-  implements ActionSheet.OnDismissListener
+  implements Runnable
 {
-  public afhe(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public afhe(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, BounceScrollView paramBounceScrollView, int paramInt) {}
   
-  public void onDismiss()
+  public void run()
   {
-    NearbyProfileEditPanel.a(this.a, this.a.c, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.scrollBy(0, this.jdField_a_of_type_Int);
   }
 }
 

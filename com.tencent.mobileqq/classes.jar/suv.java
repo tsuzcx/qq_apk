@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class suv
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public suv(GroupManagerActivity paramGroupManagerActivity) {}
+  public suv(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    GroupManagerActivity.a(this.a, null);
+    this.a.onBackPressed();
   }
 }
 

@@ -1,21 +1,27 @@
-import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.SimpleStepResultCallback;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.ProfilePresenterListener;
+import com.tencent.mobileqq.app.FriendListObserver;
+import friendlist.GetOnlineInfoResp;
 
-class obj
-  implements SimpleStep.SimpleStepResultCallback
+public class obj
+  extends FriendListObserver
 {
-  obj(obi paramobi, String paramString) {}
+  public obj(MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
   
-  public void a(GetMyStoryVideoListStep.Result paramResult)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    if ((paramResult.a != null) && (TextUtils.equals(paramResult.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
+    while (MemoriesProfilePresenter.a(this.a) == null) {
+      return;
+    }
+    paramString = MemoriesProfilePresenter.a(this.a);
+    if (paramGetOnlineInfoResp.eIconType == 11) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      NewMyStorySegment.a(this.jdField_a_of_type_Obi.a).a = paramResult.a;
-      NewMyStorySegment.a(this.jdField_a_of_type_Obi.a).sendMessage(NewMyStorySegment.a(this.jdField_a_of_type_Obi.a).obtainMessage(0, NewMyStorySegment.a(this.jdField_a_of_type_Obi.a)));
+      paramString.b(paramBoolean);
+      return;
     }
   }
 }

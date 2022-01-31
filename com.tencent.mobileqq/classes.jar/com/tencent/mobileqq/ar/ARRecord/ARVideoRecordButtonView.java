@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
+import aaeq;
+import aaer;
+import aaes;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -15,9 +18,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import zyc;
-import zyd;
-import zye;
 
 public class ARVideoRecordButtonView
   extends View
@@ -84,15 +84,15 @@ public class ARVideoRecordButtonView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838180);
-    this.c = a(2130838181);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838185);
+    this.c = a(2130838186);
   }
   
   private void a(float paramFloat1, float paramFloat2)
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 });
     localValueAnimator.setDuration(1000L);
-    localValueAnimator.addUpdateListener(new zye(this));
+    localValueAnimator.addUpdateListener(new aaes(this));
     localValueAnimator.start();
   }
   
@@ -157,7 +157,7 @@ public class ARVideoRecordButtonView
   {
     float f = Math.min(1.0F, Math.max((float)paramLong1 * 1.0F / (float)paramLong2, 0.0F));
     if (this.jdField_a_of_type_Int == 3) {
-      ThreadManager.getUIHandler().post(new zyc(this, f));
+      ThreadManager.getUIHandler().post(new aaeq(this, f));
     }
   }
   
@@ -175,7 +175,7 @@ public class ARVideoRecordButtonView
       continue;
       this.jdField_b_of_type_Float = 0.0F;
       this.jdField_a_of_type_Float = 0.0F;
-      ThreadManager.getUIHandler().post(new zyd(this));
+      ThreadManager.getUIHandler().post(new aaer(this));
       continue;
       this.jdField_a_of_type_Float = 0.0F;
     }

@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class lsh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lsh(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, String paramString, ArticleInfo paramArticleInfo) {}
+  public lsh(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), this.jdField_a_of_type_JavaLangString);
-    ReadInJoyFooterPresenter.a(1, ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

@@ -1,15 +1,15 @@
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin;
 
 public class andc
   implements Runnable
 {
-  public andc(QzoneRecommedPhotoJsPlugin paramQzoneRecommedPhotoJsPlugin) {}
+  public andc(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
   public void run()
   {
-    RemoteHandleManager.a().a().q();
+    RemoteHandleManager.a().a().h();
   }
 }
 

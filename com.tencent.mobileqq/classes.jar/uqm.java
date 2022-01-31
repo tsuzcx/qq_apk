@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
 
-public class uqm
-  implements Runnable
+public final class uqm
+  implements Parcelable.Creator
 {
-  public uqm(PressToSpeakPanel paramPressToSpeakPanel) {}
-  
-  public void run()
+  public ForwardUtils.Section_Pic a(Parcel paramParcel)
   {
-    this.a.c();
+    return new ForwardUtils.Section_Pic(paramParcel);
+  }
+  
+  public ForwardUtils.Section_Pic[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Pic[paramInt];
   }
 }
 

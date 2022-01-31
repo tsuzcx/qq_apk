@@ -1,69 +1,62 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.Iterator;
+import java.util.List;
 
-public final class aewt
-  implements AdapterView.OnItemClickListener
+class aewt
+  implements Runnable
 {
-  public aewt(ShareActionSheetBuilder paramShareActionSheetBuilder, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  aewt(aews paramaews, List paramList, boolean paramBoolean) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.b();
-    int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.c;
-    if ((i == 9) || (i == 10)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131435319;
+    this.jdField_a_of_type_Aews.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Aews.a.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    int j;
+    int i;
+    aeyc localaeyc;
+    int k;
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      j = 0;
+      i = 0;
+      if (localIterator.hasNext())
+      {
+        localaeyc = (aeyc)localIterator.next();
+        if (localaeyc.a == 1)
+        {
+          k = j;
+          j = i + 1;
+          i = k;
+        }
       }
     }
     for (;;)
     {
-      if (paramInt != -1)
+      k = j;
+      j = i;
+      i = k;
+      break;
+      if (localaeyc.a == 0)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(paramInt), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131558448));
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435320;
+        k = j + 1;
+        j = i;
+        i = k;
+        continue;
+        ReportController.b(this.jdField_a_of_type_Aews.a.a.app, "dc00899", "Grp_wolf", "", "invite_page", "exp_invite", 0, 0, "" + i, "" + j, "", "");
+        if (this.jdField_a_of_type_Boolean) {
+          ReportController.b(this.jdField_a_of_type_Aews.a.a.app, "dc00899", "Grp_wolf", "", "invite_page", "exp_more", 0, 0, "", "", "", "");
         }
       }
       else
       {
-        paramAdapterView = this.jdField_a_of_type_JavaLangString;
-        switch (i)
-        {
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        default: 
-          return;
-        case 2: 
-          ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.e, false);
-          return;
-        case 3: 
-          ShortVideoShareUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.e);
-          return;
-        case 9: 
-          ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.f);
-          return;
-        }
-        ShortVideoShareUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, paramAdapterView, this.c, this.d, this.f);
-        return;
+        k = i;
+        i = j;
+        j = k;
       }
-      paramInt = -1;
     }
   }
 }

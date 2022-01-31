@@ -1,13 +1,30 @@
-import com.tencent.biz.widgets.ScannerView;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog;
 
 public class pea
-  implements Runnable
+  implements ActionMode.Callback
 {
-  public pea(ScannerView paramScannerView) {}
+  public pea(TroopGiftPanel.GiftNumInputDialog paramGiftNumInputDialog, TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void run()
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    ScannerView.a(this.a);
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

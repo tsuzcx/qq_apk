@@ -1,26 +1,48 @@
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class akye
-  implements OnCompositionLoadedListener
+  implements TouchWebView.OnOverScrollHandler
 {
-  public akye(WorldCupShareFragment paramWorldCupShareFragment, String paramString, View paramView) {}
+  public akye(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler, TouchWebView paramTouchWebView, RefreshView paramRefreshView) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void a()
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setImagesAssetsFolder(this.jdField_a_of_type_JavaLangString);
-    localLottieDrawable.setImageAssetDelegate(new akyf(this));
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375470)).setImageDrawable(localLottieDrawable);
-    WorldCupShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupWorldCupShareFragment, localLottieDrawable);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    Object localObject;
+    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_Boolean = true;
+      localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    try
+    {
+      localObject = Uri.parse((String)localObject);
+      if ((localObject != null) && (((Uri)localObject).isHierarchical())) {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetTextView.setText("网页由 " + ((Uri)localObject).getHost() + " 提供");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+    }
+    this.jdField_a_of_type_ComTencentBizUiRefreshView.a(paramInt);
   }
 }
 

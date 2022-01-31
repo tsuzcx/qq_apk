@@ -1,20 +1,13 @@
-import android.os.Process;
-import com.tencent.component.network.utils.thread.AsyncTask;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.component.media.image.ImageManager;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class pll
-  extends plt
+public final class pll
+  implements ThreadFactory
 {
-  public pll(AsyncTask paramAsyncTask)
+  public Thread newThread(Runnable paramRunnable)
   {
-    super(null);
-  }
-  
-  public Object call()
-  {
-    AsyncTask.a(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask).set(true);
-    Process.setThreadPriority(10);
-    return AsyncTask.a(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask, this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask.a(this.jdField_a_of_type_ArrayOfJavaLangObject));
+    return new Thread(paramRunnable, "Qzone_ImageManager_decode_ThreadPool_" + ImageManager.a().getAndIncrement());
   }
 }
 

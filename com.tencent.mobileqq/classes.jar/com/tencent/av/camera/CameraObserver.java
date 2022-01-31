@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import java.util.Observable;
 import java.util.Observer;
-import jgs;
+import jiv;
 
 public class CameraObserver
   implements Observer
@@ -82,7 +82,7 @@ public class CameraObserver
       if (this.a == null) {
         this.a = new Handler(paramObservable);
       }
-      this.a.post(new jgs(this, paramObject));
+      this.a.post(new jiv(this, paramObject));
       return;
     }
     a(paramObject);
@@ -90,7 +90,7 @@ public class CameraObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.camera.CameraObserver
  * JD-Core Version:    0.7.0.1
  */

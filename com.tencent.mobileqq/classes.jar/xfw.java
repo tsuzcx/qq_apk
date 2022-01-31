@@ -1,22 +1,14 @@
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
 
 public class xfw
-  implements EIPCResultCallback
 {
-  public xfw(PreloadManagerProxy paramPreloadManagerProxy, ResultReceiver paramResultReceiver) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
-    {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, null);
-  }
+  private xfw(PayCodeEntryActivity paramPayCodeEntryActivity) {}
 }
 
 

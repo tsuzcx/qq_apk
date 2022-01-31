@@ -1,91 +1,122 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.EmoticonHandler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.app.SecSvcHandler;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import mqq.manager.AccountManager;
+import mqq.manager.WtloginManager;
+import mqq.observer.WtloginObserver;
 import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class rsk
-  implements Runnable
+  extends WtloginObserver
 {
-  public rsk(BaseChatPie paramBaseChatPie, String paramString, Editable paramEditable) {}
+  public rsk(AuthDevActivity paramAuthDevActivity) {}
   
-  public void run()
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    int i = 9;
-    int m = 0;
-    int j = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).b(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, this.jdField_a_of_type_AndroidTextEditable.toString() + "is hotword, totalnum = " + j);
+    if (this.a.isFinishing()) {}
+    do
+    {
+      return;
+      AuthDevActivity.a(this.a, true);
+      AuthDevActivity.c(this.a);
+      if (paramInt != 0) {
+        break;
+      }
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
+      }
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
+      AuthDevActivity.b(this.a).setChecked(true);
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+      paramWUserSigInfo = (SecSvcHandler)this.a.app.a(34);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.b();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.success");
+      }
+      AuthDevActivity.b(this.a, true);
+      EquipmentLockImpl.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
+      AuthDevActivity.c(this.a, true);
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131436578), 0).b(this.a.getTitleBarHeight());
+      AuthDevActivity.d(this.a);
+      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
+    } while (paramWUserSigInfo == null);
+    paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
+    return;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail ret=" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail errMsg=" + paramErrMsg.getMessage());
+      }
     }
-    if (j == 0) {
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    Object localObject3 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_JavaLangString);
-    Object localObject2 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).b(this.jdField_a_of_type_JavaLangString);
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new ArrayList();
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131436609), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void OnCloseDevLock(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (this.a.isFinishing()) {
+      return;
     }
-    if (j > 9) {}
-    for (;;)
+    AuthDevActivity.a(this.a, true);
+    AuthDevActivity.c(this.a);
+    if (paramInt == 0)
     {
-      long l = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_JavaLangString);
-      boolean bool;
-      if (BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a()) {
-        if (System.currentTimeMillis() - l > 86400000L) {
-          bool = true;
-        }
+      paramWUserSigInfo = (WtloginManager)this.a.app.getManager(1);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.RefreshMemorySig();
       }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.BaseChatPie", 2, "afterTextChanged isNeedReq = " + bool);
-        }
-        if (bool)
-        {
-          ((List)localObject1).clear();
-          localObject2 = new ArrayList();
-          j = i;
-          int k = m;
-          if (localObject3 != null)
-          {
-            ((List)localObject2).add(((Emoticon)localObject3).eId);
-            ((List)localObject1).add(localObject3);
-            j = i - 1;
-            k = m;
-          }
-          for (;;)
-          {
-            if (k < j)
-            {
-              localObject3 = new Emoticon();
-              ((Emoticon)localObject3).epId = "NONE";
-              ((Emoticon)localObject3).eId = ("_" + k);
-              ((List)localObject1).add(localObject3);
-              k += 1;
-              continue;
-              if (((List)localObject1).size() >= i) {
-                break label407;
-              }
-              bool = true;
-              break;
-            }
-          }
-          localObject3 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).c(this.jdField_a_of_type_JavaLangString);
-          ((EmoticonHandler)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12)).a(this.jdField_a_of_type_AndroidTextEditable.toString(), (List)localObject2, (List)localObject3);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_MqqOsMqqHandler.post(new rsl(this, (List)localObject1));
-        return;
-        label407:
-        bool = false;
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
+      AuthDevActivity.b(this.a).setChecked(false);
+      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
+      AuthDevActivity.a(this.a).setVisibility(8);
+      AuthDevActivity.b(this.a).setVisibility(8);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.success");
       }
-      i = j;
+      AuthDevActivity.b(this.a, false);
+      AuthDevActivity.a(this.a).setVisibility(8);
+      EquipmentLockImpl.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), false);
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131436607), 0).b(this.a.getTitleBarHeight());
+      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.obtainMessage(20140331, 0, 0).sendToTarget();
+      }
+      AuthDevActivity.a(this.a, null);
+      AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
+      return;
     }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail ret=" + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail errMsg=" + paramErrMsg.getMessage());
+      }
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131436608), 0).b(this.a.getTitleBarHeight());
   }
 }
 

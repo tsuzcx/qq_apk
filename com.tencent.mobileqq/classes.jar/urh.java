@@ -1,24 +1,15 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public class urh
-  implements Runnable
+public final class urh
+  implements ActionSheet.OnDismissListener
 {
-  public urh(DoodleMsgLayout paramDoodleMsgLayout) {}
+  public urh(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onDismiss()
   {
-    Bitmap localBitmap = BitmapManager.a(BaseApplicationImpl.getContext().getResources(), 2130838601);
-    if ((localBitmap != null) && (BaseApplicationImpl.sImageCache != null)) {
-      BaseApplicationImpl.sImageCache.put("aio_doodle_progress", localBitmap, (byte)0);
-    }
-    new Handler(Looper.getMainLooper()).post(new uri(this, localBitmap));
+    ReportController.b(this.a, "CliOper", "", "", "0X8004864", "0X8004864", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class say
-  implements Runnable
+public final class say
+  implements DialogInterface.OnClickListener
 {
-  say(sax paramsax, boolean paramBoolean) {}
+  public say(boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Sax.a.a.d();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Sax.a.a.b(false);
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
     }
-    this.jdField_a_of_type_Sax.a.a.g();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

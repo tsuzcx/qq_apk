@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.Gallery.OnScollListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
 public class wyp
-  implements Gallery.OnScollListener
+  implements View.OnClickListener
 {
-  public wyp(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wyp(BaseActivityView paramBaseActivityView) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.l();
+    this.a.f();
   }
-  
-  public void b(int paramInt) {}
 }
 
 

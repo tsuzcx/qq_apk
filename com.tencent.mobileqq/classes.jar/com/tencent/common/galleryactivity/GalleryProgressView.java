@@ -26,7 +26,7 @@ public class GalleryProgressView
     Object localObject1 = null;
     try
     {
-      localObject2 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130844974);
+      localObject2 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130845049);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -90,7 +90,7 @@ public class GalleryProgressView
   
   public void a(Activity paramActivity, AbstractGalleryScene paramAbstractGalleryScene)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramAbstractGalleryScene.a()).findViewById(2131365303));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramAbstractGalleryScene.a()).findViewById(2131365308));
     a(paramActivity);
   }
   

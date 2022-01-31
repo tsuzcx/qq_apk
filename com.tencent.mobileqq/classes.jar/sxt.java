@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.data.Card;
 
-class sxt
+public class sxt
   implements Runnable
 {
-  sxt(sxq paramsxq) {}
+  public sxt(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, Card paramCard) {}
   
   public void run()
   {
-    if (Leba.a(this.a.a) != null) {
-      Leba.a(this.a.a).e();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataCard);
   }
 }
 

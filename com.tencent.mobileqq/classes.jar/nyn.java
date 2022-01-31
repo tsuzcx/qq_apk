@@ -1,25 +1,25 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
+import android.app.Activity;
+import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper;
+import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper.GenerateManifestCallback;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
 public class nyn
-  implements Runnable
+  implements QQStoryTakeVideoHelper.GenerateManifestCallback
 {
-  public nyn(FeedManager paramFeedManager) {}
+  public nyn(QQStoryTakeVideoHelper paramQQStoryTakeVideoHelper, PublishParam paramPublishParam, String paramString, int paramInt) {}
   
-  public void run()
+  public void a()
   {
-    if (FeedManager.a(this.a) == 0L)
-    {
-      SLog.d("Q.qqstory.home.position", "cache in use");
-      return;
-    }
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.a();
-    }
-    SLog.d("Q.qqstory.home.position", "release cache");
+    SLog.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
+    QQStoryTakeVideoHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void b()
+  {
+    SLog.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
+    QQStoryTakeVideoHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper).finish();
+    QQStoryTakeVideoHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryTakeVideoHelper).overridePendingTransition(0, 0);
   }
 }
 

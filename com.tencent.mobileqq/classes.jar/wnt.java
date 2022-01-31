@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.activity.contacts.adapter.PhoneContactAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.widget.XListView;
 
-class wnt
-  implements Runnable
+public class wnt
+  extends PublicAccountObserver
 {
-  wnt(wns paramwns, boolean paramBoolean) {}
+  public wnt(PublicView paramPublicView) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentWidgetXListView != null)
+    if (true == paramBoolean)
     {
-      PhoneContactFragment.a(this.jdField_a_of_type_Wns.a, this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter == null)
-      {
-        this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter = new PhoneContactAdapter(this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.jdField_a_of_type_Wns.a);
-        this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter);
-      }
-      this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter.a(this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Wns.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter.notifyDataSetChanged();
+      PublicView.a(this.a).a(0);
+      PublicView.a(this.a).sendEmptyMessage(1);
+      PublicView.a(this.a).sendEmptyMessage(3);
+      return;
     }
+    PublicView.a(this.a).springBackOverScrollHeaderView();
+    PublicView.a(this.a, 1, 2131434365);
+    PublicView.a(this.a);
   }
 }
 

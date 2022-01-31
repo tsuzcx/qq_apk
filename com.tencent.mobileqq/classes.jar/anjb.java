@@ -1,28 +1,45 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.util.XMPCoreUtil;
+import cooperation.qzone.util.XMPCoreUtil.XMPCoreJarLoadListener;
 
 public class anjb
-  implements Runnable
+  implements ModuleDownloadListener
 {
-  public anjb(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
+  public anjb(XMPCoreUtil paramXMPCoreUtil, XMPCoreUtil.XMPCoreJarLoadListener paramXMPCoreJarLoadListener) {}
   
-  public void run()
+  public void onDownloadCanceled(String paramString)
   {
-    QLog.d("VERSION_CODES", 2, "onVideoCaptured. videoFrameCount = " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount + " ; minFrameCount = " + QIMCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit));
-    QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
-    if (this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.a) {
-      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.w();
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
+    XMPCoreUtil.a(this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil, false);
+    this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil$XMPCoreJarLoadListener.a(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("xmpcore.jar")) {
+      return;
     }
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.e();
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.y();
+    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", XMPCoreUtil.a(), " onDownloadSucceed = ", XMPCoreUtil.b() });
+    LocalMultiProcConfig.putString("xmp_core_file_md5", XMPCoreUtil.b());
+    XMPCoreUtil.a(this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil);
+    this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil$XMPCoreJarLoadListener.a(XMPCoreUtil.a(this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjb
  * JD-Core Version:    0.7.0.1
  */

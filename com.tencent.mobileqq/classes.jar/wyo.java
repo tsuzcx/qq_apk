@@ -1,20 +1,26 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
-class wyo
-  implements FMDialogUtil.FMDialogInterface
+public class wyo
+  implements Runnable
 {
-  wyo(wyn paramwyn) {}
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void a()
+  public wyo(AvatarPendantActivity paramAvatarPendantActivity, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.i();
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
   }
   
-  public void b()
+  public void run()
   {
-    this.a.a.b.setClickable(true);
+    if (this.b) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.b.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.setVisibility(8);
+    }
   }
 }
 

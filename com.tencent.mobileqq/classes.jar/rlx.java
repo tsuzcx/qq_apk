@@ -1,20 +1,52 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.AppRuntime.Status;
 
 public class rlx
   implements View.OnClickListener
 {
-  public rlx(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rlx(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a, QQStoryBasicSettingsActivity.class);
-    this.a.startActivity(paramView);
-    StoryReportor.a("browse_friend_settings", "clk_set", 0, 0, new String[] { "", "", "", "" });
+    AppRuntime.Status localStatus = AppRuntime.Status.online;
+    int i = paramView.getId();
+    if (i == 2131362766)
+    {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X800403A", "0X800403A", 0, 0, "", "", "", "");
+      paramView = AppRuntime.Status.online;
+    }
+    for (;;)
+    {
+      this.a.a(paramView);
+      if (((paramView == AppRuntime.Status.online) || (paramView == AppRuntime.Status.invisiable) || (paramView == AppRuntime.Status.away)) && (paramView != this.a.app.getOnlineStatus()))
+      {
+        if (!NetworkUtil.d(this.a.getApplication())) {
+          break;
+        }
+        this.a.app.a(this.a.a(paramView), true);
+      }
+      return;
+      if (i == 2131361826)
+      {
+        ReportController.b(this.a.app, "CliOper", "", "", "0X800403B", "0X800403B", 0, 0, "", "", "", "");
+        paramView = AppRuntime.Status.invisiable;
+      }
+      else
+      {
+        paramView = localStatus;
+        if (i == 2131362767) {
+          paramView = AppRuntime.Status.away;
+        }
+      }
+    }
+    Toast.makeText(BaseApplication.getContext(), 2131433269, 0).show();
   }
 }
 

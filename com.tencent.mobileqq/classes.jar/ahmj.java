@@ -1,25 +1,18 @@
-import com.tencent.mobileqq.richmedia.capture.view.GuideVideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
 
-public class ahmj
-  implements Runnable
+public final class ahmj
+  implements Parcelable.Creator
 {
-  public ahmj(GuideVideoView paramGuideVideoView) {}
-  
-  public void run()
+  public FilterCategory a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "onVideoPrepared");
-    }
-    this.a.a = true;
-    if (this.a.b)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "has triggered start, now start");
-      }
-      GuideVideoView.a(this.a).start();
-    }
+    return new FilterCategory(paramParcel);
+  }
+  
+  public FilterCategory[] a(int paramInt)
+  {
+    return new FilterCategory[paramInt];
   }
 }
 

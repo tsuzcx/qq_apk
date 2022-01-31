@@ -93,6 +93,11 @@ public class QQBeautyFilter
     }
   }
   
+  public boolean f_()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
   public void h()
   {
     if (this.jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender == null)
@@ -115,11 +120,6 @@ public class QQBeautyFilter
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
     QQFilterLogManager.a("QQBeautyFilter", false);
     this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean i_()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

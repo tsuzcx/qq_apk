@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import lwv;
+import mai;
 import mqq.manager.Manager;
 
 public abstract class ReadInJoyBaseResManager
@@ -40,7 +40,7 @@ public abstract class ReadInJoyBaseResManager
   
   public String a(String paramString)
   {
-    String str2 = AppConstants.aJ + ".readInjoy/resource/";
+    String str2 = AppConstants.aK + ".readInjoy/resource/";
     String str1 = str2;
     if (!TextUtils.isEmpty(paramString)) {
       str1 = str2 + paramString + "/";
@@ -105,7 +105,7 @@ public abstract class ReadInJoyBaseResManager
     localObject = new DownloadTask(paramBaseResData.url, localFile);
     ((DownloadTask)localObject).b = paramInt;
     ((DownloadTask)localObject).d = 60L;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject, new lwv(this, str, paramBaseResData, paramString), localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject, new mai(this, str, paramBaseResData, paramString), localBundle);
     return false;
   }
   

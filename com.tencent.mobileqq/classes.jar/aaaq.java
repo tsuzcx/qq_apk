@@ -1,54 +1,41 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.Matrix;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
 public class aaaq
-  implements Runnable
+  implements ProtoReqManager.IProtoRespBack
 {
-  public aaaq(GreetingCardRender paramGreetingCardRender) {}
+  public aaaq(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public void run()
+  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
     try
     {
-      if (GreetingCardRender.a(this.a) != null)
-      {
-        GreetingCardRender.a(this.a).updateTexImage();
-        GreetingCardRender.a(this.a).getTransformMatrix(GreetingCardRender.a(this.a));
-        GreetingCardRender.a(this.a);
-        if (GreetingCardRender.a(this.a) == null) {
-          GreetingCardRender.a(this.a, new RenderBuffer(540, 960, 33984));
-        }
-        if (GreetingCardRender.a(this.a) == null) {
-          GreetingCardRender.a(this.a, new TextureRender());
-        }
-        GreetingCardRender.a(this.a).b();
-        Matrix.setIdentityM(GreetingCardRender.b(this.a), 0);
-        Matrix.rotateM(GreetingCardRender.b(this.a), 0, 180.0F, 1.0F, 0.0F, 0.0F);
-        GreetingCardRender.a(this.a).a(36197, GreetingCardRender.a(this.a), GreetingCardRender.a(this.a), GreetingCardRender.b(this.a));
-        GreetingCardRender.a(this.a).c();
-        if ((!GreetingCardRender.a(this.a)) && (GreetingCardRender.a(this.a) != null) && (GreetingCardRender.b(this.a) > 2L))
-        {
-          GreetingCardRender.a(this.a, GreetingCardRender.a(this.a).a());
-          GreetingCardRender.a(this.a, true);
-          GreetingCardRender.b(this.a, true);
-          QLog.d("GreetingCardRender", 2, "drawFrame hard decode frame update");
-        }
+      paramProtoResp = paramProtoResp.a.getWupBuffer();
+      paramProtoReq = new structmsg.RspSystemMsgRead();
+      paramProtoReq.mergeFrom(paramProtoResp);
+      int i = paramProtoReq.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
       }
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramProtoResp)
     {
-      QLog.e("GreetingCardRender", 1, "mUpdateHardTextureRunnable fail.", localException);
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaaq
  * JD-Core Version:    0.7.0.1
  */

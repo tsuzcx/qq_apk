@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
+import com.tencent.mobileqq.app.QQGAudioMsgHandler;
+import cooperation.groupvideo.GroupVideoWrapper;
+import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
 
 public class zsn
-  implements BaseMessageProcessor.RequestBuilder
+  implements GroupVideoWrapper.OnGVideoReadyListener
 {
-  public zsn(BaseMessageProcessor paramBaseMessageProcessor, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq) {}
+  public zsn(QQGAudioMsgHandler paramQQGAudioMsgHandler, byte[] paramArrayOfByte) {}
   
-  public ToServiceMsg a()
+  public void a(GroupVideoWrapper paramGroupVideoWrapper)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageProcessor.a.a("PbMessageSvc.PbMsgReadedReport");
-    byte[] arrayOfByte = this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray();
-    if (arrayOfByte != null)
-    {
-      localToServiceMsg.putWupBuffer(arrayOfByte);
-      localToServiceMsg.setEnableFastResend(true);
-      return localToServiceMsg;
-    }
-    return null;
+    paramGroupVideoWrapper.a(this.jdField_a_of_type_ArrayOfByte);
+    paramGroupVideoWrapper.a();
   }
 }
 

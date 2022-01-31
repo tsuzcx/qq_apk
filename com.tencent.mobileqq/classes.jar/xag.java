@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 
 public class xag
+  implements Animation.AnimationListener
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  public xag(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
   
-  private xag(PayCodeEntryActivity paramPayCodeEntryActivity) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

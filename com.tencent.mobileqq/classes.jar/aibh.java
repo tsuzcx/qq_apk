@@ -1,12 +1,22 @@
+import com.tencent.mobileqq.search.util.HighlightModel;
+import java.util.Comparator;
+
 public class aibh
+  implements Comparator
 {
-  public int a;
-  public byte[] a;
-  public int b;
+  public aibh(HighlightModel paramHighlightModel) {}
+  
+  public int a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return 0;
+    }
+    return paramString2.length() - paramString1.length();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aibh
  * JD-Core Version:    0.7.0.1
  */

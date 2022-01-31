@@ -1,24 +1,14 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
-import java.util.concurrent.ConcurrentHashMap;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
 
-public class aohz
-  implements Comparable
+class aohz
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public int b;
+  aohz(aohy paramaohy) {}
   
-  public aohz(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
-    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(aohz paramaohz)
-  {
-    return -(int)(this.jdField_a_of_type_Long - paramaohz.jdField_a_of_type_Long);
+    ((QIMInformationPasterManager)QIMManager.a().c(12)).c();
   }
 }
 

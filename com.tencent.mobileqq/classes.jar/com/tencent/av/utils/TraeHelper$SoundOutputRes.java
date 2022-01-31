@@ -20,18 +20,18 @@ public class TraeHelper$SoundOutputRes
       {
         String str = paramArrayOfString[i];
         if ("DEVICE_BLUETOOTHHEADSET".equals(str)) {
-          this.jdField_a_of_type_JavaUtilMap.put(str, new TraeHelper.SoundOutputRes.IconAndName(this, 2130840329, "蓝牙设备", str));
+          this.jdField_a_of_type_JavaUtilMap.put(str, new TraeHelper.SoundOutputRes.IconAndName(this, 2130840344, "蓝牙设备", str));
         }
         for (;;)
         {
           i += 1;
           break;
           if ("DEVICE_EARPHONE".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new TraeHelper.SoundOutputRes.IconAndName(this, 2130840331, "听筒", str));
+            this.jdField_a_of_type_JavaUtilMap.put(str, new TraeHelper.SoundOutputRes.IconAndName(this, 2130840346, "听筒", str));
           } else if ("DEVICE_SPEAKERPHONE".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new TraeHelper.SoundOutputRes.IconAndName(this, 2130840334, "扬声器", str));
+            this.jdField_a_of_type_JavaUtilMap.put(str, new TraeHelper.SoundOutputRes.IconAndName(this, 2130840349, "扬声器", str));
           } else if ("DEVICE_WIREDHEADSET".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new TraeHelper.SoundOutputRes.IconAndName(this, 2130840336, "耳机", str));
+            this.jdField_a_of_type_JavaUtilMap.put(str, new TraeHelper.SoundOutputRes.IconAndName(this, 2130840351, "耳机", str));
           }
         }
       }
@@ -66,7 +66,7 @@ public class TraeHelper$SoundOutputRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.TraeHelper.SoundOutputRes
  * JD-Core Version:    0.7.0.1
  */

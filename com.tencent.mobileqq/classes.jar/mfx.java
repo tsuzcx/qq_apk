@@ -1,19 +1,29 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient.Observer;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
 
 public class mfx
-  implements Runnable
+  extends QIPCModule
 {
-  public mfx(VideoUIManager paramVideoUIManager) {}
-  
-  public void run()
+  public mfx(VideoFeedsIPCClient paramVideoFeedsIPCClient, String paramString)
   {
-    if ((VideoUIManager.a(this.a) != null) && (VideoUIManager.a(this.a).a != null)) {
-      PublicAccountReportUtils.a(null, "", "0X8008ACD", "0X8008ACD", 0, 0, "", "", "", VideoReporter.a(VideoUIManager.a(this.a).a.mVideoVid, VideoUIManager.a(this.a).a.innerUniqueID, (int)VideoUIManager.a(this.a).a.mChannelID, null), false);
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    synchronized (VideoFeedsIPCClient.a(this.a))
+    {
+      Iterator localIterator = VideoFeedsIPCClient.a(this.a).iterator();
+      if (localIterator.hasNext()) {
+        ((VideoFeedsIPCClient.Observer)localIterator.next()).a(paramString, paramBundle);
+      }
     }
+    return null;
   }
 }
 

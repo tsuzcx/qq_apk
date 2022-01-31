@@ -8,13 +8,13 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.UITools;
 import java.lang.ref.WeakReference;
-import jyv;
-import jyw;
+import kaz;
+import kba;
 
 public class PstnCallbackWaitingUi
 {
   public Handler a;
-  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new jyw(this);
+  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new kba(this);
   TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager = null;
   public VideoController a;
   public VideoAppInterface a;
@@ -27,7 +27,7 @@ public class PstnCallbackWaitingUi
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
     this.jdField_a_of_type_AndroidOsHandler = null;
     this.jdField_a_of_type_ComTencentAvVideoController = null;
-    this.jdField_a_of_type_JavaLangRunnable = new jyv(this);
+    this.jdField_a_of_type_JavaLangRunnable = new kaz(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAVActivity);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)paramAVActivity.getAppRuntime());
     this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
@@ -60,7 +60,7 @@ public class PstnCallbackWaitingUi
     if (this.jdField_a_of_type_ComTencentAvUiBaseCallbackUI != null) {
       this.jdField_a_of_type_ComTencentAvUiBaseCallbackUI.a.setVisibility(0);
     }
-    UITools.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230733, 1, null);
+    UITools.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230734, 1, null);
   }
   
   public void e()
@@ -75,7 +75,7 @@ public class PstnCallbackWaitingUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.PstnCallbackWaitingUi
  * JD-Core Version:    0.7.0.1
  */

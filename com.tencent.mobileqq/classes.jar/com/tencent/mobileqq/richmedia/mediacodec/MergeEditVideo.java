@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec;
 
-import ahob;
+import ahst;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.mobileqq.richmedia.mediacodec.decoder.DecodeConfig;
@@ -119,7 +119,7 @@ public class MergeEditVideo
           localDecodeConfig.b = n;
           ???.j = paramEditParam.d;
           ???.k = paramEditParam.e;
-          ((IMp4ReEncoder)localObject).a(localDecodeConfig, ???, new ahob(this, arrayOfInt), null);
+          ((IMp4ReEncoder)localObject).a(localDecodeConfig, ???, new ahst(this, arrayOfInt), null);
           if (!this.jdField_a_of_type_Boolean) {
             synchronized (this.jdField_a_of_type_JavaLangObject)
             {

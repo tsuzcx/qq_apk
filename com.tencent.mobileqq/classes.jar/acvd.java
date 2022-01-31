@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.widget.FileWebView;
 import com.tencent.qphone.base.util.QLog;
 
-public class acvd
-  implements FileVideoManager.FileVideoManagerInitCallback
+class acvd
+  implements Runnable
 {
-  public acvd(FileManagerRSCenter paramFileManagerRSCenter, FileManagerEntity paramFileManagerEntity) {}
+  acvd(acvc paramacvc) {}
   
-  public void a()
+  public void run()
   {
-    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init cancel!");
-  }
-  
-  public void b()
-  {
-    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init success, start video download");
-    FileVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    try
+    {
+      this.a.a.a.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("<FileAssistant>FilePreviewActivity", 1, localException.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acvd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,19 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.poi.LbsPackObserver;
-import dov.com.tencent.mobileqq.activity.richmedia.LBSDetetor;
-import java.util.ArrayList;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import dov.com.qq.im.capture.text.EditTextPreView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
 
 public class aogl
-  extends LbsPackObserver
+  implements Runnable
 {
-  private aogl(LBSDetetor paramLBSDetetor) {}
+  public aogl(EditTextDialog paramEditTextDialog) {}
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList paramArrayList)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+    this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
+    if (EditTextDialog.a(this.a) != 1) {
+      this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(), true);
     }
-    if ((LBSDetetor.a(this.a) != null) && (LBSDetetor.a(this.a).hasMessages(paramInt))) {
-      LBSDetetor.a(this.a, paramBoolean, paramArrayList, paramInt);
-    }
+    this.a.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.invalidate();
   }
 }
 

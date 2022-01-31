@@ -1,15 +1,42 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.GetResultSimpleStep;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.InitParamSimpleStep;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.UncheckedCallable;
 
 public class ofx
-  implements Runnable
+  extends QQStoryObserver
 {
-  public ofx(EditVideoPlayer paramEditVideoPlayer) {}
+  public ofx(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public void run()
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    this.a.a.a(Message.obtain(null, 8));
+    if ((NewMyStorySegment.a(this.a) == null) || (NewMyStorySegment.a(this.a).a == null))
+    {
+      SLog.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
+      return;
+    }
+    String str = NewMyStorySegment.a(this.a).a.a;
+    if (!TextUtils.equals(str, paramStoryPushMsg.d))
+    {
+      SLog.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+      return;
+    }
+    switch (paramStoryPushMsg.a)
+    {
+    case 16: 
+    case 17: 
+    default: 
+      return;
+    }
+    this.a.a(new Step[] { new SimpleStep.InitParamSimpleStep(GetMyStoryVideoListStep.Result.a(str)), (Step)this.a.b.a(), new SimpleStep.GetResultSimpleStep(new ofy(this, str)) });
   }
 }
 

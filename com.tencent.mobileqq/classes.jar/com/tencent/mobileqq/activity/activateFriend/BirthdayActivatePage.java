@@ -14,14 +14,14 @@ import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.util.WeakReference;
-import uja;
-import ujb;
+import unw;
+import unx;
 
 public class BirthdayActivatePage
   extends ActivateBasePage
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new uja(this);
-  private ActivateFriendGrid.GridCallBack jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack = new ujb(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new unw(this);
+  private ActivateFriendGrid.GridCallBack jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack = new unx(this);
   private WeakReference jdField_a_of_type_MqqUtilWeakReference;
   public long[] a;
   
@@ -29,7 +29,7 @@ public class BirthdayActivatePage
   {
     super(paramContext);
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference((ActivateFriendActivity)paramContext);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131437248);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131437268);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.setGridCallBack(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack);
     this.e.setVisibility(0);
@@ -37,14 +37,14 @@ public class BirthdayActivatePage
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970173, this, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970186, this, false);
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369402));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131369406));
-    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369412));
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369407));
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid = ((ActivateFriendGrid)this.jdField_a_of_type_AndroidViewView.findViewById(2131369405));
-    a((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369403));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369407));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131369411));
+    this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369417));
+    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369412));
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid = ((ActivateFriendGrid)this.jdField_a_of_type_AndroidViewView.findViewById(2131369410));
+    a((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369408));
     addView(this.jdField_a_of_type_AndroidViewView);
   }
   
@@ -55,13 +55,13 @@ public class BirthdayActivatePage
     this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong1;
     if (paramArrayOfLong1 == null)
     {
-      findViewById(2131366489).setVisibility(0);
-      findViewById(2131369404).setVisibility(8);
+      findViewById(2131366487).setVisibility(0);
+      findViewById(2131369409).setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.setData(paramQQAppInterface, new ArrayList());
       return;
     }
-    findViewById(2131366489).setVisibility(8);
-    findViewById(2131369404).setVisibility(0);
+    findViewById(2131366487).setVisibility(8);
+    findViewById(2131369409).setVisibility(0);
     localObject = new ArrayList(paramArrayOfLong1.length);
     int i = 0;
     while (i < paramArrayOfString.length)
@@ -81,8 +81,8 @@ public class BirthdayActivatePage
     if (QLog.isColorLevel()) {
       QLog.d(BirthdayActivatePage.class.getSimpleName(), 2, "showLoading ");
     }
-    findViewById(2131369401).setVisibility(8);
-    findViewById(2131369408).setVisibility(0);
+    findViewById(2131369406).setVisibility(8);
+    findViewById(2131369413).setVisibility(0);
   }
   
   public void d()
@@ -90,15 +90,15 @@ public class BirthdayActivatePage
     if (QLog.isColorLevel()) {
       QLog.d(BirthdayActivatePage.class.getSimpleName(), 2, "hideLoading ");
     }
-    findViewById(2131369401).setVisibility(0);
+    findViewById(2131369406).setVisibility(0);
     if (this.jdField_a_of_type_ArrayOfLong == null) {
-      findViewById(2131366489).setVisibility(0);
+      findViewById(2131366487).setVisibility(0);
     }
     for (;;)
     {
-      findViewById(2131369408).setVisibility(8);
+      findViewById(2131369413).setVisibility(8);
       return;
-      findViewById(2131366489).setVisibility(8);
+      findViewById(2131366487).setVisibility(8);
     }
   }
 }

@@ -1,37 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener;
 
 public class aisn
-  implements Animator.AnimatorListener
+  extends Handler
 {
-  public aisn(TribePostTitlePrefixPanelController paramTribePostTitlePrefixPanelController) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public aisn(ShareAppLogHelper paramShareAppLogHelper, Looper paramLooper)
   {
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), -TribePostTitlePrefixPanelController.a(this.a), 0, 0);
-    TribePostTitlePrefixPanelController.a(this.a).setVisibility(8);
-    TribePostTitlePrefixPanelController.a(this.a, false);
-    TribePostTitlePrefixPanelController.b(this.a, false);
+    super(paramLooper);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), -TribePostTitlePrefixPanelController.a(this.a), 0, 0);
-    TribePostTitlePrefixPanelController.a(this.a).setVisibility(8);
-    TribePostTitlePrefixPanelController.a(this.a, false);
-    TribePostTitlePrefixPanelController.b(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    TribePostTitlePrefixPanelController.a(this.a, true);
-    TribePostTitlePrefixPanelController.b(this.a, true);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (ShareAppLogHelper.a(this.a) == null);
+        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
+        return;
+      } while (ShareAppLogHelper.a(this.a) == null);
+      ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
+      return;
+    } while (ShareAppLogHelper.a(this.a) == null);
+    ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
   }
 }
 

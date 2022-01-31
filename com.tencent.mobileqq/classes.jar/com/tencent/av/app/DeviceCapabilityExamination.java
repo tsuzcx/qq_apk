@@ -15,10 +15,10 @@ import com.tencent.av.videoeffect.config.VideoEffectConfigParser;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import jef;
-import jeg;
-import jeh;
-import jei;
+import jgh;
+import jgi;
+import jgj;
+import jgk;
 
 public class DeviceCapabilityExamination
 {
@@ -27,7 +27,7 @@ public class DeviceCapabilityExamination
   public DeviceCapabilityExamination(VideoAppInterface paramVideoAppInterface)
   {
     this.a = paramVideoAppInterface;
-    paramVideoAppInterface = new jei(this);
+    paramVideoAppInterface = new jgk(this);
     this.a.a().postDelayed(paramVideoAppInterface, 5000L);
   }
   
@@ -48,7 +48,7 @@ public class DeviceCapabilityExamination
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putBoolean("hwcodec_avc_decode_test", true);
       ((SharedPreferences.Editor)localObject).commit();
-      new VideoDecTest(ImageResUtil.c() + "bitv.mp4", paramBoolean, new jef(this)).a();
+      new VideoDecTest(ImageResUtil.c() + "bitv.mp4", paramBoolean, new jgh(this)).a();
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -127,7 +127,7 @@ public class DeviceCapabilityExamination
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putBoolean("hwcodec_avc_encode_test", true);
       ((SharedPreferences.Editor)localObject).commit();
-      new VideoEncTest(ImageResUtil.c() + "test2Frame.yuv", paramBoolean, new jeg(this)).a();
+      new VideoEncTest(ImageResUtil.c() + "test2Frame.yuv", paramBoolean, new jgi(this)).a();
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -155,7 +155,7 @@ public class DeviceCapabilityExamination
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putBoolean("qav_key_test_executed", true);
         ((SharedPreferences.Editor)localObject).commit();
-        new VideoEffectTest(new jeh(this)).a();
+        new VideoEffectTest(new jgj(this)).a();
       }
     }
     label147:
@@ -173,7 +173,7 @@ public class DeviceCapabilityExamination
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.DeviceCapabilityExamination
  * JD-Core Version:    0.7.0.1
  */

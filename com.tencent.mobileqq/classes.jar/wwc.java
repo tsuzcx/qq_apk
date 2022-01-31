@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QZoneHelper;
 
-public class wwc
-  implements View.OnClickListener
+class wwc
+  implements Runnable
 {
-  public wwc(CameraPreviewActivity paramCameraPreviewActivity) {}
+  wwc(wwb paramwwb, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.b) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
-    }
-    this.a.finish();
-    AlbumUtil.a(this.a, true, false);
+    QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "MainAssistObserver");
   }
 }
 

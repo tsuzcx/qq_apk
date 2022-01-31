@@ -1,19 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import com.tencent.mobileqq.hotpic.PublicAccountGifListener;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ljf
-  implements PublicAccountGifListener
+  implements Runnable
 {
-  public ljf(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public ljf(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void a(HotPicData paramHotPicData)
+  public void run()
   {
-    this.a.a = paramHotPicData;
-    ReadInJoyCommentComponentFragment.a(this.a, null);
-    ThreadManager.getUIHandler().post(new ljg(this));
+    Object localObject = this.a.app.getCurrentAccountUin();
+    localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + (String)localObject, 4);
+    if (localObject != null)
+    {
+      int i = ((SharedPreferences)localObject).getInt("readinjoy_deliver_biu_numbers", 0);
+      if (i <= 6)
+      {
+        ((SharedPreferences)localObject).edit().putInt("readinjoy_deliver_biu_numbers", i + 1);
+        ((SharedPreferences)localObject).edit().commit();
+      }
+    }
   }
 }
 

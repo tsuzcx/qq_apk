@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleItem;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.scribble.ScribbleMsgUtils.CombineCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class uwz
-  implements FMDialogUtil.FMDialogInterface
+  implements ScribbleMsgUtils.CombineCallback
 {
-  public uwz(FilePicItemBuilder paramFilePicItemBuilder, FileManagerEntity paramFileManagerEntity) {}
+  public uwz(DoodlePanel paramDoodlePanel, DoodleItem paramDoodleItem) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    QLog.i("Scribble", 2, "bsuc " + paramInt);
+    new Handler(Looper.getMainLooper()).post(new uxa(this, paramInt));
   }
   
-  public void b() {}
+  public boolean a(String paramString)
+  {
+    return DoodlePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodlePanel, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleItem);
+  }
 }
 
 

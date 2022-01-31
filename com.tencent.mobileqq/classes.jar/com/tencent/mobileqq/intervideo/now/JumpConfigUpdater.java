@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import adus;
+import aedb;
 import android.os.Bundle;
 import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ public class JumpConfigUpdater
   implements HttpWebCgiAsyncTask.Callback
 {
   long jdField_a_of_type_Long = 0L;
-  adus jdField_a_of_type_Adus;
+  aedb jdField_a_of_type_Aedb;
   String jdField_a_of_type_JavaLangString = "https://now.qq.com/qq/play.html?_bid=2374&_wv=16778245&from=50319";
   boolean jdField_a_of_type_Boolean = false;
   boolean b;
@@ -22,8 +22,8 @@ public class JumpConfigUpdater
       if (QLog.isColorLevel()) {
         QLog.i("XProxy|JumpConfigUpdater", 2, "拉取撑量开关 result字段为空");
       }
-      if (this.jdField_a_of_type_Adus != null) {
-        this.jdField_a_of_type_Adus.a(this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Aedb != null) {
+        this.jdField_a_of_type_Aedb.a(this.jdField_a_of_type_Boolean);
       }
       return;
     }

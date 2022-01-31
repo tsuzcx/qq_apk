@@ -1,83 +1,80 @@
-import com.tencent.mobileqq.ar.arengine.ARCamera;
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.IArSoCallback;
 
 public class aall
-  implements Runnable
+  implements IArSoCallback
 {
-  public aall(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
+  private IBinder a;
   
-  public void run()
+  public aall(IBinder paramIBinder)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCamera == null)
+    this.a = paramIBinder;
+  }
+  
+  public void a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      QLog.i("ARCardCameraRecordFragment", 2, "cancel to open camera. next mCurCameraState = ");
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    int i;
-    label255:
-    do
+    finally
     {
-      for (;;)
-      {
-        try
-        {
-          QLog.i("ARCardCameraRecordFragment", 2, "openCameraAync.");
-          i = -3;
-          if (ARCardCameraRecordFragment.a(this.a) >= 10) {
-            break label255;
-          }
-          ARCardCameraRecordFragment.b(this.a);
-          i = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.a(this.a.jdField_a_of_type_Int);
-          QLog.i("ARCardCameraRecordFragment", 2, "try to open camera. mCurOpenCameraTryTimes = " + ARCardCameraRecordFragment.a(this.a) + ", MAX_OPEN_CAMERA_TRY_TIMES = " + 10);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null)
-          {
-            if (ARCardCameraRecordFragment.c(this.a) == 1) {
-              break;
-            }
-            QLog.i("ARCardCameraRecordFragment", 2, "cancel to open camera. next mCurCameraState = " + ARCardCameraRecordFragment.c(this.a));
-            return;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          localInterruptedException.printStackTrace();
-          QLog.i("ARCardCameraRecordFragment", 1, "InterruptedException = " + localInterruptedException.getMessage());
-          ARCardCameraRecordFragment.a(this.a, 0);
-          QLog.i("ARCardCameraRecordFragment", 2, "openCameraAync failed. mCurCameraState = " + ARCardCameraRecordFragment.c(this.a));
-          return;
-        }
-        i = -3;
-      }
-      if (i == 0)
-      {
-        ARCardCameraRecordFragment.a(this.a, true);
-        if (i != 0) {
-          break label384;
-        }
-        ARCardCameraRecordFragment.a(this.a, 2);
-        QLog.i("ARCardCameraRecordFragment", 2, "openCameraAync successfully. mCurCameraState = " + ARCardCameraRecordFragment.c(this.a));
-        if (!ARCardCameraRecordFragment.a(this.a)) {
-          break;
-        }
-        ARCardCameraRecordFragment.a(this.a);
-        return;
-      }
-      Thread.currentThread();
-      Thread.sleep(ARCardCameraRecordFragment.d(this.a));
-    } while (ARCardCameraRecordFragment.c(this.a) == 1);
-    QLog.i("ARCardCameraRecordFragment", 2, "cancel to open camera. next mCurCameraState = " + ARCardCameraRecordFragment.c(this.a));
-    return;
-    QLog.i("ARCardCameraRecordFragment", 2, "wait SurfaceCreated to continue to start preview.");
-    return;
-    label384:
-    ARCardCameraRecordFragment.a(this.a, 0);
-    QLog.i("ARCardCameraRecordFragment", 2, "openCameraAync failed. retCode = " + i + ", mCurCameraState = " + ARCardCameraRecordFragment.c(this.a));
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aall
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.search.activity.VADActivity;
 
 public class tbn
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public tbn(MainFragment paramMainFragment) {}
+  public tbn(Leba paramLeba) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.e();
+    VADActivity.a(this.a.a(), 21);
   }
 }
 

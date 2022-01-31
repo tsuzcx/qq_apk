@@ -1,31 +1,14 @@
-import com.tencent.biz.qqstory.model.QQStoryActivityManager;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase.GetFeedFeatureReceiver;
 
 public class nob
   implements Runnable
 {
-  public nob(StoryPlayVideoActivity paramStoryPlayVideoActivity, QQStoryActivityManager paramQQStoryActivityManager) {}
+  public nob(FeedsPlayModeBase.GetFeedFeatureReceiver paramGetFeedFeatureReceiver, FeedsPlayModeBase paramFeedsPlayModeBase) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.player.StoryPlayVideoActivity", 2, "player activity stack full, size=10, start clear!");
-    }
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager.a.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (QQStoryBaseActivity)((WeakReference)this.jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager.a.get(localObject)).get();
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayVideoActivity != localObject) && (!((QQStoryBaseActivity)localObject).isFinishing())) {
-        ((QQStoryBaseActivity)localObject).finish();
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.v();
   }
 }
 

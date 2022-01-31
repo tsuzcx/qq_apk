@@ -1,95 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.IRenderCallback;
-import com.tencent.mobileqq.apollo.barrage.BarrageView;
-import com.tencent.mobileqq.apollo.store.ApolloViewController;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import java.lang.ref.WeakReference;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
 public class yuf
-  implements IRenderCallback
+  implements Runnable
 {
-  private WeakReference a;
+  public yuf(HotChatCenterFragment paramHotChatCenterFragment, int paramInt, TextView paramTextView) {}
   
-  public yuf(ApolloViewController paramApolloViewController)
+  public void run()
   {
-    this.a = new WeakReference(paramApolloViewController);
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onCompleteRender, roleName=", paramString });
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.isAdded())
     {
-      return;
-      if (this.a != null)
+      String str1 = "" + this.jdField_a_of_type_Int;
+      if (!HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment))
       {
-        ApolloViewController localApolloViewController = (ApolloViewController)this.a.get();
-        ApolloWebAvatarParam localApolloWebAvatarParam;
-        if (localApolloViewController != null)
-        {
-          localApolloWebAvatarParam = ApolloViewController.a(localApolloViewController);
-          if ((localApolloWebAvatarParam != null) && (paramString.equals(localApolloWebAvatarParam.apolloId)) && (localApolloViewController.b != null))
-          {
-            ApolloViewController.b(localApolloViewController);
-            ApolloViewController.a(localApolloViewController).removeMessages(24);
-            localApolloViewController.b.stopLoopDelayed(1000L);
-            if (!TextUtils.isEmpty(ApolloViewController.a(localApolloViewController)))
-            {
-              if (!ApolloViewController.a(localApolloViewController)) {
-                break label173;
-              }
-              if ((ApolloViewController.a(localApolloViewController) == 1) && (localApolloViewController.a != null)) {
-                localApolloViewController.a.b();
-              }
-            }
-          }
+        str1 = this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getString(2131433311) + "(" + this.jdField_a_of_type_Int + ")";
+        if (this.jdField_a_of_type_Int > 99) {
+          str1 = this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getString(2131433311) + "(99+)";
         }
-        while ((localApolloViewController != null) && (localApolloViewController.b != null))
-        {
-          return;
-          label173:
-          if (ApolloViewController.a(localApolloViewController) == 1)
-          {
-            if (localApolloViewController.a != null) {
-              localApolloViewController.a.a(true);
-            }
-          }
-          else {
-            localApolloViewController.b.getRenderImpl().a(1, localApolloWebAvatarParam.apolloId, "Bubble");
-          }
+        if (this.jdField_a_of_type_Int <= 0) {
+          str1 = this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getString(2131433311);
         }
       }
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onStartRender, roleName=", paramString });
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    ApolloViewController localApolloViewController;
-    ApolloWebAvatarParam localApolloWebAvatarParam;
-    do
-    {
-      do
+      String str2 = str1;
+      if (HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment))
       {
-        do
-        {
-          return;
-        } while (this.a == null);
-        localApolloViewController = (ApolloViewController)this.a.get();
-      } while (localApolloViewController == null);
-      localApolloWebAvatarParam = ApolloViewController.a(localApolloViewController);
-    } while ((localApolloWebAvatarParam == null) || (!paramString.equals(localApolloWebAvatarParam.apolloId)));
-    ApolloViewController.a(localApolloViewController);
+        str2 = str1;
+        if (this.jdField_a_of_type_Int > 99) {
+          str2 = "99+";
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.isAdded()) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.getActivity().runOnUiThread(new yug(this, str2));
+      }
+    }
   }
 }
 

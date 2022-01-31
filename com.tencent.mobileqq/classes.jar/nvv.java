@@ -1,35 +1,29 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.DiscoverManager;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader.GetDiscoverCardsEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.List;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
 
 public class nvv
-  implements Runnable
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public nvv(DiscoverPagerLoader paramDiscoverPagerLoader) {}
+  public nvv(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate, boolean paramBoolean) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    ??? = ((DiscoverManager)SuperManager.a(22)).a(DiscoverPagerLoader.a(this.a), DiscoverPagerLoader.a(this.a));
-    DiscoverPagerLoader.GetDiscoverCardsEvent localGetDiscoverCardsEvent = new DiscoverPagerLoader.GetDiscoverCardsEvent(new ErrorMessage(), DiscoverPagerLoader.a(this.a), DiscoverPagerLoader.a(this.a));
-    localGetDiscoverCardsEvent.b = true;
-    localGetDiscoverCardsEvent.jdField_a_of_type_JavaUtilList = ((List)???);
-    localGetDiscoverCardsEvent.jdField_a_of_type_Boolean = true;
-    synchronized (this.a)
+    if (paramInt != 0)
     {
-      if (!this.a.b)
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
       {
-        Dispatchers.get().dispatch(localGetDiscoverCardsEvent);
-        SLog.a("Q.qqstory.discover:DiscoverPagerLoader", "dispatch video list return from cache: %s", localGetDiscoverCardsEvent);
+        paramArrayOfByte.a(7, bool);
+        this.a.a(0, this.a.a.getString(2131435390));
         return;
       }
-      SLog.d("Q.qqstory.discover:DiscoverPagerLoader", "load cache data later than load from network");
     }
+    ((StoryConfigManager)SuperManager.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
   }
 }
 

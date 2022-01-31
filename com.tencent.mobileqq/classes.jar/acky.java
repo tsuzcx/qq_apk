@@ -1,124 +1,64 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendConstants;
-import com.tencent.mobileqq.facetoface.Face2FaceUserData;
-import com.tencent.mobileqq.facetoface.NearbyUser;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class acky
-  extends LBSObserver
+  extends DownloadListener
 {
-  public acky(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  protected void a(NearbyUser paramNearbyUser, boolean paramBoolean, int paramInt)
+  public acky(EmojiManager paramEmojiManager, String paramString1, String paramString2)
   {
-    super.a(paramNearbyUser, paramBoolean, paramInt);
+    super(paramString1, paramString2);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    super.onDone(paramDownloadTask);
+    Object localObject = paramDownloadTask.a();
+    int j = ((Bundle)localObject).getInt(paramDownloadTask.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
     if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, pushTime=" + paramInt + "from_type=" + this.a.jdField_b_of_type_Int);
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener| onDone:epId=" + ((EmoticonPackage)localObject).epId + " task:" + paramDownloadTask + " localVersion=" + ((EmoticonPackage)localObject).localVersion + ",latestVersion=" + ((EmoticonPackage)localObject).latestVersion + ",updateFlag=" + ((EmoticonPackage)localObject).updateFlag);
     }
-    if (paramNearbyUser == null)
+    int i = 0;
+    if (paramDownloadTask.a() != 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, nearbyUser=null!!");
+      i = EmosmUtils.a(paramDownloadTask.a);
+      if (EmojiManager.a(j)) {
+        EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, -1, i);
       }
-      if ((this.a.jdField_b_of_type_Int == 0) && (paramNearbyUser != null) && (!this.a.a(paramNearbyUser, this.a.jdField_a_of_type_JavaUtilList)))
-      {
-        this.a.jdField_a_of_type_JavaUtilList.add(paramNearbyUser);
-        if (QLog.isColorLevel()) {
-          QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, mhasShowList=" + this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() + "mNeedShowList.size()" + this.a.d.size());
-        }
-        if (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != this.a.d.size()) {
-          break label267;
-        }
-        Face2FaceAddFriendActivity.a(this.a, paramNearbyUser);
-      }
+      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
     for (;;)
     {
-      paramNearbyUser = this.a;
-      paramNearbyUser.j += 1;
+      long l1 = paramDownloadTask.h;
+      long l2 = paramDownloadTask.g;
+      this.a.a((EmoticonPackage)localObject, i, l1 - l2, paramDownloadTask.d);
       return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserPush, nearbyUser=" + paramNearbyUser.e);
-      break;
-      label267:
-      Message localMessage = Face2FaceAddFriendActivity.a(this.a).obtainMessage();
-      localMessage.what = 10;
-      localMessage.obj = paramNearbyUser;
-      Face2FaceAddFriendActivity.a(this.a).sendEmptyMessageDelayed(10, this.a.a());
+      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, 0, 0);
     }
   }
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt1, int paramInt2)
+  public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    super.a(paramBoolean, paramList, paramInt1, paramInt2);
-    if (paramBoolean)
-    {
-      this.a.e = 1;
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList heartBeatTime=" + paramInt2 + "from_type=" + this.a.jdField_b_of_type_Int + "reqInterval=" + paramInt1 + "好友列表返回isSuccess=" + paramBoolean);
-      }
-      if (paramList == null) {
-        break label241;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList size=" + paramList.size());
-      }
+    Object localObject = paramDownloadTask.a();
+    int i = ((Bundle)localObject).getInt(paramDownloadTask.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener | onProgress:epId=" + ((EmoticonPackage)localObject).epId + paramDownloadTask);
     }
-    for (;;)
-    {
-      int i = paramInt1;
-      if (paramInt1 < 0) {
-        i = 2;
-      }
-      long l = System.currentTimeMillis() - Face2FaceAddFriendConstants.c;
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList interval=" + l + "leaveFaceTofaceTime=" + Face2FaceAddFriendConstants.c);
-      }
-      if ((l > i * 1000) || (Face2FaceAddFriendConstants.c == 0L)) {
-        break label259;
-      }
-      Face2FaceAddFriendActivity.a(this.a, i * 1000 - l);
-      return;
-      this.a.e = 2;
-      break;
-      label241:
-      if (QLog.isColorLevel()) {
-        QLog.d(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "onGetFaceToFaceNearbyUserList is null");
-      }
+    if (EmojiManager.a(i)) {
+      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, 0, 0);
     }
-    label259:
-    if (paramInt2 > 0) {
-      Face2FaceAddFriendActivity.h = paramInt2 * 1000;
-    }
-    if (!this.a.jdField_b_of_type_Boolean) {
-      Face2FaceAddFriendActivity.c(this.a);
-    }
-    this.a.jdField_b_of_type_Boolean = true;
-    if ((this.a.jdField_b_of_type_Int == 0) && (paramList != null) && (paramList.size() > 0)) {
-      paramList = paramList.iterator();
-    }
-    for (;;)
-    {
-      Face2FaceUserData localFace2FaceUserData;
-      if (paramList.hasNext())
-      {
-        localFace2FaceUserData = (Face2FaceUserData)paramList.next();
-        if (!this.a.jdField_a_of_type_JavaUtilList.contains(localFace2FaceUserData)) {}
-      }
-      else
-      {
-        Face2FaceAddFriendActivity.d(this.a);
-        return;
-      }
-      this.a.jdField_a_of_type_JavaUtilList.add(localFace2FaceUserData);
-    }
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    return super.onStart(paramDownloadTask);
   }
 }
 

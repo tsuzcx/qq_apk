@@ -1,22 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.view.StoryNewGuideDialog;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.biz.qqstory.takevideo.slideshow.TransitionHandler;
 
-public class oqg
-  implements View.OnTouchListener
+class oqg
+  implements Runnable
 {
-  public oqg(StoryNewGuideDialog paramStoryNewGuideDialog) {}
+  oqg(oqc paramoqc, TransitionHandler paramTransitionHandler) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.dismiss();
+    SlideShowPhotoListManager.b(this.jdField_a_of_type_Oqc.a, false);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowTransitionHandler != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowTransitionHandler.b();
     }
   }
 }

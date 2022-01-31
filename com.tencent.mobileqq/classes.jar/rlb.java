@@ -1,24 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.os.MqqHandler;
 
 public class rlb
-  implements CompoundButton.OnCheckedChangeListener
+  extends MqqHandler
 {
-  public rlb(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rlb(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    switch (paramMessage.what)
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131436020), "qqsetting_notify_icon_key", paramBoolean);
+    default: 
       return;
     }
+    this.a.e();
   }
 }
 

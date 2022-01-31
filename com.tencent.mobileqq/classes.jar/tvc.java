@@ -1,33 +1,24 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 
 public class tvc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tvc(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public tvc(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).getIntExtra("key_team_work_edit_type", -1);
-    if ((i != 1) && (i != 2)) {
-      i = this.a.a;
+    if (RegisterVerifyCodeActivity.a(this.a) == 1)
+    {
+      RegisterVerifyCodeActivity.a(this.a).setText(2131434293);
+      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
+      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
+      return;
     }
-    paramView = this.a.e();
-    String str = this.a.a().b();
-    Intent localIntent = new Intent(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a), TeamWorkAuthorizeSettingFragment.class);
-    if (!TextUtils.isEmpty(str)) {
-      localIntent.putExtra("team_work_name", str);
-    }
-    localIntent.putExtra("team_work_pad_url", paramView);
-    localIntent.putExtra("team_work_pad_list_type", this.a.d);
-    PublicFragmentActivity.a(this.a.getActivity(), localIntent, TeamWorkAuthorizeSettingFragment.class);
-    this.a.a(14);
+    RegisterVerifyCodeActivity.b(this.a);
+    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434293) + "(" + RegisterVerifyCodeActivity.a(this.a) + "s)");
+    this.a.a.postDelayed(this, 1000L);
   }
 }
 

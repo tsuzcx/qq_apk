@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class aarb
   implements Runnable
 {
-  public aarb(ArkActionAppMgr paramArkActionAppMgr, aarg paramaarg) {}
+  public aarb(WorldCupMgr paramWorldCupMgr, SplashPopupWin paramSplashPopupWin) {}
   
   public void run()
   {
-    ArkActionAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr, this.jdField_a_of_type_Aarg);
+    QLog.w(this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.a, 1, "onDestroy, 开始清除闪屏");
+    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a();
   }
 }
 

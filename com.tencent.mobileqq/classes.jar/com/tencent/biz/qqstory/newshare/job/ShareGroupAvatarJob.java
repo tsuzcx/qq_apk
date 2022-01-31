@@ -8,7 +8,7 @@ import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import ngd;
+import nkn;
 
 public class ShareGroupAvatarJob
   extends Job
@@ -27,7 +27,7 @@ public class ShareGroupAvatarJob
     RestrictedBitmap localRestrictedBitmap = localShareGroupIconManager.a(localShareGroupItem.headerUnionIdList);
     if (localRestrictedBitmap == null)
     {
-      localShareGroupIconManager.a(localShareGroupItem.headerUnionIdList, new ngd(this));
+      localShareGroupIconManager.a(localShareGroupItem.headerUnionIdList, new nkn(this));
       return;
     }
     a(localRestrictedBitmap);

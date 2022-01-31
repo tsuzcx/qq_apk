@@ -1,13 +1,19 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
 
 public class xyw
-  extends TroopMemberListActivity.ViewHolder
+  implements DialogInterface.OnClickListener
 {
-  public CheckBox a;
+  public xyw(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
   
-  private xyw(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    NewFlowEditVideoActivity.b(this.a, true);
+    NewFlowEditVideoActivity.b(this.a).setSelected(true);
+  }
 }
 
 

@@ -62,10 +62,10 @@ import mqq.app.IToolProcEventListener;
 import mqq.app.TicketManagerImpl;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import zat;
-import zau;
-import zav;
-import zaw;
+import zht;
+import zhu;
+import zhv;
+import zhw;
 
 public class BrowserAppInterface
   extends AppInterface
@@ -106,7 +106,7 @@ public class BrowserAppInterface
   
   private void a()
   {
-    QbSdk.setTbsLogClient(new zau(this, BaseApplicationImpl.getContext()));
+    QbSdk.setTbsLogClient(new zhu(this, BaseApplicationImpl.getContext()));
   }
   
   public static void a(int paramInt)
@@ -393,7 +393,7 @@ public class BrowserAppInterface
       if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
       {
         long l = System.currentTimeMillis();
-        QbSdk.setTbsListener(new zav(this, localBaseApplication.getSharedPreferences(localBaseApplication.getPackageName() + "_preferences", 4), l));
+        QbSdk.setTbsListener(new zhv(this, localBaseApplication.getSharedPreferences(localBaseApplication.getPackageName() + "_preferences", 4), l));
         if (QLog.isColorLevel()) {
           QLog.d("TBS_update", 2, "tbs start download");
         }
@@ -565,7 +565,7 @@ public class BrowserAppInterface
         if (QLog.isColorLevel()) {
           QLog.i("BrowserAppInterface", 2, "BrowserAppInterface.onCreate: try removeLastUinCookies!");
         }
-        ThreadManager.getSubThreadHandler().post(new zat(this, str));
+        ThreadManager.getSubThreadHandler().post(new zht(this, str));
       }
       StartupTracker.a("web_browserAppinterface_onCreate", null);
       return;
@@ -657,6 +657,9 @@ public class BrowserAppInterface
           }
           EventApiPlugin.a();
           UiApiPlugin.e();
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyLogicManager != null) {
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyLogicManager.b();
+          }
           return;
         }
       }
@@ -688,7 +691,7 @@ public class BrowserAppInterface
       QLog.d("BrowserAppInterface", 2, "tbs need reboot: " + bool);
     }
     if (bool) {
-      getHandler(BrowserAppInterface.class).postDelayed(new zaw(this), 3000L);
+      getHandler(BrowserAppInterface.class).postDelayed(new zhw(this), 3000L);
     }
     if ((WebCoreService.jdField_a_of_type_Boolean) && (DeviceInfoUtil.f() >>> 20 < 20L)) {
       WebCoreService.b();

@@ -23,7 +23,7 @@ import protocol.KQQConfig.GetResourceReqInfoV2;
 
 public abstract class EarlyHandler
 {
-  static final String jdField_a_of_type_JavaLangString = AppConstants.aJ + "pddata/prd/early";
+  static final String jdField_a_of_type_JavaLangString = AppConstants.aK + "pddata/prd/early";
   public QQAppInterface a;
   private XmlData jdField_a_of_type_ComTencentMobileqqEarlydownloadXmldataXmlData;
   protected ArrayList a;
@@ -312,7 +312,7 @@ public abstract class EarlyHandler
     //   385: new 16	java/lang/StringBuilder
     //   388: dup
     //   389: invokespecial 19	java/lang/StringBuilder:<init>	()V
-    //   392: getstatic 24	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
+    //   392: getstatic 24	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
     //   395: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   398: ldc_w 272
     //   401: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;

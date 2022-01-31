@@ -1,43 +1,37 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowSendTask;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.network.request.GetPoiFacesRequest;
+import com.tencent.biz.qqstory.network.response.GetPoiFacesResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
 public class aogh
-  implements Runnable
+  implements CmdTaskManger.CommandCallback
 {
-  public aogh(FlowSendTask paramFlowSendTask) {}
+  public aogh(DoodleEmojiManager paramDoodleEmojiManager, WeakReference paramWeakReference) {}
   
-  public void run()
+  public void a(@NonNull GetPoiFacesRequest paramGetPoiFacesRequest, @Nullable GetPoiFacesResponse paramGetPoiFacesResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    try
+    if (paramGetPoiFacesResponse == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.j, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoCacheDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
+      paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramGetPoiFacesRequest != null) {
+        paramGetPoiFacesRequest.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
       }
-      RecordManager.a().a().recordSubmit();
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramGetPoiFacesRequest != null)
     {
-      for (;;)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        this.a.k = -6;
-        synchronized (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a)
-        {
-          this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.set(true);
-          this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(this.a.j, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoCacheDir:" + this.a.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
-        }
-      }
+      paramGetPoiFacesRequest.a(0, paramGetPoiFacesResponse.a);
+      return;
     }
+    SLog.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

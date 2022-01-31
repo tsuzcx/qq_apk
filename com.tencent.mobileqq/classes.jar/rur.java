@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.activity.ChatActivityFacade.SendMsgParams;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx.SizeChangedCallback;
 
-public final class rur
-  implements Runnable
+public class rur
+  implements XEditTextEx.SizeChangedCallback
 {
-  public rur(ChatActivityFacade.SendMsgParams paramSendMsgParams, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityFacade$SendMsgParams.a) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().f(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    }
-  }
+  public rur(BaseChatPie paramBaseChatPie) {}
 }
 
 

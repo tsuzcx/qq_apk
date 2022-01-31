@@ -1,27 +1,16 @@
-import android.app.Activity;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.biz.common.util.FileChooserHelper;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
 
 public class klx
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public klx(FileChooserHelper paramFileChooserHelper, Activity paramActivity, String paramString, ActionSheet paramActionSheet) {}
+  public klx(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      FileChooserHelper.b(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      FileChooserHelper.a(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

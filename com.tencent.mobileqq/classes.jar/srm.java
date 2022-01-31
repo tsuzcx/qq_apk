@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
 
-class srm
-  implements Runnable
+public class srm
+  extends BroadcastReceiver
 {
-  srm(srl paramsrl, int paramInt1, int paramInt2, String paramString) {}
+  public srm(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Srl.a.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    if ("com.tencent.mobileqq.action.update.emotiom".equals(paramIntent.getAction())) {
+      ((FavroamingDBManager)this.a.app.getManager(148)).a(new srn(this));
+    }
   }
 }
 

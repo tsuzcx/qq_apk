@@ -1,14 +1,22 @@
-import android.widget.Button;
-import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
+import android.text.format.Time;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class aisq
-  implements Runnable
+  implements FilenameFilter
 {
-  public aisq(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
+  public aisq(ShareAppLogHelper paramShareAppLogHelper) {}
   
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    this.a.a.setVisibility(8);
+    if (!paramString.endsWith(".log")) {}
+    do
+    {
+      return false;
+      paramFile = ShareAppLogHelper.a(this.a, paramString);
+    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
+    return true;
   }
 }
 

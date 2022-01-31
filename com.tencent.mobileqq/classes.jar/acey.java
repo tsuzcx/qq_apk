@@ -1,11 +1,15 @@
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
+import java.util.List;
+
 class acey
   implements Runnable
 {
-  acey(acex paramacex) {}
+  acey(acex paramacex, List paramList) {}
   
   public void run()
   {
-    this.a.a.a();
+    this.jdField_a_of_type_Acex.a.a.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

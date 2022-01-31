@@ -1,24 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.open.business.viareport.OpenSdkStatic;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.MyAppApi;
 
-public class acxc
-  extends Handler
+class acxc
+  implements Runnable
 {
-  public acxc(OnlineFileSessionCenter paramOnlineFileSessionCenter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  acxc(acxb paramacxb) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    this.a.d();
+    DownloadManager.a().a(UniformDownloadActivity.a(this.a.a));
+    MyAppApi.a().a(this.a.a, "http://a.app.qq.com/o/myapp-down?g_f=1001647", "ANDROIDQQ.WIFIDLYYB.GAME", 2, true);
+    OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3004", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acxc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
-import com.tencent.av.app.GAudioUIObserver;
+import com.rookery.translate.microsoft.MicrosoftTranslator;
 
 public class jeo
-  implements Runnable
 {
-  public jeo(GAudioUIObserver paramGAudioUIObserver, Object paramObject) {}
+  public long a;
+  public String a;
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentAvAppGAudioUIObserver.a(this.jdField_a_of_type_JavaLangObject);
-  }
+  private jeo(MicrosoftTranslator paramMicrosoftTranslator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     jeo
  * JD-Core Version:    0.7.0.1
  */

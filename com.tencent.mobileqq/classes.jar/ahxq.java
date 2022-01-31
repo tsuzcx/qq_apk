@@ -1,63 +1,64 @@
-import com.tencent.av.core.VcSystemInfo;
-import com.tencent.av.service.AVPbInfo;
-import com.tencent.av.service.QavWrapper;
-import com.tencent.av.service.QavWrapper.OnReadyListener;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.search.presenter.ContactSearchResultMobileMultiPresenter;
+import com.tencent.mobileqq.search.presenter.ContactSearchResultMobilePresenter;
+import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter;
+import com.tencent.mobileqq.search.presenter.IPresenter;
+import com.tencent.mobileqq.search.presenter.SelectMemberContactSearchResultPresenter;
+import com.tencent.mobileqq.search.presenter.TroopAddFrdsSrchResultMultiPresenter;
+import com.tencent.mobileqq.search.presenter.TroopAddFrdsSrchResultPresenter;
+import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.search.view.ContactSearchResultMobileView;
+import com.tencent.mobileqq.search.view.ContactSearchResultView;
+import com.tencent.mobileqq.search.view.IView;
+import com.tencent.mobileqq.search.view.TroopAddFrdsSrchResultView;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.widget.ListView;
 
-public final class ahxq
-  implements QavWrapper.OnReadyListener
+public class ahxq
+  extends BaseMvpFaceAdapter
 {
-  public ahxq(byte[] paramArrayOfByte, long paramLong1, String paramString1, String paramString2, MessageHandler paramMessageHandler, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean) {}
-  
-  public void a(QavWrapper paramQavWrapper)
+  public ahxq(ContactSearchFragment paramContactSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
   {
-    AVPbInfo localAVPbInfo = paramQavWrapper.a(this.jdField_a_of_type_ArrayOfByte);
-    if (localAVPbInfo != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("decodeC2CMsgPkg_QCall", 2, "ret, bindId:" + localAVPbInfo.bindId + ", bindIdType:" + localAVPbInfo.bindIdType + ", phoneNum:" + localAVPbInfo.phoneNum);
-      }
-      if ((!VcSystemInfo.c()) || (!VcSystemInfo.d())) {
-        if (QLog.isColorLevel()) {
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "Discard video message cause device not support");
-        }
-      }
+    super(paramListView, paramFaceDecoder);
+  }
+  
+  protected IPresenter a(int paramInt)
+  {
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == -1) {
+      return new SelectMemberContactSearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.b(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
     }
-    for (;;)
-    {
-      paramQavWrapper.a();
-      return;
-      if (this.jdField_a_of_type_Long >= 60L)
-      {
-        if ((!this.jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) && (!localAVPbInfo.phoneNum.equals("0")))
-        {
-          if (!localAVPbInfo.phoneNum.startsWith("+")) {
-            localAVPbInfo.phoneNum = ("+" + localAVPbInfo.phoneNum);
-          }
-          QCallFacade localQCallFacade = (QCallFacade)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.getManager(37);
-          VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b, 25, 6, false, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, false, null, false);
-          localQCallFacade.a(this.jdField_b_of_type_JavaLangString, 8, null, localAVPbInfo.phoneNum);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "Discard video message because of time out " + this.jdField_a_of_type_Long + " s");
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "===========handleSharpVideoMessageResp 1234========");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.c, (int)this.d, this.jdField_a_of_type_Boolean);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "ret, decode failed!");
-        }
-      }
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 17) {
+      return new ContactSearchResultMobilePresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
     }
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 19) {
+      return new ContactSearchResultMobileMultiPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
+    }
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 23) {
+      return new TroopAddFrdsSrchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, null);
+    }
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 24) {
+      return new TroopAddFrdsSrchResultMultiPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
+    }
+    return new ContactSearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
+  }
+  
+  protected IView a(int paramInt, ViewGroup paramViewGroup)
+  {
+    if ((SearchUtils.a(ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment))) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 5) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 8)) {
+      return new ContactSearchResultView(paramViewGroup, 2130971561);
+    }
+    if ((ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == -1) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 19) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 24)) {
+      return new ContactSearchResultView(paramViewGroup, 2130971560);
+    }
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 17) {
+      return new ContactSearchResultMobileView(paramViewGroup, 2130970314);
+    }
+    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 23) {
+      return new TroopAddFrdsSrchResultView(paramViewGroup, 2130970314);
+    }
+    return new ContactSearchResultView(paramViewGroup, 2130971559);
   }
 }
 

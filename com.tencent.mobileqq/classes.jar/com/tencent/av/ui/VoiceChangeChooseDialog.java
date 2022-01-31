@@ -22,26 +22,26 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import kcn;
-import kco;
-import kcp;
-import kcq;
+import ker;
+import kes;
+import ket;
+import keu;
 
 public class VoiceChangeChooseDialog
   extends Dialog
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kco(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kes(this);
   private Context jdField_a_of_type_AndroidContentContext;
   public Handler a;
   View jdField_a_of_type_AndroidViewView = null;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new kcq(this);
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new keu(this);
   Button jdField_a_of_type_AndroidWidgetButton = null;
   GridView jdField_a_of_type_AndroidWidgetGridView = null;
   public TextView a;
   public VideoController a;
-  VoiceChangeAdapter.ICallback jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter$ICallback = new kcp(this);
+  VoiceChangeAdapter.ICallback jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter$ICallback = new ket(this);
   VoiceChangeAdapter jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter = null;
   public Runnable a;
   public boolean a;
@@ -58,7 +58,7 @@ public class VoiceChangeChooseDialog
     this.jdField_a_of_type_AndroidWidgetTextView = null;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_JavaLangRunnable = new kcn(this);
+    this.jdField_a_of_type_JavaLangRunnable = new ker(this);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -68,14 +68,14 @@ public class VoiceChangeChooseDialog
     super.getWindow().addFlags(524288);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
-    super.setContentView(2130969374);
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131366320));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131366317);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366318);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131366321);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366319));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366322));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131366282));
+    super.setContentView(2130969372);
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)findViewById(2131366325));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131366322);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366323);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131366326);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366324));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366327));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131366287));
     this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
     this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter = new VoiceChangeAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvVideoController.a().S, this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter$ICallback);
     this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_ComTencentAvUiVoiceChangeAdapter);
@@ -97,9 +97,9 @@ public class VoiceChangeChooseDialog
   
   private void b()
   {
-    int i = 2130840361;
+    int i = 2130840376;
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().aC) {
-      i = 2130840362;
+      i = 2130840377;
     }
     this.jdField_b_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
@@ -185,7 +185,7 @@ public class VoiceChangeChooseDialog
         paramView.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
         this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
       }
-    case 2131366318: 
+    case 2131366323: 
       return;
     }
     paramView = this.jdField_a_of_type_ComTencentAvVideoController.a();
@@ -233,7 +233,7 @@ public class VoiceChangeChooseDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.VoiceChangeChooseDialog
  * JD-Core Version:    0.7.0.1
  */

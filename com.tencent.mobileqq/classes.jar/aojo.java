@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.VasApngUtil.ApngSoLoadCallBack;
+import mqq.os.MqqHandler;
 
-public class aojo
-  implements DialogInterface.OnClickListener
+class aojo
+  implements VasApngUtil.ApngSoLoadCallBack
 {
-  public aojo(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  aojo(aojn paramaojn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    ThreadManager.getUIHandler().post(new aojp(this));
+  }
 }
 
 

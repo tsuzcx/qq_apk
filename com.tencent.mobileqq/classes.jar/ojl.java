@@ -1,28 +1,22 @@
 import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer.LayerEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import com.tencent.biz.qqstory.takevideo.VideoFragmentInfo;
 
 public class ojl
-  implements LineLayer.LayerEventListener
+  extends VideoFragmentInfo
 {
-  public ojl(DoodleLayout paramDoodleLayout) {}
+  public Bitmap a;
+  public Bitmap b;
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public ojl(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
-    }
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public ojl(VideoFragmentInfo paramVideoFragmentInfo, Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
-    if (this.a.a != null)
-    {
-      SLog.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
-    }
+    this(paramVideoFragmentInfo.jdField_c_of_type_Int, paramVideoFragmentInfo.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
   }
 }
 

@@ -42,7 +42,7 @@ public class StructMsgItemProgress
       paramView = new ProgressBar(paramContext, null, 16842872);
       paramView.setId(2131361937);
       paramView.setMax(100);
-      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130837587));
+      paramView.setProgressDrawable(paramContext.getResources().getDrawable(2130837586));
     }
   }
   

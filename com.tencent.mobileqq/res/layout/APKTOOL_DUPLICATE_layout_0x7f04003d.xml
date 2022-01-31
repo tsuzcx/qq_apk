@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04a9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b28ec" android:singleLine="false" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a04aa" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04aa" android:layout_width="77.0dip" android:layout_height="77.0dip" android:layout_marginTop="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bce" android:scaleType="centerCrop" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a04a9" />
+    <TextView android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04ae" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2900" android:singleLine="false" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a04af" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04af" android:layout_width="77.0dip" android:layout_height="77.0dip" android:layout_marginTop="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bdd" android:scaleType="centerCrop" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a04ae" />
 </RelativeLayout>

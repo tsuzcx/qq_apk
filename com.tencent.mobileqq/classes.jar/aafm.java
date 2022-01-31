@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl.ARCloudControlCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManagerImpl;
 
 public class aafm
   implements Runnable
 {
-  public aafm(ARCloudControl paramARCloudControl) {}
+  public aafm(ARRenderManagerImpl paramARRenderManagerImpl, ARBaseRender paramARBaseRender) {}
   
   public void run()
   {
-    if ((ARCloudControl.a(this.a) != null) && (ARCloudControl.e(this.a)))
-    {
-      QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
-      if (!ARCloudControl.a(this.a)) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
     }
-    else
-    {
-      return;
-    }
-    ARCloudControl.a(this.a, true);
-    ARCloudControl.a(this.a).a(1, null);
-    ARCloudControl.a(this.a, null);
   }
 }
 

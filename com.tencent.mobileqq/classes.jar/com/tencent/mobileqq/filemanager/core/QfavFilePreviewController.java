@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acyu;
-import acyw;
-import acyx;
+import adhb;
+import adhd;
+import adhe;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,7 +17,7 @@ public class QfavFilePreviewController
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private FavoritesRemoteCommand.IRemoteCommandHandler jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand$IRemoteCommandHandler = new acyu(this);
+  private FavoritesRemoteCommand.IRemoteCommandHandler jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand$IRemoteCommandHandler = new adhb(this);
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int = 80;
   private String jdField_b_of_type_JavaLangString;
@@ -27,7 +27,7 @@ public class QfavFilePreviewController
   {
     QfavPluginProxyService.a().a(3, this.jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand$IRemoteCommandHandler);
     this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new acyw(this), 300000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new adhd(this), 300000L);
   }
   
   public int a()
@@ -45,7 +45,7 @@ public class QfavFilePreviewController
       this.jdField_a_of_type_Int = 1;
       return true;
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new acyx(this), 2000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new adhe(this), 2000L);
     return true;
   }
   

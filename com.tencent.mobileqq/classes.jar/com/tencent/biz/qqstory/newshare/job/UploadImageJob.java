@@ -7,7 +7,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import java.util.Map;
-import ngf;
+import nkp;
 
 public class UploadImageJob
   extends Job
@@ -31,7 +31,7 @@ public class UploadImageJob
     QQAppInterface localQQAppInterface = QQStoryContext.a();
     TransFileController localTransFileController = localQQAppInterface.a();
     TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new ngf(this);
+    localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new nkp(this);
     localTransferRequest.i = this.a;
     localTransferRequest.jdField_a_of_type_Boolean = true;
     localTransferRequest.jdField_b_of_type_Int = 196610;

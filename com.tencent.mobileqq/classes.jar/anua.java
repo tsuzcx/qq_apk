@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoLabel;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import dov.com.qq.im.capture.data.ComboLockManager;
 
 public class anua
-  implements View.OnClickListener
+  implements Runnable
 {
-  public anua(EditVideoLabel paramEditVideoLabel) {}
+  public anua(ComboLockManager paramComboLockManager, Context paramContext, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a(0);
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    DialogUtil.b(localBaseActivity, 0, this.jdField_a_of_type_AndroidContentContext.getString(2131439344), localBaseActivity.getString(2131439345), 2131439346, 2131439347, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener).show();
   }
 }
 

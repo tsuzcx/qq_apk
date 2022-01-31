@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class sfm
-  implements ChatActivityUtils.StartVideoListener
+  extends ProxyObserver
 {
-  public sfm(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  public sfm(ChatHistoryForC2C paramChatHistoryForC2C) {}
   
   public void a()
   {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.finish();
+    this.a.runOnUiThread(new sfn(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     sfm
  * JD-Core Version:    0.7.0.1
  */

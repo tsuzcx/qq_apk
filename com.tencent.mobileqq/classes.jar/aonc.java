@@ -1,23 +1,27 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
 
 public class aonc
-  implements Runnable
+  extends Property
 {
-  public aonc(ShareActionSheet paramShareActionSheet) {}
-  
-  public void run()
+  public aonc(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    super(paramClass, paramString);
+  }
+  
+  public Float a(MarkDrawable paramMarkDrawable)
+  {
+    if (paramMarkDrawable != null) {
+      return Float.valueOf(MarkDrawable.a(paramMarkDrawable));
     }
-    while (this.a.b.getWidth() < ShareActionSheet.a(this.a))
-    {
-      this.a.b.setMove(true);
-      return;
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(MarkDrawable paramMarkDrawable, Float paramFloat)
+  {
+    if (paramMarkDrawable != null) {
+      MarkDrawable.a(paramMarkDrawable, paramFloat.floatValue());
     }
-    this.a.b.setMove(false);
   }
 }
 

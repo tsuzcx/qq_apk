@@ -1,9 +1,9 @@
 package cooperation.qzone.webviewplugin;
 
-import andi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anli;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -34,13 +34,13 @@ public class QzoneUploadPlugin
     this.jdField_b_of_type_JavaUtilMap = new HashMap();
   }
   
-  private void a(andi paramandi)
+  private void a(anli paramanli)
   {
     int i = 0;
-    if (TextUtils.isEmpty(paramandi.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(paramanli.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    if (TextUtils.isEmpty(paramandi.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(paramanli.jdField_a_of_type_JavaLangString)) {
       i = 101;
     }
     while (i != 0)
@@ -52,22 +52,22 @@ public class QzoneUploadPlugin
         localJSONObject1.put("status", 2);
         localJSONObject1.put("code", i);
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("id", paramandi.jdField_a_of_type_Int);
+        localJSONObject2.put("id", paramanli.jdField_a_of_type_Int);
         localJSONObject2.put("url", "");
         localJSONObject1.put("data", localJSONObject2);
         localJSONObject1.put("msg", "");
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramandi.c, new String[] { localJSONObject1.toString() });
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramanli.c, new String[] { localJSONObject1.toString() });
         return;
       }
-      catch (JSONException paramandi)
+      catch (JSONException paramanli)
       {
-        QLog.w("js-upload: QzoneUploadPlugin", 1, "JSONException error !", paramandi);
+        QLog.w("js-upload: QzoneUploadPlugin", 1, "JSONException error !", paramanli);
         return;
-        paramandi.d = QzoneUploadInterface.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), paramandi.jdField_a_of_type_JavaLangString);
-        if ((!TextUtils.isEmpty(paramandi.d)) && (new File(paramandi.d).exists()))
+        paramanli.d = QzoneUploadInterface.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), paramanli.jdField_a_of_type_JavaLangString);
+        if ((!TextUtils.isEmpty(paramanli.d)) && (new File(paramanli.d).exists()))
         {
-          this.jdField_a_of_type_JavaUtilMap.put(paramandi.d, Integer.valueOf(paramandi.jdField_a_of_type_Int));
-          if (!QzoneUploadInterface.a(paramandi.d, paramandi.b)) {
+          this.jdField_a_of_type_JavaUtilMap.put(paramanli.d, Integer.valueOf(paramanli.jdField_a_of_type_Int));
+          if (!QzoneUploadInterface.a(paramanli.d, paramanli.b)) {
             i = 102;
           }
         }
@@ -76,9 +76,9 @@ public class QzoneUploadPlugin
           i = 103;
         }
       }
-      catch (Exception paramandi)
+      catch (Exception paramanli)
       {
-        QLog.w("js-upload: QzoneUploadPlugin", 1, "parentPlugin.callJs error !", paramandi);
+        QLog.w("js-upload: QzoneUploadPlugin", 1, "parentPlugin.callJs error !", paramanli);
       }
     }
   }
@@ -133,42 +133,42 @@ public class QzoneUploadPlugin
     //   14: aaload
     //   15: invokespecial 178	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   18: astore_2
-    //   19: new 37	andi
+    //   19: new 37	anli
     //   22: dup
     //   23: aload_0
     //   24: aload_2
     //   25: ldc 83
     //   27: invokevirtual 197	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   30: invokespecial 200	andi:<init>	(Lcooperation/qzone/webviewplugin/QzoneUploadPlugin;I)V
+    //   30: invokespecial 200	anli:<init>	(Lcooperation/qzone/webviewplugin/QzoneUploadPlugin;I)V
     //   33: astore_1
     //   34: aload_1
     //   35: aload_2
     //   36: ldc 202
     //   38: invokevirtual 186	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   41: putfield 40	andi:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   41: putfield 40	anli:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   44: aload_1
     //   45: aload_2
     //   46: ldc 204
     //   48: invokevirtual 186	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   51: putfield 154	andi:b	Ljava/lang/String;
+    //   51: putfield 154	anli:b	Ljava/lang/String;
     //   54: aload_1
     //   55: aload_2
     //   56: ldc 182
     //   58: invokevirtual 186	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   61: putfield 101	andi:c	Ljava/lang/String;
+    //   61: putfield 101	anli:c	Ljava/lang/String;
     //   64: aload_1
     //   65: ifnull +26 -> 91
     //   68: aload_0
     //   69: getfield 29	cooperation/qzone/webviewplugin/QzoneUploadPlugin:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
     //   72: aload_1
-    //   73: getfield 84	andi:jdField_a_of_type_Int	I
+    //   73: getfield 84	anli:jdField_a_of_type_Int	I
     //   76: invokestatic 147	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   79: aload_1
     //   80: invokeinterface 152 3 0
     //   85: pop
     //   86: aload_0
     //   87: aload_1
-    //   88: invokespecial 206	cooperation/qzone/webviewplugin/QzoneUploadPlugin:a	(Landi;)V
+    //   88: invokespecial 206	cooperation/qzone/webviewplugin/QzoneUploadPlugin:a	(Lanli;)V
     //   91: return
     //   92: astore_2
     //   93: aconst_null
@@ -269,7 +269,7 @@ public class QzoneUploadPlugin
       return;
     }
     j = paramBundle.intValue();
-    paramBundle = (andi)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(j));
+    paramBundle = (anli)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(j));
     if (paramBundle == null)
     {
       QLog.w("js-upload: QzoneUploadPlugin", 1, "task == null, id:" + j);

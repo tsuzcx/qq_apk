@@ -1,27 +1,44 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class xaq
-  extends BroadcastReceiver
+  extends ContactBindObserver
 {
-  public xaq(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
+  public xaq(PhoneLaunchActivity paramPhoneLaunchActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    if (paramIntent == null) {}
-    do
+    PhoneLaunchActivity.a(this.a).setEnabled(true);
+    if (this.a.a != null)
     {
-      return;
-      if ("action_close_camera".equals(paramIntent.getAction()))
+      this.a.app.unRegistObserver(this.a.a);
+      this.a.a = null;
+    }
+    this.a.b();
+    if (paramBoolean)
+    {
+      Object localObject = this.a;
+      if ((PhoneLaunchActivity.a(this.a)) || (PhoneLaunchActivity.b(this.a)))
       {
-        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
+        this.a.setResult(-1);
+        this.a.finish();
         return;
       }
-    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
-    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
+      localObject = new Intent((Context)localObject, SettingActivity2.class);
+      if (PhoneLaunchActivity.c(this.a)) {
+        ((Intent)localObject).putExtra("kSrouce", 7);
+      }
+      this.a.startActivityForResult((Intent)localObject, 2);
+      this.a.setResult(-1);
+      this.a.finish();
+      return;
+    }
+    this.a.b("启用失败，请重新尝试！");
   }
 }
 

@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
 
-public class ahok
-  implements Runnable
+class ahok
+  implements View.OnTouchListener
 {
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  ahok(ahoj paramahoj) {}
   
-  public ahok(Mp4FlowReEncoder paramMp4FlowReEncoder, List paramList)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void run()
-  {
-    Mp4FlowReEncoder.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowMp4FlowReEncoder, this.jdField_a_of_type_JavaUtilList);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_AndroidWidgetImageView == null) {}
+    do
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+        this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.categoryID, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.itemID);
+        CaptureReportUtil.k();
+        return false;
+      }
+    } while (paramMotionEvent.getAction() != 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.jdField_a_of_type_AndroidWidgetImageView.setAlpha(100);
+    return false;
   }
 }
 

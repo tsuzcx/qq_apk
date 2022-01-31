@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.content.Context;
+import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
+import com.tencent.mobileqq.widget.QQToast;
 
-class xnt
+public class xnt
   implements Runnable
 {
-  xnt(xns paramxns) {}
+  public xnt(VoiceRedPacketHelper paramVoiceRedPacketHelper, Context paramContext, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    EditLocalVideoActivity.b(this.a.a, false);
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, 0).b(this.b);
   }
 }
 

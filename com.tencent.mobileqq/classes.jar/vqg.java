@@ -1,14 +1,28 @@
-import android.graphics.drawable.StateListDrawable;
-import android.widget.TextView;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.animation.AnimationSet;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class vqg
+public class vqg
   implements Runnable
 {
-  vqg(vqf paramvqf, StateListDrawable paramStateListDrawable) {}
+  public vqg(UnlimitedBladeWorks paramUnlimitedBladeWorks, Activity paramActivity, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Vqf.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
+    if (((Build.VERSION.SDK_INT > 16) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {}
+    View localView;
+    AnimationSet localAnimationSet;
+    do
+    {
+      return;
+      localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131363510);
+      localAnimationSet = UnlimitedBladeWorks.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks, this.jdField_a_of_type_Int);
+    } while (localView == null);
+    localView.startAnimation(localAnimationSet);
   }
 }
 

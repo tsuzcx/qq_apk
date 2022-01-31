@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
 
-class tfo
-  implements DialogInterface.OnClickListener
+public class tfo
+  implements Runnable
 {
-  tfo(tfl paramtfl) {}
+  public tfo(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.setResult(4004);
-    this.a.a.finish();
+    if (LoginVerifyCodeActivity2.a(this.a) == 1)
+    {
+      LoginVerifyCodeActivity2.a(this.a).setText(2131434293);
+      LoginVerifyCodeActivity2.a(this.a).setEnabled(true);
+      LoginVerifyCodeActivity2.a(this.a).setClickable(true);
+      return;
+    }
+    LoginVerifyCodeActivity2.b(this.a);
+    LoginVerifyCodeActivity2.a(this.a).setText(this.a.getString(2131434293) + "(" + LoginVerifyCodeActivity2.a(this.a) + ")");
+    this.a.b.postDelayed(this, 1000L);
   }
 }
 

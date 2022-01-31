@@ -1,57 +1,64 @@
-import android.os.Bundle;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.PoiTab;
+import java.util.ArrayList;
 
-public final class klj
-  implements BusinessObserver
+public class klj
+  implements Runnable
 {
-  public klj(NewIntent paramNewIntent, AsyncBack paramAsyncBack, boolean paramBoolean1, boolean paramBoolean2, AppRuntime paramAppRuntime, boolean paramBoolean3) {}
+  public klj(PoiMapActivity paramPoiMapActivity, boolean paramBoolean1, String paramString1, String paramString2, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (QLog.isColorLevel()) {
-      QLog.d("HtmlCheckUpdate", 2, "-->offline:checkUpdate,onReceive:isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      try
+    label109:
+    PoiMapActivity localPoiMapActivity;
+    String str;
+    ArrayList localArrayList;
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.i) {
+      if (this.jdField_a_of_type_Boolean)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          return;
+        this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("rec_locate", "call_foursquare", "", "", "", "");
+        this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_AndroidWidgetLinearLayout != null) {
+          this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
         }
-        OfflinePkg.RspBody localRspBody = new OfflinePkg.RspBody();
-        localRspBody.mergeFrom(paramBundle);
-        paramBundle = new String(localRspBody.str_offline_pkg.get().toByteArray(), "UTF-8");
-        if (this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack != null) {
-          this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(paramBundle, 0);
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          return;
-        }
-        if (this.b)
+        if (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_ArrayOfJavaLangString[0]))
         {
-          HtmlOffline.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack);
-          return;
+          this.jdField_a_of_type_ComTencentBizPoiMapActivity.l = 0;
+          this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_ArrayOfComTencentBizPoiMapActivity$PoiTab[0].b(true);
         }
-        HtmlOffline.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, null);
-        return;
+        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+          break label226;
+        }
+        if (this.jdField_b_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentBizPoiMapActivity.c))
+        {
+          localPoiMapActivity = this.jdField_a_of_type_ComTencentBizPoiMapActivity;
+          str = this.jdField_b_of_type_JavaLangString;
+          localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+          if (this.jdField_a_of_type_Int <= 0) {
+            break label221;
+          }
+        }
       }
-      catch (Exception paramBundle)
-      {
-        this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a("{\"r\":-1}", 2);
-        return;
-      }
-    } else if (this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack != null) {
-      this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a("{\"r\":-1}", 2);
     }
+    label221:
+    for (boolean bool = true;; bool = false)
+    {
+      localPoiMapActivity.a(str, localArrayList, bool);
+      return;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      break;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_AndroidWidgetLinearLayout == null) {
+        break label109;
+      }
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      break label109;
+    }
+    label226:
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.d, this.jdField_b_of_type_Boolean);
   }
 }
 

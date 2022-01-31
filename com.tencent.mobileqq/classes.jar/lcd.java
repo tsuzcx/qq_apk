@@ -1,45 +1,49 @@
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticonview.SmallEmoticonInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public final class lcd
-  implements QueryTask.Query
+public class lcd
+  implements Runnable
 {
-  public char[] a(SmallEmoticonInfo paramSmallEmoticonInfo)
+  public lcd(EcShopAssistantManager paramEcShopAssistantManager) {}
+  
+  public void run()
   {
+    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject = new IntentFilter();
+    ((IntentFilter)localObject).addAction("action_get_PA_head");
+    ((IntentFilter)localObject).addAction("action_shop_set_read");
+    ((IntentFilter)localObject).addAction("action_folder_set_read");
+    ((IntentFilter)localObject).addAction("action_folder_destroy");
+    ((IntentFilter)localObject).addAction("action_folder_msg_change");
+    ((IntentFilter)localObject).addAction("action_set_folder_tab_red");
+    ((IntentFilter)localObject).addAction("action_follow_status");
     try
     {
-      int i = Integer.parseInt(paramSmallEmoticonInfo.a.eId);
-      int j = Integer.parseInt(paramSmallEmoticonInfo.a.epId);
-      Object localObject = EmosmUtils.a(j, i);
-      paramSmallEmoticonInfo = new char[5];
-      paramSmallEmoticonInfo[0] = 20;
-      paramSmallEmoticonInfo[1] = localObject[3];
-      paramSmallEmoticonInfo[2] = localObject[2];
-      paramSmallEmoticonInfo[3] = localObject[1];
-      paramSmallEmoticonInfo[4] = localObject[0];
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = ((EmoticonManager)((AppRuntime)localObject).getManager(13)).a(String.valueOf(j));
-        if ((localObject != null) && (((EmoticonPackage)localObject).isAPNG == 2)) {
-          paramSmallEmoticonInfo[1] = 511;
-        }
-      }
-      return paramSmallEmoticonInfo;
+      BaseApplicationImpl.getContext().registerReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
+      ((EcshopReportHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).b();
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("ecshop_sp" + EcShopAssistantManager.a(this.a), 0);
+      this.a.b = ((SharedPreferences)localObject).getBoolean("folder_tab_show", false);
+      this.a.c = ((SharedPreferences)localObject).getBoolean("preload_web", false);
+      EcShopAssistantManager.g = String.valueOf(((SharedPreferences)localObject).getLong("ad_puin", 0L));
+      this.a.jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong("stayTime", 5000L);
+      this.a.d = ((SharedPreferences)localObject).getInt("dayLimit", 3);
+      this.a.b();
+      return;
     }
-    catch (NumberFormatException paramSmallEmoticonInfo)
+    catch (Exception localException)
     {
-      QLog.e("ReadInJoyBaseDeliverActivity", 1, "kandian fail to send small_emotion. id is not Int.");
+      for (;;)
+      {
+        QLog.e("EcShopAssistantManager", 1, "Register receiver error:" + localException);
+      }
     }
-    return null;
   }
 }
 

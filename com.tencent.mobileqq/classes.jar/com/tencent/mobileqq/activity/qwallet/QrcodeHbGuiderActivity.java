@@ -45,7 +45,7 @@ public class QrcodeHbGuiderActivity
   
   private void c()
   {
-    new ImmersionBar(this, -468046, findViewById(2131362854));
+    new ImmersionBar(this, -468046, findViewById(2131362859));
     d();
     e();
     f();
@@ -54,10 +54,10 @@ public class QrcodeHbGuiderActivity
   private void d()
   {
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368187));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363381));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363400));
     this.jdField_c_of_type_AndroidWidgetTextView.setText("面对面红包");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363428));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363262));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363447));
     this.jdField_b_of_type_AndroidWidgetTextView.setText("红包记录");
   }
   
@@ -213,7 +213,7 @@ public class QrcodeHbGuiderActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2130969826);
+    setContentView(2130969837);
     c();
     a("face2face.index.show");
     return true;
@@ -238,7 +238,7 @@ public class QrcodeHbGuiderActivity
       a("face2face.index.go");
       finish();
       return;
-    case 2131363245: 
+    case 2131363262: 
       a("face2face.index.back");
       finish();
       return;

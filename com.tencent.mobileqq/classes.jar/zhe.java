@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.app.MessageRoamManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class zhe
   implements Runnable
 {
-  public zhe(MessageRoamManager paramMessageRoamManager) {}
+  public zhe(BaseActivity paramBaseActivity) {}
   
   public void run()
   {
-    this.a.n();
+    if (this.a.runnableRemoveNotification != null)
+    {
+      this.a.runnableRemoveNotification = null;
+      if (this.a.app != null) {
+        this.a.app.i();
+      }
+    }
   }
 }
 

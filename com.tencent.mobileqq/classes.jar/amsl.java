@@ -1,29 +1,89 @@
+import QQService.AddDiscussMemberInfo;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader.P2VEffectDownloadListener;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import cooperation.qzone.QZoneVideoDownloadActivity;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.dingdong.DingdongPluginHelper;
+import cooperation.dingdong.DingdongPluginRemoteCmdHandler;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 
-class amsl
-  implements P2VEffectLoader.P2VEffectDownloadListener
+public class amsl
+  extends AsyncTask
 {
-  amsl(amsk paramamsk) {}
+  public amsl(DingdongPluginRemoteCmdHandler paramDingdongPluginRemoteCmdHandler, DiscussionManager paramDiscussionManager, String paramString, long paramLong, QQAppInterface paramQQAppInterface) {}
   
-  public void a(boolean paramBoolean)
+  protected ArrayList a(Void... paramVarArgs)
   {
-    VideoEnvironment.a("QZoneVideoDownloadActivity", "P2VEffectLoader - downLoadP2VJarModule - loadState:" + paramBoolean, null);
-    if (paramBoolean)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppDiscussionManager.b(this.jdField_a_of_type_JavaLangString);
+    paramVarArgs = new HashSet();
+    if (localObject != null)
     {
-      P2VEffectLoader.a(this.a.a.getApplicationContext());
-      Intent localIntent = this.a.a.getIntent();
-      localIntent.setClass(this.a.a.getApplicationContext(), QzDynamicVideoPreviewActivity.class);
-      this.a.a.startActivity(localIntent);
-      this.a.a.overridePendingTransition(2131034134, 2131034135);
-      this.a.a.finish();
-      return;
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        paramVarArgs.add((String)((Iterator)localObject).next());
+      }
     }
-    VideoEnvironment.a("QZoneVideoDownloadActivity", "P2VEffectLoader - downLoadP2VJarModule - loadFailed", null);
+    localObject = new ArrayList();
+    int i = DingdongPluginRemoteCmdHandler.a(this.jdField_a_of_type_CooperationDingdongDingdongPluginRemoteCmdHandler).size() - 1;
+    if (i >= 0)
+    {
+      if (paramVarArgs.contains(((ResultRecord)DingdongPluginRemoteCmdHandler.a(this.jdField_a_of_type_CooperationDingdongDingdongPluginRemoteCmdHandler).get(i)).jdField_a_of_type_JavaLangString)) {}
+      for (;;)
+      {
+        i -= 1;
+        break;
+        ResultRecord localResultRecord = (ResultRecord)DingdongPluginRemoteCmdHandler.a(this.jdField_a_of_type_CooperationDingdongDingdongPluginRemoteCmdHandler).get(i);
+        AddDiscussMemberInfo localAddDiscussMemberInfo = new AddDiscussMemberInfo();
+        if (localResultRecord.jdField_a_of_type_Int == 4) {
+          localAddDiscussMemberInfo.RefStr = localResultRecord.jdField_a_of_type_JavaLangString;
+        }
+        for (;;)
+        {
+          localAddDiscussMemberInfo.Type = localResultRecord.jdField_a_of_type_Int;
+          ((ArrayList)localObject).add(localAddDiscussMemberInfo);
+          break;
+          try
+          {
+            localAddDiscussMemberInfo.Uin = Long.valueOf(localResultRecord.jdField_a_of_type_JavaLangString).longValue();
+            localAddDiscussMemberInfo.RefUin = Long.valueOf(localResultRecord.c).longValue();
+          }
+          catch (NumberFormatException localNumberFormatException) {}
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("DingdongPluginRemoteCmdHandler", 2, "doModifyDiscussForDingdong, NumberFormatException!!! uin=" + localResultRecord.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
+    return localObject;
+  }
+  
+  protected void a(ArrayList paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      paramArrayList = new Intent();
+      paramArrayList.putExtra("reqCode", 7);
+      paramArrayList.putExtra("isSuccess", true);
+      paramArrayList.putExtra("roomId", this.jdField_a_of_type_Long);
+      DingdongPluginHelper.a(11, paramArrayList);
+    }
+    DiscussionHandler localDiscussionHandler;
+    do
+    {
+      return;
+      if (!DingdongPluginRemoteCmdHandler.a(this.jdField_a_of_type_CooperationDingdongDingdongPluginRemoteCmdHandler))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(DingdongPluginRemoteCmdHandler.a(this.jdField_a_of_type_CooperationDingdongDingdongPluginRemoteCmdHandler));
+        DingdongPluginRemoteCmdHandler.a(this.jdField_a_of_type_CooperationDingdongDingdongPluginRemoteCmdHandler, true);
+      }
+      localDiscussionHandler = (DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
+    } while (localDiscussionHandler == null);
+    localDiscussionHandler.b(this.jdField_a_of_type_Long, paramArrayList);
   }
 }
 

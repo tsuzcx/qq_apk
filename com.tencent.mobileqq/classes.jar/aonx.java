@@ -1,14 +1,21 @@
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
+import android.view.View;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
+import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem;
 
-class aonx
+public class aonx
   implements Runnable
 {
-  aonx(aonw paramaonw) {}
+  public aonx(VoteDashItem paramVoteDashItem, VoteLayer.VoteItem paramVoteItem, View paramView) {}
   
   public void run()
   {
-    if (!HWVideoPlayView.a(this.a.a)) {
-      this.a.a.b();
+    VoteLayer.VoteItem localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem;
+    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem.a) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localVoteItem.a = bool;
+      this.jdField_a_of_type_AndroidViewView.invalidate();
+      return;
     }
   }
 }

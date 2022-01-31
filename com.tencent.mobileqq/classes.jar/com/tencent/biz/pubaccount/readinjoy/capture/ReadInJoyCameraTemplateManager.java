@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import lhx;
+import lkl;
 
 public class ReadInJoyCameraTemplateManager
   implements DialogInterface.OnDismissListener, View.OnClickListener
@@ -35,7 +35,7 @@ public class ReadInJoyCameraTemplateManager
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private SplitEffectsCameraCaptureView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  private lhx jdField_a_of_type_Lhx;
+  private lkl jdField_a_of_type_Lkl;
   private ViewGroup b;
   
   public ReadInJoyCameraTemplateManager(Activity paramActivity, AppInterface paramAppInterface, SplitEffectsCameraCaptureView paramSplitEffectsCameraCaptureView, int paramInt)
@@ -49,14 +49,14 @@ public class ReadInJoyCameraTemplateManager
   
   private void d()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2130969559, null);
+    RelativeLayout localRelativeLayout = (RelativeLayout)View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2130969555, null);
     this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidAppActivity, 2131624148);
     this.jdField_a_of_type_AndroidAppDialog.setContentView(localRelativeLayout);
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
     this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localRelativeLayout.findViewById(2131362840));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localRelativeLayout.findViewById(2131362845));
     this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-    this.b = ((ViewGroup)localRelativeLayout.findViewById(2131364658));
+    this.b = ((ViewGroup)localRelativeLayout.findViewById(2131364682));
     this.b.setOnClickListener(null);
     if (this.jdField_a_of_type_Int == 2) {
       this.b.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#cd222324")));
@@ -68,9 +68,9 @@ public class ReadInJoyCameraTemplateManager
     localLayoutParams.gravity = 80;
     localWindow.setAttributes(localLayoutParams);
     localWindow.setWindowAnimations(2131624713);
-    this.jdField_a_of_type_AndroidViewView = localRelativeLayout.findViewById(2131366108);
+    this.jdField_a_of_type_AndroidViewView = localRelativeLayout.findViewById(2131366113);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)localRelativeLayout.findViewById(2131366968));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)localRelativeLayout.findViewById(2131366966));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateAdapter = new ReadInJoyCameraTemplateAdapter(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentWidgetHorizontalListView, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView, this.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateAdapter);
   }
@@ -124,9 +124,9 @@ public class ReadInJoyCameraTemplateManager
     }
   }
   
-  public void a(lhx paramlhx)
+  public void a(lkl paramlkl)
   {
-    this.jdField_a_of_type_Lhx = paramlhx;
+    this.jdField_a_of_type_Lkl = paramlkl;
   }
   
   public void b()
@@ -157,8 +157,8 @@ public class ReadInJoyCameraTemplateManager
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Lhx != null) {
-      this.jdField_a_of_type_Lhx.c();
+    if (this.jdField_a_of_type_Lkl != null) {
+      this.jdField_a_of_type_Lkl.c();
     }
   }
 }

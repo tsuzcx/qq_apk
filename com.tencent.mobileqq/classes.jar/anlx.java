@@ -1,103 +1,94 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager.LoadMusicStepListener;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qzone.webviewplugin.personalize.QZonePersonalizePlugin;
 
 public class anlx
   extends BroadcastReceiver
 {
-  public anlx(QIMMusicConfigManager paramQIMMusicConfigManager) {}
+  public anlx(QZonePersonalizePlugin paramQZonePersonalizePlugin) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
+    Object localObject;
+    if (QLog.isDevelopLevel())
     {
-      paramContext = paramIntent.getStringExtra("data");
-      paramIntent = paramIntent.getStringExtra("event");
-      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic"))) {
-        break label43;
+      localObject = new StringBuilder().append("intent is: ");
+      if (paramIntent == null)
+      {
+        paramContext = "null";
+        QLog.d("QZonePersonalizePlugin", 4, paramContext);
       }
     }
-    for (;;)
+    else
     {
-      return;
-      label43:
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMMusicConfigManager", 2, "onReceive:" + paramContext);
+      if ((paramIntent == null) || (!"QZoneCardPreDownload".equals(paramIntent.getAction()))) {
+        break label239;
       }
-      try
-      {
-        localJSONObject = new JSONObject(paramContext);
-        int i = localJSONObject.optInt("id");
-        paramContext = this.a.a(i);
-        if (paramContext != null) {}
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, "QZoneCardPreDownload js receive setting action" + paramIntent.getAction());
       }
-      catch (JSONException paramIntent)
+      localObject = paramIntent.getExtras();
+      paramIntent = "";
+      paramContext = "";
+      if (localObject != null)
       {
-        for (;;)
+        paramIntent = ((Bundle)localObject).getString("result");
+        paramContext = ((Bundle)localObject).getString("cardurl");
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QZoneCardLogic.QZonePersonalizePlugin", 4, "QZoneCardPreDownload js receive cardurl:" + paramContext + "\n dowonload result:" + paramIntent);
+      }
+      if (this.a.mRuntime != null) {
+        break label182;
+      }
+    }
+    label182:
+    label239:
+    int i;
+    do
+    {
+      do
+      {
+        do
         {
-          for (;;)
+          do
           {
-            try
+            do
             {
-              paramIntent = new MusicItemInfo();
-            }
-            catch (JSONException paramIntent)
-            {
-              JSONObject localJSONObject;
-              continue;
-            }
-            try
-            {
-              paramIntent.d = 5;
-              paramIntent.jdField_a_of_type_JavaLangString = localJSONObject.optString("title");
-              paramIntent.b = localJSONObject.optString("desc");
-              paramIntent.jdField_a_of_type_Int = localJSONObject.optInt("id");
-              paramIntent.e = localJSONObject.optString("mid");
-              paramContext = paramIntent;
-            }
-            catch (JSONException localJSONException)
-            {
-              paramContext = paramIntent;
-              paramIntent = localJSONException;
-              continue;
-            }
-            try
-            {
-              paramContext.e = localJSONObject.optString("mid");
-              if (QIMMusicConfigManager.a(this.a) == null) {
-                break;
-              }
-              paramIntent = QIMMusicConfigManager.a(this.a).iterator();
-              if (!paramIntent.hasNext()) {
-                break;
-              }
-              ((QIMMusicConfigManager.LoadMusicStepListener)paramIntent.next()).a(paramContext);
-              continue;
-              paramIntent = paramIntent;
-              paramContext = null;
-            }
-            catch (JSONException paramIntent) {}
-          }
-          if (QLog.isColorLevel()) {
-            QLog.e("QIMMusicConfigManager", 2, QLog.getStackTraceString(paramIntent));
-          }
-        }
+              return;
+              paramContext = "not null";
+              break;
+            } while (this.a.mRuntime.a() == null);
+            paramIntent = this.a.mRuntime.a();
+          } while (paramIntent == null);
+          paramIntent.c("window.QzFeedDressJSInterface.onReceive({type:\"cardurl\",data:\"" + paramContext + "\"});window.QzFeedDressJSInterface.onReceive({type:\"result\",data:\"success\"});");
+          return;
+        } while ((paramIntent == null) || (!"action_facade_qzone2js".equals(paramIntent.getAction())));
+        paramIntent = paramIntent.getExtras();
+      } while (paramIntent == null);
+      i = paramIntent.getInt("ret");
+      paramContext = paramIntent.getString("imgDir");
+      paramIntent = paramIntent.getString("imgNameList");
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QZonePersonalizePlugin", 4, "receive ret:" + i + "|imgDir:" + paramContext + "|imgNameList:" + paramIntent);
       }
+    } while ((this.a.mRuntime == null) || (this.a.mRuntime.a() == null));
+    if (i == 0)
+    {
+      this.a.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"success\",imgDir:\"" + paramContext + "\",imgNameList:\"" + paramIntent + "\"});");
+      return;
     }
+    this.a.callJs("window.QzAvatarDressJSInterface.onReceive({type:\"result\",data:\"fail\"});");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlx
  * JD-Core Version:    0.7.0.1
  */

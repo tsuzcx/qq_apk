@@ -5,7 +5,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import jmq;
+import jot;
 
 public abstract class IAVRedPacketCallback$Stub
   extends Binder
@@ -25,7 +25,7 @@ public abstract class IAVRedPacketCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IAVRedPacketCallback))) {
       return (IAVRedPacketCallback)localIInterface;
     }
-    return new jmq(paramIBinder);
+    return new jot(paramIBinder);
   }
   
   public IBinder asBinder()
@@ -71,7 +71,7 @@ public abstract class IAVRedPacketCallback$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.service.IAVRedPacketCallback.Stub
  * JD-Core Version:    0.7.0.1
  */

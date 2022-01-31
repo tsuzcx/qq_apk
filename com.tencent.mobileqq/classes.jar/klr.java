@@ -1,18 +1,19 @@
-import com.tencent.biz.common.offline.AsyncBack;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.PoiMapActivity;
 
 public class klr
+  implements View.OnTouchListener
 {
-  public AsyncBack a;
-  public String a;
-  public String b;
-  public String c;
+  public klr(PoiMapActivity paramPoiMapActivity) {}
   
-  public klr(String paramString1, String paramString2, String paramString3, AsyncBack paramAsyncBack)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = paramAsyncBack;
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
+    }
+    return true;
   }
 }
 

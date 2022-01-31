@@ -1,35 +1,111 @@
 package c.t.m.g;
 
-import android.os.SystemClock;
+import android.net.SSLCertificateSocketFactory;
+import android.net.SSLSessionCache;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.Log;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 
-final class an
-  implements Runnable
+class an
+  extends SSLSocketFactory
 {
-  an(am paramam, ag paramag, long paramLong) {}
+  public boolean a = false;
+  private final String b = an.class.getSimpleName();
+  private String c;
   
-  public final void run()
+  public an(String paramString)
   {
-    boolean bool2 = false;
+    this.c = paramString;
+  }
+  
+  public Socket createSocket()
+    throws IOException
+  {
+    return null;
+  }
+  
+  public Socket createSocket(String paramString, int paramInt)
+    throws IOException, UnknownHostException
+  {
+    return null;
+  }
+  
+  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
+    throws IOException, UnknownHostException
+  {
+    return null;
+  }
+  
+  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
+    throws IOException
+  {
+    return null;
+  }
+  
+  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
+    throws IOException
+  {
+    return null;
+  }
+  
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+    throws IOException
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      throw new IOException("Halley set empty bizHost");
+    }
+    Log.i(this.b, "customized createSocket. host: " + this.c);
     try
     {
-      aj localaj = this.a.a();
-      this.a.k = (SystemClock.elapsedRealtime() - this.b);
-      this.a.a(false);
-      boolean bool1 = bool2;
-      if (localaj.a == 0)
+      if (Build.VERSION.SDK_INT < 17)
       {
-        int i = localaj.c;
-        bool1 = bool2;
-        if (i == 200) {
-          bool1 = true;
-        }
+        paramSocket = (SSLSocket)((SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(m.a()))).createSocket(paramSocket, this.c, paramInt, paramBoolean);
+        paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
+        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.c });
+        paramSocket.startHandshake();
+        return paramSocket;
       }
-      return;
+      paramString = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getInsecure(10000, new SSLSessionCache(m.a()));
+      paramSocket = (SSLSocket)paramString.createSocket(paramSocket, this.c, paramInt, paramBoolean);
+      paramString.setUseSessionTickets(paramSocket, true);
+      paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
+      paramString.setHostname(paramSocket, this.c);
+      paramSocket.startHandshake();
+      return paramSocket;
     }
-    catch (Throwable localThrowable) {}finally
+    catch (Throwable paramSocket)
     {
-      am.a(this.c, false);
+      this.a = true;
+      throw new IOException("HalleySNI exception: ".concat(String.valueOf(paramSocket)));
     }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((TextUtils.isEmpty(this.c)) || (!(paramObject instanceof an))) {}
+    do
+    {
+      return false;
+      paramObject = ((an)paramObject).c;
+    } while (TextUtils.isEmpty(paramObject));
+    return this.c.equals(paramObject);
+  }
+  
+  public String[] getDefaultCipherSuites()
+  {
+    return new String[0];
+  }
+  
+  public String[] getSupportedCipherSuites()
+  {
+    return new String[0];
   }
 }
 

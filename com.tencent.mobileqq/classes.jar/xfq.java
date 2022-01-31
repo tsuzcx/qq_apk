@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 
-class xfq
+public class xfq
   implements Runnable
 {
-  xfq(xfp paramxfp) {}
+  public xfq(PasswdRedBagManager paramPasswdRedBagManager, String paramString) {}
   
   public void run()
   {
-    PreloadManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.a.jdField_a_of_type_Boolean);
+    PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager).c(this.jdField_a_of_type_JavaLangString, true);
   }
 }
 

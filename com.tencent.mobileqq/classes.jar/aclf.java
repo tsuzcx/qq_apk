@@ -1,39 +1,91 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
-import com.tencent.mobileqq.facetoface.Face2FaceUserData;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aclf
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public aclf(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim, Face2FaceUserData paramFace2FaceUserData1, int paramInt1, double paramDouble, boolean paramBoolean1, boolean paramBoolean2, Face2FaceUserData paramFace2FaceUserData2, boolean paramBoolean3, boolean paramBoolean4, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt2) {}
+  public aclf(EmojiStickerManager paramEmojiStickerManager, List paramList, String paramString, int paramInt, boolean paramBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.a).b(this.jdField_b_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData, this.c, this.d);
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.setStatusWithAnimation(this.jdField_b_of_type_Int);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation currentUin ( " + this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " ) Animation Start  ");
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    if ((localObject1 instanceof QQAppInterface))
+    {
+      localQQAppInterface = (QQAppInterface)localObject1;
+      localObject1 = ((List)((ArrayList)this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager.jdField_a_of_type_JavaUtilList).clone()).iterator();
+      Object localObject3;
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (MessageRecord)((Iterator)localObject1).next();
+        localObject3 = EmojiStickerManager.a((MessageRecord)localObject2);
+        if ((localObject3 != null) && (!((EmojiStickerManager.StickerInfo)localObject3).isDisplayed))
+        {
+          ((EmojiStickerManager.StickerInfo)localObject3).isDisplayed = true;
+          EmojiStickerManager.a(localQQAppInterface, (MessageRecord)localObject2, (EmojiStickerManager.StickerInfo)localObject3);
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilList != null) {}
+      for (localObject1 = this.jdField_a_of_type_JavaUtilList;; localObject1 = localQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (MessageRecord)((Iterator)localObject1).next();
+          localObject3 = EmojiStickerManager.a((MessageRecord)localObject2);
+          if ((localObject3 != null) && (((EmojiStickerManager.StickerInfo)localObject3).isShown)) {
+            EmojiStickerManager.a(localQQAppInterface, (MessageRecord)localObject2, (EmojiStickerManager.StickerInfo)localObject3);
+          }
+        }
+      }
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (Bundle)((Iterator)localObject2).next();
+        int i = ((Bundle)localObject3).getInt("sessionType");
+        localObject1 = "1";
+        if (i == 1) {
+          localObject1 = "2";
+        }
+        for (;;)
+        {
+          VasWebviewUtil.reportCommercialDrainage("", "Stick", ((Bundle)localObject3).getString("key"), (String)localObject1, 1, 0, 0, null, ((Bundle)localObject3).getString("ext1"), ((Bundle)localObject3).getString("ext2"));
+          break;
+          if (i == 3000) {
+            localObject1 = "3";
+          }
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager.jdField_a_of_type_JavaUtilArrayList.clear();
+      localObject1 = new File(EmojiStickerManager.a());
+      if (!((File)localObject1).exists()) {
+        break label352;
+      }
+      localObject1 = ((File)localObject1).list();
+      if ((localObject1 == null) || (localObject1.length <= 1)) {
+        break label347;
+      }
     }
-    double d2 = Math.atan(this.jdField_a_of_type_Double) * 180.0D / 3.141592653589793D * this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_b_of_type_Int;
-    double d1 = d2;
-    if (this.jdField_a_of_type_Boolean) {
-      d1 = 180.0D - d2;
+    label347:
+    for (boolean bool = true;; bool = false)
+    {
+      EmojiStickerManager.g = bool;
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.jdField_b_of_type_Float = ((float)d1);
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendInAnimation uinToHoleIndex add( " + this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData.e.substring(0, 4) + ", " + this.jdField_a_of_type_Int + " )");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendAnim.a(2, this.jdField_b_of_type_Boolean);
+    label352:
+    VasQuickUpdateManager.a(localQQAppInterface, 1004L, "emojiStickerGuideZip_v2", EmojiStickerManager.a() + "emojiStickerGuideZip_v2.zip", true, null);
+    EmojiStickerManager.g = false;
   }
 }
 

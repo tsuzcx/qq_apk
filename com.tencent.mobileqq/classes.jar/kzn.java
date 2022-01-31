@@ -1,76 +1,28 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.util.PAVideoStructMsgUtil;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public final class kzn
-  implements Runnable
+class kzn
+  implements TVK_SDKMgr.InstallListener
 {
-  public kzn(MessageRecord paramMessageRecord) {}
+  kzn(kzm paramkzm) {}
   
-  public void run()
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    int i = 1;
-    long l1;
-    Object localObject1;
-    if ((this.a.msgtype == -2011) && (!this.a.isSend()))
-    {
-      l1 = System.currentTimeMillis();
-      localStructMsgItemVideo = PAVideoStructMsgUtil.a(this.a);
-      if (localStructMsgItemVideo != null) {
-        localObject1 = "";
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk failed");
     }
-    for (;;)
-    {
-      try
-      {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("vid", localStructMsgItemVideo.w);
-        ((JSONObject)localObject2).put("os", "1");
-        if (!MsgProxyUtils.c(this.a.istroop)) {
-          continue;
-        }
-        ((JSONObject)localObject2).put("aiotype", i);
-        localObject2 = ((JSONObject)localObject2).toString();
-        localObject1 = localObject2;
-      }
-      catch (Exception localException)
-      {
-        Object localObject2;
-        long l2;
-        localException.printStackTrace();
-        continue;
-        String str = localStructMsgItemVideo.B;
-        continue;
-      }
-      if (localStructMsgItemVideo.B != null) {
-        continue;
-      }
-      localObject2 = "0";
-      PublicAccountReportUtils.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "2", (String)localObject2, (String)localObject1, false);
-      l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoReporter", 2, "reportVideoStructMsgRecv cost = " + (l2 - l1) + "ms");
-      }
-      return;
-      if (this.a.istroop == 1)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = this.a.istroop;
-        if (i == 3000) {
-          i = 3;
-        } else {
-          i = 4;
-        }
-      }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk success");
     }
+    ReadInJoyNativeAdAppVideoView.a(this.a.a).post(new kzo(this));
   }
 }
 

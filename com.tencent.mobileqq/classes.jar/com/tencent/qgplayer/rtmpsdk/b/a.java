@@ -35,6 +35,7 @@ public class a
   
   public a()
   {
+    QGLog.i("QGPlayer.VideoRender", "construct VideoRender");
     HandlerThread localHandlerThread = new HandlerThread("VideoRenderThread");
     localHandlerThread.start();
     this.a = new Handler(localHandlerThread.getLooper(), this);
@@ -97,15 +98,16 @@ public class a
   
   public void a()
   {
+    QGLog.i("QGPlayer.VideoRender", "VideoRender release");
     Handler localHandler;
     if (this.a != null)
     {
       localHandler = this.a;
       if (!TextUtils.isEmpty(this.b)) {
-        break label52;
+        break label59;
       }
     }
-    label52:
+    label59:
     for (String str = "";; str = this.b)
     {
       Message.obtain(localHandler, 5, 1, 0, str).sendToTarget();
@@ -368,6 +370,7 @@ public class a
                       this.h = 960;
                       this.i = 540;
                     } while (paramMessage.arg1 != 1);
+                    QGLog.i("QGPlayer.VideoRender", "VideoRender MESSAGE_STOP quit");
                     if (Build.VERSION.SDK_INT >= 18)
                     {
                       Looper.myLooper().quitSafely();

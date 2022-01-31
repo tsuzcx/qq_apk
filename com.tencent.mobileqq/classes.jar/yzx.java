@@ -1,30 +1,29 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
-public final class yzx
-  implements Animation.AnimationListener
+class yzx
+  implements View.OnClickListener
 {
-  public yzx(View paramView) {}
+  yzx(yzw paramyzw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if ((this.a != null) && (this.a.getVisibility() == 0))
-    {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2131034320);
-      paramAnimation.setAnimationListener(this);
-      this.a.startAnimation(paramAnimation);
+    ApolloGameActivity.c(this.a.jdField_a_of_type_Yzu.a).setVisibility(4);
+    ApolloGameActivity.a(this.a.jdField_a_of_type_Yzu.a).setVisibility(4);
+    ApolloGameActivity.a(this.a.jdField_a_of_type_Yzu.a).setVisibility(0);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$ICmGameConfirmListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$ICmGameConfirmListener.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yzx
  * JD-Core Version:    0.7.0.1
  */

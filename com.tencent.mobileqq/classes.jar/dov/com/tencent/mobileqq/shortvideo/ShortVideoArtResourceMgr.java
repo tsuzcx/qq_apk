@@ -2,7 +2,7 @@ package dov.com.tencent.mobileqq.shortvideo;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aopc;
+import aoxo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -23,7 +23,7 @@ public class ShortVideoArtResourceMgr
   public static String a()
   {
     String str = BaseApplicationImpl.getApplication().getSharedPreferences("QmcfConfig", 4).getString("art_res_sv_md5_version_soname_key", "artfilter000_0");
-    boolean bool = PendantVersionManager.a(str, 3);
+    boolean bool = PendantVersionManager.a(str, 5);
     VideoEnvironment.a("ShortVideoArtResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
     if (bool) {
       return str;
@@ -33,7 +33,7 @@ public class ShortVideoArtResourceMgr
   
   private static void a()
   {
-    ThreadManager.post(new aopc(), 5, null, false);
+    ThreadManager.post(new aoxo(), 5, null, false);
   }
   
   public static boolean a()

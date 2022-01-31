@@ -1,34 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class agny
-  extends BroadcastReceiver
+class agny
+  implements ImageAssetDelegate
 {
-  public agny(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  agny(agnx paramagnx) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if ((paramIntent != null) && (paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label")))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PersonalityLabelGalleryActivity", 2, "receive broadcast modify pl info");
-      }
-      paramContext = paramIntent.getBundleExtra("key_bundle_data");
-      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
-      {
-        this.a.a = true;
-        PersonalityLabelGalleryActivity.a(this.a);
-      }
-    }
+    paramLottieImageAsset = paramLottieImageAsset.getFileName();
+    Bitmap localBitmap = (Bitmap)this.a.a.a.get(paramLottieImageAsset);
+    QLog.i("ScanTorchActivity", 1, "loadWorldCupGuideAnimation. fetchBitmap. name = " + paramLottieImageAsset);
+    return localBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agny
  * JD-Core Version:    0.7.0.1
  */

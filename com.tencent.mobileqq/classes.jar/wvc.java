@@ -1,44 +1,45 @@
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class wvc
-  extends ContactBindObserver
+  implements Runnable
 {
-  public wvc(PhoneLaunchActivity paramPhoneLaunchActivity) {}
+  public wvc(LebaShowListManager paramLebaShowListManager, RedTouchManager paramRedTouchManager, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3) {}
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    PhoneLaunchActivity.a(this.a).setEnabled(true);
-    if (this.a.a != null)
+    for (;;)
     {
-      this.a.app.unRegistObserver(this.a.a);
-      this.a.a = null;
-    }
-    this.a.b();
-    if (paramBoolean)
-    {
-      Object localObject = this.a;
-      if ((PhoneLaunchActivity.a(this.a)) || (PhoneLaunchActivity.b(this.a)))
+      try
       {
-        this.a.setResult(-1);
-        this.a.finish();
-        return;
+        RedTouchManager localRedTouchManager = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager;
+        i = (int)this.jdField_a_of_type_Long;
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (this.b != -9223372036854775808L) {
+          continue;
+        }
+        l = this.c;
+        i = localRedTouchManager.a(i, bool, l);
       }
-      localObject = new Intent((Context)localObject, SettingActivity2.class);
-      if (PhoneLaunchActivity.c(this.a)) {
-        ((Intent)localObject).putExtra("kSrouce", 7);
+      catch (Exception localException)
+      {
+        long l;
+        int j = -2;
+        int i = j;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("Q.lebatab.mgr", 2, localException.toString());
+        i = j;
+        continue;
       }
-      this.a.startActivityForResult((Intent)localObject, 2);
-      this.a.setResult(-1);
-      this.a.finish();
+      if (QLog.isDevelopLevel()) {
+        QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, result = " + i);
+      }
       return;
+      l = this.b;
     }
-    this.a.b("启用失败，请重新尝试！");
   }
 }
 

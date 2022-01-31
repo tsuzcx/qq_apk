@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
 
-class aasg
-  implements aasr
+public class aasg
+  implements Runnable
 {
-  aasg(aasc paramaasc, aasp paramaasp, aasr paramaasr) {}
+  public aasg(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Aasp.a }));
-    if (paramBoolean) {
-      ArkAppDataReport.a(this.jdField_a_of_type_Aasp.a, 2);
+    if ((ARCardCameraRecordFragment.b(this.a)) && (ARCardCameraRecordFragment.c(this.a) != 0)) {
+      return;
     }
-    this.jdField_a_of_type_Aasr.a(paramBoolean);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasg
  * JD-Core Version:    0.7.0.1
  */

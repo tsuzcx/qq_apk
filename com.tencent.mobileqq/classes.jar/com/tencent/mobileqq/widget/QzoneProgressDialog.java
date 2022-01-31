@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akwp;
+import aleg;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
@@ -25,7 +25,7 @@ public class QzoneProgressDialog
   {
     super(paramContext, 2131624512);
     String str2 = paramIntent.getStringExtra("qzone_plugin_activity_name");
-    Object localObject1 = LayoutInflater.from(paramContext).inflate(2130971311, null);
+    Object localObject1 = LayoutInflater.from(paramContext).inflate(2130971334, null);
     Object localObject2 = getWindow();
     ((Window)localObject2).setWindowAnimations(2131624513);
     ((Window)localObject2).setContentView((View)localObject1);
@@ -36,41 +36,41 @@ public class QzoneProgressDialog
     ((WindowManager.LayoutParams)localObject3).y = ((WindowManager.LayoutParams)localObject3).y;
     ((Window)localObject2).setAttributes((WindowManager.LayoutParams)localObject3);
     setCanceledOnTouchOutside(false);
-    this.a = ((TextView)((View)localObject1).findViewById(2131363320));
+    this.a = ((TextView)((View)localObject1).findViewById(2131363337));
     localObject2 = paramIntent.getStringExtra("leftViewText");
     if (localObject2 == null) {
-      localObject2 = paramContext.getString(2131433698);
+      localObject2 = paramContext.getString(2131433712);
     }
     for (;;)
     {
       if ("com.qzone.album.ui.activity.QZonePersonalAlbumActivity".equals(str2))
       {
-        localObject3 = ((ViewStub)((View)localObject1).findViewById(2131374131)).inflate();
+        localObject3 = ((ViewStub)((View)localObject1).findViewById(2131374161)).inflate();
         localObject1 = paramIntent.getStringExtra("key_left_tab_title");
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           break label910;
         }
-        localObject1 = paramContext.getString(2131432701);
+        localObject1 = paramContext.getString(2131432715);
       }
       label910:
       for (;;)
       {
         paramIntent = paramIntent.getStringExtra("key_rihgt_tab_title");
         if (TextUtils.isEmpty(paramIntent)) {}
-        for (paramContext = paramContext.getString(2131432703);; paramContext = paramIntent)
+        for (paramContext = paramContext.getString(2131432717);; paramContext = paramIntent)
         {
-          paramIntent = (ExtendButton)((View)localObject3).findViewById(2131373504);
-          Object localObject4 = (ExtendButton)((View)localObject3).findViewById(2131373506);
+          paramIntent = (ExtendButton)((View)localObject3).findViewById(2131373525);
+          Object localObject4 = (ExtendButton)((View)localObject3).findViewById(2131373527);
           paramIntent.setText((CharSequence)localObject1);
           ((ExtendButton)localObject4).setText(paramContext);
           ((ExtendButton)localObject4).setSelected(false);
           paramIntent.setSelected(true);
           paramContext = (Context)localObject3;
-          ((TextView)paramContext.findViewById(2131363245)).setText((CharSequence)localObject2);
-          ((ProgressBar)((ViewStub)paramContext.findViewById(2131366482)).inflate()).setVisibility(0);
+          ((TextView)paramContext.findViewById(2131363262)).setText((CharSequence)localObject2);
+          ((ProgressBar)((ViewStub)paramContext.findViewById(2131366480)).inflate()).setVisibility(0);
           return;
-          localObject4 = ((ViewStub)((View)localObject1).findViewById(2131374132)).inflate();
-          TextView localTextView = (TextView)((ViewStub)((View)localObject4).findViewById(2131363381)).inflate();
+          localObject4 = ((ViewStub)((View)localObject1).findViewById(2131374162)).inflate();
+          TextView localTextView = (TextView)((ViewStub)((View)localObject4).findViewById(2131363400)).inflate();
           String str1 = "";
           long l;
           if ("com.qzone.homepage.ui.activity.QZoneUserHomeActivity".equals(str2))
@@ -94,17 +94,17 @@ public class QzoneProgressDialog
             continue;
             if ("com.qzone.feed.ui.activity.QZoneFriendFeedActivity".equals(str2))
             {
-              localObject1 = paramContext.getString(2131433910);
-              localObject3 = paramContext.getString(2131432416);
+              localObject1 = paramContext.getString(2131433926);
+              localObject3 = paramContext.getString(2131432427);
             }
             else if ("com.qzone.cover.ui.activity.QzoneCoverPhotoWallActivity".equals(str2))
             {
-              localObject1 = paramContext.getString(2131432636);
+              localObject1 = paramContext.getString(2131432650);
               localObject3 = localObject2;
             }
             else if ("com.qzone.cover.ui.activity.QZoneCoverStoreActivity".equals(str2))
             {
-              localObject1 = paramContext.getString(2131432637);
+              localObject1 = paramContext.getString(2131432651);
               localObject3 = localObject2;
             }
             else if ("com.qzone.detail.ui.activity.QzoneDetailActivity".equals(str2))
@@ -113,13 +113,13 @@ public class QzoneProgressDialog
               localObject3 = localObject2;
               if (paramIntent.getBooleanExtra("qzone.sourceFrom", false))
               {
-                localObject3 = paramContext.getString(2131436782);
+                localObject3 = paramContext.getString(2131436802);
                 localObject1 = str1;
               }
             }
             else if ("com.qzone.publish.ui.activity.QZoneUploadPhotoActivity".equals(str2))
             {
-              str1 = paramContext.getString(2131432477);
+              str1 = paramContext.getString(2131432488);
               int i = paramIntent.getIntExtra("QZoneUploadPhotoActivity.key_state_type_src", -1);
               paramIntent = paramIntent.getAction();
               localObject1 = str1;
@@ -146,7 +146,7 @@ public class QzoneProgressDialog
                   case 7: 
                   case 8: 
                   case 11: 
-                    localObject1 = paramContext.getString(2131432767);
+                    localObject1 = paramContext.getString(2131432781);
                     localObject3 = localObject2;
                     break;
                     if (paramIntent.equals("com.tencent.intent.QZONE_QUOTE_FROM_AIO")) {
@@ -159,12 +159,12 @@ public class QzoneProgressDialog
             }
             else if ("com.qzone.lbsv2.ui.QZoneMoodSelectLocation".equals(str2))
             {
-              localObject1 = paramContext.getString(2131432428);
+              localObject1 = paramContext.getString(2131432439);
               localObject3 = localObject2;
             }
             else if ("com.qzone.setting.QZoneSettingManager".equals(str2))
             {
-              localObject1 = paramContext.getString(2131432568);
+              localObject1 = paramContext.getString(2131432582);
               localObject3 = localObject2;
             }
             else if ("com.qzone.album.ui.activity.QZonePersonalPhotoListActivity".equals(str2))
@@ -195,7 +195,7 @@ public class QzoneProgressDialog
             }
             else if ("com.qzone.publish.ui.activity.QZonePublishQueueAcitvity".equals(str2))
             {
-              localObject1 = paramContext.getString(2131437486);
+              localObject1 = paramContext.getString(2131437506);
               localObject3 = localObject2;
             }
             else
@@ -204,7 +204,7 @@ public class QzoneProgressDialog
               localObject3 = localObject2;
               if ("com.qzone.permissionsetting.ui.activities.QZoneSinglePermissionSettingActivity".equals(str2))
               {
-                localObject1 = paramContext.getString(2131432567);
+                localObject1 = paramContext.getString(2131432581);
                 localObject3 = localObject2;
               }
             }
@@ -234,12 +234,12 @@ public class QzoneProgressDialog
     if (paramOnDismissListener == null) {
       super.setOnDismissListener(paramOnDismissListener);
     }
-    super.setOnDismissListener(new akwp(paramOnDismissListener));
+    super.setOnDismissListener(new aleg(paramOnDismissListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QzoneProgressDialog
  * JD-Core Version:    0.7.0.1
  */

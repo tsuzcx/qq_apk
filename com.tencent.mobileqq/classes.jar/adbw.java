@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.LocalTbsViewManagerCallback;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-class adbw
+public class adbw
   implements Runnable
 {
-  adbw(adbs paramadbs, Integer paramInteger) {}
+  public adbw(QfileRecentPicFileTabView paramQfileRecentPicFileTabView, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    switch (this.jdField_a_of_type_JavaLangInteger.intValue())
-    {
-    case 12: 
-    case 19: 
-    default: 
-      return;
-    case 5001: 
-      this.jdField_a_of_type_Adbs.a.a(true);
+    Object localObject = QfileTimeUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.srvTime);
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.containsKey(localObject)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.put(localObject, new ArrayList());
+    }
+    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.a.get(localObject);
+    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
       return;
     }
-    this.jdField_a_of_type_Adbs.a.a(false);
+    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentPicFileTabView.i();
   }
 }
 

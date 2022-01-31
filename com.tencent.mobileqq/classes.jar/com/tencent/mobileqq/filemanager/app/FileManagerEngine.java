@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import actu;
-import actv;
-import actw;
+import adcb;
+import adcc;
+import adcd;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -66,7 +66,7 @@ import mqq.app.MobileQQ;
 
 public class FileManagerEngine
 {
-  actw jdField_a_of_type_Actw = null;
+  adcd jdField_a_of_type_Adcd = null;
   public QQAppInterface a;
   private DiscPicThumbDownloader jdField_a_of_type_ComTencentMobileqqFilemanagerCoreDiscPicThumbDownloader;
   private DiscVideoThumbDownloader jdField_a_of_type_ComTencentMobileqqFilemanagerCoreDiscVideoThumbDownloader;
@@ -83,8 +83,8 @@ public class FileManagerEngine
       a();
     }
     FileManagerUtil.a();
-    if (this.jdField_a_of_type_Actw == null) {
-      this.jdField_a_of_type_Actw = new actw(this, null);
+    if (this.jdField_a_of_type_Adcd == null) {
+      this.jdField_a_of_type_Adcd = new adcd(this, null);
     }
     try
     {
@@ -96,7 +96,7 @@ public class FileManagerEngine
       paramQQAppInterface.addAction("android.intent.action.MEDIA_EJECT");
       paramQQAppInterface.addAction("android.intent.action.MEDIA_REMOVED");
       paramQQAppInterface.addDataScheme("file");
-      BaseApplicationImpl.sApplication.registerReceiver(this.jdField_a_of_type_Actw, paramQQAppInterface);
+      BaseApplicationImpl.sApplication.registerReceiver(this.jdField_a_of_type_Adcd, paramQQAppInterface);
       return;
     }
     catch (Throwable paramQQAppInterface) {}
@@ -407,12 +407,12 @@ public class FileManagerEngine
     }
     for (;;)
     {
-      paramString2 = new actu(this, localFileManagerEntity, paramBoolean, paramString3, str1, paramString1, paramInt, str2, j, l);
+      paramString2 = new adcb(this, localFileManagerEntity, paramBoolean, paramString3, str1, paramString1, paramInt, str2, j, l);
       if (localFileManagerEntity.nFileType != 5) {
         break label455;
       }
       paramString1 = localFileManagerEntity;
-      if (FileCategoryUtil.a(localFileManagerEntity.getFilePath(), new actv(this, localFileManagerEntity, paramString2))) {
+      if (FileCategoryUtil.a(localFileManagerEntity.getFilePath(), new adcc(this, localFileManagerEntity, paramString2))) {
         break;
       }
       FileManagerUtil.FileExecutor.a().execute(paramString2);
@@ -561,7 +561,7 @@ public class FileManagerEngine
         if (NetworkUtil.d(BaseApplication.getContext())) {
           break label516;
         }
-        localObject = BaseApplicationImpl.getContext().getString(2131434613);
+        localObject = BaseApplicationImpl.getContext().getString(2131434629);
         localFileManagerEntity.status = 0;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 19, new Object[] { Integer.valueOf(9004), localObject, Long.valueOf(0L), Long.valueOf(0L), null, Long.valueOf(localFileManagerEntity.nSessionId) });
         if ((localFileManagerEntity.mContext instanceof IForwardCallBack)) {
@@ -729,7 +729,7 @@ public class FileManagerEngine
           i = j;
           if ((paramFileManagerEntity.mContext instanceof IForwardCallBack))
           {
-            localObject = BaseApplicationImpl.getContext().getString(2131434613);
+            localObject = BaseApplicationImpl.getContext().getString(2131434629);
             ((IForwardCallBack)paramFileManagerEntity.mContext).a(false, paramFileManagerEntity.strTroopFileUuid, paramFileManagerEntity.nSessionId, 9004, (String)localObject, String.valueOf(paramFileManagerEntity.peerUin), "");
             return;
           }
@@ -884,7 +884,7 @@ public class FileManagerEngine
                   continue;
                 }
                 FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString2, false);
-                paramString1 = BaseApplicationImpl.getContext().getString(2131431888);
+                paramString1 = BaseApplicationImpl.getContext().getString(2131431899);
                 this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramInt, -3009, paramString1);
                 FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i + 1);
                 return;
@@ -993,7 +993,7 @@ public class FileManagerEngine
     }
     while (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      localObject = BaseApplicationImpl.getContext().getString(2131434613);
+      localObject = BaseApplicationImpl.getContext().getString(2131434629);
       paramFileManagerEntity.status = 0;
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 19, new Object[] { Integer.valueOf(9004), localObject, Long.valueOf(0L), Long.valueOf(0L), null, Long.valueOf(paramFileManagerEntity.nSessionId) });
       if ((paramFileManagerEntity.mContext instanceof IForwardCallBack)) {
@@ -1061,6 +1061,11 @@ public class FileManagerEngine
     {
       int j = Math.abs(new Random().nextInt());
       TroopFileStatusInfo localTroopFileStatusInfo2 = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong3).a(localTroopFileStatusInfo1.jdField_e_of_type_JavaLangString, paramLong2, localTroopFileStatusInfo1.g, localTroopFileStatusInfo1.jdField_a_of_type_JavaLangString, localTroopFileStatusInfo1.b, localTroopFileStatusInfo1.jdField_e_of_type_Int, j, paramLong1);
+      if (localTroopFileStatusInfo2 == null)
+      {
+        QLog.e("FileManagerEngine<FileAssistant>", 1, "infoNew is null!!!");
+        return false;
+      }
       paramInt1 = FileManagerUtil.a(localTroopFileStatusInfo1.g);
       if (paramInt1 == 0) {
         if (FileUtil.a(localTroopFileStatusInfo1.jdField_a_of_type_JavaLangString))
@@ -1120,11 +1125,11 @@ public class FileManagerEngine
     {
       paramString = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong2);
       if (paramLong2 != 0L) {
-        break label980;
+        break label996;
       }
     }
-    label974:
-    label980:
+    label990:
+    label996:
     for (paramLong1 = localFileManagerEntity.TroopUin;; paramLong1 = paramLong2)
     {
       paramString.a(paramInt2, paramLong1, localFileManagerEntity.busId, paramLong3, paramInt1, localFileManagerEntity.fileName, localFileManagerEntity.strThumbPath, localFileManagerEntity.fileSize, localFileManagerEntity.strTroopFilePath, false, 0L, FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
@@ -1133,7 +1138,7 @@ public class FileManagerEngine
       {
         paramString = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong2);
         if (paramLong2 != 0L) {
-          break label974;
+          break label990;
         }
       }
       for (paramLong1 = localFileManagerEntity.TroopUin;; paramLong1 = paramLong2)
@@ -1471,8 +1476,8 @@ public class FileManagerEngine
   
   public void d()
   {
-    BaseApplicationImpl.sApplication.unregisterReceiver(this.jdField_a_of_type_Actw);
-    this.jdField_a_of_type_Actw = null;
+    BaseApplicationImpl.sApplication.unregisterReceiver(this.jdField_a_of_type_Adcd);
+    this.jdField_a_of_type_Adcd = null;
     FMSettings.a().b();
     FileViewMusicService.a().c();
     FileVideoManager.a();

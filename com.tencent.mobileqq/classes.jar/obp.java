@@ -1,50 +1,59 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.ProfilePresenterListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class obp
-  extends ChildViewClickListener
+  extends QQUIEventReceiver
 {
-  public obp(NewMyStorySegment paramNewMyStorySegment) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public obp(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter)
   {
-    boolean bool;
-    switch (paramView.getId())
+    super(paramMemoriesProfilePresenter);
+  }
+  
+  public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  {
+    if (TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_JavaLangString, String.valueOf(paramMemoriesProfilePresenter.hashCode())))
     {
-    default: 
-      if (NewMyStorySegment.a(this.a).a().size() <= 0) {
-        break label149;
-      }
-      paramView = this.a;
-      if (!NewMyStorySegment.a(this.a))
+      if ((paramUpdateUserInfoEvent.errorInfo.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
       {
-        bool = true;
-        NewMyStorySegment.a(paramView, bool);
-        NewMyStorySegment.a(this.a);
-        if (!NewMyStorySegment.a(this.a)) {
-          break label143;
+        SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", paramUpdateUserInfoEvent);
+        paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+        paramMemoriesProfilePresenter.jdField_a_of_type_JavaLangString = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
+        if (MemoriesProfilePresenter.a(paramMemoriesProfilePresenter) != -1) {
+          paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
         }
+        if (MemoriesProfilePresenter.b(paramMemoriesProfilePresenter) != -1) {
+          paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.shareGroupCount = MemoriesProfilePresenter.b(paramMemoriesProfilePresenter);
+        }
+        ((FriendListHandler)PlayModeUtils.a().a(1)).c(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
+        ThreadManager.post(new obq(this, paramMemoriesProfilePresenter), 5, null, false);
       }
-      break;
+      for (;;)
+      {
+        MemoriesProfilePresenter.a(paramMemoriesProfilePresenter).a(paramUpdateUserInfoEvent.errorInfo.isSuccess());
+        return;
+        QQToast.a(BaseApplicationImpl.getContext(), 1, "更新用户信息错误: " + paramUpdateUserInfoEvent.errorInfo.getErrorMessage(), 0);
+        SLog.e("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", new Object[] { paramUpdateUserInfoEvent });
+      }
     }
-    label143:
-    for (paramView = "1";; paramView = "2")
-    {
-      StoryReportor.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
-      StoryReportor.a("home_page", "exp_share_day", 0, 0, new String[0]);
-      return;
-      NewMyStorySegment.a(this.a, NewMyStorySegment.a(this.a), paramView);
-      return;
-      bool = false;
-      break;
-    }
-    label149:
-    NewMyStorySegment.a(this.a, NewMyStorySegment.a(this.a), paramView);
+    SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "ignore this update user info event: %s.", paramUpdateUserInfoEvent);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return GetUserInfoHandler.UpdateUserInfoEvent.class;
   }
 }
 

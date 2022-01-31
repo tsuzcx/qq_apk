@@ -1,45 +1,8 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.ViewTag;
 
 public class ajgk
-  extends Handler
-{
-  private WeakReference a;
-  
-  public ajgk(BeginnerGuideFragment paramBeginnerGuideFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramBeginnerGuideFragment);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    BeginnerGuideFragment localBeginnerGuideFragment = (BeginnerGuideFragment)this.a.get();
-    if (localBeginnerGuideFragment == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1110: 
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideFragment", 2, "parse config from network success");
-        }
-        break;
-      }
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String)));
-    BeginnerGuideFragment.a(localBeginnerGuideFragment, (String)paramMessage.obj, paramMessage.arg1);
-    return;
-    BeginnerGuideFragment.a(localBeginnerGuideFragment, paramMessage.what);
-  }
-}
+  extends ContactListAdapter.ViewTag
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

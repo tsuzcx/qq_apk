@@ -26,8 +26,8 @@ import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import yxm;
-import yxn;
+import zeg;
+import zeh;
 
 public class ApolloGameInfoFragment
   extends PublicBaseFragment
@@ -38,7 +38,7 @@ public class ApolloGameInfoFragment
   public BaseActivity a;
   public ApolloGameData a;
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
-  private yxn jdField_a_of_type_Yxn;
+  private zeh jdField_a_of_type_Zeh;
   private int b = 1;
   private int c = 2;
   private int d = 3;
@@ -47,20 +47,20 @@ public class ApolloGameInfoFragment
   
   public void a(View paramView, LayoutInflater paramLayoutInflater)
   {
-    paramView = (RelativeLayout)paramView.findViewById(2131364019);
+    paramView = (RelativeLayout)paramView.findViewById(2131364044);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramView.setFitsSystemWindows(true);
       paramView.setPadding(0, ImmersiveUtils.a(paramLayoutInflater.getContext()), 0, 0);
     }
-    paramLayoutInflater = (NavBarCommon)paramView.findViewById(2131363244);
-    ((TextView)paramLayoutInflater.findViewById(2131363245)).setText("返回");
-    paramLayoutInflater.setOnItemSelectListener(new yxm(this));
+    paramLayoutInflater = (NavBarCommon)paramView.findViewById(2131363261);
+    ((TextView)paramLayoutInflater.findViewById(2131363262)).setText("返回");
+    paramLayoutInflater.setOnItemSelectListener(new zeg(this));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     paramLayoutInflater = new ImageView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     paramLayoutInflater.setBackgroundColor(-7829368);
     Object localObject1 = new RelativeLayout.LayoutParams(-1, 1);
-    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131363244);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131363261);
     paramLayoutInflater.setId(this.b);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramLayoutInflater, (ViewGroup.LayoutParams)localObject1);
     paramLayoutInflater = new URLImageView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
@@ -68,11 +68,11 @@ public class ApolloGameInfoFragment
     ((RelativeLayout.LayoutParams)localObject1).topMargin = AIOUtils.a(45.0F, getResources());
     ((RelativeLayout.LayoutParams)localObject1).addRule(14);
     ((RelativeLayout.LayoutParams)localObject1).addRule(3, this.b);
-    paramLayoutInflater.setBackgroundResource(2130838559);
+    paramLayoutInflater.setBackgroundResource(2130838565);
     paramLayoutInflater.setId(this.c);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramLayoutInflater, (ViewGroup.LayoutParams)localObject1);
     localObject1 = new ImageView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    ((ImageView)localObject1).setImageResource(2130838065);
+    ((ImageView)localObject1).setImageResource(2130838066);
     Object localObject2 = new RelativeLayout.LayoutParams(AIOUtils.a(90.0F, getResources()), AIOUtils.a(90.0F, getResources()));
     ((RelativeLayout.LayoutParams)localObject2).addRule(5, this.c);
     ((RelativeLayout.LayoutParams)localObject2).addRule(6, this.c);
@@ -87,33 +87,33 @@ public class ApolloGameInfoFragment
     ((TextView)localObject1).setId(this.d);
     ((TextView)localObject1).setTextColor(-16777216);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    localObject2 = new yxn(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "游戏开发者");
+    localObject2 = new zeh(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "游戏开发者");
     Object localObject3 = new RelativeLayout.LayoutParams(-1, -2);
     ((RelativeLayout.LayoutParams)localObject3).addRule(3, this.d);
     ((RelativeLayout.LayoutParams)localObject3).topMargin = AIOUtils.a(40.0F, getResources());
-    ((yxn)localObject2).setId(this.e);
-    ((yxn)localObject2).b("玩一玩");
+    ((zeh)localObject2).setId(this.e);
+    ((zeh)localObject2).b("玩一玩");
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-    this.jdField_a_of_type_Yxn = new yxn(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "相关公众号");
+    this.jdField_a_of_type_Zeh = new zeh(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "相关公众号");
     localObject3 = new RelativeLayout.LayoutParams(-1, -2);
     ((RelativeLayout.LayoutParams)localObject3).addRule(3, this.e);
-    this.jdField_a_of_type_Yxn.setId(this.f);
+    this.jdField_a_of_type_Zeh.setId(this.f);
     ((RelativeLayout.LayoutParams)localObject3).topMargin = -1;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Yxn, (ViewGroup.LayoutParams)localObject3);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Zeh, (ViewGroup.LayoutParams)localObject3);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-1);
     localObject3 = new RelativeLayout.LayoutParams(-1, -1);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131363244);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131363261);
     paramView.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject3);
     if (this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null) {
       try
       {
         paramView = URLDrawable.URLDrawableOptions.obtain();
         localObject3 = getResources();
-        paramView.mLoadingDrawable = ((Resources)localObject3).getDrawable(2130838068);
-        paramView.mFailedDrawable = ((Resources)localObject3).getDrawable(2130838068);
+        paramView.mLoadingDrawable = ((Resources)localObject3).getDrawable(2130838069);
+        paramView.mFailedDrawable = ((Resources)localObject3).getDrawable(2130838069);
         paramLayoutInflater.setImageDrawable(URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.logoUrl, paramView));
         ((TextView)localObject1).setText(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.name);
-        ((yxn)localObject2).b(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.developerName);
+        ((zeh)localObject2).b(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.developerName);
         paramView = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(1, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin), 0, (byte)2);
         if (paramView == null)
         {
@@ -124,7 +124,7 @@ public class ApolloGameInfoFragment
         }
         if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin)) || ("0".equals(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin)))
         {
-          this.jdField_a_of_type_Yxn.setVisibility(8);
+          this.jdField_a_of_type_Zeh.setVisibility(8);
           return;
         }
       }
@@ -132,17 +132,17 @@ public class ApolloGameInfoFragment
       {
         for (;;)
         {
-          paramLayoutInflater.setImageResource(2130838068);
+          paramLayoutInflater.setImageResource(2130838069);
           QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, paramView, new Object[0]);
         }
-        this.jdField_a_of_type_Yxn.a(paramView, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin);
+        this.jdField_a_of_type_Zeh.a(paramView, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin);
         return;
       }
     }
     QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[initView] gameData is null");
   }
   
-  public boolean b()
+  public boolean needImmersive()
   {
     return true;
   }
@@ -157,7 +157,7 @@ public class ApolloGameInfoFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2130968837, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2130968841, paramViewGroup, false);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getActivity().app);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
     a(paramViewGroup, paramLayoutInflater);
@@ -166,8 +166,8 @@ public class ApolloGameInfoFragment
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString)) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin)) && (paramBitmap != null) && (this.jdField_a_of_type_Yxn != null)) {
-      this.jdField_a_of_type_Yxn.a(paramBitmap, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin);
+    if ((!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString)) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin)) && (paramBitmap != null) && (this.jdField_a_of_type_Zeh != null)) {
+      this.jdField_a_of_type_Zeh.a(paramBitmap, this.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.officialAccountUin);
     }
   }
   

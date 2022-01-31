@@ -1,22 +1,20 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class tqr
-  implements Handler.Callback
+  implements BusinessObserver
 {
-  public tqr(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public tqr(QQSettingMe paramQQSettingMe) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      return true;
-      paramMessage = new tqs(this);
-      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
+      QLog.i("SSOHttpUtils", 2, "PublicAccount RefreshStepsObserver onReceive");
+      ThreadManager.post(new tqs(this), 5, null, true);
     }
   }
 }

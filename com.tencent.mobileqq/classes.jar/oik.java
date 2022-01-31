@@ -1,17 +1,43 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.FilterTemplate;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class oik
-  implements ValueAnimator.AnimatorUpdateListener
+  implements EIPCResultCallback
 {
-  public oik(TextLayer.TextItem paramTextItem) {}
+  public oik(EditVideoArtFilter paramEditVideoArtFilter, FilterTemplate paramFilterTemplate) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.g();
+    if (paramEIPCResult.data == null) {}
+    int j;
+    Object localObject;
+    do
+    {
+      return;
+      int i = paramEIPCResult.data.getInt("param_art_filter_task_id");
+      j = paramEIPCResult.data.getInt("param_art_filter_style_id");
+      localObject = paramEIPCResult.data.getString("param_art_filter_resource_path");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "QIPCResult: resultFilterTaskId:" + i + " currentFilterTaskId:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " currentStyleId:" + EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) + " resultFilterStyleId:" + j + " resultFilterOriginImgPath:" + (String)localObject);
+      }
+    } while ((EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) != j) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d == null) || (!((String)localObject).equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d)) || (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_Boolean));
+    if (paramEIPCResult.data.getInt("param_art_filter_task_result") == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("param_art_filter_output_path");
+      localObject = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(34);
+      ((Message)localObject).obj = paramEIPCResult;
+      ((Message)localObject).arg1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterFilterTemplate.a;
+      EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage((Message)localObject);
+      return;
+    }
+    paramEIPCResult = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(37);
+    EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage(paramEIPCResult);
   }
 }
 

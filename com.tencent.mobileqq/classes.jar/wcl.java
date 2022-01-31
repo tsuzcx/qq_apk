@@ -1,14 +1,26 @@
-import android.graphics.drawable.StateListDrawable;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import mqq.observer.BusinessObserver;
 
-class wcl
-  implements Runnable
+public class wcl
+  implements BusinessObserver
 {
-  wcl(wck paramwck, StateListDrawable paramStateListDrawable) {}
+  public wcl(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Wck.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
+    if (paramBundle != null)
+    {
+      paramInt = paramBundle.getInt("update_type");
+      if (paramInt != 2) {}
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1) {}
+    this.a.a.sendEmptyMessage(2);
   }
 }
 

@@ -1,68 +1,26 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.IBaseTabViewEvent;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.statistics.storage.StorageReport;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
-class adjj
-  extends AsyncTask
+public class adjj
+  implements Runnable
 {
-  adjj(adji paramadji) {}
+  public adjj(FileBrowserActivity paramFileBrowserActivity, String paramString) {}
   
-  protected Integer a(Object... paramVarArgs)
+  public void run()
   {
-    paramVarArgs = FMDataCache.b().iterator();
-    int i = 0;
-    File localFile;
-    for (;;)
+    int i = FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity).getMeasuredWidth();
+    String str2 = (String)TextUtils.ellipsize(this.jdField_a_of_type_JavaLangString, FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity).getPaint(), i - 15, TextUtils.TruncateAt.END);
+    String str1 = str2;
+    if (str2.length() > 2)
     {
-      if (!paramVarArgs.hasNext()) {
-        break label150;
-      }
-      FileInfo localFileInfo = (FileInfo)paramVarArgs.next();
-      if (!SendBottomBar.a(this.a.a).a().a(localFileInfo.c())) {
-        try
-        {
-          localFile = new File(localFileInfo.c());
-          if (!localFile.exists()) {
-            QLog.e("delDownloadFiles<FileAssistant>", 1, "local file can scan, is not existed? file:" + localFileInfo.c());
-          }
-        }
-        catch (Exception localException)
-        {
-          QLog.e("delDownloadFiles<FileAssistant>", 1, "del file error:" + localException.toString());
-        }
+      str1 = str2;
+      if (str2.substring(str2.length() - 1).equals(FileBrowserActivity.a())) {
+        str1 = str2.substring(0, str2.length() - 1) + FileBrowserActivity.b();
       }
     }
-    for (;;)
-    {
-      break;
-      localFile.delete();
-      i += 1;
-    }
-    label150:
-    StorageReport.a().a(true);
-    return Integer.valueOf(i);
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    this.a.a.d();
-    if (paramInteger.intValue() != FMDataCache.a()) {
-      FMToastUtil.a(2131428145);
-    }
-    FMDataCache.b();
-    this.a.a.a();
-    SendBottomBar.a(this.a.a).n();
+    FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity).setText(str1);
   }
 }
 

@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aavd
-  implements Runnable
+class aavd
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public aavd(ArkLocalAppMgr paramArkLocalAppMgr, String paramString1, String paramString2, Object paramObject, ArkLocalAppMgr.IGetAppPathByNameCallback paramIGetAppPathByNameCallback) {}
+  aavd(aavc paramaavc, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback);
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364066)).setImageBitmap(paramBitmap);
+    }
   }
 }
 

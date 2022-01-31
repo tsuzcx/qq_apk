@@ -613,7 +613,7 @@ public class MttLoader
     if (i != 0)
     {
       localObject = ",encoded=1";
-      localStringBuilder.append("mttbrowser://url=").append(paramString1).append(",product=").append("TBS").append(",packagename=").append(paramContext.getPackageName()).append(",from=").append(paramString2).append(",version=").append("3.6.0.1214").append((String)localObject);
+      localStringBuilder.append("mttbrowser://url=").append(paramString1).append(",product=").append("TBS").append(",packagename=").append(paramContext.getPackageName()).append(",from=").append(paramString2).append(",version=").append("3.6.0.1236").append((String)localObject);
       return loadUrl(paramContext, localStringBuilder.toString(), paramHashMap, paramWebView);
     }
   }
@@ -745,8 +745,8 @@ public class MttLoader
     //   20: aload_0
     //   21: ldc_w 576
     //   24: invokevirtual 580	java/util/jar/JarFile:getJarEntry	(Ljava/lang/String;)Ljava/util/jar/JarEntry;
-    //   27: astore 5
-    //   29: aload 5
+    //   27: astore 6
+    //   29: aload 6
     //   31: ifnonnull +25 -> 56
     //   34: iconst_0
     //   35: ifeq +11 -> 46
@@ -764,19 +764,19 @@ public class MttLoader
     //   58: astore_3
     //   59: sipush 8192
     //   62: newarray byte
-    //   64: astore 6
+    //   64: astore 5
     //   66: aload 4
     //   68: astore_3
     //   69: aload_0
-    //   70: aload 5
+    //   70: aload 6
     //   72: invokevirtual 590	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   75: astore 4
     //   77: aload 4
     //   79: astore_3
     //   80: aload 4
-    //   82: aload 6
+    //   82: aload 5
     //   84: iconst_0
-    //   85: aload 6
+    //   85: aload 5
     //   87: arraylength
     //   88: invokevirtual 596	java/io/InputStream:read	([BII)I
     //   91: iconst_m1
@@ -787,7 +787,7 @@ public class MttLoader
     //   100: invokevirtual 597	java/io/InputStream:close	()V
     //   103: aload 4
     //   105: astore_3
-    //   106: aload 5
+    //   106: aload 6
     //   108: invokevirtual 603	java/util/jar/JarEntry:getCertificates	()[Ljava/security/cert/Certificate;
     //   111: astore 5
     //   113: aload 4
@@ -853,20 +853,20 @@ public class MttLoader
     //   222: athrow
     //   223: astore_0
     //   224: aconst_null
-    //   225: astore_0
+    //   225: astore_3
     //   226: aload 5
-    //   228: astore_3
-    //   229: aload_0
+    //   228: astore_0
+    //   229: aload_3
     //   230: ifnull +7 -> 237
-    //   233: aload_0
+    //   233: aload_3
     //   234: invokevirtual 597	java/io/InputStream:close	()V
-    //   237: aload_3
+    //   237: aload_0
     //   238: ifnull -184 -> 54
-    //   241: aload_3
+    //   241: aload_0
     //   242: invokevirtual 586	java/util/jar/JarFile:close	()V
     //   245: iconst_0
     //   246: ireturn
-    //   247: astore_0
+    //   247: astore_3
     //   248: goto -11 -> 237
     //   251: astore_3
     //   252: goto -40 -> 212
@@ -896,39 +896,33 @@ public class MttLoader
     //   301: goto -97 -> 204
     //   304: astore_3
     //   305: aconst_null
-    //   306: astore 4
-    //   308: aload_0
-    //   309: astore_3
-    //   310: aload 4
-    //   312: astore_0
-    //   313: goto -84 -> 229
-    //   316: astore_3
-    //   317: aload_0
-    //   318: astore_3
-    //   319: aload 4
-    //   321: astore_0
-    //   322: goto -93 -> 229
+    //   306: astore_3
+    //   307: goto -78 -> 229
+    //   310: astore_3
+    //   311: aload 4
+    //   313: astore_3
+    //   314: goto -85 -> 229
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	325	0	paramFile	File
+    //   0	317	0	paramFile	File
     //   119	4	1	i	int
     //   175	2	2	bool	boolean
-    //   7	235	3	localObject1	Object
-    //   251	1	3	localIOException1	java.io.IOException
-    //   259	1	3	localIOException2	java.io.IOException
-    //   263	1	3	localIOException3	java.io.IOException
-    //   267	1	3	localIOException4	java.io.IOException
-    //   295	1	3	localIOException5	java.io.IOException
+    //   7	227	3	localInputStream1	java.io.InputStream
+    //   247	1	3	localIOException1	java.io.IOException
+    //   251	1	3	localIOException2	java.io.IOException
+    //   259	1	3	localIOException3	java.io.IOException
+    //   263	1	3	localIOException4	java.io.IOException
+    //   267	1	3	localIOException5	java.io.IOException
+    //   295	1	3	localIOException6	java.io.IOException
     //   304	1	3	localThrowable1	Throwable
-    //   309	1	3	localFile1	File
-    //   316	1	3	localThrowable2	Throwable
-    //   318	1	3	localFile2	File
-    //   4	182	4	localInputStream	java.io.InputStream
-    //   200	81	4	localObject2	Object
-    //   299	1	4	localObject3	Object
-    //   306	14	4	localObject4	Object
+    //   306	1	3	localObject1	Object
+    //   310	1	3	localThrowable2	Throwable
+    //   313	1	3	localObject2	Object
+    //   4	182	4	localInputStream2	java.io.InputStream
+    //   200	81	4	localObject3	Object
+    //   299	13	4	localObject4	Object
     //   1	226	5	localObject5	Object
-    //   64	22	6	arrayOfByte	byte[]
+    //   27	80	6	localJarEntry	java.util.jar.JarEntry
     // Exception table:
     //   from	to	target	type
     //   50	54	145	java/io/IOException
@@ -957,12 +951,12 @@ public class MttLoader
     //   20	29	304	java/lang/Throwable
     //   59	66	304	java/lang/Throwable
     //   69	77	304	java/lang/Throwable
-    //   80	95	316	java/lang/Throwable
-    //   98	103	316	java/lang/Throwable
-    //   106	113	316	java/lang/Throwable
-    //   116	120	316	java/lang/Throwable
-    //   151	160	316	java/lang/Throwable
-    //   168	176	316	java/lang/Throwable
+    //   80	95	310	java/lang/Throwable
+    //   98	103	310	java/lang/Throwable
+    //   106	113	310	java/lang/Throwable
+    //   116	120	310	java/lang/Throwable
+    //   151	160	310	java/lang/Throwable
+    //   168	176	310	java/lang/Throwable
   }
   
   public static class BrowserInfo

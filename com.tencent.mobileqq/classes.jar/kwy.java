@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleSinglePic;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
 
-class kwy
-  implements View.OnClickListener
+public class kwy
+  implements Runnable
 {
-  kwy(kwx paramkwx) {}
+  public kwy(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.d();
+    this.a.a(3);
   }
 }
 

@@ -5,25 +5,43 @@ import java.io.File;
 
 public class CameraCaptureView$CaptureParam
 {
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
   protected float a;
   protected int a;
   protected String a;
   protected boolean a;
   protected int b;
   private boolean b;
-  private int c = 640;
-  private int d = 480;
-  private int e = 640;
-  private int f = 480;
-  private int g = -1;
-  private int h = -1;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
   private int i = 1;
   private int j = 2000000;
   private int k = 1;
   private int l = 1;
   
+  static
+  {
+    jdField_b_of_type_JavaLangString = "key_aio_fbo";
+    jdField_c_of_type_JavaLangString = "key_riji_h_compress_fbo";
+    jdField_d_of_type_JavaLangString = "key_riji_h_clip_fbo";
+    jdField_e_of_type_JavaLangString = "key_riji_l_compress_fbo";
+    jdField_f_of_type_JavaLangString = "key_riji_l_clip_fbo";
+  }
+  
   public CameraCaptureView$CaptureParam()
   {
+    this.jdField_c_of_type_Int = 960;
+    this.jdField_d_of_type_Int = 720;
+    this.jdField_e_of_type_Int = 960;
+    this.jdField_f_of_type_Int = 720;
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
@@ -39,7 +57,7 @@ public class CameraCaptureView$CaptureParam
   
   public void a(int paramInt)
   {
-    this.c = paramInt;
+    this.jdField_c_of_type_Int = paramInt;
   }
   
   public void a(String paramString)
@@ -54,7 +72,7 @@ public class CameraCaptureView$CaptureParam
   
   public void b(int paramInt)
   {
-    this.d = paramInt;
+    this.jdField_d_of_type_Int = paramInt;
   }
   
   public void b(boolean paramBoolean)
@@ -64,37 +82,57 @@ public class CameraCaptureView$CaptureParam
   
   public void c(int paramInt)
   {
-    this.i = paramInt;
+    this.jdField_e_of_type_Int = paramInt;
   }
   
   public void d(int paramInt)
   {
-    this.j = paramInt;
+    this.jdField_f_of_type_Int = paramInt;
   }
   
   public void e(int paramInt)
   {
-    this.k = paramInt;
+    this.g = paramInt;
   }
   
   public void f(int paramInt)
   {
-    this.l = paramInt;
+    this.h = paramInt;
   }
   
   public void g(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.i = paramInt;
   }
   
   public void h(int paramInt)
+  {
+    this.j = paramInt;
+  }
+  
+  public void i(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public void j(int paramInt)
+  {
+    this.l = paramInt;
+  }
+  
+  public void k(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void l(int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
   }
   
   public String toString()
   {
-    return "CaptureParam{wantedPreviewWidth=" + this.c + ", wantedPreviewHeight=" + this.d + ", defaultCamera=" + this.i + ", videoSizeRate=" + this.jdField_a_of_type_Float + ", videoBitRate=" + this.j + ", videoIFrameInterval=" + this.k + ", captureDir='" + this.jdField_a_of_type_JavaLangString + '\'' + ", audioCaptureEnable=" + this.jdField_b_of_type_Boolean + ", functionFlag=" + this.l + '}';
+    return "CaptureParam{wantedPreviewWidth=" + this.jdField_c_of_type_Int + ", wantedPreviewHeight=" + this.jdField_d_of_type_Int + ", defaultCamera=" + this.i + ", videoSizeRate=" + this.jdField_a_of_type_Float + ", videoBitRate=" + this.j + ", videoIFrameInterval=" + this.k + ", captureDir='" + this.jdField_a_of_type_JavaLangString + '\'' + ", audioCaptureEnable=" + this.jdField_b_of_type_Boolean + ", functionFlag=" + this.l + '}';
   }
 }
 

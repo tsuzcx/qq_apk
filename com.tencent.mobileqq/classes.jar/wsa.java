@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.adapter.AvatarPendantAdapter;
-import java.util.List;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contacts.base.CardViewController;
+import java.util.HashMap;
 
 public class wsa
-  implements Runnable
+  extends AsyncTask
 {
-  public wsa(AvatarPendantActivity paramAvatarPendantActivity, List paramList) {}
+  public wsa(CardViewController paramCardViewController, String paramString, wse paramwse) {}
   
-  public void run()
+  protected HashMap a(Void... paramVarArgs)
   {
-    if ((this.jdField_a_of_type_JavaUtilList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.b();
+    paramVarArgs = null;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      paramVarArgs = CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, this.jdField_a_of_type_JavaLangString);
     }
+    return paramVarArgs;
+  }
+  
+  protected void a(HashMap paramHashMap)
+  {
+    if (paramHashMap == null) {
+      return;
+    }
+    String str = (String)paramHashMap.get("displayedStr ");
+    paramHashMap = (String)paramHashMap.get("displayingStr ");
+    CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, str);
+    CardViewController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, paramHashMap);
+    if (this.jdField_a_of_type_Wse != null)
+    {
+      this.jdField_a_of_type_Wse.a();
+      return;
+    }
+    CardViewController.d(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController);
   }
 }
 

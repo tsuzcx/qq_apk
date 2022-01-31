@@ -1,21 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 
-public final class mwn
-  implements BusinessObserver
+public class mwn
+  implements Runnable
 {
-  public mwn(QQAppInterface paramQQAppInterface) {}
+  public mwn(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    SubscriptFeedsActivity.a(this.a, SubscriptRecommendController.b(this.a.app));
+    if (PublicAccountUtil.a(this.a.app)) {
+      SubscriptFeedsActivity.a(this.a, true);
     }
-    ThreadManager.getSubThreadHandler().postDelayed(new mwo(this, paramBoolean, paramBundle), 10L);
   }
 }
 

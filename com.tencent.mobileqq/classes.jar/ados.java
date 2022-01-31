@@ -1,30 +1,47 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
-public final class ados
-  implements Runnable
+class ados
+  implements FMSettingInterface.MoveFileCallback
 {
-  public ados(Context paramContext) {}
+  ados(ador paramador) {}
   
-  public void run()
+  public void a()
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("mqq.intent.action.QQ_FOREGROUND");
-    try
+    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adov(this));
+    FMSettings.a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings);
+    FileManagerReporter.a("0X8005BE2");
+    synchronized (BaseApplicationImpl.getContext())
     {
-      this.a.sendBroadcast(localIntent);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b = false;
       return;
     }
-    catch (Exception localException)
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adou(this));
+    FMSettings.a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings);
+    synchronized (BaseApplicationImpl.getContext())
     {
-      QLog.i("GESTUREPWDUTILS", 1, localException.toString(), localException);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b = false;
+      return;
     }
   }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adot(this, paramLong1, paramLong2));
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ados
  * JD-Core Version:    0.7.0.1
  */

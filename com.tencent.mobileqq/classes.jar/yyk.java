@@ -1,41 +1,74 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.apollo.process.data.CmGameShareDataHandler;
+import com.tencent.mobileqq.apollo.process.data.CmGameShareDataHandler.GameShareResult;
+import com.tencent.mobileqq.apollo.store.webview.ApolloClientUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import java.io.File;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class yyk
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public yyk(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3) {}
+  public yyk(CmGameShareDataHandler paramCmGameShareDataHandler) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.m();
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
+    for (;;)
     {
-      paramDialogInterface = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
-      if (!this.jdField_a_of_type_JavaLangString.equals(String.valueOf(2))) {}
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "icon_alert_clickbuy", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.b });
+      int i;
+      try
+      {
+        Object localObject = new File(ApolloConstant.n + "gameShareResult.txt");
+        if (((File)localObject).exists()) {
+          ((File)localObject).delete();
+        }
+        int j = CmGameShareDataHandler.a(this.a).size();
+        if (j == 0) {
+          return;
+        }
+        localObject = new JSONArray();
+        CmGameShareDataHandler.a(this.a).clear();
+        i = 0;
+        if (i < j)
+        {
+          CmGameShareDataHandler.GameShareResult localGameShareResult = (CmGameShareDataHandler.GameShareResult)CmGameShareDataHandler.a(this.a).get(i);
+          if (localGameShareResult != null)
+          {
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("shareTo", localGameShareResult.d);
+            localJSONObject.put("activity", localGameShareResult.b);
+            localJSONObject.put("aioType", localGameShareResult.c);
+            localJSONObject.put("gameId", localGameShareResult.jdField_a_of_type_Int);
+            localJSONObject.put("uin", localGameShareResult.jdField_a_of_type_JavaLangString);
+            localJSONObject.put("shareTS", localGameShareResult.jdField_a_of_type_Long);
+            localJSONObject.put("shareRet", localGameShareResult.e);
+            ((JSONArray)localObject).put(localJSONObject);
+            CmGameShareDataHandler.a(this.a).put(localGameShareResult.a(), Boolean.TRUE);
+          }
+        }
+        else
+        {
+          ApolloClientUtil.a(ApolloConstant.n + "gameShareResult.txt", ((JSONArray)localObject).toString());
+          QLog.d("cmgame_process.CmGameShareDataHandler", 1, "saveShareResult finish");
+          return;
+        }
       }
-      String str = new JSONObject(this.c).getString("packageId");
-      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), Integer.parseInt(this.b), Integer.parseInt(str));
-      return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      QLog.e("ApolloPanel", 1, "[showAioDialog] Exception:", paramDialogInterface);
+      catch (Exception localException)
+      {
+        QLog.e("cmgame_process.CmGameShareDataHandler", 1, "saveShareResult e:", localException);
+        return;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("cmgame_process.CmGameShareDataHandler", 1, localOutOfMemoryError, new Object[0]);
+        }
+        return;
+      }
+      i += 1;
     }
   }
 }

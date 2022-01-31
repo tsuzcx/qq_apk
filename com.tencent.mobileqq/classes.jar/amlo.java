@@ -1,56 +1,49 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.jtcode.JtcodePluginInstallActivity;
-import cooperation.plugin.IPluginManager;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.widget.WaveView;
 
 public class amlo
-  implements OnPluginInstallListener
+  implements Handler.Callback
 {
-  public amlo(JtcodePluginInstallActivity paramJtcodePluginInstallActivity) {}
+  public amlo(WaveView paramWaveView) {}
   
-  public IBinder asBinder()
+  public boolean handleMessage(Message paramMessage)
   {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("JtcodePluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
+    if (paramMessage == null) {
+      return false;
     }
-    QQToast.a(this.a.getApplicationContext(), 2131438295, 0);
-    JtcodePluginInstallActivity.a(this.a, false);
-    this.a.finish();
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    JtcodePluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("JtcodePluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
-    }
-    boolean bool = JtcodePluginInstallActivity.a(this.a).isPlugininstalled("wlx_jtcode.apk");
-    JtcodePluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
-    if (bool)
+    switch (paramMessage.what)
     {
-      JtcodePluginInstallActivity.a(this.a);
-      return;
     }
-    QQToast.a(this.a.getApplicationContext(), 2131438295, 0);
-    JtcodePluginInstallActivity.a(this.a, false);
-    this.a.finish();
+    for (;;)
+    {
+      return true;
+      this.a.invalidate();
+      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
+      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
+      if (WaveView.d(this.a) > 0) {
+        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
+      }
+      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      continue;
+      this.a.invalidate();
+      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
+      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
+      if (WaveView.d(this.a) > 0) {
+        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
+      }
+      WaveView.a(this.a).removeMessages(1002);
+      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      continue;
+      WaveView.a(this.a).removeMessages(1001);
+      WaveView.a(this.a).removeMessages(1002);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlo
  * JD-Core Version:    0.7.0.1
  */

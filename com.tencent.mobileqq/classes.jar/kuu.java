@@ -1,39 +1,32 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementStatistics;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class kuu
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+  implements Runnable
 {
-  private kuu(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kuu(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
   
-  public void onComplete(String paramString1, String paramString2)
+  public void run()
   {
-    for (;;)
+    try
     {
-      synchronized (AdvertisementVideoPreloadManager.a(this.a))
-      {
-        AdvertisementVideoPreloadManager.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
-        paramString2 = new File(AdvertisementVideoPreloadManager.b(paramString1));
-        if (paramString2.exists()) {
-          paramString2.renameTo(new File(AdvertisementVideoPreloadManager.a(paramString1)));
-        }
-        ReportController.b(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", AdvertisementVideoPreloadManager.a(this.a).mVideoVid, String.valueOf(AdvertisementVideoPreloadManager.a(this.a).mSource));
-        paramString2 = (QQAppInterface)AdvertisementVideoPreloadManager.a(this.a).get();
-        if (paramString2 != null)
-        {
-          paramString2 = paramString2.getCurrentAccountUin();
-          AdvertisementStatistics.b(paramString2, paramString1);
-          AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
-          return;
-        }
+      int i = DisplayUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, 110.0F);
+      Bitmap localBitmap = ImageUtil.a(this.jdField_a_of_type_JavaLangString, i, i);
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(ImageUtil.c(localBitmap, i, i));
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, localException.toString());
       }
-      paramString2 = "";
+      localException.printStackTrace();
     }
   }
 }

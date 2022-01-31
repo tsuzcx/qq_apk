@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
-import com.tencent.widget.Gallery;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import java.util.List;
 
-public class ajsm
-  implements Runnable
+public final class ajsm
+  implements DialogInterface.OnClickListener
 {
-  public ajsm(MediaPreviewAdapter paramMediaPreviewAdapter) {}
+  public ajsm(XMediaEditor paramXMediaEditor, List paramList) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(false, this.a.a.getSelectedItemPosition());
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
+    paramDialogInterface.dismiss();
   }
 }
 

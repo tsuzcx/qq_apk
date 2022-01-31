@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class wup
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public wup(DialogBaseActivity paramDialogBaseActivity) {}
+  public wup(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = null;
+    EmoticonGroupStoreFragment.c(this.a, EmoticonGroupStoreFragment.c(this.a));
   }
 }
 

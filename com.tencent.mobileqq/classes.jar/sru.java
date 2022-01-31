@@ -1,24 +1,15 @@
-import android.content.res.Resources;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class sru
-  implements Runnable
+  implements View.OnClickListener
 {
-  public sru(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public sru(FontSettingActivity paramFontSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.f = false;
-    if (!this.a.jdField_c_of_type_Boolean) {
-      this.a.b.setVisibility(0);
-    }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.a.getResources().getDimension(2131558775), 0.0F);
-    localTranslateAnimation.setDuration(300L);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
+    this.a.c();
   }
 }
 

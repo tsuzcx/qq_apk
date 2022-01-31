@@ -42,9 +42,9 @@ public class PKVideoSharer
     //   6: aconst_null
     //   7: astore 10
     //   9: aconst_null
-    //   10: astore 11
+    //   10: astore 12
     //   12: aconst_null
-    //   13: astore 12
+    //   13: astore 11
     //   15: new 53	android/graphics/BitmapFactory$Options
     //   18: dup
     //   19: invokespecial 54	android/graphics/BitmapFactory$Options:<init>	()V
@@ -61,7 +61,7 @@ public class PKVideoSharer
     //   42: invokestatic 70	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;ILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   45: astore_0
     //   46: aload_0
-    //   47: ifnull +1058 -> 1105
+    //   47: ifnull +1059 -> 1106
     //   50: aload_0
     //   51: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
     //   54: aload_0
@@ -143,7 +143,7 @@ public class PKVideoSharer
     //   197: aload_2
     //   198: astore 10
     //   200: aload 10
-    //   202: ifnull +134 -> 336
+    //   202: ifnull +135 -> 337
     //   205: sipush 132
     //   208: sipush 132
     //   211: getstatic 85	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
@@ -153,509 +153,509 @@ public class PKVideoSharer
     //   222: dup
     //   223: aload 14
     //   225: invokespecial 108	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   228: astore_2
-    //   229: aload_2
-    //   230: iconst_0
-    //   231: invokevirtual 112	android/graphics/Canvas:setDensity	(I)V
-    //   234: new 124	android/graphics/RectF
-    //   237: dup
-    //   238: fconst_0
-    //   239: fconst_0
-    //   240: ldc 125
+    //   228: astore 16
+    //   230: aload 16
+    //   232: iconst_0
+    //   233: invokevirtual 112	android/graphics/Canvas:setDensity	(I)V
+    //   236: new 124	android/graphics/RectF
+    //   239: dup
+    //   240: fconst_0
+    //   241: fconst_0
     //   242: ldc 125
-    //   244: invokespecial 128	android/graphics/RectF:<init>	(FFFF)V
-    //   247: astore 16
-    //   249: new 130	android/graphics/Paint
-    //   252: dup
-    //   253: invokespecial 131	android/graphics/Paint:<init>	()V
-    //   256: astore 15
-    //   258: aload 15
+    //   244: ldc 125
+    //   246: invokespecial 128	android/graphics/RectF:<init>	(FFFF)V
+    //   249: astore 15
+    //   251: new 130	android/graphics/Paint
+    //   254: dup
+    //   255: invokespecial 131	android/graphics/Paint:<init>	()V
+    //   258: astore_2
+    //   259: aload_2
     //   260: iconst_1
     //   261: invokevirtual 135	android/graphics/Paint:setAntiAlias	(Z)V
-    //   264: aload_2
-    //   265: aload 16
-    //   267: ldc 136
-    //   269: ldc 136
-    //   271: aload 15
+    //   264: aload 16
+    //   266: aload 15
+    //   268: ldc 136
+    //   270: ldc 136
+    //   272: aload_2
     //   273: invokevirtual 140	android/graphics/Canvas:drawRoundRect	(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
-    //   276: aload 15
-    //   278: new 142	android/graphics/PorterDuffXfermode
-    //   281: dup
-    //   282: getstatic 148	android/graphics/PorterDuff$Mode:SRC_IN	Landroid/graphics/PorterDuff$Mode;
-    //   285: invokespecial 151	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
-    //   288: invokevirtual 155	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
-    //   291: pop
-    //   292: aload_2
+    //   276: aload_2
+    //   277: new 142	android/graphics/PorterDuffXfermode
+    //   280: dup
+    //   281: getstatic 148	android/graphics/PorterDuff$Mode:SRC_IN	Landroid/graphics/PorterDuff$Mode;
+    //   284: invokespecial 151	android/graphics/PorterDuffXfermode:<init>	(Landroid/graphics/PorterDuff$Mode;)V
+    //   287: invokevirtual 155	android/graphics/Paint:setXfermode	(Landroid/graphics/Xfermode;)Landroid/graphics/Xfermode;
+    //   290: pop
+    //   291: aload 16
     //   293: aload 10
     //   295: aconst_null
-    //   296: aload 16
-    //   298: aload 15
-    //   300: invokevirtual 158	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
-    //   303: aload_2
+    //   296: aload 15
+    //   298: aload_2
+    //   299: invokevirtual 158	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
+    //   302: aload 16
     //   304: invokevirtual 161	android/graphics/Canvas:save	()I
     //   307: pop
-    //   308: aload_2
-    //   309: invokevirtual 164	android/graphics/Canvas:restore	()V
-    //   312: aload 13
-    //   314: aload 14
-    //   316: aconst_null
-    //   317: new 124	android/graphics/RectF
-    //   320: dup
-    //   321: ldc 165
-    //   323: ldc 166
-    //   325: ldc 167
-    //   327: ldc 168
-    //   329: invokespecial 128	android/graphics/RectF:<init>	(FFFF)V
-    //   332: aconst_null
-    //   333: invokevirtual 158	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
-    //   336: new 170	android/text/TextPaint
-    //   339: dup
-    //   340: invokespecial 171	android/text/TextPaint:<init>	()V
-    //   343: astore_2
-    //   344: aload_2
-    //   345: ldc 173
-    //   347: invokestatic 179	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   350: invokevirtual 182	android/text/TextPaint:setColor	(I)V
-    //   353: aload_2
-    //   354: ldc 183
-    //   356: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
-    //   359: aload_2
-    //   360: iconst_1
-    //   361: invokevirtual 188	android/text/TextPaint:setAntiAlias	(Z)V
-    //   364: aload_2
-    //   365: aload_3
-    //   366: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   369: fstore 7
-    //   371: sipush 190
-    //   374: i2f
-    //   375: ldc 193
-    //   377: aload_2
-    //   378: invokevirtual 197	android/text/TextPaint:ascent	()F
-    //   381: fneg
-    //   382: fadd
+    //   308: aload 16
+    //   310: invokevirtual 164	android/graphics/Canvas:restore	()V
+    //   313: aload 13
+    //   315: aload 14
+    //   317: aconst_null
+    //   318: new 124	android/graphics/RectF
+    //   321: dup
+    //   322: ldc 165
+    //   324: ldc 166
+    //   326: ldc 167
+    //   328: ldc 168
+    //   330: invokespecial 128	android/graphics/RectF:<init>	(FFFF)V
+    //   333: aconst_null
+    //   334: invokevirtual 158	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
+    //   337: new 170	android/text/TextPaint
+    //   340: dup
+    //   341: invokespecial 171	android/text/TextPaint:<init>	()V
+    //   344: astore_2
+    //   345: aload_2
+    //   346: ldc 173
+    //   348: invokestatic 179	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   351: invokevirtual 182	android/text/TextPaint:setColor	(I)V
+    //   354: aload_2
+    //   355: ldc 183
+    //   357: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
+    //   360: aload_2
+    //   361: iconst_1
+    //   362: invokevirtual 188	android/text/TextPaint:setAntiAlias	(Z)V
+    //   365: aload_2
+    //   366: aload_3
+    //   367: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   370: fstore 7
+    //   372: sipush 190
+    //   375: i2f
+    //   376: ldc 193
+    //   378: aload_2
+    //   379: invokevirtual 197	android/text/TextPaint:ascent	()F
+    //   382: fneg
     //   383: fadd
-    //   384: f2i
-    //   385: istore_1
-    //   386: aload 13
-    //   388: aload_3
-    //   389: aload_0
-    //   390: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
-    //   393: i2f
-    //   394: fload 7
-    //   396: fsub
-    //   397: fconst_2
-    //   398: fdiv
-    //   399: iload_1
-    //   400: i2f
-    //   401: aload_2
-    //   402: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-    //   405: iload_1
-    //   406: i2f
-    //   407: fstore 7
-    //   409: aload_2
-    //   410: invokevirtual 204	android/text/TextPaint:descent	()F
-    //   413: ldc 205
-    //   415: fadd
-    //   416: fload 7
-    //   418: fadd
-    //   419: f2i
-    //   420: istore_1
-    //   421: new 170	android/text/TextPaint
-    //   424: dup
-    //   425: invokespecial 171	android/text/TextPaint:<init>	()V
-    //   428: astore_2
-    //   429: aload_2
-    //   430: iconst_m1
-    //   431: invokevirtual 182	android/text/TextPaint:setColor	(I)V
-    //   434: aload_2
-    //   435: ldc 206
-    //   437: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
-    //   440: aload_2
-    //   441: iconst_1
-    //   442: invokevirtual 188	android/text/TextPaint:setAntiAlias	(Z)V
-    //   445: aload_2
-    //   446: ldc 208
-    //   448: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   451: fstore 7
-    //   453: iload_1
-    //   454: i2f
-    //   455: aload_2
-    //   456: invokevirtual 197	android/text/TextPaint:ascent	()F
-    //   459: fneg
-    //   460: fadd
-    //   461: f2i
-    //   462: istore_1
-    //   463: aload 13
-    //   465: ldc 208
-    //   467: aload_0
-    //   468: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
-    //   471: i2f
-    //   472: fload 7
-    //   474: fsub
-    //   475: fconst_2
-    //   476: fdiv
-    //   477: iload_1
-    //   478: i2f
-    //   479: aload_2
-    //   480: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-    //   483: iload_1
-    //   484: i2f
-    //   485: aload_2
-    //   486: invokevirtual 204	android/text/TextPaint:descent	()F
-    //   489: ldc 209
-    //   491: fadd
+    //   384: fadd
+    //   385: f2i
+    //   386: istore_1
+    //   387: aload 13
+    //   389: aload_3
+    //   390: aload_0
+    //   391: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
+    //   394: i2f
+    //   395: fload 7
+    //   397: fsub
+    //   398: fconst_2
+    //   399: fdiv
+    //   400: iload_1
+    //   401: i2f
+    //   402: aload_2
+    //   403: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    //   406: iload_1
+    //   407: i2f
+    //   408: fstore 7
+    //   410: aload_2
+    //   411: invokevirtual 204	android/text/TextPaint:descent	()F
+    //   414: ldc 205
+    //   416: fadd
+    //   417: fload 7
+    //   419: fadd
+    //   420: f2i
+    //   421: istore_1
+    //   422: new 170	android/text/TextPaint
+    //   425: dup
+    //   426: invokespecial 171	android/text/TextPaint:<init>	()V
+    //   429: astore_2
+    //   430: aload_2
+    //   431: iconst_m1
+    //   432: invokevirtual 182	android/text/TextPaint:setColor	(I)V
+    //   435: aload_2
+    //   436: ldc 206
+    //   438: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
+    //   441: aload_2
+    //   442: iconst_1
+    //   443: invokevirtual 188	android/text/TextPaint:setAntiAlias	(Z)V
+    //   446: aload_2
+    //   447: ldc 208
+    //   449: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   452: fstore 7
+    //   454: iload_1
+    //   455: i2f
+    //   456: aload_2
+    //   457: invokevirtual 197	android/text/TextPaint:ascent	()F
+    //   460: fneg
+    //   461: fadd
+    //   462: f2i
+    //   463: istore_1
+    //   464: aload 13
+    //   466: ldc 208
+    //   468: aload_0
+    //   469: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
+    //   472: i2f
+    //   473: fload 7
+    //   475: fsub
+    //   476: fconst_2
+    //   477: fdiv
+    //   478: iload_1
+    //   479: i2f
+    //   480: aload_2
+    //   481: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    //   484: iload_1
+    //   485: i2f
+    //   486: aload_2
+    //   487: invokevirtual 204	android/text/TextPaint:descent	()F
+    //   490: ldc 209
     //   492: fadd
-    //   493: f2i
-    //   494: istore_1
-    //   495: new 170	android/text/TextPaint
-    //   498: dup
-    //   499: invokespecial 171	android/text/TextPaint:<init>	()V
-    //   502: astore_2
-    //   503: aload_2
-    //   504: ldc 211
-    //   506: invokestatic 179	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   509: invokevirtual 182	android/text/TextPaint:setColor	(I)V
-    //   512: aload_2
-    //   513: ldc 212
-    //   515: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
-    //   518: aload_2
-    //   519: iconst_1
-    //   520: invokevirtual 188	android/text/TextPaint:setAntiAlias	(Z)V
-    //   523: aload_2
-    //   524: aload 4
-    //   526: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   529: fstore 7
-    //   531: iload_1
-    //   532: i2f
-    //   533: aload_2
-    //   534: invokevirtual 197	android/text/TextPaint:ascent	()F
-    //   537: fneg
-    //   538: ldc 213
-    //   540: fsub
-    //   541: fadd
-    //   542: f2i
-    //   543: istore_1
-    //   544: aload 13
-    //   546: aload 4
-    //   548: aload_0
-    //   549: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
-    //   552: i2f
-    //   553: fload 7
-    //   555: fsub
-    //   556: fconst_2
-    //   557: fdiv
-    //   558: iload_1
-    //   559: i2f
-    //   560: aload_2
-    //   561: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-    //   564: new 170	android/text/TextPaint
-    //   567: dup
-    //   568: invokespecial 171	android/text/TextPaint:<init>	()V
-    //   571: astore_2
-    //   572: aload_2
-    //   573: iconst_m1
-    //   574: invokevirtual 182	android/text/TextPaint:setColor	(I)V
-    //   577: aload_2
-    //   578: ldc 206
-    //   580: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
-    //   583: aload_2
-    //   584: iconst_1
-    //   585: invokevirtual 188	android/text/TextPaint:setAntiAlias	(Z)V
-    //   588: iload_1
-    //   589: bipush 58
-    //   591: iadd
-    //   592: i2f
-    //   593: aload_2
-    //   594: invokevirtual 197	android/text/TextPaint:ascent	()F
-    //   597: fneg
-    //   598: fadd
-    //   599: f2i
-    //   600: istore_1
-    //   601: aload_2
-    //   602: ldc 215
-    //   604: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   607: fstore 7
-    //   609: aload_2
-    //   610: invokevirtual 218	android/text/TextPaint:getTextSize	()F
-    //   613: fstore 9
-    //   615: aload_2
-    //   616: ldc 219
-    //   618: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
-    //   621: aload_2
-    //   622: aload 5
-    //   624: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   627: fstore 8
-    //   629: aload_2
-    //   630: fload 9
-    //   632: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
-    //   635: aload_2
-    //   636: ldc 221
-    //   638: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   641: fstore 9
-    //   643: aload_0
-    //   644: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
-    //   647: i2f
-    //   648: fload 7
-    //   650: fload 8
-    //   652: fadd
-    //   653: fload 9
-    //   655: fadd
-    //   656: fsub
-    //   657: fconst_2
-    //   658: fdiv
-    //   659: fstore 7
-    //   661: aload 13
-    //   663: ldc 215
-    //   665: fload 7
-    //   667: iload_1
-    //   668: i2f
-    //   669: aload_2
-    //   670: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-    //   673: aload_2
-    //   674: ldc 211
-    //   676: invokestatic 179	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   679: invokevirtual 182	android/text/TextPaint:setColor	(I)V
-    //   682: aload_2
-    //   683: ldc 215
-    //   685: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   688: fload 7
-    //   690: fadd
-    //   691: fstore 9
-    //   693: aload_2
-    //   694: invokevirtual 218	android/text/TextPaint:getTextSize	()F
-    //   697: fstore 8
-    //   699: aload_2
-    //   700: ldc 219
-    //   702: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
-    //   705: aload 13
-    //   707: aload 5
-    //   709: fload 9
-    //   711: iload_1
-    //   712: i2f
-    //   713: aload_2
-    //   714: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-    //   717: aload_2
-    //   718: iconst_m1
-    //   719: invokevirtual 182	android/text/TextPaint:setColor	(I)V
-    //   722: aload_2
-    //   723: aload 5
-    //   725: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
-    //   728: fstore 7
-    //   730: aload_2
-    //   731: fload 8
-    //   733: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
-    //   736: aload 13
-    //   738: ldc 221
-    //   740: fload 9
-    //   742: fload 7
-    //   744: fadd
-    //   745: iload_1
-    //   746: i2f
-    //   747: aload_2
-    //   748: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-    //   751: aload 13
-    //   753: invokevirtual 161	android/graphics/Canvas:save	()I
-    //   756: pop
-    //   757: aload 13
-    //   759: invokevirtual 164	android/graphics/Canvas:restore	()V
-    //   762: new 20	java/lang/StringBuilder
-    //   765: dup
-    //   766: invokespecial 23	java/lang/StringBuilder:<init>	()V
-    //   769: getstatic 44	com/tencent/biz/qqstory/takevideo/dancemachine/PKVideoSharer:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   772: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   775: ldc 223
-    //   777: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   780: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   783: astore_2
-    //   784: aload_2
-    //   785: invokestatic 228	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
-    //   788: ifeq +8 -> 796
-    //   791: aload_2
-    //   792: invokestatic 231	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;)Z
-    //   795: pop
-    //   796: new 233	java/io/FileOutputStream
-    //   799: dup
-    //   800: aload_2
-    //   801: invokestatic 236	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/io/File;
-    //   804: invokespecial 239	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   807: astore 5
-    //   809: aload 6
-    //   811: getstatic 245	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   814: bipush 80
-    //   816: aload 5
-    //   818: invokevirtual 249	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   821: pop
-    //   822: aload 5
-    //   824: ifnull +8 -> 832
-    //   827: aload 5
-    //   829: invokevirtual 252	java/io/FileOutputStream:close	()V
-    //   832: aload 5
-    //   834: ifnull +7 -> 841
-    //   837: aload_0
-    //   838: invokevirtual 95	android/graphics/Bitmap:recycle	()V
-    //   841: aload 5
-    //   843: ifnull +8 -> 851
-    //   846: aload 6
-    //   848: invokevirtual 95	android/graphics/Bitmap:recycle	()V
-    //   851: aload_2
-    //   852: astore_0
-    //   853: aload 10
-    //   855: ifnull -739 -> 116
-    //   858: aload 10
-    //   860: invokevirtual 95	android/graphics/Bitmap:recycle	()V
-    //   863: aload_2
-    //   864: areturn
-    //   865: astore_0
-    //   866: aload_0
-    //   867: invokevirtual 103	java/lang/Exception:printStackTrace	()V
-    //   870: aload_2
-    //   871: areturn
-    //   872: astore_2
-    //   873: aload 14
-    //   875: astore_0
-    //   876: aload 13
-    //   878: astore_3
-    //   879: aload 10
-    //   881: astore 4
-    //   883: aload 12
-    //   885: astore 5
-    //   887: aload_2
-    //   888: invokevirtual 103	java/lang/Exception:printStackTrace	()V
-    //   891: aload 5
-    //   893: ifnull +8 -> 901
-    //   896: aload 5
-    //   898: invokevirtual 252	java/io/FileOutputStream:close	()V
-    //   901: aload 5
-    //   903: ifnull +7 -> 910
-    //   906: aload_0
-    //   907: invokevirtual 95	android/graphics/Bitmap:recycle	()V
-    //   910: aload 5
-    //   912: ifnull +7 -> 919
-    //   915: aload_3
-    //   916: invokevirtual 95	android/graphics/Bitmap:recycle	()V
-    //   919: aload 4
-    //   921: ifnull +8 -> 929
-    //   924: aload 4
-    //   926: invokevirtual 95	android/graphics/Bitmap:recycle	()V
-    //   929: aconst_null
-    //   930: areturn
-    //   931: astore_0
-    //   932: aload_0
-    //   933: invokevirtual 103	java/lang/Exception:printStackTrace	()V
-    //   936: goto -7 -> 929
-    //   939: astore_2
-    //   940: aconst_null
-    //   941: astore_0
-    //   942: aconst_null
-    //   943: astore 6
-    //   945: aconst_null
-    //   946: astore_3
-    //   947: aload 11
-    //   949: astore 5
-    //   951: aload 5
-    //   953: ifnull +8 -> 961
-    //   956: aload 5
-    //   958: invokevirtual 252	java/io/FileOutputStream:close	()V
-    //   961: aload 5
-    //   963: ifnull +7 -> 970
-    //   966: aload_0
-    //   967: invokevirtual 95	android/graphics/Bitmap:recycle	()V
-    //   970: aload 5
-    //   972: ifnull +8 -> 980
-    //   975: aload 6
-    //   977: invokevirtual 95	android/graphics/Bitmap:recycle	()V
-    //   980: aload_3
-    //   981: ifnull +7 -> 988
-    //   984: aload_3
-    //   985: invokevirtual 95	android/graphics/Bitmap:recycle	()V
-    //   988: aload_2
-    //   989: athrow
-    //   990: astore_0
-    //   991: aload_0
-    //   992: invokevirtual 103	java/lang/Exception:printStackTrace	()V
-    //   995: goto -7 -> 988
-    //   998: astore_2
-    //   999: aconst_null
-    //   1000: astore 6
-    //   1002: aconst_null
-    //   1003: astore_3
-    //   1004: aload 11
-    //   1006: astore 5
-    //   1008: goto -57 -> 951
-    //   1011: astore_2
-    //   1012: aconst_null
-    //   1013: astore_3
-    //   1014: aload 11
-    //   1016: astore 5
-    //   1018: goto -67 -> 951
-    //   1021: astore_2
-    //   1022: aload 11
-    //   1024: astore 5
-    //   1026: aload 10
-    //   1028: astore_3
-    //   1029: goto -78 -> 951
-    //   1032: astore_2
-    //   1033: aload 10
-    //   1035: astore_3
-    //   1036: goto -85 -> 951
-    //   1039: astore_2
-    //   1040: aload_3
-    //   1041: astore 6
-    //   1043: aload 4
-    //   1045: astore_3
-    //   1046: goto -95 -> 951
-    //   1049: astore_2
-    //   1050: aload 12
-    //   1052: astore 5
-    //   1054: aload 10
-    //   1056: astore 4
-    //   1058: aload 13
-    //   1060: astore_3
-    //   1061: goto -174 -> 887
-    //   1064: astore_2
-    //   1065: aload 6
-    //   1067: astore_3
-    //   1068: aload 12
-    //   1070: astore 5
-    //   1072: aload 10
-    //   1074: astore 4
-    //   1076: goto -189 -> 887
-    //   1079: astore_2
-    //   1080: aload 10
-    //   1082: astore 4
-    //   1084: aload 6
-    //   1086: astore_3
-    //   1087: aload 12
-    //   1089: astore 5
-    //   1091: goto -204 -> 887
-    //   1094: astore_2
-    //   1095: aload 10
-    //   1097: astore 4
-    //   1099: aload 6
-    //   1101: astore_3
-    //   1102: goto -215 -> 887
-    //   1105: aconst_null
-    //   1106: astore 6
-    //   1108: goto -1042 -> 66
+    //   493: fadd
+    //   494: f2i
+    //   495: istore_1
+    //   496: new 170	android/text/TextPaint
+    //   499: dup
+    //   500: invokespecial 171	android/text/TextPaint:<init>	()V
+    //   503: astore_2
+    //   504: aload_2
+    //   505: ldc 211
+    //   507: invokestatic 179	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   510: invokevirtual 182	android/text/TextPaint:setColor	(I)V
+    //   513: aload_2
+    //   514: ldc 212
+    //   516: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
+    //   519: aload_2
+    //   520: iconst_1
+    //   521: invokevirtual 188	android/text/TextPaint:setAntiAlias	(Z)V
+    //   524: aload_2
+    //   525: aload 4
+    //   527: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   530: fstore 7
+    //   532: iload_1
+    //   533: i2f
+    //   534: aload_2
+    //   535: invokevirtual 197	android/text/TextPaint:ascent	()F
+    //   538: fneg
+    //   539: ldc 213
+    //   541: fsub
+    //   542: fadd
+    //   543: f2i
+    //   544: istore_1
+    //   545: aload 13
+    //   547: aload 4
+    //   549: aload_0
+    //   550: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
+    //   553: i2f
+    //   554: fload 7
+    //   556: fsub
+    //   557: fconst_2
+    //   558: fdiv
+    //   559: iload_1
+    //   560: i2f
+    //   561: aload_2
+    //   562: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    //   565: new 170	android/text/TextPaint
+    //   568: dup
+    //   569: invokespecial 171	android/text/TextPaint:<init>	()V
+    //   572: astore_2
+    //   573: aload_2
+    //   574: iconst_m1
+    //   575: invokevirtual 182	android/text/TextPaint:setColor	(I)V
+    //   578: aload_2
+    //   579: ldc 206
+    //   581: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
+    //   584: aload_2
+    //   585: iconst_1
+    //   586: invokevirtual 188	android/text/TextPaint:setAntiAlias	(Z)V
+    //   589: iload_1
+    //   590: bipush 58
+    //   592: iadd
+    //   593: i2f
+    //   594: aload_2
+    //   595: invokevirtual 197	android/text/TextPaint:ascent	()F
+    //   598: fneg
+    //   599: fadd
+    //   600: f2i
+    //   601: istore_1
+    //   602: aload_2
+    //   603: ldc 215
+    //   605: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   608: fstore 7
+    //   610: aload_2
+    //   611: invokevirtual 218	android/text/TextPaint:getTextSize	()F
+    //   614: fstore 9
+    //   616: aload_2
+    //   617: ldc 219
+    //   619: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
+    //   622: aload_2
+    //   623: aload 5
+    //   625: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   628: fstore 8
+    //   630: aload_2
+    //   631: fload 9
+    //   633: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
+    //   636: aload_2
+    //   637: ldc 221
+    //   639: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   642: fstore 9
+    //   644: aload_0
+    //   645: invokevirtual 76	android/graphics/Bitmap:getWidth	()I
+    //   648: i2f
+    //   649: fload 7
+    //   651: fload 8
+    //   653: fadd
+    //   654: fload 9
+    //   656: fadd
+    //   657: fsub
+    //   658: fconst_2
+    //   659: fdiv
+    //   660: fstore 7
+    //   662: aload 13
+    //   664: ldc 215
+    //   666: fload 7
+    //   668: iload_1
+    //   669: i2f
+    //   670: aload_2
+    //   671: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    //   674: aload_2
+    //   675: ldc 211
+    //   677: invokestatic 179	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   680: invokevirtual 182	android/text/TextPaint:setColor	(I)V
+    //   683: aload_2
+    //   684: ldc 215
+    //   686: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   689: fload 7
+    //   691: fadd
+    //   692: fstore 9
+    //   694: aload_2
+    //   695: invokevirtual 218	android/text/TextPaint:getTextSize	()F
+    //   698: fstore 8
+    //   700: aload_2
+    //   701: ldc 219
+    //   703: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
+    //   706: aload 13
+    //   708: aload 5
+    //   710: fload 9
+    //   712: iload_1
+    //   713: i2f
+    //   714: aload_2
+    //   715: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    //   718: aload_2
+    //   719: iconst_m1
+    //   720: invokevirtual 182	android/text/TextPaint:setColor	(I)V
+    //   723: aload_2
+    //   724: aload 5
+    //   726: invokevirtual 192	android/text/TextPaint:measureText	(Ljava/lang/String;)F
+    //   729: fstore 7
+    //   731: aload_2
+    //   732: fload 8
+    //   734: invokevirtual 187	android/text/TextPaint:setTextSize	(F)V
+    //   737: aload 13
+    //   739: ldc 221
+    //   741: fload 9
+    //   743: fload 7
+    //   745: fadd
+    //   746: iload_1
+    //   747: i2f
+    //   748: aload_2
+    //   749: invokevirtual 201	android/graphics/Canvas:drawText	(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    //   752: aload 13
+    //   754: invokevirtual 161	android/graphics/Canvas:save	()I
+    //   757: pop
+    //   758: aload 13
+    //   760: invokevirtual 164	android/graphics/Canvas:restore	()V
+    //   763: new 20	java/lang/StringBuilder
+    //   766: dup
+    //   767: invokespecial 23	java/lang/StringBuilder:<init>	()V
+    //   770: getstatic 44	com/tencent/biz/qqstory/takevideo/dancemachine/PKVideoSharer:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   773: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   776: ldc 223
+    //   778: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   781: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   784: astore_2
+    //   785: aload_2
+    //   786: invokestatic 228	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
+    //   789: ifeq +8 -> 797
+    //   792: aload_2
+    //   793: invokestatic 231	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;)Z
+    //   796: pop
+    //   797: new 233	java/io/FileOutputStream
+    //   800: dup
+    //   801: aload_2
+    //   802: invokestatic 236	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/io/File;
+    //   805: invokespecial 239	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   808: astore 5
+    //   810: aload 6
+    //   812: getstatic 245	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   815: bipush 80
+    //   817: aload 5
+    //   819: invokevirtual 249	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   822: pop
+    //   823: aload 5
+    //   825: ifnull +8 -> 833
+    //   828: aload 5
+    //   830: invokevirtual 252	java/io/FileOutputStream:close	()V
+    //   833: aload 5
+    //   835: ifnull +7 -> 842
+    //   838: aload_0
+    //   839: invokevirtual 95	android/graphics/Bitmap:recycle	()V
+    //   842: aload 5
+    //   844: ifnull +8 -> 852
+    //   847: aload 6
+    //   849: invokevirtual 95	android/graphics/Bitmap:recycle	()V
+    //   852: aload_2
+    //   853: astore_0
+    //   854: aload 10
+    //   856: ifnull -740 -> 116
+    //   859: aload 10
+    //   861: invokevirtual 95	android/graphics/Bitmap:recycle	()V
+    //   864: aload_2
+    //   865: areturn
+    //   866: astore_0
+    //   867: aload_0
+    //   868: invokevirtual 103	java/lang/Exception:printStackTrace	()V
+    //   871: aload_2
+    //   872: areturn
+    //   873: astore_2
+    //   874: aload 14
+    //   876: astore_0
+    //   877: aload 13
+    //   879: astore_3
+    //   880: aload 10
+    //   882: astore 4
+    //   884: aload 11
+    //   886: astore 5
+    //   888: aload_2
+    //   889: invokevirtual 103	java/lang/Exception:printStackTrace	()V
+    //   892: aload 5
+    //   894: ifnull +8 -> 902
+    //   897: aload 5
+    //   899: invokevirtual 252	java/io/FileOutputStream:close	()V
+    //   902: aload 5
+    //   904: ifnull +7 -> 911
+    //   907: aload_0
+    //   908: invokevirtual 95	android/graphics/Bitmap:recycle	()V
+    //   911: aload 5
+    //   913: ifnull +7 -> 920
+    //   916: aload_3
+    //   917: invokevirtual 95	android/graphics/Bitmap:recycle	()V
+    //   920: aload 4
+    //   922: ifnull +8 -> 930
+    //   925: aload 4
+    //   927: invokevirtual 95	android/graphics/Bitmap:recycle	()V
+    //   930: aconst_null
+    //   931: areturn
+    //   932: astore_0
+    //   933: aload_0
+    //   934: invokevirtual 103	java/lang/Exception:printStackTrace	()V
+    //   937: goto -7 -> 930
+    //   940: astore_2
+    //   941: aconst_null
+    //   942: astore_0
+    //   943: aconst_null
+    //   944: astore 6
+    //   946: aconst_null
+    //   947: astore_3
+    //   948: aload 12
+    //   950: astore 5
+    //   952: aload 5
+    //   954: ifnull +8 -> 962
+    //   957: aload 5
+    //   959: invokevirtual 252	java/io/FileOutputStream:close	()V
+    //   962: aload 5
+    //   964: ifnull +7 -> 971
+    //   967: aload_0
+    //   968: invokevirtual 95	android/graphics/Bitmap:recycle	()V
+    //   971: aload 5
+    //   973: ifnull +8 -> 981
+    //   976: aload 6
+    //   978: invokevirtual 95	android/graphics/Bitmap:recycle	()V
+    //   981: aload_3
+    //   982: ifnull +7 -> 989
+    //   985: aload_3
+    //   986: invokevirtual 95	android/graphics/Bitmap:recycle	()V
+    //   989: aload_2
+    //   990: athrow
+    //   991: astore_0
+    //   992: aload_0
+    //   993: invokevirtual 103	java/lang/Exception:printStackTrace	()V
+    //   996: goto -7 -> 989
+    //   999: astore_2
+    //   1000: aconst_null
+    //   1001: astore 6
+    //   1003: aconst_null
+    //   1004: astore_3
+    //   1005: aload 12
+    //   1007: astore 5
+    //   1009: goto -57 -> 952
+    //   1012: astore_2
+    //   1013: aconst_null
+    //   1014: astore_3
+    //   1015: aload 12
+    //   1017: astore 5
+    //   1019: goto -67 -> 952
+    //   1022: astore_2
+    //   1023: aload 12
+    //   1025: astore 5
+    //   1027: aload 10
+    //   1029: astore_3
+    //   1030: goto -78 -> 952
+    //   1033: astore_2
+    //   1034: aload 10
+    //   1036: astore_3
+    //   1037: goto -85 -> 952
+    //   1040: astore_2
+    //   1041: aload_3
+    //   1042: astore 6
+    //   1044: aload 4
+    //   1046: astore_3
+    //   1047: goto -95 -> 952
+    //   1050: astore_2
+    //   1051: aload 11
+    //   1053: astore 5
+    //   1055: aload 10
+    //   1057: astore 4
+    //   1059: aload 13
+    //   1061: astore_3
+    //   1062: goto -174 -> 888
+    //   1065: astore_2
+    //   1066: aload 6
+    //   1068: astore_3
+    //   1069: aload 11
+    //   1071: astore 5
+    //   1073: aload 10
+    //   1075: astore 4
+    //   1077: goto -189 -> 888
+    //   1080: astore_2
+    //   1081: aload 10
+    //   1083: astore 4
+    //   1085: aload 6
+    //   1087: astore_3
+    //   1088: aload 11
+    //   1090: astore 5
+    //   1092: goto -204 -> 888
+    //   1095: astore_2
+    //   1096: aload 10
+    //   1098: astore 4
+    //   1100: aload 6
+    //   1102: astore_3
+    //   1103: goto -215 -> 888
+    //   1106: aconst_null
+    //   1107: astore 6
+    //   1109: goto -1043 -> 66
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1111	0	paramString1	String
-    //   0	1111	1	paramInt	int
-    //   0	1111	2	paramString2	String
-    //   0	1111	3	paramString3	String
-    //   0	1111	4	paramString4	String
-    //   0	1111	5	paramString5	String
-    //   0	1111	6	paramContext	android.content.Context
-    //   369	374	7	f1	float
-    //   627	105	8	f2	float
-    //   613	128	9	f3	float
-    //   7	1089	10	str	String
-    //   10	1013	11	localObject1	Object
-    //   13	1075	12	localObject2	Object
-    //   4	1055	13	localCanvas	android.graphics.Canvas
-    //   1	873	14	localObject3	Object
-    //   22	277	15	localObject4	Object
-    //   247	50	16	localRectF	android.graphics.RectF
+    //   0	1112	0	paramString1	String
+    //   0	1112	1	paramInt	int
+    //   0	1112	2	paramString2	String
+    //   0	1112	3	paramString3	String
+    //   0	1112	4	paramString4	String
+    //   0	1112	5	paramString5	String
+    //   0	1112	6	paramContext	android.content.Context
+    //   370	374	7	f1	float
+    //   628	105	8	f2	float
+    //   614	128	9	f3	float
+    //   7	1090	10	str	String
+    //   13	1076	11	localObject1	Object
+    //   10	1014	12	localObject2	Object
+    //   4	1056	13	localCanvas1	android.graphics.Canvas
+    //   1	874	14	localObject3	Object
+    //   22	275	15	localObject4	Object
+    //   228	81	16	localCanvas2	android.graphics.Canvas
     // Exception table:
     //   from	to	target	type
     //   34	46	128	java/lang/OutOfMemoryError
@@ -664,41 +664,41 @@ public class PKVideoSharer
     //   89	93	138	java/lang/Exception
     //   97	102	138	java/lang/Exception
     //   108	116	138	java/lang/Exception
-    //   827	832	865	java/lang/Exception
-    //   837	841	865	java/lang/Exception
-    //   846	851	865	java/lang/Exception
-    //   858	863	865	java/lang/Exception
-    //   15	30	872	java/lang/Exception
-    //   34	46	872	java/lang/Exception
-    //   118	125	872	java/lang/Exception
-    //   129	133	872	java/lang/Exception
-    //   896	901	931	java/lang/Exception
-    //   906	910	931	java/lang/Exception
-    //   915	919	931	java/lang/Exception
-    //   924	929	931	java/lang/Exception
-    //   15	30	939	finally
-    //   34	46	939	finally
-    //   118	125	939	finally
-    //   129	133	939	finally
-    //   956	961	990	java/lang/Exception
-    //   966	970	990	java/lang/Exception
-    //   975	980	990	java/lang/Exception
-    //   984	988	990	java/lang/Exception
-    //   50	66	998	finally
-    //   145	197	1011	finally
-    //   205	336	1021	finally
-    //   336	405	1021	finally
-    //   409	796	1021	finally
-    //   796	809	1021	finally
-    //   809	822	1032	finally
-    //   887	891	1039	finally
-    //   50	66	1049	java/lang/Exception
-    //   145	197	1064	java/lang/Exception
-    //   205	336	1079	java/lang/Exception
-    //   336	405	1079	java/lang/Exception
-    //   409	796	1079	java/lang/Exception
-    //   796	809	1079	java/lang/Exception
-    //   809	822	1094	java/lang/Exception
+    //   828	833	866	java/lang/Exception
+    //   838	842	866	java/lang/Exception
+    //   847	852	866	java/lang/Exception
+    //   859	864	866	java/lang/Exception
+    //   15	30	873	java/lang/Exception
+    //   34	46	873	java/lang/Exception
+    //   118	125	873	java/lang/Exception
+    //   129	133	873	java/lang/Exception
+    //   897	902	932	java/lang/Exception
+    //   907	911	932	java/lang/Exception
+    //   916	920	932	java/lang/Exception
+    //   925	930	932	java/lang/Exception
+    //   15	30	940	finally
+    //   34	46	940	finally
+    //   118	125	940	finally
+    //   129	133	940	finally
+    //   957	962	991	java/lang/Exception
+    //   967	971	991	java/lang/Exception
+    //   976	981	991	java/lang/Exception
+    //   985	989	991	java/lang/Exception
+    //   50	66	999	finally
+    //   145	197	1012	finally
+    //   205	337	1022	finally
+    //   337	406	1022	finally
+    //   410	797	1022	finally
+    //   797	810	1022	finally
+    //   810	823	1033	finally
+    //   888	892	1040	finally
+    //   50	66	1050	java/lang/Exception
+    //   145	197	1065	java/lang/Exception
+    //   205	337	1080	java/lang/Exception
+    //   337	406	1080	java/lang/Exception
+    //   410	797	1080	java/lang/Exception
+    //   797	810	1080	java/lang/Exception
+    //   810	823	1095	java/lang/Exception
   }
   
   protected String a(int paramInt1, String paramString1, String paramString2, int paramInt2)

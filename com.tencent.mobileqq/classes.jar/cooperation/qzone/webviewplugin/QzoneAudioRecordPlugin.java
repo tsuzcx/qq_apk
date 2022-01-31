@@ -1,11 +1,11 @@
 package cooperation.qzone.webviewplugin;
 
-import ancd;
-import ance;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import ankd;
+import anke;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -28,7 +28,7 @@ public class QzoneAudioRecordPlugin
   extends QzoneInternalWebViewPlugin
   implements WebEventListener
 {
-  private final QzoneAudioRecordPlugin.SimpleAACRecorder.RecorderListener jdField_a_of_type_CooperationQzoneWebviewpluginQzoneAudioRecordPlugin$SimpleAACRecorder$RecorderListener = new ancd(this);
+  private final QzoneAudioRecordPlugin.SimpleAACRecorder.RecorderListener jdField_a_of_type_CooperationQzoneWebviewpluginQzoneAudioRecordPlugin$SimpleAACRecorder$RecorderListener = new ankd(this);
   private QzoneAudioRecordPlugin.SimpleAACRecorder jdField_a_of_type_CooperationQzoneWebviewpluginQzoneAudioRecordPlugin$SimpleAACRecorder;
   private QzoneSoundPlayerHelper jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlayerHelper;
   private String jdField_a_of_type_JavaLangString;
@@ -76,7 +76,7 @@ public class QzoneAudioRecordPlugin
     if (this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlayerHelper == null)
     {
       this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlayerHelper = new QzoneSoundPlayerHelper();
-      this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlayerHelper.a(new ance(this));
+      this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlayerHelper.a(new anke(this));
     }
     return this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlayerHelper;
   }

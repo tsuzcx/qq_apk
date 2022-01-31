@@ -21,10 +21,10 @@ public class NetSearchTemplateSubItemView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.d.findViewById(2131366328));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131366348));
-    this.b = ((TextView)this.d.findViewById(2131366349));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.d.findViewById(2131366347));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.d.findViewById(2131366333));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131366353));
+    this.b = ((TextView)this.d.findViewById(2131366354));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.d.findViewById(2131366352));
   }
 }
 

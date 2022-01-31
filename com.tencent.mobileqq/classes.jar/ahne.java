@@ -1,15 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.conn.ConnManager;
-import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahne
   implements Runnable
 {
-  public ahne(ConnManager paramConnManager, long paramLong) {}
+  public ahne(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, String paramString) {}
   
   public void run()
   {
-    ((PeakAudioTransHandler)ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).getBusinessHandler(0)).b(this.jdField_a_of_type_Long);
+    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite).setText(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

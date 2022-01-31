@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
-class mgi
-  implements Runnable
+public class mgi
+  implements View.OnClickListener
 {
-  mgi(mgh parammgh) {}
+  public mgi(VideoFeedsListView paramVideoFeedsListView) {}
   
-  public void run()
-  {
-    VideoVolumeControl.d(this.a.a, false);
-  }
+  public void onClick(View paramView) {}
 }
 
 

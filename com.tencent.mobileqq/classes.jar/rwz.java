@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rwz
-  implements DialogInterface.OnClickListener
+public class rwz
+  implements Runnable
 {
-  public rwz(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public rwz(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a != null) {
-      this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie", 2, "checkPESourceDowned onShow First");
     }
-    paramDialogInterface.dismiss();
+    PokeItemHelper.c();
   }
 }
 

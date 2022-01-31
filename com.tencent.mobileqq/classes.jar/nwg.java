@@ -1,36 +1,118 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.model.item.HotTopicInfoItem;
-import com.tencent.biz.qqstory.storyHome.discover.view.QQStoryDiscoverFragment;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
 
-public class nwg
-  implements View.OnClickListener
+class nwg
+  extends Drawable
 {
-  public nwg(StoryDiscoverActivity paramStoryDiscoverActivity) {}
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private String jdField_a_of_type_JavaLangString = "story.icon.ShareGroupIconDrawable";
+  private nwb jdField_a_of_type_Nwb;
+  private nwd jdField_a_of_type_Nwd = new nwh(this);
+  private Drawable b;
   
-  public void onClick(View paramView)
+  nwg(@NonNull nwb paramnwb, @NonNull Drawable paramDrawable)
   {
-    if (StoryDiscoverActivity.a(this.a) > 0L)
-    {
-      if (StoryDiscoverActivity.a(this.a).a() == null) {
-        break label96;
-      }
-      paramView = String.valueOf(StoryDiscoverActivity.a(this.a).a().mTopicId);
-      if (StoryDiscoverActivity.a(this.a).a() == null) {
-        break label102;
-      }
+    this.jdField_a_of_type_Nwb = paramnwb;
+    this.jdField_a_of_type_Nwb.a(this.jdField_a_of_type_Nwd);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.b = paramDrawable;
+    paramnwb = this.jdField_a_of_type_Nwb.a();
+    if (paramnwb != null) {
+      a(paramnwb);
     }
-    label96:
-    label102:
-    for (String str = StoryDiscoverActivity.a(this.a).a().mSubjectName;; str = "")
+  }
+  
+  private void a(@NonNull Drawable paramDrawable)
+  {
+    IconLog.a(this.jdField_a_of_type_JavaLangString, "updateCurrentDrawable view:%s drawable: %s", getCallback(), paramDrawable);
+    if (paramDrawable != this.b)
     {
-      StoryReportor.a("content_flow", "clk_share", 0, 0, new String[] { paramView, "", str });
-      return;
-      paramView = "";
-      break;
+      paramDrawable.setBounds(getBounds());
+      paramDrawable.setVisible(isVisible(), true);
+      paramDrawable.setState(getState());
+      paramDrawable.setLevel(getLevel());
+      paramDrawable.setCallback(getCallback());
+      if (Build.VERSION.SDK_INT >= 19) {
+        paramDrawable.setAlpha(getAlpha());
+      }
+      Drawable localDrawable = this.b;
+      this.b = paramDrawable;
+      if (localDrawable != null) {
+        localDrawable.setCallback(null);
+      }
+      invalidateSelf();
     }
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas)
+  {
+    this.b.draw(paramCanvas);
+    this.jdField_a_of_type_Nwb.b();
+  }
+  
+  public int getOpacity()
+  {
+    return this.b.getOpacity();
+  }
+  
+  public boolean getPadding(@NonNull Rect paramRect)
+  {
+    return this.b.getPadding(paramRect);
+  }
+  
+  @NonNull
+  public Drawable mutate()
+  {
+    this.b.mutate();
+    return super.mutate();
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    super.onBoundsChange(paramRect);
+    this.b.setBounds(paramRect);
+  }
+  
+  protected boolean onLevelChange(int paramInt)
+  {
+    this.b.setLevel(paramInt);
+    return true;
+  }
+  
+  protected boolean onStateChange(int[] paramArrayOfInt)
+  {
+    this.b.setState(paramArrayOfInt);
+    return true;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.b.setAlpha(paramInt);
+  }
+  
+  public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
+  {
+    super.setColorFilter(paramInt, paramMode);
+    this.b.setColorFilter(paramInt, paramMode);
+  }
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
+  {
+    this.b.setColorFilter(paramColorFilter);
+  }
+  
+  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
+    this.b.setVisible(paramBoolean1, paramBoolean2);
+    return bool;
   }
 }
 

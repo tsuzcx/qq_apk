@@ -1,22 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.os.MqqHandler;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class xjv
-  implements View.OnClickListener
+  implements PreloadImgManager.OnSingleDownloadCallback
 {
-  private final int jdField_a_of_type_Int;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public xjv(ThemeHbFragment paramThemeHbFragment) {}
   
-  public xjv(int paramInt, MqqHandler paramMqqHandler)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    ThemeHbFragment.a(this.a, null);
   }
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+    }
+    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
+      ThemeHbFragment.a(this.a).post(new xjw(this, paramObject));
+    }
   }
 }
 

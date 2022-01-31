@@ -1,28 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class rqc
-  implements ActionSheet.OnButtonClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rqc(BaseChatPie paramBaseChatPie, List paramList, ActionSheet paramActionSheet) {}
+  public rqc(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
+    if (AppSetting.b) {
+      this.a.b.setContentDescription("加入寻找丢失儿童项目");
     }
-    for (;;)
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
+      SettingCloneUtil.writeValueForInt(BaseApplication.getContext(), this.a.app.getCurrentAccountUin(), null, "qqsetting_antilost_key", i);
+      AssistantSettingActivity.a(this.a, paramBoolean);
       return;
-      BaseChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_JavaUtilList);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_JavaUtilList, 0);
     }
   }
 }

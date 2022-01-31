@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qqdataline.DatalineBridgeActivity;
 
 public class amvu
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public amvu(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public amvu(DatalineBridgeActivity paramDatalineBridgeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.getPlayMode();
+    this.a.a();
   }
 }
 

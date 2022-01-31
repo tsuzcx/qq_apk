@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
-public final class adas
-  implements Parcelable.Creator
+class adas
+  implements Runnable
 {
-  public OfflineFileInfo a(Parcel paramParcel)
-  {
-    return new OfflineFileInfo(paramParcel);
-  }
+  adas(adap paramadap) {}
   
-  public OfflineFileInfo[] a(int paramInt)
+  public void run()
   {
-    return new OfflineFileInfo[paramInt];
+    this.a.a.e();
   }
 }
 

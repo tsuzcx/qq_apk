@@ -1,61 +1,94 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils.ProxyConfig;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ajxz
-  extends AbsWebView
+  implements Runnable
 {
-  public ajxz(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
-  {
-    super(paramContext, paramActivity, paramAppInterface);
-    super.y();
-    this.a = new TouchWebView(this.e);
-    b(paramAppInterface);
-  }
+  public ajxz(TroopRobotManager paramTroopRobotManager, oidb_0x496.Robot paramRobot) {}
   
-  public void a()
+  public void run()
   {
-    super.u();
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    super.b(paramIntent);
-  }
-  
-  public void a(String paramString)
-  {
-    if (SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_Boolean)
+    Object localObject3 = null;
+    Object localObject1 = null;
+    for (;;)
     {
-      SwiftWebViewUtils.a(this.a, SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_JavaLangString);
-      SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_Boolean = false;
+      try
+      {
+        localFileOutputStream = BaseApplication.getContext().openFileOutput("troop_robot_config", 0);
+        localObject1 = localFileOutputStream;
+        localObject3 = localFileOutputStream;
+        localFileOutputStream.write(this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$Robot.toByteArray());
+        localObject1 = localFileOutputStream;
+        localObject3 = localFileOutputStream;
+        localFileOutputStream.flush();
+        localObject1 = localFileOutputStream;
+        localObject3 = localFileOutputStream;
+        localFileOutputStream.close();
+      }
+      catch (IOException localIOException4)
+      {
+        FileOutputStream localFileOutputStream;
+        localObject3 = localIOException1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localObject3 = localIOException1;
+        QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException4));
+        if (localIOException1 == null) {
+          continue;
+        }
+        try
+        {
+          localIOException1.close();
+        }
+        catch (IOException localIOException2) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException2));
+        continue;
+      }
+      finally
+      {
+        if (localObject3 == null) {
+          break label172;
+        }
+      }
+      try
+      {
+        localFileOutputStream.close();
+        BaseApplication.getContext().getSharedPreferences("troop_robot_config", 0).edit().putInt("troop_robot_config_version", this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$Robot.version.get()).commit();
+        return;
+      }
+      catch (IOException localIOException1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException1));
+        }
+      }
     }
-    this.h = paramString;
-    this.a.loadUrl(this.h);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    if (paramArrayList != null) {
-      paramArrayList.add(new WebViewJumpPlugin());
+    try
+    {
+      localObject3.close();
+      label172:
+      throw localObject2;
     }
-  }
-  
-  public void b()
-  {
-    super.v();
-  }
-  
-  public void c()
-  {
-    super.w();
+    catch (IOException localIOException3)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException3));
+        }
+      }
+    }
   }
 }
 

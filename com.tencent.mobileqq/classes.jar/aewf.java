@@ -1,28 +1,50 @@
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-class aewf
-  implements Runnable
+public class aewf
+  implements WerewolvesHandler.Callback
 {
-  aewf(aewe paramaewe, String paramString) {}
+  public aewf(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void run()
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.isEmpty()))
+    if ((paramInt == 0) || (paramInt == 1004))
     {
-      VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).a = -102;
-      VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a, VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a));
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.d();
+      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_b_of_type_Long = this.a.app.getLongAccountUin();
+      this.a.jdField_b_of_type_JavaLangString = null;
+      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
+      this.a.jdField_a_of_type_JavaUtilList = null;
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (this.a.jdField_b_of_type_JavaUtilList != null) {
+        this.a.jdField_b_of_type_JavaUtilList.clear();
+      }
+      this.a.f = false;
+      this.a.a();
+      paramRspBody = this.a.a();
+      if ((paramRspBody != null) && (paramRspBody.jdField_a_of_type_Boolean)) {
+        QQToast.a(this.a, "已成功退出组队", 0).a();
+      }
+      this.a.jdField_a_of_type_Aexd.notifyDataSetChanged();
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    if ((VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).c == null) || (this.jdField_a_of_type_JavaLangString.compareTo(VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).c) != 0))
+    for (;;)
     {
-      VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).a = -103;
-      VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a, VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a));
+      this.a.jdField_b_of_type_AndroidViewView.setEnabled(true);
       return;
+      this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
     }
-    VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).c = this.jdField_a_of_type_JavaLangString;
-    VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a).b = this.jdField_a_of_type_JavaLangString;
-    VideoFeedsUploader.a(this.jdField_a_of_type_Aewe.a, 0);
   }
 }
 

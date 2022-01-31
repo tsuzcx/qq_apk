@@ -1,27 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
+import com.tencent.biz.widgets.ElasticHorScrView;
 
-class mdt
+public class mdt
   implements Runnable
 {
-  mdt(mdr parammdr, VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam) {}
+  public mdt(TopicShareHelper paramTopicShareHelper, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
   
   public void run()
   {
-    if ((VideoFeedsPlayActivity.a(this.jdField_a_of_type_Mdr.a) != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != VideoFeedsPlayActivity.a(this.jdField_a_of_type_Mdr.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam)) {}
-    do
+    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    }
+    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
     {
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
       return;
-      if (VideoFeedsPlayActivity.a(this.jdField_a_of_type_Mdr.a).a() != 1) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "mListView.getLastScrollStatus() == VideoFeedsListView.SCROLL_STATE_TOUCH_SCROLL");
-    return;
-    VideoFeedsPlayActivity.a(this.jdField_a_of_type_Mdr.a).a(true);
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    }
+    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
   }
 }
 

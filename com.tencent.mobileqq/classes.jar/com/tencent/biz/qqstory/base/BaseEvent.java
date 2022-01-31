@@ -5,18 +5,18 @@ import com.tribe.async.dispatch.Dispatcher.Event;
 public class BaseEvent
   implements Dispatcher.Event
 {
-  public ErrorMessage a = new ErrorMessage();
+  public ErrorMessage errorInfo = new ErrorMessage();
   
-  public String a()
+  public String getErrorMessage()
   {
-    return this.a.getErrorMessage();
+    return this.errorInfo.getErrorMessage();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"BaseEvent\", \"errorInfo\":");
-    if (this.a == null) {}
-    for (String str = "null";; str = "\"" + this.a + "\"") {
+    if (this.errorInfo == null) {}
+    for (String str = "null";; str = "\"" + this.errorInfo + "\"") {
       return str + "}";
     }
   }

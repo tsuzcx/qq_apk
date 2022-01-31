@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
 
 public class ahwe
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahwe(MessageSearchEngine paramMessageSearchEngine, String paramString) {}
+  public ahwe(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.a(this.jdField_a_of_type_JavaLangString);
+    this.a.finish();
   }
 }
 

@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.doodle.PlayLastLogic;
+import java.lang.ref.WeakReference;
 
 public class uxz
-  extends VasQuickUpdateManager.CallBacker
 {
-  public uxz(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
+  public int a;
+  public long a;
+  public WeakReference a;
+  public long b;
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public uxz(PlayLastLogic paramPlayLastLogic, long paramLong1, long paramLong2, int paramInt, DoodleMsgLayout paramDoodleMsgLayout)
   {
-    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
-      }
-      ThreadManager.getFileThreadHandler().post(new uya(this));
-    }
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong1;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleMsgLayout);
   }
 }
 

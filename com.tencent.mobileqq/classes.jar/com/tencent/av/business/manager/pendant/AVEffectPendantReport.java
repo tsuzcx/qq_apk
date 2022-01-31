@@ -16,8 +16,8 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
-import jfy;
-import jfz;
+import jib;
+import jic;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,7 +42,7 @@ public class AVEffectPendantReport
   {
     String str = null;
     if (paramPendantItem != null) {
-      str = AppConstants.aJ + "ptv_template" + File.separator + paramPendantItem.getName();
+      str = AppConstants.aK + "ptv_template" + File.separator + paramPendantItem.getName();
     }
     return str;
   }
@@ -130,13 +130,13 @@ public class AVEffectPendantReport
   
   public static void c()
   {
-    ThreadManager.getFileThreadHandler().post(new jfy());
+    ThreadManager.getFileThreadHandler().post(new jib());
   }
   
   public static void d()
   {
     AVLog.c("AVEffectPendantReport", "parseAndSetDownloadInfo()  ");
-    ThreadManager.getFileThreadHandler().post(new jfz());
+    ThreadManager.getFileThreadHandler().post(new jic());
   }
   
   private static int e()
@@ -206,7 +206,7 @@ public class AVEffectPendantReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.AVEffectPendantReport
  * JD-Core Version:    0.7.0.1
  */

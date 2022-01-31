@@ -1,116 +1,28 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import cooperation.wadl.ipc.IWadlService;
-import cooperation.wadl.ipc.IWadlServiceCallBack;
+import cooperation.qzone.report.lp.LpReportInfo;
+import cooperation.qzone.report.lp.LpReportManager;
 
 public class angh
-  implements IWadlService
+  implements Runnable
 {
-  private IBinder a;
+  int jdField_a_of_type_Int;
+  LpReportInfo jdField_a_of_type_CooperationQzoneReportLpLpReportInfo;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public angh(IBinder paramIBinder)
+  public angh(LpReportManager paramLpReportManager, int paramInt, LpReportInfo paramLpReportInfo, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo = paramLpReportInfo;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
   }
   
-  public void a(IWadlServiceCallBack paramIWadlServiceCallBack)
+  public void run()
   {
-    IBinder localIBinder = null;
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("cooperation.wadl.ipc.IWadlService");
-      if (paramIWadlServiceCallBack != null) {
-        localIBinder = paramIWadlServiceCallBack.asBinder();
-      }
-      localParcel.writeStrongBinder(localIBinder);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  /* Error */
-  public void a(java.lang.String paramString, android.os.Bundle paramBundle)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: aload_3
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_3
-    //   11: aload_1
-    //   12: invokevirtual 51	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   15: aload_2
-    //   16: ifnull +33 -> 49
-    //   19: aload_3
-    //   20: iconst_1
-    //   21: invokevirtual 55	android/os/Parcel:writeInt	(I)V
-    //   24: aload_2
-    //   25: aload_3
-    //   26: iconst_0
-    //   27: invokevirtual 61	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   30: aload_0
-    //   31: getfield 15	angh:a	Landroid/os/IBinder;
-    //   34: iconst_1
-    //   35: aload_3
-    //   36: aconst_null
-    //   37: iconst_1
-    //   38: invokeinterface 44 5 0
-    //   43: pop
-    //   44: aload_3
-    //   45: invokevirtual 47	android/os/Parcel:recycle	()V
-    //   48: return
-    //   49: aload_3
-    //   50: iconst_0
-    //   51: invokevirtual 55	android/os/Parcel:writeInt	(I)V
-    //   54: goto -24 -> 30
-    //   57: astore_1
-    //   58: aload_3
-    //   59: invokevirtual 47	android/os/Parcel:recycle	()V
-    //   62: aload_1
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	this	angh
-    //   0	64	1	paramString	java.lang.String
-    //   0	64	2	paramBundle	android.os.Bundle
-    //   3	56	3	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	15	57	finally
-    //   19	30	57	finally
-    //   30	44	57	finally
-    //   49	54	57	finally
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(IWadlServiceCallBack paramIWadlServiceCallBack)
-  {
-    IBinder localIBinder = null;
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("cooperation.wadl.ipc.IWadlService");
-      if (paramIWadlServiceCallBack != null) {
-        localIBinder = paramIWadlServiceCallBack.asBinder();
-      }
-      localParcel.writeStrongBinder(localIBinder);
-      this.a.transact(3, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
+    LpReportManager.access$000(this.jdField_a_of_type_CooperationQzoneReportLpLpReportManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo, this.jdField_a_of_type_Boolean, this.b);
+    LpReportManager localLpReportManager = this.jdField_a_of_type_CooperationQzoneReportLpLpReportManager;
+    localLpReportManager.mRunningTaskNum -= 1;
+    LpReportManager.access$100(this.jdField_a_of_type_CooperationQzoneReportLpLpReportManager);
   }
 }
 

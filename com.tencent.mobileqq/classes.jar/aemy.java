@@ -1,29 +1,23 @@
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.nearby.NearbyReportManager;
-import com.tencent.mobileqq.nearby.NearbyReportManager.ReportRecord;
-import com.tencent.util.LongSparseArray;
-import java.util.ArrayList;
+import android.widget.TextView;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
-public class aemy
+class aemy
   implements Runnable
 {
-  public aemy(NearbyReportManager paramNearbyReportManager, LongSparseArray paramLongSparseArray, NearbyHandler paramNearbyHandler, boolean paramBoolean) {}
+  aemy(aemw paramaemw, String paramString) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentUtilLongSparseArray.a())
+    if (this.jdField_a_of_type_JavaLangString != null)
     {
-      localArrayList.add((NearbyReportManager.ReportRecord)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i));
-      i += 1;
+      this.jdField_a_of_type_Aemw.a.d.setVisibility(0);
+      this.jdField_a_of_type_Aemw.a.d.setText(this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppNearbyHandler.a(localArrayList, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2dee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
-        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2def" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c2d" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </ScrollView>
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2df0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-0.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c2c" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2dee" />
-</RelativeLayout>

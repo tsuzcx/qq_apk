@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class tdc
-  implements Runnable
+  extends ResourcePluginListener
 {
-  public tdc(NotificationActivity paramNotificationActivity, SimpleAccount paramSimpleAccount) {}
+  public tdc(Leba paramLeba) {}
   
-  public void run()
+  public void a(byte paramByte)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app.login(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
+    }
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tdc
  * JD-Core Version:    0.7.0.1
  */

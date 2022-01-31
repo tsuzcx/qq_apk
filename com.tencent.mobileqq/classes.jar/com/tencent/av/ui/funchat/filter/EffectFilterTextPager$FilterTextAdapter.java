@@ -93,8 +93,8 @@ public class EffectFilterTextPager$FilterTextAdapter
     Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localContext != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2130969366, null);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131366291);
+      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2130969364, null);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131366296);
       if (this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools != null)
       {
         localObject2 = this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools.a((FilterItem)localObject1);
@@ -142,7 +142,7 @@ public class EffectFilterTextPager$FilterTextAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter
  * JD-Core Version:    0.7.0.1
  */

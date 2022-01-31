@@ -17,6 +17,7 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.PresendPicMgrService;
 import com.tencent.mobileqq.receipt.ReceiptMsgManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -25,8 +26,8 @@ import com.tencent.util.BinderWarpper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import wyt;
-import wyu;
+import xej;
+import xek;
 
 public class SendPhotoActivity
   extends BaseActivity
@@ -48,15 +49,15 @@ public class SendPhotoActivity
   public SendPhotoActivity()
   {
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new wyt(this);
-    this.jdField_a_of_type_AndroidOsHandler = new wyu(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new xej(this);
+    this.jdField_a_of_type_AndroidOsHandler = new xek(this);
   }
   
   public static void a()
   {
-    String str1 = AppConstants.aJ + "photo/" + ".nomedia";
-    String str2 = AppConstants.aJ + "thumb/" + ".nomedia";
-    String str3 = AppConstants.aJ + "thumb2/" + ".nomedia";
+    String str1 = AppConstants.aK + "photo/" + ".nomedia";
+    String str2 = AppConstants.aK + "thumb/" + ".nomedia";
+    String str3 = AppConstants.aK + "thumb2/" + ".nomedia";
     FileUtils.c(str1);
     FileUtils.c(str2);
     FileUtils.c(str3);
@@ -123,8 +124,8 @@ public class SendPhotoActivity
     this.mActNeedImmersive = true;
     super.doOnCreate(paramBundle);
     ThreadManager.executeOnFileThread(FileUtils.a);
-    Object localObject = getIntent();
-    paramBundle = ((Intent)localObject).getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+    Object localObject1 = getIntent();
+    paramBundle = ((Intent)localObject1).getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
     if (paramBundle == null)
     {
       Logger.b(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "paths is null");
@@ -132,12 +133,12 @@ public class SendPhotoActivity
       return true;
     }
     int i;
-    if (((Intent)localObject).getBooleanExtra("ReceiptMsgManager.EXTRA_KEY_IS_RECEIPT", false))
+    if (((Intent)localObject1).getBooleanExtra("ReceiptMsgManager.EXTRA_KEY_IS_RECEIPT", false))
     {
-      SessionInfo localSessionInfo = (SessionInfo)((Intent)localObject).getParcelableExtra("session_info");
-      i = ((Intent)localObject).getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-      if (localSessionInfo != null) {
-        ReceiptMsgManager.a().a(this.app, localSessionInfo, paramBundle, i);
+      localObject2 = (SessionInfo)((Intent)localObject1).getParcelableExtra("session_info");
+      i = ((Intent)localObject1).getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+      if (localObject2 != null) {
+        ReceiptMsgManager.a().a(this.app, (SessionInfo)localObject2, paramBundle, i);
       }
       setResult(-1, getIntent());
       finish();
@@ -145,21 +146,29 @@ public class SendPhotoActivity
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "TestPicSend start compress,currentTime = " + System.currentTimeMillis());
     }
-    localObject = (BinderWarpper)((Intent)localObject).getParcelableExtra("presend_handler");
-    if (localObject != null)
+    Object localObject2 = (BinderWarpper)((Intent)localObject1).getParcelableExtra("presend_handler");
+    if (localObject2 != null)
     {
-      this.jdField_a_of_type_AndroidOsMessenger = new Messenger(((BinderWarpper)localObject).a);
-      localObject = Message.obtain(null, 1);
-      ((Message)localObject).replyTo = new Messenger(this.jdField_a_of_type_AndroidOsHandler);
+      this.jdField_a_of_type_AndroidOsMessenger = new Messenger(((BinderWarpper)localObject2).a);
+      localObject2 = Message.obtain(null, 1);
+      ((Message)localObject2).replyTo = new Messenger(this.jdField_a_of_type_AndroidOsHandler);
+      i = ((Intent)localObject1).getIntExtra("key_is_sync_qzone", 0);
+      if (i == 1)
+      {
+        PresendPicMgrService localPresendPicMgrService = PresendPicMgrService.a();
+        if (localPresendPicMgrService != null) {
+          localPresendPicMgrService.a(i, ((Intent)localObject1).getLongExtra("key_qzone_batch_id", 0L), ((Intent)localObject1).getStringExtra("key_qzone_album_id"));
+        }
+      }
     }
     try
     {
-      this.jdField_a_of_type_AndroidOsMessenger.send((Message)localObject);
+      this.jdField_a_of_type_AndroidOsMessenger.send((Message)localObject2);
       i = paramBundle.size();
       if (i > 0)
       {
-        localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, "TimeOut");
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, i * 10000);
+        localObject1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, "TimeOut");
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject1, i * 10000);
         Logger.b(jdField_a_of_type_JavaLangString, "doOnCreate", "send delayed Message:MSG_CANCLE_PROGRESS, delayTime = " + i * 5000);
       }
     }

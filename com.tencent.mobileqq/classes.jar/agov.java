@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
+import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.transfile.FileMsg;
 
-class agov
-  implements Runnable
+public class agov
+  implements FileTransferManager.Callback
 {
-  agov(agou paramagou) {}
+  public agov(OpenApiManager paramOpenApiManager) {}
   
-  public void run()
+  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
-    String str = ShareHelper.a(this.a.a);
-    ThreadManager.getUIHandler().post(new agow(this, str));
+    this.a.onFileTransStatusChanged(paramFileMsg, paramInt1, paramInt2);
   }
 }
 

@@ -1,24 +1,49 @@
-import android.os.Message;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class shr
-  implements Runnable
+public class shr
+  implements ActionSheet.OnButtonClickListener
 {
-  shr(shq paramshq, long paramLong) {}
+  public shr(ChatSettingForTroop paramChatSettingForTroop, int paramInt, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager != null)
+    int i = 3;
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a();
-      if (this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Long) == 2)
+    default: 
+      i = 0;
+      paramInt = -1;
+    }
+    for (;;)
+    {
+      if (paramInt != this.jdField_a_of_type_Int) {
+        ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, paramInt);
+      }
+      try
       {
-        Message localMessage = new Message();
-        localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(32, localMessage);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        TroopReportor.a("Grp_msg", "grpData_admin", "Close_setmsg", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a), String.valueOf(i) });
+        return;
+        i = 3;
+        paramInt = 4;
+        continue;
+        i = 1;
+        paramInt = 2;
+        continue;
+        int j = 2;
+        paramInt = i;
+        i = j;
+      }
+      catch (Exception paramView)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("Q.chatopttroop", 2, paramView.toString());
       }
     }
   }

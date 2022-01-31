@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import aeit;
+import aerd;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class QueryTask
@@ -16,7 +16,7 @@ public class QueryTask
   
   public void a(Object paramObject)
   {
-    ThreadManager.post(new aeit(this, paramObject), 5, null, true);
+    ThreadManager.post(new aerd(this, paramObject), 5, null, true);
   }
 }
 

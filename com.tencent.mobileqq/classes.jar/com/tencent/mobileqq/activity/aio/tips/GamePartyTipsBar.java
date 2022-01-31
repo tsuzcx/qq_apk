@@ -11,8 +11,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gameparty.GamePartyManager;
 import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.BaseApplication;
-import wcu;
-import wcv;
+import wic;
+import wid;
 
 public class GamePartyTipsBar
   implements TipsBarTask
@@ -42,9 +42,9 @@ public class GamePartyTipsBar
   public View a(Object... paramVarArgs)
   {
     paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968666, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramVarArgs.findViewById(2131363097));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramVarArgs.findViewById(2131363101));
     a();
-    paramVarArgs.setOnClickListener(new wcu(this));
+    paramVarArgs.setOnClickListener(new wic(this));
     ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2015", "0", false);
     return paramVarArgs;
   }
@@ -66,7 +66,7 @@ public class GamePartyTipsBar
       if (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int) {
         break label157;
       }
-      localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438425), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int) });
+      localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438445), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int) });
     }
     Looper localLooper;
     for (;;)
@@ -78,18 +78,18 @@ public class GamePartyTipsBar
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       return;
       label157:
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438426);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438446);
       continue;
       label173:
       if ((((GamePartyManager)localObject).e == 3) || (((GamePartyManager)localObject).e == 4)) {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438429);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438449);
       } else if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int) {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438427);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438447);
       } else {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438428);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438448);
       }
     }
-    new Handler(localLooper).post(new wcv(this, (String)localObject));
+    new Handler(localLooper).post(new wid(this, (String)localObject));
   }
   
   public void a(int paramInt, Object... paramVarArgs)

@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class tls
-  implements Runnable
+public class tls
+  implements View.OnClickListener
 {
-  tls(tlo paramtlo) {}
+  public tls(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.E();
+    paramView = this.a.getIntent().getStringExtra("uin");
+    if ((paramView != null) && (paramView.equals(this.a.app.getCurrentAccountUin())))
+    {
+      ProfileLabelEditorActivity.a(this.a);
+      ReportController.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
+    }
   }
 }
 

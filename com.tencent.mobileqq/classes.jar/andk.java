@@ -1,16 +1,15 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class andk
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public andk(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public andk(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    RemoteHandleManager.a().a().b(this.jdField_a_of_type_JavaUtilArrayList, this.b);
+    this.a.getPlayMode();
   }
 }
 

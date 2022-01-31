@@ -1,51 +1,47 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForRichState;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.richstatus.RichStatus.SigZanInfo;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import java.lang.ref.WeakReference;
 
-class rsw
+public class rsw
   implements Runnable
 {
-  rsw(rst paramrst, RichStatus.SigZanInfo paramSigZanInfo) {}
+  public rsw(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, RichStatItemBuilder.a);
-    Object localObject;
-    Message localMessage;
-    if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForRichState)))
+    TextView localTextView;
+    if (AuthDevVerifyCodeActivity.b <= 1)
     {
-      localObject = new HashMap();
-      ((Map)localObject).put("chatMessage", localMessageRecord);
-      ((Map)localObject).put("sigZanInfo", this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus$SigZanInfo);
-      this.jdField_a_of_type_Rst.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(267387138);
-      localMessage = this.jdField_a_of_type_Rst.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(267387138);
-      localMessage.obj = localObject;
-    }
-    try
-    {
-      localObject = new JSONObject(localMessageRecord.msg);
-      ((JSONObject)localObject).put("count", this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus$SigZanInfo.b);
-      ((JSONObject)localObject).put("zanfalg", this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus$SigZanInfo.c);
-      this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localMessageRecord.uniseq, ((JSONObject)localObject).toString());
-      label214:
-      this.jdField_a_of_type_Rst.a.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, 1000L);
+      if (AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference != null)
+      {
+        localTextView = (TextView)AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localTextView != null)
+        {
+          localTextView.setText(2131434293);
+          localTextView.setEnabled(true);
+          localTextView.setClickable(true);
+          return;
+        }
+      }
+      AuthDevVerifyCodeActivity.a(this.a).setText(2131434293);
+      AuthDevVerifyCodeActivity.a(this.a).setEnabled(true);
+      AuthDevVerifyCodeActivity.a(this.a).setClickable(true);
       return;
     }
-    catch (JSONException localJSONException)
+    AuthDevVerifyCodeActivity.b -= 1;
+    if (AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      break label214;
+      localTextView = (TextView)AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localTextView != null)
+      {
+        localTextView.setText(this.a.getString(2131434293) + "(" + AuthDevVerifyCodeActivity.b + ")");
+        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1000L);
+        return;
+      }
     }
+    AuthDevVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434293) + "(" + AuthDevVerifyCodeActivity.b + ")");
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1000L);
   }
 }
 

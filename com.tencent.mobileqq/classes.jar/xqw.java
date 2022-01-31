@@ -1,16 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
 
-public class xqw
+class xqw
   implements Runnable
 {
-  public xqw(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xqw(xqt paramxqt) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.removeCallbacks(this.a.b);
-    }
+    this.a.a.l();
   }
 }
 

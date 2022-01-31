@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendActivity;
 
 public class rmr
   implements Runnable
 {
-  public rmr(AssociatedAccountActivity paramAssociatedAccountActivity, boolean paramBoolean) {}
+  public rmr(AddFriendActivity paramAddFriendActivity, int paramInt) {}
   
   public void run()
   {
-    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity, this.jdField_a_of_type_Boolean);
+    AddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity).setText(this.jdField_a_of_type_Int);
+    AddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity).setVisibility(0);
   }
 }
 

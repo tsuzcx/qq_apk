@@ -1,8 +1,8 @@
 package cooperation.qqreader;
 
-import amqt;
-import amqu;
-import amqv;
+import amye;
+import amyf;
+import amyg;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -163,12 +163,12 @@ public class QRBridgeActivity
   
   public void a()
   {
-    ThreadManager.post(new amqt(this), 8, null, false);
+    ThreadManager.post(new amye(this), 8, null, false);
   }
   
   public void a(int paramInt)
   {
-    runOnUiThread(new amqv(this, paramInt));
+    runOnUiThread(new amyg(this, paramInt));
   }
   
   public void a(String paramString)
@@ -339,10 +339,10 @@ public class QRBridgeActivity
       if (this.jdField_a_of_type_AndroidViewViewStub != null)
       {
         View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131372206));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372208));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372209));
-        this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131372205));
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131372216));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372218));
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372219));
+        this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131372215));
         this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       }
       if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
@@ -404,7 +404,7 @@ public class QRBridgeActivity
           QLog.d("QRBridgeActivity", 2, "initPlugin installPlugin");
         }
         this.jdField_c_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("qqreaderplugin.apk", new amqu(this));
+        this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("qqreaderplugin.apk", new amyf(this));
         k = m;
       }
     }
@@ -437,7 +437,7 @@ public class QRBridgeActivity
       finish();
       return false;
     }
-    setContentView(2130970920);
+    setContentView(2130970938);
     e();
     this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(26));
     if (QLog.isDevelopLevel()) {
@@ -462,8 +462,8 @@ public class QRBridgeActivity
   public void e()
   {
     setTitle("阅读中心");
-    this.jdField_a_of_type_CooperationQqreaderQRNumberCircleProgressBar = ((QRNumberCircleProgressBar)findViewById(2131372199));
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131372201));
+    this.jdField_a_of_type_CooperationQqreaderQRNumberCircleProgressBar = ((QRNumberCircleProgressBar)findViewById(2131372209));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)findViewById(2131372211));
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     try
     {

@@ -1,10 +1,25 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class slp
-  extends Handler
+class slp
+  implements Runnable
 {
-  public slp(EditInfoActivity paramEditInfoActivity) {}
+  slp(sll paramsll, ArrayList paramArrayList) {}
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_Sll.a.a != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        this.jdField_a_of_type_Sll.a.a.a(str, true);
+      }
+    }
+  }
 }
 
 

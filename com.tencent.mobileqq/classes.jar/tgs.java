@@ -1,21 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.NearbyHandler;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
-class tgs
+public class tgs
   implements Runnable
 {
-  tgs(tgr paramtgr) {}
+  public tgs(NearbyActivity paramNearbyActivity) {}
   
   public void run()
   {
-    FormSimpleItem localFormSimpleItem = this.a.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-    if (TextUtils.isEmpty(this.a.a.jdField_c_of_type_JavaLangString)) {}
-    for (String str = "";; str = this.a.a.jdField_c_of_type_JavaLangString)
-    {
-      localFormSimpleItem.setRightText(str);
-      return;
-    }
+    this.a.a.c();
+    NearbyHandler localNearbyHandler = (NearbyHandler)this.a.a.a(3);
+    localNearbyHandler.a(this.a.a.getCurrentAccountUin());
+    localNearbyHandler.a(2);
   }
 }
 

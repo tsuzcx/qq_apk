@@ -1,89 +1,44 @@
-import com.tencent.mobileqq.app.UniteSearchHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.ContactBinded;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class zpg
   implements Runnable
 {
-  public zpg(UniteSearchHandler paramUniteSearchHandler, String paramString, Object paramObject) {}
+  public zpg(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
   public void run()
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    for (;;)
-    {
-      try
-      {
-        localFileOutputStream = BaseApplication.getContext().openFileOutput(this.jdField_a_of_type_JavaLangString, 0);
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        localFileOutputStream.write((byte[])this.jdField_a_of_type_JavaLangObject);
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        localFileOutputStream.flush();
-      }
-      catch (IOException localIOException4)
-      {
-        FileOutputStream localFileOutputStream;
-        localObject3 = localIOException1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject3 = localIOException1;
-        QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException4));
-        if (localIOException1 == null) {
-          continue;
-        }
-        try
-        {
-          localIOException1.close();
-          return;
-        }
-        catch (IOException localIOException2) {}
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException2));
-        return;
-      }
-      finally
-      {
-        if (localObject3 == null) {
-          break label126;
-        }
-      }
-      try
-      {
-        localFileOutputStream.close();
-        return;
-      }
-      catch (IOException localIOException1)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException1));
-          return;
-        }
-      }
-    }
+    Object localObject1 = PhoneContactManagerImp.a(this.a).a();
+    ((EntityTransaction)localObject1).a();
     try
     {
-      localObject3.close();
-      label126:
-      throw localObject2;
-    }
-    catch (IOException localIOException3)
-    {
-      for (;;)
+      Iterator localIterator = PhoneContactManagerImp.a(this.a).values().iterator();
+      while (localIterator.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.uniteSearch.UniteSearchHandler", 2, QLog.getStackTraceString(localIOException3));
+        PhoneContact localPhoneContact = (PhoneContact)localIterator.next();
+        if (localPhoneContact.isNewRecommend)
+        {
+          localPhoneContact.isNewRecommend = false;
+          PhoneContactManagerImp.a(this.a).a(localPhoneContact);
         }
       }
     }
+    finally
+    {
+      ((EntityTransaction)localObject1).b();
+    }
+    ((EntityTransaction)localObject1).b();
+    localObject1 = PhoneContactManagerImp.a(this.a);
+    if (localObject1 != null) {
+      ((ContactBinded)localObject1).isReaded = true;
+    }
+    PhoneContactManagerImp.c(this.a, false);
   }
 }
 

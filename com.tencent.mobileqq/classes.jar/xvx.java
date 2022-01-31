@@ -1,9 +1,18 @@
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class xvx
+  implements Camera.FaceDetectionListener
 {
-  public long a;
-  public xvy a;
-  public long b;
-  public xvy b;
+  public xvx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
+  {
+    if (QLog.isColorLevel()) {}
+  }
 }
 
 

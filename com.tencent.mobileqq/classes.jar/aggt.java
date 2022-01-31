@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
-public class aggt
-  implements DialogInterface.OnClickListener
+class aggt
+  implements Runnable
 {
-  public aggt(ScanTorchActivity paramScanTorchActivity) {}
+  aggt(aggs paramaggs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    ScanOcrActivity.a(this.a.a.a).a(0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aggt
  * JD-Core Version:    0.7.0.1
  */

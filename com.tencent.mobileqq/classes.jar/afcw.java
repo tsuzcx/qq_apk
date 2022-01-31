@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import mqq.os.MqqHandler;
 
 public class afcw
   implements Runnable
 {
-  public afcw(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, String paramString) {}
+  long jdField_a_of_type_Long;
+  
+  public afcw(ShortVideoCommentsView paramShortVideoCommentsView, long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
   
   public void run()
   {
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null)
-    {
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_JavaLangString);
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L) {
       return;
     }
-    QLog.i("Q.nearby_people_card.", 1, "mDynamicAvatarDownloadManager is NULL!!!");
+    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setFocusable(true);
+    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setFocusableInTouchMode(true);
+    ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).requestFocus();
+    ThreadManager.getUIHandler().postDelayed(this, 100L);
   }
 }
 

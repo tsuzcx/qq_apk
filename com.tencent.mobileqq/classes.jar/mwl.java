@@ -1,50 +1,53 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter.FeedItemCellHolder;
+import com.tencent.image.URLDrawable;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public final class mwl
-  implements BusinessObserver
+public class mwl
+  implements AbsListView.OnScrollListener
 {
-  public mwl(Context paramContext, AppInterface paramAppInterface, int paramInt, String paramString) {}
+  public mwl(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean)
+    switch (paramInt)
     {
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
+    default: 
+      DropFrameMonitor.a().a("list_subscript");
+    }
+    for (;;)
+    {
       return;
-    }
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      DropFrameMonitor.a().a("list_subscript", false);
+      paramInt = 0;
+      while (paramInt <= paramAbsListView.getChildCount())
       {
-        mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-        localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-        if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
+        Object localObject = paramAbsListView.getChildAt(paramInt);
+        if ((localObject != null) && ((((View)localObject).getTag() instanceof SubscriptFeedsAdapter.FeedItemCellHolder)))
         {
-          ThreadManager.getSubThreadHandler().postDelayed(new mwm(this, localGetPublicAccountDetailInfoResponse), 10L);
-          return;
+          localObject = (SubscriptFeedsAdapter.FeedItemCellHolder)((View)localObject).getTag();
+          Drawable localDrawable = ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject).b.getDrawable();
+          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject).a);
+            }
+            ((URLDrawable)localDrawable).startDownload();
+            ((URLDrawable)localDrawable).setAutoDownload(true);
+          }
         }
-        PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
-        return;
+        paramInt += 1;
       }
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
-      return;
     }
-    catch (Exception paramBundle) {}
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

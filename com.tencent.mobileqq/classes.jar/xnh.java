@@ -1,27 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import VACDReport.ReportHeader;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class xnh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xnh(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public xnh(VACDReportMgr paramVACDReportMgr, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (EditLocalVideoActivity.a(this.a).isPlaying())
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      EditLocalVideoActivity.c(this.a, false);
-      EditLocalVideoActivity.a(this.a).pause();
-      EditLocalVideoActivity.b(this.a).setVisibility(0);
+      if (QLog.isColorLevel()) {
+        QLog.i("VACDReport", 2, "handleReponse headers is null or empty");
+      }
       return;
     }
-    EditLocalVideoActivity.c(this.a, true);
-    EditLocalVideoActivity.a(this.a).setVisibility(8);
-    EditLocalVideoActivity.a(this.a).start();
-    EditLocalVideoActivity.b(this.a).setVisibility(4);
+    if (QLog.isColorLevel()) {
+      QLog.d("VACDReport", 2, "handleReponse, headers= " + this.jdField_a_of_type_JavaUtilList);
+    }
+    synchronized (VACDReportMgr.a())
+    {
+      ArrayList localArrayList = new ArrayList(8);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        ReportHeader localReportHeader = (ReportHeader)localIterator.next();
+        if (localReportHeader != null)
+        {
+          if (localReportHeader.result == 0)
+          {
+            localArrayList.add(Long.valueOf(localReportHeader.seqno));
+            VACDReportMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).remove(Long.valueOf(localReportHeader.seqno));
+          }
+          VACDReportMgr.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).remove(Long.valueOf(localReportHeader.seqno));
+        }
+      }
+    }
+    if (!localList.isEmpty()) {
+      VACDReportMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).a(localList);
+    }
   }
 }
 

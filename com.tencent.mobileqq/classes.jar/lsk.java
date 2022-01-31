@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class lsk
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lsk(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, oidb_cmd0x68b.PackJumpInfo paramPackJumpInfo) {}
+  public lsk(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_url.get();
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), paramView);
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_wording.get());
+    if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+      QLog.d("ArticleInfoModule", 2, "delete article fail ! title : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTitle + " , articleID : " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID);
+    }
   }
 }
 

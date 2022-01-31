@@ -1,13 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Filter;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.AppConstants;
 
 public class ofl
-  implements DialogInterface.OnClickListener
+  implements LocalVideoPusher.Filter
 {
-  public ofl(EditVideoPartManager paramEditVideoPartManager) {}
+  public ofl(LocalVideoPushSegment paramLocalVideoPushSegment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean a(LocalMediaInfo paramLocalMediaInfo)
+  {
+    paramLocalMediaInfo = paramLocalMediaInfo.path;
+    return (paramLocalMediaInfo.startsWith(AppConstants.aW)) && (paramLocalMediaInfo.contains("QQStoryMoment"));
+  }
 }
 
 

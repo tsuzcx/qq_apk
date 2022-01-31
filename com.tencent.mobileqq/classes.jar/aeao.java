@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.view.SurfaceHolder;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 public class aeao
-  implements HorizontalListView.OnScrollStateChangedListener
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  public aeao(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeao(VideoBaseItem paramVideoBaseItem) {}
   
-  public void a(int paramInt)
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
   {
-    if (paramInt == 4097) {
-      LebaWithFeeds.a(this.a, 0);
-    }
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
+  }
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    this.a.a = true;
+    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
   }
 }
 

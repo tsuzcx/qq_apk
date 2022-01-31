@@ -1,27 +1,27 @@
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class vee
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  vee(ved paramved, MessageForReplyText paramMessageForReplyText, View paramView) {}
+  vee(vec paramvec, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_Ved.a.a.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq);
-    if ((localChatMessage != null) && (localChatMessage.msgtype != -2006) && (localChatMessage.isValid) && (localChatMessage.msgtype != -2032))
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
     {
-      ThreadManager.getUIHandler().post(new vef(this, localChatMessage));
+    default: 
       return;
     }
-    ThreadManager.getUIHandler().post(new veg(this));
+    ChatActivityUtils.a(this.jdField_a_of_type_Vec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Vec.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vec.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Vec.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Vec.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, null, true, this.jdField_a_of_type_Vec.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
+    ReportController.b(this.jdField_a_of_type_Vec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,61 +1,78 @@
 import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import oicq.wlogin_sdk.tools.util;
+import android.os.Message;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.AuthorityActivity.AccountInfo;
+import com.tencent.open.agent.report.ReportCenter;
+import com.tencent.open.agent.report.ReportDef.AuthCmdCost.Record;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.util.HandlerPlus;
+import mqq.observer.BusinessObserver;
 
-class alhu
-  implements Runnable
+public class alhu
+  implements BusinessObserver
 {
-  alhu(alht paramalht, byte[] paramArrayOfByte, String paramString) {}
+  public alhu(AuthorityActivity paramAuthorityActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    boolean bool2 = false;
-    this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityActivity", 2, "getAppInfo observer onReceive isSuccess = " + paramBoolean);
+    }
+    AuthorityActivity.c(this.a).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.c(this.a).jdField_a_of_type_Long);
+    Object localObject = paramBundle.getString("ssoAccount");
+    if (!this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity$AccountInfo.jdField_a_of_type_JavaLangString.equals(localObject)) {}
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    } while (!paramBoolean);
+    GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
     for (;;)
     {
-      boolean bool3;
       try
       {
-        Object localObject = this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Alht.jdField_a_of_type_AndroidOsBundle);
-        DownloadManager.a().e((DownloadInfo)localObject);
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0))
-        {
-          localObject = new StringBuilder();
-          this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + util.buf_to_string(this.jdField_a_of_type_ArrayOfByte));
-          this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d = this.jdField_a_of_type_Alht.jdField_a_of_type_Long;
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        localObject = arrayOfByte;
+        if (!this.a.j) {
+          localObject = this.a.b(arrayOfByte);
         }
-        LogUtility.a("State_Log", "OpenSDK startToAppDetail param SNGAppId=" + this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
-        LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToDownloadTaskList");
-        if (this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
-        {
-          ((TMAssistantCallYYB_V1)this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToDownloadTaskList(this.jdField_a_of_type_Alht.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Alht.jdField_a_of_type_Boolean, this.jdField_a_of_type_Alht.b);
-          return;
+        if (localObject == null) {
+          break;
         }
-        int i = this.jdField_a_of_type_Alht.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
-        int j = this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Alht.jdField_a_of_type_AndroidOsBundle);
-        boolean bool1 = this.jdField_a_of_type_Alht.jdField_a_of_type_Boolean;
-        bool3 = this.jdField_a_of_type_Alht.b;
-        if (i == 3)
+        localGetAppinfoResponse.mergeFrom((byte[])localObject);
+        if (!localGetAppinfoResponse.has()) {
+          break;
+        }
+        paramInt = localGetAppinfoResponse.ret.get();
+        if (paramInt == 0)
         {
-          bool1 = false;
-          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToDownloadTaskList(this.jdField_a_of_type_Alht.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Alht.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, bool1, bool2, j);
+          localObject = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+          ((Message)localObject).what = 3;
+          ((Message)localObject).obj = localGetAppinfoResponse;
+          this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject);
+        }
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("report_type", "103");
+        ((Bundle)localObject).putString("act_type", "12");
+        if (paramBundle.getBoolean("isShort", false))
+        {
+          paramBundle = "2";
+          ((Bundle)localObject).putString("intext_3", paramBundle);
+          ((Bundle)localObject).putString("stringext_1", AuthorityActivity.c(this.a).jdField_a_of_type_JavaLangString);
+          ((Bundle)localObject).putString("intext_2", "" + paramInt);
+          ((Bundle)localObject).putString("intext_5", "" + AuthorityActivity.c(this.a).jdField_a_of_type_Long);
+          ReportCenter.a().a((Bundle)localObject, AuthorityActivity.f, this.a.jdField_a_of_type_JavaLangString, false);
           return;
         }
       }
-      catch (Exception localException)
+      catch (Exception paramBundle)
       {
-        LogUtility.b("MyAppApi", "startToAppDetail err", localException);
+        paramBundle.printStackTrace();
         return;
       }
-      bool2 = bool3;
+      paramBundle = "1";
     }
   }
 }

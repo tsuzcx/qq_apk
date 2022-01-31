@@ -1,108 +1,66 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class sdg
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public sdg(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sdg(ChatHistory paramChatHistory, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 0;
-    paramContext = paramIntent.getAction();
-    int i = j;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null)
-    {
-      i = j;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isHomeworkTroop()) {
-        i = 1;
-      }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a);
+    if ((paramDialogInterface != null) && (!paramDialogInterface.isEmpty())) {
+      if ((1 != this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a) && (3000 != this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a)) {}
     }
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      paramIntent = paramIntent.getStringExtra("event");
-      if ("onHomeworkTroopIdentityChanged".equals(paramIntent)) {
-        if (i != 0) {}
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (!TextUtils.isEmpty(paramContext)) {
+    for (long l1 = ((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).shmsgseq;; l1 = 0L) {
+      for (;;)
+      {
+        ThreadManager.getSubThreadHandler().post(new sdh(this));
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.a().e(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a);
+        SpriteCommFunc.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "chat_history_confirm_del_msg");
+        if (this.jdField_a_of_type_JavaLangString != null) {}
         try
         {
-          Object localObject = new JSONObject(paramContext);
-          paramContext = ((JSONObject)localObject).optString("groupCode");
-          if (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramContext))
-          {
-            paramIntent = ((JSONObject)localObject).optString("content");
-            String str1 = ((JSONObject)localObject).optString("source");
-            i = ((JSONObject)localObject).optInt("rankId", 333);
-            String str2 = ((JSONObject)localObject).optString("nickName");
-            String str3 = ((JSONObject)localObject).optString("uin");
-            String str4 = ((JSONObject)localObject).optString("course");
-            localObject = ((JSONObject)localObject).optString("name");
-            if ("troopProfile".equals(str1)) {
-              ThreadManager.post(new sdh(this, str3, str2, i, str4, (String)localObject), 8, null, false);
-            }
-            while (QLog.isColorLevel())
-            {
-              QLog.d("zivonchen", 2, "mHomeworkTroopIdentityChangedReceiver troopUin = " + paramContext + ", content = " + paramIntent + ", source = " + str1 + ", rankId = " + i + ", nickName = " + str2);
-              return;
-              if ("join".equals(str1))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("wyx", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver source=join. cGroupOption=", Short.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.cGroupOption), ", joinType=", Integer.valueOf(ChatSettingForTroop.a(this.a)) });
-                }
-                if (ChatSettingForTroop.a(this.a) == 1) {
-                  ChatSettingForTroop.a(this.a);
-                } else if (ChatSettingForTroop.a(this.a) == 2) {
-                  ChatSettingForTroop.a(this.a, paramIntent);
-                }
-              }
-            }
-            if ("bindGames".equals(paramIntent))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.chatopttroop", 2, "receive bind game event, data=" + paramContext);
-              }
-              try
-              {
-                paramContext = new JSONObject(paramContext);
-                paramIntent = paramContext.getString("groupid");
-                if ((!this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin.equals(paramIntent)) || (paramContext.getInt("appid") > 0)) {
-                  continue;
-                }
-                paramContext = (ViewGroup)this.a.jdField_a_of_type_ArrayOfAndroidViewView[29];
-                paramContext.setVisibility(8);
-                paramContext.removeAllViews();
-                ThreadManager.post(new sdi(this, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin), 5, null, false);
-                return;
-              }
-              catch (JSONException paramContext)
-              {
-                QLog.e("Q.chatopttroop", 1, "parse bind game event error", paramContext);
-                return;
-              }
-              if ("start_recomend_page".equals(paramContext))
-              {
-                this.a.finish();
-                return;
-              }
-            }
+          l2 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
+          l1 = Math.max(l2, l1);
+          if (l1 > 0L) {
+            this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a, l1);
+          }
+          paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.getHandler(Conversation.class);
+          Message localMessage = paramDialogInterface.obtainMessage(1017);
+          localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString;
+          localMessage.arg1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a;
+          paramDialogInterface.sendMessage(localMessage);
+          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_AndroidAppDialog.dismiss();
+          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.setResult(-1);
+          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.finish();
+          return;
+          if (((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).isSendFromLocal()) {
+            l1 = ((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).time + 2L;
+          } else {
+            l1 = ((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).time;
           }
         }
-        catch (JSONException paramContext) {}
+        catch (Exception paramDialogInterface)
+        {
+          for (;;)
+          {
+            paramDialogInterface.printStackTrace();
+            long l2 = 0L;
+          }
+        }
       }
     }
   }

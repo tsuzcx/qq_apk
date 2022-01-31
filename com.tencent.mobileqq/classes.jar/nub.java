@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.StoryHomePushYellowBarHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import android.util.SparseArray;
 
-public class nub
-  implements View.OnClickListener
+public final class nub
+  extends SparseArray
 {
-  public nub(StoryHomePushYellowBarHandler paramStoryHomePushYellowBarHandler) {}
-  
-  public void onClick(View paramView)
+  public nub()
   {
-    this.a.b();
-    this.a.a.j();
+    put(31, "PLAYER_INFO_PLAYER_TYPE");
+    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
+    put(33, "PLAYER_INFO_START_GET_VINFO");
+    put(21, "PLAYER_INFO_START_BUFFERING");
+    put(34, "PLAYER_INFO_END_GET_VINFO");
+    put(22, "PLAYER_INFO_ENDOF_BUFFERING");
+    put(23, "PLAYER_INFO_START_RENDERING");
   }
 }
 

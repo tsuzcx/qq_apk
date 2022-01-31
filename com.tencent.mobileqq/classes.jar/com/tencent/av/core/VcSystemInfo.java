@@ -11,7 +11,7 @@ import com.tencent.mobileqq.startup.step.UpdateAvSo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import jho;
+import jjr;
 
 public class VcSystemInfo
 {
@@ -50,7 +50,7 @@ public class VcSystemInfo
   {
     try
     {
-      int j = new File("/sys/devices/system/cpu/").listFiles(new jho()).length;
+      int j = new File("/sys/devices/system/cpu/").listFiles(new jjr()).length;
       return j;
     }
     catch (Exception localException) {}
@@ -1620,7 +1620,7 @@ public class VcSystemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.core.VcSystemInfo
  * JD-Core Version:    0.7.0.1
  */

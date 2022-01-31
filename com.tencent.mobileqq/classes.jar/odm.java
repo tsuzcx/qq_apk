@@ -1,52 +1,45 @@
 import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListEvent;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeHomeFeed;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.HomeFeedPresenterListener;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import com.tencent.biz.qqstory.takevideo.publish.GeneratePicArgs;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
 
 public class odm
-  extends SimpleObserver
+  extends UIBaseEventReceiver
 {
-  public odm(EditPicSave paramEditPicSave) {}
-  
-  public void a(GenerateContext paramGenerateContext)
+  public odm(HomeFeedPresenter paramHomeFeedPresenter)
   {
-    super.onNext(paramGenerateContext);
-    this.a.a(40);
-    paramGenerateContext = paramGenerateContext.a.b;
-    SLog.b("EditPicSave", "picPath = " + paramGenerateContext);
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
+    super(paramHomeFeedPresenter);
+  }
+  
+  public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent)
+  {
+    Object localObject = paramHomeFeedPresenter.a(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
+    if ((localObject == null) || (paramGetLikeListEvent.jdField_a_of_type_Boolean))
     {
-      ThreadManager.post(new odn(this, paramGenerateContext), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
-      this.a.jdField_a_of_type_Int = 40;
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.b = 10;
-      this.a.e();
+      SLog.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramGetLikeListEvent.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramGetLikeListEvent.jdField_a_of_type_Boolean) });
+      return;
     }
+    if (!(localObject instanceof CommentLikeHomeFeed))
+    {
+      SLog.e(this.TAG, "that is error type!");
+      return;
+    }
+    localObject = (CommentLikeHomeFeed)localObject;
+    ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mLikeCount = paramGetLikeListEvent.b;
+    ((CommentLikeHomeFeed)localObject).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true);
+    HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
   }
   
-  public void onCancel()
+  public Class acceptEventClass()
   {
-    super.onCancel();
-    SLog.d("EditPicSave", "saveVideo cancel !");
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.h();
-    QQToast.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
+    return DetailLikeListLoader.GetLikeListEvent.class;
   }
   
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.e("EditPicSave", "saveVideo error ：" + paramError);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    QQToast.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
-    this.a.h();
-  }
+  public void b(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent) {}
 }
 
 

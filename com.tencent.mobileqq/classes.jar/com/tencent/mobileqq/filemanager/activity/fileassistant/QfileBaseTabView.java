@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
-import acqn;
+import acyu;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -160,7 +160,7 @@ public class QfileBaseTabView
   public void t()
   {
     this.e = false;
-    new Handler().postDelayed(new acqn(this), 2000L);
+    new Handler().postDelayed(new acyu(this), 2000L);
   }
   
   public void u()

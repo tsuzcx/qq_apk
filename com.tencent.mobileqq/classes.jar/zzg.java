@@ -1,33 +1,20 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.arcard.ARcardSound;
-import com.tencent.mobileqq.armap.sensor.ARSensorManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class zzg
-  implements Runnable
+  implements Comparator
 {
-  public zzg(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public zzg(C2CMessageProcessor paramC2CMessageProcessor) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (ARWorldCupGlobalSceneRenderable.a(this.a) == 6)
-    {
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
-        ARWorldCupGlobalSceneRenderable.a(this.a).a(0, 1);
-      }
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) == null) {
-        ARWorldCupGlobalSceneRenderable.a(this.a, new ARcardSound());
-      }
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
-        QLog.d("ARWorldCupGlobalSceneRenderable", 2, String.format("setNativeState start sensor result=%s", new Object[] { Boolean.valueOf(ARWorldCupGlobalSceneRenderable.a(this.a).a(ARWorldCupGlobalSceneRenderable.a(this.a))) }));
-      }
-    }
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zzg
  * JD-Core Version:    0.7.0.1
  */

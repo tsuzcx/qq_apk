@@ -5,8 +5,8 @@ import android.os.Bundle;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import tel;
-import tem;
+import tjf;
+import tjg;
 
 public class OverloadTipsActivity
   extends BaseActivity
@@ -16,7 +16,7 @@ public class OverloadTipsActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969139);
+    super.setContentView(2130969137);
     if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
     for (paramBundle = getIntent().getExtras().getString("msg");; paramBundle = null)
     {
@@ -30,10 +30,10 @@ public class OverloadTipsActivity
       }
       this.a = null;
       this.a = DialogUtil.a(this, 230);
-      this.a.setContentView(2130968842);
-      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131438017, new tel(this));
+      this.a.setContentView(2130968846);
+      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131438038, new tjf(this));
       this.a.setTextContentDescription(paramBundle);
-      this.a.setOnKeyListener(new tem(this));
+      this.a.setOnKeyListener(new tjg(this));
       this.a.show();
       return false;
     }

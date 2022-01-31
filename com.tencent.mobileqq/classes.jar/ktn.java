@@ -1,12 +1,12 @@
 import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
 
 public class ktn
   implements View.OnClickListener
 {
-  public ktn(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
+  public ktn(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {

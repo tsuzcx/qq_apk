@@ -1,21 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import javax.net.ssl.HandshakeCompletedEvent;
-import javax.net.ssl.HandshakeCompletedListener;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public final class ylt
-  implements HandshakeCompletedListener
+public class ylt
+  implements Runnable
 {
-  public ylt(View paramView, long paramLong) {}
+  public ylt(QvipSpecialSoundManager paramQvipSpecialSoundManager, String paramString) {}
   
-  public void handshakeCompleted(HandshakeCompletedEvent paramHandshakeCompletedEvent)
+  public void run()
   {
-    ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new ylu(this));
+    FileUtils.b(this.jdField_a_of_type_JavaLangString + "http://i.gtimg.cn/club/moblie/special_sound/new_config.json", this.jdField_a_of_type_JavaLangString + "pddata/vas/special_remind/new_config.json");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ylt
  * JD-Core Version:    0.7.0.1
  */

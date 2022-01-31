@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog;
-import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog.OnPriceSelectedListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.PhoneFrame;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
 public class xan
-  implements PriceSettingDialog.OnPriceSelectedListener
+  implements View.OnClickListener
 {
-  public xan(PriceSettingDialog paramPriceSettingDialog) {}
+  public xan(PhoneFrameActivity paramPhoneFrameActivity) {}
   
-  public void a(long paramLong)
+  public void onClick(View paramView)
   {
-    PriceSettingDialog.a(this.a, paramLong);
+    paramView = this.a.a.a();
+    if (paramView != null) {
+      paramView.a(false);
+    }
+    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 

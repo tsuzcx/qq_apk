@@ -1,20 +1,16 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.nearpeople.NearbyRecommender.NearbyRecommenderUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class vwn
-  implements Runnable
+  extends MessageObserver
 {
-  public vwn(NearbyChatPie paramNearbyChatPie) {}
+  public vwn(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void run()
+  protected void e(boolean paramBoolean)
   {
-    String[] arrayOfString = NearbyRecommenderUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055FE", "0X80055FE", 0, 0, arrayOfString[0], str, "", "");
-    this.a.O = false;
+    super.e(paramBoolean);
+    this.a.a.sendEmptyMessage(0);
   }
 }
 

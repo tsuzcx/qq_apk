@@ -1,35 +1,7 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
-import com.tencent.mobileqq.widget.QQToast;
-
 public class akpw
-  implements TroopMemberApiClient.Callback
 {
-  public akpw(SwiftBrowserShareMenuHandler paramSwiftBrowserShareMenuHandler) {}
-  
-  public void a(Bundle paramBundle)
-  {
-    boolean bool;
-    if (paramBundle.getInt("type") == 73)
-    {
-      bool = paramBundle.getBoolean("isSuccess");
-      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.h)) {}
-    }
-    else
-    {
-      return;
-    }
-    if (Boolean.valueOf(bool).booleanValue())
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131433188, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131433189, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
-  }
+  public long a;
+  public long b;
 }
 
 

@@ -1,22 +1,38 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
-class sfz
-  implements Runnable
+public class sfz
+  extends AccountObserver
 {
-  sfz(sfy paramsfy, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public sfz(ChatHistoryForC2C paramChatHistoryForC2C, boolean paramBoolean) {}
   
-  public void run()
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    Message localMessage = this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage();
-    localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper;
-    this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(22, 2);
-    this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(22, localMessage);
-    ReportController.b(this.jdField_a_of_type_Sfy.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008658", "0X8008658", 0, 0, "", "", "", "");
+    boolean bool2 = false;
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 != null) {
+        break label93;
+      }
+    }
+    label93:
+    for (int i = 0;; i = paramString2.length())
+    {
+      QLog.d("ChatHistoryForC2C", 2, i);
+      boolean bool1 = bool2;
+      if (paramBoolean)
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramString2)) {
+          bool1 = true;
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.runOnUiThread(new sga(this, bool1));
+      return;
+    }
   }
 }
 

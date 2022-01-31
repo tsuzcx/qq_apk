@@ -1,27 +1,42 @@
-import com.tencent.mobileqq.app.asyncdb.cache.RoamDateCache;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindServlet;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
 public class zpv
-  implements Comparator
+  implements Runnable
 {
-  public zpv(RoamDateCache paramRoamDateCache) {}
+  public zpv(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public int a(Map.Entry paramEntry1, Map.Entry paramEntry2)
+  public void run()
   {
-    paramEntry1 = ((java.lang.String)paramEntry1.getKey()).split("&")[1];
-    int i = Integer.parseInt(paramEntry1.split("-")[0]);
-    int j = Integer.parseInt(paramEntry1.split("-")[1]);
-    paramEntry1 = ((java.lang.String)paramEntry2.getKey()).split("&")[1];
-    int k = Integer.parseInt(paramEntry1.split("-")[0]);
-    int m = Integer.parseInt(paramEntry1.split("-")[1]);
-    if (i > k) {
-      return 1;
-    }
-    if (i == k) {
-      return j - m;
-    }
-    return -1;
+    if (PhoneContactManagerImp.a(this.a) == null) {}
+    long l2;
+    do
+    {
+      return;
+      l1 = this.a.a.getLong("key_req_last_login_time", 0L);
+      l2 = this.a.a.getLong("key_req_login_interval", 86400000L);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder(100);
+        ((StringBuilder)localObject).append("checkLastLogin, lastReqTime = ").append(l1);
+        ((StringBuilder)localObject).append(", current = ").append(System.currentTimeMillis());
+        ((StringBuilder)localObject).append(", interval = ").append(l2);
+        ((StringBuilder)localObject).append(", isRequesting = ").append(PhoneContactManagerImp.d(this.a));
+        QLog.d("PhoneContact.Manager", 2, ((StringBuilder)localObject).toString());
+      }
+    } while ((PhoneContactManagerImp.d(this.a)) || (!this.a.c()) || (Math.abs(System.currentTimeMillis() - l1) < l2));
+    PhoneContactManagerImp.a(this.a, true);
+    Object localObject = new NewIntent(PhoneContactManagerImp.a(this.a).getApplication(), ContactBindServlet.class);
+    ((NewIntent)localObject).putExtra("req_type", 32);
+    long l1 = this.a.a.getLong("key_login_info_timestamp", 0L);
+    ((NewIntent)localObject).putExtra("next_flag", 0);
+    ((NewIntent)localObject).putExtra("time_stamp", l1);
+    ((NewIntent)localObject).putExtra("unique_phone_no", this.a.a());
+    PhoneContactManagerImp.a(this.a).startServlet((NewIntent)localObject);
   }
 }
 

@@ -1,10 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
 
-public final class aokd
-  implements DialogInterface.OnClickListener
+class aokd
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  aokd(aokc paramaokc, aojz paramaojz) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_Aojz.a(this.jdField_a_of_type_Aojz.a.getProgress());
+  }
 }
 
 

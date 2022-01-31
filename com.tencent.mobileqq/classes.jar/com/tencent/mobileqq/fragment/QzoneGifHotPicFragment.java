@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import adoe;
+import adwm;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,14 +23,14 @@ public class QzoneGifHotPicFragment
   extends PublicBaseFragment
   implements HotPicPageView.OnHotPicItemClickListener
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adoe(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adwm(this);
   private View jdField_a_of_type_AndroidViewView;
   protected FrameLayout a;
   public BaseActivity a;
   protected QzoneHotPicPanel a;
   private String jdField_a_of_type_JavaLangString;
   
-  private void e()
+  private void d()
   {
     try
     {
@@ -43,19 +43,11 @@ public class QzoneGifHotPicFragment
     }
   }
   
-  public void a(Activity paramActivity)
+  protected void a()
   {
-    super.a(paramActivity);
-    if (paramActivity != null)
-    {
-      paramActivity.getWindow().setFlags(1024, 1024);
-      paramActivity.overridePendingTransition(0, 0);
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
+    this.jdField_a_of_type_AndroidViewView = getActivity().findViewById(2131373757);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)getActivity().findViewById(2131373756));
   }
   
   public boolean a(View paramView, String paramString, HotPicData paramHotPicData)
@@ -71,7 +63,7 @@ public class QzoneGifHotPicFragment
     if (getActivity() != null)
     {
       getActivity().setResult(-1, paramView);
-      d();
+      c();
       getActivity().finish();
     }
     return false;
@@ -79,21 +71,9 @@ public class QzoneGifHotPicFragment
   
   protected void b()
   {
-    this.jdField_a_of_type_AndroidViewView = getActivity().findViewById(2131373730);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)getActivity().findViewById(2131373729));
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  protected void c()
-  {
     if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel = ((QzoneHotPicPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971222, null));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel = ((QzoneHotPicPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971245, null));
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel.a(getActivity().app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel, -1, DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 250.0F));
     }
@@ -101,35 +81,55 @@ public class QzoneGifHotPicFragment
     TribeUtils.a("pub_page_new", "exp_gif", 0, 0, new String[] { "", "" });
   }
   
-  public boolean c()
-  {
-    return false;
-  }
-  
-  protected void d()
+  protected void c()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel.isShown())) {
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetQzoneHotPicPanel.a(false);
     }
   }
   
-  public boolean d()
+  public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    return super.d();
+    super.initWindowStyleAndAnimation(paramActivity);
+    if (paramActivity != null)
+    {
+      paramActivity.getWindow().setFlags(1024, 1024);
+      paramActivity.overridePendingTransition(0, 0);
+    }
+  }
+  
+  public boolean isWrapContent()
+  {
+    return false;
+  }
+  
+  public boolean needImmersive()
+  {
+    return false;
+  }
+  
+  public boolean needStatusTrans()
+  {
+    return false;
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    b();
+    a();
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getActivity();
-    e();
-    c();
+    d();
+    b();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public boolean onBackEvent()
+  {
+    return super.onBackEvent();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -139,7 +139,7 @@ public class QzoneGifHotPicFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130971212, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130971235, null);
     paramLayoutInflater.setSystemUiVisibility(4);
     return paramLayoutInflater;
   }
@@ -147,6 +147,14 @@ public class QzoneGifHotPicFragment
   public void onDestroy()
   {
     super.onDestroy();
+  }
+  
+  public void onFinish()
+  {
+    super.onFinish();
+    if (getActivity() != null) {
+      getActivity().overridePendingTransition(0, 0);
+    }
   }
   
   public void onPause()
@@ -157,14 +165,6 @@ public class QzoneGifHotPicFragment
   public void onResume()
   {
     super.onResume();
-  }
-  
-  public void u_()
-  {
-    super.u_();
-    if (getActivity() != null) {
-      getActivity().overridePendingTransition(0, 0);
-    }
   }
 }
 

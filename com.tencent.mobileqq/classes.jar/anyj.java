@@ -1,17 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.AnimatorListener;
+import android.widget.LinearLayout;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
-public final class anyj
-  implements ValueAnimator.AnimatorUpdateListener
+public class anyj
+  implements Runnable
 {
-  public anyj(AnimatorFactory.AnimatorListener paramAnimatorListener) {}
+  public anyj(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
+    this.a.a.getChildCount();
+    if (QIMProviderContainerView.b(this.a)) {}
   }
 }
 

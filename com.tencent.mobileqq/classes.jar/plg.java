@@ -1,17 +1,53 @@
-import com.tencent.component.network.utils.http.pool.AbstractConnPool;
-import com.tencent.component.network.utils.http.pool.PoolEntry;
+import android.os.StatFs;
+import com.tencent.component.media.ImageManagerEnv;
+import com.tencent.component.media.image.ImageManager;
+import java.io.File;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
-public class plg
-  extends plj
+public final class plg
+  implements Runnable
 {
-  public plg(AbstractConnPool paramAbstractConnPool, Object paramObject1, Object paramObject2)
+  public void run()
   {
-    super(paramObject1);
-  }
-  
-  protected PoolEntry a(Object paramObject)
-  {
-    return this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolAbstractConnPool.a(this.jdField_a_of_type_JavaLangObject, paramObject);
+    synchronized ()
+    {
+      ImageManager.a().clear();
+      ImageManager.a("");
+      ImageManager.a(0L);
+      ImageManager.a("/etc/vold.fstab");
+      ImageManager.a("/etc/internal_sd.fstab");
+      ImageManager.a("/etc/external_sd.fstab");
+      Iterator localIterator = ImageManager.a().values().iterator();
+      for (;;)
+      {
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          try
+          {
+            Object localObject2 = new File(str);
+            if ((((File)localObject2).exists()) && (((File)localObject2).canWrite()) && (ImageManager.a(str)))
+            {
+              localObject2 = new StatFs(str);
+              long l = ((StatFs)localObject2).getAvailableBlocks() * ((StatFs)localObject2).getBlockSize();
+              if ((l > 0L) && (ImageManager.a() < l))
+              {
+                ImageManager.a(l);
+                ImageManager.a(str);
+              }
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            localThrowable.printStackTrace();
+          }
+        }
+      }
+    }
+    ImageManager.b(null);
+    ImageManager.getCachePath(ImageManagerEnv.getAppContext());
   }
 }
 

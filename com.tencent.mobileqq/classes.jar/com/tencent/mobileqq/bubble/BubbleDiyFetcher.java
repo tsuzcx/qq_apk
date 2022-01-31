@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.bubble;
 
-import abkw;
-import abkx;
-import abky;
-import abkz;
+import abrx;
+import abry;
+import abrz;
+import absa;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.os.Handler;
@@ -60,7 +60,7 @@ public class BubbleDiyFetcher
     this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
     this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaLangRunnable = new abkw(this);
+    this.jdField_a_of_type_JavaLangRunnable = new abrx(this);
   }
   
   public static BubbleDiyFetcher a()
@@ -138,7 +138,7 @@ public class BubbleDiyFetcher
       if (QLog.isColorLevel()) {
         QLog.i("BubbleDiyFetcher", 2, "refreshDrawableOnUiThread: " + TextUtils.join(",", localHashSet));
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new abky(this, localHashSet));
+      this.jdField_a_of_type_AndroidOsHandler.post(new abrz(this, localHashSet));
     }
   }
   
@@ -147,7 +147,7 @@ public class BubbleDiyFetcher
     if (!jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = true;
-      ThreadManager.post(new abkx(this, paramQQAppInterface), 5, null, false);
+      ThreadManager.post(new abry(this, paramQQAppInterface), 5, null, false);
     }
   }
   
@@ -402,7 +402,7 @@ public class BubbleDiyFetcher
       return;
       a(paramQQAppInterface);
     } while ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) && (this.c.isEmpty()));
-    ThreadManager.post(new abkz(this, paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new absa(this, paramQQAppInterface), 5, null, false);
   }
   
   public void b(String paramString)

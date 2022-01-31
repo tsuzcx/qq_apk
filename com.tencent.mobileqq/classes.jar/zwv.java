@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public final class zwv
-  implements DialogInterface.OnClickListener
+public class zwv
+  implements FilenameFilter
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public zwv(CleanCache paramCleanCache) {}
+  
+  public boolean accept(File paramFile, String paramString)
   {
-    paramDialogInterface.dismiss();
+    return !paramString.contains("CrashInfoSummary.txt");
   }
 }
 

@@ -2,8 +2,6 @@ package com.tencent.mobileqq.apollo.game;
 
 public abstract interface IApolloGameInterface
 {
-  public abstract void a();
-  
   public abstract void a(Object paramObject);
   
   public abstract void b();
@@ -13,6 +11,12 @@ public abstract interface IApolloGameInterface
   public abstract void c();
   
   public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

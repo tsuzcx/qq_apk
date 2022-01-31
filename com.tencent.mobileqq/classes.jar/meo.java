@@ -1,16 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsScrollLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsScrollLayout.ContentLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.widget.ActionSheet.WatchDismissActions;
 
 public class meo
-  implements Runnable
+  implements ActionSheet.WatchDismissActions
 {
-  public meo(VideoFeedsScrollLayout paramVideoFeedsScrollLayout) {}
+  public meo(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void run()
+  public void a()
   {
-    if (VideoFeedsScrollLayout.a(this.a) != null) {
-      VideoFeedsScrollLayout.a(this.a).a();
-    }
+    VideoFeedsAdapter.a(this.a).d();
   }
 }
 

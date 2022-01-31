@@ -16,13 +16,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
-import ona;
+import orm;
 
 public class TroopStoryManager
   implements Manager
 {
   static final String jdField_a_of_type_JavaLangString = StoryApi.a("StoryGroupSvc.do_video_delete");
-  ProtoUtils.StoryProtocolObserver jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new ona(this);
+  ProtoUtils.StoryProtocolObserver jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new orm(this);
   public TroopDynamicConfig a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;

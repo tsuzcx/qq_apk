@@ -1,38 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.view.MusicProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import java.util.HashMap;
+import com.tencent.weiyun.utils.Singleton;
+import cooperation.weiyun.channel.WySender;
 
-public class anpr
-  implements View.OnClickListener
+public final class anpr
+  extends Singleton
 {
-  public anpr(QIMProviderContainerView paramQIMProviderContainerView) {}
-  
-  public void onClick(View paramView)
+  protected WySender a(Void paramVoid)
   {
-    if (paramView.getId() == 2131362497)
-    {
-      MusicProviderView localMusicProviderView = (MusicProviderView)QIMProviderContainerView.a(this.a).get(Integer.valueOf(104));
-      if ((localMusicProviderView != null) && (!localMusicProviderView.c())) {
-        QQToast.a(BaseApplicationImpl.getContext(), "分段视频拍摄过程中不支持选择音乐", 0).a();
-      }
-    }
-    do
-    {
-      return;
-      int i = ((Integer)paramView.getTag()).intValue();
-      QIMProviderContainerView.a(this.a, i, 0, null, false);
-    } while (QIMProviderContainerView.a(this.a) == null);
-    QIMProviderContainerView.a(this.a).e();
+    return new WySender(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpr
  * JD-Core Version:    0.7.0.1
  */

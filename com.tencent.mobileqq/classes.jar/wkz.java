@@ -1,17 +1,27 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.util.MqqWeakReferenceHandler;
 
-class wkz
-  implements Runnable
+public class wkz
+  implements DialogInterface.OnKeyListener
 {
-  wkz(wky paramwky, Bitmap paramBitmap) {}
+  public wkz(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Wky.a.a.findViewById(2131362840).setBackgroundDrawable(localBitmapDrawable);
+    if (paramInt == 84) {}
+    do
+    {
+      return true;
+      if (paramInt != 4) {
+        break;
+      }
+    } while (BlessSelectMemberActivity.a() == null);
+    BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    return true;
+    return false;
   }
 }
 

@@ -1,55 +1,34 @@
 import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoBehaviorsReporter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.ADVideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.BaseVideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsInterruptedAdManager;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayProgressListener;
 
 public class meb
-  implements Runnable
+  implements VideoFeedsPlayManager.VideoPlayProgressListener
 {
-  public meb(VideoFeedsPlayManager paramVideoFeedsPlayManager, boolean paramBoolean, VideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam) {}
+  public meb(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if ((VideoFeedsAdapter.a(this.a) instanceof VideoFeedsAdapter.ADVideoItemHolder))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.b(1);
-      localObject = VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager);
-      if ((localObject == null) || (((VideoPluginInstall)localObject).a())) {
-        break label76;
+      localADVideoItemHolder = (VideoFeedsAdapter.ADVideoItemHolder)VideoFeedsAdapter.a(this.a);
+      if ((localADVideoItemHolder.jdField_a_of_type_Int == 5) && (localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a != null) && (localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a.a != null) && (localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a.a.c == 12) && (paramLong >= 3000L) && (!localADVideoItemHolder.d.isShown()) && (VideoFeedsAdapter.a(this.a) != null)) {
+        VideoFeedsAdapter.a(this.a).sendEmptyMessage(6);
       }
-      ((VideoPluginInstall)localObject).a();
     }
-    label76:
-    do
+    while ((!(VideoFeedsAdapter.a(this.a) instanceof VideoFeedsAdapter.BaseVideoItemHolder)) || (VideoFeedsAdapter.a(this.a) == null))
     {
-      do
-      {
-        return;
-        VideoFeedsPlayManager.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager, true);
-        if (VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager) == null) {
-          break;
-        }
-        VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager).sendEmptyMessageDelayed(-1, 1200L);
-        break;
-        localObject = VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager);
-        VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager, VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam));
-        if (VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager) != null) {
-          VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager).a(VideoFeedsPlayManager.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager));
-        }
-        if (VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager) != null) {
-          break label155;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "playVideo() ERROR, mUIHandler==null");
+      VideoFeedsAdapter.ADVideoItemHolder localADVideoItemHolder;
       return;
-      VideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager).post(new mec(this, (VideoPlayerWrapper)localObject));
-    } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam == null);
-    label155:
-    VideoBehaviorsReporter.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a);
+    }
+    VideoFeedsAdapter.a(this.a).a((int)(paramLong / 1000.0D));
   }
 }
 

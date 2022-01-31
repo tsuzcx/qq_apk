@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aiqu;
+import aivx;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -127,9 +127,9 @@ public class ScribblePicDownloadProcessor
     d();
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble != null) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.fileDownloadStatus = 3;
     }
@@ -147,7 +147,7 @@ public class ScribblePicDownloadProcessor
       this.o = false;
       this.jdField_j_of_type_Int = 0;
       this.jdField_j_of_type_JavaLangString = "";
-      this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a.post(new aiqu(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a.post(new aivx(this));
     }
     return 0;
   }
@@ -260,7 +260,7 @@ public class ScribblePicDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ScribblePicDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

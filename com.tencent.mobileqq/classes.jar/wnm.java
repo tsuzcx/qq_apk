@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class wnm
-  extends MessageObserver
+  extends ReadInJoyObserver
 {
-  private wnm(FriendFragment paramFriendFragment) {}
+  public wnm(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void f()
+  public void e(boolean paramBoolean, List paramList)
   {
-    if (FriendFragment.b(this.a)) {
-      FriendFragment.a(this.a, 1400L, true);
+    if (paramBoolean)
+    {
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.a.c.clear();
+        this.a.c.addAll(paramList);
+      }
+      ClassificationSearchActivity.b(this.a, true);
     }
   }
 }

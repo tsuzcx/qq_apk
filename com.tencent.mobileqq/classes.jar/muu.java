@@ -1,30 +1,16 @@
-import com.tencent.biz.pubaccount.util.PreloadManager;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
 
 public class muu
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public muu(PreloadManager paramPreloadManager) {}
+  public muu(NativeText paramNativeText) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    ??? = PreloadManager.a(this.a).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      String str = (String)((Iterator)???).next();
-      PreloadManager.a(this.a, str);
-    }
-    synchronized (this.a.b)
-    {
-      PreloadManager.a(this.a).clear();
-      if (PreloadManager.b(this.a).size() > 0)
-      {
-        this.a.a();
-        return;
-      }
-      this.a.a = false;
-    }
+    this.a.a(0, 0, true);
+    return false;
   }
 }
 

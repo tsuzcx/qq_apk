@@ -1,23 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vashealth.SportManager;
-import mqq.observer.BusinessObserver;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.JumpAction;
 
 public class akkf
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public akkf(SportManager paramSportManager) {}
+  public akkf(JumpAction paramJumpAction) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      ThreadManager.post(new akkg(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
+    if ((JumpAction.a(this.a) != null) && (JumpAction.a(this.a).isShowing())) {
+      JumpAction.a(this.a).dismiss();
     }
+    ((BaseActivity)this.a.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akkf
  * JD-Core Version:    0.7.0.1
  */

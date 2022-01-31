@@ -1,26 +1,14 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.ADVideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayProgressListener;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
 
 public class mao
-  implements VideoFeedsPlayManager.VideoPlayProgressListener
+  extends BaseSkinRes
 {
-  public mao(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public mao(ReadInJoySkinManager paramReadInJoySkinManager) {}
   
-  public void a(long paramLong)
+  public int a()
   {
-    if ((VideoFeedsAdapter.a(this.a) instanceof VideoFeedsAdapter.ADVideoItemHolder))
-    {
-      VideoFeedsAdapter.ADVideoItemHolder localADVideoItemHolder = (VideoFeedsAdapter.ADVideoItemHolder)VideoFeedsAdapter.a(this.a);
-      if ((localADVideoItemHolder.jdField_a_of_type_Int == 5) && (localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a != null) && (localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a.a != null) && (localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a.a.c == 12) && (paramLong >= 3000L) && (!localADVideoItemHolder.d.isShown()) && (VideoFeedsAdapter.a(this.a) != null)) {
-        VideoFeedsAdapter.a(this.a).sendEmptyMessage(6);
-      }
-    }
+    return -16265040;
   }
 }
 

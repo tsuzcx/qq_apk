@@ -1,15 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-public class oth
-  implements DialogInterface.OnDismissListener
+public final class oth
+  implements DialogInterface.OnClickListener
 {
-  public oth(QRDisplayActivity paramQRDisplayActivity) {}
+  public oth(DownloadInfo paramDownloadInfo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d = false;
+    paramDialogInterface.dismiss();
+    WeishiGuideUtils.a(this.a);
   }
 }
 

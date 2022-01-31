@@ -1,33 +1,31 @@
-import android.graphics.Bitmap;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.ui.RedPacketGameEmojiAnimation;
-import com.tencent.av.redpacket.ui.RedPacketGameView;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class jlp
-  implements Runnable
 {
-  public jlp(RedPacketGameView paramRedPacketGameView, AVRedPacketManager paramAVRedPacketManager) {}
+  int a = -1;
+  int b = -1;
+  int c = -1;
+  int d = -1;
+  int e = -1;
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    Object localObject = (AVActivity)this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.getContext();
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.a != null))
+    if ((paramInt1 != this.a) || (paramInt2 != this.b) || (paramInt3 != this.c) || (paramInt4 != this.d) || (paramInt5 != this.e))
     {
-      localObject = ((AVActivity)localObject).a;
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.a.b(true);
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.setDrawingCacheEnabled(true);
-      Bitmap localBitmap = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.getDrawingCache();
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.a.b(false);
-      ThreadManager.postImmediately(new jlq(this, (VideoLayerUI)localObject, localBitmap), null, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("GraphicRenderMgr", 1, "setBeautyOrFaceConfig, level[" + this.a + "->" + paramInt1 + "], type[" + this.b + "->" + paramInt2 + "], endlevel[" + this.c + "->" + paramInt3 + "], faceLevel[" + this.d + "->" + paramInt4 + "], beautyLevel[" + this.e + "->" + paramInt5 + "]");
+      }
+      this.a = paramInt1;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.d = paramInt4;
+      this.e = paramInt5;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jlp
  * JD-Core Version:    0.7.0.1
  */

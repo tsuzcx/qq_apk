@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
+import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver;
+import com.tencent.mobileqq.troop.utils.TroopFileError;
+import java.util.Set;
 
 public class ajld
-  implements View.OnClickListener
+  extends TroopFileDownloadMgr.FileDownloadMgrObserver
 {
-  public ajld(TextItem paramTextItem) {}
+  public ajld(TroopFileTransferMgr paramTroopFileTransferMgr) {}
   
-  public void onClick(View paramView)
+  protected void a(Set paramSet)
   {
-    if (!paramView.hasFocus())
+    this.a.b = 1;
+    if ((paramSet != null) && (paramSet.contains(Long.valueOf(TroopFileTransferMgr.c(this.a))))) {
+      this.a.b = 2;
+    }
+    TroopFileTransferUtil.Log.c("TroopFileTransferMgr", TroopFileTransferUtil.Log.a, "onW2MPausedDownload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
+    if (this.a.a > 0)
     {
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      ThreadManager.getUIHandler().post(new ajle(this, paramView));
+      if ((this.a.b == 2) || (this.a.a == 2)) {
+        TroopFileError.a(TroopFileTransferMgr.b(this.a), TroopFileTransferMgr.d(this.a), 107);
+      }
+      this.a.a = 0;
+      this.a.b = 0;
     }
   }
 }

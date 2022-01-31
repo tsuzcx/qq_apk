@@ -1,32 +1,17 @@
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import java.io.File;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class anro
+public class anro
   implements Runnable
 {
-  anro(anrn paramanrn, String paramString) {}
+  public anro(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4) {}
   
   public void run()
   {
-    try
-    {
-      EditPicSave.a(this.jdField_a_of_type_Anrn.a, PlusPanelUtils.a());
-      File localFile = new File(EditPicSave.a(this.jdField_a_of_type_Anrn.a));
-      if (FileUtils.a(new File(this.jdField_a_of_type_JavaLangString), localFile)) {
-        ImageUtil.a(this.jdField_a_of_type_Anrn.a.a.getActivity(), localFile);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("EditPicSave", 2, "savePic " + localException.toString());
-    }
+    QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, this.jdField_a_of_type_Boolean);
+    QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, this.b);
+    QIMEffectCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, this.c);
+    QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, this.d);
+    QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, this.jdField_a_of_type_Boolean, this.b, this.c, this.d);
   }
 }
 

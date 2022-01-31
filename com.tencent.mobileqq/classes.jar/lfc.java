@@ -1,20 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 public class lfc
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public lfc(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
+  public lfc(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt == 0)
+    QQMessageFacade localQQMessageFacade = this.a.app.a();
+    if (localQQMessageFacade != null)
     {
-      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo, false);
-      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity).dismiss();
+      int i = localQQMessageFacade.b();
+      this.a.a(i);
     }
   }
 }

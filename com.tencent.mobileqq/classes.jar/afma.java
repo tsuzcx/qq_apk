@@ -1,22 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
 
-public final class afma
-  implements VideoFeedsUploader.UploadListener
+public class afma
+  implements IphonePickerView.PickerViewAdapter
 {
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo) {}
+  public afma(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, int paramInt) {}
-  
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
+  public int getColumnCount()
   {
-    ThreadManager.getUIHandler().post(new afmb(this, paramUploadInfo, paramUploadResult));
+    return 1;
   }
   
-  public void b(VideoFeedsUploader.UploadInfo paramUploadInfo) {}
+  public int getRowCount(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String getText(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 >= 0)
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 1) {}
+    }
+    else
+    {
+      paramInt1 = 0;
+    }
+    if (paramInt1 == 0) {
+      return "男";
+    }
+    return "女";
+  }
 }
 
 

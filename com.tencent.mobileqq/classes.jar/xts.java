@@ -1,31 +1,36 @@
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class xts
-  implements ModuleDownloadListener
+  implements View.OnTouchListener
 {
-  public xts(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
+  public xts(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onDownloadCanceled(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QZLog.i("QzDynamicVideoPreviewActivity", 2, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("QzDynamicVideoPreviewActivity", 2, new Object[] { "onDownloadFailed ", paramString });
-    this.a.runOnUiThread(new xtu(this));
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("cyber_clink.jar")) {
-      return;
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (EditLocalVideoActivity.a(this.a).isPlaying()) {
+        if (EditLocalVideoActivity.a(this.a))
+        {
+          EditLocalVideoActivity.c(this.a, false);
+          EditLocalVideoActivity.a(this.a).pause();
+          EditLocalVideoActivity.b(this.a).setVisibility(0);
+        }
+      }
+      while (!EditLocalVideoActivity.a(this.a)) {
+        return true;
+      }
+      EditLocalVideoActivity.a(this.a).start();
+      EditLocalVideoActivity.c(this.a, true);
+      EditLocalVideoActivity.b(this.a).setVisibility(4);
+      return true;
     }
-    this.a.runOnUiThread(new xtt(this));
+    return false;
   }
 }
 

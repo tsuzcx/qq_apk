@@ -13,6 +13,7 @@ import com.tencent.mobileqq.servlet.CliNotifyPush;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_dc00420;
+import cooperation.qzone.report.lp.QZoneLoginReportHelper;
 import java.util.List;
 
 public class NotificationClickReceiver
@@ -96,15 +97,16 @@ public class NotificationClickReceiver
         }
         localUri = Uri.parse(str1);
         if (!TextUtils.isEmpty(localUri.getQueryParameter("from"))) {
-          break label265;
+          break label268;
         }
         paramContext = paramIntent;
         if (localUri.getPathSegments().size() <= 0) {}
       }
-      label265:
+      label268:
       for (paramContext = (String)localUri.getPathSegments().get(0);; paramContext = localUri.getQueryParameter("from"))
       {
         LpReportInfo_dc00420.report(3, 0, paramContext, str2, 1);
+        QZoneLoginReportHelper.reportLoginFromMQQPush();
         if (!QLog.isColorLevel()) {
           break;
         }

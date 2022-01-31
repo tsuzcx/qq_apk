@@ -1,49 +1,24 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
 
 public class lfd
   implements Runnable
 {
-  public lfd(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo, boolean paramBoolean) {}
+  public lfd(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity, int paramInt) {}
   
   public void run()
   {
-    String str1 = "3";
-    if ((ReadInJoyVideoSubChannelActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity) == 4) || (ReadInJoyVideoSubChannelActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity) == 6))
+    if (this.jdField_a_of_type_Int <= 0)
     {
-      str1 = "0";
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo.mIsTopic) {
-        break label119;
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label113;
-      }
-    }
-    label113:
-    for (String str2 = "1";; str2 = "2")
-    {
-      PublicAccountReportUtils.a(null, "", "0X80088BC", "0X80088BC", 0, 0, str2, str1, "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity), null), false);
-      return;
-      if (ReadInJoyVideoSubChannelActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity) == 8)
-      {
-        str1 = "1";
-        break;
-      }
-      if (ReadInJoyVideoSubChannelActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity) != 4) {
-        break;
-      }
-      str1 = "2";
-      break;
-    }
-    label119:
-    if (this.jdField_a_of_type_Boolean) {}
-    for (str2 = "1";; str2 = "2")
-    {
-      PublicAccountReportUtils.a(null, "", "0X8007BFE", "0X8007BFE", 0, 0, str2, str1, "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity), null), false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.a.setText(2131433311);
       return;
     }
+    if (this.jdField_a_of_type_Int > 99)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.a.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.getString(2131433311), Integer.valueOf(99) }));
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.a.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.getString(2131433311), Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
 }
 

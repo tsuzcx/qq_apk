@@ -1,15 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.qphone.base.util.QLog;
 
 public class lpq
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public lpq(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int);
-    ReadInJoyLogicEngineEventDispatcher.a().b();
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+      {
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
+        ReadinjoySPEventReport.e(false);
+        return;
+      }
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
+      {
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
+        ReadinjoySPEventReport.e(true);
+        return;
+      }
+      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
+      {
+        ReadinjoySPEventReport.c(false);
+        return;
+      }
+    } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()));
+    ReadinjoySPEventReport.d(false);
   }
 }
 

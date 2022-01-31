@@ -1,27 +1,13 @@
-import android.content.Context;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-
-public class aill
-  extends VideoSprite
+class aill
 {
-  public aill(SpriteVideoView paramSpriteVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
-  {
-    super(paramSpriteGLView, paramContext, paramBoolean);
-  }
+  public int a;
+  public long a;
   
-  protected void a(int paramInt1, int paramInt2)
-  {
-    if (this.a.a == 0) {
-      this.a.a = paramInt2;
-    }
-    super.a(paramInt1, this.a.a);
-  }
+  private aill(ailk paramailk) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aill
  * JD-Core Version:    0.7.0.1
  */

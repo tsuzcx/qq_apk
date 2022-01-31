@@ -1,45 +1,75 @@
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import QQService.SvcDevLoginInfo;
+import QQService.SvcRspGetDevLoginInfo;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class tev
-  implements URLDrawable.URLDrawableListener
+  extends FriendListObserver
 {
-  public tev(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public tev(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  protected void onGetLoginDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    LoginInfoActivity.a(this.a);
+    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult success");
+      }
+      LoginInfoActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecCurrentLoginDevInfo);
+      if (QLog.isColorLevel())
+      {
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
+        paramSvcRspGetDevLoginInfo = LoginInfoActivity.a(this.a).iterator();
+        while (paramSvcRspGetDevLoginInfo.hasNext())
+        {
+          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
+          if (localSvcDevLoginInfo != null) {
+            QLog.d("LoginInfoActivity.AccDevSec", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
+          }
+        }
+        QLog.d("LoginInfoActivity.AccDevSec", 2, "------------------------------------------------------------------------------");
+      }
+      LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      return;
     }
-    if (PermisionPrivacyActivity.c(this.a) != null) {
-      PermisionPrivacyActivity.c(this.a).postInvalidate();
+    if (QLog.isColorLevel())
+    {
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult fail isSuccess=" + paramBoolean);
+      if (paramSvcRspGetDevLoginInfo != null) {
+        break label288;
+      }
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data is null");
+    }
+    for (;;)
+    {
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131436604), 0).b(this.a.getTitleBarHeight());
+      return;
+      label288:
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onGetLoginDevResult data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginInfoActivity.AccDevSec", 2, "onKickOutDevFResult isSuccess=" + paramBoolean + " appid=" + paramLong + " result=" + paramInt1 + " index=" + paramInt2);
     }
-    if (PermisionPrivacyActivity.c(this.a) != null) {
-      PermisionPrivacyActivity.c(this.a).postInvalidate();
+    LoginInfoActivity.a(this.a);
+    if (paramBoolean)
+    {
+      if ((paramInt1 == 0) && (paramInt2 >= 1) && (paramInt2 < LoginInfoActivity.a(this.a).size()))
+      {
+        LoginInfoActivity.a(this.a).remove(paramInt2);
+        LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+      }
+      return;
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, UIUtils.a(this.a.app.getApp(), 47.0F), UIUtils.a(this.a.app.getApp(), 14.0F));
-    }
-    if (PermisionPrivacyActivity.c(this.a) != null) {
-      PermisionPrivacyActivity.c(this.a).postInvalidate();
-    }
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131436529), 0).b(this.a.getTitleBarHeight());
   }
 }
 

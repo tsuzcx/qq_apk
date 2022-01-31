@@ -1,11 +1,20 @@
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.ApprovalMsgBuilder;
+import cooperation.dingdong.DingdongMsgItemTitleImageView;
 
-class uyz
-  implements ActionSheet.OnDismissListener
+public class uyz
+  extends BaseBubbleBuilder.ViewHolder
 {
-  uyz(uyy paramuyy) {}
+  public LinearLayout a;
+  public TextView a;
+  public DingdongMsgItemTitleImageView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public void onDismiss() {}
+  public uyz(ApprovalMsgBuilder paramApprovalMsgBuilder) {}
 }
 
 

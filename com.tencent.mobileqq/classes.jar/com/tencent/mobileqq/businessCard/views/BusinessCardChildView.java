@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.views;
 
-import abot;
+import abvu;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -35,7 +35,7 @@ public class BusinessCardChildView
 {
   public static final Interpolator a;
   float jdField_a_of_type_Float;
-  abot jdField_a_of_type_Abot;
+  abvu jdField_a_of_type_Abvu;
   ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -102,9 +102,9 @@ public class BusinessCardChildView
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
   }
   
-  void a(abot paramabot)
+  void a(abvu paramabvu)
   {
-    this.jdField_a_of_type_Abot = paramabot;
+    this.jdField_a_of_type_Abvu = paramabvu;
   }
   
   @TargetApi(11)
@@ -170,7 +170,7 @@ public class BusinessCardChildView
       }
     }
     label262:
-    for (this.jdField_a_of_type_JavaLangString = localResources.getString(2131437096, new Object[] { paramObject, paramString1, paramString2, paramString3 });; this.jdField_a_of_type_JavaLangString = paramString1)
+    for (this.jdField_a_of_type_JavaLangString = localResources.getString(2131437116, new Object[] { paramObject, paramString1, paramString2, paramString3 });; this.jdField_a_of_type_JavaLangString = paramString1)
     {
       this.jdField_b_of_type_Boolean = true;
       return;
@@ -191,7 +191,7 @@ public class BusinessCardChildView
   {
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842329);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842364);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -202,8 +202,8 @@ public class BusinessCardChildView
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = 500;
       ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = 300;
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = super.getResources().getDrawable(2130842329);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130842329);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = super.getResources().getDrawable(2130842364);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130842364);
       localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       return;
@@ -213,15 +213,15 @@ public class BusinessCardChildView
       if (QLog.isColorLevel()) {
         QLog.w("BusinessCardChildView", 2, "get drawable failed : " + localException.toString() + " url: " + paramString);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842329);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842364);
     }
   }
   
   void b()
   {
     this.jdField_c_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Abot != null) {
-      this.jdField_a_of_type_Abot.a(this, false);
+    if (this.jdField_a_of_type_Abvu != null) {
+      this.jdField_a_of_type_Abvu.a(this, false);
     }
     super.invalidate();
   }
@@ -245,23 +245,23 @@ public class BusinessCardChildView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Abot != null) {
-      this.jdField_a_of_type_Abot.a(this, a());
+    if (this.jdField_a_of_type_Abvu != null) {
+      this.jdField_a_of_type_Abvu.a(this, a());
     }
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369818);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369820));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131369821);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369823));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369824));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369825));
-    this.d = ((TextView)findViewById(2131369822));
-    this.e = ((TextView)findViewById(2131369819));
-    View localView = findViewById(2131368504);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369828);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369830));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131369831);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369833));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369834));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369835));
+    this.d = ((TextView)findViewById(2131369832));
+    this.e = ((TextView)findViewById(2131369829));
+    View localView = findViewById(2131368507);
     if (Build.VERSION.SDK_INT > 10) {
       localView.setLayerType(1, null);
     }
@@ -304,8 +304,8 @@ public class BusinessCardChildView
   public void setFocusedTask(boolean paramBoolean)
   {
     this.jdField_c_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Abot != null) {
-      this.jdField_a_of_type_Abot.a(this, true);
+    if (this.jdField_a_of_type_Abvu != null) {
+      this.jdField_a_of_type_Abvu.a(this, true);
     }
     super.setFocusableInTouchMode(true);
     super.requestFocus();

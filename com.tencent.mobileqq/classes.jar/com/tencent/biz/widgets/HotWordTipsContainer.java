@@ -86,9 +86,9 @@ public class HotWordTipsContainer
     Object localObject5;
     if (bool)
     {
-      ((LinearLayout)localObject1).setBackgroundResource(2130838580);
-      localObject3 = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970165, null);
-      paramHotWordSearchEntryDataModel = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970165, null);
+      ((LinearLayout)localObject1).setBackgroundResource(2130838586);
+      localObject3 = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970178, null);
+      paramHotWordSearchEntryDataModel = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970178, null);
       ((LinearLayout)localObject1).addView((View)localObject3);
       ((LinearLayout)localObject1).addView(paramHotWordSearchEntryDataModel);
       localObject2 = new LinearLayout.LayoutParams(0, -2);
@@ -96,9 +96,9 @@ public class HotWordTipsContainer
       ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       paramHotWordSearchEntryDataModel.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       super.addView((View)localObject1);
-      localObject4 = (LinearLayout)((RelativeLayout)localObject3).findViewById(2131369382);
-      localObject7 = (LinearLayout)((RelativeLayout)localObject3).findViewById(2131369386);
-      localObject5 = (LinearLayout)((RelativeLayout)localObject3).findViewById(2131369380);
+      localObject4 = (LinearLayout)((RelativeLayout)localObject3).findViewById(2131369387);
+      localObject7 = (LinearLayout)((RelativeLayout)localObject3).findViewById(2131369391);
+      localObject5 = (LinearLayout)((RelativeLayout)localObject3).findViewById(2131369385);
       localObject1 = a(localHotSearchItem.indexTextColor, "#777777");
       localObject2 = a(localHotSearchItem.indexBgColor, "#00000000");
       switch (localHotSearchItem.showType)
@@ -109,9 +109,9 @@ public class HotWordTipsContainer
         ((RelativeLayout)localObject3).setOnClickListener(this);
         i += 1;
         localHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.get(i);
-        localObject4 = (LinearLayout)paramHotWordSearchEntryDataModel.findViewById(2131369382);
-        localObject3 = (LinearLayout)paramHotWordSearchEntryDataModel.findViewById(2131369386);
-        localObject5 = (LinearLayout)paramHotWordSearchEntryDataModel.findViewById(2131369380);
+        localObject4 = (LinearLayout)paramHotWordSearchEntryDataModel.findViewById(2131369387);
+        localObject3 = (LinearLayout)paramHotWordSearchEntryDataModel.findViewById(2131369391);
+        localObject5 = (LinearLayout)paramHotWordSearchEntryDataModel.findViewById(2131369385);
         switch (localHotSearchItem.showType)
         {
         }
@@ -124,12 +124,12 @@ public class HotWordTipsContainer
       paramHotWordSearchEntryDataModel.setOnClickListener(this);
       i += 1;
       break;
-      ((LinearLayout)localObject1).setBackgroundResource(2130838579);
+      ((LinearLayout)localObject1).setBackgroundResource(2130838585);
       break label150;
       ((LinearLayout)localObject4).setVisibility(0);
-      localObject5 = (TextView)((LinearLayout)localObject4).findViewById(2131369385);
-      Object localObject6 = (TextView)((LinearLayout)localObject4).findViewById(2131369384);
-      localObject4 = ((LinearLayout)localObject4).findViewById(2131369383);
+      localObject5 = (TextView)((LinearLayout)localObject4).findViewById(2131369390);
+      Object localObject6 = (TextView)((LinearLayout)localObject4).findViewById(2131369389);
+      localObject4 = ((LinearLayout)localObject4).findViewById(2131369388);
       ((TextView)localObject5).setText(localHotSearchItem.title);
       ((TextView)localObject6).setText(String.valueOf(i + 1));
       if (bool)
@@ -142,11 +142,11 @@ public class HotWordTipsContainer
       ((View)localObject4).setBackgroundColor(Color.parseColor((String)localObject2));
       break label328;
       ((LinearLayout)localObject7).setVisibility(0);
-      Object localObject8 = (TextView)((LinearLayout)localObject7).findViewById(2131369389);
-      localObject4 = (TextView)((LinearLayout)localObject7).findViewById(2131369388);
-      localObject6 = (URLImageView)((LinearLayout)localObject7).findViewById(2131363063);
-      localObject5 = (URLImageView)((LinearLayout)localObject7).findViewById(2131369387);
-      localObject7 = (TextView)((LinearLayout)localObject7).findViewById(2131369390);
+      Object localObject8 = (TextView)((LinearLayout)localObject7).findViewById(2131369394);
+      localObject4 = (TextView)((LinearLayout)localObject7).findViewById(2131369393);
+      localObject6 = (URLImageView)((LinearLayout)localObject7).findViewById(2131363068);
+      localObject5 = (URLImageView)((LinearLayout)localObject7).findViewById(2131369392);
+      localObject7 = (TextView)((LinearLayout)localObject7).findViewById(2131369395);
       ((TextView)localObject8).setText(localHotSearchItem.title);
       ((TextView)localObject4).setText(String.valueOf(i + 1));
       ((TextView)localObject7).setText(localHotSearchItem.detailText);
@@ -184,7 +184,7 @@ public class HotWordTipsContainer
       ((TextView)localObject4).setTextColor(Color.parseColor((String)localObject1));
       break label328;
       ((LinearLayout)localObject5).setVisibility(0);
-      localObject4 = (TextView)((LinearLayout)localObject5).findViewById(2131369381);
+      localObject4 = (TextView)((LinearLayout)localObject5).findViewById(2131369386);
       ((TextView)localObject4).setText(localHotSearchItem.title);
       if (!bool) {
         break label328;
@@ -192,9 +192,9 @@ public class HotWordTipsContainer
       ((TextView)localObject4).setTextColor(Color.parseColor("#5F6062"));
       break label328;
       ((LinearLayout)localObject4).setVisibility(0);
-      localObject3 = (TextView)((LinearLayout)localObject4).findViewById(2131369385);
-      localObject5 = (TextView)((LinearLayout)localObject4).findViewById(2131369384);
-      localObject4 = ((LinearLayout)localObject4).findViewById(2131369383);
+      localObject3 = (TextView)((LinearLayout)localObject4).findViewById(2131369390);
+      localObject5 = (TextView)((LinearLayout)localObject4).findViewById(2131369389);
+      localObject4 = ((LinearLayout)localObject4).findViewById(2131369388);
       ((TextView)localObject3).setText(localHotSearchItem.title);
       ((TextView)localObject5).setText(String.valueOf(i + 1));
       ((TextView)localObject5).setTextColor(Color.parseColor((String)localObject1));
@@ -210,10 +210,10 @@ public class HotWordTipsContainer
         ((View)localObject4).setBackgroundColor(Color.parseColor((String)localObject2));
         continue;
         ((LinearLayout)localObject3).setVisibility(0);
-        localObject6 = (TextView)((LinearLayout)localObject3).findViewById(2131369389);
-        localObject2 = (TextView)((LinearLayout)localObject3).findViewById(2131369388);
-        localObject5 = (URLImageView)((LinearLayout)localObject3).findViewById(2131363063);
-        localObject4 = (TextView)((LinearLayout)localObject3).findViewById(2131369390);
+        localObject6 = (TextView)((LinearLayout)localObject3).findViewById(2131369394);
+        localObject2 = (TextView)((LinearLayout)localObject3).findViewById(2131369393);
+        localObject5 = (URLImageView)((LinearLayout)localObject3).findViewById(2131363068);
+        localObject4 = (TextView)((LinearLayout)localObject3).findViewById(2131369395);
         ((TextView)localObject6).setText(localHotSearchItem.title);
         ((TextView)localObject2).setText(String.valueOf(i + 1));
         ((TextView)localObject4).setText(localHotSearchItem.detailText);
@@ -226,7 +226,7 @@ public class HotWordTipsContainer
           localObject6 = URLDrawable.URLDrawableOptions.obtain();
           ((URLDrawable.URLDrawableOptions)localObject6).mLoadingDrawable = ((Drawable)localObject7);
           ((URLDrawable.URLDrawableOptions)localObject6).mFailedDrawable = ((Drawable)localObject7);
-          localObject3 = (URLImageView)((LinearLayout)localObject3).findViewById(2131369387);
+          localObject3 = (URLImageView)((LinearLayout)localObject3).findViewById(2131369392);
           localObject7 = URLDrawable.getDrawable(localHotSearchItem.imgUrl, (URLDrawable.URLDrawableOptions)localObject6);
           if (((URLDrawable)localObject7).getStatus() != 1) {
             ((URLDrawable)localObject7).restartDownload();
@@ -252,7 +252,7 @@ public class HotWordTipsContainer
         ((TextView)localObject2).setTextColor(Color.parseColor((String)localObject1));
         continue;
         ((LinearLayout)localObject5).setVisibility(0);
-        localObject1 = (TextView)((LinearLayout)localObject5).findViewById(2131369381);
+        localObject1 = (TextView)((LinearLayout)localObject5).findViewById(2131369386);
         ((TextView)localObject1).setText(localHotSearchItem.title);
         if (bool) {
           ((TextView)localObject1).setTextColor(Color.parseColor("#5F6062"));

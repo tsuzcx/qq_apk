@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
 
 public class yzf
-  implements View.OnClickListener
+  implements Runnable
 {
-  public yzf(ApolloPanel paramApolloPanel) {}
+  public yzf(ApolloBoxEnterView paramApolloBoxEnterView, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

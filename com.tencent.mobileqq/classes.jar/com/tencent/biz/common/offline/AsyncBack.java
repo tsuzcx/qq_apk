@@ -2,9 +2,9 @@ package com.tencent.biz.common.offline;
 
 public abstract interface AsyncBack
 {
-  public abstract void a(int paramInt);
+  public abstract void loaded(String paramString, int paramInt);
   
-  public abstract void a(String paramString, int paramInt);
+  public abstract void progress(int paramInt);
 }
 
 

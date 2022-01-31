@@ -1,17 +1,13 @@
-import android.os.Looper;
+import com.tencent.component.media.image.ImageManager;
 
-public final class plp
+public class plp
+  implements Runnable
 {
-  public static final plq a;
+  public plp(ImageManager paramImageManager) {}
   
-  static
+  public void run()
   {
-    if (Looper.getMainLooper() != null) {}
-    for (Looper localLooper = Looper.getMainLooper();; localLooper = Looper.myLooper())
-    {
-      a = new plq(localLooper);
-      return;
-    }
+    ImageManager.a(this.a, ImageManager.b());
   }
 }
 

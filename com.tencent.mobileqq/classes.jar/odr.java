@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.Config;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
 
-public final class odr
-  implements Parcelable.Creator
+public class odr
+  extends LruCache
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
+  public odr(URLImageLoader paramURLImageLoader, int paramInt)
   {
-    return new EditRecordVideoSource(paramParcel);
+    super(paramInt);
   }
   
-  public EditRecordVideoSource[] a(int paramInt)
+  protected int a(URLImageLoader.Config paramConfig, Drawable paramDrawable)
   {
-    return new EditRecordVideoSource[paramInt];
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramConfig, " size=", Integer.valueOf(i) });
+        return i;
+      }
+    }
+    return 524288;
   }
 }
 

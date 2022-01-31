@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 
-public class lig
-  implements ThirdVideoManager.UUIDToUrlCallback
+class lig
+  implements View.OnClickListener
 {
-  public lig(ReadInJoyVideoDownloadManager paramReadInJoyVideoDownloadManager) {}
+  lig(lie paramlie, lih paramlih) {}
   
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
+  public void onClick(View paramView)
   {
-    ReadInJoyVideoDownloadManager.a(this.a, paramString1);
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lie.a, lih.c(this.jdField_a_of_type_Lih));
+    PublicAccountReportUtils.a(null, "CliOper", "", lih.c(this.jdField_a_of_type_Lih), "0X80078A8", "0X80078A8", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
   }
 }
 

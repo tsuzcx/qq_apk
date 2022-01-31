@@ -1,21 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.task.OnAddOrDeleGameListener;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 class acka
-  implements Runnable
+  implements OnAddOrDeleGameListener
 {
   acka(acjz paramacjz) {}
   
-  public void run()
+  public void a(long paramLong, String paramString)
   {
-    if (ExtendFriendVoiceView.a(this.a.a) != null) {
-      ExtendFriendVoiceView.a(this.a.a).setBackgroundDrawable(ExtendFriendVoiceView.a(this.a.a));
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
+    {
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acka
  * JD-Core Version:    0.7.0.1
  */

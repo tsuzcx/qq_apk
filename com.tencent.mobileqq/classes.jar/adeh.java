@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.IGetTotalTime;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
+import android.content.Context;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import java.util.HashMap;
 
-public class adeh
-  implements FileViewMusicService.IGetTotalTime
+public final class adeh
+  implements Runnable
 {
-  public adeh(MusicFilePresenter paramMusicFilePresenter) {}
+  public adeh(Context paramContext, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.a.a(paramInt);
+    if (FileVideoManager.a == null) {
+      FileVideoManager.a = new FileVideoManager(null);
+    }
+    if (FileVideoManager.a(FileVideoManager.a) == null) {
+      FileVideoManager.a(FileVideoManager.a, new HashMap());
+    }
+    FileVideoManager.a(FileVideoManager.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback);
   }
 }
 

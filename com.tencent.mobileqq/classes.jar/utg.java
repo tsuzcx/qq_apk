@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker.ViewHolder;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
 
 public class utg
-  implements uti
+  extends View
 {
-  public utg(ColorPicker paramColorPicker, ColorPicker.ViewHolder paramViewHolder) {}
-  
-  public void a()
+  public utg(XBubbleAnimation paramXBubbleAnimation, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker$ViewHolder.a);
+    super(paramContext);
+  }
+  
+  protected boolean verifyDrawable(Drawable paramDrawable)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new uth(this));
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new uti(this));
+    }
+    return true;
   }
 }
 

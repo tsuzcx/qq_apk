@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.managers;
 
-import aefa;
-import aefb;
+import aenk;
+import aenl;
 import com.tencent.commonsdk.cache.QQConcurrentHashMap;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
@@ -33,7 +33,7 @@ public class ShieldMsgManger
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       throw new IllegalArgumentException("ShieldMsgManger this.app = null");
     }
-    ThreadManager.post(new aefa(this), 2, null, false);
+    ThreadManager.post(new aenk(this), 2, null, false);
   }
   
   private ShieldListInfo a(int paramInt, String paramString)
@@ -188,7 +188,7 @@ public class ShieldMsgManger
             paramString.flags = paramInt1;
             localObject1 = new ArrayList();
             ((ArrayList)localObject1).add(paramString);
-            ThreadManager.post(new aefb(this, (ArrayList)localObject1), 5, null, false);
+            ThreadManager.post(new aenl(this, (ArrayList)localObject1), 5, null, false);
           }
         }
         return;

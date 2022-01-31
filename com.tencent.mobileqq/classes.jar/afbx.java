@@ -1,22 +1,16 @@
-import android.content.Context;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.profilecard.InterestGuide;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afbx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public afbx(InterestGuide paramInterestGuide) {}
+  public afbx(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    NearbySPUtil.a(this.a.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.FALSE);
-    Context localContext = this.a.jdField_a_of_type_AndroidViewView.getContext();
-    if ((localContext instanceof BaseActivity)) {
-      ReportController.b(((BaseActivity)localContext).app, "dc00898", "", "", "0X8006991", "0X8006991", 0, 0, "", "", "", "");
-    }
+    ((Activity)this.a.getContext()).finish();
   }
 }
 

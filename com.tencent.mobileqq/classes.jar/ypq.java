@@ -1,37 +1,25 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.game.ApolloFragmentManager;
-import com.tencent.mobileqq.apollo.game.ApolloGameView;
-import com.tencent.mobileqq.apollo.game.ApolloGameView.Director;
-import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
+import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 
-public class ypq
-  implements Runnable
+class ypq
+  extends AVVideoCtrl.LocalVideoPreviewCallback
 {
-  public ypq(ApolloGameView paramApolloGameView, Intent paramIntent) {}
+  ypq(ypp paramypp) {}
   
-  public void run()
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
   {
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    Object localObject = CmGameUtil.a(AVCameraCaptureModel.a(this.a.a));
+    if (localObject == null) {}
+    do
     {
-      ApolloGameView.Director localDirector = new ApolloGameView.Director();
-      String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.TITLE);
-      if (!TextUtils.isEmpty(str)) {
-        localDirector.title = str;
-      }
-      str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.FOREGROUND_COLOR);
-      if (!TextUtils.isEmpty(str)) {
-        localDirector.frontColor = str;
-      }
-      str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.BACKGROUND_COLOR);
-      if (!TextUtils.isEmpty(str)) {
-        localDirector.bgColor = str;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a = localDirector;
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a();
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("Director", localDirector);
-    }
-    ApolloFragmentManager.a().a(this.jdField_a_of_type_AndroidContentIntent, ApolloWebViewFragment.class);
+      return;
+      localObject = ((CmGameLauncher)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new ypr(this, (ApolloSurfaceView)localObject, paramVideoFrame));
   }
 }
 

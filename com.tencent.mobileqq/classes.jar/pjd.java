@@ -1,18 +1,24 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.ShareResultDialog;
 
 public class pjd
-  implements FileFilter
+  implements View.OnClickListener
 {
-  public boolean accept(File paramFile)
+  public pjd(ShareResultDialog paramShareResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog, -2);
+    }
+    this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pjd
  * JD-Core Version:    0.7.0.1
  */

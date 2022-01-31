@@ -1,25 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.intervideo.groupvideo.GVideoWebPlugin;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.ScrollView;
+import com.tencent.mobileqq.forward.ForwardQQStoryMsgOption;
 
 public class adtj
-  implements GroupVideoManager.CheckListener
+  implements Runnable
 {
-  public adtj(GVideoWebPlugin paramGVideoWebPlugin, String paramString) {}
+  public adtj(ForwardQQStoryMsgOption paramForwardQQStoryMsgOption) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if ((paramBoolean) && (TextUtils.equals("download", this.jdField_a_of_type_JavaLangString)))
-    {
-      GVideoWebPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoWebPlugin).c(2131429510);
-      GVideoWebPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoWebPlugin).show();
-    }
+    this.a.a.fullScroll(130);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adtj
  * JD-Core Version:    0.7.0.1
  */

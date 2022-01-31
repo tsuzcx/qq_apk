@@ -1,35 +1,49 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.EmoticonHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.DataLineObserver;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class smg
-  implements DragSortListView.RemoveListener
+  extends DataLineObserver
 {
-  public smg(EmosmActivity paramEmosmActivity) {}
+  public smg(Conversation paramConversation) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (!NetworkUtil.d(this.a))
-    {
-      localObject = new QQToast(this.a);
-      ((QQToast)localObject).a(2130838714);
-      ((QQToast)localObject).d(1500);
-      ((QQToast)localObject).a("无网络连接，删除失败");
-      ((QQToast)localObject).b(0);
+    super.a(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, AppConstants.y, 6000);
+    }
+    while (i != 1) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131436092));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    ((EmoticonHandler)this.a.app.a(12)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
-    URLDrawable.clearMemoryCache();
+    this.a.a(8, AppConstants.z, 6000);
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  {
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
+    if (i == 0) {
+      this.a.a(9, AppConstants.y, 6003);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, AppConstants.z, 6003);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, AppConstants.y, 6000);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, AppConstants.z, 6003);
   }
 }
 

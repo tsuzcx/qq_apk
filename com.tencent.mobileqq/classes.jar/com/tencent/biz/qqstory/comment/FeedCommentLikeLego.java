@@ -44,7 +44,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.IEventReceiver;
 import java.util.List;
-import nbx;
+import nfs;
 
 public class FeedCommentLikeLego
   extends LegoBase
@@ -76,7 +76,7 @@ public class FeedCommentLikeLego
   
   public FeedCommentLikeLego(Context paramContext, Activity paramActivity, ViewGroup paramViewGroup, CommentLikeHomeFeed paramCommentLikeHomeFeed, int paramInt)
   {
-    super(paramContext, 2130970724);
+    super(paramContext, 2130970740);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed = paramCommentLikeHomeFeed;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeHomeFeed.a();
@@ -133,7 +133,7 @@ public class FeedCommentLikeLego
   
   public LegoEvenHandler a()
   {
-    return new nbx(this);
+    return new nfs(this);
   }
   
   public void a()
@@ -151,14 +151,14 @@ public class FeedCommentLikeLego
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371730));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371731));
-    this.d = ((ImageView)paramView.findViewById(2131371732));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371736));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView = ((InnerListView)paramView.findViewById(2131371735));
-    this.c = ((ImageView)paramView.findViewById(2131371702));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371733));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371734);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371729));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371730));
+    this.d = ((ImageView)paramView.findViewById(2131371731));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371735));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView = ((InnerListView)paramView.findViewById(2131371734));
+    this.c = ((ImageView)paramView.findViewById(2131371700));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371732));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371733);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagFlowLayout = ((TagFlowLayout)paramView.findViewById(2131371643));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
@@ -170,10 +170,10 @@ public class FeedCommentLikeLego
     this.jdField_b_of_type_Boolean = ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null);
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843436);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843430);
-      this.d.setImageResource(2130843433);
-      this.c.setImageResource(2130843474);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843470);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843464);
+      this.d.setImageResource(2130843467);
+      this.c.setImageResource(2130843508);
     }
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter = new TagAdapter(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagFlowLayout.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter);
@@ -291,7 +291,7 @@ public class FeedCommentLikeLego
       }
       if (!ThemeUtil.isNowThemeIsDefault(QQStoryContext.a(), false, null))
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838215));
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838220));
         this.jdField_a_of_type_AndroidViewView.setAlpha(0.89F);
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -373,15 +373,15 @@ public class FeedCommentLikeLego
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843431);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843465);
       return;
     }
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843436);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843470);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843435);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843469);
   }
   
   public void c()

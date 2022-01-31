@@ -1,17 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import com.tencent.mobileqq.data.Friends;
 
 public class ajgg
-  implements View.OnClickListener
 {
-  public ajgg(HomeworkGuideFragment paramHomeworkGuideFragment) {}
+  public int a;
+  public Friends a;
   
-  public void onClick(View paramView)
+  public ajgg(Friends paramFriends, int paramInt)
   {
-    this.a.getActivity().setResult(1000);
-    this.a.getActivity().finish();
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

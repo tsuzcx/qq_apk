@@ -1,12 +1,16 @@
-public abstract interface aoen
+import android.os.Message;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+
+public class aoen
+  implements Runnable
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public aoen(HWEditImportVideoPlayer paramHWEditImportVideoPlayer, int paramInt) {}
   
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
-  
-  public abstract void f(int paramInt);
+  public void run()
+  {
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditImportVideoPlayer.a.a(Message.obtain(null, 8, 1, this.jdField_a_of_type_Int));
+  }
 }
 
 

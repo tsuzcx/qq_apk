@@ -1,22 +1,13 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class ovd
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements Runnable
 {
-  public ovd(TribeVideoPlugin paramTribeVideoPlugin, ovo paramovo) {}
+  public ovd(SegmentList paramSegmentList) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void run()
   {
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
-    {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, ovo.a(this.jdField_a_of_type_Ovo));
-      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramTVK_IMediaPlayer.obj = ovo.a(this.jdField_a_of_type_Ovo);
-      paramTVK_IMediaPlayer.what = 6;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
-    }
+    this.a.springBackOverScrollHeaderView();
   }
 }
 

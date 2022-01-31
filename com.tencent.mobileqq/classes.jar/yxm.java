@@ -1,17 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.widget.navbar.OnItemSelectListener;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler;
+import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
 
 public class yxm
-  implements OnItemSelectListener
+  implements Runnable
 {
-  public yxm(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
+  public yxm(CmGameSubProcessHandler paramCmGameSubProcessHandler, String paramString) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt == 1) {
-      this.a.getActivity().finish();
+    if (CmGameSubProcessHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameSubProcessHandler) != null) {
+      CmGameSubProcessHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameSubProcessHandler).a(this.jdField_a_of_type_JavaLangString, CmGameSubProcessHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameSubProcessHandler));
     }
   }
 }

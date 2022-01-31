@@ -1,71 +1,91 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatActivityConstants;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.IBinder;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.controller.QidianBusinessObserver;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneClickReport;
+import java.util.ArrayList;
 
 public class vta
-  extends QidianBusinessObserver
+  implements ActionSheet.OnButtonClickListener
 {
-  public vta(FriendChatPie paramFriendChatPie) {}
+  public vta(AIOImageListScene paramAIOImageListScene, ActionSheet paramActionSheet) {}
   
-  protected void c(boolean paramBoolean, HashMap paramHashMap)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean)
+    if (paramView != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131438728), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131438729), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-  }
-  
-  protected void d(boolean paramBoolean, HashMap paramHashMap)
-  {
-    if ((paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
-    {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramHashMap.uin)))
+      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
+      if (paramView == null) {
+        return;
+      }
+      if (!TextUtils.isEmpty(paramView))
       {
-        paramHashMap = this.a.b.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        if (paramHashMap != null)
+        if (!paramView.equals(AIOImageListScene.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131436718))) {
+          break label195;
+        }
+        paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a();
+        if (paramInt != 1) {
+          break label94;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.o();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a("Multi_Forward_Contacts", this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaUtilArrayList.size());
+      }
+    }
+    label195:
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      label94:
+      if ((paramInt == 2) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.asBinder().pingBinder()))
+      {
+        paramView = (AIOShortVideoData)((AIORichMediaInfo)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaUtilArrayList.get(0)).a;
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(paramView.g, paramView.f, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.c);
+        ForwardBaseOption.a(AIOImageListScene.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene), paramView);
+        continue;
+        if (paramView.equals(AIOImageListScene.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131435906)))
         {
-          FriendChatPie.a(this.a, true);
-          FriendChatPie.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-          FriendChatPie.a(this.a).setOnClickListener(null);
-          if (!this.a.P)
+          if (LocalMultiProcConfig.getInt4Uin(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaLangString + "__qzone_pic_permission__" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.b, -1, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaLangString).longValue()) == 0)
           {
-            this.a.g = paramHashMap;
-            FriendChatPie.b(this.a).setText(paramHashMap);
-            if (ChatActivityConstants.N) {
-              FriendChatPie.c(this.a).setContentDescription(paramHashMap);
-            }
+            paramView = new QQCustomDialog(AIOImageListScene.f(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene), 2131624516);
+            paramView.setContentView(2130968855);
+            paramView.setTitle(AIOImageListScene.g(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getString(2131429887));
+            paramView.setMessage(AIOImageListScene.h(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getString(2131429889));
+            paramView.setNegativeButton(AIOImageListScene.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getString(2131429890), new vtb(this));
+            paramView.setCanceledOnTouchOutside(false);
+            paramView.setCancelable(false);
+            paramView.show();
+            QZoneClickReport.startReportImediately(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaLangString, "40", "1");
           }
-          FriendChatPie.b(this.a, true);
+          else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaUtilArrayList.size() > 20)
+          {
+            QQToast.a(AIOImageListScene.k(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene), 2131435907, 0).a();
+          }
+          else
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.p();
+          }
+        }
+        else if (paramView.equals(AIOImageListScene.l(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene).getResources().getString(2131435896))) {
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.jdField_a_of_type_JavaUtilArrayList.size() > 20) {
+            QQToast.a(AIOImageListScene.m(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene), 2131435907, 0).a();
+          } else {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.q();
+          }
         }
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-        FriendChatPie.b(this.a, false);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("FriendChatPie", 2, "onGetQidianUserDetailInfo not current curFriendUin");
-      return;
-    }
-    QLog.d("FriendChatPie", 2, "onGetQidianUserDetailInfo fail");
   }
 }
 

@@ -1,44 +1,37 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult;
+import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult.ARCircleResult;
 
-class aams
-  extends GestureDetector.SimpleOnGestureListener
+public class aams
+  implements Runnable
 {
-  aams(aamr paramaamr) {}
+  public aams(AREngine paramAREngine) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void run()
   {
-    try
+    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2))
     {
-      int i = (int)paramMotionEvent1.getX();
-      int j = (int)paramMotionEvent2.getX();
-      if ((int)paramMotionEvent1.getY() < ScreenUtil.b - ScreenUtil.a(100.0F))
-      {
-        if ((ARGreetingCardListManager.a(this.a.a.a)) && (i - j > 120) && (Math.abs(paramFloat1) > 200.0F))
-        {
-          ARGreetingCardListManager.a(this.a.a.a);
-          return true;
-        }
-        if ((ARGreetingCardListManager.a(this.a.a.a)) && (j - i > 120) && (Math.abs(paramFloat1) > 200.0F))
-        {
-          ARGreetingCardListManager.b(this.a.a.a);
-          return true;
-        }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.a != 0) {
+        break label64;
+      }
+      if (AREngine.a(this.a) != null) {
+        AREngine.b(this.a, 3);
       }
     }
-    catch (Exception paramMotionEvent1)
+    for (;;)
     {
-      QLog.e("ARGreetingCardListManager", 1, "GestureDetector onFling fail.", paramMotionEvent1);
+      this.a.jdField_a_of_type_Long = 0L;
+      return;
+      label64:
+      if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.c == 0) {
+        AREngine.g(this.a);
+      }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aams
  * JD-Core Version:    0.7.0.1
  */

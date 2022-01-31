@@ -1,29 +1,91 @@
-import android.os.Handler;
-import com.tencent.mobileqq.armap.ARGLSurfaceView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.test.joystick.JoystickListener;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ark.Application;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class aban
-  implements JoystickListener
+public final class aban
+  implements Runnable
 {
-  public aban(ARMapActivity paramARMapActivity) {}
+  public aban(String paramString, ArkAppCenter.OnGetAppIcon paramOnGetAppIcon) {}
   
-  public void a()
+  public void run()
   {
-    ARMapActivity.h(this.a, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new abao(this));
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    ARMapActivity.b(this.a, paramFloat1);
-    ARMapActivity.c(this.a, paramFloat2);
-  }
-  
-  public void b()
-  {
-    ARMapActivity.h(this.a, false);
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abap(this));
+    synchronized ()
+    {
+      abax localabax2 = (abax)ArkAppCenter.a().get(this.jdField_a_of_type_JavaLangString);
+      if (localabax2 != null) {
+        localabax2.jdField_a_of_type_Int += 1;
+      }
+      if (localabax2 != null)
+      {
+        ArkAppCenter.a().postToMainThread(new abao(this, localabax2));
+        return;
+      }
+    }
+    ark.Application localApplication = ark.Application.Create(this.jdField_a_of_type_JavaLangString);
+    if (localApplication == null) {
+      ??? = null;
+    }
+    for (;;)
+    {
+      if (localApplication != null) {
+        localApplication.Release();
+      }
+      if (??? == null) {
+        break;
+      }
+      ((Bitmap)???).recycle();
+      return;
+      int i = localApplication.GetIconWidth();
+      int j = localApplication.GetIconHeight();
+      if ((i <= 0) || (j <= 0))
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ArkApp", 1, "getAppIcon.getSize.error!!");
+          ??? = null;
+        }
+      }
+      else {
+        try
+        {
+          localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+          ??? = localBitmap;
+          if (localBitmap == null) {
+            continue;
+          }
+          if (!localApplication.CopyIconToBitmap(localBitmap))
+          {
+            ??? = localBitmap;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("ArkApp", 1, "getAppIcon.copyToBitmap fail!!");
+            ??? = localBitmap;
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          Bitmap localBitmap;
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ArkApp", 1, "getAppIcon.createBitmap fail!!");
+            }
+            localBitmap = null;
+          }
+          localabax1 = new abax(null);
+          localabax1.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+          ArkAppCenter.a().put(this.jdField_a_of_type_JavaLangString, localabax1);
+          ArkAppCenter.a().postToMainThread(new abap(this, localabax1));
+        }
+      }
+      abax localabax1 = null;
+    }
   }
 }
 

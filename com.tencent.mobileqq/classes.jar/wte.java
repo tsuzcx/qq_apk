@@ -1,18 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.activity.contacts.adapter.PhoneContactAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.widget.XListView;
 
-public class wte
-  implements DialogInterface.OnKeyListener
+class wte
+  implements Runnable
 {
-  public wte(BaseActivityView paramBaseActivityView) {}
+  wte(wtd paramwtd, boolean paramBoolean) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    return (paramInt == 4) && (this.a.a.e()) && (NetworkUtil.d(this.a.getContext()));
+    if (this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentWidgetXListView != null)
+    {
+      PhoneContactFragment.a(this.jdField_a_of_type_Wtd.a, this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter == null)
+      {
+        this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter = new PhoneContactAdapter(this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.jdField_a_of_type_Wtd.a);
+        this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter);
+      }
+      this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter.a(this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter.notifyDataSetChanged();
+    }
   }
 }
 

@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import android.view.View;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
 
 public class lpz
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public lpz(ArticleInfoModule paramArticleInfoModule) {}
+  public lpz(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment, View paramView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
+    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
   }
 }
 

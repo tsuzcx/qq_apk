@@ -1,8 +1,4 @@
-public class ygh
-{
-  public String a;
-  public String b;
-}
+public class ygh {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar

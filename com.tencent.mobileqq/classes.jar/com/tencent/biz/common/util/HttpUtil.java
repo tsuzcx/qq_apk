@@ -29,7 +29,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import klz;
+import kog;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import org.apache.http.HttpHost;
@@ -1908,7 +1908,7 @@ public class HttpUtil
         {
           paramBundle1 = new StringBuilder().append(paramString1);
           if (!paramString1.contains("?")) {
-            break label258;
+            break label254;
           }
           paramContext = "&";
         }
@@ -1921,7 +1921,6 @@ public class HttpUtil
           paramContext = new HttpGet(paramContext);
           paramContext.addHeader("Accept-Encoding", "gzip");
           paramContext.addHeader("Connection", "close");
-          a(paramContext);
           if (paramBundle2 != null)
           {
             paramString1 = paramBundle2.keySet().iterator();
@@ -1933,7 +1932,7 @@ public class HttpUtil
               {
                 paramContext.addHeader(paramString3, (String)paramBundle1);
                 continue;
-                label258:
+                label254:
                 paramContext = "?";
               }
             }
@@ -1966,7 +1965,7 @@ public class HttpUtil
       catch (OutOfMemoryError paramContext)
       {
         if (!QLog.isColorLevel()) {
-          break label685;
+          break label677;
         }
         QLog.d("QRHttpUtil", 2, "openRequest fail OutOfMemoryError");
         return null;
@@ -1974,7 +1973,7 @@ public class HttpUtil
       catch (Exception paramContext)
       {
         if (!QLog.isColorLevel()) {
-          break label705;
+          break label697;
         }
         QLog.d("QRHttpUtil", 2, "openRequest fail Exception", paramContext);
       }
@@ -1991,7 +1990,6 @@ public class HttpUtil
       for (;;)
       {
         paramContext = paramContext.getBytes();
-        a(paramString1);
         if (paramBundle2 == null) {
           break;
         }
@@ -2018,7 +2016,7 @@ public class HttpUtil
             try
             {
               if (!(localObject2 instanceof String)) {
-                break label568;
+                break label560;
               }
               paramContext.put(URLEncoder.encode((String)localObject1), paramBundle1.getString((String)localObject1));
             }
@@ -2027,7 +2025,7 @@ public class HttpUtil
             {
               QLog.d("QRHttpUtil", 2, "postBodyType=POST_BODY_TYPE_JSON parse Params to Json failed.");
               continue;
-              label568:
+              label560:
               if (((localObject2 instanceof Long)) || ((localObject2 instanceof Integer)) || ((localObject2 instanceof Float)) || ((localObject2 instanceof Double)) || ((localObject2 instanceof Byte))) {
                 paramContext.put(URLEncoder.encode(localJSONException), localObject2);
               }
@@ -2039,8 +2037,8 @@ public class HttpUtil
       paramString1.setEntity(new ByteArrayEntity(paramContext));
       paramContext = paramString1;
     }
-    label685:
-    label705:
+    label677:
+    label697:
     return null;
   }
   
@@ -2062,7 +2060,7 @@ public class HttpUtil
         localObject = new AsyncHttpClient.CustomSSLSocketFactory((KeyStore)localObject);
         ((SSLSocketFactory)localObject).setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
         if (!TextUtils.isEmpty(paramString)) {
-          ((SSLSocketFactory)localObject).setHostnameVerifier(new klz(paramString));
+          ((SSLSocketFactory)localObject).setHostnameVerifier(new kog(paramString));
         }
         paramString = new BasicHttpParams();
         HttpConnectionParams.setConnectionTimeout(paramString, paramInt1);
@@ -2093,11 +2091,11 @@ public class HttpUtil
     }
   }
   
-  private static void a(HttpUriRequest paramHttpUriRequest)
+  public static void a(Bundle paramBundle)
   {
     String str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     String str2 = ((TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2)).getSkey(str1);
-    paramHttpUriRequest.addHeader("cookie", "uin=" + str1 + ";skey=" + str2);
+    paramBundle.putString("cookie", "uin=" + str1 + ";skey=" + str2);
   }
   
   public static boolean a(Context paramContext)

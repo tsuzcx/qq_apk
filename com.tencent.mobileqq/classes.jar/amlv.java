@@ -1,39 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.OnOpenPluginListener;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
+import android.view.View;
+import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
 
-public final class amlv
-  implements IPluginManager.OnPluginReadyListener
+public class amlv
+  implements Runnable
 {
-  public amlv(IPluginManager.OnOpenPluginListener paramOnOpenPluginListener) {}
+  public amlv(CalloutPopupWindow paramCalloutPopupWindow, View paramView, int paramInt1, int paramInt2) {}
   
-  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      IPluginManager.b((Activity)paramContext, paramPluginParams);
-    }
-    for (;;)
-    {
-      if (this.a != null) {
-        this.a.a(paramBoolean);
-      }
-      return;
-      Toast.makeText(BaseApplicationImpl.getContext(), "加载失败", 0).show();
-    }
+    CalloutPopupWindow.a(this.jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlv
  * JD-Core Version:    0.7.0.1
  */

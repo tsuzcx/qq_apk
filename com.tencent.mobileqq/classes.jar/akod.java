@@ -1,56 +1,59 @@
-import com.tencent.biz.common.util.Util;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.SetCookiesCallback;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.VasResourceCheckUtil;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.app.AppRuntime;
+import java.io.File;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import org.json.JSONObject;
 
-class akod
-  implements Runnable
+public final class akod
+  extends DownloadListener
 {
-  akod(akoc paramakoc) {}
+  public akod(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    Iterator localIterator = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-    if (localIterator.hasNext())
+    super.onDone(paramDownloadTask);
+    paramDownloadTask = new File(VasResourceCheckUtil.jdField_a_of_type_JavaLangString);
+    if (paramDownloadTask.exists())
     {
-      Object localObject3 = (String)localIterator.next();
-      Object localObject2 = (CopyOnWriteArrayList)this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject3);
-      if (this.a.jdField_a_of_type_MqqAppAppRuntime == null) {}
-      for (Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();; localObject1 = this.a.jdField_a_of_type_MqqAppAppRuntime)
+      paramDownloadTask = FileUtils.a(paramDownloadTask, -1);
+      if (!TextUtils.isEmpty(paramDownloadTask)) {}
+      try
       {
-        localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.a((String)localObject3, (AppRuntime)localObject1);
-        localObject2 = ((CopyOnWriteArrayList)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (SwiftBrowserCookieMonster.SetCookiesCallback)((Iterator)localObject2).next();
-          if (QLog.isColorLevel()) {
-            QLog.i("SwiftBrowserCookieMonster", 2, "post callback onSetCookiesFinished " + Util.b((String)localObject1, new String[0]) + ", errorCode: " + this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_Long);
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.b) {
-            QLog.i("SwiftBrowserCookieMonster", 1, "cookie is wrong, need do jump ptlogin! " + Util.b((String)localObject1, new String[0]));
-          }
-          ((SwiftBrowserCookieMonster.SetCookiesCallback)localObject3).a((String)localObject1, null, this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_Long);
+        paramDownloadTask = Base64.decode(paramDownloadTask, 0);
+        SecretKeySpec localSecretKeySpec = new SecretKeySpec("xydata3456789012xydata3456789012".getBytes(), "AES");
+        IvParameterSpec localIvParameterSpec = new IvParameterSpec("xydata3456789012".getBytes());
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
+        localCipher.init(2, localSecretKeySpec, localIvParameterSpec);
+        paramDownloadTask = new JSONObject(new String(localCipher.doFinal(paramDownloadTask)));
+        if (QLog.isColorLevel()) {
+          QLog.d("VasResourceCheckUtil", 2, "decode json success, content = " + paramDownloadTask.toString());
         }
-        break;
+        VasResourceCheckUtil.a(this.a);
+        VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(257));
+        return;
+      }
+      catch (Exception paramDownloadTask)
+      {
+        QLog.e("VasResourceCheckUtil", 1, "decode json fail: " + paramDownloadTask.getMessage());
+        VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(259));
+        return;
       }
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.b) || (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_Long > 0L))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.b();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(258));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akod
  * JD-Core Version:    0.7.0.1
  */

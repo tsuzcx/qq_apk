@@ -42,18 +42,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
-import lor;
-import los;
-import lot;
-import lou;
-import lov;
-import low;
+import lrv;
+import lrw;
+import lrx;
+import lry;
+import lrz;
+import lsa;
 import mqq.app.NewIntent;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -133,7 +132,7 @@ public class AdvertisementInfoModule
         {
           paramConcurrentHashMap.remove();
           if (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) {
-            this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lor(this, localAdvertisementInfo));
+            this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lrv(this, localAdvertisementInfo));
           }
           if (QLog.isColorLevel()) {
             QLog.d("AdvertisementInfoModule", 2, "filterOverTimeAdvertisement traceId=" + localAdvertisementInfo.mAdTraceId + ", fetchTime=" + localAdvertisementInfo.mAdFetchTime);
@@ -141,6 +140,15 @@ public class AdvertisementInfoModule
         }
       }
     }
+  }
+  
+  private boolean a(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramAdvertisementInfo == null) {}
+    while ((TextUtils.isEmpty(paramAdvertisementInfo.mTitle)) || ((!TextUtils.isEmpty(paramAdvertisementInfo.mJsonVideoList)) && ((TextUtils.isEmpty(paramAdvertisementInfo.mAdLandingPage)) || (TextUtils.isEmpty(paramAdvertisementInfo.mSubscribeName)) || (TextUtils.isEmpty(paramAdvertisementInfo.mAdVideoUrl))))) {
+      return true;
+    }
+    return false;
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -181,15 +189,6 @@ public class AdvertisementInfoModule
     } while ((i != 154) || (j != 1));
     paramToServiceMsg.getAttributes().put(g, Integer.valueOf(2));
     a(paramToServiceMsg);
-  }
-  
-  private boolean b(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (paramAdvertisementInfo == null) {}
-    while ((TextUtils.isEmpty(paramAdvertisementInfo.mTitle)) || ((!TextUtils.isEmpty(paramAdvertisementInfo.mJsonVideoList)) && ((TextUtils.isEmpty(paramAdvertisementInfo.mAdLandingPage)) || (TextUtils.isEmpty(paramAdvertisementInfo.mSubscribeName)) || (TextUtils.isEmpty(paramAdvertisementInfo.mAdVideoUrl))))) {
-      return true;
-    }
-    return false;
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -300,7 +299,7 @@ public class AdvertisementInfoModule
     while (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new los(this, paramInt));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lrw(this, paramInt));
   }
   
   public void a(int paramInt, FixPosArticleInterface.FixPosArticleAsyncListener paramFixPosArticleAsyncListener)
@@ -328,7 +327,7 @@ public class AdvertisementInfoModule
       NativeAdUtils.a(null, paramContext, NativeAdUtils.c, NativeAdUtils.l, paramAdvertisementInfo, null, (int)paramLong);
       label155:
       if (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lov(this, paramAdvertisementInfo));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lrz(this, paramAdvertisementInfo));
       }
     }
     else
@@ -338,7 +337,7 @@ public class AdvertisementInfoModule
       }
     }
     label216:
-    for (int i = NativeAdUtils.o;; i = NativeAdUtils.k)
+    for (int i = NativeAdUtils.p;; i = NativeAdUtils.k)
     {
       NativeAdUtils.a(null, paramContext, NativeAdUtils.c, i, paramAdvertisementInfo, null, (int)paramLong);
       break label155;
@@ -386,7 +385,7 @@ public class AdvertisementInfoModule
           localObject2 = new NewIntent(paramAppInterface.getApplication(), PublicAccountServlet.class);
           ((NewIntent)localObject2).putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_native");
           ((NewIntent)localObject2).putExtra("data", ((WebSsoBody.WebSsoRequestBody)localObject1).toByteArray());
-          ((NewIntent)localObject2).setObserver(new low(this, paramAdvertisementInfo));
+          ((NewIntent)localObject2).setObserver(new lsa(this, paramAdvertisementInfo));
           paramAppInterface.startServlet((NewIntent)localObject2);
           return;
         }
@@ -443,7 +442,7 @@ public class AdvertisementInfoModule
             ((AdvertisementInfo)localObject2).mAdFetchTime = l1;
             ((AdvertisementInfo)localObject2).mAdPosLayout = j;
             ((AdvertisementInfo)localObject2).mAdPosID = l2;
-            if (!b((AdvertisementInfo)localObject2)) {
+            if (!a((AdvertisementInfo)localObject2)) {
               localArrayList.add(localObject2);
             }
           }
@@ -488,7 +487,7 @@ public class AdvertisementInfoModule
         if (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) {
           break;
         }
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lou(this, i, localArrayList));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lry(this, i, localArrayList));
         return;
         if (!QLog.isColorLevel()) {
           break;
@@ -497,77 +496,6 @@ public class AdvertisementInfoModule
         return;
       }
     }
-  }
-  
-  /* Error */
-  public boolean a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: getfield 488	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mChannelID	J
-    //   6: l2i
-    //   7: istore_2
-    //   8: aload_0
-    //   9: getfield 33	com/tencent/biz/pubaccount/readinjoy/model/AdvertisementInfoModule:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   12: iload_2
-    //   13: invokestatic 257	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   16: invokevirtual 263	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   19: checkcast 760	java/util/HashSet
-    //   22: astore 5
-    //   24: aload 5
-    //   26: astore 4
-    //   28: aload 5
-    //   30: ifnonnull +26 -> 56
-    //   33: new 760	java/util/HashSet
-    //   36: dup
-    //   37: invokespecial 761	java/util/HashSet:<init>	()V
-    //   40: astore 4
-    //   42: aload_0
-    //   43: getfield 33	com/tencent/biz/pubaccount/readinjoy/model/AdvertisementInfoModule:jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   46: iload_2
-    //   47: invokestatic 257	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   50: aload 4
-    //   52: invokevirtual 482	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   55: pop
-    //   56: aload 4
-    //   58: aload_1
-    //   59: getfield 177	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdTraceId	Ljava/lang/String;
-    //   62: invokevirtual 764	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   65: ifne +19 -> 84
-    //   68: aload 4
-    //   70: aload_1
-    //   71: getfield 177	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdTraceId	Ljava/lang/String;
-    //   74: invokevirtual 765	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   77: pop
-    //   78: iconst_1
-    //   79: istore_3
-    //   80: aload_0
-    //   81: monitorexit
-    //   82: iload_3
-    //   83: ireturn
-    //   84: iconst_0
-    //   85: istore_3
-    //   86: goto -6 -> 80
-    //   89: astore_1
-    //   90: aload_0
-    //   91: monitorexit
-    //   92: aload_1
-    //   93: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	94	0	this	AdvertisementInfoModule
-    //   0	94	1	paramAdvertisementInfo	AdvertisementInfo
-    //   7	40	2	i	int
-    //   79	7	3	bool	boolean
-    //   26	43	4	localHashSet1	HashSet
-    //   22	7	5	localHashSet2	HashSet
-    // Exception table:
-    //   from	to	target	type
-    //   2	24	89	finally
-    //   33	56	89	finally
-    //   56	78	89	finally
   }
   
   public int[] a(int paramInt)
@@ -609,7 +537,7 @@ public class AdvertisementInfoModule
       while (((Iterator)localObject).hasNext()) {
         localArrayList.add((AdvertisementInfo)((Iterator)localObject).next());
       }
-      Collections.sort(localArrayList, new lot(this));
+      Collections.sort(localArrayList, new lrx(this));
     }
     if (QLog.isColorLevel())
     {
@@ -666,17 +594,6 @@ public class AdvertisementInfoModule
     ((ToServiceMsg)localObject).getAttributes().put(g, Integer.valueOf(1));
     a((ToServiceMsg)localObject);
     PublicAccountReportUtils.a(null, "", "0X8007BA7", "0X8007BA7", 0, 0, "", "", "", "");
-  }
-  
-  public void d(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "clearAdvertisementExposureReport channelId=" + paramInt);
-    }
-    HashSet localHashSet = (HashSet)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    if (localHashSet != null) {
-      localHashSet.clear();
-    }
   }
 }
 

@@ -1,55 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.cmgame.OnGameStartCheckListener;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import com.tencent.mobileqq.adapter.contacts.BuddyListItem.ViewTag;
+import com.tencent.widget.SingleLineTextView;
 
 public class ypb
-  extends DownloadListener
+  extends BuddyListItem.ViewTag
 {
-  public ypb(CmGameStartChecker paramCmGameStartChecker) {}
+  public StringBuilder a;
+  public ImageView b;
+  public SingleLineTextView c;
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public ypb()
   {
-    super.onDone(paramDownloadTask);
-  }
-  
-  public void onDoneFile(DownloadTask paramDownloadTask)
-  {
-    if (paramDownloadTask == null) {
-      return;
-    }
-    CmGameStartChecker.StartCheckParam localStartCheckParam = (CmGameStartChecker.StartCheckParam)paramDownloadTask.a().getSerializable("download_param");
-    if (paramDownloadTask.a() != 3)
-    {
-      CmGameStartChecker.a(this.a, localStartCheckParam);
-      QLog.e("apollo_cmGame_CmGameStartChecker", 1, "downLoad game res fail retCode: " + paramDownloadTask.a());
-      return;
-    }
-    this.a.c(localStartCheckParam);
-  }
-  
-  public void onProgress(DownloadTask paramDownloadTask)
-  {
-    CmGameStartChecker.StartCheckParam localStartCheckParam = (CmGameStartChecker.StartCheckParam)paramDownloadTask.a().getSerializable("download_param");
-    int i = (int)paramDownloadTask.a;
-    if (CmGameStartChecker.a(this.a) != null)
-    {
-      paramDownloadTask = (OnGameStartCheckListener)CmGameStartChecker.a(this.a).get();
-      if (paramDownloadTask != null)
-      {
-        QLog.d("apollo_cmGame_CmGameStartChecker", 2, "gameCheckListener.onDownloadGameResProgress startCheckParam:" + localStartCheckParam);
-        paramDownloadTask.onDownloadGameResProgress(localStartCheckParam, i);
-      }
-    }
+    this.a = 11;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ypb
  * JD-Core Version:    0.7.0.1
  */

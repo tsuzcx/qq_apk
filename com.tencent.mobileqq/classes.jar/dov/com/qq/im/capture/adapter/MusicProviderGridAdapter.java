@@ -41,7 +41,7 @@ public class MusicProviderGridAdapter
   
   private void a(MusicProviderGridAdapter.ViewHolder paramViewHolder)
   {
-    int j = 2130841924;
+    int j = 2130841955;
     MusicItemInfo localMusicItemInfo2 = paramViewHolder.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
     int k = localMusicItemInfo2.d;
     int i = paramViewHolder.jdField_a_of_type_Int;
@@ -59,13 +59,13 @@ public class MusicProviderGridAdapter
       paramViewHolder.d.setVisibility(8);
       paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localMusicItemInfo2.a);
       paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(localMusicItemInfo2.b);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841919);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841950);
       if ((bool) && (!localMusicItemInfo2.a()))
       {
-        i = 2130841881;
+        i = 2130841912;
         if (localMusicItemInfo2.e())
         {
-          i = 2130841920;
+          i = 2130841951;
           paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText("编辑");
           paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
           paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(i);
@@ -104,12 +104,12 @@ public class MusicProviderGridAdapter
     paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     paramViewHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
     localObject = "视频原声";
-    i = 2130841921;
+    i = 2130841952;
     if (k == 3)
     {
       localObject = "静音";
-      j = 2130841922;
-      i = 2130841923;
+      j = 2130841953;
+      i = 2130841954;
       if (!bool) {
         break label511;
       }
@@ -133,16 +133,16 @@ public class MusicProviderGridAdapter
       if (k == 4)
       {
         localObject = "自定义音乐";
-        j = 2130841917;
-        i = 2130841918;
+        j = 2130841948;
+        i = 2130841949;
         break;
       }
       if (k != 10) {
         break;
       }
       localObject = "歌词字幕";
-      j = 2130841925;
-      i = 2130841925;
+      j = 2130841956;
+      i = 2130841956;
       paramViewHolder.d.setVisibility(0);
       break;
       label511:
@@ -159,11 +159,11 @@ public class MusicProviderGridAdapter
     ((RelativeLayout.LayoutParams)localObject2).setMargins(i, i, i, i);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject2).setId(2131362492);
+    ((ImageView)localObject2).setId(2131362495);
     ((ImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_XY);
     ((RelativeLayout)localObject1).addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
     localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject2).setId(2131362491);
+    ((TextView)localObject2).setId(2131362494);
     ((TextView)localObject2).setPadding(((TextView)localObject2).getPaddingLeft(), ((TextView)localObject2).getPaddingTop(), ((TextView)localObject2).getPaddingRight(), ViewUtils.b(10.0F));
     ((TextView)localObject2).setMaxLines(4);
     ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
@@ -178,7 +178,7 @@ public class MusicProviderGridAdapter
     localLayoutParams.addRule(9, -1);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
     localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject2).setId(2131362490);
+    ((TextView)localObject2).setId(2131362493);
     ((TextView)localObject2).setTextColor(Color.parseColor("#9fffffff"));
     ((TextView)localObject2).setTextSize(2, 9.0F);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -190,12 +190,12 @@ public class MusicProviderGridAdapter
     localLayoutParams.bottomMargin = ViewUtils.b(4.0F);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
     localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject2).setId(2131362489);
-    ((ImageView)localObject2).setImageResource(2130841881);
+    ((ImageView)localObject2).setId(2131362492);
+    ((ImageView)localObject2).setImageResource(2130841912);
     ((ImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_XY);
     ((RelativeLayout)localObject1).addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
     localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject2).setId(2131362512);
+    ((TextView)localObject2).setId(2131362516);
     ((TextView)localObject2).setTextSize(2, 12.0F);
     ((TextView)localObject2).setTextColor(Color.parseColor("#ffffffff"));
     ((TextView)localObject2).setVisibility(8);
@@ -205,21 +205,21 @@ public class MusicProviderGridAdapter
     localLayoutParams.addRule(14, -1);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams);
     localObject2 = new QIMCommonLoadingView(this.jdField_a_of_type_AndroidContentContext);
-    ((QIMCommonLoadingView)localObject2).setId(2131362488);
+    ((QIMCommonLoadingView)localObject2).setId(2131362491);
     ((QIMCommonLoadingView)localObject2).setVisibility(8);
     ((RelativeLayout)localObject1).addView((View)localObject2, new RelativeLayout.LayoutParams(-1, -1));
     localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject1).setId(2131362487);
+    ((ImageView)localObject1).setId(2131362490);
     ((ImageView)localObject1).setVisibility(8);
-    ((ImageView)localObject1).setImageResource(2130843189);
+    ((ImageView)localObject1).setImageResource(2130843222);
     i = ViewUtils.b(18.0F);
     localObject2 = new RelativeLayout.LayoutParams(i, i);
     ((RelativeLayout.LayoutParams)localObject2).addRule(11, -1);
     ((RelativeLayout.LayoutParams)localObject2).addRule(10, -1);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject1).setId(2131369936);
-    ((ImageView)localObject1).setImageResource(2130843196);
+    ((ImageView)localObject1).setId(2131369946);
+    ((ImageView)localObject1).setImageResource(2130843229);
     ((ImageView)localObject1).setVisibility(8);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(11, -1);
@@ -268,14 +268,14 @@ public class MusicProviderGridAdapter
     {
       paramViewGroup = new MusicProviderGridAdapter.ViewHolder(this);
       paramView = a();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362491));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362490));
-      paramViewGroup.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = ((QIMCommonLoadingView)paramView.findViewById(2131362488));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362492));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362512));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362489));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362487));
-      paramViewGroup.d = ((ImageView)paramView.findViewById(2131369936));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362494));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362493));
+      paramViewGroup.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = ((QIMCommonLoadingView)paramView.findViewById(2131362491));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362495));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362516));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362492));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362490));
+      paramViewGroup.d = ((ImageView)paramView.findViewById(2131369946));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

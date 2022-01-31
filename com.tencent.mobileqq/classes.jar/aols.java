@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionPart;
 
-public final class aols
-  implements Parcelable.Creator
+public class aols
 {
-  public FilterCategoryItem a(Parcel paramParcel)
-  {
-    return new FilterCategoryItem(paramParcel);
-  }
+  public final int a;
+  public final PermissionPart a;
   
-  public FilterCategoryItem[] a(int paramInt)
+  public aols(PermissionPart paramPermissionPart, int paramInt)
   {
-    return new FilterCategoryItem[paramInt];
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionPermissionPart = paramPermissionPart;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

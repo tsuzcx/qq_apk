@@ -1,40 +1,24 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class swp
-  extends MqqHandler
+  implements Runnable
 {
-  public swp(Leba paramLeba) {}
+  public swp(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {
-      return;
+    this.a.f = false;
+    if (!this.a.jdField_c_of_type_Boolean) {
+      this.a.b.setVisibility(0);
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1134006: 
-      this.a.b();
-      return;
-    case 11340002: 
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
-      }
-      this.a.l();
-      return;
-    case 11340005: 
-      Leba.c(this.a);
-      return;
-    case 1134008: 
-      this.a.a(paramMessage);
-      return;
-    }
-    this.a.r();
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.a.getResources().getDimension(2131558775), 0.0F);
+    localTranslateAnimation.setDuration(300L);
+    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
   }
 }
 

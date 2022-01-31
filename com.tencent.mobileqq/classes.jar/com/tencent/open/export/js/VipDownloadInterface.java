@@ -1,8 +1,8 @@
 package com.tencent.open.export.js;
 
-import alji;
-import aljj;
-import aljk;
+import alra;
+import alrb;
+import alrc;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -70,7 +70,7 @@ public class VipDownloadInterface
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new aljk(this, paramString));
+    this.jdField_a_of_type_AndroidOsHandler.post(new alrc(this, paramString));
   }
   
   public boolean cancelDownload(String paramString1, String paramString2)
@@ -316,7 +316,7 @@ public class VipDownloadInterface
         localArrayList.add(localDownloadInfo);
         i += 1;
       }
-      DownloadApi.a(localArrayList, new alji(this, (String)localObject));
+      DownloadApi.a(localArrayList, new alra(this, (String)localObject));
       return;
     }
     catch (JSONException paramString)
@@ -344,7 +344,7 @@ public class VipDownloadInterface
         paramString2.add(localDownloadInfo);
         i += 1;
       }
-      DownloadApi.a(paramString2, new aljj(this));
+      DownloadApi.a(paramString2, new alrb(this));
       return;
     }
     catch (JSONException paramString1)

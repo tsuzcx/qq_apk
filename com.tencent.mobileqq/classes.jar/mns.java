@@ -1,13 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 class mns
-  implements Runnable
+  extends AnimateUtils.AnimationAdapter
 {
   mns(mnr parammnr) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b();
+    paramAnimation = new ScaleAnimation(0.72F, 1.05F, 0.72F, 1.05F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(120L);
+    paramAnimation.setAnimationListener(new mnt(this));
+    this.a.a.startAnimation(paramAnimation);
   }
 }
 

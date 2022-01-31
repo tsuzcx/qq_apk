@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForMedalNews;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
 
 public class vbt
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vbt(MedalNewsItemBuilder paramMedalNewsItemBuilder, MessageForMedalNews paramMessageForMedalNews) {}
+  public vbt(FilePicItemBuilder paramFilePicItemBuilder, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((vbx)paramView.getTag() == null) {
-      return;
-    }
-    ThreadManager.postImmediately(new vbu(this), null, true);
+    FilePicURLDrawlableHelper.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.b.post(new vbu(this));
   }
 }
 

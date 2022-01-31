@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture;
 
-import ankv;
+import anth;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -32,12 +32,12 @@ public class QIMManager
   
   public static IQIMManager a(int paramInt)
   {
-    return ankv.a.c(paramInt);
+    return anth.a.c(paramInt);
   }
   
   public static QIMManager a()
   {
-    return ankv.a;
+    return anth.a;
   }
   
   public static AppRuntime a()
@@ -65,7 +65,7 @@ public class QIMManager
   
   public static IQIMManager b(int paramInt)
   {
-    return ankv.a.a[paramInt];
+    return anth.a.a[paramInt];
   }
   
   public void a()

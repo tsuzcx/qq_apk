@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
 public class uvs
   implements Runnable
 {
-  public uvs(DetectableAnimationDrawable paramDetectableAnimationDrawable) {}
+  public uvs(PressToSpeakPanel paramPressToSpeakPanel) {}
   
   public void run()
   {
-    this.a.a();
+    this.a.b();
   }
 }
 

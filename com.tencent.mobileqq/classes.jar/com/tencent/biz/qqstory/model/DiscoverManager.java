@@ -20,7 +20,7 @@ import com.tribe.async.async.Bosses;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nct;
+import ngo;
 
 public class DiscoverManager
   implements IManager
@@ -120,7 +120,7 @@ public class DiscoverManager
   
   public void a(CardItem paramCardItem)
   {
-    Bosses.get().postLightWeightJob(new nct(this, paramCardItem), 0);
+    Bosses.get().postLightWeightJob(new ngo(this, paramCardItem), 0);
   }
   
   public void a(String paramString, GetDiscoverBannerVideoResponse paramGetDiscoverBannerVideoResponse)

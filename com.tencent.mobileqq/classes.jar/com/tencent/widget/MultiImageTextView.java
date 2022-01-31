@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import amcs;
-import amcu;
+import amkc;
+import amke;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -44,10 +44,10 @@ public class MultiImageTextView
   
   public MultiImageTextView a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    amcs localamcs = new amcs(this);
-    localamcs.a = paramDrawable;
-    localamcs.a.setBounds(0, 0, paramInt1, paramInt2);
-    a(localamcs);
+    amkc localamkc = new amkc(this);
+    localamkc.a = paramDrawable;
+    localamkc.a.setBounds(0, 0, paramInt1, paramInt2);
+    a(localamkc);
     return this;
   }
   
@@ -68,9 +68,9 @@ public class MultiImageTextView
   
   public void a(int paramInt)
   {
-    amcu localamcu = new amcu(this);
-    localamcu.a = paramInt;
-    a(localamcu);
+    amke localamke = new amke(this);
+    localamke.a = paramInt;
+    a(localamke);
   }
   
   public void a(SpanAdapter paramSpanAdapter)

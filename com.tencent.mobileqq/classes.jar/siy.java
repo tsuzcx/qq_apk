@@ -1,79 +1,87 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.armap.ConversationARMap;
-import com.tencent.mobileqq.portal.ConversationHongBao;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.PortalManager.PortalShower;
-import com.tencent.mobileqq.portal.PortalManager.ResultData;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.TroopNotificationCache;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class siy
-  extends PortalManager.PortalShower
+  extends BizTroopObserver
 {
-  private siy(Conversation paramConversation) {}
+  public siy(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a()
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.c();
-  }
-  
-  public void a(int paramInt, PortalManager.ResultData paramResultData)
-  {
-    PortalManager.a(this.a.a(), paramResultData);
-  }
-  
-  public void a(long paramLong1, int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, Bitmap paramBitmap4, Bitmap paramBitmap5, Bitmap paramBitmap6, Bitmap paramBitmap7, List paramList, String paramString, long paramLong2, boolean paramBoolean, long paramLong3)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap.a())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap.c();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.a(paramLong1, paramInt, paramBitmap1, paramBitmap2, paramBitmap3, paramBitmap4, paramBitmap5, paramBitmap6, paramBitmap7, paramList, paramString, paramLong2, paramBoolean, paramLong3);
-  }
-  
-  public void a(long paramLong1, int paramInt1, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong2, boolean paramBoolean, int paramInt2, Bitmap paramBitmap4, Bitmap paramBitmap5, List paramList1, List paramList2, Bitmap paramBitmap6, long paramLong3, Bitmap paramBitmap7, Bitmap paramBitmap8)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap.a())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap.c();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.a(paramLong1, paramInt1, paramBitmap1, paramBitmap2, paramBitmap3, paramString1, paramString2, paramString3, paramString4, paramLong2, paramBoolean, paramInt2, paramBitmap4, paramBitmap5, paramList1, paramList2, paramBitmap6, paramLong3, paramBitmap7, paramBitmap8);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, PortalManager.ResultData paramResultData)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.a(paramBoolean, paramString, paramResultData);
-  }
-  
-  public boolean a()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.b();
-  }
-  
-  public boolean a(Bitmap paramBitmap, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManager", 2, "showGuide, " + this.a.h + ", " + this.a.f);
-    }
-    if ((!this.a.h) || (!this.a.f))
+    if ((paramInt2 != 0) && (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1)))
     {
-      this.a.s = true;
-      return false;
-    }
-    this.a.a(paramBitmap);
-    return true;
-  }
-  
-  public void b()
-  {
-    if ((Conversation.a(this.a) != null) && (Conversation.a(this.a) != null)) {
-      Conversation.a(this.a).removeView(Conversation.a(this.a));
+      if ((!this.a.isFinishing()) && (this.a.isResume()))
+      {
+        paramString1 = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          paramString1 = this.a.getResources().getString(2131435596);
+        }
+        QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
+      }
+      ChatSettingForTroop.h(this.a);
     }
   }
   
-  public boolean b()
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.c();
+    boolean bool = true;
+    super.a(paramBoolean, paramString1, paramString2, paramString3);
+    if (TextUtils.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, paramString1))
+    {
+      this.a.s();
+      if (!paramBoolean) {
+        break label158;
+      }
+      this.a.a(paramString2);
+      if ((this.a.isResume()) && (this.a.e))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop = false;
+        TroopUtils.a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.a, new siz(this));
+        this.a.e = false;
+      }
+      paramString1 = this.a;
+      if ((this.a.d) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop)) {
+        break label153;
+      }
+      paramBoolean = bool;
+      ChatSettingForTroop.a(paramString1, paramBoolean);
+    }
+    label153:
+    label158:
+    do
+    {
+      return;
+      paramBoolean = false;
+      break;
+      QQToast.a(this.a, 1, "修改失败，请稍后再试", 0).b(this.a.getTitleBarHeight());
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.getTroopName();
+        this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopname);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, paramString3);
+  }
+  
+  protected void c(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject instanceof TroopNotificationCache))
+    {
+      paramObject = (TroopNotificationCache)paramObject;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null) && (!TextUtils.isEmpty(paramObject.title))) {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopMemo = paramObject.title;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(12);
+    }
   }
 }
 

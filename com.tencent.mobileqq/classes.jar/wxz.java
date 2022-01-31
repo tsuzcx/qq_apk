@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
-public class wxz
+class wxz
   implements Runnable
 {
-  public wxz(PhotoListActivity.QueryPhotoTask paramQueryPhotoTask) {}
+  wxz(wxx paramwxx, String paramString) {}
   
   public void run()
   {
-    this.a.a.c();
+    AvatarPendantActivity.b(this.jdField_a_of_type_Wxx.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 

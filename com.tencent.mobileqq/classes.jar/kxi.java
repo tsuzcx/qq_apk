@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class kxi
-  implements Runnable
+  implements View.OnClickListener
 {
-  public kxi(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public kxi(VideoCoverView paramVideoCoverView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyNativeAdAppVideoView.a(this.a);
+    VideoCoverView.a(this.a, true);
   }
 }
 

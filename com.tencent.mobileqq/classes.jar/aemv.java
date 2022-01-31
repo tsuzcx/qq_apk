@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
+import android.widget.Button;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import com.tencent.mobileqq.utils.DisplayUtils;
 
 public class aemv
   implements Runnable
 {
-  public aemv(NearbyProxy paramNearbyProxy, NearbyProxyObserver paramNearbyProxyObserver, int paramInt, Object[] paramArrayOfObject) {}
+  public aemv(MagicfaceViewController paramMagicfaceViewController) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProxyObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.c.getLayoutParams();
+    localLayoutParams.rightMargin = ((int)DisplayUtils.a(this.a.a.a(), 10.0F));
+    this.a.c.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemv
  * JD-Core Version:    0.7.0.1
  */

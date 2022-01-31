@@ -1,20 +1,14 @@
-import android.graphics.PointF;
-import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector;
-import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector.SimpleOnMoveGestureListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-import dov.com.qq.im.cropvideo.RenderFilter;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
 public class anqm
-  extends MoveGestureDetector.SimpleOnMoveGestureListener
+  implements Runnable
 {
-  public anqm(CropVideoActivity paramCropVideoActivity) {}
+  public anqm(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public boolean b(MoveGestureDetector paramMoveGestureDetector)
+  public void run()
   {
-    float f1 = paramMoveGestureDetector.a().x;
-    float f2 = paramMoveGestureDetector.a().y;
-    CropVideoActivity.a(this.a).a(f1, f2, 0.0F);
-    return true;
+    this.a.a.setVisibility(8);
   }
 }
 

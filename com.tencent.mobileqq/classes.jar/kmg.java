@@ -1,12 +1,13 @@
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler;
 
-public final class kmg
-  extends ThreadLocal
+public class kmg
+  implements Runnable
 {
-  protected CharsetDecoder a()
+  public kmg(TroopRedTouchHandler paramTroopRedTouchHandler) {}
+  
+  public void run()
   {
-    return Charset.forName("UTF-8").newDecoder();
+    TroopRedTouchHandler.a(this.a);
   }
 }
 

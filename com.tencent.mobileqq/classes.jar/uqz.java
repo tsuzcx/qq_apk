@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
 public class uqz
-  implements Runnable
+  extends DialogUtil.DialogOnClickAdapter
 {
-  public uqz(RecordSoundPanel paramRecordSoundPanel) {}
+  public uqz(PlusPanel paramPlusPanel) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    paramDialogInterface.dismiss();
   }
 }
 

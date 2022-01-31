@@ -16,7 +16,7 @@ import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import wrb;
+import wwm;
 
 public class BaseMessageResultAdapter
   extends BaseAdapter
@@ -129,7 +129,7 @@ public class BaseMessageResultAdapter
     } while ((this.jdField_a_of_type_Boolean) || (!paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)));
     for (;;)
     {
-      ThreadManager.post(new wrb(this, paramString, paramInt, paramLong), 8, null, false);
+      ThreadManager.post(new wwm(this, paramString, paramInt, paramLong), 8, null, false);
       return;
       this.jdField_a_of_type_JavaLangString = paramString;
       MessageItem.a(paramString);

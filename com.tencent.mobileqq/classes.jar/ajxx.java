@@ -1,26 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class ajxx
-  extends BroadcastReceiver
+  implements TroopRobotManager.Callback
 {
-  public ajxx(SnapshotService paramSnapshotService) {}
+  public ajxx(TroopRobotManager paramTroopRobotManager, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    long l = paramIntent.getLongExtra("id", -1L);
-    int i = paramIntent.getIntExtra("action", -1);
-    if ((l == 0L) && (i == 1) && (SnapshotService.a(this.a) > 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(SnapshotService.a(), 2, "receive broadcast: destroy snapshot service");
-      }
-      SnapshotService.a(false);
-      this.a.finish();
+    if (paramInt == 0) {
+      return;
     }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager.a.getApp(), 1, "操作失败" + "", 0).a();
   }
 }
 

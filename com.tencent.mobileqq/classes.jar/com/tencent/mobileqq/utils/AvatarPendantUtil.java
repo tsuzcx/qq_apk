@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import akbv;
-import akbw;
+import akji;
+import akjj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -49,7 +49,7 @@ public final class AvatarPendantUtil
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     jdField_a_of_type_JavaLangString = "http://i.gtimg.cn/qqshow/admindata/comdata/AndroidIconZip/icon.zip";
-    jdField_b_of_type_JavaLangString = AppConstants.aJ + "avatarPendantIcons";
+    jdField_b_of_type_JavaLangString = AppConstants.aK + "avatarPendantIcons";
     c = jdField_b_of_type_JavaLangString + "/icon";
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     jdField_a_of_type_Long = -1L;
@@ -136,16 +136,16 @@ public final class AvatarPendantUtil
   
   public static String a(String paramString)
   {
-    return AppConstants.bv + "font_info/" + paramString + File.separator + paramString + ".ttf";
+    return AppConstants.bw + "font_info/" + paramString + File.separator + paramString + ".ttf";
   }
   
   public static void a()
   {
-    File localFile = new File(AppConstants.aJ + "avatarPendantDefaultHead");
+    File localFile = new File(AppConstants.aK + "avatarPendantDefaultHead");
     if (!localFile.exists()) {
       localFile.mkdir();
     }
-    localFile = new File(AppConstants.bv);
+    localFile = new File(AppConstants.bw);
     if (!localFile.exists()) {
       localFile.mkdir();
     }
@@ -208,7 +208,7 @@ public final class AvatarPendantUtil
         bool1 = false;
         continue;
       }
-      paramQQAppInterface = new akbv(paramQQAppInterface);
+      paramQQAppInterface = new akji(paramQQAppInterface);
       if ((bool2) || (bool1))
       {
         ThreadManager.post(paramQQAppInterface, 8, null, false);
@@ -252,7 +252,7 @@ public final class AvatarPendantUtil
       if (QLog.isColorLevel()) {
         QLog.d("AvatarPendantUtil", 2, "preloadWebProcess, startWebProcess");
       }
-      paramQQAppInterface.a(-1, new akbw(paramPreloadProcHitSession));
+      paramQQAppInterface.a(-1, new akjj(paramPreloadProcHitSession));
       return;
     } while (!QLog.isColorLevel());
     QLog.d("AvatarPendantUtil", 2, "preloadWebProcess, web process alive aready");
@@ -423,7 +423,7 @@ public final class AvatarPendantUtil
   public static String b(long paramLong, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.bv).append(paramLong).append(File.separator);
+    localStringBuilder.append(AppConstants.bw).append(paramLong).append(File.separator);
     switch (paramInt)
     {
     }
@@ -450,7 +450,7 @@ public final class AvatarPendantUtil
   
   public static String b(String paramString)
   {
-    return AppConstants.bv + "font_info/" + paramString + "/";
+    return AppConstants.bw + "font_info/" + paramString + "/";
   }
   
   public static boolean b(long paramLong)
@@ -471,7 +471,7 @@ public final class AvatarPendantUtil
   public static boolean b(String paramString)
   {
     paramString = paramString.replace("faceAddon.sticker.", "");
-    return new File(AppConstants.bv + "sticker_info", paramString).exists();
+    return new File(AppConstants.bw + "sticker_info", paramString).exists();
   }
   
   public static String c(long paramLong, int paramInt)
@@ -502,7 +502,7 @@ public final class AvatarPendantUtil
   
   public static String c(String paramString)
   {
-    return AppConstants.bv + "sticker_info/" + paramString + ".png";
+    return AppConstants.bw + "sticker_info/" + paramString + ".png";
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import ajzp;
+import akhd;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -124,10 +124,10 @@ public class NearbyFaceDecoder
         if (QLog.isColorLevel()) {
           QLog.i("Q.qqhead.NearbyFaceDecoder", 2, "onDecodeTaskCompleted.cost=" + l);
         }
-        if ((this.jdField_a_of_type_Ajzp == null) || (paramBitmap == null)) {
+        if ((this.jdField_a_of_type_Akhd == null) || (paramBitmap == null)) {
           break;
         }
-        this.jdField_a_of_type_Ajzp.onDecodeTaskCompleted(this.b + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
+        this.jdField_a_of_type_Akhd.onDecodeTaskCompleted(this.b + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
         return;
         i = FaceInfo.g;
         break label117;
@@ -191,10 +191,10 @@ public class NearbyFaceDecoder
         if (QLog.isColorLevel()) {
           QLog.i("Q.qqhead.NearbyFaceDecoder", 2, "onFaceDownloadFinished.cost=" + l);
         }
-        if ((this.jdField_a_of_type_Ajzp == null) || (paramBitmap == null)) {
+        if ((this.jdField_a_of_type_Akhd == null) || (paramBitmap == null)) {
           break;
         }
-        this.jdField_a_of_type_Ajzp.onDecodeTaskCompleted(this.b + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
+        this.jdField_a_of_type_Akhd.onDecodeTaskCompleted(this.b + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
         return;
         i = FaceInfo.g;
         break label96;
@@ -288,7 +288,7 @@ public class NearbyFaceDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.NearbyFaceDecoder
  * JD-Core Version:    0.7.0.1
  */

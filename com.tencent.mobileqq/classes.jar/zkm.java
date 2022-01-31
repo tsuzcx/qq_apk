@@ -1,25 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.MobileQQService;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.util.DrawerCoverUtil;
 
-public class zkm
+class zkm
   implements Runnable
 {
-  public zkm(QQAppInterface paramQQAppInterface) {}
+  zkm(zkl paramzkl, Card paramCard) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
-    int i = 0;
-    while (i < QQAppInterface.a(this.a).length)
+    if (FrameHelperActivity.a(this.jdField_a_of_type_Zkl.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) >= 0)
     {
-      Manager localManager = QQAppInterface.a(this.a)[i];
-      if (localManager != null) {
-        localManager.onDestroy();
-      }
-      i += 1;
+      DrawerCoverUtil.a(this.jdField_a_of_type_Zkl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard);
+      FrameHelperActivity.b(this.jdField_a_of_type_Zkl.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity);
     }
   }
 }

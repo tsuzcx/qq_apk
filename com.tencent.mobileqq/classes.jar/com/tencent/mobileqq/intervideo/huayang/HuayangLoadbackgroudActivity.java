@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import aduf;
+import aeco;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,7 @@ public class HuayangLoadbackgroudActivity
 {
   private long jdField_a_of_type_Long;
   private IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
-  private HuayangPluginLauncher.HuayangPluginLauncherListener jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher$HuayangPluginLauncherListener = new aduf(this);
+  private HuayangPluginLauncher.HuayangPluginLauncherListener jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher$HuayangPluginLauncherListener = new aeco(this);
   private HuayangPluginLauncher jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher;
   private String jdField_a_of_type_JavaLangString;
   
@@ -101,6 +101,7 @@ public class HuayangLoadbackgroudActivity
         this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = ((IVPluginInfo)((Bundle)localObject).getParcelable("ivpluginInfo"));
         bool2 = ((Bundle)localObject).getBoolean("needStart", false);
         Monitor.a = TextUtils.equals(str3, "hy_sixgod");
+        MonitorConfig.a(this, str3);
         this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.c = this.jdField_a_of_type_JavaLangString;
         if (!bool1) {
           break;
@@ -125,8 +126,6 @@ public class HuayangLoadbackgroudActivity
       }
       if (HuayangJsPlugin.b(this.jdField_a_of_type_JavaLangString)) {
         Monitor.a("2597722");
-      } else {
-        MonitorConfig.a();
       }
     }
     HuayangPluginLauncher.a(this, paramBundle).a(str1, bool2, false, this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, str2, str3);

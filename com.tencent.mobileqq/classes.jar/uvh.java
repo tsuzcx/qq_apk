@@ -1,27 +1,15 @@
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.aio.item.ClickedWaveView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
 public class uvh
   implements Runnable
 {
-  public uvh(ClickedWaveView paramClickedWaveView) {}
+  public uvh(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
   
   public void run()
   {
-    if ((this.a.a.computeScrollOffset()) || (this.a.d > 0))
-    {
-      this.a.c = this.a.a.getCurrX();
-      if (this.a.d > 0)
-      {
-        ClickedWaveView localClickedWaveView = this.a;
-        localClickedWaveView.d -= 3;
-      }
-      if (this.a.d < 0) {
-        this.a.d = 0;
-      }
-      this.a.postInvalidate();
-      this.a.postDelayed(this, 20L);
-    }
+    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).b(this.jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.b();
   }
 }
 

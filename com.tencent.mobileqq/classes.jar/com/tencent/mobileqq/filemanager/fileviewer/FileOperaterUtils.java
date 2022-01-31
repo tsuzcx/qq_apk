@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import adbg;
-import adbi;
-import adbj;
-import adbl;
-import adbn;
-import adbo;
-import adbp;
-import adbq;
-import adbr;
+import adjn;
+import adjp;
+import adjq;
+import adjs;
+import adju;
+import adjv;
+import adjw;
+import adjx;
+import adjy;
 import android.app.Activity;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -17,47 +17,47 @@ public class FileOperaterUtils
 {
   public static View.OnClickListener a(Activity paramActivity, String paramString)
   {
-    return new adbo(paramActivity, paramString);
+    return new adjv(paramActivity, paramString);
   }
   
   public static View.OnClickListener a(FileManagerEntity paramFileManagerEntity, Activity paramActivity)
   {
-    return new adbr(paramFileManagerEntity, paramActivity);
+    return new adjy(paramFileManagerEntity, paramActivity);
   }
   
   public static View.OnClickListener a(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity)
   {
-    return new adbi(paramFileManagerEntity, paramIFileBrowser);
+    return new adjp(paramFileManagerEntity, paramIFileBrowser);
   }
   
   public static View.OnClickListener a(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity, Activity paramActivity)
   {
-    return new adbj(paramFileManagerEntity, paramActivity, paramIFileBrowser);
+    return new adjq(paramFileManagerEntity, paramActivity, paramIFileBrowser);
   }
   
   public static View.OnClickListener a(IFileBrowser paramIFileBrowser, String paramString)
   {
-    return new adbg(paramString, paramIFileBrowser);
+    return new adjn(paramString, paramIFileBrowser);
   }
   
   public static View.OnClickListener b(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity)
   {
-    return new adbl(paramFileManagerEntity, paramIFileBrowser);
+    return new adjs(paramFileManagerEntity, paramIFileBrowser);
   }
   
   public static View.OnClickListener b(IFileBrowser paramIFileBrowser, String paramString)
   {
-    return new adbn(paramString, paramIFileBrowser);
+    return new adju(paramString, paramIFileBrowser);
   }
   
   public static View.OnClickListener c(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity)
   {
-    return new adbp(paramIFileBrowser, paramFileManagerEntity);
+    return new adjw(paramIFileBrowser, paramFileManagerEntity);
   }
   
   public static View.OnClickListener d(IFileBrowser paramIFileBrowser, FileManagerEntity paramFileManagerEntity)
   {
-    return new adbq(paramIFileBrowser, paramFileManagerEntity);
+    return new adjx(paramIFileBrowser, paramFileManagerEntity);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import ajjp;
-import ajjq;
-import ajjr;
-import ajjs;
-import ajju;
+import ajrb;
+import ajrc;
+import ajrd;
+import ajre;
+import ajrg;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -41,7 +41,7 @@ public class SearchReciteArticleFragment
   implements HttpWebCgiAsyncTask.Callback
 {
   private volatile long jdField_a_of_type_Long;
-  private ajju jdField_a_of_type_Ajju;
+  private ajrg jdField_a_of_type_Ajrg;
   private View jdField_a_of_type_AndroidViewView;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter;
@@ -166,7 +166,7 @@ public class SearchReciteArticleFragment
         if ((QLog.isColorLevel()) && (paramBundle != null)) {
           QLog.e("SearchReciteArticleFragment", 2, new Object[] { "onGetKeywordListCallBack server error: ", paramBundle, "\n", paramJSONObject });
         }
-        h();
+        g();
         paramJSONObject = str1;
         if (i != 0)
         {
@@ -223,13 +223,22 @@ public class SearchReciteArticleFragment
     }
   }
   
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131368324));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView = ((LoadMoreXListView)a(2131363949));
+    this.jdField_a_of_type_AndroidViewView = a(2131363950);
+    this.jdField_b_of_type_AndroidViewView = a(2131368450);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFlowLayout = ((FlowLayout)a(2131368451));
+  }
+  
   private void b(String paramString)
   {
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null)
     {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      f();
+      e();
       if (QLog.isColorLevel()) {
         QLog.i("SearchReciteArticleFragment", 2, "request search start is " + this.jdField_b_of_type_Int);
       }
@@ -305,14 +314,14 @@ public class SearchReciteArticleFragment
         if (i < m)
         {
           bool2 = bool1;
-          this.jdField_a_of_type_Ajju.a((SearchReciteArticleFragment.SearchArticle)JSONUtils.b(localJSONArray.optJSONObject(i), SearchReciteArticleFragment.SearchArticle.class));
+          this.jdField_a_of_type_Ajrg.a((SearchReciteArticleFragment.SearchArticle)JSONUtils.b(localJSONArray.optJSONObject(i), SearchReciteArticleFragment.SearchArticle.class));
           i += 1;
           continue;
         }
         bool2 = bool1;
-        this.jdField_a_of_type_Ajju.a(((JSONObject)localObject).optString("key", ""));
+        this.jdField_a_of_type_Ajrg.a(((JSONObject)localObject).optString("key", ""));
         bool2 = bool1;
-        this.jdField_a_of_type_Ajju.notifyDataSetChanged();
+        this.jdField_a_of_type_Ajrg.notifyDataSetChanged();
         bool2 = bool1;
         this.jdField_b_of_type_Int += 10;
         i = 1;
@@ -346,7 +355,7 @@ public class SearchReciteArticleFragment
         if ((QLog.isColorLevel()) && (paramBundle != null)) {
           QLog.e("SearchReciteArticleFragment", 2, new Object[] { "onSearchArticleCallBack server error: ", paramBundle, "\n", paramJSONObject });
         }
-        h();
+        g();
       }
       paramJSONObject = (JSONObject)localObject;
       if (paramBundle != null)
@@ -376,7 +385,7 @@ public class SearchReciteArticleFragment
         if ((QLog.isColorLevel()) && (paramBundle != null)) {
           QLog.e("SearchReciteArticleFragment", 2, new Object[] { "onSearchArticleCallBack client error: ", paramBundle });
         }
-        h();
+        g();
         paramJSONObject = "-1";
         continue;
       }
@@ -400,39 +409,30 @@ public class SearchReciteArticleFragment
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131368322));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView = ((LoadMoreXListView)a(2131363924));
-    this.jdField_a_of_type_AndroidViewView = a(2131363925);
-    this.jdField_b_of_type_AndroidViewView = a(2131368448);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFlowLayout = ((FlowLayout)a(2131368449));
-  }
-  
-  private void d()
-  {
-    a("搜索背诵文章");
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ajjp(this));
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a = new ajjq(this);
+    setTitle("搜索背诵文章");
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ajrb(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a = new ajrc(this);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFlowLayout.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.setAdapter(this.jdField_a_of_type_Ajju);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(new ajjr(this));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.setOnItemClickListener(new ajjs(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.setAdapter(this.jdField_a_of_type_Ajrg);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(new ajrd(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.setOnItemClickListener(new ajre(this));
     String str = getArguments().getString("keywords", "");
     if (!TextUtils.isEmpty(str)) {
       this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
     }
   }
   
-  private void e()
+  private void d()
   {
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null)
     {
-      g();
+      f();
       this.jdField_b_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsTroopReciteCgiHandler.a(localQQAppInterface, this, this.jdField_a_of_type_JavaLangString, 10001);
     }
   }
   
-  private void f()
+  private void e()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask2 != null)
     {
@@ -441,7 +441,7 @@ public class SearchReciteArticleFragment
     }
   }
   
-  private void g()
+  private void f()
   {
     if (this.jdField_b_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask2 != null)
     {
@@ -450,29 +450,16 @@ public class SearchReciteArticleFragment
     }
   }
   
-  private void h()
+  private void g()
   {
     QQToast.a(getActivity(), "网络异常，请检查网络设置。", 0).a();
   }
   
-  protected int a()
+  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return 2130969910;
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    super.a(paramActivity);
-    paramActivity.getWindow().setSoftInputMode(32);
-  }
-  
-  protected void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("troop_uin");
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter = new SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter(null);
-    this.jdField_a_of_type_Ajju = new ajju(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsTroopReciteCgiHandler = new TroopReciteCgiHandler();
+    b();
+    c();
+    d();
   }
   
   protected void a(@Nullable String paramString) {}
@@ -493,11 +480,24 @@ public class SearchReciteArticleFragment
     b(paramJSONObject, paramBundle);
   }
   
-  protected void b(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected int getContentLayoutId()
   {
-    c();
-    d();
-    e();
+    return 2130969921;
+  }
+  
+  protected void init(Bundle paramBundle)
+  {
+    super.init(paramBundle);
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("troop_uin");
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter = new SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter(null);
+    this.jdField_a_of_type_Ajrg = new ajrg(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsTroopReciteCgiHandler = new TroopReciteCgiHandler();
+  }
+  
+  public void initWindowStyleAndAnimation(Activity paramActivity)
+  {
+    super.initWindowStyleAndAnimation(paramActivity);
+    paramActivity.getWindow().setSoftInputMode(32);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -511,7 +511,7 @@ public class SearchReciteArticleFragment
     try
     {
       a(new JSONObject(paramIntent));
-      b();
+      a();
       return;
     }
     catch (JSONException paramIntent)
@@ -523,14 +523,14 @@ public class SearchReciteArticleFragment
   public void onDestroy()
   {
     this.jdField_b_of_type_Boolean = true;
-    g();
     f();
+    e();
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment
  * JD-Core Version:    0.7.0.1
  */

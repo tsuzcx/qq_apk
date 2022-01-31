@@ -1,20 +1,17 @@
-import android.graphics.Rect;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.FakeFeedViewUpdateCompletedEvent;
+import com.tencent.biz.qqstory.model.item.HotTopicInfoItem;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
 
 public class oap
   implements Runnable
 {
-  public oap(FeedSegment paramFeedSegment, Rect paramRect) {}
+  public oap(DiscoverPresenter paramDiscoverPresenter, HotTopicInfoItem paramHotTopicInfoItem) {}
   
   public void run()
   {
-    FeedSegment.FakeFeedViewUpdateCompletedEvent localFakeFeedViewUpdateCompletedEvent = new FeedSegment.FakeFeedViewUpdateCompletedEvent(this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-    Dispatchers.get().dispatch(localFakeFeedViewUpdateCompletedEvent);
-    SLog.b("Q.qqstory.home:FeedSegment_animation", "发了动画时间过去了 2");
+    DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemHotTopicInfoItem);
+    SLog.b("Q.qqstory.discover.DiscoverPresenter", "topic %d info %s", Long.valueOf(DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter)), this.jdField_a_of_type_ComTencentBizQqstoryModelItemHotTopicInfoItem);
   }
 }
 

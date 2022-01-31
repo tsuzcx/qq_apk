@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.remote.RecvMsg;
+import cooperation.qqreader.QRBridgeActivity;
+import cooperation.qqreader.QRBridgeActivity.PluginLaunchReceiver;
 
-public final class amyh
-  implements Parcelable.Creator
+public class amyh
+  implements Runnable
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  public amyh(QRBridgeActivity.PluginLaunchReceiver paramPluginLaunchReceiver) {}
   
-  public RecvMsg[] a(int paramInt)
+  public void run()
   {
-    return new RecvMsg[paramInt];
+    this.a.a.finish();
   }
 }
 

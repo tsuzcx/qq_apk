@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.armap.ARGLSurfaceView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapTracer;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
 
-public class abbi
+class abbi
   implements Runnable
 {
-  public abbi(ARMapActivity paramARMapActivity) {}
+  abbi(abbg paramabbg, String paramString) {}
   
   public void run()
   {
-    if ((this.a.app == null) || (this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView == null)) {
-      return;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ARMapActivity", 4, "init ARMapTracer");
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer = new ARMapTracer(true, this.a.app.getAccount(), 10, new abbj(this));
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.setTraceCallback(this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer);
+    this.jdField_a_of_type_Abbg.a.a.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

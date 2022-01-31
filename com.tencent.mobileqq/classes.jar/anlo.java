@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.app.CardObserver;
-import dov.com.qq.im.capture.data.ComboLockManager;
+import cooperation.qzone.webviewplugin.QzoneWidgetAIJsPlugin;
+import org.json.JSONObject;
 
 public class anlo
-  extends CardObserver
+  implements Runnable
 {
-  public anlo(ComboLockManager paramComboLockManager) {}
+  public anlo(QzoneWidgetAIJsPlugin paramQzoneWidgetAIJsPlugin, JSONObject paramJSONObject) {}
+  
+  public void run()
+  {
+    QzoneWidgetAIJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin, this.jdField_a_of_type_OrgJsonJSONObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlo
  * JD-Core Version:    0.7.0.1
  */

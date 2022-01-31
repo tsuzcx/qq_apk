@@ -1,24 +1,17 @@
-import com.tencent.image.URLImageView;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
-import com.tencent.qidian.data.GroupItem;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.File;
+import java.util.Comparator;
 
-class almy
-  implements Runnable
+public class almy
+  implements Comparator
 {
-  almy(almx paramalmx, GroupItem paramGroupItem, URLImageView paramURLImageView) {}
-  
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    String str = String.valueOf(this.jdField_a_of_type_ComTencentQidianDataGroupItem.a);
-    this.jdField_a_of_type_Almx.a.a.put(str, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, 3, str));
-    this.jdField_a_of_type_Almx.a.a(3, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
+    return paramFile1.getName().compareTo(paramFile2.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     almy
  * JD-Core Version:    0.7.0.1
  */

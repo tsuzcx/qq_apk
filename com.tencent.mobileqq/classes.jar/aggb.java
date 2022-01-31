@@ -1,39 +1,27 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
+import com.tencent.mobileqq.ocr.OcrControl;
+import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
 
 public class aggb
   implements Runnable
 {
-  public aggb(ScanTorchActivity paramScanTorchActivity, ARTarget paramARTarget) {}
+  public aggb(OcrControl paramOcrControl, String paramString, ARCloudReqFileInfo paramARCloudReqFileInfo) {}
   
   public void run()
   {
-    ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false);
-    if (((!ARVideoRecordUIControllerImpl.a().a()) || (ARVideoRecordUIControllerImpl.a().b())) && (!this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.a()) && (!this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.c()) && (!this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.b()))
+    ARCloudReqInfo localARCloudReqInfo = OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl, this.jdField_a_of_type_JavaLangString);
+    if ((localARCloudReqInfo != null) && (OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl) != null))
     {
-      ARVideoRecordUIControllerImpl.a().c();
-      ARVideoRecordUIControllerImpl.a().e();
-      QLog.d("ScanTorchActivity", 1, "onARAnimationStateChanged, ARVideoRecordUIControllerImpl isVideoRecordRunning false");
-      return;
+      long l1 = System.currentTimeMillis();
+      long l2 = localARCloudReqInfo.c;
+      OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl).a(4, null, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.b, l1 - l2);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.a())
-    {
-      ARVideoRecordUIControllerImpl.a().d();
-      QLog.d("ScanTorchActivity", 1, "onARAnimationStateChanged, ARVideoRecordUIControllerImpl bin hai not show");
-      return;
-    }
-    QLog.d("ScanTorchActivity", 1, "onARAnimationStateChanged, ARVideoRecordUIControllerImpl isVideoRecordRunning true");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aggb
  * JD-Core Version:    0.7.0.1
  */

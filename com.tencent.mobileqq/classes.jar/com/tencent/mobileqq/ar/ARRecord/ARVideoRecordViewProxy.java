@@ -1,5 +1,10 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
+import aafb;
+import aafc;
+import aafd;
+import aafe;
+import aaff;
 import android.os.Looper;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -10,11 +15,6 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import zyn;
-import zyo;
-import zyp;
-import zyq;
-import zyr;
 
 public class ARVideoRecordViewProxy
   implements ARVideoRecordViewPresenter
@@ -35,17 +35,17 @@ public class ARVideoRecordViewProxy
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView = ((ARVideoRecordButtonView)paramView.findViewById(2131363280));
-    this.c = paramView.findViewById(2131363279);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363281);
+    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView = ((ARVideoRecordButtonView)paramView.findViewById(2131363297));
+    this.c = paramView.findViewById(2131363296);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363298);
     this.jdField_a_of_type_Boolean = ARRecordUtils.a();
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
     this.c.setOnClickListener(null);
-    this.c.setOnTouchListener(new zyn(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363282));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363283));
+    this.c.setOnTouchListener(new aafb(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363299));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363300));
     c();
     if (QLog.isColorLevel()) {
       QLog.i("ARVideoRecordViewProxy", 2, "init self");
@@ -121,7 +121,7 @@ public class ARVideoRecordViewProxy
       c();
       return;
     }
-    ThreadManager.getUIHandler().post(new zyo(this));
+    ThreadManager.getUIHandler().post(new aafc(this));
   }
   
   public void a(int paramInt)
@@ -136,7 +136,7 @@ public class ARVideoRecordViewProxy
       }
       return;
     }
-    ThreadManager.getUIHandler().post(new zyr(this, paramInt));
+    ThreadManager.getUIHandler().post(new aaff(this, paramInt));
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -144,7 +144,7 @@ public class ARVideoRecordViewProxy
     if (this.jdField_a_of_type_Int == 1) {
       this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView.setProgress(paramInt1, 60000L);
     }
-    ThreadManager.getUIHandler().post(new zyq(this, paramInt1, paramInt2));
+    ThreadManager.getUIHandler().post(new aafe(this, paramInt1, paramInt2));
   }
   
   public void a(ARVideoRecordViewPresenter.onMonitorUserOperationListener paramonMonitorUserOperationListener)
@@ -167,7 +167,7 @@ public class ARVideoRecordViewProxy
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
     }
-    ThreadManager.getUIHandler().post(new zyp(this));
+    ThreadManager.getUIHandler().post(new aafd(this));
   }
 }
 

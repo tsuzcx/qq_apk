@@ -1,29 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
+import com.tencent.mobileqq.data.TroopAssistantData;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class aenr
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public aenr(GameRoomFloatView paramGameRoomFloatView) {}
+  public aenr(TroopAssistantManager paramTroopAssistantManager, EntityManager paramEntityManager, TroopAssistantData paramTroopAssistantData) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    int i = paramIntent.getIntExtra("SmallScreenState", 0);
-    if (i == 3) {
-      this.a.a.setVisibility(4);
-    }
-    while ((i != 2) && (i != 0)) {
-      return;
-    }
-    this.a.a.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenr
  * JD-Core Version:    0.7.0.1
  */

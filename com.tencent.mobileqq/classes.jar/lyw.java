@@ -1,23 +1,16 @@
-import android.widget.ArrayAdapter;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend;
 import java.util.List;
 
 public class lyw
-  extends ReadInJoyObserver
+  implements View.OnClickListener
 {
-  public lyw(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
+  public lyw(ComponentHeaderFriendRecommend paramComponentHeaderFriendRecommend, List paramList, int paramInt) {}
   
-  public void c(List paramList)
+  public void onClick(View paramView)
   {
-    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(false);
-    ReadInJoyVideoSearchTagFragment.a(this.a).clear();
-    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(true);
-    ReadInJoyVideoSearchTagFragment.a(this.a).addAll(paramList);
-    if (paramList.isEmpty()) {
-      QQToast.a(this.a.getActivity(), 2131438916, 0).a();
-    }
+    ComponentHeaderFriendRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend, ((Long)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).longValue());
   }
 }
 

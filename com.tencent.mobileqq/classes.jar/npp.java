@@ -1,18 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-public class npp
-  implements TVK_IMediaPlayer.OnErrorListener
+class npp
+  implements View.OnClickListener
 {
-  public npp(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  npp(npm paramnpm) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new npq(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
-    return false;
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a(this.a.jdField_a_of_type_AndroidOsBundle);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
   }
 }
 

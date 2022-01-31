@@ -94,7 +94,7 @@ public class StructMsgItemLayout19
     try
     {
       i = Color.parseColor(((StructMsgItemRemark)paramAbsStructMsgElement).g());
-      paramQQWalletTransferBubbleView.setBubbleBackground(2130844052, i, true);
+      paramQQWalletTransferBubbleView.setBubbleBackground(2130844118, i, true);
       Resources localResources = paramContext.getResources();
       paramContext = (TextView)paramAbsStructMsgElement.a(paramContext, null, paramBundle);
       paramAbsStructMsgElement = new RelativeLayout.LayoutParams(-2, -2);
@@ -194,7 +194,7 @@ public class StructMsgItemLayout19
       try
       {
         i = Color.parseColor(this.u);
-        ((QQWalletTransferBubbleView)localObject2).setBubbleBackground(2130844051, i, true);
+        ((QQWalletTransferBubbleView)localObject2).setBubbleBackground(2130844117, i, true);
         paramView.addView((View)localObject2);
         QQWalletTransferBubbleView localQQWalletTransferBubbleView = new QQWalletTransferBubbleView(paramContext);
         localQQWalletTransferBubbleView.setLayoutParams(new LinearLayout.LayoutParams(-1, AIOUtils.a(25.0F, (Resources)localObject1)));

@@ -1,17 +1,16 @@
-import android.util.Pair;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsScrollLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsScrollLayout.ContentLayoutListener;
 
 public class mib
+  implements Runnable
 {
-  public Pair a;
-  public URL a;
+  public mib(VideoFeedsScrollLayout paramVideoFeedsScrollLayout) {}
   
-  public static mib a(URL paramURL, Pair paramPair)
+  public void run()
   {
-    mib localmib = new mib();
-    localmib.jdField_a_of_type_JavaNetURL = paramURL;
-    localmib.jdField_a_of_type_AndroidUtilPair = paramPair;
-    return localmib;
+    if (VideoFeedsScrollLayout.a(this.a) != null) {
+      VideoFeedsScrollLayout.a(this.a).a();
+    }
   }
 }
 

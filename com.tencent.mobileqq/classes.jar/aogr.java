@@ -1,31 +1,15 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.Window;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
 
-class aogr
-  extends ExecuteBinResponseCallback
+public class aogr
+  implements Runnable
 {
-  aogr(aogp paramaogp, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
+  public aogr(EditTextDialog paramEditTextDialog) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
-    {
-      aogp.a(this.jdField_a_of_type_Aogp, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
-    }
-    aogp.a(this.jdField_a_of_type_Aogp, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-  }
-  
-  public void b(String paramString)
-  {
-    aogp.a(this.jdField_a_of_type_Aogp, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    this.a.getWindow().getDecorView().setSystemUiVisibility(4);
   }
 }
 

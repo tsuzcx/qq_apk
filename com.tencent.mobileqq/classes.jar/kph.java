@@ -1,25 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.os.Bundle;
+import com.tencent.biz.helper.TroopInfoActivityHelper;
+import com.tencent.biz.helper.TroopInfoActivityHelper.IGetSameCityCheckTypeInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class kph
-  implements View.OnClickListener
+public final class kph
+  implements BusinessObserver
 {
-  public kph(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public kph(QQAppInterface paramQQAppInterface, TroopInfoActivityHelper.IGetSameCityCheckTypeInfo paramIGetSameCityCheckTypeInfo) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).B();
-    String str = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
-    for (paramView = "02";; paramView = "01")
+    if ((paramBoolean) && (paramBundle != null))
     {
-      PublicAccountReportUtils.a(null, str, "0X8007CA4", "0X8007CA4", 0, 0, paramView, String.valueOf(AccountDetailBaseAdapter.a(this.a)), "", "", false);
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        TroopInfoActivityHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_ComTencentBizHelperTroopInfoActivityHelper$IGetSameCityCheckTypeInfo);
+      }
+    }
+    else
+    {
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+    }
+    this.jdField_a_of_type_ComTencentBizHelperTroopInfoActivityHelper$IGetSameCityCheckTypeInfo.a();
   }
 }
 

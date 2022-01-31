@@ -1,15 +1,20 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public class ntf
+public final class ntf
   implements Runnable
 {
-  public ntf(QQStoryBaseActivity paramQQStoryBaseActivity) {}
+  public ntf(TVKPreloader.PreloadItem paramPreloadItem) {}
   
   public void run()
   {
-    ((UserManager)SuperManager.a(2)).c();
+    Iterator localIterator = TVKPreloader.a().iterator();
+    while (localIterator.hasNext()) {
+      ((TVKPreloader.PreloadListener)localIterator.next()).a(this.a, new Throwable("TVK_ICacheMgr create failed !"));
+    }
   }
 }
 

@@ -1,19 +1,32 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.model.StoryConfigManager.StoryConfigEvent;
+import com.tencent.biz.qqstory.network.request.PublishConfigRequest;
+import com.tencent.biz.qqstory.network.response.PublishConfigResponse;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
 public class ngp
-  extends EncryptUrlJob
+  implements CmdTaskManger.CommandCallback
 {
-  public ngp(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareSinaData paramShareSinaData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public ngp(StoryConfigManager paramStoryConfigManager) {}
   
-  public boolean b()
+  public void a(@NonNull PublishConfigRequest paramPublishConfigRequest, @Nullable PublishConfigResponse paramPublishConfigResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.c = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    if ((paramPublishConfigResponse != null) && (paramErrorMessage.isSuccess()))
+    {
+      StoryConfigManager.a(this.a, System.currentTimeMillis());
+      this.a.b("show_now_entry", Boolean.valueOf(paramPublishConfigResponse.a));
+      this.a.b("publish_picture", Boolean.valueOf(paramPublishConfigResponse.b));
+      if (paramPublishConfigResponse.c) {
+        this.a.b("first_time_pic", Boolean.valueOf(paramPublishConfigResponse.c));
+      }
+      this.a.b("upload_video_use_bdh", Boolean.valueOf(paramPublishConfigResponse.d));
+    }
+    Dispatchers.get().dispatch(new StoryConfigManager.StoryConfigEvent());
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qappcenter.remote;
 
-import ammz;
+import amuk;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ammz();
+  public static final Parcelable.Creator CREATOR = new amuk();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   public final Bundle a;

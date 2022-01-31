@@ -138,7 +138,7 @@ public class EditVideoInteractPaster
         if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetRateWidget != null) {
           this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetRateWidget.d(false);
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841803);
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841832);
         this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(0);
       }
     }
@@ -172,7 +172,7 @@ public class EditVideoInteractPaster
       if (this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget != null) {
         this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$IPollWidget.d(false);
       }
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130841803);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130841832);
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setText("");
@@ -218,14 +218,14 @@ public class EditVideoInteractPaster
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371835));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371832));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371834));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371831));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371833));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371832));
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363497));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363516));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131371834).setOnClickListener(this);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131371833).setOnClickListener(this);
     }
   }
   
@@ -243,7 +243,7 @@ public class EditVideoInteractPaster
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364355));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364380));
     a(EditInteractPasterExport.class, this);
   }
   
@@ -315,15 +315,15 @@ public class EditVideoInteractPaster
     {
     default: 
       return;
-    case 2131371832: 
+    case 2131371831: 
       this.jdField_b_of_type_Int = 1000;
       a(1000);
       return;
-    case 2131371833: 
+    case 2131371832: 
       this.jdField_b_of_type_Int = 1001;
       a(1001);
       return;
-    case 2131363497: 
+    case 2131363516: 
       paramView = a(this.jdField_a_of_type_Int);
       this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
       if (this.jdField_b_of_type_Int == 1000)

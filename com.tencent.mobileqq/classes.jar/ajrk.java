@@ -1,33 +1,60 @@
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mapsdk.raster.model.GeoPoint;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView.AutoLocationCallback;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.tencentmap.mapsdk.map.MapController;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.widget.BgTextSpan;
+import java.util.List;
+import java.util.Set;
 
 public class ajrk
-  extends Handler
+  extends BaseAdapter
 {
-  public ajrk(AutoLocationMapView paramAutoLocationMapView) {}
+  private List jdField_a_of_type_JavaUtilList;
+  private Set jdField_a_of_type_JavaUtilSet;
   
-  public void handleMessage(Message paramMessage)
+  public ajrk(List paramList, Set paramSet)
   {
-    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
-    this.a.clearAllOverlays();
-    if (paramMessage.arg1 == 0)
-    {
-      Object localObject = this.a.getController();
-      ((MapController)localObject).setCenter(localGeoPoint);
-      ((MapController)localObject).setZoom(this.a.getMaxZoomLevel());
-      localObject = new ajrl(BitmapManager.a(this.a.getContext().getResources(), 2130840540), localGeoPoint);
-      this.a.addOverlay((Overlay)localObject);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaUtilSet = paramSet;
+  }
+  
+  public ParagraphInfo a(int paramInt)
+  {
+    return (ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969937, paramViewGroup, false);
     }
-    if (this.a.a != null) {
-      this.a.a.a(paramMessage.arg1, localGeoPoint);
-    }
+    Object localObject1 = (CheckBox)localView.findViewById(2131368495);
+    paramView = (TextView)localView.findViewById(2131361932);
+    ((CheckBox)localObject1).setChecked(this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)));
+    Object localObject2 = a(paramInt);
+    localObject1 = String.format("第%d段", new Object[] { Integer.valueOf(((ParagraphInfo)localObject2).pid + 1) });
+    localObject2 = new SpannableString((String)localObject1 + ((ParagraphInfo)localObject2).content_html);
+    ((SpannableString)localObject2).setSpan(new BgTextSpan(paramViewGroup.getContext(), paramViewGroup.getContext().getResources().getColor(2131494269), 17, 4, 3, 12, Color.parseColor("#777777"), (String)localObject1), 0, ((String)localObject1).length(), 33);
+    paramView.setText((CharSequence)localObject2);
+    return localView;
   }
 }
 

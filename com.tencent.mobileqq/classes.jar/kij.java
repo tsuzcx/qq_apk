@@ -1,6 +1,6 @@
-import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.Rotate3dAnimation;
+import com.tencent.av.utils.PhoneStatusMonitor;
+import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusListener;
+import com.tencent.qphone.base.util.QLog;
 
 class kij
   implements Runnable
@@ -9,16 +9,21 @@ class kij
   
   public void run()
   {
-    Rotate3dAnimation localRotate3dAnimation = new Rotate3dAnimation(-90.0F, 0.0F, this.a.jdField_a_of_type_Float, this.a.b, 200.0F, false);
-    localRotate3dAnimation.setDuration(500L);
-    localRotate3dAnimation.setInterpolator(new DecelerateInterpolator());
-    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localRotate3dAnimation);
-    localRotate3dAnimation.setAnimationListener(new kik(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable run end  mIsCalling: " + this.a.a.jdField_a_of_type_Boolean);
+    }
+    if (this.a.a.jdField_a_of_type_Boolean)
+    {
+      this.a.a.jdField_a_of_type_Boolean = false;
+      if (this.a.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener != null) {
+        this.a.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     kij
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager.PageItemScrollListener;
 
 public class mkg
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public mkg(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public mkg(ReadInJoyAtlasViewPager paramReadInJoyAtlasViewPager) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ReadInJoyGlobalReporter.a().b(this.a.a);
+    this.a.getChildAt(this.a.getCurrentItem()).setScrollY(((Float)paramValueAnimator.getAnimatedValue()).intValue());
+    if (ReadInJoyAtlasViewPager.a(this.a) != null) {
+      ReadInJoyAtlasViewPager.a(this.a).a(0.0F, this.a.getChildAt(this.a.getCurrentItem()).getScrollY(), null);
+    }
+    if ((paramValueAnimator.getAnimatedFraction() == 1.0F) && (ReadInJoyAtlasViewPager.a(this.a) != null)) {
+      ReadInJoyAtlasViewPager.a(this.a).a();
+    }
   }
 }
 

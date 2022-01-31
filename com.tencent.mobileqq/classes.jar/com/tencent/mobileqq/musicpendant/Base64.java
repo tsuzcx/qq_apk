@@ -123,7 +123,51 @@ public class Base64
   public static byte[] a(byte[] paramArrayOfByte)
   {
     int i = 0;
-    byte[] arrayOfByte = b(paramArrayOfByte);
+    int k = paramArrayOfByte.length % 3;
+    if (k == 0) {}
+    for (byte[] arrayOfByte = new byte[paramArrayOfByte.length * 4 / 3];; arrayOfByte = new byte[(paramArrayOfByte.length / 3 + 1) * 4])
+    {
+      int m = paramArrayOfByte.length;
+      j = 0;
+      while (j < m - k)
+      {
+        int n = paramArrayOfByte[j] & 0xFF;
+        int i1 = paramArrayOfByte[(j + 1)] & 0xFF;
+        int i2 = paramArrayOfByte[(j + 2)] & 0xFF;
+        arrayOfByte[i] = a[(n >>> 2 & 0x3F)];
+        arrayOfByte[(i + 1)] = a[((n << 4 | i1 >>> 4) & 0x3F)];
+        arrayOfByte[(i + 2)] = a[((i1 << 2 | i2 >>> 6) & 0x3F)];
+        arrayOfByte[(i + 3)] = a[(i2 & 0x3F)];
+        j += 3;
+        i += 4;
+      }
+    }
+    switch (k)
+    {
+    case 0: 
+    default: 
+      return arrayOfByte;
+    case 1: 
+      i = paramArrayOfByte[(paramArrayOfByte.length - 1)] & 0xFF;
+      arrayOfByte[(arrayOfByte.length - 4)] = a[(i >>> 2 & 0x3F)];
+      arrayOfByte[(arrayOfByte.length - 3)] = a[(i << 4 & 0x3F)];
+      arrayOfByte[(arrayOfByte.length - 2)] = 61;
+      arrayOfByte[(arrayOfByte.length - 1)] = 61;
+      return arrayOfByte;
+    }
+    i = paramArrayOfByte[(paramArrayOfByte.length - 2)] & 0xFF;
+    int j = paramArrayOfByte[(paramArrayOfByte.length - 1)] & 0xFF;
+    arrayOfByte[(arrayOfByte.length - 4)] = a[(i >>> 2 & 0x3F)];
+    arrayOfByte[(arrayOfByte.length - 3)] = a[((i << 4 | j >>> 4) & 0x3F)];
+    arrayOfByte[(arrayOfByte.length - 2)] = a[(j << 2 & 0x3F)];
+    arrayOfByte[(arrayOfByte.length - 1)] = 61;
+    return arrayOfByte;
+  }
+  
+  public static byte[] b(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    byte[] arrayOfByte = c(paramArrayOfByte);
     if (arrayOfByte[(arrayOfByte.length - 2)] == 61) {
       paramArrayOfByte = new byte[(arrayOfByte.length / 4 - 1) * 3 + 1];
     }
@@ -174,7 +218,7 @@ public class Base64
     return paramArrayOfByte;
   }
   
-  private static byte[] b(byte[] paramArrayOfByte)
+  private static byte[] c(byte[] paramArrayOfByte)
   {
     byte[] arrayOfByte = new byte[paramArrayOfByte.length];
     int i = 0;

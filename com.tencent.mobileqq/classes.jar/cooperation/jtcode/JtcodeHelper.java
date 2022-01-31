@@ -3,15 +3,11 @@ package cooperation.jtcode;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.pluginsdk.PluginStatic;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -292,145 +288,114 @@ public class JtcodeHelper
   
   public static boolean a(Context paramContext, String paramString)
   {
+    Object localObject2;
+    Object localObject1;
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder().append("wlx isJtcodePluginPreInstall; uin=");
-      if (TextUtils.isEmpty(paramString)) {
-        break label57;
-      }
-    }
-    label57:
-    for (Object localObject1 = paramString;; localObject1 = "null")
-    {
-      QLog.d("JtcodeHelper", 2, (String)localObject1);
-      if ((paramContext != null) && (!TextUtils.isEmpty(paramString))) {
-        break;
-      }
-      return false;
-    }
-    Object localObject2 = null;
-    localObject1 = localObject2;
-    Object localObject3;
-    if (SosoInterface.b() != null)
-    {
-      localObject3 = SosoInterface.b().a;
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = ((SosoInterface.SosoLocation)localObject3).e;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject3 = new StringBuilder().append("wlx isJtcodePluginPreInstall; current get locationCity=");
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      if (!TextUtils.isEmpty(paramString))
       {
-        localObject2 = localObject1;
-        QLog.d("JtcodeHelper", 2, (String)localObject2);
+        localObject1 = paramString;
+        QLog.d("JtcodeHelper", 2, (String)localObject1);
       }
     }
     else
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label532;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("JtcodeHelper", 2, "wlx isJtcodePluginPreInstall; current location is null,now start location");
-      }
-      localObject2 = PreferenceManager.getDefaultSharedPreferences(paramContext).getString("wlx_last_location_city", "");
-      localObject1 = localObject2;
-      if (QLog.isColorLevel())
-      {
-        localObject3 = new StringBuilder().append("wlx isJtcodePluginPreInstall; current location is null,use last location city,locationCity=");
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label496;
-        }
-        localObject1 = localObject2;
-        label214:
-        QLog.d("JtcodeHelper", 2, (String)localObject1);
-        localObject1 = localObject2;
+      if ((paramContext != null) && (!TextUtils.isEmpty(paramString))) {
+        break label63;
       }
     }
-    label263:
-    label521:
-    label527:
-    label532:
-    for (;;)
+    label63:
+    label233:
+    do
     {
-      if (QLog.isColorLevel())
+      do
       {
-        localObject3 = new StringBuilder().append("wlx isJtcodePluginPreInstall; locationCity=");
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        do
         {
-          localObject2 = localObject1;
-          QLog.d("JtcodeHelper", 2, (String)localObject2);
-        }
-      }
-      else
-      {
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          return false;
+          localObject1 = "null";
           break;
-        }
+          localObject1 = SosoInterface.a();
+          StringBuilder localStringBuilder;
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder().append("wlx isJtcodePluginPreInstall; current get locationCity=");
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {
+              break label363;
+            }
+            localObject2 = localObject1;
+            QLog.d("JtcodeHelper", 2, (String)localObject2);
+          }
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder().append("wlx isJtcodePluginPreInstall; locationCity=");
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {
+              break label370;
+            }
+            localObject2 = localObject1;
+            QLog.d("JtcodeHelper", 2, (String)localObject2);
+          }
+        } while (TextUtils.isEmpty((CharSequence)localObject1));
         paramString = a(paramContext.getFilesDir().getPath() + "/QWallet/" + paramString + "/hbThemeConfig.cfg");
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder().append("wlx isJtcodePluginPreInstall; mCityConfig=");
           if (paramString == null) {
-            break label509;
+            break label377;
           }
           paramContext = paramString.toString();
-          label356:
           QLog.d("JtcodeHelper", 2, paramContext);
         }
-        if (paramString == null) {
-          break;
-        }
-        paramString = paramString.optJSONObject("paycode_city_config");
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder().append("wlx isJtcodePluginPreInstall; cityGson=");
-          if (paramString == null) {
-            break label515;
-          }
-          paramContext = paramString.toString();
-          label413:
-          QLog.d("JtcodeHelper", 2, paramContext);
-        }
-        if (paramString == null) {
-          break;
-        }
-        paramString = paramString.optJSONObject((String)localObject1);
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder().append("wlx isJtcodePluginPreInstall; cityConfig=");
-          if (paramString == null) {
-            break label521;
-          }
-          paramContext = paramString.toString();
-          label467:
-          QLog.d("JtcodeHelper", 2, paramContext);
-        }
-        if (paramString == null) {
-          break label527;
-        }
-      }
-      for (boolean bool = true;; bool = false)
+      } while (paramString == null);
+      paramString = paramString.optJSONObject("paycode_city_config");
+      if (QLog.isColorLevel())
       {
-        return bool;
-        localObject2 = "null";
-        break;
-        label496:
-        localObject1 = "null";
-        break label214;
-        localObject2 = "null";
-        break label263;
-        label509:
-        paramContext = "null";
-        break label356;
-        paramContext = "null";
-        break label413;
-        paramContext = "null";
-        break label467;
+        localObject2 = new StringBuilder().append("wlx isJtcodePluginPreInstall; cityGson=");
+        if (paramString == null) {
+          break label383;
+        }
+        paramContext = paramString.toString();
+        QLog.d("JtcodeHelper", 2, paramContext);
       }
+    } while (paramString == null);
+    label143:
+    label288:
+    paramString = paramString.optJSONObject((String)localObject1);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder().append("wlx isJtcodePluginPreInstall; cityConfig=");
+      if (paramString != null)
+      {
+        paramContext = paramString.toString();
+        label341:
+        QLog.d("JtcodeHelper", 2, paramContext);
+      }
+    }
+    else
+    {
+      if (paramString == null) {
+        break label395;
+      }
+    }
+    label395:
+    for (boolean bool = true;; bool = false)
+    {
+      return bool;
+      label363:
+      localObject2 = "null";
+      break;
+      label370:
+      localObject2 = "null";
+      break label143;
+      label377:
+      paramContext = "null";
+      break label233;
+      label383:
+      paramContext = "null";
+      break label288;
+      paramContext = "null";
+      break label341;
     }
   }
 }

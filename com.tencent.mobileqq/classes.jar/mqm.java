@@ -1,11 +1,31 @@
-import java.util.Comparator;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils;
 
-public final class mqm
-  implements Comparator
+public class mqm
+  implements DialogInterface.OnDismissListener
 {
-  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public mqm(FastWebActivity paramFastWebActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return paramArrayOfByte1.length - paramArrayOfByte2.length;
+    Context localContext;
+    if (!FastWebActivity.b(this.a))
+    {
+      localContext = this.a.getApplicationContext();
+      if (!FastWebActivity.a(this.a)) {
+        break label55;
+      }
+    }
+    label55:
+    for (paramDialogInterface = "0X8008994";; paramDialogInterface = "0X800898D")
+    {
+      FastWebShareUtils.a(localContext, paramDialogInterface, 11, FastWebActivity.a(this.a));
+      FastWebActivity.b(this.a, false);
+      return;
+    }
   }
 }
 

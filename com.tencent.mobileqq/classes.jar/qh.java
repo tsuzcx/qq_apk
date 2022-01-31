@@ -13,7 +13,7 @@ public class qh
   
   public void run()
   {
-    if (new File(VasUtils.a() + "libvipfont.so").exists())
+    if (new File(VasUtils.a() + "libvipfont765.so").exists())
     {
       localObject = EIPCResult.createResult(0, null);
       this.jdField_a_of_type_ComEtrumpMixlayoutVasFontIPCModule.callbackResult(this.jdField_a_of_type_Int, (EIPCResult)localObject);
@@ -24,7 +24,7 @@ public class qh
     VasFontIPCModule.a(this.jdField_a_of_type_ComEtrumpMixlayoutVasFontIPCModule, this.jdField_a_of_type_Int);
     Object localObject = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(183);
     ((VasQuickUpdateManager)localObject).a(this.jdField_a_of_type_ComEtrumpMixlayoutVasFontIPCModule.a);
-    ((VasQuickUpdateManager)localObject).a(1004L, "libVipFont_735", "VasFontIPCModule");
+    ((VasQuickUpdateManager)localObject).a(1004L, "libVipFont_765", "VasFontIPCModule");
   }
 }
 

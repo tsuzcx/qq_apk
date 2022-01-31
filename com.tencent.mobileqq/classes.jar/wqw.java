@@ -1,42 +1,15 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 
 public class wqw
-  extends GameCenterObserver
+  implements View.OnClickListener
 {
-  public wqw(MainAssistObserver paramMainAssistObserver) {}
+  public wqw(TroopActivity paramTroopActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
-      }
-    }
-    switch (paramInt)
-    {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      this.a.g();
-      this.a.i();
-      return;
-    case 1: 
-      this.a.g();
-      this.a.i();
-      return;
-    case 4: 
-      this.a.g();
-      this.a.i();
-      return;
-    }
-    this.a.g();
-    this.a.e();
-    this.a.f();
-    this.a.i();
+    TroopActivity.a(this.a);
   }
 }
 

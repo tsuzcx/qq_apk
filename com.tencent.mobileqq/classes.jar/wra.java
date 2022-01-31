@@ -1,34 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.CallTabUnreadListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.widget.RedDotTextView;
+import com.tencent.mobileqq.widget.TabBarView;
 
-public class wra
-  implements CallTabUnreadListener
+class wra
+  implements Runnable
 {
-  public wra(MainAssistObserver paramMainAssistObserver) {}
+  wra(wqz paramwqz, boolean paramBoolean) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SplashActivity", 4, "msg fresh callback...");
+    if ((this.jdField_a_of_type_Wqz.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b == 0) || (this.jdField_a_of_type_Wqz.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.b == 2))
+    {
+      if ((!this.jdField_a_of_type_Wqz.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.a()) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Wqz.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.a.a(1).a(true);
+      }
     }
-    if ((this.a.a == null) || (this.a.a.app == null)) {
+    else {
       return;
     }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    int i = QCallFacade.a(localQQAppInterface);
-    this.a.a(36, 16, Integer.valueOf(i));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    localQQAppInterface.getApp().sendBroadcast(localIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver通话tab, callUnReadCount[%s]", new Object[] { Integer.valueOf(i) }));
-    }
-    localQQAppInterface.C();
+    this.jdField_a_of_type_Wqz.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.a.a(1).a(false);
   }
 }
 

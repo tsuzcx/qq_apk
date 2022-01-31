@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnCompletionListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class aeys
+public class aeys
   implements Runnable
 {
-  aeys(aeyr paramaeyr) {}
+  public aeys(NearbyGuideActivity paramNearbyGuideActivity, ArrayList paramArrayList, NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle) {}
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a);
+    ArrayList localArrayList = new ArrayList();
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        Integer localInteger = (Integer)localIterator.next();
+        PicInfo localPicInfo = new PicInfo();
+        localPicInfo.a = localInteger.intValue();
+        localArrayList.add(localPicInfo);
+      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true);
   }
 }
 

@@ -1,36 +1,30 @@
-import android.graphics.drawable.Drawable;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
 
 public class aogg
-  implements Runnable
+  implements LbsManager.LbsUpdateListener
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  final int[] jdField_a_of_type_ArrayOfInt = { 255, 191, 127, 63, 0, 63, 127, 191 };
+  public aogg(DoodleEmojiManager paramDoodleEmojiManager) {}
   
-  public aogg(FlowCameraActivity2 paramFlowCameraActivity2, boolean paramBoolean)
+  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramFlowCameraActivity2.a.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int %= 32;
-  }
-  
-  public void run()
-  {
-    Drawable[] arrayOfDrawable = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.b.getCompoundDrawables();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.v();
+    SLog.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramBasicLocation != null) && (this.a.a != null)) {
+      this.a.a(paramBasicLocation.b, paramBasicLocation.a, this.a.a);
     }
-    if (arrayOfDrawable[0] != null) {
-      arrayOfDrawable[0].setAlpha(this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_Int / 4)]);
-    }
-    if ((this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.b.get() == 2) && (arrayOfDrawable[0] != null))
+    for (;;)
     {
-      arrayOfDrawable[0].setAlpha(255);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(arrayOfDrawable[0], -1);
+      paramBasicLocation = (LbsManager)SuperManager.a(9);
+      if (paramBasicLocation != null) {
+        paramBasicLocation.b(this);
+      }
+      this.a.a = null;
+      return;
+      SLog.e("DoodleEmojiManager", "onLbsUpdate failed.");
     }
   }
 }

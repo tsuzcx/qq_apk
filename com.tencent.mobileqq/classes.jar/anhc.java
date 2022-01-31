@@ -1,25 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBStringField;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgReq;
-import cooperation.weiyun.sdk.api.WeiyunApi;
-import cooperation.weiyun.utils.PreferenceUtils;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public final class anhc
-  implements Runnable
+public class anhc
+  implements View.OnClickListener
 {
-  public anhc(int paramInt) {}
+  public anhc(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    WeiyunPB.WeiyunTrialCouponUseMsgReq localWeiyunTrialCouponUseMsgReq = new WeiyunPB.WeiyunTrialCouponUseMsgReq();
-    localWeiyunTrialCouponUseMsgReq.business_id.set("upload_speed_up");
-    WeiyunApi.a(localWeiyunTrialCouponUseMsgReq, null);
-    if (this.a > 0)
-    {
-      int i = this.a;
-      PreferenceUtils.a(BaseApplicationImpl.getApplication(), String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "upload_coupon_count", String.valueOf(i - 1));
-    }
+    QZoneShareActivity.b(this.a);
   }
 }
 

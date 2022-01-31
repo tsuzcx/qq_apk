@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import yrt;
+import yyh;
 
 public class CmGameScreenRotate
 {
@@ -38,7 +38,7 @@ public class CmGameScreenRotate
   public void a(int paramInt)
   {
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new yrt(this, paramInt));
+      this.jdField_a_of_type_AndroidOsHandler.post(new yyh(this, paramInt));
     }
   }
 }

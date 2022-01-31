@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.remind;
 
-import ahgc;
+import ahkt;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.CustomWebView;
@@ -64,7 +64,7 @@ public class RemindJavascriptInterface
   public void a(String paramString, JsBridgeListener paramJsBridgeListener)
   {
     long l = RemindHelper.a(RemindHelper.a(paramString, "currentDate")).longValue();
-    RemindHelper.a(this.jdField_a_of_type_AndroidAppActivity, l * 1000L, new ahgc(this), paramJsBridgeListener);
+    RemindHelper.a(this.jdField_a_of_type_AndroidAppActivity, l * 1000L, new ahkt(this), paramJsBridgeListener);
   }
   
   public void b(String paramString)

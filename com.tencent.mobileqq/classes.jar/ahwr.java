@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.search.util.HighlightModel;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class ahwr
-  implements Comparator
+  implements Runnable
 {
-  public ahwr(HighlightModel paramHighlightModel) {}
+  public ahwr(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public int a(String paramString1, String paramString2)
+  public void run()
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
-    }
-    return paramString2.length() - paramString1.length();
+    SosoInterface.a(new ahws(this, 3, true, true, 180000L, false, false, "UniteSearch"));
   }
 }
 

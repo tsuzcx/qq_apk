@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e35" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e36" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040a78" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e37" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040ae7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:layout_marginBottom="0.0dip" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e38" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040ae2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="3.0dip" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e39" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040ade" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e3a" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040adf" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d090b" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e3b" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040add" android:layout_width="fill_parent" android:layout_height="wrap_content" /> //这个banner已经移到feed里面  好友短视频
-<ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e3c" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040ae3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e3d" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b2e" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e3e" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040ae4" android:layout_width="fill_parent" android:layout_height="120.0dip" />
-</LinearLayout>
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0406d9" />
+    <Button android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a208d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ed0" android:visibility="invisible" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_marginLeft="12.0dip" android:layout_marginBottom="30.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="本地视频" />
+</RelativeLayout>

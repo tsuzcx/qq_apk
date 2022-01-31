@@ -1,20 +1,39 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.qphone.base.util.QLog;
 
 public class mki
-  implements Runnable
+  extends Handler
 {
-  public mki(ReadinjoyTabFrame paramReadinjoyTabFrame, long paramLong) {}
-  
-  public void run()
+  public mki(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, Looper paramLooper)
   {
-    PublicAccountReportUtils.a((QQAppInterface)ReadInJoyUtils.a(), "CliOper", "", "", "0X80066F7", "0X80066F7", 1, 1, Long.toString(this.jdField_a_of_type_Long / 1000L), "", "", ReadInJoyUtils.d(), false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.4tab", 2, "report ReadinjoyTabFrame use time: " + Long.toString(this.jdField_a_of_type_Long / 1000L));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
     }
+    do
+    {
+      return;
+      if (!this.a.f) {
+        break;
+      }
+      if (this.a.e)
+      {
+        ReadInJoyBaseAdapter.a(this.a, this.a.a);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("ReadInJoyBaseAdapter", 2, "MSG_FOR_CHECK_PLAYAREA, 平移转场动画未做完，不触发自动播放");
+    return;
+    ReadInJoyBaseAdapter.a(this.a, this.a.a);
   }
 }
 

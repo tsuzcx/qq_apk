@@ -139,7 +139,7 @@ public class QQDanceGameFilter
     this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQPoseDetectFilter.e();
     GLShaderManager.a();
     DanceLog.b("GLFrameImage", "onSurfaceDestroy:clearShaderManager");
-    GLFrameImage.ak_();
+    GLFrameImage.am_();
     DanceLog.b("GLFrameImage", "onSurfaceDestroy:clearTextureCache");
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.e();
   }
@@ -147,6 +147,11 @@ public class QQDanceGameFilter
   public void f()
   {
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.f();
+  }
+  
+  public boolean f_()
+  {
+    return QmcfManager.a().a() == 2;
   }
   
   public void g()
@@ -243,11 +248,6 @@ public class QQDanceGameFilter
       BadcaseReportUtils.a(this.jdField_a_of_type_JavaUtilList, (ResourceManager.Posture)localObject3, ((GLLittleBoy)localObject2).jdField_b_of_type_Int);
       break;
     }
-  }
-  
-  public boolean i_()
-  {
-    return QmcfManager.a().a() == 2;
   }
 }
 

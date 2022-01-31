@@ -1,36 +1,52 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.conditionsearch.data.AddressHelper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor;
+import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.io.ByteArrayOutputStream;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class zbj
   implements Runnable
 {
-  public zbj(ConditionSearchManager paramConditionSearchManager, File paramFile) {}
+  public zbj(ApolloUrlInterceptor paramApolloUrlInterceptor, ByteArrayOutputStream paramByteArrayOutputStream) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloUrlInterceptor", 1, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose:cachedStream size:" + this.jdField_a_of_type_JavaIoByteArrayOutputStream.size());
+    }
     try
     {
-      ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager, AddressHelper.a(ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager), this.jdField_a_of_type_JavaIoFile));
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearch.Manager", 2, "updateLocal | doParse cost " + (float)(System.currentTimeMillis() - l) / 1000.0F + " seconds");
+      str = this.jdField_a_of_type_JavaIoByteArrayOutputStream.toString("UTF-8");
+      this.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+      if ((!TextUtils.isEmpty(str)) && (!ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor)))
+      {
+        long l = System.currentTimeMillis();
+        ApolloWebDataHandler.a().b(ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor), str);
+        ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor, true);
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloUrlInterceptor", 4, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose:save bridgeStream " + (System.currentTimeMillis() - l) + " ms. htmlString.length:" + str.length());
+        }
       }
-      ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager).runOnUiThread(new zbk(this));
+      ApolloUrlInterceptor.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor).set(false);
+      if ((ApolloUrlInterceptor.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor)) && (QLog.isColorLevel())) {
+        QLog.d("apollo_client_ApolloUrlInterceptor", 4, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose: postForceDestroyIfNeed send destroy message.");
+      }
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ConditionSearch.Manager", 2, "", localOutOfMemoryError);
+      for (;;)
+      {
+        String str = null;
+        QLog.e("apollo_client_ApolloUrlInterceptor", 1, "session(" + this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloUrlInterceptor.a + ") onClose error:" + localThrowable.getMessage());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zbj
  * JD-Core Version:    0.7.0.1
  */

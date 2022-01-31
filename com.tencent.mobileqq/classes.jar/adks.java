@@ -1,20 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
 
 public class adks
-  implements DialogInterface.OnDismissListener
+  implements IUploadController
 {
-  public adks(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  public adks(C2CFileModel paramC2CFileModel) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (ForwardFileBaseOption.a(this.a))
-    {
-      ForwardFileBaseOption.a(this.a, false);
-      this.a.a.finish();
-    }
+    this.a.a(true, FileModel.a(this.a.a.a()), this.a.b(), new adkt(this));
+  }
+  
+  public void b()
+  {
+    this.a.d();
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.c());
   }
 }
 

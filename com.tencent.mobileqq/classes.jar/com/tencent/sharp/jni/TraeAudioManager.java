@@ -1,15 +1,15 @@
 package com.tencent.sharp.jni;
 
-import alyp;
-import alyr;
-import alys;
-import alyt;
-import alyu;
-import alyy;
-import alyz;
-import alza;
-import alzb;
-import alzc;
+import amfy;
+import amga;
+import amgb;
+import amgc;
+import amgd;
+import amgh;
+import amgi;
+import amgj;
+import amgk;
+import amgl;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -36,9 +36,9 @@ public class TraeAudioManager
   static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "FORCE_NONE", "FORCE_SPEAKER", "FORCE_HEADPHONES", "FORCE_BT_SCO", "FORCE_BT_A2DP", "FORCE_WIRED_ACCESSORY", "FORCE_BT_CAR_DOCK", "FORCE_BT_DESK_DOCK", "FORCE_ANALOG_DOCK", "FORCE_NO_BT_A2DP", "FORCE_DIGITAL_DOCK" };
   public static int e = -1;
   public int a;
-  public alyt a;
-  alyu jdField_a_of_type_Alyu = null;
-  public alzc a;
+  public amgc a;
+  amgd jdField_a_of_type_Amgd = null;
+  public amgl a;
   public Context a;
   public AudioManager a;
   public TraeAudioManager.DeviceConfigManager a;
@@ -60,17 +60,17 @@ public class TraeAudioManager
     this.jdField_a_of_type_JavaLangString = "DEVICE_NONE";
     this.jdField_a_of_type_ComTencentSharpJniTraeAudioSessionHost = null;
     this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager = null;
-    this.jdField_a_of_type_Alyt = null;
+    this.jdField_a_of_type_Amgc = null;
     this.jdField_b_of_type_JavaLangString = "DEVICE_NONE";
     this.jdField_b_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-    this.jdField_a_of_type_Alzc = null;
+    this.jdField_a_of_type_Amgl = null;
     AudioDeviceInterface.LogTraceEntry(" context:" + paramContext);
     if (paramContext == null) {
       return;
     }
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Alyu = new alyu(this, this);
-    if (this.jdField_a_of_type_Alyu != null) {}
+    this.jdField_a_of_type_Amgd = new amgd(this, this);
+    if (this.jdField_a_of_type_Amgd != null) {}
     AudioDeviceInterface.LogTraceExit();
   }
   
@@ -231,21 +231,26 @@ public class TraeAudioManager
   
   public static int a(boolean paramBoolean, long paramLong, Context paramContext)
   {
-    int i = -1;
+    int j = -1;
     jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    int i = j;
     if (jdField_a_of_type_ComTencentSharpJniTraeAudioManager != null)
     {
-      if (!paramBoolean) {
-        break label42;
+      i = j;
+      if (jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioSessionHost != null)
+      {
+        if (!paramBoolean) {
+          break label59;
+        }
+        jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioSessionHost.a(paramLong, paramContext);
       }
-      jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioSessionHost.a(paramLong, paramContext);
     }
     for (;;)
     {
       i = 0;
       jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
       return i;
-      label42:
+      label59:
       jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioSessionHost.a(paramLong);
     }
   }
@@ -355,14 +360,21 @@ public class TraeAudioManager
   
   public static void a(AudioManager paramAudioManager, int paramInt)
   {
-    Object[] arrayOfObject = new Object[1];
-    arrayOfObject[0] = Integer.valueOf(paramInt);
-    Class[] arrayOfClass = new Class[arrayOfObject.length];
-    arrayOfClass[0] = Integer.TYPE;
-    paramAudioManager = a(paramAudioManager, "forceVolumeControlStream", arrayOfObject, arrayOfClass);
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, "forceVolumeControlStream  streamType:" + paramInt + " res:" + paramAudioManager);
+    if (Build.MANUFACTURER.equals("Google")) {
+      if (QLog.isColorLevel()) {
+        QLog.w("TRAE", 2, "forceVolumeControlStream, Google phone nothing to do");
+      }
     }
+    do
+    {
+      return;
+      Object[] arrayOfObject = new Object[1];
+      arrayOfObject[0] = Integer.valueOf(paramInt);
+      Class[] arrayOfClass = new Class[arrayOfObject.length];
+      arrayOfClass[0] = Integer.TYPE;
+      paramAudioManager = a(paramAudioManager, "forceVolumeControlStream", arrayOfObject, arrayOfClass);
+    } while (!QLog.isColorLevel());
+    QLog.w("TRAE", 2, "forceVolumeControlStream  streamType:" + paramInt + " res:" + paramAudioManager);
   }
   
   static boolean a()
@@ -829,24 +841,24 @@ public class TraeAudioManager
     } while (!QLog.isColorLevel());
     QLog.e("TRAE", 2, " InternalIsDeviceChangeable fail");
     return -1;
-    if (this.jdField_a_of_type_Alzc != null)
+    if (this.jdField_a_of_type_Amgl != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "_switchThread:" + this.jdField_a_of_type_Alzc.a());
+        QLog.w("TRAE", 2, "_switchThread:" + this.jdField_a_of_type_Amgl.a());
       }
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Alzc.f();
-      this.jdField_a_of_type_Alzc = null;
+      this.jdField_a_of_type_Amgl.f();
+      this.jdField_a_of_type_Amgl = null;
     }
     if (paramString.equals("DEVICE_EARPHONE")) {
-      this.jdField_a_of_type_Alzc = new alyz(this);
+      this.jdField_a_of_type_Amgl = new amgi(this);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Alzc != null)
+      if (this.jdField_a_of_type_Amgl != null)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Alzc.a(paramHashMap);
+        this.jdField_a_of_type_Amgl.a(paramHashMap);
         paramHashMap = new Intent();
         paramHashMap.setAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_NOTIFY");
         paramHashMap.putExtra("PARAM_OPERATION", "NOTIFY_BEGIN_CONNECTED_DEVICE");
@@ -855,23 +867,23 @@ public class TraeAudioManager
       try
       {
         this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramHashMap);
-        this.jdField_a_of_type_Alzc.start();
+        this.jdField_a_of_type_Amgl.start();
         AudioDeviceInterface.LogTraceExit();
         return 0;
         if (paramString.equals("DEVICE_SPEAKERPHONE"))
         {
-          this.jdField_a_of_type_Alzc = new alzb(this);
+          this.jdField_a_of_type_Amgl = new amgk(this);
           continue;
         }
         if (paramString.equals("DEVICE_WIREDHEADSET"))
         {
-          this.jdField_a_of_type_Alzc = new alza(this);
+          this.jdField_a_of_type_Amgl = new amgj(this);
           continue;
         }
         if (!paramString.equals("DEVICE_BLUETOOTHHEADSET")) {
           continue;
         }
-        this.jdField_a_of_type_Alzc = new alyy(this);
+        this.jdField_a_of_type_Amgl = new amgh(this);
       }
       catch (Exception paramString)
       {
@@ -953,20 +965,20 @@ public class TraeAudioManager
     }
   }
   
-  public alyt a(Context paramContext, TraeAudioManager.DeviceConfigManager paramDeviceConfigManager)
+  public amgc a(Context paramContext, TraeAudioManager.DeviceConfigManager paramDeviceConfigManager)
   {
     Object localObject1;
     Object localObject2;
     if ((Build.VERSION.SDK_INT >= 11) && (Build.VERSION.SDK_INT != 18))
     {
-      localObject1 = new alyp(this);
+      localObject1 = new amfy(this);
       localObject2 = localObject1;
-      if (!((alyt)localObject1).a(paramContext, paramDeviceConfigManager)) {
-        localObject2 = new alyr(this);
+      if (!((amgc)localObject1).a(paramContext, paramDeviceConfigManager)) {
+        localObject2 = new amga(this);
       }
       if (QLog.isColorLevel())
       {
-        paramDeviceConfigManager = new StringBuilder().append("CreateBluetoothCheck:").append(((alyt)localObject2).a()).append(" skip android4.3:");
+        paramDeviceConfigManager = new StringBuilder().append("CreateBluetoothCheck:").append(((amgc)localObject2).a()).append(" skip android4.3:");
         if (Build.VERSION.SDK_INT != 18) {
           break label142;
         }
@@ -979,10 +991,10 @@ public class TraeAudioManager
       return localObject2;
       if (Build.VERSION.SDK_INT != 18)
       {
-        localObject1 = new alys(this);
+        localObject1 = new amgb(this);
         break;
       }
-      localObject1 = new alyr(this);
+      localObject1 = new amga(this);
       break;
     }
   }
@@ -1126,7 +1138,7 @@ public class TraeAudioManager
       boolean bool;
       if (str != null) {
         if (str.equals("DEVICE_BLUETOOTHHEADSET")) {
-          if (this.jdField_a_of_type_Alyt == null) {
+          if (this.jdField_a_of_type_Amgc == null) {
             bool = this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a(str, false);
           }
         }
@@ -1138,7 +1150,7 @@ public class TraeAudioManager
         }
         i += 1;
         break;
-        bool = this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a(str, this.jdField_a_of_type_Alyt.a());
+        bool = this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a(str, this.jdField_a_of_type_Amgc.a());
         continue;
         if (str.equals("DEVICE_WIREDHEADSET"))
         {
@@ -1224,8 +1236,8 @@ public class TraeAudioManager
   int b(int paramInt, HashMap paramHashMap)
   {
     int i = -1;
-    if (this.jdField_a_of_type_Alyu != null) {
-      i = this.jdField_a_of_type_Alyu.a(paramInt, paramHashMap);
+    if (this.jdField_a_of_type_Amgd != null) {
+      i = this.jdField_a_of_type_Amgd.a(paramInt, paramHashMap);
     }
     return i;
   }
@@ -1304,10 +1316,10 @@ public class TraeAudioManager
   public void e()
   {
     AudioDeviceInterface.LogTraceEntry("");
-    if (this.jdField_a_of_type_Alyu != null)
+    if (this.jdField_a_of_type_Amgd != null)
     {
-      this.jdField_a_of_type_Alyu.a();
-      this.jdField_a_of_type_Alyu = null;
+      this.jdField_a_of_type_Amgd.a();
+      this.jdField_a_of_type_Amgd = null;
     }
     AudioDeviceInterface.LogTraceExit();
   }
@@ -1549,8 +1561,8 @@ public class TraeAudioManager
             }
             else if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager != null)
             {
-              if (this.jdField_a_of_type_Alyt != null) {
-                this.jdField_a_of_type_Alyt.a(paramContext, paramIntent, this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager);
+              if (this.jdField_a_of_type_Amgc != null) {
+                this.jdField_a_of_type_Amgc.a(paramContext, paramIntent, this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager);
               }
               if ((!bool2) && (this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.b("DEVICE_BLUETOOTHHEADSET") == true)) {
                 a("DEVICE_BLUETOOTHHEADSET", true);

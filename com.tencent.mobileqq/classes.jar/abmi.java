@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import com.tencent.mobileqq.armap.config.ARMapConfigManager;
 
 public class abmi
   implements Runnable
 {
-  public abmi(WordMatchManager paramWordMatchManager, boolean paramBoolean) {}
+  public abmi(ARMapConfigManager paramARMapConfigManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a();
-    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a.runOnUiThread(new abmj(this));
+    ARMapConfigManager.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abmi
  * JD-Core Version:    0.7.0.1
  */

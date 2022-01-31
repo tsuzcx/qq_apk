@@ -1,55 +1,60 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.view.widget.StorySwipeTextViewMenuBuilder;
+import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
 
 public class osa
-  extends ValueAnimator
+  extends StorySwipeTextViewMenuBuilder
 {
-  private ValueAnimator.AnimatorUpdateListener a;
-  
-  private osa(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  public View a(Context paramContext, View paramView, SwipRightMenuBuilder.SwipItemBaseHolder paramSwipItemBaseHolder, int paramInt)
   {
-    setObjectValues(new Object[] { new osd(paramFloat1, paramFloat2, paramFloat3), new osd(paramFloat4, paramFloat5, paramFloat6) });
-    setEvaluator(new ose(null));
-    this.a = new osb(this, a(paramView));
-    addUpdateListener(this.a);
-  }
-  
-  private CircularRevealCompatLayout a(View paramView)
-  {
-    if ((paramView instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)paramView;
+    paramSwipItemBaseHolder.a = new SwipRightMenuBuilder.SwipRightMenuItem[this.b];
+    paramInt = 0;
+    while (paramInt < this.b)
+    {
+      paramSwipItemBaseHolder.a[paramInt] = new SwipRightMenuBuilder.SwipRightMenuItem();
+      paramSwipItemBaseHolder.a[paramInt].jdField_a_of_type_Int = -1;
+      paramSwipItemBaseHolder.a[paramInt].c = 0;
+      paramSwipItemBaseHolder.a[paramInt].jdField_a_of_type_AndroidViewView = null;
+      paramInt += 1;
     }
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
-      return (CircularRevealCompatLayout)localViewGroup;
+    paramSwipItemBaseHolder.f = paramView.findViewById(2131363420);
+    return paramView;
+  }
+  
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  {
+    paramArrayOfSwipRightMenuItem[0].jdField_a_of_type_Int = 0;
+    paramArrayOfSwipRightMenuItem[0].b = 0;
+    paramArrayOfSwipRightMenuItem[1].jdField_a_of_type_Int = -1;
+    paramArrayOfSwipRightMenuItem[1].b = -1;
+    String str = QQStoryContext.a().a();
+    if ((this.a.a) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
+    {
+      paramArrayOfSwipRightMenuItem[1].jdField_a_of_type_Int = 1;
+      paramArrayOfSwipRightMenuItem[1].b = 1;
     }
-    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = localViewGroup.indexOfChild(paramView);
-    localViewGroup.removeView(paramView);
-    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
-    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
-    return localCircularRevealCompatLayout;
   }
   
-  public static osa a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  protected void a(ViewGroup paramViewGroup, View paramView, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, int paramInt)
   {
-    return new osa(paramView, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
-  }
-  
-  public static osa a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
-  {
-    return new osa(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
-  }
-  
-  public void removeAllUpdateListeners()
-  {
-    super.removeAllUpdateListeners();
-    addUpdateListener(this.a);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+    if (localLayoutParams == null) {
+      paramView.setLayoutParams(new LinearLayout.LayoutParams(paramSwipRightMenuItem.c, paramSwipRightMenuItem.d));
+    }
+    for (;;)
+    {
+      paramViewGroup.addView(paramView, paramInt);
+      return;
+      localLayoutParams.width = paramSwipRightMenuItem.c;
+      localLayoutParams.height = paramSwipRightMenuItem.d;
+    }
   }
 }
 

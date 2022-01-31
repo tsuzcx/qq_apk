@@ -1,59 +1,24 @@
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
 
-class aoox
-  implements INetEngine.INetEngineListener
+public class aoox
+  implements Runnable
 {
-  aoox(aoow paramaoow) {}
+  private SVHwEncoder jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder;
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public aoox(FlowCameraActivity2 paramFlowCameraActivity2, SVHwEncoder paramSVHwEncoder)
   {
-    int j = 0;
+    this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder = paramSVHwEncoder;
+  }
+  
+  public void run()
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.c);
+      QLog.d("FlowCameraActivity", 2, "handleQQVideo(): onSendVideoClick mEncoderCache=" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder);
     }
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
-    {
-      ZipUtils.a(new File(QIMPtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name), QIMPtvTemplateManager.jdField_a_of_type_JavaLangString);
-      paramNetResp = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-      if (paramNetResp.size() > 0)
-      {
-        i = ((Integer)paramNetResp.get(0)).intValue();
-        localPtvTemplateInfo.type = i;
-        localPtvTemplateInfo = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-        i = j;
-        if (paramNetResp.size() > 1) {
-          i = ((Integer)paramNetResp.get(1)).intValue();
-        }
-        localPtvTemplateInfo.color = i;
-        return;
-      }
-    }
-    catch (IOException paramNetResp)
-    {
-      for (;;)
-      {
-        int i;
-        if (QLog.isColorLevel())
-        {
-          paramNetResp.printStackTrace();
-          continue;
-          i = 0;
-        }
-      }
+    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder != null) {
+      this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder.b();
     }
   }
 }

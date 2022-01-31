@@ -1,23 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.lightReply.LightReplyEmojs;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.util.Comparator;
 
-public class rtw
-  implements Runnable
+class rtw
+  implements Comparator
 {
-  public rtw(BaseChatPie paramBaseChatPie, String paramString, int paramInt1, long paramLong, Context paramContext, int paramInt2, LightReplyEmojs paramLightReplyEmojs) {}
+  rtw(rtu paramrtu) {}
   
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a().c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (localChatMessage != null) {
-      ThreadManager.getUIHandler().post(new rtx(this, localChatMessage));
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
     }
+    if (l < 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 

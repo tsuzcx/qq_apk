@@ -1,16 +1,26 @@
-class aasj
-  implements aasr
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
+import com.tencent.mobileqq.arcard.ARCardUtils;
+import java.io.File;
+
+public class aasj
+  implements Runnable
 {
-  aasj(aasc paramaasc, aasr paramaasr) {}
+  public aasj(ARCardCameraRecordFragment paramARCardCameraRecordFragment, int paramInt, Object paramObject) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_Aasr.a(paramBoolean);
+    if (this.jdField_a_of_type_Int == 1001)
+    {
+      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangObject;
+      ARCardUtils.a(localBitmap, new File("/sdcard/test/123.jpg"), true);
+      localBitmap.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea2" android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-20.0dip" android:text="0%" android:shadowColor="#b2000000" android:shadowDx="3.0" android:shadowDy="3.0" android:shadowRadius="6.0" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea2" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea4" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0390" android:layout_width="fill_parent" android:layout_height="228.0dip" android:layout_alignParentBottom="true"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <com.tencent.widget.HorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea5" android:layout_width="fill_parent" android:layout_height="134.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="23.0dip" android:layout_marginBottom="23.0dip" />
-        <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0391" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_margin="0.0dip" />
-        <RelativeLayout android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip"
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea7" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1c26" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <ImageView android:layout_width="45.0dip" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021972" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="隐藏此条消息" />
     </LinearLayout>
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a0ea4" />
-</RelativeLayout>
+    <View android:background="#ffe0e0e0" android:layout_width="wrap_content" android:layout_height="1.0px" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <ImageView android:layout_width="45.0dip" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021973" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="减少此类消息" />
+    </LinearLayout>
+</LinearLayout>

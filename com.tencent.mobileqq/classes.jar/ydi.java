@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ydi
-  implements Runnable
+  implements Comparable
 {
-  public ydi(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void run()
+  public ydi(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
   {
-    this.a.a.serial();
-    this.a.app.a().a(this.a.a.frienduin, this.a.a.istroop, this.a.a.uniseq, this.a.a.msgData);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
+    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
+  }
+  
+  public int a(ydi paramydi)
+  {
+    return -(int)(this.jdField_a_of_type_Long - paramydi.jdField_a_of_type_Long);
   }
 }
 

@@ -1,25 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoUploadController;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class lzo
+class lzo
   implements Runnable
 {
-  public lzo(VideoUploadController paramVideoUploadController) {}
+  lzo(lzn paramlzn) {}
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(VideoUploadController.a(this.a))) && (!TextUtils.isEmpty(VideoUploadController.b(this.a))) && (!VideoUploadController.a(this.a).equals(VideoUploadController.b(this.a))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoUploadController", 2, "clearTempFile(video), origin:" + VideoUploadController.a(this.a) + ", compress:" + VideoUploadController.b(this.a));
-      }
-      File localFile = new File(VideoUploadController.b(this.a));
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-    }
+    ReadInJoyLogicEngine.a().a((int)ComponentHeaderTopicRecommend.a(this.a.a).businessId, 1);
   }
 }
 

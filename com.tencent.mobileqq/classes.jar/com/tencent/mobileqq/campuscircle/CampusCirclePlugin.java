@@ -88,7 +88,7 @@ public class CampusCirclePlugin
             continue;
             if ("arrow_down".equals(paramJsBridgeListener))
             {
-              paramJsBridgeListener = paramString3.getDrawable(2130842339);
+              paramJsBridgeListener = paramString3.getDrawable(2130842374);
             }
             else if ("none".equals(paramJsBridgeListener))
             {
@@ -114,7 +114,7 @@ public class CampusCirclePlugin
       }
       if ("arrow_up".equals(paramJsBridgeListener))
       {
-        paramJsBridgeListener = paramString3.getDrawable(2130842340);
+        paramJsBridgeListener = paramString3.getDrawable(2130842375);
         if (j <= 3) {
           break label278;
         }

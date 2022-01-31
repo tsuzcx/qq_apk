@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import android.app.Activity;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class sjn
-  implements DialogInterface.OnClickListener
+public class sjn
+  implements Runnable
 {
-  sjn(sjl paramsjl) {}
+  public sjn(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.c(this.a.a);
-    DevlockQuickLoginActivity.c(this.a.a, 0, 2131034135);
+    if (this.a.a != null) {
+      if (!this.a.a.isShowing()) {
+        this.a.a.show();
+      }
+    }
+    do
+    {
+      return;
+      this.a.a = DialogUtil.a(this.a, 230);
+      this.a.a.setMessage(this.a.getActivity().getResources().getString(2131433699));
+      sjo localsjo = new sjo(this);
+      this.a.a.setPositiveButton(2131432428, localsjo);
+    } while (this.a.a.isShowing());
+    this.a.a.show();
   }
 }
 

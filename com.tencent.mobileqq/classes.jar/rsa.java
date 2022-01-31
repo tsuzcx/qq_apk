@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class rsa
-  implements Runnable
+  extends Handler
 {
-  public rsa(BaseChatPie paramBaseChatPie) {}
-  
-  public void run()
-  {
-    BaseChatPie.b(this.a, true);
-  }
+  public rsa(AuthDevActivity paramAuthDevActivity) {}
 }
 
 

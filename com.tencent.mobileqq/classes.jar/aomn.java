@@ -1,26 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import java.util.List;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
 
-public final class aomn
-  extends BroadcastReceiver
+public class aomn
+  extends Property
 {
-  private aomn(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aomn(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      CaptureVideoFilterManager.a().b();
-      CaptureVideoFilterManager.a().a(new aomo(this));
-      this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
+    super(paramClass, paramString);
+  }
+  
+  public Integer a(GroundDrawable paramGroundDrawable)
+  {
+    if (paramGroundDrawable != null) {
+      return Integer.valueOf(GroundDrawable.a(paramGroundDrawable));
+    }
+    return Integer.valueOf(0);
+  }
+  
+  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
+  {
+    if (paramGroundDrawable != null) {
+      GroundDrawable.a(paramGroundDrawable, paramInteger.intValue());
     }
   }
 }

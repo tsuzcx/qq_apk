@@ -1,60 +1,43 @@
-import com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ygo
-  extends DownloadListener
+  implements View.OnFocusChangeListener
 {
-  public ygo(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin, ygq paramygq, String paramString) {}
+  public ygo(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    int i = 0;
-    super.onDone(paramDownloadTask);
-    for (;;)
+    if ((paramBoolean) && ((this.a.l == 6) || (this.a.l == 7) || (this.a.l != this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a())))
     {
-      try
+      paramView = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
+      if (paramView != null)
       {
-        if (this.jdField_a_of_type_Ygq.b) {
-          return;
+        paramView.a(this.a.a(), this.a.f);
+        FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
         }
-        this.jdField_a_of_type_Ygq.b();
-        JSONObject localJSONObject1 = new JSONObject();
-        JSONObject localJSONObject2 = new JSONObject();
-        if ((paramDownloadTask.a() == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0))
-        {
-          VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->onDone,complete callback:" + this.jdField_a_of_type_JavaLangString + ",status:" + paramDownloadTask.a() + ",errCode:" + paramDownloadTask.jdField_a_of_type_Int + ",download result:" + i);
-          localJSONObject2.put("status", i);
-          localJSONObject1.put("code", 0);
-          localJSONObject1.put("data", localJSONObject2);
-          this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
-          return;
-        }
+        localFragmentTransaction.add(2131363948, paramView);
+        localFragmentTransaction.commitAllowingStateLoss();
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
       }
-      catch (JSONException paramDownloadTask)
-      {
-        VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->json execption:" + paramDownloadTask.toString());
-        return;
+      if (this.a.d == 0) {
+        ReportController.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 1, 0, "", "", "", "");
       }
-      i = -1;
     }
-  }
-  
-  public void onProgress(DownloadTask paramDownloadTask)
-  {
-    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->onProgress");
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->onStart");
-    if (VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin).get(paramDownloadTask.jdField_a_of_type_JavaLangString) == null) {
-      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin).put(paramDownloadTask.jdField_a_of_type_JavaLangString, paramDownloadTask);
+    else
+    {
+      return;
     }
-    return true;
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 2, 0, "", "", "", "");
   }
 }
 

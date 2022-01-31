@@ -12,7 +12,7 @@ import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.widget.Scroller;
 import com.tencent.qphone.base.util.QLog;
-import xwv;
+import yde;
 
 public class FramesProcessor
   implements FrameAdapter.DataSetChangeListener
@@ -24,7 +24,7 @@ public class FramesProcessor
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new xwv(this);
+  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new yde(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
   private FrameAdapter jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter;

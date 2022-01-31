@@ -1,31 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 
-public class oij
-  implements ValueAnimator.AnimatorUpdateListener
+public final class oij
+  implements Parcelable.Creator
 {
-  public oij(TextLayer.TextItem paramTextItem) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public EditTakeVideoSource a(Parcel paramParcel)
   {
-    if (TextLayer.a(this.a.a) == null) {
-      return;
-    }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.l = (this.a.d + this.a.f * f);
-    this.a.m = (this.a.e + this.a.g * f);
-    this.a.j = (this.a.b + this.a.h * f);
-    this.a.k = (this.a.c + this.a.i * f);
-    if (this.a.a.a != null) {
-      this.a.a.a.a(f);
-    }
-    if (f == 1.0F) {
-      TextLayer.a(this.a.a, null);
-    }
-    TextLayer.a(this.a.a);
+    return new EditTakeVideoSource(paramParcel);
+  }
+  
+  public EditTakeVideoSource[] a(int paramInt)
+  {
+    return new EditTakeVideoSource[paramInt];
   }
 }
 

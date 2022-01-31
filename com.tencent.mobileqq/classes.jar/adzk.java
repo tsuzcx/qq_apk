@@ -1,47 +1,13 @@
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.mobileqq.search.model.SearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.hotpic.HotPicTab;
 
 public class adzk
-  extends UniteSearchObserver
+  implements Runnable
 {
-  public adzk(LebaTitleBar paramLebaTitleBar) {}
+  public adzk(HotPicTab paramHotPicTab) {}
   
-  public void b(int paramInt1, String paramString, int paramInt2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba_with_feeds_search", 2, "handleSearchDiscoveryError error, resultCode = " + paramInt1 + ",  errorMsg = " + paramString + ", fromType = " + paramInt2);
-    }
-  }
-  
-  public void b(List paramList, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba_with_feeds_search", 2, "handleSearchDiscoveryResult() result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 4) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba_with_feeds_search", 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
-      }
-    }
-    for (;;)
-    {
-      return;
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        SearchEntryDataModel localSearchEntryDataModel = (SearchEntryDataModel)paramList.get(paramInt);
-        if ((localSearchEntryDataModel instanceof HotWordSearchEntryDataModel))
-        {
-          this.a.a(((HotWordSearchEntryDataModel)localSearchEntryDataModel).a);
-          return;
-        }
-        paramInt += 1;
-      }
-    }
+    this.a.requestLayout();
   }
 }
 

@@ -1,66 +1,45 @@
 package com.tencent.mapsdk.rastercore.b;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+
 public final class b
 {
-  private c a;
-  private c b;
+  private int a;
+  private int b;
+  private List<a> c;
   
-  public b(c paramc1, c paramc2)
+  public b(int paramInt1, int paramInt2, List<a> paramList)
   {
-    paramc1 = new a().a(paramc1).a(paramc2);
-    this.a = new c(a.a(paramc1), a.b(paramc1));
-    this.b = new c(a.c(paramc1), a.d(paramc1));
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramList;
+    Collections.sort(paramList, new Comparator() {});
   }
   
-  public final c a()
+  public final int a()
   {
     return this.a;
   }
   
-  public final c b()
+  public final String[] a(c paramc)
+  {
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext())
+    {
+      a locala = (a)localIterator.next();
+      if (locala.a(paramc)) {
+        return new String[] { locala.b(), locala.c() };
+      }
+    }
+    return null;
+  }
+  
+  public final int b()
   {
     return this.b;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof b)) {
-        return false;
-      }
-      paramObject = (b)paramObject;
-    } while ((this.a.equals(paramObject.a)) && (this.b.equals(paramObject.b)));
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    return com.tencent.mapsdk.rastercore.f.b.a(new Object[] { this.a, this.b });
-  }
-  
-  public final String toString()
-  {
-    return com.tencent.mapsdk.rastercore.f.b.a(new String[] { com.tencent.mapsdk.rastercore.f.b.a("southwest", this.a), com.tencent.mapsdk.rastercore.f.b.a("northeast", this.b) });
-  }
-  
-  public static final class a
-  {
-    private double a = 1.7976931348623157E+308D;
-    private double b = -1.797693134862316E+308D;
-    private double c = 1.7976931348623157E+308D;
-    private double d = -1.797693134862316E+308D;
-    
-    public final a a(c paramc)
-    {
-      this.a = Math.min(this.a, paramc.a());
-      this.b = Math.max(this.b, paramc.a());
-      this.d = Math.max(this.d, paramc.b());
-      this.c = Math.min(this.c, paramc.b());
-      return this;
-    }
   }
 }
 

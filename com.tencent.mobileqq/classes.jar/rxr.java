@@ -1,18 +1,31 @@
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QAVHrMeeting.OnGetNickNameOfMaskDisc;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rxr
-  implements QAVHrMeeting.OnGetNickNameOfMaskDisc
+class rxr
+  implements Runnable
 {
-  public rxr(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
+  rxr(rxq paramrxq, int paramInt) {}
   
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("MeetingStasks", paramInt);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    if (this.jdField_a_of_type_Int > 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.aio.BaseChatPie", 1, new Object[] { "ForwardWXforTroop failed! result: ", Integer.valueOf(this.jdField_a_of_type_Int), ", type: ", Integer.valueOf(this.jdField_a_of_type_Rxq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) });
+      }
+      QQToast.a(this.jdField_a_of_type_Rxq.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rxq.a.jdField_a_of_type_AndroidContentContext.getString(2131438970), 0).b(this.jdField_a_of_type_Rxq.a.a());
+    }
+    if ((this.jdField_a_of_type_Int == 0) && (BaseChatItemLayout.a)) {
+      this.jdField_a_of_type_Rxq.a.a(false, null, false);
+    }
+    if (this.jdField_a_of_type_Rxq.a.c != null) {
+      this.jdField_a_of_type_Rxq.a.c.dismiss();
+    }
   }
 }
 

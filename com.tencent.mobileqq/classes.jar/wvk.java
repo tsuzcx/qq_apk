@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.qphone.base.util.QLog;
 
-class wvk
-  implements DialogInterface.OnClickListener
+public class wvk
+  implements Runnable
 {
-  wvk(wvj paramwvj) {}
+  public wvk(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    int i = QCallFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) + this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 2, "updateTab = " + i);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wvl(this, i));
   }
 }
 

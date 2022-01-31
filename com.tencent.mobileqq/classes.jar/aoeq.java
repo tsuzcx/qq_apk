@@ -1,27 +1,20 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.os.Message;
+import dov.com.tencent.biz.qqstory.takevideo.EditMusicExport;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
 
 public class aoeq
-  extends Property
+  implements Runnable
 {
-  public aoeq(PickerContainer paramPickerContainer, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aoeq(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
   
-  public Float a(PickerContainer paramPickerContainer)
+  public void run()
   {
-    if (paramPickerContainer != null) {
-      return PickerContainer.a(paramPickerContainer);
+    EditMusicExport localEditMusicExport = (EditMusicExport)this.a.a(EditMusicExport.class);
+    if (localEditMusicExport != null) {
+      localEditMusicExport.au_();
     }
-    return Float.valueOf(1.0F);
-  }
-  
-  public void a(PickerContainer paramPickerContainer, Float paramFloat)
-  {
-    if (paramPickerContainer != null) {
-      PickerContainer.a(paramPickerContainer, paramFloat);
-    }
+    this.a.a.a(Message.obtain(null, 14));
   }
 }
 

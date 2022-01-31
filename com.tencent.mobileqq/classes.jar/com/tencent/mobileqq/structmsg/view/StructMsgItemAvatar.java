@@ -52,9 +52,9 @@ public class StructMsgItemAvatar
     if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
       localLinearLayout = (LinearLayout)paramView;
-      localObject1 = (ImageView)localLinearLayout.findViewById(2131362329);
-      paramBundle = (ImageView)localLinearLayout.findViewById(2131362330);
-      paramView = (TextView)localLinearLayout.findViewById(2131362331);
+      localObject1 = (ImageView)localLinearLayout.findViewById(2131362332);
+      paramBundle = (ImageView)localLinearLayout.findViewById(2131362333);
+      paramView = (TextView)localLinearLayout.findViewById(2131362334);
       localObject3 = ImageUtil.a();
       localObject2 = localObject3;
       if ((paramContext instanceof BaseActivity)) {
@@ -66,7 +66,7 @@ public class StructMsgItemAvatar
         if (paramInt != 2) {
           break label594;
         }
-        paramBundle.setImageResource(2130846085);
+        paramBundle.setImageResource(2130846167);
       }
     }
     for (;;)
@@ -81,7 +81,7 @@ public class StructMsgItemAvatar
       }
       return localLinearLayout;
       localLinearLayout = new LinearLayout(paramContext);
-      localLinearLayout.setId(2131362328);
+      localLinearLayout.setId(2131362331);
       localLinearLayout.setOrientation(1);
       if (this.e == 4)
       {
@@ -107,12 +107,12 @@ public class StructMsgItemAvatar
         i = paramBundle.getInt("bundle_args_avatar_width", AIOUtils.a(50.0F, (Resources)localObject2));
         j = paramBundle.getInt("bundle_args_avatar_height", AIOUtils.a(50.0F, (Resources)localObject2));
         localObject1 = new ImageView(paramContext);
-        ((ImageView)localObject1).setId(2131362329);
+        ((ImageView)localObject1).setId(2131362332);
         paramBundle = new FrameLayout.LayoutParams(i, j);
         paramBundle.gravity = 17;
         paramView.addView((View)localObject1, paramBundle);
         paramBundle = new ImageView(paramContext);
-        paramBundle.setId(2131362330);
+        paramBundle.setId(2131362333);
         paramView.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
         paramView = null;
         break;
@@ -123,15 +123,15 @@ public class StructMsgItemAvatar
       int i = paramBundle.getInt("bundle_args_avatar_width", AIOUtils.a(80.0F, (Resources)localObject2));
       j = paramBundle.getInt("bundle_args_avatar_height", AIOUtils.a(80.0F, (Resources)localObject2));
       localObject1 = new ImageView(paramContext);
-      ((ImageView)localObject1).setId(2131362329);
+      ((ImageView)localObject1).setId(2131362332);
       paramBundle = new FrameLayout.LayoutParams(i, j);
       paramBundle.gravity = 17;
       paramView.addView((View)localObject1, paramBundle);
       paramBundle = new ImageView(paramContext);
-      paramBundle.setId(2131362330);
+      paramBundle.setId(2131362333);
       paramView.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
       paramView = new TextView(paramContext);
-      paramView.setId(2131362331);
+      paramView.setId(2131362334);
       localObject3 = new LinearLayout.LayoutParams(AIOUtils.a(180.0F, (Resources)localObject2), -2);
       ((LinearLayout.LayoutParams)localObject3).gravity = 1;
       ((LinearLayout.LayoutParams)localObject3).topMargin = AIOUtils.a(5.0F, (Resources)localObject2);
@@ -141,11 +141,11 @@ public class StructMsgItemAvatar
       break;
       label594:
       if (paramInt == 1) {
-        paramBundle.setImageResource(2130846087);
+        paramBundle.setImageResource(2130846169);
       } else if (paramInt == 3) {
-        paramBundle.setImageResource(2130846086);
+        paramBundle.setImageResource(2130846168);
       } else if (paramInt == 4) {
-        paramBundle.setImageResource(2130846084);
+        paramBundle.setImageResource(2130846166);
       }
     }
   }

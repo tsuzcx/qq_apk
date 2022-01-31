@@ -1,8 +1,15 @@
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.armap.ItemInfo;
+import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
 
-public class abnz
+class abnz
+  implements Runnable
 {
-  URLImageView a;
+  abnz(abny paramabny, ItemInfo paramItemInfo, int paramInt) {}
+  
+  public void run()
+  {
+    ARMapPOIStarDialog.a(this.jdField_a_of_type_Abny.a, this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo, this.jdField_a_of_type_Int);
+  }
 }
 
 

@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryByDateFragment;
+import com.tencent.mobileqq.widget.datepicker.DatePickerView;
+import java.util.ArrayList;
 
-public class wlw
+class wlw
   implements Runnable
 {
-  public wlw(ContactsDeviceAdapter paramContactsDeviceAdapter) {}
+  wlw(wlv paramwlv, ArrayList paramArrayList) {}
   
   public void run()
   {
-    this.a.a = true;
+    this.jdField_a_of_type_Wlv.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.a.a(this.jdField_a_of_type_Wlv.jdField_a_of_type_Int, this.jdField_a_of_type_Wlv.b, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

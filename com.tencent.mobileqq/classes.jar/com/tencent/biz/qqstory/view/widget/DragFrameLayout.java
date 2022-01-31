@@ -172,7 +172,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.f_()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.a()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -192,7 +192,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.g_()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.b()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -212,7 +212,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.h_()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.c()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;

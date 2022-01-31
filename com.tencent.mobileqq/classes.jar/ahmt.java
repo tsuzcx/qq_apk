@@ -1,16 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.PhotoCaptureResult;
 
 public class ahmt
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public ahmt(QQSlidingTabView paramQQSlidingTabView) {}
+  public ahmt(CameraCaptureFragment paramCameraCaptureFragment, CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    QQSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    Toast.makeText(BaseApplicationImpl.getContext(), "onPhotoCaptured : " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$PhotoCaptureResult.a, 1).show();
   }
 }
 

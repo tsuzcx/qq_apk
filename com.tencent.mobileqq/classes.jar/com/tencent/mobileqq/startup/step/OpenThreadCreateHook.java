@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
+import com.tencent.mobileqq.app.ThreadManagerInitialler;
 import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper;
 
 public class OpenThreadCreateHook
@@ -7,6 +8,7 @@ public class OpenThreadCreateHook
 {
   protected boolean a()
   {
+    com.tencent.mobileqq.app.ThreadManager.sThreadWrapContext = new ThreadManagerInitialler();
     NativeMonitorConfigHelper.a();
     return true;
   }

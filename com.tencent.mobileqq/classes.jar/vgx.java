@@ -1,16 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class vgx
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public vgx(SixCombolEffectView paramSixCombolEffectView, vhg paramvhg) {}
+  public vgx(MedalNewsItemBuilder paramMedalNewsItemBuilder) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Vhg.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
+    MedalNewsItemBuilder.a(this.a, true, this.a.a.getCurrentAccountUin());
   }
 }
 

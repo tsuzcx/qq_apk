@@ -1,15 +1,16 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import java.io.File;
 
 class myg
   implements Runnable
 {
-  myg(mye parammye) {}
+  myg(myf parammyf, File paramFile) {}
   
   public void run()
   {
-    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null)) {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).b(true);
-    }
+    GalleryShareHelper.a(this.jdField_a_of_type_Myf.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).dismiss();
+    this.jdField_a_of_type_Myf.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper.a(this.jdField_a_of_type_Myf.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile);
   }
 }
 

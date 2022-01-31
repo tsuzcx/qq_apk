@@ -1,14 +1,16 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
+import com.tencent.mobileqq.dating.CarrierHelper;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
 
 public class acfg
   implements Runnable
 {
-  public acfg(EmoticonPanelLinearLayout paramEmoticonPanelLinearLayout) {}
+  public acfg(MsgBoxListActivity paramMsgBoxListActivity) {}
   
   public void run()
   {
-    EmoticonPanelLinearLayout.a(this.a).removeView(EmoticonPanelLinearLayout.a(this.a));
+    if (MsgBoxListActivity.a(this.a) != null) {
+      MsgBoxListActivity.a(this.a).b("msglist_carrier_5.8");
+    }
   }
 }
 

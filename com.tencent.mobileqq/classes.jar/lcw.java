@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFollowActivity;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import java.io.File;
 
 public class lcw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lcw(ReadInJoyFollowActivity paramReadInJoyFollowActivity) {}
+  public lcw(KanDianViewController paramKanDianViewController) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a(true);
+    String str = CommonSkinRes.e();
+    if ((str != null) && (new File(str).exists()))
+    {
+      KanDianViewController.a(this.a).removeMessages(2);
+      KanDianViewController.a(this.a).sendEmptyMessage(3);
+    }
   }
 }
 

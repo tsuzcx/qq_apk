@@ -123,7 +123,7 @@ public class RedTouch
     paramImageView.setLayoutParams(localLayoutParams);
     localFrameLayout.addView(paramImageView);
     paramImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    paramImageView.setImageResource(2130846051);
+    paramImageView.setImageResource(2130846133);
     localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 49;
     paramImageView.setLayoutParams(localLayoutParams);
@@ -201,7 +201,7 @@ public class RedTouch
   
   private View b(String paramString)
   {
-    Object localObject = getResources().getDrawable(2130839132);
+    Object localObject = getResources().getDrawable(2130839147);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
@@ -237,7 +237,7 @@ public class RedTouch
     paramImageView.setPadding(a(i1), a(i1), a(i1), a(i1));
     localFrameLayout.addView(paramImageView);
     paramImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    paramImageView.setImageResource(2130846051);
+    paramImageView.setImageResource(2130846133);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 53;
     paramImageView.setLayoutParams(localLayoutParams);
@@ -276,7 +276,7 @@ public class RedTouch
         case 0: 
           localObject = new JSONObject(paramRedTypeInfo.red_desc.get());
           break;
-          paramRedTypeInfo = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371310);
+          paramRedTypeInfo = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371308);
           if (paramRedTypeInfo != null) {
             paramRedTypeInfo.setVisibility(0);
           }
@@ -515,7 +515,7 @@ public class RedTouch
   protected ImageView a(int paramInt)
   {
     ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    localImageView.setImageResource(2130846051);
+    localImageView.setImageResource(2130846133);
     localImageView.setBackgroundColor(paramInt);
     localImageView.setLayoutParams(a());
     return localImageView;
@@ -549,7 +549,7 @@ public class RedTouch
           break;
         }
         localTextView.setIncludeFontPadding(false);
-        localTextView.setBackgroundResource(2130846057);
+        localTextView.setBackgroundResource(2130846139);
         localTextView.setLayoutParams(a());
         if (this.jdField_b_of_type_Boolean)
         {
@@ -567,7 +567,7 @@ public class RedTouch
       {
         localTextView.setText(paramString.trim());
         continue;
-        localTextView.setBackgroundResource(2130846055);
+        localTextView.setBackgroundResource(2130846137);
         continue;
         label179:
         localTextView.setTextSize(13.0F);
@@ -651,7 +651,7 @@ public class RedTouch
     do
     {
       return;
-      Object localObject = getResources().getDrawable(2130839132);
+      Object localObject = getResources().getDrawable(2130839147);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
@@ -692,7 +692,7 @@ public class RedTouch
       {
         this.jdField_g_of_type_Boolean = paramBoolean;
         Object localObject2 = (ViewGroup)getParent();
-        Object localObject1 = (TextView)((ViewGroup)localObject2).findViewById(2131374908);
+        Object localObject1 = (TextView)((ViewGroup)localObject2).findViewById(2131363250);
         if ((localObject1 != null) && ((localObject2 instanceof LinearLayout)))
         {
           removeView(this.jdField_a_of_type_AndroidViewView);
@@ -714,7 +714,7 @@ public class RedTouch
           ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
           ((RelativeLayout.LayoutParams)localObject1).topMargin = AIOUtils.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
           this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845579);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845660);
           localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
           return;
         }

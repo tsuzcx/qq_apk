@@ -1,15 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import java.util.List;
 
 public class mfa
   implements Runnable
 {
-  public mfa(VideoPlayerWrapper paramVideoPlayerWrapper, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public mfa(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
+    VideoInfo localVideoInfo = (VideoInfo)VideoFeedsAdapter.a(this.a).get(0);
+    Object localObject;
+    if (VideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
+    {
+      localObject = VideoFeedsAdapter.a(this.a).getChildAt(VideoFeedsAdapter.a(this.a).getHeaderViewsCount());
+      if ((localObject != null) && ((((View)localObject).getTag() instanceof VideoFeedsAdapter.VideoItemHolder)))
+      {
+        localObject = (VideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
+        if (!VideoFeedsAdapter.f(this.a)) {
+          break label93;
+        }
+        ((VideoFeedsAdapter.VideoItemHolder)localObject).k.setText("免流量播放");
+      }
+    }
+    return;
+    label93:
+    ((VideoFeedsAdapter.VideoItemHolder)localObject).k.setText(VideoFeedsHelper.b(localVideoInfo.b) + "流量");
   }
 }
 

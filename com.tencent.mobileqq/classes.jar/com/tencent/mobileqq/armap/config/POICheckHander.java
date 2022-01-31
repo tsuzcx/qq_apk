@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap.config;
 
-import abfn;
-import abfo;
+import abmo;
+import abmp;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
@@ -17,7 +17,7 @@ import java.util.List;
 public class POICheckHander
   extends BaseCheckHandler
 {
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abfn(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abmo(this);
   POICheckHander.Listener jdField_a_of_type_ComTencentMobileqqArmapConfigPOICheckHander$Listener;
   WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(this.jdField_a_of_type_AndroidOsHandler$Callback);
   public List b = new ArrayList();
@@ -117,7 +117,7 @@ public class POICheckHander
   
   public void b(BaseCheckHandler.ItemConfig paramItemConfig)
   {
-    ThreadManager.postImmediately(new abfo(this, paramItemConfig), null, false);
+    ThreadManager.postImmediately(new abmp(this, paramItemConfig), null, false);
   }
   
   public void b(String paramString, long paramLong)

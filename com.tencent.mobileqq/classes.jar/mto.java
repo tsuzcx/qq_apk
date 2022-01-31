@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.view.ViewStub.OnInflateListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
 
-public class mto
-  implements ViewStub.OnInflateListener
+class mto
+  implements Runnable
 {
-  public mto(SubscriptRecommendController paramSubscriptRecommendController) {}
+  mto(mtn parammtn) {}
   
-  public void onInflate(ViewStub paramViewStub, View paramView)
+  public void run()
   {
-    this.a.a = paramView;
-    this.a.e();
+    FastWebVideoVolumeControl.c(this.a.a, false);
   }
 }
 

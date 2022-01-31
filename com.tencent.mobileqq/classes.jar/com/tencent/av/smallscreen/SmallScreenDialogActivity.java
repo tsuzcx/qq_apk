@@ -17,15 +17,15 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import joa;
-import job;
+import jqd;
+import jqe;
 import mqq.app.BaseActivity;
 
 public class SmallScreenDialogActivity
   extends BaseActivity
   implements DialogInterface.OnClickListener
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new joa(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jqd(this);
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private QQCustomDialog b;
@@ -35,7 +35,7 @@ public class SmallScreenDialogActivity
     QQCustomDialog localQQCustomDialog;
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      localQQCustomDialog = DialogUtil.a(this, 230).setMessage(2131429407).setNegativeButton(2131433015, this);
+      localQQCustomDialog = DialogUtil.a(this, 230).setMessage(2131429407).setNegativeButton(2131433029, this);
       if (!b()) {
         break label76;
       }
@@ -55,7 +55,7 @@ public class SmallScreenDialogActivity
   {
     if (this.b == null)
     {
-      this.b = DialogUtil.a(this, 230).setMessage(2131429409).setNegativeButton(2131433015, this).setPositiveButton(2131433516, this);
+      this.b = DialogUtil.a(this, 230).setMessage(2131429409).setNegativeButton(2131433029, this).setPositiveButton(2131433530, this);
       this.b.setTitle(2131429410);
       this.b.setCancelable(false);
       this.b.setCanceledOnTouchOutside(false);
@@ -221,7 +221,7 @@ public class SmallScreenDialogActivity
       if (QLog.isColorLevel()) {
         QLog.e("SmallScreenDialogActivity", 2, "showDialog ", localBadTokenException);
       }
-      getWindow().getDecorView().post(new job(this, paramQQCustomDialog));
+      getWindow().getDecorView().post(new jqe(this, paramQQCustomDialog));
     }
   }
   
@@ -305,7 +305,7 @@ public class SmallScreenDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenDialogActivity
  * JD-Core Version:    0.7.0.1
  */

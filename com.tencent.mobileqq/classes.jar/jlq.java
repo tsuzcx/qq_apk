@@ -1,51 +1,51 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import com.tencent.av.opengl.texture.YUVTexture;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.ui.RedPacketGameView;
-import com.tencent.av.ui.GLVideoView;
-import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.AVLog;
+import com.tencent.av.opengl.effects.EffectBeautyTools;
+import com.tencent.av.opengl.effects.EffectBeautyTools.SkinColorFilterDesc;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
-class jlq
-  implements Runnable
+public class jlq
+  implements INetEngine.INetEngineListener
 {
-  jlq(jlp paramjlp, VideoLayerUI paramVideoLayerUI, Bitmap paramBitmap) {}
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
   
-  public void run()
+  public void a(NetResp paramNetResp)
   {
-    try
+    Object localObject = (EffectBeautyTools.SkinColorFilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
+    AVLog.c("EffectBeautyTools", "download file call back. file = " + ((EffectBeautyTools.SkinColorFilterDesc)localObject).a);
+    if (paramNetResp.jdField_a_of_type_Int != 0)
     {
-      Bitmap localBitmap1 = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[0].a();
-      int i = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[0].a().j();
-      localBitmap1 = RedPacketGameView.a(this.jdField_a_of_type_Jlp.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView, localBitmap1, i * 90);
-      i = localBitmap1.getHeight();
-      int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * i / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      Bitmap localBitmap2 = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap2);
-      Rect localRect1 = new Rect(0, 0, localBitmap1.getWidth(), localBitmap1.getHeight());
-      int k = localBitmap1.getWidth() * i / localBitmap1.getHeight();
-      int m = i * -200 / 1334;
-      Rect localRect2 = new Rect((j - k) / 2, m, (k + j) / 2, i + m);
-      localCanvas.save();
-      localCanvas.scale(-1.0F, 1.0F, j / 2, 0.0F);
-      localCanvas.drawBitmap(localBitmap1, localRect1, localRect2, null);
-      localCanvas.restore();
-      localRect1.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      localRect2.set(0, 0, j, i);
-      localCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localRect1, localRect2, null);
-      this.jdField_a_of_type_Jlp.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.setDrawingCacheEnabled(false);
-      localBitmap1.recycle();
-      this.jdField_a_of_type_Jlp.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(localBitmap2);
+      AVLog.c("EffectBeautyTools", "download file faild. errcode = " + paramNetResp.b);
       return;
     }
-    catch (Throwable localThrowable) {}
+    if (!((EffectBeautyTools.SkinColorFilterDesc)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c)))
+    {
+      AVLog.c("EffectBeautyTools", "download file faild : md5 is not match.");
+      FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+      return;
+    }
+    AVLog.c("EffectBeautyTools", "download file successed.");
+    try
+    {
+      localObject = EffectBeautyTools.a();
+      FileUtils.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c, (String)localObject, false);
+      FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+      return;
+    }
+    catch (IOException paramNetResp)
+    {
+      paramNetResp.printStackTrace();
+      AVLog.c("EffectBeautyTools", "unzip file faild.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jlq
  * JD-Core Version:    0.7.0.1
  */

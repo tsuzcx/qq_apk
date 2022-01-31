@@ -3,7 +3,7 @@ package dov.com.tencent.biz.qqstory.takevideo.artfilter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import anwv;
+import aofn;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -103,7 +103,7 @@ public class ArtFilterBridgeActivity
   {
     super.doOnCreate(paramBundle);
     c();
-    ThreadManager.post(new anwv(this), 8, null, true);
+    ThreadManager.post(new aofn(this), 8, null, true);
     return true;
   }
   

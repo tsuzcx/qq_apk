@@ -1,16 +1,16 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
 
 public class ljr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ljr(ReadInJoyCommentTopGestureLayout paramReadInJoyCommentTopGestureLayout, View paramView) {}
+  public ljr(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setScrollY(0);
-    }
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

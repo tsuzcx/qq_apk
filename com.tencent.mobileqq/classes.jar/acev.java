@@ -1,31 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiAdapter;
-import com.tencent.mobileqq.utils.VipUtils;
-import java.util.List;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.mobileqq.utils.DESUtil;
 
 public class acev
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acev(EmoticonMainPanel paramEmoticonMainPanel, String paramString) {}
+  public acev(HotChatFlashPicActivity paramHotChatFlashPicActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    EmoticonMainPanel.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-    SpriteCommFunc.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "emoticon_panel", false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null))
-    {
-      paramView = (EmotionPanelInfo)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList.get(0);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(paramView);
-      if ((paramView != null) && ((paramView instanceof SystemAndEmojiAdapter))) {
-        ((SystemAndEmojiAdapter)paramView).d();
-      }
-    }
-    VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "0X8008232", this.jdField_a_of_type_JavaLangString, 0, 0, new String[] { "0", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+    DESUtil.a(this.jdField_a_of_type_JavaLangString, HotChatFlashPicActivity.c(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity));
   }
 }
 

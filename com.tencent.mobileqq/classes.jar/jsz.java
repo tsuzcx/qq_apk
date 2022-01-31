@@ -1,29 +1,24 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.av.ui.BaseCallbackUI;
+import com.tencent.av.ui.CallbackWaitingActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class jsz
   implements Runnable
 {
-  public jsz(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jsz(CallbackWaitingActivity paramCallbackWaitingActivity) {}
   
   public void run()
   {
-    try
-    {
-      this.a.a.a(new Object[] { Integer.valueOf(102) });
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(this.a.c, 2, "mRootView.post(new Runnable()-->exception=" + localException.getMessage());
-    }
+    this.a.a.a.removeCallbacksAndMessages(null);
+    DialogUtil.b(this.a, 230, this.a.getResources().getString(2131429577), this.a.getResources().getString(2131429578), 2131428676, 2131428676, null, new jta(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jsz
  * JD-Core Version:    0.7.0.1
  */

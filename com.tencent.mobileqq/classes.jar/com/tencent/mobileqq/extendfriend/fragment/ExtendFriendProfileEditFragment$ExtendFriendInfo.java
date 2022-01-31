@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import acir;
+import acqw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.data.Card;
 public class ExtendFriendProfileEditFragment$ExtendFriendInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new acir();
+  public static final Parcelable.Creator CREATOR = new acqw();
   public int a;
   public String a;
   public boolean a;

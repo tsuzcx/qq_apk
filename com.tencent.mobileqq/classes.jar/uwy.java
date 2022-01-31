@@ -1,20 +1,26 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class uwy
-  implements FMDialogUtil.FMDialogInterface
+  implements DialogInterface.OnClickListener
 {
-  public uwy(FilePicItemBuilder paramFilePicItemBuilder, MessageForFile paramMessageForFile, Context paramContext) {}
+  public uwy(DoodlePanel paramDoodlePanel) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    if (DoodlePanel.a(this.a) != null) {
+      DoodlePanel.a(this.a).a(false, false);
+    }
+    DoodlePanel.a(this.a);
   }
-  
-  public void b() {}
 }
 
 

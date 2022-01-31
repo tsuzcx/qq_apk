@@ -1,97 +1,72 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.LayerEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.AssertUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.cropvideo.CropVideoActivity.HWCompressProcessor;
+import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter;
+import java.io.File;
 
 public class anzg
-  implements FaceLayer.LayerEventListener
 {
-  public anzg(DoodleLayout paramDoodleLayout) {}
-  
-  public void a(int paramInt)
+  public static void a(@NonNull String paramString1, @NonNull String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2, @NonNull VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.a(1, paramInt);
-    }
+    AssertUtils.a(paramString1);
+    AssertUtils.a(paramString2);
+    AssertUtils.a(paramVideoCompositeCallBack);
+    ThreadManager.newFreeThread(new anzh(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramLong1, paramLong2, paramVideoCompositeCallBack), "VideoCrop", 5).start();
   }
   
-  public boolean a(FaceLayer.FaceItem paramFaceItem)
+  private static int b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2)
   {
-    if (DoodleLayout.a(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onEditFaceItem mIsRecording");
-      }
+    SLog.b("CropVideoActivity", "startCropVideo cropX: " + paramInt1 + ", cropY: " + paramInt2 + ", cropWidth: " + paramInt3 + ", cropHeight: " + paramInt4 + ", targetWidth: " + paramInt5 + ", targetHeight: " + paramInt6 + ", startTime: " + paramLong1 + ", endTime: " + paramLong2);
+    int i = paramInt5;
+    if (paramInt5 == -1) {
+      i = paramInt3;
     }
-    while (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView == null) {
-      return false;
+    paramInt5 = paramInt6;
+    if (paramInt6 == -1) {
+      paramInt5 = paramInt4;
     }
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.setVisibility(0);
-    GestureHelper.ZoomItem localZoomItem;
-    Object localObject;
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b())
+    if (paramLong1 < 0L)
     {
-      localZoomItem = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a();
-      localZoomItem.j = false;
-      if (!(localZoomItem instanceof FaceLayer.FaceItem)) {
-        break label327;
-      }
-      localObject = this.a.a();
-      if ((((FaceLayer.FaceItem)localZoomItem).h != 1) || ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (!this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b()))) {
-        break label368;
-      }
-      localObject = this.a.a();
-      ((FaceLayer.FaceItem)localZoomItem).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView);
+      SLog.e("CropVideoActivity", "startCropVideo illegal start time!");
+      return -1;
     }
-    label327:
-    label368:
-    for (;;)
+    if ((paramLong1 >= paramLong2) && (paramLong2 >= 0L))
     {
-      if (localObject != null) {
-        ((FaceLayer)localObject).a.add((FaceLayer.FaceItem)localZoomItem);
-      }
-      if (((paramFaceItem.h == 0) || (paramFaceItem.h == 1)) && (paramFaceItem.c))
-      {
-        this.a.q();
-        DoodleLayout.a(this.a, paramFaceItem);
-      }
-      if (paramFaceItem.h == 3) {
-        this.a.post(new anzh(this));
-      }
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(paramFaceItem);
-      paramFaceItem.j = true;
-      localObject = paramFaceItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper;
-      if (!this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a()) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ((SegmentKeeper)localObject).a(bool);
-        if ((paramFaceItem.h == 1) || (paramFaceItem.h == 3)) {
-          paramFaceItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView);
-        }
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.requestLayout();
-        return true;
-        if (!(localZoomItem instanceof TextLayer.TextItem)) {
-          break;
-        }
-        localObject = this.a.a();
-        if (localObject == null) {
-          break;
-        }
-        ((TextLayer)localObject).a.add((TextLayer.TextItem)localZoomItem);
-        break;
-      }
+      SLog.e("CropVideoActivity", "startCropVideo illegal time!");
+      return -2;
     }
+    paramInt6 = paramInt1;
+    if (paramInt1 % 2 != 0) {
+      paramInt6 = (paramInt1 + 1) / 2 * 2;
+    }
+    paramInt1 = paramInt2;
+    if (paramInt2 % 2 != 0) {
+      paramInt1 = (paramInt2 + 1) / 2 * 2;
+    }
+    paramInt2 = paramInt3;
+    if (paramInt3 % 16 != 0) {
+      paramInt2 = paramInt3 / 16 * 16;
+    }
+    paramInt3 = paramInt4;
+    if (paramInt4 % 16 != 0) {
+      paramInt3 = paramInt4 / 16 * 16;
+    }
+    if (i % 16 != 0) {
+      paramInt4 = i / 16;
+    }
+    if (paramInt5 % 16 != 0) {
+      paramInt4 = paramInt5 / 16;
+    }
+    paramString1 = new File(paramString1);
+    paramString2 = new CropVideoActivity.HWCompressProcessor(paramString2, 2048000, paramLong1, paramLong2, false, true);
+    paramString2.a(paramInt6, paramInt1, paramInt2, paramInt3);
+    if ((new VideoConverter().a(paramString1, paramString2, true)) && (paramString2.a == null)) {
+      return 0;
+    }
+    return -3;
   }
 }
 

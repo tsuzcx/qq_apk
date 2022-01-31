@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.imaxad;
 
 import OnlinePushPack.MsgInfo;
-import adsx;
-import adsy;
-import adsz;
-import adta;
-import adtb;
-import adtc;
-import adtd;
-import adte;
-import adtf;
+import aebg;
+import aebh;
+import aebi;
+import aebj;
+import aebk;
+import aebl;
+import aebm;
+import aebn;
+import aebo;
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -34,6 +34,7 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -64,7 +65,7 @@ public class ImaxAdVideoPreloadManager
   private static final String jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/Android/data/com.tencent.mobileqq/cache/public_account_ad_download/";
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "mp4", "fhd", "shd", "hd", "sd", "msd" };
   private int jdField_a_of_type_Int = 0;
-  private adtd jdField_a_of_type_Adtd;
+  private aebm jdField_a_of_type_Aebm;
   private Context jdField_a_of_type_AndroidContentContext;
   private PAAdPreloadTask jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask;
   private TVK_ICacheMgr jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
@@ -148,14 +149,14 @@ public class ImaxAdVideoPreloadManager
   {
     ImaxAdUtil.b("installTVKSdk");
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo = new TVK_UserInfo(a(), "");
-    this.jdField_a_of_type_Adtd = new adtd(this, this);
-    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adtd);
+    this.jdField_a_of_type_Aebm = new aebm(this, this);
+    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebm);
     try
     {
       TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", a());
       if (!TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext))
       {
-        TVK_SDKMgr.installPlugin(this.jdField_a_of_type_AndroidContentContext, new adsx(this));
+        TVK_SDKMgr.installPlugin(this.jdField_a_of_type_AndroidContentContext, new aebg(this));
         return;
       }
       b();
@@ -262,7 +263,7 @@ public class ImaxAdVideoPreloadManager
           b(paramInt);
           if (a(str1) != 0)
           {
-            ThreadManager.executeOnFileThread(new adtb(this, str1));
+            ThreadManager.executeOnFileThread(new aebk(this, str1));
             continue;
             ImaxAdUtil.b("startVideoDownload empty vid, skip to next task");
             b(paramInt);
@@ -277,7 +278,7 @@ public class ImaxAdVideoPreloadManager
   
   private void a(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new adsz(this, paramQQAppInterface), 300L);
+    ThreadManager.getSubThreadHandler().postDelayed(new aebi(this, paramQQAppInterface), 300L);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, EntityManager paramEntityManager, RecentUserProxy paramRecentUserProxy)
@@ -387,8 +388,8 @@ public class ImaxAdVideoPreloadManager
     if (localTVK_IProxyFactory != null)
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr = localTVK_IProxyFactory.getCacheMgr(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new adte(this, null));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(new adtf(this, null));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new aebn(this, null));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(new aebo(this, null));
     }
     this.jdField_a_of_type_Boolean = true;
   }
@@ -398,7 +399,7 @@ public class ImaxAdVideoPreloadManager
     ImaxAdUtil.b("continueDownload queueType:" + paramInt);
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask = null;
-    ThreadManager.executeOnNetWorkThread(new adtc(this, paramInt));
+    ThreadManager.executeOnNetWorkThread(new aebl(this, paramInt));
   }
   
   private void b(AdvertisementItem paramAdvertisementItem)
@@ -459,6 +460,16 @@ public class ImaxAdVideoPreloadManager
   
   private void d()
   {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask != null)
+    {
+      ReportController.b(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mVideoVid, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountPersistenceEntityPAAdPreloadTask.mSource));
+      return;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", "", "");
+  }
+  
+  private void e()
+  {
     if (this.jdField_a_of_type_Int == 0) {
       ImaxAdUtil.b("onNetworkChange, no queue is working");
     }
@@ -516,7 +527,7 @@ public class ImaxAdVideoPreloadManager
             localPAAdPreloadTask.mPreloadState = 1;
             localPAAdPreloadTask.mNetworkType = localVideoDownloadItem.e;
             this.jdField_a_of_type_JavaUtilArrayList.add(localPAAdPreloadTask);
-            ThreadManager.executeOnNetWorkThread(new adta(this));
+            ThreadManager.executeOnNetWorkThread(new aebj(this));
             ImaxAdUtil.b("handlePreloadTaskFromMessage msgid:" + paramAdvertisementItem.jdField_c_of_type_JavaLangString + ", vid:" + localVideoCoverItem.b + ", add to queue");
           }
         }
@@ -626,7 +637,7 @@ public class ImaxAdVideoPreloadManager
         this.jdField_a_of_type_JavaUtilArrayList.clear();
         this.jdField_a_of_type_JavaUtilArrayList.addAll(paramQQAppInterface);
         ImaxAdUtil.b("loadLocalConfigTaskForImax taskSize:" + paramQQAppInterface.size());
-        ThreadManager.executeOnNetWorkThread(new adsy(this));
+        ThreadManager.executeOnNetWorkThread(new aebh(this));
         return;
       }
       ImaxAdUtil.b("loadLocalConfigTaskForImax tasklist null");
@@ -690,11 +701,11 @@ public class ImaxAdVideoPreloadManager
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.removePreloadCallback();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setOnPreLoadCompleteCallback(null);
     }
-    if (this.jdField_a_of_type_Adtd != null)
+    if (this.jdField_a_of_type_Aebm != null)
     {
-      this.jdField_a_of_type_Adtd.a();
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Adtd);
-      this.jdField_a_of_type_Adtd = null;
+      this.jdField_a_of_type_Aebm.a();
+      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Aebm);
+      this.jdField_a_of_type_Aebm = null;
     }
     this.jdField_a_of_type_Boolean = false;
   }

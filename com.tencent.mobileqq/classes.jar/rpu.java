@@ -1,33 +1,46 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityConstants;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.now.NowLiveManager;
+import com.tencent.biz.qqstory.base.QQStoryHandler;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class rpu
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rpu(BaseChatPie paramBaseChatPie, String paramString1, String paramString2, String paramString3) {}
+  public rpu(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.E)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b.setText(this.b);
-      if (!this.b.equals("")) {
-        break label90;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aJ();
-      if (ChatActivityConstants.N) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setLeftContentDescription(this.c);
-      }
+    int j = 1;
+    if (!paramCompoundButton.isPressed()) {
       return;
-      label90:
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b.setVisibility(0);
+    }
+    if (paramBoolean)
+    {
+      paramCompoundButton = "open_storyset";
+      StoryReportor.a("dynamic_more", paramCompoundButton, 0, 0, new String[0]);
+      paramCompoundButton = new Integer[5];
+      paramCompoundButton[0] = Integer.valueOf(1);
+      if (!paramBoolean) {
+        break label106;
+      }
+    }
+    label106:
+    for (int i = 1;; i = 0)
+    {
+      paramCompoundButton[3] = Integer.valueOf(i);
+      this.a.app.a().a(paramCompoundButton);
+      paramCompoundButton = (QQStoryHandler)this.a.app.a(98);
+      i = j;
+      if (paramBoolean) {
+        i = 2;
+      }
+      paramCompoundButton.a(i);
+      return;
+      paramCompoundButton = "close_storyset";
+      break;
     }
   }
 }

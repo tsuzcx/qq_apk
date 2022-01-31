@@ -1,32 +1,20 @@
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.RedPacketGameShower;
-import com.tencent.av.redpacket.SoundPoolHelper.OnLoadFinishListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.UITools;
 
 class jlf
-  implements SoundPoolHelper.OnLoadFinishListener
+  implements DialogInterface.OnClickListener
 {
-  jlf(jle paramjle, long paramLong) {}
+  jlf(jle paramjle) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, music load finish,cost =" + (l1 - l2));
-    l1 = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Jle.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower != null)
-    {
-      this.jdField_a_of_type_Jle.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.a(1, this.jdField_a_of_type_Jle.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$ResPreLoadObserver);
-      l2 = System.currentTimeMillis();
-      QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, preloadRes finish,cost =" + (l2 - l1));
-      return;
-    }
-    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes,  mRedPacketGameShower is null");
+    UITools.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jlf
  * JD-Core Version:    0.7.0.1
  */

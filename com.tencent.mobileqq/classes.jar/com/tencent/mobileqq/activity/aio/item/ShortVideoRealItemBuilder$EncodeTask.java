@@ -26,7 +26,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
-import vgp;
+import vlr;
 
 public class ShortVideoRealItemBuilder$EncodeTask
   extends AsyncTask
@@ -78,7 +78,7 @@ public class ShortVideoRealItemBuilder$EncodeTask
       ((QQAppInterface)localObject2).getHwEngine().preConnect();
     }
     LogTag.a();
-    localObject1 = new EncodeThread((Context)localObject1, new vgp(Looper.getMainLooper()), localMessageForShortVideo.mVideoFileSourceDir, null, null);
+    localObject1 = new EncodeThread((Context)localObject1, new vlr(Looper.getMainLooper()), localMessageForShortVideo.mVideoFileSourceDir, null, null);
     ((EncodeThread)localObject1).a(false);
     ((EncodeThread)localObject1).run();
     localObject2 = ((EncodeThread)localObject1).jdField_a_of_type_JavaLangString;

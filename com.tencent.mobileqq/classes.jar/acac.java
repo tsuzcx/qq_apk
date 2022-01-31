@@ -1,68 +1,29 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.config.operation.QQOperateManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class acac
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acac(DragSortAdapter paramDragSortAdapter) {}
+  public acac(QQOperateManager paramQQOperateManager, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    boolean bool = false;
-    if (paramView.getTag() == null) {}
-    Object localObject;
-    EmoticonPackage localEmoticonPackage;
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        localObject = (QQAppInterface)((BaseActivity)this.a.a).getAppRuntime();
-        localEmoticonPackage = (EmoticonPackage)paramView.getTag();
-      } while (!localEmoticonPackage.valid);
-      i = DragSortAdapter.a(this.a, (QQAppInterface)localObject, localEmoticonPackage);
-      if (i == 0)
-      {
-        DragSortAdapter.a(this.a, localEmoticonPackage, paramView);
-        ReportController.b((QQAppInterface)localObject, "CliOper", "", ((QQAppInterface)localObject).getCurrentAccountUin(), "ep_mall", "Clk_updatepkg_mine", 0, 0, localEmoticonPackage.epId, "" + localEmoticonPackage.localVersion, "" + localEmoticonPackage.latestVersion, "");
-        return;
-      }
-      if ((i == 1) || (i == 2))
-      {
-        localObject = this.a;
-        if (i == 1) {
-          bool = true;
-        }
-        DragSortAdapter.a((DragSortAdapter)localObject, localEmoticonPackage, paramView, bool);
-        return;
-      }
-    } while (i != 3);
-    if (!NetworkUtil.a(this.a.a)) {
-      DialogUtil.a(this.a.a, 230).setTitle(this.a.a.getString(2131433265)).setMessage(this.a.a.getString(2131436259)).setPositiveButton(this.a.a.getString(2131434144), new acae(this, localEmoticonPackage, paramView)).setNegativeButton(this.a.a.getString(2131434145), new acad(this)).show();
+    if (!TextUtils.isEmpty(QQOperateManager.a())) {
+      PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putInt(QQOperateManager.a() + "QQOperationVoIPRequestCount", this.jdField_a_of_type_Int).commit();
     }
-    for (;;)
-    {
-      ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "ep_mall", "0X8005C14", 0, 0, "", "", "", "");
-      return;
-      if (NetworkUtil.a(this.a.a)) {
-        DragSortAdapter.a(this.a, localEmoticonPackage, paramView);
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QQOperateVoIP", 4, "onDestroy.......");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acac
  * JD-Core Version:    0.7.0.1
  */

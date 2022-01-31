@@ -1,48 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.data.OnlineFileSessionInfo;
 
-class adck
-  implements FMDialogUtil.FMDialogInterface
+public class adck
+  implements Runnable
 {
-  adck(adcj paramadcj) {}
+  public adck(FileTransferHandler paramFileTransferHandler, int paramInt1, String paramString1, String paramString2, long paramLong1, short paramShort, boolean paramBoolean, int paramInt2, String paramString3, OnlineFileSessionInfo paramOnlineFileSessionInfo, long paramLong2, int paramInt3) {}
   
-  public void a()
+  public void run()
   {
-    int i = this.a.a.i();
-    int j = this.a.a.d();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (i == 6) {
-      if (j == 0) {
-        localQQAppInterface.a().b(this.a.a.c());
-      }
-    }
-    for (;;)
-    {
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.d();
-      }
-      return;
-      localQQAppInterface.a().a(this.a.a.c());
-      continue;
-      if (j == 0) {
-        localQQAppInterface.a().a(this.a.a.c());
-      } else {
-        localQQAppInterface.a().b(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Short, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataOnlineFileSessionInfo, this.jdField_b_of_type_Long, this.jdField_c_of_type_Int);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adck
  * JD-Core Version:    0.7.0.1
  */

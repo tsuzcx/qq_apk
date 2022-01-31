@@ -1,23 +1,18 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.worldcup.TouchSliceView;
-import java.util.Deque;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
 
 public class akya
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akya(TouchSliceView paramTouchSliceView) {}
+  public akya(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((PointF)TouchSliceView.a(this.a).pollFirst() != null)
-    {
-      this.a.postInvalidate();
-      this.a.postDelayed(this.a.a, 50);
+    if (this.a.a != null) {
+      this.a.a.dismiss();
     }
-    while (!TouchSliceView.a(this.a)) {
-      return;
-    }
-    this.a.postDelayed(this.a.a, 50);
   }
 }
 

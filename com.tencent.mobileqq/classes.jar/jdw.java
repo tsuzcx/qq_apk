@@ -1,45 +1,32 @@
-import android.os.Handler;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.rookery.asyncHttpClient.AsyncHttpClient;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpRequestInterceptor;
+import org.apache.http.protocol.HttpContext;
 
 public class jdw
-  implements Runnable
+  implements HttpRequestInterceptor
 {
-  public jdw(VideoController paramVideoController) {}
+  public jdw(AsyncHttpClient paramAsyncHttpClient) {}
   
-  public void run()
+  public void process(HttpRequest paramHttpRequest, HttpContext paramHttpContext)
   {
-    if (this.a.a() == null) {}
-    do
-    {
-      int i;
-      do
-      {
-        do
-        {
-          return;
-        } while ((!this.a.a().n()) || (!this.a.a().af));
-        if (QLog.isColorLevel()) {
-          QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "MultiCheckCallNotAcceptRunnable");
-        }
-        i = this.a.c().size();
-      } while (i <= 0);
-      this.a.a().L = true;
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(701), Integer.valueOf(i) });
-    } while ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null));
-    if (this.a.jdField_a_of_type_Jdx == null) {
-      this.a.jdField_a_of_type_Jdx = new jdx(this.a);
+    if (!paramHttpRequest.containsHeader("Accept-Encoding")) {
+      paramHttpRequest.addHeader("Accept-Encoding", "gzip");
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.jdField_a_of_type_Jdx);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_a_of_type_Jdx, this.a.i * 1000);
+    paramHttpContext = AsyncHttpClient.a(this.a).keySet().iterator();
+    while (paramHttpContext.hasNext())
+    {
+      String str = (String)paramHttpContext.next();
+      paramHttpRequest.addHeader(str, (String)AsyncHttpClient.a(this.a).get(str));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     jdw
  * JD-Core Version:    0.7.0.1
  */

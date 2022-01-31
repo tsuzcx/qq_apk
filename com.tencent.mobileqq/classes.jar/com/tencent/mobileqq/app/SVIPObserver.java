@@ -9,6 +9,10 @@ public class SVIPObserver
   
   public void a(int paramInt) {}
   
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     switch (paramInt)
@@ -26,8 +30,14 @@ public class SVIPObserver
       } while (!QLog.isColorLevel());
       QLog.e("SVIPObserver", 2, "NOTIFY_TYPE_SVIP_BUBBLE_CHANGE param error");
       return;
+    case 100: 
+      a();
+      return;
+    case 102: 
+      a(paramBoolean, paramObject);
+      return;
     }
-    a();
+    b(paramBoolean, paramObject);
   }
 }
 

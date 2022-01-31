@@ -1,31 +1,24 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
 
-class aogq
-  extends ExecuteBinResponseCallback
+public class aogq
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  aogq(aogp paramaogp, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
+  public aogq(EditTextDialog paramEditTextDialog) {}
   
-  public void a(boolean paramBoolean)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
+    if ((paramInt & 0x4) == 0)
     {
-      aogp.a(this.jdField_a_of_type_Aogp, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+      SLog.b("EditTextDialog", "onStatusBarShow");
+      this.a.getWindow().getDecorView().removeCallbacks(EditTextDialog.a(this.a));
+      this.a.getWindow().getDecorView().postDelayed(EditTextDialog.a(this.a), 1500L);
       return;
     }
-    aogp.a(this.jdField_a_of_type_Aogp, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-  }
-  
-  public void b(String paramString)
-  {
-    aogp.a(this.jdField_a_of_type_Aogp, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    SLog.b("EditTextDialog", "onStatusBarHide");
   }
 }
 

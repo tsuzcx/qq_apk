@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.scribble;
 
-import ahqb;
-import ahqc;
+import ahut;
+import ahuu;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.AppConstants;
@@ -30,7 +30,7 @@ public class ScribbleMsgUtils
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.bM + "ScribbleCache/";
+    jdField_a_of_type_JavaLangString = AppConstants.bN + "ScribbleCache/";
   }
   
   public static int a(MessageForScribble paramMessageForScribble)
@@ -71,7 +71,7 @@ public class ScribbleMsgUtils
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, ScribbleMsgUtils.CombineCallback paramCombineCallback)
   {
     a();
-    new ahqc(paramQQAppInterface, paramString, paramInt1, paramBitmap, paramInt2, paramCombineCallback).execute(new Void[0]);
+    new ahuu(paramQQAppInterface, paramString, paramInt1, paramBitmap, paramInt2, paramCombineCallback).execute(new Void[0]);
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, MessageForScribble paramMessageForScribble)
@@ -88,7 +88,7 @@ public class ScribbleMsgUtils
       localScribbleBaseOperator = new ScribbleBaseOperator(paramQQAppInterface);
       localMessageForScribble = localScribbleBaseOperator.a(paramMessageForScribble);
     } while (localMessageForScribble == null);
-    ThreadManager.post(new ahqb(paramQQAppInterface, paramMessageForScribble), 5, null, false);
+    ThreadManager.post(new ahut(paramQQAppInterface, paramMessageForScribble), 5, null, false);
     localScribbleBaseOperator.a(localMessageForScribble);
     return true;
   }

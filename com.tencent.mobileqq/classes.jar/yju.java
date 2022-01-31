@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class yju
   implements Runnable
 {
-  public yju(ApolloGameManager paramApolloGameManager) {}
+  public yju(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
   public void run()
   {
-    if (ApolloGameManager.a(this.a) != null) {
-      ((ApolloManager)ApolloGameManager.a(this.a).getManager(152)).d();
-    }
+    this.a.b.setText(this.a.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yju
  * JD-Core Version:    0.7.0.1
  */

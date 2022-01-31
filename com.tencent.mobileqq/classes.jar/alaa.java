@@ -1,34 +1,33 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.open.agent.AuthorityActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 
 public class alaa
-  implements Runnable
+  extends Handler
 {
-  public alaa(AuthorityActivity paramAuthorityActivity) {}
-  
-  public void run()
+  public alaa(WerewolvesPluginManager paramWerewolvesPluginManager, Looper paramLooper)
   {
-    this.a.j();
-    if (this.a.jdField_a_of_type_Int == 0) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131435606);
-    }
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.arg1;
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.a.a(this.a.getResources().getString(2131435603), new alab(this));
+    default: 
       return;
-      if (this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse == null) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.d);
-      } else {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.c);
-      }
     }
+    ((WerewolvesHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(107)).a(3, true, Integer.valueOf(i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alaa
  * JD-Core Version:    0.7.0.1
  */

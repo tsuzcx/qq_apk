@@ -120,7 +120,7 @@ public class QQStoryEntityManagerFactory
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "qqstory_" + paramString + ".db", null, 157);
+      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "qqstory_" + paramString + ".db", null, 158);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
@@ -227,7 +227,7 @@ public class QQStoryEntityManagerFactory
       paramSQLiteDatabase.execSQL(TableBuilder.a(MemoryInfoEntry.class.getSimpleName()));
       paramSQLiteDatabase.execSQL(TableBuilder.a(new MemoryInfoEntry()));
     }
-    if (paramInt1 < 157)
+    if (paramInt1 < 158)
     {
       paramSQLiteDatabase.execSQL(TableBuilder.a(MsgTabNodeRecommendActivityReadEntity.TABLE_NAME));
       paramSQLiteDatabase.execSQL(TableBuilder.a(new MsgTabNodeRecommendActivityReadEntity()));

@@ -1,16 +1,33 @@
-import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.biz.qqstory.utils.AssertUtils;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ufa
   implements View.OnClickListener
 {
-  public ufa(TroopTransferActivity paramTroopTransferActivity) {}
+  public ufa(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.dismiss();
+    AssertUtils.a(this.a.a);
+    AssertUtils.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
+    {
+      paramView.add(((TroopMemberListActivity.ATroopMember)this.a.a.a.get(i)).a);
+      i += 1;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 

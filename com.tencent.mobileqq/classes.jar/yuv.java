@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel.IRequestHandler;
+import java.util.Comparator;
 
-public final class yuv
-  implements Runnable
+public class yuv
+  implements Comparator
 {
-  public void run()
+  public yuv(ApolloCmdChannel paramApolloCmdChannel) {}
+  
+  public int a(ApolloCmdChannel.IRequestHandler paramIRequestHandler1, ApolloCmdChannel.IRequestHandler paramIRequestHandler2)
   {
-    long l = System.currentTimeMillis();
-    if (!ApolloWebDataHandler.a()) {
-      ApolloWebDataHandler.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloWebDataHandler", 2, "apollo_client initInAsyncThread use:" + (System.currentTimeMillis() - l));
-    }
+    return paramIRequestHandler1.a() - paramIRequestHandler2.a();
   }
 }
 

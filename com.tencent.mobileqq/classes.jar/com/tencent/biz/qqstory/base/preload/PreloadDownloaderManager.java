@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nah;
+import nec;
 
 @TargetApi(14)
 public class PreloadDownloaderManager
@@ -128,7 +128,7 @@ public class PreloadDownloaderManager
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new nah(this);
+    this.jdField_a_of_type_JavaLangRunnable = new nec(this);
     ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
   }
   

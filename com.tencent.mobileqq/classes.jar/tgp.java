@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class tgp
-  extends MessageObserver
+  extends FriendListObserver
 {
-  public tgp(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public tgp(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, false);
+    if (this.a.isFinishing()) {
+      return;
     }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, true);
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      QQToast.a(this.a, this.a.getString(2131434533), 0).b(this.a.getTitleBarHeight());
+    }
+    for (;;)
+    {
+      MoveToGroupActivity.b(this.a);
+      this.a.removeObserver(MoveToGroupActivity.a(this.a));
+      return;
+      QQToast.a(this.a, 2, this.a.getString(2131434531), 0).b(this.a.getTitleBarHeight());
     }
   }
 }

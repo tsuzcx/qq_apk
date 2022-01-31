@@ -1,20 +1,14 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
-public class agsi
+class agsi
+  implements Runnable
 {
-  public int a;
-  public Point a;
-  public int b;
-  public Point b;
-  public int c;
-  public Point c;
-  public int d;
-  public Point d;
-  public Point e;
-  public Point f;
+  agsi(agsh paramagsh) {}
   
-  public agsi(SingleTouchLayout paramSingleTouchLayout) {}
+  public void run()
+  {
+    PersonalityLabelGalleryActivity.a(this.a.a, 8);
+  }
 }
 
 

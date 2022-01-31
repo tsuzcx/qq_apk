@@ -1,15 +1,58 @@
-import com.tencent.mobileqq.armap.ArMapHandler;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import android.annotation.TargetApi;
+import android.app.ProgressDialog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import java.util.List;
 
 public class abhc
-  implements Runnable
+  implements Handler.Callback
 {
-  public abhc(ARMapPOIStarDialog paramARMapPOIStarDialog, ArMapInterface paramArMapInterface, long paramLong1, long paramLong2) {}
+  public abhc(ARMapActivity paramARMapActivity) {}
   
-  public void run()
+  @TargetApi(11)
+  public boolean handleMessage(Message paramMessage)
   {
-    ((ArMapHandler)this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.a(2)).a(this.jdField_a_of_type_Long, this.b, null);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.jdField_c_of_type_Int = paramMessage.arg1;
+      if (this.a.jdField_c_of_type_Int == 4)
+      {
+        int i = paramMessage.arg2;
+        this.a.a(i);
+        continue;
+        float f = ((Float)paramMessage.obj).floatValue();
+        this.a.jdField_c_of_type_AndroidWidgetImageView.setRotation(f - 45.0F);
+        ARMapActivity.a(this.a, -f);
+        continue;
+        ARMapActivity.a(this.a, (List)paramMessage.obj);
+        continue;
+        ARMapActivity.e(this.a);
+        continue;
+        ARMapActivity.g(this.a, false);
+        continue;
+        if (this.a.a == null)
+        {
+          this.a.a = new ProgressDialog(this.a, 2131624516);
+          this.a.a.setCanceledOnTouchOutside(false);
+          this.a.a.show();
+          this.a.a.setContentView(2130969178);
+        }
+        ((TextView)this.a.a.findViewById(2131363418)).setText("正在加载...");
+        if ((!this.a.a.isShowing()) && (!this.a.isFinishing()))
+        {
+          this.a.a.show();
+          continue;
+          ARMapActivity.f(this.a);
+        }
+      }
+    }
   }
 }
 

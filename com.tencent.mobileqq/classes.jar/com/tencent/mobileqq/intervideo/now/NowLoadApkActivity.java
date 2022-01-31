@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.sixgod.pluginsdk.component.SixGodPreLoadActivity;
-import com.sixgod.pluginsdk.log.SGLog;
-import com.tencent.mobileqq.intervideo.SixgodLog;
 
 public class NowLoadApkActivity
   extends SixGodPreLoadActivity
@@ -23,7 +21,6 @@ public class NowLoadApkActivity
     paramBundle.addFlags(8);
     localLayoutParams.alpha = 0.0F;
     paramBundle.setAttributes(localLayoutParams);
-    SGLog.init(new SixgodLog());
   }
 }
 

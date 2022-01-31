@@ -1,24 +1,50 @@
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ServerCheckCallback;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
+import com.tencent.mobileqq.ark.ArkAppHandler;
 import com.tencent.mobileqq.data.RecommendCommonMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
 
 public class aayd
-  implements ArkMessageServerLogic.ServerCheckCallback
+  implements ArkAppRootLayout.ArkSearchReportCallback
 {
-  public aayd(ArkRecommendLogic paramArkRecommendLogic, RecommendCommonMessage paramRecommendCommonMessage, WeakReference paramWeakReference) {}
+  public aayd(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg) {}
   
-  public void a(ArrayList paramArrayList)
+  public void a()
   {
-    if (paramArrayList != null) {
-      ArkRecommendLogic.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendLogic, paramArrayList, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_JavaLangRefWeakReference, 4);
+    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    int i;
+    String str1;
+    String str2;
+    String str3;
+    String str4;
+    String str5;
+    if (localObject != null)
+    {
+      localObject = (ArkAppHandler)((QQAppInterface)localObject).a(95);
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.isFromArkServer) {
+        break label142;
+      }
+      i = 2;
+      str1 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.arkServerExtraInfo;
+      str2 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.arkServerMsgId;
+      str3 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appName;
+      str4 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.appView;
+      str5 = this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.msg;
+      if (!"1".equals(this.a.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.getExtInfoFromExtStr("ark_text_analysis_flag"))) {
+        break label148;
+      }
     }
-    while (!QLog.isColorLevel()) {
+    label142:
+    label148:
+    for (int j = 1;; j = 0)
+    {
+      ((ArkAppHandler)localObject).a(i, 4, 2, str1, str2, str3, str4, str5, j, 0);
       return;
+      i = 100;
+      break;
     }
-    QLog.d("ArkApp.ArkRecommendLogic", 2, "ContextItem is null.");
   }
 }
 

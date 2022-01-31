@@ -1,21 +1,25 @@
-import android.os.Bundle;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.av.ui.redbag.RedBagUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.av.redpacket.ui.RedPacketGameEmojiAnimation;
+import com.tencent.av.redpacket.ui.RedPacketGameParticleEmoji.OnShowListener;
+import com.tencent.qphone.base.util.QLog;
 
-class jnn
-  implements Runnable
+public class jnn
+  implements RedPacketGameParticleEmoji.OnShowListener
 {
-  jnn(jnk paramjnk, Bundle paramBundle) {}
+  public jnn(RedPacketGameEmojiAnimation paramRedPacketGameEmojiAnimation) {}
   
-  public void run()
+  public void a()
   {
-    RedBagUtil.a((QQAppInterface)this.jdField_a_of_type_Jnk.a.a(), this.jdField_a_of_type_AndroidOsBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketGameEmojiAnimation", 2, "onShow called, needDetectFace set true");
+    }
+    if (this.a.a != null) {
+      this.a.a.c = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jnn
  * JD-Core Version:    0.7.0.1
  */

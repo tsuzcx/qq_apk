@@ -10,6 +10,7 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.EffectConfigBase.IEffectConfigCallback;
 import com.tencent.av.business.manager.magicface.EffectFaceManager;
 import com.tencent.av.business.manager.magicface.FaceItem;
+import com.tencent.av.business.manager.support.EffectSupportManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.lang.ref.WeakReference;
 
@@ -60,12 +61,12 @@ public class MagicfaceViewProxy
       AVLog.e("MagicfaceViewProxy", bool);
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
       {
-        localObject = View.inflate(BaseApplicationImpl.getContext(), 2130969319, null);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131366127));
-        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = ((MagicfaceViewForAV)((View)localObject).findViewById(2131366128));
+        localObject = View.inflate(BaseApplicationImpl.getContext(), 2130969317, null);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131366132));
+        this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV = ((MagicfaceViewForAV)((View)localObject).findViewById(2131366133));
         this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.setZOrderMediaOverlay(true);
         this.jdField_a_of_type_ComTencentAvUiFunchatMagicfaceMagicfaceViewForAV.getHolder().setFormat(-2);
-        localObject = paramViewGroup.findViewById(2131362537);
+        localObject = paramViewGroup.findViewById(2131362542);
         int i = -1;
         if (localObject != null) {
           i = paramViewGroup.indexOfChild((View)localObject);
@@ -99,18 +100,29 @@ public class MagicfaceViewProxy
     if (paramViewGroup == null) {
       AVLog.c("MagicfaceViewProxy", "showView: " + paramString);
     }
-    do
+    for (;;)
     {
       return;
       a();
       this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager.a(this);
       paramString = (FaceItem)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager.a(paramString);
-    } while (paramString == null);
-    if (paramString.isUsable())
-    {
-      a(paramViewGroup, paramBoolean, paramString);
-      return;
+      if (paramString != null)
+      {
+        EffectSupportManager localEffectSupportManager = (EffectSupportManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5);
+        boolean bool1 = localEffectSupportManager.a(3, "normal");
+        boolean bool2 = localEffectSupportManager.a(3, "interact");
+        if ((!bool1) || ((!bool2) && (paramString.isInteract()))) {}
+        for (int i = 1; i == 0; i = 0)
+        {
+          if (!paramString.isUsable()) {
+            break label136;
+          }
+          a(paramViewGroup, paramBoolean, paramString);
+          return;
+        }
+      }
     }
+    label136:
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramViewGroup);
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceFaceItem = paramString;
@@ -146,7 +158,7 @@ public class MagicfaceViewProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.magicface.MagicfaceViewProxy
  * JD-Core Version:    0.7.0.1
  */

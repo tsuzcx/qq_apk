@@ -25,7 +25,6 @@ import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
 import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager.ConfigUpdateListener;
 import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.IndividualRedPacketManager.VIPHBStrategy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -36,13 +35,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import ukp;
-import ukq;
-import ukr;
-import uku;
-import ukz;
-import ulc;
-import ulf;
+import upl;
+import upm;
+import upn;
+import upo;
+import upr;
+import upw;
+import upz;
+import uqc;
 
 public class CustomizeStrategyFactory
   implements Handler.Callback, QWalletConfigManager.ConfigUpdateListener
@@ -52,12 +52,14 @@ public class CustomizeStrategyFactory
   public static byte[] a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(5);
-  private QQLruCache jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new ukp(this, 1020, 30, 10000);
+  private QQLruCache jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new upl(this, 1020, 30, 10000);
   public QWalletConfigManager a;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   public boolean a;
   public boolean b;
+  private byte[] b;
   private boolean c;
+  private boolean d;
   
   static
   {
@@ -68,13 +70,8 @@ public class CustomizeStrategyFactory
   private CustomizeStrategyFactory()
   {
     this.jdField_a_of_type_Boolean = true;
-    QQAppInterface localQQAppInterface = QWalletTools.a();
-    if (localQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = ((QWalletConfigManager)localQQAppInterface.getManager(244));
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager.a("redPack", this);
-    }
+    this.jdField_b_of_type_ArrayOfByte = new byte[0];
+    c();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap(8);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     jdField_a_of_type_Float = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
@@ -97,15 +94,15 @@ public class CustomizeStrategyFactory
       this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt, paramQQAppInterface);
       return paramQQAppInterface;
       if (1 == paramInt) {
-        paramQQAppInterface = new ulc(paramQQAppInterface);
+        paramQQAppInterface = new upz(paramQQAppInterface);
       } else if (4 == paramInt) {
-        paramQQAppInterface = new ukz(paramQQAppInterface);
+        paramQQAppInterface = new upw(paramQQAppInterface);
       } else if (5 == paramInt) {
-        paramQQAppInterface = new uku(paramQQAppInterface);
+        paramQQAppInterface = new upr(paramQQAppInterface);
       } else if (6 == paramInt) {
-        paramQQAppInterface = new ulf(paramQQAppInterface);
+        paramQQAppInterface = new uqc(paramQQAppInterface);
       } else if (7 == paramInt) {
-        paramQQAppInterface = new ukr(paramQQAppInterface);
+        paramQQAppInterface = new upo(paramQQAppInterface);
       } else {
         paramQQAppInterface = null;
       }
@@ -130,13 +127,18 @@ public class CustomizeStrategyFactory
     if ((paramRedPacketInfo == null) || (!paramRedPacketInfo.jdField_b_of_type_Boolean) || (paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig == null) || (TextUtils.isEmpty(paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig.jdField_a_of_type_JavaLangString))) {
       return;
     }
-    paramRedPacketInfo = new ukq(this, paramRedPacketInfo);
+    paramRedPacketInfo = new upn(this, paramRedPacketInfo);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
       ThreadManager.post(paramRedPacketInfo, 5, null, true);
       return;
     }
     paramRedPacketInfo.run();
+  }
+  
+  private void c()
+  {
+    ThreadManager.post(new upm(this), 5, null, true);
   }
   
   public CustomizeStrategyFactory.RedPacketInfo a(QQAppInterface paramQQAppInterface, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, CustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener)
@@ -273,14 +275,19 @@ public class CustomizeStrategyFactory
       }
       this.jdField_a_of_type_AndroidUtilSparseArray.clear();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager.b("redPack", this);
+    synchronized (this.jdField_b_of_type_ArrayOfByte)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager.b("redPack", this);
+      }
+      this.d = true;
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidOsHandler = null;
+      jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory = null;
+      this.jdField_b_of_type_Boolean = false;
+      this.c = false;
+      return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = false;
   }
   
   public void b(boolean paramBoolean)

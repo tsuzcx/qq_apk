@@ -1,78 +1,51 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.net.GdtAdHandler;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 
 public class aihx
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public aihx(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, Resources paramResources, PopupWindow paramPopupWindow) {}
+  public aihx(RedBagVideoManager paramRedBagVideoManager) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int k;
-    int m;
-    try
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramMotionEvent.getAction())
     {
-      ViewGroup localViewGroup = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131363026);
-      if (localViewGroup == null) {
-        return;
-      }
+    default: 
+      bool1 = false;
     }
-    catch (Exception localException)
+    do
     {
-      for (;;)
+      do
       {
-        arrayOfInt1 = null;
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (RedBagVideoManager.a(this.a) == null);
+        paramView = RedBagVideoManager.a(this.a).getText().toString().trim();
+        bool1 = bool2;
+      } while ("红包已发".trim().equals(paramView));
+      RedBagVideoManager.a(this.a).setAlpha(0.5F);
+      return true;
+      if (RedBagVideoManager.a(this.a) != null) {
+        RedBagVideoManager.a(this.a).setAlpha(1.0F);
       }
-      int[] arrayOfInt2 = new int[2];
-      arrayOfInt1.getLocationOnScreen(arrayOfInt2);
-      int i = arrayOfInt2[0];
-      i = arrayOfInt2[1];
-      int j = arrayOfInt1.getHeight();
-      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
-      int[] arrayOfInt1 = new int[2];
-      paramView.getLocationOnScreen(arrayOfInt1);
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX = arrayOfInt1[0];
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY = arrayOfInt1[1];
-      k = AIOUtils.a(106.0F, this.jdField_a_of_type_AndroidContentResResources);
-      m = paramView.getHeight();
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - i + m + k <= j) {
-        break label276;
-      }
-    }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843950));
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - k);
-    for (;;)
-    {
-      ((GdtAdHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110)).a(9, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-      paramView = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
-      paramView.alpha = 0.5F;
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramView);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new aihy(this));
-      return;
-      label276:
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843949));
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY + m);
-    }
+      RedBagVideoManager.a(this.a, RedBagVideoManager.a(this.a));
+      RedBagVideoManager.b(this.a, System.currentTimeMillis());
+      bool1 = bool2;
+    } while (RedBagVideoManager.a(this.a) - RedBagVideoManager.b(this.a) < 300L);
+    RedBagVideoManager.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aihx
  * JD-Core Version:    0.7.0.1
  */

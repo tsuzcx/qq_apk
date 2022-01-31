@@ -1,92 +1,82 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import com.tencent.biz.now.NowLiveManager;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class kqd
-  implements BusinessObserver
+public class kqd
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public kqd(QQAppInterface paramQQAppInterface, PaConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt, String paramString) {}
+  public kqd(NowLiveManager paramNowLiveManager) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseInfoModel", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    PublicAccountHandler localPublicAccountHandler = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-    if (paramBoolean) {}
-    for (;;)
+    NowLiveManager.a(this.a);
+    String str = "";
+    long l = 0L;
+    Object localObject1 = "";
+    if (paramBundle != null)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          Object localObject = new mobileqq_mp.SetFunctionFlagResponse();
-          ((mobileqq_mp.SetFunctionFlagResponse)localObject).mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)((mobileqq_mp.SetFunctionFlagResponse)localObject).ret_info.get()).ret_code.get() == 0)
-          {
-            ((mobileqq_mp.RetInfo)((mobileqq_mp.SetFunctionFlagResponse)localObject).ret_info.get()).ret_code.get();
-            if (QLog.isColorLevel()) {
-              QLog.d("AccountDetailBaseInfoModel", 2, "sendSetFunctionFlagRequest success");
-            }
-            this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d = this.jdField_a_of_type_Int;
-            paramBundle = null;
-            localObject = (PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-            if (localObject != null) {
-              paramBundle = ((PublicAccountDataManager)localObject).a(this.jdField_a_of_type_JavaLangString);
-            }
-            if (paramBundle != null)
-            {
-              if (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.e == 6)
-              {
-                if (this.jdField_a_of_type_Int == 1) {
-                  paramBundle.mShowMsgFlag = this.jdField_a_of_type_Int;
-                }
-                ThreadManager.getSubThreadHandler().postDelayed(new kqe(this, paramBundle), 10L);
-                localPublicAccountHandler.a(109, true, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-                return;
-              }
-              if (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.e != 3) {
-                continue;
-              }
-              paramBundle.isSyncLbs = true;
-              if (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d != 1) {
-                break label315;
-              }
-              paramBoolean = true;
-              paramBundle.isAgreeSyncLbs = paramBoolean;
-              continue;
-            }
-          }
-          else
-          {
-            localPublicAccountHandler.a(109, false, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-          }
-        }
-        else
-        {
-          localPublicAccountHandler.a(109, false, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-          return;
-          localPublicAccountHandler.a(109, false, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-        }
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        return;
-      }
-      label315:
-      paramBoolean = false;
+      l = paramBundle.getLong("time", 0L);
+      str = paramBundle.getString("room_id");
+      localObject1 = paramBundle.getString("friendUin");
     }
+    localObject1 = this.a.a((String)localObject1, l);
+    if (paramJSONObject == null)
+    {
+      NowLiveManager.b(this.a);
+      this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), localObject1, paramBundle });
+      return;
+    }
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), null, paramBundle });
+          return;
+          Object localObject2 = paramJSONObject.optJSONObject("result");
+          if ((localObject2 != null) && (((JSONObject)localObject2).optInt("retcode") == 0))
+          {
+            paramJSONObject = new ArrayList();
+            localObject2 = ((JSONObject)localObject2).optJSONArray("videoURLList");
+            if (localObject2 != null)
+            {
+              int i = 0;
+              for (;;)
+              {
+                if (i < ((JSONArray)localObject2).length()) {
+                  try
+                  {
+                    paramJSONObject.add(((JSONArray)localObject2).getString(i));
+                    i += 1;
+                  }
+                  catch (JSONException localJSONException)
+                  {
+                    for (;;)
+                    {
+                      localJSONException.printStackTrace();
+                    }
+                  }
+                }
+              }
+              ((kqe)localObject1).jdField_a_of_type_JavaUtilList = paramJSONObject;
+              ((kqe)localObject1).b = str;
+            }
+            this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
+          }
+        }
+      } while (paramJSONObject.optInt("retcode") != 0);
+      paramJSONObject = paramJSONObject.optJSONObject("result");
+    } while (paramJSONObject == null);
+    ((kqe)localObject1).jdField_a_of_type_Int = paramJSONObject.optInt("state");
+    this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
   }
 }
 

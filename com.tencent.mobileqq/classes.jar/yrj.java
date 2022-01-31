@@ -1,21 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import com.tencent.ttpic.util.VideoGlobalContext;
+import com.tencent.ttpic.util.VideoPrefsUtil;
+import com.tencent.ttpic.util.youtu.VideoFaceDetector;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 
 public final class yrj
   implements EIPCResultCallback
 {
-  public yrj(long paramLong) {}
+  public yrj(ApolloRender paramApolloRender) {}
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("resData");
-    CmGameUtil.a().callbackFromRequest(this.a, 0, "sc.script_notify_action_ready.local", paramEIPCResult);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_ACTION_DATA onCallback resJson:" + paramEIPCResult);
+    VideoPrefsUtil.init(BaseApplicationImpl.getContext());
+    VideoGlobalContext.setContext(BaseApplicationImpl.getContext());
+    if (PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), false))
+    {
+      this.a.mDetector = new VideoFaceDetector(PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), null));
+      this.a.mDetector.init();
     }
   }
 }

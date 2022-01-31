@@ -22,10 +22,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import mva;
-import mvb;
-import mvc;
-import mvd;
+import myu;
+import myv;
+import myw;
+import myx;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,7 +42,7 @@ public class PublicAccountH5AbilityForPtt
   public Activity a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
-  private VoicePlayer.VoicePlayerListener jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer$VoicePlayerListener = new mva(this);
+  private VoicePlayer.VoicePlayerListener jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer$VoicePlayerListener = new myu(this);
   public VoicePlayer a;
   public WebViewPlugin.PluginRuntime a;
   private File jdField_a_of_type_JavaIoFile;
@@ -100,8 +100,8 @@ public class PublicAccountH5AbilityForPtt
   
   private void j()
   {
-    SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_AndroidAppActivity.getString(2131433389));
-    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, "权限提示", localSpannableString, 0, 2131435196, null, null, new mvd(this)).show();
+    SpannableString localSpannableString = new SpannableString(this.jdField_a_of_type_AndroidAppActivity.getString(2131433403));
+    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, "权限提示", localSpannableString, 0, 2131435212, null, null, new myx(this)).show();
   }
   
   public int a()
@@ -158,7 +158,7 @@ public class PublicAccountH5AbilityForPtt
   
   public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    if (a(AppConstants.aJ + this.jdField_b_of_type_JavaLangString + "/" + "c2bPTT/"))
+    if (a(AppConstants.aK + this.jdField_b_of_type_JavaLangString + "/" + "c2bPTT/"))
     {
       this.jdField_a_of_type_JavaIoFile = new File(paramString);
       if (this.jdField_a_of_type_JavaIoFile.exists()) {
@@ -293,7 +293,7 @@ public class PublicAccountH5AbilityForPtt
   
   public String b(String paramString)
   {
-    return AppConstants.aJ + this.jdField_b_of_type_JavaLangString + "/" + "c2bPTT/" + paramString + ".amr";
+    return AppConstants.aK + this.jdField_b_of_type_JavaLangString + "/" + "c2bPTT/" + paramString + ".amr";
   }
   
   public void b()
@@ -301,7 +301,7 @@ public class PublicAccountH5AbilityForPtt
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(this.jdField_a_of_type_AndroidAppActivity);
     }
-    f = AppConstants.aJ + this.jdField_b_of_type_JavaLangString + "/" + "c2bPTT/" + FileMsg.a() + ".amr";
+    f = AppConstants.aK + this.jdField_b_of_type_JavaLangString + "/" + "c2bPTT/" + FileMsg.a() + ".amr";
     AudioUtil.a(this.jdField_a_of_type_AndroidAppActivity, true);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(f);
@@ -422,7 +422,7 @@ public class PublicAccountH5AbilityForPtt
   
   public void d(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mvc(this));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new myw(this));
   }
   
   public void e()
@@ -487,7 +487,7 @@ public class PublicAccountH5AbilityForPtt
   
   public void i()
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mvb(this));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new myv(this));
   }
 }
 

@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class sux
-  extends WebViewClient
+  implements Runnable
 {
-  public sux(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public sux(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public void run()
   {
-    if (this.a.a(paramString)) {}
-    return true;
+    this.a.y();
   }
 }
 

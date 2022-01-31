@@ -1,23 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
+import cooperation.qzone.report.lp.LpReportManager;
 
 public class angg
-  implements View.OnClickListener
+  implements Runnable
 {
-  public angg(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
+  public angg(LpReportManager paramLpReportManager, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a.a);
-    this.a.setResult(0);
-    this.a.finish();
+    LpReportManager.access$200(this.jdField_a_of_type_CooperationQzoneReportLpLpReportManager, this.jdField_a_of_type_Int);
   }
 }
 

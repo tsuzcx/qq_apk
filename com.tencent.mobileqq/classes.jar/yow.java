@@ -1,27 +1,35 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloRenderRunner;
-import com.tencent.mobileqq.apollo.aioChannel.IRenderRunner;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.mobileqq.adapter.TroopListAdapter2.OnTroopListClickListener;
+import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItem;
+import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListViewItemTag;
+import com.tencent.mobileqq.statistics.ReportTask;
 
 public class yow
-  implements Runnable
+  implements View.OnClickListener
 {
-  public yow(ApolloRenderRunner paramApolloRenderRunner, IRenderRunner paramIRenderRunner, long paramLong, ApolloCmdChannel paramApolloCmdChannel, int paramInt, String paramString1, String paramString2) {}
+  public yow(TroopListAdapter2 paramTroopListAdapter2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner != null) && (this.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner.getRuntimeState()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.callbackEngineWrapper(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner.isJsRuntime(), this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
-      if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_JsRenderRunner", 2, "apolloSurfaceView.queueEvent mNativeSSOReqMgr.callbackEngine cmd:" + this.jdField_a_of_type_JavaLangString);
-      }
+    paramView = paramView.getTag();
+    if (!(paramView instanceof TroopListAdapter2.TroopListViewItemTag)) {
+      return;
     }
+    paramView = (TroopListAdapter2.TroopListViewItemTag)paramView;
+    if ((paramView.a != null) && (paramView.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener.a(paramView.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, paramView.a.jdField_a_of_type_Int);
+    }
+    if ((paramView.a != null) && (paramView.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener.a(paramView.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo);
+    }
+    new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yow
  * JD-Core Version:    0.7.0.1
  */

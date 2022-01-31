@@ -49,7 +49,7 @@ public class CateListAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969876, null);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969887, null);
       paramView = new CateListAdapter.ViewHolder(this, localView);
       localView.setTag(paramView);
       paramViewGroup = paramView;
@@ -65,7 +65,7 @@ public class CateListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.CateListAdapter
  * JD-Core Version:    0.7.0.1
  */

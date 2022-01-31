@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abkl;
+import abrm;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -104,7 +104,7 @@ public class VasFaceManager
       str = "small.png";
       localStringBuilder = new StringBuilder();
       if (a()) {
-        localStringBuilder.append(AppConstants.bp);
+        localStringBuilder.append(AppConstants.bq);
       }
       break;
     }
@@ -127,13 +127,17 @@ public class VasFaceManager
   
   public static String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String[] arrayOfString;
-    do
+    if (TextUtils.isEmpty(paramString))
     {
+      QLog.e("Q.qqhead.VasFaceManager", 1, "getFacePath failed scid is empty");
       return null;
-      arrayOfString = paramString.split("\\.");
-    } while (arrayOfString.length != 3);
+    }
+    String[] arrayOfString = paramString.split("\\.");
+    if (arrayOfString.length != 3)
+    {
+      QLog.e("Q.qqhead.VasFaceManager", 1, "getFacePath failed scid is " + paramString);
+      return null;
+    }
     for (;;)
     {
       int i;
@@ -351,7 +355,7 @@ public class VasFaceManager
     {
       str = "face." + paramInt1 + str;
       b(str, paramCompleteListener, paramObject);
-      ThreadManager.post(new abkl(this, a(paramInt1, paramInt2), str), 5, null, true);
+      ThreadManager.post(new abrm(this, a(paramInt1, paramInt2), str), 5, null, true);
       return;
       str = ".large";
       continue;

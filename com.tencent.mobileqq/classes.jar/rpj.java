@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
 
 public class rpj
-  extends DialogUtil.DialogOnClickAdapter
+  implements ArkAppContainer.ArkAppModuleCallback
 {
-  public rpj(BaseChatPie paramBaseChatPie) {}
+  public rpj(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(ArkAppContainer paramArkAppContainer)
   {
-    paramDialogInterface.dismiss();
+    this.a.finish();
+    if (ArkFullScreenAppActivity.a(this.a)) {
+      this.a.overridePendingTransition(2131034134, 2131034135);
+    }
+    return false;
+  }
+  
+  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 

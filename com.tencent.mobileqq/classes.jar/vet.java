@@ -1,29 +1,38 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.Holder;
-import com.tencent.mobileqq.activity.aio.item.SignatureView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class vet
-  implements View.OnTouchListener
+class vet
+  implements ActionSheet.OnButtonClickListener
 {
-  public vet(RichStatItemBuilder paramRichStatItemBuilder, RichStatItemBuilder.Holder paramHolder) {}
+  vet(ves paramves, ActionSheet paramActionSheet) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (((SignatureView)paramView).a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
     {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-      for (;;)
-      {
-        return true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder);
-      }
     }
-    return false;
+    do
+    {
+      return;
+    } while (this.jdField_a_of_type_Ves.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
+    try
+    {
+      long l = Long.valueOf(this.jdField_a_of_type_Ves.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+      paramView = (BizTroopHandler)this.jdField_a_of_type_Ves.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+      if (paramView != null) {
+        paramView.a(l);
+      }
+      ReportController.b(this.jdField_a_of_type_Ves.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Ves.jdField_a_of_type_Int), "", "");
+      return;
+    }
+    catch (NumberFormatException paramView) {}
   }
 }
 

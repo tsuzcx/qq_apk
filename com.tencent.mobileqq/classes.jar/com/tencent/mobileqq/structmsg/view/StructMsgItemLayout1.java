@@ -43,7 +43,7 @@ public class StructMsgItemLayout1
     {
       paramView = (LinearLayout)paramView;
       if (!TextUtils.isEmpty(this.c)) {
-        paramView.setBackgroundResource(2130838623);
+        paramView.setBackgroundResource(2130838629);
       }
       d(paramView);
       if (paramView.getChildCount() != this.jdField_a_of_type_JavaUtilArrayList.size()) {

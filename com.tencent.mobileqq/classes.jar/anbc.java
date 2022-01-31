@@ -1,40 +1,37 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.XMPCoreUtil;
-import cooperation.qzone.util.XMPCoreUtil.XMPCoreJarLoadListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.UploadSoDownloader;
+import java.io.File;
 
 public class anbc
-  implements ModuleDownloadListener
+  implements Runnable
 {
-  public anbc(XMPCoreUtil paramXMPCoreUtil, XMPCoreUtil.XMPCoreJarLoadListener paramXMPCoreJarLoadListener) {}
+  public anbc(UploadSoDownloader paramUploadSoDownloader) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void run()
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
-    XMPCoreUtil.a(this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil, false);
-    this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil$XMPCoreJarLoadListener.a(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("xmpcore.jar")) {
+    boolean bool = UploadSoDownloader.a(this.a, UploadSoDownloader.a().getAbsolutePath());
+    QLog.d("UploadEnv", 1, "check so md5 result: " + bool);
+    if (bool)
+    {
+      UploadSoDownloader.a(true);
       return;
     }
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", XMPCoreUtil.a(), " onDownloadSucceed = ", XMPCoreUtil.b() });
-    LocalMultiProcConfig.putString("xmp_core_file_md5", XMPCoreUtil.b());
-    XMPCoreUtil.a(this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil);
-    this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil$XMPCoreJarLoadListener.a(XMPCoreUtil.a(this.jdField_a_of_type_CooperationQzoneUtilXMPCoreUtil));
+    try
+    {
+      if (UploadSoDownloader.a().exists()) {
+        UploadSoDownloader.a().delete();
+      }
+      UploadSoDownloader.a(this.a, false);
+      UploadSoDownloader.a(false);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

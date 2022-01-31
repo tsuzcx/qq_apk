@@ -22,9 +22,9 @@ import java.util.Vector;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import osf;
-import osh;
-import osi;
+import owv;
+import owx;
+import owy;
 
 public class CodeMaskManager
 {
@@ -43,7 +43,7 @@ public class CodeMaskManager
   {
     if (SystemUtil.a())
     {
-      jdField_a_of_type_JavaLangString = AppConstants.aJ + "qbiz/qrcode/";
+      jdField_a_of_type_JavaLangString = AppConstants.aK + "qbiz/qrcode/";
       return;
     }
   }
@@ -383,7 +383,7 @@ public class CodeMaskManager
     Bundle localBundle = new Bundle();
     if (paramInt == 1)
     {
-      localBundle.putInt("qrbkgRes", 2130840924);
+      localBundle.putInt("qrbkgRes", 2130840944);
       localBundle.putInt("bkgRes", 0);
       localBundle.putInt("nameClr", -16777216);
       localBundle.putInt("tipsClr", -8947849);
@@ -510,9 +510,9 @@ public class CodeMaskManager
     //   0: iconst_0
     //   1: istore_3
     //   2: aconst_null
-    //   3: astore 5
+    //   3: astore 6
     //   5: aconst_null
-    //   6: astore 6
+    //   6: astore 5
     //   8: aload_2
     //   9: ifnull +90 -> 99
     //   12: new 57	java/io/File
@@ -569,7 +569,7 @@ public class CodeMaskManager
     //   112: iconst_0
     //   113: ireturn
     //   114: astore_1
-    //   115: aload 6
+    //   115: aload 5
     //   117: astore_1
     //   118: aload_1
     //   119: ifnull -22 -> 97
@@ -581,7 +581,7 @@ public class CodeMaskManager
     //   129: iconst_0
     //   130: ireturn
     //   131: astore_1
-    //   132: aload 5
+    //   132: aload 6
     //   134: astore_2
     //   135: aload_2
     //   136: ifnull +7 -> 143
@@ -609,9 +609,9 @@ public class CodeMaskManager
     //   0	166	2	paramArrayOfByte	byte[]
     //   1	97	3	bool1	boolean
     //   81	14	4	bool2	boolean
-    //   3	130	5	localObject1	Object
+    //   6	110	5	localObject1	Object
     //   152	5	5	localObject2	Object
-    //   6	110	6	localObject3	Object
+    //   3	130	6	localObject3	Object
     // Exception table:
     //   from	to	target	type
     //   103	111	111	java/io/IOException
@@ -647,7 +647,7 @@ public class CodeMaskManager
     } while (System.currentTimeMillis() - l < 86400000L);
     Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("window")).getDefaultDisplay();
     int i = localDisplay.getHeight();
-    this.jdField_a_of_type_JavaLangThread = new osf(this, localSharedPreferences, localDisplay.getWidth(), i, paramInt);
+    this.jdField_a_of_type_JavaLangThread = new owv(this, "qr_code_mask_update_extenal_thread", localSharedPreferences, localDisplay.getWidth(), i, paramInt);
     this.jdField_a_of_type_JavaLangThread.start();
   }
   
@@ -719,9 +719,9 @@ public class CodeMaskManager
       b();
       return;
     }
-    localObject = new osi(this, paramCallback, (Bundle)localObject);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new osh(this, (osi)localObject, paramCallback), 10000L);
-    ((osi)localObject).start();
+    localObject = new owy(this, paramCallback, (Bundle)localObject);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new owx(this, (owy)localObject, paramCallback), 10000L);
+    ((owy)localObject).start();
   }
 }
 

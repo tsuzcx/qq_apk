@@ -1,25 +1,21 @@
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.util.InputMethodUtil;
+import android.util.Pair;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.model.QueryTask.Query;
 
 public class aeqx
-  implements AbsListView.OnScrollListener
+  implements QueryTask.Query
 {
-  public aeqx(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public aeqx(EmoticonManager paramEmoticonManager) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public Emoticon a(Pair paramPair)
   {
-    if (paramInt == 1) {
-      InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
-    }
+    return this.a.a((String)paramPair.first, (String)paramPair.second);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqx
  * JD-Core Version:    0.7.0.1
  */

@@ -61,18 +61,18 @@ public class FileUtils
     //   49: sipush 8192
     //   52: newarray byte
     //   54: astore 8
-    //   56: new 49	java/util/zip/ZipInputStream
+    //   56: new 49	com/tencent/commonsdk/zip/QZipInputStream
     //   59: dup
     //   60: new 51	java/io/FileInputStream
     //   63: dup
     //   64: aload_0
     //   65: invokespecial 54	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   68: invokespecial 57	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   68: invokespecial 57	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
     //   71: astore 4
     //   73: aload 6
     //   75: astore_0
     //   76: aload 4
-    //   78: invokevirtual 61	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   78: invokevirtual 61	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
     //   81: astore 5
     //   83: aload 5
     //   85: ifnull +181 -> 266
@@ -138,7 +138,7 @@ public class FileUtils
     //   215: iconst_0
     //   216: aload 8
     //   218: arraylength
-    //   219: invokevirtual 110	java/util/zip/ZipInputStream:read	([BII)I
+    //   219: invokevirtual 110	com/tencent/commonsdk/zip/QZipInputStream:read	([BII)I
     //   222: istore_3
     //   223: iconst_m1
     //   224: iload_3
@@ -161,9 +161,9 @@ public class FileUtils
     //   262: astore_0
     //   263: goto -187 -> 76
     //   266: aload 4
-    //   268: invokevirtual 123	java/util/zip/ZipInputStream:closeEntry	()V
+    //   268: invokevirtual 123	com/tencent/commonsdk/zip/QZipInputStream:closeEntry	()V
     //   271: aload 4
-    //   273: invokevirtual 124	java/util/zip/ZipInputStream:close	()V
+    //   273: invokevirtual 124	com/tencent/commonsdk/zip/QZipInputStream:close	()V
     //   276: aload_0
     //   277: invokestatic 94	cooperation/qzone/util/DataUtils:a	(Ljava/lang/Object;)Z
     //   280: pop
@@ -210,7 +210,7 @@ public class FileUtils
     //   0	343	1	paramFile2	File
     //   0	343	2	paramSet	java.util.Set
     //   222	12	3	i	int
-    //   71	267	4	localZipInputStream	java.util.zip.ZipInputStream
+    //   71	267	4	localQZipInputStream	com.tencent.commonsdk.zip.QZipInputStream
     //   1	334	5	localObject1	Object
     //   4	249	6	localObject2	Object
     //   35	216	7	localArrayList	java.util.ArrayList
@@ -540,7 +540,7 @@ public class FileUtils
     //   40: sipush 8192
     //   43: newarray byte
     //   45: astore 6
-    //   47: new 49	java/util/zip/ZipInputStream
+    //   47: new 49	com/tencent/commonsdk/zip/QZipInputStream
     //   50: dup
     //   51: new 165	java/io/BufferedInputStream
     //   54: dup
@@ -549,12 +549,12 @@ public class FileUtils
     //   59: aload_0
     //   60: invokespecial 54	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   63: invokespecial 166	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   66: invokespecial 57	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   66: invokespecial 57	com/tencent/commonsdk/zip/QZipInputStream:<init>	(Ljava/io/InputStream;)V
     //   69: astore_3
     //   70: aload 5
     //   72: astore_0
     //   73: aload_3
-    //   74: invokevirtual 61	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   74: invokevirtual 61	com/tencent/commonsdk/zip/QZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
     //   77: astore 4
     //   79: aload 4
     //   81: ifnull +143 -> 224
@@ -610,7 +610,7 @@ public class FileUtils
     //   183: iconst_0
     //   184: aload 6
     //   186: arraylength
-    //   187: invokevirtual 110	java/util/zip/ZipInputStream:read	([BII)I
+    //   187: invokevirtual 110	com/tencent/commonsdk/zip/QZipInputStream:read	([BII)I
     //   190: istore_2
     //   191: iconst_m1
     //   192: iload_2
@@ -629,9 +629,9 @@ public class FileUtils
     //   220: astore_0
     //   221: goto -148 -> 73
     //   224: aload_3
-    //   225: invokevirtual 123	java/util/zip/ZipInputStream:closeEntry	()V
+    //   225: invokevirtual 123	com/tencent/commonsdk/zip/QZipInputStream:closeEntry	()V
     //   228: aload_3
-    //   229: invokevirtual 124	java/util/zip/ZipInputStream:close	()V
+    //   229: invokevirtual 124	com/tencent/commonsdk/zip/QZipInputStream:close	()V
     //   232: aload_0
     //   233: invokestatic 94	cooperation/qzone/util/DataUtils:a	(Ljava/lang/Object;)Z
     //   236: pop
@@ -678,7 +678,7 @@ public class FileUtils
     //   0	294	0	paramFile1	File
     //   0	294	1	paramFile2	File
     //   190	12	2	i	int
-    //   69	221	3	localZipInputStream	java.util.zip.ZipInputStream
+    //   69	221	3	localQZipInputStream	com.tencent.commonsdk.zip.QZipInputStream
     //   1	286	4	localObject	Object
     //   4	143	5	str	String
     //   45	154	6	arrayOfByte	byte[]

@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
 
-public final class kgp
-  implements Runnable
+public class kgp
+  implements MenuItem.OnMenuItemClickListener
 {
-  public kgp(String paramString1, String paramString2, String paramString3) {}
+  public kgp(AVRedBagMgr.TestFlag paramTestFlag) {}
   
-  public void run()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    FileUtils.a(this.a + File.separator, this.b, this.c);
-    if (QLog.isColorLevel())
+    paramMenuItem = this.a;
+    if (!this.a.b) {}
+    for (boolean bool = true;; bool = false)
     {
-      QLog.i("ScoreManager", 2, "save Config to path :" + this.a);
-      QLog.i("ScoreManager", 2, "save Config to finish :" + this.c);
+      paramMenuItem.b = bool;
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgp
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.mobileqq.servlet;
 import NS_UNDEAL_COUNT.count_info;
 import NS_UNDEAL_COUNT.feed_host_info;
 import NS_UNDEAL_COUNT.single_count;
-import ahyb;
-import ahyc;
-import ahyd;
+import aics;
+import aict;
+import aicu;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -45,7 +45,7 @@ public class QZoneNotifyServlet
   public static long c;
   public static long d;
   public long a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ahyd(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aicu(this);
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   public long b = 5000L;
   
@@ -78,14 +78,14 @@ public class QZoneNotifyServlet
   public static void a()
   {
     if (jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener != null) {
-      QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new ahyc());
+      QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new aict());
     }
   }
   
   private static void b()
   {
     if ((jdField_a_of_type_Boolean) && (jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener == null)) {
-      jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new ahyb(3, true, true, 60000L, true, false, "QzReqInfo");
+      jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new aics(3, true, true, 60000L, true, false, "QzReqInfo");
     }
     try
     {

@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import com.tencent.mobileqq.surfaceviewaction.gl.GLTextureView;
 
 class aiqb
   implements Runnable
 {
-  aiqb(aiqa paramaiqa, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  aiqb(aiqa paramaiqa) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aiqa.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    this.a.a.setAlpha(1.0F);
   }
 }
 

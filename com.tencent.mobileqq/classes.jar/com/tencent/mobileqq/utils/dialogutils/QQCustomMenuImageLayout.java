@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
-import akgw;
+import akoj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.Layout;
@@ -88,7 +88,7 @@ public class QQCustomMenuImageLayout
   private ImageView a()
   {
     ImageView localImageView = new ImageView(getContext());
-    localImageView.setImageResource(2130838319);
+    localImageView.setImageResource(2130838324);
     localImageView.setContentDescription("向右翻页");
     localImageView.setBackgroundDrawable(null);
     localImageView.setOnClickListener(this);
@@ -112,24 +112,24 @@ public class QQCustomMenuImageLayout
   
   private TextView a(QQCustomMenuItem paramQQCustomMenuItem)
   {
-    akgw localakgw = new akgw(this, getContext());
-    localakgw.setText(paramQQCustomMenuItem.a());
-    localakgw.setTextSize(10.0F);
+    akoj localakoj = new akoj(this, getContext());
+    localakoj.setText(paramQQCustomMenuItem.a());
+    localakoj.setTextSize(10.0F);
     Resources localResources = getContext().getResources();
-    localakgw.setMinimumWidth(90);
-    localakgw.setMaxLines(1);
-    localakgw.setCompoundDrawablesWithIntrinsicBounds(null, getContext().getResources().getDrawable(paramQQCustomMenuItem.b()), null, null);
-    localakgw.setCompoundDrawablePadding(0);
+    localakoj.setMinimumWidth(90);
+    localakoj.setMaxLines(1);
+    localakoj.setCompoundDrawablesWithIntrinsicBounds(null, getContext().getResources().getDrawable(paramQQCustomMenuItem.b()), null, null);
+    localakoj.setCompoundDrawablePadding(0);
     int i = AIOUtils.a(9.0F, localResources);
-    localakgw.setPadding(0, i, 0, i);
-    localakgw.setContentDescription(paramQQCustomMenuItem.a());
-    localakgw.setId(paramQQCustomMenuItem.a());
-    localakgw.setTextColor(-855638017);
-    localakgw.setBackgroundDrawable(null);
-    localakgw.setIncludeFontPadding(true);
-    localakgw.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localakgw.setGravity(17);
-    return localakgw;
+    localakoj.setPadding(0, i, 0, i);
+    localakoj.setContentDescription(paramQQCustomMenuItem.a());
+    localakoj.setId(paramQQCustomMenuItem.a());
+    localakoj.setTextColor(-855638017);
+    localakoj.setBackgroundDrawable(null);
+    localakoj.setIncludeFontPadding(true);
+    localakoj.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    localakoj.setGravity(17);
+    return localakoj;
   }
   
   public void a()
@@ -216,7 +216,7 @@ public class QQCustomMenuImageLayout
     {
       removeAllViews();
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838314);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838319);
       this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("向左翻页");
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);

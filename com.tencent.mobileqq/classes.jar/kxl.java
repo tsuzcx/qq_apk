@@ -1,18 +1,30 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
-public class kxl
-  implements Runnable
+class kxl
+  implements TVK_SDKMgr.InstallListener
 {
-  public kxl(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  kxl(kxk paramkxk) {}
   
-  public void run()
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
-    QQToast.a(ReadInJoyNativeAdAppVideoView.a(this.a), 1, "视频加载失败，请稍后重试", 0).a();
-    ReadInJoyNativeAdAppVideoView.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    }
+    this.a.a.b = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
+    }
+    this.a.a.b = true;
+    ThreadManager.getUIHandler().post(new kxm(this));
   }
 }
 

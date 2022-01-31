@@ -3,6 +3,7 @@ package com.tencent.mobileqq.activity.aio.item;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.widget.BubbleImageView;
 import java.net.URL;
@@ -18,6 +19,15 @@ public class ShortVideoRealItemBuilder$ChatVideoView
     super(paramContext);
   }
   
+  protected void a()
+  {
+    super.a();
+    String str = Build.MODEL.toUpperCase();
+    if ((str.contains("PIXEL 2")) || (str.contains("M821"))) {
+      this.jdField_a_of_type_Int = 2;
+    }
+  }
+  
   public boolean a(String paramString)
   {
     return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
@@ -25,7 +35,7 @@ public class ShortVideoRealItemBuilder$ChatVideoView
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramURLDrawable == this.a)
+    if (paramURLDrawable == this.jdField_a_of_type_ComTencentImageURLDrawable)
     {
       setURLDrawable(paramURLDrawable);
       return;
@@ -36,7 +46,7 @@ public class ShortVideoRealItemBuilder$ChatVideoView
   @TargetApi(11)
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramURLDrawable == this.a) {
+    if (paramURLDrawable == this.jdField_a_of_type_ComTencentImageURLDrawable) {
       setURLDrawable(paramURLDrawable);
     }
     super.onLoadSuccessed(paramURLDrawable);
@@ -45,10 +55,10 @@ public class ShortVideoRealItemBuilder$ChatVideoView
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    if (this.a != null)
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
     {
-      this.a.setURLDrawableListener(null);
-      this.a = null;
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
+      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
     }
   }
   
@@ -62,11 +72,11 @@ public class ShortVideoRealItemBuilder$ChatVideoView
   
   public void setVideoDrawable(URLDrawable paramURLDrawable)
   {
-    if (this.a != null) {
-      this.a.setURLDrawableListener(null);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(null);
     }
     paramURLDrawable.setURLDrawableListener(this);
-    this.a = paramURLDrawable;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
     paramURLDrawable.startDownload();
   }
 }

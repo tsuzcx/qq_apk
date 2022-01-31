@@ -1,34 +1,43 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.dingdong.DingdongPluginHelper;
-import cooperation.dingdong.DingdongPluginProxyBroadcastReceiver;
-import mqq.app.AppRuntime;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-public final class amkt
-  extends AsyncTask
+public class amkt
 {
-  public amkt(Intent paramIntent, int paramInt) {}
+  public int a;
+  public Bitmap a;
+  public int b;
   
-  protected Boolean a(Void... paramVarArgs)
+  public amkt(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    return Boolean.valueOf(DingdongPluginHelper.a(BaseApplicationImpl.getApplication().getRuntime().getApplication()));
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    a(paramInt1, paramInt2);
   }
   
-  protected void a(Boolean paramBoolean)
+  public int a()
   {
-    if (paramBoolean.booleanValue())
-    {
-      paramBoolean = BaseApplicationImpl.getApplication().getRuntime();
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
-      localIntent.putExtra("_inner_cmd_", this.jdField_a_of_type_Int);
-      DingdongPluginProxyBroadcastReceiver.a(paramBoolean, localIntent);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      return 0;
     }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    this.jdField_a_of_type_Int = (paramInt1 - i / 2);
+    this.b = (paramInt2 - j / 2);
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.b, paramPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkt
  * JD-Core Version:    0.7.0.1
  */

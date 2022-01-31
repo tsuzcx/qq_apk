@@ -1,38 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.HotchatSCHelper;
-import com.tencent.mobileqq.app.HotchatSCMng;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloInfo;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class zfn
   implements Runnable
 {
-  public zfn(HotchatSCHelper paramHotchatSCHelper, long paramLong1, long paramLong2) {}
+  public zfn(ApolloPanel paramApolloPanel, ApolloLinearLayout.ViewHolder paramViewHolder) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_ComTencentMobileqqAppHotchatSCMng.a();
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long - Math.abs(l1 - this.b);
-    if (l2 < 0L) {
-      l1 = 100L;
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_AndroidWidgetImageView == null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, l1);
-      return;
-      l1 = l2;
-      if (l2 > this.jdField_a_of_type_Long) {
-        l1 = this.jdField_a_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanel", 2, "holder.apolloInfo == null");
       }
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a, this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.getResources().getDisplayMetrics().density));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zfn
  * JD-Core Version:    0.7.0.1
  */

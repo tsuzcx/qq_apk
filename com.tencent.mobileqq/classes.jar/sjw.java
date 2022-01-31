@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.utils.ContactUtils.OnGetTroopMemberNameCallback;
 
-public class sjw
-  implements DialogInterface.OnClickListener
+class sjw
+  implements ContactUtils.OnGetTroopMemberNameCallback
 {
-  public sjw(DialogActivity paramDialogActivity) {}
+  sjw(sjv paramsjv, TextView paramTextView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    this.a.finish();
+    this.jdField_a_of_type_Sjv.a.runOnUiThread(new sjx(this, paramString));
   }
 }
 

@@ -1,23 +1,23 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener;
+import com.tencent.widget.AbsListView;
 
 public class wyd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends AvatarPendantActivity.AnimationScrollListener
 {
-  public wyd(PhotoPreviewActivity paramPhotoPreviewActivity) {}
-  
-  public void onGlobalLayout()
+  public wyd(AvatarPendantActivity paramAvatarPendantActivity)
   {
-    this.a.n = this.a.a.getWidth();
-    this.a.o = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.n + ",mSurfaceViewHeight:" + this.a.o);
+    super(paramAvatarPendantActivity);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.e == AvatarPendantActivity.d) {}
+    while (Build.VERSION.SDK_INT < 14) {
+      return;
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.a.setVisibility(8);
+    this.a.b();
   }
 }
 

@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.DeleteFeedCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class afls
-  implements CsTask.OnCsError
+class afls
+  implements DialogInterface.OnClickListener
 {
-  public afls(NearbyMomentProtocol.DeleteFeedCallback paramDeleteFeedCallback, String paramString) {}
+  afls(aflo paramaflo, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$DeleteFeedCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$DeleteFeedCallback.a(false, this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_Aflo.a.a.c();
+    paramInt = ((Integer)NearbySPUtil.a(this.jdField_a_of_type_Aflo.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
+    ReportController.b(this.jdField_a_of_type_Aflo.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, NearbyUtils.a(this.jdField_a_of_type_Aflo.a.a.j), paramInt + "", "", "");
   }
 }
 

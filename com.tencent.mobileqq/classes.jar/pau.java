@@ -1,28 +1,20 @@
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class pau
-  extends AudioManager
+  extends FriendListObserver
 {
-  public pau(Context paramContext)
-  {
-    super(paramContext);
-  }
+  public pau(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public int requestAudioFocus(AudioManager.OnAudioFocusChangeListener paramOnAudioFocusChangeListener, int paramInt1, int paramInt2)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    try
-    {
-      paramInt1 = super.requestAudioFocus(paramOnAudioFocusChangeListener, paramInt1, paramInt2);
-      return paramInt1;
-    }
-    catch (NullPointerException paramOnAudioFocusChangeListener)
-    {
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "audio_manager_npe", 0, 1, 0, "", "", "", "");
-    }
-    return 0;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 30);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString });
+    localBundle.putSerializable("observer_type", Integer.valueOf(2));
+    this.a.a(3, localBundle);
   }
 }
 

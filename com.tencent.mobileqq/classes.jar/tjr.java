@@ -1,19 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.contacts.base.CardConfigManager;
 
 public class tjr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tjr(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  public tjr(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.runOnUiThread(new tjs(this));
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    CardConfigManager localCardConfigManager = new CardConfigManager(this.a.app);
+    PermisionPrivacyActivity.a(this.a, localCardConfigManager.a());
+    this.a.runOnUiThread(new tjs(this));
   }
 }
 

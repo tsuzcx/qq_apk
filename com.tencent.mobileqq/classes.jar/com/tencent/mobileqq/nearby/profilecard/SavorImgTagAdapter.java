@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import afjo;
+import afon;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -142,18 +142,18 @@ public class SavorImgTagAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int i = getItemViewType(paramInt);
-    afjo localafjo;
+    afon localafon;
     Object localObject;
     if (i == 0)
     {
       InterestTagInfo localInterestTagInfo = (InterestTagInfo)getItem(paramInt);
       if (paramView == null)
       {
-        paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970486, null);
-        localafjo = new afjo();
-        localafjo.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131363628));
-        localafjo.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363378));
-        paramViewGroup.setTag(localafjo);
+        paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970498, null);
+        localafon = new afon();
+        localafon.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131363647));
+        localafon.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363397));
+        paramViewGroup.setTag(localafon);
         paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(this.d, this.c));
       }
       for (;;)
@@ -162,23 +162,23 @@ public class SavorImgTagAdapter
         if (localInterestTagInfo != null)
         {
           localObject = paramViewGroup;
-          if (localafjo != null)
+          if (localafon != null)
           {
             paramView = localInterestTagInfo.tagIconUrl;
             if ((paramView == null) || (!paramView.equals("icon_more_url"))) {
               break;
             }
-            localafjo.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839504);
+            localafon.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839519);
             if ((localInterestTagInfo.tagType == 10) || (localInterestTagInfo.tagType == 11) || (localInterestTagInfo.tagType == 9)) {
-              localafjo.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839505);
+              localafon.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130839520);
             }
-            localafjo.jdField_a_of_type_AndroidWidgetTextView.setText(localInterestTagInfo.tagName);
+            localafon.jdField_a_of_type_AndroidWidgetTextView.setText(localInterestTagInfo.tagName);
             localObject = paramViewGroup;
           }
         }
         label203:
         return localObject;
-        localafjo = (afjo)paramView.getTag();
+        localafon = (afon)paramView.getTag();
         paramViewGroup = paramView;
       }
     }
@@ -220,7 +220,7 @@ public class SavorImgTagAdapter
           {
             ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = null;
             ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = null;
-            localURLImageView = localafjo.jdField_a_of_type_ComTencentImageURLImageView;
+            localURLImageView = localafon.jdField_a_of_type_ComTencentImageURLImageView;
             localObject = paramView;
             if (paramView == null) {
               localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;

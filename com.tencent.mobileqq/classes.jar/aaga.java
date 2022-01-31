@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
+import com.tencent.mobileqq.arcard.ARcardSound;
 
-public class aaga
+class aaga
   implements Runnable
 {
-  public aaga(AREngine paramAREngine) {}
+  aaga(aafz paramaafz) {}
   
   public void run()
   {
-    AREngine.b(this.a);
+    if (ARWorldCupGlobalSceneRenderable.a(this.a.a) != null) {
+      ARWorldCupGlobalSceneRenderable.a(this.a.a).a(ARWorldCupGlobalSceneRenderable.a(this.a.a).a() + "/res/worldcup/football.mp3", false);
+    }
   }
 }
 

@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.emoticon.EmotionPanelPayBackListener;
-import com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class acfr
-  extends EmotionPanelPayBackListener
+public final class acfr
+  implements Runnable
 {
-  public acfr(EmotionNeedDownloadAdapter paramEmotionNeedDownloadAdapter) {}
+  public acfr(int paramInt, String paramString, boolean paramBoolean, long paramLong) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.a.a(paramInt);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, "actEnterHotChatAIO", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, localHashMap, "");
+    if (QLog.isDevelopLevel()) {
+      NearbyUtils.a("NearbyTransitActivity", "reportResult", new Object[] { "end of report" });
+    }
   }
 }
 

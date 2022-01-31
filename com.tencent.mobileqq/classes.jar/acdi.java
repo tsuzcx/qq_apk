@@ -1,53 +1,35 @@
-import com.tencent.mobileqq.app.EmoticonObserver;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.emoticon.SogouEmojiTaskController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class acdi
-  extends EmoticonObserver
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public acdi(SogouEmoji paramSogouEmoji) {}
+  public acdi(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime, String paramString) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func onEmosmBack begins, isSuccess:" + paramBoolean + ",type:" + paramInt);
+    if (paramInt == 2131364992) {
+      DBFixConfigActivity.a = 1;
     }
-    if ((!paramBoolean) || (paramObject == null) || (paramInt != 3)) {}
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramObject = (EmoticonResp)paramObject;
-          } while (paramObject.data == null);
-          paramObject = (ArrayList)paramObject.data;
-        } while (paramObject.size() == 0);
-        paramBoolean = this.a.a.a(this.a.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiKeyBack begins, isTaskExist:" + paramBoolean);
-        }
-        if (paramBoolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, task CANCELLED by user.");
+      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().putInt(this.jdField_a_of_type_JavaLangString + DBFixManager.c, DBFixConfigActivity.a).commit();
       return;
-      this.a.a((Emoticon)paramObject.get(0));
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, Ready to send.");
+      if (paramInt == 2131364993) {
+        DBFixConfigActivity.a = 2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdi
  * JD-Core Version:    0.7.0.1
  */

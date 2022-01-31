@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
 
 public class xwf
   implements Runnable
 {
-  public xwf(RDBaseDataManager paramRDBaseDataManager, xvw paramxvw, long paramLong1, long paramLong2) {}
+  public xwf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesRDBaseDataManager.c(this.jdField_a_of_type_Xvw.a, (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b));
+    this.a.a.notifyDataSetChanged();
   }
 }
 

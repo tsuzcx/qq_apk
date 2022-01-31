@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.view.animation.Interpolator;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class ump
-  implements Runnable
+  implements Interpolator
 {
-  public ump(PokePanel paramPokePanel, String paramString, ArrayList paramArrayList) {}
+  public ump(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public float getInterpolation(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]start parsing config");
+    if (paramFloat <= 0.3333333F) {
+      return 0.0F;
     }
-    PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel, this.jdField_a_of_type_JavaLangString);
-    PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel, this.jdField_a_of_type_JavaUtilArrayList);
-    ArrayList localArrayList = PokeItemHelper.a(PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel), this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      ThreadManager.getUIHandler().post(new umq(this));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.PokePanel", 2, "[pokepanel] parsing config end");
-    }
+    return (paramFloat - 0.3333333F) * 1.5F;
   }
 }
 

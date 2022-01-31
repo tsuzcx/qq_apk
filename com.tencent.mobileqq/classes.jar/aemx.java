@@ -1,25 +1,33 @@
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 
-public class aemx
-  extends NearbyProxyObserver
+class aemx
+  implements Runnable
 {
-  public aemx(NearbyProxy paramNearbyProxy, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
+  aemx(aemw paramaemw, String paramString) {}
   
-  protected void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      NearbyUtils.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
+    if (this.jdField_a_of_type_Aemw.jdField_a_of_type_Int == 1)
+    {
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        break label48;
+      }
+      this.jdField_a_of_type_Aemw.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(8);
     }
-    NearbyProxy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
+    for (;;)
+    {
+      this.jdField_a_of_type_Aemw.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      return;
+      label48:
+      this.jdField_a_of_type_Aemw.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemx
  * JD-Core Version:    0.7.0.1
  */

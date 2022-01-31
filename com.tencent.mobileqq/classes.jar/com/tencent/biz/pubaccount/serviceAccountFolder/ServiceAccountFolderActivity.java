@@ -34,9 +34,9 @@ import com.tencent.widget.SwipListView;
 import com.tencent.widget.SwipListView.RightIconMenuListener;
 import java.util.List;
 import mqq.os.MqqHandler;
-import mrn;
-import mro;
-import mrp;
+import mvh;
+import mvi;
+import mvj;
 
 public class ServiceAccountFolderActivity
   extends IphoneTitleBarActivity
@@ -58,16 +58,16 @@ public class ServiceAccountFolderActivity
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364118);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363381));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363245));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)super.findViewById(2131364184));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364143);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363400));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363262));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)super.findViewById(2131364209));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131430031);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131430033);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)super.findViewById(2131363116));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)super.findViewById(2131363120));
   }
   
   private void b()
@@ -81,8 +81,8 @@ public class ServiceAccountFolderActivity
   {
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setContentBackground(getResources().getDrawable(2130838215), false);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2130838215);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setContentBackground(getResources().getDrawable(2130838220), false);
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2130838220);
     this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter = new ServiceAccountFolderFeedAdapter(this.app, this, this.jdField_a_of_type_ComTencentWidgetSwipListView);
     this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
     this.jdField_a_of_type_JavaUtilList = ServiceAccountFolderManager.a().a();
@@ -119,15 +119,15 @@ public class ServiceAccountFolderActivity
   
   private void d()
   {
-    View localView = super.findViewById(2131363244);
+    View localView = super.findViewById(2131363261);
     if (localView != null) {
       IphoneTitleBarActivity.setLayerType(localView);
     }
-    localView = super.findViewById(2131362594);
+    localView = super.findViewById(2131362599);
     if (localView != null) {
       IphoneTitleBarActivity.setLayerType(localView);
     }
-    localView = super.findViewById(2131363245);
+    localView = super.findViewById(2131363262);
     if (localView != null) {
       IphoneTitleBarActivity.setLayerType(localView);
     }
@@ -142,7 +142,7 @@ public class ServiceAccountFolderActivity
       if (i > 0) {
         break label75;
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131433297);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131433311);
     }
     for (;;)
     {
@@ -152,9 +152,9 @@ public class ServiceAccountFolderActivity
       return;
       label75:
       if (i > 99) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s(%d+)", new Object[] { getString(2131433297), Integer.valueOf(99) }));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s(%d+)", new Object[] { getString(2131433311), Integer.valueOf(99) }));
       } else {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s(%d)", new Object[] { getString(2131433297), Integer.valueOf(i) }));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s(%d)", new Object[] { getString(2131433311), Integer.valueOf(i) }));
       }
     }
   }
@@ -171,7 +171,7 @@ public class ServiceAccountFolderActivity
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
       if (ThemeUtil.isInNightMode(this.app))
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838215);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838220);
         if (this.jdField_b_of_type_AndroidViewView == null)
         {
           this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
@@ -208,7 +208,7 @@ public class ServiceAccountFolderActivity
     ServiceAccountFolderFeed localServiceAccountFolderFeed;
     long l;
     QQAppInterface localQQAppInterface;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (paramDragFrameLayout.a() != null) && (paramDragFrameLayout.a().getId() == 2131363207))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (paramDragFrameLayout.a() != null) && (paramDragFrameLayout.a().getId() == 2131363211))
     {
       paramInt = ((Integer)paramDragFrameLayout.a().getTag()).intValue();
       localServiceAccountFolderFeed = (ServiceAccountFolderFeed)this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter.getItem(paramInt);
@@ -247,7 +247,7 @@ public class ServiceAccountFolderActivity
         break label80;
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new mrp(this), 5000L);
+      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new mvj(this), 5000L);
     }
     for (;;)
     {
@@ -265,7 +265,7 @@ public class ServiceAccountFolderActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969237);
+    super.setContentView(2130969235);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("from_source");
     this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
     a();
@@ -308,7 +308,7 @@ public class ServiceAccountFolderActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    ThreadManager.executeOnSubThread(new mro(this, ServiceAccountFolderManager.a()));
+    ThreadManager.executeOnSubThread(new mvi(this, ServiceAccountFolderManager.a()));
     PublicTracker.a("SERVICE_FOLDER_COST", null);
   }
   
@@ -317,7 +317,7 @@ public class ServiceAccountFolderActivity
     if (paramMessage.what == 100)
     {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(100);
-      ThreadManager.executeOnSubThread(new mrn(this));
+      ThreadManager.executeOnSubThread(new mvh(this));
     }
     do
     {

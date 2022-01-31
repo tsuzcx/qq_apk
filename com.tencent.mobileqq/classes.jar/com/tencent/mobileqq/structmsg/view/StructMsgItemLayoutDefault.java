@@ -68,7 +68,7 @@ public class StructMsgItemLayoutDefault
         int n;
         if (!TextUtils.isEmpty(this.c))
         {
-          ((LinearLayout)localObject1).setBackgroundResource(2130837917);
+          ((LinearLayout)localObject1).setBackgroundResource(2130837916);
           n = AIOUtils.a(1.0F, localResources);
           paramView = (LinearLayout.LayoutParams)((LinearLayout)localObject1).getLayoutParams();
           paramView.leftMargin = n;

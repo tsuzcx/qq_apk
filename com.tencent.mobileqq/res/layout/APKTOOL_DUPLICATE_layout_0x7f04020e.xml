@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ac"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="#ffb1b1b1" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d6" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d8" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d6" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04d8" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d32" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02078c" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="10.0dip" />
-        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d33" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="这里是提示啊啊啊啊" />
-    </LinearLayout>
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d45" android:text="充值数量" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ad" />
+    <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d46" android:hint="请输入充值数量" android:digits="0123456789\n" android:inputType="number" style="@style/APKTOOL_DUPLICATE_style_0x7f0e009b" />
+    <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d47" style="@style/midas_input_cell_button_clear" />
 </LinearLayout>

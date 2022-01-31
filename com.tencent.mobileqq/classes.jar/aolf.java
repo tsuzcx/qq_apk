@@ -1,24 +1,27 @@
 import android.graphics.Bitmap;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity;
+import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
+import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-class aolf
-  implements WXShareHelper.WXShareListener
+public class aolf
+  implements Runnable
 {
-  aolf(aold paramaold, Bitmap paramBitmap) {}
+  public aolf(VideoFrameLoader paramVideoFrameLoader, int paramInt, Bitmap paramBitmap) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    if ((this.jdField_a_of_type_Int != VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).size()) && (QLog.isColorLevel())) {
+      QLog.d("VideoFrameLoader", 2, "onloadframe index error!");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "[DanceMachine Share]  shareToWechat errorCode : " + paramBaseResp.errCode + "   errorStr : " + paramBaseResp.errCode + "  transaction : " + paramBaseResp.transaction + "  openId : " + paramBaseResp.openId + " type : " + paramBaseResp.getType());
+    VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).add(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = null;
+    if (VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader) != null) {
+      localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).get();
     }
-    if ((paramBaseResp.errCode != 0) && (paramBaseResp.errCode != -2)) {
-      this.jdField_a_of_type_Aold.a.runOnUiThread(new aolg(this));
+    if (localVideoFrameLoaderListener != null) {
+      localVideoFrameLoaderListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
   }
 }

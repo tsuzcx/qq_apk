@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amtd;
+import anao;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -40,8 +40,8 @@ public class QzoneTranslucentBrowserFragment
       localLayoutParams.rightMargin = a(15.0F);
       localLayoutParams.addRule(11);
       paramRelativeLayout.addView(localImageView, localLayoutParams);
-      localImageView.setImageDrawable(getResources().getDrawable(2130844975));
-      localImageView.setOnClickListener(new amtd(this));
+      localImageView.setImageDrawable(getResources().getDrawable(2130845050));
+      localImageView.setOnClickListener(new anao(this));
     }
   }
   

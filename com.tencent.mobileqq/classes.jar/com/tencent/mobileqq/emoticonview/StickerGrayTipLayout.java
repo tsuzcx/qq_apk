@@ -325,7 +325,7 @@ public class StickerGrayTipLayout
     while (i >= 0)
     {
       localObject = getChildAt(i);
-      if (((View)localObject).getId() == 2131363789) {
+      if (((View)localObject).getId() == 2131363813) {
         this.jdField_a_of_type_Int = ((View)localObject).getLeft();
       }
       i -= 1;

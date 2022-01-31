@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.data.EmoticonTab;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
-public class aehw
+class aehw
   implements Runnable
 {
-  public aehw(EmoticonManager paramEmoticonManager, String paramString) {}
+  aehw(aehv paramaehv, Bitmap paramBitmap) {}
   
   public void run()
   {
-    EmoticonTab localEmoticonTab = (EmoticonTab)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a(EmoticonTab.class, this.jdField_a_of_type_JavaLangString);
-    if (localEmoticonTab != null) {}
-    for (localEmoticonTab.aioHave = true;; localEmoticonTab.aioHave = true)
-    {
-      EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localEmoticonTab);
-      return;
-      localEmoticonTab = new EmoticonTab();
-      localEmoticonTab.epId = this.jdField_a_of_type_JavaLangString;
-    }
+    this.jdField_a_of_type_Aehv.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

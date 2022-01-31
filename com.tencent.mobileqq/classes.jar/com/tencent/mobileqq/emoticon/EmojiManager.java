@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emoticon;
 
-import accw;
-import accx;
-import accy;
-import accz;
-import acda;
-import acdb;
+import ackx;
+import acky;
+import ackz;
+import acla;
+import aclb;
+import aclc;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -78,7 +78,7 @@ public class EmojiManager
   public HashMap a;
   Map jdField_a_of_type_JavaUtilMap = new HashMap();
   public ConcurrentHashMap a;
-  DownloadListener jdField_b_of_type_ComTencentMobileqqVipDownloadListener = new accx(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+  DownloadListener jdField_b_of_type_ComTencentMobileqqVipDownloadListener = new acky(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
   public boolean b;
   public DownloadListener c;
   public boolean c;
@@ -98,8 +98,8 @@ public class EmojiManager
     this.jdField_a_of_type_JavaLangString = EmojiManager.class.getSimpleName();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new accw(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
-    this.jdField_c_of_type_ComTencentMobileqqVipDownloadListener = new accy(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ackx(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
+    this.jdField_c_of_type_ComTencentMobileqqVipDownloadListener = new ackz(this, "param_WIFIEmojiStoreDownloadFlow", "param_XGEmojiStoreDownloadFlow");
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager = ((PngFrameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(82));
     jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager = EmojiListenerManager.a();
@@ -136,12 +136,12 @@ public class EmojiManager
     //   50: dup
     //   51: invokespecial 42	java/lang/Object:<init>	()V
     //   54: astore_2
-    //   55: new 135	acdc
+    //   55: new 135	acld
     //   58: dup
     //   59: aload_0
     //   60: aload_3
     //   61: aload_2
-    //   62: invokespecial 138	acdc:<init>	(Lcom/tencent/mobileqq/emoticon/EmojiManager;Ljava/lang/String;Ljava/lang/Object;)V
+    //   62: invokespecial 138	acld:<init>	(Lcom/tencent/mobileqq/emoticon/EmojiManager;Ljava/lang/String;Ljava/lang/Object;)V
     //   65: astore 5
     //   67: invokestatic 112	com/tencent/mobileqq/emoticon/EmojiListenerManager:a	()Lcom/tencent/mobileqq/emoticon/EmojiListenerManager;
     //   70: aload 5
@@ -541,7 +541,7 @@ public class EmojiManager
         continue;
         paramFile = EmotionJsonUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, jdField_b_of_type_Int, arrayOfByte, localArrayList, localReqInfo);
         continue;
-        if ((!TextUtils.isEmpty(paramEmoticonPackage.minQQVersion)) && (!IndividuationConfigInfo.a(paramEmoticonPackage.minQQVersion, "7.6.3")))
+        if ((!TextUtils.isEmpty(paramEmoticonPackage.minQQVersion)) && (!IndividuationConfigInfo.a(paramEmoticonPackage.minQQVersion, "7.6.8")))
         {
           QLog.e(this.jdField_a_of_type_JavaLangString, 1, "unavailable in current version, min version=" + paramEmoticonPackage.minQQVersion);
           return 11011;
@@ -623,7 +623,7 @@ public class EmojiManager
       localBundle.putInt("sceneType", j);
       return localBundle;
     }
-    paramBundle = a().b(str, -1);
+    paramBundle = a().c(str, -1);
     if ((paramBundle != null) && (paramBundle.status != 0))
     {
       switch (paramBundle.status)
@@ -710,7 +710,7 @@ public class EmojiManager
   Bundle a(String paramString, int paramInt1, int paramInt2)
   {
     int i = 0;
-    Object localObject = a().b(paramString, paramInt2);
+    Object localObject = a().c(paramString, paramInt2);
     paramInt2 = i;
     if (localObject != null)
     {
@@ -1245,7 +1245,7 @@ public class EmojiManager
     {
       paramEmoticonPackage.valid = true;
       a().a(paramEmoticonPackage);
-      localObject = new File(AppConstants.br);
+      localObject = new File(AppConstants.bs);
       if (!((File)localObject).exists())
       {
         boolean bool = ((File)localObject).mkdirs();
@@ -1253,7 +1253,7 @@ public class EmojiManager
           QLog.d(this.jdField_a_of_type_JavaLangString, 2, "mkdirs success:" + bool);
         }
       }
-      ThreadManager.post(new acda(this, paramEmoticonPackage, paramBoolean1, paramBoolean2, paramInt), 5, null, true);
+      ThreadManager.post(new aclb(this, paramEmoticonPackage, paramBoolean1, paramBoolean2, paramInt), 5, null, true);
       return;
       label419:
       paramEmoticonPackage.status = 0;
@@ -1481,7 +1481,7 @@ public class EmojiManager
     //   515: new 154	java/lang/StringBuilder
     //   518: dup
     //   519: invokespecial 155	java/lang/StringBuilder:<init>	()V
-    //   522: getstatic 946	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
+    //   522: getstatic 946	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
     //   525: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   528: ldc_w 948
     //   531: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1603,7 +1603,7 @@ public class EmojiManager
     if ((paramString == null) || (paramString.length() == 0)) {
       return;
     }
-    ThreadManager.post(new accz(this, paramBoolean, paramString, paramInt2, paramInt1, paramBundle), 5, null, true);
+    ThreadManager.post(new acla(this, paramBoolean, paramString, paramInt2, paramInt1, paramBundle), 5, null, true);
   }
   
   public void a(String paramString1, String arg2)
@@ -1662,7 +1662,7 @@ public class EmojiManager
     }
     paramString = new Object();
     EmoticonHandler localEmoticonHandler = (EmoticonHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12);
-    localEmoticonHandler.a(new acdb(this, localEmoticonHandler, paramReqInfo, paramString));
+    localEmoticonHandler.a(new aclc(this, localEmoticonHandler, paramReqInfo, paramString));
     int j = this.e;
     this.e = (j + 1);
     String str = Integer.toString(j);
@@ -1923,7 +1923,7 @@ public class EmojiManager
                 QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onProgress download encrypt exception, url=" + ((DownloadTask)localObject1).c);
               }
               if ((Utils.a()) && (Utils.b() > 1048576L)) {
-                FileUtils.a(AppConstants.aJ + "err" + File.separator + String.valueOf(paramEmoticon.epId) + "_" + paramEmoticon.encryptKey + "_" + localThrowable.getName(), (byte[])localObject2, false);
+                FileUtils.a(AppConstants.aK + "err" + File.separator + String.valueOf(paramEmoticon.epId) + "_" + paramEmoticon.encryptKey + "_" + localThrowable.getName(), (byte[])localObject2, false);
               }
               QLog.e(this.jdField_a_of_type_JavaLangString, 1, "task gif save fail :epid = " + paramEmoticon.epId + ";eid = " + paramEmoticon.eId + ";emosmCode = " + i);
               VasReportUtils.a("emotionType", "emotionActionAIO", "7", paramEmoticon.epId, paramEmoticon.eId, "", i + "", "", "", "");
@@ -2342,7 +2342,7 @@ public class EmojiManager
         ((EmoticonHandler)localObject).a(paramEmoticonPackage.childEpId, 0);
       }
     }
-    EmoticonPackage localEmoticonPackage = a().b(paramEmoticonPackage.childEpId, 0);
+    EmoticonPackage localEmoticonPackage = a().c(paramEmoticonPackage.childEpId, 0);
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "handleEmotionPackage| old childEp = " + localEmoticonPackage);
     }
@@ -2500,11 +2500,11 @@ public class EmojiManager
     //   127: dup
     //   128: invokespecial 42	java/lang/Object:<init>	()V
     //   131: astore_3
-    //   132: new 1317	acdd
+    //   132: new 1317	acle
     //   135: dup
     //   136: aload_0
     //   137: aload_3
-    //   138: invokespecial 1320	acdd:<init>	(Lcom/tencent/mobileqq/emoticon/EmojiManager;Ljava/lang/Object;)V
+    //   138: invokespecial 1320	acle:<init>	(Lcom/tencent/mobileqq/emoticon/EmojiManager;Ljava/lang/Object;)V
     //   141: astore 4
     //   143: aload_0
     //   144: getfield 44	com/tencent/mobileqq/emoticon/EmojiManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;

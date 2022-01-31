@@ -464,7 +464,7 @@ public class GroupPttDownloadProcessor
         break;
       }
       localObject1 = (TransferRequest.PttDownExtraInfo)this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_JavaLangObject;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80059B3", "0X80059B3", PttInfoCollector.a(((TransferRequest.PttDownExtraInfo)localObject1).jdField_a_of_type_Int, ((TransferRequest.PttDownExtraInfo)localObject1).jdField_b_of_type_Int), 0, "", "", "", "7.6.3");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80059B3", "0X80059B3", PttInfoCollector.a(((TransferRequest.PttDownExtraInfo)localObject1).jdField_a_of_type_Int, ((TransferRequest.PttDownExtraInfo)localObject1).jdField_b_of_type_Int), 0, "", "", "", "7.6.8");
       break;
       if (!this.jdField_j_of_type_JavaLangString.equals("H_400_-5103017")) {
         break label569;
@@ -475,7 +475,7 @@ public class GroupPttDownloadProcessor
     }
   }
   
-  public void ap_()
+  public void ar_()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.extFlag == -1L) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.extFlag = 0L;
@@ -485,7 +485,7 @@ public class GroupPttDownloadProcessor
       localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
       ((MessageForPtt)localObject).extFlag |= 1L;
     }
-    super.ap_();
+    super.ar_();
     d(2001);
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int == 1) {}
@@ -695,8 +695,10 @@ public class GroupPttDownloadProcessor
   {
     this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
     String str;
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() == 0) && (this.jdField_b_of_type_JavaLangString != null)) {
+    if ((this.jdField_a_of_type_JavaUtilArrayList.size() == 0) && (this.jdField_b_of_type_JavaLangString != null))
+    {
       str = this.jdField_b_of_type_JavaLangString;
+      QLog.e("BaseTransProcessor", 1, "recieveFile : download by domain , mDownDomain = " + this.jdField_b_of_type_JavaLangString);
     }
     for (;;)
     {
@@ -729,7 +731,7 @@ public class GroupPttDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPttDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

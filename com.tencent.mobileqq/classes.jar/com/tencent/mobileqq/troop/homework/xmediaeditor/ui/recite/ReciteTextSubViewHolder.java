@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
-import ajls;
-import ajlt;
+import ajte;
+import ajtf;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -24,23 +24,23 @@ public class ReciteTextSubViewHolder
   public ReciteTextSubViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368466));
-    this.b = ((ImageView)paramView.findViewById(2131363215));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368468));
+    this.b = ((ImageView)paramView.findViewById(2131363219));
   }
   
-  public void a(View paramView, HWReciteItem paramHWReciteItem, ajls paramajls)
+  public void a(View paramView, HWReciteItem paramHWReciteItem, ajte paramajte)
   {
     boolean bool2 = false;
     switch (paramView.getId())
     {
     default: 
       return;
-    case 2131368466: 
+    case 2131368468: 
       paramHWReciteItem = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
       if ((paramHWReciteItem != null) && (paramHWReciteItem.isActive())) {
         paramHWReciteItem.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
       }
-      paramHWReciteItem = (HWReciteInfo)paramajls.a;
+      paramHWReciteItem = (HWReciteInfo)paramajte.a;
       boolean bool1 = bool2;
       if (paramHWReciteItem.a != null)
       {
@@ -50,7 +50,7 @@ public class ReciteTextSubViewHolder
         }
       }
       paramView = ActionSheet.d(paramView.getContext());
-      paramView.a(new ajlt(this, paramView, bool1, paramHWReciteItem));
+      paramView.a(new ajtf(this, paramView, bool1, paramHWReciteItem));
       if (bool1) {
         paramView.c("更换段落");
       }
@@ -59,10 +59,10 @@ public class ReciteTextSubViewHolder
       paramView.show();
       return;
     }
-    paramHWReciteItem.a().a(paramajls);
+    paramHWReciteItem.a().a(paramajte);
   }
   
-  public void a(HWReciteItem paramHWReciteItem, ajls paramajls, HWReciteInfo paramHWReciteInfo, int paramInt)
+  public void a(HWReciteItem paramHWReciteItem, ajte paramajte, HWReciteInfo paramHWReciteInfo, int paramInt)
   {
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     if (TextUtils.isEmpty(paramHWReciteInfo.c))
@@ -76,8 +76,8 @@ public class ReciteTextSubViewHolder
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramHWReciteInfo.c);
     if (paramInt != 1)
     {
-      paramHWReciteItem.b(this.jdField_a_of_type_AndroidWidgetTextView, paramajls);
-      paramHWReciteItem.b(this.b, paramajls);
+      paramHWReciteItem.b(this.jdField_a_of_type_AndroidWidgetTextView, paramajte);
+      paramHWReciteItem.b(this.b, paramajte);
       this.b.setVisibility(0);
       return;
     }
@@ -86,7 +86,7 @@ public class ReciteTextSubViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.ReciteTextSubViewHolder
  * JD-Core Version:    0.7.0.1
  */

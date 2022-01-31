@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class wvw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public wvw(AlbumListAdapter paramAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo) {}
+  public wvw(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.c(this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
+    this.a.b.dismiss();
   }
 }
 

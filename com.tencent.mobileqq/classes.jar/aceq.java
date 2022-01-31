@@ -1,65 +1,60 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack.Stub;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.mobileqq.utils.CustomHandler;
+import com.tencent.mobileqq.utils.DESUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class aceq
-  implements Runnable
+  extends IAIOImageProviderCallBack.Stub
 {
-  public aceq(EmoticonMainPanel paramEmoticonMainPanel, int paramInt, long paramLong, HashMap paramHashMap) {}
+  public aceq(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
   
-  public void run()
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
   {
-    String str;
-    SharedPreferences localSharedPreferences;
-    int i;
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      str = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_AndroidContentContext != null) && (str != null))
-      {
-        localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_AndroidContentContext.getSharedPreferences("emoticon_panel_" + str, 0);
-        long l = localSharedPreferences.getLong("sp_key_emoticon_panel_last_report_time", 0L);
-        i = localSharedPreferences.getInt("sp_key_emoticon_panel_report_count", 0);
-        if (System.currentTimeMillis() - l <= 86400000L) {
-          break label269;
-        }
-        localObject = localSharedPreferences.edit();
-        ((SharedPreferences.Editor)localObject).putLong("sp_key_emoticon_panel_last_report_time", System.currentTimeMillis());
-        ((SharedPreferences.Editor)localObject).putInt("sp_key_emoticon_panel_report_count", 0);
-        ((SharedPreferences.Editor)localObject).apply();
-        i = 0;
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.hotchat", 4, "notifyImageProgress progress:" + paramInt3);
     }
-    label269:
-    for (;;)
-    {
-      if (i < 10)
-      {
-        localObject = "report_AIOEmoticonPanel_OpenFirstTimeInProcess";
-        switch (this.jdField_a_of_type_Int)
-        {
-        }
-      }
-      for (;;)
-      {
-        StatisticCollector.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_AndroidContentContext).a(str, (String)localObject, true, this.jdField_a_of_type_Long, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-        localObject = localSharedPreferences.edit();
-        ((SharedPreferences.Editor)localObject).putInt("sp_key_emoticon_panel_report_count", i + 1);
-        ((SharedPreferences.Editor)localObject).apply();
-        return;
-        localObject = "report_AIOEmoticonPanel_OpenFirstTimeInProcess";
-        continue;
-        localObject = "report_AIOEmoticonPanel_OpenFirstTimeInAIO";
-        continue;
-        localObject = "report_AIOEmoticonPanel_ReopenInAIO";
-      }
+    if ((HotChatFlashPicActivity.a(this.a).g == paramLong1) && (HotChatFlashPicActivity.a(this.a).f == paramInt1)) {
+      HotChatFlashPicActivity.a(this.a, paramInt3 / 100);
     }
   }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.hotchat", 4, "notifyImageResult type:" + paramInt2 + ",resultStr:" + paramString + ",result:" + paramInt3 + ",isPart:" + paramBoolean);
+    }
+    if ((HotChatFlashPicActivity.a(this.a).g == paramLong) && (HotChatFlashPicActivity.a(this.a).f == paramInt1) && (paramInt2 == 2))
+    {
+      HotChatFlashPicActivity.a(this.a, false);
+      if (paramInt3 != 1) {
+        break label228;
+      }
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_JavaLangString = paramString;
+      HotChatFlashPicActivity.a(this.a).d = paramBoolean;
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = false;
+      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.a(this.a));
+      if ((HotChatFlashPicActivity.b(this.a) == null) || (HotChatFlashPicActivity.b(this.a).equals("I:E"))) {
+        break label242;
+      }
+      DESUtil.b(HotChatFlashPicActivity.b(this.a), HotChatFlashPicActivity.c(this.a));
+      HotChatFlashPicActivity.b(this.a, true);
+      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.b(this.a));
+    }
+    label228:
+    label242:
+    while (HotChatFlashPicActivity.b(this.a) == null)
+    {
+      return;
+      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = true;
+      break;
+    }
+    HotChatFlashPicActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
 }
 
 

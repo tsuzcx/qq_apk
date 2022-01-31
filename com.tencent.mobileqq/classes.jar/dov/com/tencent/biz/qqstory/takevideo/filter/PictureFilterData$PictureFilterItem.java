@@ -50,7 +50,7 @@ public class PictureFilterData$PictureFilterItem
         {
           float f = TakeVideoUtils.a(this.a.getResources()) / ((PictureFilterConfig.PictureContent)localObject).d;
           paramPictureFilterData = new File(paramPictureFilterData.c, ((PictureFilterConfig.PictureContent)localObject).jdField_a_of_type_JavaLangString);
-          ImageLoader.a().a(this.a, paramPictureFilterData.toURI().toString(), (int)(((PictureFilterConfig.PictureContent)localObject).b * f), (int)(((PictureFilterConfig.PictureContent)localObject).c * f));
+          ImageLoader.a().a(this.a, paramPictureFilterData.toURI().toString(), (int)(((PictureFilterConfig.PictureContent)localObject).b * f), (int)(((PictureFilterConfig.PictureContent)localObject).c * f), true);
           paramPictureFilterData = new RelativeLayout.LayoutParams((int)(((PictureFilterConfig.PictureContent)localObject).b * f), (int)(((PictureFilterConfig.PictureContent)localObject).c * f));
           if ((((PictureFilterConfig.PictureContent)localObject).jdField_a_of_type_Int & 0x1) != 0) {
             paramPictureFilterData.addRule(9);

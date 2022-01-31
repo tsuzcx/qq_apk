@@ -1,33 +1,40 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import java.lang.ref.WeakReference;
 
 public class xae
-  implements View.OnClickListener
+  extends Handler
 {
-  public xae(PayCodeEntryActivity paramPayCodeEntryActivity, xag paramxag) {}
+  private WeakReference a;
   
-  public void onClick(View paramView)
+  public xae(DialogBaseActivity paramDialogBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.a("payCodeEntry.cheCode", "actQQWlxclick", "0002");
-    paramView = new Intent("com.tencent.mobileqq.action.jtcode");
-    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity, JumpActivity.class);
-    if (!TextUtils.isEmpty(PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity))) {
-      paramView.putExtra("city_name", PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity));
+    this.a = new WeakReference(paramDialogBaseActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
+    if (localDialogBaseActivity == null) {
+      return;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xag.b)) {
-      paramView.putExtra("city_code", this.jdField_a_of_type_Xag.b);
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localDialogBaseActivity.a(i, bool);
+        return;
+        bool = false;
+      }
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xag.a)) {
-      paramView.putExtra("ykt_id", this.jdField_a_of_type_Xag.a);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xag.c)) {
-      paramView.putExtra("show_name", this.jdField_a_of_type_Xag.c);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.startActivityForResult(paramView, 102);
+    localDialogBaseActivity.finish();
   }
 }
 

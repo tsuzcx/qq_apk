@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import adem;
+import admt;
 import android.app.Activity;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -21,7 +21,7 @@ public class PreviewSimpleFilePresenter
   public PreviewSimpleFilePresenter(FileBrowserModelBase paramFileBrowserModelBase, Activity paramActivity)
   {
     super(paramFileBrowserModelBase, paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$TipsClickedInterface = new adem(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$TipsClickedInterface = new admt(this);
   }
   
   public void a()

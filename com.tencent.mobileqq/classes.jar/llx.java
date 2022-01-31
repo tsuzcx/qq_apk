@@ -1,22 +1,26 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class llx
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public llx(KandianMergeManager paramKandianMergeManager, long paramLong, String paramString1, int paramInt1, String paramString2, int paramInt2) {}
+  public llx(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter, CommentInfo paramCommentInfo, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), 1).edit();
-    localEditor.putLong("subscribe_push_msg_time", this.jdField_a_of_type_Long);
-    localEditor.putString("subscribe_push_msg_uin", this.jdField_a_of_type_JavaLangString);
-    localEditor.putInt("subscribe_push_msg_status", this.jdField_a_of_type_Int);
-    localEditor.putString("subscribe_push_msg_xml", this.jdField_b_of_type_JavaLangString);
-    localEditor.putInt("subscribe_push_msg_msgtype", this.jdField_b_of_type_Int);
-    ReadInJoyHelper.a(localEditor, true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter.a.deleteComment(ReadInJoyCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter), 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorUin, null, ReadInJoyCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter), new lly(this));
+    }
   }
 }
 

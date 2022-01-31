@@ -1,25 +1,30 @@
-import android.content.ContentValues;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class zvg
+class zvg
   implements Runnable
 {
-  public zvg(DataLineMsgProxy paramDataLineMsgProxy, long paramLong, String paramString, byte[] paramArrayOfByte) {}
+  zvg(zvf paramzvf, TroopMemberInfo paramTroopMemberInfo) {}
   
   public void run()
   {
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
-    ContentValues localContentValues = new ContentValues();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localContentValues.put("serverPath", this.jdField_a_of_type_JavaLangString);
+    Object localObject = (List)this.jdField_a_of_type_Zvf.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b.remove(this.jdField_a_of_type_Zvf.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Zvf.b);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopManager", 2, "getTroopMemberInfo, size=" + ((List)localObject).size());
     }
-    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0)) {
-      localContentValues.put("md5", this.jdField_a_of_type_ArrayOfByte);
-    }
-    if (localDataLineMsgRecord != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.jdField_a_of_type_JavaLangString, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      TroopManager.ITroopMemberInfoCallBack localITroopMemberInfoCallBack = (TroopManager.ITroopMemberInfoCallBack)((WeakReference)((Iterator)localObject).next()).get();
+      if (localITroopMemberInfoCallBack != null) {
+        localITroopMemberInfoCallBack.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      }
     }
   }
 }

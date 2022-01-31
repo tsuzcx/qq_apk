@@ -1,26 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class ajcu
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public ajcu(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ajcu(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.g();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

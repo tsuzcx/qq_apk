@@ -1,23 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.takevideo.VideoFragmentInfo;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class oew
-  extends VideoFragmentInfo
+  implements ActionSheet.OnDismissListener
 {
-  public Bitmap a;
-  public Bitmap b;
+  public oew(FeedSegment paramFeedSegment) {}
   
-  public oew(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
-  {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
-  }
-  
-  public oew(VideoFragmentInfo paramVideoFragmentInfo, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    this(paramVideoFragmentInfo.jdField_c_of_type_Int, paramVideoFragmentInfo.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
-  }
+  public void onDismiss() {}
 }
 
 

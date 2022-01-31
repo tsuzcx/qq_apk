@@ -30,6 +30,16 @@ public class GaussianBlurFilter
     this.jdField_a_of_type_Int = 3553;
   }
   
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      GLES20.glDeleteProgram(this.jdField_b_of_type_Int);
+      this.jdField_b_of_type_Int = 0;
+    }
+  }
+  
   public void a(int paramInt)
   {
     if (this.jdField_b_of_type_Int == 0) {}

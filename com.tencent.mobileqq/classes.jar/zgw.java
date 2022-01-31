@@ -1,23 +1,36 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class zgw
-  implements Runnable
+  implements EIPCResultCallback
 {
-  public zgw(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord) {}
+  public zgw(BabyQFriendStatusWebViewPlugin paramBabyQFriendStatusWebViewPlugin) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))
+    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MsgSend", 4, "delay notify: " + MessageHandler.d);
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : result == null or data == null");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(8022, true, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin });
+      return;
     }
+    boolean bool = paramEIPCResult.isSuccess();
+    String str2 = paramEIPCResult.data.getString("key_method_action");
+    String str3 = paramEIPCResult.data.getString("web_js_call_back_id");
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : issuccess = ", Boolean.valueOf(bool), ",action = ", str2, ",jscallback = ", str3 });
+    }
+    String str1 = "";
+    if ("setFriendGrouping".equals(str2))
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("key_handle_set_get_group");
+      str1 = "{ \"ret\": 0, \"group\": \"" + paramEIPCResult + "\"}";
+    }
+    BabyQFriendStatusWebViewPlugin.a(this.a, str3, str1, str2);
   }
 }
 

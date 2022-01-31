@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.log;
 
-import aece;
-import aecf;
-import aecg;
+import aeko;
+import aekp;
+import aekq;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.utils.HeavyTaskExecutor;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
@@ -42,8 +43,8 @@ public class ReportLog
   static
   {
     jdField_a_of_type_JavaLangString = "/Tencent/MobileQQ/log/";
-    jdField_a_of_type_AndroidOsHandler = new aece(Looper.getMainLooper());
-    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener = new aecf();
+    jdField_a_of_type_AndroidOsHandler = new aeko(Looper.getMainLooper());
+    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener = new aekp();
     jdField_b_of_type_JavaLangString = "http://bugtrace.3g.qq.com/upload/1/0";
   }
   
@@ -335,8 +336,16 @@ public class ReportLog
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
+    QLog.d("ReportLog", 1, "uncaughtException java crash=" + paramThrowable);
+    Object localObject;
+    if (paramThrowable != null)
+    {
+      localObject = paramThrowable.toString();
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).contains("java.util.concurrent.TimeoutException")) && (((String)localObject).contains(".finalize() timed out after"))) {
+        return;
+      }
+    }
     super.uncaughtException(paramThread, paramThrowable);
-    QLog.d("ReportLog", 1, "uncaughtException java crash handler.");
     SharedPreferencesProxyManager.getInstance().trySave();
     HeavyTaskExecutor.a();
     paramThread = MobileQQ.sMobileQQ;
@@ -345,8 +354,8 @@ public class ReportLog
       ReportLogHelper.jdField_a_of_type_JavaLangString = paramThread.getPackageManager().getPackageInfo(paramThread.getPackageName(), 0).versionName;
       ReportLogHelper.jdField_b_of_type_JavaLangString = Build.MODEL;
       ReportLogHelper.c = Build.VERSION.RELEASE;
-      label59:
-      Object localObject = new ByteArrayOutputStream();
+      label113:
+      localObject = new ByteArrayOutputStream();
       paramThrowable.printStackTrace(new PrintStream((OutputStream)localObject));
       localObject = new StringBuilder(new String(((ByteArrayOutputStream)localObject).toByteArray()));
       if ((paramThrowable instanceof OutOfMemoryError))
@@ -359,7 +368,7 @@ public class ReportLog
       a("crash", ((StringBuilder)localObject).toString(), true);
       paramThread.crashed();
       paramThread.sendBroadcast(new Intent("qqplayer_exit_action"));
-      paramThread = new aecg(this, paramThread);
+      paramThread = new aekq(this, paramThread);
       if (Thread.currentThread() != Looper.getMainLooper().getThread())
       {
         new Handler(Looper.getMainLooper()).postAtFrontOfQueue(paramThread);
@@ -370,7 +379,7 @@ public class ReportLog
     }
     catch (Exception localException)
     {
-      break label59;
+      break label113;
     }
   }
 }

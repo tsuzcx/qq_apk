@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.view.widget;
 
-import afbc;
+import affz;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
@@ -12,15 +12,15 @@ import java.util.List;
 public class StartLiveTopicLabelListView
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int = 2130842826;
+  private int jdField_a_of_type_Int = 2130842859;
   private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new afbc(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new affz(this);
   private StartLiveTopicLabelListView.IAddTopicClickListener jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView$IAddTopicClickListener;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   private final String jdField_a_of_type_JavaLangString = "TopicLabelListView";
   private List jdField_a_of_type_JavaUtilList;
   private int b = -1;
-  private int c = 2130842824;
+  private int c = 2130842858;
   private int d = -1;
   
   public StartLiveTopicLabelListView(Context paramContext)
@@ -48,11 +48,6 @@ public class StartLiveTopicLabelListView
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth((int)UITools.a(paramContext, 5.0F));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
     addView(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, -1, -1);
-  }
-  
-  public void a(StartLiveTopicLabelListView.IAddTopicClickListener paramIAddTopicClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView$IAddTopicClickListener = paramIAddTopicClickListener;
   }
   
   public void setData(List paramList)

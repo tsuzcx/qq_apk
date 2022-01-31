@@ -1,22 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wfq
-  implements View.OnClickListener
+class wfq
+  implements DialogInterface.OnClickListener
 {
-  public wfq(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  wfq(wfo paramwfo) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    }
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

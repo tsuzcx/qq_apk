@@ -41,17 +41,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import wcg;
-import wch;
-import wci;
-import wck;
+import who;
+import whp;
+import whq;
+import whs;
 
 public class TIMUserManager
 {
   private static TIMUserManager jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager;
   public static String a;
-  private static final String jdField_b_of_type_JavaLangString = AppConstants.cy + "icons/";
-  private static final String jdField_c_of_type_JavaLangString = AppConstants.cy + "zip/";
+  private static final String jdField_b_of_type_JavaLangString = AppConstants.cz + "icons/";
+  private static final String jdField_c_of_type_JavaLangString = AppConstants.cz + "zip/";
   private volatile int jdField_a_of_type_Int;
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 0;
@@ -157,12 +157,12 @@ public class TIMUserManager
   
   public static void a(LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton)
   {
-    ThreadManager.post(new wci(paramLinearLayout, paramXEditTextEx, paramPanelIconLinearLayout, paramPatchedButton), 8, null, true);
+    ThreadManager.post(new whq(paramLinearLayout, paramXEditTextEx, paramPanelIconLinearLayout, paramPatchedButton), 8, null, true);
   }
   
   public static void a(TextView paramTextView)
   {
-    ThreadManager.post(new wck(paramTextView), 8, null, true);
+    ThreadManager.post(new whs(paramTextView), 8, null, true);
   }
   
   public static void a(SessionInfo paramSessionInfo, Context paramContext, TextView paramTextView1, TextView paramTextView2, TextView paramTextView3, ImageView paramImageView, TextView paramTextView4, LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton, ViewGroup paramViewGroup)
@@ -170,9 +170,9 @@ public class TIMUserManager
     if ((paramSessionInfo.jdField_b_of_type_Boolean) && (paramSessionInfo.e)) {
       if (paramSessionInfo.jdField_c_of_type_Boolean)
       {
-        paramTextView1.setTextColor(paramContext.getResources().getColor(2131494212));
-        paramTextView2.setTextColor(paramContext.getResources().getColor(2131494212));
-        paramTextView3.setTextColor(paramContext.getResources().getColor(2131494212));
+        paramTextView1.setTextColor(paramContext.getResources().getColor(2131494218));
+        paramTextView2.setTextColor(paramContext.getResources().getColor(2131494218));
+        paramTextView3.setTextColor(paramContext.getResources().getColor(2131494218));
         if (paramSessionInfo.jdField_c_of_type_Boolean) {
           break label110;
         }
@@ -191,25 +191,25 @@ public class TIMUserManager
         paramTextView1.setTextColor(-1);
         paramTextView2.setTextColor(-1);
         break;
-        paramLinearLayout.setBackgroundResource(2130845635);
-        paramPanelIconLinearLayout.setBackgroundResource(2130845677);
-        paramPatchedButton.setBackgroundResource(2130837752);
-        paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494208));
+        paramLinearLayout.setBackgroundResource(2130845716);
+        paramPanelIconLinearLayout.setBackgroundResource(2130845758);
+        paramPatchedButton.setBackgroundResource(2130837751);
+        paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494214));
       } while (paramXEditTextEx == null);
-      paramXEditTextEx.setBackgroundResource(2130845636);
-      paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494282));
+      paramXEditTextEx.setBackgroundResource(2130845717);
+      paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494288));
       return;
-      paramLinearLayout.setBackgroundResource(2130845635);
-      paramTextView1.setTextColor(paramContext.getResources().getColor(2131494212));
-      paramTextView2.setTextColor(paramContext.getResources().getColor(2131494212));
-      paramTextView3.setBackgroundResource(2130846264);
-      paramTextView3.setTextColor(paramContext.getResources().getColor(2131494212));
-      paramPanelIconLinearLayout.setBackgroundResource(2130845677);
-      paramPatchedButton.setBackgroundResource(2130837752);
-      paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494208));
+      paramLinearLayout.setBackgroundResource(2130845716);
+      paramTextView1.setTextColor(paramContext.getResources().getColor(2131494218));
+      paramTextView2.setTextColor(paramContext.getResources().getColor(2131494218));
+      paramTextView3.setBackgroundResource(2130846346);
+      paramTextView3.setTextColor(paramContext.getResources().getColor(2131494218));
+      paramPanelIconLinearLayout.setBackgroundResource(2130845758);
+      paramPatchedButton.setBackgroundResource(2130837751);
+      paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494214));
     } while (paramXEditTextEx == null);
-    paramXEditTextEx.setBackgroundResource(2130845636);
-    paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494282));
+    paramXEditTextEx.setBackgroundResource(2130845717);
+    paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494288));
   }
   
   private void a(QQAppInterface paramQQAppInterface)
@@ -433,7 +433,7 @@ public class TIMUserManager
     b();
     if (paramBoolean)
     {
-      ThreadManager.post(new wcg(this, paramString1, paramString2, paramQQAppInterface, paramBoolean), 8, null, true);
+      ThreadManager.post(new who(this, paramString1, paramString2, paramQQAppInterface, paramBoolean), 8, null, true);
       return;
     }
     if (a(paramString2))
@@ -442,7 +442,7 @@ public class TIMUserManager
       this.jdField_a_of_type_Int = 2;
       return;
     }
-    ThreadManager.post(new wch(this, paramString1, paramString2, paramBoolean), 8, null, true);
+    ThreadManager.post(new whp(this, paramString1, paramString2, paramBoolean), 8, null, true);
   }
   
   public boolean a()

@@ -1,15 +1,32 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.common.util.Util;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
 
-public final class mce
-  extends AnimatorListenerAdapter
+public class mce
+  implements DialogInterface.OnClickListener
 {
-  public mce(View paramView) {}
+  public mce(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setLayerType(0, null);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      if (QLog.isColorLevel()) {
+        QLog.i("ReadInJoyDeliverVideoActivity", 2, "qbShowShareResultDialog back");
+      }
+      ForwardSdkShareOption.a(this.a, true, "shareToQQ", ReadInJoyDeliverVideoActivity.b(this.a));
+      Util.a(this.a, 0, "", "");
+      this.a.finish();
+      return;
+    }
+    ReadInJoyDeliverVideoActivity.c(this.a);
+    this.a.finish();
   }
 }
 

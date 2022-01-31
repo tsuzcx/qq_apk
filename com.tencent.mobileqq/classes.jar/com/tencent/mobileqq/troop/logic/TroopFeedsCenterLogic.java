@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.logic;
 
-import ajmc;
-import ajmd;
+import ajto;
+import ajtp;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
@@ -71,7 +71,7 @@ public class TroopFeedsCenterLogic
   public TroopFeedsCenterLogic(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, SessionInfo paramSessionInfo, RelativeLayout paramRelativeLayout, ImageView paramImageView, TroopAioTips paramTroopAioTips, boolean paramBoolean, Observer paramObserver)
   {
     this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new ajmc(this);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new ajto(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFragmentActivity);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
@@ -124,7 +124,7 @@ public class TroopFeedsCenterLogic
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
           return;
         }
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((BaseActivity)localObject).findViewById(2131363246));
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((BaseActivity)localObject).findViewById(2131363263));
         if (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) {
           break;
         }
@@ -134,10 +134,10 @@ public class TroopFeedsCenterLogic
       int m = AIOUtils.a(10.0F, ((FragmentActivity)localObject).getResources());
       int n = AIOUtils.a(8.0F, ((FragmentActivity)localObject).getResources());
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(((BaseActivity)localObject).getActivity());
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130846051);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130846133);
       localObject = new RelativeLayout.LayoutParams(m, m);
-      ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131364003);
-      ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131364003);
+      ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131364028);
+      ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131364028);
       ((RelativeLayout.LayoutParams)localObject).setMargins(0, n, 0, 0);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -351,7 +351,7 @@ public class TroopFeedsCenterLogic
       {
         this.jdField_a_of_type_Boolean = true;
         e(true);
-        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(localFragmentActivity.getString(2131429884));
+        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(localFragmentActivity.getString(2131429885));
         return;
       }
       this.jdField_b_of_type_Boolean = true;
@@ -361,10 +361,10 @@ public class TroopFeedsCenterLogic
     this.jdField_b_of_type_Boolean = false;
     if (a())
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(localFragmentActivity.getString(2131429885));
+      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(localFragmentActivity.getString(2131429886));
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(localFragmentActivity.getString(2131429883));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(localFragmentActivity.getString(2131429884));
   }
   
   public void update(Observable paramObservable, Object paramObject)
@@ -376,7 +376,7 @@ public class TroopFeedsCenterLogic
         break label42;
       }
       this.c = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ajmd(this));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ajtp(this));
     }
     label42:
     label196:
@@ -424,7 +424,7 @@ public class TroopFeedsCenterLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
-import android.os.Handler;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkRecommendController;
 
 public class abec
   implements Runnable
 {
-  public abec(ShopScanActivity paramShopScanActivity) {}
+  public abec(ArkRecommendController paramArkRecommendController) {}
   
   public void run()
   {
-    ShopScanActivity.b(this.a);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.d.setVisibility(0);
-    this.a.f.setVisibility(4);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(292);
+    if (ArkRecommendController.a(this.a) != null)
+    {
+      ArkAppCenter.b("ArkRecommendController", "mArkBabyqDisappearBubbleTask, destroy scroll bar");
+      ArkRecommendController.a(this.a).d();
+    }
   }
 }
 

@@ -1,27 +1,13 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.ar.config.MainDownAni;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PopupMenuDialog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.ArConfigService;
 
-public class aaja
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aaja
+  implements Runnable
 {
-  public aaja(MainDownAni paramMainDownAni, aaji paramaaji, WorldCupMgr paramWorldCupMgr) {}
+  aaja(aaiy paramaaiy) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    PopupMenuDialog localPopupMenuDialog = (PopupMenuDialog)this.jdField_a_of_type_Aaji.d.get();
-    if (localPopupMenuDialog != null)
-    {
-      localPopupMenuDialog.getContentView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a = true;
-      QLog.w(MainDownAni.a(), 1, "MainDownAni.onGlobalLayout, mTaskStatus[" + this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.a.g + "]");
-      this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a(this.jdField_a_of_type_Aaji);
-    }
+    ArConfigService.d(this.a.a);
   }
 }
 

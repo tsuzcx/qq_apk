@@ -147,7 +147,7 @@ public class BaseDownloadProcessor
     return a(paramString2);
   }
   
-  public void ap_()
+  public void ar_()
   {
     try
     {
@@ -158,7 +158,7 @@ public class BaseDownloadProcessor
           QLog.d("PIC_TAG", 2, "start ");
         }
       }
-      super.ap_();
+      super.ar_();
       return;
     }
     finally {}
@@ -176,7 +176,7 @@ public class BaseDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BaseDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

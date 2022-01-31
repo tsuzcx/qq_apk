@@ -1,14 +1,16 @@
-import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.RandomSizeTextItem;
 
 public class anwv
-  implements Runnable
+  implements anwk
 {
-  public anwv(ArtFilterBridgeActivity paramArtFilterBridgeActivity) {}
+  public anwv(RandomSizeTextItem paramRandomSizeTextItem) {}
   
-  public void run()
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    this.a.a();
-    ArtFilterBridgeActivity.a(this.a);
+    return TroopFileUtils.b(paramString);
   }
 }
 

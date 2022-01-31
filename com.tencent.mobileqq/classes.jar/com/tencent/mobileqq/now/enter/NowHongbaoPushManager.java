@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.now.enter;
 
-import agal;
-import agam;
-import agan;
-import agao;
-import agap;
-import agaq;
+import agep;
+import ageq;
+import ager;
+import ages;
+import aget;
+import ageu;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler.Callback;
@@ -38,7 +38,7 @@ public class NowHongbaoPushManager
   private static HashMap c = new HashMap(5);
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long = 1000L;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new agal(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new agep(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public NowEnterManager a;
   private volatile NowHongbaoPushManager.Callback jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Callback;
@@ -88,9 +88,13 @@ public class NowHongbaoPushManager
               i += 1;
               if (localEntity.type == 1)
               {
-                a(localEntity);
+                if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.c()) {
+                  a(localEntity);
+                } else {
+                  a(localEntity, 5);
+                }
               }
-              else if (a())
+              else if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.c())
               {
                 a(localEntity);
               }
@@ -123,10 +127,10 @@ public class NowHongbaoPushManager
         else
         {
           if (j != 3) {
-            break label267;
+            break label290;
           }
           a(3, 1);
-          break label267;
+          break label290;
         }
       }
       else
@@ -134,7 +138,7 @@ public class NowHongbaoPushManager
         return i;
       }
     }
-    label267:
+    label290:
     for (;;)
     {
       j += 1;
@@ -191,7 +195,7 @@ public class NowHongbaoPushManager
   
   private void a(int paramInt1, int paramInt2)
   {
-    ThreadManager.getUIHandler().post(new agao(this, paramInt1, paramInt2));
+    ThreadManager.getUIHandler().post(new ages(this, paramInt1, paramInt2));
   }
   
   private void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean)
@@ -240,28 +244,40 @@ public class NowHongbaoPushManager
   
   private void a(NowHongbaoPushManager.Entity paramEntity)
   {
-    ThreadManager.getUIHandler().post(new agap(this, paramEntity));
+    ThreadManager.getUIHandler().post(new aget(this, paramEntity));
   }
   
   private void a(NowHongbaoPushManager.Entity paramEntity, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new agan(this, paramEntity, paramInt));
+    ThreadManager.getUIHandler().post(new ager(this, paramEntity, paramInt));
   }
   
   private boolean a()
   {
-    if (this.jdField_a_of_type_Int != -1) {
-      return this.jdField_a_of_type_Int == 1;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.e()) {}
-    for (int i = 1;; i = 2)
+    int i = this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a();
+    ArrayList localArrayList = new ArrayList();
+    Long localLong;
+    synchronized (this.jdField_b_of_type_JavaUtilHashMap)
     {
-      this.jdField_a_of_type_Int = i;
-      if (this.jdField_a_of_type_Int == 1) {
-        break;
+      localIterator = this.jdField_b_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localLong = (Long)((Map.Entry)localIterator.next()).getKey();
+        if (localLong.longValue() < i) {
+          localArrayList.add(localLong);
+        }
       }
-      return false;
     }
+    Iterator localIterator = localObject.iterator();
+    while (localIterator.hasNext())
+    {
+      localLong = (Long)localIterator.next();
+      this.jdField_b_of_type_JavaUtilHashMap.remove(localLong);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("NowHongbaoPushManager", 2, "deleteOldPushes toRemove =" + localObject.toString());
+    }
+    return !localObject.isEmpty();
   }
   
   private boolean a(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
@@ -371,34 +387,6 @@ public class NowHongbaoPushManager
         }
       }
     }
-  }
-  
-  private boolean b()
-  {
-    int i = this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a();
-    ArrayList localArrayList = new ArrayList();
-    Long localLong;
-    synchronized (this.jdField_b_of_type_JavaUtilHashMap)
-    {
-      localIterator = this.jdField_b_of_type_JavaUtilHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localLong = (Long)((Map.Entry)localIterator.next()).getKey();
-        if (localLong.longValue() < i) {
-          localArrayList.add(localLong);
-        }
-      }
-    }
-    Iterator localIterator = localObject.iterator();
-    while (localIterator.hasNext())
-    {
-      localLong = (Long)localIterator.next();
-      this.jdField_b_of_type_JavaUtilHashMap.remove(localLong);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("NowHongbaoPushManager", 2, "deleteOldPushes toRemove =" + localObject.toString());
-    }
-    return !localObject.isEmpty();
   }
   
   private boolean b(NowPushMsgList.NowPushMsg paramNowPushMsg)
@@ -603,7 +591,7 @@ public class NowHongbaoPushManager
   
   private void l()
   {
-    ThreadManager.getUIHandler().post(new agaq(this));
+    ThreadManager.getUIHandler().post(new ageu(this));
   }
   
   public long a(int paramInt)
@@ -630,7 +618,7 @@ public class NowHongbaoPushManager
     {
       this.jdField_b_of_type_JavaUtilHashMap = localHashMap;
       QLog.i("NowHongbaoPushManager", 2, "readFromLocal--" + this.jdField_b_of_type_JavaUtilHashMap.values().toString());
-      if (b()) {
+      if (a()) {
         f();
       }
       k();
@@ -697,16 +685,6 @@ public class NowHongbaoPushManager
     c(paramNowPushMsg);
   }
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-    }
-  }
-  
   public void b()
   {
     this.jdField_a_of_type_ComTencentMobileqqNowEnterNowHongbaoPushManager$Entity = null;
@@ -724,7 +702,7 @@ public class NowHongbaoPushManager
       a(1, 6);
       a(3, 6);
       a(2, 6);
-      ThreadManager.getUIHandler().post(new agam(this));
+      ThreadManager.getUIHandler().post(new ageq(this));
       return;
     }
     finally

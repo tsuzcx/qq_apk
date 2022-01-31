@@ -29,8 +29,8 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import java.util.ArrayList;
 import java.util.List;
-import vch;
-import vci;
+import vhj;
+import vhk;
 
 public class PATextItemBuilder
   extends AbstractChatItemBuilder
@@ -40,7 +40,7 @@ public class PATextItemBuilder
   public PATextItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vch(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vhj(this);
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -48,20 +48,20 @@ public class PATextItemBuilder
     paramLinearLayout.setPadding(0, AIOUtils.a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0);
     paramLinearLayout = paramView;
     if (paramView == null) {
-      paramLinearLayout = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968756, null);
+      paramLinearLayout = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968759, null);
     }
     Object localObject2 = (MessageForPubAccount)paramMessageRecord;
     PAMessage localPAMessage = ((MessageForPubAccount)localObject2).mPAMessage;
-    paramMessageRecord = (vci)paramViewHolder;
+    paramMessageRecord = (vhk)paramViewHolder;
     Object localObject3 = localPAMessage.items;
-    paramViewHolder = (ViewGroup)paramLinearLayout.findViewById(2131363595);
-    Object localObject1 = (ImageView)paramLinearLayout.findViewById(2131363597);
-    TextView localTextView1 = (TextView)paramLinearLayout.findViewById(2131363596);
-    TextView localTextView2 = (TextView)paramLinearLayout.findViewById(2131363598);
-    TextView localTextView3 = (TextView)paramLinearLayout.findViewById(2131363600);
-    TextView localTextView4 = (TextView)paramLinearLayout.findViewById(2131363601);
-    TextView localTextView5 = (TextView)paramLinearLayout.findViewById(2131363602);
-    TextView localTextView6 = (TextView)paramLinearLayout.findViewById(2131363603);
+    paramViewHolder = (ViewGroup)paramLinearLayout.findViewById(2131363614);
+    Object localObject1 = (ImageView)paramLinearLayout.findViewById(2131363616);
+    TextView localTextView1 = (TextView)paramLinearLayout.findViewById(2131363615);
+    TextView localTextView2 = (TextView)paramLinearLayout.findViewById(2131363617);
+    TextView localTextView3 = (TextView)paramLinearLayout.findViewById(2131363619);
+    TextView localTextView4 = (TextView)paramLinearLayout.findViewById(2131363620);
+    TextView localTextView5 = (TextView)paramLinearLayout.findViewById(2131363621);
+    TextView localTextView6 = (TextView)paramLinearLayout.findViewById(2131363622);
     paramView = new ArrayList();
     paramView.add(localTextView2);
     paramView.add(localTextView3);
@@ -138,7 +138,7 @@ public class PATextItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new vci(this);
+    return new vhk(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -170,7 +170,7 @@ public class PATextItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131375567, this.jdField_a_of_type_AndroidContentContext.getString(2131433638), 2130838309);
+    paramView.a(2131375633, this.jdField_a_of_type_AndroidContentContext.getString(2131433652), 2130838314);
     return paramView.a();
   }
 }

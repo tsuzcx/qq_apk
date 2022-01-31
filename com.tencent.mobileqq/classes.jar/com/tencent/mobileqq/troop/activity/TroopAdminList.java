@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aiux;
-import aiuy;
-import aiva;
-import aivc;
-import aivd;
+import ajaa;
+import ajab;
+import ajad;
+import ajaf;
+import ajag;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
@@ -42,14 +42,14 @@ public class TroopAdminList
   {
     this.jdField_a_of_type_JavaLangString = "TroopAdminList";
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new aiux(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aivd(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ajaa(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ajag(this);
   }
   
   protected void a()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    ThreadManager.post(new aiuy(this), 8, null, true);
+    ThreadManager.post(new ajab(this), 8, null, true);
   }
   
   protected boolean a()
@@ -83,8 +83,8 @@ public class TroopAdminList
   
   protected void b()
   {
-    View localView = View.inflate(this, 2130969849, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131363733));
+    View localView = View.inflate(this, 2130969860, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131363757));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this);
@@ -92,14 +92,14 @@ public class TroopAdminList
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     setContentView(localView);
-    setTitle(getString(2131433113));
+    setTitle(getString(2131433127));
   }
   
   public void c()
   {
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      ThreadManager.post(new aiva(this), 8, null, true);
+      ThreadManager.post(new ajad(this), 8, null, true);
       return;
     }
     int j = this.jdField_a_of_type_JavaUtilList.size();
@@ -110,7 +110,7 @@ public class TroopAdminList
       ((Map)this.jdField_a_of_type_JavaUtilList.get(i)).put("nick", ContactUtils.l(this.app, str));
       i += 1;
     }
-    runOnUiThread(new aivc(this));
+    runOnUiThread(new ajaf(this));
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -139,7 +139,7 @@ public class TroopAdminList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList
  * JD-Core Version:    0.7.0.1
  */

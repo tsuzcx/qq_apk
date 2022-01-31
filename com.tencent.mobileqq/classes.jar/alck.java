@@ -1,31 +1,24 @@
-import android.os.Process;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.widget.LeftPopupMenuDialog;
 
 public class alck
-  extends Thread
+  extends View.AccessibilityDelegate
 {
-  public alck(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  public alck(LeftPopupMenuDialog paramLeftPopupMenuDialog) {}
   
-  public void run()
+  @TargetApi(14)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    try
-    {
-      Thread.sleep(1000L);
-      Process.killProcess(Process.myPid());
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+    if (paramInt != 32) {
+      super.sendAccessibilityEvent(paramView, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alck
  * JD-Core Version:    0.7.0.1
  */

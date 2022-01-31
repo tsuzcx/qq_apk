@@ -32,9 +32,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xue;
-import xuf;
-import xug;
+import yan;
+import yao;
+import yap;
 
 public class VideoFilterTools
 {
@@ -59,10 +59,10 @@ public class VideoFilterTools
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "qsvf" + File.separator;
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "qsvf" + File.separator;
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "res" + File.separator;
     jdField_c_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "artfilter" + File.separator;
-    e = AppConstants.aJ + "qav" + File.separator + "beauty" + File.separator;
+    e = AppConstants.aK + "qav" + File.separator + "beauty" + File.separator;
     f = e + "SKINCOLOR" + File.separator;
     jdField_d_of_type_JavaLangString = e;
   }
@@ -191,7 +191,7 @@ public class VideoFilterTools
         if (!((File)localObject).exists())
         {
           localObject = new HttpNetReq();
-          ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new xuf();
+          ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new yao();
           ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
           ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
           ((HttpNetReq)localObject).jdField_c_of_type_JavaLangString = (e + "skin_color.zip");
@@ -620,7 +620,7 @@ public class VideoFilterTools
             if (!((File)localObject2).exists())
             {
               localObject2 = new HttpNetReq();
-              ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new xug(this);
+              ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new yap(this);
               ((HttpNetReq)localObject2).jdField_a_of_type_JavaLangString = localFilterDesc.jdField_c_of_type_JavaLangString;
               ((HttpNetReq)localObject2).jdField_a_of_type_Int = 0;
               ((HttpNetReq)localObject2).jdField_c_of_type_JavaLangString = ((String)localObject1);
@@ -637,7 +637,7 @@ public class VideoFilterTools
             if (!((File)localObject2).exists())
             {
               localObject1 = new HttpNetReq();
-              ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new xue(this);
+              ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new yan(this);
               ((HttpNetReq)localObject1).jdField_a_of_type_JavaLangString = localFilterDesc.jdField_a_of_type_JavaLangString;
               ((HttpNetReq)localObject1).jdField_a_of_type_Int = 0;
               ((HttpNetReq)localObject1).jdField_c_of_type_JavaLangString = (jdField_b_of_type_JavaLangString + localFilterDesc.e + ".zip");

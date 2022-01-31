@@ -1,28 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader;
-import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerDownloader;
-import com.tencent.biz.qqstory.base.preload.DownloadTask;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class mzy
-  extends Job
+public final class mzy
+  implements Runnable
 {
-  public mzy(AsyncFileDownloader paramAsyncFileDownloader, DownloadTask paramDownloadTask) {}
+  public mzy(QQMessageFacade paramQQMessageFacade, String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask);
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask);
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 16;
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.as, -3006);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      localObject = this.b;
+      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForStructing))) {
+        break label108;
+      }
+    }
+    label108:
+    for (Object localObject = PublicAccountUtil.a((MessageForStructing)localMessageRecord, (String)localObject, null, null, this.c);; localObject = PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, null, null, this.c))
+    {
+      if (localObject != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a((MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      }
+      return;
+      localObject = this.jdField_a_of_type_JavaLangString + ": " + this.b;
+      break;
+    }
   }
 }
 

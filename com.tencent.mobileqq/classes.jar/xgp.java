@@ -1,27 +1,30 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.ConfigInfo;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
-import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import Wallet.WalletSkinRsp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
 
-public class xgp
-  implements Runnable
+class xgp
+  implements PreloadManager.OnGetPathListener
 {
-  public xgp(QWalletRedManager paramQWalletRedManager) {}
+  xgp(xgo paramxgo, String paramString) {}
   
-  public void run()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    Object localObject = (QWalletConfigManager)QWalletRedManager.a(this.a).getManager(244);
-    if (localObject != null)
-    {
-      ((QWalletConfigManager)localObject).a("redPoint", this.a);
-      localObject = ((QWalletConfigManager)localObject).a("redPoint");
-      QWalletRedManager.a(this.a).parseConfig((QWalletConfig.ConfigInfo)localObject);
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "synDataFromMoggy" + QWalletRedManager.a(this.a));
+      QLog.d("QWalletSkinHandler", 2, "setWalletSkin OnGetPathListener:" + paramInt + "|" + paramPathResult);
     }
+    if ((paramInt != 0) || (TextUtils.isEmpty(paramPathResult.folderPath)))
+    {
+      QWalletSkinHandler.a(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
+      return;
+    }
+    QWalletSkinHandler.a(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xgo.jdField_a_of_type_WalletWalletSkinRsp.skinID);
+    QWalletSkinHandler.a(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xgo.jdField_a_of_type_WalletWalletSkinRsp.zipUrl);
+    QWalletSkinHandler.b(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xgo.jdField_a_of_type_WalletWalletSkinRsp.zipMd5);
+    QWalletSkinHandler.a(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
+    QWalletSkinHandler.a(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler);
   }
 }
 

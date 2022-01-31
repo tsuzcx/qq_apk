@@ -1,16 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.PeakService;
+import com.tencent.qphone.base.util.QLog;
 
-public class ansr
-  implements View.OnClickListener
+public final class ansr
+  implements Runnable
 {
-  public ansr(EditVideoButton paramEditVideoButton) {}
+  public ansr(Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a(22);
+    Intent localIntent = new Intent(this.a, PeakService.class);
+    localIntent.putExtra("ServiceAction", 2);
+    try
+    {
+      this.a.startService(localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMShortVideoUtils", 2, "preLoadPeakProcess");
+      }
+      return;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QIMShortVideoUtils", 2, "onShow_otherThings, e = " + localSecurityException.getStackTrace());
+        }
+      }
+    }
   }
 }
 

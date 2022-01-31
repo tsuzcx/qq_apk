@@ -1,33 +1,21 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.PSTNC2CActivity;
-import com.tencent.av.utils.PSTNNotification;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.qphone.base.util.QLog;
 
 public class jyh
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public jyh(PSTNC2CActivity paramPSTNC2CActivity) {}
+  public jyh(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c.setText(this.a.getResources().getString(2131429562));
-    this.a.jdField_a_of_type_ComTencentAvUtilsPSTNNotification.a(1);
-    this.a.a(this.a.b, false, 2130840125);
-    this.a.b.setClickable(true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b = 2;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
-    }
+    QLog.w(this.a.c, 1, "showConfirmBoxToHangup, no, mRelationId[" + this.a.b + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jyh
  * JD-Core Version:    0.7.0.1
  */

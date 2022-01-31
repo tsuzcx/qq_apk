@@ -1,31 +1,82 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
+import android.graphics.Bitmap;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.PortalManager.IconReqDetails;
+import com.tencent.mobileqq.portal.PortalUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class agrj
+class agrj
   implements Runnable
 {
-  public agrj(ProfileHeaderView paramProfileHeaderView, ProfileCardInfo paramProfileCardInfo, boolean paramBoolean) {}
+  agrj(agri paramagri, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(ProfileHeaderView.g, localExtensionInfo);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendMessage(localMessage);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (AvatarPendantUtil.b(localExtensionInfo.pendantId))) {
-      AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+    PortalManager.IconReqDetails localIconReqDetails = (PortalManager.IconReqDetails)this.jdField_a_of_type_Agri.a.a.get(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Agri.a.a.remove(this.jdField_a_of_type_JavaLangString);
+    Object localObject1;
+    JSONObject localJSONObject;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 1;
+      localObject1 = PortalManager.a(this.jdField_a_of_type_Agri.a).a(this.jdField_a_of_type_JavaLangString, false);
+      if (localObject1 != null)
+      {
+        localObject1 = PortalUtils.a((Bitmap)localObject1);
+        localJSONObject = new JSONObject();
+      }
     }
+    try
+    {
+      localJSONObject.put("errorCode", 0);
+      localJSONObject.put("key", localIconReqDetails.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("result", localObject1);
+      if (QLog.isColorLevel()) {
+        QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localIconReqDetails.jdField_a_of_type_JavaLangString);
+      }
+      PortalManager.a(this.jdField_a_of_type_Agri.a, localIconReqDetails.b, localJSONObject.toString(), localIconReqDetails.jdField_a_of_type_Int);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    finally
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PortalManagerhead", 2, "error heppened info = " + localJSONObject);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localIconReqDetails.jdField_a_of_type_JavaLangString);
+        }
+        PortalManager.a(this.jdField_a_of_type_Agri.a, localIconReqDetails.b, localIconReqDetails.jdField_a_of_type_Int, null, -1, "get bitmap failed!");
+        return;
+      }
+      finally
+      {
+        i = 0;
+      }
+      localObject2 = finally;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead details.key = " + localIconReqDetails.jdField_a_of_type_JavaLangString);
+    }
+    if (i != 0)
+    {
+      PortalManager.a(this.jdField_a_of_type_Agri.a, localIconReqDetails.b, localJSONObject.toString(), localIconReqDetails.jdField_a_of_type_Int);
+      return;
+    }
+    throw localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrj
  * JD-Core Version:    0.7.0.1
  */

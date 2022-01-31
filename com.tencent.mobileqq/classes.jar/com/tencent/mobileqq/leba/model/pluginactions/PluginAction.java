@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.leba.model.pluginactions;
 
-import aebc;
-import aebd;
+import aejm;
+import aejn;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -215,33 +215,53 @@ public class PluginAction
       a(paramView, localAppInfo, paramLebaGridItemInfo, localQQAppInterface);
     } while (localAppInfo == null);
     paramView.a(localAppInfo);
-    ThreadManager.post(new aebd(this, localQQAppInterface, localAppInfo), 2, null, true);
+    ThreadManager.post(new aejn(this, localQQAppInterface, localAppInfo), 2, null, true);
   }
   
   public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo, LebaGridItemInfo paramLebaGridItemInfo, QQAppInterface paramQQAppInterface)
   {
-    if (paramRedTouch.a(paramAppInfo))
-    {
-      if ((paramLebaGridItemInfo.b == -1) && (!paramRedTouch.b(paramAppInfo))) {
-        ((LebaGridHandler)paramQQAppInterface.a(106)).a(1, true, Integer.valueOf(paramLebaGridItemInfo.a.pluginId));
-      }
-      paramLebaGridItemInfo.b = 1;
+    if ((paramLebaGridItemInfo == null) || (paramLebaGridItemInfo.a == null)) {
       return;
     }
-    paramLebaGridItemInfo.b = -1;
+    if (paramRedTouch.a(paramAppInfo))
+    {
+      paramQQAppInterface = (LebaGridHandler)paramQQAppInterface.a(106);
+      if ((paramLebaGridItemInfo.b != -1) || (paramRedTouch.b(paramAppInfo))) {
+        break label95;
+      }
+    }
+    label95:
+    for (boolean bool = true;; bool = false)
+    {
+      paramLebaGridItemInfo.b = 1;
+      paramQQAppInterface.a(1, true, new Object[] { Integer.valueOf(paramLebaGridItemInfo.a.pluginId), Boolean.valueOf(bool) });
+      return;
+      paramLebaGridItemInfo.b = -1;
+      return;
+    }
   }
   
   public void a(boolean paramBoolean, LebaGridItemInfo paramLebaGridItemInfo, QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean)
-    {
-      if ((paramLebaGridItemInfo.b == -1) && (LebaShowListManager.a != 1)) {
-        ((LebaGridHandler)paramQQAppInterface.a(106)).a(1, true, Integer.valueOf(paramLebaGridItemInfo.a.pluginId));
-      }
-      paramLebaGridItemInfo.b = 1;
+    if ((paramLebaGridItemInfo == null) || (paramLebaGridItemInfo.a == null)) {
       return;
     }
-    paramLebaGridItemInfo.b = -1;
+    if (paramBoolean)
+    {
+      paramQQAppInterface = (LebaGridHandler)paramQQAppInterface.a(106);
+      if ((paramLebaGridItemInfo.b != -1) || (LebaShowListManager.a == 1)) {
+        break label85;
+      }
+    }
+    label85:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramLebaGridItemInfo.b = 1;
+      paramQQAppInterface.a(1, true, new Object[] { Integer.valueOf(paramLebaGridItemInfo.a.pluginId), Boolean.valueOf(paramBoolean) });
+      return;
+      paramLebaGridItemInfo.b = -1;
+      return;
+    }
   }
   
   public boolean a(int paramInt1, int paramInt2)
@@ -303,7 +323,7 @@ public class PluginAction
       WebProcessManager localWebProcessManager = (WebProcessManager)localQQAppInterface.getManager(12);
       paramLebaGridItemInfo = String.valueOf(paramLebaGridItemInfo.a.pluginId);
       if ((localAppInfo != null) && (localWebProcessManager != null) && (localWebProcessManager.a(paramLebaGridItemInfo))) {
-        ThreadManager.getFileThreadHandler().post(new aebc(this, paramLebaGridItemInfo, localQQAppInterface, localAppInfo));
+        ThreadManager.getFileThreadHandler().post(new aejm(this, paramLebaGridItemInfo, localQQAppInterface, localAppInfo));
       }
     }
   }

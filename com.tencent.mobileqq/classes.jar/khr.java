@@ -1,32 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.QAVGroupConfig;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.redbag.ResultUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class khr
-  implements Runnable
+  implements View.OnTouchListener
 {
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = null;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
+  public khr(ResultUI paramResultUI) {}
   
-  public khr(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void run()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface != null) {
-      QAVGroupConfig.a("addGroupMember_" + this.jdField_a_of_type_Long, localQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
+      this.a.a("result_root OnTouch");
+      return true;
+    }
+    catch (Exception paramMotionEvent)
+    {
+      for (;;)
+      {
+        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     khr
  * JD-Core Version:    0.7.0.1
  */

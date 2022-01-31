@@ -1,17 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.CG;
 
-public class lrq
-  implements Runnable
+public final class lrq
+  implements Parcelable.Creator
 {
-  public lrq(ReadInJoyUserInfoRepository paramReadInJoyUserInfoRepository, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
-  
-  public void run()
+  public CG a(Parcel paramParcel)
   {
-    if (ReadInJoyUserInfoRepository.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository) != null) {
-      ReadInJoyUserInfoRepository.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo);
-    }
+    return new CG(paramParcel);
+  }
+  
+  public CG[] a(int paramInt)
+  {
+    return new CG[paramInt];
   }
 }
 

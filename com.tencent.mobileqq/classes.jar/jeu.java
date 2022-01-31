@@ -1,39 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.GVipFunCallMonitor;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 
-public class jeu
-  extends BroadcastReceiver
+public final class jeu
+  implements IHttpCommunicatorFlowCount
 {
-  public jeu(GVipFunCallMonitor paramGVipFunCallMonitor) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = GVipFunCallMonitor.a(this.a).a();
-      } while (paramContext == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("GVipFunCallMonitor", 2, "recv vipfuncall msg broadcast: " + paramIntent.getAction());
-      }
-    } while (!paramIntent.getAction().equals("tencent.video.q2v.AnnimateDownloadFinish"));
-    if (QLog.isColorLevel()) {
-      QLog.d("GVipFunCallMonitor", 2, "ACTION_ANNIMATE_DOWNLOAD_FINISH");
-    }
-    paramContext.e(paramIntent.getIntExtra("fun_call_id", 0));
-  }
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jeu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,21 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
 
 public class uoe
-  extends View
+  implements Runnable
 {
-  public uoe(XBubbleAnimation paramXBubbleAnimation, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public uoe(SendBirthdayWishesActivity paramSendBirthdayWishesActivity, int paramInt) {}
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new uof(this));
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setImageResource(2130837626);
+      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setContentDescription("键盘");
+      return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new uog(this));
-    }
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setImageResource(2130844609);
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setContentDescription("表情功能面板");
   }
 }
 

@@ -1,16 +1,14 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumObserver;
 
-public final class wfs
-  implements DialogInterface.OnClickListener
+public class wfs
+  extends TroopQZoneUploadAlbumObserver
 {
-  public wfs(Context paramContext) {}
+  public wfs(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    ((BlessSelectMemberActivity)this.a).W_();
+    this.a.b(65536);
   }
 }
 

@@ -1,42 +1,33 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
-import com.tencent.mobileqq.filemanager.core.FileUploader.IFlowControl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.wstt.SSCM.SSCM;
-import com.tencent.wstt.SSCM.Utils;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class acvt
-  implements FileUploader.IFlowControl
+  implements View.OnLongClickListener
 {
-  private SSCM jdField_a_of_type_ComTencentWsttSSCMSSCM = new SSCM();
+  public acvt(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public acvt(FileUploader paramFileUploader)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
-  }
-  
-  public int a(long paramLong1, long paramLong2)
-  {
-    int j = this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
-    int k = Utils.a(BaseApplication.getContext());
-    int i;
-    if (k != 1)
-    {
-      i = j;
-      if (k != 2) {}
+    if (paramView == null) {
+      return false;
     }
-    else
+    if (!this.a.b())
     {
-      i = j;
-      if (j > 16384) {
-        i = 16384;
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+      return false;
     }
-    return i;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentWsttSSCMSSCM.b();
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131362745, paramView.getContext().getString(2131434057));
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, localQQCustomMenu, new acvu(this, paramView), new acvv(this, paramView));
+    return true;
   }
 }
 

@@ -20,8 +20,8 @@ import com.tencent.component.media.ImageManagerEnv;
 import com.tencent.youtu.android.rapidnet.SuperresolutionLib;
 import com.tencent.youtu.android.rapidnet.SuperresolutionLog;
 import java.io.File;
-import pjc;
-import pjd;
+import pnu;
+import pnv;
 
 public class RapidNetUtils
 {
@@ -31,7 +31,7 @@ public class RapidNetUtils
   
   static
   {
-    SuperresolutionLog.setLogCallback(new pjc());
+    SuperresolutionLog.setLogCallback(new pnu());
   }
   
   private static int a()
@@ -39,7 +39,7 @@ public class RapidNetUtils
     if (jdField_a_of_type_Int == 0) {}
     try
     {
-      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new pjd());
+      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new pnv());
       if (arrayOfFile == null) {
         return 1;
       }

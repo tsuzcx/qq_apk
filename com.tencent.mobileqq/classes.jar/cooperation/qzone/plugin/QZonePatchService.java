@@ -1,6 +1,5 @@
 package cooperation.qzone.plugin;
 
-import amyd;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -15,7 +14,7 @@ public class QZonePatchService
     if (QLog.isColorLevel()) {
       QLog.d("QZonePluginManger", 2, "QZonePatchService onBind");
     }
-    return amyd.a().a();
+    return QZoneRemotePluginHandler.a().a();
   }
   
   public void onCreate()

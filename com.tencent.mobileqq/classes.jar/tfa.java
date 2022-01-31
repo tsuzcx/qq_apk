@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-class tfa
-  implements Runnable
+public class tfa
+  extends ClickableSpan
 {
-  tfa(tez paramtez, String paramString) {}
+  private tfa(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void run()
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    PermisionPrivacyActivity.a(this.jdField_a_of_type_Tez.a).setRightText(this.jdField_a_of_type_JavaLangString);
-    PermisionPrivacyActivity.a(this.jdField_a_of_type_Tez.a).setContentDescription("不常联系好友 " + this.jdField_a_of_type_JavaLangString);
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

@@ -1,35 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.QzoneSyncQQStoryTool;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
 public class xsl
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public xsl(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  public xsl(LoginView paramLoginView) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool = true;
-    if (NewFlowEditVideoActivity.d(this.a))
-    {
-      NewFlowEditVideoActivity.c(this.a).setSelected(false);
-      paramView = this.a;
-      if (NewFlowEditVideoActivity.d(this.a)) {
-        break label76;
+    if (paramCharSequence.length() > 0) {
+      if (this.a.b != null) {
+        this.a.b.setVisibility(0);
       }
     }
-    for (;;)
+    while (paramCharSequence.length() > 4)
     {
-      NewFlowEditVideoActivity.c(paramView, bool);
-      QzoneSyncQQStoryTool.a(NewFlowEditVideoActivity.a(this.a), NewFlowEditVideoActivity.d(this.a));
+      this.a.b(paramCharSequence.toString());
       return;
-      NewFlowEditVideoActivity.c(this.a).setSelected(true);
-      break;
-      label76:
-      bool = false;
+      if ((this.a.b != null) && (this.a.b.isShown())) {
+        this.a.b.setVisibility(8);
+      }
     }
+    this.a.a.a(false, null);
   }
 }
 

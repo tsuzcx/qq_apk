@@ -1,15 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload.Listener;
 
 public class aoeg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public aoeg(HintDrawable paramHintDrawable) {}
+  public aoeg(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.invalidateSelf();
+    if (EditWebVideoHallowenUpload.a(this.a) != null) {
+      EditWebVideoHallowenUpload.a(this.a).a();
+    }
   }
 }
 

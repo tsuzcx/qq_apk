@@ -1,33 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.RegisterProxySvcPackHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class zme
-  extends Handler
+public final class zme
+  implements DialogInterface.OnDismissListener
 {
-  public zme(RegisterProxySvcPackHandler paramRegisterProxySvcPackHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public zme(Activity paramActivity, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      this.a.c();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxySvcPack", 2, "real notify|iState:" + RegisterProxySvcPackHandler.a(this.a) + ", clientType:" + RegisterProxySvcPackHandler.a(this.a) + ", appId:" + RegisterProxySvcPackHandler.b(this.a));
-      }
-      this.a.a(2, true, new Object[] { Integer.valueOf(RegisterProxySvcPackHandler.a(this.a)), Long.valueOf(RegisterProxySvcPackHandler.a(this.a)), Long.valueOf(RegisterProxySvcPackHandler.b(this.a)) });
-    } while ((RegisterProxySvcPackHandler.a(this.a) != 0) || (this.a.a.hasMessages(101)));
-    this.a.a.sendEmptyMessageDelayed(101, 3000L);
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
   }
 }
 

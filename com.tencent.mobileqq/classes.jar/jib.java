@@ -1,24 +1,37 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.AVLog;
+import com.tencent.av.business.manager.pendant.AVEffectPendantReport;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class jib
+public final class jib
+  implements Runnable
 {
-  public int a;
-  public long a;
-  
-  public jib(AVNotifyCenter paramAVNotifyCenter, long paramLong, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "OtherTerChatingRoomInfo:mRoomId=" + this.jdField_a_of_type_Long + ", mSessionType=" + this.jdField_a_of_type_Int;
+    if ((AVEffectPendantReport.a() == null) || (AVEffectPendantReport.a().isEmpty()))
+    {
+      AVEffectPendantReport.e();
+      return;
+    }
+    AVEffectPendantReport.a(0);
+    AVEffectPendantReport.b(0);
+    Iterator localIterator = AVEffectPendantReport.a().iterator();
+    while (localIterator.hasNext())
+    {
+      PendantItem localPendantItem = (PendantItem)localIterator.next();
+      AVEffectPendantReport.a();
+      if (AVEffectPendantReport.a(localPendantItem)) {
+        AVEffectPendantReport.b();
+      }
+    }
+    AVLog.c("AVEffectPendantReport", "refleshAndSetDownloadInfo()  mTotalCount = " + AVEffectPendantReport.c() + "  mDownloadCount = " + AVEffectPendantReport.d());
+    AVEffectPendantReport.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jib
  * JD-Core Version:    0.7.0.1
  */

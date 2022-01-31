@@ -32,11 +32,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
-import nly;
-import nlz;
-import nma;
-import nmc;
-import nmd;
+import nqi;
+import nqj;
+import nqk;
+import nqm;
+import nqn;
 
 public class VidListPlayMode
   extends NewFriendsPlayMode
@@ -54,8 +54,8 @@ public class VidListPlayMode
     super(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_b_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback = new nma(this);
-    this.jdField_b_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener = new nmd(this);
+    this.jdField_b_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback = new nqk(this);
+    this.jdField_b_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener = new nqn(this);
     this.jdField_e_of_type_JavaUtilArrayList = paramBundle.getStringArrayList("EXTRA_VIDEO_ID_LIST");
     this.jdField_f_of_type_JavaUtilArrayList = paramBundle.getStringArrayList("extra_feedid_list");
     b(0);
@@ -145,7 +145,7 @@ public class VidListPlayMode
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_Int = 1;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_b_of_type_Int = paramVideoInfoListEvent.c;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nly(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nqi(this));
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -172,7 +172,7 @@ public class VidListPlayMode
       this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList);
       this.jdField_e_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-      this.jdField_a_of_type_AndroidOsHandler.post(new nlz(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new nqj(this));
       return;
       this.jdField_b_of_type_Int = paramVideoInfoListEvent.jdField_b_of_type_Int;
       if (!this.l)
@@ -222,7 +222,7 @@ public class VidListPlayMode
     super.a(paramVideoViewHolder, paramStoryVideoItem);
     paramVideoViewHolder.b.setVisibility(8);
     paramVideoViewHolder.c.setVisibility(8);
-    ((View)paramVideoViewHolder.a.get(2131372122)).setVisibility(8);
+    ((View)paramVideoViewHolder.a.get(2131372130)).setVisibility(8);
   }
   
   protected void a(String paramString1, String paramString2, String paramString3)
@@ -236,7 +236,7 @@ public class VidListPlayMode
     {
       this.jdField_e_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-      this.jdField_a_of_type_AndroidOsHandler.post(new nmc(this, bool));
+      this.jdField_a_of_type_AndroidOsHandler.post(new nqm(this, bool));
       return;
     }
   }

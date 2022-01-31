@@ -1,17 +1,24 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteEvaluateViewHolder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.troop.data.TroopAndDiscMsgProxy;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class ajih
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public ajih(ReciteEvaluateViewHolder paramReciteEvaluateViewHolder, String paramString) {}
+  public ajih(TroopAndDiscMsgProxy paramTroopAndDiscMsgProxy, boolean paramBoolean) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    ReciteEvaluateViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ReciteEvaluateViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteEvaluateViewHolder, this.jdField_a_of_type_JavaLangString);
+    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
+    String str = TroopAndDiscMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAndDiscMsgProxy).getCurrentAccountUin();
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localStatisticCollector.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
+      return;
+    }
   }
 }
 

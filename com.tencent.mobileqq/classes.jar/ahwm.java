@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
 
 public class ahwm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahwm(PublicAccountSearchEngine paramPublicAccountSearchEngine, SearchRequest paramSearchRequest, ISearchListener paramISearchListener) {}
+  public ahwm(MixSearchWebFragment paramMixSearchWebFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqSearchSearchenginePublicAccountSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
-    }
+    this.a.a(3);
+    this.a.n();
   }
 }
 

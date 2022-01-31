@@ -1,18 +1,18 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.WebSoPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webview.webso.WebSoUtils;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.biz.troopgift.RadioButtonIndicator;
 
 public class pdp
-  implements Runnable
+  extends RadioButton
 {
-  public pdp(WebSoPlugin paramWebSoPlugin, String paramString) {}
-  
-  public void run()
+  public pdp(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
   {
-    if ((WebSoUtils.c(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin.mRuntime.a() != null)) {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin.mRuntime.a().runOnUiThread(new pdq(this));
-    }
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 

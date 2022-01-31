@@ -2,7 +2,7 @@ package cooperation.qzone.UndealCount;
 
 import NS_QMALL_COVER.PassiveFeedsPush;
 import NS_QMALL_COVER.QzmallCustomBubbleSkin;
-import amtp;
+import anba;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -12,7 +12,7 @@ import cooperation.qzone.util.JceUtils;
 public class QZoneCountUserInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amtp();
+  public static final Parcelable.Creator CREATOR = new anba();
   public byte a;
   public int a;
   public long a;

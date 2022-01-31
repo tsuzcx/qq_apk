@@ -2,6 +2,7 @@ package com.tencent.biz.common.util;
 
 import android.text.TextUtils;
 import com.tencent.commonsdk.zip.QZipFile;
+import com.tencent.commonsdk.zip.QZipInputStream;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.RecycleableBufferedOutputStream;
 import java.io.BufferedInputStream;
@@ -14,7 +15,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 
 public class ZipUtils
 {
@@ -461,6 +461,82 @@ public class ZipUtils
     return new QZipFile(paramFile).entries();
   }
   
+  private static void a(QZipInputStream paramQZipInputStream, File paramFile)
+  {
+    localObject = null;
+    File localFile = null;
+    byte[] arrayOfByte = new byte[8192];
+    try
+    {
+      paramFile = RecycleableBufferedOutputStream.a(new FileOutputStream(paramFile));
+      for (;;)
+      {
+        localFile = paramFile;
+        localObject = paramFile;
+        int i = paramQZipInputStream.read(arrayOfByte, 0, arrayOfByte.length);
+        if (i == -1) {
+          break;
+        }
+        localFile = paramFile;
+        localObject = paramFile;
+        paramFile.write(arrayOfByte, 0, i);
+      }
+      try
+      {
+        ((OutputStream)localObject).close();
+        throw paramQZipInputStream;
+      }
+      catch (IOException paramFile)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ZipUtils", 2, "unZipFile2 解压错误", paramFile);
+          }
+        }
+      }
+    }
+    catch (Exception paramQZipInputStream)
+    {
+      localObject = localFile;
+      if (QLog.isColorLevel())
+      {
+        localObject = localFile;
+        QLog.e("ZipUtils", 2, "unZipFile2 解压错误", paramQZipInputStream);
+      }
+      if (localFile != null) {}
+      try
+      {
+        localFile.close();
+        do
+        {
+          do
+          {
+            return;
+          } while (paramFile == null);
+          try
+          {
+            paramFile.close();
+            return;
+          }
+          catch (IOException paramQZipInputStream) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("ZipUtils", 2, "unZipFile2 解压错误", paramQZipInputStream);
+        return;
+      }
+      catch (IOException paramQZipInputStream)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("ZipUtils", 2, "unZipFile2 解压错误", paramQZipInputStream);
+        return;
+      }
+    }
+    finally
+    {
+      if (localObject == null) {}
+    }
+  }
+  
   /* Error */
   public static void a(File paramFile, String paramString)
   {
@@ -500,7 +576,7 @@ public class ZipUtils
     //   78: new 29	java/lang/StringBuilder
     //   81: dup
     //   82: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   85: ldc 218
+    //   85: ldc 230
     //   87: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   90: aload 4
     //   92: invokevirtual 86	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
@@ -530,7 +606,7 @@ public class ZipUtils
     //   150: new 29	java/lang/StringBuilder
     //   153: dup
     //   154: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   157: ldc 220
+    //   157: ldc 232
     //   159: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   162: aload_0
     //   163: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -540,7 +616,7 @@ public class ZipUtils
     //   175: dup
     //   176: aload_0
     //   177: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
-    //   180: invokevirtual 223	java/io/File:mkdir	()Z
+    //   180: invokevirtual 235	java/io/File:mkdir	()Z
     //   183: pop
     //   184: goto -158 -> 26
     //   187: new 51	java/io/File
@@ -574,7 +650,7 @@ public class ZipUtils
     //   248: aload 7
     //   250: iconst_0
     //   251: sipush 8192
-    //   254: invokevirtual 224	java/io/InputStream:read	([BII)I
+    //   254: invokevirtual 236	java/io/InputStream:read	([BII)I
     //   257: istore_2
     //   258: iload_2
     //   259: iconst_m1
@@ -659,82 +735,6 @@ public class ZipUtils
     //   237	246	352	finally
   }
   
-  private static void a(ZipInputStream paramZipInputStream, File paramFile)
-  {
-    localObject = null;
-    File localFile = null;
-    byte[] arrayOfByte = new byte[8192];
-    try
-    {
-      paramFile = RecycleableBufferedOutputStream.a(new FileOutputStream(paramFile));
-      for (;;)
-      {
-        localFile = paramFile;
-        localObject = paramFile;
-        int i = paramZipInputStream.read(arrayOfByte, 0, arrayOfByte.length);
-        if (i == -1) {
-          break;
-        }
-        localFile = paramFile;
-        localObject = paramFile;
-        paramFile.write(arrayOfByte, 0, i);
-      }
-      try
-      {
-        ((OutputStream)localObject).close();
-        throw paramZipInputStream;
-      }
-      catch (IOException paramFile)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ZipUtils", 2, "unZipFile2 解压错误", paramFile);
-          }
-        }
-      }
-    }
-    catch (Exception paramZipInputStream)
-    {
-      localObject = localFile;
-      if (QLog.isColorLevel())
-      {
-        localObject = localFile;
-        QLog.e("ZipUtils", 2, "unZipFile2 解压错误", paramZipInputStream);
-      }
-      if (localFile != null) {}
-      try
-      {
-        localFile.close();
-        do
-        {
-          do
-          {
-            return;
-          } while (paramFile == null);
-          try
-          {
-            paramFile.close();
-            return;
-          }
-          catch (IOException paramZipInputStream) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("ZipUtils", 2, "unZipFile2 解压错误", paramZipInputStream);
-        return;
-      }
-      catch (IOException paramZipInputStream)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("ZipUtils", 2, "unZipFile2 解压错误", paramZipInputStream);
-        return;
-      }
-    }
-    finally
-    {
-      if (localObject == null) {}
-    }
-  }
-  
   public static int b(String paramString1, String paramString2)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
@@ -762,7 +762,7 @@ public class ZipUtils
     int i;
     try
     {
-      paramString1 = new ZipInputStream(new BufferedInputStream(new FileInputStream(paramString1)));
+      paramString1 = new QZipInputStream(new BufferedInputStream(new FileInputStream(paramString1)));
     }
     catch (Throwable paramString1)
     {

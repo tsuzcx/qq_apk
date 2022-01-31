@@ -1,13 +1,31 @@
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import android.os.Message;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
+import java.util.List;
 
 class olt
   implements Runnable
 {
-  olt(olq paramolq) {}
+  olt(ols paramols) {}
   
   public void run()
   {
-    this.a.a.a.a.a();
+    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      HWEditLocalVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditLocalVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
+    }
+    for (;;)
+    {
+      this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
+      HWEditLocalVideoPlayer.a(this.a.a, this.a.a.jdField_a_of_type_Int);
+      this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true);
+      return;
+      SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
+    }
   }
 }
 

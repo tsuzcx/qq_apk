@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.LogTag;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder;
 
 public class airn
-  extends MessageObserver
+  implements View.OnClickListener
 {
-  public airn(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  public airn(TeamWorkShareActionSheetBuilder paramTeamWorkShareActionSheetBuilder) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void onClick(View paramView)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    LogTag.a(String.valueOf(this.a.a.jdField_a_of_type_Long), "message", "sendMsgFinish isSuccess:" + paramBoolean + ",mr = " + this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.toString());
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
+    if ((TeamWorkShareActionSheetBuilder.a(this.a) instanceof CustomWebView))
     {
-      this.a.e();
-      return;
+      ((CustomWebView)TeamWorkShareActionSheetBuilder.a(this.a)).c("openCooperationMobile()");
+      this.a.b();
+      ReportController.b(TeamWorkShareActionSheetBuilder.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
     }
-    this.a.d();
   }
 }
 

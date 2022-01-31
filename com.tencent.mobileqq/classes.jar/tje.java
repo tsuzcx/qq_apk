@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.mobileqq.activity.Now;
 
 public class tje
-  implements Comparator
+  implements View.OnClickListener
 {
-  public tje(QQLSActivity paramQQLSActivity) {}
+  public tje(Now paramNow) {}
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public void onClick(View paramView)
   {
-    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
-      return 0;
+    if (Now.a(this.a) != null) {
+      Now.a(this.a).n();
     }
-    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
-      return 1;
-    }
-    return -1;
   }
 }
 

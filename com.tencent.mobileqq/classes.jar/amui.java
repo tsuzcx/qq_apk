@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.BusinessAlbumInfo;
+import cooperation.qappcenter.remote.RecvMsg;
+import cooperation.qappcenter.remote.RemoteServiceProxy;
+import cooperation.qappcenter.remote.SendMsg;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public final class amui
-  implements Parcelable.Creator
+public class amui
+  extends Thread
 {
-  public BusinessAlbumInfo a(Parcel paramParcel)
-  {
-    return new BusinessAlbumInfo(paramParcel, null);
-  }
+  public amui(RemoteServiceProxy paramRemoteServiceProxy) {}
   
-  public BusinessAlbumInfo[] a(int paramInt)
+  public void run()
   {
-    return new BusinessAlbumInfo[paramInt];
+    while (!this.a.a.isEmpty())
+    {
+      SendMsg localSendMsg = (SendMsg)this.a.a.poll();
+      if (localSendMsg != null) {
+        try
+        {
+          this.a.a(localSendMsg);
+        }
+        catch (Exception localException)
+        {
+          RecvMsg localRecvMsg = this.a.a(localSendMsg, "sendMsgToServiceFailed，" + localException.toString());
+          this.a.a(localSendMsg, localRecvMsg);
+        }
+      }
+    }
   }
 }
 

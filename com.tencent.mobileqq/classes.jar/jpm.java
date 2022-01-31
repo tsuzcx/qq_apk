@@ -1,45 +1,50 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
-import com.tencent.av.ui.VideoLayerUI;
+import android.os.RemoteException;
+import com.tencent.av.service.IQQServiceLocationCallback;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class jpm
-  extends Handler
+  extends LBSObserver
 {
-  public jpm(AVActivity paramAVActivity) {}
+  private List a = new ArrayList();
   
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    boolean bool = true;
-    int i = 0;
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-      return;
+    return this.a.size();
+  }
+  
+  public void a(IQQServiceLocationCallback paramIQQServiceLocationCallback)
+  {
+    if (paramIQQServiceLocationCallback != null) {
+      this.a.add(paramIQQServiceLocationCallback);
     }
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
+  }
+  
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      this.a.h(bool);
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.n();
+      IQQServiceLocationCallback localIQQServiceLocationCallback = (IQQServiceLocationCallback)localIterator.next();
+      try
+      {
+        localIQQServiceLocationCallback.a(paramBoolean, paramLBSInfo);
       }
-      paramMessage = this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
-      if (bool) {
-        i = this.a.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl.a;
+      catch (RemoteException localRemoteException) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("QQServiceForAV", 2, "Call onGetUserLocation fail", localRemoteException);
       }
-      paramMessage.e(i);
-      this.a.m();
-      return;
-      bool = false;
     }
+    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpm
  * JD-Core Version:    0.7.0.1
  */

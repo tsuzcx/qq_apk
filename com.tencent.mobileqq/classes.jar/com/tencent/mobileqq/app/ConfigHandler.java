@@ -89,16 +89,16 @@ import tencent.im.oidb.cmd0x9ae.cmd0x9ae.ReqBody;
 import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.s2c.msgtype0x210.SubMsgType0x43.UpdateTips;
-import zbq;
-import zbr;
-import zbs;
-import zbt;
-import zbu;
-import zbv;
-import zbw;
-import zbx;
-import zby;
-import zbz;
+import ziq;
+import zir;
+import zis;
+import zit;
+import ziu;
+import ziv;
+import ziw;
+import zix;
+import ziy;
+import ziz;
 
 public class ConfigHandler
   extends BusinessHandler
@@ -364,9 +364,9 @@ public class ConfigHandler
       }
       paramGetResourceRespInfo = paramGetResourceRespInfo.strResURL_big;
     } while (TextUtils.isEmpty(paramGetResourceRespInfo));
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new zbq(this, paramGetResourceRespInfo, l2));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new ziq(this, paramGetResourceRespInfo, l2));
     return;
-    ThreadManager.getFileThreadHandler().post(new zbs(this));
+    ThreadManager.getFileThreadHandler().post(new zis(this));
   }
   
   private void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
@@ -591,7 +591,7 @@ public class ConfigHandler
           QLog.d("UpgradeConfigManager", 2, "start preDownload YYB");
         }
         MyAppApi.a().a(BaseActivity.sTopActivity, 0);
-        ThreadManager.getUIHandler().postDelayed(new zbr(this), 5000L);
+        ThreadManager.getUIHandler().postDelayed(new zir(this), 5000L);
         return;
       }
     } while (!QLog.isColorLevel());
@@ -795,7 +795,7 @@ public class ConfigHandler
       } while (l1 == l2);
       paramGetResourceRespInfo = paramGetResourceRespInfo.strResURL_big;
     } while (TextUtils.isEmpty(paramGetResourceRespInfo));
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new zbt(this, paramGetResourceRespInfo, localWeatherManager, l1));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new zit(this, paramGetResourceRespInfo, localWeatherManager, l1));
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface)
@@ -1203,7 +1203,7 @@ public class ConfigHandler
     {
       String str = paramGetResourceRespInfo.strResURL_big;
       if ((str != null) && (str.length() > 0)) {
-        this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new zbu(this, str, paramGetResourceRespInfo));
+        this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new ziu(this, str, paramGetResourceRespInfo));
       }
       return;
     }
@@ -1303,7 +1303,7 @@ public class ConfigHandler
       return;
       str = paramGetResourceRespInfo.strResURL_big;
     } while ((str == null) || (str.length() <= 0));
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new zbv(this, str, paramGetResourceRespInfo));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new ziv(this, str, paramGetResourceRespInfo));
   }
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1415,7 +1415,7 @@ public class ConfigHandler
       a(7, false, Integer.valueOf(-1));
       return;
     }
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new zbw(this, str, localStatusManager, paramGetResourceRespInfo));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new ziw(this, str, localStatusManager, paramGetResourceRespInfo));
   }
   
   private void f(GetResourceRespInfo paramGetResourceRespInfo)
@@ -1436,9 +1436,9 @@ public class ConfigHandler
       }
       str = paramGetResourceRespInfo.strResURL_big;
     } while (TextUtils.isEmpty(str));
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new zbx(this, paramGetResourceRespInfo, str, l2));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new zix(this, paramGetResourceRespInfo, str, l2));
     return;
-    ThreadManager.getFileThreadHandler().post(new zby(this, paramGetResourceRespInfo));
+    ThreadManager.getFileThreadHandler().post(new ziy(this, paramGetResourceRespInfo));
   }
   
   public int a(ArrayList paramArrayList, GetResourceReqInfo... paramVarArgs)
@@ -1801,7 +1801,7 @@ public class ConfigHandler
   
   public void a(String paramString, File paramFile)
   {
-    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new zbz(this, paramString, paramFile));
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(new ziz(this, paramString, paramFile));
   }
   
   public boolean a()

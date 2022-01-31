@@ -1,18 +1,23 @@
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.TroopHandler;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class owm
-  implements TroopPluginManager.TroopPluginCallback
+public class owm
+  implements Animator.AnimatorListener
 {
-  owm(owi paramowi, String paramString1, int paramInt, String paramString2) {}
+  public owm(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void a(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Owi.a.a != null)) {
-      this.jdField_a_of_type_Owi.a.a.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, 0, this.jdField_a_of_type_Int, this.b);
-    }
+    RotateCircleImageView.b(this.a).start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

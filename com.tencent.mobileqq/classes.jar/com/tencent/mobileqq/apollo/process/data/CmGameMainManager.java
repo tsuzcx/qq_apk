@@ -8,12 +8,10 @@ import android.content.SharedPreferences.Editor;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloGameManager;
 import com.tencent.mobileqq.apollo.ApolloManager;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.process.CmGameUtil;
@@ -37,12 +35,11 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 import mqq.manager.WtloginManager;
 import org.json.JSONObject;
-import yrq;
+import yyd;
 
 public class CmGameMainManager
   implements OnApolloGameListener
@@ -54,7 +51,7 @@ public class CmGameMainManager
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
   public WeakReference a;
   public Set a;
-  yrq jdField_a_of_type_Yrq = new yrq(this);
+  yyd jdField_a_of_type_Yyd = new yyd(this);
   public boolean a;
   private WeakReference b;
   
@@ -296,13 +293,13 @@ public class CmGameMainManager
         paramString = (String)localObject1;
         if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) {
           if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionType != 1) {
-            break label875;
+            break label795;
           }
         }
       }
     }
-    label862:
-    label875:
+    label782:
+    label795:
     for (paramString = ContactUtils.e(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionUin, (String)localObject2);; paramString = null)
     {
       if (TextUtils.isEmpty(paramString))
@@ -329,36 +326,11 @@ public class CmGameMainManager
           paramString.obj = localObject1;
           paramString.sendToTarget();
         }
-        try
-        {
-          paramString = (ApolloGameManager)localQQAppInterface.getManager(210);
-          if (paramString != null)
-          {
-            localObject1 = new ArrayList();
-            ((ArrayList)localObject1).add(Integer.valueOf(i));
-            paramString.a("android.playgame", "apollo_aio_game.add_games_to_user_gamepanel", (ArrayList)localObject1);
-          }
-        }
-        catch (Exception paramString)
-        {
-          for (;;)
-          {
-            long l;
-            int j;
-            QLog.e("cmgame_process.CmGameMainManager", 1, "errInfo->" + paramString.getMessage());
-            continue;
-            this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.jdField_e_of_type_JavaLangString = "厘米互动";
-            paramString = "厘米互动";
-            i = 0;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.jdField_f_of_type_JavaLangString = ((JSONObject)localObject1).toString();
-          return;
-        }
-        l = localJSONObject.optLong("roomId");
+        long l = localJSONObject.optLong("roomId");
         if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (0L != l)) {
           this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId = l;
         }
-        j = localJSONObject.optInt("gameMode");
+        int j = localJSONObject.optInt("gameMode");
         VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "join_game", ApolloUtil.a(localSessionInfo, localQQAppInterface), 0, new String[] { "" + i, "", "", "" + l });
         this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.jdField_e_of_type_Int = i;
         this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.b = l;
@@ -369,26 +341,34 @@ public class CmGameMainManager
         {
           paramString = paramString.a(((ApolloGameData)localObject1).actionId);
           if (paramString == null) {
-            break label862;
+            break label782;
           }
         }
         for (paramString = paramString.actionName;; paramString = "厘米互动")
         {
           i = ((ApolloGameData)localObject1).actionId;
           this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.jdField_e_of_type_JavaLangString = ((ApolloGameData)localObject1).name;
-          this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.d = paramString;
-          this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.jdField_f_of_type_Int = i;
-          paramString = localJSONObject.optString("extendInfo");
-          localObject1 = new JSONObject();
-          if (TextUtils.isEmpty(paramString)) {
-            break;
-          }
-          ((JSONObject)localObject1).put("extendInfo", paramString);
-          if (paramString.length() >= 100)
+          for (;;)
           {
+            this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.d = paramString;
+            this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.jdField_f_of_type_Int = i;
+            paramString = localJSONObject.optString("extendInfo");
+            localObject1 = new JSONObject();
+            if (TextUtils.isEmpty(paramString)) {
+              return;
+            }
+            ((JSONObject)localObject1).put("extendInfo", paramString);
+            if (paramString.length() < 100) {
+              break;
+            }
             QLog.w("cmgame_process.CmGameMainManager", 1, "[onJoinRoom],extendInfo is too long, extendInfo:" + paramString);
             return;
+            this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.jdField_e_of_type_JavaLangString = "厘米互动";
+            paramString = "厘米互动";
+            i = 0;
           }
+          this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo.jdField_f_of_type_JavaLangString = ((JSONObject)localObject1).toString();
+          return;
         }
       }
     }
@@ -427,9 +407,9 @@ public class CmGameMainManager
         }
         localObject2 = ((QQAppInterface)localObject1).getCurrentAccountUin();
         localObject1 = (WtloginManager)((QQAppInterface)localObject1).getManager(1);
-        this.jdField_a_of_type_Yrq.jdField_a_of_type_Int = paramString.gameId;
-        this.jdField_a_of_type_Yrq.b = paramInt;
-        ((WtloginManager)localObject1).GetOpenKeyWithoutPasswd((String)localObject2, 16L, paramString.appId, this.jdField_a_of_type_Yrq);
+        this.jdField_a_of_type_Yyd.jdField_a_of_type_Int = paramString.gameId;
+        this.jdField_a_of_type_Yyd.b = paramInt;
+        ((WtloginManager)localObject1).GetOpenKeyWithoutPasswd((String)localObject2, 16L, paramString.appId, this.jdField_a_of_type_Yyd);
         paramString.lastRequestOpenKey = System.currentTimeMillis();
       } while (!QLog.isColorLevel());
       QLog.d("cmgame_process.CmGameMainManager", 2, "do get open key.");
@@ -592,34 +572,6 @@ public class CmGameMainManager
     Message localMessage = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(17);
     localMessage.obj = paramString;
     localMessage.sendToTarget();
-  }
-  
-  public void j(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaLangRefWeakReference == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localContext != null)
-        {
-          paramString = new JSONObject(paramString).getString("puin");
-          Intent localIntent = new Intent(localContext, AccountDetailActivity.class);
-          localIntent.putExtra("uin", paramString);
-          localIntent.putExtra("report_src_param_type", "");
-          localIntent.putExtra("report_src_param_name", "");
-          localIntent.setFlags(67108864);
-          localContext.startActivity(localIntent);
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("cmgame_process.CmGameMainManager", 1, "ENTER_PUBACCOUNT_CARD error:", paramString);
-      }
-    }
   }
 }
 

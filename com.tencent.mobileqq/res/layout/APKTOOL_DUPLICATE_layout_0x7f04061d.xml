@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0419" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1caf" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021184" android:visibility="visible" android:layout_width="204.0dip" android:layout_height="35.5dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cf2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb0" android:layout_width="204.0dip" android:layout_height="32.0dip" android:layout_marginTop="3.5dip">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" />
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" />
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" />
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" />
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:textColorHighlight="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10ce" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="8.0dip" android:text="等人参与 >" />
+    </LinearLayout>
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cb1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="DebugText" />
+</FrameLayout>

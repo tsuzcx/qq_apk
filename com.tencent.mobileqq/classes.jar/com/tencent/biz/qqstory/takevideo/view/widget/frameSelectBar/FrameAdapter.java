@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import omh;
+import oqt;
 
 public class FrameAdapter
   extends BaseAdapter
@@ -73,7 +73,7 @@ public class FrameAdapter
       paramViewGroup = new ViewGroup.LayoutParams(this.b, i);
       paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       paramView.setLayoutParams(paramViewGroup);
-      paramViewGroup = new omh();
+      paramViewGroup = new oqt();
       paramViewGroup.a = paramView;
       paramViewGroup.a.setImageDrawable(new ColorDrawable(-12303292));
       paramView.setTag(paramViewGroup);
@@ -82,7 +82,7 @@ public class FrameAdapter
     {
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader.a(paramViewGroup.a, Integer.valueOf(paramInt));
       return paramView;
-      paramViewGroup = (omh)paramView.getTag();
+      paramViewGroup = (oqt)paramView.getTag();
     }
   }
 }

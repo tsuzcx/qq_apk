@@ -1,21 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.VideoUrl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkBridgeActivity;
 
-public final class amuy
-  implements Parcelable.Creator
+public class amuy
+  implements DialogInterface.OnDismissListener
 {
-  public VideoUrl a(Parcel paramParcel)
-  {
-    VideoUrl localVideoUrl = new VideoUrl();
-    localVideoUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localVideoUrl.jdField_a_of_type_Int = paramParcel.readInt();
-    return localVideoUrl;
-  }
+  public amuy(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
-  public VideoUrl[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new VideoUrl[paramInt];
+    this.a.finish();
   }
 }
 

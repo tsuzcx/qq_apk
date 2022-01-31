@@ -1,288 +1,304 @@
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.Base64;
-import android.widget.TextView;
-import com.qq.im.poi.LbsPackInfo;
-import com.qq.im.poi.LbsPackManager;
-import com.qq.im.poi.LbsPackMapInfo;
-import com.qq.im.poi.LbsPackPoiInfo;
-import com.qq.im.poi.LbsStrangerPoiDialog;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapManager;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.ArMapUtil;
-import com.tencent.mobileqq.armap.config.ARMapConfig;
-import com.tencent.mobileqq.armap.config.ARMapConfig.ResInfo;
-import com.tencent.mobileqq.armap.config.OpenBoxCheckHander;
-import com.tencent.mobileqq.armap.config.ShopScanCheckHandler;
-import com.tencent.mobileqq.armap.config.ShopScanCheckHandler.Info;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog.LbsRedBagExtraData;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog.POIExtarData;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.URLUtil;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.vip.DownloadListener;
+import java.io.File;
 
-public class aazs
-  implements Runnable
+class aazs
+  extends DownloadListener
 {
-  public aazs(ARMapActivity paramARMapActivity, int paramInt1, int paramInt2, long paramLong1, long paramLong2, int paramInt3, String paramString1, String paramString2, String paramString3, int paramInt4, int paramInt5, double paramDouble1, double paramDouble2, Object paramObject) {}
+  aazs(aazr paramaazr, File paramFile) {}
   
-  public void run()
+  /* Error */
+  public void onDone(com.tencent.mobileqq.vip.DownloadTask paramDownloadTask)
   {
-    if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity)) {}
-    label34:
-    Object localObject1;
-    label318:
-    label323:
-    label584:
-    label599:
-    label614:
-    Object localObject3;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              QQToast.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getApplicationContext(), 2131437312, 1).b(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getTitleBarHeight());
-                              break label34;
-                              break label34;
-                              break label34;
-                              break label34;
-                              break label34;
-                              break label34;
-                              break label34;
-                              break label34;
-                              break label34;
-                              break label34;
-                              break label34;
-                              break label34;
-                              do
-                              {
-                                return;
-                              } while ((this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.app == null) || (this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.isFinishing()));
-                              if ((this.jdField_a_of_type_Int == 6) && (this.jdField_b_of_type_Int == 1))
-                              {
-                                i = 1;
-                                if (QLog.isDevelopLevel()) {
-                                  QLog.i("ARMapActivity", 4, String.format(Locale.getDefault(), "onClickPOINode [taskType: %d, taskId: %d, poiId: %d, taskStatus: %d, distance: %d, jumpUrl: %s, busi:%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.jdField_b_of_type_Long), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
-                                }
-                                if (((this.jdField_c_of_type_Int <= ARMapActivity.jdField_a_of_type_Int) && (i == 0)) || (this.jdField_a_of_type_Int == 12)) {
-                                  break label323;
-                                }
-                                if (this.jdField_a_of_type_Int != 11) {
-                                  break label318;
-                                }
-                              }
-                              for (int i = 3;; i = 0)
-                              {
-                                localObject1 = new ARGridMapViewDialog.POIExtarData(this.jdField_b_of_type_Long, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
-                                ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, new ARGridMapViewDialog(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.app, ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity), this.d, this.e, i, localObject1, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_e_of_type_Boolean));
-                                ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).setOnDismissListener(new aazt(this));
-                                ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).b();
-                                return;
-                                i = 0;
-                                break;
-                              }
-                              if ((this.jdField_a_of_type_Int != 4) && (this.jdField_a_of_type_Int != 6) && (this.jdField_a_of_type_Int != 5) && (this.jdField_a_of_type_Int != 7)) {
-                                break label614;
-                              }
-                              localObject1 = (ARMapManager)this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.app.getManager(209);
-                              if (localObject1 == null) {
-                                break label599;
-                              }
-                              localObject2 = ((ARMapManager)localObject1).a(true);
-                              if (localObject2 == null) {
-                                break label584;
-                              }
-                              localObject1 = ((ARMapConfig)localObject2).openBoxRes.url;
-                              localObject2 = ((ARMapConfig)localObject2).openBoxRes.md5;
-                              if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
-                                break;
-                              }
-                            } while (this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.isFinishing());
-                            if (this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog == null)
-                            {
-                              this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 2131624516);
-                              this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog.setCanceledOnTouchOutside(false);
-                              this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog.show();
-                              this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
-                            }
-                            ((TextView)this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399)).setText("正在加载...");
-                            if (!this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.isFinishing()) {
-                              this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog.show();
-                            }
-                            this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapConfigOpenBoxCheckHander.a((String)localObject1, (String)localObject2, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_c_of_type_Int, this.jdField_b_of_type_JavaLangString, true, this.jdField_a_of_type_JavaLangString);
-                            return;
-                          } while (!QLog.isColorLevel());
-                          QLog.e("ARMapActivity", 2, "url or md5 is empty!");
-                          return;
-                        } while (!QLog.isColorLevel());
-                        QLog.e("ARMapActivity", 2, "armapconfig is null!");
-                        return;
-                      } while (!QLog.isColorLevel());
-                      QLog.e("ARMapActivity", 2, "armapmanager is null!");
-                      return;
-                      if (this.jdField_a_of_type_Int != 9) {
-                        break;
-                      }
-                      localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, QQBrowserActivity.class);
-                      localObject2 = this.jdField_a_of_type_JavaLangString;
-                      localObject3 = this.jdField_a_of_type_Double + "," + this.jdField_b_of_type_Double;
-                      if (QLog.isColorLevel()) {
-                        QLog.d("ARMapActivity", 2, "goto city eeg location: " + (String)localObject3);
-                      }
-                      localObject2 = URLUtil.a((String)localObject2, "slocation", new String(Base64.encode(((String)localObject3).getBytes(), 0)));
-                      ((Intent)localObject1).putExtra("url", (String)localObject2);
-                      this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.startActivity((Intent)localObject1);
-                    } while (!QLog.isColorLevel());
-                    QLog.d("ARMapActivity", 2, "goto city eeg url: " + (String)localObject2);
-                    return;
-                    if (this.jdField_a_of_type_Int != 11) {
-                      break;
-                    }
-                    localObject1 = (ARMapManager)this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.app.getManager(209);
-                  } while (localObject1 == null);
-                  localObject1 = ((ARMapManager)localObject1).a(true);
-                } while (localObject1 == null);
-                ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, new ARMapPOIStarDialog(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, ((ARMapConfig)localObject1).starWebUrl, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.app));
-                ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).setOnDismissListener(new aazu(this));
-                ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).a(this.d, this.e);
-                return;
-                if (this.jdField_a_of_type_Int != 12) {
-                  break;
-                }
-                localObject1 = (LbsPackManager)this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getAppRuntime().getManager(214);
-                localObject2 = ((LbsPackManager)localObject1).a();
-              } while (localObject2 == null);
-              localObject2 = (LbsPackPoiInfo)((LbsPackMapInfo)localObject2).a.get(Long.valueOf(this.jdField_b_of_type_Long));
-            } while ((localObject2 == null) || (((LbsPackPoiInfo)localObject2).jdField_a_of_type_JavaUtilArrayList == null));
-            if (QLog.isColorLevel()) {
-              QLog.d("ARMapActivity", 2, "click node found poi=" + ((LbsPackPoiInfo)localObject2).jdField_a_of_type_Long + " num=" + ((LbsPackPoiInfo)localObject2).jdField_c_of_type_Int);
-            }
-          } while (((LbsPackPoiInfo)localObject2).jdField_a_of_type_JavaUtilArrayList.size() <= 0);
-          localObject3 = (LbsPackInfo)((LbsPackPoiInfo)localObject2).jdField_a_of_type_JavaUtilArrayList.get(0);
-        } while (localObject3 == null);
-        if (((LbsPackInfo)localObject3).jdField_a_of_type_Int == 1)
-        {
-          ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, new LbsStrangerPoiDialog(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.app, this.jdField_b_of_type_Long, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, ((LbsPackInfo)localObject3).jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_e_of_type_Long));
-          ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).a((LbsPackInfo)localObject3, ((LbsPackPoiInfo)localObject2).jdField_c_of_type_Int);
-          ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).setOnDismissListener(new aazv(this));
-          ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).a(this.d, this.e);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ARMapActivity", 2, "click node distance:" + this.jdField_c_of_type_Int + " lo2=" + this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_Double + " la2=" + this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_b_of_type_Double + " award=" + ((LbsPackManager)localObject1).a.g);
-        }
-        if (this.jdField_c_of_type_Int > ((LbsPackManager)localObject1).a.g)
-        {
-          localObject1 = new ARGridMapViewDialog.LbsRedBagExtraData(this.jdField_b_of_type_Long, this.jdField_a_of_type_Long, 12, this.jdField_c_of_type_Int, ((LbsPackInfo)localObject3).jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_e_of_type_Long);
-          ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, new ARGridMapViewDialog(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.app, ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity), this.d, this.e, 2, localObject1, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_e_of_type_Boolean));
-          ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).setOnDismissListener(new aazw(this));
-          ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).b();
-          return;
-        }
-        localObject1 = ((LbsPackManager)localObject1).c();
-        if (TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog == null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 2131624516);
-            this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog.setCanceledOnTouchOutside(false);
-            this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog.show();
-            this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
-          }
-          ((TextView)this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399)).setText("正在加载资源...");
-          if (!this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.isFinishing()) {
-            this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidAppProgressDialog.show();
-          }
-          localObject1 = ((ARMapManager)this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.app.getManager(209)).a(true);
-          this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapConfigOpenBoxCheckHander.a(((ARMapConfig)localObject1).openBoxRes.url, ((ARMapConfig)localObject1).openBoxRes.md5, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_c_of_type_Int, this.jdField_b_of_type_JavaLangString, true, "");
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a("{}", this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_c_of_type_Int, this.jdField_b_of_type_JavaLangString, true, (String)localObject1, "");
-        return;
-      } while ((this.jdField_a_of_type_Int != 10) || (this.jdField_a_of_type_JavaLangObject == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof Object[])) || (((Object[])this.jdField_a_of_type_JavaLangObject).length < 2));
-      if (Math.abs(System.currentTimeMillis() - ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity)) >= 2000L) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ARMapActivity", 2, "onClickPoi, shop scan gap < 2000ms");
-    return;
-    ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, System.currentTimeMillis());
-    Object localObject2 = (Object[])this.jdField_a_of_type_JavaLangObject;
-    if (localObject2[0] == null)
-    {
-      localObject1 = "";
-      label1705:
-      if (localObject2[1] != null) {
-        break label1996;
-      }
-    }
-    label1996:
-    for (localObject2 = "";; localObject2 = localObject2[1].toString())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapActivity", 2, "onClickPoi, taskType=10, xmlUrl=" + (String)localObject1 + ", imgrl=" + (String)localObject2);
-      }
-      if (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity) == null) {
-        ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, new aazx(this));
-      }
-      if (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity) == null)
-      {
-        ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, new ShopScanCheckHandler(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.app));
-        ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).a(ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.removeMessages(8);
-      this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.obtainMessage(8), 2000L);
-      localObject3 = (ARMapManager)this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.app.getManager(209);
-      if (localObject3 == null) {
-        break;
-      }
-      ShopScanCheckHandler.Info localInfo = new ShopScanCheckHandler.Info();
-      localInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localInfo.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-      localInfo.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
-      localInfo.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localInfo.jdField_b_of_type_JavaLangString = ArMapUtil.a((String)localObject1);
-      localInfo.jdField_c_of_type_JavaLangString = ((String)localObject2);
-      localInfo.d = ArMapUtil.a((String)localObject2);
-      localInfo.i = ((ARMapManager)localObject3).a(true).shopScanTips;
-      ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity).a(localInfo);
-      return;
-      localObject1 = localObject2[0].toString();
-      break label1705;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: invokespecial 25	com/tencent/mobileqq/vip/DownloadListener:onDone	(Lcom/tencent/mobileqq/vip/DownloadTask;)V
+    //   5: aload_1
+    //   6: getfield 30	com/tencent/mobileqq/vip/DownloadTask:a	I
+    //   9: ifne +79 -> 88
+    //   12: aload_0
+    //   13: getfield 13	aazs:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   16: invokevirtual 36	java/io/File:length	()J
+    //   19: l2i
+    //   20: istore_2
+    //   21: iload_2
+    //   22: ifne +123 -> 145
+    //   25: new 21	java/lang/Exception
+    //   28: dup
+    //   29: ldc 38
+    //   31: invokespecial 41	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   34: athrow
+    //   35: astore 5
+    //   37: aconst_null
+    //   38: astore 4
+    //   40: aload 4
+    //   42: astore_3
+    //   43: ldc 43
+    //   45: ldc 45
+    //   47: iconst_2
+    //   48: anewarray 47	java/lang/Object
+    //   51: dup
+    //   52: iconst_0
+    //   53: aload_0
+    //   54: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   57: getfield 52	aazr:jdField_a_of_type_Abad	Labad;
+    //   60: getfield 57	abad:a	Ljava/lang/String;
+    //   63: aastore
+    //   64: dup
+    //   65: iconst_1
+    //   66: aload 5
+    //   68: invokevirtual 61	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   71: aastore
+    //   72: invokestatic 67	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   75: invokestatic 73	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   78: aload 4
+    //   80: ifnull +8 -> 88
+    //   83: aload 4
+    //   85: invokevirtual 78	java/io/FileInputStream:close	()V
+    //   88: ldc 43
+    //   90: ldc 80
+    //   92: iconst_2
+    //   93: anewarray 47	java/lang/Object
+    //   96: dup
+    //   97: iconst_0
+    //   98: aload_0
+    //   99: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   102: getfield 52	aazr:jdField_a_of_type_Abad	Labad;
+    //   105: getfield 57	abad:a	Ljava/lang/String;
+    //   108: aastore
+    //   109: dup
+    //   110: iconst_1
+    //   111: aload_1
+    //   112: getfield 30	com/tencent/mobileqq/vip/DownloadTask:a	I
+    //   115: invokestatic 86	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   118: aastore
+    //   119: invokestatic 67	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   122: invokestatic 73	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   125: aload_0
+    //   126: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   129: getfield 89	aazr:jdField_a_of_type_ComTencentMobileqqArkArkAppCGI	Lcom/tencent/mobileqq/ark/ArkAppCGI;
+    //   132: aload_0
+    //   133: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   136: getfield 52	aazr:jdField_a_of_type_Abad	Labad;
+    //   139: iconst_0
+    //   140: aconst_null
+    //   141: invokestatic 94	com/tencent/mobileqq/ark/ArkAppCGI:a	(Lcom/tencent/mobileqq/ark/ArkAppCGI;Labad;Z[B)V
+    //   144: return
+    //   145: new 75	java/io/FileInputStream
+    //   148: dup
+    //   149: aload_0
+    //   150: getfield 13	aazs:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   153: invokespecial 97	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   156: astore 4
+    //   158: aload 4
+    //   160: astore_3
+    //   161: iload_2
+    //   162: newarray byte
+    //   164: astore 5
+    //   166: aload 4
+    //   168: astore_3
+    //   169: aload 4
+    //   171: aload 5
+    //   173: invokevirtual 101	java/io/FileInputStream:read	([B)I
+    //   176: pop
+    //   177: aload 4
+    //   179: astore_3
+    //   180: aload 4
+    //   182: invokevirtual 78	java/io/FileInputStream:close	()V
+    //   185: aload 4
+    //   187: astore_3
+    //   188: aload_0
+    //   189: getfield 13	aazs:jdField_a_of_type_JavaIoFile	Ljava/io/File;
+    //   192: invokevirtual 105	java/io/File:delete	()Z
+    //   195: pop
+    //   196: aload 4
+    //   198: astore_3
+    //   199: aload_0
+    //   200: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   203: getfield 89	aazr:jdField_a_of_type_ComTencentMobileqqArkArkAppCGI	Lcom/tencent/mobileqq/ark/ArkAppCGI;
+    //   206: aload_0
+    //   207: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   210: getfield 52	aazr:jdField_a_of_type_Abad	Labad;
+    //   213: iconst_1
+    //   214: aload 5
+    //   216: invokestatic 94	com/tencent/mobileqq/ark/ArkAppCGI:a	(Lcom/tencent/mobileqq/ark/ArkAppCGI;Labad;Z[B)V
+    //   219: aload 4
+    //   221: ifnull -77 -> 144
+    //   224: aload 4
+    //   226: invokevirtual 78	java/io/FileInputStream:close	()V
+    //   229: return
+    //   230: astore_1
+    //   231: ldc 43
+    //   233: ldc 107
+    //   235: iconst_2
+    //   236: anewarray 47	java/lang/Object
+    //   239: dup
+    //   240: iconst_0
+    //   241: aload_0
+    //   242: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   245: getfield 52	aazr:jdField_a_of_type_Abad	Labad;
+    //   248: getfield 57	abad:a	Ljava/lang/String;
+    //   251: aastore
+    //   252: dup
+    //   253: iconst_1
+    //   254: aload_1
+    //   255: invokevirtual 61	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   258: aastore
+    //   259: invokestatic 67	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   262: invokestatic 73	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   265: return
+    //   266: astore_3
+    //   267: ldc 43
+    //   269: ldc 107
+    //   271: iconst_2
+    //   272: anewarray 47	java/lang/Object
+    //   275: dup
+    //   276: iconst_0
+    //   277: aload_0
+    //   278: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   281: getfield 52	aazr:jdField_a_of_type_Abad	Labad;
+    //   284: getfield 57	abad:a	Ljava/lang/String;
+    //   287: aastore
+    //   288: dup
+    //   289: iconst_1
+    //   290: aload_3
+    //   291: invokevirtual 61	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   294: aastore
+    //   295: invokestatic 67	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   298: invokestatic 73	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   301: goto -213 -> 88
+    //   304: astore 5
+    //   306: aconst_null
+    //   307: astore 4
+    //   309: aload 4
+    //   311: astore_3
+    //   312: ldc 43
+    //   314: ldc 109
+    //   316: iconst_2
+    //   317: anewarray 47	java/lang/Object
+    //   320: dup
+    //   321: iconst_0
+    //   322: aload_0
+    //   323: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   326: getfield 52	aazr:jdField_a_of_type_Abad	Labad;
+    //   329: getfield 57	abad:a	Ljava/lang/String;
+    //   332: aastore
+    //   333: dup
+    //   334: iconst_1
+    //   335: aload 5
+    //   337: invokevirtual 110	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   340: aastore
+    //   341: invokestatic 67	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   344: invokestatic 73	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   347: aload 4
+    //   349: ifnull -261 -> 88
+    //   352: aload 4
+    //   354: invokevirtual 78	java/io/FileInputStream:close	()V
+    //   357: goto -269 -> 88
+    //   360: astore_3
+    //   361: ldc 43
+    //   363: ldc 107
+    //   365: iconst_2
+    //   366: anewarray 47	java/lang/Object
+    //   369: dup
+    //   370: iconst_0
+    //   371: aload_0
+    //   372: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   375: getfield 52	aazr:jdField_a_of_type_Abad	Labad;
+    //   378: getfield 57	abad:a	Ljava/lang/String;
+    //   381: aastore
+    //   382: dup
+    //   383: iconst_1
+    //   384: aload_3
+    //   385: invokevirtual 61	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   388: aastore
+    //   389: invokestatic 67	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   392: invokestatic 73	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   395: goto -307 -> 88
+    //   398: astore_1
+    //   399: aconst_null
+    //   400: astore_3
+    //   401: aload_3
+    //   402: ifnull +7 -> 409
+    //   405: aload_3
+    //   406: invokevirtual 78	java/io/FileInputStream:close	()V
+    //   409: aload_1
+    //   410: athrow
+    //   411: astore_3
+    //   412: ldc 43
+    //   414: ldc 107
+    //   416: iconst_2
+    //   417: anewarray 47	java/lang/Object
+    //   420: dup
+    //   421: iconst_0
+    //   422: aload_0
+    //   423: getfield 11	aazs:jdField_a_of_type_Aazr	Laazr;
+    //   426: getfield 52	aazr:jdField_a_of_type_Abad	Labad;
+    //   429: getfield 57	abad:a	Ljava/lang/String;
+    //   432: aastore
+    //   433: dup
+    //   434: iconst_1
+    //   435: aload_3
+    //   436: invokevirtual 61	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   439: aastore
+    //   440: invokestatic 67	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   443: invokestatic 73	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   446: goto -37 -> 409
+    //   449: astore_1
+    //   450: goto -49 -> 401
+    //   453: astore 5
+    //   455: goto -146 -> 309
+    //   458: astore 5
+    //   460: goto -420 -> 40
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	463	0	this	aazs
+    //   0	463	1	paramDownloadTask	com.tencent.mobileqq.vip.DownloadTask
+    //   20	142	2	i	int
+    //   42	157	3	localFileInputStream1	java.io.FileInputStream
+    //   266	25	3	localException1	java.lang.Exception
+    //   311	1	3	localFileInputStream2	java.io.FileInputStream
+    //   360	25	3	localException2	java.lang.Exception
+    //   400	6	3	localObject	java.lang.Object
+    //   411	25	3	localException3	java.lang.Exception
+    //   38	315	4	localFileInputStream3	java.io.FileInputStream
+    //   35	32	5	localException4	java.lang.Exception
+    //   164	51	5	arrayOfByte	byte[]
+    //   304	32	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   453	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   458	1	5	localException5	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   12	21	35	java/lang/Exception
+    //   25	35	35	java/lang/Exception
+    //   145	158	35	java/lang/Exception
+    //   224	229	230	java/lang/Exception
+    //   83	88	266	java/lang/Exception
+    //   12	21	304	java/lang/OutOfMemoryError
+    //   25	35	304	java/lang/OutOfMemoryError
+    //   145	158	304	java/lang/OutOfMemoryError
+    //   352	357	360	java/lang/Exception
+    //   12	21	398	finally
+    //   25	35	398	finally
+    //   145	158	398	finally
+    //   405	409	411	java/lang/Exception
+    //   43	78	449	finally
+    //   161	166	449	finally
+    //   169	177	449	finally
+    //   180	185	449	finally
+    //   188	196	449	finally
+    //   199	219	449	finally
+    //   312	347	449	finally
+    //   161	166	453	java/lang/OutOfMemoryError
+    //   169	177	453	java/lang/OutOfMemoryError
+    //   180	185	453	java/lang/OutOfMemoryError
+    //   188	196	453	java/lang/OutOfMemoryError
+    //   199	219	453	java/lang/OutOfMemoryError
+    //   161	166	458	java/lang/Exception
+    //   169	177	458	java/lang/Exception
+    //   180	185	458	java/lang/Exception
+    //   188	196	458	java/lang/Exception
+    //   199	219	458	java/lang/Exception
   }
 }
 

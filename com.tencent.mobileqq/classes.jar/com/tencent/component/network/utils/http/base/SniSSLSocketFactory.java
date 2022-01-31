@@ -6,7 +6,7 @@ import java.security.KeyStore;
 import javax.net.ssl.SSLSocket;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.params.HttpParams;
-import plf;
+import ppx;
 
 public class SniSSLSocketFactory
   extends SSLSocketFactory
@@ -14,7 +14,7 @@ public class SniSSLSocketFactory
   public SniSSLSocketFactory(KeyStore paramKeyStore)
   {
     super(paramKeyStore);
-    setHostnameVerifier(new plf(this));
+    setHostnameVerifier(new ppx(this));
   }
   
   public static void a(Socket paramSocket, String paramString)

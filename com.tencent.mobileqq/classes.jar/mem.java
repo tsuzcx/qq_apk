@@ -1,30 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 
 public class mem
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public mem(VideoFeedsRecommendManager paramVideoFeedsRecommendManager) {}
+  public mem(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    VideoFeedsRecommendManager.a(this.a, ReadInJoyHelper.D(VideoFeedsRecommendManager.a(this.a)));
-    VideoFeedsRecommendManager.b(this.a, ReadInJoyHelper.E(VideoFeedsRecommendManager.a(this.a)));
-    VideoFeedsRecommendManager.a(this.a, ReadInJoyHelper.a(VideoFeedsRecommendManager.a(this.a)));
-    VideoFeedsRecommendManager.c(this.a, ReadInJoyHelper.F(VideoFeedsRecommendManager.a(this.a)));
-    if ((VideoFeedsRecommendManager.a(this.a) < 0.0F) || (VideoFeedsRecommendManager.a(this.a) > 1.0D)) {
-      VideoFeedsRecommendManager.a(this.a, 0.8F);
-    }
-    if (VideoFeedsRecommendManager.a(this.a) < 1000) {
-      VideoFeedsRecommendManager.b(this.a, 40000);
-    }
-    if (VideoFeedsRecommendManager.b(this.a) != 0) {
-      VideoFeedsRecommendManager.a(this.a, true);
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsRecommendManager", 2, "init() 开关配置，mIsOpened = " + VideoFeedsRecommendManager.a(this.a) + ", mStrategyID = " + VideoFeedsRecommendManager.b(this.a) + ", mStrategyDurationLimit = " + VideoFeedsRecommendManager.a(this.a) + ", mStrategyDurationPercent = " + VideoFeedsRecommendManager.a(this.a) + ", mOperator = " + VideoFeedsRecommendManager.c(this.a));
+      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
     }
+    if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).b()) && (VideoFeedsAdapter.g(this.a)) && (!VideoFeedsAdapter.i(this.a)) && (VideoFeedsAdapter.h(this.a))) {
+      VideoFeedsAdapter.a(this.a).d();
+    }
+    VideoFeedsAdapter.a(this.a).setNeedDetectScreenOrientation(true);
+    VideoFeedsAdapter.e(this.a, false);
   }
 }
 

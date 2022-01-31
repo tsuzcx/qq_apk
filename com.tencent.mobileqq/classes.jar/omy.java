@@ -1,31 +1,32 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerListener;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 
-class omy
-  implements Animator.AnimatorListener
+public class omy
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  omy(omw paramomw) {}
+  public omy(TextLayer.TextItem paramTextItem) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((StoryMultiFragmentPart.a(this.a.a) != null) && (StoryMultiFragmentPart.b(this.a.a) != null) && (StoryMultiFragmentPart.a(this.a.a) != null))
-    {
-      StoryMultiFragmentPart.a(this.a.a).setVisibility(8);
-      StoryMultiFragmentPart.b(this.a.a).setImageBitmap(this.a.b);
-      StoryMultiFragmentPart.b(this.a.a).setVisibility(0);
-      StoryMultiFragmentPart.a(this.a.a).setText(StoryMultiFragmentPart.a(this.a.a) + "");
-      StoryMultiFragmentPart.a(this.a.a).setVisibility(0);
+    if (TextLayer.a(this.a.a) == null) {
+      return;
     }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.l = (this.a.d + this.a.f * f);
+    this.a.m = (this.a.e + this.a.g * f);
+    this.a.j = (this.a.b + this.a.h * f);
+    this.a.k = (this.a.c + this.a.i * f);
+    if (this.a.a.a != null) {
+      this.a.a.a.a(f);
+    }
+    if (f == 1.0F) {
+      TextLayer.a(this.a.a, null);
+    }
+    TextLayer.a(this.a.a);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

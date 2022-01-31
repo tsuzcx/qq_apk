@@ -1,22 +1,20 @@
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate.CallBack;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import mqq.util.WeakReference;
 
-public class uwq
-  implements CustomAccessibilityDelegate.CallBack
+class uwq
+  implements Runnable
 {
-  public uwq(FileItemBuilder paramFileItemBuilder, uwr paramuwr) {}
+  uwq(uwo paramuwo, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    QLog.e("ACCESS_SILAS", 1, "onViewFocus");
-    this.jdField_a_of_type_Uwr.e = 0;
-  }
-  
-  public void b()
-  {
-    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
-    this.jdField_a_of_type_Uwr.e = -1;
+    if (DoodleMsgView.a(this.jdField_a_of_type_Uwo.a) != null)
+    {
+      uwt localuwt = (uwt)DoodleMsgView.a(this.jdField_a_of_type_Uwo.a).get();
+      if (localuwt != null) {
+        localuwt.a(this.jdField_a_of_type_Int);
+      }
+    }
   }
 }
 

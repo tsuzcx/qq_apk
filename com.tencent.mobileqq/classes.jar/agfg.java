@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class agfg
+class agfg
   implements Runnable
 {
-  public agfg(ScanTorchActivity paramScanTorchActivity) {}
+  agfg(agfe paramagfe) {}
   
   public void run()
   {
-    ScanTorchActivity.i(this.a);
-    ScanTorchActivity.j(this.a);
-    ScanTorchActivity.k(this.a);
-    ScanTorchActivity.c(this.a, false);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439068, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agfg
  * JD-Core Version:    0.7.0.1
  */

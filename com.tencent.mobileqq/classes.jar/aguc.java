@@ -1,55 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.qcall.QCallCardInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
-public final class aguc
-  implements Parcelable.Creator
+class aguc
+  implements Runnable
 {
-  public QCallCardInfo a(Parcel paramParcel)
-  {
-    QCallCardInfo localQCallCardInfo = new QCallCardInfo();
-    localQCallCardInfo.uin = paramParcel.readString();
-    localQCallCardInfo.nickname = paramParcel.readString();
-    localQCallCardInfo.gender = paramParcel.readInt();
-    localQCallCardInfo.birthday = paramParcel.readInt();
-    localQCallCardInfo.in_use_flag = paramParcel.readInt();
-    localQCallCardInfo.pre_recycle_flag = paramParcel.readInt();
-    localQCallCardInfo.recycle_flag = paramParcel.readInt();
-    localQCallCardInfo.reg_time = paramParcel.readInt();
-    localQCallCardInfo.reg_ip = paramParcel.readString();
-    localQCallCardInfo.recycle_time = paramParcel.readInt();
-    localQCallCardInfo.recycle_ip = paramParcel.readString();
-    localQCallCardInfo.remark = paramParcel.readString();
-    localQCallCardInfo.netstatus = paramParcel.readInt();
-    localQCallCardInfo.qq = paramParcel.readString();
-    localQCallCardInfo.phonenum = paramParcel.readString();
-    localQCallCardInfo.phone_mask = paramParcel.readInt();
-    localQCallCardInfo.freeStatus = paramParcel.readInt();
-    localQCallCardInfo.pstn_freeStatus = paramParcel.readInt();
-    localQCallCardInfo.is_ever_pstn = paramParcel.readInt();
-    localQCallCardInfo.vip_all_free_time = paramParcel.readInt();
-    localQCallCardInfo.vip_left_free_time = paramParcel.readInt();
-    localQCallCardInfo.normal_all_free_time = paramParcel.readInt();
-    localQCallCardInfo.normal_left_free_time = paramParcel.readInt();
-    localQCallCardInfo.used_free_time = paramParcel.readInt();
-    localQCallCardInfo.identity = paramParcel.readInt();
-    localQCallCardInfo.autoRemark = paramParcel.readString();
-    localQCallCardInfo.card_type = paramParcel.readInt();
-    localQCallCardInfo.isPopup = paramParcel.readInt();
-    localQCallCardInfo.qqUin2 = paramParcel.readString();
-    localQCallCardInfo.qid_qq_status = paramParcel.readInt();
-    localQCallCardInfo.contact_qq_status = paramParcel.readInt();
-    return localQCallCardInfo;
-  }
+  aguc(agub paramagub, Card paramCard, HashMap paramHashMap, String paramString) {}
   
-  public QCallCardInfo[] a(int paramInt)
+  public void run()
   {
-    return new QCallCardInfo[paramInt];
+    boolean bool = this.jdField_a_of_type_Agub.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (bool) {}
+    for (Object localObject = "0";; localObject = "-102")
+    {
+      localHashMap.put("param_FailCode", localObject);
+      if (bool != true) {
+        break;
+      }
+      StatisticCollector.a(this.jdField_a_of_type_Agub.a.app.getApp()).a(this.jdField_a_of_type_JavaLangString, "profileCardSet", true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
+      localObject = this.jdField_a_of_type_Agub.a.a.obtainMessage(5);
+      this.jdField_a_of_type_Agub.a.a.sendMessage((Message)localObject);
+      return;
+    }
+    StatisticCollector.a(this.jdField_a_of_type_Agub.a.app.getApp()).a(this.jdField_a_of_type_JavaLangString, "profileCardSet", false, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
+    localObject = this.jdField_a_of_type_Agub.a.a.obtainMessage(6);
+    this.jdField_a_of_type_Agub.a.a.sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aguc
  * JD-Core Version:    0.7.0.1
  */

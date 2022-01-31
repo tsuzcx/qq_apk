@@ -10,8 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.DisplayMetrics;
 import android.view.View;
-import aobd;
-import aobe;
+import aojy;
+import aojz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.FontSettingManager;
@@ -38,7 +38,7 @@ public class EditTextEffectView
   public Handler a;
   public StaggeredGridLayoutManager a;
   OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
-  CaptureConfigUpdateObserver jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver = new aobd(this);
+  CaptureConfigUpdateObserver jdField_a_of_type_DovComQqImCaptureMusicCaptureConfigUpdateObserver = new aojy(this);
   EditTextEffectView.EditTextAdapter jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView$EditTextAdapter = null;
   public Vector a;
   
@@ -116,14 +116,14 @@ public class EditTextEffectView
       int j = this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.getChildCount();
       int i = 0;
       label65:
-      aobe localaobe;
+      aojz localaojz;
       if (i < j)
       {
-        localaobe = (aobe)getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.getChildAt(i));
-        if (localaobe.jdField_a_of_type_Int == paramInt) {
+        localaojz = (aojz)getChildViewHolder(this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.getChildAt(i));
+        if (localaojz.jdField_a_of_type_Int == paramInt) {
           break label109;
         }
-        localaobe.b(false);
+        localaojz.b(false);
       }
       for (;;)
       {
@@ -131,7 +131,7 @@ public class EditTextEffectView
         break label65;
         break;
         label109:
-        localaobe.b(true);
+        localaojz.b(true);
       }
     }
     QLog.e("EditTextEffectView", 1, "select position = " + paramInt + " no item");

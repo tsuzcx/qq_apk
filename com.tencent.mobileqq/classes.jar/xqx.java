@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
 
-public class xqx
-  implements DialogInterface.OnClickListener
+class xqx
+  implements Runnable
 {
-  public xqx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xqx(xqt paramxqt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    StoryReportor.a("video_shoot", "cancel_now", 0, 0, new String[0]);
-    paramDialogInterface.dismiss();
+    this.a.a.l();
   }
 }
 

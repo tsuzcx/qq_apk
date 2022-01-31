@@ -1,19 +1,26 @@
-import android.content.Context;
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.util.ILog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.PoiMapActivity;
 
-public final class klf
-  implements Runnable
+public class klf
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public klf(Context paramContext, String paramString, AsyncCallBack paramAsyncCallBack) {}
+  public klf(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (HtmlOffline.a.a()) {
-      HtmlOffline.a.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
-    }
-    new klm(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncCallBack).a();
+    return false;
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    this.a.j();
+    return false;
   }
 }
 

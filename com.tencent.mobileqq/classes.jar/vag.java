@@ -1,26 +1,13 @@
-import android.animation.ValueAnimator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder;
 
 public class vag
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public int a;
-  public ValueAnimator a;
-  public Scroller a;
-  public boolean a;
-  public float b;
-  public int b;
-  public Scroller b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public vag(ArkFlashChatItemBubbleBuilder paramArkFlashChatItemBubbleBuilder) {}
   
-  public vag(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

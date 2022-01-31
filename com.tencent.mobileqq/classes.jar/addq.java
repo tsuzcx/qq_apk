@@ -1,32 +1,13 @@
-import com.tencent.biz.troop.file.TroopFileProtocol.GetOneFileInfoObserver;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnZipEventListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
 
 public class addq
-  extends TroopFileProtocol.GetOneFileInfoObserver
+  implements Runnable
 {
-  public addq(TroopFileModel paramTroopFileModel) {}
+  public addq(FileManagerRSWorker paramFileManagerRSWorker, long paramLong) {}
   
-  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  public void run()
   {
-    if (paramFileInfo != null)
-    {
-      String str = ContactUtils.g(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin), paramFileInfo.uint64_uploader_uin.get() + "");
-      paramFileInfo = new Date(paramFileInfo.uint32_upload_time.get() * 1000L);
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
-      paramFileInfo = " 于" + localSimpleDateFormat.format(paramFileInfo) + "上传";
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.b(str, paramFileInfo);
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.f, this.jdField_a_of_type_Long);
   }
 }
 

@@ -9,7 +9,7 @@ public class TroopMemberInfoDao
 {
   public TroopMemberInfoDao()
   {
-    this.a = 46;
+    this.a = 47;
   }
   
   public Entity a(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
@@ -59,10 +59,10 @@ public class TroopMemberInfoDao
         paramEntity.distanceToSelf = paramCursor.getDouble(paramCursor.getColumnIndex("distanceToSelf"));
         paramEntity.distanceToSelfUpdateTimeStamp = paramCursor.getLong(paramCursor.getColumnIndex("distanceToSelfUpdateTimeStamp"));
         if (1 != paramCursor.getShort(paramCursor.getColumnIndex("mIsShielded"))) {
-          break label869;
+          break label887;
         }
       }
-      label869:
+      label887:
       for (paramBoolean = bool1;; paramBoolean = false)
       {
         paramEntity.mIsShielded = paramBoolean;
@@ -75,6 +75,7 @@ public class TroopMemberInfoDao
         paramEntity.hwCourse = paramCursor.getString(paramCursor.getColumnIndex("hwCourse"));
         paramEntity.hwName = paramCursor.getString(paramCursor.getColumnIndex("hwName"));
         paramEntity.recommendRemark = paramCursor.getString(paramCursor.getColumnIndex("recommendRemark"));
+        paramEntity.isShowQZone = paramCursor.getInt(paramCursor.getColumnIndex("isShowQZone"));
         return paramEntity;
         paramBoolean = false;
         break;
@@ -86,418 +87,427 @@ public class TroopMemberInfoDao
       paramNoColumnErrorHandler.a(new NoColumnError("troopuin", String.class));
       i = paramCursor.getColumnIndex("memberuin");
       if (i != -1) {
-        break label2484;
+        break label2537;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("memberuin", String.class));
-      label942:
+      label960:
       i = paramCursor.getColumnIndex("friendnick");
       if (i != -1) {
-        break label2499;
+        break label2552;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("friendnick", String.class));
-      label976:
+      label994:
       i = paramCursor.getColumnIndex("pyAll_friendnick");
       if (i != -1) {
-        break label2514;
+        break label2567;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("pyAll_friendnick", String.class));
-      label1010:
+      label1028:
       i = paramCursor.getColumnIndex("pyFirst_friendnick");
       if (i != -1) {
-        break label2529;
+        break label2582;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("pyFirst_friendnick", String.class));
-      label1044:
+      label1062:
       i = paramCursor.getColumnIndex("troopnick");
       if (i != -1) {
-        break label2544;
+        break label2597;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("troopnick", String.class));
-      label1078:
+      label1096:
       i = paramCursor.getColumnIndex("pyAll_troopnick");
       if (i != -1) {
-        break label2559;
+        break label2612;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("pyAll_troopnick", String.class));
-      label1112:
+      label1130:
       i = paramCursor.getColumnIndex("pyFirst_troopnick");
       if (i != -1) {
-        break label2574;
+        break label2627;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("pyFirst_troopnick", String.class));
-      label1146:
+      label1164:
       i = paramCursor.getColumnIndex("autoremark");
       if (i != -1) {
-        break label2589;
+        break label2642;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("autoremark", String.class));
-      label1180:
+      label1198:
       i = paramCursor.getColumnIndex("pyAll_autoremark");
       if (i != -1) {
-        break label2604;
+        break label2657;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("pyAll_autoremark", String.class));
-      label1214:
+      label1232:
       i = paramCursor.getColumnIndex("pyFirst_autoremark");
       if (i != -1) {
-        break label2619;
+        break label2672;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("pyFirst_autoremark", String.class));
-      label1248:
+      label1266:
       i = paramCursor.getColumnIndex("troopremark");
       if (i != -1) {
-        break label2634;
+        break label2687;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("troopremark", String.class));
-      label1282:
+      label1300:
       i = paramCursor.getColumnIndex("alias");
       if (i != -1) {
-        break label2649;
+        break label2702;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("alias", String.class));
-      label1316:
+      label1334:
       i = paramCursor.getColumnIndex("datetime");
       if (i != -1) {
-        break label2664;
+        break label2717;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("datetime", Long.TYPE));
-      label1351:
+      label1369:
       i = paramCursor.getColumnIndex("faceid");
       if (i != -1) {
-        break label2679;
+        break label2732;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("faceid", Short.TYPE));
-      label1386:
+      label1404:
       i = paramCursor.getColumnIndex("age");
       if (i != -1) {
-        break label2694;
+        break label2747;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("age", Byte.TYPE));
-      label1421:
+      label1439:
       i = paramCursor.getColumnIndex("sex");
       if (i != -1) {
-        break label2710;
+        break label2763;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("sex", Byte.TYPE));
-      label1456:
+      label1474:
       i = paramCursor.getColumnIndex("status");
       if (i != -1) {
-        break label2726;
+        break label2779;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("status", Byte.TYPE));
-      label1491:
+      label1509:
       i = paramCursor.getColumnIndex("qqVipInfo");
       if (i != -1) {
-        break label2742;
+        break label2795;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("qqVipInfo", Integer.TYPE));
-      label1526:
+      label1544:
       i = paramCursor.getColumnIndex("superQqInfo");
       if (i != -1) {
-        break label2757;
+        break label2810;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("superQqInfo", Integer.TYPE));
-      label1561:
+      label1579:
       i = paramCursor.getColumnIndex("superVipInfo");
       if (i != -1) {
-        break label2772;
+        break label2825;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("superVipInfo", Integer.TYPE));
-      label1596:
+      label1614:
       i = paramCursor.getColumnIndex("level");
       if (i != -1) {
-        break label2787;
+        break label2840;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("level", Integer.TYPE));
-      label1631:
+      label1649:
       i = paramCursor.getColumnIndex("realLevel");
       if (i != -1) {
-        break label2802;
+        break label2855;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("realLevel", Integer.TYPE));
-      label1666:
+      label1684:
       i = paramCursor.getColumnIndex("mGlamourLevel");
       if (i != -1) {
-        break label2817;
+        break label2870;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("mGlamourLevel", Integer.TYPE));
-      label1701:
+      label1719:
       i = paramCursor.getColumnIndex("hotChatGlamourLevel");
       if (i != -1) {
-        break label2832;
+        break label2885;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("hotChatGlamourLevel", Integer.TYPE));
-      label1736:
+      label1754:
       i = paramCursor.getColumnIndex("globalTroopLevel");
       if (i != -1) {
-        break label2847;
+        break label2900;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("globalTroopLevel", Integer.TYPE));
-      label1771:
+      label1789:
       i = paramCursor.getColumnIndex("join_time");
       if (i != -1) {
-        break label2862;
+        break label2915;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("join_time", Long.TYPE));
-      label1806:
+      label1824:
       i = paramCursor.getColumnIndex("last_active_time");
       if (i != -1) {
-        break label2877;
+        break label2930;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("last_active_time", Long.TYPE));
-      label1841:
+      label1859:
       i = paramCursor.getColumnIndex("active_point");
       if (i != -1) {
-        break label2892;
+        break label2945;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("active_point", Long.TYPE));
-      label1876:
+      label1894:
       i = paramCursor.getColumnIndex("credit_level");
       if (i != -1) {
-        break label2907;
+        break label2960;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("credit_level", Long.TYPE));
-      label1911:
+      label1929:
       i = paramCursor.getColumnIndex("isTroopFollowed");
       if (i != -1) {
-        break label2922;
+        break label2975;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("isTroopFollowed", Boolean.TYPE));
       i = paramCursor.getColumnIndex("distance");
       if (i != -1) {
-        break label2949;
+        break label3002;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("distance", Integer.TYPE));
-      label1981:
+      label1999:
       i = paramCursor.getColumnIndex("msgseq");
       if (i != -1) {
-        break label2964;
+        break label3017;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("msgseq", Long.TYPE));
-      label2016:
+      label2034:
       i = paramCursor.getColumnIndex("gagTimeStamp");
       if (i != -1) {
-        break label2979;
+        break label3032;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("gagTimeStamp", Long.TYPE));
-      label2051:
+      label2069:
       i = paramCursor.getColumnIndex("distanceToSelf");
       if (i != -1) {
-        break label2994;
+        break label3047;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("distanceToSelf", Double.TYPE));
-      label2086:
+      label2104:
       i = paramCursor.getColumnIndex("distanceToSelfUpdateTimeStamp");
       if (i != -1) {
-        break label3009;
+        break label3062;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("distanceToSelfUpdateTimeStamp", Long.TYPE));
-      label2121:
+      label2139:
       i = paramCursor.getColumnIndex("mIsShielded");
       if (i != -1) {
-        break label3024;
+        break label3077;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("mIsShielded", Boolean.TYPE));
       i = paramCursor.getColumnIndex("mUniqueTitle");
       if (i != -1) {
-        break label3052;
+        break label3105;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("mUniqueTitle", String.class));
-      label2190:
+      label2208:
       i = paramCursor.getColumnIndex("mUniqueTitleExpire");
       if (i != -1) {
-        break label3067;
+        break label3120;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("mUniqueTitleExpire", Integer.TYPE));
-      label2225:
+      label2243:
       i = paramCursor.getColumnIndex("tribeLevel");
       if (i != -1) {
-        break label3082;
+        break label3135;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("tribeLevel", Integer.TYPE));
-      label2260:
+      label2278:
       i = paramCursor.getColumnIndex("tribePoint");
       if (i != -1) {
-        break label3097;
+        break label3150;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("tribePoint", Integer.TYPE));
-      label2295:
+      label2313:
       i = paramCursor.getColumnIndex("commonFrdCnt");
       if (i != -1) {
-        break label3112;
+        break label3165;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("commonFrdCnt", Integer.TYPE));
-      label2330:
+      label2348:
       i = paramCursor.getColumnIndex("hwIdentity");
       if (i != -1) {
-        break label3127;
+        break label3180;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("hwIdentity", Integer.TYPE));
-      label2365:
+      label2383:
       i = paramCursor.getColumnIndex("hwCourse");
       if (i != -1) {
-        break label3142;
+        break label3195;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("hwCourse", String.class));
-      label2399:
+      label2417:
       i = paramCursor.getColumnIndex("hwName");
       if (i != -1) {
-        break label3157;
+        break label3210;
       }
       paramNoColumnErrorHandler.a(new NoColumnError("hwName", String.class));
+      label2451:
+      i = paramCursor.getColumnIndex("recommendRemark");
+      if (i != -1) {
+        break label3225;
+      }
+      paramNoColumnErrorHandler.a(new NoColumnError("recommendRemark", String.class));
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("recommendRemark");
+      i = paramCursor.getColumnIndex("isShowQZone");
       if (i != -1) {
-        break label3172;
+        break label3240;
       }
-      paramNoColumnErrorHandler.a(new NoColumnError("recommendRemark", String.class));
+      paramNoColumnErrorHandler.a(new NoColumnError("isShowQZone", Integer.TYPE));
       return paramEntity;
       paramEntity.troopuin = paramCursor.getString(i);
       break;
-      label2484:
+      label2537:
       paramEntity.memberuin = paramCursor.getString(i);
-      break label942;
-      label2499:
+      break label960;
+      label2552:
       paramEntity.friendnick = paramCursor.getString(i);
-      break label976;
-      label2514:
+      break label994;
+      label2567:
       paramEntity.pyAll_friendnick = paramCursor.getString(i);
-      break label1010;
-      label2529:
+      break label1028;
+      label2582:
       paramEntity.pyFirst_friendnick = paramCursor.getString(i);
-      break label1044;
-      label2544:
+      break label1062;
+      label2597:
       paramEntity.troopnick = paramCursor.getString(i);
-      break label1078;
-      label2559:
+      break label1096;
+      label2612:
       paramEntity.pyAll_troopnick = paramCursor.getString(i);
-      break label1112;
-      label2574:
+      break label1130;
+      label2627:
       paramEntity.pyFirst_troopnick = paramCursor.getString(i);
-      break label1146;
-      label2589:
+      break label1164;
+      label2642:
       paramEntity.autoremark = paramCursor.getString(i);
-      break label1180;
-      label2604:
+      break label1198;
+      label2657:
       paramEntity.pyAll_autoremark = paramCursor.getString(i);
-      break label1214;
-      label2619:
+      break label1232;
+      label2672:
       paramEntity.pyFirst_autoremark = paramCursor.getString(i);
-      break label1248;
-      label2634:
+      break label1266;
+      label2687:
       paramEntity.troopremark = paramCursor.getString(i);
-      break label1282;
-      label2649:
+      break label1300;
+      label2702:
       paramEntity.alias = paramCursor.getString(i);
-      break label1316;
-      label2664:
+      break label1334;
+      label2717:
       paramEntity.datetime = paramCursor.getLong(i);
-      break label1351;
-      label2679:
+      break label1369;
+      label2732:
       paramEntity.faceid = paramCursor.getShort(i);
-      break label1386;
-      label2694:
+      break label1404;
+      label2747:
       paramEntity.age = ((byte)paramCursor.getShort(i));
-      break label1421;
-      label2710:
+      break label1439;
+      label2763:
       paramEntity.sex = ((byte)paramCursor.getShort(i));
-      break label1456;
-      label2726:
+      break label1474;
+      label2779:
       paramEntity.status = ((byte)paramCursor.getShort(i));
-      break label1491;
-      label2742:
+      break label1509;
+      label2795:
       paramEntity.qqVipInfo = paramCursor.getInt(i);
-      break label1526;
-      label2757:
+      break label1544;
+      label2810:
       paramEntity.superQqInfo = paramCursor.getInt(i);
-      break label1561;
-      label2772:
+      break label1579;
+      label2825:
       paramEntity.superVipInfo = paramCursor.getInt(i);
-      break label1596;
-      label2787:
+      break label1614;
+      label2840:
       paramEntity.level = paramCursor.getInt(i);
-      break label1631;
-      label2802:
+      break label1649;
+      label2855:
       paramEntity.realLevel = paramCursor.getInt(i);
-      break label1666;
-      label2817:
+      break label1684;
+      label2870:
       paramEntity.mGlamourLevel = paramCursor.getInt(i);
-      break label1701;
-      label2832:
+      break label1719;
+      label2885:
       paramEntity.hotChatGlamourLevel = paramCursor.getInt(i);
-      break label1736;
-      label2847:
+      break label1754;
+      label2900:
       paramEntity.globalTroopLevel = paramCursor.getInt(i);
-      break label1771;
-      label2862:
+      break label1789;
+      label2915:
       paramEntity.join_time = paramCursor.getLong(i);
-      break label1806;
-      label2877:
+      break label1824;
+      label2930:
       paramEntity.last_active_time = paramCursor.getLong(i);
-      break label1841;
-      label2892:
+      break label1859;
+      label2945:
       paramEntity.active_point = paramCursor.getLong(i);
-      break label1876;
-      label2907:
+      break label1894;
+      label2960:
       paramEntity.credit_level = paramCursor.getLong(i);
-      break label1911;
-      label2922:
+      break label1929;
+      label2975:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
         paramEntity.isTroopFollowed = paramBoolean;
         break;
       }
-      label2949:
+      label3002:
       paramEntity.distance = paramCursor.getInt(i);
-      break label1981;
-      label2964:
+      break label1999;
+      label3017:
       paramEntity.msgseq = paramCursor.getLong(i);
-      break label2016;
-      label2979:
+      break label2034;
+      label3032:
       paramEntity.gagTimeStamp = paramCursor.getLong(i);
-      break label2051;
-      label2994:
+      break label2069;
+      label3047:
       paramEntity.distanceToSelf = paramCursor.getDouble(i);
-      break label2086;
-      label3009:
+      break label2104;
+      label3062:
       paramEntity.distanceToSelfUpdateTimeStamp = paramCursor.getLong(i);
-      break label2121;
-      label3024:
+      break label2139;
+      label3077:
       if (1 == paramCursor.getShort(i)) {}
       for (paramBoolean = bool2;; paramBoolean = false)
       {
         paramEntity.mIsShielded = paramBoolean;
         break;
       }
-      label3052:
+      label3105:
       paramEntity.mUniqueTitle = paramCursor.getString(i);
-      break label2190;
-      label3067:
+      break label2208;
+      label3120:
       paramEntity.mUniqueTitleExpire = paramCursor.getInt(i);
-      break label2225;
-      label3082:
+      break label2243;
+      label3135:
       paramEntity.tribeLevel = paramCursor.getInt(i);
-      break label2260;
-      label3097:
+      break label2278;
+      label3150:
       paramEntity.tribePoint = paramCursor.getInt(i);
-      break label2295;
-      label3112:
+      break label2313;
+      label3165:
       paramEntity.commonFrdCnt = paramCursor.getInt(i);
-      break label2330;
-      label3127:
+      break label2348;
+      label3180:
       paramEntity.hwIdentity = paramCursor.getInt(i);
-      break label2365;
-      label3142:
+      break label2383;
+      label3195:
       paramEntity.hwCourse = paramCursor.getString(i);
-      break label2399;
-      label3157:
+      break label2417;
+      label3210:
       paramEntity.hwName = paramCursor.getString(i);
+      break label2451;
+      label3225:
+      paramEntity.recommendRemark = paramCursor.getString(i);
     }
-    label3172:
-    paramEntity.recommendRemark = paramCursor.getString(i);
+    label3240:
+    paramEntity.isShowQZone = paramCursor.getInt(i);
     return paramEntity;
   }
   
@@ -505,7 +515,7 @@ public class TroopMemberInfoDao
   {
     StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
     localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopuin TEXT ,memberuin TEXT ,friendnick TEXT ,pyAll_friendnick TEXT ,pyFirst_friendnick TEXT ,troopnick TEXT ,pyAll_troopnick TEXT ,pyFirst_troopnick TEXT ,autoremark TEXT ,pyAll_autoremark TEXT ,pyFirst_autoremark TEXT ,troopremark TEXT ,alias TEXT ,datetime INTEGER ,faceid INTEGER ,age INTEGER ,sex INTEGER ,status INTEGER ,qqVipInfo INTEGER ,superQqInfo INTEGER ,superVipInfo INTEGER ,level INTEGER ,realLevel INTEGER ,mGlamourLevel INTEGER ,hotChatGlamourLevel INTEGER ,globalTroopLevel INTEGER ,join_time INTEGER ,last_active_time INTEGER ,active_point INTEGER ,credit_level INTEGER ,isTroopFollowed INTEGER ,distance INTEGER ,msgseq INTEGER ,gagTimeStamp INTEGER ,distanceToSelf REAL ,distanceToSelfUpdateTimeStamp INTEGER ,mIsShielded INTEGER ,mUniqueTitle TEXT ,mUniqueTitleExpire INTEGER ,tribeLevel INTEGER ,tribePoint INTEGER ,commonFrdCnt INTEGER ,hwIdentity INTEGER ,hwCourse TEXT ,hwName TEXT ,recommendRemark TEXT,UNIQUE(troopuin,memberuin) ON CONFLICT IGNORE)");
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopuin TEXT ,memberuin TEXT ,friendnick TEXT ,pyAll_friendnick TEXT ,pyFirst_friendnick TEXT ,troopnick TEXT ,pyAll_troopnick TEXT ,pyFirst_troopnick TEXT ,autoremark TEXT ,pyAll_autoremark TEXT ,pyFirst_autoremark TEXT ,troopremark TEXT ,alias TEXT ,datetime INTEGER ,faceid INTEGER ,age INTEGER ,sex INTEGER ,status INTEGER ,qqVipInfo INTEGER ,superQqInfo INTEGER ,superVipInfo INTEGER ,level INTEGER ,realLevel INTEGER ,mGlamourLevel INTEGER ,hotChatGlamourLevel INTEGER ,globalTroopLevel INTEGER ,join_time INTEGER ,last_active_time INTEGER ,active_point INTEGER ,credit_level INTEGER ,isTroopFollowed INTEGER ,distance INTEGER ,msgseq INTEGER ,gagTimeStamp INTEGER ,distanceToSelf REAL ,distanceToSelfUpdateTimeStamp INTEGER ,mIsShielded INTEGER ,mUniqueTitle TEXT ,mUniqueTitleExpire INTEGER ,tribeLevel INTEGER ,tribePoint INTEGER ,commonFrdCnt INTEGER ,hwIdentity INTEGER ,hwCourse TEXT ,hwName TEXT ,recommendRemark TEXT ,isShowQZone INTEGER,UNIQUE(troopuin,memberuin) ON CONFLICT IGNORE)");
     return localStringBuilder.toString();
   }
   
@@ -558,6 +568,7 @@ public class TroopMemberInfoDao
     paramContentValues.put("hwCourse", paramEntity.hwCourse);
     paramContentValues.put("hwName", paramEntity.hwName);
     paramContentValues.put("recommendRemark", paramEntity.recommendRemark);
+    paramContentValues.put("isShowQZone", Integer.valueOf(paramEntity.isShowQZone));
   }
 }
 

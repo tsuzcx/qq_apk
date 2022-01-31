@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
-class wsm
+public class wsm
   implements Runnable
 {
-  wsm(wsl paramwsl) {}
+  public wsm(DeviceFragment paramDeviceFragment) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a(this.a.a.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+    Intent localIntent = new Intent();
+    localIntent.setAction("SmartDevice_clickOnDeviceList");
+    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
   }
 }
 

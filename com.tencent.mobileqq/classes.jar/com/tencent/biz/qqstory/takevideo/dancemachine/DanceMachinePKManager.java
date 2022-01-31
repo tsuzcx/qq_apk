@@ -38,7 +38,7 @@ public class DanceMachinePKManager
   public void b()
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDancemachineDanceMachinePKManager$PKButtonClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDancemachineDanceMachinePKManager$PKButtonClickListener.f();
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDancemachineDanceMachinePKManager$PKButtonClickListener.L_();
     }
   }
 }

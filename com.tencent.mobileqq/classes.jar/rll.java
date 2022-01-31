@@ -1,13 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.util.Pair;
 
-public class rll
-  implements View.OnClickListener
+class rll
+  implements DialogInterface.OnClickListener
 {
-  public rll(AssistantSettingActivity paramAssistantSettingActivity) {}
+  rll(rlk paramrlk, SubAccountControll paramSubAccountControll, Pair paramPair) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+  }
 }
 
 

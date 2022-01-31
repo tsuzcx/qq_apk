@@ -1,9 +1,16 @@
-import cooperation.qzone.cache.CacheManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public final class amtw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public void run() {}
+  public amtw(DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.onClick(paramDialogInterface, paramInt);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

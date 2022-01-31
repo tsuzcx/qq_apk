@@ -1,35 +1,14 @@
-import android.view.View;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.Future;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public final class afmf
+public class afmf
+  implements ActionSheet.OnDismissListener
 {
-  public final int a;
-  public final Integer a;
-  public Long a;
-  public final Object a;
-  public final String a;
-  public SoftReference a;
-  public Future a;
-  public SoftReference b;
-  public SoftReference c;
+  public afmf(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public afmf(String paramString, View paramView1, View paramView2, Object paramObject, int paramInt1, int paramInt2, long paramLong)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView1);
-    if (paramView2 != null) {}
-    for (paramString = new SoftReference(paramView2);; paramString = null)
-    {
-      this.b = paramString;
-      this.jdField_a_of_type_JavaLangObject = paramObject;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
-      this.c = null;
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
-      return;
-    }
+    NearbyProfileEditPanel.a(this.a, this.a.h, false);
   }
 }
 

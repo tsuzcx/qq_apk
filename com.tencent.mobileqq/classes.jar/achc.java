@@ -1,43 +1,41 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class achc
   implements Runnable
 {
-  public achc(EnterpriseQQManager paramEnterpriseQQManager) {}
+  public achc(EmoticonFromGroupDBManager paramEmoticonFromGroupDBManager, int paramInt, EmoticonFromGroupEntity paramEmoticonFromGroupEntity) {}
   
   public void run()
   {
-    if ((EnterpriseQQManager.a(this.a) != null) && (EnterpriseQQManager.a(this.a) != null))
-    {
-      SosoInterface.a(this.a.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("EmoticonFromGroup_DBManager", 2, "db operation start single. opType: " + this.jdField_a_of_type_Int);
     }
-    synchronized (EnterpriseQQManager.a())
+    switch (this.jdField_a_of_type_Int)
     {
-      if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-        break label144;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EmoticonFromGroup_DBManager", 2, "db operation end single.");
       }
-      Iterator localIterator = EnterpriseQQManager.a(this.a).iterator();
-      while (localIterator.hasNext())
+      return;
+      if ((!this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity)) && (QLog.isColorLevel()))
       {
-        ache localache = (ache)localIterator.next();
-        if (localache != null) {
-          this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localache.a, localache.b, false, 0.0D, 0.0D);
+        QLog.e("EmoticonFromGroup_DBManager.dberror", 2, "updateEntity error, e.md5=" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity.md5);
+        continue;
+        if ((!this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager.a.b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity)) && (QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity.getStatus() != 1000)) {
+          QLog.e("EmoticonFromGroup_DBManager.dberror", 2, "remove error, e.md5=" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticonFromGroupEntity.md5);
         }
       }
     }
-    EnterpriseQQManager.a(this.a).clear();
-    label144:
-    EnterpriseQQManager.a(this.a, null);
-    EnterpriseQQManager.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     achc
  * JD-Core Version:    0.7.0.1
  */

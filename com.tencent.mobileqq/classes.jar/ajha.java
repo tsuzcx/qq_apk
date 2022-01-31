@@ -1,25 +1,24 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.SingleItemViewHolder;
+import com.tencent.mobileqq.troop.createNewTroop.SubCateListView;
 
 public class ajha
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ajha(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public ajha(SubCateListView paramSubCateListView, CateListAdapter.SingleItemViewHolder paramSingleItemViewHolder) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (PublishHomeWorkFragment.a(this.a).a(4) >= 6)
-    {
-      QQToast.a(this.a.getActivity(), String.format("最多布置%d个作业", new Object[] { Integer.valueOf(6) }), 0).a();
-      return;
-    }
-    SearchReciteArticleFragment.a(this.a.getActivity(), PublishHomeWorkFragment.a(this.a));
-    TroopReportor.a("Grp_edu", "Grp_recite", "Assign_Clk", 0, 0, new String[] { PublishHomeWorkFragment.a(this.a) });
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f = 1.0F * (100 - i) / 100.0F;
+    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setAlpha(f);
+    f = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.getHeight() / 2.0F * i / 100.0F;
+    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.jdField_b_of_type_AndroidViewView.setTranslationY(f);
+    f = i * -180.0F / 100.0F;
+    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopCateListAdapter$SingleItemViewHolder.c.setRotation(f);
   }
 }
 

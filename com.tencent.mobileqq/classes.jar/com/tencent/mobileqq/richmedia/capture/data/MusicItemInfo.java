@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import ahhu;
+import ahml;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class MusicItemInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahhu();
+  public static final Parcelable.Creator CREATOR = new ahml();
   public float a;
   public int a;
   public long a;
@@ -120,6 +120,51 @@ public class MusicItemInfo
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
+  public MusicItemInfo(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 1;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_g_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    try
+    {
+      if (paramJSONObject.has("mMusicName")) {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("mMusicName");
+      }
+      if (paramJSONObject.has("mSingername")) {
+        this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("mSingername");
+      }
+      if (paramJSONObject.has("mUrl")) {
+        this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("mUrl");
+      }
+      if (paramJSONObject.has("mTagName")) {
+        this.jdField_d_of_type_JavaLangString = paramJSONObject.getString("mTagName");
+      }
+      if (paramJSONObject.has("mPath")) {
+        this.jdField_g_of_type_JavaLangString = paramJSONObject.getString("mPath");
+      }
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("mItemId");
+      this.jdField_d_of_type_Int = paramJSONObject.getInt("mType");
+      this.jdField_e_of_type_Int = paramJSONObject.getInt("musicStart");
+      this.jdField_f_of_type_Int = paramJSONObject.getInt("musicEnd");
+      this.jdField_g_of_type_Int = paramJSONObject.getInt("musicDuration");
+      if (paramJSONObject.has("mSongMid")) {
+        this.jdField_e_of_type_JavaLangString = paramJSONObject.getString("mSongMid");
+      }
+      this.jdField_a_of_type_Float = ((float)paramJSONObject.getDouble("mRecognitionOffset"));
+      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("mHasCopyright");
+      this.jdField_b_of_type_Int = paramJSONObject.getInt("mAccuracy");
+      if (paramJSONObject.has("jump_ws")) {
+        this.jdField_f_of_type_JavaLangString = paramJSONObject.getString("jump_ws");
+      }
+      return;
+    }
+    catch (Exception paramJSONObject) {}
+  }
+  
   private String b()
   {
     if (this.jdField_d_of_type_Int == 5) {
@@ -202,6 +247,43 @@ public class MusicItemInfo
     return this.jdField_g_of_type_JavaLangString;
   }
   
+  public JSONObject a()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        localJSONObject.put("mMusicName", this.jdField_a_of_type_JavaLangString);
+      }
+      if (this.jdField_b_of_type_JavaLangString != null) {
+        localJSONObject.put("mSingername", this.jdField_b_of_type_JavaLangString);
+      }
+      if (this.jdField_c_of_type_JavaLangString != null) {
+        localJSONObject.put("mUrl", this.jdField_c_of_type_JavaLangString);
+      }
+      if (this.jdField_d_of_type_JavaLangString != null) {
+        localJSONObject.put("mTagName", this.jdField_d_of_type_JavaLangString);
+      }
+      if (this.jdField_g_of_type_JavaLangString != null) {
+        localJSONObject.put("mPath", this.jdField_g_of_type_JavaLangString);
+      }
+      localJSONObject.put("mItemId", this.jdField_a_of_type_Int);
+      localJSONObject.put("mType", this.jdField_d_of_type_Int);
+      localJSONObject.put("musicStart", this.jdField_e_of_type_Int);
+      localJSONObject.put("musicEnd", this.jdField_f_of_type_Int);
+      localJSONObject.put("musicDuration", this.jdField_g_of_type_Int);
+      if (this.jdField_e_of_type_JavaLangString != null) {
+        localJSONObject.put("mSongMid", this.jdField_e_of_type_JavaLangString);
+      }
+      localJSONObject.put("mRecognitionOffset", this.jdField_a_of_type_Float);
+      localJSONObject.put("mHasCopyright", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("mAccuracy", this.jdField_b_of_type_Int);
+      return localJSONObject;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
   public void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
@@ -239,7 +321,7 @@ public class MusicItemInfo
   
   public boolean d()
   {
-    return this.jdField_d_of_type_Int == 10;
+    return (this.jdField_d_of_type_Int == 10) || (this.jdField_d_of_type_Int == 11);
   }
   
   public int describeContents()

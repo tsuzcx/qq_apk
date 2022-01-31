@@ -1,38 +1,36 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.activity.emogroupstore.FilterAdapter;
-import com.tencent.mobileqq.activity.emogroupstore.FilterAdapter.FilterItemContent;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendBaseBuilder;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import com.tencent.widget.SwipTextViewMenuBuilder;
 
 public class woz
-  implements AdapterView.OnItemClickListener
+  extends SwipTextViewMenuBuilder
 {
-  public woz(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public woz(NewFriendBaseBuilder paramNewFriendBaseBuilder, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    paramAdapterView = (FilterAdapter.FilterItemContent)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
-    boolean bool = paramAdapterView.jdField_a_of_type_Boolean;
-    if (bool)
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  {
+    paramInt = 1;
+    if ((paramArrayOfSwipRightMenuItem == null) || (paramArrayOfSwipRightMenuItem.length <= 0)) {}
+    for (;;)
     {
-      if (EmoticonGroupStoreFragment.b(this.a).contains(paramAdapterView.jdField_a_of_type_JavaLangString)) {
-        EmoticonGroupStoreFragment.b(this.a).remove(paramAdapterView.jdField_a_of_type_JavaLangString);
-      }
-      paramAdapterView = (FilterAdapter.FilterItemContent)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
-      if (bool) {
-        break label126;
-      }
-    }
-    label126:
-    for (bool = true;; bool = false)
-    {
-      paramAdapterView.jdField_a_of_type_Boolean = bool;
-      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
       return;
-      EmoticonGroupStoreFragment.b(this.a).add(paramAdapterView.jdField_a_of_type_JavaLangString);
-      break;
+      int i = this.a.a();
+      if ((paramArrayOfSwipRightMenuItem.length < 0) && ((i & 0xF) == 1))
+      {
+        paramArrayOfSwipRightMenuItem[0].b = 0;
+        paramArrayOfSwipRightMenuItem[0].a = 0;
+      }
+      while (paramInt < paramArrayOfSwipRightMenuItem.length)
+      {
+        paramArrayOfSwipRightMenuItem[paramInt].b = -1;
+        paramArrayOfSwipRightMenuItem[paramInt].a = -1;
+        paramInt += 1;
+        continue;
+        paramInt = 0;
+      }
     }
   }
 }

@@ -22,6 +22,7 @@ import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.FlashPicHelper;
 import com.tencent.mobileqq.app.HotChatHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.confess.TroopConfessItemBuilder;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.ArkAppMessage.Config;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -78,6 +79,7 @@ import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageForTimDouFuGuide;
 import com.tencent.mobileqq.data.MessageForTribeShortVideo;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
 import com.tencent.mobileqq.data.MessageForTroopEffectPic;
 import com.tencent.mobileqq.data.MessageForTroopFee;
 import com.tencent.mobileqq.data.MessageForTroopFile;
@@ -200,6 +202,7 @@ public class ItemBuilderFactory
   VideoItemBuilder jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder;
   VideoVipItemBuilder jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  TroopConfessItemBuilder jdField_a_of_type_ComTencentMobileqqConfessTroopConfessItemBuilder;
   UniteGrayTipItemBuilder jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipItemBuilder;
   private Set jdField_a_of_type_JavaUtilSet;
   ConfessNewsItemBuilder b;
@@ -261,7 +264,7 @@ public class ItemBuilderFactory
                       return 10;
                     }
                     if ((paramChatMessage.vipBubbleID != 100000L) || (paramChatMessage.isSend())) {
-                      break label1303;
+                      break label1315;
                     }
                     return 9;
                     if ((paramChatMessage instanceof MessageForTroopGift))
@@ -405,6 +408,9 @@ public class ItemBuilderFactory
           }
           if ((paramChatMessage instanceof MessageForConfessNews)) {
             return 93;
+          }
+          if ((paramChatMessage instanceof MessageForTroopConfess)) {
+            return 99;
           }
           if ((paramChatMessage instanceof MessageForActivity)) {
             return 16;
@@ -585,7 +591,7 @@ public class ItemBuilderFactory
     if ((paramChatMessage instanceof MessageForCommonHobbyForAIOShow)) {
       return 96;
     }
-    label1303:
+    label1315:
     return 0;
   }
   
@@ -768,6 +774,11 @@ public class ItemBuilderFactory
         this.b = new ConfessNewsItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
       return a(this.b, paramBaseAdapter);
+    case 99: 
+      if (this.jdField_a_of_type_ComTencentMobileqqConfessTroopConfessItemBuilder == null) {
+        this.jdField_a_of_type_ComTencentMobileqqConfessTroopConfessItemBuilder = new TroopConfessItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      }
+      return a(this.jdField_a_of_type_ComTencentMobileqqConfessTroopConfessItemBuilder, paramBaseAdapter);
     case 25: 
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder = new TroopFileItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);

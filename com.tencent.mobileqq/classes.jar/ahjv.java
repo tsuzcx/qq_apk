@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
 
-class ahjv
-  implements Runnable
+public final class ahjv
+  implements Parcelable.Creator
 {
-  ahjv(ahjs paramahjs) {}
-  
-  public void run()
+  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
   {
-    EffectsCameraCaptureFragment.a(this.a.a, false);
+    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
+  }
+  
+  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
+  {
+    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjv
  * JD-Core Version:    0.7.0.1
  */

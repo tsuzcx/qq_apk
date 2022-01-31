@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.os.HandlerThread;
+import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public class abat
-  implements Runnable
+public final class abat
+  implements ArkEnvironmentManager.ThreadCreater
 {
-  public abat(ARMapActivity paramARMapActivity) {}
-  
-  public void run()
+  public HandlerThread createHanderThread(String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine.updateLocationNative(this.a.jdField_a_of_type_Double, this.a.b, "", 0.0D, 1, "", 0, "");
-    ARMapEngine localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
-    ARMapEngine.nativeRequestPOIList();
-    localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
-    ARMapEngine.nativeRequestLbsPOIListByPid("");
+    return ThreadManager.newFreeHandlerThread(paramString, -1);
   }
 }
 

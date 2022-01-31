@@ -1,112 +1,33 @@
-import android.os.Bundle;
-import com.tencent.av.app.AvAddFriendService;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.rookery.translate.AITranslator;
+import com.rookery.translate.AITranslator.TranslatorType;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateCallback;
+import com.rookery.translate.type.TranslateError;
+import com.rookery.translate.type.TranslateWithTimeCallback;
+import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder.Holder;
+import java.util.List;
 
 public class jec
-  extends FriendListObserver
+  implements TranslateWithTimeCallback
 {
-  public jec(AvAddFriendService paramAvAddFriendService) {}
+  public jec(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, TextTranslationItemBuilder.Holder paramHolder, String paramString2, Language paramLanguage, TranslateCallback paramTranslateCallback, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
   
-  protected void onAddFriend(String paramString)
+  public void a(TranslateError paramTranslateError, Long paramLong)
   {
-    super.onAddFriend(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onAddFriend 进入好友列表" + paramString);
-    }
-    AvAddFriendService.a(this.a, paramString, 4);
-    this.a.a(paramString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_ComRookeryTranslateTypeTranslateCallback, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
   }
   
-  protected void onGetAutoInfo(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  public void a(List paramList1, List paramList2, Long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onGetAutoInfo  isSuccess= " + paramBoolean + ",uin=" + paramString1 + ",remark=" + paramString2 + ",groupId" + paramInt);
-    }
-  }
-  
-  protected void onQueryUinSafetyFlag(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 147)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onQueryUinSafetyFlag isSuccess=" + paramBoolean + ",status=" + paramInt2 + ",uin=" + paramLong);
-      }
-      if ((!paramBoolean) || (paramInt2 == 0)) {
-        AvAddFriendService.a(this.a, String.valueOf(paramLong));
-      }
-    }
-    else
-    {
-      return;
-    }
-    AvAddFriendService.a(this.a, String.valueOf(paramLong), 3, paramInt2);
-  }
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    super.onUpdateAddFriend(paramBoolean1, paramBoolean2, paramBoolean3, paramString, paramBundle);
-    int i = paramBundle.getInt("friend_setting");
-    if (QLog.isColorLevel()) {
-      QLog.d(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onUpdateAddFriend 请求加好友回调  isSuccess= " + paramBoolean1 + ",addSuccess=" + paramBoolean2 + ",reqestUin=" + paramString + ",friendSetting" + i);
-    }
-    if ((paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(paramString)) && (i == 0)) {
-      this.a.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  protected void onUpdateAddFriendSetting(boolean paramBoolean, Bundle paramBundle)
-  {
-    String str = paramBundle.getString("uin");
-    int i = paramBundle.getInt("friend_setting");
-    if (QLog.isColorLevel()) {
-      QLog.d(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onUpdateAddFriendSetting  isSuccess= " + paramBoolean + ",uin" + str + ",friendSetting=" + i);
-    }
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(str)) && (i == 0)) {
-      this.a.jdField_a_of_type_Boolean = true;
-    }
-    do
-    {
-      return;
-      localFriendListHandler.a(str, null, i, (byte)0, "", this.a.jdField_a_of_type_Int, 0, true, null, true, "", "");
-    } while (!paramBoolean);
-    if (this.a.a(str) == 2) {
-      this.a.c(str);
-    }
-    for (;;)
-    {
-      paramBundle.getStringArrayList("user_question");
-      paramBundle.getBoolean("contact_bothway");
-      return;
-      AvAddFriendService.a(this.a, str, 1);
-      this.a.a(str);
-    }
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "好友onUpdateCustomHead success = " + paramBoolean + ", uin = " + paramString);
-    }
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    super.onUpdateDelFriend(paramBoolean, paramObject);
-    paramObject = String.valueOf((Long)paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d(AvAddFriendService.jdField_a_of_type_JavaLangString, 2, "onUpdateDelFriend 删除好友" + paramObject);
-    }
-    AvAddFriendService.a(this.a, paramObject, 0);
-    this.a.a(paramObject);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_ComRookeryTranslateTypeTranslateCallback, 0, AITranslator.TranslatorType.GOOGLE, paramList1, paramList2, this.jdField_a_of_type_JavaUtilList, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     jec
  * JD-Core Version:    0.7.0.1
  */

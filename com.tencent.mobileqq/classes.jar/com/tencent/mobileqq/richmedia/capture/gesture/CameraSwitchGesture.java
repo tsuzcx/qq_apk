@@ -76,7 +76,7 @@ public class CameraSwitchGesture
         if ((localGLSurfaceView != null) && ((localGLSurfaceView instanceof CameraCaptureView)))
         {
           this.jdField_a_of_type_Long = System.currentTimeMillis();
-          ((CameraCaptureView)localGLSurfaceView).i();
+          ((CameraCaptureView)localGLSurfaceView).h();
           CaptureReportUtil.g();
           if (QLog.isColorLevel()) {
             QLog.d("GLGestureListener", 2, new Object[] { "", "CameraSwitchGesture" });

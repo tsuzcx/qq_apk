@@ -1,17 +1,15 @@
-import com.tencent.component.network.module.common.dns.HostCacheManager;
-import java.net.InetAddress;
+import com.tencent.component.media.gif.NewGifDrawable;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 public class pkm
+  implements Runnable
 {
-  public long a;
-  public String a;
-  public InetAddress[] a;
+  public pkm(NewGifDrawable paramNewGifDrawable) {}
   
-  private pkm(HostCacheManager paramHostCacheManager)
+  public void run()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ArrayOfJavaNetInetAddress = null;
-    this.jdField_a_of_type_JavaLangString = null;
+    NewGifDrawable.a(this.a);
+    this.a.a.execute(new pkn(this, this.a));
   }
 }
 

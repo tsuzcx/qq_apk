@@ -1,34 +1,50 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.QZoneCover;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 
 public class sqn
-  implements Runnable
+  implements TextWatcher
 {
-  public sqn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sqn(EditInfoActivity paramEditInfoActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = ((FriendsManager)this.a.app.getManager(50)).a(this.a.app.getCurrentAccountUin());
-    if (localObject == null) {
-      this.a.j = "-1";
+    if ((paramCharSequence == null) || (paramCharSequence.toString().trim().length() == 0))
+    {
+      this.a.jdField_c_of_type_JavaLangString = ("" + this.a.jdField_c_of_type_Int);
+      this.a.a.post(new sqo(this));
+      return;
     }
     for (;;)
     {
-      this.a.j = "-1";
-      return;
-      if (((Card)localObject).lCurrentStyleId == ProfileCardTemplate.a)
+      try
       {
-        localObject = (QZoneCover)this.a.app.getEntityManagerFactory().createEntityManager().a(QZoneCover.class, this.a.app.getCurrentAccountUin());
-        if (localObject != null) {
-          this.a.j = ((QZoneCover)localObject).type;
+        if (this.a.f != 0) {
+          break label239;
         }
+        paramInt1 = paramCharSequence.toString().trim().getBytes("utf-8").length;
+        this.a.jdField_c_of_type_JavaLangString = ("" + (this.a.jdField_c_of_type_Int - paramInt1));
+        if (this.a.jdField_c_of_type_JavaLangString.length() > 4) {
+          this.a.jdField_c_of_type_JavaLangString = (this.a.jdField_c_of_type_JavaLangString.substring(0, 2) + "…");
+        }
+        this.a.a.post(new sqp(this, paramInt1));
+        return;
       }
+      catch (UnsupportedEncodingException paramCharSequence) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("IphoneTitleBarActivity", 2, "UnsupportedEncodingException" + paramCharSequence.getMessage());
+      return;
+      label239:
+      paramInt1 = paramCharSequence.toString().trim().length();
     }
   }
 }

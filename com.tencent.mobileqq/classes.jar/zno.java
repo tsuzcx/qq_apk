@@ -1,30 +1,13 @@
-import com.tencent.mobileqq.app.Job;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mobileqq.app.MessageHandler;
 
 public class zno
-  extends znz
+  implements Runnable
 {
-  public zno(BlockingQueue paramBlockingQueue, zjv paramzjv)
-  {
-    super(5, 64, 2L, paramBlockingQueue, paramzjv);
-  }
+  public zno(MessageHandler paramMessageHandler) {}
   
-  protected String a()
+  public void run()
   {
-    return "ThreadHeavyPool";
-  }
-  
-  protected ConcurrentLinkedQueue a()
-  {
-    return Job.a;
-  }
-  
-  protected void beforeExecute(Thread paramThread, Runnable paramRunnable)
-  {
-    ThreadRegulator.a().b();
-    super.beforeExecute(paramThread, paramRunnable);
+    this.a.a(4004, false, null);
   }
 }
 

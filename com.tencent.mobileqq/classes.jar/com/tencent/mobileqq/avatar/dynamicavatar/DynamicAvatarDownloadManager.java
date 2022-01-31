@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abjb;
-import abjc;
+import abqc;
+import abqd;
 import android.content.SharedPreferences;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -34,7 +34,7 @@ public class DynamicAvatarDownloadManager
   static
   {
     if ("mounted".equals(Environment.getExternalStorageState())) {}
-    for (File localFile = new File(AppConstants.aJ + "head/");; localFile = BaseApplicationImpl.getApplication().getCacheDir())
+    for (File localFile = new File(AppConstants.aK + "head/");; localFile = BaseApplicationImpl.getApplication().getCacheDir())
     {
       jdField_a_of_type_JavaIoFile = new File(localFile, "_dynamic");
       return;
@@ -125,7 +125,7 @@ public class DynamicAvatarDownloadManager
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_a_of_type_Int = 0;
     }
-    ThreadManager.executeOnFileThread(new abjc(this, l));
+    ThreadManager.executeOnFileThread(new abqd(this, l));
   }
   
   public final void a()
@@ -243,7 +243,7 @@ public class DynamicAvatarDownloadManager
       return false;
     }
     ??? = new HttpNetReq();
-    ((HttpNetReq)???).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new abjb(this);
+    ((HttpNetReq)???).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new abqc(this);
     ((HttpNetReq)???).jdField_a_of_type_JavaLangString = paramString;
     ((HttpNetReq)???).jdField_a_of_type_Int = 0;
     ((HttpNetReq)???).jdField_c_of_type_JavaLangString = a(paramString).getPath();

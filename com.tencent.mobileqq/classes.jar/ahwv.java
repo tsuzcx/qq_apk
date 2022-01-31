@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
-public final class ahwv
-  implements DialogInterface.OnClickListener
+public class ahwv
+  implements View.OnClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahwv(UniteSearchActivity paramUniteSearchActivity) {}
+  
+  public void onClick(View paramView)
   {
-    com.tencent.mobileqq.search.util.VADHelper.c = false;
-    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

@@ -1,25 +1,43 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.av.ui.QavPanel.SlideAcceptListener;
+import com.tencent.av.ui.VideoInviteLock;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class kdw
-  implements Runnable
+public class kdw
+  implements QavPanel.SlideAcceptListener
 {
-  kdw(kdv paramkdv) {}
+  public kdw(VideoInviteLock paramVideoInviteLock) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (!this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.a.jdField_a_of_type_ComTencentAvServiceIAVRedPacketCallback))
+    if (paramBoolean)
     {
-      QLog.w(this.a.a.i, 1, "getAVRedPacketConfig失败" + Thread.currentThread().getId() + "]");
-      this.a.a.a(null);
-      this.a.a.b(null);
+      if (this.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
+        ReportController.b(null, "CliOper", "", "", "0X80051FE", "0X80051FE", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+      }
+      for (;;)
+      {
+        this.a.d = true;
+        VideoInviteLock.a(this.a);
+        return;
+        if (this.a.b) {
+          ReportController.b(null, "CliOper", "", "", "0X8004201", "0X8004201", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+        } else {
+          ReportController.b(null, "CliOper", "", "", "0X8004205", "0X8004205", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+        }
+      }
     }
+    if (this.a.b)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X800439E", "0X800439E", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+      return;
+    }
+    ReportController.b(null, "CliOper", "", "", "0X80043FD", "0X80043FD", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kdw
  * JD-Core Version:    0.7.0.1
  */

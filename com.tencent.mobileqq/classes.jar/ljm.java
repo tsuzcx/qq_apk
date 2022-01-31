@@ -1,23 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
 
 public class ljm
-  implements ArticleCommentModule.FetchCommentObserver
+  implements DialogInterface.OnClickListener
 {
-  public ljm(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter) {}
+  public ljm(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void a(ArticleInfo paramArticleInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentListAdapter", 2, "fetch first level comment failed ,err code =" + paramInt + "err msg =" + paramString);
-    }
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

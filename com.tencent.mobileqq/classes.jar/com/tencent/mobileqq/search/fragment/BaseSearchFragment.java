@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahsv;
-import ahsw;
+import ahxm;
+import ahxn;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -18,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -119,10 +118,12 @@ public abstract class BaseSearchFragment
       bool = ((BaseSearchActivity)localFragmentActivity).b;
       b(false);
       if ((!TextUtils.isEmpty(paramString)) || (bool) || (this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter == null)) {
-        break label170;
+        break label188;
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       b(false);
       c(false);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
@@ -136,7 +137,7 @@ public abstract class BaseSearchFragment
       }
       this.jdField_b_of_type_JavaLangString = paramString;
     }
-    label170:
+    label188:
     do
     {
       do
@@ -279,7 +280,7 @@ public abstract class BaseSearchFragment
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131371264)).setText(this.jdField_b_of_type_JavaLangString);
+      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131371262)).setText(this.jdField_b_of_type_JavaLangString);
       this.jdField_d_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       b(false);
@@ -350,10 +351,10 @@ public abstract class BaseSearchFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2130970595, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramViewGroup.findViewById(2131364045));
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahsv(this));
-    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131367714);
+    paramViewGroup = paramLayoutInflater.inflate(2130970608, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramViewGroup.findViewById(2131364070));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahxm(this));
+    this.jdField_b_of_type_AndroidViewView = paramViewGroup.findViewById(2131367721);
     paramBundle = this.jdField_b_of_type_AndroidViewView;
     int i;
     boolean bool;
@@ -361,58 +362,57 @@ public abstract class BaseSearchFragment
     {
       i = 0;
       paramBundle.setVisibility(i);
-      paramBundle = (TextView)paramViewGroup.findViewById(2131364975);
+      paramBundle = (TextView)paramViewGroup.findViewById(2131365002);
       paramBundle.setText(a());
-      View localView = paramViewGroup.findViewById(2131366817);
+      View localView = paramViewGroup.findViewById(2131366815);
       bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
       if (!bool) {
-        break label461;
+        break label432;
       }
       paramBundle.setTextColor(Color.parseColor("#425E88"));
       localView.setBackgroundColor(Color.parseColor("#040E1C"));
       paramBundle.setBackgroundColor(getResources().getColor(2131492948));
       label150:
-      this.jdField_d_of_type_AndroidViewView = paramViewGroup.findViewById(2131371261);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131371262));
-      paramBundle = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131371265);
+      this.jdField_d_of_type_AndroidViewView = paramViewGroup.findViewById(2131371259);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131371260));
+      paramBundle = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131371263);
       if (!(paramLayoutInflater.getContext() instanceof ContactSearchActivity)) {
-        break label478;
+        break label449;
       }
       paramBundle.setText("联系人");
     }
     for (;;)
     {
-      paramBundle = paramLayoutInflater.inflate(2130970415, null, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131364985));
+      paramBundle = paramLayoutInflater.inflate(2130970430, null, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131365012));
       this.jdField_a_of_type_AndroidWidgetTextView.setText("正在加载…");
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131370448));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131370457));
       if (bool)
       {
         this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#717D86"));
         paramViewGroup.setBackgroundColor(Color.parseColor("#051020"));
       }
       this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(paramBundle);
-      paramBundle = paramLayoutInflater.inflate(2130969718, null, false);
-      this.jdField_c_of_type_AndroidViewView = paramBundle.findViewById(2131364985);
+      paramBundle = paramLayoutInflater.inflate(2130969715, null, false);
+      this.jdField_c_of_type_AndroidViewView = paramBundle.findViewById(2131365012);
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setPadding(0, AIOUtils.a(42.0F, getResources()), 0, AIOUtils.a(42.0F, getResources()));
       this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(paramBundle);
-      paramLayoutInflater = paramLayoutInflater.inflate(2130970415, null, false);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364985));
+      paramLayoutInflater = paramLayoutInflater.inflate(2130970430, null, false);
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131365012));
       this.jdField_b_of_type_AndroidWidgetTextView.setText("网络异常，请重试");
       this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getActivity().getResources().getColor(2131494269));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getActivity().getResources().getColor(2131494275));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetListView.addFooterView(paramLayoutInflater);
       this.jdField_a_of_type_AndroidViewView = paramViewGroup;
       return paramViewGroup;
       i = 8;
       break;
-      label461:
+      label432:
       paramBundle.setBackgroundColor(getResources().getColor(2131492969));
       break label150;
-      label478:
+      label449:
       if (((paramLayoutInflater.getContext() instanceof MessageSearchActivity)) || ((paramLayoutInflater.getContext() instanceof FTSEntitySearchActivity))) {
         paramBundle.setText("聊天记录");
       } else if ((paramLayoutInflater.getContext() instanceof FunctionSearchActivity)) {
@@ -453,7 +453,7 @@ public abstract class BaseSearchFragment
     if ((super.getActivity() instanceof BaseSearchActivity)) {}
     for (boolean bool = ((BaseSearchActivity)super.getActivity()).b;; bool = false)
     {
-      ThreadManager.postImmediately(new ahsw(this, bool), null, true);
+      ThreadManager.postImmediately(new ahxn(this, bool), null, true);
       return;
     }
   }

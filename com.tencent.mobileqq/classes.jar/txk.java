@@ -1,44 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
+import android.content.Context;
+import android.net.Uri;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class txk
-  extends TroopObserver
+  implements View.OnClickListener
 {
-  public txk(TroopGagActivity paramTroopGagActivity) {}
+  public txk(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean, List paramList, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
-      return;
-    }
-    if (paramBoolean)
+    this.a.a(0);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
+    if (this.a.a().booleanValue())
     {
-      this.a.jdField_a_of_type_Txm.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_Txm.getCount() != 0) {
-        break label209;
-      }
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 0).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
-      ThreadManager.post(new txl(this, (TroopGagMgr)this.a.app.getManager(47)), 8, null, false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
-      return;
-      label209:
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230720));
     }
   }
 }

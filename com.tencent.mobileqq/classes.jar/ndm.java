@@ -1,44 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.qqstory.base.StoryHaloManager;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
 
 public class ndm
-  extends SimpleJob
+  implements Runnable
 {
-  public ndm(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
+  public ndm(StoryHaloManager paramStoryHaloManager, RecentItemChatMsgData paramRecentItemChatMsgData, View paramView) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    paramJobContext = ((StoryManager)SuperManager.a(5)).e(QQStoryContext.a().b());
-    if (paramJobContext != null)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a()) == null) {}
+    Activity localActivity;
+    do
     {
-      paramVarArgs = paramJobContext.iterator();
-      while (paramVarArgs.hasNext())
-      {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramVarArgs.next();
-        if ((!localStoryVideoItem.isUploadFail()) && (!localStoryVideoItem.isUploadSuc())) {
-          paramVarArgs.remove();
-        }
-      }
+      return;
+      localActivity = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
+    } while (localActivity == null);
+    localActivity.runOnUiThread(new ndn(this, localActivity));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.q == -1) {}
+    for (int i = 1;; i = 0)
+    {
+      StoryReportor.a("msg_tab", "circle_clk", 0, i, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a() });
+      return;
     }
-    Collections.sort(paramJobContext, new ndn(this));
-    paramVarArgs = new ArrayList();
-    paramJobContext = paramJobContext.iterator();
-    while (paramJobContext.hasNext()) {
-      paramVarArgs.add(((StoryVideoItem)paramJobContext.next()).mVid);
-    }
-    this.a.a(paramVarArgs);
-    return null;
   }
 }
 

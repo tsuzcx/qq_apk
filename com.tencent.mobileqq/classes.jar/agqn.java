@@ -1,24 +1,21 @@
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.portal.ConversationHongBao;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 public class agqn
-  implements Animation.AnimationListener
+  extends AnimateUtils.AnimationAdapter
 {
-  public agqn(BreatheEffectView paramBreatheEffectView) {}
+  public agqn(ConversationHongBao paramConversationHongBao) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.a();
+    this.a.a.setVisibility(0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqn
  * JD-Core Version:    0.7.0.1
  */

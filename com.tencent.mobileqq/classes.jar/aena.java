@@ -1,33 +1,45 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceActionListener;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import com.tencent.qphone.base.util.QLog;
 
 public class aena
-  implements Runnable
+  implements MagicfaceActionManager.MagicfaceActionListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public long c;
-  public long d;
+  public aena(MagicfaceViewController paramMagicfaceViewController, long paramLong, int paramInt) {}
   
-  public void run()
+  public void a(ActionGlobalData paramActionGlobalData)
   {
-    try
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfaceViewController", 2, "【magicface】 cost =" + (l1 - l2) + "ms");
+    }
+    boolean bool;
+    if (this.jdField_a_of_type_Int == 0)
     {
-      this.d = System.currentTimeMillis();
-      ThreadManager.post(new aenb(this), 5, null, false);
+      bool = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c(bool);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_AndroidOsHandler.post(new aenb(this, paramActionGlobalData));
       return;
+      bool = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c(bool);
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+  }
+  
+  public void b(ActionGlobalData paramActionGlobalData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_AndroidOsHandler.post(new aenc(this, paramActionGlobalData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aena
  * JD-Core Version:    0.7.0.1
  */

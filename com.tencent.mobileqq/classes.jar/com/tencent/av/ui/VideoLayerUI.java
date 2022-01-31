@@ -59,15 +59,15 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
-import kbw;
-import kbx;
-import kby;
-import kbz;
-import kca;
-import kcb;
-import kcc;
-import kcd;
-import kce;
+import kea;
+import keb;
+import kec;
+import ked;
+import kee;
+import kef;
+import keg;
+import keh;
+import kei;
 
 public class VideoLayerUI
   extends VideoLayerUIBase
@@ -86,10 +86,10 @@ public class VideoLayerUI
   private TipsManager jdField_a_of_type_ComTencentAvUtilsTipsManager;
   private RotateLayout jdField_a_of_type_ComTencentAvWidgetRotateLayout;
   private List jdField_a_of_type_JavaUtilList = new LinkedList();
-  private kcd jdField_a_of_type_Kcd;
+  private keh jdField_a_of_type_Keh;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private boolean jdField_b_of_type_Boolean = true;
-  private Runnable jdField_c_of_type_JavaLangRunnable = new kce(this, null);
+  private Runnable jdField_c_of_type_JavaLangRunnable = new kei(this, null);
   private boolean jdField_c_of_type_Boolean;
   private Runnable d;
   private int j = -1;
@@ -101,7 +101,7 @@ public class VideoLayerUI
   public VideoLayerUI(VideoAppInterface paramVideoAppInterface, Context paramContext, View paramView, TipsManager paramTipsManager)
   {
     super(paramVideoAppInterface, paramContext, paramView);
-    this.jdField_d_of_type_JavaLangRunnable = new kca(this, null);
+    this.jdField_d_of_type_JavaLangRunnable = new kee(this, null);
     this.jdField_a_of_type_ComTencentAvUiScreenLayout = ScreenLayout.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1, false);
     this.jdField_a_of_type_ComTencentAvUtilsTipsManager = paramTipsManager;
     b();
@@ -159,7 +159,7 @@ public class VideoLayerUI
   private void a(GLVideoView paramGLVideoView, float paramFloat, long paramLong)
   {
     paramLong /= 10L;
-    a(new kbz(this, paramLong, paramGLVideoView, (float)Math.pow(paramFloat, 1.0D / paramLong)));
+    a(new ked(this, paramLong, paramGLVideoView, (float)Math.pow(paramFloat, 1.0D / paramLong)));
   }
   
   private void a(GLVideoView paramGLVideoView, boolean paramBoolean)
@@ -167,7 +167,7 @@ public class VideoLayerUI
     GLAnimation localGLAnimation = new GLAnimation();
     localGLAnimation.b(200);
     localGLAnimation.b(0.0F, 0.0F, 0.0F, 90.0F, 0.0F, 0.0F);
-    localGLAnimation.a(new kbw(this, paramGLVideoView, paramBoolean));
+    localGLAnimation.a(new kea(this, paramGLVideoView, paramBoolean));
     localGLAnimation.a(1);
     paramGLVideoView.a(localGLAnimation);
     paramGLVideoView.v();
@@ -282,7 +282,7 @@ public class VideoLayerUI
     localGLAnimation.b(300);
     localGLAnimation.a(f1, f2, 0.0F, -localRect.left, -localRect.top, 0.0F);
     localGLAnimation.a(localGLVideoView.b().width(), localGLVideoView.b().height(), super.g() + localRect.left + localRect.right, super.h() + localRect.top + localRect.bottom);
-    localGLAnimation.a(new kby(this, paramInt2, i, paramInt1));
+    localGLAnimation.a(new kec(this, paramInt2, i, paramInt1));
     localGLAnimation.a(2);
     localGLVideoView.a(localGLAnimation);
     localGLVideoView.v();
@@ -404,7 +404,7 @@ public class VideoLayerUI
         localObject = new AlphaAnimation(1.0F, 0.0F);
         ((AlphaAnimation)localObject).setDuration(1000L);
         ((AlphaAnimation)localObject).setFillAfter(true);
-        ((AlphaAnimation)localObject).setAnimationListener(new kcc(this, null));
+        ((AlphaAnimation)localObject).setAnimationListener(new keg(this, null));
         this.jdField_a_of_type_ComTencentAvWidgetRotateLayout.startAnimation((Animation)localObject);
         return;
       }
@@ -674,13 +674,13 @@ public class VideoLayerUI
   
   private void r()
   {
-    int i1 = 2130840100;
+    int i1 = 2130840115;
     int i = i1;
     if (this.jdField_a_of_type_ComTencentAvVideoController != null)
     {
       i = i1;
       if (this.jdField_a_of_type_ComTencentAvVideoController.a().i == 1008) {
-        i = 2130840209;
+        i = 2130840224;
       }
     }
     this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].b(UITools.a(this.jdField_a_of_type_AndroidContentContext, i));
@@ -691,7 +691,7 @@ public class VideoLayerUI
   {
     this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(this.jdField_a_of_type_AndroidContentContext, new VideoLayerUI.ScaleGestureListener(this));
     this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new VideoLayerUI.GestureListener(this));
-    this.jdField_a_of_type_ComTencentAvOpenglGesturedetectorsMoveGestureDetector = new MoveGestureDetector(this.jdField_a_of_type_AndroidContentContext, new kcb(this, null));
+    this.jdField_a_of_type_ComTencentAvOpenglGesturedetectorsMoveGestureDetector = new MoveGestureDetector(this.jdField_a_of_type_AndroidContentContext, new kef(this, null));
     this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener = new VideoLayerUI.TouchListener(this);
     a(this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener);
   }
@@ -700,10 +700,10 @@ public class VideoLayerUI
   {
     if (this.jdField_a_of_type_ComTencentAvWidgetRotateLayout == null)
     {
-      this.jdField_a_of_type_ComTencentAvWidgetRotateLayout = ((RotateLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366303));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366304));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366079));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366081));
+      this.jdField_a_of_type_ComTencentAvWidgetRotateLayout = ((RotateLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366308));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366309));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366084));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366086));
       Resources localResources = this.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources();
       this.l = ((int)localResources.getDimension(2131559913));
       this.m = ((int)localResources.getDimension(2131559914));
@@ -722,8 +722,8 @@ public class VideoLayerUI
   
   private void y()
   {
-    this.jdField_a_of_type_Kcd = new kcd(this, this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView);
-    ViewCompat.setAccessibilityDelegate(this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView, this.jdField_a_of_type_Kcd);
+    this.jdField_a_of_type_Keh = new keh(this, this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView);
+    ViewCompat.setAccessibilityDelegate(this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView, this.jdField_a_of_type_Keh);
   }
   
   public int a()
@@ -1439,7 +1439,7 @@ public class VideoLayerUI
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentAvUiQQLogo = ((QQLogo)this.jdField_a_of_type_AndroidViewView.findViewById(2131366256));
+    this.jdField_a_of_type_ComTencentAvUiQQLogo = ((QQLogo)this.jdField_a_of_type_AndroidViewView.findViewById(2131366261));
     this.jdField_a_of_type_ComTencentAvUiQQLogo.setVisibility(8);
     this.jdField_a_of_type_ComTencentAvUiQQLogo.setImageBitmap(null);
   }
@@ -1478,7 +1478,7 @@ public class VideoLayerUI
   
   public void b(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366257);
+    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366262);
     if (paramBoolean)
     {
       localView.setVisibility(0);
@@ -1532,7 +1532,7 @@ public class VideoLayerUI
       localGraphicRenderMgr.flushGlRender(str);
       this.jdField_a_of_type_ComTencentAvVideoController.a(true);
       this.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].k(false);
-      this.jdField_a_of_type_ComTencentAvVideoController.a(new kbx(this, i, paramBoolean));
+      this.jdField_a_of_type_ComTencentAvVideoController.a(new keb(this, i, paramBoolean));
     }
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int == 4)
     {
@@ -1602,7 +1602,7 @@ public class VideoLayerUI
   
   public boolean c(MotionEvent paramMotionEvent)
   {
-    return (this.jdField_a_of_type_Kcd != null) && (this.jdField_a_of_type_Kcd.dispatchHoverEvent(paramMotionEvent));
+    return (this.jdField_a_of_type_Keh != null) && (this.jdField_a_of_type_Keh.dispatchHoverEvent(paramMotionEvent));
   }
   
   public void d(int paramInt)
@@ -1657,11 +1657,11 @@ public class VideoLayerUI
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ffffff"));
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130845621);
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130845702);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#5f656f"));
-    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130845622);
+    this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130845703);
   }
   
   public void f()
@@ -1755,15 +1755,15 @@ public class VideoLayerUI
     }
   }
   
-  public void r_()
+  public void q_()
   {
-    super.r_();
+    super.q_();
     m(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI
  * JD-Core Version:    0.7.0.1
  */

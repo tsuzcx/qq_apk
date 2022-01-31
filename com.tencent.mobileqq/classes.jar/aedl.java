@@ -1,39 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngGifEngine;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.now.PluginRecordHelper;
+import com.tencent.biz.now.PluginRecordHelper.cigHelperCallback;
+import com.tencent.mobileqq.intervideo.now.NowDataReporter;
+import com.tencent.mobileqq.intervideo.now.NowPlugin;
+import com.tencent.mobileqq.intervideo.now.NowProxy.ListNameData;
 import com.tencent.qphone.base.util.QLog;
 
-class aedl
-  extends DownloadListener
+public class aedl
+  implements PluginRecordHelper.cigHelperCallback
 {
-  aedl(aedk paramaedk) {}
+  public aedl(NowPlugin paramNowPlugin, long paramLong, NowProxy.ListNameData paramListNameData, String paramString, Bundle paramBundle) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func onDone.【aio preview】");
-    }
-    synchronized (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager)
+    QLog.i("XProxy|NowProxy", 1, "请求录播cgi完成 time = " + System.currentTimeMillis() + " hasRecording = " + paramBoolean + " timeconsume = " + paramLong + " last_err_code = " + this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin.jdField_a_of_type_ComTencentBizNowPluginRecordHelper.a());
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin.jdField_a_of_type_ComTencentBizNowPluginRecordHelper.a(), this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin.jdField_a_of_type_ComTencentBizNowPluginRecordHelper.a(), paramLong, this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin.jdField_a_of_type_ComTencentBizNowPluginRecordHelper.b());
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a != null)
-      {
-        if (paramDownloadTask.a() != 3) {
-          this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.obtainMessage(226, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-        }
-      }
-      else {
-        return;
-      }
-      paramDownloadTask = PngGifEngine.a(this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.a = paramDownloadTask;
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.obtainMessage(227, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-      BaseApplicationImpl.sImageCache.put(this.a.jdField_a_of_type_JavaLangString, paramDownloadTask);
+      NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin, this.jdField_a_of_type_Long, paramString, "record");
+      return;
     }
+    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin, this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowProxy$ListNameData, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

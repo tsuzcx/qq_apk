@@ -1,14 +1,18 @@
-import cooperation.qzone.webviewplugin.QzonePhotoWallPlugin;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastUrl;
 
-public class ancv
-  implements Runnable
+public final class ancv
+  implements Parcelable.Creator
 {
-  public ancv(QzonePhotoWallPlugin paramQzonePhotoWallPlugin, ArrayList paramArrayList) {}
-  
-  public void run()
+  public BroadcastUrl a(Parcel paramParcel)
   {
-    QzonePhotoWallPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzonePhotoWallPlugin, this.jdField_a_of_type_JavaUtilArrayList, true);
+    return new BroadcastUrl(paramParcel);
+  }
+  
+  public BroadcastUrl[] a(int paramInt)
+  {
+    return new BroadcastUrl[paramInt];
   }
 }
 

@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f24" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:gravity="center_horizontal" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="75.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02155f" android:contentDescription="@null" />
-            <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0040" android:textColor="#ff4a4a4a" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e33" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="25.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2528" />
-            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037f" android:weightSum="6.0" android:layout_centerHorizontal="true">
-                <Button android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a23de" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2526" android:layout_weight="4.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01d8" />
-            </LinearLayout>
-        </LinearLayout>
-    </com.tencent.mobileqq.widget.BounceScrollView>
-</LinearLayout>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1169" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a141f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.ocr.view.CameraGridView android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqstory.takevideo.CameraFocusView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1420" android:paddingLeft="50.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021690" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0a53" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0440" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="107.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2deb" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginBottom="14.0dip" android:text="@string/cancel" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.widget.CircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2396" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

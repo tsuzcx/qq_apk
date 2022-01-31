@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelMessage;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import android.os.Message;
+import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.search.HistorySearchEntryModel;
+import com.tencent.util.MqqWeakReferenceHandler;
 
-public class ahvl
-  extends GroupSearchEngine.SearchEngineEntity
+class ahvl
+  implements Runnable
 {
-  public ahvl(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  ahvl(ahvk paramahvk, SearchHistory paramSearchHistory, long paramLong) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void run()
   {
-    return new GroupSearchModelMessage(paramList, paramString);
+    if (HistorySearchEntryModel.a(this.jdField_a_of_type_Ahvk.a, this.jdField_a_of_type_ComTencentMobileqqDataSearchHistory))
+    {
+      Message localMessage = this.jdField_a_of_type_Ahvk.a.a.obtainMessage();
+      localMessage.what = 3;
+      localMessage.obj = new Long(this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_Ahvk.a.a.sendMessage(localMessage);
+    }
   }
 }
 

@@ -31,17 +31,17 @@ import com.tencent.mobileqq.vipav.VipFunCallManager;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import viz;
-import vja;
-import vjb;
-import vjc;
+import vob;
+import voc;
+import vod;
+import voe;
 
 public class ThumbItemBuilder
   extends AbstractChatItemBuilder
 {
   public static int a;
   public Handler a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new vjb(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new vod(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory;
   
   static
@@ -52,13 +52,13 @@ public class ThumbItemBuilder
   public ThumbItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidOsHandler = new viz(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new vob(this, Looper.getMainLooper());
     this.jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = ((DownloaderFactory)paramQQAppInterface.getManager(46));
   }
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramOnLongClickAndTouchListener = (vjc)paramViewHolder;
+    paramOnLongClickAndTouchListener = (voe)paramViewHolder;
     int i = 0;
     paramViewHolder = paramMessageRecord.getExtInfoFromExtStr("callId");
     String str;
@@ -71,11 +71,11 @@ public class ThumbItemBuilder
       paramViewHolder = paramView;
       if (paramView == null)
       {
-        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968743, null);
-        paramOnLongClickAndTouchListener.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)paramViewHolder.findViewById(2131363530));
-        paramOnLongClickAndTouchListener.b = ((TextView)paramViewHolder.findViewById(2131363532));
-        paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewHolder.findViewById(2131363529));
-        paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new vja(this, i));
+        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968746, null);
+        paramOnLongClickAndTouchListener.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)paramViewHolder.findViewById(2131363549));
+        paramOnLongClickAndTouchListener.b = ((TextView)paramViewHolder.findViewById(2131363551));
+        paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramViewHolder.findViewById(2131363548));
+        paramOnLongClickAndTouchListener.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new voc(this, i));
       }
       str = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord.frienduin);
       if (i != 0)
@@ -111,13 +111,13 @@ public class ThumbItemBuilder
             QLog.e("ChatItemBuilder", 1, "ThumbItemBuilder getItemView tipsType err:" + paramMessageRecord.getMessage());
             i = j;
             continue;
-            paramOnLongClickAndTouchListener.b.setText(str + "更新" + this.jdField_a_of_type_AndroidContentContext.getString(2131436200, new Object[] { paramView }));
+            paramOnLongClickAndTouchListener.b.setText(str + "更新" + this.jdField_a_of_type_AndroidContentContext.getString(2131436219, new Object[] { paramView }));
             return paramViewHolder;
           }
           if (2 != i) {
             break;
           }
-          paramOnLongClickAndTouchListener.b.setText(str + "设置" + this.jdField_a_of_type_AndroidContentContext.getString(2131436200, new Object[] { paramView }));
+          paramOnLongClickAndTouchListener.b.setText(str + "设置" + this.jdField_a_of_type_AndroidContentContext.getString(2131436219, new Object[] { paramView }));
           return paramViewHolder;
           paramViewHolder = paramViewHolder;
           QLog.e("ChatItemBuilder", 1, "ThumbItemBuilder getItemView err:" + paramViewHolder.getMessage());
@@ -133,7 +133,7 @@ public class ThumbItemBuilder
           QLog.e("ChatItemBuilder", 1, "colorRingCover err:" + paramView.getMessage());
           continue;
         }
-        paramOnLongClickAndTouchListener.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843930));
+        paramOnLongClickAndTouchListener.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843996));
         paramView = paramLinearLayout;
         if (TextUtils.isEmpty(paramLinearLayout)) {
           paramView = VipFunCallManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, 8, null);
@@ -144,14 +144,14 @@ public class ThumbItemBuilder
         this.jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory.a(1).a(paramView, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, paramLinearLayout);
       }
     }
-    paramOnLongClickAndTouchListener.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843930));
-    paramOnLongClickAndTouchListener.b.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131436200, new Object[] { this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131436197) }));
+    paramOnLongClickAndTouchListener.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843996));
+    paramOnLongClickAndTouchListener.b.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131436219, new Object[] { this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131436216) }));
     return paramViewHolder;
   }
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new vjc(this);
+    return new voe(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

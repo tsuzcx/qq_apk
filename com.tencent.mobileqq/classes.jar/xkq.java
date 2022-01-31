@@ -1,12 +1,29 @@
+import android.graphics.Bitmap;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.recent.RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
 
-public class xkq
-  extends RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder
+class xkq
+  implements Runnable
 {
-  public RelativeLayout a;
-  public ImageView c;
+  xkq(xkp paramxkp, Bitmap paramBitmap) {}
+  
+  public void run()
+  {
+    if ((GoldMsgDialog.a(this.jdField_a_of_type_Xkp.a.a) != null) && (this.jdField_a_of_type_Xkp.a.a.isShowing()) && (GoldMsgDialog.a(this.jdField_a_of_type_Xkp.a.a) != null))
+    {
+      int i = GoldMsgDialog.b(this.jdField_a_of_type_Xkp.a.a).getWidth();
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)GoldMsgDialog.a(this.jdField_a_of_type_Xkp.a.a).getLayoutParams();
+      if (localLayoutParams != null)
+      {
+        localLayoutParams.height = (i * this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+        GoldMsgDialog.a(this.jdField_a_of_type_Xkp.a.a).setLayoutParams(localLayoutParams);
+      }
+      GoldMsgDialog.a(this.jdField_a_of_type_Xkp.a.a).setVisibility(0);
+      GoldMsgDialog.a(this.jdField_a_of_type_Xkp.a.a).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+  }
 }
 
 

@@ -1,26 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.util.Utils;
-import friendlist.GetOnlineInfoResp;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
 
-public class ork
-  extends FriendListObserver
+class ork
+  implements Animator.AnimatorListener
 {
-  public ork(StoryQIMBadgeView paramStoryQIMBadgeView) {}
+  ork(ori paramori) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
-    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
-    while ((!paramBoolean) || (!Utils.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
-      return;
+    if ((StoryMultiFragmentPart.a(this.a.a) != null) && (StoryMultiFragmentPart.b(this.a.a) != null) && (StoryMultiFragmentPart.a(this.a.a) != null))
+    {
+      StoryMultiFragmentPart.a(this.a.a).setVisibility(8);
+      StoryMultiFragmentPart.b(this.a.a).setImageBitmap(this.a.b);
+      StoryMultiFragmentPart.b(this.a.a).setVisibility(0);
+      StoryMultiFragmentPart.a(this.a.a).setText(StoryMultiFragmentPart.a(this.a.a) + "");
+      StoryMultiFragmentPart.a(this.a.a).setVisibility(0);
     }
-    ThreadManager.getUIHandler().post(new orl(this, paramGetOnlineInfoResp, paramString));
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

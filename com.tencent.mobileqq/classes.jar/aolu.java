@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.widget.CircleProgress;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import dov.com.qq.im.capture.poi.FacePoiManager;
+import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
+import java.util.ArrayList;
 
 public class aolu
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public aolu(CaptureQmcfSoDownloadFragment paramCaptureQmcfSoDownloadFragment, String paramString) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void run()
+  public aolu(PoiListLayout paramPoiListLayout) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    CaptureQmcfSoDownloadFragment.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragment).setProgress(CaptureQmcfSoDownloadFragment.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragment));
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureQmcfSoDownloadFragment", 2, "" + this.jdField_a_of_type_JavaLangString + " setProgress=" + CaptureQmcfSoDownloadFragment.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragment));
+    if ((paramInt == 0) && (PoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout).a() != null) && (this.jdField_a_of_type_Int == PoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout).a().size() - 1)) {
+      PoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout).a();
     }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
 }
 

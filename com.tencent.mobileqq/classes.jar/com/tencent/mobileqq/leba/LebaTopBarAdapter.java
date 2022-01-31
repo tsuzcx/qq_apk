@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.leba;
 
-import adzl;
+import aehv;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
@@ -96,13 +96,13 @@ public class LebaTopBarAdapter
     BaseViewHolder localBaseViewHolder;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970394, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970409, paramViewGroup, false);
       localBaseViewHolder = new BaseViewHolder(paramView);
       paramView.setTag(localBaseViewHolder);
-      if ((paramViewGroup.getTag(2131362520) == null) || (((Boolean)paramViewGroup.getTag(2131362520)).booleanValue())) {
+      if ((paramViewGroup.getTag(2131362525) == null) || (((Boolean)paramViewGroup.getTag(2131362525)).booleanValue())) {
         i = 1;
       }
-      paramViewGroup = (ImageView)localBaseViewHolder.a(2131366363);
+      paramViewGroup = (ImageView)localBaseViewHolder.a(2131366368);
       if (i == 0) {
         break label95;
       }
@@ -119,14 +119,14 @@ public class LebaTopBarAdapter
       if (localLebaGridItemInfo.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo != null) {
         break label167;
       }
-      paramViewGroup.setImageResource(2130842664);
+      paramViewGroup.setImageResource(2130842699);
     } while (!QLog.isColorLevel());
     QLog.d(jdField_a_of_type_JavaLangString, 2, "info is null :" + paramInt);
     return paramView;
     label167:
     Object localObject = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app;
     if (localLebaGridItemInfo.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pluginId == 10000) {
-      paramViewGroup.setImageResource(2130844836);
+      paramViewGroup.setImageResource(2130844911);
     }
     for (;;)
     {
@@ -139,7 +139,7 @@ public class LebaTopBarAdapter
       return paramView;
       if ((localLebaGridItemInfo.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pluginId == 10001) && (localObject != null) && (LebaUtils.a(((QQAppInterface)localObject).getAccount())))
       {
-        paramViewGroup.setImageResource(2130842670);
+        paramViewGroup.setImageResource(2130842705);
       }
       else if (localLebaGridItemInfo.jdField_a_of_type_JavaLangString != null)
       {
@@ -151,13 +151,13 @@ public class LebaTopBarAdapter
         }
         else
         {
-          paramViewGroup.setImageResource(2130842664);
-          ThreadManager.post(new adzl(this, localLebaGridItemInfo, (String)localObject, paramViewGroup), 5, null, true);
+          paramViewGroup.setImageResource(2130842699);
+          ThreadManager.post(new aehv(this, localLebaGridItemInfo, (String)localObject, paramViewGroup), 5, null, true);
         }
       }
       else
       {
-        paramViewGroup.setImageResource(2130842664);
+        paramViewGroup.setImageResource(2130842699);
       }
     }
   }

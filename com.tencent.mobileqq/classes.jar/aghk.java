@@ -1,30 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.ocr.ui.HighlightModel;
+import java.util.Comparator;
 
 public class aghk
-  implements View.OnTouchListener
+  implements Comparator
 {
-  public aghk(ScanTorchActivity paramScanTorchActivity) {}
+  public aghk(HighlightModel paramHighlightModel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(String paramString1, String paramString2)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return 0;
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    return paramString2.length() - paramString1.length();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghk
  * JD-Core Version:    0.7.0.1
  */

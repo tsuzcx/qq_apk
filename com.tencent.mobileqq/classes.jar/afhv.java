@@ -1,21 +1,15 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 public class afhv
-  implements TextWatcher
+  implements Runnable
 {
-  public afhv(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afhv(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    NearbyUtils.a(this.a.e, 40);
+    this.a.a.a(1);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

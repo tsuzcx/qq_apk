@@ -1,26 +1,13 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.armap.ARMapManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
 public class abbx
-  implements MediaPlayer.OnPreparedListener
+  implements Runnable
 {
-  public abbx(ARMapManager paramARMapManager) {}
+  public abbx(ArkLocalAppMgr paramArkLocalAppMgr, abcr paramabcr) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    if ((ARMapManager.a(this.a) == 0) && (paramMediaPlayer != null)) {}
-    try
-    {
-      paramMediaPlayer.start();
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ARMapManager", 2, "playMapBGSound2-----" + paramMediaPlayer.getMessage());
-    }
+    ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Abcr);
   }
 }
 

@@ -1,100 +1,58 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.armap.ConversationARMap;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager.ARMapShower;
-import com.tencent.mobileqq.portal.ConversationHongBao;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class siw
-  extends ARMapConfigManager.ARMapShower
+class siw
+  implements Runnable
 {
-  private siw(Conversation paramConversation) {}
+  siw(siv paramsiv) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapConfigManager", 2, "ARMap.showEntrance......");
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao != null) && (this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.a())) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap.b();
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapConfigManager", 2, "ARMap.restoreNormal......reason=" + paramString);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap.c();
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapConfigManager", 2, "ARMap.pendant......switcher=" + paramBoolean);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap.b(paramBoolean, paramInt);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapConfigManager", 2, "ARMap.breathe......switcher=" + paramBoolean1 + "  isPermanent:" + paramBoolean2);
-    }
-    ConversationARMap localConversationARMap;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap != null)
+    ArrayList localArrayList = this.a.jdField_a_of_type_AndroidContentIntent.getExtras().getStringArrayList("deleted_members");
+    if (localArrayList != null)
     {
-      localConversationARMap = this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap;
-      if (!paramBoolean2) {
-        break label73;
+      int i;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c != null)
+      {
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.d == 2) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.isMember)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.wMemberNum + "人");
+        }
+      }
+      else {
+        i = localArrayList.size() - 1;
+      }
+      for (;;)
+      {
+        if (i < 0) {
+          break label277;
+        }
+        int j = this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.size() - 1;
+        label136:
+        if (j >= 0)
+        {
+          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.get(j);
+          if ((localmemberlist == null) || (!localmemberlist.uint64_member_uin.has())) {}
+          while (!String.valueOf(localmemberlist.uint64_member_uin.get()).equals(localArrayList.get(i)))
+          {
+            j -= 1;
+            break label136;
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.wMemberNum + "名成员");
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.remove(j);
+        }
+        i -= 1;
       }
     }
-    label73:
-    for (int i = 1;; i = 0)
-    {
-      localConversationARMap.a(paramBoolean1, i);
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap != null) {
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap.a(0);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapConfigManager", 2, "ARMap.isBreatheShowing " + bool);
-    }
-    return bool;
-  }
-  
-  public boolean b()
-  {
-    boolean bool = false;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap != null) {
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap.b(0);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapConfigManager", 2, "ARMap.isPendantShowing " + bool);
-    }
-    return bool;
-  }
-  
-  public boolean c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapConfigManager", 2, "ARMap.isResume......");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap != null) {
-      return this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationARMap.b();
-    }
-    return super.c();
+    label277:
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e);
   }
 }
 

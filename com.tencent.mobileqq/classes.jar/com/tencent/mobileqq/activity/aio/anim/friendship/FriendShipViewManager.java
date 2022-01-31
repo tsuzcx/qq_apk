@@ -20,9 +20,9 @@ import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
-import uok;
-import uol;
-import uom;
+import utj;
+import utk;
+import utl;
 
 public class FriendShipViewManager
 {
@@ -31,10 +31,10 @@ public class FriendShipViewManager
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   public ImageView a;
-  private FriendShipLayout.OnBackClickListener jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipFriendShipLayout$OnBackClickListener = new uol(this);
+  private FriendShipLayout.OnBackClickListener jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipFriendShipLayout$OnBackClickListener = new utk(this);
   public FriendShipLayout a;
   public FriendShipWaveView a;
-  private ImageButton.OnClickListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton$OnClickListener = new uom(this);
+  private ImageButton.OnClickListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton$OnClickListener = new utl(this);
   String jdField_a_of_type_JavaLangString = "aio_ship_ship.png";
   boolean jdField_a_of_type_Boolean = false;
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
@@ -105,7 +105,7 @@ public class FriendShipViewManager
   public void a(int paramInt1, int paramInt2)
   {
     b(paramInt1, paramInt2);
-    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new uok(this), 1000L);
+    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new utj(this), 1000L);
   }
   
   @TargetApi(9)

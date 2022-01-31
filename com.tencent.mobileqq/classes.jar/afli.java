@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
 
-class afli
-  implements Runnable
+public class afli
+  implements TextWatcher
 {
-  afli(aflh paramaflh, boolean paramBoolean) {}
+  public afli(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Aflh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.a(this.jdField_a_of_type_Aflh.jdField_a_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_Aflh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$DeleteFeedCallback != null) {
-      this.jdField_a_of_type_Aflh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$DeleteFeedCallback.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aflh.jdField_a_of_type_JavaLangString);
-    }
+    NearbyUtils.a(this.a.e, 40);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

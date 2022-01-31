@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import aiso;
-import aisp;
-import aisq;
-import aisr;
-import aiss;
+import aixr;
+import aixs;
+import aixt;
+import aixu;
+import aixv;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -68,8 +68,8 @@ public class TribeEffectsCameraCaptureFragment
   public Button a;
   public FlowComponentInterface a;
   private ProviderContainerView.ContainerViewListener a;
-  public String a;
   public int c = -1;
+  public String e = "barIndex";
   public String f = "";
   public boolean i;
   public boolean j;
@@ -80,16 +80,11 @@ public class TribeEffectsCameraCaptureFragment
     jdField_a_of_type_Int = 1001;
   }
   
-  public TribeEffectsCameraCaptureFragment()
-  {
-    this.jdField_a_of_type_JavaLangString = "barIndex";
-  }
-  
   public static void a(UiApiPlugin paramUiApiPlugin, Activity paramActivity, AppInterface paramAppInterface, String paramString1, byte paramByte, String paramString2)
   {
     if (!VideoEnvironment.b(paramAppInterface))
     {
-      DialogUtil.a(paramActivity, 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131433016, new aiss()).show();
+      DialogUtil.a(paramActivity, 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131433030, new aixv()).show();
       return;
     }
     boolean bool1 = VideoEnvironment.e(paramAppInterface);
@@ -99,7 +94,7 @@ public class TribeEffectsCameraCaptureFragment
     }
     if ((!bool1) && (!NetworkUtil.g(paramActivity)))
     {
-      QQToast.a(paramActivity, 2131432978, 0).a();
+      QQToast.a(paramActivity, 2131432992, 0).a();
       return;
     }
     Bundle localBundle = new Bundle();
@@ -185,7 +180,7 @@ public class TribeEffectsCameraCaptureFragment
     CameraCaptureView.CaptureParam localCaptureParam = super.a();
     if (CodecParam.r > 2000000)
     {
-      localCaptureParam.d(2000000);
+      localCaptureParam.h(2000000);
       CodecParam.r = 2000000;
       QLog.d("CameraCaptureFragment", 4, "maxrate:" + CodecParam.r);
     }
@@ -200,7 +195,7 @@ public class TribeEffectsCameraCaptureFragment
   public void a(int paramInt)
   {
     super.a(paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.post(new aisr(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aixu(this));
   }
   
   protected void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
@@ -209,15 +204,15 @@ public class TribeEffectsCameraCaptureFragment
     JumpUtil.a(this, paramVideoCaptureResult, paramLocalMediaInfo, a(true), 10, a(), 0, null, null, null);
   }
   
-  public void aj_()
+  public void al_()
   {
-    super.aj_();
-    this.jdField_a_of_type_AndroidOsHandler.post(new aisq(this));
+    super.al_();
+    this.jdField_a_of_type_AndroidOsHandler.post(new aixt(this));
   }
   
   protected int b()
   {
-    return 2130971170;
+    return 2130971193;
   }
   
   /* Error */
@@ -227,21 +222,21 @@ public class TribeEffectsCameraCaptureFragment
     //   0: aconst_null
     //   1: astore 4
     //   3: aload_0
-    //   4: invokevirtual 342	com/tencent/mobileqq/tribe/fragment/TribeEffectsCameraCaptureFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
-    //   7: invokevirtual 393	android/support/v4/app/FragmentActivity:getContentResolver	()Landroid/content/ContentResolver;
+    //   4: invokevirtual 343	com/tencent/mobileqq/tribe/fragment/TribeEffectsCameraCaptureFragment:getActivity	()Landroid/support/v4/app/FragmentActivity;
+    //   7: invokevirtual 394	android/support/v4/app/FragmentActivity:getContentResolver	()Landroid/content/ContentResolver;
     //   10: astore 7
     //   12: aload 7
-    //   14: getstatic 399	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
+    //   14: getstatic 400	android/provider/MediaStore$Video$Media:EXTERNAL_CONTENT_URI	Landroid/net/Uri;
     //   17: aconst_null
     //   18: aconst_null
     //   19: aconst_null
     //   20: aconst_null
-    //   21: invokevirtual 405	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   21: invokevirtual 406	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   24: astore_3
     //   25: aload_3
     //   26: ifnull +254 -> 280
     //   29: aload_3
-    //   30: invokeinterface 410 1 0
+    //   30: invokeinterface 411 1 0
     //   35: istore_2
     //   36: iload_2
     //   37: ifeq +243 -> 280
@@ -251,9 +246,9 @@ public class TribeEffectsCameraCaptureFragment
     //   45: astore 5
     //   47: aload_3
     //   48: aload_3
-    //   49: ldc_w 412
-    //   52: invokeinterface 416 2 0
-    //   57: invokeinterface 420 2 0
+    //   49: ldc_w 413
+    //   52: invokeinterface 417 2 0
+    //   57: invokeinterface 421 2 0
     //   62: istore_1
     //   63: aload 6
     //   65: astore 5
@@ -263,15 +258,15 @@ public class TribeEffectsCameraCaptureFragment
     //   75: astore 5
     //   77: ldc 80
     //   79: iconst_2
-    //   80: new 322	java/lang/StringBuilder
+    //   80: new 323	java/lang/StringBuilder
     //   83: dup
-    //   84: invokespecial 323	java/lang/StringBuilder:<init>	()V
-    //   87: ldc_w 422
-    //   90: invokevirtual 329	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: invokespecial 324	java/lang/StringBuilder:<init>	()V
+    //   87: ldc_w 423
+    //   90: invokevirtual 330	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: iload_1
-    //   94: invokevirtual 332	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokestatic 338	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   94: invokevirtual 333	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   97: invokevirtual 336	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   100: invokestatic 339	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   103: aload 6
     //   105: astore 5
     //   107: aload 7
@@ -279,7 +274,7 @@ public class TribeEffectsCameraCaptureFragment
     //   110: i2l
     //   111: iconst_3
     //   112: aconst_null
-    //   113: invokestatic 428	android/provider/MediaStore$Video$Thumbnails:getThumbnail	(Landroid/content/ContentResolver;JILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   113: invokestatic 429	android/provider/MediaStore$Video$Thumbnails:getThumbnail	(Landroid/content/ContentResolver;JILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   116: astore 4
     //   118: aload 4
     //   120: ifnull +49 -> 169
@@ -288,27 +283,27 @@ public class TribeEffectsCameraCaptureFragment
     //   127: aload_3
     //   128: ifnull +13 -> 141
     //   131: aload_3
-    //   132: invokeinterface 431 1 0
+    //   132: invokeinterface 432 1 0
     //   137: aload 4
     //   139: astore 5
     //   141: aload 5
     //   143: ifnull +25 -> 168
-    //   146: new 433	android/graphics/drawable/BitmapDrawable
+    //   146: new 434	android/graphics/drawable/BitmapDrawable
     //   149: dup
     //   150: aload_0
-    //   151: invokevirtual 437	com/tencent/mobileqq/tribe/fragment/TribeEffectsCameraCaptureFragment:getResources	()Landroid/content/res/Resources;
+    //   151: invokevirtual 438	com/tencent/mobileqq/tribe/fragment/TribeEffectsCameraCaptureFragment:getResources	()Landroid/content/res/Resources;
     //   154: aload 5
-    //   156: invokespecial 440	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+    //   156: invokespecial 441	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
     //   159: astore_3
     //   160: aload_0
-    //   161: getfield 442	com/tencent/mobileqq/tribe/fragment/TribeEffectsCameraCaptureFragment:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
+    //   161: getfield 443	com/tencent/mobileqq/tribe/fragment/TribeEffectsCameraCaptureFragment:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
     //   164: aload_3
-    //   165: invokevirtual 448	android/widget/Button:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   165: invokevirtual 449	android/widget/Button:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   168: return
     //   169: aload 4
     //   171: astore 5
     //   173: aload_3
-    //   174: invokeinterface 451 1 0
+    //   174: invokeinterface 452 1 0
     //   179: istore_2
     //   180: aload 4
     //   182: astore 6
@@ -319,13 +314,13 @@ public class TribeEffectsCameraCaptureFragment
     //   193: aconst_null
     //   194: astore_3
     //   195: aload 6
-    //   197: invokevirtual 454	java/lang/Exception:printStackTrace	()V
+    //   197: invokevirtual 455	java/lang/Exception:printStackTrace	()V
     //   200: aload_3
     //   201: astore 5
     //   203: aload 4
     //   205: ifnull -64 -> 141
     //   208: aload 4
-    //   210: invokeinterface 431 1 0
+    //   210: invokeinterface 432 1 0
     //   215: aload_3
     //   216: astore 5
     //   218: goto -77 -> 141
@@ -335,7 +330,7 @@ public class TribeEffectsCameraCaptureFragment
     //   225: aload_3
     //   226: ifnull +9 -> 235
     //   229: aload_3
-    //   230: invokeinterface 431 1 0
+    //   230: invokeinterface 432 1 0
     //   235: aload 4
     //   237: athrow
     //   238: astore 4
@@ -429,7 +424,7 @@ public class TribeEffectsCameraCaptureFragment
     {
       paramInt1 = paramIntent.getIntExtra("theme_id", -1);
       Object localObject2 = paramIntent.getStringExtra("theme_name");
-      PublishParam localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
+      PublishParam localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.a);
       localObject1 = (TribeVideoPublishParams)paramIntent.getSerializableExtra(TribeVideoPublishParams.BUNDLE_EXTRA_KEY);
       paramIntent = new Intent();
       paramIntent.putExtra("thumbPath", localPublishParam.c);
@@ -454,7 +449,7 @@ public class TribeEffectsCameraCaptureFragment
       if ((localObject2 != null) && (!((FilterCategoryItem)localObject2).a()))
       {
         ((TribeVideoPublishParams)localObject1).filter = new TribeVideoPublishParams.Filter();
-        ((TribeVideoPublishParams)localObject1).filter.id = ((FilterCategoryItem)localObject2).jdField_a_of_type_JavaLangString;
+        ((TribeVideoPublishParams)localObject1).filter.id = ((FilterCategoryItem)localObject2).a;
         ((TribeVideoPublishParams)localObject1).filter.typeId = String.valueOf(((FilterCategoryItem)localObject2).b);
       }
       localObject1 = localFragmentActivity.getIntent().getExtras().getString("options");
@@ -476,10 +471,10 @@ public class TribeEffectsCameraCaptureFragment
     {
     default: 
       return;
-    case 2131366955: 
+    case 2131366953: 
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.a() == 1)
       {
-        if ("barindex".equals(this.jdField_a_of_type_JavaLangString)) {}
+        if ("barindex".equals(this.e)) {}
         for (;;)
         {
           ReportController.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "camera_front", m, 0, "", "", "", "");
@@ -487,14 +482,14 @@ public class TribeEffectsCameraCaptureFragment
           m = 2;
         }
       }
-      if ("barindex".equals(this.jdField_a_of_type_JavaLangString)) {}
+      if ("barindex".equals(this.e)) {}
       for (m = n;; m = 2)
       {
         ReportController.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "camera_back", m, 0, "", "", "", "");
         return;
       }
     }
-    if ("barindex".equals(this.jdField_a_of_type_JavaLangString)) {}
+    if ("barindex".equals(this.e)) {}
     for (m = i1;; m = 2)
     {
       ReportController.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "Clk_left", m, 0, "", "", "", "");
@@ -519,19 +514,19 @@ public class TribeEffectsCameraCaptureFragment
       this.i = ((JSONObject)localObject).optBoolean("needTheme", false);
       this.j = ((JSONObject)localObject).optBoolean("needVideoDoodle", false);
       this.k = ((JSONObject)localObject).optBoolean("needVideoWording", false);
-      this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("from", "");
+      this.e = ((JSONObject)localObject).optString("from", "");
       this.c = ((JSONObject)localObject).optInt("theme_id", -1);
       this.f = ((JSONObject)localObject).optString("theme_name", "");
       TribeFlowComponentInterface.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("needVideoTimeLimit", 10) * 1000;
       paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout.a();
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131370116));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131370125));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aiso(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aixr(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowComponentInterface = new TribeFlowComponentInterface();
       n();
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView$ContainerViewListener == null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView$ContainerViewListener = new aisp(this);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView$ContainerViewListener = new aixs(this);
       }
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView$ContainerViewListener);
       return paramLayoutInflater;
@@ -563,7 +558,7 @@ public class TribeEffectsCameraCaptureFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,34 @@
-import com.tencent.biz.ProtoServlet;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class aenc
+class aenc
   implements Runnable
 {
-  public aenc(String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
+  aenc(aena paramaena, ActionGlobalData paramActionGlobalData) {}
   
   public void run()
   {
-    Object localObject = new JSONObject();
-    try
+    
+    if (this.jdField_a_of_type_Aena.jdField_a_of_type_Int == 1)
     {
-      ((JSONObject)localObject).put("targetuin", Long.parseLong(this.jdField_a_of_type_JavaLangString));
-      ((JSONObject)localObject).put("type", this.jdField_a_of_type_Int);
-      NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), ProtoServlet.class);
-      localNewIntent.putExtra("cmd", "NearbySvr.get_chat_signature");
-      WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
-      localObject = ((JSONObject)localObject).toString();
-      localWebSsoRequestBody.data.set((String)localObject);
-      localNewIntent.putExtra("data", localWebSsoRequestBody.toByteArray());
-      localNewIntent.setObserver(new aend(this));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-      return;
+      ((View)this.jdField_a_of_type_Aena.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.b).setBackgroundColor(0);
+      this.jdField_a_of_type_Aena.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.g();
     }
-    catch (Exception localException) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.c)) && (PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getBoolean(BaseApplicationImpl.getContext().getString(2131433595), false))) {
+      this.jdField_a_of_type_Aena.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.aB();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenc
  * JD-Core Version:    0.7.0.1
  */

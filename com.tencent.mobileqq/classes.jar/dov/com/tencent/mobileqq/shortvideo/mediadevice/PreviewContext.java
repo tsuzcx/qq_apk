@@ -485,7 +485,9 @@ public class PreviewContext
       if (this.mFrameCountArray.size() == 0)
       {
         this.mFrameIndex = 0;
-        this.mFrameSrcList.clear();
+        if (this.mFrameSrcList != null) {
+          this.mFrameSrcList.clear();
+        }
       }
     }
   }

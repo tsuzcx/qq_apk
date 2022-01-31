@@ -19,6 +19,7 @@ public final class qqwalletaio_resv$qqwalletaio_elem_resv
   public final PBUInt32Field sound_record_duration = PBField.initUInt32(0);
   public final PBBytesField transaction_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_effects_id = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_hb_from = PBField.initUInt32(0);
   public final PBUInt32Field uint32_resource_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_skin_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_subjectid = PBField.initUInt32(0);
@@ -27,7 +28,7 @@ public final class qqwalletaio_resv$qqwalletaio_elem_resv
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 66, 72 }, new String[] { "bytes_subject_image", "transaction_id", "sound_record_duration", "uint32_resource_type", "uint32_skin_id", "uint32_effects_id", "int32_special_pop_id", "rpt_payer", "uint32_subjectid" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0) }, qqwalletaio_elem_resv.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 66, 72, 80 }, new String[] { "bytes_subject_image", "transaction_id", "sound_record_duration", "uint32_resource_type", "uint32_skin_id", "uint32_effects_id", "int32_special_pop_id", "rpt_payer", "uint32_subjectid", "uint32_hb_from" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0) }, qqwalletaio_elem_resv.class);
   }
 }
 

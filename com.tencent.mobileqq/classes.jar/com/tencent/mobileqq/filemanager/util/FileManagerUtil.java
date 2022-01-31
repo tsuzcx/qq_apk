@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import adhg;
-import adhh;
-import adhi;
-import adhj;
-import adhk;
-import adhl;
-import adhm;
-import adhn;
-import adho;
-import adhq;
-import adhr;
-import adhs;
-import adht;
-import adhu;
-import adhv;
-import adhw;
-import adhx;
-import adhy;
+import adpn;
+import adpo;
+import adpp;
+import adpq;
+import adpr;
+import adps;
+import adpt;
+import adpu;
+import adpv;
+import adpx;
+import adpy;
+import adpz;
+import adqa;
+import adqb;
+import adqc;
+import adqd;
+import adqe;
+import adqf;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -186,31 +186,31 @@ public class FileManagerUtil
     {
     case 11: 
     default: 
-      return 2130841670;
+      return 2130841697;
     case 2: 
-      return 2130841671;
+      return 2130841698;
     case 0: 
-      return 2130841639;
+      return 2130841666;
     case 1: 
-      return 2130841641;
+      return 2130841668;
     case 3: 
-      return 2130841607;
+      return 2130841634;
     case 4: 
-      return 2130841681;
+      return 2130841708;
     case 6: 
-      return 2130841680;
+      return 2130841707;
     case 5: 
-      return 2130841601;
+      return 2130841628;
     case 7: 
-      return 2130841652;
+      return 2130841679;
     case 8: 
-      return 2130841620;
+      return 2130841647;
     case 9: 
-      return 2130841650;
+      return 2130841677;
     case 10: 
-      return 2130841664;
+      return 2130841691;
     }
-    return 2130841658;
+    return 2130841685;
   }
   
   public static int a(FileManagerEntity paramFileManagerEntity)
@@ -542,7 +542,7 @@ public class FileManagerUtil
     int i = paramString1.indexOf(paramString2);
     int j = paramString2.length() + i;
     paramString1 = new SpannableString(paramString1);
-    paramString2 = new adhx(paramTipsClickedInterface);
+    paramString2 = new adqe(paramTipsClickedInterface);
     try
     {
       paramString1.setSpan(new ForegroundColorSpan(2131492876), i, j, 33);
@@ -1406,12 +1406,12 @@ public class FileManagerUtil
   
   public static IForwardCallBack a(QQAppInterface paramQQAppInterface)
   {
-    return new adhk(paramQQAppInterface);
+    return new adpr(paramQQAppInterface);
   }
   
   public static IForwardCallBack a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    return new adhj(paramQQAppInterface, paramInt);
+    return new adpq(paramQQAppInterface, paramInt);
   }
   
   public static CharSequence a(FileManagerEntity paramFileManagerEntity)
@@ -1925,13 +1925,13 @@ public class FileManagerUtil
         QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramString.getMessage());
         return null;
       }
-      FileManagerUtil.FileExecutor.a().execute(new adhy((String)localObject1, paramString, paramInt1, paramInt2));
+      FileManagerUtil.FileExecutor.a().execute(new adqf((String)localObject1, paramString, paramInt1, paramInt2));
       continue;
       label280:
       if (i != 2) {
         break;
       }
-      a(paramString, true, paramInt1, paramInt2, 3, new adhh((String)localObject1, paramString));
+      a(paramString, true, paramInt1, paramInt2, 3, new adpo((String)localObject1, paramString));
     }
   }
   
@@ -2414,7 +2414,7 @@ public class FileManagerUtil
   
   public static void a()
   {
-    ThreadManager.post(new adhs(), 8, null, false);
+    ThreadManager.post(new adpz(), 8, null, false);
   }
   
   private static void a(int paramInt, String paramString, FileManagerEntity paramFileManagerEntity)
@@ -2577,7 +2577,7 @@ public class FileManagerUtil
       FMToastUtil.a(2131428218);
       return;
     }
-    ThreadManager.post(new adhr(paramString, paramActivity, localFile), 8, null, true);
+    ThreadManager.post(new adpy(paramString, paramActivity, localFile), 8, null, true);
   }
   
   public static void a(Activity paramActivity, String paramString, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -2630,7 +2630,7 @@ public class FileManagerUtil
   
   public static void a(Context paramContext, FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    FileModel.a(paramFileManagerEntity).a(paramBoolean, paramContext, new adht(paramFileManagerEntity, paramQQAppInterface));
+    FileModel.a(paramFileManagerEntity).a(paramBoolean, paramContext, new adqa(paramFileManagerEntity, paramQQAppInterface));
   }
   
   public static void a(Context paramContext, String paramString)
@@ -2695,7 +2695,7 @@ public class FileManagerUtil
     paramString = FileUtil.a(paramString);
     if (paramString == null)
     {
-      paramImageView.setImageResource(2130841670);
+      paramImageView.setImageResource(2130841697);
       return;
     }
     paramImageView.setImageResource(b(paramString));
@@ -2716,7 +2716,7 @@ public class FileManagerUtil
     String str3 = FileUtil.a(paramDataLineMsgRecord.filename);
     if (str3 == null)
     {
-      paramAsyncImageView.setImageResource(2130841670);
+      paramAsyncImageView.setImageResource(2130841697);
       label20:
       return;
     }
@@ -2757,7 +2757,7 @@ public class FileManagerUtil
   {
     if ((paramTextView != null) && (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
     {
-      jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramBaseActivity.getResources().getDrawable(2130838594);
+      jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramBaseActivity.getResources().getDrawable(2130838600);
       paramTextView.setCompoundDrawablesWithIntrinsicBounds(jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
       ((Animatable)jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
     }
@@ -2845,7 +2845,7 @@ public class FileManagerUtil
       } while (!QLog.isColorLevel());
       QLog.i("FileManagerUtil<FileAssistant>_TimTips", 2, "Tim installed return!");
       return;
-      new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new adhm(paramQQAppInterface, localFileManagerEntity), 1000L);
+      new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new adpt(paramQQAppInterface, localFileManagerEntity), 1000L);
       localEditor.putLong(str, l);
       localEditor.putInt("AIOshowTime_Total", i + 1);
       localEditor.commit();
@@ -3012,24 +3012,24 @@ public class FileManagerUtil
   {
     if (!paramFileManagerEntity.bSend)
     {
-      paramQQAppInterface = new adhv();
-      DialogUtil.b(paramContext, 230, paramContext.getString(2131431881), paramContext.getString(2131431880), 2131433011, 2131433016, paramQQAppInterface, null).show();
+      paramQQAppInterface = new adqc();
+      DialogUtil.b(paramContext, 230, paramContext.getString(2131431892), paramContext.getString(2131431891), 2131433025, 2131433030, paramQQAppInterface, null).show();
       return;
     }
     paramQQAppInterface = paramContext.getString(2131428109);
     paramFileManagerEntity = paramContext.getString(2131428107);
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
     localActionSheet.c(paramQQAppInterface);
-    localActionSheet.d(paramContext.getString(2131433015));
+    localActionSheet.d(paramContext.getString(2131433029));
     localActionSheet.a(paramFileManagerEntity);
-    localActionSheet.a(new adhw(localActionSheet));
+    localActionSheet.a(new adqd(localActionSheet));
     localActionSheet.show();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, Context paramContext)
   {
     if (paramChatMessage == null) {}
-    adho localadho;
+    adpv localadpv;
     int i;
     do
     {
@@ -3045,9 +3045,9 @@ public class FileManagerUtil
       paramChatMessage.putString("dataline_forward_path", ((FileManagerEntity)localObject).getFilePath());
       paramChatMessage.putParcelable("fileinfo", ForwardFileOption.a((FileManagerEntity)localObject));
       localObject = (DataLineHandler)paramQQAppInterface.a(8);
-      localadho = new adho(paramContext);
-      i = ((DataLineHandler)localObject).a().b(AppConstants.y, paramChatMessage, localadho);
-    } while ((localadho.jdField_a_of_type_Boolean) && (i != 0));
+      localadpv = new adpv(paramContext);
+      i = ((DataLineHandler)localObject).a().b(AppConstants.y, paramChatMessage, localadpv);
+    } while ((localadpv.jdField_a_of_type_Boolean) && (i != 0));
     if (i == 0) {}
     DirectForwarder.b(paramContext, i);
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800644B", "0X800644B", 0, 0, "6", "", "", "");
@@ -3540,7 +3540,7 @@ public class FileManagerUtil
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    ThreadManager.post(new adhn(paramString2, paramQQAppInterface, paramInt, paramString1), 8, null, true);
+    ThreadManager.post(new adpu(paramString2, paramQQAppInterface, paramInt, paramString1), 8, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, FileManagerEntity paramFileManagerEntity)
@@ -3660,7 +3660,7 @@ public class FileManagerUtil
       else if (FileUtils.b(paramFileManagerEntity.getFilePath()))
       {
         str = paramFileManagerEntity.getFilePath();
-        ThreadManager.executeOnSubThread(new adhg(paramFileManagerEntity));
+        ThreadManager.executeOnSubThread(new adpn(paramFileManagerEntity));
         continue;
         if (paramFileManagerEntity.nFileType == 2) {
           if (FileUtils.b(paramFileManagerEntity.strLargeThumPath)) {
@@ -3693,14 +3693,14 @@ public class FileManagerUtil
       do
       {
         return;
-        paramAsyncImageView.setDefaultImage(2130841639);
+        paramAsyncImageView.setDefaultImage(2130841666);
         paramAsyncImageView.setAsyncImage(paramString);
         return;
-        paramAsyncImageView.setDefaultImage(2130841601);
+        paramAsyncImageView.setDefaultImage(2130841628);
       } while (!FileUtil.b(paramString));
       paramAsyncImageView.setApkIconAsyncImage(paramString);
       return;
-      paramAsyncImageView.setDefaultImage(2130841671);
+      paramAsyncImageView.setDefaultImage(2130841698);
     } while (!FileUtil.b(paramString));
     paramAsyncImageView.setAsyncImage(paramString);
   }
@@ -3709,7 +3709,7 @@ public class FileManagerUtil
   {
     String str = FileUtil.a(paramString);
     if (str == null) {
-      paramAsyncImageView.setImageResource(2130841670);
+      paramAsyncImageView.setImageResource(2130841697);
     }
     do
     {
@@ -3722,11 +3722,11 @@ public class FileManagerUtil
     default: 
       return;
     case 0: 
-      paramAsyncImageView.setDefaultImage(2130841639);
+      paramAsyncImageView.setDefaultImage(2130841666);
       paramAsyncImageView.setAsyncImage(paramString);
       return;
     }
-    paramAsyncImageView.setDefaultImage(2130841671);
+    paramAsyncImageView.setDefaultImage(2130841698);
     paramAsyncImageView.setAsyncImage(paramString);
   }
   
@@ -3752,7 +3752,7 @@ public class FileManagerUtil
   @TargetApi(10)
   public static void a(String paramString, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, FileManagerUtil.IGetVideoCallback paramIGetVideoCallback)
   {
-    ThreadManager.post(new adhi(paramString, paramInt3, paramBoolean, paramIGetVideoCallback, paramInt1, paramInt2), 8, null, true);
+    ThreadManager.post(new adpp(paramString, paramInt3, paramBoolean, paramIGetVideoCallback, paramInt1, paramInt2), 8, null, true);
   }
   
   public static void a(List paramList, Activity paramActivity)
@@ -3824,7 +3824,7 @@ public class FileManagerUtil
   {
     if (!NetworkUtil.e(BaseApplicationImpl.getContext()))
     {
-      FMToastUtil.a(2131437312);
+      FMToastUtil.a(2131437332);
       return;
     }
     if (!a())
@@ -3837,7 +3837,7 @@ public class FileManagerUtil
     {
       i = 3;
       label41:
-      if (!CUKingCardHelper.a(localActivity, i, new adhq(paramFMDialogInterface), "")) {
+      if (!CUKingCardHelper.a(localActivity, i, new adpx(paramFMDialogInterface), "")) {
         break label82;
       }
       if (!paramBoolean) {
@@ -4597,7 +4597,7 @@ public class FileManagerUtil
   {
     paramString = FileUtil.a(paramString);
     if (paramString == null) {
-      return 2130841670;
+      return 2130841697;
     }
     return a(a(paramString));
   }
@@ -4701,7 +4701,7 @@ public class FileManagerUtil
   
   public static IForwardCallBack b(QQAppInterface paramQQAppInterface)
   {
-    return new adhl(paramQQAppInterface);
+    return new adps(paramQQAppInterface);
   }
   
   public static String b()
@@ -5100,7 +5100,7 @@ public class FileManagerUtil
       return;
     }
     FileManagerReporter.a("0X8007152");
-    QbSdk.openFileReaderListWithQBDownload(paramActivity, paramString, new adhu(new WeakReference(paramActivity), paramActivity));
+    QbSdk.openFileReaderListWithQBDownload(paramActivity, paramString, new adqb(new WeakReference(paramActivity), paramActivity));
   }
   
   public static void b(Activity paramActivity, String paramString1, String paramString2, String paramString3)
@@ -5155,7 +5155,7 @@ public class FileManagerUtil
       if (FileUtils.b(str1))
       {
         paramFileManagerEntity.strLargeThumPath = str1;
-        paramAsyncImageView.setDefaultImage(2130841639);
+        paramAsyncImageView.setDefaultImage(2130841666);
         paramAsyncImageView.setAsyncImage(str1);
         return;
       }
@@ -5906,7 +5906,7 @@ public class FileManagerUtil
   public static void d(Activity paramActivity, String paramString)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("_filename_from_dlg", paramActivity.getString(2131435108));
+    localBundle.putString("_filename_from_dlg", paramActivity.getString(2131435124));
     UniformDownloadMgr.a().a(paramString, localBundle);
   }
   

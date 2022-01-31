@@ -235,6 +235,7 @@ public abstract class e
           }
           this.mRetryCount += 1;
           this.mSessionId = "";
+          resetWaitState();
           resetSessionPool(true);
           return;
         }
@@ -565,6 +566,7 @@ public abstract class e
           }
           this.mRetryCount += 1;
           this.mSessionId = "";
+          resetWaitState();
           resetSessionPool(true);
           return;
         }

@@ -1,22 +1,14 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.activity.contact.newfriend.QIMNotifyAddFriendBuilder;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
 
-public class wpg
-  implements URLDrawable.URLDrawableListener
+class wpg
+  implements Runnable
 {
-  public wpg(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  wpg(wpf paramwpf) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    EmoticonGroupStoreFragment.a(this.a).invalidate();
+    this.a.a.a.c();
   }
 }
 

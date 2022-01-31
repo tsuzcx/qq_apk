@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tribe.view;
 
-import aite;
+import aiyh;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.SpannableString;
@@ -70,7 +70,7 @@ public class TribeEditVideoButton
     if (this.jdField_b_of_type_Int == -1) {}
     for (;;)
     {
-      paramString.setSpan(new VerticalImageSpan(a(), 2130840623), 0, 1, 33);
+      paramString.setSpan(new VerticalImageSpan(a(), 2130840638), 0, 1, 33);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
       return;
@@ -87,7 +87,7 @@ public class TribeEditVideoButton
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aite(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aiyh(this));
       return;
       a("#添加话题");
     }
@@ -106,11 +106,11 @@ public class TribeEditVideoButton
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131364424));
-    this.jdField_a_of_type_AndroidViewView = ((ImageView)a(2131364427));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131364452));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131364449));
+    this.jdField_a_of_type_AndroidViewView = ((ImageView)a(2131364452));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131364477));
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    a(2131372081).setVisibility(8);
+    a(2131372089).setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setText("下一步");
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(a());
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
@@ -119,7 +119,7 @@ public class TribeEditVideoButton
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     int i = DisplayUtil.a(a(), 10.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, 0, i, 0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130840624);
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130840639);
     Object localObject = new RelativeLayout.LayoutParams(-2, DisplayUtil.a(a(), 28.0F));
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
@@ -198,7 +198,7 @@ public class TribeEditVideoButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.view.TribeEditVideoButton
  * JD-Core Version:    0.7.0.1
  */

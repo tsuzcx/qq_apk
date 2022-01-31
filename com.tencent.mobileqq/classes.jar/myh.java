@@ -1,15 +1,16 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 class myh
   implements Runnable
 {
-  myh(mye parammye) {}
+  myh(myf parammyf) {}
   
   public void run()
   {
-    if (PublicAccountImageCollectionMainActivity.a(this.a.a) != null) {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).a(PublicAccountImageCollectionMainActivity.d(this.a.a));
-    }
+    GalleryShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).dismiss();
+    QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 1, "分享失败，请稍后重试！", 0).a();
   }
 }
 

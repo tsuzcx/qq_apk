@@ -40,7 +40,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
-import jos;
+import jqv;
 import mqq.app.MobileQQ;
 
 public class SmallScreenUtils
@@ -348,7 +348,7 @@ public class SmallScreenUtils
     {
       ((AlphaAnimation)localObject).setDuration(400L);
       localAnimationSet.addAnimation((Animation)localObject);
-      localAnimationSet.setAnimationListener(new jos(paramView, paramBoolean1));
+      localAnimationSet.setAnimationListener(new jqv(paramView, paramBoolean1));
       paramView.startAnimation(localAnimationSet);
       paramView.setVisibility(0);
       paramView.setTag(2131362070, Boolean.valueOf(paramBoolean1));
@@ -843,7 +843,7 @@ public class SmallScreenUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenUtils
  * JD-Core Version:    0.7.0.1
  */

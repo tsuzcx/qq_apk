@@ -1,64 +1,55 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.contacts.base.CardViewController;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.List;
 
 public class wsc
-  extends DownloadListener
+  extends AsyncTask
 {
-  public wsc(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public wsc(CardViewController paramCardViewController) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  protected List a(Void... paramVarArgs)
   {
-    super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantActivity", 2, "download onDone status=" + paramDownloadTask.a() + ",errCode=" + paramDownloadTask.jdField_a_of_type_Int);
-    }
-    int i = paramDownloadTask.jdField_a_of_type_JavaLangString.indexOf("?");
-    String str;
-    if (i == -1)
+    paramVarArgs = ((MayknowRecommendManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(158)).a();
+    return CardViewController.a(this.a, paramVarArgs);
+  }
+  
+  protected void a(List paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0))
     {
-      str = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (!AvatarPendantUtil.jdField_a_of_type_JavaLangString.equals(str)) {
-        break label290;
-      }
-      if ((paramDownloadTask.jdField_a_of_type_Int != 0) || (paramDownloadTask.e != 200)) {
-        break label237;
-      }
-      str = AvatarPendantUtil.b + "/icon.zip";
-      localFile = new File(AvatarPendantUtil.c);
-      if (DownloaderFactory.a(new File(str), localFile, false)) {
-        break label215;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "unzip avatarPendantMarketIcon fail: " + paramDownloadTask.e + ", url: " + paramDownloadTask.jdField_a_of_type_JavaLangString);
-      }
-      FileUtils.a(AvatarPendantUtil.b);
+      CardViewController.c(this.a, false);
+      CardViewController.d(this.a);
+      return;
     }
-    label215:
-    label237:
-    while (!QLog.isColorLevel())
+    Object localObject = new StringBuilder();
+    int i = 0;
+    while (i < paramList.size())
     {
-      File localFile;
-      return;
-      str = paramDownloadTask.jdField_a_of_type_JavaLangString.substring(0, i);
-      break;
-      AvatarPendantActivity.b(this.a);
-      this.a.a.sendEmptyMessage(1000);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "download avatarPendantMarketIcon fail: " + paramDownloadTask.e + ", url: " + paramDownloadTask.jdField_a_of_type_JavaLangString);
-      }
-      FileUtils.a(AvatarPendantUtil.b);
-      return;
+      ((StringBuilder)localObject).append(((MayKnowRecommend)paramList.get(i)).uin);
+      ((StringBuilder)localObject).append(";");
+      i += 1;
     }
-    label290:
-    QLog.e("AvatarPendantActivity", 2, "onDone unkonw url: " + paramDownloadTask.jdField_a_of_type_JavaLangString + ",errCode:" + paramDownloadTask.jdField_a_of_type_Int + ",httpCode:" + paramDownloadTask.e);
+    localObject = ((StringBuilder)localObject).toString();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      CardViewController.b(this.a, (String)localObject);
+    }
+    for (;;)
+    {
+      CardViewController.a(this.a, paramList);
+      if (QLog.isColorLevel()) {
+        QLog.d("CardViewController", 2, "dealSourceList set isRefreshingRemote = false");
+      }
+      CardViewController.c(this.a, false);
+      CardViewController.d(this.a);
+      return;
+      CardViewController.b(this.a, null);
+    }
   }
 }
 

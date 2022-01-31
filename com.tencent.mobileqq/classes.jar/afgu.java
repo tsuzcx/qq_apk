@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.profilecard.InterestGuide;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class afgu
-  implements DialogInterface.OnClickListener
+public class afgu
+  implements Runnable
 {
-  afgu(afgp paramafgp, QQCustomDialog paramQQCustomDialog) {}
+  public afgu(InterestGuide paramInterestGuide) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Afgp.a.f();
+    NearbySPUtil.a(this.a.jdField_a_of_type_JavaLangString, "interest_guide_key", Boolean.FALSE);
+    Context localContext = this.a.jdField_a_of_type_AndroidViewView.getContext();
+    if ((localContext instanceof BaseActivity)) {
+      ReportController.b(((BaseActivity)localContext).app, "dc00898", "", "", "0X8006991", "0X8006991", 0, 0, "", "", "", "");
+    }
   }
 }
 

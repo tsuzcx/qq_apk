@@ -26,12 +26,12 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yfj;
-import ygm;
-import ygn;
-import ygo;
-import ygp;
-import ygq;
+import yls;
+import ymv;
+import ymw;
+import ymx;
+import ymy;
+import ymz;
 
 public class VipSpecialSoundWebViewPlugin
   extends VasWebviewJsPlugin
@@ -209,26 +209,26 @@ public class VipSpecialSoundWebViewPlugin
         if (!paramList.hasNext()) {
           break;
         }
-        yfj localyfj = (yfj)paramList.next();
+        yls localyls = (yls)paramList.next();
         JSONObject localJSONObject3 = new JSONObject();
-        localJSONObject3.put("id", localyfj.jdField_a_of_type_Int);
-        localJSONObject3.put("soundName", localyfj.jdField_a_of_type_JavaLangString);
-        localJSONObject3.put("type", localyfj.jdField_b_of_type_Int);
-        localJSONObject3.put("soundVersion", localyfj.jdField_b_of_type_JavaLangString);
-        localJSONObject3.put("soundUrl", localyfj.jdField_c_of_type_JavaLangString);
-        localJSONObject3.put("whiteList", localyfj.jdField_d_of_type_JavaLangString);
-        localJSONObject3.put("isShow", localyfj.jdField_c_of_type_Int);
-        localJSONObject3.put("backgroundUrl", localyfj.jdField_e_of_type_JavaLangString);
-        localJSONObject3.put("access", localyfj.f);
-        localJSONObject3.put("useNum", localyfj.jdField_d_of_type_Int);
-        localJSONObject3.put("classify", localyfj.jdField_e_of_type_Int);
-        localJSONObject3.put("classifyName", localyfj.g);
-        localJSONObject3.put("limitFreeStart", localyfj.h);
-        localJSONObject3.put("limitFreeEnd", localyfj.i);
-        if ((localyfj.jdField_c_of_type_JavaLangString != null) && (!TextUtils.isEmpty(localyfj.jdField_c_of_type_JavaLangString)) && (f(localyfj.jdField_c_of_type_JavaLangString)))
+        localJSONObject3.put("id", localyls.jdField_a_of_type_Int);
+        localJSONObject3.put("soundName", localyls.jdField_a_of_type_JavaLangString);
+        localJSONObject3.put("type", localyls.jdField_b_of_type_Int);
+        localJSONObject3.put("soundVersion", localyls.jdField_b_of_type_JavaLangString);
+        localJSONObject3.put("soundUrl", localyls.jdField_c_of_type_JavaLangString);
+        localJSONObject3.put("whiteList", localyls.jdField_d_of_type_JavaLangString);
+        localJSONObject3.put("isShow", localyls.jdField_c_of_type_Int);
+        localJSONObject3.put("backgroundUrl", localyls.jdField_e_of_type_JavaLangString);
+        localJSONObject3.put("access", localyls.f);
+        localJSONObject3.put("useNum", localyls.jdField_d_of_type_Int);
+        localJSONObject3.put("classify", localyls.jdField_e_of_type_Int);
+        localJSONObject3.put("classifyName", localyls.g);
+        localJSONObject3.put("limitFreeStart", localyls.h);
+        localJSONObject3.put("limitFreeEnd", localyls.i);
+        if ((localyls.jdField_c_of_type_JavaLangString != null) && (!TextUtils.isEmpty(localyls.jdField_c_of_type_JavaLangString)) && (f(localyls.jdField_c_of_type_JavaLangString)))
         {
           localJSONObject3.put("isDownload", true);
-          localJSONObject2.put(String.valueOf(localyfj.jdField_a_of_type_Int), localJSONObject3);
+          localJSONObject2.put(String.valueOf(localyls.jdField_a_of_type_Int), localJSONObject3);
         }
         else
         {
@@ -299,7 +299,7 @@ public class VipSpecialSoundWebViewPlugin
   {
     a("-->handleGetRingsInfo,callback=" + paramString);
     if (!this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new ygm(this, paramString));
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new ymv(this, paramString));
     }
     for (;;)
     {
@@ -339,11 +339,11 @@ public class VipSpecialSoundWebViewPlugin
       callJs(paramString2, new String[] { paramString1.toString() });
       a("-->startDownload return");
       return true;
-      ygq localygq = new ygq(this);
-      localygq.jdField_a_of_type_JavaLangString = paramString3;
-      localygq.jdField_b_of_type_JavaLangString = paramString1;
-      paramString3 = new ygo(this, localygq, paramString3);
-      ThreadManager.post(localygq, 5, null, true);
+      ymz localymz = new ymz(this);
+      localymz.jdField_a_of_type_JavaLangString = paramString3;
+      localymz.jdField_b_of_type_JavaLangString = paramString1;
+      paramString3 = new ymx(this, localymz, paramString3);
+      ThreadManager.post(localymz, 5, null, true);
       paramString1 = new DownloadTask(paramString1, (File)localObject);
       paramString1.a = 1;
       this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a(paramString1, paramString3, null);
@@ -413,7 +413,7 @@ public class VipSpecialSoundWebViewPlugin
     if ((localFile.exists()) && (!localFile.delete())) {
       a("-->can't delete file!");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new ygn(this, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new ymw(this, paramString));
   }
   
   private void b(String paramString, Bundle paramBundle)
@@ -459,7 +459,7 @@ public class VipSpecialSoundWebViewPlugin
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.d()) {}
     for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.b();; bool = true)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.a(new ygp(this, paramString1, paramString2));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.a(new ymy(this, paramString1, paramString2));
       this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.a(this.mRuntime.a().getApplicationContext(), paramString1, new VipSpecialSoundWebViewPlugin.PreparedListener(this, localJSONObject, paramString3, bool));
       return true;
     }

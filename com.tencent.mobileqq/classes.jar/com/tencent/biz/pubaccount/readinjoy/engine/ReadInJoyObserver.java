@@ -9,8 +9,6 @@ import java.util.List;
 public class ReadInJoyObserver
   implements BusinessObserver
 {
-  public void Z_() {}
-  
   public void a(int paramInt) {}
   
   public void a(int paramInt1, int paramInt2) {}
@@ -42,6 +40,8 @@ public class ReadInJoyObserver
   public void a(boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2) {}
   
   public void a(boolean paramBoolean, List paramList) {}
+  
+  public void ab_() {}
   
   public void b(int paramInt) {}
   

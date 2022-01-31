@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0089" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableRight="@drawable/common_arrow_right_selector"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14d9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_width="200.0dip" android:layout_height="200.0dip" android:layout_marginTop="12.0dip">
+        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11ef" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b98" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center|right|top" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a229f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214fc" android:paddingLeft="9.0dip" android:paddingTop="2.0dip" android:paddingRight="9.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="#ff0de08b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a22a0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="直播" />
+            <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a22a1" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="2.0dip" android:scaleType="centerCrop" android:visible="false" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

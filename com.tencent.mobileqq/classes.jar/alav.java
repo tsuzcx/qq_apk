@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.AuthorityLoginView;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
-class alav
-  implements Runnable
+public class alav
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  alav(alat paramalat) {}
+  public alav(ContainerView paramContainerView) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    this.a.a.a.a(true);
-    if (this.a.a.a.a != null)
+    if (!ContainerView.a(this.a))
     {
-      this.a.a.a.a.dismiss();
-      this.a.a.a.a = null;
+      ContainerView.a(this.a, ContainerView.a);
+      ContainerView.a(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alav
  * JD-Core Version:    0.7.0.1
  */

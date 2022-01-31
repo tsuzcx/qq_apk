@@ -1,24 +1,17 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.List;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ndq
-  implements BatchHandlerListPuller.IPullResultCallback
+  implements INetEventHandler
 {
-  public ndq(VidToVideoInfoPuller paramVidToVideoInfoPuller, List paramList) {}
+  private ndq(VideoServerInfoManager paramVideoServerInfoManager) {}
   
-  public void a(boolean paramBoolean)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Vid list to video info list finish !");
-    if (paramBoolean) {}
-    for (String str = "Every task success";; str = "Some task error")
-    {
-      SLog.d("Q.qqstory.net:VidToVideoInfoPuller", str);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller.a(this.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
-      return;
-    }
+    SLog.d("Q.qqstory.publish:VideoServerInfoManager", "network change");
+    this.a.b.set(true);
   }
 }
 

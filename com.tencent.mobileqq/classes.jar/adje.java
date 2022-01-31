@@ -1,24 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.IBaseTabViewEvent;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileEntitySearchResultModel;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchFragment;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchResultPresenter;
+import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.search.presenter.IPresenter;
+import com.tencent.mobileqq.search.view.IView;
+import com.tencent.mobileqq.search.view.SearchResultView;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class adje
-  implements View.OnClickListener
+  extends BaseMvpFaceAdapter
 {
-  public adje(SendBottomBar paramSendBottomBar) {}
-  
-  public void onClick(View paramView)
+  public adje(FileSearchFragment paramFileSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder, List paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (SendBottomBar.a(this.a).isChecked())
-    {
-      SendBottomBar.a(this.a).r();
-      SendBottomBar.a(this.a).setText("取消全选");
+    super(paramListView, paramFaceDecoder);
+    if (paramList == null) {
       return;
     }
-    SendBottomBar.a(this.a).s();
-    SendBottomBar.a(this.a).setText("全选");
+    if (paramList.size() == 1)
+    {
+      paramFileSearchFragment = (FileEntitySearchResultModel)paramList.get(0);
+      if (paramFileSearchFragment.jdField_a_of_type_JavaUtilList.size() > 1)
+      {
+        paramListView = new ArrayList();
+        paramFaceDecoder = paramFileSearchFragment.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramFaceDecoder.hasNext())
+        {
+          paramList = (FileManagerEntity)paramFaceDecoder.next();
+          paramString = new FileEntitySearchResultModel();
+          paramString.jdField_a_of_type_JavaLangString = paramFileSearchFragment.jdField_a_of_type_JavaLangString;
+          paramString.jdField_a_of_type_JavaUtilList.add(paramList);
+          paramListView.add(paramString);
+        }
+        a(paramListView);
+        return;
+      }
+    }
+    a(paramList);
+  }
+  
+  protected IPresenter a(int paramInt)
+  {
+    return new FileSearchResultPresenter(FileSearchFragment.a(this.a));
+  }
+  
+  protected IView a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new SearchResultView(paramViewGroup, 2130971563);
   }
 }
 

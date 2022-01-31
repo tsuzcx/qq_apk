@@ -37,7 +37,7 @@ public class PAAudioPttDownloadProcessor
   
   public static String a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return AppConstants.aJ + paramQQAppInterface.getAccount() + "/" + "ptt" + "/pa_audio_" + paramString + ".amr";
+    return AppConstants.aK + paramQQAppInterface.getAccount() + "/" + "ptt" + "/pa_audio_" + paramString + ".amr";
   }
   
   private cmd0x346.ReqBody a()
@@ -301,9 +301,9 @@ public class PAAudioPttDownloadProcessor
     //   62	68	174	java/lang/Exception
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     f();
   }
   
@@ -318,7 +318,7 @@ public class PAAudioPttDownloadProcessor
       d();
       return -1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.h = (AppConstants.aJ + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "/" + "ptt" + "/pa_audio_" + str + ".amr");
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.h = (AppConstants.aK + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "/" + "ptt" + "/pa_audio_" + str + ".amr");
     return 0;
   }
   
@@ -418,7 +418,7 @@ public class PAAudioPttDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.PAAudioPttDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

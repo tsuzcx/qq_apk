@@ -1,67 +1,34 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.POITaskInfo;
+import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.util.ArrayList;
 
 public class abaa
-  implements Runnable
+  implements abac
 {
-  public abaa(ARMapActivity paramARMapActivity, boolean paramBoolean, String paramString, int paramInt) {}
+  public abaa(ArkAppCGI paramArkAppCGI) {}
   
-  public void run()
+  public void a(abad paramabad, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      RelativeLayout.LayoutParams localLayoutParams;
-      if (this.jdField_a_of_type_JavaLangString.equals("right")) {
-        if ((this.jdField_a_of_type_Int == POITaskInfo.g) || (this.jdField_a_of_type_Int == POITaskInfo.k))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a.setImageResource(2130842293);
-          if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity)))
-          {
-            localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(77.0F, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getResources()), AIOUtils.a(70.0F, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getResources()));
-            localLayoutParams.addRule(11);
-            localLayoutParams.addRule(10);
-            localLayoutParams.topMargin = AIOUtils.a(90.0F, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getResources());
-            localLayoutParams.rightMargin = AIOUtils.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getResources());
-            this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a.setLayoutParams(localLayoutParams);
-            ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, "right");
-          }
-        }
-      }
-      label366:
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a.setVisibility(0);
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a.setImageResource(2130842294);
-        break;
-        if (this.jdField_a_of_type_JavaLangString.equals("left"))
-        {
-          if ((this.jdField_a_of_type_Int == POITaskInfo.g) || (this.jdField_a_of_type_Int == POITaskInfo.k)) {
-            this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a.setImageResource(2130842291);
-          }
-          for (;;)
-          {
-            if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity))) {
-              break label366;
-            }
-            localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(77.0F, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getResources()), AIOUtils.a(70.0F, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getResources()));
-            localLayoutParams.addRule(9);
-            localLayoutParams.addRule(10);
-            localLayoutParams.topMargin = AIOUtils.a(90.0F, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getResources());
-            localLayoutParams.leftMargin = AIOUtils.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.getResources());
-            this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a.setLayoutParams(localLayoutParams);
-            ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, "left");
-            break;
-            this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a.setImageResource(2130842292);
-          }
-        }
-      }
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if ((!paramBoolean) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("getPredownloadAppList: fail, url=%s", new Object[] { paramabad.jdField_a_of_type_JavaLangString }));
     }
-    this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a.setVisibility(8);
+    for (;;)
+    {
+      int i = 0;
+      while (i < paramabad.b.size())
+      {
+        paramArrayOfByte = paramabad.jdField_a_of_type_JavaUtilArrayList.get(i);
+        ArkAppCGI.ArkAppCGICallback localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramabad.b.get(i);
+        if (localArkAppCGICallback != null) {
+          localArkAppCGICallback.a(paramBoolean, localArrayList1, localArrayList2, paramArrayOfByte);
+        }
+        i += 1;
+      }
+      ArkAppCGI.a(this.a, paramArrayOfByte, localArrayList1, localArrayList2);
+    }
   }
 }
 

@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.contact.newfriend.CloneFriendPushHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 
-public class vtb
-  implements Runnable
+class vtb
+  implements DialogInterface.OnClickListener
 {
-  public vtb(FriendChatPie paramFriendChatPie) {}
+  vtb(vta paramvta) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (CloneFriendPushHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
-    {
-      FriendChatPie.c(this.a, true);
-      CloneFriendPushHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
-      return;
-    }
-    FriendChatPie.c(this.a, false);
+    paramDialogInterface.dismiss();
+    AIOImageListScene.j(this.a.a).setResult(8001);
   }
 }
 

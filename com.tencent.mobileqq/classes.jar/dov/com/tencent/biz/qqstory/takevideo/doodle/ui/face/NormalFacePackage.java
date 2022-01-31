@@ -2,7 +2,7 @@ package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import aoao;
+import aojf;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -95,7 +95,7 @@ public class NormalFacePackage
     File localFile1;
     if (((File)localObject).isDirectory())
     {
-      File[] arrayOfFile = ((File)localObject).listFiles(new aoao(this));
+      File[] arrayOfFile = ((File)localObject).listFiles(new aojf(this));
       if (arrayOfFile != null)
       {
         int k = arrayOfFile.length;

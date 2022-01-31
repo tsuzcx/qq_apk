@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yru;
+import yyl;
 
 public class SpriteActionMessage
 {
@@ -27,7 +27,7 @@ public class SpriteActionMessage
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new yru(this, paramInt, paramBoolean));
+    ThreadManager.getUIHandler().post(new yyl(this, paramInt, paramBoolean));
   }
   
   private void a(ApolloActionData paramApolloActionData)

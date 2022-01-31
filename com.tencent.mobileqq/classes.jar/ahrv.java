@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+import com.tencent.mobileqq.richmedia.conn.ConnManager;
+import com.tencent.mobileqq.richmedia.server.ChannelStateManager;
 
 public class ahrv
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ahrv(BaseSearchActivity paramBaseSearchActivity) {}
+  public ahrv(ConnManager paramConnManager, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
+    ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).b(10);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager.a(ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager), this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahrv
  * JD-Core Version:    0.7.0.1
  */

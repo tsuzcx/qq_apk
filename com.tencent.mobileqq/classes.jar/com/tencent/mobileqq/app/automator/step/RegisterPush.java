@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import mqq.observer.AccountObserver;
-import zro;
+import zxz;
 
 public class RegisterPush
   extends AsyncStep
@@ -24,7 +24,7 @@ public class RegisterPush
     if (this.b == 13) {}
     for (this.c = 0;; this.c = 10)
     {
-      this.jdField_a_of_type_MqqObserverAccountObserver = new zro(this, null);
+      this.jdField_a_of_type_MqqObserverAccountObserver = new zxz(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.registObserver(this.jdField_a_of_type_MqqObserverAccountObserver);
       return;
     }

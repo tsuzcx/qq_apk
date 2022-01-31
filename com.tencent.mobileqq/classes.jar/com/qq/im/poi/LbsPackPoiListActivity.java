@@ -21,16 +21,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anh;
-import ani;
 import anj;
 import ank;
 import anl;
 import anm;
 import ann;
+import ano;
 import anp;
-import anq;
 import anr;
+import ans;
+import ant;
 import com.tencent.mobileqq.armap.ArMapInterface;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.mobileqq.utils.CustomHandler;
@@ -59,8 +59,8 @@ public class LbsPackPoiListActivity
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private LbsPackManager jdField_a_of_type_ComQqImPoiLbsPackManager;
-  private LbsPackObserver jdField_a_of_type_ComQqImPoiLbsPackObserver = new anp(this);
-  private LbsPackPoiListAdapter.onClickListener jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter$onClickListener = new anq(this);
+  private LbsPackObserver jdField_a_of_type_ComQqImPoiLbsPackObserver = new anr(this);
+  private LbsPackPoiListAdapter.onClickListener jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter$onClickListener = new ans(this);
   private LbsPackPoiListAdapter jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter;
   private PoiInfo jdField_a_of_type_ComQqImPoiPoiInfo;
   public PullRefreshHeader a;
@@ -83,15 +83,15 @@ public class LbsPackPoiListActivity
   
   public LbsPackPoiListActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new ann(this);
+    this.jdField_a_of_type_AndroidOsHandler$Callback = new anp(this);
   }
   
-  private anr a(PoiInfo paramPoiInfo)
+  private ant a(PoiInfo paramPoiInfo)
   {
-    anr localanr = new anr(paramPoiInfo);
-    localanr.a(ChnToSpell.a(paramPoiInfo.jdField_a_of_type_JavaLangString, 2));
-    localanr.b(ChnToSpell.a(paramPoiInfo.jdField_a_of_type_JavaLangString, 1));
-    return localanr;
+    ant localant = new ant(paramPoiInfo);
+    localant.a(ChnToSpell.a(paramPoiInfo.jdField_a_of_type_JavaLangString, 2));
+    localant.b(ChnToSpell.a(paramPoiInfo.jdField_a_of_type_JavaLangString, 1));
+    return localant;
   }
   
   private void a(long paramLong)
@@ -159,34 +159,34 @@ public class LbsPackPoiListActivity
     Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      anr localanr = (anr)localIterator.next();
-      String str1 = localanr.jdField_a_of_type_ComQqImPoiPoiInfo.jdField_a_of_type_JavaLangString.toLowerCase();
-      String str2 = localanr.jdField_a_of_type_ComQqImPoiPoiInfo.b.toLowerCase();
-      if ((str1.equals(localObject2)) || (localanr.b.equals(localObject2)) || (localanr.jdField_a_of_type_JavaLangString.equals(localObject2)) || (str2.equals(localObject2))) {
-        ((List)localObject3).add(localanr);
-      } else if ((str1.indexOf((String)localObject2) == 0) || (localanr.b.indexOf((String)localObject2) == 0) || (localanr.jdField_a_of_type_JavaLangString.indexOf((String)localObject2) == 0) || (str2.indexOf((String)localObject2) == 0)) {
-        ((List)localObject1).add(localanr);
-      } else if ((str1.indexOf((String)localObject2) > 0) || (localanr.b.indexOf((String)localObject2) > 0) || (localanr.jdField_a_of_type_JavaLangString.indexOf((String)localObject2) > 0) || (str2.indexOf((String)localObject2) > 0)) {
-        paramString.add(localanr);
+      ant localant = (ant)localIterator.next();
+      String str1 = localant.jdField_a_of_type_ComQqImPoiPoiInfo.jdField_a_of_type_JavaLangString.toLowerCase();
+      String str2 = localant.jdField_a_of_type_ComQqImPoiPoiInfo.b.toLowerCase();
+      if ((str1.equals(localObject2)) || (localant.b.equals(localObject2)) || (localant.jdField_a_of_type_JavaLangString.equals(localObject2)) || (str2.equals(localObject2))) {
+        ((List)localObject3).add(localant);
+      } else if ((str1.indexOf((String)localObject2) == 0) || (localant.b.indexOf((String)localObject2) == 0) || (localant.jdField_a_of_type_JavaLangString.indexOf((String)localObject2) == 0) || (str2.indexOf((String)localObject2) == 0)) {
+        ((List)localObject1).add(localant);
+      } else if ((str1.indexOf((String)localObject2) > 0) || (localant.b.indexOf((String)localObject2) > 0) || (localant.jdField_a_of_type_JavaLangString.indexOf((String)localObject2) > 0) || (str2.indexOf((String)localObject2) > 0)) {
+        paramString.add(localant);
       }
     }
     localObject2 = ((List)localObject3).iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      localObject3 = (anr)((Iterator)localObject2).next();
-      this.jdField_a_of_type_JavaUtilList.add(((anr)localObject3).jdField_a_of_type_ComQqImPoiPoiInfo);
+      localObject3 = (ant)((Iterator)localObject2).next();
+      this.jdField_a_of_type_JavaUtilList.add(((ant)localObject3).jdField_a_of_type_ComQqImPoiPoiInfo);
     }
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (anr)((Iterator)localObject1).next();
-      this.jdField_a_of_type_JavaUtilList.add(((anr)localObject2).jdField_a_of_type_ComQqImPoiPoiInfo);
+      localObject2 = (ant)((Iterator)localObject1).next();
+      this.jdField_a_of_type_JavaUtilList.add(((ant)localObject2).jdField_a_of_type_ComQqImPoiPoiInfo);
     }
     paramString = paramString.iterator();
     while (paramString.hasNext())
     {
-      localObject1 = (anr)paramString.next();
-      this.jdField_a_of_type_JavaUtilList.add(((anr)localObject1).jdField_a_of_type_ComQqImPoiPoiInfo);
+      localObject1 = (ant)paramString.next();
+      this.jdField_a_of_type_JavaUtilList.add(((ant)localObject1).jdField_a_of_type_ComQqImPoiPoiInfo);
     }
     if (this.jdField_a_of_type_JavaUtilList.isEmpty())
     {
@@ -221,33 +221,33 @@ public class LbsPackPoiListActivity
   {
     this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362711));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362716));
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362594);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362594);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363381));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363428));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362599);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362599);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363400));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363262));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363447));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438777);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131436702);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131370280));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969239, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438800);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131436722);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131370289));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969237, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter = new LbsPackPoiListAdapter(this, this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter$onClickListener);
     if (this.jdField_a_of_type_ComQqImPoiPoiInfo != null) {
       this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter.a(this.jdField_a_of_type_ComQqImPoiPoiInfo);
     }
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131363116);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131363120);
     this.jdField_c_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     e();
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838215);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getResources().getDrawable(2130838590));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838220);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getResources().getDrawable(2130838596));
     this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(true);
     this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.jdField_c_of_type_AndroidViewView);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -273,9 +273,9 @@ public class LbsPackPoiListActivity
   
   private void e()
   {
-    this.d = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971517, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.d.findViewById(2131368321).setVisibility(8);
-    EditText localEditText = (EditText)this.d.findViewById(2131368322);
+    this.d = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971543, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.d.findViewById(2131368323).setVisibility(8);
+    EditText localEditText = (EditText)this.d.findViewById(2131368324);
     localEditText.setFocusableInTouchMode(false);
     localEditText.setOnClickListener(this);
     localEditText.setCursorVisible(false);
@@ -288,7 +288,7 @@ public class LbsPackPoiListActivity
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
     this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
     this.jdField_a_of_type_AndroidAppDialog.getWindow().setSoftInputMode(36);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2130970375);
+    this.jdField_a_of_type_AndroidAppDialog.setContentView(2130970390);
     Object localObject = this.jdField_a_of_type_AndroidAppDialog.getWindow().getAttributes();
     ((WindowManager.LayoutParams)localObject).x = 0;
     ((WindowManager.LayoutParams)localObject).y = 0;
@@ -297,22 +297,22 @@ public class LbsPackPoiListActivity
     ((WindowManager.LayoutParams)localObject).gravity = 51;
     this.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable());
     localObject = (InputMethodManager)super.getSystemService("input_method");
-    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365669));
-    this.jdField_b_of_type_ComTencentWidgetXListView.setBackgroundDrawable(getResources().getDrawable(2130838214));
+    this.jdField_b_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365674));
+    this.jdField_b_of_type_ComTencentWidgetXListView.setBackgroundDrawable(getResources().getDrawable(2130838219));
     this.jdField_b_of_type_ComTencentWidgetXListView.setDividerHeight(0);
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_b_of_type_ComQqImPoiLbsPackPoiListAdapter = new LbsPackPoiListAdapter(this, this.jdField_a_of_type_JavaUtilList);
     this.jdField_b_of_type_ComQqImPoiLbsPackPoiListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter$onClickListener);
     this.jdField_b_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_b_of_type_ComQqImPoiLbsPackPoiListAdapter);
-    this.jdField_b_of_type_ComTencentWidgetXListView.setOnTouchListener(new anh(this, (InputMethodManager)localObject));
-    this.e = this.jdField_a_of_type_AndroidAppDialog.findViewById(2131362840);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131368322));
+    this.jdField_b_of_type_ComTencentWidgetXListView.setOnTouchListener(new anj(this, (InputMethodManager)localObject));
+    this.e = this.jdField_a_of_type_AndroidAppDialog.findViewById(2131362845);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131368324));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new LbsPackPoiListActivity.SearchTextWatcher(this));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131368323));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new ani(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363923));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new anj(this));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppDialog.findViewById(2131370281);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131368325));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new ank(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363948));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new anl(this));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppDialog.findViewById(2131370290);
   }
   
   protected void a()
@@ -325,14 +325,14 @@ public class LbsPackPoiListActivity
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation1);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
     localTranslateAnimation2.setDuration(300L);
-    localTranslateAnimation1.setAnimationListener(new ank(this, localTranslateAnimation1, localTranslateAnimation2, i));
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new anl(this, i, localTranslateAnimation2, (InputMethodManager)localObject));
+    localTranslateAnimation1.setAnimationListener(new anm(this, localTranslateAnimation1, localTranslateAnimation2, i));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ann(this, i, localTranslateAnimation2, (InputMethodManager)localObject));
     this.jdField_a_of_type_AndroidWidgetEditText.setText("");
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    localObject = (Button)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131368321);
+    localObject = (Button)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131368323);
     ((Button)localObject).setVisibility(0);
-    ((Button)localObject).setOnClickListener(new anm(this));
+    ((Button)localObject).setOnClickListener(new ano(this));
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_b_of_type_ComQqImPoiLbsPackPoiListAdapter.notifyDataSetChanged();
     this.jdField_b_of_type_Boolean = true;
@@ -342,7 +342,7 @@ public class LbsPackPoiListActivity
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.Y_();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.aa_();
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
@@ -385,9 +385,9 @@ public class LbsPackPoiListActivity
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    setTheme(2131624738);
+    setTheme(2131624739);
     super.doOnCreate(paramBundle);
-    setContentView(2130970376);
+    setContentView(2130970391);
     d();
     c();
     b();
@@ -419,7 +419,7 @@ public class LbsPackPoiListActivity
     {
     default: 
       return;
-    case 2131368322: 
+    case 2131368324: 
       a();
       return;
     }

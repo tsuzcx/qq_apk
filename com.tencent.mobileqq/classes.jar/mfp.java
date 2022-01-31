@@ -1,21 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
-import com.tencent.widget.ActionSheet.WatchDismissActions;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 
-public class mfp
-  implements ActionSheet.WatchDismissActions
+public final class mfp
+  implements Runnable
 {
-  public mfp(VideoShareHelper paramVideoShareHelper) {}
+  public mfp(long paramLong) {}
   
-  public void a()
+  public void run()
   {
-    if (VideoShareHelper.c(this.a))
-    {
-      VideoShareHelper.c(this.a, false);
-      VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), true, false);
-      return;
-    }
-    VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), true, true);
+    ReadInJoyLogicEngine.a().b(this.a, 2);
   }
 }
 

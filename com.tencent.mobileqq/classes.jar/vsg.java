@@ -1,24 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.media.ExifInterface;
+import android.os.AsyncTask;
+import com.tencent.image.JpegExifReader;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class vsg
-  implements View.OnClickListener
+  extends AsyncTask
 {
-  public vsg(DiscussChatPie paramDiscussChatPie) {}
+  public vsg(AIOGalleryScene paramAIOGalleryScene, File paramFile, int paramInt) {}
   
-  public void onClick(View paramView)
+  protected Void a(Void... paramVarArgs)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet = PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, 1);
-    long l = Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b() != l) {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Multi_call", "Mc_corner_launch", 0, 0, "", "", "", "");
+    if (JpegExifReader.isCrashJpeg(this.jdField_a_of_type_JavaIoFile.getAbsolutePath())) {
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = new ExifInterface(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          paramVarArgs.setAttribute("Orientation", String.valueOf(1));
+          paramVarArgs.saveAttributes();
+          paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene;
+          paramVarArgs.k += 1;
+          return null;
+        }
+      }
+      catch (IOException paramVarArgs)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("AIOGalleryScene", 2, "save exif error", paramVarArgs);
+        return null;
+        if (this.jdField_a_of_type_Int != 1) {
+          break label126;
+        }
+        paramVarArgs.setAttribute("Orientation", String.valueOf(6));
+        continue;
+      }
+      catch (UnsupportedOperationException paramVarArgs) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("AIOGalleryScene", 2, "save exif error", paramVarArgs);
+      return null;
+      label126:
+      if (this.jdField_a_of_type_Int == 2) {
+        paramVarArgs.setAttribute("Orientation", String.valueOf(3));
+      } else if (this.jdField_a_of_type_Int == 3) {
+        paramVarArgs.setAttribute("Orientation", String.valueOf(8));
+      }
     }
   }
 }

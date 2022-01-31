@@ -1,32 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class lct
-  extends ReadInJoyObserver
+  extends SosoInterface.OnLocationListener
 {
-  public lct(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
-  
-  public void a(int paramInt)
+  public lct(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    ReadInJoyFeedsActivity.a(this.a, paramInt);
-    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
-      ((KanDianViewController)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (ReadInJoyFeedsActivity.a(this.a) == 1)
+    if ((this.a.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (this.a.jdField_a_of_type_JavaUtilList == null)) {}
+    ArrayList localArrayList;
+    double d1;
+    double d2;
+    do
     {
-      ((KandianMergeManager)this.a.app.getManager(161)).b(1);
-      return;
-    }
-    ReadInJoyFeedsActivity.b(this.a, paramInt1);
-    ((KanDianViewController)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
+      do
+      {
+        return;
+      } while ((paramInt != 0) || (paramSosoLbsInfo == null));
+      localArrayList = new ArrayList();
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
+        if (localRecentShopParcel.c != 1) {
+          try
+          {
+            localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
+          }
+          catch (Exception localException) {}
+        }
+      }
+      d1 = paramSosoLbsInfo.a.a;
+      d2 = paramSosoLbsInfo.a.b;
+    } while (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool == null);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, localArrayList, d2, d1);
   }
 }
 

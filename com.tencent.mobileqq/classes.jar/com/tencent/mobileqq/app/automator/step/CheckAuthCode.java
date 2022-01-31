@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.ConfigObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import zpz;
+import zwk;
 
 public class CheckAuthCode
   extends AsyncStep
@@ -16,7 +16,7 @@ public class CheckAuthCode
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new zpz(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new zwk(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
     }
     if (((ConfigHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(4)).a()) {

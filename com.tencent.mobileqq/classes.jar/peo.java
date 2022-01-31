@@ -1,11 +1,15 @@
-class peo
+import android.view.View;
+import com.tencent.biz.ui.CustomMenuBar;
+
+public class peo
   implements Runnable
 {
-  peo(pen parampen, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public peo(CustomMenuBar paramCustomMenuBar) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Pen.invalidate(this.jdField_a_of_type_Int, this.b, this.c, this.d);
+    this.a.b = false;
+    this.a.a.setVisibility(4);
   }
 }
 

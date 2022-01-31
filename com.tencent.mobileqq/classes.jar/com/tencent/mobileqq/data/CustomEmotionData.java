@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.data;
 
+import android.text.TextUtils;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
+import com.tencent.qphone.base.util.QLog;
 
 public class CustomEmotionData
   extends Entity
@@ -18,6 +20,25 @@ public class CustomEmotionData
   public String uin;
   public String url;
   
+  public boolean checkMarketFace(String paramString)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (this.isMarkFace) {
+      if (!TextUtils.isEmpty(this.eId))
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(this.emoPath)) {}
+      }
+      else
+      {
+        QLog.e("FavroamingDBManager", 1, "error MarketFace from " + paramString + ", " + toString());
+        bool1 = false;
+      }
+    }
+    return bool1;
+  }
+  
   public void replace(CustomEmotionData paramCustomEmotionData)
   {
     if (paramCustomEmotionData != null)
@@ -32,6 +53,7 @@ public class CustomEmotionData
       this.url = paramCustomEmotionData.url;
       this.md5 = paramCustomEmotionData.md5;
       this.isAPNG = paramCustomEmotionData.isAPNG;
+      checkMarketFace("replace");
     }
   }
   

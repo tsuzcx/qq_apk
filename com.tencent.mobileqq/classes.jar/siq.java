@@ -1,28 +1,47 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
 public class siq
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public siq(Conversation paramConversation, Object paramObject) {}
+  public siq(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof String)) {}
-    for (;;)
-    {
-      try
-      {
-        i = Integer.parseInt((String)this.jdField_a_of_type_JavaLangObject);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "", "", "", "");
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-      }
-      int i = 0;
+    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+      return;
     }
+    if (paramAnimation == this.a.jdField_b_of_type_AndroidViewAnimationAlphaAnimation)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
+      this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(4);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131494194));
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131494194));
+    }
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setFocusable(true);
+    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {}
+    while (paramAnimation != this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131494216));
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131494216));
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }
 

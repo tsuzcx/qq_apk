@@ -1,41 +1,42 @@
 package c.t.m.g;
 
+import java.util.Map;
+
 public final class cl
 {
-  private static cm a = null;
+  private static boolean a = true;
+  private static boolean b = true;
   
-  public static void a(cm paramcm)
+  public static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, Map<String, String> paramMap1, Map<String, String> paramMap2, boolean paramBoolean)
   {
-    if (paramcm == null) {
-      a("FC_Log", "set log callback null!");
-    }
-    a = paramcm;
+    q.a(paramString1, paramInt1, paramInt2, paramString2, paramMap1, paramMap2, paramBoolean);
   }
   
-  public static final void a(String paramString1, String paramString2)
+  public static boolean a(String paramString, int paramInt, Map<String, String> paramMap)
   {
-    if (a()) {
-      a.onLog(3, paramString1, paramString2);
+    if (paramInt == m.c())
+    {
+      if ((a) && (("HLReqRspEvent".equals(paramString)) || ("HLHttpAgent".equals(paramString))))
+      {
+        a = false;
+        return true;
+      }
+      if ((b) && ("HLHttpDirect".equals(paramString)))
+      {
+        paramString = (String)paramMap.get("B15");
+        if ((!cn.a(paramString)) && (paramString.equals("app")))
+        {
+          b = false;
+          return true;
+        }
+      }
     }
+    return false;
   }
   
-  public static final void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public static void b(String paramString1, int paramInt1, int paramInt2, String paramString2, Map<String, String> paramMap1, Map<String, String> paramMap2, boolean paramBoolean)
   {
-    if (a()) {
-      a.onLog(6, paramString1, paramString2, paramThrowable);
-    }
-  }
-  
-  private static boolean a()
-  {
-    return a != null;
-  }
-  
-  public static final void b(String paramString1, String paramString2)
-  {
-    if (a()) {
-      a.onLog(6, paramString1, paramString2);
-    }
+    q.b(paramString1, paramInt1, paramInt2, paramString2, paramMap1, paramMap2, paramBoolean);
   }
 }
 

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="#ff333333" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0519"
+<FrameLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingTop="32.0dip" android:paddingRight="12.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="33.0dip" android:layout_height="33.0dip" android:layout_marginLeft="60.0dip" android:layout_alignParentTop="true">
-        <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04e9" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" />
-        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05e5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:contentDescription="@string/image" />
-    </FrameLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.5dip">
-        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0591" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0868" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1b69" />
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14bf" android:background="#ffd8dada" android:layout_width="fill_parent" android:layout_height="208.0dip" android:scaleType="fitXY" />
+    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:layout_gravity="center|right|top" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020636" android:paddingLeft="3.0dip" android:paddingTop="1.0dip" android:paddingRight="3.0dip" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:text="广告" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#fff8f8f8" android:paddingTop="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="208.0dip">
+        <LinearLayout android:orientation="vertical" android:paddingLeft="12.0dip" android:paddingTop="4.0dip" android:paddingRight="15.0dip" android:paddingBottom="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0086" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip" android:text="" android:maxLines="2" android:lineSpacingExtra="0.0dip" />
+            <TextView android:enabled="false" android:textSize="12.0sp" android:textColor="#ffbbbbbb" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14c2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="" android:maxLines="1" />
+        </LinearLayout>
+        <TextView android:textSize="14.0sp" android:textColor="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020638" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14c3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020637" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="立即下载" />
     </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

@@ -1,29 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class yfx
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public yfx(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public yfx(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.leftView.clearAnimation();
-    this.a.a.clearAnimation();
-    this.a.leftView.setVisibility(0);
-    this.a.a.setVisibility(0);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText("管理");
-    this.a.rightViewText.setContentDescription("管理 按钮");
-    this.a.c = false;
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.a.app, this.a, 2, 12);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 1, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

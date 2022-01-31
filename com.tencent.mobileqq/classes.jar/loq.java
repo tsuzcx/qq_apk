@@ -1,22 +1,14 @@
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+
 public class loq
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public int b;
-  public long b;
-  public int c;
-  public int d;
+  public loq(ReadInJoyLogicEngine paramReadInJoyLogicEngine, ReadInJoyEntityManagerFactory paramReadInJoyEntityManagerFactory) {}
   
-  public String toString()
+  public void run()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" fid:" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(" cn:" + this.jdField_a_of_type_Int);
-    localStringBuilder.append(" ic:" + this.jdField_b_of_type_Int);
-    localStringBuilder.append(" gid:" + this.jdField_b_of_type_Long);
-    localStringBuilder.append(" ic_max:" + this.c);
-    localStringBuilder.append(" seg:" + this.d);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyEntityManagerFactory.verifyAuthentication();
   }
 }
 

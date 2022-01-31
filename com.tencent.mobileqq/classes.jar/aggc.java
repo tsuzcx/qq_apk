@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
+import com.tencent.mobileqq.ocr.OcrControl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.io.File;
+import java.util.HashMap;
 
 public class aggc
   implements Runnable
 {
-  public aggc(ScanTorchActivity paramScanTorchActivity, ARTarget paramARTarget) {}
+  public aggc(OcrControl paramOcrControl, ARCloudReqFileInfo paramARCloudReqFileInfo) {}
   
   public void run()
   {
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.a.a);
+    long l1 = new File(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.a).length() / 1024L;
+    long l2 = new File(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.b).length() / 1024L;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("ocrFilesize", String.valueOf(l1));
+    localHashMap.put("previewFilesize", String.valueOf(l2));
+    StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ocr_pic_size", true, 0L, 0L, localHashMap, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aggc
  * JD-Core Version:    0.7.0.1
  */

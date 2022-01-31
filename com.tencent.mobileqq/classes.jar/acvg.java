@@ -1,34 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
 class acvg
   implements Runnable
 {
-  acvg(acve paramacve) {}
+  acvg(acvc paramacvc) {}
   
   public void run()
   {
-    try
+    if (this.a.a.a.getVisibility() == 0)
     {
-      if (this.a.a.jdField_a_of_type_JavaIoOutputStream == null) {
-        this.a.a.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.a.a.d, true);
-      }
-      if (this.a.a.b == 1) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.a.c, 2002);
-      }
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-      this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
-      FileManagerRSWorker.a(this.a.a, this.a.a.jdField_a_of_type_Long, this.a.a.h);
+      this.a.a.c();
       return;
     }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      localFileNotFoundException.printStackTrace();
-    }
+    this.a.a.d();
   }
 }
 

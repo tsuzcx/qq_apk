@@ -1,19 +1,14 @@
-import android.content.Context;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import com.tencent.ark.ark.Application;
+import com.tencent.mobileqq.ark.ArkAiAppCenter;
 
 public class aayh
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  implements Runnable
 {
-  public aayh(ArkTipsManager paramArkTipsManager, Context paramContext) {}
+  public aayh(ArkAiAppCenter paramArkAiAppCenter, String[] paramArrayOfString) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void run()
   {
-    if ((paramInt == 0) && (paramAppPathInfo.a != null)) {
-      ArkAppCenter.a(paramAppPathInfo.a, new aayi(this));
-    }
+    ark.Application.SetUrlCheckingList(this.jdField_a_of_type_ArrayOfJavaLangString, 1);
   }
 }
 

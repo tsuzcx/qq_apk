@@ -1,14 +1,36 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Dialog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.theme.NightModeLogic;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class aita
-  implements Runnable
+public class aita
+  implements View.OnClickListener
 {
-  aita(aisy paramaisy) {}
+  public aita(NightModeLogic paramNightModeLogic) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(this.a.a.getActivity(), 1, "保存至本地相册失败，请重试", 0).a();
+    paramView = new Bundle();
+    paramView.putInt("start_status", 2);
+    this.a.a(0, paramView);
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.jdField_a_of_type_AndroidAppDialog = null;
+    try
+    {
+      paramView = new HashMap();
+      paramView.put("param_FailCode", "3");
+      StatisticCollector.a(this.a.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext()).a(((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime).getAccount(), "VipNightThemeDialogClick", false, 1L, 0L, paramView, "", false);
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

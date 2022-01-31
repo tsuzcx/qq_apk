@@ -1,14 +1,14 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class xtu
+public class xtu
   implements Runnable
 {
-  xtu(xts paramxts) {}
+  public xtu(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
   public void run()
   {
-    QzDynamicVideoPreviewActivity.a(this.a.a).setVisibility(8);
+    EditLocalVideoActivity.a(this.a).setVisibility(8);
   }
 }
 

@@ -1,17 +1,16 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
 
-public class nss
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
+class nss
+  implements Runnable
 {
-  public nss(StoryPickerFragment paramStoryPickerFragment) {}
+  nss(nsr paramnsr) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.d();
-    }
+    this.a.a.jdField_a_of_type_AndroidViewView.setBackgroundColor(-285212672);
+    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-14277082);
   }
 }
 

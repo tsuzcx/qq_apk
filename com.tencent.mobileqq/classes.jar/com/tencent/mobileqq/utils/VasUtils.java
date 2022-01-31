@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
 import QQService.EVIPSPEC;
-import akgs;
+import akof;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -220,7 +220,7 @@ public final class VasUtils
     if (paramContext == null) {
       return;
     }
-    ((BaseActivity)paramContext).runOnUiThread(new akgs(paramContext, paramString));
+    ((BaseActivity)paramContext).runOnUiThread(new akof(paramContext, paramString));
   }
   
   public static void a(AppInterface paramAppInterface)

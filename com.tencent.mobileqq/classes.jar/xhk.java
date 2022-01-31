@@ -1,53 +1,59 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportMgr;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.PfaFriend;
+import Wallet.PfaFriendRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-public class xhk
-  implements Runnable
+public final class xhk
+  implements DialogInterface.OnClickListener
 {
-  public xhk(VACDReportMgr paramVACDReportMgr, byte[] paramArrayOfByte) {}
+  public xhk(WeakReference paramWeakReference, ArrayList paramArrayList) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    synchronized ()
-    {
-      try
+    if ((paramDialogInterface instanceof QQCustomDialogWtihInputAndChoose)) {
+      switch (paramInt)
       {
-        while ((VACDReportMgr.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).isEmpty()) && (VACDReportMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).isEmpty())) {
-          VACDReportMgr.a().wait();
-        }
-        try
-        {
-          synchronized (this.jdField_a_of_type_ArrayOfByte)
-          {
-            this.jdField_a_of_type_ArrayOfByte.wait(2000L);
-          }
-          do
-          {
-            synchronized (VACDReportMgr.a())
-            {
-              VACDReportMgr.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr, 2);
-              if (VACDReportMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr))
-              {
-                VACDReportMgr.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).post(this);
-                return;
-                localObject1 = finally;
-                throw localObject1;
-                localObject2 = finally;
-                throw localObject2;
-              }
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("VACDReport", 2, "WriteDBThread exit.");
-          return;
-        }
-        catch (Exception localException2)
-        {
-          break label61;
+      }
+    }
+    do
+    {
+      return;
+      TopayManager.a((SelectMemberActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaUtilArrayList, (QQCustomDialogWtihInputAndChoose)paramDialogInterface);
+    } while ((TopayManager.a == null) || (TopayManager.a.vecRec == null) || (TopayManager.a.vecRec.size() <= 0));
+    paramInt = 0;
+    label79:
+    String str;
+    int i;
+    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      str = "friendpay.selectpage.unrecomchoosefriclick";
+      i = 0;
+    }
+    for (;;)
+    {
+      paramDialogInterface = str;
+      if (i < TopayManager.a.vecRec.size())
+      {
+        if (((ResultRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a.equals(((PfaFriend)TopayManager.a.vecRec.get(i)).uin)) {
+          paramDialogInterface = "friendpay.selectpage.recommendfriclick";
         }
       }
-      catch (Exception localException1) {}
+      else
+      {
+        ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramDialogInterface, 0, 0, "", "", "", "");
+        paramInt += 1;
+        break label79;
+        break;
+      }
+      i += 1;
     }
   }
 }

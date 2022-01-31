@@ -1,21 +1,22 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.FriendChooser.SearchResultAdapter;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.FormEditItem;
 
 public class alby
-  implements ImageLoader.ImageLoadListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public alby(FriendChooser.SearchResultAdapter paramSearchResultAdapter, ImageView paramImageView) {}
+  public alby(FormEditItem paramFormEditItem) {}
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    FormEditItem.a(this.a, this.a.getMeasuredWidth());
+    FormEditItem.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alby
  * JD-Core Version:    0.7.0.1
  */

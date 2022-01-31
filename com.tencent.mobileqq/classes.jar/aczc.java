@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.filemanager.core.ThumbHttpDownloader;
-import com.tencent.mobileqq.filemanager.core.ThumbHttpDownloader.DownloadTask;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
 
-public class aczc
+class aczc
   implements Runnable
 {
-  public aczc(ThumbHttpDownloader paramThumbHttpDownloader, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
+  aczc(aczb paramaczb) {}
   
   public void run()
   {
-    ThumbHttpDownloader.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbHttpDownloader, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbHttpDownloader$DownloadTask);
+    QfileFileAssistantActivity.g(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aczc
  * JD-Core Version:    0.7.0.1
  */

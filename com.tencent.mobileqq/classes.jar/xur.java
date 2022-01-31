@@ -1,39 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader.P2VEffectDownloadListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class xur
-  implements ModuleDownloadListener
+  implements DialogInterface.OnClickListener
 {
-  public xur(P2VEffectLoader paramP2VEffectLoader, P2VEffectLoader.P2VEffectDownloadListener paramP2VEffectDownloadListener) {}
+  public xur(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QZLog.i("P2VEffectLoader", 4, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("P2VEffectLoader", 4, new Object[] { "onDownloadFailed ", paramString });
-    P2VEffectLoader.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener.a(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("P2VEffectLoader", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("p2v_effect.jar")) {
-      return;
-    }
-    QZLog.i("P2VEffectLoader", 4, new Object[] { "onDownloadSucceed url = ", P2VEffectLoader.a(), P2VEffectLoader.b() });
-    LocalMultiProcConfig.putString("p2v_effect_jar_md5", P2VEffectLoader.b());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener.a(true);
+    this.a.a("608", "7", "2", true);
+    EditLocalVideoActivity.b(this.a, "an_yuanshipin");
   }
 }
 

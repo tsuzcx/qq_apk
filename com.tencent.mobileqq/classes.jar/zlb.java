@@ -1,35 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
 
-public class zlb
-  extends BroadcastReceiver
+public final class zlb
+  implements Parcelable.Creator
 {
-  public zlb(QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
   {
-    if (this.a.l) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
-      }
-    }
-    String str;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramIntent == null);
-      str = paramIntent.getAction();
-      if ("com.tencent.qqhead.getheadreq".equals(str)) {
-        ThreadManager.post(new zlc(this, paramContext, paramIntent), 8, null, true);
-      }
-    } while (!"com.tencent.qqhead.refreshheadreq".equals(str));
-    ThreadManager.post(new zld(this, paramContext, paramIntent), 8, null, true);
+    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
+    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
+    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
+    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
+    return localQQHeadDetails;
+  }
+  
+  public FriendListHandler.QQHeadDetails[] a(int paramInt)
+  {
+    return new FriendListHandler.QQHeadDetails[paramInt];
   }
 }
 

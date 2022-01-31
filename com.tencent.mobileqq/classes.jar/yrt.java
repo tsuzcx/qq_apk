@@ -1,24 +1,14 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.data.CmGameScreenRotate;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpUtil;
 
-public class yrt
+public final class yrt
   implements Runnable
 {
-  public yrt(CmGameScreenRotate paramCmGameScreenRotate, int paramInt) {}
+  public yrt(String paramString1, String paramString2, byte[] paramArrayOfByte, String[] paramArrayOfString, ApolloHttpCallBack paramApolloHttpCallBack) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 8))
-    {
-      if ((CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate) != null) && (CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate).getVisibility() == 0)) {
-        CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate).setRequestedOrientation(this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      return;
-    }
-    CmGameScreenRotate.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate).setRequestedOrientation(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    ApolloHttpUtil.a(this.jdField_a_of_type_JavaLangString.toUpperCase(), this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
   }
 }
 

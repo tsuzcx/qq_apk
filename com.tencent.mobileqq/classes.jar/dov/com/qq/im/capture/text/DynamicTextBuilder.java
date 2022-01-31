@@ -2,9 +2,7 @@ package dov.com.qq.im.capture.text;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anns;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import anwf;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.QIMManager;
@@ -27,7 +25,6 @@ public class DynamicTextBuilder
   
   static
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(0), Collections.singletonList("普通文字"));
     jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1), Collections.singletonList("Hi (•ω•)"));
     jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), Collections.singletonList("莫负好春光"));
@@ -48,7 +45,7 @@ public class DynamicTextBuilder
     jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(17), Collections.singletonList("沉迷学习"));
     jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(18), Collections.singletonList("企鹅岛"));
     jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(19), Collections.singletonList("一起来斗图"));
-    ThreadManager.post(new anns(localQQAppInterface), 5, null, false);
+    ThreadManager.post(new anwf(), 5, null, false);
   }
   
   public static int a(int paramInt)
@@ -60,45 +57,45 @@ public class DynamicTextBuilder
     {
     case 0: 
     default: 
-      return 2130841802;
+      return 2130841831;
     case 1: 
-      return 2130841786;
+      return 2130841815;
     case 2: 
-      return 2130841793;
+      return 2130841822;
     case 3: 
-      return 2130841789;
+      return 2130841818;
     case 4: 
-      return 2130841792;
+      return 2130841821;
     case 5: 
-      return 2130841790;
+      return 2130841819;
     case 6: 
-      return 2130841787;
+      return 2130841816;
     case 7: 
-      return 2130841804;
+      return 2130841833;
     case 8: 
-      return 2130841788;
+      return 2130841817;
     case 9: 
-      return 2130841806;
+      return 2130841835;
     case 10: 
-      return 2130841797;
+      return 2130841826;
     case 11: 
-      return 2130841781;
+      return 2130841810;
     case 12: 
-      return 2130841801;
+      return 2130841830;
     case 13: 
-      return 2130841805;
+      return 2130841834;
     case 14: 
-      return 2130841807;
+      return 2130841836;
     case 15: 
-      return 2130841795;
+      return 2130841824;
     case 16: 
-      return 2130841799;
+      return 2130841828;
     case 17: 
-      return 2130841796;
+      return 2130841825;
     case 18: 
-      return 2130841791;
+      return 2130841820;
     }
-    return 2130841785;
+    return 2130841814;
   }
   
   public static String a(int paramInt1, int paramInt2)
@@ -234,1586 +231,1588 @@ public class DynamicTextBuilder
   public DynamicTextItem a(int paramInt, @NonNull List paramList)
   {
     // Byte code:
-    //   0: new 218	java/util/ArrayList
+    //   0: new 204	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 322	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 308	java/util/ArrayList:<init>	()V
     //   7: astore_3
     //   8: aload_2
-    //   9: invokeinterface 323 1 0
-    //   14: astore_2
-    //   15: aload_2
-    //   16: invokeinterface 238 1 0
-    //   21: ifeq +22 -> 43
-    //   24: aload_3
-    //   25: aload_2
-    //   26: invokeinterface 242 1 0
-    //   31: checkcast 69	java/lang/String
-    //   34: invokeinterface 324 2 0
-    //   39: pop
-    //   40: goto -25 -> 15
-    //   43: aload_3
-    //   44: astore 6
-    //   46: aload_3
-    //   47: invokeinterface 254 1 0
-    //   52: ifeq +9 -> 61
-    //   55: iload_1
-    //   56: invokestatic 190	dov/com/qq/im/capture/text/DynamicTextBuilder:a	(I)Ljava/util/List;
-    //   59: astore 6
-    //   61: aload_0
-    //   62: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   65: iload_1
-    //   66: invokestatic 327	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   69: invokevirtual 330	dov/com/qq/im/capture/text/DynamicTextConfigManager:a	(Ljava/lang/String;)Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean;
-    //   72: astore 8
-    //   74: aload 8
-    //   76: getfield 336	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
-    //   79: invokevirtual 221	java/util/ArrayList:isEmpty	()Z
-    //   82: ifeq +230 -> 312
-    //   85: aconst_null
-    //   86: astore 5
-    //   88: aconst_null
-    //   89: astore_2
-    //   90: aload 5
-    //   92: ifnull +19 -> 111
-    //   95: aload_0
-    //   96: getfield 127	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   99: aload 5
-    //   101: getfield 340	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo:c	Ljava/lang/String;
-    //   104: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   107: checkcast 343	android/graphics/Typeface
-    //   110: astore_2
-    //   111: iload_1
-    //   112: tableswitch	default:+96 -> 208, 0:+217->329, 1:+231->343, 2:+364->476, 3:+441->553, 4:+605->717, 5:+685->797, 6:+773->885, 7:+1268->1380, 8:+1564->1676, 9:+1707->1819, 10:+2027->2139, 11:+1852->1964, 12:+2172->2284, 13:+2335->2447, 14:+2469->2581, 15:+2817->2929, 16:+2951->3063, 17:+2598->2710, 18:+3225->3337, 19:+3295->3407
-    //   209: nop
-    //   210: fcmpl
-    //   211: dup
-    //   212: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   215: ldc_w 345
-    //   218: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: iload_1
-    //   222: invokevirtual 159	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   225: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   228: astore_3
-    //   229: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   232: ifeq +30 -> 262
-    //   235: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   238: iconst_2
-    //   239: new 149	java/lang/StringBuilder
-    //   242: dup
-    //   243: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   246: ldc_w 347
-    //   249: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   252: aload_3
-    //   253: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   259: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   262: new 275	dov/com/qq/im/capture/text/NormalTextItem
-    //   265: dup
-    //   266: iload_1
-    //   267: aload 6
-    //   269: invokespecial 350	dov/com/qq/im/capture/text/NormalTextItem:<init>	(ILjava/util/List;)V
-    //   272: astore_3
-    //   273: aload_2
-    //   274: ifnull +36 -> 310
-    //   277: aload_0
-    //   278: getfield 127	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   281: iload_1
-    //   282: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   285: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   288: ifnonnull +22 -> 310
-    //   291: aload 5
-    //   293: ifnull +17 -> 310
-    //   296: aload_0
-    //   297: getfield 127	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   300: aload 5
-    //   302: getfield 340	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo:c	Ljava/lang/String;
-    //   305: aload_2
-    //   306: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   309: pop
-    //   310: aload_3
-    //   311: areturn
-    //   312: aload 8
-    //   314: getfield 336	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
-    //   317: iconst_0
-    //   318: invokevirtual 222	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   321: checkcast 338	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo
-    //   324: astore 5
-    //   326: goto -238 -> 88
-    //   329: new 275	dov/com/qq/im/capture/text/NormalTextItem
-    //   332: dup
-    //   333: iload_1
-    //   334: aload 6
-    //   336: invokespecial 350	dov/com/qq/im/capture/text/NormalTextItem:<init>	(ILjava/util/List;)V
-    //   339: astore_3
-    //   340: goto -67 -> 273
-    //   343: aload_0
-    //   344: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   347: ldc_w 352
-    //   350: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   353: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   356: checkcast 354	android/graphics/Bitmap
-    //   359: astore 7
-    //   361: aload_2
-    //   362: ifnull +14 -> 376
-    //   365: aload 7
-    //   367: astore_3
-    //   368: aload_2
-    //   369: astore 4
-    //   371: aload 7
-    //   373: ifnonnull +68 -> 441
-    //   376: new 149	java/lang/StringBuilder
-    //   379: dup
-    //   380: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   383: aload_0
-    //   384: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   387: aload 5
-    //   389: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   392: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   395: ldc_w 359
-    //   398: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   401: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   404: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   407: astore_3
-    //   408: aload_3
-    //   409: astore_2
-    //   410: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   413: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   416: ldc_w 352
-    //   419: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   422: astore_3
-    //   423: aload_0
-    //   424: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   427: ldc_w 352
-    //   430: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   433: aload_3
-    //   434: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   437: pop
-    //   438: aload_2
-    //   439: astore 4
-    //   441: new 280	dov/com/qq/im/capture/text/BubbleTextItem
-    //   444: dup
-    //   445: iload_1
-    //   446: aload 6
-    //   448: aload 4
-    //   450: aload_3
-    //   451: invokespecial 382	dov/com/qq/im/capture/text/BubbleTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
-    //   454: astore_3
-    //   455: aload 4
-    //   457: astore_2
-    //   458: goto -185 -> 273
-    //   461: astore_3
-    //   462: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   465: iconst_2
-    //   466: aload_3
-    //   467: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   470: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   473: goto -63 -> 410
-    //   476: aload_2
-    //   477: astore 4
-    //   479: aload_2
-    //   480: ifnonnull +36 -> 516
-    //   483: new 149	java/lang/StringBuilder
-    //   486: dup
-    //   487: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   490: aload_0
-    //   491: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   494: aload 5
-    //   496: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   499: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   502: ldc_w 359
-    //   505: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   508: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   511: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   514: astore 4
-    //   516: new 284	dov/com/qq/im/capture/text/DonotGiveUpHealing
-    //   519: dup
-    //   520: iload_1
-    //   521: aload 6
-    //   523: aload 4
-    //   525: invokespecial 391	dov/com/qq/im/capture/text/DonotGiveUpHealing:<init>	(ILjava/util/List;Landroid/graphics/Typeface;)V
-    //   528: astore_3
-    //   529: aload 4
-    //   531: astore_2
-    //   532: goto -259 -> 273
-    //   535: astore_3
-    //   536: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   539: iconst_2
-    //   540: aload_3
-    //   541: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   544: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   547: aload_2
-    //   548: astore 4
-    //   550: goto -34 -> 516
-    //   553: aload_0
-    //   554: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   557: ldc_w 392
-    //   560: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   563: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   566: checkcast 354	android/graphics/Bitmap
-    //   569: astore 4
-    //   571: aload_0
-    //   572: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   575: ldc_w 393
-    //   578: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   581: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   584: checkcast 354	android/graphics/Bitmap
-    //   587: astore_3
-    //   588: aload_2
-    //   589: ifnonnull +2938 -> 3527
-    //   592: new 149	java/lang/StringBuilder
-    //   595: dup
-    //   596: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   599: aload_0
-    //   600: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   603: aload 5
-    //   605: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   608: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   611: ldc_w 359
-    //   614: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   617: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   620: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   623: astore_3
-    //   624: aload_3
-    //   625: astore_2
-    //   626: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   629: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   632: ldc_w 392
-    //   635: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   638: astore 4
-    //   640: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   643: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   646: ldc_w 393
-    //   649: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   652: astore_3
-    //   653: aload_0
-    //   654: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   657: ldc_w 392
-    //   660: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   663: aload 4
-    //   665: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   668: pop
-    //   669: aload_0
-    //   670: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   673: ldc_w 393
-    //   676: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   679: aload_3
-    //   680: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   683: pop
-    //   684: new 282	dov/com/qq/im/capture/text/FringesTextItems
-    //   687: dup
-    //   688: iload_1
-    //   689: aload 6
-    //   691: aload_2
-    //   692: aload 4
-    //   694: aload_3
-    //   695: invokespecial 396	dov/com/qq/im/capture/text/FringesTextItems:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
-    //   698: astore_3
-    //   699: goto -426 -> 273
+    //   9: ifnull +38 -> 47
+    //   12: aload_2
+    //   13: invokeinterface 309 1 0
+    //   18: astore_2
+    //   19: aload_2
+    //   20: invokeinterface 224 1 0
+    //   25: ifeq +22 -> 47
+    //   28: aload_3
+    //   29: aload_2
+    //   30: invokeinterface 228 1 0
+    //   35: checkcast 57	java/lang/String
+    //   38: invokeinterface 310 2 0
+    //   43: pop
+    //   44: goto -25 -> 19
+    //   47: aload_3
+    //   48: astore 6
+    //   50: aload_3
+    //   51: invokeinterface 240 1 0
+    //   56: ifeq +9 -> 65
+    //   59: iload_1
+    //   60: invokestatic 176	dov/com/qq/im/capture/text/DynamicTextBuilder:a	(I)Ljava/util/List;
+    //   63: astore 6
+    //   65: aload_0
+    //   66: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   69: iload_1
+    //   70: invokestatic 313	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   73: invokevirtual 316	dov/com/qq/im/capture/text/DynamicTextConfigManager:a	(Ljava/lang/String;)Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean;
+    //   76: astore 8
+    //   78: aload 8
+    //   80: getfield 322	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
+    //   83: invokevirtual 207	java/util/ArrayList:isEmpty	()Z
+    //   86: ifeq +230 -> 316
+    //   89: aconst_null
+    //   90: astore 5
+    //   92: aconst_null
+    //   93: astore_2
+    //   94: aload 5
+    //   96: ifnull +19 -> 115
+    //   99: aload_0
+    //   100: getfield 113	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   103: aload 5
+    //   105: getfield 326	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo:c	Ljava/lang/String;
+    //   108: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   111: checkcast 329	android/graphics/Typeface
+    //   114: astore_2
+    //   115: iload_1
+    //   116: tableswitch	default:+96 -> 212, 0:+217->333, 1:+231->347, 2:+364->480, 3:+441->557, 4:+605->721, 5:+685->801, 6:+773->889, 7:+1268->1384, 8:+1564->1680, 9:+1707->1823, 10:+2027->2143, 11:+1852->1968, 12:+2172->2288, 13:+2335->2451, 14:+2469->2585, 15:+2817->2933, 16:+2951->3067, 17:+2598->2714, 18:+3225->3341, 19:+3295->3411
+    //   213: nop
+    //   214: i2d
+    //   215: dup
+    //   216: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   219: ldc_w 331
+    //   222: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: iload_1
+    //   226: invokevirtual 145	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   229: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   232: astore_3
+    //   233: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   236: ifeq +30 -> 266
+    //   239: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   242: iconst_2
+    //   243: new 135	java/lang/StringBuilder
+    //   246: dup
+    //   247: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   250: ldc_w 333
+    //   253: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   256: aload_3
+    //   257: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   260: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   263: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   266: new 261	dov/com/qq/im/capture/text/NormalTextItem
+    //   269: dup
+    //   270: iload_1
+    //   271: aload 6
+    //   273: invokespecial 336	dov/com/qq/im/capture/text/NormalTextItem:<init>	(ILjava/util/List;)V
+    //   276: astore_3
+    //   277: aload_2
+    //   278: ifnull +36 -> 314
+    //   281: aload_0
+    //   282: getfield 113	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   285: iload_1
+    //   286: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   289: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   292: ifnonnull +22 -> 314
+    //   295: aload 5
+    //   297: ifnull +17 -> 314
+    //   300: aload_0
+    //   301: getfield 113	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   304: aload 5
+    //   306: getfield 326	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo:c	Ljava/lang/String;
+    //   309: aload_2
+    //   310: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   313: pop
+    //   314: aload_3
+    //   315: areturn
+    //   316: aload 8
+    //   318: getfield 322	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
+    //   321: iconst_0
+    //   322: invokevirtual 208	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   325: checkcast 324	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo
+    //   328: astore 5
+    //   330: goto -238 -> 92
+    //   333: new 261	dov/com/qq/im/capture/text/NormalTextItem
+    //   336: dup
+    //   337: iload_1
+    //   338: aload 6
+    //   340: invokespecial 336	dov/com/qq/im/capture/text/NormalTextItem:<init>	(ILjava/util/List;)V
+    //   343: astore_3
+    //   344: goto -67 -> 277
+    //   347: aload_0
+    //   348: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   351: ldc_w 338
+    //   354: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   357: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   360: checkcast 340	android/graphics/Bitmap
+    //   363: astore 7
+    //   365: aload_2
+    //   366: ifnull +14 -> 380
+    //   369: aload 7
+    //   371: astore_3
+    //   372: aload_2
+    //   373: astore 4
+    //   375: aload 7
+    //   377: ifnonnull +68 -> 445
+    //   380: new 135	java/lang/StringBuilder
+    //   383: dup
+    //   384: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   387: aload_0
+    //   388: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   391: aload 5
+    //   393: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   396: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   399: ldc_w 345
+    //   402: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   405: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   408: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   411: astore_3
+    //   412: aload_3
+    //   413: astore_2
+    //   414: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   417: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   420: ldc_w 338
+    //   423: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   426: astore_3
+    //   427: aload_0
+    //   428: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   431: ldc_w 338
+    //   434: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   437: aload_3
+    //   438: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   441: pop
+    //   442: aload_2
+    //   443: astore 4
+    //   445: new 266	dov/com/qq/im/capture/text/BubbleTextItem
+    //   448: dup
+    //   449: iload_1
+    //   450: aload 6
+    //   452: aload 4
+    //   454: aload_3
+    //   455: invokespecial 370	dov/com/qq/im/capture/text/BubbleTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
+    //   458: astore_3
+    //   459: aload 4
+    //   461: astore_2
+    //   462: goto -185 -> 277
+    //   465: astore_3
+    //   466: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   469: iconst_2
+    //   470: aload_3
+    //   471: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   474: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   477: goto -63 -> 414
+    //   480: aload_2
+    //   481: astore 4
+    //   483: aload_2
+    //   484: ifnonnull +36 -> 520
+    //   487: new 135	java/lang/StringBuilder
+    //   490: dup
+    //   491: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   494: aload_0
+    //   495: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   498: aload 5
+    //   500: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   503: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   506: ldc_w 345
+    //   509: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   512: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   515: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   518: astore 4
+    //   520: new 270	dov/com/qq/im/capture/text/DonotGiveUpHealing
+    //   523: dup
+    //   524: iload_1
+    //   525: aload 6
+    //   527: aload 4
+    //   529: invokespecial 379	dov/com/qq/im/capture/text/DonotGiveUpHealing:<init>	(ILjava/util/List;Landroid/graphics/Typeface;)V
+    //   532: astore_3
+    //   533: aload 4
+    //   535: astore_2
+    //   536: goto -259 -> 277
+    //   539: astore_3
+    //   540: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   543: iconst_2
+    //   544: aload_3
+    //   545: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   548: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   551: aload_2
+    //   552: astore 4
+    //   554: goto -34 -> 520
+    //   557: aload_0
+    //   558: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   561: ldc_w 380
+    //   564: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   567: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   570: checkcast 340	android/graphics/Bitmap
+    //   573: astore 4
+    //   575: aload_0
+    //   576: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   579: ldc_w 381
+    //   582: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   585: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   588: checkcast 340	android/graphics/Bitmap
+    //   591: astore_3
+    //   592: aload_2
+    //   593: ifnonnull +2938 -> 3531
+    //   596: new 135	java/lang/StringBuilder
+    //   599: dup
+    //   600: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   603: aload_0
+    //   604: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   607: aload 5
+    //   609: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   612: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   615: ldc_w 345
+    //   618: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   621: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   624: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   627: astore_3
+    //   628: aload_3
+    //   629: astore_2
+    //   630: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   633: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   636: ldc_w 380
+    //   639: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   642: astore 4
+    //   644: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   647: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   650: ldc_w 381
+    //   653: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   656: astore_3
+    //   657: aload_0
+    //   658: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   661: ldc_w 380
+    //   664: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   667: aload 4
+    //   669: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   672: pop
+    //   673: aload_0
+    //   674: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   677: ldc_w 381
+    //   680: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   683: aload_3
+    //   684: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   687: pop
+    //   688: new 268	dov/com/qq/im/capture/text/FringesTextItems
+    //   691: dup
+    //   692: iload_1
+    //   693: aload 6
+    //   695: aload_2
+    //   696: aload 4
+    //   698: aload_3
+    //   699: invokespecial 384	dov/com/qq/im/capture/text/FringesTextItems:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
     //   702: astore_3
-    //   703: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   706: iconst_2
-    //   707: aload_3
-    //   708: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   711: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   714: goto -88 -> 626
-    //   717: aload_2
-    //   718: astore 4
-    //   720: aload_2
-    //   721: ifnonnull +36 -> 757
-    //   724: new 149	java/lang/StringBuilder
-    //   727: dup
-    //   728: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   731: aload_0
-    //   732: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   735: aload 5
-    //   737: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   740: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   743: ldc_w 359
-    //   746: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   749: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   752: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   755: astore 4
-    //   757: new 286	dov/com/qq/im/capture/text/RandomSizeTextItem
-    //   760: dup
-    //   761: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   764: iload_1
-    //   765: aload 6
-    //   767: aload 4
-    //   769: invokespecial 399	dov/com/qq/im/capture/text/RandomSizeTextItem:<init>	(Landroid/content/Context;ILjava/util/List;Landroid/graphics/Typeface;)V
-    //   772: astore_3
-    //   773: aload 4
-    //   775: astore_2
-    //   776: goto -503 -> 273
-    //   779: astore_3
-    //   780: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   783: iconst_2
-    //   784: aload_3
-    //   785: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   788: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   791: aload_2
-    //   792: astore 4
-    //   794: goto -37 -> 757
-    //   797: aload_0
-    //   798: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   801: ldc_w 400
-    //   804: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   807: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   810: checkcast 354	android/graphics/Bitmap
-    //   813: astore 7
-    //   815: aload_0
-    //   816: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   819: ldc_w 401
-    //   822: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   825: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   828: checkcast 354	android/graphics/Bitmap
-    //   831: astore 4
-    //   833: aload 7
-    //   835: astore_3
-    //   836: aload 7
-    //   838: ifnonnull +30 -> 868
-    //   841: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   844: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   847: ldc_w 400
-    //   850: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   853: astore_3
-    //   854: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   857: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   860: ldc_w 401
-    //   863: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   866: astore 4
-    //   868: new 288	dov/com/qq/im/capture/text/JourneyTextItem
-    //   871: dup
-    //   872: iload_1
-    //   873: aload 6
-    //   875: aload_3
-    //   876: aload 4
-    //   878: invokespecial 404	dov/com/qq/im/capture/text/JourneyTextItem:<init>	(ILjava/util/List;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
-    //   881: astore_3
-    //   882: goto -609 -> 273
-    //   885: aload_0
-    //   886: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   889: ldc_w 405
-    //   892: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   895: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   898: checkcast 354	android/graphics/Bitmap
-    //   901: astore 4
-    //   903: aload 4
-    //   905: astore_3
-    //   906: aload 4
-    //   908: ifnonnull +31 -> 939
-    //   911: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   914: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   917: ldc_w 405
-    //   920: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   923: astore_3
-    //   924: aload_0
-    //   925: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   928: ldc_w 405
-    //   931: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   934: aload_3
-    //   935: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   938: pop
-    //   939: aload_0
-    //   940: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   943: ldc_w 406
-    //   946: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   949: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   952: checkcast 354	android/graphics/Bitmap
-    //   955: astore 7
-    //   957: aload 7
-    //   959: astore 4
+    //   703: goto -426 -> 277
+    //   706: astore_3
+    //   707: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   710: iconst_2
+    //   711: aload_3
+    //   712: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   715: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   718: goto -88 -> 630
+    //   721: aload_2
+    //   722: astore 4
+    //   724: aload_2
+    //   725: ifnonnull +36 -> 761
+    //   728: new 135	java/lang/StringBuilder
+    //   731: dup
+    //   732: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   735: aload_0
+    //   736: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   739: aload 5
+    //   741: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   744: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   747: ldc_w 345
+    //   750: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   753: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   756: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   759: astore 4
+    //   761: new 272	dov/com/qq/im/capture/text/RandomSizeTextItem
+    //   764: dup
+    //   765: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   768: iload_1
+    //   769: aload 6
+    //   771: aload 4
+    //   773: invokespecial 387	dov/com/qq/im/capture/text/RandomSizeTextItem:<init>	(Landroid/content/Context;ILjava/util/List;Landroid/graphics/Typeface;)V
+    //   776: astore_3
+    //   777: aload 4
+    //   779: astore_2
+    //   780: goto -503 -> 277
+    //   783: astore_3
+    //   784: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   787: iconst_2
+    //   788: aload_3
+    //   789: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   792: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   795: aload_2
+    //   796: astore 4
+    //   798: goto -37 -> 761
+    //   801: aload_0
+    //   802: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   805: ldc_w 388
+    //   808: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   811: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   814: checkcast 340	android/graphics/Bitmap
+    //   817: astore 7
+    //   819: aload_0
+    //   820: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   823: ldc_w 389
+    //   826: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   829: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   832: checkcast 340	android/graphics/Bitmap
+    //   835: astore 4
+    //   837: aload 7
+    //   839: astore_3
+    //   840: aload 7
+    //   842: ifnonnull +30 -> 872
+    //   845: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   848: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   851: ldc_w 388
+    //   854: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   857: astore_3
+    //   858: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   861: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   864: ldc_w 389
+    //   867: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   870: astore 4
+    //   872: new 274	dov/com/qq/im/capture/text/JourneyTextItem
+    //   875: dup
+    //   876: iload_1
+    //   877: aload 6
+    //   879: aload_3
+    //   880: aload 4
+    //   882: invokespecial 392	dov/com/qq/im/capture/text/JourneyTextItem:<init>	(ILjava/util/List;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
+    //   885: astore_3
+    //   886: goto -609 -> 277
+    //   889: aload_0
+    //   890: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   893: ldc_w 393
+    //   896: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   899: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   902: checkcast 340	android/graphics/Bitmap
+    //   905: astore 4
+    //   907: aload 4
+    //   909: astore_3
+    //   910: aload 4
+    //   912: ifnonnull +31 -> 943
+    //   915: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   918: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   921: ldc_w 393
+    //   924: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   927: astore_3
+    //   928: aload_0
+    //   929: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   932: ldc_w 393
+    //   935: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   938: aload_3
+    //   939: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   942: pop
+    //   943: aload_0
+    //   944: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   947: ldc_w 394
+    //   950: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   953: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   956: checkcast 340	android/graphics/Bitmap
+    //   959: astore 7
     //   961: aload 7
-    //   963: ifnonnull +33 -> 996
-    //   966: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   969: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   972: ldc_w 406
-    //   975: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   978: astore 4
-    //   980: aload_0
-    //   981: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   984: ldc_w 406
-    //   987: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   990: aload 4
-    //   992: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   995: pop
-    //   996: aload_0
-    //   997: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1000: ldc_w 407
-    //   1003: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1006: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1009: checkcast 354	android/graphics/Bitmap
-    //   1012: astore 8
-    //   1014: aload 8
-    //   1016: astore 7
+    //   963: astore 4
+    //   965: aload 7
+    //   967: ifnonnull +33 -> 1000
+    //   970: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   973: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   976: ldc_w 394
+    //   979: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   982: astore 4
+    //   984: aload_0
+    //   985: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   988: ldc_w 394
+    //   991: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   994: aload 4
+    //   996: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   999: pop
+    //   1000: aload_0
+    //   1001: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1004: ldc_w 395
+    //   1007: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1010: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1013: checkcast 340	android/graphics/Bitmap
+    //   1016: astore 8
     //   1018: aload 8
-    //   1020: ifnonnull +33 -> 1053
-    //   1023: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1026: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   1029: ldc_w 407
-    //   1032: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   1035: astore 7
-    //   1037: aload_0
-    //   1038: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1041: ldc_w 407
-    //   1044: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1047: aload 7
-    //   1049: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1052: pop
-    //   1053: aload_0
-    //   1054: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1057: ldc_w 408
-    //   1060: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1063: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1066: checkcast 354	android/graphics/Bitmap
-    //   1069: astore 9
-    //   1071: aload 9
-    //   1073: astore 8
+    //   1020: astore 7
+    //   1022: aload 8
+    //   1024: ifnonnull +33 -> 1057
+    //   1027: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1030: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   1033: ldc_w 395
+    //   1036: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   1039: astore 7
+    //   1041: aload_0
+    //   1042: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1045: ldc_w 395
+    //   1048: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1051: aload 7
+    //   1053: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1056: pop
+    //   1057: aload_0
+    //   1058: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1061: ldc_w 396
+    //   1064: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1067: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1070: checkcast 340	android/graphics/Bitmap
+    //   1073: astore 9
     //   1075: aload 9
-    //   1077: ifnonnull +33 -> 1110
-    //   1080: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1083: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   1086: ldc_w 408
-    //   1089: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   1092: astore 8
-    //   1094: aload_0
-    //   1095: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1098: ldc_w 408
-    //   1101: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1104: aload 8
-    //   1106: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1109: pop
-    //   1110: aload_0
-    //   1111: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1114: ldc_w 409
-    //   1117: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1120: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1123: checkcast 354	android/graphics/Bitmap
-    //   1126: astore 10
-    //   1128: aload 10
-    //   1130: astore 9
+    //   1077: astore 8
+    //   1079: aload 9
+    //   1081: ifnonnull +33 -> 1114
+    //   1084: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1087: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   1090: ldc_w 396
+    //   1093: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   1096: astore 8
+    //   1098: aload_0
+    //   1099: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1102: ldc_w 396
+    //   1105: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1108: aload 8
+    //   1110: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1113: pop
+    //   1114: aload_0
+    //   1115: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1118: ldc_w 397
+    //   1121: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1124: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1127: checkcast 340	android/graphics/Bitmap
+    //   1130: astore 10
     //   1132: aload 10
-    //   1134: ifnonnull +33 -> 1167
-    //   1137: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1140: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   1143: ldc_w 409
-    //   1146: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   1149: astore 9
-    //   1151: aload_0
-    //   1152: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1155: ldc_w 409
-    //   1158: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1161: aload 9
-    //   1163: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1166: pop
-    //   1167: aload_0
-    //   1168: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1171: ldc_w 410
-    //   1174: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1177: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1180: checkcast 354	android/graphics/Bitmap
-    //   1183: astore 11
-    //   1185: aload 11
-    //   1187: astore 10
+    //   1134: astore 9
+    //   1136: aload 10
+    //   1138: ifnonnull +33 -> 1171
+    //   1141: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1144: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   1147: ldc_w 397
+    //   1150: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   1153: astore 9
+    //   1155: aload_0
+    //   1156: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1159: ldc_w 397
+    //   1162: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1165: aload 9
+    //   1167: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1170: pop
+    //   1171: aload_0
+    //   1172: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1175: ldc_w 398
+    //   1178: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1181: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1184: checkcast 340	android/graphics/Bitmap
+    //   1187: astore 11
     //   1189: aload 11
-    //   1191: ifnonnull +33 -> 1224
-    //   1194: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1197: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   1200: ldc_w 410
-    //   1203: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   1206: astore 10
-    //   1208: aload_0
-    //   1209: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1212: ldc_w 410
-    //   1215: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1218: aload 10
-    //   1220: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1223: pop
-    //   1224: new 218	java/util/ArrayList
-    //   1227: dup
-    //   1228: invokespecial 322	java/util/ArrayList:<init>	()V
-    //   1231: astore 11
-    //   1233: aload 11
-    //   1235: iconst_0
-    //   1236: aload_3
-    //   1237: invokeinterface 413 3 0
-    //   1242: aload 11
-    //   1244: iconst_1
-    //   1245: aload 7
-    //   1247: invokeinterface 413 3 0
-    //   1252: aload 11
-    //   1254: iconst_2
-    //   1255: aload 4
-    //   1257: invokeinterface 413 3 0
-    //   1262: aload 11
-    //   1264: iconst_3
-    //   1265: aload 8
-    //   1267: invokeinterface 413 3 0
-    //   1272: aload 11
-    //   1274: iconst_4
-    //   1275: aload 9
-    //   1277: invokeinterface 413 3 0
-    //   1282: aload 11
-    //   1284: iconst_5
-    //   1285: aload 10
-    //   1287: invokeinterface 413 3 0
-    //   1292: aload_2
-    //   1293: astore 4
-    //   1295: aload_2
-    //   1296: ifnonnull +36 -> 1332
-    //   1299: new 149	java/lang/StringBuilder
-    //   1302: dup
-    //   1303: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   1306: aload_0
-    //   1307: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   1310: aload 5
-    //   1312: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   1315: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1318: ldc_w 359
-    //   1321: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1324: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1327: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   1330: astore 4
-    //   1332: new 290	dov/com/qq/im/capture/text/FluorescenceTextItem
-    //   1335: dup
-    //   1336: iload_1
-    //   1337: aload 6
-    //   1339: aload 11
-    //   1341: aload 4
-    //   1343: invokespecial 416	dov/com/qq/im/capture/text/FluorescenceTextItem:<init>	(ILjava/util/List;Ljava/util/List;Landroid/graphics/Typeface;)V
-    //   1346: astore_3
-    //   1347: aload 4
-    //   1349: astore_2
-    //   1350: goto -1077 -> 273
-    //   1353: astore_3
-    //   1354: aload_2
-    //   1355: astore 4
-    //   1357: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1360: ifeq -28 -> 1332
-    //   1363: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1366: iconst_2
-    //   1367: aload_3
-    //   1368: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   1371: invokestatic 419	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1374: aload_2
-    //   1375: astore 4
-    //   1377: goto -45 -> 1332
-    //   1380: aload_0
-    //   1381: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1384: ldc_w 420
-    //   1387: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1390: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1393: checkcast 354	android/graphics/Bitmap
-    //   1396: astore 4
-    //   1398: aload 4
-    //   1400: astore_3
-    //   1401: aload 4
-    //   1403: ifnonnull +31 -> 1434
-    //   1406: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1409: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   1412: ldc_w 420
-    //   1415: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   1418: astore_3
-    //   1419: aload_0
-    //   1420: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1423: ldc_w 420
-    //   1426: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1429: aload_3
-    //   1430: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1433: pop
-    //   1434: aload_0
-    //   1435: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1438: ldc_w 421
-    //   1441: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1444: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1447: checkcast 354	android/graphics/Bitmap
-    //   1450: astore 7
-    //   1452: aload 7
-    //   1454: astore 4
+    //   1191: astore 10
+    //   1193: aload 11
+    //   1195: ifnonnull +33 -> 1228
+    //   1198: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1201: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   1204: ldc_w 398
+    //   1207: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   1210: astore 10
+    //   1212: aload_0
+    //   1213: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1216: ldc_w 398
+    //   1219: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1222: aload 10
+    //   1224: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1227: pop
+    //   1228: new 204	java/util/ArrayList
+    //   1231: dup
+    //   1232: invokespecial 308	java/util/ArrayList:<init>	()V
+    //   1235: astore 11
+    //   1237: aload 11
+    //   1239: iconst_0
+    //   1240: aload_3
+    //   1241: invokeinterface 401 3 0
+    //   1246: aload 11
+    //   1248: iconst_1
+    //   1249: aload 7
+    //   1251: invokeinterface 401 3 0
+    //   1256: aload 11
+    //   1258: iconst_2
+    //   1259: aload 4
+    //   1261: invokeinterface 401 3 0
+    //   1266: aload 11
+    //   1268: iconst_3
+    //   1269: aload 8
+    //   1271: invokeinterface 401 3 0
+    //   1276: aload 11
+    //   1278: iconst_4
+    //   1279: aload 9
+    //   1281: invokeinterface 401 3 0
+    //   1286: aload 11
+    //   1288: iconst_5
+    //   1289: aload 10
+    //   1291: invokeinterface 401 3 0
+    //   1296: aload_2
+    //   1297: astore 4
+    //   1299: aload_2
+    //   1300: ifnonnull +36 -> 1336
+    //   1303: new 135	java/lang/StringBuilder
+    //   1306: dup
+    //   1307: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   1310: aload_0
+    //   1311: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   1314: aload 5
+    //   1316: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   1319: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1322: ldc_w 345
+    //   1325: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1328: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1331: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   1334: astore 4
+    //   1336: new 276	dov/com/qq/im/capture/text/FluorescenceTextItem
+    //   1339: dup
+    //   1340: iload_1
+    //   1341: aload 6
+    //   1343: aload 11
+    //   1345: aload 4
+    //   1347: invokespecial 404	dov/com/qq/im/capture/text/FluorescenceTextItem:<init>	(ILjava/util/List;Ljava/util/List;Landroid/graphics/Typeface;)V
+    //   1350: astore_3
+    //   1351: aload 4
+    //   1353: astore_2
+    //   1354: goto -1077 -> 277
+    //   1357: astore_3
+    //   1358: aload_2
+    //   1359: astore 4
+    //   1361: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1364: ifeq -28 -> 1336
+    //   1367: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1370: iconst_2
+    //   1371: aload_3
+    //   1372: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1375: invokestatic 407	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1378: aload_2
+    //   1379: astore 4
+    //   1381: goto -45 -> 1336
+    //   1384: aload_0
+    //   1385: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1388: ldc_w 408
+    //   1391: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1394: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1397: checkcast 340	android/graphics/Bitmap
+    //   1400: astore 4
+    //   1402: aload 4
+    //   1404: astore_3
+    //   1405: aload 4
+    //   1407: ifnonnull +31 -> 1438
+    //   1410: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1413: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   1416: ldc_w 408
+    //   1419: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   1422: astore_3
+    //   1423: aload_0
+    //   1424: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1427: ldc_w 408
+    //   1430: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1433: aload_3
+    //   1434: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1437: pop
+    //   1438: aload_0
+    //   1439: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1442: ldc_w 409
+    //   1445: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1448: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1451: checkcast 340	android/graphics/Bitmap
+    //   1454: astore 7
     //   1456: aload 7
-    //   1458: ifnonnull +33 -> 1491
-    //   1461: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1464: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   1467: ldc_w 421
-    //   1470: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   1473: astore 4
-    //   1475: aload_0
-    //   1476: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1479: ldc_w 421
-    //   1482: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1485: aload 4
-    //   1487: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1490: pop
-    //   1491: aload_0
-    //   1492: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1495: ldc_w 422
-    //   1498: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1501: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1504: checkcast 354	android/graphics/Bitmap
-    //   1507: astore 8
-    //   1509: aload 8
-    //   1511: astore 7
+    //   1458: astore 4
+    //   1460: aload 7
+    //   1462: ifnonnull +33 -> 1495
+    //   1465: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1468: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   1471: ldc_w 409
+    //   1474: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   1477: astore 4
+    //   1479: aload_0
+    //   1480: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1483: ldc_w 409
+    //   1486: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1489: aload 4
+    //   1491: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1494: pop
+    //   1495: aload_0
+    //   1496: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1499: ldc_w 410
+    //   1502: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1505: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1508: checkcast 340	android/graphics/Bitmap
+    //   1511: astore 8
     //   1513: aload 8
-    //   1515: ifnonnull +33 -> 1548
-    //   1518: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1521: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   1524: ldc_w 422
-    //   1527: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   1530: astore 7
-    //   1532: aload_0
-    //   1533: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1536: ldc_w 422
-    //   1539: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1542: aload 7
-    //   1544: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1547: pop
-    //   1548: new 218	java/util/ArrayList
-    //   1551: dup
-    //   1552: iconst_3
-    //   1553: invokespecial 425	java/util/ArrayList:<init>	(I)V
-    //   1556: astore 8
-    //   1558: aload 8
-    //   1560: aload_3
-    //   1561: invokeinterface 324 2 0
-    //   1566: pop
-    //   1567: aload 8
-    //   1569: aload 4
-    //   1571: invokeinterface 324 2 0
-    //   1576: pop
-    //   1577: aload 8
-    //   1579: aload 7
-    //   1581: invokeinterface 324 2 0
-    //   1586: pop
-    //   1587: aload_2
-    //   1588: astore 4
-    //   1590: aload_2
-    //   1591: ifnonnull +36 -> 1627
-    //   1594: new 149	java/lang/StringBuilder
-    //   1597: dup
-    //   1598: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   1601: aload_0
-    //   1602: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   1605: aload 5
-    //   1607: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   1610: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1613: ldc_w 359
-    //   1616: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1619: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1622: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   1625: astore 4
-    //   1627: new 292	dov/com/qq/im/capture/text/ShadowBubbleTextItem
-    //   1630: dup
-    //   1631: iload_1
-    //   1632: aload 4
-    //   1634: aload 6
-    //   1636: aload 8
-    //   1638: invokespecial 428	dov/com/qq/im/capture/text/ShadowBubbleTextItem:<init>	(ILandroid/graphics/Typeface;Ljava/util/List;Ljava/util/List;)V
-    //   1641: astore_3
-    //   1642: aload 4
-    //   1644: astore_2
-    //   1645: goto -1372 -> 273
-    //   1648: astore_3
-    //   1649: aload_2
-    //   1650: astore 4
-    //   1652: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1655: ifeq -28 -> 1627
-    //   1658: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1661: iconst_2
-    //   1662: aload_3
-    //   1663: invokevirtual 431	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1515: astore 7
+    //   1517: aload 8
+    //   1519: ifnonnull +33 -> 1552
+    //   1522: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1525: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   1528: ldc_w 410
+    //   1531: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   1534: astore 7
+    //   1536: aload_0
+    //   1537: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1540: ldc_w 410
+    //   1543: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1546: aload 7
+    //   1548: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1551: pop
+    //   1552: new 204	java/util/ArrayList
+    //   1555: dup
+    //   1556: iconst_3
+    //   1557: invokespecial 413	java/util/ArrayList:<init>	(I)V
+    //   1560: astore 8
+    //   1562: aload 8
+    //   1564: aload_3
+    //   1565: invokeinterface 310 2 0
+    //   1570: pop
+    //   1571: aload 8
+    //   1573: aload 4
+    //   1575: invokeinterface 310 2 0
+    //   1580: pop
+    //   1581: aload 8
+    //   1583: aload 7
+    //   1585: invokeinterface 310 2 0
+    //   1590: pop
+    //   1591: aload_2
+    //   1592: astore 4
+    //   1594: aload_2
+    //   1595: ifnonnull +36 -> 1631
+    //   1598: new 135	java/lang/StringBuilder
+    //   1601: dup
+    //   1602: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   1605: aload_0
+    //   1606: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   1609: aload 5
+    //   1611: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   1614: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1617: ldc_w 345
+    //   1620: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1623: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1626: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   1629: astore 4
+    //   1631: new 278	dov/com/qq/im/capture/text/ShadowBubbleTextItem
+    //   1634: dup
+    //   1635: iload_1
+    //   1636: aload 4
+    //   1638: aload 6
+    //   1640: aload 8
+    //   1642: invokespecial 416	dov/com/qq/im/capture/text/ShadowBubbleTextItem:<init>	(ILandroid/graphics/Typeface;Ljava/util/List;Ljava/util/List;)V
+    //   1645: astore_3
+    //   1646: aload 4
+    //   1648: astore_2
+    //   1649: goto -1372 -> 277
+    //   1652: astore_3
+    //   1653: aload_2
+    //   1654: astore 4
+    //   1656: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1659: ifeq -28 -> 1631
+    //   1662: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1665: iconst_2
     //   1666: aload_3
-    //   1667: invokestatic 434	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1670: aload_2
-    //   1671: astore 4
-    //   1673: goto -46 -> 1627
-    //   1676: aload_0
-    //   1677: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1680: ldc_w 435
-    //   1683: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1686: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1689: checkcast 354	android/graphics/Bitmap
-    //   1692: astore 4
-    //   1694: aload 4
-    //   1696: astore_3
-    //   1697: aload 4
-    //   1699: ifnonnull +31 -> 1730
-    //   1702: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1705: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   1708: ldc_w 435
-    //   1711: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   1714: astore_3
-    //   1715: aload_0
-    //   1716: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1719: ldc_w 435
-    //   1722: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1725: aload_3
-    //   1726: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1729: pop
-    //   1730: aload_2
-    //   1731: astore 4
-    //   1733: aload_2
-    //   1734: ifnonnull +36 -> 1770
-    //   1737: new 149	java/lang/StringBuilder
-    //   1740: dup
-    //   1741: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   1744: aload_0
-    //   1745: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   1748: aload 5
-    //   1750: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   1753: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1756: ldc_w 359
-    //   1759: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1762: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1765: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   1768: astore 4
-    //   1770: new 294	dov/com/qq/im/capture/text/FoldOverTextItem
-    //   1773: dup
-    //   1774: iload_1
-    //   1775: aload 6
-    //   1777: aload 4
-    //   1779: aload_3
-    //   1780: invokespecial 436	dov/com/qq/im/capture/text/FoldOverTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
-    //   1783: astore_3
-    //   1784: aload 4
-    //   1786: astore_2
-    //   1787: goto -1514 -> 273
-    //   1790: astore 7
-    //   1792: aload_2
-    //   1793: astore 4
-    //   1795: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1798: ifeq -28 -> 1770
-    //   1801: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1804: iconst_2
-    //   1805: aload 7
-    //   1807: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   1810: invokestatic 419	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1813: aload_2
-    //   1814: astore 4
-    //   1816: goto -46 -> 1770
-    //   1819: aload_0
-    //   1820: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1823: ldc_w 437
-    //   1826: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1829: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1832: checkcast 354	android/graphics/Bitmap
-    //   1835: astore 4
-    //   1837: aload 4
-    //   1839: astore_3
-    //   1840: aload 4
-    //   1842: ifnonnull +31 -> 1873
-    //   1845: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1848: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   1851: ldc_w 437
-    //   1854: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   1857: astore_3
-    //   1858: aload_0
-    //   1859: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1862: ldc_w 437
-    //   1865: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1868: aload_3
-    //   1869: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   1872: pop
-    //   1873: aload_2
-    //   1874: astore 4
-    //   1876: aload_2
-    //   1877: ifnonnull +36 -> 1913
-    //   1880: new 149	java/lang/StringBuilder
-    //   1883: dup
-    //   1884: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   1887: aload_0
-    //   1888: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   1891: aload 5
-    //   1893: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   1896: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1899: ldc_w 359
-    //   1902: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1905: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1908: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   1911: astore 4
-    //   1913: new 296	dov/com/qq/im/capture/text/ShockTextItem
-    //   1916: dup
-    //   1917: iload_1
-    //   1918: aload 6
-    //   1920: aload 4
-    //   1922: aload_3
-    //   1923: invokespecial 438	dov/com/qq/im/capture/text/ShockTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
-    //   1926: astore_3
-    //   1927: aload 4
-    //   1929: astore_2
-    //   1930: goto -1657 -> 273
-    //   1933: astore 7
-    //   1935: aload_2
-    //   1936: astore 4
-    //   1938: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1941: ifeq -28 -> 1913
-    //   1944: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1947: iconst_2
-    //   1948: aload 7
-    //   1950: invokevirtual 431	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1953: aload 7
-    //   1955: invokestatic 434	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1958: aload_2
-    //   1959: astore 4
-    //   1961: goto -48 -> 1913
-    //   1964: aload_0
-    //   1965: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1968: ldc_w 439
-    //   1971: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1974: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1977: checkcast 354	android/graphics/Bitmap
-    //   1980: astore_3
-    //   1981: aload_0
-    //   1982: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   1985: ldc_w 440
-    //   1988: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1991: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1994: checkcast 354	android/graphics/Bitmap
-    //   1997: astore 4
-    //   1999: aload_0
-    //   2000: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2003: ldc_w 441
-    //   2006: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2009: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2012: checkcast 354	android/graphics/Bitmap
-    //   2015: astore 7
-    //   2017: aload_3
-    //   2018: ifnonnull +1506 -> 3524
-    //   2021: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2024: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   2027: ldc_w 439
-    //   2030: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   2033: astore_3
-    //   2034: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2037: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   2040: ldc_w 440
-    //   2043: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   2046: astore 4
-    //   2048: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2051: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   2054: ldc_w 441
-    //   2057: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   2060: astore 7
-    //   2062: aload_2
-    //   2063: ifnonnull +73 -> 2136
-    //   2066: new 149	java/lang/StringBuilder
-    //   2069: dup
-    //   2070: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   2073: aload_0
-    //   2074: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   2077: aload 5
-    //   2079: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   2082: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2085: ldc_w 359
-    //   2088: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2091: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2094: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   2097: astore 8
-    //   2099: aload 8
-    //   2101: astore_2
-    //   2102: new 300	dov/com/qq/im/capture/text/ApathyTextItem
-    //   2105: dup
-    //   2106: iload_1
-    //   2107: aload 6
-    //   2109: aload_2
-    //   2110: aload_3
-    //   2111: aload 4
-    //   2113: aload 7
-    //   2115: invokespecial 444	dov/com/qq/im/capture/text/ApathyTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
-    //   2118: astore_3
-    //   2119: goto -1846 -> 273
-    //   2122: astore 8
-    //   2124: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2127: iconst_2
-    //   2128: aload 8
-    //   2130: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2133: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2136: goto -34 -> 2102
-    //   2139: aload_0
-    //   2140: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2143: ldc_w 445
-    //   2146: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2149: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2152: checkcast 354	android/graphics/Bitmap
-    //   2155: astore 4
-    //   2157: aload 4
-    //   2159: astore_3
-    //   2160: aload 4
-    //   2162: ifnonnull +31 -> 2193
-    //   2165: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2168: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   2171: ldc_w 445
-    //   2174: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   2177: astore_3
-    //   2178: aload_0
-    //   2179: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2182: ldc_w 445
-    //   2185: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2188: aload_3
-    //   2189: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   2192: pop
-    //   2193: aload_2
-    //   2194: astore 4
-    //   2196: aload_2
-    //   2197: ifnonnull +36 -> 2233
-    //   2200: new 149	java/lang/StringBuilder
-    //   2203: dup
-    //   2204: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   2207: aload_0
-    //   2208: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   2211: aload 5
-    //   2213: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   2216: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2219: ldc_w 359
-    //   2222: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2225: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2228: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   2231: astore 4
-    //   2233: new 298	dov/com/qq/im/capture/text/HelplessTextItem
-    //   2236: dup
-    //   2237: iload_1
-    //   2238: aload 6
-    //   2240: aload 4
-    //   2242: aload_3
-    //   2243: invokespecial 446	dov/com/qq/im/capture/text/HelplessTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
-    //   2246: astore_3
-    //   2247: aload 4
-    //   2249: astore_2
-    //   2250: goto -1977 -> 273
-    //   2253: astore 7
-    //   2255: aload_2
-    //   2256: astore 4
-    //   2258: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2261: ifeq -28 -> 2233
-    //   2264: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2267: iconst_2
-    //   2268: aload 7
-    //   2270: invokevirtual 431	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   2273: aload 7
-    //   2275: invokestatic 434	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   2278: aload_2
-    //   2279: astore 4
-    //   2281: goto -48 -> 2233
-    //   2284: aload_0
-    //   2285: getfield 127	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2288: bipush 6
-    //   2290: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2293: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2296: checkcast 343	android/graphics/Typeface
-    //   2299: astore_3
-    //   2300: aload_3
-    //   2301: ifnonnull +123 -> 2424
-    //   2304: new 149	java/lang/StringBuilder
-    //   2307: dup
-    //   2308: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   2311: aload_0
-    //   2312: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   2315: aload 8
-    //   2317: getfield 336	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
-    //   2320: iconst_1
-    //   2321: invokevirtual 222	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2324: checkcast 338	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo
-    //   2327: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   2330: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2333: ldc_w 359
-    //   2336: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2339: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2342: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   2345: astore 4
-    //   2347: aload 4
-    //   2349: astore_3
-    //   2350: aload_2
-    //   2351: astore 4
-    //   2353: aload_2
-    //   2354: ifnonnull +36 -> 2390
-    //   2357: new 149	java/lang/StringBuilder
-    //   2360: dup
-    //   2361: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   2364: aload_0
-    //   2365: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   2368: aload 5
-    //   2370: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   2373: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2376: ldc_w 359
-    //   2379: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2382: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2385: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   2388: astore 4
-    //   2390: new 302	dov/com/qq/im/capture/text/MidNightTextItem
-    //   2393: dup
-    //   2394: iload_1
-    //   2395: aload 6
-    //   2397: aload 4
-    //   2399: aload_3
-    //   2400: invokespecial 449	dov/com/qq/im/capture/text/MidNightTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Typeface;)V
-    //   2403: astore_3
-    //   2404: aload 4
-    //   2406: astore_2
-    //   2407: goto -2134 -> 273
-    //   2410: astore 4
-    //   2412: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2415: iconst_2
-    //   2416: aload 4
-    //   2418: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2421: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2424: goto -74 -> 2350
-    //   2427: astore 4
-    //   2429: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2432: iconst_2
-    //   2433: aload 4
-    //   2435: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2438: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2441: aload_2
-    //   2442: astore 4
-    //   2444: goto -54 -> 2390
-    //   2447: aload_0
-    //   2448: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2451: ldc_w 450
-    //   2454: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2457: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2460: checkcast 354	android/graphics/Bitmap
-    //   2463: astore 4
-    //   2465: aload 4
-    //   2467: astore_3
-    //   2468: aload 4
-    //   2470: ifnonnull +31 -> 2501
-    //   2473: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2476: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   2479: ldc_w 450
-    //   2482: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   2485: astore_3
-    //   2486: aload_0
-    //   2487: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2490: ldc_w 450
-    //   2493: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2496: aload_3
-    //   2497: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   2500: pop
-    //   2501: aload_2
-    //   2502: astore 4
-    //   2504: aload_2
-    //   2505: ifnonnull +36 -> 2541
-    //   2508: new 149	java/lang/StringBuilder
-    //   2511: dup
-    //   2512: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   2515: aload_0
-    //   2516: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   2519: aload 5
-    //   2521: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   2524: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2527: ldc_w 359
-    //   2530: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2533: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2536: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   2539: astore 4
-    //   2541: new 304	dov/com/qq/im/capture/text/ShakingTextItem
-    //   2544: dup
-    //   2545: iload_1
-    //   2546: aload 6
-    //   2548: aload 4
-    //   2550: aload_3
-    //   2551: invokespecial 451	dov/com/qq/im/capture/text/ShakingTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
-    //   2554: astore_3
-    //   2555: aload 4
-    //   2557: astore_2
-    //   2558: goto -2285 -> 273
-    //   2561: astore 4
-    //   2563: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2566: iconst_2
-    //   2567: aload 4
-    //   2569: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2572: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2575: aload_2
-    //   2576: astore 4
-    //   2578: goto -37 -> 2541
-    //   2581: aload_2
-    //   2582: astore 4
-    //   2584: aload_2
-    //   2585: ifnonnull +36 -> 2621
-    //   2588: new 149	java/lang/StringBuilder
-    //   2591: dup
-    //   2592: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   2595: aload_0
-    //   2596: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   2599: aload 5
-    //   2601: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   2604: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2607: ldc_w 359
-    //   2610: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2613: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2616: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   2619: astore 4
-    //   2621: aload_0
-    //   2622: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2625: ldc_w 452
-    //   2628: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2631: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2634: checkcast 354	android/graphics/Bitmap
-    //   2637: astore_3
-    //   2638: aload_3
-    //   2639: astore_2
-    //   2640: aload_3
-    //   2641: ifnonnull +31 -> 2672
-    //   2644: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2647: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   2650: ldc_w 452
-    //   2653: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   2656: astore_2
-    //   2657: aload_0
-    //   2658: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2661: ldc_w 452
-    //   2664: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2667: aload_2
-    //   2668: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   2671: pop
-    //   2672: new 308	dov/com/qq/im/capture/text/SupernaturalTextItem
-    //   2675: dup
-    //   2676: iload_1
-    //   2677: aload 6
-    //   2679: aload 4
-    //   2681: aload_2
-    //   2682: invokespecial 453	dov/com/qq/im/capture/text/SupernaturalTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
-    //   2685: astore_3
-    //   2686: aload 4
-    //   2688: astore_2
-    //   2689: goto -2416 -> 273
-    //   2692: astore_3
-    //   2693: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2696: iconst_2
-    //   2697: aload_3
-    //   2698: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2701: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2704: aload_2
-    //   2705: astore 4
-    //   2707: goto -86 -> 2621
-    //   2710: aload_0
-    //   2711: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2714: ldc_w 454
-    //   2717: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2720: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2723: checkcast 354	android/graphics/Bitmap
-    //   2726: astore 4
-    //   2728: aload 4
-    //   2730: astore_3
-    //   2731: aload 4
-    //   2733: ifnonnull +31 -> 2764
-    //   2736: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2739: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   2742: ldc_w 454
-    //   2745: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   2748: astore_3
-    //   2749: aload_0
-    //   2750: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2753: ldc_w 454
-    //   2756: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2759: aload_3
-    //   2760: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   2763: pop
-    //   2764: aload_0
-    //   2765: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2768: ldc_w 455
-    //   2771: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2774: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2777: checkcast 354	android/graphics/Bitmap
-    //   2780: astore 7
-    //   2782: aload 7
-    //   2784: astore 4
+    //   1667: invokevirtual 419	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1670: aload_3
+    //   1671: invokestatic 422	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1674: aload_2
+    //   1675: astore 4
+    //   1677: goto -46 -> 1631
+    //   1680: aload_0
+    //   1681: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1684: ldc_w 423
+    //   1687: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1690: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1693: checkcast 340	android/graphics/Bitmap
+    //   1696: astore 4
+    //   1698: aload 4
+    //   1700: astore_3
+    //   1701: aload 4
+    //   1703: ifnonnull +31 -> 1734
+    //   1706: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1709: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   1712: ldc_w 423
+    //   1715: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   1718: astore_3
+    //   1719: aload_0
+    //   1720: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1723: ldc_w 423
+    //   1726: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1729: aload_3
+    //   1730: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1733: pop
+    //   1734: aload_2
+    //   1735: astore 4
+    //   1737: aload_2
+    //   1738: ifnonnull +36 -> 1774
+    //   1741: new 135	java/lang/StringBuilder
+    //   1744: dup
+    //   1745: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   1748: aload_0
+    //   1749: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   1752: aload 5
+    //   1754: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   1757: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1760: ldc_w 345
+    //   1763: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1766: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1769: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   1772: astore 4
+    //   1774: new 280	dov/com/qq/im/capture/text/FoldOverTextItem
+    //   1777: dup
+    //   1778: iload_1
+    //   1779: aload 6
+    //   1781: aload 4
+    //   1783: aload_3
+    //   1784: invokespecial 424	dov/com/qq/im/capture/text/FoldOverTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
+    //   1787: astore_3
+    //   1788: aload 4
+    //   1790: astore_2
+    //   1791: goto -1514 -> 277
+    //   1794: astore 7
+    //   1796: aload_2
+    //   1797: astore 4
+    //   1799: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1802: ifeq -28 -> 1774
+    //   1805: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1808: iconst_2
+    //   1809: aload 7
+    //   1811: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1814: invokestatic 407	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1817: aload_2
+    //   1818: astore 4
+    //   1820: goto -46 -> 1774
+    //   1823: aload_0
+    //   1824: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1827: ldc_w 425
+    //   1830: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1833: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1836: checkcast 340	android/graphics/Bitmap
+    //   1839: astore 4
+    //   1841: aload 4
+    //   1843: astore_3
+    //   1844: aload 4
+    //   1846: ifnonnull +31 -> 1877
+    //   1849: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1852: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   1855: ldc_w 425
+    //   1858: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   1861: astore_3
+    //   1862: aload_0
+    //   1863: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1866: ldc_w 425
+    //   1869: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1872: aload_3
+    //   1873: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1876: pop
+    //   1877: aload_2
+    //   1878: astore 4
+    //   1880: aload_2
+    //   1881: ifnonnull +36 -> 1917
+    //   1884: new 135	java/lang/StringBuilder
+    //   1887: dup
+    //   1888: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   1891: aload_0
+    //   1892: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   1895: aload 5
+    //   1897: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   1900: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1903: ldc_w 345
+    //   1906: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1909: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1912: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   1915: astore 4
+    //   1917: new 282	dov/com/qq/im/capture/text/ShockTextItem
+    //   1920: dup
+    //   1921: iload_1
+    //   1922: aload 6
+    //   1924: aload 4
+    //   1926: aload_3
+    //   1927: invokespecial 426	dov/com/qq/im/capture/text/ShockTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
+    //   1930: astore_3
+    //   1931: aload 4
+    //   1933: astore_2
+    //   1934: goto -1657 -> 277
+    //   1937: astore 7
+    //   1939: aload_2
+    //   1940: astore 4
+    //   1942: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1945: ifeq -28 -> 1917
+    //   1948: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1951: iconst_2
+    //   1952: aload 7
+    //   1954: invokevirtual 419	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1957: aload 7
+    //   1959: invokestatic 422	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1962: aload_2
+    //   1963: astore 4
+    //   1965: goto -48 -> 1917
+    //   1968: aload_0
+    //   1969: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1972: ldc_w 427
+    //   1975: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1978: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1981: checkcast 340	android/graphics/Bitmap
+    //   1984: astore_3
+    //   1985: aload_0
+    //   1986: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1989: ldc_w 428
+    //   1992: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1995: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1998: checkcast 340	android/graphics/Bitmap
+    //   2001: astore 4
+    //   2003: aload_0
+    //   2004: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2007: ldc_w 429
+    //   2010: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2013: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2016: checkcast 340	android/graphics/Bitmap
+    //   2019: astore 7
+    //   2021: aload_3
+    //   2022: ifnonnull +1506 -> 3528
+    //   2025: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2028: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   2031: ldc_w 427
+    //   2034: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   2037: astore_3
+    //   2038: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2041: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   2044: ldc_w 428
+    //   2047: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   2050: astore 4
+    //   2052: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2055: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   2058: ldc_w 429
+    //   2061: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   2064: astore 7
+    //   2066: aload_2
+    //   2067: ifnonnull +73 -> 2140
+    //   2070: new 135	java/lang/StringBuilder
+    //   2073: dup
+    //   2074: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   2077: aload_0
+    //   2078: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   2081: aload 5
+    //   2083: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   2086: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2089: ldc_w 345
+    //   2092: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2095: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2098: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   2101: astore 8
+    //   2103: aload 8
+    //   2105: astore_2
+    //   2106: new 286	dov/com/qq/im/capture/text/ApathyTextItem
+    //   2109: dup
+    //   2110: iload_1
+    //   2111: aload 6
+    //   2113: aload_2
+    //   2114: aload_3
+    //   2115: aload 4
+    //   2117: aload 7
+    //   2119: invokespecial 432	dov/com/qq/im/capture/text/ApathyTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
+    //   2122: astore_3
+    //   2123: goto -1846 -> 277
+    //   2126: astore 8
+    //   2128: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2131: iconst_2
+    //   2132: aload 8
+    //   2134: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2137: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2140: goto -34 -> 2106
+    //   2143: aload_0
+    //   2144: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2147: ldc_w 433
+    //   2150: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2153: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2156: checkcast 340	android/graphics/Bitmap
+    //   2159: astore 4
+    //   2161: aload 4
+    //   2163: astore_3
+    //   2164: aload 4
+    //   2166: ifnonnull +31 -> 2197
+    //   2169: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2172: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   2175: ldc_w 433
+    //   2178: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   2181: astore_3
+    //   2182: aload_0
+    //   2183: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2186: ldc_w 433
+    //   2189: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2192: aload_3
+    //   2193: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   2196: pop
+    //   2197: aload_2
+    //   2198: astore 4
+    //   2200: aload_2
+    //   2201: ifnonnull +36 -> 2237
+    //   2204: new 135	java/lang/StringBuilder
+    //   2207: dup
+    //   2208: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   2211: aload_0
+    //   2212: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   2215: aload 5
+    //   2217: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   2220: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2223: ldc_w 345
+    //   2226: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2229: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2232: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   2235: astore 4
+    //   2237: new 284	dov/com/qq/im/capture/text/HelplessTextItem
+    //   2240: dup
+    //   2241: iload_1
+    //   2242: aload 6
+    //   2244: aload 4
+    //   2246: aload_3
+    //   2247: invokespecial 434	dov/com/qq/im/capture/text/HelplessTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
+    //   2250: astore_3
+    //   2251: aload 4
+    //   2253: astore_2
+    //   2254: goto -1977 -> 277
+    //   2257: astore 7
+    //   2259: aload_2
+    //   2260: astore 4
+    //   2262: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2265: ifeq -28 -> 2237
+    //   2268: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2271: iconst_2
+    //   2272: aload 7
+    //   2274: invokevirtual 419	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   2277: aload 7
+    //   2279: invokestatic 422	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2282: aload_2
+    //   2283: astore 4
+    //   2285: goto -48 -> 2237
+    //   2288: aload_0
+    //   2289: getfield 113	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2292: bipush 6
+    //   2294: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2297: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2300: checkcast 329	android/graphics/Typeface
+    //   2303: astore_3
+    //   2304: aload_3
+    //   2305: ifnonnull +123 -> 2428
+    //   2308: new 135	java/lang/StringBuilder
+    //   2311: dup
+    //   2312: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   2315: aload_0
+    //   2316: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   2319: aload 8
+    //   2321: getfield 322	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
+    //   2324: iconst_1
+    //   2325: invokevirtual 208	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2328: checkcast 324	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo
+    //   2331: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   2334: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2337: ldc_w 345
+    //   2340: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2343: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2346: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   2349: astore 4
+    //   2351: aload 4
+    //   2353: astore_3
+    //   2354: aload_2
+    //   2355: astore 4
+    //   2357: aload_2
+    //   2358: ifnonnull +36 -> 2394
+    //   2361: new 135	java/lang/StringBuilder
+    //   2364: dup
+    //   2365: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   2368: aload_0
+    //   2369: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   2372: aload 5
+    //   2374: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   2377: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2380: ldc_w 345
+    //   2383: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2386: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2389: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   2392: astore 4
+    //   2394: new 288	dov/com/qq/im/capture/text/MidNightTextItem
+    //   2397: dup
+    //   2398: iload_1
+    //   2399: aload 6
+    //   2401: aload 4
+    //   2403: aload_3
+    //   2404: invokespecial 437	dov/com/qq/im/capture/text/MidNightTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Typeface;)V
+    //   2407: astore_3
+    //   2408: aload 4
+    //   2410: astore_2
+    //   2411: goto -2134 -> 277
+    //   2414: astore 4
+    //   2416: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2419: iconst_2
+    //   2420: aload 4
+    //   2422: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2425: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2428: goto -74 -> 2354
+    //   2431: astore 4
+    //   2433: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2436: iconst_2
+    //   2437: aload 4
+    //   2439: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2442: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2445: aload_2
+    //   2446: astore 4
+    //   2448: goto -54 -> 2394
+    //   2451: aload_0
+    //   2452: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2455: ldc_w 438
+    //   2458: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2461: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2464: checkcast 340	android/graphics/Bitmap
+    //   2467: astore 4
+    //   2469: aload 4
+    //   2471: astore_3
+    //   2472: aload 4
+    //   2474: ifnonnull +31 -> 2505
+    //   2477: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2480: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   2483: ldc_w 438
+    //   2486: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   2489: astore_3
+    //   2490: aload_0
+    //   2491: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2494: ldc_w 438
+    //   2497: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2500: aload_3
+    //   2501: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   2504: pop
+    //   2505: aload_2
+    //   2506: astore 4
+    //   2508: aload_2
+    //   2509: ifnonnull +36 -> 2545
+    //   2512: new 135	java/lang/StringBuilder
+    //   2515: dup
+    //   2516: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   2519: aload_0
+    //   2520: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   2523: aload 5
+    //   2525: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   2528: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2531: ldc_w 345
+    //   2534: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2537: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2540: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   2543: astore 4
+    //   2545: new 290	dov/com/qq/im/capture/text/ShakingTextItem
+    //   2548: dup
+    //   2549: iload_1
+    //   2550: aload 6
+    //   2552: aload 4
+    //   2554: aload_3
+    //   2555: invokespecial 439	dov/com/qq/im/capture/text/ShakingTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
+    //   2558: astore_3
+    //   2559: aload 4
+    //   2561: astore_2
+    //   2562: goto -2285 -> 277
+    //   2565: astore 4
+    //   2567: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2570: iconst_2
+    //   2571: aload 4
+    //   2573: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2576: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2579: aload_2
+    //   2580: astore 4
+    //   2582: goto -37 -> 2545
+    //   2585: aload_2
+    //   2586: astore 4
+    //   2588: aload_2
+    //   2589: ifnonnull +36 -> 2625
+    //   2592: new 135	java/lang/StringBuilder
+    //   2595: dup
+    //   2596: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   2599: aload_0
+    //   2600: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   2603: aload 5
+    //   2605: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   2608: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2611: ldc_w 345
+    //   2614: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2617: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2620: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   2623: astore 4
+    //   2625: aload_0
+    //   2626: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2629: ldc_w 440
+    //   2632: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2635: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2638: checkcast 340	android/graphics/Bitmap
+    //   2641: astore_3
+    //   2642: aload_3
+    //   2643: astore_2
+    //   2644: aload_3
+    //   2645: ifnonnull +31 -> 2676
+    //   2648: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2651: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   2654: ldc_w 440
+    //   2657: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   2660: astore_2
+    //   2661: aload_0
+    //   2662: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2665: ldc_w 440
+    //   2668: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2671: aload_2
+    //   2672: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   2675: pop
+    //   2676: new 294	dov/com/qq/im/capture/text/SupernaturalTextItem
+    //   2679: dup
+    //   2680: iload_1
+    //   2681: aload 6
+    //   2683: aload 4
+    //   2685: aload_2
+    //   2686: invokespecial 441	dov/com/qq/im/capture/text/SupernaturalTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
+    //   2689: astore_3
+    //   2690: aload 4
+    //   2692: astore_2
+    //   2693: goto -2416 -> 277
+    //   2696: astore_3
+    //   2697: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2700: iconst_2
+    //   2701: aload_3
+    //   2702: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2705: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2708: aload_2
+    //   2709: astore 4
+    //   2711: goto -86 -> 2625
+    //   2714: aload_0
+    //   2715: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2718: ldc_w 442
+    //   2721: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2724: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2727: checkcast 340	android/graphics/Bitmap
+    //   2730: astore 4
+    //   2732: aload 4
+    //   2734: astore_3
+    //   2735: aload 4
+    //   2737: ifnonnull +31 -> 2768
+    //   2740: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2743: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   2746: ldc_w 442
+    //   2749: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   2752: astore_3
+    //   2753: aload_0
+    //   2754: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2757: ldc_w 442
+    //   2760: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2763: aload_3
+    //   2764: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   2767: pop
+    //   2768: aload_0
+    //   2769: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2772: ldc_w 443
+    //   2775: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2778: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2781: checkcast 340	android/graphics/Bitmap
+    //   2784: astore 7
     //   2786: aload 7
-    //   2788: ifnonnull +33 -> 2821
-    //   2791: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2794: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   2797: ldc_w 455
-    //   2800: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   2803: astore 4
-    //   2805: aload_0
-    //   2806: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2809: ldc_w 455
-    //   2812: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2815: aload 4
-    //   2817: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   2820: pop
-    //   2821: new 218	java/util/ArrayList
-    //   2824: dup
-    //   2825: iconst_3
-    //   2826: invokespecial 425	java/util/ArrayList:<init>	(I)V
-    //   2829: astore 7
-    //   2831: aload 7
-    //   2833: aload_3
-    //   2834: invokeinterface 324 2 0
-    //   2839: pop
-    //   2840: aload 7
-    //   2842: aload 4
-    //   2844: invokeinterface 324 2 0
-    //   2849: pop
-    //   2850: aload_2
-    //   2851: astore 4
-    //   2853: aload_2
-    //   2854: ifnonnull +36 -> 2890
-    //   2857: new 149	java/lang/StringBuilder
-    //   2860: dup
-    //   2861: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   2864: aload_0
-    //   2865: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   2868: aload 5
-    //   2870: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   2873: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2876: ldc_w 359
-    //   2879: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2882: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2885: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   2888: astore 4
-    //   2890: new 306	dov/com/qq/im/capture/text/GridTextItem
-    //   2893: dup
-    //   2894: iload_1
-    //   2895: aload 6
-    //   2897: aload 4
-    //   2899: aload 7
-    //   2901: invokespecial 458	dov/com/qq/im/capture/text/GridTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Ljava/util/List;)V
-    //   2904: astore_3
-    //   2905: aload 4
-    //   2907: astore_2
-    //   2908: goto -2635 -> 273
-    //   2911: astore_3
-    //   2912: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2915: iconst_2
-    //   2916: aload_3
-    //   2917: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2920: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2923: aload_2
-    //   2924: astore 4
-    //   2926: goto -36 -> 2890
-    //   2929: aload_0
-    //   2930: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2933: ldc_w 459
-    //   2936: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2939: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2942: checkcast 354	android/graphics/Bitmap
-    //   2945: astore 4
-    //   2947: aload 4
-    //   2949: astore_3
-    //   2950: aload 4
-    //   2952: ifnonnull +31 -> 2983
-    //   2955: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2958: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   2961: ldc_w 459
-    //   2964: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   2967: astore_3
-    //   2968: aload_0
-    //   2969: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   2972: ldc_w 459
-    //   2975: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2978: aload_3
-    //   2979: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   2982: pop
-    //   2983: aload_2
-    //   2984: astore 4
-    //   2986: aload_2
-    //   2987: ifnonnull +36 -> 3023
-    //   2990: new 149	java/lang/StringBuilder
-    //   2993: dup
-    //   2994: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   2997: aload_0
-    //   2998: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   3001: aload 5
-    //   3003: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   3006: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3009: ldc_w 359
-    //   3012: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3015: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3018: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   3021: astore 4
-    //   3023: new 310	dov/com/qq/im/capture/text/FoodAloneTextItem
-    //   3026: dup
-    //   3027: iload_1
-    //   3028: aload 6
-    //   3030: aload 4
-    //   3032: aload_3
-    //   3033: invokespecial 460	dov/com/qq/im/capture/text/FoodAloneTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
-    //   3036: astore_3
-    //   3037: aload 4
-    //   3039: astore_2
-    //   3040: goto -2767 -> 273
-    //   3043: astore 4
-    //   3045: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3048: iconst_2
-    //   3049: aload 4
-    //   3051: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   3054: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3057: aload_2
-    //   3058: astore 4
-    //   3060: goto -37 -> 3023
-    //   3063: aload_0
-    //   3064: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   3067: ldc_w 461
-    //   3070: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   3073: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   3076: checkcast 354	android/graphics/Bitmap
-    //   3079: astore 4
-    //   3081: aload 4
-    //   3083: ifnonnull +438 -> 3521
-    //   3086: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3089: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   3092: ldc_w 461
-    //   3095: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   3098: astore 4
-    //   3100: aload_0
-    //   3101: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   3104: ldc_w 461
-    //   3107: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   3110: aload 4
-    //   3112: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   3115: pop
-    //   3116: aload_2
-    //   3117: ifnonnull +200 -> 3317
-    //   3120: new 149	java/lang/StringBuilder
-    //   3123: dup
-    //   3124: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   3127: aload_0
-    //   3128: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   3131: aload 5
-    //   3133: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   3136: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3139: ldc_w 359
-    //   3142: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3145: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3148: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   3151: astore_3
-    //   3152: aload_3
-    //   3153: astore_2
-    //   3154: aconst_null
-    //   3155: astore 7
-    //   3157: aload 7
-    //   3159: astore_3
-    //   3160: aload 8
-    //   3162: getfield 336	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
-    //   3165: invokevirtual 255	java/util/ArrayList:size	()I
-    //   3168: iconst_1
-    //   3169: if_icmple +118 -> 3287
-    //   3172: aload 7
-    //   3174: astore_3
-    //   3175: aload 8
-    //   3177: getfield 336	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
-    //   3180: iconst_1
-    //   3181: invokevirtual 222	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3184: ifnull +103 -> 3287
-    //   3187: aload 7
-    //   3189: astore_3
-    //   3190: aload 8
-    //   3192: getfield 336	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
-    //   3195: iconst_1
-    //   3196: invokevirtual 222	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3199: checkcast 338	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo
-    //   3202: getfield 340	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo:c	Ljava/lang/String;
-    //   3205: invokestatic 229	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   3208: ifne +79 -> 3287
-    //   3211: aload_0
-    //   3212: getfield 127	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   3215: aload 8
-    //   3217: getfield 336	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
-    //   3220: iconst_1
-    //   3221: invokevirtual 222	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3224: checkcast 338	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo
-    //   3227: getfield 340	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo:c	Ljava/lang/String;
-    //   3230: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   3233: checkcast 343	android/graphics/Typeface
-    //   3236: astore_3
-    //   3237: aload_3
-    //   3238: ifnonnull +96 -> 3334
-    //   3241: new 149	java/lang/StringBuilder
-    //   3244: dup
-    //   3245: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   3248: aload_0
-    //   3249: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   3252: aload 8
-    //   3254: getfield 336	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
-    //   3257: iconst_1
-    //   3258: invokevirtual 222	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3261: checkcast 338	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo
-    //   3264: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   3267: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3270: ldc_w 359
-    //   3273: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3276: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3279: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   3282: astore 7
-    //   3284: aload 7
-    //   3286: astore_3
-    //   3287: new 312	dov/com/qq/im/capture/text/LangTextItem
-    //   3290: dup
-    //   3291: iload_1
-    //   3292: aload 6
-    //   3294: aload_2
-    //   3295: aload_3
-    //   3296: aload 4
-    //   3298: invokespecial 464	dov/com/qq/im/capture/text/LangTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
-    //   3301: astore_3
-    //   3302: goto -3029 -> 273
+    //   2788: astore 4
+    //   2790: aload 7
+    //   2792: ifnonnull +33 -> 2825
+    //   2795: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2798: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   2801: ldc_w 443
+    //   2804: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   2807: astore 4
+    //   2809: aload_0
+    //   2810: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2813: ldc_w 443
+    //   2816: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2819: aload 4
+    //   2821: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   2824: pop
+    //   2825: new 204	java/util/ArrayList
+    //   2828: dup
+    //   2829: iconst_3
+    //   2830: invokespecial 413	java/util/ArrayList:<init>	(I)V
+    //   2833: astore 7
+    //   2835: aload 7
+    //   2837: aload_3
+    //   2838: invokeinterface 310 2 0
+    //   2843: pop
+    //   2844: aload 7
+    //   2846: aload 4
+    //   2848: invokeinterface 310 2 0
+    //   2853: pop
+    //   2854: aload_2
+    //   2855: astore 4
+    //   2857: aload_2
+    //   2858: ifnonnull +36 -> 2894
+    //   2861: new 135	java/lang/StringBuilder
+    //   2864: dup
+    //   2865: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   2868: aload_0
+    //   2869: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   2872: aload 5
+    //   2874: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   2877: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2880: ldc_w 345
+    //   2883: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2886: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2889: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   2892: astore 4
+    //   2894: new 292	dov/com/qq/im/capture/text/GridTextItem
+    //   2897: dup
+    //   2898: iload_1
+    //   2899: aload 6
+    //   2901: aload 4
+    //   2903: aload 7
+    //   2905: invokespecial 446	dov/com/qq/im/capture/text/GridTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Ljava/util/List;)V
+    //   2908: astore_3
+    //   2909: aload 4
+    //   2911: astore_2
+    //   2912: goto -2635 -> 277
+    //   2915: astore_3
+    //   2916: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2919: iconst_2
+    //   2920: aload_3
+    //   2921: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2924: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2927: aload_2
+    //   2928: astore 4
+    //   2930: goto -36 -> 2894
+    //   2933: aload_0
+    //   2934: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2937: ldc_w 447
+    //   2940: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2943: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2946: checkcast 340	android/graphics/Bitmap
+    //   2949: astore 4
+    //   2951: aload 4
+    //   2953: astore_3
+    //   2954: aload 4
+    //   2956: ifnonnull +31 -> 2987
+    //   2959: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2962: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   2965: ldc_w 447
+    //   2968: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   2971: astore_3
+    //   2972: aload_0
+    //   2973: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   2976: ldc_w 447
+    //   2979: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2982: aload_3
+    //   2983: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   2986: pop
+    //   2987: aload_2
+    //   2988: astore 4
+    //   2990: aload_2
+    //   2991: ifnonnull +36 -> 3027
+    //   2994: new 135	java/lang/StringBuilder
+    //   2997: dup
+    //   2998: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   3001: aload_0
+    //   3002: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   3005: aload 5
+    //   3007: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   3010: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3013: ldc_w 345
+    //   3016: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3019: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3022: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   3025: astore 4
+    //   3027: new 296	dov/com/qq/im/capture/text/FoodAloneTextItem
+    //   3030: dup
+    //   3031: iload_1
+    //   3032: aload 6
+    //   3034: aload 4
+    //   3036: aload_3
+    //   3037: invokespecial 448	dov/com/qq/im/capture/text/FoodAloneTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
+    //   3040: astore_3
+    //   3041: aload 4
+    //   3043: astore_2
+    //   3044: goto -2767 -> 277
+    //   3047: astore 4
+    //   3049: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   3052: iconst_2
+    //   3053: aload 4
+    //   3055: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3058: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3061: aload_2
+    //   3062: astore 4
+    //   3064: goto -37 -> 3027
+    //   3067: aload_0
+    //   3068: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   3071: ldc_w 449
+    //   3074: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3077: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   3080: checkcast 340	android/graphics/Bitmap
+    //   3083: astore 4
+    //   3085: aload 4
+    //   3087: ifnonnull +438 -> 3525
+    //   3090: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3093: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   3096: ldc_w 449
+    //   3099: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   3102: astore 4
+    //   3104: aload_0
+    //   3105: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   3108: ldc_w 449
+    //   3111: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3114: aload 4
+    //   3116: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   3119: pop
+    //   3120: aload_2
+    //   3121: ifnonnull +200 -> 3321
+    //   3124: new 135	java/lang/StringBuilder
+    //   3127: dup
+    //   3128: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   3131: aload_0
+    //   3132: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   3135: aload 5
+    //   3137: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   3140: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3143: ldc_w 345
+    //   3146: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3149: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3152: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   3155: astore_3
+    //   3156: aload_3
+    //   3157: astore_2
+    //   3158: aconst_null
+    //   3159: astore 7
+    //   3161: aload 7
+    //   3163: astore_3
+    //   3164: aload 8
+    //   3166: getfield 322	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
+    //   3169: invokevirtual 241	java/util/ArrayList:size	()I
+    //   3172: iconst_1
+    //   3173: if_icmple +118 -> 3291
+    //   3176: aload 7
+    //   3178: astore_3
+    //   3179: aload 8
+    //   3181: getfield 322	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
+    //   3184: iconst_1
+    //   3185: invokevirtual 208	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3188: ifnull +103 -> 3291
+    //   3191: aload 7
+    //   3193: astore_3
+    //   3194: aload 8
+    //   3196: getfield 322	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
+    //   3199: iconst_1
+    //   3200: invokevirtual 208	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3203: checkcast 324	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo
+    //   3206: getfield 326	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo:c	Ljava/lang/String;
+    //   3209: invokestatic 215	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3212: ifne +79 -> 3291
+    //   3215: aload_0
+    //   3216: getfield 113	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   3219: aload 8
+    //   3221: getfield 322	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
+    //   3224: iconst_1
+    //   3225: invokevirtual 208	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3228: checkcast 324	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo
+    //   3231: getfield 326	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo:c	Ljava/lang/String;
+    //   3234: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   3237: checkcast 329	android/graphics/Typeface
+    //   3240: astore_3
+    //   3241: aload_3
+    //   3242: ifnonnull +96 -> 3338
+    //   3245: new 135	java/lang/StringBuilder
+    //   3248: dup
+    //   3249: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   3252: aload_0
+    //   3253: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   3256: aload 8
+    //   3258: getfield 322	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean:fontInfos	Ljava/util/ArrayList;
+    //   3261: iconst_1
+    //   3262: invokevirtual 208	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   3265: checkcast 324	dov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo
+    //   3268: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   3271: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3274: ldc_w 345
+    //   3277: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3280: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3283: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   3286: astore 7
+    //   3288: aload 7
+    //   3290: astore_3
+    //   3291: new 298	dov/com/qq/im/capture/text/LangTextItem
+    //   3294: dup
+    //   3295: iload_1
+    //   3296: aload 6
+    //   3298: aload_2
+    //   3299: aload_3
+    //   3300: aload 4
+    //   3302: invokespecial 452	dov/com/qq/im/capture/text/LangTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;Landroid/graphics/Typeface;Landroid/graphics/Bitmap;)V
     //   3305: astore_3
-    //   3306: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3309: iconst_2
-    //   3310: aload_3
-    //   3311: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   3314: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3317: goto -163 -> 3154
-    //   3320: astore 7
-    //   3322: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3325: iconst_2
-    //   3326: aload 7
-    //   3328: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   3331: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3334: goto -47 -> 3287
-    //   3337: aload_0
-    //   3338: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   3341: ldc_w 465
-    //   3344: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   3347: invokevirtual 341	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   3350: checkcast 354	android/graphics/Bitmap
-    //   3353: astore 4
-    //   3355: aload 4
-    //   3357: astore_3
-    //   3358: aload 4
-    //   3360: ifnonnull +31 -> 3391
-    //   3363: invokestatic 367	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3366: invokevirtual 373	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   3369: ldc_w 465
-    //   3372: invokestatic 379	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   3375: astore_3
-    //   3376: aload_0
-    //   3377: getfield 129	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
-    //   3380: ldc_w 465
-    //   3383: invokestatic 45	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   3386: aload_3
-    //   3387: invokevirtual 351	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   3390: pop
-    //   3391: new 314	dov/com/qq/im/capture/text/LocationTextItem
-    //   3394: dup
-    //   3395: iload_1
-    //   3396: aload 6
-    //   3398: aload_3
-    //   3399: aconst_null
-    //   3400: invokespecial 468	dov/com/qq/im/capture/text/LocationTextItem:<init>	(ILjava/util/List;Landroid/graphics/Bitmap;Landroid/graphics/Typeface;)V
-    //   3403: astore_3
-    //   3404: goto -3131 -> 273
-    //   3407: aload_2
-    //   3408: astore 4
-    //   3410: aload_2
-    //   3411: ifnonnull +73 -> 3484
+    //   3306: goto -3029 -> 277
+    //   3309: astore_3
+    //   3310: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   3313: iconst_2
+    //   3314: aload_3
+    //   3315: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3318: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3321: goto -163 -> 3158
+    //   3324: astore 7
+    //   3326: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   3329: iconst_2
+    //   3330: aload 7
+    //   3332: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3335: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3338: goto -47 -> 3291
+    //   3341: aload_0
+    //   3342: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   3345: ldc_w 453
+    //   3348: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3351: invokevirtual 327	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   3354: checkcast 340	android/graphics/Bitmap
+    //   3357: astore 4
+    //   3359: aload 4
+    //   3361: astore_3
+    //   3362: aload 4
+    //   3364: ifnonnull +31 -> 3395
+    //   3367: invokestatic 355	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3370: invokevirtual 361	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   3373: ldc_w 453
+    //   3376: invokestatic 367	android/graphics/BitmapFactory:decodeResource	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   3379: astore_3
+    //   3380: aload_0
+    //   3381: getfield 115	dov/com/qq/im/capture/text/DynamicTextBuilder:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   3384: ldc_w 453
+    //   3387: invokestatic 33	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   3390: aload_3
+    //   3391: invokevirtual 337	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   3394: pop
+    //   3395: new 300	dov/com/qq/im/capture/text/LocationTextItem
+    //   3398: dup
+    //   3399: iload_1
+    //   3400: aload 6
+    //   3402: aload_3
+    //   3403: aconst_null
+    //   3404: invokespecial 456	dov/com/qq/im/capture/text/LocationTextItem:<init>	(ILjava/util/List;Landroid/graphics/Bitmap;Landroid/graphics/Typeface;)V
+    //   3407: astore_3
+    //   3408: goto -3131 -> 277
+    //   3411: aload_2
+    //   3412: astore 4
     //   3414: aload_2
-    //   3415: astore 4
-    //   3417: new 149	java/lang/StringBuilder
-    //   3420: dup
-    //   3421: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   3424: aload_0
-    //   3425: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   3428: aload 5
-    //   3430: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   3433: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3436: ldc_w 359
-    //   3439: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3442: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3445: invokestatic 473	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/lang/String;)Z
-    //   3448: ifeq +36 -> 3484
-    //   3451: new 149	java/lang/StringBuilder
-    //   3454: dup
-    //   3455: invokespecial 150	java/lang/StringBuilder:<init>	()V
-    //   3458: aload_0
-    //   3459: getfield 138	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
-    //   3462: aload 5
-    //   3464: invokevirtual 357	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
-    //   3467: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3470: ldc_w 359
-    //   3473: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3476: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   3479: invokestatic 363	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
-    //   3482: astore 4
-    //   3484: new 316	dov/com/qq/im/capture/text/BoldTextItem
-    //   3487: dup
-    //   3488: iload_1
-    //   3489: aload 6
-    //   3491: aload 4
-    //   3493: invokespecial 474	dov/com/qq/im/capture/text/BoldTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;)V
-    //   3496: astore_3
-    //   3497: aload 4
-    //   3499: astore_2
-    //   3500: goto -3227 -> 273
-    //   3503: astore_3
-    //   3504: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   3507: iconst_2
-    //   3508: aload_3
-    //   3509: invokestatic 388	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   3512: invokestatic 166	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3515: aload_2
-    //   3516: astore 4
-    //   3518: goto -34 -> 3484
-    //   3521: goto -405 -> 3116
-    //   3524: goto -1462 -> 2062
-    //   3527: goto -2843 -> 684
+    //   3415: ifnonnull +73 -> 3488
+    //   3418: aload_2
+    //   3419: astore 4
+    //   3421: new 135	java/lang/StringBuilder
+    //   3424: dup
+    //   3425: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   3428: aload_0
+    //   3429: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   3432: aload 5
+    //   3434: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   3437: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3440: ldc_w 345
+    //   3443: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3446: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3449: invokestatic 461	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/lang/String;)Z
+    //   3452: ifeq +36 -> 3488
+    //   3455: new 135	java/lang/StringBuilder
+    //   3458: dup
+    //   3459: invokespecial 136	java/lang/StringBuilder:<init>	()V
+    //   3462: aload_0
+    //   3463: getfield 124	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager	Ldov/com/qq/im/capture/text/DynamicTextConfigManager;
+    //   3466: aload 5
+    //   3468: invokevirtual 343	dov/com/qq/im/capture/text/DynamicTextConfigManager:b	(Ldov/com/qq/im/capture/text/DynamicTextConfigManager$DynamicTextConfigBean$DynamicTextFontInfo;)Ljava/lang/String;
+    //   3471: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3474: ldc_w 345
+    //   3477: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   3480: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   3483: invokestatic 349	android/graphics/Typeface:createFromFile	(Ljava/lang/String;)Landroid/graphics/Typeface;
+    //   3486: astore 4
+    //   3488: new 302	dov/com/qq/im/capture/text/BoldTextItem
+    //   3491: dup
+    //   3492: iload_1
+    //   3493: aload 6
+    //   3495: aload 4
+    //   3497: invokespecial 462	dov/com/qq/im/capture/text/BoldTextItem:<init>	(ILjava/util/List;Landroid/graphics/Typeface;)V
+    //   3500: astore_3
+    //   3501: aload 4
+    //   3503: astore_2
+    //   3504: goto -3227 -> 277
+    //   3507: astore_3
+    //   3508: getstatic 20	dov/com/qq/im/capture/text/DynamicTextBuilder:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   3511: iconst_2
+    //   3512: aload_3
+    //   3513: invokestatic 376	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   3516: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   3519: aload_2
+    //   3520: astore 4
+    //   3522: goto -34 -> 3488
+    //   3525: goto -405 -> 3120
+    //   3528: goto -1462 -> 2066
+    //   3531: goto -2843 -> 688
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	3530	0	this	DynamicTextBuilder
-    //   0	3530	1	paramInt	int
-    //   0	3530	2	paramList	List
-    //   7	448	3	localObject1	Object
-    //   461	6	3	localException1	java.lang.Exception
-    //   528	1	3	localDonotGiveUpHealing	DonotGiveUpHealing
-    //   535	6	3	localException2	java.lang.Exception
-    //   587	112	3	localObject2	Object
-    //   702	6	3	localException3	java.lang.Exception
-    //   772	1	3	localRandomSizeTextItem	RandomSizeTextItem
-    //   779	6	3	localException4	java.lang.Exception
-    //   835	512	3	localObject3	Object
-    //   1353	15	3	localRuntimeException1	java.lang.RuntimeException
-    //   1400	242	3	localObject4	Object
-    //   1648	19	3	localException5	java.lang.Exception
-    //   1696	990	3	localObject5	Object
-    //   2692	6	3	localException6	java.lang.Exception
-    //   2730	175	3	localObject6	Object
-    //   2911	6	3	localException7	java.lang.Exception
-    //   2949	353	3	localObject7	Object
-    //   3305	6	3	localException8	java.lang.Exception
-    //   3357	140	3	localObject8	Object
-    //   3503	6	3	localException9	java.lang.Exception
-    //   369	2036	4	localObject9	Object
-    //   2410	7	4	localException10	java.lang.Exception
-    //   2427	7	4	localException11	java.lang.Exception
-    //   2442	114	4	localObject10	Object
-    //   2561	7	4	localException12	java.lang.Exception
-    //   2576	462	4	localObject11	Object
-    //   3043	7	4	localException13	java.lang.Exception
-    //   3058	459	4	localObject12	Object
-    //   86	3377	5	localDynamicTextFontInfo	DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo
-    //   44	3446	6	localObject13	Object
-    //   359	1221	7	localObject14	Object
-    //   1790	16	7	localRuntimeException2	java.lang.RuntimeException
-    //   1933	21	7	localException14	java.lang.Exception
-    //   2015	99	7	localBitmap	android.graphics.Bitmap
-    //   2253	21	7	localException15	java.lang.Exception
-    //   2780	505	7	localObject15	Object
-    //   3320	7	7	localException16	java.lang.Exception
-    //   72	2028	8	localObject16	Object
-    //   2122	1131	8	localException17	java.lang.Exception
-    //   1069	207	9	localObject17	Object
-    //   1126	160	10	localObject18	Object
-    //   1183	157	11	localObject19	Object
+    //   0	3534	0	this	DynamicTextBuilder
+    //   0	3534	1	paramInt	int
+    //   0	3534	2	paramList	List
+    //   7	452	3	localObject1	Object
+    //   465	6	3	localException1	java.lang.Exception
+    //   532	1	3	localDonotGiveUpHealing	DonotGiveUpHealing
+    //   539	6	3	localException2	java.lang.Exception
+    //   591	112	3	localObject2	Object
+    //   706	6	3	localException3	java.lang.Exception
+    //   776	1	3	localRandomSizeTextItem	RandomSizeTextItem
+    //   783	6	3	localException4	java.lang.Exception
+    //   839	512	3	localObject3	Object
+    //   1357	15	3	localRuntimeException1	java.lang.RuntimeException
+    //   1404	242	3	localObject4	Object
+    //   1652	19	3	localException5	java.lang.Exception
+    //   1700	990	3	localObject5	Object
+    //   2696	6	3	localException6	java.lang.Exception
+    //   2734	175	3	localObject6	Object
+    //   2915	6	3	localException7	java.lang.Exception
+    //   2953	353	3	localObject7	Object
+    //   3309	6	3	localException8	java.lang.Exception
+    //   3361	140	3	localObject8	Object
+    //   3507	6	3	localException9	java.lang.Exception
+    //   373	2036	4	localObject9	Object
+    //   2414	7	4	localException10	java.lang.Exception
+    //   2431	7	4	localException11	java.lang.Exception
+    //   2446	114	4	localObject10	Object
+    //   2565	7	4	localException12	java.lang.Exception
+    //   2580	462	4	localObject11	Object
+    //   3047	7	4	localException13	java.lang.Exception
+    //   3062	459	4	localObject12	Object
+    //   90	3377	5	localDynamicTextFontInfo	DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo
+    //   48	3446	6	localObject13	Object
+    //   363	1221	7	localObject14	Object
+    //   1794	16	7	localRuntimeException2	java.lang.RuntimeException
+    //   1937	21	7	localException14	java.lang.Exception
+    //   2019	99	7	localBitmap	android.graphics.Bitmap
+    //   2257	21	7	localException15	java.lang.Exception
+    //   2784	505	7	localObject15	Object
+    //   3324	7	7	localException16	java.lang.Exception
+    //   76	2028	8	localObject16	Object
+    //   2126	1131	8	localException17	java.lang.Exception
+    //   1073	207	9	localObject17	Object
+    //   1130	160	10	localObject18	Object
+    //   1187	157	11	localObject19	Object
     // Exception table:
     //   from	to	target	type
-    //   376	408	461	java/lang/Exception
-    //   483	516	535	java/lang/Exception
-    //   592	624	702	java/lang/Exception
-    //   724	757	779	java/lang/Exception
-    //   1299	1332	1353	java/lang/RuntimeException
-    //   1594	1627	1648	java/lang/Exception
-    //   1737	1770	1790	java/lang/RuntimeException
-    //   1880	1913	1933	java/lang/Exception
-    //   2066	2099	2122	java/lang/Exception
-    //   2200	2233	2253	java/lang/Exception
-    //   2304	2347	2410	java/lang/Exception
-    //   2357	2390	2427	java/lang/Exception
-    //   2508	2541	2561	java/lang/Exception
-    //   2588	2621	2692	java/lang/Exception
-    //   2857	2890	2911	java/lang/Exception
-    //   2990	3023	3043	java/lang/Exception
-    //   3120	3152	3305	java/lang/Exception
-    //   3241	3284	3320	java/lang/Exception
-    //   3451	3484	3503	java/lang/Exception
+    //   380	412	465	java/lang/Exception
+    //   487	520	539	java/lang/Exception
+    //   596	628	706	java/lang/Exception
+    //   728	761	783	java/lang/Exception
+    //   1303	1336	1357	java/lang/RuntimeException
+    //   1598	1631	1652	java/lang/Exception
+    //   1741	1774	1794	java/lang/RuntimeException
+    //   1884	1917	1937	java/lang/Exception
+    //   2070	2103	2126	java/lang/Exception
+    //   2204	2237	2257	java/lang/Exception
+    //   2308	2351	2414	java/lang/Exception
+    //   2361	2394	2431	java/lang/Exception
+    //   2512	2545	2565	java/lang/Exception
+    //   2592	2625	2696	java/lang/Exception
+    //   2861	2894	2915	java/lang/Exception
+    //   2994	3027	3047	java/lang/Exception
+    //   3124	3156	3309	java/lang/Exception
+    //   3245	3288	3324	java/lang/Exception
+    //   3455	3488	3507	java/lang/Exception
   }
 }
 

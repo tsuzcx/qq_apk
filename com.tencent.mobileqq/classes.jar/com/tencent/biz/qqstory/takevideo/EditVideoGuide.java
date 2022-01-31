@@ -29,11 +29,11 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import oex;
-import oey;
-import oez;
-import ofa;
-import ofb;
+import ojm;
+import ojn;
+import ojo;
+import ojp;
+import ojq;
 
 public class EditVideoGuide
   extends EditVideoPart
@@ -45,8 +45,8 @@ public class EditVideoGuide
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public AtomicBoolean a;
-  private ofa jdField_a_of_type_Ofa;
-  private ofb jdField_a_of_type_Ofb;
+  private ojp jdField_a_of_type_Ojp;
+  private ojq jdField_a_of_type_Ojq;
   public int b;
   
   public EditVideoGuide(@NonNull EditVideoPartManager paramEditVideoPartManager)
@@ -142,7 +142,7 @@ public class EditVideoGuide
     localAnimationSet.addAnimation(localAlphaAnimation2);
     localAnimationSet.setFillAfter(false);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
-    localTranslateAnimation.setAnimationListener(new oez(this));
+    localTranslateAnimation.setAnimationListener(new ojo(this));
   }
   
   private void k()
@@ -166,9 +166,9 @@ public class EditVideoGuide
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131364419));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364421));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364420));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131364444));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364446));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364445));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     boolean bool1 = EditVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.b, 32768);
     boolean bool2 = b();
@@ -184,10 +184,10 @@ public class EditVideoGuide
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler();
     }
-    if (this.jdField_a_of_type_Ofb == null) {
-      this.jdField_a_of_type_Ofb = new ofb(this, null);
+    if (this.jdField_a_of_type_Ojq == null) {
+      this.jdField_a_of_type_Ojq = new ojq(this, null);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Ofb, 5000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Ojq, 5000L);
   }
   
   public void a(int paramInt, Object paramObject)
@@ -238,7 +238,7 @@ public class EditVideoGuide
                     StoryAddDescribeGuideDialog localStoryAddDescribeGuideDialog = new StoryAddDescribeGuideDialog(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a());
                     localStoryAddDescribeGuideDialog.a("点击屏幕可添加描述");
                     localStoryAddDescribeGuideDialog.show();
-                    localStoryAddDescribeGuideDialog.setOnDismissListener(new oex(this));
+                    localStoryAddDescribeGuideDialog.setOnDismissListener(new ojm(this));
                     paramObject.b("has_show_basal_guide", Boolean.valueOf(true));
                     StoryReportor.a("video_edit", "guide_txt", 0, 0, new String[0]);
                     return;
@@ -246,7 +246,7 @@ public class EditVideoGuide
                     paramObject.a("左右滑动可添加滤镜效果");
                   } while (((Activity)a()).isFinishing());
                   paramObject.show();
-                  paramObject.setOnDismissListener(new oey(this));
+                  paramObject.setOnDismissListener(new ojn(this));
                   StoryReportor.a("video_edit", "guide_filter", 0, 0, new String[0]);
                   return;
                 } while (!a(2));
@@ -348,10 +348,10 @@ public class EditVideoGuide
       return super.a(paramMessage);
       SLog.b("Q.qqstory.publish.edit.EditVideoGuide", "handleEditVideoMessage. mWaitForFragmentMsg = %s.", Boolean.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()));
     } while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false));
-    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_Ofb != null))
+    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_Ojq != null))
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Ofb);
-      this.jdField_a_of_type_Ofb = null;
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Ojq);
+      this.jdField_a_of_type_Ojq = null;
     }
     paramMessage = (EditVideoPlayerExport)a(EditVideoPlayerExport.class);
     if (paramMessage != null) {}
@@ -389,15 +389,15 @@ public class EditVideoGuide
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      if (this.jdField_a_of_type_Ofa != null)
+      if (this.jdField_a_of_type_Ojp != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Ofa);
-        this.jdField_a_of_type_Ofa = null;
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Ojp);
+        this.jdField_a_of_type_Ojp = null;
       }
-      if (this.jdField_a_of_type_Ofb != null)
+      if (this.jdField_a_of_type_Ojq != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Ofb);
-        this.jdField_a_of_type_Ofb = null;
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Ojq);
+        this.jdField_a_of_type_Ojq = null;
       }
     }
   }
@@ -458,10 +458,10 @@ public class EditVideoGuide
         if (this.jdField_a_of_type_AndroidOsHandler == null) {
           this.jdField_a_of_type_AndroidOsHandler = new Handler();
         }
-        if (this.jdField_a_of_type_Ofa == null) {
-          this.jdField_a_of_type_Ofa = new ofa(this);
+        if (this.jdField_a_of_type_Ojp == null) {
+          this.jdField_a_of_type_Ojp = new ojp(this);
         }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Ofa, 200L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Ojp, 200L);
       }
       return;
     }

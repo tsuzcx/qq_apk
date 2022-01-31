@@ -1,6 +1,27 @@
-public abstract interface aawc
+import android.content.Intent;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+
+public class aawc
+  implements Runnable
 {
-  public abstract void a(String[] paramArrayOfString);
+  public aawc(ArkAppModuleReg.ModuleQQ paramModuleQQ, String paramString1, String paramString2) {}
+  
+  public void run()
+  {
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity != null)
+    {
+      Intent localIntent = ArkFullScreenAppActivity.a(localBaseActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.jdField_a_of_type_JavaLangString, this.b, localBaseActivity.getResources().getDisplayMetrics().scaledDensity);
+      if (localIntent != null) {
+        ForwardBaseOption.a(localBaseActivity, localIntent);
+      }
+    }
+  }
 }
 
 

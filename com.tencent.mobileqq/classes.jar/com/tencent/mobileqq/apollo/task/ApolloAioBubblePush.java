@@ -9,9 +9,11 @@ import com.tencent.mobileqq.apollo.script.SpriteActionScript;
 import com.tencent.mobileqq.apollo.script.SpriteUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import zbq;
 
 public class ApolloAioBubblePush
 {
@@ -30,32 +32,7 @@ public class ApolloAioBubblePush
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    ApolloManager localApolloManager = (ApolloManager)paramQQAppInterface.getManager(152);
-    Object localObject = localApolloManager.a(4);
-    paramQQAppInterface = (QQAppInterface)localObject;
-    if (localObject == null) {
-      paramQQAppInterface = localApolloManager.a(3);
-    }
-    localObject = paramQQAppInterface;
-    if (paramQQAppInterface == null) {
-      localObject = localApolloManager.a(2);
-    }
-    paramQQAppInterface = (QQAppInterface)localObject;
-    if (localObject == null)
-    {
-      paramQQAppInterface = localApolloManager.a(7);
-      localApolloManager.f = false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloAioBubblePush", 2, new Object[] { "[onEnterAIO] pushItem:", this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem });
-    }
-    if ((paramQQAppInterface == null) || (paramQQAppInterface.show_sum < paramQQAppInterface.show_counts)) {
-      this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem = paramQQAppInterface;
-    }
-    this.jdField_a_of_type_Boolean = false;
+    ThreadManager.post(new zbq(this, paramQQAppInterface), 8, null, true);
   }
   
   public boolean a(QQAppInterface paramQQAppInterface, int paramInt)

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aiph;
-import aipi;
+import aiuk;
+import aiul;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -138,7 +138,7 @@ public class FileAssistantDownloader
   }
   
   /* Error */
-  private Object b(DownloadParams paramDownloadParams, aiph paramaiph)
+  private Object b(DownloadParams paramDownloadParams, aiuk paramaiuk)
   {
     // Byte code:
     //   0: iconst_1
@@ -148,7 +148,7 @@ public class FileAssistantDownloader
     //   5: aconst_null
     //   6: astore 7
     //   8: aload_2
-    //   9: getfield 150	aiph:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   9: getfield 150	aiuk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   12: astore 10
     //   14: aload 10
     //   16: ifnonnull +8 -> 24
@@ -165,7 +165,7 @@ public class FileAssistantDownloader
     //   37: invokestatic 161	com/tencent/image/GifDrawable:isGifFile	(Ljava/io/File;)Z
     //   40: ifeq +63 -> 103
     //   43: aload_2
-    //   44: getfield 164	aiph:jdField_a_of_type_Boolean	Z
+    //   44: getfield 164	aiuk:jdField_a_of_type_Boolean	Z
     //   47: ifeq +56 -> 103
     //   50: aload 7
     //   52: astore_2
@@ -514,7 +514,7 @@ public class FileAssistantDownloader
     //   start	length	slot	name	signature
     //   0	762	0	this	FileAssistantDownloader
     //   0	762	1	paramDownloadParams	DownloadParams
-    //   0	762	2	paramaiph	aiph
+    //   0	762	2	paramaiuk	aiuk
     //   1	670	3	i	int
     //   208	260	4	j	int
     //   336	12	5	k	int
@@ -573,23 +573,23 @@ public class FileAssistantDownloader
     return (paramArrayOfByte[3] & 0xFF) << 24 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[1] & 0xFF) << 8 | paramArrayOfByte[0] & 0xFF;
   }
   
-  public aiph a(URL paramURL)
+  public aiuk a(URL paramURL)
   {
     boolean bool2 = true;
     try
     {
       paramURL = paramURL.getFile().split("\\|");
-      aiph localaiph = new aiph(this);
-      localaiph.jdField_a_of_type_JavaLangString = paramURL[0];
-      localaiph.jdField_a_of_type_Int = Integer.parseInt(paramURL[1]);
-      localaiph.jdField_b_of_type_Int = Integer.parseInt(paramURL[2]);
-      localaiph.jdField_a_of_type_Long = Long.parseLong(paramURL[3]);
+      aiuk localaiuk = new aiuk(this);
+      localaiuk.jdField_a_of_type_JavaLangString = paramURL[0];
+      localaiuk.jdField_a_of_type_Int = Integer.parseInt(paramURL[1]);
+      localaiuk.jdField_b_of_type_Int = Integer.parseInt(paramURL[2]);
+      localaiuk.jdField_a_of_type_Long = Long.parseLong(paramURL[3]);
       if (paramURL.length > 4)
       {
         if (Integer.parseInt(paramURL[4]) == 1)
         {
           bool1 = true;
-          localaiph.jdField_a_of_type_Boolean = bool1;
+          localaiuk.jdField_a_of_type_Boolean = bool1;
         }
       }
       else
@@ -601,7 +601,7 @@ public class FileAssistantDownloader
           }
           bool1 = true;
           label106:
-          localaiph.jdField_b_of_type_Boolean = bool1;
+          localaiuk.jdField_b_of_type_Boolean = bool1;
         }
         if (paramURL.length > 6)
         {
@@ -610,7 +610,7 @@ public class FileAssistantDownloader
           }
           bool1 = true;
           label132:
-          localaiph.c = bool1;
+          localaiuk.c = bool1;
         }
         if (paramURL.length > 7) {
           if (Integer.parseInt(paramURL[7]) != 1) {
@@ -623,8 +623,8 @@ public class FileAssistantDownloader
       label182:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        localaiph.d = bool1;
-        return localaiph;
+        localaiuk.d = bool1;
+        return localaiuk;
         bool1 = false;
         break;
         bool1 = false;
@@ -649,14 +649,14 @@ public class FileAssistantDownloader
   {
     paramOutputStream = a(paramDownloadParams.url);
     if ((paramOutputStream == null) || (paramOutputStream.jdField_a_of_type_JavaLangString == null)) {
-      return new File(AppConstants.aI);
+      return new File(AppConstants.aJ);
     }
     return new File(paramOutputStream.jdField_a_of_type_JavaLangString);
   }
   
-  public Object a(DownloadParams paramDownloadParams, aiph paramaiph)
+  public Object a(DownloadParams paramDownloadParams, aiuk paramaiuk)
   {
-    paramDownloadParams = paramaiph.jdField_a_of_type_JavaLangString;
+    paramDownloadParams = paramaiuk.jdField_a_of_type_JavaLangString;
     if (paramDownloadParams == null) {
       paramDownloadParams = null;
     }
@@ -672,23 +672,23 @@ public class FileAssistantDownloader
         paramDownloadParams.inTargetDensity = 160;
         paramDownloadParams.inScreenDensity = 160;
         paramDownloadParams.inJustDecodeBounds = false;
-        paramaiph = SafeBitmapFactory.decodeFile(localFile.getAbsolutePath(), paramDownloadParams);
-        paramDownloadParams = paramaiph;
-        if (paramaiph == null) {
+        paramaiuk = SafeBitmapFactory.decodeFile(localFile.getAbsolutePath(), paramDownloadParams);
+        paramDownloadParams = paramaiuk;
+        if (paramaiuk == null) {
           continue;
         }
-        paramDownloadParams = a(paramaiph);
-        if (!paramaiph.equals(paramDownloadParams.mBitmap)) {
-          paramaiph.recycle();
+        paramDownloadParams = a(paramaiuk);
+        if (!paramaiuk.equals(paramDownloadParams.mBitmap)) {
+          paramaiuk.recycle();
         }
-        paramaiph = new RoundRectBitmap(new ExifBitmapCreator(localFile.getAbsolutePath()).a(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
-        paramDownloadParams = paramaiph;
+        paramaiuk = new RoundRectBitmap(new ExifBitmapCreator(localFile.getAbsolutePath()).a(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
+        paramDownloadParams = paramaiuk;
         if (this.a == null) {
           continue;
         }
-        paramaiph.mDisplayWidth = this.a.getResources().getDisplayMetrics().widthPixels;
-        paramaiph.mDisplayHeight = this.a.getResources().getDisplayMetrics().heightPixels;
-        return paramaiph;
+        paramaiuk.mDisplayWidth = this.a.getResources().getDisplayMetrics().widthPixels;
+        paramaiuk.mDisplayHeight = this.a.getResources().getDisplayMetrics().heightPixels;
+        return paramaiuk;
       }
       catch (Exception paramDownloadParams)
       {
@@ -707,11 +707,11 @@ public class FileAssistantDownloader
     paramFile = AlbumThumbManager.a(BaseApplicationImpl.getContext());
     paramURLDrawableHandler = a(paramDownloadParams.url);
     if (paramURLDrawableHandler == null) {
-      paramDownloadParams = null;
+      paramFile = null;
     }
     do
     {
-      return paramDownloadParams;
+      return paramFile;
       int i;
       if (FileManagerUtil.a(paramURLDrawableHandler.jdField_a_of_type_JavaLangString) == 2) {
         i = 1;
@@ -734,21 +734,31 @@ public class FileAssistantDownloader
           paramFile = a(paramFile);
         }
       }
-      while (paramFile == null)
+      for (;;)
       {
+        paramDownloadParams = paramFile;
+        if (paramFile == null)
+        {
+          paramFile = BaseApplicationImpl.getContext();
+          i = FileManagerUtil.a(paramURLDrawableHandler.jdField_a_of_type_JavaLangString);
+          paramDownloadParams = a(paramFile.getResources().getDrawable(FileManagerUtil.a(i)));
+        }
+        if (paramDownloadParams != null) {
+          break;
+        }
         return null;
-        paramFile = a(BaseApplicationImpl.getContext().getResources().getDrawable(2130841601));
+        paramFile = a(BaseApplicationImpl.getContext().getResources().getDrawable(2130841628));
         continue;
-        paramFile = paramFile.a(paramDownloadParams.url, new aipi(this));
+        paramFile = paramFile.a(paramDownloadParams.url, new aiul(this));
       }
-      paramDownloadParams = paramFile;
+      paramFile = paramDownloadParams;
     } while (!paramURLDrawableHandler.jdField_b_of_type_Boolean);
-    return a(paramFile, paramFile.getWidth(), paramFile.getHeight());
+    return a(paramDownloadParams, paramDownloadParams.getWidth(), paramDownloadParams.getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FileAssistantDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.av.business.manager.pendant.EffectPendantTips;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.av.app.AVServiceProxy;
+import com.tencent.av.service.IAVServiceForQQ.Stub;
+import com.tencent.qphone.base.util.QLog;
 
 public class jgd
-  implements Runnable
+  implements ServiceConnection
 {
-  public jgd(EffectPendantTips paramEffectPendantTips, int paramInt1, int paramInt2) {}
+  public jgd(AVServiceProxy paramAVServiceProxy) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    try
-    {
-      if (this.jdField_a_of_type_Int != 0)
-      {
-        String str = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.a(EffectPendantTips.a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips), this.jdField_a_of_type_Int);
-        if (!TextUtils.isEmpty(str)) {
-          this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.b(this.b, str);
-        }
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(AVServiceProxy.a(), 2, "AVServiceForQQ onServiceConnected");
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    this.a.a = IAVServiceForQQ.Stub.a(paramIBinder);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(AVServiceProxy.a(), 2, "AVServiceForQQ onServiceDisconnected");
     }
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jgd
  * JD-Core Version:    0.7.0.1
  */

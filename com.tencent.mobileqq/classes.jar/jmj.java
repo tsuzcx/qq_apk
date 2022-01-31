@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVPbInfo;
+import com.tencent.av.random.RandomController;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.qphone.base.util.QLog;
 
-public final class jmj
-  implements Parcelable.Creator
+public class jmj
+  implements Runnable
 {
-  public AVPbInfo a(Parcel paramParcel)
-  {
-    return new AVPbInfo(paramParcel);
-  }
+  public jmj(RandomController paramRandomController) {}
   
-  public AVPbInfo[] a(int paramInt)
+  public void run()
   {
-    return new AVPbInfo[paramInt];
+    if (RandomController.c(this.a))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RandomController", 2, "mRandomPushTimeoutRunnable trigger, request room owner!");
+      }
+      RandomController.a(this.a).a(RandomController.b(this.a), this.a.a);
+      this.a.a();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("RandomController", 2, "mRoomOwnerEnable == false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jmj
  * JD-Core Version:    0.7.0.1
  */

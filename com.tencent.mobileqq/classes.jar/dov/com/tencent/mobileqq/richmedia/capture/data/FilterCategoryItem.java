@@ -3,14 +3,14 @@ package dov.com.tencent.mobileqq.richmedia.capture.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aols;
+import aoui;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import java.util.ArrayList;
 
 public class FilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new aols();
+  public static final Parcelable.Creator CREATOR = new aoui();
   public int a;
   public String a;
   public ArrayList a;

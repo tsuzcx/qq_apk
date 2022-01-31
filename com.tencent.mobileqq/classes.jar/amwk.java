@@ -1,21 +1,24 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavHelper;
 
-public class amwk
+public final class amwk
   implements Runnable
 {
-  public amwk(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt, ArrayList paramArrayList) {}
-  
   public void run()
   {
-    RemoteHandleManager.a().a().a(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    synchronized ()
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("qqfav", 2, "notify(sPluginInstalled) qqfav.apk");
+      }
+      QfavHelper.a().notifyAll();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwk
  * JD-Core Version:    0.7.0.1
  */

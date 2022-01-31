@@ -1,36 +1,37 @@
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
 public class ahnz
-  implements Runnable
+  implements View.OnTouchListener
 {
-  String jdField_a_of_type_JavaLangString;
-  HashMap jdField_a_of_type_JavaUtilHashMap;
+  public ahnz(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public ahnz(String paramString, HashMap paramHashMap)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-  }
-  
-  public void run()
-  {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DataReport", 2, "You must set mEventCode before report data!");
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 0)
+      {
+        EffectsCameraCaptureFragment.a(this.a).setAlpha(0.5F);
+        EffectsCameraCaptureFragment.a(this.a).setAlpha(0.5F);
+        EffectsCameraCaptureFragment.f(this.a).setAlpha(0.5F);
+      }
+      else if (paramMotionEvent.getAction() == 1)
+      {
+        EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
+        EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
+        EffectsCameraCaptureFragment.f(this.a).setAlpha(1.0F);
       }
     }
-    do
-    {
-      return;
-      StatisticCollector.a(BaseApplication.getContext()).a(null, this.jdField_a_of_type_JavaLangString, true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "");
-    } while (!QLog.isColorLevel());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("eventCode:" + this.jdField_a_of_type_JavaLangString + "\n");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilHashMap.toString());
-    QLog.i("DataReport", 2, localStringBuilder.toString());
   }
 }
 

@@ -1,17 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
 
-public class kwe
-  implements View.OnClickListener
+class kwe
+  implements Runnable
 {
-  public kwe(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  kwe(kwc paramkwc) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
-    ReadInJoyNativeAdFragment.b(this.a);
+    VideoCoverFragment.a(this.a.a).setCurrentItem(VideoCoverFragment.a(this.a.a) + 1, true);
   }
 }
 

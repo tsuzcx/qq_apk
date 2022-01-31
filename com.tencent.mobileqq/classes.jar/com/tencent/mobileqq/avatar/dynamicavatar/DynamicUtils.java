@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abkc;
+import abrd;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -771,7 +771,7 @@ public class DynamicUtils
   
   public static void a(AppInterface paramAppInterface, String paramString, int paramInt)
   {
-    ThreadManager.post(new abkc(paramAppInterface, paramString, paramInt), 2, null, true);
+    ThreadManager.post(new abrd(paramAppInterface, paramString, paramInt), 2, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)

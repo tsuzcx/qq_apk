@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import ajih;
-import ajii;
-import ajij;
-import ajik;
+import ajpt;
+import ajpu;
+import ajpv;
+import ajpw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -51,7 +51,7 @@ public class ReciteEvaluateViewHolder
   public ReciteEvaluateViewHolder(Context paramContext, ViewGroup paramViewGroup)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969921, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969932, paramViewGroup, false);
     e();
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
@@ -72,7 +72,7 @@ public class ReciteEvaluateViewHolder
     localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.a;
     localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.a;
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setDownloadListener(new ajij(this));
+    paramString.setDownloadListener(new ajpv(this));
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
     if ((paramString.getStatus() == 1) && (paramString.getCurrDrawable() != null))
     {
@@ -103,18 +103,18 @@ public class ReciteEvaluateViewHolder
   
   private void e()
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368480);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368478));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368477));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368474);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368481));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368482));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368483));
-    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368472);
-    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131368484);
-    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131368485);
-    this.g = this.jdField_a_of_type_AndroidViewView.findViewById(2131368473);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = ((SpriteVideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368459));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368482);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368480));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368479));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368476);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368483));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368484));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368485));
+    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368474);
+    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131368486);
+    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131368487);
+    this.g = this.jdField_a_of_type_AndroidViewView.findViewById(2131368475);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = ((SpriteVideoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368461));
   }
   
   private void f()
@@ -134,7 +134,7 @@ public class ReciteEvaluateViewHolder
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.setVisibility(0);
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if ((localAppRuntime instanceof QQAppInterface)) {
-        VideoAnimationUtils.a((QQAppInterface)localAppRuntime, "qb_troop_hw_recite_result.mp4", "http://pub.idqqimg.com/pc/misc/files/20180312/59583551a1c748dfaae1e64f6e04ca20.mp4", this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView, new ajik(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView, null));
+        VideoAnimationUtils.a((QQAppInterface)localAppRuntime, "qb_troop_hw_recite_result.mp4", "http://pub.idqqimg.com/pc/misc/files/20180312/59583551a1c748dfaae1e64f6e04ca20.mp4", this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView, new ajpw(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView, null));
       }
     }
   }
@@ -161,7 +161,7 @@ public class ReciteEvaluateViewHolder
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     paramString = this.jdField_a_of_type_AndroidContentContext.getResources();
-    int j = 2130841392;
+    int j = 2130841419;
     int m = paramString.getColor(2131492971);
     int i;
     if (paramInt1 < jdField_b_of_type_ArrayOfJavaLangString.length)
@@ -176,7 +176,7 @@ public class ReciteEvaluateViewHolder
     String str1 = jdField_b_of_type_ArrayOfJavaLangString[i];
     String str2 = jdField_a_of_type_ArrayOfJavaLangString[i];
     paramInt1 = 0;
-    int k = 2130841372;
+    int k = 2130841399;
     switch (i)
     {
     default: 
@@ -205,7 +205,7 @@ public class ReciteEvaluateViewHolder
         if (this.g.getMeasuredHeight() != 0) {
           break label430;
         }
-        this.g.getViewTreeObserver().addOnGlobalLayoutListener(new ajii(this, paramBoolean));
+        this.g.getViewTreeObserver().addOnGlobalLayoutListener(new ajpu(this, paramBoolean));
       }
       break;
     }
@@ -219,15 +219,15 @@ public class ReciteEvaluateViewHolder
       i = m;
       break;
       paramInt1 = paramString.getColor(2131492969);
-      k = 2130841373;
-      j = 2130841391;
+      k = 2130841400;
+      j = 2130841418;
       i = paramInt1;
       break;
       paramInt1 = paramString.getColor(2131492969);
-      j = 2130841390;
+      j = 2130841417;
       i = paramInt1;
       break;
-      this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ajih(this, str2));
+      this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ajpt(this, str2));
       break label168;
       label430:
       this.f.setVisibility(4);
@@ -279,7 +279,7 @@ public class ReciteEvaluateViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.ReciteEvaluateViewHolder
  * JD-Core Version:    0.7.0.1
  */

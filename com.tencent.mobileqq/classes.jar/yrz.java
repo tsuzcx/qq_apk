@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public class yrz
-  implements Runnable
+public final class yrz
+  implements View.OnClickListener
 {
-  public yrz(SpriteBackgroundManager paramSpriteBackgroundManager, ApolloTextureView paramApolloTextureView, int paramInt) {}
+  public yrz(ApolloRender paramApolloRender, ApolloSurfaceView paramApolloSurfaceView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(this.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null))
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.getText().toString();
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorPop.setText("");
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.queueEvent(new ysa(this, paramView));
+    }
   }
 }
 

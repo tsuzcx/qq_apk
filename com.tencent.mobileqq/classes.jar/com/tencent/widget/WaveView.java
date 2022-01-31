@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amee;
+import amlo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -21,7 +21,7 @@ public class WaveView
   private float jdField_a_of_type_Float;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new amee(this));
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new amlo(this));
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   private Path jdField_b_of_type_AndroidGraphicsPath;
   public int c;

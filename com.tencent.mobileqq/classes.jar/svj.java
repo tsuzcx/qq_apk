@@ -1,27 +1,28 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
+import com.tencent.util.ProfilePerformanceReport;
 
 public class svj
-  implements TextWatcher
+  implements OnDrawCompleteListener
 {
-  public svj(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public svj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    paramEditable = paramEditable.toString();
-    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
+    ProfilePerformanceReport localProfilePerformanceReport = ProfilePerformanceReport.a;
+    if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a()))
     {
-      this.a.b.setEnabled(true);
-      return;
+      if (!localProfilePerformanceReport.a(1)) {
+        localProfilePerformanceReport.b(1);
+      }
+      if ((!localProfilePerformanceReport.a(8)) && (localProfilePerformanceReport.a(5)) && (localProfilePerformanceReport.a(7))) {
+        localProfilePerformanceReport.b(8);
+      }
+      if ((!localProfilePerformanceReport.a(9)) && (localProfilePerformanceReport.a(6)) && (localProfilePerformanceReport.a(7))) {
+        localProfilePerformanceReport.b(9);
+      }
     }
-    this.a.b.setEnabled(false);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

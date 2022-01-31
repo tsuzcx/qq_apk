@@ -1,20 +1,21 @@
-import com.tencent.biz.troopgift.TroopGiftPanel.OnShowOrHideListerner;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class vvd
-  implements TroopGiftPanel.OnShowOrHideListerner
+class vvd
+  implements Runnable
 {
-  public vvd(HotChatPie paramHotChatPie) {}
+  vvd(vva paramvva, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.a();
-  }
-  
-  public void b()
-  {
-    this.a.a.a(false, false, 4);
+    if (this.jdField_a_of_type_Vva.c != null)
+    {
+      this.jdField_a_of_type_Vva.c.clearAnimation();
+      this.jdField_a_of_type_Vva.c.removeAllViews();
+      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_Vva.b, 50L);
+    }
   }
 }
 

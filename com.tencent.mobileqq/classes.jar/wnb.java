@@ -1,17 +1,25 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.List;
 
 public class wnb
   implements Runnable
 {
-  public wnb(DeviceFragment paramDeviceFragment) {}
+  public wnb(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
   public void run()
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("SmartDevice_clickOnDeviceList");
-    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+    EntityManager localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
+    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
+    Message localMessage = this.a.a.obtainMessage(1);
+    localMessage.obj = localList;
+    this.a.a.sendMessage(localMessage);
+    localEntityManager.a();
   }
 }
 

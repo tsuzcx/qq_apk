@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
 
-public final class xdp
-  implements Comparator
+public class xdp
+  implements Runnable
 {
-  public int a(HbSkinInfo paramHbSkinInfo1, HbSkinInfo paramHbSkinInfo2)
+  public xdp(PhotoListActivity.QueryPhotoTask paramQueryPhotoTask) {}
+  
+  public void run()
   {
-    return paramHbSkinInfo1.a - paramHbSkinInfo2.a;
+    this.a.a.c();
   }
 }
 

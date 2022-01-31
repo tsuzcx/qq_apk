@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiShareDataInfo;
 
 public final class ancq
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public ancq(CustomWebView paramCustomWebView, String paramString) {}
-  
-  public void run()
+  public WeishiShareDataInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
+    return new WeishiShareDataInfo(paramParcel);
+  }
+  
+  public WeishiShareDataInfo[] a(int paramInt)
+  {
+    return new WeishiShareDataInfo[paramInt];
   }
 }
 

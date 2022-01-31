@@ -49,17 +49,21 @@ public class Installer
           Installer.this.mEvent.onInstallResult(i, str);
         }
       }
-      while (paramAnonymousMessage.what != 1001)
-      {
-        String str;
-        boolean bool;
-        int j;
+      while (paramAnonymousMessage.what != 1001) {
         return;
       }
       int i = Installer.this.mLocalPlugin.getMaxSdkVersion();
       long l = paramAnonymousMessage.getData().getLong("timeconsume", 0L);
-      Installer.this.mLocalPlugin.setPreinstalledPlugin(i, Installer.this.mApkPath, true);
-      DataReport.getInstance(Installer.this.mPluginId).reportDex2Oat(Installer.this.mLocalPlugin.getMaxSdkVersion(), 0, l);
+      int j = paramAnonymousMessage.arg1;
+      paramAnonymousMessage = Installer.this.mLocalPlugin;
+      String str = Installer.this.mApkPath;
+      if (j == 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramAnonymousMessage.setPreinstalledPlugin(i, str, bool);
+        DataReport.getInstance(Installer.this.mPluginId).reportDex2Oat(Installer.this.mLocalPlugin.getMaxSdkVersion(), 0, l);
+        return;
+      }
     }
   };
   String mLibPath;
@@ -73,10 +77,6 @@ public class Installer
   {
     this.mContext = paramContext;
     this.mOptPath = paramString2;
-    paramContext = new File(this.mOptPath);
-    if (!paramContext.exists()) {
-      paramContext.mkdirs();
-    }
     this.mApkPath = paramString1;
     this.mLibPath = paramString4;
     this.mPackageName = paramString5;
@@ -88,6 +88,10 @@ public class Installer
   private void dex2oat()
   {
     String str = this.mApkPath + File.pathSeparator + UtilFile.getPluginSecondaryDexesPath(this.mContext, this.mPackageName, this.mLocalPlugin.getMaxSdkVersion());
+    File localFile = new File(this.mOptPath);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
     XLog.i("XProxy | Installer", "开始生成优化文件 multiApkPath = " + str + "time = " + System.currentTimeMillis());
     new DexClassLoader(str, this.mOptPath, null, this.mContext.getClassLoader().getParent());
     XLog.i("XProxy | Installer", "生成优化文件完成 time = " + System.currentTimeMillis());
@@ -201,8 +205,21 @@ public class Installer
       public void run()
       {
         long l = System.currentTimeMillis();
-        Installer.this.dex2oat();
-        Installer.this.notifyDex2Oat(0, "", System.currentTimeMillis() - l);
+        try
+        {
+          Installer.this.dex2oat();
+          Installer.this.notifyDex2Oat(0, "", System.currentTimeMillis() - l);
+          return;
+        }
+        catch (Exception localException)
+        {
+          XLog.i("XProxy | Installer", "生成oat文件异常　ｅ=" + localException.getMessage());
+          return;
+        }
+        finally
+        {
+          Installer.this.notifyDex2Oat(1, "", System.currentTimeMillis() - l);
+        }
       }
     });
   }
@@ -219,23 +236,23 @@ public class Installer
     //   8: aload_2
     //   9: putfield 244	com/tencent/proxyinner/plugin/Installer:mEvent	Lcom/tencent/proxyinner/plugin/Installer$InstallEvent;
     //   12: aload_0
-    //   13: getfield 88	com/tencent/proxyinner/plugin/Installer:mLocalPlugin	Lcom/tencent/proxyinner/plugin/LocalPlugin;
-    //   16: invokevirtual 136	com/tencent/proxyinner/plugin/LocalPlugin:getMaxSdkVersion	()I
+    //   13: getfield 76	com/tencent/proxyinner/plugin/Installer:mLocalPlugin	Lcom/tencent/proxyinner/plugin/LocalPlugin;
+    //   16: invokevirtual 126	com/tencent/proxyinner/plugin/LocalPlugin:getMaxSdkVersion	()I
     //   19: istore_3
     //   20: aload_0
-    //   21: getfield 88	com/tencent/proxyinner/plugin/Installer:mLocalPlugin	Lcom/tencent/proxyinner/plugin/LocalPlugin;
+    //   21: getfield 76	com/tencent/proxyinner/plugin/Installer:mLocalPlugin	Lcom/tencent/proxyinner/plugin/LocalPlugin;
     //   24: iload_3
     //   25: invokevirtual 338	com/tencent/proxyinner/plugin/LocalPlugin:getPreInstalledPlugin	(I)Ljava/lang/String;
     //   28: invokestatic 344	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   31: ifne +85 -> 116
-    //   34: new 70	java/io/File
+    //   34: new 117	java/io/File
     //   37: dup
     //   38: aload_0
-    //   39: getfield 84	com/tencent/proxyinner/plugin/Installer:mLibPath	Ljava/lang/String;
-    //   42: invokespecial 73	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: getfield 72	com/tencent/proxyinner/plugin/Installer:mLibPath	Ljava/lang/String;
+    //   42: invokespecial 139	java/io/File:<init>	(Ljava/lang/String;)V
     //   45: astore_2
     //   46: aload_2
-    //   47: invokevirtual 77	java/io/File:exists	()Z
+    //   47: invokevirtual 143	java/io/File:exists	()Z
     //   50: ifne +8 -> 58
     //   53: aload_2
     //   54: invokevirtual 347	java/io/File:mkdir	()Z
@@ -244,15 +261,15 @@ public class Installer
     //   59: invokespecial 349	com/tencent/proxyinner/plugin/Installer:isNeedReDex	()Z
     //   62: ifne +54 -> 116
     //   65: ldc 26
-    //   67: new 122	java/lang/StringBuilder
+    //   67: new 110	java/lang/StringBuilder
     //   70: dup
-    //   71: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   71: invokespecial 111	java/lang/StringBuilder:<init>	()V
     //   74: aload_0
-    //   75: getfield 82	com/tencent/proxyinner/plugin/Installer:mApkPath	Ljava/lang/String;
-    //   78: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: getfield 70	com/tencent/proxyinner/plugin/Installer:mApkPath	Ljava/lang/String;
+    //   78: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: ldc_w 351
-    //   84: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   84: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   90: invokestatic 165	com/tencent/proxyinner/log/XLog:i	(Ljava/lang/String;Ljava/lang/String;)I
     //   93: pop
     //   94: aload_0
@@ -260,24 +277,24 @@ public class Installer
     //   98: iload_1
     //   99: ldc_w 262
     //   102: aload_0
-    //   103: getfield 88	com/tencent/proxyinner/plugin/Installer:mLocalPlugin	Lcom/tencent/proxyinner/plugin/LocalPlugin;
+    //   103: getfield 76	com/tencent/proxyinner/plugin/Installer:mLocalPlugin	Lcom/tencent/proxyinner/plugin/LocalPlugin;
     //   106: iload_3
     //   107: invokevirtual 316	com/tencent/proxyinner/plugin/LocalPlugin:getHasDex2Oat	(I)Z
-    //   110: invokespecial 108	com/tencent/proxyinner/plugin/Installer:notifyInstallResult	(IILjava/lang/String;Z)V
+    //   110: invokespecial 96	com/tencent/proxyinner/plugin/Installer:notifyInstallResult	(IILjava/lang/String;Z)V
     //   113: aload_0
     //   114: monitorexit
     //   115: return
     //   116: aload_0
-    //   117: getfield 92	com/tencent/proxyinner/plugin/Installer:mPluginId	Ljava/lang/String;
+    //   117: getfield 80	com/tencent/proxyinner/plugin/Installer:mPluginId	Ljava/lang/String;
     //   120: invokestatic 357	com/tencent/proxyinner/report/DataReport:getInstance	(Ljava/lang/String;)Lcom/tencent/proxyinner/report/DataReport;
     //   123: aload_0
-    //   124: getfield 88	com/tencent/proxyinner/plugin/Installer:mLocalPlugin	Lcom/tencent/proxyinner/plugin/LocalPlugin;
-    //   127: invokevirtual 136	com/tencent/proxyinner/plugin/LocalPlugin:getMaxSdkVersion	()I
+    //   124: getfield 76	com/tencent/proxyinner/plugin/Installer:mLocalPlugin	Lcom/tencent/proxyinner/plugin/LocalPlugin;
+    //   127: invokevirtual 126	com/tencent/proxyinner/plugin/LocalPlugin:getMaxSdkVersion	()I
     //   130: iload_1
     //   131: aload_0
-    //   132: getfield 82	com/tencent/proxyinner/plugin/Installer:mApkPath	Ljava/lang/String;
+    //   132: getfield 70	com/tencent/proxyinner/plugin/Installer:mApkPath	Ljava/lang/String;
     //   135: aload_0
-    //   136: getfield 84	com/tencent/proxyinner/plugin/Installer:mLibPath	Ljava/lang/String;
+    //   136: getfield 72	com/tencent/proxyinner/plugin/Installer:mLibPath	Ljava/lang/String;
     //   139: invokevirtual 361	com/tencent/proxyinner/report/DataReport:reportInstallStart	(IILjava/lang/String;Ljava/lang/String;)V
     //   142: invokestatic 327	com/tencent/proxyinner/utility/ThreadManager:getFileThreadHandler	()Landroid/os/Handler;
     //   145: new 8	com/tencent/proxyinner/plugin/Installer$2

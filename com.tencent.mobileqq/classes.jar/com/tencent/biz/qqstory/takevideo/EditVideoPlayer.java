@@ -41,13 +41,13 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
-import ofu;
-import ofw;
-import ofx;
-import ofy;
-import ofz;
-import oga;
-import ogb;
+import okj;
+import okl;
+import okm;
+import okn;
+import oko;
+import okp;
+import okq;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -120,17 +120,17 @@ public class EditVideoPlayer
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
       return;
     }
-    this.jdField_b_of_type_AndroidOsHandler.post(new ofx(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new okm(this));
   }
   
-  public void L_()
+  public void M_()
   {
     SLog.e("Q.qqstory.record.EditVideoPlayer", "onPlayerEnd");
   }
   
-  public void N_()
+  public void O_()
   {
-    super.N_();
+    super.O_();
     SLog.d("Q.qqstory.record.EditVideoPlayer", "onStop stop play");
     b(false);
   }
@@ -165,7 +165,7 @@ public class EditVideoPlayer
     }
     Object localObject = new Bitmap[1];
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    this.jdField_a_of_type_AndroidOsHandler.post(new ofy(this, paramInt, (Bitmap[])localObject, localCountDownLatch));
+    this.jdField_a_of_type_AndroidOsHandler.post(new okn(this, paramInt, (Bitmap[])localObject, localCountDownLatch));
     try
     {
       SLog.b("Q.qqstory.record.EditVideoPlayer", "generateVideoFrameBitmap waiting ...");
@@ -274,9 +274,9 @@ public class EditVideoPlayer
         break label459;
       }
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditRecordVideoSource = ((EditRecordVideoSource)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer = ((ImageViewVideoPlayer)a(2131364406));
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer = ((ImageViewVideoPlayer)a(2131364431));
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364410));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364435));
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setCyclePlay(true);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setIMPlayerEndListener(this);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setIMPFrameListener(this);
@@ -478,7 +478,7 @@ public class EditVideoPlayer
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ofz(this, paramInt, paramArrayOfByte));
+    this.jdField_a_of_type_AndroidOsHandler.post(new oko(this, paramInt, paramArrayOfByte));
   }
   
   public void a(Bitmap paramBitmap)
@@ -537,13 +537,13 @@ public class EditVideoPlayer
       int i = paramMessage.arg2;
       int j = paramMessage.arg1;
       if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer instanceof MultiBlockVideoPlayer)) {
-        this.jdField_a_of_type_AndroidOsHandler.post(new ofu(this, i, j));
+        this.jdField_a_of_type_AndroidOsHandler.post(new okj(this, i, j));
       }
     }
     return false;
   }
   
-  public void aa_()
+  public void ac_()
   {
     EditMusicExport localEditMusicExport = (EditMusicExport)a(EditMusicExport.class);
     if (localEditMusicExport != null)
@@ -557,7 +557,7 @@ public class EditVideoPlayer
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new oga(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new okp(this, paramInt));
   }
   
   public void d()
@@ -582,7 +582,7 @@ public class EditVideoPlayer
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap1);
       if (this.jdField_b_of_type_Boolean) {
-        Stream.of(localBitmap1).map(new ThreadOffFunction(2)).map(new BitmapAdjustJobSegment(0.2F, false)).map(new BlurJobSegment(10)).map(new UIThreadOffFunction(this)).subscribe(new ofw(this));
+        Stream.of(localBitmap1).map(new ThreadOffFunction(2)).map(new BitmapAdjustJobSegment(0.2F, false)).map(new BlurJobSegment(10)).map(new UIThreadOffFunction(this)).subscribe(new okl(this));
       }
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -616,7 +616,7 @@ public class EditVideoPlayer
   public void h()
   {
     if ((this.jdField_a_of_type_Boolean) && (MultiBlockVideoPlayer.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer))) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ogb(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new okq(this));
     }
   }
   

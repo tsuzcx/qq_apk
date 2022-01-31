@@ -1,25 +1,67 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ConfigObserver;
-import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.AbstractSet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class amqe
-  extends ConfigObserver
+  extends AbstractSet
 {
-  public amqe(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
+  public amqe(SoftHashMap paramSoftHashMap) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void clear()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("result", paramInt);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 3, localBundle);
+    this.a.clear();
+  }
+  
+  public boolean contains(Object paramObject)
+  {
+    return this.a.containsKey(paramObject);
+  }
+  
+  public Iterator iterator()
+  {
+    return new amqd(this.a);
+  }
+  
+  public boolean remove(Object paramObject)
+  {
+    if (this.a.containsKey(paramObject))
+    {
+      this.a.remove(paramObject);
+      return true;
+    }
+    return false;
+  }
+  
+  public int size()
+  {
+    return this.a.size();
+  }
+  
+  public Object[] toArray()
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray();
+  }
+  
+  public Object[] toArray(Object[] paramArrayOfObject)
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray(paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amqe
  * JD-Core Version:    0.7.0.1
  */

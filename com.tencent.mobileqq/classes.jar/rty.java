@@ -1,56 +1,42 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.animation.AnimationSet;
-import android.view.animation.CycleInterpolator;
-import android.view.animation.TranslateAnimation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.widget.XEditTextEx;
 
-public class rty
-  implements Runnable
+class rty
+  implements DialogInterface.OnClickListener
 {
-  public rty(BaseChatPie paramBaseChatPie, Activity paramActivity) {}
+  rty(rtx paramrtx) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BaseChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, new View(this.jdField_a_of_type_AndroidAppActivity));
-    BaseChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).setOnTouchListener(new rtz(this));
-    this.jdField_a_of_type_AndroidAppActivity.addContentView(BaseChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie), new ViewGroup.LayoutParams(-1, -1));
-    View localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0);
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    long l = 0L;
-    long[] arrayOfLong = new long[6];
-    long[] tmp99_97 = arrayOfLong;
-    tmp99_97[0] = 200L;
-    long[] tmp105_99 = tmp99_97;
-    tmp105_99[1] = 300L;
-    long[] tmp111_105 = tmp105_99;
-    tmp111_105[2] = 200L;
-    long[] tmp117_111 = tmp111_105;
-    tmp117_111[3] = 300L;
-    long[] tmp123_117 = tmp117_111;
-    tmp123_117[4] = 200L;
-    long[] tmp129_123 = tmp123_117;
-    tmp129_123[5] = 300L;
-    tmp129_123;
-    int i = 0;
-    while (i < arrayOfLong.length)
+    try
     {
-      if (i % 2 != 0)
+      if (BaseChatPie.j(this.a.a.a) > 0)
       {
-        TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 10.0F, 0.0F, 10.0F);
-        localTranslateAnimation.setDuration(arrayOfLong[i]);
-        localTranslateAnimation.setStartOffset(l);
-        localTranslateAnimation.setInterpolator(new CycleInterpolator((float)localTranslateAnimation.getDuration() / 60.0F));
-        localAnimationSet.addAnimation(localTranslateAnimation);
+        if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
+          break label133;
+        }
+        this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       }
-      l += arrayOfLong[i];
-      i += 1;
+      for (;;)
+      {
+        this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+        BaseChatPie.a(this.a.a.a).delete(0, BaseChatPie.a(this.a.a.a).length());
+        paramDialogInterface.dismiss();
+        return;
+        label133:
+        this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
+      }
+      return;
     }
-    localAnimationSet.setAnimationListener(new rua(this));
-    localView.startAnimation(localAnimationSet);
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 

@@ -1,36 +1,15 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.VIPDonateMsgItemBuilder;
-import com.tencent.mobileqq.data.MessageForVIPDonate;
-import com.tencent.mobileqq.data.VIPDonateMsg;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.Holder;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class vli
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vli(VIPDonateMsgItemBuilder paramVIPDonateMsgItemBuilder) {}
+  public vli(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo, ShortVideoRealItemBuilder.Holder paramHolder) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (VIPDonateMsgItemBuilder.a(this.a)) {
-      return;
-    }
-    paramView = (MessageForVIPDonate)((vlj)AIOUtils.a(paramView)).a;
-    Object localObject = paramView.donateMsg;
-    if ((localObject != null) && (!TextUtils.isEmpty(((VIPDonateMsg)localObject).jumpUrl)))
-    {
-      paramView = paramView.donateMsg.jumpUrl;
-      localObject = new Intent(VIPDonateMsgItemBuilder.a(this.a), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramView);
-      VIPDonateMsgItemBuilder.a(this.a).startActivity((Intent)localObject);
-      return;
-    }
-    QLog.e("VIPDonateMsgItemBuilder", 1, "donatemsg jumpurl empty");
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, true);
   }
 }
 

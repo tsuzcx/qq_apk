@@ -1,33 +1,20 @@
-import android.os.Bundle;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.struct.KingMomentInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicSocial;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class lyi
-  extends ReadInJoyObserver
+  implements View.OnClickListener
 {
-  public lyi(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public lyi(FeedItemCellTypeTopicSocial paramFeedItemCellTypeTopicSocial) {}
   
-  public void a(int paramInt, KingMomentInfo paramKingMomentInfo)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) && (ReadInJoyDeliverVideoActivity.a(this.a)))
-    {
-      ReadInJoyDeliverVideoActivity.a(this.a, new Bundle());
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_cover_url", paramKingMomentInfo.h);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_url", paramKingMomentInfo.g);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_title", paramKingMomentInfo.jdField_d_of_type_JavaLangString);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_uuid", paramKingMomentInfo.f);
-      ReadInJoyDeliverVideoActivity.a(this.a).putLong("arg_video_duration", paramKingMomentInfo.jdField_a_of_type_Long);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_width", paramKingMomentInfo.c);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_height", paramKingMomentInfo.jdField_b_of_type_Int);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_width", paramKingMomentInfo.e);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_height", paramKingMomentInfo.jdField_d_of_type_Int);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_topic_id", paramKingMomentInfo.jdField_a_of_type_Int + "");
-      ReadInJoyDeliverVideoActivity.a(this.a).setHint("#" + paramKingMomentInfo.jdField_a_of_type_JavaLangString + "#");
-      ReadInJoyDeliverVideoActivity.a(this.a, paramKingMomentInfo.jdField_b_of_type_JavaLangString);
-      ReadInJoyDeliverVideoActivity.a(this.a, true);
-      ReadInJoyDeliverVideoActivity.a(this.a, paramKingMomentInfo.h);
+    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (paramView != null) {
+      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
   }
 }

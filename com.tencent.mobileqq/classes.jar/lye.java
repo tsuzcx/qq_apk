@@ -1,24 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicRecommendBig;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class lye
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lye(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public lye(FeedItemCellTypeTopicRecommendBig paramFeedItemCellTypeTopicRecommendBig) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(ReadInJoyDeliverUGCActivity.a(this.a))) && (!TextUtils.isEmpty(ReadInJoyDeliverUGCActivity.b(this.a))) && (!ReadInJoyDeliverUGCActivity.a(this.a).equals(ReadInJoyDeliverUGCActivity.b(this.a))))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverUGCActivity", 2, "clearTempFile(image), origin:" + ReadInJoyDeliverUGCActivity.a(this.a) + ", compress:" + ReadInJoyDeliverUGCActivity.b(this.a));
-      }
-      File localFile = new File(ReadInJoyDeliverUGCActivity.b(this.a));
-      if (localFile.exists()) {
-        localFile.delete();
-      }
+    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (paramView != null) {
+      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
   }
 }

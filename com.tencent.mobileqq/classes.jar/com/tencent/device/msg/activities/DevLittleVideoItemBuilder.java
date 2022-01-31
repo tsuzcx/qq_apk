@@ -60,19 +60,19 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.MobileQQ;
-import qag;
-import qah;
-import qai;
-import qaj;
-import qak;
-import qal;
-import qam;
+import qey;
+import qez;
+import qfa;
+import qfb;
+import qfc;
+import qfd;
+import qfe;
 
 public class DevLittleVideoItemBuilder
   extends ShortVideoRealItemBuilder
   implements DeviceAVFileMsgObserver.DevMsgViewCallback
 {
-  private EncodeVideoTask.ResultListener jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener = new qah(this);
+  private EncodeVideoTask.ResultListener jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener = new qez(this);
   private MessageForShortVideo jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
   
   public DevLittleVideoItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
@@ -234,7 +234,7 @@ public class DevLittleVideoItemBuilder
           }
           a(paramOnLongClickAndTouchListener, paramChatMessage);
           a((MessageForShortVideo)localObject, paramBaseChatItemLayout, ((MessageForDevLittleVideo)localObject).videoFileProgress, false);
-          ThreadManager.postImmediately(new qag(this, (MessageForDevLittleVideo)localObject), null, true);
+          ThreadManager.postImmediately(new qey(this, (MessageForDevLittleVideo)localObject), null, true);
         }
       }
     }
@@ -345,16 +345,16 @@ public class DevLittleVideoItemBuilder
     if (localMessageForDevLittleVideo.isSendFromLocal())
     {
       localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-      localActionSheet.a(2131433635, 5);
-      localActionSheet.c(2131433015);
-      localActionSheet.a(new qai(this, localMessageForDevLittleVideo, paramView, localActionSheet));
+      localActionSheet.a(2131433649, 5);
+      localActionSheet.c(2131433029);
+      localActionSheet.a(new qfa(this, localMessageForDevLittleVideo, paramView, localActionSheet));
       localActionSheet.show();
       return;
     }
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-    localActionSheet.a(2131433633, 5);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new qaj(this, localMessageForDevLittleVideo, paramView, localActionSheet));
+    localActionSheet.a(2131433647, 5);
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new qfb(this, localMessageForDevLittleVideo, paramView, localActionSheet));
     localActionSheet.show();
   }
   
@@ -455,7 +455,7 @@ public class DevLittleVideoItemBuilder
   
   public void a(MessageForDevLittleVideo paramMessageForDevLittleVideo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qak(this, paramMessageForDevLittleVideo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qfc(this, paramMessageForDevLittleVideo));
   }
   
   protected boolean a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout)
@@ -476,7 +476,7 @@ public class DevLittleVideoItemBuilder
     if (paramMessageForDevLittleVideo.isSendFromLocal()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qal(this, paramMessageForDevLittleVideo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qfd(this, paramMessageForDevLittleVideo));
   }
   
   public void c(MessageForDevLittleVideo paramMessageForDevLittleVideo)
@@ -484,7 +484,7 @@ public class DevLittleVideoItemBuilder
     if (paramMessageForDevLittleVideo.isSendFromLocal()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qam(this, paramMessageForDevLittleVideo));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new qfe(this, paramMessageForDevLittleVideo));
   }
   
   public void onClick(View paramView)

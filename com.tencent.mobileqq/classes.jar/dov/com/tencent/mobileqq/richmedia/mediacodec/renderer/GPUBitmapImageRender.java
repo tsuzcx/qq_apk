@@ -99,7 +99,7 @@ public class GPUBitmapImageRender
     //   89: invokevirtual 88	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBitmapImageRender:a	(Landroid/graphics/Bitmap;Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;)Landroid/graphics/Bitmap;
     //   92: astore_1
     //   93: aload_2
-    //   94: invokevirtual 90	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter:c	()V
+    //   94: invokevirtual 90	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter:d	()V
     //   97: aload_0
     //   98: getfield 71	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBitmapImageRender:jdField_a_of_type_DovComTencentMobileqqShortvideoFilterQQEncodeFilterRender	Ldov/com/tencent/mobileqq/shortvideo/filter/QQEncodeFilterRender;
     //   101: invokevirtual 91	dov/com/tencent/mobileqq/shortvideo/filter/QQEncodeFilterRender:a	()V
@@ -203,11 +203,11 @@ public class GPUBitmapImageRender
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.c();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.d();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.o();
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.q();
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
       this.c = QQFilterRenderManagerHolder.jdField_a_of_type_Int;
     }

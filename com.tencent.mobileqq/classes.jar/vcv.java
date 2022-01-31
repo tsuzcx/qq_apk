@@ -1,32 +1,30 @@
-import android.os.SystemClock;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.PokeEmoItemBuilder;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class vcv
-  implements ActionSheet.OnButtonClickListener
+class vcv
+  implements Animation.AnimationListener
 {
-  public vcv(PokeEmoItemBuilder paramPokeEmoItemBuilder, MessageForPokeEmo paramMessageForPokeEmo, ActionSheet paramActionSheet) {}
+  vcv(vcu paramvcu) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationEnd " + paramAnimation);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      long l;
-      do
-      {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.c < 500L);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.c = l;
-      ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationRepeat " + paramAnimation);
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationStart " + paramAnimation);
     }
   }
 }

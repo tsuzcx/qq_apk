@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import aobz;
+import aoku;
 import com.tencent.widget.XEditTextEx;
 import com.tribe.async.dispatch.IEventReceiver;
 
@@ -29,14 +29,14 @@ public class QQStoryAddVideoLabelViewPart
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131364188));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372062));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)paramView.findViewById(2131372064));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131364213));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372070));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)paramView.findViewById(2131372072));
     paramView = new SpannableString("其他人可以通过话题发现你的视频");
     paramView.setSpan(new AbsoluteSizeSpan(14, true), 0, paramView.length(), 33);
     this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setHint(paramView);
     this.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(new QQStoryAddVideoLabelViewPart.EditTextWatcher(this));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new aobz(this));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new aoku(this));
   }
   
   public int a()

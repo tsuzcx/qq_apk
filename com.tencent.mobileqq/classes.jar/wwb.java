@@ -1,35 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class wwb
-  implements View.OnClickListener
+  extends QZoneObserver
 {
-  public wwb(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public wwb(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    if (!CameraPreviewActivity.a(this.a))
+    if ((paramBoolean1) && (paramBoolean2))
     {
-      if (this.a.b) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
       }
-      if (!this.a.b) {
-        break label92;
-      }
-      StatisticConstants.d();
+      if ((this.a.a != null) && (this.a.a.app != null)) {}
     }
-    for (;;)
+    else
     {
-      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
-      paramView.setClickable(false);
       return;
-      label92:
-      StatisticConstants.b();
     }
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    if (!GuardManager.a.a()) {
+      ThreadManager.post(new wwc(this, localQQAppInterface), 8, null, false);
+    }
+    this.a.g();
   }
 }
 

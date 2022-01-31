@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
-public class uhz
-  implements TabBarView.OnTabChangeListener
+class uhz
+  implements Runnable
 {
-  public uhz(VisitorsActivity paramVisitorsActivity) {}
+  uhz(uhy paramuhy) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void run()
   {
-    this.a.a(paramInt2);
+    this.a.a.p.setText(this.a.a.i);
+    this.a.a.p.setContentDescription(this.a.a.i);
+    this.a.a.p.setVisibility(0);
   }
 }
 

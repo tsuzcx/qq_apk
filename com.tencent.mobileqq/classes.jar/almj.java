@@ -1,131 +1,102 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.controller.QidianBusinessObserver;
-import com.tencent.qidian.data.QidianCorpInfo;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qidian.data.QidianProfileUiInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.intervideo.now.NowUtil;
+import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
+import com.tencent.open.appcommon.now.download.IDownloadCallback;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import com.tencent.open.downloadnew.DownloadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class almj
-  extends QidianBusinessObserver
+  implements DownloadListener
 {
-  public almj(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public almj(DownloadCenterImpl paramDownloadCenterImpl) {}
   
-  protected void a(boolean paramBoolean, HashMap paramHashMap)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    super.a(paramBoolean, paramHashMap);
-    this.a.a();
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      j = 0;
-      i = j;
-      if (paramHashMap.containsKey("external"))
-      {
-        i = j;
-        if (paramHashMap.get("external") != null)
-        {
-          localQidianExternalInfo = (QidianExternalInfo)paramHashMap.get("external");
-          if (!this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a.equals(localQidianExternalInfo.uin)) {
-            if (QLog.isColorLevel()) {
-              QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo not current uin");
-            }
-          }
-        }
-      }
+    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((IDownloadCallback)localIterator.next()).installSucceed(paramString1, paramString2);
     }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        QidianExternalInfo localQidianExternalInfo;
-        return;
-        int i = j;
-        if (!localQidianExternalInfo.equals(this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo))
-        {
-          this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = localQidianExternalInfo;
-          i = 1;
-        }
-        int j = i;
-        if (paramHashMap.containsKey("ConfigGroupInfo"))
-        {
-          j = i;
-          if (paramHashMap.get("ConfigGroupInfo") != null)
-          {
-            paramHashMap = (QidianProfileUiInfo)paramHashMap.get("ConfigGroupInfo");
-            j = i;
-            if (!paramHashMap.equals(QidianProfileCardActivity.a(this.a)))
-            {
-              QidianProfileCardActivity.a(this.a, paramHashMap);
-              j = 1;
-            }
-          }
-        }
-        if (j != 0)
-        {
-          this.a.c(6);
-          this.a.b();
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo not change");
-      return;
-    }
-    QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo fail");
   }
   
-  protected void d(boolean paramBoolean, HashMap paramHashMap)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    super.d(paramBoolean, paramHashMap);
-    this.a.a();
-    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null) && (paramHashMap.containsKey("corp")) && (paramHashMap.get("corp") != null) && (paramHashMap.containsKey("ConfigGroupInfo")) && (paramHashMap.get("ConfigGroupInfo") != null))
-    {
-      localQidianExternalInfo = (QidianExternalInfo)paramHashMap.get("external");
-      localQidianCorpInfo = (QidianCorpInfo)paramHashMap.get("corp");
-      paramHashMap = (QidianProfileUiInfo)paramHashMap.get("ConfigGroupInfo");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a.equals(localQidianExternalInfo.uin)) {
-        if ((!localQidianExternalInfo.equals(this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo)) || (!localQidianCorpInfo.equals(QidianProfileCardActivity.a(this.a))) || (!paramHashMap.equals(QidianProfileCardActivity.a(this.a))))
-        {
-          i = 1;
-          if (i == 0) {
-            break label230;
-          }
-          this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = localQidianExternalInfo;
-          QidianProfileCardActivity.a(this.a, localQidianCorpInfo);
-          QidianProfileCardActivity.a(this.a, paramHashMap);
-          this.a.c(1);
-          this.a.b();
-        }
-      }
+    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((IDownloadCallback)localIterator.next()).onDownloadCancel(paramDownloadInfo);
     }
-    label230:
-    while (!QLog.isColorLevel())
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((IDownloadCallback)localIterator.next()).onDownloadError(paramDownloadInfo, paramInt1, paramString, paramInt2);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if (NowUtil.a(paramDownloadInfo.k, paramDownloadInfo.b, paramDownloadInfo.d))
     {
-      do
+      if (!NowUtil.b().equals(paramDownloadInfo.k))
       {
-        do
-        {
-          for (;;)
-          {
-            QidianExternalInfo localQidianExternalInfo;
-            QidianCorpInfo localQidianCorpInfo;
-            return;
-            int i = 0;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo not change");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo not current uin");
-      return;
+        NowUtil.a(paramDownloadInfo.k);
+        paramDownloadInfo.k = NowUtil.b();
+      }
+      DownloadManager.a().e(paramDownloadInfo);
     }
-    QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo fail");
+    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((IDownloadCallback)localIterator.next()).onDownloadFinish(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((IDownloadCallback)localIterator.next()).onDownloadPause(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadUpdate(List paramList)
+  {
+    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((IDownloadCallback)localIterator.next()).onDownloadUpdate(paramList);
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((IDownloadCallback)localIterator.next()).onDownloadWait(paramDownloadInfo);
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((IDownloadCallback)localIterator.next()).packageReplaced(paramString1, paramString2);
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((IDownloadCallback)localIterator.next()).uninstallSucceed(paramString1, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     almj
  * JD-Core Version:    0.7.0.1
  */

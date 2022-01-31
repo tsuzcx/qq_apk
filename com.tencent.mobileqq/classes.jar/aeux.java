@@ -1,18 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeux
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public aeux(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  public aeux(NearbyProxy paramNearbyProxy) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((SmallVideoSendFragment.a(this.a)) && (paramMotionEvent.getY() > UITools.a(this.a.a(), 131.0F))) {}
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyProxy", 2, "receive msg_notify_new_msg in Main,updateNearbyNumAppinfo start..");
+    }
+    ((RedTouchManager)this.a.a.getManager(35)).a = true;
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = NearbyMineHelper.a(this.a.a, true);
+    this.a.a(4102, new Object[] { localAppInfo });
   }
 }
 

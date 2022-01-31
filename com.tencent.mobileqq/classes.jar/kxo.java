@@ -1,21 +1,14 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import android.animation.ValueAnimator;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class kxo
-  extends ContentObserver
+  implements Runnable
 {
-  public kxo(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public kxo(VideoCoverView paramVideoCoverView) {}
   
-  public void onChange(boolean paramBoolean)
+  public void run()
   {
-    super.onChange(paramBoolean);
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
-      ReadInJoyNativeAdAppVideoView.a(this.a).post(new kxp(this));
-    }
+    VideoCoverView.a(this.a).start();
   }
 }
 

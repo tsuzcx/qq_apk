@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.mobileqq.app.qim.QIMUndecideNotifyDialog;
+import java.util.ArrayList;
 
 class aaci
-  implements Runnable
+  implements View.OnClickListener
 {
-  aaci(aacf paramaacf) {}
+  aaci(aach paramaach, ArrayList paramArrayList, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArConfigService.e(this.a.a);
+    StoryPlayVideoActivity.a(this.jdField_a_of_type_Aach.a.a, paramView, this.jdField_a_of_type_JavaUtilArrayList, null, this.jdField_a_of_type_Int, 120, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaci
  * JD-Core Version:    0.7.0.1
  */

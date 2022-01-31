@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import akci;
+import akjw;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -193,7 +193,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839132);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839147);
       if ((localBitmap1 != null) && (BaseApplicationImpl.sImageCache != null)) {
         BaseApplicationImpl.sImageCache.put("static://DefaultFace", localBitmap1);
       }
@@ -221,7 +221,7 @@ public class ImageUtil
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject2 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130843427), 10.0F, 70, 70);
+        localObject2 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130843461), 10.0F, 70, 70);
         localObject1 = localObject2;
         if (localObject2 != null)
         {
@@ -250,7 +250,7 @@ public class ImageUtil
           }
           localObject1 = localObject2;
         } while (localObject2 != null);
-        localObject2 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130843427), 70, 70);
+        localObject2 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130843461), 70, 70);
         localObject1 = localObject2;
       } while (localObject2 == null);
       localObject1 = localObject2;
@@ -1320,7 +1320,7 @@ public class ImageUtil
   
   public static String a(Context paramContext, Uri paramUri)
   {
-    Object localObject = AppConstants.aJ + "thumb/";
+    Object localObject = AppConstants.aK + "thumb/";
     if (paramUri == null) {
       paramContext = "";
     }
@@ -1352,7 +1352,7 @@ public class ImageUtil
       do
       {
         return paramContext;
-        localObject = AppConstants.aJ + "thumb/";
+        localObject = AppConstants.aK + "thumb/";
         paramContext = paramString;
       } while (paramString.startsWith((String)localObject));
       paramContext = paramString.substring(paramString.lastIndexOf("/") + 1);
@@ -1382,7 +1382,7 @@ public class ImageUtil
     }
     localObject = paramString.substring(paramString.lastIndexOf("/") + 1);
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(AppConstants.aJ).append("photo/");
+    localStringBuffer.append(AppConstants.aK).append("photo/");
     if (NetworkUtil.a(paramContext)) {
       localStringBuffer.append("WIFI");
     }
@@ -2804,12 +2804,12 @@ public class ImageUtil
     //   1721: astore_1
     //   1722: goto -335 -> 1387
     //   1725: astore_3
-    //   1726: aload_1
+    //   1726: aload_2
     //   1727: astore_3
-    //   1728: aload_2
-    //   1729: astore_1
+    //   1728: aload_1
+    //   1729: astore_2
     //   1730: aload_3
-    //   1731: astore_2
+    //   1731: astore_1
     //   1732: goto -345 -> 1387
     //   1735: astore_3
     //   1736: aload 13
@@ -3308,7 +3308,7 @@ public class ImageUtil
   private static void a(String paramString, Context paramContext, boolean paramBoolean)
   {
     if ((paramContext != null) && ((paramContext instanceof BaseActivity))) {
-      ThreadManager.post(new akci((QQAppInterface)((BaseActivity)paramContext).getAppRuntime(), paramString, paramBoolean), 2, null, false);
+      ThreadManager.post(new akjw((QQAppInterface)((BaseActivity)paramContext).getAppRuntime(), paramString, paramBoolean), 2, null, false);
     }
   }
   
@@ -3574,7 +3574,7 @@ public class ImageUtil
     //   29: new 49	java/lang/StringBuilder
     //   32: dup
     //   33: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   36: getstatic 685	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
+    //   36: getstatic 685	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
     //   39: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: ldc_w 1255
     //   45: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -5725,7 +5725,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839194);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839211);
       if ((localBitmap1 != null) && (BaseApplicationImpl.sImageCache != null)) {
         BaseApplicationImpl.sImageCache.put("static://DefaultPhoneContactFace", localBitmap1);
       }
@@ -5753,7 +5753,7 @@ public class ImageUtil
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130841588);
+        localObject2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130841615);
         localObject1 = localObject2;
         if (localObject2 != null)
         {
@@ -5782,7 +5782,7 @@ public class ImageUtil
           }
           localObject1 = localObject2;
         } while (localObject2 != null);
-        localObject2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130841586);
+        localObject2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130841613);
         localObject1 = localObject2;
       } while (localObject2 == null);
       localObject1 = localObject2;
@@ -6137,7 +6137,7 @@ public class ImageUtil
   
   public static String b(Context paramContext, String paramString, int paramInt)
   {
-    String str = AppConstants.aJ + "photo/" + String.valueOf(System.currentTimeMillis()) + ".jpg";
+    String str = AppConstants.aK + "photo/" + String.valueOf(System.currentTimeMillis()) + ".jpg";
     int j = 600;
     int i = 800;
     try
@@ -6818,7 +6818,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839133);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839148);
       if ((localBitmap1 != null) && (BaseApplicationImpl.sImageCache != null)) {
         BaseApplicationImpl.sImageCache.put("static://DefaultFace140_140", localBitmap1);
       }
@@ -7128,7 +7128,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839279), 50, 50);
+      localBitmap1 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839298), 50, 50);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -7157,7 +7157,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839280), 50, 50);
+      localBitmap1 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839299), 50, 50);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -7182,7 +7182,7 @@ public class ImageUtil
     if (localObject1 == null) {}
     try
     {
-      localObject2 = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130838543);
+      localObject2 = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130838549);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -7212,7 +7212,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846119);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846201);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -7236,7 +7236,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839206);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839225);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {

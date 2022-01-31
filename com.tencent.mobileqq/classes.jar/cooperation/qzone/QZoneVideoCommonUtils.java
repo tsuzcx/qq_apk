@@ -187,7 +187,7 @@ public class QZoneVideoCommonUtils
         }
         else
         {
-          str = paramActivity.getString(2131432802);
+          str = paramActivity.getString(2131432816);
         }
         if (paramonForwardVideoActivityFailedListener != null) {
           paramonForwardVideoActivityFailedListener.onFail(paramActivity, str);
@@ -228,7 +228,7 @@ public class QZoneVideoCommonUtils
         }
         else
         {
-          paramBundle = paramActivity.getString(2131432802);
+          paramBundle = paramActivity.getString(2131432816);
         }
         if (paramonForwardVideoActivityFailedListener != null) {
           paramonForwardVideoActivityFailedListener.onFail(paramActivity, paramBundle);

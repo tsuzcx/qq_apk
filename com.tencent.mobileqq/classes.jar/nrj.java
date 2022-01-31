@@ -1,15 +1,40 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class nrj
+public final class nrj
+  implements ActionSheet.OnButtonClickListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  public nrj(QQUserUIItem paramQQUserUIItem, ActionSheet paramActionSheet) {}
   
-  nrj(nri paramnri) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq)) {
+        new ReportEvilToXinanHandler().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      SLog.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
+    }
+  }
 }
 
 

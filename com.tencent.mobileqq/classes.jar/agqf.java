@@ -1,47 +1,28 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Interpolator;
 
 public class agqf
-  extends CardObserver
+  implements Interpolator
 {
-  public agqf(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  public float getInterpolation(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "user binding shoppingNo = " + paramString1 + "Threadid=" + Thread.currentThread().getId());
+    if (paramFloat < 0.2094D) {
+      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
     }
-    if ((this.a.app == null) || (this.a.isFinishing())) {}
-    do
-    {
-      return;
-      this.a.app.removeObserver(this);
-      this.a.b = null;
-    } while (!paramBoolean);
-    if ("0".equals(paramString1))
-    {
-      paramString1 = this.a.a;
-      paramString2 = this.a.a;
-      paramString1 = paramString1.getSharedPreferences("is_binding_shop", 1).edit();
-      paramString1.putBoolean(this.a.e, false);
-      paramString1.commit();
-      return;
+    if (paramFloat < 0.404D) {
+      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
     }
-    paramString1 = this.a.a;
-    paramString2 = this.a.a;
-    paramString1 = paramString1.getSharedPreferences("is_binding_shop", 1).edit();
-    paramString1.putBoolean(this.a.e, true);
-    paramString1.commit();
+    if (paramFloat < 0.6045D) {
+      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
+    }
+    if (paramFloat < 0.8064D) {
+      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
+    }
+    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,47 @@
-import com.tencent.mobileqq.activity.bless.BlessBaseActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class wex
-  extends MessageObserver
+  extends FriendListObserver
 {
-  public wex(BlessBaseActivity paramBlessBaseActivity) {}
+  public wex(TroopChatPie paramTroopChatPie) {}
   
-  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1);
-    }
-    this.a.a();
-    if (!this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    if (paramInt == 67L)
+    int i;
+    if (QLog.isColorLevel())
     {
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.a(paramLong);
-      QQToast.a(this.a.app.getApp(), 2131438285, 1).a();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "onSendBlessMsgResp failed:" + paramInt + " waitTime=" + paramLong);
-      }
-      this.a.b(paramBoolean1);
-      return;
-      if (!paramBoolean1) {
-        QQToast.a(this.a.app.getApp(), 2131438286, 1).a();
+      StringBuilder localStringBuilder = new StringBuilder().append("onSetGenralSettingsTroopFilter: isSuc = ").append(paramBoolean).append(", size = ");
+      if (paramMap == null)
+      {
+        i = 0;
+        QLog.d("Q.aio.TroopChatPie", 2, i);
       }
     }
+    else
+    {
+      if ((paramMap != null) && (paramMap.size() != 0)) {
+        break label74;
+      }
+    }
+    label74:
+    while (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())
+    {
+      return;
+      i = paramMap.size();
+      break;
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131434529), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131434530), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aipb;
+import aiue;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
 import com.tencent.mobileqq.app.MessageObserver;
@@ -59,7 +59,7 @@ public class C2CPttUploadProcessor
   implements INetEventHandler, VoiceChangeParams.IOnCompressFinish
 {
   private long jdField_a_of_type_Long;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aipb(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aiue(this);
   WeakReference jdField_a_of_type_MqqUtilWeakReference = new WeakReference((QQAppInterface)this.a);
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
@@ -371,7 +371,7 @@ public class C2CPttUploadProcessor
           break label511;
         }
         g();
-        an_();
+        ap_();
         return;
         a(this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo, paramNetResp, false);
         a(-9527, "", a(this.jdField_i_of_type_JavaLangString, this.jdField_f_of_type_Int), this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo);
@@ -430,7 +430,7 @@ public class C2CPttUploadProcessor
       {
         this.jdField_d_of_type_Boolean = true;
         m();
-        an_();
+        ap_();
         return;
       }
       a(this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo, paramNetResp, false);
@@ -503,7 +503,7 @@ public class C2CPttUploadProcessor
             this.jdField_a_of_type_JavaUtilArrayList = paramRichProtoReq.jdField_a_of_type_JavaUtilArrayList;
             this.jdField_s_of_type_Long = 0L;
             this.t = paramRichProtoReq.jdField_a_of_type_Int;
-            an_();
+            ap_();
           }
         }
         else {
@@ -671,9 +671,9 @@ public class C2CPttUploadProcessor
     }
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     if (!this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.l)
     {
       if (VoiceChangeManager.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_i_of_type_JavaLangString, this)) {
@@ -993,7 +993,7 @@ public class C2CPttUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPttUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

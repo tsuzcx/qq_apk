@@ -36,7 +36,7 @@ public class HotWordForSubTipsContainer
     Button localButton = new Button(getContext());
     if (paramInt1 == 0)
     {
-      localButton.setBackgroundResource(2130845422);
+      localButton.setBackgroundResource(2130845503);
       GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
       if (paramInt3 == 0) {
         break label172;

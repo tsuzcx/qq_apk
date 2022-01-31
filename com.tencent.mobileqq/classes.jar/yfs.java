@@ -1,29 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
 
-public class yfs
-  implements Animation.AnimationListener
+class yfs
+  implements DialogInterface.OnClickListener
 {
-  public yfs(SpecailCareListActivity paramSpecailCareListActivity) {}
+  yfs(yfp paramyfp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.leftView.clearAnimation();
-    this.a.a.clearAnimation();
-    this.a.leftView.setVisibility(4);
-    this.a.a.setVisibility(8);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText("完成");
-    this.a.rightViewText.setContentDescription("完成 按钮");
-    this.a.c = true;
+    this.a.a.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

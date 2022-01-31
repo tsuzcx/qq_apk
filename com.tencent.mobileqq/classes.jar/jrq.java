@@ -1,20 +1,19 @@
-import com.tencent.av.ui.ConferenceFlyTicketActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.av.ui.AVActivity;
 
 public class jrq
   implements Runnable
 {
-  public jrq(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity, String paramString) {}
+  public jrq(AVActivity paramAVActivity) {}
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.finish();
+    ((TextView)this.a.findViewById(2131365846)).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jrq
  * JD-Core Version:    0.7.0.1
  */

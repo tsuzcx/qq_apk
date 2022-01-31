@@ -1,15 +1,15 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import java.util.TimerTask;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Condition;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
+import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
 
 public class ofj
-  extends TimerTask
+  implements LocalVideoPusher.Condition
 {
-  private ofj(EditVideoMusic paramEditVideoMusic) {}
+  public ofj(LocalVideoPushSegment paramLocalVideoPushSegment) {}
   
-  public void run()
+  public boolean a()
   {
-    this.a.a.sendEmptyMessage(1001);
+    return StoryPublishLauncher.b();
   }
 }
 

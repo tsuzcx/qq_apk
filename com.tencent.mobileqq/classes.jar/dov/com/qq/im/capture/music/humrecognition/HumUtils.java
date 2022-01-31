@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.music.humrecognition;
 
 import android.text.TextUtils;
-import anmg;
-import anmh;
+import anut;
+import anuu;
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
@@ -67,7 +67,7 @@ public class HumUtils
     FFmpeg localFFmpeg = FFmpeg.a(BaseApplicationImpl.getApplication().getApplicationContext());
     ArrayList localArrayList = new ArrayList();
     localArrayList.add("-formats");
-    localFFmpeg.a((String[])localArrayList.toArray(new String[0]), new anmh());
+    localFFmpeg.a((String[])localArrayList.toArray(new String[0]), new anuu());
   }
   
   public static void a(String paramString1, String paramString2, RecognitionManager paramRecognitionManager)
@@ -92,7 +92,7 @@ public class HumUtils
     localArrayList.add("-acodec");
     localArrayList.add("pcm_s16le");
     localArrayList.add(paramString2);
-    localFFmpeg.a((String[])localArrayList.toArray(new String[0]), new anmg(paramString2, paramRecognitionManager));
+    localFFmpeg.a((String[])localArrayList.toArray(new String[0]), new anut(paramString2, paramRecognitionManager));
   }
   
   public static boolean a()

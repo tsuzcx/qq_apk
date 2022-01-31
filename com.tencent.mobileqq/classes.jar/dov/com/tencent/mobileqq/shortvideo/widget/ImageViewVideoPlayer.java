@@ -10,9 +10,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aoqu;
-import aoqv;
-import aoqw;
+import aozg;
+import aozh;
+import aozi;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -125,7 +125,7 @@ public class ImageViewVideoPlayer
       this.jdField_a_of_type_AndroidGraphicsBitmap = a();
       c();
       e();
-      getHandler().postAtFrontOfQueue(new aoqw(this));
+      getHandler().postAtFrontOfQueue(new aozi(this));
     }
   }
   
@@ -321,7 +321,7 @@ public class ImageViewVideoPlayer
     }
     Handler localHandler = super.getHandler();
     if (localHandler != null) {
-      localHandler.postAtFrontOfQueue(new aoqu(this));
+      localHandler.postAtFrontOfQueue(new aozg(this));
     }
     this.jdField_a_of_type_Int = 4;
   }
@@ -388,7 +388,7 @@ public class ImageViewVideoPlayer
       return;
     }
     this.jdField_c_of_type_Int = 0;
-    getHandler().postAtFrontOfQueue(new aoqv(this, paramInt));
+    getHandler().postAtFrontOfQueue(new aozh(this, paramInt));
   }
   
   public void oneFrameDrawed()

@@ -1,17 +1,28 @@
-import com.tencent.mobileqq.app.message.SubAccountMessageProcessor;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Comparator;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.StartAppCheckHandler;
+import java.util.Queue;
 
 public class ztz
-  implements Comparator
+  extends Handler
 {
-  public ztz(SubAccountMessageProcessor paramSubAccountMessageProcessor) {}
-  
-  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  public ztz(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
   {
-    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (zuc)paramMessage.obj;
+    this.a.a.remove(paramMessage);
+    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

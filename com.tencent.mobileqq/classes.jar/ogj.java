@@ -1,31 +1,23 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
 
 public class ogj
-  implements AbsListView.OnScrollListener
+  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int = 0;
+  public ogj(NewMessageYellowBar paramNewMessageYellowBar) {}
   
-  public ogj(EditVideoPoiSearch paramEditVideoPoiSearch) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 1) {
-      InputMethodUtil.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a().a());
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a.size())) {
-      return;
-    }
-    EditVideoPoiSearch.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch);
+    this.a.setVisibility(8);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.a.a.setAlpha(1.0F);
   }
 }
 

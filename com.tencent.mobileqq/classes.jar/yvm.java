@@ -1,25 +1,34 @@
-import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
-import com.tencent.TMG.sdk.AVContext.StartParam;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineStartParams;
-import com.tencent.mobileqq.apollo.tmg_opensdk.SSOChannel;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.mobileqq.apollo.process.sso.CmGameObserver;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.PBuffer.SSOTunnelEvent.CsCmdCallback;
+import org.json.JSONObject;
 
 public class yvm
-  implements SSOTunnelEvent.CsCmdCallback
+  extends CmGameObserver
 {
-  public yvm(SSOChannel paramSSOChannel, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback) {}
+  public yvm(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
   
-  public void a(int paramInt, String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.e(SSOChannel.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onError  identifier=" + this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((AVEngineStartParams)this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((AVEngineStartParams)this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + this.jdField_a_of_type_ArrayOfByte.length + ", s info=" + paramString);
-    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onError(paramInt, paramString);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    QLog.e(SSOChannel.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onSuccess  startParam_.identifier=" + this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((AVEngineStartParams)this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((AVEngineStartParams)this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + paramArrayOfByte.length + ", bytes.length=" + this.jdField_a_of_type_ArrayOfByte.length);
-    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onSuccess(paramArrayOfByte);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (paramObject == null);
+    try
+    {
+      paramObject = new JSONObject(paramObject.toString());
+      paramInt = paramObject.optInt("errCode");
+      paramObject.remove("errCode");
+      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
+      return;
+    }
+    catch (Throwable paramObject)
+    {
+      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
+    }
   }
 }
 

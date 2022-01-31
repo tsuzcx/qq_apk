@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
 
 public class yvv
-  implements Comparator
+  implements Runnable
 {
-  public yvv(ApolloDaoManager paramApolloDaoManager) {}
+  public yvv(ApolloGameStateMachine paramApolloGameStateMachine) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void run()
   {
-    if (paramApolloActionData2.limitStart == paramApolloActionData1.limitStart) {
-      return 0;
-    }
-    if (paramApolloActionData2.limitStart > paramApolloActionData1.limitStart) {
-      return 1;
-    }
-    return -1;
+    this.a.a(0);
   }
 }
 

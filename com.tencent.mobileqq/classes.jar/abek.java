@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
 
 public class abek
   implements Runnable
 {
-  public abek(ShopScanActivity paramShopScanActivity) {}
+  public abek(ArkRecommendController paramArkRecommendController, RecommendCommonMessage paramRecommendCommonMessage) {}
   
   public void run()
   {
-    ShopScanActivity.c(this.a);
-    ShopScanActivity.d(this.a);
-    this.a.a.a(false);
+    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) != null)
+    {
+      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, 0);
+      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, 1);
+    }
   }
 }
 

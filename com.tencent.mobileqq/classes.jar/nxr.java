@@ -1,15 +1,20 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter.ItemHolder;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnCheckBoxClickListener;
 
 public class nxr
-  extends LoadingMoreHelper.OnLoadMoreSimpleListener
+  implements View.OnClickListener
 {
-  public nxr(MemoriesVideoListSegment paramMemoriesVideoListSegment) {}
+  public nxr(StoryPickerHorizontalListAdapter.ItemHolder paramItemHolder) {}
   
-  public boolean a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.b();
-    return true;
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (this.a.a.a != null) {
+      this.a.a.a.a(paramView, this.a.a.a(i));
+    }
   }
 }
 

@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.qphone.base.util.QLog;
 
-public final class lae
-  implements Parcelable.Creator
+public class lae
+  implements Runnable
 {
-  public RecentShopParcel a(Parcel paramParcel)
-  {
-    return new RecentShopParcel(paramParcel);
-  }
+  public lae(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public RecentShopParcel[] a(int paramInt)
+  public void run()
   {
-    return new RecentShopParcel[paramInt];
+    try
+    {
+      boolean bool = SubscriptRecommendController.a(this.a.a, false, this.a.g);
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

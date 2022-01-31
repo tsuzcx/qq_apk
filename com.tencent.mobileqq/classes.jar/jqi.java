@@ -1,20 +1,24 @@
-import android.os.Handler;
-import com.tencent.av.ui.BaseCallbackUI;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class jqi
+class jqi
   implements Runnable
 {
-  public jqi(BaseCallbackUI paramBaseCallbackUI) {}
+  jqi(jqh paramjqh, long paramLong) {}
   
   public void run()
   {
-    BaseCallbackUI.a(this.a, this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(BaseCallbackUI.a(this.a), 400L);
+    if ((this.jdField_a_of_type_Jqh.a.a() == this.jdField_a_of_type_Long) && (!this.jdField_a_of_type_Jqh.a.a.getApp().getApplicationContext().getSharedPreferences("qav_SP", 0).getBoolean("kick_out_self", false))) {
+      this.jdField_a_of_type_Jqh.a.f(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqi
  * JD-Core Version:    0.7.0.1
  */

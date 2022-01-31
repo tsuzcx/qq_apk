@@ -1,16 +1,36 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper.NewApkInfo;
+import com.tencent.mobileqq.utils.SPSettings;
 
-class zir
+public class zir
   implements Runnable
 {
-  zir(ziq paramziq) {}
+  public zir(ConfigHandler paramConfigHandler) {}
   
   public void run()
   {
-    if (this.a.a.b)
+    Object localObject = UpgradeController.a().a();
+    if ((localObject == null) || (((UpgradeDetailWrapper)localObject).a == null)) {
+      return;
+    }
+    boolean bool = SPSettings.b();
+    int i = SPSettings.b();
+    int j = ((UpgradeDetailWrapper)localObject).a.a;
+    if ((bool) && (j == i)) {}
+    for (i = 1;; i = 0)
     {
-      this.a.a.b = false;
-      this.a.a();
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (i != 0) {
+        break;
+      }
+      UpgradeController.a().a((QQAppInterface)localObject, true);
+      SPSettings.b(j);
+      SPSettings.b(true);
+      return;
     }
   }
 }

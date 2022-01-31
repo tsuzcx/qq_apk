@@ -11,7 +11,7 @@ import com.tencent.biz.qqstory.storyHome.model.HomeFeedAllInfoPullSegment;
 import com.tencent.biz.qqstory.storyHome.model.HomeFeedData;
 import com.tribe.async.async.JobSegment;
 import java.util.List;
-import nws;
+import obh;
 
 public class MemoriesFeedListPageLoader
   extends FeedListPageLoaderBase
@@ -44,7 +44,7 @@ public class MemoriesFeedListPageLoader
   
   protected JobSegment a(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
   {
-    return new nws(paramFeedIdListCache);
+    return new obh(paramFeedIdListCache);
   }
   
   protected void a(List paramList, boolean paramBoolean)

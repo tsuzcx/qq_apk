@@ -1,13 +1,29 @@
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
 
-public class anbv
-  implements Runnable
+public final class anbv
+  implements Parcelable.Creator
 {
-  public anbv(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
-  
-  public void run()
+  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
   {
-    QZoneSharePictureJsPlugin.c(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
+    if (paramParcel != null)
+    {
+      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.c = paramParcel.readDouble();
+      localGameCoverInfo.d = paramParcel.readDouble();
+      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    }
+    return localGameCoverInfo;
+  }
+  
+  public CoverCacheData.GameCoverInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

@@ -1,21 +1,15 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qrcode.ipc.VoiceScan;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-class ouy
-  implements ClickableColorSpanTextView.SpanClickListener
+public class ouy
+  implements Handler.Callback
 {
-  ouy(oux paramoux) {}
+  public ouy(SegmentList paramSegmentList) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramClickableColorSpanTextView = new Intent(VoiceScan.a(this.a.a), QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    VoiceScan.a(this.a.a).startActivity(paramClickableColorSpanTextView);
+    return SegmentList.a(this.a, paramMessage);
   }
 }
 

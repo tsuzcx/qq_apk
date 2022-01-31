@@ -1,28 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.util.Utils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class tkw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  tkw(tkv paramtkv, String paramString) {}
+  tkw(tkv paramtkv) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Tkv.a.a.getTop() > QQSettingMe.a(this.jdField_a_of_type_Tkv.a).getBottom()) {
-      this.jdField_a_of_type_Tkv.a.a.setMaxWidth(QQSettingMe.a(this.jdField_a_of_type_Tkv.a) - QQSettingMe.a(this.jdField_a_of_type_Tkv.a).getWidth());
-    }
-    for (;;)
-    {
-      if (!Utils.a(this.jdField_a_of_type_JavaLangString, QQSettingMe.a(this.jdField_a_of_type_Tkv.a)))
-      {
-        QQSettingMe.a(this.jdField_a_of_type_Tkv.a, this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Tkv.a.a.setText(QQSettingMe.a(this.jdField_a_of_type_Tkv.a));
-      }
-      return;
-      this.jdField_a_of_type_Tkv.a.a.setMaxWidth(QQSettingMe.a(this.jdField_a_of_type_Tkv.a));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

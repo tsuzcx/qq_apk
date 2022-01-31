@@ -1,48 +1,48 @@
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class acjz
-  implements OnCompositionLoadedListener
+class acjz
+  implements Runnable
 {
-  public acjz(ExtendFriendVoiceView paramExtendFriendVoiceView) {}
+  acjz(acjg paramacjg, String paramString, Bundle paramBundle, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void run()
   {
-    int m = AIOUtils.a(19.0F, this.a.getResources());
-    int k = AIOUtils.a(19.0F, this.a.getResources());
-    int j = k;
-    int i = m;
-    if (ExtendFriendVoiceView.a(this.a) == 2)
+    try
     {
-      i = (int)(m * 0.8F);
-      j = (int)(k * 0.8F);
-    }
-    if (paramLottieComposition == null)
-    {
-      QLog.e("ExtendFriendVoiceView", 1, "onCompositionLoaded lottieComposition is null");
+      Object localObject2 = new JSONObject(this.jdField_a_of_type_JavaLangString).getJSONArray("gameList");
+      Object localObject1 = new ArrayList();
+      if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
+      {
+        int i = 0;
+        while (i < ((JSONArray)localObject2).length())
+        {
+          ((ArrayList)localObject1).add(Integer.valueOf(((JSONArray)localObject2).getInt(i)));
+          i += 1;
+        }
+        localObject2 = new acka(this);
+        ApolloGameManager localApolloGameManager = (ApolloGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(210);
+        localApolloGameManager.a = new WeakReference(localObject2);
+        localApolloGameManager.a("android.web", "apollo_aio_game.del_games_from_user_gamepanel", (ArrayList)localObject1);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        ((MqqHandler)localObject1).sendMessage(((MqqHandler)localObject1).obtainMessage(1134054));
+      }
       return;
     }
-    Object localObject = paramLottieComposition.getBounds();
-    float f1 = i / ((Rect)localObject).width();
-    float f2 = j / ((Rect)localObject).height();
-    localObject = new LottieDrawable();
-    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-    ((LottieDrawable)localObject).setScale(f1, f2);
-    ((LottieDrawable)localObject).loop(true);
-    ExtendFriendVoiceView.a(this.a, (LottieDrawable)localObject);
-    ThreadManager.getUIHandler().post(new acka(this));
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acjz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.os.MqqHandler;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.widget.ViewTransformer.ViewTransformerListener;
 
 public class xiq
-  implements View.OnClickListener
+  implements ViewTransformer.ViewTransformerListener
 {
-  public xiq(BannerManager paramBannerManager) {}
+  public xiq(CommonHbFragment paramCommonHbFragment, EditText paramEditText, RelativeLayout paramRelativeLayout) {}
   
-  public void onClick(View paramView)
+  public void OnTransferFinished()
   {
-    paramView = new Intent(BannerManager.a(this.a), TroopAssisSettingActivity.class);
-    BannerManager.a(this.a).startActivityForResult(paramView, 9001);
-    BannerManager.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-    ReportController.b(BannerManager.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
+      this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+    }
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a = false;
   }
 }
 

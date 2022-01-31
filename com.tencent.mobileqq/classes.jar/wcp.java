@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.DiscActiveTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class wcp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wcp(DiscActiveTipsBar paramDiscActiveTipsBar) {}
+  public wcp(PublicAccountChatPie paramPublicAccountChatPie, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    DiscActiveTipsBar.a(this.a).a();
-    ChatActivityUtils.a(DiscActiveTipsBar.a(this.a), DiscActiveTipsBar.a(this.a), DiscActiveTipsBar.a(this.a).jdField_a_of_type_Int, DiscActiveTipsBar.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
-    ReportController.b(DiscActiveTipsBar.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
+    if (PublicAccountChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie) > 0) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.v(this.jdField_a_of_type_Int);
+    }
   }
 }
 

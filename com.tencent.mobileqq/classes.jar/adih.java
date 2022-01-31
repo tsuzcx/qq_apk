@@ -1,167 +1,79 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBaby;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk.RParam;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import cooperation.weiyun.channel.pb.WeiyunPB.FileExtInfo;
+import cooperation.weiyun.channel.pb.WeiyunPB.FileItem;
+import cooperation.weiyun.channel.pb.WeiyunPB.LibInfoListGetMsgRsp;
+import cooperation.weiyun.sdk.api.IWeiyunCallback;
+import cooperation.weiyun.utils.StringUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class adih
-  implements UniformDownloaderAppBaby.IUniformDownloaderAppBabyListener
+  implements IWeiyunCallback
 {
-  public adih(UniformDownloaderAppBaby paramUniformDownloaderAppBaby) {}
+  public adih(WeiYunLogicCenter paramWeiYunLogicCenter, String paramString) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(int paramInt, String paramString, WeiyunPB.LibInfoListGetMsgRsp paramLibInfoListGetMsgRsp)
   {
-    this.a.b(paramInt);
-    if (UniformDownloaderAppBaby.a(this.a) != null)
-    {
-      if (paramInt <= 100) {
-        break label45;
-      }
-      UniformDownloaderAppBaby.a(this.a).b(this.a.h(), paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
     }
-    label45:
-    while (paramInt - this.a.g() <= 0) {
+    WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter).a().a(false, 31, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_JavaLangString });
+  }
+  
+  public void a(WeiyunPB.LibInfoListGetMsgRsp paramLibInfoListGetMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList onSucceed, num[" + paramLibInfoListGetMsgRsp.FileItem_items.size() + "]");
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = paramLibInfoListGetMsgRsp.FileItem_items.get().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (WeiyunPB.FileItem)((Iterator)localObject1).next();
+      WeiYunFileInfo localWeiYunFileInfo = new WeiYunFileInfo();
+      localWeiYunFileInfo.jdField_b_of_type_Long = ((WeiyunPB.FileItem)localObject2).file_mtime.get();
+      localWeiYunFileInfo.jdField_a_of_type_Long = ((WeiyunPB.FileItem)localObject2).file_size.get();
+      localWeiYunFileInfo.jdField_a_of_type_Int = ((WeiyunPB.FileItem)localObject2).ext_info.from_source.get();
+      localWeiYunFileInfo.jdField_a_of_type_JavaLangString = ((WeiyunPB.FileItem)localObject2).file_id.get();
+      localWeiYunFileInfo.jdField_b_of_type_JavaLangString = StringUtils.a(((WeiyunPB.FileItem)localObject2).pdir_key.get());
+      localWeiYunFileInfo.c = ((WeiyunPB.FileItem)localObject2).filename.get();
+      localWeiYunFileInfo.f = ((WeiyunPB.FileItem)localObject2).ext_info.cookie_name.get();
+      localWeiYunFileInfo.g = ((WeiyunPB.FileItem)localObject2).ext_info.cookie_value.get();
+      localWeiYunFileInfo.e = ((WeiyunPB.FileItem)localObject2).ext_info.thumb_url.get();
+      localWeiYunFileInfo.d = ((WeiyunPB.FileItem)localObject2).ext_info.weiyun_host.get();
+      localWeiYunFileInfo.jdField_b_of_type_Int = ((WeiyunPB.FileItem)localObject2).ext_info.weiyun_port.get();
+      localWeiYunFileInfo.i = StringUtils.a(((WeiyunPB.FileItem)localObject2).file_md5.get());
+      localWeiYunFileInfo.j = StringUtils.a(((WeiyunPB.FileItem)localObject2).file_sha.get());
+      if (!WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter).containsKey(localWeiYunFileInfo.jdField_a_of_type_JavaLangString))
+      {
+        WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter).put(localWeiYunFileInfo.jdField_a_of_type_JavaLangString, localWeiYunFileInfo);
+        localArrayList.add(localWeiYunFileInfo);
+      }
+    }
+    localObject1 = WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter).a();
+    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    if (paramLibInfoListGetMsgRsp.finish_flag.get() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((FileManagerNotifyCenter)localObject1).a(true, 31, new Object[] { localObject2, Boolean.valueOf(bool), Integer.valueOf(paramLibInfoListGetMsgRsp.FileItem_items.size()), paramLibInfoListGetMsgRsp.server_version.get(), localArrayList, Integer.valueOf(WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter)) });
       return;
     }
-    this.a.a(paramInt);
-    UniformDownloaderAppBaby.a(this.a).b(paramInt, paramBundle);
   }
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    this.a.c(5);
-    QQAppInterface localQQAppInterface = UniformDownloadMgr.a().a();
-    if (localQQAppInterface != null)
-    {
-      long l1 = -1L;
-      long l2 = -1L;
-      UniformDownloaderAppBabySdk.RParam localRParam = UniformDownloaderAppBabySdk.RParam.a(paramBundle);
-      if (localRParam != null)
-      {
-        l1 = localRParam.jdField_a_of_type_Long;
-        l2 = localRParam.b;
-      }
-      FileManagerUtil.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-      FileManagerUtil.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", paramInt, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-      StatisticAssist.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-0");
-    }
-    for (;;)
-    {
-      if (UniformDownloaderAppBaby.a(this.a) != null) {
-        UniformDownloaderAppBaby.a(this.a).a(paramInt, paramString, paramBundle);
-      }
-      return;
-      QLog.w(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 6");
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (UniformDownloaderAppBaby.a(this.a) != null) {
-      UniformDownloaderAppBaby.a(this.a).a(this.a.h(), null);
-    }
-  }
-  
-  public void a(String paramString, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "] >>>>>>Download SUCCESS. sdk download path=" + paramString);
-    this.a.c(4);
-    if (paramString == null)
-    {
-      QLog.e(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. download success, but filepath = null");
-      a(40, UniformDownloader.a(40), paramBundle);
-    }
-    label783:
-    label821:
-    for (;;)
-    {
-      return;
-      if (FileUtils.a(this.a.e)) {
-        this.a.e = FileManagerUtil.b(this.a.e);
-      }
-      QLog.i(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. try to rename file to path:" + this.a.e);
-      Object localObject;
-      if (!FileUtils.b(new File(paramString), new File(this.a.e)))
-      {
-        QLog.e(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed. temppath=" + paramString + " save path=" + this.a.e);
-        localObject = FileUtil.b(paramString);
-        if (!FileManagerUtil.b().equalsIgnoreCase((String)localObject))
-        {
-          String str = (String)localObject + this.a.d;
-          localObject = str;
-          if (FileUtils.a(str)) {
-            localObject = FileManagerUtil.b(str);
-          }
-          QLog.i(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try to save file to path: " + (String)localObject);
-          if (!FileUtils.b(new File(paramString), new File((String)localObject)))
-          {
-            QLog.e(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed, try failed save path: " + (String)localObject);
-            a(7, UniformDownloader.a(7), paramBundle);
-            return;
-          }
-          this.a.e = ((String)localObject);
-        }
-      }
-      else
-      {
-        QLog.i(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename file success. path:" + this.a.e);
-        paramString = UniformDownloadMgr.a().a();
-        if (paramString == null) {
-          break label783;
-        }
-        long l1 = -1L;
-        long l2 = -1L;
-        localObject = UniformDownloaderAppBabySdk.RParam.a(paramBundle);
-        if (localObject == null) {
-          break label743;
-        }
-        l1 = ((UniformDownloaderAppBabySdk.RParam)localObject).jdField_a_of_type_Long;
-        l2 = ((UniformDownloaderAppBabySdk.RParam)localObject).b;
-        FileManagerUtil.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
-        FileManagerUtil.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfAppBabySdkDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, 0, null);
-        StatisticAssist.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_0");
-      }
-      for (;;)
-      {
-        if (UniformDownloaderAppBaby.a(this.a) == null) {
-          break label821;
-        }
-        UniformDownloaderAppBaby.a(this.a).a(this.a.e, this.a.b, paramBundle);
-        return;
-        QLog.e(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. rename failed 2, try failed save path: " + paramString);
-        a(7, UniformDownloader.a(7), paramBundle);
-        return;
-        label743:
-        QLog.w(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report may failed - 0");
-        break;
-        QLog.i(UniformDownloaderAppBaby.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 7");
-      }
-    }
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    this.a.c(3);
-    if (UniformDownloaderAppBaby.a(this.a) != null) {
-      UniformDownloaderAppBaby.a(this.a).c(this.a.h(), null);
-    }
-  }
-  
-  public void c(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adih
  * JD-Core Version:    0.7.0.1
  */

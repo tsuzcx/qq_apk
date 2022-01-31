@@ -1,37 +1,22 @@
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeak
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public aeak(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeak(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1134006: 
-      case 11340005: 
-        LebaWithFeeds.a(this.a).e();
-        return;
-      case 11340002: 
-        LebaWithFeeds.a(this.a);
-        LebaWithFeeds.a(this.a, true, 3);
-        return;
-      }
-    } while (!LebaWithFeeds.a(this.a));
-    LebaWithFeeds.a(this.a, true, 5);
-    return;
-    LebaWithFeeds.a(this.a, true, 4);
+    PresenceInterfaceImpl.jdField_a_of_type_Boolean = false;
+    PresenceInterfaceImpl.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
+    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
   }
 }
 

@@ -14,8 +14,8 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-import ufe;
-import ufg;
+import ujy;
+import uka;
 
 public class TroopTransferActivity$TroopMemberListAdapter
   extends FacePreloadBaseAdapter
@@ -91,7 +91,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
       this.jdField_a_of_type_JavaUtilArrayList.add(paramArrayList);
       this.jdField_a_of_type_JavaUtilArrayList.addAll(paramContext);
     }
-    ThreadManager.post(new ufe(this, paramTroopTransferActivity), 8, null, false);
+    ThreadManager.post(new ujy(this, paramTroopTransferActivity), 8, null, false);
   }
   
   public TroopTransferActivity.TroopMemberItem a(String paramString)
@@ -163,8 +163,8 @@ public class TroopTransferActivity$TroopMemberListAdapter
     if (i == 0) {
       if (paramView == null)
       {
-        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969056, paramViewGroup, false);
-        paramView = new ufg(null);
+        paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969059, paramViewGroup, false);
+        paramView = new uka(null);
         paramView.c = null;
         paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup);
         paramViewGroup.setTag(paramView);
@@ -172,7 +172,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
         if ((localTroopMemberItem == null) || (localTroopMemberItem.jdField_b_of_type_Int != 1)) {
           break label135;
         }
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131433113);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131433127);
       }
     }
     label256:
@@ -182,14 +182,14 @@ public class TroopTransferActivity$TroopMemberListAdapter
         paramViewGroup.setContentDescription(paramView.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
       return paramViewGroup;
-      Object localObject = (ufg)paramView.getTag();
+      Object localObject = (uka)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
       break;
       label135:
       if ((localTroopMemberItem != null) && (localTroopMemberItem.jdField_b_of_type_Int == 0))
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131435218);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131435234);
       }
       else
       {
@@ -199,12 +199,12 @@ public class TroopTransferActivity$TroopMemberListAdapter
         {
           if (paramView == null)
           {
-            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971681, paramViewGroup, false);
-            paramView.findViewById(2131375342).setVisibility(8);
-            paramView.findViewById(2131375265).setVisibility(8);
-            paramViewGroup = new ufg(null);
-            paramViewGroup.c = ((ImageView)paramView.findViewById(2131364340));
-            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363549));
+            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971710, paramViewGroup, false);
+            paramView.findViewById(2131375401).setVisibility(8);
+            paramView.findViewById(2131375325).setVisibility(8);
+            paramViewGroup = new uka(null);
+            paramViewGroup.c = ((ImageView)paramView.findViewById(2131364365));
+            paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363568));
             paramView.setTag(paramViewGroup);
             paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem = localTroopMemberItem;
             if (localTroopMemberItem == null) {
@@ -231,7 +231,7 @@ public class TroopTransferActivity$TroopMemberListAdapter
             paramView = paramViewGroup;
             paramViewGroup = (ViewGroup)localObject;
             break;
-            paramViewGroup = (ufg)paramView.getTag();
+            paramViewGroup = (uka)paramView.getTag();
             break label256;
             localObject = null;
             break label274;

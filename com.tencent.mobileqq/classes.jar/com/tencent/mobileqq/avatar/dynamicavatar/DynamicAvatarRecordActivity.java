@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abjn;
-import abjo;
-import abjp;
-import abjr;
-import abjt;
-import abju;
-import abjv;
-import abjw;
-import abjx;
-import abjy;
+import abqo;
+import abqp;
+import abqq;
+import abqs;
+import abqu;
+import abqv;
+import abqw;
+import abqx;
+import abqy;
+import abqz;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
@@ -84,6 +84,7 @@ import cooperation.qzone.util.PerfTracer;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+import mqq.os.MqqHandler;
 
 public class DynamicAvatarRecordActivity
   extends FlowActivity
@@ -91,16 +92,16 @@ public class DynamicAvatarRecordActivity
 {
   public int a;
   ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new abjn(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new abqo(this);
   Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new abju(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new abqv(this);
   public Button a;
   public ImageView a;
   public TextView a;
   public RMVideoStateMgr a;
   public CameraCover a;
   public CameraGLSurfaceView a;
-  CameraExceptionHandler.Callback jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraExceptionHandler$Callback = new abjx(this);
+  CameraExceptionHandler.Callback jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraExceptionHandler$Callback = new abqy(this);
   CameraProxy jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy;
   ImageViewVideoPlayer jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer;
   public QQCustomDialog a;
@@ -178,9 +179,9 @@ public class DynamicAvatarRecordActivity
         this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624516);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969178);
       }
-      ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399)).setText(paramString);
+      ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363418)).setText(paramString);
       if (!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
       }
@@ -241,19 +242,19 @@ public class DynamicAvatarRecordActivity
   
   private void e()
   {
-    runOnUiThread(new abjv(this));
+    runOnUiThread(new abqw(this));
   }
   
   private void f()
   {
     e();
     b();
-    ThreadManager.postImmediately(new abjw(this), null, true);
+    ThreadManager.postImmediately(new abqx(this), null, true);
   }
   
   private void g()
   {
-    runOnUiThread(new abjy(this));
+    runOnUiThread(new abqz(this));
   }
   
   /* Error */
@@ -279,11 +280,11 @@ public class DynamicAvatarRecordActivity
     //   36: ldc_w 322
     //   39: iconst_0
     //   40: invokestatic 328	cooperation/qzone/thread/QzoneHandlerThreadFactory:getHandlerThread	(Ljava/lang/String;Z)Lcooperation/qzone/thread/QzoneBaseThread;
-    //   43: new 330	abjz
+    //   43: new 330	abra
     //   46: dup
     //   47: aload_0
     //   48: aload 12
-    //   50: invokespecial 333	abjz:<init>	(Lcom/tencent/mobileqq/avatar/dynamicavatar/DynamicAvatarRecordActivity;Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
+    //   50: invokespecial 333	abra:<init>	(Lcom/tencent/mobileqq/avatar/dynamicavatar/DynamicAvatarRecordActivity;Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
     //   53: invokevirtual 338	cooperation/qzone/thread/QzoneBaseThread:post	(Ljava/lang/Runnable;)V
     //   56: invokestatic 320	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
     //   59: ifeq +220 -> 279
@@ -731,7 +732,7 @@ public class DynamicAvatarRecordActivity
     if (QLog.isDevelopLevel()) {
       QLog.i("DynamicAvatarRecordActivity", 4, "errorOcured(), errCode = " + paramInt + ", errMsg = " + paramString + ", isReport = " + paramBoolean);
     }
-    runOnUiThread(new abjp(this, paramString, paramInt));
+    runOnUiThread(new abqq(this, paramString, paramInt));
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -744,7 +745,7 @@ public class DynamicAvatarRecordActivity
       e();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.post(new abjo(this, paramInt));
+    ThreadManager.getUIHandler().post(new abqp(this, paramInt));
   }
   
   protected void a(Bundle paramBundle)
@@ -788,36 +789,36 @@ public class DynamicAvatarRecordActivity
   
   protected void a(ViewGroup paramViewGroup)
   {
-    getLayoutInflater().inflate(2130970313, paramViewGroup);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover = ((CameraCover)a(2131370019));
+    getLayoutInflater().inflate(2130970328, paramViewGroup);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover = ((CameraCover)a(2131370028));
     paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.getLayoutParams();
     paramViewGroup.height = this.jdField_c_of_type_Int;
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.setLayoutParams(paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131370017));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131370026));
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     this.jdField_a_of_type_AndroidWidgetButton.setTag(Boolean.valueOf(true));
     this.jdField_a_of_type_AndroidWidgetButton.setContentDescription("声音打开");
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)a(2131370018));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)a(2131370027));
     this.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
     ImageView localImageView;
     if (FlowCameraConstant.jdField_a_of_type_Int == 1)
     {
       paramViewGroup = "前";
       this.jdField_b_of_type_AndroidWidgetButton.setContentDescription("当前" + paramViewGroup + "置相机");
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131370027));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131365226));
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer = ((ImageViewVideoPlayer)a(2131364406));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131370021));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131370022));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131370026));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131370023));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131370036));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131365253));
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer = ((ImageViewVideoPlayer)a(2131364431));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131370030));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131370031));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131370035));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131370032));
       this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131370024));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)a(2131370025));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131370033));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)a(2131370034));
       this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492969), 100, getResources().getColor(2131493308));
       this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(6.0F);
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131370026));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131370035));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -1021,7 +1022,7 @@ public class DynamicAvatarRecordActivity
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a("放弃录制，当前视频将会被删除");
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a("放弃", 3);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.d("取消");
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new abjt(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new abqu(this));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
   }
   
@@ -1037,7 +1038,7 @@ public class DynamicAvatarRecordActivity
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d(false);
         this.jdField_a_of_type_AndroidWidgetButton.setTag(Boolean.valueOf(false));
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842462);
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842497);
         this.jdField_a_of_type_AndroidWidgetButton.setContentDescription("声音关闭");
         if (this.jdField_a_of_type_Int == 1) {
           i = 0;
@@ -1050,7 +1051,7 @@ public class DynamicAvatarRecordActivity
       return;
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d(true);
       this.jdField_a_of_type_AndroidWidgetButton.setTag(Boolean.valueOf(true));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842465);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842500);
       this.jdField_a_of_type_AndroidWidgetButton.setContentDescription("声音打开");
       break;
       if (paramView == this.jdField_b_of_type_AndroidWidgetButton)
@@ -1134,8 +1135,8 @@ public class DynamicAvatarRecordActivity
       localStringBuilder.append("SDK_INT=").append(Build.VERSION.SDK_INT).append("|");
       QLog.i("DynamicAvatarRecordActivity", 2, localStringBuilder.toString());
     }
-    this.U = true;
-    this.V = false;
+    this.W = true;
+    this.X = false;
     if (("Meizu".equals(Build.MANUFACTURER)) && ("M032".equals(Build.MODEL))) {
       this.jdField_e_of_type_Boolean = false;
     }
@@ -1187,7 +1188,7 @@ public class DynamicAvatarRecordActivity
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
     }
     if ((a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131362087) == null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() != 4)) {
-      Looper.myQueue().addIdleHandler(new abjr(this));
+      Looper.myQueue().addIdleHandler(new abqs(this));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();

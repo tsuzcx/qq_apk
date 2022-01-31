@@ -1,20 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
 
-public class aceu
-  implements QueryTask.Query
+class aceu
+  implements View.OnClickListener
 {
-  public aceu(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
+  aceu(acet paramacet) {}
   
-  public Integer a(String paramString)
+  public void onClick(View paramView)
   {
-    EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a);
-    int i = this.jdField_a_of_type_Int;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, paramString);
+    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
+    {
+      HotChatFlashPicActivity.a(this.a.a).dismiss();
+      HotChatFlashPicActivity.a(this.a.a, null);
+      this.a.a.finish();
     }
-    return Integer.valueOf(i);
   }
 }
 

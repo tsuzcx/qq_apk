@@ -18,7 +18,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Color
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase.ClickStatus;
-import ltb;
+import lwf;
 
 public class ReadInJoyLikeButton
   extends ButtonBase
@@ -61,7 +61,7 @@ public class ReadInJoyLikeButton
   private void h()
   {
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleX", new float[] { 1.0F, 1.8F, 0.85F, 1.0F }).setDuration(600L), ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "scaleY", new float[] { 1.0F, 1.8F, 0.85F, 1.0F }).setDuration(600L) });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.setInterpolator(new ltb(null));
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.setInterpolator(new lwf(null));
   }
   
   public int a()

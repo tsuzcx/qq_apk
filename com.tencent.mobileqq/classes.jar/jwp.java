@@ -1,26 +1,102 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.av.app.GAudioUIObserver;
+import com.tencent.av.ui.GAudioMemberListCtrl;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class jwp
-  implements Runnable
+  extends GAudioUIObserver
 {
-  jwp(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  public jwp(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void run()
+  protected void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.c, 2, "AutoCheckVideoRunnable");
+      QLog.e("GAudioMembersCtrlActivity", 2, "onGAudioMemberMicChanged-->uin=" + paramLong + ",isMicOff=" + paramBoolean);
     }
-    if (this.a.a != null) {
-      this.a.a.a().an = true;
+    GAudioMembersCtrlActivity.c(this.a, new jws(this, paramLong, paramInt1, paramInt2, paramBoolean));
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Long != paramLong1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("GAudioMembersCtrlActivity", 2, "onMemberJoin,wrong group uin.GroupUin = " + paramLong1 + " ,mGroupId = " + this.a.jdField_a_of_type_Long + " ,isQQUser = " + paramBoolean);
+      }
+      return;
     }
-    this.a.Q();
+    super.a(paramLong1, paramLong2, paramBoolean);
+    this.a.a(paramLong2, 1, true, 71);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
+    if (this.a.jdField_a_of_type_Long != paramLong1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("GAudioMembersCtrlActivity", 2, "onMemberJoin,wrong group uin.GroupUin = " + paramLong1 + " ,mGroupId = " + this.a.jdField_a_of_type_Long + " ,isQQUser = " + paramBoolean2);
+      }
+      return;
+    }
+    this.a.a(paramLong2, 0, paramBoolean1, 70);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.a(paramLong, paramBoolean1, paramBoolean2);
+    if (paramBoolean1) {}
+    for (int i = 42;; i = 43)
+    {
+      this.a.a(paramLong, 2, paramBoolean2, i);
+      return;
+    }
+  }
+  
+  protected void a(ArrayList paramArrayList)
+  {
+    GAudioMembersCtrlActivity.d(this.a, new jwt(this, paramArrayList));
+  }
+  
+  protected void b(long paramLong, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GAudioMembersCtrlActivity", 2, "onGAudioRoomMicModeChanged-->uin=" + paramLong + ",isRoomMicOff=" + paramBoolean);
+    }
+    GAudioMembersCtrlActivity.b(this.a, new jwr(this));
+  }
+  
+  protected void c(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GAudioMembersCtrlActivity", 2, "onDestroyUI");
+    }
+    this.a.finish();
+  }
+  
+  protected void c(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    this.a.finish();
+  }
+  
+  protected void d()
+  {
+    super.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("GAudioMembersCtrlActivity", 2, "onUpdatePstnInfo --> Start");
+    }
+    GAudioMembersCtrlActivity.a(this.a, new jwq(this));
+  }
+  
+  protected void d(long paramLong, boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_ComTencentAvUiGAudioMemberListCtrl.b(paramLong, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jwp
  * JD-Core Version:    0.7.0.1
  */

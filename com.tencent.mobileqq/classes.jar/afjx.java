@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.nearby.profilecard.moment.CommentsAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.CommentsAdapter.CommentsItemClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
 
-public class afjx
-  implements View.OnClickListener
+class afjx
+  implements Runnable
 {
-  public afjx(CommentsAdapter paramCommentsAdapter, ViewGroup paramViewGroup) {}
+  afjx(afjw paramafjw, Card paramCard) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (CommentsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter) != null) {
-      CommentsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter).a(this.jdField_a_of_type_AndroidViewViewGroup);
-    }
+    NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_Afjw.a).setOnClickListener(new afjy(this));
   }
 }
 

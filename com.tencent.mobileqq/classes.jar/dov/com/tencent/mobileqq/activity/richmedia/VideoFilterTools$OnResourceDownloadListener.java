@@ -2,7 +2,7 @@ package dov.com.tencent.mobileqq.activity.richmedia;
 
 public abstract interface VideoFilterTools$OnResourceDownloadListener
 {
-  public abstract void i(boolean paramBoolean);
+  public abstract void j(boolean paramBoolean);
 }
 
 

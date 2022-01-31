@@ -9,7 +9,11 @@ public abstract class UrlTileProvider
 {
   public final Tile getTile(int paramInt1, int paramInt2, int paramInt3, MapTile.MapSource paramMapSource, Object... paramVarArgs)
   {
-    return new Tile(paramInt1, paramInt2, paramInt3, c.a(getTileUrl(paramInt1, paramInt2, paramInt3, paramVarArgs), paramMapSource));
+    paramMapSource = getTileUrl(paramInt1, paramInt2, paramInt3, paramVarArgs);
+    if (paramMapSource == null) {
+      return null;
+    }
+    return new Tile(paramInt1, paramInt2, paramInt3, c.a(paramMapSource));
   }
   
   public abstract URL getTileUrl(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs);

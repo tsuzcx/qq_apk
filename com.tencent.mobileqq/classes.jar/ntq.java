@@ -1,28 +1,60 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
-import com.tencent.biz.qqstory.storyHome.StoryHomePushYellowBarHandler;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.os.Build.VERSION;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
 
 public class ntq
-  implements Runnable
+  implements IMediaPlayer.OnPreparedListener
 {
-  public ntq(QQStoryMainController paramQQStoryMainController) {}
+  public ntq(TextureVideoView paramTextureVideoView) {}
   
-  public void run()
+  @TargetApi(15)
+  public void a_(IMediaPlayer paramIMediaPlayer)
   {
-    if (QQStoryMainController.a(this.a)) {
+    this.a.jdField_a_of_type_Int = 2;
+    TextureVideoView localTextureVideoView1 = this.a;
+    TextureVideoView localTextureVideoView2 = this.a;
+    this.a.jdField_d_of_type_Boolean = true;
+    localTextureVideoView2.c = true;
+    localTextureVideoView1.jdField_b_of_type_Boolean = true;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener.a_(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer);
+    }
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.setEnabled(true);
+    }
+    this.a.jdField_d_of_type_Int = paramIMediaPlayer.c();
+    this.a.e = paramIMediaPlayer.d();
+    int i = this.a.g;
+    if (i != 0) {
+      this.a.seekTo(i);
+    }
+    if ((this.a.jdField_d_of_type_Int != 0) && (this.a.e != 0))
+    {
+      if (Build.VERSION.SDK_INT >= 15) {
+        this.a.getSurfaceTexture().setDefaultBufferSize(this.a.jdField_d_of_type_Int, this.a.e);
+      }
+      if (this.a.jdField_b_of_type_Int == 3)
+      {
+        this.a.start();
+        if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+          this.a.jdField_a_of_type_AndroidWidgetMediaController.show();
+        }
+      }
+    }
+    while (this.a.jdField_b_of_type_Int != 3)
+    {
+      do
+      {
+        return;
+      } while ((this.a.isPlaying()) || ((i == 0) && (this.a.getCurrentPosition() <= 0)) || (this.a.jdField_a_of_type_AndroidWidgetMediaController == null));
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.show(0);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = this.a.a();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.setInputViewHideListener(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeStoryHomePushYellowBarHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    QQStoryMainController.a(this.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a());
-    QQStoryMainController.a(this.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a());
-    QQStoryMainController.a(this.a).setVisibility(8);
-    QQStoryMainController.a(this.a).setVisibility(8);
-    QQStoryMainController.a(this.a.jdField_a_of_type_AndroidAppActivity, "mainHallConfig", QQStoryMainController.a(this.a), QQStoryMainController.a(this.a));
+    this.a.start();
   }
 }
 

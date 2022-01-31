@@ -1,34 +1,30 @@
-import com.tencent.av.ui.VoiceChangeAdapter;
-import com.tencent.av.ui.VoiceChangeAdapter.ICallback;
-import com.tencent.av.ui.VoiceChangeData.VoiceInfo;
-import com.tencent.av.ui.VoiceChangeItemView1;
-import com.tencent.av.ui.VoiceChangeItemView1.ICallback;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import com.tencent.av.ui.VideoControlUI;
 
 public class kcm
-  implements VoiceChangeItemView1.ICallback
+  implements Animation.AnimationListener
 {
-  public kcm(VoiceChangeAdapter paramVoiceChangeAdapter) {}
+  public kcm(VideoControlUI paramVideoControlUI) {}
   
-  public void a(VoiceChangeItemView1 paramVoiceChangeItemView1, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    VoiceChangeData.VoiceInfo localVoiceInfo = (VoiceChangeData.VoiceInfo)this.a.getItem(paramInt);
-    if ((localVoiceInfo == null) || (localVoiceInfo.a == VoiceChangeAdapter.a(this.a))) {}
-    do
-    {
-      return;
-      if (VoiceChangeAdapter.a(this.a) != null) {
-        VoiceChangeAdapter.a(this.a).setHighlight(false);
-      }
-      VoiceChangeAdapter.a(this.a, localVoiceInfo.a);
-      VoiceChangeAdapter.a(this.a, paramVoiceChangeItemView1);
-      VoiceChangeAdapter.a(this.a).setHighlight(true);
-    } while (VoiceChangeAdapter.a(this.a) == null);
-    VoiceChangeAdapter.a(this.a).a(VoiceChangeAdapter.a(this.a));
+    this.a.a.clearAnimation();
+    this.a.c.clearAnimation();
+    this.a.b.clearAnimation();
+    this.a.e.clearAnimation();
+    this.a.l(true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcm
  * JD-Core Version:    0.7.0.1
  */

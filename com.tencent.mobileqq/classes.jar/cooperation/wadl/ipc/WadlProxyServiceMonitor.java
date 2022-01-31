@@ -1,7 +1,7 @@
 package cooperation.wadl.ipc;
 
 import android.os.Bundle;
-import angt;
+import anow;
 import com.tencent.open.wadl.WLog;
 import com.tencent.qphone.base.util.QLog;
 
@@ -10,7 +10,7 @@ public class WadlProxyServiceMonitor
 {
   private static String jdField_a_of_type_JavaLangString = "WadlProxyServiceMonitor";
   private long jdField_a_of_type_Long = 10000L;
-  private angt jdField_a_of_type_Angt;
+  private anow jdField_a_of_type_Anow;
   private WadlProxyServiceManager jdField_a_of_type_CooperationWadlIpcWadlProxyServiceManager;
   private volatile boolean jdField_a_of_type_Boolean;
   private long b;
@@ -30,11 +30,11 @@ public class WadlProxyServiceMonitor
     if (QLog.isColorLevel()) {
       WLog.b(jdField_a_of_type_JavaLangString, "##@stopMonitoring(), isAnyTaskActive:" + this.jdField_a_of_type_Boolean);
     }
-    if (this.jdField_a_of_type_Angt != null) {
-      this.jdField_a_of_type_Angt.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Anow != null) {
+      this.jdField_a_of_type_Anow.jdField_a_of_type_Boolean = false;
     }
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Angt = null;
+    this.jdField_a_of_type_Anow = null;
   }
   
   public void a(Bundle paramBundle)
@@ -70,10 +70,10 @@ public class WadlProxyServiceMonitor
       else
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Angt = new angt(this, null);
-        this.jdField_a_of_type_Angt.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Angt.setName("WadlProxyService.Monitor.Thread");
-        this.jdField_a_of_type_Angt.start();
+        this.jdField_a_of_type_Anow = new anow(this, null);
+        this.jdField_a_of_type_Anow.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Anow.setName("WadlProxyService.Monitor.Thread");
+        this.jdField_a_of_type_Anow.start();
         return;
       }
     }
@@ -82,8 +82,8 @@ public class WadlProxyServiceMonitor
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Angt != null) {
-      return this.jdField_a_of_type_Angt.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_Anow != null) {
+      return this.jdField_a_of_type_Anow.jdField_a_of_type_Boolean;
     }
     return false;
   }

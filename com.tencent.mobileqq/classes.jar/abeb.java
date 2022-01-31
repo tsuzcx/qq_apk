@@ -1,18 +1,34 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.qphone.base.util.QLog;
 
 public class abeb
   implements Runnable
 {
-  public abeb(ShopScanActivity paramShopScanActivity) {}
+  public abeb(ArkRecommendController paramArkRecommendController) {}
   
   public void run()
   {
-    ShopScanActivity.b(this.a);
-    this.a.a.setVisibility(4);
-    this.a.d.setVisibility(8);
-    ShopScanActivity.a(this.a, true);
+    int j = 1;
+    int i = j;
+    if (ArkRecommendController.a(this.a) == null)
+    {
+      ArkRecommendController.a(this.a, new ArkAiScrollBar(this.a));
+      i = j;
+      if (!ArkRecommendController.a(this.a).a())
+      {
+        ArkRecommendController.a(this.a, null);
+        if (QLog.isColorLevel()) {
+          QLog.d("ArkRecommendController", 2, "showBabyQBubbleView.mScrollBar.init.false");
+        }
+        i = 0;
+      }
+    }
+    if (i != 0)
+    {
+      ArkRecommendController.a(this.a).a(ArkRecommendController.a(this.a));
+      ArkRecommendController.a(this.a).b();
+    }
   }
 }
 

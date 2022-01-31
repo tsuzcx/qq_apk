@@ -1,16 +1,22 @@
-import android.app.ProgressDialog;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class udo
-  implements ConditionSearchManager.IConfigListener
+  implements DialogInterface.OnClickListener
 {
-  public udo(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  public udo(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopRobotPickerActivity.a(this.a);
-    this.a.a.dismiss();
+    paramDialogInterface.dismiss();
+    TroopInfoActivity.b(this.a);
+    switch (TroopInfoActivity.a(this.a))
+    {
+    default: 
+      return;
+    }
+    this.a.overridePendingTransition(0, 2131034122);
   }
 }
 

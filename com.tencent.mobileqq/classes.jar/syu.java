@@ -1,74 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import com.tencent.mobileqq.app.LebaUtil;
-import com.tencent.mobileqq.config.DownloadIconsListener;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import java.io.File;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDGuideActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class syu
-  extends DownloadIconsListener
+  implements View.OnClickListener
 {
-  public syu(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public syu(GesturePWDGuideActivity paramGesturePWDGuideActivity) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    int k = 0;
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {}
-    label241:
-    label242:
-    for (;;)
-    {
-      return;
-      int m = LebaListMgrActivity.a(this.a).getCount();
-      int j = 0;
-      int i = k;
-      if (j < m)
-      {
-        Object localObject = LebaListMgrActivity.a(this.a).getItem(j);
-        if ((localObject != null) && ((localObject instanceof LebaViewItem)))
-        {
-          localObject = (LebaViewItem)localObject;
-          if ((((LebaViewItem)localObject).a != null) && (paramString.equals(((LebaViewItem)localObject).a.strPkgName)))
-          {
-            j = 1;
-            File localFile = LebaUtil.a(this.a, paramString, ((LebaViewItem)localObject).a.strResURL);
-            i = j;
-            if (localFile == null) {
-              break label241;
-            }
-            i = j;
-            if (paramBitmap == null) {
-              break label241;
-            }
-            ((LebaViewItem)localObject).b = ("LebaIcon://" + localFile.getAbsolutePath());
-            i = j;
-            if (BaseApplicationImpl.sImageHashMap == null) {
-              break label241;
-            }
-            i = j;
-            if (BaseApplicationImpl.sImageHashMap.get(((LebaViewItem)localObject).b) != null) {
-              break label241;
-            }
-            BaseApplicationImpl.sImageHashMap.put(((LebaViewItem)localObject).b, paramBitmap);
-            i = 1;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (i == 0) {
-          break label242;
-        }
-        this.a.runOnUiThread(new syv(this, paramString));
-        return;
-        j += 1;
-        break;
-      }
-    }
+    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(paramView, 999);
+    this.a.overridePendingTransition(2131034134, 2131034131);
+    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_Gesture_password", 0, 0, "", "", "", "");
   }
 }
 

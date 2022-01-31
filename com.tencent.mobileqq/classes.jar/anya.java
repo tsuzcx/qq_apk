@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class anya
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anya(EditTextDialog paramEditTextDialog) {}
+  public anya(QIMCircleProgress paramQIMCircleProgress) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.setSelectAllOnFocus(false);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a.setOnClickListener(null);
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b();
   }
 }
 

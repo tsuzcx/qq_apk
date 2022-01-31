@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2a44" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:leftIconWidth="50.0dip" formItem:leftIconHeight="50.0dip" formItem:customHeight="60.0dip" formItem:leftIcon="@drawable/ic_launcher" formItem:showArrow="true"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq" />
+<RelativeLayout android:gravity="center" android:background="#ffdedcdd" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2a14" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+</RelativeLayout>

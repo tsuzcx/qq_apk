@@ -10,13 +10,13 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.av.config.ConfigInfo;
 import com.tencent.av.report.TraeConfigUpdate;
-import jrw;
+import jua;
 
 public class ConfigInfoTips
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int = -1;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jrw(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jua(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private boolean jdField_a_of_type_Boolean;
   private long[] jdField_a_of_type_ArrayOfLong;
@@ -31,9 +31,9 @@ public class ConfigInfoTips
   private void a(View paramView)
   {
     paramView = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    paramView.findViewById(2131365919).setVisibility(0);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131365920);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131365921);
+    paramView.findViewById(2131365924).setVisibility(0);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131365925);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131365926);
     int n = ConfigInfo.instance().getSharpConfigVersionFromFile();
     String[] arrayOfString = ConfigInfo.instance().getSharpConfigPayloadFromFile().split("\n");
     paramView = new String();
@@ -82,15 +82,15 @@ public class ConfigInfoTips
   public void a()
   {
     Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    View localView = ((Activity)localObject).findViewById(2131365370);
+    View localView = ((Activity)localObject).findViewById(2131365375);
     if (localView != null) {
       localView.setOnClickListener(this);
     }
-    localView = ((Activity)localObject).findViewById(2131365921);
+    localView = ((Activity)localObject).findViewById(2131365926);
     if (localView != null) {
       localView.setOnClickListener(this);
     }
-    localObject = ((Activity)localObject).findViewById(2131365919);
+    localObject = ((Activity)localObject).findViewById(2131365924);
     if (localObject != null) {
       ((View)localObject).setOnClickListener(this);
     }
@@ -110,7 +110,7 @@ public class ConfigInfoTips
     switch (paramView.getId())
     {
     default: 
-    case 2131365370: 
+    case 2131365375: 
       do
       {
         return;
@@ -120,12 +120,12 @@ public class ConfigInfoTips
       a(paramView);
       return;
     }
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131365919).setVisibility(8);
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131365924).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.ConfigInfoTips
  * JD-Core Version:    0.7.0.1
  */

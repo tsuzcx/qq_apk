@@ -1,48 +1,26 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.NoC2CExtensionInfo;
-import com.tencent.mobileqq.ptt.PttVoiceChangePreSender;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class upx
+class upx
   implements Runnable
 {
-  public upx(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
+  upx(upw paramupw, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
-    Object localObject = (FriendsManager)ListenChangeVoicePanel.a(this.a).getManager(50);
-    int i;
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.m())
-    {
-      localObject = ((FriendsManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_Int, true);
-      if (localObject == null) {
-        break label142;
-      }
-      i = ((NoC2CExtensionInfo)localObject).pttChangeVoiceType;
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomizeStrategyFactory", 2, "ThemeAnimStrategy");
     }
-    for (;;)
+    if ((upw.a(this.jdField_a_of_type_Upw) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId)))
     {
-      if (i != -1)
-      {
-        ListenChangeVoicePanel.a(this.a, i);
-        ListenChangeVoicePanel.a(this.a)[i] = 1;
-      }
-      if (ListenChangeVoicePanel.jdField_a_of_type_ComTencentMobileqqPttPttVoiceChangePreSender == null) {
-        ListenChangeVoicePanel.jdField_a_of_type_ComTencentMobileqqPttPttVoiceChangePreSender = new PttVoiceChangePreSender();
-      }
+      CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
       return;
-      localObject = ((FriendsManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_JavaLangString, true);
-      if (localObject != null) {
-        i = ((ExtensionInfo)localObject).pttChangeVoiceType;
-      } else {
-        label142:
-        i = -1;
-      }
     }
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId + ".zip";
+    upw.a(this.jdField_a_of_type_Upw).a(str, "", new upy(this));
   }
 }
 

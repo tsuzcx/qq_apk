@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.TCWDatePicker.SavedState;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 
-public final class amdt
-  implements Parcelable.Creator
+public class amdt
+  implements DialogInterface.OnClickListener
 {
-  public TCWDatePicker.SavedState a(Parcel paramParcel)
-  {
-    return new TCWDatePicker.SavedState(paramParcel, null);
-  }
+  public amdt(OpenSDKAppInterface paramOpenSDKAppInterface) {}
   
-  public TCWDatePicker.SavedState[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new TCWDatePicker.SavedState[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 

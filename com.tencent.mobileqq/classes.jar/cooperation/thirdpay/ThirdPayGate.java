@@ -13,13 +13,13 @@ import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
 import android.widget.Toast;
-import aneu;
-import anev;
-import anew;
-import anex;
-import aney;
-import anez;
-import anfb;
+import anmx;
+import anmy;
+import anmz;
+import anna;
+import annb;
+import annc;
+import anne;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.PluginInterface;
 import com.tencent.mobileqq.pluginsdk.ipc.RemoteResultCallback;
@@ -88,10 +88,10 @@ public class ThirdPayGate
     if (TextUtils.isEmpty(paramString)) {
       throw new IllegalAccessException("pluginId is empty");
     }
-    Object localObject2 = new anew(this, paramBundle, paramActivity);
-    localObject2 = DialogUtil.a(paramActivity, 0, "下载失败", "当前网络不给力，下载失败", "取消", "继续下载", new anex(this, paramString, paramPluginInterface, paramActivity, paramBundle), (DialogInterface.OnClickListener)localObject2);
+    Object localObject2 = new anmz(this, paramBundle, paramActivity);
+    localObject2 = DialogUtil.a(paramActivity, 0, "下载失败", "当前网络不给力，下载失败", "取消", "继续下载", new anna(this, paramString, paramPluginInterface, paramActivity, paramBundle), (DialogInterface.OnClickListener)localObject2);
     ((QQCustomDialog)localObject2).setCancelable(false);
-    Object localObject1 = new anez(this, paramPluginInterface, paramString, System.currentTimeMillis(), new aney(this, paramString, l, (Channel)localObject1, paramBundle, paramActivity, (QQCustomDialog)localObject2));
+    Object localObject1 = new annc(this, paramPluginInterface, paramString, System.currentTimeMillis(), new annb(this, paramString, l, (Channel)localObject1, paramBundle, paramActivity, (QQCustomDialog)localObject2));
     localObject2 = new Bundle();
     ((Bundle)localObject2).putString("pluginid", paramString);
     paramPluginInterface.transfer("cardpay.installplugin", (Bundle)localObject2);
@@ -129,7 +129,7 @@ public class ThirdPayGate
       return;
     }
     this.startDialog.dismiss();
-    paramActivity = DialogUtil.a(paramActivity, 0, "", "当前网络不可用，请检查网络设置！", "确定", "", null, new anev(this, paramBundle, paramActivity));
+    paramActivity = DialogUtil.a(paramActivity, 0, "", "当前网络不可用，请检查网络设置！", "确定", "", null, new anmy(this, paramBundle, paramActivity));
     paramActivity.setCancelable(false);
     paramActivity.show();
   }
@@ -150,7 +150,7 @@ public class ThirdPayGate
   
   public static ThirdPayGate getInstance()
   {
-    return anfb.a;
+    return anne.a;
   }
   
   private void preStartPlugin(Bundle paramBundle, Activity paramActivity, PluginInterface paramPluginInterface)
@@ -253,7 +253,7 @@ public class ThirdPayGate
         if (QLog.isColorLevel()) {
           QLog.e("ThirdPayGate", 2, "startPlugin,", localException1);
         }
-        paramBundle = new aneu(this, paramBundle, paramActivity);
+        paramBundle = new anmx(this, paramBundle, paramActivity);
         ReportController.a(null, "P_CliOper", "cardpay", "", "openplugin", "fail", 0, 0, paramString, "", "", "");
         DialogUtil.a(paramActivity, 0, "", "启动" + str + "支付插件失败", "确定", "", null, paramBundle).show();
         return;

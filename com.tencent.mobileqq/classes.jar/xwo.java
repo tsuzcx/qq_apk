@@ -1,32 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BaseAnimDrawer;
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.qphone.base.util.QLog;
 
-public class xwo
+class xwo
   implements Runnable
 {
-  public xwo(SubtitleLayout paramSubtitleLayout) {}
+  xwo(xwn paramxwn) {}
   
   public void run()
   {
-    if (SubtitleLayout.a(this.a))
-    {
-      if (SubtitleLayout.a(this.a) != null)
-      {
-        long l = System.currentTimeMillis();
-        String str1 = "录制时说话可以添加字幕。";
-        String str2 = "Record and speak with subtitles added.";
-        if (!AudioTranslator.a(false))
-        {
-          str1 = "网络状态差无法识别你的语音";
-          str2 = "Unable to Recognize Your Speaking due to Poor Internet Connection";
-        }
-        if (SubtitleLayout.a(this.a).a(false) <= 4) {
-          SubtitleLayout.a(this.a).a(l, 1000L + l, str1, str2, true);
-        }
-      }
-      SubtitleLayout.a(this.a, 1000);
-      SubtitleLayout.b(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("PTV.NewFlowCameraActivity", 2, "onResourceDownload update filterpager begin");
+    }
+    NewFlowCameraActivity.a(this.a.jdField_a_of_type_Xwm.a, (VideoFilterViewPager)this.a.jdField_a_of_type_Xwm.a.a(2131368995));
+    this.a.jdField_a_of_type_Xwm.a.a = new xwp(this);
+    NewFlowCameraActivity.a(this.a.jdField_a_of_type_Xwm.a).setViewPagerItemVisiableChangeListener(this.a.jdField_a_of_type_Xwm.a.a);
+    NewFlowCameraActivity.a(this.a.jdField_a_of_type_Xwm.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterTools.a());
+    FilterDesc localFilterDesc = NewFlowCameraActivity.a(this.a.jdField_a_of_type_Xwm.a).a(NewFlowCameraActivity.a(this.a.jdField_a_of_type_Xwm.a).getCurrentItem());
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterTools.a(localFilterDesc);
+    if (QLog.isColorLevel()) {
+      QLog.d("PTV.NewFlowCameraActivity", 2, "onResourceDownload update filterpager end");
     }
   }
 }

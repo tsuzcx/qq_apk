@@ -1,54 +1,24 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contacts.adapter.HeadCardAdapter;
-import com.tencent.mobileqq.activity.contacts.adapter.HeadCardAdapter.HeadAdapterCallback;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import java.util.List;
+import android.content.Intent;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.util.ThreadPriorityManager;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-public class wml
-  implements IIconListener
+class wml
+  extends AnimateUtils.AnimationAdapter
 {
-  public wml(HeadCardAdapter paramHeadCardAdapter) {}
+  wml(wmk paramwmk) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt2 == 200) && (paramBitmap != null))
-    {
-      List localList = HeadCardAdapter.a(this.a).a();
-      paramInt2 = 0;
-      if (paramInt2 < localList.size())
-      {
-        Object localObject2 = (View)localList.get(paramInt2);
-        if (localObject2 == null) {}
-        label167:
-        for (;;)
-        {
-          paramInt2 += 1;
-          break;
-          if ((((View)localObject2).getTag() instanceof wmm)) {}
-          for (Object localObject1 = (wmm)((View)localObject2).getTag();; localObject1 = null)
-          {
-            if ((localObject1 == null) || (!(((wmm)localObject1).a instanceof MayKnowRecommend))) {
-              break label167;
-            }
-            localObject1 = (MayKnowRecommend)((wmm)localObject1).a;
-            RichStatus localRichStatus = ((MayKnowRecommend)localObject1).getRichStatus();
-            if ((localRichStatus == null) || (localRichStatus.actId != paramInt1)) {
-              break;
-            }
-            localObject2 = (TextView)((View)localObject2).findViewById(2131363852);
-            if (localObject2 == null) {
-              break;
-            }
-            HeadCardAdapter.a(this.a, (MayKnowRecommend)localObject1, (TextView)localObject2, paramBitmap);
-            break;
-          }
-        }
-      }
-    }
+    this.a.a.a = true;
+    paramAnimation = new Intent(this.a.a, SearchContactsActivity.class);
+    paramAnimation.putExtra("from_key", this.a.a.a());
+    paramAnimation.putExtra("fromType", 13);
+    this.a.a.startActivity(paramAnimation);
+    this.a.a.overridePendingTransition(0, 0);
+    ThreadPriorityManager.a(false);
   }
 }
 

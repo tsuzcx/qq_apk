@@ -1,90 +1,52 @@
-import com.tencent.av.ui.ConferenceFlyTicketActivity;
-import com.tencent.av.utils.download.BaseDownloadAsyncTask;
-import com.tencent.av.utils.download.DownloadParams;
-import com.tencent.av.utils.download.DownloadResult;
-import com.tencent.mobileqq.app.DiscussionHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
+import com.tencent.av.ui.AVActivity;
 import com.tencent.qphone.base.util.QLog;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class jrt
-  extends BaseDownloadAsyncTask
+  implements View.OnClickListener
 {
-  public jrt(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity)
-  {
-    SSLSocketFactory.getSocketFactory().setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
-  }
+  public jrt(AVActivity paramAVActivity) {}
   
-  public void a(DownloadParams paramDownloadParams)
+  public void onClick(View paramView)
   {
-    String str3 = "";
-    if (paramDownloadParams.a.jdField_a_of_type_Boolean) {}
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().u) {}
     for (;;)
     {
-      try
+      return;
+      int i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().d;
+      if ((i == 1) || (i == 2))
       {
-        String str1 = new String(paramDownloadParams.a.jdField_a_of_type_ArrayOfByte, "UTF-8");
-        if (str1 != null)
+        if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().g()) {
+          this.a.a(this.a.c, this.a.d, this.a.j);
+        }
+      }
+      else {
+        while (AVActivity.a(this.a) != null)
         {
-          try
+          AVActivity.a(this.a).a();
+          return;
+          if ((i == 3) || (i == 4))
           {
-            JSONObject localJSONObject = new JSONObject(str1);
-            i = localJSONObject.getInt("retcode");
+            paramView = this.a.jdField_a_of_type_ComTencentAvVideoController.a().q;
+            String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.d, paramView, null);
             if (QLog.isColorLevel()) {
-              QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnAfterCreateDiscussionAsyncTask.onPostDownloadComplete : retcode = " + i);
+              QLog.d(this.a.b, 2, "enterChatWin-->uin: " + paramView + ", uintype: " + this.a.d + ", name: " + str);
             }
-            str1 = str3;
-            if (localJSONObject.has("result"))
-            {
-              localJSONObject = localJSONObject.getJSONObject("result");
-              str1 = str3;
-              if (localJSONObject.has("result_code")) {
-                str1 = localJSONObject.getString("result_code");
-              }
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            Object localObject;
-            if (!QLog.isColorLevel()) {
-              break label368;
-            }
-            QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete : result_code = " + "" + ",retcode = " + -2);
-            str2 = "";
-            i = -2;
-            continue;
-            this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.c(Long.parseLong(this.a.h));
-            this.a.a(1, 0);
-            return;
-          }
-          QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "OnAfterCreateDiscussionAsyncTask, IsSucc[" + paramDownloadParams.a.jdField_a_of_type_Boolean + "], retcode[" + i + "], result_code[" + str1 + "], mDiscID[" + this.a.h + "]");
-          if ((i == 0) && (str1.equals("0")))
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(Long.parseLong(this.a.h), this.a.c);
-            this.a.a(this.a.h, this.a.c);
-            this.a.finish();
-            return;
+            this.a.a(paramView, this.a.d, str);
           }
         }
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onPostDownloadComplete :" + localException.toString());
-        }
-        localObject = null;
-        continue;
-      }
-      label368:
-      String str2 = "";
-      int i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jrt
  * JD-Core Version:    0.7.0.1
  */

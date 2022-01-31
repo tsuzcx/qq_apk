@@ -1,14 +1,13 @@
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyEffectsCameraCaptureFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
-public class lic
+class lic
   implements Runnable
 {
-  public lic(ReadInJoyEffectsCameraCaptureFragment paramReadInJoyEffectsCameraCaptureFragment) {}
+  lic(lib paramlib) {}
   
   public void run()
   {
-    this.a.a.setVisibility(8);
+    ReadinjoySubscriptManagerActivity.a(this.a.a);
   }
 }
 

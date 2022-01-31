@@ -18,7 +18,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.DisplayUtil;
-import kko;
+import kmv;
 import tencent.im.troop_search_popclassifc.popclassifc.PopCard;
 import tencent.im.troop_search_popclassifc.popclassifc.PopItem;
 import tencent.im.troop_search_popclassifc.popclassifc.TitleBar;
@@ -37,7 +37,7 @@ public class TroopCardPopClassfic
   public TroopCardPopClassfic(ContactBaseView.IAddContactContext paramIAddContactContext)
   {
     super(paramIAddContactContext);
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = new kko(this);
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = new kmv(this);
   }
   
   private void a(int paramInt)
@@ -51,15 +51,15 @@ public class TroopCardPopClassfic
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366426));
-    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView = ((GridViewForScrollView)findViewById(2131366428));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366424));
+    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView = ((GridViewForScrollView)findViewById(2131366426));
     this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366427));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366425));
   }
   
   public void a()
   {
-    setContentView(2130969418);
+    setContentView(2130969414);
     f();
   }
   
@@ -98,7 +98,7 @@ public class TroopCardPopClassfic
       if (!TextUtils.isEmpty(this.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard.title_bar.str_icon_url.get())) {
         break label128;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846325);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846407);
     }
     for (;;)
     {

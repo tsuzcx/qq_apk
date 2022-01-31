@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amtu;
+import anbf;
 import android.app.Activity;
 import android.content.IntentFilter;
 import android.view.KeyEvent;
@@ -9,7 +9,7 @@ import cooperation.qzone.util.QZLog;
 public class WatchActivityManager
 {
   public static String a;
-  public amtu a;
+  public anbf a;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
@@ -23,7 +23,7 @@ public class WatchActivityManager
   
   public WatchActivityManager()
   {
-    this.jdField_a_of_type_Amtu = new amtu(this, null);
+    this.jdField_a_of_type_Anbf = new anbf(this, null);
   }
   
   private void d()
@@ -41,14 +41,14 @@ public class WatchActivityManager
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Amtu, localIntentFilter);
+      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_Anbf, localIntentFilter);
     }
   }
   
   private void f()
   {
     if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Amtu);
+      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_Anbf);
     }
   }
   

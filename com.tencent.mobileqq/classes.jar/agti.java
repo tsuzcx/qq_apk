@@ -1,24 +1,23 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
 
-public class agti
-  extends LSRecordAnimations.LSRecordAnimationCallback
+public final class agti
+  implements Parcelable.Creator
 {
-  public agti(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public PersonalityLabelZan a(Parcel paramParcel)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startSideAnimation onAnimationEnd");
-    }
-    this.a.b = null;
+    return new PersonalityLabelZan(paramParcel);
+  }
+  
+  public PersonalityLabelZan[] a(int paramInt)
+  {
+    return new PersonalityLabelZan[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agti
  * JD-Core Version:    0.7.0.1
  */

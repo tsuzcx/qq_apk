@@ -1,25 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.export.js.VipDownloadInterface;
-import com.tencent.smtt.sdk.WebView;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.PinnedDividerListView;
+import com.tencent.open.agent.DeviceFriendListOpenFrame;
+import com.tencent.open.agent.DeviceFriendListOpenFrame.ViewHolder;
 
 public class aljk
   implements Runnable
 {
-  public aljk(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
+  public aljk(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame, String paramString, Bitmap paramBitmap) {}
   
   public void run()
   {
-    try
+    int j = this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.a.getChildCount();
+    int i = 0;
+    for (;;)
     {
-      if ((this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
+      if (i < j)
+      {
+        DeviceFriendListOpenFrame.ViewHolder localViewHolder = (DeviceFriendListOpenFrame.ViewHolder)this.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame.a.getChildAt(i).getTag();
+        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.b))) {
+          localViewHolder.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.a(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "webview loadUrl>>> ", localException);
+      else
+      {
+        return;
+      }
+      i += 1;
     }
   }
 }

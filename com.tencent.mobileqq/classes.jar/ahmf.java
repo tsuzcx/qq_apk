@@ -1,17 +1,8 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
 
 public class ahmf
-  implements Runnable
 {
-  public ahmf(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
-  
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-  }
+  private static final CaptureVideoFilterManager a = new CaptureVideoFilterManager(null);
 }
 
 

@@ -6,7 +6,7 @@ public abstract interface GuideTip2$OnGuideTipListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.redbag.GuideTip2.OnGuideTipListener
  * JD-Core Version:    0.7.0.1
  */

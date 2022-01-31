@@ -1,56 +1,29 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.OnApolloViewListener;
-import com.tencent.mobileqq.apollo.task.ApolloActionManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.locks.ReentrantLock;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.AvatarPendantAdapter;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ynb
-  implements Runnable
+  implements View.OnLayoutChangeListener
 {
-  private int jdField_a_of_type_Int;
+  public ynb(AvatarPendantAdapter paramAvatarPendantAdapter) {}
   
-  public ynb(ApolloTextureView paramApolloTextureView) {}
-  
-  public void a()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_Int = ApolloTextureView.access$1101(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
-  }
-  
-  public void run()
-  {
-    Object localObject1;
-    if (this.jdField_a_of_type_Int == ApolloTextureView.access$201(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView))
-    {
-      ApolloTextureView.access$302(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, true);
-      ApolloTextureView.access$401(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, 2);
-      localObject1 = ApolloActionManager.a();
-      QLog.d("ApolloLock", 2, "checkForLongPress");
-      localObject1 = ((ApolloActionManager)localObject1).a();
-      ((ReentrantLock)localObject1).lock();
-    }
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mRender != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mRender.getSavaWrapper() != null))
-      {
-        String str = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mRender.getSavaWrapper().a(ApolloTextureView.access$500(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView), ApolloTextureView.access$601(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) - ApolloTextureView.access$701(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) - ApolloTextureView.access$800(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView));
-        if ((ApolloTextureView.access$900(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) >= 0) && (ApolloTextureView.access$1000(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) != null)) {
-          ApolloTextureView.access$1000(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView).onNotifyLongTouch(str);
-        }
-        QLog.d("ApolloTextureView", 2, "surfaceView longclick node = " + str);
-      }
-      return;
-    }
-    finally
-    {
-      ((ReentrantLock)localObject1).unlock();
+    View localView = paramView.findViewById(2131372287);
+    TextView localTextView = (TextView)paramView.findViewById(2131372288);
+    paramInt1 = ((ImageView)paramView.findViewById(2131372289)).getRight() - localView.getWidth();
+    if (paramInt1 > 0) {
+      ThreadManager.getUIHandler().post(new ync(this, localTextView, paramInt1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ynb
  * JD-Core Version:    0.7.0.1
  */

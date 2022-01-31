@@ -1,29 +1,19 @@
-import android.widget.ImageView;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-public class adqv
-  implements ValueAnimator.AnimatorUpdateListener
+class adqv
+  implements Runnable
 {
-  public adqv(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder) {}
+  adqv(adqs paramadqs, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    if (this.a.a.getVisibility() == 0) {
-      this.a.a.setAlpha(f);
-    }
-    HotVideoMongoliaRelativeLayout localHotVideoMongoliaRelativeLayout = this.a.a();
-    if (localHotVideoMongoliaRelativeLayout != null) {
-      localHotVideoMongoliaRelativeLayout.a(paramValueAnimator);
-    }
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adqs.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adqs.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adqv
  * JD-Core Version:    0.7.0.1
  */

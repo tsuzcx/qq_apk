@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import amcy;
-import amcz;
+import amki;
+import amkj;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -467,7 +467,7 @@ public class PinnedHeadAndFootExpandableListView
         if (this.jdField_b_of_type_AndroidViewView != null)
         {
           this.jdField_b_of_type_AndroidViewView.setTag("headerView");
-          this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new amcy(this));
+          this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new amki(this));
         }
         if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewView == null))
         {
@@ -475,7 +475,7 @@ public class PinnedHeadAndFootExpandableListView
           if (this.jdField_a_of_type_AndroidViewView != null)
           {
             this.jdField_a_of_type_AndroidViewView.setTag("footerView");
-            this.jdField_a_of_type_AndroidViewView.setOnClickListener(new amcz(this, this));
+            this.jdField_a_of_type_AndroidViewView.setOnClickListener(new amkj(this, this));
           }
         }
         requestLayout();

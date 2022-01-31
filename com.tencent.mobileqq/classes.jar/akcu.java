@@ -1,23 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.utils.JumpAction;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
-public class akcu
-  implements DialogInterface.OnDismissListener
+class akcu
+  implements Runnable
 {
-  public akcu(JumpAction paramJumpAction) {}
+  akcu(akct paramakct, Bitmap paramBitmap) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if ((this.a.a instanceof LoginActivity)) {
-      ((LoginActivity)this.a.a).finish();
-    }
+    ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_Akct.a.a.a).setReceiveHeadBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcu
  * JD-Core Version:    0.7.0.1
  */

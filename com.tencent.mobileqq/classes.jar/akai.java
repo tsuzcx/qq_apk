@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
 
-public final class akai
+public class akai
   implements Runnable
 {
-  public akai(String paramString1, String paramString2) {}
+  public akai(PublishItemContainer paramPublishItemContainer) {}
   
   public void run()
   {
-    String str1 = CardHandler.a(this.a, CardHandler.b(BaseApplication.getContext()));
-    int i = CardHandler.c(BaseApplication.getContext());
-    String str2 = CardHandler.a(this.a, i);
-    ImageUtil.a(this.b, str1);
-    ImageUtil.a(this.b, str2, i, i);
-    FileUtils.a(this.b, true);
+    this.a.fullScroll(66);
   }
 }
 

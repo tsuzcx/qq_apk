@@ -1,14 +1,20 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import com.tencent.biz.qrcode.CodeMaskManager.Callback;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class owx
   implements Runnable
 {
-  public owx(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, long paramLong, String paramString) {}
+  public owx(CodeMaskManager paramCodeMaskManager, owy paramowy, CodeMaskManager.Callback paramCallback) {}
   
   public void run()
   {
-    new oxm(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, new owy(this), this.jdField_a_of_type_JavaLangString).a();
+    if (this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a) {}
+    while (!this.jdField_a_of_type_Owy.a.compareAndSet(false, true)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager));
+    CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager);
   }
 }
 

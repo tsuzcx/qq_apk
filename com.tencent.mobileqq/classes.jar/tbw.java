@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
 public class tbw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tbw(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public tbw(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    MoveToGroupActivity.b(this.a);
+    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.a.getManager(159);
+    RedTouchItem localRedTouchItem1 = localLocalRedTouchManager.a(10017);
+    RedTouchItem localRedTouchItem2 = localLocalRedTouchManager.a(103421);
+    if ((localLocalRedTouchManager.a(localRedTouchItem2)) && (localRedTouchItem2.redtouchType == 1)) {
+      localLocalRedTouchManager.a(103421);
+    }
+    if (localLocalRedTouchManager.a(localRedTouchItem1)) {
+      localLocalRedTouchManager.a(10017);
+    }
   }
 }
 

@@ -6,9 +6,9 @@ import com.tencent.mobileqq.Doraemon.APIParam;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.io.Serializable;
 import mqq.os.MqqHandler;
-import rfj;
-import rfk;
-import rfl;
+import rkb;
+import rkc;
+import rkd;
 
 public class DoraemonUtil
 {
@@ -30,17 +30,17 @@ public class DoraemonUtil
   
   public static void a(APICallback paramAPICallback, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new rfl(paramAPICallback, paramInt));
+    ThreadManager.getUIHandler().post(new rkd(paramAPICallback, paramInt));
   }
   
   public static void a(APICallback paramAPICallback, int paramInt, String paramString)
   {
-    ThreadManager.getUIHandler().post(new rfk(paramAPICallback, paramInt, paramString));
+    ThreadManager.getUIHandler().post(new rkc(paramAPICallback, paramInt, paramString));
   }
   
   public static void a(APICallback paramAPICallback, APIParam paramAPIParam)
   {
-    ThreadManager.getUIHandler().post(new rfj(paramAPICallback, paramAPIParam));
+    ThreadManager.getUIHandler().post(new rkb(paramAPICallback, paramAPIParam));
   }
   
   public static boolean a()

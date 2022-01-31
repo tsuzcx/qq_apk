@@ -1,62 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import mqq.os.MqqHandler;
-import oicq.wlogin_sdk.tools.util;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.open.agent.BindGroupActivity.ViewHolder;
 
-class alio
+public class alio
   implements Runnable
 {
-  alio(alin paramalin, byte[] paramArrayOfByte, String paramString) {}
+  public alio(BindGroupActivity paramBindGroupActivity, String paramString, Bitmap paramBitmap) {}
   
   public void run()
   {
-    boolean bool2 = false;
-    this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
+    int j = this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity.a.getChildCount();
+    int i = 0;
     for (;;)
     {
-      boolean bool3;
-      try
+      if (i < j)
       {
-        Object localObject = this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Alin.jdField_a_of_type_AndroidOsBundle);
-        ThreadManager.getSubThreadHandler().post(new alip(this, (DownloadInfo)localObject));
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0))
-        {
-          localObject = new StringBuilder();
-          this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + util.buf_to_string(this.jdField_a_of_type_ArrayOfByte));
-          this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d = this.jdField_a_of_type_Alin.jdField_a_of_type_Long;
-        }
-        LogUtility.a("MyAppApi", "OpenSDK startToAppDetail param SNGAppId=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
-        LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
-        if (this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
-        {
-          ((TMAssistantCallYYB_V1)this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.jdField_a_of_type_Alin.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Alin.jdField_a_of_type_Boolean, this.jdField_a_of_type_Alin.b);
-          return;
-        }
-        int i = this.jdField_a_of_type_Alin.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
-        int j = this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Alin.jdField_a_of_type_AndroidOsBundle);
-        boolean bool1 = this.jdField_a_of_type_Alin.jdField_a_of_type_Boolean;
-        bool3 = this.jdField_a_of_type_Alin.b;
-        if (i == 3)
-        {
-          bool1 = false;
-          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.jdField_a_of_type_Alin.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Alin.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, bool1, bool2, j);
-          return;
+        BindGroupActivity.ViewHolder localViewHolder = (BindGroupActivity.ViewHolder)this.jdField_a_of_type_ComTencentOpenAgentBindGroupActivity.a.getChildAt(i).getTag();
+        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.jdField_a_of_type_JavaLangString))) {
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
         }
       }
-      catch (Exception localException)
+      else
       {
-        LogUtility.b("MyAppApi", "startToAppDetail err", localException);
         return;
       }
-      bool2 = bool3;
+      i += 1;
     }
   }
 }

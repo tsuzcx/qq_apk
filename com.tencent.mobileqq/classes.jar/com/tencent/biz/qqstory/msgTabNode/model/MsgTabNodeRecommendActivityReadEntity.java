@@ -23,6 +23,20 @@ public class MsgTabNodeRecommendActivityReadEntity
     this.hasRead = paramInt;
   }
   
+  public static String[] getArgs(MsgTabNodeInfo paramMsgTabNodeInfo)
+  {
+    int i = paramMsgTabNodeInfo.jdField_a_of_type_Int;
+    if (paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString == null) {}
+    for (paramMsgTabNodeInfo = "";; paramMsgTabNodeInfo = paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString) {
+      return new String[] { String.valueOf(i), paramMsgTabNodeInfo };
+    }
+  }
+  
+  public static String getSelection()
+  {
+    return "nodeType=? and unionId=?";
+  }
+  
   public String toString()
   {
     return "MsgTabNodeEntity{nodeType=" + this.nodeType + ", unionId='" + this.unionId + '\'' + ", hasRead='" + this.hasRead;

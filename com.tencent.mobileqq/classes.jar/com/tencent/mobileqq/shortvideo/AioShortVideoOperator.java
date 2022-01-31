@@ -244,7 +244,10 @@ public class AioShortVideoOperator
       localMessageForShortVideo.videoFileName = paramShortVideoUploadInfo.jdField_h_of_type_JavaLangString;
     }
     label281:
-    label932:
+    label299:
+    label940:
+    label945:
+    label956:
     for (;;)
     {
       localMessageForShortVideo.specialVideoType = paramShortVideoUploadInfo.jdField_j_of_type_Int;
@@ -276,7 +279,7 @@ public class AioShortVideoOperator
       localMessageForShortVideo.fileSource = paramShortVideoUploadInfo.jdField_l_of_type_JavaLangString;
       localMessageForShortVideo.lastModified = 0L;
       localMessageForShortVideo.mediacodecEncode = paramShortVideoUploadInfo.jdField_c_of_type_Boolean;
-      label299:
+      label319:
       Object localObject;
       String str;
       int i;
@@ -287,9 +290,10 @@ public class AioShortVideoOperator
           break label866;
         }
         localMessageForShortVideo.busiType = 1007;
-        if (paramShortVideoUploadInfo.jdField_b_of_type_Int == 0) {
-          ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForShortVideo, paramShortVideoUploadInfo.jdField_c_of_type_JavaLangString);
+        if (paramShortVideoUploadInfo.jdField_b_of_type_Int != 0) {
+          break label909;
         }
+        ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForShortVideo, paramShortVideoUploadInfo.jdField_c_of_type_JavaLangString);
         localMessageForShortVideo.fromChatType = -1;
         localMessageForShortVideo.toChatType = -1;
         localMessageForShortVideo.uiOperatorFlag = 1;
@@ -299,12 +303,12 @@ public class AioShortVideoOperator
         localMessageForShortVideo.syncToStory = paramShortVideoUploadInfo.jdField_g_of_type_Boolean;
         localObject = MessageConstants.jdField_o_of_type_JavaLangString;
         if (!localMessageForShortVideo.syncToStory) {
-          break label909;
+          break label933;
         }
         str = "1";
         localMessageForShortVideo.saveExtInfoToExtStr((String)localObject, str);
         if (paramShortVideoUploadInfo.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo$RetryInfo == null) {
-          break label916;
+          break label940;
         }
         i = 1;
         if (i != 0)
@@ -314,7 +318,7 @@ public class AioShortVideoOperator
           localMessageForShortVideo.msgUid = paramShortVideoUploadInfo.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo$RetryInfo.jdField_c_of_type_Long;
         }
         if (localMessageForShortVideo.busiType != 2) {
-          break label921;
+          break label945;
         }
       }
       for (localMessageForShortVideo.msg = "[视频对讲]";; localMessageForShortVideo.msg = "[视频]")
@@ -335,7 +339,7 @@ public class AioShortVideoOperator
           localMessageForShortVideo.videoFileName = paramShortVideoUploadInfo.jdField_q_of_type_JavaLangString;
           localMessageForShortVideo.videoAttr = 0;
           if ((localMessageForShortVideo.videoFileName != null) && (localMessageForShortVideo.videoFileName.length() != 0)) {
-            break label932;
+            break label956;
           }
           localObject = new StringBuilder();
           if ((paramShortVideoUploadInfo.jdField_e_of_type_JavaLangString == null) || (paramShortVideoUploadInfo.jdField_e_of_type_JavaLangString.length() == 0)) {}
@@ -379,6 +383,11 @@ public class AioShortVideoOperator
         }
         localMessageForShortVideo.busiType = 0;
         break label299;
+        if (paramShortVideoUploadInfo.jdField_b_of_type_Int != 1) {
+          break label319;
+        }
+        ConfessMsgUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForShortVideo, paramShortVideoUploadInfo.jdField_c_of_type_JavaLangString);
+        break label319;
         str = "0";
         break label391;
         i = 0;

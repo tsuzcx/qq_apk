@@ -1,24 +1,31 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aaui
-  implements ArkAppCenter.OnGetAppIcon
+  implements DialogInterface.OnClickListener
 {
-  public aaui(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder) {}
+  public aaui(ArCardSelectMemberActivity paramArCardSelectMemberActivity) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBitmap != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setImageBitmap(paramBitmap);
+    if (!NetworkUtil.g(this.a.getApplicationContext())) {
+      QQToast.a(this.a, 2131437550, 1).a();
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      ArCardSelectMemberActivity.a(this.a, null);
+      return;
+      this.a.u();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaui
  * JD-Core Version:    0.7.0.1
  */

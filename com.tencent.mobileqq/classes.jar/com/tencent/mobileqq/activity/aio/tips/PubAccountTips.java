@@ -348,16 +348,16 @@ public class PubAccountTips
   
   public View a(Object... paramVarArgs)
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).inflate(2130969522, null);
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a()).inflate(2130969518, null);
     ImageView localImageView;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg != null)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_a_of_type_Int != 1) {
         break label106;
       }
-      paramVarArgs.setBackgroundResource(2131493493);
-      ((TextView)paramVarArgs.findViewById(2131363103)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_a_of_type_JavaLangString);
-      localImageView = (ImageView)paramVarArgs.findViewById(2131366822);
+      paramVarArgs.setBackgroundResource(2131493495);
+      ((TextView)paramVarArgs.findViewById(2131363107)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_a_of_type_JavaLangString);
+      localImageView = (ImageView)paramVarArgs.findViewById(2131366820);
       String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_b_of_type_JavaLangString;
       if (TextUtils.isEmpty(str)) {
         break label127;
@@ -372,7 +372,7 @@ public class PubAccountTips
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg.jdField_a_of_type_Int != 2) {
         break;
       }
-      paramVarArgs.setBackgroundResource(2131493494);
+      paramVarArgs.setBackgroundResource(2131493496);
       break;
       label127:
       localImageView.setVisibility(8);

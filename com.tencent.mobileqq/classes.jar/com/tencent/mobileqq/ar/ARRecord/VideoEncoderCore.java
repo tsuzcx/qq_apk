@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
+import aafh;
+import aafi;
 import android.annotation.TargetApi;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
@@ -15,8 +17,6 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.nio.ByteBuffer;
-import zyt;
-import zyu;
 
 @TargetApi(18)
 public class VideoEncoderCore
@@ -358,7 +358,7 @@ public class VideoEncoderCore
     this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, 1);
     this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_AndroidMediaMediaCodec.createInputSurface();
     this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-    this.jdField_a_of_type_JavaLangThread = new zyu(this);
+    this.jdField_a_of_type_JavaLangThread = new aafi(this);
     this.jdField_a_of_type_JavaLangThread.start();
     this.jdField_b_of_type_AndroidMediaMediaFormat = MediaFormat.createAudioFormat("audio/mp4a-latm", 48000, 1);
     this.jdField_b_of_type_AndroidMediaMediaFormat.setInteger("aac-profile", 2);
@@ -370,7 +370,7 @@ public class VideoEncoderCore
     this.jdField_b_of_type_AndroidMediaMediaCodec.start();
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoEncodeThread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new zyt(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new aafh(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
     paramVideoEncoderCallback = new File(paramEncodeConfig.jdField_a_of_type_JavaLangString);
     if (!paramVideoEncoderCallback.exists()) {
       FileUtils.c(paramVideoEncoderCallback.getAbsolutePath());

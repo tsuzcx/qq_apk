@@ -1,26 +1,25 @@
-import android.opengl.GLES20;
-import com.tencent.mobileqq.ar.ARVideoUtil;
-import com.tencent.mobileqq.ar.keying.KeyingBase.UserInterface;
+import com.dataline.mpfile.MpfileTaskRecord;
+import com.dataline.util.WaitEvent;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.persistence.Entity;
 
-class aabu
-  implements KeyingBase.UserInterface
+public class aabu
+  implements Runnable
 {
-  aabu(aabt paramaabt) {}
+  public aabu(MpfileTaskProxy paramMpfileTaskProxy, Entity paramEntity, ProxyListener paramProxyListener, WaitEvent paramWaitEvent) {}
   
-  public void a()
+  public void run()
   {
-    GLES20.glUniform1i(aabt.a(this.a), aabt.b(this.a));
-  }
-  
-  public void a(int paramInt)
-  {
-    aabt.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    ARVideoUtil.a("glGetUniformLocation uDisplayType");
+    MpfileTaskRecord localMpfileTaskRecord = ((MpfileTaskRecord)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).clone();
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyMpfileTaskProxy.a.a(String.valueOf(0), 0, MpfileTaskRecord.tableName(), localMpfileTaskRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aabu
  * JD-Core Version:    0.7.0.1
  */

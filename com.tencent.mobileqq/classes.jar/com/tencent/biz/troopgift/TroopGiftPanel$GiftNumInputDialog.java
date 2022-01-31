@@ -22,11 +22,11 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.InputMethodLinearLayout;
 import com.tencent.mobileqq.widget.InputMethodLinearLayout.onSizeChangeListenner;
 import java.lang.ref.WeakReference;
-import ozh;
-import ozi;
-import ozj;
-import ozk;
-import ozl;
+import pdz;
+import pea;
+import peb;
+import pec;
+import ped;
 
 public class TroopGiftPanel$GiftNumInputDialog
   implements View.OnClickListener, InputMethodLinearLayout.onSizeChangeListenner
@@ -48,27 +48,27 @@ public class TroopGiftPanel$GiftNumInputDialog
     }
     localWindow.setGravity(80);
     localWindow.setLayout(-1, -2);
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969896, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969907, null);
     this.jdField_a_of_type_AndroidAppDialog.setContentView(paramContext);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
-    paramContext = (InputMethodLinearLayout)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366728);
+    paramContext = (InputMethodLinearLayout)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366726);
     paramContext.setOnSizeChangedListenner(this);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367754));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366108));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131368391));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367764));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366113));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131368393));
     if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setCustomSelectionActionModeCallback(new ozi(this, paramTroopGiftPanel));
+      this.jdField_a_of_type_AndroidWidgetEditText.setCustomSelectionActionModeCallback(new pea(this, paramTroopGiftPanel));
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new ozj(this, paramTroopGiftPanel));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new peb(this, paramTroopGiftPanel));
     this.b.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    paramContext.setOnClickListener(new ozk(this, paramTroopGiftPanel));
+    paramContext.setOnClickListener(new pec(this, paramTroopGiftPanel));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidAppDialog.setOnShowListener(new ozl(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new ozh(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, 5) });
+    this.jdField_a_of_type_AndroidAppDialog.setOnShowListener(new ped(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new pdz(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, 5) });
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   

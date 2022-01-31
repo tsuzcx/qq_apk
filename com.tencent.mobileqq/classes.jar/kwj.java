@@ -1,19 +1,21 @@
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class kwj
   implements Runnable
 {
-  public kwj(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public kwj(AdvertisementRecentUserManager paramAdvertisementRecentUserManager, AdvertisementItem paramAdvertisementItem) {}
   
   public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.a).setBackgroundResource(2130838508);
-    ReadInJoyNativeAdFragment.a(this.a).setText(this.a.getText(2131438694));
-    ReadInJoyNativeAdFragment.a(this.a).setTextColor(-1);
-    ReadInJoyNativeAdFragment.a(this.a).setProgress(0);
-    ReadInJoyNativeAdFragment.a(this.a).setClickable(true);
-    ReadInJoyNativeAdFragment.c(this.a, 2);
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.iterator();
+    while (localIterator.hasNext()) {
+      AdvertisementVideoPreloadManager.b(((VideoCoverItem)localIterator.next()).b);
+    }
   }
 }
 

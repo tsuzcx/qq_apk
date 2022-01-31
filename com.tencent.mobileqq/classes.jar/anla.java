@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
 
-class anla
-  implements Runnable
+public class anla
+  implements DialogInterface.OnCancelListener
 {
-  anla(anky paramanky) {}
+  public anla(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin, String paramString) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    QQToast.a(this.a.a.a, "网络出问题了，一会儿再试试。", 0).a();
+    QzoneQunFeedJsPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneQunFeedJsPlugin, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anla
  * JD-Core Version:    0.7.0.1
  */

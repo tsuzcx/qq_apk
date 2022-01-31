@@ -15,7 +15,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import ohu;
+import omj;
 
 public class ArtFilterBridgeActivity
   extends BaseActivity
@@ -126,7 +126,7 @@ public class ArtFilterBridgeActivity
   {
     super.doOnCreate(paramBundle);
     a();
-    ThreadManager.post(new ohu(this), 8, null, true);
+    ThreadManager.post(new omj(this), 8, null, true);
     return true;
   }
   

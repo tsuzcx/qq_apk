@@ -17,7 +17,7 @@ public class RecommendLabelListAdapter
   
   private void a(BaseViewHolder paramBaseViewHolder, int paramInt)
   {
-    ((TextView)paramBaseViewHolder.a(2131371983)).setText("#" + (String)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    ((TextView)paramBaseViewHolder.a(2131371991)).setText("#" + (String)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
   
   public int getCount()
@@ -41,7 +41,7 @@ public class RecommendLabelListAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {}
-    for (paramView = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970823, paramViewGroup, false));; paramView = (BaseViewHolder)paramView.getTag())
+    for (paramView = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970840, paramViewGroup, false));; paramView = (BaseViewHolder)paramView.getTag())
     {
       a(paramView, paramInt);
       return paramView.a();

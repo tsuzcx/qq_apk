@@ -32,7 +32,7 @@ public class PluginActionFactory
       return new QzonePluginAction(paramContext);
     case 4086: 
       return new CampusCirclePluginAction(paramContext);
-    case 3050: 
+    case 6005: 
       return new StoryPluginAction(paramContext);
     case 769: 
       return new QQReadPluginAction(paramContext);

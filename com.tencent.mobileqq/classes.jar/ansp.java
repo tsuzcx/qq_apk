@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Handler;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class ansp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ansp(EditVideoButton paramEditVideoButton, int paramInt) {}
+  private ansp(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.a.a(this.jdField_a_of_type_Int);
+    QIMEffectCameraCaptureUnit.b(this.a);
+    if (QIMEffectCameraCaptureUnit.a(this.a) >= 3) {
+      QIMEffectCameraCaptureUnit.a(this.a, 0);
+    }
+    QIMEffectCameraCaptureUnit.a(this.a, QIMEffectCameraCaptureUnit.a(this.a));
+    this.a.a.postDelayed(QIMEffectCameraCaptureUnit.a(this.a), 500L);
   }
 }
 

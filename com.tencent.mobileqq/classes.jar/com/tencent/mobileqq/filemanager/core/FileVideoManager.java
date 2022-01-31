@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acvu;
-import acvv;
-import acvw;
-import acvx;
-import acvy;
-import acvz;
-import acwa;
-import acwb;
+import adec;
+import aded;
+import adee;
+import adef;
+import adeg;
+import adeh;
+import adei;
+import adej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -34,6 +34,7 @@ public class FileVideoManager
 {
   public static FileVideoManager a;
   static boolean jdField_a_of_type_Boolean;
+  private FileVideoManager.VideoControl jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   
   public static FileVideoManager.VideoControl a(long paramLong)
@@ -138,7 +139,7 @@ public class FileVideoManager
     Looper localLooper = Looper.getMainLooper();
     if (localLooper.getThread() != Thread.currentThread())
     {
-      new Handler(localLooper).post(new acvw(paramInt));
+      new Handler(localLooper).post(new adee(paramInt));
       return;
     }
     c(paramInt);
@@ -148,7 +149,7 @@ public class FileVideoManager
   {
     Object localObject = Looper.getMainLooper();
     if (Thread.currentThread() != ((Looper)localObject).getThread()) {
-      new Handler((Looper)localObject).post(new acvx(paramLong));
+      new Handler((Looper)localObject).post(new adef(paramLong));
     }
     do
     {
@@ -178,7 +179,7 @@ public class FileVideoManager
     Handler localHandler = new Handler(localLooper);
     if (localLooper.getThread() != Thread.currentThread())
     {
-      localHandler.post(new acvz(paramContext, paramFileVideoManagerInitCallback));
+      localHandler.post(new adeh(paramContext, paramFileVideoManagerInitCallback));
       return;
     }
     if (jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager == null) {
@@ -227,6 +228,7 @@ public class FileVideoManager
       }
     }
     label220:
+    jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl = localVideoControl;
     localVideoControl.a(localVideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, false);
   }
   
@@ -237,7 +239,7 @@ public class FileVideoManager
       a(paramFileManagerEntity.nSessionId);
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new acvu(paramFileManagerEntity));
+    new Handler(Looper.getMainLooper()).post(new adec(paramFileManagerEntity));
   }
   
   public static void b(long paramLong)
@@ -245,7 +247,7 @@ public class FileVideoManager
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new acvy(paramLong));
+      new Handler(localLooper).post(new adeg(paramLong));
       return;
     }
     d(paramLong);
@@ -274,13 +276,13 @@ public class FileVideoManager
     while (i != 0)
     {
       c(paramContext, paramFileVideoManagerInitCallback);
-      QQToast.a(paramContext, paramContext.getResources().getString(2131430809), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(paramContext, paramContext.getResources().getString(2131430812), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448));
       return;
       i = 0;
     }
     try
     {
-      DialogUtil.a(paramContext, 232, null, paramContext.getResources().getString(2131430807), new acwa(this, paramContext, paramFileVideoManagerInitCallback), new acwb(this, paramFileVideoManagerInitCallback)).show();
+      DialogUtil.a(paramContext, 232, null, paramContext.getResources().getString(2131430810), new adei(this, paramContext, paramFileVideoManagerInitCallback), new adej(this, paramFileVideoManagerInitCallback)).show();
       return;
     }
     catch (Exception paramContext) {}
@@ -346,7 +348,7 @@ public class FileVideoManager
   
   private void c(Context paramContext, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback)
   {
-    TVK_SDKMgr.installPlugin(paramContext, new acvv(this, System.currentTimeMillis(), paramFileVideoManagerInitCallback));
+    TVK_SDKMgr.installPlugin(paramContext, new aded(this, System.currentTimeMillis(), paramFileVideoManagerInitCallback));
   }
   
   private static void d(long paramLong)

@@ -1,128 +1,62 @@
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vas.SignatureTemplateConfig;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadScheduler;
+import mqq.app.AppRuntime;
 
 public class zmz
-  extends DownloadListener
+  extends zlr
 {
-  public zmz(SignatureManager paramSignatureManager) {}
-  
-  public void onCancel(DownloadTask paramDownloadTask)
+  protected void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureManager", 2, "sigTplResDownloadListener.onCancel| task:" + paramDownloadTask);
+    super.a();
+    if (this.c >= zlp.a().a(this.a.jdField_a_of_type_Array2dOfLong, this.a.jdField_a_of_type_Int, this.a.b, MemoryManager.a(Process.myPid())) / 12000L) {
+      this.a.a(7, null);
     }
-  }
-  
-  @TargetApi(9)
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureManager", 2, "sigTplResDownloadListener.onDone| task:" + paramDownloadTask);
-    }
-    Object localObject2 = paramDownloadTask.a();
-    if (localObject2 != null) {}
-    for (int i = ((Bundle)localObject2).getInt("resType");; i = 0)
+    Object localObject;
+    do
     {
-      switch (i)
+      do
       {
-      }
-      label256:
-      label385:
-      for (;;)
-      {
-        return;
-        if ((3 == paramDownloadTask.a()) || (paramDownloadTask.a() == 0))
+        do
         {
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-          label177:
-          Object localObject1;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-          {
-            paramDownloadTask = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("sigResUpt", 0);
-            i = paramDownloadTask.getInt("sigTplCfgVerTemp", 0);
-            paramDownloadTask = paramDownloadTask.edit();
-            paramDownloadTask.putInt("sigTplCfgVer", i);
-            if (Build.VERSION.SDK_INT <= 8) {
-              paramDownloadTask.commit();
-            }
-          }
-          else
-          {
-            if (SignatureManager.a(this.a) == null) {
-              break label256;
-            }
-            paramDownloadTask = new File(SignatureManager.b);
-            localObject1 = SignatureManager.a(this.a);
-            localObject2 = IndividuationUrlHelper.a("signatureTemplate");
-            if (!paramDownloadTask.exists()) {
-              break label258;
-            }
-          }
-          label258:
-          for (long l = paramDownloadTask.length();; l = -1L)
-          {
-            ((PreDownloadController)localObject1).a((String)localObject2, l);
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("SignatureManager", 2, "[preDownload]:preDownload individual sign Success");
-            return;
-            paramDownloadTask.apply();
-            break label177;
-            break;
-          }
-          if ((3 == paramDownloadTask.a()) || (paramDownloadTask.a() == 0))
-          {
-            i = ((Bundle)localObject2).getInt("dynamicType");
-            localObject1 = ((Bundle)localObject2).getString("tplId");
-            localObject2 = ((Bundle)localObject2).getString("fileName");
-            paramDownloadTask = null;
-            switch (i)
-            {
-            }
-            for (;;)
-            {
-              if (paramDownloadTask == null) {
-                break label385;
-              }
-              paramDownloadTask = new File(paramDownloadTask);
-              if (!DownloaderFactory.a(new File(SignatureTemplateConfig.a((String)localObject1, (String)localObject2)), paramDownloadTask, true)) {
-                break;
-              }
-              this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(3);
-              return;
-              paramDownloadTask = SignatureTemplateConfig.a((String)localObject1, "dynamic_aio");
-            }
-          }
-        }
-      }
+          return;
+        } while (this.d != 1L);
+        MemoryManager.a().a("LITE_GUARD");
+        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      } while (localObject == null);
+      localObject = (PreDownloadScheduler)((QQAppInterface)localObject).getManager(232);
+    } while (localObject == null);
+    ((PreDownloadScheduler)localObject).a(true);
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
     }
   }
   
-  public boolean onStart(DownloadTask paramDownloadTask)
+  protected void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureManager", 2, "sigTplResDownloadListener.onStart| task:" + paramDownloadTask);
+    if (this.c > 2L) {
+      this.c -= 2L;
     }
-    super.onStart(paramDownloadTask);
-    return true;
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    CoreService.startCoreService(zlp.a().a);
+    this.a.b();
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(3, 0L, 0L);
   }
 }
 

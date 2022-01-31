@@ -7,16 +7,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mapsdk.raster.model.BitmapDescriptorFactory;
 import com.tencent.mapsdk.raster.model.GeoPoint;
 import com.tencent.mapsdk.raster.model.LatLng;
-import com.tencent.mapsdk.rastercore.d.e;
-import java.io.File;
+import com.tencent.mapsdk.rastercore.d.f;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Stack;
 
 public final class b
 {
@@ -40,10 +41,18 @@ public final class b
   
   public static Bitmap a(Bitmap paramBitmap, float paramFloat)
   {
-    if (paramBitmap == null) {
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
       return null;
     }
-    return Bitmap.createScaledBitmap(paramBitmap, (int)(paramBitmap.getWidth() * paramFloat), (int)(paramBitmap.getHeight() * paramFloat), true);
+    int i = (int)(paramBitmap.getWidth() * paramFloat);
+    int j = (int)(paramBitmap.getHeight() * paramFloat);
+    try
+    {
+      paramBitmap = Bitmap.createScaledBitmap(paramBitmap, i, j, true);
+      return paramBitmap;
+    }
+    catch (Exception paramBitmap) {}
+    return null;
   }
   
   public static Bitmap a(String paramString)
@@ -80,7 +89,7 @@ public final class b
       return localObject;
       try
       {
-        localApplicationInfo = paramContext.getPackageManager().getApplicationInfo(e.a().getPackageName(), 128);
+        localApplicationInfo = paramContext.getPackageManager().getApplicationInfo(f.a().getPackageName(), 128);
         paramContext = localApplicationInfo.metaData.getString("com.tencent.map.api_key");
         localObject = paramContext;
       }
@@ -130,22 +139,54 @@ public final class b
     return localStringBuilder.toString();
   }
   
-  private static boolean a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6)
+  public static void a(View paramView, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (Math.abs((paramDouble3 - paramDouble1) * (paramDouble6 - paramDouble2) - (paramDouble5 - paramDouble1) * (paramDouble4 - paramDouble2)) < 1.E-009D)
+    Field localField = null;
+    Object localObject2 = View.class.getMethods();
+    int j = localObject2.length;
+    int i = 0;
+    for (;;)
     {
-      bool1 = bool2;
-      if ((paramDouble1 - paramDouble3) * (paramDouble1 - paramDouble5) <= 0.0D)
+      Object localObject1;
+      if (i < j)
       {
-        bool1 = bool2;
-        if ((paramDouble2 - paramDouble4) * (paramDouble2 - paramDouble6) <= 0.0D) {
-          bool1 = true;
-        }
+        localObject1 = localObject2[i];
+        if (!localObject1.getName().equals("setLayerType")) {}
       }
+      else
+      {
+        while (localObject1 != null)
+        {
+          switch (paramInt)
+          {
+          }
+          for (;;)
+          {
+            localObject2 = localField;
+            if (localField == null) {}
+            try
+            {
+              localObject2 = View.class.getField("LAYER_TYPE_SOFTWARE");
+              localObject1.invoke(paramView, new Object[] { Integer.valueOf(((Field)localObject2).getInt(null)), null });
+              return;
+            }
+            catch (Exception paramView)
+            {
+              paramView.printStackTrace();
+              return;
+            }
+            localField = View.class.getField("LAYER_TYPE_NONE");
+            continue;
+            localField = View.class.getField("LAYER_TYPE_SOFTWARE");
+            continue;
+            localField = View.class.getField("LAYER_TYPE_HARDWARE");
+          }
+          localObject1 = null;
+        }
+        return;
+      }
+      i += 1;
     }
-    return bool1;
   }
   
   public static boolean a(float paramFloat1, float paramFloat2)
@@ -186,127 +227,43 @@ public final class b
   
   public static boolean a(LatLng paramLatLng, List<LatLng> paramList)
   {
-    double d1 = paramLatLng.getLongitude();
-    double d2 = paramLatLng.getLatitude();
-    double d3 = paramLatLng.getLatitude();
-    int i = 0;
-    int j = 0;
-    if (j < paramList.size() - 1)
+    boolean bool;
+    if ((paramList == null) || (paramList.size() < 3) || (paramLatLng == null)) {
+      bool = false;
+    }
+    int i;
+    int k;
+    int j;
+    do
     {
-      double d5 = ((LatLng)paramList.get(j)).getLongitude();
-      double d6 = ((LatLng)paramList.get(j)).getLatitude();
-      double d7 = ((LatLng)paramList.get(j + 1)).getLongitude();
-      double d8 = ((LatLng)paramList.get(j + 1)).getLatitude();
-      if (a(d1, d2, d5, d6, d7, d8)) {
-        return true;
-      }
-      if (Math.abs(d8 - d6) < 1.E-009D) {
-        break label356;
-      }
-      if (a(d5, d6, d1, d2, 180.0D, d3))
+      return bool;
+      i = paramList.size();
+      k = 0;
+      j = i - 1;
+      i = 0;
+      bool = k;
+    } while (i >= paramList.size());
+    if (((((LatLng)paramList.get(i)).getLatitude() < paramLatLng.getLatitude()) && (((LatLng)paramList.get(j)).getLatitude() >= paramLatLng.getLatitude())) || ((((LatLng)paramList.get(j)).getLatitude() < paramLatLng.getLatitude()) && (((LatLng)paramList.get(i)).getLatitude() >= paramLatLng.getLatitude()) && ((((LatLng)paramList.get(i)).getLongitude() <= paramLatLng.getLongitude()) || (((LatLng)paramList.get(j)).getLongitude() <= paramLatLng.getLongitude())))) {
+      if (((LatLng)paramList.get(i)).getLongitude() + (paramLatLng.getLatitude() - ((LatLng)paramList.get(i)).getLatitude()) / (((LatLng)paramList.get(j)).getLatitude() - ((LatLng)paramList.get(i)).getLatitude()) * (((LatLng)paramList.get(j)).getLongitude() - ((LatLng)paramList.get(i)).getLongitude()) < paramLatLng.getLongitude())
       {
-        if (d6 <= d8) {
-          break label356;
-        }
-        i += 1;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        if (!a(d7, d8, d1, d2, 180.0D, d3)) {
-          break label214;
-        }
-        if (d8 <= d6) {
-          break label356;
-        }
-        i += 1;
-      }
-      label214:
-      double d9 = (d7 - d5) * (d3 - d2) - (d8 - d6) * (180.0D - d1);
-      if (d9 == 0.0D) {
-        break label359;
-      }
-      double d4 = ((d6 - d2) * (180.0D - d1) - (d5 - d1) * (d3 - d2)) / d9;
-      d5 = ((d7 - d5) * (d6 - d2) - (d5 - d1) * (d8 - d6)) / d9;
-      if ((d4 < 0.0D) || (d4 > 1.0D) || (d5 < 0.0D) || (d5 > 1.0D)) {
-        break label359;
+        j = 1;
+        label278:
+        k ^= j;
       }
     }
-    label356:
-    label359:
-    for (int k = 1;; k = 0)
+    for (;;)
     {
-      if (k != 0)
-      {
-        i += 1;
-        break;
-        return i % 2 != 0;
-      }
+      j = i;
+      i += 1;
       break;
+      j = 0;
+      break label278;
     }
   }
   
   public static final boolean a(Collection<?> paramCollection)
   {
     return (paramCollection == null) || (paramCollection.size() <= 0);
-  }
-  
-  public static void b(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    for (;;)
-    {
-      return;
-      Stack localStack = new Stack();
-      localStack.push(paramString);
-      while (!localStack.isEmpty())
-      {
-        File localFile = new File((String)localStack.peek());
-        if (localFile.exists())
-        {
-          if (localFile.isDirectory())
-          {
-            paramString = localFile.listFiles();
-            if ((paramString == null) || (paramString.length == 0))
-            {
-              localFile.delete();
-              localStack.pop();
-            }
-            else
-            {
-              int j = paramString.length;
-              int i = 0;
-              label99:
-              if (i < j)
-              {
-                localFile = paramString[i];
-                if (!localFile.isDirectory()) {
-                  break label134;
-                }
-                localStack.push(localFile.getAbsolutePath());
-              }
-              for (;;)
-              {
-                i += 1;
-                break label99;
-                break;
-                label134:
-                localFile.delete();
-              }
-            }
-          }
-          else
-          {
-            localFile.delete();
-            localStack.pop();
-          }
-        }
-        else {
-          localStack.pop();
-        }
-      }
-    }
   }
 }
 

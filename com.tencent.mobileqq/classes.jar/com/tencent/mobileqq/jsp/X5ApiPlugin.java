@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import adyj;
+import aegt;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -64,7 +64,7 @@ public class X5ApiPlugin
   private void a(WebView paramWebView, X5ApiPlugin.PreloadTask paramPreloadTask)
   {
     this.a.put(paramPreloadTask.jdField_a_of_type_JavaLangString, paramPreloadTask);
-    ThreadManager.post(new adyj(this, paramPreloadTask, paramWebView), 5, null, true);
+    ThreadManager.post(new aegt(this, paramPreloadTask, paramWebView), 5, null, true);
   }
   
   private void a(boolean paramBoolean)

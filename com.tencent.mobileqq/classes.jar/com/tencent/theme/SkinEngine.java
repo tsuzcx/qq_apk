@@ -122,10 +122,10 @@ public class SkinEngine
       bool = true;
       a = bool;
       if (Build.VERSION.SDK_INT < 24) {
-        break label413;
+        break label421;
       }
     }
-    label413:
+    label421:
     for (boolean bool = true;; bool = false)
     {
       b = bool;
@@ -134,8 +134,12 @@ public class SkinEngine
       mComposedIconInfoOfCM = null;
       IS_PROBLEM_CM11 = false;
       mIconResourceID = null;
-      e = new String[][] { { "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-hdpi/", "drawable-xhdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/" }, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable/" }, { "drawable-xxhdpi", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" } };
-      f = new int[][] { { 320, 240, 160, 160 }, { 240, 320, 160, 160 }, { 160, 160, 240, 320 }, { 120, 160, 240, 320, 160 }, { 480, 320, 240, 160, 160 } };
+      Object localObject = { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/" };
+      e = new String[][] { { "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-hdpi/", "drawable-xhdpi/", "drawable-mdpi/", "drawable/" }, localObject, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable/" }, { "drawable-xxhdpi", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" } };
+      localObject = new int[] { 240, 320, 160, 160 };
+      int[] arrayOfInt1 = { 120, 160, 240, 320, 160 };
+      int[] arrayOfInt2 = { 480, 320, 240, 160, 160 };
+      f = new int[][] { { 320, 240, 160, 160 }, localObject, { 160, 160, 240, 320 }, arrayOfInt1, arrayOfInt2 };
       g = 0;
       h = 1;
       i = 2;

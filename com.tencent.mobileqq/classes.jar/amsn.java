@@ -1,36 +1,64 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneVipInfoManager;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.dingdong.DingdongPluginHelper;
+import cooperation.dingdong.DingdongPluginRemoteCmdHandler;
+import java.util.ArrayList;
 
 public class amsn
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+  extends DiscussionObserver
 {
-  public amsn(QZoneVipInfoManager paramQZoneVipInfoManager) {}
+  public amsn(DingdongPluginRemoteCmdHandler paramDingdongPluginRemoteCmdHandler) {}
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
   {
-    paramSharedPreferences = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramSharedPreferences != null)
+    Object localObject;
+    if (DingdongPluginRemoteCmdHandler.a(this.a))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged key = " + paramString);
+      DingdongPluginRemoteCmdHandler.a(this.a, false);
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (!TextUtils.isEmpty(DingdongPluginRemoteCmdHandler.a(this.a))) {
+        DingdongPluginRemoteCmdHandler.a(this.a, (QQAppInterface)localObject, DingdongPluginRemoteCmdHandler.a(this.a), paramLong);
       }
-      if ((!QZoneVipInfoManager.a(this.a)) && (QZoneVipInfoManager.a(this.a) != null))
-      {
-        if (QZoneVipInfoManager.a(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          QZoneVipInfoManager.a(this.a, QZoneVipInfoManager.a(this.a).getInt(paramString, 0));
-        }
-        if (QZoneVipInfoManager.b(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          QZoneVipInfoManager.c(this.a, QZoneVipInfoManager.a(this.a).getString(paramString, null));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged value = " + QZoneVipInfoManager.a(this.a) + " personlizedYellowVipUrl = " + QZoneVipInfoManager.a(this.a));
-        }
+      if (localObject != null) {
+        ((QQAppInterface)localObject).removeObserver(DingdongPluginRemoteCmdHandler.a(this.a));
       }
-      QZoneVipInfoManager.a(this.a, false);
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("reqCode", 5);
+      ((Intent)localObject).putExtra("isSuccess", paramBoolean);
+      ((Intent)localObject).putExtra("roomId", paramLong);
+      ((Intent)localObject).putExtra("discussName", paramString);
+      ((Intent)localObject).putExtra("discuss_create_reason", DingdongPluginRemoteCmdHandler.a(this.a));
+      ((Intent)localObject).putExtra("createdFlag", 1);
+      if (DingdongPluginRemoteCmdHandler.b(this.a) == 1) {
+        DingdongPluginHelper.a(10, (Intent)localObject);
+      }
+    }
+    else
+    {
+      return;
+    }
+    DingdongPluginHelper.a(2, (Intent)localObject);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  {
+    if (DingdongPluginRemoteCmdHandler.a(this.a))
+    {
+      DingdongPluginRemoteCmdHandler.a(this.a, false);
+      paramArrayList = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (paramArrayList != null) {
+        paramArrayList.removeObserver(DingdongPluginRemoteCmdHandler.a(this.a));
+      }
+      paramArrayList = new Intent();
+      paramArrayList.putExtra("reqCode", 7);
+      paramArrayList.putExtra("isSuccess", paramBoolean);
+      paramArrayList.putExtra("roomId", paramLong);
+      if (DingdongPluginRemoteCmdHandler.b(this.a) == 1) {
+        DingdongPluginHelper.a(11, paramArrayList);
+      }
     }
   }
 }

@@ -34,8 +34,8 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
-import omk;
-import oml;
+import oqw;
+import oqx;
 
 public class StoryEffectsCameraCaptureFragment
   extends EffectsCameraCaptureFragment
@@ -116,21 +116,21 @@ public class StoryEffectsCameraCaptureFragment
       SLog.d("story.publish.CaptureFragment", "setVideoSizeRate=%s, defaultRatio=%s, storyVideoWidth=%d, storyVideoHeight=%d, previewWidth=%d, previewHeight=%d", new Object[] { Float.valueOf(Math.max(f2, f3)), Float.valueOf(f1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(localSize.a()), Integer.valueOf(localSize.b()) });
       j = SVParamManager.a().a(2) * 1000;
       if (i <= 0) {
-        break label474;
+        break label475;
       }
       i *= 1000;
-      localCaptureParam.d(i);
+      localCaptureParam.h(i);
       com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.r = i;
       SLog.d("story.publish.CaptureFragment", "setVideoBitRate=%d, defaultBitRate=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       label288:
       if (StoryConfigManager.b())
       {
-        localCaptureParam.g(0);
+        localCaptureParam.k(0);
         SLog.b("story.publish.CaptureFragment", "CQ bitrate mode is enable when story record");
       }
       if (StoryConfigManager.c())
       {
-        localCaptureParam.h(8);
+        localCaptureParam.l(8);
         SLog.b("story.publish.CaptureFragment", "codec high profile is enable when story record");
       }
       if (StoryConfigManager.d())
@@ -139,29 +139,29 @@ public class StoryEffectsCameraCaptureFragment
         i = ((Integer)localStoryConfigManager.b("int_story_debug_bitrate", Integer.valueOf(2000))).intValue();
         j = ((Integer)localStoryConfigManager.b("int_story_debug_bitrate_mode", Integer.valueOf(-1))).intValue();
         boolean bool = ((Boolean)localStoryConfigManager.b("boolean_story_debug_use_high_profile", Boolean.valueOf(false))).booleanValue();
-        localCaptureParam.d(i * 1000);
-        localCaptureParam.g(j);
+        localCaptureParam.h(i * 1000);
+        localCaptureParam.k(j);
         if (!bool) {
-          break label509;
+          break label510;
         }
-        localCaptureParam.h(8);
+        localCaptureParam.l(8);
       }
     }
     for (;;)
     {
-      localCaptureParam.e(1);
-      localCaptureParam.c(2);
+      localCaptureParam.i(1);
+      localCaptureParam.g(2);
       return localCaptureParam;
       localCaptureParam.a(f1);
       SLog.d("story.publish.CaptureFragment", "setVideoSizeRate=%s as default", new Object[] { Float.valueOf(f1) });
       break;
-      label474:
-      localCaptureParam.d(j);
+      label475:
+      localCaptureParam.h(j);
       com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.r = j;
       SLog.d("story.publish.CaptureFragment", "setVideoBitRate=%d as default", new Object[] { Integer.valueOf(j) });
       break label288;
-      label509:
-      localCaptureParam.h(-1);
+      label510:
+      localCaptureParam.l(-1);
     }
   }
   
@@ -265,9 +265,9 @@ public class StoryEffectsCameraCaptureFragment
     }
   }
   
-  public void aj_()
+  public void al_()
   {
-    super.aj_();
+    super.al_();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
     while (localIterator.hasNext()) {
       ((StoryCapturePart)localIterator.next()).a();
@@ -277,7 +277,7 @@ public class StoryEffectsCameraCaptureFragment
   
   protected int b()
   {
-    return 2130970716;
+    return 2130970732;
   }
   
   public boolean b()
@@ -350,12 +350,12 @@ public class StoryEffectsCameraCaptureFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    LayoutModifier.a(paramLayoutInflater, new omk(this, paramLayoutInflater));
+    LayoutModifier.a(paramLayoutInflater, new oqw(this, paramLayoutInflater));
     paramViewGroup = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramViewGroup.setFocusable(true);
     paramViewGroup.setFocusableInTouchMode(true);
     paramViewGroup.requestFocus();
-    paramViewGroup.setOnKeyListener(new oml(this, null));
+    paramViewGroup.setOnKeyListener(new oqx(this, null));
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
     while (localIterator.hasNext()) {
       ((StoryCapturePart)localIterator.next()).a(paramLayoutInflater, paramViewGroup, paramBundle);

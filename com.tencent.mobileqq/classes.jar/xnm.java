@@ -1,121 +1,28 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.common.GloableValue;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.utils.ThumbnailUtils;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.FileUtils;
-import cooperation.qzone.video.QzoneVideoBeaconReport;
-import java.io.File;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager.ShowInfo;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
+import java.lang.ref.WeakReference;
 
-public class xnm
+public final class xnm
   implements Runnable
 {
-  public xnm(EditLocalVideoActivity paramEditLocalVideoActivity, int paramInt1, int paramInt2) {}
+  public xnm(WeakReference paramWeakReference1, WeakReference paramWeakReference2, int paramInt) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.getResources().getDisplayMetrics().widthPixels / 6;
-    float f = this.jdField_a_of_type_Int * 1.0F / this.b;
-    int k;
-    int n;
-    int m;
-    int j;
-    if (f <= 1.0F)
+    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    RedDotImageView localRedDotImageView = (RedDotImageView)this.b.get();
+    if ((localObject != null) && (localRedDotImageView != null))
     {
-      k = (int)(i / f);
-      n = (k - i) / 2;
-      m = 0;
-      j = i;
-      if (!TextUtils.isEmpty(EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity))) {
-        break label121;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("EditLocalVideoActivity", 2, "initFramesBar, mTrimVideoPath is null");
-      }
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).sendEmptyMessage(1001);
-    }
-    for (;;)
-    {
-      return;
-      j = (int)(f * i);
-      m = (j - i) / 2;
-      n = 0;
-      k = i;
-      break;
-      label121:
-      if (!EditLocalVideoActivity.b())
+      localObject = (QWalletRedManager)((QQAppInterface)localObject).getManager(272);
+      QWalletRedManager.ShowInfo localShowInfo = ((QWalletRedManager)localObject).a("2001");
+      if ((localShowInfo.a) && (QWalletTools.a(localShowInfo.b, this.jdField_a_of_type_Int)))
       {
-        i = ThumbnailUtils.a(EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity), j, k, m, n, i, i);
-        if (QLog.isColorLevel()) {
-          QLog.d("EditLocalVideoActivity", 2, "init, status1=" + i + ", dstWidth=" + j + ", dstHeight=" + k);
-        }
-        if (i != 0)
-        {
-          QzoneVideoBeaconReport.a(EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity), "qzone_video_trim", "2", null);
-          EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).sendEmptyMessage(1001);
-          return;
-        }
+        ((QWalletRedManager)localObject).b("2001");
+        localRedDotImageView.post(new xnn(this));
       }
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).a(EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity), EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity));
-      if (EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
-        EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, (int)EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).a());
-      }
-      if (EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
-        EditLocalVideoActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, (int)EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).b());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("EditLocalVideoActivity", 2, "mStartTime=" + EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) + ", mEndTime=" + EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity));
-      }
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setPlayDuration(EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity), EditLocalVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) - EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity));
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).sendEmptyMessage(1100);
-      if (!EditLocalVideoActivity.b())
-      {
-        if (TextUtils.isEmpty(EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity))) {}
-        for (i = -999;; i = ThumbnailUtils.a(EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity), this.jdField_a_of_type_Int, this.b))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("EditLocalVideoActivity", 2, "init, status0=" + i);
-          }
-          if (i == 0) {
-            break;
-          }
-          QzoneVideoBeaconReport.a(EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity), "qzone_video_trim", "3", null);
-          EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).sendEmptyMessage(1000);
-          return;
-        }
-      }
-      try
-      {
-        Object localObject;
-        Bitmap localBitmap;
-        if (EditLocalVideoActivity.b())
-        {
-          localObject = new MediaMetadataRetriever();
-          ((MediaMetadataRetriever)localObject).setDataSource(EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity));
-          localBitmap = ((MediaMetadataRetriever)localObject).getFrameAtTime(EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) * 1000, 3);
-          ((MediaMetadataRetriever)localObject).release();
-        }
-        while (localBitmap != null)
-        {
-          localObject = GloableValue.a + File.separator + System.currentTimeMillis() + ".jpg";
-          if (FileUtils.a((String)localObject, localBitmap)) {
-            EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).obtainMessage(1102, localObject).sendToTarget();
-          }
-          localBitmap.recycle();
-          return;
-          localBitmap = ThumbnailUtils.a(0L, 1000L);
-        }
-        return;
-      }
-      catch (Throwable localThrowable) {}
     }
   }
 }

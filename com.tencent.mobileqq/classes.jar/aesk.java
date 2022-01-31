@@ -1,82 +1,38 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.PublishCommentCallback;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSourceImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentResp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.utils.MusicCacheManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.Calendar;
 
 public class aesk
-  extends ProtoUtils.TroopGiftProtocolObserver
+  implements Runnable
 {
-  public aesk(CommentsDataSourceImpl paramCommentsDataSourceImpl, CommentsDataSource.PublishCommentCallback paramPublishCommentCallback, Comments.Comment paramComment) {}
+  public aesk(QQPlayerService paramQQPlayerService) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    SharedPreferences localSharedPreferences = this.a.getSharedPreferences("QQPlayerService.sp", 0);
+    long l1 = localSharedPreferences.getLong("del_timestamp", 0L);
+    long l2 = localCalendar.getTimeInMillis();
+    if (l1 < l2)
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("CommentsDataSource", 2, "err_msg:   " + paramBundle.err_msg.get());
-        }
-        if (!paramBundle.busi_buf.has())
-        {
-          QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
-          return;
-        }
-        paramArrayOfByte = new NowNearbyVideoCommentProto.AddCommentResp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        QLog.i("CommentsDataSource", 1, "id: " + paramArrayOfByte.comment_id.get() + ",ret:" + paramArrayOfByte.result.get());
-        if (paramArrayOfByte.result.get() != 0L)
-        {
-          QLog.i("CommentsDataSource", 1, "error code :" + paramArrayOfByte.result.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
-          return;
-        }
+      localSharedPreferences.edit().putLong("del_timestamp", l2).commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCacheManager", 2, "lastDel<today =====>> delCacheByTimeAndSpace");
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("CommentsDataSource", 1, "merge publish resp data error");
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
-        return;
-      }
-      if (paramArrayOfByte.comment_id.get() > 0L)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a = paramArrayOfByte.comment_id.get();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
-        CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).add(Long.valueOf(paramArrayOfByte.comment_id.get()));
-        paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramArrayOfByte != null) {
-          ((NearbyMomentManager)paramArrayOfByte.getManager(262)).f(CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).a);
-        }
-      }
-    }
-    else
-    {
-      QLog.i("CommentsDataSource", 1, "publishComment failed");
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+      MusicCacheManager.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesk
  * JD-Core Version:    0.7.0.1
  */

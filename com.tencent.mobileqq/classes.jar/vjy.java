@@ -1,26 +1,35 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
+import android.text.TextUtils;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.io.File;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.Holder;
+import com.tencent.mobileqq.activity.aio.item.SignatureView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo;
+import mqq.app.MobileQQ;
 
 public class vjy
-  implements Runnable
+  implements URLDrawable.URLDrawableListener
 {
-  public vjy(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder, BubbleImageView paramBubbleImageView, String paramString, int paramInt) {}
+  public vjy(RichStatItemBuilder paramRichStatItemBuilder, RichStatItemBuilder.Holder paramHolder) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131362148).equals(this.jdField_a_of_type_JavaLangString))
-    {
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(this.jdField_a_of_type_Int);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(this.jdField_a_of_type_Int);
-      localObject = URLDrawable.getDrawable(new File(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int)), (URLDrawable.URLDrawableOptions)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable((Drawable)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.a = SignatureManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager, RichStatItemBuilder.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    paramURLDrawable = ((SignatureManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(57)).a(Integer.toString(RichStatItemBuilder.a().tplId));
+    if (!TextUtils.isEmpty(paramURLDrawable.p)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.c = Color.parseColor(paramURLDrawable.p);
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.invalidate();
   }
 }
 

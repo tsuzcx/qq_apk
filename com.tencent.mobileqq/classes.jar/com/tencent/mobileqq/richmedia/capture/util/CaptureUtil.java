@@ -166,16 +166,19 @@ public class CaptureUtil
           {
             i = 1;
             jdField_a_of_type_Int = i;
+            if (QLog.isColorLevel()) {
+              QLog.d("CaptureUtil", 2, "PTV_FILTER_SO_LOADED : " + jdField_a_of_type_Int);
+            }
             if (!PtvFilterSoLoad.e()) {
-              break label131;
+              break label164;
             }
             if (!SoLoader.h()) {
-              break label121;
+              break label154;
             }
-            break label131;
+            break label164;
             d();
             if ((!bool2) || (!bool3) || (!bool4) || (i == 0)) {
-              break label126;
+              break label159;
             }
             c = bool1;
           }
@@ -192,12 +195,12 @@ public class CaptureUtil
         i = 0;
       }
       finally {}
-      label121:
+      label154:
       continue;
-      label126:
+      label159:
       bool1 = false;
       continue;
-      label131:
+      label164:
       int i = 1;
     }
   }

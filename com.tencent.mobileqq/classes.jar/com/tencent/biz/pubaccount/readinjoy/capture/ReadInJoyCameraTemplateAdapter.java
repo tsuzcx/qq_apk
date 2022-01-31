@@ -13,9 +13,9 @@ import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadLi
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import lhs;
-import lht;
-import lhu;
+import lkg;
+import lkh;
+import lki;
 
 public class ReadInJoyCameraTemplateAdapter
   extends BaseAdapter
@@ -23,10 +23,10 @@ public class ReadInJoyCameraTemplateAdapter
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private ReadInJoyCameraTemplateItemView.TemplateItemCallback jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateItemView$TemplateItemCallback = new lht(this);
+  private ReadInJoyCameraTemplateItemView.TemplateItemCallback jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraTemplateItemView$TemplateItemCallback = new lkh(this);
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private SplitEffectsCameraCaptureView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView;
-  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new lhu(this);
+  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new lki(this);
   private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
   private PtvTemplateManager jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager;
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
@@ -60,7 +60,7 @@ public class ReadInJoyCameraTemplateAdapter
   
   public void a(ArrayList paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.post(new lhs(this, paramArrayList));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.post(new lkg(this, paramArrayList));
   }
   
   public int getCount()

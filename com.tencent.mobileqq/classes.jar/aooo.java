@@ -1,68 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
-public class aooo
-  implements Runnable
+class aooo
+  implements DialogInterface.OnClickListener
 {
-  public aooo(PtvTemplateManager paramPtvTemplateManager, AppInterface paramAppInterface, File paramFile) {}
+  aooo(aoon paramaoon) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
-      {
-        bool = true;
-        QLog.i("PtvTemplateManager", 2, String.format("initBlessSpecialPendantConfigInfo, app[%s], isUpdateedByServer[%s], cur_runnable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_Boolean), Integer.valueOf(hashCode()) }));
-      }
+    paramDialogInterface = this.a.a.getIntent();
+    paramDialogInterface.putExtra("flow_back", 0);
+    this.a.a.setResult(1001, paramDialogInterface);
+    paramDialogInterface = null;
+    if (this.a.a.g) {
+      paramDialogInterface = this.a.a.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoClipSpec;
     }
-    else {
-      if (!this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_Boolean) {
-        break label76;
-      }
-    }
-    label76:
-    Object localObject1;
-    do
-    {
-      do
-      {
-        return;
-        bool = false;
-        break;
-        localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_JavaIoFile);
-      } while (TextUtils.isEmpty((CharSequence)localObject1));
-      localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager, (String)localObject1);
-    } while ((localObject1 == null) || (((List)localObject1).isEmpty()));
-    ??? = ((List)localObject1).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)???).next();
-      if (localPtvTemplateInfo != null)
-      {
-        localPtvTemplateInfo.usable = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
-        localPtvTemplateInfo.businessID = 1;
-      }
-    }
-    synchronized (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_JavaUtilArrayList)
-    {
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_Boolean) {
-        return;
-      }
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_JavaUtilArrayList.addAll(localCollection);
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.f = true;
-    PtvTemplateManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager);
+    this.a.a.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a(this.a.a.d, this.a.a.e, this.a.a.n, this.a.a.g, paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

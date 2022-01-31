@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amul;
+import anbw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class CoverCacheData$PackageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amul();
+  public static final Parcelable.Creator CREATOR = new anbw();
   public int a;
   public String a;
   public int b;

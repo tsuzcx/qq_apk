@@ -1,35 +1,69 @@
-import android.util.Pair;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Calendar;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class zhk
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public zhk(MessageRoamManager paramMessageRoamManager, int paramInt) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = Calendar.getInstance();
-    int j = this.jdField_a_of_type_Int;
-    int i = 8;
-    while (j < this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((Calendar)localObject).setTimeInMillis(((Long)this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.get(j)).longValue());
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)localObject);
-      Pair localPair = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)((Calendar)localObject).clone());
-      int k = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
-      if (i - k <= 0) {
-        break;
+    int j = 0;
+    int i = 0;
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, paramIntent.getAction());
       }
-      j += 1;
-      i -= k;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatHistoryForC2C.class);
-    ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(0), 0L);
+    for (;;)
+    {
+      return;
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+      {
+        if ((localBaseActivity.mStopFlag == 0) && (localBaseActivity.mCanLock) && (GesturePWDUtils.getGesturePWDState(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 2) && (GesturePWDUtils.getGesturePWDMode(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 21) && (!(localBaseActivity instanceof GesturePWDUnlockActivity)) && (!(localBaseActivity instanceof LoginActivity)) && (!GesturePWDUtils.getGestureLocking(localBaseActivity)))
+        {
+          localBaseActivity.startUnlockActivity();
+          BaseActivity.isUnLockSuccess = false;
+          if (BaseActivity.access$300() == null) {
+            continue;
+          }
+          if (SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131433595), "qqsetting_screenshot_key", false)) {
+            break label163;
+          }
+        }
+        for (;;)
+        {
+          if (i == 0) {
+            break label166;
+          }
+          localBaseActivity.turnOffShake();
+          return;
+          localBaseActivity.receiveScreenOff();
+          break;
+          label163:
+          i = 1;
+        }
+      }
+      else
+      {
+        label166:
+        if ((paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) && (BaseActivity.access$300() == null))
+        {
+          if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131433595), "qqsetting_screenshot_key", false)) {}
+          for (i = j; i != 0; i = 1)
+          {
+            localBaseActivity.turnOnShake();
+            return;
+          }
+        }
+      }
+    }
   }
 }
 

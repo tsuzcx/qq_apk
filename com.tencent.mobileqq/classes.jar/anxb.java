@@ -1,30 +1,83 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.util.ConfigSimplifier;
+import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
+import dov.com.qq.im.capture.util.ConfigSimplifier.ZipConfig;
+import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import java.io.File;
+import java.io.IOException;
 
 public class anxb
-  implements Animator.AnimatorListener
+  implements INetEngine.INetEngineListener
 {
-  public anxb(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
+  public anxb(ConfigSimplifier paramConfigSimplifier, String paramString1, String paramString2, ConfigSimplifier.ZipConfig paramZipConfig, String paramString3, String paramString4, ConfigSimplifier.ConfigDownloadCallback paramConfigDownloadCallback) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.a = false;
-  }
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(NetResp paramNetResp)
   {
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfigSimplifier_PTV", 2, "onResp resultcode: " + paramNetResp.c + " threadid=" + Thread.currentThread().getId());
+    }
+    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.b);
+    if (!localFile.exists()) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
+      }
+    }
+    label212:
+    do
+    {
+      for (;;)
+      {
+        return;
+        String str = "";
+        try
+        {
+          paramNetResp = FileUtils.b(localFile.getPath());
+          if ((TextUtils.isEmpty(this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ZipConfig.c)) || (!this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ZipConfig.c.equalsIgnoreCase(paramNetResp))) {}
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+        {
+          try
+          {
+            do
+            {
+              ZipUtils.a(localFile, this.c);
+              paramNetResp = new File(this.d);
+              if (!paramNetResp.exists()) {
+                break label212;
+              }
+              paramNetResp = QIMPtvTemplateManager.a(paramNetResp);
+              if ((this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ConfigDownloadCallback == null) || (paramNetResp == null)) {
+                break;
+              }
+              this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ConfigDownloadCallback.a(paramNetResp);
+              return;
+              localUnsatisfiedLinkError = localUnsatisfiedLinkError;
+              paramNetResp = str;
+            } while (!QLog.isColorLevel());
+            localUnsatisfiedLinkError.printStackTrace();
+            paramNetResp = str;
+          }
+          catch (IOException paramNetResp)
+          {
+            for (;;)
+            {
+              if (QLog.isColorLevel()) {
+                paramNetResp.printStackTrace();
+              }
+            }
+          }
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
   }
 }
 

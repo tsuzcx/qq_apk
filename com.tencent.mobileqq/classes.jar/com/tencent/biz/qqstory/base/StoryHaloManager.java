@@ -8,17 +8,24 @@ import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabHaloEntity;
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
 import com.tencent.biz.qqstory.network.handler.RecentTabHaloBatchLoader;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgListRingPushNotify;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
 import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tencent.mobileqq.servlet.PushServlet;
 import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +42,7 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
-import mzr;
+import ndm;
 import org.json.JSONObject;
 
 public class StoryHaloManager
@@ -49,8 +56,8 @@ public class StoryHaloManager
   private Double jdField_a_of_type_JavaLangDouble;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private volatile String jdField_a_of_type_JavaLangString;
-  public volatile List a;
   private Map jdField_a_of_type_JavaUtilMap;
+  private Set jdField_a_of_type_JavaUtilSet;
   
   public StoryHaloManager(QQAppInterface paramQQAppInterface)
   {
@@ -104,6 +111,32 @@ public class StoryHaloManager
     return i;
   }
   
+  private List a(Set paramSet, List paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject;
+    if ((paramSet == null) && (paramList == null)) {
+      localObject = localArrayList;
+    }
+    do
+    {
+      return localObject;
+      if (paramSet != null) {
+        break;
+      }
+      localObject = paramList;
+    } while (paramList != null);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      localObject = (Long)paramList.next();
+      if (!paramSet.contains(localObject)) {
+        localArrayList.add(localObject);
+      }
+    }
+    return localArrayList;
+  }
+  
   private void a()
   {
     if (QLog.isColorLevel()) {
@@ -121,19 +154,6 @@ public class StoryHaloManager
       return true;
     }
     return false;
-  }
-  
-  private boolean a(List paramList1, List paramList2)
-  {
-    if ((paramList1 == null) || (paramList2 == null)) {}
-    HashSet localHashSet;
-    do
-    {
-      return false;
-      paramList1 = new HashSet(paramList1);
-      localHashSet = new HashSet(paramList2);
-    } while (paramList1.size() != paramList2.size());
-    return paramList1.containsAll(localHashSet);
   }
   
   private void b(String paramString)
@@ -171,7 +191,7 @@ public class StoryHaloManager
   private boolean b(@Nullable MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     if (paramMsgTabNodeInfo == null) {}
-    while (paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.size() <= 0) {
+    while (paramMsgTabNodeInfo.a.size() <= 0) {
       return false;
     }
     return true;
@@ -336,7 +356,7 @@ public class StoryHaloManager
     if (QLog.isColorLevel()) {
       QLog.i("StoryHaloManager", 2, "onClick: invoked. Message: uin: " + paramRecentItemChatMsgData.a());
     }
-    Bosses.get().postLightWeightJob(new mzr(this, paramRecentItemChatMsgData, paramView), 0);
+    Bosses.get().postLightWeightJob(new ndm(this, paramRecentItemChatMsgData, paramView), 0);
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
@@ -361,7 +381,7 @@ public class StoryHaloManager
   {
     if (!a())
     {
-      paramRecentItemChatMsgData.o = 0;
+      paramRecentItemChatMsgData.q = 0;
       return;
     }
     Long localLong = Long.valueOf(paramRecentItemChatMsgData.a());
@@ -370,13 +390,13 @@ public class StoryHaloManager
     if (QLog.isColorLevel()) {
       QLog.i("StoryHaloManager", 2, "assignHaloState: invoked. Message: haloState: " + i + " uin: " + localLong + " msgTabNodeInfo: " + localMsgTabNodeInfo);
     }
-    paramRecentItemChatMsgData.o = i;
+    paramRecentItemChatMsgData.q = i;
   }
   
   public void a(ConfigurationService.Config paramConfig)
   {
     int i = paramConfig.version.get();
-    int j = SharedPreUtils.aV(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    int j = SharedPreUtils.aU(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     String str;
     if (i != j)
     {
@@ -489,6 +509,65 @@ public class StoryHaloManager
     localEntityManager.a().b();
   }
   
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (!a()) {}
+    label150:
+    do
+    {
+      qqstory_service.MsgListRingPushNotify localMsgListRingPushNotify;
+      do
+      {
+        do
+        {
+          for (;;)
+          {
+            return;
+            if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e("StoryHaloManager", 2, "onPushReceived: failed.  vProtobuf: empty. ");
+              }
+            }
+            else
+            {
+              localMsgListRingPushNotify = new qqstory_service.MsgListRingPushNotify();
+              try
+              {
+                localMsgListRingPushNotify.mergeFrom(paramArrayOfByte);
+                paramArrayOfByte = new MsgTabNodeInfo();
+                paramArrayOfByte.a((qqstory_service.MsgTabNodeInfo)localMsgListRingPushNotify.msglist_head_notify_node_info.get());
+                a(localMsgListRingPushNotify.bytes_msglist_current_seq.get().toStringUtf8());
+                if ((localMsgListRingPushNotify.uint32_is_test_env.get() != 1) || (PushServlet.a)) {
+                  break label150;
+                }
+                if (QLog.isColorLevel())
+                {
+                  QLog.i("StoryHaloManager", 2, "onPushReceived: invoked.  received test env push, but current not in test env. mark ignored.");
+                  return;
+                }
+              }
+              catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+            }
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("StoryHaloManager", 2, "onPushReceived: failed.  exception: " + paramArrayOfByte);
+        return;
+        if ((localMsgListRingPushNotify.uint32_msglist_notify_type.get() != 2) || (paramArrayOfByte.a == null) || (paramArrayOfByte.a.size() <= 0)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("StoryHaloManager", 2, "onPushReceived: failed.  exception: push error node. remove node must ensure videos empty. ");
+      return;
+      if ((localMsgListRingPushNotify.uint32_msglist_notify_type.get() != 1) || ((paramArrayOfByte.a != null) && (paramArrayOfByte.a.size() != 0))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("StoryHaloManager", 2, "onPushReceived: failed.  exception: push error node. update node must ensure videos not empty. ");
+    return;
+    a().a(paramArrayOfByte);
+  }
+  
   public boolean a()
   {
     String str;
@@ -558,8 +637,11 @@ public class StoryHaloManager
       if (b()) {
         return;
       }
-      if (!a(paramList, this.jdField_a_of_type_JavaUtilList)) {
-        a(paramInt, paramList);
+      List localList = a(this.jdField_a_of_type_JavaUtilSet, paramList);
+      if (localList.size() > 0)
+      {
+        this.jdField_a_of_type_JavaUtilSet = new HashSet(paramList);
+        a(paramInt, localList);
       }
       return;
     }
@@ -585,10 +667,10 @@ public class StoryHaloManager
     if (a(paramObject))
     {
       paramObject = (RecentItemChatMsgData)paramObject;
-      if (paramObject.o != -1)
+      if (paramObject.q != -1)
       {
         bool1 = bool2;
-        if (paramObject.o != -2) {}
+        if (paramObject.q != -2) {}
       }
       else
       {

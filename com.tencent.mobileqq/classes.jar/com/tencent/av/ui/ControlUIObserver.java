@@ -7,7 +7,7 @@ import com.tencent.mobileqq.utils.QAVGroupConfig.GroupInviteFlag;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import jrx;
+import jub;
 
 public class ControlUIObserver
   implements Observer
@@ -312,7 +312,7 @@ public class ControlUIObserver
       if (this.a == null) {
         this.a = new Handler(paramObservable);
       }
-      this.a.post(new jrx(this, paramObject));
+      this.a.post(new jub(this, paramObject));
       return;
     }
     d(paramObject);
@@ -324,7 +324,7 @@ public class ControlUIObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.ControlUIObserver
  * JD-Core Version:    0.7.0.1
  */

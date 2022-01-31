@@ -23,8 +23,8 @@ import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapte
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import java.util.List;
-import okd;
-import oke;
+import oos;
+import oot;
 
 public class FaceListPage
   extends RelativeLayout
@@ -148,16 +148,16 @@ public class FaceListPage
         SLog.b("FaceListPage", "FacePkg is already download.show face list.");
         this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(1);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(1);
-        postDelayed(new oke(this), 50L);
+        postDelayed(new oot(this), 50L);
         return;
       }
       this.jdField_a_of_type_AndroidWidgetListView.setVisibility(4);
       this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(4);
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      String str = (String)this.jdField_a_of_type_AndroidWidgetImageView.getTag(2131362360);
+      String str = (String)this.jdField_a_of_type_AndroidWidgetImageView.getTag(2131362363);
       if ((TextUtils.isEmpty(str)) || (!str.equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.d)))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131362360, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.d);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131362363, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.d);
         ImageLoader.a().a(super.getContext(), this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage.d, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, null);
       }
       TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
@@ -176,7 +176,7 @@ public class FaceListPage
       }
       this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(1);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843452);
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130843486);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
       return;
     }
@@ -185,16 +185,16 @@ public class FaceListPage
   private void d()
   {
     this.jdField_b_of_type_Int = AIOUtils.a(130.0F, super.getContext().getResources());
-    LayoutInflater.from(super.getContext()).inflate(2130970718, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371709));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371710));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131363005));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131371707));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131371708));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131371721));
-    this.c = ((LinearLayout)super.findViewById(2131371722));
-    this.d = ((LinearLayout)super.findViewById(2131371723));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363518));
+    LayoutInflater.from(super.getContext()).inflate(2130970734, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371707));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371708));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131363010));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)super.findViewById(2131371705));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131371706));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((RelativeLayout)super.findViewById(2131371720));
+    this.c = ((LinearLayout)super.findViewById(2131371721));
+    this.d = ((LinearLayout)super.findViewById(2131371722));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363537));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.c.setOnClickListener(this);
   }
@@ -237,7 +237,7 @@ public class FaceListPage
   public void a(FacePackage paramFacePackage)
   {
     if (!a()) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new okd(this, paramFacePackage));
+      this.jdField_a_of_type_AndroidOsHandler.post(new oos(this, paramFacePackage));
     }
     do
     {

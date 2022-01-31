@@ -1,22 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.utils.DingdongPluginBizObserver.TempLiteMailIndexInfo;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
-public final class zwx
-  implements Parcelable.Creator
+public class zwx
+  implements Comparator
 {
-  public DingdongPluginBizObserver.TempLiteMailIndexInfo a(Parcel paramParcel)
-  {
-    DingdongPluginBizObserver.TempLiteMailIndexInfo localTempLiteMailIndexInfo = new DingdongPluginBizObserver.TempLiteMailIndexInfo();
-    localTempLiteMailIndexInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localTempLiteMailIndexInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localTempLiteMailIndexInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    return localTempLiteMailIndexInfo;
-  }
+  public zwx(CleanCache paramCleanCache) {}
   
-  public DingdongPluginBizObserver.TempLiteMailIndexInfo[] a(int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    return new DingdongPluginBizObserver.TempLiteMailIndexInfo[paramInt];
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 

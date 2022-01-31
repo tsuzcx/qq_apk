@@ -1,14 +1,13 @@
-import com.tencent.component.network.utils.http.pool.ConnFactory;
-import org.apache.http.conn.OperatedClientConnection;
-import org.apache.http.conn.routing.HttpRoute;
-import org.apache.http.impl.conn.DefaultClientConnection;
-
-class plb
-  implements ConnFactory
+public class plb
 {
-  public OperatedClientConnection a(HttpRoute paramHttpRoute)
+  public int a;
+  public String a;
+  public int b = 0;
+  
+  public plb()
   {
-    return new DefaultClientConnection();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

@@ -1,14 +1,14 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
 public class msg
-  extends MessageObserver
+  implements Runnable
 {
-  public msg(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public msg(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void run()
   {
-    this.a.b();
+    FastWebVideoFeedsListView.a(this.a, true);
+    this.a.smoothScrollBy(-FastWebVideoFeedsListView.d(this.a), 0);
   }
 }
 

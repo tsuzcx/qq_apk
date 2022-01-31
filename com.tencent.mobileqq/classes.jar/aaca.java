@@ -1,94 +1,72 @@
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.FaceScanDownloadManager.DownloadCallback;
-import com.tencent.mobileqq.ar.aidl.IArFaceCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.FTSDBManager;
+import com.tencent.mobileqq.app.proxy.fts.FTSMsgOperator;
+import com.tencent.mobileqq.app.proxy.fts.FTSMsgUpgrader;
+import com.tencent.mobileqq.app.proxy.fts.FTSSyncHandler;
+import com.tencent.mobileqq.persistence.fts.FTSDatatbase;
 import com.tencent.qphone.base.util.QLog;
 
 public class aaca
-  implements FaceScanDownloadManager.DownloadCallback
+  implements Runnable
 {
-  public aaca(ArConfigService paramArConfigService) {}
+  public aaca(FTSMsgUpgrader paramFTSMsgUpgrader) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (ArConfigService.b(this.a) != null) {
-      try
+    if ((!FTSMsgUpgrader.a(this.a)) && (FTSMsgUpgrader.a(this.a).a().a())) {
+      if ((FTSMsgUpgrader.a(this.a) != null) && (FTSMsgUpgrader.a(this.a).a()))
       {
-        int j = ArConfigService.b(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
+        if (!this.a.a) {
+          FTSMsgUpgrader.a(this.a);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade history in handle hasReadNativeCursor = " + this.a.a + " mUpgradeCursor=" + FTSMsgUpgrader.a(this.a) + " mUpgradeMaxIndex=" + FTSMsgUpgrader.b(this.a));
+        }
+        if (this.a.a)
         {
-          if (i >= j) {
-            break label106;
+          if (FTSMsgUpgrader.a(this.a) >= FTSMsgUpgrader.b(this.a)) {
+            break label201;
           }
-          try
-          {
-            ((IArFaceCallback)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
-            i += 1;
-          }
-          catch (RemoteException localRemoteException)
-          {
-            for (;;)
-            {
-              localRemoteException.printStackTrace();
-            }
+          if (!FTSMsgUpgrader.b(this.a)) {
+            break label186;
           }
         }
+      }
+    }
+    label186:
+    label201:
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        FTSMsgUpgrader.a(this.a).postDelayed(this, 20L);
+        do
+        {
+          return;
+        } while (!QLog.isColorLevel());
+        QLog.d("Q.fts.FTSMsgUpgrader", 2, "writeNativeIndex failed");
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade compeleted in handler");
+        }
+        FTSMsgUpgrader.b(this.a);
+        FTSMsgUpgrader.a(this.a).c();
+        return;
+      } while (!QLog.isColorLevel());
+      StringBuilder localStringBuilder = new StringBuilder().append("upgrade history in handle mDatabase = ");
+      if (FTSMsgUpgrader.a(this.a) == null) {}
+      for (String str = "null";; str = "@@@")
+      {
+        QLog.d("Q.fts.FTSMsgUpgrader", 2, str);
         return;
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
-        }
-      }
     }
-    label106:
-    ArConfigService.b(this.a).finishBroadcast();
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (ArConfigService.b(this.a) != null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        int j = ArConfigService.b(this.a).beginBroadcast();
-        i = 0;
-        if (i >= j) {
-          break label129;
-        }
-        if (paramBoolean) {}
-        try
-        {
-          ((IArFaceCallback)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          localRemoteException.printStackTrace();
-        }
-        ((IArFaceCallback)ArConfigService.b(this.a).getBroadcastItem(i)).b(paramInt, 0);
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
-        }
-      }
-      return;
-      label129:
-      ArConfigService.b(this.a).finishBroadcast();
-      return;
-      i += 1;
-    }
+    QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade history in handle isDestroy = " + FTSMsgUpgrader.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaca
  * JD-Core Version:    0.7.0.1
  */

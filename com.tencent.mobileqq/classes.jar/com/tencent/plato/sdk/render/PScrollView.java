@@ -490,7 +490,7 @@ public class PScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.plato.sdk.render.PScrollView
  * JD-Core Version:    0.7.0.1
  */

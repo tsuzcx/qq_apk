@@ -1,15 +1,8 @@
 package com.tencent.mobileqq.qipc;
 
-import android.content.Intent;
-
 public class QIPCServiceEx
   extends QIPCService
-{
-  public void onConfigStartMode(Intent paramIntent)
-  {
-    paramIntent.putExtra("k_start_mode", 2);
-  }
-}
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

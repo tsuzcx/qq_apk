@@ -38,7 +38,7 @@ public class BaseFragment
     return false;
   }
   
-  public void ar_()
+  public void at_()
   {
     c();
     onHiddenChanged(false);

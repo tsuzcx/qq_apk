@@ -1,29 +1,26 @@
-import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
+import com.tencent.av.report.AVPushReport;
+import com.tencent.av.utils.HttpUtil.SimpleHttpPostTask;
+import com.tencent.qphone.base.util.QLog;
 
-public class joj
-  implements Runnable
+public final class joj
+  extends HttpUtil.SimpleHttpPostTask
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  
-  public joj(SmallScreenMultiVideoControlUI paramSmallScreenMultiVideoControlUI, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
+  public joj(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt2;
+    super(paramString1, paramString2, paramString3);
   }
   
-  public void run()
+  protected void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenMultiVideoControlUI.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
+    AVPushReport.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("AVPushReport", 2, "onAvReportPush SimpleHttpPostTask rsp = " + paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     joj
  * JD-Core Version:    0.7.0.1
  */

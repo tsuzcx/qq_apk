@@ -1,41 +1,16 @@
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.armap.sensor.rotation.Vector3;
 
 public class aagq
   implements Runnable
 {
-  public aagq(AREngine paramAREngine, int paramInt) {}
+  public aagq(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, Vector3 paramVector3) {}
   
   public void run()
   {
-    if (!AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).d())
-    {
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).j()) {
-        AREngine.d(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine);
-      }
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != 1L) {
-        break label132;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.b(1L);
-      AREngine.c(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.j();
-      if ((AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) && (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2) && (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null))
-      {
-        ARTarget localARTarget = new ARTarget(AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine));
-        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a(3, localARTarget, this.jdField_a_of_type_Int);
-      }
-      return;
-      label132:
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2L) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.l();
-      } else if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2048L) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.n();
-      }
+    if (ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) != null) {
+      ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).native_updateBallTanslateFromXYZ(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3.x, this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3.y, this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3.z);
     }
   }
 }

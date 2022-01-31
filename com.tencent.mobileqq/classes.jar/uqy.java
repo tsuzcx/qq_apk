@@ -1,17 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.activity.aio.PanelAdapter;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
 public class uqy
   implements Runnable
 {
-  public uqy(RecordSoundPanel paramRecordSoundPanel, int paramInt, double paramDouble) {}
+  public uqy(PlusPanel paramPlusPanel) {}
   
   public void run()
   {
-    int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.b(i);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.b.setText(AudioPanel.a(this.jdField_a_of_type_Double));
+    int i = 0;
+    while (i < this.a.a.getCount())
+    {
+      this.a.a.a(i);
+      i += 1;
+    }
   }
 }
 

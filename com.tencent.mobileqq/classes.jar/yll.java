@@ -1,30 +1,122 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.Window;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class yll
-  implements Runnable
+public class yll
+  extends FriendListObserver
 {
-  public yll(View paramView, int paramInt) {}
+  public yll(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public void run()
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
-    if (this.jdField_a_of_type_Int == 1) {
-      localActivity.getWindow().addFlags(128);
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_global isSuccess: " + paramBoolean);
+    }
+    Object localObject;
+    boolean bool;
+    if (!paramBoolean)
+    {
+      localObject = this.a;
+      FormSwitchItem localFormSwitchItem = QQSpecialCareSettingActivity.a(this.a);
+      if (!QQSpecialCareSettingActivity.a(this.a).a())
+      {
+        bool = true;
+        ((QQSpecialCareSettingActivity)localObject).a(localFormSwitchItem, bool);
+      }
+    }
+    else
+    {
+      this.a.a.sendEmptyMessage(8194);
+      localObject = this.a.a.obtainMessage(8195);
+      if (paramBoolean) {
+        i = 2;
+      }
+      ((Message)localObject).arg1 = i;
+      if (!paramBoolean) {
+        break label194;
+      }
+      if (!Boolean.valueOf(((boolean[])(boolean[])paramArrayOfObject[2])[0]).booleanValue()) {
+        break label188;
+      }
+      i = 2131436917;
     }
     for (;;)
     {
-      QLog.e("ApolloRender", 2, "SetKeepScreenOn :" + this.jdField_a_of_type_Int);
+      ((Message)localObject).arg2 = i;
+      this.a.a.sendMessage((Message)localObject);
+      QQSpecialCareSettingActivity.b(this.a);
+      SubAccountControll.e(this.a.app);
       return;
-      localActivity.getWindow().clearFlags(128);
+      bool = false;
+      break;
+      label188:
+      i = 2131436920;
+      continue;
+      label194:
+      if (((boolean[])(boolean[])paramArrayOfObject[2])[0] != 0) {
+        i = 2131436922;
+      } else {
+        i = 2131436923;
+      }
     }
+  }
+  
+  protected void onSetSpecialCareSwitch_qzone(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_qzone isSuccess: " + paramBoolean);
+    }
+    FormSwitchItem localFormSwitchItem;
+    if (!paramBoolean)
+    {
+      paramArrayOfObject = this.a;
+      localFormSwitchItem = QQSpecialCareSettingActivity.b(this.a);
+      if (QQSpecialCareSettingActivity.b(this.a).a()) {
+        break label77;
+      }
+    }
+    label77:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramArrayOfObject.a(localFormSwitchItem, paramBoolean);
+      QQSpecialCareSettingActivity.b(this.a);
+      return;
+    }
+  }
+  
+  protected void onSetSpecialCareSwitch_specialRing(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSetSpecialCareSwith_specialRing isSuccess: " + paramBoolean);
+    }
+    QQSpecialCareSettingActivity.b(this.a);
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateDelFriend isSuccess: " + paramBoolean + ", uin: " + paramObject);
+    }
+    QQSpecialCareSettingActivity.b(this.a);
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onUpdateSpecialCareList isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2);
+    }
+    QQSpecialCareSettingActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yll
  * JD-Core Version:    0.7.0.1
  */

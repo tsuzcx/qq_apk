@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0020" android:layout_width="fill_parent" android:layout_height="95.0dip"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28b4" android:background="#ffffffff" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04bd" android:layout_width="fill_parent" android:layout_height="2.0dip" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02191e" style="?android:attr/progressBarStyleHorizontal" />
-    <TextView android:textSize="12.0dip" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2908" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b22a9" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a04bd" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2908">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a7d" android:visibility="visible" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021919" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2909" android:visibility="invisible" android:layout_width="50.0dip" android:layout_height="50.0dip" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a290a" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" />
-        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0df7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0a7d">
-            <TextView android:textSize="17.0dip" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fa5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-5.0dip" android:text="" />
-            <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a290b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-            <TextView android:textSize="12.0dip" android:textColor="#ffa6a6a6" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a290c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="" />
-        </LinearLayout>
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true">
-            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a290d" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020444" />
-            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a262a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b229d" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e8" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip">
+        <View android:layout_gravity="center_vertical" android:background="#ff00a5e0" android:layout_width="1.0dip" android:layout_height="16.0dip" />
+        <TextView android:textSize="18.0dip" android:textColor="#ff333333" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28b5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="大家都在看" android:includeFontPadding="false" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28b6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="放入书架后一会再看" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="24.0dip">
+        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28b7" android:layout_width="50.0dip" android:layout_height="72.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021915" android:layout_centerVertical="true" />
+        <Button android:textSize="15.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c051a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28b8" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02190a" android:layout_width="100.0dip" android:layout_height="36.0dip" android:layout_marginTop="21.0dip" android:text="加入书架" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28b9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a28b8" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a28b7" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0dip" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28ba" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28bb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@null" android:singleLine="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a28bc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@null" android:singleLine="true" />
         </LinearLayout>
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

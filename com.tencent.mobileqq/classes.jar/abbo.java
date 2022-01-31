@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
 public class abbo
   implements Runnable
 {
-  public abbo(ARMapActivity paramARMapActivity, int paramInt) {}
+  public abbo(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.isResume()) {
-      return;
-    }
-    SosoInterface.b(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a);
-    SosoInterface.jdField_a_of_type_Int = this.jdField_a_of_type_Int * 1000;
-    SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a);
+    ThreadManager.post(new abbp(this), 5, null, true);
   }
 }
 

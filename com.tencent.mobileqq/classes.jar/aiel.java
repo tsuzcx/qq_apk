@@ -1,29 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
+import java.util.List;
 
-public class aiel
+public final class aiel
   implements Runnable
 {
-  public aiel(TCProgressBar paramTCProgressBar) {}
+  public aiel(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
   
   public void run()
   {
-    aieh localaieh;
-    if (this.a.jdField_a_of_type_Int == 3)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiel(this.a), this.a.d);
-      localaieh = this.a.jdField_a_of_type_Aieh;
-      if (this.a.jdField_a_of_type_Aieh.e) {
-        break label77;
-      }
-    }
-    label77:
-    for (boolean bool = true;; bool = false)
-    {
-      localaieh.e = bool;
-      this.a.invalidate();
-      return;
-    }
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_short_video_");
   }
 }
 

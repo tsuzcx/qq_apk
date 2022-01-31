@@ -1,18 +1,36 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapManager;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.RedPackRainCloudView;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.ark.ArkAiAppCenter;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class abaw
+public final class abaw
   implements Runnable
 {
-  public abaw(ARMapActivity paramARMapActivity) {}
-  
   public void run()
   {
-    ARMapManager localARMapManager = (ARMapManager)this.a.app.getManager(209);
-    if ((localARMapManager != null) && (this.a.a != null)) {
-      this.a.a.a(localARMapManager.d());
+    for (;;)
+    {
+      try
+      {
+        if ("open".equals(ArkAiAppCenter.b()))
+        {
+          bool = true;
+          ark.SetArkHttpsSwitch(bool);
+          if (bool)
+          {
+            ArkAppCenter.b("SetArkHttpsSwitch", "ArkHttpsSwitch is Opened ");
+            return;
+          }
+          ArkAppCenter.b("SetArkHttpsSwitch", "ArkHttpsSwitch is Closed ");
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.w("ArkApp", 1, "SetArkHttpsSwitch is failed and message=" + localException.getMessage());
+        return;
+      }
+      boolean bool = false;
     }
   }
 }

@@ -1,53 +1,38 @@
-import android.media.MediaPlayer;
-import android.os.Handler;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.util.FaceDecoderImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
 public class akhh
-  implements Runnable
+  extends TroopObserver
 {
-  public akhh(ColorRingPlayer paramColorRingPlayer) {}
+  private akhh(FaceDecoderImpl paramFaceDecoderImpl) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    for (;;)
+    if (FaceDecoderImpl.a(this.a) == null) {}
+    do
     {
-      Object localObject1 = this.a.jdField_a_of_type_JavaLangObject;
-      boolean bool = false;
-      try
+      return;
+      if (this.a.jdField_a_of_type_Akhd != null)
       {
-        if (this.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-          bool = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
-        }
-        if ((this.a.jdField_a_of_type_AndroidMediaMediaPlayer == null) || (!bool)) {
-          break;
-        }
-        int i = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-        int j = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new akhi(this, j, i));
-      }
-      catch (IllegalStateException localIllegalStateException)
-      {
-        for (;;)
+        Bitmap localBitmap = this.a.a(113, paramString, 0, (byte)1);
+        if ((paramBoolean1) && (localBitmap != null))
         {
-          this.a.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-          this.a.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+          this.a.jdField_a_of_type_Akhd.onDecodeTaskCompleted(this.a.b + this.a.jdField_a_of_type_JavaUtilLinkedList.size(), 113, paramString, localBitmap);
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.qqhead.FaceDecoderImpl", 2, "====faceDecoderImpl onUpdateNewTroopFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 113 + ",style: " + -1);
+          }
         }
       }
-      finally {}
-      try
-      {
-        Thread.sleep(50L);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    } while ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) || (this.a.b >= this.a.jdField_a_of_type_Int));
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akhh
  * JD-Core Version:    0.7.0.1
  */

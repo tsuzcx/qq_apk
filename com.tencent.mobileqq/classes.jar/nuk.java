@@ -1,52 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.GetFeedCommentRequest;
-import com.tencent.biz.qqstory.network.request.GetFeedCommentRequest.GetFeedCommentResponse;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnDownloadListener;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class nuk
-  implements CmdTaskManger.CommandCallback
+public class nuk
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  nuk(nuj paramnuj, JobContext paramJobContext, FeedCommentSync paramFeedCommentSync) {}
+  public nuk(VideoViewTVKImpl paramVideoViewTVKImpl, String paramString) {}
   
-  public void a(@NonNull GetFeedCommentRequest paramGetFeedCommentRequest, @Nullable GetFeedCommentRequest.GetFeedCommentResponse paramGetFeedCommentResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void OnDownloadCallback(String paramString)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
-      return;
-    }
-    if ((paramGetFeedCommentResponse == null) || (paramErrorMessage.isFail()))
-    {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for comment request");
-      nuj.a(this.jdField_a_of_type_Nuj, paramErrorMessage);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.b == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
-    {
-      ((CommentManager)SuperManager.a(17)).a(paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_a_of_type_JavaLangString, bool1, true);
-      boolean bool3 = paramGetFeedCommentResponse.jdField_a_of_type_Boolean;
-      boolean bool2 = bool3;
-      if (!paramGetFeedCommentResponse.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.a != null) {
+      try
       {
-        bool2 = bool3;
-        if (paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList.size() == 0)
+        paramString = new JSONObject(paramString);
+        i = paramString.getInt("callBackType");
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback callBackType=" + i);
+        }
+        if (i == 2)
         {
-          SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "comment pull should be end!!!!!!!!!!!!");
-          bool2 = true;
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.b))
+          {
+            i = paramString.getInt("offset");
+            this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c, new File(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.b), i);
+          }
+        }
+        else if (i == 7)
+        {
+          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.b)) {
+            return;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback success , vid = " + this.jdField_a_of_type_JavaLangString);
+          }
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c, new File(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.b));
         }
       }
-      paramGetFeedCommentRequest = new nuf(bool1, paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList, paramGetFeedCommentResponse.b, bool2, paramGetFeedCommentResponse.jdField_a_of_type_JavaLangString);
-      nuj.a(this.jdField_a_of_type_Nuj, paramGetFeedCommentRequest);
-      return;
+      catch (JSONException paramString)
+      {
+        int i;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("VideoViewTVKImpl", 2, "OnDownloadCallback JSONException=" + paramString.getMessage());
+          return;
+          if ((i == 4) || (i == 5))
+          {
+            i = paramString.getInt("errorCode");
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback errorCode=" + i);
+            }
+            this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c, i);
+          }
+        }
+      }
     }
   }
 }

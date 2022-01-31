@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import abzo;
+import acho;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -47,7 +47,7 @@ public class EmoticonIPCModule
       }
       return null;
     }
-    ThreadManager.post(new abzo(this, paramBundle, paramString, ((VasExtensionManager)((QQAppInterface)localAppRuntime).getManager(234)).a, paramInt), 5, null, true);
+    ThreadManager.post(new acho(this, paramBundle, paramString, ((VasExtensionManager)((QQAppInterface)localAppRuntime).getManager(234)).a, paramInt), 5, null, true);
     return null;
   }
 }

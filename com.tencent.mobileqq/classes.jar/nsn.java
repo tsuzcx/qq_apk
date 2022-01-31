@@ -1,26 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView.ILoadMoreDataListener;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
 
 public class nsn
-  implements LoadingMoreHelper.OnLoadMoreListener
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public nsn(ShareGroupInnerListView paramShareGroupInnerListView) {}
+  public nsn(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
   
-  public void a()
+  public void onAudioFocusChange(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener.a(this.a.jdField_a_of_type_JavaLangString);
+    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (this.a.isResume())) {
+      this.a.e();
     }
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener != null) {
-      return this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-    return false;
   }
 }
 

@@ -21,7 +21,7 @@ import com.tencent.mobileqq.widget.RedDotTextView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.BubblePopupWindow;
 import java.util.concurrent.ConcurrentHashMap;
-import mld;
+import mov;
 
 public class ReadinjoyTabbar
   extends BaseTabbar
@@ -138,7 +138,7 @@ public class ReadinjoyTabbar
   public void b(int paramInt)
   {
     ReadinjoyTabbar.Tab localTab = (ReadinjoyTabbar.Tab)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-    localTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar$TabHolder.a.post(new mld(this, paramInt, localTab));
+    localTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar$TabHolder.a.post(new mov(this, paramInt, localTab));
   }
   
   public void setCurrentActivity(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity)
@@ -186,7 +186,7 @@ public class ReadinjoyTabbar
             }
           }
           if (!localTab.jdField_a_of_type_Boolean) {
-            paramFragmentManager.add(2131363949, localTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment, String.valueOf(paramInt1));
+            paramFragmentManager.add(2131363974, localTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment, String.valueOf(paramInt1));
           }
           paramFragmentManager.show(localTab.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment);
           paramFragmentManager.commitAllowingStateLoss();

@@ -29,49 +29,54 @@ public class VChatActivity
   
   private void a(FromServiceMsg paramFromServiceMsg, String paramString)
   {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getWupBuffer() != null) && ("SharpSvr.s2c".equalsIgnoreCase(paramString))) {}
-    try
-    {
-      paramFromServiceMsg = (SharpVideoMsg)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "SharpVideoMsg", new SharpVideoMsg());
-      int i;
-      long l1;
-      if (paramFromServiceMsg != null)
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getWupBuffer() != null) && ("SharpSvr.s2c".equalsIgnoreCase(paramString))) {
+      try
       {
-        paramFromServiceMsg = VideoPackageUtils.a(paramFromServiceMsg.video_buff);
-        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.a()))
+        paramFromServiceMsg = (SharpVideoMsg)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "SharpVideoMsg", new SharpVideoMsg());
+        if (paramFromServiceMsg != null)
         {
-          VideoNodeManager.a(34);
-          i = paramFromServiceMsg.e;
-          paramString = String.valueOf(paramFromServiceMsg.c);
-          l1 = paramFromServiceMsg.jdField_d_of_type_Long;
-          if (paramFromServiceMsg.jdField_d_of_type_Int != 1) {
-            break label214;
+          paramString = VideoPackageUtils.a(paramFromServiceMsg.video_buff);
+          if ((paramString != null) && (paramString.a()))
+          {
+            VideoNodeManager.a(34);
+            int i = paramString.e;
+            String str1 = String.valueOf(paramString.c);
+            paramFromServiceMsg = String.valueOf(paramString.jdField_d_of_type_Long);
+            switch (i)
+            {
+            }
+            for (;;)
+            {
+              if (paramString.jdField_d_of_type_Int == 1) {}
+              for (boolean bool = true;; bool = false)
+              {
+                int j = paramString.jdField_b_of_type_Int;
+                long l = paramString.jdField_a_of_type_Long;
+                String str2 = SessionMgr.a(3, str1, new int[0]);
+                SessionInfo localSessionInfo = SessionMgr.a().a(str2);
+                QLog.d("VChatActivity", 1, "onCreate  = onRequestVideo " + paramString.toString() + "|" + localSessionInfo);
+                if (localSessionInfo != null) {
+                  return;
+                }
+                this.jdField_a_of_type_ComTencentAvVideoController.a(i, str1, paramFromServiceMsg, null, bool, null, 0, j);
+                paramFromServiceMsg = SessionMgr.a().a(str2);
+                if (paramFromServiceMsg == null) {
+                  return;
+                }
+                paramFromServiceMsg.a(l);
+                return;
+                paramFromServiceMsg = paramString.jdField_b_of_type_JavaLangString + paramString.jdField_a_of_type_JavaLangString;
+                break;
+              }
+            }
           }
         }
       }
-      label214:
-      for (boolean bool = true;; bool = false)
+      catch (Exception paramFromServiceMsg)
       {
-        int j = paramFromServiceMsg.b;
-        long l2 = paramFromServiceMsg.a;
-        String str = SessionMgr.a(3, paramString, new int[0]);
-        SessionInfo localSessionInfo = SessionMgr.a().a(str);
-        QLog.d("VChatActivity", 1, "onCreate  = onRequestVideo " + paramFromServiceMsg.toString() + "|" + localSessionInfo);
-        if (localSessionInfo == null)
-        {
-          this.jdField_a_of_type_ComTencentAvVideoController.a(i, paramString, String.valueOf(l1), null, bool, null, 0, j);
-          paramFromServiceMsg = SessionMgr.a().a(str);
-          if (paramFromServiceMsg != null) {
-            paramFromServiceMsg.a(l2);
-          }
-        }
+        paramFromServiceMsg.printStackTrace();
         return;
       }
-      return;
-    }
-    catch (Exception paramFromServiceMsg)
-    {
-      paramFromServiceMsg.printStackTrace();
     }
   }
   
@@ -180,7 +185,7 @@ public class VChatActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.VChatActivity
  * JD-Core Version:    0.7.0.1
  */

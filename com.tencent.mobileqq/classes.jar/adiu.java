@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 
-class adiu
+public class adiu
   implements Runnable
 {
-  adiu(adit paramadit) {}
+  public adiu(FileManagerProxy paramFileManagerProxy, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    QfileEditBottomBar.a(this.a.a).a().a(false);
-    ThreadManager.getUIHandler().post(new adiv(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null);
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bDelInFM) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
   }
 }
 

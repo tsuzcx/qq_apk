@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.concurrent.atomic.AtomicLong;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class yks
-  implements Observer
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
+  public yks(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public yks(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
   }
-  
-  public void update(Observable paramObservable, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yks
  * JD-Core Version:    0.7.0.1
  */

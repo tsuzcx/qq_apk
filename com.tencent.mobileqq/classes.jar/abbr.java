@@ -1,13 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import java.io.File;
+import java.io.FileFilter;
 
-public class abbr
-  implements DialogInterface.OnClickListener
+public final class abbr
+  implements FileFilter
 {
-  public abbr(ARMapActivity paramARMapActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean accept(File paramFile)
+  {
+    return (paramFile.isFile()) && (paramFile.exists());
+  }
 }
 
 

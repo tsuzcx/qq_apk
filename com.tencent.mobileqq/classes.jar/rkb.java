@@ -1,36 +1,20 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import java.util.ArrayList;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.Doraemon.APIParam;
 
-public class rkb
-  extends DiscussionObserver
+public final class rkb
+  implements Runnable
 {
-  public rkb(AddRequestActivity paramAddRequestActivity) {}
+  public rkb(APICallback paramAPICallback, APIParam paramAPIParam) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  public void run()
   {
-    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
-      this.a.runOnUiThread(new rke(this));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
-      this.a.runOnUiThread(new rkd(this));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
-      this.a.runOnUiThread(new rkc(this));
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIParam);
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rkb
  * JD-Core Version:    0.7.0.1
  */

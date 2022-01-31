@@ -1,65 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.statistics.battery.BatteryStatsImpl;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwThumbGen;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public class aigp
+class aigp
+  extends AsyncTask
 {
-  public boolean a;
-  public String[][] a;
-  public boolean b = true;
-  public boolean c;
-  public boolean d;
+  aigp(aigo paramaigo) {}
   
-  public aigp(BatteryStatsImpl paramBatteryStatsImpl, String paramString)
+  protected Integer a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Boolean = true;
-    paramBatteryStatsImpl = paramString.split(";");
-    this.jdField_a_of_type_Array2dOfJavaLangString = new String[paramBatteryStatsImpl.length][];
-    int i = 0;
-    while (i < paramBatteryStatsImpl.length)
+    long l = System.currentTimeMillis();
+    paramVarArgs = aigo.a(this.a) + "shortvideo_thumb.jpg";
+    int j = this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwThumbGen.a(aigo.b(this.a), SVHwEncoder.f(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder), SVHwEncoder.g(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder), SVHwEncoder.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder), SVHwEncoder.b(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder), paramVarArgs);
+    int i = j;
+    String str;
+    if (j == 0)
     {
-      this.jdField_a_of_type_Array2dOfJavaLangString[i] = paramBatteryStatsImpl[i].split(",");
-      i += 1;
+      str = ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwThumbGen.jdField_a_of_type_JavaLangString, "jpg");
+      if (!FileUtils.c(paramVarArgs, str)) {
+        break label177;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwThumbGen.b = str;
+      i = j;
     }
-  }
-  
-  public void a() {}
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void b()
-  {
-    this.c = true;
-    if (!BatteryStatsImpl.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl)) {
-      this.d = true;
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwThumbGen.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+      this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwThumbGen.jdField_a_of_type_Int = i;
+      aigo.a(this.a, true);
+      return Integer.valueOf(i);
+      label177:
+      i = j;
+      if (!FileUtils.b(str))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
+        i = -3;
+      }
     }
-  }
-  
-  public void c()
-  {
-    this.c = false;
-    this.d = false;
-  }
-  
-  public void d() {}
-  
-  public void e()
-  {
-    this.b = false;
-  }
-  
-  public void f()
-  {
-    this.d = false;
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aigp
  * JD-Core Version:    0.7.0.1
  */

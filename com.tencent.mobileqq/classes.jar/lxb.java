@@ -1,14 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeCommonPgcVideoSocial;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class lxb
-  extends BaseSkinRes
+  implements View.OnClickListener
 {
-  public lxb(ReadInJoySkinManager paramReadInJoySkinManager) {}
+  public lxb(FeedItemCellTypeCommonPgcVideoSocial paramFeedItemCellTypeCommonPgcVideoSocial) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return -16265040;
+    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (paramView != null) {
+      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

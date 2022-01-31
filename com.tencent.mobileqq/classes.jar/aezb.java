@@ -1,5 +1,4 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
 
 class aezb
   implements Runnable
@@ -8,9 +7,7 @@ class aezb
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a, 102, 201, 0, "", null);
-    }
+    ChooseInterestTagActivity.b(this.a.a, false);
   }
 }
 

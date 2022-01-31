@@ -1,21 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
 
 public class vpa
-  implements View.OnTouchListener
+  extends Handler
 {
-  public vpa(PhotoListPanel paramPhotoListPanel) {}
+  boolean jdField_a_of_type_Boolean = true;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public vpa(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    paramView = paramView.getParent();
-    if (paramView != null) {
-      paramView.requestDisallowInterceptTouchEvent(true);
+    if (paramMessage.what == TroopGiftMsgItemBuilder.a()) {}
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (paramMessage.what != TroopGiftMsgItemBuilder.b()) {}
     }
-    return false;
   }
 }
 

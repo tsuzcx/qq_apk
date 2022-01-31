@@ -1,8 +1,8 @@
 package cooperation.comic.jsp;
 
-import amjt;
-import amju;
-import amjv;
+import amrf;
+import amrg;
+import amrh;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -46,7 +46,7 @@ public class QQComicJsPlugin
   public static final Handler a;
   private static final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private static String d;
-  QQComicJsCallback jdField_a_of_type_CooperationComicJspQQComicJsCallback = new amjt(this);
+  QQComicJsCallback jdField_a_of_type_CooperationComicJspQQComicJsCallback = new amrf(this);
   public QQComicJsPluginProxy a;
   public String a;
   public final AtomicInteger a;
@@ -169,10 +169,10 @@ public class QQComicJsPlugin
     //   20: getstatic 24	cooperation/comic/jsp/QQComicJsPlugin:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   23: iconst_1
     //   24: invokevirtual 181	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   27: new 183	amjx
+    //   27: new 183	amrj
     //   30: dup
     //   31: aload_0
-    //   32: invokespecial 184	amjx:<init>	(Lcooperation/comic/jsp/QQComicJsPlugin;)V
+    //   32: invokespecial 184	amrj:<init>	(Lcooperation/comic/jsp/QQComicJsPlugin;)V
     //   35: iconst_5
     //   36: aconst_null
     //   37: iconst_1
@@ -232,7 +232,7 @@ public class QQComicJsPlugin
   
   public void a(String paramString1, JSONObject paramJSONObject, String paramString2, long paramLong)
   {
-    jdField_a_of_type_AndroidOsHandler.post(new amjv(this, paramLong, paramString1, paramJSONObject, paramString2));
+    jdField_a_of_type_AndroidOsHandler.post(new amrh(this, paramLong, paramString1, paramJSONObject, paramString2));
   }
   
   protected boolean handleEvent(String paramString, long paramLong, Map paramMap)
@@ -597,7 +597,7 @@ public class QQComicJsPlugin
       }
       else if (QQComicPluginBridge.a)
       {
-        ThreadManager.getUIHandler().post(new amju(this, paramString3, paramJsBridgeListener, paramString2));
+        ThreadManager.getUIHandler().post(new amrg(this, paramString3, paramJsBridgeListener, paramString2));
       }
       else
       {

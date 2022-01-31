@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.GoldConfigObserver;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager.ConfigListener;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
-class xgj
-  implements QWalletConfigManager.ConfigListener
+public class xgj
+  implements DialogInterface.OnClickListener
 {
-  xgj(xgi paramxgi) {}
+  public xgj(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void a(String paramString, Map paramMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.notifyObservers(GoldConfigObserver.class, 7, true, null);
+    this.a.getActivity().finish();
   }
 }
 

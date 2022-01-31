@@ -1,12 +1,15 @@
-import android.widget.ImageView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class snk
+public class snk
+  implements Runnable
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
-  sni jdField_a_of_type_Sni;
+  public snk(Conversation paramConversation) {}
   
-  snk(snj paramsnj) {}
+  public void run()
+  {
+    this.a.a.q();
+  }
 }
 
 

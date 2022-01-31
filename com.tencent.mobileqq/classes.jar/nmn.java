@@ -1,23 +1,16 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.DiscoverVideoDataProvider;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
 
 public class nmn
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+  implements View.OnClickListener
 {
-  public nmn(DiscoverVideoDataProvider paramDiscoverVideoDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  public nmn(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilDiscoverVideoDataProvider.a(false, null);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilDiscoverVideoDataProvider.a(true, paramArrayList);
+    this.a.a = 0;
+    this.a.a(null);
   }
 }
 

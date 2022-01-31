@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView.StickerBubbleAnimationCallback;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class wbx
-  implements StickerBubbleAnimationView.StickerBubbleAnimationCallback
+class wbx
+  implements DialogInterface.OnClickListener
 {
-  public wbx(StickerBubbleAnimationViewHolder paramStickerBubbleAnimationViewHolder) {}
+  wbx(wbv paramwbv, SharedPreferences paramSharedPreferences) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StickerBubbleAnimationViewHolder.a(this.a, StickerBubbleAnimationViewHolder.b(this.a));
-    ThreadManager.getUIHandler().post(new wby(this));
-  }
-  
-  public void b()
-  {
-    StickerBubbleAnimationViewHolder.b(this.a, StickerBubbleAnimationViewHolder.b(this.a));
+    paramDialogInterface = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    paramDialogInterface.putLong("switch_city" + this.jdField_a_of_type_Wbv.a.a.getCurrentAccountUin(), System.currentTimeMillis());
+    paramDialogInterface.commit();
   }
 }
 

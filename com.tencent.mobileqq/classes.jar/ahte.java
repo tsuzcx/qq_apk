@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import android.os.Handler;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeWrapper.FlowListener;
 
 public class ahte
-  implements View.OnClickListener
+  implements VideoFlowDecodeWrapper.FlowListener
 {
-  public ahte(GroupSearchFragment paramGroupSearchFragment) {}
+  public ahte(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.g = 1;
-    this.a.h();
-    this.a.b.setVisibility(8);
+    NeoVideoFilterPlayView.a(this.a).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahte
  * JD-Core Version:    0.7.0.1
  */

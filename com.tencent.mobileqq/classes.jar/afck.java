@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayBasePanel;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class afck
+public class afck
   implements Runnable
 {
-  afck(afcj paramafcj) {}
+  public afck(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
   public void run()
   {
-    NearbyPeopleProfileActivity.a(this.a.a).i();
+    ShortVideoCommentsView.c(this.a, false);
+    ShortVideoCommentsView.a(this.a);
+    ShortVideoCommentsView.a(this.a).setVisibility(8);
+    ShortVideoCommentsView.a(this.a, 2);
   }
 }
 

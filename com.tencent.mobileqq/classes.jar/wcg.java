@@ -1,38 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.activity.aio.tim.TIMUserManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
 public class wcg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wcg(TIMUserManager paramTIMUserManager, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  public wcg(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, this.b))
-      {
-        TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager);
-        TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, false);
-        TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 2);
-        SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
-        localEditor.putBoolean("tim_user_special_need_force_download", TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager));
-        localEditor.commit();
-      }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8004EFC", "0X8004EFC", 0, 0, "", "", "" + this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId, "");
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadTimTheme TimIconsState " + TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager));
-      }
-      return;
-      TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 4);
-      continue;
-      TIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTimTIMUserManager, 3);
-    }
+    this.a.s();
   }
 }
 

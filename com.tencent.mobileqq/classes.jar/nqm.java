@@ -1,6 +1,21 @@
-public abstract interface nqm
+import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+
+public class nqm
+  implements Runnable
 {
-  public abstract void a(nqk paramnqk);
+  public nqm(VidListPlayMode paramVidListPlayMode, boolean paramBoolean) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.e = false;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.g();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.a.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.b, false);
+  }
 }
 
 

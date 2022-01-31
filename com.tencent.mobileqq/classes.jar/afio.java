@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
 
 public class afio
-  implements ActionSheet.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public afio(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afio(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NearbyProfileEditTribePanel.a(this.a, this.a.c, false);
+    paramDialogInterface.dismiss();
   }
 }
 

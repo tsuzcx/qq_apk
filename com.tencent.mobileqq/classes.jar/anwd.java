@@ -1,15 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
-import java.util.Map;
+import dov.com.qq.im.capture.text.CaptureComboText;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class anwd
-  implements VideoFilterPlayView.TrackerCallback
+  implements Runnable
 {
-  public anwd(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public anwd(CaptureComboText paramCaptureComboText, DoodleLayout paramDoodleLayout) {}
   
-  public void a(Map paramMap)
+  public void run()
   {
-    this.a.a(new anwe(this, paramMap), 0L);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(0, Boolean.valueOf(false));
   }
 }
 

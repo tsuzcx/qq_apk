@@ -1,27 +1,30 @@
-import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
 public class akmc
-  extends akmf
+  implements View.OnTouchListener
 {
-  public akmc(AbsWebView paramAbsWebView)
-  {
-    super(paramAbsWebView, null);
-  }
+  public akmc(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "old shouldInterceptRequest");
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845938);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130845938));
+    if (this.a.b)
+    {
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      this.a.b = false;
     }
-    return a(paramWebView, paramString);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akmc
  * JD-Core Version:    0.7.0.1
  */

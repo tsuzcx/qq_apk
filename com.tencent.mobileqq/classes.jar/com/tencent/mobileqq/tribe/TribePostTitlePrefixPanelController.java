@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.tribe;
 
-import aisk;
-import aisl;
-import aism;
-import aisn;
+import aixn;
+import aixo;
+import aixp;
+import aixq;
 import android.animation.ValueAnimator;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
@@ -84,16 +84,16 @@ public class TribePostTitlePrefixPanelController
   {
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { -this.jdField_a_of_type_Int, 0 });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(100L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aisk(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aisl(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aixn(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aixo(this));
   }
   
   private void e()
   {
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, -this.jdField_a_of_type_Int });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(100L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aism(this));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new aisn(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aixp(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new aixq(this));
   }
   
   public void a()
@@ -168,7 +168,7 @@ public class TribePostTitlePrefixPanelController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController
  * JD-Core Version:    0.7.0.1
  */

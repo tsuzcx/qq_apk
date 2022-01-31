@@ -1,14 +1,14 @@
 package cooperation.qlink;
 
-import amny;
-import amnz;
-import amoa;
-import amob;
-import amoc;
-import amod;
-import amoe;
-import amof;
-import amog;
+import amvj;
+import amvk;
+import amvl;
+import amvm;
+import amvn;
+import amvo;
+import amvp;
+import amvq;
+import amvr;
 import android.content.BroadcastReceiver;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
@@ -28,28 +28,28 @@ public class QlinkStandardDialogActivity
   extends BaseActivity
 {
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  final DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new amnz(this);
+  final DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new amvk(this);
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   
   private void a()
   {
-    Object localObject = new amoa(this);
-    localObject = DialogUtil.b(this, 230, getString(2131431966), getString(2131431926), 2131431924, 2131431924, (DialogInterface.OnClickListener)localObject, null);
+    Object localObject = new amvl(this);
+    localObject = DialogUtil.b(this, 230, getString(2131431977), getString(2131431937), 2131431935, 2131431935, (DialogInterface.OnClickListener)localObject, null);
     ((QQCustomDialog)localObject).setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
     ((QQCustomDialog)localObject).show();
   }
   
   private void a(String paramString1, String paramString2)
   {
-    paramString1 = DialogUtil.b(this, 230, getString(2131432053), "是否添加[" + paramString2 + "]为好友？", 2131431925, 2131432054, new amof(this, paramString1, paramString2), new amog(this));
+    paramString1 = DialogUtil.b(this, 230, getString(2131432064), "是否添加[" + paramString2 + "]为好友？", 2131431936, 2131432065, new amvq(this, paramString1, paramString2), new amvr(this));
     paramString1.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
     paramString1.show();
   }
   
   private void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    amod localamod = new amod(this);
-    amoe localamoe = new amoe(this);
+    amvo localamvo = new amvo(this);
+    amvp localamvp = new amvp(this);
     String str = paramString2;
     if (paramString1 != null)
     {
@@ -59,9 +59,9 @@ public class QlinkStandardDialogActivity
       }
     }
     if (paramBoolean) {}
-    for (paramString1 = getString(2131431935) + str + getString(2131431936) + paramInt + getString(2131431937) + paramString3 + getString(2131431938) + paramString4 + "。";; paramString1 = getString(2131431939) + str + getString(2131431940) + paramInt + getString(2131431941) + paramString3 + getString(2131431942) + paramString4 + "。")
+    for (paramString1 = getString(2131431946) + str + getString(2131431947) + paramInt + getString(2131431948) + paramString3 + getString(2131431949) + paramString4 + "。";; paramString1 = getString(2131431950) + str + getString(2131431951) + paramInt + getString(2131431952) + paramString3 + getString(2131431953) + paramString4 + "。")
     {
-      paramString1 = DialogUtil.b(this, 230, getString(2131431966), paramString1, 2131431943, 2131431944, localamoe, localamod);
+      paramString1 = DialogUtil.b(this, 230, getString(2131431977), paramString1, 2131431954, 2131431955, localamvp, localamvo);
       paramString1.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
       paramString1.show();
       return;
@@ -70,12 +70,12 @@ public class QlinkStandardDialogActivity
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    amob localamob = new amob(this);
-    amoc localamoc = new amoc(this, paramBoolean1, paramBoolean2);
+    amvm localamvm = new amvm(this);
+    amvn localamvn = new amvn(this, paramBoolean1, paramBoolean2);
     if (paramBoolean1) {}
-    for (int i = 2131431934;; i = 2131431933)
+    for (int i = 2131431945;; i = 2131431944)
     {
-      paramString = DialogUtil.b(this, 230, getString(2131431966), paramString, 2131431925, i, localamoc, localamob);
+      paramString = DialogUtil.b(this, 230, getString(2131431977), paramString, 2131431936, i, localamvn, localamvm);
       paramString.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
       paramString.show();
       return;
@@ -111,7 +111,7 @@ public class QlinkStandardDialogActivity
     paramBundle.addAction("com.tencent.qlink.finishdlg");
     if (this.app.getApp() != null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new amny(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new amvj(this);
       this.app.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     }
     for (;;)

@@ -1,34 +1,38 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
-import com.tencent.mobileqq.intervideo.huayang.Monitor;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.app.Activity;
+import com.tencent.biz.widgets.ShareResultDialog.IShareResultCallback;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
 public class adtl
-  implements GroupVideoManager.CheckListener
+  implements ShareResultDialog.IShareResultCallback
 {
-  public adtl(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  public adtl(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      GroupVideoLoadingFragment.a(this.a, false);
-      return;
-    }
-    if (!NetworkUtil.a(GroupVideoLoadingFragment.a(this.a))) {
-      GroupVideoLoadingFragment.a(this.a, true);
+    if (ForwardRecentActivity.class.isInstance(this.a.a)) {
+      if (!this.a.a.isFinishing())
+      {
+        if (!paramBoolean) {
+          break label75;
+        }
+        this.a.a(0, "", "");
+      }
     }
     for (;;)
     {
-      Monitor.b("2880338");
+      if (this.a.i) {
+        ForwardSdkBaseOption.a(this.a.a, true, "shareToQQ", this.a.b);
+      }
       return;
-      GroupVideoLoadingFragment.a(this.a, false);
+      label75:
+      this.a.a(-1, "未知错误!", "未知错误!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adtl
  * JD-Core Version:    0.7.0.1
  */

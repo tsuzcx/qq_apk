@@ -1,35 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.authorize.JsonConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.AuthorizeConfig;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class kla
-  extends Handler
+  implements Runnable
 {
-  public kla(JsonConfig paramJsonConfig, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public kla(AuthorizeConfig paramAuthorizeConfig) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
+    this.a.h();
+    if (this.a.h == null) {
+      this.a.f();
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
-      }
-      this.a.a.clear();
-    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
+    if (AuthorizeConfig.a.compareAndSet(false, true)) {
+      this.a.c();
     }
-    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
 }
 

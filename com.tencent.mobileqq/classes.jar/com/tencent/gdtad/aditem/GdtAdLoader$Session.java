@@ -8,7 +8,7 @@ public class GdtAdLoader$Session
   public qq_ad_get.QQAdGet a;
   public qq_ad_get.QQAdGetRsp a;
   
-  public boolean a()
+  boolean a()
   {
     return this.a != null;
   }

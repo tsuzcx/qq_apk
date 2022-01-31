@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
 public class zcp
-  implements Runnable
+  implements Comparator
 {
-  public zcp(DataLineHandler paramDataLineHandler, long paramLong, int paramInt) {}
+  public zcp(ApolloDaoManager paramApolloDaoManager) {}
   
-  public void run()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
+    }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zcp
  * JD-Core Version:    0.7.0.1
  */

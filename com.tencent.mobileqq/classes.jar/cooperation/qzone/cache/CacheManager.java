@@ -1,7 +1,7 @@
 package cooperation.qzone.cache;
 
-import amtv;
-import amtw;
+import anbg;
+import anbh;
 import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
@@ -49,7 +49,7 @@ public class CacheManager
     if (!a()) {
       return -1L;
     }
-    Object localObject = l();
+    Object localObject = m();
     try
     {
       localObject = new StatFs((String)localObject);
@@ -97,7 +97,7 @@ public class CacheManager
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       if (jdField_a_of_type_CooperationQzoneCacheFileStorageHandler == null) {
-        jdField_a_of_type_CooperationQzoneCacheFileStorageHandler = new FileStorageHandler(new amtv());
+        jdField_a_of_type_CooperationQzoneCacheFileStorageHandler = new FileStorageHandler(new anbg());
       }
       return jdField_a_of_type_CooperationQzoneCacheFileStorageHandler;
     }
@@ -177,7 +177,7 @@ public class CacheManager
   
   public static String a(String paramString)
   {
-    String str = l();
+    String str = m();
     if (TextUtils.isEmpty(paramString)) {
       return str;
     }
@@ -207,7 +207,7 @@ public class CacheManager
   public static void a(long paramLong)
   {
     b(paramLong);
-    ThreadManager.postImmediately(new amtw(), null, false);
+    ThreadManager.postImmediately(new anbh(), null, false);
   }
   
   public static void a(Context paramContext)
@@ -230,11 +230,11 @@ public class CacheManager
     if (paramContext != null) {
       FileUtil.c(paramContext);
     }
-    paramContext = l();
+    paramContext = m();
     if (paramContext != null) {
       FileUtil.c(paramContext);
     }
-    paramContext = j();
+    paramContext = k();
     if (paramContext != null) {
       FileUtil.c(paramContext);
     }
@@ -451,7 +451,7 @@ public class CacheManager
         continue;
       }
       if (!jdField_b_of_type_Boolean) {
-        jdField_b_of_type_JavaLangString = j();
+        jdField_b_of_type_JavaLangString = k();
       }
       localObject = new File(jdField_b_of_type_JavaLangString);
       if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()) && (QLog.isColorLevel())) {
@@ -494,7 +494,7 @@ public class CacheManager
     if (!a()) {
       return -1L;
     }
-    Object localObject = l();
+    Object localObject = m();
     try
     {
       localObject = new StatFs((String)localObject);
@@ -521,7 +521,7 @@ public class CacheManager
   
   public static String b(String paramString)
   {
-    String str = j();
+    String str = k();
     if (TextUtils.isEmpty(paramString)) {
       return str;
     }
@@ -604,7 +604,7 @@ public class CacheManager
             }
             else
             {
-              localObject = j();
+              localObject = k();
             }
             if (localObject == null) {
               return null;
@@ -801,20 +801,25 @@ public class CacheManager
   
   public static String g()
   {
-    return a("plus_operation");
+    return a("dehaze_pic");
   }
   
   public static String h()
   {
-    return a("head_drop_operaion");
+    return a("plus_operation");
   }
   
   public static String i()
   {
-    return a("surprise");
+    return a("head_drop_operaion");
   }
   
   public static String j()
+  {
+    return a("surprise");
+  }
+  
+  public static String k()
   {
     File localFile = BaseApplicationImpl.getContext().getCacheDir();
     if (localFile != null) {
@@ -823,12 +828,12 @@ public class CacheManager
     return null;
   }
   
-  public static String k()
+  public static String l()
   {
-    return AppConstants.aP + UUID.randomUUID().toString() + ".jpg";
+    return AppConstants.aQ + UUID.randomUUID().toString() + ".jpg";
   }
   
-  public static String l()
+  public static String m()
   {
     if (jdField_b_of_type_JavaLangString == null) {}
     try
@@ -841,7 +846,7 @@ public class CacheManager
     finally {}
   }
   
-  public static final String m()
+  public static final String n()
   {
     long l = a();
     if (l >= 0L) {
@@ -850,7 +855,7 @@ public class CacheManager
     return "无SD Card";
   }
   
-  public static final String n()
+  public static final String o()
   {
     long l = b();
     if (l >= 0L) {

@@ -1,25 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.PushReportController;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class akxq
   implements Runnable
 {
-  public akxq(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager, boolean paramBoolean) {}
+  public akxq(SwiftBrowserStatistics paramSwiftBrowserStatistics, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager) != null)
-      {
-        ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setOnTouchListener(new akxr(this));
-        ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(0);
+    if (!PushReportController.a)
+    {
+      boolean bool = QQUtils.a(BaseApplicationImpl.getApplication());
+      if (QLog.isColorLevel()) {
+        QLog.d("SwiftBrowserStatistics", 1, new Object[] { "reportPushEvent isScreenLock=", Boolean.valueOf(bool), ",isBackground=", Boolean.valueOf(this.jdField_a_of_type_MqqAppAppRuntime.isBackground_Stop) });
+      }
+      if ((bool) || (this.jdField_a_of_type_MqqAppAppRuntime.isBackground_Stop)) {
+        SwiftBrowserStatistics.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics);
       }
     }
-    while (ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager) == null) {
-      return;
-    }
-    ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setOnTouchListener(null);
-    ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(8);
   }
 }
 

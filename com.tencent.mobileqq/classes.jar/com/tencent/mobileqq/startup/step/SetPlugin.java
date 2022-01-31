@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aifj;
+import aikd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
 
@@ -9,7 +9,7 @@ public class SetPlugin
 {
   protected boolean a()
   {
-    PluginRecoverReceiver.register(BaseApplicationImpl.sApplication, new aifj());
+    PluginRecoverReceiver.register(BaseApplicationImpl.sApplication, new aikd());
     return true;
   }
 }

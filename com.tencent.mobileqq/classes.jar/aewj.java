@@ -1,94 +1,24 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.ilive_feeds.ShortVideo.UploadRsp;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class aewj
-  implements CsTask.Callback
+  implements DialogInterface.OnClickListener
 {
-  public aewj(VideoFeedsUploader paramVideoFeedsUploader) {}
+  public aewj(GameRoomInviteActivity paramGameRoomInviteActivity, oidb_0x8e4.RspBody paramRspBody) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 0;
-    Object localObject = new ShortVideo.UploadRsp();
-    List localList;
-    int i;
-    try
-    {
-      ((ShortVideo.UploadRsp)localObject).mergeFrom(paramArrayOfByte);
-      paramInt = ((ShortVideo.UploadRsp)localObject).retcode.get();
-      if (paramInt != 0)
-      {
-        VideoFeedsUploader.a(this.a).a = paramInt;
-        VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
-        return;
-      }
-      VideoFeedsUploader.a(this.a, 10, 0);
-      paramArrayOfByte = ((ShortVideo.UploadRsp)localObject).authkey.get().toByteArray();
-      ((ShortVideo.UploadRsp)localObject).expiretime.get();
-      ((ShortVideo.UploadRsp)localObject).frontid.get();
-      paramBundle = ((ShortVideo.UploadRsp)localObject).frontip.get();
-      localList = ((ShortVideo.UploadRsp)localObject).zoneip.get();
-      localObject = new ArrayList();
-      paramInt = 0;
-      i = j;
-      if (paramInt < paramBundle.size())
-      {
-        if (((Integer)paramBundle.get(paramInt)).intValue() == 0) {
-          break label380;
-        }
-        ((List)localObject).add(VideoFeedsUploader.a(this.a, ((Integer)paramBundle.get(paramInt)).intValue()));
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      VideoFeedsUploader.a(this.a).a = -1005;
-      VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
-      return;
-    }
-    for (;;)
-    {
-      if (i < localList.size())
-      {
-        if (((Integer)localList.get(i)).intValue() != 0) {
-          ((List)localObject).add(VideoFeedsUploader.a(this.a, ((Integer)localList.get(i)).intValue()));
-        }
-      }
-      else
-      {
-        if (((List)localObject).size() <= 0)
-        {
-          VideoFeedsUploader.a(this.a).a = -1006;
-          VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
-          if (QLog.isColorLevel()) {
-            QLog.i("VideoFeedsUploader", 2, "frontip is empty!");
-          }
-        }
-        else
-        {
-          paramBundle = VideoFeedsUploader.a(this.a).c;
-          VideoFeedsUploader.a(this.a).post(new aewk(this, (List)localObject, paramArrayOfByte, paramBundle));
-        }
-        return;
-        label380:
-        paramInt += 1;
-        break;
-      }
-      i += 1;
-    }
+    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
+    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
+    GameRoomUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
   }
 }
 

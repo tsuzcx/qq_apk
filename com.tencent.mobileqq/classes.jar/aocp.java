@@ -1,47 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.voicechange.IVoiceChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.music.BlessVoiceChangeManager;
-import dov.com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
-import java.io.File;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoLabel;
 
 public class aocp
-  implements IVoiceChangeListener
+  implements View.OnTouchListener
 {
-  private QQStoryMusicInfo jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
-  private String jdField_a_of_type_JavaLangString;
+  public aocp(EditVideoLabel paramEditVideoLabel) {}
   
-  public aocp(QQStoryMusicInfo paramQQStoryMusicInfo, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = paramQQStoryMusicInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void b()
-  {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.c)).concat(".pcm"));
-    if (((File)localObject).exists())
+    switch (paramMotionEvent.getAction())
     {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-      FileUtils.a((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
-      if (BlessVoiceChangeManager.a() != null)
-      {
-        localObject = BlessVoiceChangeManager.a().obtainMessage(10);
-        ((Message)localObject).obj = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
-        BlessVoiceChangeManager.a().sendMessage((Message)localObject);
-      }
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
     }
   }
-  
-  public void c() {}
 }
 
 

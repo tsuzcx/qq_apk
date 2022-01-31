@@ -1,15 +1,19 @@
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.PrefetchListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.image.URLImageView;
 
 public class ksc
-  implements AccountDetailBaseAdapter.PrefetchListener
 {
-  public ksc(AccountDetailActivity paramAccountDetailActivity) {}
+  public ImageView a;
+  public TextView a;
+  public URLImageView a;
+  public boolean a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
   
-  public void a()
-  {
-    this.a.a(this.a.a);
-  }
+  public ksc(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
 }
 
 

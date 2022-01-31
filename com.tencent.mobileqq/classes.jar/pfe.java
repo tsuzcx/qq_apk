@@ -1,20 +1,25 @@
-import com.tencent.common.galleryactivity.GalleryManager;
+import android.net.Uri;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
 public class pfe
-  implements Runnable
+  extends pfn
 {
-  public pfe(GalleryManager paramGalleryManager) {}
-  
-  public void run()
+  public pfe(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
   {
-    this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = false;
-    GalleryManager.a(this.a, this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene);
-    this.a.a(true);
+    super(paramAbsBaseWebViewActivity, null);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pfe
  * JD-Core Version:    0.7.0.1
  */

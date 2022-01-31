@@ -1,41 +1,20 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.HandlerThread;
-import android.os.IBinder;
-import android.os.Messenger;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
 public class zpd
-  implements ServiceConnection
+  implements Runnable
 {
-  public zpd(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler) {}
+  public zpd(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void run()
   {
-    TroopQZoneUploadAlbumHandler.a(this.a, 2);
-    TroopQZoneUploadAlbumHandler.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
-    }
-    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
-    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
-    TroopQZoneUploadAlbumHandler.b(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
-    }
-    this.a.jdField_a_of_type_AndroidOsMessenger = null;
-    TroopQZoneUploadAlbumHandler.a(this.a, 4);
-    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.a.b = null;
-    TroopQZoneUploadAlbumHandler.a(this.a, true);
-    if (TroopQZoneUploadAlbumHandler.a(this.a) != null) {
-      TroopQZoneUploadAlbumHandler.a(this.a).interrupt();
+    PhoneContactManagerImp.a(this.a, this.a.a());
+    PhoneContactManagerImp.a(this.a);
+    this.a.e = this.a.a.getLong("key_contacts_switches", 0L);
+    if (PhoneContactManagerImp.a(this.a) != null) {
+      ContactSyncManager localContactSyncManager = (ContactSyncManager)PhoneContactManagerImp.a(this.a).getManager(40);
     }
   }
 }

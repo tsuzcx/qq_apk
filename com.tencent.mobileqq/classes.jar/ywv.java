@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ywv
+public class ywv
   implements Runnable
 {
-  public ywv(ChatMessage paramChatMessage) {}
+  public ywv(CmGameAvHandler paramCmGameAvHandler, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null)
-    {
-      localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(19);
-      if (localObject != null) {
-        ((QQMessageFacade)localObject).a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
-      }
-    }
+    QLog.e("CmGameAvHandler", 1, "initAudioRoom ApolloConstant.sGameAVSoUrl=" + ApolloConstant.V + ", ApolloConstant.sGameAVSoMd5=" + ApolloConstant.W);
+    AVEngineWalper.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler.a);
+    AVEngineWalper.a().a(0, ApolloConstant.V, ApolloConstant.W);
+    AVEngineWalper.a().a(BaseApplicationImpl.getContext(), CmGameUtil.a().getCurrentAccountUin(), "" + this.jdField_a_of_type_Int, "" + this.b);
   }
 }
 

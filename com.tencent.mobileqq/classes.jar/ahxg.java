@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 
-public final class ahxg
-  implements Parcelable.Creator
+class ahxg
+  implements View.OnClickListener
 {
-  public FriendSingleInfo a(Parcel paramParcel)
-  {
-    return new FriendSingleInfo(paramParcel);
-  }
+  ahxg(ahxf paramahxf) {}
   
-  public FriendSingleInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new FriendSingleInfo[paramInt];
+    this.a.a.b(this.a.a.b);
+    this.a.a.e.setVisibility(0);
   }
 }
 

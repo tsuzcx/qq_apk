@@ -1,42 +1,30 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.io.File;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class tsz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tsz(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public tsz(RecentLoginDevActivity paramRecentLoginDevActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a(3);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
-    if (this.a.a().booleanValue())
+    try
     {
-      this.a.b();
-      paramView = ThemeUtil.getThemeVoiceRootPath();
-      if (paramView != null)
+      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
       {
-        paramView = new File(paramView + File.separatorChar + "message.mp3");
-        if (paramView.exists())
-        {
-          this.a.b();
-          this.a.a(Uri.fromFile(paramView));
-        }
+        RecentLoginDevActivity.a(this.a).dismiss();
+        RecentLoginDevActivity.a(this.a).cancel();
       }
-    }
-    else
-    {
+      RecentLoginDevActivity.a(this.a, null);
       return;
     }
-    this.a.b();
-    this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

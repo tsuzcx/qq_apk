@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptPicManager;
+import java.lang.ref.WeakReference;
 
-public final class mxa
-  implements DialogInterface.OnClickListener
+public class mxa
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public WeakReference a;
+  public WeakReference b;
+  
+  private mxa(SubscriptPicManager paramSubscriptPicManager) {}
 }
 
 

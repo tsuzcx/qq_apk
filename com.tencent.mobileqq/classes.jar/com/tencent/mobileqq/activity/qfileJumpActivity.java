@@ -9,8 +9,8 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
-import wza;
-import wzb;
+import xeq;
+import xer;
 
 public class qfileJumpActivity
   extends BaseActivity
@@ -70,12 +70,12 @@ public class qfileJumpActivity
   
   protected void b()
   {
-    new Handler().postDelayed(new wza(this), 10L);
+    new Handler().postDelayed(new xeq(this), 10L);
   }
   
   protected void c()
   {
-    new Handler().postDelayed(new wzb(this), 10L);
+    new Handler().postDelayed(new xer(this), 10L);
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)

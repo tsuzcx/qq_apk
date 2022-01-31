@@ -2,6 +2,8 @@ package com.tencent.mobileqq.nearby.now;
 
 public abstract interface ActCallBack
 {
+  public abstract void a();
+  
   public abstract void b();
   
   public abstract void c();

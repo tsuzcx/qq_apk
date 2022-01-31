@@ -1,85 +1,76 @@
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebShareReportInterface;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import com.tencent.mobileqq.freshnews.BlockableEditTextView.BlockAble;
 
-class adwq
-  implements WXShareHelper.WXShareListener
+public class adwq
+  implements TextWatcher
 {
-  adwq(adwp paramadwp) {}
+  public int a;
+  public CharSequence a;
+  public boolean a;
+  int b = -1;
+  int c = -1;
   
-  public void a(BaseResp paramBaseResp)
+  public adwq(BlockableEditTextView paramBlockableEditTextView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c.equals(paramBaseResp.transaction))) {
+    this.jdField_a_of_type_JavaLangCharSequence = "";
+  }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == 0)) {}
+    while (this.jdField_a_of_type_Int >= 0) {
       return;
     }
-    boolean bool;
-    switch (paramBaseResp.errCode)
+    if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
     {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435303);
-      bool = false;
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      this.jdField_a_of_type_Boolean = false;
+      return;
     }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_JavaLangString))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.callJs(this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
-        return;
-        QRUtils.a(2, 2131435302);
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface != null) && (this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebUiMethodInterface != null))
-        {
-          int i;
-          label171:
-          String str1;
-          String str2;
-          String str3;
-          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
-          {
-            i = 1009;
-            paramBaseResp = this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface.f();
-            str1 = this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface.g();
-            str2 = this.a.b;
-            str3 = AccountDetailActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebUiMethodInterface.b());
-            String str4 = this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface.h();
-            if ((str4 == null) || ("".equals(str4))) {
-              break label314;
-            }
-            PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebUiMethodInterface.b(), str3, false);
-          }
-          for (;;)
-          {
-            bool = true;
-            break;
-            i = 1004;
-            break label171;
-            label314:
-            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
-              i = 1003;
-            }
-            PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
-          }
-          bool = false;
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
-        return;
-      }
-      bool = true;
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(TextUtils.concat(new CharSequence[] { this.jdField_a_of_type_JavaLangCharSequence.subSequence(this.c, this.jdField_a_of_type_JavaLangCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((this.jdField_a_of_type_Boolean) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0)) {}
+    do
+    {
+      Editable localEditable;
+      BlockableEditTextView.BlockAble[] arrayOfBlockAble;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_a_of_type_Int = 0;
+          } while (paramInt3 == paramInt2);
+          localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
+        } while (localEditable == null);
+        arrayOfBlockAble = (BlockableEditTextView.BlockAble[])localEditable.getSpans(paramInt1, paramInt1, BlockableEditTextView.BlockAble.class);
+      } while ((arrayOfBlockAble == null) || (arrayOfBlockAble.length <= 0));
+      this.b = localEditable.getSpanStart(arrayOfBlockAble[0]);
+      this.c = localEditable.getSpanEnd(arrayOfBlockAble[0]);
+    } while ((this.c < 0) || (this.c < this.b) || (paramInt2 <= paramInt3) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) || (paramInt1 == this.b) || (paramInt1 == this.c));
+    this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adwq
  * JD-Core Version:    0.7.0.1
  */

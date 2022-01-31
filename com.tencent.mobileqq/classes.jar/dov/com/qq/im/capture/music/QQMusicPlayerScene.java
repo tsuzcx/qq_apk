@@ -3,8 +3,8 @@ package dov.com.qq.im.capture.music;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import anmd;
-import anme;
+import anuq;
+import anur;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
@@ -85,7 +85,7 @@ public class QQMusicPlayerScene
   {
     h();
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimerTask = new anme(this, null);
+    this.jdField_a_of_type_JavaUtilTimerTask = new anur(this, null);
     this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, paramInt);
     if (QLog.isColorLevel()) {
       QLog.d("QQMusicPlayerScene", 2, "setMyMusicTimer");
@@ -96,7 +96,7 @@ public class QQMusicPlayerScene
   
   protected void a(String paramString, int paramInt1, int paramInt2)
   {
-    ThreadManager.postImmediately(new anmd(this, paramString, paramInt1, paramInt2), null, true);
+    ThreadManager.postImmediately(new anuq(this, paramString, paramInt1, paramInt2), null, true);
   }
   
   public void b()

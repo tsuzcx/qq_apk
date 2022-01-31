@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.MatcherCallback;
+import java.util.ArrayList;
 
 public class abti
   implements Runnable
 {
-  public abti(ContactSyncManager paramContactSyncManager) {}
+  public abti(WordMatchManager paramWordMatchManager, WordMatchManager.MatcherCallback paramMatcherCallback) {}
   
   public void run()
   {
-    try
-    {
-      this.a.a();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ContactSync.Manager", 2, "onQQContactRefreshed | syncAllContacts exception", localThrowable);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a.remove(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$MatcherCallback);
   }
 }
 

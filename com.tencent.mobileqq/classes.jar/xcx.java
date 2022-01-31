@@ -1,21 +1,20 @@
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.widget.ViewTransformer.ViewTransformerListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class xcx
-  implements ViewTransformer.ViewTransformerListener
+  implements AbsListView.OnScrollListener
 {
-  public xcx(CommonHbFragment paramCommonHbFragment, EditText paramEditText, RelativeLayout paramRelativeLayout) {}
+  public xcx(PhotoListActivity paramPhotoListActivity) {}
   
-  public void OnTransferFinished()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-      this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView != null) && (this.a.jdField_a_of_type_Xdm != null) && (this.a.c != null)) {
+      PhotoListActivity.a(this.a);
     }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {}
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a = false;
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

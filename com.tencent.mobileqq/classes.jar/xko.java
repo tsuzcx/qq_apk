@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import java.util.List;
+import mqq.app.AppRuntime;
 
-public final class xko
-  implements Animation.AnimationListener
+public class xko
+  implements Runnable
 {
-  public xko(View paramView, Animation paramAnimation) {}
+  public xko(GoldMsgDialog paramGoldMsgDialog, PreloadManager paramPreloadManager, List paramList, AppRuntime paramAppRuntime) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(this.jdField_a_of_type_JavaUtilList, new xkp(this));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

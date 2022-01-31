@@ -1,14 +1,15 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnHoverListener;
 
 class adzm
-  implements Runnable
+  implements View.OnHoverListener
 {
-  adzm(adzl paramadzl, Bitmap paramBitmap) {}
+  adzm(adzl paramadzl) {}
   
-  public void run()
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Adzl.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    return true;
   }
 }
 

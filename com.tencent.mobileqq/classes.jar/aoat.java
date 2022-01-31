@@ -1,68 +1,18 @@
-import com.tencent.image.ApngDrawable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
-import java.io.File;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
 
-class aoat
-  implements INetEngine.INetEngineListener
+public final class aoat
+  implements Parcelable.Creator
 {
-  aoat(aoas paramaoas, File paramFile, WeakReference paramWeakReference1, WeakReference paramWeakReference2, String paramString, aoaw paramaoaw) {}
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public EditRecordVideoSource a(Parcel paramParcel)
   {
-    int i = (int)(100L * paramLong1 / paramLong2);
-    if (QLog.isColorLevel()) {
-      QLog.d("InformationFaceAdapter", 2, "apng percent:" + i);
-    }
-    ThreadManager.getUIHandler().post(new aoav(this, i));
+    return new EditRecordVideoSource(paramParcel);
   }
   
-  public void a(NetResp paramNetResp)
+  public EditRecordVideoSource[] a(int paramInt)
   {
-    String str = ((InfomationFacePackage.Item)paramNetResp.a.a()).d;
-    if (QLog.isColorLevel()) {
-      QLog.d("InformationFaceAdapter", 2, "onResp ,url is :" + str + " http status:" + paramNetResp.c);
-    }
-    bool2 = false;
-    bool1 = bool2;
-    if (paramNetResp.c == 200)
-    {
-      bool1 = bool2;
-      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        bool1 = ApngDrawable.isApngFile(this.jdField_a_of_type_JavaIoFile);
-        if (!bool1) {
-          continue;
-        }
-        bool1 = true;
-      }
-      catch (IOException paramNetResp)
-      {
-        paramNetResp.printStackTrace();
-        bool1 = bool2;
-        continue;
-      }
-      ThreadManager.getUIHandler().post(new aoau(this, bool1));
-      return;
-      this.jdField_a_of_type_JavaIoFile.delete();
-      bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("InformationFaceAdapter", 2, "onResp ,valid apng file");
-        bool1 = bool2;
-      }
-    }
+    return new EditRecordVideoSource[paramInt];
   }
 }
 

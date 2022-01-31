@@ -4,23 +4,23 @@ import java.util.List;
 
 public abstract interface DownloadListener
 {
-  public abstract void a(DownloadInfo paramDownloadInfo);
+  public abstract void installSucceed(String paramString1, String paramString2);
   
-  public abstract void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2);
+  public abstract void onDownloadCancel(DownloadInfo paramDownloadInfo);
   
-  public abstract void a(String paramString1, String paramString2);
+  public abstract void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2);
   
-  public abstract void a(List paramList);
+  public abstract void onDownloadFinish(DownloadInfo paramDownloadInfo);
   
-  public abstract void b(DownloadInfo paramDownloadInfo);
+  public abstract void onDownloadPause(DownloadInfo paramDownloadInfo);
   
-  public abstract void b(String paramString1, String paramString2);
+  public abstract void onDownloadUpdate(List paramList);
   
-  public abstract void c(DownloadInfo paramDownloadInfo);
+  public abstract void onDownloadWait(DownloadInfo paramDownloadInfo);
   
-  public abstract void c(String paramString1, String paramString2);
+  public abstract void packageReplaced(String paramString1, String paramString2);
   
-  public abstract void d(DownloadInfo paramDownloadInfo);
+  public abstract void uninstallSucceed(String paramString1, String paramString2);
 }
 
 

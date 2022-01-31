@@ -23,11 +23,14 @@ public class PicUploadInfo
   public long e;
   public boolean e;
   public int f;
+  public long f;
   public boolean f;
   public int g;
+  public long g;
   public String g;
   public boolean g;
   public int h;
+  public long h;
   public String h;
   public int i;
   public String i;
@@ -42,6 +45,8 @@ public class PicUploadInfo
   public int n = 0;
   public String n;
   public int o;
+  public String o;
+  public int p;
   
   public PicUploadInfo()
   {

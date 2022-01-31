@@ -1,6 +1,15 @@
-public abstract interface acfe
+import android.view.View;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+
+class acfe
+  implements Runnable
 {
-  public abstract void a();
+  acfe(acfb paramacfb) {}
+  
+  public void run()
+  {
+    this.a.a.c.setVisibility(0);
+  }
 }
 
 

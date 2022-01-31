@@ -1,16 +1,23 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 
 public class wdv
   implements Runnable
 {
-  public wdv(ZhituManager paramZhituManager) {}
+  public wdv(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    ZhituManager.a(this.a, ZhituManager.a(this.a));
-    ZhituManager.a(this.a, false);
-    Looper.myLooper().quit();
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(12);
+      if ((localObject != null) && (((WebProcessManager)localObject).e())) {
+        ((WebProcessManager)localObject).a(-1, new wdw(this));
+      }
+    }
   }
 }
 

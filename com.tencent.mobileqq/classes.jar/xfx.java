@@ -1,31 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class xfx
-  implements EIPCResultCallback
+  extends BroadcastReceiver
 {
-  public xfx(PreloadManagerProxy paramPreloadManagerProxy, PreloadManager.OnGetPathListener paramOnGetPathListener, String paramString) {}
+  private xfx(PayCodeEntryActivity paramPayCodeEntryActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
-    {
-      i = paramEIPCResult.data.getInt("result_code");
-      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(i, paramEIPCResult);
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener == null)
-    {
-      int i;
+    paramContext = paramIntent.getAction();
+    if ((paramContext == null) || (paramContext.length() == 0)) {}
+    while (!paramContext.equals("wlx.plugin.paycode.enterpage.exit")) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_JavaLangString));
+    if (QLog.isColorLevel()) {
+      QLog.d("PayCodeEntryActivity", 2, "receive broadcast, exit paycode entry activity");
+    }
+    this.a.finish();
   }
 }
 

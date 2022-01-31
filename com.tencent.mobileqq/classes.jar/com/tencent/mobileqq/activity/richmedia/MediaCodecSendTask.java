@@ -9,13 +9,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity;
 import com.tencent.mobileqq.data.MessageForBlessPTV;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
 import com.tencent.mobileqq.richmedia.capture.fragment.AIOEffectsCameraCaptureFragment.MediaCodecEditCallback;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
 import com.tencent.mobileqq.shortvideo.ptvfilter.test.PerformenceDataTag;
@@ -138,8 +135,8 @@ public class MediaCodecSendTask
         this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969178);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363418));
       }
       return;
     }
@@ -383,8 +380,8 @@ public class MediaCodecSendTask
   
   protected void a(Integer paramInteger)
   {
+    int i = 1;
     a();
-    int i = 0;
     if (paramInteger.intValue() == 0)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_k_of_type_Int == 3)
@@ -408,43 +405,6 @@ public class MediaCodecSendTask
         this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity = null;
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_k_of_type_Int == 6)
-      {
-        paramInteger = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getIntent());
-        PublishParam localPublishParam = (PublishParam)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
-        String str1 = localPublishParam.jdField_b_of_type_JavaLangString;
-        String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_f_of_type_JavaLangString;
-        String str3 = localPublishParam.jdField_d_of_type_JavaLangString;
-        String str4 = localPublishParam.jdField_e_of_type_JavaLangString;
-        String str5 = localPublishParam.jdField_f_of_type_JavaLangString;
-        String str6 = localPublishParam.jdField_g_of_type_JavaLangString;
-        i = localPublishParam.jdField_a_of_type_Int;
-        int j = localPublishParam.jdField_b_of_type_Int;
-        long l = localPublishParam.jdField_a_of_type_Long;
-        int k = localPublishParam.jdField_c_of_type_Int;
-        int m = localPublishParam.jdField_d_of_type_Int;
-        int n = localPublishParam.jdField_f_of_type_Int;
-        int i1 = localPublishParam.jdField_g_of_type_Int;
-        String str7 = localPublishParam.jdField_h_of_type_JavaLangString;
-        String str8 = localPublishParam.jdField_i_of_type_JavaLangString;
-        int i2 = localPublishParam.jdField_h_of_type_Int;
-        int i3 = localPublishParam.jdField_i_of_type_Int;
-        int i4 = localPublishParam.jdField_j_of_type_Int;
-        String str9 = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_JavaLangString + File.separator + "mc_video.mp4";
-        String str10 = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_JavaLangString + File.separator + "mc_audio.mp4";
-        String str11 = localPublishParam.jdField_l_of_type_JavaLangString;
-        String str12 = localPublishParam.jdField_m_of_type_JavaLangString;
-        int i5 = localPublishParam.jdField_k_of_type_Int;
-        if (localPublishParam.jdField_l_of_type_Int == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localPublishParam = new PublishParam(str1, str2, str3, str4, str5, str6, i, j, l, k, m, 1, n, i1, str7, str8, i2, i3, i4, str9, str10, str11, str12, i5, bool, localPublishParam.jdField_m_of_type_Int, localPublishParam.n);
-          paramInteger.putExtra(PublishParam.jdField_a_of_type_JavaLangString, localPublishParam);
-          paramInteger.setFlags(536870912);
-          PublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity, paramInteger, SmallVideoSendFragment.class);
-          return;
-        }
-      }
       paramInteger = new Intent();
       a(paramInteger);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowComponentInterface != null)
@@ -460,8 +420,8 @@ public class MediaCodecSendTask
       paramInteger.putExtra("file_send_business_type", 2);
       a("onPostExecute(), MediaCodecSendTask is to start  SendVideoActivity,mVideoCacheDir = " + this.jdField_a_of_type_JavaLangString, null);
       paramInteger.putExtra("ab_test_send_btn_click_time", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getIntent().getLongExtra("ab_test_send_btn_click_time", 0L));
-      paramInteger.putExtra("param_key_redbag_type", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_l_of_type_Int);
-      paramInteger.putExtra("special_video_type", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_m_of_type_Int);
+      paramInteger.putExtra("param_key_redbag_type", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.l);
+      paramInteger.putExtra("special_video_type", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.m);
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_d_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_d_of_type_JavaLangString.equals(MessageForBlessPTV.BLESS_REQ_UIN)))
       {
         paramInteger.putExtra("bless_ptv_mp4_path", this.jdField_c_of_type_JavaLangString);
@@ -469,17 +429,16 @@ public class MediaCodecSendTask
         paramInteger.putExtra("param_type", 9003);
         paramInteger.putExtra("param_only_friends", true);
         paramInteger.putExtra("param_donot_need_contacts", true);
-        paramInteger.putExtra("param_title", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getString(2131438253));
-        paramInteger.putExtra("param_done_button_wording", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getString(2131432417));
+        paramInteger.putExtra("param_title", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getString(2131438273));
+        paramInteger.putExtra("param_done_button_wording", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getString(2131432428));
         paramInteger.putExtra("param_exit_animation", 1);
         paramInteger.putExtra("param_entrance", this.jdField_b_of_type_Int);
         paramInteger.putExtra("param_blesstype", 2);
         paramInteger.putExtra("encode_type", 1);
         paramInteger.putExtra("fake_id", this.jdField_d_of_type_JavaLangString);
         this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramInteger, 10007);
-        i = 1;
         if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentAIOEffectsCameraCaptureFragment$MediaCodecEditCallback == null) {
-          break label1092;
+          break label709;
         }
         this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentAIOEffectsCameraCaptureFragment$MediaCodecEditCallback.a();
       }
@@ -490,14 +449,17 @@ public class MediaCodecSendTask
       return;
       paramInteger.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity, SendVideoActivity.class);
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.startActivity(paramInteger);
-      break;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity, "视频处理错误,短视频发送失败", 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_e_of_type_JavaLangString, 2, "" + paramInteger);
+      for (;;)
+      {
+        i = 0;
+        break;
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity, "视频处理错误,短视频发送失败", 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_e_of_type_JavaLangString, 2, "" + paramInteger);
+        }
+        a("onPostExecute(), MediaCodecSendTask error = " + paramInteger, null);
       }
-      a("onPostExecute(), MediaCodecSendTask error = " + paramInteger, null);
-      break;
-      label1092:
+      label709:
       if (i == 0) {
         this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity.finish();
       }
@@ -506,7 +468,7 @@ public class MediaCodecSendTask
   
   protected void onPreExecute()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity, 2131436145);
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity, 2131436163);
   }
 }
 

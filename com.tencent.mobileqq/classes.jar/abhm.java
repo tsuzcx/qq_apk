@@ -1,27 +1,14 @@
-public class abhm
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
+
+class abhm
+  implements Runnable
 {
-  public static final float[] a;
+  abhm(abhl paramabhl, double paramDouble1, double paramDouble2, String paramString1, double paramDouble3, int paramInt1, String paramString2, int paramInt2) {}
   
-  static
+  public void run()
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= 8192) {
-        break;
-      }
-      a[i] = ((float)Math.cos((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
-    }
-    while (j < 360)
-    {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
-      j += 90;
-    }
+    this.jdField_a_of_type_Abhl.a.a.updateLocationNative(this.jdField_a_of_type_Double, this.jdField_b_of_type_Double, this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Abhl.a.i);
   }
 }
 

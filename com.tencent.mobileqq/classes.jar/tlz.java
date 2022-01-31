@@ -1,59 +1,108 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
+import com.tencent.mobileqq.profile.view.ProfileLabelPanel.LabelStatusManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class tlz
-  extends NightModeLogic.NightModeCallback
+  extends BaseAdapter
 {
-  public tlz(QQSettingMe paramQQSettingMe) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new tma(this);
+  List jdField_a_of_type_JavaUtilList;
   
-  public void a(Bundle paramBundle)
+  public tlz(ProfileLabelEditorActivity paramProfileLabelEditorActivity, List paramList)
   {
-    this.a.r();
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void b(Bundle paramBundle)
+  private void a(ProfileLabelInfo paramProfileLabelInfo)
   {
-    int i = paramBundle.getInt("start_status");
-    if (i == 1) {
-      this.a.r();
+    Object localObject = null;
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a().keySet().iterator();
+    if (localIterator.hasNext())
+    {
+      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
+      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
+        break label114;
+      }
+      localObject = localProfileLabelInfo;
     }
-    do
+    label114:
+    for (;;)
     {
-      do
-      {
-        return;
-        if (i == 2)
-        {
-          this.a.r();
-          return;
-        }
-      } while (i != 3);
-      if (!(this.a.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-        break;
-      }
-      i = paramBundle.getInt("percent");
-      paramBundle = String.valueOf(i) + "%";
-      this.a.c.setText(paramBundle);
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
-    return;
-    if (QQSettingMe.e(this.a)) {}
-    for (Drawable localDrawable = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130843293);; localDrawable = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130843294))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-      if (!(localDrawable instanceof Animatable)) {
-        break;
-      }
-      ((Animatable)localDrawable).start();
       break;
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject)))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject));
+        return;
+      }
+      a(paramProfileLabelInfo.labelId);
+      return;
+    }
+  }
+  
+  private void a(Long paramLong)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
+    }
+    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
+    if (paramLong != null) {
+      paramLong.toggleStatus();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2130971658, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
+      paramViewGroup = new tly();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375270));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      int i = paramInt % ProfileActivity.a.length;
+      paramView.setBackgroundResource(ProfileActivity.a[i][0]);
+      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      i = ProfileActivity.a[i][1];
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
+      return paramView;
+      paramViewGroup = (tly)paramView.getTag();
     }
   }
 }

@@ -11,12 +11,12 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anfr;
-import anfs;
-import anft;
-import anfu;
-import anfv;
-import anfw;
+import annu;
+import annv;
+import annw;
+import annx;
+import anny;
+import annz;
 import com.tencent.av.camera.QavCameraUsage;
 import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.biz.troop.TroopMemberApiClient.Callback;
@@ -60,7 +60,7 @@ public class TroopHWJsPlugin
 {
   public static final String a;
   int jdField_a_of_type_Int = 540;
-  private Handler jdField_a_of_type_AndroidOsHandler = new anfs(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new annv(this);
   TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
   ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
   private TroopHWFileDownloadManager jdField_a_of_type_CooperationTroop_homeworkJspTroopHWFileDownloadManager;
@@ -84,7 +84,7 @@ public class TroopHWJsPlugin
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.be + "homeworkTmp/";
+    jdField_a_of_type_JavaLangString = AppConstants.bf + "homeworkTmp/";
   }
   
   public TroopHWJsPlugin()
@@ -1195,11 +1195,11 @@ public class TroopHWJsPlugin
     {
       return localObject;
       localBaseApplication = BaseApplicationImpl.getContext();
-      localObject = new File(AppConstants.aP);
+      localObject = new File(AppConstants.aQ);
       if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs())) {
-        QQToast.a(localBaseApplication, 2131434770, 0).a();
+        QQToast.a(localBaseApplication, 2131434786, 0).a();
       }
-      str = AppConstants.aP + System.currentTimeMillis() + ".jpg";
+      str = AppConstants.aQ + System.currentTimeMillis() + ".jpg";
       localObject = Uri.fromFile(new File(str));
       localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
       localIntent.putExtra("output", (Parcelable)localObject);
@@ -1214,7 +1214,7 @@ public class TroopHWJsPlugin
     catch (Exception paramActivity)
     {
       paramActivity.printStackTrace();
-      QQToast.a(localBaseApplication, 2131434793, 0).a();
+      QQToast.a(localBaseApplication, 2131434809, 0).a();
     }
     return str;
   }
@@ -1410,7 +1410,7 @@ public class TroopHWJsPlugin
         j += 1;
       }
     }
-    localObject = new File(AppConstants.be);
+    localObject = new File(AppConstants.bf);
     if (((File)localObject).exists())
     {
       localObject = ((File)localObject).listFiles();
@@ -1429,21 +1429,21 @@ public class TroopHWJsPlugin
       return;
     }
     ActionSheet localActionSheet = ActionSheet.a(this.mRuntime.a());
-    localActionSheet.a(2131436158, 1);
-    localActionSheet.a(2131436160, 1);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new anfr(this, paramInt, localActionSheet));
+    localActionSheet.a(2131436176, 1);
+    localActionSheet.a(2131436178, 1);
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new annu(this, paramInt, localActionSheet));
     localActionSheet.show();
     this.jdField_a_of_type_ComTencentWidgetActionSheet = localActionSheet;
   }
   
-  public TroopHWJsPlugin.UploadMediaEntry a(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt1, String paramString, Bitmap paramBitmap, anfw paramanfw, int paramInt2)
+  public TroopHWJsPlugin.UploadMediaEntry a(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt1, String paramString, Bitmap paramBitmap, annz paramannz, int paramInt2)
   {
     paramTroopHWJsPlugin.getClass();
     TroopHWJsPlugin.UploadMediaEntry localUploadMediaEntry = new TroopHWJsPlugin.UploadMediaEntry(paramTroopHWJsPlugin);
     localUploadMediaEntry.jdField_a_of_type_Int = paramInt1;
-    localUploadMediaEntry.jdField_a_of_type_Anfw = paramanfw;
-    localUploadMediaEntry.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask = new TroopHomeworkHelper.UploadFileTask(paramTroopHWJsPlugin.mRuntime.a(), paramString, paramanfw.jdField_b_of_type_JavaLangString);
+    localUploadMediaEntry.jdField_a_of_type_Annz = paramannz;
+    localUploadMediaEntry.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask = new TroopHomeworkHelper.UploadFileTask(paramTroopHWJsPlugin.mRuntime.a(), paramString, paramannz.jdField_b_of_type_JavaLangString);
     localUploadMediaEntry.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a(localUploadMediaEntry.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback);
     localUploadMediaEntry.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     localUploadMediaEntry.jdField_b_of_type_JavaLangString = paramString;
@@ -1454,7 +1454,7 @@ public class TroopHWJsPlugin
   public String a(String paramString1, String paramString2)
   {
     paramString2 = MD5Utils.d(paramString2) + HWTroopUtils.a(paramString2);
-    paramString1 = AppConstants.bf + paramString1 + File.separator;
+    paramString1 = AppConstants.bg + paramString1 + File.separator;
     File localFile = new File(paramString1);
     if (!localFile.exists()) {
       localFile.mkdirs();
@@ -1593,7 +1593,7 @@ public class TroopHWJsPlugin
       callJs(this.jdField_b_of_type_JavaLangString, new String[] { localJSONObject.toString() });
       this.jdField_d_of_type_Int += 1;
       if (this.jdField_b_of_type_Boolean) {
-        ThreadManager.post(new anft(this, paramString), 2, null, false);
+        ThreadManager.post(new annw(this, paramString), 2, null, false);
       }
       return;
     }
@@ -1817,7 +1817,7 @@ public class TroopHWJsPlugin
     //   227: invokevirtual 681	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   230: ifeq +107 -> 337
     //   233: aload_1
-    //   234: ifnull +2292 -> 2526
+    //   234: ifnull +2302 -> 2536
     //   237: aload_1
     //   238: ldc_w 628
     //   241: invokevirtual 821	org/json/JSONObject:optInt	(Ljava/lang/String;)I
@@ -2010,7 +2010,7 @@ public class TroopHWJsPlugin
     //   657: aconst_null
     //   658: astore_2
     //   659: aload_1
-    //   660: ifnull +1861 -> 2521
+    //   660: ifnull +1871 -> 2531
     //   663: aload_1
     //   664: ldc_w 885
     //   667: invokevirtual 810	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
@@ -2188,12 +2188,12 @@ public class TroopHWJsPlugin
     //   1057: aload 4
     //   1059: invokevirtual 681	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1062: ifeq +25 -> 1087
-    //   1065: new 945	anfq
+    //   1065: new 945	annt
     //   1068: dup
     //   1069: aload_0
     //   1070: aload_2
     //   1071: invokestatic 948	com/tencent/mobileqq/transfile/AbsDownloader:d	(Ljava/lang/String;)Ljava/lang/String;
-    //   1074: invokespecial 949	anfq:<init>	(Lcooperation/troop_homework/jsp/TroopHWJsPlugin;Ljava/lang/String;)V
+    //   1074: invokespecial 949	annt:<init>	(Lcooperation/troop_homework/jsp/TroopHWJsPlugin;Ljava/lang/String;)V
     //   1077: bipush 8
     //   1079: aconst_null
     //   1080: iconst_0
@@ -2369,7 +2369,7 @@ public class TroopHWJsPlugin
     //   1450: getfield 68	cooperation/troop_homework/jsp/TroopHWJsPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   1453: aload_2
     //   1454: aload_1
-    //   1455: invokevirtual 1004	com/tencent/biz/troop/TroopMemberApiClient:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1455: invokevirtual 1004	com/tencent/biz/troop/TroopMemberApiClient:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1458: goto -1253 -> 205
     //   1461: ldc_w 1006
     //   1464: aload 4
@@ -2464,7 +2464,7 @@ public class TroopHWJsPlugin
     //   1656: getfield 68	cooperation/troop_homework/jsp/TroopHWJsPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   1659: aload_2
     //   1660: aload_1
-    //   1661: invokevirtual 1025	com/tencent/biz/troop/TroopMemberApiClient:g	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1661: invokevirtual 1025	com/tencent/biz/troop/TroopMemberApiClient:h	(Ljava/lang/String;Ljava/lang/String;)V
     //   1664: goto -1459 -> 205
     //   1667: astore_1
     //   1668: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -2598,276 +2598,280 @@ public class TroopHWJsPlugin
     //   1961: getfield 610	cooperation/troop_homework/jsp/TroopHWJsPlugin$UploadMediaEntry:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   1964: aload_2
     //   1965: invokevirtual 1042	java/io/File:getName	()Ljava/lang/String;
-    //   1968: invokevirtual 1004	com/tencent/biz/troop/TroopMemberApiClient:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1968: invokevirtual 1004	com/tencent/biz/troop/TroopMemberApiClient:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1971: goto -1766 -> 205
     //   1974: ldc_w 1044
     //   1977: aload 4
     //   1979: invokevirtual 681	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1982: ifeq +84 -> 2066
+    //   1982: ifeq +94 -> 2076
     //   1985: aload_1
-    //   1986: ifnull +68 -> 2054
-    //   1989: aload_1
-    //   1990: ldc_w 1046
-    //   1993: invokevirtual 810	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1996: astore_2
-    //   1997: aload_1
-    //   1998: ldc_w 1048
-    //   2001: invokevirtual 810	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2004: astore_3
-    //   2005: aload_1
-    //   2006: ldc_w 1050
-    //   2009: invokevirtual 810	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2012: astore 4
-    //   2014: aload_1
-    //   2015: ldc_w 1052
-    //   2018: invokevirtual 810	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2021: astore_1
-    //   2022: aload_0
-    //   2023: aload_0
-    //   2024: getfield 551	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   2027: invokevirtual 556	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   2030: aload_2
-    //   2031: aload_3
+    //   1986: ifnull +78 -> 2064
+    //   1989: ldc_w 277
+    //   1992: ldc_w 1046
+    //   1995: aload_1
+    //   1996: invokestatic 1051	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   1999: aload_1
+    //   2000: ldc_w 1053
+    //   2003: invokevirtual 810	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2006: astore_2
+    //   2007: aload_1
+    //   2008: ldc_w 1055
+    //   2011: invokevirtual 810	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2014: astore_3
+    //   2015: aload_1
+    //   2016: ldc_w 1057
+    //   2019: invokevirtual 810	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2022: astore 4
+    //   2024: aload_1
+    //   2025: ldc_w 1059
+    //   2028: invokevirtual 810	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2031: astore_1
     //   2032: aload_0
-    //   2033: getfield 262	cooperation/troop_homework/jsp/TroopHWJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   2036: aload 4
-    //   2038: aload_0
-    //   2039: getfield 816	cooperation/troop_homework/jsp/TroopHWJsPlugin:jdField_e_of_type_JavaLangString	Ljava/lang/String;
-    //   2042: aload_1
-    //   2043: invokestatic 1057	com/tencent/mobileqq/troop/homework/arithmetic/ui/CheckArithHWResultFragment:a	(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   2046: bipush 6
-    //   2048: invokevirtual 843	cooperation/troop_homework/jsp/TroopHWJsPlugin:startActivityForResult	(Landroid/content/Intent;B)V
-    //   2051: goto -1846 -> 205
-    //   2054: ldc_w 277
-    //   2057: ldc_w 1059
-    //   2060: invokestatic 1063	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2063: goto -1858 -> 205
-    //   2066: ldc_w 1065
-    //   2069: aload 4
-    //   2071: invokevirtual 681	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2074: ifeq +186 -> 2260
-    //   2077: new 240	org/json/JSONObject
-    //   2080: dup
-    //   2081: aload 5
-    //   2083: iconst_0
-    //   2084: aaload
-    //   2085: invokespecial 805	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   2088: ldc_w 1067
-    //   2091: invokevirtual 1068	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2094: astore_2
-    //   2095: aload_2
-    //   2096: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   2099: istore 14
-    //   2101: iload 14
-    //   2103: ifne -1898 -> 205
-    //   2106: lconst_0
-    //   2107: lstore 8
-    //   2109: aload_2
-    //   2110: invokestatic 1071	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   2113: lstore 10
-    //   2115: lload 10
+    //   2033: aload_0
+    //   2034: getfield 551	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   2037: invokevirtual 556	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   2040: aload_2
+    //   2041: aload_3
+    //   2042: aload_0
+    //   2043: getfield 262	cooperation/troop_homework/jsp/TroopHWJsPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2046: aload 4
+    //   2048: aload_0
+    //   2049: getfield 816	cooperation/troop_homework/jsp/TroopHWJsPlugin:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   2052: aload_1
+    //   2053: invokestatic 1064	com/tencent/mobileqq/troop/homework/arithmetic/ui/CheckArithHWResultFragment:a	(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   2056: bipush 6
+    //   2058: invokevirtual 843	cooperation/troop_homework/jsp/TroopHWJsPlugin:startActivityForResult	(Landroid/content/Intent;B)V
+    //   2061: goto -1856 -> 205
+    //   2064: ldc_w 277
+    //   2067: ldc_w 1066
+    //   2070: invokestatic 1067	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2073: goto -1868 -> 205
+    //   2076: ldc_w 1069
+    //   2079: aload 4
+    //   2081: invokevirtual 681	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2084: ifeq +186 -> 2270
+    //   2087: new 240	org/json/JSONObject
+    //   2090: dup
+    //   2091: aload 5
+    //   2093: iconst_0
+    //   2094: aaload
+    //   2095: invokespecial 805	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   2098: ldc_w 1071
+    //   2101: invokevirtual 1072	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2104: astore_2
+    //   2105: aload_2
+    //   2106: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2109: istore 14
+    //   2111: iload 14
+    //   2113: ifne -1908 -> 205
+    //   2116: lconst_0
     //   2117: lstore 8
-    //   2119: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2122: ifeq +31 -> 2153
-    //   2125: ldc_w 277
-    //   2128: iconst_2
-    //   2129: new 32	java/lang/StringBuilder
-    //   2132: dup
-    //   2133: invokespecial 35	java/lang/StringBuilder:<init>	()V
-    //   2136: ldc_w 1073
-    //   2139: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2142: lload 8
-    //   2144: invokevirtual 433	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2147: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2150: invokestatic 875	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2153: lload 8
-    //   2155: lconst_0
-    //   2156: lcmp
-    //   2157: ifle +67 -> 2224
-    //   2160: aload_0
-    //   2161: getfield 551	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   2164: ifnull +55 -> 2219
-    //   2167: aload_0
-    //   2168: getfield 551	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   2171: invokevirtual 556	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   2174: astore_1
-    //   2175: aload_1
-    //   2176: aconst_null
-    //   2177: aload_2
-    //   2178: invokestatic 1078	com/tencent/mobileqq/troop/homework/entry/ui/PublishHomeWorkFragment:a	(Landroid/app/Activity;Landroid/os/Bundle;Ljava/lang/String;)V
-    //   2181: aload_1
-    //   2182: ifnull -1977 -> 205
+    //   2119: aload_2
+    //   2120: invokestatic 1075	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   2123: lstore 10
+    //   2125: lload 10
+    //   2127: lstore 8
+    //   2129: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2132: ifeq +31 -> 2163
+    //   2135: ldc_w 277
+    //   2138: iconst_2
+    //   2139: new 32	java/lang/StringBuilder
+    //   2142: dup
+    //   2143: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   2146: ldc_w 1077
+    //   2149: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2152: lload 8
+    //   2154: invokevirtual 433	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2157: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2160: invokestatic 875	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2163: lload 8
+    //   2165: lconst_0
+    //   2166: lcmp
+    //   2167: ifle +67 -> 2234
+    //   2170: aload_0
+    //   2171: getfield 551	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   2174: ifnull +55 -> 2229
+    //   2177: aload_0
+    //   2178: getfield 551	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   2181: invokevirtual 556	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   2184: astore_1
     //   2185: aload_1
-    //   2186: ldc_w 1079
-    //   2189: ldc_w 1080
-    //   2192: invokevirtual 1083	android/app/Activity:overridePendingTransition	(II)V
-    //   2195: goto -1990 -> 205
-    //   2198: astore_1
-    //   2199: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2202: ifeq -1997 -> 205
-    //   2205: ldc_w 277
-    //   2208: iconst_2
-    //   2209: ldc_w 1085
-    //   2212: aload_1
-    //   2213: invokestatic 993	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   2216: goto -2011 -> 205
-    //   2219: aconst_null
-    //   2220: astore_1
-    //   2221: goto -46 -> 2175
-    //   2224: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2227: ifeq -2022 -> 205
-    //   2230: ldc_w 277
-    //   2233: iconst_2
-    //   2234: new 32	java/lang/StringBuilder
-    //   2237: dup
-    //   2238: invokespecial 35	java/lang/StringBuilder:<init>	()V
-    //   2241: ldc_w 1087
-    //   2244: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2247: aload_2
-    //   2248: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2251: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2254: invokestatic 875	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2257: goto -2052 -> 205
-    //   2260: ldc_w 1089
-    //   2263: aload 4
-    //   2265: invokevirtual 681	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   2268: ifeq -2063 -> 205
-    //   2271: new 240	org/json/JSONObject
-    //   2274: dup
-    //   2275: aload 5
-    //   2277: iconst_0
-    //   2278: aaload
-    //   2279: invokespecial 805	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   2282: astore_1
-    //   2283: aload_1
-    //   2284: ldc_w 1091
-    //   2287: invokevirtual 1068	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2290: astore_2
-    //   2291: aload_2
-    //   2292: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   2295: istore 14
-    //   2297: iload 14
-    //   2299: ifne -2094 -> 205
-    //   2302: aload_2
-    //   2303: invokestatic 1071	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   2306: lstore 10
-    //   2308: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2311: ifeq +31 -> 2342
-    //   2314: ldc_w 277
-    //   2317: iconst_2
-    //   2318: new 32	java/lang/StringBuilder
-    //   2321: dup
-    //   2322: invokespecial 35	java/lang/StringBuilder:<init>	()V
-    //   2325: ldc_w 1093
-    //   2328: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2331: lload 10
-    //   2333: invokevirtual 433	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2336: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2339: invokestatic 875	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2342: aload_1
-    //   2343: ldc_w 1067
-    //   2346: invokevirtual 1068	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   2349: astore_1
-    //   2350: lconst_0
-    //   2351: lstore 8
-    //   2353: aload_1
-    //   2354: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   2357: istore 14
-    //   2359: lload 8
-    //   2361: lstore 12
-    //   2363: iload 14
-    //   2365: ifne +55 -> 2420
-    //   2368: aload_1
-    //   2369: invokestatic 1071	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   2372: lstore 12
-    //   2374: lload 12
-    //   2376: lstore 8
-    //   2378: lload 8
-    //   2380: lstore 12
-    //   2382: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2385: ifeq +35 -> 2420
-    //   2388: ldc_w 277
-    //   2391: iconst_2
-    //   2392: new 32	java/lang/StringBuilder
-    //   2395: dup
-    //   2396: invokespecial 35	java/lang/StringBuilder:<init>	()V
-    //   2399: ldc_w 1073
-    //   2402: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2405: lload 8
-    //   2407: invokevirtual 433	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2410: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2413: invokestatic 875	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2416: lload 8
-    //   2418: lstore 12
-    //   2420: lload 10
-    //   2422: lconst_0
-    //   2423: lcmp
-    //   2424: ifle -2219 -> 205
-    //   2427: lload 12
-    //   2429: lconst_0
-    //   2430: lcmp
-    //   2431: ifle -2226 -> 205
-    //   2434: aload_0
-    //   2435: getfield 551	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   2438: ifnull +70 -> 2508
-    //   2441: aload_0
-    //   2442: getfield 551	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   2445: invokevirtual 556	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   2448: astore_1
-    //   2449: aload_0
-    //   2450: aload_1
-    //   2451: lload 12
-    //   2453: lload 10
-    //   2455: invokestatic 1098	com/tencent/mobileqq/troop/homework/entry/ui/SubmitHomeWorkFragment:a	(Landroid/app/Activity;JJ)Landroid/content/Intent;
-    //   2458: bipush 7
-    //   2460: invokevirtual 843	cooperation/troop_homework/jsp/TroopHWJsPlugin:startActivityForResult	(Landroid/content/Intent;B)V
-    //   2463: aload_1
-    //   2464: ifnull -2259 -> 205
-    //   2467: aload_1
-    //   2468: ldc_w 1079
-    //   2471: ldc_w 1080
-    //   2474: invokevirtual 1083	android/app/Activity:overridePendingTransition	(II)V
-    //   2477: goto -2272 -> 205
-    //   2480: astore_1
-    //   2481: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   2484: ifeq -2279 -> 205
-    //   2487: ldc_w 277
-    //   2490: iconst_2
-    //   2491: ldc_w 1085
-    //   2494: aload_1
-    //   2495: invokestatic 993	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   2498: goto -2293 -> 205
-    //   2501: astore_2
-    //   2502: lconst_0
-    //   2503: lstore 10
-    //   2505: goto -197 -> 2308
-    //   2508: aconst_null
-    //   2509: astore_1
-    //   2510: goto -61 -> 2449
-    //   2513: astore_1
-    //   2514: goto -395 -> 2119
-    //   2517: astore_1
-    //   2518: goto -140 -> 2378
-    //   2521: aconst_null
-    //   2522: astore_1
-    //   2523: goto -1814 -> 709
-    //   2526: iconst_m1
-    //   2527: istore 6
-    //   2529: goto -2283 -> 246
+    //   2186: aconst_null
+    //   2187: aload_2
+    //   2188: invokestatic 1082	com/tencent/mobileqq/troop/homework/entry/ui/PublishHomeWorkFragment:a	(Landroid/app/Activity;Landroid/os/Bundle;Ljava/lang/String;)V
+    //   2191: aload_1
+    //   2192: ifnull -1987 -> 205
+    //   2195: aload_1
+    //   2196: ldc_w 1083
+    //   2199: ldc_w 1084
+    //   2202: invokevirtual 1087	android/app/Activity:overridePendingTransition	(II)V
+    //   2205: goto -2000 -> 205
+    //   2208: astore_1
+    //   2209: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2212: ifeq -2007 -> 205
+    //   2215: ldc_w 277
+    //   2218: iconst_2
+    //   2219: ldc_w 1089
+    //   2222: aload_1
+    //   2223: invokestatic 993	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2226: goto -2021 -> 205
+    //   2229: aconst_null
+    //   2230: astore_1
+    //   2231: goto -46 -> 2185
+    //   2234: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2237: ifeq -2032 -> 205
+    //   2240: ldc_w 277
+    //   2243: iconst_2
+    //   2244: new 32	java/lang/StringBuilder
+    //   2247: dup
+    //   2248: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   2251: ldc_w 1091
+    //   2254: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2257: aload_2
+    //   2258: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2261: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2264: invokestatic 875	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2267: goto -2062 -> 205
+    //   2270: ldc_w 1093
+    //   2273: aload 4
+    //   2275: invokevirtual 681	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2278: ifeq -2073 -> 205
+    //   2281: new 240	org/json/JSONObject
+    //   2284: dup
+    //   2285: aload 5
+    //   2287: iconst_0
+    //   2288: aaload
+    //   2289: invokespecial 805	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   2292: astore_1
+    //   2293: aload_1
+    //   2294: ldc_w 1095
+    //   2297: invokevirtual 1072	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2300: astore_2
+    //   2301: aload_2
+    //   2302: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2305: istore 14
+    //   2307: iload 14
+    //   2309: ifne -2104 -> 205
+    //   2312: aload_2
+    //   2313: invokestatic 1075	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   2316: lstore 10
+    //   2318: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2321: ifeq +31 -> 2352
+    //   2324: ldc_w 277
+    //   2327: iconst_2
+    //   2328: new 32	java/lang/StringBuilder
+    //   2331: dup
+    //   2332: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   2335: ldc_w 1097
+    //   2338: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2341: lload 10
+    //   2343: invokevirtual 433	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2346: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2349: invokestatic 875	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2352: aload_1
+    //   2353: ldc_w 1071
+    //   2356: invokevirtual 1072	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   2359: astore_1
+    //   2360: lconst_0
+    //   2361: lstore 8
+    //   2363: aload_1
+    //   2364: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   2367: istore 14
+    //   2369: lload 8
+    //   2371: lstore 12
+    //   2373: iload 14
+    //   2375: ifne +55 -> 2430
+    //   2378: aload_1
+    //   2379: invokestatic 1075	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   2382: lstore 12
+    //   2384: lload 12
+    //   2386: lstore 8
+    //   2388: lload 8
+    //   2390: lstore 12
+    //   2392: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2395: ifeq +35 -> 2430
+    //   2398: ldc_w 277
+    //   2401: iconst_2
+    //   2402: new 32	java/lang/StringBuilder
+    //   2405: dup
+    //   2406: invokespecial 35	java/lang/StringBuilder:<init>	()V
+    //   2409: ldc_w 1077
+    //   2412: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2415: lload 8
+    //   2417: invokevirtual 433	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2420: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2423: invokestatic 875	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2426: lload 8
+    //   2428: lstore 12
+    //   2430: lload 10
+    //   2432: lconst_0
+    //   2433: lcmp
+    //   2434: ifle -2229 -> 205
+    //   2437: lload 12
+    //   2439: lconst_0
+    //   2440: lcmp
+    //   2441: ifle -2236 -> 205
+    //   2444: aload_0
+    //   2445: getfield 551	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   2448: ifnull +70 -> 2518
+    //   2451: aload_0
+    //   2452: getfield 551	cooperation/troop_homework/jsp/TroopHWJsPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   2455: invokevirtual 556	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   2458: astore_1
+    //   2459: aload_0
+    //   2460: aload_1
+    //   2461: lload 12
+    //   2463: lload 10
+    //   2465: invokestatic 1102	com/tencent/mobileqq/troop/homework/entry/ui/SubmitHomeWorkFragment:a	(Landroid/app/Activity;JJ)Landroid/content/Intent;
+    //   2468: bipush 7
+    //   2470: invokevirtual 843	cooperation/troop_homework/jsp/TroopHWJsPlugin:startActivityForResult	(Landroid/content/Intent;B)V
+    //   2473: aload_1
+    //   2474: ifnull -2269 -> 205
+    //   2477: aload_1
+    //   2478: ldc_w 1083
+    //   2481: ldc_w 1084
+    //   2484: invokevirtual 1087	android/app/Activity:overridePendingTransition	(II)V
+    //   2487: goto -2282 -> 205
+    //   2490: astore_1
+    //   2491: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2494: ifeq -2289 -> 205
+    //   2497: ldc_w 277
+    //   2500: iconst_2
+    //   2501: ldc_w 1089
+    //   2504: aload_1
+    //   2505: invokestatic 993	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2508: goto -2303 -> 205
+    //   2511: astore_2
+    //   2512: lconst_0
+    //   2513: lstore 10
+    //   2515: goto -197 -> 2318
+    //   2518: aconst_null
+    //   2519: astore_1
+    //   2520: goto -61 -> 2459
+    //   2523: astore_1
+    //   2524: goto -395 -> 2129
+    //   2527: astore_1
+    //   2528: goto -140 -> 2388
+    //   2531: aconst_null
+    //   2532: astore_1
+    //   2533: goto -1824 -> 709
+    //   2536: iconst_m1
+    //   2537: istore 6
+    //   2539: goto -2293 -> 246
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2532	0	this	TroopHWJsPlugin
-    //   0	2532	1	paramJsBridgeListener	com.tencent.mobileqq.webview.swift.JsBridgeListener
-    //   0	2532	2	paramString1	String
-    //   0	2532	3	paramString2	String
-    //   0	2532	4	paramString3	String
-    //   0	2532	5	paramVarArgs	String[]
-    //   244	2284	6	j	int
+    //   0	2542	0	this	TroopHWJsPlugin
+    //   0	2542	1	paramJsBridgeListener	com.tencent.mobileqq.webview.swift.JsBridgeListener
+    //   0	2542	2	paramString1	String
+    //   0	2542	3	paramString2	String
+    //   0	2542	4	paramString3	String
+    //   0	2542	5	paramVarArgs	String[]
+    //   244	2294	6	j	int
     //   410	846	7	k	int
-    //   643	1774	8	l1	long
-    //   2113	391	10	l2	long
-    //   2361	91	12	l3	long
-    //   2099	265	14	bool	boolean
+    //   643	1784	8	l1	long
+    //   2123	391	10	l2	long
+    //   2371	91	12	l3	long
+    //   2109	265	14	bool	boolean
     //   43	1250	15	localObject	Object
     //   52	10	16	str	String
     // Exception table:
@@ -2879,23 +2883,23 @@ public class TroopHWJsPlugin
     //   1258	1279	1362	java/lang/Exception
     //   1288	1298	1362	java/lang/Exception
     //   1639	1664	1667	java/lang/Exception
-    //   2077	2101	2198	java/lang/Exception
-    //   2119	2153	2198	java/lang/Exception
-    //   2160	2175	2198	java/lang/Exception
-    //   2175	2181	2198	java/lang/Exception
-    //   2185	2195	2198	java/lang/Exception
-    //   2224	2257	2198	java/lang/Exception
-    //   2271	2297	2480	java/lang/Exception
-    //   2308	2342	2480	java/lang/Exception
-    //   2342	2350	2480	java/lang/Exception
-    //   2353	2359	2480	java/lang/Exception
-    //   2382	2416	2480	java/lang/Exception
-    //   2434	2449	2480	java/lang/Exception
-    //   2449	2463	2480	java/lang/Exception
-    //   2467	2477	2480	java/lang/Exception
-    //   2302	2308	2501	java/lang/Exception
-    //   2109	2115	2513	java/lang/Exception
-    //   2368	2374	2517	java/lang/Exception
+    //   2087	2111	2208	java/lang/Exception
+    //   2129	2163	2208	java/lang/Exception
+    //   2170	2185	2208	java/lang/Exception
+    //   2185	2191	2208	java/lang/Exception
+    //   2195	2205	2208	java/lang/Exception
+    //   2234	2267	2208	java/lang/Exception
+    //   2281	2307	2490	java/lang/Exception
+    //   2318	2352	2490	java/lang/Exception
+    //   2352	2360	2490	java/lang/Exception
+    //   2363	2369	2490	java/lang/Exception
+    //   2392	2426	2490	java/lang/Exception
+    //   2444	2459	2490	java/lang/Exception
+    //   2459	2473	2490	java/lang/Exception
+    //   2477	2487	2490	java/lang/Exception
+    //   2312	2318	2511	java/lang/Exception
+    //   2119	2125	2523	java/lang/Exception
+    //   2378	2384	2527	java/lang/Exception
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
@@ -2959,8 +2963,8 @@ public class TroopHWJsPlugin
               for (paramIntent = "";; paramIntent = paramIntent.getStringExtra("localPath"))
               {
                 this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_d_of_type_Int), paramIntent);
-                localObject1 = new anfw(this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString);
-                paramIntent = a(this, this.jdField_d_of_type_Int, paramIntent, null, (anfw)localObject1, 0);
+                localObject1 = new annz(this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString);
+                paramIntent = a(this, this.jdField_d_of_type_Int, paramIntent, null, (annz)localObject1, 0);
                 this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_d_of_type_Int), paramIntent);
                 paramIntent.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
                 this.jdField_d_of_type_Int += 1;
@@ -3056,7 +3060,7 @@ public class TroopHWJsPlugin
           } while (!QLog.isColorLevel());
           QLog.w("TroopHWJsPlugin", 2, "mJsCallback == " + this.jdField_b_of_type_JavaLangString + ", mTroopUin == " + this.jdField_e_of_type_JavaLangString);
           return;
-          ThreadManager.postImmediately(new anfv(this, new anfw(this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString), localHashMap2), null, false);
+          ThreadManager.postImmediately(new anny(this, new annz(this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString), localHashMap2), null, false);
         } while (localHashMap1.size() <= 0);
         if (QLog.isColorLevel()) {
           QLog.e("TroopHWJsPlugin", 2, "pic selected! size = " + localHashMap1.size());
@@ -3082,7 +3086,7 @@ public class TroopHWJsPlugin
             }
           }
         }
-        ThreadManager.postImmediately(new anfu(this, localHashMap1), null, false);
+        ThreadManager.postImmediately(new annx(this, localHashMap1), null, false);
         return;
         paramIntent = CheckArithHWResultFragment.a(paramIntent);
         try
@@ -3138,7 +3142,7 @@ public class TroopHWJsPlugin
           j += 1;
         }
       }
-      localObject1 = new File(AppConstants.be);
+      localObject1 = new File(AppConstants.bf);
       if (((File)localObject1).exists())
       {
         localObject1 = ((File)localObject1).listFiles();

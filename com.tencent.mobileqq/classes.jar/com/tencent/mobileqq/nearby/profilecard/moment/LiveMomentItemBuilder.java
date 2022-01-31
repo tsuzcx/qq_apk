@@ -42,10 +42,10 @@ public class LiveMomentItemBuilder
   public View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (LiveMomentItemBuilder.LiveViewHolder)paramMomentViewHolder;
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970474, paramViewGroup, false);
-    paramMomentViewHolder.j = ((TextView)paramViewGroup.findViewById(2131367129));
-    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131366378));
-    paramMomentViewHolder.g = ((ImageView)paramViewGroup.findViewById(2131370666));
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970487, paramViewGroup, false);
+    paramMomentViewHolder.i = ((TextView)paramViewGroup.findViewById(2131367129));
+    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131366383));
+    paramMomentViewHolder.g = ((ImageView)paramViewGroup.findViewById(2131370657));
     return paramViewGroup;
   }
   
@@ -54,7 +54,12 @@ public class LiveMomentItemBuilder
     return new LiveMomentItemBuilder.LiveViewHolder(this);
   }
   
-  public boolean c(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  public boolean a(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  {
+    return false;
+  }
+  
+  public boolean b(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     return false;
   }
@@ -75,30 +80,25 @@ public class LiveMomentItemBuilder
     QLog.i("LiveMomentItemBuilder", 2, "handleContentClick, liveUrl=" + paramMomentViewHolder.a.h);
   }
   
-  public boolean d(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
-  {
-    return false;
-  }
-  
-  public void f(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  public void e(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (LiveMomentItemBuilder.LiveViewHolder)paramMomentViewHolder;
     Object localObject2 = (LiveMomentFeedInfo)paramMomentViewHolder.a;
     if (!TextUtils.isEmpty(((LiveMomentFeedInfo)localObject2).i))
     {
-      paramMomentViewHolder.j.setVisibility(0);
-      paramMomentViewHolder.j.setText(((LiveMomentFeedInfo)localObject2).i);
+      paramMomentViewHolder.i.setVisibility(0);
+      paramMomentViewHolder.i.setText(((LiveMomentFeedInfo)localObject2).i);
     }
     for (;;)
     {
-      Object localObject1 = (String)paramMomentViewHolder.f.getTag(2131362360);
+      Object localObject1 = (String)paramMomentViewHolder.f.getTag(2131362363);
       localObject2 = ((LiveMomentFeedInfo)localObject2).a;
       if (!TextUtils.equals((CharSequence)localObject1, (CharSequence)localObject2)) {}
       try
       {
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842848);
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842848);
         localObject1 = URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject1);
         ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.a(UIUtils.a(BaseApplicationImpl.getContext(), 200.0F), UIUtils.a(BaseApplicationImpl.getContext(), 200.0F), DisplayUtil.a(paramMomentViewHolder.f.getContext(), 4.0F)));
         ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.b);
@@ -109,13 +109,13 @@ public class LiveMomentItemBuilder
         localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
         paramMomentViewHolder.g.setImageDrawable((Drawable)localObject1);
         return;
-        paramMomentViewHolder.j.setVisibility(8);
+        paramMomentViewHolder.i.setVisibility(8);
       }
       catch (Exception localException)
       {
         do
         {
-          paramMomentViewHolder.f.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814));
+          paramMomentViewHolder.f.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842848));
         } while (!QLog.isColorLevel());
         QLog.i("LiveMomentItemBuilder", 2, "convertURL, e=" + localException.toString(), localException);
       }

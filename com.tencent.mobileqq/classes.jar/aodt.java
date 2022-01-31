@@ -1,28 +1,13 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoShareGroup;
 
 public class aodt
-  extends Property
+  implements View.OnClickListener
 {
-  public aodt(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aodt(EditVideoShareGroup paramEditVideoShareGroup) {}
   
-  public Float a(GroundDrawable paramGroundDrawable)
-  {
-    if (paramGroundDrawable != null) {
-      return Float.valueOf(GroundDrawable.a(paramGroundDrawable));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.a(paramGroundDrawable, paramFloat.floatValue());
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

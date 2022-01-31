@@ -25,57 +25,57 @@ import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.util.ArrayList;
-import lyw;
-import lyx;
-import lyy;
-import lyz;
-import lza;
-import lzb;
+import mcj;
+import mck;
+import mcl;
+import mcm;
+import mcn;
+import mco;
 
 public class ReadInJoyVideoSearchTagFragment
   extends PublicBaseFragment
 {
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new lyx(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new mck(this);
   private ArrayAdapter jdField_a_of_type_AndroidWidgetArrayAdapter;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
-  ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lyw(this);
+  ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new mcj(this);
+  
+  private void a()
+  {
+    getView().setOnClickListener(new mcl(this));
+  }
   
   private void b()
   {
-    getView().setOnClickListener(new lyy(this));
+    getView().findViewById(2131367358).setOnClickListener(new mcm(this));
   }
   
   private void c()
   {
-    getView().findViewById(2131367356).setOnClickListener(new lyz(this));
-  }
-  
-  private void d()
-  {
-    ListView localListView = (ListView)getView().findViewById(2131367357);
+    ListView localListView = (ListView)getView().findViewById(2131367359);
     View localView = new View(getActivity());
     localView.setBackgroundColor(Color.argb(102, 0, 0, 0));
     localListView.setEmptyView(localView);
-    this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2130969661, new ArrayList());
+    this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2130969657, new ArrayList());
     localListView.setAdapter(this.jdField_a_of_type_AndroidWidgetArrayAdapter);
-    localListView.setOnItemClickListener(new lza(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
+    localListView.setOnItemClickListener(new mcn(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
-  private void e()
+  private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131367355));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new lzb(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131367357));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new mco(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
   
-  private void f()
+  private void e()
   {
     this.jdField_a_of_type_AndroidWidgetEditText.setText("");
   }
   
-  private void g()
+  private void f()
   {
     PublicFragmentActivity localPublicFragmentActivity;
     SystemBarCompact localSystemBarCompact;
@@ -83,7 +83,7 @@ public class ReadInJoyVideoSearchTagFragment
     {
       localPublicFragmentActivity = (PublicFragmentActivity)getActivity();
       localSystemBarCompact = localPublicFragmentActivity.mSystemBarComp;
-      if ((localSystemBarCompact != null) && (b()) && (a()) && (ImmersiveUtils.isSupporImmersive() == 1))
+      if ((localSystemBarCompact != null) && (needImmersive()) && (needStatusTrans()) && (ImmersiveUtils.isSupporImmersive() == 1))
       {
         if (!ThemeUtil.isInNightMode(localPublicFragmentActivity.getAppRuntime())) {
           break label96;
@@ -115,7 +115,7 @@ public class ReadInJoyVideoSearchTagFragment
     localSystemBarCompact.setStatusBarDarkMode(true);
   }
   
-  public void a(Activity paramActivity)
+  public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     paramActivity.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     paramActivity.getWindow().requestFeature(1);
@@ -123,14 +123,14 @@ public class ReadInJoyVideoSearchTagFragment
     paramActivity.overridePendingTransition(2131034165, 0);
   }
   
-  public boolean c()
+  public boolean isWrapContent()
   {
     return false;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2130969660, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2130969656, paramViewGroup, false);
   }
   
   public void onDestroy()
@@ -139,21 +139,21 @@ public class ReadInJoyVideoSearchTagFragment
     ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
   }
   
+  public void onFinish()
+  {
+    getActivity().overridePendingTransition(0, 2131034167);
+    super.onFinish();
+  }
+  
   public void onResume()
   {
     super.onResume();
-    g();
-    e();
+    f();
     d();
     c();
     b();
+    a();
     ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
-  }
-  
-  public void u_()
-  {
-    getActivity().overridePendingTransition(0, 2131034167);
-    super.u_();
   }
 }
 

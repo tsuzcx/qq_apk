@@ -1,31 +1,56 @@
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
 public class xoy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xoy(FlowCameraActivity2 paramFlowCameraActivity2, String paramString, int paramInt) {}
+  public xoy(BannerManager paramBannerManager, Bundle paramBundle) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 2002) {
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.getString(2131428347);
+    if (BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager) != null)
+    {
+      paramView = BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(30);
+      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendMessageDelayed(paramView, 2500L);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.getString(2131428346), new xoz(this));
+    paramView = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
+    if (!TextUtils.isEmpty(paramView)) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.setCancelable(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.show();
+      paramView = Class.forName(paramView);
+      if (paramView != null)
+      {
+        paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getApplicationContext(), paramView);
+        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.setAction(str);
+        }
+        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.addCategory(str);
+        }
+        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.putExtra("url", str);
+        }
+        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
+        paramView.putExtra("back_from_aio", true);
+        BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView);
+      }
       return;
     }
-    catch (WindowManager.BadTokenException localBadTokenException)
+    catch (ClassNotFoundException paramView)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("FlowCameraActivity", 2, "", localBadTokenException);
+      for (;;)
+      {
+        paramView = null;
+      }
     }
   }
 }

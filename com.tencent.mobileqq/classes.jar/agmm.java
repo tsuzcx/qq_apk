@@ -1,27 +1,22 @@
-import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.mobileqq.armap.FrameBmpCache.EndListener;
+import com.tencent.mobileqq.armap.SdCardImageAnimView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class agmm
+class agmm
+  implements FrameBmpCache.EndListener
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e;
+  agmm(agml paramagml) {}
   
-  private agmm()
+  public void a(SdCardImageAnimView paramSdCardImageAnimView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
+    paramSdCardImageAnimView.a();
+    this.a.a.a.a.post(new agmn(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmm
  * JD-Core Version:    0.7.0.1
  */

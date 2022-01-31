@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.RedpointHandler;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class zsy
-  implements Runnable
+  extends SosoInterface.OnLocationListener
 {
-  public zsy(C2CMessageProcessor paramC2CMessageProcessor, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, String paramString4) {}
-  
-  public void run()
+  public zsy(RedpointHandler paramRedpointHandler, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("fromUin", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("toUin", this.jdField_b_of_type_JavaLangString);
-    localHashMap.put("msgId", this.c);
-    localHashMap.put("createTime", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("recvTime", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("sendFlag", this.d);
-    localHashMap.put("nodeNo", String.valueOf(3000));
-    long l2 = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-    long l1;
-    if (l2 > 0L)
-    {
-      l1 = l2;
-      if (l2 <= 86400L) {}
-    }
-    else
-    {
-      l1 = 0L;
-    }
-    StatisticCollector.a(BaseApplication.getContext()).a(null, "actPubAccMsgReceipt", true, l1, 0L, localHashMap, null);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    QLog.d("RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
+    RedpointHandler.a(this.a, paramInt, paramSosoLbsInfo);
   }
 }
 

@@ -48,20 +48,20 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import ybi;
-import ybj;
-import ybk;
-import ybl;
-import ybm;
-import ybn;
-import ybo;
-import ybp;
+import yhr;
+import yhs;
+import yht;
+import yhu;
+import yhv;
+import yhw;
+import yhx;
+import yhy;
 
 public class SelectMemberBuddyListAdapter
   extends BaseFacePreloadExpandableListAdapter
   implements View.OnClickListener, View.OnLongClickListener, TopayManager.TopayListener, PhoneContactManager.IPhoneContactListener
 {
-  private static final ybn jdField_a_of_type_Ybn = new ybn(null);
+  private static final yhw jdField_a_of_type_Yhw = new yhw(null);
   private final int jdField_a_of_type_Int;
   private final Context jdField_a_of_type_AndroidContentContext;
   private final SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
@@ -73,7 +73,7 @@ public class SelectMemberBuddyListAdapter
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean = true;
   private final int jdField_b_of_type_Int;
-  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new ybk(this);
+  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new yht(this);
   private ExpandableListView jdField_b_of_type_ComTencentWidgetExpandableListView;
   private final boolean jdField_b_of_type_Boolean;
   private boolean c;
@@ -88,7 +88,7 @@ public class SelectMemberBuddyListAdapter
     this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = ((PhoneContactManagerImp)paramQQAppInterface.getManager(10));
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_b_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
-    paramExpandableListView.post(new ybi(this));
+    paramExpandableListView.post(new yhr(this));
     if (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_h_of_type_Boolean) {
       this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a(this);
     }
@@ -116,15 +116,15 @@ public class SelectMemberBuddyListAdapter
     Friends localFriends;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969720, paramViewGroup, false);
-      paramViewGroup = new ybp();
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131362754));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363939));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969717, paramViewGroup, false);
+      paramViewGroup = new yhy();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362724));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131362759));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363964));
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
         paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
-      paramView.findViewById(2131363937).setVisibility(8);
+      paramView.findViewById(2131363962).setVisibility(8);
       paramView.setTag(paramViewGroup);
       localObject1 = getChild(paramInt1, paramInt2);
       localFriends = (Friends)localObject1;
@@ -169,7 +169,7 @@ public class SelectMemberBuddyListAdapter
         paramView.setContentDescription((String)localObject1 + "已选中");
       }
       return paramView;
-      paramViewGroup = (ybp)paramView.getTag();
+      paramViewGroup = (yhy)paramView.getTag();
       paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       break;
       label402:
@@ -187,7 +187,7 @@ public class SelectMemberBuddyListAdapter
   {
     try
     {
-      Collections.sort(paramList, jdField_a_of_type_Ybn);
+      Collections.sort(paramList, jdField_a_of_type_Yhw);
       return;
     }
     catch (ArrayIndexOutOfBoundsException paramList)
@@ -202,11 +202,11 @@ public class SelectMemberBuddyListAdapter
     PhoneContact localPhoneContact;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969720, paramViewGroup, false);
-      paramViewGroup = new ybp();
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131362754));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363939));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969717, paramViewGroup, false);
+      paramViewGroup = new yhy();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362724));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131362759));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363964));
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
         paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
@@ -238,7 +238,7 @@ public class SelectMemberBuddyListAdapter
         paramView.setContentDescription(localPhoneContact.name + "已选中");
       }
       return paramView;
-      paramViewGroup = (ybp)paramView.getTag();
+      paramViewGroup = (yhy)paramView.getTag();
       paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       break;
       label320:
@@ -254,17 +254,17 @@ public class SelectMemberBuddyListAdapter
   
   private View c(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
-    if ((paramView == null) || ((paramView.getTag() instanceof ybp)))
+    if ((paramView == null) || ((paramView.getTag() instanceof yhy)))
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969221, paramViewGroup, false);
-      paramViewGroup = new ybo();
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365665));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131363896));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365663));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365662));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131365664));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131363901));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969219, paramViewGroup, false);
+      paramViewGroup = new yhx();
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362724));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365670));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131363921));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365668));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365667));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131365669));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131363926));
       paramView.setTag(paramViewGroup);
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener == null) {
         break label483;
@@ -278,7 +278,7 @@ public class SelectMemberBuddyListAdapter
       PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)localObject;
       paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
       paramViewGroup.jdField_a_of_type_JavaLangString = Long.toString(localPublicAccountInfo.uin);
-      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494214));
+      paramViewGroup.d.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494220));
       if (PublicAccountInfo.isLooker(localPublicAccountInfo))
       {
         paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -292,7 +292,7 @@ public class SelectMemberBuddyListAdapter
           paramView.setContentDescription(paramViewGroup.d.getText());
         }
         return paramView;
-        paramViewGroup = (ybo)paramView.getTag();
+        paramViewGroup = (yhx)paramView.getTag();
         paramViewGroup.d.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       }
       else
@@ -304,7 +304,7 @@ public class SelectMemberBuddyListAdapter
         if (localPublicAccountInfo.certifiedGrade > 0L)
         {
           paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839751);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839766);
         }
         for (;;)
         {
@@ -363,7 +363,7 @@ public class SelectMemberBuddyListAdapter
         {
           localObject1 = new Groups();
           ((Groups)localObject1).group_id = 1003;
-          ((Groups)localObject1).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131433302);
+          ((Groups)localObject1).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131433316);
           ((Groups)localObject1).group_friend_count = ((List)localObject2).size();
           ((Groups)localObject1).seqid = 0;
           this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
@@ -407,7 +407,7 @@ public class SelectMemberBuddyListAdapter
         {
           localObject2 = new Groups();
           ((Groups)localObject2).group_id = 1003;
-          ((Groups)localObject2).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131433336);
+          ((Groups)localObject2).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131433350);
           ((Groups)localObject2).group_friend_count = ((List)localObject1).size();
           ((Groups)localObject2).seqid = 0;
           this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
@@ -438,7 +438,7 @@ public class SelectMemberBuddyListAdapter
     } while (localArrayList.isEmpty());
     Object localObject = new Groups();
     ((Groups)localObject).group_id = 1002;
-    ((Groups)localObject).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131436157);
+    ((Groups)localObject).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131436175);
     ((Groups)localObject).group_friend_count = 1;
     ((Groups)localObject).seqid = 0;
     this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
@@ -506,7 +506,7 @@ public class SelectMemberBuddyListAdapter
           localObject4 = new ArrayList();
           localObject5 = ((List)localObject2).iterator();
           while (((Iterator)localObject5).hasNext()) {
-            ((ArrayList)localObject4).add(new ybl((Friends)((Iterator)localObject5).next(), -1));
+            ((ArrayList)localObject4).add(new yhu((Friends)((Iterator)localObject5).next(), -1));
           }
           d();
           break;
@@ -524,7 +524,7 @@ public class SelectMemberBuddyListAdapter
         ((List)localObject2).clear();
         localObject4 = ((ArrayList)localObject4).iterator();
         while (((Iterator)localObject4).hasNext()) {
-          ((List)localObject2).add(((ybl)((Iterator)localObject4).next()).a);
+          ((List)localObject2).add(((yhu)((Iterator)localObject4).next()).a);
         }
         localObject4 = ((List)localObject2).iterator();
         i = 0;
@@ -563,7 +563,7 @@ public class SelectMemberBuddyListAdapter
   
   public int a()
   {
-    return 2130968807;
+    return 2130968811;
   }
   
   public void a()
@@ -580,19 +580,19 @@ public class SelectMemberBuddyListAdapter
   
   public void a(View paramView, int paramInt)
   {
-    ybm localybm = (ybm)paramView.getTag();
-    if (localybm == null)
+    yhv localyhv = (yhv)paramView.getTag();
+    if (localyhv == null)
     {
-      localybm = new ybm();
-      paramView.findViewById(2131363840).setVisibility(0);
-      localybm.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363842));
-      paramView.setTag(localybm);
+      localyhv = new yhv();
+      paramView.findViewById(2131363864).setVisibility(0);
+      localyhv.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363866));
+      paramView.setTag(localyhv);
     }
     for (;;)
     {
       Groups localGroups = (Groups)getGroup(paramInt);
-      localybm.jdField_a_of_type_AndroidWidgetTextView.setText(localGroups.group_name);
-      ((CheckBox)paramView.findViewById(2131363840)).setChecked(this.jdField_b_of_type_ComTencentWidgetExpandableListView.c(paramInt));
+      localyhv.jdField_a_of_type_AndroidWidgetTextView.setText(localGroups.group_name);
+      ((CheckBox)paramView.findViewById(2131363864)).setChecked(this.jdField_b_of_type_ComTencentWidgetExpandableListView.c(paramInt));
       return;
     }
   }
@@ -738,7 +738,7 @@ public class SelectMemberBuddyListAdapter
     Object localObject;
     if (paramView != null)
     {
-      localObject = (ybm)paramView.getTag();
+      localObject = (yhv)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
       localObject = (Groups)getGroup(paramInt);
@@ -756,9 +756,9 @@ public class SelectMemberBuddyListAdapter
     {
       paramViewGroup.setOnLongClickListener(this);
       return paramViewGroup;
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969719, paramViewGroup, false);
-      paramView = new ybm();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363842));
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969716, paramViewGroup, false);
+      paramView = new yhv();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131363866));
       paramViewGroup.setTag(paramView);
       paramViewGroup.setOnClickListener(this);
       break;
@@ -785,7 +785,7 @@ public class SelectMemberBuddyListAdapter
   
   public void onClick(View paramView)
   {
-    paramView = (ybm)paramView.getTag();
+    paramView = (yhv)paramView.getTag();
     if (this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(paramView.jdField_a_of_type_Int))
     {
       this.jdField_a_of_type_ComTencentWidgetExpandableListView.b(paramView.jdField_a_of_type_Int);
@@ -839,8 +839,8 @@ public class SelectMemberBuddyListAdapter
   public boolean onLongClick(View paramView)
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131435536));
-    BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_b_of_type_AndroidViewView$OnClickListener, new ybj(this));
+    localQQCustomMenu.a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131435552));
+    BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_b_of_type_AndroidViewView$OnClickListener, new yhs(this));
     return true;
   }
 }

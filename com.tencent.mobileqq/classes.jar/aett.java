@@ -1,70 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.model.BasePlayListDataModel.OnDataComeListener;
-import com.tencent.mobileqq.nearby.now.model.PlayListDataModel;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.ImgDownloadListener;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import java.util.HashMap;
 
 public class aett
-  implements NowShortVideoProtoManager.Callback
+  implements Runnable
 {
-  public aett(PlayListDataModel paramPlayListDataModel) {}
+  public aett(ImgDownloadListener paramImgDownloadListener, long paramLong) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    boolean bool = true;
-    int i = 0;
+    long l = SystemClock.elapsedRealtime() - ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener);
+    Object localObject2 = NetworkUtil.a(ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener));
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "wifi";
+    }
+    localObject2 = new HashMap();
+    ((HashMap)localObject2).put("fileSize", String.valueOf(this.jdField_a_of_type_Long));
+    ((HashMap)localObject2).put("costTime", String.valueOf(l));
+    ((HashMap)localObject2).put("apn", localObject1);
+    ((HashMap)localObject2).put("param_NetType", NetworkUtil.a(null) + "");
+    StatisticCollector.a(ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener)).a("", ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener), true, l, 0L, (HashMap)localObject2, "", true);
     if (QLog.isColorLevel()) {
-      QLog.i(PlayListDataModel.a(this.a), 2, "errorCode:   " + paramInt);
-    }
-    if (paramArrayOfByte != null) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i(PlayListDataModel.a(this.a), 2, "err_msg:   " + paramBundle.err_msg.get());
-      }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new FeedsProtocol.GetMediaDetailRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i(PlayListDataModel.a(this.a), 2, "GetMediaDetailRsp  error_code:   " + paramArrayOfByte.err_code.get() + ",err_msg:     " + paramArrayOfByte.err_msg.get().toStringUtf8() + ",total:  " + paramArrayOfByte.total.get());
-        }
-        paramBundle = this.a;
-        if (paramArrayOfByte.is_end.get() == 0) {
-          break label309;
-        }
-      }
-      for (;;)
-      {
-        paramBundle.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
-        PlayListDataModel.a(this.a, paramArrayOfByte);
-        PlayListDataModel.a(this.a, PlayListDataModel.a(this.a) + 10);
-        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener;
-        paramInt = i;
-        if (paramArrayOfByte.err_code.has()) {
-          paramInt = paramArrayOfByte.err_code.get();
-        }
-        paramBundle.a(1, paramInt);
-        return;
-        label309:
-        bool = false;
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+      QLog.d("ImgDownloadListener", 2, "onFileDownloadSucceed, fileSize=" + this.jdField_a_of_type_Long);
     }
   }
 }

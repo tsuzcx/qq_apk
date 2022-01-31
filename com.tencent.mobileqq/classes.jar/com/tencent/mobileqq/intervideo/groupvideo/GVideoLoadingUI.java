@@ -57,16 +57,16 @@ public class GVideoLoadingUI
   
   public void a(Activity paramActivity, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364769));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364770));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364771));
-    this.c = ((TextView)paramView.findViewById(2131364772));
-    this.d = ((TextView)paramView.findViewById(2131364773));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364774));
-    this.e = ((TextView)paramView.findViewById(2131364775));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131364776));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364777));
-    this.f = ((TextView)paramView.findViewById(2131364778));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364793));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364794));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364795));
+    this.c = ((TextView)paramView.findViewById(2131364796));
+    this.d = ((TextView)paramView.findViewById(2131364797));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364798));
+    this.e = ((TextView)paramView.findViewById(2131364799));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131364800));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364801));
+    this.f = ((TextView)paramView.findViewById(2131364802));
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);

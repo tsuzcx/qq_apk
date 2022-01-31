@@ -1,22 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.armap.config.ARMapConfigManager;
 
-class abma
-  implements Runnable
+public class abma
+  extends SosoInterface.OnLocationListener
 {
-  abma(ablz paramablz, Runnable paramRunnable) {}
-  
-  public void run()
+  public abma(ARMapConfigManager paramARMapConfigManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    try
-    {
-      QLog.d("QQAnimationDrawable", 2, "SerialExecutor run");
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      return;
-    }
-    finally
-    {
-      QLog.d("QQAnimationDrawable", 2, "SerialExecutor scheduleNext");
-      this.jdField_a_of_type_Ablz.a();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
+      ARMapConfigManager.b(this.a, paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.b);
     }
   }
 }

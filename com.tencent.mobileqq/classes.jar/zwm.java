@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
 
 public class zwm
-  implements Runnable
+  extends FriendListObserver
 {
-  public zwm(UpgradeController paramUpgradeController) {}
+  private zwm(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
   
-  public void run()
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    File localFile = new File(UpgradeController.a(this.a).k);
-    if (localFile.exists())
+    int i = 0;
+    if (!paramBoolean1) {
+      this.a.a(6);
+    }
+    for (;;)
     {
-      localFile.delete();
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeConfigManager", 2, "the jacked apk has been removed.");
+      if (i != 0) {
+        this.a.a(7);
+      }
+      return;
+      if (paramBoolean2) {
+        i = 1;
       }
     }
   }

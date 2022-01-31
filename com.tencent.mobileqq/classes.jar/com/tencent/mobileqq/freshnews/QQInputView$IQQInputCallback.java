@@ -8,7 +8,7 @@ public abstract interface QQInputView$IQQInputCallback
   
   public abstract void a(String paramString);
   
-  public abstract void aq_();
+  public abstract void as_();
   
   public abstract String b();
   

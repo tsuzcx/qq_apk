@@ -163,7 +163,7 @@ public class VideoPlayDianZanHandler
     {
       localReqBody.uint64_feeds_id.set(paramVideoInfo.c);
       localReqBody.msg_feeds_info = new oidb_cmd0x83e.FeedsInfo();
-      localReqBody.msg_feeds_info.feeds_type.set(paramVideoInfo.f);
+      localReqBody.msg_feeds_info.feeds_type.set(paramVideoInfo.jdField_g_of_type_Int);
       if (!paramBoolean) {
         break label115;
       }
@@ -173,7 +173,7 @@ public class VideoPlayDianZanHandler
     {
       super.b(super.a("OidbSvc.0x83e", 2110, 0, localReqBody.toByteArray()));
       return;
-      localReqBody.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(paramVideoInfo.g));
+      localReqBody.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(paramVideoInfo.jdField_g_of_type_JavaLangString));
       break;
       label115:
       localReqBody.uint32_operation.set(3);

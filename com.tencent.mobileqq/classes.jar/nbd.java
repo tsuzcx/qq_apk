@@ -1,14 +1,17 @@
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTaskManager;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
 public class nbd
-  implements Runnable
 {
-  public nbd(BasePublishTaskManager paramBasePublishTaskManager) {}
-  
-  public void run()
-  {
-    this.a.e();
-  }
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  public TextView a;
+  public VideoFeedsAlphaMaskView a;
+  public ZImageView a;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
 }
 
 

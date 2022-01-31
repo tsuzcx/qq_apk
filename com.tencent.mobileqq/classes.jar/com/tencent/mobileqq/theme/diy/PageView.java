@@ -46,14 +46,14 @@ public class PageView
   {
     this.pageIndex = paramInt1;
     this.mData = paramThemeDIYData;
-    this.mRLayout = ((RelativeLayout)super.findViewById(2131375250));
+    this.mRLayout = ((RelativeLayout)super.findViewById(2131375310));
     paramThemeDIYData = (RelativeLayout.LayoutParams)this.mRLayout.getLayoutParams();
     paramThemeDIYData.width = paramInt2;
     paramThemeDIYData.height = paramInt3;
     this.pich = paramInt3;
     this.picw = paramInt2;
-    this.mUserBgView = super.findViewById(2131375251);
-    this.mMaskColor = super.findViewById(2131375252);
+    this.mUserBgView = super.findViewById(2131375311);
+    this.mMaskColor = super.findViewById(2131375312);
     if (this.mData.orgMarkColor == 0) {
       if (this.mMaskColor.getParent() != null)
       {
@@ -63,7 +63,7 @@ public class PageView
     }
     for (;;)
     {
-      this.mShotView = super.findViewById(2131375253);
+      this.mShotView = super.findViewById(2131375313);
       return;
       this.mMaskColor.setBackgroundColor(super.getResources().getColor(this.mData.orgMarkColor));
     }
@@ -71,7 +71,7 @@ public class PageView
   
   void setProgressBar(boolean paramBoolean)
   {
-    Object localObject = this.mRLayout.findViewById(2131365693);
+    Object localObject = this.mRLayout.findViewById(2131365698);
     if (localObject != null)
     {
       localObject = (ProgressBar)localObject;
@@ -92,8 +92,8 @@ public class PageView
         break;
       } while (localObject != null);
       localObject = new ProgressBar(super.getContext());
-      ((ProgressBar)localObject).setId(2131365693);
-      ((ProgressBar)localObject).setIndeterminateDrawable(super.getResources().getDrawable(2130838596));
+      ((ProgressBar)localObject).setId(2131365698);
+      ((ProgressBar)localObject).setIndeterminateDrawable(super.getResources().getDrawable(2130838602));
       int i = AIOUtils.a(16.0F, super.getResources());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
       localLayoutParams.bottomMargin = i;
@@ -237,7 +237,7 @@ public class PageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.PageView
  * JD-Core Version:    0.7.0.1
  */

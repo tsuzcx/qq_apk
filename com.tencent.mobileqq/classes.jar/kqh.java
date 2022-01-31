@@ -1,31 +1,47 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicListModel;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.biz.now.NowVideoController;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PAVideoView;
+import com.tencent.widget.AbsListView;
 
-public final class kqh
-  implements BusinessObserver
+public class kqh
+  implements Runnable
 {
-  public kqh(QQAppInterface paramQQAppInterface, boolean paramBoolean, PublicAccountObserver paramPublicAccountObserver) {}
+  public kqh(NowVideoController paramNowVideoController, int paramInt1, int paramInt2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramInt = AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.a(paramBoolean, paramInt);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
-      }
+    if (NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController) == null) {
       return;
+    }
+    int i = this.jdField_a_of_type_Int;
+    label16:
+    Object localObject;
+    if (i <= this.b)
+    {
+      localObject = NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController).getChildAt(i - this.jdField_a_of_type_Int);
+      if (localObject != null) {
+        break label52;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label16;
+      break;
+      label52:
+      localObject = (PAVideoView)((View)localObject).findViewById(2131362177);
+      if ((localObject != null) && (((PAVideoView)localObject).j == 4))
+      {
+        ((PAVideoView)localObject).getGlobalVisibleRect(NowVideoController.a());
+        if ((((PAVideoView)localObject).getHeight() == NowVideoController.a().height()) && (NetworkUtil.h(((PAVideoView)localObject).getContext())) && (EcShopAssistantManager.a) && (NowVideoController.a().top > 0)) {
+          ((PAVideoView)localObject).e();
+        } else {
+          ((PAVideoView)localObject).d();
+        }
+      }
     }
   }
 }

@@ -1,42 +1,17 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.highway.config.HwServlet;
-import com.tencent.mobileqq.highway.openup.SessionInfo;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-public final class airw
-  implements Runnable
+class airw
+  implements DialogInterface.OnClickListener
 {
-  public void run()
+  airw(airu paramairu) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    byte[] arrayOfByte2 = null;
-    String str = QQStoryContext.a().a();
-    for (;;)
-    {
-      try
-      {
-        if (SessionInfo.getInstance(str).getHttpconn_sig_session() != null)
-        {
-          int i = SessionInfo.getInstance(str).getHttpconn_sig_session().length;
-          byte[] arrayOfByte1 = new byte[i];
-          System.arraycopy(SessionInfo.getInstance(str).getHttpconn_sig_session(), 0, arrayOfByte1, 0, i);
-          if (SessionInfo.getInstance(str).getSessionKey() != null)
-          {
-            i = SessionInfo.getInstance(str).getSessionKey().length;
-            arrayOfByte2 = new byte[i];
-            System.arraycopy(SessionInfo.getInstance(str).getSessionKey(), 0, arrayOfByte2, 0, i);
-          }
-          if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0) || (arrayOfByte2 == null) || (arrayOfByte2.length == 0))
-          {
-            QQStoryContext.a();
-            HwServlet.getConfig(QQStoryContext.a(), str);
-            SLog.d(StoryUploadProcessor.a, "pull session key");
-          }
-          return;
-        }
-      }
-      finally {}
-      Object localObject2 = null;
+    if (this.a.a.b == 1) {
+      ReportController.b(TeamWorkAuthorizeSettingFragment.a(this.a.a), "dc00898", "", "", "0x8007CFE", "0x8007CFE", 0, 0, "", "", "", "");
     }
   }
 }

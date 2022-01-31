@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amcj;
+import amjt;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -54,8 +54,8 @@ public class KandianPopupWindow
   public KandianPopupWindow(Activity paramActivity)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131366902, 2131366905, 2131366908, 2131366911 };
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131366903, 2131366904, 2131366906, 2131366907, 2131366909, 2131366910, 2131366912, 2131366913 };
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131366901, 2131366904, 2131366907, 2131366910 };
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131366902, 2131366903, 2131366905, 2131366906, 2131366908, 2131366909, 2131366911, 2131366912 };
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
@@ -142,19 +142,19 @@ public class KandianPopupWindow
   {
     this.d = ((int)DeviceInfoUtil.j());
     this.e = ((int)DeviceInfoUtil.k());
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130969549, null);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130969545, null);
     setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366898));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366917));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366897));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366916));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366900);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366901));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366915));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366899);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366900));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366914));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366914));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366899));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366916));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366913));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366898));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366915));
     this.jdField_a_of_type_ArrayOfAndroidViewView = new View[this.jdField_a_of_type_ArrayOfInt.length];
     int i = 0;
     while (i < this.jdField_a_of_type_ArrayOfInt.length)
@@ -172,7 +172,7 @@ public class KandianPopupWindow
     }
     setHeight(-2);
     setBackgroundDrawable(new ColorDrawable(0));
-    setOnDismissListener(new amcj(this));
+    setOnDismissListener(new amjt(this));
     setTouchable(true);
     setFocusable(true);
     setOutsideTouchable(false);
@@ -301,7 +301,7 @@ public class KandianPopupWindow
     int i;
     switch (paramView.getId())
     {
-    case 2131366916: 
+    case 2131366915: 
     default: 
       i = 0;
       label34:

@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
-
 public class ajod
-  implements Runnable
 {
-  public ajod(TroopAppMgr paramTroopAppMgr, EntityManager paramEntityManager, TroopAIOAppInfo paramTroopAIOAppInfo) {}
+  public Object a;
+  public Object b;
   
-  public void run()
+  ajod(Object paramObject1, Object paramObject2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAIOAppInfo);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
+    this.a = paramObject1;
+    this.b = paramObject2;
   }
 }
 

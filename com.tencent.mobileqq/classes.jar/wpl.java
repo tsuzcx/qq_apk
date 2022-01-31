@@ -1,22 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class wpl
-  implements DialogInterface.OnClickListener
+  extends DiscussionObserver
 {
-  public wpl(PicSelectAdapter paramPicSelectAdapter) {}
+  public wpl(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).a(paramLong);
     }
-    if (paramInt == 1) {
-      VasH5PayUtil.a(PicSelectAdapter.a(this.a), PicSelectAdapter.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", PicSelectAdapter.a(this.a).getApp().getString(2131436943), "");
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      if (!(paramObject instanceof ArrayList)) {
+        break label76;
+      }
+    }
+    label76:
+    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (paramObject.size() > 0))
+      {
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
+        {
+          Object localObject = paramObject.next();
+          if ((localObject instanceof Long)) {
+            SystemMsgListView.a(this.a).a(((Long)localObject).longValue());
+          }
+        }
+      }
+      return;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      long l = Long.parseLong(paramString);
+      SystemMsgListView.a(this.a).a(l);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

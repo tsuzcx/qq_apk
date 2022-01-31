@@ -1,36 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.AppProtocolObserver;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import java.lang.ref.WeakReference;
 
 public class ajpw
-  extends ProtoUtils.AppProtocolObserver
+  implements FrameSprite.OnFrameEndListener
 {
-  public ajpw(TroopGiftManager paramTroopGiftManager, TroopGiftCallback paramTroopGiftCallback) {}
+  final WeakReference a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private ajpw(SpriteVideoView paramSpriteVideoView)
   {
-    paramBundle = new oidb_0x962.RspBody();
-    if (paramArrayOfByte != null) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, paramBundle);
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_oidb_0x962. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-        }
-      }
+    this.a = new WeakReference(paramSpriteVideoView);
+  }
+  
+  public void a()
+  {
+    SpriteVideoView localSpriteVideoView = (SpriteVideoView)this.a.get();
+    if (localSpriteVideoView != null) {
+      localSpriteVideoView.setVisibility(8);
     }
   }
 }

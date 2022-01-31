@@ -1,34 +1,21 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class nde
-  implements Runnable
+  extends SimpleJob
 {
-  public nde(TroopNickNameManager paramTroopNickNameManager, String paramString, QQUserUIItem paramQQUserUIItem, boolean paramBoolean1, boolean paramBoolean2) {}
+  public nde(QQStoryContext.StoryBroadcastReceiver paramStoryBroadcastReceiver) {}
   
-  public void run()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager.a.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null)
-    {
-      localTroopNickNameUpdateEvent = new TroopNickNameManager.TroopNickNameUpdateEvent();
-      localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaUtilList = localArrayList;
-      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      Dispatchers.get().dispatch(localTroopNickNameUpdateEvent);
-    }
-    while (this.jdField_a_of_type_Boolean)
-    {
-      TroopNickNameManager.TroopNickNameUpdateEvent localTroopNickNameUpdateEvent;
-      ArrayList localArrayList;
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem, this.jdField_a_of_type_JavaLangString, this.b);
+    int i = StoryVideoUploadManager.a();
+    SLog.d(QQStoryContext.StoryBroadcastReceiver.a(), "onReceive : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
+    return null;
   }
 }
 

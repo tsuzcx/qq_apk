@@ -1,22 +1,16 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webprocess.WebProcessReceiver;
+import com.tencent.sonic.sdk.SonicEngine;
+import java.util.Map;
 
-public final class aktp
-  implements AnyScaleTypeImageView.DisplayRuleDef
+public class aktp
+  implements Runnable
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public aktp(WebProcessReceiver paramWebProcessReceiver, Map paramMap) {}
+  
+  public void run()
   {
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
-    }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    float f = Math.max(paramInt1 / i, paramInt2 / j);
-    localMatrix.setScale(f, f);
-    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
-    return localMatrix;
+    WebAccelerateHelper.getSonicEngine().removeExpiredSessionCache(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

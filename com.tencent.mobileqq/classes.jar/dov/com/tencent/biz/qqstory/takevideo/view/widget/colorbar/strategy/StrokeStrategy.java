@@ -7,8 +7,6 @@ import java.util.ArrayList;
 public abstract interface StrokeStrategy
 {
   public abstract void a(@NonNull ArrayList paramArrayList, @NonNull Context paramContext);
-  
-  public abstract void b(@NonNull ArrayList paramArrayList, @NonNull Context paramContext);
 }
 
 

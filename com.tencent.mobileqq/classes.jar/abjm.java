@@ -1,28 +1,42 @@
-import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.armap.ConversationARMap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ARMapHongBaoListView;
 
 public class abjm
-  implements DeviceProfileManager.DPCObserver
+  implements Runnable
 {
-  WeakReference a;
+  public abjm(ConversationARMap paramConversationARMap) {}
   
-  public abjm(DynamicAvatarManager paramDynamicAvatarManager)
+  public void run()
   {
-    this.a = new WeakReference(paramDynamicAvatarManager);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    DynamicAvatarManager localDynamicAvatarManager = (DynamicAvatarManager)this.a.get();
-    if (localDynamicAvatarManager != null) {
-      localDynamicAvatarManager.a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("ConversationARMap", 2, "mTouchReleaseRunnable mState:" + this.a.jdField_a_of_type_Int + "  mResume:" + this.a.c + " mTitleIsVisible:" + this.a.j);
     }
+    if ((this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.getScrollY() != 0))
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setSpringbackOffset(0);
+      this.a.c(0);
+    }
+    if (this.a.c) {
+      this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setEnableTouch(true);
+    }
+    if (!this.a.j)
+    {
+      if (this.a.c) {
+        break label159;
+      }
+      this.a.b(true);
+    }
+    label159:
+    while (this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.m) {
+      return;
+    }
+    this.a.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abjm
  * JD-Core Version:    0.7.0.1
  */

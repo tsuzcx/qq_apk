@@ -1,15 +1,45 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetMomentListCallback;
-import java.util.List;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
 
-class afll
-  implements Runnable
+public class afll
+  implements IphonePickerView.PickerViewAdapter
 {
-  afll(aflk paramaflk, List paramList) {}
+  public afll(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void run()
+  public int getColumnCount()
   {
-    if (this.jdField_a_of_type_Aflk.jdField_a_of_type_Aflj.a != null) {
-      this.jdField_a_of_type_Aflk.jdField_a_of_type_Aflj.a.a(this.jdField_a_of_type_Aflk.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Aflk.b, this.jdField_a_of_type_Aflk.jdField_a_of_type_Int);
+    return 1;
+  }
+  
+  public int getRowCount(int paramInt)
+  {
+    return 4;
+  }
+  
+  public String getText(int paramInt1, int paramInt2)
+  {
+    int i = 3;
+    if (paramInt2 < 0) {}
+    for (paramInt1 = 0;; paramInt1 = paramInt2)
+    {
+      if (paramInt1 > 3) {
+        paramInt1 = i;
+      }
+      for (;;)
+      {
+        switch (paramInt1)
+        {
+        default: 
+          return "";
+        case 0: 
+          return "保密";
+        case 1: 
+          return "单身";
+        case 2: 
+          return "恋爱中";
+        }
+        return "已婚";
+      }
     }
   }
 }

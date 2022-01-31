@@ -1,40 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Environment;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.data.MessageForTroopGift;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.DownloadGftData;
+import com.tencent.mobileqq.troop.utils.TroopGiftUtil;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import java.util.Observable;
+import java.util.Observer;
 
-class vpk
-  implements DialogInterface.OnClickListener
+public abstract class vpk
+  extends BaseBubbleBuilder.ViewHolder
+  implements Observer
 {
-  vpk(vpj paramvpj, BaseActivity paramBaseActivity) {}
+  public ViewGroup a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  private QQAppInterface a;
+  public MessageForTroopGift a;
+  public BubbleImageView a;
+  public View b;
+  public ViewGroup b;
+  public Button b;
+  public TextView b;
+  public View c;
+  public Button c;
+  public Button d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vpk(QQAppInterface paramQQAppInterface)
   {
-    if (Environment.getExternalStorageState().equals("mounted"))
-    {
-      if (this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1) {
-        break label97;
-      }
-      PlusPanelUtils.b(this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setCanLock(false);
-      ReportController.b(this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "1", "", "", "");
-      return;
-      label97:
-      paramDialogInterface = new FileManagerReporter.fileAssistantReportData();
-      paramDialogInterface.b = "send_file";
-      paramDialogInterface.a = 1;
-      FileManagerReporter.a(this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramDialogInterface);
-      PlusPanelUtils.a(this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vpj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    paramObservable = (AIOAnimationControlManager.DownloadGftData)paramObject;
+    if ((paramObservable.a.equals(TroopGiftUtil.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift))) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isLoading)) {
+      this.c.post(new vpl(this, paramObservable));
     }
   }
 }

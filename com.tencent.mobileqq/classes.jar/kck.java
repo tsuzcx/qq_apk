@@ -1,31 +1,40 @@
-import com.tencent.av.app.GAudioUIObserver;
-import com.tencent.av.ui.VideoNetStateBar;
+import android.os.Build;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.utils.QQAnimationListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class kck
-  extends GAudioUIObserver
+  extends QQAnimationListener
 {
-  public kck(VideoNetStateBar paramVideoNetStateBar) {}
+  public kck(VideoControlUI paramVideoControlUI) {}
   
-  protected void a(long paramLong)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong);
-    }
-    this.a.i();
+    this.a.t();
   }
   
-  protected void b(long paramLong)
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong);
+    if (!this.a.i) {
+      this.a.i(0);
     }
-    this.a.i();
+    if ("GT-I9100G".equals(Build.MODEL))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.c, 2, "Model is 9100G, don't do animation");
+      }
+      return;
+    }
+    this.a.ab();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kck
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,37 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView.ListViewEventListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendAdapter.RecommendItem;
 
-class mxd
-  implements PublicAccountImageCollectionListView.ListViewEventListener
+public class mxd
+  implements View.OnTouchListener
 {
-  mxd(mxc parammxc) {}
+  public mxd(SubscriptRecommendAdapter.RecommendItem paramRecommendItem, SubscriptRecommendAdapter paramSubscriptRecommendAdapter, boolean paramBoolean) {}
   
-  public void a(Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramObject instanceof mxi))
+    switch (paramMotionEvent.getAction())
     {
-      if (!this.a.b) {
-        ((PublicAccountImageCollectionMainActivity)mxc.a(this.a)).h();
-      }
-      this.a.b = true;
-    }
-    while ((paramObject instanceof mxj)) {
-      if (mxc.a(this.a))
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.a.getResources().getColor(2131493609));
+      if (!this.jdField_a_of_type_Boolean)
       {
-        this.a.d(true);
-        return;
-        ((PublicAccountImageCollectionMainActivity)mxc.a(this.a)).g();
+        this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.c.setBackgroundResource(2130840926);
+        return false;
       }
-      else
-      {
-        this.a.d(false);
-        return;
-      }
+      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.c.setBackgroundResource(2130840927);
+      return false;
     }
-    this.a.d(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter.a.getResources().getColor(2131493607));
+    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendAdapter$RecommendItem.c.setBackgroundResource(2130840935);
+    return false;
   }
 }
 

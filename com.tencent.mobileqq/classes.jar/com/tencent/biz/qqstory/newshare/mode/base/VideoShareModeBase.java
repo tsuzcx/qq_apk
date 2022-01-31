@@ -45,12 +45,12 @@ public abstract class VideoShareModeBase
   public String a()
   {
     if (this.a.isPollVideo()) {
-      return this.jdField_c_of_type_JavaLangString + "的投票" + "日迹";
+      return this.jdField_c_of_type_JavaLangString + "的投票" + "小视频";
     }
     if (this.a.isInteractVideo()) {
-      return this.jdField_c_of_type_JavaLangString + "的评分" + "日迹";
+      return this.jdField_c_of_type_JavaLangString + "的评分" + "小视频";
     }
-    return this.jdField_c_of_type_JavaLangString + "的" + "日迹";
+    return this.jdField_c_of_type_JavaLangString + "的" + "小视频";
   }
   
   public final void a(ShareCopyLinkData paramShareCopyLinkData)

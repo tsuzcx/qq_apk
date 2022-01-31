@@ -12,12 +12,12 @@ public class FileManagerUtil$FileExecutor
   static
   {
     ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-    localThreadPoolParams.jdField_a_of_type_JavaLangString = "fileassistant_pool";
-    localThreadPoolParams.b = 2;
-    localThreadPoolParams.c = 2;
-    localThreadPoolParams.jdField_a_of_type_Int = 8;
-    localThreadPoolParams.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
-    localThreadPoolParams.d = 10;
+    localThreadPoolParams.poolThreadName = "fileassistant_pool";
+    localThreadPoolParams.corePoolsize = 2;
+    localThreadPoolParams.maxPooolSize = 2;
+    localThreadPoolParams.priority = 8;
+    localThreadPoolParams.queue = new LinkedBlockingQueue();
+    localThreadPoolParams.keepAliveTime = 10;
     a = ThreadManager.newFreeThreadPool(localThreadPoolParams);
   }
   

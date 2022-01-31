@@ -1,6 +1,6 @@
 package cooperation.groupvideo;
 
-import amlk;
+import amsw;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -22,7 +22,7 @@ public class GVideoProxyActivity
   {
     paramActivity = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131558448));
     paramActivity.a("正在加载...");
-    paramActivity.setOnDismissListener(new amlk());
+    paramActivity.setOnDismissListener(new amsw());
     return paramActivity;
   }
   

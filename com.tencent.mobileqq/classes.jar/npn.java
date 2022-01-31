@@ -1,17 +1,21 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import java.util.ArrayList;
 
-public class npn
-  implements TVK_IMediaPlayer.OnCompletionListener
+class npn
+  implements Runnable
 {
-  public npn(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  npn(npm paramnpm, ArrayList paramArrayList) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void run()
   {
-    ThreadManager.getUIHandler().post(new npo(this));
+    this.jdField_a_of_type_Npm.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.setVisibility(8);
+    this.jdField_a_of_type_Npm.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Npm.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
+    this.jdField_a_of_type_Npm.a.jdField_a_of_type_AndroidOsHandler.post(new npo(this));
   }
 }
 

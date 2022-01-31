@@ -1,39 +1,25 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.util.ILog;
-import com.tencent.biz.common.util.NetworkUtil;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
-class kll
-  implements AsyncBack
+public class kll
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  kll(klk paramklk) {}
+  public kll(PoiMapActivity paramPoiMapActivity) {}
   
-  public void a(int paramInt)
+  public boolean onPreDraw()
   {
-    this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(paramInt);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
-    if (HtmlOffline.a.a()) {
-      HtmlOffline.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
-    }
-    if (paramInt == 0) {
-      if (HtmlOffline.b(this.a.b)) {
-        this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(null, 0);
-      }
-    }
-    for (;;)
+    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
+    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
+    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
     {
-      BidDownloader.b(this.a.b);
-      HtmlOffline.a(this.a.b, paramInt, l, NetworkUtil.a(this.a.jdField_a_of_type_AndroidContentContext));
-      return;
-      this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(null, 6);
-      continue;
-      this.a.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.a(null, 2);
+      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.t, false);
+      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
     }
+    return true;
   }
 }
 

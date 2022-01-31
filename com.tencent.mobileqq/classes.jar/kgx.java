@@ -1,21 +1,22 @@
-import com.tencent.av.utils.SensorReport;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
 
 public class kgx
+  implements MenuItem.OnMenuItemClickListener
 {
-  public int a;
-  public long a;
-  public long b = 0L;
-  public long c = this.jdField_a_of_type_ComTencentAvUtilsSensorReport.jdField_a_of_type_Int;
+  public kgx(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
   
-  public kgx(SensorReport paramSensorReport)
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.c(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgx
  * JD-Core Version:    0.7.0.1
  */

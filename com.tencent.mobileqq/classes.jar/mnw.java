@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
-class mnw
+public class mnw
   implements Runnable
 {
-  mnw(mnv parammnv) {}
+  public mnw(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c();
+    ReadinjoyTabFrame.a(this.a);
   }
 }
 

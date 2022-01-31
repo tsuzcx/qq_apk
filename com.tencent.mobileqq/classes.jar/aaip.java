@@ -1,31 +1,89 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.FaceScanDownloadManager.DownloadCallback;
+import com.tencent.mobileqq.ar.aidl.IArFaceCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public final class aaip
-  implements INetEngine.IBreakDownFix
+public class aaip
+  implements FaceScanDownloadManager.DownloadCallback
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public aaip(ArConfigService paramArConfigService) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    while (!(paramNetReq instanceof HttpNetReq)) {
-      return;
+    if (ArConfigService.b(this.a) != null) {
+      try
+      {
+        int j = ArConfigService.b(this.a).beginBroadcast();
+        int i = 0;
+        for (;;)
+        {
+          if (i >= j) {
+            break label106;
+          }
+          try
+          {
+            ((IArFaceCallback)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
+            i += 1;
+          }
+          catch (RemoteException localRemoteException)
+          {
+            for (;;)
+            {
+              localRemoteException.printStackTrace();
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
+        }
+      }
     }
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
-    localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
-    paramNetResp.c = 0L;
-    paramNetResp = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
-    localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-    paramNetResp = localHttpNetReq.jdField_a_of_type_JavaLangString;
-    if (paramNetResp.contains("range="))
+    label106:
+    ArConfigService.b(this.a).finishBroadcast();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (ArConfigService.b(this.a) != null) {}
+    for (;;)
     {
-      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-      localHttpNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + localHttpNetReq.jdField_a_of_type_Long);
+      int i;
+      try
+      {
+        int j = ArConfigService.b(this.a).beginBroadcast();
+        i = 0;
+        if (i >= j) {
+          break label129;
+        }
+        if (paramBoolean) {}
+        try
+        {
+          ((IArFaceCallback)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt);
+        }
+        catch (RemoteException localRemoteException)
+        {
+          localRemoteException.printStackTrace();
+        }
+        ((IArFaceCallback)ArConfigService.b(this.a).getBroadcastItem(i)).b(paramInt, 0);
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
+        }
+      }
+      return;
+      label129:
+      ArConfigService.b(this.a).finishBroadcast();
+      return;
+      i += 1;
     }
-    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).jdField_a_of_type_JavaLangString + ", offset=" + localHttpNetReq.jdField_a_of_type_Long);
   }
 }
 

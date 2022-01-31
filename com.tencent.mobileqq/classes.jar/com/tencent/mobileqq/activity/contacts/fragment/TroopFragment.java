@@ -14,9 +14,9 @@ import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.mobileqq.troop.widget.TroopUsingTimeReport;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SwipPinnedHeaderExpandableListView;
-import woh;
-import woi;
-import woj;
+import wts;
+import wtt;
+import wtu;
 
 public class TroopFragment
   extends ContactsBaseFragment
@@ -35,8 +35,8 @@ public class TroopFragment
   
   public TroopFragment()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new woi(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new woj(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new wtt(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorObserver = new wtu(this);
   }
   
   private void i()
@@ -70,7 +70,7 @@ public class TroopFragment
     if (this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView == null)
     {
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView = new TroopFragment.ContactsPinnedHeaderExpandableListView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setId(2131362390);
+      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setId(2131362393);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setSelector(2131492924);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setNeedCheckSpringback(true);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setGroupIndicator(null);
@@ -117,7 +117,7 @@ public class TroopFragment
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter == null) {
       i();
     }
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.postDelayed(new woh(this), 200L);
+    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.postDelayed(new wts(this), 200L);
     this.d = true;
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport.a();
     new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("exp").a();

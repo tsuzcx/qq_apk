@@ -1,8 +1,8 @@
 package com.tencent.widget;
 
-import amar;
-import amas;
-import amat;
+import amib;
+import amic;
+import amid;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -36,13 +36,13 @@ public class BubblePopupWindow
 {
   private static final int[] jdField_c_of_type_ArrayOfInt = { 16842922 };
   private int jdField_a_of_type_Int = 0;
-  private amas jdField_a_of_type_Amas;
+  private amic jdField_a_of_type_Amic;
   private Context jdField_a_of_type_AndroidContentContext;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
   private View jdField_a_of_type_AndroidViewView;
-  private ViewTreeObserver.OnScrollChangedListener jdField_a_of_type_AndroidViewViewTreeObserver$OnScrollChangedListener = new amar(this);
+  private ViewTreeObserver.OnScrollChangedListener jdField_a_of_type_AndroidViewViewTreeObserver$OnScrollChangedListener = new amib(this);
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -51,13 +51,13 @@ public class BubblePopupWindow
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int = 1;
-  private amas jdField_b_of_type_Amas;
+  private amic jdField_b_of_type_Amic;
   private View jdField_b_of_type_AndroidViewView;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private boolean jdField_b_of_type_Boolean;
   private int[] jdField_b_of_type_ArrayOfInt = new int[2];
   private int jdField_c_of_type_Int = -1;
-  private amas jdField_c_of_type_Amas;
+  private amic jdField_c_of_type_Amic;
   private boolean jdField_c_of_type_Boolean;
   private int jdField_d_of_type_Int;
   private boolean jdField_d_of_type_Boolean = true;
@@ -224,31 +224,31 @@ public class BubblePopupWindow
     if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewWindowManager == null)) {
       throw new IllegalStateException("You must specify a valid content view by calling setContentView() before attempting to show the popup.");
     }
-    amat localamat = new amat(this, this.jdField_a_of_type_AndroidContentContext);
+    amid localamid = new amid(this, this.jdField_a_of_type_AndroidContentContext);
     Object localObject = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
     ((FrameLayout)localObject).setPadding(0, Math.round(TypedValue.applyDimension(1, 13.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics())), 0, Math.round(TypedValue.applyDimension(1, 13.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics())));
-    localamat.addView((View)localObject, -1, -1);
+    localamid.addView((View)localObject, -1, -1);
     this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
     ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -1, -1);
-    localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838298);
-    this.jdField_a_of_type_Amas = new amas(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838299));
-    localObject = new LayerDrawable(new Drawable[] { localObject, this.jdField_a_of_type_Amas });
+    localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838303);
+    this.jdField_a_of_type_Amic = new amic(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838304));
+    localObject = new LayerDrawable(new Drawable[] { localObject, this.jdField_a_of_type_Amic });
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable((Drawable)localObject);
     localObject = new FrameLayout.LayoutParams(-1, -1, 17);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     localObject = new FrameLayout.LayoutParams(-2, -2, 51);
-    this.jdField_b_of_type_Amas = new amas(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838297));
-    LayerDrawable localLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838296), this.jdField_b_of_type_Amas });
+    this.jdField_b_of_type_Amic = new amic(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838302));
+    LayerDrawable localLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838301), this.jdField_b_of_type_Amic });
     this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(localLayerDrawable);
-    localamat.addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
+    localamid.addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     localObject = new FrameLayout.LayoutParams(-2, -2, 83);
-    this.jdField_c_of_type_Amas = new amas(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838295));
-    localLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838294), this.jdField_c_of_type_Amas });
+    this.jdField_c_of_type_Amic = new amic(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838300));
+    localLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838299), this.jdField_c_of_type_Amic });
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localLayerDrawable);
-    localamat.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_b_of_type_AndroidViewView = localamat;
+    localamid.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
+    this.jdField_b_of_type_AndroidViewView = localamid;
     this.jdField_j_of_type_Int = paramLayoutParams.width;
     this.jdField_k_of_type_Int = paramLayoutParams.height;
   }

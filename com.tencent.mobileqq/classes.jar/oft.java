@@ -1,20 +1,15 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPermission;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryFeatureDataStep;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.utils.UncheckedCallable;
 
 public class oft
-  implements Runnable
+  implements UncheckedCallable
 {
-  public oft(EditVideoPermission paramEditVideoPermission) {}
+  public oft(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public void run()
+  public GetMyStoryFeatureDataStep a()
   {
-    if (EditVideoPermission.a(this.a))
-    {
-      SLog.b("Q.qqstory.publish.edit.EditVideoPermission", "PermissionSettingActivity launch failed, change state to IDLE");
-      this.a.a.a(0);
-      EditVideoPermission.a(this.a, false);
-    }
+    return new GetMyStoryFeatureDataStep();
   }
 }
 

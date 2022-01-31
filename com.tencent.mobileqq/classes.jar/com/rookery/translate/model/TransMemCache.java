@@ -1,7 +1,7 @@
 package com.rookery.translate.model;
 
 import android.support.v4.util.LruCache;
-import jcn;
+import jep;
 
 public class TransMemCache
   implements ICache
@@ -27,7 +27,7 @@ public class TransMemCache
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new jcn(this, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new jep(this, this.jdField_a_of_type_Int);
   }
   
   /* Error */

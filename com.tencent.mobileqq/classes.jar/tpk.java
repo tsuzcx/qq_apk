@@ -1,45 +1,40 @@
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.graphics.Bitmap;
+import com.tencent.common.cache.MemoryClearManagerNew.IClearMemoryListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.widget.UpSideDownDrawable;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class tpk
-  extends AccountObserver
+  implements MemoryClearManagerNew.IClearMemoryListener
 {
-  public tpk(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  public tpk(QQSettingMe paramQQSettingMe) {}
   
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
+  public int a()
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt, paramArrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginFailed ");
+    if (QQSettingMe.a(this.a).size() > 0)
+    {
+      Iterator localIterator = QQSettingMe.a(this.a).values().iterator();
+      int i = 0;
+      if (localIterator.hasNext())
+      {
+        Bitmap localBitmap = ((UpSideDownDrawable)localIterator.next()).a();
+        if (localBitmap == null) {
+          break label79;
+        }
+        i = Utils.a(localBitmap) + i;
+      }
+      label79:
+      for (;;)
+      {
+        break;
+        QQSettingMe.a(this.a).clear();
+        return i;
+      }
     }
-    RegisterChooseLoginActivity.a(this.a);
-  }
-  
-  public void onLoginSuccess(String paramString1, String paramString2)
-  {
-    super.onLoginSuccess(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginSuccess ");
-    }
-  }
-  
-  protected void onLoginTimeout(String paramString)
-  {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
-  }
-  
-  protected void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onUserCancel ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
+    return 0;
   }
 }
 

@@ -1,19 +1,27 @@
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+
 public class ahon
+  implements Runnable
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final long b;
+  public ahon(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  private ahon(long paramLong1, long paramLong2, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
+    this.a.d();
+    CapturePtvTemplateManager.a().b(false);
+    CaptureReportUtil.h();
+    this.a.a.c();
+    if ((this.a.e) && (CaptureVideoFilterManager.a(this.a.getActivity())))
+    {
+      CaptureVideoFilterManager.a().b();
+      CaptureVideoFilterManager.a().a(new ahoo(this));
+      EffectsCameraCaptureFragment.a(this.a).c();
+    }
   }
 }
 

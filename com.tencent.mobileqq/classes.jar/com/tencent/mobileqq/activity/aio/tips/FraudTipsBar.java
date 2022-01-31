@@ -15,8 +15,8 @@ import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Timer;
 import mqq.os.MqqHandler;
-import wcq;
-import wcs;
+import why;
+import wia;
 
 public class FraudTipsBar
   implements TipsBarTask
@@ -45,12 +45,12 @@ public class FraudTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970925, null);
-    TextView localTextView = (TextView)localView.findViewById(2131372235);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970943, null);
+    TextView localTextView = (TextView)localView.findViewById(2131372245);
     String str = (String)paramVarArgs[0];
     int i = ((Integer)paramVarArgs[1]).intValue();
     localTextView.setText(str);
-    localView.setOnClickListener(new wcs(this, i));
+    localView.setOnClickListener(new wia(this, i));
     return localView;
   }
   
@@ -106,7 +106,7 @@ public class FraudTipsBar
           this.jdField_a_of_type_Int = 1;
           ReportController.b(null, "P_CliOper", "Safe_AntiFraud", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "banner", "display", i, 0, "", "", "", "");
           Timer localTimer = new Timer();
-          wcq localwcq = new wcq(this);
+          why localwhy = new why(this);
           localObject = (Bundle)AntiFraudConfigFileUtil.a().a("SecWarningCfg", "BannerTTL", 146, i);
           if (localObject != null)
           {
@@ -128,7 +128,7 @@ public class FraudTipsBar
             if (l <= 0L) {
               continue;
             }
-            localTimer.schedule(localwcq, l);
+            localTimer.schedule(localwhy, l);
             return;
           }
         }

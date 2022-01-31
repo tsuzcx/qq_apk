@@ -1,39 +1,29 @@
-import android.annotation.TargetApi;
 import android.os.Handler;
-import android.view.Choreographer;
-import com.tencent.mobileqq.util.FPSCalculator;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
 
 public class ajzk
-  implements Runnable
+  extends Handler
 {
-  public ajzk(FPSCalculator paramFPSCalculator) {}
-  
-  @TargetApi(16)
-  public void run()
+  public ajzk(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
   {
-    for (;;)
-    {
-      try
-      {
-        if (FPSCalculator.a(this.a) == null) {
-          continue;
-        }
-        FPSCalculator.a(this.a).removeFrameCallback(FPSCalculator.a(this.a));
-        FPSCalculator.a(this.a).postFrameCallback(FPSCalculator.a(this.a));
-      }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FPSCalculator", 2, "Choreographer.getInstance", localException);
-        continue;
-      }
-      FPSCalculator.a(this.a).removeCallbacks(FPSCalculator.a(this.a));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (AvatarWallViewPager.a(this.a)) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
       return;
-      FPSCalculator.a(this.a, Choreographer.getInstance());
     }
+    paramMessage = this.a;
+    paramMessage.d += 1;
+    this.a.d %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.d, true);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.c);
   }
 }
 

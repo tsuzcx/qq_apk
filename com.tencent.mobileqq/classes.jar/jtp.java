@@ -1,27 +1,24 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.EffectSettingUi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jtp
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public jtp(EffectSettingUi paramEffectSettingUi) {}
+  public jtp(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.setVisibility(0);
-    }
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.a.app, this.a, 2, 12);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 5, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jtp
  * JD-Core Version:    0.7.0.1
  */

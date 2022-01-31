@@ -1,19 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.file.DevVideoMsgProcessor;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
 
 public class vsb
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public vsb(DeviceMsgChatPie paramDeviceMsgChatPie) {}
+  public vsb(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    DevVideoMsgProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.f);
-    this.a.f = "";
+    if (this.a.o) {
+      return;
+    }
+    AIOGalleryScene localAIOGalleryScene = this.a;
+    localAIOGalleryScene.h += this.a.i;
+    if (this.a.h > 99)
+    {
+      this.a.h = 99;
+      this.a.d(this.a.h);
+      return;
+    }
+    this.a.d(this.a.h);
+    this.a.v();
   }
 }
 

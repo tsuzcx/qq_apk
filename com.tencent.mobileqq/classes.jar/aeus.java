@@ -1,30 +1,36 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.mobileqq.nearby.now.send.PublishManager;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
+import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
 
 public class aeus
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aeus(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  public aeus(NearbyLikeLimitManager paramNearbyLikeLimitManager, boolean paramBoolean, String paramString1, NearbyLikeLimitManager.onDoVoteListener paramonDoVoteListener, QQAppInterface paramQQAppInterface, String paramString2, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent();
-    if (SmallVideoSendFragment.a(this.a).h == 0) {}
-    for (int i = 1;; i = 2)
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramView.putExtra("content_type", i);
-      paramView.putExtra("selected_location", this.a.a.a());
-      PublicFragmentActivity.a(this.a.getActivity(), paramView, SelectLocationFragment.class, 1001);
-      new NowVideoReporter().h("video_public").i("clk_poi").d(SmallVideoSendFragment.a(this.a)).a(i).b(this.a.getActivity().app);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.b();
+      if (!this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a()) {
+        break label104;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0, 1);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager$onDoVoteListener.a(this.jdField_a_of_type_JavaLangString, false);
+      NearbyLikeLimitManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "pay_like", this.jdField_a_of_type_JavaLangString, this.b, "", "", "");
+    }
+    for (;;)
+    {
+      NearbyLikeLimitManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_no_warm", this.b);
       return;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.c();
+      break;
+      label104:
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a(this.jdField_a_of_type_AndroidAppActivity, this.b);
+      NearbyLikeLimitManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "exp_pay", this.b);
     }
   }
 }

@@ -1,22 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import android.widget.RelativeLayout;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 
 public class anst
-  extends AnimatorListenerAdapter
+  implements DoodleEditView.DoodleEditViewListener
 {
-  public anst(EditVideoButton paramEditVideoButton) {}
+  public anst(QIMCaptureController paramQIMCaptureController) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    EditVideoButton.a(this.a).setVisibility(8);
-    EditVideoButton.a(this.a).setVisibility(8);
-    EditVideoButton.a(this.a, EditVideoButton.b(this.a));
-    if (this.a.a != null) {
-      this.a.a(2131363408);
-    }
+    this.a.a.setVisibility(0);
+    QIMCaptureController.a(this.a).setVisibility(0);
+    QIMCaptureController.a(this.a).b();
+  }
+  
+  public void a(GestureHelper.ZoomItem paramZoomItem)
+  {
+    this.a.a.setVisibility(8);
+    QIMCaptureController.a(this.a).setVisibility(8);
+    QIMCaptureController.a(this.a).setVisibility(8);
+    QIMCaptureController.a(this.a).a(103, new Object[] { paramZoomItem });
   }
 }
 

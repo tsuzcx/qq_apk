@@ -1,23 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
-public final class aopq
+public class aopq
   implements Runnable
 {
+  public aopq(VideoFilterViewPager paramVideoFilterViewPager, View paramView) {}
+  
   public void run()
   {
-    try
-    {
-      SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "GIFEngine");
-      ShortVideoUtils.a(true);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      localUnsatisfiedLinkError.printStackTrace();
-      ShortVideoUtils.a(false);
-    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(300L);
+    localAlphaAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+    localAlphaAnimation.setAnimationListener(new aopr(this));
   }
 }
 

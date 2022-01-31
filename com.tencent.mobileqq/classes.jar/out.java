@@ -1,28 +1,15 @@
 import android.view.View;
-import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import mqq.app.AppActivity;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.StoryImageDialog;
 
-class out
-  extends ScannerActivity.QQDialogCancelListener
+public class out
+  implements View.OnClickListener
 {
-  out(ous paramous) {}
+  public out(StoryImageDialog paramStoryImageDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.a();
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
-    {
-      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.b();
+    this.a.dismiss();
   }
 }
 

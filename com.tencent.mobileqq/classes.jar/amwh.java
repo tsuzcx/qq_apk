@@ -1,16 +1,18 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqdataline.ipc.MessageRecordParcel;
 
-public class amwh
-  implements Runnable
+public final class amwh
+  implements Parcelable.Creator
 {
-  public amwh(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt, ArrayList paramArrayList) {}
-  
-  public void run()
+  public MessageRecordParcel a(Parcel paramParcel)
   {
-    RemoteHandleManager.a().a().a(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaUtilArrayList);
+    return MessageRecordParcel.a(paramParcel);
+  }
+  
+  public MessageRecordParcel[] a(int paramInt)
+  {
+    return new MessageRecordParcel[paramInt];
   }
 }
 

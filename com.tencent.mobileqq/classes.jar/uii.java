@@ -1,24 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.profile.vote.VoteHelper;
-import java.util.ArrayList;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 
 public class uii
-  implements Runnable
+  implements ConditionSearchManager.IConfigListener
 {
-  public uii(VisitorsActivity paramVisitorsActivity) {}
+  public uii(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    ArrayList localArrayList1 = this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(2, 7);
-    ArrayList localArrayList2 = this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(3, 7);
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a();
-      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5, 0, 0, new Object[] { localArrayList1, localArrayList2 }).sendToTarget();
-    }
+    TroopRobotPickerActivity.a(this.a);
+    this.a.a.dismiss();
   }
 }
 

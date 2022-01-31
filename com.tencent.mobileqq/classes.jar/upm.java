@@ -1,14 +1,29 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class upm
   implements Runnable
 {
-  public upm(CommonRecordSoundPanel paramCommonRecordSoundPanel, String paramString) {}
+  public upm(CustomizeStrategyFactory paramCustomizeStrategyFactory) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.b();
+    synchronized (CustomizeStrategyFactory.a(this.a))
+    {
+      if (!CustomizeStrategyFactory.a(this.a))
+      {
+        QQAppInterface localQQAppInterface = QWalletTools.a();
+        if (localQQAppInterface != null) {
+          this.a.a = ((QWalletConfigManager)localQQAppInterface.getManager(244));
+        }
+        if (this.a.a != null) {
+          this.a.a.a("redPack", this.a);
+        }
+      }
+      return;
+    }
   }
 }
 

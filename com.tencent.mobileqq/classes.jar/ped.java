@@ -1,13 +1,18 @@
-import com.tencent.biz.widgets.ScannerView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog;
 
 public class ped
-  implements Runnable
+  implements DialogInterface.OnShowListener
 {
-  public ped(ScannerView paramScannerView) {}
+  public ped(TroopGiftPanel.GiftNumInputDialog paramGiftNumInputDialog) {}
   
-  public void run()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    ScannerView.a(this.a);
+    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
   }
 }
 

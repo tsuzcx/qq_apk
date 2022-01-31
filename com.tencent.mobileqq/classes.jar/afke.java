@@ -1,50 +1,36 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedAdapter;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.statistics.ReportTask;
 
-class afke
-  implements Runnable
+public class afke
+  implements View.OnClickListener
 {
-  afke(afkd paramafkd, PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult) {}
+  public afke(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo != null)
+    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
     {
-      ConnectNearbyProcService.a(4155, new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a), NearbyMomentFailedAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult) });
-      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a == 0)) {
-        break label201;
-      }
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "发表失败，请重试", 1).a();
-      QLog.i("NearbyMomentFailedAdapter", 1, "upload failed, errMsg=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.i + "code=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a);
-      label124:
-      localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label226;
-      }
+      NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel, 1);
+      new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.a.a).a();
     }
-    label201:
-    label226:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    for (;;)
     {
-      NowVideoReporter localNowVideoReporter = new NowVideoReporter().h("video_public").i("re_republic").d("5").c("2");
-      if (i != 0) {}
-      for (String str = "1";; str = "2")
+      NearbyProfileDisplayTribePanel.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel);
+      return;
+      if (paramView == this.b)
       {
-        localNowVideoReporter.e(str).b((QQAppInterface)localObject);
-        return;
-        QLog.i("NearbyMomentFailedAdapter", 1, "mImageUploadListener, sendIPCMessage failed, info == null");
-        break;
-        QQToast.a(BaseApplicationImpl.getContext(), 2, "发表成功", 1).a();
-        i = 1;
-        break label124;
+        NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel, 2);
+        new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.a.a).a();
+      }
+      else if (paramView == this.c)
+      {
+        NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel, 3);
+        new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.a.a).a();
       }
     }
   }

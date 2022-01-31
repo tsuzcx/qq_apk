@@ -1,22 +1,31 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.av.app.GAudioUIObserver;
+import com.tencent.av.ui.VideoNetStateBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class keo
-  implements MenuItem.OnMenuItemClickListener
+  extends GAudioUIObserver
 {
-  public keo(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
+  public keo(VideoNetStateBar paramVideoNetStateBar) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  protected void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(112) });
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong);
+    }
+    this.a.i();
+  }
+  
+  protected void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong);
+    }
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     keo
  * JD-Core Version:    0.7.0.1
  */

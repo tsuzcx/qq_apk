@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import ajkl;
+import ajrx;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.media.ThumbnailUtils;
@@ -36,26 +36,26 @@ public class VideoInfo$GenerateVideoPosterSegment
     }
     String str2 = ImageInfo.b();
     MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    Object localObject4 = null;
     String str1 = null;
+    Object localObject4 = null;
     Bitmap localBitmap2 = null;
     Bitmap localBitmap1 = localBitmap2;
-    Object localObject3 = localObject4;
-    Object localObject1 = str1;
+    Object localObject3 = str1;
+    Object localObject1 = localObject4;
     for (;;)
     {
       try
       {
         localMediaMetadataRetriever.setDataSource(paramVideoInfo.f);
         localBitmap1 = localBitmap2;
-        localObject3 = localObject4;
-        localObject1 = str1;
+        localObject3 = str1;
+        localObject1 = localObject4;
         localBitmap3 = localMediaMetadataRetriever.getFrameAtTime(-1L);
         if (localBitmap3 == null)
         {
           localBitmap1 = localBitmap2;
-          localObject3 = localObject4;
-          localObject1 = str1;
+          localObject3 = str1;
+          localObject1 = localObject4;
           notifyError(new Error("-201"));
         }
       }
@@ -139,12 +139,12 @@ public class VideoInfo$GenerateVideoPosterSegment
       }
       catch (RuntimeException paramJobContext) {}
       localBitmap1 = localBitmap2;
-      localObject3 = localObject4;
-      localObject1 = str1;
+      localObject3 = str1;
+      localObject1 = localObject4;
       arrayOfInt = ImageItem.a(this.jdField_a_of_type_Int, 200, 300, paramVideoInfo.jdField_a_of_type_Int, paramVideoInfo.b);
       localBitmap1 = localBitmap2;
-      localObject3 = localObject4;
-      localObject1 = str1;
+      localObject3 = str1;
+      localObject1 = localObject4;
       localBitmap2 = ThumbnailUtils.extractThumbnail(localBitmap3, arrayOfInt[0], arrayOfInt[1]);
       if (localBitmap2 == null)
       {
@@ -180,7 +180,7 @@ public class VideoInfo$GenerateVideoPosterSegment
         localBitmap1 = localBitmap2;
         localObject3 = localBitmap2;
         localObject1 = localBitmap2;
-        ThreadManager.getUIHandler().post(new ajkl(this, paramVideoInfo, str1));
+        ThreadManager.getUIHandler().post(new ajrx(this, paramVideoInfo, str1));
         localBitmap1 = localBitmap2;
         localObject3 = localBitmap2;
         localObject1 = localBitmap2;
@@ -222,7 +222,7 @@ public class VideoInfo$GenerateVideoPosterSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.GenerateVideoPosterSegment
  * JD-Core Version:    0.7.0.1
  */

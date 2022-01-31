@@ -7,12 +7,12 @@ import android.content.SharedPreferences.Editor;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anxl;
-import anxm;
-import anxn;
-import anxo;
-import anxp;
-import anxq;
+import aogd;
+import aoge;
+import aogf;
+import aogg;
+import aogh;
+import aogi;
 import com.tencent.biz.qqstory.app.QQStoryConstant;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.channel.CmdTaskManger;
@@ -52,7 +52,7 @@ public class DoodleEmojiManager
   private float jdField_a_of_type_Float;
   public final int a;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  LbsManager.LbsUpdateListener jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$LbsUpdateListener = new anxo(this);
+  LbsManager.LbsUpdateListener jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$LbsUpdateListener = new aogg(this);
   public DoodleEmojiItem a;
   public DoodleEmojiManager.POIPostersRequestCallback a;
   public final Object a;
@@ -134,7 +134,7 @@ public class DoodleEmojiManager
     do
     {
       return false;
-      paramFile = paramFile.listFiles(new anxq());
+      paramFile = paramFile.listFiles(new aogi());
     } while ((paramFile == null) || (paramFile.length <= 0));
     return true;
   }
@@ -220,7 +220,7 @@ public class DoodleEmojiManager
   public void a(int paramInt1, int paramInt2, DoodleEmojiManager.POIPostersRequestCallback paramPOIPostersRequestCallback)
   {
     paramPOIPostersRequestCallback = new WeakReference(paramPOIPostersRequestCallback);
-    CmdTaskManger.a().a(new GetPoiFacesRequest(paramInt1, paramInt2), new anxp(this, paramPOIPostersRequestCallback));
+    CmdTaskManger.a().a(new GetPoiFacesRequest(paramInt1, paramInt2), new aogh(this, paramPOIPostersRequestCallback));
   }
   
   public void a(Context paramContext)
@@ -232,7 +232,7 @@ public class DoodleEmojiManager
       Object localObject1 = new File(jdField_a_of_type_JavaLangString);
       if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
       {
-        localObject1 = ((File)localObject1).listFiles(new anxl(this));
+        localObject1 = ((File)localObject1).listFiles(new aogd(this));
         if (localObject1 != null)
         {
           int j = localObject1.length;
@@ -240,7 +240,7 @@ public class DoodleEmojiManager
           if (i < j)
           {
             File localFile = localObject1[i];
-            Object localObject2 = localFile.listFiles(new anxm(this));
+            Object localObject2 = localFile.listFiles(new aoge(this));
             if ((localObject2 != null) && (localObject2.length > 0))
             {
               localObject2 = a(localFile);
@@ -436,7 +436,7 @@ public class DoodleEmojiManager
         if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem != null)
         {
           SLog.b("DoodleEmojiManager", "downloader startDownload : " + this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem);
-          Bosses.get().postJob(new anxn(this, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem));
+          Bosses.get().postJob(new aogf(this, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem));
         }
         return;
       }

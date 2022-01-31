@@ -1,26 +1,14 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class anxn
-  extends anxr
+  extends CaptureConfigUpdateObserver
 {
-  public anxn(DoodleEmojiManager paramDoodleEmojiManager, DoodleEmojiItem paramDoodleEmojiItem)
-  {
-    super(paramDoodleEmojiItem);
-  }
+  public anxn(MusicProviderView paramMusicProviderView) {}
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
+  public void b()
   {
-    super.onResult(???);
-    SLog.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.c();
-      return;
-    }
+    this.a.a(false);
   }
 }
 

@@ -1,11 +1,16 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple.PhotoAdapter;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class agsl
+class agsl
+  implements Runnable
 {
-  public URLImageView a;
+  agsl(agsj paramagsj, int paramInt) {}
   
-  public agsl(VipPhotoViewForSimple.PhotoAdapter paramPhotoAdapter) {}
+  public void run()
+  {
+    String str = String.format("上传图片失败", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int + 1) });
+    QQToast.a(this.jdField_a_of_type_Agsj.a.getApplicationContext(), 0, str, 0).a();
+  }
 }
 
 

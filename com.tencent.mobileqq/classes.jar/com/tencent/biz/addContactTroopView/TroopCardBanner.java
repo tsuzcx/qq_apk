@@ -20,8 +20,8 @@ import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Timer;
-import kkj;
-import kkk;
+import kmq;
+import kmr;
 import tencent.im.troop_search_popclassifc.popclassifc.BannerCard;
 import tencent.im.troop_search_popclassifc.popclassifc.BannerItem;
 import tencent.im.troop_search_popclassifc.popclassifc.RspBody;
@@ -75,8 +75,8 @@ public class TroopCardBanner
     }
     g();
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    kkk localkkk = new kkk(this);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(localkkk, paramInt, paramInt);
+    kmr localkmr = new kmr(this);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(localkmr, paramInt, paramInt);
   }
   
   private void a(boolean paramBoolean)
@@ -99,7 +99,7 @@ public class TroopCardBanner
         if (i == 0)
         {
           this.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-          localImageView.setImageResource(2130837574);
+          localImageView.setImageResource(2130837573);
         }
         for (;;)
         {
@@ -107,7 +107,7 @@ public class TroopCardBanner
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localImageView);
           i += 1;
           break;
-          localImageView.setImageResource(2130837575);
+          localImageView.setImageResource(2130837574);
         }
       }
     }
@@ -115,10 +115,10 @@ public class TroopCardBanner
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366411));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131366410));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131366409));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131366408));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(new TroopCardBanner.CPagerAdapter(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new kkj(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new kmq(this));
   }
   
   private void g()
@@ -132,7 +132,7 @@ public class TroopCardBanner
   
   public void a()
   {
-    setContentView(2130969413);
+    setContentView(2130969409);
     f();
   }
   

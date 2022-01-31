@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.List;
 
-public class tma
-  extends SVIPObserver
+class tma
+  implements View.OnClickListener
 {
-  public tma(QQSettingMe paramQQSettingMe) {}
+  tma(tlz paramtlz) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
+    paramView = paramView.getTag();
+    if ((paramView instanceof tly))
+    {
+      paramView = (tly)paramView;
+      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
+      {
+        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
+        this.a.a.a(this.a.a.a.size());
+        this.a.notifyDataSetChanged();
+        tlz.a(this.a, paramView);
+        ReportController.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+      }
     }
-    this.a.b(this.a.a.getCurrentAccountUin());
   }
 }
 

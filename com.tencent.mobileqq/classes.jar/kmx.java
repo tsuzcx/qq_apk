@@ -1,33 +1,20 @@
-import android.net.wifi.WifiManager;
-import android.os.Handler;
-import android.os.Message;
-import com.google.zxing.client.android.wifi.BizWifiConfigManager;
-import com.google.zxing.client.android.wifi.WifiParsedResult;
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.addContactTroopView.TroopCardSameCity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.statistics.ReportController;
+import tencent.im.troop_search_searchtab.searchtab.Card;
+import tencent.im.troop_search_searchtab.searchtab.TitleBar;
 
 public class kmx
-  extends Thread
+  implements View.OnClickListener
 {
-  public kmx(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString1, String paramString2, String paramString3, boolean paramBoolean, WifiManager paramWifiManager, String paramString4) {}
+  public kmx(TroopCardSameCity paramTroopCardSameCity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SensorApi", 4, "start connectToWiFi");
-    }
-    Object localObject = new WifiParsedResult(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Boolean);
-    if (new BizWifiConfigManager(this.jdField_a_of_type_AndroidNetWifiWifiManager).a((WifiParsedResult)localObject))
-    {
-      localObject = new Message();
-      ((Message)localObject).what = 5;
-      ((Message)localObject).obj = this.d;
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.sendMessage((Message)localObject);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.c = false;
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.d, new String[] { Util.a(Integer.toString(1)) });
+    this.a.a(this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.str_transfer_url.get());
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_more", 0, 0, "", this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.title_bar.str_desc.get(), "", "");
   }
 }
 

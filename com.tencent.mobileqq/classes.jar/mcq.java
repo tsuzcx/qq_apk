@@ -1,13 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import android.database.DataSetObserver;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
 
 public class mcq
-  implements Runnable
+  extends DataSetObserver
 {
-  public mcq(VideoFeedsListView paramVideoFeedsListView, int paramInt1, int paramInt2) {}
+  public mcq(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void run()
+  public void onChanged()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView.smoothScrollBy(this.jdField_a_of_type_Int, this.b);
+    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
+    {
+      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
   }
 }
 

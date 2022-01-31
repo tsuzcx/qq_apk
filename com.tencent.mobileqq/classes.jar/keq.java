@@ -1,22 +1,34 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.av.ui.VoiceChangeAdapter;
+import com.tencent.av.ui.VoiceChangeAdapter.ICallback;
+import com.tencent.av.ui.VoiceChangeData.VoiceInfo;
+import com.tencent.av.ui.VoiceChangeItemView1;
+import com.tencent.av.ui.VoiceChangeItemView1.ICallback;
 
 public class keq
-  implements MenuItem.OnMenuItemClickListener
+  implements VoiceChangeItemView1.ICallback
 {
-  public keq(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
+  public keq(VoiceChangeAdapter paramVoiceChangeAdapter) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void a(VoiceChangeItemView1 paramVoiceChangeItemView1, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.c(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr);
-    return true;
+    VoiceChangeData.VoiceInfo localVoiceInfo = (VoiceChangeData.VoiceInfo)this.a.getItem(paramInt);
+    if ((localVoiceInfo == null) || (localVoiceInfo.a == VoiceChangeAdapter.a(this.a))) {}
+    do
+    {
+      return;
+      if (VoiceChangeAdapter.a(this.a) != null) {
+        VoiceChangeAdapter.a(this.a).setHighlight(false);
+      }
+      VoiceChangeAdapter.a(this.a, localVoiceInfo.a);
+      VoiceChangeAdapter.a(this.a, paramVoiceChangeItemView1);
+      VoiceChangeAdapter.a(this.a).setHighlight(true);
+    } while (VoiceChangeAdapter.a(this.a) == null);
+    VoiceChangeAdapter.a(this.a).a(VoiceChangeAdapter.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     keq
  * JD-Core Version:    0.7.0.1
  */

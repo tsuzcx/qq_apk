@@ -1,45 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.ForwardImageProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
 
 public class aipj
-  extends TransProcessorHandler
+  implements DialogInterface.OnCancelListener
 {
-  public aipj(ForwardImageProcessor paramForwardImageProcessor) {}
+  public aipj(SubAccountControll paramSubAccountControll, String paramString, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    int i = paramMessage.what;
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((i == 2002) || ((ForwardImageProcessor.a(this.a).equals(localFileMsg.p)) && (localFileMsg.b == 1) && (i != 2002)))
-    {
-      if ((localFileMsg.r == null) || (!localFileMsg.r.equals(ForwardImageProcessor.b(this.a)))) {
-        return;
-      }
-      switch (i)
-      {
-      }
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      ForwardImageProcessor.a(this.a);
-      continue;
-      if (FileUtils.b(ForwardImageProcessor.c(this.a)))
-      {
-        ForwardImageProcessor.a(this.a).a().b(this);
-        ForwardImageProcessor.b(this.a);
-      }
-      else
-      {
-        ForwardImageProcessor.a(this.a);
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
   }
 }
 

@@ -143,38 +143,45 @@ public class JumpUtil
     } while (!QLog.isColorLevel());
     QLog.d("JumpUtil", 2, "jumpToEditVideoActivity videoParams is null");
     return;
-    int j = 268435775;
-    if (localCaptureVideoParams.a()) {
-      j = 268443967;
+    int i;
+    if ((localCaptureVideoParams.jdField_c_of_type_Boolean) && (MediaCodecDPC.o()))
+    {
+      j = -1879047874;
+      i = j;
+      if (localCaptureVideoParams.a()) {
+        i = j | 0x2000;
+      }
+      j = i;
+      if (localCaptureVideoParams.c()) {
+        j = i | 0x400000;
+      }
+      i = j;
+      if (localCaptureVideoParams.f()) {
+        i = j | 0x20000000;
+      }
+      j = i;
+      if (localCaptureVideoParams.b()) {
+        j = i | 0x40000000;
+      }
+      i = j;
+      if (localCaptureVideoParams.d()) {
+        i = j | 0x8000000;
+      }
+      j = i;
+      if (localCaptureVideoParams.e()) {
+        j = i | 0x20000;
+      }
+      i = j;
+      if (paramCaptureEntranceParams.b() == 102) {
+        i = j | 0x1000000;
+      }
+      if (!MediaCodecDPC.l()) {
+        break label830;
+      }
     }
-    int i = j;
-    if (localCaptureVideoParams.c()) {
-      i = j | 0x400000;
-    }
-    j = i;
-    if (localCaptureVideoParams.f()) {
-      j = i | 0x20000000;
-    }
-    i = j;
-    if (localCaptureVideoParams.b()) {
-      i = j | 0x40000000;
-    }
-    j = i;
-    if (localCaptureVideoParams.d()) {
-      j = i | 0x8000000;
-    }
-    i = j;
-    if (localCaptureVideoParams.e()) {
-      i = j | 0x20000;
-    }
-    j = i;
-    if (paramCaptureEntranceParams.b() == 102) {
-      j = i | 0x1000000;
-    }
-    if (MediaCodecDPC.l()) {
-      j = j & 0xFFFFFFDF & 0xFFFFFFFD & 0xFFFFFEFF & 0xFFFFFFEF & 0xFFFFFFFE;
-    }
-    for (;;)
+    label808:
+    label830:
+    for (int j = i & 0xFFFFFFDF & 0xFFFFFFFD & 0xFFFFFEFF & 0xFFFFFFEF & 0xFFFFFFFE;; j = i)
     {
       Bundle localBundle = paramBundle2;
       if (paramBundle2 == null) {
@@ -194,9 +201,10 @@ public class JumpUtil
           localBundle.putInt("curType", paramBundle2.jdField_a_of_type_Int);
           localBundle.putBoolean("sync_story_checked", b(paramActivity, paramBundle2.jdField_a_of_type_Int));
           if (paramBundle2.jdField_a_of_type_Int != 1) {
-            break label758;
+            break label808;
           }
           paramBundle2 = "1";
+          label345:
           StoryReportor.a("aio_shoot", "exp_sync", 0, 0, new String[] { paramBundle2 });
         }
       }
@@ -228,6 +236,7 @@ public class JumpUtil
       paramLocalMediaInfo.a.putInt("WebSceneType", localCaptureVideoParams.jdField_b_of_type_Int);
       paramLocalMediaInfo.a.putString("failedUrl", localCaptureVideoParams.jdField_b_of_type_JavaLangString);
       paramLocalMediaInfo.a.putString("succUrl", localCaptureVideoParams.jdField_a_of_type_JavaLangString);
+      paramLocalMediaInfo.a.putInt("extra_transiton_src_from", localBundle.getInt("extra_transiton_src_from", -1));
       if ((bool) && (localCaptureVideoParams.a() != 0))
       {
         paramVideoCaptureResult = new Intent(paramActivity, EditWebVideoActivity.class);
@@ -250,9 +259,10 @@ public class JumpUtil
         paramActivity.startActivityForResult(paramVideoCaptureResult, paramCaptureEntranceParams.jdField_a_of_type_Int);
         paramActivity.overridePendingTransition(0, 0);
         return;
-        label758:
-        paramBundle2 = "2";
+        j = 268435775;
         break;
+        paramBundle2 = "2";
+        break label345;
         paramVideoCaptureResult = new Intent(paramActivity, EditVideoActivity.class);
       }
     }
@@ -272,22 +282,29 @@ public class JumpUtil
     } while (!QLog.isColorLevel());
     QLog.d("JumpUtil", 2, "jumpToEditVideoActivity videoParams is null");
     return;
-    int j = 268435775;
-    if (localCaptureVideoParams.a()) {
-      j = 268443967;
+    int i;
+    if ((localCaptureVideoParams.jdField_c_of_type_Boolean) && (MediaCodecDPC.o()))
+    {
+      j = -1879047874;
+      i = j;
+      if (localCaptureVideoParams.a()) {
+        i = j | 0x2000;
+      }
+      j = i;
+      if (localCaptureVideoParams.c()) {
+        j = i | 0x400000;
+      }
+      i = j;
+      if (localCaptureVideoParams.d()) {
+        i = j | 0x8000000;
+      }
+      if (!MediaCodecDPC.l()) {
+        break label926;
+      }
     }
-    int i = j;
-    if (localCaptureVideoParams.c()) {
-      i = j | 0x400000;
-    }
-    j = i;
-    if (localCaptureVideoParams.d()) {
-      j = i | 0x8000000;
-    }
-    if (MediaCodecDPC.l()) {
-      j = j & 0xFFFFFFDF & 0xFFFFFFFD & 0xFFFFFEFF & 0xFFFFFFEF & 0xFFFFFFFE;
-    }
-    for (;;)
+    label259:
+    label926:
+    for (int j = i & 0xFFFFFFDF & 0xFFFFFFFD & 0xFFFFFEFF & 0xFFFFFFEF & 0xFFFFFFFE;; j = i)
     {
       Bundle localBundle = new Bundle();
       Object localObject = (SessionInfo)paramActivity.getIntent().getParcelableExtra("PhotoConst.SEND_SESSION_INFO");
@@ -304,7 +321,7 @@ public class JumpUtil
           localBundle.putInt("curType", ((SessionInfo)localObject).jdField_a_of_type_Int);
           localBundle.putBoolean("sync_story_checked", b(paramActivity, ((SessionInfo)localObject).jdField_a_of_type_Int));
           if (((SessionInfo)localObject).jdField_a_of_type_Int != 1) {
-            break label684;
+            break label715;
           }
           localObject = "1";
           StoryReportor.a("aio_shoot", "exp_sync", 0, 0, new String[] { localObject });
@@ -361,9 +378,11 @@ public class JumpUtil
         paramActivity.startActivityForResult(paramLocalMediaInfo, paramCaptureEntranceParams.jdField_a_of_type_Int);
         paramActivity.overridePendingTransition(0, 0);
         return;
-        label684:
-        localObject = "2";
+        j = 268435775;
         break;
+        label715:
+        localObject = "2";
+        break label259;
         i = j;
         if (paramLocalMediaInfo.getComponent().getClassName().equals(EditWebDanceMachineVideoActivity.class.getName()))
         {

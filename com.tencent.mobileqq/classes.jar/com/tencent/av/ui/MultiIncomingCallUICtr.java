@@ -19,22 +19,22 @@ import com.tencent.av.utils.UITools;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import jvc;
-import jve;
-import jvf;
-import jvh;
-import jvi;
+import jxg;
+import jxi;
+import jxj;
+import jxl;
+import jxm;
 import mqq.app.MobileQQ;
 
 public class MultiIncomingCallUICtr
   extends BaseInviteFloatBarUICtr
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jvc(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jxg(this);
   Intent jdField_a_of_type_AndroidContentIntent;
   SessionMgr jdField_a_of_type_ComTencentAvSessionMgr = SessionMgr.a();
   public VideoController a;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jvf(this);
-  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new jvh(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jxj(this);
+  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new jxl(this);
   QAVNotification jdField_a_of_type_ComTencentAvUtilsQAVNotification;
   Runnable b;
   public boolean b;
@@ -53,7 +53,7 @@ public class MultiIncomingCallUICtr
     this.jdField_e_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangRunnable = null;
     this.jdField_a_of_type_ComTencentAvVideoController = null;
-    this.jdField_c_of_type_JavaLangRunnable = new jvi(this);
+    this.jdField_c_of_type_JavaLangRunnable = new jxm(this);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
     this.jdField_a_of_type_AndroidContentIntent = paramIntent;
@@ -413,7 +413,7 @@ public class MultiIncomingCallUICtr
       }
       label277:
       VideoController localVideoController = this.jdField_a_of_type_ComTencentAvVideoController;
-      localVideoController.a(paramString, 1, false, new jve(this, localVideoController, paramString, paramBoolean3));
+      localVideoController.a(paramString, 1, false, new jxi(this, localVideoController, paramString, paramBoolean3));
     }
   }
   
@@ -545,7 +545,7 @@ public class MultiIncomingCallUICtr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallUICtr
  * JD-Core Version:    0.7.0.1
  */

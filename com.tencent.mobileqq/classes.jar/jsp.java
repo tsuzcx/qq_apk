@@ -1,22 +1,25 @@
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.av.ui.BaseToolbar;
 
 public class jsp
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public jsp(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jsp(BaseToolbar paramBaseToolbar) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!this.a.i)
-    {
-      this.a.i(0);
-      this.a.ad();
-    }
+    super.onAnimationEnd(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jsp
  * JD-Core Version:    0.7.0.1
  */

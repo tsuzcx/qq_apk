@@ -1,15 +1,31 @@
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager.Listener;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class ulu
   implements Runnable
 {
-  public ulu(MediaPlayerManager paramMediaPlayerManager, int paramInt) {}
+  public ulu(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
   public void run()
   {
-    if (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager) != null) {
-      MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager).e(this.jdField_a_of_type_Int);
+    try
+    {
+      if ((VerifyPhoneNumActivity.a(this.a) == null) && (!this.a.isFinishing()))
+      {
+        VerifyPhoneNumActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
+        VerifyPhoneNumActivity.a(this.a).c(2131435086);
+      }
+      if ((VerifyPhoneNumActivity.a(this.a) != null) && (!VerifyPhoneNumActivity.a(this.a).isShowing())) {
+        VerifyPhoneNumActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }

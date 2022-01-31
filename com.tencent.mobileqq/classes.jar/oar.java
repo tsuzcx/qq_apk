@@ -1,28 +1,34 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedVideoPreloader;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedVideoPreloader.CurrentVid;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
+import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
+import com.tencent.biz.qqstory.playmode.child.DiscoverPlayMode.PlayVideoEvent;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class oar
-  extends SimpleJob
+  extends UIBaseEventReceiver
 {
-  public oar(FeedVideoPreloader paramFeedVideoPreloader, StoryVideoItem paramStoryVideoItem, List paramList) {}
-  
-  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  public oar(DiscoverPresenter paramDiscoverPresenter)
   {
-    synchronized (FeedVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$CurrentVid = new FeedVideoPreloader.CurrentVid(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.b();
-      return null;
-    }
+    super(paramDiscoverPresenter);
   }
+  
+  public void a(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPlayMode.PlayVideoEvent paramPlayVideoEvent)
+  {
+    if (DiscoverPresenter.a.size() == 0) {}
+    while ((DiscoverPresenter)((WeakReference)DiscoverPresenter.a.get(DiscoverPresenter.a.size() - 1)).get() != paramDiscoverPresenter) {
+      return;
+    }
+    DiscoverPresenter.a(paramDiscoverPresenter).a(paramPlayVideoEvent);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DiscoverPlayMode.PlayVideoEvent.class;
+  }
+  
+  public void b(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPlayMode.PlayVideoEvent paramPlayVideoEvent) {}
 }
 
 

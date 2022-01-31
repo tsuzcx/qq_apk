@@ -101,7 +101,7 @@ public class ConversationDataFactory
       continue;
       localObject1 = new RecentItemImaxADData(paramRecentUser);
       continue;
-      if (TextUtils.equals(paramRecentUser.uin, AppConstants.ar))
+      if (TextUtils.equals(paramRecentUser.uin, AppConstants.as))
       {
         localObject1 = localObject3;
         if (ReadInJoyHelper.a(paramQQAppInterface)) {}

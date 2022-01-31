@@ -1,28 +1,56 @@
-import android.hardware.SensorEvent;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.MotionCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aaox
   implements Runnable
 {
-  public aaox(ArkAppEventObserverManager paramArkAppEventObserverManager, SensorEvent paramSensorEvent, long paramLong) {}
+  public aaox(ARReport paramARReport, String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, long paramLong4, int paramInt2, long paramLong5, int paramInt3, long paramLong6, long paramLong7, int paramInt4) {}
   
   public void run()
   {
-    int i = 0;
-    while (i < 3)
-    {
-      ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[i] = ((float)(0.1D * this.jdField_a_of_type_AndroidHardwareSensorEvent.values[i] + 0.9D * ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[i]));
-      ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[i] = (this.jdField_a_of_type_AndroidHardwareSensorEvent.values[i] - ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[i]);
-      i += 1;
+    HashMap localHashMap = new HashMap();
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localHashMap.put("cloud_download_imgId", String.valueOf(this.jdField_a_of_type_JavaLangString));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onMotionSensorChange curTime=" + this.jdField_a_of_type_Long + ", mMotionX=" + ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[0] + ", mMotionY=" + ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[1] + ", mMotionZ=" + ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[2]);
+    if (this.jdField_a_of_type_Long > 0L) {
+      localHashMap.put("cloud_download_feature_size", String.valueOf(this.jdField_a_of_type_Long));
     }
-    if (ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) != null) {
-      ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager).a(true, ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[0], ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[1], ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager)[2]);
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_b_of_type_Long)) {
+      localHashMap.put("cloud_download_feature_time", String.valueOf(this.jdField_b_of_type_Long));
     }
+    if (this.jdField_a_of_type_Int > -1) {
+      localHashMap.put("cloud_download_feature_code", String.valueOf(this.jdField_a_of_type_Int));
+    }
+    if (this.jdField_c_of_type_Long > 0L) {
+      localHashMap.put("cloud_download_model_size", String.valueOf(this.jdField_c_of_type_Long));
+    }
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_d_of_type_Long)) {
+      localHashMap.put("cloud_download_model_time", String.valueOf(this.jdField_d_of_type_Long));
+    }
+    if (this.jdField_b_of_type_Int > -1) {
+      localHashMap.put("cloud_download_model_code", String.valueOf(this.jdField_b_of_type_Int));
+    }
+    if (this.e > 0L) {
+      localHashMap.put("cloud_download_unzip_time", String.valueOf(this.e));
+    }
+    if (this.jdField_c_of_type_Int > -1) {
+      localHashMap.put("cloud_download_type", String.valueOf(this.jdField_c_of_type_Int));
+    }
+    localHashMap.put("cloud_download_net_type", String.valueOf(NetworkUtil.a(BaseApplication.getContext())));
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.f)) {
+      localHashMap.put("cloud_download_all_time", String.valueOf(this.f));
+    }
+    if (this.g > 0L) {
+      localHashMap.put("cloud_download_net_size", String.valueOf(this.g));
+    }
+    if (this.jdField_d_of_type_Int > -1) {
+      localHashMap.put("cloud_download_all_result", String.valueOf(this.jdField_d_of_type_Int));
+    }
+    localHashMap.put("cloud_download_type", "0");
+    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARCloudDownLoad", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

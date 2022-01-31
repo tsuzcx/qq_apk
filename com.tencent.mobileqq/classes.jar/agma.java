@@ -1,27 +1,26 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.portal.ConversationHongBao;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import java.io.File;
 
 public class agma
-  extends AnimateUtils.AnimationAdapter
+  implements Runnable
 {
-  public agma(ConversationHongBao paramConversationHongBao) {}
+  public agma(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
+    ScanTorchActivity.r(this.a);
+    if ((!TextUtils.isEmpty(ScanTorchActivity.b(this.a))) && (new File(ScanTorchActivity.b(this.a)).exists()))
+    {
+      this.a.runOnUiThread(new agmb(this));
+      return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    this.a.runOnUiThread(new agmd(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agma
  * JD-Core Version:    0.7.0.1
  */

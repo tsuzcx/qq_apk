@@ -1,49 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.helper.TroopCardAppInfoHelper;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.addContactTroopView.TroopCardXingquBuluo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.List;
+import tencent.im.troop_search_searchtab.searchtab.Item3;
 
 public class kmz
-  implements BusinessObserver
+  implements AdapterView.OnItemClickListener
 {
-  public kmz(TroopCardAppInfoHelper paramTroopCardAppInfoHelper) {}
+  public kmz(TroopCardXingquBuluo paramTroopCardXingquBuluo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.a) {
-      return;
-    }
-    if ((!paramBoolean) || (paramBundle == null))
-    {
-      TroopCardAppInfoHelper.a(this.a);
-      return;
-    }
-    do
-    {
-      oidb_sso.OIDBSSOPkg localOIDBSSOPkg;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-        localOIDBSSOPkg.mergeFrom(paramBundle);
-        if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
-        {
-          TroopCardAppInfoHelper.a(this.a);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        TroopCardAppInfoHelper.a(this.a);
-        return;
-      }
-      paramBundle = TroopCardAppInfoHelper.b(this.a, localOIDBSSOPkg);
-    } while ((paramBundle == null) || (paramBundle.size() <= 0));
-    TroopCardAppInfoHelper.a(this.a, paramBundle);
+    paramAdapterView = (searchtab.Item3)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.a.a(paramAdapterView.str_transfer_url.get());
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_tribe", 0, 0, "", "", "", "");
   }
 }
 

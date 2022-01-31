@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.extendfriend;
 
-import achl;
-import achm;
-import achn;
+import acpq;
+import acpr;
+import acps;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -29,7 +29,9 @@ public class ExtendFriendResourceDownloader
   public ExtendFriendResourceDownloader(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController = ((PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(192));
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController = ((PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(192));
+    }
   }
   
   public static String a()
@@ -137,13 +139,13 @@ public class ExtendFriendResourceDownloader
       if (this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController != null)
       {
         localObject2 = new HttpNetReq();
-        ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new achl(this);
+        ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new acpq(this);
         ((HttpNetReq)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
         ((HttpNetReq)localObject2).jdField_a_of_type_Int = 0;
         ((HttpNetReq)localObject2).c = ((String)localObject1);
         ((HttpNetReq)localObject2).e = 0;
-        ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new achm(this);
-        localObject2 = new HttpEngineTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, new achn(this), (HttpNetReq)localObject2);
+        ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new acpr(this);
+        localObject2 = new HttpEngineTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, new acps(this), (HttpNetReq)localObject2);
         this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.a(10073, "prd", this.b, 0, this.jdField_a_of_type_JavaLangString, (String)localObject1, 2, 0, false, (AbsPreDownloadTask)localObject2);
       }
     }

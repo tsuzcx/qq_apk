@@ -1,15 +1,13 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-public class swh
+class swh
   implements Runnable
 {
-  public swh(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  swh(swg paramswg, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    QQToast.a(this.a, this.a.getResources().getString(2131437758), 0).b(this.a.getTitleBarHeight());
+    this.jdField_a_of_type_Swg.a.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

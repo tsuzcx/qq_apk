@@ -1,20 +1,11 @@
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MimeHelper;
-
-public final class wwk
-  extends MediaFileFilter
+class wwk
+  implements Runnable
 {
-  public boolean a(String paramString)
+  wwk(wwj paramwwj, int paramInt) {}
+  
+  public void run()
   {
-    String[] arrayOfString = MimeHelper.a(paramString);
-    if (arrayOfString != null)
-    {
-      if (("image".equals(arrayOfString[0])) && (MimeHelper.a(arrayOfString[1]))) {}
-      while (MimeHelper.b(paramString)) {
-        return false;
-      }
-    }
-    return true;
+    this.jdField_a_of_type_Wwj.a.a(this.jdField_a_of_type_Int);
   }
 }
 

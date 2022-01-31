@@ -1,23 +1,19 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
-import com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahmv
   implements Runnable
 {
-  public ahmv(ShareActionSheet paramShareActionSheet) {}
+  public ahmv(CameraCaptureFragment paramCameraCaptureFragment, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-    }
-    while (this.a.b.getWidth() < ShareActionSheet.a(this.a))
-    {
-      this.a.b.setMove(true);
-      return;
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
-    }
-    this.a.b.setMove(false);
+    QLog.d("CameraCaptureFragment", 2, "onVideoCaptured. videoFrameCount = " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount + " ; minFrameCount = " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.b);
+    QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.z_();
   }
 }
 

@@ -1,21 +1,18 @@
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
 
-class yxe
+public class yxe
   implements Runnable
 {
-  yxe(yxd paramyxd) {}
+  public yxe(CmGameAvHandler paramCmGameAvHandler, boolean paramBoolean) {}
   
   public void run()
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setRepeatCount(1);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new yxf(this));
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(localTranslateAnimation);
+    CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler, this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_Boolean) {
+      AVEngineWalper.a().c();
+    }
+    AVEngineWalper.a().a(this.jdField_a_of_type_Boolean);
   }
 }
 

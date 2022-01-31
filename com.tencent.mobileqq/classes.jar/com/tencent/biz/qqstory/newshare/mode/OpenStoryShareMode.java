@@ -15,7 +15,7 @@ public class OpenStoryShareMode
   
   static
   {
-    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromid=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&type=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + StoryApi.a(2131432086);
+    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromid=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&type=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + StoryApi.a(2131432097);
   }
   
   public OpenStoryShareMode(StoryVideoItem paramStoryVideoItem, String paramString)
@@ -46,7 +46,7 @@ public class OpenStoryShareMode
       this.b = i;
       this.k = this.jdField_d_of_type_JavaLangString;
       this.i = b();
-      this.j = ("#日迹# " + a() + "（" + this.i + "）");
+      this.j = ("#小视频# " + a() + "（" + this.i + "）");
       this.jdField_d_of_type_Int = 6;
       this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 58, 59, 60, 61, 45 };
       return;

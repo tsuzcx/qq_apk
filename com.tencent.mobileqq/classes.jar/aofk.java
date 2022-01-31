@@ -1,28 +1,25 @@
-import android.view.View;
-import android.widget.Button;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import dov.com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
 public class aofk
   implements Runnable
 {
-  public aofk(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public aofk(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
   
   public void run()
   {
-    if ((this.a.b != null) && (!this.a.b.isEnabled()))
-    {
-      this.a.b.setEnabled(true);
-      this.a.b.setText(2131438162);
-      this.a.b.setTextColor(-15550475);
-    }
-    int i = 0;
-    if (this.a.a != null) {
-      i = this.a.a.c();
-    }
-    if ((!this.a.i.isEnabled()) && (i > 0)) {
-      this.a.i.setEnabled(true);
-    }
+    QQStoryTakeVideoCloseAnimationActivity localQQStoryTakeVideoCloseAnimationActivity = this.a;
+    Intent localIntent = new Intent(localQQStoryTakeVideoCloseAnimationActivity, SplashActivity.class);
+    localIntent.putExtra("fragment_id", 1);
+    localIntent.putExtra("main_tab_id", 6);
+    localIntent.putExtra("open_now_tab_fragment", true);
+    localIntent.putExtra("extra_from_share", true);
+    localIntent.putExtra("new_video_extra_info", "need_publish_animation");
+    localIntent.setFlags(335544320);
+    localQQStoryTakeVideoCloseAnimationActivity.startActivity(localIntent);
+    localQQStoryTakeVideoCloseAnimationActivity.overridePendingTransition(2131034125, 2131034126);
   }
 }
 

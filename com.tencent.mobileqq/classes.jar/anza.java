@@ -1,14 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
+import dov.com.qq.im.cropvideo.RenderFilter;
 
 public class anza
-  implements HorizontalSelectColorLayout.OnUndoViewClickListener
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  public anza(DoodleLayout paramDoodleLayout) {}
+  public anza(CropVideoActivity paramCropVideoActivity) {}
   
-  public void a()
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.a.c();
+    float f = paramScaleGestureDetector.getScaleFactor();
+    CropVideoActivity.a(this.a).b(f, f, 1.0F);
+    return true;
   }
 }
 

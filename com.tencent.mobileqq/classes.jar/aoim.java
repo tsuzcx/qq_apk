@@ -1,30 +1,21 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import dov.com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
 
 public class aoim
-  implements SensorEventListener
+  implements Runnable
 {
-  public aoim(SensorFrameImageView paramSensorFrameImageView) {}
+  public aoim(DoodleTextureView paramDoodleTextureView) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void run()
   {
-    switch (paramSensorEvent.sensor.getType())
+    PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
+    if (localPersonalityOperator != null)
     {
-    }
-    for (;;)
-    {
-      SensorFrameImageView.a(this.a);
-      SensorFrameImageView.b(this.a);
-      return;
-      SensorFrameImageView.a(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.b(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.c(this.a, paramSensorEvent.values);
+      localPersonalityOperator.a();
+      localPersonalityOperator.a(this.a.jdField_a_of_type_Int, this.a.b);
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.h();
+      this.a.a();
     }
   }
 }

@@ -1,12 +1,12 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import aohv;
+import aoqp;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class RMVideoThumbGenMgr$ThumbGenItem
 {
   public int a;
-  aohv jdField_a_of_type_Aohv = new aohv(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr);
+  aoqp jdField_a_of_type_Aoqp = new aoqp(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr);
   public String a;
   public AtomicInteger a;
   public volatile boolean a;

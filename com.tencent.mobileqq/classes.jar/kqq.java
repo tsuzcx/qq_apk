@@ -1,22 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class kqq
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public kqq(AccountDetailVideoManager paramAccountDetailVideoManager) {}
+  public kqq(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "onReceive ===>" + paramContext);
-    }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext))) {
-      this.a.a();
+    if (this.a.a != null)
+    {
+      paramView = new Intent(this.a, ChatHistory.class);
+      paramView.putExtra("uin", EqqAccountDetailActivity.i(this.a));
+      paramView.putExtra("uintype", 1024);
+      this.a.startActivity(paramView);
+      PublicAccountReportUtils.a(EqqAccountDetailActivity.i(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.j(this.a), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
     }
   }
 }

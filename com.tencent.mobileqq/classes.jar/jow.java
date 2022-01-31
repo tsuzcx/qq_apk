@@ -1,85 +1,182 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.camera.CameraObserver;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.av.smallscreen.SmallScreenUtils;
-import com.tencent.av.smallscreen.SmallScreenVideoController;
-import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.IQQServiceCallback;
+import com.tencent.av.service.RecvGVideoLevelInfo;
 
 public class jow
-  extends CameraObserver
+  implements IQQServiceCallback
 {
-  public jow(SmallScreenVideoController paramSmallScreenVideoController) {}
+  private IBinder a;
   
-  protected void a()
+  public jow(IBinder paramIBinder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenVideoController", 2, "onBeforeOpenCamera");
-    }
+    this.a = paramIBinder;
   }
   
-  protected void a(boolean paramBoolean)
+  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().i == 1011) || (this.a.jdField_a_of_type_ComTencentAvVideoController.f)))
-    {
-      this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(false, false);
-      this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.b();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenVideoController", 2, "onAfterOpenCamera success: " + paramBoolean + ", preSessionType: " + paramInt);
-    }
-    if (paramBoolean)
-    {
-      if ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (SmallScreenUtils.b()) && ((paramInt == 1) || (paramInt == 3)) && (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI != null))
-      {
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(true, false);
-        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.f(this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a());
-      }
-      return;
-    }
-    String str;
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
-    {
-      str = "";
-      if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().j()) {
-        break label229;
-      }
-      str = "0X8004894";
-    }
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     for (;;)
     {
-      ReportController.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
-      if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-        break;
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
+        localParcel1.writeString(paramString);
+        localParcel1.writeInt(paramInt1);
+        localParcel1.writeInt(paramInt2);
+        if (paramBundle != null)
+        {
+          localParcel1.writeInt(1);
+          paramBundle.writeToParcel(localParcel1, 0);
+          this.a.transact(5, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramString = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
+            return paramString;
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramString = null;
       }
-      QLog.w("SmallScreenVideoController", 1, "onAfterOpenCamera fail, DEVICE_PERMISSION_TYPE_CAMERA_OPEN_FAIL");
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(38), Integer.valueOf(2) });
-      return;
-      label229:
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().f == 1) {
-        str = "0X8004888";
-      } else if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().f == 2) {
-        str = "0X800488E";
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
       }
     }
   }
   
-  protected void b() {}
+  /* Error */
+  public void a(com.tencent.av.service.RecvMsg paramRecvMsg)
+  {
+    // Byte code:
+    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: aload_2
+    //   5: ldc 25
+    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   10: aload_1
+    //   11: ifnull +33 -> 44
+    //   14: aload_2
+    //   15: iconst_1
+    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   19: aload_1
+    //   20: aload_2
+    //   21: iconst_0
+    //   22: invokevirtual 72	com/tencent/av/service/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
+    //   25: aload_0
+    //   26: getfield 15	jow:a	Landroid/os/IBinder;
+    //   29: iconst_1
+    //   30: aload_2
+    //   31: aconst_null
+    //   32: iconst_1
+    //   33: invokeinterface 48 5 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   43: return
+    //   44: aload_2
+    //   45: iconst_0
+    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
+    //   49: goto -24 -> 25
+    //   52: astore_1
+    //   53: aload_2
+    //   54: invokevirtual 68	android/os/Parcel:recycle	()V
+    //   57: aload_1
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	this	jow
+    //   0	59	1	paramRecvMsg	com.tencent.av.service.RecvMsg
+    //   3	51	2	localParcel	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   4	10	52	finally
+    //   14	25	52	finally
+    //   25	39	52	finally
+    //   44	49	52	finally
+  }
   
-  protected void b(boolean paramBoolean) {}
+  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
+      localParcel1.writeString(paramString);
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      localParcel1.writeByteArray(paramArrayOfByte);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
   
-  protected void c() {}
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  {
+    int i = 0;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
+      if (paramBoolean) {
+        i = 1;
+      }
+      localParcel1.writeInt(i);
+      localParcel1.writeString(paramString1);
+      localParcel1.writeString(paramString2);
+      localParcel1.writeString(paramString3);
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
+      localParcel.writeTypedArray(paramArrayOfRecvGVideoLevelInfo, 0);
+      this.a.transact(2, localParcel, null, 1);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jow
  * JD-Core Version:    0.7.0.1
  */

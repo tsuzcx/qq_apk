@@ -1,17 +1,31 @@
-import com.tencent.mobileqq.activity.aio.tips.PubAccountTips;
-import com.tencent.mobileqq.activity.aio.tips.PubAccountTips.PubAccountTipsMsg;
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class xlr
-  implements Runnable
+  implements EIPCResultCallback
 {
-  public xlr(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface, PubAccountTips.PubAccountTipsMsg paramPubAccountTipsMsg) {}
+  public xlr(PreloadManagerProxy paramPreloadManagerProxy, PreloadManager.OnGetPathListener paramOnGetPathListener, String paramString) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    PubAccountTips.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a.uin, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg, null);
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
+    {
+      i = paramEIPCResult.data.getInt("result_code");
+      paramEIPCResult = (PreloadManager.PathResult)paramEIPCResult.data.getSerializable("path_result");
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(i, paramEIPCResult);
+      }
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener == null)
+    {
+      int i;
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(1, PreloadManager.PathResult.getFailRes(this.jdField_a_of_type_JavaLangString));
   }
 }
 

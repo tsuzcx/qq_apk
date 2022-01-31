@@ -1,22 +1,76 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import java.util.ArrayList;
 
 public class tgy
-  implements View.OnClickListener
+  extends FragmentPagerAdapter
 {
-  public tgy(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public HotChatFragment a;
+  public NearbyHybridFragment a;
+  public NowLiveFragment a;
   
-  public void onClick(View paramView)
+  public tgy(NearbyActivity paramNearbyActivity, FragmentManager paramFragmentManager)
   {
-    paramView = this.a.getIntent().getStringExtra("uin");
-    if ((paramView != null) && (paramView.equals(this.a.app.getCurrentAccountUin())))
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(paramInt);
+    Object localObject2 = localObject1;
+    NearbyActivity.TabInfo localTabInfo;
+    if (localObject1 == null)
     {
-      ProfileLabelEditorActivity.a(this.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
+      localTabInfo = (NearbyActivity.TabInfo)this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.get(paramInt);
+      if (localTabInfo.b != 2) {
+        break label82;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment = new NowLiveFragment();
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment;
+    }
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 != null)
+      {
+        ((NearbyBaseFragment)localObject1).a(localTabInfo);
+        localObject2 = localObject1;
+      }
+      return localObject2;
+      label82:
+      if (localTabInfo.b == 3)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment = new HotChatFragment();
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment;
+      }
+      else if (localTabInfo.b == 4)
+      {
+        localObject1 = new CommonTabFragment();
+      }
+      else if (localTabInfo.b == 5)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment = new NearbyHybridFragment();
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment;
+      }
     }
   }
 }

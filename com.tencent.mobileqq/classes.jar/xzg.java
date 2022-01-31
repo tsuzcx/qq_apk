@@ -1,100 +1,70 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.PstnManager;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateItemView;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
 
-public class xzg
-  implements View.OnClickListener
+class xzg
+  implements Runnable
 {
-  public xzg(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
+  xzg(xzf paramxzf, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!NetworkUtil.d(this.a))
-    {
-      QQToast.a(this.a, this.a.getString(2131433009), 0).b(this.a.c.getHeight());
-      return;
-    }
-    PstnManager localPstnManager = (PstnManager)this.a.app.getManager(142);
+    int j = -1;
+    int m = this.jdField_a_of_type_Xzf.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
+    int n = this.jdField_a_of_type_Xzf.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLastVisiblePosition();
+    int i = m;
+    int k = j;
     Object localObject;
-    if ((this.a.d == 0) && (this.a.a.getBooleanExtra("sendToVideo", false)) && (localPstnManager.d() == 1) && (PstnUtils.a(this.a.app, 2)) && (!localPstnManager.b()))
+    if (i <= n)
     {
-      paramView = this.a.i.iterator();
+      if (i < 0) {}
       do
       {
-        if (!paramView.hasNext()) {
-          break;
+        i += 1;
+        break;
+        localObject = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Xzf.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+      } while ((localObject == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
+      ((PtvTemplateManager.PtvTemplateInfo)localObject).downloading = false;
+      ((PtvTemplateManager.PtvTemplateInfo)localObject).usable = this.jdField_a_of_type_Boolean;
+      ((PtvTemplateManager.PtvTemplateInfo)localObject).doDownloadDataReport();
+      localObject = this.jdField_a_of_type_Xzf.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(i - m);
+      if ((localObject instanceof PtvTemplateItemView))
+      {
+        localObject = (PtvTemplateItemView)localObject;
+        if (this.jdField_a_of_type_Boolean) {
+          j = 1000;
         }
-        localObject = (ResultRecord)paramView.next();
-      } while ((((ResultRecord)localObject).jdField_a_of_type_Int != 0) || (!ChatActivityUtils.a(this.a.app, 0, ((ResultRecord)localObject).jdField_a_of_type_JavaLangString)));
+        ((PtvTemplateItemView)localObject).b(j);
+      }
+      k = i;
     }
-    for (int i = 1;; i = 0)
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    if ((this.jdField_a_of_type_Xzf.a.a() == k) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Xzf.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout != null))
     {
-      if ((i == 0) && (this.a.f != null))
-      {
-        paramView = this.a.f.iterator();
-        while (paramView.hasNext())
-        {
-          localObject = (String)paramView.next();
-          if (ChatActivityUtils.a(this.a.app, 0, (String)localObject)) {
-            i = 1;
-          }
-        }
+      localObject = PtvTemplateManager.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name;
+      this.jdField_a_of_type_Xzf.a.jdField_a_of_type_JavaLangString = ((String)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("PtvTemplateManager", 2, "current mCurrentTemplatePath:" + this.jdField_a_of_type_Xzf.a.jdField_a_of_type_JavaLangString);
       }
-      for (;;)
+      if (this.jdField_a_of_type_Xzf.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout != null)
       {
-        if ((i != 0) || (NetworkUtil.b(this.a) == 2))
-        {
-          paramView = this.a.app.getApplication().getResources().getString(2131438411);
-          localObject = this.a.app.getApplication().getResources().getString(2131438412);
-          String str2 = localPstnManager.a("pstn_multi_trans_wording");
-          String str1 = localPstnManager.a("pstn_multi_trans_check_wording");
-          if (TextUtils.isEmpty(str2)) {
-            if (!TextUtils.isEmpty(str1)) {
-              break label369;
-            }
-          }
-          for (;;)
-          {
-            DialogUtil.a(this.a, 230, "确认呼叫方式", paramView, (String)localObject, "取消", "呼叫", null, new xzh(this, localPstnManager), new xzi(this)).show();
-            return;
-            paramView = str2;
-            break;
-            label369:
-            localObject = str1;
-          }
+        localPtvTemplateInfo = this.jdField_a_of_type_Xzf.a.a();
+        if ((localPtvTemplateInfo != null) && ((localPtvTemplateInfo == null) || (localPtvTemplateInfo.category != 0))) {
+          break label342;
         }
-        if (PhoneContactSelectActivity.a(this.a)) {
-          break;
-        }
-        this.a.a();
-        return;
-        if (PhoneContactSelectActivity.a(this.a)) {
-          break;
-        }
-        if (this.a.e == 1005)
-        {
-          DialogUtil.a(this.a, 230, this.a.getResources().getString(2131429579), this.a.getResources().getString(2131429580), this.a.getResources().getString(2131429581), this.a.getResources().getString(2131429582), new xzj(this), new xzk(this)).show();
-          return;
-        }
-        this.a.a();
-        return;
+        this.jdField_a_of_type_Xzf.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.setVideoFilter((String)localObject);
       }
     }
+    label342:
+    while (localPtvTemplateInfo == null) {
+      return;
+    }
+    this.jdField_a_of_type_Xzf.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.setVideoFilter((String)localObject, localPtvTemplateInfo.category, localPtvTemplateInfo.gestureType, localPtvTemplateInfo.gestureWording);
   }
 }
 

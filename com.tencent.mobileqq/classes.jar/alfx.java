@@ -1,25 +1,34 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.viareport.ReportManager;
+import android.graphics.Bitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
 
-public class alfx
-  implements Runnable
+class alfx
+  implements ImageAssetDelegate
 {
-  public alfx(ReportManager paramReportManager, String paramString) {}
+  alfx(alfw paramalfw) {}
   
-  public void run()
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a) {
-      LogUtility.b("viareport", "isUploading ---return");
+    paramLottieImageAsset = this.a.a + paramLottieImageAsset.getFileName();
+    QLog.i("WorldCupShareFragment", 1, "initLoadingAnimation. fetchBitmap. imageFileName = " + paramLottieImageAsset);
+    try
+    {
+      paramLottieImageAsset = SafeBitmapFactory.decodeFile(paramLottieImageAsset);
+      if (paramLottieImageAsset != null) {}
+      return paramLottieImageAsset;
     }
-    while (!this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString)) {
-      return;
+    catch (Exception paramLottieImageAsset)
+    {
+      QLog.i("WorldCupShareFragment", 2, "initLoadingAnimation failed. err = " + paramLottieImageAsset.getMessage());
     }
-    this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString, null, true);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alfx
  * JD-Core Version:    0.7.0.1
  */

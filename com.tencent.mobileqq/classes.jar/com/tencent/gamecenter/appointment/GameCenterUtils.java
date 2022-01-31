@@ -43,7 +43,7 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import org.json.JSONObject;
-import qjh;
+import qnz;
 
 public class GameCenterUtils
 {
@@ -424,7 +424,7 @@ public class GameCenterUtils
             localObject = ((DisplayMetrics)localObject).widthPixels + "*" + ((DisplayMetrics)localObject).heightPixels;
           }
         }
-        paramString1 = Arrays.asList(new String[] { NetConnInfoCenter.getServerTime() + "", "1", "7.6.3", "gamecenter_ver", "2", Build.BRAND, str2, localObject, "0", "0", "gamecenter_src", paramString1, paramString2, "0", paramString3, paramString4, "", "", "", "", "", "", "", "", "", paramString5, paramString6, Build.MODEL, Build.VERSION.RELEASE, "1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
+        paramString1 = Arrays.asList(new String[] { NetConnInfoCenter.getServerTime() + "", "1", "7.6.8", "gamecenter_ver", "2", Build.BRAND, str2, localObject, "0", "0", "gamecenter_src", paramString1, paramString2, "0", paramString3, paramString4, "", "", "", "", "", "", "", "", "", paramString5, paramString6, Build.MODEL, Build.VERSION.RELEASE, "1", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
         if (!(paramAppInterface instanceof QQAppInterface)) {
           break label451;
         }
@@ -666,7 +666,7 @@ public class GameCenterUtils
         localObject1 = paramString.substring(0, paramString.length() - 1);
       }
       paramString = "http://info.gamecenter.qq.com/cgi-bin/gc_pre_download_async_fcgi?param={\"key\":{\"param\":{\"appid_list\":[" + (String)localObject1 + "]},\"module\":\"gc_pre_download\",\"method\":\"report_start_download\"}}";
-      localObject1 = new qjh();
+      localObject1 = new qnz();
       localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
       if ((localAppRuntime == null) || (!(localAppRuntime instanceof AppInterface))) {
         break;

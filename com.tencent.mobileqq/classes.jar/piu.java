@@ -1,26 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.component.media.image.view.ExtendImageView;
+import com.tencent.biz.widgets.ScannerView;
 
 public class piu
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public piu(ExtendImageView paramExtendImageView, Runnable paramRunnable) {}
+  public piu(ScannerView paramScannerView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if (ScannerView.a(this.a) != null) {
+      ScannerView.a(this.a).a();
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     piu
  * JD-Core Version:    0.7.0.1
  */

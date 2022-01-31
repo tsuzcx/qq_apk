@@ -32,8 +32,8 @@ public class NewFlowEditVideoActivity
       }
       ((QzEditVideoPartManager)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager).jdField_d_of_type_Int = paramIntent.getIntExtra("key_font_id", -1);
     }
-    paramIntent = (RelativeLayout)findViewById(2131364405);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2130971166, paramIntent, false));
+    paramIntent = (RelativeLayout)findViewById(2131364430);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2130971189, paramIntent, false));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)AIOUtils.a(2, 90, getResources()));
     Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
     if (bool) {}
@@ -55,7 +55,7 @@ public class NewFlowEditVideoActivity
   
   public void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3)
   {
-    if ((paramIntent != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager != null) && ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager instanceof QzEditVideoPartManager)))
+    if ((paramIntent != null) && ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager instanceof QzEditVideoPartManager)))
     {
       paramIntent.putExtra("key_content", ((QzEditVideoPartManager)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager).c);
       paramIntent.putExtra("key_topic_sync_qzone", ((QzEditVideoPartManager)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager).f);

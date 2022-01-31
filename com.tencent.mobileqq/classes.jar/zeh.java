@@ -1,76 +1,121 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.FunnyPicHelper;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
-import com.tencent.mobileqq.mqsafeedit.MD5;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vas.VasReportUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public final class zeh
-  extends DownloadListener
+public class zeh
+  extends RelativeLayout
 {
-  public zeh(String paramString, File paramFile, CustomEmotionData paramCustomEmotionData, boolean paramBoolean1, boolean paramBoolean2, FavroamingDBManager paramFavroamingDBManager, IPicDownloadListener paramIPicDownloadListener, List paramList1, List paramList2, Context paramContext, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2) {}
+  int jdField_a_of_type_Int = 1;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int = 2;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  int c = 3;
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public zeh(ApolloGameInfoFragment paramApolloGameInfoFragment, Context paramContext, String paramString)
   {
-    super.onDone(paramDownloadTask);
-    FunnyPicHelper.a.remove(this.jdField_a_of_type_JavaLangString);
-    if ((3 == paramDownloadTask.a()) && (this.jdField_a_of_type_JavaIoFile.exists()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-      if ("needDownload".equals(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = "isUpdate";
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId = "";
-      }
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath)))
-      {
-        paramDownloadTask = MD5.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = HexUtil.bytes2HexStr(paramDownloadTask);
-      }
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, true);
-      }
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      if (QLog.isColorLevel()) {
-        QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId + " emoPath->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + " download->sucess");
-      }
+    super(paramContext);
+    a(paramString);
+  }
+  
+  public void a(Bitmap paramBitmap, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_cmGame_ApolloGameInfoFragment", 2, new Object[] { "[setPubAccountInfo] uin:", paramString });
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    if (paramBitmap != null) {
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) && (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onDone(this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
-      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      setOnClickListener(new zej(this));
       return;
-      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, false);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130838069);
+      QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] logoUrl is null");
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    int i = Color.parseColor("#FFDEDFE0");
+    Object localObject = new ImageView(getContext());
+    ((ImageView)localObject).setBackgroundColor(i);
+    ((ImageView)localObject).setId(this.jdField_a_of_type_Int);
+    addView((View)localObject, new RelativeLayout.LayoutParams(-1, 1));
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
+    localObject = new RelativeLayout.LayoutParams(-2, -2);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(18.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    ((RelativeLayout.LayoutParams)localObject).addRule(3, this.jdField_a_of_type_Int);
+    ((RelativeLayout.LayoutParams)localObject).addRule(9);
+    ((RelativeLayout.LayoutParams)localObject).setMargins(AIOUtils.a(12.0F, getResources()), AIOUtils.a(17.0F, getResources()), 100, AIOUtils.a(20.0F, getResources()));
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+    paramString = new ImageView(getContext());
+    paramString.setBackgroundColor(i);
+    localObject = new RelativeLayout.LayoutParams(-1, 1);
+    ((RelativeLayout.LayoutParams)localObject).addRule(3, this.jdField_b_of_type_Int);
+    addView(paramString, (ViewGroup.LayoutParams)localObject);
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845546);
+    paramString = new RelativeLayout.LayoutParams(AIOUtils.a(9.0F, getResources()), AIOUtils.a(18.0F, getResources()));
+    paramString.addRule(11);
+    paramString.addRule(15);
+    paramString.rightMargin = AIOUtils.a(27.0F, getResources());
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(this.c);
+    addView(this.jdField_a_of_type_AndroidWidgetImageView, paramString);
+    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(16.0F);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-7829368);
+    paramString = new RelativeLayout.LayoutParams(-2, -2);
+    paramString.rightMargin = AIOUtils.a(11.0F, getResources());
+    paramString.addRule(11);
+    paramString.rightMargin = AIOUtils.a(27.0F, getResources());
+    paramString.addRule(15);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+    addView(this.jdField_b_of_type_AndroidWidgetTextView, paramString);
+    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(getContext());
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(4);
+    paramString = new RelativeLayout.LayoutParams(AIOUtils.a(25.0F, getResources()), AIOUtils.a(25.0F, getResources()));
+    paramString.rightMargin = AIOUtils.a(11.0F, getResources());
+    paramString.addRule(0, this.c);
+    paramString.addRule(15);
+    setBackgroundResource(2130838564);
+    addView(this.jdField_a_of_type_ComTencentImageURLImageView, paramString);
+    setOnClickListener(new zei(this));
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null)
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId + " emoPath->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + " download->faile");
-      }
-      VasReportUtils.a("emotionType", "emotionActionFav", "3", "", "", NetworkUtil.b(this.jdField_a_of_type_AndroidContentContext) + "", paramDownloadTask.a + "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zeh
  * JD-Core Version:    0.7.0.1
  */

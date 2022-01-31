@@ -1,29 +1,25 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadItem;
+import java.util.Comparator;
 
-class aixm
-  implements VideoCompositeHelper.VideoCompositeCallBack
+public class aixm
+  implements Comparator
 {
-  aixm(aixk paramaixk) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (paramInt != 0)
+    paramObject1 = (PreDownloadItem)paramObject1;
+    paramObject2 = (PreDownloadItem)paramObject2;
+    if (paramObject1.c > paramObject2.c) {}
+    do
     {
-      new VideoFeedsUploader.UploadResult().a = -1010;
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
+      return -1;
+      if (paramObject1.c < paramObject2.c) {
+        return 1;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.a.jdField_a_of_type_Long);
-      return;
+    } while (paramObject1.d > paramObject2.d);
+    if (paramObject1.d < paramObject2.d) {
+      return 1;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.b = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.a = ((int)this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(paramString2, this.a.jdField_a_of_type_Long);
+    return 0;
   }
 }
 

@@ -11,7 +11,7 @@ public class QQMapConstants
   public static String e = "com.google.android.apps.maps";
   public static String f = "com.baidu.BaiduMap";
   public static String g = "http://softroute.map.qq.com/downloadfile?cid=00214";
-  public static String h = AppConstants.aZ + "tencentmap.apk";
+  public static String h = AppConstants.ba + "tencentmap.apk";
   public static String i = "QQMAP_DEFAULT";
   public static String j = "Location";
 }

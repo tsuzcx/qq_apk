@@ -1,30 +1,23 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
 
 public class xqs
-  implements TroopMemberApiClient.Callback
+  implements Runnable
 {
-  public xqs(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString1, String paramString2) {}
+  public xqs(RecentOptPopBar paramRecentOptPopBar) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getIntent();
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")) && (paramBundle.getInt("head_id") >= 0) && (!TextUtils.isEmpty(paramBundle.getString("video_id"))))
+    if (CmGameUtil.a() == null) {}
+    ApolloManager localApolloManager;
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
-      localIntent.putExtras(paramBundle);
-      localIntent.putExtra("video_path", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("photo_path", this.b);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.finish();
       return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.c();
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 1, "上传失败", 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e());
+      localApolloManager = (ApolloManager)CmGameUtil.a().getManager(152);
+    } while ((localApolloManager == null) || (localApolloManager.h));
+    this.a.c();
   }
 }
 

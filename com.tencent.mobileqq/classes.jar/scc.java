@@ -1,119 +1,20 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.FriendsManager;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.managers.ShieldMsgManger;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.Map;
 
-public class scc
-  extends MqqHandler
+public final class scc
+  implements DialogInterface.OnClickListener
 {
-  public scc(ChatSettingActivity paramChatSettingActivity) {}
+  public scc(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean, Map paramMap) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 18: 
-    case 16711681: 
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (String)paramMessage.obj;
-          ChatSettingActivity.a(this.a, paramMessage);
-          return;
-        } while (ChatSettingActivity.a(this.a) != 0);
-        paramMessage = (String)paramMessage.obj;
-      } while ((ChatSettingActivity.b(this.a) == null) || (paramMessage == null) || (!ChatSettingActivity.b(this.a).equals(paramMessage)));
-      this.a.finish();
-      return;
-    case 32: 
-      String str;
-      StringBuilder localStringBuilder;
-      boolean bool;
-      if ((ChatSettingActivity.a(this.a) != 1001) && (ChatSettingActivity.a(this.a) != 10002)) {
-        if (ChatSettingActivity.a(this.a) == 1006)
-        {
-          if (TextUtils.isEmpty(ChatSettingActivity.c(this.a))) {
-            ChatSettingActivity.b(this.a, false);
-          }
-        }
-        else
-        {
-          paramMessage = (ShieldMsgManger)this.a.app.getManager(15);
-          if ((paramMessage != null) && (!TextUtils.isEmpty(ChatSettingActivity.d(this.a)))) {
-            ChatSettingActivity.a(this.a, paramMessage.a(ChatSettingActivity.d(this.a)));
-          }
-          if (QLog.isColorLevel())
-          {
-            str = this.a.jdField_a_of_type_JavaLangString;
-            localStringBuilder = new StringBuilder().append("handleMessage, shieldMsgManger=");
-            if (paramMessage != null) {
-              break label427;
-            }
-            bool = true;
-            QLog.d(str, 2, bool);
-          }
-        }
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "handleMessage, REFRESH_STRANGER_SHIELD_BUTTON, mIsShield=" + ChatSettingActivity.a(this.a) + ", mIsFollowed=" + this.a.jdField_a_of_type_Boolean + ", mShieldEnable=" + ChatSettingActivity.b(this.a));
-        }
-        ChatSettingActivity.b(this.a);
-        return;
-        paramMessage = ContactUtils.g(this.a.app, ChatSettingActivity.c(this.a));
-        if (TextUtils.isEmpty(paramMessage))
-        {
-          ChatSettingActivity.b(this.a, false);
-          break;
-        }
-        ChatSettingActivity.b(this.a, true);
-        ChatSettingActivity.a(this.a, paramMessage);
-        break;
-        bool = false;
-        break label275;
-        paramMessage = (FriendsManager)this.a.app.getManager(50);
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.c(ChatSettingActivity.d(this.a));
-          if (QLog.isColorLevel())
-          {
-            str = this.a.jdField_a_of_type_JavaLangString;
-            localStringBuilder = new StringBuilder().append("handleMessage, f=");
-            if (paramMessage != null) {
-              break label538;
-            }
-          }
-          for (bool = true;; bool = false)
-          {
-            QLog.d(str, 2, bool);
-            if ((paramMessage == null) || (paramMessage.groupid != -1002)) {
-              break label543;
-            }
-            ChatSettingActivity.a(this.a, true);
-            break;
-          }
-          ChatSettingActivity.a(this.a, false);
-        }
-      }
-    case 33: 
-      label275:
-      label427:
-      ChatSettingActivity.c(this.a);
-      label538:
-      label543:
-      return;
-    }
-    this.a.b();
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaUtilMap);
+    paramDialogInterface.dismiss();
   }
 }
 

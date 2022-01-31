@@ -4,7 +4,7 @@ import com.tencent.av.AVLog;
 import com.tencent.mobileqq.magicface.service.SoundPoolUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.io.File;
-import jfx;
+import jia;
 
 public class MagicfacePlayer
 {
@@ -16,7 +16,7 @@ public class MagicfacePlayer
   public String a;
   public MagicfaceBaseDecoder.MagicPlayListener b;
   public String b;
-  MagicfaceBaseDecoder.MagicPlayListener c = new jfx(this);
+  MagicfaceBaseDecoder.MagicPlayListener c = new jia(this);
   
   public MagicfacePlayer()
   {
@@ -49,6 +49,7 @@ public class MagicfacePlayer
   
   public void a(String paramString, int paramInt)
   {
+    AVLog.c("AVMagicfacePlayer", "playSound soundSrc = " + paramString + ", loop = " + paramInt);
     if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil != null) {
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a(paramString, paramInt, 0);
     }
@@ -76,7 +77,7 @@ public class MagicfacePlayer
       this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData = null;
       this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicfaceRenderListener = null;
       this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener = null;
-      if ((paramMagicfaceData.a.src != null) && (!paramMagicfaceData.a.src.equals(""))) {
+      if ((paramMagicfaceData.a.src != null) && (!paramMagicfaceData.a.src.equals("")) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil == null)) {
         this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil = new SoundPoolUtil();
       }
       this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a(paramString);
@@ -110,7 +111,7 @@ public class MagicfacePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfacePlayer
  * JD-Core Version:    0.7.0.1
  */

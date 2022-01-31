@@ -1,34 +1,25 @@
-import java.nio.ByteBuffer;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class ajdh
+  implements TextWatcher
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
+  public ajdh(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public ajdh(long paramLong)
-  {
-    this.a = 2882377846L;
-    this.b = 1007L;
-    this.c = 0L;
-    this.d = paramLong;
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public ajdh(ByteBuffer paramByteBuffer)
-  {
-    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(ByteBuffer paramByteBuffer)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
+    if ((!TextUtils.isEmpty(this.a.H)) && (paramInt1 > 0) && (paramInt1 < this.a.H.length() + 1) && (paramInt2 > paramInt3))
+    {
+      this.a.d(false);
+      return;
+    }
+    TroopBarPublishActivity.a(this.a);
   }
 }
 

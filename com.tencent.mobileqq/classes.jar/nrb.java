@@ -1,19 +1,23 @@
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
+import com.tencent.biz.qqstory.playmode.util.NewDiscoverBannerDataProvider;
+import java.util.ArrayList;
 
 public class nrb
-  extends QQStoryObserver
+  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public nrb(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate) {}
+  public nrb(NewDiscoverBannerDataProvider paramNewDiscoverBannerDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo) {}
   
-  public void c(boolean paramBoolean)
+  public void a()
   {
-    QQStoryManager localQQStoryManager = (QQStoryManager)this.a.a.app.getManager(180);
-    this.a.a(2, localQQStoryManager.a());
-    this.a.a(3, localQQStoryManager.b());
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilNewDiscoverBannerDataProvider.a(false, null);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilNewDiscoverBannerDataProvider.a(true, paramArrayList);
   }
 }
 

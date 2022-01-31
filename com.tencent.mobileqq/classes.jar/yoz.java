@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
+import com.tencent.mobileqq.adapter.contacts.BuddyListDevices;
 
 public class yoz
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public yoz(CmGameStartChecker paramCmGameStartChecker, CmGameStartChecker.StartCheckParam paramStartCheckParam, byte[] paramArrayOfByte) {}
+  public yoz(BuddyListDevices paramBuddyListDevices, SmartDeviceProxyMgr paramSmartDeviceProxyMgr, View paramView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game == null) {
-      return;
-    }
-    String str = ApolloConstant.n + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId + ".patch";
-    FileUtils.a(this.jdField_a_of_type_ArrayOfByte, str);
-    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker.c(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr.a("");
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838593);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yoz
  * JD-Core Version:    0.7.0.1
  */

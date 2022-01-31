@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class sqt
+class sqt
   implements Runnable
 {
-  public sqt(FriendProfileCardActivity paramFriendProfileCardActivity, DiniFlyAnimationView paramDiniFlyAnimationView) {}
+  sqt(sqs paramsqs) {}
   
   public void run()
   {
-    JSONObject localJSONObject = MedalWallMng.a();
-    if (localJSONObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, "lottie json is null!");
-      }
-      return;
-    }
-    LottieComposition.Factory.fromJson(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources(), localJSONObject, new squ(this));
+    this.a.a.a.clearFocus();
+    this.a.a.onBackEvent();
   }
 }
 

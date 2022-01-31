@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f35" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040bad" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f36" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040bad" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f37" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040bad" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f38" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040bad" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f39" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040bad" />
+    <com.tencent.mobileqq.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01de" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03a0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043f" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2a20" android:drawablePadding="10.0dip" />
+</LinearLayout>

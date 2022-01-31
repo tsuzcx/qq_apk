@@ -1,36 +1,41 @@
-import android.widget.TextView;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.funchat.record.QavRecordButtonView;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class jpi
-  implements Runnable
+  extends NearbyCardObserver
 {
-  public jpi(AVActivity paramAVActivity, SessionInfo paramSessionInfo) {}
+  public jpi(QQServiceForAV paramQQServiceForAV) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, String paramString, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiAVActivity.a == null) || (this.jdField_a_of_type_ComTencentAvUiAVActivity.e) || (this.jdField_a_of_type_ComTencentAvUiAVActivity.c == null)) {
-      return;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(", nickname=").append(paramString).append(", gender=").append(paramInt1).append(", age=").append(paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "QQServiceForAV.onNearbyCardDownload(), isSuccess: " + paramBoolean + ", card = " + ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.a.getVisibility() != 0)
-    {
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.c.clearAnimation();
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.c.setVisibility(8);
-      return;
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.q2v.getNearByProfile");
+    localIntent.putExtra("uin", String.valueOf(paramLong));
+    localIntent.putExtra("nickname", paramString);
+    localIntent.putExtra("gender", paramInt1);
+    localIntent.putExtra("age", paramInt2);
+    localObject = (QQAppInterface)this.a.a();
+    paramString = (String)localObject;
+    if (localObject == null) {
+      paramString = (QQAppInterface)this.a.a();
     }
-    this.jdField_a_of_type_ComTencentAvAppSessionInfo.aD = true;
-    if (this.jdField_a_of_type_ComTencentAvAppSessionInfo.U == 0)
-    {
-      this.jdField_a_of_type_ComTencentAvAppSessionInfo.V = Math.max(1, this.jdField_a_of_type_ComTencentAvAppSessionInfo.V + 1);
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(this.jdField_a_of_type_ComTencentAvAppSessionInfo.V);
+    if (paramString != null) {
+      paramString.getApp().sendBroadcast(localIntent);
     }
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(600, -40);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpi
  * JD-Core Version:    0.7.0.1
  */

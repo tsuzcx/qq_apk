@@ -50,7 +50,7 @@ public class SwipeBackLayout$KandianGestureDetector
         break label234;
       }
       SwipeBackLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout, true);
-      SwipeBackLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout).A();
+      SwipeBackLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout).z();
       SwipeBackLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout);
     }
     for (;;)
@@ -59,7 +59,7 @@ public class SwipeBackLayout$KandianGestureDetector
       label234:
       if (SwipeBackLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout) != null)
       {
-        SwipeBackLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout).A();
+        SwipeBackLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout).z();
         SwipeBackLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout);
       }
     }

@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
+import com.tencent.mobileqq.armap.ArMapHandler;
+import com.tencent.mobileqq.armap.ArMapInterface;
+import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
 
-public final class aboi
-  implements Parcelable.Creator
+class aboi
+  implements Runnable
 {
-  public CardOCRInfo a(Parcel paramParcel)
-  {
-    return new CardOCRInfo(paramParcel);
-  }
+  aboi(aboh paramaboh) {}
   
-  public CardOCRInfo[] a(int paramInt)
+  public void run()
   {
-    return new CardOCRInfo[paramInt];
+    ((ArMapHandler)this.a.a.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.a(2)).a(this.a.a.jdField_a_of_type_Long, this.a.a.b, 0, 0, this.a.a.c);
   }
 }
 

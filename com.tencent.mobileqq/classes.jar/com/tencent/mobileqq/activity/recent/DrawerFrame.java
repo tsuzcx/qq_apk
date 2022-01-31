@@ -9,6 +9,7 @@ import android.os.Build.VERSION;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.DisplayMetrics;
@@ -27,6 +28,7 @@ import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.AccessibilityUtil;
@@ -34,7 +36,7 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.widget.RandomCoverView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
-import xkb;
+import xpy;
 
 public class DrawerFrame
   extends FrameLayout
@@ -48,6 +50,7 @@ public class DrawerFrame
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
   private DrawerFrame.IDrawerCallbacks jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks;
+  private DrawerFrame.StoryTouchEventInterceptor jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$StoryTouchEventInterceptor;
   private FrameHelperActivity jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
@@ -72,7 +75,8 @@ public class DrawerFrame
   private boolean jdField_g_of_type_Boolean = true;
   private int jdField_h_of_type_Int;
   private boolean jdField_h_of_type_Boolean = true;
-  private int i;
+  private int jdField_i_of_type_Int;
+  private boolean jdField_i_of_type_Boolean = true;
   private int j;
   private int k;
   private int l;
@@ -101,7 +105,7 @@ public class DrawerFrame
     Resources localResources = paramContext.getResources();
     DisplayMetrics localDisplayMetrics = localResources.getDisplayMetrics();
     this.o = 0;
-    this.i = ((int)(localDisplayMetrics.density * 100.0F + 0.5D));
+    this.jdField_i_of_type_Int = ((int)(localDisplayMetrics.density * 100.0F + 0.5D));
     this.k = localResources.getDimensionPixelSize(2131558887);
     this.jdField_d_of_type_Int = localResources.getDimensionPixelSize(2131558958);
     this.j = 0;
@@ -339,7 +343,7 @@ public class DrawerFrame
   
   public int a()
   {
-    return this.i;
+    return this.jdField_i_of_type_Int;
   }
   
   public void a()
@@ -365,7 +369,7 @@ public class DrawerFrame
       if (paramInt1 != 0) {
         break label145;
       }
-      f2 = this.i * (f1 - 1.0F);
+      f2 = this.jdField_i_of_type_Int * (f1 - 1.0F);
       label42:
       if (paramInt1 != 0) {
         break label160;
@@ -391,7 +395,7 @@ public class DrawerFrame
       return;
       f1 = -paramInt2 / this.jdField_d_of_type_Int;
       break;
-      f2 = -this.i * (f1 - 1.0F);
+      f2 = -this.jdField_i_of_type_Int * (f1 - 1.0F);
       break label42;
     }
   }
@@ -407,7 +411,7 @@ public class DrawerFrame
       this.jdField_d_of_type_AndroidViewViewGroup = paramViewGroup3;
       if (this.jdField_d_of_type_AndroidViewViewGroup != null)
       {
-        paramViewGroup3 = (RandomCoverView)this.jdField_d_of_type_AndroidViewViewGroup.findViewById(2131371362);
+        paramViewGroup3 = (RandomCoverView)this.jdField_d_of_type_AndroidViewViewGroup.findViewById(2131371360);
         if (paramViewGroup3 != null)
         {
           RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup3.getLayoutParams();
@@ -431,7 +435,7 @@ public class DrawerFrame
       this.jdField_c_of_type_AndroidViewViewGroup = paramViewGroup2;
       if (this.jdField_c_of_type_AndroidViewViewGroup != null)
       {
-        paramViewGroup2 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364057);
+        paramViewGroup2 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364082);
         if (paramViewGroup2 != null)
         {
           paramViewGroup3 = (RelativeLayout.LayoutParams)paramViewGroup2.getLayoutParams();
@@ -504,7 +508,7 @@ public class DrawerFrame
       if (this.jdField_b_of_type_AndroidViewViewGroup != null)
       {
         this.jdField_b_of_type_AndroidViewViewGroup.addView(this);
-        this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new xkb(this));
+        this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(new xpy(this));
       }
       if ((this.jdField_c_of_type_AndroidViewViewGroup != null) && (this.jdField_c_of_type_AndroidViewView == null))
       {
@@ -592,6 +596,58 @@ public class DrawerFrame
   public void d()
   {
     a(0, true);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool2 = false;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.getActivity().app;
+    int i1;
+    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    {
+      Fragment localFragment = ((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
+      if (localFragment != null) {
+        if (((MainFragment)localFragment).a() == MainFragment.jdField_a_of_type_Int) {
+          i1 = 1;
+        }
+      }
+    }
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$StoryTouchEventInterceptor != null)
+      {
+        bool1 = bool2;
+        if (i1 != 0)
+        {
+          bool1 = bool2;
+          if (!((QQAppInterface)localObject).p)
+          {
+            bool1 = bool2;
+            if (this.jdField_i_of_type_Boolean)
+            {
+              localObject = MotionEvent.obtain(paramMotionEvent);
+              bool1 = bool2;
+              if (localObject != null)
+              {
+                bool1 = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$StoryTouchEventInterceptor.a(this, (MotionEvent)localObject);
+                ((MotionEvent)localObject).recycle();
+              }
+            }
+          }
+        }
+      }
+      if (bool1)
+      {
+        return true;
+        i1 = 0;
+      }
+      else
+      {
+        return super.dispatchTouchEvent(paramMotionEvent);
+        i1 = 0;
+      }
+    }
   }
   
   public void e()
@@ -705,6 +761,7 @@ public class DrawerFrame
               }
               this.o = 0;
               this.r = 0;
+              this.jdField_i_of_type_Boolean = true;
               b(this.r, 1);
             } while (!(BaseActivity.sTopActivity instanceof FragmentActivity));
             paramMessage = ((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
@@ -740,6 +797,7 @@ public class DrawerFrame
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$IDrawerCallbacks.a(this.r, this.o);
       }
       this.o = 0;
+      this.jdField_i_of_type_Boolean = false;
       ApngImage.playByTag(1);
       return true;
     } while (!b());
@@ -1142,6 +1200,11 @@ public class DrawerFrame
   public void setDrawerShadowFlag(boolean paramBoolean)
   {
     this.jdField_h_of_type_Boolean = paramBoolean;
+  }
+  
+  public void setStoryTouchEventInterceptor(DrawerFrame.StoryTouchEventInterceptor paramStoryTouchEventInterceptor)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame$StoryTouchEventInterceptor = paramStoryTouchEventInterceptor;
   }
 }
 

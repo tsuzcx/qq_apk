@@ -1,131 +1,92 @@
 import android.content.Context;
-import android.graphics.Color;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ArticleTopicData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ArticleTopicData.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.SimpleViewCreator;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.widget.HorizontalLabelLayout;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.IButtonHandle;
+import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class mna
-  extends BaseItemViewHolder
-  implements View.OnClickListener
+class mna
+  implements SceneBuilder.IButtonHandle
 {
-  private HorizontalLabelLayout jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout;
+  mna(mmx parammmx) {}
   
-  public mna(SimpleViewCreator paramSimpleViewCreator, View paramView, BaseData paramBaseData)
+  public void a(Layer paramLayer, Sprite paramSprite, String paramString)
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout = ((HorizontalLabelLayout)paramView);
-  }
-  
-  private View a(Context paramContext)
-  {
-    return LayoutInflater.from(paramContext).inflate(2130969607, (ViewGroup)this.jdField_a_of_type_AndroidViewView, false);
-  }
-  
-  private void a(String paramString, ArticleTopicData.TopicInfo paramTopicInfo, ArticleInfo paramArticleInfo)
-  {
-    long l1 = paramArticleInfo.mArticleID;
-    long l2 = paramTopicInfo.jdField_a_of_type_Long;
-    PublicAccountReportUtils.a(null, "CliOper", "", ReadInJoyUtils.a(), paramString, paramString, 0, 0, String.valueOf(l1), String.valueOf(l2), paramArticleInfo.innerUniqueID, "", false);
-  }
-  
-  public SpannableStringBuilder a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append("# ");
-    localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#07D0B0")), 0, localSpannableStringBuilder.length(), 33);
-    double d = 0.0D;
-    int i = 0;
-    for (;;)
+    if (paramString.equals("close"))
     {
-      if (i < paramString.length()) {
-        if (!StringUtil.c(paramString.charAt(i))) {
-          break label144;
+      this.a.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView);
+      PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C82", "0X8008C82", 0, 0, this.a.jdField_b_of_type_JavaLangString, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
+    }
+    do
+    {
+      return;
+      if (paramString.equals("use_skin"))
+      {
+        this.a.jdField_b_of_type_AndroidViewView$OnClickListener.onClick(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView);
+        SharedPreUtils.r(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+        PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C83", "0X8008C83", 0, 0, this.a.jdField_b_of_type_JavaLangString, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
+        return;
+      }
+      if (paramString.equals("open_sound"))
+      {
+        paramLayer = (Sprite)paramLayer.a("声音红点");
+        if (paramLayer != null) {
+          paramLayer.e = 0.0F;
         }
-      }
-      label144:
-      for (d += 1.0D; d >= 11.0D; d += 0.5D)
-      {
-        String str = paramString;
-        if (i < paramString.length() - 1) {
-          str = paramString.substring(0, i + 1) + ReadInJoyConstants.jdField_a_of_type_JavaLangString;
+        if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a == null) {
+          this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a = new MediaPlayer();
         }
-        localSpannableStringBuilder.append(str);
-        return localSpannableStringBuilder;
-      }
-      i += 1;
-    }
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    paramBaseData1 = (ArticleTopicData)paramBaseData2;
-    int j = paramBaseData1.jdField_a_of_type_JavaUtilList.size();
-    View localView;
-    if (this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.getChildCount() < j)
-    {
-      int k = this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.getChildCount();
-      i = 0;
-      while (i < j - k)
-      {
-        localView = a(this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.getContext());
-        this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.addView(localView);
-        localView.setOnClickListener(this);
-        i += 1;
-      }
-    }
-    int i = 0;
-    if (i < this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.getChildCount())
-    {
-      localView = this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.getChildAt(i);
-      if (i < j)
-      {
-        localView.setVisibility(0);
-        ArticleTopicData.TopicInfo localTopicInfo = (ArticleTopicData.TopicInfo)paramBaseData1.jdField_a_of_type_JavaUtilList.get(i);
-        localView.setTag(localTopicInfo);
-        ((TextView)localView.findViewById(2131367102)).setText(a(localTopicInfo.jdField_a_of_type_JavaLangString));
-        if ((!paramBoolean) && (!paramBaseData1.jdField_a_of_type_Boolean))
+        for (;;)
         {
-          a("0X800919F", localTopicInfo, paramBaseData2.a);
-          paramBaseData1.jdField_a_of_type_Boolean = true;
+          try
+          {
+            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.setDataSource(this.a.jdField_a_of_type_JavaLangString + "/audio.mp3");
+            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.prepare();
+            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.start();
+            PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C81", "0X8008C81", 0, 0, this.a.jdField_b_of_type_JavaLangString, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
+            return;
+          }
+          catch (Exception paramLayer)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e("ReadInJoySkinGuideView", 2, QLog.getStackTraceString(paramLayer));
+            continue;
+          }
+          try
+          {
+            if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.isPlaying()) {
+              continue;
+            }
+            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.start();
+          }
+          catch (Exception paramLayer) {}
+          if (QLog.isColorLevel()) {
+            QLog.e("ReadInJoySkinGuideView", 2, QLog.getStackTraceString(paramLayer));
+          }
         }
       }
-      for (;;)
+      paramLayer = JumpParser.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramString);
+      if (paramLayer != null)
       {
-        i += 1;
-        break;
-        localView.setVisibility(8);
+        paramLayer.b();
+        return;
       }
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    ArticleTopicData.TopicInfo localTopicInfo = (ArticleTopicData.TopicInfo)paramView.getTag();
-    if (localTopicInfo != null)
-    {
-      ReadInJoyUtils.a(paramView.getContext(), localTopicInfo.b);
-      a("0X80091A0", localTopicInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.a);
-    }
+    } while ((!paramString.startsWith("https://")) && (!paramString.startsWith("http://")));
+    paramLayer = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramLayer.putExtra("url", paramString);
+    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramLayer);
   }
 }
 

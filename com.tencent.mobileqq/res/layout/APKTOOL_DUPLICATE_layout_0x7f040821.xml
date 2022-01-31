@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216f6" android:layout_width="fill_parent" android:layout_height="228.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b7" />
-    <RelativeLayout android:id="@id/head" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
-        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038b" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/title" android:layout_marginLeft="12.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b3" />
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a33" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02c0" />
-        <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02bc">
-            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e02c6" />
-            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2638" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02be" />
-        </LinearLayout>
-    </RelativeLayout>
-    <TextView android:textSize="15.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04dc" android:id="@id/info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="-7.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0154" android:layout_marginBottom="8.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" android:layout_below="@id/head" android:layout_alignParentLeft="true" android:lineSpacingExtra="4.0dip" />
-    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_below="@id/info" />
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="16.0dip" android:text="错题详情" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2614" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="25.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f2f" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2615" android:background="#ffdedede" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="22.0dip" android:layout_marginTop="54.0dip" android:layout_marginRight="22.0dip" android:layout_alignParentLeft="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2616" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginLeft="22.0dip" android:layout_marginTop="35.0dip" android:scaleType="fitStart" android:maxWidth="320.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2615" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="18.0dip" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2617" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="140.0dip" android:text="识别为: " />
+    <TextView android:textSize="18.0dip" android:textColor="#fffea356" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2618" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="63 / 7x9=8" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2617" android:layout_alignBaseline="@id/APKTOOL_DUPLICATE_id_0x7f0a2617" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a2617" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c048d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2619" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginBottom="25.0dip" android:text="学生答案正确，删除批改错误" android:layout_alignParentBottom="true" />
 </RelativeLayout>

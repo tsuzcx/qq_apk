@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.mobileqq.app.ShakeListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.profile.view.ProfileBaseView;
 
-public class sva
-  extends ShakeListener
+class sva
+  implements Runnable
 {
-  public sva(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  sva(suz paramsuz) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
+    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) && ((this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileBaseView))) {
+      ((ProfileBaseView)this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView).b(this.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, true);
     }
   }
 }

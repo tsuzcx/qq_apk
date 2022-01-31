@@ -1,13 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeUgcPlainSocial;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class lyj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lyj(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public lyj(FeedItemCellTypeUgcPlainSocial paramFeedItemCellTypeUgcPlainSocial) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyDeliverVideoActivity.e(this.a);
+    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (paramView != null) {
+      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
   }
 }
 

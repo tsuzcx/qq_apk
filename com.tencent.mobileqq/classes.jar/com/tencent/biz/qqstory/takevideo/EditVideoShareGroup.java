@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import ogs;
+import olh;
 
 public class EditVideoShareGroup
   extends EditVideoPart
@@ -38,10 +38,10 @@ public class EditVideoShareGroup
     this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a("ignorePersonalPublish", false);
     this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a("add_video_source", 0);
     SLog.a("EditVideoShareGroup", "shareGroupId=%s, shareGroupName=%s, ignorePersonalPublish=%s, source=%d", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_b_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364448));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364473));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ogs(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new olh(this));
     if (this.jdField_a_of_type_JavaLangString == null)
     {
       SLog.e("EditVideoShareGroup", "shareGroupId should not be null");

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.util;
 
 import QQService.EVIPSPEC;
-import akai;
-import akaj;
-import akak;
-import akan;
-import akao;
-import akar;
-import akau;
-import akav;
+import akhw;
+import akhx;
+import akhy;
+import akib;
+import akic;
+import akif;
+import akii;
+import akij;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -311,7 +311,7 @@ public class ProfileCardUtil
     if ((paramIntent == null) || (TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
       return paramIntent;
     }
-    String str = String.format("http://ti.qq.com/qcard/index.html?qq=%s&appid=%s&version=%s&_wv=1027", new Object[] { paramString, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.3" });
+    String str = String.format("http://ti.qq.com/qcard/index.html?qq=%s&appid=%s&version=%s&_wv=1027", new Object[] { paramString, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.8" });
     paramString = str;
     if (b()) {
       paramString = str + "&intl=1";
@@ -1270,7 +1270,7 @@ public class ProfileCardUtil
   public static String a(Context paramContext)
   {
     paramContext = paramContext.getDir(".profilecard", 0);
-    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_label_config.json" + "7.6.3";
+    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_label_config.json" + "7.6.8";
   }
   
   public static String a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3)
@@ -1278,7 +1278,7 @@ public class ProfileCardUtil
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt1 == 0)
     {
-      localStringBuilder.append(paramContext.getString(2131433941));
+      localStringBuilder.append(paramContext.getString(2131433957));
       localStringBuilder.append("  ");
     }
     for (;;)
@@ -1286,7 +1286,7 @@ public class ProfileCardUtil
       if (paramInt2 != 0)
       {
         localStringBuilder.append(paramInt2);
-        localStringBuilder.append(paramContext.getString(2131433943));
+        localStringBuilder.append(paramContext.getString(2131433959));
         localStringBuilder.append("  ");
       }
       paramContext = NearbyProfileUtil.c(paramInt3);
@@ -1326,7 +1326,7 @@ public class ProfileCardUtil
       return localStringBuilder.toString();
       if (paramInt1 == 1)
       {
-        localStringBuilder.append(paramContext.getString(2131433942));
+        localStringBuilder.append(paramContext.getString(2131433958));
         localStringBuilder.append("  ");
       }
     }
@@ -1337,7 +1337,7 @@ public class ProfileCardUtil
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt1 == 0)
     {
-      localStringBuilder.append(paramContext.getString(2131433941));
+      localStringBuilder.append(paramContext.getString(2131433957));
       localStringBuilder.append("  ");
     }
     for (;;)
@@ -1345,7 +1345,7 @@ public class ProfileCardUtil
       if (paramInt2 != 0)
       {
         localStringBuilder.append(paramInt2);
-        localStringBuilder.append(paramContext.getString(2131433943));
+        localStringBuilder.append(paramContext.getString(2131433959));
         localStringBuilder.append("  ");
       }
       String str = "";
@@ -1379,7 +1379,7 @@ public class ProfileCardUtil
       return localStringBuilder.toString();
       if (paramInt1 == 1)
       {
-        localStringBuilder.append(paramContext.getString(2131433942));
+        localStringBuilder.append(paramContext.getString(2131433958));
         localStringBuilder.append("  ");
       }
     }
@@ -1400,7 +1400,7 @@ public class ProfileCardUtil
       {
         localObject = paramProfileCardInfo;
         if (!b()) {
-          localObject = i + paramContext.getString(2131433943);
+          localObject = i + paramContext.getString(2131433959);
         }
       }
       paramProfileCardInfo = "";
@@ -1534,7 +1534,7 @@ public class ProfileCardUtil
     String str = paramAllInOne.jdField_a_of_type_JavaLangString;
     QidianManager localQidianManager = (QidianManager)paramQQAppInterface.getManager(164);
     if (localQidianManager.a(str)) {
-      paramQQAppInterface = String.format("https://datacard.qidian.qq.com/static/1_%s_more.htm?appid=%s&version=%s&_wv=1027", new Object[] { str, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.3" });
+      paramQQAppInterface = String.format("https://datacard.qidian.qq.com/static/1_%s_more.htm?appid=%s&version=%s&_wv=1027", new Object[] { str, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.8" });
     }
     for (;;)
     {
@@ -1549,7 +1549,7 @@ public class ProfileCardUtil
       }
       else
       {
-        paramActivity = String.format("http://ti.qq.com/qcard/index.html?qq=%s&appid=%s&version=%s&_wv=1027", new Object[] { str, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.3" });
+        paramActivity = String.format("http://ti.qq.com/qcard/index.html?qq=%s&appid=%s&version=%s&_wv=1027", new Object[] { str, String.valueOf(paramQQAppInterface.getAppid()), "android-7.6.8" });
         paramQQAppInterface = paramActivity;
         if (b()) {
           paramQQAppInterface = paramActivity + "&intl=1";
@@ -1561,7 +1561,7 @@ public class ProfileCardUtil
   public static String a(QQAppInterface paramQQAppInterface)
   {
     Calendar localCalendar = Calendar.getInstance();
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.bU);
+    StringBuilder localStringBuilder = new StringBuilder(AppConstants.bV);
     localStringBuilder.append("IMG");
     localStringBuilder.append(localCalendar.get(1));
     int i = localCalendar.get(2) + 1;
@@ -2549,8 +2549,8 @@ public class ProfileCardUtil
   {
     Object localObject1 = null;
     int j = 0;
-    TextView localTextView = (TextView)paramView.findViewById(2131364119);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131363443);
+    TextView localTextView = (TextView)paramView.findViewById(2131364144);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131363462);
     if (paramRichStatus != null) {
       localObject1 = paramRichStatus.toSpannableString(null, -8947849, paramResources.getColor(2131492971));
     }
@@ -2588,7 +2588,7 @@ public class ProfileCardUtil
       label220:
       if (paramBoolean)
       {
-        i = 2130838600;
+        i = 2130838606;
         label230:
         paramResources = paramResources.getDrawable(i);
         if (localImageView.getDrawable() != paramResources)
@@ -2631,7 +2631,7 @@ public class ProfileCardUtil
       {
         j += 1;
         break label354;
-        localObject1 = BitmapManager.a(paramResources, 2130845456);
+        localObject1 = BitmapManager.a(paramResources, 2130845537);
         break;
         if (((SpannableString)localObject2).length() == 0)
         {
@@ -2643,7 +2643,7 @@ public class ProfileCardUtil
         label452:
         paramBoolean = paramStatusManager.a();
         break label220;
-        i = 2130838484;
+        i = 2130838490;
         break label230;
         label469:
         i = 0;
@@ -2698,7 +2698,7 @@ public class ProfileCardUtil
       localQQProgressDialog.show();
       if (paramLong <= 0L)
       {
-        ((NearbyFaceScoreManager)paramBaseActivity.getAppInterface().getManager(203)).a(Long.parseLong(paramString1), new akan(paramBaseActivity, paramString1, paramString2, paramInt, localQQProgressDialog));
+        ((NearbyFaceScoreManager)paramBaseActivity.getAppInterface().getManager(203)).a(Long.parseLong(paramString1), new akib(paramBaseActivity, paramString1, paramString2, paramInt, localQQProgressDialog));
         return;
       }
     }
@@ -2758,7 +2758,7 @@ public class ProfileCardUtil
     try
     {
       paramString3.show();
-      ThreadManager.post(new akak(paramInt, paramString1, paramString2, paramString4, paramBaseActivity, paramString3), 5, null, false);
+      ThreadManager.post(new akhy(paramInt, paramString1, paramString2, paramString4, paramBaseActivity, paramString3), 5, null, false);
       return;
     }
     catch (Exception localException)
@@ -2783,7 +2783,7 @@ public class ProfileCardUtil
     try
     {
       paramString5.show();
-      ThreadManager.post(new akar(paramInt, paramString2, paramString1, paramString3, paramString4, paramString6, paramBaseActivity, paramString5), 5, null, false);
+      ThreadManager.post(new akif(paramInt, paramString2, paramString1, paramString3, paramString4, paramString6, paramBaseActivity, paramString5), 5, null, false);
       return;
     }
     catch (Exception localException)
@@ -2797,7 +2797,7 @@ public class ProfileCardUtil
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.post(new akav(paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new akij(paramQQAppInterface), 5, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
@@ -2812,7 +2812,7 @@ public class ProfileCardUtil
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, String paramString1, long paramLong3, String paramString2, int paramInt, String paramString3, String paramString4, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    paramQQAppInterface.a(new akau(paramInt, paramString3, paramString4, paramFloat1, paramFloat2, paramFloat3, paramQQAppInterface, paramLong1, paramLong2, paramString1, paramLong3, paramString2));
+    paramQQAppInterface.a(new akii(paramInt, paramString3, paramString4, paramFloat1, paramFloat2, paramFloat3, paramQQAppInterface, paramLong1, paramLong2, paramString1, paramLong3, paramString2));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, View paramView, String paramString, int paramInt1, int paramInt2)
@@ -3011,7 +3011,7 @@ public class ProfileCardUtil
     {
       paramArrayOfByte = HexUtil.a(paramArrayOfByte);
       String str = HexUtil.a(paramArrayOfByte);
-      ThreadManager.post(new akai(str, b(paramArrayOfByte)), 8, null, false);
+      ThreadManager.post(new akhw(str, b(paramArrayOfByte)), 8, null, false);
       b(str);
       return;
     }
@@ -3205,7 +3205,7 @@ public class ProfileCardUtil
     try
     {
       if (Utils.a()) {
-        return Utils.a(new File(AppConstants.aI));
+        return Utils.a(new File(AppConstants.aJ));
       }
       long l = Utils.a(new File(Environment.getRootDirectory().getPath()));
       return l;
@@ -3222,7 +3222,7 @@ public class ProfileCardUtil
   public static String b(Context paramContext)
   {
     paramContext = paramContext.getDir(".profilecard", 0);
-    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_template.json" + "7.6.3";
+    return paramContext.getAbsolutePath() + File.separator + "qvip_profile_template.json" + "7.6.8";
   }
   
   public static String b(Context paramContext, ProfileCardInfo paramProfileCardInfo)
@@ -3238,7 +3238,7 @@ public class ProfileCardUtil
       if (i != 0) {
         break label150;
       }
-      str = paramContext.getString(2131433941);
+      str = paramContext.getString(2131433957);
     }
     for (;;)
     {
@@ -3263,7 +3263,7 @@ public class ProfileCardUtil
       break;
       label150:
       if (i == 1) {
-        str = paramContext.getString(2131433942);
+        str = paramContext.getString(2131433958);
       }
     }
   }
@@ -3306,7 +3306,7 @@ public class ProfileCardUtil
   
   private static void b(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, int paramInt, QQProgressDialog paramQQProgressDialog)
   {
-    ThreadManager.post(new akao(paramInt, paramString1, paramBaseActivity, paramString2, paramString3, paramQQProgressDialog), 5, null, false);
+    ThreadManager.post(new akic(paramInt, paramString1, paramBaseActivity, paramString2, paramString3, paramQQProgressDialog), 5, null, false);
   }
   
   public static void b(String paramString)
@@ -3335,49 +3335,6 @@ public class ProfileCardUtil
       i += 1;
       break;
     }
-  }
-  
-  public static boolean b(Context paramContext, String paramString)
-  {
-    boolean bool = true;
-    if ((paramString == null) || (paramString.equals(""))) {
-      bool = false;
-    }
-    for (;;)
-    {
-      return bool;
-      paramContext = c(paramContext) + "." + c(paramString);
-      try
-      {
-        paramContext = new File(paramContext);
-        if ((!paramContext.exists()) || (!paramContext.isDirectory())) {
-          break label156;
-        }
-        paramContext = paramContext.list();
-        if ((paramContext != null) && (paramContext.length > 0))
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "isExistDynamicBgResource is exists");
-          return true;
-        }
-      }
-      catch (Exception paramContext)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "isExistDynamicBgResource exception msg=" + paramContext.getMessage());
-        }
-        return false;
-      }
-    }
-    QLog.e("Q.profilecard.FrdProfileCard", 1, "isExistDynamicBgResource is not exists, fileNames is empty!");
-    return false;
-    label156:
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "isExistDynamicBgResource is not exists");
-    }
-    return false;
   }
   
   public static boolean b(ArrayList paramArrayList)
@@ -3412,7 +3369,7 @@ public class ProfileCardUtil
     try
     {
       if (Utils.a()) {
-        return AppConstants.bU;
+        return AppConstants.bV;
       }
       String str = paramContext.getDir(".profilecard", 0).getAbsoluteFile() + File.separator;
       return str;
@@ -3437,7 +3394,7 @@ public class ProfileCardUtil
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.getFileThreadHandler().post(new akaj(paramString));
+    ThreadManager.getFileThreadHandler().post(new akhx(paramString));
   }
   
   public static boolean c(ArrayList paramArrayList)
@@ -3464,7 +3421,7 @@ public class ProfileCardUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardUtil
  * JD-Core Version:    0.7.0.1
  */

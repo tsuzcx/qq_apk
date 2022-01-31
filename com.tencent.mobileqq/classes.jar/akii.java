@@ -1,66 +1,35 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import QQService.CARDSETTYPE;
+import SummaryCardTaf.SSummaryCardSetReq;
+import SummaryCardTaf.cardDiyTextInfo;
+import android.text.TextUtils;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class akii
   implements Runnable
 {
+  public akii(int paramInt, String paramString1, String paramString2, float paramFloat1, float paramFloat2, float paramFloat3, QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, String paramString3, long paramLong3, String paramString4) {}
+  
   public void run()
   {
-    int i = VipGrayConfigHelper.a().get();
-    if ((i < 0) || (i >= VipGrayConfigHelper.a().size())) {}
-    for (;;)
+    UniPacket localUniPacket = null;
+    Object localObject = localUniPacket;
+    if (this.jdField_a_of_type_Int > 0)
     {
-      return;
-      String str = (String)VipGrayConfigHelper.a().get(i);
-      AtomicInteger localAtomicInteger = (AtomicInteger)VipGrayConfigHelper.a().get(str);
-      Object localObject = (AtomicInteger)VipGrayConfigHelper.b().get(str);
-      for (AtomicReference localAtomicReference = (AtomicReference)VipGrayConfigHelper.c().get(str); localAtomicInteger.get() >= ((AtomicInteger)localObject).get(); localAtomicReference = (AtomicReference)VipGrayConfigHelper.c().get(str))
-      {
-        i += 1;
-        j = i;
-        if (i >= VipGrayConfigHelper.a().size()) {
-          break label175;
-        }
-        str = (String)VipGrayConfigHelper.a().get(i);
-        localAtomicInteger = (AtomicInteger)VipGrayConfigHelper.a().get(str);
-        localObject = (AtomicInteger)VipGrayConfigHelper.b().get(str);
-      }
-      int j = i;
-      label175:
-      VipGrayConfigHelper.a().set(j);
-      if (j >= VipGrayConfigHelper.a().size()) {
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VipGrayConfigHelper", 2, "Entry: " + str + ", Case " + (localAtomicInteger.get() + 1) + " of " + ((AtomicInteger)localObject).get());
-      }
-      try
-      {
-        localObject = (Intent)localAtomicReference.get();
-        ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-        BaseApplicationImpl.getApplication().startActivity((Intent)localObject);
-        localAtomicInteger.incrementAndGet();
-        BaseApplicationImpl.getApplication().getSharedPreferences("vipGrayConfigSp", 0).edit().putInt(str, localAtomicInteger.get()).apply();
-        label317:
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("VipGrayConfigHelper", 2, "start background webview.");
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label317;
+      localObject = localUniPacket;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        localObject = new cardDiyTextInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float);
       }
     }
+    localObject = new SSummaryCardSetReq(2, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), 0L, "7.6.8", 109L, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Long, (cardDiyTextInfo)localObject, this.d);
+    localUniPacket = new UniPacket(true);
+    localUniPacket.setEncodeName("utf-8");
+    localUniPacket.setFuncName("set");
+    localUniPacket.setServantName("MCardSvc");
+    localUniPacket.put("req", localObject);
+    localObject = localUniPacket.encode();
+    ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), CARDSETTYPE.TYPE_SET_TEMPLATE.value(), (byte)0, null, null, null, null, (byte[])localObject);
   }
 }
 

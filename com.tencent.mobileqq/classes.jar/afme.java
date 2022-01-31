@@ -1,35 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.smooth.ItemLoader;
-import java.lang.ref.SoftReference;
+import android.widget.EditText;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.widget.ActionSheet;
 
-public final class afme
-  implements Runnable
+public class afme
+  implements IphonePickerView.IphonePickListener
 {
-  private final afmf jdField_a_of_type_Afmf;
-  private final ItemLoader jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
-  private final boolean jdField_a_of_type_Boolean;
+  public afme(NearbyProfileEditPanel paramNearbyProfileEditPanel, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
   
-  public afme(ItemLoader paramItemLoader, afmf paramafmf, boolean paramBoolean)
+  public void onConfirmBtClicked()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader = paramItemLoader;
-    this.jdField_a_of_type_Afmf = paramafmf;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
+    {
+      NearbyProfileEditPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    }
   }
   
-  public void run()
+  public void onItemSelected(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Afmf)) {}
-    View localView;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Afmf.c == null) {
-        throw new IllegalStateException("Result should not be null when displaying an item part");
-      }
-      localView = (View)this.jdField_a_of_type_Afmf.b.get();
-    } while (localView == null);
-    Object localObject = this.jdField_a_of_type_Afmf.c.get();
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localView, localObject, this.jdField_a_of_type_Afmf.a.intValue(), this.jdField_a_of_type_Boolean);
+    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setTag(Byte.valueOf((byte)(paramInt1 + 1)));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setText(NearbyProfileEditPanel.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel).getText(0, paramInt1));
   }
 }
 

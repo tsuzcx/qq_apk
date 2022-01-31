@@ -1,20 +1,36 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import com.tencent.av.redpacket.ui.RedPacketGameView;
 
 public class jnt
-  extends PhoneStateListener
+  implements Runnable
 {
-  public jnt(BaseSmallScreenService paramBaseSmallScreenService) {}
+  public jnt(RedPacketGameView paramRedPacketGameView, ViewGroup paramViewGroup) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void run()
   {
-    super.onCallStateChanged(paramInt, paramString);
-    this.a.a(paramInt, paramString);
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidViewView = null;
+    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c != null)
+    {
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c.recycle();
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c = null;
+    }
+    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b != null)
+    {
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b.recycle();
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b = null;
+    }
+    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jnt
  * JD-Core Version:    0.7.0.1
  */

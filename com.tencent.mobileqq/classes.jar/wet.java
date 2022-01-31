@@ -1,29 +1,18 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQVideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class wet
-  implements MediaPlayer.OnPreparedListener
+class wet
+  implements Runnable
 {
-  public wet(BlessActivity paramBlessActivity) {}
+  wet(wes paramwes) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
-    }
-    if (BlessActivity.a(this.a) != null) {
-      BlessActivity.a(this.a).start();
-    }
-    BlessActivity.a(this.a).postDelayed(new weu(this), 800L);
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
-    }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
+    Intent localIntent = this.a.a.a().getIntent();
+    localIntent.putExtra("uinname", this.a.a.a.d);
+    this.a.a.b(localIntent);
   }
 }
 

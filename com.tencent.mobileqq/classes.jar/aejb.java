@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import com.tencent.mobileqq.leba.QZoneEntryController;
 
 public class aejb
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aejb(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aejb(QZoneEntryController paramQZoneEntryController) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    QZoneEntryController.a(this.a);
   }
 }
 

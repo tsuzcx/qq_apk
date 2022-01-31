@@ -1,43 +1,54 @@
-import android.animation.Animator;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper.Callback;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.common.CommTvRpt;
+import com.tencent.qqprotect.common.QPMiscUtils;
+import com.tencent.qqprotect.qsec.CrashProtector.IProtectedMethod;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import mqq.app.MobileQQ;
 
 public class amev
-  extends amfb
+  implements CrashProtector.IProtectedMethod
 {
-  public amev(ItemTouchHelper paramItemTouchHelper, RecyclerView.ViewHolder paramViewHolder1, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt3, RecyclerView.ViewHolder paramViewHolder2)
-  {
-    super(paramItemTouchHelper, paramViewHolder1, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
-  }
+  public amev(QSecFramework paramQSecFramework) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    super.onAnimationEnd(paramAnimator);
-    if (this.b) {}
+    if ((!QSecFramework.a()) || (QSecFramework.a(this.a))) {}
     for (;;)
     {
       return;
-      if (this.jdField_a_of_type_Int <= 0) {
-        this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback.a(this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-      }
-      while (this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidViewView == this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView)
+      try
       {
-        this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
-        return;
-        this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
-        this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Int > 0) {
-          this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.a(this, this.jdField_a_of_type_Int);
+        Object[] arrayOfObject = new Object[1];
+        if ((QSecFramework.a(1, 33751040, QPMiscUtils.a(), 0, QSecFramework.a(this.a), MobileQQ.sMobileQQ, null, arrayOfObject) == 0) && (arrayOfObject[0] != null) && ((arrayOfObject[0] instanceof Integer)))
+        {
+          QSecFramework.a(this.a, ((Integer)arrayOfObject[0]).intValue());
+          QPMiscUtils.a = QSecFramework.a(this.a);
+          QSecFramework.a(this.a, true);
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QSecFramework", 2, String.format("Native ver: %d(%s)", new Object[] { Integer.valueOf(QSecFramework.a(this.a)), QPMiscUtils.a(QSecFramework.a(this.a)) }));
+          return;
         }
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QSecFramework", 2, "Something wrong when init native.");
+    }
+    CommTvRpt.a(1, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amev
  * JD-Core Version:    0.7.0.1
  */

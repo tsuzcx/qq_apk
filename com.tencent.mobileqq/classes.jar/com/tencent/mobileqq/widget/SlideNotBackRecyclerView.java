@@ -38,7 +38,7 @@ public class SlideNotBackRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideNotBackRecyclerView
  * JD-Core Version:    0.7.0.1
  */

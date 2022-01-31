@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder;
-import com.tencent.mobileqq.pic.PicPreDownloader;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
 class adow
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  adow(adov paramadov) {}
+  adow(adoq paramadoq) {}
   
-  public void run()
+  public void onClick(DialogInterface arg1, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipItemBuilder.a.a().a((MessageForPic)this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 2);
+    synchronized ()
+    {
+      this.a.a.b = false;
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adow
  * JD-Core Version:    0.7.0.1
  */

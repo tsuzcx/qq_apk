@@ -1,30 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aamn
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public aamn(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aamn(AREngine paramAREngine) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    QLog.i("AREngine_AREngine", 1, "processCloudObjectClassifyResult. download resource timeout.");
+    AREngine.a(this.a).a();
+    this.a.c(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aamn
  * JD-Core Version:    0.7.0.1
  */

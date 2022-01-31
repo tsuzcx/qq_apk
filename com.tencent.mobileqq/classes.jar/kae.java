@@ -1,23 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.SysCallTransparentActivity;
-import com.tencent.av.utils.PstnUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
 
-class kae
-  implements DialogInterface.OnClickListener
+public class kae
+  implements View.OnClickListener
 {
-  kae(kac paramkac, int paramInt) {}
+  public kae(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.jdField_a_of_type_Kac.a.app, this.jdField_a_of_type_Kac.a, this.jdField_a_of_type_Int, 16, true);
-    this.jdField_a_of_type_Kac.a.finish();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kae
  * JD-Core Version:    0.7.0.1
  */

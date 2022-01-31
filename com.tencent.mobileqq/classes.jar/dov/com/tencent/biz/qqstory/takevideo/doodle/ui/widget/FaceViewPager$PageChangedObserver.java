@@ -2,7 +2,11 @@ package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget;
 
 public abstract interface FaceViewPager$PageChangedObserver
 {
+  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
+  
   public abstract void c(int paramInt);
+  
+  public abstract void e(int paramInt);
 }
 
 

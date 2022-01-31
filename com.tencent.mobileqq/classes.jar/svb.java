@@ -1,19 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import android.graphics.PointF;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity.OnMeasuredListener;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class svb
-  implements View.OnTouchListener
+  implements VipProfileCardDiyActivity.OnMeasuredListener
 {
-  public svb(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public svb(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt1, int paramInt2)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    this.a.a.setActualViewSize(paramInt1, paramInt2);
+    this.a.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "updateDiyText: x=" + this.a.a.a().x + ", y=" + this.a.a.a().y + ", width=" + paramInt1 + ", height=" + paramInt2);
     }
-    return false;
   }
 }
 

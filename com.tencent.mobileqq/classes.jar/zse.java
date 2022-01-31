@@ -1,15 +1,36 @@
-import com.tencent.mobileqq.app.message.BaseMessageManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.multimsg.LongTextMsgManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.QNotificationManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class zse
   implements Runnable
 {
-  public zse(BaseMessageManager paramBaseMessageManager, LongTextMsgManager paramLongTextMsgManager, MessageRecord paramMessageRecord) {}
+  public zse(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgLongTextMsgManager.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    try
+    {
+      QNotificationManager localQNotificationManager = new QNotificationManager(QQAppInterface.e(this.a));
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 121);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 122);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 123);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 129);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 135);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 140);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 144);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 193);
+      localQNotificationManager.cancel("QQAppInterface_removeNotification", 211);
+      if (QLog.isColorLevel()) {
+        QLog.d("notification", 2, "removeNotification");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("notification", 2, "removeNotification", localException);
+    }
   }
 }
 

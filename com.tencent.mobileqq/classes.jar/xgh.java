@@ -1,25 +1,18 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.DownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.TextUrlClickListener;
 
-class xgh
-  implements PreloadManager.DownloadCallback
+public class xgh
+  implements QWalletTools.TextUrlClickListener
 {
-  xgh(xgg paramxgg, ResultReceiver paramResultReceiver) {}
+  public xgh(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadModule" + paramString2 + "|" + paramResourceInfo + "|" + System.currentTimeMillis());
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("id", paramString1);
-    localBundle.putInt("result", paramInt);
-    localBundle.putString("path", paramString2);
-    localBundle.putSerializable("res_info", paramResourceInfo);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    this.a.startActivity(localIntent);
   }
 }
 

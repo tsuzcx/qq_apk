@@ -31,9 +31,9 @@ public class VoiceChangeItemView2
   
   public void a(int paramInt1, int paramInt2)
   {
-    ((LayoutInflater)this.b.getSystemService("layout_inflater")).inflate(2130969376, this);
-    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131366264));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366326));
+    ((LayoutInflater)this.b.getSystemService("layout_inflater")).inflate(2130969374, this);
+    this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131366269));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366331));
     this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setOnClickListener(this);
     setOnClickListener(this);
   }
@@ -69,20 +69,20 @@ public class VoiceChangeItemView2
     {
       setHighlight(paramBoolean1);
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840363);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840378);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840363);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840378);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       continue;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840363);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840378);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    View localView = findViewById(2131366327);
+    View localView = findViewById(2131366332);
     ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
     localLayoutParams.width = paramInt1;
     localLayoutParams.height = paramInt2;
@@ -96,7 +96,7 @@ public class VoiceChangeItemView2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.VoiceChangeItemView2
  * JD-Core Version:    0.7.0.1
  */

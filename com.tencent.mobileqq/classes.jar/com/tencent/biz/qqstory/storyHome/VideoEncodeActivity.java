@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nud;
+import nyt;
 
 public class VideoEncodeActivity
   extends QQStoryBaseActivity
@@ -59,7 +59,7 @@ public class VideoEncodeActivity
   
   private void a()
   {
-    Button localButton = (Button)findViewById(2131372091);
+    Button localButton = (Button)findViewById(2131372099);
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       localButton.setEnabled(false);
@@ -77,7 +77,7 @@ public class VideoEncodeActivity
     }
     RadioGroup localRadioGroup = new RadioGroup(this);
     localRadioGroup.setOrientation(1);
-    localRadioGroup.setOnCheckedChangeListener(new nud(this));
+    localRadioGroup.setOnCheckedChangeListener(new nyt(this));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localRadioGroup);
     RadioButton localRadioButton = null;
     localObject = ((List)localObject).iterator();
@@ -99,16 +99,16 @@ public class VideoEncodeActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970872);
+    setContentView(2130970889);
     super.setTitle("视频压缩测试");
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372089));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372097));
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131372088));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372090));
-    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131372092));
-    this.c = ((EditText)findViewById(2131372093));
-    this.d = ((EditText)findViewById(2131372094));
-    this.e = ((EditText)findViewById(2131372097));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131372096));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372098));
+    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131372100));
+    this.c = ((EditText)findViewById(2131372101));
+    this.d = ((EditText)findViewById(2131372102));
+    this.e = ((EditText)findViewById(2131372105));
     b();
     return true;
   }

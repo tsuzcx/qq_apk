@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
+import java.net.URL;
 
 public class ziz
   implements Runnable
 {
-  public ziz(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public ziz(ConfigHandler paramConfigHandler, String paramString, File paramFile) {}
   
   public void run()
   {
-    PhoneContactManagerImp.a(this.a, false, false);
+    try
+    {
+      HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b, new URL(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaIoFile);
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

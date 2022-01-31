@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amcw;
+import amkg;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -20,7 +20,7 @@ public class PagerBaseAdapterWrapper
     {
       this.jdField_a_of_type_Int = paramInt;
       if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
-        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new amcw(this));
+        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new amkg(this));
       }
       return;
       paramInt = 1;

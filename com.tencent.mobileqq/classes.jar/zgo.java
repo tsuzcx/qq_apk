@@ -1,35 +1,30 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.script.SpriteScriptManager;
+import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import java.lang.ref.WeakReference;
 
 public class zgo
   implements Runnable
 {
-  public zgo(MessageHandler paramMessageHandler, long paramLong1, String paramString1, String paramString2, byte paramByte, String paramString3, long paramLong2, long paramLong3) {}
+  public zgo(ChatApolloViewListener paramChatApolloViewListener) {}
   
   public void run()
   {
-    long l1 = 480000L;
-    long l2 = 3L - this.jdField_a_of_type_Long;
-    if (this.jdField_a_of_type_Long == 0L) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a().a(this.jdField_a_of_type_JavaLangString, 1001).hasReply) {
-        break label105;
-      }
-    }
-    label105:
-    for (boolean bool = true;; bool = false)
+    if (this.a.a == null) {}
+    BaseChatPie localBaseChatPie;
+    do
     {
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Byte, bool, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Long, this.jdField_c_of_type_Long, l1);
       return;
-      l1 = l2 * 480000L / 3L - l2 * 2000L;
-      break;
-    }
+      localBaseChatPie = (BaseChatPie)this.a.a.get();
+    } while ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
+    ((SpriteScriptManager)localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(248)).a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zgo
  * JD-Core Version:    0.7.0.1
  */

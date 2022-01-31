@@ -1,20 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
-import com.tencent.biz.qqstory.view.RingView.DrawInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWLog;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWProto;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
 
 public class opz
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Handler
 {
-  public opz(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  public opz(RMWService paramRMWService) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
-    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
-    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
-    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
+    RMWLog.a("RMWService", "service.handle : " + RMWProto.a(paramMessage));
   }
 }
 

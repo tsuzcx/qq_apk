@@ -1,91 +1,76 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import java.net.URL;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager.EditViewHolderBase;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.GotoReciteSubViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.ReciteResultSubViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.ReciteTextSubViewHolder;
 
 public class ajte
-  implements URLDrawableDownListener
+  extends EditorViewHolderManager.EditViewHolderBase
 {
-  public ajte(TroopAvatarWallGalleryAdapter paramTroopAvatarWallGalleryAdapter, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
+  int jdField_a_of_type_Int;
+  GotoReciteSubViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder;
+  ReciteResultSubViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder;
+  ReciteTextSubViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public ajte(View paramView)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
+    super(paramView);
+    View localView1 = paramView.findViewById(2131368493);
+    View localView2 = paramView.findViewById(2131368467);
+    paramView = paramView.findViewById(2131368488);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder = new ReciteTextSubViewHolder(localView1);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder = new GotoReciteSubViewHolder(localView2);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder = new ReciteResultSubViewHolder(paramView);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(View paramView, HWReciteItem paramHWReciteItem)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    switch (((HWReciteInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase).jdField_a_of_type_Int)
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+    default: 
+      return;
+    case 2: 
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a(paramView, paramHWReciteItem, this);
+        return;
       }
-    }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
-    {
-      ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a(paramView, paramHWReciteItem, this);
       return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder.a(paramView, paramHWReciteItem, this);
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public void a(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo, int paramInt)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
+    this.jdField_a_of_type_Int = paramInt;
+    switch (paramHWReciteInfo.jdField_a_of_type_Int)
     {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
+    default: 
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder.a.setVisibility(8);
+      return;
+    case 2: 
+      if (paramInt == 2)
+      {
+        paramHWReciteInfo.g = 0;
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a.setVisibility(8);
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a(paramHWReciteItem, this, paramHWReciteInfo, paramInt);
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder.a.setVisibility(8);
+        return;
       }
-    }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
-    {
-      ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      paramHWReciteInfo.g = 3;
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a(paramHWReciteItem, this, paramHWReciteInfo, paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder.a.setVisibility(8);
       return;
     }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
-    }
-    ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder.a(paramHWReciteItem, this, paramHWReciteInfo, paramInt);
   }
 }
 

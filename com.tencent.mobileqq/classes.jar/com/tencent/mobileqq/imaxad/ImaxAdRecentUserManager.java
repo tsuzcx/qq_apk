@@ -1,21 +1,17 @@
 package com.tencent.mobileqq.imaxad;
 
-import adsu;
-import adsv;
+import aebd;
+import aebe;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.qq.mobile.datarecv.pb.IMaxADReport.ReqBody;
 import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
 import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
 import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.recent.RecentAdapter;
 import com.tencent.mobileqq.activity.recent.RecentDataListManager;
 import com.tencent.mobileqq.activity.recent.RecentUtil;
@@ -29,9 +25,6 @@ import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.ConversationInfo;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import java.lang.ref.WeakReference;
@@ -41,8 +34,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
 
 public class ImaxAdRecentUserManager
 {
@@ -73,7 +64,7 @@ public class ImaxAdRecentUserManager
     localIntent.putExtra("is_first_open_imax_ad", RecentUtil.c);
     RecentUtil.c = false;
     paramContext.startActivity(localIntent);
-    ThreadManager.post(new adsv(this, paramQQAppInterface, paramString, paramInt, paramAdvertisementItem), 5, null, false);
+    ThreadManager.post(new aebe(this, paramQQAppInterface, paramString, paramInt, paramAdvertisementItem), 5, null, false);
     AdvertisementRecentUserManager.a().a(paramQQAppInterface, 2, paramAdvertisementItem);
   }
   
@@ -224,7 +215,7 @@ public class ImaxAdRecentUserManager
     if (QLog.isColorLevel()) {
       QLog.d("ImaxAdvertisement", 2, "dodelete ExpireItem uin:" + paramRecentUser.uin);
     }
-    ThreadManager.executeOnFileThread(new adsu(this, paramBoolean, paramQQAppInterface, paramAdvertisementItem, paramRecentUser));
+    ThreadManager.executeOnFileThread(new aebd(this, paramBoolean, paramQQAppInterface, paramAdvertisementItem, paramRecentUser));
     a(paramRecentUser.uin);
   }
   
@@ -298,28 +289,6 @@ public class ImaxAdRecentUserManager
         ((AdvertisementItem)localIterator.next()).jdField_a_of_type_Boolean = false;
       }
     }
-  }
-  
-  public void b(AdvertisementItem paramAdvertisementItem)
-  {
-    if ((paramAdvertisementItem == null) || (paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem == null)) {
-      QLog.e("ImaxAdvertisement", 1, "doAdvertisementReport2 error " + paramAdvertisementItem);
-    }
-    do
-    {
-      return;
-      localObject = new IMaxADReport.ReqBody();
-      paramAdvertisementItem = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c;
-      ((IMaxADReport.ReqBody)localObject).bytes_ad_id.set(ByteStringMicro.copyFromUtf8(paramAdvertisementItem));
-      ((IMaxADReport.ReqBody)localObject).uint32_action_type.set(1);
-      NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), ImaxAdReportServlet.class);
-      localNewIntent.putExtra("ImaxAdReportServletCMD", "MQInference.IMaxADReport");
-      localNewIntent.putExtra("ImaxAdReportServletRequestBytes", ((IMaxADReport.ReqBody)localObject).toByteArray());
-      ReadInJoyUtils.a().startServlet(localNewIntent);
-    } while (!QLog.isColorLevel());
-    Object localObject = new StringBuilder("IMAX_AdReport:");
-    ((StringBuilder)localObject).append(" adid=").append(paramAdvertisementItem);
-    QLog.d("ImaxAdvertisement", 2, ((StringBuilder)localObject).toString());
   }
 }
 

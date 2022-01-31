@@ -24,8 +24,8 @@ public class NumberAdapter
     this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
     paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.b = paramContext.getColor(2131494273);
-    this.c = paramContext.getColor(2131494255);
+    this.b = paramContext.getColor(2131494279);
+    this.c = paramContext.getColor(2131494261);
   }
   
   public View a(int paramInt)

@@ -1,18 +1,26 @@
-import android.app.Dialog;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class tpp
   implements Runnable
 {
-  public tpp(RegisterNewBaseActivity paramRegisterNewBaseActivity, int paramInt) {}
+  public tpp(QQSettingMe paramQQSettingMe, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, 2131624516);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a.setContentView(2130970914);
-    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a.findViewById(2131362776)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getString(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a.show();
+    String str2 = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (!"".equals(str2.trim())) {}
+    }
+    else
+    {
+      str1 = this.jdField_a_of_type_JavaLangString;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new tpq(this, str1));
   }
 }
 

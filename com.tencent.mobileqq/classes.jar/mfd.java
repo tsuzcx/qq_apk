@@ -1,34 +1,32 @@
-import android.os.Handler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTopicViewGroup;
+import java.util.List;
 
 public class mfd
-  implements TVK_SDKMgr.InstallListener
+  implements Runnable
 {
-  private Handler a;
+  public mfd(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public mfd(Handler paramHandler)
+  public void run()
   {
-    this.a = paramHandler;
-  }
-  
-  public void onInstallProgress(float paramFloat)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(2);
-    }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(1);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(0);
+    VideoInfo localVideoInfo = (VideoInfo)VideoFeedsAdapter.a(this.a).get(0);
+    if (VideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
+    {
+      Object localObject = VideoFeedsAdapter.a(this.a).getChildAt(VideoFeedsAdapter.a(this.a).getHeaderViewsCount());
+      if ((localObject != null) && ((((View)localObject).getTag() instanceof VideoFeedsAdapter.VideoItemHolder)))
+      {
+        localObject = (VideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
+        if ((((VideoFeedsAdapter.VideoItemHolder)localObject).a != null) && (localVideoInfo.a != null))
+        {
+          ((VideoFeedsAdapter.VideoItemHolder)localObject).a.setVisibility(0);
+          ((VideoFeedsAdapter.VideoItemHolder)localObject).a.setArticleInfo(VideoFeedsAdapter.a(this.a), this.a, localVideoInfo, VideoFeedsAdapter.c(this.a), VideoFeedsAdapter.e(this.a));
+          VideoFeedsAdapter.a(this.a, localVideoInfo);
+        }
+      }
     }
   }
 }

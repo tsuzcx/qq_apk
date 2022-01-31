@@ -1,20 +1,18 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.ApprovalMsgBuilder;
-import cooperation.dingdong.DingdongMsgItemTitleImageView;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
+import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
+import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.Ruler;
+import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.SpannableValue;
 
 public class utz
-  extends BaseBubbleBuilder.ViewHolder
+  implements NumAnim.Ruler
 {
-  public LinearLayout a;
-  public TextView a;
-  public DingdongMsgItemTitleImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public utz(GoldMsgNumAnim paramGoldMsgNumAnim) {}
   
-  public utz(ApprovalMsgBuilder paramApprovalMsgBuilder) {}
+  public NumAnim.SpannableValue getNumber(double paramDouble)
+  {
+    String str = NumAnim.formatNumber(paramDouble, true);
+    return new NumAnim.SpannableValue(str, 0, str.length());
+  }
 }
 
 

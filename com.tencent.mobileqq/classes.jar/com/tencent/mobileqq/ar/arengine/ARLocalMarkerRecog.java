@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aahm;
-import aahn;
+import aaod;
+import aaoe;
 import android.opengl.Matrix;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.FramePerformanceMonitor;
@@ -22,7 +22,7 @@ public class ARLocalMarkerRecog
 {
   private final int jdField_a_of_type_Int = 25;
   private long jdField_a_of_type_Long;
-  private aahn jdField_a_of_type_Aahn;
+  private aaoe jdField_a_of_type_Aaoe;
   private FramePerformanceMonitor jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor;
   private ArConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
   private ARLocalMarkerRecog.ARLocalMarkerRecogCallback jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog$ARLocalMarkerRecogCallback;
@@ -226,10 +226,10 @@ public class ARLocalMarkerRecog
   public void a(long paramLong, byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte == null) || (!this.jdField_b_of_type_Boolean) || (this.jdField_f_of_type_Boolean)) {}
-    while (this.jdField_a_of_type_Aahn == null) {
+    while (this.jdField_a_of_type_Aaoe == null) {
       return;
     }
-    this.jdField_a_of_type_Aahn.a(paramLong, paramArrayOfByte);
+    this.jdField_a_of_type_Aaoe.a(paramLong, paramArrayOfByte);
   }
   
   public boolean a()
@@ -240,8 +240,8 @@ public class ARLocalMarkerRecog
     }
     this.jdField_b_of_type_JavaUtilArrayList.clear();
     this.g = 2;
-    if (this.jdField_a_of_type_Aahn == null) {
-      this.jdField_a_of_type_Aahn = new aahn(this);
+    if (this.jdField_a_of_type_Aaoe == null) {
+      this.jdField_a_of_type_Aaoe = new aaoe(this);
     }
     this.n = 0;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -336,22 +336,22 @@ public class ARLocalMarkerRecog
       {
         if (i1 < this.jdField_b_of_type_JavaUtilArrayList.size())
         {
-          if (((aahm)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_JavaLangString.equals(paramString1))
+          if (((aaod)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_JavaLangString.equals(paramString1))
           {
-            ((aahm)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_b_of_type_JavaLangString = paramString2;
-            ((aahm)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+            ((aaod)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_b_of_type_JavaLangString = paramString2;
+            ((aaod)this.jdField_b_of_type_JavaUtilArrayList.get(i1)).jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
             return true;
           }
         }
         else
         {
-          aahm localaahm = new aahm(null);
-          localaahm.jdField_a_of_type_JavaLangString = paramString1;
-          localaahm.jdField_b_of_type_JavaLangString = paramString2;
-          localaahm.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
-          localaahm.jdField_a_of_type_Boolean = false;
-          localaahm.jdField_b_of_type_Boolean = false;
-          this.jdField_b_of_type_JavaUtilArrayList.add(localaahm);
+          aaod localaaod = new aaod(null);
+          localaaod.jdField_a_of_type_JavaLangString = paramString1;
+          localaaod.jdField_b_of_type_JavaLangString = paramString2;
+          localaaod.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+          localaaod.jdField_a_of_type_Boolean = false;
+          localaaod.jdField_b_of_type_Boolean = false;
+          this.jdField_b_of_type_JavaUtilArrayList.add(localaaod);
           this.jdField_f_of_type_Long = System.currentTimeMillis();
           return true;
         }
@@ -613,10 +613,10 @@ public class ARLocalMarkerRecog
     }
     this.jdField_b_of_type_JavaUtilArrayList.clear();
     this.g = 2;
-    if (this.jdField_a_of_type_Aahn != null)
+    if (this.jdField_a_of_type_Aaoe != null)
     {
-      this.jdField_a_of_type_Aahn.a();
-      this.jdField_a_of_type_Aahn = null;
+      this.jdField_a_of_type_Aaoe.a();
+      this.jdField_a_of_type_Aaoe = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor = null;
     a();

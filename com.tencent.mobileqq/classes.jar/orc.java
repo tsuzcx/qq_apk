@@ -1,40 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.widget.ImageButton;
+import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
 
 public class orc
-  extends Handler
+  implements Runnable
 {
-  public orc(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public orc(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    Object localObject = paramMessage.obj;
-    String str;
-    if (paramMessage.what == 8) {
-      str = "GONE";
-    }
-    for (;;)
-    {
-      SLog.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
-      this.a.setVisibility(paramMessage.what);
-      return;
-      if (paramMessage.what == 0) {
-        str = "VISIBLE";
-      } else {
-        str = "INVISIBLE";
-      }
-    }
+    StoryLocalPublishPart.a(this.a).setVisibility(8);
   }
 }
 

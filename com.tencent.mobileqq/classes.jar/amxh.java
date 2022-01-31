@@ -1,30 +1,13 @@
-import android.content.Context;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
+import cooperation.qqindividuality.QQIndividualityBaseBridgeActivity;
 
-class amxh
-  extends OnQZonePluginInstallListner.Stub
+public class amxh
+  implements Runnable
 {
-  amxh(amxg paramamxg, IQZonePluginManager.OnPluginReadyListener paramOnPluginReadyListener, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams) {}
+  public amxh(QQIndividualityBaseBridgeActivity paramQQIndividualityBaseBridgeActivity) {}
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
-      return;
-    }
-    this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
+    this.a.a();
   }
 }
 

@@ -1,15 +1,20 @@
-import com.qq.jce.wup.UniAttribute;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.qzone.QZoneFeedCountPackeger;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class ahxr
-  implements Runnable
+public class ahxr
+  implements View.OnTouchListener
 {
-  public ahxr(UniAttribute paramUniAttribute, QQAppInterface paramQQAppInterface) {}
+  public ahxr(FunctionSearchFragment paramFunctionSearchFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QZoneFeedCountPackeger.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

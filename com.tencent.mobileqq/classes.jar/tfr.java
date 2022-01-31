@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QIMNewFriendManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class tfr
-  extends ContactBindObserver
+  implements Runnable
 {
-  public tfr(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public tfr(MainFragment paramMainFragment) {}
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    if (paramBoolean) {
-      PhoneUnityBindInfoActivity.a(this.a, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, 1, 2);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    for (;;)
+    if (MainFragment.a(this.a) != null)
     {
-      this.a.app.unRegistObserver(this);
-      this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
-      return;
-      PhoneUnityBindInfoActivity.a(this.a, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, 3, 1);
+      MainFragment.a(this.a).addObserver(MainFragment.a(this.a));
+      ((QIMNewFriendManager)MainFragment.a(this.a).getManager(256)).a(MainFragment.a(this.a));
+      MainFragment.a(this.a).registObserver(MainFragment.a(this.a));
     }
+    MainFragment.a(this.a, false);
   }
 }
 

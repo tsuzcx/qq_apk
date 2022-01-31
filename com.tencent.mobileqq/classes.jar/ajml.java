@@ -1,14 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
+import java.util.TimerTask;
 
 public class ajml
-  implements Runnable
+  extends TimerTask
 {
-  public ajml(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public ajml(TroopFileScanTask paramTroopFileScanTask) {}
   
   public void run()
   {
-    this.a.b.setVisibility(0);
+    TroopFileScanTask.a(this.a, -6, false);
   }
 }
 

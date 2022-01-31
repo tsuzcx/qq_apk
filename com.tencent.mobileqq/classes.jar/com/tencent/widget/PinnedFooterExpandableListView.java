@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amcx;
+import amkh;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -225,7 +225,7 @@ public class PinnedFooterExpandableListView
     } while (i == 0);
     this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, this, false);
     if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new amcx(this, this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new amkh(this, this));
     }
     requestLayout();
   }

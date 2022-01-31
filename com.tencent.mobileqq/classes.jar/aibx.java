@@ -1,13 +1,23 @@
-class aibx
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
+
+public final class aibx
+  implements Parcelable.Creator
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public FriendSingleInfo a(Parcel paramParcel)
+  {
+    return new FriendSingleInfo(paramParcel);
+  }
   
-  aibx(aibu paramaibu) {}
+  public FriendSingleInfo[] a(int paramInt)
+  {
+    return new FriendSingleInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aibx
  * JD-Core Version:    0.7.0.1
  */

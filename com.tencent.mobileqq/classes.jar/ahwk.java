@@ -1,61 +1,24 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.search.model.ContactSearchModelPhoneContact;
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.searchengine.PhoneContactBinedSearchEngine;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ahwk
-  implements Comparator
+  implements View.OnClickListener
 {
-  public ahwk(PhoneContactBinedSearchEngine paramPhoneContactBinedSearchEngine) {}
+  public ahwk(MixSearchWebFragment paramMixSearchWebFragment) {}
   
-  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
+  public void onClick(View paramView)
   {
-    int i = -1;
-    Object localObject = (PhoneContactManager)this.a.a.getManager(10);
-    paramIContactSearchModel1 = ((PhoneContactManager)localObject).c(((ContactSearchModelPhoneContact)paramIContactSearchModel1).e());
-    paramIContactSearchModel2 = ((PhoneContactManager)localObject).c(((ContactSearchModelPhoneContact)paramIContactSearchModel2).e());
-    if ((paramIContactSearchModel1 == null) || (paramIContactSearchModel2 == null)) {
-      if ((paramIContactSearchModel1 == null) && (paramIContactSearchModel2 == null)) {
-        i = 0;
-      }
+    this.a.a.setText("");
+    this.a.a.requestFocus();
+    paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    if (paramView != null) {
+      paramView.showSoftInput(this.a.a, 0);
     }
-    boolean bool2;
-    do
-    {
-      do
-      {
-        return i;
-        if (paramIContactSearchModel2 == null) {}
-        for (i = -1;; i = 1) {
-          return i;
-        }
-        if ((paramIContactSearchModel1.uin.equals("0")) && (paramIContactSearchModel2.uin.equals("0"))) {
-          break;
-        }
-        if ((!paramIContactSearchModel1.uin.equals("0")) && (!paramIContactSearchModel2.uin.equals("0"))) {
-          return 0;
-        }
-      } while (!paramIContactSearchModel2.uin.equals("0"));
-      return 1;
-      if (!paramIContactSearchModel1.uin.equals("0")) {
-        break;
-      }
-      localObject = (FriendsManager)this.a.a.getManager(50);
-      boolean bool1 = ((FriendsManager)localObject).a(paramIContactSearchModel1.unifiedCode, true);
-      bool2 = ((FriendsManager)localObject).a(paramIContactSearchModel2.unifiedCode, true);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-    } while (bool2);
-    return 1;
-    return 0;
   }
 }
 

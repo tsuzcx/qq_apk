@@ -1,16 +1,17 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
-import com.tencent.mobileqq.troop.widget.ExpandableTextView.OnExpandStateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
 
 public class ajfw
-  implements ExpandableTextView.OnExpandStateListener
+  implements DialogInterface.OnDismissListener
 {
-  public ajfw(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
+  public ajfw(TroopWebviewPlugin paramTroopWebviewPlugin) {}
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView.setVisibility(8);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

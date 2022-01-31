@@ -1,7 +1,5 @@
 package cooperation.qzone.util;
 
-import anax;
-import anay;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
@@ -9,6 +7,8 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+import aniw;
+import anix;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -51,7 +51,7 @@ public class QZoneDistributedAppCtrl
   
   public static void a(String paramString1, String paramString2)
   {
-    new Handler(Looper.getMainLooper()).post(new anay(paramString2, paramString1));
+    new Handler(Looper.getMainLooper()).post(new anix(paramString2, paramString1));
   }
   
   public static void a(Map paramMap)
@@ -356,7 +356,7 @@ public class QZoneDistributedAppCtrl
   public void a(QZoneDistributedAppCtrl.Control paramControl)
   {
     if (paramControl != null) {
-      ThreadManager.executeOnNetWorkThread(new anax(this, paramControl));
+      ThreadManager.executeOnNetWorkThread(new aniw(this, paramControl));
     }
   }
   

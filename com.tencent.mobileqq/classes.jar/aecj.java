@@ -1,37 +1,72 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper;
+import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
+import com.tencent.mobileqq.intervideo.huayang.Monitor;
 
 public class aecj
-  extends TroopObserver
+  implements aecv
 {
-  public aecj(LoginWelcomeManager paramLoginWelcomeManager) {}
+  public aecj(HuayangDowanloadHelper paramHuayangDowanloadHelper) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    if (paramBoolean)
+    Intent localIntent = new Intent(HuayangJsPlugin.a(HuayangDowanloadHelper.a(this.a)));
+    localIntent.putExtra("key_state", paramInt);
+    switch (paramInt)
     {
-      paramString = LoginWelcomeManager.a(this.a).getBundle("request");
-      paramString.putString("uin", String.valueOf(paramLong));
-      paramString.putShort("option", paramTroopInfo.cGroupOption);
-      paramString.putString("name", paramTroopInfo.troopname);
-      if ((paramTroopInfo.cGroupOption != 4) && (paramTroopInfo.cGroupOption != 5)) {
-        break label114;
-      }
-      paramString.putString("answer", paramTroopInfo.joinTroopAnswer);
-      paramString.putString("question", paramTroopInfo.joinTroopQuestion);
     }
     for (;;)
     {
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(this);
+      HuayangDowanloadHelper.a(this.a).sendBroadcast(localIntent);
       return;
-      label114:
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "onOIDB0X88D_1_Ret err");
+      localIntent.putExtra("key_totalSize", ((Long)paramVarArgs[0]).longValue());
+      continue;
+      paramInt = ((Integer)paramVarArgs[0]).intValue();
+      localIntent.putExtra("key_totalSize", ((Long)paramVarArgs[1]).longValue());
+      localIntent.putExtra("key_progress", paramInt);
+      continue;
+      localIntent.putExtra("key_installedplugin", (InstalledPlugin)paramVarArgs[0]);
+      if (HuayangJsPlugin.a(HuayangDowanloadHelper.a(this.a)))
+      {
+        Monitor.a("2691709");
+      }
+      else if (HuayangJsPlugin.b(HuayangDowanloadHelper.a(this.a)))
+      {
+        Monitor.a("2597857");
+        continue;
+        localIntent.putExtra("key_error_msg", (String)paramVarArgs[0]);
+        if (HuayangJsPlugin.a(HuayangDowanloadHelper.a(this.a)))
+        {
+          Monitor.a("2691710");
+        }
+        else if (HuayangJsPlugin.b(HuayangDowanloadHelper.a(this.a)))
+        {
+          Monitor.a("2597858");
+          continue;
+          if ("download".equals(HuayangDowanloadHelper.b(this.a)))
+          {
+            InstalledPlugin localInstalledPlugin = (InstalledPlugin)paramVarArgs[0];
+            boolean bool = ((Boolean)paramVarArgs[1]).booleanValue();
+            HuayangDowanloadHelper.a(this.a, localInstalledPlugin, bool);
+          }
+          if (HuayangJsPlugin.a(HuayangDowanloadHelper.a(this.a)))
+          {
+            Monitor.a("2691703");
+          }
+          else if (HuayangJsPlugin.b(HuayangDowanloadHelper.a(this.a)))
+          {
+            Monitor.a("2597720");
+            continue;
+            localIntent.putExtra("key_error_msg", (String)paramVarArgs[0]);
+            if (HuayangJsPlugin.a(HuayangDowanloadHelper.a(this.a))) {
+              Monitor.a("2691704");
+            } else if (HuayangJsPlugin.b(HuayangDowanloadHelper.a(this.a))) {
+              Monitor.a("2597721");
+            }
+          }
+        }
       }
     }
   }

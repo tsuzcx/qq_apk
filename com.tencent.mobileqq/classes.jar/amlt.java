@@ -1,24 +1,31 @@
-import java.io.File;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-public final class amlt
-  implements Comparator
+public class amlt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a(File paramFile1, File paramFile2)
+  public amlt(XPanelContainer paramXPanelContainer, int paramInt) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    long l = paramFile1.length() - paramFile2.length();
-    if (l > 0L) {
-      return 1;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "openAnim resetPosition");
+      }
+      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
+      return;
     }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import java.util.Calendar;
 
 public class rpi
-  implements DialogInterface.OnClickListener
+  implements IphonePickerView.PickerViewAdapter
 {
-  public rpi(BaseChatPie paramBaseChatPie) {}
+  private rpi(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int getColumnCount()
   {
-    paramDialogInterface = new Intent(this.a.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", ApolloConstant.O);
-    this.a.a.startActivityForResult(paramDialogInterface, 0);
+    return 3;
+  }
+  
+  public int getRowCount(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return AgeSelectionActivity.a(this.a) - 1897 + 1;
+    case 1: 
+      return 12;
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, AgeSelectionActivity.b(this.a) + 1897);
+    localCalendar.set(2, AgeSelectionActivity.c(this.a));
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String getText(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1897 + "年";
+    case 1: 
+      return paramInt2 + 1 + "月";
+    }
+    return paramInt2 + 1 + "日";
   }
 }
 

@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.profile;
 
-import agpj;
-import agpk;
-import agpm;
+import agty;
+import agtz;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,7 +14,6 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -44,7 +42,7 @@ public class ProfileCardWebviewPlugin
   extends VasWebviewJsPlugin
 {
   public int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new agpj(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new agty(this);
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory;
   ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
   public List a;
@@ -97,10 +95,10 @@ public class ProfileCardWebviewPlugin
   {
     c();
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.c(this.mRuntime.a());
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131436160));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131436158));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131433015));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new agpm(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131436178));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131436176));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(this.mRuntime.a().getResources().getString(2131433029));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new agtz(this));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setCanceledOnTouchOutside(true);
     try
     {
@@ -120,11 +118,11 @@ public class ProfileCardWebviewPlugin
     //   4: ifnull +25 -> 29
     //   7: aload_0
     //   8: getfield 50	com/tencent/mobileqq/profile/ProfileCardWebviewPlugin:jdField_a_of_type_ComTencentWidgetActionSheet	Lcom/tencent/widget/ActionSheet;
-    //   11: invokevirtual 165	com/tencent/widget/ActionSheet:isShowing	()Z
+    //   11: invokevirtual 162	com/tencent/widget/ActionSheet:isShowing	()Z
     //   14: ifeq +15 -> 29
     //   17: aload_0
     //   18: getfield 50	com/tencent/mobileqq/profile/ProfileCardWebviewPlugin:jdField_a_of_type_ComTencentWidgetActionSheet	Lcom/tencent/widget/ActionSheet;
-    //   21: invokevirtual 168	com/tencent/widget/ActionSheet:dismiss	()V
+    //   21: invokevirtual 165	com/tencent/widget/ActionSheet:dismiss	()V
     //   24: aload_0
     //   25: aconst_null
     //   26: putfield 50	com/tencent/mobileqq/profile/ProfileCardWebviewPlugin:jdField_a_of_type_ComTencentWidgetActionSheet	Lcom/tencent/widget/ActionSheet;
@@ -195,10 +193,7 @@ public class ProfileCardWebviewPlugin
   public void a()
   {
     if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {}
-    String str3;
-    String str2;
-    String str4;
-    boolean bool;
+    String str;
     for (;;)
     {
       return;
@@ -206,19 +201,15 @@ public class ProfileCardWebviewPlugin
       {
         if (a() == 0)
         {
-          Object localObject = (VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-          String str1 = ((VipProfileCardDownLoadInfo)localObject).jdField_a_of_type_JavaLangString;
-          str3 = ((VipProfileCardDownLoadInfo)localObject).jdField_b_of_type_JavaLangString;
-          str2 = ((VipProfileCardDownLoadInfo)localObject).jdField_c_of_type_JavaLangString;
-          str4 = ((VipProfileCardDownLoadInfo)localObject).jdField_d_of_type_JavaLangString;
-          bool = ((VipProfileCardDownLoadInfo)localObject).jdField_a_of_type_Boolean;
+          localObject = (VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          str = ((VipProfileCardDownLoadInfo)localObject).jdField_d_of_type_JavaLangString;
+          Long localLong = ((VipProfileCardDownLoadInfo)localObject).jdField_a_of_type_JavaLangLong;
           if (((VipProfileCardDownLoadInfo)localObject).jdField_b_of_type_Boolean)
           {
             ((VipProfileCardDownLoadInfo)localObject).jdField_b_of_type_Boolean = false;
             this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
-            localObject = DataFactory.a("card_download_wzry_template", str4, this.mOnRemoteResp.key, new Bundle());
-            ((Bundle)localObject).putString("image_url", str1);
-            ((Bundle)localObject).putString("wzHeroUrl", str2);
+            localObject = DataFactory.a("card_download_wzry_template", str, this.mOnRemoteResp.key, new Bundle());
+            ((Bundle)localObject).putLong("bgId", localLong.longValue());
             sendRemoteReq((Bundle)localObject, false, false);
             return;
           }
@@ -230,7 +221,10 @@ public class ProfileCardWebviewPlugin
         return;
       }
     }
-    a(localException, str3, str2, str4, bool);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
+    Object localObject = DataFactory.a("card_download", str, this.mOnRemoteResp.key, new Bundle());
+    ((Bundle)localObject).putLong("bgId", localException.longValue());
+    sendRemoteReq((Bundle)localObject, false, false);
   }
   
   public void a(String paramString1, String paramString2)
@@ -239,11 +233,6 @@ public class ProfileCardWebviewPlugin
       QLog.i("ProfileCardWebviewPlugin", 2, "method:" + paramString1 + ", json:" + paramString2);
     }
     callJs(paramString1, new String[] { paramString2 });
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
-  {
-    ThreadManager.post(new agpk(this, paramString2, paramBoolean, paramString4, paramString3, paramString1), 8, null, false);
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -255,6 +244,7 @@ public class ProfileCardWebviewPlugin
     Object localObject1;
     long l1;
     String str;
+    int j;
     try
     {
       paramString1 = new JSONObject(paramVarArgs[0]);
@@ -326,7 +316,9 @@ public class ProfileCardWebviewPlugin
           paramJsBridgeListener = paramString2;
           localObject2 = paramString1.optString("dynamicZip");
           paramJsBridgeListener = paramString2;
-          if (ProfileCardUtil.a((Context)localObject1, paramString3))
+          i = paramString1.optInt("id");
+          paramJsBridgeListener = paramString2;
+          if (ProfileCardManager.a((Context)localObject1, i, "cardPreview.jpg"))
           {
             paramJsBridgeListener = paramString2;
             if (QLog.isColorLevel())
@@ -346,7 +338,7 @@ public class ProfileCardWebviewPlugin
               return true;
             }
             paramJsBridgeListener = paramString2;
-            if (ProfileCardUtil.b((Context)localObject1, (String)localObject2))
+            if (ProfileCardManager.a((Context)localObject1, i, ".dynamic"))
             {
               paramJsBridgeListener = paramString2;
               paramVarArgs.put("result", 0);
@@ -408,32 +400,32 @@ public class ProfileCardWebviewPlugin
             }
           }
           paramJsBridgeListener = paramString2;
-          localObject1 = new VipProfileCardDownLoadInfo();
+          paramString1 = new VipProfileCardDownLoadInfo();
           paramJsBridgeListener = paramString2;
-          ((VipProfileCardDownLoadInfo)localObject1).jdField_a_of_type_JavaLangLong = Long.valueOf(paramString1.getLong("id"));
+          paramString1.jdField_a_of_type_JavaLangLong = Long.valueOf(i);
           paramJsBridgeListener = paramString2;
-          ((VipProfileCardDownLoadInfo)localObject1).jdField_a_of_type_JavaLangString = paramString3;
+          paramString1.jdField_a_of_type_JavaLangString = paramString3;
           paramJsBridgeListener = paramString2;
-          ((VipProfileCardDownLoadInfo)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
+          paramString1.jdField_b_of_type_JavaLangString = ((String)localObject2);
           paramJsBridgeListener = paramString2;
-          ((VipProfileCardDownLoadInfo)localObject1).jdField_d_of_type_JavaLangString = paramString2;
+          paramString1.jdField_d_of_type_JavaLangString = paramString2;
           paramJsBridgeListener = paramString2;
-          ((VipProfileCardDownLoadInfo)localObject1).e = Integer.valueOf(0);
+          paramString1.e = Integer.valueOf(0);
           paramJsBridgeListener = paramString2;
-          ((VipProfileCardDownLoadInfo)localObject1).g = VipProfileCardDownLoadInfo.jdField_a_of_type_JavaLangInteger;
+          paramString1.g = VipProfileCardDownLoadInfo.jdField_a_of_type_JavaLangInteger;
           paramJsBridgeListener = paramString2;
-          this.jdField_a_of_type_JavaUtilList.add(localObject1);
+          this.jdField_a_of_type_JavaUtilList.add(paramString1);
           paramJsBridgeListener = paramString2;
           if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0) {
-            break label3474;
+            break label3561;
           }
           paramJsBridgeListener = paramString2;
           a();
-          break label3474;
+          break label3561;
         }
         paramJsBridgeListener = paramString2;
         if (!paramString3.equals("queryDownloadInfo")) {
-          break label1643;
+          break label1666;
         }
       }
       paramJsBridgeListener = paramString2;
@@ -441,15 +433,17 @@ public class ProfileCardWebviewPlugin
       paramJsBridgeListener = paramString2;
       str = paramString1.optString("dynamicZip");
       paramJsBridgeListener = paramString2;
-      if (!ProfileCardUtil.a((Context)localObject1, paramString3)) {
-        break label1118;
+      j = paramString1.optInt("id");
+      paramJsBridgeListener = paramString2;
+      if (!ProfileCardManager.a((Context)localObject1, j, "cardPreview.jpg")) {
+        break label1143;
       }
     }
     paramJsBridgeListener = paramString2;
     if (!TextUtils.isEmpty(str))
     {
       paramJsBridgeListener = paramString2;
-      if (!ProfileCardUtil.b((Context)localObject1, str)) {}
+      if (!ProfileCardManager.a((Context)localObject1, j, ".dynamic")) {}
     }
     else
     {
@@ -466,8 +460,8 @@ public class ProfileCardWebviewPlugin
       paramVarArgs.put("data", localObject2);
       paramJsBridgeListener = paramString2;
       a(paramString2, paramVarArgs.toString());
-      break label3474;
-      label1118:
+      break label3561;
+      label1143:
       paramJsBridgeListener = paramString2;
       if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 0) {
         break;
@@ -486,15 +480,15 @@ public class ProfileCardWebviewPlugin
     {
       paramJsBridgeListener = paramString2;
       if (!((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString3)) {
-        break label3476;
+        break label3563;
       }
       paramJsBridgeListener = paramString2;
-      if (paramString1.getLong("id") != ((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangLong.longValue()) {
-        break label3476;
+      if (j != ((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangLong.longValue()) {
+        break label3563;
       }
       paramJsBridgeListener = paramString2;
       if (((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).g == VipProfileCardDownLoadInfo.jdField_d_of_type_JavaLangInteger) {
-        break label3476;
+        break label3563;
       }
       paramJsBridgeListener = paramString2;
       if (QLog.isColorLevel())
@@ -506,12 +500,24 @@ public class ProfileCardWebviewPlugin
       if (((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).g != VipProfileCardDownLoadInfo.jdField_a_of_type_JavaLangInteger)
       {
         paramJsBridgeListener = paramString2;
-        if (((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).g != VipProfileCardDownLoadInfo.jdField_b_of_type_JavaLangInteger) {
-          break label1548;
-        }
+        if (((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).g != VipProfileCardDownLoadInfo.jdField_b_of_type_JavaLangInteger) {}
+      }
+      else
+      {
+        paramJsBridgeListener = paramString2;
+        paramString1 = DataFactory.a("card_query_download", paramString2, this.mOnRemoteResp.key, new Bundle());
+        paramJsBridgeListener = paramString2;
+        paramString1.putInt("bgId", j);
+        paramJsBridgeListener = paramString2;
+        sendRemoteReq(paramString1, false, false);
+        return true;
       }
       paramJsBridgeListener = paramString2;
-      ((JSONObject)localObject2).put("status", 2);
+      if (((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).g != VipProfileCardDownLoadInfo.jdField_c_of_type_JavaLangInteger) {
+        break label1639;
+      }
+      paramJsBridgeListener = paramString2;
+      ((JSONObject)localObject2).put("status", 1);
       paramJsBridgeListener = paramString2;
       ((JSONObject)localObject2).put("progress", ((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).e);
     }
@@ -530,28 +536,16 @@ public class ProfileCardWebviewPlugin
       paramJsBridgeListener = paramString2;
       paramVarArgs.put("result", 0);
       break;
-      label1548:
+      label1639:
       paramJsBridgeListener = paramString2;
-      if (((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).g == VipProfileCardDownLoadInfo.jdField_c_of_type_JavaLangInteger)
-      {
-        paramJsBridgeListener = paramString2;
-        ((JSONObject)localObject2).put("status", 1);
-        paramJsBridgeListener = paramString2;
-        ((JSONObject)localObject2).put("progress", ((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).e);
-      }
-      else
-      {
-        paramJsBridgeListener = paramString2;
-        ((JSONObject)localObject2).put("status", 1);
-        paramJsBridgeListener = paramString2;
-        ((JSONObject)localObject2).put("progress", 0);
-      }
+      ((JSONObject)localObject2).put("status", 1);
+      paramJsBridgeListener = paramString2;
+      ((JSONObject)localObject2).put("progress", 0);
     }
-    label1643:
+    label1666:
     paramJsBridgeListener = paramString2;
-    label1877:
-    int j;
-    label2598:
+    label1901:
+    label2675:
     int k;
     if (paramString3.equals("preview"))
     {
@@ -604,16 +598,24 @@ public class ProfileCardWebviewPlugin
           {
             paramJsBridgeListener = paramString2;
             if (((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangLong.longValue() != l1) {
-              break label3485;
+              break label3572;
             }
             paramJsBridgeListener = paramString2;
             if (!((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString3)) {
-              break label3485;
+              break label3572;
             }
             paramJsBridgeListener = paramString2;
             if (((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).g == VipProfileCardDownLoadInfo.jdField_d_of_type_JavaLangInteger) {
-              break label3485;
+              break label3572;
             }
+            paramJsBridgeListener = paramString2;
+            paramString1 = DataFactory.a("card_cancel_download", paramString2, this.mOnRemoteResp.key, new Bundle());
+            paramJsBridgeListener = paramString2;
+            paramString1.putLong("bgId", l1);
+            paramJsBridgeListener = paramString2;
+            sendRemoteReq(paramString1, false, false);
+            paramJsBridgeListener = paramString2;
+            this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
             paramJsBridgeListener = paramString2;
             ((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(i)).g = VipProfileCardDownLoadInfo.jdField_d_of_type_JavaLangInteger;
             paramJsBridgeListener = paramString2;
@@ -707,11 +709,11 @@ public class ProfileCardWebviewPlugin
                     paramString1 = ((WebUiUtils.WebUiMethodInterface)paramString1).b();
                     paramJsBridgeListener = paramString2;
                     if (TextUtils.isEmpty(paramString1)) {
-                      break label2598;
+                      break label2675;
                     }
                     paramJsBridgeListener = paramString2;
                     if (!paramString1.contains("entryId")) {
-                      break label2598;
+                      break label2675;
                     }
                     paramJsBridgeListener = paramString2;
                   }
@@ -769,34 +771,34 @@ public class ProfileCardWebviewPlugin
                     paramString3 = paramString1.optString("wzHeroUrl");
                     paramJsBridgeListener = paramString2;
                     if (!VipWZRYTemplateHelper.a(paramString1.optInt("styleId"))) {
-                      break label3494;
+                      break label3581;
                     }
                     paramJsBridgeListener = paramString2;
                     if (!VipWZRYTemplateHelper.a((Context)localObject1, "cardWZ.zip")) {
-                      break label3494;
+                      break label3581;
                     }
                     i = 1;
-                    label2820:
+                    label2898:
                     paramJsBridgeListener = paramString2;
                     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                      break label3500;
+                      break label3587;
                     }
                     paramJsBridgeListener = paramString2;
-                    if (!ProfileCardUtil.a((Context)localObject1, (String)localObject2)) {
-                      break label3500;
+                    if (!ProfileCardManager.a((Context)localObject1, l1, "wzJoinImage.png")) {
+                      break label3587;
                     }
                     j = 1;
-                    label2845:
+                    label2926:
                     paramJsBridgeListener = paramString2;
                     if (TextUtils.isEmpty(paramString3)) {
-                      break label3506;
+                      break label3593;
                     }
                     paramJsBridgeListener = paramString2;
-                    if (!ProfileCardUtil.a((Context)localObject1, paramString3)) {
-                      break label3506;
+                    if (!ProfileCardManager.a((Context)localObject1, l1, "wzMainImage.png")) {
+                      break label3593;
                     }
                     k = 1;
-                    label2870:
+                    label2954:
                     if ((i != 0) && (j != 0))
                     {
                       bool = true;
@@ -804,7 +806,7 @@ public class ProfileCardWebviewPlugin
                       if (!TextUtils.isEmpty(paramString3))
                       {
                         paramJsBridgeListener = paramString2;
-                        bool = ProfileCardUtil.a((Context)localObject1, paramString3);
+                        bool = ProfileCardManager.a((Context)localObject1, l1, "wzMainImage.png");
                       }
                       if (bool)
                       {
@@ -890,14 +892,14 @@ public class ProfileCardWebviewPlugin
                     paramJsBridgeListener = paramString2;
                     ((VipProfileCardDownLoadInfo)localObject1).jdField_d_of_type_JavaLangString = paramString2;
                     if (k == 0) {
-                      break label3512;
+                      break label3599;
                     }
                     paramString1 = null;
-                    label3312:
+                    label3399:
                     paramJsBridgeListener = paramString2;
                     ((VipProfileCardDownLoadInfo)localObject1).jdField_c_of_type_JavaLangString = paramString1;
                     if (i != 0) {
-                      break label3518;
+                      break label3605;
                     }
                   }
                 }
@@ -907,14 +909,10 @@ public class ProfileCardWebviewPlugin
         }
       }
     }
-    label3474:
-    label3476:
-    label3485:
-    label3494:
-    label3500:
-    label3506:
-    label3512:
-    label3518:
+    label3587:
+    label3593:
+    label3599:
+    label3605:
     for (boolean bool = true;; bool = false)
     {
       paramJsBridgeListener = paramString2;
@@ -932,7 +930,7 @@ public class ProfileCardWebviewPlugin
       {
         paramJsBridgeListener = paramString2;
         a();
-        break label3474;
+        break label3561;
         paramJsBridgeListener = paramString2;
         if (paramString3.equals("setSwitchOfKingGlory"))
         {
@@ -950,19 +948,23 @@ public class ProfileCardWebviewPlugin
           return false;
         }
       }
+      label3561:
       return true;
+      label3563:
       i += 1;
       break;
+      label3572:
       i += 1;
-      break label1877;
+      break label1901;
+      label3581:
       i = 0;
-      break label2820;
+      break label2898;
       j = 0;
-      break label2845;
+      break label2926;
       k = 0;
-      break label2870;
+      break label2954;
       paramString1 = paramString3;
-      break label3312;
+      break label3399;
     }
   }
   
@@ -1029,7 +1031,8 @@ public class ProfileCardWebviewPlugin
     if (paramBundle != null) {
       for (;;)
       {
-        JSONObject localJSONObject;
+        Object localObject2;
+        Object localObject1;
         String str2;
         String str1;
         Bundle localBundle;
@@ -1038,8 +1041,8 @@ public class ProfileCardWebviewPlugin
           if (paramBundle.getInt("respkey", 0) != this.mOnRemoteResp.key) {
             break;
           }
-          localObject = new JSONObject();
-          localJSONObject = new JSONObject();
+          localObject2 = new JSONObject();
+          localObject1 = new JSONObject();
           str2 = paramBundle.getString("cmd");
           str1 = paramBundle.getString("callbackid");
           localBundle = paramBundle.getBundle("response");
@@ -1053,23 +1056,23 @@ public class ProfileCardWebviewPlugin
             int j = localBundle.getInt("result");
             i = 0;
             if ((l2 == ProfileCardTemplate.e) || (l2 == ProfileCardTemplate.a) || (l2 == ProfileCardTemplate.g)) {
-              break label494;
+              break label787;
             }
-            ((JSONObject)localObject).put("currentId", l1);
-            ((JSONObject)localObject).put("styleId", l2);
-            ((JSONObject)localObject).put("isPhotoWall", i);
-            localJSONObject.put("data", localObject);
-            localJSONObject.put("result", j);
-            a(str1, localJSONObject.toString());
+            ((JSONObject)localObject2).put("currentId", l1);
+            ((JSONObject)localObject2).put("styleId", l2);
+            ((JSONObject)localObject2).put("isPhotoWall", i);
+            ((JSONObject)localObject1).put("data", localObject2);
+            ((JSONObject)localObject1).put("result", j);
+            a(str1, ((JSONObject)localObject1).toString());
             return;
           }
           if ("card_setSummaryCard".equals(str2))
           {
             i = localBundle.getInt("result");
             paramBundle = localBundle.getString("message");
-            localJSONObject.put("result", i);
-            localJSONObject.put("message", paramBundle);
-            a(str1, localJSONObject.toString());
+            ((JSONObject)localObject1).put("result", i);
+            ((JSONObject)localObject1).put("message", paramBundle);
+            a(str1, ((JSONObject)localObject1).toString());
             return;
           }
         }
@@ -1081,27 +1084,58 @@ public class ProfileCardWebviewPlugin
         if ("card_getVipInfo".equals(str2))
         {
           ReportController.b(null, "P_CliOper", "Vip_SummaryCard", "", paramBundle.getString("op_name"), paramBundle.getString("op_name"), 0, 0, paramBundle.getString("ext1"), paramBundle.getString("ext2"), paramBundle.getString("ext3"), localBundle.getString("vip_info"));
-          localJSONObject.put("result", 0);
-          localJSONObject.put("message", "ok");
-          a(str1, localJSONObject.toString());
+          ((JSONObject)localObject1).put("result", 0);
+          ((JSONObject)localObject1).put("message", "ok");
+          a(str1, ((JSONObject)localObject1).toString());
           return;
         }
-        if (("selectPhoto".equals(str2)) || ("takePhoto".equals(str2)) || (!"card_download_wzry_template".equals(str2))) {
+        if (("selectPhoto".equals(str2)) || ("takePhoto".equals(str2))) {
           break;
         }
-        int i = localBundle.getInt("result");
-        Object localObject = localBundle.getString("message");
-        if (i != 0)
+        if ("card_download_wzry_template".equals(str2))
         {
-          localJSONObject.put("result", -1);
-          localJSONObject.put("message", localObject);
-          a(str1, localJSONObject.toString());
-          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+          i = localBundle.getInt("result");
+          localObject2 = localBundle.getString("message");
+          if (i != 0)
+          {
+            ((JSONObject)localObject1).put("result", -1);
+            ((JSONObject)localObject1).put("message", localObject2);
+            a(str1, ((JSONObject)localObject1).toString());
+            this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+            return;
+          }
+          localObject1 = DataFactory.a("card_download", str1, this.mOnRemoteResp.key, new Bundle());
+          ((Bundle)localObject1).putLong("bgId", paramBundle.getLong("bgId"));
+          sendRemoteReq((Bundle)localObject1, false, false);
           return;
         }
-        a(paramBundle.getString("image_url"), "", paramBundle.getString("wzHeroUrl"), str1, true);
+        if ("card_download".equals(str2))
+        {
+          ((JSONObject)localObject1).put("result", localBundle.getInt("result"));
+          ((JSONObject)localObject1).put("message", "onHttpEnd");
+          if (((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).g != VipProfileCardDownLoadInfo.jdField_d_of_type_JavaLangInteger) {
+            ((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).g = VipProfileCardDownLoadInfo.jdField_c_of_type_JavaLangInteger;
+          }
+          ((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).e = Integer.valueOf(100);
+          a(str1, ((JSONObject)localObject1).toString());
+          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+          a();
+          return;
+        }
+        if (!"card_query_download".equals(str2)) {
+          break;
+        }
+        ((JSONObject)localObject1).put("result", 0);
+        ((JSONObject)localObject2).put("status", 2);
+        int i = localBundle.getInt("progress");
+        ((JSONObject)localObject2).put("progress", i);
+        if (((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).g != VipProfileCardDownLoadInfo.jdField_c_of_type_JavaLangInteger) {
+          ((VipProfileCardDownLoadInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())).e = Integer.valueOf(i);
+        }
+        ((JSONObject)localObject1).put("data", localObject2);
+        a(str1, ((JSONObject)localObject1).toString());
         return;
-        label494:
+        label787:
         i = 1;
       }
     }

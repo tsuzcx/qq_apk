@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aioo;
+import aitr;
 import android.graphics.BitmapFactory.Options;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -199,7 +199,7 @@ public class BDHCommonUploadProcessor
           this.jdField_l_of_type_JavaLangString = paramRichProtoReq.jdField_a_of_type_JavaLangString;
           this.s = paramRichProtoReq.jdField_b_of_type_Int;
           this.r = paramRichProtoReq.jdField_b_of_type_Long;
-          an_();
+          ap_();
           break label374;
           d();
         }
@@ -390,15 +390,15 @@ public class BDHCommonUploadProcessor
     return localReqBody.toByteArray();
   }
   
-  public final void an_()
+  public final void ap_()
   {
     if (QLog.isColorLevel()) {
       QLog.d("BDHCommonUploadProcessor", 2, "BDHNormalUploadProcessor.sendFile()");
     }
     this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
-    aioo localaioo = new aioo(this, SystemClock.uptimeMillis());
+    aitr localaitr = new aitr(this, SystemClock.uptimeMillis());
     if (this.jdField_a_of_type_Int == 9) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, PkgTools.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ArrayOfByte, localaioo, this.jdField_a_of_type_TencentImCsCmd0x388Cmd0x388$ExpRoamExtendInfo.toByteArray());
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, PkgTools.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ArrayOfByte, localaitr, this.jdField_a_of_type_TencentImCsCmd0x388Cmd0x388$ExpRoamExtendInfo.toByteArray());
     }
     for (;;)
     {
@@ -413,24 +413,24 @@ public class BDHCommonUploadProcessor
       }
       return;
       if (this.jdField_a_of_type_Int == 20) {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, PkgTools.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ArrayOfByte, localaioo, this.jdField_a_of_type_ComTencentMobileqqHighwayProtocolBdh_extinfo$UploadPicExtInfo.toByteArray());
+        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, PkgTools.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ArrayOfByte, localaitr, this.jdField_a_of_type_ComTencentMobileqqHighwayProtocolBdh_extinfo$UploadPicExtInfo.toByteArray());
       } else if (this.jdField_a_of_type_Int == 36) {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localaioo, a(), false);
+        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localaitr, a(), false);
       } else if (this.jdField_a_of_type_Int == 40) {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localaioo, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_ArrayOfByte, true);
+        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localaitr, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_ArrayOfByte, true);
       } else if (this.jdField_a_of_type_Int == 54) {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localaioo, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_ArrayOfByte, false);
+        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localaitr, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_ArrayOfByte, false);
       } else if ((this.jdField_a_of_type_Int == 51) || (this.jdField_a_of_type_Int == 58)) {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localaioo, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_ArrayOfByte, false);
+        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localaitr, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_ArrayOfByte, false);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, PkgTools.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ArrayOfByte, localaioo);
+        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, PkgTools.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ArrayOfByte, localaitr);
       }
     }
   }
   
-  public final void ap_()
+  public final void ar_()
   {
-    super.ap_();
+    super.ar_();
     if (QLog.isColorLevel()) {
       QLog.d("BDHCommonUploadProcessor", 2, "BDHCommonUploadProcessor.start()");
     }
@@ -443,7 +443,7 @@ public class BDHCommonUploadProcessor
     {
       this.jdField_a_of_type_JavaLangString = "null";
       this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i;
-      an_();
+      ap_();
     }
     for (;;)
     {
@@ -452,23 +452,23 @@ public class BDHCommonUploadProcessor
       if (18 == this.jdField_a_of_type_Int)
       {
         this.jdField_a_of_type_JavaLangString = "null";
-        an_();
+        ap_();
       }
       else if (40 == this.jdField_a_of_type_Int)
       {
-        an_();
+        ap_();
       }
       else if (54 == this.jdField_a_of_type_Int)
       {
-        an_();
+        ap_();
       }
       else if (51 == this.jdField_a_of_type_Int)
       {
-        an_();
+        ap_();
       }
       else if (58 == this.jdField_a_of_type_Int)
       {
-        an_();
+        ap_();
       }
       else
       {
@@ -645,7 +645,7 @@ public class BDHCommonUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BDHCommonUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

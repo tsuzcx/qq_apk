@@ -1,769 +1,403 @@
 package com.tencent.mapsdk.rastercore.d;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mapsdk.raster.model.QMapLanguage;
-import com.tencent.mapsdk.rastercore.d;
-import com.tencent.mapsdk.rastercore.d.a;
-import com.tencent.mapsdk.rastercore.d.b;
-import com.tencent.mapsdk.rastercore.tile.MapTile.MapSource;
-import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnScreenShotListener;
+import com.tencent.mapsdk.raster.model.LatLng;
+import com.tencent.mapsdk.rastercore.b.f;
+import com.tencent.mapsdk.rastercore.c;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import org.json.JSONObject;
 
-public final class e
-  implements d.b
+public class e
 {
-  private static int D = 160;
-  public static StringBuffer a = new StringBuffer();
-  public static StringBuffer b = new StringBuffer();
-  private static volatile Context c;
-  private static boolean q = true;
-  private static boolean s = false;
-  private static volatile int t = com.tencent.mapsdk.rastercore.b.a;
-  private static volatile int u = com.tencent.mapsdk.rastercore.b.b;
-  private static volatile int v = 0;
-  private static volatile int w = 1000;
-  private static volatile int x = 1000;
-  private static volatile int y = 0;
-  private static volatile String z = QMapLanguage.getLanguageCode(QMapLanguage.QMapLanguage_en);
-  private boolean A = false;
-  private boolean B = false;
-  private boolean C = false;
-  private MapView d;
-  private a e;
-  private b f;
-  private f g;
-  private com.tencent.mapsdk.rastercore.tile.a.1 h;
-  private com.tencent.mapsdk.rastercore.tile.e i;
-  private c j;
-  private a.1 k;
-  private volatile com.tencent.mapsdk.rastercore.g.b l;
-  private com.tencent.mapsdk.rastercore.g.a m;
-  private int n = 1;
-  private TencentMap.OnScreenShotListener o = null;
-  private boolean p = false;
-  private Rect r = null;
+  private static ConcurrentHashMap<String, f[]> a = new ConcurrentHashMap();
+  private static volatile e b;
+  private Context c;
+  private ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+  private String e = null;
+  private String f = null;
+  private boolean g = false;
+  private AtomicInteger h = new AtomicInteger(0);
   
-  public e(MapView paramMapView, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public static e a()
   {
-    this.A = paramBoolean1;
-    Object localObject;
-    if (!paramBoolean2)
+    if (b == null) {}
+    try
     {
-      paramBoolean2 = true;
-      this.B = paramBoolean2;
-      y = paramInt;
-      localObject = paramMapView.getContext().getApplicationContext();
-      c = (Context)localObject;
-      if (localObject != null) {
-        break label463;
+      if (b == null) {
+        b = new e();
+      }
+      return b;
+    }
+    finally {}
+  }
+  
+  public static boolean a(f paramf, f[] paramArrayOff)
+  {
+    int n;
+    if ((paramArrayOff == null) || (paramArrayOff.length < 3)) {
+      n = 0;
+    }
+    int i;
+    int m;
+    do
+    {
+      return n;
+      j = paramArrayOff.length - 1;
+      i = 0;
+      m = 0;
+      n = m;
+    } while (i >= paramArrayOff.length);
+    if ((paramArrayOff[i].a() >= paramf.a()) || (paramArrayOff[j].a() < paramf.a()))
+    {
+      n = m;
+      if (paramArrayOff[j].a() < paramf.a())
+      {
+        n = m;
+        if (paramArrayOff[i].a() < paramf.a()) {}
       }
     }
-    label463:
-    for (paramBoolean2 = false;; paramBoolean2 = c.getSharedPreferences("mapsdk_pref", 0).getBoolean("worldEnable", false))
+    else if (paramArrayOff[i].b() > paramf.b())
     {
-      s = paramBoolean2;
-      com.tencent.mapsdk.rastercore.tile.a.a.a().a(c);
-      if (c != null)
-      {
-        D = c.getResources().getDisplayMetrics().densityDpi;
-        if (!paramBoolean1)
-        {
-          d.a.a();
-          x = d.a.a(c.getPackageName(), false);
-        }
-        d.a.a();
-        y = d.a.b(c.getPackageName(), false);
-        d.a.a();
-        t = d.a.a(x, y, false);
-        d.a.a();
-        w = d.a.a(c.getPackageName(), true);
-        d.a.a();
-        v = d.a.b(c.getPackageName(), true);
-        d.a.a();
-        u = d.a.a(w, v, true);
-        new Thread()
-        {
-          public final void run()
-          {
-            com.tencent.mapsdk.rastercore.tile.a.a.a().a(e.C(), e.D(), MapTile.MapSource.BING);
-            com.tencent.mapsdk.rastercore.tile.a.a.a().a(e.E(), e.F(), MapTile.MapSource.TENCENT);
-            com.tencent.mapsdk.rastercore.tile.a.a.a().a(e.E(), e.F(), MapTile.MapSource.QQAR);
-            com.tencent.mapsdk.rastercore.tile.a.a.a().d();
-          }
-        }.start();
+      n = m;
+      if (paramArrayOff[j].b() > paramf.b()) {}
+    }
+    else
+    {
+      if (paramArrayOff[i].b() + (paramf.a() - paramArrayOff[i].a()) / (paramArrayOff[j].a() - paramArrayOff[i].a()) * (paramArrayOff[j].b() - paramArrayOff[i].b()) >= paramf.b()) {
+        break label211;
       }
-      this.d = paramMapView;
-      this.k = new a.1(this);
-      this.l = new com.tencent.mapsdk.rastercore.g.b(this);
-      this.j = new c(this);
-      this.m = new com.tencent.mapsdk.rastercore.g.a(this);
-      this.e = new a(this);
-      this.f = new b(this);
-      this.g = new f(this);
-      this.h = new com.tencent.mapsdk.rastercore.tile.a.1(this, y, t);
-      this.i = new com.tencent.mapsdk.rastercore.tile.e(this);
-      this.j.a();
-      localObject = new ViewGroup.LayoutParams(-1, -1);
-      paramMapView.addView(this.f, (ViewGroup.LayoutParams)localObject);
-      paramMapView.addView(this.m, (ViewGroup.LayoutParams)localObject);
-      paramMapView.addView(this.l, (ViewGroup.LayoutParams)localObject);
-      this.k.b(1);
-      this.k.a(true);
-      this.k.c(0);
-      if (this.B) {
-        com.tencent.mapsdk.rastercore.a.a(this);
-      }
-      new d(c, this, paramInt, v).a();
-      return;
-      paramBoolean2 = false;
+    }
+    label211:
+    for (int j = 1;; j = 0)
+    {
+      n = m ^ j;
+      int k = i + 1;
+      m = n;
+      j = i;
+      i = k;
       break;
     }
   }
   
-  public static int B()
+  public static int b(String paramString)
   {
-    return D;
-  }
-  
-  public static Context a()
-  {
-    return c;
-  }
-  
-  public static void a(String paramString)
-  {
-    z = paramString;
-  }
-  
-  private void a(final StringBuffer paramStringBuffer, final String paramString)
-  {
-    if ((paramStringBuffer == null) || (paramStringBuffer.length() <= 0) || (!this.B)) {}
-    while ((paramStringBuffer == null) || (paramStringBuffer.length() <= 0)) {
-      return;
+    int i = h.k();
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return i;
     }
-    paramStringBuffer.deleteCharAt(paramStringBuffer.length() - 1);
-    new Thread()
+    try
     {
-      /* Error */
-      public final void run()
+      paramString = new JSONObject(paramString);
+      Iterator localIterator = paramString.keys();
+      int j;
+      for (;;)
       {
-        // Byte code:
-        //   0: aconst_null
-        //   1: astore_2
-        //   2: new 27	java/net/URL
-        //   5: dup
-        //   6: new 29	java/lang/StringBuilder
-        //   9: dup
-        //   10: ldc 31
-        //   12: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-        //   15: getstatic 37	com/tencent/mapsdk/rastercore/a:a	Ljava/lang/StringBuffer;
-        //   18: invokevirtual 43	java/lang/StringBuffer:toString	()Ljava/lang/String;
-        //   21: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   24: ldc 49
-        //   26: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   29: aload_0
-        //   30: getfield 16	com/tencent/mapsdk/rastercore/d/e$3:a	Ljava/lang/StringBuffer;
-        //   33: invokevirtual 43	java/lang/StringBuffer:toString	()Ljava/lang/String;
-        //   36: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   39: ldc 51
-        //   41: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   44: aload_0
-        //   45: getfield 18	com/tencent/mapsdk/rastercore/d/e$3:b	Ljava/lang/String;
-        //   48: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   51: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   54: invokespecial 53	java/net/URL:<init>	(Ljava/lang/String;)V
-        //   57: invokevirtual 57	java/net/URL:openConnection	()Ljava/net/URLConnection;
-        //   60: checkcast 59	java/net/HttpURLConnection
-        //   63: astore_1
-        //   64: aload_1
-        //   65: ldc 61
-        //   67: invokevirtual 64	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-        //   70: aload_1
-        //   71: invokevirtual 67	java/net/HttpURLConnection:connect	()V
-        //   74: aload_1
-        //   75: invokevirtual 71	java/net/HttpURLConnection:getResponseCode	()I
-        //   78: sipush 200
-        //   81: if_icmpne +21 -> 102
-        //   84: aload_1
-        //   85: invokevirtual 75	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-        //   88: pop
-        //   89: aload_0
-        //   90: getfield 16	com/tencent/mapsdk/rastercore/d/e$3:a	Ljava/lang/StringBuffer;
-        //   93: astore_2
-        //   94: aload_0
-        //   95: getfield 16	com/tencent/mapsdk/rastercore/d/e$3:a	Ljava/lang/StringBuffer;
-        //   98: iconst_0
-        //   99: invokevirtual 79	java/lang/StringBuffer:setLength	(I)V
-        //   102: aload_1
-        //   103: ifnull +7 -> 110
-        //   106: aload_1
-        //   107: invokevirtual 82	java/net/HttpURLConnection:disconnect	()V
-        //   110: return
-        //   111: astore_1
-        //   112: aconst_null
-        //   113: astore_1
-        //   114: aload_1
-        //   115: ifnull -5 -> 110
-        //   118: aload_1
-        //   119: invokevirtual 82	java/net/HttpURLConnection:disconnect	()V
-        //   122: return
-        //   123: astore_3
-        //   124: aload_2
-        //   125: astore_1
-        //   126: aload_3
-        //   127: astore_2
-        //   128: aload_1
-        //   129: ifnull +7 -> 136
-        //   132: aload_1
-        //   133: invokevirtual 82	java/net/HttpURLConnection:disconnect	()V
-        //   136: aload_2
-        //   137: athrow
-        //   138: astore_2
-        //   139: goto -11 -> 128
-        //   142: astore_2
-        //   143: goto -29 -> 114
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	146	0	this	3
-        //   63	44	1	localHttpURLConnection	java.net.HttpURLConnection
-        //   111	1	1	localException1	java.lang.Exception
-        //   113	20	1	localObject1	Object
-        //   1	136	2	localObject2	Object
-        //   138	1	2	localObject3	Object
-        //   142	1	2	localException2	java.lang.Exception
-        //   123	4	3	localObject4	Object
-        // Exception table:
-        //   from	to	target	type
-        //   2	64	111	java/lang/Exception
-        //   2	64	123	finally
-        //   64	102	138	finally
-        //   64	102	142	java/lang/Exception
+        j = i;
+        try
+        {
+          if (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            if ("version".equals(str))
+            {
+              i = paramString.optInt(str);
+              continue;
+            }
+            f[] arrayOff = d(paramString.optString(str));
+            i = j;
+            if (arrayOff == null) {
+              continue;
+            }
+            a.put(str, arrayOff);
+            i = j;
+          }
+        }
+        catch (Throwable paramString)
+        {
+          return j;
+        }
       }
-    }.start();
-  }
-  
-  public static void c(boolean paramBoolean)
-  {
-    q = false;
-  }
-  
-  public static void d(boolean paramBoolean)
-  {
-    s = paramBoolean;
-  }
-  
-  public static void e(boolean paramBoolean)
-  {
-    if (c == null) {
-      return;
+      return j;
     }
-    SharedPreferences.Editor localEditor = c.getSharedPreferences("mapsdk_pref", 0).edit();
-    localEditor.putBoolean("worldEnable", paramBoolean);
-    localEditor.commit();
-  }
-  
-  public static void n() {}
-  
-  public static boolean q()
-  {
-    return q;
-  }
-  
-  public static boolean r()
-  {
-    return s;
-  }
-  
-  public static int s()
-  {
-    return u;
-  }
-  
-  public static int t()
-  {
-    return v;
-  }
-  
-  public static int u()
-  {
-    return w;
-  }
-  
-  public static String v()
-  {
-    return z;
-  }
-  
-  public static int w()
-  {
-    return t;
-  }
-  
-  public static int x()
-  {
-    return y;
-  }
-  
-  public static int y()
-  {
-    return x;
-  }
-  
-  public final boolean A()
-  {
-    return this.C;
-  }
-  
-  public final void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.l.a(true);
-    }
-    for (;;)
-    {
-      this.n = paramInt;
-      a(false, false);
-      return;
-      this.l.a(false);
-    }
+    catch (Throwable paramString) {}
+    return i;
   }
   
   /* Error */
-  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Bitmap paramBitmap)
+  private String c()
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 14
-    //   3: aconst_null
-    //   4: astore 12
-    //   6: aconst_null
-    //   7: astore 13
-    //   9: aload_0
-    //   10: getfield 119	com/tencent/mapsdk/rastercore/d/e:A	Z
-    //   13: ifne +7 -> 20
-    //   16: iload_2
-    //   17: putstatic 92	com/tencent/mapsdk/rastercore/d/e:y	I
-    //   20: iload_1
-    //   21: putstatic 316	com/tencent/mapsdk/rastercore/b:e	I
-    //   24: iload_3
-    //   25: putstatic 80	com/tencent/mapsdk/rastercore/d/e:t	I
-    //   28: iload 6
-    //   30: putstatic 84	com/tencent/mapsdk/rastercore/d/e:u	I
-    //   33: iload 5
-    //   35: putstatic 86	com/tencent/mapsdk/rastercore/d/e:v	I
-    //   38: iload 4
-    //   40: putstatic 88	com/tencent/mapsdk/rastercore/d/e:w	I
-    //   43: aload_0
-    //   44: getfield 226	com/tencent/mapsdk/rastercore/d/e:h	Lcom/tencent/mapsdk/rastercore/tile/a$1;
-    //   47: iload_2
-    //   48: invokevirtual 318	com/tencent/mapsdk/rastercore/tile/a$1:a	(I)V
-    //   51: aload_0
-    //   52: getfield 226	com/tencent/mapsdk/rastercore/d/e:h	Lcom/tencent/mapsdk/rastercore/tile/a$1;
-    //   55: iload_3
-    //   56: invokevirtual 319	com/tencent/mapsdk/rastercore/tile/a$1:b	(I)V
-    //   59: aload_0
-    //   60: getfield 194	com/tencent/mapsdk/rastercore/d/e:l	Lcom/tencent/mapsdk/rastercore/g/b;
-    //   63: ifnull +12 -> 75
-    //   66: aload_0
-    //   67: getfield 194	com/tencent/mapsdk/rastercore/d/e:l	Lcom/tencent/mapsdk/rastercore/g/b;
-    //   70: aload 7
-    //   72: invokevirtual 322	com/tencent/mapsdk/rastercore/g/b:a	(Landroid/graphics/Bitmap;)V
-    //   75: invokestatic 164	com/tencent/mapsdk/rastercore/d$a:a	()Lcom/tencent/mapsdk/rastercore/d$a;
-    //   78: pop
-    //   79: invokestatic 328	java/lang/System:currentTimeMillis	()J
-    //   82: lstore 8
-    //   84: invokestatic 141	com/tencent/mapsdk/rastercore/tile/a/a:a	()Lcom/tencent/mapsdk/rastercore/tile/a/a;
-    //   87: invokevirtual 330	com/tencent/mapsdk/rastercore/tile/a/a:c	()Ljava/lang/String;
-    //   90: astore 15
-    //   92: aload 15
-    //   94: invokestatic 336	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   97: ifne +11 -> 108
-    //   100: aload 15
-    //   102: invokestatic 339	com/tencent/mapsdk/rastercore/d$a:b	(Ljava/lang/String;)Z
-    //   105: ifne +4 -> 109
-    //   108: return
-    //   109: new 341	java/lang/StringBuilder
-    //   112: dup
-    //   113: invokespecial 342	java/lang/StringBuilder:<init>	()V
-    //   116: aload 15
-    //   118: invokevirtual 346	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: getstatic 351	java/io/File:separator	Ljava/lang/String;
-    //   124: invokevirtual 346	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: ldc_w 353
-    //   130: invokevirtual 346	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: astore 10
-    //   138: new 358	java/util/Properties
-    //   141: dup
-    //   142: invokespecial 359	java/util/Properties:<init>	()V
-    //   145: astore 16
-    //   147: new 348	java/io/File
-    //   150: dup
-    //   151: aload 10
-    //   153: invokespecial 361	java/io/File:<init>	(Ljava/lang/String;)V
-    //   156: astore 7
-    //   158: aload 7
-    //   160: invokevirtual 364	java/io/File:exists	()Z
-    //   163: ifeq +225 -> 388
-    //   166: aload 7
-    //   168: invokevirtual 367	java/io/File:isFile	()Z
-    //   171: ifeq +217 -> 388
-    //   174: new 369	java/io/FileInputStream
-    //   177: dup
-    //   178: aload 10
-    //   180: invokespecial 370	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   183: astore 7
-    //   185: aload 7
-    //   187: astore 11
-    //   189: aload 16
-    //   191: aload 7
-    //   193: invokevirtual 374	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   196: aload 16
-    //   198: ldc_w 376
-    //   201: lload 8
-    //   203: invokestatic 382	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   206: invokevirtual 386	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   209: pop
-    //   210: new 388	java/io/FileOutputStream
-    //   213: dup
-    //   214: aload 10
-    //   216: invokespecial 389	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   219: astore 10
-    //   221: aload 16
-    //   223: aload 10
-    //   225: ldc_w 391
-    //   228: invokevirtual 395	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
-    //   231: aload 7
-    //   233: invokestatic 398	com/tencent/mapsdk/rastercore/d$a:a	(Ljava/io/Closeable;)V
-    //   236: aload 10
-    //   238: invokestatic 398	com/tencent/mapsdk/rastercore/d$a:a	(Ljava/io/Closeable;)V
-    //   241: return
-    //   242: astore 10
-    //   244: aconst_null
-    //   245: astore 7
-    //   247: aload 13
-    //   249: astore 12
-    //   251: aload 7
-    //   253: astore 11
-    //   255: new 341	java/lang/StringBuilder
-    //   258: dup
-    //   259: ldc_w 400
-    //   262: invokespecial 401	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   265: aload 15
-    //   267: invokevirtual 346	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   270: ldc_w 403
-    //   273: invokevirtual 346	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   276: aload 10
-    //   278: invokevirtual 406	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   281: invokevirtual 346	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   284: pop
-    //   285: aload 7
-    //   287: invokestatic 398	com/tencent/mapsdk/rastercore/d$a:a	(Ljava/io/Closeable;)V
-    //   290: aload 13
-    //   292: invokestatic 398	com/tencent/mapsdk/rastercore/d$a:a	(Ljava/io/Closeable;)V
-    //   295: return
-    //   296: astore 7
-    //   298: aconst_null
-    //   299: astore 10
-    //   301: aload 14
-    //   303: astore 12
-    //   305: aload 10
-    //   307: invokestatic 398	com/tencent/mapsdk/rastercore/d$a:a	(Ljava/io/Closeable;)V
-    //   310: aload 12
-    //   312: invokestatic 398	com/tencent/mapsdk/rastercore/d$a:a	(Ljava/io/Closeable;)V
-    //   315: aload 7
-    //   317: athrow
-    //   318: astore 7
-    //   320: aload 11
-    //   322: astore 10
-    //   324: goto -19 -> 305
-    //   327: astore 11
-    //   329: aload 7
-    //   331: astore 10
-    //   333: aload 11
-    //   335: astore 7
-    //   337: aload 14
-    //   339: astore 12
-    //   341: goto -36 -> 305
-    //   344: astore 12
-    //   346: aload 7
-    //   348: astore 11
-    //   350: aload 12
-    //   352: astore 7
-    //   354: aload 10
-    //   356: astore 12
-    //   358: aload 11
-    //   360: astore 10
-    //   362: goto -57 -> 305
-    //   365: astore 10
-    //   367: goto -120 -> 247
-    //   370: astore 10
-    //   372: goto -125 -> 247
-    //   375: astore 11
-    //   377: aload 10
-    //   379: astore 13
-    //   381: aload 11
-    //   383: astore 10
-    //   385: goto -138 -> 247
-    //   388: aconst_null
-    //   389: astore 7
-    //   391: goto -195 -> 196
+    //   1: astore_2
+    //   2: aload_0
+    //   3: getfield 36	com/tencent/mapsdk/rastercore/d/e:d	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   6: invokevirtual 119	java/util/concurrent/locks/ReentrantReadWriteLock:readLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
+    //   9: invokevirtual 124	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:lock	()V
+    //   12: new 126	java/io/FileInputStream
+    //   15: dup
+    //   16: new 128	java/io/File
+    //   19: dup
+    //   20: aload_0
+    //   21: getfield 38	com/tencent/mapsdk/rastercore/d/e:e	Ljava/lang/String;
+    //   24: invokespecial 129	java/io/File:<init>	(Ljava/lang/String;)V
+    //   27: invokespecial 132	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   30: astore_1
+    //   31: new 72	java/lang/String
+    //   34: dup
+    //   35: aload_1
+    //   36: invokestatic 137	com/tencent/mapsdk/rastercore/c:a	(Ljava/io/InputStream;)[B
+    //   39: ldc 139
+    //   41: invokespecial 142	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   44: astore_2
+    //   45: aload_1
+    //   46: invokestatic 145	com/tencent/mapsdk/rastercore/c:a	(Ljava/io/Closeable;)V
+    //   49: aload_0
+    //   50: getfield 36	com/tencent/mapsdk/rastercore/d/e:d	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   53: invokevirtual 119	java/util/concurrent/locks/ReentrantReadWriteLock:readLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
+    //   56: invokevirtual 148	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
+    //   59: aload_2
+    //   60: areturn
+    //   61: astore_1
+    //   62: aconst_null
+    //   63: astore_1
+    //   64: aload_1
+    //   65: invokestatic 145	com/tencent/mapsdk/rastercore/c:a	(Ljava/io/Closeable;)V
+    //   68: aload_0
+    //   69: getfield 36	com/tencent/mapsdk/rastercore/d/e:d	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   72: invokevirtual 119	java/util/concurrent/locks/ReentrantReadWriteLock:readLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
+    //   75: invokevirtual 148	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
+    //   78: aconst_null
+    //   79: areturn
+    //   80: astore_1
+    //   81: aload_2
+    //   82: invokestatic 145	com/tencent/mapsdk/rastercore/c:a	(Ljava/io/Closeable;)V
+    //   85: aload_0
+    //   86: getfield 36	com/tencent/mapsdk/rastercore/d/e:d	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   89: invokevirtual 119	java/util/concurrent/locks/ReentrantReadWriteLock:readLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
+    //   92: invokevirtual 148	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
+    //   95: aload_1
+    //   96: athrow
+    //   97: astore_3
+    //   98: aload_1
+    //   99: astore_2
+    //   100: aload_3
+    //   101: astore_1
+    //   102: goto -21 -> 81
+    //   105: astore_2
+    //   106: goto -42 -> 64
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	394	0	this	e
-    //   0	394	1	paramInt1	int
-    //   0	394	2	paramInt2	int
-    //   0	394	3	paramInt3	int
-    //   0	394	4	paramInt4	int
-    //   0	394	5	paramInt5	int
-    //   0	394	6	paramInt6	int
-    //   0	394	7	paramBitmap	Bitmap
-    //   82	120	8	l1	long
-    //   136	101	10	localObject1	Object
-    //   242	35	10	localException1	java.lang.Exception
-    //   299	62	10	localObject2	Object
-    //   365	1	10	localException2	java.lang.Exception
-    //   370	8	10	localException3	java.lang.Exception
-    //   383	1	10	localObject3	Object
-    //   187	134	11	localBitmap1	Bitmap
-    //   327	7	11	localObject4	Object
-    //   348	11	11	localBitmap2	Bitmap
-    //   375	7	11	localException4	java.lang.Exception
-    //   4	336	12	localObject5	Object
-    //   344	7	12	localObject6	Object
-    //   356	1	12	localObject7	Object
-    //   7	373	13	localObject8	Object
-    //   1	337	14	localObject9	Object
-    //   90	176	15	str	String
-    //   145	77	16	localProperties	java.util.Properties
+    //   0	109	0	this	e
+    //   30	16	1	localFileInputStream	java.io.FileInputStream
+    //   61	1	1	localThrowable1	Throwable
+    //   63	2	1	localCloseable	java.io.Closeable
+    //   80	19	1	localObject1	Object
+    //   101	1	1	localObject2	Object
+    //   1	99	2	localObject3	Object
+    //   105	1	2	localThrowable2	Throwable
+    //   97	4	3	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   138	185	242	java/lang/Exception
-    //   138	185	296	finally
-    //   189	196	318	finally
-    //   255	285	318	finally
-    //   196	221	327	finally
-    //   221	231	344	finally
-    //   189	196	365	java/lang/Exception
-    //   196	221	370	java/lang/Exception
-    //   221	231	375	java/lang/Exception
+    //   12	31	61	java/lang/Throwable
+    //   12	31	80	finally
+    //   31	45	97	finally
+    //   31	45	105	java/lang/Throwable
   }
   
-  public final void a(Bundle paramBundle)
+  public static f[] c(String paramString)
   {
-    if (paramBundle != null)
+    return (f[])a.get(paramString);
+  }
+  
+  private static f[] d(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    do
     {
-      this.k.e(paramBundle.getBoolean("ANIMATION_ENABLED", true));
-      this.k.b(paramBundle.getBoolean("SCROLL_ENABLED", true));
-      this.k.c(paramBundle.getBoolean("ZOOM_ENABLED", true));
-      this.k.b(paramBundle.getInt("LOGO_POSITION", 0));
-      this.k.c(paramBundle.getInt("SCALEVIEW_POSITION", 0));
-      this.k.a(paramBundle.getBoolean("SCALE_CONTROLL_ENABLED", true));
-      this.f.b(paramBundle.getDouble("ZOOM", this.f.c()), false, null);
-      Double localDouble = Double.valueOf(paramBundle.getDouble("CENTERX", (0.0D / 0.0D)));
-      paramBundle = Double.valueOf(paramBundle.getDouble("CENTERY", (0.0D / 0.0D)));
-      if ((!localDouble.isNaN()) && (!paramBundle.isNaN())) {
-        this.f.a(new com.tencent.mapsdk.rastercore.b.c(localDouble.doubleValue(), paramBundle.doubleValue()));
-      }
+      return null;
+      paramString = paramString.split(":");
+    } while (paramString.length == 0);
+    f[] arrayOff = new f[paramString.length];
+    int i = 0;
+    while (i < paramString.length)
+    {
+      String[] arrayOfString = paramString[i].split(",");
+      arrayOff[i] = c.a(new LatLng(Double.parseDouble(arrayOfString[1]), Double.parseDouble(arrayOfString[0])));
+      i += 1;
     }
+    return arrayOff;
   }
   
-  public final void a(TencentMap.OnScreenShotListener paramOnScreenShotListener)
+  public final void a(Context paramContext)
   {
-    a(paramOnScreenShotListener, null);
-  }
-  
-  public final void a(TencentMap.OnScreenShotListener paramOnScreenShotListener, Rect paramRect)
-  {
-    this.o = paramOnScreenShotListener;
-    this.r = paramRect;
-    if (this.p)
+    if ((paramContext != null) && (!this.g))
     {
-      o();
-      return;
+      this.c = paramContext.getApplicationContext();
+      this.e = (this.c.getFilesDir() + "/frontiers.dat");
+      this.f = (this.e + ".bak");
+      this.g = true;
     }
-    this.f.a(true);
-    a(false, false);
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    if (this.h.getAndIncrement() <= 0)
     {
-      this.m.setVisibility(0);
-      this.m.d();
-      return;
-    }
-    com.tencent.mapsdk.rastercore.g.a locala = this.m;
-    com.tencent.mapsdk.rastercore.g.a.b();
-    locala = this.m;
-    com.tencent.mapsdk.rastercore.g.a.c();
-    this.m.setVisibility(8);
-  }
-  
-  public final void a(final boolean paramBoolean1, final boolean paramBoolean2)
-  {
-    this.d.post(new Runnable()
-    {
-      public final void run()
+      paramContext = c();
+      if (paramContext == null)
       {
-        e.a(e.this, false);
-        e.a(e.this).a(paramBoolean1, paramBoolean2);
-        e.b(e.this).layout();
-        e.b(e.this).postInvalidate();
-      }
-    });
-  }
-  
-  public final c b()
-  {
-    return this.j;
-  }
-  
-  public final void b(int paramInt)
-  {
-    if (this.l != null)
-    {
-      this.l.a(paramInt);
-      this.l.invalidate();
-      if (this.m.getVisibility() == 0) {
-        this.m.invalidate();
+        paramContext = d("124.240000,39.863000:127.060000,41.420000:128.320000,41.340000:128.338164,41.966811:129.070015,42.006633:129.392187,42.394602:129.544000,42.337000:129.757733,42.443019:129.915455,42.958121:130.581000,42.411000:130.664000,42.409000:130.660000,42.750000:131.056800,42.832500:131.362267,43.147780:131.359097,44.050378:131.184574,44.758711:131.911825,45.219501:133.163642,44.937724:135.144366,48.211013:135.128000,48.597000:131.071828,47.811040:130.773650,49.035551:128.751969,49.726565:125.969075,53.154351:123.347269,53.704738:120.827269,53.390754:119.713597,52.637780:120.321762,52.210396:118.926328,50.226355:117.662701,49.700280:116.622716,49.956516:115.284508,48.000368:116.104389,47.451176:118.485448,47.755809:119.550866,46.911548:117.463642,46.804509:113.640000,45.105329:111.969090,45.243847:111.267254,44.465714:111.589045,43.737317:109.905388,42.763982:107.448179,42.614694:105.337313,41.946215:100.992746,42.800196:96.838239,42.914056:95.070866,44.957807:91.816477,45.242319:91.161836,46.742245:90.130007,47.948495:88.699097,48.336174:87.883642,49.202090:86.809933,49.172099:85.459963,48.255788:85.328157,47.119427:82.919985,47.328453:82.134523,45.619623:82.396343,45.291415:81.735685,45.446091:79.797183,45.018009:80.618157,43.259401:80.112694,42.868284:80.120896,42.260590:77.976351,41.282314:76.788172,41.096389:76.197254,40.491205:75.361880,40.846808:73.365418,39.794560:73.634523,38.503352:74.669067,38.423003:74.896815,37.310540:74.429528,37.294106:74.454501,36.972073:75.734530,36.578999:75.962701,35.784605:77.852731,35.299899:78.205470,34.574291:78.973568,32.910437:78.263619,32.582183:78.649985,30.992536:81.199112,29.930890:81.625396,30.231654:85.988179,27.769037:88.674612,27.787987:88.840910,27.047339:89.241858,27.247275:89.644552,28.077447:90.426358,28.002589:91.425425,27.605415:92.127284,26.721880:93.834582,26.907073:95.855604,28.198876:97.000074,27.593593:97.491836,27.849236:97.700896,28.296779:98.301769,27.394792:98.605433,27.417494:98.502702,26.026786:97.440895,25.088802:97.485448,23.745403:98.497224,24.030523:98.809985,23.174956:99.324515,22.945024:99.099993,22.084196:100.205485,21.391178:101.003735,21.463004:101.278198,21.122876:101.931836,21.129823:101.785481,22.197373:102.650063,22.558783:103.074619,22.382137:103.979093,22.474798:104.809933,22.767793:105.399978,23.049961:106.469971,22.704082:106.610899,21.787060:107.897261,21.372454:107.490036,19.305984:109.748489,14.674666:110.039063,11.480025:107.666016,6.271618:111.752930,3.281824:112.939454,3.413421:115.018257,6.054474:118.674316,10.790140:119.164223,12.212996:119.707031,18.020528:121.959229,21.677848:122.699226,23.809795:127.303391,24.447079:127.390663,31.568056:124.335754,32.823666");
+        a.put("china", paramContext);
+        a.put("inland", paramContext);
       }
     }
-  }
-  
-  public final void b(Bundle paramBundle)
-  {
-    paramBundle.putBoolean("ANIMATION_ENABLED", this.k.k());
-    paramBundle.putBoolean("SCROLL_ENABLED", this.k.h());
-    paramBundle.putBoolean("ZOOM_ENABLED", this.k.i());
-    paramBundle.putInt("LOGO_POSITION", this.k.j());
-    paramBundle.putInt("SCALEVIEW_POSITION", this.k.f());
-    paramBundle.putBoolean("SCALE_CONTROLL_ENABLED", this.k.g());
-    paramBundle.putDouble("ZOOM", this.f.c());
-    paramBundle.putDouble("CENTERX", this.f.b().b());
-    paramBundle.putDouble("CENTERY", this.f.b().a());
-  }
-  
-  protected final void b(boolean paramBoolean)
-  {
-    this.p = paramBoolean;
-  }
-  
-  public final b c()
-  {
-    return this.f;
-  }
-  
-  public final void c(int paramInt)
-  {
-    if ((this.m != null) && (this.m.getVisibility() == 0))
+    else
     {
-      this.m.a(paramInt);
-      this.m.invalidate();
-    }
-  }
-  
-  public final MapView d()
-  {
-    return this.d;
-  }
-  
-  public final a e()
-  {
-    return this.e;
-  }
-  
-  public final a.1 f()
-  {
-    return this.k;
-  }
-  
-  public final void f(boolean paramBoolean)
-  {
-    this.C = true;
-  }
-  
-  public final com.tencent.mapsdk.rastercore.tile.a.1 g()
-  {
-    return this.h;
-  }
-  
-  public final f h()
-  {
-    return this.g;
-  }
-  
-  public final com.tencent.mapsdk.rastercore.tile.e i()
-  {
-    return this.i;
-  }
-  
-  public final void j()
-  {
-    this.m.e();
-  }
-  
-  public final void k()
-  {
-    this.m.d();
-  }
-  
-  public final int l()
-  {
-    return this.n;
-  }
-  
-  public final void m()
-  {
-    this.m.a();
-    this.l.a();
-    this.e.b();
-    this.d.stopAnimation();
-    this.d.removeAllViews();
-    this.h.a();
-    a(a, "1");
-    a(b, "2");
-    System.gc();
-  }
-  
-  protected final void o()
-  {
-    if (this.o != null)
-    {
-      this.d.setDrawingCacheEnabled(true);
-      this.d.buildDrawingCache();
-      if (this.r != null) {
-        break label58;
-      }
-    }
-    label58:
-    for (Bitmap localBitmap = Bitmap.createBitmap(this.d.getDrawingCache());; localBitmap = Bitmap.createBitmap(this.d.getDrawingCache(), this.r.left, this.r.top, this.r.width(), this.r.height()))
-    {
-      this.d.destroyDrawingCache();
-      this.o.onMapScreenShot(localBitmap);
       return;
     }
+    b(paramContext);
   }
   
-  public final void p()
+  /* Error */
+  public final boolean a(String paramString)
   {
-    if (this.l != null) {
-      this.l.invalidate();
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 4
+    //   6: aload_0
+    //   7: getfield 36	com/tencent/mapsdk/rastercore/d/e:d	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   10: invokevirtual 224	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   13: invokevirtual 227	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:lock	()V
+    //   16: new 128	java/io/File
+    //   19: dup
+    //   20: aload_0
+    //   21: getfield 38	com/tencent/mapsdk/rastercore/d/e:e	Ljava/lang/String;
+    //   24: invokespecial 129	java/io/File:<init>	(Ljava/lang/String;)V
+    //   27: astore 6
+    //   29: new 128	java/io/File
+    //   32: dup
+    //   33: aload_0
+    //   34: getfield 40	com/tencent/mapsdk/rastercore/d/e:f	Ljava/lang/String;
+    //   37: invokespecial 129	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: astore 7
+    //   42: aload 7
+    //   44: invokevirtual 230	java/io/File:exists	()Z
+    //   47: ifeq +18 -> 65
+    //   50: aload 7
+    //   52: invokevirtual 233	java/io/File:delete	()Z
+    //   55: ifne +10 -> 65
+    //   58: aload 7
+    //   60: invokevirtual 236	java/io/File:deleteOnExit	()V
+    //   63: iconst_0
+    //   64: ireturn
+    //   65: aload 6
+    //   67: invokevirtual 230	java/io/File:exists	()Z
+    //   70: ifeq +39 -> 109
+    //   73: aload 6
+    //   75: aload 7
+    //   77: invokevirtual 240	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   80: istore_2
+    //   81: iload_2
+    //   82: ifne +27 -> 109
+    //   85: aconst_null
+    //   86: invokestatic 145	com/tencent/mapsdk/rastercore/c:a	(Ljava/io/Closeable;)V
+    //   89: aload 7
+    //   91: aload 6
+    //   93: invokevirtual 240	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   96: pop
+    //   97: aload_0
+    //   98: getfield 36	com/tencent/mapsdk/rastercore/d/e:d	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   101: invokevirtual 224	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   104: invokevirtual 241	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:unlock	()V
+    //   107: iconst_0
+    //   108: ireturn
+    //   109: new 243	java/io/FileOutputStream
+    //   112: dup
+    //   113: aload 6
+    //   115: invokespecial 244	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   118: astore_3
+    //   119: aload_3
+    //   120: aload_1
+    //   121: ldc 139
+    //   123: invokevirtual 248	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   126: invokevirtual 252	java/io/FileOutputStream:write	([B)V
+    //   129: aload_3
+    //   130: invokevirtual 255	java/io/FileOutputStream:flush	()V
+    //   133: aload_3
+    //   134: invokestatic 145	com/tencent/mapsdk/rastercore/c:a	(Ljava/io/Closeable;)V
+    //   137: aload 7
+    //   139: invokevirtual 233	java/io/File:delete	()Z
+    //   142: pop
+    //   143: aload_0
+    //   144: getfield 36	com/tencent/mapsdk/rastercore/d/e:d	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   147: invokevirtual 224	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   150: invokevirtual 241	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:unlock	()V
+    //   153: iconst_1
+    //   154: ireturn
+    //   155: astore_1
+    //   156: aload 4
+    //   158: astore_1
+    //   159: aload_1
+    //   160: invokestatic 145	com/tencent/mapsdk/rastercore/c:a	(Ljava/io/Closeable;)V
+    //   163: aload 7
+    //   165: aload 6
+    //   167: invokevirtual 240	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   170: pop
+    //   171: aload_0
+    //   172: getfield 36	com/tencent/mapsdk/rastercore/d/e:d	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   175: invokevirtual 224	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   178: invokevirtual 241	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:unlock	()V
+    //   181: iconst_0
+    //   182: ireturn
+    //   183: astore_1
+    //   184: aload 5
+    //   186: astore_3
+    //   187: aload_3
+    //   188: invokestatic 145	com/tencent/mapsdk/rastercore/c:a	(Ljava/io/Closeable;)V
+    //   191: aload 7
+    //   193: aload 6
+    //   195: invokevirtual 240	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   198: pop
+    //   199: aload_0
+    //   200: getfield 36	com/tencent/mapsdk/rastercore/d/e:d	Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    //   203: invokevirtual 224	java/util/concurrent/locks/ReentrantReadWriteLock:writeLock	()Ljava/util/concurrent/locks/ReentrantReadWriteLock$WriteLock;
+    //   206: invokevirtual 241	java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock:unlock	()V
+    //   209: aload_1
+    //   210: athrow
+    //   211: astore_1
+    //   212: goto -25 -> 187
+    //   215: astore_1
+    //   216: aload_3
+    //   217: astore_1
+    //   218: goto -59 -> 159
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	221	0	this	e
+    //   0	221	1	paramString	String
+    //   80	2	2	bool	boolean
+    //   118	99	3	localObject1	Object
+    //   4	153	4	localObject2	Object
+    //   1	184	5	localObject3	Object
+    //   27	167	6	localFile1	java.io.File
+    //   40	152	7	localFile2	java.io.File
+    // Exception table:
+    //   from	to	target	type
+    //   65	81	155	java/lang/Throwable
+    //   109	119	155	java/lang/Throwable
+    //   65	81	183	finally
+    //   109	119	183	finally
+    //   119	133	211	finally
+    //   119	133	215	java/lang/Throwable
+  }
+  
+  public final void b()
+  {
+    if (this.h.decrementAndGet() == 0)
+    {
+      a.clear();
+      this.g = false;
     }
-  }
-  
-  public final boolean z()
-  {
-    return !this.B;
   }
 }
 

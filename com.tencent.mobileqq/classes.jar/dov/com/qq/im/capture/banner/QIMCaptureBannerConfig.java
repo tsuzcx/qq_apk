@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.banner;
 
 import android.text.TextUtils;
-import anlf;
-import com.tencent.mobileqq.app.QQAppInterface;
+import ants;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.armap.ArMapUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -53,7 +53,7 @@ public class QIMCaptureBannerConfig
   public transient boolean update = false;
   
   /* Error */
-  public static QIMCaptureBannerConfig getBannerConfigFromFile(QQAppInterface paramQQAppInterface, String paramString)
+  public static QIMCaptureBannerConfig getBannerConfigFromFile(AppInterface paramAppInterface, String paramString)
   {
     // Byte code:
     //   0: aload_1
@@ -70,7 +70,7 @@ public class QIMCaptureBannerConfig
     //   21: dup
     //   22: invokespecial 120	java/lang/StringBuilder:<init>	()V
     //   25: aload_0
-    //   26: invokevirtual 126	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   26: invokevirtual 126	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   29: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: ldc 53
     //   34: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -204,7 +204,7 @@ public class QIMCaptureBannerConfig
     //   279: goto -102 -> 177
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	282	0	paramQQAppInterface	QQAppInterface
+    //   0	282	0	paramAppInterface	AppInterface
     //   0	282	1	paramString	String
     //   129	47	2	localQIMCaptureBannerConfig	QIMCaptureBannerConfig
     //   179	82	2	localException1	java.lang.Exception
@@ -406,15 +406,15 @@ public class QIMCaptureBannerConfig
     }
   }
   
-  public static void saveBannerConfig(QQAppInterface paramQQAppInterface, QIMCaptureBannerConfig paramQIMCaptureBannerConfig, String paramString)
+  public static void saveBannerConfig(AppInterface paramAppInterface, QIMCaptureBannerConfig paramQIMCaptureBannerConfig, String paramString)
   {
-    if ((paramQIMCaptureBannerConfig == null) || (TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
+    if ((paramQIMCaptureBannerConfig == null) || (TextUtils.isEmpty(paramString)) || (paramAppInterface == null)) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("QIMCaptureBannerConfig", 2, "saveBannerConfig|config= " + paramQIMCaptureBannerConfig);
     }
-    ThreadManager.getFileThreadHandler().post(new anlf(paramString, paramQQAppInterface, paramQIMCaptureBannerConfig));
+    ThreadManager.getFileThreadHandler().post(new ants(paramString, paramAppInterface, paramQIMCaptureBannerConfig));
   }
   
   public String toString()

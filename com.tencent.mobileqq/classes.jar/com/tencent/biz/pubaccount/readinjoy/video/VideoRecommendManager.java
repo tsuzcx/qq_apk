@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mfk;
+import mix;
 import org.json.JSONObject;
 
 public class VideoRecommendManager
@@ -28,7 +28,7 @@ public class VideoRecommendManager
   
   public VideoRecommendManager()
   {
-    ThreadManager.post(new mfk(this), 10, null, true);
+    ThreadManager.post(new mix(this), 10, null, true);
   }
   
   private void a(int paramInt, long paramLong)

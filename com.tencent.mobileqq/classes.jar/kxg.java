@@ -1,28 +1,13 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-class kxg
-  implements TVK_SDKMgr.InstallListener
+public class kxg
+  implements Runnable
 {
-  kxg(kxf paramkxf) {}
+  public kxg(VideoCoverView paramVideoCoverView) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk failed");
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk success");
-    }
-    ReadInJoyNativeAdAppVideoView.a(this.a.a).post(new kxh(this));
+    this.a.g();
   }
 }
 

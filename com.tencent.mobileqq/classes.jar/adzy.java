@@ -1,16 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
-import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
+import android.app.Dialog;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class adzy
   implements Runnable
 {
-  public adzy(LebaWithFeeds paramLebaWithFeeds, PluginAction paramPluginAction, LebaGridItemInfo paramLebaGridItemInfo, View paramView) {}
+  public adzy(PresenceInterfaceImpl paramPresenceInterfaceImpl, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLebaModelPluginactionsPluginAction.a(this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo, this.jdField_a_of_type_AndroidViewView);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a, 232, null, this.jdField_a_of_type_JavaLangString, new adzz(this), null);
+    try
+    {
+      localQQCustomDialog.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("PresenceInterfaceImpl", 2, "show dialog fail");
+    }
   }
 }
 

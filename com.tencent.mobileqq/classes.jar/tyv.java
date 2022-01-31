@@ -1,22 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class tyv
-  implements DialogInterface.OnClickListener
+  extends SubAccountBindObserver
 {
-  public tyv(TroopInfoActivity paramTroopInfoActivity) {}
+  public tyv(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    paramDialogInterface.dismiss();
-    TroopInfoActivity.b(this.a);
-    switch (TroopInfoActivity.a(this.a))
+    if ((paramBoolean) && (paramSubAccountBackProtocData != null) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.length() >= 5))
     {
-    default: 
+      paramSubAccountBackProtocData = paramSubAccountBackProtocData.c();
+      if ((paramSubAccountBackProtocData != null) && (!paramSubAccountBackProtocData.contains(this.a.jdField_a_of_type_JavaLangString))) {}
+    }
+    else
+    {
       return;
     }
-    this.a.overridePendingTransition(0, 2131034122);
+    paramSubAccountBackProtocData = (SubAccountControll)this.a.app.getManager(61);
+    SubAccountUgActivity.a(this.a, paramSubAccountBackProtocData, this.a.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() isSucc=" + paramBoolean + " currentActivity subUin=" + this.a.jdField_a_of_type_JavaLangString);
+      if (paramSubAccountBackProtocData != null) {
+        QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() mainAccount=" + paramSubAccountBackProtocData.b + " subAccount=" + paramSubAccountBackProtocData.c + " errType=" + paramSubAccountBackProtocData.jdField_a_of_type_Int + " errMsg=" + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((paramSubAccountBackProtocData == null) || (this.a.jdField_a_of_type_JavaLangString == null) || ((this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramSubAccountBackProtocData.c)))) {}
+    do
+    {
+      return;
+      this.a.c();
+      if (this.a.b)
+      {
+        this.a.b = false;
+        if (paramBoolean)
+        {
+          this.a.a();
+          this.a.c(this.a.getString(2131436394));
+          return;
+        }
+        this.a.b(this.a.getString(2131436365));
+        return;
+      }
+    } while (!paramBoolean);
+    paramSubAccountBackProtocData = (SubAccountControll)this.a.app.getManager(61);
+    Pair localPair = paramSubAccountBackProtocData.a(this.a.jdField_a_of_type_JavaLangString, 1);
+    paramSubAccountBackProtocData.a(this.a.app, this.a, localPair, new tyw(this, paramSubAccountBackProtocData, localPair));
   }
 }
 

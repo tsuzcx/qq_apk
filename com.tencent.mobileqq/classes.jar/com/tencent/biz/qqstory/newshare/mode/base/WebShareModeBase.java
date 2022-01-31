@@ -30,7 +30,7 @@ public abstract class WebShareModeBase
   {
     super.a(paramShareQQData);
     paramShareQQData.b = 2;
-    paramShareQQData.d = ("[日迹] " + this.a);
+    paramShareQQData.d = ("[小视频] " + this.a);
     paramShareQQData.a = this.d;
     paramShareQQData.k = this.a;
     paramShareQQData.l = this.b;

@@ -125,9 +125,8 @@ public class BuluoPluginAction
     paramView = (TroopRedTouchManager)localQQAppInterface.getManager(69);
     oidb_0x791.RedDotInfo localRedDotInfo = paramView.a(7);
     BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    boolean bool = SharedPreUtils.k(this.a, localQQAppInterface.getCurrentAccountUin());
-    int i;
-    if ((localRedDotInfo != null) && (localRedDotInfo.uint32_number.has()) && (localRedDotInfo.uint32_number.get() > 0) && (bool))
+    boolean bool1 = SharedPreUtils.k(this.a, localQQAppInterface.getCurrentAccountUin());
+    if ((localRedDotInfo != null) && (localRedDotInfo.uint32_number.has()) && (localRedDotInfo.uint32_number.get() > 0) && (bool1))
     {
       localRedTypeInfo.red_type.set(4);
       localObject = localRedTypeInfo.red_content;
@@ -135,78 +134,88 @@ public class BuluoPluginAction
       for (paramView = "99+";; paramView = localRedDotInfo.uint32_number.get() + "")
       {
         ((PBStringField)localObject).set(paramView);
-        i = 1;
-        if (i == 0) {
+        bool1 = true;
+        if (!bool1) {
           break;
         }
         localRedTouch.a(localRedTypeInfo);
-        label137:
+        label139:
         a(1);
-        a(localRedTypeInfo, paramLebaGridItemInfo, localQQAppInterface);
+        a(localRedTypeInfo, paramLebaGridItemInfo, localQQAppInterface, bool1);
         return;
       }
     }
     Object localObject = paramView.a(1);
-    int j;
+    boolean bool2;
     if (localObject != null) {
       if ((((oidb_0x791.RedDotInfo)localObject).uint64_cmd_uin.has()) && (((oidb_0x791.RedDotInfo)localObject).uint64_cmd_uin.get() > 0L))
       {
         localRedTypeInfo.red_type.set(3);
         if ((!((oidb_0x791.RedDotInfo)localObject).str_face_url.has()) || (((oidb_0x791.RedDotInfo)localObject).str_face_url.get() == null)) {
-          break label418;
+          break label426;
         }
         paramView = ((oidb_0x791.RedDotInfo)localObject).str_face_url.get().toStringUtf8();
         if (TextUtils.isEmpty(paramView)) {
-          break label418;
+          break label426;
         }
         localRedTypeInfo.red_content.set(paramView);
         localRedTypeInfo.red_desc.set("{'av':1, 'dot':1}");
-        j = 1;
+        bool2 = true;
       }
     }
-    for (int k = 1;; k = 0)
+    for (int i = 1;; i = 0)
     {
-      i = j;
-      if (k != 0) {
+      bool1 = bool2;
+      if (i != 0) {
         break;
       }
-      i = j;
+      bool1 = bool2;
       if (!((oidb_0x791.RedDotInfo)localObject).uint64_cmd_uin.has()) {
         break;
       }
       paramView = String.format("{'uin':'%s','dot':1, 'av':1}", new Object[] { ((oidb_0x791.RedDotInfo)localObject).uint64_cmd_uin.get() + "" });
       localRedTypeInfo.red_desc.set(paramView);
-      i = 1;
+      bool1 = true;
       break;
       localRedTypeInfo.red_type.set(0);
-      i = 1;
+      bool1 = true;
       break;
       if (paramView.a(6) != null)
       {
         localRedTypeInfo.red_type.set(0);
-        i = 1;
+        bool1 = true;
         break;
         localRedTouch.b();
-        break label137;
+        break label139;
       }
-      i = 0;
+      bool1 = false;
       break;
-      label418:
-      j = 0;
+      label426:
+      bool2 = false;
     }
   }
   
-  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, LebaGridItemInfo paramLebaGridItemInfo, QQAppInterface paramQQAppInterface)
+  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, LebaGridItemInfo paramLebaGridItemInfo, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (paramRedTypeInfo != null)
-    {
-      if ((paramLebaGridItemInfo.b == -1) && (LebaShowListManager.a != 1)) {
-        ((LebaGridHandler)paramQQAppInterface.a(106)).a(1, true, Integer.valueOf(paramLebaGridItemInfo.a.pluginId));
-      }
-      paramLebaGridItemInfo.b = 1;
+    if ((paramLebaGridItemInfo == null) || (paramLebaGridItemInfo.a == null)) {
       return;
     }
-    paramLebaGridItemInfo.b = -1;
+    if ((paramRedTypeInfo != null) && (paramBoolean))
+    {
+      paramRedTypeInfo = (LebaGridHandler)paramQQAppInterface.a(106);
+      if ((paramLebaGridItemInfo.b != -1) || (LebaShowListManager.a == 1)) {
+        break label92;
+      }
+    }
+    label92:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramLebaGridItemInfo.b = 1;
+      paramRedTypeInfo.a(1, true, new Object[] { Integer.valueOf(paramLebaGridItemInfo.a.pluginId), Boolean.valueOf(paramBoolean) });
+      return;
+      paramLebaGridItemInfo.b = -1;
+      return;
+    }
   }
   
   public void b(LebaGridItemInfo paramLebaGridItemInfo)

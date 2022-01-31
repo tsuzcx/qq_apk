@@ -1,50 +1,29 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.GetAppPathByActionResult;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aavg
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+class aavg
+  implements DialogInterface.OnClickListener
 {
-  public aavg(ArkLocalAppMgr paramArkLocalAppMgr, String paramString, int paramInt, aawa paramaawa) {}
+  aavg(aavc paramaavc, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramObject = null;
-    if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.jdField_a_of_type_JavaLangString == null))
+    ArkAppCenter.a().post(new aavh(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppViewByIntent, getAppPathByName fail, ret=%d", new Object[] { Integer.valueOf(paramInt) }));
-      paramString = null;
-      paramAppPathInfo = null;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aawa.d = paramString;
-      this.jdField_a_of_type_Aawa.e = paramAppPathInfo;
-      this.jdField_a_of_type_Aawa.c = paramObject;
-      ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aawa);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aavc.a, "ark_authority_api_location", this.jdField_a_of_type_Aavc.c, 1);
       return;
-      ArrayList localArrayList = new ArrayList();
-      ArkLocalAppMgr.a(paramAppPathInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localArrayList);
-      ArkAppCenter.b("ArkBubbleState", String.format("getAppViewByIntent, getAppPathByName success, ret=%d", new Object[] { Integer.valueOf(2) }));
-      if ((localArrayList.isEmpty()) && (this.jdField_a_of_type_Int == 4))
-      {
-        ArkLocalAppMgr.a(paramAppPathInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1, localArrayList);
-        ArkAppCenter.b("ArkBubbleState", String.format("getAppViewByIntent, getAppPathByName success, ret=%d", new Object[] { Integer.valueOf(1) }));
-      }
-      if (!localArrayList.isEmpty())
-      {
-        paramString = paramAppPathInfo.jdField_a_of_type_JavaLangString;
-        paramAppPathInfo = ((ArkLocalAppMgr.GetAppPathByActionResult)localArrayList.get(0)).d;
-        paramObject = ((ArkLocalAppMgr.GetAppPathByActionResult)localArrayList.get(0)).e;
-      }
-      else
-      {
-        paramString = null;
-        paramAppPathInfo = null;
-      }
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label38;
     }
   }
 }

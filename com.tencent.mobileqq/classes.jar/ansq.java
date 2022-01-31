@@ -1,14 +1,12 @@
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
-public class ansq
-  implements Runnable
+public final class ansq
+  extends DialogUtil.DialogOnClickAdapter
 {
-  public ansq(EditVideoButton paramEditVideoButton, DynamicTextConfigManager paramDynamicTextConfigManager) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.c();
+    paramDialogInterface.dismiss();
   }
 }
 

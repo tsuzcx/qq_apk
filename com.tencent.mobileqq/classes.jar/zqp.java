@@ -1,7 +1,22 @@
+import com.tencent.mobileqq.app.PrinterStatusHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class zqp
+  extends TimerTask
 {
-  public int a;
-  public String a;
+  public zqp(PrinterStatusHandler paramPrinterStatusHandler) {}
+  
+  public void run()
+  {
+    ReportController.b(this.a.b, "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
+    if (PrinterStatusHandler.a(this.a) != null)
+    {
+      PrinterStatusHandler.a(this.a).cancel();
+      PrinterStatusHandler.a(this.a, null);
+    }
+  }
 }
 
 

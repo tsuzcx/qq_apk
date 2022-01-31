@@ -12,6 +12,7 @@ import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 
 public class GlUtil
 {
@@ -338,6 +339,16 @@ public class GlUtil
     return localObject;
   }
   
+  public static IntBuffer a(int[] paramArrayOfInt)
+  {
+    Object localObject = ByteBuffer.allocateDirect(paramArrayOfInt.length * 4);
+    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
+    localObject = ((ByteBuffer)localObject).asIntBuffer();
+    ((IntBuffer)localObject).put(paramArrayOfInt);
+    ((IntBuffer)localObject).position(0);
+    return localObject;
+  }
+  
   public static void a(int paramInt)
   {
     GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
@@ -350,6 +361,21 @@ public class GlUtil
     if (i != 0) {
       Log.e("GlUtil", paramString + ": glError 0x" + Integer.toHexString(i));
     }
+  }
+  
+  public static byte[] a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    byte[] arrayOfByte = new byte[paramInt2 * paramInt3 * 4];
+    ByteBuffer localByteBuffer = ByteBuffer.wrap(arrayOfByte);
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+    GLES20.glBindFramebuffer(36160, arrayOfInt[0]);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
+    arrayOfInt[0] = 0;
+    return arrayOfByte;
   }
 }
 

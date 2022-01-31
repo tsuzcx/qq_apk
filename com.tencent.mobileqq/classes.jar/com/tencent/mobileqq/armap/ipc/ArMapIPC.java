@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.armap.ipc;
 
-import abft;
-import abfu;
-import abfv;
-import abfw;
+import abmu;
+import abmv;
+import abmw;
+import abmx;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -19,10 +19,10 @@ import mqq.os.MqqHandler;
 public class ArMapIPC
 {
   private static ArMapIPC jdField_a_of_type_ComTencentMobileqqArmapIpcArMapIPC;
-  static QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new abfw("ArMapModule");
-  EIPCOnGetConnectionListener jdField_a_of_type_EipcEIPCOnGetConnectionListener = new abfu(this);
-  EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new abfv(this);
-  EIPClientConnectListener jdField_a_of_type_EipcEIPClientConnectListener = new abft(this);
+  static QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new abmx("ArMapModule");
+  EIPCOnGetConnectionListener jdField_a_of_type_EipcEIPCOnGetConnectionListener = new abmv(this);
+  EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new abmw(this);
+  EIPClientConnectListener jdField_a_of_type_EipcEIPClientConnectListener = new abmu(this);
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   public boolean a;
@@ -83,13 +83,13 @@ public class ArMapIPC
     //   40: astore 6
     //   42: aload_0
     //   43: getfield 81	com/tencent/mobileqq/armap/ipc/ArMapIPC:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   46: new 118	abfx
+    //   46: new 118	abmy
     //   49: dup
     //   50: aload_0
     //   51: aload 6
     //   53: aload_1
     //   54: aload_2
-    //   55: invokespecial 121	abfx:<init>	(Lcom/tencent/mobileqq/armap/ipc/ArMapIPC;Lcom/tencent/mobileqq/armap/ipc/IAsyncObserver;Ljava/lang/String;Leipc/EIPCResult;)V
+    //   55: invokespecial 121	abmy:<init>	(Lcom/tencent/mobileqq/armap/ipc/ArMapIPC;Lcom/tencent/mobileqq/armap/ipc/IAsyncObserver;Ljava/lang/String;Leipc/EIPCResult;)V
     //   58: invokevirtual 127	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   61: pop
     //   62: iload_3
@@ -119,13 +119,13 @@ public class ArMapIPC
     //   110: astore 6
     //   112: aload_0
     //   113: getfield 86	com/tencent/mobileqq/armap/ipc/ArMapIPC:jdField_b_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   116: new 129	abfy
+    //   116: new 129	abmz
     //   119: dup
     //   120: aload_0
     //   121: aload 6
     //   123: aload_1
     //   124: aload_2
-    //   125: invokespecial 130	abfy:<init>	(Lcom/tencent/mobileqq/armap/ipc/ArMapIPC;Lcom/tencent/mobileqq/armap/ipc/IAsyncObserver;Ljava/lang/String;Leipc/EIPCResult;)V
+    //   125: invokespecial 130	abmz:<init>	(Lcom/tencent/mobileqq/armap/ipc/ArMapIPC;Lcom/tencent/mobileqq/armap/ipc/IAsyncObserver;Ljava/lang/String;Leipc/EIPCResult;)V
     //   128: invokevirtual 127	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   131: pop
     //   132: iload_3

@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.ar.arengine.ARCamera;
+import android.view.View;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
 
-class aafc
+public class aafc
   implements Runnable
 {
-  aafc(aaez paramaaez) {}
+  public aafc(ARVideoRecordViewProxy paramARVideoRecordViewProxy) {}
   
   public void run()
   {
-    ARCamera.b(this.a.a);
+    if (ARVideoRecordViewProxy.b(this.a) != null)
+    {
+      ARVideoRecordViewProxy.b(this.a).setVisibility(0);
+      ARVideoRecordViewProxy.a(this.a);
+    }
   }
 }
 

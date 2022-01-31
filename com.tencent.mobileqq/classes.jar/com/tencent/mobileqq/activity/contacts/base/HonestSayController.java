@@ -10,7 +10,7 @@ import com.tencent.mobileqq.confess.ConfessConfig;
 import com.tencent.mobileqq.confess.ConfessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
-import wmy;
+import wsj;
 
 public class HonestSayController
   extends BaseViewController
@@ -50,7 +50,7 @@ public class HonestSayController
       return;
       String str = localConfessConfig.a();
       if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry = new CommonCardEntry(1, 2130842387, a().getResources().getString(2131439179), localConfessConfig.a(paramQQAppInterface), str, localConfessConfig.d);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry = new CommonCardEntry(1, 2130842422, a().getResources().getString(2131439209), localConfessConfig.a(paramQQAppInterface), str, localConfessConfig.d);
       }
       for (;;)
       {
@@ -90,7 +90,7 @@ public class HonestSayController
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCommonCardEntry);
       }
     } while (this.jdField_a_of_type_Boolean);
-    ThreadManager.post(new wmy(this), 5, null, true);
+    ThreadManager.post(new wsj(this), 5, null, true);
   }
   
   public void a() {}
@@ -104,7 +104,7 @@ public class HonestSayController
       return;
       localConfessConfig = this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager.b();
       if (localConfessConfig != null) {
-        localConfessConfig.a();
+        localConfessConfig.b();
       }
     } while (!QLog.isDevelopLevel());
     QLog.i("HonestSayController", 4, String.format(Locale.getDefault(), "onCardVanish config: %s , entry: %s", new Object[] { localConfessConfig, paramCommonCardEntry }));

@@ -1,6 +1,6 @@
 package com.tencent.ttpic.module_switchface;
 
-import alze;
+import amgn;
 import android.opengl.GLES20;
 import com.tencent.av.switchface.SwitchFaceProcessorItem;
 import com.tencent.av.switchface.SwitchFaceUtils;
@@ -47,7 +47,7 @@ public class SwitchFaceProcessor
   {
     long l = System.currentTimeMillis();
     if ((this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[0].a(this.jdField_a_of_type_ComTencentTtpicUtilRGBATexSaveProcess)) && (this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[1].a(this.jdField_a_of_type_ComTencentTtpicUtilRGBATexSaveProcess))) {
-      ThreadManager.post(new alze(this, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[0].jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[0].jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[0].jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[1].jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[1].jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[1].jdField_c_of_type_Int), 5, null, false);
+      ThreadManager.post(new amgn(this, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[0].jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[0].jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[0].jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[1].jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[1].jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceProcessorItem[1].jdField_c_of_type_Int), 5, null, false);
     }
     for (;;)
     {

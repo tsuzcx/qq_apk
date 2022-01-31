@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.QZoneShareData;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.utils.DingdongPluginBizObserver.ScheduleMoreSummaryData;
+import cooperation.dingdong.DingdongCalendarSyncUtil;
 
 public final class amsc
-  implements Parcelable.Creator
+  extends AsyncTask
 {
-  public QZoneShareData a(Parcel paramParcel)
-  {
-    return new QZoneShareData(paramParcel, null);
-  }
+  public amsc(int paramInt) {}
   
-  public QZoneShareData[] a(int paramInt)
+  protected Void a(DingdongPluginBizObserver.ScheduleMoreSummaryData... paramVarArgs)
   {
-    return new QZoneShareData[paramInt];
+    paramVarArgs = paramVarArgs[0];
+    DingdongCalendarSyncUtil.b(this.a, paramVarArgs);
+    return null;
   }
 }
 

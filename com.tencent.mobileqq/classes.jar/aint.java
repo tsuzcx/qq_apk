@@ -1,16 +1,15 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.mobileqq.text.QzoneTextBuilder;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout15;
 
-public final class aint
-  extends Editable.Factory
+public class aint
+  implements Runnable
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public aint(StructMsgItemLayout15 paramStructMsgItemLayout15, BaseChatPie paramBaseChatPie) {}
+  
+  public void run()
   {
-    if ((paramCharSequence instanceof QzoneTextBuilder)) {
-      return (Editable)paramCharSequence;
-    }
-    return new QzoneTextBuilder(paramCharSequence, 3, 20);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setStackFromBottomWithoutRequestLayoutIfNecessary(true);
   }
 }
 

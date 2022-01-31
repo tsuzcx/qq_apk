@@ -76,15 +76,15 @@ public class FormSwitchItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130846001);
+      return paramResources.getDrawable(2130846083);
     case 0: 
-      return paramResources.getDrawable(2130846001);
+      return paramResources.getDrawable(2130846083);
     case 1: 
-      return paramResources.getDrawable(2130846021);
+      return paramResources.getDrawable(2130846103);
     case 2: 
-      return paramResources.getDrawable(2130846015);
+      return paramResources.getDrawable(2130846097);
     }
-    return paramResources.getDrawable(2130846006);
+    return paramResources.getDrawable(2130846088);
   }
   
   private void a()
@@ -97,7 +97,7 @@ public class FormSwitchItem
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
     int i = getContext().getResources().getDimensionPixelSize(2131559307);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, i);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494214));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494220));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.d, this.e);
@@ -157,7 +157,7 @@ public class FormSwitchItem
       localLayoutParams.addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetProgressBar, localLayoutParams);
       this.jdField_a_of_type_ComTencentWidgetSwitch.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130838593));
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130838599));
       this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(true);
       return;
     }
@@ -371,7 +371,7 @@ public class FormSwitchItem
       {
         this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494214));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494220));
       }
     }
     else {

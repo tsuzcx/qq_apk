@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class xtv
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xtv(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
+  public xtv(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    QzDynamicVideoPreviewActivity.a(this.a).dismiss();
+    if (EditLocalVideoActivity.a(this.a)) {
+      EditLocalVideoActivity.b(this.a).setVisibility(0);
+    }
   }
 }
 

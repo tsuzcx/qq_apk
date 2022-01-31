@@ -4,14 +4,14 @@ import android.annotation.TargetApi;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.view.Surface;
-import aons;
+import aowi;
 import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodeConfig;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(16)
 public class SimpleVideoDecoder
 {
-  private aons jdField_a_of_type_Aons;
+  private aowi jdField_a_of_type_Aowi;
   private Thread jdField_a_of_type_JavaLangThread;
   
   private static boolean b(MediaCodecInfo paramMediaCodecInfo, String paramString, int paramInt)
@@ -35,15 +35,15 @@ public class SimpleVideoDecoder
       this.jdField_a_of_type_JavaLangThread.interrupt();
     }
     this.jdField_a_of_type_JavaLangThread = null;
-    this.jdField_a_of_type_Aons = null;
+    this.jdField_a_of_type_Aowi = null;
   }
   
   public void a(int paramInt)
   {
-    aons localaons = this.jdField_a_of_type_Aons;
-    if (localaons != null)
+    aowi localaowi = this.jdField_a_of_type_Aowi;
+    if (localaowi != null)
     {
-      localaons.a(paramInt);
+      localaowi.a(paramInt);
       if (QLog.isColorLevel()) {
         QLog.d("SimpleVideoDecoder", 2, "setSpeedType" + paramInt);
       }
@@ -71,10 +71,10 @@ public class SimpleVideoDecoder
     try
     {
       localThread.join();
-      this.jdField_a_of_type_Aons = new aons(paramDecodeConfig.a, paramSurface, paramTrackingDecoderListener);
-      this.jdField_a_of_type_Aons.a(paramDecodeConfig);
-      this.jdField_a_of_type_Aons.a(paramBoolean);
-      this.jdField_a_of_type_JavaLangThread = new Thread(this.jdField_a_of_type_Aons, "SimpleVideoDecoder-Thread");
+      this.jdField_a_of_type_Aowi = new aowi(paramDecodeConfig.a, paramSurface, paramTrackingDecoderListener);
+      this.jdField_a_of_type_Aowi.a(paramDecodeConfig);
+      this.jdField_a_of_type_Aowi.a(paramBoolean);
+      this.jdField_a_of_type_JavaLangThread = new Thread(this.jdField_a_of_type_Aowi, "SimpleVideoDecoder-Thread");
       this.jdField_a_of_type_JavaLangThread.start();
       return;
     }

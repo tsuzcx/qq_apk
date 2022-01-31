@@ -23,9 +23,9 @@ import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import ztb;
-import ztc;
-import ztd;
+import zzm;
+import zzn;
+import zzo;
 
 public class DatalineMessageManager
   implements IMessageManager
@@ -118,7 +118,7 @@ public class DatalineMessageManager
     if (Thread.currentThread() == localLooper.getThread()) {
       return a(localDataLineMsgSet);
     }
-    new Handler(localLooper).post(new ztc(this, localDataLineMsgSet));
+    new Handler(localLooper).post(new zzn(this, localDataLineMsgSet));
     return 0;
   }
   
@@ -172,7 +172,7 @@ public class DatalineMessageManager
       }
       return i;
     }
-    new Handler((Looper)localObject).post(new ztd(this, paramDataLineMsgSet));
+    new Handler((Looper)localObject).post(new zzo(this, paramDataLineMsgSet));
     return 0;
   }
   
@@ -233,7 +233,7 @@ public class DatalineMessageManager
         }
       }
     }
-    new Handler((Looper)localObject2).post(new ztb(this, paramDataLineMsgRecord, (WaitEvent)localObject1));
+    new Handler((Looper)localObject2).post(new zzm(this, paramDataLineMsgRecord, (WaitEvent)localObject1));
     ((WaitEvent)localObject1).a(-1L);
     return 0L;
   }

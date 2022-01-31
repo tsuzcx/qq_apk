@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
 
-public class aiwe
+class aiwe
   implements Runnable
 {
-  public aiwe(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  aiwe(aiwd paramaiwd, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.a.l = false;
+    this.jdField_a_of_type_Aiwd.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 

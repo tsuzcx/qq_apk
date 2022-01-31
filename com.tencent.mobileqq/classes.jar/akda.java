@@ -1,29 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
+import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
 public class akda
-  implements DialogInterface.OnKeyListener
+  implements Action.OnActionEndListener
 {
-  public akda(NewUpgradeDialog paramNewUpgradeDialog) {}
+  public akda(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a()
   {
-    if (paramInt == 4)
-    {
-      this.a.dismiss();
-      ((Activity)this.a.a.get()).finish();
-      return true;
-    }
-    return false;
+    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
+    localSequenceAction.a = true;
+    TroopGiftToAllSurfaceView.a(this.a).a(new Action[] { localSequenceAction });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akda
  * JD-Core Version:    0.7.0.1
  */

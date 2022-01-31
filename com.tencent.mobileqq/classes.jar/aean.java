@@ -1,22 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.LebaGridHandler;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.view.LebaGridIndicator.onPageSeletedListener;
-import com.tencent.mobileqq.leba.view.LebaTopBarView;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.mobileqq.hotpic.RecyclerFooterWrapperAdapter;
 
 public class aean
-  implements LebaGridIndicator.onPageSeletedListener
+  extends RecyclerView.AdapterDataObserver
 {
-  public aean(LebaWithFeeds paramLebaWithFeeds) {}
+  public aean(RecyclerFooterWrapperAdapter paramRecyclerFooterWrapperAdapter) {}
   
-  public void a(int paramInt)
+  public void onChanged()
   {
-    LebaWithFeeds.a(this.a).c(1);
+    super.onChanged();
+    this.a.notifyDataSetChanged();
   }
   
-  public void b(int paramInt)
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    ((LebaGridHandler)this.a.a.a(106)).a(2, true, Integer.valueOf(paramInt));
+    super.onItemRangeChanged(paramInt1, paramInt2);
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
+  }
+  
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    super.onItemRangeInserted(paramInt1, paramInt2);
+    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    super.onItemRangeRemoved(paramInt1, paramInt2);
+    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
   }
 }
 

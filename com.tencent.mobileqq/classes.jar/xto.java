@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.main.P2VEffectConvertor;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class xto
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xto(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
+  public xto(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QLog.d("QzDynamicVideoPreviewActivity", 2, "[run] in resumeRunnable, mIsMusicEnabled = " + QzDynamicVideoPreviewActivity.c(this.a));
-    QzDynamicVideoPreviewActivity.a(this.a).requestDraw();
+    if (EditLocalVideoActivity.a(this.a).isPlaying())
+    {
+      EditLocalVideoActivity.c(this.a, false);
+      EditLocalVideoActivity.a(this.a).pause();
+      EditLocalVideoActivity.b(this.a).setVisibility(0);
+      return;
+    }
+    EditLocalVideoActivity.c(this.a, true);
+    EditLocalVideoActivity.a(this.a).setVisibility(8);
+    EditLocalVideoActivity.a(this.a).start();
+    EditLocalVideoActivity.b(this.a).setVisibility(4);
   }
 }
 

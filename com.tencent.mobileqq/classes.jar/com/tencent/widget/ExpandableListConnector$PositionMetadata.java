@@ -1,13 +1,13 @@
 package com.tencent.widget;
 
-import ambk;
+import amiu;
 import java.util.ArrayList;
 
 public class ExpandableListConnector$PositionMetadata
 {
   private static ArrayList a;
   public int a;
-  public ambk a;
+  public amiu a;
   public ExpandableListConnector.GroupMetadata a;
   
   static
@@ -33,7 +33,7 @@ public class ExpandableListConnector$PositionMetadata
   static PositionMetadata a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ExpandableListConnector.GroupMetadata paramGroupMetadata, int paramInt5)
   {
     PositionMetadata localPositionMetadata = a();
-    localPositionMetadata.jdField_a_of_type_Ambk = ambk.a(paramInt2, paramInt3, paramInt4, paramInt1);
+    localPositionMetadata.jdField_a_of_type_Amiu = amiu.a(paramInt2, paramInt3, paramInt4, paramInt1);
     localPositionMetadata.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = paramGroupMetadata;
     localPositionMetadata.jdField_a_of_type_Int = paramInt5;
     return localPositionMetadata;
@@ -41,7 +41,7 @@ public class ExpandableListConnector$PositionMetadata
   
   private void b()
   {
-    this.jdField_a_of_type_Ambk = null;
+    this.jdField_a_of_type_Amiu = null;
     this.jdField_a_of_type_ComTencentWidgetExpandableListConnector$GroupMetadata = null;
     this.jdField_a_of_type_Int = 0;
   }

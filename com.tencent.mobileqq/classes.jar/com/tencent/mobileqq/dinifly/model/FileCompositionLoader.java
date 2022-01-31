@@ -29,7 +29,7 @@ public final class FileCompositionLoader
   protected LottieComposition doInBackground(InputStream... paramVarArgs)
   {
     paramVarArgs = LottieComposition.Factory.fromInputStream(this.res, paramVarArgs[0], this.userData);
-    if (this.lottieDrawable != null) {
+    if ((this.lottieDrawable != null) && (paramVarArgs != null)) {
       paramVarArgs.compositionLayer = new CompositionLayer(this.lottieDrawable, Layer.Factory.newInstance(paramVarArgs), paramVarArgs.getLayers(), paramVarArgs);
     }
     return paramVarArgs;

@@ -1,21 +1,37 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
 
 public class onm
+  implements View.OnTouchListener
 {
-  public View a;
-  public View b;
+  private final int jdField_a_of_type_Int = 10;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public onm(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131362725);
-  }
+  public onm(EditTextDialog paramEditTextDialog) {}
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new onn(this));
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return false;
+        this.b = ((int)f);
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      } while (Math.abs(f - this.b) <= 10.0F);
+      this.jdField_a_of_type_Boolean = true;
+      return false;
+    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

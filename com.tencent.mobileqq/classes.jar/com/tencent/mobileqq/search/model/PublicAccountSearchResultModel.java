@@ -144,7 +144,7 @@ public class PublicAccountSearchResultModel
       String str = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin();
       PAStartupTracker.a(null, "pubAcc_aio_open", str);
       Object localObject1 = (PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-      if (AppConstants.aH.equals(str))
+      if (AppConstants.aI.equals(str))
       {
         WeishiReportUtil.a(null, 0);
         ReadInJoyActivityHelper.a((Context)localObject2, 0, null);
@@ -202,7 +202,7 @@ public class PublicAccountSearchResultModel
             localIntent.putExtra("uin", str);
             localIntent.putExtra("uintype", i);
             localIntent.putExtra("uinname", this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name);
-            localIntent.putExtra("selfSet_leftViewText", ((Context)localObject2).getString(2131433698));
+            localIntent.putExtra("selfSet_leftViewText", ((Context)localObject2).getString(2131433712));
             RecentUtil.a = true;
             RecentUtil.a(localIntent);
             ((Context)localObject2).startActivity(localIntent);

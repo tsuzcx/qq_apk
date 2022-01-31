@@ -1,55 +1,134 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.ImageTracer;
+import com.tencent.component.media.image.MessageQueueDownloadMultiplexTask;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
-class pmc
-  extends pmd
+public class pmc
+  extends Handler
 {
-  public pmc(plz paramplz, SharedPreferences.Editor paramEditor)
+  public pmc(Looper paramLooper)
   {
-    super(paramEditor, paramplz.a());
+    super(paramLooper);
   }
   
-  public SharedPreferences.Editor clear()
+  public void handleMessage(Message paramMessage)
   {
-    if (TextUtils.isEmpty(plz.a(this.a))) {
-      super.clear();
-    }
-    for (;;)
+    Object localObject2;
+    plz localplz;
+    switch (paramMessage.what)
     {
-      return this;
-      Object localObject = this.a.a().getAll();
-      if ((localObject != null) && (!((Map)localObject).isEmpty()))
+    default: 
+    case 1000: 
+    case 0: 
+    case 1: 
+    case 2: 
+      do
       {
-        localObject = ((Map)localObject).keySet().iterator();
-        while (((Iterator)localObject).hasNext())
+        do
         {
-          String str = (String)((Iterator)localObject).next();
-          if (plz.a(plz.a(this.a), str)) {
-            super.remove(str);
+          return;
+          paramMessage = (MessageQueueDownloadMultiplexTask)paramMessage.obj;
+        } while (MessageQueueDownloadMultiplexTask.a(paramMessage));
+        if (paramMessage.getNextTask() != null)
+        {
+          if (!paramMessage.getImageKey().needDecode()) {
+            ImageTracer.start(paramMessage.getImageKey().url);
+          }
+          paramMessage.getNextTask().excuteTask();
+          return;
+        }
+        paramMessage.setResult(1, new Object[] { paramMessage.getImageKey().url });
+        return;
+        paramMessage = (Object[])paramMessage.obj;
+        localObject1 = (MessageQueueDownloadMultiplexTask)paramMessage[0];
+        localObject2 = MessageQueueDownloadMultiplexTask.a(((MessageQueueDownloadMultiplexTask)localObject1).getImageKey().urlKey);
+        if (localObject2 != null)
+        {
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localplz = (plz)((Iterator)localObject2).next();
+            if (localplz != null) {
+              localplz.setResult(0, new Object[] { paramMessage[1] });
+            }
+          }
+        }
+        ((MessageQueueDownloadMultiplexTask)localObject1).setResult(0, new Object[] { paramMessage[1] });
+        return;
+        paramMessage = (Object[])paramMessage.obj;
+        localObject1 = (MessageQueueDownloadMultiplexTask)paramMessage[0];
+        localObject2 = MessageQueueDownloadMultiplexTask.a(((MessageQueueDownloadMultiplexTask)localObject1).getImageKey().urlKey);
+        if (localObject2 != null)
+        {
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localplz = (plz)((Iterator)localObject2).next();
+            if (localplz != null) {
+              localplz.setResult(1, new Object[] { paramMessage[1] });
+            }
+          }
+        }
+        ((MessageQueueDownloadMultiplexTask)localObject1).setResult(1, new Object[] { paramMessage[1] });
+        return;
+        paramMessage = (Object[])paramMessage.obj;
+        localObject1 = (MessageQueueDownloadMultiplexTask)paramMessage[0];
+      } while ((localObject1 == null) || (((MessageQueueDownloadMultiplexTask)localObject1).getImageKey() == null));
+      localObject2 = MessageQueueDownloadMultiplexTask.a(((MessageQueueDownloadMultiplexTask)localObject1).getImageKey().urlKey);
+      if (localObject2 != null)
+      {
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localplz = (plz)((Iterator)localObject2).next();
+          if (localplz != null) {
+            localplz.setResult(2, new Object[] { paramMessage[1], paramMessage[2], paramMessage[3] });
           }
         }
       }
+      ((MessageQueueDownloadMultiplexTask)localObject1).setResult(2, new Object[] { paramMessage[1], paramMessage[2], paramMessage[3] });
+      return;
+    case 11: 
+      paramMessage = (Object[])paramMessage.obj;
+      localObject1 = (MessageQueueDownloadMultiplexTask)paramMessage[0];
+      localObject2 = MessageQueueDownloadMultiplexTask.a(((MessageQueueDownloadMultiplexTask)localObject1).getImageKey().urlKey);
+      if (localObject2 != null)
+      {
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localplz = (plz)((Iterator)localObject2).next();
+          if (localplz != null) {
+            localplz.setResult(11, new Object[] { paramMessage[1] });
+          }
+        }
+      }
+      ((MessageQueueDownloadMultiplexTask)localObject1).setResult(11, new Object[] { paramMessage[1] });
+      return;
     }
-  }
-  
-  public boolean commit()
-  {
-    if ((plz.a(this.a)) && (Build.VERSION.SDK_INT >= 9))
+    paramMessage = (MessageQueueDownloadMultiplexTask)((Object[])(Object[])paramMessage.obj)[0];
+    Object localObject1 = MessageQueueDownloadMultiplexTask.a(paramMessage.getImageKey().urlKey);
+    if (localObject1 != null)
     {
-      super.apply();
-      return true;
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (plz)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          ((plz)localObject2).setResult(12, new Object[0]);
+        }
+      }
     }
-    return super.commit();
+    paramMessage.setResult(12, new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     pmc
  * JD-Core Version:    0.7.0.1
  */

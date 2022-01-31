@@ -1,23 +1,15 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.widget.navbar.OnItemSelectListener;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnBufferingUpdateListener;
 
 public class ntv
-  implements OnItemSelectListener
+  implements IMediaPlayer.OnBufferingUpdateListener
 {
-  public ntv(QQStoryMainController paramQQStoryMainController) {}
+  public ntv(TextureVideoView paramTextureVideoView) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(IMediaPlayer paramIMediaPlayer, int paramInt)
   {
-    if (paramInt == 1) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a();
-    }
-    while (paramInt != 7) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.n();
+    this.a.f = paramInt;
   }
 }
 

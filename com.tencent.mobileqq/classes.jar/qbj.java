@@ -1,27 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.datadef.ProductNetLinkInfo;
 
-public class qbj
-  extends SecSvcObserver
+public final class qbj
+  implements Parcelable.Creator
 {
-  public qbj(DeviceMsgHandle paramDeviceMsgHandle) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public ProductNetLinkInfo a(Parcel paramParcel)
   {
-    if (paramBoolean)
-    {
-      if (paramInt == 1)
-      {
-        EquipmentLockImpl.a().a(this.a.b, BaseApplicationImpl.getApplication(), this.a.b.getCurrentAccountUin(), true);
-        return;
-      }
-      EquipmentLockImpl.a().a(this.a.b, BaseApplicationImpl.getApplication(), this.a.b.getCurrentAccountUin(), false);
-      return;
-    }
-    EquipmentLockImpl.a().a(this.a.b, BaseApplicationImpl.getApplication(), this.a.b.getCurrentAccountUin(), false);
+    ProductNetLinkInfo localProductNetLinkInfo = new ProductNetLinkInfo();
+    localProductNetLinkInfo.productId = paramParcel.readInt();
+    localProductNetLinkInfo.linkResetVoiceDesc = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpTitleDesc = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpContentDesc = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpDescImg = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpVoiceDesc = paramParcel.readString();
+    localProductNetLinkInfo.stopSoundWaveDesc1 = paramParcel.readString();
+    localProductNetLinkInfo.stopSoundWaveDesc2 = paramParcel.readString();
+    return localProductNetLinkInfo;
+  }
+  
+  public ProductNetLinkInfo[] a(int paramInt)
+  {
+    return new ProductNetLinkInfo[paramInt];
   }
 }
 

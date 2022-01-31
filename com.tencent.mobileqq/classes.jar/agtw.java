@@ -1,17 +1,29 @@
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardCheckUpdate;
+
 public class agtw
+  implements Runnable
 {
-  public String a;
-  public String b;
+  public agtw(ProfileCardCheckUpdate paramProfileCardCheckUpdate) {}
   
-  public agtw(String paramString1, String paramString2)
+  public void run()
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      localObject = new QvipSpecialSoundManager(BaseApplicationImpl.getContext(), (AppInterface)localObject);
+      ((QvipSpecialSoundManager)localObject).a();
+      ((QvipSpecialSoundManager)localObject).b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agtw
  * JD-Core Version:    0.7.0.1
  */

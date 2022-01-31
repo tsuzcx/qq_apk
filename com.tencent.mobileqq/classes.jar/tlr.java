@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.CardObserver;
 
-class tlr
-  implements Runnable
+public class tlr
+  extends CardObserver
 {
-  tlr(tlo paramtlo, Card paramCard) {}
+  public tlr(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void run()
+  protected void g(boolean paramBoolean, Object paramObject)
   {
-    if (QQSettingMe.a(this.jdField_a_of_type_Tlo.a) != null) {
-      QQSettingMe.a(this.jdField_a_of_type_Tlo.a).a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    if (paramBoolean)
+    {
+      this.a.setResult(-1);
+      this.a.b(2131434995);
+    }
+    for (;;)
+    {
+      this.a.a = false;
+      this.a.finish();
+      return;
+      this.a.b(2131434996);
     }
   }
 }

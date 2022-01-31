@@ -1,50 +1,28 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
 public class xor
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public xor(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xor(BannerManager paramBannerManager, long paramLong, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (!this.a.m) {}
-    while (((!this.a.g) && (!this.a.d)) || (paramView.getId() != 2131369007)) {
-      return false;
-    }
-    switch (paramMotionEvent.getAction())
+    if (BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager) != null)
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
-      }
-      if (!this.a.b.isLongClickable()) {
-        this.a.a.e();
-      }
-      this.a.b.setText(null);
-      return false;
+      paramView = BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(1134028);
+      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendMessage(paramView);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
-    }
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    if (this.a.b != null) {
-      this.a.b.setText(2131438162);
-    }
-    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
-    FlowCameraActivity2.a(this.a);
-    return false;
+    paramView = new Intent();
+    paramView.setAction("cooperation.qqreader.aioback2reader");
+    paramView.putExtra("bookid", this.jdField_a_of_type_Long);
+    paramView.putExtra("chapterid", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("is_from_conversation", true);
+    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendBroadcast(paramView);
   }
 }
 

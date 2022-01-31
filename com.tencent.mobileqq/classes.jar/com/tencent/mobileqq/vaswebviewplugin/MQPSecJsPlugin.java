@@ -162,7 +162,7 @@ public class MQPSecJsPlugin
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("title", paramString2);
           localJSONObject.put("wording", paramString3);
-          localJSONObject.put("image_res_id", 2130842473);
+          localJSONObject.put("image_res_id", 2130842508);
           localJSONObject.put("btn_text", paramVarArgs);
           localJSONObject.put("jump_text", localObject);
           localJSONObject.put("jump_url", "");
@@ -494,7 +494,7 @@ public class MQPSecJsPlugin
       }
       this.smsContent = new SmsContent(null);
       this.smsContent.a(this.activity, this);
-      paramCustomWebView = (TextView)this.activity.findViewById(2131363245);
+      paramCustomWebView = (TextView)this.activity.findViewById(2131363262);
       if (paramCustomWebView != null) {
         paramCustomWebView.setOnClickListener(new MQPSecJsPlugin.1(this));
       }
@@ -664,7 +664,7 @@ public class MQPSecJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MQPSecJsPlugin
  * JD-Core Version:    0.7.0.1
  */

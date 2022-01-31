@@ -1,8 +1,8 @@
 package com.tencent.open.base;
 
-import alfj;
-import alfk;
-import alfl;
+import alnb;
+import alnc;
+import alnd;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -36,12 +36,12 @@ public class ToastUtil
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new alfk(this, paramInt1, paramInt2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new alnc(this, paramInt1, paramInt2));
   }
   
   public void a(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new alfl(this, paramView, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new alnd(this, paramView, paramInt));
   }
   
   public void a(String paramString)
@@ -54,7 +54,7 @@ public class ToastUtil
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new alfj(this, paramString, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new alnb(this, paramString, paramInt));
   }
 }
 

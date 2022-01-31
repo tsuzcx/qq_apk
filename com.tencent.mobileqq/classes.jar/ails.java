@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import java.util.HashSet;
 
-public class ails
-  implements Runnable
+class ails
 {
-  public ails(VideoSprite paramVideoSprite) {}
+  public String a;
+  public HashSet a;
+  public String b;
   
-  public void run()
+  private ails(ailr paramailr)
   {
-    this.a.i();
-    VideoSprite.a(this.a);
-    VideoSprite.b(this.a);
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ails
  * JD-Core Version:    0.7.0.1
  */

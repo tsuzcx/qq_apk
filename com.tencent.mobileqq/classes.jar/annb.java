@@ -1,24 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.IInformationPasterResDownloaderCallback;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
+import CardPay.Channel;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import cooperation.qwallet.plugin.QWalletPayProgressDialog;
+import cooperation.thirdpay.ThirdPayGate;
 
-class annb
-  implements QIMInformationPasterManager.IInformationPasterResDownloaderCallback
+public class annb
+  extends Handler
 {
-  annb(anna paramanna) {}
+  public annb(ThirdPayGate paramThirdPayGate, String paramString, long paramLong, Channel paramChannel, Bundle paramBundle, Activity paramActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, InfomationFacePackage.Item paramItem)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "isSucess:" + paramBoolean + " url:" + paramString + " item:" + paramItem);
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      return;
+      ReportController.a(null, "P_CliOper", "cardpay", "", "installPlugin", "download-suc", 0, 0, this.jdField_a_of_type_JavaLangString, System.currentTimeMillis() - this.jdField_a_of_type_Long + "", "" + this.jdField_a_of_type_CardPayChannel.pluginSize, "");
+      ThirdPayGate.access$300(this.jdField_a_of_type_CooperationThirdpayThirdPayGate, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+      return;
+      ReportController.a(null, "P_CliOper", "cardpay", "", "installPlugin", "download-fail", 0, 0, this.jdField_a_of_type_JavaLangString, "by download", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    } while (ThirdPayGate.access$400(this.jdField_a_of_type_CooperationThirdpayThirdPayGate) == null);
+    ThirdPayGate.access$400(this.jdField_a_of_type_CooperationThirdpayThirdPayGate).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopLineTipsChatItemBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
+import com.tencent.mobileqq.data.MessageForShakeWindow;
 
 public class vkl
-  extends AbstractChatItemBuilder.ViewHolder
+  implements DialogInterface.OnClickListener
 {
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public vkl(ShakeItemBuilder paramShakeItemBuilder, MessageForShakeWindow paramMessageForShakeWindow) {}
   
-  public vkl(TroopLineTipsChatItemBuilder paramTroopLineTipsChatItemBuilder) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShakeItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.uniseq);
+  }
 }
 
 

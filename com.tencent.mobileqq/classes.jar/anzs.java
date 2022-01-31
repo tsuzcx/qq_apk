@@ -1,50 +1,32 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer.PlayerContext;
+import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
+import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailProgress;
 
 public class anzs
-  implements TextLayer.LayerListener
+  implements Callbacks.Callback
 {
-  private anzs(DoodleLayout paramDoodleLayout) {}
+  public anzs(EditLocalVideoPlayer paramEditLocalVideoPlayer) {}
   
-  public void a(float paramFloat)
+  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailProgress paramThumbnailProgress)
   {
-    if (paramFloat >= 0.95F)
+    if ((!paramBoolean.booleanValue()) || (paramThumbnailProgress == null) || (paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap == null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onAnimate:" + paramFloat);
-      }
-      if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiEditTextDialog != null) && (this.a.a() != null) && (this.a.a().a() != null)) {
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiEditTextDialog.a(this.a.a().a(), this.a.a().a().b());
-      }
+      SLog.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
+      return null;
     }
-  }
-  
-  public void a(DynamicTextItem paramDynamicTextItem)
-  {
-    if (DoodleLayout.a(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onClickInside mIsRecording");
-      }
-    }
-    long l;
-    do
+    SLog.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramThumbnailProgress.jdField_a_of_type_Int));
+    if (paramThumbnailProgress.jdField_a_of_type_Int >= this.a.a.length)
     {
-      return;
-      l = SystemClock.uptimeMillis();
-    } while (l - this.a.jdField_a_of_type_Long <= 500L);
-    this.a.jdField_a_of_type_Long = l;
-    this.a.a(paramDynamicTextItem, paramDynamicTextItem.b(), 1, true);
-  }
-  
-  public boolean a(TextLayer.TextItem paramTextItem)
-  {
-    return this.a.a(paramTextItem, true);
+      SLog.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramThumbnailProgress.jdField_a_of_type_Int) });
+      return null;
+    }
+    SLog.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramThumbnailProgress.jdField_a_of_type_Int));
+    this.a.a[paramThumbnailProgress.jdField_a_of_type_Int] = EditLocalVideoPlayer.PlayerContext.a(this.a.a[paramThumbnailProgress.jdField_a_of_type_Int], paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.a.a[paramThumbnailProgress.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramThumbnailProgress.jdField_a_of_type_JavaLangString;
+    this.a.k();
+    return null;
   }
 }
 

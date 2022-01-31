@@ -1,15 +1,20 @@
-import com.tencent.biz.qqstory.newshare.model.Job;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-public class nhi
-  implements Runnable
+class nhi
+  implements Comparator
 {
-  public nhi(JobExecutor paramJobExecutor, Job paramJob, ConcurrentHashMap paramConcurrentHashMap) {}
+  nhi(nhh paramnhh) {}
   
-  public void run()
+  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
   {
-    JobExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    if (paramStoryVideoItem1.mCreateTime > paramStoryVideoItem2.mCreateTime) {
+      return 1;
+    }
+    if (paramStoryVideoItem1.mCreateTime < paramStoryVideoItem2.mCreateTime) {
+      return -1;
+    }
+    return 0;
   }
 }
 

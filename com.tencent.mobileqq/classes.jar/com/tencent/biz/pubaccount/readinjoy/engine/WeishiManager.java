@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
+import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -12,8 +13,8 @@ import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import java.util.ArrayList;
 import java.util.List;
-import lmx;
-import lmy;
+import lpr;
+import lps;
 import mqq.manager.Manager;
 
 public class WeishiManager
@@ -53,12 +54,20 @@ public class WeishiManager
   {
     paramMessageRecord.issend = 1;
     paramMessageRecord.isread = true;
-    paramMessageRecord.frienduin = AppConstants.aH;
-    paramMessageRecord.senderuin = AppConstants.aH;
+    paramMessageRecord.frienduin = AppConstants.aI;
+    paramMessageRecord.senderuin = AppConstants.aI;
     paramMessageRecord.istroop = 1008;
     paramMessageRecord.msg = paramString;
     paramMessageRecord.time = paramLong;
     paramMessageRecord.createMessageUniseq();
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {
+      return false;
+    }
+    return TextUtils.equals(paramMessageRecord.frienduin, AppConstants.aI);
   }
   
   public MessageForStructing a()
@@ -66,9 +75,9 @@ public class WeishiManager
     if ((this.a == null) || (this.a.a() == null) || (this.a.a().a() == null)) {
       return null;
     }
-    if (this.a.a().a().a(AppConstants.aH, 1008) > 0)
+    if (this.a.a().a().a(AppConstants.aI, 1008) > 0)
     {
-      MessageRecord localMessageRecord = this.a.a().b(AppConstants.aH, 1008);
+      MessageRecord localMessageRecord = this.a.a().b(AppConstants.aI, 1008);
       if ((localMessageRecord instanceof MessageForStructing)) {
         return (MessageForStructing)localMessageRecord;
       }
@@ -78,8 +87,13 @@ public class WeishiManager
   
   public String a()
   {
-    if ((a() != null) && (a().structingMsg != null) && (!TextUtils.isEmpty(a().structingMsg.mMsgActionData))) {
-      return a().structingMsg.mMsgActionData;
+    Object localObject = a();
+    if (localObject != null)
+    {
+      localObject = ((MessageForStructing)localObject).structingMsg;
+      if ((localObject != null) && (!TextUtils.isEmpty(((AbsStructMsg)localObject).mMsgActionData))) {
+        return ((AbsStructMsg)localObject).mMsgActionData;
+      }
     }
     return "";
   }
@@ -90,9 +104,9 @@ public class WeishiManager
     if ((this.a == null) || (this.a.a() == null) || (this.a.a().a() == null)) {
       return null;
     }
-    if (this.a.a().a().a(AppConstants.aH, 1008) > 0)
+    if (this.a.a().a().a(AppConstants.aI, 1008) > 0)
     {
-      Object localObject = this.a.a().b(AppConstants.aH, 1008);
+      Object localObject = this.a.a().b(AppConstants.aI, 1008);
       if ((localObject instanceof MessageForStructing))
       {
         localObject = (MessageForStructing)localObject;
@@ -111,7 +125,7 @@ public class WeishiManager
     return localArrayList;
   }
   
-  public void a()
+  public void a(Activity paramActivity)
   {
     if (this.a == null) {}
     Object localObject;
@@ -123,8 +137,8 @@ public class WeishiManager
         localObject = this.a.a();
       } while (localObject == null);
       localObject = ((QQMessageFacade)localObject).a();
-    } while ((localObject == null) || (((ConversationFacade)localObject).a(AppConstants.aH, 1008) <= 0));
-    ThreadManager.post(new lmx(this), 8, null, false);
+    } while ((localObject == null) || (((ConversationFacade)localObject).a(AppConstants.aI, 1008) <= 0));
+    ThreadManager.post(new lpr(this, paramActivity), 8, null, false);
   }
   
   public void a(String paramString, long paramLong)
@@ -136,7 +150,7 @@ public class WeishiManager
       return;
       localQQMessageFacade = this.a.a();
     } while (localQQMessageFacade == null);
-    ThreadManager.post(new lmy(this, localQQMessageFacade, paramString, paramLong), 10, null, false);
+    ThreadManager.post(new lps(this, localQQMessageFacade, paramString, paramLong), 10, null, false);
   }
   
   public void onDestroy()

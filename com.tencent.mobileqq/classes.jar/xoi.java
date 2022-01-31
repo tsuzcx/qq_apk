@@ -1,17 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-import cooperation.qzone.RDMEtraMsgCollector;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import cooperation.qqdataline.QQProxyForDataline;
 
 public class xoi
-  implements ActionSheet.OnDismissListener
+  implements View.OnClickListener
 {
-  public xoi(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public xoi(BannerManager paramBannerManager) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[Actvity]").append(getClass().getSimpleName()).append(" QQCustomDialog click :").append("取消");
-    RDMEtraMsgCollector.a().c(localStringBuilder.toString());
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    paramView = new Bundle();
+    paramView.putBoolean("string_from", false);
+    paramView.putBoolean("string_uin", true);
+    paramView.putLong("device_din", 0L);
+    paramView.putInt("sTitleID", 0);
+    QQProxyForDataline.a(BannerManager.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
   }
 }
 

@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARRenderModel.CameraRendererable;
 
 public class aahc
-  implements Runnable
 {
-  public aahc(AREngine paramAREngine) {}
+  public float a;
+  public boolean a;
+  public float b;
   
-  public void run()
+  public aahc(CameraRendererable paramCameraRendererable)
   {
-    QLog.i("AREngine_AREngine", 1, "uninit run. mIsInited = " + AREngine.e(this.a));
-    AREngine.b(this.a);
-    AREngine.b(this.a, 0);
-    AREngine.b(this.a, false);
-    QLog.i("AREngine_AREngine", 1, "uninit end. mIsInited = " + AREngine.e(this.a));
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

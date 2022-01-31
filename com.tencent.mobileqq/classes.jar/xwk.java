@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
-import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem.FontItem;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.VideoProcessListener;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class xwk
-  implements Runnable
+  implements NewFlowCameraActivity.VideoProcessListener
 {
-  public xwk(SubtitleDataManager paramSubtitleDataManager, String paramString, SubtitleItem.FontItem paramFontItem) {}
+  public xwk(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    if (SubtitleDataManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem)) {
+    if (this.a.r == 10011)
+    {
+      NewFlowCameraActivity.a(this.a, paramString1);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.jdField_c_of_type_JavaLangString, SubtitleDataManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager) + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.d, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.d, SubtitleDataManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager));
+    if (paramBoolean)
+    {
+      NewFlowCameraActivity.b(this.a, paramString1);
+      return;
+    }
+    this.a.i(true);
+    QQToast.a(this.a, "对不起，GIF处理异常...", 0).a();
   }
 }
 

@@ -1,13 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverSimpleAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoTopicTextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkCache;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.qphone.base.util.QLog;
 
 public class lij
+  implements View.OnTouchListener
 {
-  public ChannelCoverInfo a;
-  public ReadInJoyVideoTopicTextView a;
+  public lij(ReadInJoyArkCache paramReadInJoyArkCache, BaseArticleInfo paramBaseArticleInfo, ArkAppContainer paramArkAppContainer) {}
   
-  public lij(ChannelCoverSimpleAdapter paramChannelCoverSimpleAdapter) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArkCache", 2, "click ArkAppView.");
+      }
+      ReadInJoyArkCache.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyArkReadInJoyArkCache, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.onTouch(paramView, paramMotionEvent);
+    }
+    return false;
+  }
 }
 
 

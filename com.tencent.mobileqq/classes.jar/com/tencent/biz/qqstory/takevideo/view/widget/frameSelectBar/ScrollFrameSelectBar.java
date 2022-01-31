@@ -21,7 +21,7 @@ import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.tribe.TribeFlowComponentInterface;
 import com.tencent.widget.HorizontalListView;
 import cooperation.readinjoy.ReadInJoyHelper;
-import omi;
+import oqu;
 
 public class ScrollFrameSelectBar
   extends FrameLayout
@@ -74,13 +74,13 @@ public class ScrollFrameSelectBar
     this.d = UIUtils.a(getContext());
     this.e = UIUtils.a(getContext(), jdField_a_of_type_Int);
     this.f = UIUtils.a(getContext(), b);
-    LayoutInflater.from(getContext()).inflate(2130971516, this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131375003));
+    LayoutInflater.from(getContext()).inflate(2130971542, this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131375055));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar = ((RangeSelectBar)findViewById(2131375005));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarProgressPointer = ((ProgressPointer)findViewById(2131375004));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar = ((RangeSelectBar)findViewById(2131375057));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarProgressPointer = ((ProgressPointer)findViewById(2131375056));
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar.setRangeChangeListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new omi(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new oqu(this));
     if ("tribe".equals(((Activity)getContext()).getIntent().getStringExtra("video_refer"))) {
       this.g = (TribeFlowComponentInterface.jdField_a_of_type_Int / 10);
     }

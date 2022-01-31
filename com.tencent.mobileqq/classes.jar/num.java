@@ -1,29 +1,16 @@
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListRequest;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
 
 public class num
-  extends ParallelJobSegment
+  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
 {
-  public int a;
+  public num(VideoViewTVKImpl paramVideoViewTVKImpl) {}
   
-  public num(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment, int paramInt)
+  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, String paramString)
-  {
-    DetailLikeListLoader.GetLikeListRequest localGetLikeListRequest = new DetailLikeListLoader.GetLikeListRequest();
-    localGetLikeListRequest.jdField_a_of_type_JavaLangString = paramString;
-    localGetLikeListRequest.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != -1) {
-      localGetLikeListRequest.c = this.jdField_a_of_type_Int;
-    }
-    CmdTaskManger.a().a(localGetLikeListRequest, new nun(this, paramJobContext, paramString));
+    SLog.a("VideoViewTVKImpl", "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
   }
 }
 

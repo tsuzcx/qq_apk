@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import com.tencent.util.InputMethodUtil;
 
-class akmg
+public class akmg
   implements Runnable
 {
-  akmg(akmf paramakmf, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public akmg(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
-    }
+    InputMethodUtil.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akmg
  * JD-Core Version:    0.7.0.1
  */

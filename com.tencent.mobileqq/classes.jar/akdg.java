@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
-class akdg
-  implements Runnable
+public class akdg
+  implements FrameSprite.OnFrameEndListener
 {
-  akdg(akdf paramakdf, int paramInt) {}
+  public akdg(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, FrameSprite.OnFrameEndListener paramOnFrameEndListener) {}
   
-  public void run()
+  public void a()
   {
-    NewUpgradeDialog.a(this.jdField_a_of_type_Akdf.a, 2);
-    this.jdField_a_of_type_Akdf.a.a(this.jdField_a_of_type_Int, 2);
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new akdh(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdg
  * JD-Core Version:    0.7.0.1
  */

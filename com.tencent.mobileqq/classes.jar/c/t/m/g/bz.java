@@ -3,11 +3,11 @@ package c.t.m.g;
 final class bz
   implements Runnable
 {
-  bz(by paramby, int paramInt) {}
+  bz(bv parambv) {}
   
   public final void run()
   {
-    by.a(this.b).a(this.a);
+    bv.a(this.a);
   }
 }
 

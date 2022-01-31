@@ -1,24 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.VoiceChangeChooseDialog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.VideoControlUI;
 
 public class kcq
-  implements Animation.AnimationListener
+  implements View.OnTouchListener
 {
-  public kcq(VoiceChangeChooseDialog paramVoiceChangeChooseDialog) {}
+  public kcq(VideoControlUI paramVideoControlUI) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.dismiss();
+    if (this.a.a != null) {
+      return this.a.a.onTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcq
  * JD-Core Version:    0.7.0.1
  */

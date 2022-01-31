@@ -1,13 +1,6 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
-
 public class abcq
-  extends AnimateUtils.AnimationAdapter
 {
-  public abcq(ConversationPullDownActiveBase paramConversationPullDownActiveBase) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
+  String[] a;
 }
 
 

@@ -1,45 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.io.IOException;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.IBitmapCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.Set;
 
 public class muk
-  extends AsyncTask
+  implements Runnable
 {
-  public muk(GalleryShareHelper paramGalleryShareHelper, URLDrawable paramURLDrawable, String paramString) {}
+  public muk(RunningJob paramRunningJob, CloseableBitmap paramCloseableBitmap) {}
   
-  protected String a(Void... paramVarArgs)
+  public void run()
   {
-    try
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.a)
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        ImageUtil.a(GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper), paramVarArgs);
-        if (GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getIntent().getBooleanExtra("from_photo_wall", false)) {
-          return "已保存到手机相册";
-        }
-        return GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getString(2131434582) + " " + paramVarArgs;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderCloseableBitmap.a();
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_JavaUtilSet.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if (localWeakReference.get() != null) {
+        ((IBitmapCallback)localWeakReference.get()).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderCloseableBitmap.a());
       }
-      paramVarArgs = GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getString(2131434583);
-      return paramVarArgs;
     }
-    catch (IOException paramVarArgs)
-    {
-      return GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getString(2131434583);
-    }
-    catch (OutOfMemoryError paramVarArgs) {}
-    return GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getString(2131434583);
-  }
-  
-  protected void a(String paramString)
-  {
-    QQToast.a(GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper), paramString, 0).b(GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderCloseableBitmap.a();
   }
 }
 

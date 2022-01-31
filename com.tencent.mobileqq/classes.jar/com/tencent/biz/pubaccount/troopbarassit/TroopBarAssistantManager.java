@@ -47,9 +47,9 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import mtv;
-import mtw;
-import mtx;
+import mxp;
+import mxq;
+import mxr;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -77,7 +77,7 @@ public class TroopBarAssistantManager
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilComparator = new mtv(this);
+    this.jdField_a_of_type_JavaUtilComparator = new mxp(this);
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
@@ -181,7 +181,7 @@ public class TroopBarAssistantManager
         {
           paramEntityManager.a(paramQQAppInterface.getAccount(), 0, paramTroopBarData.getTableName(), paramTroopBarData, 3, null);
           paramQQAppInterface = (KandianMergeManager)paramQQAppInterface.getManager(161);
-          paramQQAppInterface.k();
+          paramQQAppInterface.l();
           paramQQAppInterface.b(null);
           return;
           paramQQAppInterface = finally;
@@ -335,7 +335,16 @@ public class TroopBarAssistantManager
   
   public static void b()
   {
-    TroopBarAssistantManager.SingletonHolder.a = null;
+    try
+    {
+      TroopBarAssistantManager.SingletonHolder.a = null;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   private void b(QQAppInterface paramQQAppInterface, String paramString)
@@ -415,7 +424,7 @@ public class TroopBarAssistantManager
       ((TroopBarData)this.jdField_a_of_type_JavaUtilList.get(i)).mLatestMessage = paramQQAppInterface.a().b((String)localObject, 1008);
       break label387;
       label371:
-      ((KandianMergeManager)paramQQAppInterface.getManager(161)).k();
+      ((KandianMergeManager)paramQQAppInterface.getManager(161)).l();
       return;
       label387:
       i += 1;
@@ -480,7 +489,7 @@ public class TroopBarAssistantManager
     if (paramQQAppInterface == null) {
       return;
     }
-    ThreadManager.executeOnSubThread(new mtw(this, paramQQAppInterface));
+    ThreadManager.executeOnSubThread(new mxq(this, paramQQAppInterface));
   }
   
   private void m(QQAppInterface paramQQAppInterface)
@@ -1287,7 +1296,7 @@ public class TroopBarAssistantManager
   
   public void e(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.executeOnSubThread(new mtx(this, paramQQAppInterface));
+    ThreadManager.executeOnSubThread(new mxr(this, paramQQAppInterface));
   }
   
   public void e(QQAppInterface paramQQAppInterface, boolean paramBoolean)

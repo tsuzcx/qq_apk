@@ -1,19 +1,34 @@
-import com.tencent.av.ui.GAudioMemberListCtrl;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.utils.TipsManager;
+import com.tencent.qphone.base.util.QLog;
 
-class juo
+public class juo
   implements Runnable
 {
-  juo(jul paramjul, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public juo(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Jul.a.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
+    SessionInfo localSessionInfo = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+    QLog.w(this.a.c, 1, "CheckRemoteCameraRunnable, 5s has past, 对方视频数据没来, mRecvVideoData[" + this.a.g + "], SessionType[" + localSessionInfo.d + "], shutCameraAnswer[" + localSessionInfo.i + "], cameraPermission[" + localSessionInfo.j + "]");
+    if ((!this.a.g) && (localSessionInfo.d == 2))
+    {
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.b(14, true);
+      this.a.jdField_a_of_type_ComTencentAvVideoController.l(localSessionInfo.c);
+      if ((localSessionInfo.i) || (!localSessionInfo.j))
+      {
+        localSessionInfo.d = 1;
+        this.a.a("CheckRemoteCameraRunnable", 1);
+      }
+      this.a.ad();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     juo
  * JD-Core Version:    0.7.0.1
  */

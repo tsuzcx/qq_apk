@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.profile.vote;
 
-import agsv;
-import agsw;
-import agsx;
-import agsy;
+import agxi;
+import agxj;
+import agxk;
+import agxl;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
@@ -112,16 +112,16 @@ public class VoteHelper
     synchronized (jdField_b_of_type_JavaLangObject)
     {
       a(localArrayList);
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getResources().getString(2131438667);
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getResources().getString(2131438668);
-      this.c = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getResources().getString(2131438669);
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getResources().getString(2131438690);
+      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getResources().getString(2131438691);
+      this.c = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.getResources().getString(2131438692);
       return;
     }
   }
   
   public void a(long paramLong)
   {
-    ThreadManager.postImmediately(new agsy(this, paramLong), null, true);
+    ThreadManager.postImmediately(new agxl(this, paramLong), null, true);
   }
   
   public void a(CardProfile paramCardProfile)
@@ -220,7 +220,7 @@ public class VoteHelper
     }
     if ((!bool) && (NearbyLikeLimitManager.d(paramCardProfile.uSource)))
     {
-      ((NearbyLikeLimitManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(206)).a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(paramCardProfile.lEctID), new agsw(this, paramCardProfile, paramImageView), "511");
+      ((NearbyLikeLimitManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(206)).a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(paramCardProfile.lEctID), new agxj(this, paramCardProfile, paramImageView), "511");
       return;
     }
     a(paramCardProfile, paramImageView, true);
@@ -315,7 +315,7 @@ public class VoteHelper
           if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(6)) {
             this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 2000L);
           }
-          ThreadManager.post(new agsv(this, paramCardProfile.lEctID, paramCardProfile.type, paramBoolean), 2, null, true);
+          ThreadManager.post(new agxi(this, paramCardProfile.lEctID, paramCardProfile.type, paramBoolean), 2, null, true);
           return;
         }
         short s = 1;
@@ -385,7 +385,7 @@ public class VoteHelper
   
   public void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new agsx(this, paramString, paramInt, paramBoolean), null, false);
+    ThreadManager.postImmediately(new agxk(this, paramString, paramInt, paramBoolean), null, false);
   }
   
   public void a(ArrayList paramArrayList, int paramInt1, int paramInt2, long paramLong)

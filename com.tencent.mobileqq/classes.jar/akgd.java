@@ -1,53 +1,54 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class akgd
+public final class akgd
+  implements DownloadParams.DecodeHandler
 {
-  private final Drawable a;
-  private final Drawable b;
-  
-  akgd(Context paramContext)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837525);
-    this.b = paramContext.getDrawable(2130837527);
-  }
-  
-  private Drawable a(Drawable paramDrawable)
-  {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
-  }
-  
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    Object localObject;
+    if (paramBitmap == null)
+    {
+      localObject = null;
+      return localObject;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length > 0)) {}
+    for (int i = ((int[])(int[])paramDownloadParams)[0];; i = 0)
+    {
+      int j;
+      int k;
+      boolean bool;
+      if (i != 0)
+      {
+        paramDownloadParams = new Matrix();
+        paramDownloadParams.postRotate(i);
+        j = paramBitmap.getWidth();
+        k = paramBitmap.getHeight();
+        if (i % 90 != 0) {
+          bool = true;
+        }
+      }
+      label84:
+      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, k, paramDownloadParams, bool);; paramDownloadParams = paramBitmap)
+      {
+        localObject = paramDownloadParams;
+        if (paramDownloadParams == paramBitmap) {
+          break;
+        }
+        paramBitmap.recycle();
+        return paramDownloadParams;
+        bool = false;
+        break label84;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgd
  * JD-Core Version:    0.7.0.1
  */

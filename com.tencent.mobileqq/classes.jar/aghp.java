@@ -1,25 +1,26 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.ui.SearchResultAdapter;
+import com.tencent.mobileqq.ocr.ui.SearchResultAdapter.ListItem;
+import com.tencent.mobileqq.ocr.ui.SearchResultAdapter.OnResultItemClickedListener;
 
-class aghp
-  implements Runnable
+public class aghp
+  implements View.OnClickListener
 {
-  aghp(agho paramagho) {}
+  public aghp(SearchResultAdapter paramSearchResultAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis() - ScanTorchActivity.a(this.a.a);
-    if (l > 500L)
+    if ((this.a.a != null) && ((paramView.getTag() instanceof SearchResultAdapter.ListItem)))
     {
-      ScanTorchActivity.d(this.a.a, ScanTorchActivity.b(this.a.a));
-      return;
+      paramView = (SearchResultAdapter.ListItem)paramView.getTag();
+      this.a.a.a(paramView);
     }
-    ScanTorchActivity.b(this.a.a).postDelayed(new aghq(this), 500L - l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghp
  * JD-Core Version:    0.7.0.1
  */

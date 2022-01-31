@@ -2,7 +2,7 @@ package com.tencent.av.utils;
 
 import android.os.Handler;
 import android.view.View;
-import kgo;
+import kiu;
 
 public class QQFrameByFrameAnimation
 {
@@ -10,7 +10,7 @@ public class QQFrameByFrameAnimation
   public Handler a;
   View jdField_a_of_type_AndroidViewView = null;
   public QQAnimationListener a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new kgo(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new kiu(this);
   public int[] a;
   public int b = 0;
   public int c = 0;
@@ -79,7 +79,7 @@ public class QQFrameByFrameAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.QQFrameByFrameAnimation
  * JD-Core Version:    0.7.0.1
  */

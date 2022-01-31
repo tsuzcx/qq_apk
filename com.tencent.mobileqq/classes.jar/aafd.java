@@ -1,15 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
 
 public class aafd
   implements Runnable
 {
-  public aafd(ARCloudControl paramARCloudControl) {}
+  public aafd(ARVideoRecordViewProxy paramARVideoRecordViewProxy) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), "开始选图", 0).a();
+    if (ARVideoRecordViewProxy.b(this.a) != null) {
+      ARVideoRecordViewProxy.b(this.a).setVisibility(8);
+    }
   }
 }
 

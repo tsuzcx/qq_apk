@@ -1,24 +1,41 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class srq
-  implements Animation.AnimationListener
+  implements FavroamingDBManager.FavEmotionDataInPanelCallback
 {
-  public srq(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public srq(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(List paramList)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
+    }
+    try
+    {
+      Collections.reverse((List)localObject);
+      ((List)localObject).add(0, new EmoticonInfo());
+      if (this.a.a != null) {
+        this.a.a.obtainMessage(206, localObject).sendToTarget();
+      }
+      return;
+    }
+    catch (UnsupportedOperationException paramList)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FavEmoRoamingHandler", 2, paramList.getMessage());
+        }
+      }
     }
   }
 }

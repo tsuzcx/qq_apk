@@ -1,20 +1,30 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.qqstory.view.WeShiGuideDialog;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsNewActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public final class mwy
-  implements View.OnSystemUiVisibilityChangeListener
+public class mwy
+  implements Runnable
 {
-  public mwy(WeShiGuideDialog paramWeShiGuideDialog, Activity paramActivity) {}
+  private WeakReference a;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public mwy(SubscriptFeedsNewActivity paramSubscriptFeedsNewActivity)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWeShiGuideDialog.getWindow().getDecorView().setSystemUiVisibility(5894);
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof VideoFeedsPlayActivity)) {
-      ((VideoFeedsPlayActivity)this.jdField_a_of_type_AndroidAppActivity).d();
+    this.a = new WeakReference(paramSubscriptFeedsNewActivity);
+  }
+  
+  public void run()
+  {
+    if ((this.a != null) && (this.a.get() != null))
+    {
+      WebProcessManager localWebProcessManager = (WebProcessManager)((SubscriptFeedsNewActivity)this.a.get()).app.getManager(12);
+      if (localWebProcessManager != null) {
+        localWebProcessManager.a(1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "enter folder preload web process");
+      }
     }
   }
 }

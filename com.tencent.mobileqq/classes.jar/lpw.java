@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
+import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView.OnSizeChangedListener;
 
 public class lpw
-  implements Runnable
+  implements VariableSizeTextView.OnSizeChangedListener
 {
-  public lpw(ArticleInfoModule paramArticleInfoModule) {}
+  public lpw(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
   
-  public void run()
+  public void a()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b();
-    if (QLog.isColorLevel()) {
-      QLog.d("ArticleInfoModule", 2, "8c8 response refresh ui ");
-    }
+    ReadInJoyAtlasFragment.a(this.a).a(4, null);
   }
+  
+  public void a(int paramInt1, int paramInt2) {}
 }
 
 

@@ -1,57 +1,32 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.TMG.opengl.GraphicRendererMgr;
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVVideoCtrl;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class yjk
-  implements SurfaceHolder.Callback
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public yjk(AVCameraCaptureModel paramAVCameraCaptureModel) {}
+  public yjk(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramSurfaceHolder.getSurface() == null) {
-      return;
-    }
-    paramSurfaceHolder.setFixedSize(paramInt2, paramInt3);
-    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceChanged");
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    if (GraphicRendererMgr.getInstance() != null)
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      AVManager.a(AVCameraCaptureModel.a(this.a)).a().setRenderMgrAndHolder(GraphicRendererMgr.getInstance(), paramSurfaceHolder);
-      AVManager.a(AVCameraCaptureModel.a(this.a)).a().getVideoCtrl().setLocalVideoPreviewCallback(new yjl(this));
-      AVManager.a(AVCameraCaptureModel.a(this.a)).a().getVideoCtrl().setRemoteVideoPreviewCallback(new yjn(this));
+      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
+      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
+        this.a.a.setAlpha(f);
+      }
+      if ((this.a.c.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
+        this.a.c.setAlpha(Float.valueOf(f).floatValue());
+      }
     }
-    for (;;)
-    {
-      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceCreated");
-      return;
-      QLog.e("AVCameraCaptureModel", 0, "GraphicRendererMgr is null, so can't load");
-    }
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    paramSurfaceHolder = this.a.a();
-    if (paramSurfaceHolder == null)
-    {
-      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed avCtrl == null");
-      return;
-    }
-    paramSurfaceHolder.enableCamera(0, false, new yjp(this));
-    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yjk
  * JD-Core Version:    0.7.0.1
  */

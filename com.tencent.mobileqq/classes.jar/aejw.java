@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.leba.view.LebaGridIndicator;
 
 public class aejw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aejw(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, SongInfo paramSongInfo) {}
+  public aejw(LebaGridIndicator paramLebaGridIndicator, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlaySongChanged(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+    if (LebaGridIndicator.a(this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaGridIndicator) != null) {
+      LebaGridIndicator.b(this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaGridIndicator).setCurrentItem(this.jdField_a_of_type_Int);
+    }
   }
 }
 

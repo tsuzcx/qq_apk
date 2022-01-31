@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a131b" android:paddingTop="65.0dip" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f37" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206ed" />
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0026" android:textColor="#ffa6a6a6" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1313" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="尝试下拉刷新" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206ee" android:drawablePadding="5.0dip" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="26.599976dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c1f" />
+    <TextView android:textSize="15.0sp" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a131c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="定位失败，无法获取你的位置信息" />
 </LinearLayout>

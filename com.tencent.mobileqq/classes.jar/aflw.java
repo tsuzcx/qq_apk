@@ -1,18 +1,42 @@
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
-public final class aflw
-  implements CsTask.OnCsError
+public class aflw
+  implements Runnable
 {
-  public aflw(NearbyMomentProtocol.ReportCallback paramReportCallback) {}
+  public aflw(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void run()
   {
-    QLog.i("NearbyMomentProtocol", 1, "report ,0xada error errorCode= " + paramInt);
-    if (this.a != null) {
-      this.a.a(false);
+    NearbyProfileEditPanel.a(this.a, (PicInfo)this.a.jdField_a_of_type_JavaUtilLinkedList.poll());
+    if (NearbyProfileEditPanel.a(this.a) == null) {
+      return;
     }
+    CompressInfo localCompressInfo = new CompressInfo(NearbyProfileEditPanel.a(this.a).c, 0);
+    localCompressInfo.f = 0;
+    CompressOperator.a(localCompressInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..uploadPhoto(), img_path = " + localCompressInfo.e);
+    }
+    if (!StringUtil.a(localCompressInfo.e))
+    {
+      TransferRequest localTransferRequest = new TransferRequest();
+      localTransferRequest.a = true;
+      localTransferRequest.i = localCompressInfo.e;
+      localTransferRequest.b = 8;
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localTransferRequest);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.runOnUiThread(new aflx(this));
   }
 }
 

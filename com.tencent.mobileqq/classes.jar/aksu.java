@@ -1,15 +1,15 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.widget.VideoView;
 
-public class aksu
-  extends GestureDetector.SimpleOnGestureListener
+public final class aksu
+  implements MediaPlayer.OnCompletionListener
 {
-  public aksu(BounceScrollView paramBounceScrollView) {}
+  public aksu(VideoView paramVideoView) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
+    this.a.start();
   }
 }
 

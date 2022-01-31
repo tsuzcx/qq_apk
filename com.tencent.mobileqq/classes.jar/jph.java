@@ -1,27 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class jph
-  implements DialogInterface.OnDismissListener
+  implements ServiceConnection
 {
-  public jph(AVActivity paramAVActivity) {}
+  public jph(QQServiceForAV paramQQServiceForAV) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null)
+    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceConnected name=" + paramComponentName + ", service=" + paramIBinder);
+    QQServiceForAV.a(this.a, true);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceDisconnected name=" + paramComponentName);
+    QQServiceForAV.a(this.a, false);
+    try
     {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().r = false;
-      this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.l(true);
-      this.a.jdField_a_of_type_ComTencentAvUiVoiceChangeChooseDialog = null;
+      BaseApplicationImpl.getContext().unbindService(this);
+      return;
+    }
+    catch (Throwable paramComponentName)
+    {
+      QLog.e("QQServiceForAV", 1, "onServiceDisconnected unbindService exception:" + paramComponentName, paramComponentName);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jph
  * JD-Core Version:    0.7.0.1
  */

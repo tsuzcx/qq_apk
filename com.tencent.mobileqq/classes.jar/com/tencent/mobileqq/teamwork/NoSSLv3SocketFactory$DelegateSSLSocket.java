@@ -384,7 +384,7 @@ public class NoSSLv3SocketFactory$DelegateSSLSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory.DelegateSSLSocket
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import adaa;
-import adab;
-import adac;
-import adad;
-import adae;
-import adaf;
-import adag;
-import adah;
-import adai;
-import adaj;
-import adak;
+import adih;
+import adii;
+import adij;
+import adik;
+import adil;
+import adim;
+import adin;
+import adio;
+import adip;
+import adiq;
+import adir;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.support.annotation.Nullable;
@@ -79,7 +79,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
@@ -226,7 +225,7 @@ public class WeiYunLogicCenter
       }
       return null;
     }
-    paramString1 = new adah(this, paramString1, paramInt, paramObject);
+    paramString1 = new adio(this, paramString1, paramInt, paramObject);
     WyDownloader.a().a((String)((Pair)localPair.first).first, paramString2, (String)((Pair)localPair.first).second, paramString1);
     return null;
   }
@@ -234,7 +233,7 @@ public class WeiYunLogicCenter
   private void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq paramAioPicAndVideoCopyToWeiyunMsgReq, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback)
   {
     ResponseHandler.a();
-    WeiyunApi.a(paramAioPicAndVideoCopyToWeiyunMsgReq, new adag(this, paramWeiyunCallback));
+    WeiyunApi.a(paramAioPicAndVideoCopyToWeiyunMsgReq, new adin(this, paramWeiyunCallback));
   }
   
   private void b()
@@ -244,7 +243,7 @@ public class WeiYunLogicCenter
       if (NetworkUtils.isWifiAvailable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))
       {
         this.c = true;
-        SoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), new adai(this));
+        SoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), new adip(this));
       }
       return;
     }
@@ -431,7 +430,7 @@ public class WeiYunLogicCenter
     if (QLog.isColorLevel()) {
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd");
     }
-    WeiyunApi.a(new adab(this));
+    WeiyunApi.a(new adii(this));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -452,7 +451,7 @@ public class WeiYunLogicCenter
     localCrossBidProxyOfflineFileGetListMsgReq.uint32_offline_type.set(paramInt1);
     localCrossBidProxyOfflineFileGetListMsgReq.uint32_offset.set(paramInt2);
     localCrossBidProxyOfflineFileGetListMsgReq.uint32_number.set(paramInt3);
-    WeiyunApi.a(localCrossBidProxyOfflineFileGetListMsgReq, new adad(this, paramInt1));
+    WeiyunApi.a(localCrossBidProxyOfflineFileGetListMsgReq, new adik(this, paramInt1));
   }
   
   public void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
@@ -497,7 +496,7 @@ public class WeiYunLogicCenter
       localPBStringField.set(str);
       localLibInfoListGetMsgReq.count.set(paramInt3);
       localLibInfoListGetMsgReq.scene_id.set(paramInt1);
-      WeiyunApi.a(localLibInfoListGetMsgReq, new adaa(this, paramString1));
+      WeiyunApi.a(localLibInfoListGetMsgReq, new adih(this, paramString1));
       return;
       if (this.jdField_a_of_type_JavaUtilLinkedHashMap != null) {
         break label165;
@@ -651,7 +650,7 @@ public class WeiYunLogicCenter
         }
         localCrossBidProxyCopyFileToOtherBidMsgReq.extension_req.set(localExtensionReq);
       }
-      WeiyunApi.a(localCrossBidProxyCopyFileToOtherBidMsgReq, new adae(this, paramFileManagerEntity, paramInt));
+      WeiyunApi.a(localCrossBidProxyCopyFileToOtherBidMsgReq, new adil(this, paramFileManagerEntity, paramInt));
       FileManagerUtil.b(paramFileManagerEntity.nSessionId);
       return;
       label1140:
@@ -691,7 +690,7 @@ public class WeiYunLogicCenter
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
         BitmapFactory.decodeFile(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
         TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, localTroopFileStatusInfo.g, localTroopFileStatusInfo.b, localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID.toString(), i, Long.toString(localTroopFileStatusInfo.jdField_a_of_type_Long), paramFileManagerEntity.nSessionId, ((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight);
-        localItem = (TroopFileTransferManager.Item)localTroopFileTransferManager.b.get(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+        localItem = localTroopFileTransferManager.a(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
         if (localItem != null)
         {
           localItem.width = ((BitmapFactory.Options)localObject).outWidth;
@@ -703,7 +702,7 @@ public class WeiYunLogicCenter
     {
       paramFileManagerEntity.status = 2;
       if (NetworkUtil.d(BaseApplication.getContext())) {
-        break label456;
+        break label440;
       }
       paramFileManagerEntity.status = 0;
       paramFileManagerEntity.isReaded = false;
@@ -717,7 +716,7 @@ public class WeiYunLogicCenter
       {
         localObject = ShortVideoUtils.a(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString);
         TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, localTroopFileStatusInfo.g, localTroopFileStatusInfo.b, localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID.toString(), i, Long.toString(localTroopFileStatusInfo.jdField_a_of_type_Long), paramFileManagerEntity.nSessionId, localObject[0], localObject[1], localObject[2]);
-        localItem = (TroopFileTransferManager.Item)localTroopFileTransferManager.b.get(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+        localItem = localTroopFileTransferManager.a(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
         if (localItem != null)
         {
           localItem.width = localObject[0];
@@ -727,7 +726,7 @@ public class WeiYunLogicCenter
         }
       }
     }
-    label456:
+    label440:
     if (QLog.isColorLevel()) {
       QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop, peerUin[" + FileManagerUtil.e(paramFileManagerEntity.peerUin) + "], WeiYunFileId[" + paramFileManagerEntity.WeiYunFileId + "], fileName[" + paramFileManagerEntity.fileName + "], fileSize[" + paramFileManagerEntity.fileSize + "], nWeiYunSrcType[" + paramFileManagerEntity.nWeiYunSrcType + "]");
     }
@@ -773,7 +772,7 @@ public class WeiYunLogicCenter
         }
         paramString.extension_req.set((MessageMicro)localObject);
       }
-      WeiyunApi.a(paramString, new adaf(this, localTroopFileTransferManager, localTroopFileStatusInfo, paramFileManagerEntity));
+      WeiyunApi.a(paramString, new adim(this, localTroopFileTransferManager, localTroopFileStatusInfo, paramFileManagerEntity));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramFileManagerEntity.nSessionId);
       return;
     }
@@ -807,7 +806,7 @@ public class WeiYunLogicCenter
     localArrayList.add(localObject);
     localObject = new WeiyunPB.DiskDirFileBatchDeleteExMsgReq();
     ((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)localObject).file_list.set(localArrayList);
-    WeiyunApi.a((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)localObject, new adaj(this, paramWeiYunFileInfo));
+    WeiyunApi.a((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)localObject, new adiq(this, paramWeiYunFileInfo));
   }
   
   public void a(String paramString)
@@ -820,13 +819,13 @@ public class WeiYunLogicCenter
       if (QLog.isColorLevel()) {
         QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd : network error");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 45, new Object[] { Integer.valueOf(0), BaseApplication.getContext().getString(2131433213) });
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 45, new Object[] { Integer.valueOf(0), BaseApplication.getContext().getString(2131433227) });
       return;
     }
     WeiyunPB.PwdVerifyMsgReq localPwdVerifyMsgReq = new WeiyunPB.PwdVerifyMsgReq();
     paramString = Utils.bytes2HexStr(Utils.str2Md5(paramString));
     localPwdVerifyMsgReq.pwd_md5.set(StringUtils.a(paramString));
-    WeiyunApi.a(localPwdVerifyMsgReq, new adac(this));
+    WeiyunApi.a(localPwdVerifyMsgReq, new adij(this));
   }
   
   public void a(String paramString1, String paramString2)
@@ -842,7 +841,7 @@ public class WeiYunLogicCenter
     WeiyunPB.DiskFileDocDownloadAbsMsgReq localDiskFileDocDownloadAbsMsgReq = new WeiyunPB.DiskFileDocDownloadAbsMsgReq();
     localDiskFileDocDownloadAbsMsgReq.file_id.set(paramString1);
     localDiskFileDocDownloadAbsMsgReq.pdir_key.set(StringUtils.a(paramString2));
-    WeiyunApi.a(localDiskFileDocDownloadAbsMsgReq, new adak(this));
+    WeiyunApi.a(localDiskFileDocDownloadAbsMsgReq, new adir(this));
   }
   
   public void a(List paramList1, List paramList2, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback)

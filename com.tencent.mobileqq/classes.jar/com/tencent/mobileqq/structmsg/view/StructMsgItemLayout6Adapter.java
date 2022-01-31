@@ -92,7 +92,7 @@ public class StructMsgItemLayout6Adapter
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       localTextView.setIncludeFontPadding(false);
       if (paramBoolean) {
-        localTextView.setBackgroundResource(2130839694);
+        localTextView.setBackgroundResource(2130839709);
       }
       int i = AIOUtils.a(8.0F, localResources);
       int j = AIOUtils.a(12.0F, localResources);
@@ -118,7 +118,7 @@ public class StructMsgItemLayout6Adapter
       } while (!paramBoolean);
       paramView = localTextView;
     } while (localTextView.getBackground() != null);
-    localTextView.setBackgroundResource(2130839694);
+    localTextView.setBackgroundResource(2130839709);
     return localTextView;
   }
   

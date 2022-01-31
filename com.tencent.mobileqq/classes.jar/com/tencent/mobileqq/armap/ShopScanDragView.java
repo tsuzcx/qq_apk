@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.armap;
 
-import abem;
-import aben;
-import abeo;
-import abep;
+import ablm;
+import abln;
+import ablo;
+import ablp;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -73,7 +73,7 @@ public class ShopScanDragView
     this.jdField_a_of_type_Boolean = true;
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { getTranslationY(), 0.0F });
     localObjectAnimator.setDuration(100L);
-    localObjectAnimator.addListener(new abem(this));
+    localObjectAnimator.addListener(new ablm(this));
     g();
     localObjectAnimator.start();
   }
@@ -86,7 +86,7 @@ public class ShopScanDragView
     this.jdField_a_of_type_Boolean = true;
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { getTranslationY(), getHeight() - this.d });
     localObjectAnimator.setDuration(100L);
-    localObjectAnimator.addListener(new aben(this));
+    localObjectAnimator.addListener(new abln(this));
     h();
     localObjectAnimator.start();
   }
@@ -102,7 +102,7 @@ public class ShopScanDragView
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidViewView, "alpha", new float[] { 1.0F, 0.0F });
     localObjectAnimator2.setDuration(100L);
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.addListener(new abeo(this));
+    localAnimatorSet.addListener(new ablo(this));
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
     localAnimatorSet.start();
   }
@@ -118,7 +118,7 @@ public class ShopScanDragView
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidViewView, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator2.setDuration(100L);
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.addListener(new abep(this));
+    localAnimatorSet.addListener(new ablp(this));
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
     localAnimatorSet.start();
   }

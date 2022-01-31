@@ -1,37 +1,24 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.util.SparseArray;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import mqq.os.MqqHandler;
+import com.tencent.widget.GridView;
+import dov.com.qq.im.capture.adapter.FilterProviderPagerAdapter;
+import dov.com.qq.im.capture.view.QIMFilterProviderView;
 
 public class anyd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  private anyd(EditTextDialog paramEditTextDialog) {}
+  public anyd(QIMFilterProviderView paramQIMFilterProviderView, int paramInt) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
-    if (this.a.b < 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("EditTextDialog", 2, "onGlobalLayout first bottom:" + i);
-      }
-      this.a.b = i;
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new anye(this));
+    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewQIMFilterProviderView.a.a.get(this.jdField_a_of_type_DovComQqImCaptureViewQIMFilterProviderView.b());
+    if (localGridView != null) {
+      localGridView.setSelection(this.jdField_a_of_type_Int);
     }
-    while (this.a.b - i <= this.a.jdField_a_of_type_Int) {
+    while (!QLog.isColorLevel()) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("EditTextDialog", 2, "onGlobalLayout second bottom:" + i);
-    }
-    this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.b = i;
-    this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new anyf(this));
+    QLog.d("FilterProviderView", 2, "gridView is null ");
   }
 }
 

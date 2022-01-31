@@ -1,26 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.mobileqq.extendfriend.fragment.GroupItemClickListeneer;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 class acij
-  implements View.OnClickListener
+  extends DataSetObserver
 {
-  acij(acih paramacih, ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  acij(acii paramacii, DragSortListView paramDragSortListView) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    int j = this.jdField_a_of_type_Acih.getPosition();
-    int i = j;
-    if (j > 0) {
-      i = j - 1;
-    }
-    acih.a(this.jdField_a_of_type_Acih).a(i);
+    this.jdField_a_of_type_Acii.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Acii.notifyDataSetInvalidated();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acij
  * JD-Core Version:    0.7.0.1
  */

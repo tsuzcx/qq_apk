@@ -1,25 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.MultiMsgUpProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
 
 public class aivl
-  implements Runnable
+  implements ITransactionCallback
 {
-  public aivl(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, Bundle paramBundle) {}
+  public aivl(MultiMsgUpProcessor paramMultiMsgUpProcessor) {}
   
-  public void run()
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap paramHashMap)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.app == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("TAG_MultiMsg", 2, "BDH.Upload fail  : result:" + paramInt);
     }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.app.getEntityManagerFactory().createEntityManager();
-    Setting localSetting = (Setting)localEntityManager.a(Setting.class, "troop_" + this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a);
-    localEntityManager.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.runOnUiThread(new aivm(this, localSetting));
+    this.a.d();
   }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap paramHashMap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TAG_MultiMsg", 2, "Multimsg upload file by BDH and onSuccess  ");
+    }
+    this.a.e();
+    paramArrayOfByte = new File(AbsDownloader.d(MultiMsgUpProcessor.a(this.a)));
+    if (paramArrayOfByte.exists()) {
+      paramArrayOfByte.delete();
+    }
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

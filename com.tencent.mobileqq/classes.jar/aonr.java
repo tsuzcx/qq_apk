@@ -1,16 +1,16 @@
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+
 public class aonr
+  implements AdapterView.OnItemClickListener
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final byte[] jdField_a_of_type_ArrayOfByte;
-  final int b;
+  public aonr(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public aonr(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Long = paramLong;
+    HorizontalSelectColorLayout.a(this.a, paramInt);
   }
 }
 

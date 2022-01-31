@@ -1,46 +1,39 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.util.NearbyProfileUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class afhy
-  implements IphonePickerView.PickerViewAdapter
+  implements Runnable
 {
-  public afhy(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afhy(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public int getColumnCount()
+  public void run()
   {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return 4;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    int i = 3;
-    if (paramInt2 < 0) {}
-    for (paramInt1 = 0;; paramInt1 = paramInt2)
+    Object localObject = (NearbyCardManager)this.a.app.getManager(105);
+    this.a.k = ((NearbyCardManager)localObject).b(NearbyPeopleProfileActivity.a(this.a));
+    if (!this.a.k) {}
+    long l;
+    do
     {
-      if (paramInt1 > 3) {
-        paramInt1 = i;
-      }
-      for (;;)
+      do
       {
-        switch (paramInt1)
-        {
-        default: 
-          return "";
-        case 0: 
-          return "保密";
-        case 1: 
-          return "单身";
-        case 2: 
-          return "恋爱中";
-        }
-        return "已婚";
+        return;
+      } while ((!NetworkUtil.d(BaseApplication.getContext())) && (this.a.k));
+      localObject = NearbyPeopleProfileActivity.a(this.a).vSeed;
+      l = NearbyPeopleProfileActivity.a(this.a).feedPreviewTime;
+      if (this.a.jdField_a_of_type_Long > 0L)
+      {
+        NearbyProfileUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.a.app, this.a.jdField_a_of_type_Long, null, this.a.d, (byte[])localObject, l, true, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long);
+        return;
       }
-    }
+    } while (StringUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
+    NearbyProfileUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.a.app, 0L, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.a.d, (byte[])localObject, l, true, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long);
   }
 }
 

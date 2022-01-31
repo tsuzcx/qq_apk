@@ -25,8 +25,8 @@ import com.tencent.mobileqq.search.util.SearchConfigManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import java.lang.ref.WeakReference;
-import xkd;
-import xke;
+import xqa;
+import xqb;
 
 public class LocalSearchBar
   implements DialogInterface.OnDismissListener, View.OnClickListener, Animation.AnimationListener
@@ -51,25 +51,25 @@ public class LocalSearchBar
       localView = paramView3;
     }
     if (localView == null) {}
-    for (paramView3 = paramBaseActivity.getLayoutInflater().inflate(2130971518, paramListView, false);; paramView3 = localView)
+    for (paramView3 = paramBaseActivity.getLayoutInflater().inflate(2130971544, paramListView, false);; paramView3 = localView)
     {
-      localView = paramView3.findViewById(2131368321);
+      localView = paramView3.findViewById(2131368323);
       if (localView != null) {
         localView.setVisibility(8);
       }
       paramListView.addHeaderView(paramView3, 0);
       IphoneTitleBarActivity.setLayerType(paramView3);
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
-      this.jdField_c_of_type_AndroidViewView = paramBaseActivity.findViewById(2131364934);
+      this.jdField_c_of_type_AndroidViewView = paramBaseActivity.findViewById(2131364961);
       this.jdField_a_of_type_AndroidViewView = paramView1;
       this.jdField_b_of_type_AndroidViewView = paramView2;
-      paramListView = (EditText)paramView3.findViewById(2131368322);
+      paramListView = (EditText)paramView3.findViewById(2131368324);
       paramListView.setFocusableInTouchMode(false);
       paramListView.setCursorVisible(false);
       paramListView.setOnClickListener(this);
-      paramView3.findViewById(2131370344).setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView3.findViewById(2131368735));
-      this.d = paramView3.findViewById(2131370344);
+      paramView3.findViewById(2131370353).setOnClickListener(this);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView3.findViewById(2131368738));
+      this.d = paramView3.findViewById(2131370353);
       this.d.setVisibility(8);
       a(this.d);
       return;
@@ -87,7 +87,7 @@ public class LocalSearchBar
       paramView.setVisibility(i);
       return;
     }
-    ThreadManager.post(new xke(new xkd(Looper.getMainLooper(), paramView)), 8, null, true);
+    ThreadManager.post(new xqb(new xqa(Looper.getMainLooper(), paramView)), 8, null, true);
   }
   
   private void e()
@@ -149,7 +149,7 @@ public class LocalSearchBar
     {
       this.jdField_a_of_type_Long = l;
       FrameHelperActivity.b(false);
-      if (paramView.getId() != 2131370344) {
+      if (paramView.getId() != 2131370353) {
         break label115;
       }
       paramView = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();

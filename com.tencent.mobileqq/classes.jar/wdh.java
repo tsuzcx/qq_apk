@@ -1,21 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
-import com.tencent.mobileqq.activity.aio.tips.TipsBarTask;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import java.util.Observer;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.util.FaceDrawable;
 
 public class wdh
-  implements Runnable
+  extends FriendListObserver
 {
-  public wdh(TipsManager paramTipsManager, TipsBarTask paramTipsBarTask, Object[] paramArrayOfObject) {}
+  public wdh(PublicAccountChatPie paramPublicAccountChatPie, ImageView paramImageView) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
-    TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager).a(localView);
-    TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask);
-    if (TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager) != null) {
-      TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager).update(null, null);
+    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a().a))) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a, paramString, (byte)3));
     }
   }
 }

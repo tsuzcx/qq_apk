@@ -27,7 +27,7 @@ public class NewFriendsPlayMode$GenShareThumbReceiver
     }
     paramNewFriendsPlayMode.s();
     paramNewFriendsPlayMode.r();
-    if (paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGenShareThumbEvent.errorInfo.isSuccess())
     {
       SLog.a("Q.qqstory.player.NewFriendsPlayMode", "generate thumbnail success. shareThumbPath = %s.", paramGenShareThumbEvent.jdField_a_of_type_JavaLangString);
       if (paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)

@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
-import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener;
-import java.lang.ref.WeakReference;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
 
 public class yxa
-  implements Runnable
+  implements AVCallback
 {
-  public yxa(ApolloDrawerInfoViewListener paramApolloDrawerInfoViewListener) {}
+  public yxa(CmGameAvHandler paramCmGameAvHandler) {}
   
-  public void run()
-  {
-    if (ApolloDrawerInfoViewListener.a(this.a).get() != null) {
-      ((SpriteDrawerInfoManager)ApolloDrawerInfoViewListener.a(this.a).get()).a(ApolloDrawerInfoViewListener.a(this.a));
-    }
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 

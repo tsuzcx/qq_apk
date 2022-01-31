@@ -1,48 +1,62 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
-import com.tencent.mobileqq.nearby.now.send.PublishManager;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView.IAddTopicClickListener;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.AppProtocolObserver;
+import com.tencent.mobileqq.nearby.FaceScoreCallBack;
+import com.tencent.mobileqq.nearby.FaceScoreConfig;
+import com.tencent.mobileqq.nearby.NearbyFaceScoreManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x938.cmd0x938.ClientConfig;
+import tencent.im.oidb.cmd0x938.cmd0x938.DataCardConfig;
+import tencent.im.oidb.cmd0x938.cmd0x938.RspBody;
 
 public class aeud
-  implements StartLiveTopicLabelListView.IAddTopicClickListener
+  extends ProtoUtils.AppProtocolObserver
 {
-  public aeud(PublishManager paramPublishManager) {}
+  public aeud(NearbyFaceScoreManager paramNearbyFaceScoreManager, FaceScoreCallBack paramFaceScoreCallBack) {}
   
-  public void a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = 1;
-    if (System.currentTimeMillis() - PublishManager.a(this.a) < 1000L) {
-      return;
-    }
-    PublishManager.a(this.a, System.currentTimeMillis());
-    Object localObject1 = new StringBuilder("https://now.qq.com/mobile/topic/add.html?_wv=16778245&from=mqq");
-    ((StringBuilder)localObject1).append("&type=");
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam.h != 0) {
-      ((StringBuilder)localObject1).append("4");
-    }
-    for (;;)
+    boolean bool2 = true;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      Object localObject2 = PublishManager.a(this.a);
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      paramBundle = new cmd0x938.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (cmd0x938.ClientConfig)paramBundle.msg_client_config.get();
+      boolean bool1;
+      if (paramArrayOfByte.uint32_show_card.get() == 1)
       {
-        ((StringBuilder)localObject1).append("&labels=");
-        ((StringBuilder)localObject1).append((String)localObject2);
+        bool1 = true;
+        if (paramArrayOfByte.uint32_show_list.get() != 1) {
+          break label208;
+        }
       }
-      localObject2 = new Intent(PublishManager.a(this.a), QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", ((StringBuilder)localObject1).toString());
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().startActivityForResult((Intent)localObject2, 1);
-      localObject1 = new NowVideoReporter().h("video_public").i("clk_label");
-      if (this.a.b) {
-        i = 2;
+      for (;;)
+      {
+        long l = paramArrayOfByte.uint64_next_time.get();
+        if (paramBundle.msg_datacard_config.has()) {
+          ((cmd0x938.DataCardConfig)paramBundle.msg_datacard_config.get()).uint32_entry_ability.get();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("Q..troop.faceScore", 2, "fetchGrayAbility onResult isShowCard=" + bool1 + "  isShowList=" + bool2 + "  expireTime=" + l);
+        }
+        paramArrayOfByte = new FaceScoreConfig(bool1, bool2, l, paramArrayOfByte.bytes_list_jump_url.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_h.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_g.get().toStringUtf8());
+        this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(paramArrayOfByte);
+        return;
+        bool1 = false;
+        break;
+        label208:
+        bool2 = false;
       }
-      ((NowVideoReporter)localObject1).a(i).d(PublishManager.b(this.a)).b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
-      ((StringBuilder)localObject1).append("3");
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

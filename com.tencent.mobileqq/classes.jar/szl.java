@@ -1,37 +1,58 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearByGeneralManager;
-import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class szl
-  extends NearbyRelevantObserver
+  implements View.OnClickListener
 {
-  public szl(LikeSettingActivity paramLikeSettingActivity) {}
+  public szl(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (!paramBoolean1)
+    int j = 1;
+    int k = VipUtils.a(this.a.app, null);
+    int i;
+    if ((k & 0x2) != 0)
     {
-      QQToast.a(this.a, 1, 2131436066, 0).b(this.a.getTitleBarHeight());
-      paramBoolean1 = ((NearByGeneralManager)this.a.app.getManager(160)).a();
-      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
+      i = 1;
+      if ((k & 0x4) == 0) {
+        break label92;
+      }
     }
+    for (;;)
+    {
+      if ((i == 0) && (j == 0)) {
+        break label97;
+      }
+      if (30 != this.a.a.size()) {
+        break label145;
+      }
+      paramView = new QQToast(this.a);
+      paramView.d(2000);
+      paramView.c(2131436535);
+      paramView.a();
+      return;
+      i = 0;
+      break;
+      label92:
+      j = 0;
+    }
+    label97:
+    if (16 == this.a.a.size())
+    {
+      paramView = new QQToast(this.a);
+      paramView.d(2000);
+      paramView.c(2131436534);
+      paramView.a();
+      return;
+    }
+    label145:
+    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131435553, 2131435555, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
+    GroupManagerActivity.a(this.a, 0);
   }
 }
 

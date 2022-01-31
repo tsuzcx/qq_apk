@@ -158,7 +158,7 @@ public class ScreenLayoutOrigin
       Object localObject;
       if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
       {
-        localObject = (ZimuView)((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131362537);
+        localObject = (ZimuView)((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131362542);
         i = paramInt5;
         if (localObject != null)
         {
@@ -270,7 +270,7 @@ public class ScreenLayoutOrigin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.ScreenLayoutOrigin
  * JD-Core Version:    0.7.0.1
  */

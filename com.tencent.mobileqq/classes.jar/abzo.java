@@ -1,32 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonIPCModule;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.confess.ConfessPlugin;
 
-public class abzo
+class abzo
   implements Runnable
 {
-  public abzo(EmoticonIPCModule paramEmoticonIPCModule, Bundle paramBundle, String paramString, EmoticonFromGroupManager paramEmoticonFromGroupManager, int paramInt) {}
+  abzo(abzn paramabzn) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsBundle.getString("pic_md5");
-    if ("action_group_emo_big_pic_add_fav".equals(this.jdField_a_of_type_JavaLangString)) {
-      if (!this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager.b((String)localObject))
-      {
-        localObject = EIPCResult.createResult(-102, null);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonIPCModule.callbackResult(this.jdField_a_of_type_Int, (EIPCResult)localObject);
-      }
-    }
-    while (!"action_group_emo_big_pic_upload_wy".equals(this.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager.a((String)localObject);
+    ConfessPlugin.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzo
  * JD-Core Version:    0.7.0.1
  */

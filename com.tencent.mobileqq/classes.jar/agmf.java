@@ -1,31 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.StrokeTextView;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class agmf
-  extends AnimateUtils.AnimationAdapter
+class agmf
+  implements Runnable
 {
-  public agmf(FormalView paramFormalView, View paramView) {}
+  agmf(agme paramagme, int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.d();
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
-      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
-    }
+    ScanTorchActivity.a(this.jdField_a_of_type_Agme.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmf
  * JD-Core Version:    0.7.0.1
  */

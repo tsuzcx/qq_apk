@@ -1,13 +1,15 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryDesFromVidListStep;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.utils.UncheckedCallable;
 
-class ofv
-  implements Runnable
+public class ofv
+  implements UncheckedCallable
 {
-  ofv(ofu paramofu) {}
+  public ofv(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public void run()
+  public GetMyStoryDesFromVidListStep a()
   {
-    this.a.a.aa_();
+    return new GetMyStoryDesFromVidListStep(new ofw(this));
   }
 }
 

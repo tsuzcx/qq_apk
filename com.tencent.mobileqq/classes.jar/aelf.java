@@ -1,19 +1,27 @@
-import MyCarrier.Carrier;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import android.util.Log;
+import com.tencent.mobileqq.lyric.widget.LyricViewController;
+import com.tencent.mobileqq.lyric.widget.LyricViewScroll.LyricViewScrollListener;
 
-class aelf
-  implements Runnable
+public class aelf
+  implements LyricViewScroll.LyricViewScrollListener
 {
-  aelf(aele paramaele, Carrier paramCarrier) {}
+  public aelf(LyricViewController paramLyricViewController) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Aele.a.a(this.jdField_a_of_type_MyCarrierCarrier);
+    this.a.a = true;
+    this.a.c(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
+    this.a.b(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aelf
  * JD-Core Version:    0.7.0.1
  */

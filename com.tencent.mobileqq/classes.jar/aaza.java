@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
 
-public class aaza
-  implements DialogInterface.OnClickListener
+class aaza
+  implements aazl
 {
-  public aaza(ARMapActivity paramARMapActivity) {}
+  aaza(aayw paramaayw, aazj paramaazj, aazl paramaazl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.a.startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
+    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Aazj.a }));
+    if (paramBoolean) {
+      ArkAppDataReport.a(this.jdField_a_of_type_Aazj.a, 2);
+    }
+    this.jdField_a_of_type_Aazl.a(paramBoolean);
   }
 }
 

@@ -1,25 +1,39 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.now.enter.ConversationNowController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class slk
-  implements View.OnClickListener
+  implements Runnable
 {
-  public slk(EditActivity paramEditActivity) {}
+  public slk(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.d();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-    Intent localIntent = this.a.getIntent();
-    localIntent.putExtra("result", paramView);
-    if (this.a.jdField_a_of_type_Int == 103) {
-      localIntent.putExtra("hasChange", EditActivity.b(this.a));
+    boolean bool;
+    PullRefreshHeader localPullRefreshHeader;
+    if (this.a.j)
+    {
+      Conversation.a(this.a, 800L);
+      bool = NetworkUtil.d(BaseApplication.getContext());
+      if (this.a.a != null)
+      {
+        localPullRefreshHeader = this.a.a;
+        if (!bool) {
+          break label78;
+        }
+      }
     }
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
+    label78:
+    for (int i = 0;; i = 2)
+    {
+      localPullRefreshHeader.a(i);
+      if (Conversation.a(this.a) != null) {
+        Conversation.a(this.a).a(bool);
+      }
+      return;
+    }
   }
 }
 

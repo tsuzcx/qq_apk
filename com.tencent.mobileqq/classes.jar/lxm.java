@@ -1,26 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinGifImageDownloader;
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeNoImageSocial;
 
 public class lxm
-  extends NativeGifImage
+  implements View.OnTouchListener
 {
-  public lxm(SkinGifImageDownloader paramSkinGifImageDownloader, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
-  {
-    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
-  }
+  public lxm(FeedItemCellTypeNoImageSocial paramFeedItemCellTypeNoImageSocial, LinearLayout paramLinearLayout) {}
   
-  protected void executeNewTask()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.mCurrentLoop == 1) {
-      return;
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
     }
-    super.executeNewTask();
-  }
-  
-  public void reset()
-  {
-    super.reset();
+    return false;
   }
 }
 

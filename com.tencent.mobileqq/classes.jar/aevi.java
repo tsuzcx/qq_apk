@@ -1,47 +1,20 @@
-import android.util.Log;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
 
 public class aevi
-  implements ImageFeedsUploader.UploadListener
+  extends NearbyProxyObserver
 {
-  public aevi(ImageFeedsUploader paramImageFeedsUploader) {}
+  public aevi(NearbyProxy paramNearbyProxy, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
   
-  public void a(PicFeedUploadInfo paramPicFeedUploadInfo)
+  protected void a()
   {
-    ImageFeedsUploader.a(this.a).a("上传中", true);
-    if (paramPicFeedUploadInfo == null) {
-      QLog.i("ImageFeedsUploader", 1, "onResult UploadInfo == null");
-    }
-  }
-  
-  public void a(PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (paramPicFeedUploadInfo == null)
-    {
-      QLog.i("ImageFeedsUploader", 1, "onResult UploadInfo == null");
-      return;
-    }
-    QLog.i("ImageFeedsUploader", 1, "onResult:" + paramPicFeedUploadInfo);
     if (QLog.isColorLevel()) {
-      QLog.i("ImageFeedsUploader", 2, "onResult:" + Log.getStackTraceString(new Throwable()));
+      NearbyUtils.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramUploadResult.a, ImageFeedsUploader.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPicFeedUploadInfo, paramUploadResult));
-    ThreadManager.getUIHandler().post(new aevk(this, paramPicFeedUploadInfo, paramUploadResult));
-  }
-  
-  public void b(PicFeedUploadInfo paramPicFeedUploadInfo)
-  {
-    ThreadManager.getUIHandler().post(new aevj(this));
+    NearbyProxy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
   }
 }
 

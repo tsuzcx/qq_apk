@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
 
-class acpo
-  implements FMDialogUtil.FMDialogInterface
+public class acpo
+  implements Runnable
 {
-  acpo(acpl paramacpl, WeiYunFileInfo paramWeiYunFileInfo) {}
+  public acpo(ExtendFriendManager paramExtendFriendManager) {}
   
-  public void a()
+  public void run()
   {
-    FileManagerEntity localFileManagerEntity = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
-    QfileBaseCloudFileTabView.h(this.jdField_a_of_type_Acpl.a).a().b(localFileManagerEntity);
-    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Acpl.a).a().a(localFileManagerEntity);
-    this.jdField_a_of_type_Acpl.a.a(localFileManagerEntity);
+    ExtendFriendManager.b(this.a);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpo
  * JD-Core Version:    0.7.0.1
  */

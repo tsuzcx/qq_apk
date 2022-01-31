@@ -231,7 +231,7 @@ public class FavoriteEmoticonInfo
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = paramInt1;
       localURLDrawableOptions.mRequestWidth = paramInt2;
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130841350);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130841377);
       localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
@@ -291,7 +291,7 @@ public class FavoriteEmoticonInfo
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = ((int)(100.0F * paramFloat));
       localURLDrawableOptions.mRequestWidth = ((int)(100.0F * paramFloat));
-      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130841350);
+      localURLDrawableOptions.mFailedDrawable = paramContext.getResources().getDrawable(2130841377);
       localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
       localURLDrawableOptions.mPlayGifImage = true;
       paramContext = URLDrawable.getDrawable(localURL, localURLDrawableOptions);

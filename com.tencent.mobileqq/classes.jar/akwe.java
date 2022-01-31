@@ -1,29 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mapsdk.raster.model.GeoPoint;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.mobileqq.widget.QQMapView.QQMapViewObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper;
 
 public class akwe
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public akwe(QQMapView paramQQMapView) {}
+  public akwe(SwiftBrowserDebugHelper paramSwiftBrowserDebugHelper) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GeoPoint localGeoPoint;
-    if ((paramMessage != null) && (paramMessage.obj != null) && (this.a.a != null)) {
-      localGeoPoint = (GeoPoint)paramMessage.obj;
-    }
-    switch (paramMessage.arg1)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a.a(localGeoPoint);
-      return;
-    }
-    this.a.a.b(localGeoPoint);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,36 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vip.CUKingCardHelper;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager.OnVideoCompositeListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public final class mbz
-  extends ClickableSpan
+public class mbz
+  implements ReadInJoyVideoCompositeManager.OnVideoCompositeListener
 {
-  public mbz(Context paramContext) {}
+  public mbz(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void onClick(View paramView)
+  public void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
   {
-    paramView = CUKingCardHelper.a("kandian");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "handleKingCardHintTextView span is clicked, guideUrl=" + paramView);
-    }
-    if (!TextUtils.isEmpty(paramView))
-    {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-    }
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onError: code - " + paramInt + " msg - " + paramString);
+    ReadInJoyDeliverVideoActivity.a(this.a).post(new mcb(this));
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
   {
-    paramTextPaint.setColor(Color.rgb(7, 208, 176));
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onSuccess: outputPath - " + paramString);
+    ReadInJoyDeliverVideoActivity.b(this.a, paramString);
+    ReadInJoyDeliverVideoActivity.a(this.a).post(new mca(this));
   }
 }
 

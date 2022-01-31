@@ -1,29 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView.PopUpListener;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agkc
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public agkc(ScanIconAnimateView paramScanIconAnimateView) {}
+  public agkc(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    this.a.a.setVisibility(8);
   }
 }
 

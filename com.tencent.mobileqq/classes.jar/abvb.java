@@ -1,23 +1,24 @@
-import android.database.Cursor;
-import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteQuery;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.BusinessCardManager;
+import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
 
 public class abvb
-  implements SQLiteDatabase.CursorFactory
+  implements View.OnClickListener
 {
-  private abvb(QQEntityManagerFactory paramQQEntityManagerFactory) {}
+  public abvb(FlowCameraPhotoActivity paramFlowCameraPhotoActivity) {}
   
-  public Cursor newCursor(SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
+  public void onClick(View paramView)
   {
-    return new abvc(this, paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+    paramView.setVisibility(8);
+    if (this.a.a != null) {
+      this.a.a.a(2, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abvb
  * JD-Core Version:    0.7.0.1
  */

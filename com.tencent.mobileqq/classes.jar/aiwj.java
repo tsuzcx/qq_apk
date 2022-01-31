@@ -1,24 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
 
-class aiwj
-  implements ActionSheet.OnButtonClickListener
+public class aiwj
+  implements Runnable
 {
-  aiwj(aiwi paramaiwi, ActionSheet paramActionSheet) {}
+  public aiwj(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_Aiwi.a.a(this.jdField_a_of_type_Aiwi.a.a);
-    }
+    this.a.r();
   }
 }
 

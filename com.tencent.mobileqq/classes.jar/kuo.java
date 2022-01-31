@@ -1,39 +1,29 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qphone.base.util.QLog;
 
 public class kuo
   implements Runnable
 {
-  public kuo(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, String paramString) {}
+  public kuo(AccountDetailActivity paramAccountDetailActivity, AccountDetail paramAccountDetail, boolean paramBoolean) {}
   
   public void run()
   {
-    synchronized (AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager))
-    {
-      AdvertisementVideoPreloadManager.c("loadLocalConfigTask uin:" + this.jdField_a_of_type_JavaLangString);
-      Object localObject2 = AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager);
-      if (localObject2 != null)
-      {
-        localObject2 = ((PublicAccountEntityHelper)localObject2).a(PAAdPreloadTask.class, true, "mUserUin = ?", new String[] { this.jdField_a_of_type_JavaLangString }, null, null, "mExpireTime asc", null);
-        if (localObject2 != null)
-        {
-          AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager).clear();
-          AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager).addAll((Collection)localObject2);
-          AdvertisementVideoPreloadManager.c("loadLocalConfigTask taskSize:" + ((List)localObject2).size());
-          ThreadManager.executeOnNetWorkThread(new kup(this));
-        }
-      }
-      else
-      {
-        return;
-      }
-      AdvertisementVideoPreloadManager.c("loadLocalConfigTask tasklist null");
+    if (QLog.isColorLevel()) {
+      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "updateDetailInfo");
     }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) && (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.isSyncLbs)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      return;
+    }
+    AccountDetailActivity.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, new kup(this));
   }
 }
 

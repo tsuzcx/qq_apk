@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abuy;
+import accu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +11,7 @@ public class PrecoverConfig
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abuy();
+  public static final Parcelable.Creator CREATOR = new accu();
   @unique
   public String businessId;
   public int taskId;

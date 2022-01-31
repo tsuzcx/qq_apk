@@ -53,26 +53,26 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pgn;
-import pgo;
-import pgp;
-import pgr;
-import pgs;
-import pgt;
-import pgu;
-import pgv;
-import pgx;
-import pgy;
-import pgz;
-import pha;
-import phb;
-import phc;
-import phd;
-import phe;
-import phf;
-import phg;
-import phh;
-import phi;
+import plf;
+import plg;
+import plh;
+import plj;
+import plk;
+import pll;
+import plm;
+import pln;
+import plp;
+import plq;
+import plr;
+import pls;
+import plt;
+import plu;
+import plv;
+import plw;
+import plx;
+import ply;
+import plz;
+import pma;
 
 public class ImageManager
 {
@@ -122,7 +122,7 @@ public class ImageManager
   public static final long timeInterval = 60000L;
   private int jdField_a_of_type_Int = 1;
   private long jdField_a_of_type_Long = 0L;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new pgp(this);
+  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new plh(this);
   private Context jdField_a_of_type_AndroidContentContext = null;
   private Looper jdField_a_of_type_AndroidOsLooper = null;
   private IDownloader jdField_a_of_type_ComTencentComponentMediaIDownloader = null;
@@ -132,12 +132,12 @@ public class ImageManager
   private IImageFileTracer jdField_a_of_type_ComTencentComponentMediaImageIImageFileTracer = null;
   private BaseHandler jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler = null;
   private LruCache jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = null;
-  private ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new pgn(this);
+  private ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new plf(this);
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private final BaseHandler jdField_b_of_type_ComTencentComponentMediaUtilsBaseHandler = new BaseHandler(Looper.getMainLooper());
   private LruCache jdField_b_of_type_ComTencentComponentMediaUtilsLruCache = null;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new pgv(this);
+  private Runnable jdField_b_of_type_JavaLangRunnable = new pln(this);
   private ConcurrentHashMap jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private volatile boolean jdField_b_of_type_Boolean = false;
   private ConcurrentHashMap jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
@@ -170,15 +170,15 @@ public class ImageManager
       jdField_e_of_type_Boolean = false;
       jdField_d_of_type_JavaLangString = "";
       jdField_b_of_type_Long = 0L;
-      jdField_a_of_type_JavaLangRunnable = new pgo();
+      jdField_a_of_type_JavaLangRunnable = new plg();
       jdField_d_of_type_JavaUtilHashMap = new HashMap();
       jdField_f_of_type_Boolean = false;
       jdField_c_of_type_Long = 104857600L;
       jdField_d_of_type_Long = 41943040L;
       jdField_e_of_type_Long = jdField_c_of_type_Long;
       jdField_g_of_type_Boolean = true;
-      jdField_a_of_type_JavaIoFilenameFilter = new pgr();
-      jdField_a_of_type_JavaUtilComparator = new pgs();
+      jdField_a_of_type_JavaIoFilenameFilter = new plj();
+      jdField_a_of_type_JavaUtilComparator = new plk();
       jdField_a_of_type_JavaUtilConcurrentExecutor = null;
       jdField_d_of_type_JavaLangObject = new Object();
       jdField_b_of_type_JavaUtilConcurrentExecutor = null;
@@ -290,7 +290,7 @@ public class ImageManager
       if (Build.VERSION.SDK_INT >= 21) {
         break label801;
       }
-      this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool = new ByteArrayPool(new pgy(this, bool));
+      this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool = new ByteArrayPool(new plq(this, bool));
       this.jdField_a_of_type_ComTencentComponentMediaImageIDecoder = new DalvikDecoder(this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool);
       if (!DalvikDecoder.loadSoSucess)
       {
@@ -313,8 +313,8 @@ public class ImageManager
     for (;;)
     {
       ImageManagerLog.d(TAG, "ImageLoader----imageMemCacheSize = " + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool = new ByteArrayPool(new pgz(this));
-      localObject = new ReuseBitmapCacheProxy(new pha(this), j);
+      this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool = new ByteArrayPool(new plr(this));
+      localObject = new ReuseBitmapCacheProxy(new pls(this), j);
       this.jdField_a_of_type_ComTencentComponentMediaImageIDecoder = new ArtDecoder(this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool, (BitmapPool)localObject);
       this.jdField_a_of_type_ComTencentComponentMediaImageIBitmapFactory = new IBitmapFactory.ArtBitmapFactory(this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool, this.jdField_a_of_type_ComTencentComponentMediaImageIDecoder);
       BitmapReference.setGlobalReleaser((Releaser)localObject);
@@ -345,7 +345,7 @@ public class ImageManager
     synchronized (jdField_b_of_type_JavaLangObject)
     {
       if (this.jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler == null) {
-        this.jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler = new phb(this, this.jdField_a_of_type_AndroidOsLooper);
+        this.jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler = new plt(this, this.jdField_a_of_type_AndroidOsLooper);
       }
       return this.jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler;
     }
@@ -357,7 +357,7 @@ public class ImageManager
     synchronized (jdField_c_of_type_JavaLangObject)
     {
       if (this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache == null) {
-        this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new phc(this, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new plu(this, this.jdField_a_of_type_Int);
       }
       return this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
     }
@@ -388,7 +388,7 @@ public class ImageManager
       int j = ImageManagerEnv.g().getDecodeThreadNum(jdField_c_of_type_Boolean);
       jdField_a_of_type_JavaUtilConcurrentExecutor = ImageManagerEnv.g().getExecutor();
       if (jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
-        jdField_a_of_type_JavaUtilConcurrentExecutor = Executors.newFixedThreadPool(j, new pgt());
+        jdField_a_of_type_JavaUtilConcurrentExecutor = Executors.newFixedThreadPool(j, new pll());
       }
     }
     return jdField_a_of_type_JavaUtilConcurrentExecutor;
@@ -400,7 +400,7 @@ public class ImageManager
       return;
     }
     jdField_e_of_type_Boolean = true;
-    a().postDelayed(new phf(this), 10000L);
+    a().postDelayed(new plx(this), 10000L);
   }
   
   private void a(Message paramMessage)
@@ -415,14 +415,14 @@ public class ImageManager
       paramMessage.recycle();
     }
     label41:
-    phh localphh;
+    plz localplz;
     do
     {
       return;
-      localphh = ImageTaskBuilder.buildImageTask(paramMessage);
+      localplz = ImageTaskBuilder.buildImageTask(paramMessage);
       ImageTaskTracer.removeImageMsgGetNullRecord(paramMessage.hashCodeEx());
-    } while (localphh == null);
-    localphh.excuteTask();
+    } while (localplz == null);
+    localplz.excuteTask();
   }
   
   private void a(ConcurrentHashMap paramConcurrentHashMap)
@@ -720,7 +720,7 @@ public class ImageManager
     synchronized (jdField_c_of_type_JavaLangObject)
     {
       if (this.jdField_b_of_type_ComTencentComponentMediaUtilsLruCache == null) {
-        this.jdField_b_of_type_ComTencentComponentMediaUtilsLruCache = new phd(this, this.jdField_a_of_type_Int);
+        this.jdField_b_of_type_ComTencentComponentMediaUtilsLruCache = new plv(this, this.jdField_a_of_type_Int);
       }
       return this.jdField_b_of_type_ComTencentComponentMediaUtilsLruCache;
     }
@@ -759,8 +759,8 @@ public class ImageManager
       paramMessage = (ImageKey)paramMessage.obj;
       paramMessage.options = ImageLoader.Options.copy(paramMessage.options);
       ImageTracer.cancel(paramMessage.url);
-      phi.b(paramMessage);
-      phi.a().a(paramMessage.url);
+      pma.b(paramMessage);
+      pma.a().a(paramMessage.url);
     }
   }
   
@@ -1600,7 +1600,7 @@ public class ImageManager
       {
         jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("super_resolution_handler_thread");
         jdField_a_of_type_AndroidOsHandlerThread.start();
-        jdField_a_of_type_AndroidOsHandler = new pgu(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+        jdField_a_of_type_AndroidOsHandler = new plm(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
       }
       return jdField_a_of_type_AndroidOsHandler;
     }
@@ -1622,7 +1622,7 @@ public class ImageManager
   
   public static void post(Runnable paramRunnable, boolean paramBoolean)
   {
-    a().execute(new phg(paramRunnable, paramBoolean));
+    a().execute(new ply(paramRunnable, paramBoolean));
   }
   
   public static void stopAllSuperResolutionTasks()
@@ -2056,7 +2056,7 @@ public class ImageManager
   public void checkCleanImageLocalFile()
   {
     if (jdField_c_of_type_Boolean) {
-      post(new pgx(this), false);
+      post(new plp(this), false);
     }
     if ((jdField_c_of_type_Boolean) && ((!jdField_h_of_type_Boolean) || ((jdField_h_of_type_Boolean) && (this.jdField_f_of_type_Long > jdField_e_of_type_Long))))
     {
@@ -2205,7 +2205,7 @@ public class ImageManager
           ImageManagerLog.w("superresolution", "library not init. use big url. url=" + paramString);
           localImageKey.srUrl = paramString;
           localImageKey.setUrl(paramImageLoadListener);
-          getSuperResolutionHandler().post(new phe(this));
+          getSuperResolutionHandler().post(new plw(this));
         }
       }
     }
@@ -2403,7 +2403,7 @@ public class ImageManager
   
   public void onListViewIdle()
   {
-    phi.a().a();
+    pma.a().a();
   }
   
   public void removeImageFile(String paramString, ImageLoader.Options paramOptions)

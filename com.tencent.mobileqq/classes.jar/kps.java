@@ -1,45 +1,24 @@
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView.OnEndScrollListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
+import com.tencent.mobileqq.widget.BounceScrollView.OnScrollChangedListener;
 
 public class kps
-  implements AccountDetailXListView.OnEndScrollListener
+  implements BounceScrollView.OnScrollChangedListener
 {
-  public kps(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public kps(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void a(int paramInt)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    float f;
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
+    paramInt1 = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() - this.a.b * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + 56.0F * this.a.jdField_a_of_type_Float);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setMaxOverScrollY(paramInt1);
+    if (LebaSearchPluginManagerActivity.a(this.a))
     {
-      paramInt = -this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
-      }
-      f = 150.0F * this.a.jdField_a_of_type_Float;
-      if (paramInt != 0)
-      {
-        if (!this.a.e) {
-          break label127;
-        }
-        if (paramInt <= f) {
-          break label119;
-        }
-        this.a.d(paramInt);
-      }
+      this.a.a(paramInt2);
+      LebaSearchPluginManagerActivity.b(this.a, paramInt2);
     }
-    return;
-    label119:
-    this.a.e();
-    return;
-    label127:
-    if (paramInt > this.a.o - f)
-    {
-      this.a.d(paramInt);
-      return;
-    }
-    this.a.e();
   }
 }
 

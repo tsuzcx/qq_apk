@@ -1,17 +1,14 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.qqstory.playmode.child.CommentPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
 public class nnp
-  implements AbsListView.OnScrollListener
+  implements Runnable
 {
-  public nnp(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  public nnp(CommentPlayMode paramCommentPlayMode) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    this.a.a = paramInt1;
+    this.a.a.setCurrentItem(0, false);
   }
 }
 

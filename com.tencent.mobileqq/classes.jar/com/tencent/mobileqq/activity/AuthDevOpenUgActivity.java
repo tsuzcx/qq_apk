@@ -24,8 +24,8 @@ import oicq.wlogin_sdk.request.Ticket;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rnw;
-import rnx;
+import rso;
+import rsp;
 
 public class AuthDevOpenUgActivity
   extends IphoneTitleBarActivity
@@ -34,8 +34,8 @@ public class AuthDevOpenUgActivity
   private int jdField_a_of_type_Int;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private String jdField_a_of_type_JavaLangString;
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new rnx(this);
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new rnw(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new rsp(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new rso(this);
   private DevlockInfo jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -131,7 +131,7 @@ public class AuthDevOpenUgActivity
           break;
         }
       } while (EquipmentLockImpl.a().a(this.app, this.app.getCurrentAccountUin(), "", null, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
-      QQToast.a(getApplicationContext(), getString(2131436581), 0).b(getTitleBarHeight());
+      QQToast.a(getApplicationContext(), getString(2131436601), 0).b(getTitleBarHeight());
       return;
       Intent localIntent = new Intent(this, AuthDevConfirmPhoneNoActivity.class);
       if (getIntent() != null) {
@@ -181,7 +181,7 @@ public class AuthDevOpenUgActivity
   
   private void b(String paramString)
   {
-    Object localObject = (TextView)findViewById(2131370057);
+    Object localObject = (TextView)findViewById(2131370066);
     if (TextUtils.isEmpty(paramString))
     {
       ((TextView)localObject).setVisibility(8);
@@ -191,23 +191,23 @@ public class AuthDevOpenUgActivity
       }
     }
     label178:
-    for (paramString = this.e;; paramString = getString(2131436600))
+    for (paramString = this.e;; paramString = getString(2131436620))
     {
       ((Button)localObject).setText(paramString);
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131436555));
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131436575));
       if (!TextUtils.isEmpty(this.f)) {
         setTitle(this.f);
       }
       if (this.jdField_b_of_type_Int != 0)
       {
-        paramString = (ImageView)findViewById(2131370056);
+        paramString = (ImageView)findViewById(2131370065);
         if (paramString != null) {
           paramString.setImageResource(this.jdField_b_of_type_Int);
         }
       }
       if (!TextUtils.isEmpty(this.k))
       {
-        paramString = (Button)findViewById(2131370059);
+        paramString = (Button)findViewById(2131370068);
         if (paramString != null)
         {
           paramString.setVisibility(0);
@@ -359,7 +359,7 @@ public class AuthDevOpenUgActivity
             }
             for (;;)
             {
-              QQToast.a(getApplicationContext(), 2, getString(2131436558), 0).b(getTitleBarHeight());
+              QQToast.a(getApplicationContext(), 2, getString(2131436578), 0).b(getTitleBarHeight());
               paramIntent = new Intent();
               paramIntent.putExtra("auth_dev_open", true);
               paramIntent.putExtra("allow_set", true);
@@ -459,8 +459,8 @@ public class AuthDevOpenUgActivity
         }
       }
       super.doOnCreate(paramBundle);
-      super.setContentView(2130970320);
-      super.setTitle(2131436552);
+      super.setContentView(2130970335);
+      super.setTitle(2131436572);
       if (this.app == null) {
         this.app = ((QQAppInterface)getAppRuntime());
       }
@@ -471,9 +471,9 @@ public class AuthDevOpenUgActivity
         return false;
       }
       if (TextUtils.equals((CharSequence)localObject, "PhoneUnity")) {
-        this.leftView.setText(2131436794);
+        this.leftView.setText(2131436814);
       }
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370058));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370067));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       this.jdField_b_of_type_Boolean = localBundle.getBoolean("devlock_show_auth_dev_list", true);
       paramBundle = localBundle.getString("devlock_guide_config");
@@ -489,22 +489,22 @@ public class AuthDevOpenUgActivity
           this.e = paramBundle.getString("btn_text");
           this.k = paramBundle.getString("jump_text");
           if (TextUtils.isEmpty(this.d)) {
-            this.d = getString(2131436613);
+            this.d = getString(2131436633);
           }
           if (TextUtils.isEmpty(this.g)) {
-            this.g = getString(2131436602);
+            this.g = getString(2131436622);
           }
           if (TextUtils.isEmpty(this.h)) {
-            this.h = getString(2131436603);
+            this.h = getString(2131436623);
           }
           if (TextUtils.isEmpty(this.i)) {
-            this.i = getString(2131436606);
+            this.i = getString(2131436626);
           }
           if (TextUtils.isEmpty(this.j)) {
-            this.j = getString(2131436607);
+            this.j = getString(2131436627);
           }
           if (TextUtils.isEmpty(this.f)) {
-            this.f = getString(2131436601);
+            this.f = getString(2131436621);
           }
           b(this.d);
           this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver.setSeq(this.jdField_a_of_type_Int);
@@ -545,7 +545,7 @@ public class AuthDevOpenUgActivity
     {
     default: 
       return;
-    case 2131370067: 
+    case 2131370076: 
       if (this.app != null) {
         this.app.sendWirelessMeibaoReq(1);
       }
@@ -573,7 +573,7 @@ public class AuthDevOpenUgActivity
       }
       EquipLockWebEntrance.a(this, this.app, EquipLockWebEntrance.jdField_a_of_type_Int);
       return;
-    case 2131370058: 
+    case 2131370067: 
       if (getIntent().getBooleanExtra("open_devlock_verify_passwd", false))
       {
         paramView = new Intent(this, QQBrowserActivity.class);
@@ -594,7 +594,7 @@ public class AuthDevOpenUgActivity
           a(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
         }
       }
-    case 2131363428: 
+    case 2131363447: 
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevOpenUgActivity", 2, "onClick.cancelVerifyCode mVerifyObserver.seq=" + this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver.getSeq());
       }

@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.qphone.base.util.QLog;
 
-public class aeae
+class aeae
   implements Runnable
 {
-  public aeae(LebaWithFeeds paramLebaWithFeeds, boolean paramBoolean) {}
+  aeae(aead paramaead) {}
   
   public void run()
   {
-    LebaWithFeeds.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaWithFeeds, this.jdField_a_of_type_Boolean);
+    PresenceInterfaceImpl.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    PresenceInterfaceImpl.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl, true);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a(0, this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a);
+    QLog.d("PresenceInterfaceImpl", 2, "saveUserPermission true");
   }
 }
 

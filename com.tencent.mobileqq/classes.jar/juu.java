@@ -1,24 +1,41 @@
-import com.tencent.av.opengl.ui.GLRootView;
-import com.tencent.av.ui.GLVideoView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.utils.TipsManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class juu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public juu(GLVideoView paramGLVideoView) {}
+  public juu(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GLRootView localGLRootView = this.a.a();
-    if (localGLRootView != null)
+    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController != null)
     {
-      GLVideoView.e(this.a);
-      localGLRootView.postDelayed(this.a.a, 80L);
+      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.j(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().c, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvUtilsTipsManager != null) {
+        this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvUtilsTipsManager.b(2, true);
+      }
+    }
+    if (this.jdField_a_of_type_Int == 0) {
+      ReportController.b(null, "CliOper", "", "", "0X8005CFD", "0X8005CFD", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      if (this.jdField_a_of_type_Int == 1) {
+        ReportController.b(null, "CliOper", "", "", "0X8005CFF", "0X8005CFF", 0, 0, "", "", "", "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     juu
  * JD-Core Version:    0.7.0.1
  */

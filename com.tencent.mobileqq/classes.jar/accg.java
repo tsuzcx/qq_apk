@@ -1,32 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyCardManager;
 import com.tencent.qphone.base.util.QLog;
 
 class accg
-  extends BroadcastReceiver
+  implements Runnable
 {
-  accg(acbg paramacbg, MessengerService paramMessengerService, Bundle paramBundle) {}
+  accg(acce paramacce, QQAppInterface paramQQAppInterface) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {
-      return;
+    Object localObject = (NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(105);
+    acce.a(this.jdField_a_of_type_Acce, ((NearbyCardManager)localObject).b());
+    String str = this.jdField_a_of_type_Acce.a(acce.a(this.jdField_a_of_type_Acce), false);
+    localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = this.jdField_a_of_type_Acce.a(acce.a(this.jdField_a_of_type_Acce), true);
     }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext();
-    if (paramContext != null) {
-      paramContext.unregisterReceiver(this);
-    }
+    this.jdField_a_of_type_Acce.c((String)localObject);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.emoji.web.MessengerService", 2, "openDevLock unregisterReceiver context: " + paramContext);
+      QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE  faceScoreWording=" + (String)localObject);
     }
-    paramContext = new Bundle(paramIntent.getExtras());
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

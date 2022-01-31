@@ -1,12 +1,12 @@
 package com.tencent.qqprotect.qsec;
 
-import alxr;
-import alxs;
-import alxt;
-import alxv;
-import alxw;
-import alxx;
-import alxy;
+import amfa;
+import amfb;
+import amfc;
+import amfe;
+import amff;
+import amfg;
+import amfh;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Pair;
@@ -34,10 +34,10 @@ public class QSecLibMgr
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private CopyOnWriteArrayList jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   private boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 1, 2, 3 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 0, 1, 2, 2 };
   private final String[] jdField_a_of_type_ArrayOfJavaLangString = { "libhobi.so" };
   private boolean jdField_b_of_type_Boolean;
-  private final String[] jdField_b_of_type_ArrayOfJavaLangString = { "2.0.2" };
+  private final String[] jdField_b_of_type_ArrayOfJavaLangString = { "2.1.1" };
   
   public QSecLibMgr(QSecCbMgr paramQSecCbMgr)
   {
@@ -45,8 +45,8 @@ public class QSecLibMgr
     this.jdField_a_of_type_JavaUtilList = new LinkedList();
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecDatabaseMgr = new QSecDatabaseMgr();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new alxw(this, QSecFramework.a().getLooper());
-    this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr.a(new alxr(this));
+    this.jdField_a_of_type_AndroidOsHandler = new amff(this, QSecFramework.a().getLooper());
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr.a(new amfa(this));
   }
   
   private int a(int paramInt)
@@ -62,16 +62,16 @@ public class QSecLibMgr
     return -1;
   }
   
-  private alxv a(QSecDatabaseMgr.LibEntry paramLibEntry)
+  private amfe a(QSecDatabaseMgr.LibEntry paramLibEntry)
   {
-    alxv localalxv = new alxv(null);
-    localalxv.jdField_a_of_type_Int = paramLibEntry.jdField_a_of_type_Int;
-    localalxv.jdField_b_of_type_Int = paramLibEntry.jdField_b_of_type_Int;
-    localalxv.c = paramLibEntry.c;
-    localalxv.jdField_b_of_type_JavaLangString = paramLibEntry.jdField_b_of_type_JavaLangString;
-    localalxv.jdField_a_of_type_JavaLangString = paramLibEntry.jdField_a_of_type_JavaLangString;
-    localalxv.e = 4;
-    return localalxv;
+    amfe localamfe = new amfe(null);
+    localamfe.jdField_a_of_type_Int = paramLibEntry.jdField_a_of_type_Int;
+    localamfe.jdField_b_of_type_Int = paramLibEntry.jdField_b_of_type_Int;
+    localamfe.c = paramLibEntry.c;
+    localamfe.jdField_b_of_type_JavaLangString = paramLibEntry.jdField_b_of_type_JavaLangString;
+    localamfe.jdField_a_of_type_JavaLangString = paramLibEntry.jdField_a_of_type_JavaLangString;
+    localamfe.e = 4;
+    return localamfe;
   }
   
   private String a()
@@ -92,47 +92,47 @@ public class QSecLibMgr
     }
   }
   
-  private void a(alxv paramalxv)
+  private void a(amfe paramamfe)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQProtect.QSec", 2, String.format("Prepare to unload: %d,%d,%d,%d,%s,%s", new Object[] { Integer.valueOf(paramalxv.jdField_a_of_type_Int), Integer.valueOf(paramalxv.jdField_b_of_type_Int), Integer.valueOf(paramalxv.c), Integer.valueOf(paramalxv.e), paramalxv.jdField_a_of_type_JavaLangString, paramalxv.jdField_b_of_type_JavaLangString }));
+      QLog.d("QQProtect.QSec", 2, String.format("Prepare to unload: %d,%d,%d,%d,%s,%s", new Object[] { Integer.valueOf(paramamfe.jdField_a_of_type_Int), Integer.valueOf(paramamfe.jdField_b_of_type_Int), Integer.valueOf(paramamfe.c), Integer.valueOf(paramamfe.e), paramamfe.jdField_a_of_type_JavaLangString, paramamfe.jdField_b_of_type_JavaLangString }));
     }
-    if ((paramalxv.c & 0x1) == 0) {}
-    while (paramalxv.e != 1) {
+    if ((paramamfe.c & 0x1) == 0) {}
+    while (paramamfe.e != 1) {
       return;
     }
-    paramalxv.e = 3;
-    paramalxv.jdField_a_of_type_ComTencentQqprotectQsecRundownProtection.b();
-    int i = QSecFramework.a(3, paramalxv.jdField_a_of_type_Int, 0, 0, null, null, null, null);
+    paramamfe.e = 3;
+    paramamfe.jdField_a_of_type_ComTencentQqprotectQsecRundownProtection.b();
+    int i = QSecFramework.a(3, paramamfe.jdField_a_of_type_Int, 0, 0, null, null, null, null);
     if (QLog.isColorLevel()) {
       QLog.d("QQProtect.QSec", 2, new Object[] { "Unload ret: %d", Integer.valueOf(i) });
     }
     if (i == 0)
     {
-      paramalxv.e = 4;
-      a(2, paramalxv.jdField_a_of_type_Int);
+      paramamfe.e = 4;
+      a(2, paramamfe.jdField_a_of_type_Int);
       return;
     }
-    paramalxv.e = 5;
-    paramalxv.d = i;
+    paramamfe.e = 5;
+    paramamfe.d = i;
   }
   
-  private void a(alxv paramalxv, String paramString1, String paramString2)
+  private void a(amfe paramamfe, String paramString1, String paramString2)
   {
-    a(paramalxv);
-    if (paramalxv.e == 4)
+    a(paramamfe);
+    if (paramamfe.e == 4)
     {
-      if ((paramalxv.jdField_b_of_type_JavaLangString != null) && (!paramalxv.jdField_b_of_type_JavaLangString.equals(paramString2)))
+      if ((paramamfe.jdField_b_of_type_JavaLangString != null) && (!paramamfe.jdField_b_of_type_JavaLangString.equals(paramString2)))
       {
-        FileUtils.delete(paramalxv.jdField_b_of_type_JavaLangString);
-        paramalxv.jdField_b_of_type_JavaLangString = paramString2;
+        FileUtils.delete(paramamfe.jdField_b_of_type_JavaLangString);
+        paramamfe.jdField_b_of_type_JavaLangString = paramString2;
       }
-      if ((paramalxv.jdField_a_of_type_JavaLangString != null) && (!paramalxv.jdField_a_of_type_JavaLangString.equals(paramString1))) {
-        paramalxv.jdField_a_of_type_JavaLangString = paramString1;
+      if ((paramamfe.jdField_a_of_type_JavaLangString != null) && (!paramamfe.jdField_a_of_type_JavaLangString.equals(paramString1))) {
+        paramamfe.jdField_a_of_type_JavaLangString = paramString1;
       }
-      paramalxv.f = 0;
-      c(paramalxv);
-      d(paramalxv);
+      paramamfe.f = 0;
+      c(paramamfe);
+      d(paramamfe);
     }
   }
   
@@ -149,7 +149,7 @@ public class QSecLibMgr
       if (QLog.isColorLevel()) {
         QLog.d("QQProtect.QSec", 2, String.format("cb changed: id(%d), cb(%d)", new Object[] { ((Pair)localObject1).first, ((Pair)localObject1).second }));
       }
-      Object localObject2 = (alxv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(((Pair)localObject1).first);
+      Object localObject2 = (amfe)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(((Pair)localObject1).first);
       if (localObject2 == null)
       {
         localObject2 = this.jdField_a_of_type_ComTencentQqprotectQsecQSecDatabaseMgr.a(((Integer)((Pair)localObject1).first).intValue());
@@ -163,16 +163,16 @@ public class QSecLibMgr
       }
       else if (((Byte)((Pair)localObject1).second).byteValue() == 1)
       {
-        if (((alxv)localObject2).e == 4)
+        if (((amfe)localObject2).e == 4)
         {
-          c((alxv)localObject2);
-          if (((alxv)localObject2).d != 0) {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(((alxv)localObject2).jdField_a_of_type_Int));
+          c((amfe)localObject2);
+          if (((amfe)localObject2).d != 0) {
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(((amfe)localObject2).jdField_a_of_type_Int));
           }
-          d((alxv)localObject2);
+          d((amfe)localObject2);
         }
       }
-      else if ((((Byte)((Pair)localObject1).second).byteValue() == 2) && (((alxv)localObject2).e == 4))
+      else if ((((Byte)((Pair)localObject1).second).byteValue() == 2) && (((amfe)localObject2).e == 4))
       {
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(((Pair)localObject1).first);
         localObject1 = this.jdField_a_of_type_ComTencentQqprotectQsecQSecDatabaseMgr.a(((Integer)((Pair)localObject1).first).intValue());
@@ -187,10 +187,10 @@ public class QSecLibMgr
     e();
   }
   
-  private void b(alxv paramalxv)
+  private void b(amfe paramamfe)
   {
     QSecRptHelper localQSecRptHelper = new QSecRptHelper();
-    localQSecRptHelper.a(paramalxv.jdField_a_of_type_Int).a(paramalxv.jdField_a_of_type_JavaLangString).a(paramalxv.d);
+    localQSecRptHelper.a(paramamfe.jdField_a_of_type_Int).a(paramamfe.jdField_a_of_type_JavaLangString).a(paramamfe.d);
     QSecRptController.b(localQSecRptHelper.toString(), 104);
   }
   
@@ -226,34 +226,34 @@ public class QSecLibMgr
       return;
     }
     this.jdField_b_of_type_Boolean = false;
-    new alxx(new alxt(this)).a(1);
+    new amfg(new amfc(this)).a(1);
   }
   
-  private void c(alxv paramalxv)
+  private void c(amfe paramamfe)
   {
-    paramalxv.e = 2;
-    Object localObject = new alxs(this);
-    ((alxs)localObject).a = paramalxv;
-    new CrashProtector(String.format("Lib%d_%s", new Object[] { Integer.valueOf(paramalxv.jdField_a_of_type_Int), paramalxv.jdField_a_of_type_JavaLangString }), 43200000L).a((CrashProtector.IProtectedMethod)localObject);
+    paramamfe.e = 2;
+    Object localObject = new amfb(this);
+    ((amfb)localObject).a = paramamfe;
+    new CrashProtector(String.format("Lib%d_%s", new Object[] { Integer.valueOf(paramamfe.jdField_a_of_type_Int), paramamfe.jdField_a_of_type_JavaLangString }), 43200000L).a((CrashProtector.IProtectedMethod)localObject);
     if (QLog.isColorLevel())
     {
-      if (paramalxv.jdField_b_of_type_JavaLangString == null)
+      if (paramamfe.jdField_b_of_type_JavaLangString == null)
       {
         localObject = "null";
-        QLog.d("QQProtect.QSec", 2, String.format("load: %s ver: %s error: %08X", new Object[] { localObject, QPMiscUtils.a(paramalxv.f), Integer.valueOf(paramalxv.d) }));
+        QLog.d("QQProtect.QSec", 2, String.format("load: %s ver: %s error: %08X", new Object[] { localObject, QPMiscUtils.a(paramamfe.f), Integer.valueOf(paramamfe.d) }));
       }
     }
     else {
-      if (paramalxv.d != 0) {
+      if (paramamfe.d != 0) {
         break label140;
       }
     }
     label140:
     for (int i = 1;; i = 4)
     {
-      paramalxv.e = i;
+      paramamfe.e = i;
       return;
-      localObject = paramalxv.jdField_b_of_type_JavaLangString;
+      localObject = paramamfe.jdField_b_of_type_JavaLangString;
       break;
     }
   }
@@ -264,7 +264,7 @@ public class QSecLibMgr
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((alxv)localEntry.getValue()).e == 1)
+      if (((amfe)localEntry.getValue()).e == 1)
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQProtect.QSec", 2, String.format("Notify listener [%d:%d]", new Object[] { Integer.valueOf(1), localEntry.getKey() }));
@@ -325,22 +325,22 @@ public class QSecLibMgr
     //   100: lstore 5
     //   102: aload 12
     //   104: invokeinterface 167 1 0
-    //   109: checkcast 87	alxv
+    //   109: checkcast 87	amfe
     //   112: astore 13
     //   114: lload_3
     //   115: lstore 5
     //   117: aload 13
-    //   119: getfield 110	alxv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   119: getfield 110	amfe:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   122: astore 9
     //   124: lload_3
     //   125: lstore 5
     //   127: aload 13
-    //   129: getfield 231	alxv:f	I
+    //   129: getfield 231	amfe:f	I
     //   132: ifeq +16 -> 148
     //   135: lload_3
     //   136: lstore 5
     //   138: aload 13
-    //   140: getfield 231	alxv:f	I
+    //   140: getfield 231	amfe:f	I
     //   143: invokestatic 364	com/tencent/qqprotect/common/QPMiscUtils:a	(I)Ljava/lang/String;
     //   146: astore 9
     //   148: iload_1
@@ -355,7 +355,7 @@ public class QSecLibMgr
     //   164: dup
     //   165: iconst_0
     //   166: aload 13
-    //   168: getfield 96	alxv:jdField_a_of_type_Int	I
+    //   168: getfield 96	amfe:jdField_a_of_type_Int	I
     //   171: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   174: aastore
     //   175: dup
@@ -377,7 +377,7 @@ public class QSecLibMgr
     //   202: dup
     //   203: iconst_0
     //   204: aload 13
-    //   206: getfield 96	alxv:jdField_a_of_type_Int	I
+    //   206: getfield 96	amfe:jdField_a_of_type_Int	I
     //   209: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   212: aastore
     //   213: dup
@@ -421,7 +421,7 @@ public class QSecLibMgr
     //   286: lload_3
     //   287: lstore 5
     //   289: aload 13
-    //   291: getfield 215	alxv:d	I
+    //   291: getfield 215	amfe:d	I
     //   294: iload_1
     //   295: if_icmpne +61 -> 356
     //   298: lload_3
@@ -438,13 +438,13 @@ public class QSecLibMgr
     //   320: dup
     //   321: iconst_0
     //   322: aload 13
-    //   324: getfield 96	alxv:jdField_a_of_type_Int	I
+    //   324: getfield 96	amfe:jdField_a_of_type_Int	I
     //   327: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   330: aastore
     //   331: dup
     //   332: iconst_1
     //   333: aload 13
-    //   335: getfield 215	alxv:d	I
+    //   335: getfield 215	amfe:d	I
     //   338: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   341: aastore
     //   342: dup
@@ -468,13 +468,13 @@ public class QSecLibMgr
     //   378: dup
     //   379: iconst_0
     //   380: aload 13
-    //   382: getfield 96	alxv:jdField_a_of_type_Int	I
+    //   382: getfield 96	amfe:jdField_a_of_type_Int	I
     //   385: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   388: aastore
     //   389: dup
     //   390: iconst_1
     //   391: aload 13
-    //   393: getfield 215	alxv:d	I
+    //   393: getfield 215	amfe:d	I
     //   396: invokestatic 184	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   399: aastore
     //   400: dup
@@ -488,7 +488,7 @@ public class QSecLibMgr
     //   414: aload 10
     //   416: aload 14
     //   418: aload 13
-    //   420: getfield 215	alxv:d	I
+    //   420: getfield 215	amfe:d	I
     //   423: invokeinterface 448 3 0
     //   428: pop
     //   429: lload_3
@@ -505,7 +505,7 @@ public class QSecLibMgr
     //   453: lstore 5
     //   455: aload_0
     //   456: aload 13
-    //   458: invokespecial 454	com/tencent/qqprotect/qsec/QSecLibMgr:b	(Lalxv;)V
+    //   458: invokespecial 454	com/tencent/qqprotect/qsec/QSecLibMgr:b	(Lamfe;)V
     //   461: iload_2
     //   462: istore_1
     //   463: goto -377 -> 86
@@ -529,10 +529,10 @@ public class QSecLibMgr
     //   508: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   511: invokestatic 192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   514: invokestatic 468	com/tencent/qqprotect/qsec/QSecFramework:a	()Landroid/os/Handler;
-    //   517: new 470	alxu
+    //   517: new 470	amfd
     //   520: dup
     //   521: aload_0
-    //   522: invokespecial 471	alxu:<init>	(Lcom/tencent/qqprotect/qsec/QSecLibMgr;)V
+    //   522: invokespecial 471	amfd:<init>	(Lcom/tencent/qqprotect/qsec/QSecLibMgr;)V
     //   525: lload 5
     //   527: invokevirtual 477	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   530: pop
@@ -576,7 +576,7 @@ public class QSecLibMgr
     //   19	455	10	localEditor	android.content.SharedPreferences.Editor
     //   10	238	11	localSharedPreferences	android.content.SharedPreferences
     //   53	50	12	localObject2	Object
-    //   112	345	13	localalxv	alxv
+    //   112	345	13	localamfe	amfe
     //   190	227	14	str1	String
     //   228	207	15	str2	String
     // Exception table:
@@ -606,9 +606,9 @@ public class QSecLibMgr
     //   63	72	568	java/lang/NumberFormatException
   }
   
-  private void d(alxv paramalxv)
+  private void d(amfe paramamfe)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramalxv);
+    this.jdField_a_of_type_JavaUtilList.add(paramamfe);
   }
   
   private void e()
@@ -616,15 +616,15 @@ public class QSecLibMgr
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(4));
   }
   
-  private void e(alxv paramalxv)
+  private void e(amfe paramamfe)
   {
-    c(paramalxv);
-    if (paramalxv.d == 0)
+    c(paramamfe);
+    if (paramamfe.d == 0)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramalxv.jdField_a_of_type_Int), paramalxv);
-      a(1, paramalxv.jdField_a_of_type_Int);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramamfe.jdField_a_of_type_Int), paramamfe);
+      a(1, paramamfe.jdField_a_of_type_Int);
     }
-    d(paramalxv);
+    d(paramamfe);
   }
   
   private void f()
@@ -670,21 +670,21 @@ public class QSecLibMgr
       if (1 == b1)
       {
         localObject1 = a((QSecDatabaseMgr.LibEntry)localObject2);
-        e((alxv)localObject1);
-        if (((alxv)localObject1).d != 0)
+        e((amfe)localObject1);
+        if (((amfe)localObject1).d != 0)
         {
-          i = a(((alxv)localObject1).jdField_a_of_type_Int);
+          i = a(((amfe)localObject1).jdField_a_of_type_Int);
           if (i != -1)
           {
             localObject2 = a() + File.separator + this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]];
-            if ((((alxv)localObject1).jdField_b_of_type_JavaLangString == null) || (!((String)localObject2).equals(((alxv)localObject1).jdField_b_of_type_JavaLangString)))
+            if ((((amfe)localObject1).jdField_b_of_type_JavaLangString == null) || (!((String)localObject2).equals(((amfe)localObject1).jdField_b_of_type_JavaLangString)))
             {
-              ((alxv)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
-              ((alxv)localObject1).jdField_b_of_type_Int = this.jdField_a_of_type_ArrayOfInt[(i + 2)];
-              ((alxv)localObject1).c = this.jdField_a_of_type_ArrayOfInt[(i + 3)];
-              ((alxv)localObject1).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]];
-              ((alxv)localObject1).f = 0;
-              e((alxv)localObject1);
+              ((amfe)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
+              ((amfe)localObject1).jdField_b_of_type_Int = this.jdField_a_of_type_ArrayOfInt[(i + 2)];
+              ((amfe)localObject1).c = this.jdField_a_of_type_ArrayOfInt[(i + 3)];
+              ((amfe)localObject1).jdField_a_of_type_JavaLangString = this.jdField_b_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]];
+              ((amfe)localObject1).f = 0;
+              e((amfe)localObject1);
             }
           }
         }
@@ -695,8 +695,8 @@ public class QSecLibMgr
         if (i != -1)
         {
           localObject1 = a((QSecDatabaseMgr.LibEntry)localObject2);
-          ((alxv)localObject1).jdField_b_of_type_JavaLangString = (a() + File.separator + this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]]);
-          e((alxv)localObject1);
+          ((amfe)localObject1).jdField_b_of_type_JavaLangString = (a() + File.separator + this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_ArrayOfInt[i]]);
+          e((amfe)localObject1);
         }
       }
     }
@@ -708,7 +708,7 @@ public class QSecLibMgr
   
   private void g()
   {
-    new alxx(new alxy(this, null)).a(1);
+    new amfg(new amfh(this, null)).a(1);
   }
   
   private void h()
@@ -755,8 +755,8 @@ public class QSecLibMgr
   
   public int a(int paramInt1, int paramInt2, int paramInt3, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    alxv localalxv = (alxv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
-    if (localalxv == null) {
+    amfe localamfe = (amfe)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
+    if (localamfe == null) {
       if (this.jdField_a_of_type_ComTencentQqprotectQsecQSecDatabaseMgr.a(paramInt1) == null) {
         paramInt2 = 4;
       }
@@ -769,11 +769,11 @@ public class QSecLibMgr
       return paramInt2;
       paramInt2 = 17;
       continue;
-      if ((paramInt2 != 0) && (paramInt2 != localalxv.f))
+      if ((paramInt2 != 0) && (paramInt2 != localamfe.f))
       {
         paramInt2 = 32;
       }
-      else if (localalxv.jdField_a_of_type_Int != paramInt1)
+      else if (localamfe.jdField_a_of_type_Int != paramInt1)
       {
         paramInt2 = 5;
       }
@@ -784,18 +784,18 @@ public class QSecLibMgr
         {
           paramInt2 = 6;
         }
-        else if (localalxv.e != 1)
+        else if (localamfe.e != 1)
         {
           paramInt2 = 7;
         }
-        else if (!localalxv.jdField_a_of_type_ComTencentQqprotectQsecRundownProtection.a())
+        else if (!localamfe.jdField_a_of_type_ComTencentQqprotectQsecRundownProtection.a())
         {
           paramInt2 = 7;
         }
         else
         {
-          paramInt2 = QSecFramework.a(4, localalxv.jdField_a_of_type_Int, paramInt2, paramInt3, null, null, paramArrayOfObject1, paramArrayOfObject2);
-          localalxv.jdField_a_of_type_ComTencentQqprotectQsecRundownProtection.a();
+          paramInt2 = QSecFramework.a(4, localamfe.jdField_a_of_type_Int, paramInt2, paramInt3, null, null, paramArrayOfObject1, paramArrayOfObject2);
+          localamfe.jdField_a_of_type_ComTencentQqprotectQsecRundownProtection.a();
         }
       }
     }

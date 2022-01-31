@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class xad
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public xad(PayCodeEntryActivity paramPayCodeEntryActivity) {}
+  public xad(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a("payCodeEntry.payCode", "actQQWlxclick", "0001");
-    PayCodeEntryActivity.b(this.a);
+    this.a.a = null;
   }
 }
 

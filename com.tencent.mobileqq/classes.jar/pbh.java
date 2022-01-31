@@ -1,26 +1,29 @@
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class pbh
-  implements TroopMemberApiClient.Callback
+class pbh
+  implements Runnable
 {
-  public pbh(HotchatPlugin paramHotchatPlugin) {}
+  pbh(paz parampaz, TroopManager paramTroopManager, String paramString1, String paramString2, Bundle paramBundle, int paramInt) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, this.b);
+    if (localMessageRecord != null)
     {
-      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
-      paramBundle = paramBundle.getStringArrayList("tinyIds");
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        HotchatPlugin.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
-        i += 1;
-      }
+      this.jdField_a_of_type_AndroidOsBundle.putLong("lastMsgTime", localMessageRecord.time);
+      this.jdField_a_of_type_AndroidOsBundle.putString("lastMsgContent", localMessageRecord.msg);
+      this.jdField_a_of_type_AndroidOsBundle.putInt("seq", this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Paz.a.a(73, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      this.jdField_a_of_type_AndroidOsBundle.putLong("lastMsgTime", 0L);
+      this.jdField_a_of_type_AndroidOsBundle.putString("lastMsgContent", "");
+      this.jdField_a_of_type_AndroidOsBundle.putInt("seq", this.jdField_a_of_type_Int);
     }
   }
 }

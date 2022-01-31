@@ -1,14 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
-public class lga
+class lga
   implements Runnable
 {
-  public lga(ReadInJoyArkViewController paramReadInJoyArkViewController) {}
+  lga(lfz paramlfz) {}
   
   public void run()
   {
-    ArkAppCenter.a(true);
+    if ((ReadInJoyNewFeedsActivity.a(this.a.a) == 0) && (ReadInJoyNewFeedsActivity.a(this.a.a) != null) && (ReadInJoyNewFeedsActivity.a(this.a.a).mChannelCoverId == 0) && (!this.a.a.a(0))) {
+      this.a.a.c(true);
+    }
   }
 }
 

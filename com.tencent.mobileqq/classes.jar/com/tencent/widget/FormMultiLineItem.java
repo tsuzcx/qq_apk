@@ -53,15 +53,15 @@ public class FormMultiLineItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130838623);
+      return paramResources.getDrawable(2130838629);
     case 0: 
-      return paramResources.getDrawable(2130838623);
+      return paramResources.getDrawable(2130838629);
     case 1: 
-      return paramResources.getDrawable(2130838635);
+      return paramResources.getDrawable(2130838641);
     case 2: 
-      return paramResources.getDrawable(2130838633);
+      return paramResources.getDrawable(2130838639);
     }
-    return paramResources.getDrawable(2130838630);
+    return paramResources.getDrawable(2130838636);
   }
   
   private void a()
@@ -92,7 +92,7 @@ public class FormMultiLineItem
       localMultiImageTextView = new MultiImageTextView(getContext());
       localMultiImageTextView.setId(2131362295);
       localMultiImageTextView.setTextSize(0, n);
-      localMultiImageTextView.setTextColor(getResources().getColor(2131494257));
+      localMultiImageTextView.setTextColor(getResources().getColor(2131494263));
       localMultiImageTextView.setSingleLine(true);
       localMultiImageTextView.setDuplicateParentStateEnabled(true);
       localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -110,7 +110,7 @@ public class FormMultiLineItem
       }
       localMultiImageTextView = new MultiImageTextView(getContext());
       localMultiImageTextView.setTextSize(0, k);
-      localMultiImageTextView.setTextColor(getResources().getColor(2131494269));
+      localMultiImageTextView.setTextColor(getResources().getColor(2131494275));
       localMultiImageTextView.setSingleLine(true);
       localMultiImageTextView.setDuplicateParentStateEnabled(true);
       localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -331,7 +331,7 @@ public class FormMultiLineItem
         {
           MultiImageTextView localMultiImageTextView = new MultiImageTextView(getContext());
           localMultiImageTextView.setTextSize(0, k);
-          localMultiImageTextView.setTextColor(getResources().getColor(2131494269));
+          localMultiImageTextView.setTextColor(getResources().getColor(2131494275));
           localMultiImageTextView.setSingleLine(true);
           localMultiImageTextView.setDuplicateParentStateEnabled(true);
           localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);

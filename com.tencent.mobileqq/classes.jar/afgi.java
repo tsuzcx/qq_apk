@@ -1,21 +1,16 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.picbrowser.GalleryItemVideo;
 
 public class afgi
-  implements TextWatcher
+  implements Runnable
 {
-  public afgi(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public afgi(GalleryItemVideo paramGalleryItemVideo, URLImageView paramURLImageView, Drawable paramDrawable) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    NearbyUtils.a(this.a.e, 90);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

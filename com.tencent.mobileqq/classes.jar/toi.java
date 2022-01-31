@@ -1,33 +1,10 @@
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.MayknowRecommendManager;
-import java.util.ArrayList;
-import java.util.List;
 
 public class toi
-  extends FriendListObserver
 {
-  public toi(RecommendFriendActivity paramRecommendFriendActivity) {}
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      ArrayList localArrayList = RecommendFriendActivity.a(this.a).a();
-      if ((localArrayList != null) && (localArrayList.size() > 0))
-      {
-        RecommendFriendActivity.a(this.a).a(localArrayList);
-        RecommendFriendActivity.a(this.a).setVisibility(8);
-      }
-    }
-    else
-    {
-      return;
-    }
-    RecommendFriendActivity.a(this.a).setVisibility(0);
-  }
+  public ImageView a;
+  public TextView a;
 }
 
 

@@ -1,18 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.activity.RecommendTroopAdapter;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-public class aiuw
-  implements BusinessObserver
+class aiuw
+  implements Runnable
 {
-  public aiuw(RecommendTroopAdapter paramRecommendTroopAdapter) {}
+  aiuw(aiuv paramaiuv) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
-    }
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep|changeImgUrl,need rich since invalid url=" + ForwardSdkShareProcessor.a(this.a.a.b));
+    ForwardSdkShareProcessor.c(this.a.a.b, null);
+    ForwardSdkShareProcessor.a(this.a.a.b).g();
+    ForwardSdkShareProcessor.a(this.a.a.b).a();
   }
 }
 

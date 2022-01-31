@@ -1,35 +1,14 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.widget.ConfigClearableEditText;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.vipgift.VipGiftManager;
 
 public class aktc
-  implements TextWatcher
+  implements AsyncBack
 {
-  public aktc(ConfigClearableEditText paramConfigClearableEditText) {}
+  public aktc(VipGiftManager paramVipGiftManager) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
+  public void loaded(String paramString, int paramInt) {}
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramCharSequence = this.a.getText().toString();
-    if (this.a.isFocused())
-    {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
-      }
-    }
-    else {
-      return;
-    }
-    if ((ConfigClearableEditText.a(this.a)) || (ConfigClearableEditText.b(this.a)))
-    {
-      this.a.setClearButtonVisible(true);
-      return;
-    }
-    this.a.setClearButtonVisible(false);
-  }
+  public void progress(int paramInt) {}
 }
 
 

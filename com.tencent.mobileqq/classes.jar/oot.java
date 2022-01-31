@@ -1,12 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ListView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
 
-public final class oot
-  implements DialogInterface.OnClickListener
+public class oot
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public oot(FaceListPage paramFaceListPage) {}
+  
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    FaceListPage.a(this.a).setVisibility(4);
+    FaceListPage.b(this.a).setVisibility(4);
+    FaceListPage.a(this.a).setVisibility(0);
+    FaceListPage.a(this.a).notifyDataSetChanged();
   }
 }
 

@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.qphone.base.util.QLog;
 
 public class xls
-  implements Runnable
+  implements AsyncBack
 {
-  public xls(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface) {}
+  public xls(PreloadModule paramPreloadModule) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80085A3");
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
+    }
   }
 }
 

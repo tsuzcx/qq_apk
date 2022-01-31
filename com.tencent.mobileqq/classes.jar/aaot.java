@@ -1,54 +1,18 @@
-import android.content.res.Resources;
-import android.os.Build;
-import android.util.DisplayMetrics;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aaot
-  implements aanv
+  implements Runnable
 {
-  private aaot(ArkAppDeviceModule paramArkAppDeviceModule) {}
+  public aaot(ARReport paramARReport, long paramLong) {}
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public void run()
   {
-    if (!ArkAppModuleReg.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, "permission.DEVICE_INFORMATION")) {}
-    do
-    {
-      return false;
-      if ("GetModelName".equals(paramString))
-      {
-        paramVariantWrapper.SetString(Build.MODEL);
-        return true;
-      }
-      if ("GetScreenWidth".equals(paramString))
-      {
-        paramString = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-        paramVariantWrapper.SetInt((int)(paramString.widthPixels / paramString.density));
-        return true;
-      }
-      if ("GetScreenHeight".equals(paramString))
-      {
-        paramString = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-        paramVariantWrapper.SetInt((int)(paramString.heightPixels / paramString.density));
-        return true;
-      }
-      if ("GetPixelRatio".equals(paramString))
-      {
-        paramVariantWrapper.SetDouble(BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density);
-        return true;
-      }
-    } while (!"GetIdentifier".equals(paramString));
-    paramArrayOfVariantWrapper = DeviceInfoUtil.a();
-    paramString = paramArrayOfVariantWrapper;
-    if (this.a.jdField_a_of_type_Long != 0L) {
-      paramString = MD5Coding.encodeHexStr(paramArrayOfVariantWrapper);
-    }
-    paramVariantWrapper.SetString(paramString);
-    return true;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "SensorTrackManagerInit", true, 0L, 0L, localHashMap, "");
   }
 }
 

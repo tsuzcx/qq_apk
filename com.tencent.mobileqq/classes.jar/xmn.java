@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import Wallet.GetSkinListRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import mqq.observer.BusinessObserver;
 
 class xmn
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  xmn(xmm paramxmm) {}
+  xmn(xmm paramxmm, GetSkinListRsp paramGetSkinListRsp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.c.setVisibility(0);
-    this.a.a.c.clearAnimation();
-    this.a.a.c.setAnimation(null);
-    this.a.a.a.invalidate();
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("rsp", this.jdField_a_of_type_WalletGetSkinListRsp);
+    localBundle.putBoolean("isCache", true);
+    if (RedPacketManager.a(this.jdField_a_of_type_Xmm.a) == null) {
+      return;
+    }
+    RedPacketManager.a(this.jdField_a_of_type_Xmm.a).onReceive(14, true, localBundle);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

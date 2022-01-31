@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar;
 
-import aacw;
-import aacx;
+import aajn;
+import aajo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
@@ -66,7 +66,7 @@ public class ArResourceManager
     this.b = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_JavaLangString = ArConfigUtils.a();
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-    ThreadManager.post(new aacw(this), 8, null, true);
+    ThreadManager.post(new aajn(this), 8, null, true);
     this.jdField_a_of_type_ComTencentMobileqqArArResourceDownload = new ArResourceDownload(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this);
   }
   
@@ -855,7 +855,7 @@ public class ArResourceManager
       }
       else {
         label218:
-        ThreadManager.post(new aacx(this, paramArConfigInfo, paramBoolean1, paramBoolean2), 5, null, true);
+        ThreadManager.post(new aajo(this, paramArConfigInfo, paramBoolean1, paramBoolean2), 5, null, true);
       }
     }
   }

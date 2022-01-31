@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class aaxm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  aaxm(aaxl paramaaxl, String paramString, AtTroopMemberSpan[] paramArrayOfAtTroopMemberSpan) {}
+  aaxm(aaxl paramaaxl, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ArkRecommendController.a(this.jdField_a_of_type_Aaxl.a) == null) || (ArkRecommendController.a(this.jdField_a_of_type_Aaxl.a) == null) || (ArkRecommendController.a(this.jdField_a_of_type_Aaxl.a).a == null)) {
+    paramDialogInterface = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_Aaxl.a));
+    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       return;
     }
-    ArkRecommendController.a(this.jdField_a_of_type_Aaxl.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfComTencentMobileqqTroopTextAtTroopMemberSpan, this.jdField_a_of_type_Aaxl.a);
+    catch (Exception paramDialogInterface) {}
   }
 }
 

@@ -41,7 +41,7 @@ public class MPFileFailedView
   public View a(ViewGroup paramViewGroup, MPFileFailedView.MPFileFailedEvent paramMPFileFailedEvent, int paramInt1, int paramInt2)
   {
     int k = 2131427629;
-    int m = 2130841684;
+    int m = 2130841711;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileFailedView$MPFileFailedEvent = paramMPFileFailedEvent;
     this.c.setVisibility(8);
     int i = 2131427638;
@@ -83,18 +83,18 @@ public class MPFileFailedView
         return this.jdField_a_of_type_AndroidWidgetLinearLayout;
         k = 2131427632;
         paramInt2 = 2131427636;
-        m = 2130841689;
+        m = 2130841716;
         j = 2131427632;
         i = 8;
         continue;
         k = 2131427637;
         paramInt2 = 2131427636;
-        m = 2130841689;
+        m = 2130841716;
         j = 2131427638;
         i = 0;
         continue;
         k = 2131427627;
-        m = 2130841687;
+        m = 2130841714;
         i = 8;
         paramInt2 = 2131427611;
         j = 2131427638;
@@ -115,19 +115,19 @@ public class MPFileFailedView
           }
         }
         k = 2131427627;
-        m = 2130841687;
+        m = 2130841714;
         i = 8;
         paramInt2 = 2131427611;
         j = 2131427638;
         continue;
         i = 8;
-        m = 2130841688;
+        m = 2130841715;
         paramInt2 = 2131427611;
         j = 2131427629;
       }
     case 2110: 
       label157:
-      m = 2130841689;
+      m = 2130841716;
       if (paramInt2 == 1)
       {
         j = 2131427637;
@@ -149,9 +149,9 @@ public class MPFileFailedView
         i = 2131427662;
         paramInt2 = 8;
         continue;
-        k = 2131434613;
+        k = 2131434629;
         i = 8;
-        j = 2131434613;
+        j = 2131434629;
         paramInt2 = 2131427611;
         break label157;
         k = 2131427616;
@@ -160,7 +160,7 @@ public class MPFileFailedView
         paramInt2 = 2131427611;
         break label157;
         i = 8;
-        m = 2130841688;
+        m = 2130841715;
         paramInt2 = 2131427611;
         j = 2131427629;
         break label157;
@@ -189,12 +189,12 @@ public class MPFileFailedView
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130970054, null).findViewById(2131368899));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363701));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362961));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131368004));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131368900));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131368901));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130970065, null).findViewById(2131368902));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363724));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362966));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131368020));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131368903));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131368904));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   

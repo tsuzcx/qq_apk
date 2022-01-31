@@ -1,17 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.dingdong.data.OfficeCenterSharedPref;
+import com.tencent.mobileqq.activity.PreloadWebService;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class tlc
-  implements Runnable
+  extends WebViewClient
 {
-  public tlc(QQSettingMe paramQQSettingMe) {}
+  public tlc(PreloadWebService paramPreloadWebService) {}
   
-  public void run()
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    OfficeCenterSharedPref.a().b("officecenter_red_point_flag_" + localQQAppInterface.getLongAccountUin(), false);
+    return true;
   }
 }
 

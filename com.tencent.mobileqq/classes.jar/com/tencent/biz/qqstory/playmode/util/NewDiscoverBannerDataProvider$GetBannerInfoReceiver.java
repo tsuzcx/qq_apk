@@ -19,19 +19,19 @@ public class NewDiscoverBannerDataProvider$GetBannerInfoReceiver
   public void a(@NonNull NewDiscoverBannerDataProvider paramNewDiscoverBannerDataProvider, @NonNull GetDiscoverBannerVideoHandler.GetDiscoverBannerVideoEvent paramGetDiscoverBannerVideoEvent)
   {
     paramNewDiscoverBannerDataProvider.jdField_b_of_type_Boolean = false;
-    if ((paramGetDiscoverBannerVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramGetDiscoverBannerVideoEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetDiscoverBannerVideoResponse == null)) {
+    if ((paramGetDiscoverBannerVideoEvent.errorInfo.isFail()) || (paramGetDiscoverBannerVideoEvent.a == null)) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d(this.TAG, 2, "banner info back:" + paramGetDiscoverBannerVideoEvent.toString());
     }
-    paramNewDiscoverBannerDataProvider.jdField_a_of_type_JavaUtilList.addAll(paramGetDiscoverBannerVideoEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetDiscoverBannerVideoResponse.jdField_b_of_type_JavaUtilList);
-    paramNewDiscoverBannerDataProvider.jdField_b_of_type_JavaUtilList.addAll(paramGetDiscoverBannerVideoEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetDiscoverBannerVideoResponse.jdField_a_of_type_JavaUtilList);
-    paramNewDiscoverBannerDataProvider.jdField_b_of_type_JavaLangString = paramGetDiscoverBannerVideoEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetDiscoverBannerVideoResponse.jdField_a_of_type_JavaLangString;
-    paramNewDiscoverBannerDataProvider.jdField_a_of_type_Boolean = paramGetDiscoverBannerVideoEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetDiscoverBannerVideoResponse.jdField_a_of_type_Boolean;
-    paramNewDiscoverBannerDataProvider.jdField_a_of_type_Int = paramGetDiscoverBannerVideoEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetDiscoverBannerVideoResponse.jdField_b_of_type_Int;
-    paramNewDiscoverBannerDataProvider.a(paramGetDiscoverBannerVideoEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetDiscoverBannerVideoResponse.jdField_a_of_type_JavaUtilList);
-    paramNewDiscoverBannerDataProvider.b(paramGetDiscoverBannerVideoEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetDiscoverBannerVideoResponse.jdField_b_of_type_JavaUtilList);
+    paramNewDiscoverBannerDataProvider.jdField_a_of_type_JavaUtilList.addAll(paramGetDiscoverBannerVideoEvent.a.jdField_b_of_type_JavaUtilList);
+    paramNewDiscoverBannerDataProvider.jdField_b_of_type_JavaUtilList.addAll(paramGetDiscoverBannerVideoEvent.a.jdField_a_of_type_JavaUtilList);
+    paramNewDiscoverBannerDataProvider.jdField_b_of_type_JavaLangString = paramGetDiscoverBannerVideoEvent.a.jdField_a_of_type_JavaLangString;
+    paramNewDiscoverBannerDataProvider.jdField_a_of_type_Boolean = paramGetDiscoverBannerVideoEvent.a.jdField_a_of_type_Boolean;
+    paramNewDiscoverBannerDataProvider.jdField_a_of_type_Int = paramGetDiscoverBannerVideoEvent.a.jdField_b_of_type_Int;
+    paramNewDiscoverBannerDataProvider.a(paramGetDiscoverBannerVideoEvent.a.jdField_a_of_type_JavaUtilList);
+    paramNewDiscoverBannerDataProvider.b(paramGetDiscoverBannerVideoEvent.a.jdField_b_of_type_JavaUtilList);
   }
   
   public Class acceptEventClass()

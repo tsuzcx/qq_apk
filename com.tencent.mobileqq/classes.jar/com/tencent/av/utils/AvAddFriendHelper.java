@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import kfq;
+import khw;
 
 public class AvAddFriendHelper
 {
@@ -15,7 +15,7 @@ public class AvAddFriendHelper
   public AvAddFriendHelper(VideoAppInterface paramVideoAppInterface, AvAddFriendHelper.IAvAddFriendCallBack paramIAvAddFriendCallBack)
   {
     this.jdField_a_of_type_ComTencentAvUtilsAvAddFriendHelper$IAvAddFriendCallBack = null;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new kfq(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new khw(this);
     IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.AddfrindMsg");
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_ComTencentAvUtilsAvAddFriendHelper$IAvAddFriendCallBack = paramIAvAddFriendCallBack;
@@ -44,7 +44,7 @@ public class AvAddFriendHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.AvAddFriendHelper
  * JD-Core Version:    0.7.0.1
  */

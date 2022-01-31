@@ -1,38 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoVote;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.InteractPasterLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
-import dov.com.tencent.biz.qqstory.takevideo.interact.EditVideoInteract;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiDownloadEvent;
 
 public class aobw
-  implements DialogInterface.OnClickListener
+  extends QQUIEventReceiver
 {
-  static
+  public aobw(@NonNull EditVideoDoodle paramEditVideoDoodle)
   {
-    if (!EditVideoInteract.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    super(paramEditVideoDoodle);
   }
   
-  public aobw(EditVideoInteract paramEditVideoInteract) {}
+  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiDownloadEvent paramDoodleEmojiDownloadEvent) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Class acceptEventClass()
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    VoteLayer.VoteItem localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractEditVideoInteract.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localVoteItem == null)) {
-      throw new AssertionError();
-    }
-    EditVideoVote.a(paramDialogInterface, localVoteItem);
-    paramDialogInterface.putInt("interact_type", EditVideoInteract.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractEditVideoInteract));
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractEditVideoInteract.a.a(38, paramDialogInterface);
+    return DoodleEmojiManager.DoodleEmojiDownloadEvent.class;
   }
 }
 

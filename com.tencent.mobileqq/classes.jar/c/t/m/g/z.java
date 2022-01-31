@@ -1,27 +1,16 @@
 package c.t.m.g;
 
-import java.util.concurrent.CountDownLatch;
-
 final class z
   implements Runnable
 {
-  z(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
-  
   public final void run()
   {
     try
     {
-      this.a[0] = y.c();
-      this.b.countDown();
+      x.e();
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        this.a[0] = y.b();
-      }
-    }
+    catch (Throwable localThrowable) {}
   }
 }
 

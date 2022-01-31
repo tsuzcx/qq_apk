@@ -1,39 +1,23 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoControlUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.av.utils.PstnUtils;
 
-public class kau
-  implements Runnable
+class kau
+  implements DialogInterface.OnClickListener
 {
-  public kau(VideoControlUI paramVideoControlUI) {}
+  kau(kas paramkas) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a(new Object[] { Integer.valueOf(102) });
-    if (!this.a.n) {
-      return;
-    }
-    if (this.a.v > 5) {
-      this.a.v = 5;
-    }
-    if (this.a.v < 0) {
-      this.a.v = 0;
-    }
-    VideoControlUI localVideoControlUI;
-    if (this.a.i) {
-      localVideoControlUI = this.a;
-    }
-    for (localVideoControlUI.v += 1;; localVideoControlUI.v -= 1)
-    {
-      this.a.a.a().postDelayed(this, VideoControlUI.a(this.a));
-      return;
-      localVideoControlUI = this.a;
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
+    PstnUtils.a(this.a.a.app, this.a.a, 1, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kau
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
+import com.tencent.mobileqq.vas.ColorRingPlayer;
 
 public class akpb
-  implements DialogInterface.OnDismissListener
 {
-  public akpb(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b = "";
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public akpb(ColorRingPlayer paramColorRingPlayer)
+  {
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
 }
 
 

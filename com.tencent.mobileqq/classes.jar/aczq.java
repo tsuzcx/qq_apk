@@ -1,23 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetFileInfoCallBack;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class aczq
-  implements UniformDownloadUtil.GetFileInfoCallBack
+  implements View.OnClickListener
 {
-  public aczq(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public aczq(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void a(String paramString, long paramLong)
+  public void onClick(View paramView)
   {
-    if (UniformDownloadUtil.a(paramString))
+    paramView = (QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)paramView.getTag();
+    FileInfo localFileInfo = (FileInfo)paramView.a;
+    switch (paramView.c)
     {
-      StatisticAssist.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
-      return;
     }
-    StatisticAssist.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
+    for (;;)
+    {
+      this.a.i();
+      return;
+      this.a.a.a().ab();
+      this.a.c(localFileInfo);
+    }
   }
 }
 

@@ -1,32 +1,17 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.open.base.ToastUtil;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.MusicDownloadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
+import android.os.Handler;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anry
-  extends MusicDownloadListener
+  implements Runnable
 {
-  public anry(EditRecognitionPart paramEditRecognitionPart) {}
+  public anry(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void run()
   {
-    ToastUtil.a().a("正在下载: " + EditRecognitionPart.a(this.a));
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (EditRecognitionPart.a(this.a).a().equals(paramString)))
-    {
-      EditRecognitionPart.a(this.a).sendEmptyMessage(2);
-      EditRecognitionPart.a(this.a, EditRecognitionPart.a(this.a));
-    }
+    QIMEffectCameraCaptureUnit.f(this.a);
+    this.a.a.removeCallbacks(QIMEffectCameraCaptureUnit.a(this.a));
+    QIMEffectCameraCaptureUnit.f(this.a).setVisibility(8);
   }
 }
 

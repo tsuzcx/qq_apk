@@ -1,39 +1,34 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.jsp.DataApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import java.io.IOException;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class advz
-  implements Runnable
+class advz
+  implements DialogInterface.OnClickListener
 {
-  public advz(DataApiPlugin paramDataApiPlugin, String paramString1, String paramString2, Bundle paramBundle1, Bundle paramBundle2, String paramString3) {}
+  advz(advy paramadvy) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    i = 200;
-    Object localObject1 = null;
-    try
-    {
-      localObject2 = HttpUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.jdField_b_of_type_AndroidOsBundle);
-      localObject1 = localObject2;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+    paramDialogInterface = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
+    if (paramDialogInterface.getInt("state", 0) == 1) {
+      try
       {
-        Object localObject2;
-        i = 0;
-        localIOException.printStackTrace();
+        UniformDownloadUtil.a(paramDialogInterface.getString("filePath", ""));
+        return;
+      }
+      catch (Exception paramDialogInterface)
+      {
+        QLog.e("NearbyHybridFragment", 1, paramDialogInterface, new Object[0]);
+        this.a.a.f();
+        return;
       }
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.mRuntime.a();
-    if ((!TextUtils.isEmpty(this.c)) && (localObject2 != null)) {
-      ((Activity)localObject2).runOnUiThread(new adwa(this, (Activity)localObject2, localObject1, i));
-    }
+    this.a.a.f();
   }
 }
 

@@ -28,7 +28,7 @@ import com.tencent.av.ui.funchat.zimu.ZimuViewProxy;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Observable;
-import jpd;
+import jrg;
 
 public class SmallScreenVideoLayerUI
   extends VideoLayerUIBase
@@ -782,7 +782,7 @@ public class SmallScreenVideoLayerUI
       QLog.d("SmallScreenVideoLayerUI", 2, "onFirstDraw");
     }
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new jpd(this));
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new jrg(this));
     }
   }
   
@@ -795,7 +795,7 @@ public class SmallScreenVideoLayerUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoLayerUI
  * JD-Core Version:    0.7.0.1
  */

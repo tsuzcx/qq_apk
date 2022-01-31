@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.ReportR5Builder;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class lsj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lsj(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter) {}
+  public lsj(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new ReadInJoyUtils.ReportR5Builder().g().a().d().a(ReadInJoyFooterPresenter.a(this.a).e()).e().f().c().a();
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, ReadInJoyHelper.a(), "", "", paramView, false);
-    if (ReadInJoyFooterPresenter.a(this.a) != null) {
-      ReadInJoyFooterPresenter.a(this.a).a();
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

@@ -5,7 +5,7 @@ import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Observable;
 import java.util.Observer;
-import jie;
+import jkh;
 
 public class AVObserver
   implements Observer
@@ -93,7 +93,7 @@ public class AVObserver
       if (this.a == null) {
         this.a = new Handler(paramObservable);
       }
-      this.a.post(new jie(this, paramObject));
+      this.a.post(new jkh(this, paramObject));
       return;
     }
     a(paramObject);
@@ -101,7 +101,7 @@ public class AVObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.gaudio.AVObserver
  * JD-Core Version:    0.7.0.1
  */

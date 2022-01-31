@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import red;
+import riv;
 
 public class DoraemonOpenAPI
 {
@@ -40,7 +40,7 @@ public class DoraemonOpenAPI
   
   public static void a()
   {
-    ThreadManager.post(new red(), 5, null, false);
+    ThreadManager.post(new riv(), 5, null, false);
   }
 }
 

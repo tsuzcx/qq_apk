@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.ark.ArkAiDictMgr;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
 
-public final class aaxv
+public class aaxv
   implements Runnable
 {
+  public aaxv(ArkActionAppMgr paramArkActionAppMgr, aaya paramaaya) {}
+  
   public void run()
   {
-    ArkAiDictMgr.a();
-    ArkMessageServerLogic.a();
+    ArkActionAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr, this.jdField_a_of_type_Aaya);
   }
 }
 

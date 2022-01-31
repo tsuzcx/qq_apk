@@ -1,14 +1,18 @@
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-class aoav
-  implements Runnable
+public final class aoav
+  implements Parcelable.Creator
 {
-  aoav(aoat paramaoat, int paramInt) {}
-  
-  public void run()
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    ((QIMCommonLoadingView)this.jdField_a_of_type_Aoat.a.get()).setProgress(this.jdField_a_of_type_Int);
+    return new EditTakeGifSource(paramParcel);
+  }
+  
+  public EditTakeGifSource[] a(int paramInt)
+  {
+    return new EditTakeGifSource[paramInt];
   }
 }
 

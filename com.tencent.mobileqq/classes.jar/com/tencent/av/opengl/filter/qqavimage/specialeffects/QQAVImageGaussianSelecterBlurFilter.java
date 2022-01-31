@@ -5,8 +5,8 @@ import android.opengl.GLES20;
 import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilter;
 import com.tencent.av.video.effect.core.qqavimage.QQAVImageTwoPassTextureSamplingFilter;
 import java.util.List;
-import jju;
-import jjv;
+import jlx;
+import jly;
 
 public class QQAVImageGaussianSelecterBlurFilter
   extends QQAVImageTwoPassTextureSamplingFilter
@@ -34,7 +34,7 @@ public class QQAVImageGaussianSelecterBlurFilter
   public void a(float paramFloat)
   {
     this.b = paramFloat;
-    runOnDraw(new jju(this));
+    runOnDraw(new jlx(this));
   }
   
   public void a(PointF paramPointF)
@@ -52,7 +52,7 @@ public class QQAVImageGaussianSelecterBlurFilter
       localQQAVImageFilter.setFloat(GLES20.glGetUniformLocation(localQQAVImageFilter.getProgram(), paramString), paramFloat);
       i += 1;
     }
-    runOnDraw(new jjv(this));
+    runOnDraw(new jly(this));
   }
   
   protected void a(String paramString, PointF paramPointF)

@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.app.message.MsgProxy;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.RouterHandler;
+import java.util.HashMap;
 
 public class zti
   implements Runnable
 {
-  public zti(MsgProxy paramMsgProxy, QSlowTableManager paramQSlowTableManager, String paramString, int paramInt) {}
+  public zti(RouterHandler paramRouterHandler, Session paramSession) {}
   
   public void run()
   {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(MessageRecord.getTableName(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int), null, null);
-      }
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.e("Q.msg.MsgProxy", 1, "delete slowtable excep :", localRuntimeException);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.e.put(Long.valueOf(this.jdField_a_of_type_ComTencentLitetransfersdkSession.uSessionID), this.jdField_a_of_type_ComTencentLitetransfersdkSession);
+    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.a(3, this.jdField_a_of_type_ComTencentLitetransfersdkSession, 0.0D, 0);
   }
 }
 

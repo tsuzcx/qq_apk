@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec;
 
-import ahoa;
+import ahss;
 import android.annotation.TargetApi;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -9,15 +9,15 @@ import com.tencent.qphone.base.util.QLog;
 @TargetApi(16)
 public class AudioDecoder
 {
-  private ahoa jdField_a_of_type_Ahoa;
+  private ahss jdField_a_of_type_Ahss;
   private AudioDecoder.AudioDecodeConfig jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioDecodeConfig;
   private Thread jdField_a_of_type_JavaLangThread;
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ahoa != null)
+    if (this.jdField_a_of_type_Ahss != null)
     {
-      this.jdField_a_of_type_Ahoa.a();
+      this.jdField_a_of_type_Ahss.a();
       QLog.d("AudioDecoder", 4, "repeat");
     }
   }
@@ -33,9 +33,9 @@ public class AudioDecoder
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Ahoa != null)
+    if (this.jdField_a_of_type_Ahss != null)
     {
-      this.jdField_a_of_type_Ahoa.a(paramLong, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioDecodeConfig.c);
+      this.jdField_a_of_type_Ahss.a(paramLong, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioDecodeConfig.c);
       QLog.d("AudioDecoder", 1, "seekTo: " + paramLong);
       return;
     }
@@ -86,8 +86,8 @@ public class AudioDecoder
     {
       f2 = 1.0F;
     }
-    this.jdField_a_of_type_Ahoa = new ahoa(this, f1, f2);
-    this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_Ahoa, "AudioPlay", 8);
+    this.jdField_a_of_type_Ahss = new ahss(this, f1, f2);
+    this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_Ahss, "AudioPlay", 8);
     this.jdField_a_of_type_JavaLangThread.start();
   }
   
@@ -112,18 +112,18 @@ public class AudioDecoder
   
   public void c()
   {
-    if (this.jdField_a_of_type_Ahoa != null)
+    if (this.jdField_a_of_type_Ahss != null)
     {
-      this.jdField_a_of_type_Ahoa.b();
+      this.jdField_a_of_type_Ahss.b();
       QLog.d("AudioDecoder", 4, "pausePlay");
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ahoa != null)
+    if (this.jdField_a_of_type_Ahss != null)
     {
-      this.jdField_a_of_type_Ahoa.c();
+      this.jdField_a_of_type_Ahss.c();
       QLog.d("AudioDecoder", 4, "resumePlay");
     }
   }

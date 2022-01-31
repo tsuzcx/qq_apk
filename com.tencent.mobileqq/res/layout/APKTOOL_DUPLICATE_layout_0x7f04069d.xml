@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1164" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f90" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1421" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <Button android:id="@id/cancel" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021657" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_marginTop="7.5dip" android:layout_alignParentLeft="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b272a" />
-    <com.tencent.mobileqq.widget.CircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c30" android:visibility="visible" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_margin="18.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e31" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="正在准备中" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1c30" android:layout_centerHorizontal="true" android:contentDescription="正在准备中" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1afc" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c009d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_width="212.0dip" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <com.tencent.widget.SwipListView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1afd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 </RelativeLayout>

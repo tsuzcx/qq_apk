@@ -29,7 +29,7 @@ public class HomeFeedPresenter$FeedVideoRec
       return;
     }
     localObject = (VideoListHomeFeed)localObject;
-    if (paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetVideoListEvent.errorInfo.isSuccess())
     {
       ((VideoListHomeFeed)localObject).c(paramGetVideoListEvent.jdField_a_of_type_JavaUtilList, false);
       ((VideoListFeedItem)((VideoListHomeFeed)localObject).a).updateVideoInfo(paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);

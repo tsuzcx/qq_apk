@@ -1,58 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyBaseViewController;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ler
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public ler(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public ler(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ReadInJoySettingActivity.c(this.a, paramBoolean);
-    int i;
-    label92:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      i = 1;
-      ReadInJoyHelper.a("local_kd_tab_switch", Integer.valueOf(i));
-      ReadInJoyHelper.a(this.a.a, "local_kd_tab_switch", Boolean.valueOf(paramBoolean));
-      ReadInJoyHelper.a(this.a.a, "local_kd_tab_has_set", Boolean.valueOf(true));
-      if (!paramBoolean) {
-        break label147;
-      }
-      QQToast.a(this.a.getBaseContext(), 2, 2131439096, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131433554);
-      localQQAppInterface = this.a.a;
-      if (!paramBoolean) {
-        break label182;
-      }
-      paramCompoundButton = "0X8008236";
-      label108:
-      if (!paramBoolean) {
-        break label188;
-      }
+    if ((ReadInJoyChannelActivity.a(this.a)) || (ReadInJoyChannelActivity.b(this.a))) {
+      this.a.a.a(true);
     }
-    label147:
-    label182:
-    label188:
-    for (String str = "0X8008236";; str = "0X8008235")
+    for (;;)
     {
-      PublicAccountReportUtils.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
+      ThreadManager.executeOnSubThread(new les(this));
       return;
-      i = 0;
-      break;
-      QQToast.a(this.a.getBaseContext(), 2, 2131439097, 2000).a();
-      ReadInJoySettingActivity.a(this.a).setText(2131433553);
-      break label92;
-      paramCompoundButton = "0X8008235";
-      break label108;
+      this.a.a.a(false);
     }
   }
 }

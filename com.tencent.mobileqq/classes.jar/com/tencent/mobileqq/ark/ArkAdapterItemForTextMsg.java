@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark;
 
-import aari;
-import aarj;
-import aark;
+import aayc;
+import aayd;
+import aaye;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -15,6 +15,7 @@ import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
 import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
 import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkViewExtraInterface;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
 import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
 import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -37,18 +38,18 @@ public class ArkAdapterItemForTextMsg
   
   private void a(Context paramContext)
   {
-    new QQToastNotifier(paramContext).a(2131434464, paramContext.getResources().getDimensionPixelSize(2131558448), 1, 0);
+    new QQToastNotifier(paramContext).a(2131434480, paramContext.getResources().getDimensionPixelSize(2131558448), 1, 0);
   }
   
   private void a(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder)
   {
-    paramArkHorizontalListViewAdapter = new aark(this, paramArkHorizontalListViewAdapter);
+    paramArkHorizontalListViewAdapter = new aaye(this, paramArkHorizontalListViewAdapter);
     paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramArkHorizontalListViewAdapter);
   }
   
   public void attachArkView(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, int paramInt)
   {
-    paramItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842248);
+    paramItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842283);
     ArkAppView localArkAppView = paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
     localArkAppView.setBorderType(3);
     localArkAppView.setClipRadiusTop(15.0F);
@@ -92,12 +93,12 @@ public class ArkAdapterItemForTextMsg
       ((ArkAioContainerWrapper)localObject).setFixSize(BaseChatItemLayout.d, BaseChatItemLayout.d);
       ((ArkAioContainerWrapper)localObject).setMaxSize(BaseChatItemLayout.d, BaseChatItemLayout.d);
       ((ArkAioContainerWrapper)localObject).setMinSize(BaseChatItemLayout.d * 7 / 10, BaseChatItemLayout.d);
-      localObject = new aari(this, paramItemViewHolder, paramArkHorizontalListViewAdapter, (ArkAioContainerWrapper)localObject, paramInt);
+      localObject = new aayc(this, paramItemViewHolder, paramArkHorizontalListViewAdapter, (ArkAioContainerWrapper)localObject, paramInt);
       paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkMsgAppInfo.mArkContainer, paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
       localArkAppView.setOnTouchListener(paramArkHorizontalListViewAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
       localArkAppView.setOnLongClickListener(paramArkHorizontalListViewAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener);
       localArkAppView.setLoadCallback((ArkViewImplement.LoadCallback)localObject);
-      paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setCallback(new aarj(this));
+      paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout.setCallback(new aayd(this));
       return;
       label446:
       i = 100;
@@ -109,7 +110,7 @@ public class ArkAdapterItemForTextMsg
     }
   }
   
-  public void clickTail(ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, Context paramContext) {}
+  public void clickTail(ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkAppItemBubbleBuilder.Holder paramHolder, Context paramContext) {}
   
   public void destroyContainerByRemove()
   {

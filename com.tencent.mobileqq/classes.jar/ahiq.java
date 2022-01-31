@@ -1,23 +1,38 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahiq
   implements Runnable
 {
-  public ahiq(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, int paramInt) {}
+  public ahiq(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
   public void run()
   {
-    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, this.jdField_a_of_type_Int);
     if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "onDownloadProgress mGestureState=" + CaptureSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + " mVideoState=" + CaptureSoDownloadFragmentAllWaite.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + ",mFilterSoState=" + CaptureSoDownloadFragmentAllWaite.d(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + ",mQmcfState=" + CaptureSoDownloadFragmentAllWaite.e(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite));
+      QLog.d("ReceiptMessageDetailFragment", 2, "mSendFetchReadStatusRequestRunnable");
     }
-    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, "GestureDownloadProgress");
+    switch (ReceiptMessageDetailFragment.a(this.a).jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 3000: 
+      ReceiptMessageDetailFragment.e(this.a);
+      return;
+    case 0: 
+      ReceiptMessageDetailFragment.a(this.a).addObserver(ReceiptMessageDetailFragment.b(this.a), false);
+      ReceiptMessageDetailFragment.b(this.a, ReceiptMessageDetailFragment.a(this.a).a().b(ReceiptMessageDetailFragment.a(this.a), ReceiptMessageDetailFragment.a(this.a, ReceiptMessageDetailFragment.a(this.a).jdField_a_of_type_JavaLangString), ReceiptMessageDetailFragment.a(this.a), MessageUtils.a(ReceiptMessageDetailFragment.b(this.a))));
+      return;
+    }
+    ReceiptMessageDetailFragment.f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiq
  * JD-Core Version:    0.7.0.1
  */

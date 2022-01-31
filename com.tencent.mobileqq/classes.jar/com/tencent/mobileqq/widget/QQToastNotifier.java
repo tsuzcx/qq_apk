@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akwn;
-import akwo;
+import alee;
+import alef;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,7 +18,7 @@ public class QQToastNotifier
   public QQToastNotifier(Context paramContext)
   {
     this.jdField_a_of_type_AndroidWidgetToast = null;
-    this.jdField_a_of_type_AndroidOsHandler = new akwn(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new alee(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
   }
   
@@ -38,12 +38,12 @@ public class QQToastNotifier
   {
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    akwo localakwo = new akwo(null);
-    localakwo.jdField_a_of_type_Int = paramInt4;
-    localakwo.b = paramInt1;
-    localakwo.c = paramInt3;
-    localakwo.d = paramInt2;
-    localMessage.obj = localakwo;
+    alef localalef = new alef(null);
+    localalef.jdField_a_of_type_Int = paramInt4;
+    localalef.b = paramInt1;
+    localalef.c = paramInt3;
+    localalef.d = paramInt2;
+    localMessage.obj = localalef;
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
@@ -52,12 +52,12 @@ public class QQToastNotifier
   {
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    akwo localakwo = new akwo(null);
-    localakwo.jdField_a_of_type_Int = paramInt3;
-    localakwo.jdField_a_of_type_JavaLangString = paramString;
-    localakwo.c = paramInt2;
-    localakwo.d = paramInt1;
-    localMessage.obj = localakwo;
+    alef localalef = new alef(null);
+    localalef.jdField_a_of_type_Int = paramInt3;
+    localalef.jdField_a_of_type_JavaLangString = paramString;
+    localalef.c = paramInt2;
+    localalef.d = paramInt1;
+    localMessage.obj = localalef;
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }

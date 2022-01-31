@@ -1,24 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.Card;
 
-public class uhl
-  implements DialogInterface.OnClickListener
+class uhl
+  implements Runnable
 {
-  public uhl(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  uhl(uhk paramuhk, Card paramCard) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.l();
-    this.a.b(this.a.n);
-    if (VipUtils.a(this.a.app)) {}
-    for (paramDialogInterface = "4";; paramDialogInterface = "3")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.a(), paramDialogInterface, "1");
-      return;
+    if (!this.jdField_a_of_type_Uhk.a.a.isFinishing()) {
+      TroopRequestActivity.a(this.jdField_a_of_type_Uhk.a.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
     }
   }
 }

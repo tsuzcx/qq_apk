@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
 public class abwb
-  implements DialogInterface.OnKeyListener
+  implements View.OnTouchListener
 {
-  public abwb(DBFixDialogUI paramDBFixDialogUI) {}
+  public abwb(ClearEllipsisEditText paramClearEllipsisEditText) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return (paramInt == 84) || (paramInt == 4);
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
+      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
+      {
+        this.a.setText("");
+        this.a.setClearButtonVisible(false);
+        return true;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abwb
  * JD-Core Version:    0.7.0.1
  */

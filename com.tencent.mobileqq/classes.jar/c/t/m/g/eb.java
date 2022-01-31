@@ -1,42 +1,106 @@
 package c.t.m.g;
 
-import android.location.Location;
+import android.annotation.SuppressLint;
+import android.net.wifi.ScanResult;
+import android.os.Build.VERSION;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public final class eb
-  extends ed
 {
-  public final Location a;
-  public final long b;
-  public final int c;
-  private int d;
-  private int e;
+  private static List<String> a;
   
-  public eb(Location paramLocation, long paramLong, int paramInt1, int paramInt2, int paramInt3)
+  static
   {
-    this.a = paramLocation;
-    this.b = paramLong;
-    this.d = paramInt1;
-    this.c = paramInt2;
-    this.e = paramInt3;
+    ArrayList localArrayList = new ArrayList();
+    a = localArrayList;
+    localArrayList.add("mobile");
+    a.add("16wifi");
+    a.add("cmcc");
+    a.add("360wifi");
+    a.add("androidap");
+    a.add("htcphone");
+    a.add("xiaomi");
+    a.add("lenovo");
+    a.add("macbook");
   }
   
-  public eb(eb parameb)
+  @SuppressLint({"NewApi"})
+  public static void a(List<ScanResult> paramList)
   {
-    if (parameb.a == null) {}
-    for (Location localLocation = null;; localLocation = new Location(parameb.a))
+    HashSet localHashSet = new HashSet();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      this.a = localLocation;
-      this.b = parameb.b;
-      this.d = parameb.d;
-      this.c = parameb.c;
-      this.e = parameb.e;
+      ScanResult localScanResult = (ScanResult)localIterator.next();
+      String str = localScanResult.BSSID;
+      if ((str == null) || (str.equals("000000000000")) || (str.equals("00-00-00-00-00-00")) || (str.equals("00:00:00:00:00:00")) || (localScanResult.level >= 0)) {
+        localIterator.remove();
+      } else if (localHashSet.contains(str)) {
+        localIterator.remove();
+      } else {
+        localHashSet.add(str);
+      }
+    }
+    ev.a("WifiBlackList", "after step1 filter : " + paramList.size());
+    try
+    {
+      b(paramList);
+      ev.a("WifiBlackList", "after step2 filter : " + paramList.size());
       return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        ev.b("WifiBlackList", "strict filter throw exception");
+      }
     }
   }
   
-  public final String toString()
+  @SuppressLint({"NewApi"})
+  private static void b(List<ScanResult> paramList)
   {
-    return "TxGpsInfo [location=" + this.a + ", gpsTime=" + this.b + ", visbleSatelliteNum=" + this.d + ", usedSatelliteNum=" + this.c + ", gpsStatus=" + this.e + "]";
+    ArrayList localArrayList2 = null;
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    Object localObject = localArrayList2;
+    if (Build.VERSION.SDK_INT >= 21) {}
+    try
+    {
+      localObject = ((ScanResult)paramList.get(0)).getClass().getField("wifiSsid");
+      ((Field)localObject).setAccessible(true);
+      localArrayList2 = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        ScanResult localScanResult = (ScanResult)paramList.next();
+        if ((Build.VERSION.SDK_INT >= 21) && (localObject != null)) {
+          try
+          {
+            if (((Field)localObject).get(localScanResult) == null)
+            {
+              paramList.remove();
+              localArrayList2.add(localScanResult);
+            }
+          }
+          catch (Exception localException) {}
+        }
+      }
+      localArrayList2.size();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        ArrayList localArrayList1 = localArrayList2;
+      }
+    }
   }
 }
 

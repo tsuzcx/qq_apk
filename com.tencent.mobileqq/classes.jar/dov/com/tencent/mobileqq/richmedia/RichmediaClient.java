@@ -6,9 +6,9 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import aoku;
-import aokv;
-import aokw;
+import aotn;
+import aoto;
+import aotp;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RichmediaClient
@@ -18,7 +18,7 @@ public class RichmediaClient
   ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public Messenger a;
-  aokw jdField_a_of_type_Aokw;
+  aotp jdField_a_of_type_Aotp;
   public ICallBack a;
   VideoCompoundController jdField_a_of_type_DovComTencentMobileqqRichmediaVideoCompoundController;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
@@ -29,10 +29,10 @@ public class RichmediaClient
     LOG.a("PTV.RichmediaClient", "RichmediaClient");
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("RichmediaClientWorkerThread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Aokw = new aokw(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Aokw);
-    this.jdField_a_of_type_AndroidContentServiceConnection = new aoku(this);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaICallBack = new aokv(this);
+    this.jdField_a_of_type_Aotp = new aotp(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Aotp);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new aotn(this);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaICallBack = new aoto(this);
   }
   
   public static RichmediaClient a()

@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryByDateFragment;
-import com.tencent.mobileqq.widget.datepicker.DatePickerView;
-import java.util.ArrayList;
+import android.content.Context;
+import android.widget.ScrollView;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class wgm
-  implements Runnable
+public class wgm
+  extends ScrollView
 {
-  wgm(wgl paramwgl, ArrayList paramArrayList) {}
-  
-  public void run()
+  public wgm(TroopChatPie paramTroopChatPie, Context paramContext)
   {
-    this.jdField_a_of_type_Wgl.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.a.a(this.jdField_a_of_type_Wgl.jdField_a_of_type_Int, this.jdField_a_of_type_Wgl.b, this.jdField_a_of_type_JavaUtilArrayList);
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
   }
 }
 

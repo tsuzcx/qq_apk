@@ -22,6 +22,8 @@ public class PraiseInfo
   public String c;
   public String d;
   public String e;
+  public String f;
+  public String g;
   
   public PraiseInfo(int paramInt)
   {
@@ -85,17 +87,21 @@ public class PraiseInfo
   
   private static String a(String paramString)
   {
-    try
-    {
-      paramString = FileUtils.b(new File(paramString));
-      return paramString;
+    File localFile = new File(paramString);
+    if (!localFile.exists()) {
+      QLog.e("PraiseInfo", 1, paramString + " not exist!");
     }
-    catch (OutOfMemoryError paramString)
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PraiseInfo", 2, paramString.getMessage());
+      return null;
+      try
+      {
+        paramString = FileUtils.b(localFile);
+        return paramString;
       }
-    }
+      catch (OutOfMemoryError paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PraiseInfo", 2, paramString.getMessage());
     return null;
   }
 }

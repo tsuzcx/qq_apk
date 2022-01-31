@@ -1,20 +1,50 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.capture.text.MidNightTextItem;
 
-public final class anwt
-  implements Animation.AnimationListener
+public class anwt
 {
-  public anwt(View paramView) {}
+  public int a;
+  public String a;
+  public int b = 0;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private anwt(MidNightTextItem paramMidNightTextItem)
   {
-    this.a.setAnimation(null);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = null;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (anwt)paramObject;
+      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
+        break;
+      }
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break label74;
+      }
+    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+    label74:
+    while (paramObject.jdField_a_of_type_JavaLangString != null) {
+      return false;
+    }
+    return true;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int hashCode()
+  {
+    int j = this.jdField_a_of_type_Int;
+    int k = this.b;
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
+    }
+  }
 }
 
 

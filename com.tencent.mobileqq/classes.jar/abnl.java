@@ -1,20 +1,22 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
 
 public class abnl
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public abnl(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abnl(ARGridMapViewDialog paramARGridMapViewDialog) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(paramView)) {
-      this.a.a(paramView);
-    }
+    this.a.a.setVisibility(8);
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

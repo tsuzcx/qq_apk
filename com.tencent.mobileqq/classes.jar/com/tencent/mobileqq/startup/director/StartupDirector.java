@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.startup.director;
 
-import aiem;
-import aien;
-import aieo;
+import aijg;
+import aijh;
+import aiji;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
@@ -463,7 +463,7 @@ public class StartupDirector
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     if (!paramBoolean1) {
       if (InjectUtils.sSpaceNoEnough) {
-        localTextView.setText(2131433082);
+        localTextView.setText(2131433096);
       }
     }
     for (;;)
@@ -471,9 +471,9 @@ public class StartupDirector
       paramAppActivity.setContentView(localTextView);
       QLog.flushLog();
       InjectUtils.uploadInjectFailure(paramAppActivity, "SuicideFailed", Integer.toString(jdField_b_of_type_Int));
-      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new aieo(this, paramAppActivity), 8000L);
+      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new aiji(this, paramAppActivity), 8000L);
       return;
-      localTextView.setText(2131433081);
+      localTextView.setText(2131433095);
       continue;
       localTextView.setText("程序启动失败，请稍候重试.");
     }
@@ -517,8 +517,8 @@ public class StartupDirector
     {
       long l6 = this.jdField_a_of_type_Long;
       long l7 = this.jdField_c_of_type_Long;
-      ThreadManager.getSubThreadHandler().postDelayed(new aiem(this, l7, l6, l2, l1 - l3, l4, l1 - l5), 10000L);
-      ThreadManager.getSubThreadHandler().postDelayed(new aien(this), 3000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new aijg(this, l7, l6, l2, l1 - l3, l4, l1 - l5), 10000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new aijh(this), 3000L);
       ThreadManager.getSubThreadHandler().postDelayed(Step.AmStepFactory.b(28, this, null), 5000L);
       BaseApplicationImpl.sDirector = null;
       return;
@@ -669,7 +669,7 @@ public class StartupDirector
           }
           else if ((this.jdField_d_of_type_Int == 201) && (jdField_a_of_type_Int == 2) && (paramIntent != null))
           {
-            i1 = paramIntent.getIntExtra("k_start_mode", 2);
+            i1 = paramIntent.getIntExtra("k_start_mode", 0);
             QLog.i("AutoMonitor", 1, "onActivityCreate" + this.jdField_d_of_type_Int + ", " + i1);
             if ((i1 == 3) || (i1 == 0) || (i1 == 1)) {
               Step.AmStepFactory.b(8, this, null).c();

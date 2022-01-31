@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class aded
-  implements View.OnClickListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public aded(FileBrowserPresenterBase paramFileBrowserPresenterBase) {}
+  public aded(FileVideoManager paramFileVideoManager, long paramLong, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
   
-  public void onClick(View paramView)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    paramView = this.a.a.a();
-    if (paramView != null) {
-      paramView.a();
-    }
+    System.currentTimeMillis();
+    long l = this.jdField_a_of_type_Long;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    System.currentTimeMillis();
+    long l = this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback.b();
   }
 }
 

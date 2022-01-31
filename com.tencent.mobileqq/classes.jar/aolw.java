@@ -1,13 +1,13 @@
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
+import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
 
-public class aolw
+class aolw
   implements Runnable
 {
-  public aolw(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite) {}
+  aolw(aolv paramaolv) {}
   
   public void run()
   {
-    this.a.a();
+    PoiListLayout.a(this.a.a, 0);
   }
 }
 

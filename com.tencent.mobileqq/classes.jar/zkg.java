@@ -1,11 +1,23 @@
-import java.util.List;
+import com.tencent.mobileqq.app.Frame;
+import com.tencent.mobileqq.app.FrameFragment;
+import com.tencent.mobileqq.widget.QQTabHost;
+import com.tencent.mobileqq.widget.QQTabHost.OnTabSelectionListener;
 
 public class zkg
+  implements QQTabHost.OnTabSelectionListener
 {
-  public int a;
-  public long a;
-  public List a;
-  public boolean a;
+  public zkg(FrameFragment paramFrameFragment) {}
+  
+  public void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost)
+  {
+    if (paramInt1 == paramInt2)
+    {
+      paramQQTabHost = this.a.b();
+      if (paramQQTabHost != null) {
+        paramQQTabHost.e();
+      }
+    }
+  }
 }
 
 

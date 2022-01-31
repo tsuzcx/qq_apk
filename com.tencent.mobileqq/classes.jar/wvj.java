@@ -1,19 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.mobileqq.activity.main.LebaTabRedTouch.RefreshCallback;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 
 public class wvj
-  implements ActionSheet.OnButtonClickListener
+  implements LebaTabRedTouch.RefreshCallback
 {
-  public wvj(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
+  public wvj(MainAssistObserver paramMainAssistObserver) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, "停用手机通讯录匹配", "停用后，你将无法使用QQ跟手机通讯录中的朋友联系。服务器上属于你的通讯录加密数据也将被删除。", "停用", "取消", new wvk(this), new wvl(this)).show();
+    boolean bool = true;
+    Object localObject = this.a.a.obtainMessage(1);
+    ((Message)localObject).obj = paramRedTypeInfo;
+    this.a.a.sendMessage((Message)localObject);
+    localObject = ReadinjoySPEventReport.a();
+    if (paramRedTypeInfo != null) {}
+    for (;;)
+    {
+      ((ReadinjoySPEventReport)localObject).b(bool);
+      return;
+      bool = false;
+    }
   }
 }
 

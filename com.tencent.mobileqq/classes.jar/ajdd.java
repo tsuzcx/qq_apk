@@ -1,29 +1,18 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.DecelerateInterpolator;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class ajdd
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  public ajdd(TroopAioTips paramTroopAioTips) {}
+  public ajdd(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt1, int paramInt2, boolean paramBoolean) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
-    }
-    if (paramFloat2 < -10.0F) {}
-    for (;;)
-    {
-      return false;
-      if (paramFloat2 <= 10.0F) {}
-    }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a, "scrollY", new int[] { this.jdField_a_of_type_Int }).setDuration(this.b);
+    localObjectAnimator.setInterpolator(new DecelerateInterpolator());
+    localObjectAnimator.addListener(new ajde(this));
+    localObjectAnimator.start();
   }
 }
 

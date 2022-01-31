@@ -10,7 +10,7 @@ import com.tencent.mobileqq.statistics.DcReportUtil;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import jes;
+import jgu;
 import mqq.app.MobileQQ;
 
 public class GMemoryMonitor
@@ -96,7 +96,7 @@ public class GMemoryMonitor
     {
       if (this.jdField_a_of_type_AndroidContentComponentCallbacks == null)
       {
-        this.jdField_a_of_type_AndroidContentComponentCallbacks = new jes(this);
+        this.jdField_a_of_type_AndroidContentComponentCallbacks = new jgu(this);
         BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.jdField_a_of_type_AndroidContentComponentCallbacks);
       }
       return;
@@ -109,7 +109,7 @@ public class GMemoryMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.GMemoryMonitor
  * JD-Core Version:    0.7.0.1
  */

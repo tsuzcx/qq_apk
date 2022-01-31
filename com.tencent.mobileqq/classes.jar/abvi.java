@@ -1,20 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
 
 public final class abvi
   implements Parcelable.Creator
 {
-  public Setting a(Parcel paramParcel)
+  public CardMobileInfo a(Parcel paramParcel)
   {
-    Setting localSetting = new Setting();
-    localSetting.readFromParcel(paramParcel);
-    return localSetting;
+    return new CardMobileInfo(paramParcel);
   }
   
-  public Setting[] a(int paramInt)
+  public CardMobileInfo[] a(int paramInt)
   {
-    return new Setting[paramInt];
+    return new CardMobileInfo[paramInt];
   }
 }
 

@@ -33,7 +33,7 @@ class CaiShenActivity$10
         {
           if (CaiShenActivity.access$800(this.this$0) == null)
           {
-            CaiShenActivity.access$802(this.this$0, DialogUtil.a(this.this$0, 230, this.this$0.getResources().getString(2131438753), this.this$0.getResources().getString(2131438754), this.this$0.getResources().getString(2131438750), "", null, new CaiShenActivity.10.1(this)));
+            CaiShenActivity.access$802(this.this$0, DialogUtil.a(this.this$0, 230, this.this$0.getResources().getString(2131438776), this.this$0.getResources().getString(2131438777), this.this$0.getResources().getString(2131438773), "", null, new CaiShenActivity.10.1(this)));
             CaiShenActivity.access$800(this.this$0).setOnDismissListener(new CaiShenActivity.10.2(this));
           }
           CaiShenActivity.access$800(this.this$0).show();

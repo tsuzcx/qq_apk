@@ -1,21 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.EmotionJsonDownloadListener;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.GetAppPathByActionResult;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import com.tencent.mobileqq.data.RecommendCommonMessage.IGetAppInfosByContextCallback;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class acdc
-  extends EmotionJsonDownloadListener
+public final class acdc
+  implements ArkLocalAppMgr.IGetAppPathByActionCallback
 {
-  public acdc(EmojiManager paramEmojiManager, String paramString, Object paramObject) {}
+  public acdc(String paramString1, boolean paramBoolean, String paramString2) {}
   
-  public void a(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
+  public void a(Object paramObject, ArrayList paramArrayList)
   {
-    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    ArrayList localArrayList = new ArrayList();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      ArkLocalAppMgr.GetAppPathByActionResult localGetAppPathByActionResult = (ArkLocalAppMgr.GetAppPathByActionResult)paramArrayList.next();
+      if ((localGetAppPathByActionResult.a == 0) && (localGetAppPathByActionResult.c != null))
       {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        return;
+        RecommendCommonMessage.ArkMsgAppInfo localArkMsgAppInfo = new RecommendCommonMessage.ArkMsgAppInfo();
+        localArkMsgAppInfo.appName = localGetAppPathByActionResult.b;
+        localArkMsgAppInfo.appPath = localGetAppPathByActionResult.c;
+        localArkMsgAppInfo.appView = localGetAppPathByActionResult.d;
+        localArkMsgAppInfo.keyword = this.jdField_a_of_type_JavaLangString;
+        localArkMsgAppInfo.equalInputText = this.jdField_a_of_type_Boolean;
+        localArkMsgAppInfo.meta = this.b;
+        localArrayList.add(localArkMsgAppInfo);
       }
+    }
+    if ((paramObject != null) && ((paramObject instanceof RecommendCommonMessage.IGetAppInfosByContextCallback))) {
+      ((RecommendCommonMessage.IGetAppInfosByContextCallback)paramObject).a(localArrayList);
     }
   }
 }

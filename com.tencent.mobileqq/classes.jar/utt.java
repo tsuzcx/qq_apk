@@ -1,19 +1,19 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.RotateAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
 
-public final class utt
-  implements Runnable
+class utt
+  implements Action.OnActionEndListener
 {
-  public utt(Context paramContext, int paramInt, String paramString) {}
+  utt(utr paramutr) {}
   
-  public void run()
+  public void a()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloItemBuilder", 2, "fav action number is 144");
-    }
+    RotateAction localRotateAction = new RotateAction(3000, 360, 0);
+    localRotateAction.a = true;
+    this.a.a.e.a(new Action[] { localRotateAction });
   }
 }
 

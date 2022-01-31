@@ -40,7 +40,7 @@ public class EditCommonParam
       for (;;)
       {
         label87:
-        if ((localObject3 != null) && (!TextUtils.isEmpty(((QIMFilterCategoryItem)localObject3).b)) && (!((QIMFilterCategoryItem)localObject3).b())) {}
+        if ((localObject3 != null) && (!TextUtils.isEmpty(((QIMFilterCategoryItem)localObject3).b)) && (!((QIMFilterCategoryItem)localObject3).c())) {}
         try
         {
           ((JSONObject)localObject1).put(PublishStoryVideoRequest.w, ((QIMFilterCategoryItem)localObject3).b);

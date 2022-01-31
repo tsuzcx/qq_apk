@@ -41,10 +41,10 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
-import vbt;
-import vbv;
-import vbw;
-import vbx;
+import vgv;
+import vgx;
+import vgy;
+import vgz;
 
 public class MedalNewsItemBuilder
   extends AbstractChatItemBuilder
@@ -62,9 +62,11 @@ public class MedalNewsItemBuilder
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Int = ((int)paramContext.getResources().getDimension(2131559448));
     this.jdField_b_of_type_Int = ((int)paramContext.getResources().getDimension(2131559465));
+    paramQQAppInterface = new int[] { 16842919 };
+    paramBaseAdapter = new int[0];
     int i = this.d;
     int j = this.c;
-    this.jdField_a_of_type_AndroidContentResColorStateList = new ColorStateList(new int[][] { { 16842919 }, new int[0] }, new int[] { i, j });
+    this.jdField_a_of_type_AndroidContentResColorStateList = new ColorStateList(new int[][] { paramQQAppInterface, paramBaseAdapter }, new int[] { i, j });
   }
   
   public static int a(String paramString)
@@ -95,26 +97,26 @@ public class MedalNewsItemBuilder
     return i;
   }
   
-  private View a(View paramView, vbx paramvbx)
+  private View a(View paramView, vgz paramvgz)
   {
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968751, null);
-      paramvbx.c = ((TextView)paramView.findViewById(2131362754));
-      paramvbx.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362719));
-      paramvbx.d = ((TextView)paramView.findViewById(2131363579));
-      paramvbx.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363378));
-      paramvbx.e = ((TextView)paramView.findViewById(2131362728));
-      paramvbx.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363403));
-      paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131363577));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968754, null);
+      paramvgz.c = ((TextView)paramView.findViewById(2131362759));
+      paramvgz.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362724));
+      paramvgz.d = ((TextView)paramView.findViewById(2131363598));
+      paramvgz.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363397));
+      paramvgz.e = ((TextView)paramView.findViewById(2131362733));
+      paramvgz.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363422));
+      paramvgz.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131363596));
     }
     try
     {
-      paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageResource(2130842722);
-      paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(AIOUtils.a(3.0F, paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getResources()));
-      paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressMask(true);
-      Object localObject = paramvbx.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawables();
+      paramvgz.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageResource(2130842757);
+      paramvgz.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(AIOUtils.a(3.0F, paramvgz.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getResources()));
+      paramvgz.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressMask(true);
+      Object localObject = paramvgz.jdField_b_of_type_AndroidWidgetTextView.getCompoundDrawables();
       localView = localObject[0];
       localObject = localObject[2];
       localView.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
@@ -122,14 +124,14 @@ public class MedalNewsItemBuilder
       localView = paramView;
       if (jdField_b_of_type_Boolean)
       {
-        paramvbx.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
+        paramvgz.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
         localView = paramView;
       }
       if (jdField_b_of_type_Boolean)
       {
         localView.setContentDescription(null);
-        paramvbx.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramvbx.jdField_b_of_type_JavaLangStringBuilder.length(), "");
-        paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setContentDescription(null);
+        paramvgz.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramvgz.jdField_b_of_type_JavaLangStringBuilder.length(), "");
+        paramvgz.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setContentDescription(null);
       }
       return localView;
     }
@@ -140,7 +142,7 @@ public class MedalNewsItemBuilder
         try
         {
           System.gc();
-          paramvbx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageResource(2130842722);
+          paramvgz.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageResource(2130842757);
         }
         catch (Throwable localThrowable) {}
       }
@@ -256,7 +258,7 @@ public class MedalNewsItemBuilder
       localIntent.putExtra("url", localMedalWallMng.a(paramBoolean, paramString, i));
       this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
       if (paramBoolean) {
-        ThreadManager.post(new vbw(this), 0, null, false);
+        ThreadManager.post(new vgy(this), 0, null, false);
       }
       return;
     }
@@ -265,7 +267,7 @@ public class MedalNewsItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramOnLongClickAndTouchListener = (MessageForMedalNews)paramMessageRecord;
-    paramLinearLayout = (vbx)paramViewHolder;
+    paramLinearLayout = (vgz)paramViewHolder;
     paramView = a(paramView, paramLinearLayout);
     paramLinearLayout.jdField_a_of_type_Long = paramOnLongClickAndTouchListener.uniseq;
     paramLinearLayout.jdField_a_of_type_JavaLangString = paramOnLongClickAndTouchListener.frienduin;
@@ -319,7 +321,7 @@ public class MedalNewsItemBuilder
     if (j != 0)
     {
       localObject = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, 6);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131439121, new Object[] { localObject });
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131439148, new Object[] { localObject });
       if (!paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView.getText().equals(localObject)) {
         paramLinearLayout.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       }
@@ -371,7 +373,7 @@ public class MedalNewsItemBuilder
     switch (n)
     {
     default: 
-      j = 2130842734;
+      j = 2130842769;
       i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493410);
       label512:
       this.jdField_a_of_type_AndroidGraphicsColorFilter = new PorterDuffColorFilter(i, PorterDuff.Mode.SRC_IN);
@@ -390,7 +392,7 @@ public class MedalNewsItemBuilder
         paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(n));
         paramLinearLayout.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(paramLinearLayout);
-        paramLinearLayout.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setOnClickListener(new vbt(this, paramOnLongClickAndTouchListener));
+        paramLinearLayout.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setOnClickListener(new vgv(this, paramOnLongClickAndTouchListener));
         if (paramOnLongClickAndTouchListener.myLevel != 0) {
           break label944;
         }
@@ -403,11 +405,11 @@ public class MedalNewsItemBuilder
       if (paramLinearLayout.e.getVisibility() != i) {
         paramLinearLayout.e.setVisibility(i);
       }
-      paramMessageRecord = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131439122);
+      paramMessageRecord = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131439149);
       if (!paramMessageRecord.equalsIgnoreCase(paramLinearLayout.e.getText().toString()))
       {
         paramMessageRecord = new SpannableString(paramMessageRecord);
-        paramMessageRecord.setSpan(new DatingCommentTextView.TouchableSpan(new vbv(this), this.jdField_a_of_type_AndroidContentResColorStateList), 11, 14, 33);
+        paramMessageRecord.setSpan(new DatingCommentTextView.TouchableSpan(new vgx(this), this.jdField_a_of_type_AndroidContentResColorStateList), 11, 14, 33);
         paramLinearLayout.e.setText(paramMessageRecord);
         paramLinearLayout.e.setMovementMethod(LinkMovementMethod.getInstance());
       }
@@ -422,10 +424,10 @@ public class MedalNewsItemBuilder
       break;
       paramLinearLayout.c.setTextSize(1, 15.0F);
       break label378;
-      j = 2130842732;
+      j = 2130842767;
       i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493412);
       break label512;
-      j = 2130842733;
+      j = 2130842768;
       i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493411);
       break label512;
       paramLinearLayout.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -435,7 +437,7 @@ public class MedalNewsItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new vbx(this);
+    return new vgz(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

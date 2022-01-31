@@ -1,30 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.app.Activity;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.QQApiPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class aeev
   implements Runnable
 {
-  public aeev(CUOpenCardGuideMng.CUOpenCardClickableSpan paramCUOpenCardClickableSpan) {}
+  public aeev(QQApiPlugin paramQQApiPlugin, HashMap paramHashMap, String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, int paramInt1, String paramString11, int paramInt2, Activity paramActivity) {}
   
   public void run()
   {
-    String str;
-    if (this.a.a == 1) {
-      str = "0X8008124";
+    Object localObject2 = HttpUtil.a(this.jdField_a_of_type_JavaUtilHashMap);
+    Object localObject1 = (String)((HashMap)localObject2).get("share_url");
+    if (localObject1 == null) {
+      localObject1 = this.jdField_a_of_type_JavaLangString;
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(str)) {
-        ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      String str1 = (String)((HashMap)localObject2).get("image_url");
+      if (str1 == null) {
+        str1 = this.jdField_b_of_type_JavaLangString;
       }
-      return;
-      if (this.a.a == 2) {
-        str = "0X8008126";
-      } else if ((this.a.a == 3) || (this.a.a == 4)) {
-        str = "0X800813E";
-      } else {
-        str = null;
+      for (;;)
+      {
+        String str2 = (String)((HashMap)localObject2).get("flash_url");
+        localObject2 = str2;
+        if (str2 == null) {
+          localObject2 = this.c;
+        }
+        localObject1 = new aeew(this, (String)localObject1, str1, (String)localObject2);
+        if (this.jdField_a_of_type_AndroidAppActivity.getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity"))
+        {
+          this.jdField_a_of_type_AndroidAppActivity.runOnUiThread((Runnable)localObject1);
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a().runOnUiThread((Runnable)localObject1);
+        return;
       }
     }
   }

@@ -1,33 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.Map;
 
-public class sar
-  implements ActionSheet.OnButtonClickListener
+public final class sar
+  implements DialogInterface.OnClickListener
 {
-  public sar(ChatHistoryForC2C paramChatHistoryForC2C, ActionSheet paramActionSheet) {}
+  public sar(Map paramMap, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, String paramString, boolean paramBoolean1, boolean paramBoolean2, ChatActivityUtils.StartVideoListener paramStartVideoListener, int paramInt2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaUtilMap.put("PstnLevel", "LEVEL2");
+    this.jdField_a_of_type_JavaUtilMap.put("ipPstnEnterType", String.valueOf(0));
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_JavaUtilMap);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (this.jdField_b_of_type_Int == 6) {}
+    for (paramInt = 1;; paramInt = 4)
     {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", paramInt, 0, "", "", "", "");
       return;
-    }
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C, 230);
-    localQQCustomDialog.setTitle("温馨提示");
-    if (paramInt == 0) {}
-    for (paramView = "删除本地的聊天记录和对应的云端聊天记录，无法恢复";; paramView = "删除本地聊天记录，再次进入聊天记录可从云端重新获取聊天记录")
-    {
-      localQQCustomDialog.setMessage(paramView);
-      localQQCustomDialog.setNegativeButton(2131433015, new sas(this));
-      localQQCustomDialog.setPositiveButton(2131433016, new sat(this, paramInt));
-      localQQCustomDialog.show();
-      break;
     }
   }
 }

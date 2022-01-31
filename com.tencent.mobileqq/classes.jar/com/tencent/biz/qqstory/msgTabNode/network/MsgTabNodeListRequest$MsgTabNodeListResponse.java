@@ -18,6 +18,7 @@ public class MsgTabNodeListRequest$MsgTabNodeListResponse
   public String a;
   public ArrayList a;
   public boolean a;
+  public boolean b;
   public String c;
   
   public MsgTabNodeListRequest$MsgTabNodeListResponse(qqstory_service.RspMsgTabNodeList paramRspMsgTabNodeList)
@@ -25,16 +26,20 @@ public class MsgTabNodeListRequest$MsgTabNodeListResponse
     super(paramRspMsgTabNodeList.result);
     this.jdField_a_of_type_JavaLangString = paramRspMsgTabNodeList.list_seq.get().toStringUtf8();
     this.c = paramRspMsgTabNodeList.next_cookie.get().toStringUtf8();
-    boolean bool1 = bool2;
-    if (paramRspMsgTabNodeList.is_end.has()) {
-      if (paramRspMsgTabNodeList.is_end.get() != 1) {
-        break label148;
-      }
-    }
-    label148:
-    for (bool1 = bool2;; bool1 = false)
+    if (paramRspMsgTabNodeList.is_animate.get() > 0) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
       this.jdField_a_of_type_Boolean = bool1;
+      if (paramRspMsgTabNodeList.is_end.has())
+      {
+        bool1 = bool2;
+        if (paramRspMsgTabNodeList.is_end.get() != 1) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      this.b = bool1;
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRspMsgTabNodeList.node_list.size());
       paramRspMsgTabNodeList = paramRspMsgTabNodeList.node_list.get().iterator();
       while (paramRspMsgTabNodeList.hasNext())
@@ -49,7 +54,7 @@ public class MsgTabNodeListRequest$MsgTabNodeListResponse
   
   public String toString()
   {
-    return "MsgTabNodeListResponse{cookie='" + this.c + '\'' + ", seq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isEnd=" + this.jdField_a_of_type_Boolean + ", nodeList=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    return "MsgTabNodeListResponse{shouldAnimate=" + this.jdField_a_of_type_Boolean + ", seq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cookie='" + this.c + '\'' + ", isEnd=" + this.b + ", nodeList=" + this.jdField_a_of_type_JavaUtilArrayList + "} " + super.toString();
   }
 }
 

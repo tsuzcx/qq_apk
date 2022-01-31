@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import alll;
+import alsu;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -29,7 +29,7 @@ public class PhotoWallViewForQiDianProfile
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   public PhotoHorizontalScrollView a;
   public PhotoWallViewForQiDianProfile.PhotoWallCallback a;
-  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new alll(this);
+  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new alsu(this);
   public GridView a;
   public List a;
   public int b;
@@ -95,12 +95,12 @@ public class PhotoWallViewForQiDianProfile
     }
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969184, this, true);
-    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365532));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969182, this, true);
+    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365537));
     this.jdField_a_of_type_ComTencentWidgetGridView.setClickable(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountPhotoHorizontalScrollView = ((PhotoHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365531));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365530));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365529);
+    this.jdField_a_of_type_ComTencentBizPubaccountPhotoHorizontalScrollView = ((PhotoHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365536));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365535));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365534);
     this.c = getResources().getDimensionPixelSize(2131559175);
     this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131559173);
     this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131559174);

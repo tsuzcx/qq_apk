@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akwe;
-import akwf;
+import aldv;
+import aldw;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import com.tencent.mapsdk.raster.model.GeoPoint;
 import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mapsdk.rastercore.d.b;
-import com.tencent.mapsdk.rastercore.d.e;
+import com.tencent.mapsdk.rastercore.d.f;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.map.MapView;
@@ -25,7 +25,7 @@ public class QQMapView
   public Handler a;
   public GeoPoint a;
   public QQMapView.QQMapViewObserver a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new akwf(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new aldw(this);
   public Thread a;
   boolean jdField_a_of_type_Boolean = false;
   public boolean b = false;
@@ -37,7 +37,7 @@ public class QQMapView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler = new akwe(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aldv(this);
     this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_JavaLangRunnable, "qqmapview_calculate_position", 8);
     this.jdField_a_of_type_JavaLangThread.setPriority(10);
     this.jdField_a_of_type_JavaLangThread.start();
@@ -128,7 +128,7 @@ public class QQMapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQMapView
  * JD-Core Version:    0.7.0.1
  */

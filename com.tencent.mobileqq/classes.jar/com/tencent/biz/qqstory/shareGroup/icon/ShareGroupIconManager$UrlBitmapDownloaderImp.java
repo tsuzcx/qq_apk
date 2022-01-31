@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
-import nrv;
+import nwl;
 
 public class ShareGroupIconManager$UrlBitmapDownloaderImp
   implements UrlBitmapDownloader
@@ -42,7 +42,7 @@ public class ShareGroupIconManager$UrlBitmapDownloaderImp
     {
       URL localURL = new URL(paramString);
       localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setURLDrawableListener(new nrv(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
+      ((URLDrawable)localObject).setURLDrawableListener(new nwl(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
       ((URLDrawable)localObject).setAutoDownload(true);
       if (((URLDrawable)localObject).getStatus() != 1) {
         break label177;

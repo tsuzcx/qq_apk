@@ -1,24 +1,18 @@
-public class aigk
-  extends aigj
+import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
+import com.tencent.sveffects.Reporter;
+import com.tencent.sveffects.SdkContext;
+
+public final class aigk
+  implements AVGestureWrapper.AVUploadReport
 {
-  public long c = 0L;
-  boolean e = false;
-  public int j = 80;
-  public int k = 70;
-  public int l = 5;
-  public int m;
-  
-  public aigk(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void avGestureUploadReport(String paramString1, String paramString2)
   {
-    super(paramFloat1, paramInt1, paramInt2, paramFloat2, paramInt3, paramInt4, paramInt5, paramInt6, false);
-    this.l = (paramInt1 % 1000);
-    this.k = (paramInt1 / 1000 % 1000);
-    this.j = (paramInt1 / 1000 / 1000 % 1000);
+    SdkContext.a().a().a("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aigk
  * JD-Core Version:    0.7.0.1
  */

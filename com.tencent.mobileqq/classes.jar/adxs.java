@@ -1,29 +1,42 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.mobileqq.hiboom.RichTextPanel;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class adxs
-  extends BroadcastReceiver
+  extends PagerAdapter
 {
-  public adxs(UiApiPlugin paramUiApiPlugin) {}
+  public adxs(RichTextPanel paramRichTextPanel) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
-    {
-      Iterator localIterator = UiApiPlugin.a.iterator();
-      while (localIterator.hasNext())
-      {
-        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
-        if (localUiApiPlugin != null) {
-          localUiApiPlugin.b(paramContext, paramIntent);
-        }
-      }
+    paramViewGroup.removeView(RichTextPanel.a(this.a)[paramInt]);
+  }
+  
+  public int getCount()
+  {
+    return RichTextPanel.a().length;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
     }
+    ViewParent localViewParent = RichTextPanel.a(this.a).getParent();
+    if (localViewParent != null) {
+      ((ViewGroup)localViewParent).removeView(RichTextPanel.a(this.a)[paramInt]);
+    }
+    paramViewGroup.addView(RichTextPanel.a(this.a)[paramInt]);
+    return RichTextPanel.a(this.a)[paramInt];
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

@@ -16,6 +16,7 @@ public final class ProfileQzmallDeco
   static QzmallFacade cache_stFacade = new QzmallFacade();
   static QzmallFeedSkin cache_stFeedSkin;
   static QzmallFloat cache_stFloat;
+  static ActYellowDiamond cache_stYellowDiamond = new ActYellowDiamond();
   public QzmallAvatar stAvatar;
   public QzmallCustomBanner stCustomBanner;
   public QzmallCustomNavi stCustomNavi;
@@ -25,6 +26,7 @@ public final class ProfileQzmallDeco
   public QzmallFacade stFacade;
   public QzmallFeedSkin stFeedSkin;
   public QzmallFloat stFloat;
+  public ActYellowDiamond stYellowDiamond;
   
   static
   {
@@ -37,7 +39,7 @@ public final class ProfileQzmallDeco
   
   public ProfileQzmallDeco() {}
   
-  public ProfileQzmallDeco(QzmallCustomNavi paramQzmallCustomNavi, QzmallCustomPraise paramQzmallCustomPraise, QzmallCustomPlayer paramQzmallCustomPlayer, QzmallCustomBanner paramQzmallCustomBanner, QzmallAvatar paramQzmallAvatar, QzmallFloat paramQzmallFloat, QzmallFeedSkin paramQzmallFeedSkin, QzmallCustomVip paramQzmallCustomVip, QzmallFacade paramQzmallFacade)
+  public ProfileQzmallDeco(QzmallCustomNavi paramQzmallCustomNavi, QzmallCustomPraise paramQzmallCustomPraise, QzmallCustomPlayer paramQzmallCustomPlayer, QzmallCustomBanner paramQzmallCustomBanner, QzmallAvatar paramQzmallAvatar, QzmallFloat paramQzmallFloat, QzmallFeedSkin paramQzmallFeedSkin, QzmallCustomVip paramQzmallCustomVip, QzmallFacade paramQzmallFacade, ActYellowDiamond paramActYellowDiamond)
   {
     this.stCustomNavi = paramQzmallCustomNavi;
     this.stCustomPraise = paramQzmallCustomPraise;
@@ -48,6 +50,7 @@ public final class ProfileQzmallDeco
     this.stFeedSkin = paramQzmallFeedSkin;
     this.stCustomVip = paramQzmallCustomVip;
     this.stFacade = paramQzmallFacade;
+    this.stYellowDiamond = paramActYellowDiamond;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -61,6 +64,7 @@ public final class ProfileQzmallDeco
     this.stFeedSkin = ((QzmallFeedSkin)paramJceInputStream.read(cache_stFeedSkin, 6, false));
     this.stCustomVip = ((QzmallCustomVip)paramJceInputStream.read(cache_stCustomVip, 7, false));
     this.stFacade = ((QzmallFacade)paramJceInputStream.read(cache_stFacade, 8, false));
+    this.stYellowDiamond = ((ActYellowDiamond)paramJceInputStream.read(cache_stYellowDiamond, 9, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -91,6 +95,9 @@ public final class ProfileQzmallDeco
     }
     if (this.stFacade != null) {
       paramJceOutputStream.write(this.stFacade, 8);
+    }
+    if (this.stYellowDiamond != null) {
+      paramJceOutputStream.write(this.stYellowDiamond, 9);
     }
   }
 }

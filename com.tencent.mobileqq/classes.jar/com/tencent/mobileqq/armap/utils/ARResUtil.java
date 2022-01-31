@@ -30,7 +30,7 @@ public class ARResUtil
       break label28;
     }
     if (i != 0) {}
-    for (localFile = new File(AppConstants.aJ);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
+    for (localFile = new File(AppConstants.aK);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
     {
       b = new File(localFile, "AR_MAP").getAbsolutePath();
       a = new File(localFile, "res_precover").getAbsolutePath();

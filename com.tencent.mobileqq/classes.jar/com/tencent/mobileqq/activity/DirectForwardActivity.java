@@ -19,7 +19,7 @@ import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.forward.ForwardOptionBuilder;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import sjx;
+import sor;
 
 public class DirectForwardActivity
   extends BaseActivity
@@ -108,7 +108,7 @@ public class DirectForwardActivity
           {
             paramBundle = new IntentFilter();
             paramBundle.addAction("com.tencent.process.exit");
-            this.jdField_a_of_type_AndroidContentBroadcastReceiver = new sjx(this);
+            this.jdField_a_of_type_AndroidContentBroadcastReceiver = new sor(this);
             registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
           }
           if (BaseApplicationImpl.appStartTime > 0L) {

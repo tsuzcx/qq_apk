@@ -1,14 +1,14 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import java.lang.ref.WeakReference;
 
-public class aojq
+class aojq
   implements Runnable
 {
-  public aojq(ShortVideoPlayActivity paramShortVideoPlayActivity, TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
+  aojq(aojm paramaojm, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    ((QIMCommonLoadingView)this.jdField_a_of_type_Aojm.a.get()).setProgress(this.jdField_a_of_type_Int);
   }
 }
 

@@ -19,7 +19,7 @@ public class NetSearchTemplateSubItemTitleView
   protected void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131361926));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131366391));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131366389));
   }
 }
 

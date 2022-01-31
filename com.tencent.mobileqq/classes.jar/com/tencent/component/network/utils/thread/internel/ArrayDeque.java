@@ -10,8 +10,8 @@ import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import plw;
-import plx;
+import pqo;
+import pqp;
 
 public class ArrayDeque
   extends AbstractCollection
@@ -273,7 +273,7 @@ public class ArrayDeque
   
   public Iterator descendingIterator()
   {
-    return new plx(this, null);
+    return new pqp(this, null);
   }
   
   public Object element()
@@ -306,7 +306,7 @@ public class ArrayDeque
   
   public Iterator iterator()
   {
-    return new plw(this, null);
+    return new pqo(this, null);
   }
   
   public boolean offer(Object paramObject)

@@ -1,25 +1,14 @@
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class myv
   implements Runnable
 {
-  public myv(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public myv(PublicAccountH5AbilityForPtt paramPublicAccountH5AbilityForPtt) {}
   
   public void run()
   {
-    TranslateAnimation localTranslateAnimation = PublicAccountImageCollectionMainActivity.b(this.a);
-    if (localTranslateAnimation != null)
-    {
-      this.a.a.setVisibility(0);
-      this.a.a.findViewById(2131365654).setVisibility(0);
-      this.a.a.findViewById(2131365588).setVisibility(0);
-      this.a.a.findViewById(2131365589).setVisibility(0);
-      this.a.a.bringToFront();
-      this.a.a.startAnimation(localTranslateAnimation);
-    }
+    QQToast.a(this.a.a, "开始录音了", 0).a();
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.biz.pubaccount.Advertisement.data;
 import OnlinePushPack.MsgInfo;
 import android.os.Looper;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.Advertisement.util.PublicAccountAdUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -12,11 +13,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kts;
+import kvz;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
@@ -115,7 +117,8 @@ public class AdvertisementItem
   
   public static AdvertisementItem a(submsgtype0xf9.AdInfo paramAdInfo, MsgInfo paramMsgInfo)
   {
-    label365:
+    int i = 0;
+    label408:
     for (;;)
     {
       try
@@ -139,17 +142,16 @@ public class AdvertisementItem
         if (paramAdInfo.rpt_msg_video.has())
         {
           localAdvertisementItem.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          int i = 0;
           Iterator localIterator = paramAdInfo.rpt_msg_video.get().iterator();
           if (localIterator.hasNext())
           {
             VideoCoverItem localVideoCoverItem = VideoCoverItem.a(i, (submsgtype0xf9.Video)localIterator.next());
             if (localVideoCoverItem == null) {
-              break label365;
+              break label408;
             }
             localAdvertisementItem.jdField_a_of_type_JavaUtilArrayList.add(localVideoCoverItem);
             i += 1;
-            break label365;
+            break label408;
           }
         }
         if (paramAdInfo.msg_msgCommonData.has()) {
@@ -168,6 +170,7 @@ public class AdvertisementItem
         if (QLog.isColorLevel()) {
           QLog.w("ImaxAdvertisement", 2, "PbData:" + localAdvertisementItem.toString());
         }
+        ReportController.b(null, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_a_of_type_JavaLangString, "0X8008F5C", "0X8008F5C", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_c_of_type_JavaLangString, "", PublicAccountAdUtil.a(), localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.jdField_b_of_type_JavaLangString);
         return localAdvertisementItem;
       }
       catch (Exception paramAdInfo)
@@ -254,13 +257,13 @@ public class AdvertisementItem
   
   public void a()
   {
-    kts localkts = new kts(this);
+    kvz localkvz = new kvz(this);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      ThreadManager.post(localkts, 2, null, false);
+      ThreadManager.post(localkvz, 2, null, false);
       return;
     }
-    localkts.run();
+    localkvz.run();
   }
   
   public boolean a()

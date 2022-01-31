@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
 
 public class kgi
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public kgi(PopupDialog paramPopupDialog) {}
+  public kgi(AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (PopupDialog.a.b != null) {
-      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
+    AVActivity localAVActivity = this.a.a();
+    if (localAVActivity != null) {
+      localAVActivity.f(this.a.a);
     }
-    paramDialogInterface.dismiss();
-    PopupDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgi
  * JD-Core Version:    0.7.0.1
  */

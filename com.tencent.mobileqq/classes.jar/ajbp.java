@@ -1,15 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public class ajbp
-  implements View.OnClickListener
+class ajbp
+  implements AdapterView.OnItemClickListener
 {
-  public ajbp(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  ajbp(ajbo paramajbo) {}
   
-  public void onClick(View paramView)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.finish();
+    this.a.a.a.a();
   }
 }
 

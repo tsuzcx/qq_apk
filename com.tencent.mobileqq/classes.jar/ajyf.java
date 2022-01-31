@@ -1,27 +1,42 @@
-import android.content.Context;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Queue;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class ajyf
-  implements Runnable
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public ajyf(UnifiedDebugManager paramUnifiedDebugManager, long paramLong1, Context paramContext, String paramString1, int paramInt, long paramLong2, String paramString2) {}
+  public ajyf(TroopTopicMgr paramTroopTopicMgr, TroopChatPie paramTroopChatPie, String paramString1, ChatMessage paramChatMessage, String paramString2, int paramInt) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a)
-    {
-      ajyh localajyh = (ajyh)this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.a.peek();
-      if ((localajyh != null) && (localajyh.jdField_b_of_type_Long == this.jdField_a_of_type_Long))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Long, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaLangString);
-        if (QLog.isColorLevel()) {
-          QLog.d("UnifiedDebugManager", 2, "start debug(retry): seq=" + this.jdField_a_of_type_Long);
-        }
-      }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie == null) || (TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr) == null)) {
       return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.bn();
+    TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr);
+    paramJSONObject = TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, paramJSONObject, this.jdField_a_of_type_JavaLangString);
+    if (paramJSONObject != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(".troop.troop_topic", 2, "publishableJson = " + paramJSONObject);
+      }
+      TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).put(this.jdField_a_of_type_JavaLangString, paramJSONObject);
+      paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.a(paramJSONObject, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.b, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie, paramJSONObject.toString());
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.troop_topic", 2, "publishableJson = null");
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a(), TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).getApp().getString(2131430738), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a());
   }
 }
 

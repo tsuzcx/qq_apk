@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
-import ancf;
-import ancg;
 import android.media.MediaRecorder;
+import ankf;
+import ankg;
 import java.io.IOException;
 
 public class QzoneAudioRecordPlugin$SimpleAACRecorder
@@ -106,8 +106,8 @@ public class QzoneAudioRecordPlugin$SimpleAACRecorder
       this.jdField_a_of_type_AndroidMediaMediaRecorder.setAudioEncoder(3);
       this.jdField_a_of_type_AndroidMediaMediaRecorder.setMaxFileSize(this.c);
       this.jdField_a_of_type_AndroidMediaMediaRecorder.setMaxDuration(this.d);
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnInfoListener(new ancf(this));
-      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnErrorListener(new ancg(this));
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnInfoListener(new ankf(this));
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnErrorListener(new ankg(this));
       this.jdField_a_of_type_AndroidMediaMediaRecorder.setOutputFile(paramString);
       this.jdField_a_of_type_AndroidMediaMediaRecorder.prepare();
       if (this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneAudioRecordPlugin$SimpleAACRecorder$RecorderListener != null) {

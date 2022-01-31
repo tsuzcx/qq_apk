@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.leba.view;
 
-import aebg;
-import aebh;
-import aebi;
-import aebj;
+import aejq;
+import aejr;
+import aejs;
+import aejt;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -137,8 +137,8 @@ public class LebaFeedsDislikeMaskView
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(380L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aebg(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aebh(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aejq(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aejr(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -159,8 +159,8 @@ public class LebaFeedsDislikeMaskView
     this.e = 0;
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(380L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aebi(this));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new aebj(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aejs(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new aejt(this));
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
   }
   

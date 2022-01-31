@@ -1,6 +1,6 @@
 package com.tencent.util;
 
-import alzh;
+import amgq;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable.Creator;
 public class BinderWarpper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new alzh();
+  public static final Parcelable.Creator CREATOR = new amgq();
   public IBinder a;
   
   public BinderWarpper(IBinder paramIBinder)

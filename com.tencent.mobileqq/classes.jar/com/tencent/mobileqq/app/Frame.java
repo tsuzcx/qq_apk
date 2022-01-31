@@ -15,7 +15,7 @@ public abstract class Frame
   private View jdField_a_of_type_AndroidViewView;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   public QQAppInterface a;
-  public boolean v;
+  public boolean w;
   
   public Resources a()
   {
@@ -63,13 +63,13 @@ public abstract class Frame
     if (paramView != null)
     {
       if (paramBoolean) {
-        paramView.setBackgroundResource(2130845872);
+        paramView.setBackgroundResource(2130845952);
       }
     }
     else {
       return;
     }
-    paramView.setBackgroundColor(a().getColor(2131494254));
+    paramView.setBackgroundColor(a().getColor(2131494260));
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -86,7 +86,7 @@ public abstract class Frame
   
   public void a(boolean paramBoolean)
   {
-    this.v = true;
+    this.w = true;
     if (Build.VERSION.SDK_INT >= 15)
     {
       UEC localUEC = UEC.a;
@@ -136,7 +136,7 @@ public abstract class Frame
   
   public void i()
   {
-    this.v = false;
+    this.w = false;
     if (Build.VERSION.SDK_INT >= 15)
     {
       UEC localUEC = UEC.a;
@@ -148,7 +148,7 @@ public abstract class Frame
   
   public void j()
   {
-    if (this.v) {
+    if (this.w) {
       i();
     }
   }

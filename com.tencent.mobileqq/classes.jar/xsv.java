@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class xsv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xsv(NewPreFlowCamera paramNewPreFlowCamera, int paramInt) {}
+  public xsv(LoginView paramLoginView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NewPreFlowCamera.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("NewPreFlowCamera", 2, "onDownloadProgress mGestureState=" + NewPreFlowCamera.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera) + " mVideoState=" + NewPreFlowCamera.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera) + "mFilterSoState=" + NewPreFlowCamera.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera));
+    paramDialogInterface = this.a.a.getText().toString();
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      this.a.b(paramDialogInterface);
     }
-    NewPreFlowCamera.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera, "GestureDownloadProgress");
   }
 }
 

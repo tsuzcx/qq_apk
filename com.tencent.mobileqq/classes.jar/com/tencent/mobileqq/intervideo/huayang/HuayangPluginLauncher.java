@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import adug;
-import aduh;
-import adui;
+import aecp;
+import aecq;
+import aecr;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,7 +36,7 @@ public class HuayangPluginLauncher
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private final Context jdField_a_of_type_AndroidContentContext;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new adug(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aecp(this);
   private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
   private final InstalledPlugin jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin;
   private final PluginLoader jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginloaderPluginLoader = new DynamicPluginLoader();
@@ -71,7 +71,7 @@ public class HuayangPluginLauncher
     {
       localIntent.putExtra("PluginStartMode", i);
       localIntent.putExtra("isNeedTransparent", true);
-      localIntent.putExtra("qqVersion", "7.6.3");
+      localIntent.putExtra("qqVersion", "7.6.8");
       return localIntent;
     }
   }
@@ -98,8 +98,8 @@ public class HuayangPluginLauncher
       a(false, localException1);
       return null;
     }
-    adui localadui = new adui(this);
-    this.jdField_a_of_type_AndroidOsHandler.post(localadui);
+    aecr localaecr = new aecr(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(localaecr);
     RunningPlugin localRunningPlugin;
     try
     {
@@ -119,7 +119,7 @@ public class HuayangPluginLauncher
       a(80);
       a("HuayangPluginLauncher", "加载插件" + this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin.pluginFile + "完成，耗时(ms)：" + (System.currentTimeMillis() - l));
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localadui);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localaecr);
     if (localThrowable != null)
     {
       a(false, localThrowable);
@@ -198,7 +198,7 @@ public class HuayangPluginLauncher
     if (Monitor.jdField_a_of_type_Boolean) {}
     for (String str = "huayang";; str = "group_video")
     {
-      StoryReportor.a(str, paramString1, paramInt1, paramInt2, new String[] { paramString2, paramString3, paramString4, "7.6.3" });
+      StoryReportor.a(str, paramString1, paramInt1, paramInt2, new String[] { paramString2, paramString3, paramString4, "7.6.8" });
       return;
     }
   }
@@ -309,7 +309,7 @@ public class HuayangPluginLauncher
     this.jdField_b_of_type_JavaLangString = paramString2;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_JavaLangString = paramString1;
-    ThreadManager.executeOnSubThread(new aduh(this, paramBoolean2));
+    ThreadManager.executeOnSubThread(new aecq(this, paramBoolean2));
   }
   
   public void b(HuayangPluginLauncher.HuayangPluginLauncherListener paramHuayangPluginLauncherListener)

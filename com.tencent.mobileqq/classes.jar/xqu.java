@@ -1,17 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class xqu
+class xqu
   implements Runnable
 {
-  public xqu(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
+  xqu(xqt paramxqt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.b(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    QQToast.a(this.a.a.a, 1, "资源加载失败", 1).a();
   }
 }
 

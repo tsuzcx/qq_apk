@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class aaxh
-  implements Runnable
+public final class aaxh
+  implements QQPlayerService.QQPlayerCallback
 {
-  public aaxh(ArkRecommendController paramArkRecommendController) {}
-  
-  public void run()
+  public String getToken()
   {
-    if (ArkRecommendController.a(this.a) != null)
-    {
-      ArkAppCenter.b("ArkRecommendController", "mArkBabyqDisappearBubbleTask, destroy scroll bar");
-      ArkRecommendController.a(this.a).d();
-    }
+    return ArkAppMusicModule.a();
+  }
+  
+  public void onPlaySongChanged(SongInfo paramSongInfo)
+  {
+    ArkAppCenter.a().post(new aaxj(this, paramSongInfo));
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    ArkAppCenter.a().post(new aaxi(this, paramInt));
   }
 }
 

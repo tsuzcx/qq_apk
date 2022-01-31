@@ -1,18 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.data.EqqDetail;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
 
-class vrm
-  implements Runnable
+public class vrm
+  implements TroopMemberApiClient.Callback
 {
-  vrm(vrl paramvrl, EqqDetail paramEqqDetail) {}
+  public vrm(AIOGalleryAdapter paramAIOGalleryAdapter) {}
   
-  public void run()
-  {
-    CrmUtils.b(this.jdField_a_of_type_Vrl.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-    this.jdField_a_of_type_Vrl.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new vrn(this));
-  }
+  public void a(Bundle paramBundle) {}
 }
 
 

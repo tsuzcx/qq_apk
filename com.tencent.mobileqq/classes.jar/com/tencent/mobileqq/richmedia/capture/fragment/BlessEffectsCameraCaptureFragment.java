@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.fragment;
 
-import ahhy;
+import ahmp;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -29,10 +29,10 @@ import com.tencent.qphone.base.util.QLog;
 public class BlessEffectsCameraCaptureFragment
   extends AIOEffectsCameraCaptureFragment
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahhy(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString;
-  private int c;
+  private BroadcastReceiver a;
+  private int jdField_c_of_type_Int;
+  private View jdField_c_of_type_AndroidViewView;
+  private String e;
   private String f;
   private String g;
   private String h;
@@ -43,6 +43,11 @@ public class BlessEffectsCameraCaptureFragment
   private boolean m;
   private boolean n;
   private boolean o;
+  
+  public BlessEffectsCameraCaptureFragment()
+  {
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ahmp(this);
+  }
   
   public static Bundle a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, boolean paramBoolean5, boolean paramBoolean6, String paramString3, String paramString4)
   {
@@ -69,7 +74,7 @@ public class BlessEffectsCameraCaptureFragment
   protected CameraCaptureView.CaptureParam a()
   {
     CameraCaptureView.CaptureParam localCaptureParam = super.a();
-    localCaptureParam.c(this.c);
+    localCaptureParam.g(this.jdField_c_of_type_Int);
     return localCaptureParam;
   }
   
@@ -86,14 +91,14 @@ public class BlessEffectsCameraCaptureFragment
     JumpUtil.a(this, paramVideoCaptureResult, paramLocalMediaInfo, a(true), 5, 10003, 0, null, null, null);
   }
   
-  protected void e()
+  protected void d()
   {
-    super.e();
+    super.d();
     Object localObject;
     boolean bool;
     if ((this.o) && (this.l))
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.jdField_a_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
       localObject = CapturePtvTemplateManager.a().a();
       if (localObject != null)
       {
@@ -120,7 +125,7 @@ public class BlessEffectsCameraCaptureFragment
       localObject = CaptureVideoFilterManager.a().a;
     } while (localObject == null);
     com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil.d = ((FilterCategoryItem)localObject).b + "";
-    com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil.e = ((FilterCategoryItem)localObject).jdField_a_of_type_JavaLangString;
+    com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil.jdField_e_of_type_JavaLangString = ((FilterCategoryItem)localObject).a;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -144,13 +149,13 @@ public class BlessEffectsCameraCaptureFragment
             QLog.d("AIOEffectsCameraCaptureFragment", 2, "aio onActivityResult:requestCode=" + paramInt1 + "  resultCode=" + paramInt2);
           }
         } while ((paramInt2 != -1) || (paramIntent == null));
-        paramIntent = (PublishParam)paramIntent.getParcelableExtra(PublishParam.jdField_a_of_type_JavaLangString);
+        paramIntent = (PublishParam)paramIntent.getParcelableExtra(PublishParam.a);
       } while (paramIntent == null);
-      if (this.jdField_a_of_type_AndroidViewView == null)
+      if (this.jdField_c_of_type_AndroidViewView == null)
       {
-        this.jdField_a_of_type_AndroidViewView = new ImageView(localFragmentActivity);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-        ((ViewGroup)getView()).addView(this.jdField_a_of_type_AndroidViewView, -1, -1);
+        this.jdField_c_of_type_AndroidViewView = new ImageView(localFragmentActivity);
+        this.jdField_c_of_type_AndroidViewView.setBackgroundColor(-16777216);
+        ((ViewGroup)getView()).addView(this.jdField_c_of_type_AndroidViewView, -1, -1);
       }
     } while (paramIntent.j != 1);
     Object localObject = paramIntent.c;
@@ -172,16 +177,16 @@ public class BlessEffectsCameraCaptureFragment
     paramBundle = getArguments();
     this.j = paramBundle.getBoolean("ARG_SUPPORT_VIDEO");
     this.k = paramBundle.getBoolean("ARG_SUPPORT_PHOTO");
-    this.c = paramBundle.getInt("ARG_CAMERA_MODE");
+    this.jdField_c_of_type_Int = paramBundle.getInt("ARG_CAMERA_MODE");
     this.o = paramBundle.getBoolean("ARG_SUPPORT_DD");
     this.l = paramBundle.getBoolean("ARG_UNFOLD_DD");
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("ARG_DD_CATEGORY_NAME");
+    this.jdField_e_of_type_JavaLangString = paramBundle.getString("ARG_DD_CATEGORY_NAME");
     this.jdField_f_of_type_JavaLangString = paramBundle.getString("ARG_DD_ITEM_ID");
     this.n = paramBundle.getBoolean("ARG_SUPPORT_FILTER");
     this.m = paramBundle.getBoolean("ARG_UNFOLD_FILTER");
     this.g = paramBundle.getString("ARG_FILTER_CATEGORY_NAME");
     this.h = paramBundle.getString("ARG_FILTER_ITEM_ID");
-    this.e = this.n;
+    this.jdField_e_of_type_Boolean = this.n;
     this.jdField_f_of_type_Boolean = this.o;
     paramBundle = new IntentFilter();
     paramBundle.addAction("tencent.video.q2v.startUploadPTV");
@@ -199,10 +204,10 @@ public class BlessEffectsCameraCaptureFragment
     super.onResume();
     if (this.i)
     {
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      if (this.jdField_c_of_type_AndroidViewView != null)
       {
-        ((ViewGroup)getView()).removeView(this.jdField_a_of_type_AndroidViewView);
-        this.jdField_a_of_type_AndroidViewView = null;
+        ((ViewGroup)getView()).removeView(this.jdField_c_of_type_AndroidViewView);
+        this.jdField_c_of_type_AndroidViewView = null;
       }
       this.i = false;
     }

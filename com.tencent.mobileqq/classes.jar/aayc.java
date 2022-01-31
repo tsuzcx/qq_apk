@@ -1,25 +1,34 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
-import com.tencent.mobileqq.ark.ArkRecommendLogic.SemanticAnalysisResult;
-import java.lang.ref.WeakReference;
+import android.annotation.TargetApi;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
+import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
 
-class aayc
-  implements Runnable
+public class aayc
+  implements ArkViewImplement.LoadCallback
 {
-  aayc(aayb paramaayb, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, boolean paramBoolean) {}
+  public aayc(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt) {}
   
-  public void run()
+  @TargetApi(14)
+  public void onLoadFinish(int paramInt)
   {
-    if (this.jdField_a_of_type_Aayb.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      ArkAppCenter.b("ArkApp.ArkRecommendLogic", String.format("sendBabyQTextIntent, this is null, return", new Object[0]));
-    }
-    ArkRecommendLogic.SemanticAnalysisResult localSemanticAnalysisResult;
-    do
+    if (paramInt == 1)
     {
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(0);
+      ArkAdapterItemForTextMsg.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder);
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
       return;
-      localSemanticAnalysisResult = (ArkRecommendLogic.SemanticAnalysisResult)this.jdField_a_of_type_Aayb.b.get();
-    } while (localSemanticAnalysisResult == null);
-    localSemanticAnalysisResult.a(this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo, this.jdField_a_of_type_Aayb.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
+    }
   }
 }
 

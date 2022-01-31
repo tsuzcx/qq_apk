@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.troop.utils.TroopAioNotifyManager;
-import java.util.ArrayList;
+import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
 import java.util.List;
 
-public final class ajny
+public class ajny
   implements Runnable
 {
-  public ajny(QQAppInterface paramQQAppInterface, String paramString, TroopHandler paramTroopHandler) {}
+  public ajny(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment, List paramList) {}
   
   public void run()
   {
-    List localList = TroopAioNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    localList = TroopAioNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ArrayList(), localList);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(94, true, new Object[] { this.jdField_a_of_type_JavaLangString, localList });
+    if (HomeWorkTroopSelectorFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment)) {
+      HomeWorkTroopSelectorFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiHomeWorkTroopSelectorFragment, this.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

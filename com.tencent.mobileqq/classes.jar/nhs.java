@@ -1,15 +1,16 @@
-import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
+import com.tencent.biz.qqstory.model.lbs.LbsManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
-class nhs
+public class nhs
   implements Runnable
 {
-  nhs(nhr paramnhr) {}
+  public nhs(LbsManager paramLbsManager, int paramInt) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.a(this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData);
-    }
+    SLog.d("LbsManager", "onLocation Timeout  %d ms", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.a(false, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b);
+    LbsManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager, true);
   }
 }
 

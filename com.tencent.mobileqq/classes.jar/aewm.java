@@ -1,46 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageUploader.OnResultListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class aewm
-  implements ImageUploader.OnResultListener
+  implements WerewolvesHandler.Callback
 {
-  public aewm(VideoFeedsUploader paramVideoFeedsUploader) {}
+  public aewm(GameRoomInviteActivity paramGameRoomInviteActivity, aexc paramaexc) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    int i = 0;
-    if ((paramInt != 0) || (TextUtils.isEmpty(paramString)))
+    if ((paramInt == 0) && (paramRspBody != null))
     {
-      VideoFeedsUploader.a(this.a).a = paramInt;
-      VideoFeedsUploader.a(this.a).d = paramInt;
-      VideoFeedsUploader.a(this.a).a = paramInt;
-      VideoFeedsUploader.a(this.a).d = paramInt;
-      VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoFeedsUploader", 2, String.format("upload logo image: result=%d, url=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    }
-    VideoFeedsUploader.a(this.a).e = paramString;
-    try
-    {
-      long l = new File(VideoFeedsUploader.a(this.a).e).length();
-      i = (int)l;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
+      paramRspBody = this.jdField_a_of_type_Aexc;
+      if (!this.jdField_a_of_type_Aexc.a)
       {
-        QLog.e("VideoFeedsUploader", 1, paramString, new Object[0]);
+        bool = true;
+        paramRspBody.a = bool;
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
       }
     }
-    VideoFeedsUploader.a(this.a, 85, i);
-    VideoFeedsUploader.a(this.a).d = paramInt;
-    VideoFeedsUploader.b(this.a);
+    while (paramRspBody == null) {
+      for (;;)
+      {
+        return;
+        boolean bool = false;
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, "设置失败");
   }
 }
 

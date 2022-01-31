@@ -1,14 +1,15 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.Callback;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.widget.XListView;
 
-class xqk
-  implements Runnable
+public class xqk
+  implements RecentTabHaloPresenter.Callback
 {
-  xqk(xqj paramxqj) {}
+  public xqk(RecentAdapter paramRecentAdapter) {}
   
-  public void run()
+  public void a()
   {
-    NewFlowCameraActivity.a(this.a.a).setVisibility(8);
+    this.a.a.invalidateViews();
   }
 }
 

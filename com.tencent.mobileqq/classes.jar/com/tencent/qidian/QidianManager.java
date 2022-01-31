@@ -1,16 +1,16 @@
 package com.tencent.qidian;
 
-import alln;
-import allo;
-import allp;
-import allq;
-import allr;
-import alls;
-import allt;
-import allu;
-import allv;
-import allw;
-import allx;
+import alsw;
+import alsx;
+import alsy;
+import alsz;
+import alta;
+import altb;
+import altc;
+import altd;
+import alte;
+import altf;
+import altg;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -38,6 +38,7 @@ import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
@@ -103,7 +104,7 @@ public class QidianManager
     this.i = new HashMap();
     this.h = new HashMap();
     if (UiThreadUtil.a()) {
-      ThreadManager.getSubThreadHandler().post(new alln(this));
+      ThreadManager.getSubThreadHandler().post(new alsw(this));
     }
     for (;;)
     {
@@ -348,8 +349,8 @@ public class QidianManager
     if (new Intent().setPackage("com.tencent.qidian").setData(Uri.parse("qdapi://")).resolveActivity((PackageManager)localObject) != null)
     {
       localObject = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = paramContext.getString(2131430130);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_Int = 2130841715;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = paramContext.getString(2131430132);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_Int = 2130841742;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject).c = 19;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
       paramArrayList.add(localObject);
@@ -399,7 +400,7 @@ public class QidianManager
             continue;
           }
           if (UiThreadUtil.a()) {
-            ThreadManager.post(new allp(localQidianManager, paramQQAppInterface, localBmqqAccountType), 5, null, true);
+            ThreadManager.post(new alsy(localQidianManager, paramQQAppInterface, localBmqqAccountType), 5, null, true);
           }
         }
         else
@@ -460,7 +461,7 @@ public class QidianManager
     {
       localQidianManager = (QidianManager)paramQQAppInterface.getManager(164);
       if (UiThreadUtil.a()) {
-        ThreadManager.postImmediately(new allo(localQidianManager, paramQQAppInterface, paramArrayOfFriends), null, false);
+        ThreadManager.postImmediately(new alsx(localQidianManager, paramQQAppInterface, paramArrayOfFriends), null, false);
       }
     }
     else
@@ -576,7 +577,7 @@ public class QidianManager
         if (!bool1) {
           break label364;
         }
-        SosoInterface.a(new allu(this, 1, true, true, 0L, true, false, "QidianManager", paramString1, paramInt1, str3, paramInt2, str2, str1, paramString2));
+        SosoInterface.a(new altd(this, 1, true, true, 0L, true, false, "QidianManager", paramString1, paramInt1, str3, paramInt2, str2, str1, paramString2));
       }
     }
     label364:
@@ -636,15 +637,22 @@ public class QidianManager
   
   private boolean a(String paramString, int paramInt)
   {
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(50);
-    if (localFriendsManager != null)
+    Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(50);
+    if (localObject != null)
     {
-      paramString = localFriendsManager.a(paramString);
-      if ((paramString != null) && ((paramString.cSpecialFlag & paramInt) != 0)) {
-        return true;
+      localObject = ((FriendsManager)localObject).a(paramString);
+      if ((localObject != null) && (((Friends)localObject).cSpecialFlag < 0))
+      {
+        QLog.i("QidianManager", 1, "isSpecialAccountInFriend meet error!!");
+        return false;
+      }
+      if ((localObject != null) && ((((Friends)localObject).cSpecialFlag & paramInt) != 0)) {
+        QLog.i("QidianManager", 1, MsfSdkUtils.getShortUin(paramString) + " isSpecialAccountInFriend isSpecialAccount is true, friendInfo.cSpecialFlag: " + ((Friends)localObject).cSpecialFlag + " | flag: " + paramInt);
       }
     }
-    return false;
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
   
   private boolean a(String paramString, QQAppInterface paramQQAppInterface)
@@ -1167,9 +1175,9 @@ public class QidianManager
   {
     paramString = c(paramString);
     if (!TextUtils.isEmpty(paramString)) {
-      return String.format(paramContext.getString(2131435868), new Object[] { paramString });
+      return String.format(paramContext.getString(2131435884), new Object[] { paramString });
     }
-    return paramContext.getString(2131435867);
+    return paramContext.getString(2131435883);
   }
   
   public String a(String paramString)
@@ -1238,7 +1246,7 @@ public class QidianManager
     }
     if (UiThreadUtil.a())
     {
-      ThreadManager.post(new allr(this, paramBmqqUserSimpleInfo), 5, null, true);
+      ThreadManager.post(new alta(this, paramBmqqUserSimpleInfo), 5, null, true);
       return;
     }
     b(paramBmqqUserSimpleInfo);
@@ -1259,7 +1267,7 @@ public class QidianManager
       if (!UiThreadUtil.a()) {
         break label47;
       }
-      ThreadManager.post(new allq(this, paramBmqqAccountType), 5, null, true);
+      ThreadManager.post(new alsz(this, paramBmqqAccountType), 5, null, true);
     }
     label47:
     EntityManager localEntityManager;
@@ -1295,7 +1303,7 @@ public class QidianManager
     }
     if (UiThreadUtil.a())
     {
-      ThreadManager.post(new alls(this, paramQidianExternalInfo, paramQidianInternalInfo, paramQidianCorpInfo, paramQidianProfileUiInfo), 5, null, true);
+      ThreadManager.post(new altb(this, paramQidianExternalInfo, paramQidianInternalInfo, paramQidianCorpInfo, paramQidianProfileUiInfo), 5, null, true);
       return;
     }
     b(paramQidianExternalInfo, paramQidianInternalInfo, paramQidianCorpInfo, paramQidianProfileUiInfo);
@@ -1311,7 +1319,7 @@ public class QidianManager
     }
     if (UiThreadUtil.a())
     {
-      ThreadManager.post(new allx(this, paramQidianExternalInfo, paramQidianProfileUiInfo), 5, null, true);
+      ThreadManager.post(new altg(this, paramQidianExternalInfo, paramQidianProfileUiInfo), 5, null, true);
       return;
     }
     b(paramQidianExternalInfo, paramQidianProfileUiInfo);
@@ -1382,7 +1390,7 @@ public class QidianManager
       if (!UiThreadUtil.a()) {
         break;
       }
-      ThreadManager.post(new allv(this, localQidianPAForWpa, paramString1, paramString2), 5, null, true);
+      ThreadManager.post(new alte(this, localQidianPAForWpa, paramString1, paramString2), 5, null, true);
       return;
     }
     a(localQidianPAForWpa, paramString1, paramString2);
@@ -1626,7 +1634,7 @@ public class QidianManager
       if (!UiThreadUtil.a()) {
         break label157;
       }
-      ThreadManager.post(new allt(this, paramString), 5, null, true);
+      ThreadManager.post(new altc(this, paramString), 5, null, true);
       return bool1;
       if (a(paramString, 4))
       {
@@ -1668,67 +1676,98 @@ public class QidianManager
   
   public boolean c(String paramString, boolean paramBoolean)
   {
-    boolean bool1;
-    for (boolean bool2 = false;; bool2 = bool1) {
+    boolean bool1 = false;
+    label393:
+    for (;;)
+    {
       try
       {
         Long.parseLong(paramString);
-        if (!BmqqSegmentUtil.a(paramString)) {}
-        while ((BmqqSegmentUtil.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (BmqqSegmentUtil.a(null, paramString))) {
-          return bool2;
-        }
-        bool1 = a(paramString, 16);
-        if (!bool1) {
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+        if (!BmqqSegmentUtil.a(paramString))
+        {
+          paramBoolean = bool1;
+          if (QLog.isColorLevel())
           {
-            if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue() != 6) {
-              continue;
+            QLog.d("QidianManager", 2, "isQidianMaster uin is not in bmqqsegment");
+            paramBoolean = bool1;
+          }
+          return paramBoolean;
+        }
+        if ((BmqqSegmentUtil.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (BmqqSegmentUtil.a(null, paramString)))
+        {
+          paramBoolean = bool1;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("QidianManager", 2, "isQidianMaster is bmqquin");
+            return false;
+          }
+        }
+        else
+        {
+          bool1 = a(paramString, 16);
+          boolean bool2;
+          if (!bool1)
+          {
+            if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+            {
+              if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(paramString)).intValue() != 6) {
+                break label393;
+              }
+              QLog.i("QidianManager", 1, MsfSdkUtils.getShortUin(paramString) + " isQidianMaster is qidianmain");
+              bool2 = true;
+              bool1 = bool2;
+              if (!paramBoolean)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("QidianManager", 2, "isQidianMaster not only in cache 0");
+                }
+                b(paramString);
+                bool1 = bool2;
+              }
+              if ((bool1) && (!paramBoolean))
+              {
+                QidianExternalInfo localQidianExternalInfo = a(String.valueOf(paramString));
+                QidianProfileUiInfo localQidianProfileUiInfo = a(String.valueOf(paramString));
+                if ((localQidianExternalInfo == null) || (localQidianProfileUiInfo == null))
+                {
+                  if (!UiThreadUtil.a()) {
+                    continue;
+                  }
+                  ThreadManager.post(new altf(this, paramString), 5, null, true);
+                }
+              }
+              paramBoolean = bool1;
+              if (!bool1) {
+                continue;
+              }
+              QLog.i("QidianManager", 1, MsfSdkUtils.getShortUin(paramString) + " isQidianMaster is true finally");
+              return bool1;
             }
-            bool2 = true;
-            bool1 = bool2;
             if (!paramBoolean)
             {
+              if (QLog.isColorLevel()) {
+                QLog.d("QidianManager", 2, "isQidianMaster not only in cache 1");
+              }
               b(paramString);
-              bool1 = bool2;
+              continue;
             }
           }
-        }
-        for (;;)
-        {
-          bool2 = bool1;
-          if (!bool1) {
-            break;
-          }
-          bool2 = bool1;
-          if (paramBoolean) {
-            break;
-          }
-          QidianExternalInfo localQidianExternalInfo = a(String.valueOf(paramString));
-          QidianProfileUiInfo localQidianProfileUiInfo = a(String.valueOf(paramString));
-          if (localQidianExternalInfo != null)
+          else if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
           {
-            bool2 = bool1;
-            if (localQidianProfileUiInfo != null) {
-              break;
+            a(new BmqqAccountType(paramString, 6));
+            if (QLog.isColorLevel()) {
+              QLog.d("QidianManager", 2, "isQidianMaster update account type");
             }
           }
-          if (!UiThreadUtil.a()) {
-            break label211;
-          }
-          ThreadManager.post(new allw(this, paramString), 5, null, true);
-          return bool1;
-          if (!paramBoolean)
+          continue;
+          b(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext(), new BmqqAccountType(paramString, 6));
+          if (QLog.isColorLevel())
           {
-            b(paramString);
+            QLog.d("QidianManager", 2, "isQidianMaster get user detail");
             continue;
-            if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-              a(new BmqqAccountType(paramString, 6));
-            }
+            bool2 = bool1;
           }
         }
-        label211:
-        b(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getBaseContext(), new BmqqAccountType(paramString, 6));
-        return bool1;
       }
       catch (Exception paramString)
       {

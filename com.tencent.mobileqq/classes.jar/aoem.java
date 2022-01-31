@@ -1,82 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
+import android.os.Message;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer.Mp4VideoFragmentInfo;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class aoem
-  implements Animator.AnimatorListener
+class aoem
+  implements Runnable
 {
-  public aoem(MarkDrawable paramMarkDrawable) {}
+  aoem(aoel paramaoel) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationCancel: mState:" + MarkDrawable.c(this.a) + " isrun:" + MarkDrawable.a(this.a));
-    }
-    if (this.a.isRunning())
+    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
     {
-      MarkDrawable.e(this.a, MarkDrawable.c(this.a));
-      if (MarkDrawable.c(this.a) != 2) {
-        break label105;
-      }
-      this.a.a(3);
+      HWEditImportVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditImportVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
+      HWEditImportVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
     }
     for (;;)
     {
-      MarkDrawable.a(this.a, false);
+      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
+      HWEditImportVideoPlayer.a(this.a.a).set(true);
       return;
-      label105:
-      if (MarkDrawable.c(this.a) == 4) {
-        this.a.a(5);
-      } else if (MarkDrawable.c(this.a) == 5) {
-        this.a.a(1);
-      }
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationEnd: mState:" + MarkDrawable.c(this.a) + " isrun:" + MarkDrawable.a(this.a));
-    }
-    if (this.a.isRunning())
-    {
-      MarkDrawable.d(this.a, MarkDrawable.c(this.a));
-      if (MarkDrawable.c(this.a) != 2) {
-        break label105;
-      }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      MarkDrawable.a(this.a, false);
-      return;
-      label105:
-      if (MarkDrawable.c(this.a) == 4)
-      {
-        this.a.a(0);
-      }
-      else if (MarkDrawable.c(this.a) == 5)
-      {
-        this.a.a(1);
-        MarkDrawable.a(this.a, 0);
-      }
-      else if (MarkDrawable.c(this.a) == 6)
-      {
-        this.a.a(2);
-      }
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationStart: mState:" + MarkDrawable.c(this.a) + " isrun:" + MarkDrawable.a(this.a));
-    }
-    if (this.a.isRunning()) {
-      MarkDrawable.c(this.a, MarkDrawable.c(this.a));
+      SLog.e("Q.qqstory.record.HWEditImportVideoPlayer", "mFragmentInfos is empty");
     }
   }
 }

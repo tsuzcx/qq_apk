@@ -1,31 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebArticleRichReqCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class mlu
-  extends FastWebModule.FastWebArticleRichReqCallback
+  implements Runnable
 {
-  public mlu(FastWebActivity paramFastWebActivity) {}
+  public mlu(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a(boolean paramBoolean, int paramInt, FastWebShareInfo paramFastWebShareInfo)
+  public void run()
   {
-    super.a(paramBoolean, paramInt, paramFastWebShareInfo);
-    if ((paramBoolean) && (paramFastWebShareInfo != null) && (!TextUtils.isEmpty(paramFastWebShareInfo.a(paramInt)))) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ThreadManager.getUIHandler().post(new mlv(this, paramBoolean, paramInt, paramFastWebShareInfo));
-      return;
+    if (this.a.a == 40677) {
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(this.a.a), false);
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString, FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    super.a(paramBoolean, paramString, paramFastWebArticleInfo);
-    this.a.runOnUiThread(new mlw(this, paramFastWebArticleInfo, paramString, paramBoolean));
+    for (;;)
+    {
+      if (this.a.a == 56) {
+        PublicAccountReportUtils.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "0", "", VideoReporter.a(this.a.a, null), false);
+      }
+      return;
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(this.a.a), false);
+    }
   }
 }
 

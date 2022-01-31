@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.data;
 
-import ajdt;
-import ajdu;
-import ajdv;
-import ajdx;
+import ajiw;
+import ajix;
+import ajiy;
+import ajja;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -87,7 +87,7 @@ public class TroopEntranceBar
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ajdx(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ajja(this);
   }
   
   public void a()
@@ -108,7 +108,7 @@ public class TroopEntranceBar
     oidb_0x487.ReqBody localReqBody = new oidb_0x487.ReqBody();
     localReqBody.uint32_channel.set(1);
     localReqBody.uint64_subscribe_code.set(paramLong);
-    ProtoUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajdv(this, paramLong), localReqBody.toByteArray(), "OidbSvc.0x487_0", 1159, paramInt);
+    ProtoUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ajiy(this, paramLong), localReqBody.toByteArray(), "OidbSvc.0x487_0", 1159, paramInt);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -163,7 +163,7 @@ public class TroopEntranceBar
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363508);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363527);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = paramChatAdapter1;
     this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramChatXListView;
@@ -172,8 +172,8 @@ public class TroopEntranceBar
     addObserver(paramObserver);
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(paramContext, paramQQAppInterface);
-    this.d = paramContext.getResources().getColor(2131493587);
-    this.e = paramContext.getResources().getColor(2131493588);
+    this.d = paramContext.getResources().getColor(2131493589);
+    this.e = paramContext.getResources().getColor(2131493590);
     this.jdField_a_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), this.d);
     this.jdField_b_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), this.e);
   }
@@ -184,22 +184,22 @@ public class TroopEntranceBar
       return;
     }
     if (this.jdField_c_of_type_AndroidViewView == null) {
-      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969851, null);
+      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969862, null);
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_c_of_type_AndroidViewView) == -1)
     {
       localObject = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131363508);
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131363527);
       ((RelativeLayout.LayoutParams)localObject).addRule(11);
       ((RelativeLayout.LayoutParams)localObject).height = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 41.0F);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
     }
     if (this.jdField_b_of_type_AndroidViewView == null) {
-      this.jdField_b_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131368277);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131368279);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368279));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368280));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368281));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368282));
     Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
     ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
     ((LinearLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
@@ -208,18 +208,18 @@ public class TroopEntranceBar
     ((LinearLayout.LayoutParams)localObject).width = i;
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130846272);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130846354);
     }
     for (;;)
     {
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841274);
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841300);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_a_of_type_Boolean = true;
       c();
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      ThreadManager.post(new ajdt(this), 8, null, true);
+      ThreadManager.post(new ajiw(this), 8, null, true);
       return;
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130846273);
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130846355);
     }
   }
   
@@ -228,14 +228,14 @@ public class TroopEntranceBar
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368278);
+    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368280);
     localImageView.setVisibility(0);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
     localLayoutParams.height = -2;
     localLayoutParams.width = -2;
     localLayoutParams.leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
     localLayoutParams.rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841275);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841301);
     localLayoutParams.leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 11.0F);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localDrawable.getConstantState().newDrawable(this.jdField_a_of_type_AndroidContentContext.getResources()).mutate();
@@ -248,7 +248,7 @@ public class TroopEntranceBar
     }
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_AndroidGraphicsLightingColorFilter);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131430771);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131430774);
   }
   
   public void d()
@@ -324,12 +324,12 @@ public class TroopEntranceBar
   
   public void onClick(View paramView)
   {
-    ThreadManager.post(new ajdu(this), 8, null, true);
+    ThreadManager.post(new ajix(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopEntranceBar
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.io.Serializable;
-import jml;
+import joo;
 
 public class AVRedPacketConfig$ExpressionInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new jml();
+  public static final Parcelable.Creator CREATOR = new joo();
   public int coolValue;
   public int id;
   public int perfectValue;
@@ -42,7 +42,7 @@ public class AVRedPacketConfig$ExpressionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.service.AVRedPacketConfig.ExpressionInfo
  * JD-Core Version:    0.7.0.1
  */

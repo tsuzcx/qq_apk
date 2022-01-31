@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
 
 public class affn
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public affn(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public affn(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.s = false;
+    this.a.i(paramView);
   }
 }
 

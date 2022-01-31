@@ -1,18 +1,45 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.ar.config.MainDownAni;
-import com.tencent.mobileqq.ar.config.WorldCupStaticInstance;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class aaiy
-  implements PopupWindow.OnDismissListener
+  implements ARPreSoResourceDownload.ARResourceDownloadCallback
 {
-  public aaiy(MainDownAni paramMainDownAni, aaji paramaaji) {}
+  public aaiy(ArConfigService paramArConfigService) {}
   
-  public void onDismiss()
+  public void a() {}
+  
+  public void a(long paramLong1, long paramLong2)
   {
-    QLog.w(MainDownAni.a(), 1, "modifyMenu, onDismiss");
-    WorldCupStaticInstance.a().a = false;
-    this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a(this.jdField_a_of_type_Aaji.d);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    ArConfigService.c(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a)) / 3;
+    if (!ArConfigService.d(this.a)) {
+      ArConfigService.a(this.a).post(new aaiz(this, i));
+    }
+  }
+  
+  public void a(boolean paramBoolean, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
+    {
+      ArConfigService.d(this.a, true);
+      if ((ArConfigService.e(this.a)) && (ArConfigService.f(this.a)) && (ArConfigService.g(this.a))) {
+        ArConfigService.a(this.a).post(new aaja(this));
+      }
+    }
+    while (ArConfigService.d(this.a)) {
+      return;
+    }
+    ArConfigService.a(this.a).post(new aajb(this));
+    ArConfigService.a(this.a, true);
   }
 }
 

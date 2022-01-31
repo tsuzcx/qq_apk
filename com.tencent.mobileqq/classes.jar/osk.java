@@ -1,16 +1,18 @@
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate;
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate.CallBack;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
+import com.tencent.biz.qqstory.troop.model.TroopStoryAIOVideoListSynchronizer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class osk
-  implements Runnable
+  implements BatchHandlerListPuller.IPullResultCallback
 {
-  public osk(CustomAccessibilityDelegate paramCustomAccessibilityDelegate) {}
+  public osk(TroopStoryAIOVideoListSynchronizer paramTroopStoryAIOVideoListSynchronizer, BatchHandlerListPuller paramBatchHandlerListPuller) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (CustomAccessibilityDelegate.a(this.a) != null) {
-      CustomAccessibilityDelegate.a(this.a).b();
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.a.set(false);
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.c();
   }
 }
 

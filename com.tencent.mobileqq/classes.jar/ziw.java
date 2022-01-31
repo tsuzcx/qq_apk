@@ -1,96 +1,64 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class ziw
-  implements Comparator
+  implements Runnable
 {
-  public ziw(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public ziw(ConfigHandler paramConfigHandler, String paramString, StatusManager paramStatusManager, GetResourceRespInfo paramGetResourceRespInfo) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void run()
   {
-    int n = 0;
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
+    boolean bool = true;
+    Object localObject1 = new File(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b.getApplication().getFilesDir(), "rich_status.tmp");
+    Object localObject2 = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
+    int i = HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b, (String)localObject2, (File)localObject1);
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.richstatus.xml", 2, "handleUpdateStatusActions download " + this.jdField_a_of_type_JavaLangString + " result " + i);
     }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    int k;
-    label99:
-    label112:
-    int m;
-    if (j == 0)
-    {
-      if (TextUtils.isEmpty(paramPhoneContact1.uin)) {
-        break label176;
+    String str;
+    if (i == 0) {
+      if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a((File)localObject1, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(7, true, Integer.valueOf(102));
+        localObject1 = StatisticCollector.a(BaseApplication.getContext());
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put("result", String.valueOf(i));
+        ((HashMap)localObject2).put("version", String.valueOf(this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.uiNewVer));
+        ((HashMap)localObject2).put("url", this.jdField_a_of_type_JavaLangString);
+        str = this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b.getCurrentAccountUin();
+        if (i != 0) {
+          break label327;
+        }
       }
-      i = 1;
-      if ((i == 0) || (paramPhoneContact1.uin.equals("0"))) {
-        break label181;
-      }
-      k = 1;
-      if (TextUtils.isEmpty(paramPhoneContact2.uin)) {
-        break label187;
-      }
-      j = 1;
-      if ((j == 0) || (paramPhoneContact2.uin.equals("0"))) {
-        break label193;
-      }
-      m = 1;
-      label132:
-      if (k == 0) {
-        break label199;
-      }
-      i = 0;
     }
     for (;;)
     {
-      label139:
-      if (m != 0) {
-        j = n;
+      ((StatisticCollector)localObject1).a(str, "RichStatusAction", bool, 0L, 0L, (HashMap)localObject2, "");
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(7, false, Integer.valueOf(-3));
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richstatus.xml", 2, "httpdownload failed: " + this.jdField_a_of_type_JavaLangString + ", result " + i);
       }
-      for (;;)
+      if ((i == 4) || (i == 12))
       {
-        i -= j;
-        j = i;
-        if (i == 0) {
-          j = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-        }
-        return j;
-        label176:
-        i = 0;
+        this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(7, false, Integer.valueOf(-3));
         break;
-        label181:
-        k = 0;
-        break label99;
-        label187:
-        j = 0;
-        break label112;
-        label193:
-        m = 0;
-        break label132;
-        label199:
-        if (i == 0) {
-          break label225;
-        }
-        i = 1;
-        break label139;
-        if (j != 0) {
-          j = 1;
-        } else {
-          j = 2;
-        }
       }
-      label225:
-      i = 2;
+      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(7, false, Integer.valueOf(-1));
+      break;
+      label327:
+      bool = false;
     }
   }
 }

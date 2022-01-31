@@ -1,16 +1,24 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.widget.ListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class nfh
-  implements Runnable
+  extends SimpleJob
 {
-  public nfh(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  public nfh(QQStoryCmdHandler paramQQStoryCmdHandler) {}
   
-  public void run()
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.a.a.getFirstVisiblePosition() != this.a.a.getHeaderViewsCount()) {
-      this.a.a.setSelection(this.a.a.getHeaderViewsCount());
+    paramJobContext = ((StoryConfigManager)SuperManager.a(10)).a();
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.a.a(paramJobContext);
     }
+    return null;
   }
 }
 

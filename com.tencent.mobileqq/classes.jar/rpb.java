@@ -1,24 +1,15 @@
-import android.provider.Settings.System;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class rpb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rpb(BaseChatPie paramBaseChatPie, int paramInt) {}
+  public rpb(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      Settings.System.putInt(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getApp().getContentResolver(), "listview_oversroll", this.jdField_a_of_type_Int);
-      return;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      localSecurityException.printStackTrace();
-    }
+    this.a.b();
   }
 }
 

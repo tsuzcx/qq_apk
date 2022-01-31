@@ -1,32 +1,31 @@
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
 
 public class aofv
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public aofv(FlowCameraActivity2 paramFlowCameraActivity2, String paramString, int paramInt) {}
+  public aofv(FaceLayer.FaceItem paramFaceItem) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 2002) {
-      str = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.getString(2131428347);
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a = DialogUtil.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.getString(2131428346), new aofw(this));
-    try
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.setCancelable(false);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.show();
-      return;
-    }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("FlowCameraActivity", 2, "", localBadTokenException);
-    }
+    SLog.b(FaceLayer.a, "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    SLog.b(FaceLayer.a, "scaleAnimator end!");
+    this.a.w = 1.0F;
+    this.a.i = false;
+    this.a.b.k();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SLog.b(FaceLayer.a, "scaleAnimator start!");
+    this.a.i = true;
   }
 }
 

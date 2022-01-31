@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.data.TroopEntranceBar;
+import java.util.List;
 
 public class ajja
-  implements Runnable
+  extends FriendListObserver
 {
-  public ajja(ReciteRecordLayout paramReciteRecordLayout) {}
+  public ajja(TroopEntranceBar paramTroopEntranceBar) {}
   
-  public void run()
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    ReciteRecordLayout.b(this.a);
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).c();
+    if ((paramBoolean) && (paramString != null) && (this.a.a != null) && (this.a.a.size() > 0) && (paramString.equals(((TroopInfo)this.a.a.get(0)).troopuin))) {
+      this.a.c();
     }
   }
 }

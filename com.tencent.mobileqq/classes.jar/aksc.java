@@ -1,38 +1,54 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 public class aksc
-  extends ProtoUtils.TroopProtocolObserver
+  extends Handler
 {
-  public aksc(WerewolvesHandler paramWerewolvesHandler, WerewolvesHandler.Callback paramCallback) {}
+  public aksc() {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public aksc(Looper paramLooper)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback != null)
-    {
-      paramBundle = new oidb_0x8ed.RspBody();
-      if (paramArrayOfByte == null) {}
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (ThemeUiPlugin.reportHandler == null) {
+      ThemeUiPlugin.reportHandler = new aksc(BaseApplication.getContext().getMainLooper());
     }
-    try
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
+      if (ThemeUiPlugin.reportTimes < 3)
       {
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
         if (QLog.isColorLevel()) {
-          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
+          QLog.i("ThemeUiPlugin", 2, ThemeUiPlugin.initDownloadedThemeNumForReport + "," + ThemeUiPlugin.initCurrThemeNameForReport);
         }
+        VasWebviewUtil.reportVasStatus("ThemeMall", "ThemeCount", "0", 0, 0, ThemeUiPlugin.initDownloadedThemeNumForReport, 0, "", "");
+        VasWebviewUtil.reportVasStatus("ThemeMall", "ThemeOn", "0", 0, 0, 0, 0, "theme_" + ThemeUiPlugin.initCurrThemeNameForReport, "");
+        ThemeUiPlugin.reportTimes += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeUiPlugin", 2, "reportTimes is:" + ThemeUiPlugin.reportTimes);
+        }
+        Message localMessage = ThemeUiPlugin.reportHandler.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ThemeUiPlugin.reportHandler.sendMessageDelayed(localMessage, 120000L);
       }
     }
+    else {
+      return;
+    }
+    ThemeUiPlugin.reportTimes = 0;
   }
 }
 

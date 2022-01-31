@@ -65,16 +65,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import lyi;
-import lyj;
-import lyk;
-import lym;
-import lyp;
-import lyr;
-import lys;
-import lyt;
-import lyu;
-import lyv;
+import mbv;
+import mbw;
+import mbx;
+import mbz;
+import mcc;
+import mce;
+import mcf;
+import mcg;
+import mch;
+import mci;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
@@ -88,7 +88,7 @@ public class ReadInJoyDeliverVideoActivity
   private View jdField_a_of_type_AndroidViewView;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
   private ReadInJoyVideoCompositeManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager;
-  ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lyi(this);
+  ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new mbv(this);
   private VideoDeliverController jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferVideoDeliverController;
   private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   private ShareAioResultDialog jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog;
@@ -99,7 +99,7 @@ public class ReadInJoyDeliverVideoActivity
   protected Dialog b;
   private View jdField_b_of_type_AndroidViewView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  ReadInJoyObserver jdField_b_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lyk(this);
+  ReadInJoyObserver jdField_b_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new mbx(this);
   private long jdField_c_of_type_Long;
   private View jdField_c_of_type_AndroidViewView;
   private ImageView jdField_c_of_type_AndroidWidgetImageView;
@@ -184,7 +184,7 @@ public class ReadInJoyDeliverVideoActivity
   private void a(ArrayList paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    String str = getString(2131438909);
+    String str = getString(2131438933);
     StringBuilder localStringBuilder = new StringBuilder();
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
@@ -273,7 +273,7 @@ public class ReadInJoyDeliverVideoActivity
       localImageRequest.jdField_a_of_type_JavaNetURL = new URL(paramString);
       localImageRequest.b = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getHeight();
       localImageRequest.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getWidth();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(localImageRequest, new lys(this));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(localImageRequest, new mcf(this));
       return;
     }
     catch (MalformedURLException paramString)
@@ -301,7 +301,7 @@ public class ReadInJoyDeliverVideoActivity
   private void i()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager = new ReadInJoyVideoCompositeManager();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager.a(new lym(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager.a(new mbz(this));
     PublishParam localPublishParam = (PublishParam)getIntent().getParcelableExtra(PublishParam.a);
     if (localPublishParam != null)
     {
@@ -369,11 +369,11 @@ public class ReadInJoyDeliverVideoActivity
       this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this);
     }
     this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a("发布成功");
-    String str = this.app.getApplication().getString(2131430152);
+    String str = this.app.getApplication().getString(2131430155);
     str = str + "王者荣耀";
-    lyr locallyr = new lyr(this);
-    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(str, locallyr);
-    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(locallyr);
+    mce localmce = new mce(this);
+    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(str, localmce);
+    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(localmce);
     this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
   }
   
@@ -394,14 +394,14 @@ public class ReadInJoyDeliverVideoActivity
   {
     Log.d("ReadInJoyDeliverVideoActivity", "showNetChangeDialog: try to show net change dialog");
     if (Looper.myLooper() != Looper.getMainLooper()) {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new lyt(this));
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new mcg(this));
     }
     do
     {
       return;
       if (this.jdField_b_of_type_AndroidAppDialog == null)
       {
-        this.jdField_b_of_type_AndroidAppDialog = a(this, null, getString(2131438903), new lyu(this), getString(2131438904), new lyv(this), getString(2131438902));
+        this.jdField_b_of_type_AndroidAppDialog = a(this, null, getString(2131438927), new mch(this), getString(2131438928), new mci(this), getString(2131438926));
         this.jdField_b_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
       }
     } while (this.jdField_b_of_type_AndroidAppDialog.isShowing());
@@ -411,7 +411,7 @@ public class ReadInJoyDeliverVideoActivity
   private void p()
   {
     if (Looper.myLooper() != Looper.getMainLooper()) {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new lyj(this));
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new mbw(this));
     }
     while ((this.jdField_b_of_type_AndroidAppDialog == null) || (!this.jdField_b_of_type_AndroidAppDialog.isShowing())) {
       return;
@@ -456,7 +456,7 @@ public class ReadInJoyDeliverVideoActivity
   {
     this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367081));
     this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(LayoutInflater.from(this).inflate(2130969662, (ViewGroup)this.mContentView, false), -2, -2);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(LayoutInflater.from(this).inflate(2130969658, (ViewGroup)this.mContentView, false), -2, -2);
     this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131624681);
     this.jdField_n_of_type_Boolean = true;
   }
@@ -490,12 +490,12 @@ public class ReadInJoyDeliverVideoActivity
     this.jdField_c_of_type_AndroidViewView.setBackgroundColor(1996488704);
     addContentView(this.jdField_c_of_type_AndroidViewView, new ViewGroup.LayoutParams(-1, -1));
     this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView = View.inflate(this, 2130969666, null);
+    this.jdField_b_of_type_AndroidViewView = View.inflate(this, 2130969662, null);
     addContentView(this.jdField_b_of_type_AndroidViewView, new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)this.jdField_b_of_type_AndroidViewView.findViewById(2131363567));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)this.jdField_b_of_type_AndroidViewView.findViewById(2131363586));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(5.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, -1, 100, getResources().getColor(2131493399));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131367366));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131367368));
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     s();
   }
@@ -511,7 +511,7 @@ public class ReadInJoyDeliverVideoActivity
   protected void a(int paramInt)
   {
     super.a(paramInt);
-    setRightButton(2131438907, this);
+    setRightButton(2131438931, this);
     a(false);
   }
   
@@ -656,7 +656,7 @@ public class ReadInJoyDeliverVideoActivity
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyDeliverVideoActivity", 2, "onDeliver no video!");
       }
-      a(1, getString(2131438921));
+      a(1, getString(2131438945));
     }
     while (!super.a()) {
       return false;
@@ -733,8 +733,8 @@ public class ReadInJoyDeliverVideoActivity
       if (this.jdField_p_of_type_Boolean)
       {
         setRightViewTextDisable(0);
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(getString(2131438923));
-        this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new lyp(this), 30000L);
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(getString(2131438947));
+        this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new mcc(this), 30000L);
       }
       q();
       if (!this.jdField_p_of_type_Boolean) {
@@ -838,8 +838,8 @@ public class ReadInJoyDeliverVideoActivity
   {
     this.jdField_d_of_type_Long = System.currentTimeMillis();
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969598);
-    a(2131438906);
+    super.setContentView(2130969594);
+    a(2131438930);
     a();
     b();
     i();
@@ -901,7 +901,7 @@ public class ReadInJoyDeliverVideoActivity
     {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(100);
       l();
-      a(1, getString(2131438894));
+      a(1, getString(2131438918));
     }
     do
     {
@@ -910,14 +910,14 @@ public class ReadInJoyDeliverVideoActivity
       {
         this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(101);
         l();
-        a(1, getString(2131437356));
+        a(1, getString(2131437376));
         return true;
       }
       if (paramMessage.what == 102)
       {
         this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(102);
         l();
-        a(1, getString(2131438898));
+        a(1, getString(2131438922));
         return true;
       }
       if (paramMessage.what == 103)
@@ -931,21 +931,21 @@ public class ReadInJoyDeliverVideoActivity
         this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(104);
         l();
         p();
-        a(1, getString(2131438901));
+        a(1, getString(2131438925));
         return true;
       }
       if (paramMessage.what == 105)
       {
         this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(105);
         l();
-        a(1, getString(2131438892));
+        a(1, getString(2131438916));
         return true;
       }
       if (paramMessage.what == 106)
       {
         this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(106);
         l();
-        a(1, getString(2131438895));
+        a(1, getString(2131438919));
         return true;
       }
       if (paramMessage.what == 107)
@@ -954,10 +954,10 @@ public class ReadInJoyDeliverVideoActivity
         l();
         if (this.s)
         {
-          a(0, getString(2131438896));
+          a(0, getString(2131438920));
           return true;
         }
-        a(0, getString(2131438897));
+        a(0, getString(2131438921));
         return true;
       }
     } while (paramMessage.what != 108);
@@ -997,7 +997,7 @@ public class ReadInJoyDeliverVideoActivity
       if (!this.jdField_p_of_type_Boolean) {
         c(this.jdField_f_of_type_JavaLangString);
       }
-    case 2131367366: 
+    case 2131367368: 
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferVideoDeliverController.b();
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(103);
       PublicAccountReportUtils.a(this.app, "", "0X80081DA", "0X80081DA", 0, 0, "", "", "", VideoReporter.a(null), false);

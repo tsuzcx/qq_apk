@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import rdu;
+import rim;
 
 public class DFObserver
   implements Observer
@@ -48,7 +48,7 @@ public class DFObserver
       }
       paramObject = new DropResultObject(Long.parseLong((String)paramObservable.get("dropCount")), Long.parseLong((String)paramObservable.get("totalMs")), paramObject);
       paramObject.a = Integer.parseInt(MagnifierSDK.a());
-      paramObservable = new rdu(MagnifierSDK.a, (String)paramObservable.get("scene"), paramObject);
+      paramObservable = new rim(MagnifierSDK.a, (String)paramObservable.get("scene"), paramObject);
       a.post(paramObservable);
       return;
     }

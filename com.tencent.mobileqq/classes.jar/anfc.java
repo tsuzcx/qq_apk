@@ -1,43 +1,85 @@
-import CardPay.LBSInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.os.Message;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
+import com.tencent.component.network.module.report.ImageDownloadReporter;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.thirdpay.ThirdPayManager;
+import cooperation.qzone.plugin.QZonePluginDownloader;
+import cooperation.qzone.plugin.QZonePluginUtils;
+import java.io.File;
 
-public final class anfc
-  extends SosoInterface.OnLocationListener
+public class anfc
+  implements Downloader.DownloadListener
 {
-  public anfc(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, QQAppInterface paramQQAppInterface)
+  anfd jdField_a_of_type_Anfd;
+  
+  public anfc(QZonePluginDownloader paramQZonePluginDownloader, anfd paramanfd)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_Anfd = paramanfd;
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onDownloadCanceled(String paramString)
   {
-    String str;
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginManger", 1, "plugin download canceled, url=" + paramString);
+    }
+    paramString = Message.obtain(this.jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader.a, 2);
+    paramString.obj = this.jdField_a_of_type_Anfd;
+    paramString.sendToTarget();
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramString = Message.obtain(this.jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader.a, 3);
+    paramString.obj = this.jdField_a_of_type_Anfd;
+    paramString.arg1 = -9999;
+    if ((paramDownloadResult != null) && (paramDownloadResult.getReport() != null)) {}
+    for (;;)
+    {
+      try
+      {
+        paramDownloadResult = new ImageDownloadReporter().obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
+        paramString.arg1 = paramDownloadResult.retCode;
+        if (!AppNetConnInfo.isNetSupport()) {
+          continue;
+        }
+        i = 1;
+        paramString.arg2 = i;
+        QLog.w("QZonePluginManger", 1, "plugin download failed, code=" + paramDownloadResult.retCode + ", arg2=" + paramString.arg2);
+      }
+      catch (Exception paramDownloadResult)
+      {
+        int i;
+        QLog.w("QZonePluginManger", 1, "onDownloadFailed", paramDownloadResult);
+        continue;
+      }
+      paramString.sendToTarget();
+      return;
+      i = 0;
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    QZonePluginDownloader.a(this.jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader, (int)(100.0F * paramFloat));
+    paramString = Message.obtain(this.jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader.a, 5);
+    anfd.a(this.jdField_a_of_type_Anfd).a = paramFloat;
+    paramString.obj = this.jdField_a_of_type_Anfd;
+    paramString.sendToTarget();
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
     if (QLog.isColorLevel())
     {
-      if (paramSosoLbsInfo == null)
-      {
-        str = "soso lbs info null.";
-        QLog.i("ThirdPayManager", 2, str);
-      }
+      QLog.d("QZonePluginManger", 2, "onDownloadSucceed, downloaded path:" + paramDownloadResult.getPath());
+      paramString = QZonePluginUtils.e(QZonePluginDownloader.a(this.jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader), anfd.a(this.jdField_a_of_type_Anfd));
+      QLog.d("QZonePluginManger", 2, "onDownloadSucceed, saved path:" + paramString + ", exsit:" + paramString.exists());
     }
-    else {
-      if ((paramInt != 0) || (paramSosoLbsInfo == null)) {
-        break label110;
-      }
-    }
-    label110:
-    for (paramSosoLbsInfo = new LBSInfo(paramSosoLbsInfo.a.jdField_a_of_type_Double, paramSosoLbsInfo.a.b, paramSosoLbsInfo.a.jdField_e_of_type_Double, paramSosoLbsInfo.a.jdField_a_of_type_Float, paramSosoLbsInfo.a.d, paramSosoLbsInfo.a.jdField_e_of_type_JavaLangString, paramSosoLbsInfo.a.g, paramSosoLbsInfo.a.h);; paramSosoLbsInfo = new LBSInfo())
-    {
-      ThirdPayManager.a(this.a, paramSosoLbsInfo);
-      return;
-      str = paramSosoLbsInfo.toString();
-      break;
-    }
+    paramString = Message.obtain(this.jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader.a, 4);
+    paramString.obj = this.jdField_a_of_type_Anfd;
+    paramString.sendToTarget();
   }
 }
 

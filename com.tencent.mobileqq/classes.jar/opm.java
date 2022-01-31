@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer.OnCloseListener;
+import com.tencent.biz.qqstory.base.download.DownloaderImp;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class opm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public opm(StoryVideoPlayer paramStoryVideoPlayer) {}
+  public opm(EditVideoMusicDialog paramEditVideoMusicDialog, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.a(1);
-      this.a.e();
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a = new DownloaderImp();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
   }
 }
 

@@ -10,11 +10,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import mqq.os.MqqHandler;
-import nhi;
-import nhj;
-import nhk;
-import nhl;
-import nhm;
+import nls;
+import nlt;
+import nlu;
+import nlv;
+import nlw;
 
 public class JobExecutor
   implements Job.JobExecutorCallback
@@ -41,7 +41,7 @@ public class JobExecutor
       paramJob.a();
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new nhj(this, paramJob));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new nlt(this, paramJob));
   }
   
   private void a(@NonNull ConcurrentHashMap paramConcurrentHashMap)
@@ -49,7 +49,7 @@ public class JobExecutor
     if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
       return;
     }
-    a(new nhi(this, (Job)this.jdField_a_of_type_JavaUtilList.get(0), paramConcurrentHashMap));
+    a(new nls(this, (Job)this.jdField_a_of_type_JavaUtilList.get(0), paramConcurrentHashMap));
   }
   
   public JobExecutor a(@NonNull Job paramJob)
@@ -103,10 +103,10 @@ public class JobExecutor
           localJob.a(localJob.b());
           return;
         }
-        ThreadManager.getUIHandler().post(new nhk(this, localJob));
+        ThreadManager.getUIHandler().post(new nlu(this, localJob));
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new nhl(this, localJob));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new nlv(this, localJob));
       return;
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback != null) {
@@ -142,7 +142,7 @@ public class JobExecutor
     } while (!this.jdField_a_of_type_JavaUtilList.isEmpty());
     a();
     return;
-    ThreadManager.getUIHandler().post(new nhm(this, localJob));
+    ThreadManager.getUIHandler().post(new nlw(this, localJob));
     return;
     label108:
     if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor$IOnJobExecuteResultCallback != null) {

@@ -1,46 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
 
-class ybw
-  implements Runnable
+public final class ybw
+  implements Parcelable.Creator
 {
-  ybw(ybv paramybv, List paramList) {}
-  
-  public void run()
+  public BarrageParcelItem a(Parcel paramParcel)
   {
-    int i = 0;
-    try
-    {
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("onUpdateTroopGetMemberList:");
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          break label159;
-        }
-      }
-      for (;;)
-      {
-        QLog.d("TroopAddFrdsInnerFrame", 2, i);
-        this.jdField_a_of_type_Ybv.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_Ybv.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("key_last_update_time" + this.jdField_a_of_type_Ybv.a.b, System.currentTimeMillis()).commit();
-        TroopAddFrdsInnerFrame.a(this.jdField_a_of_type_Ybv.a, this.jdField_a_of_type_Ybv.a.b, this.jdField_a_of_type_JavaUtilList);
-        return;
-        label159:
-        i = this.jdField_a_of_type_JavaUtilList.size();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopAddFrdsInnerFrame", 2, "onUpdateTroopGetMemberList:" + localException.toString());
-      }
-    }
+    return new BarrageParcelItem(paramParcel);
+  }
+  
+  public BarrageParcelItem[] a(int paramInt)
+  {
+    return new BarrageParcelItem[paramInt];
   }
 }
 

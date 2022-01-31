@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils.TroopPrivilegeCallback;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import java.util.ArrayList;
+import mqq.observer.AccountObserver;
 
-class udc
-  implements Runnable
+public class udc
+  extends AccountObserver
 {
-  udc(uda paramuda, int paramInt1, int paramInt2, String paramString) {}
+  public udc(TroopInfoActivity paramTroopInfoActivity, TroopAvatarManger paramTroopAvatarManger, ArrayList paramArrayList) {}
   
-  public void run()
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Uda.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotificationUtils$TroopPrivilegeCallback.a(this.jdField_a_of_type_Uda.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Uda.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    super.onUpdateSKey(paramString1, paramString2);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.c) {
+      return;
+    }
+    if (paramString1 == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.runOnUiThread(new udd(this));
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity));
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(TroopUploadingThread.class, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.app, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a.troopcode, paramString1, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.app.getCurrentAccountUin(), null);
   }
 }
 

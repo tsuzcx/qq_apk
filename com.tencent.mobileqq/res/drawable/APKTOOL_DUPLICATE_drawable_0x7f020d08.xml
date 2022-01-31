@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_pressed="false">
+    <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0274" />
-            <corners android:radius="2.0dip" />
-        </shape>
-    </item>
-    <item android:state_enabled="false">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0272" />
-            <corners android:radius="2.0dip" />
-        </shape>
-    </item>
-    <item android:state_enabled="true" android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0274" />
-            <corners android:radius="2.0dip" />
+            <corners android:radius="20.0dip" />
+            <solid android:color="#ff555555" />
         </shape>
     </item>
 </selector>

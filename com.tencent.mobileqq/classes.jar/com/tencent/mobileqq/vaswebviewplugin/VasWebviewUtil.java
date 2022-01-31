@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import akko;
+import aksd;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -64,7 +64,7 @@ public class VasWebviewUtil
     if (QLog.isColorLevel()) {
       QLog.i("VasWebviewUtil", 2, "decodeUrl:" + paramString);
     }
-    String str1 = paramString.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "7.6.3.3565").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+    String str1 = paramString.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "7.6.8.3615").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
     String str2 = paramIntent.getStringExtra("updateTime");
     paramString = str1;
     if (str2 != null)
@@ -218,7 +218,7 @@ public class VasWebviewUtil
           if (TextUtils.isEmpty(paramString)) {
             continue;
           }
-          paramContext = paramString.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "7.6.3.3565").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+          paramContext = paramString.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "7.6.8.3615").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
           continue;
         }
         if (k == 9)
@@ -227,7 +227,7 @@ public class VasWebviewUtil
           localObject1 = paramContext;
           if (!TextUtils.isEmpty(paramContext))
           {
-            localObject1 = paramContext.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "7.6.3.3565").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
+            localObject1 = paramContext.replace("[uin]", BaseApplicationImpl.sApplication.getRuntime().getAccount()).replace("[client]", "androidQQ").replace("[version]", "7.6.8.3615").replace("[platformId]", "2").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE);
             paramString = (String)localObject1;
           }
           paramContext = paramString;
@@ -363,12 +363,12 @@ public class VasWebviewUtil
   {
     if (!Utils.a())
     {
-      Toast.makeText(paramContext, paramContext.getString(2131434770), 0).show();
+      Toast.makeText(paramContext, paramContext.getString(2131434786), 0).show();
       return false;
     }
     if (Utils.b() < 5242880L)
     {
-      Toast.makeText(paramContext, paramContext.getString(2131434771), 0).show();
+      Toast.makeText(paramContext, paramContext.getString(2131434787), 0).show();
       return false;
     }
     return true;
@@ -565,7 +565,7 @@ public class VasWebviewUtil
     if (QLog.isColorLevel()) {
       QLog.d("VasWebviewUtil", 2, "prepare to read async cookie!");
     }
-    ThreadManager.post(new akko(), 5, null, true);
+    ThreadManager.post(new aksd(), 5, null, true);
   }
   
   public static void reportCommercialDrainage(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7)
@@ -805,7 +805,7 @@ public class VasWebviewUtil
               }
               i += 1;
             }
-            paramAppInterface = Arrays.asList(new String[] { "1", str, VipComicReportUtils.jdField_a_of_type_JavaLangString, "", "android", "201", Build.VERSION.RELEASE, "3001", "3001013", "", "", paramString1, "", "", "", paramString2, "", paramString3, "", "", paramString4, "", "", "7.6.3", "", "", "", "", "", "android", paramAppInterface, VipComicReportUtils.b, "", localObject[0], localObject[1], localObject[2], localObject[3], localObject[4], localObject[5], localObject[6], localObject[7], localObject[8] });
+            paramAppInterface = Arrays.asList(new String[] { "1", str, VipComicReportUtils.jdField_a_of_type_JavaLangString, "", "android", "201", Build.VERSION.RELEASE, "3001", "3001013", "", "", paramString1, "", "", "", paramString2, "", paramString3, "", "", paramString4, "", "", "7.6.8", "", "", "", "", "", "android", paramAppInterface, VipComicReportUtils.b, "", localObject[0], localObject[1], localObject[2], localObject[3], localObject[4], localObject[5], localObject[6], localObject[7], localObject[8] });
             VipComicReportUtils.a(localQQAppInterface, "dc00145", paramAppInterface);
             if (!QLog.isColorLevel()) {
               break;
@@ -867,7 +867,7 @@ public class VasWebviewUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil
  * JD-Core Version:    0.7.0.1
  */

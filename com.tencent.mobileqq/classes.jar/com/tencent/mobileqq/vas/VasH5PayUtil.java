@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.vas;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,6 +36,49 @@ public class VasH5PayUtil
       QLog.d("VasH5PayUtil", 2, "getOpenVipParam result = " + localStringBuilder.toString());
     }
     return localStringBuilder.toString();
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
+  {
+    StringBuilder localStringBuilder;
+    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
+    {
+      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+      localStringBuilder = new StringBuilder("http://imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
+      localStringBuilder.append(paramString1);
+      if (!"CJCLUBT".equals(paramString2)) {
+        break label142;
+      }
+      if (!paramBoolean2) {
+        break label131;
+      }
+      localStringBuilder.append("&type=!svip");
+      if (paramInt1 > 0)
+      {
+        if (!paramBoolean1) {
+          break label162;
+        }
+        localStringBuilder.append("&month=!" + paramInt1);
+      }
+    }
+    for (;;)
+    {
+      paramString1 = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
+      paramString1.putExtra("url", localStringBuilder.toString());
+      paramActivity.startActivityForResult(paramString1, paramInt2);
+      return;
+      label131:
+      localStringBuilder.append("&type=svip");
+      break;
+      label142:
+      if (!"LTMCLUB".equals(paramString2)) {
+        break;
+      }
+      localStringBuilder.append("&type=vip");
+      break;
+      label162:
+      localStringBuilder.append("&month=" + paramInt1);
+    }
   }
   
   private static void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
@@ -224,7 +268,7 @@ public class VasH5PayUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasH5PayUtil
  * JD-Core Version:    0.7.0.1
  */

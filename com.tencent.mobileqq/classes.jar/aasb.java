@@ -1,45 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiDictMgr;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.VasUtils;
-import com.tencent.wordsegment.WordSegment;
-import java.util.Locale;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
 
-public final class aasb
+class aasb
   implements Runnable
 {
-  public aasb(QQAppInterface paramQQAppInterface) {}
+  aasb(aarz paramaarz) {}
   
   public void run()
   {
-    try
-    {
-      if (ArkAiDictMgr.a(this.a))
-      {
-        WordSegment.uninit();
-        int i = WordSegment.init(ArkAppCenter.e() + '/');
-        if (i != 0)
-        {
-          ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));
-          return;
-        }
-        ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData success", new Object[0]));
-        ArkAiDictMgr.b = true;
-        VasUtils.a(this.a);
-        return;
-      }
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      ArkAppCenter.b("ArkApp.Dict", "reloadWordData, UnsatisfiedLinkError, err:" + localUnsatisfiedLinkError.getMessage());
-      return;
-    }
-    ArkAppCenter.b("ArkApp.Dict", String.format("reloadWordData, dict flag is off", new Object[0]));
+    ARBlessWordFragment.b(this.a.a);
+    ARBlessWordFragment.c(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasb
  * JD-Core Version:    0.7.0.1
  */

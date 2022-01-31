@@ -1,26 +1,52 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.data.EmoticonTab;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.Iterator;
+import java.util.List;
 
 public class aeqj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aeqj(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public aeqj(EmoticonManager paramEmoticonManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
+    String str;
+    synchronized (this.a)
     {
-      this.a.a.dismiss();
-      this.a.a = null;
-      this.a.e("0X800590A");
+      this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(EmoticonTab.class.getSimpleName());
+      EntityTransaction localEntityTransaction = this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
+      try
+      {
+        localEntityTransaction.a();
+        Iterator localIterator1 = this.a.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator1.hasNext())
+        {
+          str = (String)localIterator1.next();
+          EmoticonManager.a(this.a, str, true, false);
+          continue;
+          localObject1 = finally;
+        }
+      }
+      finally
+      {
+        localEntityTransaction.b();
+      }
     }
+    Iterator localIterator2 = this.a.b.iterator();
+    while (localIterator2.hasNext())
+    {
+      str = (String)localIterator2.next();
+      EmoticonManager.a(this.a, str, false, true);
+    }
+    localObject1.c();
+    localObject1.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqj
  * JD-Core Version:    0.7.0.1
  */

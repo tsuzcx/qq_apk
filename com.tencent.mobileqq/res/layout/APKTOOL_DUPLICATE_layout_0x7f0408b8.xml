@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27a8" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021777" android:clickable="true" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
-        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27a9" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="搜索附近位置" android:maxLength="10" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022129" android:drawablePadding="3.0dip" android:layout_centerInParent="true" android:inputType="textMultiLine" />
-    </RelativeLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27aa" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:listSelector="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218a4" android:divider="@null" android:dividerHeight="0.0dip" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27ab" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-            <ProgressBar android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateOnly="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02179b" android:indeterminateBehavior="repeat" />
-            <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="正在搜索附近位置" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27ac" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-            <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="位置获取失败，点击重试" />
-            <ImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217ea" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2694" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.intervideo.now.HorizontalLoadingView android:layout_gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2695" android:layout_width="fill_parent" android:layout_height="183.0dip" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20e2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip">
+            <com.tencent.biz.ui.RoundProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a279a" android:layout_width="130.0dip" android:layout_height="130.0dip" />
+            <TextView android:textSize="33.0dip" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25b7" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </FrameLayout>
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a279b" android:layout_width="255.0dip" android:layout_height="5.0dip" android:layout_marginTop="6.0dip" android:max="100" android:progress="1" android:indeterminate="false" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021911" style="?android:attr/progressBarStyleHorizontal" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a279c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff50ffcd" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20ea" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="请点击屏幕重试" />
+    </LinearLayout>
+</FrameLayout>

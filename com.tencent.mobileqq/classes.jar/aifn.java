@@ -1,31 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.QFixApplicationImpl;
-import com.tencent.hotpatch.PatchSecurityMode;
-import com.tencent.hotpatch.config.BasePatchConfig;
-import com.tencent.hotpatch.config.PatchConfigManager;
-import com.tencent.hotpatch.utils.PatchSharedPreUtil;
-import com.tencent.mobileqq.startup.step.Rdm;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
 
 public class aifn
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aifn(Rdm paramRdm, String paramString) {}
+  public aifn(DanceReadyFilter paramDanceReadyFilter) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (BaseApplicationImpl.sProcessId == 1) {
-      PatchSecurityMode.a(BaseApplicationImpl.sApplication, 0);
-    }
-    BasePatchConfig localBasePatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "dex");
-    if ((localBasePatchConfig != null) && (localBasePatchConfig.a(BaseApplicationImpl.sApplication, true))) {
-      PatchSharedPreUtil.b(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString, localBasePatchConfig.c, 0);
-    }
-    QFixApplicationImpl.a(BaseApplicationImpl.sApplication);
+    DanceReadyFilter.f(this.a).f_(false);
+    this.a.a.a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aifn
  * JD-Core Version:    0.7.0.1
  */

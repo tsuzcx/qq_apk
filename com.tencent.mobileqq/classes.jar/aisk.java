@@ -1,18 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aisk
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public aisk(TribePostTitlePrefixPanelController paramTribePostTitlePrefixPanelController) {}
+  public aisk(ConfigSetting paramConfigSetting) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), i, 0, 0);
+    this.a.a.getApp().getSharedPreferences(this.a.a.getCurrentAccountUin() + "_m_str_teamwork_tips_sp", 0).edit().putInt("file_str_key_max_count_local", ConfigSetting.f(this.a)).commit();
   }
 }
 

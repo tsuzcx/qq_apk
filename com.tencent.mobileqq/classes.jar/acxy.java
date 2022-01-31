@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
 
-public class acxy
-  extends acxu
+class acxy
+  implements Runnable
 {
-  public acxy(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  acxy(acxw paramacxw, long paramLong) {}
   
-  protected String a()
+  public void run()
   {
-    return "StateGotoOffFileProcess";
+    this.jdField_a_of_type_Acxw.a.d();
+    QfileBaseCloudFileTabView.k(this.jdField_a_of_type_Acxw.a).a().a(this.jdField_a_of_type_Long);
   }
 }
 

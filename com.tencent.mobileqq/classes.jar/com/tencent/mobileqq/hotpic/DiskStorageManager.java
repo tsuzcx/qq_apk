@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adpp;
+import adxy;
 import android.util.Log;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -68,7 +68,7 @@ public class DiskStorageManager
   
   public void a(File paramFile)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new adpp(this, paramFile));
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new adxy(this, paramFile));
   }
   
   protected boolean a(File paramFile, long paramLong, int paramInt)

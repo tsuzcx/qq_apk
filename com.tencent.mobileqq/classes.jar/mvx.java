@@ -1,8 +1,15 @@
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class mvx
+  implements Runnable
 {
-  public int a;
-  public String a;
-  public String b;
+  public mvx(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface, String paramString) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

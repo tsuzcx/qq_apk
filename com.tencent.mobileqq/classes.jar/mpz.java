@@ -1,13 +1,17 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class mpz
+  implements Runnable
 {
-  public TextView a;
-  public URLImageView a;
-  public mpy a;
-  public TextView b;
-  public TextView c;
+  public mpz(FastWebActivity paramFastWebActivity) {}
+  
+  public void run()
+  {
+    if (FastWebActivity.a(this.a) != null) {
+      FastWebActivity.a(this.a).notifyDataSetChanged();
+    }
+  }
 }
 
 

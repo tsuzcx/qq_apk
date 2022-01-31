@@ -1,30 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 
 public class abqz
-  extends LBSObserver
+  implements Runnable
 {
-  public abqz(LocationSelectActivity paramLocationSelectActivity) {}
+  public abqz(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public void run()
   {
-    if (paramLBSInfo != null) {}
-    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
-    {
-      this.a.a(paramBoolean, paramLBSInfo);
-      return;
+    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
+    this.a.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    if (this.a.jdField_e_of_type_Boolean) {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
-    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
+    for (;;)
+    {
+      this.a.d.setVisibility(4);
+      this.a.c.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(4);
+      this.a.jdField_e_of_type_AndroidWidgetTextView.setVisibility(4);
+      return;
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqz
  * JD-Core Version:    0.7.0.1
  */

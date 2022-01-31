@@ -29,9 +29,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
-import lrn;
-import lro;
-import lrp;
+import lur;
+import lus;
+import lut;
 import tencent.im.oidb.cmd0xb81.oidb_cmd0xb81.AccountInfo;
 import tencent.im.oidb.cmd0xb81.oidb_cmd0xb81.GetUserInfoReq;
 import tencent.im.oidb.cmd0xb81.oidb_cmd0xb81.GetUserInfoRsp;
@@ -142,7 +142,7 @@ public class ReadInJoyUserInfoModule
       return;
     }
     QLog.d("ReadInJoyUserInfoModule", 2, "request0xb81UserInfo.");
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lro(this, paramRequest0xb81Params));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lus(this, paramRequest0xb81Params));
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -226,7 +226,7 @@ public class ReadInJoyUserInfoModule
       }
       paramToServiceMsg.addAttribute("retry_request_count_key", Integer.valueOf(paramObject.intValue() + 1));
       if ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService != null) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lrp(this, paramToServiceMsg));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lut(this, paramToServiceMsg));
       }
     }
     for (;;)
@@ -287,7 +287,7 @@ public class ReadInJoyUserInfoModule
       ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(new WeakReference(paramRefreshUserInfoCallBack));
     }
     if ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService != null) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lrn(this, paramString, paramInt1, paramInt2, paramInt3));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lur(this, paramString, paramInt1, paramInt2, paramInt3));
     }
     return null;
   }

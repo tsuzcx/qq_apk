@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation.AnimationListener;
-import opu;
+import ouj;
 
 public class AnimationPoint
   extends View
@@ -21,7 +21,7 @@ public class AnimationPoint
   public Handler a;
   AccelerateDecelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator;
   public Animation.AnimationListener a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new opu(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ouj(this);
   public boolean a;
   protected int b;
   public long b;

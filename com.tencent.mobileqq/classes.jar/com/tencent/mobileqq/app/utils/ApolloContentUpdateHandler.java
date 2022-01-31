@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.utils;
 
+import aadg;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -40,7 +41,6 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
-import zwt;
 
 public class ApolloContentUpdateHandler
   extends BusinessHandler
@@ -102,7 +102,7 @@ public class ApolloContentUpdateHandler
     Object localObject1 = paramQQAppInterface.getCurrentAccountUin();
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("7.6.3.3565");
+    localReqBody.str_clientver.set("7.6.8.3615");
     localReqBody.uint_uin.set(Long.parseLong((String)localObject1));
     Object localObject2 = new ClubContentUpdateInfoPb.ReqItemInfo();
     ((ClubContentUpdateInfoPb.ReqItemInfo)localObject2).uint_version.set(i);
@@ -237,7 +237,7 @@ public class ApolloContentUpdateHandler
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("7.6.3.3565");
+    localReqBody.str_clientver.set("7.6.8.3615");
     localReqBody.uint_uin.set(Long.parseLong(str));
     int i;
     if (paramArrayList == null)
@@ -397,7 +397,7 @@ public class ApolloContentUpdateHandler
         QLog.i("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo roleId: 0, ver: " + l / 1000L);
         localObject2 = new File(ApolloConstant.f);
         if ((((File)localObject2).exists()) && (((File)localObject2).isDirectory())) {
-          ((File)localObject2).listFiles(new zwt(this, (SparseArray)localObject1));
+          ((File)localObject2).listFiles(new aadg(this, (SparseArray)localObject1));
         }
         localObject2 = new ArrayList();
         i = 0;

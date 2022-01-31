@@ -1,56 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import java.util.ArrayList;
 
-class otl
-  implements Runnable
+public class otl
+  extends ExecuteBinResponseCallback
 {
-  otl(otk paramotk, String paramString) {}
+  public otl(FFmpeg paramFFmpeg, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback) {}
   
-  public void run()
+  public void a()
   {
-    if (this.jdField_a_of_type_Otk.a.isFinishing()) {}
-    do
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    FFmpeg localFFmpeg;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.jdField_a_of_type_JavaUtilArrayList.size() == 0)
     {
-      do
-      {
-        do
-        {
-          return;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          QRUtils.a(1, 2131430004);
-        } while (this.jdField_a_of_type_Otk.a.jdField_c_of_type_Int != 2);
-        if (this.jdField_a_of_type_Otk.a.h == 2) {}
-        for (String str = "qr_wechat";; str = "qr_circle")
-        {
-          TroopReportor.a("Grp_share", "grpData_admin", str, 0, 0, new String[] { this.jdField_a_of_type_Otk.a.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Otk.a.a), "1" });
-          return;
-        }
-        if (this.jdField_a_of_type_Otk.a.h != 2) {
-          break;
-        }
-        WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Otk.a.b, 0);
-        if (this.jdField_a_of_type_Otk.a.jdField_c_of_type_Int == 2)
-        {
-          ReportController.b(this.jdField_a_of_type_Otk.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_wechat", 0, 0, this.jdField_a_of_type_Otk.a.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Otk.a.a), "");
-          return;
-        }
-      } while (this.jdField_a_of_type_Otk.a.jdField_c_of_type_Int != 5);
-      ReportController.b(this.jdField_a_of_type_Otk.a.app, "CliOper", "", "", "0X8006676", "0X8006676", 0, 0, "", "", "", "");
-      return;
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Otk.a.b, 1);
-      if (this.jdField_a_of_type_Otk.a.jdField_c_of_type_Int == 2)
-      {
-        ReportController.b(this.jdField_a_of_type_Otk.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_circle", 0, 0, this.jdField_a_of_type_Otk.a.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Otk.a.a), "");
-        return;
+      localFFmpeg = this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg;
+      if (!paramBoolean) {
+        break label44;
       }
-    } while (this.jdField_a_of_type_Otk.a.jdField_c_of_type_Int != 5);
-    ReportController.b(this.jdField_a_of_type_Otk.a.app, "CliOper", "", "", "0X8006677", "0X8006677", 0, 0, "", "", "", "");
+    }
+    label44:
+    for (int i = 1;; i = 0)
+    {
+      localFFmpeg.jdField_a_of_type_Int = i;
+      FFmpeg.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg = null;
+      this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.a(paramBoolean);
+      return;
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.b(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.c(paramString);
   }
 }
 

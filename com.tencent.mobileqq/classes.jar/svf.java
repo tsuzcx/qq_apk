@@ -1,17 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class svf
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public svf(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public svf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void run()
+  {
+    this.a.G();
+    this.a.I();
+  }
 }
 
 

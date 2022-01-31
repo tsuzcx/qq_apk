@@ -1,35 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 
-class mxh
-  implements PublicAccountImageDownListener
+public class mxh
+  implements Runnable
 {
-  mxh(mxc parammxc, boolean paramBoolean, long paramLong, ImageProgressCircle paramImageProgressCircle) {}
+  public mxh(SubscriptRecommendController paramSubscriptRecommendController) {}
   
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
+    this.a.jdField_a_of_type_Boolean = SubscriptRecommendController.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (PublicAccountUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      this.a.jdField_a_of_type_Boolean = true;
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(true, this.jdField_a_of_type_Long);
-    }
-    mxc.a(this.jdField_a_of_type_Mxc, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-  }
-  
-  public void a(URL paramURL, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      PublicAccountImageCollectionPreloadManager.a().b(false, this.jdField_a_of_type_Long);
-    }
-    mxc.a(this.jdField_a_of_type_Mxc, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
   }
 }
 

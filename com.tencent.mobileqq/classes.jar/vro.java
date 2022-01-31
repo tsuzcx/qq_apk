@@ -1,52 +1,22 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
 
-public class vro
-  implements View.OnClickListener
+class vro
+  implements Runnable
 {
-  public vro(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  vro(vrn paramvrn, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    boolean bool = true;
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof Integer))) {
-      return;
-    }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    switch (((Integer)paramView).intValue())
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-    default: 
-      return;
-    case 1: 
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
-      return;
-    case 2: 
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentQidianQidianManager.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-    {
-      paramView = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433698);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("param_return_addr") != null) {}
-      for (;;)
-      {
-        ChatActivityUtils.a(paramView, (SessionInfo)localObject, str, bool);
-        return;
-        bool = false;
+      this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Vrn.jdField_a_of_type_Int, true);
+      this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Vrn.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct, false);
+      if (AIOGalleryAdapter.a(this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter) != null) {
+        AIOGalleryAdapter.a(this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter).a(this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a());
       }
     }
-    this.a.ba();
   }
 }
 

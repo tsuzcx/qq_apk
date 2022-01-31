@@ -1,29 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class addi
-  implements DialogInterface.OnClickListener
+  extends FMObserver
 {
-  public addi(MPcFileModel paramMPcFileModel) {}
+  public addi(FileManagerRSCenter paramFileManagerRSCenter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.a.c();
-    this.a.a.removeObserver(MPcFileModel.a(this.a));
-    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
-    localIntent.addFlags(67108864);
-    this.a.a.getApplication().startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
+    }
+    this.a.a(paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     addi
  * JD-Core Version:    0.7.0.1
  */

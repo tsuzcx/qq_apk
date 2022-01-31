@@ -9,8 +9,8 @@ import com.tencent.qphone.base.util.QLog;
 public class BubbleUtils
 {
   public static BubbleInfo a = new BubbleInfo(0);
-  public static BubbleInfo b = new BubbleInfo(100000, 2130843895, 2130843896);
-  public static BubbleInfo c = new BubbleInfo(100001, 2130843895, 2130843895);
+  public static BubbleInfo b = new BubbleInfo(100000, 2130843961, 2130843962);
+  public static BubbleInfo c = new BubbleInfo(100001, 2130843961, 2130843961);
   
   public static BubbleInfo a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter)
   {

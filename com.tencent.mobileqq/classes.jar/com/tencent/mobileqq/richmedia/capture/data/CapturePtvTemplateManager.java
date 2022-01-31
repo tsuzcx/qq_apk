@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import ahhb;
-import ahhc;
-import ahhd;
-import ahhe;
-import ahhf;
-import ahhg;
-import ahhh;
-import ahhi;
-import ahhj;
-import ahhk;
-import ahhl;
+import ahls;
+import ahlt;
+import ahlu;
+import ahlv;
+import ahlw;
+import ahlx;
+import ahly;
+import ahlz;
+import ahma;
+import ahmb;
+import ahmc;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -85,7 +85,7 @@ public class CapturePtvTemplateManager
   
   static
   {
-    jdField_a_of_type_JavaLangLong = Long.valueOf(10000L);
+    jdField_a_of_type_JavaLangLong = Long.valueOf(2000L);
     jdField_a_of_type_JavaLangString = "ptv_template_usable";
     jdField_b_of_type_JavaLangString = "ptv_debug";
     jdField_c_of_type_JavaLangString = "new_ptv_template_usable";
@@ -103,7 +103,7 @@ public class CapturePtvTemplateManager
       break label47;
     }
     if (i != 0) {}
-    for (localFile = new File(AppConstants.aJ);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
+    for (localFile = new File(AppConstants.aK);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
     {
       jdField_a_of_type_JavaIoFile = new File(localFile, "capture_ptv_template");
       jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator + jdField_a_of_type_JavaLangString + File.separator;
@@ -124,7 +124,7 @@ public class CapturePtvTemplateManager
   
   public static final CapturePtvTemplateManager a()
   {
-    return ahhj.a();
+    return ahma.a();
   }
   
   public static String a(File paramFile)
@@ -509,7 +509,7 @@ public class CapturePtvTemplateManager
           }
         }
         localObject3 = new HttpNetReq();
-        ((HttpNetReq)localObject3).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahhd(this, paramString, (String)localObject2, paramQQAppInterface, str);
+        ((HttpNetReq)localObject3).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahlu(this, paramString, (String)localObject2, paramQQAppInterface, str);
         ((HttpNetReq)localObject3).jdField_a_of_type_JavaLangString = ((String)???);
         ((HttpNetReq)localObject3).jdField_a_of_type_Int = 0;
         ((HttpNetReq)localObject3).jdField_c_of_type_JavaLangString = localFile.getPath();
@@ -570,7 +570,7 @@ public class CapturePtvTemplateManager
   
   private void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString, long paramLong1, long paramLong2)
   {
-    paramString = (ahhl)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (ahmc)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     if (paramString != null)
     {
       paramString.jdField_a_of_type_Long = paramLong1;
@@ -582,7 +582,7 @@ public class CapturePtvTemplateManager
       long l1 = paramLong2;
       if (!paramPtvTemplateInfo.dgStageUsable)
       {
-        paramString = (ahhl)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgStageName);
+        paramString = (ahmc)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgStageName);
         paramLong1 = l2;
         l1 = paramLong2;
         if (paramString != null)
@@ -598,7 +598,7 @@ public class CapturePtvTemplateManager
       l2 = l1;
       if (!paramPtvTemplateInfo.dgModelUsable)
       {
-        paramString = (ahhl)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgModelName);
+        paramString = (ahmc)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgModelName);
         paramLong2 = paramLong1;
         l2 = l1;
         if (paramString != null)
@@ -615,7 +615,7 @@ public class CapturePtvTemplateManager
       l1 = l2;
       if (!paramPtvTemplateInfo.usable)
       {
-        paramString = (ahhl)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.name);
+        paramString = (ahmc)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.name);
         paramLong1 = paramLong2;
         l1 = l2;
         if (paramString != null)
@@ -679,7 +679,7 @@ public class CapturePtvTemplateManager
   
   public static void a(String paramString1, String paramString2)
   {
-    ThreadManager.getFileThreadHandler().post(new ahhc(paramString2, paramString1));
+    ThreadManager.getFileThreadHandler().post(new ahlt(paramString2, paramString1));
   }
   
   public static boolean a()
@@ -1070,7 +1070,7 @@ public class CapturePtvTemplateManager
           else
           {
             this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
-            this.jdField_a_of_type_AndroidOsHandler.post(new ahhh(this));
+            this.jdField_a_of_type_AndroidOsHandler.post(new ahly(this));
           }
         }
         else {
@@ -1117,11 +1117,11 @@ public class CapturePtvTemplateManager
     for (;;)
     {
       return;
-      Object localObject = new ahhl(this);
+      Object localObject = new ahmc(this);
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localObject);
       this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
       localObject = new HttpNetReq();
-      ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahhk(this, paramString1, paramString2, paramString3);
+      ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahmb(this, paramString1, paramString2, paramString3);
       ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = paramString2;
       ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
       ((HttpNetReq)localObject).jdField_c_of_type_JavaLangString = new File(jdField_a_of_type_JavaIoFile, paramString1).getPath();
@@ -1232,6 +1232,7 @@ public class CapturePtvTemplateManager
   public void a(List paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {}
+    label21:
     List localList;
     do
     {
@@ -1242,21 +1243,21 @@ public class CapturePtvTemplateManager
       localList = ((TemplateGroupItem)paramList.next()).jdField_a_of_type_JavaUtilList;
     } while (localList == null);
     int i = 0;
-    label49:
+    label51:
     PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
     if (i < localList.size())
     {
       localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)localList.get(i);
       if ((localPtvTemplateInfo != null) && (localPtvTemplateInfo.predownload) && (!TextUtils.isEmpty(localPtvTemplateInfo.resurl))) {
-        break label102;
+        break label106;
       }
     }
     for (;;)
     {
       i += 1;
-      break label49;
-      break;
-      label102:
+      break label51;
+      break label21;
+      label106:
       if (a(localPtvTemplateInfo))
       {
         localPtvTemplateInfo.usable = true;
@@ -1264,8 +1265,21 @@ public class CapturePtvTemplateManager
       else
       {
         localPtvTemplateInfo.usable = false;
+        int j = (int)(FileUtils.a() / 1024.0F / 1024.0F);
+        int k = (int)(localPtvTemplateInfo.sizeFree * 1024.0D);
+        if (QLog.isColorLevel()) {
+          QLog.d("CapturePtvTemplateManager", 2, "preDownloadTemplates getAvailableInnernalMemorySize: " + j + " mSizeFree: " + k);
+        }
+        if (j < k)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("CapturePtvTemplateManager", 2, "preDownloadTemplates return getAvailableInnernalMemorySize: " + j + " mSizeFree: " + k);
+          return;
+        }
         HttpNetReq localHttpNetReq = new HttpNetReq();
-        localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahhf(this, localPtvTemplateInfo);
+        localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahlw(this, localPtvTemplateInfo);
         localHttpNetReq.jdField_a_of_type_JavaLangString = localPtvTemplateInfo.resurl;
         localHttpNetReq.jdField_a_of_type_Int = 0;
         localHttpNetReq.jdField_c_of_type_JavaLangString = new File(jdField_b_of_type_JavaIoFile, localPtvTemplateInfo.md5).getPath();
@@ -1275,9 +1289,13 @@ public class CapturePtvTemplateManager
           AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
           if ((localAppRuntime != null) && ((localAppRuntime instanceof ToolRuntimePeak)))
           {
-            ((PeakAppInterface)((ToolRuntimePeak)localAppRuntime).onGetSubRuntime("peak")).getNetEngine(0).a(localHttpNetReq);
-            if (QLog.isColorLevel()) {
-              QLog.i("CapturePtvTemplateManager", 2, "startDownloadFilterConfigZip, url: " + localPtvTemplateInfo.resurl);
+            localAppRuntime = ((ToolRuntimePeak)localAppRuntime).onGetSubRuntime("peak");
+            if (localAppRuntime != null)
+            {
+              ((PeakAppInterface)localAppRuntime).getNetEngine(0).a(localHttpNetReq);
+              if (QLog.isColorLevel()) {
+                QLog.i("CapturePtvTemplateManager", 2, "startDownloadFilterConfigZip, url: " + localPtvTemplateInfo.resurl);
+              }
             }
           }
         }
@@ -1299,14 +1317,14 @@ public class CapturePtvTemplateManager
       {
         QLog.d("CapturePtvTemplateManager", 2, "updateFaceuTemplateConfigInfo size=" + this.jdField_a_of_type_JavaUtilList.size());
         return;
-        ThreadManager.getSubThreadHandler().post(new ahhg(this));
+        ThreadManager.getSubThreadHandler().post(new ahlx(this));
       }
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new ahhb(this, paramBoolean), null, false);
+    ThreadManager.postImmediately(new ahls(this, paramBoolean), null, false);
   }
   
   public boolean a(int paramInt1, int paramInt2, String paramString)
@@ -1401,7 +1419,7 @@ public class CapturePtvTemplateManager
   
   public void b()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new ahhe(this), jdField_a_of_type_JavaLangLong.longValue());
+    ThreadManager.getSubThreadHandler().postDelayed(new ahlv(this), jdField_a_of_type_JavaLangLong.longValue());
   }
   
   public void b(AppInterface paramAppInterface, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, PtvTemplateManager.IPtvTemplateDownloadListener paramIPtvTemplateDownloadListener)
@@ -1411,7 +1429,7 @@ public class CapturePtvTemplateManager
     {
       return;
       HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahhi(this, paramPtvTemplateInfo, paramIPtvTemplateDownloadListener);
+      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahlz(this, paramPtvTemplateInfo, paramIPtvTemplateDownloadListener);
       localHttpNetReq.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.resurl;
       localHttpNetReq.jdField_a_of_type_Int = 0;
       localHttpNetReq.jdField_c_of_type_JavaLangString = new File(jdField_b_of_type_JavaIoFile, paramPtvTemplateInfo.md5).getPath();

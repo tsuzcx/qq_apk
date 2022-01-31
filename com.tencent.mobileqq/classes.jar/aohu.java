@@ -1,18 +1,17 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
 
 public class aohu
+  implements DoodleOpController.DoodleOpListener
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public aohu(DoodleLayout paramDoodleLayout) {}
   
-  private aohu(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
+    if (this.a.a != null) {
+      this.a.a.n();
+    }
   }
 }
 

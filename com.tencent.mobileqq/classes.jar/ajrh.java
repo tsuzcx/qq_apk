@@ -1,36 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfoManager;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
-import com.tencent.mobileqq.troop.utils.TroopTopicObserver;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.SearchArticle;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import com.tencent.mobileqq.util.TroopReportor;
 
-public class ajrh
-  implements Runnable
+class ajrh
+  implements View.OnClickListener
 {
-  public ajrh(TroopTopicMgr paramTroopTopicMgr, String paramString, long paramLong1, long paramLong2) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
   
-  public void run()
+  private ajrh(ajrg paramajrg) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-    TroopTopicDetailInfo localTroopTopicDetailInfo = (TroopTopicDetailInfo)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-    localObject = localTroopTopicDetailInfo;
-    if (localTroopTopicDetailInfo == null)
+    if ((ajrg.a(this.jdField_a_of_type_Ajrg) != null) && (ajrg.a(this.jdField_a_of_type_Ajrg).getActivity() != null))
     {
-      localObject = new TroopTopicDetailInfo();
-      ((TroopTopicDetailInfo)localObject).troopUin = this.jdField_a_of_type_JavaLangString;
-      ((TroopTopicDetailInfo)localObject).msgSeq = this.jdField_a_of_type_Long;
+      paramView = this.jdField_a_of_type_Ajrg.a(this.jdField_a_of_type_Int);
+      SelectReciteParagraphFragment.a(ajrg.a(this.jdField_a_of_type_Ajrg).getActivity(), SearchReciteArticleFragment.a(ajrg.a(this.jdField_a_of_type_Ajrg)), paramView.c, SearchReciteArticleFragment.a(ajrg.a(this.jdField_a_of_type_Ajrg)));
+      TroopReportor.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { SearchReciteArticleFragment.a(ajrg.a(this.jdField_a_of_type_Ajrg)), "0", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(paramView.jdField_a_of_type_Int) });
     }
-    ((TroopTopicDetailInfo)localObject).pVersion = this.b;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b((TroopTopicDetailInfo)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfoManager.a((TroopTopicDetailInfo)localObject, true);
-    localObject = new Bundle();
-    ((Bundle)localObject).putInt("ret", 0);
-    ((Bundle)localObject).putString("troopUin", this.jdField_a_of_type_JavaLangString);
-    ((Bundle)localObject).putLong("msgSeq", this.jdField_a_of_type_Long);
-    ((Bundle)localObject).putLong("pVersion", this.b);
-    TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).notifyObservers(TroopTopicObserver.class, 3, true, (Bundle)localObject);
   }
 }
 

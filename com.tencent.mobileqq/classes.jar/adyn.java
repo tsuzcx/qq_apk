@@ -1,30 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.data.LebaFeedInfo;
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
-import com.tencent.mobileqq.leba.view.LebaFPSXListView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
 public class adyn
-  implements Animator.AnimatorListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public adyn(LebaFeedsAdapter paramLebaFeedsAdapter, LebaFeedInfo paramLebaFeedInfo) {}
+  public adyn(HotPicPageView paramHotPicPageView, HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void onInstallProgress(float paramFloat) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onInstalledFailed(int paramInt)
   {
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter, null);
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter).a(false);
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter, this.jdField_a_of_type_ComTencentMobileqqDataLebaFeedInfo.feedID);
-    this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter.notifyDataSetChanged();
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter, false);
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter).requestLayout();
+    ThreadManager.getUIHandler().post(new adyq(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicManagerHotPicPageView", 2, "tencent sdk onInstalledFail");
+    }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onInstalledSuccessed()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
+    new Thread(new adyo(this)).run();
+  }
 }
 
 

@@ -1,36 +1,36 @@
-import android.graphics.Paint;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class tjq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  public tjq(QQMapActivity paramQQMapActivity) {}
+  public tjq(PermisionPrivacyActivity paramPermisionPrivacyActivity, boolean paramBoolean1, SharedPreferences paramSharedPreferences, boolean paramBoolean2) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
-    if (i > 0)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      int j = DisplayUtil.a(this.a, 10.0F);
-      Object localObject = new Paint();
-      ((Paint)localObject).setTextSize(DisplayUtil.a(this.a, 14.0F));
-      ((Paint)localObject).setAntiAlias(true);
-      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
-      ((Paint)localObject).setTextSize(DisplayUtil.a(this.a, 20.0F));
-      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
-      {
-        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
-        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      paramView = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      paramView.putBoolean("plate_of_king_red_dot_" + this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.c(), true);
+      paramView.apply();
+      if (this.b) {
+        PermisionPrivacyActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity).setRightIcon(null);
       }
-      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
+    paramView = IndividuationUrlHelper.a("gameIconSetupH5Url");
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), QQBrowserActivity.class);
+    localIntent.setFlags(268435456);
+    localIntent.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), paramView, -1L, localIntent, false, -1);
   }
 }
 

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ead" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:text="web地图" android:layout_alignParentLeft="true" />
-        <Button android:id="@id/webview" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="webview test" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1ead" android:layout_alignParentLeft="true" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eae" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:text="armap_jump" android:layout_below="@id/webview" android:layout_alignParentLeft="true" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eaf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="开宝箱" android:layout_weight="1.0" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1eae" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eb0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="clear map cache" android:layout_weight="1.0" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1eaf" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eb1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="红包列表" android:layout_weight="1.0" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1eb0" />
+    <TextView android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c048f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e3f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="23.0dip" android:text="取消" android:layout_alignParentTop="true" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1429" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200d0" android:focusable="true" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="7.5dip" android:layout_alignParentRight="true" android:contentDescription="相机选取器，按钮，在前置相机和后置相机之间切换" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d10" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e40" android:layout_width="240.0dip" android:layout_height="410.0dip" android:layout_marginTop="10.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="8.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e41" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="截图测试按钮" android:layout_alignParentBottom="true" />
+        <com.tencent.mobileqq.arcard.ARCardCamereButtonLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05e1" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1e40" android:layout_centerHorizontal="true" />
     </RelativeLayout>
-</ScrollView>
+</RelativeLayout>

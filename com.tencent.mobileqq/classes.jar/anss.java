@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMStoryEffectCameraCaptureUnit;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
 public class anss
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public anss(EditVideoButton paramEditVideoButton) {}
+  public anss(QIMStoryEffectCameraCaptureUnit paramQIMStoryEffectCameraCaptureUnit) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.a(34);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMStoryEffectCameraCaptureUnit", 2, new Object[] { "onReceive action=", paramContext });
+    }
+    if ("dov.com.qq.im.finish_capture_action".equals(paramContext)) {
+      this.a.a.a().finish();
+    }
   }
 }
 

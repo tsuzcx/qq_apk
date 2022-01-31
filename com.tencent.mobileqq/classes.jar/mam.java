@@ -1,24 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
 
 public class mam
-  extends AnimatorListenerAdapter
+  extends CommonSkinRes
 {
-  public mam(VideoFeedsAdapter paramVideoFeedsAdapter, VideoFeedsAdapter.VideoItemHolder paramVideoItemHolder, ImageView paramImageView) {}
+  public mam(ReadInJoySkinManager paramReadInJoySkinManager) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public Drawable a()
   {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter$VideoItemHolder.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    return a("readinjoy_diandian_icon_foreground");
   }
 }
 

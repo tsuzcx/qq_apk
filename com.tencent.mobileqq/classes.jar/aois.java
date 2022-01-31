@@ -1,38 +1,61 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.EGLConfigChooser;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-class aois
-  implements Runnable
+public abstract class aois
+  implements GLTextureView.EGLConfigChooser
 {
-  aois(aoir paramaoir) {}
+  protected int[] a;
   
-  public void run()
+  public aois(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
   {
-    if (this.a.jdField_a_of_type_AndroidContentIntent != null)
-    {
-      int i = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_business_type", 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("SendVideoActivity", 2, "#SendTask# run(), busiType = " + i + ",VideoFileDir = " + this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("file_video_source_dir"));
-      }
-      int j = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", -1);
-      if (j == 9501) {
-        i = 4;
-      }
-      ShortVideoReq localShortVideoReq = ShortVideoBusiManager.a(0, i);
-      localShortVideoReq.a(ShortVideoBusiManager.a(this.a.jdField_a_of_type_AndroidContentIntent, localShortVideoReq));
-      if ((j != 9501) || (QLog.isColorLevel())) {
-        QLog.d("SendVideoActivity", 2, "#SendTask# run(): success");
-      }
+    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
+  }
+  
+  private int[] a(int[] paramArrayOfInt)
+  {
+    if ((GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 2) && (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 3)) {
+      return paramArrayOfInt;
     }
-    if (!this.a.jdField_a_of_type_Boolean)
+    int i = paramArrayOfInt.length;
+    int[] arrayOfInt = new int[i + 2];
+    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
+    arrayOfInt[(i - 1)] = 12352;
+    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) == 2) {
+      arrayOfInt[i] = 4;
+    }
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+      arrayOfInt[(i + 1)] = 12344;
+      return arrayOfInt;
+      arrayOfInt[i] = 64;
     }
   }
+  
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  {
+    int[] arrayOfInt = new int[1];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig failed");
+    }
+    int i = arrayOfInt[0];
+    if (i <= 0) {
+      throw new IllegalArgumentException("No configs match configSpec");
+    }
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
+    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
+      throw new IllegalArgumentException("eglChooseConfig#2 failed");
+    }
+    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+    if (paramEGL10 == null) {
+      throw new IllegalArgumentException("No config chosen");
+    }
+    return paramEGL10;
+  }
+  
+  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 

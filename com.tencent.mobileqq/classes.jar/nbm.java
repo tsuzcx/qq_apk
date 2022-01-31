@@ -1,24 +1,96 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.PhotoItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class nbm
-  extends SimpleJob
+  implements Runnable
 {
-  public nbm(QQStoryCmdHandler paramQQStoryCmdHandler) {}
+  public nbm(PublicAccountImageCollectionListView paramPublicAccountImageCollectionListView, long paramLong1, List paramList, int paramInt1, int paramInt2, long paramLong2) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    paramJobContext = ((StoryConfigManager)SuperManager.a(10)).a();
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.a.a(paramJobContext);
-    }
-    return null;
+    if (PublicAccountImageCollectionListView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionListView) != this.jdField_a_of_type_Long) {}
+    label25:
+    LinkedList localLinkedList;
+    label39:
+    label82:
+    do
+    {
+      Object localObject;
+      do
+      {
+        return;
+        int i;
+        int j;
+        if (this.jdField_a_of_type_JavaUtilList == null)
+        {
+          i = 0;
+          localLinkedList = new LinkedList();
+          j = this.jdField_a_of_type_Int;
+          if (j >= this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) {
+            continue;
+          }
+          if ((j <= i) && (j >= 1)) {
+            break label82;
+          }
+        }
+        do
+        {
+          for (;;)
+          {
+            j += 1;
+            break label39;
+            i = this.jdField_a_of_type_JavaUtilList.size();
+            break label25;
+            if (PublicAccountImageCollectionListView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionListView) != this.jdField_a_of_type_Long) {
+              break;
+            }
+            try
+            {
+              PublicAccountImageCollectionUtils.PhotoItemInfo localPhotoItemInfo = (PublicAccountImageCollectionUtils.PhotoItemInfo)this.jdField_a_of_type_JavaUtilList.get(j - 1);
+              if (localPhotoItemInfo != null)
+              {
+                localObject = ((naw)this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionListView.getAdapter()).a(localPhotoItemInfo.a);
+                if (localObject == null) {
+                  break;
+                }
+                int k = ((naw)this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionListView.getAdapter()).a(localPhotoItemInfo)[0];
+                int m = ((naw)this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionListView.getAdapter()).a(localPhotoItemInfo)[1];
+                localLinkedList.add(nbn.a((URL)localObject, k, m));
+                if (QLog.isColorLevel()) {
+                  QLog.d("PublicAccountImageCollectionListView", 2, "preloadImg index:" + j + "  reqWidth = " + k + " reqHeight = " + m);
+                }
+              }
+            }
+            catch (Exception localException)
+            {
+              localException.printStackTrace();
+            }
+          }
+        } while (PublicAccountImageCollectionListView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionListView) == this.jdField_a_of_type_Long);
+        return;
+      } while (PublicAccountImageCollectionListView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionListView) != this.jdField_a_of_type_Long);
+      Iterator localIterator = localLinkedList.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (nbn)localIterator.next();
+        if ((localObject != null) && (((nbn)localObject).jdField_a_of_type_JavaNetURL != null))
+        {
+          ImageRequest localImageRequest = new ImageRequest();
+          localImageRequest.jdField_a_of_type_JavaNetURL = ((nbn)localObject).jdField_a_of_type_JavaNetURL;
+          localImageRequest.jdField_a_of_type_Int = ((nbn)localObject).jdField_a_of_type_Int;
+          localImageRequest.jdField_b_of_type_Int = ((nbn)localObject).jdField_b_of_type_Int;
+          ImageManager.a().a(localImageRequest, null);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PublicAccountImageCollectionListView", 2, "preloadImg size:" + localLinkedList.size() + " cost:" + (System.currentTimeMillis() - this.jdField_b_of_type_Long));
   }
 }
 

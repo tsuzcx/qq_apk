@@ -1,38 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentContext;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderContext;
-import com.tencent.smtt.sdk.WebView;
+import android.graphics.PointF;
 
-public class akob
-  implements SwiftBrowserComponentsProvider.SwiftBrowserComponentContext
+public final class akob
+  implements akoc
 {
-  public akob(SwiftBrowserComponentsProvider paramSwiftBrowserComponentsProvider) {}
-  
-  public Activity a()
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    return this.a.a.a();
-  }
-  
-  public WebViewFragment a()
-  {
-    return this.a.a.a();
-  }
-  
-  public SwiftBrowserComponentsProvider a()
-  {
-    return this.a;
-  }
-  
-  public WebView a()
-  {
-    return this.a.a.a();
+    float f1 = paramPointF1.x;
+    float f2 = paramPointF1.y;
+    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akob
  * JD-Core Version:    0.7.0.1
  */

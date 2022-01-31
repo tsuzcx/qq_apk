@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.ConfigInfo;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
+import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class xmj
+public class xmj
   implements Runnable
 {
-  xmj(xmi paramxmi) {}
+  public xmj(QWalletRedManager paramQWalletRedManager) {}
   
   public void run()
   {
-    String str = this.a.a.a.getText().toString();
-    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      this.a.a.a.setText("");
+    Object localObject = (QWalletConfigManager)QWalletRedManager.a(this.a).getManager(244);
+    if (localObject != null)
+    {
+      ((QWalletConfigManager)localObject).a("redPoint", this.a);
+      localObject = ((QWalletConfigManager)localObject).a("redPoint");
+      QWalletRedManager.a(this.a).parseConfig((QWalletConfig.ConfigInfo)localObject);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletRedManager", 2, "synDataFromMoggy" + QWalletRedManager.a(this.a));
     }
   }
 }

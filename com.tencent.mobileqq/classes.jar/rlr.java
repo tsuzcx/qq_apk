@@ -1,50 +1,85 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import mqq.os.MqqHandler;
 
 public class rlr
-  extends Handler
+  implements View.OnClickListener
 {
-  public rlr(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rlr(AccountManageActivity paramAccountManageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    if (!this.a.b) {
+      return;
+    }
+    paramView = this.a;
+    boolean bool;
+    label102:
+    int i;
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
+      bool = true;
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label214;
+      }
+      this.a.rightViewText.setVisibility(8);
+      this.a.rightHighLView.setVisibility(0);
+      this.a.rightViewText.setText(2131434550);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131494275));
+      if (AccountManageActivity.a(this.a) != null)
       {
-        return;
-        if (!this.a.isFinishing())
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131434046));
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130845523);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
+        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((paramView instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)paramView).f();
         }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-        return;
-      } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131434045));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
-      return;
+        AccountManageActivity.a(this.a).a();
+        AccountManageActivity.a(this.a, null);
+      }
+      int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      i = 0;
+      label173:
+      if (i >= j) {
+        break label321;
+      }
+      paramView = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if ((paramView != null) && (paramView.getTag() != null)) {
+        break label274;
+      }
     }
-    AssistantSettingActivity.a(this.a).setOnCheckedChangeListener(null);
-    FormSwitchItem localFormSwitchItem = AssistantSettingActivity.a(this.a);
-    if (!((Boolean)paramMessage.obj).booleanValue()) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      localFormSwitchItem.setChecked(bool);
-      AssistantSettingActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
+      i += 1;
+      break label173;
+      bool = false;
+      break;
+      label214:
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightHighLView.setVisibility(8);
+      this.a.rightViewText.setText(2131434568);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131494226));
+      break label102;
+      label274:
+      paramView = paramView.findViewById(2131362758);
+      if (paramView != null)
+      {
+        ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) * AccountManageActivity.b(this.a)));
+        paramView.setLayoutParams(localLayoutParams);
+      }
     }
+    label321:
+    this.a.b();
+    this.a.a(this.a.jdField_a_of_type_Boolean);
+    this.a.b = false;
+    AccountManageActivity.a(this.a).postDelayed(new rls(this), 400L);
   }
 }
 

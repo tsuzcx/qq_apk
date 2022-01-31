@@ -1,19 +1,19 @@
-import android.view.ViewGroup;
-import android.widget.ListView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class oke
-  implements Runnable
+  extends SimpleJob
 {
-  public oke(FaceListPage paramFaceListPage) {}
+  public oke(EditVideoPartManager paramEditVideoPartManager, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    FaceListPage.a(this.a).setVisibility(4);
-    FaceListPage.b(this.a).setVisibility(4);
-    FaceListPage.a(this.a).setVisibility(0);
-    FaceListPage.a(this.a).notifyDataSetChanged();
+    StoryReportor.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

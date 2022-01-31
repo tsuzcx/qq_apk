@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abtw;
+import acbo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.util.List;
 public class IPSiteModel$Comic
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abtw();
+  public static final Parcelable.Creator CREATOR = new acbo();
   public List comicRiches;
   public int comicType;
   public String cover;

@@ -1,16 +1,30 @@
-import android.animation.AnimatorSet;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimFrameData;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 
-public class ablh
+class ablh
   implements Runnable
 {
-  public ablh(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimFrameData paramAnimFrameData) {}
+  ablh(abld paramabld, float paramFloat) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimFrameData.a.a.cancel();
+    if (!ShopScanActivity.b(this.jdField_a_of_type_Abld.a)) {
+      return;
+    }
+    int i = (int)(this.jdField_a_of_type_Float * 100.0F);
+    if (this.jdField_a_of_type_Abld.a.b.getVisibility() != 0)
+    {
+      this.jdField_a_of_type_Abld.a.b.setVisibility(0);
+      if (this.jdField_a_of_type_Abld.a.e != null) {
+        this.jdField_a_of_type_Abld.a.e.setVisibility(8);
+      }
+    }
+    this.jdField_a_of_type_Abld.a.a.setProgress(i);
+    this.jdField_a_of_type_Abld.a.g.setText(this.jdField_a_of_type_Abld.a.getResources().getString(2131438518));
   }
 }
 

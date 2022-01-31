@@ -1,47 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.music.BlessVoiceChangeManager;
-import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.voicechange.IVoiceChangeListener;
-import java.io.File;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class okv
-  implements IVoiceChangeListener
+  extends LbsManager.OnLocationListener
 {
-  private QQStoryMusicInfo jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public okv(QQStoryMusicInfo paramQQStoryMusicInfo, String paramString)
+  public okv(EditVideoPoi paramEditVideoPoi, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = paramQQStoryMusicInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramString);
   }
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void b()
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.c)).concat(".pcm"));
-    if (((File)localObject).exists())
+    super.a(paramInt, paramSosoLbsInfo);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a = paramSosoLbsInfo.a.a;
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b = paramSosoLbsInfo.a.b;
+      SLog.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() latitude=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a + " longitude=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.e();
       }
-      FileUtils.a((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
-      if (BlessVoiceChangeManager.a() != null)
-      {
-        localObject = BlessVoiceChangeManager.a().obtainMessage(10);
-        ((Message)localObject).obj = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
-        BlessVoiceChangeManager.a().sendMessage((Message)localObject);
-      }
+      return;
     }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a = 0.0D;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.b = 0.0D;
+    SLog.b("Q.qqstory.publish.edit.EditVideoPoi", "onLocationUpdate() error");
   }
-  
-  public void c() {}
 }
 
 

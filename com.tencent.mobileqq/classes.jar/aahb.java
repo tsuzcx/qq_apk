@@ -1,16 +1,28 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.CameraRendererable;
 import com.tencent.qphone.base.util.QLog;
 
 public class aahb
   implements Runnable
 {
-  public aahb(AREngine paramAREngine) {}
+  public aahb(CameraRendererable paramCameraRendererable) {}
   
   public void run()
   {
-    this.a.j();
-    AREngine.b(this.a, 0);
-    QLog.i("AREngine_AREngine", 1, "stop end. mCurEngineState = " + AREngine.e(this.a));
+    if (CameraRendererable.a(this.a) != null) {}
+    try
+    {
+      CameraRendererable.a(this.a).f();
+      return;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.d(CameraRendererable.a(), 2, "requestRender", localException);
+    }
   }
 }
 

@@ -1,17 +1,21 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.PhoneUnityBannerData;
+import com.tencent.mobileqq.app.PhoneUnityManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SecSvcHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class zqi
-  implements Comparator
+public class zqi
+  implements Runnable
 {
-  zqi(zqf paramzqf) {}
+  public zqi(PhoneUnityManager paramPhoneUnityManager) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void run()
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MobileUnityManager", 4, "load phone local data");
     }
-    return 0;
+    PhoneUnityBannerData localPhoneUnityBannerData = this.a.a();
+    ((SecSvcHandler)this.a.a.a(34)).a(9, true, localPhoneUnityBannerData);
   }
 }
 

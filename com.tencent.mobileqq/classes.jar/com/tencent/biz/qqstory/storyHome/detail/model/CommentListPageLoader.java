@@ -18,7 +18,7 @@ import com.tribe.async.async.Bosses;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import java.util.List;
-import nue;
+import nyu;
 
 public class CommentListPageLoader
   extends INetPageLoader
@@ -94,7 +94,7 @@ public class CommentListPageLoader
       this.b = true;
       a(localGetFeedCommentEvent);
       SLog.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from network: %s", localGetFeedCommentEvent);
-      paramGetFeedCommentRequest = new nue(this, localGetFeedCommentEvent, bool);
+      paramGetFeedCommentRequest = new nyu(this, localGetFeedCommentEvent, bool);
       Bosses.get().postJob(paramGetFeedCommentRequest);
       return;
     }

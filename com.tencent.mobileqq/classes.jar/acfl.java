@@ -1,32 +1,79 @@
-import android.app.Activity;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.RecentUtil;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.message.ConversationFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxProtocol.LastFeedObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acfl
-  implements QueryCallback
+public class acfl
+  extends MsgBoxProtocol.LastFeedObserver
 {
-  public acfl(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, int paramInt, Activity paramActivity) {}
+  public acfl(MsgBoxListActivity paramMsgBoxListActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
   {
-    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1008) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1001) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1003) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1005) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1006))
-    {
-      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-      if (paramEmoticonPackage != null) {
-        paramEmoticonPackage.obtainMessage(22, String.valueOf(this.jdField_a_of_type_Int)).sendToTarget();
+    if (!paramBoolean1) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.msg_box", 2, "onGetInteractLastFeed = false");
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8006FFE", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), "", "");
-      return;
     }
-    EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Int), false, true);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8006FFF", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), "", "");
+    for (;;)
+    {
+      return;
+      if (paramBoolean2) {
+        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
+      }
+      while (!this.a.isFinishing())
+      {
+        this.a.a();
+        return;
+        if (this.a.app.a().isInMsgBoxRecentList(AppConstants.ag, this.a.jdField_a_of_type_Int))
+        {
+          paramInt = this.a.app.a().a(AppConstants.ag, this.a.jdField_a_of_type_Int);
+          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.ag, this.a.app.getCurrentAccountUin());
+          if (paramInt > 0)
+          {
+            RecentUtil.b(this.a.app, AppConstants.ag, this.a.jdField_a_of_type_Int);
+            this.a.app.a().a(AppConstants.ag, this.a.jdField_a_of_type_Int, true, true);
+          }
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  {
+    if (!paramBoolean1) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.msg_box", 2, "onGetInteractLastFeed = false");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (paramBoolean2) {
+        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
+      }
+      while (!this.a.isFinishing())
+      {
+        this.a.a();
+        return;
+        if (this.a.app.a().isInMsgBoxRecentList(AppConstants.ah, this.a.jdField_a_of_type_Int))
+        {
+          paramInt = this.a.app.a().a(AppConstants.ah, this.a.jdField_a_of_type_Int);
+          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, AppConstants.ah, this.a.app.getCurrentAccountUin());
+          if (paramInt > 0)
+          {
+            RecentUtil.b(this.a.app, AppConstants.ah, this.a.jdField_a_of_type_Int);
+            this.a.app.a().a(AppConstants.ah, this.a.jdField_a_of_type_Int, true, true);
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,19 +1,29 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class afhm
-  implements Runnable
+public class afhm
+  implements DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback
 {
-  afhm(afhl paramafhl) {}
+  public afhm(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void run()
+  public void a(String paramString, int paramInt)
   {
-    if (NearbyProfileEditPanel.a(this.a.a) != null)
-    {
-      NearbyProfileEditPanel.a(this.a.a).setVisibility(0);
-      NearbyProfileEditPanel.a(this.a.a);
-      NearbyProfileEditPanel.a(this.a.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDownloadUpdate  url:" + paramString + "   progress:" + paramInt);
     }
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (!this.a.o)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+    }
+    this.a.runOnUiThread(new afhn(this, paramString, paramBoolean1));
   }
 }
 

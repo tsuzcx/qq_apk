@@ -1,47 +1,40 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.DragShadowBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
 public class afix
-  extends View.DragShadowBuilder
+  implements DialogInterface.OnClickListener
 {
-  public int a;
+  public afix(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public afix(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.f * 1.4D));
-  }
-  
-  public void onDrawShadow(Canvas paramCanvas)
-  {
-    getView().setDrawingCacheEnabled(false);
-    getView().setDrawingCacheEnabled(true);
-    Object localObject = new Paint();
-    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
-    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
-    localObject = getView().getDrawingCache();
-    Matrix localMatrix = new Matrix();
-    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
-    localMatrix.postScale(f, f);
-    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
-  }
-  
-  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
-  {
-    int i = this.jdField_a_of_type_Int + 20;
-    int j = this.jdField_a_of_type_Int + 20;
-    paramPoint1.set(i, j);
-    paramPoint2.set(i / 2, j / 2);
+    new ReportTask(this.a.a.app).a("dc00899").b("grp_lbs").c("face_score_vip").d("expert_download_click").a(new String[] { "", "" + (NearbyProfileDisplayPanel.a(this.a).gender + 1) }).a();
+    paramDialogInterface = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
+    if (paramDialogInterface.getInt("state", 0) == 1) {
+      try
+      {
+        UniformDownloadUtil.a(paramDialogInterface.getString("filePath", ""));
+        paramDialogInterface.edit().putInt("state", 0);
+        return;
+      }
+      catch (Exception paramDialogInterface)
+      {
+        QLog.e("NearbyProfileDisplayPanel", 1, paramDialogInterface, new Object[0]);
+        this.a.o();
+        return;
+      }
+    }
+    this.a.o();
   }
 }
 

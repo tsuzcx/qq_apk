@@ -10,7 +10,7 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import jvr;
+import jxv;
 
 public class MultiMembersAudioIndicator
   extends RadioGroup
@@ -34,19 +34,19 @@ public class MultiMembersAudioIndicator
   
   RadioButton a()
   {
-    jvr localjvr = new jvr(this, super.getContext());
-    localjvr.setButtonDrawable(2130840278);
-    localjvr.setGravity(17);
+    jxv localjxv = new jxv(this, super.getContext());
+    localjxv.setButtonDrawable(2130840293);
+    localjxv.setGravity(17);
     Resources localResources = super.getContext().getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()));
     localLayoutParams.gravity = 17;
     int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
-    localjvr.setLayoutParams(localLayoutParams);
-    localjvr.setClickable(false);
-    localjvr.setFocusable(false);
-    return localjvr;
+    localjxv.setLayoutParams(localLayoutParams);
+    localjxv.setClickable(false);
+    localjxv.setFocusable(false);
+    return localjxv;
   }
   
   public void a()
@@ -115,7 +115,7 @@ public class MultiMembersAudioIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.MultiMembersAudioIndicator
  * JD-Core Version:    0.7.0.1
  */

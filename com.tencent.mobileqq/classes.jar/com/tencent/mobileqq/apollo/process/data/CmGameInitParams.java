@@ -10,10 +10,11 @@ public class CmGameInitParams
   public static final int GAME_MODE_STANDBY = 4;
   public static final int GAME_MODE_STORE = 1;
   public static final int GAME_MODE_STRANGER = 3;
-  public String apolloGameSt;
-  public String apolloGameStkey;
+  public String accessToken;
+  public int accessTokenRet;
   public int apolloStatus;
   public String extInfoFromSvr;
+  public int gameType;
   public int gender;
   public boolean isWhiteUsr;
   public int mActionId;
@@ -40,6 +41,7 @@ public class CmGameInitParams
   public String mVersion;
   public int mViewMode;
   public String openId;
+  public String redUrl;
   public String sessionOpenId;
 }
 

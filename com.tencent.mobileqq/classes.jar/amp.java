@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.qq.im.poi.LbsPackInfo;
+import com.immersion.stickersampleapp.HapticManager;
 
-public final class amp
-  implements Parcelable.Creator
+public class amp
+  implements Runnable
 {
-  public LbsPackInfo a(Parcel paramParcel)
-  {
-    return new LbsPackInfo(paramParcel);
-  }
+  public amp(HapticManager paramHapticManager) {}
   
-  public LbsPackInfo[] a(int paramInt)
+  public void run()
   {
-    return new LbsPackInfo[paramInt];
+    if (HapticManager.a(this.a)) {
+      this.a.a();
+    }
+    HapticManager.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController.OnMagicPlayEnd;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.doutu.DoutuManager;
 
-class acgm
-  implements MagicfaceViewController.OnMagicPlayEnd
+public class acgm
 {
-  acgm(acgl paramacgl, String paramString) {}
+  public int a;
+  public long a;
+  String jdField_a_of_type_JavaLangString;
+  int b;
+  public long b;
   
-  public void a()
+  public acgm(DoutuManager paramDoutuManager, long paramLong1, long paramLong2, String paramString, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicEmoticonInfo", 2, "[play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Acgl.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue);
-    }
-    this.jdField_a_of_type_Acgl.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = this.jdField_a_of_type_JavaLangString;
-    ChatActivityFacade.a(this.jdField_a_of_type_Acgl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Acgl.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acgl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Acgl.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-    ReportController.b(this.jdField_a_of_type_Acgl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, this.jdField_a_of_type_Acgl.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acgm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import java.util.List;
 
-public class tcc
-  extends Handler
+class tcc
+  implements Runnable
 {
-  public tcc(NearbyActivity paramNearbyActivity) {}
+  tcc(tcb paramtcb, List paramList) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (!this.a.c)
+    if (Leba.a(this.jdField_a_of_type_Tcb.a) != null)
     {
-      this.a.f();
-      this.a.b.removeMessages(this.a.d);
-      sendEmptyMessageDelayed(this.a.d, this.a.n);
+      Leba.a(this.jdField_a_of_type_Tcb.a).clear();
+      Leba.a(this.jdField_a_of_type_Tcb.a).addAll(this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Tcb.a.a != null) {
+        this.jdField_a_of_type_Tcb.a.a.notifyDataSetChanged();
+      }
+      Leba.c(this.jdField_a_of_type_Tcb.a);
     }
   }
 }

@@ -1,21 +1,34 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 import mqq.os.MqqHandler;
 
 public class aeal
-  implements Runnable
+  implements TVK_SDKMgr.InstallListener
 {
-  public aeal(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeal(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
-  public void run()
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    List localList = LebaGridShowManager.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    PresenceInterfaceImpl.a = false;
+    this.a.a("腾讯视频插件加载失败");
     if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba_with_feeds", 2, "loadLebaFromDB :" + localList.size());
+      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new aeam(this, localList));
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    PresenceInterfaceImpl.a = false;
+    if (!this.a.c)
+    {
+      ThreadManager.getSubThreadHandler().post(new aeam(this));
+      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
+    }
+    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
   }
 }
 

@@ -1,32 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class akwi
-  implements View.OnTouchListener
 {
-  public akwi(QQToast paramQQToast, Toast paramToast) {}
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String toString()
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "start to cancel toast");
-      }
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast, true);
-      return true;
-    }
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    Date localDate = new Date(this.jdField_a_of_type_Long);
+    localStringBuilder.append(new SimpleDateFormat("HH:mm:ss").format(localDate));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(".");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akwi
  * JD-Core Version:    0.7.0.1
  */

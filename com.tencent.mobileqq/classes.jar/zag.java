@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
+import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.IRenderCallback;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class zag
-  implements Runnable
+  implements IRenderCallback
 {
-  public zag(BaseActivity paramBaseActivity) {}
+  public zag(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    ActivityLifecycle.onPause(this.a.getActivity());
+    if (this.a.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
+      }
+      this.a.a.getRenderImpl().a(0L);
+    }
   }
+  
+  public void a(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zag
  * JD-Core Version:    0.7.0.1
  */

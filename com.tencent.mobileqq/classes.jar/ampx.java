@@ -1,28 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import common.config.service.QzoneConfig;
 
 public class ampx
-  implements DialogInterface.OnDismissListener
+  extends ContentObserver
 {
-  public ampx(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ampx(QzoneConfig paramQzoneConfig, Handler paramHandler)
   {
-    if (this.a.a)
-    {
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.a(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
-    }
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    ThreadManager.post(new ampy(this, paramBoolean), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ampx
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.util.gifCoderWnsConfig;
 import cooperation.qzone.widget.FastAnimationDrawable;
-import ocu;
+import ohj;
 
 public class EditGifSpeedControl
   extends EditVideoPart
@@ -60,16 +60,16 @@ public class EditGifSpeedControl
       QLog.d("EditGifSpeedControl", 2, "onCreate | defaultX:" + this.jdField_b_of_type_Int + " defaultY:" + this.c + " delayTime:" + this.e);
     }
     e();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131364418));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371778));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131364443));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371777));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371779));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371778));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131371782));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131371781));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new ocu(this));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new ohj(this));
   }
   
   public void a(int paramInt, Object paramObject)
@@ -183,7 +183,7 @@ public class EditGifSpeedControl
     switch (paramView.getId())
     {
     default: 
-    case 2131371779: 
+    case 2131371778: 
       do
       {
         return;

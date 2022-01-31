@@ -1,22 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.widget.ProgressPieView;
 
 public class amko
-  implements Runnable
+  extends Handler
 {
-  public amko(QQComicRedTouchManager.PluginRedTouchObserver paramPluginRedTouchObserver) {}
+  long jdField_a_of_type_Long;
   
-  public void run()
+  public amko(ProgressPieView paramProgressPieView) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginRedTouchManager", 2, "onReceiveNewRedTouch()");
+    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
+    {
+      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
+      sendEmptyMessageDelayed(0, 1L);
+      return;
     }
-    this.a.a();
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amko
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import mng;
+import mqy;
 
 public class WebFastImageViewCreator
   implements ItemCreator
@@ -16,7 +16,7 @@ public class WebFastImageViewCreator
   
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new mng(LayoutInflater.from(paramContext).inflate(2130969612, null), paramBaseData);
+    return new mqy(LayoutInflater.from(paramContext).inflate(2130969608, null), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

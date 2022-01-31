@@ -1,27 +1,15 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoVote;
 
 public class aoea
-  extends Property
+  implements DialogInterface.OnClickListener
 {
-  public aoea(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aoea(EditVideoVote paramEditVideoVote) {}
   
-  public Float a(GroundDrawable paramGroundDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramGroundDrawable != null) {
-      return Float.valueOf(GroundDrawable.d(paramGroundDrawable));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.c(paramGroundDrawable, paramFloat.floatValue());
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,68 +1,41 @@
-import android.os.HandlerThread;
-import android.os.Process;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.qbar.QbarNativeImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.biz.troopplugin.PluginJumpManager.BidInfo;
+import com.tencent.biz.troopplugin.PluginJumpManager.UrlMappingInfo;
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 
 public class peh
-  extends HandlerThread
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public boolean a;
+  public peh(PluginJumpManager paramPluginJumpManager, PluginJumpManager.BidInfo paramBidInfo, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, PluginJumpManager.UrlMappingInfo paramUrlMappingInfo, String paramString4) {}
   
-  public peh(ScannerView paramScannerView, String paramString)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    super(paramString);
-  }
-  
-  public boolean quit()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerView", 2, "decode thread quit");
-    }
-    try
-    {
-      QbarNativeImpl.b();
-      return super.quit();
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
+    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
+    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
+    int i;
+    if (paramPluginManagerClient != null) {
+      if (paramPluginManagerClient.mState == 4)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("ScannerView", 2, localUnsatisfiedLinkError.toString());
-        }
+        i = 1;
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.a);
       }
     }
-  }
-  
-  public void run()
-  {
-    Process.setThreadPriority(-20);
-    try
+    for (;;)
     {
-      int i = QbarNativeImpl.b(2, 0, "ANY", "UTF-8");
-      Object localObject = new int[2];
-      localObject[0] = 2;
-      localObject[1] = 0;
-      int j = QbarNativeImpl.b((int[])localObject, localObject.length);
-      localObject = QbarNativeImpl.a();
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("ScannerView", 4, "init for camera init_result1:" + i + ",init_result2:" + j);
-        QLog.d("ScannerView", 4, "version:" + (String)localObject);
+      if (i == 0) {
+        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
       }
+      return;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, null, null);
+      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
+      i = 0;
+      continue;
+      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, null, null);
+      i = 0;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ScannerView", 2, localUnsatisfiedLinkError.toString());
-        }
-      }
-    }
-    super.run();
   }
 }
 

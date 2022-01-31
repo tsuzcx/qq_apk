@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import okp;
+import ope;
 
 public class TimeFilterData
   extends FilterData
@@ -26,13 +26,13 @@ public class TimeFilterData
   @NonNull
   public FilterData.FilterPageItem a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return new okp(this, paramContext, paramViewGroup, null);
+    return new ope(this, paramContext, paramViewGroup, null);
   }
   
   @NonNull
   public Class a()
   {
-    return okp.class;
+    return ope.class;
   }
   
   public boolean a()

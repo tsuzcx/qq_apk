@@ -1,40 +1,49 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
-import java.util.concurrent.ScheduledFuture;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aecn
+  extends Handler
 {
-  private long jdField_a_of_type_Long = -9223372036854775808L;
-  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aeco(this);
-  private String jdField_a_of_type_JavaLangString;
-  private ScheduledFuture jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
-  
-  public static aecn a(TimerTaskManager.TimerTaskRunnable paramTimerTaskRunnable)
+  public aecn(HuayangJsPlugin paramHuayangJsPlugin, Looper paramLooper)
   {
-    aecn localaecn = new aecn();
-    TimerTaskManager.TimerTaskRunnable.a(paramTimerTaskRunnable, true);
-    localaecn.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = paramTimerTaskRunnable;
-    return localaecn;
+    super(paramLooper);
   }
   
-  public String toString()
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool2 = false;
-    long l = this.jdField_a_of_type_Long;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable != null)
+    int i = paramMessage.arg1;
+    if (i > 90) {
+      return;
+    }
+    HuayangJsPlugin.a(this.a, "STATE_Loading:" + i);
+    paramMessage = new JSONObject();
+    try
     {
-      bool1 = bool2;
-      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable)) {
-        bool1 = true;
+      paramMessage.putOpt("state", Integer.valueOf(4));
+      paramMessage.putOpt("totalSize", Integer.valueOf(100));
+      paramMessage.putOpt("pro", Integer.valueOf(i));
+      this.a.callJs(this.a.a, new String[] { paramMessage.toString() });
+      paramMessage = Message.obtain();
+      paramMessage.arg1 = (i + 5);
+      sendMessageDelayed(paramMessage, 500L);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
     }
-    return String.format("Period = %d; IsValid = %b;", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecn
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,7 @@ public class RecentItemTroopNotification
     {
       if (paramRecommendTroopManagerImp != null)
       {
-        this.jdField_c_of_type_JavaLangCharSequence = (paramContext.getResources().getString(2131430179) + paramRecommendTroopManagerImp.a());
+        this.jdField_c_of_type_JavaLangCharSequence = (paramContext.getResources().getString(2131430182) + paramRecommendTroopManagerImp.a());
         return true;
       }
     }
@@ -60,7 +60,7 @@ public class RecentItemTroopNotification
       return;
       super.a(paramQQAppInterface, paramContext);
       if (TextUtils.isEmpty(this.b)) {
-        this.b = paramContext.getString(2131433276);
+        this.b = paramContext.getString(2131433290);
       }
       localRecommendTroopManagerImp = (RecommendTroopManagerImp)paramQQAppInterface.getManager(21);
       this.jdField_c_of_type_Int = TroopNotificationUtils.a(paramQQAppInterface);

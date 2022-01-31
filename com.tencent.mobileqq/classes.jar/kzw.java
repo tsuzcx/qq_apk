@@ -1,20 +1,23 @@
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.media.AudioManager;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public class kzw
+class kzw
   implements Runnable
 {
-  public kzw(EcShopAssistantManager paramEcShopAssistantManager, String paramString) {}
+  kzw(kzv paramkzv) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager.a.getEntityManagerFactory().createEntityManager();
-    if (EcShopAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager, localEntityManager, this.jdField_a_of_type_JavaLangString)) {
-      EcShopAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager, this.jdField_a_of_type_JavaLangString);
+    if (ReadInJoyNativeAdAppVideoView.a(this.a.a).getStreamVolume(3) > 0)
+    {
+      ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130839676);
+      ReadInJoyNativeAdAppVideoView.a(this.a.a).setOutputMute(false);
+      return;
     }
-    localEntityManager.a();
+    ReadInJoyNativeAdAppVideoView.b(this.a.a).setImageResource(2130839675);
+    ReadInJoyNativeAdAppVideoView.a(this.a.a).setOutputMute(true);
   }
 }
 

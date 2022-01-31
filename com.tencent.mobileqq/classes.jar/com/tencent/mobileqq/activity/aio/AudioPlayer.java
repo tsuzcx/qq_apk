@@ -20,9 +20,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.List;
-import ujr;
-import ujs;
-import ujt;
+import uon;
+import uoo;
+import uop;
 
 public class AudioPlayer
   implements IPttPlayerListener, Runnable
@@ -36,7 +36,7 @@ public class AudioPlayer
   private Application jdField_a_of_type_AndroidAppApplication;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ujr(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new uon(this);
   private AudioPlayer.AudioPlayerListener jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener;
   private IPttPlayer jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer;
   private volatile AudioHelper.AudioPlayerParameter jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter;
@@ -118,7 +118,7 @@ public class AudioPlayer
       QLog.d("AudioPlayer", 2, "tryStartBlueToothSco " + paramString);
     }
     f();
-    paramString = new ujt(this, paramString, paramInt);
+    paramString = new uop(this, paramString, paramInt);
     this.jdField_a_of_type_AndroidAppApplication.registerReceiver(paramString, new IntentFilter("android.media.ACTION_SCO_AUDIO_STATE_UPDATED"));
     this.jdField_a_of_type_AndroidContentBroadcastReceiver = paramString;
     this.jdField_a_of_type_AndroidMediaAudioManager.startBluetoothSco();
@@ -363,25 +363,38 @@ public class AudioPlayer
     //   496: dup
     //   497: invokespecial 310	com/tencent/mobileqq/ptt/player/AmrPlayer:<init>	()V
     //   500: putfield 97	com/tencent/mobileqq/activity/aio/AudioPlayer:jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer	Lcom/tencent/mobileqq/ptt/player/IPttPlayer;
-    //   503: goto -237 -> 266
-    //   506: astore 11
-    //   508: iload 4
-    //   510: istore 5
-    //   512: goto -262 -> 250
-    //   515: astore 11
-    //   517: goto -60 -> 457
-    //   520: astore_1
-    //   521: goto -74 -> 447
-    //   524: astore 13
-    //   526: goto -154 -> 372
+    //   503: ldc 177
+    //   505: iconst_1
+    //   506: new 179	java/lang/StringBuilder
+    //   509: dup
+    //   510: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   513: ldc_w 312
+    //   516: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   519: iload 5
+    //   521: invokevirtual 266	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   524: ldc_w 314
+    //   527: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   530: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   533: invokestatic 316	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   536: goto -270 -> 266
+    //   539: astore 11
+    //   541: iload 4
+    //   543: istore 5
+    //   545: goto -295 -> 250
+    //   548: astore 11
+    //   550: goto -93 -> 457
+    //   553: astore_1
+    //   554: goto -107 -> 447
+    //   557: astore 13
+    //   559: goto -187 -> 372
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	529	0	this	AudioPlayer
-    //   0	529	1	paramString	String
-    //   0	529	2	paramInt	int
+    //   0	562	0	this	AudioPlayer
+    //   0	562	1	paramString	String
+    //   0	562	2	paramInt	int
     //   4	434	3	b1	byte
-    //   173	336	4	b2	byte
-    //   234	277	5	b3	byte
+    //   173	369	4	b2	byte
+    //   234	310	5	b3	byte
     //   8	273	6	i	int
     //   48	440	7	bool1	boolean
     //   1	360	8	bool2	boolean
@@ -389,11 +402,11 @@ public class AudioPlayer
     //   166	219	11	localFileInputStream1	java.io.FileInputStream
     //   435	1	11	localException1	Exception
     //   445	8	11	localObject	Object
-    //   506	1	11	localException2	Exception
-    //   515	1	11	localException3	Exception
+    //   539	1	11	localException2	Exception
+    //   548	1	11	localException3	Exception
     //   162	263	12	localFileInputStream2	java.io.FileInputStream
     //   367	36	13	localException4	Exception
-    //   524	1	13	localException5	Exception
+    //   557	1	13	localException5	Exception
     // Exception table:
     //   from	to	target	type
     //   17	46	79	finally
@@ -410,7 +423,7 @@ public class AudioPlayer
     //   457	459	79	finally
     //   460	476	79	finally
     //   476	486	79	finally
-    //   492	503	79	finally
+    //   492	536	79	finally
     //   154	164	367	java/lang/Exception
     //   424	429	435	java/lang/Exception
     //   154	164	443	finally
@@ -418,17 +431,17 @@ public class AudioPlayer
     //   255	266	459	java/lang/Exception
     //   266	318	459	java/lang/Exception
     //   457	459	459	java/lang/Exception
-    //   492	503	459	java/lang/Exception
-    //   241	246	506	java/lang/Exception
-    //   452	457	515	java/lang/Exception
-    //   168	175	520	finally
-    //   182	188	520	finally
-    //   195	232	520	finally
-    //   376	382	520	finally
-    //   386	416	520	finally
-    //   168	175	524	java/lang/Exception
-    //   182	188	524	java/lang/Exception
-    //   195	232	524	java/lang/Exception
+    //   492	536	459	java/lang/Exception
+    //   241	246	539	java/lang/Exception
+    //   452	457	548	java/lang/Exception
+    //   168	175	553	finally
+    //   182	188	553	finally
+    //   195	232	553	finally
+    //   376	382	553	finally
+    //   386	416	553	finally
+    //   168	175	557	java/lang/Exception
+    //   182	188	557	java/lang/Exception
+    //   195	232	557	java/lang/Exception
   }
   
   private void e()
@@ -528,7 +541,7 @@ public class AudioPlayer
       b(paramString, paramInt);
       return;
     }
-    paramString = new ujs(this, paramString, paramInt, localBluetoothAdapter);
+    paramString = new uoo(this, paramString, paramInt, localBluetoothAdapter);
     localBluetoothAdapter.getProfileProxy(BaseApplication.getContext(), paramString, 1);
   }
   
@@ -577,33 +590,29 @@ public class AudioPlayer
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter = a();
     this.jdField_a_of_type_AndroidMediaAudioManager.setMode(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_a_of_type_Boolean);
+    if (this.jdField_b_of_type_Int != jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener.b(this, this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
+    }
+    AudioUtil.a(this.jdField_a_of_type_AndroidAppApplication, true);
+    this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.g();
+    int i = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
+    int j = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
+    if (i / j < 0.1F)
+    {
+      this.jdField_c_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
+    }
     for (;;)
     {
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_a_of_type_Boolean);
-        if (this.jdField_b_of_type_Int != jdField_a_of_type_Int) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener.b(this, this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-        }
-        AudioUtil.a(this.jdField_a_of_type_AndroidAppApplication, true);
-        this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer.g();
-        int i = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-        int j = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.jdField_a_of_type_ComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter.jdField_b_of_type_Int);
-        if (i / j < 0.1F)
-        {
-          this.jdField_c_of_type_Int = 0;
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener.c(this, this.jdField_c_of_type_Int);
-          }
-          return;
-        }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener.c(this, this.jdField_c_of_type_Int);
       }
-      finally {}
+      return;
       this.jdField_c_of_type_Int = 1;
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
     }

@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class set
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public set(ChatSettingForTroop paramChatSettingForTroop, String paramString) {}
+  public set(ChatHistoryFileActivity paramChatHistoryFileActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a != null) {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.show();
-      }
+    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c)) || (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, 230);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.setMessage(this.jdField_a_of_type_JavaLangString);
-      seu localseu = new seu(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.setPositiveButton(2131432417, localseu);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.setNegativeButton(2131433015, localseu);
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.isShowing());
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.show();
   }
 }
 

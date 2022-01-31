@@ -1,30 +1,58 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.vip.IPCDownloadListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class acja
-  implements Runnable
+  extends IPCDownloadListener
 {
-  public acja(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public acja(MessengerService paramMessengerService) {}
   
-  public void run()
+  public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    if (NetworkUtil.g(ExtendFriendSquareFragment.a(this.a)))
+    if (this.a.a != null) {}
+    try
     {
-      if (ExtendFriendSquareFragment.a(this.a) != null)
-      {
-        ExtendFriendSquareFragment.a(this.a).setRefreshing();
-        ExtendFriendSquareFragment.a(this.a).a(0, true);
-      }
+      Message localMessage = Message.obtain(null, 5);
+      paramBundle.putInt("id", (int)paramLong);
+      paramBundle.putInt("result", paramInt);
+      localMessage.setData(paramBundle);
+      this.a.a.send(localMessage);
       return;
     }
-    ExtendFriendSquareFragment.a(this.a, this.a.getString(2131437530), 1);
-    ExtendFriendSquareFragment.a(this.a).a(true);
+    catch (Exception paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    Message localMessage;
+    if (this.a.a != null)
+    {
+      localMessage = Message.obtain(null, 5);
+      localMessage.setData(paramBundle);
+    }
+    try
+    {
+      this.a.a.send(localMessage);
+      return;
+    }
+    catch (RemoteException paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.emoji.web.MessengerService", 2, paramBundle.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acja
  * JD-Core Version:    0.7.0.1
  */

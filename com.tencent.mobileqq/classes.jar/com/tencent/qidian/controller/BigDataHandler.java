@@ -1,7 +1,7 @@
 package com.tencent.qidian.controller;
 
-import alnj;
-import alnk;
+import alus;
+import alut;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -40,7 +40,7 @@ public abstract class BigDataHandler
   protected BigDataHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver = new alnj(this);
+    this.jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver = new alus(this);
     this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler = ((BigDataGetIpHandler)paramQQAppInterface.a(104));
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver);
     this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = paramQQAppInterface.getNetEngine(0);
@@ -113,11 +113,11 @@ public abstract class BigDataHandler
         localObject2 = new Cryptor().encrypt(paramMessageMicro.toByteArray(), this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a());
         paramMessageMicro = new String();
         i = 0;
-        while (i < "7.6.3".length())
+        while (i < "7.6.8".length())
         {
           ??? = paramMessageMicro;
-          if ("7.6.3".charAt(i) != '.') {
-            ??? = paramMessageMicro.concat(Character.toString("7.6.3".charAt(i)));
+          if ("7.6.8".charAt(i) != '.') {
+            ??? = paramMessageMicro.concat(Character.toString("7.6.8".charAt(i)));
           }
           i += 1;
           paramMessageMicro = (MessageMicro)???;
@@ -165,7 +165,7 @@ public abstract class BigDataHandler
         localObject2 = new HttpNetReq();
         ((HttpNetReq)localObject2).a(paramObject);
         ((HttpNetReq)localObject2).jdField_a_of_type_ArrayOfByte = paramMessageMicro;
-        ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new alnk(paramInt1, this, this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a(), paramInt2, paramObject);
+        ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new alut(paramInt1, this, this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a(), paramInt2, paramObject);
         ((HttpNetReq)localObject2).jdField_a_of_type_JavaLangString = ((String)???);
         ((HttpNetReq)localObject2).jdField_a_of_type_Int = 1;
         ((HttpNetReq)localObject2).jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");

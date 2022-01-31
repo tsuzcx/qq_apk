@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
+import com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
+import com.tencent.qphone.base.util.QLog;
 
-class ahtp
+public class ahtp
   implements Runnable
 {
-  ahtp(ahtn paramahtn) {}
+  public ahtp(HWVideoPlayView paramHWVideoPlayView) {}
   
   public void run()
   {
-    this.a.a.c(true);
-    this.a.a.b(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("DIDI", 1, "reStartPlaySolveDanceBlackScreen mHaveSurfaceChangedPlayStart=" + this.a.c);
+    }
+    try
+    {
+      if (!this.a.c)
+      {
+        this.a.b();
+        if (HWVideoPlayView.a(this.a)) {
+          this.a.c();
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("DIDI", 1, "reStartPlaySolveDanceBlackScreen mHaveSurfaceChangedPlayStart=" + this.a.c, localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahtp
  * JD-Core Version:    0.7.0.1
  */

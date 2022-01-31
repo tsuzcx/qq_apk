@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ark;
 
-import aaxa;
-import aaxb;
-import aaxc;
-import aaxd;
-import aaxe;
-import aaxg;
-import aaxh;
-import aaxi;
-import aaxj;
-import aaxk;
-import aaxl;
-import aaxn;
-import aaxp;
-import aaxq;
-import aaxr;
-import aaxs;
-import aaxt;
+import abdv;
+import abdw;
+import abdx;
+import abdy;
+import abdz;
+import abeb;
+import abec;
+import abed;
+import abee;
+import abef;
+import abeg;
+import abei;
+import abek;
+import abel;
+import abem;
+import aben;
+import abeo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -118,7 +118,7 @@ public class ArkRecommendController
   public static int i;
   public static int j;
   public static int k;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aaxa(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new abdv(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   private ArkAiAppPanel jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel;
@@ -128,7 +128,7 @@ public class ArkRecommendController
   public WeakReference a;
   private Set jdField_a_of_type_JavaUtilSet = new HashSet();
   private boolean jdField_a_of_type_Boolean;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new aaxg(this);
+  private Runnable jdField_b_of_type_JavaLangRunnable = new abeb(this);
   private boolean jdField_b_of_type_Boolean;
   private Runnable c;
   public int h;
@@ -152,7 +152,7 @@ public class ArkRecommendController
   
   public ArkRecommendController(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_c_of_type_JavaLangRunnable = new aaxh(this);
+    this.jdField_c_of_type_JavaLangRunnable = new abec(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -165,7 +165,7 @@ public class ArkRecommendController
     if (!TextUtils.isEmpty(ArkAiAppCenter.jdField_b_of_type_JavaLangString)) {
       return ArkAiAppCenter.jdField_b_of_type_JavaLangString;
     }
-    return BaseActivity.sTopActivity.getString(2131438814);
+    return BaseActivity.sTopActivity.getString(2131438838);
   }
   
   public static String a(Context paramContext, QQAppInterface paramQQAppInterface)
@@ -273,7 +273,7 @@ public class ArkRecommendController
   
   public static void a(QQCustomDialog paramQQCustomDialog, boolean paramBoolean)
   {
-    paramQQCustomDialog = (TextView)paramQQCustomDialog.findViewById(2131362776);
+    paramQQCustomDialog = (TextView)paramQQCustomDialog.findViewById(2131362781);
     paramQQCustomDialog.setGravity(17);
     paramQQCustomDialog.setGravity(16);
     String str = ArkAiAppCenter.jdField_a_of_type_JavaLangString;
@@ -286,7 +286,7 @@ public class ArkRecommendController
         int m = TextUtils.lastIndexOf((CharSequence)localObject, '了');
         int n = TextUtils.lastIndexOf((CharSequence)localObject, '情');
         localObject = new SpannableString((CharSequence)localObject);
-        ((SpannableString)localObject).setSpan(new aaxt(new aaxb(paramBoolean, str)), m, n + 1, 33);
+        ((SpannableString)localObject).setSpan(new abeo(new abdw(paramBoolean, str)), m, n + 1, 33);
         paramQQCustomDialog.setText((CharSequence)localObject);
         paramQQCustomDialog.setMovementMethod(LinkMovementMethod.getInstance());
         return;
@@ -294,7 +294,7 @@ public class ArkRecommendController
       paramQQCustomDialog.setText((CharSequence)localObject);
       return;
     }
-    paramQQCustomDialog.setText(BaseActivity.sTopActivity.getString(2131438814));
+    paramQQCustomDialog.setText(BaseActivity.sTopActivity.getString(2131438838));
   }
   
   private void a(CharSequence paramCharSequence, boolean paramBoolean)
@@ -336,7 +336,7 @@ public class ArkRecommendController
   
   public static boolean a(SessionInfo paramSessionInfo)
   {
-    return (paramSessionInfo != null) && (((paramSessionInfo.jdField_a_of_type_Int == 0) && (!AppConstants.au.equals(paramSessionInfo.jdField_a_of_type_JavaLangString))) || (paramSessionInfo.jdField_a_of_type_Int == 1000) || (paramSessionInfo.jdField_a_of_type_Int == 1004) || (paramSessionInfo.jdField_a_of_type_Int == 1022) || (paramSessionInfo.jdField_a_of_type_Int == 1001) || (paramSessionInfo.jdField_a_of_type_Int == 1020) || (paramSessionInfo.jdField_a_of_type_Int == 10002));
+    return (paramSessionInfo != null) && (((paramSessionInfo.jdField_a_of_type_Int == 0) && (!AppConstants.av.equals(paramSessionInfo.jdField_a_of_type_JavaLangString))) || (paramSessionInfo.jdField_a_of_type_Int == 1000) || (paramSessionInfo.jdField_a_of_type_Int == 1004) || (paramSessionInfo.jdField_a_of_type_Int == 1022) || (paramSessionInfo.jdField_a_of_type_Int == 1001) || (paramSessionInfo.jdField_a_of_type_Int == 1020) || (paramSessionInfo.jdField_a_of_type_Int == 10002));
   }
   
   private static boolean a(ChatMessage paramChatMessage)
@@ -429,7 +429,7 @@ public class ArkRecommendController
         ArkAppDataReport.n(null, paramString.jdField_a_of_type_JavaLangString);
       }
       paramString = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      m = SharedPreUtils.at(BaseApplicationImpl.getApplication(), paramString);
+      m = SharedPreUtils.ar(BaseApplicationImpl.getApplication(), paramString);
       paramLinkedHashMap = SharedPreUtils.i(BaseApplicationImpl.getApplication(), paramString);
       if (QLog.isColorLevel()) {
         QLog.d("ArkRecommendController", 2, "showKeywordGrayTip closeCount=" + m + "closeSwitch=" + paramLinkedHashMap);
@@ -438,7 +438,7 @@ public class ArkRecommendController
     if (QLog.isColorLevel()) {
       QLog.d("ArkRecommendController", 2, "showKeywordGrayTip close gray tip");
     }
-    paramLinkedHashMap = new UniteGrayTipParam(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131438829), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -5020, 2555906, MessageCache.a());
+    paramLinkedHashMap = new UniteGrayTipParam(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131438853), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -5020, 2555906, MessageCache.a());
     paramArrayList = new MessageForUniteGrayTip();
     paramArrayList.initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLinkedHashMap);
     UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramArrayList);
@@ -543,7 +543,7 @@ public class ArkRecommendController
     {
       paramAttachAppHolder = new ImageView(paramContext);
       localAttachAppHolder.jdField_a_of_type_AndroidWidgetImageView = paramAttachAppHolder;
-      paramAttachAppHolder.setImageDrawable(paramContext.getResources().getDrawable(2130838201));
+      paramAttachAppHolder.setImageDrawable(paramContext.getResources().getDrawable(2130838206));
       paramBaseChatItemLayout.addView(paramAttachAppHolder);
       a(localRecommendCommonMessage, localAttachAppHolder);
       localObject1 = paramContext.getResources();
@@ -633,7 +633,7 @@ public class ArkRecommendController
       }
       for (;;)
       {
-        paramAttachAppHolder.setOnTouchListener(new aaxc(this, paramAttachAppHolder, localRecommendCommonMessage, paramContext, paramView, localAttachAppHolder, paramBaseChatItemLayout, paramSessionInfo, paramQQAppInterface, paramOnLongClickAndTouchListener, bool, paramChatMessage));
+        paramAttachAppHolder.setOnTouchListener(new abdx(this, paramAttachAppHolder, localRecommendCommonMessage, paramContext, paramView, localAttachAppHolder, paramBaseChatItemLayout, paramSessionInfo, paramQQAppInterface, paramOnLongClickAndTouchListener, bool, paramChatMessage));
         if (QLog.isColorLevel()) {
           QLog.d("ArkRecommendController", 2, "getAttachButton msg.mIsShow after=" + localRecommendCommonMessage.mIsShow);
         }
@@ -833,7 +833,7 @@ public class ArkRecommendController
           paramAttachAppHolder.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListView.setRestoreX(0);
           continue;
           label1009:
-          RecommendCommonMessage.getAppInfosByContext(paramQQAppInterface, new aaxd(this, paramSessionInfo, n, i3, paramContext, paramAttachAppHolder, paramQQAppInterface, paramRecommendCommonMessage, paramBoolean2, paramInt, paramBoolean1, i5, m, i4));
+          RecommendCommonMessage.getAppInfosByContext(paramQQAppInterface, new abdy(this, paramSessionInfo, n, i3, paramContext, paramAttachAppHolder, paramQQAppInterface, paramRecommendCommonMessage, paramBoolean2, paramInt, paramBoolean1, i5, m, i4));
         }
       }
       label1048:
@@ -868,8 +868,8 @@ public class ArkRecommendController
       if (paramAttachAppHolder.jdField_a_of_type_AndroidViewView != null) {
         break label1595;
       }
-      localView = LayoutInflater.from(paramContext).inflate(2130968741, null);
-      paramAttachAppHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)localView.findViewById(2131363312));
+      localView = LayoutInflater.from(paramContext).inflate(2130968744, null);
+      paramAttachAppHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)localView.findViewById(2131363329));
       paramQQAppInterface = paramAttachAppHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
       localObject1 = paramAttachAppHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
       paramQQAppInterface.setBorderType(3);
@@ -877,7 +877,7 @@ public class ArkRecommendController
       paramQQAppInterface.setClipRadius(14.0F);
       ((View)localObject1).setTag(paramAttachAppHolder);
       localView.setPadding(0, 0, 0, BaseChatItemLayout.h);
-      localView.findViewById(2131363311).setPadding(0, 0, 0, 0);
+      localView.findViewById(2131363328).setPadding(0, 0, 0, 0);
       paramAttachAppHolder.jdField_a_of_type_AndroidViewView = localView;
       localView.setVisibility(8);
       paramBaseChatItemLayout.addView(localView, (ViewGroup.LayoutParams)localObject2);
@@ -899,7 +899,7 @@ public class ArkRecommendController
       ((ArkAioContainerWrapper)localObject2).setFixSize(paramInt, -1);
       ((ArkAioContainerWrapper)localObject2).setHintSize(paramInt, m);
       ((ArkAioContainerWrapper)localObject2).a(paramInt, m);
-      paramContext = new aaxe(this, paramBoolean2, (View)localObject1, paramBaseChatItemLayout, localView);
+      paramContext = new abdz(this, paramBoolean2, (View)localObject1, paramBaseChatItemLayout, localView);
       paramQQAppInterface.initArkView(paramRecommendCommonMessage.mOldAppInfo.mArkContainer);
       paramQQAppInterface.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramQQAppInterface.setOnLongClickListener(paramOnLongClickAndTouchListener);
@@ -1134,7 +1134,7 @@ public class ArkRecommendController
       a(paramContext, paramSessionInfo, paramQQAppInterface, paramRecommendCommonMessage, paramView, paramBaseChatItemLayout, paramOnLongClickAndTouchListener, paramAttachAppHolder, paramRecommendCommonMessage.isSend(), paramInt);
       return;
     }
-    ChatActivityUtils.a(paramContext, 2131434811, 1);
+    ChatActivityUtils.a(paramContext, 2131434827, 1);
   }
   
   public void a(ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, SessionInfo paramSessionInfo, boolean paramBoolean)
@@ -1155,13 +1155,13 @@ public class ArkRecommendController
       localMessageForArkBabyqReply.mArkBabyqReplyCardList = null;
       if (paramBoolean)
       {
-        localMessageForArkBabyqReply.babyqReplyText = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438834);
+        localMessageForArkBabyqReply.babyqReplyText = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438858);
         localMessageForArkBabyqReply.isFailed = paramBoolean;
         ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSessionInfo, localMessageForArkBabyqReply, true, true);
         return;
       }
       if (TextUtils.isEmpty(jdField_c_of_type_JavaLangString)) {}
-      for (paramSearchArkBabyQInfo = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438832);; paramSearchArkBabyQInfo = jdField_c_of_type_JavaLangString)
+      for (paramSearchArkBabyQInfo = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131438856);; paramSearchArkBabyQInfo = jdField_c_of_type_JavaLangString)
       {
         localMessageForArkBabyqReply.babyqReplyText = paramSearchArkBabyQInfo;
         break;
@@ -1260,7 +1260,7 @@ public class ArkRecommendController
     ((RecommendCommonMessage)localObject1).mIsMsgParsedByAi = true;
     ((RecommendCommonMessage)localObject1).saveRecommendMsg(this.jdField_a_of_type_JavaLangRefWeakReference, this.h, true);
     j();
-    ArkRecommendLogic.a().post(new aaxj(this, (RecommendCommonMessage)localObject1));
+    ArkRecommendLogic.a().post(new abee(this, (RecommendCommonMessage)localObject1));
   }
   
   public void a(ChatMessage paramChatMessage, SessionInfo paramSessionInfo)
@@ -1291,7 +1291,7 @@ public class ArkRecommendController
     localRecommendCommonMessage.mIsMsgParsedByAi = true;
     localRecommendCommonMessage.saveRecommendMsg(this.jdField_a_of_type_JavaLangRefWeakReference, this.h, true);
     j();
-    ArkRecommendLogic.a().post(new aaxk(this, paramChatMessage, paramSessionInfo));
+    ArkRecommendLogic.a().post(new abef(this, paramChatMessage, paramSessionInfo));
   }
   
   public void a(RecommendCommonMessage paramRecommendCommonMessage, ArkAiInfo paramArkAiInfo, RecommendCommonMessage.ArkContextInfo paramArkContextInfo, String paramString)
@@ -1304,7 +1304,7 @@ public class ArkRecommendController
       a(paramRecommendCommonMessage);
       return;
     }
-    ArkAppCenter.a().postToMainThread(new aaxn(this, paramRecommendCommonMessage, paramArkContextInfo, paramArkAiInfo, paramString));
+    ArkAppCenter.a().postToMainThread(new abei(this, paramRecommendCommonMessage, paramArkContextInfo, paramArkAiInfo, paramString));
   }
   
   public void a(RecommendCommonMessage paramRecommendCommonMessage, ArkMessageServerLogic.ArkPassiveSearchInfo paramArkPassiveSearchInfo)
@@ -1376,7 +1376,7 @@ public class ArkRecommendController
     if (QLog.isColorLevel()) {
       QLog.d("ArkRecommendController", 2, "onFinishedPassiveSearch msg hasAiData=" + paramRecommendCommonMessage.hasAiData());
     }
-    ArkAppCenter.a().postToMainThread(new aaxp(this, paramRecommendCommonMessage));
+    ArkAppCenter.a().postToMainThread(new abek(this, paramRecommendCommonMessage));
   }
   
   protected void a(RecommendCommonMessage paramRecommendCommonMessage, ArkRecommendController.AttachAppHolder paramAttachAppHolder)
@@ -1387,7 +1387,7 @@ public class ArkRecommendController
       return;
       this.jdField_a_of_type_JavaUtilSet.add(paramAttachAppHolder);
       paramAttachAppHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramAttachAppHolder = new aaxs(paramRecommendCommonMessage, paramAttachAppHolder, this.jdField_a_of_type_JavaLangRefWeakReference, this.h);
+      paramAttachAppHolder = new aben(paramRecommendCommonMessage, paramAttachAppHolder, this.jdField_a_of_type_JavaLangRefWeakReference, this.h);
       if (!TextUtils.isEmpty(paramRecommendCommonMessage.mIconAppPath)) {
         break;
       }
@@ -1409,15 +1409,15 @@ public class ArkRecommendController
   
   public void a(QQCustomDialog paramQQCustomDialog, Context paramContext1, List paramList, int paramInt1, ArkAiAppPanel paramArkAiAppPanel, boolean paramBoolean1, boolean paramBoolean2, Context paramContext2, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, RecommendCommonMessage paramRecommendCommonMessage, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, ArkRecommendController.AttachAppHolder paramAttachAppHolder, boolean paramBoolean3, int paramInt2)
   {
-    paramQQCustomDialog.setContentView(2130968842);
-    ((TextView)paramQQCustomDialog.findViewById(2131364034)).setText(BaseActivity.sTopActivity.getString(2131438813));
+    paramQQCustomDialog.setContentView(2130968846);
+    ((TextView)paramQQCustomDialog.findViewById(2131364059)).setText(BaseActivity.sTopActivity.getString(2131438837));
     a(paramQQCustomDialog, true);
     paramQQCustomDialog.setCanceledOnTouchOutside(false);
     if ((paramQQAppInterface == null) && (QLog.isColorLevel())) {
       QLog.d("ArkDialog", 2, "appinterface is Empty");
     }
-    paramQQCustomDialog.setNegativeButton(2131438812, new aaxq(this, paramQQCustomDialog, paramQQAppInterface, paramContext1));
-    paramQQCustomDialog.setPositiveButton(2131438811, new aaxr(this, paramQQCustomDialog, paramBoolean1, paramArkAiAppPanel, paramList, paramInt1, paramBoolean2, paramContext2, paramSessionInfo, paramQQAppInterface, paramRecommendCommonMessage, paramView, paramBaseChatItemLayout, paramOnLongClickAndTouchListener, paramAttachAppHolder, paramBoolean3, paramInt2, paramContext1));
+    paramQQCustomDialog.setNegativeButton(2131438836, new abel(this, paramQQCustomDialog, paramQQAppInterface, paramContext1));
+    paramQQCustomDialog.setPositiveButton(2131438835, new abem(this, paramQQCustomDialog, paramBoolean1, paramArkAiAppPanel, paramList, paramInt1, paramBoolean2, paramContext2, paramSessionInfo, paramQQAppInterface, paramRecommendCommonMessage, paramView, paramBaseChatItemLayout, paramOnLongClickAndTouchListener, paramAttachAppHolder, paramBoolean3, paramInt2, paramContext1));
     try
     {
       paramQQCustomDialog.show();
@@ -1442,7 +1442,7 @@ public class ArkRecommendController
       ArkAppCenter.a().removeTaskInMainThread(this.jdField_a_of_type_JavaLangRunnable);
     }
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = new aaxl(this);
+    this.jdField_a_of_type_JavaLangRunnable = new abeg(this);
     ArkAppCenter.a().postToMainThreadDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
   }
   
@@ -1515,7 +1515,7 @@ public class ArkRecommendController
           break;
         }
         j();
-        ArkRecommendLogic.a().post(new aaxi(this, localArrayList));
+        ArkRecommendLogic.a().post(new abed(this, localArrayList));
         return;
       }
     }
@@ -1578,7 +1578,7 @@ public class ArkRecommendController
         localAttachAppHolder.jdField_a_of_type_Int = 3;
         break;
       case 2: 
-        localAttachAppHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localAttachAppHolder.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130838201));
+        localAttachAppHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localAttachAppHolder.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130838206));
         ArkAppCenter.a(localAttachAppHolder.jdField_a_of_type_JavaLangString);
         localAttachAppHolder.jdField_a_of_type_JavaLangString = null;
       }
@@ -1706,8 +1706,8 @@ public class ArkRecommendController
     {
       l = System.currentTimeMillis();
       str = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      i1 = SharedPreUtils.as(BaseApplicationImpl.getApplication(), str);
-      i2 = SharedPreUtils.ar(BaseApplicationImpl.getApplication(), str);
+      i1 = SharedPreUtils.aq(BaseApplicationImpl.getApplication(), str);
+      i2 = SharedPreUtils.ap(BaseApplicationImpl.getApplication(), str);
       if ((i1 < j) || (i2 < i)) {
         break label105;
       }
@@ -1740,7 +1740,7 @@ public class ArkRecommendController
         localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources();
         ((Resources)localObject).getDisplayMetrics();
         this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(((Resources)localObject).getString(2131438830));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(((Resources)localObject).getString(2131438854));
         this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 16.0F);
         this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       }
@@ -1748,14 +1748,14 @@ public class ArkRecommendController
       {
         try
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130838190);
+          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130838195);
           this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
           this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
           int i3 = AIOUtils.a(10.0F, (Resources)localObject);
           this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i3, i3, i3, AIOUtils.a(17.0F, (Resources)localObject));
           RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
           localLayoutParams.addRule(9);
-          localLayoutParams.addRule(2, 2131363494);
+          localLayoutParams.addRule(2, 2131363513);
           localLayoutParams.leftMargin = AIOUtils.a(8.0F, (Resources)localObject);
           localLayoutParams.bottomMargin = AIOUtils.a(3.0F, (Resources)localObject);
           localLayoutParams.width = AIOUtils.a(244.0F, (Resources)localObject);

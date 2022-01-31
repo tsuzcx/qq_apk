@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
 
-public class mie
+class mie
   implements Runnable
 {
-  public mie(ReadInJoyHeadImageView paramReadInJoyHeadImageView, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  mie(mid parammid) {}
   
   public void run()
   {
-    ReadInJoyHeadImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo);
+    this.a.a.b(6);
   }
 }
 

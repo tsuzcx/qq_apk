@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1963" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="100.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.bubble.ChatXListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f24" android:id="@id/listViewHistory" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@null" android:divider="@color/APKTOOL_DUPLICATE_color_0x7f0c003d" android:dividerHeight="0.0dip" />
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1964" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1835" />
 </FrameLayout>

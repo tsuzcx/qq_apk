@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class aarr
-  implements View.OnClickListener
+public final class aarr
+  implements Parcelable.Creator
 {
-  public aarr(ArkAiAppPanel paramArkAiAppPanel) {}
-  
-  public void onClick(View paramView)
+  public ArVideoResourceInfo a(Parcel paramParcel)
   {
-    ArkAppCenter.a().post(new aars(this));
+    return new ArVideoResourceInfo(paramParcel);
+  }
+  
+  public ArVideoResourceInfo[] a(int paramInt)
+  {
+    return new ArVideoResourceInfo[paramInt];
   }
 }
 

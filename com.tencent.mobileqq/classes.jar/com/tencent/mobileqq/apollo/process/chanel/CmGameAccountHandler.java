@@ -16,12 +16,12 @@ import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import java.util.HashMap;
 import java.util.Map;
-import yqe;
+import ywn;
 
 public class CmGameAccountHandler
   implements FaceDecoder.DecodeTaskCompletionListener
 {
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new yqe(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ywn(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();

@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class anxy
-  implements View.OnSystemUiVisibilityChangeListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anxy(EditTextDialog paramEditTextDialog) {}
+  public anxy(QIMCircleProgress paramQIMCircleProgress) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramInt & 0x4) == 0)
-    {
-      SLog.b("EditTextDialog", "onStatusBarShow");
-      this.a.getWindow().getDecorView().removeCallbacks(EditTextDialog.a(this.a));
-      this.a.getWindow().getDecorView().postDelayed(EditTextDialog.a(this.a), 1500L);
-      return;
-    }
-    SLog.b("EditTextDialog", "onStatusBarHide");
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b();
   }
 }
 

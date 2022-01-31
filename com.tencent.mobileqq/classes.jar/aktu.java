@@ -1,22 +1,88 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.BaseDraggableGridViewAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.annotation.SuppressLint;
+import android.view.View;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.mobileqq.webview.AbsWebView;
+import com.tencent.mobileqq.widget.WebViewProgressBarController;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebView;
 
 public class aktu
-  implements Animation.AnimationListener
+  extends CustomWebChromeClient
 {
-  public aktu(DraggableGridView paramDraggableGridView, int paramInt1, int paramInt2) {}
+  public aktu(AbsWebView paramAbsWebView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private void a(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, this.b);
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "show custom view called");
+    }
+    this.a.a(paramView, paramInt, paramCustomViewCallback);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public View getVideoLoadingProgressView()
+  {
+    return this.a.c();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "onGeolocationPermissionsShowPrompt:" + paramString);
+    }
+    this.a.a(paramString, paramGeolocationPermissionsCallback);
+  }
+  
+  public void onHideCustomView()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "hide custom view called");
+    }
+    this.a.A();
+  }
+  
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    return this.a.a(paramWebView, paramString1, paramString2, paramJsResult);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "onProgressChanged:" + paramInt);
+    }
+    if ((this.a.a != null) && (this.a.a.b() == 0)) {
+      this.a.a.a((byte)1);
+    }
+    if (paramInt == 100) {
+      this.a.d(false);
+    }
+    this.a.a(paramWebView, paramInt);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    this.a.a(paramWebView, paramString);
+  }
+  
+  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    a(paramView, paramInt, paramCustomViewCallback);
+  }
+  
+  @SuppressLint({"InlinedApi"})
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    a(paramView, 10, paramCustomViewCallback);
+  }
+  
+  public void openFileChooser(ValueCallback paramValueCallback, String paramString1, String paramString2)
+  {
+    this.a.a(paramValueCallback, paramString1, paramString2);
+  }
 }
 
 

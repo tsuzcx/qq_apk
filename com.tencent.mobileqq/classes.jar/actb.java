@@ -1,83 +1,23 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.DataLineHandler;
+import android.view.animation.AlphaAnimation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter.RecentItemHolder;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class actb
   implements View.OnClickListener
 {
-  public actb(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public actb(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString, View paramView) {}
   
   public void onClick(View paramView)
   {
-    paramView = (QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      FileManagerUtil.c(localFileManagerEntity);
-    }
-    switch (paramView.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      this.a.i();
-      return;
-      this.a.a.a().ac();
-      if (!NetworkUtil.d(BaseApplication.getContext()))
-      {
-        FMToastUtil.a(2131428327);
-        return;
-      }
-      if (localFileManagerEntity.status == 16)
-      {
-        FMToastUtil.a(2131428188);
-        return;
-      }
-      FileModel.a(localFileManagerEntity).a(false, this.a.getContext(), new actc(this, localFileManagerEntity));
-      continue;
-      this.a.a.a().ab();
-      this.a.c(localFileManagerEntity);
-      continue;
-      this.a.a.a().ad();
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        QfileBaseRecentFileTabView.v(this.a).a().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((DataLineHandler)QfileBaseRecentFileTabView.w(this.a).a(8)).a(0, localFileManagerEntity.uniseq, false);
-      }
-      else
-      {
-        QfileBaseRecentFileTabView.x(this.a).a().a(localFileManagerEntity.nSessionId);
-        continue;
-        this.a.a.a().ae();
-        if (!NetworkUtil.d(BaseApplication.getContext()))
-        {
-          FMToastUtil.a(2131428327);
-          return;
-        }
-        if (localFileManagerEntity.status == 16)
-        {
-          FMToastUtil.a(2131428188);
-          return;
-        }
-        boolean bool = localFileManagerEntity.isSend();
-        FileModel.a(localFileManagerEntity).a(bool, this.a.a, new actd(this, localFileManagerEntity));
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app.getPreferences().edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    paramView = new AlphaAnimation(1.0F, 0.0F);
+    paramView.setDuration(500L);
+    paramView.setAnimationListener(new actc(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
   }
 }
 

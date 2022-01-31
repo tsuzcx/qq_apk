@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.search.ISearchable;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
 
-public final class ahrl
-  implements Comparator
+public class ahrl
+  implements View.OnClickListener
 {
-  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
+  public ahrl(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    long l1 = paramISearchable1.c();
-    long l2 = paramISearchable2.c();
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 > l2) {
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahrl
  * JD-Core Version:    0.7.0.1
  */

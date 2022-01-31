@@ -1,40 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
 public class aklt
-  extends BroadcastReceiver
 {
-  public aklt(WebProcessManager paramWebProcessManager) {}
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private void a()
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
     {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebProcessManager", 2, "action=" + paramContext);
-        }
-        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
-          break;
-        }
-        this.a.f();
-      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
-      this.a.i();
+      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
+      if ((localDrawable instanceof GradientDrawable)) {
+        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
+      }
+    }
+    else
+    {
       return;
-    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
-    this.a.i();
+    }
+    QLog.w("BrandColorManager", 4, "set band border-color fail");
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aklt
  * JD-Core Version:    0.7.0.1
  */

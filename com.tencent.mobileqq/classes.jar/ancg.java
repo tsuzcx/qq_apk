@@ -1,18 +1,18 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnErrorListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin.SimpleAACRecorder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PublishEventTag;
 
-public class ancg
-  implements MediaRecorder.OnErrorListener
+public final class ancg
+  implements Parcelable.Creator
 {
-  public ancg(QzoneAudioRecordPlugin.SimpleAACRecorder paramSimpleAACRecorder) {}
-  
-  public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public PublishEventTag a(Parcel paramParcel)
   {
-    paramMediaRecorder = "(code = " + paramInt1 + ", extra = " + paramInt2 + ")";
-    QzoneAudioRecordPlugin.SimpleAACRecorder.a(this.a, paramInt1, paramMediaRecorder);
-    QLog.w("QzoneVoiceRecordPlugin.SimpleRecorder", 1, "MediaRecorder error " + paramMediaRecorder);
+    return new PublishEventTag(paramParcel);
+  }
+  
+  public PublishEventTag[] a(int paramInt)
+  {
+    return new PublishEventTag[paramInt];
   }
 }
 

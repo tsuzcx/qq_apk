@@ -1,46 +1,46 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.PrinterDefaultActivity;
-import com.dataline.data.PrinterManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.PrinterHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
-public final class adbn
-  implements View.OnClickListener
+public class adbn
+  extends IClickListener_Ver51
 {
-  public adbn(String paramString, IFileBrowser paramIFileBrowser) {}
+  public adbn(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = (DataLineHandler)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a(8);
-    if (!FileUtil.b(this.jdField_a_of_type_JavaLangString)) {}
-    for (;;)
-    {
-      return;
-      if (paramView.jdField_a_of_type_ComDatalineDataPrinterManager.a(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString)))
-      {
-        Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity();
-        if (!paramView.jdField_a_of_type_ComDatalineDataPrinterManager.a()) {
-          localActivity.startActivity(new Intent(localActivity, PrinterDefaultActivity.class));
-        }
-        while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.b())
-        {
-          long l = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().b();
-          FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), l);
-          return;
-          paramView.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a((BaseActivity)localActivity, this.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 

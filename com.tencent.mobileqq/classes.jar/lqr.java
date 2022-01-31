@@ -1,21 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lqr
-  implements Comparator
+  implements ActionSheet.OnButtonClickListener
 {
-  public lqr(ChannelInfoModule paramChannelInfoModule) {}
+  public lqr(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, String paramString, ActionSheet paramActionSheet) {}
   
-  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
-      return 0;
+    switch (paramInt)
+    {
     }
-    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
-      return -1;
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement.getActivity());
     }
-    return 1;
   }
 }
 

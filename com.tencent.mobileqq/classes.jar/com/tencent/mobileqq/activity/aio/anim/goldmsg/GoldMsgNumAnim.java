@@ -29,11 +29,11 @@ import com.tencent.util.Pair;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import upa;
-import upb;
-import upc;
-import upd;
-import upe;
+import utz;
+import uua;
+import uub;
+import uuc;
+import uud;
 
 public class GoldMsgNumAnim
   extends BaseGoldMsgAnimator
@@ -43,7 +43,7 @@ public class GoldMsgNumAnim
   AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   GoldAnimationView jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldAnimationView;
-  NumAnim.AnimListener jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetNumAnim$AnimListener = new upe(this);
+  NumAnim.AnimListener jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetNumAnim$AnimListener = new uud(this);
   NumAnim jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetNumAnim;
   public Runnable a;
   public List a;
@@ -68,11 +68,11 @@ public class GoldMsgNumAnim
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_c_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangRunnable = null;
-    this.jdField_a_of_type_AndroidViewView = paramRelativeLayout.findViewById(2131372514);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldAnimationView = ((GoldAnimationView)paramRelativeLayout.findViewById(2131372513));
-    this.jdField_b_of_type_AndroidViewView = paramRelativeLayout.findViewById(2131372510);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131372512));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131372515));
+    this.jdField_a_of_type_AndroidViewView = paramRelativeLayout.findViewById(2131372525);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldAnimationView = ((GoldAnimationView)paramRelativeLayout.findViewById(2131372524));
+    this.jdField_b_of_type_AndroidViewView = paramRelativeLayout.findViewById(2131372521);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131372523));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131372526));
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(false);
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(new ScaleAnimation(1.0F, 1.4F, 1.0F, 1.4F, 1, 0.5F, 1, 0.5F));
     this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(new AlphaAnimation(1.0F, 0.0F));
@@ -80,13 +80,13 @@ public class GoldMsgNumAnim
     float f1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
     paramInt = (int)(f1 * 23.0F + 0.5F);
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetNumAnim = new NumAnim(this.jdField_a_of_type_AndroidWidgetTextView, paramInt, paramInt, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetNumAnim.setRuler(new upa(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetNumAnim.setRuler(new utz(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetNumAnim.setAnimListener(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetNumAnim$AnimListener);
     this.d = ((int)(f1 * 23.0F + 0.5F));
     this.jdField_b_of_type_Int = ((int)(f1 * 3.0F + 0.5F));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldAnimationView.a(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.d, this.e, 180.0F);
-    this.jdField_a_of_type_JavaLangRunnable = new upb(this);
-    this.jdField_b_of_type_JavaLangRunnable = new upc(this);
+    this.jdField_a_of_type_JavaLangRunnable = new uua(this);
+    this.jdField_b_of_type_JavaLangRunnable = new uub(this);
   }
   
   private void c()
@@ -214,7 +214,7 @@ public class GoldMsgNumAnim
       if ((f2 != -1.0F) && (f1 != -1.0F))
       {
         paramBundle = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        paramBundle.setImageResource(2130844104);
+        paramBundle.setImageResource(2130844170);
         localObject1 = new RelativeLayout.LayoutParams(GoldMsgChatHelper.a, GoldMsgChatHelper.a);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramBundle, (ViewGroup.LayoutParams)localObject1);
         localObject2 = ObjectAnimator.ofFloat(paramBundle, "translationX", new float[] { f2, this.jdField_a_of_type_AndroidViewView.getX() });
@@ -224,7 +224,7 @@ public class GoldMsgNumAnim
         ((AnimatorSet)localObject1).setDuration(this.f);
         paramBundle = new Pair(paramBundle, localObject1);
         this.jdField_a_of_type_JavaUtilList.add(paramBundle);
-        ((AnimatorSet)localObject1).addListener(new upd(this, paramBundle));
+        ((AnimatorSet)localObject1).addListener(new uuc(this, paramBundle));
         ((AnimatorSet)localObject1).start();
         return;
         if ((paramBundle instanceof GoldMsgPttItemBuilder.GoldMsgPttHolder))
@@ -234,8 +234,8 @@ public class GoldMsgNumAnim
           paramBundle = paramBundle.jdField_a_of_type_AndroidWidgetTextView;
           break;
         }
-        localObject1 = paramBundle.a.findViewById(2131362400);
-        paramBundle = (TextView)paramBundle.a.findViewById(2131362397);
+        localObject1 = paramBundle.a.findViewById(2131362403);
+        paramBundle = (TextView)paramBundle.a.findViewById(2131362400);
         break;
       }
       c();

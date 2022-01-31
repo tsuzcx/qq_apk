@@ -1,34 +1,37 @@
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class ntt
-  extends GetRedPointExObserver
+  implements IMediaPlayer.OnErrorListener
 {
-  public ntt(QQStoryMainController paramQQStoryMainController) {}
+  public ntt(TextureVideoView paramTextureVideoView) {}
   
-  protected void a(Object paramObject)
+  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    MessageNotifySegment localMessageNotifySegment;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Error: " + paramInt1 + "," + paramInt2);
+    }
+    this.a.jdField_a_of_type_Int = -1;
+    this.a.b = -1;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    }
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener.a(paramIMediaPlayer, paramInt1, paramInt2))) {}
+    while (this.a.getWindowToken() == null) {
+      return true;
+    }
+    this.a.getContext().getResources();
+    if (paramInt1 == 200) {}
+    for (paramInt1 = 17039381;; paramInt1 = 17039377)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
-      }
-      paramObject = ((TroopRedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).a(49);
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + TroopRedTouchManager.a(paramObject));
-      }
-      localMessageNotifySegment = (MessageNotifySegment)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
-    } while (localMessageNotifySegment == null);
-    localMessageNotifySegment.a(paramObject);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.q();
+      new AlertDialog.Builder(this.a.getContext()).setMessage(paramInt1).setPositiveButton(17039376, new ntu(this)).setCancelable(false).show();
+      return true;
+    }
   }
 }
 

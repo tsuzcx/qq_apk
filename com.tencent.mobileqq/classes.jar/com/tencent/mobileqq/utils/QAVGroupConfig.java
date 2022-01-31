@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import akdr;
-import akds;
+import aklf;
+import aklg;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -32,7 +32,7 @@ public class QAVGroupConfig
   
   public static int a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return Math.min(SharedPreUtils.ah(paramQQAppInterface.getApp(), paramString), a().c);
+    return Math.min(SharedPreUtils.af(paramQQAppInterface.getApp(), paramString), a().c);
   }
   
   static int a(TroopInfo paramTroopInfo)
@@ -291,12 +291,12 @@ public class QAVGroupConfig
         }
         paramString1 = paramString1 + "_" + AudioHelper.a();
         String str = String.valueOf(l);
-        paramQQAppInterface.addObserver(new akdr(l, paramString1, paramQQAppInterface, str));
+        paramQQAppInterface.addObserver(new aklf(l, paramString1, paramQQAppInterface, str));
         localTroopHandler.a(l, 480, 0);
         paramString2 = ((TroopManager)paramQQAppInterface.getManager(51)).b(paramString2);
         if (paramString2.maxInviteMemNum == 0)
         {
-          paramQQAppInterface.addObserver(new akds(str, paramQQAppInterface, paramString1));
+          paramQQAppInterface.addObserver(new aklg(str, paramQQAppInterface, paramString1));
           localTroopHandler.a(str, (byte)1, paramString2.dwTimeStamp, 0);
         }
         QLog.w("QAVGroupConfig", 1, "getGroupInfo[" + paramString1 + "], troopuin[" + l + "], maxInviteMemNum[" + paramString2.maxInviteMemNum + "]");
@@ -499,7 +499,8 @@ public class QAVGroupConfig
   
   public static int b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    return ((TroopManager)paramQQAppInterface.getManager(51)).b(paramString).getMemNumForAutoInviteIntoGroup(paramQQAppInterface);
+    paramString = ((TroopManager)paramQQAppInterface.getManager(51)).b(paramString);
+    return Math.min(a().c, paramString.getMemNumForAutoInviteIntoGroup(paramQQAppInterface));
   }
   
   public static int c(QQAppInterface paramQQAppInterface, String paramString)

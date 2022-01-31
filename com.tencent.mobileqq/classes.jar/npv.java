@@ -1,64 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnDownloadListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class npv
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+  extends OnPlayModeShareListener
 {
-  public npv(VideoViewTVKImpl paramVideoViewTVKImpl, String paramString) {}
-  
-  public void OnDownloadCallback(String paramString)
+  public npv(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode, VideoPlayModeBase paramVideoPlayModeBase, ShareGroupItem paramShareGroupItem)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.a != null) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        i = paramString.getInt("callBackType");
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback callBackType=" + i);
-        }
-        if (i == 2)
-        {
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.b))
-          {
-            i = paramString.getInt("offset");
-            this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c, new File(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.b), i);
-          }
-        }
-        else if (i == 7)
-        {
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.b)) {
-            return;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback success , vid = " + this.jdField_a_of_type_JavaLangString);
-          }
-          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c, new File(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.b));
-        }
-      }
-      catch (JSONException paramString)
-      {
-        int i;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("VideoViewTVKImpl", 2, "OnDownloadCallback JSONException=" + paramString.getMessage());
-          return;
-          if ((i == 4) || (i == 5))
-          {
-            i = paramString.getInt("errorCode");
-            if (QLog.isColorLevel()) {
-              QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback errorCode=" + i);
-            }
-            this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c, i);
-          }
-        }
-      }
-    }
+    super(paramVideoPlayModeBase);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    StoryReportor.a("share_story", "single_suc", 0, paramInt, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
 }
 

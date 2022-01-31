@@ -1,24 +1,41 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class anvn
   implements Runnable
 {
-  public anvn(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload, boolean paramBoolean, String paramString1, String paramString2) {}
+  public anvn(QIMInformationPasterManager paramQIMInformationPasterManager, List paramList) {}
   
   public void run()
   {
-    Runnable localRunnable = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.jdField_a_of_type_JavaLangRunnable;
-    if (localRunnable != null) {
-      localRunnable.run();
+    QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMInformationPasterManager", 2, "patch pull res");
     }
-    if (this.jdField_a_of_type_Boolean)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    InfomationFacePackage.Item localItem;
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
-      return;
+      localItem = (InfomationFacePackage.Item)localIterator.next();
+      if ((!TextUtils.isEmpty(localItem.d)) && (!this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a(localItem))) {
+        QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).add(localItem);
+      }
     }
-    QQToast.a(BaseApplicationImpl.sApplication, "上传失败", 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMInformationPasterManager", 2, "need download size:" + QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).size());
+    }
+    localIterator = QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).iterator();
+    while (localIterator.hasNext())
+    {
+      localItem = (InfomationFacePackage.Item)localIterator.next();
+      this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a.a(localItem, new anvo(this));
+    }
   }
 }
 

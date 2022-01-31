@@ -1,32 +1,32 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.GridViewAdapter;
 
 public class ygp
-  implements MediaPlayer.OnCompletionListener
+  implements View.OnKeyListener
 {
-  public ygp(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin, String paramString1, String paramString2) {}
+  public ygp(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    int i = VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin).a(this.jdField_a_of_type_JavaLangString);
-    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->media:" + this.jdField_a_of_type_JavaLangString + " play completed, soundId:" + i);
-    try
+    if (paramInt == 67)
     {
-      paramMediaPlayer = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("id", i);
-      paramMediaPlayer.put("code", 0);
-      paramMediaPlayer.put("data", localJSONObject);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.b, new String[] { paramMediaPlayer.toString() });
-      return;
+      if (paramKeyEvent.getAction() != 0) {
+        break label35;
+      }
+      this.a.r = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
     }
-    catch (JSONException paramMediaPlayer)
+    for (;;)
     {
-      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->json exception:" + paramMediaPlayer.toString());
+      return false;
+      label35:
+      if ((paramKeyEvent.getAction() == 1) && (this.a.r)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity$GridViewAdapter.a();
+      }
     }
   }
 }

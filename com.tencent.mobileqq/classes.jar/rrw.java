@@ -1,13 +1,28 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 
 public class rrw
-  implements Runnable
+  extends SubAccountBindObserver
 {
-  public rrw(BaseChatPie paramBaseChatPie) {}
+  public rrw(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    this.a.h(2131230731);
+    this.a.c();
+    AssociatedAccountManageActivity.b(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    this.a.c();
+    AssociatedAccountManageActivity.b(this.a);
+  }
+  
+  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  {
+    this.a.c();
+    AssociatedAccountManageActivity.b(this.a);
   }
 }
 

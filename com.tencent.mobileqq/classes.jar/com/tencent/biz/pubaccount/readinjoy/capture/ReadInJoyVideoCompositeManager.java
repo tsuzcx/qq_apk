@@ -10,8 +10,8 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.ImageUtil.ScalingLogic;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import lid;
-import lie;
+import lkr;
+import lks;
 
 public class ReadInJoyVideoCompositeManager
 {
@@ -46,7 +46,7 @@ public class ReadInJoyVideoCompositeManager
     try
     {
       ImageUtil.a(ImageUtil.a(ImageUtil.a(paramPublishVideoEntry.doodlePath, null), paramPublishVideoEntry.videoWidth, paramPublishVideoEntry.videoHeight, ImageUtil.ScalingLogic.SCALE_CROP), new File(paramPublishVideoEntry.doodlePath));
-      FFmpegUtils.a(paramContext, paramString2, paramString1, paramString2 + ".doodle.mp4", new lie(this, paramPublishVideoEntry, paramString2));
+      FFmpegUtils.a(paramContext, paramString2, paramString1, paramString2 + ".doodle.mp4", new lks(this, paramPublishVideoEntry, paramString2));
       return;
     }
     catch (Exception paramContext)
@@ -101,7 +101,7 @@ public class ReadInJoyVideoCompositeManager
     if (!a(paramString1)) {
       paramString1.videoNeedRotate = true;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper.a(paramString1, paramString2 + ".tmp.mp4", false, false, new lid(this, paramString1, paramContext));
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper.a(paramString1, paramString2 + ".tmp.mp4", false, false, new lkr(this, paramString1, paramContext));
   }
   
   public void a(ReadInJoyVideoCompositeManager.OnVideoCompositeListener paramOnVideoCompositeListener)

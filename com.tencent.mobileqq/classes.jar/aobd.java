@@ -1,15 +1,14 @@
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
+import android.view.ViewTreeObserver.OnScrollChangedListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
 
 public class aobd
-  extends CaptureConfigUpdateObserver
+  implements ViewTreeObserver.OnScrollChangedListener
 {
-  public aobd(EditTextEffectView paramEditTextEffectView) {}
+  public aobd(EditVideoButton paramEditVideoButton) {}
   
-  public void f()
+  public void onScrollChanged()
   {
-    super.f();
-    this.a.a();
+    EditVideoButton.a(this.a);
   }
 }
 

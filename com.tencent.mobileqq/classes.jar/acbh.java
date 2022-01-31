@@ -1,21 +1,18 @@
-import android.os.IBinder.DeathRecipient;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.DynamicAvatar;
 
-class acbh
-  implements IBinder.DeathRecipient
+public final class acbh
+  implements Parcelable.Creator
 {
-  acbh(acbg paramacbg) {}
-  
-  public void binderDied()
+  public DynamicAvatar a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
-      MessengerService.a((MessengerService)this.a.a.get());
-      MessengerService.b((MessengerService)this.a.a.get());
-    }
+    return new DynamicAvatar(paramParcel);
+  }
+  
+  public DynamicAvatar[] a(int paramInt)
+  {
+    return new DynamicAvatar[paramInt];
   }
 }
 

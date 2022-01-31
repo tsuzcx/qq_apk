@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acyy;
-import acyz;
-import acza;
-import aczb;
+import adhf;
+import adhg;
+import adhh;
+import adhi;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,7 +18,7 @@ public class ThumbDownloadManager
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HttpThumbDownloader.ThumbEventCallback jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpThumbDownloader$ThumbEventCallback = new aczb(this);
+  private HttpThumbDownloader.ThumbEventCallback jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpThumbDownloader$ThumbEventCallback = new adhi(this);
   private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private List b = new ArrayList();
@@ -31,7 +31,7 @@ public class ThumbDownloadManager
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new acza(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new adhh(this));
   }
   
   private void a(ThumbDownloadManager.ThumbTask paramThumbTask)
@@ -47,7 +47,7 @@ public class ThumbDownloadManager
   
   private void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new acyz(this, paramString));
+    this.jdField_a_of_type_AndroidOsHandler.post(new adhg(this, paramString));
   }
   
   private boolean a(long paramLong, String paramString1, String paramString2)
@@ -105,7 +105,7 @@ public class ThumbDownloadManager
   
   public void a(long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new acyy(this, paramLong, paramString1, paramString2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new adhf(this, paramLong, paramString1, paramString2));
   }
 }
 

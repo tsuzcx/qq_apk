@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.widget.SwipListView;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
 class lfr
-  implements View.OnClickListener
+  implements AsyncBack
 {
-  lfr(lfq paramlfq, View paramView) {}
+  lfr(lfq paramlfq) {}
   
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lfq.a).a(this.jdField_a_of_type_AndroidViewView);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

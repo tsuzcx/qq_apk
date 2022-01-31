@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
+import java.io.File;
 
-public class ydm
+class ydm
   implements Runnable
 {
-  public ydm(ShortVideoPlayActivity paramShortVideoPlayActivity, int paramInt) {}
+  ydm(ydl paramydl, File paramFile) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.b(this.jdField_a_of_type_Int);
+    ShortVideoCaptureController.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
   }
 }
 

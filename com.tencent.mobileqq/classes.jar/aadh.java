@@ -1,26 +1,39 @@
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class aadh
+public final class aadh
   implements Runnable
 {
-  public aadh(ObjectSurfaceView paramObjectSurfaceView, String paramString1, String paramString2) {}
+  public aadh(QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    if (ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).size() > 0)
+    Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    Object localObject1 = ((TroopManager)localObject2).a(this.jdField_a_of_type_JavaLangString);
+    String str;
+    if (localObject1 != null)
     {
-      ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).add(this.jdField_a_of_type_JavaLangString);
-      ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.b);
+      ((TroopInfo)localObject1).wClickBAFTipCount += 1;
+      ((TroopManager)localObject2).b((TroopInfo)localObject1);
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      str = this.jdField_a_of_type_JavaLangString;
+      if (((TroopInfo)localObject1).wInsertBAFTipCount != 1) {
+        break label85;
+      }
+    }
+    label85:
+    for (localObject1 = "0";; localObject1 = "1")
+    {
+      ReportController.b((QQAppInterface)localObject2, "dc00899", "Grp_addFrd", "", "Grp_AIO", "greyTips_clk", 0, 0, str, (String)localObject1, "", "");
       return;
     }
-    QLog.d("ObjectSurfaceView", 1, "the dataList is null, cancel the jump action.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aadh
  * JD-Core Version:    0.7.0.1
  */

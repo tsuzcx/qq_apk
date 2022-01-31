@@ -1,43 +1,40 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.av.app.DeviceCapabilityExamination;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.videoeffect.VideoEffectTest.TestResultCallback;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.rookery.asyncHttpClient.AsyncHttpResponseHandler;
+import com.rookery.asyncHttpClient.JsonHttpResponseHandler;
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class jeh
-  implements VideoEffectTest.TestResultCallback
+final class jeh
+  extends JsonHttpResponseHandler
 {
-  public jeh(DeviceCapabilityExamination paramDeviceCapabilityExamination) {}
+  jeh(AsyncHttpResponseHandler paramAsyncHttpResponseHandler) {}
   
-  public void a(int paramInt, long paramLong, String paramString1, String paramString2)
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceCapabilityExamination", 2, "testVideoEffectIfNeed onFinish result: " + paramInt + ", timeConsuming: " + paramLong + ", gpuVendor: " + paramString1 + ", gpuModel: " + paramString2);
+    super.a(paramInt, paramArrayOfHeader, paramJSONObject);
+    try
+    {
+      paramJSONObject = paramJSONObject.getString("id");
+      this.a.a(paramInt, paramArrayOfHeader, paramJSONObject);
+      return;
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpu", Build.HARDWARE);
-    localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-    localHashMap.put("manufacturer", Build.MANUFACTURER);
-    localHashMap.put("model", Build.MODEL);
-    localHashMap.put("product", Build.PRODUCT);
-    localHashMap.put("fingerprint", Build.FINGERPRINT);
-    localHashMap.put("gpu_vendor", paramString1);
-    localHashMap.put("gpu_model", paramString2);
-    localHashMap.put("result", String.valueOf(paramInt));
-    localHashMap.put("time_consuming", String.valueOf(paramLong));
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceCapabilityExamination", 2, "testVideoEffectIfNeed reportByRoomId " + localHashMap);
+    catch (JSONException paramArrayOfHeader)
+    {
+      paramArrayOfHeader.printStackTrace();
     }
-    StatisticCollector.a(BaseApplication.getContext()).a(this.a.a.getCurrentAccountUin(), "QAV_REPORT_VIDEO_EFFECT_TEST", true, 0L, 0L, localHashMap, "", true);
+  }
+  
+  public void a(Throwable paramThrowable, JSONObject paramJSONObject)
+  {
+    super.a(paramThrowable, paramJSONObject);
+    if ((paramThrowable != null) && (paramThrowable.getMessage() != null)) {
+      this.a.a(paramThrowable, paramThrowable.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     jeh
  * JD-Core Version:    0.7.0.1
  */

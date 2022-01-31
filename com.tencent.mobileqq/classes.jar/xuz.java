@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class xuz
-  implements Runnable
+public class xuz
+  implements View.OnClickListener
 {
-  xuz(xuw paramxuw) {}
+  public xuz(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.r();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
+    if (((!QLog.isColorLevel()) || (!FileUtils.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (FlowCameraConstant.a == 1))
+    {
+      FlowCameraMqqAction.b("", "0X8005F5B", "0");
+      return;
     }
+    FlowCameraMqqAction.b("", "0X8005F5B", "1");
   }
 }
 

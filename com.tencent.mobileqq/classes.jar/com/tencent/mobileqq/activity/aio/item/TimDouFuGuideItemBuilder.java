@@ -20,7 +20,7 @@ import com.tencent.mobileqq.data.MessageForTimDouFuGuide;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import vjd;
+import vof;
 
 public class TimDouFuGuideItemBuilder
   extends AbstractChatItemBuilder
@@ -36,9 +36,9 @@ public class TimDouFuGuideItemBuilder
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.a).inflate(2130968787, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131363378));
-      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131363057));
+      paramViewHolder = LayoutInflater.from(this.a).inflate(2130968791, null);
+      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131363397));
+      paramLinearLayout.c = ((TextView)paramViewHolder.findViewById(2131363062));
     }
     if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForTimDouFuGuide)))
     {
@@ -48,9 +48,9 @@ public class TimDouFuGuideItemBuilder
         paramLinearLayout.b.setText(paramMessageRecord.tipsHighLight);
         paramView = new SpannableString(paramMessageRecord.tipsMsg + "立即下载");
         int i = paramView.length();
-        paramView.setSpan(new ForegroundColorSpan(paramViewHolder.getResources().getColor(2131494224)), i - 4, i, 33);
+        paramView.setSpan(new ForegroundColorSpan(paramViewHolder.getResources().getColor(2131494230)), i - 4, i, 33);
         paramLinearLayout.c.setText(paramView);
-        paramViewHolder.setOnClickListener(new vjd(this, paramMessageRecord));
+        paramViewHolder.setOnClickListener(new vof(this, paramMessageRecord));
       }
     }
     return paramViewHolder;

@@ -1,28 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview.NaviMaskTouchListener;
 
-class mmq
-  implements Runnable
+public class mmq
+  implements View.OnTouchListener
 {
-  mmq(mmp parammmp, boolean paramBoolean, FastWebArticleInfo paramFastWebArticleInfo) {}
+  public mmq(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        FastWebActivity.a(this.jdField_a_of_type_Mmp.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
-        FastWebActivity.a(this.jdField_a_of_type_Mmp.a);
-        return;
-      }
-      FastWebActivity.b(this.jdField_a_of_type_Mmp.a);
-      return;
+    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
+      ReadInJoyNavigationGridview.a(this.a).a();
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    return true;
   }
 }
 

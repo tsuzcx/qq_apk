@@ -1,51 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class acrc
-  extends IClickListener_Ver51
+  implements Handler.Callback
 {
-  public acrc(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public acrc(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a.a().c();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().k();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().l();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().m();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().n();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().F();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      ExtendFriendSquareFragment.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrc
  * JD-Core Version:    0.7.0.1
  */

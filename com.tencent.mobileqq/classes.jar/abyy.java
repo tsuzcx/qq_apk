@@ -1,51 +1,72 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class abyy
-  implements ServiceConnection
 {
-  public abyy(Client paramClient) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public static abyy a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    abyy localabyy = new abyy();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localabyy.jdField_a_of_type_Int = paramString.optInt("nTopicId");
+      localabyy.jdField_b_of_type_Int = paramString.optInt("nBGType");
+      localabyy.jdField_c_of_type_Int = paramString.optInt("nConfessorSex");
+      localabyy.jdField_a_of_type_JavaLangString = paramString.optString("strRecNick");
+      localabyy.jdField_b_of_type_JavaLangString = paramString.optString("strRecUin");
+      localabyy.jdField_c_of_type_JavaLangString = paramString.optString("strConfessorUin");
+      localabyy.jdField_d_of_type_JavaLangString = paramString.optString("strConfessorDesc");
+      localabyy.e = paramString.optString("strConfessorNick");
+      localabyy.jdField_d_of_type_Int = paramString.optInt("flag");
+      localabyy.jdField_a_of_type_Long = paramString.optInt("confessTime");
+      return localabyy;
+    }
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  public String a()
   {
     try
     {
-      this.a.mIsBound = true;
-      this.a.mService = new Messenger(paramIBinder);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.Client", 2, "ServiceConnection Attached.");
-      }
-      WebIPCOperator.a().a();
-      paramComponentName = Message.obtain(null, 1);
-      paramComponentName.replyTo = this.a.mMessenger;
-      this.a.mService.send(paramComponentName);
-      return;
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("nTopicId", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("nBGType", this.jdField_b_of_type_Int);
+      ((JSONObject)localObject).put("nConfessorSex", this.jdField_c_of_type_Int);
+      ((JSONObject)localObject).put("strRecNick", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strRecUin", this.jdField_b_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strConfessorUin", this.jdField_c_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strConfessorDesc", this.jdField_d_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strConfessorNick", this.e);
+      ((JSONObject)localObject).put("flag", this.jdField_d_of_type_Int);
+      ((JSONObject)localObject).put("confessTime", this.jdField_a_of_type_Long);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    catch (Exception paramComponentName)
+    catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+      localException.printStackTrace();
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.mService = null;
-    this.a.onDisconnectWithService();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.Client", 2, "Disconnected.");
-    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyy
  * JD-Core Version:    0.7.0.1
  */

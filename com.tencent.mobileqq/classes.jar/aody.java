@@ -1,22 +1,16 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
 
 public class aody
-  extends Property
+  implements DialogInterface.OnClickListener
 {
-  public aody(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aody(EditVideoTag paramEditVideoTag) {}
   
-  public Float a(GroundDrawable paramGroundDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return Float.valueOf(GroundDrawable.b(paramGroundDrawable));
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
-  {
-    GroundDrawable.a(paramGroundDrawable, paramFloat);
+    EditVideoTag.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

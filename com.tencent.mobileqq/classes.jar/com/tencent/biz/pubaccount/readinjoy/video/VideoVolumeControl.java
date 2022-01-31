@@ -19,11 +19,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.WeakHashMap;
-import mgd;
-import mge;
-import mgf;
-import mgg;
-import mgh;
+import mjq;
+import mjr;
+import mjs;
+import mjt;
+import mju;
 import mqq.util.WeakReference;
 
 public class VideoVolumeControl
@@ -32,14 +32,14 @@ public class VideoVolumeControl
   private int jdField_a_of_type_Int = -1;
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private Runnable jdField_a_of_type_JavaLangRunnable = new mgd(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new mjq(this);
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Map jdField_a_of_type_JavaUtilMap = new WeakHashMap();
   private Timer jdField_a_of_type_JavaUtilTimer;
-  private mgf jdField_a_of_type_Mgf;
-  private mgg jdField_a_of_type_Mgg;
-  private mgh jdField_a_of_type_Mgh;
+  private mjs jdField_a_of_type_Mjs;
+  private mjt jdField_a_of_type_Mjt;
+  private mju jdField_a_of_type_Mju;
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int = -1;
   private String jdField_b_of_type_JavaLangString = "";
@@ -131,7 +131,7 @@ public class VideoVolumeControl
       this.jdField_a_of_type_JavaUtilTimer = new Timer();
     }
     this.i = false;
-    this.jdField_a_of_type_JavaUtilTimer.schedule(new mge(this), 2000L);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(new mjr(this), 2000L);
   }
   
   public void a(Activity paramActivity)
@@ -155,18 +155,18 @@ public class VideoVolumeControl
     }
     this.jdField_b_of_type_JavaLangString = paramActivity.getClass().getName();
     this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("audio"));
-    this.jdField_a_of_type_Mgh = new mgh(this, null);
+    this.jdField_a_of_type_Mju = new mju(this, null);
     paramActivity = new IntentFilter();
     paramActivity.addAction("android.media.VOLUME_CHANGED_ACTION");
     paramActivity.addAction("android.intent.action.HEADSET_PLUG");
     paramActivity.addAction("android.media.AUDIO_BECOMING_NOISY");
     paramActivity.addAction("android.media.RINGER_MODE_CHANGED");
     this.l = true;
-    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.jdField_a_of_type_Mgh, paramActivity);
+    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.jdField_a_of_type_Mju, paramActivity);
     paramActivity = (TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone");
-    this.jdField_a_of_type_Mgf = new mgf(this);
-    paramActivity.listen(this.jdField_a_of_type_Mgf, 32);
-    this.jdField_a_of_type_Mgg = new mgg(this);
+    this.jdField_a_of_type_Mjs = new mjs(this);
+    paramActivity.listen(this.jdField_a_of_type_Mjs, 32);
+    this.jdField_a_of_type_Mjt = new mjt(this);
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaAudioManager.getRingerMode();
     this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(3);
     this.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
@@ -194,7 +194,7 @@ public class VideoVolumeControl
       if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramVideoPlayManager)) {
         this.jdField_a_of_type_JavaUtilMap.put(paramVideoPlayManager, Boolean.valueOf(true));
       }
-      paramVideoPlayManager.a(this.jdField_a_of_type_Mgg);
+      paramVideoPlayManager.a(this.jdField_a_of_type_Mjt);
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "addVideoManager :" + paramVideoPlayManager + " list:" + this.jdField_a_of_type_JavaUtilMap);
@@ -336,7 +336,7 @@ public class VideoVolumeControl
           if (!paramBoolean) {
             break label357;
           }
-          ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130840887));
+          ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130840905));
           ((ImageView)paramString.get()).setContentDescription("取消静音");
         }
       }
@@ -346,7 +346,7 @@ public class VideoVolumeControl
       }
       return;
       label357:
-      ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130840888));
+      ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130840906));
       ((ImageView)paramString.get()).setContentDescription("静音");
       break label411;
       label399:
@@ -400,12 +400,12 @@ public class VideoVolumeControl
       }
       if (!"".equals(this.jdField_b_of_type_JavaLangString))
       {
-        BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(this.jdField_a_of_type_Mgh);
-        ((TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone")).listen(this.jdField_a_of_type_Mgf, 0);
+        BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(this.jdField_a_of_type_Mju);
+        ((TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone")).listen(this.jdField_a_of_type_Mjs, 0);
       }
-      this.jdField_a_of_type_Mgf = null;
-      this.jdField_a_of_type_Mgg = null;
-      this.jdField_a_of_type_Mgh = null;
+      this.jdField_a_of_type_Mjs = null;
+      this.jdField_a_of_type_Mjt = null;
+      this.jdField_a_of_type_Mju = null;
       this.jdField_b_of_type_JavaLangString = "";
       this.jdField_a_of_type_AndroidMediaAudioManager = null;
       if (!this.f)

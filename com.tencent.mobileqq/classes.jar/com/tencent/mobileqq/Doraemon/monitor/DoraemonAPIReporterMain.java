@@ -13,11 +13,11 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import rfb;
-import rfc;
-import rfd;
-import rfe;
-import rff;
+import rjt;
+import rju;
+import rjv;
+import rjw;
+import rjx;
 import tencent.im.oidb.oidb_0xb6f.Identity;
 import tencent.im.oidb.oidb_0xb6f.ReportFreqReqBody;
 import tencent.im.oidb.oidb_0xb6f.ReqBody;
@@ -47,7 +47,7 @@ public class DoraemonAPIReporterMain
       if (QLog.isColorLevel()) {
         QLog.i("DoraemonOpenAPI.report", 2, "send key=" + paramString1 + ", api=" + paramString3 + ", count=" + paramInt2);
       }
-      ProtoUtils.a(localAppRuntime, new rfc(this, paramString1, paramString3, paramInt2), localReqBody.toByteArray(), "OidbSvc.0xb6f_1", 2927, 1, null, 0L);
+      ProtoUtils.a(localAppRuntime, new rju(this, paramString1, paramString3, paramInt2), localReqBody.toByteArray(), "OidbSvc.0xb6f_1", 2927, 1, null, 0L);
       return;
     }
     catch (NumberFormatException paramString1)
@@ -63,13 +63,13 @@ public class DoraemonAPIReporterMain
     }
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface)) {
-      ThreadManager.post(new rfd(this, (QQAppInterface)localObject, paramInt, paramString2, paramString3, paramLong1, paramLong2), 5, null, true);
+      ThreadManager.post(new rjv(this, (QQAppInterface)localObject, paramInt, paramString2, paramString3, paramLong1, paramLong2), 5, null, true);
     }
     for (;;)
     {
       localObject = this.a;
       if (localObject != null) {
-        ThreadManager.getUIHandler().post(new rfe(this, (DoraemonAPIReporter.OnFrequenceDataUpdateListener)localObject, paramString1, paramInt, paramString2, paramString3, paramLong1, paramLong2));
+        ThreadManager.getUIHandler().post(new rjw(this, (DoraemonAPIReporter.OnFrequenceDataUpdateListener)localObject, paramString1, paramInt, paramString2, paramString3, paramLong1, paramLong2));
       }
       return;
       QLog.e("DoraemonOpenAPI.report", 1, "app is null");
@@ -94,7 +94,7 @@ public class DoraemonAPIReporterMain
         localAPIQuotaItem.expireTimeMillis = localAPIQuotaEntity.expireTimeMillis;
         localHashMap.put(localAPIQuotaEntity.apiName, localAPIQuotaItem);
       }
-      ThreadManager.getUIHandler().post(new rff(this, localOnFrequenceDataUpdateListener, paramString, localHashMap));
+      ThreadManager.getUIHandler().post(new rjx(this, localOnFrequenceDataUpdateListener, paramString, localHashMap));
     }
   }
   
@@ -111,7 +111,7 @@ public class DoraemonAPIReporterMain
       QLog.e("DoraemonOpenAPI.report", 1, "app is null");
       return;
     }
-    ThreadManager.post(new rfb(this, (QQAppInterface)localAppRuntime, paramInt, paramString2, paramString1), 5, null, true);
+    ThreadManager.post(new rjt(this, (QQAppInterface)localAppRuntime, paramInt, paramString2, paramString1), 5, null, true);
   }
   
   public void a(String paramString1, int paramInt, String paramString2, String paramString3)

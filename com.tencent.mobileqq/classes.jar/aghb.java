@@ -1,36 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.OcrResultCache;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 import com.tencent.qphone.base.util.QLog;
 
-public class aghb
-  implements DialogInterface.OnDismissListener
+class aghb
+  implements Runnable
 {
-  public aghb(ScanTorchActivity paramScanTorchActivity) {}
+  aghb(agha paramagha, String paramString, int paramInt, OcrRecogResult paramOcrRecogResult, long paramLong) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "onDismiss");
-    }
-    if ((!this.a.isFinishing()) && (this.a.a != null))
+    if ((!ScanOcrActivity.a(this.jdField_a_of_type_Agha.a)) || (TextUtils.isEmpty(ScanOcrActivity.b(this.jdField_a_of_type_Agha.a))) || (!ScanOcrActivity.b(this.jdField_a_of_type_Agha.a).equals(this.jdField_a_of_type_JavaLangString)))
     {
-      if (this.a.isResume())
-      {
-        this.a.a.b(false);
-        ScanTorchActivity.c(this.a, true);
-      }
-    }
-    else {
+      QLog.d("Q.ocr.ScanOcrActivity", 1, "OcrCallback onResult is not In recog, mRecogPicPath:" + ScanOcrActivity.b(this.jdField_a_of_type_Agha.a) + " ,imagePath:" + this.jdField_a_of_type_JavaLangString);
       return;
     }
-    ScanTorchActivity.n(this.a, true);
+    if (!ScanOcrActivity.b(this.jdField_a_of_type_Agha.a))
+    {
+      ScanOcrActivity.a(this.jdField_a_of_type_Agha.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      return;
+    }
+    ScanOcrActivity.a(this.jdField_a_of_type_Agha.a, new ScanOcrActivity.OcrResultCache());
+    ScanOcrActivity.a(this.jdField_a_of_type_Agha.a).jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    ScanOcrActivity.a(this.jdField_a_of_type_Agha.a).jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult = this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult;
+    ScanOcrActivity.a(this.jdField_a_of_type_Agha.a).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    ScanOcrActivity.a(this.jdField_a_of_type_Agha.a).jdField_a_of_type_Long = this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,33 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import java.util.concurrent.locks.ReentrantLock;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class ymb
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public ymb(ApolloRenderDriver paramApolloRenderDriver, String paramString) {}
+  public ymb(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    }
+    this.a.leftView.clearAnimation();
+    this.a.a.clearAnimation();
+    this.a.leftView.setVisibility(4);
+    this.a.a.setVisibility(8);
+    this.a.rightViewText.setClickable(true);
+    this.a.rightViewText.setText("完成");
+    this.a.rightViewText.setContentDescription("完成 按钮");
+    this.a.c = true;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ymb
  * JD-Core Version:    0.7.0.1
  */

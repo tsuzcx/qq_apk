@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnErrorListener;
 
-public final class ansc
-  implements Parcelable.Creator
+public class ansc
+  implements GuideVideoView.OnErrorListener
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
-  {
-    return new EditRecordVideoSource(paramParcel);
-  }
+  public ansc(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new EditRecordVideoSource[paramInt];
+    QIMEffectCameraCaptureUnit.g(this.a);
   }
 }
 

@@ -1,89 +1,138 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.messagenotify.MessageData;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.mobileqq.utils.DisplayUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
+import android.util.SparseIntArray;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.HotTopicInfoItem;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.ActivityCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.NormalCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter.OnHolderItemClickListener;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.util.ArrayList;
 import java.util.List;
 
 public class oaz
-  extends ProtoUtils.StoryProtocolObserver
+  implements StoryDiscoverAdapter.OnHolderItemClickListener
 {
-  WeakReference b;
-  WeakReference c;
+  public oaz(StoryDiscoverAdapter paramStoryDiscoverAdapter) {}
   
-  public oaz(MessageNotifySegment paramMessageNotifySegment, ImageView paramImageView)
+  public void a(View paramView, int paramInt)
   {
-    this.b = new WeakReference(paramMessageNotifySegment);
-    this.c = new WeakReference(paramImageView);
-  }
-  
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list result, code=" + paramInt);
-    }
-    MessageNotifySegment localMessageNotifySegment = (MessageNotifySegment)this.b.get();
-    paramBundle = (ImageView)this.c.get();
-    if ((localMessageNotifySegment == null) || (paramBundle == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "weak reference null.");
+    Object localObject2 = (CardItem)StoryDiscoverAdapter.a(this.a).get(paramInt);
+    if (((CardItem)localObject2).cardType == 4) {
+      if (((CardItem)localObject2).gatherCardInfo.b() == 0) {
+        StoryDiscoverActivity.a((Activity)paramView.getContext(), ((CardItem)localObject2).gatherCardInfo.a(), ((CardItem)localObject2).gatherCardInfo.a(), (CardItem)localObject2, "1", StoryDiscoverAdapter.a(this.a));
       }
     }
-    do
+    label124:
+    Object localObject1;
+    for (;;)
     {
-      for (;;)
+      if (StoryDiscoverAdapter.b(this.a) == 0)
       {
-        return null;
-        if ((paramInt == 0) && (paramArrayOfByte != null)) {
-          try
+        paramView = null;
+        switch (((CardItem)localObject2).cardType)
+        {
+        default: 
+          StoryReportor.a("content_flow", "clk_card", 0, 0, new String[] { paramView });
+          if (((CardItem)localObject2).cardType == 4)
           {
-            qqstory_710_message.RspStoryMessageList localRspStoryMessageList = new qqstory_710_message.RspStoryMessageList();
-            localRspStoryMessageList.mergeFrom(paramArrayOfByte);
-            if ((localRspStoryMessageList.errinfo.error_code.has()) && (localRspStoryMessageList.errinfo.error_code.get() == 0) && (localRspStoryMessageList.message_num.get() > 0) && (!localRspStoryMessageList.message_list.get().isEmpty()))
+            if (((CardItem)localObject2).gatherCardInfo != null)
             {
-              paramArrayOfByte = new MessageData((qqstory_710_message.StoryMessage)localRspStoryMessageList.message_list.get().get(0)).a;
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "set bigV avatar from MessageData. unionId=" + paramArrayOfByte);
+              paramView = String.valueOf(((CardItem)localObject2).gatherCardInfo.a());
+              label170:
+              if (((CardItem)localObject2).gatherCardInfo == null) {
+                break label376;
               }
-              if (TextUtils.isEmpty(paramArrayOfByte)) {
-                continue;
-              }
-              PlayModeUtils.a(paramBundle, PlayModeUtils.b(paramArrayOfByte), true, (int)DisplayUtils.a(MessageNotifySegment.b(localMessageNotifySegment), 33.0F));
-              return null;
+              localObject1 = ((CardItem)localObject2).gatherCardInfo.a();
+              label188:
+              StoryReportor.a("content_flow", "clk_hot", 0, 0, new String[] { paramView, "", localObject1 });
             }
           }
-          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+          else
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "parse RspStoryMessageList error", paramArrayOfByte);
+            label215:
+            return;
+            localObject1 = new Intent(paramView.getContext(), QQBrowserActivity.class);
+            ((Intent)localObject1).putExtra("url", ((CardItem)localObject2).gatherCardInfo.d());
+            paramView.getContext().startActivity((Intent)localObject1);
+            continue;
+            paramView = ((CardItem)localObject2).getCardVideoInfo();
+            if (paramView == null) {
+              continue;
             }
+            paramInt = StoryDiscoverAdapter.a(this.a).get(paramInt, -1);
+            if (paramInt >= 0) {
+              break label525;
+            }
+            paramInt = StoryDiscoverAdapter.a(this.a).indexOf(paramView);
           }
+          break;
         }
       }
-      paramArrayOfByte = ImageUtil.b();
-      QQStoryContext.a();
-      paramArrayOfByte = FaceDrawable.a(QQStoryContext.a(), 1, Long.toString(MessageNotifySegment.a(localMessageNotifySegment)), 3, paramArrayOfByte, paramArrayOfByte);
-      if (paramArrayOfByte != null) {
-        paramBundle.setImageDrawable(paramArrayOfByte);
+    }
+    label518:
+    label525:
+    for (;;)
+    {
+      if (StoryDiscoverAdapter.b(this.a) == 0) {}
+      for (int i = 63;; i = 64)
+      {
+        StoryPlayVideoActivity.a((Activity)StoryDiscoverAdapter.a(this.a).getContext(), null, StoryDiscoverAdapter.a(this.a), paramInt, i);
+        break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list failed");
-    return null;
+      paramView = "1";
+      break label124;
+      paramView = "2";
+      break label124;
+      paramView = "3";
+      break label124;
+      paramView = "4";
+      break label124;
+      paramView = "";
+      break label170;
+      label376:
+      localObject1 = "";
+      break label188;
+      if (StoryDiscoverAdapter.b(this.a) != 2) {
+        break label215;
+      }
+      if (StoryDiscoverAdapter.a(this.a) != null)
+      {
+        paramView = String.valueOf(StoryDiscoverAdapter.a(this.a).mTopicId);
+        if (StoryDiscoverAdapter.a(this.a) == null) {
+          break label511;
+        }
+        localObject1 = StoryDiscoverAdapter.a(this.a).mSubjectName;
+        label440:
+        if ((((CardItem)localObject2).normalCardInfo == null) || (((CardItem)localObject2).normalCardInfo.a() == null)) {
+          break label518;
+        }
+      }
+      for (localObject2 = ((CardItem)localObject2).normalCardInfo.a().a();; localObject2 = "")
+      {
+        StoryReportor.a("content_flow", "clk_hot_page", 0, 0, new String[] { paramView, "", localObject1, localObject2 });
+        return;
+        paramView = "";
+        break;
+        label511:
+        localObject1 = "";
+        break label440;
+      }
+    }
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

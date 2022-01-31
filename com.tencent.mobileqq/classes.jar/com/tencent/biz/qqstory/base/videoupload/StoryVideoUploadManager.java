@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -64,13 +65,13 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
-import nal;
-import nam;
-import nan;
-import nao;
-import nap;
-import naq;
-import nar;
+import neg;
+import neh;
+import nei;
+import nej;
+import nek;
+import nel;
+import nem;
 
 @TargetApi(14)
 public class StoryVideoUploadManager
@@ -166,7 +167,7 @@ public class StoryVideoUploadManager
       int j = Math.max(paramPublishVideoEntry.videoHeight, paramPublishVideoEntry.videoWidth);
       paramPublishVideoEntry.videoWidth = i;
       paramPublishVideoEntry.videoHeight = j;
-      if (StoryConfigManager.b()) {
+      if ((StoryConfigManager.b()) && (Build.VERSION.SDK_INT < 27)) {
         paramPublishVideoEntry.hwBitrateMode = 0;
       }
       if (StoryConfigManager.c()) {
@@ -176,7 +177,7 @@ public class StoryVideoUploadManager
       paramPublishVideoEntry.setStatus(1000);
       ((EntityManager)localObject1).b(paramPublishVideoEntry);
     }
-    ThreadManager.post(new nao(this, localStoryVideoTaskInfo, localStoryVideoPublishStatusEvent), 8, new nap(this, localStoryVideoTaskInfo), false);
+    ThreadManager.post(new nej(this, localStoryVideoTaskInfo, localStoryVideoPublishStatusEvent), 8, new nek(this, localStoryVideoTaskInfo), false);
   }
   
   public static void a(String paramString)
@@ -331,7 +332,7 @@ public class StoryVideoUploadManager
         ((ArrayList)localObject3).add(Integer.valueOf((int)((StoryVideoItem)localObject5).mTimeZoneOffsetMillis / 1000));
       }
       paramString = new AddGroupVideoRequest(paramString, (List)localObject1, (List)localObject2, (List)localObject3, paramInt);
-      CmdTaskManger.a().a(paramString, new nam(localVideoListFeedItem, paramList, localStoryManager));
+      CmdTaskManger.a().a(paramString, new neh(localVideoListFeedItem, paramList, localStoryManager));
     }
   }
   
@@ -371,7 +372,7 @@ public class StoryVideoUploadManager
     paramList = DialogUtil.a(paramActivity, 230);
     paramList.setTitle("发表失败");
     paramList.setMessage("文件已被删除，请重新拍摄");
-    paramList.setPositiveButton("我知道了", new nal(localArrayList1));
+    paramList.setPositiveButton("我知道了", new neg(localArrayList1));
     paramList.setCancelable(false);
     paramList.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     paramList.show();
@@ -391,13 +392,13 @@ public class StoryVideoUploadManager
   public static void b(String paramString)
   {
     SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", paramString + " post createStoryVideo ... ");
-    Bosses.get().postJob(new nan(paramString));
+    Bosses.get().postJob(new nei(paramString));
   }
   
   private void f()
   {
     SLog.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "start load all fail task");
-    Bosses.get().postJob(new nar(this));
+    Bosses.get().postJob(new nem(this));
   }
   
   protected BasePublishTask a(StoryVideoTaskInfo paramStoryVideoTaskInfo)
@@ -484,7 +485,7 @@ public class StoryVideoUploadManager
       {
         bool = true;
         ((StoryVideoUploadManager.StoryVideoPublishStatusEvent)localObject1).jdField_b_of_type_Boolean = bool;
-        ((StoryVideoUploadManager.StoryVideoPublishStatusEvent)localObject1).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramStoryVideoTaskInfo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+        ((StoryVideoUploadManager.StoryVideoPublishStatusEvent)localObject1).errorInfo = paramStoryVideoTaskInfo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
         ((StoryVideoUploadManager.StoryVideoPublishStatusEvent)localObject1).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject4);
         ((StoryVideoUploadManager.StoryVideoPublishStatusEvent)localObject1).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem = paramStoryVideoTaskInfo.a();
         localObject4 = paramStoryVideoTaskInfo.a();
@@ -695,16 +696,16 @@ public class StoryVideoUploadManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 937	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadManager:jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask	Lcom/tencent/biz/qqstory/base/videoupload/task/BasePublishTask;
+    //   3: getfield 944	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadManager:jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask	Lcom/tencent/biz/qqstory/base/videoupload/task/BasePublishTask;
     //   6: astore_3
     //   7: aload_3
     //   8: ifnull +28 -> 36
     //   11: aload_1
     //   12: aload_3
-    //   13: invokevirtual 942	com/tencent/biz/qqstory/base/videoupload/task/BasePublishTask:a	()Lcom/tencent/biz/qqstory/base/videoupload/task/BaseTaskInfo;
+    //   13: invokevirtual 949	com/tencent/biz/qqstory/base/videoupload/task/BasePublishTask:a	()Lcom/tencent/biz/qqstory/base/videoupload/task/BaseTaskInfo;
     //   16: checkcast 146	com/tencent/biz/qqstory/base/videoupload/task/StoryVideoTaskInfo
     //   19: invokevirtual 175	com/tencent/biz/qqstory/base/videoupload/task/StoryVideoTaskInfo:a	()Ljava/lang/String;
-    //   22: invokevirtual 755	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   22: invokevirtual 762	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   25: istore_2
     //   26: iload_2
     //   27: ifeq +9 -> 36
@@ -715,8 +716,8 @@ public class StoryVideoUploadManager
     //   34: iload_2
     //   35: ireturn
     //   36: aload_0
-    //   37: getfield 934	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   40: invokevirtual 435	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   37: getfield 941	com/tencent/biz/qqstory/base/videoupload/StoryVideoUploadManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   40: invokevirtual 440	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   43: astore_3
     //   44: aload_3
     //   45: invokeinterface 82 1 0
@@ -726,7 +727,7 @@ public class StoryVideoUploadManager
     //   55: invokeinterface 86 1 0
     //   60: checkcast 146	com/tencent/biz/qqstory/base/videoupload/task/StoryVideoTaskInfo
     //   63: invokevirtual 175	com/tencent/biz/qqstory/base/videoupload/task/StoryVideoTaskInfo:a	()Ljava/lang/String;
-    //   66: invokevirtual 755	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   66: invokevirtual 762	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   69: istore_2
     //   70: iload_2
     //   71: ifeq -27 -> 44
@@ -783,7 +784,7 @@ public class StoryVideoUploadManager
     super.c((BaseTaskInfo)localObject);
     SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "delete video %s", new Object[] { paramString });
     VideoCompositeHelper.a(((StoryVideoTaskInfo)localObject).a());
-    Bosses.get().scheduleJobDelayed(new naq(this, paramString, localStoryVideoItem), 300);
+    Bosses.get().scheduleJobDelayed(new nel(this, paramString, localStoryVideoItem), 300);
   }
   
   public boolean isValidate()

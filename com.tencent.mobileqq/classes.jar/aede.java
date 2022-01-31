@@ -1,36 +1,31 @@
-import android.util.Log;
-import com.tencent.mobileqq.lyric.widget.LyricViewScroll;
-import com.tencent.mobileqq.lyric.widget.LyricViewScroll.LyricViewScrollListener;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.intervideo.now.NowDataReporter;
+import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
+import com.tencent.mobileqq.intervideo.now.NowPlugin;
+import com.tencent.mobileqq.intervideo.now.NowProxy;
 
 public class aede
-  extends TimerTask
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
+  public aede(NowLoadingActivity paramNowLoadingActivity, NowProxy paramNowProxy) {}
   
-  public aede(LyricViewScroll paramLyricViewScroll) {}
-  
-  public void run()
+  public void onClick(View paramView)
   {
-    Log.v("LyricViewScroll", "fling detect running");
-    if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.getScrollY())
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.d)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      LyricViewScroll.a(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll).b(this.jdField_a_of_type_Int);
-      Log.d("LyricViewScroll", "fling stop");
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.jdField_a_of_type_JavaUtilTimer.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.jdField_a_of_type_Boolean = false;
-      LyricViewScroll.a(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll, false);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.d = false;
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.a.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.c.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowProxy.a.a.b();
+      NowLoadingActivity.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity);
     }
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.getScrollY();
-    LyricViewScroll.a(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll).a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aede
  * JD-Core Version:    0.7.0.1
  */

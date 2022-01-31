@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.ViewHolder;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajsn
-  implements Runnable
+public final class ajsn
+  implements DialogInterface.OnClickListener
 {
-  public ajsn(MediaPreviewAdapter paramMediaPreviewAdapter, MediaPreviewAdapter.ViewHolder paramViewHolder, int paramInt, File paramFile, MediaPreviewInfo paramMediaPreviewInfo) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo.a);
+    paramDialogInterface.dismiss();
   }
 }
 

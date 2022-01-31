@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
+import com.tencent.mobileqq.ar.ARMusicController;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
 
-public class aahe
+class aahe
   implements Runnable
 {
-  public aahe(AREngine paramAREngine) {}
+  aahe(aahd paramaahd) {}
   
   public void run()
   {
-    if (AREngine.a(this.a) != null) {
-      AREngine.a(this.a).a();
-    }
+    if (aahd.a(this.a) != 9) {}
+    do
+    {
+      return;
+      if (aahd.a(this.a) != null) {
+        aahd.a(this.a).a(0, 1);
+      }
+    } while (aahd.a(this.a) == null);
+    aahd.a(this.a).a();
   }
 }
 

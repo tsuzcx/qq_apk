@@ -7,25 +7,25 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import nfq;
+import nka;
 
 public class GetUserIconHandler$GetUserIconListResponse
   extends LegoResponseBase
 {
   public qqstory_service.RspIconPostfix a;
   
-  public GetUserIconHandler$GetUserIconListResponse(GetUserIconHandler paramGetUserIconHandler) {}
+  public GetUserIconHandler$GetUserIconListResponse() {}
   
-  public GetUserIconHandler$GetUserIconListResponse(GetUserIconHandler paramGetUserIconHandler, qqstory_service.RspIconPostfix paramRspIconPostfix)
+  public GetUserIconHandler$GetUserIconListResponse(qqstory_service.RspIconPostfix paramRspIconPostfix)
   {
     super(paramRspIconPostfix.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspIconPostfix = paramRspIconPostfix;
+    this.a = paramRspIconPostfix;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspIconPostfix.icon_info.has()) && (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspIconPostfix.icon_info.size() > 0)) {
-      Bosses.get().postJob(new nfq(this));
+    if ((this.a.icon_info.has()) && (this.a.icon_info.size() > 0)) {
+      Bosses.get().postJob(new nka(this));
     }
   }
   

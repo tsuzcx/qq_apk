@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.mobileqq.shortvideo.mediadevice.DispatchThread;
 
-class aihg
+public class aihg
   implements Runnable
 {
-  aihg(aihf paramaihf, QQAppInterface paramQQAppInterface) {}
+  public aihg(DispatchThread paramDispatchThread) {}
   
   public void run()
   {
-    ((MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a(2, null);
+    synchronized (this.a)
+    {
+      this.a.notifyAll();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aihg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.app.FavEmoRoamingObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class smx
-  extends FavEmoRoamingObserver
+class smx
+  implements Runnable
 {
-  public smx(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  smx(smw paramsmw) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    this.a.app.removeObserver(this);
-    this.a.b.clear();
+    this.a.a.a.a(16, 0);
+    this.a.a.a.a(-1, null);
   }
 }
 

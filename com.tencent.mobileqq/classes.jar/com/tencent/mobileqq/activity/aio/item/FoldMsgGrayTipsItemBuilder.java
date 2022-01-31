@@ -21,8 +21,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.statistics.ReportController;
-import uxq;
-import uxr;
+import vcr;
+import vcs;
 
 public class FoldMsgGrayTipsItemBuilder
   extends GrayTipsItemBuilder
@@ -35,12 +35,12 @@ public class FoldMsgGrayTipsItemBuilder
   @TargetApi(16)
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramViewHolder = (uxr)paramViewHolder;
-    paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968784, null);
-    paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363789));
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363788));
-    paramViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363790));
-    paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363787));
+    paramViewHolder = (vcs)paramViewHolder;
+    paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968788, null);
+    paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363813));
+    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363812));
+    paramViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363814));
+    paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363811));
     paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
     int i;
     if ((paramMessageRecord instanceof MessageForFoldMsgGrayTips))
@@ -73,7 +73,7 @@ public class FoldMsgGrayTipsItemBuilder
     }
     for (;;)
     {
-      paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new uxq(this));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new vcr(this));
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BE", "0X80064BE", 0, 0, "", "", "", "");
       return paramView;
       label297:
@@ -86,7 +86,7 @@ public class FoldMsgGrayTipsItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new uxr(this);
+    return new vcs(this);
   }
 }
 

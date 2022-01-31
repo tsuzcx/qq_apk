@@ -6,12 +6,12 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
 
@@ -282,7 +282,7 @@ public class SonicServer
   {
     if (this.cachedResponseHeaders == null)
     {
-      this.cachedResponseHeaders = new HashMap();
+      this.cachedResponseHeaders = new ConcurrentHashMap();
       Object localObject3;
       Object localObject2;
       if ((this.session.config.customResponseHeaders != null) && (this.session.config.customResponseHeaders.size() > 0))
@@ -315,8 +315,6 @@ public class SonicServer
           localObject3 = (String)((Map.Entry)localObject2).getKey();
           if (!TextUtils.isEmpty((CharSequence)localObject3)) {
             this.cachedResponseHeaders.put(((String)localObject3).toLowerCase(), ((Map.Entry)localObject2).getValue());
-          } else {
-            this.cachedResponseHeaders.put(localObject3, ((Map.Entry)localObject2).getValue());
           }
         }
       }

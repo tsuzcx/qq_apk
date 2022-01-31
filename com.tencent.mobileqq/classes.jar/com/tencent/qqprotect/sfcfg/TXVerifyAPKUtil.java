@@ -203,11 +203,11 @@ public class TXVerifyAPKUtil
     //   342: istore 4
     //   344: iload 4
     //   346: sipush 128
-    //   349: if_icmplt +545 -> 894
+    //   349: if_icmplt +544 -> 893
     //   352: iload 4
     //   354: sipush 256
     //   357: if_icmple +6 -> 363
-    //   360: goto +534 -> 894
+    //   360: goto +533 -> 893
     //   363: aload_1
     //   364: astore 8
     //   366: iload_3
@@ -269,273 +269,279 @@ public class TXVerifyAPKUtil
     //   461: aload_1
     //   462: invokevirtual 61	java/io/DataInputStream:close	()V
     //   465: aconst_null
-    //   466: astore 9
-    //   468: aconst_null
-    //   469: astore_1
+    //   466: astore_1
+    //   467: aconst_null
+    //   468: astore 9
     //   470: bipush 40
     //   472: istore_2
-    //   473: aload 9
-    //   475: astore 8
-    //   477: aload 12
-    //   479: ldc 110
-    //   481: invokevirtual 114	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   484: aload 13
-    //   486: aload 11
-    //   488: invokestatic 117	com/tencent/qqprotect/sfcfg/TXVerifyAPKUtil:a	([B[BLjava/security/PublicKey;)Z
-    //   491: ifne +10 -> 501
-    //   494: sipush 137
-    //   497: istore_2
-    //   498: goto -260 -> 238
-    //   501: bipush 41
-    //   503: istore 4
-    //   505: aload 9
-    //   507: astore 8
-    //   509: iload 4
-    //   511: istore_2
-    //   512: new 71	java/lang/StringBuilder
-    //   515: dup
-    //   516: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   519: astore 11
-    //   521: iconst_0
-    //   522: istore_3
-    //   523: aload 9
+    //   473: aload_1
+    //   474: astore 8
+    //   476: aload 12
+    //   478: ldc 110
+    //   480: invokevirtual 114	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   483: aload 13
+    //   485: aload 11
+    //   487: invokestatic 117	com/tencent/qqprotect/sfcfg/TXVerifyAPKUtil:a	([B[BLjava/security/PublicKey;)Z
+    //   490: ifne +13 -> 503
+    //   493: sipush 137
+    //   496: istore_2
+    //   497: aload 9
+    //   499: astore_1
+    //   500: goto -262 -> 238
+    //   503: bipush 41
+    //   505: istore 4
+    //   507: aload_1
+    //   508: astore 8
+    //   510: iload 4
+    //   512: istore_2
+    //   513: new 71	java/lang/StringBuilder
+    //   516: dup
+    //   517: invokespecial 72	java/lang/StringBuilder:<init>	()V
+    //   520: astore 11
+    //   522: iconst_0
+    //   523: istore_3
+    //   524: aload_1
     //   525: astore 8
     //   527: iload 4
     //   529: istore_2
     //   530: iload_3
     //   531: aload 12
     //   533: invokevirtual 120	java/lang/String:length	()I
-    //   536: if_icmpge +33 -> 569
-    //   539: aload 9
-    //   541: astore 8
-    //   543: iload 4
-    //   545: istore_2
-    //   546: aload 11
-    //   548: aload 12
-    //   550: iload_3
-    //   551: invokevirtual 124	java/lang/String:charAt	(I)C
-    //   554: iload 5
-    //   556: ixor
-    //   557: i2c
-    //   558: invokevirtual 127	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   561: pop
-    //   562: iload_3
-    //   563: iconst_1
-    //   564: iadd
-    //   565: istore_3
-    //   566: goto -43 -> 523
-    //   569: aload 9
-    //   571: astore 8
-    //   573: iload 4
-    //   575: istore_2
-    //   576: aload 11
-    //   578: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   581: ldc 129
-    //   583: invokevirtual 133	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   586: astore 11
-    //   588: aload 9
-    //   590: astore 8
-    //   592: iload 4
-    //   594: istore_2
-    //   595: aload 11
-    //   597: arraylength
-    //   598: iload 6
-    //   600: if_icmpeq +10 -> 610
-    //   603: sipush 135
-    //   606: istore_2
+    //   536: if_icmpge +32 -> 568
+    //   539: aload_1
+    //   540: astore 8
+    //   542: iload 4
+    //   544: istore_2
+    //   545: aload 11
+    //   547: aload 12
+    //   549: iload_3
+    //   550: invokevirtual 124	java/lang/String:charAt	(I)C
+    //   553: iload 5
+    //   555: ixor
+    //   556: i2c
+    //   557: invokevirtual 127	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   560: pop
+    //   561: iload_3
+    //   562: iconst_1
+    //   563: iadd
+    //   564: istore_3
+    //   565: goto -41 -> 524
+    //   568: aload_1
+    //   569: astore 8
+    //   571: iload 4
+    //   573: istore_2
+    //   574: aload 11
+    //   576: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   579: ldc 129
+    //   581: invokevirtual 133	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   584: astore 11
+    //   586: aload_1
+    //   587: astore 8
+    //   589: iload 4
+    //   591: istore_2
+    //   592: aload 11
+    //   594: arraylength
+    //   595: iload 6
+    //   597: if_icmpeq +13 -> 610
+    //   600: sipush 135
+    //   603: istore_2
+    //   604: aload 9
+    //   606: astore_1
     //   607: goto -369 -> 238
     //   610: bipush 42
     //   612: istore 5
-    //   614: aload 9
-    //   616: astore 8
-    //   618: iload 5
-    //   620: istore_2
-    //   621: aload 11
-    //   623: arraylength
-    //   624: istore 6
-    //   626: iconst_0
-    //   627: istore_3
-    //   628: iload_3
-    //   629: iload 6
-    //   631: if_icmpge +95 -> 726
-    //   634: aload 9
-    //   636: astore 8
-    //   638: iload 5
-    //   640: istore_2
-    //   641: aload 11
-    //   643: iload_3
-    //   644: aaload
-    //   645: ldc 135
-    //   647: invokevirtual 133	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   650: astore 12
-    //   652: aload 9
-    //   654: astore 8
-    //   656: iload 5
-    //   658: istore_2
-    //   659: aload 12
-    //   661: arraylength
-    //   662: iconst_2
-    //   663: if_icmpeq +6 -> 669
-    //   666: goto +235 -> 901
-    //   669: aload 9
-    //   671: astore 8
-    //   673: iload 5
-    //   675: istore_2
-    //   676: aload 10
+    //   614: aload_1
+    //   615: astore 8
+    //   617: iload 5
+    //   619: istore_2
+    //   620: aload 11
+    //   622: arraylength
+    //   623: istore 6
+    //   625: iconst_0
+    //   626: istore_3
+    //   627: iload_3
+    //   628: iload 6
+    //   630: if_icmpge +92 -> 722
+    //   633: aload_1
+    //   634: astore 8
+    //   636: iload 5
+    //   638: istore_2
+    //   639: aload 11
+    //   641: iload_3
+    //   642: aaload
+    //   643: ldc 135
+    //   645: invokevirtual 133	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   648: astore 12
+    //   650: aload_1
+    //   651: astore 8
+    //   653: iload 5
+    //   655: istore_2
+    //   656: aload 12
+    //   658: arraylength
+    //   659: iconst_2
+    //   660: if_icmpeq +6 -> 666
+    //   663: goto +237 -> 900
+    //   666: aload_1
+    //   667: astore 8
+    //   669: iload 5
+    //   671: istore_2
+    //   672: aload 10
+    //   674: aload 12
+    //   676: iconst_0
+    //   677: aaload
     //   678: aload 12
-    //   680: iconst_0
+    //   680: iconst_1
     //   681: aaload
-    //   682: aload 12
-    //   684: iconst_1
-    //   685: aaload
-    //   686: invokestatic 138	com/tencent/qqprotect/sfcfg/TXSafeCheckUtil:a	(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)I
-    //   689: istore 4
-    //   691: iload 4
-    //   693: ifeq +208 -> 901
-    //   696: iconst_0
-    //   697: ifeq +11 -> 708
-    //   700: new 22	java/lang/NullPointerException
-    //   703: dup
-    //   704: invokespecial 23	java/lang/NullPointerException:<init>	()V
-    //   707: athrow
-    //   708: iload 4
-    //   710: istore_2
+    //   682: invokestatic 138	com/tencent/qqprotect/sfcfg/TXSafeCheckUtil:a	(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;)I
+    //   685: istore 4
+    //   687: iload 4
+    //   689: ifeq +211 -> 900
+    //   692: iconst_0
+    //   693: ifeq +11 -> 704
+    //   696: new 22	java/lang/NullPointerException
+    //   699: dup
+    //   700: invokespecial 23	java/lang/NullPointerException:<init>	()V
+    //   703: athrow
+    //   704: iload 4
+    //   706: istore_2
+    //   707: aload_0
+    //   708: ifnull -658 -> 50
     //   711: aload_0
-    //   712: ifnull -662 -> 50
-    //   715: aload_0
-    //   716: invokevirtual 62	java/util/jar/JarFile:close	()V
+    //   712: invokevirtual 62	java/util/jar/JarFile:close	()V
+    //   715: iload 4
+    //   717: ireturn
+    //   718: astore_0
     //   719: iload 4
     //   721: ireturn
-    //   722: astore_0
-    //   723: iload 4
-    //   725: ireturn
-    //   726: iconst_0
-    //   727: istore_2
-    //   728: goto -490 -> 238
-    //   731: astore_0
-    //   732: aload 9
-    //   734: astore_1
-    //   735: aload_0
-    //   736: invokevirtual 141	java/lang/Throwable:printStackTrace	()V
-    //   739: aload 8
-    //   741: ifnull +8 -> 749
-    //   744: aload 8
-    //   746: invokevirtual 61	java/io/DataInputStream:close	()V
-    //   749: iload_2
-    //   750: istore_3
-    //   751: aload_1
-    //   752: ifnull -494 -> 258
-    //   755: aload_1
-    //   756: invokevirtual 62	java/util/jar/JarFile:close	()V
-    //   759: iload_2
-    //   760: istore_3
-    //   761: goto -503 -> 258
-    //   764: astore_0
-    //   765: iload_2
-    //   766: istore_3
-    //   767: goto -509 -> 258
-    //   770: astore_1
-    //   771: aconst_null
-    //   772: astore 9
-    //   774: aconst_null
-    //   775: astore_0
-    //   776: aload_0
-    //   777: ifnull +7 -> 784
-    //   780: aload_0
-    //   781: invokevirtual 61	java/io/DataInputStream:close	()V
-    //   784: aload 9
-    //   786: ifnull +8 -> 794
-    //   789: aload 9
-    //   791: invokevirtual 62	java/util/jar/JarFile:close	()V
-    //   794: aload_1
-    //   795: athrow
-    //   796: astore_0
-    //   797: goto -3 -> 794
-    //   800: astore_1
-    //   801: aconst_null
-    //   802: astore 8
-    //   804: aload_0
-    //   805: astore 9
-    //   807: aload 8
-    //   809: astore_0
-    //   810: goto -34 -> 776
-    //   813: astore_1
-    //   814: aload_0
-    //   815: astore 9
-    //   817: aload 8
-    //   819: astore_0
-    //   820: goto -44 -> 776
-    //   823: astore 10
-    //   825: aload_1
-    //   826: astore 9
-    //   828: aload 8
-    //   830: astore_0
-    //   831: aload 10
-    //   833: astore_1
-    //   834: goto -58 -> 776
-    //   837: astore_0
-    //   838: bipush 34
-    //   840: istore_2
-    //   841: aload 9
-    //   843: astore_1
-    //   844: goto -109 -> 735
-    //   847: astore 9
-    //   849: aload_0
-    //   850: astore_1
-    //   851: aload 9
-    //   853: astore_0
-    //   854: goto -119 -> 735
-    //   857: astore 9
-    //   859: aload_1
-    //   860: astore 8
-    //   862: aload_0
-    //   863: astore_1
-    //   864: aload 9
-    //   866: astore_0
-    //   867: goto -132 -> 735
-    //   870: astore 9
-    //   872: aconst_null
-    //   873: astore 8
-    //   875: aload_0
-    //   876: astore_1
-    //   877: aload 9
-    //   879: astore_0
-    //   880: goto -145 -> 735
-    //   883: astore_0
-    //   884: iload_2
-    //   885: istore_3
-    //   886: goto -628 -> 258
-    //   889: astore_0
-    //   890: sipush 129
-    //   893: ireturn
-    //   894: sipush 133
-    //   897: istore_2
-    //   898: goto -660 -> 238
-    //   901: iload_3
-    //   902: iconst_1
-    //   903: iadd
-    //   904: istore_3
-    //   905: goto -277 -> 628
+    //   722: iconst_0
+    //   723: istore_2
+    //   724: aload 9
+    //   726: astore_1
+    //   727: goto -489 -> 238
+    //   730: astore_0
+    //   731: aload 9
+    //   733: astore_1
+    //   734: aload_0
+    //   735: invokevirtual 141	java/lang/Throwable:printStackTrace	()V
+    //   738: aload 8
+    //   740: ifnull +8 -> 748
+    //   743: aload 8
+    //   745: invokevirtual 61	java/io/DataInputStream:close	()V
+    //   748: iload_2
+    //   749: istore_3
+    //   750: aload_1
+    //   751: ifnull -493 -> 258
+    //   754: aload_1
+    //   755: invokevirtual 62	java/util/jar/JarFile:close	()V
+    //   758: iload_2
+    //   759: istore_3
+    //   760: goto -502 -> 258
+    //   763: astore_0
+    //   764: iload_2
+    //   765: istore_3
+    //   766: goto -508 -> 258
+    //   769: astore_1
+    //   770: aconst_null
+    //   771: astore 9
+    //   773: aconst_null
+    //   774: astore_0
+    //   775: aload_0
+    //   776: ifnull +7 -> 783
+    //   779: aload_0
+    //   780: invokevirtual 61	java/io/DataInputStream:close	()V
+    //   783: aload 9
+    //   785: ifnull +8 -> 793
+    //   788: aload 9
+    //   790: invokevirtual 62	java/util/jar/JarFile:close	()V
+    //   793: aload_1
+    //   794: athrow
+    //   795: astore_0
+    //   796: goto -3 -> 793
+    //   799: astore_1
+    //   800: aconst_null
+    //   801: astore 8
+    //   803: aload_0
+    //   804: astore 9
+    //   806: aload 8
+    //   808: astore_0
+    //   809: goto -34 -> 775
+    //   812: astore_1
+    //   813: aload_0
+    //   814: astore 9
+    //   816: aload 8
+    //   818: astore_0
+    //   819: goto -44 -> 775
+    //   822: astore 10
+    //   824: aload_1
+    //   825: astore 9
+    //   827: aload 8
+    //   829: astore_0
+    //   830: aload 10
+    //   832: astore_1
+    //   833: goto -58 -> 775
+    //   836: astore_0
+    //   837: bipush 34
+    //   839: istore_2
+    //   840: aload 9
+    //   842: astore_1
+    //   843: goto -109 -> 734
+    //   846: astore 9
+    //   848: aload_0
+    //   849: astore_1
+    //   850: aload 9
+    //   852: astore_0
+    //   853: goto -119 -> 734
+    //   856: astore 9
+    //   858: aload_1
+    //   859: astore 8
+    //   861: aload_0
+    //   862: astore_1
+    //   863: aload 9
+    //   865: astore_0
+    //   866: goto -132 -> 734
+    //   869: astore 9
+    //   871: aconst_null
+    //   872: astore 8
+    //   874: aload_0
+    //   875: astore_1
+    //   876: aload 9
+    //   878: astore_0
+    //   879: goto -145 -> 734
+    //   882: astore_0
+    //   883: iload_2
+    //   884: istore_3
+    //   885: goto -627 -> 258
+    //   888: astore_0
+    //   889: sipush 129
+    //   892: ireturn
+    //   893: sipush 133
+    //   896: istore_2
+    //   897: goto -659 -> 238
+    //   900: iload_3
+    //   901: iconst_1
+    //   902: iadd
+    //   903: istore_3
+    //   904: goto -277 -> 627
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	908	0	paramString1	String
-    //   0	908	1	paramString2	String
-    //   9	889	2	i	int
-    //   7	898	3	j	int
-    //   342	382	4	k	int
-    //   393	281	5	m	int
-    //   404	228	6	n	int
+    //   0	907	0	paramString1	String
+    //   0	907	1	paramString2	String
+    //   9	888	2	i	int
+    //   7	897	3	j	int
+    //   342	378	4	k	int
+    //   393	277	5	m	int
+    //   404	227	6	n	int
     //   67	65	7	bool	boolean
-    //   1	873	8	localObject1	Object
-    //   4	838	9	str	String
-    //   847	5	9	localThrowable1	java.lang.Throwable
-    //   857	8	9	localThrowable2	java.lang.Throwable
-    //   870	8	9	localThrowable3	java.lang.Throwable
-    //   115	562	10	localObject2	Object
-    //   823	9	10	localObject3	Object
-    //   15	627	11	localObject4	Object
-    //   428	255	12	localObject5	Object
-    //   442	43	13	arrayOfByte	byte[]
+    //   1	872	8	str1	String
+    //   4	837	9	str2	String
+    //   846	5	9	localThrowable1	java.lang.Throwable
+    //   856	8	9	localThrowable2	java.lang.Throwable
+    //   869	8	9	localThrowable3	java.lang.Throwable
+    //   115	558	10	localObject1	Object
+    //   822	9	10	localObject2	Object
+    //   15	625	11	localObject3	Object
+    //   428	251	12	localObject4	Object
+    //   442	42	13	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
     //   81	89	101	java/io/IOException
@@ -544,71 +550,71 @@ public class TXVerifyAPKUtil
     //   154	162	162	java/io/IOException
     //   187	195	207	java/io/IOException
     //   199	207	207	java/io/IOException
-    //   700	708	722	java/io/IOException
-    //   715	719	722	java/io/IOException
-    //   10	17	731	java/lang/Throwable
-    //   58	69	731	java/lang/Throwable
-    //   107	117	731	java/lang/Throwable
-    //   124	131	731	java/lang/Throwable
-    //   168	174	731	java/lang/Throwable
-    //   744	749	764	java/io/IOException
-    //   755	759	764	java/io/IOException
-    //   10	17	770	finally
-    //   58	69	770	finally
-    //   107	117	770	finally
-    //   124	131	770	finally
-    //   168	174	770	finally
-    //   215	224	770	finally
-    //   780	784	796	java/io/IOException
-    //   789	794	796	java/io/IOException
-    //   224	230	800	finally
-    //   296	309	800	finally
-    //   317	326	813	finally
-    //   338	344	813	finally
-    //   368	377	813	finally
-    //   389	395	813	finally
-    //   400	406	813	finally
-    //   424	430	813	finally
-    //   438	444	813	finally
-    //   449	456	813	finally
-    //   461	465	813	finally
-    //   477	494	813	finally
-    //   512	521	813	finally
-    //   530	539	813	finally
-    //   546	562	813	finally
-    //   576	588	813	finally
-    //   595	603	813	finally
-    //   621	626	813	finally
-    //   641	652	813	finally
-    //   659	666	813	finally
-    //   676	691	813	finally
-    //   735	739	823	finally
-    //   215	224	837	java/lang/Throwable
-    //   224	230	847	java/lang/Throwable
-    //   296	309	847	java/lang/Throwable
-    //   317	326	857	java/lang/Throwable
-    //   338	344	857	java/lang/Throwable
-    //   368	377	857	java/lang/Throwable
-    //   389	395	857	java/lang/Throwable
-    //   400	406	857	java/lang/Throwable
-    //   424	430	857	java/lang/Throwable
-    //   438	444	857	java/lang/Throwable
-    //   449	456	857	java/lang/Throwable
-    //   461	465	857	java/lang/Throwable
-    //   477	494	870	java/lang/Throwable
-    //   512	521	870	java/lang/Throwable
-    //   530	539	870	java/lang/Throwable
-    //   546	562	870	java/lang/Throwable
-    //   576	588	870	java/lang/Throwable
-    //   595	603	870	java/lang/Throwable
-    //   621	626	870	java/lang/Throwable
-    //   641	652	870	java/lang/Throwable
-    //   659	666	870	java/lang/Throwable
-    //   676	691	870	java/lang/Throwable
-    //   242	246	883	java/io/IOException
-    //   252	256	883	java/io/IOException
-    //   30	38	889	java/io/IOException
-    //   42	50	889	java/io/IOException
+    //   696	704	718	java/io/IOException
+    //   711	715	718	java/io/IOException
+    //   10	17	730	java/lang/Throwable
+    //   58	69	730	java/lang/Throwable
+    //   107	117	730	java/lang/Throwable
+    //   124	131	730	java/lang/Throwable
+    //   168	174	730	java/lang/Throwable
+    //   743	748	763	java/io/IOException
+    //   754	758	763	java/io/IOException
+    //   10	17	769	finally
+    //   58	69	769	finally
+    //   107	117	769	finally
+    //   124	131	769	finally
+    //   168	174	769	finally
+    //   215	224	769	finally
+    //   779	783	795	java/io/IOException
+    //   788	793	795	java/io/IOException
+    //   224	230	799	finally
+    //   296	309	799	finally
+    //   317	326	812	finally
+    //   338	344	812	finally
+    //   368	377	812	finally
+    //   389	395	812	finally
+    //   400	406	812	finally
+    //   424	430	812	finally
+    //   438	444	812	finally
+    //   449	456	812	finally
+    //   461	465	812	finally
+    //   476	493	812	finally
+    //   513	522	812	finally
+    //   530	539	812	finally
+    //   545	561	812	finally
+    //   574	586	812	finally
+    //   592	600	812	finally
+    //   620	625	812	finally
+    //   639	650	812	finally
+    //   656	663	812	finally
+    //   672	687	812	finally
+    //   734	738	822	finally
+    //   215	224	836	java/lang/Throwable
+    //   224	230	846	java/lang/Throwable
+    //   296	309	846	java/lang/Throwable
+    //   317	326	856	java/lang/Throwable
+    //   338	344	856	java/lang/Throwable
+    //   368	377	856	java/lang/Throwable
+    //   389	395	856	java/lang/Throwable
+    //   400	406	856	java/lang/Throwable
+    //   424	430	856	java/lang/Throwable
+    //   438	444	856	java/lang/Throwable
+    //   449	456	856	java/lang/Throwable
+    //   461	465	856	java/lang/Throwable
+    //   476	493	869	java/lang/Throwable
+    //   513	522	869	java/lang/Throwable
+    //   530	539	869	java/lang/Throwable
+    //   545	561	869	java/lang/Throwable
+    //   574	586	869	java/lang/Throwable
+    //   592	600	869	java/lang/Throwable
+    //   620	625	869	java/lang/Throwable
+    //   639	650	869	java/lang/Throwable
+    //   656	663	869	java/lang/Throwable
+    //   672	687	869	java/lang/Throwable
+    //   242	246	882	java/io/IOException
+    //   252	256	882	java/io/IOException
+    //   30	38	888	java/io/IOException
+    //   42	50	888	java/io/IOException
   }
   
   private static PublicKey a(String paramString)

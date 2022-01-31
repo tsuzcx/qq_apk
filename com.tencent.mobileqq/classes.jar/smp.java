@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.redtouch.VipBannerInfo;
 
-class smp
-  implements Runnable
+public class smp
+  extends GameCenterObserver
 {
-  smp(smo paramsmo, EmoticonPackage paramEmoticonPackage) {}
+  public smp(Conversation paramConversation) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.jdField_a_of_type_Smo.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(this.jdField_a_of_type_Smo.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
+    super.a(paramBoolean1, paramBoolean2, paramInt);
+    if ((paramBoolean1) && (paramInt != 2) && (Conversation.b(this.a))) {
+      VipBannerInfo.a(this.a);
+    }
   }
 }
 

@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
-import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
+import com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import com.tencent.qphone.base.util.QLog;
 
-class uoj
-  implements Runnable
+public final class uoj
+  implements WebProcessManager.WebProcessStartListener
 {
-  uoj(uoh paramuoh) {}
-  
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.a.a.a(true, this.a.a.b.b);
-    this.a.a.d();
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
+      }
+      AIOOpenWebMonitor.a();
+    }
   }
 }
 

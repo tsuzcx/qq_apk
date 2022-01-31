@@ -1,6 +1,6 @@
 package cooperation.qqindividuality.ipc;
 
-import amqc;
+import amxn;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -26,7 +26,7 @@ public abstract class IQQIndividualityRemoteProxyInterface$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQQIndividualityRemoteProxyInterface))) {
       return (IQQIndividualityRemoteProxyInterface)localIInterface;
     }
-    return new amqc(paramIBinder);
+    return new amxn(paramIBinder);
   }
   
   public IBinder asBinder()

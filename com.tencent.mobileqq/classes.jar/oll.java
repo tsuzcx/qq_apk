@@ -1,34 +1,28 @@
-import com.tencent.av.core.VcSystemInfo;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWLog;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.hwcodec.HwEnvData;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.List;
 
 public class oll
-  extends Thread
+  implements AbsListView.OnScrollListener
 {
-  public oll(RMWService paramRMWService) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void run()
+  public oll(EditVideoTag paramEditVideoTag) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    RMWLog.a("RMWService", "preload AVCodec - start -");
-    VideoEnvironment.a("AVCodec", null, true);
-    RMWLog.a("RMWService", "preload AVCodec - end -");
-    RMWLog.a("RMWService", "preload PtvFilterSoLoad - start -");
-    PtvFilterSoLoad.a(VideoEnvironment.a(), false);
-    RMWLog.a("RMWService", "preload PtvFilterSoLoad - end -");
-    RMWLog.a("RMWService", "preInit DoodleEmojiManager - start -");
-    ((DoodleEmojiManager)SuperManager.a(8)).a(this.a);
-    RMWLog.a("RMWService", "preInit DoodleEmojiManager - end -");
-    RMWLog.a("RMWService", "preInit HwEnvData.supportHardWareCodec - start -");
-    HwEnvData.a();
-    RMWLog.a("RMWService", "preInit HwEnvData.supportHardWareCodec - end -");
-    RMWLog.a("RMWService", "preInit VcSystemInfo.getCpuInfo - start -");
-    VcSystemInfo.a();
-    RMWLog.a("RMWService", "preInit VcSystemInfo.getCpuInfo - end -");
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag)).a().size()) && (!EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag)).a()))
+    {
+      paramAbsListView = EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag);
+      EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag)).b(paramAbsListView);
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
   }
 }
 

@@ -1,37 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
-import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
-import com.tencent.mobileqq.widget.QQViewPager;
-import java.util.List;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.fragment.BlessEffectsCameraCaptureFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahmp
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public ahmp(PtvTemplateProviderView paramPtvTemplateProviderView) {}
+  public ahmp(BlessEffectsCameraCaptureFragment paramBlessEffectsCameraCaptureFragment) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_JavaUtilList.size() > 1) && (!this.a.jdField_a_of_type_Boolean))
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.setTab(this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.e = -1;
-    }
-    do
-    {
-      return;
-      if ((this.a.e > 0) && (this.a.jdField_a_of_type_JavaUtilList.size() > 1) && (!this.a.jdField_a_of_type_Boolean))
-      {
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.setTab(this.a.e);
-        this.a.jdField_a_of_type_JavaLangString = "";
-        this.a.e = -1;
-        return;
+    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOEffectsCameraCaptureFragment", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
       }
-    } while ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_JavaUtilList.size() <= this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem() != 0));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.a.b);
-    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.a.b);
+    }
+    switch (paramIntent.getIntExtra("broadcastType", 1))
+    {
+    default: 
+    case 1: 
+      do
+      {
+        return;
+        paramContext = this.a.getActivity();
+      } while ((paramContext == null) || (paramContext.isFinishing()));
+      paramContext.finish();
+      return;
+    }
+    BlessEffectsCameraCaptureFragment.a(this.a, true);
   }
 }
 

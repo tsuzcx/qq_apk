@@ -1,39 +1,40 @@
-import android.os.SystemClock;
-import com.tencent.av.widget.stageview.MathUtils;
+import com.tencent.av.utils.PhoneStatusMonitor;
+import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusListener;
+import com.tencent.av.utils.PhoneStatusTools;
+import com.tencent.qphone.base.util.QLog;
 
-public class kil
+class kil
+  implements Runnable
 {
-  public final int a;
-  public final long a;
-  public final boolean a;
-  public int[] a;
-  public final int b;
-  public final int c;
-  public int d;
-  public int e;
+  kil(kik paramkik, String paramString) {}
   
-  private kil(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void run()
   {
-    this.b = MathUtils.a(paramInt1, 20000);
-    this.c = paramInt2;
-    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() + paramInt4);
-    this.e = paramInt1;
-    paramInt1 = MathUtils.a(paramInt1, this.c, 20000, true);
-    if (paramInt1 > 10000) {
-      this.d = (20000 - paramInt1);
+    boolean bool = PhoneStatusTools.d(this.jdField_a_of_type_Kik.a.jdField_a_of_type_AndroidContentContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneStatusMonitor", 2, String.format("PhoneStatusReceiver, isCallingRunnable end, action[%s], mIsCalling[%s], isCalling[%s]", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(this.jdField_a_of_type_Kik.a.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
     }
-    for (this.jdField_a_of_type_Boolean = false; paramInt3 == -1; this.jdField_a_of_type_Boolean = true)
+    if ((this.jdField_a_of_type_Kik.a.jdField_a_of_type_Boolean) && (!bool))
     {
-      this.jdField_a_of_type_Int = ((int)(0.1F * this.d));
-      return;
-      this.d = paramInt1;
+      this.jdField_a_of_type_Kik.a.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Kik.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener != null) {
+        this.jdField_a_of_type_Kik.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(false);
+      }
     }
-    this.jdField_a_of_type_Int = paramInt3;
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_Kik.a.jdField_a_of_type_Boolean) || (!bool));
+      this.jdField_a_of_type_Kik.a.jdField_a_of_type_Boolean = true;
+    } while (this.jdField_a_of_type_Kik.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener == null);
+    this.jdField_a_of_type_Kik.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     kil
  * JD-Core Version:    0.7.0.1
  */

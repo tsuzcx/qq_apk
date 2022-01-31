@@ -1,12 +1,15 @@
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoResDownload;
+
 public class omj
+  implements Runnable
 {
-  public static void a(String paramString1, String paramString2) {}
+  public omj(ArtFilterBridgeActivity paramArtFilterBridgeActivity) {}
   
-  public static void b(String paramString1, String paramString2) {}
-  
-  public static void c(String paramString1, String paramString2) {}
-  
-  public static void d(String paramString1, String paramString2) {}
+  public void run()
+  {
+    ShortVideoResDownload.a(this.a.app);
+  }
 }
 
 

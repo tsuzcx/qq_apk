@@ -1,31 +1,28 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class xyb
-  implements SensorEventListener
+  implements Animation.AnimationListener
 {
-  public xyb(SensorFrameImageView paramSensorFrameImageView) {}
+  public xyb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramSensorEvent.sensor.getType())
-    {
-    }
-    for (;;)
-    {
-      SensorFrameImageView.a(this.a);
-      SensorFrameImageView.b(this.a);
-      return;
-      SensorFrameImageView.a(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.b(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.c(this.a, paramSensorEvent.values);
-    }
+    NewFlowCameraActivity.a(this.a).setVisibility(4);
+    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    this.a.e.setVisibility(4);
+    FlowCameraMqqAction.a("", "0X8007C05", this.a.c + "", "", "", "");
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    NewFlowCameraActivity.a(this.a).setEnabled(false);
   }
 }
 

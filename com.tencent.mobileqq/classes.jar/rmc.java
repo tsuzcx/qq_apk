@@ -1,31 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class rmc
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public rmc(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public rmc(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    boolean bool = false;
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8007144", "0X8007144", 0, 0, "", "", "", "");
-    paramView = (SubAccountManager)this.a.app.getManager(60);
-    if ((paramView != null) && (paramView.a() >= 2)) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "click top right manage btn underTwo = " + bool);
-      }
-      AssociatedAccountActivity.a(this.a, bool);
-      return;
-      bool = true;
-    }
+    AddAccountActivity.b(this.a, false);
   }
 }
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="55.0dip"
+<LinearLayout android:orientation="vertical" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="50.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1338" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="正在加载" android:includeFontPadding="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1339" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="4.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1338" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a1338" android:layout_toStartOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1338" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a133a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="没有更多内容了" android:includeFontPadding="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:layout_marginBottom="0.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214da" />
+    <TextView android:textSize="15.0dip" android:textColor="@android:color/white" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0440" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c4e" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="随机视频聊天,快速认识新朋友" />
+</LinearLayout>

@@ -1,52 +1,24 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
-import java.util.LinkedList;
-
-class aild
-  implements Runnable
+public class aild
+  extends ailc
 {
-  aild(ailc paramailc) {}
+  public long c = 0L;
+  boolean e = false;
+  public int j = 80;
+  public int k = 70;
+  public int l = 5;
+  public int m;
   
-  public void run()
+  public aild(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    for (;;)
-    {
-      int j;
-      synchronized (this.a.a)
-      {
-        Texture[] arrayOfTexture = FrameSprite.a(this.a.a);
-        if ((arrayOfTexture == null) || (FrameSprite.a(this.a.a))) {
-          return;
-        }
-        FrameSprite.a(this.a.a, new Texture[FrameSprite.a(this.a.a).length / 2]);
-        j = 0;
-        int i = 0;
-        if (j < FrameSprite.a(this.a.a).length)
-        {
-          if (j % 2 == 0)
-          {
-            FrameSprite localFrameSprite2 = this.a.a;
-            int k = i + 1;
-            FrameSprite.a(localFrameSprite2, i, arrayOfTexture[j]);
-            i = k;
-          }
-          else
-          {
-            FrameSprite.a(this.a.a).remove(arrayOfTexture[j]);
-            arrayOfTexture[j].c();
-          }
-        }
-        else {
-          return;
-        }
-      }
-      j += 1;
-    }
+    super(paramFloat1, paramInt1, paramInt2, paramFloat2, paramInt3, paramInt4, paramInt5, paramInt6, false);
+    this.l = (paramInt1 % 1000);
+    this.k = (paramInt1 / 1000 % 1000);
+    this.j = (paramInt1 / 1000 / 1000 % 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aild
  * JD-Core Version:    0.7.0.1
  */

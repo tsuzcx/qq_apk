@@ -1,24 +1,13 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoMultiSegment;
 
 public class aoct
-  implements DataProvider.DataUpdateListener
+  implements Runnable
 {
-  public aoct(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public aoct(EditVideoMultiSegment paramEditVideoMultiSegment) {}
   
-  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
+  public void run()
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
-    if ((paramBoolean) && (paramAddressInfo != null))
-    {
-      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
-      this.a.a.post(new aocu(this, paramAddressInfo));
-      return;
-    }
-    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
+    EditVideoMultiSegment.a(this.a, false);
   }
 }
 

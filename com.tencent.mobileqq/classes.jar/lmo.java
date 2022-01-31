@@ -1,82 +1,70 @@
-import android.support.v4.app.FragmentManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.widget.ActionSheet;
 import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
-public final class lmo
-  implements Runnable
+public class lmo
+  implements View.OnClickListener
 {
-  public void run()
+  int jdField_a_of_type_Int;
+  
+  public lmo(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter, int paramInt)
   {
-    ArrayList localArrayList;
-    oidb_cmd0x80a.AttributeList localAttributeList;
-    if (ReadinjoySPEventReport.b(8))
-    {
-      localArrayList = new ArrayList();
-      localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(1);
-      localAttributeList.att_name.set("DTHasRed");
-      PBStringField localPBStringField = localAttributeList.att_value;
-      if (!ReadinjoySPEventReport.b()) {
-        break label191;
-      }
-      localObject = String.valueOf(1);
-      localPBStringField.set((String)localObject);
-      localArrayList.add(localAttributeList);
-      localObject = BaseActivity.sTopActivity;
-      if ((localObject != null) && ((localObject instanceof SplashActivity)))
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = 2;
+    if (this.jdField_a_of_type_Int == 0) {
+      if (ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter) != null)
       {
-        localObject = (MainFragment)((SplashActivity)localObject).getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
-        if (localObject == null) {
-          break label259;
+        paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        str1 = ReadInJoyCommentUtils.a(ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter));
+        l = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter).mArticleID;
+        j = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter).mStrategyId;
+        str2 = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter).innerUniqueID;
+        localArticleInfo = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter);
+        if (!ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter)) {
+          break label204;
         }
+        PublicAccountReportUtils.a(paramView, str1, "0X8009017", "0X8009017", 0, 0, String.valueOf(l), String.valueOf(j), str2, ReadInJoyCommentUtils.a(localArticleInfo, i, ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter).commentId, 0, 4), false);
       }
     }
-    label259:
-    for (Object localObject = ((MainFragment)localObject).b();; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (!((String)localObject).equals(Conversation.class.getName())) {
-          break label199;
-        }
-        localObject = "1";
-      }
+    label204:
+    while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.getCommentList().size() <= 0)) {
       for (;;)
       {
-        localAttributeList = new oidb_cmd0x80a.AttributeList();
-        localAttributeList.att_id.set(2);
-        localAttributeList.att_name.set("tab");
-        localAttributeList.att_value.set((String)localObject);
-        localArrayList.add(localAttributeList);
-        PublicAccountUtil.a(8, "InForeground", localArrayList);
-        ReadinjoySPEventReport.b(System.currentTimeMillis());
-        return;
-        label191:
-        localObject = String.valueOf(0);
-        break;
-        label199:
-        if (((String)localObject).equals(Contacts.class.getName())) {
-          localObject = "2";
-        } else if (((String)localObject).equals(Leba.class.getName())) {
-          localObject = "4";
-        } else if (((String)localObject).equals(ReadinjoyTabFrame.class.getName())) {
-          localObject = "3";
-        } else {
-          localObject = "0";
+        paramView = ActionSheet.a(ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter));
+        paramView.a("回复", 0);
+        paramView.a("Biu", 0);
+        paramView.c(2131433029);
+        paramView.a(new lmp(this, paramView));
+        paramView.a(new lmq(this, paramView));
+        if (!paramView.isShowing()) {
+          paramView.show();
         }
+        return;
+        i = 1;
       }
+    }
+    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    String str1 = ReadInJoyCommentUtils.a(ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter));
+    long l = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter).mArticleID;
+    int j = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter).mStrategyId;
+    String str2 = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter).innerUniqueID;
+    ArticleInfo localArticleInfo = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter);
+    if (ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter)) {}
+    for (i = 2;; i = 1)
+    {
+      PublicAccountReportUtils.a(paramView, str1, "0X8009017", "0X8009017", 0, 0, String.valueOf(l), String.valueOf(j), str2, ReadInJoyCommentUtils.a(localArticleInfo, i, ((CommentInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.getCommentList().get(this.jdField_a_of_type_Int - 2)).commentId, 1, 4), false);
+      break;
     }
   }
 }

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.arcard;
 
-import aalx;
-import aaly;
-import aalz;
-import aama;
-import aamb;
+import aasr;
+import aass;
+import aast;
+import aasu;
+import aasv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -86,7 +86,7 @@ public class ARCardPageProcess
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramCircle.getTranslationX(), paramFloat });
     localValueAnimator.setTarget(paramCircle);
     localValueAnimator.setDuration(300L);
-    localValueAnimator.addUpdateListener(new aama(this, paramCircle));
+    localValueAnimator.addUpdateListener(new aasu(this, paramCircle));
     return localValueAnimator;
   }
   
@@ -106,7 +106,7 @@ public class ARCardPageProcess
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { f1, f2 });
       localValueAnimator.setTarget(paramCircle);
       localValueAnimator.setDuration(300L);
-      localValueAnimator.addUpdateListener(new aamb(this, paramCircle));
+      localValueAnimator.addUpdateListener(new aasv(this, paramCircle));
       return localValueAnimator;
       f1 = 1.0F;
       break;
@@ -562,7 +562,7 @@ public class ARCardPageProcess
           label728:
           Object localObject2 = new AnimatorSet();
           ((AnimatorSet)localObject2).playTogether(localException);
-          ((AnimatorSet)localObject2).addListener(new aaly(this, bool2));
+          ((AnimatorSet)localObject2).addListener(new aass(this, bool2));
           ((AnimatorSet)localObject2).start();
           continue;
           label767:
@@ -588,7 +588,7 @@ public class ARCardPageProcess
     this.jdField_b_of_type_Boolean = true;
     this.d = paramInt1;
     this.e = paramInt2;
-    ThreadManager.getUIHandler().post(new aalx(this));
+    ThreadManager.getUIHandler().post(new aasr(this));
   }
   
   public void b()
@@ -749,7 +749,7 @@ public class ARCardPageProcess
       label722:
       Object localObject2 = new AnimatorSet();
       ((AnimatorSet)localObject2).playTogether(localException);
-      ((AnimatorSet)localObject2).addListener(new aalz(this, bool2));
+      ((AnimatorSet)localObject2).addListener(new aast(this, bool2));
       ((AnimatorSet)localObject2).start();
       break label126;
       label761:

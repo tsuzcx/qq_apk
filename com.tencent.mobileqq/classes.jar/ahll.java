@@ -1,14 +1,60 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.IPtvTemplateItemCallback;
+import com.tencent.mobileqq.richmedia.capture.data.TemplateGroupItem;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderView.ProviderViewListener;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ahll
-  implements Runnable
+  implements PtvTemplateAdapter.IPtvTemplateItemCallback
 {
-  public ahll(CameraCaptureView paramCameraCaptureView) {}
+  public ahll(PtvTemplateAdapter paramPtvTemplateAdapter) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.a.c = true;
-    this.a.requestRender();
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
+    }
+    if ((paramInt < 0) || (paramInt >= this.a.a.size())) {}
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    do
+    {
+      return;
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.a.get(paramInt);
+      if (!localPtvTemplateInfo.advertisement) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("CapturePtvTemplateManager", 2, "info.advertisement is ture onItemClicked name: " + localPtvTemplateInfo.name);
+      }
+    } while (PtvTemplateAdapter.a(this.a) == null);
+    PtvTemplateAdapter.a(this.a).a(localPtvTemplateInfo);
+    return;
+    this.a.a(paramInt);
+    CaptureReportUtil.jdField_b_of_type_JavaLangString = PtvTemplateAdapter.a(this.a).a + "";
+    CaptureReportUtil.c = localPtvTemplateInfo.id;
+    CaptureReportUtil.a = localPtvTemplateInfo.hasGesture();
+    boolean bool;
+    if (localPtvTemplateInfo.kind == 3)
+    {
+      bool = true;
+      CaptureReportUtil.jdField_b_of_type_Boolean = bool;
+      if (CameraControl.a().a != 1) {
+        break label228;
+      }
+    }
+    label228:
+    for (paramInt = i;; paramInt = 2)
+    {
+      CaptureReportUtil.f(paramInt);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abpi;
-import abpj;
+import abwj;
+import abwk;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -19,7 +19,7 @@ import java.util.Set;
 public class CampusCircleManager$CampusTopicPublisher
 {
   public CampusCircleManager.TopicPublishSession a;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new abpi(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new abwj(this);
   HashSet jdField_a_of_type_JavaUtilHashSet = new HashSet();
   
   public CampusCircleManager$CampusTopicPublisher(CampusCircleManager paramCampusCircleManager, CampusCircleManager.TopicPublishSession paramTopicPublishSession)
@@ -37,7 +37,7 @@ public class CampusCircleManager$CampusTopicPublisher
     if (!bool)
     {
       this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager.jdField_a_of_type_JavaUtilSet.add(paramPicInfo.md5);
-      paramPicInfo = new abpj(this, paramPicInfo);
+      paramPicInfo = new abwk(this, paramPicInfo);
       this.jdField_a_of_type_JavaUtilHashSet.add(paramPicInfo);
       ThreadManager.post(paramPicInfo, 8, null, true);
     }
@@ -85,7 +85,7 @@ public class CampusCircleManager$CampusTopicPublisher
       }
       localObject = this.jdField_a_of_type_JavaUtilHashSet.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ThreadManager.remove((abpj)((Iterator)localObject).next());
+        ThreadManager.remove((abwk)((Iterator)localObject).next());
       }
     }
     this.jdField_a_of_type_JavaUtilHashSet.clear();

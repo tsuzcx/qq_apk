@@ -1,45 +1,76 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.image.ImageLoader.StreamDownloadListener;
-import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.biz.widgets.ScannerView;
+import com.tencent.biz.widgets.ScannerView.FileDecodeListener;
+import com.tencent.biz.widgets.ScannerView.FlashLightListener;
+import com.tencent.biz.widgets.ScannerView.ScannerListener;
 
 public class pio
-  implements ImageLoader.StreamDownloadListener
+  extends Handler
 {
-  private WeakReference a;
+  public pio(ScannerView paramScannerView) {}
   
-  public pio(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = new WeakReference(paramAsyncImageableImpl);
-  }
-  
-  private AsyncImageable.AsyncImageableImpl a()
-  {
-    return (AsyncImageable.AsyncImageableImpl)this.a.get();
-  }
-  
-  public void onApplyToImage(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
-  {
-    paramOptions = a();
-    if (paramOptions == null) {}
-    while (AsyncImageable.AsyncImageableImpl.a(paramOptions, paramString)) {
+    if (paramMessage.what == 9)
+    {
+      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131429921), 1);
+      paramMessage.setGravity(17, 0, 0);
+      paramMessage.show();
+    }
+    Object localObject;
+    do
+    {
+      return;
+      localObject = ScannerView.a(this.a);
+      if (localObject != null) {}
+      switch (paramMessage.what)
+      {
+      case 3: 
+      case 4: 
+      case 5: 
+      case 6: 
+      default: 
+        localObject = ScannerView.a(this.a);
+        if (localObject != null) {}
+        switch (paramMessage.what)
+        {
+        default: 
+          localObject = ScannerView.a(this.a);
+        }
+        break;
+      }
+    } while (localObject == null);
+    switch (paramMessage.what)
+    {
+    default: 
       return;
     }
-    AsyncImageable.AsyncImageableImpl.a(paramOptions, paramDrawable, true);
+    if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((ScannerView.FlashLightListener)localObject).a(bool);
+      return;
+      ((ScannerView.ScannerListener)localObject).b(String.valueOf(paramMessage.obj));
+      return;
+      ((ScannerView.ScannerListener)localObject).d();
+      return;
+      ((ScannerView.ScannerListener)localObject).c();
+      return;
+      ((ScannerView.ScannerListener)localObject).b();
+      return;
+      ((ScannerView.FileDecodeListener)localObject).a(String.valueOf(paramMessage.obj));
+      return;
+      ((ScannerView.FileDecodeListener)localObject).a();
+      return;
+    }
   }
-  
-  public void onDownloadCanceled(String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDownloadFailed(String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDownloadProgress(String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte, int paramInt) {}
-  
-  public void onDownloadSucceed(String paramString1, String paramString2, String paramString3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pio
  * JD-Core Version:    0.7.0.1
  */

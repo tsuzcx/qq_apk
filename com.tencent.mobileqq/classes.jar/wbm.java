@@ -1,17 +1,21 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
-class wbm
+public class wbm
   implements Runnable
 {
-  wbm(wbl paramwbl) {}
+  public wbm(NearbyChatPie paramNearbyChatPie) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_AndroidWidgetToast = ChatActivityUtils.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131433352));
-    this.a.a.jdField_a_of_type_AndroidWidgetToast.show();
+    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a });
+    if (localNearbyPeopleCard != null) {
+      this.a.n = localNearbyPeopleCard.gender;
+    }
   }
 }
 

@@ -46,8 +46,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import laf;
-import lag;
+import lco;
+import lcp;
 
 public class ShopFolderAdapter
   extends BaseAdapter
@@ -74,9 +74,9 @@ public class ShopFolderAdapter
     this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager = new SubscriptPicManager();
     this.jdField_a_of_type_ComTencentWidgetSwipListView = paramSwipListView;
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool = paramEcshopCacheTool;
-    paramContext = View.inflate(paramContext, 2130970940, null);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131372302);
-    paramContext.findViewById(2131372303).setOnClickListener(new laf(this, paramString));
+    paramContext = View.inflate(paramContext, 2130970958, null);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131372312);
+    paramContext.findViewById(2131372313).setOnClickListener(new lco(this, paramString));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.addFooterView(paramContext);
   }
   
@@ -145,7 +145,7 @@ public class ShopFolderAdapter
       }
     }
     label399:
-    for (localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131435075) + ((BigDecimal)localObject).setScale(1, 4).floatValue() + "km";; localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131435075) + i + "m")
+    for (localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131435091) + ((BigDecimal)localObject).setScale(1, 4).floatValue() + "km";; localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131435091) + i + "m")
     {
       localIntent.putExtra("pub_account_type", "type_ecshop_account");
       localIntent.putExtra("ecshop_distance_tip", (String)localObject);
@@ -187,12 +187,12 @@ public class ShopFolderAdapter
       break label38;
       break;
       label65:
-      localObject = (lag)((View)localObject).getTag();
-      if ((localObject != null) && (paramString.equals(((lag)localObject).jdField_a_of_type_JavaLangString)))
+      localObject = (lcp)((View)localObject).getTag();
+      if ((localObject != null) && (paramString.equals(((lcp)localObject).jdField_a_of_type_JavaLangString)))
       {
         Bitmap localBitmap = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(paramString);
         if (localBitmap != null) {
-          ((lag)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+          ((lcp)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
         }
       }
     }
@@ -250,18 +250,18 @@ public class ShopFolderAdapter
     float f;
     if (paramView == null)
     {
-      paramViewGroup = new lag(this);
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970943, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362719));
-      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)localView.findViewById(2131371590), (ImageView)localView.findViewById(2131371591), (ImageView)localView.findViewById(2131371592) };
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131362754));
-      paramViewGroup.b = ((SingleLineTextView)localView.findViewById(2131366642));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131366832));
+      paramViewGroup = new lcp(this);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970961, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362724));
+      paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)localView.findViewById(2131371588), (ImageView)localView.findViewById(2131371589), (ImageView)localView.findViewById(2131371590) };
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131362759));
+      paramViewGroup.b = ((SingleLineTextView)localView.findViewById(2131366640));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131366830));
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, localView);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131365690));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = localView.findViewById(2131372304);
-      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494277);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131365695));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = localView.findViewById(2131372314);
+      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494283);
       paramViewGroup.b.setExtendTextColor(paramView, 0);
       paramViewGroup.b.setExtendTextSize(12.0F, 0);
       f = DeviceInfoUtil.a();
@@ -269,9 +269,9 @@ public class ShopFolderAdapter
       localView.setTag(paramViewGroup);
       if ((this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.jdField_a_of_type_Boolean))
       {
-        localView.findViewById(2131363630).setVisibility(0);
+        localView.findViewById(2131363649).setVisibility(0);
         paramView = new ColorStateList(new int[][] { new int[0] }, new int[] { -8947849 });
-        localView.findViewById(2131372304).setBackgroundResource(2130843948);
+        localView.findViewById(2131372314).setBackgroundResource(2130844014);
         paramViewGroup.b.setExtendTextColor(paramView, 0);
         paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(Color.parseColor("#FF777777"));
         paramViewGroup.b.setTextColor(Color.parseColor("#FF000000"));
@@ -285,7 +285,7 @@ public class ShopFolderAdapter
         break;
       }
       return null;
-      paramViewGroup = (lag)paramView.getTag();
+      paramViewGroup = (lcp)paramView.getTag();
       localView = paramView;
     }
     int i;
@@ -321,7 +321,7 @@ public class ShopFolderAdapter
       }
       j = 3;
       label636:
-      CustomWidgetUtil.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, j, ((RecentShopParcel)localObject1).jdField_b_of_type_Int, 2130846055, 99, null);
+      CustomWidgetUtil.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, j, ((RecentShopParcel)localObject1).jdField_b_of_type_Int, 2130846137, 99, null);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131362185, localObject1);
       paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(((RecentShopParcel)localObject1).jdField_a_of_type_JavaLangString);
       if (paramView == null) {
@@ -344,7 +344,7 @@ public class ShopFolderAdapter
         break label1391;
       }
       paramView = new BigDecimal(j / 1000.0F);
-      paramView = "[" + this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131435075) + paramView.setScale(1, 4).floatValue() + "km]";
+      paramView = "[" + this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131435091) + paramView.setScale(1, 4).floatValue() + "km]";
     }
     for (;;)
     {
@@ -363,7 +363,7 @@ public class ShopFolderAdapter
         if (i == 0) {
           break label1449;
         }
-        paramViewGroup.b.setCompoundDrawablesWithIntrinsicBounds(2130838701, 0);
+        paramViewGroup.b.setCompoundDrawablesWithIntrinsicBounds(2130838710, 0);
         label975:
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setTag(2131362185, localObject1);
         paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -371,7 +371,7 @@ public class ShopFolderAdapter
         if ((!TextUtils.isEmpty(((RecentShopParcel)localObject1).e)) && (i == 0)) {
           break label1461;
         }
-        localView.findViewById(2131372306).setVisibility(8);
+        localView.findViewById(2131372316).setVisibility(8);
         label1040:
         paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(2131362185, localObject1);
         paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
@@ -382,15 +382,15 @@ public class ShopFolderAdapter
         }
         paramViewGroup.b.setExtendText("", 0);
         paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-        localObject2 = (ImageButton)localView.findViewById(2131372305);
+        localObject2 = (ImageButton)localView.findViewById(2131372315);
         ((ImageButton)localObject2).setVisibility(0);
         ((ImageButton)localObject2).setTag(2131362185, localObject1);
         ((ImageButton)localObject2).setOnClickListener(this);
         localObject2 = ((EcshopWebActivity)this.jdField_a_of_type_AndroidContentContext).jdField_a_of_type_JavaLangString;
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          localObject1 = (URLImageView)localView.findViewById(2131370470);
-          localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838680);
+          localObject1 = (URLImageView)localView.findViewById(2131370479);
+          localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838688);
         }
       }
       label1304:
@@ -441,7 +441,7 @@ public class ShopFolderAdapter
         break label693;
         j = ((Integer)this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.c.get(((RecentShopParcel)localObject1).jdField_a_of_type_JavaLangString)).intValue();
         break label773;
-        paramView = "[" + this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131435075) + j + "m]";
+        paramView = "[" + this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131435091) + j + "m]";
         break label852;
         paramViewGroup.b.setText((CharSequence)localObject2);
         break label959;
@@ -465,10 +465,10 @@ public class ShopFolderAdapter
           this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager.a(PubAccountHttpDownloader.a((String)paramView.get(i), 1), paramViewGroup.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i], ((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height, this);
           i += 1;
         }
-        localView.findViewById(2131372306).setVisibility(0);
+        localView.findViewById(2131372316).setVisibility(0);
         break label1040;
-        localView.findViewById(2131372305).setVisibility(8);
-        localView.findViewById(2131370470).setVisibility(8);
+        localView.findViewById(2131372315).setVisibility(8);
+        localView.findViewById(2131370479).setVisibility(8);
       }
       label1689:
       paramView = "";
@@ -479,13 +479,13 @@ public class ShopFolderAdapter
   {
     int i = paramView.getId();
     paramView = (RecentShopParcel)paramView.getTag(2131362185);
-    if (i == 2131372304) {
+    if (i == 2131372314) {
       a(paramView);
     }
     do
     {
       return;
-      if ((i == 2131365690) || (i == 2131372305))
+      if ((i == 2131365695) || (i == 2131372315))
       {
         i = paramView.jdField_b_of_type_Int;
         this.jdField_a_of_type_JavaUtilList.remove(paramView);
@@ -500,7 +500,7 @@ public class ShopFolderAdapter
         this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
         return;
       }
-    } while (i != 2131362719);
+    } while (i != 2131362724);
     Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AccountDetailActivity.class);
     localIntent.putExtra("uin", paramView.jdField_a_of_type_JavaLangString);
     localIntent.putExtra("report_src_param_type", "");

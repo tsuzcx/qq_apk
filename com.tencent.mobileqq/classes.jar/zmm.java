@@ -1,16 +1,14 @@
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.RouterHandler;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.HotChatShare;
 
-public class zmm
+class zmm
   implements Runnable
 {
-  public zmm(RouterHandler paramRouterHandler, Session paramSession) {}
+  zmm(zml paramzml) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.e.put(Long.valueOf(this.jdField_a_of_type_ComTencentLitetransfersdkSession.uSessionID), this.jdField_a_of_type_ComTencentLitetransfersdkSession);
-    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.a(3, this.jdField_a_of_type_ComTencentLitetransfersdkSession, 0.0D, 0);
+    this.a.a.c();
+    HotChatShare.a(this.a.a);
   }
 }
 

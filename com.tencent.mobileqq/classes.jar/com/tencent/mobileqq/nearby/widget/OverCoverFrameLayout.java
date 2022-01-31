@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import afms;
+import afqr;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -79,7 +79,7 @@ public class OverCoverFrameLayout
     if (QLog.isColorLevel()) {
       QLog.d("OverCoverFrameLayout", 2, "init: minDis=" + this.jdField_d_of_type_Int + ", minVelocity=" + this.e);
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new afms(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new afqr(this));
   }
   
   public boolean a()

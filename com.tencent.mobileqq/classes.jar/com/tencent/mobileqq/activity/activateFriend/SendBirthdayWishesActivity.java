@@ -39,10 +39,10 @@ import com.tencent.widget.XPanelContainer;
 import com.tencent.widget.XPanelContainer.PanelCallback;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import ujf;
-import ujg;
-import ujh;
-import uji;
+import uob;
+import uoc;
+import uod;
+import uoe;
 
 public class SendBirthdayWishesActivity
   extends IphoneTitleBarActivity
@@ -56,10 +56,10 @@ public class SendBirthdayWishesActivity
   TextView jdField_a_of_type_AndroidWidgetTextView;
   ActivateFriendGrid jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid;
   ActivateFriendsManager jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager;
-  ActivateFriendsObserver jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsObserver = new ujg(this);
+  ActivateFriendsObserver jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsObserver = new uoc(this);
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   public XPanelContainer a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ujh(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new uod(this);
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper());
   boolean jdField_a_of_type_Boolean = false;
   long[] jdField_a_of_type_ArrayOfLong;
@@ -76,7 +76,7 @@ public class SendBirthdayWishesActivity
       if (this.jdField_a_of_type_Int != 1) {
         break label43;
       }
-      paramInt = 2131437269;
+      paramInt = 2131437289;
       i = 2;
     }
     for (;;)
@@ -84,16 +84,16 @@ public class SendBirthdayWishesActivity
       QQToast.a(this, i, paramInt, 1).b(getTitleBarHeight());
       return;
       label43:
-      paramInt = 2131437268;
+      paramInt = 2131437288;
       break;
       label49:
       if (paramInt == 1)
       {
-        paramInt = 2131437270;
+        paramInt = 2131437290;
       }
       else if (paramInt == 2)
       {
-        paramInt = 2131437271;
+        paramInt = 2131437291;
         i = 1;
       }
       else
@@ -105,11 +105,11 @@ public class SendBirthdayWishesActivity
   
   private void e()
   {
-    setRightHighlightButton(2131433015, new ujf(this));
+    setRightHighlightButton(2131433029, new uob(this));
     Object localObject1 = "";
     if (this.jdField_a_of_type_Int == 1) {
       if (this.jdField_a_of_type_ArrayOfLong.length == 1) {
-        localObject1 = getString(2131437236);
+        localObject1 = getString(2131437256);
       }
     }
     for (;;)
@@ -117,48 +117,48 @@ public class SendBirthdayWishesActivity
       setTitle((CharSequence)localObject1);
       enableRightHighlight(true);
       this.leftView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131363497));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131363516));
       this.jdField_a_of_type_AndroidWidgetEditText.setMaxLines(8);
       this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(QQTextBuilder.a);
-      this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)findViewById(2131362840));
+      this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)findViewById(2131362845));
       this.jdField_a_of_type_ComTencentWidgetXPanelContainer.setOnPanelChangeListener(this);
       this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(this.jdField_a_of_type_AndroidWidgetEditText);
       try
       {
-        localObject1 = getResources().getDrawable(2130838343);
+        localObject1 = getResources().getDrawable(2130838348);
         this.jdField_a_of_type_ComTencentWidgetXPanelContainer.setBackgroundDrawable((Drawable)localObject1);
-        this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131364075));
+        this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131364100));
         this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363499));
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363518));
         this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-        this.jdField_a_of_type_AndroidViewView = findViewById(2131363245);
+        this.jdField_a_of_type_AndroidViewView = findViewById(2131363262);
         this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
         localObject1 = new StateListDrawable();
-        localObject2 = getResources().getDrawable(2130845782);
+        localObject2 = getResources().getDrawable(2130845863);
         ((StateListDrawable)localObject1).addState(new int[] { 16842919 }, (Drawable)localObject2);
-        localObject2 = getResources().getDrawable(2130845781);
+        localObject2 = getResources().getDrawable(2130845862);
         ((StateListDrawable)localObject1).addState(new int[0], (Drawable)localObject2);
         this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable((Drawable)localObject1);
         boolean bool = ((Boolean)SkinEngine.getInstances().getThemeConfig("aio_big_input_bar", Boolean.FALSE)).booleanValue();
-        localObject1 = findViewById(2131363494);
+        localObject1 = findViewById(2131363513);
         if (bool)
         {
-          localObject2 = ((View)localObject1).findViewById(2131363495);
-          ((View)localObject2).setBackgroundResource(2130838353);
+          localObject2 = ((View)localObject1).findViewById(2131363514);
+          ((View)localObject2).setBackgroundResource(2130838358);
           ((View)localObject2).setVisibility(0);
           ((View)localObject1).getBackground().setVisible(false, false);
-          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369419));
+          this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369424));
           localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
           if (this.jdField_a_of_type_Int != 1) {
             break label588;
           }
-          i = 2131437263;
+          i = 2131437283;
           ((TextView)localObject1).setText(i);
-          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131494206));
-          this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid = ((ActivateFriendGrid)findViewById(2131369405));
+          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundColor(getResources().getColor(2131494212));
+          this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid = ((ActivateFriendGrid)findViewById(2131369410));
           this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.setCheckAbilityEnable(false);
           this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.setSkinable(true);
-          localObject1 = findViewById(2131369418);
+          localObject1 = findViewById(2131369423);
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidWidgetTextView.getText());
           long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
@@ -172,12 +172,12 @@ public class SendBirthdayWishesActivity
               ((StringBuilder)localObject2).append(ContactUtils.l(this.app, String.valueOf(l))).append(",");
               i += 1;
               continue;
-              localObject1 = getString(2131437237);
+              localObject1 = getString(2131437257);
               break;
               if (this.jdField_a_of_type_Int == 3) {
                 break;
               }
-              localObject1 = getString(2131437238);
+              localObject1 = getString(2131437258);
             }
           }
         }
@@ -191,13 +191,13 @@ public class SendBirthdayWishesActivity
           if (QLog.isColorLevel()) {
             localException.printStackTrace();
           }
-          localDrawable = getResources().getDrawable(2130845819);
+          localDrawable = getResources().getDrawable(2130845899);
           continue;
           localDrawable.getBackground().setVisible(true, false);
-          localDrawable.findViewById(2131363495).setVisibility(8);
+          localDrawable.findViewById(2131363514).setVisibility(8);
           continue;
           label588:
-          int i = 2131437264;
+          int i = 2131437284;
         }
         localDrawable.setContentDescription(((StringBuilder)localObject2).toString());
       }
@@ -208,7 +208,7 @@ public class SendBirthdayWishesActivity
   {
     Object localObject;
     if (this.jdField_a_of_type_Int == 1) {
-      localObject = String.format(getString(2131437272), new Object[] { getIntent().getStringExtra("key_roam_city") });
+      localObject = String.format(getString(2131437292), new Object[] { getIntent().getStringExtra("key_roam_city") });
     }
     String str;
     for (;;)
@@ -233,7 +233,7 @@ public class SendBirthdayWishesActivity
       }
       catch (Exception localException)
       {
-        str = getString(2131437273);
+        str = getString(2131437293);
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.setData(this.app, str);
@@ -244,11 +244,11 @@ public class SendBirthdayWishesActivity
     if (paramInt == 2)
     {
       SystemEmoticonPanel localSystemEmoticonPanel = new SystemEmoticonPanel(this, this);
-      View localView = localSystemEmoticonPanel.findViewById(2131364569);
+      View localView = localSystemEmoticonPanel.findViewById(2131364593);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.bottomMargin = AIOUtils.a(15.0F, getResources());
       localView.setLayoutParams(localLayoutParams);
-      localSystemEmoticonPanel.setBackgroundResource(2130841540);
+      localSystemEmoticonPanel.setBackgroundResource(2130841567);
       return localSystemEmoticonPanel;
     }
     return null;
@@ -259,14 +259,14 @@ public class SendBirthdayWishesActivity
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131437255);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131437275);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new uji(this, paramInt2));
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new uoe(this, paramInt2));
   }
   
   public void a(EmoticonInfo paramEmoticonInfo)
@@ -343,7 +343,7 @@ public class SendBirthdayWishesActivity
   {
     int j = -1;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970177);
+    super.setContentView(2130970190);
     getWindow().setBackgroundDrawable(null);
     getWindow().setSoftInputMode(20);
     this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager = ((ActivateFriendsManager)this.app.getManager(84));
@@ -428,7 +428,7 @@ public class SendBirthdayWishesActivity
       } while (paramView.length() == 0);
       if (!NetworkUtil.d(this))
       {
-        QQToast.a(this, 2131434811, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131434827, 0).b(getTitleBarHeight());
         return;
       }
       ArrayList localArrayList = Utils.a(paramView, 560, 20, null, new ArrayList());
@@ -437,7 +437,7 @@ public class SendBirthdayWishesActivity
       }
       if (localArrayList.size() > 1)
       {
-        QQToast.a(this, 2131433378, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131433392, 0).b(getTitleBarHeight());
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfLong, this.b, paramView);

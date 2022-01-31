@@ -1,15 +1,45 @@
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
+import android.util.Log;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
 
 public class nvf
-  extends LoadingMoreHelper.OnLoadMoreSimpleListener
+  implements Runnable
 {
-  public nvf(StoryDetailFragment paramStoryDetailFragment) {}
+  public nvf(MediaPlayer paramMediaPlayer) {}
   
-  public boolean a(boolean paramBoolean)
+  public void run()
   {
-    this.a.d();
-    return true;
+    try
+    {
+      this.a.a();
+      if (this.a.h == 4) {
+        this.a.a.sendEmptyMessage(1);
+      }
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      Log.e("Story-MediaPlayer", "prepareAsync() failed: cannot decode stream(s)", localIOException);
+      this.a.a.sendMessage(this.a.a.obtainMessage(100, 1, -1004));
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      Log.e("Story-MediaPlayer", "prepareAsync() failed: something is in a wrong state", localIllegalStateException);
+      this.a.a.sendMessage(this.a.a.obtainMessage(100, 1, 0));
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      Log.e("Story-MediaPlayer", "prepareAsync() failed: surface might be gone", localIllegalArgumentException);
+      this.a.a.sendMessage(this.a.a.obtainMessage(100, 1, 0));
+      return;
+    }
+    finally
+    {
+      MediaPlayer.a(this.a).countDown();
+    }
   }
 }
 

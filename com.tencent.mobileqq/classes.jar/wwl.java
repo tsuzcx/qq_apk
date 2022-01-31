@@ -1,18 +1,34 @@
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MimeHelper;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.CallTabUnreadListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public final class wwl
-  extends MediaFileFilter
+public class wwl
+  implements CallTabUnreadListener
 {
-  public boolean a(String paramString)
-  {
-    paramString = MimeHelper.a(paramString);
-    return (paramString == null) || (!"image".equals(paramString[0])) || (!MimeHelper.a(paramString[1]));
-  }
+  public wwl(MainAssistObserver paramMainAssistObserver) {}
   
-  public boolean b()
+  public void a()
   {
-    return false;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SplashActivity", 4, "msg fresh callback...");
+    }
+    if ((this.a.a == null) || (this.a.a.app == null)) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    int i = QCallFacade.a(localQQAppInterface);
+    this.a.a(36, 16, Integer.valueOf(i));
+    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
+    localQQAppInterface.getApp().sendBroadcast(localIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver通话tab, callUnReadCount[%s]", new Object[] { Integer.valueOf(i) }));
+    }
+    localQQAppInterface.C();
   }
 }
 

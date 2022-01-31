@@ -1,20 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationAdapter.ChannelButtonListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ldj
-  implements Runnable
+  implements ReadInJoyNavigationAdapter.ChannelButtonListener
 {
-  public ldj(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  private WeakReference a;
   
-  public void run()
+  public ldj(ReadInJoyNaviController paramReadInJoyNaviController)
   {
-    QQMessageFacade localQQMessageFacade = this.a.app.a();
-    if (localQQMessageFacade != null)
+    this.a = new WeakReference(paramReadInJoyNaviController);
+  }
+  
+  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  {
+    ReadInJoyNaviController localReadInJoyNaviController = (ReadInJoyNaviController)this.a.get();
+    if (((localReadInJoyNaviController == null) || (ReadInJoyNaviController.a(localReadInJoyNaviController).a())) && (QLog.isColorLevel()))
     {
-      int i = localQQMessageFacade.b();
-      this.a.f(i);
+      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
+      return;
     }
+    localReadInJoyNaviController.a(paramChannelCoverInfo);
   }
 }
 

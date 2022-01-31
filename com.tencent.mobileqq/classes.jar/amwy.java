@@ -1,23 +1,15 @@
-import android.content.Context;
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
-import cooperation.qzone.plugin.QZonePluginMangerHelper;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
-public final class amwy
-  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
+public class amwy
+  implements View.OnClickListener
 {
-  public amwy(Context paramContext, IQZonePluginManager.PluginParams paramPluginParams, IQZonePluginManager.OnPluginReadyListener paramOnPluginReadyListener) {}
+  public amwy(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public void a(IQZonePluginManager paramIQZonePluginManager)
+  public void onClick(View paramView)
   {
-    if (paramIQZonePluginManager == null)
-    {
-      QZonePluginMangerHelper.a(this.jdField_a_of_type_AndroidContentContext, this);
-      return;
-    }
-    paramIQZonePluginManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener);
+    this.a.onBackPressed();
   }
 }
 

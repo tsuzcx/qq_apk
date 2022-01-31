@@ -1,5 +1,4 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 class afcu
   implements Runnable
@@ -8,8 +7,7 @@ class afcu
   
   public void run()
   {
-    this.a.a.a();
-    QQToast.a(this.a.a, 1, "当前网络不可用，请检查网络设置", 0).a();
+    ShortVideoCommentsView.b(this.a.a, false);
   }
 }
 

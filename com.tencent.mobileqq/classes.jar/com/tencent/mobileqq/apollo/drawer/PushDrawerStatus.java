@@ -94,11 +94,7 @@ public class PushDrawerStatus
     if ((paramQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null)) {
       return;
     }
-    paramSpriteDrawerInfoManager = (ApolloManager)paramQQAppInterface.getManager(152);
-    if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.is_reddot != 1) {
-      paramSpriteDrawerInfoManager.a(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_sum = this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_counts;
+    a(paramQQAppInterface);
     String str;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.scheme))
     {
@@ -107,17 +103,14 @@ public class PushDrawerStatus
       if (str.equals("mall"))
       {
         ApolloUtil.a(paramContext, null, "drawer", ApolloConstant.X, null);
-        if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.is_reddot == 1) {
-          ((RedTouchManager)paramQQAppInterface.getManager(35)).b(String.valueOf("103100.103200"));
-        }
         paramSpriteDrawerInfoManager = (ApolloManager)paramQQAppInterface.getManager(152);
         paramContext = d;
         if (!paramSpriteDrawerInfoManager.d) {
-          break label335;
+          break label268;
         }
       }
     }
-    label335:
+    label268:
     for (int i = 0;; i = 1)
     {
       VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "drawer_avatar_RedDotClear", 0, 0, new String[] { paramContext, String.valueOf(i), this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.act_id });
@@ -146,12 +139,13 @@ public class PushDrawerStatus
   
   public void a(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null)) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_sum >= this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_counts)
+    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_sum >= this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_counts))
     {
       jdField_c_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      if (QLog.isColorLevel()) {
+        QLog.i("AplloDrawerStatus", 2, "ShowCount Max:" + this.jdField_a_of_type_Boolean);
+      }
       return;
     }
     boolean bool;
@@ -165,10 +159,10 @@ public class PushDrawerStatus
       paramSpriteDrawerInfoManager = (ApolloManager)paramQQAppInterface.getManager(152);
       paramContext = d;
       if (!paramSpriteDrawerInfoManager.d) {
-        break label149;
+        break label188;
       }
     }
-    label149:
+    label188:
     for (paramInt = 0;; paramInt = 1)
     {
       VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "drawer_avatar_RedDotShow", 0, 0, new String[] { paramContext, String.valueOf(paramInt), this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.act_id });
@@ -176,6 +170,21 @@ public class PushDrawerStatus
       bool = false;
       break;
     }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((paramQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null)) {}
+    do
+    {
+      return;
+      ApolloManager localApolloManager = (ApolloManager)paramQQAppInterface.getManager(152);
+      if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.is_reddot != 1) {
+        localApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_sum = this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.show_counts;
+    } while (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem.is_reddot != 1);
+    ((RedTouchManager)paramQQAppInterface.getManager(35)).b(String.valueOf("103100.103200"));
   }
   
   public void a(QQAppInterface paramQQAppInterface, SpriteDrawerInfoManager paramSpriteDrawerInfoManager)

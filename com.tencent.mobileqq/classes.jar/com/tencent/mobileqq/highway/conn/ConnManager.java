@@ -124,25 +124,24 @@ public class ConnManager
         this.lastEndPoint = ((EndPoint)localObject2);
         reportChannelStart((EndPoint)localObject2);
         if ((paramBoolean) || (((EndPoint)localObject2).protoType != 1)) {
-          break label275;
+          break label278;
         }
         i = connSeq.incrementAndGet();
         if (paramInt == 1)
         {
           paramInt = 10000;
           ??? = new TcpConnection(this, i, (EndPoint)localObject2, paramInt, 30000);
-          if (??? != null)
-          {
-            this.connections.put(Integer.valueOf(((IConnection)???).getConnId()), ???);
-            ((IConnection)???).setConnectListener(this);
-            ((IConnection)???).connect();
+          if ((??? == null) || (!((IConnection)???).connect())) {
+            break;
           }
+          ((IConnection)???).setConnectListener(this);
+          this.connections.put(Integer.valueOf(((IConnection)???).getConnId()), ???);
           return true;
         }
       }
       paramInt = 20000;
       continue;
-      label275:
+      label278:
       HttpConnection localHttpConnection = new HttpConnection(this, connSeq.incrementAndGet(), localEndPoint);
       ??? = localHttpConnection;
       if (paramBoolean)
@@ -152,6 +151,7 @@ public class ConnManager
         ??? = localHttpConnection;
       }
     }
+    return false;
   }
   
   public long getConnCost()
@@ -304,48 +304,50 @@ public class ConnManager
   public void onRequestTimeOut(int paramInt)
   {
     BdhLogUtil.LogEvent("C", "onRequestTimeOut : connId:" + paramInt);
-    IConnection localIConnection = (IConnection)this.connections.get(Integer.valueOf(paramInt));
-    EndPoint localEndPoint;
-    if (localIConnection != null)
+    ??? = (IConnection)this.connections.get(Integer.valueOf(paramInt));
+    if (??? != null)
     {
-      localEndPoint = localIConnection.getEndPoint();
-      if (localIConnection.getProtoType() != 1) {
-        break label175;
+      EndPoint localEndPoint = ((IConnection)???).getEndPoint();
+      if (((IConnection)???).getProtoType() == 1)
+      {
+        ((IConnection)???).setUrgentFlag(true);
+        this.mIpTimeOutCounter.put(localEndPoint.host, localEndPoint.host);
+        if ((this.bUseHttpPatch.compareAndSet(false, true)) && (this.mIpTimeOutCounter.size() >= 3))
+        {
+          this.mIpTimeOutCounter.clear();
+          paramInt = HwNetworkCenter.getInstance(this.engine.getAppContext()).getNetType();
+          BdhLogUtil.LogEvent("C", "onRequestTimeOut : About to create a http patch. netType:" + paramInt);
+          if (paramInt == 1)
+          {
+            paramInt = (int)this.engine.getCurrentConfig().curConnNum;
+            synchronized (this.connections)
+            {
+              if (this.connections.size() < paramInt) {
+                openNewConnection(1, true);
+              }
+              return;
+            }
+          }
+          this.bUseHttpPatch.set(false);
+        }
       }
-      localIConnection.setUrgentFlag(true);
-      this.mIpTimeOutCounter.put(localEndPoint.host, localEndPoint.host);
-      if ((this.bUseHttpPatch.compareAndSet(false, true)) && (this.mIpTimeOutCounter.size() >= 3))
+      else if (((IConnection)???).getProtoType() == 2)
       {
         this.mIpTimeOutCounter.clear();
-        paramInt = HwNetworkCenter.getInstance(this.engine.getAppContext()).getNetType();
-        BdhLogUtil.LogEvent("C", "onRequestTimeOut : About to create a http patch. netType:" + paramInt);
-        if (paramInt != 1) {
-          break label166;
+        Object localObject3 = this.engine.getAppContext();
+        if ((localObject2 != null) && (localObject3 != null))
+        {
+          AppRuntime localAppRuntime = this.engine.app;
+          HwEngine localHwEngine = this.engine;
+          localObject3 = ConfigManager.getInstance((Context)localObject3, localAppRuntime, HwEngine.appId, this.engine.currentUin);
+          if (localObject3 != null) {
+            ((ConfigManager)localObject3).onSrvAddrUnavailable(this.engine.getAppContext(), this.engine.app, this.engine.currentUin, localObject2.host, 7);
+          }
         }
-        openNewConnection(1, true);
+        ((IConnection)???).disConnect();
+        createNewConnectionIfNeed(1, false);
       }
     }
-    label166:
-    label175:
-    while (localIConnection.getProtoType() != 2)
-    {
-      return;
-      this.bUseHttpPatch.set(false);
-      return;
-    }
-    this.mIpTimeOutCounter.clear();
-    Object localObject = this.engine.getAppContext();
-    if ((localEndPoint != null) && (localObject != null))
-    {
-      AppRuntime localAppRuntime = this.engine.app;
-      HwEngine localHwEngine = this.engine;
-      localObject = ConfigManager.getInstance((Context)localObject, localAppRuntime, HwEngine.appId, this.engine.currentUin);
-      if (localObject != null) {
-        ((ConfigManager)localObject).onSrvAddrUnavailable(this.engine.getAppContext(), this.engine.app, this.engine.currentUin, localEndPoint.host, 7);
-      }
-    }
-    localIConnection.disConnect();
-    createNewConnectionIfNeed(1, false);
   }
   
   public void onRequestWriteTimeout(int paramInt)

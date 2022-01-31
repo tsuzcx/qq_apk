@@ -1,9 +1,15 @@
-import com.tencent.widget.PopupMenuDialog.OnDismissListener;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyEffectsCameraCaptureFragment;
 
-public final class lkp
-  implements PopupMenuDialog.OnDismissListener
+public class lkp
+  implements Runnable
 {
-  public void a() {}
+  public lkp(ReadInJoyEffectsCameraCaptureFragment paramReadInJoyEffectsCameraCaptureFragment) {}
+  
+  public void run()
+  {
+    this.a.a.setVisibility(0);
+  }
 }
 
 

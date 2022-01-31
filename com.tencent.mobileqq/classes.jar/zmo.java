@@ -1,16 +1,33 @@
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.RouterHandler;
-import java.util.HashMap;
+import android.os.Handler;
+import com.tencent.mobileqq.app.HotchatSCHelper;
+import com.tencent.mobileqq.app.HotchatSCMng;
 
 public class zmo
   implements Runnable
 {
-  public zmo(RouterHandler paramRouterHandler, long paramLong1, long paramLong2, long paramLong3) {}
+  public zmo(HotchatSCHelper paramHotchatSCHelper, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    Session localSession = (Session)this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.e.get(Long.valueOf(this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.a(1, localSession, (float)((float)this.b * 1.0D / (float)this.c), 0);
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_ComTencentMobileqqAppHotchatSCMng.a();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long - Math.abs(l1 - this.b);
+    if (l2 < 0L) {
+      l1 = 100L;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, l1);
+      return;
+      l1 = l2;
+      if (l2 > this.jdField_a_of_type_Long) {
+        l1 = this.jdField_a_of_type_Long;
+      }
+    }
   }
 }
 

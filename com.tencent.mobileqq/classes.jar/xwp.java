@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
-import java.util.TimerTask;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.OnViewPagerItemVisiableChangeListener;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
 
-public class xwp
-  extends TimerTask
+class xwp
+  implements VideoFilterViewPager.OnViewPagerItemVisiableChangeListener
 {
-  public xwp(SubtitleLayout paramSubtitleLayout) {}
+  xwp(xwo paramxwo) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    synchronized (this.a)
+    if (paramInt == 0)
     {
-      if (SubtitleLayout.a(this.a) == -1L)
+      NewFlowCameraActivity.b(this.a.a.a.a, true);
+      if (this.a.a.a.a.d.getVisibility() == 0)
       {
-        SubtitleLayout.c(this.a);
-        return;
+        this.a.a.a.a.d.setVisibility(8);
+        this.a.a.a.a.a.a(NewFlowCameraActivity.a(this.a.a.a.a));
       }
-      this.a.postInvalidate();
       return;
     }
+    NewFlowCameraActivity.b(this.a.a.a.a, false);
+    this.a.a.a.a.a.a(NewFlowCameraActivity.a(this.a.a.a.a));
   }
 }
 

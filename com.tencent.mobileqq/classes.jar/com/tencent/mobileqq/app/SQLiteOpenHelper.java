@@ -19,7 +19,7 @@ public class SQLiteOpenHelper
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "WalFlag";
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "WalFlag";
   }
   
   public SQLiteOpenHelper(android.database.sqlite.SQLiteOpenHelper paramSQLiteOpenHelper)

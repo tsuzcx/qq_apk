@@ -34,9 +34,9 @@ public class StructMsgItemLayout25
     float f = paramResources.getDisplayMetrics().density;
     paramRelativeLayout.addView(paramView, new RelativeLayout.LayoutParams(-1, -1));
     paramResources = new FrameLayout(paramContext);
-    paramResources.setId(2131362336);
+    paramResources.setId(2131362339);
     paramView = new ImageView(paramContext);
-    paramView.setImageResource(2130846097);
+    paramView.setImageResource(2130846179);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 80;
     paramResources.addView(paramView, localLayoutParams);
@@ -48,7 +48,7 @@ public class StructMsgItemLayout25
     paramView.addRule(10);
     paramView.topMargin = ((int)(32.0F * f));
     paramRelativeLayout.addView(paramResources, paramView);
-    paramTextView2.setId(2131362334);
+    paramTextView2.setId(2131362337);
     paramTextView2.setIncludeFontPadding(false);
     paramTextView2.setSingleLine(false);
     paramTextView2.setMaxLines(2);
@@ -59,29 +59,29 @@ public class StructMsgItemLayout25
     this.jdField_a_of_type_AndroidWidgetTextView = paramTextView2;
     paramResources = new RelativeLayout.LayoutParams((int)(240.0F * f), -2);
     paramResources.addRule(14);
-    paramResources.addRule(3, 2131362336);
+    paramResources.addRule(3, 2131362339);
     paramResources.topMargin = ((int)(5.0F * f));
     paramResources.bottomMargin = ((int)(5.0F * f));
     paramRelativeLayout.addView(paramTextView2, paramResources);
     paramResources = new ImageView(paramContext);
-    paramResources.setId(2131362335);
-    paramResources.setImageResource(2130846099);
+    paramResources.setId(2131362338);
+    paramResources.setImageResource(2130846181);
     paramView = new RelativeLayout.LayoutParams(-2, -2);
     paramView.addRule(14);
-    paramView.addRule(3, 2131362334);
+    paramView.addRule(3, 2131362337);
     paramRelativeLayout.addView(paramResources, paramView);
     paramResources = new RelativeLayout(paramContext);
     paramView = new ImageView(paramContext);
-    paramView.setId(2131362333);
-    paramView.setImageResource(2130846100);
+    paramView.setId(2131362336);
+    paramView.setImageResource(2130846182);
     paramLinearLayout = new RelativeLayout.LayoutParams(-2, -2);
     paramLinearLayout.addRule(13);
     paramResources.addView(paramView, paramLinearLayout);
     paramContext = new ImageView(paramContext);
-    paramContext.setImageResource(2130846096);
+    paramContext.setImageResource(2130846178);
     paramView = new RelativeLayout.LayoutParams(-2, -2);
     paramView.addRule(15);
-    paramView.addRule(0, 2131362333);
+    paramView.addRule(0, 2131362336);
     paramView.rightMargin = ((int)(6.0F * f));
     paramResources.addView(paramContext, paramView);
     paramTextView1.setIncludeFontPadding(false);
@@ -90,12 +90,12 @@ public class StructMsgItemLayout25
     paramTextView1.getPaint().setFakeBoldText(true);
     paramContext = new RelativeLayout.LayoutParams(-2, -2);
     paramContext.addRule(15);
-    paramContext.addRule(1, 2131362333);
+    paramContext.addRule(1, 2131362336);
     paramContext.leftMargin = ((int)(6.0F * f));
     paramResources.addView(paramTextView1, paramContext);
     paramContext = new RelativeLayout.LayoutParams((int)(240.0F * f), -2);
     paramContext.addRule(14);
-    paramContext.addRule(3, 2131362335);
+    paramContext.addRule(3, 2131362338);
     paramContext.topMargin = ((int)(f * 10.0F));
     paramRelativeLayout.addView(paramResources, paramContext);
   }
@@ -216,12 +216,12 @@ public class StructMsgItemLayout25
             localObject7 = localObject1;
             continue;
             label531:
-            paramView = new StructMsgItemMore(paramContext.getString(2131438725)).a(paramContext, null, null);
+            paramView = new StructMsgItemMore(paramContext.getString(2131438748)).a(paramContext, null, null);
             paramBundle = new LinearLayout.LayoutParams(-1, -2);
             j = AIOUtils.a(15.0F, localResources);
             paramView.setLayoutParams(paramBundle);
             paramView.setPadding(j, j, j, j);
-            paramBundle = (TextView)paramView.findViewById(2131375172);
+            paramBundle = (TextView)paramView.findViewById(2131375224);
             paramBundle.setSingleLine();
             paramBundle.setEllipsize(TextUtils.TruncateAt.END);
             paramBundle.setTextSize(1, 18.0F);
@@ -240,7 +240,7 @@ public class StructMsgItemLayout25
             paramView.addRule(14);
             paramView.topMargin = AIOUtils.a(25.0F, localResources);
             localObject3.setLayoutParams(paramView);
-            localObject3.setId(2131362332);
+            localObject3.setId(2131362335);
             localRelativeLayout.addView(localObject3);
             paramView = new RelativeLayout(paramContext);
             paramBundle = new RelativeLayout.LayoutParams(-2, -2);
@@ -248,14 +248,14 @@ public class StructMsgItemLayout25
             localObject1.setLayoutParams(paramBundle);
             paramView.addView(localObject1);
             paramBundle = new ImageView(paramContext);
-            paramBundle.setImageResource(2130846091);
+            paramBundle.setImageResource(2130846173);
             localObject4 = new RelativeLayout.LayoutParams(-2, -2);
             ((RelativeLayout.LayoutParams)localObject4).addRule(0, localObject1.getId());
             ((RelativeLayout.LayoutParams)localObject4).addRule(15);
             ((RelativeLayout.LayoutParams)localObject4).rightMargin = AIOUtils.a(7.0F, localResources);
             paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject4);
             paramContext = new ImageView(paramContext);
-            paramContext.setImageResource(2130846092);
+            paramContext.setImageResource(2130846174);
             paramBundle = new RelativeLayout.LayoutParams(-2, -2);
             paramBundle.addRule(1, localObject1.getId());
             paramBundle.addRule(15);
@@ -263,17 +263,17 @@ public class StructMsgItemLayout25
             paramView.addView(paramContext, paramBundle);
             paramContext = new RelativeLayout.LayoutParams(-1, -2);
             paramContext.topMargin = AIOUtils.a(5.0F, localResources);
-            paramContext.addRule(3, 2131362332);
+            paramContext.addRule(3, 2131362335);
             paramView.setLayoutParams(paramContext);
-            paramView.setId(2131362334);
+            paramView.setId(2131362337);
             localRelativeLayout.addView(paramView);
             paramContext = new RelativeLayout.LayoutParams(-2, -2);
             paramContext.addRule(14);
-            paramContext.addRule(3, 2131362334);
+            paramContext.addRule(3, 2131362337);
             paramContext.topMargin = AIOUtils.a(10.0F, localResources);
             if (localObject2 != null)
             {
-              localObject2.setId(2131362336);
+              localObject2.setId(2131362339);
               localObject2.setLayoutParams(paramContext);
               localRelativeLayout.addView(localObject2);
             }

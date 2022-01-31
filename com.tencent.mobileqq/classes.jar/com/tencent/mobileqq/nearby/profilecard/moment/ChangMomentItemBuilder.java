@@ -36,12 +36,12 @@ public class ChangMomentItemBuilder
   public View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (ChangMomentItemBuilder.ChangViewHolder)paramMomentViewHolder;
-    paramViewGroup = LayoutInflater.from(this.a).inflate(2130970479, paramViewGroup, false);
-    paramMomentViewHolder.j = ((TextView)paramViewGroup.findViewById(2131367129));
-    paramMomentViewHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131366378));
-    paramMomentViewHolder.g = ((ImageView)paramViewGroup.findViewById(2131370839));
-    paramMomentViewHolder.e = paramViewGroup.findViewById(2131370840);
-    paramMomentViewHolder.jdField_f_of_type_AndroidViewView = paramViewGroup.findViewById(2131370841);
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2130970491, paramViewGroup, false);
+    paramMomentViewHolder.i = ((TextView)paramViewGroup.findViewById(2131367129));
+    paramMomentViewHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131366383));
+    paramMomentViewHolder.g = ((ImageView)paramViewGroup.findViewById(2131370826));
+    paramMomentViewHolder.e = paramViewGroup.findViewById(2131370827);
+    paramMomentViewHolder.jdField_f_of_type_AndroidViewView = paramViewGroup.findViewById(2131370828);
     return paramViewGroup;
   }
   
@@ -55,7 +55,7 @@ public class ChangMomentItemBuilder
     return ((ChangMomentFeedInfo)((ChangMomentItemBuilder.ChangViewHolder)paramMomentViewHolder).a).jdField_a_of_type_JavaLangString;
   }
   
-  public void f(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  public void e(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (ChangMomentItemBuilder.ChangViewHolder)paramMomentViewHolder;
     Object localObject1 = (ChangMomentFeedInfo)paramMomentViewHolder.a;
@@ -68,7 +68,7 @@ public class ChangMomentItemBuilder
       if (!TextUtils.isEmpty(((ChangMomentFeedInfo)localObject1).i)) {
         break label297;
       }
-      paramMomentViewHolder.j.setVisibility(8);
+      paramMomentViewHolder.i.setVisibility(8);
       j = UIUtils.a(this.a, 200.0F);
       if ((((ChangMomentFeedInfo)localObject1).jdField_a_of_type_Int <= 0) || (((ChangMomentFeedInfo)localObject1).jdField_b_of_type_Int <= 0)) {
         break label404;
@@ -85,9 +85,9 @@ public class ChangMomentItemBuilder
         for (;;)
         {
           Object localObject2;
-          if (!TextUtils.equals((String)paramMomentViewHolder.jdField_f_of_type_AndroidWidgetImageView.getTag(2131362360), ((ChangMomentFeedInfo)localObject1).jdField_b_of_type_JavaLangString))
+          if (!TextUtils.equals((String)paramMomentViewHolder.jdField_f_of_type_AndroidWidgetImageView.getTag(2131362363), ((ChangMomentFeedInfo)localObject1).jdField_b_of_type_JavaLangString))
           {
-            paramMomentViewHolder.jdField_f_of_type_AndroidWidgetImageView.setTag(2131362360, ((ChangMomentFeedInfo)localObject1).jdField_b_of_type_JavaLangString);
+            paramMomentViewHolder.jdField_f_of_type_AndroidWidgetImageView.setTag(2131362363, ((ChangMomentFeedInfo)localObject1).jdField_b_of_type_JavaLangString);
             localObject2 = (FrameLayout.LayoutParams)paramMomentViewHolder.jdField_f_of_type_AndroidWidgetImageView.getLayoutParams();
             if (localObject2 != null) {
               break label320;
@@ -100,8 +100,8 @@ public class ChangMomentItemBuilder
             for (;;)
             {
               localObject2 = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130842814);
-              ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130842814);
+              ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130842848);
+              ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130842848);
               localObject1 = URLDrawable.getDrawable(((ChangMomentFeedInfo)localObject1).jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
               ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.a(j, i, DisplayUtil.a(this.a, 3.0F)));
               ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.d);
@@ -111,8 +111,8 @@ public class ChangMomentItemBuilder
               paramMomentViewHolder.jdField_f_of_type_AndroidViewView.setVisibility(8);
               break;
               label297:
-              paramMomentViewHolder.j.setVisibility(0);
-              paramMomentViewHolder.j.setText(((ChangMomentFeedInfo)localObject1).i);
+              paramMomentViewHolder.i.setVisibility(0);
+              paramMomentViewHolder.i.setText(((ChangMomentFeedInfo)localObject1).i);
               break label59;
               label320:
               if ((((FrameLayout.LayoutParams)localObject2).width != j) || (((FrameLayout.LayoutParams)localObject2).height != i))
@@ -127,7 +127,7 @@ public class ChangMomentItemBuilder
           {
             do
             {
-              paramMomentViewHolder.jdField_f_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130842814));
+              paramMomentViewHolder.jdField_f_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130842848));
             } while (!QLog.isColorLevel());
             QLog.i("BaseMomentItemBuilder", 1, localException.toString());
             return;

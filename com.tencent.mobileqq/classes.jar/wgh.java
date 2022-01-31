@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.GetListDataCallback;
 
 public class wgh
-  implements Runnable
+  implements TroopAIORobotPanel.GetListDataCallback
 {
-  public wgh(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment, int paramInt) {}
+  public wgh(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_Long, 20);
-    if (localList != null) {
-      ThreadManager.getUIHandler().post(new wgi(this, localList));
+    if ((paramBoolean) && (this.a.f.equals(paramString)))
+    {
+      TroopChatPie.a(this.a, true);
+      return;
     }
+    TroopChatPie.a(this.a, false);
   }
 }
 

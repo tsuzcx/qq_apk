@@ -1,52 +1,15 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
 
 public class ysg
   implements Runnable
 {
-  public ysg(SpriteUIHandler paramSpriteUIHandler, int paramInt) {}
+  public ysg(ApolloRenderDriver paramApolloRenderDriver) {}
   
   public void run()
   {
-    try
-    {
-      if (SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a() == null) {
-        return;
-      }
-      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().a().findViewById(2131362840);
-      if (1 == this.jdField_a_of_type_Int)
-      {
-        if (localXPanelContainer.a() != 21) {
-          return;
-        }
-        SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().ai();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("cmshow_scripted_SpriteUIHandler", 1, localException, new Object[0]);
-      return;
-    }
-    if (2 == this.jdField_a_of_type_Int)
-    {
-      BaseChatPie localBaseChatPie = SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a();
-      if (localBaseChatPie != null)
-      {
-        ApolloPanel localApolloPanel = localBaseChatPie.a;
-        if ((localApolloPanel != null) && (localApolloPanel.a() == 7))
-        {
-          localBaseChatPie.o(0);
-          return;
-        }
-      }
-      localException.a(21);
-    }
+    String str = String.format("mainTicker.interval = %f;mainTicker.paused = false;renderTicker.paused = false;renderTicker.interval = %f;BK.Director.tickerResume();", new Object[] { Double.valueOf(60.0D / this.a.jdField_a_of_type_Int), Double.valueOf(60.0D / this.a.jdField_a_of_type_Int) });
+    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(str);
   }
 }
 

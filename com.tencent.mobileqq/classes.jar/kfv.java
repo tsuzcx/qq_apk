@@ -1,72 +1,99 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.utils.GVideoGrayConfig;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.av.utils.GVideoGrayConfig.Record;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.groupvideo.GroupVideoHelper;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.app.VideoObserver;
+import com.tencent.av.ui.redbag.AVRedBag;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.RedBagReport;
 
-public final class kfv
-  implements GVideoGrayConfig.GVideoGrayConfigListener
+public class kfv
+  extends VideoObserver
 {
-  public kfv(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, String paramString) {}
+  public kfv(AVRedBag paramAVRedBag) {}
   
-  private void a(Context paramContext)
+  protected void c()
   {
-    if ((paramContext instanceof JumpActivity)) {
-      ((Activity)paramContext).finish();
+    int i = this.a.a.a().a().d;
+    if ((i == 2) || (i == 1))
+    {
+      RedBagReport.a(this.a.a.a().c());
+      RedBagReport.g();
+      e(3);
+      return;
     }
+    RedBagReport.a(0L);
   }
   
-  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
+  protected void c(String paramString, boolean paramBoolean)
   {
-    switch (paramInt1)
-    {
-    default: 
-      a(this.jdField_a_of_type_AndroidContentContext);
-    }
+    paramString = this.a.a();
+    if (paramString == null) {}
     do
     {
+      int i;
       do
       {
         return;
-        GroupVideoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, 1);
-        return;
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", paramRecord.jdField_a_of_type_JavaLangString);
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          localIntent.addFlags(268435456);
-        }
-        this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        a(this.jdField_a_of_type_AndroidContentContext);
-        return;
-        ((GroupVideoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, "4", "openRoom");
-        return;
-        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
-        {
-          GVideoGrayConfig.a(this.jdField_a_of_type_AndroidContentContext, paramRecord.b, paramRecord.c, new kfw(this));
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
-      return;
-      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        i = this.a.a.a().a().d;
+      } while ((i != 2) && (i != 1));
+      if (paramBoolean)
       {
-        GVideoGrayConfig.a(this.jdField_a_of_type_AndroidContentContext, paramRecord.b, paramRecord.c, new kfx(this));
+        if (paramString.a != null) {
+          paramString.a.a("onPeerSwitchTerminal");
+        }
+        paramString.b("onPeerSwitchTerminal");
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "context is not Activity");
+      paramString.a("onPeerSwitchTerminal");
+    } while (paramString.a == null);
+    paramString.a(paramString.a.b);
+  }
+  
+  protected void d()
+  {
+    AVRedBagMgr localAVRedBagMgr = this.a.a();
+    if (localAVRedBagMgr != null) {
+      localAVRedBagMgr.b("onPauseVideo");
+    }
+  }
+  
+  protected void e()
+  {
+    AVRedBagMgr localAVRedBagMgr = this.a.a();
+    if (localAVRedBagMgr != null) {
+      localAVRedBagMgr.b("onResumeVideo");
+    }
+  }
+  
+  void e(int paramInt)
+  {
+    if (paramInt <= 0) {
+      return;
+    }
+    AVRedBagMgr localAVRedBagMgr = this.a.a();
+    if (localAVRedBagMgr != null)
+    {
+      localAVRedBagMgr.a("onConnected:" + paramInt);
+      if (localAVRedBagMgr.a != null) {
+        localAVRedBagMgr.a(localAVRedBagMgr.a.b);
+      }
+    }
+    this.a.a.a().postDelayed(new kfw(this, paramInt), 1100L);
+  }
+  
+  protected void e(String paramString, boolean paramBoolean)
+  {
+    paramString = this.a.a();
+    if (paramString != null) {
+      paramString.c();
+    }
+    RedBagReport.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kfv
  * JD-Core Version:    0.7.0.1
  */

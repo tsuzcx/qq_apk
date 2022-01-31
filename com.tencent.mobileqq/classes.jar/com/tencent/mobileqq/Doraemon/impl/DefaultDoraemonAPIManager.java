@@ -13,10 +13,10 @@ import com.tencent.mobileqq.Doraemon.manifest.D.manifest.common_apis;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
-import ree;
-import ref;
-import reg;
-import reh;
+import riw;
+import rix;
+import riy;
+import riz;
 
 public class DefaultDoraemonAPIManager
   extends DoraemonAPIManager
@@ -90,7 +90,7 @@ public class DefaultDoraemonAPIManager
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           localObject2 = "[未知应用]";
         }
-        a("用户授权", (String)localObject2 + "申请以下权限:" + localUserPermission.b, "允许", new ref(this, localUserPermission, paramAPIConfig, paramAPIParam, paramAPICallback), "拒绝", new reg(this, localUserPermission, paramAPIConfig, paramAPIParam, paramAPICallback), new reh(this, localUserPermission, paramAPIConfig, paramAPIParam, paramAPICallback));
+        a("用户授权", (String)localObject2 + "申请以下权限:" + localUserPermission.b, "允许", new rix(this, localUserPermission, paramAPIConfig, paramAPIParam, paramAPICallback), "拒绝", new riy(this, localUserPermission, paramAPIConfig, paramAPIParam, paramAPICallback), new riz(this, localUserPermission, paramAPIConfig, paramAPIParam, paramAPICallback));
         return;
       }
     }
@@ -106,7 +106,7 @@ public class DefaultDoraemonAPIManager
   
   protected void b()
   {
-    DefaultDoraemonAppInfoHelper.a().a(this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, new ree(this));
+    DefaultDoraemonAppInfoHelper.a().a(this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, new riw(this));
   }
 }
 

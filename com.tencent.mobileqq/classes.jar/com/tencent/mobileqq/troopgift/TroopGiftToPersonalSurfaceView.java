@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troopgift;
 
-import ajvr;
-import ajvt;
+import akde;
+import akdg;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -132,7 +132,7 @@ public class TroopGiftToPersonalSurfaceView
     }
     if ((this.c != null) && ((this.c instanceof FrameSprite)))
     {
-      ((FrameSprite)this.c).a = new ajvr(this, paramOnFrameEndListener);
+      ((FrameSprite)this.c).a = new akde(this, paramOnFrameEndListener);
       ((FrameSprite)this.c).a(getContext(), this);
     }
     while (a())
@@ -147,7 +147,7 @@ public class TroopGiftToPersonalSurfaceView
         i += 1;
       }
       if ((this.c != null) && ((this.c instanceof VideoSprite))) {
-        ((VideoSprite)this.c).a(new ajvt(this, paramOnFrameEndListener));
+        ((VideoSprite)this.c).a(new akdg(this, paramOnFrameEndListener));
       }
     }
   }
@@ -263,7 +263,7 @@ public class TroopGiftToPersonalSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView
  * JD-Core Version:    0.7.0.1
  */

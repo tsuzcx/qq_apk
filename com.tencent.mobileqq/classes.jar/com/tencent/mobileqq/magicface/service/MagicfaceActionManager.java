@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.magicface.service;
 
-import aedz;
-import aeea;
-import aeeb;
-import aeec;
+import aemj;
+import aemk;
+import aeml;
+import aemm;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.hardware.SensorManager;
@@ -68,10 +68,10 @@ public class MagicfaceActionManager
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = null;
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation = new aedz(this);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation = new aemj(this);
     this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppShakeListener = new aeeb(this);
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume = new RecordVolume(new aeec(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppShakeListener = new aeml(this);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume = new RecordVolume(new aemm(this));
     if (QLog.isColorLevel()) {
       QLog.d("MagicfaceActionManager", 2, "func MagicfaceActionManager begins");
     }
@@ -250,7 +250,7 @@ public class MagicfaceActionManager
     this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = paramEmoticon;
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_JavaLangString = paramString;
-    ThreadManager.post(new aeea(this, paramInt2, paramInt1), 8, null, true);
+    ThreadManager.post(new aemk(this, paramInt2, paramInt1), 8, null, true);
   }
   
   public void a(ActionGlobalData paramActionGlobalData)
@@ -475,7 +475,7 @@ public class MagicfaceActionManager
       this.jdField_a_of_type_JavaUtilList = a(false);
       return;
     }
-    int[] arrayOfInt1 = a("7.6.3");
+    int[] arrayOfInt1 = a("7.6.8");
     int[] arrayOfInt2 = a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
       QLog.d("MagicfaceActionManager", 2, "func filterAction, qqver:" + arrayOfInt1 + ",magicVer:" + arrayOfInt2);

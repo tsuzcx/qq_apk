@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 
-public class anue
-  implements DialogInterface.OnDismissListener
+public final class anue
+  implements Parcelable.Creator
 {
-  public anue(EditVideoMusic paramEditVideoMusic) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public QIMFilterCategoryItem a(Parcel paramParcel)
   {
-    this.a.a.a(0);
-    VideoEditReport.a("0X80076DD");
+    return new QIMFilterCategoryItem(paramParcel);
+  }
+  
+  public QIMFilterCategoryItem[] a(int paramInt)
+  {
+    return new QIMFilterCategoryItem[paramInt];
   }
 }
 

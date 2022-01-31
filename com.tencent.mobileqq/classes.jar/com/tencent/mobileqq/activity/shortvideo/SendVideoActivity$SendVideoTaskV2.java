@@ -193,7 +193,7 @@ public class SendVideoActivity$SendVideoTaskV2
     //   282: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   285: ldc 228
     //   287: invokestatic 229	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   290: astore 11
+    //   290: astore 12
     //   292: new 98	java/lang/StringBuilder
     //   295: dup
     //   296: invokespecial 99	java/lang/StringBuilder:<init>	()V
@@ -205,12 +205,12 @@ public class SendVideoActivity$SendVideoTaskV2
     //   313: invokestatic 238	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;)V
     //   316: new 240	java/io/File
     //   319: dup
-    //   320: aload 11
+    //   320: aload 12
     //   322: invokespecial 242	java/io/File:<init>	(Ljava/lang/String;)V
-    //   325: astore 12
+    //   325: astore 11
     //   327: new 240	java/io/File
     //   330: dup
-    //   331: aload 12
+    //   331: aload 11
     //   333: invokevirtual 245	java/io/File:getParent	()Ljava/lang/String;
     //   336: invokespecial 242	java/io/File:<init>	(Ljava/lang/String;)V
     //   339: astore 7
@@ -223,20 +223,20 @@ public class SendVideoActivity$SendVideoTaskV2
     //   357: aload 7
     //   359: invokevirtual 254	java/io/File:mkdirs	()Z
     //   362: pop
-    //   363: aload 12
+    //   363: aload 11
     //   365: invokevirtual 248	java/io/File:exists	()Z
     //   368: ifeq +11 -> 379
-    //   371: aload 12
+    //   371: aload 11
     //   373: invokevirtual 257	java/io/File:isFile	()Z
     //   376: ifne +9 -> 385
-    //   379: aload 12
+    //   379: aload 11
     //   381: invokevirtual 260	java/io/File:createNewFile	()Z
     //   384: pop
     //   385: new 262	java/io/BufferedOutputStream
     //   388: dup
     //   389: new 264	java/io/FileOutputStream
     //   392: dup
-    //   393: aload 12
+    //   393: aload 11
     //   395: invokespecial 267	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   398: invokespecial 270	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   401: astore 7
@@ -250,23 +250,23 @@ public class SendVideoActivity$SendVideoTaskV2
     //   418: invokevirtual 283	java/io/BufferedOutputStream:flush	()V
     //   421: new 285	java/io/FileInputStream
     //   424: dup
-    //   425: aload 12
+    //   425: aload 11
     //   427: invokespecial 286	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   430: astore 8
     //   432: aload 7
     //   434: astore 10
     //   436: aload 8
     //   438: astore 9
-    //   440: aload 12
+    //   440: aload 11
     //   442: invokevirtual 288	java/io/File:length	()J
-    //   445: lstore 5
+    //   445: lstore 4
     //   447: aload 7
     //   449: astore 10
     //   451: aload 8
     //   453: astore 9
     //   455: aload_0
     //   456: aload 8
-    //   458: lload 5
+    //   458: lload 4
     //   460: invokestatic 294	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   463: invokestatic 300	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   466: putfield 302	com/tencent/mobileqq/activity/shortvideo/SendVideoActivity$SendVideoTaskV2:g	Ljava/lang/String;
@@ -335,12 +335,12 @@ public class SendVideoActivity$SendVideoTaskV2
     //   600: astore 10
     //   602: aload 8
     //   604: astore 9
-    //   606: aload 11
+    //   606: aload 12
     //   608: aload_0
     //   609: getfield 316	com/tencent/mobileqq/activity/shortvideo/SendVideoActivity$SendVideoTaskV2:jdField_f_of_type_JavaLangString	Ljava/lang/String;
     //   612: invokestatic 319	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   615: istore 4
-    //   617: iload 4
+    //   615: istore 6
+    //   617: iload 6
     //   619: ifne +42 -> 661
     //   622: iconst_0
     //   623: ifeq +11 -> 634
@@ -368,7 +368,7 @@ public class SendVideoActivity$SendVideoTaskV2
     //   665: aload 8
     //   667: astore 9
     //   669: aload_1
-    //   670: lload 5
+    //   670: lload 4
     //   672: invokestatic 325	android/text/format/Formatter:formatFileSize	(Landroid/content/Context;J)Ljava/lang/String;
     //   675: astore_1
     //   676: aload 7
@@ -648,8 +648,8 @@ public class SendVideoActivity$SendVideoTaskV2
     //   0	1212	1	paramContext	android.content.Context
     //   7	967	2	i	int
     //   1	918	3	j	int
-    //   615	3	4	bool	boolean
-    //   445	226	5	l	long
+    //   445	226	4	l	long
+    //   615	3	6	bool	boolean
     //   24	64	7	localObject1	java.lang.Object
     //   203	14	7	localNumberFormatException	java.lang.NumberFormatException
     //   339	697	7	localObject2	java.lang.Object
@@ -669,8 +669,8 @@ public class SendVideoActivity$SendVideoTaskV2
     //   438	726	9	localObject9	java.lang.Object
     //   1189	6	9	localException3	Exception
     //   434	720	10	localObject10	java.lang.Object
-    //   290	317	11	str	String
-    //   325	116	12	localFile	java.io.File
+    //   325	116	11	localFile	java.io.File
+    //   290	317	12	str	String
     // Exception table:
     //   from	to	target	type
     //   61	72	203	java/lang/NumberFormatException

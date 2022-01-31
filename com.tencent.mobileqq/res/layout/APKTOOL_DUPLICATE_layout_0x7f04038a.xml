@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c03a3" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a1" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a3" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a1" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.troop.ablum.widget.FeedDate android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03bd" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a130b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08b7" android:layout_marginBottom="10.0dip" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
-        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a130c" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a7" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a7" />
-        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a130d" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a7" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a7" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d079e" />
-        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a130e" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a7" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07a7" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d079e" />
+<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a080c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1316" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1317" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020444" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:scrollingCache="false" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1318" android:paddingBottom="30.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1319" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="18.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021628" />
+        <TextView android:textSize="15.0sp" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a131a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="由于你发表了不恰当的信息，无法继续使用热聊。" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

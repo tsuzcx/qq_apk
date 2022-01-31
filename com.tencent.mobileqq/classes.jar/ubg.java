@@ -1,165 +1,65 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentTroopAssistantItem;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.TroopManager;
+import java.util.Comparator;
 
 public class ubg
-  extends Handler
+  implements Comparator
 {
-  public ubg(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ubg(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    if (this.a.isFinishing()) {}
-    boolean bool;
-    do
+    if (((paramRecentBaseData1 instanceof RecentTroopAssistantItem)) && ((paramRecentBaseData2 instanceof RecentTroopAssistantItem)))
     {
-      do
+      paramRecentBaseData1 = (RecentTroopAssistantItem)paramRecentBaseData1;
+      paramRecentBaseData2 = (RecentTroopAssistantItem)paramRecentBaseData2;
+      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(51);
+      boolean bool1 = localTroopManager.b(paramRecentBaseData1.a());
+      boolean bool2 = localTroopManager.b(paramRecentBaseData2.a());
+      if ((bool1) && (!bool2)) {
+        return -1;
+      }
+      if ((!bool1) && (bool2)) {
+        return 1;
+      }
+      long l2;
+      long l1;
+      if ((!bool1) && (!bool2))
       {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage,msg.what:" + paramMessage.what);
+        l2 = Math.max(paramRecentBaseData1.a(), paramRecentBaseData1.b());
+        l1 = Math.max(paramRecentBaseData2.a(), paramRecentBaseData2.b());
+        if (l2 <= l1) {
+          break label173;
         }
-        switch (paramMessage.what)
-        {
-        case 3: 
-        case 4: 
-        case 10: 
-        default: 
-          return;
-        case 1: 
-        case 2: 
-          for (;;)
-          {
-            TroopMemberListActivity.a(this.a, paramMessage);
-            return;
-            this.a.k();
-          }
-        case 13: 
-          paramMessage = this.a;
-          paramMessage.jdField_a_of_type_Double += TroopMemberListActivity.jdField_b_of_type_Double;
-        }
-      } while ((this.a.jdField_a_of_type_Double <= this.a.jdField_a_of_type_AndroidWidgetProgressBar.getProgress()) || (this.a.jdField_a_of_type_Double >= 90.0D) || (TroopMemberListActivity.a(this.a) <= 0));
-      int i = (int)this.a.jdField_a_of_type_Double;
-      int j = (int)(TroopMemberListActivity.a(this.a) * this.a.jdField_a_of_type_Double / 100.0D);
-      TroopMemberListActivity.a(this.a, j, TroopMemberListActivity.a(this.a), i);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(13), 800L);
-      return;
-      List localList;
-      synchronized (this.a)
+        l1 = 3L;
+      }
+      for (;;)
       {
-        TroopMemberListActivity.b(this.a);
-        localList = (List)paramMessage.obj;
-        if ((localList == null) && (this.a.jdField_d_of_type_Int != 14)) {
-          return;
+        l1 = (int)(l1 | 0) - (int)(0x2 | 0);
+        if (l1 != 0L) {
+          break label195;
+        }
+        return 0;
+        l2 = paramRecentBaseData1.a;
+        l1 = paramRecentBaseData2.a;
+        break;
+        label173:
+        if (l2 < l1) {
+          l1 = 1L;
+        } else {
+          l1 = 2L;
         }
       }
-      if (this.a.jdField_d_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
-        double d = Math.min(0.9D + paramMessage.arg1 * 1.0D / TroopMemberListActivity.a(this.a), 1.0D);
-        i = (int)(100.0D * d);
-        if (i > this.a.jdField_a_of_type_AndroidWidgetProgressBar.getProgress())
-        {
-          j = (int)(d * TroopMemberListActivity.a(this.a));
-          TroopMemberListActivity.a(this.a, j, TroopMemberListActivity.a(this.a), i);
-        }
+      label195:
+      if (l1 < 0L) {
+        return 1;
       }
-      if (localList != null) {
-        this.a.jdField_a_of_type_JavaUtilList.addAll(localList);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage, mJobCount left:" + TroopMemberListActivity.c(this.a) + "mATroopMemberList.size():" + this.a.jdField_a_of_type_JavaUtilList.size());
-      }
-      if (TroopMemberListActivity.c(this.a) <= 0) {
-        TroopMemberListActivity.b(this.a, true);
-      }
-      if ((TroopMemberListActivity.b(this.a)) && (TroopMemberListActivity.d(this.a)))
-      {
-        if (this.a.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          return;
-        }
-        this.a.k();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage real totalTime:" + (System.currentTimeMillis() - TroopMemberListActivity.a(this.a)) + "start refreshUI");
-        }
-        if (this.a.app.a() != null) {
-          this.a.app.a().g();
-        }
-        paramMessage.obj = this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
-        TroopMemberListActivity.a(this.a, paramMessage);
-      }
-      return;
-      this.a.k();
-      return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null)
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.b != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.b.clear();
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
-      }
-      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      QQToast.a(this.a, this.a.getString(2131433125), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-      TroopMemberListActivity.a(this.a);
-      return;
-      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      QQToast.a(this.a, this.a.getString(2131433127), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-      return;
-      paramMessage = (Object[])paramMessage.obj;
-      bool = ((Boolean)paramMessage[0]).booleanValue();
-      paramMessage = (ArrayList)paramMessage[1];
-      ChatSettingForTroop.a(this.a, this.a.jdField_b_of_type_JavaLangString, bool, paramMessage);
-      return;
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
-    return;
-    paramMessage = (TroopInfo)paramMessage.obj;
-    if (paramMessage.troopowneruin != null) {
-      this.a.e = paramMessage.troopowneruin;
+      return -1;
     }
-    if (paramMessage.Administrator != null) {
-      this.a.f = paramMessage.Administrator;
-    }
-    ??? = this.a;
-    if ((this.a.app.getCurrentAccountUin().equals(paramMessage.troopowneruin)) || ((this.a.f != null) && (this.a.f.contains(this.a.app.getCurrentAccountUin()))))
-    {
-      bool = true;
-      label1045:
-      ???.jdField_a_of_type_Boolean = bool;
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label1122;
-      }
-    }
-    for (this.a.n = "0"; this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null; this.a.n = "1")
-    {
-      label1095:
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
-      return;
-      bool = false;
-      break label1045;
-      label1122:
-      if ((this.a.f == null) || (!this.a.f.contains(this.a.app.getCurrentAccountUin()))) {
-        break label1095;
-      }
-    }
-    this.a.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    return 0;
   }
 }
 

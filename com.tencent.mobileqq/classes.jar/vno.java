@@ -1,27 +1,29 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.util.LRULinkedHashMap;
 
 public class vno
   implements Runnable
 {
-  public vno(AIOGalleryScene paramAIOGalleryScene, File paramFile, ActionSheet paramActionSheet) {}
+  public vno(TextItemBuilder paramTextItemBuilder, CharSequence paramCharSequence, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    try
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.a(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Long);
+    if (localObject1 != null) {}
+    synchronized (TextItemBuilder.a)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h != null) && (this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h.equals(this.jdField_a_of_type_JavaIoFile.getPath())) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(this.jdField_a_of_type_JavaIoFile).booleanValue()) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-        ThreadManager.getUIHandler().post(new vnp(this));
-      }
+      TextItemBuilder.a.put(Long.valueOf(this.b), localObject1);
+      ??? = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.b.obtainMessage();
+      ((Message)???).what = 1;
+      ((Message)???).obj = localObject1;
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putLong("msg_id", this.b);
+      ((Message)???).setData((Bundle)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.b.sendMessage((Message)???);
       return;
-    }
-    catch (Exception localException)
-    {
-      QLog.i("AIOGalleryScene", 1, "add qr action sheet error: " + localException.getMessage());
     }
   }
 }

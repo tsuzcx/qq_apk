@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import afbo;
-import afbp;
-import afbq;
+import afgl;
+import afgm;
+import afgn;
 import android.content.Context;
 import android.os.Handler;
 import android.view.View;
@@ -44,12 +44,12 @@ public class PicBrowserGalleryAdapter
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new afbo(this, paramInt1, paramInt2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new afgl(this, paramInt1, paramInt2));
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new afbq(this, paramInt, paramBoolean));
+    this.jdField_a_of_type_AndroidOsHandler.post(new afgn(this, paramInt, paramBoolean));
   }
   
   public void a(View paramView, int paramInt)
@@ -64,7 +64,7 @@ public class PicBrowserGalleryAdapter
   
   public void b(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new afbp(this, paramInt1, paramInt2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new afgm(this, paramInt1, paramInt2));
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)

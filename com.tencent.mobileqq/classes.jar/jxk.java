@@ -1,32 +1,22 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallUICtr;
 
-public class jxk
+class jxk
   implements Runnable
 {
-  public jxk(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  jxk(jxj paramjxj, long paramLong) {}
   
   public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.f();
-      this.a.S();
-      if (this.a.d == 2) {
-        ReportController.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
-      }
+    this.jdField_a_of_type_Jxj.a.jdField_a_of_type_ComTencentAvAppSessionInfo.an = true;
+    if (this.jdField_a_of_type_Jxj.a.b == 1) {
+      this.jdField_a_of_type_Jxj.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e(this.a.c, 2, "RequestVideoTimeOutRunnable, mVideoController = null!!!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jxk
  * JD-Core Version:    0.7.0.1
  */

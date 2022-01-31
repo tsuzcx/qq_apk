@@ -1,30 +1,52 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class akfa
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public akfa(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
+  public akfa(TroopShareUtility paramTroopShareUtility) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramView == this.a.a) {
+    if (this.a.jdField_b_of_type_Boolean) {
       return;
     }
-    if (this.a.a != null) {
-      this.a.a.findViewById(2131364091).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopShareUtility", 2, "OnClick.chooseLinkType: " + paramInt);
     }
-    TextView localTextView = (TextView)paramView.findViewById(2131364090);
-    this.a.a(localTextView.getText().toString());
-    paramView.findViewById(2131364091).setVisibility(0);
-    this.a.a = paramView;
+    this.a.jdField_b_of_type_Boolean = true;
+    switch (paramInt)
+    {
+    default: 
+      this.a.a(false);
+      this.a.jdField_a_of_type_Int = -1;
+      this.a.jdField_b_of_type_Int = -1;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
+        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.a.jdField_b_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.a.a(true);
+      this.a.jdField_b_of_type_Int = 1;
+      TroopShareUtility.a(this.a);
+      continue;
+      this.a.a(true);
+      this.a.jdField_b_of_type_Int = 0;
+      TroopShareUtility.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfa
  * JD-Core Version:    0.7.0.1
  */

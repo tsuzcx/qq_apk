@@ -1,14 +1,5 @@
 package cooperation.qzone.webviewplugin;
 
-import anbs;
-import anbt;
-import anbu;
-import anbv;
-import anbw;
-import anbx;
-import anby;
-import anbz;
-import anca;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -17,6 +8,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Base64;
+import anjs;
+import anjt;
+import anju;
+import anjv;
+import anjw;
+import anjx;
+import anjy;
+import anjz;
+import anka;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.AppConstants;
@@ -55,7 +55,7 @@ import org.json.JSONObject;
 public class QZoneSharePictureJsPlugin
   extends QzoneInternalWebViewPlugin
 {
-  WXShareFromQZHelper.WXShareListener jdField_a_of_type_CooperationQzoneShareWXShareFromQZHelper$WXShareListener = new anby(this);
+  WXShareFromQZHelper.WXShareListener jdField_a_of_type_CooperationQzoneShareWXShareFromQZHelper$WXShareListener = new anjy(this);
   private String jdField_a_of_type_JavaLangString;
   
   private String a(String paramString)
@@ -316,7 +316,7 @@ public class QZoneSharePictureJsPlugin
         localObject2 = new GifCoder();
         ((GifCoder)localObject2).b(false);
         ((GifCoder)localObject2).c(true);
-        localObject1 = PhotoUtils.a(AppConstants.aP, "IMG", ".gif");
+        localObject1 = PhotoUtils.a(AppConstants.aQ, "IMG", ".gif");
         long l1 = System.currentTimeMillis();
         if (!bool1)
         {
@@ -417,7 +417,7 @@ public class QZoneSharePictureJsPlugin
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    new BaseHandler(Looper.getMainLooper()).post(new anca(this, paramInt, paramString));
+    new BaseHandler(Looper.getMainLooper()).post(new anka(this, paramInt, paramString));
   }
   
   private void a(String paramString1, int paramInt, String paramString2)
@@ -529,7 +529,7 @@ public class QZoneSharePictureJsPlugin
   
   private void a(String... paramVarArgs)
   {
-    AlbumLibDownloaderUtil.a().a(new anbz(this, paramVarArgs));
+    AlbumLibDownloaderUtil.a().a(new anjz(this, paramVarArgs));
   }
   
   public static boolean a(String paramString)
@@ -894,7 +894,7 @@ public class QZoneSharePictureJsPlugin
           }
           else if (paramPluginRuntime.a() != null)
           {
-            paramPluginRuntime.a().post(new anbw(this, paramPluginRuntime));
+            paramPluginRuntime.a().post(new anjw(this, paramPluginRuntime));
             continue;
             if (WXShareFromQZHelper.a().a())
             {
@@ -903,7 +903,7 @@ public class QZoneSharePictureJsPlugin
             }
             else if (paramPluginRuntime.a() != null)
             {
-              paramPluginRuntime.a().post(new anbx(this, paramPluginRuntime));
+              paramPluginRuntime.a().post(new anjx(this, paramPluginRuntime));
             }
           }
         }
@@ -1350,7 +1350,7 @@ public class QZoneSharePictureJsPlugin
     }
     if ("generateGif".equalsIgnoreCase(paramString3))
     {
-      ThreadManager.executeOnFileThread(new anbs(this, paramVarArgs));
+      ThreadManager.executeOnFileThread(new anjs(this, paramVarArgs));
       return true;
     }
     if ("createTempFile".equalsIgnoreCase(paramString3))
@@ -1360,7 +1360,7 @@ public class QZoneSharePictureJsPlugin
         QLog.e("QZoneSharePictureJsPlugin", 1, "args invalid");
         return true;
       }
-      ThreadManager.executeOnFileThread(new anbt(this, paramVarArgs));
+      ThreadManager.executeOnFileThread(new anjt(this, paramVarArgs));
       return true;
     }
     if ("appendTempFile".equalsIgnoreCase(paramString3))
@@ -1370,7 +1370,7 @@ public class QZoneSharePictureJsPlugin
         QLog.e("QZoneSharePictureJsPlugin", 1, "args invalid");
         return true;
       }
-      ThreadManager.executeOnFileThread(new anbu(this, paramVarArgs));
+      ThreadManager.executeOnFileThread(new anju(this, paramVarArgs));
       return true;
     }
     if ("deleteTempFile".equalsIgnoreCase(paramString3))
@@ -1380,7 +1380,7 @@ public class QZoneSharePictureJsPlugin
         QLog.e("QZoneSharePictureJsPlugin", 1, "args invalid");
         return true;
       }
-      ThreadManager.executeOnFileThread(new anbv(this, paramVarArgs));
+      ThreadManager.executeOnFileThread(new anjv(this, paramVarArgs));
       return true;
     }
     return false;

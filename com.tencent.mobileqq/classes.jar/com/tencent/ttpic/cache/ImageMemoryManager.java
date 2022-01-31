@@ -23,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ImageMemoryManager
 {
-  private static String IMAGE_MEMORY_BLACE_LIST = "HUAWEI;HUAWEI MT7-CL00;19|HUAWEI;HUAWEI MT7-CL00;23|Samsung;SM-A8000;22|Samsung;SM-A8000;23|Xiaomi;MI 3;19|Xiaomi;Redmi Note 3;21";
+  private static String IMAGE_MEMORY_BLACE_LIST = "HUAWEI;HUAWEI MT7-CL00;19|HUAWEI;HUAWEI MT7-CL00;23|Samsung;SM-A8000;22|Samsung;SM-A8000;23|Xiaomi;MI 3;19|Xiaomi;Redmi Note 3;21|vivo;vivo X5V;19";
   private static final int REMAIN_LIMIT_MEMORY = 30;
   private static final String TAG = ImageMemoryManager.class.getSimpleName();
   private static boolean inBlackList;

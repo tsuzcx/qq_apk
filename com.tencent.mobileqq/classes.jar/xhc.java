@@ -1,20 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
 public class xhc
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public xhc(RedPacketManager paramRedPacketManager) {}
+  public xhc(SendHbActivity paramSendHbActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.a.a(paramBoolean, paramBundle);
+    paramDialogInterface.dismiss();
+    SendHbActivity.a(this.a);
   }
 }
 

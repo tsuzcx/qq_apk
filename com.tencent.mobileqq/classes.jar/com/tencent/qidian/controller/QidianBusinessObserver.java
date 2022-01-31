@@ -33,6 +33,10 @@ public class QidianBusinessObserver
   
   public void i(boolean paramBoolean, HashMap paramHashMap) {}
   
+  public void j(boolean paramBoolean, HashMap paramHashMap) {}
+  
+  public void k(boolean paramBoolean, HashMap paramHashMap) {}
+  
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     switch (paramInt)
@@ -40,19 +44,19 @@ public class QidianBusinessObserver
     default: 
       return;
     case 1001: 
-      d(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1002: 
       e(paramBoolean, (HashMap)paramObject);
       return;
-    case 1003: 
+    case 1002: 
       f(paramBoolean, (HashMap)paramObject);
       return;
+    case 1003: 
+      g(paramBoolean, (HashMap)paramObject);
+      return;
     case 1004: 
-      h(paramBoolean, (HashMap)paramObject);
+      i(paramBoolean, (HashMap)paramObject);
       return;
     case 1005: 
-      c(paramBoolean, (HashMap)paramObject);
+      d(paramBoolean, (HashMap)paramObject);
       return;
     case 1006: 
       if (paramObject != null)
@@ -69,16 +73,21 @@ public class QidianBusinessObserver
       a(paramBoolean, (PubAccountNavigationMenu)paramObject);
       return;
     case 1007: 
-      i(paramBoolean, (HashMap)paramObject);
+      j(paramBoolean, (HashMap)paramObject);
       return;
     case 1008: 
-      b(paramBoolean, (HashMap)paramObject);
+      c(paramBoolean, (HashMap)paramObject);
       return;
     case 1009: 
-      a(paramBoolean, (HashMap)paramObject);
+      b(paramBoolean, (HashMap)paramObject);
       return;
+    case 1010: 
+      h(paramBoolean, (HashMap)paramObject);
+      return;
+    case 1018: 
+      a(paramBoolean, (HashMap)paramObject);
     }
-    g(paramBoolean, (HashMap)paramObject);
+    k(paramBoolean, (HashMap)paramObject);
   }
 }
 

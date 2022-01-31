@@ -1,50 +1,16 @@
-public class wmm
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
+
+class wmm
+  extends AnimateUtils.AnimationAdapter
 {
-  private static int jdField_b_of_type_Int;
-  private static final Object jdField_b_of_type_JavaLangObject = new Object();
-  private static wmm jdField_b_of_type_Wmm;
-  public int a;
-  public Object a;
-  private wmm a;
+  wmm(wmk paramwmk) {}
   
-  public wmm(int paramInt, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public static wmm a(int paramInt, Object paramObject)
-  {
-    synchronized (jdField_b_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Wmm != null)
-      {
-        wmm localwmm = jdField_b_of_type_Wmm;
-        jdField_b_of_type_Wmm = localwmm.jdField_a_of_type_Wmm;
-        localwmm.jdField_a_of_type_Wmm = null;
-        jdField_b_of_type_Int -= 1;
-        localwmm.jdField_a_of_type_Int = paramInt;
-        localwmm.jdField_a_of_type_JavaLangObject = paramObject;
-        return localwmm;
-      }
-      return new wmm(paramInt, paramObject);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangObject = null;
-    synchronized (jdField_b_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Int < 50)
-      {
-        this.jdField_a_of_type_Wmm = jdField_b_of_type_Wmm;
-        jdField_b_of_type_Wmm = this;
-        jdField_b_of_type_Int += 1;
-      }
-      return;
-    }
+    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
   }
 }
 

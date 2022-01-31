@@ -1,19 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.DeviceSingleStructBuilder;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 
 public class uwa
-  extends AbstractChatItemBuilder.ViewHolder
+  implements Runnable
 {
-  public ImageView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public uwa(RecordSoundPanel paramRecordSoundPanel) {}
   
-  public uwa(DeviceSingleStructBuilder paramDeviceSingleStructBuilder) {}
+  public void run()
+  {
+    this.a.b();
+  }
 }
 
 

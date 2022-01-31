@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <scale android:interpolator="@android:anim/accelerate_interpolator" android:duration="400" android:pivotX="50.0%" android:pivotY="50.0%" android:fillAfter="false" android:fromXScale="0.0" android:toXScale="1.1" android:fromYScale="0.0" android:toYScale="1.1" />
-    <scale android:interpolator="@android:anim/accelerate_interpolator" android:duration="300" android:pivotX="50.0%" android:pivotY="50.0%" android:fillAfter="false" android:fromXScale="1.1" android:toXScale="0.95" android:fromYScale="1.1" android:toYScale="0.95" />
-    <scale android:interpolator="@android:anim/accelerate_interpolator" android:duration="300" android:pivotX="50.0%" android:pivotY="50.0%" android:fillAfter="false" android:fromXScale="0.95" android:toXScale="1.0" android:fromYScale="0.95" android:toYScale="1.0" />
-</set>
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020dac" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020dab" />
+</selector>

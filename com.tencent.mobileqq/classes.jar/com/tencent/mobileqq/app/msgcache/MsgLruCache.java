@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.app.msgcache;
 
+import aaay;
+import aaaz;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -27,8 +29,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.util.WeakReference;
-import zun;
-import zuo;
 
 public class MsgLruCache
   extends ConcurrentHashMap
@@ -40,7 +40,7 @@ public class MsgLruCache
   private HighFrequencyStringDetector detector = new HighFrequencyStringDetector(CacheConstants.n, CacheConstants.o);
   private long initTime = System.currentTimeMillis();
   public volatile boolean isDestroyed;
-  private zuo keyTimeComparator = new zuo(this, null);
+  private aaaz keyTimeComparator = new aaaz(this, null);
   private WeakReference mApp;
   private Handler mHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   private int monitorLoginInitCount;
@@ -295,7 +295,7 @@ public class MsgLruCache
     //   50: ireturn
     //   51: aload_1
     //   52: aload_0
-    //   53: getfield 76	com/tencent/mobileqq/app/msgcache/MsgLruCache:keyTimeComparator	Lzuo;
+    //   53: getfield 76	com/tencent/mobileqq/app/msgcache/MsgLruCache:keyTimeComparator	Laaaz;
     //   56: invokestatic 354	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   59: aload_1
     //   60: invokevirtual 355	java/util/ArrayList:iterator	()Ljava/util/Iterator;
@@ -756,7 +756,7 @@ public class MsgLruCache
           break label358;
         }
         localObject = new ArrayList(((Map)localObject).entrySet());
-        Collections.sort((List)localObject, new zun(this));
+        Collections.sort((List)localObject, new aaay(this));
         j = 0;
         k = 0;
         if (j >= ((ArrayList)localObject).size()) {

@@ -1,36 +1,31 @@
-import android.app.Dialog;
-import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.theme.NightModeLogic;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout20;
 
 public class ainx
-  implements View.OnClickListener
+  extends PublicAccountObserver
 {
-  public ainx(NightModeLogic paramNightModeLogic) {}
+  ainw jdField_a_of_type_Ainw = null;
   
-  public void onClick(View paramView)
+  public ainx(StructMsgItemLayout20 paramStructMsgItemLayout20, ainw paramainw)
   {
-    paramView = new Bundle();
-    paramView.putInt("start_status", 2);
-    this.a.a(0, paramView);
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.jdField_a_of_type_AndroidAppDialog = null;
-    try
+    this.jdField_a_of_type_Ainw = paramainw;
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (this.jdField_a_of_type_Ainw != null)
     {
-      paramView = new HashMap();
-      paramView.put("param_FailCode", "3");
-      StatisticCollector.a(this.a.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext()).a(((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime).getAccount(), "VipNightThemeDialogClick", false, 1L, 0L, paramView, "", false);
-      return;
+      this.jdField_a_of_type_Ainw.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_Ainw.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_Ainw.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+        this.jdField_a_of_type_Ainw.jdField_a_of_type_AndroidWidgetTextView.setText("已关注");
+        this.jdField_a_of_type_Ainw.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      }
     }
-    catch (Exception paramView) {}
   }
 }
 

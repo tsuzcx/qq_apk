@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aexj
-  implements Runnable
+class aexj
+  implements DialogInterface.OnClickListener
 {
-  public aexj(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  aexj(aexh paramaexh) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoCommentsView.a(this.a, ShortVideoCommentsView.a(this.a));
+    this.a.a.a.dismiss();
   }
 }
 

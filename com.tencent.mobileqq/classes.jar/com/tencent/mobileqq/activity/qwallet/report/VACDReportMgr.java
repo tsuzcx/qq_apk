@@ -24,24 +24,25 @@ import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import mqq.manager.Manager;
 import mqq.observer.BusinessObserver;
-import xhh;
-import xhi;
-import xhj;
-import xhk;
-import xhl;
-import xhm;
+import xnb;
+import xnd;
+import xne;
+import xnf;
+import xng;
+import xnh;
 
 public class VACDReportMgr
   implements Manager
 {
   private static boolean jdField_a_of_type_Boolean;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(8);
   private Map jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap(8));
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new xhl(this);
-  private xhh jdField_a_of_type_Xhh = new xhh(BaseApplicationImpl.getApplication());
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new xng(this);
+  private xnb jdField_a_of_type_Xnb = new xnb(BaseApplicationImpl.getApplication());
   private Handler jdField_b_of_type_AndroidOsHandler;
   private HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
   private ArrayList jdField_b_of_type_JavaUtilArrayList = new ArrayList(8);
@@ -64,12 +65,12 @@ public class VACDReportMgr
     }
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      this.jdField_a_of_type_Xhh.c(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Xnb.c(this.jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_JavaUtilArrayList.clear();
     }
     if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
     {
-      this.jdField_a_of_type_Xhh.b(this.jdField_b_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Xnb.b(this.jdField_b_of_type_JavaUtilArrayList);
       this.jdField_b_of_type_JavaUtilArrayList.clear();
     }
   }
@@ -124,82 +125,84 @@ public class VACDReportMgr
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 234	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_b_of_type_Boolean	Z
+    //   1: getfield 236	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_b_of_type_Boolean	Z
     //   4: ifeq +4 -> 8
     //   7: return
-    //   8: getstatic 21	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_a_of_type_ArrayOfByte	[B
+    //   8: getstatic 23	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_b_of_type_ArrayOfByte	[B
     //   11: astore_2
     //   12: aload_2
     //   13: monitorenter
-    //   14: invokestatic 85	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   14: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   17: ifeq +28 -> 45
-    //   20: ldc 87
+    //   20: ldc 89
     //   22: iconst_2
-    //   23: new 89	java/lang/StringBuilder
+    //   23: new 91	java/lang/StringBuilder
     //   26: dup
-    //   27: invokespecial 90	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 236
-    //   32: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokespecial 92	java/lang/StringBuilder:<init>	()V
+    //   30: ldc 238
+    //   32: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: iload_1
-    //   36: invokevirtual 239	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 185	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: invokevirtual 241	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 187	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   45: aload_0
     //   46: iconst_1
-    //   47: putfield 234	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_b_of_type_Boolean	Z
+    //   47: putfield 236	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_b_of_type_Boolean	Z
     //   50: iconst_1
-    //   51: putstatic 75	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_a_of_type_Boolean	Z
-    //   54: aload_0
-    //   55: getfield 45	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_a_of_type_Xhh	Lxhh;
+    //   51: putstatic 77	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_a_of_type_Boolean	Z
+    //   54: new 243	xnc
+    //   57: dup
     //   58: aload_0
-    //   59: getfield 58	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   62: invokevirtual 241	xhh:a	(Ljava/util/Map;)Ljava/util/Map;
-    //   65: pop
-    //   66: iload_1
-    //   67: ifne +11 -> 78
-    //   70: aload_0
-    //   71: invokespecial 243	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:d	()V
-    //   74: aload_0
-    //   75: invokespecial 245	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:c	()V
-    //   78: aload_0
-    //   79: iload_1
-    //   80: invokespecial 247	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:b	(Z)V
-    //   83: aload_2
-    //   84: monitorexit
-    //   85: return
-    //   86: astore_3
-    //   87: aload_2
-    //   88: monitorexit
-    //   89: aload_3
-    //   90: athrow
-    //   91: astore_3
-    //   92: ldc 87
-    //   94: iconst_1
-    //   95: ldc 249
-    //   97: aload_3
-    //   98: invokestatic 253	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   101: aload_0
-    //   102: invokevirtual 256	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:onDestroy	()V
-    //   105: goto -22 -> 83
+    //   59: invokespecial 244	xnc:<init>	(Lcom/tencent/mobileqq/activity/qwallet/report/VACDReportMgr;)V
+    //   62: bipush 10
+    //   64: aconst_null
+    //   65: iconst_0
+    //   66: invokestatic 250	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   69: iload_1
+    //   70: ifne +11 -> 81
+    //   73: aload_0
+    //   74: invokespecial 252	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:d	()V
+    //   77: aload_0
+    //   78: invokespecial 254	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:c	()V
+    //   81: aload_0
+    //   82: iload_1
+    //   83: invokespecial 256	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:b	(Z)V
+    //   86: aload_2
+    //   87: monitorexit
+    //   88: return
+    //   89: astore_3
+    //   90: aload_2
+    //   91: monitorexit
+    //   92: aload_3
+    //   93: athrow
+    //   94: astore_3
+    //   95: ldc 89
+    //   97: iconst_1
+    //   98: ldc_w 258
+    //   101: aload_3
+    //   102: invokestatic 262	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   105: aload_0
+    //   106: invokevirtual 265	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:onDestroy	()V
+    //   109: goto -23 -> 86
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	108	0	this	VACDReportMgr
-    //   0	108	1	paramBoolean	boolean
-    //   86	4	3	localObject	Object
-    //   91	7	3	localThrowable	Throwable
+    //   0	112	0	this	VACDReportMgr
+    //   0	112	1	paramBoolean	boolean
+    //   89	4	3	localObject	Object
+    //   94	8	3	localThrowable	Throwable
     // Exception table:
     //   from	to	target	type
-    //   14	45	86	finally
-    //   45	66	86	finally
-    //   70	78	86	finally
-    //   78	83	86	finally
-    //   83	85	86	finally
-    //   87	89	86	finally
-    //   92	105	86	finally
-    //   14	45	91	java/lang/Throwable
-    //   45	66	91	java/lang/Throwable
-    //   70	78	91	java/lang/Throwable
-    //   78	83	91	java/lang/Throwable
+    //   14	45	89	finally
+    //   45	69	89	finally
+    //   73	81	89	finally
+    //   81	86	89	finally
+    //   86	88	89	finally
+    //   90	92	89	finally
+    //   95	109	89	finally
+    //   14	45	94	java/lang/Throwable
+    //   45	69	94	java/lang/Throwable
+    //   73	81	94	java/lang/Throwable
+    //   81	86	94	java/lang/Throwable
   }
   
   private boolean a(List paramList)
@@ -358,7 +361,7 @@ public class VACDReportMgr
   
   private void b(List paramList)
   {
-    ThreadManager.post(new xhm(this, paramList), 10, null, true);
+    ThreadManager.post(new xnh(this, paramList), 10, null, true);
   }
   
   private void b(boolean paramBoolean)
@@ -371,7 +374,7 @@ public class VACDReportMgr
       this.jdField_b_of_type_AndroidOsHandlerThread = new HandlerThread("VACDReportTimeOut");
       this.jdField_b_of_type_AndroidOsHandlerThread.start();
       this.jdField_b_of_type_AndroidOsHandler = new Handler(this.jdField_b_of_type_AndroidOsHandlerThread.getLooper());
-      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new xhi(this, paramBoolean), 0L);
+      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new xnd(this, paramBoolean), 0L);
     }
   }
   
@@ -384,7 +387,7 @@ public class VACDReportMgr
       }
       this.jdField_c_of_type_AndroidOsHandlerThread = new HandlerThread("ReportCache");
       this.jdField_c_of_type_AndroidOsHandlerThread.start();
-      this.jdField_c_of_type_AndroidOsHandler = new xhj(this, this.jdField_c_of_type_AndroidOsHandlerThread.getLooper());
+      this.jdField_c_of_type_AndroidOsHandler = new xne(this, this.jdField_c_of_type_AndroidOsHandlerThread.getLooper());
     }
   }
   
@@ -398,7 +401,7 @@ public class VACDReportMgr
       this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VACDReportWriteDB");
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
       this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new xhk(this, new byte[0]), 2000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new xnf(this, new byte[0]), 2000L);
     }
   }
   

@@ -1,14 +1,42 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public class vuu
+class vuu
   implements Runnable
 {
-  public vuu(HotChatPie paramHotChatPie) {}
+  vuu(vus paramvus, List paramList) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
+    Iterator localIterator1 = this.jdField_a_of_type_Vus.a.a.iterator();
+    label103:
+    for (;;)
+    {
+      if (localIterator1.hasNext())
+      {
+        String str = (String)localIterator1.next();
+        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator2.hasNext())
+        {
+          LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)localIterator2.next();
+          if (str.equals(localLocalMediaInfo.path)) {
+            localLocalMediaInfo.mChecked = true;
+          }
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label103;
+        }
+        localIterator1.remove();
+        break;
+        return;
+      }
+    }
   }
 }
 

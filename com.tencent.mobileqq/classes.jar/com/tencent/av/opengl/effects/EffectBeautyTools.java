@@ -15,7 +15,7 @@ import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
-import jjn;
+import jlq;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,7 +24,7 @@ public class EffectBeautyTools
   private static float jdField_a_of_type_Float = -1.0F;
   private static int jdField_a_of_type_Int;
   public static final String a;
-  private static final String b = AppConstants.aJ + "qav" + File.separator + "beauty" + File.separator;
+  private static final String b = AppConstants.aK + "qav" + File.separator + "beauty" + File.separator;
   private static final String c = b + "SKINCOLOR" + File.separator;
   
   static
@@ -162,7 +162,7 @@ public class EffectBeautyTools
         if (!((File)localObject).exists())
         {
           localObject = new HttpNetReq();
-          ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jjn();
+          ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jlq();
           ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
           ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
           ((HttpNetReq)localObject).c = (b + "skin_color.zip");
@@ -274,7 +274,7 @@ public class EffectBeautyTools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.opengl.effects.EffectBeautyTools
  * JD-Core Version:    0.7.0.1
  */

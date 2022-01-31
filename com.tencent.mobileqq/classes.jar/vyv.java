@@ -1,46 +1,13 @@
-import android.app.Dialog;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.qidian.controller.QidianBusinessObserver;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
 public class vyv
-  extends QidianBusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public vyv(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vyv(GameRoomChatPie paramGameRoomChatPie) {}
   
-  protected void e(boolean paramBoolean, HashMap paramHashMap)
-  {
-    if ((!paramBoolean) || (paramHashMap == null))
-    {
-      this.a.z(2);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    if (((Integer)paramHashMap.get("result")).intValue() == 0)
-    {
-      this.a.z(1);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    this.a.aj = true;
-    this.a.bn();
-    if ((PublicAccountChatPie.a(this.a) != null) && (PublicAccountChatPie.a(this.a).isShowing())) {
-      PublicAccountChatPie.a(this.a).dismiss();
-    }
-    this.a.bo();
-  }
-  
-  protected void f(boolean paramBoolean, HashMap paramHashMap)
-  {
-    if ((!paramBoolean) || (paramHashMap == null)) {
-      return;
-    }
-    this.a.am = true;
-    this.a.al = ((Boolean)paramHashMap.get("result")).booleanValue();
-    this.a.bn();
-    this.a.bo();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

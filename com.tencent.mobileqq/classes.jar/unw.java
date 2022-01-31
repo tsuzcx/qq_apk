@@ -1,13 +1,67 @@
-import com.tencent.mobileqq.activity.aio.anim.SigTlpAnimation;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import mqq.util.WeakReference;
 
-class unw
-  implements Runnable
+public class unw
+  implements View.OnClickListener
 {
-  unw(unv paramunv) {}
+  public unw(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a(true);
+    Object localObject;
+    long[] arrayOfLong;
+    if ((BirthdayActivatePage.a(this.a) != null) && (BirthdayActivatePage.a(this.a).get() != null))
+    {
+      localObject = QzoneConfig.getInstance().getConfig("H5Url", "SendBirthdayGift", "https://h5.qzone.qq.com/friendtalk/sendgift?_wv=2097155&uin={uin}&clicktime={clicktime}&friends={uin_uin}&_proxy=1");
+      arrayOfLong = this.a.a.a();
+      String[] arrayOfString = this.a.a.a();
+      if (arrayOfLong.length <= 0) {
+        break label358;
+      }
+      paramView = "";
+      int i = 0;
+      while (i < arrayOfLong.length)
+      {
+        paramView = paramView + arrayOfLong[i];
+        paramView = paramView + "_";
+        String str = paramView + arrayOfString[i];
+        int j = i + 1;
+        i = j;
+        paramView = str;
+        if (j < arrayOfLong.length)
+        {
+          paramView = str + "|";
+          i = j;
+        }
+      }
+      paramView = ((String)localObject).replace("{uin_uin}", Uri.encode(paramView)).replace("{clicktime}", String.valueOf(System.currentTimeMillis()));
+      localObject = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramView);
+      ((Intent)localObject).putExtra("injectrecommend", true);
+      ((Intent)localObject).setData(Uri.parse(paramView));
+      ((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).startActivityForResult((Intent)localObject, 1000);
+      ReportController.b(((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E08", "0X8004E08", 0, 0, String.valueOf(arrayOfLong.length), "", "", "");
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BirthdayActivatePage", 2, "friends length=" + arrayOfLong.length + " url = " + paramView);
+      }
+      return;
+      label358:
+      paramView = (View)localObject;
+    }
   }
 }
 

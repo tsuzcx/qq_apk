@@ -41,9 +41,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969132, this, true);
-    this.a = ((TextView)paramContext.findViewById(2131365306));
-    this.b = ((TextView)paramContext.findViewById(2131362728));
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969130, this, true);
+    this.a = ((TextView)paramContext.findViewById(2131365311));
+    this.b = ((TextView)paramContext.findViewById(2131362733));
   }
   
   public void setOnRetryClickListener(View.OnClickListener paramOnClickListener)

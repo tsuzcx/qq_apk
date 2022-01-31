@@ -1,27 +1,24 @@
-import com.tencent.biz.troopgift.TroopGiftPanel.OnShowOrHideListerner;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class vwf
-  implements TroopGiftPanel.OnShowOrHideListerner
+  implements CustomMenuBar.OnMenuItemClickListener
 {
-  public vwf(NearbyChatPie paramNearbyChatPie) {}
+  public vwf(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void a()
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.a();
-  }
-  
-  public void b()
-  {
-    NearbyGiftPanelDialog localNearbyGiftPanelDialog = this.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
-    for (int i = 8;; i = 6)
-    {
-      localNearbyGiftPanelDialog.a(false, true, i);
-      return;
-    }
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    this.a.p.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
+    StructMsg.ButtonInfo localButtonInfo = this.a.a(paramInt1);
+    EnterpriseQQManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramString, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), localButtonInfo);
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
   }
 }
 

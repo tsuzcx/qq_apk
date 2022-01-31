@@ -1,47 +1,43 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenVideoController;
-import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.tencent.av.service.IAVServiceCallback;
 
 public class jou
-  extends TimerTask
+  implements IAVServiceCallback
 {
-  public jou(SmallScreenVideoController paramSmallScreenVideoController) {}
+  private IBinder a;
   
-  public void run()
+  public jou(IBinder paramIBinder)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {}
-    long l1;
-    long l2;
-    do
+    this.a = paramIBinder;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-      do
-      {
-        SessionInfo localSessionInfo;
-        do
-        {
-          return;
-          localSessionInfo = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-        } while (localSessionInfo == null);
-        if (localSessionInfo.Q > 0) {
-          break;
-        }
-      } while (this.a.jdField_a_of_type_JavaUtilTimer == null);
-      this.a.jdField_a_of_type_JavaUtilTimer.cancel();
-      this.a.jdField_a_of_type_JavaUtilTimer = null;
+      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceCallback");
+      localParcel.writeInt(paramInt1);
+      localParcel.writeInt(paramInt2);
+      localParcel.writeInt(paramInt3);
+      this.a.transact(1, localParcel, null, 1);
       return;
-      l1 = this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c);
-      l2 = System.currentTimeMillis();
-    } while ((l1 == 0L) || (l2 - l1 <= this.a.jdField_a_of_type_ComTencentAvVideoController.a().Q * 1000));
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new jov(this, l2, l1));
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jou
  * JD-Core Version:    0.7.0.1
  */

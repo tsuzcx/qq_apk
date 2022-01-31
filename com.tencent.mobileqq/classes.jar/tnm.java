@@ -1,14 +1,38 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class tnm
   implements Runnable
 {
-  public tnm(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public tnm(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8008123", "0X8008123", 0, 0, "", "", "", "");
+    try
+    {
+      if (QQLSActivity.a(this.a) == 1)
+      {
+        BaseApplicationImpl.getContext().unregisterReceiver(this.a.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "unRegisterScreenListener real mScreenReceiver:" + this.a.a.hashCode() + "context :" + BaseApplicationImpl.getContext().hashCode());
+        }
+        QQLSActivity.a(this.a, 0);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, "unRegisterScreenListener");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.e("QQLSActivity", 2, "unRegisterScreenListener:" + localException.toString());
+    }
   }
 }
 

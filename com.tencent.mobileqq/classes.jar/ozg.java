@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.biz.qrcode.ipc.PreCallUpToolProc.Callback;
+import com.tencent.qphone.base.util.QLog;
 
 public class ozg
-  implements DialogInterface.OnClickListener
+  implements PreCallUpToolProc.Callback
 {
-  public ozg(TroopGiftPanel paramTroopGiftPanel) {}
+  public ozg(ScannerActivity paramScannerActivity, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b();
+    QLog.d("ScannerActivity", 2, "launchAr time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+  }
 }
 
 

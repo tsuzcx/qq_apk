@@ -1,86 +1,58 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.av.business.manager.report.VideoNodeManager;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
+import com.tencent.av.smallscreen.SmallScreenUtils;
+import com.tencent.common.app.AppInterface;
 
 public class jpy
-  extends BroadcastReceiver
+  implements Runnable
 {
-  jpy(AVActivity paramAVActivity) {}
+  public jpy(BaseSmallScreenService paramBaseSmallScreenService) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    if (!this.a.d)
     {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (this.a.a != null) && (paramContext.equals("homekey")))
+      boolean bool = SmallScreenUtils.c(((AppInterface)BaseSmallScreenService.a(this.a)).getApp());
+      if (bool != this.a.e)
       {
-        if (this.a.a.a().d == 4)
-        {
-          if (this.a.d != 3000) {
-            break label237;
-          }
-          if (!this.a.a.a().f) {
-            break label210;
-          }
-          ReportController.b(null, "CliOper", "", "", "0X80041BB", "0X80041BB", 0, 0, "", "", "", "");
-        }
-        if (this.a.g)
-        {
-          if (!this.a.a.a().f) {
-            break label424;
-          }
-          ReportController.b(null, "CliOper", "", "", "0X8005216", "0X8005216", 0, 0, "", "", "", "");
+        this.a.e = bool;
+        this.a.e();
+      }
+      bool = SmallScreenUtils.e();
+      if (bool != this.a.b)
+      {
+        this.a.b = bool;
+        this.a.d();
+      }
+      bool = SmallScreenUtils.b(((AppInterface)BaseSmallScreenService.b(this.a)).getApp());
+      if (bool != this.a.c)
+      {
+        this.a.c = bool;
+        this.a.c();
+      }
+      bool = this.a.a();
+      if (bool != this.a.f)
+      {
+        this.a.f = bool;
+        this.a.f();
+        if (!bool) {
+          break label188;
         }
       }
     }
-    for (;;)
+    label188:
+    for (long l = 1L;; l = 2L)
     {
-      if (AVActivity.a(this.a) != null) {
-        AVActivity.a(this.a).b(this.a.isResume());
-      }
-      this.a.a.a("backgroundReason", "1");
-      com.tencent.av.VideoConstants.ProcessInfo.a = "1";
+      VideoNodeManager.a(20, l);
+      this.a.a().postDelayed(this, 1000L);
       return;
-      label210:
-      ReportController.b(null, "CliOper", "", "", "0X80041BE", "0X80041BE", 0, 0, "", "", "", "");
-      break;
-      label237:
-      if (this.a.d != 1) {
-        break;
-      }
-      if (this.a.a.a().f)
-      {
-        if (this.a.a.a().D == 10)
-        {
-          ReportController.b(null, "CliOper", "", "", "0X800593E", "0X800593E", 0, 0, "", "", "", "");
-          break;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X80046E8", "0X80046E8", 0, 0, "", "", "", "");
-        break;
-      }
-      if (!this.a.a.a().g) {
-        break;
-      }
-      if (this.a.a.a().D == 10)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X8005941", "0X8005941", 0, 0, "", "", "", "");
-        break;
-      }
-      ReportController.b(null, "CliOper", "", "", "0X80046EB", "0X80046EB", 0, 0, "", "", "", "");
-      break;
-      label424:
-      ReportController.b(null, "CliOper", "", "", "0X8005219", "0X8005219", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpy
  * JD-Core Version:    0.7.0.1
  */

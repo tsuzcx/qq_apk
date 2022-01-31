@@ -1,19 +1,15 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.qphone.base.util.QLog;
 
-public class aaqi
+class aaqi
   implements Runnable
 {
-  public aaqi(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
+  aaqi(aaqh paramaaqh) {}
   
   public void run()
   {
-    ArkAppContainer localArkAppContainer = (ArkAppContainer)ArkAppContainer.a(ark.arkGetContainer(this.jdField_a_of_type_Long)).get();
-    if (localArkAppContainer != null) {
-      localArkAppContainer.c();
-    }
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin, 提前显示按钮");
+    this.a.a.a(0);
   }
 }
 

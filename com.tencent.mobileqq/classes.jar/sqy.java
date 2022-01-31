@@ -1,51 +1,107 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.widgets.ShareAioResultDialog;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.EmoticonHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.model.QueryCallback;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class sqy
-  implements DialogInterface.OnClickListener
+  implements QueryCallback
 {
-  public sqy(FriendProfileCardActivity paramFriendProfileCardActivity, Context paramContext) {}
+  public sqy(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(List paramList)
   {
-    switch (paramInt)
-    {
+    if (paramList == null) {
+      return;
+    }
+    int j = paramList.size();
+    int i = 0;
+    label14:
+    if (i < j) {
+      if (((EmoticonPackage)paramList.get(i)).jobType != 3) {}
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.dismiss();
-      com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog back");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getIntExtra("source_id", 3999) == 3090) {}
-      try
+      ArrayList localArrayList = new ArrayList();
+      Object localObject1;
+      Object localObject2;
+      if (1 == this.a.b)
       {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getStringExtra("extra");
-        ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, "action_game_make_friend", Long.valueOf(paramDialogInterface).longValue(), -1, "已是你的好友");
-        if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
-          continue;
-        }
-        ((Activity)this.jdField_a_of_type_AndroidContentContext).moveTaskToBack(true);
-      }
-      catch (Exception paramDialogInterface)
-      {
-        for (;;)
+        if (i == -1)
         {
-          QLog.e("FriendProfileCardActivity", 1, "feedBackToGameSDK error = " + paramDialogInterface);
+          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (paramList.hasNext()) {
+            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
+          }
+          i += 1;
+          break label14;
+        }
+        localObject1 = new ArrayList();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject2 = (EmoticonPackage)paramList.next();
+          if (((EmoticonPackage)localObject2).jobType == 3) {
+            ((ArrayList)localObject1).add(((EmoticonPackage)localObject2).epId);
+          }
+        }
+        if (i >= this.a.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (paramList.hasNext()) {
+            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
+          }
+          localArrayList.addAll((Collection)localObject1);
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog stay");
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(localArrayList, 0);
+        paramList = (EmoticonHandler)this.a.app.a(12);
+        if (paramList == null) {
+          break;
+        }
+        paramList.a(localArrayList, true, 0);
+        return;
+        int k = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+        j = 0;
+        while (j < k)
+        {
+          paramList = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(j);
+          if (j == i) {
+            localArrayList.addAll((Collection)localObject1);
+          }
+          localArrayList.add(paramList.epId);
+          j += 1;
+        }
+        continue;
+        if (2 == this.a.b)
+        {
+          k = paramList.size();
+          j = 0;
+          while (j < k)
+          {
+            localObject1 = (EmoticonPackage)paramList.get(j);
+            if (j == i)
+            {
+              localObject2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+              while (((Iterator)localObject2).hasNext()) {
+                localArrayList.add(((EmoticonPackage)((Iterator)localObject2).next()).epId);
+              }
+            }
+            if (((EmoticonPackage)localObject1).jobType != 3) {
+              localArrayList.add(((EmoticonPackage)localObject1).epId);
+            }
+            j += 1;
+          }
+        }
       }
+      i = -1;
     }
   }
 }

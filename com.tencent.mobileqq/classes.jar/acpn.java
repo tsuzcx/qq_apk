@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
+import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
 
-class acpn
-  implements FMDialogUtil.FMDialogInterface
+public class acpn
+  extends ExtendFriendObserver
 {
-  acpn(acpl paramacpl, FileManagerEntity paramFileManagerEntity) {}
+  public acpn(ExtendFriendManager paramExtendFriendManager) {}
   
-  public void a()
+  protected void b(boolean paramBoolean)
   {
-    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Acpl.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if (paramBoolean) {
+      ExtendFriendManager.a(this.a);
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpn
  * JD-Core Version:    0.7.0.1
  */

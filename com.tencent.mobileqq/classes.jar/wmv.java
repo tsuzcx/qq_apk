@@ -1,59 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.widget.FormMutiItem;
 
-public class wmv
-  implements Handler.Callback
+class wmv
+  implements Runnable
 {
-  public wmv(ContactsViewController paramContactsViewController) {}
+  wmv(wmu paramwmu, String paramString) {}
   
-  private void a()
+  public void run()
   {
-    if (ContactsViewController.a(this.a) != null) {
-      ContactsViewController.a(this.a).setRefreshing(false);
-    }
-    if (ContactsViewController.a(this.a) != null) {
-      ContactsViewController.a(this.a).setRefresh(false);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_Wmu.a.b != null)
     {
-    default: 
-      return false;
-    case 3: 
-      QQToast.a(this.a.a(), 1, 2131434349, 0).b(ContactsViewController.a(this.a));
-      a();
-      return false;
-    case 4: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        if (i == 0) {
-          break label134;
-        }
-        ContactsViewController.a(this.a);
-        if (ContactsViewController.a(this.a) == null) {
-          break;
-        }
-        ContactsViewController.a(this.a).a(0);
-        this.a.a.sendEmptyMessageDelayed(5, 800L);
-        return false;
+        this.jdField_a_of_type_Wmu.a.b.setSecondLineText("");
+        this.jdField_a_of_type_Wmu.a.b.setSecondLineVisible(false);
       }
-      label134:
-      a();
-      QQToast.a(this.a.a(), 1, 2131434349, 0).b(ContactsViewController.a(this.a));
-      return false;
     }
-    a();
-    return false;
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Wmu.a.b.setSecondLineText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Wmu.a.b.setSecondLineVisible(true);
   }
 }
 

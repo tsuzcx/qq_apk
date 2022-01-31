@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.util.JSONUtils.FieldName;
-import wdr;
+import wiz;
 
 public class ZhituImgResponse
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new wdr();
+  public static final Parcelable.Creator CREATOR = new wiz();
   public String coord;
   public String md5;
   public String pass;

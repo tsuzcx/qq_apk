@@ -1,20 +1,27 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class tdu
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tdu(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tdu(LikeRankingListActivity paramLikeRankingListActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
+    Card localCard = this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString);
+    if (localCard != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a(localCard);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LikeRankingListActivity", 2, "update cover card = null");
+    }
+    byte b = (byte)SharedPreUtils.aj(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.getApplication(), this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.app.getCurrentAccountUin());
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1, 0L, (byte)1, 0L, 0L, null, "", 0L | 1L | 0x20 | 0x2000, 3022, null, b);
   }
 }
 

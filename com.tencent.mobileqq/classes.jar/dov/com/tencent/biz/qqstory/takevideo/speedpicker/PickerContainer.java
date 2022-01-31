@@ -14,24 +14,24 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aoep;
-import aoeq;
-import aoer;
-import aoes;
-import aoet;
+import aonh;
+import aoni;
+import aonj;
+import aonk;
+import aonl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class PickerContainer
   extends RelativeLayout
-  implements aoep
+  implements aonh
 {
   public float a;
   private int jdField_a_of_type_Int = 58;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  Property jdField_a_of_type_AndroidUtilProperty = new aoeq(this, Float.class, "containerAlpha");
+  Property jdField_a_of_type_AndroidUtilProperty = new aoni(this, Float.class, "containerAlpha");
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ContainerDrawable jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerContainerDrawable;
@@ -130,8 +130,8 @@ public class PickerContainer
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aoer(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aoes(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aonj(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aonk(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
   }
@@ -203,7 +203,7 @@ public class PickerContainer
     for (;;)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aoet(this, paramString), 300L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aonl(this, paramString), 300L);
       return;
       label123:
       if (paramBoolean2)

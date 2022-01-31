@@ -1,43 +1,67 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import mqq.os.MqqHandler;
 
 public class yjw
-  extends BroadcastReceiver
+  extends MqqHandler
 {
-  protected WeakReference a;
+  public yjw(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public yjw(QQAppInterface paramQQAppInterface)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      QLog.e("ApolloGameManager", 1, "[onReceive] intent null");
+    switch (paramMessage.what)
+    {
     }
-    String str;
     do
     {
+      do
+      {
+        do
+        {
+          return;
+          QQToast.a(this.a, 2131437381, 0).a();
+          return;
+          String str = this.a.getString(2131437382);
+          paramMessage = (String)paramMessage.obj;
+          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, str + paramMessage, 0).a();
+          ImageUtil.a(this.a, paramMessage);
+          return;
+          paramMessage = DialogUtil.b(this.a.jdField_a_of_type_AndroidContentContext, 232, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131437409), this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131437410), 2131437411, 2131434603, new yjx(this), new yjy(this));
+          ShortVideoPlayActivity.a(this.a, paramMessage);
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
+          }
+        } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
+        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(1);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
+        }
+        if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+          this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(2);
+        }
+        if ((this.a.b != 1) && (this.a.b != 2)) {
+          break;
+        }
+      } while (!this.a.b());
+      this.a.j();
+      this.a.r();
       return;
-      str = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameManager", 2, new Object[] { "[onReceive] action=", str + ", app: " + this.a.get() });
-      }
-      paramContext = (QQAppInterface)this.a.get();
-    } while ((paramContext == null) || (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(str)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
-    paramIntent = paramIntent.getStringExtra("data");
-    ApolloCmdChannel.getChannel(paramContext).handleWebEvent(paramIntent);
+    } while (this.a.b != 0);
+    ShortVideoPlayActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yjw
  * JD-Core Version:    0.7.0.1
  */

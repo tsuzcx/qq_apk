@@ -1,41 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.model.GroupSearchModeTitle;
-import com.tencent.mobileqq.search.model.GroupSearchModelMoreItem;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import com.tencent.mobileqq.search.util.SearchStatisticsConstants;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.search.OperationSearchEntryModel;
+import com.tencent.mobileqq.search.model.OperationSearchEntryDataModel;
+import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 
 public class ahvt
-  extends GroupSearchEngine.SearchEngineEntity
+  implements View.OnClickListener
 {
-  public ahvt(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  public ahvt(OperationSearchEntryModel paramOperationSearchEntryModel, OperationSearchEntryDataModel paramOperationSearchEntryDataModel) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void onClick(View paramView)
   {
-    return null;
-  }
-  
-  public List a(SearchRequest paramSearchRequest)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle == null) {
-      paramSearchRequest.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    SearchUtils.a("home_page", "clk_opera", new String[] { this.jdField_a_of_type_ComTencentMobileqqSearchModelOperationSearchEntryDataModel.a, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchOperationSearchEntryModel.a) });
+    if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelOperationSearchEntryDataModel.e.startsWith("http")) || (this.jdField_a_of_type_ComTencentMobileqqSearchModelOperationSearchEntryDataModel.e.startsWith("https")))
+    {
+      paramView = new Intent(OperationSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchOperationSearchEntryModel), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqSearchModelOperationSearchEntryDataModel.e);
+      OperationSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchOperationSearchEntryModel).startActivity(paramView);
+      return;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramSearchRequest = new GroupSearchModelMoreItem(paramSearchRequest.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
-    localArrayList.add(new GroupSearchModeTitle(paramSearchRequest));
-    localArrayList.add(paramSearchRequest);
-    SearchStatisticsConstants.a(0);
-    return localArrayList;
+    if ((OperationSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchOperationSearchEntryModel) instanceof BaseActivity))
+    {
+      paramView = JumpParser.a(((BaseActivity)paramView.getContext()).app, OperationSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchOperationSearchEntryModel), this.jdField_a_of_type_ComTencentMobileqqSearchModelOperationSearchEntryDataModel.e);
+      if (paramView != null)
+      {
+        paramView.b();
+        return;
+      }
+      OperationSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchOperationSearchEntryModel).startActivity(new Intent(OperationSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchOperationSearchEntryModel), JumpActivity.class).setData(Uri.parse(this.jdField_a_of_type_ComTencentMobileqqSearchModelOperationSearchEntryDataModel.e)));
+      return;
+    }
+    OperationSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchOperationSearchEntryModel).startActivity(new Intent(OperationSearchEntryModel.a(this.jdField_a_of_type_ComTencentMobileqqSearchOperationSearchEntryModel), JumpActivity.class).setData(Uri.parse(this.jdField_a_of_type_ComTencentMobileqqSearchModelOperationSearchEntryDataModel.e)));
   }
 }
 

@@ -1,29 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
 public class syx
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public syx(LebaQZoneFacePlayHelper paramLebaQZoneFacePlayHelper) {}
+  public syx(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if ((LebaQZoneFacePlayHelper.a(this.a) != null) && (LebaQZoneFacePlayHelper.a(this.a).size() >= 2)) {
-      LebaQZoneFacePlayHelper.a(this.a).sendEmptyMessageDelayed(1688002, 1000L);
-    }
-    if (LebaQZoneFacePlayHelper.a(this.a) != null)
-    {
-      LebaQZoneFacePlayHelper.a(this.a).a();
-      LebaQZoneFacePlayHelper.a(this.a, null);
-    }
+    GesturePWDUnlockActivity.a(this.a).setEnabled(true);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

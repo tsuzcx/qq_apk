@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.leba.header;
 
-import aeaz;
+import aejj;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -196,7 +196,7 @@ public class LebaGridShowManager
         this.jdField_a_of_type_JavaUtilHashMap.put(paramLebaGridItemInfo.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pkgName, paramLebaGridItemInfo);
         return true;
       }
-      if (paramLebaGridItemInfo.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pluginId != 3050) {
+      if (paramLebaGridItemInfo.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pluginId != 6005) {
         break;
       }
       if (QLog.isColorLevel())
@@ -605,7 +605,7 @@ public class LebaGridShowManager
     if (localQQAppInterface == null) {
       return;
     }
-    localQQAppInterface.a(new aeaz(this, localQQAppInterface, paramURL, paramFile, paramString));
+    localQQAppInterface.a(new aejj(this, localQQAppInterface, paramURL, paramFile, paramString));
   }
   
   /* Error */

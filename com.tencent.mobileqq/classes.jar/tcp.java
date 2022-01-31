@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class tcp
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public tcp(NotificationActivity paramNotificationActivity) {}
+  public tcp(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
+    TroopRedTouchManager localTroopRedTouchManager = (TroopRedTouchManager)this.a.a.getManager(69);
+    oidb_0x791.RedDotInfo localRedDotInfo = localTroopRedTouchManager.a(7);
+    this.a.a(new tcq(this, localRedDotInfo, localTroopRedTouchManager));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tcp
  * JD-Core Version:    0.7.0.1
  */

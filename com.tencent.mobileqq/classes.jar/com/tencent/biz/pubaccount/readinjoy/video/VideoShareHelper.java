@@ -64,14 +64,14 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import mfl;
-import mfm;
-import mfn;
-import mfo;
-import mfp;
-import mfq;
-import mft;
-import mfu;
+import miy;
+import miz;
+import mja;
+import mjb;
+import mjc;
+import mjd;
+import mjg;
+import mjh;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -85,7 +85,7 @@ public class VideoShareHelper
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private View jdField_a_of_type_AndroidViewView;
   private KandianFavoriteBroadcastReceiver jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicKandianFavoriteBroadcastReceiver;
-  private ReadInJoyAtlasManager.AtlasCallbackImpl jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallbackImpl = new mfu(this);
+  private ReadInJoyAtlasManager.AtlasCallbackImpl jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallbackImpl = new mjh(this);
   private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
   private VideoPlayManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager;
   private VideoShareListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareListener;
@@ -199,14 +199,15 @@ public class VideoShareHelper
       localIntent.putExtra("req_type", 1);
       localIntent.putExtra("pluginName", "web_share");
       localIntent.putExtra("struct_share_key_content_action", "web");
-      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430117, new Object[] { paramBaseArticleInfo.mTitle }));
+      localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430119, new Object[] { paramBaseArticleInfo.mTitle }));
       localIntent.putExtra("struct_share_key_source_icon", "https://q.url.cn/s/jBJuV");
       localIntent.putExtra("app_name", "QQ看点");
       localIntent.putExtra("struct_share_key_source_action", "plugin");
       localIntent.putExtra("struct_share_key_source_action_data", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
       paramBaseArticleInfo = StructMsgFactory.a(localIntent.getExtras());
-      paramBaseArticleInfo.mMsgServiceID = 83;
-      if (paramBaseArticleInfo != null) {
+      if (paramBaseArticleInfo != null)
+      {
+        paramBaseArticleInfo.mMsgServiceID = 83;
         localIntent.putExtra("stuctmsg_bytes", paramBaseArticleInfo.getBytes());
       }
       return localIntent;
@@ -215,19 +216,19 @@ public class VideoShareHelper
   
   private View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130968984, null);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130968986, null);
     float f = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density;
-    ElasticHorScrView localElasticHorScrView1 = (ElasticHorScrView)localView.findViewById(2131363817);
-    ElasticHorScrView localElasticHorScrView2 = (ElasticHorScrView)localView.findViewById(2131363819);
-    GridView localGridView2 = (GridView)localView.findViewById(2131363818);
-    GridView localGridView1 = (GridView)localView.findViewById(2131363820);
-    Object localObject1 = (TextView)localView.findViewById(2131362815);
+    ElasticHorScrView localElasticHorScrView1 = (ElasticHorScrView)localView.findViewById(2131363841);
+    ElasticHorScrView localElasticHorScrView2 = (ElasticHorScrView)localView.findViewById(2131363843);
+    GridView localGridView2 = (GridView)localView.findViewById(2131363842);
+    GridView localGridView1 = (GridView)localView.findViewById(2131363844);
+    Object localObject1 = (TextView)localView.findViewById(2131362820);
     Object localObject2 = (LinearLayout.LayoutParams)((TextView)localObject1).getLayoutParams();
     ((LinearLayout.LayoutParams)localObject2).topMargin = ((int)(13.0F * f));
     ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    ((TextView)localObject1).setText(2131433015);
-    ((TextView)localObject1).setOnClickListener(new mfm(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new mfn(this));
+    ((TextView)localObject1).setText(2131433029);
+    ((TextView)localObject1).setOnClickListener(new miz(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new mja(this));
     if (Build.VERSION.SDK_INT >= 9)
     {
       localElasticHorScrView1.setOverScrollMode(2);
@@ -262,7 +263,7 @@ public class VideoShareHelper
       localGridView1.setAdapter(new PublicAccountBrowser.ActionSheetItemAdapter(this.jdField_a_of_type_AndroidAppActivity, 0, (List)localObject2));
       localGridView1.setSelector(new ColorDrawable(0));
       localGridView1.setOnItemClickListener(this);
-      localView.post(new mfo(this, localElasticHorScrView1, i, localElasticHorScrView2, ((ViewGroup.LayoutParams)localObject1).width));
+      localView.post(new mjb(this, localElasticHorScrView1, i, localElasticHorScrView2, ((ViewGroup.LayoutParams)localObject1).width));
       return localView;
       localObject1 = new ArrayList(0);
       break;
@@ -302,7 +303,7 @@ public class VideoShareHelper
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "shareMsgToSina empty title or share_url");
       }
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131435303, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131435319, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
     }
     for (;;)
     {
@@ -333,7 +334,7 @@ public class VideoShareHelper
         for (;;)
         {
           paramString1 = paramString1;
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131435303, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131435319, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
           paramString1.printStackTrace();
         }
       }
@@ -345,72 +346,72 @@ public class VideoShareHelper
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = new PublicAccountBrowser.ActionSheetItem();
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430108);
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130838336;
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430110);
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130838341;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 2;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localObject);
     localObject = new PublicAccountBrowser.ActionSheetItem();
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430114);
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130838337;
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430116);
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130838342;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 3;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localObject);
     localObject = new PublicAccountBrowser.ActionSheetItem();
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430126);
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130838340;
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430128);
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130838345;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 9;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localObject);
     localObject = new PublicAccountBrowser.ActionSheetItem();
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430127);
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130838334;
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430129);
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130838339;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 10;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localObject);
     localObject = new PublicAccountBrowser.ActionSheetItem();
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430132);
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130838339;
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430134);
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130838344;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 12;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localObject);
     localObject = new PublicAccountBrowser.ActionSheetItem();
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430112);
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430114);
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Boolean = true;
-    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130840672;
+    ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_a_of_type_Int = 2130840687;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_Int = 4;
     ((PublicAccountBrowser.ActionSheetItem)localObject).jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localObject);
     localObject = new ArrayList();
     PublicAccountBrowser.ActionSheetItem localActionSheetItem = new PublicAccountBrowser.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430124);
+    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430126);
     localActionSheetItem.jdField_a_of_type_Boolean = true;
-    localActionSheetItem.jdField_a_of_type_Int = 2130841573;
+    localActionSheetItem.jdField_a_of_type_Int = 2130841600;
     localActionSheetItem.jdField_b_of_type_Int = 6;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     ((ArrayList)localObject).add(localActionSheetItem);
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mDislikeInfos != null) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mDislikeInfos.isEmpty()))
     {
       localActionSheetItem = new PublicAccountBrowser.ActionSheetItem();
-      localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430125);
+      localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430127);
       localActionSheetItem.jdField_a_of_type_Boolean = true;
-      localActionSheetItem.jdField_a_of_type_Int = 2130840662;
+      localActionSheetItem.jdField_a_of_type_Int = 2130840677;
       localActionSheetItem.jdField_b_of_type_Int = 24;
       localActionSheetItem.jdField_b_of_type_JavaLangString = "";
       ((ArrayList)localObject).add(localActionSheetItem);
     }
     localActionSheetItem = new PublicAccountBrowser.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430110);
-    localActionSheetItem.jdField_a_of_type_Int = 2130838332;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430112);
+    localActionSheetItem.jdField_a_of_type_Int = 2130838337;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.jdField_b_of_type_Int = 1;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     ((ArrayList)localObject).add(localActionSheetItem);
     localActionSheetItem = new PublicAccountBrowser.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430111);
-    localActionSheetItem.jdField_a_of_type_Int = 2130840663;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131430113);
+    localActionSheetItem.jdField_a_of_type_Int = 2130840678;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.jdField_b_of_type_Int = 11;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
@@ -470,7 +471,7 @@ public class VideoShareHelper
         return;
       }
     } while (this.jdField_a_of_type_ComTencentImageURLDrawable == null);
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new mfl(this));
+    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new miy(this));
     this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
   }
   
@@ -535,7 +536,7 @@ public class VideoShareHelper
       paramAdapterView = this.jdField_a_of_type_AndroidContentContext;
       localObject1 = this.jdField_a_of_type_AndroidContentContext;
       ((ClipboardManager)paramAdapterView.getSystemService("clipboard")).setText(paramView + "&sourcefrom=6");
-      QRUtils.a(2, 2131430005);
+      QRUtils.a(2, 2131430007);
       paramInt = 3;
     }
     for (;;)
@@ -630,7 +631,7 @@ public class VideoShareHelper
             {
               for (;;)
               {
-                QRUtils.a(1, 2131430028);
+                QRUtils.a(1, 2131430030);
               }
             }
           }
@@ -742,10 +743,10 @@ public class VideoShareHelper
               if ((localBaseArticleInfo.mDislikeInfos != null) && (localBaseArticleInfo.mDislikeInfos.size() > 0))
               {
                 this.jdField_b_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidAppActivity, null));
-                paramView = new mfp(this);
+                paramView = new mjc(this);
                 this.jdField_b_of_type_ComTencentWidgetActionSheet.a(paramView);
                 paramView = new ReadInJoyDisLikeDialogView(this.jdField_a_of_type_AndroidContentContext);
-                paramView.setOnUninterestConfirmListener(new mfq(this, localBaseArticleInfo, paramAdapterView));
+                paramView.setOnUninterestConfirmListener(new mjd(this, localBaseArticleInfo, paramAdapterView));
                 paramView.setUninterestData(localBaseArticleInfo.mDislikeInfos);
                 this.jdField_b_of_type_ComTencentWidgetActionSheet.a(paramView, null);
                 try
@@ -756,7 +757,7 @@ public class VideoShareHelper
                     {
                       this.jdField_b_of_type_ComTencentWidgetActionSheet.getWindow().setFlags(8, 8);
                       this.jdField_b_of_type_ComTencentWidgetActionSheet.getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getSystemUiVisibility());
-                      this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnShowListener(new mft(this));
+                      this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnShowListener(new mjg(this));
                     }
                     this.jdField_b_of_type_ComTencentWidgetActionSheet.show();
                     PublicAccountReportUtils.b(null, null, "0X800913B", "0X800913B", 0, 0, null, null, null, VideoReporter.a(null, null, null, null, paramAdapterView), false);

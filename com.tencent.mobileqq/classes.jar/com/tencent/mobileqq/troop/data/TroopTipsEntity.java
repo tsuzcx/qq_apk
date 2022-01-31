@@ -32,7 +32,9 @@ public class TroopTipsEntity
   public String optUrl;
   public String optUrlP;
   public boolean read;
+  public int repeatInterval;
   public String senderUin;
+  public int serviceType;
   public long time;
   public int tipsPromptType;
   public String troopUin;
@@ -45,7 +47,7 @@ public class TroopTipsEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopTipsEntity
  * JD-Core Version:    0.7.0.1
  */

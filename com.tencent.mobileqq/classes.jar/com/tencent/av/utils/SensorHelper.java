@@ -9,9 +9,9 @@ import android.os.Build;
 import android.os.PowerManager.WakeLock;
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import kgs;
-import kgt;
-import kgu;
+import kiy;
+import kiz;
+import kja;
 import mqq.util.WeakReference;
 
 public class SensorHelper
@@ -25,9 +25,9 @@ public class SensorHelper
   public SensorReport a;
   public TraeHelper a;
   public String a;
-  kgs jdField_a_of_type_Kgs = null;
-  kgt jdField_a_of_type_Kgt = null;
-  kgu jdField_a_of_type_Kgu = null;
+  kiy jdField_a_of_type_Kiy = null;
+  kiz jdField_a_of_type_Kiz = null;
+  kja jdField_a_of_type_Kja = null;
   public WeakReference a;
   public boolean a;
   public Sensor b;
@@ -74,7 +74,7 @@ public class SensorHelper
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "startSensor " + paramBoolean);
     }
-    if ((this.jdField_a_of_type_Kgs == null) || (this.jdField_a_of_type_Kgt == null) || (this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
+    if ((this.jdField_a_of_type_Kiy == null) || (this.jdField_a_of_type_Kiz == null) || (this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
       QLog.e(this.jdField_a_of_type_JavaLangString, 1, "startSensor error, start[" + paramBoolean);
     }
     do
@@ -86,33 +86,33 @@ public class SensorHelper
       this.jdField_a_of_type_ComTencentAvUtilsSensorReport.a();
     } while (this.jdField_b_of_type_Boolean);
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Kgs, this.jdField_a_of_type_AndroidHardwareSensor, 3);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Kgt, this.jdField_b_of_type_AndroidHardwareSensor, 3);
-    if (this.jdField_a_of_type_Kgu == null)
+    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Kiy, this.jdField_a_of_type_AndroidHardwareSensor, 3);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Kiz, this.jdField_b_of_type_AndroidHardwareSensor, 3);
+    if (this.jdField_a_of_type_Kja == null)
     {
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.USER_PRESENT");
       localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.jdField_a_of_type_Kgu = new kgu(this);
-      ((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).registerReceiver(this.jdField_a_of_type_Kgu, localIntentFilter);
+      this.jdField_a_of_type_Kja = new kja(this);
+      ((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).registerReceiver(this.jdField_a_of_type_Kja, localIntentFilter);
       return;
     }
     QLog.e(this.jdField_a_of_type_JavaLangString, 1, "startSensor error, mSreenActionReceive had exist");
     return;
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Kgs);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Kgt);
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Kiy);
+      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Kiz);
       QLog.d(this.jdField_a_of_type_JavaLangString, 1, "toggleProximityWakeLock[false], when[StopSensor]");
       a(false, true);
       b(false);
       c(false);
-      if (this.jdField_a_of_type_Kgu != null)
+      if (this.jdField_a_of_type_Kja != null)
       {
-        ((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).unregisterReceiver(this.jdField_a_of_type_Kgu);
-        this.jdField_a_of_type_Kgu = null;
+        ((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).unregisterReceiver(this.jdField_a_of_type_Kja);
+        this.jdField_a_of_type_Kja = null;
       }
     }
     this.jdField_b_of_type_Boolean = false;
@@ -372,11 +372,11 @@ public class SensorHelper
         this.jdField_b_of_type_AndroidHardwareSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(8);
       }
     }
-    if (this.jdField_a_of_type_Kgs == null) {
-      this.jdField_a_of_type_Kgs = new kgs(this);
+    if (this.jdField_a_of_type_Kiy == null) {
+      this.jdField_a_of_type_Kiy = new kiy(this);
     }
-    if (this.jdField_a_of_type_Kgt == null) {
-      this.jdField_a_of_type_Kgt = new kgt(this);
+    if (this.jdField_a_of_type_Kiz == null) {
+      this.jdField_a_of_type_Kiz = new kiz(this);
     }
   }
   
@@ -410,7 +410,7 @@ public class SensorHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.SensorHelper
  * JD-Core Version:    0.7.0.1
  */

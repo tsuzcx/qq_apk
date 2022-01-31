@@ -1,29 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.ControlUIObserver;
 
 public class jsa
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public jsa(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jsa(AVActivity paramAVActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.b = true;
-      this.a.a.g();
-    }
+    this.a.a.a("self", String.valueOf(1));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jsa
  * JD-Core Version:    0.7.0.1
  */

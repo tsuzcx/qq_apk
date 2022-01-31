@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.IShowExternalTroopDataChangedCallBack;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessTypeActivity;
 
 public class wlf
-  implements ShowExternalTroopListActivity.IShowExternalTroopDataChangedCallBack
+  implements DialogInterface.OnClickListener
 {
-  public wlf(TroopActivity paramTroopActivity) {}
+  public wlf(BlessTypeActivity paramBlessTypeActivity) {}
   
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
-    {
-      this.a.a.remove(paramString);
-      return;
-    }
-    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

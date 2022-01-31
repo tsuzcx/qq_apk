@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity.aio;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import umv;
+import uru;
 
 public class SessionInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new umv();
+  public static final Parcelable.Creator CREATOR = new uru();
   public int a;
   public long a;
   public ChatBackground a;
@@ -30,9 +30,12 @@ public class SessionInfo
   public boolean f;
   public String g = "";
   public boolean g;
+  public String h;
   public boolean h;
   public boolean i;
   public boolean j;
+  public boolean k;
+  public boolean l;
   
   public SessionInfo()
   {
@@ -50,6 +53,12 @@ public class SessionInfo
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
     this.e = paramParcel.readString();
     this.jdField_d_of_type_Int = paramParcel.readInt();
+  }
+  
+  public void a()
+  {
+    this.l = false;
+    this.h = null;
   }
   
   public Object clone()

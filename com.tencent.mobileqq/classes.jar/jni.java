@@ -1,43 +1,32 @@
-import com.tencent.av.service.IQQServiceLocationCallback;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import java.lang.ref.WeakReference;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.redpacket.AVRedPacketManager.RedPacketGameShower;
+import com.tencent.av.redpacket.SoundPoolHelper.OnLoadFinishListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class jni
-  implements ConditionSearchManager.IConfigListener
+class jni
+  implements SoundPoolHelper.OnLoadFinishListener
 {
-  private WeakReference a;
-  private WeakReference b;
-  private WeakReference c;
+  jni(jnh paramjnh, long paramLong) {}
   
-  public jni(jnk paramjnk, ConditionSearchManager paramConditionSearchManager, IQQServiceLocationCallback paramIQQServiceLocationCallback)
+  public void a()
   {
-    this.a = new WeakReference(paramjnk);
-    this.b = new WeakReference(paramConditionSearchManager);
-    this.c = new WeakReference(paramIQQServiceLocationCallback);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    Object localObject = (ConditionSearchManager)this.b.get();
-    if (localObject != null) {
-      ((ConditionSearchManager)localObject).d(this);
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, music load finish,cost =" + (l1 - l2));
+    l1 = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Jnh.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower != null)
+    {
+      this.jdField_a_of_type_Jnh.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$RedPacketGameShower.a(1, this.jdField_a_of_type_Jnh.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$ResPreLoadObserver);
+      l2 = System.currentTimeMillis();
+      QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, preloadRes finish,cost =" + (l2 - l1));
+      return;
     }
-    localObject = (jnk)this.a.get();
-    IQQServiceLocationCallback localIQQServiceLocationCallback = (IQQServiceLocationCallback)this.c.get();
-    if ((localObject != null) && (localIQQServiceLocationCallback != null)) {
-      ((jnk)localObject).a(paramBoolean, localIQQServiceLocationCallback);
-    }
-  }
-  
-  public void a(IQQServiceLocationCallback paramIQQServiceLocationCallback)
-  {
-    this.c = new WeakReference(paramIQQServiceLocationCallback);
+    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes,  mRedPacketGameShower is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jni
  * JD-Core Version:    0.7.0.1
  */

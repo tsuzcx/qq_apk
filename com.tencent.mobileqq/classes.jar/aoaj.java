@@ -1,19 +1,16 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQVideoMaterial;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-public class aoaj
+class aoaj
   implements Runnable
 {
-  public aoaj(PersonalityOperator paramPersonalityOperator, QQVideoMaterial paramQQVideoMaterial) {}
+  aoaj(aoai paramaoai) {}
   
   public void run()
   {
-    long l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getId());
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.b, 1.0D);
-    long l2 = System.currentTimeMillis();
-    SLog.b("PersonalityOperator", "setVideoFilter " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getId() + " t:" + (l2 - l1));
+    if ((this.a.a.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi != null) && (this.a.a.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager != null)) {
+      this.a.a.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    }
   }
 }
 

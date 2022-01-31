@@ -1,23 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class adro
-  implements Runnable
+class adro
+  implements DialogInterface.OnClickListener
 {
-  public adro(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  adro(adrm paramadrm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.b())
-    {
-      this.a.e();
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 100L);
+    if (this.a.a.a.isShowing()) {
+      this.a.a.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adro
  * JD-Core Version:    0.7.0.1
  */

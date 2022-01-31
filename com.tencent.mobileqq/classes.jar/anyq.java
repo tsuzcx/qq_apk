@@ -1,15 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.base.BaseLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
 
 public class anyq
-  implements Comparator
+  extends CaptureConfigUpdateObserver
 {
-  public anyq(DoodleLayout paramDoodleLayout) {}
+  public anyq(StaticStickerProviderView paramStaticStickerProviderView) {}
   
-  public int a(BaseLayer paramBaseLayer1, BaseLayer paramBaseLayer2)
+  public void e()
   {
-    return paramBaseLayer2.f_() - paramBaseLayer1.f_();
+    if (QLog.isColorLevel()) {
+      QLog.i("StaticStickerProviderView", 2, "paster config get notify");
+    }
+    this.a.d();
   }
 }
 

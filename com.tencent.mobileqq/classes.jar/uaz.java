@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
-class uaz
-  implements Runnable
+public class uaz
+  extends MqqHandler
 {
-  uaz(uax paramuax) {}
+  public uaz(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.m();
+    if (!this.a.app.isLogin()) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.c();
+      return;
+    }
+    this.a.c();
   }
 }
 

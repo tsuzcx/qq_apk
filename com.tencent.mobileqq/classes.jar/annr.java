@@ -1,38 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.CaptureComboText;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.IDynamicTextResDownloadCallback;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
 
 public class annr
-  implements DynamicTextConfigManager.IDynamicTextResDownloadCallback
+  implements Runnable
 {
-  public annr(CaptureComboText paramCaptureComboText) {}
+  public annr(TroopHWFileDownloadManager paramTroopHWFileDownloadManager, String paramString) {}
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
-    }
-    CaptureComboText.a(this.a, paramFloat);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      CaptureComboText.a(this.a, 3);
-      this.a.b();
-      return;
-    }
-    CaptureComboText.a(this.a, 2);
-    this.a.a(1);
+    TroopHWFileDownloadManager.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWFileDownloadManager).pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annr
  * JD-Core Version:    0.7.0.1
  */

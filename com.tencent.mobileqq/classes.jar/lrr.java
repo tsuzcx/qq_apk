@@ -1,28 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.CgF;
 
-public class lrr
-  implements Runnable
+public final class lrr
+  implements Parcelable.Creator
 {
-  public lrr(ReadInJoyUserInfoRepository paramReadInJoyUserInfoRepository, int paramInt) {}
-  
-  public void run()
+  public CgF a(Parcel paramParcel)
   {
-    Object localObject = ReadInJoyUserInfoRepository.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository).a(ReadInJoyUserInfo.class, true, null, null, null, null, null, String.valueOf(this.jdField_a_of_type_Int));
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ReadInJoyUserInfo localReadInJoyUserInfo = (ReadInJoyUserInfo)((Iterator)localObject).next();
-        QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "loadReadInJoyUserInfoFromDB, userInfo = ", localReadInJoyUserInfo, Character.valueOf('\n') });
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository.a("", localReadInJoyUserInfo.md5Uin, localReadInJoyUserInfo, false);
-      }
-    }
+    return new CgF(paramParcel, null);
+  }
+  
+  public CgF[] a(int paramInt)
+  {
+    return new CgF[paramInt];
   }
 }
 

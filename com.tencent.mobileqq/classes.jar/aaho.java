@@ -1,15 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
 
 public class aaho
   implements Runnable
 {
-  public aaho(ARMarkerResourceManager paramARMarkerResourceManager) {}
+  public aaho(GreetingCardRender paramGreetingCardRender) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "物体识别不支持特征追踪！", 1).a();
+    GreetingCardRender.a(this.a);
   }
 }
 

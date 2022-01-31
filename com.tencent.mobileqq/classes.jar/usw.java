@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
-import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
+import com.tencent.mobileqq.activity.aio.anim.VipPendantDrawable;
 
-public final class usw
-  implements MyParcelable.Creator
+public class usw
 {
-  public PathDrawer a(MyParcel paramMyParcel)
+  public String a;
+  
+  public usw(VipPendantDrawable paramVipPendantDrawable, String paramString)
   {
-    return new PathDrawer(paramMyParcel);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amva;
+import ancm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,14 +8,16 @@ import android.os.Parcelable.Creator;
 public class WeishiFeedCommInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amva();
+  public static final Parcelable.Creator CREATOR = new ancm();
   public int appid;
   public String cellId;
   public String curlikekey;
   public String feedskey;
   public int operatemask;
   public int operatemask2;
+  public int orgCommentnum;
   public String orglikekey;
+  public int orglikenum;
   public String subId;
   public int ugcRight;
   public String ugckey;
@@ -40,6 +42,8 @@ public class WeishiFeedCommInfo
     this.operatemask2 = paramParcel.readInt();
     this.curlikekey = paramParcel.readString();
     this.orglikekey = paramParcel.readString();
+    this.orglikenum = paramParcel.readInt();
+    this.orgCommentnum = paramParcel.readInt();
     this.ugcRight = paramParcel.readInt();
   }
   
@@ -59,6 +63,8 @@ public class WeishiFeedCommInfo
     paramParcel.writeInt(this.operatemask2);
     paramParcel.writeString(this.curlikekey);
     paramParcel.writeString(this.orglikekey);
+    paramParcel.writeInt(this.orglikenum);
+    paramParcel.writeInt(this.orgCommentnum);
     paramParcel.writeInt(this.ugcRight);
   }
 }

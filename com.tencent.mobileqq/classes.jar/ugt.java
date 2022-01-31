@@ -1,10 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class ugt
-  extends Handler
+  implements View.OnClickListener
 {
-  public ugt(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public ugt(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
+  }
 }
 
 

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ac"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2a" android:text="充值数量" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ad" />
-    <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2b" android:hint="请输入充值数量" android:digits="0123456789\n" android:inputType="number" style="@style/APKTOOL_DUPLICATE_style_0x7f0e009b" />
-    <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2c" style="@style/midas_input_cell_button_clear" />
+    <RelativeLayout android:gravity="center_vertical" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008d">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d32" android:visibility="visible" android:layout_alignParentLeft="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008f" />
+        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d33" android:layout_width="270.0dip" android:text="请选择支付方式" android:maxLines="1" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:textAlignment="center" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008e" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d34" android:visibility="visible" android:layout_alignParentRight="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0090" />
+    </RelativeLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d35" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a8" />
 </LinearLayout>

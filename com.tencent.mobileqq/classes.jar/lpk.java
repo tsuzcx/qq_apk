@@ -1,14 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class lpk
   implements Runnable
 {
-  public lpk(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
+  public lpk(ReadinjoySPEventReport paramReadinjoySPEventReport, int paramInt, long paramLong) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_Int);
+    ArrayList localArrayList = new ArrayList();
+    oidb_cmd0x80a.AttributeList localAttributeList1 = new oidb_cmd0x80a.AttributeList();
+    localAttributeList1.att_id.set(1);
+    localAttributeList1.att_name.set("action");
+    localAttributeList1.att_value.set("" + this.jdField_a_of_type_Int);
+    oidb_cmd0x80a.AttributeList localAttributeList2 = new oidb_cmd0x80a.AttributeList();
+    localAttributeList2.att_id.set(2);
+    localAttributeList2.att_name.set("leavetime");
+    localAttributeList2.att_value.set(String.valueOf(this.jdField_a_of_type_Long / 1000L));
+    localArrayList.add(localAttributeList1);
+    localArrayList.add(localAttributeList2);
+    PublicAccountUtil.a(20, "AppinpushDisappear", localArrayList);
   }
 }
 

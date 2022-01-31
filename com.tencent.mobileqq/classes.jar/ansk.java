@@ -1,12 +1,18 @@
 import android.view.View;
-import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 class ansk
+  implements ProviderContainerView.ContainerViewListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ansk(ansi paramansi) {}
   
-  ansk(ansj paramansj) {}
+  public void a(View paramView, int paramInt)
+  {
+    QIMEffectCameraCaptureUnit.b(this.a.a);
+  }
+  
+  public void y_() {}
 }
 
 

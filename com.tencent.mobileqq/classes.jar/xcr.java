@@ -1,41 +1,17 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager.ConfigListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
 
 public class xcr
-  implements BusinessObserver
+  implements Runnable
 {
-  public xcr(QWalletConfigManager paramQWalletConfigManager, long paramLong, QWalletConfigManager.ConfigListener paramConfigListener, WeakReference paramWeakReference) {}
+  public xcr(PhotoListActivity paramPhotoListActivity, int paramInt, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (paramInt == 10)
-    {
-      if (!paramBoolean) {}
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
-      }
-      QWalletConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager$ConfigListener, (QWalletConfigManager)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      return;
-    }
+    LpReportInfo_pf00064 localLpReportInfo_pf00064 = new LpReportInfo_pf00064(723, 2, this.jdField_a_of_type_Int);
+    LpReportManager.getInstance().reportToPF00064(localLpReportInfo_pf00064, false, false);
+    PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, "aio_sync_qzone", "operation_type", this.jdField_a_of_type_JavaLangString);
   }
 }
 

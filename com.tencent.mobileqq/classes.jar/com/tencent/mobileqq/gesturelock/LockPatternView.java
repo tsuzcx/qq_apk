@@ -543,7 +543,7 @@ public class LockPatternView
       a(String.format("%d", new Object[] { Integer.valueOf(paramCell.a() * 3 + paramCell.b() + 1) }));
       return;
     }
-    a(2131436064);
+    a(2131436082);
   }
   
   private void a(String paramString)
@@ -618,7 +618,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.a(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    a(2131436065);
+    a(2131436083);
   }
   
   private void c(MotionEvent paramMotionEvent)
@@ -656,7 +656,7 @@ public class LockPatternView
     if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$OnPatternListener.b();
     }
-    a(2131436063);
+    a(2131436081);
   }
   
   private void e()

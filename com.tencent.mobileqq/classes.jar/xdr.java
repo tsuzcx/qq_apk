@@ -1,14 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
 public class xdr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xdr(QzoneHbFragment paramQzoneHbFragment) {}
+  public xdr(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QzoneHbFragment.a(this.a).startAnimation(QzoneHbFragment.a(this.a));
+    if (this.a.r)
+    {
+      PhotoPreviewActivity.a(this.a);
+      return;
+    }
+    this.a.a.toggle();
   }
 }
 

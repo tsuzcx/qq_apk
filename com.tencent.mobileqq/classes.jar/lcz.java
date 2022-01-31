@@ -1,14 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import java.io.File;
 
 public class lcz
   implements Runnable
 {
-  public lcz(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, List paramList) {}
+  public lcz(KanDianViewController.PullRefreshCompleteListener paramPullRefreshCompleteListener) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.a(this.jdField_a_of_type_JavaUtilList);
+    String str = CommonSkinRes.e();
+    if ((str != null) && (new File(str).exists()))
+    {
+      KanDianViewController.a(this.a.a, str);
+      KanDianViewController.a(this.a.a).removeMessages(3);
+      KanDianViewController.a(this.a.a).sendEmptyMessage(2);
+    }
   }
 }
 

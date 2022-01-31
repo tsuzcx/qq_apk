@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import adce;
+import adkl;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -32,8 +32,8 @@ public class ImageGalleryAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
     this.jdField_a_of_type_Int *= 2;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130846329);
-    this.b = paramContext.getResources().getDrawable(2130838600);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130846411);
+    this.b = paramContext.getResources().getDrawable(2130838606);
   }
   
   public void a(List paramList)
@@ -67,11 +67,11 @@ public class ImageGalleryAdapter
     FileBrowserModelBase.ImageFileInfo localImageFileInfo;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970048, null);
-      paramViewGroup = new adce(this, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970059, null);
+      paramViewGroup = new adkl(this, null);
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131361846));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362728));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131363562));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362733));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131363581));
       paramView.setTag(paramViewGroup);
       localImageFileInfo = (FileBrowserModelBase.ImageFileInfo)getItem(paramInt);
       if (localImageFileInfo != null) {
@@ -83,7 +83,7 @@ public class ImageGalleryAdapter
     do
     {
       return paramView;
-      paramViewGroup = (adce)paramView.getTag();
+      paramViewGroup = (adkl)paramView.getTag();
       break;
       Object localObject = localImageFileInfo.a();
       localImageFileInfo.a();

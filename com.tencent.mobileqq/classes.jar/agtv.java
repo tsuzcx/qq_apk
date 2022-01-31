@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.ptt.preop.PttPreSendManager;
+import android.util.Pair;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagUtil;
+import java.util.Comparator;
 
 public class agtv
-  implements Runnable
+  implements Comparator
 {
-  public agtv(PttPreSendManager paramPttPreSendManager, BaseChatPie paramBaseChatPie) {}
-  
-  public void run()
+  public int a(Pair paramPair1, Pair paramPair2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h(2131230731);
+    return TagUtil.a((CharSequence)paramPair1.second) - TagUtil.a((CharSequence)paramPair2.second);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agtv
  * JD-Core Version:    0.7.0.1
  */

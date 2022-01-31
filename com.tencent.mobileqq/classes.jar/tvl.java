@@ -1,25 +1,28 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
-import com.etrump.mixlayout.FontManager;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.BabyQObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class tvl
-  implements Runnable
+  extends BabyQObserver
 {
-  public tvl(TextPreviewActivity paramTextPreviewActivity) {}
+  public tvl(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    Drawable localDrawable = this.a.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.a.d);
-    if (localDrawable == null)
+    if (paramBoolean)
     {
-      this.a.b(this.a.d);
+      if (!TextUtils.isEmpty(this.a.f)) {
+        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      }
+      if (this.a.a == 13) {
+        this.a.b();
+      }
+      this.a.finish();
       return;
     }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(18);
-    localMessage.obj = localDrawable;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    QQToast.a(this.a.app.getApp(), 1, "领取失败", 0).a();
   }
 }
 

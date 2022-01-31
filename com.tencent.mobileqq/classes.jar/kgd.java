@@ -1,29 +1,28 @@
-import com.tencent.av.utils.PhoneStatusMonitor;
-import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.SendRedBag;
 
-class kgd
-  implements Runnable
+public class kgd
+  implements khv
 {
-  kgd(kgc paramkgc) {}
+  public kgd(AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void run()
+  public void a(SendRedBag paramSendRedBag)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable run end  mIsCalling: " + this.a.a.jdField_a_of_type_Boolean);
-    }
-    if (this.a.a.jdField_a_of_type_Boolean)
+    AVRedBagMgr localAVRedBagMgr = this.a;
+    if (paramSendRedBag.b == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.a.a.jdField_a_of_type_Boolean = false;
-      if (this.a.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener != null) {
-        this.a.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(false);
-      }
+      localAVRedBagMgr.a(bool, paramSendRedBag.g, paramSendRedBag.c);
+      this.a.a = null;
+      AVRedBagMgr.b(this.a).a(new Object[] { Integer.valueOf(8003), Integer.valueOf(7) });
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgd
  * JD-Core Version:    0.7.0.1
  */

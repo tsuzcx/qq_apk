@@ -1,24 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqavopensdk.AVEngineEventHandler;
 
 public class zcb
-  extends BroadcastReceiver
+  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  public zcb(DataLineHandler paramDataLineHandler) {}
+  public zcb(AVEngineWalper paramAVEngineWalper) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onComplete(boolean paramBoolean, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
-      this.a.d(8);
+    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.b(paramBoolean, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zcb
  * JD-Core Version:    0.7.0.1
  */

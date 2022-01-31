@@ -1,14 +1,25 @@
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
 
-public class vvi
-  implements AsyncCallBack
+class vvi
+  implements Runnable
 {
-  public vvi(HotChatPie paramHotChatPie) {}
+  vvi(vvh paramvvh, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, StateListDrawable paramStateListDrawable) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    HotChatPie.a(this.a, 0, 10);
+    this.jdField_a_of_type_Vvh.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (this.jdField_a_of_type_Vvh.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
+    {
+      this.jdField_a_of_type_Vvh.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundDrawable(this.b);
+      this.jdField_a_of_type_Vvh.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTextColor(-16777216);
+    }
+    this.jdField_a_of_type_Vvh.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setBackgroundDrawable(this.c);
+    this.jdField_a_of_type_Vvh.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
   }
 }
 

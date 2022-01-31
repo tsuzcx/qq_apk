@@ -1,15 +1,15 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneUiJsPlugin;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class andf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public andf(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
+  public andf(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    RemoteHandleManager.a().a().i(this.jdField_a_of_type_JavaLangString);
+    QzoneWebMusicJsPlugin.access$300(this.a, "buttonclick");
   }
 }
 

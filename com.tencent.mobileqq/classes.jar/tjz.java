@@ -1,15 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 
-public class tjz
-  implements View.OnClickListener
+class tjz
+  implements Runnable
 {
-  public tjz(QQMapActivity paramQQMapActivity) {}
+  tjz(tjy paramtjy, short paramShort) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.onBackPressed();
+    PermisionPrivacyActivity localPermisionPrivacyActivity = this.jdField_a_of_type_Tjy.a;
+    if (this.jdField_a_of_type_Short == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localPermisionPrivacyActivity.b(bool);
+      return;
+    }
   }
 }
 

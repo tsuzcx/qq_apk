@@ -1,12 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.storyHome.detail.view.segment.FeedItemThumbAdapter;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
 public class oah
-  implements ActionSheet.OnDismissListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public oah(FeedSegment paramFeedSegment) {}
+  public oah(FeedItemThumbAdapter paramFeedItemThumbAdapter, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public void onDismiss() {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    try
+    {
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
+      return;
+    }
+    catch (Exception paramValueAnimator) {}
+  }
 }
 
 

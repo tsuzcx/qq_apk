@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import com.tencent.mobileqq.surfaceviewaction.gl.Node;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import java.util.List;
 
 public class aiqe
   implements Runnable
 {
-  public aiqe(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
+  public aiqe(SpriteGLView paramSpriteGLView) {}
   
   public void run()
   {
-    this.a.v();
+    this.a.o();
+    int i = 0;
+    while (i < SpriteGLView.a(this.a).size())
+    {
+      ((Node)SpriteGLView.a(this.a).get(i)).b();
+      i += 1;
+    }
+    SpriteGLView.a(this.a).clear();
   }
 }
 

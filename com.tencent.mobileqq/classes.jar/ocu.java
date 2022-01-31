@@ -1,37 +1,33 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.qqstory.takevideo.EditGifImage;
-import com.tencent.biz.qqstory.takevideo.EditGifSpeedControl;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.image.NativeGifImage;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ocu
-  implements SeekBar.OnSeekBarChangeListener
+  extends QQUIEventReceiver
 {
-  public ocu(EditGifSpeedControl paramEditGifSpeedControl) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public ocu(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    if (paramBoolean)
+    super(paramStoryMessageListActivity);
+  }
+  
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull TroopNickNameManager.TroopNickNameUpdateEvent paramTroopNickNameUpdateEvent)
+  {
+    if (paramTroopNickNameUpdateEvent.errorInfo.isSuccess())
     {
-      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a.a(NativeGifImage.QZONE_DELAY);
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
       }
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.e = NativeGifImage.QZONE_DELAY;
-      this.a.d = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
-      }
+      paramStoryMessageListActivity.e();
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
+  public Class acceptEventClass()
+  {
+    return TroopNickNameManager.TroopNickNameUpdateEvent.class;
+  }
 }
 
 

@@ -1,17 +1,14 @@
-import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class kse
-  implements Runnable
+public class kse
 {
-  kse(ksd paramksd, Drawable paramDrawable) {}
+  public ImageView a;
+  public TextView a;
+  public TextView b;
   
-  public void run()
-  {
-    this.jdField_a_of_type_Ksd.a.a.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_Ksd.a.a.notifyDataSetChanged();
-  }
+  public kse(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
 }
 
 

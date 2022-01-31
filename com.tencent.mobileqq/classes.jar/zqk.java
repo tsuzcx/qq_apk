@@ -1,15 +1,36 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
 public class zqk
-  implements FilenameFilter
+  extends zlr
 {
-  public zqk(CleanCache paramCleanCache) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  protected void a()
   {
-    return !paramString.contains("CrashInfoSummary.txt");
+    super.a();
+    if (this.d >= zlp.a().a / 12000L)
+    {
+      CoreService.stopTempService();
+      this.a.c();
+      this.d = 0L;
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.b();
+    CoreService.startTempService();
   }
 }
 

@@ -1,18 +1,36 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-class aciu
-  implements Runnable
+public class aciu
+  extends FriendListObserver
 {
-  aciu(acit paramacit) {}
+  public aciu(MessengerService paramMessengerService) {}
   
-  public void run()
+  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
   {
-    ExtendFriendSquareFragment.a(this.a.a).notifyItemChanged(ExtendFriendSquareFragment.a(this.a.a));
+    if (this.a.b != null)
+    {
+      this.a.b.putString("cmd", "ipc_signature_setlike");
+      paramObject = new Bundle();
+      if (!paramBoolean) {
+        break label81;
+      }
+    }
+    label81:
+    for (int i = 0;; i = 101)
+    {
+      paramObject.putInt("result", i);
+      this.a.b.putBundle("response", paramObject);
+      this.a.a(this.a.b);
+      this.a.b = null;
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aciu
  * JD-Core Version:    0.7.0.1
  */

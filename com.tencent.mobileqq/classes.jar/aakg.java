@@ -1,22 +1,22 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-class aakg
+public class aakg
   implements Runnable
 {
-  aakg(aakf paramaakf, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public aakg(ScanEntranceReport paramScanEntranceReport, long paramLong1, long paramLong2, String paramString, long paramLong3) {}
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aakq)localIterator.next()).a(true);
-    }
-    localIterator = this.b.iterator();
-    for (boolean bool = true; localIterator.hasNext(); bool = false) {
-      ((aakq)localIterator.next()).a(false);
-    }
-    this.jdField_a_of_type_Aakf.a.a(bool, this.jdField_a_of_type_Aakf.b);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("proc_exist", String.valueOf(ScanEntranceReport.a(this.jdField_a_of_type_ComTencentMobileqqArScanEntranceReport)));
+    localHashMap.put("proc_restart", String.valueOf(ScanEntranceReport.b(this.jdField_a_of_type_ComTencentMobileqqArScanEntranceReport)));
+    localHashMap.put("proc_load_time", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("activity_launch_time", String.valueOf(this.b));
+    localHashMap.put("entry_source", this.jdField_a_of_type_JavaLangString);
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_activity_launch", true, this.c, 0L, localHashMap, "");
   }
 }
 

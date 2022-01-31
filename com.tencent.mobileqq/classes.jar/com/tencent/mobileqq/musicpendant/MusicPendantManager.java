@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.musicpendant;
 
-import aela;
-import aelb;
-import aelc;
+import aetk;
+import aetl;
+import aetm;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -34,7 +34,7 @@ public class MusicPendantManager
   private static List jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private static WeakReference jdField_b_of_type_JavaLangRefWeakReference;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("MusicPendantManager");
-  private QQPlayerService.QQPlayerCallback jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback = new aela(this);
+  private QQPlayerService.QQPlayerCallback jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback = new aetk(this);
   public WeakReference a;
   private boolean jdField_a_of_type_Boolean;
   private SongInfo[] jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo;
@@ -487,7 +487,7 @@ public class MusicPendantManager
         this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
         a(paramString);
         f();
-        ThreadManager.post(new aelc(this), 8, null, true);
+        ThreadManager.post(new aetm(this), 8, null, true);
         return;
       }
       catch (Exception paramString)
@@ -527,7 +527,7 @@ public class MusicPendantManager
         this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo = paramArrayOfSongInfo;
         if (i != 0)
         {
-          ThreadManager.post(new aelb(this), 8, null, true);
+          ThreadManager.post(new aetl(this), 8, null, true);
           return;
         }
         QLog.i("MusicPendantManager", 1, "setMusicPendantSongList(SongInfo) isPlayListChanged:false.");

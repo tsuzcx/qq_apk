@@ -1,31 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
+import dov.com.qq.im.capture.adapter.ComboProviderPagerAdapter;
+import dov.com.qq.im.capture.view.ComboProviderView;
 
 public class anxj
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public anxj(TextLayer.TextItem paramTextItem) {}
+  public anxj(ComboProviderView paramComboProviderView, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    SLog.b(TextLayer.a, "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    SLog.b(TextLayer.a, "scaleAnimator end!");
-    this.a.w = 1.0F;
-    this.a.i = false;
-    this.a.a.k();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    SLog.b(TextLayer.a, "scaleAnimator start!");
-    this.a.i = true;
+    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewComboProviderView.a.a.get(this.jdField_a_of_type_DovComQqImCaptureViewComboProviderView.b());
+    if (localGridView != null)
+    {
+      localGridView.setSelection(this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.d("ComboProviderView", 2, "positon= " + this.jdField_a_of_type_Int);
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ComboProviderView", 2, "gridView is null");
   }
 }
 

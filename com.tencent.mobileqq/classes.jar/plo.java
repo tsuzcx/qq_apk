@@ -1,14 +1,13 @@
-import com.tencent.component.network.utils.thread.AsyncTask;
+import com.tencent.component.media.image.ImageManager;
 
-public class plo
+class plo
+  implements Runnable
 {
-  final AsyncTask jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask;
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  plo(pln parampln) {}
   
-  public plo(AsyncTask paramAsyncTask, Object... paramVarArgs)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask = paramAsyncTask;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    ImageManager.b(this.a.a);
   }
 }
 

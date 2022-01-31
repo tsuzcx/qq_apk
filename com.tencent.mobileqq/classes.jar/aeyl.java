@@ -1,46 +1,24 @@
-import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnDownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 
-public class aeyl
-  implements IVideoView.OnDownloadListener
+class aeyl
+  implements Runnable
 {
-  public aeyl(VideoPlayerView paramVideoPlayerView) {}
+  aeyl(aeyk paramaeyk, boolean paramBoolean) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
+    this.jdField_a_of_type_Aeyk.a.l();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Aeyk.a.a(2, "编辑资料成功");
+      this.jdField_a_of_type_Aeyk.a.a(true);
+      this.jdField_a_of_type_Aeyk.a.finish();
+      NearbySPUtil.a(this.jdField_a_of_type_Aeyk.a.app.getAccount(), "nearby_need_show_guide", Boolean.valueOf(false));
+      return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener.a(paramString1, 199, paramInt, "use sdk download error");
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    this.a.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
-    }
-    this.a.jdField_a_of_type_Long = paramLong1;
-    if (paramLong2 > this.a.b) {
-      this.a.b = paramLong2;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, File paramFile)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
-    }
-    VideoPlayerView.a(paramFile);
+    this.jdField_a_of_type_Aeyk.a.a(1, "更新交友资料失败，请重试。");
   }
 }
 

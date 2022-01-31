@@ -1,21 +1,27 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.smallscreen.SmallScreenService;
+import com.tencent.av.service.AVServiceForQQ;
+import com.tencent.qphone.base.util.QLog;
 
-public class jor
+class jor
   implements Runnable
 {
-  public jor(SmallScreenService paramSmallScreenService) {}
+  jor(joq paramjoq) {}
   
   public void run()
   {
-    if ((this.a.a != null) && (!this.a.a.n())) {
-      this.a.f();
+    try
+    {
+      this.a.a.startForeground(2130840368, this.a.a.jdField_a_of_type_AndroidAppNotification);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d(this.a.a.jdField_a_of_type_JavaLangString, 1, "setAVServiceForegroud, e = " + localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jor
  * JD-Core Version:    0.7.0.1
  */

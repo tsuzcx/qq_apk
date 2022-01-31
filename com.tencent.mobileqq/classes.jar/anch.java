@@ -1,73 +1,100 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PictureUrl;
+import cooperation.qzone.model.VideoInfo;
+import cooperation.qzone.model.VideoInfo.VideoRemark;
+import cooperation.qzone.model.VideoUrl;
 
 public final class anch
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public anch(String[] paramArrayOfString) {}
-  
-  public void run()
+  public VideoInfo a(Parcel paramParcel)
   {
-    Object localObject1;
-    Object localObject3;
-    Object localObject6;
-    if ((this.a != null) && (this.a.length > 0) && (this.a[0] != null))
+    boolean bool2 = true;
+    VideoInfo localVideoInfo = new VideoInfo();
+    localVideoInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoInfo.jdField_a_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_a_of_type_CooperationQzoneModelPictureUrl = ((PictureUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_b_of_type_CooperationQzoneModelPictureUrl = ((PictureUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_c_of_type_CooperationQzoneModelPictureUrl = ((PictureUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_d_of_type_CooperationQzoneModelPictureUrl = ((PictureUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localVideoInfo.jdField_b_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_c_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_d_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_e_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localVideoInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localVideoInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localVideoInfo.jdField_a_of_type_Byte = paramParcel.readByte();
+    localVideoInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localVideoInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_g_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
     {
-      localObject1 = "";
-      localObject3 = "";
-      localObject6 = "";
-      localObject2 = localObject3;
-      localObject5 = localObject1;
+      bool1 = true;
+      localVideoInfo.jdField_b_of_type_Boolean = bool1;
+      localVideoInfo.jdField_a_of_type_CooperationQzoneModelVideoInfo$VideoRemark = ((VideoInfo.VideoRemark)paramParcel.readParcelable(getClass().getClassLoader()));
+      localVideoInfo.jdField_d_of_type_Long = paramParcel.readLong();
+      localVideoInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readInt() != 1) {
+        break label514;
+      }
+      bool1 = true;
+      label380:
+      localVideoInfo.jdField_i_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label519;
+      }
+      bool1 = true;
+      label396:
+      localVideoInfo.jdField_j_of_type_Boolean = bool1;
+      localVideoInfo.h = paramParcel.readInt();
+      localVideoInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
+      localVideoInfo.jdField_i_of_type_Int = paramParcel.readInt();
+      localVideoInfo.jdField_j_of_type_Int = paramParcel.readInt();
+      localVideoInfo.jdField_k_of_type_Int = paramParcel.readInt();
+      localVideoInfo.jdField_e_of_type_Long = paramParcel.readLong();
+      localVideoInfo.jdField_l_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label524;
+      }
+      bool1 = true;
+      label475:
+      localVideoInfo.jdField_k_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label529;
+      }
     }
-    for (;;)
+    label514:
+    label519:
+    label524:
+    label529:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(this.a[0]);
-        localObject2 = localObject3;
-        localObject5 = localObject1;
-        localObject1 = localJSONObject.getString("strDiyMemo");
-        localObject2 = localObject3;
-        localObject5 = localObject1;
-        localObject3 = localJSONObject.getString("strDeviceTail");
-        localObject2 = localObject3;
-        localObject5 = localObject1;
-        localObject7 = localJSONObject.getString("strDeviceIcon");
-        localObject2 = localObject7;
-        localJSONException1.printStackTrace();
-      }
-      catch (JSONException localJSONException1)
-      {
-        try
-        {
-          localObject5 = localJSONObject.getString("strIdentifySqua");
-          localObject7 = localObject3;
-          localObject6 = localObject2;
-          localObject3 = localObject5;
-          RemoteHandleManager.a().a().b((String)localObject1, (String)localObject7, (String)localObject6, (String)localObject3);
-          return;
-        }
-        catch (JSONException localJSONException2)
-        {
-          for (;;)
-          {
-            Object localObject7;
-            localObject5 = localObject2;
-            localObject2 = localObject4;
-            Object localObject4 = localJSONException2;
-          }
-        }
-        localJSONException1 = localJSONException1;
-        localObject7 = "";
-        localObject1 = localObject5;
-        localObject5 = localObject7;
-      }
-      localObject4 = localObject6;
-      localObject6 = localObject5;
-      localObject7 = localObject2;
+      localVideoInfo.jdField_l_of_type_Boolean = bool1;
+      localVideoInfo.jdField_f_of_type_Long = paramParcel.readLong();
+      return localVideoInfo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label380;
+      bool1 = false;
+      break label396;
+      bool1 = false;
+      break label475;
     }
+  }
+  
+  public VideoInfo[] a(int paramInt)
+  {
+    return new VideoInfo[paramInt];
   }
 }
 

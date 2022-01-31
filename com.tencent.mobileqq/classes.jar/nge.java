@@ -1,14 +1,15 @@
-import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob;
-import com.tencent.biz.qqstory.shareGroup.icon.RestrictedBitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class nge
-  implements Runnable
+public final class nge
+  implements View.OnClickListener
 {
-  public nge(ShareGroupAvatarSaveFileJob paramShareGroupAvatarSaveFileJob, RestrictedBitmap paramRestrictedBitmap) {}
+  public nge(EditText paramEditText) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ShareGroupAvatarSaveFileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobShareGroupAvatarSaveFileJob, ShareGroupAvatarSaveFileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobShareGroupAvatarSaveFileJob, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconRestrictedBitmap));
+    this.a.append("@");
   }
 }
 

@@ -4,11 +4,11 @@ import android.os.Handler;
 import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import jfs;
-import jft;
-import jfu;
-import jfv;
-import jfw;
+import jhv;
+import jhw;
+import jhx;
+import jhy;
+import jhz;
 
 public abstract class MagicfaceBaseDecoder
 {
@@ -35,7 +35,7 @@ public abstract class MagicfaceBaseDecoder
     }
     try
     {
-      new Thread(new jfs(this)).start();
+      new Thread(new jhv(this)).start();
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -73,14 +73,14 @@ public abstract class MagicfaceBaseDecoder
   public void a(String paramString, int paramInt)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new jfu(this, paramString, paramInt));
+      this.jdField_a_of_type_AndroidOsHandler.post(new jhx(this, paramString, paramInt));
     }
   }
   
   protected void a(String paramString, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new jfv(this, paramString, paramBoolean));
+      this.jdField_a_of_type_AndroidOsHandler.post(new jhy(this, paramString, paramBoolean));
     }
   }
   
@@ -93,7 +93,7 @@ public abstract class MagicfaceBaseDecoder
   public void b(String paramString)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new jft(this, paramString));
+      this.jdField_a_of_type_AndroidOsHandler.post(new jhw(this, paramString));
     }
   }
   
@@ -102,7 +102,7 @@ public abstract class MagicfaceBaseDecoder
   protected void c(String paramString)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new jfw(this, paramString));
+      this.jdField_a_of_type_AndroidOsHandler.post(new jhz(this, paramString));
     }
   }
   
@@ -110,7 +110,7 @@ public abstract class MagicfaceBaseDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter.ViewHolder;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.widget.XListView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class syv
-  implements Runnable
+public class syv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  syv(syu paramsyu, String paramString) {}
+  public syv(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int j;
-    int i;
-    if ((LebaListMgrActivity.a(this.jdField_a_of_type_Syu.a) != null) && (LebaListMgrActivity.a(this.jdField_a_of_type_Syu.a) != null))
+    int j = 1;
+    paramCompoundButton = this.a;
+    String str = this.a.app.getCurrentAccountUin();
+    if (paramBoolean)
     {
-      j = LebaListMgrActivity.a(this.jdField_a_of_type_Syu.a).getChildCount();
-      i = 0;
+      i = 2;
+      GesturePWDUtils.setGesturePWDState(paramCompoundButton, str, i);
+      this.a.a(paramBoolean);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label93;
+      }
     }
-    for (;;)
+    label93:
+    for (int i = j;; i = 0)
     {
-      if (i < j)
-      {
-        LebaListMgrAdapter.ViewHolder localViewHolder = (LebaListMgrAdapter.ViewHolder)LebaListMgrActivity.a(this.jdField_a_of_type_Syu.a).getChildAt(i).getTag();
-        if ((localViewHolder != null) && (localViewHolder.a != null) && (localViewHolder.a.a != null) && (Utils.a(localViewHolder.a.a.strPkgName, this.jdField_a_of_type_JavaLangString))) {
-          LebaListMgrActivity.a(this.jdField_a_of_type_Syu.a).a(localViewHolder);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
+      this.a.a();
+      return;
+      i = 1;
+      break;
     }
   }
 }

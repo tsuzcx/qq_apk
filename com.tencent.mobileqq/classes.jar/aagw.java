@@ -1,48 +1,45 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.ar.config.WorldCupMgr.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
+import com.tencent.mobileqq.armap.sensor.ARSensorManager;
+import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
+import java.util.ArrayList;
 
 public class aagw
-  implements WorldCupMgr.DownloadListener
+  implements Runnable
 {
-  public aagw(AREngine paramAREngine) {}
+  public aagw(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (paramInt2 < 0)
+    if (ARWorldCupGlobalSceneRenderable.a(this.a) == 6)
     {
-      QLog.i("AREngine_AREngine", 2, "downloadWorldCupIdx1Res. download failed. error code = " + paramInt2);
-      WorldCupMgr.a(AREngine.a(this.a)).b(this);
-      AREngine.a(this.a, this.a.b);
-      if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null)) {
-        AREngine.b(this.a, 7);
+      if ((ARWorldCupGlobalSceneRenderable.a(this.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a)))
+      {
+        ARWorldCupGlobalSceneRenderable.a(this.a).a(1, 0);
+        ARWorldCupGlobalSceneRenderable.a(this.a, false);
+      }
+      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
+        ARWorldCupGlobalSceneRenderable.a(this.a).a();
+      }
+      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
+        ARWorldCupGlobalSceneRenderable.a(this.a).a(ARWorldCupGlobalSceneRenderable.a(this.a).a);
+      }
+      if (ARWorldCupGlobalSceneRenderable.a(this.a) == 6) {
+        ARWorldCupGlobalSceneRenderable.a(this.a, 7);
       }
     }
-    do
+    synchronized (ARWorldCupGlobalSceneRenderable.a(this.a))
     {
-      do
-      {
-        return;
-        if ((paramInt2 < 0) || (paramInt2 > 99)) {
-          break;
-        }
-        QLog.i("AREngine_AREngine", 2, "downloadWorldCupIdx1Res. download... progress = " + paramInt2);
-      } while ((!AREngine.e(this.a)) || (AREngine.e(this.a) != 2) || (AREngine.a(this.a) == null));
-      AREngine.a(this.a, 8, paramInt2);
+      ARWorldCupGlobalSceneRenderable.a(this.a).clear();
+      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
+        ARWorldCupGlobalSceneRenderable.a(this.a, null);
+      }
+      ARWorldCupGlobalSceneRenderable.a(this.a).d();
+      ARWorldCupGlobalSceneRenderable.a(this.a);
+      ARWorldCupGlobalSceneRenderable.a(this.a, null);
       return;
-    } while (paramInt2 != 100);
-    QLog.i("AREngine_AREngine", 2, "downloadWorldCupIdx1Res. download successfully.");
-    WorldCupMgr.a(AREngine.a(this.a)).b(this);
-    AREngine.a(this.a, this.a.b);
-    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null))
-    {
-      AREngine.b(this.a, 6);
-      AREngine.b(this.a, 5);
     }
-    AREngine.a(new aagx(this), 100L);
   }
 }
 

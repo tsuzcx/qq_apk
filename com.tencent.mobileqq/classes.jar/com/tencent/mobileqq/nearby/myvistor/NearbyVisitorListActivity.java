@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.nearby.myvistor;
 
-import aero;
-import aerp;
-import aerr;
-import aert;
-import aeru;
-import aerv;
+import aezz;
+import afaa;
+import afac;
+import afae;
+import afaf;
+import afag;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -55,18 +55,18 @@ public class NearbyVisitorListActivity
 {
   public int a;
   public long a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aert(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afae(this);
   View jdField_a_of_type_AndroidViewView;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   NearbyHandler jdField_a_of_type_ComTencentMobileqqAppNearbyHandler;
-  private NearbyObserver jdField_a_of_type_ComTencentMobileqqAppNearbyObserver = new aerr(this);
+  private NearbyObserver jdField_a_of_type_ComTencentMobileqqAppNearbyObserver = new afac(this);
   NearbyVisitorAdapter jdField_a_of_type_ComTencentMobileqqNearbyMyvistorNearbyVisitorAdapter;
   FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
-  private IIconDecoder.IIconListener jdField_a_of_type_ComTencentMobileqqUtilIIconDecoder$IIconListener = new aerv(this);
+  private IIconDecoder.IIconListener jdField_a_of_type_ComTencentMobileqqUtilIIconDecoder$IIconListener = new afag(this);
   public IIconDecoder a;
   public PullRefreshHeader a;
-  OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new aeru(this);
+  OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new afaf(this);
   public PinnedHeaderExpandableListView a;
   String jdField_a_of_type_JavaLangString;
   public List a;
@@ -112,9 +112,9 @@ public class NearbyVisitorListActivity
           if (b()) {
             break label408;
           }
-          localTextView1 = (TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370559);
-          localView = this.jdField_c_of_type_AndroidViewView.findViewById(2131370560);
-          localTextView2 = (TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370561);
+          localTextView1 = (TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370568);
+          localView = this.jdField_c_of_type_AndroidViewView.findViewById(2131370569);
+          localTextView2 = (TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131370570);
           localView.setOnClickListener(this);
           localLayoutParams = this.jdField_c_of_type_AndroidViewView.getLayoutParams();
           localLayoutParams.height = DisplayUtil.a(this, 122.0F);
@@ -127,23 +127,23 @@ public class NearbyVisitorListActivity
           localTextView1.setVisibility(8);
           localView.setVisibility(0);
           localLayoutParams.height = DisplayUtil.a(this, 61.0F);
-          localTextView2.setText(2131438305);
+          localTextView2.setText(2131438325);
         } while (!AppSetting.jdField_b_of_type_Boolean);
-        localTextView1.setContentDescription(getString(2131438307));
-        localView.setContentDescription(getString(2131438305) + "，连按两次来打开");
+        localTextView1.setContentDescription(getString(2131438327));
+        localView.setContentDescription(getString(2131438325) + "，连按两次来打开");
         return;
         localTextView1.setVisibility(8);
         localView.setVisibility(8);
       } while (!AppSetting.jdField_b_of_type_Boolean);
-      localTextView1.setContentDescription(getString(2131438306));
+      localTextView1.setContentDescription(getString(2131438326));
       return;
     } while (paramInt != 2);
     if (this.jdField_c_of_type_Int <= 3)
     {
       if (this.jdField_a_of_type_JavaUtilList.size() < 20)
       {
-        localTextView1.setText(2131438306);
-        localTextView2.setText(2131438305);
+        localTextView1.setText(2131438326);
+        localTextView2.setText(2131438325);
       }
       for (;;)
       {
@@ -153,14 +153,14 @@ public class NearbyVisitorListActivity
           break;
         }
         localTextView1.setContentDescription(localTextView1.getText());
-        localView.setContentDescription(getString(2131438304) + "，连按两次来打开");
+        localView.setContentDescription(getString(2131438324) + "，连按两次来打开");
         return;
-        localTextView1.setText(getString(2131438303, new Object[] { Integer.valueOf(20) }));
-        localTextView2.setText(2131438304);
+        localTextView1.setText(getString(2131438323, new Object[] { Integer.valueOf(20) }));
+        localTextView2.setText(2131438324);
       }
     }
     if (this.jdField_a_of_type_JavaUtilList.size() < 200) {
-      localTextView1.setText(2131438306);
+      localTextView1.setText(2131438326);
     }
     for (;;)
     {
@@ -172,23 +172,23 @@ public class NearbyVisitorListActivity
       }
       localTextView1.setContentDescription(localTextView1.getText());
       return;
-      localTextView1.setText(getString(2131438302, new Object[] { Integer.valueOf(200) }));
+      localTextView1.setText(getString(2131438322, new Object[] { Integer.valueOf(200) }));
     }
     label408:
-    TextView localTextView1 = (TextView)this.e.findViewById(2131370555);
-    ((TextView)this.e.findViewById(2131370556)).setOnClickListener(this);
+    TextView localTextView1 = (TextView)this.e.findViewById(2131370564);
+    ((TextView)this.e.findViewById(2131370565)).setOnClickListener(this);
     localTextView1.setText(a(this.jdField_b_of_type_Long));
   }
   
   private void a(boolean paramBoolean)
   {
     int j = 8;
-    TextView localTextView = (TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131364983);
-    ProgressBar localProgressBar = (ProgressBar)this.jdField_d_of_type_AndroidViewView.findViewById(2131363049);
-    ImageView localImageView = (ImageView)this.jdField_d_of_type_AndroidViewView.findViewById(2131365172);
+    TextView localTextView = (TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131365010);
+    ProgressBar localProgressBar = (ProgressBar)this.jdField_d_of_type_AndroidViewView.findViewById(2131363054);
+    ImageView localImageView = (ImageView)this.jdField_d_of_type_AndroidViewView.findViewById(2131365199);
     if (paramBoolean)
     {
-      i = 2131436538;
+      i = 2131436558;
       localTextView.setText(i);
       if (!paramBoolean) {
         break label89;
@@ -206,7 +206,7 @@ public class NearbyVisitorListActivity
     {
       localImageView.setVisibility(i);
       return;
-      i = 2131433937;
+      i = 2131433953;
       break;
       i = 8;
       break label64;
@@ -217,13 +217,13 @@ public class NearbyVisitorListActivity
   {
     if (this.jdField_b_of_type_Boolean)
     {
-      QQToast.a(this, getString(2131438420), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131438440), 0).b(getTitleBarHeight());
       return;
     }
     if (!NetworkUtil.d(this))
     {
       this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.springBackOverScrollHeaderView();
-      QQToast.a(this, 1, getString(2131434349), 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, getString(2131434365), 0).b(getTitleBarHeight());
     }
     startTitleProgress();
     if (!paramBoolean1) {
@@ -238,7 +238,7 @@ public class NearbyVisitorListActivity
   
   private void c()
   {
-    ThreadManager.postImmediately(new aerp(this), null, true);
+    ThreadManager.postImmediately(new afaa(this), null, true);
   }
   
   private void d()
@@ -254,7 +254,7 @@ public class NearbyVisitorListActivity
       }
       if (this.jdField_b_of_type_Long <= 99999L)
       {
-        str = String.format(getString(2131438421), new Object[] { Long.valueOf(this.jdField_b_of_type_Long) });
+        str = String.format(getString(2131438441), new Object[] { Long.valueOf(this.jdField_b_of_type_Long) });
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       }
     }
@@ -265,7 +265,7 @@ public class NearbyVisitorListActivity
       }
       startTitleProgress();
       return;
-      str = String.format(getString(2131438422), new Object[] { Float.valueOf((float)this.jdField_b_of_type_Long / 10000.0F) });
+      str = String.format(getString(2131438442), new Object[] { Float.valueOf((float)this.jdField_b_of_type_Long / 10000.0F) });
       break;
       if (this.centerView.getVisibility() == 8) {
         this.centerView.setVisibility(0);
@@ -320,18 +320,18 @@ public class NearbyVisitorListActivity
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
       if (this.f == null) {
-        this.f = ((ViewStub)findViewById(2131370855)).inflate();
+        this.f = ((ViewStub)findViewById(2131370842)).inflate();
       }
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      localTextView = (TextView)this.f.findViewById(2131365554);
+      localTextView = (TextView)this.f.findViewById(2131365559);
       if (this.jdField_c_of_type_Int <= 3)
       {
-        localTextView.setText(2131438300);
-        Button localButton = (Button)this.f.findViewById(2131370558);
+        localTextView.setText(2131438320);
+        Button localButton = (Button)this.f.findViewById(2131370567);
         localButton.setOnClickListener(this);
         if (AppSetting.jdField_b_of_type_Boolean)
         {
-          localTextView.setContentDescription(getString(2131438300));
+          localTextView.setContentDescription(getString(2131438320));
           localButton.setContentDescription("如何提升等级，按钮，连按两次来打开。");
         }
         this.f.setVisibility(0);
@@ -353,11 +353,11 @@ public class NearbyVisitorListActivity
         this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.a(i);
         i += 1;
       }
-      localTextView.setText(2131438299);
+      localTextView.setText(2131438319);
       if (!AppSetting.jdField_b_of_type_Boolean) {
         break;
       }
-      localTextView.setContentDescription(getString(2131438299));
+      localTextView.setContentDescription(getString(2131438319));
       break;
       if (paramBoolean2)
       {
@@ -418,7 +418,7 @@ public class NearbyVisitorListActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970489);
+    setContentView(2130970501);
     paramBundle = getIntent();
     this.jdField_c_of_type_Int = paramBundle.getIntExtra("glamourLevel", 0);
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("download_tribe_app_url");
@@ -426,33 +426,33 @@ public class NearbyVisitorListActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.nearby.tribeAppDownload", 2, "NearbyVisitorListActivity-doOnCreate , mTribeAppDownloadPageUrl=" + this.jdField_a_of_type_JavaLangString);
     }
-    setTitle(2131438298);
-    setLeftViewName(2131432414);
+    setTitle(2131438318);
+    setLeftViewName(2131432425);
     if (this.titleRoot != null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.titleRoot.findViewById(2131363380));
-      ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363470)).setText(2131438298);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363471));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.titleRoot.findViewById(2131363399));
+      ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363489)).setText(2131438318);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363490));
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this, this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilIIconDecoder = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a();
     this.jdField_a_of_type_ComTencentMobileqqUtilIIconDecoder.a(this.jdField_a_of_type_ComTencentMobileqqUtilIIconDecoder$IIconListener);
-    this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView = ((PinnedHeaderExpandableListView)findViewById(2131370854));
-    paramBundle = getResources().getDrawable(2130838590);
+    this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView = ((PinnedHeaderExpandableListView)findViewById(2131370841));
+    paramBundle = getResources().getDrawable(2130838596);
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setOverscrollHeader(paramBundle);
-    paramBundle = getResources().getDrawable(2130838214);
+    paramBundle = getResources().getDrawable(2130838219);
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setContentBackground(paramBundle, false, true);
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setNeedCheckSpringback(true);
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370856);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2130969519, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, false));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370843);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2130969515, this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView, false));
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setOverScrollHeight(getResources().getDimensionPixelSize(2131558434));
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setOverScrollListener(this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener);
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130970445, null);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131370562);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131370563);
-    this.e = this.jdField_b_of_type_AndroidViewView.findViewById(2131370564);
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130970460, null);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131370571);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131370572);
+    this.e = this.jdField_b_of_type_AndroidViewView.findViewById(2131370573);
     this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.addFooterView(this.jdField_b_of_type_AndroidViewView);
     this.jdField_a_of_type_ComTencentMobileqqNearbyMyvistorNearbyVisitorAdapter = new NearbyVisitorAdapter(this, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_ComTencentMobileqqUtilIIconDecoder, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
@@ -460,8 +460,8 @@ public class NearbyVisitorListActivity
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setOnScrollListener(this);
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setOnScrollChangeListener(this);
     this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setGroupIndicator(null);
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370856);
-    this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setOnGroupClickListener(new aero(this));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370843);
+    this.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setOnGroupClickListener(new aezz(this));
     this.jdField_a_of_type_ComTencentMobileqqAppNearbyHandler = ((NearbyHandler)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3));
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppNearbyObserver);
     c();

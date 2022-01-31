@@ -1,21 +1,28 @@
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
 
 public class ahro
   implements Runnable
 {
-  public ahro(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public ahro(ShareActionSheet paramShareActionSheet) {}
   
   public void run()
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 1);
+    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
+      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+    }
+    while (this.a.b.getWidth() < ShareActionSheet.a(this.a))
+    {
+      this.a.b.setMove(true);
+      return;
+      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    }
+    this.a.b.setMove(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahro
  * JD-Core Version:    0.7.0.1
  */

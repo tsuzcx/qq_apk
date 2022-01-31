@@ -1,24 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
+import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 public class ytm
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public ytm(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  public ytm(ChatPieApolloViewController paramChatPieApolloViewController, BaseChatPie paramBaseChatPie) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    ThreadManager.getUIHandler().postDelayed(new ytn(this), 200L);
+    if (ApolloActionHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a) != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatPieApolloViewController", 2, "Apollo switch NOT open.");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().obtainMessage(62).sendToTarget();
+      return;
+    }
+    ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().obtainMessage(65).sendToTarget();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

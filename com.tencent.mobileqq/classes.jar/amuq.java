@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.LocalImageShootInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QQProxyForQlink;
 
-public final class amuq
-  implements Parcelable.Creator
+public class amuq
+  implements DialogInterface.OnClickListener
 {
-  public LocalImageShootInfo a(Parcel paramParcel)
-  {
-    return new LocalImageShootInfo(paramParcel);
-  }
+  public amuq(QQProxyForQlink paramQQProxyForQlink) {}
   
-  public LocalImageShootInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return null;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amuq
  * JD-Core Version:    0.7.0.1
  */

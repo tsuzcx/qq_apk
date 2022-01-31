@@ -2,6 +2,7 @@ package com.tencent.mobileqq.app.message;
 
 import OnlinePushPack.MsgInfo;
 import OnlinePushPack.SvcReqPushMsg;
+import aaad;
 import android.os.Bundle;
 import android.util.Pair;
 import com.tencent.mobileqq.app.MessageHandler;
@@ -21,9 +22,8 @@ import java.util.Set;
 import msf.msgcomm.msg_comm.Msg;
 import msf.msgcomm.msg_comm.MsgHead;
 import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
-import zsm;
-import zsn;
-import zts;
+import zyx;
+import zyy;
 
 public abstract class BaseMessageProcessor
 {
@@ -43,6 +43,11 @@ public abstract class BaseMessageProcessor
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler = paramMessageHandler;
     this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade = paramQQAppInterface.a();
+  }
+  
+  public aaad a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  {
+    return null;
   }
   
   public Pair a(List paramList1, List paramList2)
@@ -84,11 +89,6 @@ public abstract class BaseMessageProcessor
   protected String a(msg_comm.Msg paramMsg)
   {
     return String.valueOf(paramMsg.hashCode());
-  }
-  
-  public zts a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
-  {
-    return null;
   }
   
   public void a(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
@@ -174,7 +174,7 @@ public abstract class BaseMessageProcessor
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.BaseMessageProcessor", 2, "sendMsgReadConfirm");
     }
-    a(true, true, false, 0L, new zsn(this, paramPbMsgReadedReportReq));
+    a(true, true, false, 0L, new zyy(this, paramPbMsgReadedReportReq));
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong, BaseMessageProcessor.RequestBuilder paramRequestBuilder)
@@ -206,7 +206,7 @@ public abstract class BaseMessageProcessor
       i = 0;
       while (i < 9)
       {
-        localSendMessageHandler.a(new zsm(this, paramRequestBuilder, paramLong, l, paramBoolean2, paramBoolean3));
+        localSendMessageHandler.a(new zyx(this, paramRequestBuilder, paramLong, l, paramBoolean2, paramBoolean3));
         i += 1;
       }
       i = 0;

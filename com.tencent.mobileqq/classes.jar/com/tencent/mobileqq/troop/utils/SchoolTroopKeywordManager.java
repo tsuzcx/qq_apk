@@ -9,7 +9,6 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.mobileqq.text.EmotcationConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -118,7 +117,7 @@ public class SchoolTroopKeywordManager
   
   public int a(SessionInfo paramSessionInfo)
   {
-    int j = 1;
+    int j;
     if (paramSessionInfo.jdField_a_of_type_Int != 1)
     {
       j = -1;
@@ -128,8 +127,7 @@ public class SchoolTroopKeywordManager
       return -4;
     }
     String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    TroopInfo localTroopInfo = localTroopManager.b(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(paramSessionInfo.jdField_a_of_type_JavaLangString);
     if (localTroopInfo == null)
     {
       QLog.w(jdField_a_of_type_JavaLangString, 2, "it must be wrong. The troopUin '" + paramSessionInfo.jdField_a_of_type_JavaLangString + "' has not troopInfo");
@@ -142,40 +140,21 @@ public class SchoolTroopKeywordManager
       }
       return -3;
     }
-    if (localTroopInfo.isTroopOwner(str)) {}
+    int i = 0;
+    if (localTroopInfo.isTroopOwner(str)) {
+      i = 1;
+    }
     for (;;)
     {
-      label176:
-      paramSessionInfo = localTroopManager.b(localTroopInfo.troopuin, str);
-      int i = j;
-      if (paramSessionInfo != null)
-      {
-        if (paramSessionInfo.level != 332) {
-          break label270;
-        }
-        i = j | 0x4;
+      j = i;
+      if (!QLog.isDevelopLevel()) {
+        break;
       }
-      for (;;)
-      {
-        j = i;
-        if (!QLog.isDevelopLevel()) {
-          break;
-        }
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "detect role. The currentUin '" + str + "', role = " + i);
-        return i;
-        if (!localTroopInfo.isTroopAdmin(str)) {
-          break label290;
-        }
-        j = 2;
-        break label176;
-        label270:
-        i = j;
-        if (paramSessionInfo.level == 333) {
-          i = j | 0x8;
-        }
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "detect role. The currentUin '" + str + "', role = " + i);
+      return i;
+      if (localTroopInfo.isTroopAdmin(str)) {
+        i = 2;
       }
-      label290:
-      j = 0;
     }
   }
   
@@ -310,7 +289,7 @@ public class SchoolTroopKeywordManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,37 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
-import cooperation.plugin.IPluginManager.PluginParams;
-import cooperation.qzone.QZoneHelper.StartActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import mqq.os.MqqHandler;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.av.gvideo.IGVServiceForQQ.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.groupvideo.GroupVideoWrapper;
+import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
 
-public final class amsx
-  implements QZoneHelper.StartActivity
+public class amsx
+  implements ServiceConnection
 {
-  public amsx(Intent paramIntent, String paramString, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, int paramInt, Activity paramActivity, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public amsx(GroupVideoWrapper paramGroupVideoWrapper) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    String str = QzonePluginProxyActivity.a(this.jdField_a_of_type_AndroidContentIntent);
-    Class localClass = amta.a(str);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("click_time", System.currentTimeMillis());
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-    localPluginParams.d = "QZone";
-    localPluginParams.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession;
-    localPluginParams.e = str;
-    localPluginParams.jdField_a_of_type_JavaLangClass = localClass;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
-    localPluginParams.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    localPluginParams.c = 60000;
-    localPluginParams.f = null;
-    localPluginParams.jdField_a_of_type_Boolean = false;
-    ThreadManager.getUIHandler().post(new amsy(this, str, paramBoolean1, paramBoolean2, localPluginParams));
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
+    }
+    this.a.jdField_a_of_type_ComTencentAvGvideoIGVServiceForQQ = IGVServiceForQQ.Stub.a(paramIBinder);
+    if ((this.a.jdField_a_of_type_ComTencentAvGvideoIGVServiceForQQ != null) && (this.a.jdField_a_of_type_CooperationGroupvideoGroupVideoWrapper$OnGVideoReadyListener != null)) {
+      this.a.jdField_a_of_type_CooperationGroupvideoGroupVideoWrapper$OnGVideoReadyListener.a(this.a);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
+    }
+    this.a.jdField_a_of_type_ComTencentAvGvideoIGVServiceForQQ = null;
   }
 }
 

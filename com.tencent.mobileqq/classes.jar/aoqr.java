@@ -1,38 +1,23 @@
-import android.annotation.TargetApi;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.Processor;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.VideoConverterImpl;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView.OnTrimVDPlayCompelteListener;
 
-@TargetApi(18)
 public class aoqr
-  implements VideoConverter.VideoConverterImpl
+  implements MediaPlayer.OnCompletionListener
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  public aoqr(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public boolean a(File paramFile, VideoConverter.Processor paramProcessor, boolean paramBoolean)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (this.a.a != null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      paramFile = new Thread(new aoqs(this, paramFile, paramProcessor), "VideoConvert");
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFile);
-      paramFile.start();
-      if (paramBoolean) {}
-      try
-      {
-        paramFile.join();
-        return true;
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
       }
-      catch (InterruptedException paramFile)
-      {
-        paramFile.printStackTrace();
-        return true;
-      }
+      this.a.a.a(paramMediaPlayer);
     }
-    return false;
   }
 }
 

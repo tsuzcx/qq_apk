@@ -1,8 +1,8 @@
 package com.tencent.widget.itemtouchhelper;
 
-import amep;
-import ameq;
-import ames;
+import amlz;
+import amma;
+import ammc;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Handler;
@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 
 public final class GestureDetectorCompat
 {
-  private final amep a;
+  private final amlz a;
   
   public GestureDetectorCompat(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
@@ -22,10 +22,10 @@ public final class GestureDetectorCompat
   {
     if (Build.VERSION.SDK_INT > 17)
     {
-      this.a = new ames(paramContext, paramOnGestureListener, paramHandler);
+      this.a = new ammc(paramContext, paramOnGestureListener, paramHandler);
       return;
     }
-    this.a = new ameq(paramContext, paramOnGestureListener, paramHandler);
+    this.a = new amma(paramContext, paramOnGestureListener, paramHandler);
   }
   
   public boolean a(MotionEvent paramMotionEvent)

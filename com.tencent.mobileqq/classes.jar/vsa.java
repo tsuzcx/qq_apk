@@ -1,18 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
 
 public class vsa
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public vsa(DeviceMsgChatPie paramDeviceMsgChatPie) {}
+  public vsa(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    FileUtils.d(this.a.f);
-    this.a.f = "";
+    AIOGalleryScene.a(this.a).show();
   }
 }
 

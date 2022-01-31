@@ -3,13 +3,13 @@ package com.tencent.av.app;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import com.tencent.qphone.base.util.QLog;
-import jep;
+import jgr;
 import mqq.app.MobileQQ;
 
 public class GBatteryMonitor
 {
   private static String jdField_a_of_type_JavaLangString = "GBatteryMonitor";
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jep(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jgr(this);
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private boolean jdField_a_of_type_Boolean;
   
@@ -45,7 +45,7 @@ public class GBatteryMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.GBatteryMonitor
  * JD-Core Version:    0.7.0.1
  */

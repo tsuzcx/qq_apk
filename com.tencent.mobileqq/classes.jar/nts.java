@@ -1,16 +1,18 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.TakeVideoButtonMainPart.OnTakeVideoButtonClickListener;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
 
 public class nts
-  implements TakeVideoButtonMainPart.OnTakeVideoButtonClickListener
+  implements IMediaPlayer.OnInfoListener
 {
-  public nts(QQStoryMainController paramQQStoryMainController) {}
+  public nts(TextureVideoView paramTextureVideoView) {}
   
-  public void a()
+  public boolean a_(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    StoryReportor.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    this.a.a(false, true, 1, null);
+    if (this.a.a != null) {
+      this.a.a.a_(paramIMediaPlayer, paramInt1, paramInt2);
+    }
+    return true;
   }
 }
 

@@ -1,22 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
 
 public class ankl
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ankl(QIMCaptureController paramQIMCaptureController) {}
+  public ankl(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return QIMCaptureController.a(this.a).a(paramMotionEvent);
+    RemoteHandleManager.a().a().b(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankl
  * JD-Core Version:    0.7.0.1
  */

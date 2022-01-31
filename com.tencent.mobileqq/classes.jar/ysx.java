@@ -1,46 +1,15 @@
-import android.app.ActivityManager.TaskDescription;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 public class ysx
   implements Runnable
 {
-  public ysx(ApolloGameActivity paramApolloGameActivity, URLDrawable paramURLDrawable) {}
+  public ysx(ApolloSurfaceView paramApolloSurfaceView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
   
   public void run()
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (ApolloGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity) != null) && (ApolloGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity).game != null))
-      {
-        int i = AIOUtils.a(28.0F, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.getResources());
-        Bitmap localBitmap = ImageUtil.a(this.jdField_a_of_type_ComTencentImageURLDrawable, i, i);
-        if (localBitmap != null)
-        {
-          int j = (int)(localBitmap.getWidth() / 3.0F);
-          Object localObject = RoundedBitmapDrawableFactory.create(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.getResources(), localBitmap);
-          ((RoundedBitmapDrawable)localObject).setCornerRadius(j);
-          ((RoundedBitmapDrawable)localObject).setAntiAlias(true);
-          localObject = new ActivityManager.TaskDescription(ApolloGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity).game.name, ImageUtil.a((Drawable)localObject, i, i));
-          this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.setTaskDescription((ActivityManager.TaskDescription)localObject);
-          localBitmap.recycle();
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.ApolloGameActivity", 1, localThrowable, new Object[0]);
-    }
+    ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
   }
 }
 

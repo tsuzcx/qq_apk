@@ -4,6 +4,7 @@ public class QIMSlidingTabView$TabIcon
 {
   String jdField_a_of_type_JavaLangString;
   boolean jdField_a_of_type_Boolean;
+  String b;
 }
 
 

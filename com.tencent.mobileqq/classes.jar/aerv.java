@@ -1,76 +1,53 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorAdapter.ChildItemHolder;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.util.IIconDecoder;
-import com.tencent.mobileqq.util.IIconDecoder.IIconListener;
-import com.tencent.mobileqq.widget.StatableBitmapDrawable;
-import com.tencent.widget.PinnedHeaderExpandableListView;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 public class aerv
-  implements IIconDecoder.IIconListener
+  implements Runnable
 {
-  public aerv(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
+  public aerv(MultiMsgManager paramMultiMsgManager, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
   
-  public void a(int paramInt1, String paramString, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((paramInt1 != 1) || (TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    while ((paramBitmap == null) || (paramInt2 != 200)) {
-      return;
-    }
-    paramInt2 = this.a.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.getChildCount();
-    paramInt1 = 0;
-    label43:
-    Object localObject2;
-    Object localObject1;
-    if (paramInt1 < paramInt2)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    int j;
+    int k;
+    StringBuilder localStringBuilder;
+    if ((localObject != null) && ((localObject instanceof MessageForStructing)) && ("viewMultiMsg".equals(((MessageForStructing)localObject).structingMsg.mMsgAction)))
     {
-      localObject2 = this.a.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.getChildAt(paramInt1).getTag();
-      localObject1 = paramBitmap;
-      if (localObject2 != null)
+      localObject = MultiMsgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      if (localObject != null)
       {
-        localObject1 = paramBitmap;
-        if ((localObject2 instanceof NearbyVisitorAdapter.ChildItemHolder))
-        {
-          localObject2 = (NearbyVisitorAdapter.ChildItemHolder)localObject2;
-          localObject1 = paramBitmap;
-          if (paramString.equals(String.valueOf(((NearbyVisitorAdapter.ChildItemHolder)localObject2).jdField_b_of_type_Int)))
-          {
-            localObject1 = paramBitmap;
-            if (((NearbyVisitorAdapter.ChildItemHolder)localObject2).jdField_b_of_type_ComTencentWidgetSingleLineTextView != null)
-            {
-              if (paramBitmap != null) {
-                break label255;
-              }
-              paramBitmap = this.a.jdField_a_of_type_ComTencentMobileqqUtilIIconDecoder.a(1, String.valueOf(((NearbyVisitorAdapter.ChildItemHolder)localObject2).jdField_b_of_type_Int), 200, true, true);
-            }
-          }
+        j = ((List)localObject).size();
+        k = MultiMsgManager.a().a((Collection)localObject);
+        localObject = new HashMap();
+        localStringBuilder = new StringBuilder();
+        if (!this.jdField_a_of_type_Boolean) {
+          break label228;
         }
       }
     }
-    label255:
-    for (;;)
+    label228:
+    for (int i = 0;; i = 1)
     {
-      localObject1 = new StatableBitmapDrawable(this.a.getResources(), paramBitmap, false, false);
-      if (this.a.d == 0) {
-        this.a.d = ((int)(((NearbyVisitorAdapter.ChildItemHolder)localObject2).jdField_b_of_type_ComTencentWidgetSingleLineTextView.a() * 1.1F + 0.5F));
-      }
-      ((StatableBitmapDrawable)localObject1).setBounds(0, 0, this.a.d, this.a.d);
-      ((NearbyVisitorAdapter.ChildItemHolder)localObject2).jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables((Drawable)localObject1, null);
-      localObject1 = paramBitmap;
-      paramInt1 += 1;
-      paramBitmap = (Bitmap)localObject1;
-      break label43;
-      break;
+      ((HashMap)localObject).put("result", i + "");
+      ((HashMap)localObject).put("msgCount", j + "");
+      ((HashMap)localObject).put("picCount", k + "");
+      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "multiMsgSend", this.jdField_a_of_type_Boolean, 30000L, 0L, (HashMap)localObject, "");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI.FacePoiSearchUIListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
+import android.widget.ImageView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anrw
-  implements FacePoiSearchUI.FacePoiSearchUIListener
+  implements Runnable
 {
-  public anrw(EditProviderPart paramEditProviderPart) {}
+  public anrw(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void aD_()
+  public void run()
   {
-    EditProviderPart.a(this.a).e();
+    this.a.e = false;
+    this.a.t();
+    QIMEffectCameraCaptureUnit.f(this.a, true);
+    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(0);
+    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(true);
   }
 }
 

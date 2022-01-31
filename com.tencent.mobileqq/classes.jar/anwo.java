@@ -1,15 +1,19 @@
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.FoodAloneTextItem;
 
-class anwo
-  implements Runnable
+public class anwo
+  implements anwk
 {
-  anwo(anwm paramanwm) {}
+  public anwo(FoodAloneTextItem paramFoodAloneTextItem) {}
   
-  public void run()
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.b = null;
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = true;
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Anwl.a, this.a.jdField_a_of_type_Anwl.a.a);
+    if (paramInt == 0) {
+      return TroopFileUtils.b(paramString);
+    }
+    return "";
   }
 }
 

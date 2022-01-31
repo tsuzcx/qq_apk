@@ -1,21 +1,16 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import afkw;
-import afkx;
-import afky;
-import afkz;
-import afla;
-import aflb;
-import aflc;
-import afld;
-import afle;
-import aflf;
-import aflg;
-import aflh;
-import aflj;
-import aflm;
-import aflo;
-import aflp;
+import afpg;
+import afph;
+import afpi;
+import afpj;
+import afpk;
+import afpl;
+import afpm;
+import afpp;
+import afpq;
+import afpr;
+import afps;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -219,13 +214,8 @@ public class NearbyMomentManager
   public void a()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      a(this.jdField_a_of_type_JavaLangString, false);
+      c(this.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public void a(NearbyMomentManager.GetLocalUnPiblishListCallback paramGetLocalUnPiblishListCallback)
-  {
-    ThreadManager.post(new aflm(this, paramGetLocalUnPiblishListCallback), 8, null, false);
   }
   
   public void a(NearbyMomentManager.MomentDataChangeObserver paramMomentDataChangeObserver)
@@ -244,14 +234,14 @@ public class NearbyMomentManager
   
   public void a(String paramString)
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new afkw(this, paramString));
+    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new afpg(this, paramString));
   }
   
   public void a(String paramString, int paramInt)
   {
     try
     {
-      ThreadManager.getUIHandler().post(new aflb(this, paramString, paramInt));
+      ThreadManager.getUIHandler().post(new afps(this, paramString, paramInt));
       return;
     }
     finally
@@ -263,50 +253,17 @@ public class NearbyMomentManager
   
   public void a(String paramString, int paramInt1, int paramInt2, NearbyMomentManager.GetMomentListCallback paramGetMomentListCallback)
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramInt1, paramInt2, new aflj(this, paramGetMomentListCallback));
+    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramInt1, paramInt2, new afpm(this, paramGetMomentListCallback));
   }
   
   public void a(String paramString, long paramLong, int paramInt, NearbyMomentManager.DeleteFeedCallback paramDeleteFeedCallback)
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramLong, paramInt, new aflg(this, paramDeleteFeedCallback));
-  }
-  
-  public void a(String paramString, NearbyMomentManager.DeleteFeedCallback paramDeleteFeedCallback)
-  {
-    ThreadManager.post(new aflh(this, paramString, paramDeleteFeedCallback), 8, null, false);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      ThreadManager.getUIHandler().post(new aflo(this, paramString1, paramString2));
-      return;
-    }
-    finally
-    {
-      paramString1 = finally;
-      throw paramString1;
-    }
+    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramLong, paramInt, new afpl(this, paramDeleteFeedCallback));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, NearbyMomentManager.ReportCallback paramReportCallback)
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2, paramString3, new aflf(this, paramReportCallback));
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    try
-    {
-      ThreadManager.getUIHandler().post(new afky(this, paramString, paramBoolean));
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, paramString2, paramString3, new afpk(this, paramReportCallback));
   }
   
   public void b(NearbyMomentManager.MomentDataChangeObserver paramMomentDataChangeObserver)
@@ -325,14 +282,14 @@ public class NearbyMomentManager
   
   public void b(String paramString)
   {
-    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new afle(this, paramString));
+    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new afpj(this, paramString));
   }
   
   public void b(String paramString, int paramInt)
   {
     try
     {
-      ThreadManager.getUIHandler().post(new aflc(this, paramString, paramInt));
+      ThreadManager.getUIHandler().post(new afph(this, paramString, paramInt));
       return;
     }
     finally
@@ -346,7 +303,7 @@ public class NearbyMomentManager
   {
     try
     {
-      ThreadManager.getUIHandler().post(new aflp(this, paramString));
+      ThreadManager.getUIHandler().post(new afpp(this, paramString));
       return;
     }
     finally
@@ -358,9 +315,14 @@ public class NearbyMomentManager
   
   public void d(String paramString)
   {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void e(String paramString)
+  {
     try
     {
-      ThreadManager.getUIHandler().post(new afkx(this, paramString));
+      ThreadManager.getUIHandler().post(new afpq(this, paramString));
       return;
     }
     finally
@@ -370,16 +332,11 @@ public class NearbyMomentManager
     }
   }
   
-  public void e(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
   public void f(String paramString)
   {
     try
     {
-      ThreadManager.getUIHandler().post(new afkz(this, paramString));
+      ThreadManager.getUIHandler().post(new afpr(this, paramString));
       return;
     }
     finally
@@ -393,21 +350,7 @@ public class NearbyMomentManager
   {
     try
     {
-      ThreadManager.getUIHandler().post(new afla(this, paramString));
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public void h(String paramString)
-  {
-    try
-    {
-      ThreadManager.getUIHandler().post(new afld(this, paramString));
+      ThreadManager.getUIHandler().post(new afpi(this, paramString));
       return;
     }
     finally

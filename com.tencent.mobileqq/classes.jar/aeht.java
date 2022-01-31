@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
-import java.util.List;
+import com.tencent.mobileqq.leba.LebaTitleBar;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 
-public class aeht
-  implements QueryTask.Query
+class aeht
+  implements Runnable
 {
-  public aeht(EmoticonManager paramEmoticonManager) {}
+  aeht(aehs paramaehs) {}
   
-  public List a(Integer paramInteger)
+  public void run()
   {
-    return this.a.a(paramInteger.intValue());
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqLebaLebaTitleBar.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a);
+    }
   }
 }
 

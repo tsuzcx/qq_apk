@@ -1,30 +1,13 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.QzonePlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
 
-public class pcp
+class pcp
   implements Runnable
 {
-  public pcp(QzonePlugin paramQzonePlugin) {}
+  pcp(pco parampco) {}
   
   public void run()
   {
-    if (QzonePlugin.a(this.a) != null)
-    {
-      Object localObject = QzonePlugin.a(this.a);
-      if (this.a.mRuntime.a().getIntent().getExtras().getString("url") != null) {
-        localObject = this.a.mRuntime.a().getIntent().getExtras().getString("url");
-      }
-      QzonePlugin.a(this.a).loadData(new String((String)localObject).replaceAll("#", "%23").replaceAll("%", "%25").replaceAll("'", "%27"), "text/html", "utf-8");
-      localObject = this.a.mRuntime.a(this.a.mRuntime.a());
-      if ((localObject != null) && ((localObject instanceof WebUiUtils.WebUiMethodInterface))) {
-        ((WebUiUtils.WebUiMethodInterface)localObject).a(false);
-      }
-    }
+    TroopNewGuidePopWindow.a(this.a.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.jdField_a_of_type_Int);
   }
 }
 

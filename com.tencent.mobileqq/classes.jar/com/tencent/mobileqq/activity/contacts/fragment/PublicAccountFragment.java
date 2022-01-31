@@ -34,16 +34,16 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import wnv;
-import wnw;
-import wnx;
-import wny;
-import wnz;
-import wob;
-import woc;
-import wod;
-import woe;
-import wog;
+import wtg;
+import wth;
+import wti;
+import wtj;
+import wtk;
+import wtm;
+import wtn;
+import wto;
+import wtp;
+import wtr;
 
 public class PublicAccountFragment
   extends ContactsBaseFragment
@@ -52,12 +52,12 @@ public class PublicAccountFragment
   protected Drawable a;
   protected Handler.Callback a;
   protected PublicAccountFragment.ListAdapter a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new woc(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wtn(this);
   public PublicAccountDataManager a;
-  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new wod(this);
+  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new wto(this);
   protected IndexView a;
   protected PinnedDividerListView a;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new wob(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new wtm(this);
   protected List a;
   protected MqqHandler a;
   protected View b;
@@ -66,15 +66,15 @@ public class PublicAccountFragment
   
   public PublicAccountFragment()
   {
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new wnv(this);
+    this.jdField_a_of_type_AndroidOsHandler$Callback = new wtg(this);
   }
   
-  private woe a(PublicAccountInfo paramPublicAccountInfo)
+  private wtp a(PublicAccountInfo paramPublicAccountInfo)
   {
-    woe localwoe = new woe(paramPublicAccountInfo);
-    localwoe.a(ChnToSpell.a(paramPublicAccountInfo.name, 2));
-    localwoe.b(ChnToSpell.a(paramPublicAccountInfo.name, 1));
-    return localwoe;
+    wtp localwtp = new wtp(paramPublicAccountInfo);
+    localwtp.a(ChnToSpell.a(paramPublicAccountInfo.name, 2));
+    localwtp.b(ChnToSpell.a(paramPublicAccountInfo.name, 1));
+    return localwtp;
   }
   
   private void j()
@@ -86,10 +86,10 @@ public class PublicAccountFragment
       do
       {
         return;
-        localViewStub = (ViewStub)this.jdField_b_of_type_AndroidViewView.findViewById(2131363116);
+        localViewStub = (ViewStub)this.jdField_b_of_type_AndroidViewView.findViewById(2131363120);
       } while (localViewStub == null);
       this.jdField_c_of_type_AndroidViewView = localViewStub.inflate();
-      this.jdField_c_of_type_AndroidViewView.findViewById(2131365660).setOnClickListener(new wnx(this));
+      this.jdField_c_of_type_AndroidViewView.findViewById(2131365665).setOnClickListener(new wti(this));
     }
     this.jdField_c_of_type_AndroidViewView.setVisibility(0);
   }
@@ -111,11 +111,11 @@ public class PublicAccountFragment
     }
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.inflate(2130968802, null, false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131363829));
+      this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.inflate(2130968806, null, false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131363853));
       this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.mForContacts = true;
       this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setOnItemClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)this.jdField_b_of_type_AndroidViewView.findViewById(2131363830));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)this.jdField_b_of_type_AndroidViewView.findViewById(2131363854));
       this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" });
       this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
       this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(8);
@@ -143,8 +143,8 @@ public class PublicAccountFragment
   {
     paramAdapterView = null;
     paramView = paramView.getTag();
-    if ((paramView instanceof wog)) {
-      paramAdapterView = ((wog)paramView).a;
+    if ((paramView instanceof wtr)) {
+      paramAdapterView = ((wtr)paramView).a;
     }
     if (paramAdapterView == null) {
       if (QLog.isColorLevel()) {
@@ -172,7 +172,7 @@ public class PublicAccountFragment
     paramView.putExtra("uin", str);
     paramView.putExtra("uintype", paramInt);
     paramView.putExtra("uinname", paramAdapterView.a.name);
-    paramView.putExtra("selfSet_leftViewText", getString(2131437771));
+    paramView.putExtra("selfSet_leftViewText", getString(2131437791));
     paramView.putExtra("jump_from", 3);
     startActivity(paramView);
     PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_sys_4", "contacts_aio", 0, 0, str, "", "", "", false);
@@ -202,7 +202,7 @@ public class PublicAccountFragment
     } while (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountDataManager == null);
     if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountDataManager.a)
     {
-      this.jdField_b_of_type_AndroidViewView.postDelayed(new wnw(this), 200L);
+      this.jdField_b_of_type_AndroidViewView.postDelayed(new wth(this), 200L);
       return;
     }
     h();
@@ -302,7 +302,7 @@ public class PublicAccountFragment
   
   protected void h()
   {
-    ThreadManager.post(new wny(this), 5, new wnz(this), true);
+    ThreadManager.post(new wtj(this), 5, new wtk(this), true);
   }
   
   public void i()

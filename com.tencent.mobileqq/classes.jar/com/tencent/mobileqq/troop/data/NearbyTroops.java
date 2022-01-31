@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troop.data;
 
 import NearbyGroup.GroupInfo;
 import NearbyGroup.GroupLabel;
-import ajcb;
+import ajhe;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -30,30 +30,30 @@ public class NearbyTroops
   
   public static View a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    return a(paramContext, paramViewGroup, paramInt, 2130971591);
+    return a(paramContext, paramViewGroup, paramInt, 2130971617);
   }
   
   public static View a(Context paramContext, ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
     paramContext = LayoutInflater.from(paramContext).inflate(paramInt2, paramViewGroup, false);
     paramViewGroup = new NearbyTroops.CustomViewHolder();
-    paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131366584));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363690));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366588));
-    paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramContext.findViewById(2131370861));
+    paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131366582));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363713));
+    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366586));
+    paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramContext.findViewById(2131370848));
     paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setLabelType(paramInt1);
-    paramViewGroup.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramContext.findViewById(2131371271));
+    paramViewGroup.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)paramContext.findViewById(2131371269));
     paramViewGroup.jdField_b_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setLabelType(2);
-    paramViewGroup.e = ((TextView)paramContext.findViewById(2131371270));
+    paramViewGroup.e = ((TextView)paramContext.findViewById(2131371268));
     paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout.setDistanceTextView(paramViewGroup.e);
-    paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131371269));
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131366587));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370860));
+    paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131371267));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131366585));
+    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370847));
     paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(null);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131362749));
-    paramViewGroup.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131371272));
-    paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131371273));
-    paramViewGroup.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131365554);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131362754));
+    paramViewGroup.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131371270));
+    paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131371271));
+    paramViewGroup.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131365559);
     paramViewGroup.jdField_d_of_type_Int = paramInt1;
     paramContext.setTag(paramViewGroup);
     return paramContext;
@@ -74,7 +74,7 @@ public class NearbyTroops
     NearbyTroops.CustomViewHolder localCustomViewHolder = (NearbyTroops.CustomViewHolder)paramView.getTag();
     localCustomViewHolder.jdField_a_of_type_JavaLangString = String.valueOf(paramGroupInfo.lCode);
     localCustomViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramGroupInfo.strName);
-    localCustomViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131494257));
+    localCustomViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131494263));
     Object localObject1;
     Object localObject2;
     int i;
@@ -94,7 +94,7 @@ public class NearbyTroops
     localCustomViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     if (TextUtils.isEmpty(paramGroupInfo.strIntro))
     {
-      localCustomViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(2131430428);
+      localCustomViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(2131430431);
       localCustomViewHolder.jdField_a_of_type_NearbyGroupGroupInfo = paramGroupInfo;
       if ((paramGroupInfo.labels != null) && (paramGroupInfo.labels.size() != 0)) {
         break label680;
@@ -115,12 +115,12 @@ public class NearbyTroops
         break label729;
       }
       localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841430);
+      localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841457);
       label401:
       if ((paramGroupInfo.dwExtFlag & 1L) == 0L) {
         break label787;
       }
-      localCustomViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130840554);
+      localCustomViewHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130840569);
       localCustomViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     }
     label680:
@@ -154,7 +154,7 @@ public class NearbyTroops
             for (;;)
             {
               localObject1 = HttpUtil.b(HttpUtil.c(paramGroupInfo.strIntro));
-              TextUtils.ellipsize((CharSequence)localObject1, localCustomViewHolder.jdField_c_of_type_AndroidWidgetTextView.getPaint(), i, TextUtils.TruncateAt.END, false, new ajcb(localCustomViewHolder, (String)localObject1));
+              TextUtils.ellipsize((CharSequence)localObject1, localCustomViewHolder.jdField_c_of_type_AndroidWidgetTextView.getPaint(), i, TextUtils.TruncateAt.END, false, new ajhe(localCustomViewHolder, (String)localObject1));
               break;
               i = (i - AIOUtils.a(137.0F, paramContext.getResources())) * 2;
             }
@@ -167,7 +167,7 @@ public class NearbyTroops
             if (paramGroupInfo.dwCertType == 1L)
             {
               localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-              localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841430);
+              localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841457);
               break label401;
             }
             localCustomViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -210,7 +210,7 @@ public class NearbyTroops
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.NearbyTroops
  * JD-Core Version:    0.7.0.1
  */

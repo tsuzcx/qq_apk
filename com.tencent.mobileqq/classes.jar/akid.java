@@ -1,12 +1,45 @@
-import com.tencent.mobileqq.vas.VasPalette.OcNode;
-import java.util.Comparator;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akid
-  implements Comparator
+class akid
+  implements Runnable
 {
-  public int a(VasPalette.OcNode paramOcNode1, VasPalette.OcNode paramOcNode2)
+  akid(akic paramakic, String paramString) {}
+  
+  public void run()
   {
-    return paramOcNode2.a - paramOcNode1.a;
+    for (;;)
+    {
+      try
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_Akic.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+        localIntent.putExtra("BSafeReportPost", true);
+        if (this.jdField_a_of_type_JavaLangString != null) {
+          continue;
+        }
+        arrayOfByte = null;
+        localIntent.putExtra("SafeReportData", arrayOfByte);
+        localIntent.putExtra("hide_more_button", true);
+        localIntent.putExtra("ishiderefresh", true);
+        localIntent.putExtra("ishidebackforward", true);
+        this.jdField_a_of_type_Akic.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent.putExtra("url", "https://jubao.qq.com/uniform_impeach/impeach_entry"));
+      }
+      catch (Exception localException)
+      {
+        byte[] arrayOfByte;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception" + localException.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_Akic.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      return;
+      arrayOfByte = this.jdField_a_of_type_JavaLangString.getBytes("utf-8");
+    }
   }
 }
 

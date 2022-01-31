@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amdr;
+import amlb;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -88,7 +88,7 @@ public class Switch
     this.f = paramContext.getScaledMinimumFlingVelocity();
     refreshDrawableState();
     setChecked(isChecked());
-    setOnClickListener(new amdr(this));
+    setOnClickListener(new amlb(this));
   }
   
   private int a()

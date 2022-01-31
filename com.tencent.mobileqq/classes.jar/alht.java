@@ -1,28 +1,14 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class alht
-  implements TicketUtils.TicketCallback
+class alht
+  implements DialogInterface.OnClickListener
 {
-  public alht(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
+  alht(alhs paramalhs) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LogUtility.c("TIME-STATISTIC", "onGetA1Fail");
-    ThreadManager.getSubThreadHandler().post(new alhv(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.c("TIME-STATISTIC", "onGetA1");
-    ThreadManager.getSubThreadHandler().post(new alhu(this, paramArrayOfByte, paramString));
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,58 +1,53 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateAdapter;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateItemView;
-import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class lhv
-  implements Runnable
+public class lhv
+  extends PublicAccountObserver
 {
-  lhv(lhu paramlhu, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean) {}
+  public lhv(ReadinjoyMsgManagerActivity paramReadinjoyMsgManagerActivity) {}
   
-  public void run()
+  public void b(boolean paramBoolean, int paramInt)
   {
-    int j = ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).getFirstVisiblePosition();
-    int k = ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).getLastVisiblePosition();
-    int i = j;
-    Object localObject1;
-    Object localObject2;
-    if (i <= k)
-    {
-      if (i < 0) {}
-      do
-      {
-        i += 1;
-        break;
-        localObject1 = (PtvTemplateManager.PtvTemplateInfo)ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).get(i);
-      } while ((localObject1 == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject1).id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
-      ((PtvTemplateManager.PtvTemplateInfo)localObject1).downloading = false;
-      ((PtvTemplateManager.PtvTemplateInfo)localObject1).usable = this.jdField_a_of_type_Boolean;
-      if (ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).id.equals(((PtvTemplateManager.PtvTemplateInfo)localObject1).id)) {
-        ((PtvTemplateManager.PtvTemplateInfo)localObject1).isSelected = true;
-      }
-      localObject2 = ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).getChildAt(i - j);
-      if ((localObject2 instanceof ReadInJoyCameraTemplateItemView))
-      {
-        localObject2 = (ReadInJoyCameraTemplateItemView)localObject2;
-        if (!this.jdField_a_of_type_Boolean) {
-          break label269;
-        }
-      }
+    if (ReadinjoyMsgManagerActivity.a(this.a).isShowing()) {
+      ReadinjoyMsgManagerActivity.a(this.a).dismiss();
     }
-    label269:
-    for (i = 1000;; i = -1)
-    {
-      ((ReadInJoyCameraTemplateItemView)localObject2).b(i);
-      ((ReadInJoyCameraTemplateItemView)localObject2).a(((PtvTemplateManager.PtvTemplateInfo)localObject1).isSelected);
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id.equals(ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).id))
-      {
-        localObject1 = PtvTemplateManager.a + ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).name;
-        ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lhu.a).setFaceEffect((String)localObject1);
-      }
+    if (paramInt != ReadinjoyMsgManagerActivity.a(this.a).get()) {
       return;
     }
+    if (paramBoolean)
+    {
+      boolean bool = ReadinjoyMsgManagerActivity.a(this.a).isChecked();
+      ReadinjoyMsgManagerActivity localReadinjoyMsgManagerActivity = this.a;
+      if (!bool)
+      {
+        paramBoolean = true;
+        ReadinjoyMsgManagerActivity.a(localReadinjoyMsgManagerActivity, paramBoolean);
+        if (bool) {
+          break label127;
+        }
+        PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8007DB6", "0X8007DB6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
+      }
+      for (;;)
+      {
+        ((KandianMergeManager)this.a.app.getManager(161)).a(bool);
+        return;
+        paramBoolean = false;
+        break;
+        label127:
+        PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800676D", "0X800676D", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
+      }
+    }
+    QQToast.a(this.a.getApplicationContext(), 2131428480, 0).a();
+    QLog.d("ReadinjoyMsgManagerActivity", 1, "handle setkandian recomm failed");
   }
 }
 

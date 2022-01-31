@@ -1,24 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
 
 public class xyu
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public xyu(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public xyu(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a.setPadding(0, 0, 40, 0);
-      return;
-    }
-    this.a.a.setPadding(0, 0, 0, 0);
+    NewFlowEditVideoActivity.a(this.a, "an_yuanshipin");
   }
 }
 

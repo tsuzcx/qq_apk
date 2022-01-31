@@ -16,8 +16,8 @@ public class StoryUserBadgeView$UserIconUpdateReceiver
   
   public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull GetUserIconHandler.UserIconUpdateEvent paramUserIconUpdateEvent)
   {
-    if (paramUserIconUpdateEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
-    while (paramUserIconUpdateEvent.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
+    if (paramUserIconUpdateEvent.errorInfo.isFail()) {}
+    while (paramUserIconUpdateEvent.a.get(paramStoryUserBadgeView.a()) == null) {
       return;
     }
     paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());

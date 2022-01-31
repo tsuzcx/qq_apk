@@ -1,24 +1,14 @@
-import android.text.Spannable;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import java.util.Comparator;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
-public final class ajmk
-  implements Comparator
+public class ajmk
+  implements Runnable
 {
-  public ajmk(Spannable paramSpannable) {}
+  public ajmk(TroopFileThumbnailMgr paramTroopFileThumbnailMgr, long paramLong, TroopFileTransferManager.Item paramItem, int paramInt) {}
   
-  public int a(AtTroopMemberSpan paramAtTroopMemberSpan1, AtTroopMemberSpan paramAtTroopMemberSpan2)
+  public void run()
   {
-    int i = 0;
-    int j = this.a.getSpanStart(paramAtTroopMemberSpan1);
-    int k = this.a.getSpanStart(paramAtTroopMemberSpan2);
-    if (j < k) {
-      i = -1;
-    }
-    while (j <= k) {
-      return i;
-    }
-    return 1;
+    TroopFileThumbnailMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailMgr, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
   }
 }
 

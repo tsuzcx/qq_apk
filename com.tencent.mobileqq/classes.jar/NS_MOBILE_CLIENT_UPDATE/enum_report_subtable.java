@@ -39,6 +39,7 @@ public final class enum_report_subtable
   public static final int _ENUM_TABLE_DC3164_REPORT = 46;
   public static final int _ENUM_TABLE_DC3179_REPORT = 45;
   public static final int _ENUM_TABLE_DC3208_REPORT = 47;
+  public static final int _ENUM_TABLE_PF0034_REPORT = 49;
   public static final int _ENUM_TERMINAL_MACHINE_ALBUM_EVENT_REPORT = 17;
   public static final int _ENUM_TERMINAL_MACHINE_ALBUM_USER_REPORT = 18;
   public static final int _ENUM_TERMINAL_MACHINE_LEARN_REPORT = 14;

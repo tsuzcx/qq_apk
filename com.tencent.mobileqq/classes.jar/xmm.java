@@ -1,22 +1,36 @@
-import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import Wallet.GetSkinListRsp;
+import com.qq.taf.jce.JceInputStream;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class xmm
   implements Runnable
 {
-  public xmm(LoginView paramLoginView) {}
+  public xmm(RedPacketManager paramRedPacketManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.a.c.setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation.setDuration(500L);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new xmn(this));
-    this.a.c.startAnimation(localTranslateAnimation);
+    try
+    {
+      Object localObject = FileUtils.a(BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        localObject = new JceInputStream((byte[])localObject);
+        ((JceInputStream)localObject).setServerEncoding("utf-8");
+        GetSkinListRsp localGetSkinListRsp = new GetSkinListRsp();
+        localGetSkinListRsp.readFrom((JceInputStream)localObject);
+        if (localGetSkinListRsp != null) {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new xmn(this, localGetSkinListRsp));
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

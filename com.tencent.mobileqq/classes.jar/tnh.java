@@ -1,15 +1,29 @@
 import android.os.Handler;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.utils.QQLSSensor;
+import com.tencent.qphone.base.util.QLog;
 
-class tnh
+public class tnh
   implements Runnable
 {
-  tnh(tng paramtng) {}
+  public tnh(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    this.a.a.a();
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    if (this.a.a == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSSensor", 2, "====openSensor===" + Thread.currentThread().getId());
+      }
+      this.a.a = new QQLSSensor(this.a.getApplicationContext(), this.a);
+      this.a.a.a();
+      if (QQLSActivity.a(this.a).hasMessages(8)) {
+        QQLSActivity.a(this.a).removeMessages(8);
+      }
+      Message localMessage = QQLSActivity.a(this.a).obtainMessage(8);
+      QQLSActivity.a(this.a).sendMessageDelayed(localMessage, 1500L);
+    }
   }
 }
 

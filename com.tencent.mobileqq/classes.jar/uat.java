@@ -1,16 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import mqq.os.MqqHandler;
 
-public class uat
-  implements View.OnClickListener
+class uat
+  implements Runnable
 {
-  public uat(TroopMemberListActivity paramTroopMemberListActivity) {}
+  uat(uaq paramuaq) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b.dismiss();
+    this.a.a.a.removeMessages(1);
+    this.a.a.a.removeMessages(1);
+    this.a.a.a.sendEmptyMessageDelayed(1, 500L);
   }
 }
 

@@ -1,32 +1,31 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public class ndc
-  extends TroopObserver
+public final class ndc
+  implements WXShareHelper.WXShareListener
 {
-  public ndc(TroopNickNameManager paramTroopNickNameManager) {}
+  public ndc(String paramString) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void a(BaseResp paramBaseResp)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
-      if (paramArrayList != null) {
-        break label78;
-      }
-    }
-    label78:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      QLog.d("TroopNickNameManager", 2, i);
-      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-        ThreadManager.executeOnSubThread(new ndd(this, paramArrayList));
-      }
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
       return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435319);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      QRUtils.a(2, 2131435318);
     }
   }
 }

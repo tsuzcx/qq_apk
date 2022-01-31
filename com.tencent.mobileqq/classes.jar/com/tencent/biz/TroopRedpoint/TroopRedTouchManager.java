@@ -26,7 +26,7 @@ import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import kkg;
+import kmn;
 import mqq.manager.Manager;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
@@ -159,7 +159,7 @@ public class TroopRedTouchManager
       return;
       try
       {
-        ThreadManager.post(new kkg(this, paramGetRedDotRes), 5, null, false);
+        ThreadManager.post(new kmn(this, paramGetRedDotRes), 5, null, false);
       }
       finally {}
     }
@@ -360,8 +360,8 @@ public class TroopRedTouchManager
   {
     Object localObject1 = null;
     Object localObject3 = null;
-    label308:
-    label356:
+    label298:
+    label346:
     for (;;)
     {
       boolean bool1;
@@ -380,7 +380,7 @@ public class TroopRedTouchManager
         bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().jdField_a_of_type_Boolean;
         localObject4 = this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get().iterator();
         if (!((Iterator)localObject4).hasNext()) {
-          break label308;
+          break label298;
         }
         localObject3 = (oidb_0x791.RedDotInfo)((Iterator)localObject4).next();
         if (QLog.isColorLevel()) {
@@ -401,11 +401,11 @@ public class TroopRedTouchManager
         if (i != 37) {}
       }
       finally {}
-      if ((!bool2) && (i != 48) && ((bool1) || (i != 28)) && ((!bool1) || (i != 49)) && ((i != 35) || (!bool1)) && ((i != RedPointUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (((oidb_0x791.RedDotInfo)localObject3).uint32_number.get() > 0))) {
+      if ((!bool2) && (i != 48) && ((bool1) || (i != 28)) && ((i != 35) || (!bool1)) && ((i != RedPointUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (((oidb_0x791.RedDotInfo)localObject3).uint32_number.get() > 0))) {
         if (TroopRedTouchConfigure.a((oidb_0x791.RedDotInfo)localObject3, localRedDotInfo) > 0)
         {
           Object localObject2 = localObject3;
-          break label356;
+          break label346;
           localObject3 = localObject2;
           if (QLog.isColorLevel())
           {

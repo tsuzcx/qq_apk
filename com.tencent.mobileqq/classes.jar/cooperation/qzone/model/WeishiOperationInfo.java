@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amvc;
+import anco;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class WeishiOperationInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amvc();
+  public static final Parcelable.Creator CREATOR = new anco();
   public Map a = new HashMap();
   
   public WeishiOperationInfo(Parcel paramParcel)

@@ -2,7 +2,7 @@ package com.tencent.plato.mqq.network;
 
 public abstract interface ProgressListener
 {
-  public abstract void a(long paramLong1, long paramLong2, boolean paramBoolean);
+  public abstract void onProgress(long paramLong1, long paramLong2, boolean paramBoolean);
 }
 
 

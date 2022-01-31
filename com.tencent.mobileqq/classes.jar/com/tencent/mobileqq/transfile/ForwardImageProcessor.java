@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aipj;
+import aium;
 import android.os.Message;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,7 +17,7 @@ public class ForwardImageProcessor
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new aipj(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new aium(this);
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -107,7 +107,7 @@ public class ForwardImageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardImageProcessor
  * JD-Core Version:    0.7.0.1
  */

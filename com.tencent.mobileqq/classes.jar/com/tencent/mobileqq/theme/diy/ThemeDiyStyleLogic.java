@@ -18,7 +18,7 @@ public class ThemeDiyStyleLogic
   static final String BUNDLE_OPERATE_BACK_CODE = "operateBackCode";
   static final String BUNDLE_OPERATE_NEXT = "nextOperate";
   static final String BUNDLE_OPERATE_NOW = "nowOperate";
-  static final String DIR_SCREENSHOT = AppConstants.aJ + "custom_background/";
+  static final String DIR_SCREENSHOT = AppConstants.aK + "custom_background/";
   static final String DIR_SCREENSHOT_BG = DIR_SCREENSHOT + "bg/";
   static final String DIR_SCREENSHOT_THEME = DIR_SCREENSHOT + "theme/";
   public static final int OPERATE_CODE_GO_ERROR = 8;
@@ -147,7 +147,7 @@ public class ThemeDiyStyleLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic
  * JD-Core Version:    0.7.0.1
  */

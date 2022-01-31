@@ -1,14 +1,22 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
 public class suc
-  implements Runnable
+  implements View.OnClickListener
 {
-  public suc(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public suc(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    GesturePWDUnlockActivity.a(this.a).setEnabled(true);
+    this.a.N();
+    this.a.finish();
+    if ((this.a.a.a != null) && (this.a.a.a.a) && (this.a.app != null) && (!"0".equals(this.a.app.getCurrentAccountUin()))) {
+      this.a.app.a(this.a);
+    }
   }
 }
 

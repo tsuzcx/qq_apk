@@ -1,26 +1,68 @@
 import android.app.Activity;
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglHandlerThread;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoPart;
+import com.tencent.biz.qqstory.takevideo.EditVideoPlayerExport;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Iterator;
 import java.util.List;
 
-public final class olo
-  implements Runnable
+public class olo
+  extends SimpleObserver
 {
-  public olo(EglHandlerThread paramEglHandlerThread, int paramInt1, int paramInt2, List paramList, int paramInt3, QQProgressNotifier paramQQProgressNotifier, Activity paramActivity) {}
+  public olo(EditWebVideoPartManager paramEditWebVideoPartManager, GenerateContext paramGenerateContext) {}
   
-  public void run()
+  public void a(GenerateContext paramGenerateContext)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.a();
-    if (!bool)
+    super.onNext(paramGenerateContext);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.f();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().overridePendingTransition(0, 0);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.p();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.h = false;
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((EditVideoPart)localIterator.next()).b(paramGenerateContext);
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.h = false;
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.f();
+    paramGenerateContext = (EditVideoPlayerExport)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.a(EditVideoPlayerExport.class);
+    if (paramGenerateContext != null) {
+      paramGenerateContext.j();
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.b.isEmpty())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SlideShowPhotoListManager", 2, "EglHandlerThread initSuccess:" + bool);
+      paramGenerateContext = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
+      if (paramGenerateContext != null)
+      {
+        ((EditWebVideoActivity)paramGenerateContext).d("视频合成中...");
+        EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, paramGenerateContext, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishGenerateContext.a);
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglHandlerThread.a().post(new olp(this));
+    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "对不起，视频发送失败...", 0).a();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().finish();
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.b.add(paramError);
+    if (QLog.isColorLevel()) {
+      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "对不起，视频发送失败...", 0).a();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().finish();
   }
 }
 

@@ -1,40 +1,28 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
 
 public class msp
-  extends SubscriptObserver
+  implements View.OnClickListener
 {
-  public msp(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public msp(FastWebVideoFeedsPlayActivity paramFastWebVideoFeedsPlayActivity) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
-    }
-    if (!paramBoolean) {}
-    do
+    if (paramView.getId() == 2131367141)
     {
-      do
-      {
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
+      paramView = FastWebVideoVolumeControl.a();
+      if (FastWebVideoVolumeControl.a().b()) {
+        break label33;
+      }
+    }
+    label33:
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.a(bool, "user_click", 2);
       return;
-    } while (this.a.a == null);
-    Message localMessage = new Message();
-    localMessage.what = 1003;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
-    localMessage.setData(localBundle);
-    this.a.a.removeMessages(1003);
+    }
   }
 }
 

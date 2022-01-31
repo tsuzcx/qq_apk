@@ -26,16 +26,16 @@ import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yzv;
-import yzw;
+import zgv;
+import zgw;
 
 public class BabyQFriendStatusWebViewPlugin
   extends WebViewPlugin
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new yzv(this);
+  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new zgv(this);
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new yzw(this);
+  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new zgw(this);
   private String jdField_a_of_type_JavaLangString;
   
   public BabyQFriendStatusWebViewPlugin()
@@ -179,7 +179,7 @@ public class BabyQFriendStatusWebViewPlugin
       if (!paramString3.equals("addFriend")) {
         break label705;
       }
-      startActivityForResult(AddFriendLogicActivity.a(this.mRuntime.a(), 2, AppConstants.au, null, 3001, 0, "babyQ", null, null, null, null), (byte)1);
+      startActivityForResult(AddFriendLogicActivity.a(this.mRuntime.a(), 2, AppConstants.av, null, 3001, 0, "babyQ", null, null, null, null), (byte)1);
       return true;
       label705:
       if (!paramString3.equals("sendmsg")) {
@@ -193,8 +193,8 @@ public class BabyQFriendStatusWebViewPlugin
       paramString1 = new ProfileCardInfo();
       paramString1.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = paramJsBridgeListener;
       paramString1.jdField_a_of_type_ComTencentMobileqqDataCard = new Card();
-      paramString1.jdField_a_of_type_ComTencentMobileqqDataCard.uin = AppConstants.au;
-      FriendProfileCardActivity.a(this.mRuntime.a(), paramString1, AppConstants.au, 0, paramJsBridgeListener.h);
+      paramString1.jdField_a_of_type_ComTencentMobileqqDataCard.uin = AppConstants.av;
+      FriendProfileCardActivity.a(this.mRuntime.a(), paramString1, AppConstants.av, 0, paramJsBridgeListener.h);
       label807:
       return true;
       label809:
@@ -253,7 +253,7 @@ public class BabyQFriendStatusWebViewPlugin
         break label1160;
       }
       paramJsBridgeListener = paramJsBridgeListener.data.getString("key_report_msg");
-      ProfileCardUtil.a((BaseActivity)this.mRuntime.a(), AppConstants.au, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), 10027, paramJsBridgeListener);
+      ProfileCardUtil.a((BaseActivity)this.mRuntime.a(), AppConstants.av, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), 10027, paramJsBridgeListener);
       label1160:
       return true;
       label1162:

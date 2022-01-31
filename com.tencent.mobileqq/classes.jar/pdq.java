@@ -1,25 +1,20 @@
-import com.tencent.biz.webviewplugin.WebSoPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-class pdq
-  implements Runnable
+public class pdq
+  implements URLDrawable.DownloadListener
 {
-  pdq(pdp parampdp) {}
+  public pdq(TroopGiftPanel paramTroopGiftPanel, TextView paramTextView) {}
   
-  public void run()
+  public void onFileDownloadFailed(int paramInt)
   {
-    if ((this.a.a.mRuntime != null) && (this.a.a.mRuntime.a() != null)) {}
-    try
-    {
-      this.a.a.a(this.a.a.mRuntime.a());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("WebSoPlugin", 1, "asynJudgmentDynamicCover, useSoftwareMode err, ExceptionMsg = " + localThrowable.getMessage());
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
   }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

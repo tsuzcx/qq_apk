@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acvr;
-import acvs;
-import acvt;
-import acwq;
-import acwr;
+import addy;
+import addz;
+import adea;
+import adeb;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.discoperation.FileHttpUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -19,14 +20,14 @@ import java.io.InputStream;
 import java.util.List;
 
 public class FileUploader
-  implements acwq
+  implements IHttpUploadSink
 {
   private int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
-  private acwr jdField_a_of_type_Acwr;
   private FileUploader.IFileUploaderSink jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFileUploaderSink;
-  private FileUploader.IFlowControl jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFlowControl = new acvt(this);
+  private FileUploader.IFlowControl jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFlowControl = new adeb(this);
   private final HttpUrlProcessor jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor;
+  private IHttpUploader jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader;
   private InputStream jdField_a_of_type_JavaIoInputStream;
   private final String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -47,9 +48,9 @@ public class FileUploader
     this.jdField_b_of_type_Long = new File(paramString1).length();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor = new HttpUrlProcessor(paramQQAppInterface, paramString2);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
-    this.jdField_a_of_type_Acwr = Md5HttpUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_Acwr != null) {
-      this.jdField_a_of_type_Acwr.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader = Md5HttpUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader.a(this);
     }
   }
   
@@ -60,9 +61,9 @@ public class FileUploader
     this.jdField_b_of_type_Long = new File(paramString1).length();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor = new HttpUrlProcessor(paramQQAppInterface, paramString4);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
-    this.jdField_a_of_type_Acwr = FtnUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2, paramString2, paramString3, this.jdField_b_of_type_Long);
-    if (this.jdField_a_of_type_Acwr != null) {
-      this.jdField_a_of_type_Acwr.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader = FtnUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2, paramString2, paramString3, this.jdField_b_of_type_Long);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader.a(this);
     }
   }
   
@@ -73,9 +74,9 @@ public class FileUploader
     this.jdField_b_of_type_Long = new File(paramString1).length();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor = new HttpUrlProcessor(paramQQAppInterface, paramList, paramString4);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
-    this.jdField_a_of_type_Acwr = FtnUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2, paramString2, paramString3, this.jdField_b_of_type_Long);
-    if (this.jdField_a_of_type_Acwr != null) {
-      this.jdField_a_of_type_Acwr.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader = FtnUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2, paramString2, paramString3, this.jdField_b_of_type_Long);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader.a(this);
     }
   }
   
@@ -86,9 +87,9 @@ public class FileUploader
     this.jdField_b_of_type_Long = new File(paramString1).length();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor = new HttpUrlProcessor(paramQQAppInterface, paramList, paramString2);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
-    this.jdField_a_of_type_Acwr = Md5HttpUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_Acwr != null) {
-      this.jdField_a_of_type_Acwr.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader = Md5HttpUploader.a(paramQQAppInterface, this.jdField_a_of_type_Long, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader.a(this);
     }
   }
   
@@ -296,6 +297,7 @@ public class FileUploader
     this.jdField_b_of_type_JavaLangString = str;
     this.jdField_c_of_type_Int += 1;
     this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFileUploaderSink.a(this.jdField_b_of_type_JavaLangString);
   }
   
   private boolean a()
@@ -336,101 +338,101 @@ public class FileUploader
     //   2: lcmp
     //   3: ifne +12 -> 15
     //   6: aload_0
-    //   7: invokespecial 193	com/tencent/mobileqq/filemanager/core/FileUploader:a	()Z
+    //   7: invokespecial 205	com/tencent/mobileqq/filemanager/core/FileUploader:a	()Z
     //   10: ifne +32 -> 42
     //   13: aconst_null
     //   14: areturn
     //   15: aload_0
-    //   16: getfield 195	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
+    //   16: getfield 207	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
     //   19: lstore 4
     //   21: lload_1
     //   22: lload 4
     //   24: lcmp
     //   25: ifle +82 -> 107
     //   28: aload_0
-    //   29: getfield 176	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   29: getfield 147	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   32: lload_1
     //   33: aload_0
-    //   34: getfield 195	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
+    //   34: getfield 207	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
     //   37: lsub
-    //   38: invokevirtual 199	java/io/InputStream:skip	(J)J
+    //   38: invokevirtual 211	java/io/InputStream:skip	(J)J
     //   41: pop2
     //   42: aload_0
     //   43: lload_1
-    //   44: putfield 195	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
+    //   44: putfield 207	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
     //   47: aload_0
     //   48: getfield 32	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFlowControl	Lcom/tencent/mobileqq/filemanager/core/FileUploader$IFlowControl;
     //   51: aload_0
     //   52: getfield 86	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_d_of_type_Long	J
     //   55: aload_0
     //   56: getfield 47	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_b_of_type_Long	J
-    //   59: invokeinterface 204 5 0
+    //   59: invokeinterface 216 5 0
     //   64: istore_3
     //   65: iload_3
     //   66: newarray byte
     //   68: astore 7
     //   70: aload_0
-    //   71: getfield 176	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   71: getfield 147	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   74: aload 7
     //   76: iconst_0
     //   77: iload_3
-    //   78: invokevirtual 208	java/io/InputStream:read	([BII)I
+    //   78: invokevirtual 220	java/io/InputStream:read	([BII)I
     //   81: pop
     //   82: aload_0
-    //   83: getfield 195	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
+    //   83: getfield 207	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
     //   86: lstore_1
     //   87: aload_0
     //   88: iload_3
     //   89: i2l
     //   90: lload_1
     //   91: ladd
-    //   92: putfield 195	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
+    //   92: putfield 207	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
     //   95: aload 7
     //   97: areturn
     //   98: astore 7
     //   100: aload 7
-    //   102: invokevirtual 187	java/io/IOException:printStackTrace	()V
+    //   102: invokevirtual 196	java/io/IOException:printStackTrace	()V
     //   105: aconst_null
     //   106: areturn
     //   107: lload_1
     //   108: aload_0
-    //   109: getfield 195	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
+    //   109: getfield 207	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_e_of_type_Long	J
     //   112: lcmp
     //   113: ifge -71 -> 42
     //   116: aload_0
-    //   117: invokespecial 193	com/tencent/mobileqq/filemanager/core/FileUploader:a	()Z
+    //   117: invokespecial 205	com/tencent/mobileqq/filemanager/core/FileUploader:a	()Z
     //   120: istore 6
     //   122: iload 6
     //   124: ifeq +71 -> 195
     //   127: aload_0
-    //   128: getfield 176	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   128: getfield 147	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   131: lload_1
-    //   132: invokevirtual 199	java/io/InputStream:skip	(J)J
+    //   132: invokevirtual 211	java/io/InputStream:skip	(J)J
     //   135: pop2
     //   136: goto -94 -> 42
     //   139: astore 7
     //   141: aload_0
     //   142: aconst_null
-    //   143: putfield 176	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   143: putfield 147	com/tencent/mobileqq/filemanager/core/FileUploader:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
     //   146: aload 7
-    //   148: invokevirtual 187	java/io/IOException:printStackTrace	()V
+    //   148: invokevirtual 196	java/io/IOException:printStackTrace	()V
     //   151: aconst_null
     //   152: areturn
     //   153: astore 7
     //   155: aload 7
-    //   157: invokevirtual 209	java/lang/Exception:printStackTrace	()V
-    //   160: ldc 96
+    //   157: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   160: ldc 99
     //   162: iconst_1
-    //   163: new 143	java/lang/StringBuilder
+    //   163: new 150	java/lang/StringBuilder
     //   166: dup
-    //   167: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   170: ldc 211
-    //   172: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: invokespecial 151	java/lang/StringBuilder:<init>	()V
+    //   170: ldc 223
+    //   172: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   175: aload 7
-    //   177: invokevirtual 212	java/lang/Exception:toString	()Ljava/lang/String;
-    //   180: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   186: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   177: invokevirtual 224	java/lang/Exception:toString	()Ljava/lang/String;
+    //   180: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   189: aconst_null
     //   190: astore 7
     //   192: goto -97 -> 95
@@ -470,8 +472,8 @@ public class FileUploader
   
   private void b(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFlowControl = new acvt(this);
-    new Handler().postDelayed(new acvs(this), paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFlowControl = new adeb(this);
+    new Handler().postDelayed(new adea(this), paramInt);
   }
   
   private void b(long paramLong, String paramString)
@@ -489,7 +491,7 @@ public class FileUploader
     }
     this.jdField_c_of_type_Long = paramLong;
     this.jdField_d_of_type_Long = paramLong;
-    new Handler().postDelayed(new acvr(this), 6000L);
+    new Handler().postDelayed(new addz(this), 6000L);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFileUploaderSink.a(false, paramLong, str, paramString);
   }
   
@@ -515,7 +517,8 @@ public class FileUploader
       this.jdField_a_of_type_JavaIoInputStream.close();
       this.jdField_a_of_type_JavaIoInputStream = null;
       label12:
-      this.jdField_a_of_type_Acwr.a();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader.a();
+      this.jdField_a_of_type_Boolean = true;
       return;
     }
     catch (Exception localException)
@@ -624,6 +627,8 @@ public class FileUploader
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader$IFileUploaderSink = paramIFileUploaderSink;
   }
   
+  public void a(HttpMsg paramHttpMsg) {}
+  
   public void a(String paramString)
   {
     if (this.jdField_a_of_type_Boolean) {
@@ -638,9 +643,11 @@ public class FileUploader
     if (arrayOfByte == null)
     {
       QLog.e("FtnHttpUploader<FileAssistant>", 1, "getSendStreamSlice return null");
+      ThreadManager.post(new addy(this), 5, null, true);
       return false;
     }
-    return this.jdField_a_of_type_Acwr.a(this.jdField_b_of_type_JavaLangString, paramLong, arrayOfByte);
+    this.jdField_a_of_type_Boolean = false;
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploader.a(this.jdField_b_of_type_JavaLangString, paramLong, arrayOfByte);
   }
   
   public int b()

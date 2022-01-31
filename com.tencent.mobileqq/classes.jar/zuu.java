@@ -1,33 +1,26 @@
-import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONObject;
 
 public final class zuu
-  extends DownloadListener
+  implements Runnable
 {
-  public zuu(String paramString) {}
+  public zuu(JSONObject paramJSONObject) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public void run()
   {
-    MsgNotifyPushDialog.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = null;
-    QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    MsgNotifyPushDialog.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = null;
-    if (paramDownloadTask.a() == 3)
+    try
     {
-      QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "download finished " + MsgNotifyPushDialog.f);
-      paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
-      if ((paramDownloadTask.exists()) && (MsgNotifyPushDialog.a(paramDownloadTask))) {
-        QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
-      }
+      ark.arkNotify("com.tencent.test.groupDragon", "UpdateDragonTitle", this.a.toString(), "json");
+      ark.arkNotify("com.tencent.groupDragon", "UpdateDragonTitle", this.a.toString(), "json");
       return;
     }
-    QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", paramDownloadTask.b, " code=", Integer.valueOf(paramDownloadTask.a) });
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      QLog.e(".troop.survey", 2, "Error: arkNotify com.tencent.groupDragon error, .so notloaded", localUnsatisfiedLinkError);
+      QQCatchedExceptionReporter.reportQQCatchedException(localUnsatisfiedLinkError, "TroopHandlerCatchedException", "Error: arkNotify com.tencent.groupDragon error, .so notloaded");
+    }
   }
 }
 

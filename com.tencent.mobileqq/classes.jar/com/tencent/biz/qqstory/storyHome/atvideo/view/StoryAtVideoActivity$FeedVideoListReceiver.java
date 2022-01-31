@@ -22,7 +22,7 @@ public class StoryAtVideoActivity$FeedVideoListReceiver
   
   public void a(@NonNull StoryAtVideoActivity paramStoryAtVideoActivity, @NonNull VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
   {
-    if ((!paramGetVideoListEvent.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoActivity.jdField_a_of_type_JavaLangString)) || (paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramStoryAtVideoActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem == null))
+    if ((!paramGetVideoListEvent.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoActivity.jdField_a_of_type_JavaLangString)) || (paramGetVideoListEvent.errorInfo.isFail()) || (paramStoryAtVideoActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem == null))
     {
       SLog.b(this.TAG, "ignore this comment list event. %s.", paramGetVideoListEvent.toString());
       return;

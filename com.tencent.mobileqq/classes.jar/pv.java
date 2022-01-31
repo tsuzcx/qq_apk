@@ -15,25 +15,25 @@ public class pv
       return;
     }
     if (ETTextView.b(this.a)) {
-      ETTextView.a(this.a, ETTextView.i);
+      ETTextView.a(this.a, ETTextView.h);
     }
     boolean bool1;
     if ((ETTextView.c(this.a)) && (ETTextView.b(this.a)))
     {
       bool1 = true;
       if (!bool1) {
-        break label129;
+        break label147;
       }
       ETDecoration localETDecoration = this.a.a.a();
-      if (!localETDecoration.a()) {
+      if (!localETDecoration.nextFrame()) {
         break label124;
       }
       this.a.postInvalidate();
-      long l = localETDecoration.b();
+      long l = localETDecoration.getFrameDelay();
       ETTextView.a(this.a).postDelayed(this, l);
       bool1 = bool2;
     }
-    label129:
+    label147:
     for (;;)
     {
       ETTextView.b(this.a, bool1);
@@ -41,6 +41,8 @@ public class pv
       bool1 = false;
       break;
       label124:
+      this.a.a.a(null);
+      this.a.postInvalidate();
       bool1 = false;
     }
   }

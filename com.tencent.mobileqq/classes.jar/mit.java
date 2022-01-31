@@ -1,27 +1,19 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class mit
-  implements Runnable
+  implements ThirdVideoManager.UUIDToUrlCallback
 {
-  public mit(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public mit(VideoPreDownloadMgr paramVideoPreDownloadMgr, int paramInt) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
   {
-    if (this.a.a == 40677) {
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(this.a.a), false);
-    }
-    for (;;)
-    {
-      if (this.a.a == 56) {
-        PublicAccountReportUtils.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "0", "", VideoReporter.a(this.a.a, null), false);
-      }
+    if (TextUtils.isEmpty(paramString1)) {
       return;
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(this.a.a), false);
     }
+    ThreadManager.post(new miu(this, paramString2, paramString1, paramInt), 5, null, true);
   }
 }
 

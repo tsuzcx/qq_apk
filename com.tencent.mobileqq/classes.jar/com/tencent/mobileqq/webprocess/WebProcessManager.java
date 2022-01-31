@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webprocess;
 
-import akls;
-import aklt;
-import aklu;
-import aklv;
-import aklw;
-import aklx;
+import aktj;
+import aktk;
+import aktl;
+import aktm;
+import aktn;
+import akto;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -46,7 +46,7 @@ public class WebProcessManager
   protected static boolean b;
   protected long a;
   protected BroadcastReceiver a;
-  private final BabyQObserver jdField_a_of_type_ComTencentMobileqqAppBabyQObserver = new aklv(this);
+  private final BabyQObserver jdField_a_of_type_ComTencentMobileqqAppBabyQObserver = new aktm(this);
   protected QQAppInterface a;
   protected boolean a;
   private final BroadcastReceiver b;
@@ -60,8 +60,8 @@ public class WebProcessManager
   
   public WebProcessManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aklt(this);
-    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new aklu(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aktk(this);
+    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new aktl(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     a();
     c();
@@ -103,7 +103,7 @@ public class WebProcessManager
       QLog.d("WebProcessManager", 2, "begin to parse dns,isNeedPreparseDns = " + jdField_a_of_type_Int);
     }
     e(paramString, System.currentTimeMillis());
-    ThreadManager.post(new aklw(paramList), 5, null, true);
+    ThreadManager.post(new aktn(paramList), 5, null, true);
   }
   
   public static void a(boolean paramBoolean)
@@ -322,7 +322,7 @@ public class WebProcessManager
   
   public void a(int paramInt, WebProcessManager.WebProcessStartListener paramWebProcessStartListener)
   {
-    ThreadManager.post(new aklx(paramInt, paramWebProcessStartListener), 5, null, false);
+    ThreadManager.post(new akto(paramInt, paramWebProcessStartListener), 5, null, false);
   }
   
   public boolean a(String paramString)
@@ -513,7 +513,7 @@ public class WebProcessManager
     if (QLog.isColorLevel()) {
       QLog.d("WebProcessManager", 2, "restartWebProcess");
     }
-    new Handler().postDelayed(new akls(this), 800L);
+    new Handler().postDelayed(new aktj(this), 800L);
   }
   
   protected boolean f()
@@ -548,7 +548,7 @@ public class WebProcessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessManager
  * JD-Core Version:    0.7.0.1
  */

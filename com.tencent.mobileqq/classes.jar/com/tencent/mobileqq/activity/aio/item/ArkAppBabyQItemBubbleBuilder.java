@@ -59,9 +59,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import uua;
-import uub;
-import uuc;
+import uza;
+import uzb;
+import uzc;
 
 public class ArkAppBabyQItemBubbleBuilder
   extends TextItemBuilder
@@ -86,7 +86,7 @@ public class ArkAppBabyQItemBubbleBuilder
     BaseChatItemLayout localBaseChatItemLayout = (BaseChatItemLayout)super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
     if (localMessageForArkBabyqReply.showAsBabyq)
     {
-      localBaseChatItemLayout.setHeaderIcon(a(localBaseChatItemLayout, 1, AppConstants.au));
+      localBaseChatItemLayout.setHeaderIcon(a(localBaseChatItemLayout, 1, AppConstants.av));
       paramView = localBaseChatItemLayout.b();
       if ((paramView != null) && (paramView.getVisibility() == 0)) {
         paramView.setText("babyQ");
@@ -340,7 +340,7 @@ public class ArkAppBabyQItemBubbleBuilder
     switch (paramInt)
     {
     default: 
-    case 2131363517: 
+    case 2131363536: 
       do
       {
         return;
@@ -357,7 +357,7 @@ public class ArkAppBabyQItemBubbleBuilder
       paramChatMessage.putExtras(paramContext);
       ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramChatMessage, 21);
       return;
-    case 2131375567: 
+    case 2131375633: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
@@ -373,10 +373,10 @@ public class ArkAppBabyQItemBubbleBuilder
     do
     {
       return;
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433649);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433650);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uub(this, paramView), new uuc(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uzb(this, paramView), new uzc(this)).show();
   }
   
   protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
@@ -389,13 +389,13 @@ public class ArkAppBabyQItemBubbleBuilder
       paramChatMessage = paramView.e;
       if (bool)
       {
-        paramViewHolder = localResources.getColorStateList(2131494230);
+        paramViewHolder = localResources.getColorStateList(2131494236);
         paramChatMessage.setTextColor(paramViewHolder);
         paramView = paramView.e;
         if (!bool) {
           break label99;
         }
-        paramViewHolder = localResources.getColorStateList(2131494229);
+        paramViewHolder = localResources.getColorStateList(2131494235);
         label81:
         paramView.setLinkTextColor(paramViewHolder);
       }
@@ -404,9 +404,9 @@ public class ArkAppBabyQItemBubbleBuilder
     do
     {
       return;
-      paramViewHolder = localResources.getColorStateList(2131494227);
+      paramViewHolder = localResources.getColorStateList(2131494233);
       break;
-      paramViewHolder = localResources.getColorStateList(2131494228);
+      paramViewHolder = localResources.getColorStateList(2131494234);
       break label81;
       if (paramBubbleInfo.jdField_b_of_type_Int == 0)
       {
@@ -415,7 +415,7 @@ public class ArkAppBabyQItemBubbleBuilder
           break label261;
         }
       }
-      for (paramViewHolder = localResources.getColorStateList(2131494228);; paramViewHolder = ColorStateList.valueOf(paramBubbleInfo.c))
+      for (paramViewHolder = localResources.getColorStateList(2131494234);; paramViewHolder = ColorStateList.valueOf(paramBubbleInfo.c))
       {
         paramView.e.setLinkTextColor(paramViewHolder);
         if (!(paramView.e instanceof ETTextView)) {
@@ -466,7 +466,7 @@ public class ArkAppBabyQItemBubbleBuilder
         paramViewHolder.jdField_a_of_type_AndroidViewView.setMinimumHeight(AIOUtils.a(57.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       }
       if (paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo != null) {
-        paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, false, false, paramViewHolder.jdField_a_of_type_AndroidViewView, AppConstants.au, 0);
+        paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, false, false, paramViewHolder.jdField_a_of_type_AndroidViewView, AppConstants.av, 0);
       }
       if (paramViewHolder.jdField_a_of_type_AndroidViewView != null)
       {
@@ -478,7 +478,7 @@ public class ArkAppBabyQItemBubbleBuilder
       a(paramViewHolder, paramBaseChatItemLayout, paramChatMessage, paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
       a(paramViewHolder, paramChatMessage);
       if ((paramInt1 == paramInt2 - 1) && (paramChatMessage.mAnimFlag)) {
-        jdField_a_of_type_AndroidOsHandler.post(new uua(this, paramViewHolder, paramChatMessage));
+        jdField_a_of_type_AndroidOsHandler.post(new uza(this, paramViewHolder, paramChatMessage));
       }
       paramChatMessage.mAnimFlag = false;
     } while (paramViewHolder.jdField_a_of_type_AndroidViewView == null);
@@ -549,7 +549,7 @@ public class ArkAppBabyQItemBubbleBuilder
     for (int j = i;; j = 0)
     {
       if (j != 0) {
-        localQQCustomMenu.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
+        localQQCustomMenu.a(2131363536, this.jdField_a_of_type_AndroidContentContext.getString(2131435099), 2130838318);
       }
       ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       super.b(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext);
@@ -569,9 +569,9 @@ public class ArkAppBabyQItemBubbleBuilder
   {
     if (((MessageForArkBabyqReply)AIOUtils.a(paramView)).showAsBabyq)
     {
-      ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(AppConstants.au, 1);
-      localAllInOne.h = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, AppConstants.au);
-      localAllInOne.g = AppConstants.au;
+      ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(AppConstants.av, 1);
+      localAllInOne.h = ContactUtils.k(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, AppConstants.av);
+      localAllInOne.g = AppConstants.av;
       ProfileActivity.b(paramView.getContext(), localAllInOne);
       return;
     }

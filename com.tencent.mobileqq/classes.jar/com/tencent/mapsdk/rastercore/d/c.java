@@ -5,24 +5,24 @@ import com.tencent.mapsdk.raster.model.CameraPosition;
 import com.tencent.mapsdk.raster.model.CameraPosition.Builder;
 import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mapsdk.raster.model.LatLngBounds;
-import com.tencent.mapsdk.rastercore.b.a;
-import com.tencent.mapsdk.rastercore.d.a;
+import com.tencent.mapsdk.rastercore.b.d;
+import com.tencent.mapsdk.rastercore.b.e;
 
 public final class c
 {
-  private static final com.tencent.mapsdk.rastercore.b.b a = new com.tencent.mapsdk.rastercore.b.b(new com.tencent.mapsdk.rastercore.b.c(-20037508.34D, -20037508.34D), new com.tencent.mapsdk.rastercore.b.c(20037508.34D, 20037508.34D));
-  private e b;
+  private static final e a = new e(new com.tencent.mapsdk.rastercore.b.f(-20037508.34D, -20037508.34D), new com.tencent.mapsdk.rastercore.b.f(20037508.34D, 20037508.34D));
+  private f b;
   private b c;
-  private a d;
-  private a e;
+  private d d;
+  private d e;
   private boolean f = false;
-  private com.tencent.mapsdk.rastercore.b.b g;
+  private e g;
   private double h = 0.0D;
   private double i = 0.0D;
   
-  public c(e parame)
+  public c(f paramf)
   {
-    this.b = parame;
+    this.b = paramf;
   }
   
   private double a(double paramDouble)
@@ -39,10 +39,10 @@ public final class c
     return Math.abs(localLatLngBounds.getNortheast().getLatitude() - localLatLngBounds.getSouthwest().getLatitude());
   }
   
-  private com.tencent.mapsdk.rastercore.b.c[] k()
+  private com.tencent.mapsdk.rastercore.b.f[] k()
   {
     int j = this.c.getWidth();
-    return new com.tencent.mapsdk.rastercore.b.c[] { d.a.a(new PointF(0.0F, this.c.getHeight()), this.c.b(), this.c.a(), this.c.d()), d.a.a(new PointF(j, 0.0F), this.c.b(), this.c.a(), this.c.d()) };
+    return new com.tencent.mapsdk.rastercore.b.f[] { com.tencent.mapsdk.rastercore.c.a(new PointF(0.0F, this.c.getHeight()), this.c.b(), this.c.a(), this.c.d()), com.tencent.mapsdk.rastercore.c.a(new PointF(j, 0.0F), this.c.b(), this.c.a(), this.c.d()) };
   }
   
   public final float a(double paramDouble1, double paramDouble2)
@@ -57,16 +57,16 @@ public final class c
   
   public final PointF a(LatLng paramLatLng)
   {
-    com.tencent.mapsdk.rastercore.b.c localc = this.c.b();
+    com.tencent.mapsdk.rastercore.b.f localf = this.c.b();
     PointF localPointF = this.c.a();
-    a locala = this.c.d();
-    paramLatLng = d.a.a(paramLatLng);
+    d locald = this.c.d();
+    paramLatLng = com.tencent.mapsdk.rastercore.c.a(paramLatLng);
     double d3 = paramLatLng.b();
-    double d4 = localc.b();
+    double d4 = localf.b();
     double d1 = paramLatLng.a();
-    double d2 = localc.a();
-    d3 = (d3 - d4) / locala.d();
-    d1 = (d1 - d2) / locala.d();
+    double d2 = localf.a();
+    d3 = (d3 - d4) / locald.d();
+    d1 = (d1 - d2) / locald.d();
     paramLatLng = new PointF();
     paramLatLng.x = ((float)(d3 + localPointF.x));
     paramLatLng.y = ((float)(localPointF.y - d1));
@@ -75,21 +75,21 @@ public final class c
   
   public final LatLng a(int paramInt1, int paramInt2)
   {
-    return d.a.a(d.a.a(new PointF(paramInt1, paramInt2), this.c.b(), this.c.a(), this.c.d()));
+    return com.tencent.mapsdk.rastercore.c.a(com.tencent.mapsdk.rastercore.c.a(new PointF(paramInt1, paramInt2), this.c.b(), this.c.a(), this.c.d()));
   }
   
-  public final a a(a parama)
+  public final d a(d paramd)
   {
     int j;
     double d2;
     double d3;
     double d1;
     label67:
-    a locala2;
+    d locald2;
     if ((this.b.f().a() >= 3) && (this.b.f().b() > 1.0F))
     {
       j = 1;
-      d2 = parama.c();
+      d2 = paramd.c();
       d3 = this.e.a();
       if (j == 0) {
         break label200;
@@ -98,32 +98,32 @@ public final class c
       if (d2 >= d1 + d3) {
         break label210;
       }
-      locala2 = new a(this.e.c());
-      locala1 = locala2;
+      locald2 = new d(this.e.c());
+      locald1 = locald2;
       if (j != 0) {
-        locala2.a(1.3D);
+        locald2.a(1.3D);
       }
     }
     label200:
     label210:
-    for (a locala1 = locala2;; locala1 = parama)
+    for (d locald1 = locald2;; locald1 = paramd)
     {
-      d2 = parama.c();
+      d2 = paramd.c();
       d3 = this.d.c();
       if (j != 0) {}
       for (d1 = Math.log(1.3D) / Math.log(2.0D);; d1 = 0.0D)
       {
         if (d2 > d1 + d3)
         {
-          parama = new a(this.d.c());
-          locala1 = parama;
+          paramd = new d(this.d.c());
+          locald1 = paramd;
           if (j != 0)
           {
-            parama.a(1.3D);
-            locala1 = parama;
+            paramd.a(1.3D);
+            locald1 = paramd;
           }
         }
-        return locala1;
+        return locald1;
         j = 0;
         break;
         d1 = 0.0D;
@@ -135,8 +135,8 @@ public final class c
   public final void a()
   {
     this.g = a;
-    this.d = new a(18.0D);
-    this.e = new a(a.a);
+    this.d = new d(19.0D);
+    this.e = new d(d.a);
     this.c = this.b.c();
   }
   
@@ -145,29 +145,29 @@ public final class c
     this.h = 0.0D;
   }
   
-  public final void a(com.tencent.mapsdk.rastercore.b.c paramc)
+  public final void a(com.tencent.mapsdk.rastercore.b.f paramf)
   {
     double d2 = 0.0D;
     if (this.g == null) {
       return;
     }
-    com.tencent.mapsdk.rastercore.b.c[] arrayOfc = k();
-    com.tencent.mapsdk.rastercore.b.c localc1 = this.g.a();
-    com.tencent.mapsdk.rastercore.b.c localc2 = this.g.b();
-    if (localc1.a() > arrayOfc[0].a()) {}
-    for (double d1 = localc1.a() - arrayOfc[0].a();; d1 = 0.0D)
+    com.tencent.mapsdk.rastercore.b.f[] arrayOff = k();
+    com.tencent.mapsdk.rastercore.b.f localf1 = this.g.a();
+    com.tencent.mapsdk.rastercore.b.f localf2 = this.g.b();
+    if (localf1.a() > arrayOff[0].a()) {}
+    for (double d1 = localf1.a() - arrayOff[0].a();; d1 = 0.0D)
     {
-      if (localc1.b() > arrayOfc[0].b()) {
-        d2 = localc1.b() - arrayOfc[0].b();
+      if (localf1.b() > arrayOff[0].b()) {
+        d2 = localf1.b() - arrayOff[0].b();
       }
-      if (localc2.a() < arrayOfc[1].a()) {
-        d1 = localc2.a() - arrayOfc[1].a();
+      if (localf2.a() < arrayOff[1].a()) {
+        d1 = localf2.a() - arrayOff[1].a();
       }
-      if (localc2.b() < arrayOfc[1].b()) {
-        d2 = localc2.b() - arrayOfc[1].b();
+      if (localf2.b() < arrayOff[1].b()) {
+        d2 = localf2.b() - arrayOff[1].b();
       }
-      paramc.a(d1 + paramc.a());
-      paramc.b(paramc.b() + d2);
+      paramf.a(d1 + paramf.a());
+      paramf.b(paramf.b() + d2);
       return;
     }
   }
@@ -177,7 +177,7 @@ public final class c
     if (paramLatLngBounds == null)
     {
       this.g = a;
-      this.e.b(a.a);
+      this.e.b(d.a);
       this.f = false;
       return true;
     }
@@ -188,18 +188,18 @@ public final class c
     }
     Object localObject = paramLatLngBounds.getNortheast();
     paramLatLngBounds = paramLatLngBounds.getSouthwest();
-    localObject = d.a.a((LatLng)localObject);
-    paramLatLngBounds = d.a.a(paramLatLngBounds);
-    double d1 = ((com.tencent.mapsdk.rastercore.b.c)localObject).a() - paramLatLngBounds.a();
-    double d2 = ((com.tencent.mapsdk.rastercore.b.c)localObject).b() - paramLatLngBounds.b();
+    localObject = com.tencent.mapsdk.rastercore.c.a((LatLng)localObject);
+    paramLatLngBounds = com.tencent.mapsdk.rastercore.c.a(paramLatLngBounds);
+    double d1 = ((com.tencent.mapsdk.rastercore.b.f)localObject).a() - paramLatLngBounds.a();
+    double d2 = ((com.tencent.mapsdk.rastercore.b.f)localObject).b() - paramLatLngBounds.b();
     if (j * 1.0F / k > (float)(d1 / d2)) {}
-    for (float f1 = (float)(j * a.c(19.0D) / d1); f1 > 2.0F; f1 = (float)(k * a.c(19.0D) / d2)) {
+    for (float f1 = (float)(j * d.c(19.0D) / d1); f1 > 2.0F; f1 = (float)(k * d.c(19.0D) / d2)) {
       return false;
     }
     this.e.a(19);
     this.e.a(f1);
     this.c.d().b(this.e.c());
-    this.g = new com.tencent.mapsdk.rastercore.b.b(paramLatLngBounds, (com.tencent.mapsdk.rastercore.b.c)localObject);
+    this.g = new e(paramLatLngBounds, (com.tencent.mapsdk.rastercore.b.f)localObject);
     a(this.c.b());
     this.f = true;
     this.b.a(false, false);
@@ -220,9 +220,9 @@ public final class c
       return;
     }
     paramDouble1 = Math.max(paramDouble1 / d2, paramDouble2 / d1);
-    a locala = this.c.d();
-    locala.a(paramDouble1 * locala.b());
-    a(locala);
+    d locald = this.c.d();
+    locald.a(paramDouble1 * locald.b());
+    a(locald);
     this.b.a(false, false);
   }
   
@@ -231,10 +231,10 @@ public final class c
     this.i = 0.0D;
   }
   
-  public final com.tencent.mapsdk.rastercore.b.c[] b()
+  public final com.tencent.mapsdk.rastercore.b.f[] b()
   {
     int j = 0;
-    com.tencent.mapsdk.rastercore.b.c[] arrayOfc = new com.tencent.mapsdk.rastercore.b.c[8];
+    com.tencent.mapsdk.rastercore.b.f[] arrayOff = new com.tencent.mapsdk.rastercore.b.f[8];
     float f1 = this.c.getWidth();
     float f2 = this.c.getHeight();
     PointF localPointF1 = new PointF(0.0F, 0.0F);
@@ -247,36 +247,35 @@ public final class c
     PointF localPointF8 = new PointF(0.0F, f2 / 2.0F);
     while (j < 8)
     {
-      arrayOfc[j] = d.a.a(new PointF[] { localPointF1, localPointF2, localPointF3, localPointF4, localPointF5, localPointF6, localPointF7, localPointF8 }[j], this.c.b(), this.c.a(), this.c.d());
+      arrayOff[j] = com.tencent.mapsdk.rastercore.c.a(new PointF[] { localPointF1, localPointF2, localPointF3, localPointF4, localPointF5, localPointF6, localPointF7, localPointF8 }[j], this.c.b(), this.c.a(), this.c.d());
       j += 1;
     }
-    return arrayOfc;
+    return arrayOff;
   }
   
   public final LatLngBounds c()
   {
-    com.tencent.mapsdk.rastercore.b.c[] arrayOfc = k();
-    return new LatLngBounds(d.a.a(arrayOfc[0]), d.a.a(arrayOfc[1]));
+    com.tencent.mapsdk.rastercore.b.f[] arrayOff = k();
+    return new LatLngBounds(com.tencent.mapsdk.rastercore.c.a(arrayOff[0]), com.tencent.mapsdk.rastercore.c.a(arrayOff[1]));
   }
   
   public final void c(int paramInt)
   {
-    int j = 18;
-    if ((this.f) && (paramInt >= this.d.c())) {
-      paramInt = this.d.a();
+    int j = 19;
+    if (paramInt <= this.e.a()) {
+      paramInt = this.e.a();
     }
     for (;;)
     {
-      if (paramInt >= 18) {
+      if (paramInt >= 19) {
         paramInt = j;
       }
       for (;;)
       {
-        j = paramInt;
-        if (paramInt <= this.e.c()) {
-          j = this.e.a();
+        this.d.b(paramInt);
+        if (this.c.d().c() >= this.d.c()) {
+          this.c.b(this.d.c(), true, null);
         }
-        this.d.b(j);
         return;
       }
     }
@@ -284,7 +283,7 @@ public final class c
   
   public final CameraPosition d()
   {
-    LatLng localLatLng = d.a.a(this.c.b());
+    LatLng localLatLng = com.tencent.mapsdk.rastercore.c.a(this.c.b());
     float f1 = this.c.d().a();
     return CameraPosition.builder().target(localLatLng).zoom(f1).build();
   }
@@ -300,14 +299,17 @@ public final class c
       }
     }
     paramInt = j;
-    if (j <= a.a) {
-      paramInt = a.a;
+    if (j <= d.a) {
+      paramInt = d.a;
     }
     j = paramInt;
     if (paramInt >= this.d.c()) {
       j = this.d.a();
     }
     this.e.b(j);
+    if (this.c.d().c() <= this.e.c()) {
+      this.c.b(this.e.c(), true, null);
+    }
   }
   
   public final double e()
@@ -328,7 +330,7 @@ public final class c
   public final float f()
   {
     int j = this.c.getWidth();
-    return (float)(d.a.a(a(0, 0), a(j, 0)) / j);
+    return (float)(com.tencent.mapsdk.rastercore.c.a(a(0, 0), a(j, 0)) / j);
   }
   
   protected final double g()
@@ -341,12 +343,12 @@ public final class c
     return this.i;
   }
   
-  public final a i()
+  public final d i()
   {
     return this.d;
   }
   
-  public final a j()
+  public final d j()
   {
     return this.e;
   }

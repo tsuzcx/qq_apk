@@ -1,13 +1,16 @@
-import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.support.annotation.NonNull;
+import dov.com.qq.im.capture.text.PinYinSpan.OnPinYinDrawListener;
+import dov.com.qq.im.capture.text.SupernaturalTextItem;
 
 public class anww
-  implements Runnable
+  implements PinYinSpan.OnPinYinDrawListener
 {
-  public anww(ArtFilterItemView paramArtFilterItemView) {}
+  public anww(SupernaturalTextItem paramSupernaturalTextItem) {}
   
-  public void run()
+  @NonNull
+  public String a(@NonNull String paramString1, @NonNull String paramString2)
   {
-    this.a.a();
+    return paramString2.toUpperCase();
   }
 }
 

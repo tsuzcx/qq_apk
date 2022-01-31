@@ -1,34 +1,19 @@
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.ErrorHandler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer;
-import com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer.MultiOperateException;
-import com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer.RecordVideoBlockInfo;
-import java.util.List;
 
 public class ogb
-  implements Runnable
+  implements SimpleStepExector.ErrorHandler
 {
-  public ogb(EditVideoPlayer paramEditVideoPlayer) {}
+  public ogb(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public void run()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    this.a.jdField_a_of_type_JavaUtilList = ((MultiBlockVideoPlayer)this.a.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).a(true, 10000L, 6, this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditRecordVideoSource.a(), this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditRecordVideoSource.b(), this.a.jdField_a_of_type_Float);
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess getMultiVideoInfo find %d blocks", Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()));
-    if (this.a.jdField_a_of_type_JavaUtilList.size() > 0) {}
-    try
-    {
-      ((MultiBlockVideoPlayer)this.a.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((MultiBlockVideoPlayer.RecordVideoBlockInfo)this.a.jdField_a_of_type_JavaUtilList.get(0));
-      EditVideoPlayer.a(this.a);
-      return;
-    }
-    catch (MultiBlockVideoPlayer.MultiOperateException localMultiOperateException)
-    {
-      for (;;)
-      {
-        SLog.c("Q.qqstory.record.EditVideoPlayer", "onLoadSuccess setCurrentVideoFragment failed", localMultiOperateException);
-      }
-    }
+    SLog.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    new Handler(Looper.getMainLooper()).post(new ogc(this));
   }
 }
 

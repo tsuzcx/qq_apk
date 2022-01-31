@@ -1,29 +1,22 @@
-import android.opengl.GLSurfaceView.Renderer;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
 
 public class sgg
-  implements GLSurfaceView.Renderer
+  implements DialogInterface.OnClickListener
 {
-  public sgg(Conversation paramConversation) {}
+  public sgg(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void onDrawFrame(GL10 paramGL10) {}
-  
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
-  
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = paramGL10.glGetString(7937);
-    if (this.a.a != null) {
-      ThreadManager.post(new sgh(this), 5, null, true);
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    {
+      this.a.jdField_a_of_type_AndroidAppDialog.cancel();
+      if (this.a.jdField_a_of_type_Sgi != null) {
+        this.a.jdField_a_of_type_Sgi.a(false);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_GPU", 2, "onSurfaceCreated|GL_RENDERER= " + this.a.a);
-    }
-    this.a.a(new sgi(this));
   }
 }
 

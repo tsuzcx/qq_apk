@@ -245,10 +245,18 @@ public class LottieComposition
         paramResources = fromJsonSync(paramResources, new JSONObject(new String(arrayOfByte, "UTF-8")), paramBundle);
         return paramResources;
       }
-      catch (Exception paramResources)
+      catch (OutOfMemoryError paramResources)
       {
         Log.e("LottieComposition", "parse json error.", paramResources);
         return null;
+      }
+      catch (Exception paramResources)
+      {
+        for (;;)
+        {
+          Log.e("LottieComposition", "parse json error.", paramResources);
+          Utils.closeQuietly(paramInputStream);
+        }
       }
       finally
       {
@@ -402,7 +410,7 @@ public class LottieComposition
           j = k;
         }
       } while (j <= 4);
-      paramLottieComposition.addWarning("You have " + j + " images. Lottie should primarily be used with shapes. If you are using Adobe Illustrator, convert the Illustrator layers to shape layers.");
+      paramLottieComposition.addWarning("You have " + j + " images. Lottie should primarily be " + "used with shapes. If you are using Adobe Illustrator, convert the Illustrator layers" + " to shape layers.");
     }
     
     private static void parsePrecomps(@Nullable JSONArray paramJSONArray, LottieComposition paramLottieComposition)

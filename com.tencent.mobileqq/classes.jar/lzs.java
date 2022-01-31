@@ -1,30 +1,21 @@
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackJumpInfo;
 
 public class lzs
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lzs(OrientationDetector paramOrientationDetector, boolean paramBoolean) {}
+  public lzs(ComponentJump paramComponentJump, oidb_cmd0x68b.PackJumpInfo paramPackJumpInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    for (;;)
-    {
-      synchronized (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector))
-      {
-        if (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector) == null) {
-          return;
-        }
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).canDetectOrientation()) {
-            OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).enable();
-          }
-          return;
-        }
-      }
-      OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).disable();
-    }
+    paramView = this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_url.get();
+    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), paramView);
+    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_wording.get());
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import aist;
-import aisu;
-import aisv;
+import aixw;
+import aixx;
+import aixy;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -104,7 +104,7 @@ public class TribeTakeVideoHelper
       if (!a(paramRMVideoStateMgr))
       {
         QLog.d("tribe_publish_TakeVideoHelper", 4, "manifest file doesn't exist. generate again before publishing.");
-        a(paramRMVideoStateMgr, new aist(paramActivity, paramIntent, localPublishParam, str));
+        a(paramRMVideoStateMgr, new aixw(paramActivity, paramIntent, localPublishParam, str));
         return;
       }
       QLog.d("tribe_publish_TakeVideoHelper", 4, "manifest file already exists. start publishing.");
@@ -120,9 +120,9 @@ public class TribeTakeVideoHelper
     }
   }
   
-  private static void a(RMVideoStateMgr paramRMVideoStateMgr, aisv paramaisv)
+  private static void a(RMVideoStateMgr paramRMVideoStateMgr, aixy paramaixy)
   {
-    Stream.of(paramRMVideoStateMgr).map(new ThreadOffFunction(2)).map(new GenerateVideoManifestSegment()).subscribe(new aisu(paramaisv));
+    Stream.of(paramRMVideoStateMgr).map(new ThreadOffFunction(2)).map(new GenerateVideoManifestSegment()).subscribe(new aixx(paramaixy));
   }
   
   private static boolean a(RMVideoStateMgr paramRMVideoStateMgr)
@@ -154,7 +154,7 @@ public class TribeTakeVideoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeTakeVideoHelper
  * JD-Core Version:    0.7.0.1
  */

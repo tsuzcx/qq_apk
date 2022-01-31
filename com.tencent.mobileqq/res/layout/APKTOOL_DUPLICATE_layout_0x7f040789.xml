@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0397" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="60.0dip" android:minHeight="60.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a239c" android:background="@drawable/skin_searchbar_bg" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-        <include android:id="@id/search_box" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407e6" />
-    </LinearLayout>
-    <RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a239c">
-        <RelativeLayout android:id="@id/result_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a239d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="98.0dip" android:layout_centerHorizontal="true">
-            <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a239e" android:layout_width="23.0dip" android:layout_height="23.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020444" android:indeterminateBehavior="repeat" />
-            <TextView android:textSize="14.0sp" android:textColor="#ffababab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0c7b" />
-        </LinearLayout>
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0edd" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0583" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a235e" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b19e2" />
+</LinearLayout>

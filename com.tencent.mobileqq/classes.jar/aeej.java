@@ -1,18 +1,39 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.jsp.DataApiPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import java.io.IOException;
 
 public class aeej
   implements Runnable
 {
-  public aeej(MagicfaceViewController paramMagicfaceViewController) {}
+  public aeej(DataApiPlugin paramDataApiPlugin, String paramString1, String paramString2, Bundle paramBundle1, Bundle paramBundle2, String paramString3) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "func run, magicValue:" + this.a.a.magicValue);
+    i = 200;
+    Object localObject1 = null;
+    try
+    {
+      localObject2 = HttpUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.jdField_b_of_type_AndroidOsBundle);
+      localObject1 = localObject2;
     }
-    this.a.a(this.a.a, 1, null);
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Object localObject2;
+        i = 0;
+        localIOException.printStackTrace();
+      }
+    }
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.mRuntime.a();
+    if ((!TextUtils.isEmpty(this.c)) && (localObject2 != null)) {
+      ((Activity)localObject2).runOnUiThread(new aeek(this, (Activity)localObject2, localObject1, i));
+    }
   }
 }
 

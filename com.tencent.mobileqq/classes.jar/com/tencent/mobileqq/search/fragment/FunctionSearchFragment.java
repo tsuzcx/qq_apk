@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahta;
-import ahtb;
+import ahxr;
+import ahxs;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.mobileqq.search.SearchEntryConfigManager;
@@ -25,7 +25,7 @@ public class FunctionSearchFragment
   
   protected BaseMvpAdapter a()
   {
-    return new ahtb(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new ahxs(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
   }
   
   protected ISearchEngine a()
@@ -46,7 +46,7 @@ public class FunctionSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahta(this));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahxr(this));
   }
 }
 

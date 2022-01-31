@@ -9,12 +9,12 @@ import com.tencent.component.network.downloader.DownloadResult.Content;
 import com.tencent.component.network.downloader.DownloadResult.Process;
 import com.tencent.component.network.downloader.common.IPInfo;
 import com.tencent.component.network.module.base.QDLog;
-import pka;
+import pos;
 
 public class DownloadGlobalStrategy$StrategyInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pka();
+  public static final Parcelable.Creator CREATOR = new pos();
   public int a;
   private long jdField_a_of_type_Long;
   public DownloadResult a;

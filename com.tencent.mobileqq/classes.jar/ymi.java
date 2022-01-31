@@ -1,49 +1,28 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.locks.ReentrantLock;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class ymi
-  implements Runnable
+  extends yms
 {
-  private String jdField_a_of_type_JavaLangString;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-  
-  public ymi(ApolloRenderDriver paramApolloRenderDriver, String paramString, ReentrantLock paramReentrantLock, ApolloEngine paramApolloEngine)
+  public ymi(SpecailCareListActivity paramSpecailCareListActivity)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = paramReentrantLock;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloEngine);
+    super(paramSpecailCareListActivity, null);
   }
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    try
-    {
-      ApolloEngine localApolloEngine = (ApolloEngine)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localApolloEngine != null)
-      {
-        QLog.d("ApolloRenderDriver", 2, "run js =" + this.jdField_a_of_type_JavaLangString);
-        localApolloEngine.a(this.jdField_a_of_type_JavaLangString);
-        if (!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a.get()) {
-          localApolloEngine.a(0.0D);
-        }
-      }
+    if (this.a.d != 0) {
+      this.a.b = true;
+    }
+    while ((paramInt2 != 200) || (paramBitmap == null)) {
       return;
     }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    }
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ymi
  * JD-Core Version:    0.7.0.1
  */

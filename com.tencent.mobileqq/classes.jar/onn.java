@@ -1,18 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
 
-class onn
-  implements View.OnClickListener
+public class onn
+  implements View.OnFocusChangeListener
 {
-  onn(onm paramonm) {}
+  public onn(EditTextDialog paramEditTextDialog) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a();
-    }
+    SLog.b("EditTextDialog", "onFocusChange:" + paramBoolean);
   }
 }
 

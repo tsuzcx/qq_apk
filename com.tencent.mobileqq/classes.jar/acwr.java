@@ -1,10 +1,17 @@
-public abstract interface acwr
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+
+class acwr
+  implements Runnable
 {
-  public abstract void a();
+  acwr(acwp paramacwp) {}
   
-  public abstract void a(acwq paramacwq);
-  
-  public abstract boolean a(String paramString, long paramLong, byte[] paramArrayOfByte);
+  public void run()
+  {
+    UniformDownloadActivity.b(this.a.a).setVisibility(0);
+    UniformDownloadActivity.a(this.a.a).setVisibility(4);
+  }
 }
 
 

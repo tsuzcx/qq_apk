@@ -24,13 +24,13 @@ import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import yzz;
+import zgz;
 
 public class BabyQIPCModule
   extends QIPCModule
 {
   private static volatile BabyQIPCModule jdField_a_of_type_ComTencentMobileqqAppBabyQIPCModule;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new yzz(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new zgz(this);
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
   private ProfileCardInfo jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo = new ProfileCardInfo();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
@@ -128,7 +128,7 @@ public class BabyQIPCModule
     Object localObject = (FriendsManager)localQQAppInterface.getManager(50);
     if (this.jdField_a_of_type_ComTencentMobileqqDataCard == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataCard = ProfileCardUtil.a(localQQAppInterface, AppConstants.au);
+      this.jdField_a_of_type_ComTencentMobileqqDataCard = ProfileCardUtil.a(localQQAppInterface, AppConstants.av);
       this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard = this.jdField_a_of_type_ComTencentMobileqqDataCard;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (localObject != null)) {
@@ -183,7 +183,7 @@ public class BabyQIPCModule
     label1348:
     label1350:
     label1356:
-    for (boolean bool = paramString.b(AppConstants.au);; bool = false)
+    for (boolean bool = paramString.b(AppConstants.av);; bool = false)
     {
       if (bool) {}
       for (long l = 1L;; l = 0L)

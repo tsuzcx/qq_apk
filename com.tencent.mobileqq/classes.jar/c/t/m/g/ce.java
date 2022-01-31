@@ -1,18 +1,8 @@
 package c.t.m.g;
 
-import android.os.Process;
-import java.util.Map;
-
-final class ce
-  implements Runnable
+public abstract interface ce
 {
-  ce(String paramString1, int paramInt1, int paramInt2, String paramString2, Map paramMap1, Map paramMap2, boolean paramBoolean) {}
-  
-  public final void run()
-  {
-    Process.setThreadPriority(10);
-    cd.a(this.a, this.b, this.c, this.d, this.e, this.f, this.g, false);
-  }
+  public abstract String a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5);
 }
 
 

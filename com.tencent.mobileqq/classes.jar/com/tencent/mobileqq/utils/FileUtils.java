@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import akcf;
+import akjt;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -35,7 +35,7 @@ public class FileUtils
   static
   {
     jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangRunnable = new akcf();
+    jdField_a_of_type_JavaLangRunnable = new akjt();
     jdField_a_of_type_JavaLangString = "unknown_";
   }
   
@@ -2784,7 +2784,7 @@ public class FileUtils
     //   11: ifeq +60 -> 71
     //   14: new 36	java/io/File
     //   17: dup
-    //   18: getstatic 710	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
+    //   18: getstatic 710	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
     //   21: invokespecial 57	java/io/File:<init>	(Ljava/lang/String;)V
     //   24: astore 4
     //   26: new 36	java/io/File
@@ -2830,10 +2830,10 @@ public class FileUtils
     //   114: invokestatic 728	com/tencent/mobileqq/utils/FileUtils:d	()Z
     //   117: ifne +18 -> 135
     //   120: invokestatic 734	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   123: new 736	akcg
+    //   123: new 736	akju
     //   126: dup
     //   127: aload_0
-    //   128: invokespecial 739	akcg:<init>	(Landroid/content/Context;)V
+    //   128: invokespecial 739	akju:<init>	(Landroid/content/Context;)V
     //   131: invokevirtual 745	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   134: pop
     //   135: iload_2
@@ -2864,10 +2864,10 @@ public class FileUtils
     //   183: invokestatic 728	com/tencent/mobileqq/utils/FileUtils:d	()Z
     //   186: ifne +18 -> 204
     //   189: invokestatic 734	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   192: new 736	akcg
+    //   192: new 736	akju
     //   195: dup
     //   196: aload_0
-    //   197: invokespecial 739	akcg:<init>	(Landroid/content/Context;)V
+    //   197: invokespecial 739	akju:<init>	(Landroid/content/Context;)V
     //   200: invokevirtual 745	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   203: pop
     //   204: iload_1
@@ -2892,10 +2892,10 @@ public class FileUtils
     //   244: invokestatic 728	com/tencent/mobileqq/utils/FileUtils:d	()Z
     //   247: ifne +18 -> 265
     //   250: invokestatic 734	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   253: new 736	akcg
+    //   253: new 736	akju
     //   256: dup
     //   257: aload_0
-    //   258: invokespecial 739	akcg:<init>	(Landroid/content/Context;)V
+    //   258: invokespecial 739	akju:<init>	(Landroid/content/Context;)V
     //   261: invokevirtual 745	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   264: pop
     //   265: iload_1
@@ -5912,7 +5912,7 @@ public class FileUtils
   
   public static boolean b()
   {
-    return a(AppConstants.aI + "/Tencent/");
+    return a(AppConstants.aJ + "/Tencent/");
   }
   
   public static boolean b(Context paramContext, String paramString1, String paramString2)
@@ -6311,7 +6311,7 @@ public class FileUtils
   
   public static boolean c()
   {
-    return a(AppConstants.aJ);
+    return a(AppConstants.aK);
   }
   
   public static boolean c(String paramString)
@@ -6319,7 +6319,7 @@ public class FileUtils
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramString != null) {
-      if ((!paramString.startsWith(AppConstants.aI)) && (!paramString.startsWith("/data/media/")))
+      if ((!paramString.startsWith(AppConstants.aJ)) && (!paramString.startsWith("/data/media/")))
       {
         bool1 = bool2;
         if (!new File(paramString).exists()) {}
@@ -6345,7 +6345,7 @@ public class FileUtils
   
   public static boolean d()
   {
-    return a(AppConstants.aJ + "/" + "diskcache");
+    return a(AppConstants.aK + "/" + "diskcache");
   }
   
   public static boolean d(String paramString)

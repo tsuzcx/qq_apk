@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ugv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ugv(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public ugv(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((PhoneContactManager)this.a.app.getManager(10)).g();
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
+    if (this.a.d == 11) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
+    }
   }
 }
 

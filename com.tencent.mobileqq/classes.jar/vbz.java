@@ -1,22 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class vbz
-  implements AnimationTextView.OnDoubleClick
+  implements FMDialogUtil.FMDialogInterface
 {
-  public vbz(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
+  public vbz(FilePicItemBuilder paramFilePicItemBuilder, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public void a(View paramView)
+  public void a()
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    if (MixedMsgItemBuilder.b(this.a)) {
-      return;
-    }
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
+  
+  public void b() {}
 }
 
 

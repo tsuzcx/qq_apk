@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aiit;
-import aiiv;
-import aiiw;
+import aino;
+import ainq;
+import ainr;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -40,7 +40,7 @@ public class StructMsgItemLayout13
   extends AbsStructMsgItem
 {
   protected static HashMap a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aiiv(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ainq(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   static
@@ -60,7 +60,7 @@ public class StructMsgItemLayout13
     Object localObject1 = new RelativeLayout.LayoutParams(AIOUtils.a(40.0F, (Resources)localObject2), AIOUtils.a(40.0F, (Resources)localObject2));
     ((RelativeLayout.LayoutParams)localObject1).addRule(9);
     ((RelativeLayout.LayoutParams)localObject1).setMargins(0, AIOUtils.a(15.0F, (Resources)localObject2), 0, AIOUtils.a(15.0F, (Resources)localObject2));
-    localImageView.setImageResource(2130841086);
+    localImageView.setImageResource(2130841107);
     localImageView.setTag(2131362172, Integer.valueOf(1));
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     localImageView.setId(2131362159);
@@ -142,7 +142,7 @@ public class StructMsgItemLayout13
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      TextUtils.ellipsize(paramString, paramTextView.getPaint(), AIOUtils.a(190.0F, paramResources), TextUtils.TruncateAt.END, false, new aiiw(this, paramTextView, paramString));
+      TextUtils.ellipsize(paramString, paramTextView.getPaint(), AIOUtils.a(190.0F, paramResources), TextUtils.TruncateAt.END, false, new ainr(this, paramTextView, paramString));
       return;
     }
     paramTextView.setText("");
@@ -201,7 +201,7 @@ public class StructMsgItemLayout13
       paramView = (RelativeLayout)paramView;
       localResources = paramContext.getResources();
       localViewHolder = (StructMsgItemLayout13.ViewHolder)paramView.getTag();
-      Object localObject2 = paramContext.getResources().getDrawable(2130841086);
+      Object localObject2 = paramContext.getResources().getDrawable(2130841107);
       localObject2 = a(paramContext, paramBundle.v, AIOUtils.a(40.0F, localResources), AIOUtils.a(40.0F, localResources), (Drawable)localObject2);
       if (localObject2 != null)
       {
@@ -217,7 +217,7 @@ public class StructMsgItemLayout13
       if (!TextUtils.isEmpty(str)) {
         break label590;
       }
-      ThreadManager.post(new aiit(this, (StructMsgForGeneralShare)localObject2, localResources, localViewHolder), 8, null, true);
+      ThreadManager.post(new aino(this, (StructMsgForGeneralShare)localObject2, localResources, localViewHolder), 8, null, true);
       a(localResources, paramBundle.u, localViewHolder.jdField_a_of_type_AndroidWidgetTextView);
     }
     for (;;)

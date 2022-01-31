@@ -1,41 +1,16 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.TextData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.OnItemClickListener;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
 public class mnl
-  extends BaseItemViewHolder
-  implements View.OnLongClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private TextView a;
+  public mnl(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public mnl(View paramView, BaseData paramBaseData)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367129));
-    paramView.setOnLongClickListener(this);
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    switch (paramBaseData2.d)
-    {
-    default: 
-      return;
-    }
-    paramBaseData1 = (TextData)paramBaseData2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.a);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    new QQCustomMenu().a(0, "复制");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemOnItemClickListener.a(this);
-    return true;
+    ReadinjoySlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

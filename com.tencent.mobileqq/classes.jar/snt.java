@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.managers.LoadingStateManager;
 
 public class snt
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public snt(ForwardRecentActivity paramForwardRecentActivity) {}
+  public snt(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a(ForwardRecentActivity.a(this.a), paramView, paramView.getId());
+    LoadingStateManager.a().a(paramMessage.what);
+    if (paramMessage.what == 4)
+    {
+      this.a.a(1134013, 0L, false);
+      return true;
+    }
+    this.a.d(true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     snt
  * JD-Core Version:    0.7.0.1
  */

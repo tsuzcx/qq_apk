@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.ocr.view.TranslatePopupActionSheetMenuDialog;
 
-class agie
-  implements Runnable
+public class agie
+  extends View.AccessibilityDelegate
 {
-  agie(aghx paramaghx) {}
+  public agie(TranslatePopupActionSheetMenuDialog paramTranslatePopupActionSheetMenuDialog) {}
   
-  public void run()
+  @TargetApi(14)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    ScanTorchActivity.v(this.a.a);
+    if (paramInt != 32) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agie
  * JD-Core Version:    0.7.0.1
  */

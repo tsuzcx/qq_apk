@@ -1,49 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
 
 public class aomt
-  extends AnimatorListenerAdapter
+  extends Property
 {
-  public aomt(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public aomt(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
+    super(paramClass, paramString);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public Integer a(GroundDrawable paramGroundDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", mActionUpAnimator:" + this.a.b.get());
+    if (paramGroundDrawable != null) {
+      return Integer.valueOf(GroundDrawable.d(paramGroundDrawable));
     }
-    if (!this.a.b.get())
-    {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
-      this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout.setVisibility(0);
-      return;
-      this.a.d();
-      this.a.a(1.0F);
-    }
+    return Integer.valueOf(0);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
+    if (paramGroundDrawable != null) {
+      GroundDrawable.d(paramGroundDrawable, paramInteger.intValue());
     }
   }
 }

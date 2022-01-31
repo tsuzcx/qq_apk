@@ -1,30 +1,48 @@
-import android.view.animation.Interpolator;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
+import com.tencent.mobileqq.app.EmoticonObserver;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emoticon.SogouEmoji;
+import com.tencent.mobileqq.emoticon.SogouEmojiTaskController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aclj
-  implements Interpolator
+  extends EmoticonObserver
 {
-  public aclj(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
+  public aclj(SogouEmoji paramSogouEmoji) {}
   
-  public float getInterpolation(float paramFloat)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramFloat == 0.0F) {
-      return 0.0F;
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func onEmosmBack begins, isSuccess:" + paramBoolean + ",type:" + paramInt);
     }
-    float f = paramFloat * 2.0F;
-    if (f >= 2.0F) {
-      return 1.0F;
-    }
-    paramFloat = 0.45F / 4.0F;
-    if (f < 1.0F)
+    if ((!paramBoolean) || (paramObject == null) || (paramInt != 3)) {}
+    do
     {
-      f -= 1.0F;
-      d = Math.pow(2.0D, 10.0F * f);
-      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
-    }
-    f -= 1.0F;
-    double d = Math.pow(2.0D, -10.0F * f);
-    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramObject = (EmoticonResp)paramObject;
+          } while (paramObject.data == null);
+          paramObject = (ArrayList)paramObject.data;
+        } while (paramObject.size() == 0);
+        paramBoolean = this.a.a.a(this.a.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiKeyBack begins, isTaskExist:" + paramBoolean);
+        }
+        if (paramBoolean) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, task CANCELLED by user.");
+      return;
+      this.a.a((Emoticon)paramObject.get(0));
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, Ready to send.");
   }
 }
 

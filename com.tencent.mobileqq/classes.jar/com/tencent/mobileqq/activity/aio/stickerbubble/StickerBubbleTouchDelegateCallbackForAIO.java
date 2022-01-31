@@ -9,7 +9,7 @@ import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
-import wcf;
+import whn;
 
 public class StickerBubbleTouchDelegateCallbackForAIO
   implements StickerBubbleAnimationViewHolder.AnimationViewCallback, StickerBubbleTouchDelegate.StickerBubbleSendCallbackByGesture
@@ -61,7 +61,7 @@ public class StickerBubbleTouchDelegateCallbackForAIO
     {
       StickerBubbleAnimationHelper.a(localPEItemData, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
       this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(null);
-      ThreadManager.post(new wcf(this, localPEItemData, paramInt2), 10, null, false);
+      ThreadManager.post(new whn(this, localPEItemData, paramInt2), 10, null, false);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X80091A5", "0X80091A5", localPEItemData.jdField_a_of_type_Int, 0, Integer.toString(paramInt2), "", "", "");
     }
   }

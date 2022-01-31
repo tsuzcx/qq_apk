@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.nearby.now.view.player;
 
-import aeyr;
-import aeyt;
-import aeyv;
-import aeyx;
-import aeyz;
-import aeza;
+import afdo;
+import afdq;
+import afds;
+import afdu;
+import afdw;
+import afdx;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
@@ -159,11 +159,11 @@ public class VideoViewTVKImpl
         if (this.jdField_a_of_type_Boolean) {
           this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(0);
         }
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new aeyr(this));
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new aeyt(this));
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new aeyv(this));
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new aeyx(this));
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(new aeyz(this, paramString2, paramString1, paramString3));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new afdo(this));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new afdq(this));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new afds(this));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new afdu(this));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(new afdw(this, paramString2, paramString1, paramString3));
       }
       paramString1 = a(str, paramString2, paramLong);
       paramString1.setConfigMap("keep_last_frame", "true");
@@ -179,7 +179,7 @@ public class VideoViewTVKImpl
     } while (TextUtils.isEmpty(paramString3));
     if (!paramString3.contains("authkey"))
     {
-      Bosses.get().postJob(new aeza(this, paramString3, paramString1));
+      Bosses.get().postJob(new afdx(this, paramString3, paramString1));
       return;
     }
     this.c = InnerDns.b(this.c.replace("https://", "http://"), 1012);

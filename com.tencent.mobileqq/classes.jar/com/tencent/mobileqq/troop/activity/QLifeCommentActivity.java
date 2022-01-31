@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aiuq;
-import aiur;
-import aius;
+import aizt;
+import aizu;
+import aizv;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -68,14 +68,14 @@ public class QLifeCommentActivity
     if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    this.jdField_e_of_type_AndroidViewView = ((ViewStub)findViewById(2131366609)).inflate();
-    this.d = ((TextView)findViewById(2131366629));
+    this.jdField_e_of_type_AndroidViewView = ((ViewStub)findViewById(2131366607)).inflate();
+    this.d = ((TextView)findViewById(2131366627));
     this.jdField_e_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_f_of_type_AndroidViewView = findViewById(2131366627);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366628));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366629));
+    this.jdField_f_of_type_AndroidViewView = findViewById(2131366625);
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366626));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366627));
     if (TextUtils.isEmpty(this.B)) {
-      this.jdField_f_of_type_AndroidWidgetTextView.setHint(2131430305);
+      this.jdField_f_of_type_AndroidWidgetTextView.setHint(2131430308);
     }
     for (;;)
     {
@@ -90,7 +90,7 @@ public class QLifeCommentActivity
       }
       this.rightViewText.setEnabled(false);
       if ((!TextUtils.isEmpty(this.w)) && (this.g)) {
-        SosoInterface.a(new aiuq(this, 0, true, true, 0L, false, false, "QLifeCommentActivity"));
+        SosoInterface.a(new aizt(this, 0, true, true, 0L, false, false, "QLifeCommentActivity"));
       }
       return;
       this.jdField_f_of_type_AndroidWidgetTextView.setHint(this.B);
@@ -139,7 +139,7 @@ public class QLifeCommentActivity
           paramBundle.putExtra("result", paramJSONObject.toString());
           setResult(-1, paramBundle);
           finish();
-          QQToast.a(this, 2, 2131430346, 1).b(getTitleBarHeight());
+          QQToast.a(this, 2, 2131430349, 1).b(getTitleBarHeight());
           ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "success", 0, 0, paramJSONObject.optString("comment_id"), this.x, this.jdField_a_of_type_JavaUtilArrayList.size() + "", this.A);
         }
         for (;;)
@@ -149,7 +149,7 @@ public class QLifeCommentActivity
           paramBundle = paramJSONObject.optString("msg");
           paramJSONObject = paramBundle;
           if (TextUtils.isEmpty(paramBundle)) {
-            paramJSONObject = getString(2131430309, new Object[] { Integer.valueOf(paramInt) });
+            paramJSONObject = getString(2131430312, new Object[] { Integer.valueOf(paramInt) });
           }
           QQToast.a(this, 1, paramJSONObject, 0).b(getTitleBarHeight());
           c(false);
@@ -239,7 +239,7 @@ public class QLifeCommentActivity
         this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$PicUploadThread = null;
       }
       if (!HttpUtil.a(this)) {
-        QQToast.a(this, 2131433103, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131433117, 0).b(getTitleBarHeight());
       }
       do
       {
@@ -247,7 +247,7 @@ public class QLifeCommentActivity
         if (TextUtils.isEmpty(this.v))
         {
           if (TextUtils.isEmpty(this.C)) {
-            QQToast.a(this, 2131430307, 1).b(getTitleBarHeight());
+            QQToast.a(this, 2131430310, 1).b(getTitleBarHeight());
           }
           for (;;)
           {
@@ -264,12 +264,12 @@ public class QLifeCommentActivity
         i = ((String)localObject1).length();
         if (i < this.jdField_e_of_type_Int)
         {
-          QQToast.a(this, getString(2131430323, new Object[] { Integer.valueOf(this.jdField_e_of_type_Int) }), 0).b(getTitleBarHeight());
+          QQToast.a(this, getString(2131430326, new Object[] { Integer.valueOf(this.jdField_e_of_type_Int) }), 0).b(getTitleBarHeight());
           return;
         }
         if (i > this.jdField_f_of_type_Int)
         {
-          QQToast.a(this, getString(2131430324, new Object[] { Integer.valueOf(this.jdField_f_of_type_Int) }), 0).b(getTitleBarHeight());
+          QQToast.a(this, getString(2131430327, new Object[] { Integer.valueOf(this.jdField_f_of_type_Int) }), 0).b(getTitleBarHeight());
           return;
         }
       } while (!a(this.jdField_i_of_type_Int, false));
@@ -314,7 +314,7 @@ public class QLifeCommentActivity
         ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
       }
       ((Bundle)localObject2).putString("spic", ((StringBuilder)localObject1).toString());
-      ((Bundle)localObject2).putString("version", "7.6.3");
+      ((Bundle)localObject2).putString("version", "7.6.8");
       ((Bundle)localObject2).putString("platform", "android");
       ((Bundle)localObject2).putString("Origin", "http://qlife.qq.com");
       ((Bundle)localObject2).putString("Cookie", "skey=" + this.u + ";uin=" + this.app.getCurrentAccountUin());
@@ -365,13 +365,13 @@ public class QLifeCommentActivity
       ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "cancel", 0, 0, "", "", "", this.A);
       return true;
     }
-    Object localObject = getString(2131434781);
-    String str = getString(2131430306);
+    Object localObject = getString(2131434797);
+    String str = getString(2131430309);
     localObject = DialogUtil.a(this, 230).setTitle((String)localObject).setMessage(str);
-    ((QQCustomDialog)localObject).setPositiveButton(getString(2131433011), new aiur(this, (QQCustomDialog)localObject));
-    ((QQCustomDialog)localObject).setNegativeButton(getString(2131433012), new aius(this, (QQCustomDialog)localObject));
-    ((QQCustomDialog)localObject).setPositiveButtonContentDescription(getString(2131433011));
-    ((QQCustomDialog)localObject).setNegativeButtonContentDescription(getString(2131433011));
+    ((QQCustomDialog)localObject).setPositiveButton(getString(2131433025), new aizu(this, (QQCustomDialog)localObject));
+    ((QQCustomDialog)localObject).setNegativeButton(getString(2131433026), new aizv(this, (QQCustomDialog)localObject));
+    ((QQCustomDialog)localObject).setPositiveButtonContentDescription(getString(2131433025));
+    ((QQCustomDialog)localObject).setNegativeButtonContentDescription(getString(2131433025));
     ((QQCustomDialog)localObject).show();
     return true;
   }
@@ -388,7 +388,7 @@ public class QLifeCommentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.QLifeCommentActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,46 @@
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
-import com.tencent.av.redpacket.ui.RedPacketGameView;
+import com.tencent.av.opengl.effects.EffectsRenderController;
+import com.tencent.qphone.base.util.QLog;
 
 public class jls
-  implements Runnable
 {
-  public jls(RedPacketGameView paramRedPacketGameView, ViewGroup paramViewGroup) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = 0;
+  int c = 0;
+  int d = 0;
   
-  public void run()
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, boolean paramBoolean, long paramLong2)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidViewView = null;
-    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c != null)
-    {
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c.recycle();
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.c = null;
+    String str;
+    StringBuilder localStringBuilder;
+    if ((paramArrayOfByte == null) || (this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.d != paramInt4) || (this.jdField_a_of_type_Long != paramLong1) || (this.jdField_a_of_type_Boolean != paramBoolean)) {
+      if (QLog.isColorLevel())
+      {
+        str = EffectsRenderController.a;
+        localStringBuilder = new StringBuilder().append("onProcessFrame, data[");
+        if (paramArrayOfByte == null) {
+          break label285;
+        }
+      }
     }
-    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b != null)
+    label285:
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b.recycle();
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.b = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      QLog.d(str, 1, bool + "], debugSeq[" + paramLong2 + "], width[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], height[" + this.b + "->" + paramInt2 + "], format[" + this.c + "->" + paramInt3 + "], angle[" + this.d + "->" + paramInt4 + "], FPS[" + this.jdField_a_of_type_Long + "->" + paramLong1 + "], isFront[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "]");
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.d = paramInt4;
+      this.jdField_a_of_type_Long = paramLong1;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jls
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,24 @@
-import android.util.Pair;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Calendar;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class zhi
   implements Runnable
 {
-  public zhi(MessageRoamManager paramMessageRoamManager, int paramInt) {}
+  public zhi(BaseActivity paramBaseActivity) {}
   
   public void run()
   {
-    Object localObject = Calendar.getInstance();
-    int j = this.jdField_a_of_type_Int;
-    int i = 8;
-    while (j < this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.size())
+    try
     {
-      ((Calendar)localObject).setTimeInMillis(((Long)this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.get(j)).longValue());
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)localObject);
-      Pair localPair = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)((Calendar)localObject).clone());
-      int k = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
-      if (i - k <= 0) {
-        break;
+      if (BaseActivity.access$300() != null)
+      {
+        ((SensorManager)this.a.getApplicationContext().getSystemService("sensor")).unregisterListener(BaseActivity.access$300());
+        BaseActivity.access$302(null);
       }
-      j += 1;
-      i -= k;
+      return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatHistoryForC2C.class);
-    ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(0), 0L);
+    finally {}
   }
 }
 

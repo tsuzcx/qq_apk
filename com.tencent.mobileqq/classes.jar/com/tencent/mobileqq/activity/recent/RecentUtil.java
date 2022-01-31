@@ -131,13 +131,13 @@ import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
-import xlf;
-import xlg;
-import xlh;
-import xli;
-import xlj;
-import xlk;
-import xll;
+import xrm;
+import xrn;
+import xro;
+import xrp;
+import xrq;
+import xrr;
+import xrs;
 
 public final class RecentUtil
 {
@@ -174,10 +174,10 @@ public final class RecentUtil
       if (paramInt == 0)
       {
         bool1 = true;
-        if (((paramRecentUser.uin == null) || (paramRecentUser.uin.length() != 4)) && (!AppConstants.H.equals(paramRecentUser.uin)) && (!TextUtils.equals(paramRecentUser.uin, AppConstants.ar)))
+        if (((paramRecentUser.uin == null) || (paramRecentUser.uin.length() != 4)) && (!AppConstants.H.equals(paramRecentUser.uin)) && (!TextUtils.equals(paramRecentUser.uin, AppConstants.as)))
         {
           bool2 = bool3;
-          if (!TextUtils.equals(paramRecentUser.uin, AppConstants.aH)) {
+          if (!TextUtils.equals(paramRecentUser.uin, AppConstants.aI)) {
             break label224;
           }
         }
@@ -359,7 +359,7 @@ public final class RecentUtil
           paramRecentBaseData.putExtra("hide_more_button", true);
           paramRecentBaseData.putExtra("webStyle", "noBottomBar");
           paramRecentBaseData.putExtra("isScreenOrientationPortrait", true);
-          paramRecentBaseData.putExtra("title", paramQQAppInterface.getApp().getString(2131439195));
+          paramRecentBaseData.putExtra("title", paramQQAppInterface.getApp().getString(2131439227));
           paramRecentBaseData.addFlags(603979776);
           paramActivity.startActivity(paramRecentBaseData);
           paramInt = i;
@@ -707,7 +707,7 @@ public final class RecentUtil
     localIntent.putExtra("is_first_open_imax_ad", c);
     c = false;
     paramContext.startActivity(localIntent);
-    ThreadManager.post(new xll(paramQQAppInterface, paramString, paramInt, paramAdvertisementItem), 5, null, false);
+    ThreadManager.post(new xrs(paramQQAppInterface, paramString, paramInt, paramAdvertisementItem), 5, null, false);
     AdvertisementRecentUserManager.a().a(paramQQAppInterface, 2, paramAdvertisementItem);
     if (QLog.isColorLevel()) {
       QLog.d("RecentUtil", 2, "openAdvertisement start, uin:" + paramString);
@@ -842,7 +842,7 @@ public final class RecentUtil
                 }
                 localObject1 = paramRecentUser.uin;
                 i = paramRecentUser.type;
-                ThreadManager.post(new xli((MessageHandler)paramQQAppInterface.a(0), (String)localObject1, i), 8, null, false);
+                ThreadManager.post(new xrp((MessageHandler)paramQQAppInterface.a(0), (String)localObject1, i), 8, null, false);
                 paramQQAppInterface.a().a(paramRecentUser.uin, paramRecentUser.type, true, true);
                 if (paramRecentUser.type == 1) {
                   HotChatUtil.a(paramQQAppInterface, paramRecentUser.uin);
@@ -859,7 +859,7 @@ public final class RecentUtil
                   TroopBarAssistantManager.a().d(paramQQAppInterface);
                   paramQQAppInterface.a(true, 0);
                 }
-                if ((paramRecentUser.type == 7230) && (AppConstants.at.equals(paramRecentUser.uin)))
+                if ((paramRecentUser.type == 7230) && (AppConstants.au.equals(paramRecentUser.uin)))
                 {
                   localObject1 = ServiceAccountFolderManager.a();
                   i = ((ServiceAccountFolderManager)localObject1).b();
@@ -903,7 +903,7 @@ public final class RecentUtil
               {
                 i += 1;
                 break label701;
-                if ((1032 != paramRecentUser.type) || (!AppConstants.aE.equals(paramRecentUser.uin))) {
+                if ((1032 != paramRecentUser.type) || (!AppConstants.aF.equals(paramRecentUser.uin))) {
                   break;
                 }
                 paramQQAppInterface.a().b();
@@ -955,7 +955,7 @@ public final class RecentUtil
               if (paramRecentUser.type == 7210)
               {
                 TroopBarAssistantManager.a().a(paramQQAppInterface, true);
-                ThreadManager.post(new xlj(paramQQAppInterface), 8, null, false);
+                ThreadManager.post(new xrq(paramQQAppInterface), 8, null, false);
                 TroopBarAssistantManager.a().h(paramQQAppInterface);
                 return;
               }
@@ -1079,7 +1079,7 @@ public final class RecentUtil
                               localObject1 = paramRecentUser.uin;
                               i = paramRecentUser.type;
                               paramQQAppInterface.a().d((String)localObject1, i);
-                              ThreadManager.post(new xlh((MessageHandler)paramQQAppInterface.a(0), (String)localObject1, i), 8, null, false);
+                              ThreadManager.post(new xro((MessageHandler)paramQQAppInterface.a(0), (String)localObject1, i), 8, null, false);
                               if (paramRecentUser.type != 5000) {
                                 break label422;
                               }
@@ -1101,7 +1101,7 @@ public final class RecentUtil
                           {
                             j += 1;
                             break label164;
-                            if ((1032 != paramRecentUser.type) || (!AppConstants.aE.equals(paramRecentUser.uin))) {
+                            if ((1032 != paramRecentUser.type) || (!AppConstants.aF.equals(paramRecentUser.uin))) {
                               break label90;
                             }
                             paramQQAppInterface.a().b();
@@ -1196,7 +1196,7 @@ public final class RecentUtil
         } while (paramQQAppInterface == null);
         paramRecentUser.a(paramQQAppInterface.time);
         return;
-        if (AppConstants.al.equals(paramRecentUser.uin))
+        if (AppConstants.am.equals(paramRecentUser.uin))
         {
           ((DingdongPluginManager)paramQQAppInterface.getManager(114)).a(true, paramBoolean2, false);
           return;
@@ -1247,7 +1247,7 @@ public final class RecentUtil
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    ThreadManager.post(new xlk(paramQQAppInterface, paramString, paramInt), 2, null, false);
+    ThreadManager.post(new xrr(paramQQAppInterface, paramString, paramInt), 2, null, false);
     if ("2290230341".equals(paramString))
     {
       if (paramInt != 1) {
@@ -1362,7 +1362,7 @@ public final class RecentUtil
     }
     Object localObject1;
     Object localObject2;
-    if (AppConstants.aC.equals(paramRecentUser.uin))
+    if (AppConstants.aD.equals(paramRecentUser.uin))
     {
       paramRecentUser = new Intent(paramActivity, HotChatCenterFragment.class);
       paramRecentBaseData = (HotChatCenterManager)paramQQAppInterface.getManager(254);
@@ -1419,7 +1419,7 @@ public final class RecentUtil
     label4280:
     for (paramInt = 1;; paramInt = 0)
     {
-      ThreadManager.post(new xlf(paramQQAppInterface, paramInt), 8, null, false);
+      ThreadManager.post(new xrm(paramQQAppInterface, paramInt), 8, null, false);
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800623E", "0X800623E", 0, 0, "", "", "", "");
       ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_tribe", "", "Msglist", "Clk_tribeHelper", 0, 0, "", "", "", "");
       if (ReadInJoyHelper.a(paramQQAppInterface))
@@ -1445,7 +1445,7 @@ public final class RecentUtil
       }
       int j;
       int i;
-      if (TextUtils.equals(AppConstants.ar, paramRecentUser.uin))
+      if (TextUtils.equals(AppConstants.as, paramRecentUser.uin))
       {
         if (paramRecentBaseData != null) {
           paramInt = paramRecentBaseData.i;
@@ -1559,7 +1559,7 @@ public final class RecentUtil
         }
         else
         {
-          if (AppConstants.am.equals(paramRecentUser.uin))
+          if (AppConstants.an.equals(paramRecentUser.uin))
           {
             paramRecentUser = (BlessManager)paramQQAppInterface.getManager(137);
             if (paramRecentUser != null)
@@ -1708,11 +1708,11 @@ public final class RecentUtil
             }
             else
             {
-              if (AppConstants.al.equals(paramRecentUser.uin))
+              if (AppConstants.am.equals(paramRecentUser.uin))
               {
                 ((DingdongPluginManager)paramQQAppInterface.getManager(114)).a(false, false, true);
                 paramRecentUser = new Intent();
-                paramRecentUser.putExtra("_current_unread_num", paramQQAppInterface.a().a(AppConstants.al, 9999));
+                paramRecentUser.putExtra("_current_unread_num", paramQQAppInterface.a().a(AppConstants.am, 9999));
                 paramRecentUser.putExtra("_from_", 2);
                 DingdongPluginHelper.a(paramActivity, "com.dingdong.business.base.activity.DingdongUinListActivity", paramRecentUser, -1);
                 DingdongPluginHelper.a("0x8005EBA");
@@ -1720,7 +1720,7 @@ public final class RecentUtil
               }
               Object localObject9;
               MessageRecord localMessageRecord;
-              if (TextUtils.equals(AppConstants.as, paramRecentUser.uin))
+              if (TextUtils.equals(AppConstants.at, paramRecentUser.uin))
               {
                 localObject1 = paramQQAppInterface.a();
                 localObject9 = new ArrayList();
@@ -2050,7 +2050,7 @@ public final class RecentUtil
                 label4033:
                 paramInt = 5;
                 continue;
-                if (AppConstants.at.equals(paramRecentUser.uin))
+                if (AppConstants.au.equals(paramRecentUser.uin))
                 {
                   paramRecentUser = new Intent(paramActivity, ServiceAccountFolderActivity.class);
                   paramRecentUser.putExtra("from_source", "from_msg_tab");
@@ -2062,23 +2062,23 @@ public final class RecentUtil
                   if (paramRecentBaseData == null) {}
                   for (paramInt = -1;; paramInt = paramRecentBaseData.i)
                   {
-                    ThreadManager.executeOnSubThread(new xlg(paramQQAppInterface, paramInt));
+                    ThreadManager.executeOnSubThread(new xrn(paramQQAppInterface, paramInt));
                     PublicTracker.a(null, "SERVICE_FOLDER_COST");
                     return true;
                   }
                 }
-                if (AppConstants.av.equals(paramRecentUser.uin))
+                if (AppConstants.aw.equals(paramRecentUser.uin))
                 {
                   ((ChangeMachineManager)paramQQAppInterface.getManager(182)).a(paramActivity);
                   return true;
                 }
-                if (AppConstants.aE.equals(paramRecentUser.uin))
+                if (AppConstants.aF.equals(paramRecentUser.uin))
                 {
                   ConfessMsgListFragment.a(paramActivity, 1);
                   ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X8008F4C", "0X8008F4C", 0, 0, "", "", "", "");
                   return true;
                 }
-                if (AppConstants.aH.equals(paramRecentUser.uin))
+                if (AppConstants.aI.equals(paramRecentUser.uin))
                 {
                   WeishiReportUtil.a(paramRecentBaseData, 9);
                   ReadInJoyActivityHelper.a(paramActivity, 9, null);
@@ -2131,7 +2131,7 @@ public final class RecentUtil
       break label8;
     }
     label8:
-    label610:
+    label629:
     for (;;)
     {
       return;
@@ -2196,11 +2196,16 @@ public final class RecentUtil
         if ((paramInt == 1001) && (Long.valueOf(paramString).longValue() > AppConstants.l)) {
           break;
         }
-        if ((paramInt == 1001) && (MsgProxyUtils.d(paramString)))
+        if ((paramInt == 1001) && ((MsgProxyUtils.d(paramString)) || (MsgProxyUtils.e(paramString))))
         {
-          if (MsgProxyUtils.e(paramString))
+          if (MsgProxyUtils.f(paramString))
           {
             MsgBoxProtocol.a(paramQQAppInterface, 1, null);
+            return;
+          }
+          if (MsgProxyUtils.e(paramString))
+          {
+            MsgBoxProtocol.a(paramQQAppInterface);
             return;
           }
           MsgBoxProtocol.a(paramQQAppInterface, 2, null);
@@ -2215,7 +2220,7 @@ public final class RecentUtil
         for (l1 = Long.valueOf((String)localObject1).longValue();; l1 = Long.valueOf(paramString).longValue())
         {
           if (l1 == -1L) {
-            break label610;
+            break label629;
           }
           localObject1 = new msg_svc.PbC2CReadedReportReq.UinPairReadInfo();
           ((msg_svc.PbC2CReadedReportReq.UinPairReadInfo)localObject1).peer_uin.set(l1);

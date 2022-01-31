@@ -1,19 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
 public class nzs
-  implements View.OnClickListener
+  implements EmoticonCallback
 {
-  public nzs(StoryListPresenter paramStoryListPresenter, GuideInfoDialog paramGuideInfoDialog) {}
+  public nzs(KeyboardAndEmojiManager paramKeyboardAndEmojiManager) {}
   
-  public void onClick(View paramView)
+  public void a(EmoticonInfo paramEmoticonInfo)
   {
-    StoryReportor.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog.dismiss();
+    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (KeyboardAndEmojiManager.a(this.a) != null)) {
+      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).a(PlayModeUtils.a(), KeyboardAndEmojiManager.a(this.a), KeyboardAndEmojiManager.a(this.a), null);
+    }
   }
+  
+  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public boolean a(EmoticonInfo paramEmoticonInfo)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    if (KeyboardAndEmojiManager.a(this.a) != null) {
+      TextUtils.a(KeyboardAndEmojiManager.a(this.a));
+    }
+  }
+  
+  public void b(EmoticonInfo paramEmoticonInfo) {}
+  
+  public void c() {}
+  
+  public void setting() {}
 }
 
 

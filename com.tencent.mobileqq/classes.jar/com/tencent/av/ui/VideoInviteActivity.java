@@ -63,16 +63,16 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import kav;
-import kaw;
-import kay;
-import kaz;
-import kba;
-import kbb;
-import kbe;
-import kbg;
-import kbh;
-import kbi;
+import kcz;
+import kda;
+import kdc;
+import kdd;
+import kde;
+import kdf;
+import kdi;
+import kdk;
+import kdl;
+import kdm;
 import mqq.app.BaseActivity;
 
 public class VideoInviteActivity
@@ -89,10 +89,10 @@ public class VideoInviteActivity
   public RelativeLayout a;
   public TextView a;
   public VideoController a;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new kbe(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new kdi(this);
   public SessionInfo a;
   public VideoAppInterface a;
-  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new kbb(this);
+  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new kdf(this);
   public QavInOutAnimation a;
   public QavPanel a;
   QAVNotification jdField_a_of_type_ComTencentAvUtilsQAVNotification = null;
@@ -100,7 +100,7 @@ public class VideoInviteActivity
   VExtensionInfoManager jdField_a_of_type_ComTencentAvUtilsVExtensionInfoManager = null;
   VideoWifiLock jdField_a_of_type_ComTencentAvUtilsVideoWifiLock;
   public VipFullScreenVideoView a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new kba(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new kde(this);
   String jdField_a_of_type_JavaLangString = null;
   public WeakReference a;
   public boolean a;
@@ -175,7 +175,7 @@ public class VideoInviteActivity
   
   ActionSheet a(Context paramContext)
   {
-    paramContext = new kbh(this, paramContext);
+    paramContext = new kdl(this, paramContext);
     paramContext.getWindow().setWindowAnimations(2131624571);
     return paramContext;
   }
@@ -250,9 +250,9 @@ public class VideoInviteActivity
       if (d()) {
         paramContext.b(2131429152);
       }
-      paramContext.c(2131433015);
-      paramContext.a(new kav(this, paramBoolean));
-      paramContext.a(new kaw(this, paramContext, paramBoolean));
+      paramContext.c(2131433029);
+      paramContext.a(new kcz(this, paramBoolean));
+      paramContext.a(new kda(this, paramContext, paramBoolean));
       paramContext.show();
       return;
     }
@@ -270,7 +270,7 @@ public class VideoInviteActivity
           if (this.jdField_a_of_type_Long != 0L) {
             break label151;
           }
-          TraeHelper.a().a(paramString + "_VideoInviteActivity.playRing.1", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230741, -1, null);
+          TraeHelper.a().a(paramString + "_VideoInviteActivity.playRing.1", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230742, -1, null);
         }
       }
       else
@@ -293,7 +293,7 @@ public class VideoInviteActivity
         }
         else
         {
-          TraeHelper.a().a(paramString + "_VideoInviteActivity.playRing.3", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230741, -1, null);
+          TraeHelper.a().a(paramString + "_VideoInviteActivity.playRing.3", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230742, -1, null);
           if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp() != null))
           {
             paramString = new Intent();
@@ -313,7 +313,7 @@ public class VideoInviteActivity
     this.jdField_d_of_type_Boolean = false;
     TraeHelper.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     if ((this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation != null) && (!this.jdField_i_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new kay(this, paramBoolean));
+      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new kdc(this, paramBoolean));
     }
     do
     {
@@ -585,7 +585,7 @@ public class VideoInviteActivity
     TraeHelper.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     TraeHelper.a().a("VideoInviteActivity.onVideoRequestTimeout");
     if (this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation != null) {
-      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new kaz(this));
+      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new kdd(this));
     }
     do
     {
@@ -640,7 +640,7 @@ public class VideoInviteActivity
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(m, (String)localObject1, this.jdField_e_of_type_JavaLangString, true, true);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      localObject2 = UITools.a(super.getApplicationContext(), 2130840209);
+      localObject2 = UITools.a(super.getApplicationContext(), 2130840224);
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
       {
         if (localObject2 == null) {
@@ -670,11 +670,11 @@ public class VideoInviteActivity
       }
       return;
       label321:
-      localObject2 = BitmapTools.a(super.getApplicationContext(), 2130840209);
+      localObject2 = BitmapTools.a(super.getApplicationContext(), 2130840224);
       if (localObject2 != null) {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable((Drawable)localObject2);
       } else {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130840209);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130840224);
       }
     }
   }
@@ -684,9 +684,9 @@ public class VideoInviteActivity
     if (QLog.isColorLevel()) {
       QLog.d("VideoInviteActivity", 2, "showGAudioDialog");
     }
-    kbg localkbg1 = new kbg(this, 0);
-    kbg localkbg2 = new kbg(this, 1);
-    DialogUtil.b(this, 230, null, super.getString(2131428983), 2131428675, 2131429053, localkbg1, localkbg2).show();
+    kdk localkdk1 = new kdk(this, 0);
+    kdk localkdk2 = new kdk(this, 1);
+    DialogUtil.b(this, 230, null, super.getString(2131428983), 2131428675, 2131429053, localkdk1, localkdk2).show();
   }
   
   void j()
@@ -739,7 +739,7 @@ public class VideoInviteActivity
           str1 = super.getString(2131429222);
           this.jdField_i_of_type_Int = 6;
           continue;
-          str1 = super.getString(2131437423);
+          str1 = super.getString(2131437443);
           this.jdField_i_of_type_Int = 7;
         }
       }
@@ -844,7 +844,7 @@ public class VideoInviteActivity
       this.jdField_g_of_type_Int = this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_p_of_type_Int;
       paramBundle = new IntentFilter();
       paramBundle.addAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new kbi(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new kdm(this);
       super.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
       j();
       if (this.jdField_d_of_type_Int == 25)
@@ -1032,7 +1032,7 @@ public class VideoInviteActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteActivity
  * JD-Core Version:    0.7.0.1
  */

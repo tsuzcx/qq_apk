@@ -10,7 +10,6 @@ import android.os.IInterface;
 import android.os.Looper;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import com.tencent.tmassistantbase.util.f;
-import com.tencent.tmassistantbase.util.g;
 import com.tencent.tmassistantbase.util.r;
 
 public abstract class a<T extends IInterface>
@@ -115,12 +114,12 @@ public abstract class a<T extends IInterface>
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    f.a(g.c).post(new c(this, paramIBinder));
+    f.a().post(new c(this, paramIBinder));
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    f.a(g.c).post(new b(this));
+    f.a().post(new b(this));
   }
   
   protected abstract void registerServiceCallback();
@@ -131,7 +130,7 @@ public abstract class a<T extends IInterface>
   {
     try
     {
-      f.a(g.c).post(new d(this));
+      f.a().post(new d(this));
       return;
     }
     finally

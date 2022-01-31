@@ -1,35 +1,99 @@
-import android.os.Handler;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoInviteFloatBar;
-import com.tencent.av.ui.VideoInviteFloatBarUICtr;
-import com.tencent.av.utils.UITools;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.av.ui.QavPanel;
 
 public class kbo
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public kbo(VideoInviteFloatBarUICtr paramVideoInviteFloatBarUICtr) {}
+  public kbo(QavPanel paramQavPanel) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    String str = UITools.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a());
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null)
+    this.a.d.clearAnimation();
+    this.a.e.clearAnimation();
+    this.a.f.clearAnimation();
+    this.a.g.clearAnimation();
+    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.clearAnimation();
+    this.a.jdField_b_of_type_AndroidWidgetFrameLayout.clearAnimation();
+    paramAnimation = this.a.getResources().getDisplayMetrics();
+    int j = (int)(paramAnimation.widthPixels * QavPanel.a());
+    int i = (int)(paramAnimation.widthPixels * QavPanel.b());
+    if (i > this.a.a() * 2 / 5) {
+      i = this.a.a() * 2 / 5;
+    }
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a(str);
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a() % 60L >= 1L) {
-        this.a.a();
+      RelativeLayout.LayoutParams localLayoutParams;
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        k = (int)(paramAnimation.widthPixels * QavPanel.c());
+        QavPanel.a(this.a, 2131365401, j, k);
+        if (this.a.a(2131365397) == 0) {
+          QavPanel.a(this.a, 2131365397, j + 10, k - 5);
+        }
+        for (;;)
+        {
+          k = (int)(paramAnimation.widthPixels * QavPanel.d());
+          QavPanel.a(this.a, 2131365403, j, k);
+          QavPanel.a(this.a, 2131365405, j, k);
+          QavPanel.a(this.a, 2131365407, j, k);
+          if (this.a.jdField_a_of_type_AndroidWidgetImageButton != null)
+          {
+            k = (int)(paramAnimation.widthPixels * QavPanel.e());
+            localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams();
+            localLayoutParams.width = i;
+            localLayoutParams.height = i;
+            localLayoutParams.leftMargin = k;
+            this.a.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams(localLayoutParams);
+          }
+          i = (int)(paramAnimation.widthPixels * QavPanel.e());
+          k = (int)(paramAnimation.widthPixels * QavPanel.b());
+          QavPanel.a(this.a, 2131365399, j, i * 2 + k - 5);
+          return;
+          QavPanel.a(this.a, 2131365395, j + 10, k - 5);
+        }
+      }
+      int k = (int)(paramAnimation.widthPixels * QavPanel.f());
+      QavPanel.a(this.a, 2131365401, j, k);
+      if (this.a.a(2131365397) == 0) {
+        QavPanel.a(this.a, 2131365397, j + 10, k - 5);
+      }
+      for (;;)
+      {
+        k = (int)(paramAnimation.widthPixels * QavPanel.g());
+        QavPanel.a(this.a, 2131365403, j, k);
+        QavPanel.a(this.a, 2131365405, j, k);
+        QavPanel.a(this.a, 2131365407, j, k);
+        if (this.a.jdField_a_of_type_AndroidWidgetImageButton != null)
+        {
+          k = (int)(paramAnimation.widthPixels * QavPanel.h());
+          localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams();
+          localLayoutParams.width = i;
+          localLayoutParams.height = i;
+          localLayoutParams.leftMargin = k;
+          this.a.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams(localLayoutParams);
+        }
+        i = (int)(paramAnimation.widthPixels * QavPanel.h());
+        k = (int)(paramAnimation.widthPixels * QavPanel.b());
+        QavPanel.a(this.a, 2131365399, j, i * 2 + k - 5);
+        return;
+        QavPanel.a(this.a, 2131365395, j + 10, k - 5);
       }
     }
-    else
-    {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kbo
  * JD-Core Version:    0.7.0.1
  */

@@ -33,9 +33,11 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
 import com.tencent.biz.pubaccount.readinjoy.common.ApiCompatibilityUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager;
 import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
@@ -51,6 +53,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
@@ -63,18 +66,19 @@ import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import mbx;
-import mby;
-import mbz;
-import mca;
-import mcb;
-import mcc;
-import mcd;
-import mce;
-import mcf;
-import mcg;
-import mch;
-import mci;
+import mfk;
+import mfl;
+import mfm;
+import mfn;
+import mfo;
+import mfp;
+import mfq;
+import mfr;
+import mfs;
+import mft;
+import mfu;
+import mfv;
+import mfw;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
@@ -92,6 +96,77 @@ public class VideoFeedsHelper
   public static int a(Activity paramActivity)
   {
     return (int)(a(paramActivity)[0] * 9.0F / 16.0F);
+  }
+  
+  private static int a(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getResources();
+      if (paramContext != null)
+      {
+        int i = paramContext.getIdentifier("status_bar_height", "dimen", "android");
+        if (i > 0)
+        {
+          i = paramContext.getDimensionPixelSize(i);
+          return i;
+        }
+      }
+    }
+    catch (Exception paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsHelper", 2, "getNotchSizeInXiaomi() Exception=" + paramContext.getMessage());
+      }
+    }
+    return 0;
+  }
+  
+  public static int a(VideoInfo.ChannelInfo paramChannelInfo)
+  {
+    if (paramChannelInfo == null) {
+      return -1;
+    }
+    if (!TextUtils.isEmpty(paramChannelInfo.jdField_c_of_type_JavaLangString))
+    {
+      if ((paramChannelInfo.jdField_c_of_type_JavaLangString.startsWith("http://")) || (paramChannelInfo.jdField_c_of_type_JavaLangString.startsWith("https://"))) {
+        return 0;
+      }
+      return 2;
+    }
+    return 1;
+  }
+  
+  public static int a(String paramString, int paramInt)
+  {
+    try
+    {
+      Object localObject = Class.forName("android.os.SystemProperties");
+      i = paramInt;
+      if (localObject != null)
+      {
+        localObject = ((Class)localObject).getMethod("getInt", new Class[] { String.class, Integer.TYPE });
+        i = paramInt;
+        if (localObject != null)
+        {
+          paramString = ((Method)localObject).invoke(null, new Object[] { paramString, Integer.valueOf(paramInt) });
+          i = paramInt;
+          if ((paramString instanceof Integer)) {
+            i = ((Integer)paramString).intValue();
+          }
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      do
+      {
+        int i = paramInt;
+      } while (!QLog.isColorLevel());
+      QLog.d("VideoFeedsHelper", 2, "getSystemPropertyForXiaomi() Exception=" + paramString.getMessage());
+    }
+    return i;
+    return paramInt;
   }
   
   private static Drawable a(Context paramContext)
@@ -128,7 +203,7 @@ public class VideoFeedsHelper
     if (paramInt == 0) {
       return "";
     }
-    return "播放 " + e(paramInt);
+    return "播放 " + f(paramInt);
   }
   
   public static String a(long paramLong)
@@ -179,7 +254,7 @@ public class VideoFeedsHelper
   {
     int i = "流量不足？试试大王卡免流量播放".indexOf("大王卡");
     SpannableString localSpannableString = new SpannableString("流量不足？试试大王卡免流量播放");
-    localSpannableString.setSpan(new mbz(paramContext), i, i + 3, 33);
+    localSpannableString.setSpan(new mfm(paramContext), i, i + 3, 33);
     paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
     paramTextView.setText(localSpannableString);
   }
@@ -214,7 +289,7 @@ public class VideoFeedsHelper
         paramString.show();
         label186:
         jdField_a_of_type_AndroidAppDialog = paramString;
-        jdField_a_of_type_AndroidOsHandler.postDelayed(new mby(), 1000L);
+        jdField_a_of_type_AndroidOsHandler.postDelayed(new mfl(), 1000L);
         return;
       }
       catch (Exception paramContext)
@@ -251,7 +326,7 @@ public class VideoFeedsHelper
         localObjectAnimator.setRepeatCount(0);
         localObjectAnimator.start();
         paramView.setLayerType(2, null);
-        localObjectAnimator.addListener(new mce(paramView));
+        localObjectAnimator.addListener(new mfs(paramView));
         localObjectAnimator.start();
         return;
       }
@@ -262,13 +337,13 @@ public class VideoFeedsHelper
     localObjectAnimator.setRepeatCount(0);
     localObjectAnimator.start();
     paramView.setLayerType(2, null);
-    localObjectAnimator.addListener(new mcf(paramView));
+    localObjectAnimator.addListener(new mft(paramView));
     localObjectAnimator.start();
   }
   
   public static void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramView.postDelayed(new mcd(paramView, paramInt1, paramInt2), paramInt3);
+    paramView.postDelayed(new mfr(paramView, paramInt1, paramInt2), paramInt3);
   }
   
   public static void a(ImageView paramImageView, int paramInt)
@@ -277,7 +352,7 @@ public class VideoFeedsHelper
     if (localDrawable != null) {
       if ((localDrawable instanceof URLDrawable))
       {
-        ((URLDrawable)localDrawable).setURLDrawableListener(new mbx(paramInt));
+        ((URLDrawable)localDrawable).setURLDrawableListener(new mfk(paramInt));
         if (((URLDrawable)localDrawable).getCurrDrawable() != null) {
           ((URLDrawable)localDrawable).getCurrDrawable().mutate().setAlpha(paramInt);
         }
@@ -334,7 +409,7 @@ public class VideoFeedsHelper
     }
     for (;;)
     {
-      paramTextView.post(new mci(paramTextView, localStringBuilder));
+      paramTextView.post(new mfw(paramTextView, localStringBuilder));
       return;
       localStringBuilder.append(l);
       break;
@@ -350,7 +425,7 @@ public class VideoFeedsHelper
       if (paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null)
       {
         ArticleInfo localArticleInfo = new ArticleInfo();
-        localArticleInfo.innerUniqueID = paramVideoInfo.g;
+        localArticleInfo.innerUniqueID = paramVideoInfo.jdField_g_of_type_JavaLangString;
         localArticleInfo.mTitle = paramVideoInfo.jdField_c_of_type_JavaLangString;
         localArticleInfo.mSubscribeName = paramVideoInfo.k;
         localArticleInfo.mSubscribeID = paramVideoInfo.j;
@@ -358,7 +433,7 @@ public class VideoFeedsHelper
         localArticleInfo.mVideoDuration = paramVideoInfo.d;
         localArticleInfo.mVideoCoverUrl = paramVideoInfo.a();
         localArticleInfo.mVideoVid = paramVideoInfo.jdField_a_of_type_JavaLangString;
-        localArticleInfo.mFeedType = paramVideoInfo.jdField_f_of_type_Int;
+        localArticleInfo.mFeedType = paramVideoInfo.jdField_g_of_type_Int;
         localArticleInfo.mFeedId = paramVideoInfo.jdField_c_of_type_Long;
         if (paramVideoInfo.jdField_b_of_type_Boolean)
         {
@@ -367,10 +442,10 @@ public class VideoFeedsHelper
           if (paramVideoInfo.j != null) {
             localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_Long = Long.valueOf(paramVideoInfo.j).longValue();
           }
-          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_Int = paramVideoInfo.jdField_f_of_type_Int;
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_Int = paramVideoInfo.jdField_g_of_type_Int;
           localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b = new ArrayList();
           SocializeFeedsInfo.UGCVideoInfo localUGCVideoInfo = new SocializeFeedsInfo.UGCVideoInfo();
-          localUGCVideoInfo.h = paramVideoInfo.jdField_f_of_type_JavaLangString;
+          localUGCVideoInfo.h = paramVideoInfo.f;
           localUGCVideoInfo.e = paramVideoInfo.jdField_c_of_type_JavaLangString;
           localUGCVideoInfo.d = paramVideoInfo.jdField_b_of_type_JavaLangString;
           localUGCVideoInfo.jdField_a_of_type_Long = paramVideoInfo.d;
@@ -379,7 +454,7 @@ public class VideoFeedsHelper
         paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = localArticleInfo;
       }
       if (TextUtils.isEmpty(paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID)) {
-        paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID = paramVideoInfo.g;
+        paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID = paramVideoInfo.jdField_g_of_type_JavaLangString;
       }
     }
   }
@@ -398,10 +473,10 @@ public class VideoFeedsHelper
   {
     if (paramBoolean)
     {
-      ReadInJoyLogicEngine.a().a().a(paramQQAppInterface.getAccount(), paramString, true, new mca(paramString, paramBoolean));
+      ReadInJoyLogicEngine.a().a().a(paramQQAppInterface.getAccount(), paramString, true, new mfn(paramString, paramBoolean));
       return;
     }
-    PublicAccountUtil.a(paramQQAppInterface, paramQQAppInterface.getApp(), paramString, new mcb(paramBoolean), true, 17);
+    PublicAccountUtil.a(paramQQAppInterface, paramQQAppInterface.getApp(), paramString, new mfo(paramBoolean), true, 17);
   }
   
   public static void a(String paramString1, String paramString2, TextView paramTextView)
@@ -440,7 +515,7 @@ public class VideoFeedsHelper
   public static void a(AppRuntime paramAppRuntime, Activity paramActivity)
   {
     if (ReadInJoyAtlasManager.a(paramActivity, true)) {
-      DialogUtil.b(paramActivity, 230, paramActivity.getString(2131431777), paramActivity.getString(2131431778), 2131433015, 2131431779, new mcc(), null).setMessageCount(null).show();
+      DialogUtil.b(paramActivity, 230, paramActivity.getString(2131431788), paramActivity.getString(2131431789), 2131433029, 2131431790, new mfq(), null).setMessageCount(null).show();
     }
   }
   
@@ -493,7 +568,7 @@ public class VideoFeedsHelper
       jdField_b_of_type_Boolean = ReadInJoyHelper.i(ReadInJoyUtils.a());
       jdField_a_of_type_Boolean = true;
     }
-    return (jdField_b_of_type_Boolean) && ((!TextUtils.isEmpty(paramVideoInfo.g)) || (paramVideoInfo.jdField_a_of_type_Int == 6));
+    return (jdField_b_of_type_Boolean) && ((!TextUtils.isEmpty(paramVideoInfo.jdField_g_of_type_JavaLangString)) || (paramVideoInfo.jdField_a_of_type_Int == 6));
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, long paramLong)
@@ -534,63 +609,72 @@ public class VideoFeedsHelper
     }
     Object localObject;
     Point localPoint;
+    int k;
+    int j;
+    int i;
     if ((jdField_a_of_type_Int == 0) && (jdField_b_of_type_Int == 0))
     {
       localObject = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay();
       localPoint = new Point();
-      if (Build.VERSION.SDK_INT < 17) {
-        break label248;
+      if (Build.VERSION.SDK_INT >= 17)
+      {
+        ((Display)localObject).getRealSize(localPoint);
+        jdField_a_of_type_Int = localPoint.x;
+        jdField_b_of_type_Int = localPoint.y;
       }
-      ((Display)localObject).getRealSize(localPoint);
-      jdField_a_of_type_Int = localPoint.x;
-      jdField_b_of_type_Int = localPoint.y;
     }
-    for (;;)
+    else
     {
-      int k = jdField_a_of_type_Int;
-      int j = jdField_b_of_type_Int;
-      int i = j;
-      if (b())
+      k = jdField_a_of_type_Int;
+      j = jdField_b_of_type_Int;
+      if ((!b()) || (!c(paramActivity))) {
+        break label318;
+      }
+      paramActivity = a(paramActivity);
+      i = j;
+      if (paramActivity != null)
       {
         i = j;
-        if (b(paramActivity))
+        if (paramActivity.length >= 2)
         {
-          paramActivity = a(paramActivity);
           i = j;
-          if (paramActivity != null)
+          if (paramActivity[0] > 0)
           {
             i = j;
-            if (paramActivity.length >= 2)
-            {
-              i = j;
-              if (paramActivity[0] > 0)
-              {
-                i = j;
-                if (paramActivity[1] > 0) {
-                  i = jdField_b_of_type_Int - paramActivity[1];
-                }
-              }
+            if (paramActivity[1] > 0) {
+              i = jdField_b_of_type_Int - paramActivity[1];
             }
           }
         }
       }
+    }
+    for (;;)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFeedsHelper", 2, "getScreenSize() screenWidth=" + jdField_a_of_type_Int + ", screenHeight=" + jdField_b_of_type_Int + ", width=" + k + ", height=" + i);
       }
       return new int[] { k, i };
-      label248:
       if (Build.VERSION.SDK_INT >= 15)
       {
         ((Display)localObject).getSize(localPoint);
         jdField_a_of_type_Int = localPoint.x;
         jdField_b_of_type_Int = localPoint.y;
+        break;
       }
-      else
+      localObject = new DisplayMetrics();
+      paramActivity.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
+      jdField_a_of_type_Int = ((DisplayMetrics)localObject).widthPixels;
+      jdField_b_of_type_Int = ((DisplayMetrics)localObject).heightPixels;
+      break;
+      label318:
+      i = j;
+      if (b(paramActivity))
       {
-        localObject = new DisplayMetrics();
-        paramActivity.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-        jdField_a_of_type_Int = ((DisplayMetrics)localObject).widthPixels;
-        jdField_b_of_type_Int = ((DisplayMetrics)localObject).heightPixels;
+        int m = a(paramActivity);
+        i = j;
+        if (m > 0) {
+          i = jdField_b_of_type_Int - m;
+        }
       }
     }
   }
@@ -609,15 +693,15 @@ public class VideoFeedsHelper
       {
         paramContext = paramContext.getClassLoader();
         if (paramContext == null) {
-          break label214;
+          break label210;
         }
         paramContext = paramContext.loadClass("com.huawei.android.util.HwNotchSizeUtil");
         if (paramContext == null) {
-          break label214;
+          break label210;
         }
         Method localMethod = paramContext.getMethod("getNotchSize", new Class[0]);
         if (localMethod == null) {
-          break label214;
+          break label210;
         }
         paramContext = (int[])localMethod.invoke(paramContext, new Object[0]);
         if (QLog.isColorLevel()) {
@@ -641,7 +725,7 @@ public class VideoFeedsHelper
         return arrayOfInt;
       }
       return paramContext;
-      label214:
+      label210:
       paramContext = arrayOfInt;
     }
   }
@@ -724,7 +808,7 @@ public class VideoFeedsHelper
     if (paramInt == 0) {
       return "";
     }
-    return e(paramInt) + "次播放";
+    return f(paramInt) + "次播放";
   }
   
   public static String b(long paramLong)
@@ -772,7 +856,7 @@ public class VideoFeedsHelper
         localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
         localAlphaAnimation.setDuration(paramInt2);
         localAlphaAnimation.setFillAfter(true);
-        localAlphaAnimation.setAnimationListener(new mcg());
+        localAlphaAnimation.setAnimationListener(new mfu());
         paramView.clearAnimation();
         paramView.startAnimation(localAlphaAnimation);
         return;
@@ -781,9 +865,31 @@ public class VideoFeedsHelper
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(paramInt2);
     localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new mch(paramView));
+    localAlphaAnimation.setAnimationListener(new mfv(paramView));
     paramView.clearAnimation();
     paramView.startAnimation(localAlphaAnimation);
+  }
+  
+  private static void b(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    try
+    {
+      l = Long.parseLong(paramString);
+      if ((paramBoolean1) && (l != -1L))
+      {
+        ReadInJoyLogicEngineEventDispatcher.a().b(l, true);
+        ThreadManager.post(new mfp(l), 8, null, true);
+      }
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        QLog.e("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount error uin=" + paramString + ", isSuccess=" + paramBoolean1 + ", isUGC=" + paramBoolean2);
+        long l = -1L;
+      }
+    }
   }
   
   private static boolean b()
@@ -792,6 +898,24 @@ public class VideoFeedsHelper
   }
   
   private static boolean b(Context paramContext)
+  {
+    if ("Xiaomi".equalsIgnoreCase(Build.MANUFACTURER))
+    {
+      int i = a("ro.miui.notch", 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsHelper", 2, "isXiaomiWithNotch() getSystemPropertyForXiaomi=" + i);
+      }
+      return i == 1;
+    }
+    return false;
+  }
+  
+  public static String c(int paramInt)
+  {
+    return f(paramInt);
+  }
+  
+  private static boolean c(Context paramContext)
   {
     for (boolean bool1 = false;; bool1 = false)
     {
@@ -832,11 +956,6 @@ public class VideoFeedsHelper
     }
   }
   
-  public static String c(int paramInt)
-  {
-    return e(paramInt);
-  }
-  
   public static String d(int paramInt)
   {
     if (paramInt > 999) {
@@ -845,7 +964,15 @@ public class VideoFeedsHelper
     return Integer.toString(paramInt);
   }
   
-  private static String e(int paramInt)
+  public static String e(int paramInt)
+  {
+    if (paramInt > 999) {
+      return "999+";
+    }
+    return Integer.toString(paramInt);
+  }
+  
+  private static String f(int paramInt)
   {
     String str = "";
     if (jdField_a_of_type_JavaTextDecimalFormat == null) {

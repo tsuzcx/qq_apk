@@ -1,29 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class zqe
-  extends PublicAccountObserver
+class zqe
+  implements Comparator
 {
-  private zqe(CheckPublicAccount paramCheckPublicAccount) {}
+  zqe(zqc paramzqc) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "PublicAccount onUpdateUserFollowList:" + paramBoolean + " " + paramInt);
-    }
-    if ((paramBoolean) && (paramInt == 0))
+    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
+    int i = j;
+    if (j == 0)
     {
-      CheckPublicAccount.a(this.a).a.edit().putBoolean("isPublicAccountListOK", true).commit();
-      this.a.a(7);
+      Object localObject2 = paramPhoneContact1.pinyinFirst;
+      String str = paramPhoneContact2.pinyinFirst;
+      Object localObject1 = localObject2;
+      if (((String)localObject2).endsWith("#")) {
+        localObject1 = "Za";
+      }
+      localObject2 = str;
+      if (str.endsWith("#")) {
+        localObject2 = "Za";
+      }
+      j = ((String)localObject1).compareTo((String)localObject2);
+      i = j;
+      if (j == 0) {
+        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+      }
     }
-    while (paramInt == 0) {
-      return;
-    }
-    this.a.a(6);
+    return i;
   }
 }
 

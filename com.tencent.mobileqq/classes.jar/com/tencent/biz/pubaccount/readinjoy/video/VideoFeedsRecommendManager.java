@@ -10,8 +10,8 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mem;
-import men;
+import mhz;
+import mia;
 import org.json.JSONObject;
 
 public class VideoFeedsRecommendManager
@@ -23,7 +23,7 @@ public class VideoFeedsRecommendManager
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private men jdField_a_of_type_Men;
+  private mia jdField_a_of_type_Mia;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private boolean jdField_b_of_type_Boolean;
@@ -93,7 +93,7 @@ public class VideoFeedsRecommendManager
       this.jdField_a_of_type_Boolean = false;
       return;
     }
-    ThreadManager.post(new mem(this), 10, null, true);
+    ThreadManager.post(new mhz(this), 10, null, true);
   }
   
   public int a()
@@ -128,7 +128,7 @@ public class VideoFeedsRecommendManager
   public void a()
   {
     this.jdField_a_of_type_AndroidAppActivity = null;
-    this.jdField_a_of_type_Men = null;
+    this.jdField_a_of_type_Mia = null;
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
   }
   
@@ -141,7 +141,7 @@ public class VideoFeedsRecommendManager
     {
       if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != paramVideoInfo)
       {
-        i = paramVideoInfo.m;
+        i = paramVideoInfo.n;
         if (i != 0) {
           break label31;
         }
@@ -158,11 +158,11 @@ public class VideoFeedsRecommendManager
         }
         this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
         i = j;
-        if ((i != 0) && (this.jdField_a_of_type_Men != null))
+        if ((i != 0) && (this.jdField_a_of_type_Mia != null))
         {
           a(paramInt, paramLong1);
           if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Men.c();
+            this.jdField_a_of_type_Mia.c();
           }
         }
       }
@@ -211,9 +211,9 @@ public class VideoFeedsRecommendManager
     }
   }
   
-  public void a(men parammen)
+  public void a(mia parammia)
   {
-    this.jdField_a_of_type_Men = parammen;
+    this.jdField_a_of_type_Mia = parammia;
   }
   
   public String b()

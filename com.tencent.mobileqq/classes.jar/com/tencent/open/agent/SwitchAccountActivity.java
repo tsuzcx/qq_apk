@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
-import alcr;
-import alcs;
+import alkj;
+import alkk;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -62,8 +62,8 @@ public class SwitchAccountActivity
   public SwitchAccountActivity()
   {
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new alcr(this);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new alcs(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new alkj(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new alkk(this);
   }
   
   public static String a(String paramString1, String paramString2)
@@ -95,9 +95,9 @@ public class SwitchAccountActivity
       if (j < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
         View localView = localLayoutInflater.inflate(2130968587, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        TextView localTextView1 = (TextView)localView.findViewById(2131362743);
-        TextView localTextView2 = (TextView)localView.findViewById(2131362744);
-        ImageView localImageView = (ImageView)localView.findViewById(2131362739);
+        TextView localTextView1 = (TextView)localView.findViewById(2131362748);
+        TextView localTextView2 = (TextView)localView.findViewById(2131362749);
+        ImageView localImageView = (ImageView)localView.findViewById(2131362744);
         String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(j);
         localObject1 = new WloginSimpleInfo();
         this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(str, (WloginSimpleInfo)localObject1);
@@ -118,9 +118,9 @@ public class SwitchAccountActivity
           }
         }
         if (i == 0) {
-          localView.setBackgroundResource(2130838635);
+          localView.setBackgroundResource(2130838641);
         }
-        ((Button)localView.findViewById(2131362742)).setOnClickListener(this);
+        ((Button)localView.findViewById(2131362747)).setOnClickListener(this);
         localView.setOnClickListener(this);
         localView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
         localView.setTag(str);
@@ -208,12 +208,12 @@ public class SwitchAccountActivity
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 1) {
             break label432;
           }
-          paramString.setBackgroundResource(2130838623);
+          paramString.setBackgroundResource(2130838629);
         }
       }
       return;
       label432:
-      paramString.setBackgroundResource(2130838635);
+      paramString.setBackgroundResource(2130838641);
       return;
       label439:
       i += 1;
@@ -349,7 +349,7 @@ public class SwitchAccountActivity
   
   protected void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131435605));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131435621));
     if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (getWindow().isActive())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
@@ -419,8 +419,8 @@ public class SwitchAccountActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131362742: 
-    case 2131362738: 
+    case 2131362747: 
+    case 2131362743: 
       do
       {
         do
@@ -442,7 +442,7 @@ public class SwitchAccountActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130971625);
+    super.setContentView(2130971651);
     this.jdField_a_of_type_AndroidContentSharedPreferences = super.getSharedPreferences("accountList", 0);
     this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
     if (super.getIntent().getExtras() != null) {
@@ -451,9 +451,9 @@ public class SwitchAccountActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.quicklogin.SwitchAccountActivity", 2, "mReqSrc:" + this.jdField_a_of_type_Int);
     }
-    super.setTitle(2131435594);
+    super.setTitle(2131435610);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131375207));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131375259));
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)super.getAppRuntime());
     this.jdField_a_of_type_MqqManagerWtloginManager = ((WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1));

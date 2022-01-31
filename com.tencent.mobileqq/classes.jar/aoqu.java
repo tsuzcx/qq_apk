@@ -1,17 +1,14 @@
-import dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
+import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView.CaptureListener;
 
 public class aoqu
   implements Runnable
 {
-  public aoqu(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
+  public aoqu(CameraGLSurfaceView paramCameraGLSurfaceView, CameraGLSurfaceView.CaptureListener paramCaptureListener) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.j();
-    }
-    this.a.setVisibility(8);
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener;
   }
 }
 

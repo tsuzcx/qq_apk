@@ -1,21 +1,20 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qqfav.QfavBuilder;
 
-public class adjt
-  implements ArkAppView.Callback
+class adjt
+  implements Runnable
 {
-  public adjt(FlashChatPanel paramFlashChatPanel, MessageForArkFlashChat paramMessageForArkFlashChat1, MessageForArkFlashChat paramMessageForArkFlashChat2) {}
+  adjt(adjs paramadjs, QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void run()
   {
-    ArkDispatchTask.getInstance().post(new adju(this));
+    new QfavBuilder(3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseActivity.sTopActivity, this.jdField_a_of_type_Adjs.a, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adjt
  * JD-Core Version:    0.7.0.1
  */

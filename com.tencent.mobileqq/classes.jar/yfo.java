@@ -1,35 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.PstnObserver;
 
 public class yfo
-  extends Handler
+  extends PstnObserver
 {
-  public yfo(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public yfo(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
+    if (this.a.a != null)
     {
+      this.a.app.removeObserver(this.a.a);
+      this.a.a = null;
     }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      QQToast.a(BaseApplication.getContext(), 1, 2131434811, 0).b(this.a.getTitleBarHeight());
-      return;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131436896);
-    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.a.finish();
   }
 }
 

@@ -1,5 +1,10 @@
 package com.tencent.mobileqq.ar;
 
+import aaeb;
+import aaec;
+import aaed;
+import aaee;
+import aaef;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.text.TextUtils;
@@ -8,11 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
-import zxn;
-import zxo;
-import zxp;
-import zxq;
-import zxr;
 
 public class ARMusicController
 {
@@ -40,9 +40,9 @@ public class ARMusicController
       this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
       this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
       this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(paramInt, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new zxq(this));
+      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new aaee(this));
       this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new zxr(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new aaef(this));
       if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
         int j = paramVarArgs.length;
@@ -77,10 +77,10 @@ public class ARMusicController
       this.jdField_a_of_type_JavaLangString = paramString1;
       this.jdField_b_of_type_JavaLangString = paramString2;
       this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new zxn(this));
+      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new aaeb(this));
       this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new zxo(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new zxp(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new aaec(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new aaed(this));
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString2, 1);
       try
       {

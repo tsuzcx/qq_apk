@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aisa;
+import aixd;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -235,7 +235,7 @@ public class VasExtensionDownloader
           break;
         }
         if ("EMOTICON_DIY".equals(str)) {
-          return new File(AppConstants.aJ);
+          return new File(AppConstants.aK);
         }
         if ("REDPACKET_SEND_PIC".equals(str))
         {
@@ -307,7 +307,7 @@ public class VasExtensionDownloader
             paramOutputStream = paramDownloadParams.substring(1, paramDownloadParams.length());
           }
           paramDownloadParams = MD5.toMD5(paramOutputStream);
-          paramDownloadParams = AppConstants.aJ + ".comicIPSite" + File.separator + paramDownloadParams;
+          paramDownloadParams = AppConstants.aK + ".comicIPSite" + File.separator + paramDownloadParams;
           if (QLog.isColorLevel()) {
             QLog.d("VasExtensionDownloader", 2, "emotion save local filePath: " + paramDownloadParams);
           }
@@ -336,7 +336,7 @@ public class VasExtensionDownloader
     if (paramFavoriteEmoticonInfo == null) {
       return;
     }
-    ThreadManager.post(new aisa(this, paramFavoriteEmoticonInfo), 5, null, false);
+    ThreadManager.post(new aixd(this, paramFavoriteEmoticonInfo), 5, null, false);
   }
   
   public boolean a()
@@ -1201,7 +1201,7 @@ public class VasExtensionDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VasExtensionDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,27 @@
 import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import java.util.ArrayList;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class sdm
-  implements Runnable
+public class sdm
+  extends Handler
 {
-  sdm(sdk paramsdk) {}
+  public sdm(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ArrayList localArrayList = TroopInfoActivity.a(this.a.a, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.post(new sdn(this, localArrayList));
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131434499);
+      if (!this.a.isFinishing()) {
+        this.a.a.show();
+      }
+    }
   }
 }
 

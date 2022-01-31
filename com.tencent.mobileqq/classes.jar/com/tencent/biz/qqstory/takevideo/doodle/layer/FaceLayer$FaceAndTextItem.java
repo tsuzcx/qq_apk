@@ -18,8 +18,8 @@ import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import oif;
-import oig;
+import omu;
+import omv;
 
 public final class FaceLayer$FaceAndTextItem
   extends FaceLayer.FaceItem
@@ -55,8 +55,8 @@ public final class FaceLayer$FaceAndTextItem
     localValueAnimator.setDuration(1000L);
     localValueAnimator.setRepeatCount(2);
     localValueAnimator.setRepeatMode(2);
-    localValueAnimator.addUpdateListener(new oif(this));
-    localValueAnimator.addListener(new oig(this));
+    localValueAnimator.addUpdateListener(new omu(this));
+    localValueAnimator.addListener(new omv(this));
     localValueAnimator.start();
   }
   
@@ -89,7 +89,7 @@ public final class FaceLayer$FaceAndTextItem
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerFaceLayer.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     paramCanvas.restore();
     if (this.jdField_d_of_type_Boolean) {
-      DisplayUtil.a(paramCanvas, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerFaceLayer.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, 0, 2130842005, 2130842012);
+      DisplayUtil.a(paramCanvas, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerFaceLayer.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, 0, 2130842036, 2130842043);
     }
   }
   

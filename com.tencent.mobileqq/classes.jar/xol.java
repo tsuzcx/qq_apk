@@ -1,15 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.richmedia.EditPicQzComment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class xol
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public xol(EditPicQzComment paramEditPicQzComment) {}
+  public xol(BannerManager paramBannerManager) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    EditPicQzComment.a(this.a).a = paramBoolean;
+    if (UpgradeController.a().a() == 4) {
+      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
+    }
+    for (;;)
+    {
+      this.a.a(10, 0);
+      this.a.a(-1, null);
+      return;
+      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
+    }
   }
 }
 

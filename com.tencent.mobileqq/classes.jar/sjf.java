@@ -1,67 +1,86 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import mqq.observer.BusinessObserver;
+import tencent.im.troop.activity.troopactivity.ActSSORsp;
+import tencent.im.troop.activity.troopactivity.GroupInfoCardResp;
 
 public class sjf
-  extends WtloginObserver
+  implements BusinessObserver
 {
-  public sjf(DevlockPushActivity paramDevlockPushActivity) {}
+  public sjf(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!this.a.isResume())
+    if (this.a.f)
     {
-      this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver->onReceive, isDestroyed, return");
+      }
       return;
     }
-    if (((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) && (paramInt == 0) && (paramDevlockInfo != null))
+    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null))
     {
-      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
-      DevlockPhoneStatus.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver: !isSuccess || mTroopInfoData == null");
+      }
+      ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troopInfoCard", "getTroopActivity", 0, -1, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, Boolean.toString(paramBoolean), "", "");
       return;
     }
-    this.a.b();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    try
     {
-      if (QLog.isColorLevel())
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle == null)
       {
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver: data == null");
+        }
+        ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troopInfoCard", "getTroopActivity", 0, -2, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
+        return;
       }
-      this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = paramDevlockInfo;
-      DevlockPhoneStatus.a().a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
-      this.a.a(this.a.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver: InvalidProtocolBufferMicroException:" + paramBundle.getMessage());
+      }
+      ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troopInfoCard", "getTroopActivity", 0, -5, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
       return;
     }
-    if (QLog.isColorLevel())
+    Object localObject = new troopactivity.ActSSORsp();
+    ((troopactivity.ActSSORsp)localObject).mergeFrom(paramBundle);
+    if (((troopactivity.ActSSORsp)localObject).err_code.get() != 10000)
     {
-      QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver: errorcode:" + ((troopactivity.ActSSORsp)localObject).err_code.get() + ", msg:" + ((troopactivity.ActSSORsp)localObject).err_msg.get());
       }
-      if (paramDevlockInfo == null) {
-        QLog.d("Q.devlock.DevlockPushActivity", 2, "OnCheckDevLockStatus DevlockInfo is null");
-      }
+      ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troopInfoCard", "getTroopActivity", 0, -3, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "" + ((troopactivity.ActSSORsp)localObject).err_code.get(), "", "");
+      return;
     }
-    paramDevlockInfo = this.a.getString(2131436582);
-    paramWUserSigInfo = paramDevlockInfo;
-    if (paramErrMsg != null)
+    localObject = ((troopactivity.ActSSORsp)localObject).body.get().toByteArray();
+    if (localObject == null)
     {
-      paramWUserSigInfo = paramDevlockInfo;
-      if (!TextUtils.isEmpty(paramErrMsg.getMessage())) {
-        paramWUserSigInfo = paramErrMsg.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver: respdata == null");
       }
+      ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troopInfoCard", "getTroopActivity", 0, -4, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
+      return;
     }
-    QQToast.a(this.a.getApplicationContext(), paramWUserSigInfo, 0).b(this.a.getTitleBarHeight());
+    paramBundle = new troopactivity.GroupInfoCardResp();
+    paramBundle.mergeFrom((byte[])localObject);
+    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    ((Message)localObject).what = 15;
+    ((Message)localObject).obj = paramBundle;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
   }
 }
 

@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.util.WeakReferenceHandler;
 
-class stc
-  implements Runnable
+public class stc
+  extends VasQuickUpdateManager.CallBacker
 {
-  stc(stb paramstb, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4) {}
+  public stc(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    ((TroopManager)this.jdField_a_of_type_Stb.a.app.getManager(51)).a(this.jdField_a_of_type_Stb.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c, this.d);
-    ThreadManager.getUIHandler().post(new std(this));
+    if ((VipProfileCardDiyActivity.a(paramLong, paramString1, this.a.a.a.diyTextFontId)) && (paramInt1 == 0))
+    {
+      paramString1 = this.a.b.obtainMessage();
+      paramString1.what = 5;
+      paramString1.obj = this.a.a.a;
+      paramString1.arg1 = 0;
+      paramString1.arg2 = 17;
+      this.a.b.sendMessage(paramString1);
+      paramVasQuickUpdateManager.b(this);
+    }
   }
 }
 

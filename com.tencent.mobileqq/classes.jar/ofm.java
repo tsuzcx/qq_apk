@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ofm
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ofm(EditVideoPartManager paramEditVideoPartManager) {}
+  public ofm(MessageNotifySegment paramMessageNotifySegment, ImageView paramImageView, Drawable paramDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.c();
+    UserManager localUserManager = (UserManager)SuperManager.a(2);
+    String str = localUserManager.b(Long.toString(MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment)), true);
+    ThreadManager.getUIHandler().post(new ofn(this, str, localUserManager));
   }
 }
 

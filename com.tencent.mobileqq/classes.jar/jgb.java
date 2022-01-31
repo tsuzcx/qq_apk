@@ -1,34 +1,41 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.pendant.EffectPendantTips;
+import com.tencent.av.VideoController;
 
 public class jgb
   implements Runnable
 {
-  public jgb(EffectPendantTips paramEffectPendantTips, String paramString, int paramInt, Drawable paramDrawable) {}
+  int jdField_a_of_type_Int = 5;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
+  
+  public jgb(long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
   
   public void run()
   {
-    try
+    this.jdField_a_of_type_Int -= 1;
+    if (this.jdField_a_of_type_Int > 0) {}
+    for (int i = 1;; i = 2)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
-      if (!TextUtils.isEmpty(str))
-      {
-        AVLog.c("EffectPendantTips", "processTips showDrableTips");
-        this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, str);
-      }
+      VideoController.a().a(this.jdField_a_of_type_Long, "StartAudioSendRunnable", this.jdField_a_of_type_Boolean, this.b, i);
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+  }
+  
+  public String toString()
+  {
+    return "seq[" + this.jdField_a_of_type_Long + "], mFrom[" + this.jdField_a_of_type_JavaLangString + "], mEnable[" + this.jdField_a_of_type_Boolean + "], mNotifySvr[" + this.b + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jgb
  * JD-Core Version:    0.7.0.1
  */

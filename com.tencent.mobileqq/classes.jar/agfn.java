@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
+import com.tencent.mobileqq.ocr.OcrImageUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class agfn
   implements Runnable
 {
-  public agfn(ScanTorchActivity paramScanTorchActivity) {}
+  public agfn(OCRRecognitionResultActivity paramOCRRecognitionResultActivity, String paramString) {}
   
   public void run()
   {
-    this.a.a.setVisibility(8);
-    this.a.a.b();
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (new File(this.jdField_a_of_type_JavaLangString).exists()))
+    {
+      String str = new File(this.jdField_a_of_type_JavaLangString).getParent();
+      if (OcrImageUtil.b.equals(str))
+      {
+        FileUtils.d(this.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel()) {
+          QLog.d("OCRRecognitionResultActivity", 2, "delete pic path:" + this.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agfn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,16 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abga
-  implements EIPCResultCallback
+  implements DialogInterface.OnClickListener
 {
-  public abga(ArMapIPCProxy paramArMapIPCProxy) {}
+  public abga(ARMapActivity paramARMapActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramEIPCResult != null)
-    {
-      localObject1 = localObject2;
-      if (paramEIPCResult.isSuccess()) {
-        localObject1 = paramEIPCResult.data.getString("action");
-      }
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ArMapIPCProxy", 2, "onCallback error");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPCProxy", 2, "onCallback action:" + (String)localObject1);
-    }
-    this.a.a((String)localObject1, paramEIPCResult);
+    this.a.startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
   }
 }
 

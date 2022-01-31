@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.setting;
 
-import aayv;
+import abfv;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -18,14 +18,14 @@ public class ArkAuthorityInfoActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130968703);
-    super.setTitle(2131438818);
+    setContentView(2130968706);
+    super.setTitle(2131438842);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("intent_extra_authority_app_name");
-    ((TextView)super.findViewById(2131363303)).setText(getString(2131438820, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    ((TextView)super.findViewById(2131363320)).setText(getString(2131438844, new Object[] { this.jdField_a_of_type_JavaLangString }));
     int i = 0;
     while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131363304, 2131363305, 2131363306, 2131363307 }[i]);
+      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131363321, 2131363322, 2131363323, 2131363324 }[i]);
       int j = ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
       if (j == 0)
       {
@@ -39,7 +39,7 @@ public class ArkAuthorityInfoActivity
         for (boolean bool = true;; bool = false)
         {
           paramBundle.setChecked(bool);
-          paramBundle.setOnCheckedChangeListener(new aayv(this, i));
+          paramBundle.setOnCheckedChangeListener(new abfv(this, i));
           break;
         }
       }

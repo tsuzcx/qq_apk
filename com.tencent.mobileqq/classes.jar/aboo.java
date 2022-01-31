@@ -1,57 +1,27 @@
-import android.annotation.TargetApi;
-import android.view.View;
-
-@TargetApi(11)
-public final class aboo
+public class aboo
 {
-  public static float a(View paramView)
-  {
-    return paramView.getScaleX();
-  }
+  public static final float[] a;
   
-  public static void a(View paramView, float paramFloat)
+  static
   {
-    paramView.setPivotX(paramFloat);
-  }
-  
-  public static float b(View paramView)
-  {
-    return paramView.getTranslationY();
-  }
-  
-  public static void b(View paramView, float paramFloat)
-  {
-    paramView.setPivotY(paramFloat);
-  }
-  
-  public static void c(View paramView, float paramFloat)
-  {
-    paramView.setAlpha(paramFloat);
-  }
-  
-  public static void d(View paramView, float paramFloat)
-  {
-    paramView.setScaleX(paramFloat);
-  }
-  
-  public static void e(View paramView, float paramFloat)
-  {
-    paramView.setScaleY(paramFloat);
-  }
-  
-  public static void f(View paramView, float paramFloat)
-  {
-    paramView.setTranslationX(paramFloat);
-  }
-  
-  public static void g(View paramView, float paramFloat)
-  {
-    paramView.setTranslationY(paramFloat);
-  }
-  
-  public static void h(View paramView, float paramFloat)
-  {
-    paramView.setX(paramFloat);
+    int k = 0;
+    a = new float[8192];
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= 8192) {
+        break;
+      }
+      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
+      i += 1;
+    }
+    while (j < 360)
+    {
+      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
+      j += 90;
+    }
   }
 }
 

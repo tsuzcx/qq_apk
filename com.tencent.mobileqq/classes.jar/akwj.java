@@ -1,126 +1,58 @@
-import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class akwj
-  extends Toast
+  implements ActionSheet.OnButtonClickListener
 {
-  private static WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private static Class jdField_a_of_type_JavaLangClass;
-  private static Field jdField_a_of_type_JavaLangReflectField;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static Field jdField_b_of_type_JavaLangReflectField;
-  private static Method jdField_b_of_type_JavaLangReflectMethod;
-  public Runnable a;
+  public akwj(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler) {}
   
-  public akwj(Context paramContext)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new akwk(this);
-  }
-  
-  public void cancel()
-  {
-    try
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, new Object[] { "", "cancel!" });
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435499);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    if (paramInt == 0) {
+      if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
+        this.a.jdField_b_of_type_Int = 0;
       }
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (!QQToast.a(false))
-      {
-        super.cancel();
-        return;
-      }
-      Object localObject = jdField_a_of_type_JavaLangReflectField.get(this);
-      if (jdField_b_of_type_JavaLangReflectMethod == null)
-      {
-        jdField_b_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("hide", new Class[0]);
-        jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
-      }
-      jdField_b_of_type_JavaLangReflectMethod.invoke(localObject, new Object[0]);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "", localThrowable);
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
-    }
-  }
-  
-  public void show()
-  {
-    try
-    {
-      if (getView() == null) {
-        throw new RuntimeException("setView must have been called");
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "", localThrowable);
-      }
-      return;
-    }
-    if (jdField_a_of_type_JavaLangReflectField == null)
-    {
-      jdField_a_of_type_JavaLangReflectField = Toast.class.getDeclaredField("mTN");
-      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-    }
-    Object localObject1 = jdField_a_of_type_JavaLangReflectField.get(this);
-    if (QQToast.a())
-    {
-      localObject2 = localObject1.getClass().getDeclaredField("mParams");
-      ((Field)localObject2).setAccessible(true);
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams = (WindowManager.LayoutParams)((Field)localObject2).get(localObject1);
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 67108904;
-      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131624712;
-    }
-    Object localObject2 = (TextView)getView().findViewById(2131364105);
-    if ((localObject2 != null) && (((TextView)localObject2).getText().length() < 6)) {}
-    for (long l = 900L;; l = 1900L)
-    {
-      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "show");
-      }
-      if (!QQToast.a(false))
+      this.a.b(this.a.jdField_b_of_type_JavaLangString);
+      continue;
+      if (paramInt == 1)
       {
-        super.show();
-        return;
+        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
+          this.a.jdField_b_of_type_Int = 1;
+        } else {
+          this.a.a(this.a.jdField_b_of_type_JavaLangString);
+        }
       }
-      if (jdField_a_of_type_JavaLangClass == null) {
-        jdField_a_of_type_JavaLangClass = Class.forName("android.widget.Toast$TN");
-      }
-      if (jdField_b_of_type_JavaLangReflectField == null)
+      else if (paramInt == 2)
       {
-        jdField_b_of_type_JavaLangReflectField = jdField_a_of_type_JavaLangClass.getDeclaredField("mNextView");
-        jdField_b_of_type_JavaLangReflectField.setAccessible(true);
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        }
+        this.a.c(this.a.jdField_b_of_type_JavaLangString);
       }
-      jdField_b_of_type_JavaLangReflectField.set(localObject1, getView());
-      if (jdField_a_of_type_JavaLangReflectMethod == null)
-      {
-        jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("show", new Class[0]);
-        jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
-      }
-      jdField_a_of_type_JavaLangReflectMethod.invoke(localObject1, new Object[0]);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akwj
  * JD-Core Version:    0.7.0.1
  */

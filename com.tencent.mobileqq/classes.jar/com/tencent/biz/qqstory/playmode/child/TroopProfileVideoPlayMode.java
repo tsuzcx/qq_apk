@@ -20,7 +20,7 @@ import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.widget.ActionSheet;
 import java.util.ArrayList;
-import nls;
+import nqc;
 
 public class TroopProfileVideoPlayMode
   extends MyMemoryPlayMode
@@ -44,7 +44,7 @@ public class TroopProfileVideoPlayMode
   {
     int i = paramBundle.getInt("extra_collection_key_index", 0);
     this.e = paramBundle.getStringArrayList("extra_feedid_list");
-    this.l = paramBundle.getInt("extra_memory_from", 1);
+    this.k = paramBundle.getInt("extra_memory_from", 1);
     boolean bool = paramBundle.getBoolean("extra_memory_key_list_is_end", true);
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMultiGroupVideoDataProvider = new ShareGroupVideoDataProvider(this.c, 2, this.e, i, this.b, bool);
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMultiGroupVideoDataProvider.a(this);
@@ -54,9 +54,9 @@ public class TroopProfileVideoPlayMode
   protected void a(ActionSheet paramActionSheet, StoryVideoItem paramStoryVideoItem)
   {
     boolean bool = PlayModeUtils.a(paramStoryVideoItem);
-    paramActionSheet.b(2131434558);
+    paramActionSheet.b(2131434574);
     if (!bool) {
-      paramActionSheet.b(2131435116);
+      paramActionSheet.b(2131435132);
     }
     int i;
     if (paramStoryVideoItem.mStoryType == 2)
@@ -71,7 +71,7 @@ public class TroopProfileVideoPlayMode
     for (;;)
     {
       if ((bool) || (i != 0)) {
-        paramActionSheet.b(2131434739);
+        paramActionSheet.b(2131434755);
       }
       return;
       i = 0;
@@ -84,18 +84,18 @@ public class TroopProfileVideoPlayMode
   {
     Resources localResources = paramView.getContext().getApplicationContext().getResources();
     String str = a(this.b);
-    if (paramString.equals(localResources.getString(2131435116)))
+    if (paramString.equals(localResources.getString(2131435132)))
     {
       if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver == null)
       {
         this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver = new FeedsPlayModeBase.ReportVideoReceiver(this);
         a("", this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver);
       }
-      PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a, paramStoryVideoItem, new nls(this));
+      PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a, paramStoryVideoItem, new nqc(this));
       StoryReportor.a("story_grp", "clk_one", a(), 0, new String[] { "7", PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.b), "", str });
       return true;
     }
-    if (paramString.equals(localResources.getString(2131434739)))
+    if (paramString.equals(localResources.getString(2131434755)))
     {
       StoryReportor.a("play_video", "clk_delete", 0, 0, new String[] { "", "", "", paramStoryVideoItem.mVid });
       if ((paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading()))

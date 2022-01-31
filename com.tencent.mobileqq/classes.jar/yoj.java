@@ -1,25 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.apollo.ai.ApolloAIActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class yoj
-  implements ClickableColorSpanTextView.SpanClickListener
+  extends FriendListObserver
 {
-  public yoj(ApolloAIActivity paramApolloAIActivity) {}
+  public yoj(RecommendFriendAdapter paramRecommendFriendAdapter) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  protected void onMayknowStateChanged(boolean paramBoolean)
   {
-    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.startActivity(paramClickableColorSpanTextView);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onStatesChanged ");
+    }
+    RecommendFriendAdapter.a(this.a, RecommendFriendAdapter.a(this.a).a());
+    this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yoj
  * JD-Core Version:    0.7.0.1
  */

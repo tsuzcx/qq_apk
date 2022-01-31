@@ -40,8 +40,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lwd;
-import lwe;
+import lzq;
+import lzr;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -145,7 +145,7 @@ public class ComponentHeaderUgc
     {
       localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new lwd(this, localArticleInfo));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new lzq(this, localArticleInfo));
       if (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo == null) {
         break label702;
       }
@@ -266,7 +266,7 @@ public class ComponentHeaderUgc
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969584, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969580, this, true);
   }
   
   public void a(long paramLong, Bitmap paramBitmap)
@@ -280,10 +280,10 @@ public class ComponentHeaderUgc
   {
     super.a(paramView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)findViewById(2131367037));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)findViewById(2131362894));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)findViewById(2131362899));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366704));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365659));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366702));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365664));
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131367027));
     this.b = ((ImageView)findViewById(2131367024));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -315,7 +315,7 @@ public class ComponentHeaderUgc
     {
     default: 
       return;
-    case 2131362894: 
+    case 2131362899: 
     case 2131367037: 
       c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a());
       return;
@@ -324,12 +324,15 @@ public class ComponentHeaderUgc
     if (paramView != null)
     {
       ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
-      ReadInJoyBaseAdapter.a(localArticleInfo, "0X80080EC", "0X80080EC", (int)localArticleInfo.mChannelID);
-      ReadInJoyLogicEngine.b(localArticleInfo);
-      if ((localArticleInfo != null) && (localArticleInfo.mSocialFeedInfo != null))
+      if (localArticleInfo != null)
       {
-        long l = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long;
-        ReadInJoyLogicEngine.a().a().a(paramView.getAccount(), String.valueOf(l), true, new lwe(this, localArticleInfo));
+        ReadInJoyBaseAdapter.a(localArticleInfo, "0X80080EC", "0X80080EC", (int)localArticleInfo.mChannelID);
+        ReadInJoyLogicEngine.b(localArticleInfo);
+        if (localArticleInfo.mSocialFeedInfo != null)
+        {
+          long l = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long;
+          ReadInJoyLogicEngine.a().a().a(paramView.getAccount(), String.valueOf(l), true, new lzr(this, paramView, localArticleInfo));
+        }
       }
     }
     c();

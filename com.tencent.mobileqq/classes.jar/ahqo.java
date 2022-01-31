@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.search.ContentRecommendModel;
-import com.tencent.mobileqq.search.model.ContentRecommendDataModel;
-import com.tencent.util.UiThreadUtil;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahqo
-  implements Runnable
+class ahqo
+  implements CaptureVideoFilterManager.OnResourceDownloadListener
 {
-  public ahqo(ContentRecommendModel paramContentRecommendModel, ContentRecommendDataModel paramContentRecommendDataModel) {}
+  ahqo(ahqn paramahqn) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelContentRecommendDataModel.a();
-    UiThreadUtil.a(new ahqp(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager onResourceDownload");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahqo
  * JD-Core Version:    0.7.0.1
  */

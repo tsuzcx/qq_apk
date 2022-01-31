@@ -43,7 +43,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import odf;
+import ohu;
 
 public class EditPicPartManager
   extends EditVideoPartManager
@@ -53,7 +53,7 @@ public class EditPicPartManager
   
   private void b(int paramInt)
   {
-    Object localObject = PlusPanelUtils.a(AppConstants.aV);
+    Object localObject = PlusPanelUtils.a(AppConstants.aW);
     Activity localActivity = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
     localActivity.getIntent().putExtra("image_path", (String)localObject);
     if (QLog.isColorLevel()) {
@@ -157,7 +157,7 @@ public class EditPicPartManager
     VideoEditReport.b("0X80076EA");
     SLog.d("EditPicActivity.EditPicPartManager", "PUBLISH start ...");
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a("请稍候", false, 500L);
-    Stream.of(localGenerateContext).map(new GenerateEditPicDoodleSegment((EditDoodleExport)a(EditDoodleExport.class), null)).map(new ThreadOffFunction(2)).map(new MergePicSegment(EditPicConstants.a + "qq_pic_merged_" + System.currentTimeMillis() + ".jpg")).map(new UIThreadOffFunction(this)).subscribe(new odf(this, localGenerateContext));
+    Stream.of(localGenerateContext).map(new GenerateEditPicDoodleSegment((EditDoodleExport)a(EditDoodleExport.class), null)).map(new ThreadOffFunction(2)).map(new MergePicSegment(EditPicConstants.a + "qq_pic_merged_" + System.currentTimeMillis() + ".jpg")).map(new UIThreadOffFunction(this)).subscribe(new ohu(this, localGenerateContext));
   }
   
   public void a()
@@ -233,8 +233,8 @@ public class EditPicPartManager
       paramIntent.putExtra("param_type", 9003);
       paramIntent.putExtra("param_only_friends", true);
       paramIntent.putExtra("param_donot_need_contacts", true);
-      paramIntent.putExtra("param_title", paramActivity.getString(2131438253));
-      paramIntent.putExtra("param_done_button_wording", paramActivity.getString(2131432417));
+      paramIntent.putExtra("param_title", paramActivity.getString(2131438273));
+      paramIntent.putExtra("param_done_button_wording", paramActivity.getString(2131432428));
       paramIntent.putExtra("param_exit_animation", 1);
       paramIntent.putExtra("param_entrance", 15);
       paramIntent.putExtra("param_blesstype", 3);

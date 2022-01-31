@@ -1,25 +1,71 @@
-import com.tencent.biz.qqstory.model.AddressDataProvider;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProviderManager;
-import com.tencent.biz.qqstory.model.SuperManager;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import com.tencent.biz.qqstory.takevideo.music.MusicGridAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
 
-class olc
-  implements Runnable
+public class olc
+  extends SimpleObserver
 {
-  olc(olb paramolb, AddressDataProvider.AddressInfo paramAddressInfo) {}
+  public olc(EditVideoSave paramEditVideoSave, GenerateContext paramGenerateContext) {}
   
-  public void run()
+  public void a(GenerateContext paramGenerateContext)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "address update, refresh ui.");
-    if (((AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo))
+    super.onNext(paramGenerateContext);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.a(5);
+    paramGenerateContext = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishGenerateContext.a;
+    SLog.b("EditVideoSave", "publishParam = " + paramGenerateContext);
+    Intent localIntent;
+    int j;
+    int i;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
     {
-      QLog.d("zivonchen", 2, "isInternationalUser --------------------2");
-      this.jdField_a_of_type_Olb.a.a.a();
+      localIntent = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getIntent();
+      if (localIntent == null) {
+        break label199;
+      }
+      j = localIntent.getIntExtra("sv_total_frame_count", 0);
+      i = localIntent.getIntExtra("sv_total_record_time", 0);
     }
+    for (;;)
+    {
+      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), paramGenerateContext.b, i, j);
+      EditVideoSave.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave, paramGenerateContext.b);
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().startActivityForResult(localIntent, 111);
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_Int = 5;
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.b = ((int)(7000.0D / paramGenerateContext.a * 4.0D));
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.e();
+      return;
+      label199:
+      i = 0;
+      j = 0;
+    }
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    SLog.d("EditVideoSave", "saveVideo cancel !");
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.h();
+    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    SLog.e("EditVideoSave", "saveVideo error ：" + paramError);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave.h();
   }
 }
 

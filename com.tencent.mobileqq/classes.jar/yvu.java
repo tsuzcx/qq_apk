@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
 
 public class yvu
   implements Runnable
 {
-  public yvu(ApolloDaoManager paramApolloDaoManager, int paramInt) {}
+  public yvu(ApolloGameStateMachine paramApolloGameStateMachine) {}
   
   public void run()
   {
-    ApolloActionData localApolloActionData = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloDaoManager.a(this.jdField_a_of_type_Int);
-    if (localApolloActionData != null)
-    {
-      localApolloActionData.limitFree = 0;
-      this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloDaoManager.b(localApolloActionData);
-    }
+    this.a.a(6);
   }
 }
 

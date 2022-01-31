@@ -78,7 +78,7 @@ public class SttServlet
           {
             paramQQAppInterface = "1";
             ((HashMap)localObject).put("param_FailCode", paramQQAppInterface);
-            ((HashMap)localObject).put("appversion", "7.6.3");
+            ((HashMap)localObject).put("appversion", "7.6.8");
             paramLong.a("", "PttSttRequestV2", false, 0L, 0L, (HashMap)localObject, "");
             label379:
             if (bool) {

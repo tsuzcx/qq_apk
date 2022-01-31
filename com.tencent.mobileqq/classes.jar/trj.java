@@ -1,22 +1,52 @@
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SecurityProtectActivity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class trj
   implements Runnable
 {
-  public trj(SecurityProtectActivity paramSecurityProtectActivity) {}
+  private WeakReference a;
+  
+  public trj(QQSettingMe paramQQSettingMe)
+  {
+    this.a = new WeakReference(paramQQSettingMe);
+  }
   
   public void run()
   {
-    SecurityProtectActivity.a(this.a, false);
-    SecurityProtectActivity.a(this.a).setText(2131436663);
-    SecurityProtectActivity.b(this.a).setVisibility(0);
-    SecurityProtectActivity.a(this.a).setVisibility(0);
-    ((LinearLayout)this.a.findViewById(2131371297)).setVisibility(8);
-    FMToastUtil.a(2131434613);
+    for (;;)
+    {
+      try
+      {
+        if (this.a == null) {
+          return;
+        }
+        QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
+        if ((localQQSettingMe == null) || (localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+          break;
+        }
+        WebProcessManager localWebProcessManager = (WebProcessManager)localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
+        if (localWebProcessManager == null) {
+          break;
+        }
+        if (ApolloUtil.a(localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localQQSettingMe.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView))
+        {
+          i = 100;
+          localWebProcessManager.a(i, new trk(this, localQQSettingMe));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("QQSettingRedesign", 1, "WebPreloadTask preloadWebProcess, exception=" + MsfSdkUtils.getStackTraceString(localException));
+        return;
+      }
+      int i = -1;
+    }
   }
 }
 

@@ -1,23 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-
 public class aiky
-  implements Runnable
 {
-  public aiky(SceneBuilder paramSceneBuilder, SpriteGLView paramSpriteGLView, SceneBuilder.OnBuiltListener paramOnBuiltListener) {}
+  public String a;
+  public String b;
   
-  public void run()
+  public aiky(String paramString1, String paramString2)
   {
-    String str = SceneBuilder.a(SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder) + "/scene.json");
-    new Handler(Looper.getMainLooper()).post(new aikz(this, str));
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aiky
  * JD-Core Version:    0.7.0.1
  */

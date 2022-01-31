@@ -1,25 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
 
 public class ajhx
-  implements View.OnTouchListener
+  extends Handler
 {
-  public ajhx(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ajhx(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar, Looper paramLooper)
   {
-    switch (paramMotionEvent.getAction())
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
+    default: 
+      return;
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    this.a.g();
   }
 }
 

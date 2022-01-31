@@ -11,9 +11,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import srg;
-import srh;
-import sri;
+import swb;
+import swc;
+import swd;
 
 public class FriendProfileCardActivity$ColorScreenLoader
   implements VasManager.CompleteListener, Runnable
@@ -46,7 +46,7 @@ public class FriendProfileCardActivity$ColorScreenLoader
       paramObject = new Bundle();
       paramObject.putString("key", "lottie_colorscreen_" + String.valueOf(this.jdField_a_of_type_Int) + "unzip");
       paramObject.putString("path", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getFilesDir().getAbsolutePath() + "/" + "color_screen" + "/" + this.jdField_a_of_type_Int + "/" + "unzip" + "/images/");
-      LottieComposition.Factory.fromInputStreamWithCacheBitmap(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramColorScreenConfig, new srg(this), paramObject, BaseApplicationImpl.sImageCache);
+      LottieComposition.Factory.fromInputStreamWithCacheBitmap(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramColorScreenConfig, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.getLottieDrawable(), new swb(this), paramObject, BaseApplicationImpl.sImageCache);
       return;
     }
     catch (FileNotFoundException paramColorScreenConfig)
@@ -63,19 +63,19 @@ public class FriendProfileCardActivity$ColorScreenLoader
         QLog.d("ColorScreenManager", 2, "play : " + this.jdField_a_of_type_Int);
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setImageAssetDelegate(new srh(this));
-      localsri = new sri(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setImageAssetDelegate(new swc(this));
+      localswd = new swd(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setComposition(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition);
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setProgress(0.0F);
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setRepeatCount(this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenConfig.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.addAnimatorListener(localsri);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.addAnimatorUpdateListener(localsri);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.addAnimatorListener(localswd);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.addAnimatorUpdateListener(localswd);
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.playAnimation();
     }
     while (!QLog.isColorLevel())
     {
-      sri localsri;
+      swd localswd;
       return;
     }
     QLog.d("ColorScreenManager", 2, "won't play old anim: " + this.jdField_a_of_type_Int + " because have new anim: " + this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.d);

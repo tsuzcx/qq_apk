@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.magicface.view.MagicfaceContainerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10ef" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.magicface.view.MagicFaceGLView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10f0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0045" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2944" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginBottom="50.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</com.tencent.mobileqq.magicface.view.MagicfaceContainerView>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a092f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220f7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0042" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0581" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a048c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b25c8" android:layout_centerInParent="true" />
+</RelativeLayout>

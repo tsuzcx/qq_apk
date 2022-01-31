@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler;
+import com.tencent.mobileqq.confess.ConfessManager;
 
 public class abyx
   implements Runnable
 {
-  public abyx(PokeResHandler paramPokeResHandler) {}
+  public abyx(ConfessManager paramConfessManager, String paramString, abyz paramabyz) {}
   
   public void run()
   {
-    PokeItemHelper.a(this.a.a, null);
+    this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abyz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyx
  * JD-Core Version:    0.7.0.1
  */

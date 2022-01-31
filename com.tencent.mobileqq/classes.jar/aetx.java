@@ -1,19 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aetx
-  extends ProtoUtils.TroopGiftProtocolObserver
+  implements Runnable
 {
-  public aetx(NowShortVideoProtoManager paramNowShortVideoProtoManager, NowShortVideoProtoManager.Callback paramCallback) {}
+  public aetx(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback.a(paramInt, paramArrayOfByte, paramBundle);
+    synchronized (this.a.a)
+    {
+      boolean bool = this.a.d;
+      if (!bool) {}
+      try
+      {
+        DeviceProfileManager.a(this.a, 214).a(this.a);
+        this.a.d = true;
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("NearbyAppInterface", 2, "onDestroy: ", localException);
+          }
+        }
+      }
     }
   }
 }

@@ -1,18 +1,41 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajft
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  public ajft(TroopEnterEffectManager paramTroopEnterEffectManager, String paramString) {}
+  public ajft(TroopWebviewPlugin paramTroopWebviewPlugin, String paramString) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig = this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.a.get()) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.jdField_a_of_type_AndroidOsHandler.post(new ajfu(this));
+    long l = paramBundle.getLong("lastMsgTime");
+    paramBundle = paramBundle.getString("lastMsgContent");
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("lastMsgTime", l);
+      localJSONObject.put("lastMsgContent", paramBundle);
+      if (!TextUtils.isEmpty(paramBundle))
+      {
+        localJSONObject.put("ret", 0);
+        localJSONObject.put("errorMsg", "");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+        localJSONObject.put("ret", -1);
+        localJSONObject.put("errorMsg", "lastSpeakMsg is empty");
+      }
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
     }
   }
 }

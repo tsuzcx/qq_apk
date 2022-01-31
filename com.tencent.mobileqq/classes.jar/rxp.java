@@ -1,15 +1,14 @@
-import com.tencent.av.utils.GVideoGrayConfig;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.flashchat.FlashChatObserver;
 
-public final class rxp
-  implements QQProgressDialog.Callback
+public class rxp
+  extends FlashChatObserver
 {
-  public rxp(GVideoGrayConfig.GVideoGrayConfigListener paramGVideoGrayConfigListener) {}
+  public rxp(BaseChatPie paramBaseChatPie) {}
   
   public void a()
   {
-    GVideoGrayConfig.a().a(this.a);
+    this.a.ag();
   }
 }
 

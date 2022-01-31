@@ -1,75 +1,95 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.PublishCommentCallback;
+import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSourceImpl;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentResp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 public class afav
-  implements Runnable
+  extends ProtoUtils.TroopGiftProtocolObserver
 {
-  public afav(ImageDisplayView paramImageDisplayView, String paramString, int paramInt1, int paramInt2) {}
+  public afav(CommentsDataSourceImpl paramCommentsDataSourceImpl, CommentsDataSource.PublishCommentCallback paramPublishCommentCallback, Comments.Comment paramComment) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject1 = null;
-    try
+    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
+    paramBundle = "";
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString);
-      localObject1 = localBitmap;
-      int i = new ExifInterface(this.jdField_a_of_type_JavaLangString).getAttributeInt("Orientation", 0);
-      localObject1 = localBitmap;
-      localObject2 = new Matrix();
-      switch (i)
+      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
+      for (;;)
       {
+        try
+        {
+          localRspBody.mergeFrom(paramArrayOfByte);
+          if (QLog.isColorLevel()) {
+            QLog.i("CommentsDataSource", 2, "err_msg:   " + localRspBody.err_msg.get());
+          }
+          if (!localRspBody.busi_buf.has())
+          {
+            QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
+            this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, "");
+            return;
+          }
+          localAddCommentResp = new NowNearbyVideoCommentProto.AddCommentResp();
+          localAddCommentResp.mergeFrom(localRspBody.busi_buf.get().toByteArray());
+          if (!localAddCommentResp.wording.has()) {
+            continue;
+          }
+          paramArrayOfByte = localAddCommentResp.wording.get().toStringUtf8();
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          NowNearbyVideoCommentProto.AddCommentResp localAddCommentResp;
+          paramArrayOfByte = paramBundle;
+          continue;
+          paramArrayOfByte = "";
+          continue;
+        }
+        try
+        {
+          QLog.d("CommentsDataSource", 1, "id: " + localAddCommentResp.comment_id.get() + ",ret:" + localAddCommentResp.result.get() + ", tip=" + paramArrayOfByte);
+          if (localAddCommentResp.result.get() == 0L) {
+            continue;
+          }
+          QLog.i("CommentsDataSource", 1, "error code :" + localAddCommentResp.result.get());
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)localAddCommentResp.result.get(), paramArrayOfByte);
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramBundle) {}
+      }
+      QLog.i("CommentsDataSource", 1, "merge publish resp data error");
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, paramArrayOfByte);
+      return;
+      if (localAddCommentResp.comment_id.get() > 0L)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a = localAddCommentResp.comment_id.get();
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+        CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).add(Long.valueOf(localAddCommentResp.comment_id.get()));
+        paramBundle = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (paramBundle != null) {
+          ((NearbyMomentManager)paramBundle.getManager(262)).e(CommentsDataSourceImpl.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSourceImpl).a);
+        }
       }
     }
-    catch (Exception localException)
+    else
     {
-      Bitmap localBitmap;
-      Object localObject2;
-      while (localObject1 != null)
-      {
-        ThreadManager.getUIHandler().post(new afay(this, localObject1));
-        return;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(180.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(180.0F);
-        localObject1 = localException;
-        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(90.0F);
-        localObject1 = localException;
-        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(90.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(270.0F);
-        localObject1 = localException;
-        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-        continue;
-        localObject1 = localException;
-        ((Matrix)localObject2).postRotate(270.0F);
-      }
+      QLog.i("CommentsDataSource", 1, "publishComment failed");
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource$PublishCommentCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1, "");
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    localObject1 = localBitmap;
-    ThreadManager.getUIHandler().post(new afaw(this, localBitmap));
-    return;
-    localObject1 = localBitmap;
-    ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-    localObject1 = localBitmap;
-    localObject2 = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), (Matrix)localObject2, true);
-    localObject1 = localBitmap;
-    ThreadManager.getUIHandler().post(new afax(this, (Bitmap)localObject2));
-    return;
   }
 }
 

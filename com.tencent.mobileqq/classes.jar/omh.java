@@ -1,8 +1,20 @@
-import android.widget.ImageView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class omh
+public final class omh
+  implements Animation.AnimationListener
 {
-  public ImageView a;
+  public omh(View paramView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.setAnimation(null);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

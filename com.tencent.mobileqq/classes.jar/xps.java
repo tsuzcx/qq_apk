@@ -1,15 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.os.MqqHandler;
 
-class xps
-  implements Runnable
+public class xps
+  implements View.OnClickListener
 {
-  xps(xpr paramxpr) {}
+  private final int jdField_a_of_type_Int;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void run()
+  public xps(int paramInt, MqqHandler paramMqqHandler)
   {
-    this.a.a.e.setVisibility(4);
-    this.a.a.e.setAlpha(255);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
   }
 }
 

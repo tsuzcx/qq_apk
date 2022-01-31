@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a331e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02207c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.CommonLine android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220a1" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08d3" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" />
-    <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d9d" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a331f" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="40.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:scrollingCache="true" android:cacheColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:divider="@null" />
-</RelativeLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32aa" android:visibility="gone" android:layout_width="54.0dip" android:layout_height="54.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e0b" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="12.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32ab" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="已赠送" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a32aa" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32ac" android:layout_width="54.0dip" android:layout_height="54.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e09" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="12.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32ad" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="更多" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a32ac" android:layout_centerHorizontal="true" />
+</merge>

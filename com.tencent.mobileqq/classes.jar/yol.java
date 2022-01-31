@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.apollo.ai.ApolloAILogicProcessor;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.util.FaceDecoder;
 
 public class yol
-  implements Runnable
+  extends TroopObserver
 {
-  public yol(ApolloAILogicProcessor paramApolloAILogicProcessor) {}
+  public yol(ShowExternalTroopListAdapter paramShowExternalTroopListAdapter) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloAILogicProcessor", 2, "[run post]");
+    Bitmap localBitmap = this.a.a.a(113, paramString);
+    if (localBitmap != null) {
+      this.a.a(paramString, localBitmap);
     }
-    ApolloAILogicProcessor.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yol
  * JD-Core Version:    0.7.0.1
  */

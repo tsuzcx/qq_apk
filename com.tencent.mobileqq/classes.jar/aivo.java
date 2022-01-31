@@ -1,30 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.mobileqq.troop.logic.TroopAvatarWallEditCtrl;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
+import com.tencent.mobileqq.transfile.RichMediaUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class aivo
-  implements AdapterView.OnItemSelectedListener
+public class aivo
+  extends TimerTask
 {
-  aivo(aivm paramaivm) {}
+  public aivo(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner, HttpNetReq paramHttpNetReq) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    if (paramView == null) {
-      return;
-    }
-    this.a.a.a.jdField_a_of_type_Int = paramInt;
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopAvatarWallEditCtrl.a(paramInt);
-    if (this.a.a.a.jdField_a_of_type_Boolean)
+    boolean bool = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      ReportController.b(this.a.a.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.a.jdField_a_of_type_JavaLangString, "0", "", "");
-      return;
+      int i;
+      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null))
+      {
+        i = this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.g;
+        if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.a != 1) {
+          break label71;
+        }
+      }
+      for (;;)
+      {
+        RichMediaUtil.a(i, bool, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.f, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.e, "scheduleRetry", "mIsCancelled is true 2");
+        return;
+        label71:
+        bool = false;
+      }
     }
-    ReportController.b(this.a.a.a.app, "P_CliOper", "Grp_set", "", "Grp_Visdata", "nonmber_Clk_head", 0, 0, this.a.a.a.jdField_a_of_type_JavaLangString, "1", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.c(this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 

@@ -1,57 +1,57 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyRelevantHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class szm
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public szm(LikeSettingActivity paramLikeSettingActivity) {}
+  public szm(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
-    {
-      ((NearbyRelevantHandler)this.a.app.a(66)).a(paramBoolean);
-      this.a.app.reportClickEvent("CliOper", "0X8006729");
+    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
+    if (paramDialogInterface.equals("")) {
+      paramDialogInterface = this.a.getResources().getString(2131436531);
     }
-    do
+    for (;;)
     {
-      return;
-      if (paramCompoundButton == this.a.c.a())
-      {
-        this.a.app.d(true, paramBoolean);
-        return;
-      }
-      if (paramCompoundButton == this.a.b.a())
-      {
-        localQQAppInterface = this.a.app;
-        if (paramBoolean) {}
-        for (paramCompoundButton = "1";; paramCompoundButton = "0")
+      if (GroupManagerActivity.a(this.a) == 0) {
+        if (this.a.a.size() > 0)
         {
-          ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, paramCompoundButton, "", "", "");
-          this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.e(paramBoolean);
-          return;
+          b = (byte)(((Groups)this.a.a.get(this.a.a.size() - 1)).seqid + 1);
+          GroupManagerActivity.a(this.a, this.a.a(b, paramDialogInterface));
+          if (QLog.isColorLevel()) {
+            QLog.d("GroupManagerActivity", 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+          }
+          if (GroupManagerActivity.a(this.a)) {
+            this.a.a(2131435559);
+          }
+          ReportController.b(this.a.app, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
         }
       }
-    } while (paramCompoundButton != this.a.d.a());
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "2")
-    {
-      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, paramCompoundButton, "", "", "");
-      this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.d(paramBoolean);
-      if (paramBoolean) {
-        break;
+      while (1 != GroupManagerActivity.a(this.a)) {
+        for (;;)
+        {
+          return;
+          byte b = 1;
+        }
       }
-      this.a.b.setVisibility(8);
+      GroupManagerActivity.a(this.a, this.a.b((byte)GroupManagerActivity.a(this.a).group_id, paramDialogInterface));
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupManagerActivity", 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+      }
+      if (GroupManagerActivity.a(this.a)) {
+        this.a.a(2131435561);
+      }
+      ReportController.b(this.a.app, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
       return;
     }
-    this.a.b.setVisibility(0);
   }
 }
 

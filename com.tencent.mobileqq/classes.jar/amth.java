@@ -1,17 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.OnOpenPluginListener;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class amth
-  implements View.OnClickListener
+public final class amth
+  implements IPluginManager.OnPluginReadyListener
 {
-  public amth(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  public amth(IPluginManager.OnOpenPluginListener paramOnOpenPluginListener) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    QzoneVerticalVideoDownloadActivity.a(this.a, true);
-    QzoneVerticalVideoDownloadActivity.b(this.a);
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      IPluginManager.b((Activity)paramContext, paramPluginParams);
+    }
+    for (;;)
+    {
+      if (this.a != null) {
+        this.a.a(paramBoolean);
+      }
+      return;
+      Toast.makeText(BaseApplicationImpl.getContext(), "加载失败", 0).show();
+    }
   }
 }
 

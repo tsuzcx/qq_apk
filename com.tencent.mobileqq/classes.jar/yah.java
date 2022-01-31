@@ -1,34 +1,16 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import cooperation.qzone.widget.QzoneGuideBubbleHelper;
 
-public class yah
-  implements TextWatcher
+public final class yah
+  implements Runnable
 {
-  public yah(SelectMemberActivity paramSelectMemberActivity) {}
+  public yah(Activity paramActivity, View paramView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      this.a.b.setVisibility(8);
-    }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(paramEditable);
-      }
-      return;
-      this.a.b.setVisibility(0);
-    }
+    QzoneGuideBubbleHelper.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, "同步到小视频，与更多好友分享", 1, 14.0F, 5.0D, 10.0D, 5000L, -15550475, false, true, 0, null, 0);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

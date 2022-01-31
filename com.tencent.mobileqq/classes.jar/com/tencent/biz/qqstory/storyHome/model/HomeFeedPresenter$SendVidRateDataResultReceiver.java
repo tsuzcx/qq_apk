@@ -10,7 +10,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.ArrayList;
 import java.util.List;
-import nyz;
+import odo;
 
 public class HomeFeedPresenter$SendVidRateDataResultReceiver
   extends QQUIEventReceiver
@@ -47,7 +47,7 @@ public class HomeFeedPresenter$SendVidRateDataResultReceiver
     for (;;)
     {
       HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramSendVidRateDataResultEvent.jdField_a_of_type_JavaLangString);
-      ThreadManager.post(new nyz(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1), 5, null, false);
+      ThreadManager.post(new odo(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1), 5, null, false);
       HomeFeedPresenter.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
       return;
       ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;

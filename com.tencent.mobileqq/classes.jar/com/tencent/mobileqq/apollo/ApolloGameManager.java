@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo;
 
-import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -66,10 +65,9 @@ import tencent.im.apollo_game_status.STCMGameMessage.STGameQuitRoom;
 import tencent.im.apollo_game_status.STCMGameMessage.STGameStart;
 import tencent.im.apollo_game_status.STCMGameMessage.STMsgComm;
 import tencent.im.apollo_game_status.STCMGameMessage.STScoreInfo;
-import yjs;
-import yju;
-import yjv;
-import yjw;
+import ypx;
+import ypz;
+import yqa;
 
 public class ApolloGameManager
   implements Handler.Callback, Manager
@@ -81,19 +79,18 @@ public class ApolloGameManager
   public static int d;
   public int a;
   private long jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-  protected BroadcastReceiver a;
   private SparseArray jdField_a_of_type_AndroidUtilSparseArray;
   private ApolloGameArkHandler jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler;
   public ApolloGameObserver a;
   public ApolloAioBubblePush a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new yjs(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ypx(this);
   public WeakReference a;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   public AtomicBoolean a;
-  private yjv jdField_a_of_type_Yjv;
+  private yqa jdField_a_of_type_Yqa;
   private long jdField_b_of_type_Long = 600L;
   private WeakReference jdField_b_of_type_JavaLangRefWeakReference;
   private WeakReference c;
@@ -124,31 +121,11 @@ public class ApolloGameManager
       this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameObserver = new ApolloGameObserver(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameObserver);
     }
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new yjw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-      }
-      for (;;)
-      {
-        CmGameServerQIPCModule.a();
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler = new ApolloGameArkHandler(paramQQAppInterface);
-        this.jdField_a_of_type_Yjv = new yjv(null);
-        AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Yjv);
-        return;
-        QLog.e("ApolloGameManager", 1, "[ApolloGameManager] app is null");
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("ApolloGameManager", 1, localThrowable, new Object[] { "[ApolloGameManager]" });
-      }
-    }
+    new IntentFilter().addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
+    CmGameServerQIPCModule.a();
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler = new ApolloGameArkHandler(paramQQAppInterface);
+    this.jdField_a_of_type_Yqa = new yqa(null);
+    AppNetConnInfo.registerConnectionChangeReceiver(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Yqa);
   }
   
   public static int a(String paramString)
@@ -603,79 +580,79 @@ public class ApolloGameManager
   public void a(long paramLong, String paramString)
   {
     // Byte code:
-    //   0: invokestatic 799	com/tencent/mobileqq/apollo/ApolloGameManager:c	()V
-    //   3: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 778	com/tencent/mobileqq/apollo/ApolloGameManager:c	()V
+    //   3: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   6: ifeq +39 -> 45
-    //   9: ldc 98
+    //   9: ldc 95
     //   11: iconst_2
-    //   12: new 100	java/lang/StringBuilder
+    //   12: new 97	java/lang/StringBuilder
     //   15: dup
-    //   16: invokespecial 101	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 801
-    //   22: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   19: ldc_w 780
+    //   22: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: lload_1
-    //   26: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   29: ldc_w 803
-    //   32: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 107	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   29: ldc_w 782
+    //   32: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload_3
-    //   36: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 668	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   36: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 647	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   45: lconst_0
     //   46: lload_1
     //   47: lcmp
     //   48: ifeq +38 -> 86
-    //   51: ldc2_w 804
+    //   51: ldc2_w 783
     //   54: lload_1
     //   55: lcmp
     //   56: ifeq +30 -> 86
-    //   59: ldc 98
+    //   59: ldc 95
     //   61: iconst_1
-    //   62: new 100	java/lang/StringBuilder
+    //   62: new 97	java/lang/StringBuilder
     //   65: dup
-    //   66: invokespecial 101	java/lang/StringBuilder:<init>	()V
-    //   69: ldc_w 807
-    //   72: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   69: ldc_w 786
+    //   72: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: lload_1
-    //   76: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 369	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   76: invokevirtual 107	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   79: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   82: invokestatic 341	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   85: return
-    //   86: new 293	org/json/JSONObject
+    //   86: new 264	org/json/JSONObject
     //   89: dup
     //   90: aload_3
-    //   91: invokespecial 463	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   91: invokespecial 439	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   94: astore 12
     //   96: aload 12
-    //   98: ldc_w 809
-    //   101: invokevirtual 813	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   98: ldc_w 788
+    //   101: invokevirtual 792	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   104: astore_3
     //   105: aload_3
     //   106: ifnonnull +677 -> 783
     //   109: aload 12
-    //   111: ldc_w 815
-    //   114: invokevirtual 813	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   111: ldc_w 794
+    //   114: invokevirtual 792	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   117: astore_3
     //   118: aload_3
-    //   119: ldc_w 817
-    //   122: invokevirtual 820	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   119: ldc_w 796
+    //   122: invokevirtual 799	org/json/JSONObject:optLong	(Ljava/lang/String;)J
     //   125: lstore 7
     //   127: aload_3
-    //   128: ldc_w 822
-    //   131: invokevirtual 472	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   128: ldc_w 801
+    //   131: invokevirtual 448	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   134: istore 4
     //   136: iload 4
     //   138: i2l
     //   139: aload_0
-    //   140: getfield 68	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_b_of_type_Long	J
+    //   140: getfield 65	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_b_of_type_Long	J
     //   143: lcmp
     //   144: ifle +10 -> 154
     //   147: aload_0
     //   148: iload 4
     //   150: i2l
-    //   151: putfield 68	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_b_of_type_Long	J
+    //   151: putfield 65	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_b_of_type_Long	J
     //   154: iconst_2
-    //   155: invokestatic 824	com/tencent/mobileqq/apollo/utils/ApolloUtil:a	(I)I
+    //   155: invokestatic 803	com/tencent/mobileqq/apollo/utils/ApolloUtil:a	(I)I
     //   158: i2l
     //   159: lstore 9
     //   161: lload 7
@@ -683,74 +660,74 @@ public class ApolloGameManager
     //   165: lcmp
     //   166: ifeq +26 -> 192
     //   169: aload_0
-    //   170: getfield 127	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   170: getfield 124	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   173: bipush 115
-    //   175: invokevirtual 401	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   178: checkcast 826	com/tencent/mobileqq/app/utils/ApolloContentUpdateHandler
+    //   175: invokevirtual 375	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   178: checkcast 805	com/tencent/mobileqq/app/utils/ApolloContentUpdateHandler
     //   181: ifnull +11 -> 192
     //   184: aload_0
-    //   185: getfield 127	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   185: getfield 124	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   188: iconst_2
-    //   189: invokestatic 829	com/tencent/mobileqq/app/utils/ApolloContentUpdateHandler:a	(Lcom/tencent/mobileqq/app/QQAppInterface;I)V
-    //   192: ldc 98
+    //   189: invokestatic 808	com/tencent/mobileqq/app/utils/ApolloContentUpdateHandler:a	(Lcom/tencent/mobileqq/app/QQAppInterface;I)V
+    //   192: ldc 95
     //   194: iconst_1
-    //   195: new 100	java/lang/StringBuilder
+    //   195: new 97	java/lang/StringBuilder
     //   198: dup
-    //   199: invokespecial 101	java/lang/StringBuilder:<init>	()V
-    //   202: ldc_w 831
-    //   205: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   202: ldc_w 810
+    //   205: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   208: lload 9
-    //   210: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   213: ldc_w 833
-    //   216: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   210: invokevirtual 107	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   213: ldc_w 812
+    //   216: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   219: lload 7
-    //   221: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   224: ldc_w 835
-    //   227: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: invokevirtual 107	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   224: ldc_w 814
+    //   227: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: iload 4
-    //   232: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   235: ldc_w 837
-    //   238: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   232: invokevirtual 335	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   235: ldc_w 816
+    //   238: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   241: aload_0
-    //   242: getfield 68	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_b_of_type_Long	J
-    //   245: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   248: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   251: invokestatic 840	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   254: ldc2_w 804
+    //   242: getfield 65	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_b_of_type_Long	J
+    //   245: invokevirtual 107	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   248: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   251: invokestatic 819	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   254: ldc2_w 783
     //   257: lload_1
     //   258: lcmp
     //   259: ifeq -174 -> 85
-    //   262: invokestatic 799	com/tencent/mobileqq/apollo/ApolloGameManager:c	()V
+    //   262: invokestatic 778	com/tencent/mobileqq/apollo/ApolloGameManager:c	()V
     //   265: aload_3
-    //   266: ldc_w 842
-    //   269: invokevirtual 820	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   266: ldc_w 821
+    //   269: invokevirtual 799	org/json/JSONObject:optLong	(Ljava/lang/String;)J
     //   272: lstore_1
-    //   273: ldc 98
+    //   273: ldc 95
     //   275: iconst_1
-    //   276: new 100	java/lang/StringBuilder
+    //   276: new 97	java/lang/StringBuilder
     //   279: dup
-    //   280: invokespecial 101	java/lang/StringBuilder:<init>	()V
-    //   283: ldc_w 844
-    //   286: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   283: ldc_w 823
+    //   286: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   289: lload_1
-    //   290: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   293: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   296: invokestatic 840	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   299: new 411	java/util/ArrayList
+    //   290: invokevirtual 107	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   293: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   296: invokestatic 819	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   299: new 385	java/util/ArrayList
     //   302: dup
-    //   303: invokespecial 845	java/util/ArrayList:<init>	()V
+    //   303: invokespecial 824	java/util/ArrayList:<init>	()V
     //   306: astore 12
     //   308: aload_3
-    //   309: ldc_w 847
-    //   312: invokevirtual 851	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   309: ldc_w 826
+    //   312: invokevirtual 830	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   315: astore 13
-    //   317: invokestatic 81	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
+    //   317: invokestatic 78	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
     //   320: lstore 7
     //   322: aload_0
-    //   323: getfield 127	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   323: getfield 124	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   326: sipush 154
-    //   329: invokevirtual 855	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   332: checkcast 857	com/tencent/mobileqq/apollo/utils/ApolloDaoManager
+    //   329: invokevirtual 834	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   332: checkcast 836	com/tencent/mobileqq/apollo/utils/ApolloDaoManager
     //   335: astore_3
     //   336: iconst_0
     //   337: istore 5
@@ -758,30 +735,30 @@ public class ApolloGameManager
     //   340: istore 4
     //   342: iload 4
     //   344: aload 13
-    //   346: invokevirtual 860	org/json/JSONArray:length	()I
+    //   346: invokevirtual 839	org/json/JSONArray:length	()I
     //   349: if_icmpge +240 -> 589
-    //   352: new 415	com/tencent/mobileqq/data/ApolloGameRoamData
+    //   352: new 389	com/tencent/mobileqq/data/ApolloGameRoamData
     //   355: dup
-    //   356: invokespecial 861	com/tencent/mobileqq/data/ApolloGameRoamData:<init>	()V
+    //   356: invokespecial 840	com/tencent/mobileqq/data/ApolloGameRoamData:<init>	()V
     //   359: astore 14
     //   361: aload 13
     //   363: iload 4
-    //   365: invokevirtual 865	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   365: invokevirtual 844	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   368: astore 15
     //   370: aload 14
     //   372: aload 15
-    //   374: ldc_w 328
-    //   377: invokevirtual 472	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   380: putfield 416	com/tencent/mobileqq/data/ApolloGameRoamData:gameId	I
+    //   374: ldc_w 299
+    //   377: invokevirtual 448	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   380: putfield 390	com/tencent/mobileqq/data/ApolloGameRoamData:gameId	I
     //   383: aload 14
     //   385: aload 15
-    //   387: ldc_w 867
-    //   390: invokevirtual 472	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   393: putfield 870	com/tencent/mobileqq/data/ApolloGameRoamData:type	I
+    //   387: ldc_w 846
+    //   390: invokevirtual 448	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   393: putfield 849	com/tencent/mobileqq/data/ApolloGameRoamData:type	I
     //   396: iload 5
     //   398: istore 6
     //   400: aload 14
-    //   402: getfield 870	com/tencent/mobileqq/data/ApolloGameRoamData:type	I
+    //   402: getfield 849	com/tencent/mobileqq/data/ApolloGameRoamData:type	I
     //   405: iconst_1
     //   406: if_icmpne +162 -> 568
     //   409: iload 5
@@ -789,74 +766,74 @@ public class ApolloGameManager
     //   413: lload 7
     //   415: lload_1
     //   416: lsub
-    //   417: ldc2_w 871
+    //   417: ldc2_w 850
     //   420: lcmp
     //   421: ifge +147 -> 568
     //   424: iload 5
     //   426: istore 6
     //   428: aload_3
     //   429: aload 14
-    //   431: getfield 416	com/tencent/mobileqq/data/ApolloGameRoamData:gameId	I
-    //   434: invokevirtual 875	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:a	(I)Lcom/tencent/mobileqq/data/ApolloGameData;
+    //   431: getfield 390	com/tencent/mobileqq/data/ApolloGameRoamData:gameId	I
+    //   434: invokevirtual 854	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:a	(I)Lcom/tencent/mobileqq/data/ApolloGameData;
     //   437: ifnull +131 -> 568
     //   440: iconst_1
     //   441: istore 6
     //   443: aload_0
-    //   444: getfield 127	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   447: invokevirtual 878	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   450: new 100	java/lang/StringBuilder
+    //   444: getfield 124	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   447: invokevirtual 857	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   450: new 97	java/lang/StringBuilder
     //   453: dup
-    //   454: invokespecial 101	java/lang/StringBuilder:<init>	()V
-    //   457: ldc_w 880
-    //   460: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   454: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   457: ldc_w 859
+    //   460: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   463: aload_0
-    //   464: getfield 127	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   467: invokevirtual 882	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
-    //   470: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   473: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   464: getfield 124	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   467: invokevirtual 861	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
+    //   470: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   473: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   476: iconst_0
-    //   477: invokevirtual 885	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   480: invokeinterface 270 1 0
+    //   477: invokevirtual 864	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   480: invokeinterface 241 1 0
     //   485: astore 15
     //   487: aload 15
-    //   489: ldc_w 887
+    //   489: ldc_w 866
     //   492: iconst_1
-    //   493: invokeinterface 891 3 0
+    //   493: invokeinterface 870 3 0
     //   498: pop
     //   499: aload 15
-    //   501: ldc_w 893
+    //   501: ldc_w 872
     //   504: aload 14
-    //   506: getfield 416	com/tencent/mobileqq/data/ApolloGameRoamData:gameId	I
-    //   509: invokeinterface 276 3 0
+    //   506: getfield 390	com/tencent/mobileqq/data/ApolloGameRoamData:gameId	I
+    //   509: invokeinterface 247 3 0
     //   514: pop
     //   515: aload 15
-    //   517: invokeinterface 279 1 0
+    //   517: invokeinterface 250 1 0
     //   522: pop
-    //   523: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   523: invokestatic 93	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   526: ifeq +30 -> 556
-    //   529: ldc 98
+    //   529: ldc 95
     //   531: iconst_2
     //   532: iconst_2
     //   533: anewarray 4	java/lang/Object
     //   536: dup
     //   537: iconst_0
-    //   538: ldc_w 895
+    //   538: ldc_w 874
     //   541: aastore
     //   542: dup
     //   543: iconst_1
     //   544: aload 14
-    //   546: getfield 416	com/tencent/mobileqq/data/ApolloGameRoamData:gameId	I
-    //   549: invokestatic 122	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   546: getfield 390	com/tencent/mobileqq/data/ApolloGameRoamData:gameId	I
+    //   549: invokestatic 119	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   552: aastore
-    //   553: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   553: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   556: aload_0
-    //   557: getfield 127	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   557: getfield 124	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   560: aload 14
-    //   562: getfield 416	com/tencent/mobileqq/data/ApolloGameRoamData:gameId	I
-    //   565: invokestatic 896	com/tencent/mobileqq/apollo/utils/ApolloGameUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;I)V
+    //   562: getfield 390	com/tencent/mobileqq/data/ApolloGameRoamData:gameId	I
+    //   565: invokestatic 875	com/tencent/mobileqq/apollo/utils/ApolloGameUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;I)V
     //   568: aload 12
     //   570: aload 14
-    //   572: invokevirtual 897	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   572: invokevirtual 876	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   575: pop
     //   576: iload 4
     //   578: iconst_1
@@ -868,85 +845,85 @@ public class ApolloGameManager
     //   589: iload 5
     //   591: ifeq +104 -> 695
     //   594: aload_3
-    //   595: getfield 899	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:b	Ljava/util/List;
+    //   595: getfield 878	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:b	Ljava/util/List;
     //   598: ifnull +97 -> 695
     //   601: aload_3
-    //   602: getfield 899	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:b	Ljava/util/List;
+    //   602: getfield 878	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:b	Ljava/util/List;
     //   605: astore 13
     //   607: aload 13
     //   609: monitorenter
     //   610: aload_3
-    //   611: getfield 899	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:b	Ljava/util/List;
-    //   614: invokeinterface 345 1 0
+    //   611: getfield 878	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:b	Ljava/util/List;
+    //   614: invokeinterface 316 1 0
     //   619: astore 15
     //   621: aload 15
-    //   623: invokeinterface 350 1 0
+    //   623: invokeinterface 321 1 0
     //   628: ifeq +64 -> 692
     //   631: aload 15
-    //   633: invokeinterface 354 1 0
-    //   638: checkcast 901	com/tencent/mobileqq/data/ApolloActionPackage
+    //   633: invokeinterface 325 1 0
+    //   638: checkcast 880	com/tencent/mobileqq/data/ApolloActionPackage
     //   641: astore 14
     //   643: aload 14
-    //   645: getfield 904	com/tencent/mobileqq/data/ApolloActionPackage:packageId	I
+    //   645: getfield 883	com/tencent/mobileqq/data/ApolloActionPackage:packageId	I
     //   648: bipush 100
     //   650: if_icmpne -29 -> 621
     //   653: aload 14
-    //   655: getfield 908	com/tencent/mobileqq/data/ApolloActionPackage:isUpdate	Z
+    //   655: getfield 887	com/tencent/mobileqq/data/ApolloActionPackage:isUpdate	Z
     //   658: ifne -37 -> 621
-    //   661: new 411	java/util/ArrayList
+    //   661: new 385	java/util/ArrayList
     //   664: dup
-    //   665: invokespecial 845	java/util/ArrayList:<init>	()V
+    //   665: invokespecial 824	java/util/ArrayList:<init>	()V
     //   668: astore 15
     //   670: aload 14
     //   672: iconst_1
-    //   673: putfield 908	com/tencent/mobileqq/data/ApolloActionPackage:isUpdate	Z
+    //   673: putfield 887	com/tencent/mobileqq/data/ApolloActionPackage:isUpdate	Z
     //   676: aload 15
     //   678: aload 14
-    //   680: invokeinterface 591 2 0
+    //   680: invokeinterface 570 2 0
     //   685: pop
     //   686: aload_3
     //   687: aload 15
-    //   689: invokevirtual 911	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:c	(Ljava/util/List;)V
+    //   689: invokevirtual 890	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:c	(Ljava/util/List;)V
     //   692: aload 13
     //   694: monitorexit
     //   695: aload_0
     //   696: aload 12
     //   698: aload_3
-    //   699: invokevirtual 913	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:g	()Ljava/util/List;
-    //   702: invokespecial 915	com/tencent/mobileqq/apollo/ApolloGameManager:a	(Ljava/util/ArrayList;Ljava/util/List;)Z
+    //   699: invokevirtual 892	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:g	()Ljava/util/List;
+    //   702: invokespecial 894	com/tencent/mobileqq/apollo/ApolloGameManager:a	(Ljava/util/ArrayList;Ljava/util/List;)Z
     //   705: istore 11
     //   707: aload_3
-    //   708: invokevirtual 917	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:e	()V
+    //   708: invokevirtual 896	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:e	()V
     //   711: aload_3
     //   712: aload 12
-    //   714: invokevirtual 920	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:c	(Ljava/util/ArrayList;)V
+    //   714: invokevirtual 899	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:c	(Ljava/util/ArrayList;)V
     //   717: aload_0
-    //   718: getfield 127	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   718: getfield 124	com/tencent/mobileqq/apollo/ApolloGameManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   721: lload_1
-    //   722: invokestatic 923	com/tencent/mobileqq/apollo/utils/ApolloGameUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;J)V
+    //   722: invokestatic 902	com/tencent/mobileqq/apollo/utils/ApolloGameUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;J)V
     //   725: iload 11
     //   727: ifeq -642 -> 85
-    //   730: invokestatic 927	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   733: new 929	yjt
+    //   730: invokestatic 906	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
+    //   733: new 908	ypy
     //   736: dup
     //   737: aload_0
-    //   738: invokespecial 930	yjt:<init>	(Lcom/tencent/mobileqq/apollo/ApolloGameManager;)V
-    //   741: invokevirtual 936	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   738: invokespecial 909	ypy:<init>	(Lcom/tencent/mobileqq/apollo/ApolloGameManager;)V
+    //   741: invokevirtual 915	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   744: pop
     //   745: return
     //   746: astore_3
-    //   747: ldc 98
+    //   747: ldc 95
     //   749: iconst_1
-    //   750: new 100	java/lang/StringBuilder
+    //   750: new 97	java/lang/StringBuilder
     //   753: dup
-    //   754: invokespecial 101	java/lang/StringBuilder:<init>	()V
-    //   757: ldc_w 938
-    //   760: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   754: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   757: ldc_w 917
+    //   760: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   763: aload_3
-    //   764: invokevirtual 391	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   767: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   770: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   773: invokestatic 226	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   764: invokevirtual 363	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   767: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   770: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   773: invokestatic 365	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   776: return
     //   777: astore_3
     //   778: aload 13
@@ -1024,10 +1001,14 @@ public class ApolloGameManager
         if (i < localJSONArray.length())
         {
           ApolloGameRoamData localApolloGameRoamData = new ApolloGameRoamData();
-          localApolloGameRoamData.gameId = localJSONArray.getInt(i);
+          int j = localJSONArray.getInt(i);
+          localApolloGameRoamData.gameId = j;
           ((ArrayList)localObject).add(localApolloGameRoamData);
-          i += 1;
-          continue;
+          if ((!"apollo_aio_game.add_games_to_user_gamepanel".equals(paramString1)) || (ApolloGameUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j))) {
+            break label716;
+          }
+          ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j);
+          break label716;
         }
         paramLong = new JSONObject(paramString2).getJSONObject("data").optLong("timeStamp");
         if (QLog.isColorLevel()) {
@@ -1052,18 +1033,18 @@ public class ApolloGameManager
           }
           paramString1.commit();
           ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong);
-          ThreadManager.getUIHandler().post(new yju(this));
+          ThreadManager.getUIHandler().post(new ypz(this));
           i = -1;
           if (!"android.web".equals(paramString3)) {
-            break label648;
+            break label677;
           }
           i = 1;
           if (-1 == i) {
-            break;
+            break label715;
           }
           paramString1 = ((ArrayList)localObject).iterator();
           if (!paramString1.hasNext()) {
-            break;
+            break label715;
           }
           paramString2 = (ApolloGameRoamData)paramString1.next();
           if (paramString2 == null) {
@@ -1083,7 +1064,7 @@ public class ApolloGameManager
       }
       paramString2.a((ArrayList)localObject);
       continue;
-      label648:
+      label677:
       if ("android.playgame".equals(paramString3))
       {
         i = 0;
@@ -1091,8 +1072,14 @@ public class ApolloGameManager
       else
       {
         boolean bool = "android.wechat".equals(paramString3);
-        if (bool) {
+        if (bool)
+        {
           i = 2;
+          continue;
+          label715:
+          return;
+          label716:
+          i += 1;
         }
       }
     }
@@ -1165,7 +1152,6 @@ public class ApolloGameManager
             localInteger = (Integer)paramArrayList.next();
             if (("apollo_aio_game.add_games_to_user_gamepanel".equals(paramString2)) && (!ApolloGameUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localInteger.intValue())))
             {
-              ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localInteger.intValue());
               localJSONArray.put(localInteger);
               continue;
             }
@@ -1256,8 +1242,7 @@ public class ApolloGameManager
       return;
     }
     QLog.i("ApolloGameManager", 1, "Time is up, try to send a requst to update game json.");
-    ThreadManager.remove(this.jdField_a_of_type_JavaLangRunnable);
-    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
+    ThreadManager.excute(this.jdField_a_of_type_JavaLangRunnable, 128, null, true);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -1321,7 +1306,7 @@ public class ApolloGameManager
         }
       } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
       paramMessage = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152);
-    } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean("force_parse_gamejson_once7.6.3", false));
+    } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean("force_parse_gamejson_once7.6.8", false));
     paramMessage.c();
     QLog.i("ApolloGameManager", 1, "force to parse game json once!!!");
     return true;
@@ -1333,11 +1318,8 @@ public class ApolloGameManager
     g();
     try
     {
-      if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      }
-      if (this.jdField_a_of_type_Yjv != null) {
-        AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Yjv);
+      if (this.jdField_a_of_type_Yqa != null) {
+        AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Yqa);
       }
       if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
         this.jdField_a_of_type_AndroidUtilSparseArray.clear();

@@ -1,76 +1,40 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
-import com.tencent.mobileqq.profile.ProfileCardTemplateInfo;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
 
-public class agpx
-  implements ViewPager.OnPageChangeListener
+class agpx
+  implements Runnable
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  agpx(agpw paramagpw) {}
   
-  public agpx(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageScrollStateChanged state = " + paramInt);
-    }
-    if (paramInt == 1)
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.b();
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x);
-      this.b = true;
-    }
-    if (paramInt == 2) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (paramInt == 0)
-    {
-      if (this.jdField_a_of_type_Boolean)
+      Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.a.a);
+      if (localObject1 != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x);
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
+        PicPreDownloader localPicPreDownloader = ((QQAppInterface)localObject1).a();
+        localObject1 = (ShortVideoPreDownloader)((QQAppInterface)localObject1).getManager(94);
+        if (localPicPreDownloader != null)
+        {
+          localPicPreDownloader.f();
+          localPicPreDownloader.e();
+        }
+        if (localObject1 != null) {
+          ((ShortVideoPreDownloader)localObject1).d();
+        }
       }
-      if (this.b)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
-        this.b = false;
-      }
+      return;
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageScrolled pos = " + paramInt1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.b();
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageSelected pos = " + paramInt);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.d(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x = paramInt;
-    if (((ProfileCardTemplateInfo)this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).a.l == ProfileCardTemplate.h)
+    catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "report shopping template = " + paramInt);
+      for (;;)
+      {
+        Object localObject2 = null;
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, "CliOper", "", "", "Shop_Malltemplate", "0X8005B93", 0, 0, "", "", "", "");
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, "CliOper", "", "", "card_mall", "0X8004C26", 0, 0, "", "", "", VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app.getCurrentAccountUin()));
   }
 }
 

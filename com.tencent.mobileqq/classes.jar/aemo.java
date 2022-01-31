@@ -1,38 +1,23 @@
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.nearby.NearbyProxy;
+import android.media.SoundPool;
+import com.tencent.mobileqq.magicface.service.SoundPoolUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.TimerTask;
 
 public class aemo
-  extends ShieldListObserver
+  extends TimerTask
 {
-  public aemo(NearbyProxy paramNearbyProxy) {}
+  public aemo(SoundPoolUtil paramSoundPoolUtil, int paramInt, String paramString) {}
   
-  protected void a(boolean paramBoolean, List paramList, int paramInt)
+  public void run()
   {
-    if (paramInt == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyProxy", 2, "onAddShieldList from nearby");
-      }
-      NearbyProxy.a(this.a, 4113, new Object[] { Boolean.valueOf(paramBoolean), paramList });
-    }
-  }
-  
-  protected void b(boolean paramBoolean, List paramList, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyProxy", 2, "onDeleteShieldList from nearby");
-      }
-      NearbyProxy.a(this.a, 4114, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a != null) && (this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceSoundPoolUtil.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemo
  * JD-Core Version:    0.7.0.1
  */

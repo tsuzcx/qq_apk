@@ -1,13 +1,19 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.os.Handler;
+import android.os.Message;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class anze
   implements Runnable
 {
-  public anze(DoodleLayout paramDoodleLayout) {}
+  public anze(CropVideoActivity paramCropVideoActivity) {}
   
   public void run()
   {
-    DoodleLayout.a(this.a);
+    CropVideoActivity.a(this.a, CropVideoActivity.g(this.a) + 10);
+    Message localMessage = new Message();
+    localMessage.what = 1;
+    localMessage.arg1 = CropVideoActivity.g(this.a);
+    this.a.a.sendMessage(localMessage);
   }
 }
 

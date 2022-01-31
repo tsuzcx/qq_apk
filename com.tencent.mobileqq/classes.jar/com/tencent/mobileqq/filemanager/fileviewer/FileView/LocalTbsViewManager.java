@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
-import adbs;
-import adbx;
+import adjz;
+import adke;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -45,7 +45,7 @@ public class LocalTbsViewManager
       this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = null;
     }
     QLog.w("LocalTbsViewManager<FileAssistant>", 4, "initVarView: new TbsReaderView");
-    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = new TbsReaderView(paramActivity, new adbs(this, paramActivity, paramLocalTbsViewManagerCallback, paramString));
+    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = new TbsReaderView(paramActivity, new adjz(this, paramActivity, paramLocalTbsViewManagerCallback, paramString));
     QLog.w("LocalTbsViewManager<FileAssistant>", 4, "initVarView: TbsReaderView openFile");
     this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.setBackgroundColor(-1);
     Object localObject = FileUtil.a(paramString);
@@ -109,7 +109,7 @@ public class LocalTbsViewManager
       }
       return false;
     }
-    TbsReaderView localTbsReaderView = new TbsReaderView(paramActivity, new adbx(this, paramLocalTbsViewManagerCallback));
+    TbsReaderView localTbsReaderView = new TbsReaderView(paramActivity, new adke(this, paramLocalTbsViewManagerCallback));
     paramActivity = FileUtil.a(paramString);
     if (paramActivity.startsWith(".")) {
       paramActivity = paramActivity.replaceFirst(".", "");

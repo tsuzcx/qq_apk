@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class aguf
-  implements Runnable
+public class aguf
+  implements DialogInterface.OnClickListener
 {
-  aguf(agud paramagud) {}
+  public aguf(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QCallDetailActivity.b(this.a.a);
+    this.a.e();
+    this.a.g();
+    ReportController.b(this.a.app, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_VIPOPENSERVICE", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aguf
  * JD-Core Version:    0.7.0.1
  */

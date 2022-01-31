@@ -6,7 +6,7 @@ import com.tencent.component.media.ImageManagerEnv;
 import com.tencent.sharpP.SharpPUtils;
 import java.util.HashMap;
 import java.util.Map;
-import phh;
+import plz;
 
 public class ImageTaskBuilder
 {
@@ -14,7 +14,7 @@ public class ImageTaskBuilder
   public static Map stampMap = new HashMap();
   public static Map stampMap2 = new HashMap();
   
-  public static phh buildImageTask(ImageKey paramImageKey)
+  public static plz buildImageTask(ImageKey paramImageKey)
   {
     RecycleResourceTask localRecycleResourceTask = null;
     if (paramImageKey.flag == 3) {

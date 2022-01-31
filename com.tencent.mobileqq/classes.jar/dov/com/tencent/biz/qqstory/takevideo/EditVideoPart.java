@@ -129,12 +129,7 @@ public abstract class EditVideoPart
     return false;
   }
   
-  public void aB_()
-  {
-    c();
-  }
-  
-  public void aE_()
+  public void aC_()
   {
     c();
   }
@@ -144,11 +139,16 @@ public abstract class EditVideoPart
     c();
   }
   
+  public void aG_()
+  {
+    c();
+  }
+  
   public void a_(int paramInt, Object paramObject) {}
   
-  public void aw_() {}
+  public void ay_() {}
   
-  public void ax_()
+  public void az_()
   {
     c();
   }
@@ -175,12 +175,12 @@ public abstract class EditVideoPart
     q();
   }
   
-  public void i() {}
-  
   public boolean isValidate()
   {
     return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.isValidate();
   }
+  
+  public void j() {}
   
   public void q()
   {

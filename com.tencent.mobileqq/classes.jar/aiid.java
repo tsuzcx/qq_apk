@@ -1,21 +1,18 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 
 public class aiid
-  extends URLDrawableDownListener.Adapter
+  implements Runnable
 {
-  public aiid(StructMsgForHypertext paramStructMsgForHypertext) {}
+  public aiid(RedBagVideoManager paramRedBagVideoManager) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void run()
   {
-    paramView.setBackgroundDrawable(null);
+    RedBagVideoManager.f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiid
  * JD-Core Version:    0.7.0.1
  */

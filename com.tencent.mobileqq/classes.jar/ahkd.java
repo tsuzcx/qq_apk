@@ -1,19 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import com.tencent.mobileqq.redtouch.RedTypeInfo;
 
-public class ahkd
-  implements Runnable
+public final class ahkd
+  implements Parcelable.Creator
 {
-  private ahkd(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
-  
-  public void run()
+  public RedDisplayInfo a(Parcel paramParcel)
   {
-    EffectsCameraCaptureFragment.b(this.a);
-    if (EffectsCameraCaptureFragment.a(this.a) >= 3) {
-      EffectsCameraCaptureFragment.a(this.a, 0);
-    }
-    EffectsCameraCaptureFragment.a(this.a, EffectsCameraCaptureFragment.a(this.a));
-    this.a.a.postDelayed(EffectsCameraCaptureFragment.a(this.a), 500L);
+    RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
+    localRedDisplayInfo.a = paramParcel.readArrayList(RedTypeInfo.class.getClassLoader());
+    RedDisplayInfo.a(localRedDisplayInfo, (RedTypeInfo)paramParcel.readSerializable());
+    return localRedDisplayInfo;
+  }
+  
+  public RedDisplayInfo[] a(int paramInt)
+  {
+    return new RedDisplayInfo[paramInt];
   }
 }
 

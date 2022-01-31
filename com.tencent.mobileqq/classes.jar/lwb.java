@@ -1,5 +1,5 @@
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 class lwb
@@ -9,7 +9,7 @@ class lwb
   
   public void run()
   {
-    ReadInJoyLogicEngine.a().a((int)ComponentHeaderTopicRecommend.a(this.a.a).businessId, 1);
+    ReadInJoyLogicEngine.a().a((int)OnTopicRecommendHeaderFollowClickListener.a(this.a.a).businessId, 1);
   }
 }
 

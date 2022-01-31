@@ -1,26 +1,87 @@
-import android.text.TextUtils;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.app.ShieldListObserver;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class wbf
-  implements Runnable
+  extends ShieldListObserver
 {
-  public wbf(TroopChatPie paramTroopChatPie) {}
+  public wbf(NearbyChatPie paramNearbyChatPie) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, List paramList)
   {
-    TroopHandler localTroopHandler = (TroopHandler)this.a.a.a(20);
-    String str = this.a.a().a;
-    if (!TextUtils.isEmpty(str)) {
-      localTroopHandler.q(str);
+    ChatActivityUtils.b();
+    Object localObject = this.a.jdField_a_of_type_AndroidContentContext;
+    Context localContext = this.a.jdField_a_of_type_AndroidContentContext;
+    int i;
+    if (paramBoolean)
+    {
+      i = 2131434524;
+      QQToast.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.a());
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        break label69;
+      }
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("Q.aio.TroopChatPie", 2, "mGetOnlineMemberTipsRunnable, getSessionInfo().curFriendUin == null");
+    label69:
+    do
+    {
+      int k;
+      do
+      {
+        return;
+        i = 2131434526;
+        break;
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          k = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (Utils.a(String.valueOf(paramList.get(j)), localObject)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
+    } while (!paramBoolean);
+    this.a.k();
+  }
+  
+  protected void b(boolean paramBoolean, List paramList)
+  {
+    int k = 0;
+    ChatActivityUtils.b();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    do
+    {
+      do
+      {
+        return;
+        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (Utils.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.b();
+    } while (!paramBoolean);
+    this.a.k();
   }
 }
 

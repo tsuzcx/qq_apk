@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a263c" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b3" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b6" />
-        <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b9">
-            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e02c6" />
-            <TextView android:id="@id/info" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02be" />
-        </LinearLayout>
-    </RelativeLayout>
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0578" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a263b" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0176" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0174" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0176" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a263c" />
+    <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a073f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a261f" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f33" android:layout_alignParentRight="true" />
+    <com.tencent.mobileqq.widget.MessageProgressView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1305" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2620" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021fe1" android:layout_centerInParent="true" />
 </RelativeLayout>

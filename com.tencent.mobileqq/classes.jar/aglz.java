@@ -1,17 +1,24 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.portal.ConversationHongBao;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class aglz
-  extends AnimateUtils.AnimationAdapter
+class aglz
+  implements Runnable
 {
-  public aglz(ConversationHongBao paramConversationHongBao) {}
+  aglz(agly paramagly) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public void run()
+  {
+    if (TextUtils.isEmpty(ScanTorchActivity.b(this.a.a.a)))
+    {
+      ScanTorchActivity.s(this.a.a.a);
+      return;
+    }
+    ScanTorchActivity.c(this.a.a.a, ScanTorchActivity.b(this.a.a.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglz
  * JD-Core Version:    0.7.0.1
  */

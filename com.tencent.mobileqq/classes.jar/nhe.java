@@ -1,20 +1,21 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddInteractViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler;
+import java.util.ArrayList;
+import java.util.List;
 
 public class nhe
-  extends AddInteractViewJob
+  implements Runnable
 {
-  public nhe(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareWeChatData paramShareWeChatData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public nhe(UserManager paramUserManager) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.e = ((String)a("result"));
-    return true;
+    this.a.a = false;
+    if (!UserManager.a(this.a).isEmpty())
+    {
+      new GetUserInfoHandler().a(1, UserManager.a(this.a));
+      UserManager.a(this.a, new ArrayList());
+    }
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager.UrlBitmapDo
 import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.Map;
-import nga;
+import nkk;
 
 public class AddPollViewJob
   extends Job
@@ -32,7 +32,7 @@ public class AddPollViewJob
     if (localPollLayout != null)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader = new ShareGroupIconManager.UrlBitmapDownloaderImp();
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new nga(this, localPollLayout));
+      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new nkk(this, localPollLayout));
       return;
     }
     a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);

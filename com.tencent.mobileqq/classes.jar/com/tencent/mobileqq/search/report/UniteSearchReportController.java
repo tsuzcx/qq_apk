@@ -90,7 +90,7 @@ public class UniteSearchReportController
     {
       return;
       paramReportModel.uin = paramQQAppInterface.getCurrentAccountUin();
-      paramReportModel.version = "7.6.3";
+      paramReportModel.version = "7.6.8";
       NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), ReportServlet.class);
       localNewIntent.putExtra("sendType", 2);
       localNewIntent.putExtra("tag", paramString);

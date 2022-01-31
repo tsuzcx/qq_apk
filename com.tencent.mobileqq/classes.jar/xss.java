@@ -1,18 +1,14 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class xss
-  implements Runnable
+class xss
+  implements DialogInterface.OnClickListener
 {
-  public xss(NewPreFlowCamera paramNewPreFlowCamera, String paramString) {}
+  xss(xsp paramxsp) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera.a.setText(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("NewPreFlowCamera", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

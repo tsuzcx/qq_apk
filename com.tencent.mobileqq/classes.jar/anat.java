@@ -1,56 +1,26 @@
+import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import cooperation.qzone.plugin.IQZonePluginManager;
+
 public class anat
+  implements Runnable
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static anat b;
-  private anat jdField_a_of_type_Anat;
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(128);
+  public anat(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity, PluginBaseInfo paramPluginBaseInfo) {}
   
-  public static anat a()
+  public void run()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    try
     {
-      if (b != null)
-      {
-        anat localanat = b;
-        b = localanat.jdField_a_of_type_Anat;
-        localanat.jdField_a_of_type_Anat = null;
-        jdField_a_of_type_Int -= 1;
-        return localanat;
-      }
-      return new anat();
-    }
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-  }
-  
-  public anat a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangStringBuilder.append(paramObject);
-    return this;
-  }
-  
-  public void a()
-  {
-    b();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Int < 50)
-      {
-        this.jdField_a_of_type_Anat = b;
-        b = this;
-        jdField_a_of_type_Int += 1;
+      if (QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity) != null) {
+        QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.mID, null, QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity));
       }
       return;
     }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    catch (Exception localException)
+    {
+      QLog.e("QzoneVerticalVideoDownloadActivity", 1, localException, new Object[0]);
+    }
   }
 }
 

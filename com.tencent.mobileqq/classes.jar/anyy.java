@@ -1,14 +1,19 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
+import dov.com.qq.im.cropvideo.RenderFilter;
 
 public class anyy
-  implements Runnable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public anyy(DoodleLayout paramDoodleLayout, FaceLayer.FaceItem paramFaceItem) {}
+  public anyy(CropVideoActivity paramCropVideoActivity) {}
   
-  public void run()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$FaceItem);
+    paramMotionEvent.getX();
+    paramMotionEvent.getY();
+    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
+    return true;
   }
 }
 

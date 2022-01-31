@@ -1,8 +1,8 @@
 package com.tencent.open.downloadnew.common;
 
-import aljf;
-import aljg;
-import aljh;
+import alqx;
+import alqy;
+import alqz;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +31,7 @@ public class PackageInstallReceiver
       {
         localObject = localObject[1];
         if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REMOVED")) {
-          ThreadManager.post(new aljf(this, paramContext, (String)localObject), 5, null, true);
+          ThreadManager.post(new alqx(this, paramContext, (String)localObject), 5, null, true);
         }
       }
       else
@@ -41,11 +41,11 @@ public class PackageInstallReceiver
       }
       if (paramIntent.getAction().equals("android.intent.action.PACKAGE_REPLACED"))
       {
-        ThreadManager.post(new aljg(this, paramContext, (String)localObject), 5, null, true);
+        ThreadManager.post(new alqy(this, paramContext, (String)localObject), 5, null, true);
         return;
       }
     } while (!paramIntent.getAction().equals("android.intent.action.PACKAGE_ADDED"));
-    ThreadManager.post(new aljh(this, paramContext, (String)localObject), 5, null, true);
+    ThreadManager.post(new alqz(this, paramContext, (String)localObject), 5, null, true);
   }
 }
 

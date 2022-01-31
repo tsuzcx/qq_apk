@@ -1,17 +1,19 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import cooperation.comic.ui.QQComicTitleBarView;
 
 public class amrw
   implements View.OnClickListener
 {
-  public amrw(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  public amrw(QQComicTitleBarView paramQQComicTitleBarView) {}
   
   public void onClick(View paramView)
   {
-    this.a.a = true;
-    this.a.d();
-    this.a.a();
+    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
+      this.a.a.a.finish();
+    }
   }
 }
 

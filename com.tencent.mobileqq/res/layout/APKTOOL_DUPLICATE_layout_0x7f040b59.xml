@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e92" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32af" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:paddingRight="15.0dip" android:paddingBottom="19.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3330" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="2.0dip">
-        <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3331" android:layout_width="12.0dip" android:layout_height="12.0dip" />
-        <TextView android:textSize="12.0sp" android:textColor="#ff858585" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3332" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" />
-    </LinearLayout>
-</FrameLayout>
+    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32b0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32b1" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32b2" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32b3" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32b4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32b5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32b6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

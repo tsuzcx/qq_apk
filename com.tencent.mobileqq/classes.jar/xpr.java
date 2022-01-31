@@ -1,18 +1,22 @@
-import android.graphics.drawable.ColorDrawable;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
 
 public class xpr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xpr(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xpr(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.e.setImageDrawable(new ColorDrawable(-16777216));
-    this.a.e.setVisibility(0);
-    this.a.a.postDelayed(new xps(this), 200L);
+    paramView = CmGameMainManager.a();
+    if (paramView != null)
+    {
+      paramView.a(BannerManager.a(this.a));
+      paramView.a();
+      CmGameMainManager.f();
+    }
   }
 }
 

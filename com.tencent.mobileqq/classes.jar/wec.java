@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class wec
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public wec(ZhituManager paramZhituManager, ZhituResponse paramZhituResponse, String paramString1, int paramInt, String paramString2) {}
+  public wec(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    this.a.A();
   }
 }
 

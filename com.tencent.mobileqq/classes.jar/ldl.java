@@ -1,41 +1,30 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar.Tab;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
+import java.lang.ref.WeakReference;
 
 public class ldl
-  extends ReadInJoyObserver
+  extends Handler
 {
-  public ldl(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  private WeakReference a;
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public ldl(ReadInJoyRainAnimationController paramReadInJoyRainAnimationController)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
-    }
-    if (paramInt1 == 0)
-    {
-      ReadInJoyBaseFragment localReadInJoyBaseFragment = ReadInJoyNewFeedsActivity.a(this.a).a(ReadInJoyNewFeedsActivity.a(this.a)).a();
-      if ((localReadInJoyBaseFragment != null) && ((localReadInJoyBaseFragment instanceof ReadInJoySelfFragment))) {
-        ((ReadInJoySelfFragment)localReadInJoyBaseFragment).a(paramInt2, paramInt3, paramBoolean);
-      }
-    }
+    this.a = new WeakReference(paramReadInJoyRainAnimationController);
   }
   
-  public void a(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
+    ReadInJoyRainAnimationController localReadInJoyRainAnimationController = (ReadInJoyRainAnimationController)this.a.get();
+    if ((localReadInJoyRainAnimationController == null) || (!localReadInJoyRainAnimationController.b())) {
+      return;
     }
-    this.a.runOnUiThread(new ldm(this));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localReadInJoyRainAnimationController.b();
   }
 }
 

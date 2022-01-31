@@ -5,13 +5,13 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.PopupWindow;
 import com.tencent.mobileqq.activity.aio.item.QQWalletTroopHbItem;
 import java.util.ArrayList;
 import java.util.List;
-import xck;
-import xcl;
-import xcm;
+import xid;
+import xie;
+import xif;
 
 public class TroopUnAccalimedRedPacketList$HbListAdapter
   extends RecyclerView.Adapter
@@ -19,15 +19,15 @@ public class TroopUnAccalimedRedPacketList$HbListAdapter
   private Context jdField_a_of_type_AndroidContentContext;
   private List jdField_a_of_type_JavaUtilList;
   
-  TroopUnAccalimedRedPacketList$HbListAdapter(Context paramContext)
+  TroopUnAccalimedRedPacketList$HbListAdapter(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public xcl a(ViewGroup paramViewGroup, int paramInt)
+  public xie a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new xcl(this, new xcm(this.jdField_a_of_type_AndroidContentContext, new QQWalletTroopHbItem(TroopUnAccalimedRedPacketList.a(), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a())));
+    return new xie(this, new xif(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList, this.jdField_a_of_type_AndroidContentContext, new QQWalletTroopHbItem(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), this.jdField_a_of_type_AndroidContentContext, TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList))));
   }
   
   void a(String paramString)
@@ -56,14 +56,15 @@ public class TroopUnAccalimedRedPacketList$HbListAdapter
       }
       if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
-        TroopUnAccalimedRedPacketList.a().setVisibility(8);
-        TroopUnAccalimedRedPacketList.a().setVisibility(0);
-        TroopUnAccalimedRedPacketList.a().setText("暂无未领红包");
+        if (TroopUnAccalimedRedPacketList.a() == null) {
+          break;
+        }
+        TroopUnAccalimedRedPacketList.a().dismiss();
         return;
         i += 1;
         break label22;
       }
-      TroopUnAccalimedRedPacketList.a().postDelayed(new xck(this), 300L);
+      TroopUnAccalimedRedPacketList.a().postDelayed(new xid(this), 300L);
       return;
       i = 0;
     }
@@ -78,14 +79,14 @@ public class TroopUnAccalimedRedPacketList$HbListAdapter
     notifyDataSetChanged();
   }
   
-  public void a(xcl paramxcl, int paramInt)
+  public void a(xie paramxie, int paramInt)
   {
-    xcm localxcm = paramxcl.a;
-    paramxcl = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramxcl.getPosition());
-    if (paramxcl == null) {
+    xif localxif = paramxie.a;
+    paramxie = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramxie.getPosition());
+    if (paramxie == null) {
       return;
     }
-    localxcm.a(paramxcl);
+    localxif.a(paramxie);
   }
   
   public int getItemCount()

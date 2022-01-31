@@ -62,22 +62,22 @@ import tencent.im.msg.im_msg_body.QQWalletAioBody;
 import tencent.im.msg.im_msg_body.QQWalletAioElem;
 import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
 import tencent.im.oidb.cmd0x438.oidb_0x438.ReqInfo;
-import wzq;
-import wzs;
-import wzt;
-import wzu;
-import wzv;
-import wzx;
-import wzy;
-import wzz;
-import xaa;
+import xfg;
+import xfi;
+import xfj;
+import xfk;
+import xfl;
+import xfn;
+import xfo;
+import xfp;
+import xfq;
 
 public class PasswdRedBagManager
   implements Manager
 {
   public int a;
   public Context a;
-  Handler jdField_a_of_type_AndroidOsHandler = new wzq(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new xfg(this, Looper.getMainLooper());
   private PasswdRedBagDBManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagDBManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private QWalletHandler jdField_a_of_type_ComTencentMobileqqAppQWalletHandler;
@@ -102,7 +102,8 @@ public class PasswdRedBagManager
   private boolean g;
   private HashMap jdField_h_of_type_JavaUtilHashMap;
   private boolean jdField_h_of_type_Boolean;
-  private HashMap i;
+  private HashMap jdField_i_of_type_JavaUtilHashMap;
+  private boolean jdField_i_of_type_Boolean;
   
   public PasswdRedBagManager(QQAppInterface paramQQAppInterface)
   {
@@ -140,20 +141,24 @@ public class PasswdRedBagManager
     {
       localObject1 = (List)this.jdField_b_of_type_JavaUtilHashMap.get(localObject2);
       if (localObject1 != null) {
-        break label146;
+        break label161;
       }
       localObject1 = new LinkedList();
       this.jdField_b_of_type_JavaUtilHashMap.put(localObject2, localObject1);
     }
-    label146:
+    label161:
     for (;;)
     {
       int k = ((List)localObject1).size();
       int j = 0;
       if (j < k)
       {
-        localObject2 = (PasswdRedBagInfo)this.jdField_a_of_type_JavaUtilHashMap.get(((List)localObject1).get(j));
-        if ((localObject2 == null) || (((PasswdRedBagInfo)localObject2).jdField_a_of_type_Long >= paramPasswdRedBagInfo.jdField_a_of_type_Long)) {}
+        localObject2 = (String)((List)localObject1).get(j);
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localObject2 = (PasswdRedBagInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+          if ((localObject2 == null) || (((PasswdRedBagInfo)localObject2).jdField_a_of_type_Long >= paramPasswdRedBagInfo.jdField_a_of_type_Long)) {}
+        }
       }
       for (;;)
       {
@@ -530,7 +535,7 @@ public class PasswdRedBagManager
       if (localBitmap1 == null) {
         try
         {
-          Bitmap localBitmap2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130844123);
+          Bitmap localBitmap2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130844189);
           localObject1 = localBitmap2;
           localObject2 = localObject1;
           if (localObject1 != null) {}
@@ -879,7 +884,7 @@ public class PasswdRedBagManager
       localPasswdRedBagInfo = (PasswdRedBagInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     } while ((localPasswdRedBagInfo == null) || (localPasswdRedBagInfo.jdField_b_of_type_Boolean));
     localPasswdRedBagInfo.jdField_b_of_type_Boolean = true;
-    ThreadManager.getFileThreadHandler().post(new wzz(this, paramString));
+    ThreadManager.getFileThreadHandler().post(new xfp(this, paramString));
   }
   
   public void a(String paramString1, int paramInt, String paramString2, String paramString3, MessageForFoldMsgGrayTips paramMessageForFoldMsgGrayTips)
@@ -923,7 +928,7 @@ public class PasswdRedBagManager
       paramString2 = (PasswdRedBagInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
     } while ((paramString2 == null) || (paramString2.jdField_a_of_type_Boolean));
     paramString2.jdField_a_of_type_Boolean = true;
-    ThreadManager.getFileThreadHandler().post(new wzs(this, paramString1));
+    ThreadManager.getFileThreadHandler().post(new xfi(this, paramString1));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5, String paramString6, String paramString7, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
@@ -933,7 +938,7 @@ public class PasswdRedBagManager
       paramString2 = new PasswdRedBagInfo(paramString1, paramString2, paramString4, paramLong, new QQText(paramString3, 5, 16).toString(), paramBoolean1, paramBoolean2, false, paramInt);
       a(paramString2);
       a(true, paramString2.jdField_a_of_type_JavaLangString, paramString2.jdField_b_of_type_JavaLangString);
-      ThreadManager.getFileThreadHandler().post(new wzx(this, paramString2));
+      ThreadManager.getFileThreadHandler().post(new xfn(this, paramString2));
     }
     paramString2 = new StringBuilder();
     paramString2.append(paramString5);
@@ -944,7 +949,7 @@ public class PasswdRedBagManager
     if (TextUtils.isEmpty((String)this.jdField_c_of_type_JavaUtilHashMap.get(paramString2.toString())))
     {
       this.jdField_c_of_type_JavaUtilHashMap.put(paramString2.toString(), paramString7);
-      ThreadManager.getFileThreadHandler().post(new wzy(this, paramString5, paramString6, paramString1, paramString7));
+      ThreadManager.getFileThreadHandler().post(new xfo(this, paramString5, paramString6, paramString1, paramString7));
     }
   }
   
@@ -1085,7 +1090,7 @@ public class PasswdRedBagManager
       label153:
       if ((this.jdField_f_of_type_Boolean) && (this.jdField_e_of_type_Boolean))
       {
-        ThreadManager.post(new wzv(this), 8, null, false);
+        ThreadManager.post(new xfl(this), 8, null, false);
         this.jdField_f_of_type_Boolean = false;
       }
     }
@@ -1233,7 +1238,7 @@ public class PasswdRedBagManager
   
   public void b()
   {
-    if ((this.i == null) || (this.i.size() == 0)) {}
+    if ((this.jdField_i_of_type_JavaUtilHashMap == null) || (this.jdField_i_of_type_JavaUtilHashMap.size() == 0)) {}
     ArrayList localArrayList;
     do
     {
@@ -1241,14 +1246,14 @@ public class PasswdRedBagManager
       this.jdField_b_of_type_JavaUtilList.clear();
       localArrayList = new ArrayList();
       List localList = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagDBManager.a(2);
-      Iterator localIterator = this.i.keySet().iterator();
+      Iterator localIterator = this.jdField_i_of_type_JavaUtilHashMap.keySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (String)localIterator.next();
         PasswdRedBagUpdateInfo localPasswdRedBagUpdateInfo = new PasswdRedBagUpdateInfo();
         localPasswdRedBagUpdateInfo.jdField_a_of_type_Long = Long.parseLong((String)localObject);
         localPasswdRedBagUpdateInfo.jdField_a_of_type_Int = 2;
-        localPasswdRedBagUpdateInfo.b = Long.parseLong((String)this.i.get(localObject));
+        localPasswdRedBagUpdateInfo.b = Long.parseLong((String)this.jdField_i_of_type_JavaUtilHashMap.get(localObject));
         int j = localList.indexOf(localPasswdRedBagUpdateInfo);
         if (j != -1)
         {
@@ -1264,7 +1269,7 @@ public class PasswdRedBagManager
           this.jdField_b_of_type_JavaUtilList.add(localPasswdRedBagUpdateInfo);
         }
       }
-      this.i.clear();
+      this.jdField_i_of_type_JavaUtilHashMap.clear();
     } while (this.jdField_b_of_type_JavaUtilList.isEmpty());
     this.jdField_a_of_type_ComTencentMobileqqAppQWalletHandler.a(1, localArrayList);
   }
@@ -1280,15 +1285,15 @@ public class PasswdRedBagManager
       localPasswdRedBagInfo = (PasswdRedBagInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     } while ((localPasswdRedBagInfo == null) || (localPasswdRedBagInfo.jdField_c_of_type_Boolean));
     localPasswdRedBagInfo.jdField_c_of_type_Boolean = true;
-    ThreadManager.getFileThreadHandler().post(new xaa(this, paramString));
+    ThreadManager.getFileThreadHandler().post(new xfq(this, paramString));
   }
   
   public void b(HashMap paramHashMap)
   {
-    if (this.i == null) {
-      this.i = new HashMap();
+    if (this.jdField_i_of_type_JavaUtilHashMap == null) {
+      this.jdField_i_of_type_JavaUtilHashMap = new HashMap();
     }
-    this.i.putAll(paramHashMap);
+    this.jdField_i_of_type_JavaUtilHashMap.putAll(paramHashMap);
   }
   
   public Object[] b(SessionInfo paramSessionInfo, String paramString, int paramInt)
@@ -1355,11 +1360,11 @@ public class PasswdRedBagManager
       SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("sp_passwd_configs_" + this.jdField_a_of_type_JavaLangString, 0);
       if (localSharedPreferences.getBoolean("key_db_update", true))
       {
-        ThreadManager.getFileThreadHandler().post(new wzt(this));
+        ThreadManager.getFileThreadHandler().post(new xfj(this));
         localSharedPreferences.edit().putBoolean("key_db_update", false);
         localSharedPreferences.edit().commit();
       }
-      ThreadManager.getFileThreadHandler().post(new wzu(this));
+      ThreadManager.getFileThreadHandler().post(new xfk(this));
       return;
     }
     finally {}
@@ -1377,44 +1382,48 @@ public class PasswdRedBagManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 942	com/tencent/mobileqq/activity/qwallet/PasswdRedBagManager:a	()Z
+    //   3: invokevirtual 945	com/tencent/mobileqq/activity/qwallet/PasswdRedBagManager:a	()Z
     //   6: ifeq +7 -> 13
     //   9: aload_0
-    //   10: invokevirtual 944	com/tencent/mobileqq/activity/qwallet/PasswdRedBagManager:e	()V
+    //   10: invokevirtual 947	com/tencent/mobileqq/activity/qwallet/PasswdRedBagManager:e	()V
     //   13: aload_0
     //   14: getfield 126	com/tencent/mobileqq/activity/qwallet/PasswdRedBagManager:jdField_g_of_type_Boolean	Z
-    //   17: istore_1
-    //   18: iload_1
-    //   19: ifne +6 -> 25
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: return
-    //   25: invokestatic 724	com/tencent/mobileqq/app/ThreadManager:getFileThreadHandler	()Lmqq/os/MqqHandler;
-    //   28: new 1051	wzw
-    //   31: dup
+    //   17: ifeq +12 -> 29
+    //   20: aload_0
+    //   21: getfield 327	com/tencent/mobileqq/activity/qwallet/PasswdRedBagManager:jdField_h_of_type_Boolean	Z
+    //   24: istore_1
+    //   25: iload_1
+    //   26: ifeq +6 -> 32
+    //   29: aload_0
+    //   30: monitorexit
+    //   31: return
     //   32: aload_0
-    //   33: invokespecial 1052	wzw:<init>	(Lcom/tencent/mobileqq/activity/qwallet/PasswdRedBagManager;)V
-    //   36: invokevirtual 735	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   39: pop
-    //   40: aload_0
-    //   41: iconst_0
-    //   42: putfield 126	com/tencent/mobileqq/activity/qwallet/PasswdRedBagManager:jdField_g_of_type_Boolean	Z
-    //   45: goto -23 -> 22
-    //   48: astore_2
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: aload_2
-    //   52: athrow
+    //   33: iconst_1
+    //   34: putfield 327	com/tencent/mobileqq/activity/qwallet/PasswdRedBagManager:jdField_h_of_type_Boolean	Z
+    //   37: new 1054	xfm
+    //   40: dup
+    //   41: aload_0
+    //   42: invokespecial 1055	xfm:<init>	(Lcom/tencent/mobileqq/activity/qwallet/PasswdRedBagManager;)V
+    //   45: bipush 32
+    //   47: aconst_null
+    //   48: iconst_1
+    //   49: invokestatic 1058	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   52: goto -23 -> 29
+    //   55: astore_2
+    //   56: aload_0
+    //   57: monitorexit
+    //   58: aload_2
+    //   59: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	53	0	this	PasswdRedBagManager
-    //   17	2	1	bool	boolean
-    //   48	4	2	localObject	Object
+    //   0	60	0	this	PasswdRedBagManager
+    //   24	2	1	bool	boolean
+    //   55	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	13	48	finally
-    //   13	18	48	finally
-    //   25	45	48	finally
+    //   2	13	55	finally
+    //   13	25	55	finally
+    //   32	52	55	finally
   }
   
   public void d(String paramString)
@@ -1433,6 +1442,7 @@ public class PasswdRedBagManager
     this.jdField_e_of_type_Boolean = true;
     this.jdField_f_of_type_Boolean = true;
     this.jdField_g_of_type_Boolean = true;
+    this.jdField_h_of_type_Boolean = false;
   }
   
   public void e(String paramString)
@@ -1443,7 +1453,7 @@ public class PasswdRedBagManager
   public void f()
   {
     int j = 0;
-    if (this.jdField_h_of_type_Boolean) {
+    if (this.jdField_i_of_type_Boolean) {
       return;
     }
     for (;;)
@@ -1466,7 +1476,7 @@ public class PasswdRedBagManager
         localThrowable.printStackTrace();
         continue;
       }
-      this.jdField_h_of_type_Boolean = true;
+      this.jdField_i_of_type_Boolean = true;
       return;
       k = ((SharedPreferences)localObject).getInt("key_passwd_configs_count", 0);
       if (k > 0) {

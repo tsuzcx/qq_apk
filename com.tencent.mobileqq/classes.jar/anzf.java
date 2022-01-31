@@ -1,27 +1,47 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer.LayerEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import android.os.Handler;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class anzf
-  implements LineLayer.LayerEventListener
+  implements FFmpegExecuteResponseCallback
 {
-  public anzf(DoodleLayout paramDoodleLayout) {}
+  public anzf(CropVideoActivity paramCropVideoActivity) {}
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
     }
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public void a(String paramString)
   {
-    if (this.a.a != null)
-    {
-      SLog.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
+    }
+    this.a.a.sendEmptyMessage(3);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
+    }
+    this.a.a.sendEmptyMessage(4);
+  }
+  
+  public void c(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
     }
   }
 }

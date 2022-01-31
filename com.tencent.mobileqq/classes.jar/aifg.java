@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
-import java.io.File;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.LyricItem;
 import java.util.Comparator;
 
 public class aifg
   implements Comparator
 {
-  public aifg(MigrateSubscribeDB paramMigrateSubscribeDB) {}
+  public aifg(ResourceManager paramResourceManager) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public int a(ResourceManager.LyricItem paramLyricItem1, ResourceManager.LyricItem paramLyricItem2)
   {
-    long l = paramFile2.lastModified() - paramFile1.lastModified();
-    if (l > 0L) {
+    if (paramLyricItem1.b < paramLyricItem2.b) {
+      return -1;
+    }
+    if (paramLyricItem1.b > paramLyricItem2.b) {
       return 1;
     }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aifg
  * JD-Core Version:    0.7.0.1
  */

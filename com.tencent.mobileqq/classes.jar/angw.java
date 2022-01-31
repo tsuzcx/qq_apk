@@ -1,36 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.weiyun.ResponseHandler;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class angw
-  extends Handler
+  implements Runnable
 {
-  public angw(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public angw(QZoneShareActivity paramQZoneShareActivity, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 0) {
-      ResponseHandler.a(0);
+    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) == null) {
+      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, new QQProgressDialog(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.getResources().getDimensionPixelSize(2131558448)));
     }
-    while ((paramMessage.what != 1) || (!ResponseHandler.a()) || (TextUtils.isEmpty(ResponseHandler.a())) || (TextUtils.isEmpty(ResponseHandler.b()))) {
+    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).c(this.jdField_a_of_type_Int);
+    try
+    {
+      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity).show();
       return;
     }
-    String str1 = ResponseHandler.a();
-    String str2 = ResponseHandler.b();
-    int i = ResponseHandler.a();
-    int j = ResponseHandler.b();
-    String str3 = ResponseHandler.a(BaseApplicationImpl.getApplication());
-    Process.setThreadPriority(10);
-    ResponseHandler.a((QQAppInterface)paramMessage.obj, str1, str2, i, j, str3);
-    ResponseHandler.b();
+    catch (Exception localException)
+    {
+      QLog.e("QZoneShare", 1, localException.getMessage());
+    }
   }
 }
 

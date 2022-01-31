@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15d7" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15d8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_alignParentTop="true">
-        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView android:layout_width="fill_parent" android:layout_height="fill_parent" tencent:mask_mode="5" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15d9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d24" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginRight="4.0dip" />
-            <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15da" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <TextView android:textSize="20.0dip" android:textColor="#66ffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15db" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15ed" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07ba" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07ba" android:layout_width="fill_parent" android:layout_height="61.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a152b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2c76" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff07d0b0" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15ee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2c77" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" />
     </RelativeLayout>
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15dc" android:visibility="gone" android:layout_width="90.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
-        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView android:layout_width="fill_parent" android:layout_height="fill_parent" tencent:mask_mode="6" />
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="27.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
-            <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureProgressView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15dd" android:layout_width="2.0dip" android:layout_height="110.0dip" />
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15de" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d23" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="15.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15df" android:visibility="gone" android:layout_width="90.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
-        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView android:layout_width="fill_parent" android:layout_height="fill_parent" tencent:mask_mode="7" />
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="27.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureProgressView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15e0" android:layout_width="2.0dip" android:layout_height="110.0dip" />
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15e1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d37" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="15.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-</RelativeLayout>
+</merge>

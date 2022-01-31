@@ -1,22 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 
 public class aiud
-  implements Animation.AnimationListener
+  extends MessageObserver
 {
-  public aiud(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public aiud(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
   {
-    this.a.b = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    if (paramStatictisInfo != null) {
+      this.a.u = paramStatictisInfo.d;
+    }
+    this.a.d();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

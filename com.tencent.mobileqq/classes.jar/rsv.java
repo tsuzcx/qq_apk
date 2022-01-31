@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
+import com.tencent.mobileqq.activity.AuthDevUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
-class rsv
-  implements Runnable
+public class rsv
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  rsv(rst paramrst, long paramLong) {}
-  
-  public void run()
-  {
-    if ((this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar != null) && (this.jdField_a_of_type_Long == Long.parseLong(this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
-      this.jdField_a_of_type_Rst.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar.a();
-    }
-  }
+  public rsv(AuthDevUgActivity paramAuthDevUgActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     rsv
  * JD-Core Version:    0.7.0.1
  */

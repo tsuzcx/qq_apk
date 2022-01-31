@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="200.0dip"
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2e" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="110.0dip" android:layout_alignParentBottom="true">
-        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2f" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerInParent="true" android:contentDescription="点击拍照，长按录制" android:translationY="10.0dip" />
-        <dov.com.qq.im.capture.view.QIMCircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c30" android:visibility="gone" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_centerInParent="true" android:translationY="10.0dip" />
-    </RelativeLayout>
-    <dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c31" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2e" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <com.tencent.widget.SwipPinnedHeaderExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c0c" android:visibility="visible" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null" android:overScrollHeader="@null" />
+</LinearLayout>

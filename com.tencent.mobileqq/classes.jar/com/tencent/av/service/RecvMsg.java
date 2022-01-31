@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.SpannableString;
 import com.tencent.qphone.base.util.QLog;
-import jns;
+import jpv;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new jns();
+  public static final Parcelable.Creator CREATOR = new jpv();
   static String jdField_a_of_type_JavaLangString = "RecvMsg";
   int jdField_a_of_type_Int;
   public long a;
@@ -181,7 +181,7 @@ public class RecvMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.service.RecvMsg
  * JD-Core Version:    0.7.0.1
  */

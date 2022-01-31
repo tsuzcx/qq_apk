@@ -33,9 +33,9 @@ public class PadQQCheckBox
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.PadQQCheckBox);
     this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(1, true);
     this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(0);
-    LayoutInflater.from(paramContext).inflate(2130969150, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365415));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365416));
+    LayoutInflater.from(paramContext).inflate(2130969148, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365420));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365421));
     setChecked(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
     paramAttributeSet.recycle();
@@ -73,19 +73,19 @@ public class PadQQCheckBox
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839298);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839317);
     }
     for (;;)
     {
       refreshDrawableState();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839296);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839315);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PadQQCheckBox
  * JD-Core Version:    0.7.0.1
  */

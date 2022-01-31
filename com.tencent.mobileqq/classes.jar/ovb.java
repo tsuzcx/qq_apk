@@ -1,20 +1,15 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.qqstory.view.segment.SegmentManager;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
 
 public class ovb
-  implements TouchWebView.OnScrollChangedListener
+  implements QQStoryPullToRefreshListView.PullToRefreshListener
 {
-  public ovb(TribeVideoPlugin paramTribeVideoPlugin) {}
+  public ovb(SegmentList paramSegmentList) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void a()
   {
-    if (TribeVideoPlugin.a(this.a) != null)
-    {
-      TribeVideoPlugin.a(this.a).scrollBy(0, paramInt2 - paramInt4);
-      TribeVideoPlugin.a(this.a);
-    }
+    this.a.a.a(false);
   }
 }
 

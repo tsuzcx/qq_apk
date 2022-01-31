@@ -83,11 +83,11 @@ public class LongTextItemBuilder
         paramView.setLayoutParams(new RelativeLayout.LayoutParams(BaseChatItemLayout.e, -2));
         paramView.setId(2131362285);
         paramView.setOrientation(1);
-        paramView.setBackgroundResource(2130846088);
+        paramView.setBackgroundResource(2130846170);
         paramView.setPadding(k, m, k, m);
         localObject = new ETTextView(paramBaseChatItemLayout);
         ((ETTextView)localObject).setTextSize(2, 15.0F);
-        ((ETTextView)localObject).setId(2131363575);
+        ((ETTextView)localObject).setId(2131363594);
         ((ETTextView)localObject).setTextColor(-16777216);
         ((ETTextView)localObject).setPadding(0, 0, 0, i);
         paramViewHolder.e = ((TextView)localObject);
@@ -103,7 +103,7 @@ public class LongTextItemBuilder
         paramView.addView(paramViewHolder);
         paramChatMessage.addView(paramView);
       }
-      paramViewHolder = (TextView)paramChatMessage.findViewById(2131363575);
+      paramViewHolder = (TextView)paramChatMessage.findViewById(2131363594);
       paramView = paramChatMessage.findViewById(2131362285);
       paramBaseChatItemLayout = (TextView)paramChatMessage.findViewById(2131362284);
       paramViewHolder.setMaxLines(4);

@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.arcard.ARCardPageProcess;
+import com.tencent.mobileqq.arcard.ARCardPageProcess.Circle;
 
 public class aasv
-  implements View.OnLayoutChangeListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aasv(ArkAiScrollBar paramArkAiScrollBar) {}
+  public aasv(ARCardPageProcess paramARCardPageProcess, ARCardPageProcess.Circle paramCircle) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt4 != paramInt8) {
-      this.a.e();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess$Circle.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a147c" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
-            <com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a146f" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginRight="8.0dip">
-                <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a147d" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216eb" android:scaleType="fitXY" android:layout_centerInParent="true" />
-                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1470" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cc9" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-            </com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView>
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.5dip" android:layout_weight="1.0">
-                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView android:textSize="16.0dip" android:textColor="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cc7" android:ellipsize="end" android:id="@id/nickname" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" android:includeFontPadding="false" />
-                </LinearLayout>
-                <TextView android:textSize="12.0dip" android:textColor="#ff9d9d9d" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1330" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:lines="1" android:includeFontPadding="false" />
-            </LinearLayout>
-            <Button android:state_enabled="false" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1473" style="@style/APKTOOL_DUPLICATE_style_0x7f0e021b" />
-            <com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentNotIntrest android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a146c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_centerVertical="true" />
-        </LinearLayout>
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1474" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="60.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ef1" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView android:textSize="17.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f1b" android:paddingBottom="11.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="发布了" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a147c" />
-</LinearLayout>
+    <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13de" android:paddingLeft="9.75dip" android:paddingTop="8.25dip" android:paddingRight="9.75dip" android:paddingBottom="8.25dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d19" android:scaleType="fitCenter" />
+</merge>

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f48" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020478" android:layout_width="fill_parent" android:layout_height="40.0dip"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="39.0dip" android:layout_marginRight="39.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:ellipsize="middle" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f49" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b25ba" android:singleLine="true" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021348" android:drawablePadding="10.0dip" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202a4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="180.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
+            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f00" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2cba" android:maxLines="1" android:layout_weight="1.0" />
+            <TextView android:textSize="11.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" />
+        </LinearLayout>
+        <TextView android:textSize="11.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" android:maxLines="2" android:maxEms="15" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:layout_width="21.0dip" android:layout_height="31.0dip" android:layout_marginLeft="1.0dip" android:layout_marginTop="3.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212c0" />
 </LinearLayout>

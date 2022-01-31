@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import admu;
+import advc;
 import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -31,33 +32,32 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public abstract class IphoneTitleBarFragment
   extends PublicBaseFragment
 {
-  public float a;
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  protected View.OnClickListener a;
-  public ImageView a;
-  public RelativeLayout a;
-  public NavBarCommon a;
-  private boolean jdField_a_of_type_Boolean;
-  private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
-  public ImageView b;
-  private RelativeLayout b;
-  public TextView b;
-  private ImageView c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public View e;
-  public TextView e;
-  protected boolean e;
-  public TextView f;
+  public static final String HIDE_TITLE_LEFT_ARROW = "hide_title_left_arrow";
+  public static final int LAYER_TYPE_SOFTWARE = 1;
+  protected static final String TAG = "IphoneTitleBarFragment";
+  private Drawable ad;
+  public TextView centerView;
+  private boolean isRightHighlightButton;
+  public TextView leftView;
+  public TextView leftViewNotBack;
+  public View mContentView;
+  public float mDensity;
+  public ImageView mLeftBackIcon;
+  public TextView mLeftBackText;
+  private RelativeLayout mLoadingParent;
+  private ImageView mLoadingView;
+  private Drawable[] mOldDrawables;
+  private int mOldPadding;
+  public View mTitleContainer;
+  protected boolean mUseOptimizMode;
+  protected View.OnClickListener onBackListener = new advc(this);
+  public TextView rightHighLView;
+  public ImageView rightViewImg;
+  public TextView rightViewText;
+  public RelativeLayout titleRoot;
+  public NavBarCommon vg;
   
-  public IphoneTitleBarFragment()
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new admu(this);
-  }
-  
-  public static void c(View paramView)
+  public static void setLayerType(View paramView)
   {
     if (paramView == null) {
       return;
@@ -65,62 +65,77 @@ public abstract class IphoneTitleBarFragment
     paramView.setLayerType(0, null);
   }
   
-  public abstract int a();
+  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle) {}
   
-  protected View a()
+  protected void enableRightHighlight(boolean paramBoolean)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363245));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.f = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363995));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363994));
-    if ((this.f != null) && (this.jdField_b_of_type_AndroidWidgetImageView != null))
-    {
-      this.f.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    }
-    return this.jdField_b_of_type_AndroidWidgetTextView;
-  }
-  
-  public void a(int paramInt, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363473));
-    c(this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(paramInt);
-    if (paramOnClickListener == null)
-    {
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if ((this.rightHighLView == null) || (!this.isRightHighlightButton)) {
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+    if (paramBoolean)
+    {
+      this.rightViewText.setVisibility(8);
+      this.rightHighLView.setVisibility(0);
+      return;
+    }
+    this.rightViewText.setVisibility(0);
+    this.rightHighLView.setVisibility(8);
   }
   
-  public void a(Bundle paramBundle)
+  public abstract int getContentLayoutId();
+  
+  public View getRightTextView()
+  {
+    this.rightViewText = ((TextView)this.titleRoot.findViewById(2131363447));
+    setLayerType(this.rightViewText);
+    return this.rightViewText;
+  }
+  
+  public View getTitleBarView()
+  {
+    return this.titleRoot.findViewById(2131363261);
+  }
+  
+  public void hideTitleBar()
+  {
+    try
+    {
+      this.mTitleContainer = this.titleRoot.findViewById(2131363261);
+      this.mTitleContainer.setVisibility(8);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("IphoneTitleBarFragment", 2, localThrowable, new Object[0]);
+    }
+  }
+  
+  public void init(Bundle paramBundle)
   {
     if (getActivity() == null) {}
     do
     {
       return;
-      ((FrameLayout)getActivity().findViewById(16908290)).setForeground(getResources().getDrawable(2130845874));
-      if ((f()) && (b()) && (a()))
+      ((FrameLayout)getActivity().findViewById(16908290)).setForeground(getResources().getDrawable(2130845954));
+      if ((isTransparent()) && (needImmersive()) && (needStatusTrans()))
       {
         ViewParent localViewParent = getActivity().findViewById(16908310).getParent();
         if ((localViewParent != null) && ((localViewParent instanceof FrameLayout))) {
           ((FrameLayout)localViewParent).setVisibility(8);
         }
       }
-    } while (this.jdField_b_of_type_AndroidWidgetTextView != null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363244));
-    a();
+    } while (this.leftView != null);
+    this.vg = ((NavBarCommon)this.titleRoot.findViewById(2131363261));
+    onCreateLeftView();
     try
     {
-      if ((paramBundle.getBoolean("hide_title_left_arrow", false)) && (this.jdField_b_of_type_AndroidWidgetTextView != null)) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+      if ((paramBundle.getBoolean("hide_title_left_arrow", false)) && (this.leftView != null)) {
+        this.leftView.setBackgroundDrawable(null);
       }
-      d();
-      e();
-      b(paramBundle);
+      onCreateCenterView();
+      onCreateRightView();
+      setLeftViewName(paramBundle);
       return;
     }
     catch (Exception paramBundle)
@@ -129,71 +144,26 @@ public abstract class IphoneTitleBarFragment
     }
   }
   
-  public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle) {}
-  
-  public void a(CharSequence paramCharSequence)
+  public boolean isTitleProgressShowing()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setTitle(paramCharSequence);
-  }
-  
-  public View b()
-  {
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363428));
-    c(this.jdField_e_of_type_AndroidWidgetTextView);
-    return this.jdField_e_of_type_AndroidWidgetTextView;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setLeftViewName(paramInt);
-  }
-  
-  public void b(int paramInt, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramInt);
-    this.jdField_e_of_type_AndroidWidgetTextView.setEnabled(true);
-    if (paramOnClickListener != null) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-    }
-    if (AppSetting.b) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_e_of_type_AndroidWidgetTextView.getText() + "按钮");
-    }
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setLeftViewName(paramBundle);
-  }
-  
-  public void b(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363473));
-    c(this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString);
-    if (paramOnClickListener == null)
+    if ((this.mUseOptimizMode) && (this.mLoadingParent != null))
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      return;
+      if ((this.mLoadingView == null) || (this.mLoadingView.getVisibility() == 8)) {}
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+    else {
+      while (this.ad != null) {
+        return true;
+      }
+    }
+    return false;
   }
   
-  public View c()
+  protected boolean isTransparent()
   {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363244);
+    return false;
   }
   
-  protected View d()
-  {
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363381));
-    return this.jdField_d_of_type_AndroidWidgetTextView;
-  }
-  
-  public boolean d()
+  public boolean onBackEvent()
   {
     if (getActivity() != null) {
       getActivity().finish();
@@ -201,183 +171,53 @@ public abstract class IphoneTitleBarFragment
     return false;
   }
   
-  protected View e()
+  protected View onCreateCenterView()
   {
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363428));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363474));
-    c(this.jdField_e_of_type_AndroidWidgetTextView);
-    c(this.jdField_a_of_type_AndroidWidgetImageView);
-    return this.jdField_e_of_type_AndroidWidgetTextView;
+    this.centerView = ((TextView)this.titleRoot.findViewById(2131363400));
+    return this.centerView;
   }
   
-  @TargetApi(11)
-  public void f(int paramInt)
+  protected View onCreateLeftView()
   {
-    if (paramInt == 0)
+    this.leftView = ((TextView)this.titleRoot.findViewById(2131363262));
+    this.leftView.setOnClickListener(this.onBackListener);
+    this.mLeftBackText = ((TextView)this.titleRoot.findViewById(2131364020));
+    this.mLeftBackIcon = ((ImageView)this.titleRoot.findViewById(2131364019));
+    if ((this.mLeftBackText != null) && (this.mLeftBackIcon != null))
     {
-      this.jdField_e_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.jdField_e_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      return;
+      this.mLeftBackText.setOnClickListener(this.onBackListener);
+      this.mLeftBackIcon.setOnClickListener(this.onBackListener);
     }
-    this.jdField_e_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.jdField_e_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+    return this.leftView;
   }
   
-  protected boolean f()
+  protected View onCreateRightView()
   {
-    return false;
-  }
-  
-  public boolean g()
-  {
-    if ((this.jdField_d_of_type_AndroidWidgetTextView == null) || (getActivity() == null)) {
-      return false;
-    }
-    Object localObject1;
-    if (this.jdField_e_of_type_Boolean)
-    {
-      localObject1 = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363380);
-      if (this.jdField_d_of_type_AndroidWidgetTextView.getVisibility() == 0)
-      {
-        localObject1 = this.jdField_d_of_type_AndroidWidgetTextView;
-        localObject2 = this.jdField_d_of_type_AndroidWidgetTextView.getParent();
-        if ((this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_b_of_type_AndroidWidgetRelativeLayout != localObject2))
-        {
-          if ((this.jdField_c_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView.getParent() == this.jdField_b_of_type_AndroidWidgetRelativeLayout))
-          {
-            this.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_c_of_type_AndroidWidgetImageView);
-            this.jdField_c_of_type_AndroidWidgetImageView = null;
-          }
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout = null;
-        }
-        if ((this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) && ((localObject2 instanceof RelativeLayout))) {
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject2);
-        }
-        localObject2 = localObject1;
-        if (localObject1 != null)
-        {
-          localObject2 = localObject1;
-          if (this.jdField_c_of_type_AndroidWidgetImageView != null)
-          {
-            int i = ((View)localObject1).getId();
-            RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
-            localObject2 = localObject1;
-            if (localLayoutParams.getRules()[0] != i)
-            {
-              localObject2 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
-              ((RelativeLayout.LayoutParams)localObject2).rightMargin = 0;
-              ((RelativeLayout.LayoutParams)localObject2).leftMargin = 0;
-              ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-              localLayoutParams.addRule(0, i);
-              this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-            }
-          }
-        }
-      }
-    }
-    for (Object localObject2 = localObject1;; localObject2 = null)
-    {
-      if ((this.jdField_e_of_type_Boolean) && (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null))
-      {
-        if ((this.jdField_c_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView.getVisibility() == 0)) {
-          break label533;
-        }
-        if (this.jdField_c_of_type_AndroidWidgetImageView == null)
-        {
-          localObject1 = (RelativeLayout.LayoutParams)((View)localObject2).getLayoutParams();
-          ((RelativeLayout.LayoutParams)localObject1).rightMargin = 0;
-          ((RelativeLayout.LayoutParams)localObject1).leftMargin = 0;
-          ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(getActivity());
-          this.jdField_c_of_type_AndroidWidgetImageView.setId(2131365708);
-          localObject1 = new RelativeLayout.LayoutParams(-2, -2);
-          ((RelativeLayout.LayoutParams)localObject1).addRule(0, ((View)localObject2).getId());
-          ((RelativeLayout.LayoutParams)localObject1).addRule(15);
-          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)(7.0F * DeviceInfoUtil.a()));
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
-          localObject1 = getActivity().getResources().getDrawable(2130838598);
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-          if ((localObject1 instanceof Animatable)) {
-            ((Animatable)localObject1).start();
-          }
-        }
-        if (this.jdField_c_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-        return true;
-        if ((localObject1 == null) || (((RelativeLayout)localObject1).getVisibility() != 0)) {
-          break label535;
-        }
-        localObject2 = ((RelativeLayout)localObject1).getParent();
-        break;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838598);
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_d_of_type_AndroidWidgetTextView.getCompoundDrawables();
-        this.jdField_a_of_type_Int = this.jdField_d_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
-        this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-        this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
-        ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
-        return true;
-      }
-      label533:
-      return false;
-      label535:
-      localObject2 = null;
-      localObject1 = null;
-      break;
-    }
-  }
-  
-  public boolean h()
-  {
-    if ((this.jdField_e_of_type_Boolean) && (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null))
-    {
-      if ((this.jdField_c_of_type_AndroidWidgetImageView != null) && (this.jdField_c_of_type_AndroidWidgetImageView.getVisibility() != 8))
-      {
-        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        return true;
-      }
-    }
-    else if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-      this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(this.jdField_a_of_type_Int);
-      this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2], this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3]);
-      return true;
-    }
-    return false;
-  }
-  
-  public void j()
-  {
-    if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    c(this.jdField_b_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.rightViewText = ((TextView)this.titleRoot.findViewById(2131363447));
+    this.rightViewImg = ((ImageView)this.titleRoot.findViewById(2131363493));
+    setLayerType(this.rightViewText);
+    setLayerType(this.rightViewImg);
+    return this.rightViewText;
   }
   
   @TargetApi(14)
   @Nullable
   public final View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    View localView1 = paramLayoutInflater.inflate(2130968837, paramViewGroup, false);
+    View localView1 = paramLayoutInflater.inflate(2130968841, paramViewGroup, false);
     try
     {
-      View localView2 = paramLayoutInflater.inflate(a(), (ViewGroup)localView1, false);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView1.findViewById(2131364019));
+      View localView2 = paramLayoutInflater.inflate(getContentLayoutId(), (ViewGroup)localView1, false);
+      this.titleRoot = ((RelativeLayout)localView1.findViewById(2131364044));
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, ImmersiveUtils.a(paramLayoutInflater.getContext()), 0, 0);
+        this.titleRoot.setFitsSystemWindows(true);
+        this.titleRoot.setPadding(0, ImmersiveUtils.a(paramLayoutInflater.getContext()), 0, 0);
       }
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(3, 2131363244);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localView2, localLayoutParams);
-      this.jdField_e_of_type_AndroidViewView = localView2;
+      localLayoutParams.addRule(3, 2131363261);
+      this.titleRoot.addView(localView2, localLayoutParams);
+      this.mContentView = localView2;
     }
     catch (InflateException localInflateException)
     {
@@ -395,13 +235,253 @@ public abstract class IphoneTitleBarFragment
         localRuntimeException.printStackTrace();
       }
     }
-    if (this.jdField_d_of_type_AndroidViewView != null) {
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
+    if (this.mTitleContainer != null) {
+      this.mTitleContainer.setVisibility(0);
     }
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    a(getArguments());
-    a(paramLayoutInflater, paramViewGroup, paramBundle);
+    this.mDensity = getResources().getDisplayMetrics().density;
+    init(getArguments());
+    doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     return localView1;
+  }
+  
+  @TargetApi(11)
+  public void removeWebViewLayerType()
+  {
+    if (Build.VERSION.SDK_INT == 16) {
+      this.vg.setLayerType(0, null);
+    }
+  }
+  
+  public void resetLeftButton()
+  {
+    if (this.leftViewNotBack != null) {
+      this.leftViewNotBack.setVisibility(8);
+    }
+    setLayerType(this.leftView);
+    this.leftView.setVisibility(0);
+  }
+  
+  public void setLeftButton(int paramInt, View.OnClickListener paramOnClickListener)
+  {
+    this.leftView.setVisibility(8);
+    this.leftViewNotBack = ((TextView)this.titleRoot.findViewById(2131363492));
+    setLayerType(this.leftViewNotBack);
+    this.leftViewNotBack.setVisibility(0);
+    this.leftViewNotBack.setText(paramInt);
+    if (paramOnClickListener == null)
+    {
+      this.leftViewNotBack.setOnClickListener(this.onBackListener);
+      return;
+    }
+    this.leftViewNotBack.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void setLeftButton(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.leftView.setVisibility(8);
+    this.leftViewNotBack = ((TextView)this.titleRoot.findViewById(2131363492));
+    setLayerType(this.leftViewNotBack);
+    this.leftViewNotBack.setVisibility(0);
+    this.leftViewNotBack.setText(paramString);
+    if (paramOnClickListener == null)
+    {
+      this.leftViewNotBack.setOnClickListener(this.onBackListener);
+      return;
+    }
+    this.leftViewNotBack.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void setLeftViewName(int paramInt)
+  {
+    this.vg.setLeftViewName(paramInt);
+  }
+  
+  public void setLeftViewName(Bundle paramBundle)
+  {
+    this.vg.setLeftViewName(paramBundle);
+  }
+  
+  public void setRightButton(int paramInt, View.OnClickListener paramOnClickListener)
+  {
+    this.isRightHighlightButton = false;
+    this.rightViewText.setVisibility(0);
+    this.rightViewText.setText(paramInt);
+    this.rightViewText.setEnabled(true);
+    if (paramOnClickListener != null) {
+      this.rightViewText.setOnClickListener(paramOnClickListener);
+    }
+    if (AppSetting.b) {
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + "按钮");
+    }
+  }
+  
+  protected void setRightHighlightButton(int paramInt, View.OnClickListener paramOnClickListener)
+  {
+    this.isRightHighlightButton = true;
+    if (this.rightViewText != null)
+    {
+      this.rightViewText.setVisibility(0);
+      this.rightViewText.setText(paramInt);
+      this.rightViewText.setEnabled(false);
+      this.rightHighLView = ((TextView)LayoutInflater.from(getActivity()).inflate(2130968844, null));
+      setLayerType(this.rightHighLView);
+      this.rightHighLView.setText(paramInt);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(11, 1);
+      localLayoutParams.addRule(15, 1);
+      localLayoutParams.rightMargin = ((int)(8.0F * this.mDensity));
+      this.vg.addView(this.rightHighLView, localLayoutParams);
+      this.rightHighLView.setVisibility(8);
+      if (paramOnClickListener != null) {
+        this.rightHighLView.setOnClickListener(paramOnClickListener);
+      }
+    }
+  }
+  
+  @TargetApi(11)
+  public void setRightViewTextDisable(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      this.rightViewText.setEnabled(false);
+      this.rightViewText.setAlpha(0.5F);
+      return;
+    }
+    this.rightViewText.setEnabled(true);
+    this.rightViewText.setAlpha(1.0F);
+  }
+  
+  public void setTitle(CharSequence paramCharSequence)
+  {
+    this.vg.setTitle(paramCharSequence);
+  }
+  
+  public void setTitle(CharSequence paramCharSequence, String paramString)
+  {
+    this.vg.setTitle(paramCharSequence, paramString);
+  }
+  
+  public boolean startTitleProgress()
+  {
+    if ((this.centerView == null) || (getActivity() == null)) {
+      return false;
+    }
+    Object localObject1;
+    if (this.mUseOptimizMode)
+    {
+      localObject1 = (RelativeLayout)this.titleRoot.findViewById(2131363399);
+      if (this.centerView.getVisibility() == 0)
+      {
+        localObject1 = this.centerView;
+        localObject2 = this.centerView.getParent();
+        if ((this.mLoadingParent != null) && (this.mLoadingParent != localObject2))
+        {
+          if ((this.mLoadingView != null) && (this.mLoadingView.getParent() == this.mLoadingParent))
+          {
+            this.mLoadingParent.removeView(this.mLoadingView);
+            this.mLoadingView = null;
+          }
+          this.mLoadingParent = null;
+        }
+        if ((this.mLoadingParent == null) && ((localObject2 instanceof RelativeLayout))) {
+          this.mLoadingParent = ((RelativeLayout)localObject2);
+        }
+        localObject2 = localObject1;
+        if (localObject1 != null)
+        {
+          localObject2 = localObject1;
+          if (this.mLoadingView != null)
+          {
+            int i = ((View)localObject1).getId();
+            RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mLoadingView.getLayoutParams();
+            localObject2 = localObject1;
+            if (localLayoutParams.getRules()[0] != i)
+            {
+              localObject2 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
+              ((RelativeLayout.LayoutParams)localObject2).rightMargin = 0;
+              ((RelativeLayout.LayoutParams)localObject2).leftMargin = 0;
+              ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+              localLayoutParams.addRule(0, i);
+              this.mLoadingView.setLayoutParams(localLayoutParams);
+            }
+          }
+        }
+      }
+    }
+    for (Object localObject2 = localObject1;; localObject2 = null)
+    {
+      if ((this.mUseOptimizMode) && (this.mLoadingParent != null))
+      {
+        if ((this.mLoadingView != null) && (this.mLoadingView.getVisibility() == 0)) {
+          break label534;
+        }
+        if (this.mLoadingView == null)
+        {
+          localObject1 = (RelativeLayout.LayoutParams)((View)localObject2).getLayoutParams();
+          ((RelativeLayout.LayoutParams)localObject1).rightMargin = 0;
+          ((RelativeLayout.LayoutParams)localObject1).leftMargin = 0;
+          ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          this.mLoadingView = new ImageView(getActivity());
+          this.mLoadingView.setId(2131365713);
+          localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+          ((RelativeLayout.LayoutParams)localObject1).addRule(0, ((View)localObject2).getId());
+          ((RelativeLayout.LayoutParams)localObject1).addRule(15);
+          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)(7.0F * DeviceInfoUtil.a()));
+          this.mLoadingParent.addView(this.mLoadingView, (ViewGroup.LayoutParams)localObject1);
+          localObject1 = getActivity().getResources().getDrawable(2130838604);
+          this.mLoadingView.setImageDrawable((Drawable)localObject1);
+          if ((localObject1 instanceof Animatable)) {
+            ((Animatable)localObject1).start();
+          }
+        }
+        if (this.mLoadingView.getVisibility() != 0) {
+          this.mLoadingView.setVisibility(0);
+        }
+        return true;
+        if ((localObject1 == null) || (((RelativeLayout)localObject1).getVisibility() != 0)) {
+          break label536;
+        }
+        localObject2 = ((RelativeLayout)localObject1).getParent();
+        break;
+      }
+      if (this.ad == null)
+      {
+        this.ad = getResources().getDrawable(2130838604);
+        this.mOldDrawables = this.centerView.getCompoundDrawables();
+        this.mOldPadding = this.centerView.getCompoundDrawablePadding();
+        this.centerView.setCompoundDrawablePadding(10);
+        this.centerView.setCompoundDrawablesWithIntrinsicBounds(this.ad, this.mOldDrawables[1], this.mOldDrawables[2], this.mOldDrawables[3]);
+        ((Animatable)this.ad).start();
+        return true;
+      }
+      label534:
+      return false;
+      label536:
+      localObject2 = null;
+      localObject1 = null;
+      break;
+    }
+  }
+  
+  public boolean stopTitleProgress()
+  {
+    if ((this.mUseOptimizMode) && (this.mLoadingParent != null))
+    {
+      if ((this.mLoadingView != null) && (this.mLoadingView.getVisibility() != 8))
+      {
+        this.mLoadingView.setVisibility(8);
+        return true;
+      }
+    }
+    else if (this.ad != null)
+    {
+      ((Animatable)this.ad).stop();
+      this.ad = null;
+      this.centerView.setCompoundDrawablePadding(this.mOldPadding);
+      this.centerView.setCompoundDrawablesWithIntrinsicBounds(this.mOldDrawables[0], this.mOldDrawables[1], this.mOldDrawables[2], this.mOldDrawables[3]);
+      return true;
+    }
+    return false;
   }
 }
 

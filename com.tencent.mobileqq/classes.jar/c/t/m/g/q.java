@@ -1,20 +1,24 @@
 package c.t.m.g;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import java.util.Map;
 
 public final class q
 {
-  public String a;
-  public String b;
-  public List<m> c;
-  public int d;
+  private static Handler a = ;
   
-  public q(String paramString1, String paramString2)
+  public static boolean a(String paramString1, int paramInt1, int paramInt2, String paramString2, Map<String, String> paramMap1, Map<String, String> paramMap2, boolean paramBoolean)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = new ArrayList();
+    boolean bool = x.a.a(1);
+    if (bool) {
+      a.post(new r(paramString1, paramInt1, paramInt2, paramString2, paramMap1, paramMap2, paramBoolean));
+    }
+    return bool;
+  }
+  
+  public static void b(String paramString1, int paramInt1, int paramInt2, String paramString2, Map<String, String> paramMap1, Map<String, String> paramMap2, boolean paramBoolean)
+  {
+    a.post(new s(paramString1, paramInt1, paramInt2, paramString2, paramMap1, paramMap2, paramBoolean));
   }
 }
 

@@ -1,17 +1,12 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.PokeEmoItemBuilder;
+import com.tencent.mobileqq.activity.aio.stickerbubble.PEPanelHelper;
 
 public class vhw
   implements Runnable
 {
-  public vhw(StructingMsgItemBuilder paramStructingMsgItemBuilder, Dialog paramDialog) {}
+  public vhw(PokeEmoItemBuilder paramPokeEmoItemBuilder) {}
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-  }
+  public void run() {}
 }
 
 

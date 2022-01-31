@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import java.util.List;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
 class syt
   implements Runnable
 {
-  syt(sys paramsys, List paramList) {}
+  syt(syp paramsyp) {}
   
   public void run()
   {
-    if (LebaListMgrActivity.a(this.jdField_a_of_type_Sys.a) != null) {
-      LebaListMgrActivity.a(this.jdField_a_of_type_Sys.a).a(this.jdField_a_of_type_JavaUtilList);
-    }
+    this.a.a.a.a();
   }
 }
 

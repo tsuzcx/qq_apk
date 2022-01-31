@@ -202,7 +202,7 @@ public class NearbySPUtil
   
   public static boolean a(String paramString)
   {
-    return ((Boolean)a(paramString, BaseApplicationImpl.getApplication().getResources().getString(2131433583), Boolean.valueOf(false))).booleanValue();
+    return ((Boolean)a(paramString, BaseApplicationImpl.getApplication().getResources().getString(2131433597), Boolean.valueOf(false))).booleanValue();
   }
   
   public static boolean a(String paramString, long paramLong, int paramInt)
@@ -325,7 +325,7 @@ public class NearbySPUtil
   
   public static boolean a(String paramString, boolean paramBoolean)
   {
-    return a(paramString, BaseApplicationImpl.getApplication().getResources().getString(2131433583), Boolean.valueOf(paramBoolean));
+    return a(paramString, BaseApplicationImpl.getApplication().getResources().getString(2131433597), Boolean.valueOf(paramBoolean));
   }
   
   public static void b(String paramString)
@@ -350,7 +350,7 @@ public class NearbySPUtil
   {
     try
     {
-      bool = ((Boolean)a(paramString, BaseApplicationImpl.getApplication().getResources().getString(2131433584), Boolean.valueOf(false))).booleanValue();
+      bool = ((Boolean)a(paramString, BaseApplicationImpl.getApplication().getResources().getString(2131433598), Boolean.valueOf(false))).booleanValue();
       if (QLog.isColorLevel()) {
         NearbyUtils.a("getLocVisiblityForPeople", new Object[] { paramString, Boolean.valueOf(bool) });
       }
@@ -372,7 +372,7 @@ public class NearbySPUtil
   {
     try
     {
-      String str = BaseApplicationImpl.getApplication().getResources().getString(2131433584);
+      String str = BaseApplicationImpl.getApplication().getResources().getString(2131433598);
       SharedPreferences.Editor localEditor = a("NEARBY_FLAG_SP", paramString, 4).edit();
       localEditor.putBoolean(str, paramBoolean);
       if (!paramBoolean) {

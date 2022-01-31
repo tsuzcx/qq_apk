@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.ViewGroup;
+import android.widget.ListView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
 
-public class aoje
-  implements DialogInterface.OnClickListener
+class aoje
+  implements Runnable
 {
-  public aoje(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  aoje(aojd paramaojd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
+    FaceListPage.a(this.a.a).setVisibility(4);
+    FaceListPage.b(this.a.a).setVisibility(4);
+    FaceListPage.a(this.a.a).setVisibility(0);
+    FaceListPage.a(this.a.a).notifyDataSetChanged();
   }
 }
 

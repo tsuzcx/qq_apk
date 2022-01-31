@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akur;
+import alci;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -23,7 +23,7 @@ public class IphoneTreeView
   public int a;
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new akur(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new alci(this);
   public View a;
   private boolean jdField_a_of_type_Boolean;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
@@ -312,7 +312,7 @@ public class IphoneTreeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IphoneTreeView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class wnk
-  extends ContactBindObserver
+  implements MessageQueue.IdleHandler
 {
-  private wnk(FriendFragment paramFriendFragment) {}
+  public wnk(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public boolean queueIdle()
   {
-    FriendFragment.a(this.a);
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

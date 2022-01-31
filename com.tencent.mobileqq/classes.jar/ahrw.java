@@ -1,30 +1,20 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.conn.ConnManager;
+import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
 
 public class ahrw
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ahrw(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
+  public ahrw(ConnManager paramConnManager, long paramLong) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.b)))
-    {
-      paramView = this.a.getActivity();
-      if (paramView != null) {
-        paramView.finish();
-      }
-    }
-    return false;
+    ((PeakAudioTransHandler)ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).getBusinessHandler(0)).b(this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahrw
  * JD-Core Version:    0.7.0.1
  */

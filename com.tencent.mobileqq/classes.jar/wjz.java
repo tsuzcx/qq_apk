@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
 public class wjz
   implements Runnable
 {
-  public wjz(SystemMsgListView paramSystemMsgListView) {}
+  public wjz(BlessActivity paramBlessActivity, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.a.i();
+    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity).setVisibility(0);
   }
 }
 

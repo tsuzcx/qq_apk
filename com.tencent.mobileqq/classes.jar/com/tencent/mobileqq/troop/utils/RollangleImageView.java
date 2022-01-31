@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajnv;
+import ajvh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -26,7 +26,7 @@ public class RollangleImageView
   extends ImageView
 {
   public static MQLruCache a;
-  ajnv jdField_a_of_type_Ajnv = null;
+  ajvh jdField_a_of_type_Ajvh = null;
   public String a;
   boolean jdField_a_of_type_Boolean = false;
   public String b;
@@ -72,13 +72,13 @@ public class RollangleImageView
     }
     try
     {
-      localObject1 = BitmapFactory.decodeResource((Resources)localObject5, 2130840552);
+      localObject1 = BitmapFactory.decodeResource((Resources)localObject5, 2130840567);
       jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put("troopfilerollangleimage://", localObject1);
       localObject3 = localObject1;
       localObject2 = localObject4;
       if (localObject4 == null)
       {
-        localObject2 = BitmapFactory.decodeResource((Resources)localObject5, 2130840551);
+        localObject2 = BitmapFactory.decodeResource((Resources)localObject5, 2130840566);
         jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put("troopfilerollangleimageborder://", localObject2);
         localObject3 = localObject1;
       }
@@ -170,13 +170,13 @@ public class RollangleImageView
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ajnv != null)
+    if (this.jdField_a_of_type_Ajvh != null)
     {
-      this.jdField_a_of_type_Ajnv.cancel(true);
-      this.jdField_a_of_type_Ajnv = null;
+      this.jdField_a_of_type_Ajvh.cancel(true);
+      this.jdField_a_of_type_Ajvh = null;
     }
-    this.jdField_a_of_type_Ajnv = new ajnv(this);
-    this.jdField_a_of_type_Ajnv.execute(new Boolean[] { Boolean.valueOf(paramBoolean) });
+    this.jdField_a_of_type_Ajvh = new ajvh(this);
+    this.jdField_a_of_type_Ajvh.execute(new Boolean[] { Boolean.valueOf(paramBoolean) });
   }
   
   public void setParams(String paramString1, String paramString2)
@@ -209,7 +209,7 @@ public class RollangleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RollangleImageView
  * JD-Core Version:    0.7.0.1
  */

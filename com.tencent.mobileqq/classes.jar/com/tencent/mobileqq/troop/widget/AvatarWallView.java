@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajrw;
+import ajzj;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
@@ -65,7 +65,7 @@ public class AvatarWallView
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new ajrw(this);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new ajzj(this);
     setOnItemLongClickListener(this);
     setChildrenDrawingOrderEnabled(true);
   }
@@ -194,7 +194,7 @@ public class AvatarWallView
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = this.jdField_e_of_type_Int;
       ImageView localImageView = new ImageView(getContext());
       localImageView.setImageBitmap(paramBitmap);
-      localImageView.setBackgroundResource(2130840514);
+      localImageView.setBackgroundResource(2130840529);
       this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)getContext().getSystemService("window"));
       this.jdField_a_of_type_AndroidViewWindowManager.addView(localImageView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
       this.jdField_a_of_type_AndroidWidgetImageView = localImageView;
@@ -336,7 +336,7 @@ public class AvatarWallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallView
  * JD-Core Version:    0.7.0.1
  */

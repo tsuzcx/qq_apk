@@ -1,36 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.PostCommentCallback;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
 
 public class nvj
-  extends FeedCommentEventHandler.PostCommentCallback
+  implements MediaPlayer.OnPreparedListener
 {
-  public nvj(StoryDetailPresenter paramStoryDetailPresenter) {}
+  public nvj(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnPreparedListener paramOnPreparedListener) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    SLog.a("Q.qqstory.detail.StoryDetailPresenter", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!StoryDetailPresenter.a(this.a).get()) {
-      StoryDetailPresenter.a(this.a).c();
-    }
-  }
-  
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
-  {
-    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    localCommentManager.b(paramCommentEntry);
-    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
-    paramCommentEntry.status = 0;
-    localCommentManager.a(paramCommentEntry);
-    return true;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener.a_(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper);
   }
 }
 

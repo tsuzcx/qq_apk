@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import aibj;
-import aibk;
+import aigb;
+import aigc;
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
@@ -25,7 +25,7 @@ public class QQMovieFilter
   extends QQBaseFilter
 {
   private float jdField_a_of_type_Float = 0.0F;
-  private aibk jdField_a_of_type_Aibk;
+  private aigc jdField_a_of_type_Aigc;
   private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
@@ -144,10 +144,10 @@ public class QQMovieFilter
     {
       this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("movieTouchThread");
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new aibj(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new aigb(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     }
-    if (this.jdField_a_of_type_Aibk != null) {
-      this.jdField_a_of_type_Aibk.a();
+    if (this.jdField_a_of_type_Aigc != null) {
+      this.jdField_a_of_type_Aigc.a();
     }
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
     if (FileUtil.b(paramString1)) {}
@@ -164,7 +164,7 @@ public class QQMovieFilter
   
   public void a(boolean paramBoolean)
   {
-    if ((i_()) && (this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_AndroidOsHandlerThread != null) && (this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
+    if ((f_()) && (this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_AndroidOsHandlerThread != null) && (this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
       if (!paramBoolean) {
         break label83;
       }
@@ -194,10 +194,10 @@ public class QQMovieFilter
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.d();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESMovieFilter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESMovieFilter.c();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESMovieFilter.d();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.c();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.d();
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler = null;
@@ -211,6 +211,11 @@ public class QQMovieFilter
     }
     b();
     this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public boolean f_()
+  {
+    return (this.h == 2) && (this.jdField_a_of_type_Boolean);
   }
   
   public void h()
@@ -277,11 +282,6 @@ public class QQMovieFilter
       return;
     }
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-  }
-  
-  public boolean i_()
-  {
-    return (this.h == 2) && (this.jdField_a_of_type_Boolean);
   }
 }
 

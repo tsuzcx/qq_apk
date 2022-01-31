@@ -1,35 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import friendlist.EAddFriendSourceID;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
+import com.tencent.mobileqq.activity.bless.BlessActivity.IAnimationFinishListener;
+import com.tencent.mobileqq.activity.bless.BlessManager;
 
 public class wka
-  extends FriendListObserver
+  implements BlessActivity.IAnimationFinishListener
 {
-  public wka(SystemMsgListView paramSystemMsgListView) {}
+  public wka(BlessActivity paramBlessActivity) {}
   
-  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList paramArrayList)
+  public void a()
   {
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).c();
-    }
-  }
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if (paramBoolean1)
+    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.m())
     {
-      paramString = paramBundle.getString("uin");
-      int i = paramBundle.getInt("source_id");
-      paramBundle = paramBundle.getString("extra");
-      if (((i == 3006) || (i == 3075)) && ("ContactMatchBuilder".equals(paramBundle))) {
-        this.a.a(paramString);
-      }
-      if (EAddFriendSourceID.a(i)) {
-        SystemMsgListView.a(this.a).c();
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
+      BlessActivity.b(this.a);
     }
   }
 }

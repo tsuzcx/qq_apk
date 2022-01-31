@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import adan;
-import adao;
-import adap;
-import adaq;
+import adiu;
+import adiv;
+import adiw;
+import adix;
 import android.content.ContentValues;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -1094,7 +1094,7 @@ public class FileManagerProxy
       localHandlerThread.start();
       jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
     }
-    jdField_a_of_type_AndroidOsHandler.post(new adap(this, paramLong, paramString));
+    jdField_a_of_type_AndroidOsHandler.post(new adiw(this, paramLong, paramString));
   }
   
   public void a(long paramLong1, String paramString, long paramLong2)
@@ -1106,11 +1106,11 @@ public class FileManagerProxy
       if (this.c.size() > 30) {
         this.c.remove(0);
       }
-      adaq localadaq = new adaq(this);
-      localadaq.jdField_a_of_type_Long = paramLong1;
-      localadaq.jdField_a_of_type_JavaLangString = paramString;
-      localadaq.b = paramLong2;
-      this.c.add(localadaq);
+      adix localadix = new adix(this);
+      localadix.jdField_a_of_type_Long = paramLong1;
+      localadix.jdField_a_of_type_JavaLangString = paramString;
+      localadix.b = paramLong2;
+      this.c.add(localadix);
     } while (!QLog.isColorLevel());
     QLog.i("FileManagerProxy<FileAssistant>", 2, "saveDeletedEntity nSessionId=" + paramLong1 + " nOlSessionId=" + paramLong2);
   }
@@ -1244,7 +1244,7 @@ public class FileManagerProxy
   {
     Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext()) {
-      if (((adaq)localIterator.next()).jdField_a_of_type_Long == paramLong) {
+      if (((adix)localIterator.next()).jdField_a_of_type_Long == paramLong) {
         return true;
       }
     }
@@ -1328,8 +1328,8 @@ public class FileManagerProxy
     Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
-      adaq localadaq = (adaq)localIterator.next();
-      if ((localadaq.b == paramLong) && (localadaq.jdField_a_of_type_JavaLangString != null) && (localadaq.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
+      adix localadix = (adix)localIterator.next();
+      if ((localadix.b == paramLong) && (localadix.jdField_a_of_type_JavaLangString != null) && (localadix.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
         return true;
       }
     }
@@ -1535,7 +1535,7 @@ public class FileManagerProxy
             continue;
           }
         }
-        new Handler(localLooper).post(new adan(this, paramFileManagerEntity));
+        new Handler(localLooper).post(new adiu(this, paramFileManagerEntity));
       }
       finally {}
     }
@@ -1930,7 +1930,7 @@ public class FileManagerProxy
         return;
       }
     }
-    new Handler(paramFileManagerEntity).post(new adao(this, localContentValues, l));
+    new Handler(paramFileManagerEntity).post(new adiv(this, localContentValues, l));
   }
   
   public FileManagerEntity e(String paramString)

@@ -1,40 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.PokePanel.PokeData;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
 import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
-public final class vdc
-  implements DialogInterface.OnClickListener
+public class vdc
+  implements Runnable
 {
-  public vdc(QQAppInterface paramQQAppInterface, int paramInt1, Activity paramActivity, int paramInt2) {}
+  public vdc(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (true == PokeItemHelper.a) {
-      PokeItemHelper.a = false;
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      QLog.d("vaspoke", 4, "dialogInterfaceOnClick mApp is null.");
-    }
-    while (((2 != this.jdField_a_of_type_Int) && (4 != this.jdField_a_of_type_Int)) || (paramInt != 1)) {
-      return;
-    }
-    if (2 == this.jdField_a_of_type_Int)
+    Object localObject = PokeItemHelper.a(this.a.b, GivingHeartItemBuilder.a(this.a));
+    if (((ArrayList)localObject).size() > 0)
     {
-      VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000515", "LTMCLUB", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436740), "");
-      VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "vip", "", "", "", "", 0, 0, 0, 0);
-      return;
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        PokePanel.PokeData localPokeData = (PokePanel.PokeData)((Iterator)localObject).next();
+        GivingHeartItemBuilder.a(this.a).put(Integer.valueOf(localPokeData.b), Integer.valueOf(localPokeData.c));
+      }
     }
-    VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436943), "");
-    VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "svip", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

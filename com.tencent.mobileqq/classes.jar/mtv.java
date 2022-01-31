@@ -1,38 +1,19 @@
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
+import com.tencent.mobileqq.app.UniteSearchHandler;
 
-public class mtv
-  implements Comparator
+class mtv
+  implements Runnable
 {
-  public mtv(TroopBarAssistantManager paramTroopBarAssistantManager) {}
+  mtv(mtu parammtu) {}
   
-  public int a(TroopBarData paramTroopBarData1, TroopBarData paramTroopBarData2)
+  public void run()
   {
-    long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
-    long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
-    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
-    do
-    {
-      do
-      {
-        return 1;
-        if ((!paramTroopBarData2.mIsSticky) && (paramTroopBarData1.mIsSticky)) {
-          return -1;
-        }
-        if ((!paramTroopBarData2.mIsSticky) || (!paramTroopBarData1.mIsSticky)) {
-          break;
-        }
-      } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
-      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
-        return 0;
-      }
-      return -1;
-    } while (l1 < l2);
-    if (l1 == l2) {
-      return 0;
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.jdField_a_of_type_Boolean) {
+      return;
     }
-    return -1;
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.e();
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler = new UniteSearchHandler(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

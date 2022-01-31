@@ -1,19 +1,34 @@
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
+import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class abzh
-  implements Runnable
+  implements NonMainAppHeadLoader.FaceObserver
 {
-  public abzh(EmoticonFromGroupManager paramEmoticonFromGroupManager) {}
+  public abzh(ConfessPlugin paramConfessPlugin) {}
   
-  public void run()
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    EmoticonFromGroupManager.a(this.a).b = (FavEmoConstant.a - this.a.b());
+    if (QLog.isColorLevel())
+    {
+      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+      if ((this.a.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.a().getCurrentAccountUin())))
+      {
+        ThreadManager.getUIHandler().removeCallbacks(ConfessPlugin.a(this.a));
+        ThreadManager.getUIHandler().post(ConfessPlugin.a(this.a));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppManagerPanel;
+import com.tencent.mobileqq.ark.ArkPanelPagerAdapter;
 
 public class abba
   implements Runnable
 {
-  public abba(ARMapActivity paramARMapActivity) {}
+  public abba(ArkAppManagerPanel paramArkAppManagerPanel) {}
   
   public void run()
   {
-    ARMapActivity.l(this.a);
+    int i = 0;
+    while (i < this.a.a.getCount())
+    {
+      this.a.a.a(i);
+      i += 1;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aaen;
+import aale;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class ArCloudConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aaen();
+  public static final Parcelable.Creator CREATOR = new aale();
   public static int f = 3;
   public int a;
   public ArCloudConfigInfo.WorldCupResPath a;

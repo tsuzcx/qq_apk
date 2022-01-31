@@ -1,21 +1,42 @@
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class rnz
-  extends SecSvcObserver
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public rnz(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  public rnz(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
+  public void onGlobalLayout()
   {
-    AuthDevRenameActivity.a(this.a);
-    if (!paramBoolean)
+    Object localObject = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
+    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
     {
-      QQToast.a(this.a, this.a.getString(2131436619), 0).b(this.a.getTitleBarHeight());
-      return;
+      i = 1;
+      localObject = this.a.getCurrentFocus();
+      if (i != 0) {
+        break label101;
+      }
+      if ((localObject != null) && ((localObject instanceof EditText))) {
+        ((EditText)localObject).setCursorVisible(false);
+      }
     }
-    this.a.finish();
+    label101:
+    while ((localObject == null) || (!(localObject instanceof EditText)))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    ((EditText)localObject).setCursorVisible(true);
   }
 }
 

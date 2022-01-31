@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.widget.TextView;
+import com.tencent.mobileqq.hotpic.HotPicTab;
 
 public class adzn
-  implements Runnable
 {
-  public adzn(LebaWithFeeds paramLebaWithFeeds) {}
+  public TextView a;
   
-  public void run()
-  {
-    LebaWithFeeds.a(this.a).a();
-  }
+  adzn(HotPicTab paramHotPicTab) {}
 }
 
 

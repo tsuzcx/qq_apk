@@ -1,14 +1,14 @@
-import com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Dialog;
+import com.tencent.biz.qqstory.takevideo.EditPicSave;
 
-class oid
+public class oid
   implements Runnable
 {
-  oid(oic paramoic) {}
+  public oid(EditPicSave paramEditPicSave) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a.a, 1, "分享失败", 0).a();
+    EditPicSave.a(this.a).show();
   }
 }
 

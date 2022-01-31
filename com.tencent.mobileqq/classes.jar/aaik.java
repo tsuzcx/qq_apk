@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.graphics.SurfaceTexture;
 
-public class aaik
+class aaik
   implements Runnable
 {
-  public aaik(ARReport paramARReport, long paramLong) {}
+  aaik(aaii paramaaii) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "ARMarkerResourceManagerInt", true, 0L, 0L, localHashMap, "");
+    if (aaii.a(this.a)) {}
+    try
+    {
+      aaii.a(this.a).updateTexImage();
+      aaii.a(this.a).getTransformMatrix(aaii.a(this.a));
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

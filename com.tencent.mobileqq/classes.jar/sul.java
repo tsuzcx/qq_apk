@@ -1,27 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
+import cooperation.qzone.util.QZLog;
 
-public class sul
-  extends Handler
+class sul
+  implements Runnable
 {
-  public sul(GroupManagerActivity paramGroupManagerActivity) {}
+  sul(suk paramsuk) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
-    }
-    GroupManagerActivity.b(this.a, true);
-    if (GroupManagerActivity.b(this.a))
+    try
     {
-      this.a.a(true);
+      if (!TextUtils.isEmpty(this.a.a.a.a.a))
+      {
+        Object localObject = this.a.a.a.a.a;
+        if (this.a.a.a.a.a.startsWith("+")) {
+          localObject = this.a.a.a.a.a.substring(1);
+        }
+        localObject = new LpReportInfo_pf00064(699, 3, Long.valueOf((String)localObject).longValue());
+        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
+      }
       return;
     }
-    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
-    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
-    GroupManagerActivity.c(this.a, true);
+    catch (Exception localException)
+    {
+      QZLog.e("QzoneReport", "makeOrRefreshQZone", localException);
+    }
   }
 }
 

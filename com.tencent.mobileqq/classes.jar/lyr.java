@@ -1,32 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class lyr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public lyr(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public lyr(ComponentContentGalleryBiu paramComponentContentGalleryBiu, ArticleInfo paramArticleInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.i("ReadInJoyDeliverVideoActivity", 2, "qbShowShareResultDialog back");
-      }
-      ForwardSdkShareOption.a(this.a, true, "shareToQQ", ReadInJoyDeliverVideoActivity.b(this.a));
-      Util.a(this.a, 0, "", "");
-      this.a.finish();
-      return;
-    }
-    ReadInJoyDeliverVideoActivity.c(this.a);
-    this.a.finish();
+    ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

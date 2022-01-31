@@ -1,41 +1,127 @@
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.richmedia.subtitles.ItemBase;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public final class yca
-  implements Runnable
+class yca
 {
-  public yca(boolean paramBoolean, QQAppInterface paramQQAppInterface, TroopMemberInfo paramTroopMemberInfo) {}
+  public float a;
+  public int a;
+  public Bitmap a;
+  public ybz a;
+  private ycb a;
+  public boolean a;
   
-  public void run()
+  public yca(String paramString, ycb paramycb, Typeface paramTypeface)
   {
-    String str2;
-    QQAppInterface localQQAppInterface;
-    String str3;
-    String str1;
-    if (this.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Ycb = paramycb;
+    this.jdField_a_of_type_Ybz = new ybz(paramString, this.jdField_a_of_type_Ycb.c, this.jdField_a_of_type_Ycb.b, this.jdField_a_of_type_Ycb.e, this.jdField_a_of_type_Ycb.f, 0.0F, (this.jdField_a_of_type_Ycb.jdField_a_of_type_Float - this.jdField_a_of_type_Ycb.b) / 2.0F, paramTypeface);
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (boolean bool = true;; bool = false)
     {
-      str2 = "multiMode_add";
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str3 = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label63;
+      this.jdField_a_of_type_Boolean = bool;
+      b(paramString);
+      return;
+    }
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) && (paramString2 == null)) {}
+    do
+    {
+      return true;
+      if ((paramString1 == null) || (paramString2 == null)) {
+        return false;
       }
-      str1 = "1";
+    } while (paramString1.equals(paramString2));
+    return false;
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      if (this.jdField_a_of_type_Int != -1)
+      {
+        GlUtil.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Int = -1;
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    if (this.jdField_a_of_type_Int != -1)
+    {
+      GlUtil.a(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = -1;
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = ItemBase.a(this.jdField_a_of_type_Ybz.c, this.jdField_a_of_type_Ycb.jdField_a_of_type_Float);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Ybz.jdField_a_of_type_Float = 0.0F;
+      this.jdField_a_of_type_Ybz.a(paramString);
     }
     for (;;)
     {
-      ReportController.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str2, 0, 0, str3, str1, "", "");
+      this.jdField_a_of_type_Int = -1;
       return;
-      str2 = "singleMode_add";
-      break;
-      label63:
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.recommendRemark)) {
-        str1 = "0";
-      } else {
-        str1 = "1";
+      QLog.d("BeanItemWrapper", 2, "createcache error:" + this.jdField_a_of_type_Ybz.c + "-" + this.jdField_a_of_type_Ycb.jdField_a_of_type_Float);
+    }
+  }
+  
+  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      this.jdField_a_of_type_Ybz.jdField_a_of_type_Float = paramFloat1;
+      paramFloat1 = this.jdField_a_of_type_Ybz.b;
+      ybz localybz = this.jdField_a_of_type_Ybz;
+      localybz.b += paramFloat2;
+      this.jdField_a_of_type_Ybz.a(paramCanvas);
+      this.jdField_a_of_type_Ybz.b = paramFloat1;
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
+  }
+  
+  public void a(RenderBuffer paramRenderBuffer, RectF paramRectF, float paramFloat1, float paramFloat2)
+  {
+    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+        this.jdField_a_of_type_Int = GlUtil.a(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
+    } while (this.jdField_a_of_type_Int < 0);
+    ItemBase.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ybz.c, this.jdField_a_of_type_Ycb.jdField_a_of_type_Float, paramRectF, paramFloat1, paramFloat2);
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (!a(paramString, this.jdField_a_of_type_Ybz.jdField_a_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_Ybz.a(paramString);
+        b(paramString);
+      }
+      return;
     }
   }
 }

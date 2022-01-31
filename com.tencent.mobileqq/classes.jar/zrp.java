@@ -1,36 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyReportManyApps;
-import com.tencent.biz.pubaccount.readinjoy.logic.SMRM;
-import com.tencent.mobileqq.app.HotChatManager;
+import android.net.Uri;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.TimerCheckMsgCount;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.SkinEngine;
+import java.io.File;
 
 public class zrp
   implements Runnable
 {
-  public zrp(TimerCheckMsgCount paramTimerCheckMsgCount) {}
+  public zrp(QQAppInterface paramQQAppInterface, int paramInt) {}
   
   public void run()
   {
-    TimerCheckMsgCount.a(this.a).b.a().l();
-    ((HotChatManager)TimerCheckMsgCount.b(this.a).b.getManager(59)).b();
-    TimerCheckMsgCount.c(this.a).b.a().c();
-    if (!ReadInJoyHelper.k(TimerCheckMsgCount.d(this.a).b)) {}
-    for (;;)
+    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
+    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.g();
+    if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.h()) && (bool2) && (!bool1) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.k()) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.l()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.m()) && (QQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
     {
-      SMRM.a().a(TimerCheckMsgCount.e(this.a).b);
-      return;
-      try
+      Object localObject = SkinEngine.getInstances().getSkinRootPath();
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        TimerCheckMsgCount.a(this.a);
-        ReadInJoyReportManyApps.a();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
+        localObject = new StringBuilder((String)localObject);
+        ((StringBuilder)localObject).append(File.separatorChar).append("voice").append(File.separatorChar).append("tab").append(this.jdField_a_of_type_Int).append(".mp3");
+        File localFile = new File(((StringBuilder)localObject).toString());
+        if (QLog.isColorLevel()) {
+          QLog.d("playThemeVoice", 2, "Uri:" + ((StringBuilder)localObject).toString());
+        }
+        if (localFile.exists()) {
+          AudioUtil.a(Uri.fromFile(localFile), false, false);
+        }
       }
     }
   }

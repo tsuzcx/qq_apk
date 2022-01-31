@@ -1,44 +1,20 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.qqstory.storyHome.discover.view.QQStoryDiscoverFragment;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
 
 public class oat
-  extends ChildViewClickListener
+  implements LoadingMoreHelper.OnLoadMoreListener
 {
-  public oat(LocalVideoPushSegment paramLocalVideoPushSegment) {}
+  public oat(QQStoryDiscoverFragment paramQQStoryDiscoverFragment) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    if (paramView == paramBaseViewHolder.a())
-    {
-      StoryReportor.a("home_page", "clk_album", 0, 0, new String[0]);
-      this.a.a.b("last_click_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-      LocalVideoPushSegment.a(this.a).a(NetConnInfoCenter.getServerTimeMillis());
-      LocalVideoPushSegment.a(this.a);
-      this.a.a_(null);
-    }
-    do
-    {
-      return;
-      if (paramView == paramBaseViewHolder.a(2131371851))
-      {
-        StoryReportor.a("home_page", "close_album", 0, 0, new String[0]);
-        this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-        this.a.a_(null);
-        this.a.c(true);
-        return;
-      }
-    } while (paramView != paramBaseViewHolder.a(2131371853));
-    StoryReportor.a("home_page", "clk_album", 0, 0, new String[0]);
-    this.a.a.b("last_click_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    LocalVideoPushSegment.a(this.a).a(NetConnInfoCenter.getServerTimeMillis());
-    LocalVideoPushSegment.a(this.a);
-    this.a.a_(null);
+    QQStoryDiscoverFragment.a(this.a).c();
+    StoryReportor.a("content_flow", "load_more", 0, 0, new String[0]);
+    return true;
   }
 }
 

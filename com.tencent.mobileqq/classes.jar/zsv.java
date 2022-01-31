@@ -1,15 +1,33 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.RecommendTroopManagerImp;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class zsv
-  implements Comparator
+  implements BusinessObserver
 {
-  public zsv(C2CMessageProcessor paramC2CMessageProcessor) {}
+  public zsv(RecommendTroopManagerImp paramRecommendTroopManagerImp, long paramLong) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    this.jdField_a_of_type_ComTencentMobileqqAppRecommendTroopManagerImp.a.append(2, Boolean.valueOf(false));
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer onReceive :" + paramBoolean);
+    }
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle == null) {
+        break label79;
+      }
+      RecommendTroopManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppRecommendTroopManagerImp, 2, this.jdField_a_of_type_Long, paramBundle);
+    }
+    label79:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.e("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer success data is null");
   }
 }
 

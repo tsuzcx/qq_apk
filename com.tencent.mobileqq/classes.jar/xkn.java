@@ -1,15 +1,20 @@
-import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.Callback;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.widget.XListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
+import com.tencent.mobileqq.nearby.widget.ButtonInfo;
+import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
 
 public class xkn
-  implements RecentTabHaloPresenter.Callback
+  implements View.OnClickListener
 {
-  public xkn(RecentAdapter paramRecentAdapter) {}
+  public xkn(GoldMsgDialog paramGoldMsgDialog, ButtonInfo paramButtonInfo) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.invalidateViews();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDialog.dismiss();
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a.a(paramView);
+    }
   }
 }
 

@@ -1,27 +1,15 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.armap.test.ARWebTestActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class abor
-  implements URLDrawableDownListener
+public class abor
+  implements Runnable
 {
-  public abor(URLImageView paramURLImageView) {}
+  public abor(ARWebTestActivity paramARWebTestActivity) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void run()
   {
-    this.a.setVisibility(8);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.setVisibility(0);
+    QQToast.a(BaseApplication.getContext(), "onPageFinished", 0).b(this.a.getTitleBarHeight());
   }
 }
 

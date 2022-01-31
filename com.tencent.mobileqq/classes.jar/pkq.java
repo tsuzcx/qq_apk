@@ -1,54 +1,24 @@
-import com.tencent.component.network.NetworkManager;
+import android.util.Log;
+import com.tencent.component.media.gif.NewGifDecoder;
+import com.tencent.component.media.gif.NewGifDrawable;
+import com.tencent.component.media.utils.ImageManagerLog;
 
 public class pkq
+  implements Runnable
 {
-  public boolean a = false;
-  public boolean b = false;
+  private pkq(NewGifDrawable paramNewGifDrawable) {}
   
-  public pkq()
+  public void run()
   {
-    if (NetworkManager.isWap())
+    NewGifDrawable.a(this.a);
+    try
     {
-      this.a = true;
-      this.b = true;
+      this.a.a.stop();
       return;
     }
-    this.a = false;
-    this.b = false;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    catch (Throwable localThrowable)
     {
-      return true;
-      if ((paramObject == null) || (!(paramObject instanceof pkq))) {
-        return false;
-      }
-      paramObject = (pkq)paramObject;
-    } while ((this.a == paramObject.a) && (this.b) && (paramObject.b));
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int j = 1;
-    int i;
-    if (this.a)
-    {
-      i = 1;
-      if (!this.b) {
-        break label34;
-      }
-    }
-    for (;;)
-    {
-      return (i + 527) * 31 + j;
-      i = 0;
-      break;
-      label34:
-      j = 0;
+      ImageManagerLog.e("NewGifDrawable", Log.getStackTraceString(localThrowable));
     }
   }
 }

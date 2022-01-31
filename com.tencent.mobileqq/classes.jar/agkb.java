@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.ar.FaceUIController;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class agkb
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public agkb(ScanIconAnimateView paramScanIconAnimateView) {}
+  public agkb(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    this.a.a.a.dismiss();
   }
 }
 

@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
 
-class uyl
-  implements DialogInterface.OnClickListener
+public class uyl
 {
-  uyl(uyk paramuyk, QQCustomDialog paramQQCustomDialog) {}
+  public int a;
+  Object jdField_a_of_type_JavaLangObject;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public uyl(RDBaseListLayout paramRDBaseListLayout, int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

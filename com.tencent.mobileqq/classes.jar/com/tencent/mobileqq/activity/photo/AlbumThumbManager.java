@@ -11,14 +11,14 @@ import common.qzone.component.cache.common.BlobCache.LookupRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import wvz;
+import xbn;
 
 public class AlbumThumbManager
 {
   private static final BytesBufferPool jdField_a_of_type_ComTencentComponentNetworkUtilsBytesBufferPool = new BytesBufferPool(4, 204800);
   private static AlbumThumbManager jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumThumbManager;
   private static ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  private static wvz jdField_a_of_type_Wvz;
+  private static xbn jdField_a_of_type_Xbn;
   Context jdField_a_of_type_AndroidContentContext;
   BlobCache jdField_a_of_type_CommonQzoneComponentCacheCommonBlobCache;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
@@ -65,7 +65,7 @@ public class AlbumThumbManager
     //   14: new 50	java/lang/StringBuilder
     //   17: dup
     //   18: invokespecial 51	java/lang/StringBuilder:<init>	()V
-    //   21: getstatic 57	com/tencent/mobileqq/app/AppConstants:aN	Ljava/lang/String;
+    //   21: getstatic 57	com/tencent/mobileqq/app/AppConstants:aO	Ljava/lang/String;
     //   24: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: ldc 63
     //   29: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -78,7 +78,7 @@ public class AlbumThumbManager
     //   45: new 50	java/lang/StringBuilder
     //   48: dup
     //   49: invokespecial 51	java/lang/StringBuilder:<init>	()V
-    //   52: getstatic 57	com/tencent/mobileqq/app/AppConstants:aN	Ljava/lang/String;
+    //   52: getstatic 57	com/tencent/mobileqq/app/AppConstants:aO	Ljava/lang/String;
     //   55: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: ldc 63
     //   60: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -486,7 +486,7 @@ public class AlbumThumbManager
     try
     {
       jdField_a_of_type_ComTencentComponentNetworkUtilsBytesBufferPool.a();
-      jdField_a_of_type_Wvz = null;
+      jdField_a_of_type_Xbn = null;
       jdField_a_of_type_JavaNioByteBuffer = null;
       return;
     }

@@ -1,17 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoTag;
-import com.tencent.biz.qqstory.takevideo.EditVideoTag.EditBehavior;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
 
-public class ogv
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
+class ogv
+  implements View.OnClickListener
 {
-  public ogv(EditVideoTag paramEditVideoTag) {}
+  ogv(ogu paramogu, TagAdapter.OnItemClickListener paramOnItemClickListener, TagItem.TagInfoBase paramTagInfoBase) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    EditVideoTag.EditBehavior localEditBehavior = EditVideoTag.a(this.a);
-    EditVideoTag.a(this.a, EditVideoTag.a(this.a)).a(localEditBehavior);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
+    }
   }
 }
 

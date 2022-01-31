@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.contact.newfriend.ContactMatchBuilder;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.newfriend.ContactMatchMessage;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class wjl
-  implements Runnable
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public wjl(ContactMatchBuilder paramContactMatchBuilder) {}
+  public wjl(ZhituManager paramZhituManager) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    ((PhoneContactManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).a(((ContactMatchMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
-    ThreadManager.getUIHandler().post(new wjm(this));
+    if (paramInt == 4097) {}
   }
 }
 

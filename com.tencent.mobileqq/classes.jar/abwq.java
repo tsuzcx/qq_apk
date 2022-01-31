@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.dating.DatingFilters;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Message;
+import com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity;
 
-public final class abwq
-  implements Parcelable.Creator
+public class abwq
+  implements DialogInterface.OnClickListener
 {
-  public DatingFilters a(Parcel paramParcel)
-  {
-    return new DatingFilters(paramParcel, null);
-  }
+  public abwq(CampusCirclePublishActivity paramCampusCirclePublishActivity) {}
   
-  public DatingFilters[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new DatingFilters[paramInt];
+    paramDialogInterface.dismiss();
+    Message.obtain(this.a.a, 8, 0, 0, null).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwq
  * JD-Core Version:    0.7.0.1
  */

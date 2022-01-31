@@ -25,8 +25,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
-import jgf;
-import jgg;
+import jii;
+import jij;
 
 public class EffectPendantTools
   extends EffectConfigBase
@@ -35,10 +35,11 @@ public class EffectPendantTools
   private EffectPendantTips jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips = null;
   private PendantItem jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
   private VideoFilterList jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList;
-  final DecryptListener jdField_a_of_type_ComTencentTtpicUtilDecryptListener = new jgf(this);
+  final DecryptListener jdField_a_of_type_ComTencentTtpicUtilDecryptListener = new jii(this);
   private boolean jdField_a_of_type_Boolean = false;
   private int b;
-  private String c;
+  public String c;
+  private String d;
   
   public EffectPendantTools(VideoAppInterface paramVideoAppInterface)
   {
@@ -69,10 +70,10 @@ public class EffectPendantTools
     }
     if ((paramInt1 == 0) || (paramInt2 == 0) || (localPendantItem == null) || (TextUtils.isEmpty(localPendantItem.getId())))
     {
-      if (!TextUtils.isEmpty(this.c))
+      if (!TextUtils.isEmpty(this.d))
       {
         ImageMemoryManager.getInstance().clear();
-        this.c = null;
+        this.d = null;
       }
       return null;
     }
@@ -81,11 +82,11 @@ public class EffectPendantTools
     }
     String str1 = c(localPendantItem);
     String str2 = localPendantItem.getId();
-    if ((str1.equals(this.c)) && (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (str2.equals(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getId()))) {
+    if ((str1.equals(this.d)) && (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (str2.equals(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getId()))) {
       return this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList;
     }
     long l = System.currentTimeMillis();
-    if ((((SessionInfo)localObject).a.get(1)) && (!str1.equals(this.c))) {
+    if ((((SessionInfo)localObject).a.get(1)) && (!str1.equals(this.d))) {
       ImageMemoryManager.getInstance().clear();
     }
     QQVideoMaterial localQQVideoMaterial;
@@ -104,7 +105,7 @@ public class EffectPendantTools
       ImageMemoryManager.getInstance().loadAllImages((VideoMaterial)localObject);
       localObject = VideoFilterUtil.a((QQVideoMaterial)localObject);
       this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = localPendantItem;
-      this.c = str1;
+      this.d = str1;
       a((VideoFilterList)localObject);
       paramInt1 = VideoMaterialUtil.TRIGGER_TYPE.UNKNOW.value;
       if (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips != null) {
@@ -125,7 +126,7 @@ public class EffectPendantTools
   {
     String str = null;
     if (paramPendantItem != null) {
-      str = AppConstants.aJ + "new_ptv_template" + File.separator + paramPendantItem.getMd5();
+      str = AppConstants.aK + "new_ptv_template" + File.separator + paramPendantItem.getMd5();
     }
     return str;
   }
@@ -144,9 +145,9 @@ public class EffectPendantTools
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    double d = paramInt1 / paramInt2;
+    double d1 = paramInt1 / paramInt2;
     if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList.a())) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList.a(paramInt1, paramInt2, d);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList.a(paramInt1, paramInt2, d1);
     }
   }
   
@@ -178,8 +179,8 @@ public class EffectPendantTools
     if ((paramVideoFilterList != null) && (paramVideoFilterList.a()))
     {
       this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList = paramVideoFilterList;
-      double d = this.jdField_a_of_type_Int / this.b;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList.a(this.jdField_a_of_type_Int, this.b, d);
+      double d1 = this.jdField_a_of_type_Int / this.b;
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList.a(this.jdField_a_of_type_Int, this.b, d1);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList.d();
     }
   }
@@ -244,7 +245,7 @@ public class EffectPendantTools
         bool1 = bool2;
         if (!bool2)
         {
-          String str = AppConstants.aJ + "ptv_template" + File.separator + paramPendantItem.getName();
+          String str = AppConstants.aK + "ptv_template" + File.separator + paramPendantItem.getName();
           localFile = new File(str);
           bool1 = bool2;
           localObject = localFile;
@@ -268,7 +269,7 @@ public class EffectPendantTools
       }
       bool2 = bool1;
     } while (localFile.exists());
-    ThreadManager.post(new jgg(this, (File)localObject, paramPendantItem), 5, null, false);
+    ThreadManager.post(new jij(this, (File)localObject, paramPendantItem), 5, null, false);
     return false;
   }
   
@@ -284,7 +285,7 @@ public class EffectPendantTools
     {
       return str;
     }
-    return AppConstants.aJ + "ptv_template" + File.separator + paramPendantItem.getName() + File.separator;
+    return AppConstants.aK + "ptv_template" + File.separator + paramPendantItem.getName() + File.separator;
   }
   
   public void c()
@@ -301,7 +302,7 @@ public class EffectPendantTools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTools
  * JD-Core Version:    0.7.0.1
  */

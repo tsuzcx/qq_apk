@@ -1,75 +1,72 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeListRequest.MsgTabNodeListResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.base.preload.DownloadTask;
+import com.tencent.biz.qqstory.base.preload.IVideoPreloader.OnPreloadListener;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager.IOnQueueStateChangeListener;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class neb
-  implements CmdTaskManger.CommandCallback
+  implements Runnable
 {
-  public neb(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
+  public volatile boolean a;
   
-  public void a(@NonNull MsgTabNodeListRequest arg1, @Nullable MsgTabNodeListRequest.MsgTabNodeListResponse paramMsgTabNodeListResponse, @NonNull ErrorMessage paramErrorMessage)
+  private neb(PreloadDownloader paramPreloadDownloader)
   {
-    if ((paramErrorMessage.isFail()) || (paramMsgTabNodeListResponse == null))
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void run()
+  {
+    for (;;)
     {
-      SLog.b("Q.qqstory.msgTab.nodeList", "onResponse() get latest failed: %s", paramErrorMessage.getErrorMessage());
-      this.a.a(false);
-      if (this.a.a()) {
-        this.a.a(new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList), true, this.a.jdField_a_of_type_Boolean, true);
-      }
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      return;
-    }
-    this.a.a(true);
-    if (TextUtils.equals(this.a.b, paramMsgTabNodeListResponse.jdField_a_of_type_JavaLangString))
-    {
-      SLog.b("Q.qqstory.msgTab.nodeList", "not change, sort only, mData size=%d", Integer.valueOf(this.a.jdField_a_of_type_JavaUtilArrayList.size()));
-      synchronized (this.a.jdField_a_of_type_JavaLangObject)
-      {
-        Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_JavaUtilComparator);
-        this.a.a();
-        this.a.a(new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList), true, this.a.jdField_a_of_type_Boolean, false);
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      if (!this.jdField_a_of_type_Boolean) {
         return;
       }
-    }
-    new ArrayList();
-    ??? = this.a.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    try
-    {
-      while (i < paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.size())
+      if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue == null)
       {
-        MsgTabNodeListLoader.a(this.a, (MsgTabNodeInfo)paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList.get(i));
-        i += 1;
+        try
+        {
+          Thread.sleep(1000L);
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          localInterruptedException.printStackTrace();
+        }
       }
-      this.a.b = paramMsgTabNodeListResponse.jdField_a_of_type_JavaLangString;
-      this.a.jdField_a_of_type_JavaLangString = paramMsgTabNodeListResponse.c;
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramMsgTabNodeListResponse.jdField_a_of_type_JavaUtilArrayList);
-      Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_JavaUtilComparator);
-      this.a.jdField_a_of_type_Boolean = paramMsgTabNodeListResponse.jdField_a_of_type_Boolean;
-      this.a.a();
-      MsgTabNodeListLoader.a(this.a);
-      this.a.a(false, false);
-      paramMsgTabNodeListResponse = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryManager.a(paramMsgTabNodeListResponse, true);
-      this.a.a(paramMsgTabNodeListResponse, true, this.a.jdField_a_of_type_Boolean, false);
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      SLog.c("Q.qqstory.msgTab.nodeList", "get latest data size=" + this.a.jdField_a_of_type_JavaUtilArrayList.size());
-      return;
+      else
+      {
+        if ((this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloaderManager$IOnQueueStateChangeListener != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue.isBusy())) {
+          this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloaderManager$IOnQueueStateChangeListener.a(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a());
+        }
+        ??? = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue;
+        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
+        DownloadTask localDownloadTask1 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask;
+        if (localDownloadTask1 != null)
+        {
+          localDownloadTask1.c = ((PreloadQueue)???).getId();
+          for (;;)
+          {
+            Iterator localIterator;
+            synchronized (PreloadDownloader.jdField_a_of_type_JavaLangObject)
+            {
+              localIterator = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_JavaUtilList.iterator();
+              if (!localIterator.hasNext()) {
+                break;
+              }
+              IVideoPreloader.OnPreloadListener localOnPreloadListener = (IVideoPreloader.OnPreloadListener)((WeakReference)localIterator.next()).get();
+              if (localOnPreloadListener != null) {
+                localOnPreloadListener.a(localDownloadTask1.jdField_b_of_type_JavaLangString, localDownloadTask1.a, localDownloadTask1);
+              }
+            }
+            localIterator.remove();
+          }
+          localDownloadTask2.jdField_b_of_type_Int = 1;
+          this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.b(localDownloadTask2);
+        }
+      }
     }
-    finally {}
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.now.widget;
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView.Recycler;
 import android.support.v7.widget.RecyclerView.State;
@@ -9,11 +8,6 @@ import android.util.Log;
 public class CommonLinearLayoutManager
   extends LinearLayoutManager
 {
-  public CommonLinearLayoutManager(Context paramContext)
-  {
-    super(paramContext);
-  }
-  
   public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
     try

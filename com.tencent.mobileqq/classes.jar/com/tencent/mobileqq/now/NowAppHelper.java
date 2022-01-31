@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.now;
 
-import afzy;
+import agea;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.NowHandler;
@@ -122,7 +122,7 @@ public class NowAppHelper
       return;
       l = System.currentTimeMillis() / 1000L;
     } while ((paramChannelResponse == null) || (paramChannelResponse.isDownload != 1) || (paramChannelResponse.downloadTime > l));
-    ThreadManager.post(new afzy(paramQQAppInterface, localNowHandler, paramChannelResponse, localSharedPreferences), 2, null, true);
+    ThreadManager.post(new agea(paramQQAppInterface, localNowHandler, paramChannelResponse, localSharedPreferences), 2, null, true);
   }
 }
 

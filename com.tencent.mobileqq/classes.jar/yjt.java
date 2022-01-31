@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class yjt
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yjt(ApolloGameManager paramApolloGameManager) {}
+  public yjt(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ApolloGameManager.a(this.a) != null)
-    {
-      ((ApolloManager)ApolloGameManager.a(this.a).getManager(152)).e();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameManager", 2, "[onGetGameList] change reload");
-      }
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yjt
  * JD-Core Version:    0.7.0.1
  */

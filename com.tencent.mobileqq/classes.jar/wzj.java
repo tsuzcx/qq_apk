@@ -1,26 +1,18 @@
-import Wallet.GoldMsgGetReq;
-import Wallet.GoldMsgGetRsp;
-import Wallet.GoldMsgSetReq;
-import Wallet.GoldMsgSetRsp;
-import com.tencent.mobileqq.activity.qwallet.GoldConfigObserver;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class wzj
-  extends GoldConfigObserver
+  extends FriendListObserver
 {
-  public wzj(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
+  public wzj(ContactListView paramContactListView) {}
   
-  public void a(boolean paramBoolean, GoldMsgGetReq paramGoldMsgGetReq, GoldMsgGetRsp paramGoldMsgGetRsp)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramGoldMsgGetReq, paramGoldMsgGetRsp);
-    }
-  }
+  protected void onAddFriend(String paramString) {}
   
-  public void a(boolean paramBoolean, GoldMsgSetReq paramGoldMsgSetReq, GoldMsgSetRsp paramGoldMsgSetRsp)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramGoldMsgSetReq, paramGoldMsgSetRsp);
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
     }
   }
 }

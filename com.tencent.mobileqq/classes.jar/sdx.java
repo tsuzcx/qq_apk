@@ -1,30 +1,45 @@
+import android.os.AsyncTask;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class sdx
-  implements Runnable
+class sdx
+  extends AsyncTask
 {
-  public sdx(ChatSettingForTroop paramChatSettingForTroop) {}
+  sdx(sdw paramsdw) {}
   
-  public void run()
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum = DBUtils.a(this.a.app.getCurrentAccountUin(), "troop_photo_message", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "从群空间返回，更新群空间未读计数， troopuin = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin + ", unreadmsgnum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum + ", newphotonum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum);
+    if (this.a.a.d) {
+      if (this.a.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(paramVarArgs[0], true);
       }
-      return;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.chatopttroop", 2, localException.toString());
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        SpriteCommFunc.a(this.a.a.app, "chat_history_start_del_msg");
+      }
+      return null;
+      this.a.a.app.a().a(paramVarArgs[0], true);
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+    if (this.a.a.d) {
+      this.a.a.a(11, false);
     }
   }
 }

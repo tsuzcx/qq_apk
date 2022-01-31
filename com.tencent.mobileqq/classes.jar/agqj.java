@@ -1,41 +1,50 @@
-import com.tencent.mobileqq.profile.upload.task.VipBaseUploadTask;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadTaskCallback;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.portal.ConversationHongBao;
 
 public class agqj
-  implements IUploadTaskCallback
+  implements Animator.AnimatorListener
 {
-  public agqj(VipBaseUploadTask paramVipBaseUploadTask) {}
+  public agqj(ConversationHongBao paramConversationHongBao, View paramView1, View paramView2) {}
   
-  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.f = 1002;
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.c = paramString;
-    this.a.a(1002, new Object[0]);
-  }
-  
-  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
-  
-  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
-  {
-    if (this.a.f != paramInt)
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao));
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f)
     {
-      this.a.f = paramInt;
-      this.a.a(this.a.f, new Object[0]);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
   }
   
-  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.f = 1001;
-    this.a.jdField_a_of_type_JavaLangObject = paramObject;
-    this.a.a(1001, new Object[0]);
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao));
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController.OnMagicPlayEnd;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.doutu.DoutuEmotionAdapter;
+import com.tencent.mobileqq.doutu.DoutuManager;
 
-class acgk
-  implements MagicfaceViewController.OnMagicPlayEnd
+public class acgk
+  implements Runnable
 {
-  acgk(acgj paramacgj, String paramString) {}
+  public acgk(DoutuManager paramDoutuManager, long paramLong) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicEmoticonInfo", 2, "forward, [play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Acgj.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.magicValue);
+    if (this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a.a(this.jdField_a_of_type_Long);
     }
-    this.jdField_a_of_type_Acgj.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.magicValue = this.jdField_a_of_type_JavaLangString;
-    ChatActivityFacade.a(this.jdField_a_of_type_Acgj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Acgj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acgj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Acgj.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acgk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,30 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.smtt.sdk.ValueCallback;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adhu
-  implements ValueCallback
+public class adhu
+  implements Runnable
 {
-  public adhu(WeakReference paramWeakReference, Activity paramActivity) {}
+  public adhu(UniformDownloadMgr paramUniformDownloadMgr) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localActivity != null) && (paramString != null) && (paramString.startsWith("http")))
+    try
     {
-      if (UniformDownloadMgr.a().a() == null)
+      if (UniformDownloadMgr.a(this.a) != null)
       {
-        paramString = new Bundle();
-        paramString.putString("_filename_from_dlg", this.jdField_a_of_type_AndroidAppActivity.getString(2131435108));
-        Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
-        localIntent.putExtra("param", paramString);
-        localIntent.putExtra("url", "http://mdc.html5.qq.com/d/directdown.jsp?channel_id=10386");
-        localActivity.sendBroadcast(localIntent);
+        BaseApplicationImpl.getApplication().unregisterReceiver(UniformDownloadMgr.a(this.a));
+        UniformDownloadMgr.a(this.a, null);
+        QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr unRegister UNIDOWNLOAD_BORDCAST");
+        return;
       }
-    }
-    else {
+      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr unRegister UNIDOWNLOAD_BORDCAST, had unRegister");
       return;
     }
-    FileManagerUtil.d(localActivity, "http://mdc.html5.qq.com/d/directdown.jsp?channel_id=10386");
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

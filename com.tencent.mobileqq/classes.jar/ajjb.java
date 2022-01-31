@@ -1,21 +1,53 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ajjb
-  implements ClickableColorSpanTextView.SpanClickListener
+  extends Handler
 {
-  public ajjb(ReciteRecordLayout paramReciteRecordLayout) {}
-  
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public ajjb(TroopFeedsDataManager paramTroopFeedsDataManager, Looper paramLooper)
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+    case 2: 
+    case 3: 
+    case 4: 
+      do
+      {
+        do
+        {
+          return;
+          this.a.a = ((List)paramMessage.obj);
+          this.a.a(1000);
+          return;
+          this.a.a = ((List)paramMessage.obj);
+          TroopFeedsDataManager.a(this.a);
+          this.a.notifyObservers(Integer.valueOf(101));
+        } while (!QLog.isColorLevel());
+        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
+        return;
+        this.a.a = ((List)paramMessage.obj);
+        TroopFeedsDataManager.b(this.a);
+        this.a.notifyObservers(Integer.valueOf(105));
+      } while (!QLog.isColorLevel());
+      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
+      return;
+    case 5: 
+      TroopFeedsDataManager.c(this.a);
+      this.a.notifyObservers(Integer.valueOf(1010));
+      return;
+    }
+    TroopFeedsDataManager.d(this.a);
+    this.a.notifyObservers(Integer.valueOf(103));
   }
 }
 

@@ -1,25 +1,41 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
+import java.lang.ref.WeakReference;
 
 public class lda
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public lda(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, ActionSheet paramActionSheet) {}
+  private WeakReference a;
   
-  public void OnClick(View paramView, int paramInt)
+  public lda(KanDianViewController paramKanDianViewController)
   {
-    switch (paramInt)
+    this.a = new WeakReference(paramKanDianViewController);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    KanDianViewController localKanDianViewController = (KanDianViewController)this.a.get();
+    if (localKanDianViewController == null) {}
+    do
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 1: 
+          KanDianViewController.a(localKanDianViewController);
+          return;
+        }
+      } while (KanDianViewController.a(localKanDianViewController) == null);
+      KanDianViewController.a(localKanDianViewController).a(KanDianViewController.a(localKanDianViewController));
       return;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
-    }
+    } while (KanDianViewController.a(localKanDianViewController) == null);
+    KanDianViewController.a(localKanDianViewController).b();
   }
 }
 

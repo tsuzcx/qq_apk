@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.util.VersionUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.image.URLDrawable;
 
 public class myd
-  implements View.OnSystemUiVisibilityChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public myd(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public myd(GalleryShareHelper paramGalleryShareHelper, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4102) {}
-    while (!VersionUtils.e()) {
-      return;
-    }
-    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
+    GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 

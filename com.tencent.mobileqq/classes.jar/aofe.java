@@ -1,8 +1,16 @@
-import android.widget.ImageView;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
-public class aofe
+class aofe
+  implements Runnable
 {
-  public ImageView a;
+  aofe(aofc paramaofc) {}
+  
+  public void run()
+  {
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.b = null;
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = true;
+    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Aofb.a, this.a.jdField_a_of_type_Aofb.a.a);
+  }
 }
 
 

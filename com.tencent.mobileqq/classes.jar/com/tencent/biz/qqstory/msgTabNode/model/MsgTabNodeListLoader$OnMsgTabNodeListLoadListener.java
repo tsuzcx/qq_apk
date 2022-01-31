@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public abstract interface MsgTabNodeListLoader$OnMsgTabNodeListLoadListener
 {
-  public abstract void a(MsgTabNodeInfo paramMsgTabNodeInfo, boolean paramBoolean, int paramInt1, int paramInt2);
+  public abstract void a();
+  
+  public abstract void a(MsgTabNodeInfo paramMsgTabNodeInfo, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2);
   
   public abstract void a(ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
   

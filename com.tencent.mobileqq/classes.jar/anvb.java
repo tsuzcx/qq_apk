@@ -1,25 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import java.io.File;
 
 public class anvb
   implements Runnable
 {
-  public anvb(EditVideoSave paramEditVideoSave) {}
+  public anvb(HummingActivity paramHummingActivity, String paramString) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    EditVideoSave localEditVideoSave = this.a;
-    localEditVideoSave.jdField_a_of_type_Int += this.a.b;
-    if (this.a.jdField_a_of_type_Int > 99)
-    {
-      this.a.jdField_a_of_type_Int = 99;
-      this.a.a(this.a.jdField_a_of_type_Int);
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_Int);
-    this.a.c();
+    new File(this.jdField_a_of_type_JavaLangString).delete();
   }
 }
 

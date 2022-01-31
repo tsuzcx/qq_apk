@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.service.friendlist.remote;
 
-import ahxf;
+import aibw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.List;
 public class FriendListInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahxf();
+  public static final Parcelable.Creator CREATOR = new aibw();
   public int a;
   public List a;
   

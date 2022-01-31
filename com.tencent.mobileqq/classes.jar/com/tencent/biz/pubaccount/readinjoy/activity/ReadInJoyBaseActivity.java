@@ -28,7 +28,7 @@ import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
 import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import lbp;
+import ldy;
 
 public class ReadInJoyBaseActivity
   extends FragmentActivity
@@ -52,7 +52,7 @@ public class ReadInJoyBaseActivity
   public ReadInJoyBaseActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new lbp(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ldy(this);
   }
   
   @TargetApi(11)
@@ -67,13 +67,13 @@ public class ReadInJoyBaseActivity
   
   private View c()
   {
-    this.c = ((TextView)findViewById(2131363381));
+    this.c = ((TextView)findViewById(2131363400));
     return this.c;
   }
   
   protected View a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363262));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     a(this.jdField_a_of_type_AndroidWidgetTextView);
     if (AppSetting.b) {
@@ -95,7 +95,7 @@ public class ReadInJoyBaseActivity
   
   protected void a(Intent paramIntent)
   {
-    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130845874));
+    ((FrameLayout)findViewById(16908290)).setForeground(getResources().getDrawable(2130845954));
     if (this.jdField_a_of_type_AndroidWidgetTextView == null)
     {
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131367091));
@@ -110,7 +110,7 @@ public class ReadInJoyBaseActivity
   
   protected View b()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363474));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363493));
     a(this.jdField_a_of_type_AndroidWidgetImageView);
     return this.d;
   }
@@ -138,14 +138,14 @@ public class ReadInJoyBaseActivity
           {
             paramIntent = (Intent)localObject;
             if (((String)localObject).contains("消息")) {
-              paramIntent = getString(2131433698);
+              paramIntent = getString(2131433712);
             }
           }
         }
       }
       localObject = paramIntent;
       if (paramIntent == null) {
-        localObject = getString(2131433698);
+        localObject = getString(2131433712);
       }
       localTextView.setText((CharSequence)localObject);
       localTextView.setVisibility(0);
@@ -153,8 +153,8 @@ public class ReadInJoyBaseActivity
       {
         localObject = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
         paramIntent = (Intent)localObject;
-        if (!((String)localObject).contains(getString(2131433698))) {
-          paramIntent = getString(2131433698) + (String)localObject;
+        if (!((String)localObject).contains(getString(2131433712))) {
+          paramIntent = getString(2131433712) + (String)localObject;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramIntent);
       }
@@ -185,7 +185,7 @@ public class ReadInJoyBaseActivity
     {
       super.setContentView(paramInt);
       this.jdField_a_of_type_Int = paramInt;
-      getWindow().setFeatureInt(7, 2130968832);
+      getWindow().setFeatureInt(7, 2130968836);
     }
     do
     {
@@ -196,11 +196,11 @@ public class ReadInJoyBaseActivity
       a(getIntent());
       return;
       Object localObject2 = LayoutInflater.from(this);
-      Object localObject1 = ((LayoutInflater)localObject2).inflate(2130969627, null);
+      Object localObject1 = ((LayoutInflater)localObject2).inflate(2130969623, null);
       try
       {
         localObject2 = ((LayoutInflater)localObject2).inflate(paramInt, (ViewGroup)localObject1, false);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject1).findViewById(2131364019));
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject1).findViewById(2131364044));
         if (ImmersiveUtils.isSupporImmersive() == 1)
         {
           this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
@@ -235,7 +235,7 @@ public class ReadInJoyBaseActivity
     }
     super.setContentView(paramInt);
     this.jdField_a_of_type_Int = paramInt;
-    getWindow().setFeatureInt(7, 2130968832);
+    getWindow().setFeatureInt(7, 2130968836);
     if (this.jdField_b_of_type_AndroidViewView != null) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }

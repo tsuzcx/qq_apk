@@ -1,24 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkAuthorizeUinListAdapter;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
 
-class aimw
-  implements DialogInterface.OnClickListener
+public class aimw
+  implements Runnable
 {
-  aimw(aimv paramaimv, TimDocSSOMsg.UinRightInfo paramUinRightInfo) {}
+  public aimw(StructMsgForGeneralShare.GeneralClickHandler paramGeneralClickHandler, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Aimv.a.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Aimv.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter.b(String.valueOf(this.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get()));
-    this.jdField_a_of_type_Aimv.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter.notifyDataSetChanged();
-    if (this.jdField_a_of_type_Aimv.a.b == 1) {
-      ReportController.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_Aimv.a), "dc00898", "", "", "0x8007CFD", "0x8007CFD", 0, 0, "", "", "", "");
-    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009305", "0X8009305", 0, 0, "", "", "", "");
   }
 }
 

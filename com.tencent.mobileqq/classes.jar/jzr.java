@@ -1,18 +1,22 @@
-import com.tencent.av.ui.QavVideoRecordUICtrl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jzr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public jzr(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  public jzr(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a(8, true);
+    ReportController.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_video", 0, 0, this.a.b, "", "", "");
+    this.a.c(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jzr
  * JD-Core Version:    0.7.0.1
  */

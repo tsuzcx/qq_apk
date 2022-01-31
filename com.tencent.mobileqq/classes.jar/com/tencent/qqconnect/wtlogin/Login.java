@@ -1,17 +1,17 @@
 package com.tencent.qqconnect.wtlogin;
 
-import alvy;
-import alvz;
-import alwa;
-import alwb;
-import alwc;
-import alwd;
-import alwe;
-import alwf;
-import alwg;
-import alwh;
-import alwi;
-import alwj;
+import amdh;
+import amdi;
+import amdj;
+import amdk;
+import amdl;
+import amdm;
+import amdn;
+import amdo;
+import amdp;
+import amdq;
+import amdr;
+import amds;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -55,10 +55,10 @@ public class Login
   public int a;
   public long a;
   protected Handler.Callback a;
-  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new alwf(this);
+  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new amdo(this);
   protected View.OnClickListener a;
-  View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new alwd(this);
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new alwe(this);
+  View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new amdm(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new amdn(this);
   public View a;
   public Button a;
   public EditText a;
@@ -91,13 +91,13 @@ public class Login
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new alvy(this);
-    this.jdField_b_of_type_AndroidTextTextWatcher = new alwg(this);
-    this.jdField_a_of_type_MqqOsMqqHandler = new alwh(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new amdh(this);
+    this.jdField_b_of_type_AndroidTextTextWatcher = new amdp(this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new amdq(this);
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new alwi(this);
+    this.jdField_a_of_type_AndroidOsHandler$Callback = new amdr(this);
     this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus = new HandlerPlus(this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new alwj(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new amds(this);
   }
   
   public static String a(String paramString1, String paramString2)
@@ -123,7 +123,7 @@ public class Login
   public void a(String paramString)
   {
     if (!isFinishing()) {
-      DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(getString(2131434136)).setPositiveButton(17039370, new alvz(this)).show();
+      DialogUtil.b(this, 230).setMessageWithUrl(paramString).setTitle(getString(2131434152)).setPositiveButton(17039370, new amdi(this)).show();
     }
   }
   
@@ -180,7 +180,7 @@ public class Login
     boolean bool = false;
     if ("".equals(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim()))
     {
-      a(String.format(getResources().getString(2131435609), new Object[] { getResources().getString(2131433220), Integer.valueOf(3103) }));
+      a(String.format(getResources().getString(2131435625), new Object[] { getResources().getString(2131433234), Integer.valueOf(3103) }));
       localObject = new HashMap();
       ((HashMap)localObject).put("error", "3103");
       StatisticCollector.a(this).a("0", "connect_sso_authfail", false, 0L, 0L, (HashMap)localObject, "");
@@ -188,7 +188,7 @@ public class Login
     }
     if ("".equals(this.jdField_b_of_type_AndroidWidgetEditText.getText().toString().trim()))
     {
-      a(String.format(getResources().getString(2131435609), new Object[] { getResources().getString(2131433222), Integer.valueOf(3104) }));
+      a(String.format(getResources().getString(2131435625), new Object[] { getResources().getString(2131433236), Integer.valueOf(3104) }));
       localObject = new HashMap();
       ((HashMap)localObject).put("error", "3104");
       StatisticCollector.a(this).a("0", "connect_sso_authfail", false, 0L, 0L, (HashMap)localObject, "");
@@ -258,7 +258,7 @@ public class Login
   
   protected void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131435605));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getResources().getString(2131435621));
     if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
@@ -286,11 +286,11 @@ public class Login
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131433205);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131433206);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new alwa(this));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new alwb(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131433219);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131433220);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new amdj(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new amdk(this));
     }
     if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())
     {
@@ -348,41 +348,41 @@ public class Login
     if (QLog.isColorLevel()) {
       QLog.d("Q.quicklogin.Login", 2, "oncreate mReqSrc:" + this.jdField_a_of_type_Int);
     }
-    setContentView(2130971581);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372217));
+    setContentView(2130971607);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372227));
     if (getIntent().getBooleanExtra("is_first_login", false))
     {
-      setTitle(2131435596);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131433698);
+      setTitle(2131435612);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131433712);
     }
     for (;;)
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131375113);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131375115);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375119));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375117));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131375165);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131375167);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375171));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375169));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131362755));
-      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131364829));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365768));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131362760));
+      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131364856));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365773));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      findViewById(2131375118).requestFocus();
+      findViewById(2131375170).requestFocus();
       this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
       this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_b_of_type_AndroidWidgetEditText.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_b_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
-      this.jdField_b_of_type_AndroidWidgetEditText.setOnEditorActionListener(new alwc(this));
+      this.jdField_b_of_type_AndroidWidgetEditText.setOnEditorActionListener(new amdl(this));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_b_of_type_AndroidTextTextWatcher);
       a();
       this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.setHandler(Login.class, this.jdField_a_of_type_MqqOsMqqHandler);
       return;
-      setTitle(2131435595);
+      setTitle(2131435611);
     }
   }
   

@@ -1,22 +1,18 @@
-import android.graphics.Bitmap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class vlv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e;
+  public vlv(SixCombolEffectView paramSixCombolEffectView, vmi paramvmi) {}
   
-  private vlv()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Vmi.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Vmi.b) && (this.jdField_a_of_type_Vmi.a < 0.52F)) {
+      this.jdField_a_of_type_Vmi.b = true;
+    }
   }
 }
 

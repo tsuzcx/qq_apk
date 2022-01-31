@@ -1,21 +1,76 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.qphone.base.util.QLog;
 
-class adfh
-  implements Runnable
+public class adfh
+  extends FMObserver
 {
-  adfh(adfg paramadfg) {}
+  public adfh(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
   
-  public void run()
+  protected void a(long paramLong)
   {
-    this.a.a.a.a(VideoFilePresenter.a(this.a.a));
-    VideoFilePresenter.b(this.a.a);
-    this.a.a.a.d(VideoFilePresenter.a(this.a.a));
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
+    }
+    OnlineFileSessionWorker localOnlineFileSessionWorker;
+    do
+    {
+      return;
+      localOnlineFileSessionWorker = this.a.a(paramLong);
+      if (localOnlineFileSessionWorker == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
+        return;
+      }
+      localOnlineFileSessionWorker.h();
+    } while (!localOnlineFileSessionWorker.c());
+    this.a.c(paramLong);
+  }
+  
+  protected void b(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
+    }
+    OnlineFileSessionWorker localOnlineFileSessionWorker;
+    do
+    {
+      return;
+      localOnlineFileSessionWorker = this.a.a(paramLong);
+      if (localOnlineFileSessionWorker == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
+        return;
+      }
+      localOnlineFileSessionWorker.j();
+    } while (!localOnlineFileSessionWorker.c());
+    this.a.c(paramLong);
+  }
+  
+  protected void c(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
+    }
+    OnlineFileSessionWorker localOnlineFileSessionWorker;
+    do
+    {
+      return;
+      localOnlineFileSessionWorker = this.a.a(paramLong);
+      if (localOnlineFileSessionWorker == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
+        return;
+      }
+      localOnlineFileSessionWorker.l();
+    } while (!localOnlineFileSessionWorker.c());
+    this.a.c(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adfh
  * JD-Core Version:    0.7.0.1
  */

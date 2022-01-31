@@ -17,7 +17,7 @@ public class TroopReceivedFlowsersMsg
   
   public TroopReceivedFlowsersMsg(Context paramContext, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131430191);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131430194);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }

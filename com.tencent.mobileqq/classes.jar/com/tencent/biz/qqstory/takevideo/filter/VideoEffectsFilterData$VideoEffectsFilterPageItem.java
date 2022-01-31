@@ -13,18 +13,18 @@ public class VideoEffectsFilterData$VideoEffectsFilterPageItem
 {
   public final ImageView a;
   public final TextView a;
-  public final TextView b = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371755);
+  public final TextView b = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371754);
   
   VideoEffectsFilterData$VideoEffectsFilterPageItem(VideoEffectsFilterData paramVideoEffectsFilterData, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
     super(paramContext, paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363632));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363651));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361846));
   }
   
   protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramContext).inflate(2130970736, paramViewGroup, false);
+    return LayoutInflater.from(paramContext).inflate(2130970752, paramViewGroup, false);
   }
   
   public void a()

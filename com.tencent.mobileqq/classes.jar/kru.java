@@ -1,32 +1,15 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
 
 public class kru
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public kru(AccountDetailActivity paramAccountDetailActivity) {}
+  public kru(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.q) {
-      return;
-    }
-    this.a.q = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.C();
-      continue;
-      this.a.E();
-    }
+    this.a.d(this.a.b());
   }
 }
 

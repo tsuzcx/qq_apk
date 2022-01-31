@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import aice;
+import aigy;
 import android.os.Handler;
 
 public class CameraExceptionHandler
@@ -16,7 +16,7 @@ public class CameraExceptionHandler
   
   public void a(RuntimeException paramRuntimeException)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new aice(this, paramRuntimeException));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aigy(this, paramRuntimeException));
   }
 }
 

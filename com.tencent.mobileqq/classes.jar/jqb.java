@@ -1,23 +1,20 @@
-import com.tencent.av.gaudio.VideoViewInfo;
-import java.util.Comparator;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
+import com.tencent.av.smallscreen.SmallScreenUtils;
 
-class jqb
-  implements Comparator
+public class jqb
+  implements Runnable
 {
-  jqb(jpz paramjpz) {}
+  public jqb(SmallScreenActivityPlugin paramSmallScreenActivityPlugin) {}
   
-  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
+  public void run()
   {
-    if (paramVideoViewInfo1.a) {}
-    while (paramVideoViewInfo2.a) {
-      return -1;
-    }
-    return 0;
+    SmallScreenUtils.a(this.a.a.getApp());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ymt
   implements Runnable
 {
-  public ymt(ApolloSurfaceView paramApolloSurfaceView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  public ymt(VipSpecialCareHandler paramVipSpecialCareHandler) {}
   
   public void run()
   {
-    ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+    VipSpecialCareHandler.a(this.a, ThreadManager.newFreeHandlerThread("special-timer", 0));
+    VipSpecialCareHandler.a(this.a).start();
+    Looper localLooper = VipSpecialCareHandler.a(this.a).getLooper();
+    if (localLooper == null) {
+      return;
+    }
+    VipSpecialCareHandler.a(this.a, new ymu(this, localLooper));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ymt
  * JD-Core Version:    0.7.0.1
  */

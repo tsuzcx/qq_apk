@@ -1,46 +1,53 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.widget.RangeButtonView;
-import com.tencent.widget.RangeButtonView.Title;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.Locale;
 
 public class amdk
+  implements ActionSheet.OnButtonClickListener
 {
-  private List jdField_a_of_type_JavaUtilList;
+  public amdk(Login paramLogin) {}
   
-  public amdk(RangeButtonView paramRangeButtonView, List paramList)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
+    if (Login.a(this.a)) {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((RangeButtonView.Title)localIterator.next()).a(paramCanvas, paramPaint, this.jdField_a_of_type_ComTencentWidgetRangeButtonView.a);
+    }
+    if (paramInt == 0)
+    {
+      paramView = null;
+      if (this.a.jdField_a_of_type_AndroidWidgetEditText != null) {
+        paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      }
+      if (TextUtils.isEmpty(paramView)) {
+        break label175;
       }
     }
-  }
-  
-  public void a(ArrayList paramArrayList, int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
+    label175:
+    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756", paramView });; paramView = "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756")
     {
-      return;
-      int i = 0;
-      while (i < paramArrayList.size())
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      localIntent.putExtra("uin", this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getCurrentAccountUin());
+      localIntent.putExtra("reqType", 3);
+      localIntent.putExtra("url", paramView);
+      this.a.startActivity(localIntent);
+      for (;;)
       {
-        RangeButtonView.Title localTitle = (RangeButtonView.Title)this.jdField_a_of_type_JavaUtilList.get(i);
-        localTitle.a = new Point(((Integer)paramArrayList.get(i)).intValue() - (localTitle.a() >> 1), paramInt);
-        i += 1;
+        Login.a(this.a, true);
+        Login.a(this.a).dismiss();
+        return;
+        if (paramInt == 1)
+        {
+          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
+          this.a.startActivity(paramView);
+        }
       }
     }
   }

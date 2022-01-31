@@ -1,26 +1,18 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class vxf
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public vxf(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vxf(DeviceMsgChatPie paramDeviceMsgChatPie) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBundle != null)
-    {
-      paramInt = paramBundle.getInt("update_type");
-      if (paramInt != 2) {}
-    }
-    else
-    {
-      return;
-    }
-    if (paramInt == 1) {}
-    this.a.a.sendEmptyMessage(2);
+    paramDialogInterface.dismiss();
+    FileUtils.d(this.a.f);
+    this.a.f = "";
   }
 }
 

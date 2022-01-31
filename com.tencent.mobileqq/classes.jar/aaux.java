@@ -1,20 +1,30 @@
-import android.content.Context;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aaux
-  implements Runnable
+class aaux
+  implements DialogInterface.OnClickListener
 {
-  public aaux(ArkLocalAppMgr paramArkLocalAppMgr, aavv paramaavv, aawc paramaawc) {}
+  aaux(aaut paramaaut, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Aavv.a = ArkLocalAppMgr.a();
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    localBaseApplication.getSharedPreferences("ArkAppUpdateRecord", 0);
-    localBaseApplication.getSharedPreferences("ArkAppUpdatePeriod", 0);
-    localBaseApplication.getSharedPreferences("ArkAppLastUsedTime", 0);
-    this.jdField_a_of_type_Aawc.a(this.jdField_a_of_type_Aavv.a);
+    ArkAppCenter.a().post(new aauy(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaut.a, "ark_authority_api_location", this.jdField_a_of_type_Aaut.c, 1);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label38;
+    }
   }
 }
 

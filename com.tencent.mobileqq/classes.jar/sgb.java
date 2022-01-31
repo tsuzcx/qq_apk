@@ -1,17 +1,24 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.activity.Conversation;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import java.lang.ref.WeakReference;
 
-class sgb
-  implements Runnable
+public class sgb
+  implements DialogInterface.OnCancelListener
 {
-  sgb(sga paramsga, MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
+  private final WeakReference a;
   
-  public void run()
+  public sgb(ChatHistoryForC2C paramChatHistoryForC2C)
   {
-    Conversation.a(this.jdField_a_of_type_Sga.a.a, true);
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a) && (this.jdField_a_of_type_Sga.a.a.a != null)) {
-      this.jdField_a_of_type_Sga.a.a.a.d();
+    this.a = new WeakReference(paramChatHistoryForC2C);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = (ChatHistoryForC2C)this.a.get();
+    if ((paramDialogInterface != null) && (paramDialogInterface.a != null)) {
+      paramDialogInterface.a.dismiss();
     }
   }
 }

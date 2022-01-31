@@ -1,17 +1,33 @@
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.OnLoadListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil;
 
-public class afbp
-  implements Runnable
+public final class afbp
+  implements URLDrawable.URLDrawableListener
 {
-  public afbp(PicBrowserGalleryAdapter paramPicBrowserGalleryAdapter, int paramInt1, int paramInt2) {}
+  public afbp(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    PicBrowserGalleryAdapter.b(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter, this.jdField_a_of_type_Int, this.b);
-    if (PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter) != null) {
-      PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter).b(this.jdField_a_of_type_Int, this.b);
-    }
+    SLog.c("ShortVideoShareUtil", "onLoadCanceled --");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, null);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    SLog.c("ShortVideoShareUtil", "onLoadProgressed --" + paramInt);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = ShortVideoShareUtil.a(paramURLDrawable);
+    ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, paramURLDrawable);
   }
 }
 

@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -296,7 +297,16 @@ public abstract class SonicSessionConnection
       if (this.connectionImpl == null) {
         return null;
       }
-      return this.connectionImpl.getHeaderFields();
+      try
+      {
+        Map localMap = this.connectionImpl.getHeaderFields();
+        return localMap;
+      }
+      catch (Throwable localThrowable)
+      {
+        SonicUtils.log("SonicSdk_SonicSessionConnection", 6, "getHeaderFields error:" + localThrowable.getMessage());
+      }
+      return new HashMap();
     }
     
     protected boolean initConnection(URLConnection paramURLConnection)

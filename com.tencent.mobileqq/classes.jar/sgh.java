@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.ar.ARDeviceController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
 
-class sgh
-  implements Runnable
+public class sgh
+  implements DialogInterface.OnClickListener
 {
-  sgh(sgg paramsgg) {}
+  public sgh(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARDeviceController.a().a(this.a.a.a);
+    if (this.a.a != null)
+    {
+      this.a.a.b = false;
+      this.a.a.a(false);
+    }
   }
 }
 

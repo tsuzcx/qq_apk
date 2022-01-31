@@ -1,14 +1,23 @@
-import android.app.Dialog;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
+import android.view.View;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anrp
   implements Runnable
 {
-  public anrp(EditPicSave paramEditPicSave) {}
+  public anrp(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, boolean paramBoolean) {}
   
   public void run()
   {
-    EditPicSave.a(this.a).show();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(8);
+      QIMEffectCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(8);
+      QIMEffectCameraCaptureUnit.e(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, false);
+      return;
+    }
+    QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit), QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit), QIMEffectCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit), QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit));
+    QIMEffectCameraCaptureUnit.e(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, true);
   }
 }
 

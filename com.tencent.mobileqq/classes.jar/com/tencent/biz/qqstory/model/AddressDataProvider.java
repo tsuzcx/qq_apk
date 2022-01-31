@@ -13,15 +13,15 @@ import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
 import com.tencent.biz.qqstory.network.request.GetLocationRequest;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.BaseApplicationImpl;
-import ncq;
-import ncr;
+import ngl;
+import ngm;
 
 @TargetApi(9)
 public class AddressDataProvider
   extends DataProvider
 {
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private LbsManager.LbsUpdateListener jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$LbsUpdateListener = new ncq(this);
+  private LbsManager.LbsUpdateListener jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$LbsUpdateListener = new ngl(this);
   public boolean a;
   
   public AddressDataProvider()
@@ -71,7 +71,7 @@ public class AddressDataProvider
   public void a(int paramInt1, int paramInt2)
   {
     GetLocationRequest localGetLocationRequest = new GetLocationRequest(1, paramInt1, paramInt2);
-    CmdTaskManger.a().a(localGetLocationRequest, new ncr(this));
+    CmdTaskManger.a().a(localGetLocationRequest, new ngm(this));
   }
   
   public void a(String paramString, int paramInt)

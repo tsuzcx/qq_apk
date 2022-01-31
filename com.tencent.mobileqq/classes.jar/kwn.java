@@ -1,16 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
 
 public class kwn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public kwn(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public kwn(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    AdvertisementVideoPreloadManager.b(this.jdField_a_of_type_JavaLangString);
   }
 }
 

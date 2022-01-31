@@ -1,34 +1,18 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.drawable.DrawableContainer;
-import com.tencent.component.media.image.drawable.SpecifiedDrawable;
+import com.tencent.biz.webviewplugin.UrlCheckPlugin;
 
 public class pif
-  extends phv
+  implements Runnable
 {
-  public int b;
-  public int c;
+  public pif(UrlCheckPlugin paramUrlCheckPlugin) {}
   
-  public pif(Drawable paramDrawable, DrawableContainer paramDrawableContainer)
+  public void run()
   {
-    super(paramDrawable, paramDrawableContainer);
-  }
-  
-  public pif(pif parampif, DrawableContainer paramDrawableContainer, Resources paramResources)
-  {
-    super(parampif, paramDrawableContainer, paramResources);
-    this.b = parampif.b;
-    this.c = parampif.c;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new SpecifiedDrawable(this, null, null);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pif
  * JD-Core Version:    0.7.0.1
  */

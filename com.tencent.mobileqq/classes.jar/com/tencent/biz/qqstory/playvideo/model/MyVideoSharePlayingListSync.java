@@ -15,8 +15,8 @@ import com.tribe.async.dispatch.Dispatchers;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import now;
-import nox;
+import ntl;
+import ntm;
 
 public class MyVideoSharePlayingListSync
   extends BasePagePlayingListSync
@@ -66,7 +66,7 @@ public class MyVideoSharePlayingListSync
           }
         }
       }
-      Collections.sort((List)localObject, new now(this));
+      Collections.sort((List)localObject, new ntl(this));
     }
     for (;;)
     {
@@ -110,7 +110,7 @@ public class MyVideoSharePlayingListSync
     this.jdField_c_of_type_Boolean = true;
     GetShareVideoListRequest localGetShareVideoListRequest = new GetShareVideoListRequest(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_c_of_type_Int);
     localGetShareVideoListRequest.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    CmdTaskManger.a().a(localGetShareVideoListRequest, new nox(this));
+    CmdTaskManger.a().a(localGetShareVideoListRequest, new ntm(this));
   }
 }
 

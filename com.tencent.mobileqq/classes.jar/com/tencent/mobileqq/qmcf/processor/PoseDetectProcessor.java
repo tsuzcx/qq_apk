@@ -8,8 +8,9 @@ import com.tencent.mobileqq.qmcf.QmcfModelItem;
 public class PoseDetectProcessor
   extends BaseQmcfProcessor
 {
+  final int jdField_a_of_type_Int = 18;
   protected String a;
-  float[] a;
+  float[] jdField_a_of_type_ArrayOfFloat = new float[109];
   String b = "";
   
   public PoseDetectProcessor(int paramInt1, int paramInt2)
@@ -25,9 +26,8 @@ public class PoseDetectProcessor
       if (QmcfManager.a().b() == 1)
       {
         long l = System.currentTimeMillis();
-        jdField_a_of_type_ComTencentMobileqqQmcfQMCF.snpePoseProcess(paramInt1, b(), a());
+        this.b = jdField_a_of_type_ComTencentMobileqqQmcfQMCF.snpePoseProcess(paramInt1, paramInt2);
         Log.d("poseInfo", "doProcess cost:" + (System.currentTimeMillis() - l));
-        this.b = "success";
         return this.b;
       }
       this.b = jdField_a_of_type_ComTencentMobileqqQmcfQMCF.PoseProcess(paramInt1, paramInt2);
@@ -43,37 +43,30 @@ public class PoseDetectProcessor
     }
     Object localObject = jdField_a_of_type_JavaLangObject;
     int i = 0;
-    label155:
-    label182:
-    label233:
+    label148:
+    label199:
     for (;;)
     {
       try
       {
-        if (!QmcfManager.jdField_a_of_type_Boolean) {
-          break label233;
+        if (!QmcfManager.a) {
+          break label199;
         }
         i = jdField_a_of_type_ComTencentMobileqqQmcfQMCF.snpeAvaliableType();
         if (i > 0)
         {
           QmcfManager.a().c(1);
           if (QmcfManager.a().b() != 1) {
-            break label182;
+            break label148;
           }
-          if (!paramQmcfModelItem.jdField_a_of_type_Boolean) {
-            break label155;
-          }
-          jdField_a_of_type_ComTencentMobileqqQmcfQMCF.snpePoseInitEnc(b(), a(), jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager.c, paramQmcfModelItem.c, paramQmcfModelItem.jdField_a_of_type_Boolean);
-          this.b = "success";
+          this.b = jdField_a_of_type_ComTencentMobileqqQmcfQMCF.snpePoseInit(b(), a(), jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager.c, paramQmcfModelItem.c, 18, paramQmcfModelItem.jdField_a_of_type_Int);
           Log.d("poseInfo", "doInit result:" + this.b + " ,availableType:" + i);
           break;
         }
       }
       finally {}
       QmcfManager.a().c(3);
-      break label233;
-      jdField_a_of_type_ComTencentMobileqqQmcfQMCF.snpePoseInit(b(), a(), jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager.c, paramQmcfModelItem.c);
-      continue;
+      break label199;
       String str = a(paramQmcfModelItem.jdField_a_of_type_JavaLangString, b(), a());
       this.b = jdField_a_of_type_ComTencentMobileqqQmcfQMCF.PoseInit(b(), a(), str, jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager.c, paramQmcfModelItem.b);
     }
@@ -85,7 +78,7 @@ public class PoseDetectProcessor
     {
       if (QmcfManager.a().b() == 1)
       {
-        this.jdField_a_of_type_ArrayOfFloat = jdField_a_of_type_ComTencentMobileqqQmcfQMCF.snpePoseKeyPoints();
+        jdField_a_of_type_ComTencentMobileqqQmcfQMCF.snpeSkeletonPose(this.jdField_a_of_type_ArrayOfFloat);
         return this.jdField_a_of_type_ArrayOfFloat;
       }
       this.jdField_a_of_type_ArrayOfFloat = jdField_a_of_type_ComTencentMobileqqQmcfQMCF.PoseKeyPoints();

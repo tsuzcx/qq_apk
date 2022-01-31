@@ -1,44 +1,32 @@
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.view.ApolloGameHotChatController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.SdCardUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class ttn
   implements Runnable
 {
-  public ttn(SplashActivity paramSplashActivity) {}
+  public ttn(RegisterActivity paramRegisterActivity) {}
   
   public void run()
   {
-    long l = SpaceLowNoticeActiviy.a(this.a.app, "conf_space_low_shreshold", 104857600L);
-    if (SpaceLowNoticeActiviy.a(SpaceLowNoticeActiviy.a(this.a.app, "conf_space_check_interval", 259200000L)))
+    try
     {
-      if (SdCardUtil.b(this.a) + SdCardUtil.b() >= l) {
-        break label146;
-      }
-      QLog.i("SplashActivity", 1, "qqclean conf did notice");
-      SpaceLowNoticeActiviy.a(this.a);
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
-    }
-    for (;;)
-    {
-      ApolloManager localApolloManager = (ApolloManager)this.a.app.getManager(152);
-      if (localApolloManager != null) {
-        localApolloManager.a().a(this.a.app, this.a);
+      if (RegisterActivity.a(this.a) != null)
+      {
+        RegisterActivity.a(this.a).dismiss();
+        RegisterActivity.a(this.a).cancel();
+        RegisterActivity.a(this.a, null);
       }
       return;
-      label146:
-      QLog.i("SplashActivity", 1, "qqclean conf not need notice");
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ttn
  * JD-Core Version:    0.7.0.1
  */

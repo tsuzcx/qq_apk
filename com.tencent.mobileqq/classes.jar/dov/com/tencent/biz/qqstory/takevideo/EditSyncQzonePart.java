@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ansd;
+import aoau;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
@@ -38,19 +38,19 @@ public class EditSyncQzonePart
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843746);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843819);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843745);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843818);
   }
   
   public void a()
   {
     super.a();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131364444));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364445));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364446));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131364469));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364470));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364471));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
@@ -132,11 +132,11 @@ public class EditSyncQzonePart
   {
     switch (paramView.getId())
     {
-    case 2131364445: 
+    case 2131364470: 
     default: 
       return;
-    case 2131364444: 
-      PressScaleAnimDelegate.a(paramView, 200L, new ansd(this));
+    case 2131364469: 
+      PressScaleAnimDelegate.a(paramView, 200L, new aoau(this));
       if (this.jdField_a_of_type_Boolean) {}
       for (paramView = "1";; paramView = "2")
       {

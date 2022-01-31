@@ -1,34 +1,27 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.TextInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase.OnEditItemListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferRetryController;
 
 public class ajlh
-  implements View.OnFocusChangeListener
 {
-  public ajlh(TextItem paramTextItem, TextInfo paramTextInfo, TextItem.TextViewHolder paramTextViewHolder) {}
+  public int a;
+  public int b = 0;
+  public int c = 0;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public ajlh(TroopFileTransferRetryController paramTroopFileTransferRetryController)
   {
-    QLog.i("xmediaEditor", 1, "mData.position:" + this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.c + ", text:" + this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_JavaLangString + ",onFocusChange:" + paramBoolean);
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setCursorVisible(true);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a.c(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_Boolean = true;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setFocusable(paramBoolean);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setFocusableInTouchMode(paramBoolean);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setCursorVisible(false);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a.d(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder);
-    }
+    this.jdField_a_of_type_Int = 0;
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    this.c = 0;
+  }
+  
+  public String toString()
+  {
+    return " retryInfo[AutoR-" + this.jdField_a_of_type_Int + " EofR-" + this.b + " SvrErrR-" + this.c + "]";
   }
 }
 

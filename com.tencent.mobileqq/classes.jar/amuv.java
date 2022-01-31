@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.PublishEventTag;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
+import cooperation.qlink.QQProxyForQlink;
 
-public final class amuv
-  implements Parcelable.Creator
+public class amuv
+  implements DialogInterface.OnClickListener
 {
-  public PublishEventTag a(Parcel paramParcel)
-  {
-    return new PublishEventTag(paramParcel);
-  }
+  public amuv(QQProxyForQlink paramQQProxyForQlink, QrHandleResultCallBack paramQrHandleResultCallBack) {}
   
-  public PublishEventTag[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new PublishEventTag[paramInt];
+    this.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.a();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amuv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,25 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import java.util.Map;
 
 public class xdj
   implements Runnable
 {
-  public xdj(CommonHbFragment paramCommonHbFragment) {}
+  public xdj(PhotoListActivity paramPhotoListActivity, String paramString) {}
   
   public void run()
   {
-    if ("1".equals(CommonHbFragment.f(this.a))) {
-      CommonHbFragment.b(this.a).performClick();
-    }
-    do
-    {
-      return;
-      if ("2".equals(CommonHbFragment.f(this.a)))
-      {
-        CommonHbFragment.c(this.a).performClick();
-        return;
-      }
-    } while (!"3".equals(CommonHbFragment.f(this.a)));
-    CommonHbFragment.d(this.a).performClick();
+    Message localMessage = Message.obtain();
+    localMessage.what = 3;
+    String str = PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, this.jdField_a_of_type_JavaLangString);
+    localMessage.obj = str;
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    AlbumUtil.a(localLocalMediaInfo, str);
+    PhotoListActivity.a().put(str, localLocalMediaInfo);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a.sendMessage(localMessage);
   }
 }
 

@@ -1,21 +1,20 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class thi
   implements View.OnClickListener
 {
-  public thi(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public thi(NotificationActivity paramNotificationActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     thi
  * JD-Core Version:    0.7.0.1
  */

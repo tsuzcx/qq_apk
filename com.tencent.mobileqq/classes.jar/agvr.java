@@ -1,27 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 public class agvr
-  implements Runnable
+  extends AnimateUtils.AnimationAdapter
 {
-  public agvr(QzoneAlbumRedTouchManager paramQzoneAlbumRedTouchManager) {}
+  public agvr(ProfileHeaderView paramProfileHeaderView, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SharedPreferences.Editor localEditor = QzoneAlbumRedTouchManager.a(this.a).edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
-    if (Build.VERSION.SDK_INT < 9)
-    {
-      localEditor.commit();
-      return;
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Boolean = false;
     }
-    localEditor.apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agvr
  * JD-Core Version:    0.7.0.1
  */

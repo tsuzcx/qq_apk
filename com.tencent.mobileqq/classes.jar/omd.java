@@ -1,19 +1,21 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
 public class omd
-  implements AdapterView.OnItemSelectedListener
+  implements IMediaPlayer.OnPreparedListener
 {
-  public omd(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public omd(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void onItemSelected(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a_(IMediaPlayer paramIMediaPlayer)
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    SLog.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
+    LocalVideoSelectActivity.a(this.a).b();
+    LocalVideoSelectActivity.a(this.a).postDelayed(new ome(this), 300L);
   }
-  
-  public void onNothingSelected(AdapterView paramAdapterView) {}
 }
 
 

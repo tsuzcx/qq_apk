@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <solid android:color="#ffe5e6e7" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle">
-            <stroke android:width="0.5dip" android:color="#ffeeeeee" />
-            <solid android:color="#ffffffff" />
-        </shape>
-    </item>
+    <item android:state_enabled="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cc7" />
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cc9" />
+    <item android:state_focused="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cc9" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cc8" />
 </selector>

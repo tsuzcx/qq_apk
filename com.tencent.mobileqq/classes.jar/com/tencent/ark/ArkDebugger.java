@@ -15,6 +15,8 @@ public class ArkDebugger
   
   public static final native boolean SetCallback(DebuggerCallback paramDebuggerCallback);
   
+  public static final native boolean SetJSLibraryPath(String paramString1, String paramString2);
+  
   public static final native boolean Stop();
   
   public static abstract interface DebuggerCallback

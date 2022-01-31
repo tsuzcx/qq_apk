@@ -8,8 +8,8 @@ import com.rookery.translate.type.TranslateWithTimeCallback;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jcg;
-import jch;
+import jei;
+import jej;
 
 public class GoogleTranslator
   extends Translator
@@ -54,7 +54,7 @@ public class GoogleTranslator
         paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
       }
     }
-    jcg.a(paramContext, null, (List)localObject, new jch(this, paramTranslateWithTimeCallback, paramLong));
+    jei.a(paramContext, null, (List)localObject, new jej(this, paramTranslateWithTimeCallback, paramLong));
   }
 }
 

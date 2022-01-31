@@ -1,41 +1,19 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePanelBaseAdapter;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class okf
-  implements AdapterView.OnItemClickListener
+  extends SimpleJob
 {
-  public okf(FacePanel paramFacePanel) {}
+  public okf(EditVideoPartManager paramEditVideoPartManager) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
-    if (DoodleLayout.a) {}
-    for (paramAdapterView = "2";; paramAdapterView = "1")
-    {
-      DoodleLayout.a("change_face", 0, 0, new String[] { paramAdapterView });
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter != null)
-      {
-        paramAdapterView = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter.a(paramInt);
-        if ((paramAdapterView != null) && ((paramAdapterView instanceof FacePackage)))
-        {
-          VideoEditReport.a("0X80076C7", "", "", ((FacePackage)paramAdapterView).a, "");
-          VideoEditReport.a("0X80075DC", ((FacePackage)paramAdapterView).a);
-        }
-      }
-      if (paramInt == 1)
-      {
-        VideoEditReport.a("0X80076CC");
-        VideoEditReport.b("0X80075E1");
-      }
-      return;
-    }
+    VideoEditReport.a("0X80076BC");
+    return null;
   }
 }
 

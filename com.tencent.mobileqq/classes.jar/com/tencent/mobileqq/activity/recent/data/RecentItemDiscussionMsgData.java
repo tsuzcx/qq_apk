@@ -49,7 +49,7 @@ public class RecentItemDiscussionMsgData
           this.jdField_d_of_type_JavaLangString = String.format("与%s的会话，有全体消息", new Object[] { this.jdField_b_of_type_JavaLangString });
         }
       }
-      for (int i = 2131494288; (!android.text.TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) && (i > 0); i = 0)
+      for (int i = 2131494294; (!android.text.TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) && (i > 0); i = 0)
       {
         this.e = paramContext.getResources().getColor(i);
         return;
@@ -85,7 +85,7 @@ public class RecentItemDiscussionMsgData
           if (((QCallFacade.CallUnreadCountInfo)localObject3).a() > 0)
           {
             this.jdField_d_of_type_JavaLangCharSequence = ((QCallFacade.CallUnreadCountInfo)localObject3).a();
-            this.e = paramContext.getResources().getColor(2131494288);
+            this.e = paramContext.getResources().getColor(2131494294);
           }
           label191:
           localObject3 = (DiscussionManager)paramQQAppInterface.getManager(52);

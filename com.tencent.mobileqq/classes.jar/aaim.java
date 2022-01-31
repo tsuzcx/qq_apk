@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ARRenderModel.SensorTrackManager;
+import com.tencent.mobileqq.ar.ARRenderModel.SensorTrackManager.ARSensorTrackCallback;
+import com.tencent.mobileqq.armap.sensor.SimpleSensorChangeListener;
 
 public class aaim
-  implements Runnable
+  extends SimpleSensorChangeListener
 {
-  public aaim(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
+  public aaim(SensorTrackManager paramSensorTrackManager) {}
   
-  public void run()
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
+    if (SensorTrackManager.a(this.a) != null) {
+      SensorTrackManager.a(this.a).a(paramArrayOfFloat);
     }
-    for (;;)
-    {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARCloudControlSo", true, 0L, 0L, localHashMap, "");
-      return;
-      localHashMap.put("result", "1");
+  }
+  
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    if (SensorTrackManager.a(this.a) != null) {
+      SensorTrackManager.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
     }
   }
 }

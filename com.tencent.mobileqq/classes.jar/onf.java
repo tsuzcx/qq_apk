@@ -1,22 +1,44 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import java.util.List;
 
 public class onf
-  extends MessageObserver
+  implements LocationListener
 {
-  public onf(TroopStoryForwardTask paramTroopStoryForwardTask) {}
+  public onf(DoodleEmojiManager paramDoodleEmojiManager) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void onLocationChanged(Location paramLocation)
   {
-    paramStatictisInfo = this.a.a;
-    if (paramBoolean) {}
-    for (int i = 4;; i = 5)
+    if (paramLocation != null)
     {
-      paramStatictisInfo.sendEmptyMessage(i);
+      SLog.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
+      if (this.a.b.size() >= 10)
+      {
+        this.a.b.remove(0);
+        SLog.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
+      }
+      this.a.b.add(new Location(paramLocation));
       return;
     }
+    SLog.d("DoodleEmojiManager", "onLocationChanged, location is null.");
+  }
+  
+  public void onProviderDisabled(String paramString)
+  {
+    SLog.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
+  }
+  
+  public void onProviderEnabled(String paramString)
+  {
+    SLog.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
+  }
+  
+  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
+  {
+    SLog.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
   }
 }
 

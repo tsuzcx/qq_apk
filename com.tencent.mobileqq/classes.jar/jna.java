@@ -1,20 +1,19 @@
-import com.tencent.av.service.QavWrapper;
-import com.tencent.av.service.QavWrapper.OnReadyListener;
+import android.graphics.Bitmap;
+import com.tencent.av.random.RandomWebProtocol;
 
-class jna
-  implements QavWrapper.OnReadyListener
+public class jna
+  extends jmy
 {
-  jna(jmz paramjmz, String paramString) {}
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   
-  public void a(QavWrapper paramQavWrapper)
+  jna(RandomWebProtocol paramRandomWebProtocol)
   {
-    paramQavWrapper.a(this.jdField_a_of_type_JavaLangString);
-    paramQavWrapper.a();
+    this.a = -100;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jna
  * JD-Core Version:    0.7.0.1
  */

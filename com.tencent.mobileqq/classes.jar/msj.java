@@ -1,40 +1,13 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.widget.SwipListView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
-class msj
-  implements Runnable
+public class msj
+  implements View.OnClickListener
 {
-  msj(msi parammsi, List paramList) {}
+  public msj(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
   
-  public void run()
-  {
-    int i;
-    if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a) != null)
-    {
-      i = SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).size();
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        break label142;
-      }
-    }
-    label142:
-    for (int j = this.jdField_a_of_type_JavaUtilList.size();; j = 0)
-    {
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a, this.jdField_a_of_type_JavaUtilList);
-      if ((SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a)) && (i != j))
-      {
-        if (this.jdField_a_of_type_Msi.a.a.a == 2) {
-          SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).setSelectionFromBottom(SubscriptFeedsActivity.a(this.jdField_a_of_type_Msi.a).getCount() - 1, 0);
-        }
-        SubscriptFeedsActivity.b(this.jdField_a_of_type_Msi.a, false);
-      }
-      return;
-      i = 0;
-      break;
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,71 +1,53 @@
-import java.lang.ref.WeakReference;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.biz.lebasearch.SearchProtocol;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class rol
-  extends VerifyDevLockManager.VerifyDevLockObserver
+  implements Runnable
 {
-  private WeakReference a;
+  private long jdField_a_of_type_Long = System.currentTimeMillis();
+  private String jdField_a_of_type_JavaLangString;
   
-  public rol(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  public rol(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString)
   {
-    this.a = new WeakReference(paramVerifyDevLockObserver);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-    this.a = null;
-  }
-  
-  public int getSeq()
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        return localVerifyDevLockObserver.getSeq();
-      }
+    if (paramAddFriendVerifyActivity.getIntent().getIntExtra("friend_setting", 0) != 0) {
+      i = 1;
     }
-    return super.getSeq();
+    this.jdField_a_of_type_JavaLangString = (paramString + "?_wv=1031&troopUin=" + paramAddFriendVerifyActivity.b + "&isVerify=" + i);
   }
   
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public void run()
   {
-    if (this.a != null)
+    if (SearchProtocol.a != -1.0F) {}
+    for (long l1 = (SearchProtocol.a * 1000000.0F);; l1 = -1L)
     {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      }
-    }
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
-      }
-    }
-  }
-  
-  public void setSeq(int paramInt)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null)
+      if (SearchProtocol.b != -1.0F) {}
+      for (long l2 = (SearchProtocol.b * 1000000.0F);; l2 = -1L)
       {
-        localVerifyDevLockObserver.setSeq(paramInt);
+        if ((System.currentTimeMillis() - this.jdField_a_of_type_Long < 2000L) && (l1 == -1L) && (l2 == -1L))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.postDelayed(this, 100L);
+          return;
+        }
+        if ((l1 != -1L) && (l2 != -1L)) {
+          this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "&lat=" + l1 + "&lon=" + l2);
+        }
+        Intent localIntent = new Intent();
+        localIntent.setAction("start_recomend_page");
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.sendBroadcast(localIntent);
+        localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, QQBrowserActivity.class);
+        localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("hide_left_button", true);
+        localIntent.putExtra("show_right_close_button", true);
+        localIntent.putExtra("finish_animation_up_down", true);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.startActivity(localIntent);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.overridePendingTransition(2131034134, 2131034131);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.finish();
         return;
       }
     }
-    super.setSeq(paramInt);
   }
 }
 

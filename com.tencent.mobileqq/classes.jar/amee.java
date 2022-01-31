@@ -1,49 +1,44 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.widget.WaveView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
+import java.util.Date;
 
-public class amee
-  implements Handler.Callback
+final class amee
+  extends amei
 {
-  public amee(WaveView paramWaveView) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  amee(amed paramamed)
   {
-    if (paramMessage == null) {
+    super(null);
+  }
+  
+  public boolean a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle)
+  {
+    if (this.a.size() >= this.a.maxSize())
+    {
+      amed.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
+      }
       return false;
     }
-    switch (paramMessage.what)
+    if (paramResultBundle.a > new Date().getTime())
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
+      }
+      this.a.put(paramString, paramResultBundle);
     }
     for (;;)
     {
       return true;
-      this.a.invalidate();
-      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
-      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
-      if (WaveView.d(this.a) > 0) {
-        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, paramResultBundle.toString() }));
       }
-      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
-      continue;
-      this.a.invalidate();
-      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
-      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
-      if (WaveView.d(this.a) > 0) {
-        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
-      }
-      WaveView.a(this.a).removeMessages(1002);
-      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
-      continue;
-      WaveView.a(this.a).removeMessages(1001);
-      WaveView.a(this.a).removeMessages(1002);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amee
  * JD-Core Version:    0.7.0.1
  */

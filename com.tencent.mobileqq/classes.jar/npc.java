@@ -1,22 +1,37 @@
-import android.widget.MediaController;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
+import com.tencent.biz.qqstory.boundaries.StoryDepends.InviteCode;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.StoryShare;
+import com.tencent.biz.qqstory.newshare.mode.BigVContentShareMode;
+import com.tencent.biz.qqstory.newshare.mode.OpenStoryShareMode;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class npc
-  implements IMediaPlayer.OnCompletionListener
+  implements Runnable
 {
-  public npc(TextureVideoView paramTextureVideoView) {}
+  public npc(NewFriendsPlayMode paramNewFriendsPlayMode, boolean paramBoolean, StoryVideoItem paramStoryVideoItem, String paramString, VideoListFeedItem paramVideoListFeedItem) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer)
+  public void run()
   {
-    this.a.jdField_a_of_type_Int = 5;
-    this.a.b = 5;
-    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    
+    Object localObject;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject = new BigVContentShareMode(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a().a(2131433114).a(new npd(this, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode)).a((ShareModeBase)localObject).a();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label138;
+      }
     }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer);
+    label138:
+    for (int i = 1;; i = 2)
+    {
+      StoryReportor.a("play_video", "guest_share", i, 0, new String[] { "", String.valueOf(StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
+      localObject = new OpenStoryShareMode(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
+      break;
     }
   }
 }

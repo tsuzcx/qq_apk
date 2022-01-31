@@ -13,10 +13,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import plg;
-import plh;
-import pli;
-import plj;
+import ppy;
+import ppz;
+import pqa;
+import pqb;
 
 public abstract class AbstractConnPool
   implements ConnPool, ConnPoolControl
@@ -63,7 +63,7 @@ public abstract class AbstractConnPool
     return this.jdField_a_of_type_Int;
   }
   
-  private PoolEntry a(Object paramObject1, Object paramObject2, long paramLong, TimeUnit paramTimeUnit, pli parampli)
+  private PoolEntry a(Object paramObject1, Object paramObject2, long paramLong, TimeUnit paramTimeUnit, pqa parampqa)
   {
     Date localDate = null;
     if (paramLong > 0L) {
@@ -72,10 +72,10 @@ public abstract class AbstractConnPool
     this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
     for (;;)
     {
-      plj localplj;
+      pqb localpqb;
       try
       {
-        localplj = a(paramObject1);
+        localpqb = a(paramObject1);
         paramTimeUnit = null;
         if (paramTimeUnit != null) {
           break label463;
@@ -96,8 +96,8 @@ public abstract class AbstractConnPool
         }
         ((PoolEntry)localObject).b();
         this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject);
-        localplj.a((PoolEntry)localObject, false);
-        localObject = localplj.b(paramObject2);
+        localpqb.a((PoolEntry)localObject, false);
+        localObject = localpqb.b(paramObject2);
       } while (localObject != null);
       if (localObject != null)
       {
@@ -107,7 +107,7 @@ public abstract class AbstractConnPool
         return localObject;
       }
       int j = a(paramObject1);
-      int k = Math.max(0, localplj.a() + 1 - j);
+      int k = Math.max(0, localpqb.a() + 1 - j);
       int i;
       if (k > 0) {
         i = 0;
@@ -116,12 +116,12 @@ public abstract class AbstractConnPool
       {
         if (i < k)
         {
-          paramTimeUnit = localplj.a();
+          paramTimeUnit = localpqb.a();
           if (paramTimeUnit != null) {}
         }
         else
         {
-          if (localplj.a() >= j) {
+          if (localpqb.a() >= j) {
             break;
           }
           i = this.jdField_a_of_type_JavaUtilSet.size();
@@ -135,23 +135,23 @@ public abstract class AbstractConnPool
             paramObject2.b();
             a(paramObject2.a()).a(paramObject2);
           }
-          paramObject1 = localplj.c(this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolConnFactory.a(paramObject1));
+          paramObject1 = localpqb.c(this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolConnFactory.a(paramObject1));
           this.jdField_a_of_type_JavaUtilSet.add(paramObject1);
           this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
           return paramObject1;
         }
         paramTimeUnit.b();
         this.jdField_a_of_type_JavaUtilLinkedList.remove(paramTimeUnit);
-        localplj.a(paramTimeUnit);
+        localpqb.a(paramTimeUnit);
         i += 1;
       }
       try
       {
-        localplj.a(parampli);
-        this.jdField_b_of_type_JavaUtilLinkedList.add(parampli);
-        boolean bool = parampli.a(localDate);
-        localplj.b(parampli);
-        this.jdField_b_of_type_JavaUtilLinkedList.remove(parampli);
+        localpqb.a(parampqa);
+        this.jdField_b_of_type_JavaUtilLinkedList.add(parampqa);
+        boolean bool = parampqa.a(localDate);
+        localpqb.b(parampqa);
+        this.jdField_b_of_type_JavaUtilLinkedList.remove(parampqa);
         paramTimeUnit = (TimeUnit)localObject;
         if (bool) {
           continue;
@@ -169,37 +169,37 @@ public abstract class AbstractConnPool
       }
       finally
       {
-        localplj.b(parampli);
-        this.jdField_b_of_type_JavaUtilLinkedList.remove(parampli);
+        localpqb.b(parampqa);
+        this.jdField_b_of_type_JavaUtilLinkedList.remove(parampqa);
       }
     }
   }
   
-  private plj a(Object paramObject)
+  private pqb a(Object paramObject)
   {
-    plj localplj = (plj)this.jdField_a_of_type_JavaUtilMap.get(paramObject);
-    Object localObject = localplj;
-    if (localplj == null)
+    pqb localpqb = (pqb)this.jdField_a_of_type_JavaUtilMap.get(paramObject);
+    Object localObject = localpqb;
+    if (localpqb == null)
     {
-      localObject = new plg(this, paramObject, paramObject);
+      localObject = new ppy(this, paramObject, paramObject);
       this.jdField_a_of_type_JavaUtilMap.put(paramObject, localObject);
     }
     return localObject;
   }
   
-  private void a(plj paramplj)
+  private void a(pqb parampqb)
   {
-    paramplj = paramplj.a();
-    if (paramplj != null) {
-      this.jdField_b_of_type_JavaUtilLinkedList.remove(paramplj);
+    parampqb = parampqb.a();
+    if (parampqb != null) {
+      this.jdField_b_of_type_JavaUtilLinkedList.remove(parampqb);
     }
     for (;;)
     {
-      if (paramplj != null) {
-        paramplj.a();
+      if (parampqb != null) {
+        parampqb.a();
       }
       return;
-      paramplj = (pli)this.jdField_b_of_type_JavaUtilLinkedList.poll();
+      parampqb = (pqa)this.jdField_b_of_type_JavaUtilLinkedList.poll();
     }
   }
   
@@ -218,7 +218,7 @@ public abstract class AbstractConnPool
     if (this.jdField_a_of_type_Boolean) {
       throw new IllegalStateException("Connection pool shut down");
     }
-    return new plh(this, this.jdField_a_of_type_JavaUtilConcurrentLocksLock, paramFutureCallback, paramObject1, paramObject2);
+    return new ppz(this, this.jdField_a_of_type_JavaUtilConcurrentLocksLock, paramFutureCallback, paramObject1, paramObject2);
   }
   
   public void a()
@@ -245,7 +245,7 @@ public abstract class AbstractConnPool
     }
     Iterator localIterator2 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
     while (localIterator2.hasNext()) {
-      ((plj)localIterator2.next()).a();
+      ((pqb)localIterator2.next()).a();
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
     this.jdField_a_of_type_JavaUtilSet.clear();
@@ -293,10 +293,10 @@ public abstract class AbstractConnPool
           if (localPoolEntry.a() <= l - paramLong)
           {
             localPoolEntry.b();
-            plj localplj = a(localPoolEntry.a());
-            localplj.a(localPoolEntry);
+            pqb localpqb = a(localPoolEntry.a());
+            localpqb.a(localPoolEntry);
             paramTimeUnit.remove();
-            a(localplj);
+            a(localpqb);
           }
         }
       }
@@ -323,12 +323,12 @@ public abstract class AbstractConnPool
     //   22: aload_0
     //   23: aload_1
     //   24: invokevirtual 169	com/tencent/component/network/utils/http/pool/PoolEntry:a	()Ljava/lang/Object;
-    //   27: invokespecial 106	com/tencent/component/network/utils/http/pool/AbstractConnPool:a	(Ljava/lang/Object;)Lplj;
+    //   27: invokespecial 106	com/tencent/component/network/utils/http/pool/AbstractConnPool:a	(Ljava/lang/Object;)Lpqb;
     //   30: astore_3
     //   31: aload_3
     //   32: aload_1
     //   33: iload_2
-    //   34: invokevirtual 135	plj:a	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
+    //   34: invokevirtual 135	pqb:a	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
     //   37: iload_2
     //   38: ifeq +33 -> 71
     //   41: aload_0
@@ -340,7 +340,7 @@ public abstract class AbstractConnPool
     //   53: invokevirtual 271	java/util/LinkedList:addFirst	(Ljava/lang/Object;)V
     //   56: aload_0
     //   57: aload_3
-    //   58: invokespecial 266	com/tencent/component/network/utils/http/pool/AbstractConnPool:a	(Lplj;)V
+    //   58: invokespecial 266	com/tencent/component/network/utils/http/pool/AbstractConnPool:a	(Lpqb;)V
     //   61: aload_0
     //   62: getfield 38	com/tencent/component/network/utils/http/pool/AbstractConnPool:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
     //   65: invokeinterface 116 1 0
@@ -359,7 +359,7 @@ public abstract class AbstractConnPool
     //   0	90	0	this	AbstractConnPool
     //   0	90	1	paramPoolEntry	PoolEntry
     //   0	90	2	paramBoolean	boolean
-    //   30	28	3	localplj	plj
+    //   30	28	3	localpqb	pqb
     // Exception table:
     //   from	to	target	type
     //   9	37	78	finally
@@ -381,10 +381,10 @@ public abstract class AbstractConnPool
         if (localPoolEntry.a(l))
         {
           localPoolEntry.b();
-          plj localplj = a(localPoolEntry.a());
-          localplj.a(localPoolEntry);
+          pqb localpqb = a(localPoolEntry.a());
+          localpqb.a(localPoolEntry);
           localIterator.remove();
-          a(localplj);
+          a(localpqb);
         }
       }
     }

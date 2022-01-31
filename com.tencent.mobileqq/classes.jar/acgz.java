@@ -1,42 +1,36 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.qphone.base.util.QLog;
 
 public class acgz
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public acgz(StickerGestureDetector paramStickerGestureDetector) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acgz(Client paramClient, Looper paramLooper)
   {
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getString(2131436943);
-    VasH5PayUtil.a(null, this.a.jdField_a_of_type_AndroidContentContext, "mvip.g.a.bq_tz", 3, "1450000515", "CJCLUBT", paramDialogInterface, "", false, true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (EmojiStickerManager.a().a != 0) {
-        break label103;
-      }
-      paramInt = 1;
+    default: 
+      super.handleMessage(paramMessage);
     }
-    for (;;)
+    do
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c(), "Stick", "ClickSVIPTip", String.valueOf(paramInt), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      do
+      {
+        return;
+        this.a.onRespFromServer(paramMessage.getData());
+      } while (!QLog.isColorLevel());
+      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
       return;
-      label103:
-      if (EmojiStickerManager.a().a == 1) {
-        paramInt = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        paramInt = 3;
-      } else {
-        paramInt = -1;
-      }
-    }
+      this.a.onPushMsgFromServer(paramMessage.getData());
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
   }
 }
 

@@ -1,36 +1,50 @@
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
 import com.tencent.qphone.base.util.QLog;
 
-class xuy
-  implements Runnable
+public class xuy
+  implements View.OnTouchListener
 {
-  xuy(xuw paramxuw) {}
+  public xuy(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = CameraCompatibleList.a(CameraCompatibleList.y);
-    if (bool)
-    {
-      RMVideoStateMgr.a().a(1102, "已经获取权限，需要重新进入打开摄像头", true);
-      return;
+    if (!this.a.m) {}
+    while (((!this.a.g) && (!this.a.d)) || (paramView.getId() != 2131369009)) {
+      return false;
     }
-    try
+    switch (paramMotionEvent.getAction())
     {
-      if ((!this.a.d) && (this.a.f)) {
-        RMVideoStateMgr.a().a(1102, "初始化失败,code=1102", true);
-      }
-      RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    case 2: 
+    default: 
+      return false;
+    case 0: 
       if (QLog.isColorLevel()) {
-        QLog.e("RMVideoInitState", 2, "[ERR_CODE_INIT_TIMEOUT]初始化失败,code=1102 mIsReadAVCodec=" + this.a.a + " mIsReadCamera=" + this.a.b + " black=" + bool + " rmStateMgr.mIsAudioReady=" + localRMVideoStateMgr.d + " rmStateMgr.mVideoFileDir=" + localRMVideoStateMgr.a);
+        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
       }
-      RMVideoStateMgr.b(null);
-      return;
+      if (!this.a.b.isLongClickable()) {
+        this.a.a.e();
+      }
+      this.a.b.setText(null);
+      return false;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
     }
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    if (this.a.b != null) {
+      this.a.b.setText(2131438182);
+    }
+    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
+    FlowCameraActivity2.a(this.a);
+    return false;
   }
 }
 

@@ -1,26 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.av.AVLog;
 import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class ahmi
-  extends BroadcastReceiver
+public class ahmi
+  implements INetEngine.INetEngineListener
 {
-  private ahmi(FilterProviderView paramFilterProviderView) {}
+  public ahmi(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  
+  public void a(NetResp paramNetResp)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
+    if (paramNetResp.jdField_a_of_type_Int != 0)
     {
-      CaptureVideoFilterManager.a().b();
-      FilterProviderView.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("FilterProviderView", 2, "FilterProviderView FilterBroadcastReceiver size=" + this.a.a.size());
-      }
+      AVLog.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramNetResp.b + ", errorMsg: " + paramNetResp.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.c);
+      return;
     }
+    if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.a(this.a) != null)) {
+      CaptureVideoFilterManager.a(this.a).a(true);
+    }
+    AVLog.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.c);
   }
 }
 

@@ -1,53 +1,72 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.recent.DrawerFrame.IDrawerCallbacks;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
+import com.tencent.mobileqq.portal.ConversationHongBao;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class sne
-  extends BaseAdapter
+  implements DrawerFrame.IDrawerCallbacks
 {
-  public sne(FontSettingActivity paramFontSettingActivity) {}
+  public sne(Conversation paramConversation) {}
   
-  public int getCount()
+  public void a(int paramInt)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = this.a.jdField_a_of_type_Snh.a(paramInt, getCount(), (ChatMessage)this.a.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, paramViewGroup, null);
-    paramViewGroup = (TextItemBuilder.Holder)paramView.getTag();
-    paramViewGroup.e.setOnClickListener(null);
-    if ((paramViewGroup.e instanceof AnimationTextView)) {
-      ((AnimationTextView)paramViewGroup.e).a = null;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.d();
     }
-    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.f();
+    }
+  }
+  
+  @TargetApi(11)
+  public void a(int paramInt, float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("drawerScale", 2, "scale:" + paramFloat);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.l();
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a();
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        ConversationPullDownActiveBase localConversationPullDownActiveBase = (ConversationPullDownActiveBase)localIterator.next();
+        if (localConversationPullDownActiveBase != null) {
+          localConversationPullDownActiveBase.m();
+        }
+      }
     }
-    if ((this.a.c) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
-    {
-      this.a.c = false;
-      FontSettingActivity.a(this.a).postDelayed(new snf(this), 100L);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.N();
     }
-    return paramView;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.g();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Conversation.d(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.m();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.M();
+    }
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.l();
+    }
   }
 }
 

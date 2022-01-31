@@ -13,7 +13,7 @@ import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
-import nba;
+import nev;
 
 @TargetApi(14)
 public class StoryVideoFileObject
@@ -33,7 +33,7 @@ public class StoryVideoFileObject
   private void c()
   {
     TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new nba(this);
+    localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new nev(this);
     localTransferRequest.i = this.jdField_b_of_type_JavaLangString;
     localTransferRequest.jdField_a_of_type_Boolean = true;
     localTransferRequest.jdField_b_of_type_Int = 196609;
@@ -50,7 +50,7 @@ public class StoryVideoFileObject
     if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!FileUtils.c(this.jdField_b_of_type_JavaLangString)))
     {
       VideoCompositeManager.CompositeResult localCompositeResult = ((VideoCompositeManager)SuperManager.a(14)).a(this.jdField_a_of_type_JavaLangString);
-      if (localCompositeResult.a.isSuccess())
+      if (localCompositeResult.errorInfo.isSuccess())
       {
         this.jdField_b_of_type_JavaLangString = localCompositeResult.jdField_b_of_type_JavaLangString;
         if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!FileUtils.c(this.jdField_b_of_type_JavaLangString)))
@@ -61,7 +61,7 @@ public class StoryVideoFileObject
       }
       else
       {
-        super.notifyResult(localCompositeResult.a);
+        super.notifyResult(localCompositeResult.errorInfo);
         return;
       }
     }

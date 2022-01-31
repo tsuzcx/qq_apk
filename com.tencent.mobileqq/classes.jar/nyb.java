@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.app.Dialog;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
 
 public class nyb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public nyb(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
+  public nyb(QQStoryBaseFragment paramQQStoryBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
-    StoryReportor.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
+    this.a.a.dismiss();
   }
 }
 

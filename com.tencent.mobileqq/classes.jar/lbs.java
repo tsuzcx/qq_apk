@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
 
-class lbs
-  implements Runnable
+public final class lbs
+  implements Parcelable.Creator
 {
-  lbs(lbr paramlbr) {}
-  
-  public void run()
+  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
   {
-    this.a.a.b(this.a.a.h);
+    return new VideoInfo.InterruptedWeishiAd(paramParcel);
+  }
+  
+  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
+  {
+    return new VideoInfo.InterruptedWeishiAd[paramInt];
   }
 }
 

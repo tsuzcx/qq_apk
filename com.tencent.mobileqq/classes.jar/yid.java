@@ -1,22 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import com.tencent.mobileqq.app.utils.BatchAddFriendData;
+import java.util.ArrayList;
 
-public class yid
-  implements IIconListener
+class yid
+  implements Runnable
 {
-  public yid(RecommendFriendAdapter paramRecommendFriendAdapter) {}
+  yid(yic paramyic, ArrayList paramArrayList) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.notifyDataSetChanged();
-    }
+    BatchAddFriendData.a(this.jdField_a_of_type_Yic.a.a.app, this.jdField_a_of_type_Yic.a.a, this.jdField_a_of_type_Yic.a.b, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yid
  * JD-Core Version:    0.7.0.1
  */

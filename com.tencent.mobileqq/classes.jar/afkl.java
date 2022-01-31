@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyProfileCardMomentAdapter;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
 
-class afkl
-  implements NearbyMomentManager.GetLocalUnPiblishListCallback
+public class afkl
+  implements DialogInterface.OnClickListener
 {
-  afkl(afkj paramafkj) {}
+  public afkl(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void a(List paramList)
-  {
-    NearbyMomentFragment.b(this.a.a).clear();
-    NearbyMomentFragment.b(this.a.a).addAll(paramList);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(NearbyMomentFragment.b(this.a.a));
-    localArrayList.addAll(NearbyMomentFragment.a(this.a.a));
-    NearbyMomentFragment.a(this.a.a).a(localArrayList);
-    localArrayList = new ArrayList();
-    localArrayList.addAll(paramList);
-    this.a.a.b();
-    NearbyMomentFragment.a(this.a.a, localArrayList);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

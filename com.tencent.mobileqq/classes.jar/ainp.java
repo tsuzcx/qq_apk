@@ -1,21 +1,17 @@
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13.ViewHolder;
 
-public final class ainp
-  extends Spannable.Factory
+class ainp
+  implements Runnable
 {
-  public Spannable newSpannable(CharSequence paramCharSequence)
+  ainp(aino paramaino, String paramString) {}
+  
+  public void run()
   {
-    if ((!QQText.b) && ((paramCharSequence instanceof QQText))) {
-      try
-      {
-        QQText localQQText = (QQText)((QQText)paramCharSequence).clone();
-        return localQQText;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    }
-    return super.newSpannable(paramCharSequence);
+    this.jdField_a_of_type_Aino.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13.a(this.jdField_a_of_type_Aino.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aino.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13$ViewHolder.a);
+    this.jdField_a_of_type_Aino.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aino.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.frienduin, this.jdField_a_of_type_Aino.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.author);
   }
 }
 

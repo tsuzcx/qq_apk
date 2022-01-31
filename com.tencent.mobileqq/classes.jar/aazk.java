@@ -1,15 +1,6 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-
-class aazk
-  implements Runnable
+abstract interface aazk
 {
-  aazk(aazj paramaazj) {}
-  
-  public void run()
-  {
-    this.a.a.a.setVisibility(8);
-  }
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

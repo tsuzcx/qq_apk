@@ -12,7 +12,7 @@ public class VideoCompositeManager$CompositeResult
   
   public String toString()
   {
-    return "CompositeVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errorInfo='" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '\'' + ", videoUrl='" + this.b + '\'' + '}';
+    return "CompositeVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errorInfo='" + this.errorInfo + '\'' + ", videoUrl='" + this.b + '\'' + '}';
   }
 }
 

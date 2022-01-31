@@ -1,30 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class ltk
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public ltk(FeedItemCell paramFeedItemCell, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject) {}
+  public ltk(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell.a().post(new ltl(this));
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      paramAnimation.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.b("DELETE FROM " + ArticleInfo.class.getSimpleName() + " WHERE mChannelID = " + this.jdField_a_of_type_Int);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

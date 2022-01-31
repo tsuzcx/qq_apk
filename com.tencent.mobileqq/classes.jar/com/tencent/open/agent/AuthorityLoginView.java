@@ -1,10 +1,10 @@
 package com.tencent.open.agent;
 
-import alan;
-import alao;
-import alap;
-import alaq;
-import alas;
+import alif;
+import alig;
+import alih;
+import alii;
+import alik;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -90,19 +90,19 @@ public class AuthorityLoginView
   
   private void d()
   {
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842698);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842701);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842733);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842736);
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     setOrientation(1);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969251, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969249, null);
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365729));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365734));
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new alan(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new alif(this));
     if (QLog.isColorLevel()) {
       QLog.d("AuthorityLoginView", 2, "--> AuthorityLoginView initUI");
     }
@@ -118,8 +118,8 @@ public class AuthorityLoginView
   
   public void a(String paramString)
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365726)).setText(paramString);
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365725);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365731)).setText(paramString);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365730);
     localTextView.setMaxWidth((int)(3.0F * this.jdField_b_of_type_Float / 5.0F));
     Object localObject = new WloginSimpleInfo();
     this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, (WloginSimpleInfo)localObject);
@@ -129,11 +129,11 @@ public class AuthorityLoginView
       localObject = paramString;
     }
     localTextView.setText((CharSequence)localObject);
-    localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365728);
+    localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365733);
     if (this.jdField_a_of_type_Boolean) {
-      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365729)).setVisibility(0);
+      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365734)).setVisibility(0);
     }
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362748)).setVisibility(8);
+    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362753)).setVisibility(8);
     a(paramString, (ImageView)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("AuthorityLoginView", 2, "当前帐号：" + paramString);
@@ -142,7 +142,7 @@ public class AuthorityLoginView
   
   protected void a(String paramString, ImageView paramImageView)
   {
-    ThreadManager.executeOnSubThread(new alaq(this, paramString, paramImageView));
+    ThreadManager.executeOnSubThread(new alii(this, paramString, paramImageView));
   }
   
   public void a(boolean paramBoolean)
@@ -155,7 +155,7 @@ public class AuthorityLoginView
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131365727);
+      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131365732);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(8);
       }
@@ -166,10 +166,10 @@ public class AuthorityLoginView
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969251, null);
+        View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969249, null);
         String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        ((TextView)localView.findViewById(2131365726)).setText(str);
-        TextView localTextView = (TextView)localView.findViewById(2131365725);
+        ((TextView)localView.findViewById(2131365731)).setText(str);
+        TextView localTextView = (TextView)localView.findViewById(2131365730);
         localTextView.setMaxWidth((int)(3.0F * this.jdField_b_of_type_Float / 5.0F));
         localObject1 = new WloginSimpleInfo();
         this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(str, (WloginSimpleInfo)localObject1);
@@ -179,20 +179,20 @@ public class AuthorityLoginView
           localObject1 = str;
         }
         localTextView.setText((CharSequence)localObject1);
-        localObject1 = (ImageView)localView.findViewById(2131365728);
-        ((ImageView)localView.findViewById(2131365729)).setVisibility(8);
-        localObject2 = (ImageView)localView.findViewById(2131362748);
+        localObject1 = (ImageView)localView.findViewById(2131365733);
+        ((ImageView)localView.findViewById(2131365734)).setVisibility(8);
+        localObject2 = (ImageView)localView.findViewById(2131362753);
         ((ImageView)localObject2).setVisibility(0);
-        ((ImageView)localObject2).setImageResource(2130842695);
+        ((ImageView)localObject2).setImageResource(2130842730);
         ((ImageView)localObject2).setTag(str);
-        ((ImageView)localObject2).setOnClickListener(new alao(this));
+        ((ImageView)localObject2).setOnClickListener(new alig(this));
         a(str, (ImageView)localObject1);
-        localView.setOnClickListener(new alap(this, str));
+        localView.setOnClickListener(new alih(this, str));
         this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
         i += 1;
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131365727);
+      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131365732);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(0);
       }
@@ -223,13 +223,13 @@ public class AuthorityLoginView
   public void b(String paramString)
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2130968842);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(getResources().getString(2131439108));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2130968846);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(getResources().getString(2131439135));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextSize(18.0F);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString + "?");
-    paramString = new alas(this, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433015, paramString);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131433231, paramString);
+    paramString = new alik(this, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433029, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131433245, paramString);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   

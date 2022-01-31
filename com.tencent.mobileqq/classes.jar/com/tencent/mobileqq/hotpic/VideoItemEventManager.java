@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hotpic;
 
-import adsq;
-import adsr;
+import aeaz;
+import aeba;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class VideoItemEventManager
 {
   private static volatile VideoItemEventManager jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adsr(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aeba(this);
   private Context jdField_a_of_type_AndroidContentContext;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new adsq(this);
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new aeaz(this);
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   

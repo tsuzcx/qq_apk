@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiBasicInfo;
+import cooperation.qlink.QlinkBridgeActivity;
 
-public final class amuz
-  implements Parcelable.Creator
+public class amuz
+  implements Runnable
 {
-  public WeishiBasicInfo a(Parcel paramParcel)
-  {
-    return new WeishiBasicInfo(paramParcel);
-  }
+  public amuz(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
-  public WeishiBasicInfo[] a(int paramInt)
+  public void run()
   {
-    return new WeishiBasicInfo[paramInt];
+    this.a.a();
   }
 }
 

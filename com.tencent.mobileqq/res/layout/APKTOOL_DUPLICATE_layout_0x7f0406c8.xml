@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioButton android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0578" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:button="@null" android:drawablePadding="8.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2003" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0406c9" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2004" layout="@layout/search_box" />
+</LinearLayout>

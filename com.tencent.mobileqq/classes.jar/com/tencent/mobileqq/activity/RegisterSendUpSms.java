@@ -15,9 +15,9 @@ import mqq.manager.AccountManager;
 import mqq.observer.AccountObserver;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import tqh;
-import tqi;
-import tqj;
+import tuz;
+import tva;
+import tvb;
 
 public class RegisterSendUpSms
   extends RegisterNewBaseActivity
@@ -25,9 +25,9 @@ public class RegisterSendUpSms
 {
   private int jdField_a_of_type_Int = -1;
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new tqi(this);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tqj(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tqh(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new tva(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tvb(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tuz(this);
   private int b;
   private int jdField_c_of_type_Int = 10;
   private String jdField_c_of_type_JavaLangString;
@@ -74,7 +74,7 @@ public class RegisterSendUpSms
       Object localObject;
       if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
       {
-        localObject = (TextView)super.findViewById(2131374948);
+        localObject = (TextView)super.findViewById(2131375000);
         if (localObject != null) {
           ((TextView)localObject).setText(this.jdField_c_of_type_JavaLangString);
         }
@@ -82,7 +82,7 @@ public class RegisterSendUpSms
       this.d = paramString.getString("upnum");
       if (!TextUtils.isEmpty(this.d))
       {
-        paramString = (TextView)super.findViewById(2131374950);
+        paramString = (TextView)super.findViewById(2131375002);
         if (paramString != null)
         {
           localObject = new StringBuilder();
@@ -110,8 +110,8 @@ public class RegisterSendUpSms
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130971505);
-    c(2131434258);
+    setContentView(2130971531);
+    c(2131434274);
     b();
     a(50);
     this.app.setHandler(RegisterSendUpSms.class, this.jdField_a_of_type_MqqOsMqqHandler);
@@ -124,9 +124,9 @@ public class RegisterSendUpSms
       this.jdField_c_of_type_Boolean = getIntent().getBooleanExtra("key_register_has_pwd", true);
       this.e = getIntent().getStringExtra("key_register_binded_qq");
     }
-    this.jdField_c_of_type_JavaLangString = super.getString(2131434261);
-    this.d = super.getString(2131434263);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131374951));
+    this.jdField_c_of_type_JavaLangString = super.getString(2131434277);
+    this.d = super.getString(2131434279);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131375003));
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     }
@@ -183,6 +183,7 @@ public class RegisterSendUpSms
       paramView.putExtra("address", this.d);
       paramView.putExtra("sms_body", this.jdField_c_of_type_JavaLangString);
       super.startActivity(paramView);
+      this.jdField_a_of_type_Int = -1;
       this.jdField_b_of_type_Int = 1;
     }
     while (this.jdField_b_of_type_Int != 1) {

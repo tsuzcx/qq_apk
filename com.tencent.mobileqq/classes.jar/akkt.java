@@ -1,34 +1,44 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import java.util.concurrent.TimeUnit;
+import mqq.os.MqqHandler;
 
 public class akkt
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements Runnable
 {
-  public akkt(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  public akkt(NewUpgradeDialog paramNewUpgradeDialog) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void run()
   {
-    if (QLog.isColorLevel())
+    int i = 10;
+    long l = 1500L / 10;
+    for (;;)
     {
-      paramTVK_IMediaPlayer = new StringBuilder();
-      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
-      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
-      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
-      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
-      QLog.d("VipVideoPlayActivity", 2, paramTVK_IMediaPlayer.toString());
+      if (i > 0)
+      {
+        ThreadManager.getUIHandler().post(new akku(this, (10 - i) * 10));
+        try
+        {
+          TimeUnit.MILLISECONDS.sleep(l);
+          i -= 1;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+      }
     }
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = VipVideoPlayActivity.b(this.a);
-    this.a.a("play_error", paramInt1, paramInt2, l1 - l2, paramString);
-    return false;
+    if (!NewUpgradeDialog.a(this.a)) {
+      NewUpgradeDialog.b(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akkt
  * JD-Core Version:    0.7.0.1
  */

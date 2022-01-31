@@ -6,6 +6,7 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -211,6 +212,16 @@ public class PublishVideoEntry
   public int getIntExtra(String paramString, int paramInt)
   {
     return getExtraJson().optInt(paramString, paramInt);
+  }
+  
+  public JSONArray getJSONArrayExtra(String paramString)
+  {
+    return getExtraJson().optJSONArray(paramString);
+  }
+  
+  public JSONObject getJSONExtra(String paramString)
+  {
+    return getExtraJson().optJSONObject(paramString);
   }
   
   public long getLongExtra(String paramString, long paramLong)

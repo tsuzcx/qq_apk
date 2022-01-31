@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aaam;
-import aaan;
+import aahb;
+import aahc;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -46,11 +46,11 @@ public class CameraRendererable
   private Drawable2d jdField_a_of_type_ComHiarSdkUtilsDrawable2d = new Drawable2d();
   private ARRenderMangerInnerCallback jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback;
   ARRenerArumentManager jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager;
-  Runnable jdField_a_of_type_JavaLangRunnable = new aaam(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new aahb(this);
   private Random jdField_a_of_type_JavaUtilRandom;
   public boolean a;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private aaan[] jdField_a_of_type_ArrayOfAaan = new aaan[300];
+  private aahc[] jdField_a_of_type_ArrayOfAahc = new aahc[300];
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = -1L;
@@ -115,7 +115,7 @@ public class CameraRendererable
     {
       localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
-      localObject = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a().getResources(), 2130842228, (BitmapFactory.Options)localObject);
+      localObject = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a().getResources(), 2130842263, (BitmapFactory.Options)localObject);
       if (localObject != null)
       {
         GLUtils.texImage2D(3553, 0, (Bitmap)localObject, 0);
@@ -139,7 +139,7 @@ public class CameraRendererable
     {
       localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
-      localObject = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a().getResources(), 2130842230, (BitmapFactory.Options)localObject);
+      localObject = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a().getResources(), 2130842265, (BitmapFactory.Options)localObject);
       if (localObject != null)
       {
         GLUtils.texImage2D(3553, 0, (Bitmap)localObject, 0);
@@ -395,26 +395,26 @@ public class CameraRendererable
     float f1 = 1.0F / i6;
     float f2 = 5.0F / i6;
     int i4 = 0;
-    aaan localaaan2;
+    aahc localaahc2;
     label184:
-    aaan localaaan1;
+    aahc localaahc1;
     int i3;
     if (i4 < 300)
     {
-      localaaan2 = this.jdField_a_of_type_ArrayOfAaan[i4];
-      if ((localaaan2 != null) && (!localaaan2.jdField_a_of_type_Boolean))
+      localaahc2 = this.jdField_a_of_type_ArrayOfAahc[i4];
+      if ((localaahc2 != null) && (!localaahc2.jdField_a_of_type_Boolean))
       {
-        if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() > 0.7F - localaaan2.jdField_b_of_type_Float * 0.35F - Math.abs(localaaan2.jdField_a_of_type_Float * 0.3F - 0.15F)) {
-          localaaan2.jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() > 0.7F - localaahc2.jdField_b_of_type_Float * 0.35F - Math.abs(localaahc2.jdField_a_of_type_Float * 0.3F - 0.15F)) {
+          localaahc2.jdField_a_of_type_Boolean = true;
         }
       }
       else
       {
-        if (localaaan2 != null)
+        if (localaahc2 != null)
         {
-          localaaan1 = localaaan2;
+          localaahc1 = localaahc2;
           i3 = i2;
-          if (!localaaan2.jdField_a_of_type_Boolean) {
+          if (!localaahc2.jdField_a_of_type_Boolean) {
             break label370;
           }
         }
@@ -428,40 +428,40 @@ public class CameraRendererable
       i4 += 1;
       break;
       float f3 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
-      float f4 = localaaan2.jdField_b_of_type_Float;
-      localaaan2.jdField_b_of_type_Float = (f3 * 0.3F + 0.2F * localaaan2.jdField_b_of_type_Float + f2 + f4);
-      if (localaaan2.jdField_b_of_type_Float <= 1.0D) {
+      float f4 = localaahc2.jdField_b_of_type_Float;
+      localaahc2.jdField_b_of_type_Float = (f3 * 0.3F + 0.2F * localaahc2.jdField_b_of_type_Float + f2 + f4);
+      if (localaahc2.jdField_b_of_type_Float <= 1.0D) {
         break label184;
       }
-      localaaan2.jdField_a_of_type_Boolean = true;
+      localaahc2.jdField_a_of_type_Boolean = true;
       break label184;
       label281:
-      localaaan1 = localaaan2;
-      if (localaaan2 == null)
+      localaahc1 = localaahc2;
+      if (localaahc2 == null)
       {
-        localaaan1 = new aaan(this);
-        this.jdField_a_of_type_ArrayOfAaan[i4] = localaaan1;
+        localaahc1 = new aahc(this);
+        this.jdField_a_of_type_ArrayOfAahc[i4] = localaahc1;
       }
       f3 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
       if (f3 < 0.4D) {
-        localaaan1.jdField_a_of_type_Float = (f3 * 2.35F + 0.02F);
+        localaahc1.jdField_a_of_type_Float = (f3 * 2.35F + 0.02F);
       }
       for (;;)
       {
-        localaaan1.jdField_b_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * 0.05F + f1);
-        localaaan1.jdField_a_of_type_Boolean = false;
+        localaahc1.jdField_b_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * 0.05F + f1);
+        localaahc1.jdField_a_of_type_Boolean = false;
         i3 = i2 + 1;
         label370:
-        if ((localaaan1 == null) || (localaaan1.jdField_a_of_type_Boolean) || (localaaan1.jdField_b_of_type_Float >= 1.0D)) {
+        if ((localaahc1 == null) || (localaahc1.jdField_a_of_type_Boolean) || (localaahc1.jdField_b_of_type_Float >= 1.0D)) {
           break label542;
         }
-        this.jdField_b_of_type_ArrayOfFloat[(i1 * 2)] = (this.jdField_a_of_type_ArrayOfAaan[i4].jdField_a_of_type_Float * i5);
-        this.jdField_b_of_type_ArrayOfFloat[(i1 * 2 + 1)] = (this.jdField_a_of_type_ArrayOfAaan[i4].jdField_b_of_type_Float * i6);
+        this.jdField_b_of_type_ArrayOfFloat[(i1 * 2)] = (this.jdField_a_of_type_ArrayOfAahc[i4].jdField_a_of_type_Float * i5);
+        this.jdField_b_of_type_ArrayOfFloat[(i1 * 2 + 1)] = (this.jdField_a_of_type_ArrayOfAahc[i4].jdField_b_of_type_Float * i6);
         i1 += 1;
         i2 = i3;
         break;
         if (f3 > 0.6F) {
-          localaaan1.jdField_a_of_type_Float = ((1.0F - f3) * 2.35F + 0.02F);
+          localaahc1.jdField_a_of_type_Float = ((1.0F - f3) * 2.35F + 0.02F);
         }
       }
       this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);

@@ -1,15 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class xqv
-  implements CompoundButton.OnCheckedChangeListener
+class xqv
+  implements Runnable
 {
-  public xqv(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xqv(xqt paramxqt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    NewFlowCameraActivity.a(this.a, paramBoolean);
+    QQToast.a(this.a.a.a, 1, "资源加载失败", 1).a();
   }
 }
 

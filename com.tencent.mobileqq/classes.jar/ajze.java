@@ -1,7 +1,22 @@
-public abstract class ajze
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
+import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+
+class ajze
+  implements Runnable
 {
-  public int a;
-  public byte[] a;
+  ajze(ajzd paramajzd) {}
+  
+  public void run()
+  {
+    Bitmap localBitmap = this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.a;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageBitmap(localBitmap);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageDrawable(null);
+  }
 }
 
 

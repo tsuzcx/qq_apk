@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.RotateAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import java.io.File;
+import java.net.URL;
 
-class uot
-  implements Action.OnActionEndListener
+public class uot
+  implements Runnable
 {
-  uot(uos paramuos) {}
+  public uot(BaseBubbleBuilder paramBaseBubbleBuilder, MessageRecord paramMessageRecord) {}
   
-  public void a()
+  public void run()
   {
-    RotateAction localRotateAction = new RotateAction(3000, 360, 0);
-    localRotateAction.a = true;
-    this.a.a.d.a(new Action[] { localRotateAction });
+    File localFile = AbsDownloader.a(URLDrawableHelper.a((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 1, null).toString());
+    if ((localFile == null) || (!localFile.exists())) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.a().a((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 2);
+    }
   }
 }
 

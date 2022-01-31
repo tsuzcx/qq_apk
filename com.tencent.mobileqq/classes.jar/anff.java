@@ -1,26 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.troop.TroopPluginManager;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.plugin.QZonePluginInstaller;
 
 public class anff
-  extends Handler
 {
-  public anff(TroopPluginManager paramTroopPluginManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public anfg a;
+  public anfh a;
+  public PluginRecord a;
+  public String a;
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    ((TroopPluginManager.TroopPluginCallback)paramMessage.obj).a(paramMessage.arg1);
-  }
+  public anff(QZonePluginInstaller paramQZonePluginInstaller) {}
 }
 
 

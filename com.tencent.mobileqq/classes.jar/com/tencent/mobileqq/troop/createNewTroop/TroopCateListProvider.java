@@ -17,18 +17,18 @@ public class TroopCateListProvider
   
   static
   {
-    b.put("10009", Integer.valueOf(2130841289));
-    b.put("10010", Integer.valueOf(2130841290));
-    b.put("10011", Integer.valueOf(2130841291));
-    b.put("24", Integer.valueOf(2130841292));
-    b.put("25", Integer.valueOf(2130841293));
-    b.put("26", Integer.valueOf(2130841294));
-    b.put("27", Integer.valueOf(2130841295));
-    b.put("28", Integer.valueOf(2130841296));
-    b.put("29", Integer.valueOf(2130841297));
-    b.put("30", Integer.valueOf(2130841298));
-    b.put("31", Integer.valueOf(2130841299));
-    b.put("32", Integer.valueOf(2130841300));
+    b.put("10009", Integer.valueOf(2130841315));
+    b.put("10010", Integer.valueOf(2130841316));
+    b.put("10011", Integer.valueOf(2130841317));
+    b.put("24", Integer.valueOf(2130841318));
+    b.put("25", Integer.valueOf(2130841319));
+    b.put("26", Integer.valueOf(2130841320));
+    b.put("27", Integer.valueOf(2130841321));
+    b.put("28", Integer.valueOf(2130841322));
+    b.put("29", Integer.valueOf(2130841323));
+    b.put("30", Integer.valueOf(2130841324));
+    b.put("31", Integer.valueOf(2130841325));
+    b.put("32", Integer.valueOf(2130841326));
   }
   
   private TroopCateListProvider()
@@ -160,7 +160,7 @@ public class TroopCateListProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.TroopCateListProvider
  * JD-Core Version:    0.7.0.1
  */

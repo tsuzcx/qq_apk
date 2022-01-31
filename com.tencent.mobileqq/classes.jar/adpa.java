@@ -1,37 +1,21 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
-import java.util.List;
-import java.util.Vector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class adpa
-  implements Runnable
+public final class adpa
+  implements DialogInterface.OnClickListener
 {
-  public adpa(HiBoomFontDrawer paramHiBoomFontDrawer, List paramList) {}
+  public adpa(FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      Bitmap localBitmap = HiBoomFontDrawer.a((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      if (localBitmap != null) {
-        BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaUtilList.get(i), localBitmap);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.a.add(this.jdField_a_of_type_JavaUtilList.get(i));
-      }
-    }
-    HiBoomFontDrawer.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer);
+    this.a.b();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adpa
  * JD-Core Version:    0.7.0.1
  */

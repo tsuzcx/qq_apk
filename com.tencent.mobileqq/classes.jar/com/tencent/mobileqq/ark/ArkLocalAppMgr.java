@@ -1,38 +1,38 @@
 package com.tencent.mobileqq.ark;
 
-import aauo;
-import aaup;
-import aaur;
-import aaus;
-import aaut;
-import aauv;
-import aauw;
-import aaux;
-import aauy;
-import aauz;
-import aavc;
-import aavd;
-import aave;
-import aavf;
-import aavg;
-import aavh;
-import aavi;
-import aavl;
-import aavn;
-import aavp;
-import aavq;
-import aavs;
-import aavt;
-import aavu;
-import aavv;
-import aavw;
-import aavx;
-import aavy;
-import aawa;
-import aawb;
-import aawc;
-import aawd;
-import aawe;
+import abbj;
+import abbk;
+import abbm;
+import abbn;
+import abbo;
+import abbq;
+import abbr;
+import abbs;
+import abbt;
+import abbu;
+import abbx;
+import abby;
+import abbz;
+import abca;
+import abcb;
+import abcc;
+import abcd;
+import abcg;
+import abci;
+import abck;
+import abcl;
+import abcn;
+import abco;
+import abcp;
+import abcq;
+import abcr;
+import abcs;
+import abct;
+import abcv;
+import abcw;
+import abcx;
+import abcy;
+import abcz;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -95,7 +95,7 @@ public class ArkLocalAppMgr
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     i();
     a(10000);
-    ThreadManager.post(new aauo(this), 5, null, true);
+    ThreadManager.post(new abbj(this), 5, null, true);
   }
   
   private static int a(int paramInt, long paramLong)
@@ -325,31 +325,35 @@ public class ArkLocalAppMgr
     }
     switch (paramInt)
     {
+    case -5: 
+    case -4: 
     case 1: 
     case 2: 
     case 3: 
     case 4: 
     default: 
       if (paramInt > 0) {
-        return localBaseApplication.getString(2131436174);
+        return localBaseApplication.getString(2131436192);
       }
       break;
     case 0: 
-      return localBaseApplication.getString(2131436167);
+      return localBaseApplication.getString(2131436185);
     case 5: 
-      return localBaseApplication.getString(2131436168);
+      return localBaseApplication.getString(2131436186);
     case 6: 
-      return localBaseApplication.getString(2131436169);
+      return localBaseApplication.getString(2131436187);
     case 7: 
-      return localBaseApplication.getString(2131436170);
+      return localBaseApplication.getString(2131436188);
     case -1: 
-      return localBaseApplication.getString(2131436173);
+      return localBaseApplication.getString(2131436191);
     case -2: 
-      return localBaseApplication.getString(2131436172);
+      return localBaseApplication.getString(2131436190);
     case -3: 
-      return localBaseApplication.getString(2131436171);
+      return localBaseApplication.getString(2131436189);
+    case -6: 
+      return localBaseApplication.getString(2131436200);
     }
-    return localBaseApplication.getString(2131436175);
+    return localBaseApplication.getString(2131436193);
   }
   
   public static String a(String paramString)
@@ -393,65 +397,65 @@ public class ArkLocalAppMgr
     //   35: astore_1
     //   36: aload_1
     //   37: areturn
-    //   38: new 298	java/io/File
+    //   38: new 299	java/io/File
     //   41: dup
     //   42: aload_1
-    //   43: invokestatic 300	com/tencent/mobileqq/ark/ArkLocalAppMgr:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   46: invokespecial 302	java/io/File:<init>	(Ljava/lang/String;)V
+    //   43: invokestatic 301	com/tencent/mobileqq/ark/ArkLocalAppMgr:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   46: invokespecial 303	java/io/File:<init>	(Ljava/lang/String;)V
     //   49: astore 5
     //   51: aload 5
-    //   53: invokevirtual 305	java/io/File:exists	()Z
+    //   53: invokevirtual 306	java/io/File:exists	()Z
     //   56: ifne +85 -> 141
     //   59: aload 5
-    //   61: invokevirtual 308	java/io/File:delete	()Z
+    //   61: invokevirtual 309	java/io/File:delete	()Z
     //   64: pop
     //   65: aload 5
-    //   67: invokevirtual 311	java/io/File:mkdirs	()Z
+    //   67: invokevirtual 312	java/io/File:mkdirs	()Z
     //   70: pop
     //   71: aload_1
     //   72: aload_2
-    //   73: invokestatic 313	com/tencent/mobileqq/ark/ArkLocalAppMgr:b	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   73: invokestatic 314	com/tencent/mobileqq/ark/ArkLocalAppMgr:b	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   76: astore 5
-    //   78: new 315	java/io/FileOutputStream
+    //   78: new 316	java/io/FileOutputStream
     //   81: dup
     //   82: aload 5
-    //   84: invokespecial 316	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   84: invokespecial 317	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   87: astore_2
     //   88: aload_2
     //   89: astore_1
     //   90: aload_2
     //   91: aload_3
-    //   92: invokevirtual 320	java/io/FileOutputStream:write	([B)V
+    //   92: invokevirtual 321	java/io/FileOutputStream:write	([B)V
     //   95: aload 5
     //   97: astore_1
     //   98: aload_2
     //   99: ifnull -63 -> 36
     //   102: aload_2
-    //   103: invokevirtual 323	java/io/FileOutputStream:close	()V
+    //   103: invokevirtual 324	java/io/FileOutputStream:close	()V
     //   106: aload 5
     //   108: areturn
     //   109: astore_1
     //   110: ldc 192
-    //   112: new 325	java/lang/StringBuilder
+    //   112: new 326	java/lang/StringBuilder
     //   115: dup
-    //   116: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   119: ldc_w 328
-    //   122: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   119: ldc_w 329
+    //   122: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: aload_1
     //   126: invokevirtual 273	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   129: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 336	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   135: invokestatic 208	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   138: aload 5
     //   140: areturn
     //   141: aload 5
-    //   143: invokevirtual 338	java/io/File:isFile	()Z
+    //   143: invokevirtual 339	java/io/File:isFile	()Z
     //   146: ifeq -75 -> 71
     //   149: aload 5
-    //   151: invokevirtual 308	java/io/File:delete	()Z
+    //   151: invokevirtual 309	java/io/File:delete	()Z
     //   154: pop
     //   155: aload 5
-    //   157: invokevirtual 311	java/io/File:mkdirs	()Z
+    //   157: invokevirtual 312	java/io/File:mkdirs	()Z
     //   160: pop
     //   161: goto -90 -> 71
     //   164: astore_3
@@ -460,37 +464,37 @@ public class ArkLocalAppMgr
     //   167: aload_2
     //   168: astore_1
     //   169: aload_3
-    //   170: invokevirtual 341	java/lang/Exception:printStackTrace	()V
+    //   170: invokevirtual 342	java/lang/Exception:printStackTrace	()V
     //   173: aload_2
     //   174: astore_1
     //   175: ldc 192
-    //   177: new 325	java/lang/StringBuilder
+    //   177: new 326	java/lang/StringBuilder
     //   180: dup
-    //   181: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   184: ldc_w 328
-    //   187: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   184: ldc_w 329
+    //   187: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   190: aload_3
     //   191: invokevirtual 273	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   194: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   194: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: invokevirtual 336	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   200: invokestatic 208	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   203: aload_2
     //   204: ifnull +7 -> 211
     //   207: aload_2
-    //   208: invokevirtual 323	java/io/FileOutputStream:close	()V
+    //   208: invokevirtual 324	java/io/FileOutputStream:close	()V
     //   211: aconst_null
     //   212: areturn
     //   213: astore_1
     //   214: ldc 192
-    //   216: new 325	java/lang/StringBuilder
+    //   216: new 326	java/lang/StringBuilder
     //   219: dup
-    //   220: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   223: ldc_w 328
-    //   226: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   223: ldc_w 329
+    //   226: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   229: aload_1
     //   230: invokevirtual 273	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   233: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   233: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 336	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   239: invokestatic 208	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   242: goto -31 -> 211
     //   245: astore_1
@@ -499,20 +503,20 @@ public class ArkLocalAppMgr
     //   249: aload_2
     //   250: ifnull +7 -> 257
     //   253: aload_2
-    //   254: invokevirtual 323	java/io/FileOutputStream:close	()V
+    //   254: invokevirtual 324	java/io/FileOutputStream:close	()V
     //   257: aload_1
     //   258: athrow
     //   259: astore_2
     //   260: ldc 192
-    //   262: new 325	java/lang/StringBuilder
+    //   262: new 326	java/lang/StringBuilder
     //   265: dup
-    //   266: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   269: ldc_w 328
-    //   272: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   269: ldc_w 329
+    //   272: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   275: aload_2
     //   276: invokevirtual 273	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   279: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   282: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   279: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   282: invokevirtual 336	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   285: invokestatic 208	com/tencent/mobileqq/ark/ArkAppCenter:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   288: goto -31 -> 257
     //   291: astore_3
@@ -583,7 +587,7 @@ public class ArkLocalAppMgr
           bool1 = true;
           AssertUtil.a(bool1);
           paramUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
-          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new aavp(this, paramUpdateAppByNameTask));
+          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new abck(this, paramUpdateAppByNameTask));
           return;
         }
       }
@@ -614,7 +618,7 @@ public class ArkLocalAppMgr
     }
   }
   
-  private void a(aavw arg1)
+  private void a(abcr arg1)
   {
     if ((!jdField_a_of_type_Boolean) && (???.jdField_a_of_type_Boolean != true)) {
       throw new AssertionError();
@@ -630,11 +634,11 @@ public class ArkLocalAppMgr
         if (this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) {
           break label177;
         }
-        aavw localaavw = (aavw)this.jdField_c_of_type_JavaUtilArrayList.get(0);
-        if (localaavw.jdField_a_of_type_Boolean) {
+        abcr localabcr = (abcr)this.jdField_c_of_type_JavaUtilArrayList.get(0);
+        if (localabcr.jdField_a_of_type_Boolean) {
           break label180;
         }
-        if ((!jdField_a_of_type_Boolean) && (localaavw.jdField_a_of_type_JavaUtilSet.isEmpty())) {
+        if ((!jdField_a_of_type_Boolean) && (localabcr.jdField_a_of_type_JavaUtilSet.isEmpty())) {
           throw new AssertionError();
         }
       }
@@ -643,84 +647,84 @@ public class ArkLocalAppMgr
       return;
       label180:
       this.jdField_c_of_type_JavaUtilArrayList.remove(localObject);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new aavf(this, localObject));
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new abca(this, localObject));
     }
   }
   
-  private void a(aavw paramaavw, int paramInt, String paramString1, String paramString2, String paramString3)
+  private void a(abcr paramabcr, int paramInt, String paramString1, String paramString2, String paramString3)
   {
     if ((!jdField_a_of_type_Boolean) && (TextUtils.isEmpty(paramString3))) {
       throw new AssertionError();
     }
-    ThreadManager.post(new aave(this, paramInt, paramString2, paramString1, paramaavw, paramString3), 5, null, true);
+    ThreadManager.post(new abbz(this, paramInt, paramString2, paramString1, paramabcr, paramString3), 5, null, true);
   }
   
-  private void a(aavx paramaavx)
+  private void a(abcs paramabcs)
   {
-    if (paramaavx.jdField_a_of_type_Int != 0) {
-      paramaavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
+    if (paramabcs.jdField_a_of_type_Int != 0) {
+      paramabcs.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
     }
-    if ((paramaavx.jdField_a_of_type_Int == 0) && ((paramaavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo == null) || (paramaavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.jdField_a_of_type_JavaLangString == null)))
+    if ((paramabcs.jdField_a_of_type_Int == 0) && ((paramabcs.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo == null) || (paramabcs.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.jdField_a_of_type_JavaLangString == null)))
     {
       AssertUtil.a(false);
-      paramaavx.jdField_a_of_type_Int = -1;
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("notifyGetAppPathByNameTaskResult, retCode is success but task.appPathInfo.path==NULL, retCode=%d, app-name=%s", new Object[] { Integer.valueOf(paramaavx.jdField_a_of_type_Int), paramaavx.jdField_b_of_type_JavaLangString }));
+      paramabcs.jdField_a_of_type_Int = -1;
+      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("notifyGetAppPathByNameTaskResult, retCode is success but task.appPathInfo.path==NULL, retCode=%d, app-name=%s", new Object[] { Integer.valueOf(paramabcs.jdField_a_of_type_Int), paramabcs.jdField_b_of_type_JavaLangString }));
     }
-    ArkAppDataReport.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramaavx.jdField_b_of_type_JavaLangString, paramaavx.jdField_a_of_type_Int, System.currentTimeMillis() - paramaavx.jdField_a_of_type_Long, NetworkUtil.b(BaseApplication.getContext()));
-    ArkLocalAppMgr.IGetAppPathByNameCallback localIGetAppPathByNameCallback = paramaavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback;
+    ArkAppDataReport.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramabcs.jdField_b_of_type_JavaLangString, paramabcs.jdField_a_of_type_Int, System.currentTimeMillis() - paramabcs.jdField_a_of_type_Long, NetworkUtil.b(BaseApplication.getContext()));
+    ArkLocalAppMgr.IGetAppPathByNameCallback localIGetAppPathByNameCallback = paramabcs.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback;
     if (localIGetAppPathByNameCallback != null)
     {
-      if ((paramaavx.jdField_a_of_type_JavaLangString == null) || (paramaavx.jdField_a_of_type_JavaLangString.length() == 0)) {
-        paramaavx.jdField_a_of_type_JavaLangString = a(paramaavx.jdField_a_of_type_Int);
+      if ((paramabcs.jdField_a_of_type_JavaLangString == null) || (paramabcs.jdField_a_of_type_JavaLangString.length() == 0)) {
+        paramabcs.jdField_a_of_type_JavaLangString = a(paramabcs.jdField_a_of_type_Int);
       }
-      localIGetAppPathByNameCallback.a(paramaavx.jdField_a_of_type_Int, paramaavx.jdField_a_of_type_JavaLangString, paramaavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo, paramaavx.jdField_a_of_type_JavaLangObject);
+      localIGetAppPathByNameCallback.a(paramabcs.jdField_a_of_type_Int, paramabcs.jdField_a_of_type_JavaLangString, paramabcs.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo, paramabcs.jdField_a_of_type_JavaLangObject);
     }
   }
   
-  private void a(aawa arg1)
+  private void a(abcv arg1)
   {
     ???.jdField_a_of_type_Boolean = true;
     Object localObject1 = new ArrayList();
     synchronized (this.d)
     {
-      aawa localaawa;
+      abcv localabcv;
       if (this.d.size() > 0)
       {
-        localaawa = (aawa)this.d.get(0);
-        if (localaawa.jdField_a_of_type_Boolean) {}
+        localabcv = (abcv)this.d.get(0);
+        if (localabcv.jdField_a_of_type_Boolean) {}
       }
       else
       {
         ??? = ((ArrayList)localObject1).iterator();
         while (???.hasNext())
         {
-          localObject1 = (aawa)???.next();
-          ((aawa)localObject1).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppViewByIntentCallback.a(((aawa)localObject1).jdField_a_of_type_JavaLangString, ((aawa)localObject1).jdField_b_of_type_JavaLangString, ((aawa)localObject1).d, ((aawa)localObject1).e, ((aawa)localObject1).c);
+          localObject1 = (abcv)???.next();
+          ((abcv)localObject1).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppViewByIntentCallback.a(((abcv)localObject1).jdField_a_of_type_JavaLangString, ((abcv)localObject1).jdField_b_of_type_JavaLangString, ((abcv)localObject1).d, ((abcv)localObject1).e, ((abcv)localObject1).c);
         }
       }
-      ((ArrayList)localObject1).add(localaawa);
+      ((ArrayList)localObject1).add(localabcv);
       this.d.remove(0);
     }
   }
   
-  private void a(aawb paramaawb)
+  private void a(abcw paramabcw)
   {
-    aavu localaavu = new aavu(null);
-    localaavu.jdField_a_of_type_Boolean = false;
-    ThreadManager.post(new aavq(this, localaavu, paramaawb), 5, null, true);
+    abcp localabcp = new abcp(null);
+    localabcp.jdField_a_of_type_Boolean = false;
+    ThreadManager.post(new abcl(this, localabcp, paramabcw), 5, null, true);
   }
   
-  private void a(aawc paramaawc)
+  private void a(abcx paramabcx)
   {
-    ThreadManager.post(new aaux(this, new aavv(null), paramaawc), 5, null, true);
+    ThreadManager.post(new abbs(this, new abcq(null), paramabcx), 5, null, true);
   }
   
-  private void a(aawe paramaawe)
+  private void a(abcz paramabcz)
   {
-    if ((paramaawe == null) || (paramaawe.jdField_a_of_type_JavaUtilArrayList == null) || (paramaawe.jdField_a_of_type_JavaUtilArrayList.size() == 0) || (!ArkAppCenter.b())) {
+    if ((paramabcz == null) || (paramabcz.jdField_a_of_type_JavaUtilArrayList == null) || (paramabcz.jdField_a_of_type_JavaUtilArrayList.size() == 0) || (!ArkAppCenter.b())) {
       return;
     }
-    a(paramaawe.jdField_a_of_type_JavaUtilArrayList, paramaawe, new aauv(this));
+    a(paramabcz.jdField_a_of_type_JavaUtilArrayList, paramabcz, new abbq(this));
   }
   
   private void a(ArkAppCGI.QueryAppInfoByAppNameBatchResult paramQueryAppInfoByAppNameBatchResult, HashMap paramHashMap)
@@ -790,7 +794,7 @@ public class ArkLocalAppMgr
           SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("ArkLocalAppUpdateTime", 0).edit();
           localEditor.putString(str + "_sign", Base64.encodeToString(localQueryAppInfoResult.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_ArrayOfByte, 0));
           localEditor.commit();
-          localArkAppCGI.a(localQueryAppInfoResult.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_JavaLangString, localQueryAppInfoResult.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_ArrayOfByte, localUpdateAppByNameTask, new aavn(this));
+          localArkAppCGI.a(localQueryAppInfoResult.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_JavaLangString, localQueryAppInfoResult.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_ArrayOfByte, localUpdateAppByNameTask, new abci(this));
         }
       }
       else
@@ -806,7 +810,7 @@ public class ArkLocalAppMgr
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.post(new aavh(paramString), 5, null, false);
+    ThreadManager.post(new abcc(paramString), 5, null, false);
   }
   
   private void a(String paramString, int paramInt)
@@ -817,7 +821,7 @@ public class ArkLocalAppMgr
     synchronized (this.jdField_c_of_type_JavaUtilHashMap)
     {
       long l = System.currentTimeMillis();
-      this.jdField_c_of_type_JavaUtilHashMap.put(paramString, new aavt(l, paramInt));
+      this.jdField_c_of_type_JavaUtilHashMap.put(paramString, new abco(l, paramInt));
       a(paramString, l);
       b(paramString, paramInt);
       return;
@@ -873,31 +877,31 @@ public class ArkLocalAppMgr
     //   29: monitorexit
     //   30: return
     //   31: aload_0
-    //   32: invokestatic 300	com/tencent/mobileqq/ark/ArkLocalAppMgr:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: invokestatic 301	com/tencent/mobileqq/ark/ArkLocalAppMgr:b	(Ljava/lang/String;)Ljava/lang/String;
     //   35: astore_0
     //   36: aload_0
     //   37: ifnull -10 -> 27
     //   40: aload_0
     //   41: invokevirtual 164	java/lang/String:length	()I
     //   44: ifeq -17 -> 27
-    //   47: new 298	java/io/File
+    //   47: new 299	java/io/File
     //   50: dup
     //   51: aload_0
-    //   52: invokespecial 302	java/io/File:<init>	(Ljava/lang/String;)V
+    //   52: invokespecial 303	java/io/File:<init>	(Ljava/lang/String;)V
     //   55: astore_0
     //   56: aload_0
-    //   57: invokevirtual 710	java/io/File:isDirectory	()Z
+    //   57: invokevirtual 711	java/io/File:isDirectory	()Z
     //   60: ifeq -33 -> 27
     //   63: aload_0
-    //   64: invokevirtual 305	java/io/File:exists	()Z
+    //   64: invokevirtual 306	java/io/File:exists	()Z
     //   67: ifeq -40 -> 27
     //   70: aload_0
-    //   71: new 712	aavk
+    //   71: new 713	abcf
     //   74: dup
     //   75: aload_1
     //   76: iload_2
-    //   77: invokespecial 714	aavk:<init>	(Ljava/lang/String;Z)V
-    //   80: invokevirtual 718	java/io/File:listFiles	(Ljava/io/FileFilter;)[Ljava/io/File;
+    //   77: invokespecial 715	abcf:<init>	(Ljava/lang/String;Z)V
+    //   80: invokevirtual 719	java/io/File:listFiles	(Ljava/io/FileFilter;)[Ljava/io/File;
     //   83: pop
     //   84: goto -57 -> 27
     //   87: astore_0
@@ -951,7 +955,7 @@ public class ArkLocalAppMgr
     }
   }
   
-  private void a(ArrayList paramArrayList, Object paramObject, aawd paramaawd)
+  private void a(ArrayList paramArrayList, Object paramObject, abcy paramabcy)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return;
@@ -962,7 +966,7 @@ public class ArkLocalAppMgr
       ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("updateAppByName, app=null", new Object[0]));
       return;
     }
-    ThreadManager.post(new aavl(this, paramArrayList, paramObject, paramaawd, localQQAppInterface), 5, null, true);
+    ThreadManager.post(new abcg(this, paramArrayList, paramObject, paramabcy, localQQAppInterface), 5, null, true);
   }
   
   private void a(boolean paramBoolean, byte[] paramArrayOfByte, ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask)
@@ -1042,16 +1046,16 @@ public class ArkLocalAppMgr
   private byte[] a(String paramString)
   {
     // Byte code:
-    //   0: new 298	java/io/File
+    //   0: new 299	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 302	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 303	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore 7
     //   10: aload 7
-    //   12: invokevirtual 776	java/io/File:length	()J
+    //   12: invokevirtual 777	java/io/File:length	()J
     //   15: lstore 4
     //   17: lload 4
-    //   19: ldc2_w 777
+    //   19: ldc2_w 778
     //   22: lcmp
     //   23: ifle +5 -> 28
     //   26: aconst_null
@@ -1060,10 +1064,10 @@ public class ArkLocalAppMgr
     //   30: l2i
     //   31: newarray byte
     //   33: astore 8
-    //   35: new 780	java/io/FileInputStream
+    //   35: new 781	java/io/FileInputStream
     //   38: dup
     //   39: aload 7
-    //   41: invokespecial 783	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   41: invokespecial 784	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   44: astore 6
     //   46: iconst_0
     //   47: istore_2
@@ -1082,7 +1086,7 @@ public class ArkLocalAppMgr
     //   68: arraylength
     //   69: iload_2
     //   70: isub
-    //   71: invokevirtual 787	java/io/FileInputStream:read	([BII)I
+    //   71: invokevirtual 788	java/io/FileInputStream:read	([BII)I
     //   74: istore_3
     //   75: iload_3
     //   76: iflt +10 -> 86
@@ -1099,50 +1103,50 @@ public class ArkLocalAppMgr
     //   93: if_icmpeq +61 -> 154
     //   96: aload 6
     //   98: astore_1
-    //   99: new 774	java/io/IOException
+    //   99: new 775	java/io/IOException
     //   102: dup
-    //   103: new 325	java/lang/StringBuilder
+    //   103: new 326	java/lang/StringBuilder
     //   106: dup
-    //   107: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   110: ldc_w 789
-    //   113: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   110: ldc_w 790
+    //   113: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: aload 7
-    //   118: invokevirtual 792	java/io/File:getName	()Ljava/lang/String;
-    //   121: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   127: invokespecial 793	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   118: invokevirtual 793	java/io/File:getName	()Ljava/lang/String;
+    //   121: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: invokevirtual 336	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   127: invokespecial 794	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   130: athrow
     //   131: astore 7
     //   133: aload 6
     //   135: astore_1
     //   136: aload 7
-    //   138: invokevirtual 794	java/io/IOException:printStackTrace	()V
+    //   138: invokevirtual 795	java/io/IOException:printStackTrace	()V
     //   141: aload 6
     //   143: ifnull +8 -> 151
     //   146: aload 6
-    //   148: invokevirtual 795	java/io/FileInputStream:close	()V
+    //   148: invokevirtual 796	java/io/FileInputStream:close	()V
     //   151: aload 8
     //   153: areturn
     //   154: aload 6
     //   156: astore_1
     //   157: aload 6
-    //   159: invokevirtual 795	java/io/FileInputStream:close	()V
+    //   159: invokevirtual 796	java/io/FileInputStream:close	()V
     //   162: aload 6
     //   164: ifnull -13 -> 151
     //   167: aload 6
-    //   169: invokevirtual 795	java/io/FileInputStream:close	()V
+    //   169: invokevirtual 796	java/io/FileInputStream:close	()V
     //   172: goto -21 -> 151
     //   175: astore_1
     //   176: ldc 192
-    //   178: new 325	java/lang/StringBuilder
+    //   178: new 326	java/lang/StringBuilder
     //   181: dup
-    //   182: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   185: ldc_w 797
-    //   188: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   185: ldc_w 798
+    //   188: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   191: aload_1
-    //   192: invokevirtual 798	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   195: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   192: invokevirtual 799	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   195: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: invokevirtual 336	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   201: iconst_0
     //   202: anewarray 4	java/lang/Object
     //   205: invokestatic 205	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
@@ -1150,15 +1154,15 @@ public class ArkLocalAppMgr
     //   211: goto -60 -> 151
     //   214: astore_1
     //   215: ldc 192
-    //   217: new 325	java/lang/StringBuilder
+    //   217: new 326	java/lang/StringBuilder
     //   220: dup
-    //   221: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   224: ldc_w 797
-    //   227: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   224: ldc_w 798
+    //   227: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: aload_1
-    //   231: invokevirtual 798	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   234: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   231: invokevirtual 799	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   234: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: invokevirtual 336	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   240: iconst_0
     //   241: anewarray 4	java/lang/Object
     //   244: invokestatic 205	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
@@ -1170,20 +1174,20 @@ public class ArkLocalAppMgr
     //   257: aload_1
     //   258: ifnull +7 -> 265
     //   261: aload_1
-    //   262: invokevirtual 795	java/io/FileInputStream:close	()V
+    //   262: invokevirtual 796	java/io/FileInputStream:close	()V
     //   265: aload 6
     //   267: athrow
     //   268: astore_1
     //   269: ldc 192
-    //   271: new 325	java/lang/StringBuilder
+    //   271: new 326	java/lang/StringBuilder
     //   274: dup
-    //   275: invokespecial 326	java/lang/StringBuilder:<init>	()V
-    //   278: ldc_w 797
-    //   281: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   278: ldc_w 798
+    //   281: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   284: aload_1
-    //   285: invokevirtual 798	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   288: invokevirtual 332	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: invokevirtual 335	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   285: invokevirtual 799	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   288: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: invokevirtual 336	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   294: iconst_0
     //   295: anewarray 4	java/lang/Object
     //   298: invokestatic 205	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
@@ -1461,7 +1465,7 @@ public class ArkLocalAppMgr
     Object localObject = a(paramString1, paramString2);
     if ((localObject != null) && ((paramString2 == null) || (b(((ArkLocalAppMgr.AppPathInfo)localObject).jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDesc.jdField_b_of_type_JavaLangString, paramString2) >= 0)))
     {
-      paramString1 = new aavx();
+      paramString1 = new abcs();
       paramString1.jdField_a_of_type_Int = 0;
       paramString1.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = ((ArkLocalAppMgr.AppPathInfo)localObject);
       paramString1.jdField_a_of_type_JavaLangObject = paramObject;
@@ -1471,22 +1475,22 @@ public class ArkLocalAppMgr
       return;
     }
     ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppPathByName, app not found at local, update app, app-name=%s, min-ver=%s", new Object[] { paramString1, paramString2 }));
-    localObject = new aavx();
-    ((aavx)localObject).jdField_a_of_type_Int = -1;
-    ((aavx)localObject).jdField_b_of_type_JavaLangString = paramString1;
-    ((aavx)localObject).c = paramString2;
-    ((aavx)localObject).jdField_a_of_type_JavaLangObject = paramObject;
-    ((aavx)localObject).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback = paramIGetAppPathByNameCallback;
-    ((aavx)localObject).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
-    ((aavx)localObject).jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(a(), this);
+    localObject = new abcs();
+    ((abcs)localObject).jdField_a_of_type_Int = -1;
+    ((abcs)localObject).jdField_b_of_type_JavaLangString = paramString1;
+    ((abcs)localObject).c = paramString2;
+    ((abcs)localObject).jdField_a_of_type_JavaLangObject = paramObject;
+    ((abcs)localObject).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback = paramIGetAppPathByNameCallback;
+    ((abcs)localObject).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
+    ((abcs)localObject).jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(a(), this);
     paramString2 = new ArrayList();
     paramString2.add(paramString1);
-    a(paramString2, localObject, new aavi(this));
+    a(paramString2, localObject, new abcd(this));
   }
   
   private static String[] b()
   {
-    File[] arrayOfFile = new File(ArkAppCenter.d()).listFiles(new aauy());
+    File[] arrayOfFile = new File(ArkAppCenter.d()).listFiles(new abbt());
     if ((arrayOfFile == null) || (arrayOfFile.length == 0)) {
       return null;
     }
@@ -1507,7 +1511,7 @@ public class ArkLocalAppMgr
     if (!((String)localObject2).endsWith("/")) {
       localObject1 = ((String)localObject2).concat("/");
     }
-    File[] arrayOfFile = new File((String)localObject1).listFiles(new aauw());
+    File[] arrayOfFile = new File((String)localObject1).listFiles(new abbr());
     if (arrayOfFile == null) {
       localObject2 = null;
     }
@@ -1632,11 +1636,11 @@ public class ArkLocalAppMgr
     long l3;
     synchronized (this.jdField_c_of_type_JavaUtilHashMap)
     {
-      Object localObject = (aavt)this.jdField_c_of_type_JavaUtilHashMap.get(paramString);
+      Object localObject = (abco)this.jdField_c_of_type_JavaUtilHashMap.get(paramString);
       if (localObject != null)
       {
-        l1 = ((aavt)localObject).jdField_a_of_type_Long;
-        i = ((aavt)localObject).jdField_a_of_type_Int;
+        l1 = ((abco)localObject).jdField_a_of_type_Long;
+        i = ((abco)localObject).jdField_a_of_type_Int;
         i = a(i, l2);
         l3 = (System.currentTimeMillis() - l1) / 60000L;
         if (l3 > i)
@@ -1650,7 +1654,7 @@ public class ArkLocalAppMgr
         localObject = BaseApplication.getContext();
         l1 = ((Context)localObject).getSharedPreferences("ArkAppUpdateRecord", 0).getLong(paramString, 0L);
         i = ((Context)localObject).getSharedPreferences("ArkAppUpdatePeriod", 0).getInt(paramString, 1380);
-        this.jdField_c_of_type_JavaUtilHashMap.put(paramString, new aavt(l1, i));
+        this.jdField_c_of_type_JavaUtilHashMap.put(paramString, new abco(l1, i));
       }
     }
     ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("isAppNeedUpdate, need-update=false, app=%s, last-update=%d, delta=%d, update-period=%d, last-use-time=%d", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l3), Integer.valueOf(i), Long.valueOf(l2) }));
@@ -1675,12 +1679,12 @@ public class ArkLocalAppMgr
       return;
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a(new aaur(this));
+    a(new abbm(this));
   }
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new aaut(this), 10000L);
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new abbo(this), 10000L);
   }
   
   private void j()
@@ -1743,37 +1747,45 @@ public class ArkLocalAppMgr
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new aaus(this), paramInt);
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new abbn(this), paramInt);
   }
   
   public void a(String paramString1, String paramString2, int paramInt, ArkLocalAppMgr.IGetAppViewByIntentCallback arg4)
   {
-    aawa localaawa = new aawa(null);
-    localaawa.jdField_a_of_type_JavaLangString = paramString1;
-    localaawa.jdField_b_of_type_JavaLangString = paramString2;
-    localaawa.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppViewByIntentCallback = ???;
+    abcv localabcv = new abcv(null);
+    localabcv.jdField_a_of_type_JavaLangString = paramString1;
+    localabcv.jdField_b_of_type_JavaLangString = paramString2;
+    localabcv.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppViewByIntentCallback = ???;
     synchronized (this.d)
     {
-      this.d.add(localaawa);
-      a(paramString1, "0.0.0.0", null, new aavg(this, paramString2, paramInt, localaawa));
+      this.d.add(localabcv);
+      a(paramString1, "0.0.0.0", null, new abcb(this, paramString2, paramInt, localabcv));
       return;
     }
   }
   
   public void a(String paramString1, String paramString2, ArkLocalAppMgr.IGetLocalAppPath paramIGetLocalAppPath)
   {
-    ThreadManager.post(new aavy(this, paramString1, paramString2, paramIGetLocalAppPath), 8, null, true);
+    ThreadManager.post(new abct(this, paramString1, paramString2, paramIGetLocalAppPath), 8, null, true);
   }
   
   public void a(String paramString1, String paramString2, Object paramObject, ArkLocalAppMgr.IGetAppPathByNameCallback paramIGetAppPathByNameCallback)
   {
-    if ((paramString1 == null) || (paramString1.length() == 0) || (!ArkAppCenter.b()))
+    int i = 0;
+    if ((paramString1 == null) || (paramString1.length() == 0) || (!ArkAppCenter.b())) {
+      i = -1;
+    }
+    ArkAppCenter.a(true);
+    if (!ArkAppCenter.jdField_b_of_type_Boolean) {
+      i = -6;
+    }
+    if (i != 0)
     {
       if (!jdField_a_of_type_Boolean) {
         throw new AssertionError();
       }
-      paramString1 = new aavx();
-      paramString1.jdField_a_of_type_Int = -1;
+      paramString1 = new abcs();
+      paramString1.jdField_a_of_type_Int = i;
       paramString1.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
       paramString1.jdField_a_of_type_JavaLangObject = paramObject;
       paramString1.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback = paramIGetAppPathByNameCallback;
@@ -1781,7 +1793,7 @@ public class ArkLocalAppMgr
       paramString1.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(1916, paramString1).sendToTarget();
       return;
     }
-    ThreadManager.post(new aavd(this, paramString1, paramString2, paramObject, paramIGetAppPathByNameCallback), 5, null, true);
+    ThreadManager.post(new abby(this, paramString1, paramString2, paramObject, paramIGetAppPathByNameCallback), 5, null, true);
   }
   
   public boolean a(String paramString1, String paramString2, int paramInt, ArrayList arg4, ArrayList paramArrayList2, Object paramObject, ArkLocalAppMgr.IGetAppPathByActionCallback paramIGetAppPathByActionCallback)
@@ -1793,27 +1805,27 @@ public class ArkLocalAppMgr
     if (localQQAppInterface == null) {
       return false;
     }
-    aavw localaavw = new aavw(null);
-    localaavw.jdField_a_of_type_Boolean = false;
-    localaavw.jdField_a_of_type_JavaLangString = paramString1;
-    localaavw.jdField_b_of_type_JavaLangString = paramString2;
-    localaavw.jdField_a_of_type_Int = paramInt;
-    localaavw.jdField_a_of_type_JavaLangObject = paramObject;
-    localaavw.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback = paramIGetAppPathByActionCallback;
+    abcr localabcr = new abcr(null);
+    localabcr.jdField_a_of_type_Boolean = false;
+    localabcr.jdField_a_of_type_JavaLangString = paramString1;
+    localabcr.jdField_b_of_type_JavaLangString = paramString2;
+    localabcr.jdField_a_of_type_Int = paramInt;
+    localabcr.jdField_a_of_type_JavaLangObject = paramObject;
+    localabcr.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback = paramIGetAppPathByActionCallback;
     if (??? != null) {
-      localaavw.jdField_a_of_type_JavaUtilArrayList.addAll(???);
+      localabcr.jdField_a_of_type_JavaUtilArrayList.addAll(???);
     }
     if (paramArrayList2 != null) {
-      localaavw.jdField_b_of_type_JavaUtilArrayList.addAll(paramArrayList2);
+      localabcr.jdField_b_of_type_JavaUtilArrayList.addAll(paramArrayList2);
     }
     synchronized (this.jdField_c_of_type_JavaUtilArrayList)
     {
-      this.jdField_c_of_type_JavaUtilArrayList.add(localaavw);
-      if (!((ArkAppCenter)localQQAppInterface.getManager(120)).a().a(localaavw.jdField_a_of_type_JavaLangString, localaavw.jdField_b_of_type_JavaLangString, null, new aauz(this, localaavw)))
+      this.jdField_c_of_type_JavaUtilArrayList.add(localabcr);
+      if (!((ArkAppCenter)localQQAppInterface.getManager(120)).a().a(localabcr.jdField_a_of_type_JavaLangString, localabcr.jdField_b_of_type_JavaLangString, null, new abbu(this, localabcr)))
       {
         ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppPathByAction, getAppNameByAction fail, action=%s.%s.", new Object[] { paramString1, paramString2 }));
-        localaavw.jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new aavc(this, localaavw), 5, null, true);
+        localabcr.jdField_a_of_type_Boolean = true;
+        ThreadManager.post(new abbx(this, localabcr), 5, null, true);
         return true;
       }
     }
@@ -1822,7 +1834,7 @@ public class ArkLocalAppMgr
   
   public void b()
   {
-    a(new aavs(this));
+    a(new abcn(this));
   }
   
   public void b(String paramString1, String paramString2)
@@ -1842,7 +1854,7 @@ public class ArkLocalAppMgr
       ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("_updatePredownloadAppList, app=null", new Object[0]));
       return;
     }
-    ThreadManager.post(new aaup(this, localQQAppInterface), 5, null, true);
+    ThreadManager.post(new abbk(this, localQQAppInterface), 5, null, true);
   }
   
   public void e()
@@ -1863,7 +1875,7 @@ public class ArkLocalAppMgr
   {
     if (paramMessage.what == 1916)
     {
-      a((aavx)paramMessage.obj);
+      a((abcs)paramMessage.obj);
       return true;
     }
     if (paramMessage.what == 1917)

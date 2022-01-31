@@ -1,46 +1,33 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import java.util.Iterator;
+import java.util.List;
+
 public class wui
+  implements View.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  public wui(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public wui(String paramString)
+  public void onClick(View paramView)
   {
-    String[] arrayOfString = paramString.split(" ");
-    if (arrayOfString.length == 1)
-    {
-      this.jdField_a_of_type_JavaLangString = arrayOfString[0];
-      this.jdField_a_of_type_Boolean = true;
-      return;
+    paramView = this.a.a.iterator();
+    while (paramView.hasNext()) {
+      ((EmoticonFromGroupEntity)paramView.next()).status = -1;
     }
-    if (arrayOfString.length == 4)
-    {
-      this.b = arrayOfString[0];
-      this.c = arrayOfString[1];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = arrayOfString[3];
-      return;
-    }
-    if (arrayOfString.length > 4)
-    {
-      int j = arrayOfString.length;
-      paramString = "";
-      int i = 0;
-      while (i < j - 4)
-      {
-        paramString = paramString + arrayOfString[i] + " ";
-        i += 1;
-      }
-      this.d = paramString;
-      this.b = arrayOfString[(j - 4)];
-      this.c = arrayOfString[(j - 3)];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = arrayOfString[(j - 1)];
-      return;
-    }
-    throw new RuntimeException("format error!");
+    this.a.a.clear();
+    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
+    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
+    EmoticonGroupStoreFragment.a(this.a).a = false;
+    EmoticonGroupStoreFragment.a(this.a).a(false);
+    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+    EmoticonGroupStoreFragment.e(this.a);
+    this.a.a(true);
+    this.a.resetLeftButton();
   }
 }
 

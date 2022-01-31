@@ -1,9 +1,28 @@
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import com.tencent.qphone.base.util.QLog;
+
 public class xxi
+  implements Camera.AutoFocusCallback
 {
-  public int a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public xxi(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "single tap focus " + paramBoolean);
+    }
+    NewFlowCameraReporter.a(paramBoolean);
+    if (paramBoolean)
+    {
+      NewFlowCameraActivity.h(this.a, true);
+      return;
+    }
+    this.a.a.f();
+  }
 }
 
 

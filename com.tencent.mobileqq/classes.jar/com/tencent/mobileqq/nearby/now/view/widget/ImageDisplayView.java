@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.view.widget;
 
-import afav;
+import affs;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -45,13 +45,13 @@ public class ImageDisplayView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970433, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView = ((FitXImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370514));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970448, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetFitXImageView = ((FitXImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370523));
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
   {
-    ThreadManager.post(new afav(this, paramString, paramInt1, paramInt2), 8, null, true);
+    ThreadManager.post(new affs(this, paramString, paramInt1, paramInt2), 8, null, true);
   }
   
   public void a(VideoData paramVideoData)

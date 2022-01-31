@@ -1,10 +1,10 @@
 package com.tencent.widget;
 
-import amag;
-import amah;
-import amai;
-import amak;
-import amal;
+import amhq;
+import amhr;
+import amhs;
+import amhu;
+import amhv;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
@@ -66,11 +66,11 @@ public class ActionSheet
   private HashSet jdField_a_of_type_JavaUtilHashSet;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 300;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new amak(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new amhu(this);
   private CharSequence jdField_b_of_type_JavaLangCharSequence;
   private HashMap jdField_b_of_type_JavaUtilHashMap = new HashMap();
   private boolean jdField_b_of_type_Boolean;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new amal(this);
+  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new amhv(this);
   private CharSequence jdField_c_of_type_JavaLangCharSequence;
   private HashMap jdField_c_of_type_JavaUtilHashMap = new HashMap();
   public boolean c;
@@ -113,8 +113,8 @@ public class ActionSheet
     }
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968598, null));
     super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362807));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362808));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362812));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362813));
     this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(0).setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(null);
     this.jdField_a_of_type_AndroidViewView$OnClickListener = this.jdField_c_of_type_AndroidViewView$OnClickListener;
@@ -215,14 +215,14 @@ public class ActionSheet
     {
       localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968601, null);
       ((View)localObject1).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837532));
-      ((View)localObject1).setOnClickListener(new amag(this));
-      localObject2 = (TextView)((View)localObject1).findViewById(2131362815);
+      ((View)localObject1).setOnClickListener(new amhq(this));
+      localObject2 = (TextView)((View)localObject1).findViewById(2131362820);
       ((TextView)localObject2).setVisibility(0);
       ((TextView)localObject2).setText(this.jdField_a_of_type_JavaLangCharSequence);
       ((TextView)localObject2).setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
       if (this.jdField_b_of_type_JavaLangCharSequence != null)
       {
-        localObject2 = (TextView)((View)localObject1).findViewById(2131362816);
+        localObject2 = (TextView)((View)localObject1).findViewById(2131362821);
         ((TextView)localObject2).setVisibility(0);
         ((TextView)localObject2).setText(this.jdField_b_of_type_JavaLangCharSequence);
         ((TextView)localObject2).setContentDescription(this.jdField_b_of_type_JavaLangCharSequence);
@@ -242,7 +242,7 @@ public class ActionSheet
         if (i < k)
         {
           localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968600, null);
-          TextView localTextView = (TextView)((View)localObject2).findViewById(2131362811);
+          TextView localTextView = (TextView)((View)localObject2).findViewById(2131362816);
           localObject1 = (Pair)this.jdField_a_of_type_JavaUtilArrayList.get(i);
           localTextView.setText((CharSequence)((Pair)localObject1).first);
           AccessibilityUtil.b(localTextView, Button.class.getName());
@@ -253,7 +253,7 @@ public class ActionSheet
               localTextView.setId(((ActionMenuItem)localObject3).jdField_b_of_type_Int);
             }
           }
-          Object localObject3 = (ImageView)((View)localObject2).findViewById(2131362813);
+          Object localObject3 = (ImageView)((View)localObject2).findViewById(2131362818);
           RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((ImageView)localObject3).getLayoutParams();
           localLayoutParams.rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
           ((ImageView)localObject3).setLayoutParams(localLayoutParams);
@@ -262,7 +262,7 @@ public class ActionSheet
             ((ImageView)localObject3).setVisibility(0);
             ((ImageView)localObject3).setImageDrawable((Drawable)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(i)));
             label397:
-            localObject3 = (ImageView)((View)localObject2).findViewById(2131362814);
+            localObject3 = (ImageView)((View)localObject2).findViewById(2131362819);
             localLayoutParams = (RelativeLayout.LayoutParams)((ImageView)localObject3).getLayoutParams();
             if ((this.jdField_d_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(i))) && (((Integer)this.jdField_d_of_type_JavaUtilHashMap.get(Integer.valueOf(i))).intValue() == 0))
             {
@@ -303,7 +303,7 @@ public class ActionSheet
               if (i != this.jdField_a_of_type_Int) {
                 break label836;
               }
-              ((View)localObject2).findViewById(2131362812).setVisibility(0);
+              ((View)localObject2).findViewById(2131362817).setVisibility(0);
               a(localTextView, true);
             }
           }
@@ -342,7 +342,7 @@ public class ActionSheet
       if (this.jdField_c_of_type_JavaLangCharSequence != null)
       {
         localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968599, null);
-        localObject2 = (Button)((View)localObject1).findViewById(2131362809);
+        localObject2 = (Button)((View)localObject1).findViewById(2131362814);
         ((Button)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         ((Button)localObject2).setText(this.jdField_c_of_type_JavaLangCharSequence);
         ((Button)localObject2).setContentDescription(this.jdField_c_of_type_JavaLangCharSequence);
@@ -435,7 +435,7 @@ public class ActionSheet
       Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(paramInt1);
       if (localObject != null)
       {
-        localObject = ((View)localObject).findViewById(2131362811);
+        localObject = ((View)localObject).findViewById(2131362816);
         if ((localObject != null) && (TextView.class.isInstance(localObject)))
         {
           localObject = (TextView)localObject;
@@ -714,8 +714,8 @@ public class ActionSheet
         View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
         if (localView != null)
         {
-          localView.findViewById(2131362812).setVisibility(0);
-          a((TextView)localView.findViewById(2131362811), true);
+          localView.findViewById(2131362817).setVisibility(0);
+          a((TextView)localView.findViewById(2131362816), true);
         }
       }
     }
@@ -736,7 +736,7 @@ public class ActionSheet
     if (this.f)
     {
       this.f = false;
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new amai(this), 0L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new amhs(this), 0L);
     }
   }
   
@@ -797,7 +797,7 @@ public class ActionSheet
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
     super.show();
     e();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new amah(this), 0L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new amhr(this), 0L);
   }
 }
 

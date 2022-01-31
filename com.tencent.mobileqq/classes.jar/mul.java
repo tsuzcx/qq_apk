@@ -1,37 +1,20 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.IBitmapCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
+import java.lang.ref.WeakReference;
 
 public class mul
-  extends DownloadListener
+  implements Runnable
 {
-  public mul(GalleryShareHelper paramGalleryShareHelper, Activity paramActivity, String paramString) {}
+  public mul(RunningJob paramRunningJob, WeakReference paramWeakReference, Throwable paramThrowable) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.a.a) {}
+    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
       return;
     }
-    if (paramDownloadTask.a == 0)
-    {
-      paramDownloadTask = new File(AbsDownloader.d(this.jdField_a_of_type_JavaLangString));
-      if (paramDownloadTask.exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GalleryShareHelper", 2, "shareImageToAIO->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mum(this, paramDownloadTask));
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryShareHelper", 2, "shareImageToAIO->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mun(this));
+    ((IBitmapCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.a, this.jdField_a_of_type_JavaLangThrowable);
   }
 }
 

@@ -12,7 +12,7 @@ import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
-import rnv;
+import rsn;
 
 public class AuthDevForRoamMsgActivity
   extends IphoneTitleBarActivity
@@ -23,7 +23,7 @@ public class AuthDevForRoamMsgActivity
   
   public AuthDevForRoamMsgActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new rnv(this);
+    this.jdField_a_of_type_AndroidOsHandler$Callback = new rsn(this);
   }
   
   private void a()
@@ -74,10 +74,10 @@ public class AuthDevForRoamMsgActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970931);
-    super.setTitle(2131430668);
-    super.findViewById(2131372248).setOnClickListener(this);
-    super.findViewById(2131372249).setOnClickListener(this);
+    super.setContentView(2130970949);
+    super.setTitle(2131430671);
+    super.findViewById(2131372258).setOnClickListener(this);
+    super.findViewById(2131372259).setOnClickListener(this);
     paramBundle = new MqqWeakReferenceHandler(this.jdField_a_of_type_AndroidOsHandler$Callback);
     this.app.setHandler(getClass(), paramBundle);
     VipUtils.a(this.app, "chat_history", "LockSet", "switch_devlock", 1, 0, new String[0]);
@@ -100,15 +100,15 @@ public class AuthDevForRoamMsgActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131372248)
+    if (paramView.getId() == 2131372258)
     {
-      findViewById(2131372248).setEnabled(false);
+      findViewById(2131372258).setEnabled(false);
       paramView = new Intent(this, QQBrowserActivity.class);
       paramView.putExtra("url", "http://mapp.3g.qq.com/touch/psw/verify.jsp?_wv=5123&type=history&from=[from]".replace("[from]", "switch_devlock"));
       VipUtils.a(this.app, "chat_history", "LockSet", "Clk_usedevlock", 1, 0, new String[0]);
       startActivityForResult(paramView, 10000);
     }
-    while (paramView.getId() != 2131372249) {
+    while (paramView.getId() != 2131372259) {
       return;
     }
     VipUtils.a(this.app, "chat_history", "LockSet", "Clk_PswUse", 2, 0, new String[0]);

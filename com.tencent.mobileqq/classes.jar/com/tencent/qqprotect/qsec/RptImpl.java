@@ -1,6 +1,6 @@
 package com.tencent.qqprotect.qsec;
 
-import alyc;
+import amfl;
 import com.tencent.qqprotect.common.QSecRptController;
 
 public class RptImpl
@@ -10,7 +10,7 @@ public class RptImpl
   
   private RptImpl()
   {
-    QSecFramework.a(3, new alyc(this));
+    QSecFramework.a(3, new amfl(this));
   }
   
   public static RptImpl a()

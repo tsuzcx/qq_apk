@@ -122,8 +122,8 @@ public class PhotoUtil
   {
     Object localObject = AlbumLibDownloaderUtil.a.getAbsolutePath();
     localObject = new File((String)localObject + "/photoQulatitySo.zip");
-    boolean bool = LocalMultiProcConfig.getBool(AlbumLibDownloaderUtil.c, true);
-    if (!AlbumLibDownloaderUtil.a().a(AlbumLibDownloaderUtil.c, bool)) {
+    boolean bool = LocalMultiProcConfig.getBool(AlbumLibDownloaderUtil.e, true);
+    if (!AlbumLibDownloaderUtil.a().a(AlbumLibDownloaderUtil.e, bool)) {
       if (((File)localObject).exists()) {
         ((File)localObject).delete();
       }
@@ -131,8 +131,8 @@ public class PhotoUtil
     do
     {
       return false;
-      bool = LocalMultiProcConfig.getBool(AlbumLibDownloaderUtil.b, true);
-      if (AlbumLibDownloaderUtil.a().a(AlbumLibDownloaderUtil.b, bool)) {
+      bool = LocalMultiProcConfig.getBool(AlbumLibDownloaderUtil.d, true);
+      if (AlbumLibDownloaderUtil.a().a(AlbumLibDownloaderUtil.d, bool)) {
         break;
       }
     } while (!((File)localObject).exists());

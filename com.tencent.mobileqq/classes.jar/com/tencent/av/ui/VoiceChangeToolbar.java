@@ -13,19 +13,20 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.HorizontalListView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import kcs;
+import kew;
 
 public class VoiceChangeToolbar
   extends BaseToolbar
   implements View.OnClickListener
 {
   public static String TAG = "VoiceChangeToolbar";
+  private static VoiceChangeToolbar mToolbarInstance;
   QAVPtvTemplateAdapter mAdapter;
   Button mEarbackBtn = null;
   ArrayList mItemInfo;
   HorizontalListView mListView;
   BaseToolbar.UIInfo mUIInfo = null;
-  QAVPtvTemplateAdapter.IEffectCallback mVoiceClickCallback = new kcs(this);
+  QAVPtvTemplateAdapter.IEffectCallback mVoiceClickCallback = new kew(this);
   
   public VoiceChangeToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
@@ -65,11 +66,22 @@ public class VoiceChangeToolbar
     return localArrayList;
   }
   
+  public static void setEffectConfigItem(String paramString)
+  {
+    if ((mToolbarInstance == null) || (mToolbarInstance.isOutOfArray(paramString))) {
+      return;
+    }
+    mToolbarInstance.setSelectedItem(paramString);
+    QavListItemBase.ItemInfo localItemInfo = new QavListItemBase.ItemInfo();
+    localItemInfo.jdField_a_of_type_JavaLangString = paramString;
+    mToolbarInstance.mVoiceClickCallback.a(localItemInfo);
+  }
+  
   private void updateEarbackBtn()
   {
-    int i = 2130840361;
+    int i = 2130840376;
     if (this.mApp.a().a().aC) {
-      i = 2130840362;
+      i = 2130840377;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
@@ -80,9 +92,9 @@ public class VoiceChangeToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 5;
-      this.mUIInfo.g = 2130969364;
+      this.mUIInfo.g = 2130969362;
       this.mUIInfo.e = 103416;
-      this.mUIInfo.f = 2130840346;
+      this.mUIInfo.f = 2130840361;
       this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428733);
     }
     return this.mUIInfo;
@@ -91,6 +103,23 @@ public class VoiceChangeToolbar
   public String getUnableInfo()
   {
     return "";
+  }
+  
+  public boolean isOutOfArray(String paramString)
+  {
+    if ((this.mListView == null) || (this.mAdapter == null) || (this.mItemInfo == null)) {}
+    for (;;)
+    {
+      return true;
+      int i = 1;
+      while (i < this.mItemInfo.size())
+      {
+        if (((QavListItemBase.ItemInfo)this.mItemInfo.get(i)).jdField_a_of_type_JavaLangString.equals(paramString)) {
+          return false;
+        }
+        i += 1;
+      }
+    }
   }
   
   public void onClick(View paramView)
@@ -129,7 +158,8 @@ public class VoiceChangeToolbar
   
   protected void onCreate(AVActivity paramAVActivity)
   {
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366275));
+    mToolbarInstance = this;
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366280));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mItemInfo = getList();
     this.mAdapter = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mItemInfo, this.mListView);
@@ -137,12 +167,17 @@ public class VoiceChangeToolbar
     this.mAdapter.b(true);
     this.mAdapter.a(this.mVoiceClickCallback);
     this.mListView.setAdapter(this.mAdapter);
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131366282));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131366287));
     this.mEarbackBtn.setOnClickListener(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.setMargins(QAVPtvTemplateAdapter.a(paramAVActivity.getResources(), QAVPtvTemplateAdapter.a(paramAVActivity), 0.1666667F), 0, 0, 0);
     this.mEarbackBtn.setLayoutParams(localLayoutParams);
     updateEarbackBtn();
+  }
+  
+  protected void onDestroy(VideoAppInterface paramVideoAppInterface)
+  {
+    mToolbarInstance = null;
   }
   
   protected void onShow(int paramInt, boolean paramBoolean)
@@ -198,7 +233,7 @@ public class VoiceChangeToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.VoiceChangeToolbar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,20 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverSimpleAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
 public class lii
-  implements Runnable
 {
-  public lii(ChannelCoverSimpleAdapter paramChannelCoverSimpleAdapter, ChannelCoverInfo paramChannelCoverInfo) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private View b;
+  private View c;
   
-  public void run()
-  {
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("is_followed", "1");
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mIsTopic)
-        {
-          String str1 = "0X80088BB";
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mIsTopic)
-          {
-            str3 = "0X80088BB";
-            PublicAccountReportUtils.a(null, "", str1, str3, 0, 0, "1", "", "", VideoReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, localJSONObject), false);
-            return;
-          }
-          String str3 = "0X8007BE6";
-          continue;
-        }
-        String str2 = "0X8007BE6";
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        return;
-      }
-    }
-  }
+  private lii(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
 }
 
 

@@ -1,25 +1,37 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleBtnOperationHelper;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.share.FilterComboSharePlugin;
+import java.io.File;
 
 public class anyv
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public anyv(DoodleLayout paramDoodleLayout) {}
+  public anyv(FilterComboSharePlugin paramFilterComboSharePlugin, String paramString, ApplicationInfo paramApplicationInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper != null) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("FilterComboShare", 2, "shareMsgToSina path:" + this.jdField_a_of_type_JavaLangString);
     }
+    Intent localIntent = new Intent("android.intent.action.SEND");
+    localIntent.setFlags(268435456);
+    localIntent.setType("image/*");
+    localIntent.putExtra("android.intent.extra.TEXT", "套餐分享");
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(this.jdField_a_of_type_JavaLangString)));
+    }
+    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
+    this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.startActivityForResult(localIntent, (byte)110);
+    if (QLog.isColorLevel()) {
+      QLog.d("FilterComboShare", 2, "shareMsgToSina start weibo!");
+    }
+    this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.a(true, 3);
+    this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.a();
+    FilterComboSharePlugin.a(this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin, this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.jdField_a_of_type_JavaLangString, true);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import akhs;
+import akpf;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -68,7 +68,7 @@ public final class IndividuationUrlHelper
   static
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.3.3565").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]");
+    ((StringBuilder)localObject).append("uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.8.3615").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]");
     C = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("http://zb.vip.qq.com/sonic/theme");
     ((StringBuilder)localObject).append("?").append(C).append("&_wv=16782337").append("&asyncMode=3");
@@ -145,10 +145,10 @@ public final class IndividuationUrlHelper
     E = ((StringBuilder)localObject).toString();
     B = "http://zb.vip.qq.com/card/setting?_wv=16778243";
     localObject = new StringBuilder("http://imgcache.qq.com/club/themes/mobile/my_dress/index.html");
-    ((StringBuilder)localObject).append("?uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.3.3565").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]").append("&_bid=182").append("&_wv=3");
+    ((StringBuilder)localObject).append("?uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.8.3615").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]").append("&_bid=182").append("&_wv=3");
     F = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("http://imgcache.qq.com/club/themes/mobile/search/html/index.html");
-    ((StringBuilder)localObject).append("?uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.3.3565").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]").append("&adtag=mvip.gxh.android.search").append("&_bid=2229").append("&_wv=1027");
+    ((StringBuilder)localObject).append("?uin=[uin]").append("&client=androidQQ").append("&version=").append("7.6.8.3615").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]").append("&adtag=mvip.gxh.android.search").append("&_bid=2229").append("&_wv=1027");
     G = ((StringBuilder)localObject).toString();
     jdField_a_of_type_JavaUtilMap = new HashMap();
     jdField_b_of_type_JavaUtilMap = new HashMap();
@@ -296,7 +296,7 @@ public final class IndividuationUrlHelper
           if (Looper.myLooper() != Looper.getMainLooper()) {
             break label278;
           }
-          ThreadManager.post(new akhs(), 5, null, true);
+          ThreadManager.post(new akpf(), 5, null, true);
         }
       }
       for (;;)
@@ -504,21 +504,22 @@ public final class IndividuationUrlHelper
     }
     for (;;)
     {
-      int i4;
-      int i2;
-      label353:
+      int i1;
+      label351:
       int i3;
-      label457:
+      label360:
+      int i4;
+      label465:
       int i6;
       try
       {
         localObject1 = FileUtils.a((File)localObject1);
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label828;
-        }
-        localObject1 = new JSONArray((String)localObject1);
-        if ((localObject1 == null) || (((JSONArray)localObject1).length() < 1)) {
-          QLog.e("IndividuationUrlHelper", 1, "parseJson, no IndividuationAddress element");
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject1 = new JSONArray((String)localObject1);
+          if ((localObject1 == null) || (((JSONArray)localObject1).length() < 1)) {
+            QLog.e("IndividuationUrlHelper", 1, "parseJson, no IndividuationAddress element");
+          }
         }
       }
       catch (Exception paramAppRuntime)
@@ -530,120 +531,132 @@ public final class IndividuationUrlHelper
         }
         QLog.d("IndividuationUrlHelper", 2, "parseJson, duration=" + (System.currentTimeMillis() - l1));
         break;
-        i4 = VipUtils.a(paramAppRuntime, null);
-        int i5 = ((JSONArray)localObject1).length();
-        i2 = 0;
-        if (i2 >= i5) {
-          continue;
-        }
-        localObject2 = ((JSONArray)localObject1).getJSONObject(i2);
-        str1 = ((JSONObject)localObject2).optString("business");
-        String str2 = ((JSONObject)localObject2).optString("url");
-        if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
+        i1 = VipUtils.a(paramAppRuntime, null);
+        if ((i1 & 0x4) != 0)
         {
-          QLog.e("IndividuationUrlHelper", 1, "parseJson, config error, no business or url, config=" + localObject2);
-          break label854;
-        }
-        if (((JSONObject)localObject2).has("userType"))
-        {
-          i3 = ((JSONObject)localObject2).getInt("userType");
-          break label861;
-          if (i1 == 0) {
-            break label854;
+          i1 = 4;
+          int i5 = ((JSONArray)localObject1).length();
+          i3 = 0;
+          if (i3 >= i5) {
+            continue;
           }
-          i3 = 1;
-          i1 = i3;
-          if (((JSONObject)localObject2).has("minVersion"))
+          try
           {
-            str3 = ((JSONObject)localObject2).getString("minVersion");
-            i1 = i3;
-            if (!TextUtils.isEmpty(str3))
+            localObject2 = ((JSONArray)localObject1).getJSONObject(i3);
+            str1 = ((JSONObject)localObject2).optString("business");
+            str2 = ((JSONObject)localObject2).optString("url");
+            if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
             {
-              i1 = i3;
-              if (!a(str3, "7.6.3")) {
-                i1 = 0;
-              }
+              QLog.e("IndividuationUrlHelper", 1, "parseJson, config error, no business or url, config=" + localObject2);
+              break label887;
             }
+            if (!((JSONObject)localObject2).has("userType")) {
+              continue;
+            }
+            i4 = ((JSONObject)localObject2).getInt("userType");
           }
-          i3 = i1;
-          if (i1 != 0)
+          catch (Exception localException)
           {
-            i3 = i1;
-            if (((JSONObject)localObject2).has("maxVersion"))
+            String str2;
+            String str3;
+            long l2;
+            long l3;
+            long l4;
+            QLog.e("IndividuationUrlHelper", 1, "parseJson, exception", localException);
+            break label887;
+          }
+          if (i2 != 0)
+          {
+            i4 = 1;
+            i2 = i4;
+            if (((JSONObject)localObject2).has("minVersion"))
             {
-              str3 = ((JSONObject)localObject2).getString("maxVersion");
-              i3 = i1;
+              str3 = ((JSONObject)localObject2).getString("minVersion");
+              i2 = i4;
               if (!TextUtils.isEmpty(str3))
               {
-                i3 = i1;
-                if (!a("7.6.3", str3)) {
-                  i3 = 0;
+                i2 = i4;
+                if (!a(str3, "7.6.8")) {
+                  i2 = 0;
+                }
+              }
+            }
+            i4 = i2;
+            if (i2 != 0)
+            {
+              i4 = i2;
+              if (((JSONObject)localObject2).has("maxVersion"))
+              {
+                str3 = ((JSONObject)localObject2).getString("maxVersion");
+                i4 = i2;
+                if (!TextUtils.isEmpty(str3))
+                {
+                  i4 = i2;
+                  if (!a("7.6.8", str3)) {
+                    i4 = 0;
+                  }
+                }
+              }
+            }
+            if (i4 != 0)
+            {
+              str3 = paramAppRuntime.getAccount();
+              i2 = ((JSONObject)localObject2).optInt("startIndex");
+              i4 = ((JSONObject)localObject2).optInt("endIndex");
+              if (i2 >= i4)
+              {
+                i6 = str3.length();
+                if ((i6 >= i2) && (i6 >= i4))
+                {
+                  l2 = Long.parseLong(str3.substring(i6 - i2, i6 - i4 + 1));
+                  l3 = ((JSONObject)localObject2).optLong("min");
+                  l4 = ((JSONObject)localObject2).optLong("max");
+                  if ((l2 < l3) || (l2 > l4)) {
+                    break label887;
+                  }
+                  localObject2 = a(paramAppRuntime, str2, str1);
+                  jdField_a_of_type_JavaUtilMap.put(str1, localObject2);
+                  break label887;
                 }
               }
             }
           }
-          if (i3 == 0) {
-            break label854;
-          }
-          String str3 = paramAppRuntime.getAccount();
-          i1 = ((JSONObject)localObject2).optInt("startIndex");
-          i3 = ((JSONObject)localObject2).optInt("endIndex");
-          if (i1 < i3) {
-            break label797;
-          }
-          i6 = str3.length();
-          if ((i6 < i1) || (i6 < i3)) {
-            break label755;
-          }
-          long l2 = Long.parseLong(str3.substring(i6 - i1, i6 - i3 + 1));
-          long l3 = ((JSONObject)localObject2).optLong("min");
-          long l4 = ((JSONObject)localObject2).optLong("max");
-          if ((l2 < l3) || (l2 > l4)) {
-            break label854;
-          }
-          localObject2 = a(paramAppRuntime, str2, str1);
-          jdField_a_of_type_JavaUtilMap.put(str1, localObject2);
-          break label854;
         }
       }
       catch (OutOfMemoryError paramAppRuntime)
       {
         QLog.e("IndividuationUrlHelper", 1, "parseJson, oom=" + MsfSdkUtils.getStackTraceString(paramAppRuntime));
         continue;
-        i3 = -1;
-        break label861;
+        i4 = -1;
       }
-      label738:
-      if ((i4 & 0x2) != 0) {}
-      for (int i1 = 2; (i3 & i1) != i1; i1 = 4)
+      label887:
+      do
       {
-        i1 = 0;
-        break label457;
-        label755:
+        i2 = 0;
+        break label465;
         QLog.e("IndividuationUrlHelper", 1, "parseJson, index config error, uin length=" + i6 + ", config=" + localObject2);
-        break label854;
-        label797:
+        break label887;
         QLog.e("IndividuationUrlHelper", 1, "parseJson, startIndex < endIndex, element=" + localObject2);
-        break label854;
-        label828:
+        break label887;
         QLog.e("IndividuationUrlHelper", 1, "parseJson, jsonStr null");
         break;
         QLog.e("IndividuationUrlHelper", 1, "parseJson, no json file");
         break;
-        label854:
-        i2 += 1;
-        break label353;
-        label861:
-        i1 = 1;
-        if (i3 == -1) {
-          break label457;
+        do
+        {
+          i1 = 1;
+          break;
+          i3 += 1;
+          break label360;
+        } while ((i1 & 0x2) == 0);
+        i1 = 2;
+        break label351;
+        i2 = 1;
+        if (i4 == -1) {
+          break label465;
         }
-        i1 = 1;
-        if ((i4 & 0x4) == 0) {
-          break label738;
-        }
-      }
-      i1 = 1;
+      } while ((i1 & i4) != i1);
+      int i2 = 1;
     }
   }
   
@@ -749,7 +762,7 @@ public final class IndividuationUrlHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividuationUrlHelper
  * JD-Core Version:    0.7.0.1
  */

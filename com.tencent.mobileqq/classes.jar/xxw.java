@@ -1,33 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class xxw
-  implements INetInfoHandler
+  implements Runnable
 {
-  public xxw(LbsFilterStatusManager paramLbsFilterStatusManager) {}
+  public xxw(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  public void run()
   {
-    long l = Thread.currentThread().getId();
-    if (LbsFilterStatusManager.a(this.a) == l) {
-      LbsFilterStatusManager.a(this.a);
-    }
-    while (LbsFilterStatusManager.a(this.a) == null) {
-      return;
-    }
-    LbsFilterStatusManager.a(this.a).post(new xxx(this));
+    this.a.c.setVisibility(8);
   }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 

@@ -1,33 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.AVLog;
-import com.tencent.av.camera.CameraObserver;
-import com.tencent.av.opengl.effects.EffectsRenderController;
+import com.tencent.av.core.IVideoEventListener;
+import com.tencent.av.core.VcControllerImpl;
 
 public class jjo
-  extends CameraObserver
+  implements Runnable
 {
-  public jjo(EffectsRenderController paramEffectsRenderController) {}
+  public jjo(VcControllerImpl paramVcControllerImpl) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    AVLog.c(EffectsRenderController.jdField_a_of_type_JavaLangString, "onAfterOpenCamera: " + paramBoolean + "|" + paramInt);
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4).sendToTarget();
-    }
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    AVLog.c(EffectsRenderController.jdField_a_of_type_JavaLangString, "onAfterReopenCamera: " + paramBoolean);
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4).sendToTarget();
+    if (this.a.mEventListener != null) {
+      this.a.mEventListener.b(this.a.mPreviewW, this.a.mPreviewH);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jjo
  * JD-Core Version:    0.7.0.1
  */

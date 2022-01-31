@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ptt;
 
-import agtn;
+import agya;
 import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
@@ -32,7 +32,7 @@ public class PttSSCMPool
       {
         localObject3 = new PttSSCM();
         ((SSCM)localObject3).a();
-        jdField_a_of_type_JavaUtilArrayList.add(new agtn((SSCM)localObject3));
+        jdField_a_of_type_JavaUtilArrayList.add(new agya((SSCM)localObject3));
         localObject1 = localObject3;
         if (QLog.isColorLevel())
         {
@@ -63,7 +63,7 @@ public class PttSSCMPool
   {
     for (;;)
     {
-      agtn localagtn;
+      agya localagya;
       try
       {
         Object localObject = jdField_a_of_type_JavaUtilArrayList;
@@ -73,8 +73,8 @@ public class PttSSCMPool
         if (!((Iterator)localObject).hasNext()) {
           continue;
         }
-        localagtn = (agtn)((Iterator)localObject).next();
-        if (paramSSCM != localagtn.jdField_a_of_type_ComTencentWsttSSCMSSCM) {
+        localagya = (agya)((Iterator)localObject).next();
+        if (paramSSCM != localagya.jdField_a_of_type_ComTencentWsttSSCMSSCM) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -85,10 +85,10 @@ public class PttSSCMPool
           ((Iterator)localObject).remove();
           continue;
         }
-        localagtn.jdField_a_of_type_Boolean = false;
+        localagya.jdField_a_of_type_Boolean = false;
       }
       finally {}
-      localagtn.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      localagya.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
     }
   }
   
@@ -100,17 +100,17 @@ public class PttSSCMPool
     Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      agtn localagtn = (agtn)((Iterator)localObject).next();
-      if (!localagtn.jdField_a_of_type_Boolean)
+      agya localagya = (agya)((Iterator)localObject).next();
+      if (!localagya.jdField_a_of_type_Boolean)
       {
-        localObject = localagtn.jdField_a_of_type_ComTencentWsttSSCMSSCM;
-        localagtn.jdField_a_of_type_Boolean = true;
+        localObject = localagya.jdField_a_of_type_ComTencentWsttSSCMSSCM;
+        localagya.jdField_a_of_type_Boolean = true;
         long l = SystemClock.elapsedRealtime();
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "query for sscm, get one expired:" + (l - localagtn.jdField_a_of_type_Long));
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "query for sscm, get one expired:" + (l - localagya.jdField_a_of_type_Long));
         }
-        if (l - localagtn.jdField_a_of_type_Long > jdField_a_of_type_Long) {
-          localagtn.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
+        if (l - localagya.jdField_a_of_type_Long > jdField_a_of_type_Long) {
+          localagya.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
         }
         return localObject;
       }

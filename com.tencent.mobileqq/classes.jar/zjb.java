@@ -1,46 +1,19 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.DataLineHandler;
 
 public class zjb
-  implements Comparator
+  extends BroadcastReceiver
 {
-  public zjb(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zjb(DataLineHandler paramDataLineHandler) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return b(paramPhoneContact1, paramPhoneContact2);
-  }
-  
-  int b(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    boolean bool1 = paramPhoneContact1.isNewRecommend;
-    boolean bool2 = paramPhoneContact2.isNewRecommend;
-    int i;
-    if (((bool1) || (bool2)) && ((!bool1) || (!bool2))) {
-      if (bool2) {
-        i = 1;
-      }
+    paramContext = paramIntent.getAction();
+    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
+      this.a.d(8);
     }
-    int j;
-    do
-    {
-      return i;
-      return -1;
-      Object localObject2 = paramPhoneContact1.pinyinFirst;
-      String str = paramPhoneContact2.pinyinFirst;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      j = ((String)localObject1).compareTo((String)localObject2);
-      i = j;
-    } while (j != 0);
-    return paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
   }
 }
 

@@ -1,17 +1,18 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public class lvl
-  extends CharacterStyle
+  implements View.OnClickListener
 {
-  public lvl(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
+  public lvl(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onClick(View paramView)
   {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.a.getResources()));
+    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), this.jdField_a_of_type_JavaLangString);
+    ReadInJoyFooterPresenter.a(1, ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }
 }
 

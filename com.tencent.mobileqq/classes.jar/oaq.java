@@ -1,39 +1,34 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
+import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader.GetDiscoverCardsEvent;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
 
 public class oaq
-  implements INetInfoHandler
+  extends UIBaseEventReceiver
 {
-  public oaq(FeedSegment paramFeedSegment) {}
-  
-  public void onNetMobile2None()
+  public oaq(DiscoverPresenter paramDiscoverPresenter)
   {
-    FeedSegment.b(this.a, FeedSegment.a(3));
+    super(paramDiscoverPresenter);
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public void a(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent)
   {
-    FeedSegment.b(this.a, FeedSegment.a(1));
+    if ((paramGetDiscoverCardsEvent.jdField_a_of_type_Int == DiscoverPresenter.a(paramDiscoverPresenter)) && (paramGetDiscoverCardsEvent.jdField_a_of_type_Long == DiscoverPresenter.a(paramDiscoverPresenter))) {
+      DiscoverPresenter.a(paramDiscoverPresenter).a(DiscoverPresenter.a(paramDiscoverPresenter, paramGetDiscoverCardsEvent.jdField_a_of_type_JavaUtilList, paramGetDiscoverCardsEvent.c), paramGetDiscoverCardsEvent);
+    }
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public Class acceptEventClass()
   {
-    FeedSegment.b(this.a, FeedSegment.a(2));
+    return DiscoverPagerLoader.GetDiscoverCardsEvent.class;
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public void b(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent)
   {
-    FeedSegment.b(this.a, FeedSegment.a(1));
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    FeedSegment.b(this.a, FeedSegment.a(2));
-  }
-  
-  public void onNetWifi2None()
-  {
-    FeedSegment.b(this.a, FeedSegment.a(3));
+    if ((paramGetDiscoverCardsEvent.jdField_a_of_type_Int == DiscoverPresenter.a(paramDiscoverPresenter)) && (paramGetDiscoverCardsEvent.jdField_a_of_type_Long == DiscoverPresenter.a(paramDiscoverPresenter))) {
+      DiscoverPresenter.a(paramDiscoverPresenter).a(null, paramGetDiscoverCardsEvent);
+    }
   }
 }
 

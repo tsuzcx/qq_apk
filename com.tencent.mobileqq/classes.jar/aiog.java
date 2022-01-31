@@ -1,57 +1,24 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.theme.ThemeDownloader;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeDownloadListener;
-import com.tencent.mobileqq.theme.ThemeDownloader.ThemeUnzipListener;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutNew2;
+import com.tencent.widget.SingleLineTextView;
 
 public class aiog
-  implements ThemeDownloader.ThemeDownloadListener
 {
-  public aiog(ThemeSwitchManager paramThemeSwitchManager) {}
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public SingleLineTextView a;
+  public RelativeLayout b;
+  public TextView b;
+  public RelativeLayout c;
   
-  public void onDownloadCallback(Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, ThemeDownloader paramThemeDownloader)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeSwitchManager", 2, "mThemeDownloadListener onDownloadCallback stateCode:" + paramInt1);
-    }
-    if (paramInt1 == 3) {
-      this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener.onUnzipCallback(paramBundle, paramInt1, paramThemeDownloader);
-    }
-    for (;;)
-    {
-      this.a.a(null);
-      return;
-      BaseApplication localBaseApplication;
-      if (paramInt1 == 1)
-      {
-        if (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {}
-        for (localBaseApplication = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();; localBaseApplication = null)
-        {
-          paramThemeDownloader.a(localBaseApplication, paramBundle, this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener);
-          break;
-        }
-      }
-      if (paramInt1 == 2)
-      {
-        if (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {}
-        for (localBaseApplication = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();; localBaseApplication = null)
-        {
-          paramThemeDownloader.a(localBaseApplication, paramBundle, this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener);
-          break;
-        }
-      }
-      if (paramInt1 < 0)
-      {
-        QLog.e("ThemeSwitchManager", 1, "mThemeDownloadListener onDownloadCallback Error stateCode:" + paramInt1);
-        paramThemeDownloader.a();
-      }
-    }
-  }
-  
-  public void onDownloadProgress(Bundle paramBundle, int paramInt, long paramLong1, long paramLong2) {}
+  public aiog(StructMsgItemLayoutNew2 paramStructMsgItemLayoutNew2) {}
 }
 
 

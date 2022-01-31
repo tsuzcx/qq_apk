@@ -29,8 +29,8 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kqb;
-import kqc;
+import ksi;
+import ksj;
 
 public class AccountDetailBaseItemClickHandler
 {
@@ -123,18 +123,18 @@ public class AccountDetailBaseItemClickHandler
   private void b(String paramString)
   {
     Dialog localDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext, 2131624516);
-    localDialog.setContentView(2130970302);
-    ((TextView)localDialog.findViewById(2131369987)).setVisibility(8);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131369988);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131369989);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131369990);
+    localDialog.setContentView(2130970317);
+    ((TextView)localDialog.findViewById(2131369996)).setVisibility(8);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131369997);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131369998);
+    TextView localTextView3 = (TextView)localDialog.findViewById(2131369999);
     localTextView1.setText(paramString);
     localTextView1.setGravity(3);
-    localTextView2.setText(2131433015);
-    localTextView3.setText(2131435092);
+    localTextView2.setText(2131433029);
+    localTextView3.setText(2131435108);
     localDialog.setCanceledOnTouchOutside(false);
-    localTextView2.setOnClickListener(new kqb(this, localDialog));
-    localTextView3.setOnClickListener(new kqc(this, paramString));
+    localTextView2.setOnClickListener(new ksi(this, localDialog));
+    localTextView3.setOnClickListener(new ksj(this, paramString));
     try
     {
       localDialog.show();

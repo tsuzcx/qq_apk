@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f04" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15e6" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15e7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14f0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d10" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="11.0dip" android:layout_marginBottom="11.0dip" />
-        </RelativeLayout>
-    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d84" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="20.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a068f" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878787" android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14e9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="加载更多" />
+    </LinearLayout>
 </merge>

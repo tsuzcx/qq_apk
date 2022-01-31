@@ -1,25 +1,31 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
+import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class ahlj
-  implements Camera.AutoFocusCallback
+class ahlj
+  implements Runnable
 {
-  public ahlj(CameraCaptureView paramCameraCaptureView) {}
+  ahlj(ahli paramahli, UpCallBack.SendResult paramSendResult) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "single tap focus " + paramBoolean);
-    }
-    if (paramBoolean)
+    if ((TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_Ahli.a).get(ahli.a(this.jdField_a_of_type_Ahli)) != null)
     {
-      CameraCaptureView.a(this.a, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqPicUpCallBack$SendResult.a != 0) {
+        break label85;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("PreUploadVideo", 2, "[onSend]ResultOk id=" + ahli.a(this.jdField_a_of_type_Ahli));
+      }
+      this.jdField_a_of_type_Ahli.a(this.jdField_a_of_type_ComTencentMobileqqPicUpCallBack$SendResult);
+    }
+    label85:
+    while (!QLog.isColorLevel()) {
       return;
     }
-    CameraCaptureView.a().f();
+    QLog.i("PreUploadVideo", 2, "[onSend]ResultFail id=" + ahli.a(this.jdField_a_of_type_Ahli));
   }
 }
 

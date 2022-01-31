@@ -12,11 +12,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anrl;
-import anrn;
-import anrp;
-import anrq;
-import anrr;
+import anzy;
+import aoaa;
+import aoac;
+import aoad;
+import aoae;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.VideoEditReport;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -49,7 +49,7 @@ public class EditPicSave
   public EditPicSave(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
     super(paramEditVideoPartManager);
-    this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener = new anrl(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener = new anzy(this);
   }
   
   private ProgressPieDrawable a()
@@ -65,7 +65,7 @@ public class EditPicSave
     localProgressPieDrawable.jdField_f_of_type_Boolean = true;
     localProgressPieDrawable.jdField_f_of_type_Int = 2;
     localProgressPieDrawable.e(true);
-    localProgressPieDrawable.a(new anrr(this));
+    localProgressPieDrawable.a(new aoae(this));
     return localProgressPieDrawable;
   }
   
@@ -77,7 +77,7 @@ public class EditPicSave
     }
   }
   
-  private void j()
+  private void i()
   {
     GenerateContext localGenerateContext = new GenerateContext(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams);
     localGenerateContext.b = PublishFileManager.a(2);
@@ -89,8 +89,8 @@ public class EditPicSave
     SLog.d("EditPicSave", "PUBLISH start ...");
     a("正在保存...", false, 0);
     a(20);
-    localObject = BitmapFactory.decodeResource(a(), 2130843253);
-    Stream.of(localGenerateContext).map(new GenerateEditPicDoodleSegment((EditDoodleExport)a(EditDoodleExport.class), null)).map(new ThreadOffFunction(2)).map(new MergePicSegment(EditPicConstants.jdField_a_of_type_JavaLangString + "qq_pic_merged_" + System.currentTimeMillis() + ".jpg", true, (Bitmap)localObject)).map(new UIThreadOffFunction(this)).subscribe(new anrn(this));
+    localObject = BitmapFactory.decodeResource(a(), 2130843286);
+    Stream.of(localGenerateContext).map(new GenerateEditPicDoodleSegment((EditDoodleExport)a(EditDoodleExport.class), null)).map(new ThreadOffFunction(2)).map(new MergePicSegment(EditPicConstants.jdField_a_of_type_JavaLangString + "qq_pic_merged_" + System.currentTimeMillis() + ".jpg", true, (Bitmap)localObject)).map(new UIThreadOffFunction(this)).subscribe(new aoaa(this));
   }
   
   public void a(int paramInt)
@@ -123,16 +123,16 @@ public class EditPicSave
         }
       }
       this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130970895);
-      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363005);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130970912);
+      localObject = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363010);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable = a();
       ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable);
     }
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366642)).setText(paramString);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366640)).setText(paramString);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(paramBoolean);
     this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(paramBoolean);
     this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(0);
-    a().a().postDelayed(new anrp(this), paramInt);
+    a().a().postDelayed(new aoac(this), paramInt);
   }
   
   public void a_(int paramInt, Object paramObject)
@@ -143,12 +143,12 @@ public class EditPicSave
       return;
     }
     VideoEditReport.b("0X80080E1", VideoEditReport.a);
-    j();
+    i();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().postDelayed(new anrq(this), 1000L);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().postDelayed(new aoad(this), 1000L);
   }
   
   public void d()

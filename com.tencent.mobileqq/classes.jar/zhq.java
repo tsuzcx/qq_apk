@@ -1,44 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.NearByFaceDownloader;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.mobileqq.util.FaceManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.BaseBusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import mqq.os.MqqHandler;
 
 public class zhq
   implements Runnable
 {
-  Setting jdField_a_of_type_ComTencentMobileqqDataSetting;
-  FaceInfo jdField_a_of_type_ComTencentMobileqqUtilFaceInfo;
-  
-  public zhq(NearByFaceDownloader paramNearByFaceDownloader, Setting paramSetting, FaceInfo paramFaceInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataSetting = paramSetting;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = paramFaceInfo;
-  }
+  public zhq(BaseBusinessHandler paramBaseBusinessHandler, BusinessObserver paramBusinessObserver, int paramInt, MqqHandler paramMqqHandler, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
-    Object localObject1 = (FaceManager)this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.a.getManager(215);
-    ((FaceManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a;
-    localObject2 = ((FaceManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-    localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/"));
-    localObject2 = ((String)localObject2).substring(((String)localObject2).lastIndexOf("/") + 1);
-    if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).endsWith("jpg_")))
+    long l2 = 0L;
+    long l1 = l2;
+    if (UnifiedMonitor.a().whetherReportDuringThisStartup(1))
     {
-      localObject1 = (String)localObject1 + File.separator + ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("jpg_")) + "png";
-      localObject2 = new File((String)localObject1);
-      if (((File)localObject2).exists())
-      {
-        ((File)localObject2).delete();
-        if (QLog.isColorLevel()) {
-          QLog.i("qqhead", 2, "delete old file,oldpath=" + (String)localObject1);
-        }
+      l1 = l2;
+      if (this.jdField_a_of_type_MqqOsMqqHandler == BaseBusinessHandler.a()) {
+        l1 = SystemClock.uptimeMillis();
       }
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+    if ((UnifiedMonitor.a().whetherReportDuringThisStartup(1)) && (this.jdField_a_of_type_MqqOsMqqHandler == BaseBusinessHandler.a()))
+    {
+      l1 = SystemClock.uptimeMillis() - l1;
+      if (BaseBusinessHandler.c() == -1) {
+        BaseBusinessHandler.a(UnifiedMonitor.a().getThreshold(1));
+      }
+      if (l1 > BaseBusinessHandler.c())
+      {
+        if (UnifiedMonitor.a().whetherReportThisTime(1)) {
+          UnifiedMonitor.a().addEvent(1, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.getClass().getName(), (int)l1, BaseBusinessHandler.d(), null);
+        }
+        BaseBusinessHandler.b(0);
+      }
+    }
+    else
+    {
+      return;
+    }
+    BaseBusinessHandler.e();
   }
 }
 

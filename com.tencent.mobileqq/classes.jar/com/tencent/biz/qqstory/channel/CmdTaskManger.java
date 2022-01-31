@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.channel;
 
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import nbk;
+import nff;
 
 public class CmdTaskManger
 {
@@ -29,7 +29,7 @@ public class CmdTaskManger
   
   public void a(NetworkRequest paramNetworkRequest, CmdTaskManger.CommandCallback paramCommandCallback)
   {
-    paramNetworkRequest = new nbk(paramNetworkRequest);
+    paramNetworkRequest = new nff(paramNetworkRequest);
     paramNetworkRequest.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback = paramCommandCallback;
     paramNetworkRequest.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a(paramNetworkRequest);
     QQStoryContext.a().a().a(paramNetworkRequest.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest);

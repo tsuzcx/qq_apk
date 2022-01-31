@@ -1,32 +1,28 @@
-import android.content.IntentFilter;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI;
+import com.tencent.av.smallscreen.SmallScreenVideoController;
 
 public class jrb
   implements Runnable
 {
-  public jrb(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jrb(SmallScreenVideoController paramSmallScreenVideoController) {}
   
   public void run()
   {
-    try
+    if ((this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI instanceof SmallScreenDoubleVideoControlUI))
     {
-      this.a.a = new jro(this.a);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.a.registerReceiver(this.a.a, localIntentFilter);
-      return;
+      String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+      int i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().P;
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(42), str, Integer.valueOf(i) });
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(CallbackWaitingActivityExt.a(), 2, "Exception", localException);
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jrb
  * JD-Core Version:    0.7.0.1
  */

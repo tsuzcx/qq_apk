@@ -1,22 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class tmd
-  implements Runnable
+  extends FriendListObserver
 {
-  public tmd(QQSettingMe paramQQSettingMe, int paramInt, String paramString) {}
+  public tmd(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_Int == 33) {
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setBackgroundResource(2130838038);
-    }
-    for (;;)
-    {
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setVisibility(0);
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setText(this.jdField_a_of_type_JavaLangString);
-      return;
-      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).setBackgroundResource(2130838037);
+    if (paramBoolean) {
+      this.a.c();
     }
   }
 }

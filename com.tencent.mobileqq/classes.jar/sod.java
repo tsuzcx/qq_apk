@@ -1,29 +1,26 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.FaceDrawable;
 
 public class sod
-  implements View.OnClickListener
+  implements Runnable
 {
-  public sod(ForwardRecentActivity paramForwardRecentActivity) {}
+  public sod(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.a.getIntent().getExtras();
-    paramView.putString("uin", AppConstants.ay);
-    paramView.putInt("uintype", -1);
-    paramView.putString("uinname", "QQ空间");
-    this.a.a.a(ForwardAbility.ForwardAbilityType.e.intValue(), paramView);
+    if (this.a.app == null) {
+      return;
+    }
+    Object localObject = this.a.app.getCurrentAccountUin();
+    localObject = FaceDrawable.a(this.a.app, 3, (String)localObject);
+    this.a.runOnUiThread(new soe(this, (Drawable)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     sod
  * JD-Core Version:    0.7.0.1
  */

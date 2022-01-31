@@ -32,8 +32,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import weg;
-import weh;
+import wjq;
+import wjr;
 
 public class ZhituPicAdapter
   extends BaseAdapter
@@ -161,9 +161,9 @@ public class ZhituPicAdapter
   
   public void b(View paramView)
   {
-    if ((paramView != null) && ((paramView.getTag() instanceof weh)))
+    if ((paramView != null) && ((paramView.getTag() instanceof wjr)))
     {
-      paramView = (weh)paramView.getTag();
+      paramView = (wjr)paramView.getTag();
       if (paramView.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView != null) {
         paramView.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(null);
       }
@@ -196,7 +196,7 @@ public class ZhituPicAdapter
     Object localObject2;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramViewGroup = new weh(null);
+      paramViewGroup = new wjr(null);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
       paramView = new ViewGroup.LayoutParams(-2, this.d);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
@@ -209,7 +209,7 @@ public class ZhituPicAdapter
       paramView.addRule(13, -1);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, paramView);
       paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838596));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838602));
       paramView = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 30.0F), (int)(this.jdField_a_of_type_Float * 30.0F));
       paramView.addRule(13, -1);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar, paramView);
@@ -273,7 +273,7 @@ public class ZhituPicAdapter
             localZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData.jdField_a_of_type_Boolean = true;
           }
           return paramView;
-          paramViewGroup = (weh)paramView.getTag();
+          paramViewGroup = (wjr)paramView.getTag();
           break;
           if (j > this.f)
           {
@@ -310,8 +310,8 @@ public class ZhituPicAdapter
       return;
       this.jdField_b_of_type_Long = l;
       paramView = paramView.getTag();
-      if ((paramView != null) && ((paramView instanceof weh))) {}
-      for (paramView = (weh)paramView;; paramView = null)
+      if ((paramView != null) && ((paramView instanceof wjr))) {}
+      for (paramView = (wjr)paramView;; paramView = null)
       {
         if (paramView == null) {
           break label149;
@@ -320,7 +320,7 @@ public class ZhituPicAdapter
         if ((paramView == null) || (paramView.jdField_a_of_type_JavaLangString == null) || (paramView.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData == null)) {
           break;
         }
-        ThreadManager.post(new weg(this, paramView), 8, null, false);
+        ThreadManager.post(new wjq(this, paramView), 8, null, false);
         ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramView);
         if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
           break;

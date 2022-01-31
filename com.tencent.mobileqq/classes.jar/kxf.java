@@ -1,15 +1,16 @@
 import android.content.Context;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class kxf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public kxf(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Context paramContext) {}
+  public kxf(VideoCoverView paramVideoCoverView, Context paramContext) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TVK_SDKMgr.installPlugin(this.jdField_a_of_type_AndroidContentContext, new kxg(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView.b(this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

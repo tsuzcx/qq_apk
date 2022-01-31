@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
+import android.content.Intent;
+import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
+import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
+import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.HuayangPluginLauncherListener;
 
-class aeco
-  implements Runnable
+public class aeco
+  implements HuayangPluginLauncher.HuayangPluginLauncherListener
 {
-  aeco(aecn paramaecn) {}
+  public aeco(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (aecn.a(this.a) != null) {
-      aecn.a(this.a).run();
-    }
+    Intent localIntent = new Intent(HuayangJsPlugin.d(HuayangLoadbackgroudActivity.a(this.a)));
+    localIntent.putExtra("key_state", 4);
+    localIntent.putExtra("key_progress", paramInt);
+    localIntent.putExtra("key_totalSize", 100L);
+    this.a.sendBroadcast(localIntent);
+  }
+  
+  public void a(boolean paramBoolean, Throwable paramThrowable)
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeco
  * JD-Core Version:    0.7.0.1
  */

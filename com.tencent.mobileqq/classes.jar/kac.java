@@ -1,50 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.av.ui.SysCallTransparentActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.av.VideoController.GAudioFriends;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import java.util.Comparator;
 
 public class kac
-  implements Runnable
+  implements Comparator
 {
-  public kac(SysCallTransparentActivity paramSysCallTransparentActivity) {}
+  public kac(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public void run()
+  public int a(VideoController.GAudioFriends paramGAudioFriends1, VideoController.GAudioFriends paramGAudioFriends2)
   {
-    if (this.a.jdField_a_of_type_Int == 1) {
-      DialogUtil.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, 2131428675, 2131428676, new kad(this), null).show();
+    if ((paramGAudioFriends2.b) && (paramGAudioFriends1.b)) {
+      return paramGAudioFriends2.e - paramGAudioFriends1.e;
     }
-    while ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 3)) {
-      return;
+    if ((!paramGAudioFriends2.b) && (!paramGAudioFriends1.b)) {
+      return paramGAudioFriends2.e - paramGAudioFriends1.e;
     }
-    int i;
-    SysCallTransparentActivity localSysCallTransparentActivity;
-    String str2;
-    String str3;
-    String str4;
-    if (this.a.jdField_a_of_type_Int == 2)
-    {
-      i = 1;
-      localSysCallTransparentActivity = this.a;
-      str2 = this.a.jdField_a_of_type_JavaLangString;
-      str3 = this.a.b;
-      str4 = this.a.getString(2131428675);
-      if (!TextUtils.isEmpty(this.a.c)) {
-        break label181;
-      }
+    if ((paramGAudioFriends2.b) && (!paramGAudioFriends1.b)) {
+      return 1;
     }
-    label181:
-    for (String str1 = this.a.getString(2131429561);; str1 = this.a.c)
-    {
-      DialogUtil.a(localSysCallTransparentActivity, 230, str2, str3, str4, str1, new kae(this, i), new kaf(this)).show();
-      return;
-      i = 2;
-      break;
-    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kac
  * JD-Core Version:    0.7.0.1
  */

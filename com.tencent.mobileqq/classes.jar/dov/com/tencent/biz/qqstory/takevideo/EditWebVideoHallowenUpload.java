@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import anvn;
-import anvo;
-import anvq;
-import anvr;
+import aoed;
+import aoee;
+import aoeg;
+import aoeh;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -463,7 +463,7 @@ public class EditWebVideoHallowenUpload
     if (QLog.isColorLevel()) {
       QLog.d("EditWebVideoUploadRunnable", 2, "jumpToH5Activity, uid:" + paramString1 + ", md5:" + paramString2);
     }
-    jdField_a_of_type_AndroidOsHandler.post(new anvn(this, paramBoolean, paramString1, paramString2));
+    jdField_a_of_type_AndroidOsHandler.post(new aoed(this, paramBoolean, paramString1, paramString2));
   }
   
   /* Error */
@@ -477,11 +477,11 @@ public class EditWebVideoHallowenUpload
     //   11: ldc_w 302
     //   14: iconst_0
     //   15: invokestatic 308	cooperation/qzone/thread/QzoneHandlerThreadFactory:getHandlerThread	(Ljava/lang/String;Z)Lcooperation/qzone/thread/QzoneBaseThread;
-    //   18: new 310	anvp
+    //   18: new 310	aoef
     //   21: dup
     //   22: aload_0
     //   23: aload 10
-    //   25: invokespecial 313	anvp:<init>	(Ldov/com/tencent/biz/qqstory/takevideo/EditWebVideoHallowenUpload;Ldov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
+    //   25: invokespecial 313	aoef:<init>	(Ldov/com/tencent/biz/qqstory/takevideo/EditWebVideoHallowenUpload;Ldov/com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
     //   28: invokevirtual 318	cooperation/qzone/thread/QzoneBaseThread:post	(Ljava/lang/Runnable;)V
     //   31: invokestatic 300	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
     //   34: ifeq +213 -> 247
@@ -674,7 +674,7 @@ public class EditWebVideoHallowenUpload
     String str = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
     QLog.d("EditWebVideoUploadRunnable", 1, "onPicUploadSuccess uuid " + this.jdField_e_of_type_JavaLangString + " md5 " + str);
     a(true, this.jdField_e_of_type_JavaLangString, str);
-    jdField_a_of_type_AndroidOsHandler.post(new anvq(this));
+    jdField_a_of_type_AndroidOsHandler.post(new aoeg(this));
   }
   
   public void a(int paramInt) {}
@@ -688,7 +688,7 @@ public class EditWebVideoHallowenUpload
   
   public void a(Activity paramActivity, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam)
   {
-    ThreadManager.post(new anvo(this, paramEditSource, paramPublishParam, paramActivity), 5, null, true);
+    ThreadManager.post(new aoee(this, paramEditSource, paramPublishParam, paramActivity), 5, null, true);
   }
   
   public void a(Activity paramActivity, String paramString1, String paramString2)
@@ -735,7 +735,7 @@ public class EditWebVideoHallowenUpload
   {
     QLog.d("EditWebVideoUploadRunnable", 1, "onPicUploadFailed erroCode " + paramInt + " erroDes " + paramString);
     a(false, "", "");
-    jdField_a_of_type_AndroidOsHandler.post(new anvr(this));
+    jdField_a_of_type_AndroidOsHandler.post(new aoeh(this));
   }
   
   public void d_(String paramString)

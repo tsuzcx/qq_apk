@@ -39,15 +39,15 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import sna;
-import snb;
-import snc;
-import snd;
-import sne;
-import sng;
-import snh;
-import sni;
-import snj;
+import sru;
+import srv;
+import srw;
+import srx;
+import sry;
+import ssa;
+import ssb;
+import ssc;
+import ssd;
 
 public class FontSettingActivity
   extends BaseActivity
@@ -66,11 +66,11 @@ public class FontSettingActivity
   RangeButtonView jdField_a_of_type_ComTencentWidgetRangeButtonView;
   public ArrayList a;
   public List a;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new snd(this);
-  public sne a;
-  sng jdField_a_of_type_Sng;
-  public snh a;
-  snj jdField_a_of_type_Snj;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new srx(this);
+  public sry a;
+  ssa jdField_a_of_type_Ssa;
+  public ssb a;
+  ssd jdField_a_of_type_Ssd;
   public boolean a;
   ViewGroup b;
   public ListView b;
@@ -128,38 +128,38 @@ public class FontSettingActivity
   
   private void a(View paramView)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131363245);
-    localTextView.setText(2131436802);
-    localTextView.setOnClickListener(new sna(this));
-    ((TextView)paramView.findViewById(2131363381)).setText("字体大小");
-    ((TextView)paramView.findViewById(2131363245)).setMaxWidth(getResources().getDisplayMetrics().widthPixels);
+    TextView localTextView = (TextView)paramView.findViewById(2131363262);
+    localTextView.setText(2131436822);
+    localTextView.setOnClickListener(new sru(this));
+    ((TextView)paramView.findViewById(2131363400)).setText("字体大小");
+    ((TextView)paramView.findViewById(2131363262)).setMaxWidth(getResources().getDisplayMetrics().widthPixels);
   }
   
   private void d()
   {
     e();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131370180));
-    this.jdField_a_of_type_Sng = new sng(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Sng);
-    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)findViewById(2131370181));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131370189));
+    this.jdField_a_of_type_Ssa = new ssa(this);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Ssa);
+    this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)findViewById(2131370190));
     this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setCirclePadding((int)TypedValue.applyDimension(1, 10.0F, getResources().getDisplayMetrics()));
     this.jdField_a_of_type_ComTencentWidgetListView = a();
     g();
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentWidgetListView);
-    this.jdField_a_of_type_Sne = new sne(this);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Sne);
-    this.jdField_a_of_type_Snh = new snh(this, this.app, this.jdField_a_of_type_Sne, this, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null);
+    this.jdField_a_of_type_Sry = new sry(this);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Sry);
+    this.jdField_a_of_type_Ssb = new ssb(this, this.app, this.jdField_a_of_type_Sry, this, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this, this.app);
-    this.jdField_a_of_type_Snh.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    this.jdField_a_of_type_Ssb.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
     h();
     this.jdField_b_of_type_ComTencentWidgetListView = a();
     b();
-    this.jdField_a_of_type_Snj = new snj(this, this, this.app, this.jdField_b_of_type_ComTencentWidgetListView);
+    this.jdField_a_of_type_Ssd = new ssd(this, this, this.app, this.jdField_b_of_type_ComTencentWidgetListView);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_ComTencentWidgetListView);
-    this.jdField_b_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Snj);
-    this.jdField_a_of_type_Sng.notifyDataSetChanged();
-    this.jdField_a_of_type_ComTencentWidgetRangeButtonView = ((RangeButtonView)findViewById(2131364584));
+    this.jdField_b_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ssd);
+    this.jdField_a_of_type_Ssa.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentWidgetRangeButtonView = ((RangeButtonView)findViewById(2131364608));
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new RangeButtonView.Title("小", TypedValue.applyDimension(1, 13.92F, FontSettingManager.a)));
     localArrayList.add(new RangeButtonView.Title("", TypedValue.applyDimension(1, 15.0F, FontSettingManager.a)));
@@ -180,7 +180,7 @@ public class FontSettingActivity
   
   private void e()
   {
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366351));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366356));
     this.jdField_a_of_type_AndroidViewViewGroup = new NavBarCommon(this);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)getResources().getDimension(2131558448));
     a(this.jdField_a_of_type_AndroidViewViewGroup);
@@ -234,16 +234,16 @@ public class FontSettingActivity
   
   private void h()
   {
-    sni localsni1 = new sni(this, 0, "QQ团队", "你好，如果你有任何关于QQ的意见或建议...", "下午3:28", "2720152058", 0);
-    sni localsni2 = new sni(this, 2130839206, "关联QQ号", "验证密码后，才可接受新消息", "下午3:28", AppConstants.w, 7000);
-    sni localsni3 = new sni(this, 2130839208, "群助手", "查看“收进群助手且不提醒”的群", "下午3:28", AppConstants.B, 5000);
-    sni localsni4 = new sni(this, 2130841588, "我的电脑", "[在线],无需数据线，手机轻松传...", "下午3:28", AppConstants.y, 6000);
-    sni localsni5 = new sni(this, 0, "吃喝玩乐", "吃喝玩乐全民升级，餐厅，KTV等", "下午3:28", "2632129500", 0);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localsni1);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localsni2);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localsni3);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localsni4);
-    this.jdField_b_of_type_JavaUtilArrayList.add(localsni5);
+    ssc localssc1 = new ssc(this, 0, "QQ团队", "你好，如果你有任何关于QQ的意见或建议...", "下午3:28", "2720152058", 0);
+    ssc localssc2 = new ssc(this, 2130839225, "关联QQ号", "验证密码后，才可接受新消息", "下午3:28", AppConstants.w, 7000);
+    ssc localssc3 = new ssc(this, 2130839227, "群助手", "查看“收进群助手且不提醒”的群", "下午3:28", AppConstants.B, 5000);
+    ssc localssc4 = new ssc(this, 2130841615, "我的电脑", "[在线],无需数据线，手机轻松传...", "下午3:28", AppConstants.y, 6000);
+    ssc localssc5 = new ssc(this, 0, "吃喝玩乐", "吃喝玩乐全民升级，餐厅，KTV等", "下午3:28", "2632129500", 0);
+    this.jdField_b_of_type_JavaUtilArrayList.add(localssc1);
+    this.jdField_b_of_type_JavaUtilArrayList.add(localssc2);
+    this.jdField_b_of_type_JavaUtilArrayList.add(localssc3);
+    this.jdField_b_of_type_JavaUtilArrayList.add(localssc4);
+    this.jdField_b_of_type_JavaUtilArrayList.add(localssc5);
   }
   
   private void i()
@@ -323,7 +323,7 @@ public class FontSettingActivity
         return;
         if (!ThemeBackground.getThemeBackgroundEnable())
         {
-          this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(2130838215);
+          this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(2130838220);
           this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground = null;
           return;
         }
@@ -333,7 +333,7 @@ public class FontSettingActivity
       } while (!ThemeBackground.getThemeBackground(this.jdField_b_of_type_ComTencentWidgetListView.getContext(), "theme_bg_message_path_png", this.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground));
       if (("null".equals(this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground.path)) || (this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground.img == null))
       {
-        this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(2130838215);
+        this.jdField_b_of_type_ComTencentWidgetListView.setContentBackground(2130838220);
         this.jdField_a_of_type_ComTencentMobileqqThemeDiyThemeBackground = null;
         return;
       }
@@ -349,7 +349,7 @@ public class FontSettingActivity
     do
     {
       return;
-      this.jdField_a_of_type_AndroidAppDialog = CustomDialogFactory.a(this, 2131437998, 2131438001, 2131438000, 2131437999, new snb(this), new snc(this));
+      this.jdField_a_of_type_AndroidAppDialog = CustomDialogFactory.a(this, 2131438019, 2131438022, 2131438021, 2131438020, new srv(this), new srw(this));
     } while (isFinishing());
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -363,8 +363,8 @@ public class FontSettingActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970352);
-    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362840));
+    super.setContentView(2130970367);
+    this.jdField_c_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362845));
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
     {
       this.jdField_c_of_type_AndroidViewViewGroup.setFitsSystemWindows(true);
@@ -378,7 +378,7 @@ public class FontSettingActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_Snj.a();
+    this.jdField_a_of_type_Ssd.a();
     this.app.removeHandler(FontSettingActivity.class);
     if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder != null) {
       this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.d();

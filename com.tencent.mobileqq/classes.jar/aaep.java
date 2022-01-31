@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class aaep
-  implements Parcelable.Creator
+  implements Runnable
 {
-  public ArEffectConfig a(Parcel paramParcel)
-  {
-    return new ArEffectConfig(paramParcel);
-  }
+  public aaep(boolean paramBoolean, String paramString) {}
   
-  public ArEffectConfig[] a(int paramInt)
+  public void run()
   {
-    return new ArEffectConfig[paramInt];
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 0).a();
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_JavaLangString, 0).a();
   }
 }
 

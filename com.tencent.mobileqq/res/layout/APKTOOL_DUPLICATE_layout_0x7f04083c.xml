@@ -1,30 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07a9" android:layout_width="fill_parent" android:layout_height="58.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="12.0dip">
-        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="选择标签" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
-        <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="36.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="返回" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
-        <TextView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b1e" android:layout_width="wrap_content" android:layout_height="36.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="完成" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2677" android:paddingLeft="15.0dip" android:paddingRight="10.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="添加标签后，其他人可通过标签查看该视频" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2678" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d003d" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2679" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217ec" android:paddingLeft="6.0dip" android:paddingRight="9.0dip" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginLeft="15.0dip" android:maxWidth="250.0dip" android:text="选择标签" android:singleLine="true" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02171a" android:drawablePadding="1.0dip" />
-            <View android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_weight="1.0" />
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a267a" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginRight="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021724" />
-        </LinearLayout>
-        <View android:background="#19d8d8d8" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="10.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2397" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:clickable="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407f3" />
     </LinearLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a267b" android:visibility="visible" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218a4" android:divider="@null" android:dividerHeight="0.0dip" />
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021865" />
-            <TextView android:textSize="16.0dip" android:textColor="#ffbbbbbb" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="暂无可用标签" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a234a" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02179f" />
-            <TextView android:textSize="16.0dip" android:textColor="#ffbbbbbb" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="加载失败，点击重试" />
-        </LinearLayout>
-        <com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryLoadingView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0487" android:visibility="gone" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_centerInParent="true" />
-    </RelativeLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2500" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

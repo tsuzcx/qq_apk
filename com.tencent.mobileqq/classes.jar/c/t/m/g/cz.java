@@ -1,163 +1,97 @@
 package c.t.m.g;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import java.util.Observable;
+import android.util.Base64;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
-class cz
-  extends Observable
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+public final class cz
 {
-  private static String a = "cc_c_t_m_l_";
-  private static volatile cz b = null;
-  private static volatile Context c = null;
-  private static volatile SharedPreferences d = null;
+  private static final byte[] a = { 84, 101, 110, 99, 101, 110, 116, 76, 111, 99, 97, 116, 105, 111, 110, 49 };
+  private static final byte[] b = new byte[0];
   
-  private cz()
+  public static String a(String paramString1, String paramString2)
   {
-    if (c != null) {
-      d = c.getSharedPreferences(a, 0);
+    return a(paramString1, paramString2, 1);
+  }
+  
+  private static String a(String paramString1, String paramString2, int paramInt)
+  {
+    Object localObject = null;
+    if ((paramInt != 1) && (paramInt != 2)) {
+      throw new IllegalArgumentException("wrong mode.");
     }
-  }
-  
-  /* Error */
-  protected static cz a()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 22	c/t/m/g/cz:b	Lc/t/m/g/cz;
-    //   6: ifnonnull +19 -> 25
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: new 2	c/t/m/g/cz
-    //   15: dup
-    //   16: invokespecial 38	c/t/m/g/cz:<init>	()V
-    //   19: putstatic 22	c/t/m/g/cz:b	Lc/t/m/g/cz;
-    //   22: ldc 2
-    //   24: monitorexit
-    //   25: getstatic 22	c/t/m/g/cz:b	Lc/t/m/g/cz;
-    //   28: astore_0
-    //   29: ldc 2
-    //   31: monitorexit
-    //   32: aload_0
-    //   33: areturn
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: athrow
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   28	5	0	localcz	cz
-    //   34	5	0	localObject1	Object
-    //   40	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	25	34	finally
-    //   3	12	40	finally
-    //   25	29	40	finally
-    //   35	40	40	finally
-  }
-  
-  protected static void a(Context paramContext, String paramString)
-  {
-    if ((paramContext == null) || (paramContext.getApplicationContext() == null)) {
-      throw new NullPointerException("context cannot be null!");
+    if ((paramString1 == null) || (paramString1.length() == 0))
+    {
+      paramString1 = "";
+      return paramString1;
     }
-    c = paramContext.getApplicationContext();
-    a = "cc_c_t_m_l_" + paramString;
+    if (paramInt == 1) {}
+    for (;;)
+    {
+      try
+      {
+        paramString1 = paramString1.getBytes();
+        if (paramString1 == null) {
+          break label122;
+        }
+        if (paramString1.length == 0)
+        {
+          break label122;
+          if (paramInt == 2) {
+            paramString1 = Base64.decode(paramString1.getBytes(), 2);
+          }
+        }
+        else
+        {
+          paramString2 = a(paramString1, paramString2, paramInt);
+          if (paramInt == 1) {
+            return Base64.encodeToString(paramString2, 2);
+          }
+          paramString1 = localObject;
+          if (paramInt != 2) {
+            break;
+          }
+          paramString1 = new String(paramString2);
+          return paramString1;
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        return "";
+      }
+      paramString1 = null;
+    }
+    label122:
+    return "";
   }
   
-  /* Error */
-  protected final SharedPreferences b()
+  private static byte[] a(byte[] paramArrayOfByte, String paramString, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 24	c/t/m/g/cz:c	Landroid/content/Context;
-    //   5: astore_1
-    //   6: aload_1
-    //   7: ifnonnull +9 -> 16
-    //   10: aconst_null
-    //   11: astore_1
-    //   12: aload_0
-    //   13: monitorexit
-    //   14: aload_1
-    //   15: areturn
-    //   16: getstatic 26	c/t/m/g/cz:d	Landroid/content/SharedPreferences;
-    //   19: ifnonnull +16 -> 35
-    //   22: getstatic 24	c/t/m/g/cz:c	Landroid/content/Context;
-    //   25: getstatic 20	c/t/m/g/cz:a	Ljava/lang/String;
-    //   28: iconst_0
-    //   29: invokevirtual 36	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   32: putstatic 26	c/t/m/g/cz:d	Landroid/content/SharedPreferences;
-    //   35: getstatic 26	c/t/m/g/cz:d	Landroid/content/SharedPreferences;
-    //   38: astore_1
-    //   39: goto -27 -> 12
-    //   42: astore_1
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_1
-    //   46: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	47	0	this	cz
-    //   5	34	1	localObject1	Object
-    //   42	4	1	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	6	42	finally
-    //   16	35	42	finally
-    //   35	39	42	finally
-  }
-  
-  protected final void c()
-  {
+    if ((paramInt != 1) && (paramInt != 2)) {
+      throw new IllegalArgumentException("wrong mode.");
+    }
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return b;
+    }
     try
     {
-      if (d != null)
-      {
-        addObserver(cy.a());
-        d.registerOnSharedPreferenceChangeListener(this);
+      paramString = new SecretKeySpec(paramString.getBytes("UTF-8"), "AES");
+      Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+      localCipher.init(paramInt, paramString, new IvParameterSpec(a));
+      if (localCipher == null) {
+        return b;
       }
-      return;
+      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
+      return paramArrayOfByte;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    catch (Throwable paramArrayOfByte) {}
+    return b;
   }
   
-  protected final void d()
+  public static String b(String paramString1, String paramString2)
   {
-    try
-    {
-      if (d != null)
-      {
-        d.unregisterOnSharedPreferenceChangeListener(this);
-        deleteObserver(cy.a());
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
-  {
-    setChanged();
-    notifyObservers(paramString);
+    return a(paramString1, paramString2, 2);
   }
 }
 

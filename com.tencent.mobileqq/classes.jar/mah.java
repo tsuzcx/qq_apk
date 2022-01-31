@@ -1,17 +1,13 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
 
 public class mah
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mah(TopicShareHelper paramTopicShareHelper, String paramString) {}
+  public mah(ComponentTopicItemSingle paramComponentTopicItemSingle) {}
   
-  public void run()
-  {
-    PublicAccountReportUtils.a(null, "", "0X80088B4", "0X80088B4", 0, 0, "", this.jdField_a_of_type_JavaLangString, "", VideoReporter.a(TopicShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoTopicShareHelper).mChannelID, null), false);
-  }
+  public void onClick(View paramView) {}
 }
 
 

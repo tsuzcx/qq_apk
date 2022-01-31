@@ -42,9 +42,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
-import nvp;
-import nvq;
-import nvr;
+import oae;
+import oaf;
+import oag;
 
 public class DetailInteractSegment
   extends SegmentView
@@ -67,13 +67,13 @@ public class DetailInteractSegment
   {
     BannerFeedItem localBannerFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a();
     d(paramBaseViewHolder);
-    ((ElasticImageView)paramBaseViewHolder.a(2131371702)).setVisibility(8);
-    Object localObject = (ElasticImageView)paramBaseViewHolder.a(2131366782);
+    ((ElasticImageView)paramBaseViewHolder.a(2131371700)).setVisibility(8);
+    Object localObject = (ElasticImageView)paramBaseViewHolder.a(2131366780);
     if (localBannerFeedItem.getOwner().isFriend())
     {
       ((ElasticImageView)localObject).setVisibility(8);
       ((ElasticImageView)localObject).setOnClickListener(null);
-      localObject = (TextView)paramBaseViewHolder.a(2131371703);
+      localObject = (TextView)paramBaseViewHolder.a(2131371701);
       if (localBannerFeedItem.mViewTotalTime > 0L) {
         break label109;
       }
@@ -130,7 +130,7 @@ public class DetailInteractSegment
     default: 
       return;
     case 1: 
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843437);
+      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843471);
       localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
       paramTextView.setCompoundDrawables(null, null, localDrawable, null);
       paramTextView.setText(String.format("浏览%s", new Object[] { UIUtils.a(paramLong) }));
@@ -160,12 +160,12 @@ public class DetailInteractSegment
     Object localObject = (ShareGroupItem)localVideoListFeedItem.getOwner();
     d(paramBaseViewHolder);
     e(paramBaseViewHolder);
-    ElasticImageView localElasticImageView = (ElasticImageView)paramBaseViewHolder.a(2131366782);
+    ElasticImageView localElasticImageView = (ElasticImageView)paramBaseViewHolder.a(2131366780);
     if ((!((ShareGroupItem)localObject).isPublic()) || (((ShareGroupItem)localObject).getRelationType() == 2))
     {
       localElasticImageView.setVisibility(8);
       localElasticImageView.setOnClickListener(null);
-      localObject = (TextView)paramBaseViewHolder.a(2131371703);
+      localObject = (TextView)paramBaseViewHolder.a(2131371701);
       if (localVideoListFeedItem.mViewTotalTime > 0L) {
         break label118;
       }
@@ -188,12 +188,12 @@ public class DetailInteractSegment
     VideoListFeedItem localVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a();
     d(paramBaseViewHolder);
     e(paramBaseViewHolder);
-    Object localObject = (ElasticImageView)paramBaseViewHolder.a(2131366782);
+    Object localObject = (ElasticImageView)paramBaseViewHolder.a(2131366780);
     if (localVideoListFeedItem.getOwner().isFriend())
     {
       ((ElasticImageView)localObject).setVisibility(8);
       ((ElasticImageView)localObject).setOnClickListener(null);
-      localObject = (TextView)paramBaseViewHolder.a(2131371703);
+      localObject = (TextView)paramBaseViewHolder.a(2131371701);
       if (localVideoListFeedItem.mViewTotalTime > 0L) {
         break label102;
       }
@@ -222,15 +222,15 @@ public class DetailInteractSegment
     paramBaseViewHolder = (ElasticImageView)paramBaseViewHolder.a(2131362023);
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.mHadLike == 1)
     {
-      paramBaseViewHolder.setImageResource(2130843431);
+      paramBaseViewHolder.setImageResource(2130843465);
       return;
     }
-    paramBaseViewHolder.setImageResource(2130843435);
+    paramBaseViewHolder.setImageResource(2130843469);
   }
   
   private void e(BaseViewHolder paramBaseViewHolder)
   {
-    paramBaseViewHolder = (ElasticImageView)paramBaseViewHolder.a(2131371702);
+    paramBaseViewHolder = (ElasticImageView)paramBaseViewHolder.a(2131371700);
     if ((a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.date)) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().size() > 1))
     {
       paramBaseViewHolder.setVisibility(0);
@@ -260,7 +260,7 @@ public class DetailInteractSegment
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().isMe())
     {
       str = "分享我的一天";
-      localObject = localStoryShare.a(str).a(new nvp(this)).a(new FeedDetailShareMode(localStoryVideoItem, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId, ((List)localObject).size()));
+      localObject = localStoryShare.a(str).a(new oae(this)).a(new FeedDetailShareMode(localStoryVideoItem, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.feedId, ((List)localObject).size()));
       if (!bool1) {
         break label212;
       }
@@ -277,7 +277,7 @@ public class DetailInteractSegment
     {
       ((StoryShare)localObject).a("grade", str).a();
       return;
-      str = this.jdField_a_of_type_AndroidContentContext.getString(2131433100);
+      str = this.jdField_a_of_type_AndroidContentContext.getString(2131433114);
       break;
       str = "0";
       break label165;
@@ -302,7 +302,7 @@ public class DetailInteractSegment
       }
       localVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a();
     } while (localVideoListFeedItem == null);
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a("分享日迹圈子").a(ShareGroupOneDayStoryShareMode.a(localShareGroupItem, localStoryVideoItem, localVideoListFeedItem.feedId, localStoryVideoItem.mCreateTime, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().size())).a(new nvq(this, localVideoListFeedItem)).a();
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a("分享小视频圈子").a(ShareGroupOneDayStoryShareMode.a(localShareGroupItem, localStoryVideoItem, localVideoListFeedItem.feedId, localStoryVideoItem.mCreateTime, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().size())).a(new oaf(this, localVideoListFeedItem)).a();
     StoryReportor.a("share_story", "share_day", 0, 0, new String[] { localShareGroupItem.getReportUserType() });
   }
   
@@ -312,7 +312,7 @@ public class DetailInteractSegment
     if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare == null) {
       this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare = StoryShare.a((Activity)this.jdField_a_of_type_AndroidContentContext);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a(this.jdField_a_of_type_AndroidContentContext.getString(2131433100)).a(new nvr(this)).a(new BannerWebShareMode(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a())).a();
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a(this.jdField_a_of_type_AndroidContentContext.getString(2131433114)).a(new oag(this)).a(new BannerWebShareMode(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a())).a();
   }
   
   public void J_()
@@ -354,9 +354,9 @@ public class DetailInteractSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970705, paramViewGroup, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970721, paramViewGroup, false));
     paramViewGroup = (ElasticImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131362023);
-    ElasticImageView localElasticImageView = (ElasticImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131366884);
+    ElasticImageView localElasticImageView = (ElasticImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131366883);
     paramViewGroup.setOnClickListener(this);
     localElasticImageView.setOnClickListener(this);
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
@@ -401,9 +401,9 @@ public class DetailInteractSegment
     {
     default: 
     case 2131362023: 
-    case 2131366884: 
-    case 2131371702: 
-    case 2131366782: 
+    case 2131366883: 
+    case 2131371700: 
+    case 2131366780: 
       do
       {
         do

@@ -1,47 +1,37 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.bubble.BubbleConfig;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.bubble.BubbleManager.LruLinkedHashMap;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.armap.ShopScanDragView;
 
 public class ablo
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  int jdField_a_of_type_Int;
-  BubbleConfig jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig;
-  boolean jdField_a_of_type_Boolean;
+  public ablo(ShopScanDragView paramShopScanDragView) {}
   
-  public ablo(BubbleManager paramBubbleManager, int paramInt, boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    ShopScanDragView.a(this.a).setAlpha(1.0F);
+    ShopScanDragView.b(this.a).setAlpha(0.0F);
+    ShopScanDragView.a(this.a).setVisibility(0);
+    ShopScanDragView.b(this.a).setVisibility(4);
   }
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int).getAbsolutePath() + File.separatorChar + "config.json";
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int, (String)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "getBubbleConfig bubbleId=" + this.jdField_a_of_type_Int + ",filePath=" + (String)localObject + ",bubbleConfig=" + this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig != null) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig);
-    }
-    for (;;)
-    {
-      localObject = new ablp(this);
-      if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-        break;
-      }
-      ((Runnable)localObject).run();
-      return;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int, "config.json", "0");
-      }
-    }
-    new Handler(Looper.getMainLooper()).post((Runnable)localObject);
+    ShopScanDragView.a(this.a).setAlpha(1.0F);
+    ShopScanDragView.b(this.a).setAlpha(0.0F);
+    ShopScanDragView.a(this.a).setVisibility(0);
+    ShopScanDragView.b(this.a).setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ShopScanDragView.a(this.a).setAlpha(0.0F);
+    ShopScanDragView.a(this.a).setVisibility(0);
+    ShopScanDragView.b(this.a).setAlpha(1.0F);
+    ShopScanDragView.b(this.a).setVisibility(0);
   }
 }
 

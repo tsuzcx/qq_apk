@@ -1,18 +1,23 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class wen
   extends BroadcastReceiver
 {
-  public wen(BlessActivity paramBlessActivity) {}
+  private wen(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
-      BlessActivity.a(this.a, true);
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      PublicAccountChatPie.a(this.a, 1);
     }
+    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      return;
+    }
+    PublicAccountChatPie.a(this.a, 1);
   }
 }
 

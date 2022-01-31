@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aiqn;
+import aivq;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
@@ -42,18 +42,18 @@ public class ProtoReqManager
   private void a(Intent paramIntent, ProtoReqManager.ProtoResp paramProtoResp)
   {
     int i = paramIntent.getIntExtra("key_runnable_index", 0);
-    paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_b_of_type_Boolean = true;
-    paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_c_of_type_Long = System.currentTimeMillis();
+    paramProtoResp.jdField_a_of_type_ArrayOfAivq[i].jdField_b_of_type_Boolean = true;
+    paramProtoResp.jdField_a_of_type_ArrayOfAivq[i].jdField_c_of_type_Long = System.currentTimeMillis();
   }
   
   private void a(ProtoReqManager.ProtoResp paramProtoResp)
   {
     paramProtoResp.jdField_a_of_type_Boolean = true;
     int i = 0;
-    while (i < paramProtoResp.jdField_a_of_type_ArrayOfAiqn.length)
+    while (i < paramProtoResp.jdField_a_of_type_ArrayOfAivq.length)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_a_of_type_MqqAppNewIntent);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i]);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramProtoResp.jdField_a_of_type_ArrayOfAivq[i].jdField_a_of_type_MqqAppNewIntent);
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramProtoResp.jdField_a_of_type_ArrayOfAivq[i]);
       i += 1;
     }
   }
@@ -66,9 +66,9 @@ public class ProtoReqManager
   private boolean a(ProtoReqManager.ProtoResp paramProtoResp)
   {
     int i = 0;
-    while (i < paramProtoResp.jdField_a_of_type_ArrayOfAiqn.length)
+    while (i < paramProtoResp.jdField_a_of_type_ArrayOfAivq.length)
     {
-      if ((!paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_b_of_type_Boolean) && ((paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_a_of_type_Boolean == true) || (paramProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_c_of_type_Boolean == true))) {
+      if ((!paramProtoResp.jdField_a_of_type_ArrayOfAivq[i].jdField_b_of_type_Boolean) && ((paramProtoResp.jdField_a_of_type_ArrayOfAivq[i].jdField_a_of_type_Boolean == true) || (paramProtoResp.jdField_a_of_type_ArrayOfAivq[i].jdField_c_of_type_Boolean == true))) {
         return false;
       }
       i += 1;
@@ -96,10 +96,10 @@ public class ProtoReqManager
     }
   }
   
-  void a(aiqn paramaiqn, long paramLong)
+  void a(aivq paramaivq, long paramLong)
   {
-    paramaiqn.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramaiqn, paramLong);
+    paramaivq.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramaivq, paramLong);
   }
   
   public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -160,7 +160,7 @@ public class ProtoReqManager
             if ((l1 < localProtoReq.e) && (((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_Int < localProtoReq.jdField_b_of_type_Int))
             {
               long l2 = localProtoReq.jdField_a_of_type_Int;
-              paramIntent = localObject.jdField_a_of_type_ArrayOfAiqn[localObject.jdField_a_of_type_Int];
+              paramIntent = localObject.jdField_a_of_type_ArrayOfAivq[localObject.jdField_a_of_type_Int];
               ((ProtoReqManager.ProtoResp)localObject).jdField_a_of_type_Int += 1;
               paramIntent.jdField_a_of_type_Long = (l2 - l1 - 5000L);
               a(paramIntent, 0L);
@@ -247,7 +247,7 @@ public class ProtoReqManager
           paramProtoReq.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp = localProtoResp;
           localProtoResp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoReq = paramProtoReq;
           localProtoResp.jdField_a_of_type_Long = System.currentTimeMillis();
-          localProtoResp.jdField_a_of_type_ArrayOfAiqn = new aiqn[paramProtoReq.jdField_b_of_type_Int];
+          localProtoResp.jdField_a_of_type_ArrayOfAivq = new aivq[paramProtoReq.jdField_b_of_type_Int];
           byte[] arrayOfByte = paramProtoReq.jdField_a_of_type_ArrayOfByte;
           Object localObject = ByteBuffer.allocate(arrayOfByte.length + 4);
           ((ByteBuffer)localObject).putInt(arrayOfByte.length + 4).put(arrayOfByte);
@@ -256,11 +256,11 @@ public class ProtoReqManager
           if (i >= paramProtoReq.jdField_b_of_type_Int) {
             break label502;
           }
-          localObject = new aiqn(this);
-          localProtoResp.jdField_a_of_type_ArrayOfAiqn[i] = localObject;
-          ((aiqn)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp = localProtoResp;
-          ((aiqn)localObject).jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ProtoServlet.class);
-          localObject = ((aiqn)localObject).jdField_a_of_type_MqqAppNewIntent;
+          localObject = new aivq(this);
+          localProtoResp.jdField_a_of_type_ArrayOfAivq[i] = localObject;
+          ((aivq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager$ProtoResp = localProtoResp;
+          ((aivq)localObject).jdField_a_of_type_MqqAppNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ProtoServlet.class);
+          localObject = ((aivq)localObject).jdField_a_of_type_MqqAppNewIntent;
           ((NewIntent)localObject).putExtra("key_body", arrayOfByte);
           ((NewIntent)localObject).putExtra("key_cmd", paramProtoReq.jdField_a_of_type_JavaLangString);
           ((NewIntent)localObject).putExtra("key_runnable_index", i);
@@ -279,8 +279,8 @@ public class ProtoReqManager
                 long l1 = paramProtoReq.jdField_a_of_type_Int * i / paramProtoReq.c;
                 long l2 = paramProtoReq.jdField_a_of_type_Int;
                 long l3 = paramProtoReq.d * i;
-                localProtoResp.jdField_a_of_type_ArrayOfAiqn[i].jdField_a_of_type_Long = (l2 - l1 - l3);
-                a(localProtoResp.jdField_a_of_type_ArrayOfAiqn[i], l1);
+                localProtoResp.jdField_a_of_type_ArrayOfAivq[i].jdField_a_of_type_Long = (l2 - l1 - l3);
+                a(localProtoResp.jdField_a_of_type_ArrayOfAivq[i], l1);
                 i += 1;
                 continue;
               }

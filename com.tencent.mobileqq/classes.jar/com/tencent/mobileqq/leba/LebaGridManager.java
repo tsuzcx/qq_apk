@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.leba;
 
-import adzf;
-import adzg;
+import aehp;
+import aehq;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,7 +26,7 @@ public class LebaGridManager
   public QQAppInterface a;
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   public Object a;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new adzg(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new aehq(this);
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   
@@ -36,7 +36,7 @@ public class LebaGridManager
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    ThreadManager.postImmediately(new adzf(this), null, false);
+    ThreadManager.postImmediately(new aehp(this), null, false);
   }
   
   private void a(int paramInt)

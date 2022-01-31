@@ -1,20 +1,17 @@
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.PreDownloadStrategyBeta;
+import com.tencent.mobileqq.app.TroopHandler;
 
 public class wbk
   implements Runnable
 {
-  public wbk(TroopChatPie paramTroopChatPie) {}
+  public wbk(NearbyChatPie paramNearbyChatPie) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
-    {
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a.b(str);
+    if (!NearbyChatPie.b(this.a)) {
+      ((TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).p(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     }
   }
 }

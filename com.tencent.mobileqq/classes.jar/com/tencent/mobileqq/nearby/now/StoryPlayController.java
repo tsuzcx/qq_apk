@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby.now;
 
-import aerz;
-import aesa;
-import aesc;
-import aesd;
-import aese;
-import aesf;
-import aesh;
-import aesi;
+import afak;
+import afal;
+import afan;
+import afao;
+import afap;
+import afaq;
+import afas;
+import afat;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -73,17 +73,17 @@ public class StoryPlayController
   public int a;
   public Context a;
   public Bundle a;
-  Handler jdField_a_of_type_AndroidOsHandler = new aerz(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new afak(this);
   public QQAppInterface a;
   public ActCallBack a;
-  BasePlayListDataModel.OnDataComeListener jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener = new aesa(this);
+  BasePlayListDataModel.OnDataComeListener jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener = new afal(this);
   public BasePlayListDataModel a;
   public MagazinePlayerView a;
   public QQStoryVideoPlayerErrorView a;
   public StuffContainerView a;
   public VideoPlayerPagerAdapter a;
   private StoryNewGuideDialog jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStoryNewGuideDialog;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aesi(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new afat(this);
   private String jdField_a_of_type_JavaLangString = "";
   public HashMap a;
   public boolean a;
@@ -130,13 +130,13 @@ public class StoryPlayController
       this.j = true;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowActCallBack != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowActCallBack.b();
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowActCallBack.a();
     }
     if ((paramVideoViewHolder != null) && (paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView != null))
     {
       paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.a(paramVideoData);
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.a((VideoPlayerView.VideoInfoListener)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramVideoViewHolder.jdField_a_of_type_Int)));
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.a(paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout, paramVideoData, new aese(this));
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewMagazinePlayerView.a(paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout, paramVideoData, new afap(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.a(paramInt, 0);
     if (QLog.isColorLevel()) {
@@ -156,7 +156,7 @@ public class StoryPlayController
   private void b(int paramInt, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, VideoData paramVideoData)
   {
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProgressControler.a(true);
-    paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setRelayoutListener(new aesf(this, paramVideoViewHolder, paramVideoData));
+    paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.setRelayoutListener(new afaq(this, paramVideoViewHolder, paramVideoData));
     if (paramVideoData.jdField_a_of_type_JavaUtilArrayList.get(0) != null)
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter.a(paramInt) instanceof ShortVideoCommentsView))
@@ -190,7 +190,7 @@ public class StoryPlayController
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStoryNewGuideDialog = new StoryNewGuideDialog(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_AndroidAppActivity);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStoryNewGuideDialog.a("左右滑动可切换");
     HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStoryNewGuideDialog.setOnDismissListener(new aesh(this, localVideoViewHolder, localHashMap));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStoryNewGuideDialog.setOnDismissListener(new afas(this, localVideoViewHolder, localHashMap));
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStoryNewGuideDialog.show();
     this.jdField_d_of_type_Boolean = true;
     StorageCenter.a("short_video_player_guide_shown", true);
@@ -303,7 +303,7 @@ public class StoryPlayController
     }
     b(paramInt, localVideoViewHolder, localVideoData);
     new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localVideoData.jdField_a_of_type_JavaLangString, null);
-    ((NearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262)).h(localVideoData.jdField_a_of_type_JavaLangString);
+    ((NearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262)).g(localVideoData.jdField_a_of_type_JavaLangString);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -432,7 +432,7 @@ public class StoryPlayController
   
   public void a(ImageView paramImageView, String paramString, VideoInfoListenerImpl paramVideoInfoListenerImpl)
   {
-    ImageLoader.a().a(paramImageView, paramString, new ColorDrawable(0), new ColorDrawable(0), UITools.a(this.jdField_a_of_type_AndroidContentContext) / 2, UITools.b(this.jdField_a_of_type_AndroidContentContext) / 2, new aesc(this, paramVideoInfoListenerImpl), false);
+    ImageLoader.a().a(paramImageView, paramString, new ColorDrawable(0), new ColorDrawable(0), UITools.a(this.jdField_a_of_type_AndroidContentContext) / 2, UITools.b(this.jdField_a_of_type_AndroidContentContext) / 2, new afan(this, paramVideoInfoListenerImpl), false);
   }
   
   public void a(VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, VideoData paramVideoData, boolean paramBoolean, ShortVideoCommentsView paramShortVideoCommentsView)
@@ -453,7 +453,7 @@ public class StoryPlayController
     {
       paramVideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewOperationView.setVisibility(8);
       if (paramVideoViewHolder.jdField_a_of_type_AndroidViewView != null) {
-        paramVideoViewHolder.jdField_a_of_type_AndroidViewView.findViewById(2131370618).setVisibility(4);
+        paramVideoViewHolder.jdField_a_of_type_AndroidViewView.findViewById(2131370609).setVisibility(4);
       }
     }
     a(paramBoolean1, paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout, paramVideoData, paramShortVideoCommentsView, paramBoolean2);
@@ -461,8 +461,8 @@ public class StoryPlayController
   
   public void a(boolean paramBoolean1, RelativeLayout paramRelativeLayout, VideoData paramVideoData, VideoInfoListenerImpl paramVideoInfoListenerImpl, boolean paramBoolean2)
   {
-    ImageView localImageView1 = (ImageView)paramRelativeLayout.findViewById(2131366378);
-    ImageView localImageView2 = (ImageView)paramRelativeLayout.findViewById(2131370642);
+    ImageView localImageView1 = (ImageView)paramRelativeLayout.findViewById(2131366383);
+    ImageView localImageView2 = (ImageView)paramRelativeLayout.findViewById(2131370633);
     localImageView1.setScaleType(ImageView.ScaleType.CENTER_CROP);
     localImageView2.setScaleType(ImageView.ScaleType.CENTER_CROP);
     localImageView1.setVisibility(0);
@@ -478,7 +478,7 @@ public class StoryPlayController
     }
     for (;;)
     {
-      ImageLoader.a().a(localImageView2, paramVideoData.jdField_d_of_type_JavaLangString, new ColorDrawable(0), new ColorDrawable(0), new aesd(this, paramVideoInfoListenerImpl));
+      ImageLoader.a().a(localImageView2, paramVideoData.jdField_d_of_type_JavaLangString, new ColorDrawable(0), new ColorDrawable(0), new afao(this, paramVideoInfoListenerImpl));
       return;
       label196:
       paramRelativeLayout = AbsDownloader.a(paramVideoData.jdField_c_of_type_JavaLangString);
@@ -557,7 +557,7 @@ public class StoryPlayController
   public void e()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowActCallBack != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowActCallBack.c();
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowActCallBack.b();
     }
   }
   

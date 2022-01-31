@@ -5,12 +5,12 @@ public class SystemFaceData
 {
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.system.face.gifv9";
+    return "early_qq.android.system.face.gifv10";
   }
   
   public String getStrResName()
   {
-    return "qq.android.system.face.gifv9";
+    return "qq.android.system.face.gifv10";
   }
 }
 

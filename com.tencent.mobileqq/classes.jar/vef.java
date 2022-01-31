@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 class vef
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  vef(vee paramvee, ChatMessage paramChatMessage) {}
+  vef(vec paramvec) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_Vee.jdField_a_of_type_Ved.a.a(this.jdField_a_of_type_Vee.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Vee.jdField_a_of_type_AndroidViewView);
-  }
+  public void onDismiss() {}
 }
 
 

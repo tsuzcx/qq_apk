@@ -1,32 +1,20 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.AVActivity;
 
 public class jrn
-  implements ChatActivityUtils.StartVideoListener
+  implements DialogInterface.OnDismissListener
 {
-  public jrn(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jrn(AVActivity paramAVActivity) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    CallbackWaitingActivityExt.a(this.a).a().a().b = -1;
-    CallbackWaitingActivityExt.c(this.a);
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    CallbackWaitingActivityExt.a(this.a).a().a().b = -1;
-    CallbackWaitingActivityExt.c(this.a);
-    this.a.finish();
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jrn
  * JD-Core Version:    0.7.0.1
  */

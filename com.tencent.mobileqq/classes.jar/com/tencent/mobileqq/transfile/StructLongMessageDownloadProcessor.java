@@ -989,9 +989,9 @@ public class StructLongMessageDownloadProcessor
     return true;
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     if (!e()) {
       p();
     }
@@ -1096,7 +1096,7 @@ public class StructLongMessageDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

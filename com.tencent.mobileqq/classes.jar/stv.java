@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-class stv
+public class stv
   implements Runnable
 {
-  stv(stu paramstu) {}
+  public stv(FriendProfileCardActivity paramFriendProfileCardActivity, PersonalityLabelHandler paramPersonalityLabelHandler) {}
   
   public void run()
   {
-    this.a.a.a.a();
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {
+      return;
+    }
+    PersonalityLabelHandler localPersonalityLabelHandler = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelHandler;
+    PersonalityLabelHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a);
   }
 }
 

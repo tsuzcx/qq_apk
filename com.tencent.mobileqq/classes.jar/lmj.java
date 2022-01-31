@@ -1,13 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CreateCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class lmj
-  implements Runnable
+public final class lmj
+  implements ArticleCommentModule.CreateCommentObserver
 {
-  lmj(lmi paramlmi) {}
+  public lmj(ReadInJoyCommentUtils.CreateCommentInterface paramCreateCommentInterface) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
   {
-    ReadinjoySPEventReport.a(-1L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentUtils", 2, "comment id = " + paramString1 + "err code = " + paramInt + "err msg " + paramString2);
+    }
+    this.a.a(paramString1, paramInt, paramString2);
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, String paramString, CommentInfo paramCommentInfo)
+  {
+    this.a.a(paramString, paramCommentInfo);
   }
 }
 

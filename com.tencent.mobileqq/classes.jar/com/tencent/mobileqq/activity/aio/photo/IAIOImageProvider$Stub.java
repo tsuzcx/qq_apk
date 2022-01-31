@@ -9,7 +9,7 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.QLog;
-import vou;
+import vtw;
 
 public abstract class IAIOImageProvider$Stub
   extends Binder
@@ -31,7 +31,7 @@ public abstract class IAIOImageProvider$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IAIOImageProvider))) {
       return (IAIOImageProvider)localIInterface;
     }
-    return new vou(paramIBinder);
+    return new vtw(paramIBinder);
   }
   
   public void a()

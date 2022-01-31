@@ -1,33 +1,54 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLViewContext;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import java.util.concurrent.CountDownLatch;
 
 public class aiax
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public aiax(DanceReadyFilter paramDanceReadyFilter) {}
+  private int jdField_a_of_type_Int;
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new aiay(this);
+  private ISearchListener jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener;
+  private String jdField_a_of_type_JavaLangString;
+  public CountDownLatch a;
+  private boolean jdField_a_of_type_Boolean;
+  private int[] jdField_a_of_type_ArrayOfInt;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aiax(NetSearchEngine paramNetSearchEngine, String paramString, int[] paramArrayOfInt, int paramInt, ISearchListener paramISearchListener)
   {
-    DanceReadyFilter.e(this.a).h_(true);
-    DanceReadyFilter.e(this.a).a(DanceReadyFilter.c(this.a));
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = paramISearchListener;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a()
   {
-    this.a.a.a().a(DanceReadyFilter.a(this.a).a.b);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = null;
+    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = null;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
+  
+  public void run()
+  {
+    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade.a(this.jdField_a_of_type_Int);
+    if (NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine) == 12)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfInt, NetSearchEngine.b, NetSearchEngine.jdField_a_of_type_Double, false, 1);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfInt, NetSearchEngine.b, NetSearchEngine.jdField_a_of_type_Double, false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiax
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,17 @@
-import android.os.Bundle;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
 
 public class amvz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public amvz(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString, Bundle paramBundle) {}
+  public amvz(DatalineRemoteManager paramDatalineRemoteManager) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QzoneWebMusicJsPlugin.access$800(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    this.a.b = true;
+    DatalineRemoteManager.a(this.a, 2);
+    DatalineRemoteManager.b(this.a);
   }
 }
 

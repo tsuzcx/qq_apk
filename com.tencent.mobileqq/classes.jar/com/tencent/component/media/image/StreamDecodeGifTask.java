@@ -16,9 +16,9 @@ import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import phh;
-import phn;
-import pho;
+import plz;
+import pmf;
+import pmg;
 
 public class StreamDecodeGifTask
   extends DecodeImageTask
@@ -31,8 +31,8 @@ public class StreamDecodeGifTask
   private long jdField_a_of_type_Long = 0L;
   Future jdField_a_of_type_JavaUtilConcurrentFuture;
   ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
-  phn jdField_a_of_type_Phn;
-  pho jdField_a_of_type_Pho;
+  pmf jdField_a_of_type_Pmf;
+  pmg jdField_a_of_type_Pmg;
   boolean jdField_a_of_type_Boolean = true;
   private volatile int jdField_b_of_type_Int = 3;
   private StreamDecodeGifTask jdField_b_of_type_ComTencentComponentMediaImageStreamDecodeGifTask = null;
@@ -46,9 +46,9 @@ public class StreamDecodeGifTask
     super(paramImageKey);
   }
   
-  protected StreamDecodeGifTask(phh paramphh)
+  protected StreamDecodeGifTask(plz paramplz)
   {
-    super(paramphh);
+    super(paramplz);
   }
   
   private void a(ImageKey paramImageKey, String paramString1, String paramString2)
@@ -131,7 +131,7 @@ public class StreamDecodeGifTask
     }
   }
   
-  public static StreamDecodeGifTask obtain(phh paramphh)
+  public static StreamDecodeGifTask obtain(plz paramplz)
   {
     if (needRecycle) {}
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -142,10 +142,10 @@ public class StreamDecodeGifTask
         jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask = jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask.jdField_b_of_type_ComTencentComponentMediaImageStreamDecodeGifTask;
         localStreamDecodeGifTask.jdField_b_of_type_ComTencentComponentMediaImageStreamDecodeGifTask = null;
         d -= 1;
-        localStreamDecodeGifTask.setImageTask(paramphh);
+        localStreamDecodeGifTask.setImageTask(paramplz);
         return localStreamDecodeGifTask;
       }
-      return new StreamDecodeGifTask(paramphh);
+      return new StreamDecodeGifTask(paramplz);
     }
   }
   
@@ -169,26 +169,26 @@ public class StreamDecodeGifTask
         str = (String)paramVarArgs[0];
         paramVarArgs = (String)paramVarArgs[1];
       } while (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.isShutdown());
-      if (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().contains(this.jdField_a_of_type_Phn))
+      if (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().contains(this.jdField_a_of_type_Pmf))
       {
         ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "onResult RESULT_ON_STREAM_PROGRESS | contains | hashcode:" + this.mImageKey.hashCodeEx() });
         return;
       }
-      this.jdField_a_of_type_Phn = new phn(this, this.mImageKey, str, paramVarArgs);
-      this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Phn);
+      this.jdField_a_of_type_Pmf = new pmf(this, this.mImageKey, str, paramVarArgs);
+      this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Pmf);
       return;
     case 2: 
       paramVarArgs = (String)paramVarArgs[0];
       str = this.mImageKey.filePath;
       if (!this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.isShutdown())
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().contains(this.jdField_a_of_type_Pho))
+        if (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().contains(this.jdField_a_of_type_Pmg))
         {
           ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "onResult RESULT_ON_DONWNLOAD_SUCCEED contains | hashcode:" + this.mImageKey.hashCodeEx() });
           return;
         }
-        this.jdField_a_of_type_Pho = new pho(this, this.mImageKey, paramVarArgs, str);
-        this.jdField_b_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Pho);
+        this.jdField_a_of_type_Pmg = new pmg(this, this.mImageKey, paramVarArgs, str);
+        this.jdField_b_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Pmg);
       }
       this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.shutdown();
       return;
@@ -212,8 +212,8 @@ public class StreamDecodeGifTask
       ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "executorService shutdown" });
       this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.shutdown();
     }
-    this.jdField_a_of_type_Phn = null;
-    this.jdField_a_of_type_Pho = null;
+    this.jdField_a_of_type_Pmf = null;
+    this.jdField_a_of_type_Pmg = null;
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       if (d < 50)
@@ -229,18 +229,18 @@ public class StreamDecodeGifTask
   public void removeRecord(String paramString)
   {
     boolean bool;
-    if (this.jdField_a_of_type_Phn != null)
+    if (this.jdField_a_of_type_Pmf != null)
     {
-      bool = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.remove(this.jdField_a_of_type_Phn);
+      bool = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.remove(this.jdField_a_of_type_Pmf);
       ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "mDecodetask remove:" + bool });
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentFuture != null) {}
     try
     {
       this.jdField_a_of_type_JavaUtilConcurrentFuture.get();
-      if (this.jdField_a_of_type_Pho != null)
+      if (this.jdField_a_of_type_Pmg != null)
       {
-        bool = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.remove(this.jdField_a_of_type_Pho);
+        bool = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.remove(this.jdField_a_of_type_Pmg);
         ImageManagerEnv.getLogger().d("kaedelin", new Object[] { "mEndTask remove:" + bool });
       }
       if (this.jdField_b_of_type_JavaUtilConcurrentFuture == null) {}

@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.leba.view.LebaFeedsViewBase;
 
 public class aeju
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public aeju(QQPlayerService paramQQPlayerService) {}
+  public aeju(LebaFeedsViewBase paramLebaFeedsViewBase) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QQPlayerService.h() == 2) {
-      QQPlayerService.b(this.a);
+    if (!this.a.b) {}
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.a.a(true);
+      return false;
     }
+    this.a.a(false);
+    return false;
   }
 }
 

@@ -1,10 +1,22 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.text.QQBrowserLinkSpan;
 
 public class tjn
+  extends QQBrowserLinkSpan
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  public tjn(PermisionPrivacyActivity paramPermisionPrivacyActivity, Context paramContext, String paramString)
+  {
+    super(paramContext, paramString);
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004E73", "0X8004E73", 0, 0, "", "", "", "");
+  }
 }
 
 

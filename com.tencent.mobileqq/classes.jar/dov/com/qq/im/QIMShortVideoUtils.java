@@ -1,9 +1,13 @@
 package dov.com.qq.im;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Bundle;
-import ankf;
+import ansq;
+import ansr;
 import com.tencent.biz.qqstory.boundaries.StoryApi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
@@ -12,12 +16,16 @@ import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.peak.PeakUtils;
 import dov.com.qq.im.capture.QIMManager;
 import dov.com.qq.im.capture.data.CaptureComboManager;
 import dov.com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
@@ -25,6 +33,7 @@ import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownload
 import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import java.util.Iterator;
 import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class QIMShortVideoUtils
 {
@@ -33,7 +42,7 @@ public class QIMShortVideoUtils
     NewFlowCameraReporter.a("jumpToCamera");
     if (!VideoEnvironment.b(paramBaseActivity.app))
     {
-      DialogUtil.a(paramBaseActivity, 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131433016, new ankf()).show();
+      DialogUtil.a(paramBaseActivity, 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131433030, new ansq()).show();
       return null;
     }
     if (paramQQAppInterface.c())
@@ -64,6 +73,56 @@ public class QIMShortVideoUtils
     }
   }
   
+  public static void a(Context paramContext)
+  {
+    j = 1;
+    for (;;)
+    {
+      try
+      {
+        SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CrashControl_com.tencent.mobileqq:peak", 4);
+        i = j;
+        if (localSharedPreferences != null)
+        {
+          i = j;
+          if (!localSharedPreferences.getBoolean("allowpreload", true))
+          {
+            long l1 = localSharedPreferences.getLong("starttime", 0L);
+            i = localSharedPreferences.getInt("controlwindow", 86400);
+            long l2 = System.currentTimeMillis();
+            if ((l1 <= 0L) || (i <= 0) || (l2 <= l1) || (l2 - l1 <= i * 1000)) {
+              continue;
+            }
+            localSharedPreferences.edit().putBoolean("allowpreload", true).commit();
+            i = j;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        int i = j;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("QIMShortVideoUtils", 2, "preLoadPeakProcess, e = " + localException.getStackTrace());
+        i = j;
+        continue;
+      }
+      if (i != 0)
+      {
+        if (PeakUtils.a == null)
+        {
+          PeakUtils.a = new PreloadProcHitSession("peak_preload", "com.tencent.mobileqq:peak");
+          PeakUtils.a.a();
+        }
+        ThreadManager.getSubThreadHandler().post(new ansr(paramContext));
+      }
+      return;
+      QLog.d("QIMShortVideoUtils", 1, "preloadPeakProcess is not allowed as crash frequently.");
+      i = 0;
+    }
+  }
+  
   private static void a(BaseActivity paramBaseActivity, Intent paramIntent, int paramInt1, int paramInt2, int paramInt3)
   {
     paramIntent.setClass(paramBaseActivity, QIMCameraCaptureActivity.class);
@@ -88,7 +147,7 @@ public class QIMShortVideoUtils
     if (localIntent == null) {
       return false;
     }
-    ((CaptureComboManager)QIMManager.a(5)).f();
+    ((CaptureComboManager)QIMManager.a(5)).g();
     localIntent.putExtra("firsttab", paramInt5);
     localIntent.putExtra("secondtab", paramInt6);
     localIntent.putExtra("itemid", paramString);
@@ -113,7 +172,7 @@ public class QIMShortVideoUtils
       for (;;)
       {
         if (!paramString.hasNext()) {
-          break label247;
+          break label257;
         }
         String str = (String)paramString.next();
         if ("succUrl".startsWith(str))
@@ -128,7 +187,7 @@ public class QIMShortVideoUtils
         }
       }
     }
-    label247:
+    label257:
     localIntent.putExtra("flow_camera_qim_tab_direction", paramInt1);
     localIntent.putExtra("cameraDirection", paramInt9);
     a(paramBaseActivity, localIntent, paramInt2, paramInt3, paramInt4);

@@ -1,23 +1,17 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import dov.com.qq.im.capture.QIMCaptureController;
 
 public class antf
   implements Runnable
 {
-  public antf(EditVideoDoodle paramEditVideoDoodle) {}
+  public antf(QIMCaptureController paramQIMCaptureController) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.e();
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = 1;
-      return;
-      if (this.a.jdField_a_of_type_Int == 3) {
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.s();
-      }
+    AppInterface localAppInterface = this.a.a;
+    if (localAppInterface != null) {
+      ConfigServlet.a(localAppInterface, localAppInterface.getCurrentAccountUin());
     }
   }
 }

@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.QzoneEffectsCameraCaptureFragment;
-import com.tencent.open.base.ToastUtil;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.RedpointHandler;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import mqq.app.MobileQQ;
 
 public class ahki
-  implements Runnable
+  extends MessageObserver
 {
-  public ahki(QzoneEffectsCameraCaptureFragment paramQzoneEffectsCameraCaptureFragment, boolean paramBoolean, String paramString) {}
+  public ahki(RedTouchManager paramRedTouchManager) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QzoneEffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentQzoneEffectsCameraCaptureFragment);
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramInt == 113) && (paramBoolean) && ((this.a.a instanceof QQAppInterface)))
     {
-      QzoneEffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentQzoneEffectsCameraCaptureFragment, this.jdField_a_of_type_JavaLangString);
-      return;
+      RedpointHandler.a((QQAppInterface)this.a.a);
+      paramObject = new Intent();
+      paramObject.setAction("com.tencent.redpoint.broadcast.push");
+      this.a.a.getApplication().sendBroadcast(paramObject);
     }
-    ToastUtil.a().a("对不起，GIF处理异常...");
   }
 }
 

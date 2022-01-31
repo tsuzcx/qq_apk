@@ -17,10 +17,10 @@ import com.tencent.mobileqq.pic.Logger;
 import com.tencent.widget.HorizontalListView;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
-import vpr;
-import vps;
-import vpu;
-import vpw;
+import vuv;
+import vuw;
+import vuy;
+import vva;
 
 public class PhotoListPanel$SwipeUpAndDragListener
   implements View.OnTouchListener
@@ -33,9 +33,9 @@ public class PhotoListPanel$SwipeUpAndDragListener
   public PhotoListPanel.SwipeUpAndDragCallBack a;
   public PhotoListPanel a;
   public AtomicBoolean a;
-  vps jdField_a_of_type_Vps;
-  vpu jdField_a_of_type_Vpu;
-  vpw jdField_a_of_type_Vpw;
+  vuw jdField_a_of_type_Vuw;
+  vuy jdField_a_of_type_Vuy;
+  vva jdField_a_of_type_Vva;
   boolean jdField_a_of_type_Boolean;
   public int[] a;
   public float b;
@@ -63,8 +63,8 @@ public class PhotoListPanel$SwipeUpAndDragListener
     this.jdField_e_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     jdField_e_of_type_Int = (int)(30.0F * this.jdField_e_of_type_Float);
-    this.jdField_a_of_type_Vpu = new vpu(this, paramContext, paramViewGroup);
-    this.jdField_a_of_type_Vps = new vps(this, paramContext, paramViewGroup);
+    this.jdField_a_of_type_Vuy = new vuy(this, paramContext, paramViewGroup);
+    this.jdField_a_of_type_Vuw = new vuw(this, paramContext, paramViewGroup);
   }
   
   public float a(int paramInt1, int paramInt2, int paramInt3)
@@ -87,7 +87,7 @@ public class PhotoListPanel$SwipeUpAndDragListener
     }
   }
   
-  vpw a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2)
+  vva a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2)
   {
     boolean bool4 = false;
     boolean bool5 = true;
@@ -121,13 +121,13 @@ public class PhotoListPanel$SwipeUpAndDragListener
       label394:
       for (bool4 = bool5;; bool4 = false)
       {
-        Logger.a("PhotoListPanel", "detectGesture", "Xvelocity=" + this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) + "Yvelocity=" + f1 + ",delX = " + paramFloat1 + ", delY = " + paramFloat2 + "tanA = " + Math.abs(paramFloat1 / paramFloat2) + ",Angle A = " + Math.toDegrees(Math.atan(Math.abs(paramFloat1 / paramFloat2))) + ",Velocity Angle = " + Math.toDegrees(Math.atan(Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) / f1))) + " vThresh = " + bool1 + ",direction = " + bool2 + ",anc = " + bool3 + ",satate = " + bool4 + ",mGestureHandler = " + this.jdField_a_of_type_Vpw);
+        Logger.a("PhotoListPanel", "detectGesture", "Xvelocity=" + this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) + "Yvelocity=" + f1 + ",delX = " + paramFloat1 + ", delY = " + paramFloat2 + "tanA = " + Math.abs(paramFloat1 / paramFloat2) + ",Angle A = " + Math.toDegrees(Math.atan(Math.abs(paramFloat1 / paramFloat2))) + ",Velocity Angle = " + Math.toDegrees(Math.atan(Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) / f1))) + " vThresh = " + bool1 + ",direction = " + bool2 + ",anc = " + bool3 + ",satate = " + bool4 + ",mGestureHandler = " + this.jdField_a_of_type_Vva);
         Logger.a("PhotoListPanel", "detectGesture", "mActivePointerId x = " + paramMotionEvent.getX() + ",mActivePointerId y = " + paramMotionEvent.getY());
-        if ((this.jdField_a_of_type_Vpw != null) || (!bool2) || (!bool3) || (!bool4)) {
+        if ((this.jdField_a_of_type_Vva != null) || (!bool2) || (!bool3) || (!bool4)) {
           break label773;
         }
         Logger.a("PhotoListPanel", "detectGesture", "return mDragHandler.");
-        return this.jdField_a_of_type_Vps;
+        return this.jdField_a_of_type_Vuw;
         bool1 = false;
         break;
         label382:
@@ -162,12 +162,12 @@ public class PhotoListPanel$SwipeUpAndDragListener
       }
       Logger.a("PhotoListPanel", "detectGesture", "2 Xvelocity=" + this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) + "Yvelocity=" + f1 + ",delX = " + paramFloat1 + ", delY = " + paramFloat2 + "tanA = " + Math.abs(paramFloat1 / paramFloat2) + ",Angle A = " + Math.toDegrees(Math.atan(Math.abs(paramFloat1 / paramFloat2))) + ",Velocity Angle = " + Math.toDegrees(Math.atan(Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity(i) / f1))) + " vThresh = " + bool1 + ",direction = " + bool2 + ",anc = " + bool3 + ",satate = " + bool4);
       Logger.a("PhotoListPanel", "detectGesture", "2 mActivePointerId x = " + paramMotionEvent.getX() + ",mActivePointerId y = " + paramMotionEvent.getY());
-      if ((this.jdField_a_of_type_Vpw != null) || (!bool2) || (!bool3) || (!bool4) || (!bool1)) {
+      if ((this.jdField_a_of_type_Vva != null) || (!bool2) || (!bool3) || (!bool4) || (!bool1)) {
         break label773;
       }
       this.jdField_a_of_type_Boolean = true;
       Logger.a("PhotoListPanel", "detectGesture", "return mFlingHandler.");
-      return this.jdField_a_of_type_Vpu;
+      return this.jdField_a_of_type_Vuy;
       bool1 = false;
       break;
       bool2 = false;
@@ -179,10 +179,10 @@ public class PhotoListPanel$SwipeUpAndDragListener
   
   public void a()
   {
-    if (this.jdField_a_of_type_Vpw != null)
+    if (this.jdField_a_of_type_Vva != null)
     {
-      this.jdField_a_of_type_Vpw.a();
-      this.jdField_a_of_type_Vpw = null;
+      this.jdField_a_of_type_Vva.a();
+      this.jdField_a_of_type_Vva = null;
     }
     if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
     {
@@ -226,14 +226,14 @@ public class PhotoListPanel$SwipeUpAndDragListener
         this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
         this.jdField_d_of_type_Int = paramMotionEvent.getPointerId(0);
         Logger.a("PhotoListPanel", "onTouch", " ACTION_DOWN,mActivePointerId x = " + paramMotionEvent.getX() + ",mActivePointerId y = " + paramMotionEvent.getY());
-        this.jdField_a_of_type_Vpw = null;
+        this.jdField_a_of_type_Vva = null;
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        ThreadManager.getUIHandler().postDelayed(new vpr(this), 100L);
+        ThreadManager.getUIHandler().postDelayed(new vuv(this), 100L);
         break;
         this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
       }
-      Logger.a("PhotoListPanel", "onTouch", " ACTION_MOVE,x = " + f1 + ",y = " + f2 + ",mGestureHandler = " + this.jdField_a_of_type_Vpw);
+      Logger.a("PhotoListPanel", "onTouch", " ACTION_MOVE,x = " + f1 + ",y = " + f2 + ",mGestureHandler = " + this.jdField_a_of_type_Vva);
       float f3 = this.jdField_a_of_type_Float;
       float f4 = this.jdField_b_of_type_Float;
       if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
@@ -245,21 +245,21 @@ public class PhotoListPanel$SwipeUpAndDragListener
       }
       if (!this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Vpw = a(paramMotionEvent, f1 - f3, f2 - f4);
-        if (this.jdField_a_of_type_Vpw != null) {
-          return this.jdField_a_of_type_Vpw.a(paramView, this.jdField_c_of_type_Int);
+        this.jdField_a_of_type_Vva = a(paramMotionEvent, f1 - f3, f2 - f4);
+        if (this.jdField_a_of_type_Vva != null) {
+          return this.jdField_a_of_type_Vva.a(paramView, this.jdField_c_of_type_Int);
         }
       }
-      else if (this.jdField_a_of_type_Vpw != null)
+      else if (this.jdField_a_of_type_Vva != null)
       {
-        return this.jdField_a_of_type_Vpw.a(paramMotionEvent);
+        return this.jdField_a_of_type_Vva.a(paramMotionEvent);
       }
       Logger.a("PhotoListPanel", "onTouch", "f ACTION_MOVE,x = " + f1 + ",y = " + f2);
       continue;
-      if (this.jdField_a_of_type_Vpw != null)
+      if (this.jdField_a_of_type_Vva != null)
       {
-        boolean bool2 = this.jdField_a_of_type_Vpw.b(paramMotionEvent);
-        this.jdField_a_of_type_Vpw = null;
+        boolean bool2 = this.jdField_a_of_type_Vva.b(paramMotionEvent);
+        this.jdField_a_of_type_Vva = null;
         bool1 = bool2;
         if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
           break;

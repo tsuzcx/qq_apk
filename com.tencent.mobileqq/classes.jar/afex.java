@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class afex
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  public afex(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public afex(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void run()
+  public void onDismiss()
   {
-    Object localObject = (FriendsManager)this.a.a.app.getManager(50);
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((FriendsManager)localObject).a(this.a.a.getCurrentAccountUin()))
-    {
-      this.a.a.runOnUiThread(new afey(this, (Card)localObject));
-      return;
-    }
+    this.a.b = false;
   }
 }
 

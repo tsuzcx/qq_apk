@@ -1,17 +1,34 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.os.Message;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.io.File;
+import mqq.os.MqqHandler;
 
-public class anzx
-  implements Runnable
+public final class anzx
+  extends MqqHandler
 {
-  public anzx(DoodleView paramDoodleView, long paramLong) {}
+  final String a;
+  final String b;
   
-  public void run()
+  public anzx(String paramString1, String paramString2)
   {
-    if (DoodleView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView, this.jdField_a_of_type_Long))
+    super(ThreadManager.getSubThreadLooper());
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.requestLayout();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
+    default: 
+      return;
+    case 1001: 
+      FileUtils.a(QQStoryContext.a().a(), this.a, this.b);
+      return;
     }
+    FileUtils.b(QQStoryContext.a().a(), new File(this.b));
   }
 }
 

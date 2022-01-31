@@ -1,38 +1,52 @@
-import android.view.MotionEvent;
+import android.annotation.TargetApi;
+import android.view.DragEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.smooth.ItemManager;
+import android.view.View.OnDragListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.qphone.base.util.QLog;
 
+@TargetApi(11)
 public class afmk
-  implements View.OnTouchListener
+  implements View.OnDragListener
 {
-  private afmk(ItemManager paramItemManager) {}
+  private int jdField_a_of_type_Int;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public afmk(NearbyProfileEditPanel paramNearbyProfileEditPanel, int paramInt)
   {
-    boolean bool3 = true;
-    boolean bool2 = false;
-    int i = paramMotionEvent.getAction();
-    Object localObject = this.a;
-    boolean bool1 = bool3;
-    if (i != 1) {
-      if (i != 3) {
-        break label105;
-      }
-    }
-    label105:
-    for (bool1 = bool3;; bool1 = false)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean onDrag(View paramView, DragEvent paramDragEvent)
+  {
+    switch (paramDragEvent.getAction())
     {
-      ((ItemManager)localObject).b = bool1;
-      if ((this.a.b) && (this.a.jdField_a_of_type_Int != 2)) {
-        this.a.a();
+    }
+    for (;;)
+    {
+      return true;
+      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
+      continue;
+      RelativeLayout localRelativeLayout = NearbyProfileEditPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel);
+      int i = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.indexOfChild(paramView);
+      int j = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.indexOfChild(localRelativeLayout);
+      if ((i != -1) && (j != -1) && (((i > j) && (paramDragEvent.getX() > this.jdField_a_of_type_Int / 2)) || ((i < j) && (paramDragEvent.getX() < this.jdField_a_of_type_Int / 2))))
+      {
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.removeView(localRelativeLayout);
+          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.addView(localRelativeLayout, i);
+          NearbyProfileEditPanel.d(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel);
+        }
+        catch (Exception paramView) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.nearby_people_card.", 2, "drag between small pics exception" + paramView.getMessage());
+          continue;
+          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.a.post(new afml(this));
+        }
       }
-      localObject = this.a.jdField_a_of_type_Afmi.a();
-      bool1 = bool2;
-      if (localObject != null) {
-        bool1 = ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
-      }
-      return bool1;
     }
   }
 }

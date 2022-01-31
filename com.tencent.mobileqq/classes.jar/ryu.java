@@ -1,27 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class ryu
-  extends Handler
+  implements Runnable
 {
-  public ryu(ChatHistory paramChatHistory) {}
+  public ryu(BaseChatPie paramBaseChatPie) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1)
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131434483);
-      if (!this.a.isFinishing()) {
-        this.a.a.show();
-      }
-    }
+    this.a.an();
   }
 }
 

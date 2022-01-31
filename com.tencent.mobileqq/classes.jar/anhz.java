@@ -1,23 +1,11 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.qzone.statistic.access.concept.Sampler;
 
-public class anhz
-  implements ThreadPool.Job
+public final class anhz
+  extends Sampler
 {
-  public anhz(WyDownloader paramWyDownloader, List paramList) {}
-  
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public boolean a()
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.a(l, true, false, false);
-    }
-    return null;
+    return true;
   }
 }
 

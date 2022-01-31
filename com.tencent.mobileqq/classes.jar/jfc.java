@@ -1,30 +1,23 @@
-import com.tencent.av.business.manager.BusinessMessageCenter;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class jfc
-  implements Observer
+  implements Runnable
 {
-  private WeakReference a;
+  public jfc(VideoController paramVideoController) {}
   
-  public jfc(BusinessMessageCenter paramBusinessMessageCenter)
+  public void run()
   {
-    this.a = new WeakReference(paramBusinessMessageCenter);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    BusinessMessageCenter localBusinessMessageCenter = (BusinessMessageCenter)this.a.get();
-    if (localBusinessMessageCenter == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoController.a, 2, "mSwitchToMultiRunnable timeOut ");
     }
-    BusinessMessageCenter.a(localBusinessMessageCenter, paramObservable, paramObject);
+    this.a.c(this.a.a().c, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jfc
  * JD-Core Version:    0.7.0.1
  */

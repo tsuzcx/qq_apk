@@ -1,35 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import com.tencent.mobileqq.nearby.now.view.CustomViewPager;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
 
 public class afai
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public afai(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public afai(SmallVideoFragment paramSmallVideoFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    this.a.c = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b.findViewById(2131370626).setBackgroundDrawable(null);
-    this.a.b.findViewById(2131370625).setBackgroundColor(-637534209);
-    this.a.c = false;
-  }
-  
-  public void onAnimationPause(Animator paramAnimator)
-  {
-    this.a.c = false;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.c = true;
-    this.a.b.findViewById(2131370626).setBackgroundResource(2130842752);
-    this.a.b.findViewById(2131370625).setBackgroundColor(0);
+    VideoPlayerPagerAdapter localVideoPlayerPagerAdapter = (VideoPlayerPagerAdapter)this.a.a.getAdapter();
+    if ((localVideoPlayerPagerAdapter.a(this.a.a.getCurrentItem()) instanceof ShortVideoCommentsView)) {
+      ((ShortVideoCommentsView)localVideoPlayerPagerAdapter.a(this.a.a.getCurrentItem())).m();
+    }
   }
 }
 

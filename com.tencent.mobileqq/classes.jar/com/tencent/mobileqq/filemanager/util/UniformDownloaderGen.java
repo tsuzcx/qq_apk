@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import adir;
+import adqy;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
@@ -71,7 +71,7 @@ public class UniformDownloaderGen
       QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] runWorker. before worker be stoped");
       localUniformDownloaderGenWorker.a();
     }
-    localUniformDownloaderGenWorker = new UniformDownloaderGenWorker(this.jdField_c_of_type_Long, UniformDownloadMgr.a().a(), this.jdField_c_of_type_JavaLangString, this.b, this.g, new adir(this));
+    localUniformDownloaderGenWorker = new UniformDownloaderGenWorker(this.jdField_c_of_type_Long, UniformDownloadMgr.a().a(), this.jdField_c_of_type_JavaLangString, this.b, this.g, new adqy(this));
     a(localUniformDownloaderGenWorker);
     QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_c_of_type_Long + "] runWorker. start ,mTempStrFilePath=" + this.f);
     return localUniformDownloaderGenWorker.a(this.f, paramLong);

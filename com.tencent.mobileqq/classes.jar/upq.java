@@ -1,18 +1,40 @@
-import android.view.Window;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class upq
-  implements Runnable
+class upq
+  implements PreloadManager.OnGetPathListener
 {
-  public upq(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  upq(upp paramupp) {}
   
-  public void run()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.a.setRequestedOrientation4Recording(true);
-    this.a.a.getWindow().clearFlags(128);
-    QQToast.a(this.a.a, 2131433787, 1).b(this.a.a.getTitleBarHeight());
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
+    {
+      Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramPathResult, ImageUtil.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D)));
+      if (localBitmap != null) {
+        this.a.a.icon = localBitmap;
+      }
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
+      }
+    }
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 

@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.GetCurrentPositionCallback;
 
-public class aavi
-  implements aawd
+class aavi
+  implements ArkAppEventObserverManager.GetCurrentPositionCallback
 {
-  public aavi(ArkLocalAppMgr paramArkLocalAppMgr) {}
+  aavi(aavh paramaavh) {}
   
-  public void a(ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, Object paramObject)
+  public void a(long paramLong)
   {
-    paramObject = (aavx)paramObject;
-    paramObject.a.post(new aavj(this, paramUpdateAppByNameTask, paramObject));
+    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Aauq.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    ArkAppDeviceModule.a(this.a.a.a.jdField_a_of_type_Aauq.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

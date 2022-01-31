@@ -1,19 +1,29 @@
-import android.animation.ValueAnimator;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.SimpleAnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class aobm
-  extends AnimatorFactory.SimpleAnimatorListener
+  implements EditVideoPoiPickerCallback
 {
-  public aobm(ElasticImageView paramElasticImageView) {}
+  public aobm(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void a(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ElasticImageView.a(this.a, this.a.d);
-    SLog.b("ElasticImageView", "updateAnimator:" + this.a.d);
-    ElasticImageView.a(this.a);
+    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
+  }
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
+  {
+    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
+    this.a.a.setLocation(paramTroopBarPOI);
+    if (paramTroopBarPOI != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.b = bool;
+      return;
+    }
   }
 }
 

@@ -1,49 +1,42 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
+import android.os.Handler;
 import android.widget.TextView;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
 public class jzy
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public jzy(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  public jzy(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationCancel");
+    Object localObject = "QQ电话";
+    if (this.a.jdField_c_of_type_Int == 2) {
+      localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(3000, String.valueOf(this.a.jdField_a_of_type_Long), null);
     }
-    this.a.b(4, false);
-    QavVideoRecordUICtrl.b(this.a).requestLayout();
-    QavVideoRecordUICtrl.a(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationEnd");
+    for (;;)
+    {
+      this.a.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      localObject = this.a;
+      ((MultiVideoEnterPageActivity)localObject).g += 1;
+      if (this.a.jdField_c_of_type_JavaLangRunnable != null)
+      {
+        if (this.a.g >= 3) {
+          break;
+        }
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
+      }
+      return;
+      if (this.a.jdField_c_of_type_Int == 1) {
+        localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(1, String.valueOf(this.a.jdField_a_of_type_Long), null);
+      }
     }
-    this.a.c(4);
-    QavVideoRecordUICtrl.b(this.a).requestLayout();
-    QavVideoRecordUICtrl.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationStart");
-    }
-    QavVideoRecordUICtrl.d(this.a).setVisibility(0);
-    QavVideoRecordUICtrl.d(this.a).setAlpha(0.0F);
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.jdField_c_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jzy
  * JD-Core Version:    0.7.0.1
  */

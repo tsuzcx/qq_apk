@@ -1,26 +1,19 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.emosm.view.DragSortListView.DragScrollProfile;
 
 public class acig
-  extends RecyclerView.ItemDecoration
+  implements DragSortListView.DragScrollProfile
 {
-  private final int jdField_a_of_type_Int = AIOUtils.a(3.0F, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.getResources());
+  public acig(DragSortListView paramDragSortListView) {}
   
-  private acig(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public float a(float paramFloat, long paramLong)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    return this.a.e * paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acig
  * JD-Core Version:    0.7.0.1
  */

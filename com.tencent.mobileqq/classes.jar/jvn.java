@@ -1,35 +1,24 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoUtils;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
+import com.tencent.av.ui.EffectSettingBtn;
 
 public class jvn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public jvn(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, Intent paramIntent, SessionInfo paramSessionInfo) {}
+  public jvn(EffectSettingBtn paramEffectSettingBtn) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    QAVGroupConfig.Report.a(true);
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.sendBroadcast(new Intent("com.gvideo.com.tencent.av.EXIT_GROUP_VIDEO"));
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.c(1);
-    if (VideoUtils.a())
+    if (!this.a.b)
     {
-      this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.sendBroadcast(new Intent("tencent.av.EXIT_QZONE_LIVE_REQ_ACTION"));
+      this.a.a.postDelayed(EffectSettingBtn.a(this.a), 1000L);
       return;
     }
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a("onClickAccept", this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentAvAppSessionInfo);
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.jdField_a_of_type_Long), Integer.valueOf(3) });
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickAccept");
+    EffectSettingBtn.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jvn
  * JD-Core Version:    0.7.0.1
  */

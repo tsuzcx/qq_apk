@@ -1,18 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class tro
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  public tro(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  public tro(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map paramMap)
   {
-    this.a.a.show();
-    this.a.b = false;
-    SendMultiPictureHelper.c(this.a);
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
+    }
+    this.a.e();
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.getApplicationContext(), 2, 2131435010, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if (QQSettingMsgHistoryActivity.a(this.a) != null)
+    {
+      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(null);
+      paramMap = QQSettingMsgHistoryActivity.a(this.a);
+      if (this.a.app.e() != 1) {
+        break label159;
+      }
+    }
+    label159:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      paramMap.setChecked(paramBoolean);
+      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      QQToast.a(this.a.getApplicationContext(), 2131435011, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+  }
+  
+  protected void onSetMessageRaoam(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      QQSettingMsgHistoryActivity.b(this.a);
+    }
   }
 }
 

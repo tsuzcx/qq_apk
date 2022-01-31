@@ -1,17 +1,15 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.base.BaseLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.Comparator;
 
-class aohi
-  implements Runnable
+public class aohi
+  implements Comparator
 {
-  aohi(aohe paramaohe) {}
+  public aohi(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public int a(BaseLayer paramBaseLayer1, BaseLayer paramBaseLayer2)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.r();
-    }
+    return paramBaseLayer2.f_() - paramBaseLayer1.f_();
   }
 }
 

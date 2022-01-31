@@ -1,41 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.KeyEvent;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.util.InputMethodUtil;
 
 public class xip
-  implements View.OnClickListener
+  implements TextView.OnEditorActionListener
 {
-  public xip(BannerManager paramBannerManager) {}
+  public xip(CommonHbFragment paramCommonHbFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramView.getId())
+    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-    case 2131365423: 
-    case 2131365424: 
-    default: 
-    case 2131365421: 
-      do
-      {
-        return;
-        paramView = new Intent(BannerManager.a(this.a), LoginManagerActivity.class);
-        paramView.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
-        paramView.putExtra("appType", this.a.jdField_b_of_type_Int);
-        paramView.putExtra("subappid", this.a.a);
-        paramView.putExtra("clientType", this.a.jdField_b_of_type_Long);
-        BannerManager.a(this.a).startActivity(paramView);
-      } while (this.a.jdField_b_of_type_Long != 77313L);
-      ReportController.b(BannerManager.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
-      return;
+      if (CommonHbFragment.a(this.a).isEnabled()) {
+        CommonHbFragment.a(this.a).performClick();
+      }
+      InputMethodUtil.b(CommonHbFragment.a(this.a));
     }
-    if (this.a.jdField_b_of_type_Long == 77313L) {
-      this.a.jdField_b_of_type_Boolean = true;
-    }
-    this.a.b();
+    return false;
   }
 }
 

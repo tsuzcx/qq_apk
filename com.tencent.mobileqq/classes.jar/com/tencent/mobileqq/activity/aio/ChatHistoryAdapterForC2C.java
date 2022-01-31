@@ -19,7 +19,7 @@ import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Calendar;
 import java.util.List;
-import ukn;
+import upj;
 
 public class ChatHistoryAdapterForC2C
   extends ChatAdapter1
@@ -27,14 +27,14 @@ public class ChatHistoryAdapterForC2C
   public int a;
   public Context a;
   public Calendar a;
-  ukn a;
+  upj a;
   public Calendar b;
   
   public ChatHistoryAdapterForC2C(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
   {
     super(paramQQAppInterface, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Ukn = new ukn(this, null);
+    this.jdField_a_of_type_Upj = new upj(this, null);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -156,7 +156,7 @@ public class ChatHistoryAdapterForC2C
   {
     ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     ChatItemBuilder localChatItemBuilder = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemItemBuilderFactory.a(localChatMessage, this);
-    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage, paramView, paramViewGroup, this.jdField_a_of_type_Ukn);
+    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage, paramView, paramViewGroup, this.jdField_a_of_type_Upj);
     if (paramView != null) {
       paramView.setTag(2131361859, localChatMessage);
     }

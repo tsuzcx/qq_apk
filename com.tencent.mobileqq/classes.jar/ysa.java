@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.apollo.script.SpriteBridge;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.script.callback.ISpriteTaskInterface;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public class ysa
+class ysa
   implements Runnable
 {
-  public ysa(SpriteBridge paramSpriteBridge, SpriteTaskParam paramSpriteTaskParam) {}
+  ysa(yrz paramyrz, String paramString) {}
   
   public void run()
   {
-    if (SpriteBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge) != null)
-    {
-      if (SpriteBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge).a()) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.j = 1;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.a = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge;
-      SpriteBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge).a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
+    if (this.jdField_a_of_type_Yrz.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null) {
+      this.jdField_a_of_type_Yrz.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().b(this.jdField_a_of_type_Yrz.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

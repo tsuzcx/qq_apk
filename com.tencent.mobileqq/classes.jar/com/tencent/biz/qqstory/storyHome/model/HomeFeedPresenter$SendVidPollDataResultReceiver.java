@@ -13,7 +13,7 @@ import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nyy;
+import odn;
 
 public class HomeFeedPresenter$SendVidPollDataResultReceiver
   extends QQUIEventReceiver
@@ -70,7 +70,7 @@ public class HomeFeedPresenter$SendVidPollDataResultReceiver
         for (;;)
         {
           HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramSendVidPollDataResultEvent.jdField_a_of_type_JavaLangString);
-          ThreadManager.post(new nyy(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1), 5, null, false);
+          ThreadManager.post(new odn(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1), 5, null, false);
           HomeFeedPresenter.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
           return;
           if (localObject1 == null) {}

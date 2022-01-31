@@ -1,31 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager.IBannerInteract;
-import com.tencent.mobileqq.activity.recent.BannerManager.MessageToShowBanner;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.qwallet.FrameAnimHelper;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
 
-public class xjw
-  implements View.OnClickListener
+class xjw
+  implements Runnable
 {
-  private BannerManager.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  xjw(xjv paramxjv, Object paramObject) {}
   
-  public xjw(BannerManager.MessageToShowBanner paramMessageToShowBanner, MqqHandler paramMqqHandler)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner = paramMessageToShowBanner;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_JavaLangString + " on close");
-    }
-    paramView = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
-    paramView.obj = this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$IBannerInteract.b();
+    int i = (int)this.jdField_a_of_type_Xjv.a.a.getResources().getDimension(2131560172);
+    ThemeHbFragment.a(this.jdField_a_of_type_Xjv.a, new FrameAnimHelper(this.jdField_a_of_type_Xjv.a.a, ThemeHbFragment.a(this.jdField_a_of_type_Xjv.a), i, true, null));
+    ThemeHbFragment.a(this.jdField_a_of_type_Xjv.a).a((String)this.jdField_a_of_type_JavaLangObject, false);
   }
 }
 

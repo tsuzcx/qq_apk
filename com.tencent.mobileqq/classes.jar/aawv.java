@@ -1,27 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAiInfo;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppViewByIntentCallback;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ArkPassiveSearchInfo;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class aawv
-  implements ArkLocalAppMgr.IGetAppViewByIntentCallback
+public class aawv
+  implements Runnable
 {
-  aawv(aawu paramaawu, ArkAiInfo paramArkAiInfo, ArkMessageServerLogic.ArkPassiveSearchInfo paramArkPassiveSearchInfo, int paramInt1, int paramInt2) {}
+  public aawv(ArkAppModuleReg.ModuleQQ paramModuleQQ, String paramString1, String paramString2, long paramLong, String paramString3) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void run()
   {
-    if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4)))
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(BaseActivity.sTopActivity, 2131624516);
+    localQQCustomDialog.setContentView(2130968847);
+    localQQCustomDialog.setTitle(BaseActivity.sTopActivity.getString(2131438264, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    ((ImageView)localQQCustomDialog.findViewById(2131364066)).setImageDrawable(BaseActivity.sTopActivity.getResources().getDrawable(2130838205));
+    ((TextView)localQQCustomDialog.findViewById(2131364067)).setText(this.jdField_a_of_type_JavaLangString);
+    ((TextView)localQQCustomDialog.findViewById(2131362781)).setText(BaseActivity.sTopActivity.getString(2131438849));
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    ArkAppCenter.a(this.b, new aaww(this, localQQCustomDialog));
+    localQQCustomDialog.setNegativeButton(2131434690, new aawx(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(2131434688, new aawz(this, localQQCustomDialog));
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d = paramString3;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.b = paramString4;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.e = ArkAppCenter.b(paramString3);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$ArkPassiveSearchInfo.a.add(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo);
+      localQQCustomDialog.show();
+      label159:
+      if (ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_user_info", this.c) == 0) {
+        ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_user_info", this.c, 2);
+      }
+      return;
     }
-    if ((this.jdField_a_of_type_Int == this.b - 1) && (this.jdField_a_of_type_Aawu.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler != null)) {
-      this.jdField_a_of_type_Aawu.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler.a(this.jdField_a_of_type_Aawu.a.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aawu.a.a.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$ArkPassiveSearchInfo);
+    catch (Exception localException)
+    {
+      break label159;
     }
   }
 }

@@ -1,42 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.TextView;
-import cooperation.groupvideo.GVideoPluginInstallerActivity;
+import android.text.Spanned;
+import android.text.method.NumberKeyListener;
+import com.tencent.widget.TCWNumberPicker;
 
 public class amlh
-  extends Handler
+  extends NumberKeyListener
 {
-  public amlh(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity, Looper paramLooper)
+  private amlh(TCWNumberPicker paramTCWNumberPicker) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    super(paramLooper);
+    CharSequence localCharSequence2 = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    CharSequence localCharSequence1 = localCharSequence2;
+    if (localCharSequence2 == null) {
+      localCharSequence1 = paramCharSequence.subSequence(paramInt1, paramInt2);
+    }
+    paramCharSequence = String.valueOf(paramSpanned.subSequence(0, paramInt3)) + localCharSequence1 + paramSpanned.subSequence(paramInt4, paramSpanned.length());
+    if ("".equals(paramCharSequence)) {
+      localCharSequence1 = paramCharSequence;
+    }
+    while (TCWNumberPicker.a(this.a, paramCharSequence) <= TCWNumberPicker.b(this.a)) {
+      return localCharSequence1;
+    }
+    return "";
   }
   
-  public void dispatchMessage(Message paramMessage)
+  protected char[] getAcceptedChars()
   {
-    if (paramMessage == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1: 
-        GVideoPluginInstallerActivity.a(this.a);
-        return;
-      }
-    } while ((!(paramMessage.obj instanceof String)) || (this.a.a == null));
-    this.a.a.setText((String)paramMessage.obj);
-    return;
-    GVideoPluginInstallerActivity.b(this.a);
-    return;
-    this.a.finish();
+    return TCWNumberPicker.a();
+  }
+  
+  public int getInputType()
+  {
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlh
  * JD-Core Version:    0.7.0.1
  */

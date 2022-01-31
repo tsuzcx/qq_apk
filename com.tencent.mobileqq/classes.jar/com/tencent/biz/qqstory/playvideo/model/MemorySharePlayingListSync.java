@@ -5,7 +5,7 @@ import com.tencent.biz.qqstory.database.VideoCollectionEntry;
 import com.tencent.biz.qqstory.network.request.GetCollectionVideoListRequest;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.AssertUtils;
-import nou;
+import ntj;
 
 public class MemorySharePlayingListSync
   extends BasePagePlayingListSync
@@ -14,6 +14,7 @@ public class MemorySharePlayingListSync
   protected String c;
   protected int d;
   public String d;
+  protected int e;
   protected String e;
   
   private MemorySharePlayingListSync(String paramString1, String paramString2)
@@ -33,11 +34,12 @@ public class MemorySharePlayingListSync
     return paramString1;
   }
   
-  public static MemorySharePlayingListSync b(String paramString1, String paramString2, String paramString3, int paramInt)
+  public static MemorySharePlayingListSync a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     paramString1 = new MemorySharePlayingListSync(paramString1, paramString2);
     paramString1.jdField_e_of_type_JavaLangString = paramString3;
-    paramString1.jdField_d_of_type_Int = paramInt;
+    paramString1.jdField_d_of_type_Int = paramInt1;
+    paramString1.jdField_e_of_type_Int = paramInt2;
     return paramString1;
   }
   
@@ -61,8 +63,9 @@ public class MemorySharePlayingListSync
     localGetCollectionVideoListRequest.jdField_e_of_type_Int = this.jdField_c_of_type_Int;
     localGetCollectionVideoListRequest.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
     localGetCollectionVideoListRequest.f = this.jdField_d_of_type_Int;
+    localGetCollectionVideoListRequest.g = this.jdField_e_of_type_Int;
     SLog.d("Q.qqstory.player.MemorySharePlayingListSync", "loadCollectionVideo with timezone. uid=%s feedid=%s identify=%d collectionId=%s timeZoneOffset=%d", new Object[] { this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, Integer.valueOf(this.jdField_d_of_type_Int), this.jdField_c_of_type_JavaLangString, Integer.valueOf(localGetCollectionVideoListRequest.jdField_e_of_type_Int) });
-    CmdTaskManger.a().a(localGetCollectionVideoListRequest, new nou(this));
+    CmdTaskManger.a().a(localGetCollectionVideoListRequest, new ntj(this));
   }
 }
 

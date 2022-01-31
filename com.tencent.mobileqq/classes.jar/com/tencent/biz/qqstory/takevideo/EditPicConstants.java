@@ -15,7 +15,7 @@ public class EditPicConstants
     if (paramLong <= 0L) {
       QLog.e("initDirs", 1, "initPicDirs uin null");
     }
-    a = AppConstants.aP + "QQEditPic" + File.separator + paramLong + File.separator;
+    a = AppConstants.aQ + "QQEditPic" + File.separator + paramLong + File.separator;
     paramContext = new File(a);
     boolean bool3 = paramContext.mkdirs();
     boolean bool4 = paramContext.isDirectory();

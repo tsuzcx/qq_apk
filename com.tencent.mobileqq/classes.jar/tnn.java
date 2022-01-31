@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
 
 public class tnn
-  extends FriendListObserver
+  implements Animation.AnimationListener
 {
-  public tnn(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public tnn(QQLSActivity paramQQLSActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new tno(this));
     }
-    this.a.a(this.a.app.getCurrentAccountUin());
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

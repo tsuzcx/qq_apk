@@ -1,42 +1,24 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint.FontMetrics;
-import android.text.TextPaint;
-import android.view.View;
-import com.tencent.av.widget.stageview.MemberEffect;
-import com.tencent.av.widget.stageview.StageMemberView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
 public class kin
-  extends View
+  implements DialogInterface.OnClickListener
 {
-  public kin(StageMemberView paramStageMemberView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public kin(PopupDialog paramPopupDialog) {}
   
-  public void draw(Canvas paramCanvas)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    float f;
-    if (StageMemberView.a(this.a) != null)
-    {
-      f = -StageMemberView.a(this.a).getFontMetrics().ascent;
-      if (this.a.a == null) {
-        break label76;
-      }
-      StageMemberView.a(this.a).setColor(this.a.a.a);
+    if (PopupDialog.a.a != null) {
+      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
     }
-    for (;;)
-    {
-      paramCanvas.drawText(StageMemberView.a(this.a), 0.0F, f, StageMemberView.a(this.a));
-      return;
-      label76:
-      StageMemberView.a(this.a).setColor(-1);
-    }
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kin
  * JD-Core Version:    0.7.0.1
  */

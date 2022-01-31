@@ -1,16 +1,28 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager.IBannerInteract;
+import com.tencent.mobileqq.activity.recent.BannerManager.MessageToShowBanner;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class xpu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xpu(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  private BannerManager.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void run()
+  public xpu(BannerManager.MessageToShowBanner paramMessageToShowBanner, MqqHandler paramMqqHandler)
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
-    this.a.finish();
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner = paramMessageToShowBanner;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_JavaLangString + " on enter");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$IBannerInteract.a();
   }
 }
 

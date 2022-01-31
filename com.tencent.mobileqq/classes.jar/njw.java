@@ -1,31 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode;
-import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode.StoryVideoPublishStatusReceiver;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.CacheContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class njw
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+  extends SimpleJob
 {
-  public njw(MsgTabPlayMode.StoryVideoPublishStatusReceiver paramStoryVideoPublishStatusReceiver, MsgTabPlayMode paramMsgTabPlayMode, StoryVideoItem paramStoryVideoItem) {}
+  public njw(DateCollectionListPageLoader paramDateCollectionListPageLoader) {}
   
-  public void a()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(MsgTabPlayMode.StoryVideoPublishStatusReceiver.b(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode$StoryVideoPublishStatusReceiver), 2, new Object[] { "get self publish success video info failed. vid=", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext == null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext = new DateCollectionListPageLoader.CacheContext(this.a, this.a.d);
     }
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(MsgTabPlayMode.StoryVideoPublishStatusReceiver.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode$StoryVideoPublishStatusReceiver), 2, new Object[] { "get self publish success video info finish. size=", Integer.valueOf(paramArrayList.size()) });
-    }
-    if (!paramArrayList.isEmpty()) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.a.post(new njx(this, paramArrayList));
-    }
+    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext.jdField_a_of_type_JavaLangString;
+    DateCollectionListPageLoader.a(this.a);
+    return null;
   }
 }
 

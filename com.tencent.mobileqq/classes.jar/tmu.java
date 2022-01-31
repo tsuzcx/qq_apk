@@ -1,55 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webprocess.WebProcessReceiver;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sonic.sdk.SonicEngine;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import cooperation.qzone.QZoneHelper;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
 public class tmu
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public tmu(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity, ActionSheet paramActionSheet) {}
+  public tmu(QQBroadcastActivity paramQQBroadcastActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity.isFinishing())
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity.showDialog(1);
     }
-    try
+    do
     {
-      QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity.app.getLongAccountUin());
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "actCleanCacheData", true, 0L, 0L, null, null);
-      if (WebProcessManager.c())
-      {
-        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity, WebProcessReceiver.class);
-        paramView.setAction("action_clear_cache");
-        this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity.sendBroadcast(paramView, "com.tencent.msg.permission.pushnotify");
-        paramView = new tmv(this);
-        ThreadManager.getSubThreadHandler().post(paramView);
-        return;
-      }
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        QLog.w("IphoneTitleBarActivity", 1, "onQQClearLocalCache error.", paramView);
-        continue;
-        WebAccelerateHelper.getSonicEngine().cleanCache();
-      }
-    }
+      return;
+    } while (this.a.a == null);
+    this.a.a.changeCursor(this.a.a());
   }
 }
 

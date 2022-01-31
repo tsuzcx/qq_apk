@@ -3,11 +3,11 @@ package com.tencent.biz.qqstory.utils;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.View.OnClickListener;
-import ool;
+import ota;
 
 public abstract class PollWidgetUtils$WidgetElement
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ool(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ota(this);
   View jdField_a_of_type_AndroidViewView;
   PollWidgetUtils.OnSelectedChangedListener jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener;
   public PollWidgetUtils.OnWidgetElementClickListener a;

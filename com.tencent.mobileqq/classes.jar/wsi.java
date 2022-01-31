@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.activity.contacts.base.CardController;
+import com.tencent.mobileqq.activity.contacts.base.ExtendFriendController;
+import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
 
 public class wsi
-  extends VasQuickUpdateManager.CallBacker
+  extends ExtendFriendObserver
 {
-  public wsi(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public wsi(ExtendFriendController paramExtendFriendController) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  protected void a(boolean paramBoolean)
   {
-    if ((paramLong == 1000L) && (paramString1.equals("pendant_market_json.android.v2")) && (paramInt1 == 0)) {
-      this.a.a(false);
+    super.a(paramBoolean);
+    if (paramBoolean) {
+      if (!ExtendFriendController.a(this.a).a(0)) {
+        ExtendFriendController.a(this.a);
+      }
     }
+    while (!ExtendFriendController.a(this.a).a(0)) {
+      return;
+    }
+    ExtendFriendController.a(this.a).a(0, null);
   }
 }
 

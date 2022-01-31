@@ -1,29 +1,24 @@
-import android.text.TextUtils;
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
+import com.tencent.common.app.ToolRuntimeBase;
 
 public class pjm
-  extends pjl
+  implements ComponentCallbacks2
 {
-  private pjm()
-  {
-    super(null);
-  }
+  public pjm(ToolRuntimeBase paramToolRuntimeBase) {}
   
-  public String b(String paramString)
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
+  
+  public void onLowMemory() {}
+  
+  public void onTrimMemory(int paramInt)
   {
-    paramString = super.b(paramString);
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      return paramString;
-      i = paramString.indexOf('#');
-    } while (i <= 0);
-    return paramString.substring(0, i);
+    this.a.onTrimMemory(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pjm
  * JD-Core Version:    0.7.0.1
  */

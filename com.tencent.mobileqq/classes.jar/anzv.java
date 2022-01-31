@@ -1,26 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
 
 public class anzv
-  implements Runnable
+  extends PtvTemplateManager.DoodleInfoLoadObserver
 {
-  public anzv(DoodleTextureView paramDoodleTextureView) {}
+  public anzv(EditPicActivity paramEditPicActivity) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.g();
-      PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.a.a(102);
-      if (localPersonalityOperator != null) {
-        localPersonalityOperator.b();
-      }
-      this.a.a = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleTextureView", 2, "onDestroy end");
+    SLog.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    EditDoodleExport localEditDoodleExport = (EditDoodleExport)EditPicActivity.a(this.a).a(EditDoodleExport.class);
+    if (localEditDoodleExport != null) {
+      localEditDoodleExport.b();
     }
   }
 }

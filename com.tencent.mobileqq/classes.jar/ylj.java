@@ -1,22 +1,43 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ylj
-  extends ApolloHttpCallBack
+public class ylj
+  implements QvipSpecialSoundManager.CallBack
 {
-  public ylj(View paramView, long paramLong) {}
+  public ylj(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ApolloSurfaceView)) {
-      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new ylk(this, paramArrayOfByte, paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        QQSpecialCareSettingActivity.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        this.a.stopTitleProgress();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ylj
  * JD-Core Version:    0.7.0.1
  */

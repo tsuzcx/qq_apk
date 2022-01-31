@@ -1,29 +1,45 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class tep
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tep(PayBridgeActivity paramPayBridgeActivity, Dialog paramDialog) {}
+  public tep(LoginInfoActivity paramLoginInfoActivity, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
+    for (;;)
     {
-    default: 
+      try
+      {
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.isFinishing())
+        {
+          if ((LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity) != null) && (LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).isShowing()))
+          {
+            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).dismiss();
+            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).cancel();
+            LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, null);
+          }
+          LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight()));
+          int i = this.jdField_a_of_type_Int;
+          switch (i)
+          {
+          }
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        continue;
+        LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).c(2131435086);
+        continue;
+      }
+      if ((LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity) != null) && (!LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).isShowing())) {
+        LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).show();
+      }
       return;
-    case 2131364038: 
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      paramView = QWalletPushManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.a);
-      PayBridgeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity, paramView);
-      return;
+      LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).c(2131433021);
     }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    QWalletPushManager.b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.finish();
   }
 }
 

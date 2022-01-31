@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg;
 
-import aihf;
+import aily;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -71,7 +71,7 @@ public abstract class AbsShareMsg
   public long mSourceAppid = -1L;
   public String mSourceIcon;
   public String mSourceName;
-  protected View.OnClickListener mSourceOnClickListener = new aihf(this);
+  protected View.OnClickListener mSourceOnClickListener = new aily(this);
   public String mSourceUrl;
   public String mSource_A_ActionData;
   public String mSource_I_ActionData;
@@ -448,7 +448,7 @@ public abstract class AbsShareMsg
       paramView.setEllipsize(TextUtils.TruncateAt.END);
       paramView.setTextColor(-1);
       paramView.setTextSize(2, 12.0F);
-      paramView.setBackgroundResource(2130840646);
+      paramView.setBackgroundResource(2130840661);
     }
     for (;;)
     {
@@ -458,9 +458,9 @@ public abstract class AbsShareMsg
       if (!TextUtils.isEmpty(this.mSourceIcon))
       {
         Object localObject = this.mSourceIcon;
-        Drawable localDrawable2 = localResources.getDrawable(2130846094);
+        Drawable localDrawable2 = localResources.getDrawable(2130846176);
         localDrawable2.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
-        localDrawable1 = localResources.getDrawable(2130846095);
+        localDrawable1 = localResources.getDrawable(2130846177);
         localDrawable1.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
         try
         {

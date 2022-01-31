@@ -1,29 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 
 public class uqt
-  extends Handler
+  implements Runnable
 {
-  public uqt(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public uqt(MediaPlayerManager paramMediaPlayerManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.f(1);
-    this.a.b();
-    QQToast.a(this.a.a.a(), this.a.a.a().getString(2131433385), 1).a();
+    MediaPlayerManager.a(this.a).unregisterListener(MediaPlayerManager.a(this.a));
+    MediaPlayerManager.a(this.a).unregisterListener(this.a);
   }
 }
 

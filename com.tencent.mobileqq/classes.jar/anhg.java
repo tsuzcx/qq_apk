@@ -1,33 +1,28 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.weiyun.WeiyunAIOUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.RelativeLayout;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public final class anhg
-  implements FMDialogUtil.FMDialogInterface
+public class anhg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public anhg(ArrayList paramArrayList1, QQAppInterface paramQQAppInterface, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4, MqqHandler paramMqqHandler, int paramInt) {}
+  public anhg(QZoneShareActivity paramQZoneShareActivity, RelativeLayout paramRelativeLayout) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      MessageForFile localMessageForFile = (MessageForFile)localIterator.next();
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForFile, BaseActivity.sTopActivity, true);
+    int i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) - i > 150) {
+      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(0);
     }
-    if (WeiyunAIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, this.c, this.d, this.jdField_a_of_type_MqqOsMqqHandler)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131428195, 0).b(this.jdField_a_of_type_Int);
+    for (;;)
+    {
+      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, i);
+      return;
+      if ((i - QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) > 150) && (!this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.d)) {
+        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(4);
+      }
     }
   }
-  
-  public void b() {}
 }
 
 

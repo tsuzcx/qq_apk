@@ -1,29 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGallerySceneWithBusiness;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.shortvideo.dancegame.DanceGameVideoManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
 
 public class vns
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public vns(AIOGallerySceneWithBusiness paramAIOGallerySceneWithBusiness, AIOShortVideoData paramAIOShortVideoData) {}
+  public vns(TextItemBuilder paramTextItemBuilder) {}
   
-  public void onClick(View paramView)
-  {
-    AIOGallerySceneWithBusiness.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGallerySceneWithBusiness, AIOGallerySceneWithBusiness.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGallerySceneWithBusiness), "正在加载");
-    boolean bool = DanceGameVideoManager.a().b();
-    paramView = AIOGallerySceneWithBusiness.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGallerySceneWithBusiness);
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.h;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
-    if (bool) {}
-    for (int i = 1;; i = 0)
-    {
-      DanceMachineQQBrowserActivity.a(paramView, j, str, i, -999, 1, 0, null);
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

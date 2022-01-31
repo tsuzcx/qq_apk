@@ -1,18 +1,17 @@
-import com.tencent.device.msg.activities.DevShortVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.bind.DevicePluginDownloadActivity;
+import cooperation.smartdevice.SmartDevicePluginLoader;
 
 public class qao
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public qao(DevShortVideoItemBuilder paramDevShortVideoItemBuilder, MessageForShortVideo paramMessageForShortVideo) {}
+  public qao(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoReq localShortVideoReq = ShortVideoBusiManager.a(1, this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevShortVideoItemBuilder.b);
-    localShortVideoReq.a(ShortVideoBusiManager.a(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevShortVideoItemBuilder.b, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, localShortVideoReq));
-    ShortVideoBusiManager.a(localShortVideoReq, this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevShortVideoItemBuilder.a);
+    paramDialogInterface.dismiss();
+    SmartDevicePluginLoader.a().a();
   }
 }
 

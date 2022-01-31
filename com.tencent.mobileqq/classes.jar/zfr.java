@@ -1,35 +1,56 @@
-import com.tencent.mobileqq.app.IndividualRedPacketManager;
-import java.io.File;
-import java.util.Comparator;
+import android.support.v4.app.FragmentActivity;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.ApolloPanelManager.PanelClickCallback;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class zfr
-  implements Comparator
+  implements ApolloPanelManager.PanelClickCallback
 {
-  public zfr(IndividualRedPacketManager paramIndividualRedPacketManager) {}
+  public zfr(ApolloPanel paramApolloPanel) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l2 = 0L;
-    if (paramFile1 != null) {}
-    for (long l1 = paramFile1.lastModified();; l1 = 0L)
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
+    if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
     {
-      if (paramFile2 != null) {
-        l2 = paramFile2.lastModified();
+      if ((!paramBoolean2) || (paramInt >= 5)) {
+        break label110;
       }
-      if (l2 >= l1) {
-        break;
+      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (!paramBoolean1) {
+        break label94;
       }
-      return -1;
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      ThreadManager.getUIHandler().removeCallbacks(ApolloPanel.a(this.a));
     }
-    if (l2 > l1) {
-      return 1;
-    }
-    return 0;
+    label94:
+    label110:
+    do
+    {
+      do
+      {
+        ThreadManager.getUIHandler().postDelayed(ApolloPanel.a(this.a), 5000L);
+        do
+        {
+          return;
+        } while (paramInt <= 0);
+        this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        return;
+        this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      } while ((paramInt != 0) || (!paramBoolean1));
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    } while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null));
+    ApolloPanel.a(this.a, this.a.jdField_b_of_type_AndroidWidgetLinearLayout, 51, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getString(2131438251), 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zfr
  * JD-Core Version:    0.7.0.1
  */

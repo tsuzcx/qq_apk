@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 
-public class ajob
-  implements Runnable
+class ajob
+  implements View.OnClickListener
 {
-  public ajob(TroopAppMgr paramTroopAppMgr, EntityManager paramEntityManager, int paramInt, ArrayList paramArrayList) {}
+  ajob(ajnz paramajnz, CheckBox paramCheckBox) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
+    paramView = this.jdField_a_of_type_AndroidWidgetCheckBox;
+    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "before updateEntity(" + this.jdField_a_of_type_Int + ")", (List)localObject);
+      paramView.setChecked(bool);
+      return;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)((Iterator)localObject).next();
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, localTroopAIOAppInfo);
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "after updateEntity(" + this.jdField_a_of_type_Int + ")", (List)localObject);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
   }
 }
 

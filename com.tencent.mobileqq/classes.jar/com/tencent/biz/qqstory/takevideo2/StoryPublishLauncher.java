@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.AndroidRuntimeException;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
@@ -24,7 +25,7 @@ import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
 import dov.com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil;
 import mqq.app.AppRuntime;
-import omz;
+import orl;
 
 public class StoryPublishLauncher
 {
@@ -47,7 +48,7 @@ public class StoryPublishLauncher
     boolean bool = false;
     if (!CaptureUtil.a())
     {
-      DialogUtil.a(paramContext, 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131433016, new omz(this)).show();
+      DialogUtil.a(paramContext, 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131433030, new orl(this)).show();
       bool = true;
     }
     return bool;
@@ -83,7 +84,7 @@ public class StoryPublishLauncher
   public void a(Activity paramActivity, Bundle paramBundle, int paramInt)
   {
     if (a().c()) {
-      QQToast.a(paramActivity, 0, 2131437379, 0).a();
+      QQToast.a(paramActivity, 0, 2131437399, 0).a();
     }
     while (a(paramActivity)) {
       return;
@@ -92,6 +93,7 @@ public class StoryPublishLauncher
     boolean bool2 = CaptureUtil.a();
     SLog.a("story.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, supportMediaCodec=%s, filterOk=%s", Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(c()));
     ((StoryConfigManager)SuperManager.a(10)).c();
+    QQStoryContext.a().b();
     if (bool2)
     {
       Bundle localBundle = paramBundle;
@@ -113,7 +115,7 @@ public class StoryPublishLauncher
   public void a(Context paramContext, Bundle paramBundle)
   {
     if (a().c()) {
-      QQToast.a(paramContext, 0, 2131437379, 0).a();
+      QQToast.a(paramContext, 0, 2131437399, 0).a();
     }
     while (a(paramContext)) {
       return;
@@ -122,6 +124,7 @@ public class StoryPublishLauncher
     boolean bool2 = CaptureUtil.a();
     SLog.a("story.publish.StoryPublishLauncher", "launch, videoSoUsable=%s, supportMediaCodec=%s, filterOK=%s", Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(c()));
     ((StoryConfigManager)SuperManager.a(10)).c();
+    QQStoryContext.a().b();
     if (bool2)
     {
       Bundle localBundle = paramBundle;

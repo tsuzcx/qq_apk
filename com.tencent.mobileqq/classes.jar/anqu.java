@@ -1,34 +1,13 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
-final class anqu
-  implements Runnable
+public class anqu
+  implements DialogInterface.OnClickListener
 {
-  anqu(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack) {}
+  public anqu(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public void run()
-  {
-    try
-    {
-      try
-      {
-        int i = anqt.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(i, "", this.jdField_b_of_type_JavaLangString);
-        }
-        return;
-      }
-      finally {}
-      return;
-    }
-    catch (Exception localException)
-    {
-      SLog.c("CropVideoActivity", "do composite exception", localException);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(940001, localException.getMessage(), "");
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

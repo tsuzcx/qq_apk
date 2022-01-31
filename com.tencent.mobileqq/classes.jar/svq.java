@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class svq
-  extends FriendListObserver
+class svq
+  implements OnCompositionLoadedListener
 {
-  public svq(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  svq(svp paramsvp) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if (paramBoolean)
+    if (paramLottieComposition == null)
     {
-      paramString = ((FriendsManager)this.a.app.getManager(50)).c(this.a.a + "");
-      if (paramString != null)
-      {
-        this.a.e = paramString.name;
-        JoinDiscussionActivity.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.i("MedalWallMng", 2, "onCompositionLoaded failed!");
       }
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
+    this.a.a.post(new svr(this, paramLottieComposition));
   }
 }
 

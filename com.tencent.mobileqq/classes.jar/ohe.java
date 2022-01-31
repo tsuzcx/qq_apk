@@ -1,30 +1,39 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.util.MqqWeakReferenceHandler;
 
-class ohe
+public class ohe
   implements Runnable
 {
-  ohe(ohd paramohd) {}
+  public ohe(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
+    try
     {
-      HWEditLocalVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
-      HWEditLocalVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
+      i = DanceMachineUploadVideoFragment.a(this.a, DanceMachineUploadVideoFragment.a(this.a));
+      if (i != 0)
+      {
+        DanceMachineUploadVideoFragment.a(this.a, -1L);
+        this.a.a.setResult(2);
+        this.a.a.finish();
+        return;
+      }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
-      HWEditLocalVideoPlayer.a(this.a.a, this.a.a.jdField_a_of_type_Int);
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true);
-      return;
-      SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
+      do
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+          int i = -1;
+        }
+        DanceMachineUploadVideoFragment.a(this.a, SystemClock.elapsedRealtime());
+      } while (DanceMachineUploadVideoFragment.a() == null);
+      DanceMachineUploadVideoFragment.a().sendEmptyMessage(-2);
+      DanceMachineUploadVideoFragment.a().sendEmptyMessageDelayed(-1, 120000L);
     }
   }
 }

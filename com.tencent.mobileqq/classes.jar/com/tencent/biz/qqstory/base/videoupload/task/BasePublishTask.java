@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nbc;
+import nex;
 
 public abstract class BasePublishTask
   implements Runnable
@@ -57,7 +57,7 @@ public abstract class BasePublishTask
       {
         Object localObject2 = (UploadObject)localIterator.next();
         localObject2 = Stream.of(new ErrorMessage()).map(new ThreadOffFunction(4)).map((StreamFunction)localObject2);
-        ((Stream)localObject2).subscribe(new nbc(this, null));
+        ((Stream)localObject2).subscribe(new nex(this, null));
         this.b.add(localObject2);
         SLog.c("Q.qqstory.publish.upload:BasePublishTask", "add task finish");
       }

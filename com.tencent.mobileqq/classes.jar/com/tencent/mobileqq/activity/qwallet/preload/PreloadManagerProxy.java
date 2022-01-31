@@ -11,8 +11,8 @@ import eipc.EIPCClient;
 import eipc.EIPCResult;
 import java.util.List;
 import mqq.app.AppRuntime;
-import xfw;
-import xfx;
+import xlq;
+import xlr;
 
 public class PreloadManagerProxy
   extends PreloadManagerAbs
@@ -100,7 +100,7 @@ public class PreloadManagerProxy
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("id", paramString);
-      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "getFilePathByResID", localBundle, new xfw(this, paramResultReceiver));
+      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "getFilePathByResID", localBundle, new xlq(this, paramResultReceiver));
       return;
     }
     paramResultReceiver.send(0, null);
@@ -116,7 +116,7 @@ public class PreloadManagerProxy
       localBundle.putString("md5", paramString2);
       localBundle.putLong("md5_time", paramLong);
       localBundle.putBoolean("is_force_unzip", paramBoolean);
-      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "preloadCommon", localBundle, new xfx(this, paramOnGetPathListener, paramString1));
+      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "preloadCommon", localBundle, new xlr(this, paramOnGetPathListener, paramString1));
     }
     while (paramOnGetPathListener == null)
     {

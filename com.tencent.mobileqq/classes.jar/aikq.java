@@ -1,36 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pluginsdk.PluginRuntime.IClickEventReportor;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class aikq
-  implements Runnable
+public final class aikq
+  implements PluginRuntime.IClickEventReportor
 {
-  public aikq(SubAccountControll paramSubAccountControll) {}
-  
-  public void run()
+  public void reportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("launchTimedMsgTask() run. startAllSubMessageAccountMsg(false) app.isRunning=");
-      if (this.a.a != null) {
-        break label82;
-      }
-    }
-    label82:
-    for (Object localObject = "null";; localObject = Boolean.valueOf(this.a.a.isRunning()))
-    {
-      QLog.d("SUB_ACCOUNT", 2, localObject);
-      if ((this.a.a != null) && (this.a.a.isRunning())) {
-        this.a.a.f(false);
-      }
-      return;
-    }
+    ReportController.b(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
+  }
+  
+  public void reportClickEventRuntime(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
+  {
+    ReportController.a(null, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aikq
  * JD-Core Version:    0.7.0.1
  */

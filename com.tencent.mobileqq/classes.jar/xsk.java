@@ -1,22 +1,25 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class xsk
   implements View.OnClickListener
 {
-  public xsk(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  public xsk(LoginView paramLoginView) {}
   
   public void onClick(View paramView)
   {
-    if (!NewFlowEditVideoActivity.c(this.a))
-    {
-      NewFlowEditVideoActivity.b(this.a);
-      return;
+    if ((this.a.b != null) && (this.a.b.isShown())) {
+      this.a.b.setVisibility(8);
     }
-    NewFlowEditVideoActivity.b(this.a, false);
-    NewFlowEditVideoActivity.b(this.a).setSelected(false);
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
+    libsafeedit.clearPassBuffer();
+    LoginView.a(this.a);
   }
 }
 

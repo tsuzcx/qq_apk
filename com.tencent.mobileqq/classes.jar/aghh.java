@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.ocr.question.SearchQuestionFragment;
 
-public class aghh
-  implements DialogInterface.OnClickListener
+class aghh
+  implements Runnable
 {
-  public aghh(ScanTorchActivity paramScanTorchActivity) {}
+  aghh(aghg paramaghg, URLDrawable paramURLDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Aghg.a.a.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghh
  * JD-Core Version:    0.7.0.1
  */

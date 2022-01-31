@@ -17,6 +17,7 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,13 +27,25 @@ public class SelectMemberActivity$GridViewAdapter
   implements FaceDecoder.DecodeTaskCompletionListener
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private boolean jdField_a_of_type_Boolean;
   
   public SelectMemberActivity$GridViewAdapter(SelectMemberActivity paramSelectMemberActivity, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130842368);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130842403);
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
+      return;
+    }
+    catch (IndexOutOfBoundsException paramSelectMemberActivity)
+    {
+      for (;;)
+      {
+        QLog.d("SelectMemberActivity", 1, "GridViewAdapter getDrawable exception");
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      }
+    }
   }
   
   public void a()
@@ -95,10 +108,10 @@ public class SelectMemberActivity$GridViewAdapter
     ResultRecord localResultRecord = (ResultRecord)getItem(paramInt);
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2130969033, null);
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2130969036, null);
     }
     paramViewGroup.setTag(localResultRecord);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362739);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362744);
     if (paramInt == getCount() - 1) {
       if (this.jdField_a_of_type_Boolean)
       {
@@ -115,11 +128,11 @@ public class SelectMemberActivity$GridViewAdapter
     label171:
     for (paramInt = 11;; paramInt = 1)
     {
-      localTextView = (TextView)paramViewGroup.findViewById(2131363940);
+      localTextView = (TextView)paramViewGroup.findViewById(2131363965);
       if (localResultRecord.jdField_a_of_type_Int != 5) {
         break label176;
       }
-      localImageView.setImageResource(2130840189);
+      localImageView.setImageResource(2130840204);
       localTextView.setVisibility(0);
       localTextView.setText(ContactUtils.a(localResultRecord.b));
       if (AppSetting.b) {
@@ -165,7 +178,7 @@ public class SelectMemberActivity$GridViewAdapter
         View localView = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetGridView.getChildAt(paramInt1);
         Object localObject = localView.getTag();
         if ((localObject != null) && ((localObject instanceof ResultRecord)) && (paramString.equals(((ResultRecord)localObject).jdField_a_of_type_JavaLangString))) {
-          ((ImageView)localView.findViewById(2131362739)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+          ((ImageView)localView.findViewById(2131362744)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
         }
         paramInt1 += 1;
       }

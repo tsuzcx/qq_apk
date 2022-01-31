@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import qle;
+import qpv;
 
 public class GdtUIUtils
 {
@@ -56,7 +56,7 @@ public class GdtUIUtils
     if (paramView == null) {
       return;
     }
-    ((View)paramView.getParent()).post(new qle(paramView, paramInt1, paramInt2, paramInt3, paramInt4));
+    ((View)paramView.getParent()).post(new qpv(paramView, paramInt1, paramInt2, paramInt3, paramInt4));
   }
   
   @TargetApi(17)

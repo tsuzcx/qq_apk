@@ -2,7 +2,7 @@ package cooperation.qzone;
 
 import NS_MOBILE_COMM.combine_diamond_info;
 import NS_MOBILE_COMM.star_info;
-import amsn;
+import amzy;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -20,6 +20,7 @@ public class QZoneVipInfoManager
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private String jdField_a_of_type_JavaLangString;
   private volatile boolean jdField_a_of_type_Boolean;
+  private String b;
   
   private QZoneVipInfoManager()
   {
@@ -29,7 +30,7 @@ public class QZoneVipInfoManager
     {
       this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences("QZONE_VIP_INFO", i);
       if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.registerOnSharedPreferenceChangeListener(new amsn(this));
+        this.jdField_a_of_type_AndroidContentSharedPreferences.registerOnSharedPreferenceChangeListener(new amzy(this));
       }
       return;
     }
@@ -118,6 +119,7 @@ public class QZoneVipInfoManager
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(a(localAppRuntime.getAccount()), 0);
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(b(localAppRuntime.getAccount()), null);
+    this.b = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(c(localAppRuntime.getAccount()), null);
   }
   
   public static boolean a(int paramInt)
@@ -167,6 +169,7 @@ public class QZoneVipInfoManager
         AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
         localEditor.putInt(a(localAppRuntime.getAccount()), this.jdField_a_of_type_Int);
         localEditor.putString(b(localAppRuntime.getAccount()), this.jdField_a_of_type_JavaLangString);
+        localEditor.putString(c(localAppRuntime.getAccount()), this.b);
         localEditor.commit();
       }
     }
@@ -201,6 +204,11 @@ public class QZoneVipInfoManager
     for (int i = 1;; i = 0) {
       return a(paramInt, i, 21, 21);
     }
+  }
+  
+  private String c(String paramString)
+  {
+    return "key_vip_info_custom_diamond_url_pre" + paramString;
   }
   
   public static boolean c(int paramInt)
@@ -288,10 +296,29 @@ public class QZoneVipInfoManager
     return i;
   }
   
+  public static int f(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0) {
+      return a(paramInt, i, 24, 24);
+    }
+  }
+  
+  public static boolean f(int paramInt)
+  {
+    return a(paramInt, 24, 24) != 0;
+  }
+  
   public int a()
   {
     a();
     return a(this.jdField_a_of_type_Int);
+  }
+  
+  public String a()
+  {
+    a();
+    return this.b;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info)
@@ -311,14 +338,14 @@ public class QZoneVipInfoManager
         this.jdField_a_of_type_Int = d(this.jdField_a_of_type_Int, paramstar_info.iStarLevel);
         paramInt1 = this.jdField_a_of_type_Int;
         if (paramstar_info.isAnnualVip == 0) {
-          break label302;
+          break label313;
         }
         bool1 = true;
         label107:
         this.jdField_a_of_type_Int = b(paramInt1, bool1);
         paramInt1 = this.jdField_a_of_type_Int;
         if (paramstar_info.isHighStarVip == 0) {
-          break label308;
+          break label319;
         }
         bool1 = true;
         label133:
@@ -330,21 +357,21 @@ public class QZoneVipInfoManager
         this.jdField_a_of_type_Int = f(this.jdField_a_of_type_Int, paramcombine_diamond_info.iVipLevel);
         paramInt1 = this.jdField_a_of_type_Int;
         if (paramcombine_diamond_info.isAnnualVip == 0) {
-          break label314;
+          break label325;
         }
         bool1 = true;
         label196:
         this.jdField_a_of_type_Int = c(paramInt1, bool1);
         paramInt1 = this.jdField_a_of_type_Int;
         if (paramcombine_diamond_info.isAnnualVipEver == 0) {
-          break label320;
+          break label331;
         }
       }
     }
-    label302:
-    label308:
-    label314:
-    label320:
+    label313:
+    label319:
+    label325:
+    label331:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.jdField_a_of_type_Int = d(paramInt1, bool1);
@@ -352,6 +379,7 @@ public class QZoneVipInfoManager
       paramcombine_diamond_info = new Bundle();
       paramcombine_diamond_info.putInt("com.tencent.qq.syncQzoneVipInfoStr", this.jdField_a_of_type_Int);
       paramcombine_diamond_info.putString("com.tencent.qq.syncQzoneVipInfoPersonalized", this.jdField_a_of_type_JavaLangString);
+      paramcombine_diamond_info.putString("com.tencent.qq.syncQzoneVipInfoCustomDiamondUrl", this.b);
       paramstar_info.putExtras(paramcombine_diamond_info);
       BaseApplicationImpl.getContext().sendBroadcast(paramstar_info);
       b();

@@ -1,14 +1,16 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.profile.view.ShakeImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
 
 public class agsg
-  implements Runnable
+  implements QQProgressDialog.Callback
 {
-  public agsg(ShakeImageView paramShakeImageView) {}
+  public agsg(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public void run()
+  public void a()
   {
-    ShakeImageView.a(this.a).unregisterListener(this.a);
+    if (!this.a.e) {
+      this.a.e = true;
+    }
   }
 }
 

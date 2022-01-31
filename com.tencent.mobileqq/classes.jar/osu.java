@@ -1,36 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class osu
-  implements DialogInterface.OnClickListener
+public final class osu
+  implements Runnable
 {
-  public osu(QRCardActivity paramQRCardActivity, String paramString) {}
+  public osu(Context paramContext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
-    if (paramDialogInterface.startsWith("www.")) {
-      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("injectrecommend", false);
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity(localIntent);
-      return;
-      if (paramDialogInterface.startsWith("https:")) {
-        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
-      } else if (paramDialogInterface.startsWith("http:")) {
-        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
-      } else {
-        paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
-      }
-    }
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230);
+    localQQCustomDialog.setMessage("存储空间不足，请清理缓存后重试");
+    localQQCustomDialog.setNegativeButton("取消", new osv(this));
+    localQQCustomDialog.setPositiveButton("清理缓存", new osw(this));
+    localQQCustomDialog.setCancelable(false);
+    localQQCustomDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    localQQCustomDialog.show();
   }
 }
 

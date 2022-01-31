@@ -1,10 +1,14 @@
 package com.tencent.beacon.a.b;
 
-import java.util.Map;
-
 public abstract interface f
 {
-  public abstract void a(Map<String, String> paramMap);
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a(g paramg);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 

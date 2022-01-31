@@ -1,14 +1,16 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
 public class vzf
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public vzf(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vzf(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ServiceAccountFolderManager.a().b(this.a.a);
+    return true;
   }
 }
 

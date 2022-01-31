@@ -1,35 +1,34 @@
-import android.os.Bundle;
-import com.tencent.biz.huanjiplugin.HuanjiPluginStartListener;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-class owr
-  implements HuanjiPluginStartListener
+public final class owr
+  extends AnimatorListenerAdapter
 {
-  owr(owi paramowi, Bundle paramBundle, int paramInt) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private int b;
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public owr(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("state", paramInt2);
-    this.jdField_a_of_type_AndroidOsBundle.putInt("percentage", paramInt3);
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", 0L);
-    if ((paramInt2 == 6) && (this.jdField_a_of_type_Int == 2)) {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Owi.a.a(80, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      if ((paramInt2 == 4) && (this.jdField_a_of_type_Int == 1)) {
-        this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramView.getLayerType();
   }
   
-  public void a(int paramInt, String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    this.jdField_a_of_type_Owi.a.a(80, this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setLayerType(this.b, null);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidViewView.setLayerType(this.jdField_a_of_type_Int, null);
   }
 }
 

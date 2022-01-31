@@ -1,37 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.InputViewHideListener;
 
 public class ngf
-  implements UpCallBack
+  implements Runnable
 {
-  public ngf(UploadImageJob paramUploadImageJob) {}
+  public ngf(StoryInputBarView paramStoryInputBarView) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void run()
   {
-    return null;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
-  {
-    if ((paramSendResult.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramSendResult.jdField_b_of_type_JavaLangString)))
-    {
-      this.a.a("UploadImageJob_out_image_url", paramSendResult.jdField_b_of_type_JavaLangString);
-      UploadImageJob.a(this.a, true);
-      return;
+    if (StoryInputBarView.a(this.a) != null) {
+      StoryInputBarView.a(this.a).e();
     }
-    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramSendResult, new Object[0]);
-    }
-    UploadImageJob.b(this.a, false);
+    StoryInputBarView.b(this.a);
   }
 }
 

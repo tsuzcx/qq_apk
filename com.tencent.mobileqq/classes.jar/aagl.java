@@ -1,34 +1,19 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aagl
   implements Runnable
 {
-  public aagl(AREngine paramAREngine) {}
+  public aagl(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3) {}
   
   public void run()
   {
-    if ((AREngine.a(this.a) != null) && (!AREngine.a(this.a).d()))
-    {
-      if (AREngine.a(this.a).j()) {
-        AREngine.d(this.a);
-      }
-      if (AREngine.a(this.a) != 1L) {
-        break label78;
-      }
-      this.a.b(1L);
-      AREngine.c(this.a);
-    }
-    for (;;)
-    {
-      this.a.j();
-      return;
-      label78:
-      if (AREngine.a(this.a) == 2L) {
-        this.a.l();
-      } else if (AREngine.a(this.a) == 2048L) {
-        this.a.n();
-      }
+    ARWorldCupGlobalSceneRenderable localARWorldCupGlobalSceneRenderable = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable;
+    localARWorldCupGlobalSceneRenderable.e += this.jdField_a_of_type_ArrayOfInt.length;
+    QLog.i("ARWorldCupGlobalSceneRenderable", 1, "insertWorldCupSpark. mInsertedSparkTotalCnt = " + this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.e + ", new cnt = " + this.jdField_a_of_type_ArrayOfInt.length + ", px[0] = " + this.jdField_a_of_type_ArrayOfInt[0] + ", py[0] = " + this.b[0] + ", degree[0] = " + this.c[0] + ", hasDrawedFrame = " + ARWorldCupGlobalSceneRenderable.c(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable));
+    if ((ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) != null) && (ARWorldCupGlobalSceneRenderable.c(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable))) {
+      ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).native_insertWorldCupSpark(this.jdField_a_of_type_ArrayOfInt, this.b, this.c);
     }
   }
 }

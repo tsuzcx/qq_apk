@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
-public final class ajpn
+class ajpn
   implements Runnable
 {
-  public ajpn(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  ajpn(ajpm paramajpm, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_Ajpm.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

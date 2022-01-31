@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.selectmember.TroopListAdapter;
 
-public class yio
+class yio
   implements Runnable
 {
-  public yio(TroopListAdapter2 paramTroopListAdapter2) {}
+  yio(yin paramyin) {}
   
   public void run()
   {
-    List localList = TroopListAdapter2.a(this.a);
-    ThreadManager.getUIHandler().post(new yip(this, localList));
+    this.a.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yio
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
+import com.tencent.mobileqq.data.MessageForMedalNews;
 
-public class vgw
-  implements ValueAnimator.AnimatorUpdateListener
+class vgw
+  implements Runnable
 {
-  public vgw(SixCombolEffectView paramSixCombolEffectView, vhg paramvhg) {}
+  vgw(vgv paramvgv) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_Vhg.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
+    MedalNewsItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMedalNewsItemBuilder, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMedalNewsItemBuilder.a.d, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.level, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.id, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.ts, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.seq);
   }
 }
 

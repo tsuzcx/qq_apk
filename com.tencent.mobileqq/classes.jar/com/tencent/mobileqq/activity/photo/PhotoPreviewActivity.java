@@ -37,6 +37,7 @@ import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.camera.utils.CameraUtils;
 import com.tencent.mobileqq.pic.IPresendPicMgr.Stub;
 import com.tencent.mobileqq.pic.PresendPicMgr;
+import com.tencent.mobileqq.statistics.MTAReportController;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
@@ -52,8 +53,11 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BinderWarpper;
 import com.tencent.widget.BubblePopupWindow;
+import common.config.service.QzoneConfig;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.model.BaseBusinessAlbumInfo;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -63,24 +67,25 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import mqq.app.AppRuntime;
-import wyb;
-import wyc;
-import wyd;
-import wye;
-import wyf;
-import wyg;
-import wyh;
-import wyi;
-import wyj;
-import wyk;
-import wyl;
-import wym;
-import wyn;
-import wyp;
-import wyq;
-import wyr;
-import wys;
+import xdr;
+import xds;
+import xdt;
+import xdu;
+import xdv;
+import xdw;
+import xdx;
+import xdy;
+import xdz;
+import xea;
+import xeb;
+import xec;
+import xed;
+import xef;
+import xeg;
+import xeh;
+import xei;
 
 public class PhotoPreviewActivity
   extends PeakActivity
@@ -93,7 +98,7 @@ public class PhotoPreviewActivity
   private boolean D;
   private float jdField_a_of_type_Float = 13.0F;
   public long a;
-  SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new wyf(this);
+  SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new xdv(this);
   public SurfaceView a;
   View jdField_a_of_type_AndroidViewView;
   public Button a;
@@ -102,15 +107,15 @@ public class PhotoPreviewActivity
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public SlideShowPhotoListManager a;
   public ProGallery a;
-  private IMediaPlayer.OnPlayStateListener jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnPlayStateListener = new wyi(this);
-  private IMediaPlayer.OnPreparedListener jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnPreparedListener = new wyh(this);
+  private IMediaPlayer.OnPlayStateListener jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnPlayStateListener = new xdy(this);
+  private IMediaPlayer.OnPreparedListener jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnPreparedListener = new xdx(this);
   public IMediaPlayer a;
   public NumberCheckBox a;
   BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
   public String a;
   public ArrayList a;
   HashMap jdField_a_of_type_JavaUtilHashMap;
-  wys jdField_a_of_type_Wys;
+  xei jdField_a_of_type_Xei;
   boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 9.0F;
   int jdField_b_of_type_Int;
@@ -171,7 +176,7 @@ public class PhotoPreviewActivity
   public int q;
   boolean q;
   public int r;
-  boolean r;
+  public boolean r;
   private int s;
   public boolean s;
   public boolean t;
@@ -280,6 +285,15 @@ public class PhotoPreviewActivity
     }
   }
   
+  private boolean b()
+  {
+    if (QzoneConfig.getInstance().getConfig("PhotoUpload", "C2CAioEnableSyncImageToQzone", 0) == 0) {}
+    while ((this.jdField_b_of_type_Int != 0) && (this.jdField_b_of_type_Int != 1000) && (this.jdField_b_of_type_Int != 1004)) {
+      return false;
+    }
+    return true;
+  }
+  
   private int c()
   {
     if (this.jdField_b_of_type_JavaUtilArrayList != null)
@@ -300,6 +314,11 @@ public class PhotoPreviewActivity
     }
     int i3 = 0;
     return i3;
+  }
+  
+  private void m()
+  {
+    QQToast.a(this, 1, "照片已勾选同步空间，请取消后再发送闪照", 1).a();
   }
   
   public int a()
@@ -386,7 +405,7 @@ public class PhotoPreviewActivity
         }
         localObject = PresendPicMgr.b(IPresendPicMgr.Stub.a(((BinderWarpper)localObject).a));
         if (!"FromFastImage".equals(this.jdField_e_of_type_JavaLangString)) {
-          break label1150;
+          break label1157;
         }
         this.jdField_m_of_type_Int = 1037;
         str = (String)localIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS").get(0);
@@ -418,7 +437,7 @@ public class PhotoPreviewActivity
         this.jdField_b_of_type_JavaUtilArrayList = localIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
         this.jdField_c_of_type_JavaUtilArrayList = localIntent.getIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS");
         if ((this.jdField_c_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList != null)) {
-          break label1396;
+          break label1403;
         }
         if (QLog.isColorLevel()) {
           QLog.d("PhotoPreviewActivity", 2, "initData(): Error! selectedItem or sSelectedIndex is null");
@@ -427,9 +446,9 @@ public class PhotoPreviewActivity
       }
     }
     label832:
-    label1365:
-    label1373:
-    label1396:
+    label1372:
+    label1380:
+    label1403:
     for (int i1 = 0;; i1 = 1)
     {
       if (i1 != 0)
@@ -453,7 +472,7 @@ public class PhotoPreviewActivity
           this.jdField_n_of_type_JavaLangString = localIntent.getStringExtra("PasterConstants.paster_cate_id");
         }
         if (this.jdField_b_of_type_JavaLangString != null) {
-          break label1365;
+          break label1372;
         }
         localObject = this.jdField_q_of_type_JavaLangString;
         this.jdField_b_of_type_JavaLangString = ((String)localObject);
@@ -482,11 +501,11 @@ public class PhotoPreviewActivity
           this.jdField_i_of_type_JavaLangString = localIntent.getStringExtra("uinname");
           this.jdField_h_of_type_JavaLangString = localIntent.getStringExtra("uin");
         }
-        if ((this.jdField_b_of_type_Int == 1) && (this.jdField_b_of_type_JavaLangString != null))
+        if (((this.jdField_b_of_type_Int == 1) || (b())) && (this.jdField_b_of_type_JavaLangString != null))
         {
           localObject = QZoneHelper.a(this.jdField_b_of_type_JavaLangString, this.jdField_h_of_type_JavaLangString);
           if ((localObject == null) || (((BaseBusinessAlbumInfo)localObject).a() == null) || (((BaseBusinessAlbumInfo)localObject).a().equals(""))) {
-            break label1373;
+            break label1380;
           }
           this.jdField_j_of_type_JavaLangString = ((BaseBusinessAlbumInfo)localObject).a();
           this.jdField_k_of_type_JavaLangString = ((BaseBusinessAlbumInfo)localObject).b();
@@ -501,7 +520,6 @@ public class PhotoPreviewActivity
         this.jdField_d_of_type_Boolean = localIntent.getBooleanExtra("from_readinjoy_ugc", false);
         this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("from_tribe_class_name");
         return;
-        label1150:
         this.jdField_m_of_type_Int = 1008;
         break;
         this.jdField_a_of_type_JavaUtilArrayList = localIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
@@ -533,7 +551,7 @@ public class PhotoPreviewActivity
         this.jdField_b_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
         this.jdField_c_of_type_JavaUtilArrayList.clear();
         if (this.v) {
-          break label1396;
+          break label1403;
         }
         i1 = 0;
         while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
@@ -553,7 +571,7 @@ public class PhotoPreviewActivity
   {
     if (!FileUtils.b(this.jdField_p_of_type_JavaLangString))
     {
-      QQToast.a(this, 2131437356, 0).a();
+      QQToast.a(this, 2131437376, 0).a();
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a(this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnPreparedListener);
@@ -571,7 +589,7 @@ public class PhotoPreviewActivity
         return;
       }
     }
-    DialogUtil.a(this, 232, null, getString(2131437366), new wyg(this), null).show();
+    DialogUtil.a(this, 232, null, getString(2131437386), new xdw(this), null).show();
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -604,7 +622,7 @@ public class PhotoPreviewActivity
         this.jdField_c_of_type_JavaUtilArrayList.add(Integer.valueOf(i1));
         i1 += 1;
       }
-      this.jdField_a_of_type_Wys.notifyDataSetChanged();
+      this.jdField_a_of_type_Xei.notifyDataSetChanged();
       this.jdField_m_of_type_Boolean = true;
     }
     this.jdField_r_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramString);
@@ -623,10 +641,10 @@ public class PhotoPreviewActivity
   
   void b()
   {
-    this.U = true;
-    this.V = false;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365510);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363109));
+    this.W = true;
+    this.X = false;
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131365515);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363113));
     label257:
     label374:
     float f1;
@@ -642,22 +660,22 @@ public class PhotoPreviewActivity
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365524));
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364430));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364429));
-      this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131365525));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365526));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365529));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364455));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364454));
+      this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131365530));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365531));
       if (this.y)
       {
         this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-        this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new wyb(this));
+        this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new xdr(this));
         this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription("闪照");
         this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("闪照");
       }
       this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new wyj(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new xdz(this));
       if (!this.jdField_g_of_type_Boolean) {
         break label1143;
       }
@@ -667,31 +685,31 @@ public class PhotoPreviewActivity
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365523));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131365527));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)findViewById(2131365522));
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131365521);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363378));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365528));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131365532));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)findViewById(2131365527));
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131365526);
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363397));
       if (!this.jdField_b_of_type_Boolean) {
         break label1191;
       }
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new wyk(this));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365511));
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new wyl(this));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new wym(this));
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new wyn(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery = ((ProGallery)findViewById(2131364796));
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(new xea(this));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365516));
+      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new xeb(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new xec(this));
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new xed(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery = ((ProGallery)findViewById(2131364823));
       if (this.jdField_s_of_type_Boolean) {
         this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setSupportMatchParent(true);
       }
-      this.jdField_a_of_type_Wys = new wys(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setAdapter(this.jdField_a_of_type_Wys);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnNoBlankListener(this.jdField_a_of_type_Wys);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnScollListener(new wyp(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnItemSelectedListener(new wyq(this));
+      this.jdField_a_of_type_Xei = new xei(this);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setAdapter(this.jdField_a_of_type_Xei);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnNoBlankListener(this.jdField_a_of_type_Xei);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnScollListener(new xef(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnItemSelectedListener(new xeg(this));
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setSpacing(getResources().getDimensionPixelSize(2131558524));
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setSelection(this.jdField_r_of_type_Int);
       e();
@@ -705,10 +723,10 @@ public class PhotoPreviewActivity
         this.jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnItemClickListener(new wyr(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.setOnItemClickListener(new xeh(this));
       if (("FromCamera".equals(this.jdField_e_of_type_JavaLangString)) || ("FromFastImage".equals(this.jdField_e_of_type_JavaLangString)) || ("FROM_PHOTO_LIST_FLOW".equals(this.jdField_e_of_type_JavaLangString)))
       {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131436128);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131436146);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(4);
         if (!"FROM_PHOTO_LIST_FLOW".equals(this.jdField_e_of_type_JavaLangString))
         {
@@ -716,7 +734,7 @@ public class PhotoPreviewActivity
           this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         }
       }
-      this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(new wyc(this));
+      this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(new xds(this));
       if (this.v) {
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
       }
@@ -729,17 +747,17 @@ public class PhotoPreviewActivity
         this.jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       }
-      this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)findViewById(2131365528));
+      this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)findViewById(2131365533));
       this.jdField_a_of_type_AndroidViewSurfaceView.setZOrderOnTop(true);
       this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().setFormat(-3);
       this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().setType(3);
       this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().addCallback(this.jdField_a_of_type_AndroidViewSurfaceHolder$Callback);
-      this.jdField_a_of_type_AndroidViewSurfaceView.getViewTreeObserver().addOnGlobalLayoutListener(new wyd(this));
-      this.jdField_a_of_type_AndroidViewSurfaceView.setOnClickListener(new wye(this));
+      this.jdField_a_of_type_AndroidViewSurfaceView.getViewTreeObserver().addOnGlobalLayoutListener(new xdt(this));
+      this.jdField_a_of_type_AndroidViewSurfaceView.setOnClickListener(new xdu(this));
       if (this.D)
       {
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(2131435905);
-        this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494234));
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(2131435921);
+        this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494240));
         this.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
       }
       f1 = 16.0F / FontSettingManager.a();
@@ -830,7 +848,7 @@ public class PhotoPreviewActivity
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     if ((this.jdField_k_of_type_Boolean) || (this.jdField_l_of_type_Boolean)) {
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.a();
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.c();
       }
     }
     for (;;)
@@ -850,7 +868,7 @@ public class PhotoPreviewActivity
     if ((this.jdField_k_of_type_Boolean) || (this.jdField_l_of_type_Boolean))
     {
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.b();
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.d();
       }
       return;
     }
@@ -863,9 +881,9 @@ public class PhotoPreviewActivity
     Object localObject;
     if (this.jdField_g_of_type_Boolean)
     {
-      localObject = getString(2131435904);
+      localObject = getString(2131435920);
       if (this.jdField_r_of_type_Boolean) {
-        localObject = getString(2131435906);
+        localObject = getString(2131435922);
       }
       if (this.jdField_g_of_type_JavaLangString == null) {
         break label452;
@@ -885,10 +903,10 @@ public class PhotoPreviewActivity
           return;
           if ((this.jdField_k_of_type_Boolean) || (this.jdField_l_of_type_Boolean))
           {
-            localObject = getString(2131439329);
+            localObject = getString(2131439361);
             break;
           }
-          localObject = getString(2131435905);
+          localObject = getString(2131435921);
           break;
         }
         this.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
@@ -946,7 +964,7 @@ public class PhotoPreviewActivity
     default: 
       return;
     case 0: 
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131435903));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131435919));
       this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(false);
       return;
     }
@@ -979,7 +997,7 @@ public class PhotoPreviewActivity
     }
     localObject = PhotoUtils.a(this, i1);
     if ((this.jdField_b_of_type_JavaUtilArrayList.size() == 0) || (((String)localObject).equals("0"))) {}
-    for (localObject = getString(2131435903);; localObject = getString(2131435903) + "(共" + (String)localObject + ")")
+    for (localObject = getString(2131435919);; localObject = getString(2131435919) + "(共" + (String)localObject + ")")
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       return;
@@ -1050,7 +1068,7 @@ public class PhotoPreviewActivity
   {
     if ((this.jdField_k_of_type_Boolean) || (this.jdField_l_of_type_Boolean))
     {
-      SlideShowPhotoListManager.a(this, this.jdField_b_of_type_JavaUtilArrayList);
+      SlideShowPhotoListManager.b(this, this.jdField_b_of_type_JavaUtilArrayList);
       this.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
       StoryReportor.a("pic_choose_slides", "clk_create", 0, 0, new String[] { "1", this.jdField_b_of_type_JavaUtilArrayList.size() + "" });
       return;
@@ -1071,8 +1089,7 @@ public class PhotoPreviewActivity
       super.finish();
       return;
     }
-    Object localObject2;
-    if (this.jdField_r_of_type_Boolean)
+    if ((this.jdField_r_of_type_Boolean) && (!b()))
     {
       localObject1 = PresendPicMgr.a(null);
       if (localObject1 != null) {
@@ -1112,11 +1129,11 @@ public class PhotoPreviewActivity
       ReportController.b(null, "CliOper", "", "", (String)localObject3, (String)localObject3, 0, 0, (String)localObject1, "", "", "");
       return;
       if ((!this.jdField_h_of_type_Boolean) || ((TextUtils.isEmpty(this.jdField_m_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_n_of_type_JavaLangString)))) {
-        break label394;
+        break label401;
       }
       this.jdField_a_of_type_AndroidWidgetButton.performClick();
     }
-    label394:
+    label401:
     if ("FromFastImage".equals(this.jdField_e_of_type_JavaLangString))
     {
       ReportController.b(null, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
@@ -1126,90 +1143,118 @@ public class PhotoPreviewActivity
       StatisticConstants.b();
     }
     if ((TroopBarPublishActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) || (TroopBarReplyActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString))) {}
-    for (Object localObject1 = new ArrayList(this.jdField_b_of_type_JavaUtilArrayList);; localObject1 = a())
+    for (Object localObject1 = new ArrayList(this.jdField_b_of_type_JavaUtilArrayList); (this.jdField_s_of_type_Boolean) && (this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.isEmpty()) && (((ArrayList)localObject1).size() == 1); localObject1 = a())
     {
-      if (localObject1 != null)
-      {
-        StatisticConstants.a(((ArrayList)localObject1).size(), this.jdField_f_of_type_Int);
-        StatisticConstants.a(getIntent(), ((ArrayList)localObject1).size(), this.jdField_e_of_type_Int);
-      }
-      localObject2 = getIntent();
-      if (!this.jdField_i_of_type_Boolean) {
+      localObject2 = (String)((ArrayList)localObject1).get(0);
+      localObject3 = a((String)localObject2);
+      if ((a((String)localObject2) != 1) || (AlbumUtil.a(this, c(), (LocalMediaInfo)localObject3, this.jdField_j_of_type_Boolean))) {
         break;
       }
+      this.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
+      return;
+    }
+    if (localObject1 != null)
+    {
+      StatisticConstants.a(((ArrayList)localObject1).size(), this.jdField_f_of_type_Int);
+      StatisticConstants.a(getIntent(), ((ArrayList)localObject1).size(), this.jdField_e_of_type_Int);
+    }
+    Object localObject3 = getIntent();
+    if (this.jdField_i_of_type_Boolean)
+    {
       localObject1 = new Intent();
       ((Intent)localObject1).putStringArrayListExtra("img_list", this.jdField_b_of_type_JavaUtilArrayList);
       super.setResult(-1, (Intent)localObject1);
       super.finish();
       return;
     }
-    Object localObject3 = PresendPicMgr.a(null);
+    Object localObject2 = PresendPicMgr.a(null);
     if (this.jdField_e_of_type_Int == 2)
     {
       if ((this.jdField_c_of_type_JavaUtilArrayList.size() == 0) && (((ArrayList)localObject1).size() == 1) && (FileUtils.a((String)((ArrayList)localObject1).get(0)) > 19922944L))
       {
-        QQToast.a(this, getResources().getString(2131435920), 0).b(getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(this, getResources().getString(2131435938), 0).b(getResources().getDimensionPixelSize(2131558448));
         this.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
         return;
       }
-      if (localObject3 != null)
+      if (localObject2 != null)
       {
-        ((PresendPicMgr)localObject3).a(1010);
-        ((PresendPicMgr)localObject3).a();
+        ((PresendPicMgr)localObject2).a(1010);
+        ((PresendPicMgr)localObject2).a();
       }
       if (("FromCamera".equals(this.jdField_e_of_type_JavaLangString)) || ("FromFastImage".equals(this.jdField_e_of_type_JavaLangString)))
       {
         ReportController.b(null, "CliOper", "", "", "0X8005147", "0X8005147", 0, 0, "", "", "", "");
-        label733:
+        label821:
         if (this.z)
         {
-          ((Intent)localObject2).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1040);
+          ((Intent)localObject3).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1040);
           if (this.jdField_b_of_type_Int != 0) {
-            break label990;
+            break label1203;
           }
           ReportController.b(null, "dc00898", "", "", "0X80069A6", "0X80069A6", 0, 0, "", "", "", "");
           ReportController.b(null, "dc00898", "", "", "0X800699A", "0X800699A", 0, 0, "", "", "", "");
         }
+        label900:
+        if (this.jdField_f_of_type_Boolean) {
+          this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+        }
+        if (localObject1 != null) {
+          NewFlowCameraReporter.a((List)localObject1);
+        }
+        if (this.jdField_s_of_type_Boolean)
+        {
+          ((Intent)localObject3).putExtra("PeakConstants.selectedMediaInfoHashMap", this.jdField_b_of_type_JavaUtilHashMap);
+          ((Intent)localObject3).putExtra("PhotoConst.PANORAMA_IMAGES", this.jdField_c_of_type_JavaUtilHashMap);
+        }
+        if (this.C)
+        {
+          ((Intent)localObject3).putExtra("ReceiptMsgManager.EXTRA_KEY_IS_RECEIPT", true);
+          ((Intent)localObject3).putExtra("session_info", getIntent().getParcelableExtra("session_info"));
+        }
+        if ((this.jdField_r_of_type_Boolean) && (b()))
+        {
+          ((Intent)localObject3).putExtra("key_is_sync_qzone", 1);
+          if (this.jdField_j_of_type_JavaLangString == null) {
+            break label1335;
+          }
+        }
       }
     }
-    for (;;)
+    label1203:
+    label1335:
+    for (localObject2 = this.jdField_j_of_type_JavaLangString;; localObject2 = "")
     {
-      if (this.jdField_f_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      }
+      ((Intent)localObject3).putExtra("key_qzone_album_id", (String)localObject2);
+      ((Intent)localObject3).putExtra("key_qzone_batch_id", PhotoUtils.a());
       if (localObject1 != null) {
-        NewFlowCameraReporter.a((List)localObject1);
+        ((Intent)localObject3).putExtra("PhotoConst.PHOTO_COUNT", ((ArrayList)localObject1).size());
       }
-      if (this.jdField_s_of_type_Boolean)
-      {
-        ((Intent)localObject2).putExtra("PeakConstants.selectedMediaInfoHashMap", this.jdField_b_of_type_JavaUtilHashMap);
-        ((Intent)localObject2).putExtra("PhotoConst.PANORAMA_IMAGES", this.jdField_c_of_type_JavaUtilHashMap);
-      }
-      if (this.C)
-      {
-        ((Intent)localObject2).putExtra("ReceiptMsgManager.EXTRA_KEY_IS_RECEIPT", true);
-        ((Intent)localObject2).putExtra("session_info", getIntent().getParcelableExtra("session_info"));
-      }
-      PhotoUtils.a(this, (Intent)localObject2, (ArrayList)localObject1, this.jdField_e_of_type_Int, this.jdField_f_of_type_Boolean);
+      localObject2 = new LpReportInfo_pf00064(723, 3, 1);
+      LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject2, false, false);
+      localObject2 = new Properties();
+      ((Properties)localObject2).put("operation_type", "preview_upload");
+      MTAReportController.a(BaseApplicationImpl.getContext()).reportKVEvent("aio_sync_qzone", (Properties)localObject2);
+      PhotoUtils.a(this, (Intent)localObject3, (ArrayList)localObject1, this.jdField_e_of_type_Int, this.jdField_f_of_type_Boolean);
       break;
       ReportController.b(null, "CliOper", "", "", "0X800515C", "0X800515C", 0, 0, "", "", "", "");
-      break label733;
-      if ((localObject3 == null) || (this.jdField_c_of_type_JavaUtilArrayList.size() <= 0) || (this.z) || (this.B) || (this.C)) {
-        break label733;
+      break label821;
+      if ((localObject2 == null) || (this.jdField_c_of_type_JavaUtilArrayList.size() <= 0) || (this.z) || (this.B) || (this.C)) {
+        break label821;
       }
-      ((PresendPicMgr)localObject3).a((Intent)localObject2);
-      break label733;
-      label990:
+      ((PresendPicMgr)localObject2).a((Intent)localObject3);
+      break label821;
       if (this.jdField_b_of_type_Int == 3000)
       {
         ReportController.b(null, "dc00898", "", "", "0X80069A7", "0X80069A7", 0, 0, "", "", "", "");
         ReportController.b(null, "dc00898", "", "", "0X800699B", "0X800699B", 0, 0, "", "", "", "");
+        break label900;
       }
-      else if (this.jdField_b_of_type_Int == 1)
-      {
-        ReportController.b(null, "dc00898", "", "", "0X80069A8", "0X80069A8", 0, 0, "", "", "", "");
-        ReportController.b(null, "dc00898", "", "", "0X800699C", "0X800699C", 0, 0, "", "", "", "");
+      if (this.jdField_b_of_type_Int != 1) {
+        break label900;
       }
+      ReportController.b(null, "dc00898", "", "", "0X80069A8", "0X80069A8", 0, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800699C", "0X800699C", 0, 0, "", "", "", "");
+      break label900;
     }
   }
   
@@ -1241,6 +1286,13 @@ public class PhotoPreviewActivity
       setResult(paramInt2, paramIntent);
       finish();
       return;
+    }
+    if ((paramInt1 != -1) && (paramInt1 == 10002) && (this.jdField_k_of_type_Boolean) && (paramIntent != null))
+    {
+      String str = paramIntent.getStringExtra("PhotoConst.FROM_QQSTORY_SLIDESHOW_DATA");
+      if (!TextUtils.isEmpty(str)) {
+        FileUtils.a(new File(str).getParent());
+      }
     }
     PhotoUtils.a(this, paramInt1, paramInt2, paramIntent, this.jdField_n_of_type_Boolean, this.jdField_b_of_type_JavaLangString);
   }
@@ -1286,9 +1338,9 @@ public class PhotoPreviewActivity
           if (a() <= 0) {
             break label180;
           }
-          QQToast.a(this, getResources().getString(2131435920), 0).b(getResources().getDimensionPixelSize(2131558448));
+          QQToast.a(this, getResources().getString(2131435938), 0).b(getResources().getDimensionPixelSize(2131558448));
           this.jdField_e_of_type_Int = 0;
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131435903));
+          this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131435919));
           this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(false);
           break;
         }
@@ -1298,9 +1350,9 @@ public class PhotoPreviewActivity
           if (i1 < this.jdField_a_of_type_JavaUtilArrayList.size()) {
             if (new File((String)this.jdField_a_of_type_JavaUtilArrayList.get(i1)).length() > 19922944L)
             {
-              QQToast.a(this, getResources().getString(2131435920), 0).b(getResources().getDimensionPixelSize(2131558448));
+              QQToast.a(this, getResources().getString(2131435938), 0).b(getResources().getDimensionPixelSize(2131558448));
               this.jdField_e_of_type_Int = 0;
-              this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131435903));
+              this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131435919));
               this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(false);
             }
             else
@@ -1346,58 +1398,66 @@ public class PhotoPreviewActivity
       {
         this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(false);
         this.jdField_e_of_type_Int = 0;
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131435903));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131435919));
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-5855578);
         continue;
-        this.z = paramBoolean;
-        if (paramBoolean)
+        if (this.jdField_r_of_type_Boolean)
         {
-          this.B = true;
-          paramCompoundButton = this.jdField_b_of_type_AndroidWidgetCheckBox;
-          if (!paramBoolean) {}
-          for (paramBoolean = true;; paramBoolean = false)
-          {
-            paramCompoundButton.setChecked(paramBoolean);
-            this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-5855578);
-            this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16734752);
-            if ((this.jdField_b_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.getFirstVisiblePosition() < this.jdField_a_of_type_JavaUtilArrayList.size()))
-            {
-              this.jdField_b_of_type_AndroidViewView.performClick();
-              e();
-            }
-            if ((this.A) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow == null))
-            {
-              this.A = false;
-              BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4).edit().putBoolean("showFlashPic", false).commit();
-              this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
-              paramCompoundButton = new TextView(this);
-              i1 = AIOUtils.a(10.0F, getResources());
-              paramCompoundButton.setPadding(i1, 0, i1, 0);
-              paramCompoundButton.setTextColor(-1);
-              paramCompoundButton.setText("选中的图片每人只能查看一次");
-              paramCompoundButton.setTextSize(15.0F);
-              this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(paramCompoundButton);
-              this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(false);
-              this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(this.jdField_a_of_type_AndroidWidgetCheckBox);
-            }
-            if (this.jdField_b_of_type_Int != 0) {
-              break label823;
-            }
-            ReportController.b(null, "dc00898", "", "", "0X8006997", "0X8006997", 0, 0, "", "", "", "");
-            break;
-          }
-          label823:
-          if (this.jdField_b_of_type_Int == 3000) {
-            ReportController.b(null, "dc00898", "", "", "0X8006998", "0X8006998", 0, 0, "", "", "", "");
-          } else if (this.jdField_b_of_type_Int == 1) {
-            ReportController.b(null, "dc00898", "", "", "0X8006999", "0X8006999", 0, 0, "", "", "", "");
-          }
+          m();
+          this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
         }
         else
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5855578);
-          if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-            this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
+          this.z = paramBoolean;
+          if (paramBoolean)
+          {
+            this.B = true;
+            paramCompoundButton = this.jdField_b_of_type_AndroidWidgetCheckBox;
+            if (!paramBoolean) {}
+            for (paramBoolean = true;; paramBoolean = false)
+            {
+              paramCompoundButton.setChecked(paramBoolean);
+              this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-5855578);
+              this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16734752);
+              if ((this.jdField_b_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.getFirstVisiblePosition() < this.jdField_a_of_type_JavaUtilArrayList.size()))
+              {
+                this.jdField_b_of_type_AndroidViewView.performClick();
+                e();
+              }
+              if ((this.A) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow == null))
+              {
+                this.A = false;
+                BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4).edit().putBoolean("showFlashPic", false).commit();
+                this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
+                paramCompoundButton = new TextView(this);
+                i1 = AIOUtils.a(10.0F, getResources());
+                paramCompoundButton.setPadding(i1, 0, i1, 0);
+                paramCompoundButton.setTextColor(-1);
+                paramCompoundButton.setText("选中的图片每人只能查看一次");
+                paramCompoundButton.setTextSize(15.0F);
+                this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(paramCompoundButton);
+                this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(false);
+                this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(this.jdField_a_of_type_AndroidWidgetCheckBox);
+              }
+              if (this.jdField_b_of_type_Int != 0) {
+                break label845;
+              }
+              ReportController.b(null, "dc00898", "", "", "0X8006997", "0X8006997", 0, 0, "", "", "", "");
+              break;
+            }
+            label845:
+            if (this.jdField_b_of_type_Int == 3000) {
+              ReportController.b(null, "dc00898", "", "", "0X8006998", "0X8006998", 0, 0, "", "", "", "");
+            } else if (this.jdField_b_of_type_Int == 1) {
+              ReportController.b(null, "dc00898", "", "", "0X8006999", "0X8006999", 0, 0, "", "", "", "");
+            }
+          }
+          else
+          {
+            this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5855578);
+            if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
+              this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
+            }
           }
         }
       }
@@ -1407,7 +1467,7 @@ public class PhotoPreviewActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130969179);
+    super.setContentView(2130969177);
     NewFlowCameraReporter.a("preview create");
     this.jdField_g_of_type_Int = getResources().getDisplayMetrics().widthPixels;
     this.jdField_h_of_type_Int = getResources().getDisplayMetrics().heightPixels;
@@ -1464,6 +1524,9 @@ public class PhotoPreviewActivity
     }
     label225:
     j();
+    if ((this.jdField_k_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.b();
+    }
   }
   
   protected void onNewIntent(Intent paramIntent)
@@ -1490,6 +1553,11 @@ public class PhotoPreviewActivity
     SmallScreenUtils.a(BaseApplicationImpl.getContext(), true);
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
       this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager != null)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.a();
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.a(this.jdField_b_of_type_JavaUtilArrayList);
     }
   }
 }

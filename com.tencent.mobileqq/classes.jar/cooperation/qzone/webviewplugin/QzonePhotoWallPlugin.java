@@ -1,7 +1,5 @@
 package cooperation.qzone.webviewplugin;
 
-import ancu;
-import ancv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +8,8 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
+import anku;
+import ankv;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -148,7 +148,7 @@ public class QzonePhotoWallPlugin
         break;
       }
       String str = String.valueOf(System.currentTimeMillis()) + ".jpeg";
-      paramContext = AppConstants.aP + str;
+      paramContext = AppConstants.aQ + str;
       boolean bool = PhotoUtils.a((Bitmap)localObject, paramContext, Bitmap.CompressFormat.JPEG, 90, true);
       if (!bool) {
         break;
@@ -195,7 +195,7 @@ public class QzonePhotoWallPlugin
   
   private void a(ArrayList paramArrayList)
   {
-    ThreadManager.post(new ancu(this, paramArrayList), 8, null, false);
+    ThreadManager.post(new anku(this, paramArrayList), 8, null, false);
   }
   
   private void a(ArrayList paramArrayList, boolean paramBoolean)
@@ -351,7 +351,7 @@ public class QzonePhotoWallPlugin
       if ((a() == 2) && (paramArrayList != null) && (paramArrayList.size() != 0)) {
         jdField_a_of_type_JavaUtilSet.add(paramArrayList.get(0));
       }
-      ThreadManager.post(new ancv(this, paramArrayList), 8, null, false);
+      ThreadManager.post(new ankv(this, paramArrayList), 8, null, false);
       return;
       i = paramArrayList.size();
     }

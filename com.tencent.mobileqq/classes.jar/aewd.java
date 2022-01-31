@@ -1,31 +1,15 @@
-import com.tencent.mobileqq.nearby.now.model.NowPublishParam;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.now.send.uploader.WordsCheck.OnResultListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
 public class aewd
-  implements WordsCheck.OnResultListener
+  implements View.OnClickListener
 {
-  public aewd(VideoFeedsManager paramVideoFeedsManager, NowPublishParam paramNowPublishParam) {}
+  public aewd(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelNowPublishParam);
-      return;
-    }
-    b(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    VideoFeedsUploader.UploadResult localUploadResult = new VideoFeedsUploader.UploadResult();
-    localUploadResult.i = "文字包含敏感词！";
-    localUploadResult.a = -109;
-    VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager).a(new VideoFeedsUploader.UploadInfo(), localUploadResult);
+    this.a.finish();
   }
 }
 

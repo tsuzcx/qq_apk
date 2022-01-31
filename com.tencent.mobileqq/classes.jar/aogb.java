@@ -1,37 +1,31 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 
 public class aogb
-  extends SosoInterface.OnLocationListener
+  extends AnimatorListenerAdapter
 {
-  public aogb(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public aogb(TextLayer.TextItem paramTextItem) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    SLog.b(TextLayer.a, "scaleAnimator cancel!");
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
-      }
-      if (FlowCameraActivity2.a(this.a) != null) {
-        FlowCameraActivity2.a(this.a);
-      }
-    }
-    do
-    {
-      return;
-      this.a.a = 0.0D;
-      this.a.b = 0.0D;
-    } while (!QLog.isColorLevel());
-    QLog.d("FlowCameraActivity", 2, "onLocationUpdate() error");
+    SLog.b(TextLayer.a, "scaleAnimator end!");
+    this.a.w = 1.0F;
+    this.a.i = false;
+    this.a.a.k();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SLog.b(TextLayer.a, "scaleAnimator start!");
+    this.a.i = true;
   }
 }
 

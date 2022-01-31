@@ -32,10 +32,10 @@ import com.tencent.widget.Switch;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.List;
-import txg;
-import txh;
-import txk;
-import txm;
+import ubz;
+import uca;
+import ucd;
+import ucf;
 
 public class TroopGagActivity
   extends IphoneTitleBarActivity
@@ -43,14 +43,14 @@ public class TroopGagActivity
 {
   public View a;
   public LinearLayout a;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new txh(this);
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new txk(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new uca(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ucd(this);
   TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
   public Switch a;
   public XListView a;
   public String a;
   public List a;
-  public txm a;
+  public ucf a;
   LinearLayout b;
   
   public TroopGagActivity()
@@ -106,8 +106,8 @@ public class TroopGagActivity
     paramBundle = (TroopManager)this.app.getManager(51);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("troopuin");
     this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramBundle.b(this.jdField_a_of_type_JavaLangString);
-    paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130969461, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramBundle.findViewById(2131363733));
+    paramBundle = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130969457, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramBundle.findViewById(2131363757));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setFocusable(false);
@@ -115,38 +115,38 @@ public class TroopGagActivity
     Object localObject = new AbsListView.LayoutParams(-1, -2);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    localObject = View.inflate(this, 2130970668, null);
+    localObject = View.inflate(this, 2130970681, null);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
     localObject = new TextView(this);
     ((TextView)localObject).setPadding(getResources().getDimensionPixelSize(2131558774), 0, getResources().getDimensionPixelSize(2131558774), getResources().getDimensionPixelSize(2131558772));
     ((TextView)localObject).setTextAppearance(this, 2131624012);
-    ((TextView)localObject).setText(getResources().getString(2131429875));
+    ((TextView)localObject).setText(getResources().getString(2131429876));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
     this.b = new LinearLayout(this);
     localObject = new AbsListView.LayoutParams(-1, -2);
     this.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.b.setOrientation(1);
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130970668, null);
+    this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130970681, null);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.b.addView(this.jdField_a_of_type_AndroidViewView);
-    localObject = View.inflate(this, 2130969448, null);
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)((View)localObject).findViewById(2131366539));
+    localObject = View.inflate(this, 2130969444, null);
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)((View)localObject).findViewById(2131366537));
     TroopGagMgr.TroopGagInfo localTroopGagInfo = ((TroopGagMgr)this.app.getManager(47)).a(this.jdField_a_of_type_JavaLangString);
     if ((localTroopGagInfo != null) && (localTroopGagInfo.a != 0L))
     {
       this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
       this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
       this.b.addView((View)localObject);
-      localObject = View.inflate(this, 2130970668, null);
+      localObject = View.inflate(this, 2130970681, null);
       this.b.addView((View)localObject);
       this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.b);
-      this.jdField_a_of_type_Txm = new txm(this);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Txm);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838214);
+      this.jdField_a_of_type_Ucf = new ucf(this);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ucf);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838219);
       super.setContentView(paramBundle);
       setTitle("群内禁言");
       if (!NetworkUtil.d(BaseApplication.getContext())) {
-        QQToast.a(this, 2131433213, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131433227, 0).b(getTitleBarHeight());
       }
       addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
       addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
@@ -165,7 +165,7 @@ public class TroopGagActivity
     for (boolean bool = true;; bool = false)
     {
       if (!bool) {
-        ThreadManager.post(new txg(this, (TroopGagMgr)this.app.getManager(47)), 8, null, false);
+        ThreadManager.post(new ubz(this, (TroopGagMgr)this.app.getManager(47)), 8, null, false);
       }
       if (QLog.isColorLevel()) {
         QLog.d("TroopGagActivity", 2, "doOnCreate: isRequestedTroopList=" + bool);
@@ -178,8 +178,8 @@ public class TroopGagActivity
   
   protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Txm != null) {
-      this.jdField_a_of_type_Txm.X_();
+    if (this.jdField_a_of_type_Ucf != null) {
+      this.jdField_a_of_type_Ucf.Z_();
     }
     removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
     removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);

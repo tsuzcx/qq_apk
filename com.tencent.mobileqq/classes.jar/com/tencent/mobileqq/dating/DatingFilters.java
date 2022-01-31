@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import abwq;
+import acen;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +11,7 @@ import java.io.UnsupportedEncodingException;
 public class DatingFilters
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abwq();
+  public static final Parcelable.Creator CREATOR = new acen();
   public static final int[] a;
   public static final String[] a;
   public static final int[] b;

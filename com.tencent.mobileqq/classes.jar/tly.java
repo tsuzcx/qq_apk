@@ -1,23 +1,9 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
-import com.tencent.mobileqq.apollo.drawer.ApolloDrawerStatus;
-import com.tencent.mobileqq.apollo.drawer.ApolloStepInfo;
-import com.tencent.mobileqq.apollo.drawer.StepDrawerStatus;
-import com.tencent.mobileqq.vashealth.SSOHttpUtils;
+import android.widget.TextView;
 
-class tly
-  implements Runnable
+public class tly
 {
-  tly(tlx paramtlx) {}
-  
-  public void run()
-  {
-    Object localObject = new ApolloStepInfo(SSOHttpUtils.a());
-    localObject = new StepDrawerStatus(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ApolloStepInfo)localObject);
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a((ApolloDrawerStatus)localObject);
-    }
-  }
+  public int a;
+  public TextView a;
 }
 
 

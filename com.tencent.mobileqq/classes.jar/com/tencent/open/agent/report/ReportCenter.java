@@ -1,12 +1,12 @@
 package com.tencent.open.agent.report;
 
-import alcx;
-import alcy;
-import alcz;
-import alda;
-import aldb;
-import aldc;
-import aldd;
+import alkp;
+import alkq;
+import alkr;
+import alks;
+import alkt;
+import alku;
+import alkv;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -46,7 +46,7 @@ public class ReportCenter
   
   protected ReportCenter()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new alcx(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new alkp(this, Looper.getMainLooper());
     this.jdField_a_of_type_JavaUtilRandom = new Random();
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -139,7 +139,7 @@ public class ReportCenter
   
   public void a()
   {
-    this.jdField_b_of_type_JavaUtilConcurrentExecutor.execute(new aldb(this));
+    this.jdField_b_of_type_JavaUtilConcurrentExecutor.execute(new alkt(this));
   }
   
   public void a(Bundle paramBundle, String paramString1, String paramString2, boolean paramBoolean)
@@ -157,7 +157,7 @@ public class ReportCenter
         if ((!a("report_via", paramString1)) && (!paramBoolean)) {
           continue;
         }
-        this.jdField_b_of_type_JavaUtilConcurrentExecutor.execute(new alcy(this, paramString2, paramBundle, paramBoolean));
+        this.jdField_b_of_type_JavaUtilConcurrentExecutor.execute(new alkq(this, paramString2, paramBundle, paramBoolean));
         return;
       }
       catch (Exception localException)
@@ -172,7 +172,7 @@ public class ReportCenter
   
   public void a(String paramString)
   {
-    this.c.execute(new alda(this, paramString));
+    this.c.execute(new alks(this, paramString));
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, boolean paramBoolean)
@@ -180,7 +180,7 @@ public class ReportCenter
     if (QLog.isColorLevel()) {
       QLog.d("ReportCenter", 2, "-->reportCgi, command: " + paramString1 + " | responseCode: " + paramInt2 + " | uin: " + paramString2 + " | detail: " + paramString3);
     }
-    this.c.execute(new aldd(this, paramInt3, paramString1, paramString3, paramInt1, paramInt2, paramString2, paramBoolean));
+    this.c.execute(new alkv(this, paramInt3, paramString1, paramString3, paramInt1, paramInt2, paramString2, paramBoolean));
   }
   
   public void a(String paramString1, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4, String paramString2, String paramString3, boolean paramBoolean)
@@ -192,12 +192,12 @@ public class ReportCenter
       return;
     }
     long l = SystemClock.elapsedRealtime();
-    this.c.execute(new alcz(this, paramString2, paramString1, paramString3, paramInt, paramLong2, paramLong3, l - paramLong1, paramLong4, paramBoolean));
+    this.c.execute(new alkr(this, paramString2, paramString1, paramString3, paramInt, paramLong2, paramLong3, l - paramLong1, paramLong4, paramBoolean));
   }
   
   public void a(String paramString1, String paramString2, Bundle paramBundle, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new aldc(this, paramBundle, paramString1, paramBoolean));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new alku(this, paramBundle, paramString1, paramBoolean));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean)

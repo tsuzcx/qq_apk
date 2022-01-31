@@ -23,10 +23,12 @@ public class BuddyListFriends$BuddyChildTag
   public ImageView c;
   public AlphaDrawable c;
   public ImageView d;
+  public AlphaDrawable d;
   public ImageView e;
   public ImageView f;
   public ImageView g;
   public ImageView h;
+  public ImageView i;
 }
 
 

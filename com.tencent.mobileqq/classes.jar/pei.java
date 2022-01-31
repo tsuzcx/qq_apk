@@ -1,32 +1,18 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.ui.CustomAnimationAdapter;
 
 public class pei
-  implements SensorEventListener
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  private WeakReference a;
+  public pei(CustomAnimationAdapter paramCustomAnimationAdapter, View paramView) {}
   
-  public pei(ScannerView paramScannerView)
+  public boolean onPreDraw()
   {
-    this.a = new WeakReference(paramScannerView);
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    ScannerView localScannerView = (ScannerView)this.a.get();
-    if (localScannerView != null) {
-      localScannerView.a(paramSensorEvent);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ScannerView", 2, "onSensorChanged but mRef got null");
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
+    CustomAnimationAdapter.a(this.jdField_a_of_type_ComTencentBizUiCustomAnimationAdapter, this.jdField_a_of_type_AndroidViewView);
+    return false;
   }
 }
 

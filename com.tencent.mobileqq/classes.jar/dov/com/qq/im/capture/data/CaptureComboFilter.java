@@ -3,7 +3,7 @@ package dov.com.qq.im.capture.data;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import anlh;
+import antu;
 import com.tencent.av.AVNetEngine;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
@@ -16,6 +16,7 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QQFilterRenderManagerHolder;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterListDownloader;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
 import java.io.File;
@@ -151,7 +152,7 @@ public class CaptureComboFilter
       for (int i = 0;; i = localArrayList.size())
       {
         QLog.d("QCombo", 2, i);
-        new anlh(bool, localArrayList, paramBoolean).a(new Void[0]);
+        new antu(bool, localArrayList, paramBoolean).a(new Void[0]);
         return;
         localArrayList.add(localFilterDesc);
         break;
@@ -286,7 +287,7 @@ public class CaptureComboFilter
         }
       }
       str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.b(CaptureVideoFilterManager.jdField_b_of_type_JavaLangString);
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(str)) || (new File(str + "params.json").exists()));
+    } while ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(str)) || (!VideoFilterListDownloader.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc)));
     return 2;
   }
   
@@ -326,11 +327,11 @@ public class CaptureComboFilter
     if (localObject != null)
     {
       if (((CaptureComboFilter.UserData)localObject).jdField_a_of_type_Int != 1) {
-        break label215;
+        break label217;
       }
       localObject = ((CaptureComboFilter.UserData)localObject).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
       if (paramNetResp.jdField_a_of_type_Int == 0) {
-        break label172;
+        break label174;
       }
       if (QLog.isColorLevel()) {
         QLog.d("QCombo", 2, "download IconFile failed. errorCode: " + paramNetResp.jdField_b_of_type_Int + ", errorMsg: " + paramNetResp.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).c);
@@ -349,13 +350,13 @@ public class CaptureComboFilter
         b();
       }
       return;
-      label172:
+      label174:
       if (QLog.isColorLevel()) {
         QLog.d("QCombo", 2, "download iconFile success. file: " + ((FilterDesc)localObject).c);
       }
       this.jdField_a_of_type_Float = 1.0F;
       continue;
-      label215:
+      label217:
       if (((CaptureComboFilter.UserData)localObject).jdField_a_of_type_Int == 2)
       {
         localObject = ((CaptureComboFilter.UserData)localObject).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
@@ -433,13 +434,13 @@ public class CaptureComboFilter
       }
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.b(CaptureVideoFilterManager.jdField_b_of_type_JavaLangString);
       if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty((CharSequence)localObject1))) {
-        break label506;
+        break label483;
       }
-      localObject2 = new File((String)localObject1 + "params.json");
+      boolean bool = VideoFilterListDownloader.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
       if (QLog.isColorLevel()) {
-        QLog.d("QCombo", 2, "preDownloadResource " + (String)localObject1 + "params.json" + " exist: " + ((File)localObject2).exists());
+        QLog.d("QCombo", 2, "preDownloadResource " + (String)localObject1 + "params.json" + " beNeedDownload: " + bool);
       }
-      if (!((File)localObject2).exists())
+      if (bool)
       {
         localObject1 = new HttpNetReq();
         ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
@@ -464,7 +465,7 @@ public class CaptureComboFilter
       return super.b();
       this.jdField_a_of_type_Float = 1.0F;
       break;
-      label506:
+      label483:
       this.jdField_b_of_type_Float = 1.0F;
     }
   }

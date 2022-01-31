@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acwq;
-import acwr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
@@ -12,12 +10,12 @@ import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 
 public class Md5HttpUploader
-  implements acwr, IHttpCommunicatorListener
+  implements IHttpUploader, IHttpCommunicatorListener
 {
   private final int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
-  private acwq jdField_a_of_type_Acwq;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private IHttpUploadSink jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink;
   private HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
   private boolean jdField_a_of_type_Boolean;
   private final int b;
@@ -45,9 +43,9 @@ public class Md5HttpUploader
     }
   }
   
-  public void a(acwq paramacwq)
+  public void a(IHttpUploadSink paramIHttpUploadSink)
   {
-    this.jdField_a_of_type_Acwq = paramacwq;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink = paramIHttpUploadSink;
   }
   
   public void a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
@@ -86,17 +84,17 @@ public class Md5HttpUploader
     {
       if (0L != l)
       {
-        this.jdField_a_of_type_Acwq.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
         return;
       }
       paramHttpMsg1 = paramHttpMsg2.a("Range");
       if (paramHttpMsg1 == null)
       {
-        this.jdField_a_of_type_Acwq.a(9001, "httpServer not has range");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(9001, "httpServer not has range");
         return;
       }
       l = Long.parseLong(paramHttpMsg1);
-      this.jdField_a_of_type_Acwq.a(l, paramHttpMsg2.d);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(l, paramHttpMsg2.d);
       return;
       QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],decode but response Code [" + paramHttpMsg2.c() + "] is not 200");
       return;
@@ -108,7 +106,7 @@ public class Md5HttpUploader
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Acwq.a(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(paramString);
   }
   
   public boolean a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
@@ -141,7 +139,7 @@ public class Md5HttpUploader
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Acwq.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
   }
 }
 

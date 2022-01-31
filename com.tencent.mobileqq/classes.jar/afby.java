@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afby
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public afby(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, String paramString) {}
+  public afby(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment) != null)
-    {
-      NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment).a(this.jdField_a_of_type_JavaLangString);
-      return;
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
     }
-    QLog.i("NearbyAuthVideoPlayerFragment", 1, "mDynamicAvatarDownloadManager is NULL!!!");
+    for (;;)
+    {
+      return false;
+      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
+    }
   }
 }
 

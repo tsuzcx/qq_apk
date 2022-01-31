@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akws;
+import alej;
 import android.view.View;
 import android.view.ViewConfiguration;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
@@ -102,7 +102,7 @@ public class ScrollerRunnable
         if (QLog.isColorLevel()) {
           QLog.i("ScrollerRunnable", 2, "FlushMessageItem:" + localObject.hashCode() + "," + ((View)localObject).getParent());
         }
-        ((View)localObject).postDelayed(new akws(this, (View)localObject), 300L);
+        ((View)localObject).postDelayed(new alej(this, (View)localObject), 300L);
         return;
       }
       j += 1;
@@ -465,7 +465,7 @@ public class ScrollerRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ScrollerRunnable
  * JD-Core Version:    0.7.0.1
  */

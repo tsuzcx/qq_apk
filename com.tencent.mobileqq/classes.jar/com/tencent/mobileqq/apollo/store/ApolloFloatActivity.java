@@ -14,14 +14,16 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.apollo.game.ApolloGameTool;
 import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.emosm.Client;
 import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.SystemBarCompact;
-import yst;
+import yzk;
 
 public class ApolloFloatActivity
   extends ApolloBaseActivity
@@ -31,6 +33,7 @@ public class ApolloFloatActivity
   private int b;
   private int c;
   private int d = 1500;
+  private int e;
   
   private void d()
   {
@@ -72,9 +75,16 @@ public class ApolloFloatActivity
     int i;
     if (localIntent != null)
     {
-      this.c = localIntent.getIntExtra("extra_key_from", -1);
-      if (this.c == 1)
+      this.e = localIntent.getIntExtra("extra_key_gameid", -1);
+      CmGameLauncher localCmGameLauncher = CmGameUtil.b(this.e);
+      i = localIntent.getIntExtra("extra_key_taskid", 0);
+      if (localCmGameLauncher != null)
       {
+        localCmGameLauncher.a(this, i);
+        this.c = localIntent.getIntExtra("extra_key_from", -1);
+        if (this.c != 1) {
+          break label478;
+        }
         getWindow().getDecorView().setSystemUiVisibility(5894);
         i = CmGameUtil.a(localIntent.getIntExtra("extra_key_entratation", 1));
         setRequestedOrientation(i);
@@ -87,21 +97,23 @@ public class ApolloFloatActivity
         }
         paramBundle.addView(this.jdField_b_of_type_ComTencentBizUiTouchWebView, (ViewGroup.LayoutParams)localObject);
         setRequestedOrientation(i);
+        label256:
         if (this.jdField_b_of_type_ComTencentBizUiTouchWebView.getBackground() != null) {
           this.jdField_b_of_type_ComTencentBizUiTouchWebView.getBackground().setAlpha(0);
         }
         if (localIntent == null) {
-          break label457;
+          break label537;
         }
         localObject = localIntent.getStringExtra("extra_key_weburl");
         this.jdField_a_of_type_JavaLangString = ((String)localObject);
         if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label427;
+          break label507;
         }
         this.i = System.currentTimeMillis();
         this.jdField_b_of_type_ComTencentBizUiTouchWebView.loadUrl((String)localObject);
       }
     }
+    label537:
     for (;;)
     {
       localObject = super.getResources();
@@ -112,7 +124,7 @@ public class ApolloFloatActivity
         this.mSystemBarComp.setStatusBarColor(i);
       }
       if (super.getIntent().getBooleanExtra("extra_key_close_btn", false)) {
-        paramBundle.postDelayed(new yst(this, (Resources)localObject, paramBundle), this.d);
+        paramBundle.postDelayed(new yzk(this, (Resources)localObject, paramBundle), this.d);
       }
       super.setContentView(paramBundle);
       if (!this.jdField_a_of_type_Boolean) {
@@ -123,24 +135,37 @@ public class ApolloFloatActivity
       }
       this.h = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
       return false;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ApolloFloatActivity", 2, "[doOnCreate] can not found for id " + this.e);
+      break;
+      label478:
       setRequestedOrientation(1);
       paramBundle.addView(this.jdField_b_of_type_ComTencentBizUiTouchWebView, (ViewGroup.LayoutParams)localObject);
-      break;
+      break label256;
       QLog.e("ApolloFloatActivity", 1, "[doOnCreate] intent is null background trans");
-      break;
-      label427:
+      break label256;
+      label507:
       if (QLog.isColorLevel())
       {
         QQToast.a(this, "透明浮层url为空", 0).a();
         QLog.e("ApolloFloatActivity", 2, "ApolloFloat WebUrl is empty!");
         continue;
-        label457:
         if (QLog.isColorLevel()) {
           QQToast.a(this, "透明浮层url为空", 0).a();
         }
         QLog.e("ApolloFloatActivity", 2, "[doOnCreate] intent is null url null");
       }
     }
+  }
+  
+  protected void doOnWindowFocusChanged(boolean paramBoolean)
+  {
+    if (this.c == 1) {
+      ApolloGameTool.a(this);
+    }
+    super.doOnWindowFocusChanged(paramBoolean);
   }
   
   protected boolean isWrapContent()

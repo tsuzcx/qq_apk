@@ -2,19 +2,19 @@ package dov.com.tencent.mobileqq.shortvideo;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aopn;
+import aoxz;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class ShortVideoResourceStatus
 {
-  static aopn a(String paramString)
+  static aoxz a(String paramString)
   {
-    aopn localaopn = new aopn();
+    aoxz localaoxz = new aoxz();
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_resource_status_sp", 4);
-    localaopn.a = localSharedPreferences.getInt(paramString + "_version_k", 0);
-    localaopn.b = localSharedPreferences.getInt(paramString + "_status_k", -1);
-    localaopn.c = localSharedPreferences.getInt(paramString + "_last_error_k", -1);
-    return localaopn;
+    localaoxz.a = localSharedPreferences.getInt(paramString + "_version_k", 0);
+    localaoxz.b = localSharedPreferences.getInt(paramString + "_status_k", -1);
+    localaoxz.c = localSharedPreferences.getInt(paramString + "_last_error_k", -1);
+    return localaoxz;
   }
   
   static boolean a(String paramString, int paramInt1, int paramInt2, int paramInt3)

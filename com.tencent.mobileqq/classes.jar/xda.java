@@ -1,36 +1,19 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import java.util.List;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
-public class xda
-  extends PagerAdapter
+class xda
+  implements Runnable
 {
-  public xda(CommonHbFragment paramCommonHbFragment) {}
+  xda(xcz paramxcz) {}
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject)
+  public void run()
   {
-    ((ViewPager)paramView).removeView((View)CommonHbFragment.b(this.a).get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    if (CommonHbFragment.b(this.a) != null) {
-      return CommonHbFragment.b(this.a).size();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b.setChecked(this.a.jdField_a_of_type_Boolean);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.F = this.a.jdField_a_of_type_Boolean;
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.e();
     }
-    return 0;
-  }
-  
-  public Object instantiateItem(View paramView, int paramInt)
-  {
-    ((ViewPager)paramView).addView((View)CommonHbFragment.b(this.a).get(paramInt), 0);
-    return CommonHbFragment.b(this.a).get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
   }
 }
 

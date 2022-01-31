@@ -1,22 +1,12 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter.CacheRefMap;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
+import android.view.View;
+import android.widget.ImageView;
 
-public class aobb
-  extends SoftReference
+class aobb
 {
-  private Object jdField_a_of_type_JavaLangObject;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public aobb(NormalFaceAdapter.CacheRefMap paramCacheRefMap, Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue)
-  {
-    super(paramObject2, paramReferenceQueue);
-    this.jdField_a_of_type_JavaLangObject = paramObject1;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
+  aobb(aoba paramaoba) {}
 }
 
 

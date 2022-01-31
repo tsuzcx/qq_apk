@@ -3,8 +3,8 @@ package com.tencent.mobileqq.app;
 import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import java.util.ArrayList;
-import zkf;
-import zkg;
+import zrc;
+import zrd;
 
 public class PublicAccountObserver
   implements BusinessObserver
@@ -39,7 +39,7 @@ public class PublicAccountObserver
   {
     if (100 == paramInt)
     {
-      paramObject = (zkg)paramObject;
+      paramObject = (zrd)paramObject;
       a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
     }
     do
@@ -47,9 +47,9 @@ public class PublicAccountObserver
       return;
       if (101 == paramInt)
       {
-        if ((paramObject instanceof zkf))
+        if ((paramObject instanceof zrc))
         {
-          paramObject = (zkf)paramObject;
+          paramObject = (zrc)paramObject;
           b(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
           return;
         }
@@ -63,9 +63,9 @@ public class PublicAccountObserver
       }
       if (102 == paramInt)
       {
-        if ((paramObject instanceof zkf))
+        if ((paramObject instanceof zrc))
         {
-          paramObject = (zkf)paramObject;
+          paramObject = (zrc)paramObject;
           a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
           return;
         }
@@ -74,7 +74,7 @@ public class PublicAccountObserver
       }
       if (103 == paramInt)
       {
-        v_();
+        t_();
         return;
       }
       if (104 == paramInt)
@@ -106,7 +106,7 @@ public class PublicAccountObserver
     a(paramBoolean, (ArrayList)paramObject);
   }
   
-  public void v_() {}
+  public void t_() {}
 }
 
 

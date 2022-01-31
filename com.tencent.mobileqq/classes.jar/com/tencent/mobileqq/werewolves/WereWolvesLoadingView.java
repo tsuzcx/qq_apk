@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.werewolves;
 
-import akrw;
-import akrx;
+import akzn;
+import akzo;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -30,7 +30,7 @@ public class WereWolvesLoadingView
   public int b;
   public View b;
   TextView jdField_b_of_type_AndroidWidgetTextView;
-  Runnable jdField_b_of_type_JavaLangRunnable = new akrx(this);
+  Runnable jdField_b_of_type_JavaLangRunnable = new akzo(this);
   public boolean b;
   
   public WereWolvesLoadingView(Context paramContext)
@@ -38,7 +38,7 @@ public class WereWolvesLoadingView
     super(paramContext);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangRunnable = new akrw(this);
+    this.jdField_a_of_type_JavaLangRunnable = new akzn(this);
     this.jdField_b_of_type_Boolean = false;
     a();
   }
@@ -48,19 +48,19 @@ public class WereWolvesLoadingView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangRunnable = new akrw(this);
+    this.jdField_a_of_type_JavaLangRunnable = new akzn(this);
     this.jdField_b_of_type_Boolean = false;
     a();
   }
   
   void a()
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130969120, this);
-    this.jdField_a_of_type_Int = findViewById(2131365266).getLayoutParams().width;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363562);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363566));
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130969123, this);
+    this.jdField_a_of_type_Int = findViewById(2131365293).getLayoutParams().width;
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363581);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363585));
     setProgress(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362728));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362733));
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#323e6f"));
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
@@ -136,7 +136,7 @@ public class WereWolvesLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WereWolvesLoadingView
  * JD-Core Version:    0.7.0.1
  */

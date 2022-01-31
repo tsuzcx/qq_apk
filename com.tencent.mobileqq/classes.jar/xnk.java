@@ -1,45 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.FileUtils;
+import java.io.File;
+import java.util.Comparator;
 
-public class xnk
-  implements MediaPlayer.OnPreparedListener
+public final class xnk
+  implements Comparator
 {
-  public xnk(EditLocalVideoActivity paramEditLocalVideoActivity) {}
-  
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  private int a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditLocalVideoActivity", 2, "onPrepared, duration:" + paramMediaPlayer.getDuration());
-    }
-    EditLocalVideoActivity.a(this.a).removeMessages(9999);
-    int i;
-    int j;
-    if (!EditLocalVideoActivity.a(this.a).a())
+    try
     {
-      EditLocalVideoActivity.f(this.a, paramMediaPlayer.getDuration());
-      if ((FileUtils.a(EditLocalVideoActivity.a(this.a)) / EditLocalVideoActivity.a(this.a).getDuration() * 15000L > this.a.a(EditLocalVideoActivity.a())) && (QLog.isColorLevel())) {
-        QLog.d("EditLocalVideoActivity", 2, "prepared, there is not enough space on sdcard");
-      }
-      i = paramMediaPlayer.getVideoWidth();
-      j = paramMediaPlayer.getVideoHeight();
-      if ((i <= 0) || (j <= 0)) {
-        Toast.makeText(this.a.getApplicationContext(), "获取视频尺寸失败", 1).show();
-      }
+      int i = Integer.parseInt(paramString.substring(0, paramString.lastIndexOf('.')));
+      return i;
     }
-    else
-    {
-      return;
-    }
-    EditLocalVideoActivity.g(this.a, i);
-    EditLocalVideoActivity.h(this.a, j);
-    EditLocalVideoActivity.a(this.a, i, j);
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  public int a(File paramFile1, File paramFile2)
+  {
+    return a(paramFile1.getName()) - a(paramFile2.getName());
   }
 }
 

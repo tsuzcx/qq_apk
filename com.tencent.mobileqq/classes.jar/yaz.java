@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader.P2VEffectDownloadListener;
+import cooperation.qzone.util.QZLog;
 
 public class yaz
-  implements View.OnClickListener
+  implements P2VEffectLoader.P2VEffectDownloadListener
 {
-  public yaz(SelectMemberActivity paramSelectMemberActivity) {}
+  public yaz(P2VEffectLoader paramP2VEffectLoader, P2VEffectLoader.P2VEffectDownloadListener paramP2VEffectDownloadListener) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.b(true, false);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener);
+      return;
+    }
+    QZLog.e("P2VEffectLoader", 1, new Object[] { "downLoadP2VJarAndMaterialModule - downLoadP2VJarModule failed" });
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener.a(false);
   }
 }
 

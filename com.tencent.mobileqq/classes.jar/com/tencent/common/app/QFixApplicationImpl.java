@@ -196,7 +196,6 @@ public class QFixApplicationImpl
   
   public boolean isAndroidNPatchEnable()
   {
-    boolean bool2 = true;
     SharedPreferences localSharedPreferences = getSharedPreferences("hotpatch_preference", 4);
     Object localObject1 = localSharedPreferences.getString("key_config_patch_dex", "");
     String str2 = a(this);
@@ -208,9 +207,9 @@ public class QFixApplicationImpl
       Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patch config is null");
       bool1 = false;
     }
+    Object localObject2;
     for (;;)
     {
-      int i;
       if (bool1)
       {
         i = localSharedPreferences.getInt(str1, 0);
@@ -227,39 +226,9 @@ public class QFixApplicationImpl
       }
       else
       {
-        Object localObject2 = ((JSONObject)localObject1).optString("process", "");
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable process=" + (String)localObject2);
-        boolean bool3 = TextUtils.isEmpty((CharSequence)localObject2);
-        if (!bool3)
-        {
-          localObject2 = ((String)localObject2).split(";");
-          int j = localObject2.length;
-          i = 0;
-          for (;;)
-          {
-            bool1 = bool3;
-            if (i < j)
-            {
-              if (TextUtils.equals(localObject2[i], str2)) {
-                bool1 = true;
-              }
-            }
-            else
-            {
-              if (bool1) {
-                break label298;
-              }
-              Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable process not match.");
-              bool1 = false;
-              break;
-            }
-            i += 1;
-          }
-        }
-        label298:
         localObject2 = ((JSONObject)localObject1).optString("revision", "");
-        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "351230");
-        if (!"351230".equals(localObject2))
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision=" + (String)localObject2 + ", " + "355371");
+        if (!"355371".equals(localObject2))
         {
           Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable revision not match.");
           bool1 = false;
@@ -274,86 +243,132 @@ public class QFixApplicationImpl
           }
           else
           {
-            localObject2 = ((JSONObject)localObject1).optString("systemVersion", "");
-            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!((String)localObject2).contains(String.valueOf(Build.VERSION.SDK_INT))))
-            {
-              Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable systemVersion not match.");
-              bool1 = false;
+            localObject2 = ((JSONObject)localObject1).optJSONArray("patchItemConfigs");
+            if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
+              break;
             }
-            else
-            {
-              localObject2 = ((JSONObject)localObject1).optString("deviceInfo", "");
-              if ((!TextUtils.isEmpty((CharSequence)localObject2)) && ((!((String)localObject2).contains(Build.BRAND)) || (!((String)localObject2).contains(Build.MODEL))))
-              {
-                Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable device not match.");
-                bool1 = false;
-              }
-              else
-              {
-                localObject2 = ((JSONObject)localObject1).optString("patchName", "");
-                if (TextUtils.isEmpty((CharSequence)localObject2))
-                {
-                  Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchName is empty.");
-                  bool1 = false;
-                }
-                else
-                {
-                  File localFile = new File("/data/data/com.tencent.mobileqq/files/hotpatch/dex/" + (String)localObject2);
-                  if (!localFile.exists())
-                  {
-                    Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patch file not exist.");
-                    bool1 = false;
-                  }
-                  else
-                  {
-                    i = ((JSONObject)localObject1).optInt("patchSizeAfterN", 0);
-                    if ((i <= 0) || (localFile.length() != i))
-                    {
-                      Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchSize not match.");
-                      bool1 = false;
-                    }
-                    else
-                    {
-                      if (!localSharedPreferences.getBoolean("key_verify_status_patch_" + (String)localObject2, false))
-                      {
-                        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patch verify failed.");
-                        return false;
-                      }
-                      str2 = str2 + (String)localObject2;
-                      if (localSharedPreferences.getInt("key_count_fail_install_patch_" + str2, 0) >= 3)
-                      {
-                        bool1 = false;
-                      }
-                      else if (localSharedPreferences.getInt("key_count_fail_startup_patch_" + str2, 0) > 5)
-                      {
-                        bool1 = false;
-                      }
-                      else
-                      {
-                        i = localSharedPreferences.getInt(str1, 0);
-                        Log.d("QFixAppImpl_PatchLogTag", "androidNTryCount " + i);
-                        if (i >= 3)
-                        {
-                          bool1 = false;
-                        }
-                        else
-                        {
-                          i = localSharedPreferences.getInt("androidNCrashCount", 0);
-                          Log.d("QFixAppImpl_PatchLogTag", "androidNCrashCount " + i);
-                          bool1 = bool2;
-                          if (i >= 3) {
-                            bool1 = false;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchItemConfig is null");
+            bool1 = false;
           }
         }
       }
+    }
+    int i = 0;
+    Object localObject3;
+    if (i < ((JSONArray)localObject2).length())
+    {
+      localObject1 = ((JSONArray)localObject2).optJSONObject(i);
+      if (localObject1 == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        localObject3 = ((JSONObject)localObject1).optString("process", "");
+        boolean bool2 = TextUtils.isEmpty((CharSequence)localObject3);
+        if (!bool2)
+        {
+          localObject3 = ((String)localObject3).split(";");
+          int k = localObject3.length;
+          int j = 0;
+          for (;;)
+          {
+            bool1 = bool2;
+            if (j < k)
+            {
+              if (TextUtils.equals(localObject3[j], str2)) {
+                bool1 = true;
+              }
+            }
+            else
+            {
+              if (bool1) {
+                break label494;
+              }
+              Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable process not match.");
+              break;
+            }
+            j += 1;
+          }
+        }
+        label494:
+        localObject3 = ((JSONObject)localObject1).optString("systemVersion", "");
+        if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!((String)localObject3).contains(String.valueOf(Build.VERSION.SDK_INT))))
+        {
+          Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable systemVersion not match.");
+        }
+        else
+        {
+          localObject3 = ((JSONObject)localObject1).optString("deviceInfo", "");
+          if ((TextUtils.isEmpty((CharSequence)localObject3)) || ((((String)localObject3).contains(Build.BRAND)) && (((String)localObject3).contains(Build.MODEL)))) {
+            break label594;
+          }
+          Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable device not match.");
+        }
+      }
+    }
+    for (;;)
+    {
+      label594:
+      if (localObject1 == null)
+      {
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchItemConfig not match.");
+        bool1 = false;
+        break;
+      }
+      localObject2 = ((JSONObject)localObject1).optString("patchName", "");
+      if (TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchName is empty.");
+        bool1 = false;
+        break;
+      }
+      localObject3 = new File("/data/data/com.tencent.mobileqq/files/hotpatch" + File.separator + (String)localObject2);
+      if (!((File)localObject3).exists())
+      {
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patch file not exist.");
+        bool1 = false;
+        break;
+      }
+      i = ((JSONObject)localObject1).optInt("patchSize", 0);
+      if ((i <= 0) || (((File)localObject3).length() != i))
+      {
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patchSize not match.");
+        bool1 = false;
+        break;
+      }
+      if (!localSharedPreferences.getBoolean("key_verify_status_patch_" + (String)localObject2, false))
+      {
+        Log.d("QFixAppImpl_PatchLogTag", "isAndroidNPatchEnable patch verify failed.");
+        return false;
+      }
+      localObject1 = str2 + (String)localObject2;
+      if (localSharedPreferences.getInt("key_count_fail_install_patch_" + (String)localObject1, 0) >= 3)
+      {
+        bool1 = false;
+        break;
+      }
+      if (localSharedPreferences.getInt("key_count_fail_startup_patch_" + (String)localObject1, 0) > 5)
+      {
+        bool1 = false;
+        break;
+      }
+      i = localSharedPreferences.getInt(str1, 0);
+      Log.d("QFixAppImpl_PatchLogTag", "androidNTryCount " + i);
+      if (i >= 3)
+      {
+        bool1 = false;
+        break;
+      }
+      i = localSharedPreferences.getInt("androidNCrashCount", 0);
+      Log.d("QFixAppImpl_PatchLogTag", "androidNCrashCount " + i);
+      if (i >= 3)
+      {
+        bool1 = false;
+        break;
+      }
+      bool1 = true;
+      break;
+      localObject1 = null;
     }
   }
 }

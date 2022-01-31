@@ -1,30 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class omi
-  implements HorizontalListView.OnScrollStateChangedListener
+public final class omi
+  implements Animation.AnimationListener
 {
-  public omi(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
+  public omi(View paramView) {}
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SLog.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
-    switch (paramInt)
-    {
-    default: 
-    case 4098: 
-    case 4099: 
-      do
-      {
-        return;
-      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
-      ScrollFrameSelectBar.a(this.a).b();
-      return;
-    }
-    this.a.b();
+    this.a.setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

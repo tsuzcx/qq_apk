@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
-import cooperation.qzone.webviewplugin.QZonePassivePraiseJsPlugin;
+import cooperation.qzone.font.FontManager;
+import java.io.File;
+import java.io.FileFilter;
 
 public class anbr
-  implements QzoneGiftFullScreenViewController.GiftFullScreenPlayListener
+  implements FileFilter
 {
-  public anbr(QZonePassivePraiseJsPlugin paramQZonePassivePraiseJsPlugin, String paramString) {}
+  public anbr(FontManager paramFontManager) {}
   
-  public void a()
+  public boolean accept(File paramFile)
   {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZonePassivePraiseJsPlugin.a != null)
-    {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playAnimationFinish:1})";
-      this.jdField_a_of_type_CooperationQzoneWebviewpluginQZonePassivePraiseJsPlugin.a.callJs(str);
-    }
+    return paramFile.getName().endsWith(".ftf");
   }
 }
 

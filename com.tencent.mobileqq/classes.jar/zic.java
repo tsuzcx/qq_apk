@@ -1,25 +1,49 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.NewFriendManager;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
+import java.util.ArrayList;
 
 public class zic
-  implements Runnable
+  implements IUploadTaskCallback
 {
-  public zic(NewFriendManager paramNewFriendManager) {}
+  public zic(CardHandler paramCardHandler) {}
   
-  public void run()
+  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = NewFriendManager.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      localStringBuilder.append((String)localIterator.next());
-      localStringBuilder.append("#");
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qzonephotowall", 2, "onUploadError " + paramString + " path:" + paramAbstractUploadTask.uploadFilePath);
     }
-    BaseApplicationImpl.getApplication().getSharedPreferences("new_friend", 0).edit().putString("new_friend_list", localStringBuilder.toString()).commit();
+    this.a.a(71, false, new Object[] { paramAbstractUploadTask.uploadFilePath });
+  }
+  
+  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2)
+  {
+    if (paramLong1 == paramLong2)
+    {
+      this.a.b = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qzonephotowall", 2, "onUploadProgress is 100%");
+      }
+    }
+  }
+  
+  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt) {}
+  
+  public void onUploadSucceed(AbstractUploadTask arg1, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qzonephotowall", 2, "onUploadSucceed ");
+    }
+    synchronized (CardHandler.a(this.a))
+    {
+      if (CardHandler.a(this.a).size() != 0)
+      {
+        CardHandler.a(this.a);
+        return;
+      }
+      this.a.a(71, true, new Object[0]);
+    }
   }
 }
 

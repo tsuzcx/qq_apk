@@ -1,31 +1,36 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.Handler;
+import android.widget.ProgressBar;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class xub
-  extends ExecuteBinResponseCallback
+  implements Downloader.DownloadListener
 {
-  xub(xua paramxua, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
+  xub(xtz paramxtz) {}
   
-  public void a(boolean paramBoolean)
+  public void onDownloadCanceled(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
-    {
-      xua.a(this.jdField_a_of_type_Xua, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
-    }
-    xua.a(this.jdField_a_of_type_Xua, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    this.a.a.a.post(new xuc(this));
   }
   
-  public void b(String paramString)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    xua.a(this.jdField_a_of_type_Xua, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    this.a.a.a.post(new xud(this));
+    QLog.d("EditLocalVideoActivity", 2, "onDownloadFailed");
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    QLog.d("EditLocalVideoActivity", 2, "onDownloadProgress = totalSize=" + paramLong + "  progress=" + paramFloat);
+    EditLocalVideoActivity.a(this.a.a).setProgress((int)(100.0F * paramFloat));
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    this.a.a.a.post(new xue(this));
+    QLog.d("EditLocalVideoActivity", 2, "onDownloadSucceed：" + EditLocalVideoActivity.d(this.a.a));
   }
 }
 

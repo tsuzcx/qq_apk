@@ -1,24 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppJumpManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
 
 public class mdd
-  implements AbsListView.OnScrollListener
+  implements Runnable
 {
-  public mdd(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mdd(OrientationDetector paramOrientationDetector, Activity paramActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    if ((VideoFeedsPlayActivity.j(this.a)) && (paramInt == 1)) {
-      VideoFeedsPlayActivity.b(this.a);
-    }
-    if ((VideoFeedsPlayActivity.a(this.a) != null) && (paramInt == 1)) {
-      VideoFeedsPlayActivity.a(this.a).a(1);
-    }
+    OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, this.jdField_a_of_type_AndroidAppActivity.getRequestedOrientation());
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,47 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.OnApolloViewListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import java.util.HashMap;
+import java.util.List;
 
 public class ymv
-  implements Runnable
+  implements QvipSpecialSoundManager.CallBack
 {
-  private int jdField_a_of_type_Int;
+  public ymv(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin, String paramString) {}
   
-  public ymv(ApolloSurfaceView paramApolloSurfaceView) {}
-  
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = ApolloSurfaceView.access$601(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView);
-  }
-  
-  public void run()
-  {
-    if (ApolloSurfaceView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView) == null) {}
-    OnApolloViewListener localOnApolloViewListener;
-    do
+    if (paramBoolean) {}
+    try
     {
-      do
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      return;
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
       {
-        do
-        {
-          return;
-          localOnApolloViewListener = (OnApolloViewListener)ApolloSurfaceView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView).get();
-        } while (localOnApolloViewListener == null);
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloSurfaceView", 2, "CheckForLongPress onLongClick");
-        }
-      } while (this.jdField_a_of_type_Int != ApolloSurfaceView.access$201(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView));
-      ApolloSurfaceView.access$302(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, true);
-      ApolloSurfaceView.access$401(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, 2);
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mApolloId)) || (ApolloSurfaceView.access$500(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView) < 0) || (localOnApolloViewListener == null));
-    localOnApolloViewListener.onNotifyLongTouch(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mApolloId);
+        VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ymv
  * JD-Core Version:    0.7.0.1
  */

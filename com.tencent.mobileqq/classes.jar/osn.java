@@ -1,30 +1,18 @@
-import com.tencent.biz.qrcode.activity.LoginManagerActivity;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.troop.model.VidToGroupInfoPuller;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class osn
-  extends DownloadListener
+  extends SimpleJob
 {
-  public osn(LoginManagerActivity paramLoginManagerActivity) {}
+  public osn(VidToGroupInfoPuller paramVidToGroupInfoPuller) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    LoginManagerActivity.a(this.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginManagerActivity", 2, "downloadTimZipFile cancel");
-    }
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    LoginManagerActivity.a(this.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginManagerActivity", 2, "downloadTimZipFile onDone status: " + paramDownloadTask.a() + ", errMsg :" + paramDownloadTask.b + " code :" + paramDownloadTask.a);
-    }
-    if (paramDownloadTask.a() == 3) {
-      this.a.runOnUiThread(new oso(this));
-    }
+    this.a.b();
+    return null;
   }
 }
 

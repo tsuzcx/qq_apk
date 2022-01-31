@@ -1,17 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
 
 public class xqr
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xqr(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
+  public xqr(RecentOptPopBar paramRecentOptPopBar) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.b(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    RecentOptPopBar.a(this.a).getLayoutParams().height = i;
+    RecentOptPopBar.a(this.a).requestLayout();
   }
 }
 

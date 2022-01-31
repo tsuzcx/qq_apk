@@ -1,39 +1,24 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-public class adxn
-  extends DownloadListener
+public final class adxn
+  implements HiBoomFont.HiBoomFontDownloader
 {
-  public adxn(UiApiPlugin paramUiApiPlugin, String paramString) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public String a()
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
+    return AppConstants.aK + ".hiboom_font/";
+  }
+  
+  public void a(int paramInt)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((VasQuickUpdateManager)localAppRuntime.getManager(183)).a(5L, "font.hifontQQ.android." + paramInt, "HiBoomDownloader");
     }
-    if (paramDownloadTask.a == 0)
-    {
-      paramDownloadTask = new File(AbsDownloader.d(this.jdField_a_of_type_JavaLangString));
-      if (paramDownloadTask.exists())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UiApiPlugin", 2, "shareImageToAIO->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
-        }
-        localActivity.runOnUiThread(new adxo(this, paramDownloadTask));
-        return;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("UiApiPlugin", 2, "shareImageToAIO->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
-    }
-    localActivity.runOnUiThread(new adxp(this));
   }
 }
 

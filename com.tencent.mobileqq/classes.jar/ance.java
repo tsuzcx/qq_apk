@@ -1,33 +1,135 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PhotoParam;
 
-public class ance
-  implements MediaPlayer.OnCompletionListener
+public final class ance
+  implements Parcelable.Creator
 {
-  public ance(QzoneAudioRecordPlugin paramQzoneAudioRecordPlugin) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public PhotoParam a(Parcel paramParcel)
   {
-    QzoneAudioRecordPlugin.a(this.a, null);
-    paramMediaPlayer = new JSONObject();
-    JSONObject localJSONObject = new JSONObject();
-    try
+    boolean bool2 = true;
+    PhotoParam localPhotoParam = new PhotoParam();
+    localPhotoParam.jdField_a_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_b_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_c_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_d_of_type_Long = paramParcel.readLong();
+    localPhotoParam.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localPhotoParam.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localPhotoParam.jdField_a_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_b_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_c_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_d_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_e_of_type_Int = paramParcel.readInt();
+    localPhotoParam.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
     {
-      localJSONObject.put("stopped", 1);
-      localJSONObject.put("errorcode", 0);
-      localJSONObject.put("audioClientKey", QzoneAudioRecordPlugin.a(this.a));
-      this.a.a.dispatchJsEvent("QzoneJSBridgeQzoneAudioPlugin_PlayState", localJSONObject, paramMediaPlayer);
-      return;
+      bool1 = true;
+      localPhotoParam.jdField_a_of_type_Boolean = bool1;
+      localPhotoParam.jdField_f_of_type_Int = paramParcel.readInt();
+      localPhotoParam.jdField_g_of_type_Int = paramParcel.readInt();
+      localPhotoParam.jdField_d_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_e_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_g_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      localPhotoParam.jdField_h_of_type_Int = paramParcel.readInt();
+      localPhotoParam.jdField_a_of_type_JavaUtilMap = paramParcel.readHashMap(getClass().getClassLoader());
+      localPhotoParam.jdField_i_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readInt() != 1) {
+        break label438;
+      }
+      bool1 = true;
+      label242:
+      localPhotoParam.jdField_b_of_type_Boolean = bool1;
+      localPhotoParam.jdField_i_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label443;
+      }
+      bool1 = true;
+      label267:
+      localPhotoParam.jdField_c_of_type_Boolean = bool1;
+      localPhotoParam.jdField_j_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readInt() != 1) {
+        break label448;
+      }
+      bool1 = true;
+      label292:
+      localPhotoParam.jdField_d_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label453;
+      }
+      bool1 = true;
+      label308:
+      localPhotoParam.jdField_e_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label458;
+      }
+      bool1 = true;
+      label324:
+      localPhotoParam.jdField_f_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label463;
+      }
+      bool1 = true;
+      label340:
+      localPhotoParam.jdField_g_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label468;
+      }
+      bool1 = true;
+      label356:
+      localPhotoParam.jdField_h_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label473;
+      }
+      bool1 = true;
+      label372:
+      localPhotoParam.jdField_i_of_type_Boolean = bool1;
+      localPhotoParam.jdField_j_of_type_Int = paramParcel.readInt();
+      localPhotoParam.jdField_e_of_type_Long = paramParcel.readLong();
+      localPhotoParam.k = paramParcel.readString();
+      localPhotoParam.jdField_f_of_type_Long = paramParcel.readLong();
+      if (paramParcel.readInt() != 1) {
+        break label478;
+      }
     }
-    catch (JSONException paramMediaPlayer)
+    label438:
+    label443:
+    label448:
+    label453:
+    label458:
+    label463:
+    label468:
+    label473:
+    label478:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      QLog.w("QzoneVoiceRecordPlugin", 1, "args is null or empty");
+      localPhotoParam.jdField_j_of_type_Boolean = bool1;
+      return localPhotoParam;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label242;
+      bool1 = false;
+      break label267;
+      bool1 = false;
+      break label292;
+      bool1 = false;
+      break label308;
+      bool1 = false;
+      break label324;
+      bool1 = false;
+      break label340;
+      bool1 = false;
+      break label356;
+      bool1 = false;
+      break label372;
     }
+  }
+  
+  public PhotoParam[] a(int paramInt)
+  {
+    return null;
   }
 }
 

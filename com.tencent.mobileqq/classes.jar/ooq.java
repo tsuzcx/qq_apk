@@ -1,29 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ooq
-  implements DownloadParams.DecodeHandler
+public class ooq
+  implements Runnable
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ooq(DoodleTextureView paramDoodleTextureView) {}
+  
+  public void run()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    if (this.a.a != null)
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return UIUtils.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+      this.a.a.g();
+      PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.a.a(102);
+      if (localPersonalityOperator != null) {
+        localPersonalityOperator.b();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DoodleTextureView", 2, "onDestroy end");
+    }
   }
 }
 

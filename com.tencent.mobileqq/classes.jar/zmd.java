@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.app.RedpointHandler;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class zmd
-  implements Runnable
+public final class zmd
+  implements DialogInterface.OnClickListener
 {
-  public zmd(RedpointHandler paramRedpointHandler, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RedpointHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppRedpointHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
+    paramDialogInterface.dismiss();
   }
 }
 

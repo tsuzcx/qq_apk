@@ -1,12 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.vas.ClubContentJsonTask;
 
 public class svo
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public InterestLabelTextView a;
+  public svo(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  
+  public void run()
+  {
+    ClubContentJsonTask.b(this.a.app);
+  }
 }
 
 

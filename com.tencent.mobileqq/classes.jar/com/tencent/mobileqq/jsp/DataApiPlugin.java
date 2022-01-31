@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import advx;
-import adwb;
+import aeeh;
+import aeel;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -49,7 +49,7 @@ public class DataApiPlugin
   
   public DataApiPlugin()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new advx(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new aeeh(this);
     this.mPluginNameSpace = "data";
   }
   
@@ -330,7 +330,7 @@ public class DataApiPlugin
       {
         localObject1 = new WtloginHelper(this.mRuntime.a().getApplication());
         ((WtloginHelper)localObject1).setCallSource(30);
-        ((WtloginHelper)localObject1).SetListener(new adwb(this, str4, str2, str1, paramString));
+        ((WtloginHelper)localObject1).SetListener(new aeel(this, str4, str2, str1, paramString));
         ((WtloginHelper)localObject1).GetStWithoutPasswd(str3, 16L, 16L, 1L, i, (WUserSigInfo)localObject2);
         return;
       }
@@ -497,7 +497,7 @@ public class DataApiPlugin
     //   0: ldc 26
     //   2: aload_3
     //   3: invokevirtual 346	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   6: ifeq +5092 -> 5098
+    //   6: ifeq +5230 -> 5236
     //   9: ldc_w 510
     //   12: aload 4
     //   14: invokevirtual 346	java/lang/String:equals	(Ljava/lang/Object;)Z
@@ -521,11 +521,11 @@ public class DataApiPlugin
     //   52: invokevirtual 328	com/tencent/biz/pubaccount/CustomWebView:getUrl	()Ljava/lang/String;
     //   55: astore 5
     //   57: aload 5
-    //   59: ifnull +5094 -> 5153
+    //   59: ifnull +5232 -> 5291
     //   62: aload 5
     //   64: ldc_w 512
     //   67: invokevirtual 515	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   70: ifeq +5083 -> 5153
+    //   70: ifeq +5221 -> 5291
     //   73: aload 5
     //   75: invokestatic 519	com/tencent/biz/common/offline/HtmlOffline:c	(Ljava/lang/String;)Ljava/lang/String;
     //   78: astore 5
@@ -619,7 +619,7 @@ public class DataApiPlugin
     //   276: astore_1
     //   277: aload_1
     //   278: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   281: ifeq +4867 -> 5148
+    //   281: ifeq +5005 -> 5286
     //   284: invokestatic 547	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   287: invokevirtual 553	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
     //   290: astore_2
@@ -645,12 +645,12 @@ public class DataApiPlugin
     //   330: invokevirtual 569	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   333: astore_2
     //   334: aload_2
-    //   335: ifnull +4807 -> 5142
+    //   335: ifnull +4945 -> 5280
     //   338: aload_2
     //   339: astore_3
     //   340: aload_2
     //   341: invokeinterface 574 1 0
-    //   346: ifeq +4796 -> 5142
+    //   346: ifeq +4934 -> 5280
     //   349: aload_2
     //   350: astore_3
     //   351: aload_2
@@ -663,7 +663,7 @@ public class DataApiPlugin
     //   369: astore_3
     //   370: aload 4
     //   372: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   375: ifne +4764 -> 5139
+    //   375: ifne +4902 -> 5277
     //   378: aload_2
     //   379: astore_3
     //   380: new 137	java/lang/String
@@ -1022,13 +1022,13 @@ public class DataApiPlugin
     //   1165: aload 4
     //   1167: invokevirtual 346	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1170: ifeq +25 -> 1195
-    //   1173: new 637	advy
+    //   1173: new 637	aeei
     //   1176: dup
     //   1177: aload_0
     //   1178: aload 5
     //   1180: iconst_0
     //   1181: aaload
-    //   1182: invokespecial 640	advy:<init>	(Lcom/tencent/mobileqq/jsp/DataApiPlugin;Ljava/lang/String;)V
+    //   1182: invokespecial 640	aeei:<init>	(Lcom/tencent/mobileqq/jsp/DataApiPlugin;Ljava/lang/String;)V
     //   1185: bipush 8
     //   1187: aconst_null
     //   1188: iconst_1
@@ -1248,7 +1248,7 @@ public class DataApiPlugin
     //   1645: ifne +36 -> 1681
     //   1648: aload 4
     //   1650: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1653: ifne +3503 -> 5156
+    //   1653: ifne +3641 -> 5294
     //   1656: aload_0
     //   1657: aload 4
     //   1659: iconst_2
@@ -1262,7 +1262,7 @@ public class DataApiPlugin
     //   1671: ldc_w 735
     //   1674: aastore
     //   1675: invokevirtual 142	com/tencent/mobileqq/jsp/DataApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   1678: goto +3478 -> 5156
+    //   1678: goto +3616 -> 5294
     //   1681: aconst_null
     //   1682: astore_1
     //   1683: aload 5
@@ -1364,7 +1364,7 @@ public class DataApiPlugin
     //   1904: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1907: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1910: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1913: new 773	advz
+    //   1913: new 773	aeej
     //   1916: dup
     //   1917: aload_0
     //   1918: aload_3
@@ -1372,7 +1372,7 @@ public class DataApiPlugin
     //   1920: aload_1
     //   1921: aload 5
     //   1923: aload 4
-    //   1925: invokespecial 776	advz:<init>	(Lcom/tencent/mobileqq/jsp/DataApiPlugin;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;Ljava/lang/String;)V
+    //   1925: invokespecial 776	aeej:<init>	(Lcom/tencent/mobileqq/jsp/DataApiPlugin;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;Ljava/lang/String;)V
     //   1928: iconst_5
     //   1929: aconst_null
     //   1930: iconst_1
@@ -1480,7 +1480,7 @@ public class DataApiPlugin
     //   2130: invokevirtual 129	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   2133: astore_1
     //   2134: aload_2
-    //   2135: ifnonnull +3001 -> 5136
+    //   2135: ifnonnull +3139 -> 5274
     //   2138: ldc_w 792
     //   2141: astore_2
     //   2142: invokestatic 547	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
@@ -1552,12 +1552,12 @@ public class DataApiPlugin
     //   2274: checkcast 805	android/text/ClipboardManager
     //   2277: astore_1
     //   2278: aload_1
-    //   2279: ifnull +2850 -> 5129
+    //   2279: ifnull +2988 -> 5267
     //   2282: aload_1
     //   2283: invokevirtual 819	android/text/ClipboardManager:getText	()Ljava/lang/CharSequence;
     //   2286: astore_1
     //   2287: aload_1
-    //   2288: ifnull +2841 -> 5129
+    //   2288: ifnull +2979 -> 5267
     //   2291: aload_1
     //   2292: invokeinterface 822 1 0
     //   2297: astore_1
@@ -1636,7 +1636,7 @@ public class DataApiPlugin
     //   2448: astore_1
     //   2449: aload_1
     //   2450: instanceof 839
-    //   2453: ifeq +2671 -> 5124
+    //   2453: ifeq +2809 -> 5262
     //   2456: aload_1
     //   2457: checkcast 839	com/tencent/mobileqq/app/QQAppInterface
     //   2460: astore_1
@@ -2076,7 +2076,7 @@ public class DataApiPlugin
     //   3397: astore_1
     //   3398: aload_1
     //   3399: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   3402: ifne +1716 -> 5118
+    //   3402: ifne +1854 -> 5256
     //   3405: aload_1
     //   3406: invokevirtual 953	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   3409: astore 4
@@ -2085,10 +2085,10 @@ public class DataApiPlugin
     //   3415: invokevirtual 181	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
     //   3418: astore_2
     //   3419: aload_2
-    //   3420: ifnull +1698 -> 5118
+    //   3420: ifnull +1836 -> 5256
     //   3423: aload_2
     //   3424: invokevirtual 186	com/tencent/common/app/AppInterface:isLogin	()Z
-    //   3427: ifeq +1691 -> 5118
+    //   3427: ifeq +1829 -> 5256
     //   3430: aload_2
     //   3431: invokevirtual 189	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
     //   3434: astore_1
@@ -2109,7 +2109,7 @@ public class DataApiPlugin
     //   3464: astore 5
     //   3466: aload 13
     //   3468: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   3471: ifne +1647 -> 5118
+    //   3471: ifne +1785 -> 5256
     //   3474: new 78	java/lang/StringBuilder
     //   3477: dup
     //   3478: bipush 111
@@ -2222,7 +2222,7 @@ public class DataApiPlugin
     //   3725: aload_2
     //   3726: invokevirtual 246	com/tencent/smtt/sdk/CookieManager:setCookie	(Ljava/lang/String;Ljava/lang/String;)V
     //   3729: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3732: ifeq +1426 -> 5158
+    //   3732: ifeq +1564 -> 5296
     //   3735: ldc 213
     //   3737: iconst_2
     //   3738: new 78	java/lang/StringBuilder
@@ -2254,7 +2254,7 @@ public class DataApiPlugin
     //   3800: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3803: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   3806: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   3809: goto +1349 -> 5158
+    //   3809: goto +1487 -> 5296
     //   3812: aload_3
     //   3813: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   3816: ifne -2746 -> 1070
@@ -2550,7 +2550,7 @@ public class DataApiPlugin
     //   4418: aload_1
     //   4419: invokevirtual 522	com/tencent/biz/AuthorizeConfig:a	(Ljava/lang/String;)Ljava/lang/String;
     //   4422: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4425: ifne +739 -> 5164
+    //   4425: ifne +877 -> 5302
     //   4428: iconst_1
     //   4429: istore 9
     //   4431: goto -97 -> 4334
@@ -2563,7 +2563,7 @@ public class DataApiPlugin
     //   4449: aload_1
     //   4450: invokevirtual 370	com/tencent/biz/AuthorizeConfig:d	(Ljava/lang/String;)Ljava/lang/String;
     //   4453: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4456: ifne +714 -> 5170
+    //   4456: ifne +852 -> 5308
     //   4459: iconst_1
     //   4460: istore 9
     //   4462: goto -128 -> 4334
@@ -2591,7 +2591,7 @@ public class DataApiPlugin
     //   4513: aload_1
     //   4514: invokevirtual 386	com/tencent/biz/AuthorizeConfig:e	(Ljava/lang/String;)Ljava/lang/String;
     //   4517: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4520: ifne +656 -> 5176
+    //   4520: ifne +794 -> 5314
     //   4523: iconst_1
     //   4524: istore 9
     //   4526: goto -192 -> 4334
@@ -2606,7 +2606,7 @@ public class DataApiPlugin
     //   4548: aload_1
     //   4549: invokevirtual 525	com/tencent/biz/AuthorizeConfig:f	(Ljava/lang/String;)Ljava/lang/String;
     //   4552: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4555: ifne +627 -> 5182
+    //   4555: ifne +765 -> 5320
     //   4558: iconst_1
     //   4559: istore 9
     //   4561: goto -227 -> 4334
@@ -2806,112 +2806,179 @@ public class DataApiPlugin
     //   4981: ldc_w 1085
     //   4984: aload 4
     //   4986: invokevirtual 346	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   4989: ifeq -3919 -> 1070
-    //   4992: new 51	org/json/JSONObject
-    //   4995: dup
-    //   4996: aload 5
-    //   4998: iconst_0
-    //   4999: aaload
-    //   5000: invokespecial 54	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   5003: ldc_w 1087
-    //   5006: invokevirtual 129	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   5009: astore_1
-    //   5010: aload_0
-    //   5011: getfield 1030	com/tencent/mobileqq/jsp/DataApiPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
-    //   5014: ifnonnull +17 -> 5031
-    //   5017: aload_0
-    //   5018: invokestatic 1035	com/tencent/biz/troop/TroopMemberApiClient:a	()Lcom/tencent/biz/troop/TroopMemberApiClient;
-    //   5021: putfield 1030	com/tencent/mobileqq/jsp/DataApiPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
-    //   5024: aload_0
-    //   5025: getfield 1030	com/tencent/mobileqq/jsp/DataApiPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
-    //   5028: invokevirtual 1037	com/tencent/biz/troop/TroopMemberApiClient:a	()V
-    //   5031: aload_0
-    //   5032: getfield 1030	com/tencent/mobileqq/jsp/DataApiPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
-    //   5035: iconst_1
-    //   5036: aload_1
-    //   5037: invokevirtual 1090	com/tencent/biz/troop/TroopMemberApiClient:a	(ZLjava/lang/String;)V
-    //   5040: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5043: ifeq -3973 -> 1070
-    //   5046: ldc 213
-    //   5048: iconst_2
-    //   5049: new 78	java/lang/StringBuilder
-    //   5052: dup
-    //   5053: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   5056: ldc_w 1092
-    //   5059: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5062: aload 5
-    //   5064: iconst_0
-    //   5065: aaload
-    //   5066: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   5069: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   5072: invokestatic 848	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   5075: goto -4005 -> 1070
-    //   5078: astore_1
-    //   5079: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5082: ifeq -4012 -> 1070
-    //   5085: ldc 213
-    //   5087: iconst_2
-    //   5088: ldc_w 1094
-    //   5091: aload_1
-    //   5092: invokestatic 675	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   5095: goto -4025 -> 1070
-    //   5098: iconst_0
-    //   5099: ireturn
-    //   5100: astore_2
-    //   5101: goto -2885 -> 2216
-    //   5104: astore_1
-    //   5105: goto -3955 -> 1150
-    //   5108: astore 4
-    //   5110: goto -4028 -> 1082
-    //   5113: astore 4
-    //   5115: goto -4033 -> 1082
-    //   5118: iconst_1
-    //   5119: istore 6
-    //   5121: goto -1309 -> 3812
-    //   5124: aconst_null
-    //   5125: astore_1
-    //   5126: goto -2665 -> 2461
-    //   5129: ldc_w 792
-    //   5132: astore_1
-    //   5133: goto -2835 -> 2298
-    //   5136: goto -2994 -> 2142
-    //   5139: goto -4736 -> 403
-    //   5142: aload_1
-    //   5143: astore 4
-    //   5145: goto -4700 -> 445
-    //   5148: aload_1
-    //   5149: astore_3
-    //   5150: goto -4689 -> 461
-    //   5153: goto -5073 -> 80
-    //   5156: iconst_1
-    //   5157: ireturn
-    //   5158: iconst_0
-    //   5159: istore 6
-    //   5161: goto -1349 -> 3812
-    //   5164: iconst_0
-    //   5165: istore 9
-    //   5167: goto -833 -> 4334
-    //   5170: iconst_0
-    //   5171: istore 9
-    //   5173: goto -839 -> 4334
-    //   5176: iconst_0
-    //   5177: istore 9
-    //   5179: goto -845 -> 4334
-    //   5182: iconst_0
-    //   5183: istore 9
-    //   5185: goto -851 -> 4334
+    //   4989: ifeq +130 -> 5119
+    //   4992: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   4995: ifeq +30 -> 5025
+    //   4998: ldc 213
+    //   5000: iconst_2
+    //   5001: new 78	java/lang/StringBuilder
+    //   5004: dup
+    //   5005: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   5008: ldc_w 1087
+    //   5011: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5014: aload 5
+    //   5016: invokevirtual 997	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   5019: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5022: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5025: aload 5
+    //   5027: ifnull -3957 -> 1070
+    //   5030: aload 5
+    //   5032: arraylength
+    //   5033: ifle -3963 -> 1070
+    //   5036: new 51	org/json/JSONObject
+    //   5039: dup
+    //   5040: aload 5
+    //   5042: iconst_0
+    //   5043: aaload
+    //   5044: invokespecial 54	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   5047: astore_1
+    //   5048: aload_1
+    //   5049: ldc_w 1089
+    //   5052: invokevirtual 129	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   5055: astore_2
+    //   5056: aload_1
+    //   5057: ldc 125
+    //   5059: invokevirtual 129	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   5062: astore_1
+    //   5063: aload_1
+    //   5064: invokestatic 135	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   5067: ifne -3997 -> 1070
+    //   5070: aload_2
+    //   5071: invokestatic 1090	com/tencent/mobileqq/nearby/NearbyURLSafeUtil:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   5074: astore_2
+    //   5075: new 51	org/json/JSONObject
+    //   5078: dup
+    //   5079: invokespecial 278	org/json/JSONObject:<init>	()V
+    //   5082: astore_3
+    //   5083: aload_3
+    //   5084: ldc_w 1092
+    //   5087: aload_2
+    //   5088: invokevirtual 291	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   5091: pop
+    //   5092: aload_0
+    //   5093: aload_1
+    //   5094: iconst_1
+    //   5095: anewarray 137	java/lang/String
+    //   5098: dup
+    //   5099: iconst_0
+    //   5100: aload_3
+    //   5101: invokevirtual 292	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   5104: aastore
+    //   5105: invokevirtual 142	com/tencent/mobileqq/jsp/DataApiPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   5108: goto -4038 -> 1070
+    //   5111: astore_1
+    //   5112: aload_1
+    //   5113: invokevirtual 633	org/json/JSONException:printStackTrace	()V
+    //   5116: goto -4046 -> 1070
+    //   5119: ldc_w 1094
+    //   5122: aload 4
+    //   5124: invokevirtual 346	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   5127: ifeq -4057 -> 1070
+    //   5130: new 51	org/json/JSONObject
+    //   5133: dup
+    //   5134: aload 5
+    //   5136: iconst_0
+    //   5137: aaload
+    //   5138: invokespecial 54	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   5141: ldc_w 1096
+    //   5144: invokevirtual 129	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   5147: astore_1
+    //   5148: aload_0
+    //   5149: getfield 1030	com/tencent/mobileqq/jsp/DataApiPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   5152: ifnonnull +17 -> 5169
+    //   5155: aload_0
+    //   5156: invokestatic 1035	com/tencent/biz/troop/TroopMemberApiClient:a	()Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   5159: putfield 1030	com/tencent/mobileqq/jsp/DataApiPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   5162: aload_0
+    //   5163: getfield 1030	com/tencent/mobileqq/jsp/DataApiPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   5166: invokevirtual 1037	com/tencent/biz/troop/TroopMemberApiClient:a	()V
+    //   5169: aload_0
+    //   5170: getfield 1030	com/tencent/mobileqq/jsp/DataApiPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   5173: iconst_1
+    //   5174: aload_1
+    //   5175: invokevirtual 1099	com/tencent/biz/troop/TroopMemberApiClient:a	(ZLjava/lang/String;)V
+    //   5178: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5181: ifeq -4111 -> 1070
+    //   5184: ldc 213
+    //   5186: iconst_2
+    //   5187: new 78	java/lang/StringBuilder
+    //   5190: dup
+    //   5191: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   5194: ldc_w 1101
+    //   5197: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5200: aload 5
+    //   5202: iconst_0
+    //   5203: aaload
+    //   5204: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   5207: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   5210: invokestatic 848	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   5213: goto -4143 -> 1070
+    //   5216: astore_1
+    //   5217: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5220: ifeq -4150 -> 1070
+    //   5223: ldc 213
+    //   5225: iconst_2
+    //   5226: ldc_w 1103
+    //   5229: aload_1
+    //   5230: invokestatic 675	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   5233: goto -4163 -> 1070
+    //   5236: iconst_0
+    //   5237: ireturn
+    //   5238: astore_2
+    //   5239: goto -3023 -> 2216
+    //   5242: astore_1
+    //   5243: goto -4093 -> 1150
+    //   5246: astore 4
+    //   5248: goto -4166 -> 1082
+    //   5251: astore 4
+    //   5253: goto -4171 -> 1082
+    //   5256: iconst_1
+    //   5257: istore 6
+    //   5259: goto -1447 -> 3812
+    //   5262: aconst_null
+    //   5263: astore_1
+    //   5264: goto -2803 -> 2461
+    //   5267: ldc_w 792
+    //   5270: astore_1
+    //   5271: goto -2973 -> 2298
+    //   5274: goto -3132 -> 2142
+    //   5277: goto -4874 -> 403
+    //   5280: aload_1
+    //   5281: astore 4
+    //   5283: goto -4838 -> 445
+    //   5286: aload_1
+    //   5287: astore_3
+    //   5288: goto -4827 -> 461
+    //   5291: goto -5211 -> 80
+    //   5294: iconst_1
+    //   5295: ireturn
+    //   5296: iconst_0
+    //   5297: istore 6
+    //   5299: goto -1487 -> 3812
+    //   5302: iconst_0
+    //   5303: istore 9
+    //   5305: goto -971 -> 4334
+    //   5308: iconst_0
+    //   5309: istore 9
+    //   5311: goto -977 -> 4334
+    //   5314: iconst_0
+    //   5315: istore 9
+    //   5317: goto -983 -> 4334
+    //   5320: iconst_0
+    //   5321: istore 9
+    //   5323: goto -989 -> 4334
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	5188	0	this	DataApiPlugin
-    //   0	5188	1	paramJsBridgeListener	com.tencent.mobileqq.webview.swift.JsBridgeListener
-    //   0	5188	2	paramString1	String
-    //   0	5188	3	paramString2	String
-    //   0	5188	4	paramString3	String
-    //   0	5188	5	paramVarArgs	String[]
-    //   161	4999	6	i	int
+    //   0	5326	0	this	DataApiPlugin
+    //   0	5326	1	paramJsBridgeListener	com.tencent.mobileqq.webview.swift.JsBridgeListener
+    //   0	5326	2	paramString1	String
+    //   0	5326	3	paramString2	String
+    //   0	5326	4	paramString3	String
+    //   0	5326	5	paramVarArgs	String[]
+    //   161	5137	6	i	int
     //   2697	316	7	j	int
     //   2707	136	8	k	int
-    //   172	5012	9	bool1	boolean
+    //   172	5150	9	bool1	boolean
     //   2894	1636	10	bool2	boolean
     //   43	3679	11	localObject1	Object
     //   225	3567	12	localObject2	Object
@@ -3029,24 +3096,25 @@ public class DataApiPlugin
     //   4766	4793	4835	org/json/JSONException
     //   4797	4832	4835	org/json/JSONException
     //   4898	4970	4973	org/json/JSONException
-    //   4992	5031	5078	java/lang/Exception
-    //   5031	5075	5078	java/lang/Exception
-    //   2142	2155	5100	org/json/JSONException
-    //   2159	2186	5100	org/json/JSONException
-    //   340	349	5104	finally
-    //   351	368	5104	finally
-    //   370	378	5104	finally
-    //   380	400	5104	finally
-    //   408	414	5104	finally
-    //   416	442	5104	finally
-    //   1084	1090	5104	finally
-    //   1092	1122	5104	finally
-    //   340	349	5108	java/lang/Exception
-    //   351	368	5108	java/lang/Exception
-    //   370	378	5108	java/lang/Exception
-    //   380	400	5108	java/lang/Exception
-    //   408	414	5113	java/lang/Exception
-    //   416	442	5113	java/lang/Exception
+    //   5036	5108	5111	org/json/JSONException
+    //   5130	5169	5216	java/lang/Exception
+    //   5169	5213	5216	java/lang/Exception
+    //   2142	2155	5238	org/json/JSONException
+    //   2159	2186	5238	org/json/JSONException
+    //   340	349	5242	finally
+    //   351	368	5242	finally
+    //   370	378	5242	finally
+    //   380	400	5242	finally
+    //   408	414	5242	finally
+    //   416	442	5242	finally
+    //   1084	1090	5242	finally
+    //   1092	1122	5242	finally
+    //   340	349	5246	java/lang/Exception
+    //   351	368	5246	java/lang/Exception
+    //   370	378	5246	java/lang/Exception
+    //   380	400	5246	java/lang/Exception
+    //   408	414	5251	java/lang/Exception
+    //   416	442	5251	java/lang/Exception
   }
   
   protected void onCreate()

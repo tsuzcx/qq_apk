@@ -1,21 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.view.OrientationEventListener;
+import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
 
 public class mdf
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public mdf(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mdf(OrientationDetector paramOrientationDetector, boolean paramBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    VideoFeedsPlayActivity.b(this.a).startAnimation(this.a.b);
+    for (;;)
+    {
+      synchronized (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector))
+      {
+        if (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector) == null) {
+          return;
+        }
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).canDetectOrientation()) {
+            OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).enable();
+          }
+          return;
+        }
+      }
+      OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).disable();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

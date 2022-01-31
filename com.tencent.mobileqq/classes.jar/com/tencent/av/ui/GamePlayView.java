@@ -13,11 +13,11 @@ import com.tencent.av.gameplay.ARNativeBridge;
 import com.tencent.mobileqq.armap.ARGLSurfaceView;
 import com.tencent.mobileqq.armap.ARGLSurfaceView.SurfaceStateListener;
 import com.tencent.qphone.base.util.QLog;
-import juv;
-import juw;
-import jux;
-import juy;
-import juz;
+import jwz;
+import jxa;
+import jxb;
+import jxc;
+import jxd;
 
 public class GamePlayView
   extends FrameLayout
@@ -27,7 +27,7 @@ public class GamePlayView
   private Activity jdField_a_of_type_AndroidAppActivity;
   protected VideoAppInterface a;
   private ARNativeBridge jdField_a_of_type_ComTencentAvGameplayARNativeBridge;
-  ARGLSurfaceView.SurfaceStateListener jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView$SurfaceStateListener = new juv(this);
+  ARGLSurfaceView.SurfaceStateListener jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView$SurfaceStateListener = new jwz(this);
   private ARGLSurfaceView jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView;
   
   public GamePlayView(Context paramContext, AttributeSet paramAttributeSet)
@@ -43,14 +43,14 @@ public class GamePlayView
   
   public void a(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new juw(this, paramFloat1, paramFloat2, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new jxa(this, paramFloat1, paramFloat2, paramBoolean));
   }
   
   public void a(VideoAppInterface paramVideoAppInterface, Activity paramActivity, String paramString, int paramInt)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     AVLog.c("ARZimuTask_GamePlayView", "init strResPath = " + paramString + "  |  code = " + paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131365948));
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView = ((ARGLSurfaceView)findViewById(2131365953));
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentAvGameplayARNativeBridge = new ARNativeBridge();
     this.jdField_a_of_type_ComTencentAvGameplayARNativeBridge.native_updateResourcePath(paramString);
@@ -62,12 +62,12 @@ public class GamePlayView
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new juz(this, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new jxd(this, paramBoolean));
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new jux(this, paramArrayOfByte, paramInt1, paramInt2, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new jxb(this, paramArrayOfByte, paramInt1, paramInt2, paramBoolean));
   }
   
   public void b()
@@ -100,12 +100,12 @@ public class GamePlayView
   
   public void setDrawParticle(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new juy(this, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new jxc(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.GamePlayView
  * JD-Core Version:    0.7.0.1
  */

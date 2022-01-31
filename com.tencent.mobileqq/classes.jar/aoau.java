@@ -1,42 +1,24 @@
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.vas.VasApngUtil;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditSyncQzonePart;
 
-class aoau
-  implements Runnable
+public class aoau
+  implements View.OnClickListener
 {
-  aoau(aoat paramaoat, boolean paramBoolean) {}
+  public aoau(EditSyncQzonePart paramEditSyncQzonePart) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((QIMCommonLoadingView)this.jdField_a_of_type_Aoat.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
-    ((ImageView)this.jdField_a_of_type_Aoat.b.get()).setVisibility(0);
-    if (this.jdField_a_of_type_Boolean)
+    paramView = this.a;
+    if (!EditSyncQzonePart.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      URLDrawable localURLDrawable = VasApngUtil.a(BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_Aoat.jdField_a_of_type_JavaLangString, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
-      if (localURLDrawable != null)
-      {
-        ((ImageView)this.jdField_a_of_type_Aoat.b.get()).setImageDrawable(localURLDrawable);
-        ((ImageView)this.jdField_a_of_type_Aoat.b.get()).setTag(2131362361, Boolean.valueOf(true));
-        if (localURLDrawable != null)
-        {
-          if (localURLDrawable.getStatus() != 1) {
-            localURLDrawable.restartDownload();
-          }
-          if (localURLDrawable.getStatus() == 1) {
-            this.jdField_a_of_type_Aoat.jdField_a_of_type_Aoaw.onLoadSuccessed((View)this.jdField_a_of_type_Aoat.b.get(), localURLDrawable);
-          }
-          ((ImageView)this.jdField_a_of_type_Aoat.b.get()).setImageDrawable(localURLDrawable);
-        }
-      }
+      EditSyncQzonePart.a(paramView, bool);
+      EditSyncQzonePart.a(this.a, EditSyncQzonePart.a(this.a));
+      StoryConfigManager.c(EditSyncQzonePart.a(this.a));
       return;
     }
-    ((ImageView)this.jdField_a_of_type_Aoat.b.get()).setImageDrawable(URLDrawableHelper.a());
   }
 }
 

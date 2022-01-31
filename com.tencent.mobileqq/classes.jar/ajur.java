@@ -1,23 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.TextView;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
 class ajur
-  implements Animation.AnimationListener
+  implements Runnable
 {
   ajur(ajuq paramajuq) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(100L);
-    this.a.a.startAnimation(paramAnimation);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
+    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.a.jdField_a_of_type_Boolean);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class wkv
+class wkv
   implements Runnable
 {
-  public wkv(RecommendTroopView paramRecommendTroopView) {}
+  wkv(wku paramwku) {}
   
   public void run()
   {
-    this.a.n();
+    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).b(this.a.a.getResources().getDimensionPixelSize(2131558448));
   }
 }
 

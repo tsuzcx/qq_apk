@@ -1,58 +1,23 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.mobileqq.armap.wealthgod.WealthGodInfo;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
 
-class abbg
-  implements Runnable
+public class abbg
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  abbg(abbf paramabbf) {}
+  public abbg(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder) {}
   
-  public void run()
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    int i = 0;
-    int j = 0;
-    if (ARMapActivity.a(this.a.a) != null)
+    if ((paramInt == 0) && (paramAppPathInfo.a != null))
     {
-      ARMapActivity.k(this.a.a, true);
-      ARMapActivity.a(this.a.a).setLoadStatus(0);
-      if (ARMapActivity.a(this.a.a) != null) {
-        ARMapActivity.a(this.a.a).b = System.currentTimeMillis();
-      }
-      ARMapActivity.o(this.a.a);
-      if (ARMapActivity.c(this.a.a) == 3)
-      {
-        ARMapActivity.a(this.a.a).b();
-        ARMapActivity.p(this.a.a);
-        if (j == 0) {
-          break label302;
-        }
-        this.a.a.n();
-      }
+      ArkAppCenter.a(paramAppPathInfo.a, new abbh(this));
+      paramString = ArkAppCenter.b(paramAppPathInfo.a);
+      ArkAppCenter.a().postToMainThread(new abbi(this, paramString));
     }
-    else
-    {
-      return;
-    }
-    if ((ARMapActivity.c(this.a.a) == 1) || (ARMapActivity.c(this.a.a) == 7) || ((ARMapActivity.c(this.a.a) == 4) && (ARMapActivity.a(this.a.a).a == 1))) {
-      i = 1;
-    }
-    for (;;)
-    {
-      j = i;
-      if (!this.a.a.f) {
-        break;
-      }
-      ARMapActivity.p(this.a.a);
-      j = i;
-      break;
-      if ((ARMapActivity.c(this.a.a) == 2) || ((ARMapActivity.c(this.a.a) == 4) && (ARMapActivity.a(this.a.a).a == 0))) {
-        ARMapActivity.a(this.a.a).b();
-      } else {
-        ARMapActivity.a(this.a.a).a();
-      }
-    }
-    label302:
-    ARMapActivity.a(this.a.a).d();
   }
 }
 

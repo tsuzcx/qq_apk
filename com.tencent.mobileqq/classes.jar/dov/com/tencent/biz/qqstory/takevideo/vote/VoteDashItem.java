@@ -3,8 +3,8 @@ package dov.com.tencent.biz.qqstory.takevideo.vote;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import aoff;
-import aofg;
+import aonx;
+import aony;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
 
 public class VoteDashItem
@@ -27,12 +27,12 @@ public class VoteDashItem
       i = 0;
       while (i < paramInt1 - paramInt2)
       {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aoff(this, paramVoteItem, paramView), i);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aonx(this, paramVoteItem, paramView), i);
         i += paramInt2;
       }
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aofg(this, paramVoteItem, paramBoolean, paramView, paramRunnable), i);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aony(this, paramVoteItem, paramBoolean, paramView, paramRunnable), i);
   }
 }
 

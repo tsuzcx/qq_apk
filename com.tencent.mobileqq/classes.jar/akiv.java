@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.utils.SecUtil;
 
-public class akiv
-  implements TVK_IMediaPlayer.OnCompletionListener
+class akiv
+  implements Runnable
 {
-  public akiv(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  akiv(akiu paramakiu, String paramString1, int paramInt, String paramString2, String paramString3) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "Completion video000");
+    this.jdField_a_of_type_Akiu.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    String str = SecUtil.getFileMd5(this.jdField_a_of_type_Akiu.a.a(this.jdField_a_of_type_JavaLangString));
+    if (!this.b.equalsIgnoreCase(str))
+    {
+      this.jdField_a_of_type_Akiu.a.a(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      return;
     }
-    paramTVK_IMediaPlayer.seekTo(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "Completion video");
-    }
+    this.jdField_a_of_type_Akiu.a.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akiv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,57 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView.MatrixTouchListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.StringUtil;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class mzj
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  private final PublicAccountImageView.MatrixTouchListener jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView$MatrixTouchListener;
+  public mzj(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, ArrayList paramArrayList, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
   
-  public mzj(PublicAccountImageView paramPublicAccountImageView, PublicAccountImageView.MatrixTouchListener paramMatrixTouchListener)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView$MatrixTouchListener = paramMatrixTouchListener;
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return false;
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          String str = UUID.randomUUID().toString();
+          str = "mqqpa://resourceid/" + str;
+          this.jdField_a_of_type_OrgJsonJSONArray.put(i, str);
+          CompressInfo localCompressInfo = new CompressInfo((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), 0);
+          localCompressInfo.f = 0;
+          CompressOperator.a(localCompressInfo);
+          if (!StringUtil.a(localCompressInfo.e)) {
+            PublicAccountH5AbilityPlugin.b.put(str, localCompressInfo.e);
+          } else {
+            PublicAccountH5AbilityPlugin.b.put(str, this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          }
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        return;
+      }
+      this.jdField_a_of_type_OrgJsonJSONObject.put("value", this.jdField_a_of_type_OrgJsonJSONArray);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 0);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "Success");
+      this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "album");
+      this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.callJs(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+      this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n = "";
+      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
+      return;
+      i += 1;
+    }
   }
 }
 

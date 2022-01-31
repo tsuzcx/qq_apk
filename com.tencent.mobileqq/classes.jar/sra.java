@@ -1,13 +1,35 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.EmoticonHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 public class sra
-  implements Runnable
+  implements DragSortListView.RemoveListener
 {
-  public sra(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sra(EmosmActivity paramEmosmActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.a.c();
+    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (!NetworkUtil.d(this.a))
+    {
+      localObject = new QQToast(this.a);
+      ((QQToast)localObject).a(2130838723);
+      ((QQToast)localObject).d(1500);
+      ((QQToast)localObject).a("无网络连接，删除失败");
+      ((QQToast)localObject).b(0);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131436110));
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    ((EmoticonHandler)this.a.app.a(12)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
+    URLDrawable.clearMemoryCache();
   }
 }
 

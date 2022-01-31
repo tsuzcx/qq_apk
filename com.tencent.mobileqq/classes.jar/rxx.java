@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 
-public final class rxx
-  implements View.OnClickListener
+class rxx
+  implements DialogInterface.OnClickListener
 {
-  public rxx(Toast paramToast) {}
+  rxx(rxu paramrxu, String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.cancel();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Rxu.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Rxu.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramDialogInterface);
+    VipUtils.a(this.jdField_a_of_type_Rxu.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(this.jdField_a_of_type_Rxu.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
   }
 }
 

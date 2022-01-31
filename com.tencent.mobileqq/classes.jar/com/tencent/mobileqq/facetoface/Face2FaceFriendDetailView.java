@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.facetoface;
 
-import aclq;
+import actx;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -25,13 +25,13 @@ public class Face2FaceFriendDetailView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364614);
-    this.b = findViewById(2131364615);
-    this.e = findViewById(2131364613);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364638);
+    this.b = findViewById(2131364639);
+    this.e = findViewById(2131364637);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       this.e.setPadding(AIOUtils.a(10.0F, this.e.getResources()), AIOUtils.a(15.0F, this.e.getResources()) + ImmersiveUtils.a(this.e.getContext()), AIOUtils.a(10.0F, this.e.getResources()), AIOUtils.a(15.0F, this.e.getResources()));
     }
-    this.e.setOnClickListener(new aclq(this));
+    this.e.setOnClickListener(new actx(this));
   }
   
   public void a(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView, Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, String paramString, HashMap paramHashMap, View.OnClickListener paramOnClickListener)
@@ -52,7 +52,7 @@ public class Face2FaceFriendDetailView
   public void d()
   {
     c();
-    EditText localEditText = (EditText)findViewById(2131364621);
+    EditText localEditText = (EditText)findViewById(2131364645);
     this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, localEditText.getText().toString());
     ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getSystemService("input_method")).hideSoftInputFromWindow(getWindowToken(), 0);
     this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.g();

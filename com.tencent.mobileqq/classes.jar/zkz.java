@@ -1,18 +1,14 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.FriendListHandler;
+import java.util.ArrayList;
 
 public class zkz
   implements Runnable
 {
-  public zkz(QQAppInterface paramQQAppInterface) {}
+  public zkz(FriendListHandler paramFriendListHandler, ArrayList paramArrayList1, String paramString, int paramInt1, int paramInt2, ArrayList paramArrayList2) {}
   
   public void run()
   {
-    AdvertisementVideoPreloadManager localAdvertisementVideoPreloadManager = (AdvertisementVideoPreloadManager)this.a.getManager(237);
-    if (localAdvertisementVideoPreloadManager != null) {
-      localAdvertisementVideoPreloadManager.a(1);
-    }
-    this.a.D();
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaUtilArrayList);
   }
 }
 

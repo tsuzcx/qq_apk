@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aobf;
-import aobg;
-import aobk;
+import aoka;
+import aokb;
+import aokf;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.flashchat.OnHolderItemClickListener;
@@ -30,7 +30,7 @@ public class EditTextPanel
   public static String a;
   int jdField_a_of_type_Int = -1;
   EditText jdField_a_of_type_AndroidWidgetEditText;
-  private DynamicTextConfigManager.IDynamicTextResDownloadCallback jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback = new aobg(this);
+  private DynamicTextConfigManager.IDynamicTextResDownloadCallback jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback = new aokb(this);
   public EditTextEffectView a;
   EditTextPanel.EditTextPanelListener jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel$EditTextPanelListener;
   int b = -1;
@@ -68,7 +68,7 @@ public class EditTextPanel
     if (paramInt >= 0)
     {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView.a(paramInt);
-      postDelayed(new aobf(this, paramInt), 200L);
+      postDelayed(new aoka(this, paramInt), 200L);
       this.c = paramInt;
       this.jdField_a_of_type_Int = paramInt;
     }
@@ -155,7 +155,7 @@ public class EditTextPanel
         }
         if (NetConnInfoCenter.isMobileConn())
         {
-          FMDialogUtil.a(paramView.getContext(), 2131439213, 2131439214, new aobk(this, localException, localDynamicTextConfigBean));
+          FMDialogUtil.a(paramView.getContext(), 2131439245, 2131439246, new aokf(this, localException, localDynamicTextConfigBean));
           return;
         }
         localException.a(localDynamicTextConfigBean, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback);

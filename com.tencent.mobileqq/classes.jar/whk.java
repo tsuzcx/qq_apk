@@ -1,25 +1,40 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.graphics.Rect;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleImageView;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class whk
-  implements Runnable
+  implements whl
 {
-  public whk(AddContactsView paramAddContactsView, String paramString, SharedPreferences paramSharedPreferences) {}
+  public whk(StickerBubbleListView paramStickerBubbleListView) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    List localList = AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView);
-    String str = AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView, localList);
-    if (!this.jdField_a_of_type_JavaLangString.equals(str))
+    if (((paramView instanceof StickerBubbleImageView)) && (paramView.getVisibility() == 0))
     {
-      AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView, localList);
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView), StringUtil.a(AddContactsView.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView), ",")).commit();
-      ThreadManager.getUIHandler().post(new whl(this, str));
+      ((StickerBubbleImageView)paramView).a();
+      if ((StickerBubbleListView.a(this.a) == null) || (StickerBubbleListView.a(this.a).get() != paramView)) {
+        StickerBubbleListView.a(this.a, new WeakReference((StickerBubbleImageView)paramView));
+      }
+      paramView = (View)paramView.getParent();
+      View localView = (View)paramView.getParent();
+      if (StickerBubbleListView.a(this.a) == null) {
+        StickerBubbleListView.a(this.a, new Rect());
+      }
+      Rect localRect = StickerBubbleListView.a(this.a);
+      int i = localView.getLeft();
+      int j = paramView.getLeft();
+      int k = localView.getTop();
+      int m = paramView.getTop();
+      int n = localView.getLeft();
+      int i1 = paramView.getRight();
+      int i2 = localView.getTop();
+      localRect.set(i + j, k + m, n + i1, paramView.getBottom() + i2);
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleListView", 2, "notifyItemViewTouchDown with rect: " + StickerBubbleListView.a(this.a));
+      }
     }
   }
 }

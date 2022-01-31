@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.hotpic;
 
-import adro;
-import adrp;
-import adrr;
-import adrs;
-import adrt;
-import adru;
-import adrw;
-import adry;
-import adrz;
-import adsa;
-import adsb;
-import adsc;
+import adzx;
+import adzy;
+import aeaa;
+import aeab;
+import aeac;
+import aead;
+import aeaf;
+import aeah;
+import aeai;
+import aeaj;
+import aeak;
+import aeal;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -68,8 +68,8 @@ public class PresenceInterfaceImpl
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
     this.jdField_b_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangRunnable = new adro(this);
-    this.jdField_b_of_type_JavaLangRunnable = new adrt(this);
+    this.jdField_a_of_type_JavaLangRunnable = new adzx(this);
+    this.jdField_b_of_type_JavaLangRunnable = new aeac(this);
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqHotpicVideoBaseItem = VideoBaseItem.a(paramContext, 1);
     this.jdField_a_of_type_ComTencentMobileqqHotpicVideoBaseItem.a(this);
@@ -110,7 +110,7 @@ public class PresenceInterfaceImpl
   
   private void n()
   {
-    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication(), new adsc(this));
+    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication(), new aeal(this));
   }
   
   public void a()
@@ -186,10 +186,10 @@ public class PresenceInterfaceImpl
         if ((paramInt != 0) || (a((QQAppInterface)localObject))) {
           break;
         }
-        DialogUtil.a(paramView.getContext(), 232, null, "非Wi-Fi下播放可能会消耗流量，是否确认播放？", new adru(this, (QQAppInterface)localObject), new adrw(this, (QQAppInterface)localObject)).show();
+        DialogUtil.a(paramView.getContext(), 232, null, "非Wi-Fi下播放可能会消耗流量，是否确认播放？", new aead(this, (QQAppInterface)localObject), new aeaf(this, (QQAppInterface)localObject)).show();
         return;
       }
-      new adry(this).run();
+      new aeah(this).run();
       QLog.d("PresenceInterfaceImpl", 2, "onHandleUseOperations 0");
       return;
     case 1: 
@@ -355,7 +355,7 @@ public class PresenceInterfaceImpl
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new adrp(this, paramString));
+    this.jdField_a_of_type_AndroidOsHandler.post(new adzy(this, paramString));
   }
   
   public void a(boolean paramBoolean)
@@ -501,7 +501,7 @@ public class PresenceInterfaceImpl
   public void j()
   {
     this.h = true;
-    ThreadManager.getUIHandler().post(new adrz(this));
+    ThreadManager.getUIHandler().post(new aeai(this));
   }
   
   public void k()
@@ -518,16 +518,16 @@ public class PresenceInterfaceImpl
     while (i != 0)
     {
       n();
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430809), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430812), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448));
       return;
       i = 0;
     }
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 232, null, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430807), new adsa(this), new adsb(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 232, null, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430810), new aeaj(this), new aeak(this)).show();
   }
   
   void m()
   {
-    a(DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 232, null, this.jdField_a_of_type_AndroidContentContext.getString(2131437384), new adrr(this), new adrs(this)));
+    a(DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 232, null, this.jdField_a_of_type_AndroidContentContext.getString(2131437404), new aeaa(this), new aeab(this)));
   }
 }
 

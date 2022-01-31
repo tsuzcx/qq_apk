@@ -1,33 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.XListView.DrawFinishedListener;
+import mqq.os.MqqHandler;
 
-class mlv
-  implements Runnable
+public class mlv
+  implements XListView.DrawFinishedListener
 {
-  mlv(mlu parammlu, boolean paramBoolean, int paramInt, FastWebShareInfo paramFastWebShareInfo) {}
+  public mlv(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void run()
+  public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.b))
     {
-      FastWebShareUtils localFastWebShareUtils = FastWebActivity.a(this.jdField_a_of_type_Mlu.a);
-      ArticleInfo localArticleInfo = FastWebActivity.a(this.jdField_a_of_type_Mlu.a);
-      int i = this.jdField_a_of_type_Int;
-      FastWebActivity localFastWebActivity = this.jdField_a_of_type_Mlu.a;
-      String str2 = FastWebActivity.a(this.jdField_a_of_type_Mlu.a).mArticleContentUrl;
-      if (FastWebActivity.a(this.jdField_a_of_type_Mlu.a)) {}
-      for (String str1 = "0X8008994";; str1 = "0X800898D")
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.b = false;
+      switch (this.a.jdField_a_of_type_Int)
       {
-        localFastWebShareUtils.a(localArticleInfo, i, localFastWebActivity, str2, str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareInfo.a(this.jdField_a_of_type_Int));
-        return;
       }
     }
-    QRUtils.a(1, 2131435480);
-    QLog.d("Q.readinjoy.fast_web", 2, "shareJson get false ! action : " + this.jdField_a_of_type_Int);
+    for (;;)
+    {
+      PublicTracker.a("KANDIAN_NEW_FEEDS_LIST_VIEW_GROUP_MEASURE_LAYOUT_DRAW", null);
+      PublicTracker.a("KANDIAN_FEEDS_STAGE_2_COST", null);
+      PublicTracker.a("KANDIAN_FEEDS_COST", null);
+      if (this.a.jdField_a_of_type_Int == 56) {
+        PublicTracker.a("video_tab_cost", null);
+      }
+      if (ReadInJoyListViewGroup.b(this.a))
+      {
+        ReadInJoyListViewGroup.a(this.a);
+        ThreadManager.getUIHandler().postDelayed(new mlw(this), 100L);
+      }
+      if (ReadInJoyListViewGroup.c(this.a)) {
+        ReadInJoyListViewGroup.c(this.a);
+      }
+      return;
+      PublicTracker.jdField_a_of_type_Int = 1;
+      continue;
+      PublicTracker.jdField_a_of_type_Int = 2;
+      continue;
+      PublicTracker.jdField_a_of_type_Int = 3;
+    }
   }
 }
 

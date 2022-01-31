@@ -1,22 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
-import com.tencent.mobileqq.profile.like.PraiseInfo;
-import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseLoadListener;
-import java.util.List;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afce
-  implements PraiseManager.OnPraiseLoadListener
+  implements Runnable
 {
-  public afce(NearbyCardVoteView paramNearbyCardVoteView, int paramInt1, int paramInt2, List paramList) {}
+  public afce(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.hasMessages(NearbyCardVoteView.d))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.removeMessages(NearbyCardVoteView.d);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyCardVoteView.a.obtainMessage(NearbyCardVoteView.d, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilList).sendToTarget();
-    }
+    ShortVideoCommentsView.a(this.a, ShortVideoCommentsView.a(this.a));
   }
 }
 

@@ -1,19 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.test.MapBorderUtils;
-import com.tencent.mobileqq.armap.test.MapBorderUtils.LatLng;
+import java.io.File;
+import java.io.FileFilter;
 
-public class abas
-  implements DialogInterface.OnClickListener
+public final class abas
+  implements FileFilter
 {
-  public abas(ARMapActivity paramARMapActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean accept(File paramFile)
   {
-    if ((paramInt >= 0) && (paramInt < MapBorderUtils.a.length)) {
-      this.a.b(MapBorderUtils.a[paramInt].b, MapBorderUtils.a[paramInt].a);
-    }
+    return paramFile.getName().startsWith("hc_");
   }
 }
 

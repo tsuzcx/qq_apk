@@ -20,7 +20,7 @@ import android.widget.RelativeLayout;
 import com.tencent.av.AVLog;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import jom;
+import jqp;
 
 public class SmallScreenRelativeLayout
   extends RelativeLayout
@@ -30,7 +30,7 @@ public class SmallScreenRelativeLayout
   ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   Display jdField_a_of_type_AndroidViewDisplay;
   SmallScreenRelativeLayout.FloatListener jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener;
-  jom jdField_a_of_type_Jom = null;
+  jqp jdField_a_of_type_Jqp = null;
   boolean jdField_a_of_type_Boolean = false;
   final int jdField_b_of_type_Int;
   ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
@@ -87,7 +87,7 @@ public class SmallScreenRelativeLayout
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
     this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     this.p = b();
-    this.jdField_a_of_type_Jom = new jom(this, getContext(), 2);
+    this.jdField_a_of_type_Jqp = new jqp(this, getContext(), 2);
   }
   
   private int b()
@@ -478,7 +478,7 @@ public class SmallScreenRelativeLayout
       QLog.d("SmallScreenRelativeLayout", 2, "onCreate");
     }
     this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Jom.enable();
+    this.jdField_a_of_type_Jqp.enable();
   }
   
   public void c()
@@ -487,7 +487,7 @@ public class SmallScreenRelativeLayout
       QLog.d("SmallScreenRelativeLayout", 2, "onDestroy");
     }
     this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener = null;
-    this.jdField_a_of_type_Jom.disable();
+    this.jdField_a_of_type_Jqp.disable();
   }
   
   public void d()
@@ -780,7 +780,7 @@ public class SmallScreenRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

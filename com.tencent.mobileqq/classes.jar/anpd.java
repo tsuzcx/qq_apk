@@ -1,36 +1,31 @@
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager.LoadMusicStepListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import cooperation.weiyun.sdk.download.DownloadJobContext.StatusInfo;
+import cooperation.weiyun.sdk.download.WyDownloader.IDownloadStatusListener;
+import cooperation.weiyun.utils.WyReportUtils;
 
-public class anpd
-  implements QIMMusicConfigManager.LoadMusicStepListener
+public final class anpd
+  implements WyDownloader.IDownloadStatusListener
 {
-  public anpd(MusicProviderView paramMusicProviderView) {}
+  public void a(String paramString) {}
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(String paramString, long paramLong, DownloadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "onStep:" + paramInt + " done:" + paramBoolean);
+    if (paramBoolean)
+    {
+      if (paramStatusInfo.a != 5) {
+        break label25;
+      }
+      WyReportUtils.a(paramString, "actFileWyDown", paramStatusInfo, false, paramLong);
     }
-    if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
-      this.a.a.sendEmptyMessage(3);
+    label25:
+    while (paramStatusInfo.a != 4) {
+      return;
     }
-  }
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.obj = paramMusicItemInfo;
-    localMessage.what = 4;
-    this.a.a.sendMessage(localMessage);
+    WyReportUtils.a(paramString, "actFileWyDown", paramStatusInfo, true, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpd
  * JD-Core Version:    0.7.0.1
  */

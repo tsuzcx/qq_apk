@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.data.EqqDetail;
 
 class vwr
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  vwr(vwp paramvwp, SharedPreferences paramSharedPreferences) {}
+  vwr(vwq paramvwq, EqqDetail paramEqqDetail) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    paramDialogInterface.putLong("switch_city" + this.jdField_a_of_type_Vwp.a.a.getCurrentAccountUin(), System.currentTimeMillis());
-    paramDialogInterface.commit();
+    CrmUtils.b(this.jdField_a_of_type_Vwq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+    this.jdField_a_of_type_Vwq.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new vws(this));
   }
 }
 

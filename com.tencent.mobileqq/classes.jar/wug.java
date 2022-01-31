@@ -1,21 +1,79 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.mobileqq.widget.IndexView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.discussion.LinkShareActionSheetBuilder;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class wug
-  implements DialogInterface.OnDismissListener
+  extends BaseAdapter
 {
-  public wug(CountryActivity paramCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  private wug(LinkShareActionSheetBuilder paramLinkShareActionSheetBuilder) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int getCount()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    return 6;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2130971697, null);
+    }
+    int j;
+    int i;
+    switch (paramInt)
+    {
+    case 4: 
+    default: 
+      j = 2130838337;
+      i = 2131435325;
+      paramInt = 2131435349;
+    }
+    for (;;)
+    {
+      paramView = (ImageView)paramViewGroup.findViewById(2131366749);
+      TextView localTextView = (TextView)paramViewGroup.findViewById(2131364341);
+      paramView.setImageResource(j);
+      localTextView.setText(i);
+      if (AppSetting.b) {
+        paramViewGroup.setContentDescription(LinkShareActionSheetBuilder.a(this.a).getString(paramInt));
+      }
+      return paramViewGroup;
+      i = 2131435317;
+      j = 2130838341;
+      paramInt = 2131435347;
+      continue;
+      i = 2131435324;
+      j = 2130838342;
+      paramInt = 2131435348;
+      continue;
+      i = 2131435315;
+      j = 2130838345;
+      paramInt = 2131435346;
+      continue;
+      i = 2131435314;
+      j = 2130838339;
+      paramInt = 2131435345;
+      continue;
+      paramInt = 2131430001;
+      i = 2131430001;
+      j = 2130840523;
+    }
   }
 }
 

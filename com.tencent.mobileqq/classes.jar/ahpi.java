@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.richstatus.ActionInfo;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.IActionListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
+import com.tencent.mobileqq.richmedia.capture.util.DanceGameReporter;
+import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
+import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport.BoyItem;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class ahpi
-  implements IActionListener
+public final class ahpi
+  implements Runnable
 {
-  public ahpi(EditActivity paramEditActivity) {}
+  public ahpi(BoyDataReport paramBoyDataReport) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((paramInt1 == 102) && (EditActivity.a(this.a).actionId != 0) && (" ".equals(EditActivity.a(this.a).actionText)))
+    CaptureReportUtil.a(this.a.b, this.a.jdField_a_of_type_Long);
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      ActionInfo localActionInfo = EditActivity.a(this.a).a(EditActivity.a(this.a).actionId);
-      if (localActionInfo != null)
-      {
-        EditActivity.a(this.a).actionText = localActionInfo.d;
-        EditActivity.a(this.a, false);
+      BoyDataReport.BoyItem localBoyItem = (BoyDataReport.BoyItem)localIterator.next();
+      if (localBoyItem.jdField_a_of_type_Boolean) {
+        CaptureReportUtil.a(localBoyItem.jdField_a_of_type_JavaLangString, "" + localBoyItem.jdField_a_of_type_Int, CaptureReportUtil.a(localBoyItem.b));
       }
     }
+    DanceGameReporter.a().a(this.a);
   }
 }
 

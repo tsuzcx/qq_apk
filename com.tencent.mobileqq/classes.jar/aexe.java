@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
+import java.util.List;
 
-public class aexe
-  implements Runnable
+class aexe
+  implements View.OnClickListener
 {
-  public aexe(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  aexe(aexd paramaexd, int paramInt, WerewolvesHandler paramWerewolvesHandler) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ShortVideoCommentsView.a(this.a, ShortVideoCommentsView.a(this.a));
+    try
+    {
+      long l = Long.parseLong(((aexc)this.jdField_a_of_type_Aexd.a.a.get(this.jdField_a_of_type_Int)).a);
+      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(this.jdField_a_of_type_Aexd.a.b, l, null);
+      this.jdField_a_of_type_Aexd.a.a("invite_page", "kick_out");
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

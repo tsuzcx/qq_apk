@@ -1,33 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool.GetChoiceListCallback;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import java.io.File;
+import mqq.os.MqqHandler;
 
 public class ajwn
-  extends DownloadListener
+  implements Runnable
 {
-  public ajwn(GroupCatalogTool paramGroupCatalogTool, File paramFile, String paramString, GroupCatalogTool.GetChoiceListCallback paramGetChoiceListCallback) {}
+  public ajwn(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void run()
   {
-    if ((paramDownloadTask.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool.b(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString) != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool.a(BaseApplicationImpl.getContext())))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool.a(BaseApplicationImpl.getContext(), System.currentTimeMillis());
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool$GetChoiceListCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool$GetChoiceListCallback.a(true);
-      }
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool$GetChoiceListCallback != null))
-      {
-        QLog.e("GroupCatalogTool", 1, "getChoiceListFromServer failed!");
-        this.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogTool$GetChoiceListCallback.a(false);
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item == null) {
       return;
+    }
+    switch (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Status)
+    {
+    default: 
+      return;
+    case 9: 
+    case 10: 
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile != null) {
+        new File(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile).delete();
+      }
+      break;
+    }
+    for (;;)
+    {
+      ThreadManager.getUIHandler().post(new ajwo(this));
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile != null) {
+        new File(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).delete();
+      }
     }
   }
 }

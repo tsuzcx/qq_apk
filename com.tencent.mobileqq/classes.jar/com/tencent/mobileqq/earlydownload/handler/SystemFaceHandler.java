@@ -31,7 +31,7 @@ public class SystemFaceHandler
   
   public SystemFaceHandler(QQAppInterface paramQQAppInterface)
   {
-    super("qq.android.system.face.gifv9", paramQQAppInterface);
+    super("qq.android.system.face.gifv10", paramQQAppInterface);
   }
   
   private void c(String paramString)

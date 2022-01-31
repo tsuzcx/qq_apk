@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.qcall;
 
-import agvd;
-import agve;
-import agvf;
-import agvg;
+import agzq;
+import agzr;
+import agzs;
+import agzt;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -47,8 +47,8 @@ public class QCallFacade
   extends Observable
   implements Manager
 {
-  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new agve(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new agvd(this);
+  private DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new agzr(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new agzq(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public QCallFacade(QQAppInterface paramQQAppInterface)
@@ -1160,7 +1160,7 @@ public class QCallFacade
     paramString2.isSystemCall = 0;
     a(paramString2, "when_addMissCallMsg");
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.C();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new agvf(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new agzs(this));
   }
   
   public void a(boolean paramBoolean)
@@ -1203,26 +1203,16 @@ public class QCallFacade
   
   public int b(String paramString, int paramInt)
   {
-    int i = 0;
-    QCallRecent localQCallRecent = a(paramString, paramInt);
-    if (localQCallRecent != null) {
-      if (localQCallRecent.isMissedCall())
-      {
-        l2 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        l1 = l2;
-        if (localQCallRecent.readTime > l2) {
-          l1 = localQCallRecent.readTime;
-        }
-        i = a(localQCallRecent.uin, localQCallRecent.type, l1);
-      }
-    }
-    while (!QLog.isDevelopLevel())
+    paramString = a(paramString, paramInt);
+    if ((paramString != null) && (paramString.isMissedCall()))
     {
-      long l2;
-      long l1;
-      return i;
+      long l2 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      long l1 = l2;
+      if (paramString.readTime > l2) {
+        l1 = paramString.readTime;
+      }
+      return a(paramString.uin, paramString.type, l1);
     }
-    QLog.d("fetchUnReadCount", 4, String.format("getMissCallCount, 没找到对应的会话, uin[%s], type[%s]", new Object[] { paramString, Integer.valueOf(paramInt) }));
     return 0;
   }
   
@@ -1336,7 +1326,7 @@ public class QCallFacade
       a(localQCallRecent);
     }
     c(paramString, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new agvg(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new agzt(this));
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.C();
   }
   

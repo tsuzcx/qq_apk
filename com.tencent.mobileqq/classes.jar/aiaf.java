@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment.ShortVideoDownload;
+import com.tencent.mobileqq.search.ftsmsg.FTSGroupSearchModelMessage;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import java.util.List;
 
-public final class aiaf
-  implements Runnable
+public class aiaf
+  extends GroupSearchEngine.SearchEngineEntity
 {
-  public aiaf(VideoEnvironment.ShortVideoDownload paramShortVideoDownload, int paramInt) {}
-  
-  public void run()
+  public aiaf(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload.a(this.jdField_a_of_type_Int);
-    }
+    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
+  }
+  
+  public ISearchResultGroupModel a(List paramList, String paramString)
+  {
+    return new FTSGroupSearchModelMessage(paramList, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiaf
  * JD-Core Version:    0.7.0.1
  */

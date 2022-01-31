@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahtc;
-import ahtd;
-import ahte;
+import ahxt;
+import ahxu;
+import ahxv;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -90,7 +90,7 @@ public class GroupSearchFragment
   public GroupSearchFragment()
   {
     this.jdField_i_of_type_Int = -1;
-    this.jdField_b_of_type_AndroidOsHandler = new ahtc(this, Looper.getMainLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new ahxt(this, Looper.getMainLooper());
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_e_of_type_Int = 0;
   }
@@ -268,7 +268,7 @@ public class GroupSearchFragment
     if ((this.jdField_b_of_type_JavaUtilList.size() != 1) || (!(this.jdField_b_of_type_JavaUtilList.get(0) instanceof SearchResultModelForEntrance)) || (!((SearchResultModelForEntrance)this.jdField_b_of_type_JavaUtilList.get(0)).b()))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ahte(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ahxv(this));
     }
   }
   
@@ -681,7 +681,7 @@ public class GroupSearchFragment
         QLog.e("Q.uniteSearch.GroupSearchFragment", 2, "e = " + localJSONException);
       }
       c();
-      paramString = new ahtd(this);
+      paramString = new ahxu(this);
       if (this.jdField_c_of_type_Boolean)
       {
         this.jdField_b_of_type_AndroidOsHandler.removeMessages(100);

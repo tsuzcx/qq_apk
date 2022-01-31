@@ -27,7 +27,7 @@ public class StructMsgItemLayout10
       if (paramViewHolder.a != null)
       {
         paramBundle = new RelativeLayout.LayoutParams(-1, -1);
-        paramViewHolder.a.setId(2131366605);
+        paramViewHolder.a.setId(2131366603);
         paramBundle.addRule(9, -1);
         ((RelativeLayout)paramView).addView(paramViewHolder.a);
       }

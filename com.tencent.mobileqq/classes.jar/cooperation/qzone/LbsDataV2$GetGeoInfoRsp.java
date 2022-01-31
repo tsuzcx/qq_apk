@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
 import LBS_V2_PROTOCOL.GetGeoInfoRsp_V2;
-import amri;
+import amyt;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import android.os.Parcelable.Creator;
 public class LbsDataV2$GetGeoInfoRsp
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amri();
+  public static final Parcelable.Creator CREATOR = new amyt();
   public LbsDataV2.GeoInfo stGeoInfo;
   public LbsDataV2.GpsInfo stGps;
   

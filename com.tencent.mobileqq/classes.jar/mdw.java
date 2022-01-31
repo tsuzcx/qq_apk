@@ -1,4 +1,5 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class mdw
   implements Runnable
@@ -7,7 +8,9 @@ class mdw
   
   public void run()
   {
-    VideoFeedsPlayManager.a(this.a.a);
+    if ((TopicShareHelper.a(this.a.a) != null) && (TopicShareHelper.a(this.a.a).isShowing())) {
+      TopicShareHelper.a(this.a.a).dismiss();
+    }
   }
 }
 

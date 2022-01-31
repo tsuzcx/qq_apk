@@ -1,6 +1,8 @@
 package com.tencent.av.redpacket;
 
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -76,6 +78,22 @@ public class AVRedPacketDataCollector
       }
     } while (!QLog.isColorLevel());
     QLog.d("AV_rp_dc", 2, "reportConfigExistStatus localVersion = " + i);
+  }
+  
+  public static void a(String paramString)
+  {
+    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4).getBoolean("res_exist", false);
+    if (QLog.isColorLevel()) {
+      QLog.d("AV_rp_dc", 2, "checkAndReportIllegalAVRedPacketRequest exist = " + bool);
+    }
+    if (bool)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("md5", paramString);
+      localHashMap.put("model", Build.MODEL);
+      localHashMap.put("version", String.valueOf(Build.VERSION.SDK_INT));
+      StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "actIllegalAVRPRequest", true, 0L, 0L, localHashMap, "", true);
+    }
   }
   
   public static void a(boolean paramBoolean)
@@ -157,7 +175,7 @@ public class AVRedPacketDataCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.redpacket.AVRedPacketDataCollector
  * JD-Core Version:    0.7.0.1
  */

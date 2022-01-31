@@ -1,55 +1,47 @@
-import com.tencent.hlyyb.downloader.Downloader;
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.IDownloadListener;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.IHellyEventListener;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.NowDownloadManager;
+import android.app.Activity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.forward.ForwardShareCardOption;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qidian.controller.QidianBusinessObserver;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class adup
-  implements IHellyEventListener
+  extends QidianBusinessObserver
 {
-  public adup(NowDownloadManager paramNowDownloadManager) {}
+  public adup(ForwardShareCardOption paramForwardShareCardOption) {}
   
-  public void a(DownloaderTask paramDownloaderTask)
+  protected void a(boolean paramBoolean, HashMap paramHashMap)
   {
-    QLog.e("DownloadManager_Now_for_qq", 4, "onTaskCompleted----DOWNLOAD_SUCCESS, filePath = " + paramDownloaderTask.getSavePath());
-    if (NowDownloadManager.a(this.a) != null) {
-      NowDownloadManager.a(this.a).deleteTask(paramDownloaderTask, false);
+    this.a.t();
+    if (ForwardShareCardOption.a(this.a) != -1)
+    {
+      if ((!paramBoolean) || (paramHashMap == null)) {
+        break label151;
+      }
+      String str = (String)paramHashMap.get("uin");
+      paramHashMap = (String)paramHashMap.get("url");
+      ForwardShareCardOption.a(this.a, paramHashMap);
+      ForwardShareCardOption.b(this.a, paramHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
+      }
+      if ((str != null) && (str.equals(ForwardShareCardOption.c(this.a)))) {
+        ForwardShareCardOption.a(this.a);
+      }
     }
-    if ((NowDownloadManager.a(this.a) != null) && (NowDownloadManager.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((IDownloadListener)NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl())).a();
-    }
-  }
-  
-  public void b(DownloaderTask paramDownloaderTask) {}
-  
-  public void c(DownloaderTask paramDownloaderTask)
-  {
-    QLog.e("DownloadManager_Now_for_qq", 4, "onTaskFailed----DOWNLOAD_FAILED");
-    if (NowDownloadManager.a(this.a) != null) {
-      NowDownloadManager.a(this.a).deleteTask(paramDownloaderTask, false);
-    }
-    if ((NowDownloadManager.a(this.a) != null) && (NowDownloadManager.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((IDownloadListener)NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
-    }
-  }
-  
-  public void d(DownloaderTask paramDownloaderTask) {}
-  
-  public void e(DownloaderTask paramDownloaderTask) {}
-  
-  public void f(DownloaderTask paramDownloaderTask)
-  {
-    QLog.e("DownloadManager_Now_for_qq", 4, "onTaskReceived----percent: " + paramDownloaderTask.getPercentage());
-    if ((NowDownloadManager.a(this.a) != null) && (NowDownloadManager.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((IDownloadListener)NowDownloadManager.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
+    for (;;)
+    {
+      ForwardShareCardOption.a(this.a, -1);
+      return;
+      label151:
+      QQToast.a(this.a.a, 1, this.a.a.getString(2131435343), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adup
  * JD-Core Version:    0.7.0.1
  */

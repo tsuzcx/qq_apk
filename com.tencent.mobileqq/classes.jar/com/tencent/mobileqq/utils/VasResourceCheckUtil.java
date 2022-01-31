@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import akgq;
-import akgr;
+import akod;
+import akoe;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
@@ -27,8 +27,8 @@ public class VasResourceCheckUtil
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + ".VasResourceCheck/temp.json";
-    jdField_a_of_type_AndroidOsHandler$Callback = new akgr();
+    jdField_a_of_type_JavaLangString = AppConstants.aK + ".VasResourceCheck/temp.json";
+    jdField_a_of_type_AndroidOsHandler$Callback = new akoe();
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -53,13 +53,13 @@ public class VasResourceCheckUtil
       FileUtils.a(((AvatarPendantManager)localObject).b().getAbsolutePath(), false);
       ((AvatarPendantManager)localObject).b();
     }
-    localObject = new File(AppConstants.aJ + ".emotionsm");
+    localObject = new File(AppConstants.aK + ".emotionsm");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
     FileUtils.a(((File)localObject).getAbsolutePath(), false);
     ((File)localObject).mkdirs();
-    localObject = new File(AppConstants.aJ + "theme_pkg");
+    localObject = new File(AppConstants.aK + "theme_pkg");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -71,19 +71,19 @@ public class VasResourceCheckUtil
     }
     FileUtils.a(paramQQAppInterface.getAbsolutePath(), false);
     paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(AppConstants.bx);
+    paramQQAppInterface = new File(AppConstants.by);
     if (!paramQQAppInterface.exists()) {
       paramQQAppInterface.mkdirs();
     }
     FileUtils.a(paramQQAppInterface.getAbsolutePath(), false);
     paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(AppConstants.aJ + "sysyem_background/resource");
+    paramQQAppInterface = new File(AppConstants.aK + "sysyem_background/resource");
     if (!paramQQAppInterface.exists()) {
       paramQQAppInterface.mkdirs();
     }
     FileUtils.a(paramQQAppInterface.getAbsolutePath(), false);
     paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(AppConstants.aJ + "rbt");
+    paramQQAppInterface = new File(AppConstants.aK + "rbt");
     if (!paramQQAppInterface.exists()) {
       paramQQAppInterface.mkdirs();
     }
@@ -99,7 +99,7 @@ public class VasResourceCheckUtil
       jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandler$Callback);
     }
     paramActivity = new DownloadTask(paramString, new File(jdField_a_of_type_JavaLangString));
-    ((DownloaderFactory)paramQQAppInterface.getManager(46)).a(1).a(paramActivity, new akgq(paramQQAppInterface), null);
+    ((DownloaderFactory)paramQQAppInterface.getManager(46)).a(1).a(paramActivity, new akod(paramQQAppInterface), null);
   }
   
   public static boolean a(String paramString)

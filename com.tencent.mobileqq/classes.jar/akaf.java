@@ -1,57 +1,37 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.CustomLruCache;
-import com.tencent.mobileqq.util.ImageCache;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.widget.PinnedHeaderIphoneTreeView;
 
 public class akaf
-  extends CustomLruCache
+  implements View.OnTouchListener
 {
-  public akaf(ImageCache paramImageCache, int paramInt)
-  {
-    super(paramInt);
-  }
+  public akaf(PinnedHeaderIphoneTreeView paramPinnedHeaderIphoneTreeView) {}
   
-  protected int a(String paramString, Drawable paramDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 0;
-    int j = 0;
-    if ((paramDrawable instanceof BitmapDrawable))
+    boolean bool = true;
+    switch (paramMotionEvent.getAction())
     {
-      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramString != null) {
-        j = paramString.getRowBytes() * paramString.getHeight();
-      }
+    case 2: 
+    default: 
+      bool = false;
     }
-    int m;
-    int k;
     do
     {
-      do
-      {
-        return j;
-      } while (!(paramDrawable instanceof AnimationDrawable));
-      paramString = (AnimationDrawable)paramDrawable;
-      m = paramString.getNumberOfFrames();
-      k = 0;
-      j = i;
-    } while (k >= m);
-    paramDrawable = paramString.getFrame(k);
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        j = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * j + i;
-      }
-    }
-    for (;;)
-    {
-      k += 1;
+      return bool;
+      paramView.setPressed(true);
+      this.a.invalidate();
+      return true;
+      paramView.setPressed(false);
+      this.a.invalidate();
       break;
-    }
+    } while (!paramView.isPressed());
+    paramView.setPressed(false);
+    this.a.b(this.a.jdField_a_of_type_Int);
+    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_AndroidViewView = null;
+    return true;
   }
 }
 

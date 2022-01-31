@@ -1,20 +1,10 @@
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsNewActivity;
 
 public class mwx
-  implements Runnable
+  extends ReadInJoyObserver
 {
-  public mwx(SwipeBackLayout paramSwipeBackLayout) {}
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "isFling:" + SwipeBackLayout.b(this.a));
-    }
-    if (!SwipeBackLayout.b(this.a)) {
-      SwipeBackLayout.a(this.a);
-    }
-  }
+  public mwx(SubscriptFeedsNewActivity paramSubscriptFeedsNewActivity) {}
 }
 
 

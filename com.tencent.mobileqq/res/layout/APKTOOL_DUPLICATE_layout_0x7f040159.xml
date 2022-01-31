@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="54.0dip" android:minHeight="54.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.dingdong.widget.DingdongFileThumbImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0639" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="15.0dip" android:layout_centerVertical="true" />
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09b1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <Button android:textSize="15.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a088d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01dd" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09b2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207e4" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b024a" />
-    </FrameLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09b3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="9.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a09b1" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0639" android:layout_centerVertical="true">
-        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:ellipsize="middle" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip">
-            <com.tencent.widget.SingleLineTextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0578" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09b4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <com.tencent.widget.SingleLineTextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c059e" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0444" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
-        </LinearLayout>
-    </LinearLayout>
-    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09b5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:max="100" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020053" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0a09b3" android:layout_alignParentBottom="true" style="?android:attr/progressBarStyleHorizontal" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c000f" android:id="@id/textView1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b18f2" />
+    <CheckBox android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c000f" android:id="@id/delRoamMsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:checked="true" android:button="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02065b" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1983" />
+</LinearLayout>

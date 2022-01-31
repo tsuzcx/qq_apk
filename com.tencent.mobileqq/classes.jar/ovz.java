@@ -1,31 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.HotChatObserver;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.Utils;
+import friendlist.GetOnlineInfoResp;
+import mqq.os.MqqHandler;
 
 public class ovz
-  extends HotChatObserver
+  extends FriendListObserver
 {
-  public ovz(TroopMemberApiService paramTroopMemberApiService) {}
+  public ovz(StoryQIMBadgeView paramStoryQIMBadgeView) {}
   
-  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList paramArrayList)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 1050);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
-    localBundle.putSerializable("observer_type", Integer.valueOf(5));
-    this.a.a(3, localBundle);
-  }
-  
-  public void a(boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", this.a.f);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putStringArrayList("uins", paramArrayList1);
-    localBundle.putStringArrayList("tinyIds", paramArrayList2);
-    this.a.a(103, localBundle);
+    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
+    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
+    while ((!paramBoolean) || (!Utils.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new owa(this, paramGetOnlineInfoResp, paramString));
   }
 }
 

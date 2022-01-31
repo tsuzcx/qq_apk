@@ -1,18 +1,19 @@
-import dov.com.qq.im.capture.QIMCaptureController;
+import cooperation.qzone.cache.FileCacheService;
+import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper;
 
-public class ankr
+public final class ankr
   implements Runnable
 {
-  public ankr(QIMCaptureController paramQIMCaptureController) {}
+  public ankr(String paramString) {}
   
   public void run()
   {
-    QIMCaptureController.a(this.a, true);
+    QzoneOfflineCacheHelper.access$000().a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankr
  * JD-Core Version:    0.7.0.1
  */

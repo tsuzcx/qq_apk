@@ -1,28 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.component.media.photogif.NewAnimationDrawable;
+import com.tencent.biz.widgets.ScannerView;
 
 public class piv
-  extends Handler
+  implements Runnable
 {
-  public piv(NewAnimationDrawable paramNewAnimationDrawable, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public piv(ScannerView paramScannerView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 0)
-    {
-      NewAnimationDrawable.a(this.a, NewAnimationDrawable.a(this.a));
-      this.a.invalidateSelf();
-    }
+    ScannerView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     piv
  * JD-Core Version:    0.7.0.1
  */

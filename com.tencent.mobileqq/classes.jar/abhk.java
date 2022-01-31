@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abhk
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public abhk(ARMapPOIStarDialog paramARMapPOIStarDialog, ItemInfo paramItemInfo) {}
+  public abhk(ARMapActivity paramARMapActivity) {}
   
-  public void run()
-  {
-    ARMapEngine.removePOITask(this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo.a.a);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

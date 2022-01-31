@@ -1,15 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class sls
-  implements View.OnClickListener
+  extends ConfigObserver
 {
-  public sls(EditInfoActivity paramEditInfoActivity) {}
+  public sls(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
   {
-    this.a.l();
+    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      ReportController.b(this.a.a, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
+      this.a.a(new slt(this, paramString3, paramString1, paramString2));
+    }
+  }
+  
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  {
+    if (paramBoolean) {
+      this.a.a(0L);
+    }
   }
 }
 

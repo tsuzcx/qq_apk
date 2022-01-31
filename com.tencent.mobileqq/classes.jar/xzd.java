@@ -1,13 +1,27 @@
-import android.view.View;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.IPtvTemplateItemChangedCallback;
 
-class xzd
-  implements Runnable
+public class xzd
+  implements Handler.Callback
 {
-  xzd(xzc paramxzc, View paramView) {}
+  public xzd(PtvTemplateAdapter paramPtvTemplateAdapter) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidViewView.sendAccessibilityEvent(8);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a(null);
+      continue;
+      if (PtvTemplateAdapter.a(this.a) != null) {
+        PtvTemplateAdapter.a(this.a).h();
+      }
+    }
   }
 }
 

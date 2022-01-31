@@ -1,38 +1,16 @@
-import com.tencent.mobileqq.data.EmoticonKeywords;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
 
-public class aeie
-  implements Runnable
+class aeie
+  implements WebProcessManager.WebProcessStartListener
 {
-  public aeie(EmoticonManager paramEmoticonManager, EmoticonKeywords paramEmoticonKeywords) {}
+  aeie(aeid paramaeid) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    long l = System.currentTimeMillis();
-    localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a();
-    try
-    {
-      localEntityTransaction.a();
-      EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonKeywords);
-      localEntityTransaction.c();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("EmoticonManager", 1, "saveKeywordReqTimeToDB e = " + localException.getMessage());
-        localEntityTransaction.b();
-      }
-    }
-    finally
-    {
-      localEntityTransaction.b();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "saveKeywordReqTimeToDB cost : " + (System.currentTimeMillis() - l));
+    if (paramBoolean) {
+      LebaWithFeeds.a(this.a.a.a).a();
     }
   }
 }

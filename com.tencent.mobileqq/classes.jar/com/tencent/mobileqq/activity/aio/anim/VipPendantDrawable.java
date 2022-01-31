@@ -11,7 +11,7 @@ import android.os.Looper;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
-import unx;
+import usw;
 
 public class VipPendantDrawable
   extends Drawable
@@ -44,12 +44,12 @@ public class VipPendantDrawable
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof unx)) && (((unx)this.jdField_a_of_type_JavaLangObject).a != null) && (this.jdField_a_of_type_Int == 1) && (((unx)this.jdField_a_of_type_JavaLangObject).a.equals(paramString))) {
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof usw)) && (((usw)this.jdField_a_of_type_JavaLangObject).a != null) && (this.jdField_a_of_type_Int == 1) && (((usw)this.jdField_a_of_type_JavaLangObject).a.equals(paramString))) {
       return;
     }
     a();
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangObject = new unx(this, paramString);
+    this.jdField_a_of_type_JavaLangObject = new usw(this, paramString);
   }
   
   public void a(String[] paramArrayOfString, int paramInt)
@@ -60,7 +60,7 @@ public class VipPendantDrawable
       return;
       try
       {
-        if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_JavaLangObject != null) && (!(this.jdField_a_of_type_JavaLangObject instanceof unx)))
+        if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_JavaLangObject != null) && (!(this.jdField_a_of_type_JavaLangObject instanceof usw)))
         {
           boolean bool = Arrays.equals((String[])this.jdField_a_of_type_JavaLangObject, paramArrayOfString);
           if (bool) {

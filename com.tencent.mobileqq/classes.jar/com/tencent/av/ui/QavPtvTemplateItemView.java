@@ -64,18 +64,18 @@ public class QavPtvTemplateItemView
   
   public void a(int paramInt1, int paramInt2)
   {
-    ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130969355, this);
-    int k = getResources().getColor(2131494214);
+    ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130969353, this);
+    int k = getResources().getColor(2131494220);
     int j;
     if (!this.jdField_a_of_type_Boolean) {
       j = getResources().getColor(2131493308);
     }
-    for (int i = 2130843256;; i = 2130843257)
+    for (int i = 2130843289;; i = 2130843290)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366263));
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131366264));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366266));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131366265));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366268));
+      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView = ((AVListImageView)findViewById(2131366269));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366271));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131366270));
       this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(i);
       b(paramInt1, paramInt2);
       this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(1.6F);
@@ -89,7 +89,7 @@ public class QavPtvTemplateItemView
         this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setDimmedColor(-47980);
       }
       return;
-      j = getResources().getColor(2131493617);
+      j = getResources().getColor(2131493619);
     }
   }
   
@@ -134,7 +134,7 @@ public class QavPtvTemplateItemView
         setDimmed(paramItemInfo.c);
         setHighlight(paramBoolean1);
         return;
-        this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageResource(2130846407);
+        this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setImageResource(2130846489);
         break;
         if (TextUtils.isEmpty(paramItemInfo.b)) {
           break;
@@ -181,7 +181,7 @@ public class QavPtvTemplateItemView
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.argb(155, 224, 176, 216));
       break;
       label105:
-      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setBackgroundColor(getResources().getColor(2131493617));
+      this.jdField_a_of_type_ComTencentAvFunchatAVListImageView.setBackgroundColor(getResources().getColor(2131493619));
     }
     label124:
     if (paramInt % 2 == 0)
@@ -194,7 +194,7 @@ public class QavPtvTemplateItemView
   
   public void b(int paramInt1, int paramInt2)
   {
-    View localView = findViewById(2131366262);
+    View localView = findViewById(2131366267);
     ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
     localLayoutParams.width = paramInt1;
     localLayoutParams.height = paramInt2;
@@ -213,7 +213,7 @@ public class QavPtvTemplateItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.QavPtvTemplateItemView
  * JD-Core Version:    0.7.0.1
  */

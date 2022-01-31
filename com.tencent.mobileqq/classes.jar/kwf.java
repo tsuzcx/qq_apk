@@ -1,19 +1,16 @@
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
 public class kwf
   implements Runnable
 {
-  public kwf(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public kwf(VideoCoverFragment paramVideoCoverFragment) {}
   
   public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.a).setBackgroundResource(2130838508);
-    ReadInJoyNativeAdFragment.a(this.a).setText(this.a.getText(2131438693));
-    ReadInJoyNativeAdFragment.a(this.a).setTextColor(-1);
-    ReadInJoyNativeAdFragment.a(this.a).setProgress(0);
-    ReadInJoyNativeAdFragment.a(this.a).setClickable(true);
-    ReadInJoyNativeAdFragment.c(this.a, 0);
+    VideoCoverFragment.a(this.a).setVisibility(4);
+    VideoCoverFragment.a(this.a).setVisibility(4);
   }
 }
 

@@ -1,15 +1,15 @@
 package cooperation.qzone.plugin;
 
-import amwu;
-import amwv;
-import amww;
-import amwx;
-import amwy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.Toast;
+import anei;
+import anej;
+import anek;
+import anel;
+import anem;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -34,7 +34,7 @@ public abstract class IQZonePluginManager
       ((Toast)localObject).setGravity(17, 0, 0);
       ((Toast)localObject).show();
     }
-    Object localObject = new amwu();
+    Object localObject = new anei();
     if ((paramPluginParams.jdField_a_of_type_AndroidAppDialog != null) && (!paramActivity.isFinishing())) {
       new SplashDialogWrapper(paramActivity, paramPluginParams.jdField_a_of_type_AndroidAppDialog, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString, paramPluginParams.jdField_a_of_type_Boolean, paramPluginParams.c).show();
     }
@@ -49,14 +49,14 @@ public abstract class IQZonePluginManager
   
   public static void a(Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
   {
-    amwv localamwv = new amwv();
+    anej localanej = new anej();
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if (!(localAppRuntime instanceof QQAppInterface))
     {
-      b(paramContext, paramPluginParams, localamwv);
+      b(paramContext, paramPluginParams, localanej);
       return;
     }
-    ((IQZonePluginManager)((QQAppInterface)localAppRuntime).getManager(174)).a(paramContext, paramPluginParams, localamwv);
+    ((IQZonePluginManager)((QQAppInterface)localAppRuntime).getManager(174)).a(paramContext, paramPluginParams, localanej);
   }
   
   public static void b(Activity paramActivity, IQZonePluginManager.PluginParams paramPluginParams)
@@ -92,19 +92,19 @@ public abstract class IQZonePluginManager
   
   public static void b(Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
   {
-    amww localamww = new amww();
+    anek localanek = new anek();
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if (!(localAppRuntime instanceof QQAppInterface))
     {
-      b(paramContext, paramPluginParams, localamww);
+      b(paramContext, paramPluginParams, localanek);
       return;
     }
-    ((IQZonePluginManager)((QQAppInterface)localAppRuntime).getManager(174)).a(paramContext, paramPluginParams, localamww);
+    ((IQZonePluginManager)((QQAppInterface)localAppRuntime).getManager(174)).a(paramContext, paramPluginParams, localanek);
   }
   
   private static void b(Context paramContext, IQZonePluginManager.PluginParams paramPluginParams, IQZonePluginManager.OnPluginReadyListener paramOnPluginReadyListener)
   {
-    QZonePluginMangerHelper.a(paramContext, new amwy(paramContext, paramPluginParams, paramOnPluginReadyListener));
+    QZonePluginMangerHelper.a(paramContext, new anem(paramContext, paramPluginParams, paramOnPluginReadyListener));
   }
   
   public static void c(Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
@@ -149,7 +149,7 @@ public abstract class IQZonePluginManager
         PluginProxyService.bindService(paramContext, paramPluginParams.d, paramPluginParams.jdField_b_of_type_JavaLangString, (String)localObject, paramPluginParams.e, paramPluginParams.jdField_a_of_type_AndroidContentIntent, paramPluginParams.jdField_a_of_type_AndroidContentServiceConnection);
         return;
       }
-      ThreadManager.post(new amwx(paramContext, paramPluginParams, (String)localObject), 5, null, false);
+      ThreadManager.post(new anel(paramContext, paramPluginParams, (String)localObject), 5, null, false);
       return;
     }
     catch (Exception paramContext)

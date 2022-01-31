@@ -326,15 +326,15 @@ public class FormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131494214);
-    case 0: 
-      return paramResources.getColorStateList(2131494214);
-    case 2: 
-      return paramResources.getColorStateList(2131494264);
-    case 1: 
       return paramResources.getColorStateList(2131494220);
+    case 0: 
+      return paramResources.getColorStateList(2131494220);
+    case 2: 
+      return paramResources.getColorStateList(2131494270);
+    case 1: 
+      return paramResources.getColorStateList(2131494226);
     }
-    return paramResources.getColorStateList(2131494277);
+    return paramResources.getColorStateList(2131494283);
   }
   
   public static Drawable b(Resources paramResources, int paramInt)
@@ -342,27 +342,27 @@ public class FormSimpleItem
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130838623);
+      return paramResources.getDrawable(2130838629);
     case 0: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130838623);
+        return paramResources.getDrawable(2130838629);
       }
-      return paramResources.getDrawable(2130846001);
+      return paramResources.getDrawable(2130846083);
     case 1: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130838635);
+        return paramResources.getDrawable(2130838641);
       }
-      return paramResources.getDrawable(2130846021);
+      return paramResources.getDrawable(2130846103);
     case 2: 
       if (jdField_b_of_type_Boolean) {
-        return paramResources.getDrawable(2130838633);
+        return paramResources.getDrawable(2130838639);
       }
-      return paramResources.getDrawable(2130846015);
+      return paramResources.getDrawable(2130846097);
     }
     if (jdField_b_of_type_Boolean) {
-      return paramResources.getDrawable(2130838630);
+      return paramResources.getDrawable(2130838636);
     }
-    return paramResources.getDrawable(2130846006);
+    return paramResources.getDrawable(2130846088);
   }
   
   public ColorStateList a(Resources paramResources, int paramInt)
@@ -790,7 +790,7 @@ public class FormSimpleItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormSimpleItem
  * JD-Core Version:    0.7.0.1
  */

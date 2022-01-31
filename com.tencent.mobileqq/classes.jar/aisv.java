@@ -1,8 +1,17 @@
-public abstract interface aisv
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.text.QQTextBuilder;
+
+public final class aisv
+  extends Editable.Factory
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public Editable newEditable(CharSequence paramCharSequence)
+  {
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
+    }
+    return new QQTextBuilder(paramCharSequence, 3);
+  }
 }
 
 

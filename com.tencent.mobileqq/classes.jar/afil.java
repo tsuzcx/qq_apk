@@ -1,36 +1,101 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class afil
-  implements IphonePickerView.PickerViewAdapter
+class afil
+  implements ActionSheet.OnButtonClickListener
 {
-  public afil(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  afil(afik paramafik, ActionSheet paramActionSheet) {}
   
-  public int getColumnCount()
+  public void OnClick(View paramView, int paramInt)
   {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
+    switch (paramInt)
     {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
+    default: 
+      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      }
+      return;
     }
-    else
+    this.jdField_a_of_type_Afik.a.f = true;
+    Object localObject1 = this.jdField_a_of_type_Afik.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
+    paramView = (View)localObject1;
+    if (StringUtil.a((String)localObject1))
     {
-      paramInt1 = 0;
+      paramView = (View)localObject1;
+      if (NearbyProfileDisplayPanel.a(this.jdField_a_of_type_Afik.a) != null) {
+        paramView = NearbyProfileDisplayPanel.a(this.jdField_a_of_type_Afik.a).uin;
+      }
     }
-    if (paramInt1 == 0) {
-      return "男";
+    if (StringUtil.a(paramView)) {
+      paramView = "0";
     }
-    return "女";
+    for (;;)
+    {
+      long l;
+      if (this.jdField_a_of_type_Afik.a.a.jdField_a_of_type_Long == 0L) {
+        if (NearbyProfileDisplayPanel.a(this.jdField_a_of_type_Afik.a) != null)
+        {
+          l = NearbyProfileDisplayPanel.a(this.jdField_a_of_type_Afik.a).tinyId;
+          label160:
+          if ((!"0".equals(paramView)) || (l != 0L))
+          {
+            Object localObject2 = null;
+            paramInt = 10028;
+            localObject1 = null;
+            if (this.jdField_a_of_type_Afik.a.a.app != null) {
+              localObject1 = this.jdField_a_of_type_Afik.a.a.app.a(false);
+            }
+            if (((localObject1 == null) || (!((HotChatManager)localObject1).b(this.jdField_a_of_type_Afik.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d))) && (this.jdField_a_of_type_Afik.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 33) && (this.jdField_a_of_type_Afik.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 4))
+            {
+              localObject1 = localObject2;
+              if (this.jdField_a_of_type_Afik.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 31) {}
+            }
+            else
+            {
+              paramInt = 10000;
+              localObject1 = this.jdField_a_of_type_Afik.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d;
+            }
+            ProfileCardUtil.a(this.jdField_a_of_type_Afik.a.a, this.jdField_a_of_type_Afik.a.a.jdField_a_of_type_Long, paramView, (String)localObject1, paramInt);
+          }
+          ReportController.b(this.jdField_a_of_type_Afik.a.a.app, "CliOper", "", "", "0X8004828", "0X8004828", 0, 0, "", "", "", "");
+          if ((NearbyProfileDisplayPanel.a(this.jdField_a_of_type_Afik.a) != null) && (NearbyProfileDisplayPanel.a(this.jdField_a_of_type_Afik.a).iIsGodFlag == 1))
+          {
+            if (NearbyProfileDisplayPanel.a(this.jdField_a_of_type_Afik.a).gender != 0) {
+              break label604;
+            }
+            ReportController.b(this.jdField_a_of_type_Afik.a.a.app, "CliOper", "", "", "0X800528E", "0X800528E", 0, 0, "", "", "", "");
+          }
+        }
+      }
+      for (;;)
+      {
+        ReportController.b(this.jdField_a_of_type_Afik.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_report", 0, 0, "", "", "", "");
+        if (!ProfileActivity.c(this.jdField_a_of_type_Afik.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h)) {
+          break;
+        }
+        ReportController.b(this.jdField_a_of_type_Afik.a.a.app, "CliOper", "", "", "0X800523E", "0X800523E", 0, 0, "", "", "", "");
+        break;
+        l = 0L;
+        break label160;
+        l = this.jdField_a_of_type_Afik.a.a.jdField_a_of_type_Long;
+        break label160;
+        label604:
+        if (NearbyProfileDisplayPanel.a(this.jdField_a_of_type_Afik.a).gender == 1) {
+          ReportController.b(this.jdField_a_of_type_Afik.a.a.app, "CliOper", "", "", "0X800528F", "0X800528F", 0, 0, "", "", "", "");
+        }
+      }
+    }
   }
 }
 

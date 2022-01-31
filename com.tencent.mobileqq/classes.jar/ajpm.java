@@ -1,45 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileUploadingManager;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ajpm
-  extends BizTroopObserver
+public final class ajpm
+  implements Runnable
 {
-  public ajpm(TroopFileUploadingManager paramTroopFileUploadingManager) {}
+  public ajpm(String paramString, ImageView paramImageView) {}
   
-  protected void a(Object paramObject)
+  public void run()
   {
-    if (this.a.a == null) {}
-    for (;;)
+    try
     {
-      return;
-      paramObject = (TroopFileStatusInfo)paramObject;
-      if (((!paramObject.jdField_a_of_type_Boolean) || (paramObject.b != 1)) && (paramObject.b == 12))
+      if (FileUtil.a(this.jdField_a_of_type_JavaLangString))
       {
-        long l = paramObject.jdField_a_of_type_Long;
-        Iterator localIterator = this.a.a.a().a(String.valueOf(l), 1).iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (ChatMessage)localIterator.next();
-          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
-          {
-            localObject = (MessageForTroopFile)localObject;
-            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
-              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
-              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-            }
-          }
-        }
+        Object localObject = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+        ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
+        localObject = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+        ThreadManager.getUIHandler().post(new ajpn(this, (Bitmap)localObject));
       }
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("setBitmapByPath", 2, localOutOfMemoryError.getStackTrace());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("setBitmapByPath", 2, localException.getStackTrace());
     }
   }
 }

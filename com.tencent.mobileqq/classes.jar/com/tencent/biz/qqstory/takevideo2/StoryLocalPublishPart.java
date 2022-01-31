@@ -15,19 +15,19 @@ import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptur
 import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import omm;
-import omn;
-import omp;
-import omq;
-import omr;
-import oms;
+import oqy;
+import oqz;
+import orb;
+import orc;
+import ord;
+import ore;
 
 public class StoryLocalPublishPart
   extends StoryCapturePart
 {
   public final int a;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new oms(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ore(this);
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
   
   public StoryLocalPublishPart(@NonNull StoryEffectsCameraCaptureFragment paramStoryEffectsCameraCaptureFragment)
@@ -39,13 +39,13 @@ public class StoryLocalPublishPart
   public void a()
   {
     super.a();
-    a(new omq(this));
+    a(new orc(this));
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    a(new omr(this));
+    a(new ord(this));
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -62,11 +62,11 @@ public class StoryLocalPublishPart
   public void a(View paramView, Bundle paramBundle)
   {
     super.a(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131370614));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131371718));
     this.jdField_a_of_type_AndroidWidgetImageButton.setImageDrawable(new ColorDrawable(0));
     this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryEffectsCameraCaptureFragment.a().setContainerViewListener(new omm(this));
-    Bosses.get().postJob(new omn(this, paramView));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryEffectsCameraCaptureFragment.a().setContainerViewListener(new oqy(this));
+    Bosses.get().postJob(new oqz(this, paramView));
   }
   
   public void a(CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult)
@@ -92,7 +92,7 @@ public class StoryLocalPublishPart
   public void b()
   {
     super.b();
-    a(new omp(this));
+    a(new orb(this));
   }
 }
 

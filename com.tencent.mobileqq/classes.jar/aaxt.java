@@ -1,28 +1,16 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import java.util.ArrayList;
 
 public class aaxt
-  extends ClickableSpan
+  extends ArkAppCGI.ArkAppCGICallback
 {
-  private final View.OnClickListener a;
+  public aaxt(ArkActionAppMgr paramArkActionAppMgr) {}
   
-  public aaxt(View.OnClickListener paramOnClickListener)
+  public void a(boolean paramBoolean, Object paramObject, ArrayList paramArrayList1, ArrayList paramArrayList2)
   {
-    this.a = paramOnClickListener;
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.a.onClick(paramView);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(1226741);
-    paramTextPaint.setAlpha(255);
-    paramTextPaint.setUnderlineText(false);
+    ThreadManager.post(new aaxu(this, paramObject, paramBoolean, paramArrayList1, paramArrayList2), 5, null, true);
   }
 }
 

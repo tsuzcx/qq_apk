@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.profile;
 
-import agpn;
-import agpo;
-import agpq;
-import agpr;
-import agps;
-import agpt;
-import agpu;
-import agpv;
+import agua;
+import agub;
+import agud;
+import ague;
+import aguf;
+import agug;
+import aguh;
+import agui;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -69,7 +69,7 @@ public class VipProfileCardBaseActivity
   protected int c;
   public DialogInterface.OnClickListener c;
   public int d;
-  public DialogInterface.OnClickListener d = new agpu(this);
+  public DialogInterface.OnClickListener d = new aguh(this);
   protected int e = 1;
   public int f = 2;
   public int g;
@@ -85,12 +85,12 @@ public class VipProfileCardBaseActivity
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_g_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new agpn(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new agpo(this);
-    this.jdField_a_of_type_JavaLangRunnable = new agpq(this);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new agpr(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new agps(this);
-    this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new agpt(this);
+    this.jdField_a_of_type_AndroidOsHandler = new agua(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new agub(this);
+    this.jdField_a_of_type_JavaLangRunnable = new agud(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new ague(this);
+    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new aguf(this);
+    this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new agug(this);
   }
   
   public int a(String paramString, DownloadListener paramDownloadListener)
@@ -153,12 +153,12 @@ public class VipProfileCardBaseActivity
     b();
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131436753);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131436773);
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       label53:
-      this.app.a(new agpv(this, paramLong1, paramLong2, paramString, paramInt));
+      this.app.a(new agui(this, paramLong1, paramLong2, paramString, paramInt));
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.i);
       return;
     }
@@ -381,31 +381,31 @@ public class VipProfileCardBaseActivity
     String str1;
     if (this.jdField_a_of_type_Int == 2)
     {
-      str2 = getString(2131436723);
+      str2 = getString(2131436743);
       if (this.jdField_c_of_type_Int == 2) {
-        str1 = getString(2131436737);
+        str1 = getString(2131436757);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 0, str2, str1, 2131436738, 2131436739, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 0, str2, str1, 2131436758, 2131436759, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
       if (this.jdField_c_of_type_Int == 1)
       {
-        str1 = getString(2131436733);
+        str1 = getString(2131436753);
       }
       else
       {
-        str1 = getString(2131436735);
+        str1 = getString(2131436755);
         continue;
-        str2 = getString(2131436725);
+        str2 = getString(2131436745);
         if (this.jdField_c_of_type_Int == 2) {
-          str1 = getString(2131436736);
+          str1 = getString(2131436756);
         } else if (this.jdField_c_of_type_Int == 1) {
-          str1 = getString(2131436732);
+          str1 = getString(2131436752);
         } else {
-          str1 = getString(2131436734);
+          str1 = getString(2131436754);
         }
       }
     }
@@ -471,11 +471,11 @@ public class VipProfileCardBaseActivity
     {
       if (this.jdField_a_of_type_Int == 2)
       {
-        VasH5PayUtil.a(this.app, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, 3, "1450000516", "CJCLUBT", getString(2131436943), "svip");
+        VasH5PayUtil.a(this.app, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, 3, "1450000516", "CJCLUBT", getString(2131436963), "svip");
         ReportController.b(this.app, "P_CliOper", "Vip_SummaryCard", "", "0X80044E0", "0X80044E0", 0, 0, "", "", "", VipUtils.a(this.app, this.app.getCurrentAccountUin()));
         return;
       }
-      VasH5PayUtil.a(this.app, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, 3, "1450000515", "LTMCLUB", getString(2131436740), "vip");
+      VasH5PayUtil.a(this.app, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, (String)localObject1, 3, "1450000515", "LTMCLUB", getString(2131436760), "vip");
       ReportController.b(this.app, "P_CliOper", "Vip_SummaryCard", "", "0X80044DF", "0X80044DF", 0, 0, "", "", "", VipUtils.a(this.app, this.app.getCurrentAccountUin()));
       return;
     }

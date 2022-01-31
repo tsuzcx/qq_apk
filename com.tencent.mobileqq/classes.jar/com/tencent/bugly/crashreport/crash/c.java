@@ -226,7 +226,7 @@ public final class c
   
   public final void b(long paramLong)
   {
-    this.t.checkUploadRecordCrash(0L);
+    this.t.checkUploadRecordCrash(paramLong);
   }
   
   public final void c()

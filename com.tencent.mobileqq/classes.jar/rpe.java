@@ -1,21 +1,49 @@
-import java.io.File;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class rpe
-  implements Comparator
+public class rpe
+  extends FriendListObserver
 {
-  rpe(rpc paramrpc) {}
+  public rpe(AddRequestActivity paramAddRequestActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
+    if (AddRequestActivity.a(this.a))
+    {
+      if (!paramBoolean) {
+        this.a.a(2130838748, this.a.getString(2131434480));
+      }
     }
-    if (l < 0L) {
-      return 1;
+    else {
+      return;
     }
-    return 0;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("base_uin", paramString);
+    String str = this.a.b;
+    if (TextUtils.isEmpty(this.a.b)) {
+      str = this.a.a;
+    }
+    localBundle.putString("base_nick", str);
+    localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
+    localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
+    if (AddRequestActivity.a(this.a) != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localBundle.putBoolean("isFromWzry", paramBoolean);
+      AutoRemarkActivity.a(this.a, 0, paramString, 0L, localBundle);
+      return;
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.equals(paramString))) {
+      ThreadManager.post(new rpf(this), 5, null, true);
+    }
   }
 }
 

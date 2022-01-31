@@ -84,7 +84,7 @@ public abstract class MapActivity
     }
   }
   
-  public void setMapView(MapView paramMapView)
+  protected void setMapView(MapView paramMapView)
   {
     this.mapViewList.add(paramMapView);
     paramMapView.onCreate(this.mysavedInstanceState);

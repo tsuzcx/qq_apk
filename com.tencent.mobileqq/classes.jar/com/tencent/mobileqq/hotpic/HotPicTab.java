@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.hotpic;
 
-import adra;
-import adrb;
-import adrc;
-import adre;
+import adzj;
+import adzk;
+import adzl;
+import adzn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -41,10 +41,10 @@ public class HotPicTab
   private static final int v;
   private float jdField_a_of_type_Float;
   int jdField_a_of_type_Int = -1;
-  adrc jdField_a_of_type_Adrc;
+  adzl jdField_a_of_type_Adzl;
   private Context jdField_a_of_type_AndroidContentContext;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new adra(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new adzj(this);
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Set jdField_a_of_type_JavaUtilSet = new HashSet();
   private int jdField_b_of_type_Int = -1;
@@ -59,8 +59,8 @@ public class HotPicTab
     s = (int)(4.0F * localResources.getDisplayMetrics().density + 0.5F);
     t = 14;
     jdField_b_of_type_Float = localResources.getDisplayMetrics().density;
-    u = localResources.getColor(2131494220);
-    v = localResources.getColor(2131494214);
+    u = localResources.getColor(2131494226);
+    v = localResources.getColor(2131494220);
   }
   
   public HotPicTab(Context paramContext, AttributeSet paramAttributeSet)
@@ -78,9 +78,9 @@ public class HotPicTab
   
   public HotPicTagInfo a()
   {
-    if (this.jdField_a_of_type_Adrc != null)
+    if (this.jdField_a_of_type_Adzl != null)
     {
-      Object localObject = this.jdField_a_of_type_Adrc.a;
+      Object localObject = this.jdField_a_of_type_Adzl.a;
       if (((List)localObject).size() > this.m)
       {
         localObject = (HotPicTagInfo)((List)localObject).get(this.m);
@@ -97,7 +97,7 @@ public class HotPicTab
     setAdapter(null);
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     setOnItemClickListener(null);
-    this.jdField_a_of_type_Adrc = null;
+    this.jdField_a_of_type_Adzl = null;
     this.jdField_a_of_type_JavaUtilSet.clear();
   }
   
@@ -132,9 +132,9 @@ public class HotPicTab
         this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(i));
       }
     }
-    this.jdField_a_of_type_Adrc = new adrc(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
+    this.jdField_a_of_type_Adzl = new adzl(this, paramList, this.jdField_a_of_type_JavaUtilArrayList, bool1);
     this.jdField_a_of_type_Int = paramInt;
-    setAdapter(this.jdField_a_of_type_Adrc);
+    setAdapter(this.jdField_a_of_type_Adzl);
   }
   
   protected void a(boolean paramBoolean)
@@ -213,7 +213,7 @@ public class HotPicTab
         localView = getSelectedView();
         if ((localView != null) && (localView.getTag() != null))
         {
-          localObject = ((adre)localView.getTag()).a;
+          localObject = ((adzn)localView.getTag()).a;
           m = (int)(localView.getLeft() + ((TextView)localObject).getLeft() - jdField_b_of_type_Float * 5.0F);
           k = localView.getLeft();
           k = (int)(((TextView)localObject).getRight() + k + jdField_b_of_type_Float * 5.0F);
@@ -239,10 +239,10 @@ public class HotPicTab
         if ((localView == null) || (localView.getTag() == null)) {
           break label314;
         }
-        localObject = (adre)localView.getTag();
-        j = (int)(localView.getLeft() + ((adre)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
+        localObject = (adzn)localView.getTag();
+        j = (int)(localView.getLeft() + ((adzn)localObject).a.getLeft() - jdField_b_of_type_Float * 5.0F);
         i = localView.getLeft();
-        i = (int)(((adre)localObject).a.getRight() + i + jdField_b_of_type_Float * 5.0F);
+        i = (int)(((adzn)localObject).a.getRight() + i + jdField_b_of_type_Float * 5.0F);
         break;
         m = 0;
         break label121;
@@ -343,7 +343,7 @@ public class HotPicTab
       break;
       label324:
       if ((k == -1) && (m == -1)) {
-        ViewCompat.postOnAnimation(this, new adrb(this));
+        ViewCompat.postOnAnimation(this, new adzk(this));
       } else {
         requestLayout();
       }

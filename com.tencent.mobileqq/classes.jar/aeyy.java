@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnPreparedListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback;
+import java.util.ArrayList;
 
-class aeyy
-  implements Runnable
+public class aeyy
+  implements ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback
 {
-  aeyy(aeyx paramaeyx) {}
+  public aeyy(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a);
+    int i = 0;
+    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
+    {
+      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
+      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
+      {
+        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
+        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
+        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
+      }
+      i += 1;
     }
   }
 }

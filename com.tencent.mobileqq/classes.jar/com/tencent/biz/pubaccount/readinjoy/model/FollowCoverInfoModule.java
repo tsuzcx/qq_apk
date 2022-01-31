@@ -11,9 +11,9 @@ import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import lre;
-import lrf;
-import lrg;
+import lui;
+import luj;
+import luk;
 
 public class FollowCoverInfoModule
 {
@@ -32,7 +32,7 @@ public class FollowCoverInfoModule
   private void b()
   {
     if (this.jdField_a_of_type_Int == -1) {
-      ThreadManager.executeOnFileThread(new lre(this));
+      ThreadManager.executeOnFileThread(new lui(this));
     }
   }
   
@@ -77,7 +77,7 @@ public class FollowCoverInfoModule
       if (QLog.isColorLevel()) {
         QLog.d("FollowCoverInfoModule", 2, "topic update exp clear");
       }
-      ThreadManager.executeOnFileThread(new lrg(this));
+      ThreadManager.executeOnFileThread(new luk(this));
       return;
     }
     finally {}
@@ -134,7 +134,7 @@ public class FollowCoverInfoModule
     label141:
     QLog.d("FollowCoverInfoModule", 2, localStringBuilder.toString());
     label151:
-    ThreadManager.executeOnFileThread(new lrf(this, paramTopicRecommendFeedsInfo));
+    ThreadManager.executeOnFileThread(new luj(this, paramTopicRecommendFeedsInfo));
   }
   
   public void a(String paramString)

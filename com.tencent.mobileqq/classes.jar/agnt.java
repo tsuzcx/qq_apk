@@ -1,18 +1,41 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ar.ARScanFragment;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.config.WorldCupReport;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-class agnt
-  implements Runnable
+public class agnt
+  implements View.OnClickListener
 {
-  agnt(agns paramagns) {}
+  public agnt(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PersonalityLabelGalleryActivity.a(this.a.a, 8);
+    ScanTorchActivity.y(this.a, true);
+    ScanTorchActivity.a(this.a, "operateBtnOnClick", false);
+    ScanTorchActivity.A(this.a);
+    if (!ScanTorchActivity.j(this.a)) {
+      ScanTorchActivity.h(this.a);
+    }
+    do
+    {
+      return;
+      WorldCupReport.b();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a().a() == 0))
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(324);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(324);
+        return;
+      }
+    } while (((this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a().a() == 1)) || (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment == null) || (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a() == null) || (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a().a() != 2));
+    ScanTorchActivity.a(this.a, "operateBtn");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agnt
  * JD-Core Version:    0.7.0.1
  */

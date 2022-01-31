@@ -3,12 +3,12 @@ package com.tencent.biz.qqstory.database;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ncp;
+import ngk;
 
 public class DiscoverBannerVideoEntry$BannerInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ncp();
+  public static final Parcelable.Creator CREATOR = new ngk();
   public String a;
   public String b;
   

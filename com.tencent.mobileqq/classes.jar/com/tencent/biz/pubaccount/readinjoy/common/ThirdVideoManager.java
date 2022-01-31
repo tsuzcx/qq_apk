@@ -19,8 +19,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import lla;
-import llc;
+import lnp;
+import lnr;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import org.json.JSONException;
@@ -202,9 +202,9 @@ public class ThirdVideoManager
     ArticleCenter.GetVidByUrlRequest localGetVidByUrlRequest = new ArticleCenter.GetVidByUrlRequest();
     ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString);
     localGetVidByUrlRequest.url.set(localByteStringMicro);
-    localGetVidByUrlRequest.mv.set(ByteStringMicro.copyFromUtf8("7.6.3,3,3565"));
+    localGetVidByUrlRequest.mv.set(ByteStringMicro.copyFromUtf8("7.6.8,3,3615"));
     localNewIntent.putExtra("data", localGetVidByUrlRequest.toByteArray());
-    localNewIntent.setObserver(new llc(this, l, localNewIntent, paramUrlToUUIDCallback, paramString));
+    localNewIntent.setObserver(new lnr(this, l, localNewIntent, paramUrlToUUIDCallback, paramString));
     localAppRuntime.startServlet(localNewIntent);
   }
   
@@ -233,36 +233,44 @@ public class ThirdVideoManager
       ReadInJoyUtils.c(localAppRuntime.getApplication(), ReadInJoyUtils.a(), true, paramString2.a());
       return;
     }
-    Object localObject2 = a(paramString1);
+    Object localObject3 = a(paramString1);
     Object localObject1;
     boolean bool;
-    if (localObject2 != null)
+    Object localObject2;
+    if (localObject3 != null)
     {
-      localObject1 = ((VidUrl)localObject2).jdField_b_of_type_JavaLangString;
-      bool = ((VidUrl)localObject2).jdField_a_of_type_Boolean;
-      localObject2 = ((VidUrl)localObject2).c;
+      localObject1 = ((VidUrl)localObject3).jdField_b_of_type_JavaLangString;
+      bool = ((VidUrl)localObject3).jdField_a_of_type_Boolean;
+      localObject2 = ((VidUrl)localObject3).c;
     }
     for (;;)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("Q.readinjoy.video.TAG", 2, "cache hit,  getUrlByVid vid : " + paramString1 + " url:" + (String)localObject1);
+          if ("cache hit,  getUrlByVid vid : " + paramString1 + " url:" + (String)localObject1 + localObject3 != null) {
+            break label247;
+          }
         }
-        if (paramUUIDToUrlCallback == null) {
-          break;
+        label247:
+        for (paramString2 = "";; paramString2 = ((VidUrl)localObject3).toString())
+        {
+          QLog.d("Q.readinjoy.video.TAG", 2, paramString2);
+          if (paramUUIDToUrlCallback == null) {
+            break;
+          }
+          this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
+          paramUUIDToUrlCallback.a((String)localObject1, paramString1, 0, bool, (String)localObject2);
+          return;
         }
-        this.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-        paramUUIDToUrlCallback.a((String)localObject1, paramString1, 0, bool, (String)localObject2);
-        return;
       }
       long l = System.currentTimeMillis();
       localObject1 = new NewIntent(localAppRuntime.getApplication(), PublicAccountServlet.class);
       ((NewIntent)localObject1).putExtra("cmd", paramString2);
       localObject2 = new ArticleCenter.GetUrlByVidRequest();
-      ByteStringMicro localByteStringMicro = ByteStringMicro.copyFromUtf8(paramString1);
-      ((ArticleCenter.GetUrlByVidRequest)localObject2).vid.set(localByteStringMicro);
-      ((ArticleCenter.GetUrlByVidRequest)localObject2).mv.set(ByteStringMicro.copyFromUtf8("7.6.3,3,3565"));
+      localObject3 = ByteStringMicro.copyFromUtf8(paramString1);
+      ((ArticleCenter.GetUrlByVidRequest)localObject2).vid.set((ByteStringMicro)localObject3);
+      ((ArticleCenter.GetUrlByVidRequest)localObject2).mv.set(ByteStringMicro.copyFromUtf8("7.6.8,3,3615"));
       int i = NetUtil.a(null);
       ((ArticleCenter.GetUrlByVidRequest)localObject2).net_type.set(i);
       ((ArticleCenter.GetUrlByVidRequest)localObject2).video_type.set(0);
@@ -271,7 +279,7 @@ public class ThirdVideoManager
         QLog.d("Q.readinjoy.video.TAG", 2, "sendUUIDToUrlRequest netType : " + i + ", vid : " + paramString1);
       }
       ((NewIntent)localObject1).putExtra("data", ((ArticleCenter.GetUrlByVidRequest)localObject2).toByteArray());
-      ((NewIntent)localObject1).setObserver(new lla(this, (NewIntent)localObject1, l, paramUUIDToUrlCallback, paramString1, paramString2, localAppRuntime));
+      ((NewIntent)localObject1).setObserver(new lnp(this, (NewIntent)localObject1, l, paramUUIDToUrlCallback, paramString1, paramString2, localAppRuntime));
       localAppRuntime.startServlet((NewIntent)localObject1);
       return;
       localObject2 = null;

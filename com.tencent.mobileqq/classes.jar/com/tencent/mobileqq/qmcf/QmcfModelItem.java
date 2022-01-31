@@ -2,8 +2,8 @@ package com.tencent.mobileqq.qmcf;
 
 public class QmcfModelItem
 {
+  public int a;
   public String a;
-  public boolean a;
   public String b;
   public String c;
 }

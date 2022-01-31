@@ -1,32 +1,17 @@
-import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.utils.TroopNameHelper;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class zoq
+public final class zoq
   implements Runnable
 {
-  public zoq(TroopManager paramTroopManager, TroopMemberInfo paramTroopMemberInfo, Handler paramHandler, String paramString1, String paramString2, boolean paramBoolean) {}
+  public zoq(QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.getEntityManagerFactory().createEntityManager();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      localEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
-    }
-    for (;;)
-    {
-      localEntityManager.a();
-      this.jdField_a_of_type_AndroidOsHandler.post(new zor(this));
-      if (this.jdField_a_of_type_Boolean) {
-        TroopNameHelper.a(this.jdField_a_of_type_JavaLangString);
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;
-      localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 1, 0, "", "", "", "");
   }
 }
 

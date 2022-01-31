@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.SecurityPickproofActivity;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.vas.VipGrayConfigHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class trg
   implements Runnable
 {
-  public trg(SecurityPickproofActivity paramSecurityPickproofActivity) {}
+  public trg(QQSettingMe paramQQSettingMe) {}
   
   public void run()
   {
-    HttpDownloadUtil.a(this.a.a, this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "init parse config json");
+    }
+    VipGrayConfigHelper.a().a(this.a.a);
   }
 }
 

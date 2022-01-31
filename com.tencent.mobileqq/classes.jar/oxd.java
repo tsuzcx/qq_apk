@@ -1,18 +1,30 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Task;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import com.tencent.biz.qrcode.activity.LoginManagerActivity;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class oxd
-  extends VideoCombineHelper.Task
+  extends DownloadListener
 {
-  public oxd(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.TaskListener paramTaskListener, String paramString)
+  public oxd(LoginManagerActivity paramLoginManagerActivity) {}
+  
+  public void onCancel(DownloadTask paramDownloadTask)
   {
-    super(paramVideoCombineHelper, paramTaskListener, paramString);
+    LoginManagerActivity.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginManagerActivity", 2, "downloadTimZipFile cancel");
+    }
   }
   
-  public void a()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this);
+    LoginManagerActivity.a(this.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginManagerActivity", 2, "downloadTimZipFile onDone status: " + paramDownloadTask.a() + ", errMsg :" + paramDownloadTask.b + " code :" + paramDownloadTask.a);
+    }
+    if (paramDownloadTask.a() == 3) {
+      this.a.runOnUiThread(new oxe(this));
+    }
   }
 }
 

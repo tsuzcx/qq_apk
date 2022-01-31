@@ -1,20 +1,58 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import cooperation.thirdpay.ThirdPayGate;
+import com.tencent.component.network.downloader.strategy.IPConfigStrategy;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import common.config.service.QzoneConfig.QzoneConfigChangeListener;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class anew
-  implements DialogInterface.OnClickListener
+  extends IPConfigStrategy
+  implements QzoneConfig.QzoneConfigChangeListener
 {
-  public anew(ThirdPayGate paramThirdPayGate, Bundle paramBundle, Activity paramActivity) {}
+  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
+  private ReadWriteLock jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock = new ReentrantReadWriteLock();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public anew()
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isactivityfinish")) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    a(2);
+    QzoneConfig.getInstance().addListener(this);
+  }
+  
+  private void a(Map paramMap, String paramString1, String paramString2)
+  {
+    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
+      return;
     }
+    String str = paramString1 + "||" + paramString2;
+    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZonePluginDownloadBackupConfig", 2, "addConfigItem, newKey=" + str + ", content=" + paramString1);
+    }
+    paramMap.put(str, paramString1);
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "DownloadBackupIP");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_backupIplist");
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadBackupIP_a");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_backupIplist_a");
+    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadBackupIP_b");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_backupIplist_b");
+    a(this.jdField_a_of_type_JavaUtilMap, "VideoSvrList", "DownloadBackupIPVideo");
+    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "video_backupIplist");
+    super.a(this.jdField_a_of_type_JavaUtilMap);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneIPStracyConfig", 2, "QZonePluginDownloadBackupConfig receive change");
+    }
+    b();
   }
 }
 

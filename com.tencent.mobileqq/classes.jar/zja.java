@@ -1,20 +1,71 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
 
-public class zja
-  implements Runnable
+public final class zja
+  implements Comparator
 {
-  public zja(PhoneContactManagerImp paramPhoneContactManagerImp, int paramInt) {}
-  
-  public void run()
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    synchronized (PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp))
+    int i = 0;
+    if ((paramEntity1 instanceof Groups))
     {
-      Iterator localIterator = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).iterator();
-      if (localIterator.hasNext()) {
-        ((PhoneContactManager.IPhoneContactListener)localIterator.next()).c(this.jdField_a_of_type_Int);
+      paramEntity1 = (Groups)paramEntity1;
+      paramEntity2 = (Groups)paramEntity2;
+      return paramEntity1.seqid - paramEntity2.seqid;
+    }
+    Object localObject = "-";
+    String str = "-";
+    int j;
+    if ((paramEntity1 instanceof Friends))
+    {
+      paramEntity1 = (Friends)paramEntity1;
+      localObject = (Friends)paramEntity2;
+      j = paramEntity1.mComparePartInt;
+      paramEntity2 = paramEntity1.mCompareSpell;
+      i = ((Friends)localObject).mComparePartInt;
+      paramEntity1 = ((Friends)localObject).mCompareSpell;
+    }
+    for (;;)
+    {
+      return ContactSorter.a(j, paramEntity2, i, paramEntity1);
+      if ((paramEntity1 instanceof TroopInfo))
+      {
+        paramEntity1 = (TroopInfo)paramEntity1;
+        localObject = (TroopInfo)paramEntity2;
+        j = paramEntity1.mComparePartInt;
+        i = ((TroopInfo)localObject).mComparePartInt;
+        paramEntity2 = paramEntity1.mCompareSpell;
+        paramEntity1 = ((TroopInfo)localObject).mCompareSpell;
+      }
+      else if ((paramEntity1 instanceof DiscussionInfo))
+      {
+        paramEntity1 = (DiscussionInfo)paramEntity1;
+        localObject = (DiscussionInfo)paramEntity2;
+        j = paramEntity1.mComparePartInt;
+        i = ((DiscussionInfo)localObject).mComparePartInt;
+        paramEntity2 = paramEntity1.mCompareSpell;
+        paramEntity1 = ((DiscussionInfo)localObject).mCompareSpell;
+      }
+      else if ((paramEntity1 instanceof PublicAccountInfo))
+      {
+        paramEntity1 = (PublicAccountInfo)paramEntity1;
+        localObject = (PublicAccountInfo)paramEntity2;
+        j = paramEntity1.mComparePartInt;
+        i = ((PublicAccountInfo)localObject).mComparePartInt;
+        paramEntity2 = paramEntity1.mCompareSpell;
+        paramEntity1 = ((PublicAccountInfo)localObject).mCompareSpell;
+      }
+      else
+      {
+        j = 0;
+        paramEntity1 = str;
+        paramEntity2 = (Entity)localObject;
       }
     }
   }

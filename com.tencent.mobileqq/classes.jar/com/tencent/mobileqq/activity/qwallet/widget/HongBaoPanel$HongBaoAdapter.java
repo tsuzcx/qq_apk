@@ -63,7 +63,7 @@ class HongBaoPanel$HongBaoAdapter
         return;
         localObject1 = (PanelData)this.mDatas.get(paramInt);
         HongBaoPanel.access$300(this.this$0, paramMyViewHolder.hongbaoText, ((PanelData)this.mDatas.get(paramInt)).b, HongBaoPanel.access$200(this.this$0));
-        paramMyViewHolder.hongbaoPic.setImageResource(2130841061);
+        paramMyViewHolder.hongbaoPic.setImageResource(2130841082);
         if (!StringUtil.a(((PanelData)localObject1).c))
         {
           paramMyViewHolder.hongbaoPic.setTag(((PanelData)localObject1).c);

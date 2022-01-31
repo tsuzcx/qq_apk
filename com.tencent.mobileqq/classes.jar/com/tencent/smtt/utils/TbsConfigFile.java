@@ -496,8 +496,8 @@ public class TbsConfigFile
     //   3: astore_1
     //   4: aload_0
     //   5: invokespecial 93	com/tencent/smtt/utils/TbsConfigFile:getConfigFile	()Ljava/io/File;
-    //   8: astore 4
-    //   10: aload 4
+    //   8: astore 5
+    //   10: aload 5
     //   12: ifnonnull +33 -> 45
     //   15: new 95	java/lang/NullPointerException
     //   18: dup
@@ -519,25 +519,25 @@ public class TbsConfigFile
     //   48: dup
     //   49: new 101	java/io/FileInputStream
     //   52: dup
-    //   53: aload 4
+    //   53: aload 5
     //   55: invokespecial 104	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   58: invokespecial 107	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   61: astore_2
     //   62: new 109	java/util/Properties
     //   65: dup
     //   66: invokespecial 110	java/util/Properties:<init>	()V
-    //   69: astore 5
-    //   71: aload 5
+    //   69: astore 4
+    //   71: aload 4
     //   73: aload_2
     //   74: invokevirtual 113	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   77: aload 5
+    //   77: aload 4
     //   79: ldc 11
     //   81: aload_0
     //   82: getfield 45	com/tencent/smtt/utils/TbsConfigFile:mForceUseSystemWebview	Z
     //   85: invokestatic 139	java/lang/Boolean:toString	(Z)Ljava/lang/String;
     //   88: invokevirtual 143	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   91: pop
-    //   92: aload 5
+    //   92: aload 4
     //   94: ldc 14
     //   96: aload_0
     //   97: getfield 47	com/tencent/smtt/utils/TbsConfigFile:mForceUseSystemWebview_result	Z
@@ -548,11 +548,11 @@ public class TbsConfigFile
     //   110: dup
     //   111: new 147	java/io/FileOutputStream
     //   114: dup
-    //   115: aload 4
+    //   115: aload 5
     //   117: invokespecial 148	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   120: invokespecial 151	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   123: astore_1
-    //   124: aload 5
+    //   124: aload 4
     //   126: aload_1
     //   127: aconst_null
     //   128: invokevirtual 155	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
@@ -653,10 +653,10 @@ public class TbsConfigFile
     //   226	11	3	localObject8	Object
     //   243	1	3	localThrowable2	Throwable
     //   249	1	3	localThrowable3	Throwable
-    //   8	153	4	localFile	File
+    //   69	92	4	localProperties	java.util.Properties
     //   223	5	4	localObject9	Object
     //   233	5	4	localObject10	Object
-    //   69	56	5	localProperties	java.util.Properties
+    //   8	108	5	localFile	File
     // Exception table:
     //   from	to	target	type
     //   15	23	31	java/lang/Exception

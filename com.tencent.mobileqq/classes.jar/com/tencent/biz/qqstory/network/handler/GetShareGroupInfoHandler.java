@@ -54,7 +54,7 @@ public class GetShareGroupInfoHandler
   public void a(@NonNull GetShareGroupInfoRequest paramGetShareGroupInfoRequest, @Nullable GetShareGroupInfoResponse paramGetShareGroupInfoResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     paramGetShareGroupInfoRequest = new GetShareGroupInfoHandler.GetShareGroupInfoEvent();
-    paramGetShareGroupInfoRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    paramGetShareGroupInfoRequest.errorInfo = paramErrorMessage;
     paramGetShareGroupInfoRequest.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
     if ((paramErrorMessage.isSuccess()) && (paramGetShareGroupInfoResponse != null))
     {

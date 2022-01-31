@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 
 public class uqo
   implements Runnable
 {
-  public uqo(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public uqo(MediaPlayerManager paramMediaPlayerManager, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.b();
+    if (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager, this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.d();
+    }
   }
 }
 

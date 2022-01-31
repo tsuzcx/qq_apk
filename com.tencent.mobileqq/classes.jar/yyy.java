@@ -1,29 +1,39 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.apollo.script.SpriteContext;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class yyy
-  implements View.OnClickListener
+  implements Runnable
 {
-  public yyy(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData) {}
+  public yyy(SpriteUIHandler paramSpriteUIHandler, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", ApolloConstant.I + "&actionId=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId + "&_bid=2282");
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
-    ApolloPanel.c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
+    try
+    {
+      MqqHandler localMqqHandler = SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().a();
+      if (1 == this.jdField_a_of_type_Int)
+      {
+        localMqqHandler.obtainMessage(47, (int)((float)DeviceInfoUtil.i() / 7.0F / 2.84D) + 40, 0).sendToTarget();
+        return;
+      }
+      if (2 == this.jdField_a_of_type_Int)
+      {
+        localMqqHandler.obtainMessage(47, (int)((float)DeviceInfoUtil.i() / 7.0F) + 40, 0).sendToTarget();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("cmshow_scripted_SpriteUIHandler", 1, localException, new Object[0]);
+      return;
+    }
+    if (3 == this.jdField_a_of_type_Int) {
+      localException.sendEmptyMessage(62);
     }
   }
 }

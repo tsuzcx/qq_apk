@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import java.util.List;
 
 public class lsc
   implements Runnable
 {
-  public lsc(UserOperationModule paramUserOperationModule, UserOperationModule.Ox978RespCallBack paramOx978RespCallBack, String paramString, int paramInt) {}
+  public lsc(ArticleInfoModule paramArticleInfoModule, List paramList, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelUserOperationModule$Ox978RespCallBack.a(false, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (List localList = ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean); this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a == null; localList = this.jdField_a_of_type_JavaUtilList) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.post(new lsd(this, localList));
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aafd;
-import aafe;
-import aaff;
-import aafg;
-import aafh;
-import aafi;
-import aafj;
-import aafk;
-import aafl;
-import aafm;
+import aalu;
+import aalv;
+import aalw;
+import aalx;
+import aaly;
+import aalz;
+import aama;
+import aamb;
+import aamc;
+import aamd;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
@@ -143,13 +143,13 @@ public class ARCloudControl
   {
     QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation.");
     this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult = paramARCloudRecogResult;
-    paramARCloudRecogResult = new aafk(this, 0, true, true, 3000L, true, false, "QQARScan");
+    paramARCloudRecogResult = new aamb(this, 0, true, true, 3000L, true, false, "QQARScan");
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
       }
-      Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new aafl(this, paramARCloudRecogResult));
+      Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new aamc(this, paramARCloudRecogResult));
       localMessage.what = 2;
       this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
     }
@@ -172,11 +172,11 @@ public class ARCloudControl
         if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
           this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
         }
-        Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new aafi(this));
+        Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new aalz(this));
         localMessage.what = 1;
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
       }
-      this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a(paramARCloudReqInfo, new aafj(this, l1, paramARCloudReqInfo));
+      this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a(paramARCloudReqInfo, new aama(this, l1, paramARCloudReqInfo));
       return;
     }
   }
@@ -209,11 +209,11 @@ public class ARCloudControl
         if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
           this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
         }
-        Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new aafm(this));
+        Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new aamd(this));
         localMessage.what = 2;
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
       }
-      this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a(paramString, paramInt1, paramInt2, new aafe(this));
+      this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a(paramString, paramInt1, paramInt2, new aalv(this));
     }
   }
   
@@ -222,7 +222,7 @@ public class ARCloudControl
     if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPretreatmentManager != null)
     {
       ARCloudReqInfo localARCloudReqInfo = new ARCloudReqInfo();
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPretreatmentManager.a(paramArrayOfByte, paramArrayList, new aafh(this, localARCloudReqInfo), this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPretreatmentManager.a(paramArrayOfByte, paramArrayList, new aaly(this, localARCloudReqInfo), this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int);
     }
   }
   
@@ -378,7 +378,7 @@ public class ARCloudControl
         this.jdField_l_of_type_Long = System.currentTimeMillis();
       }
       if (this.jdField_i_of_type_Boolean) {
-        ThreadManager.getUIHandler().post(new aafd(this));
+        ThreadManager.getUIHandler().post(new aalu(this));
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl$ARCloudControlCallback != null) {
@@ -438,7 +438,7 @@ public class ARCloudControl
       this.jdField_f_of_type_Long = (System.currentTimeMillis() - this.jdField_k_of_type_Long);
       this.jdField_a_of_type_Boolean = false;
       if (this.jdField_i_of_type_Boolean) {
-        ThreadManager.getUIHandler().post(new aaff(this));
+        ThreadManager.getUIHandler().post(new aalw(this));
       }
       if (i1 != 0) {}
       for (;;)
@@ -453,7 +453,7 @@ public class ARCloudControl
           ARDebugReport.a().a(l1, this.jdField_m_of_type_Long);
           this.jdField_f_of_type_Boolean = true;
         }
-        a(new aafg(this, paramArrayOfByte));
+        a(new aalx(this, paramArrayOfByte));
         return;
         paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect.a();
       }

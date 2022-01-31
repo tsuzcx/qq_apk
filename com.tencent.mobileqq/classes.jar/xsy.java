@@ -1,25 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class xsy
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+  implements DialogInterface.OnClickListener
 {
-  public xsy(PtvTemplateAdapter paramPtvTemplateAdapter) {}
+  public xsy(LoginView paramLoginView, String paramString1, String paramString2, String paramString3) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.post(new xta(this, paramPtvTemplateInfo, paramInt));
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    this.a.a.post(new xsz(this, paramPtvTemplateInfo, paramBoolean));
-    if (!paramBoolean) {
-      FlowCameraMqqAction.a("", "0X80075BB", "", "", "", "");
-    }
+    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a, "dc00898", "", "", "0X8006796", "0X8006796", 0, 0, "", "", "", "");
+    ThreadManager.postImmediately(new xsz(this), null, false);
   }
 }
 

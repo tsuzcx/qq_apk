@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.dating.SayHelloMsgListActivity;
+import com.tencent.mobileqq.nearby.NearbyRelevantHandler;
 import java.util.List;
 
-class acfu
+public class acfu
   implements Runnable
 {
-  acfu(acft paramacft, List paramList) {}
+  public acfu(SayHelloMsgListActivity paramSayHelloMsgListActivity, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Acft.a.a(this.jdField_a_of_type_JavaUtilList);
+    ((NearbyRelevantHandler)this.jdField_a_of_type_ComTencentMobileqqDatingSayHelloMsgListActivity.app.a(66)).a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

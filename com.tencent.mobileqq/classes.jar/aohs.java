@@ -1,17 +1,14 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
 
-public final class aohs
-  implements Runnable
+public class aohs
+  implements HorizontalSelectColorLayout.OnUndoViewClickListener
 {
-  public aohs(String paramString) {}
+  public aohs(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    String str = GloableValue.a();
-    if ((str != null) && (!"".equals(str)) && (str.contains("/Android/data/com.tencent.mobileqq/qq/video"))) {
-      RMVideoStateMgr.a(str, this.a, false);
-    }
+    this.a.c();
   }
 }
 

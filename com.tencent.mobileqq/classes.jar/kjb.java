@@ -1,38 +1,26 @@
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.utils.SensorReport;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
 
-public class kjb
-  implements AbsListView.OnScrollListener
+public final class kjb
+  extends BroadcastReceiver
 {
-  public kjb(PoiMapActivity paramPoiMapActivity) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
-      }
-      if ((!this.a.f) && (this.a.d))
-      {
-        this.a.f = true;
-        paramAbsListView = this.a;
-        paramAbsListView.n += 1;
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.n);
-        }
-        this.a.a(this.a.h, this.a.i, this.a.c, "", this.a.n, 20);
-      }
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    while (!SensorReport.a.equals(paramIntent.getAction())) {
+      return;
     }
+    paramContext = (HashMap)paramIntent.getSerializableExtra("params");
+    UserAction.onUserAction(SensorReport.a, true, -1L, -1L, paramContext, true);
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kjb
  * JD-Core Version:    0.7.0.1
  */

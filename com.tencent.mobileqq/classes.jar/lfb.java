@@ -1,23 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class lfb
-  extends VideoShareListener
+class lfb
+  implements AsyncBack
 {
-  public lfb(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  lfb(ley paramley) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void loaded(String paramString, int paramInt)
   {
-    if (!paramBoolean1) {
-      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
     }
-    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyVideoSubChannelActivity.a(this.a).b();
-    ReadInJoyVideoSubChannelActivity.a(this.a, false);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

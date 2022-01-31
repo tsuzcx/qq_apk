@@ -1,18 +1,41 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 class aczm
-  implements Runnable
+  implements View.OnClickListener
 {
-  aczm(aczl paramaczl, String paramString) {}
+  aczm(aczl paramaczl, View paramView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((paramView instanceof ImageHolder))
     {
-      UniformDownloadUtil.a(this.jdField_a_of_type_Aczl.jdField_a_of_type_JavaLangString);
-      return;
+      paramView = (FileInfo)((ImageHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_Aczl.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity, null);
+      localActionSheet.a(" 删除本地文件后将无法找回，是否继续？");
+      localActionSheet.a("删除", 3);
+      localActionSheet.d("取消");
+      localActionSheet.a(new aczn(this, paramView, localActionSheet));
+      localActionSheet.show();
     }
-    UniformDownloadUtil.b(this.jdField_a_of_type_Aczl.jdField_a_of_type_JavaLangString);
+    do
+    {
+      return;
+      if ((paramView instanceof QfileLocalFileBaseExpandableListAdapter.LocalItemHolder))
+      {
+        paramView = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "unknow Object");
   }
 }
 

@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
-import com.tencent.mobileqq.arcard.ARBlessWordFragment;
-import com.tencent.mobileqq.arcard.ARCardUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-class aalg
-  implements Runnable
+public final class aalg
+  implements Parcelable.Creator
 {
-  aalg(aalf paramaalf, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo) {}
-  
-  public void run()
+  public ArEffectConfig a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Aalf.a.b();
-    String str = this.jdField_a_of_type_ComTencentMobileqqArArcloudPbARRelationShipUploadRusult$UploadPicExtInfo.bytes_download_url.get().toStringUtf8();
-    ARCardUtils.a(this.jdField_a_of_type_Aalf.a.getActivity(), 0, str, "", 2, ARBlessWordFragment.a(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.b(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.c(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.d(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.e(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.f(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.g(this.jdField_a_of_type_Aalf.a));
+    return new ArEffectConfig(paramParcel);
+  }
+  
+  public ArEffectConfig[] a(int paramInt)
+  {
+    return new ArEffectConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aalg
  * JD-Core Version:    0.7.0.1
  */

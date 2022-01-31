@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.worldcup;
 
-import akxo;
-import akxp;
-import akxq;
-import akxs;
-import akxt;
-import akxu;
-import akxw;
-import akxx;
+import alff;
+import alfg;
+import alfh;
+import alfj;
+import alfk;
+import alfl;
+import alfm;
+import alfo;
+import alfp;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Paint;
@@ -49,7 +50,7 @@ public class ARWorldCupGameLogicManager
   public volatile ARWorldCupVideoInfo.BigScreenShowInfo a;
   volatile ARWorldCupVideoInfo.PlayGuideShowInfo jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupVideoInfo$PlayGuideShowInfo = null;
   private ARWorldCupVideoInfo jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupVideoInfo;
-  boolean jdField_a_of_type_Boolean = false;
+  public boolean a;
   
   static
   {
@@ -60,11 +61,12 @@ public class ARWorldCupGameLogicManager
   {
     this.jdField_a_of_type_Float = -1.0F;
     this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupVideoInfo$BigScreenShowInfo = null;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public static ARWorldCupGameLogicManager a()
   {
-    return akxx.a();
+    return alfp.a();
   }
   
   private void a(float paramFloat)
@@ -133,36 +135,100 @@ public class ARWorldCupGameLogicManager
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog = new ARWorldCupBackConfirmDialog(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    if (this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager$RenderProxy != null) {}
-    for (Object localObject = this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager$RenderProxy.b() + "dialogImg.png";; localObject = null)
+    Object localObject1;
+    Object localObject2;
+    if (this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager$RenderProxy != null)
     {
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager$RenderProxy.b() + "dialogImg.png";
+      localObject2 = a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager$RenderProxy.b());
+      if (localObject2 != null) {
+        localObject2 = ((ARWorldCupVideoInfo)localObject2).a(paramInt);
+      }
+    }
+    for (;;)
+    {
+      String str1;
+      String str2;
       if (paramInt == 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.a("退出活动", "继续游戏", "任意门已打开，穿越时空留下你的精彩瞬间，是否要放弃？", (String)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.a(new akxt(this));
-        ReportController.b(null, "dc00898", "", "", "0X8009320", "0X8009320", 1, 0, "1", "", "", "");
-        this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.a();
-        this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.setOnDismissListener(this);
-        this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.show();
-        localObject = this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.getWindow().getAttributes();
-        ((WindowManager.LayoutParams)localObject).width = -1;
-        ((WindowManager.LayoutParams)localObject).height = -1;
-        this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.getWindow().setAttributes((WindowManager.LayoutParams)localObject);
-        return;
+        localARWorldCupBackConfirmDialog = this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog;
+        if (localObject2 == null)
+        {
+          str1 = "退出活动";
+          if (localObject2 != null) {
+            break label229;
+          }
+          str2 = "继续穿越";
+          label108:
+          if (localObject2 != null) {
+            break label238;
+          }
+        }
+        label229:
+        label238:
+        for (localObject2 = "任意门已打开，穿越时空留下你的精彩瞬间，是否要放弃？";; localObject2 = ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject2).jdField_a_of_type_JavaLangString)
+        {
+          localARWorldCupBackConfirmDialog.a(str1, str2, (String)localObject2, (String)localObject1);
+          this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.a(new alfk(this));
+          ReportController.b(null, "dc00898", "", "", "0X8009320", "0X8009320", 1, 0, "1", "", "", "");
+          this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.a();
+          this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.setOnDismissListener(this);
+          this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.show();
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.getWindow().getAttributes();
+          ((WindowManager.LayoutParams)localObject1).width = -1;
+          ((WindowManager.LayoutParams)localObject1).height = -1;
+          this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
+          return;
+          str1 = ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject2).b;
+          break;
+          str2 = ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject2).c;
+          break label108;
+        }
       }
       if (paramInt != 1) {
         break;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.a("退出活动", "查看精彩轨迹", "这次穿越时空已留下精彩轨迹，去查看可以保留你的专属轨迹。", (String)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.a(new akxu(this));
-      paramInt = 2;
-      if (a() <= 9) {}
-      for (localObject = "2";; localObject = "3")
+      ARWorldCupBackConfirmDialog localARWorldCupBackConfirmDialog = this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog;
+      if (localObject2 == null)
       {
-        ReportController.b(null, "dc00898", "", "", "0X8009320", "0X8009320", paramInt, 0, (String)localObject, "", "", "");
+        str1 = "退出活动";
+        label265:
+        if (localObject2 != null) {
+          break label355;
+        }
+        str2 = "查看精彩轨迹";
+        label273:
+        if (localObject2 != null) {
+          break label364;
+        }
+        localObject2 = "这次穿越时空已留下精彩轨迹，去查看可以保留你的专属轨迹。";
+        label280:
+        localARWorldCupBackConfirmDialog.a(str1, str2, (String)localObject2, (String)localObject1);
+        this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupBackConfirmDialog.a(new alfl(this));
+        paramInt = 2;
+        if (a() > 9) {
+          break label372;
+        }
+      }
+      for (localObject1 = "2";; localObject1 = "3")
+      {
+        ReportController.b(null, "dc00898", "", "", "0X8009320", "0X8009320", paramInt, 0, (String)localObject1, "", "", "");
         break;
+        str1 = ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject2).b;
+        break label265;
+        label355:
+        str2 = ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject2).c;
+        break label273;
+        label364:
+        localObject2 = ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject2).jdField_a_of_type_JavaLangString;
+        break label280;
+        label372:
         paramInt = 3;
       }
+      localObject2 = null;
+      continue;
+      localObject2 = null;
+      localObject1 = null;
     }
   }
   
@@ -195,7 +261,7 @@ public class ARWorldCupGameLogicManager
   public void a()
   {
     QLog.d(jdField_a_of_type_JavaLangString, 2, "TryDismissDialog");
-    ThreadManager.getUIHandler().post(new akxs(this));
+    ThreadManager.getUIHandler().post(new alfj(this));
   }
   
   public void a(int paramInt)
@@ -218,10 +284,7 @@ public class ARWorldCupGameLogicManager
   
   public void a(int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)) {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new akxw(this, paramInt, paramString));
+    ThreadManager.getUIHandler().post(new alfo(this, paramInt, paramString));
   }
   
   public void a(long paramLong, int paramInt)
@@ -311,7 +374,7 @@ public class ARWorldCupGameLogicManager
     this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
     this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
     this.jdField_a_of_type_AndroidWidgetButton = paramButton;
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new akxp(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new alfg(this));
   }
   
   public void a(AppInterface paramAppInterface, ScanTorchActivity paramScanTorchActivity, AREngine paramAREngine, ARWorldCupGameTouchView paramARWorldCupGameTouchView)
@@ -326,7 +389,7 @@ public class ARWorldCupGameLogicManager
       paramARWorldCupGameTouchView.a();
       this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager$RenderProxy.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameTouchView);
       this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager$RenderProxy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-      this.jdField_a_of_type_AndroidOsHandler = new akxo(this);
+      this.jdField_a_of_type_AndroidOsHandler = new alff(this);
       return;
     }
     paramAppInterface = jdField_a_of_type_JavaLangString;
@@ -362,90 +425,12 @@ public class ARWorldCupGameLogicManager
     this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupVideoInfo$BigScreenShowInfo = paramBigScreenShowInfo;
   }
   
-  /* Error */
   public void a(String paramString)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_0
-    //   3: getfield 56	com/tencent/mobileqq/worldcup/ARWorldCupGameLogicManager:jdField_a_of_type_AndroidWidgetButton	Landroid/widget/Button;
-    //   6: ifnull +14 -> 20
-    //   9: aload_1
-    //   10: ifnull +10 -> 20
-    //   13: aload_0
-    //   14: getfield 48	com/tencent/mobileqq/worldcup/ARWorldCupGameLogicManager:jdField_a_of_type_Boolean	Z
-    //   17: ifeq +4 -> 21
-    //   20: return
-    //   21: new 105	java/lang/StringBuilder
-    //   24: dup
-    //   25: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   28: aload_1
-    //   29: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: ldc_w 388
-    //   35: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 394	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   44: astore_2
-    //   45: new 105	java/lang/StringBuilder
-    //   48: dup
-    //   49: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   52: aload_1
-    //   53: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: ldc_w 396
-    //   59: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: invokestatic 394	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   68: astore_1
-    //   69: aload_1
-    //   70: astore_3
-    //   71: aload_2
-    //   72: astore_1
-    //   73: aload_1
-    //   74: ifnull -54 -> 20
-    //   77: aload_3
-    //   78: ifnull -58 -> 20
-    //   81: aload_0
-    //   82: iconst_1
-    //   83: putfield 48	com/tencent/mobileqq/worldcup/ARWorldCupGameLogicManager:jdField_a_of_type_Boolean	Z
-    //   86: invokestatic 250	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   89: new 398	akxv
-    //   92: dup
-    //   93: aload_0
-    //   94: aload_3
-    //   95: aload_1
-    //   96: invokespecial 401	akxv:<init>	(Lcom/tencent/mobileqq/worldcup/ARWorldCupGameLogicManager;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;)V
-    //   99: invokevirtual 259	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   102: pop
-    //   103: return
-    //   104: astore_1
-    //   105: aconst_null
-    //   106: astore_1
-    //   107: goto -34 -> 73
-    //   110: astore_1
-    //   111: aload_2
-    //   112: astore_1
-    //   113: goto -40 -> 73
-    //   116: astore_1
-    //   117: aconst_null
-    //   118: astore_1
-    //   119: goto -46 -> 73
-    //   122: astore_1
-    //   123: aload_2
-    //   124: astore_1
-    //   125: goto -52 -> 73
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	128	0	this	ARWorldCupGameLogicManager
-    //   0	128	1	paramString	String
-    //   44	80	2	localBitmap	android.graphics.Bitmap
-    //   1	94	3	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   21	45	104	java/lang/Exception
-    //   45	69	110	java/lang/Exception
-    //   21	45	116	java/lang/OutOfMemoryError
-    //   45	69	122	java/lang/OutOfMemoryError
+    if ((this.jdField_a_of_type_AndroidWidgetButton == null) || (paramString == null) || (this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new alfm(this, paramString));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -461,7 +446,7 @@ public class ARWorldCupGameLogicManager
   public void a(boolean paramBoolean)
   {
     QLog.d(jdField_a_of_type_JavaLangString, 2, "showCameraTranvesalDoorTouchView " + paramBoolean);
-    ThreadManager.getUIHandler().post(new akxq(this, paramBoolean));
+    ThreadManager.getUIHandler().post(new alfh(this, paramBoolean));
   }
   
   public void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, boolean paramBoolean)
@@ -604,7 +589,7 @@ public class ARWorldCupGameLogicManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager
  * JD-Core Version:    0.7.0.1
  */

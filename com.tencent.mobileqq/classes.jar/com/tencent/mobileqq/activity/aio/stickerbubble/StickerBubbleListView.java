@@ -14,10 +14,10 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.widget.ListView;
 import java.lang.ref.WeakReference;
-import wca;
-import wcb;
-import wcc;
-import wcd;
+import whi;
+import whj;
+import whk;
+import whl;
 
 public class StickerBubbleListView
   extends ListView
@@ -25,17 +25,18 @@ public class StickerBubbleListView
 {
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private StickerBubbleTouchDelegate jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate = new StickerBubbleTouchDelegate(this, this);
+  private StickerBubbleTouchDelegate jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean = true;
   
   public StickerBubbleListView(Context paramContext, BaseChatPie paramBaseChatPie)
   {
     super(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleTouchDelegate = new StickerBubbleTouchDelegate(this, this, PokeItemHelper.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  private void a(float paramFloat1, float paramFloat2, wcd paramwcd)
+  private void a(float paramFloat1, float paramFloat2, whl paramwhl)
   {
     int i = 0;
     for (;;)
@@ -50,7 +51,7 @@ public class StickerBubbleListView
         {
           localView = ((StickerBubbleLinearLayout)localView).a(paramFloat1 - localView.getLeft(), paramFloat2 - localView.getTop());
           if (((localView instanceof LinearLayout)) && (((LinearLayout)localView).getChildAt(0) != null)) {
-            paramwcd.a(((LinearLayout)localView).getChildAt(0));
+            paramwhl.a(((LinearLayout)localView).getChildAt(0));
           }
         }
       }
@@ -78,7 +79,7 @@ public class StickerBubbleListView
   {
     int[] arrayOfInt = new int[1];
     arrayOfInt[0] = -1;
-    a(paramFloat1, paramFloat2, new wca(this, arrayOfInt));
+    a(paramFloat1, paramFloat2, new whi(this, arrayOfInt));
     return arrayOfInt[0];
   }
   
@@ -86,7 +87,7 @@ public class StickerBubbleListView
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    a(paramFloat1, paramFloat2, new wcc(this));
+    a(paramFloat1, paramFloat2, new whk(this));
   }
   
   public void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
@@ -117,7 +118,7 @@ public class StickerBubbleListView
     {
       StickerBubbleAnimationHelper.a(localPEItemData, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
       this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(null);
-      ThreadManager.post(new wcb(this, localPEItemData, paramInt2), 10, null, false);
+      ThreadManager.post(new whj(this, localPEItemData, paramInt2), 10, null, false);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X8009222", "0X8009222", localPEItemData.jdField_a_of_type_Int, 0, Integer.toString(paramInt2), "", "", "");
     }
   }

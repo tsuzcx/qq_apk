@@ -1,23 +1,26 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
-import com.tencent.mobileqq.utils.QQUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.extendfriend.fragment.GroupItemClickListeneer;
 
-public class acqo
-  implements Runnable
+class acqo
+  implements View.OnClickListener
 {
-  public acqo(QfileFileAssistantActivity paramQfileFileAssistantActivity, String paramString) {}
+  acqo(acqm paramacqm, ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.getSharedPreferences("Offline_Flags", 0).getBoolean("TMPFLAG", false);
-    if ((!QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity, new String[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.getString(2131428093) })) && (!bool)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.runOnUiThread(new acqp(this));
+    int j = this.jdField_a_of_type_Acqm.getPosition();
+    int i = j;
+    if (j > 0) {
+      i = j - 1;
     }
+    acqm.a(this.jdField_a_of_type_Acqm).a(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqo
  * JD-Core Version:    0.7.0.1
  */

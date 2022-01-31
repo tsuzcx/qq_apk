@@ -1,60 +1,30 @@
 package c.t.m.g;
 
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class aj
+public abstract class aj
+  implements ab
 {
-  public int a;
+  public String a;
   public String b;
-  public int c;
-  public byte[] d;
-  private Map<String, String> e;
+  public boolean c = false;
+  public Map<String, String> d;
+  public byte[] e;
+  public int f;
+  public String g;
+  public String h;
+  public boolean i = false;
+  public boolean j = false;
+  public long k;
+  public long l;
+  public long m;
+  public AtomicInteger n = new AtomicInteger(0);
+  private boolean o = false;
   
-  public aj(int paramInt, String paramString)
-  {
-    this.a = paramInt;
-    this.b = paramString;
-    this.c = 0;
-  }
+  public abstract ao a();
   
-  public final String a(String paramString)
-  {
-    if ((this.e != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramString = (String)this.e.get(paramString.toLowerCase());
-      if (!TextUtils.isEmpty(paramString)) {
-        return paramString;
-      }
-    }
-    return "";
-  }
-  
-  public final void a(Map<String, String> paramMap)
-  {
-    this.e = new HashMap();
-    if (paramMap.size() > 0)
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        this.e.put(str.toLowerCase(), paramMap.get(str));
-      }
-    }
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("errorCode:").append(this.a).append(",errorInfo:").append(this.b).append(",httpStatus:").append(this.c).append(",headers:").append(this.e).append(",body:");
-    if (this.d != null) {}
-    for (Object localObject = Integer.valueOf(this.d.length);; localObject = "null") {
-      return localObject;
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,52 +1,43 @@
 import android.content.Context;
-import android.content.Intent;
-import android.os.IBinder;
-import com.tencent.biz.huanjiplugin.HuanjiPluginProxy;
-import com.tencent.biz.huanjiplugin.HuanjiPluginStartListener;
-import com.tencent.biz.huanjiplugin.TranslucentActivty;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.biz.anonymous.QQAnonymousDialog;
 
 public class knc
-  implements OnPluginInstallListener
+  implements Handler.Callback
 {
-  public knc(HuanjiPluginProxy paramHuanjiPluginProxy) {}
+  public knc(QQAnonymousDialog paramQQAnonymousDialog) {}
   
-  public IBinder asBinder()
+  public boolean handleMessage(Message paramMessage)
   {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener != null)
+    int i;
+    if (paramMessage.what == 291) {
+      switch (this.a.jdField_a_of_type_Int)
+      {
+      default: 
+        i = 0;
+      }
+    }
+    for (;;)
     {
-      float f = paramInt1 / paramInt2;
-      this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener.a(0, 1, (int)(f * 100.0F));
-    }
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener.a(paramInt, "Install Error");
-    }
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener.a(3, 4, 100);
-    }
-    if (this.a.jdField_a_of_type_Int == 2)
-    {
-      paramString = new Intent(BaseApplicationImpl.getApplication().getApplicationContext(), TranslucentActivty.class);
-      paramString.addFlags(268435456);
-      paramString.putExtras(paramString);
-      paramString.putExtra("startParam", this.a.jdField_a_of_type_JavaLangString);
-      BaseApplicationImpl.getApplication().getApplicationContext().startActivity(paramString);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(i));
+      paramMessage = this.a;
+      paramMessage.jdField_a_of_type_Int += 1;
+      if (this.a.jdField_a_of_type_Int == 4) {
+        this.a.jdField_a_of_type_Int = 0;
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
+      return false;
+      i = 2131430461;
+      continue;
+      i = 2131430462;
+      continue;
+      i = 2131430463;
+      continue;
+      i = 2131430464;
     }
   }
 }

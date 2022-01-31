@@ -1,8 +1,8 @@
 package cooperation.qlink;
 
-import amnm;
-import amnn;
-import amno;
+import amux;
+import amuy;
+import amuz;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -240,8 +240,8 @@ public class QlinkBridgeActivity
       if (QLog.isColorLevel()) {
         QLog.e("QlinkBridgeActivity", 2, "[QLINK] QQ - startQlink failed because of QlinkResistTerrorist_res is 1!!!");
       }
-      paramBundle = new amnm(this);
-      DialogUtil.b(this, 233, getString(2131431967), getString(2131432033), 2131431982, 2131431982, paramBundle, null).show();
+      paramBundle = new amux(this);
+      DialogUtil.b(this, 233, getString(2131431978), getString(2131432044), 2131431993, 2131431993, paramBundle, null).show();
       bool = false;
     }
     while (a()) {
@@ -249,8 +249,8 @@ public class QlinkBridgeActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131558448));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在加载，请稍候...");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new amnn(this));
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new amno(this), 300L);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new amuy(this));
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new amuz(this), 300L);
     return true;
   }
   

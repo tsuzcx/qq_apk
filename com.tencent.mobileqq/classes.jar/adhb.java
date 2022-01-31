@@ -1,15 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
+import cooperation.qqfav.ipc.FavoritesRemoteCommand.IRemoteCommandHandler;
 
-public final class adhb
-  implements Runnable
+public class adhb
+  implements FavoritesRemoteCommand.IRemoteCommandHandler
 {
-  public adhb(int paramInt) {}
+  public adhb(QfavFilePreviewController paramQfavFilePreviewController) {}
   
-  public void run()
+  public boolean a(int paramInt, Bundle paramBundle)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 0, this.a, 0).b(FMToastUtil.a());
+    new Handler(Looper.getMainLooper()).post(new adhc(this, paramBundle));
+    return true;
   }
 }
 

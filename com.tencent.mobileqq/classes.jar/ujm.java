@@ -1,9 +1,41 @@
-public final class ujm
-  extends ThreadLocal
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+
+public class ujm
+  extends FriendListObserver
 {
-  protected char[] a()
+  public ujm(TroopTransferActivity paramTroopTransferActivity) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return new char[1024];
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramString = this.a.a.a(paramString);
+      if (paramString != null) {
+        break label28;
+      }
+    }
+    label28:
+    Friends localFriends;
+    do
+    {
+      return;
+      localFriends = ((FriendsManager)this.a.app.getManager(50)).c(paramString.a);
+    } while (localFriends == null);
+    this.a.a(paramString, localFriends);
   }
 }
 

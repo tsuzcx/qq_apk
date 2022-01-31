@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.util.FaceManager;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.ViewHolder;
+import java.io.File;
 
 public class akaa
-  extends TroopObserver
+  implements Runnable
 {
-  private akaa(FaceManager paramFaceManager) {}
+  public akaa(MediaPreviewAdapter paramMediaPreviewAdapter, MediaPreviewAdapter.ViewHolder paramViewHolder, int paramInt, File paramFile, MediaPreviewInfo paramMediaPreviewInfo) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void run()
   {
-    this.a.c(103, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo.a);
   }
 }
 

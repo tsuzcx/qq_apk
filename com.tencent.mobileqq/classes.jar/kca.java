@@ -1,23 +1,18 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
 
 public class kca
   implements Runnable
 {
-  private kca(VideoLayerUI paramVideoLayerUI) {}
+  public kca(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a().removeCallbacks(VideoLayerUI.b(this.a));
-    }
-    VideoLayerUI.a(this.a, false);
+    QavVideoRecordUICtrl.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kca
  * JD-Core Version:    0.7.0.1
  */

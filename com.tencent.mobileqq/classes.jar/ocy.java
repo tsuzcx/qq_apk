@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
+import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class ocy
-  implements Parcelable.Creator
+public class ocy
+  extends JobSegment
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
+  private int jdField_a_of_type_Int;
+  private CommentListPageLoader jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader;
+  private List jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public EditLocalPhotoSource[] a(int paramInt)
+  protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
   {
-    return new EditLocalPhotoSource[paramInt];
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader = new CommentListPageLoader(paramFeedCommentSync, new ocz(this, paramJobContext, paramFeedCommentSync));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.c();
   }
 }
 

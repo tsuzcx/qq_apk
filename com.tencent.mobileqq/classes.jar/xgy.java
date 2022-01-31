@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.OnCustomizeListener;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
 
-public class xgy
-  implements CustomizeStrategyFactory.OnCustomizeListener
+class xgy
+  implements Runnable
 {
-  public xgy(RedPacketManager paramRedPacketManager, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
+  xgy(xgx paramxgx) {}
   
-  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
+    if (!this.a.a.a()) {
+      this.a.a.a(this.a.a.getResources().getString(2131432353));
+    }
   }
 }
 

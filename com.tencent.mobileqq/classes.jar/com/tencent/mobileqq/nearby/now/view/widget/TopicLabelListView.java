@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.view.widget;
 
-import afbh;
+import afge;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.BaseAdapter;
@@ -13,7 +13,7 @@ public class TopicLabelListView
   extends LinearLayout
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new afbh(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new afge(this);
   private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   private final String jdField_a_of_type_JavaLangString = "TopicLabelListView";
   private List jdField_a_of_type_JavaUtilList;

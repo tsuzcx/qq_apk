@@ -1,13 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.util.FaceInfo;
 
-public class akhk
-  implements DialogInterface.OnClickListener
+public final class akhk
+  implements Parcelable.Creator
 {
-  public akhk(ColorRingPlayer paramColorRingPlayer) {}
+  public FaceInfo a(Parcel paramParcel)
+  {
+    FaceInfo localFaceInfo = new FaceInfo();
+    localFaceInfo.a(paramParcel);
+    return localFaceInfo;
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public FaceInfo[] a(int paramInt)
+  {
+    return new FaceInfo[paramInt];
+  }
 }
 
 

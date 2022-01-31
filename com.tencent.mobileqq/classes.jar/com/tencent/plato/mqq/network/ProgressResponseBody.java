@@ -1,6 +1,5 @@
 package com.tencent.plato.mqq.network;
 
-import alkd;
 import android.support.annotation.Nullable;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.ResponseBody;
@@ -12,22 +11,29 @@ import okio.Source;
 public class ProgressResponseBody
   extends ResponseBody
 {
-  private long jdField_a_of_type_Long;
-  private final ResponseBody jdField_a_of_type_ComSquareupOkhttpResponseBody;
-  private final ProgressListener jdField_a_of_type_ComTencentPlatoMqqNetworkProgressListener;
   @Nullable
-  private BufferedSource jdField_a_of_type_OkioBufferedSource;
+  private BufferedSource mBufferedSource;
+  private final ProgressListener mProgressListener;
+  private final ResponseBody mResponseBody;
+  private long mTotalBytesRead;
   
-  private Source a(Source paramSource)
+  public ProgressResponseBody(ResponseBody paramResponseBody, ProgressListener paramProgressListener)
   {
-    return new alkd(this, paramSource);
+    this.mResponseBody = paramResponseBody;
+    this.mProgressListener = paramProgressListener;
+    this.mTotalBytesRead = 0L;
+  }
+  
+  private Source source(Source paramSource)
+  {
+    return new ProgressResponseBody.1(this, paramSource);
   }
   
   public long contentLength()
   {
     try
     {
-      long l = this.jdField_a_of_type_ComSquareupOkhttpResponseBody.contentLength();
+      long l = this.mResponseBody.contentLength();
       return l;
     }
     catch (IOException localIOException)
@@ -39,16 +45,16 @@ public class ProgressResponseBody
   
   public MediaType contentType()
   {
-    return this.jdField_a_of_type_ComSquareupOkhttpResponseBody.contentType();
+    return this.mResponseBody.contentType();
   }
   
   public BufferedSource source()
   {
-    if (this.jdField_a_of_type_OkioBufferedSource == null) {}
+    if (this.mBufferedSource == null) {}
     try
     {
-      this.jdField_a_of_type_OkioBufferedSource = Okio.buffer(a(this.jdField_a_of_type_ComSquareupOkhttpResponseBody.source()));
-      return this.jdField_a_of_type_OkioBufferedSource;
+      this.mBufferedSource = Okio.buffer(source(this.mResponseBody.source()));
+      return this.mBufferedSource;
     }
     catch (IOException localIOException)
     {
@@ -57,6 +63,11 @@ public class ProgressResponseBody
         localIOException.printStackTrace();
       }
     }
+  }
+  
+  public long totalBytesRead()
+  {
+    return this.mTotalBytesRead;
   }
 }
 

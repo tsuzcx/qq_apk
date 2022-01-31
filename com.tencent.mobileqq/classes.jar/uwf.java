@@ -1,21 +1,23 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout.DoodleLayoutListener;
 
 public class uwf
-  implements AnimationTextView.OnDoubleClick
+  implements uxh
 {
-  public uwf(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
+  public uwf(DoodleLayout paramDoodleLayout) {}
   
-  public void a(View paramView)
+  public void a()
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    if (DeviceTextItemBuilder.a(this.a)) {
-      return;
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(this.a.a(true, false));
     }
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleLayout.a(this.a) != null) {
+      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
+    }
   }
 }
 

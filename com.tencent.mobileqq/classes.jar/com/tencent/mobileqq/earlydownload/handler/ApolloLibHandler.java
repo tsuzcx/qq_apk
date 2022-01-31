@@ -16,11 +16,11 @@ import java.io.File;
 public class ApolloLibHandler
   extends EarlyHandler
 {
-  public static final String[] a = { "libgnustl_shared.so", "libicu_common.so", "libjsc.so" };
+  public static final String[] a = { "libjsc.so" };
   
   public ApolloLibHandler(QQAppInterface paramQQAppInterface)
   {
-    super("android.qq.apollo.js.760g3", paramQQAppInterface);
+    super("android.qq.apollo.js.765g2", paramQQAppInterface);
   }
   
   public static void a()
@@ -31,7 +31,7 @@ public class ApolloLibHandler
       localObject = (EarlyDownloadManager)((QQAppInterface)localObject).getManager(76);
       if (localObject != null)
       {
-        localObject = (ApolloLibHandler)((EarlyDownloadManager)localObject).a("android.qq.apollo.js.760g3");
+        localObject = (ApolloLibHandler)((EarlyDownloadManager)localObject).a("android.qq.apollo.js.765g2");
         if (localObject != null)
         {
           ((ApolloLibHandler)localObject).a(true);
@@ -98,7 +98,7 @@ public class ApolloLibHandler
       label130:
       localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
       if (localObject != null) {
-        ((SharedPreferences)localObject).edit().putString("res_name", "android.qq.apollo.js.760g3").commit();
+        ((SharedPreferences)localObject).edit().putString("res_name", "android.qq.apollo.js.765g2").commit();
       }
       ApolloSoLoader.a("after_ApolloSo_downloaded");
     }

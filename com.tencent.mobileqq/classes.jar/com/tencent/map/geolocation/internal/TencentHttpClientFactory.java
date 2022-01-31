@@ -2,9 +2,9 @@ package com.tencent.map.geolocation.internal;
 
 import android.content.Context;
 import android.os.Bundle;
-import c.t.m.g.ds;
-import c.t.m.g.dt;
-import c.t.m.g.f.a;
+import c.t.m.g.dw;
+import c.t.m.g.dx;
+import c.t.m.g.ev;
 
 public abstract class TencentHttpClientFactory
 {
@@ -31,17 +31,17 @@ public abstract class TencentHttpClientFactory
   public TencentHttpClient getTencentHttpClient(Context paramContext, Bundle paramBundle)
   {
     if (sCustFact != null) {
-      return (TencentHttpClient)f.a.b(sCustFact.getTencentHttpClient(paramContext, sCustFact.getParams()), "http client should NOT be null");
+      return (TencentHttpClient)ev.a(sCustFact.getTencentHttpClient(paramContext, sCustFact.getParams()), "http client should NOT be null");
     }
-    return new ds(paramContext, paramBundle.getString("channelId"));
+    return new dw(paramContext, paramBundle.getString("channelId"));
   }
   
   public TencentHttpClient getTencentHttpURLConnection()
   {
     if (sCustFact != null) {
-      return (TencentHttpClient)f.a.b(sCustFact.getTencentHttpURLConnection(), "http client should NOT be null");
+      return (TencentHttpClient)ev.a(sCustFact.getTencentHttpURLConnection(), "http client should NOT be null");
     }
-    return new dt();
+    return new dx();
   }
 }
 

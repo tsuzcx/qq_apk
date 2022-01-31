@@ -1,16 +1,24 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
+import com.tencent.biz.qqstory.model.AddressDataProvider;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class ngl
-  extends UploadImageJob
+  implements LbsManager.LbsUpdateListener
 {
-  public ngl(ShareModeBase paramShareModeBase, ShareQZoneData paramShareQZoneData) {}
+  public ngl(AddressDataProvider paramAddressDataProvider) {}
   
-  public boolean b()
+  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    SLog.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramBasicLocation != null))
+    {
+      SLog.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramBasicLocation.b), Integer.valueOf(paramBasicLocation.a));
+      this.a.a(paramBasicLocation.b, paramBasicLocation.a);
+      return;
+    }
+    SLog.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
+    this.a.a(false, null);
   }
 }
 

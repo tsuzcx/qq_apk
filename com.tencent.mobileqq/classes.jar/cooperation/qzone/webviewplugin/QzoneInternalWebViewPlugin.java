@@ -1,10 +1,10 @@
 package cooperation.qzone.webviewplugin;
 
-import ancq;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Looper;
 import android.text.TextUtils;
+import ankq;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -48,7 +48,7 @@ public abstract class QzoneInternalWebViewPlugin
       paramCustomWebView.printStackTrace();
       return;
     }
-    paramCustomWebView.post(new ancq(paramCustomWebView, paramString));
+    paramCustomWebView.post(new ankq(paramCustomWebView, paramString));
   }
   
   public Object a(String paramString, long paramLong)

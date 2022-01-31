@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
@@ -12,9 +13,13 @@ public class CircularRevealCompatLayout
 {
   private float jdField_a_of_type_Float;
   private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private boolean jdField_a_of_type_Boolean;
-  private float b;
+  private float jdField_b_of_type_Float;
+  private final Path jdField_b_of_type_AndroidGraphicsPath = new Path();
+  private boolean jdField_b_of_type_Boolean;
   private float c;
+  private float d;
   
   public CircularRevealCompatLayout(Context paramContext)
   {
@@ -41,15 +46,49 @@ public class CircularRevealCompatLayout
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidGraphicsPath.isEmpty()))
+    if (this.jdField_a_of_type_Boolean)
     {
+      if (!this.jdField_a_of_type_AndroidGraphicsPath.isEmpty())
+      {
+        paramCanvas.save();
+        paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+        super.dispatchDraw(paramCanvas);
+        paramCanvas.restore();
+        return;
+      }
       super.dispatchDraw(paramCanvas);
       return;
     }
-    paramCanvas.save();
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (!this.jdField_b_of_type_AndroidGraphicsPath.isEmpty())
+      {
+        paramCanvas.save();
+        paramCanvas.clipPath(this.jdField_b_of_type_AndroidGraphicsPath);
+        super.dispatchDraw(paramCanvas);
+        paramCanvas.restore();
+        return;
+      }
+      super.dispatchDraw(paramCanvas);
+      return;
+    }
     super.dispatchDraw(paramCanvas);
-    paramCanvas.restore();
+  }
+  
+  public void setClipRect(RectF paramRectF, float paramFloat)
+  {
+    if ((paramRectF.width() >= getWidth()) && (paramRectF.height() >= getHeight()))
+    {
+      this.jdField_b_of_type_Boolean = false;
+      invalidate();
+      return;
+    }
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRectF);
+    this.d = paramFloat;
+    this.jdField_b_of_type_AndroidGraphicsPath.reset();
+    this.jdField_b_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.d, this.d, Path.Direction.CW);
+    this.jdField_b_of_type_AndroidGraphicsPath.close();
   }
   
   public void setEnableClip(boolean paramBoolean)
@@ -60,7 +99,7 @@ public class CircularRevealCompatLayout
   public void setRevealClip(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    this.jdField_b_of_type_Float = paramFloat2;
     this.c = paramFloat3;
     float f1 = getWidth() - paramFloat1;
     float f2 = getWidth() - paramFloat2;
@@ -69,7 +108,7 @@ public class CircularRevealCompatLayout
     {
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsPath.addCircle(this.jdField_a_of_type_Float, this.b, this.c, Path.Direction.CW);
+      this.jdField_a_of_type_AndroidGraphicsPath.addCircle(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c, Path.Direction.CW);
       this.jdField_a_of_type_AndroidGraphicsPath.close();
       invalidate();
       return;

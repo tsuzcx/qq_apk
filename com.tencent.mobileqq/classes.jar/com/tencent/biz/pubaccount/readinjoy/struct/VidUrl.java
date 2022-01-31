@@ -10,7 +10,12 @@ public class VidUrl
   
   public boolean a(long paramLong)
   {
-    return (paramLong - this.a > 0L) && (paramLong - this.a < 25200L);
+    return (paramLong - this.jdField_a_of_type_Long > 0L) && (paramLong - this.jdField_a_of_type_Long < 25200L);
+  }
+  
+  public String toString()
+  {
+    return "VidUrl {\n vid: " + this.jdField_a_of_type_JavaLangString + "\n url: " + this.b + "\n isH265: " + this.jdField_a_of_type_Boolean + "\n fileBitRate: " + this.c + "}";
   }
 }
 

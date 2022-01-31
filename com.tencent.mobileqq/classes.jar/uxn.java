@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import java.lang.ref.WeakReference;
 
-public class uxn
-  implements TransFileController.OnCancelListener
+class uxn
+  implements Runnable
 {
-  public uxn(FlashPicItemBuilder paramFlashPicItemBuilder) {}
+  uxn(uxm paramuxm, String paramString) {}
   
-  public void a(ArrayList paramArrayList)
+  public void run()
   {
-    this.a.b();
+    uyd localuyd;
+    if (uxm.a(this.jdField_a_of_type_Uxm) != null)
+    {
+      localuyd = (uyd)uxm.a(this.jdField_a_of_type_Uxm).get();
+      if (localuyd != null) {
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          break label66;
+        }
+      }
+    }
+    label66:
+    for (boolean bool = true;; bool = false)
+    {
+      localuyd.a(bool, uxm.a(this.jdField_a_of_type_Uxm), uxm.b(this.jdField_a_of_type_Uxm), this.jdField_a_of_type_JavaLangString);
+      return;
+    }
   }
 }
 

@@ -1,36 +1,24 @@
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
-public final class akzb
-  implements Runnable
+public class akzb
+  implements WebSoService.CallBack
 {
-  public void run()
+  public akzb(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
+  
+  public void a(String paramString)
   {
-    int i = 0;
-    Object localObject = "sp_confirmed_sensmsg_" + MQPSensitiveMsgUtil.a();
-    localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 0);
-    Bundle localBundle = new Bundle();
-    if (i < 10)
-    {
-      String str1 = Integer.toString(i);
-      if (!((SharedPreferences)localObject).contains(str1)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        String str2 = ((SharedPreferences)localObject).getString(str1, null);
-        if (!TextUtils.isEmpty(str2)) {
-          localBundle.putString(str2, str1);
-        }
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10004;
     }
-    if (localBundle.size() > 0) {
-      MQPSensitiveMsgUtil.a(localBundle.size() - 1);
-    }
-    MQPSensitiveMsgUtil.a().putBundle(MQPSensitiveMsgUtil.a(), localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter$HybridWebReportInfo.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
   }
 }
 

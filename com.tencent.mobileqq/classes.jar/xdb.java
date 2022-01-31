@@ -1,36 +1,23 @@
+import android.graphics.Paint;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class xdb
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public xdb(CommonHbFragment paramCommonHbFragment, View paramView, ImageView paramImageView, URLDrawable paramURLDrawable) {}
+  public xdb(PhotoListActivity paramPhotoListActivity, String paramString) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int k = this.jdField_a_of_type_AndroidViewView.getHeight();
-    int j = (int)(k * 3.076923076923077D + 0.5D);
-    int i = j;
-    if (j > CommonHbFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment)) {
-      i = CommonHbFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment);
-    }
-    if ((i > 0) && (k > 0))
-    {
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, k);
-      localLayoutParams.gravity = 5;
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.postInvalidate();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidWidgetTextView.getPaint();
+    int i = ViewUtils.a((Paint)localObject, "《");
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidViewView.getLeft();
+    int k = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.d.getRight();
+    localObject = ViewUtils.a((Paint)localObject, this.jdField_a_of_type_JavaLangString, j - k - i * 2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidWidgetTextView.setText("《" + (String)localObject + "》");
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangString);
   }
 }
 

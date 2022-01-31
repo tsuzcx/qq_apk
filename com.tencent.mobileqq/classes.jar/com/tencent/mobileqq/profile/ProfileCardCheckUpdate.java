@@ -2,8 +2,8 @@ package com.tencent.mobileqq.profile;
 
 import KQQ.ReqItem;
 import KQQ.RespItem;
-import agph;
-import agpi;
+import agtw;
+import agtx;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -58,7 +58,7 @@ public class ProfileCardCheckUpdate
     localSUpdateReq.cmd.set(paramInt);
     localSUpdateReq.uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
     localSUpdateReq.version.set(paramString);
-    localSUpdateReq.client_version.set("7.6.3");
+    localSUpdateReq.client_version.set("7.6.8");
     localSUpdateReq.platform.set(109);
     if (paramInt == 5) {
       localSUpdateReq.appname.set("fun_call");
@@ -519,7 +519,7 @@ public class ProfileCardCheckUpdate
       localReqItem.vecParam = ((byte[])localObject2);
       localObject1 = localReqItem;
     } while (!QLog.isColorLevel());
-    QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "getCheckUpdateItemData uin=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin() + ",cardVersion=" + str1 + "labelVersion=" + str2 + ",client_version=" + "7.6.3" + ",dataLen=" + j);
+    QLog.d("ProfileCard.ProfileCardCheckUpdate", 2, "getCheckUpdateItemData uin=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin() + ",cardVersion=" + str1 + "labelVersion=" + str2 + ",client_version=" + "7.6.8" + ",dataLen=" + j);
     return localReqItem;
   }
   
@@ -624,7 +624,7 @@ public class ProfileCardCheckUpdate
   
   public void a(String paramString1, String paramString2)
   {
-    ThreadManager.post(new agpi(this, paramString1, paramString2), 8, null, false);
+    ThreadManager.post(new agtx(this, paramString1, paramString2), 8, null, false);
   }
   
   public boolean a()
@@ -712,7 +712,7 @@ public class ProfileCardCheckUpdate
         paramSUpdateRsp.edit().putString("specialcare_config", str1).commit();
         paramSUpdateRsp.edit().putBoolean("special_care_red_point_one", true).commit();
         paramSUpdateRsp.edit().putBoolean("special_care_red_point_two", true).commit();
-        ThreadManager.post(new agph(this), 5, null, true);
+        ThreadManager.post(new agtw(this), 5, null, true);
       }
       return;
     }

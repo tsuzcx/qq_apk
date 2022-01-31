@@ -1,14 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
 
-class lgi
+public class lgi
   implements Runnable
 {
-  lgi(lgh paramlgh) {}
+  public lgi(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
   
   public void run()
   {
-    ReadInJoyDeliverBiuActivity.d(this.a.a);
-    ReadInJoyDeliverBiuActivity.e(this.a.a);
+    ReadInJoyNewFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity).a(0, false, this.jdField_a_of_type_Int);
   }
 }
 

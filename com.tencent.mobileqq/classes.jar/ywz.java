@@ -1,19 +1,16 @@
-import java.io.File;
-import java.util.Comparator;
+import android.util.Log;
+import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
+import com.tencent.TMG.sdk.AVView;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
 
-public final class ywz
-  implements Comparator
+public class ywz
+  implements AVRoomMulti.RequestViewListCompleteCallback
 {
-  public int a(File paramFile1, File paramFile2)
+  public ywz(CmGameAvHandler paramCmGameAvHandler) {}
+  
+  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
   {
-    if ((paramFile1.exists()) && (paramFile2.exists()))
-    {
-      if (paramFile1.lastModified() - paramFile2.lastModified() > 0L) {
-        return 1;
-      }
-      return -1;
-    }
-    return 0;
+    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
   }
 }
 

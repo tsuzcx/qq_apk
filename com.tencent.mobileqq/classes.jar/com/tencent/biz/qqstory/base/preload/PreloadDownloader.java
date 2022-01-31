@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import nag;
+import neb;
 
 @TargetApi(14)
 public class PreloadDownloader
@@ -33,7 +33,7 @@ public class PreloadDownloader
   public volatile PreloadQueue a;
   protected Thread a;
   public List a;
-  protected nag a;
+  protected neb a;
   protected final Object b = new Object();
   
   static
@@ -118,7 +118,7 @@ public class PreloadDownloader
     label393:
     for (long l = 0L;; l = ???.mCreateTime)
     {
-      StoryReportor.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l), String.valueOf(System.currentTimeMillis()), String.valueOf(paramDownloadTask.jdField_e_of_type_Int) });
+      StoryReportor.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l), String.valueOf(System.currentTimeMillis()), String.valueOf(paramDownloadTask.jdField_f_of_type_Int) });
       return;
       i = 0;
       break;
@@ -232,37 +232,37 @@ public class PreloadDownloader
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 286	com/tencent/biz/qqstory/base/preload/PreloadDownloader:a	()Z
+    //   3: invokevirtual 287	com/tencent/biz/qqstory/base/preload/PreloadDownloader:a	()Z
     //   6: ifeq +14 -> 20
     //   9: ldc 108
-    //   11: ldc_w 288
+    //   11: ldc_w 289
     //   14: invokestatic 122	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: aload_0
     //   18: monitorexit
     //   19: return
     //   20: aload_0
-    //   21: new 290	nag
+    //   21: new 291	neb
     //   24: dup
     //   25: aload_0
     //   26: aconst_null
-    //   27: invokespecial 293	nag:<init>	(Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;Lnaf;)V
-    //   30: putfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
+    //   27: invokespecial 294	neb:<init>	(Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;Lnea;)V
+    //   30: putfield 296	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Neb	Lneb;
     //   33: aload_0
-    //   34: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
+    //   34: getfield 296	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Neb	Lneb;
     //   37: iconst_1
-    //   38: putfield 297	nag:jdField_a_of_type_Boolean	Z
+    //   38: putfield 298	neb:jdField_a_of_type_Boolean	Z
     //   41: aload_0
     //   42: aload_0
-    //   43: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
-    //   46: ldc_w 299
+    //   43: getfield 296	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Neb	Lneb;
+    //   46: ldc_w 300
     //   49: iconst_5
-    //   50: invokestatic 305	com/tencent/mobileqq/app/ThreadManager:newFreeThread	(Ljava/lang/Runnable;Ljava/lang/String;I)Ljava/lang/Thread;
-    //   53: putfield 307	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
+    //   50: invokestatic 306	com/tencent/mobileqq/app/ThreadManager:newFreeThread	(Ljava/lang/Runnable;Ljava/lang/String;I)Ljava/lang/Thread;
+    //   53: putfield 308	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
     //   56: aload_0
-    //   57: getfield 307	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
-    //   60: invokevirtual 312	java/lang/Thread:start	()V
+    //   57: getfield 308	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_JavaLangThread	Ljava/lang/Thread;
+    //   60: invokevirtual 313	java/lang/Thread:start	()V
     //   63: ldc 108
-    //   65: ldc_w 314
+    //   65: ldc_w 315
     //   68: invokestatic 122	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   71: goto -54 -> 17
     //   74: astore_1
@@ -318,10 +318,37 @@ public class PreloadDownloader
           return;
         }
       }
-      if (paramErrorMessage.errorCode == 0)
+      if ((paramErrorMessage.errorCode == 9047) && (???.jdField_e_of_type_Int < 1) && (???.jdField_a_of_type_Int == 1) && (!TextUtils.isEmpty(???.d)) && (???.d.startsWith("https")))
       {
+        try
+        {
+          SLog.e("Q.qqstory.download.preload.PreloadDownloader", "picture 9047 error , errorMsg = %s , task = %s", new Object[] { paramErrorMessage, ??? });
+          ???.d = ???.d.replace("https://", "http://");
+          ???.jdField_e_of_type_Int += 1;
+          if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader.a(???, this))
+          {
+            this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask = ???;
+            if (!TextUtils.isEmpty(paramErrorMessage.errorMsg)) {
+              break label358;
+            }
+            String str1 = "";
+            StoryReportor.b("download_video", "hostname_not_verified", 0, paramErrorMessage.errorCode, new String[] { str1, String.valueOf(???.jdField_a_of_type_Int), StoryReportor.a(BaseApplication.getContext()), ???.jdField_b_of_type_JavaLangString });
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          SLog.c("Q.qqstory.download.preload.PreloadDownloader", "picture 9047 protect error , errorMsg = %s", localException);
+        }
+      }
+      else
+      {
+        if (paramErrorMessage.errorCode != 0) {
+          break label383;
+        }
+        label321:
         if (j == 0) {
-          break label176;
+          break label389;
         }
         c(???, paramErrorMessage);
       }
@@ -335,9 +362,13 @@ public class PreloadDownloader
           this.b.notifyAll();
           return;
         }
-        j = 0;
+        label358:
+        String str2 = paramErrorMessage.errorMsg.substring(0, Math.min(paramErrorMessage.errorMsg.length(), 20));
         break;
-        label176:
+        label383:
+        j = 0;
+        break label321;
+        label389:
         d(???, paramErrorMessage);
       }
     }
@@ -388,7 +419,7 @@ public class PreloadDownloader
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Nag != null) && (this.jdField_a_of_type_Nag.jdField_a_of_type_Boolean);
+    return (this.jdField_a_of_type_Neb != null) && (this.jdField_a_of_type_Neb.jdField_a_of_type_Boolean);
   }
   
   /* Error */
@@ -398,18 +429,18 @@ public class PreloadDownloader
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
+    //   3: getfield 296	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Neb	Lneb;
     //   6: ifnull +42 -> 48
     //   9: aload_0
-    //   10: getfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
+    //   10: getfield 296	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Neb	Lneb;
     //   13: iconst_0
-    //   14: putfield 297	nag:jdField_a_of_type_Boolean	Z
+    //   14: putfield 298	neb:jdField_a_of_type_Boolean	Z
     //   17: aload_0
     //   18: aconst_null
-    //   19: putfield 295	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Nag	Lnag;
+    //   19: putfield 296	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Neb	Lneb;
     //   22: aload_0
     //   23: getfield 43	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader	Lcom/tencent/biz/qqstory/base/preload/AsyncFileDownloader;
-    //   26: invokevirtual 361	com/tencent/biz/qqstory/base/preload/AsyncFileDownloader:a	()Z
+    //   26: invokevirtual 393	com/tencent/biz/qqstory/base/preload/AsyncFileDownloader:a	()Z
     //   29: ifeq +19 -> 48
     //   32: aload_0
     //   33: getfield 45	com/tencent/biz/qqstory/base/preload/PreloadDownloader:b	Ljava/lang/Object;
@@ -418,11 +449,11 @@ public class PreloadDownloader
     //   38: monitorenter
     //   39: aload_0
     //   40: getfield 45	com/tencent/biz/qqstory/base/preload/PreloadDownloader:b	Ljava/lang/Object;
-    //   43: invokevirtual 321	java/lang/Object:notifyAll	()V
+    //   43: invokevirtual 322	java/lang/Object:notifyAll	()V
     //   46: aload_1
     //   47: monitorexit
     //   48: ldc 108
-    //   50: ldc_w 363
+    //   50: ldc_w 395
     //   53: invokestatic 122	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   56: aload_0
     //   57: monitorexit
@@ -466,7 +497,7 @@ public class PreloadDownloader
       return;
       if (???.jdField_a_of_type_Boolean)
       {
-        localFile = new File(???.f);
+        localFile = new File(???.jdField_f_of_type_JavaLangString);
         if (localFile.exists())
         {
           localFile.delete();

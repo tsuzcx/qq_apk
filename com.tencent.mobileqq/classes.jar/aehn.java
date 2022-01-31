@@ -1,26 +1,35 @@
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class aehn
-  implements Runnable
+  implements TVK_SDKMgr.InstallListener
 {
-  public aehn(ChatBackgroundManager paramChatBackgroundManager, String paramString, QQAppInterface paramQQAppInterface) {}
+  private Handler a;
   
-  public void run()
+  public aehn(Handler paramHandler)
   {
-    ChatBackgroundManager.c = this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.c(null);
-    Message localMessage = ChatBackgroundManager.a.obtainMessage();
-    localMessage.what = 1;
-    localMessage.obj = new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface };
-    if (QLog.isColorLevel())
-    {
-      QLog.d("ThemeDownloadTrace", 2, "bgin to report chat bg info");
-      QLog.d("ThemeDownloadTrace", 2, "initCurrChatBgNameForReport is:" + ChatBackgroundManager.c);
+    this.a = paramHandler;
+  }
+  
+  public void onInstallProgress(float paramFloat)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
     }
-    ChatBackgroundManager.a.sendMessage(localMessage);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(1);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(0);
+    }
   }
 }
 

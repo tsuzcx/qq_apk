@@ -1,14 +1,50 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.open.base.BspatchUtil;
+import java.io.File;
 
 class aazf
-  implements Runnable
+  implements aazk
 {
-  aazf(aazd paramaazd, String paramString1, long paramLong, String paramString2, String paramString3) {}
+  aazf(aayw paramaayw, aazj paramaazj1, aazj paramaazj2, String paramString, aazl paramaazl) {}
   
-  public void run()
+  public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Aazd.a.a.loadPoiLogoRes(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b, this.c);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.b }));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aazl.a(false);
+      return;
+      if (!aayw.b(paramArrayOfByte, this.jdField_a_of_type_Aazj.f))
+      {
+        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, md5 mismatch, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.b, this.jdField_a_of_type_Aazj.f }));
+      }
+      else
+      {
+        String str1 = aayw.a(this.b.jdField_a_of_type_JavaLangString);
+        if (!new File(str1).isFile())
+        {
+          ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, src path not exist, name=%s, path=s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, str1 }));
+        }
+        else
+        {
+          String str2 = String.format("%s/diff-%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.d });
+          if (!aayw.a(paramArrayOfByte, str2))
+          {
+            ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, write diff to file fail, name=%s, path=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, str2 }));
+          }
+          else
+          {
+            if (BspatchUtil.a(str1, str2, String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString }))) {
+              break;
+            }
+            ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, patch fail, name=%s, diff-md5=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.f }));
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_Aazl.a(true);
   }
 }
 

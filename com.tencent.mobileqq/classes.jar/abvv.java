@@ -1,33 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.businessCard.views.BusinessCardView;
+import com.tencent.mobileqq.businessCard.views.BusinessCardViewScroller;
 
 public class abvv
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public abvv(DBFixDialogUI paramDBFixDialogUI) {}
+  public abvv(BusinessCardView paramBusinessCardView) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (DBFixDialogUI.a(this.a).equals("checked corrupt"))
+    Float localFloat = Float.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a() - this.a.jdField_a_of_type_Float);
+    if (Math.abs(localFloat.floatValue()) < 0.05F)
     {
-      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
-      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_Cancel").commit();
-      QLog.d(DBFixDialogUI.a(), 1, "dialog cancel");
+      BusinessCardViewScroller localBusinessCardViewScroller = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller;
+      if (localFloat.floatValue() > 0.0F) {}
+      for (int i = BusinessCardViewScroller.a;; i = BusinessCardViewScroller.b)
+      {
+        localBusinessCardViewScroller.a(i);
+        this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        return;
+      }
     }
-    this.a.a();
+    this.a.jdField_a_of_type_Float = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a();
+    this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abvv
  * JD-Core Version:    0.7.0.1
  */

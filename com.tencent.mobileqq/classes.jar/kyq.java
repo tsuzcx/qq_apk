@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
-public final class kyq
+public class kyq
   implements Runnable
 {
-  public kyq(QQAppInterface paramQQAppInterface, String paramString) {}
+  public kyq(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
   public void run()
   {
-    ServiceAccountFolderManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    ReadInJoyNativeAdFragment.a(this.a).setBackgroundResource(2130838514);
+    ReadInJoyNativeAdFragment.a(this.a).setText(this.a.getText(2131438717));
+    ReadInJoyNativeAdFragment.a(this.a).setTextColor(-1);
+    ReadInJoyNativeAdFragment.a(this.a).setProgress(0);
+    ReadInJoyNativeAdFragment.a(this.a).setClickable(true);
+    ReadInJoyNativeAdFragment.c(this.a, 2);
   }
 }
 

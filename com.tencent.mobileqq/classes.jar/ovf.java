@@ -1,27 +1,14 @@
-import android.view.SurfaceHolder;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.view.segment.SegmentManager;
 
 public class ovf
-  implements IVideoViewBase.IVideoViewCallBack
+  extends DataSetObserver
 {
-  public ovf(TribeVideoPlugin paramTribeVideoPlugin) {}
+  public ovf(SegmentManager paramSegmentManager) {}
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onChanged()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
-    }
-  }
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
-    }
+    SegmentManager.a(this.a, true);
   }
 }
 

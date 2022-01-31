@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.leba.model.pluginactions;
 
-import aebb;
+import aejl;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Message;
@@ -25,7 +25,7 @@ public class JDPluginAction
   long jdField_a_of_type_Long;
   Intent jdField_a_of_type_AndroidContentIntent;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new aebb(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new aejl(this);
   qqshop_code.SRsp jdField_a_of_type_TencentImOidbQqshopQqshop_code$SRsp;
   
   public JDPluginAction(Context paramContext)

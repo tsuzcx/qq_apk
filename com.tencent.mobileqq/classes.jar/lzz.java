@@ -1,46 +1,90 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyModelImpl;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.CellFactory;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import java.util.List;
 
-public final class lzz
-  implements Runnable
+public class lzz
+  extends BaseAdapter
 {
-  public lzz(AppRuntime paramAppRuntime, String paramString) {}
+  private lzz(ComponentPolymericView paramComponentPolymericView) {}
   
-  public void run()
+  public int getCount()
   {
-    try
+    return ComponentPolymericView.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return ComponentPolymericView.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return ((BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt)).mRecommendSeq;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
+    if (localBaseArticleInfo.mPolymericInfo != null) {}
+    switch (localBaseArticleInfo.mPolymericInfo.a)
     {
-      Object localObject1 = new Bundle();
-      Object localObject2 = (TicketManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(2);
-      Object localObject3 = this.jdField_a_of_type_MqqAppAppRuntime.getAccount();
-      localObject2 = ((TicketManager)localObject2).getSkey(this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
-      ((Bundle)localObject1).putString("Cookie", "uin=o" + (String)localObject3 + "; skey=" + (String)localObject2);
-      ((Bundle)localObject1).putString("User-Agent", ReadInJoyWebDataManager.d());
-      ((Bundle)localObject1).putString("qq", this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
-      ((Bundle)localObject1).putString("bid", "2");
-      ((Bundle)localObject1).putString("logArray", this.jdField_a_of_type_JavaLangString);
-      localObject3 = new HashMap();
-      ((HashMap)localObject3).put("BUNDLE", localObject1);
-      ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "sendLog :content :" + this.jdField_a_of_type_JavaLangString);
+    default: 
+      if (ReadInJoyUtils.a(localBaseArticleInfo)) {
+        return 51;
       }
-      localObject1 = new maa(this);
-      new HttpWebCgiAsyncTask2("http://node.kandian.qq.com/cgi/stats/multy?g_tk=" + ReadInJoyWebDataManager.a((String)localObject2), "POST", (HttpWebCgiAsyncTask.Callback)localObject1, 0, null).execute(new HashMap[] { localObject3 });
-      return;
+      break;
+    case 9: 
+      return 67;
+    case 11: 
+      return 69;
+    case 10: 
+      return 68;
     }
-    catch (Exception localException)
+    if (ReadInJoyUtils.b(localBaseArticleInfo)) {
+      return 52;
+    }
+    if (localBaseArticleInfo.mSinglePicture != null) {
+      return 50;
+    }
+    return 50;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
+    Object localObject = ComponentPolymericView.a(this.a);
+    ArticleInfo localArticleInfo = (ArticleInfo)paramViewGroup;
+    int j = getItemViewType(paramInt);
+    int k = (int)paramViewGroup.mChannelID;
+    if (paramViewGroup.mChannelID == 3L) {}
+    for (int i = 1;; i = 0)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("ReadInJoyWebDataManager", 2, "sendLog:request err " + localException);
+      localObject = new ReadInJoyModelImpl((Context)localObject, localArticleInfo, j, k, i, paramInt, false, getCount(), null, ComponentPolymericView.a(this.a).a.a());
+      paramView = CellFactory.a(paramInt, localObject, getItemViewType(paramInt), paramView, ComponentPolymericView.a(this.a), ComponentPolymericView.a(this.a).a.a(), ComponentPolymericView.a(this.a).a.a().a());
+      if (paramView != null)
+      {
+        paramView.setTag(2131362079, localObject);
+        ComponentPolymericView.a(this.a).a.a().a(paramViewGroup, (IReadInJoyModel)localObject, System.currentTimeMillis(), paramInt);
+      }
+      return paramView;
     }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 6;
   }
 }
 

@@ -1,43 +1,30 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import android.content.Context;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper;
+import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class aecl
-  extends CardObserver
+class aecl
+  implements Runnable
 {
-  public aecl(LoginWelcomeManager paramLoginWelcomeManager) {}
+  aecl(aeck paramaeck, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void b(boolean paramBoolean, String paramString)
+  public void run()
   {
-    int i = 1;
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginWelcomeManager", 2, String.format("mCardObserver.onUpdateAvatar isSuccess=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
-      if (TextUtils.equals(LoginWelcomeManager.a(this.a).getCurrentAccountUin(), paramString)) {
-        if (LoginWelcomeManager.a(this.a) != null)
-        {
-          paramString = LoginWelcomeManager.a(this.a).getBundle("request");
-          if (paramString != null) {
-            if (!paramBoolean) {
-              break label136;
-            }
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("HuayangPluginNewDownloader", 2, "startLoadingActivity：" + System.currentTimeMillis());
     }
-    for (;;)
+    Context localContext = HuayangDowanloadHelper.a(this.jdField_a_of_type_Aeck.a);
+    String str2 = aeck.a(this.jdField_a_of_type_Aeck);
+    IVPluginInfo localIVPluginInfo = aeck.a(this.jdField_a_of_type_Aeck);
+    InstalledPlugin localInstalledPlugin = aeck.a(this.jdField_a_of_type_Aeck);
+    String str3 = HuayangDowanloadHelper.d(this.jdField_a_of_type_Aeck.a);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str1 = HuayangDowanloadHelper.e(this.jdField_a_of_type_Aeck.a);; str1 = null)
     {
-      paramString.putInt("result", i);
-      paramString.putString("path", LoginWelcomeManager.a(this.a));
-      LoginWelcomeManager.a(this.a, null);
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
+      HuayangLoadbackgroudActivity.a(localContext, str2, localIVPluginInfo, localInstalledPlugin, str3, str1, this.b, this.jdField_a_of_type_Boolean, HuayangDowanloadHelper.c(this.jdField_a_of_type_Aeck.a));
       return;
-      label136:
-      i = 0;
     }
   }
 }

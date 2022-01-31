@@ -1,48 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import org.apache.http.conn.ssl.AbstractVerifier;
 
-public class kog
-  extends Thread
+public final class kog
+  extends AbstractVerifier
 {
-  public kog(NowVideoView paramNowVideoView) {}
+  public kog(String paramString) {}
   
-  public void run()
+  public final String toString()
   {
-    if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
-    for (;;)
-    {
-      if ((this != null) && (!this.a.jdField_a_of_type_Boolean))
-      {
-        if ((this.a.jdField_a_of_type_Long != 0L) && (System.currentTimeMillis() - this.a.jdField_a_of_type_Long > 2000L))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NowVideoView", 2, "no draw for Now");
-          }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1003);
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        return;
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-        continue;
-      }
-      try
-      {
-        Thread.sleep(1000L);
-      }
-      catch (Exception localException) {}
-    }
+    return "CUSTOM_COMPATIBLE";
+  }
+  
+  public final void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    verify(this.a, paramArrayOfString1, paramArrayOfString2, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     kog
  * JD-Core Version:    0.7.0.1
  */

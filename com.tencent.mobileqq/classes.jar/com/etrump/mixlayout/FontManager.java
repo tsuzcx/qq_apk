@@ -144,7 +144,7 @@ public class FontManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + ".font_info";
+    jdField_a_of_type_JavaLangString = AppConstants.aK + ".font_info";
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + File.separator + "fz2.0/";
     jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     jdField_e_of_type_Boolean = true;
@@ -158,7 +158,7 @@ public class FontManager
     jdField_b_of_type_Int = 4;
     jdField_d_of_type_Int = -1;
     jdField_e_of_type_Int = -1;
-    jdField_f_of_type_JavaLangString = AppConstants.aJ + ".font_effect";
+    jdField_f_of_type_JavaLangString = AppConstants.aK + ".font_effect";
     jdField_g_of_type_JavaLangString = jdField_f_of_type_JavaLangString + File.separator + "magicFontConfig.json";
     jdField_j_of_type_JavaLangString = Environment.getExternalStorageDirectory() + "/FontTest" + "/hanyifont/";
     k = Environment.getExternalStorageDirectory() + "/FontTest" + "/fangzhengfont/";
@@ -1705,7 +1705,7 @@ public class FontManager
     //   43: pop
     //   44: aload_0
     //   45: getfield 328	com/etrump/mixlayout/FontManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   48: ifnull +46 -> 94
+    //   48: ifnull +53 -> 101
     //   51: aload_0
     //   52: getfield 169	com/etrump/mixlayout/FontManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   55: astore_1
@@ -1713,54 +1713,57 @@ public class FontManager
     //   57: monitorenter
     //   58: aload_0
     //   59: getfield 328	com/etrump/mixlayout/FontManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   62: invokevirtual 1413	com/etrump/mixlayout/ETEngine:native_doneEngine	()V
-    //   65: aload_1
-    //   66: monitorexit
-    //   67: aload_0
-    //   68: getfield 328	com/etrump/mixlayout/FontManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   71: getfield 319	com/etrump/mixlayout/ETEngine:isEngineInited	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   74: iconst_0
-    //   75: invokevirtual 373	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   78: aload_0
-    //   79: getfield 328	com/etrump/mixlayout/FontManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   82: getfield 326	com/etrump/mixlayout/ETEngine:isEngineReady	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   85: iconst_0
-    //   86: invokevirtual 373	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   89: aload_0
-    //   90: aconst_null
-    //   91: putfield 328	com/etrump/mixlayout/FontManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   94: invokestatic 537	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   97: ifeq +13 -> 110
-    //   100: ldc_w 261
-    //   103: iconst_2
-    //   104: ldc_w 1415
-    //   107: invokestatic 548	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   110: return
-    //   111: astore_2
-    //   112: aload_1
-    //   113: monitorexit
-    //   114: aload_2
-    //   115: athrow
-    //   116: astore_1
-    //   117: invokestatic 537	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   120: ifeq -53 -> 67
-    //   123: ldc_w 261
-    //   126: iconst_2
-    //   127: aload_1
-    //   128: invokevirtual 1416	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
-    //   131: invokestatic 1016	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   134: goto -67 -> 67
+    //   62: invokestatic 1416	com/etrump/mixlayout/ETDecoration:clearMap	(Lcom/etrump/mixlayout/ETEngine;)V
+    //   65: aload_0
+    //   66: getfield 328	com/etrump/mixlayout/FontManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
+    //   69: invokevirtual 1419	com/etrump/mixlayout/ETEngine:native_doneEngine	()V
+    //   72: aload_1
+    //   73: monitorexit
+    //   74: aload_0
+    //   75: getfield 328	com/etrump/mixlayout/FontManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
+    //   78: getfield 319	com/etrump/mixlayout/ETEngine:isEngineInited	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   81: iconst_0
+    //   82: invokevirtual 373	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   85: aload_0
+    //   86: getfield 328	com/etrump/mixlayout/FontManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
+    //   89: getfield 326	com/etrump/mixlayout/ETEngine:isEngineReady	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   92: iconst_0
+    //   93: invokevirtual 373	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   96: aload_0
+    //   97: aconst_null
+    //   98: putfield 328	com/etrump/mixlayout/FontManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
+    //   101: invokestatic 537	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   104: ifeq +13 -> 117
+    //   107: ldc_w 261
+    //   110: iconst_2
+    //   111: ldc_w 1421
+    //   114: invokestatic 548	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   117: return
+    //   118: astore_2
+    //   119: aload_1
+    //   120: monitorexit
+    //   121: aload_2
+    //   122: athrow
+    //   123: astore_1
+    //   124: invokestatic 537	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   127: ifeq -53 -> 74
+    //   130: ldc_w 261
+    //   133: iconst_2
+    //   134: aload_1
+    //   135: invokevirtual 1422	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
+    //   138: invokestatic 1016	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   141: goto -67 -> 74
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	137	0	this	FontManager
-    //   116	12	1	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
-    //   111	4	2	localObject2	Object
+    //   0	144	0	this	FontManager
+    //   123	12	1	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
+    //   118	4	2	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   58	67	111	finally
-    //   112	114	111	finally
-    //   51	58	116	java/lang/UnsatisfiedLinkError
-    //   114	116	116	java/lang/UnsatisfiedLinkError
+    //   58	74	118	finally
+    //   119	121	118	finally
+    //   51	58	123	java/lang/UnsatisfiedLinkError
+    //   121	123	123	java/lang/UnsatisfiedLinkError
   }
 }
 

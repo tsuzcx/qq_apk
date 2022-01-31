@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="50.0dip"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f35" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="10.0dip">
-        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0490" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="8.0dip" android:scaleType="centerCrop" />
-        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:gravity="center_vertical" android:id="@id/textView1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="TextView" />
-    </LinearLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a49" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="20.0dip" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1a49">
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0142" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a4a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="群成员" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a4b" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:text="星期五" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <com.tencent.mobileqq.troop.widget.LimitTextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a4c" android:paddingRight="34.0dip" android:paddingBottom="20.0dip" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="消息" android:maxLines="4" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1a4a" />
+        <View android:background="#ff777777" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
 </RelativeLayout>

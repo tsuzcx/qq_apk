@@ -1,44 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.utils.ShareMsgHelper;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class sfa
-  implements TroopPluginManager.TroopPluginCallback
+  implements Runnable
 {
-  public sfa(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sfa(ChatHistoryFileActivity paramChatHistoryFileActivity, String paramString1, String paramString2, int paramInt) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    int i = 0;
-    boolean bool;
-    Object localObject;
-    if (paramInt == 0)
+    Iterator localIterator = MultiMsgManager.a().a.iterator();
+    while (localIterator.hasNext())
     {
-      this.a.b = true;
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
-      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
-      if (localObject != null) {
-        if (!bool) {
-          break label88;
-        }
+      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+      if ((localChatMessage instanceof MessageForStructing)) {
+        ShareMsgHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, ((MessageForStructing)localChatMessage).structingMsg, null);
       }
-    }
-    label88:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      ((View)localObject).setVisibility(paramInt);
-      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
-      if (localObject != null)
-      {
-        paramInt = i;
-        if (bool) {
-          paramInt = 3;
-        }
-        ((FormSimpleItem)localObject).setBgType(paramInt);
-      }
-      return;
     }
   }
 }

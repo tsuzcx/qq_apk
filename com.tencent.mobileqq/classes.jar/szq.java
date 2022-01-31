@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class szq
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public szq(LoginActivity paramLoginActivity) {}
+  public szq(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    LoginActivity.a(this.a.app, this.a.app.getAccount());
+    GroupManagerActivity.a(this.a, null);
   }
 }
 

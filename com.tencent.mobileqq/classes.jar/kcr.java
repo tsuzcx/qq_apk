@@ -1,39 +1,45 @@
-import android.content.res.Resources;
-import com.tencent.av.AVLog;
-import com.tencent.av.ui.VoiceChangeData;
-import com.tencent.av.ui.VoiceChangeData.GetDrawableCallack;
-import com.tencent.av.ui.VoiceChangeData.VoiceInfo;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.widget.TextView;
+import com.tencent.av.ui.VideoControlUI;
 
 public class kcr
-  implements URLDrawable.URLDrawableListener
+  implements GestureDetector.OnGestureListener
 {
-  public kcr(VoiceChangeData paramVoiceChangeData, VoiceChangeData.GetDrawableCallack paramGetDrawableCallack, URLDrawable paramURLDrawable, Resources paramResources, VoiceChangeData.VoiceInfo paramVoiceInfo) {}
+  public kcr(VideoControlUI paramVideoControlUI) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    AVLog.e(VoiceChangeData.b, "getDrawable|urldrawable load failed. url = " + this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$VoiceInfo.b);
+    return false;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    AVLog.e(VoiceChangeData.b, "getDrawable|urldrawable load failed. url = " + this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$VoiceInfo.b);
+    return false;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public void onLongPress(MotionEvent paramMotionEvent) {}
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    AVLog.a(VoiceChangeData.b, "getDrawable|urldrawable load successed.");
-    if (this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$GetDrawableCallack != null) {
-      this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$GetDrawableCallack.a(this.jdField_a_of_type_ComTencentAvUiVoiceChangeData.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_AndroidContentResResources));
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if ((this.a.k != null) && (this.a.k.isShown()))
+    {
+      this.a.k.setVisibility(8);
+      com.tencent.mobileqq.utils.AudioHelper.b = false;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcr
  * JD-Core Version:    0.7.0.1
  */

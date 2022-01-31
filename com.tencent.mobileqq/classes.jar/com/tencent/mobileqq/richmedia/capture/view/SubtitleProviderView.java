@@ -65,7 +65,7 @@ public class SubtitleProviderView
   
   protected int a()
   {
-    return 2130970582;
+    return 2130970595;
   }
   
   public void a()
@@ -157,7 +157,7 @@ public class SubtitleProviderView
     SubtitleDataManager.a().a(this);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView);
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2130970582, this, false));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2130970595, this, false));
     }
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     this.jdField_a_of_type_ComTencentWidgetGridView = new GridView(this.jdField_a_of_type_AndroidContentContext);
@@ -239,7 +239,7 @@ public class SubtitleProviderView
     }
   }
   
-  public void ai_()
+  public void ak_()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterSubtitleProviderGridAdapter != null) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterSubtitleProviderGridAdapter.notifyDataSetChanged();

@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
-import amtr;
-import amts;
+import anbc;
+import anbd;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Process;
@@ -168,7 +168,7 @@ public class UploadSoDownloader
         {
           QLog.d("UploadEnv", 1, "start check so md5");
           jdField_a_of_type_Boolean = false;
-          ThreadManager.post(new amtr(this), 5, null, true);
+          ThreadManager.post(new anbc(this), 5, null, true);
           continue;
         }
         if (b) {
@@ -203,7 +203,7 @@ public class UploadSoDownloader
           continue;
         }
         b(localQzoneModuleRecord.a.d);
-        QzoneModuleManager.getInstance().downloadModule("upload.so", new amts(this));
+        QzoneModuleManager.getInstance().downloadModule("upload.so", new anbd(this));
       }
       catch (Exception localException)
       {

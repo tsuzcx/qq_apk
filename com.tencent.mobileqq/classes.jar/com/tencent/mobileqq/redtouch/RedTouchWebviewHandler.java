@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.redtouch;
 
-import ahfu;
-import ahfw;
+import ahkl;
+import ahkn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -1395,7 +1395,7 @@ public class RedTouchWebviewHandler
       if (QLog.isColorLevel()) {
         QLog.i(TAG, 2, "getappinfo js startime : " + l);
       }
-      ThreadManager.post(new ahfu(this, paramString, l), 8, null, true);
+      ThreadManager.post(new ahkl(this, paramString, l), 8, null, true);
     }
   }
   
@@ -1405,7 +1405,7 @@ public class RedTouchWebviewHandler
     if (QLog.isColorLevel()) {
       QLog.i(TAG, 2, "getappinfolist js startime : " + l);
     }
-    ThreadManager.post(new ahfw(this, paramString, l), 8, null, true);
+    ThreadManager.post(new ahkn(this, paramString, l), 8, null, true);
   }
   
   public void getDynamicState(String paramString)

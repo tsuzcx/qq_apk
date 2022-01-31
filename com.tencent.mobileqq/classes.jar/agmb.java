@@ -1,32 +1,25 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.portal.ConversationHongBao;
+import android.widget.ImageView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class agmb
-  implements ValueAnimator.AnimatorUpdateListener
+class agmb
+  implements Runnable
 {
-  public agmb(ConversationHongBao paramConversationHongBao, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  agmb(agma paramagma) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
+    long l = System.currentTimeMillis() - ScanTorchActivity.a(this.a.a);
+    if (l > 500L)
     {
+      ScanTorchActivity.d(this.a.a, ScanTorchActivity.b(this.a.a));
       return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao) * (1.0F - f));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f);
-    this.b.setAlpha(f);
+    }
+    ScanTorchActivity.b(this.a.a).postDelayed(new agmc(this), 500L - l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmb
  * JD-Core Version:    0.7.0.1
  */

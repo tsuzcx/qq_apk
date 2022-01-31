@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.PopupWindow;
 import com.tencent.mobileqq.util.DisplayUtil;
-import orm;
+import owb;
 
 public class TipsView
   extends View
@@ -67,7 +67,7 @@ public class TipsView
       for (float f = DisplayUtil.a(paramContext, 5.0F);; f = -paramView.getHeight() - localTipsView.b() - DisplayUtil.a(paramContext, 5.0F))
       {
         paramString.showAsDropDown(paramView, paramInt3, (int)f + paramInt4);
-        localTipsView.postDelayed(new orm(paramString), paramInt6);
+        localTipsView.postDelayed(new owb(paramString), paramInt6);
         return;
         if (paramInt2 != 2) {
           break label191;

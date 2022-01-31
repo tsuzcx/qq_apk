@@ -1,63 +1,88 @@
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.teamwork.spread.BaseTimAIOTipsProcessor.ListResult;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
-import com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemButton;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ainj
+class ainj
   implements Runnable
 {
-  public ainj(TroopFileAIOMsgTips paramTroopFileAIOMsgTips, BaseTimAIOTipsProcessor.ListResult paramListResult) {}
+  ainj(ainh paramainh, StructMsgItemButton paramStructMsgItemButton, StructMsgForGeneralShare paramStructMsgForGeneralShare, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "sub Thread getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
-    }
-    long l1 = MessageCache.a();
-    ArrayList localArrayList = new ArrayList();
-    int i = this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadTroopFileAIOMsgTips.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting.d();
-    List localList = this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadTroopFileAIOMsgTips.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadTroopFileAIOMsgTips.jdField_a_of_type_JavaLangString, 1, 9223372036854775807L, 3, 9223372036854775807L, new int[] { -2017 }, i);
-    if ((localList == null) || (localList.size() == 0))
+    long l = NetConnInfoCenter.getServerTime();
+    int j = -1;
+    int i = j;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemButton.s)) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileAIOMsgTips", 1, "current AIO has not File,peerType[" + this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadTroopFileAIOMsgTips.jdField_a_of_type_Int + "]");
+      i = Integer.parseInt(this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemButton.s);
+      if (PublicAccountChatPie.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      {
+        j = 1;
+        PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X80055C8", "0X80055C8", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId), this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemButton.c, Integer.toString(j), false);
+        j = 0;
+        if (this.jdField_a_of_type_Boolean) {
+          j = 1;
+        }
+        Object localObject1 = new StringBuilder().append("MSGID=").append(Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId)).append(";TEPLATEID=").append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(AbsStructMsgElement.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemButton.b));
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin, "0X8005D4A", "0X8005D4A", i, j, ((StringBuilder)localObject1).toString(), "", "", "");
+        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message == null) {}
+        String str;
+        do
+        {
+          do
+          {
+            return;
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.getExtInfoFromExtStr("gdt_msgClick");
+          } while (TextUtils.isEmpty((CharSequence)localObject1));
+          Object localObject2 = new JSONObject();
+          try
+          {
+            ((JSONObject)localObject2).put("puin", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.uin);
+            ((JSONObject)localObject2).put("index", Long.toString(i));
+            ((JSONObject)localObject2).put("gdt_cli_data", localObject1);
+            new ArrayList().add(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.msgId));
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.getExtInfoFromExtStr("gdt_singleAd");
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.getExtInfoFromExtStr("gdt_mulAd");
+            str = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.getExtInfoFromExtStr("gdt_followAd");
+            if (((String)localObject1).equals("1")) {
+              return;
+            }
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+            if (((String)localObject2).equals("1")) {
+              return;
+            }
+          }
+        } while (!str.equals("1"));
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBaseTimAIOTipsProcessor$ListResult.a(localArrayList);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "current AIO msg count[" + localList.size() + "]");
-    }
-    long l2 = this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadTroopFileAIOMsgTips.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting.c() * 3600;
-    i = 0;
-    if (i < localList.size())
+    catch (NumberFormatException localNumberFormatException)
     {
-      Object localObject = (MessageRecord)localList.get(i);
-      if (!(localObject instanceof MessageForTroopFile)) {}
       for (;;)
       {
-        i += 1;
-        break;
-        if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadTroopFileAIOMsgTips.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq != ((MessageRecord)localObject).uniseq) && (new TroopFileAIOMsgTips(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadTroopFileAIOMsgTips.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ChatMessage)localObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadTroopFileAIOMsgTips.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting).a()))
-        {
-          localObject = (MessageForTroopFile)localObject;
-          if (l1 - ((MessageForTroopFile)localObject).time <= l2) {
-            localArrayList.add(((MessageForTroopFile)localObject).fileName);
-          }
-        }
+        i = j;
+        continue;
+        j = 0;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "find file msg count[" + localArrayList.size() + "]");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBaseTimAIOTipsProcessor$ListResult.a(localArrayList);
   }
 }
 

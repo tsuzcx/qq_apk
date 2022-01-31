@@ -1,91 +1,403 @@
-import Wallet.GetSkinListRsp;
-import Wallet.SetSelectedSkinRsp;
-import Wallet.SkinInfo;
-import android.os.Bundle;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
+import android.util.Pair;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.GestureSelectGridView;
+import cooperation.qzone.QZoneHelper;
 import java.util.ArrayList;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import java.util.HashMap;
 
 public class xde
-  implements BusinessObserver
+  implements AdapterView.OnItemClickListener
 {
-  public xde(CommonHbFragment paramCommonHbFragment) {}
+  public xde(PhotoListActivity paramPhotoListActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonHbFragment", 2, "mObserver type = " + paramInt + " isSuccess = " + paramBoolean + " bundle = " + paramBundle);
+    if (!this.a.y) {
+      this.a.y = true;
     }
-    if (paramBundle == null) {}
-    do
+    switch (this.a.jdField_a_of_type_Xdm.getItemViewType(paramInt))
     {
-      return;
-      switch (paramInt)
+    default: 
+    case 0: 
+    case 1: 
+      label527:
+      int i;
+      label1348:
+      label2171:
+      do
       {
-      default: 
-        return;
-      case 14: 
-        List localList = CommonHbFragment.a(this.a).getList();
-        localList.clear();
-        localList.add(HbSkinInfo.a(CommonHbFragment.e(this.a)));
-        GetSkinListRsp localGetSkinListRsp = (GetSkinListRsp)paramBundle.getSerializable("rsp");
-        if (QLog.isColorLevel()) {
-          QLog.d("CommonHbFragment", 2, "GetSkinListRsp = " + localGetSkinListRsp);
-        }
-        if (localGetSkinListRsp != null)
+        String str;
+        do
         {
-          CommonHbFragment localCommonHbFragment = this.a;
-          if (localGetSkinListRsp.is_hide_list) {}
-          for (paramInt = 8;; paramInt = 0)
+          do
           {
-            CommonHbFragment.a(localCommonHbFragment, paramInt);
-            if (!localGetSkinListRsp.is_hide_list) {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  if (!this.a.i) {
+                    break label527;
+                  }
+                  paramAdapterView = this.a.jdField_a_of_type_Xdm.a(paramInt);
+                  if ((!this.a.R) || ((paramAdapterView.mediaWidth >= 320) && (paramAdapterView.mediaHeight >= 320))) {
+                    break;
+                  }
+                  paramAdapterView = DialogUtil.a(this.a, 230, null, "图片过小，请重新上传（最小需要320x320）", "好的", null, null, new xdf(this));
+                  try
+                  {
+                    paramAdapterView.show();
+                    return;
+                  }
+                  catch (Exception paramAdapterView) {}
+                } while (!QLog.isColorLevel());
+                QLog.d("PhotoListActivity", 2, "showLocationFailDialog fail!", paramAdapterView);
+                return;
+                if ((this.a.I) && (paramAdapterView.mediaWidth > 0) && (paramAdapterView.mediaHeight > 0))
+                {
+                  if ((this.a.jdField_a_of_type_Double > 0.0D) && ((paramAdapterView.mediaHeight * 1.0F / paramAdapterView.mediaWidth < this.a.jdField_b_of_type_Double) || (paramAdapterView.mediaHeight * 1.0F / paramAdapterView.mediaWidth > this.a.jdField_a_of_type_Double)))
+                  {
+                    QQToast.a(this.a, this.a.getResources().getString(2131434819), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+                    return;
+                  }
+                  if ((this.a.o > 0) && (paramAdapterView.fileSize > this.a.o))
+                  {
+                    QQToast.a(this.a, this.a.getResources().getString(2131434820, new Object[] { Integer.valueOf(this.a.o / 1048576) }), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+                    return;
+                  }
+                }
+                if ((PhotoListActivity.h(this.a)) && (paramAdapterView.mediaWidth > 0) && (paramAdapterView.mediaHeight > 0) && (this.a.o > 0) && (paramAdapterView.fileSize > this.a.o))
+                {
+                  QQToast.a(this.a, this.a.getResources().getString(2131434820, new Object[] { Integer.valueOf(this.a.o / 1048576) }), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+                  return;
+                }
+                if (this.a.O)
+                {
+                  this.a.c();
+                  MediaScanner.a(BaseApplicationImpl.getContext()).a(new xdg(this, paramInt), paramAdapterView);
+                  return;
+                }
+              } while (this.a.Q);
+              this.a.a(paramAdapterView, paramInt);
+              return;
+              AlbumUtil.a();
+              paramAdapterView = this.a.getIntent();
+              paramAdapterView.putExtra("ALBUM_NAME", this.a.jdField_a_of_type_JavaLangString);
+              paramAdapterView.putExtra("ALBUM_ID", this.a.jdField_b_of_type_JavaLangString);
+              paramAdapterView.putExtra("PhotoConst.IS_OVERLOAD", this.a.x);
+              if (!this.a.x) {
+                paramAdapterView.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.a.jdField_b_of_type_JavaUtilArrayList);
+              }
+              paramAdapterView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.a.jdField_c_of_type_JavaUtilArrayList);
+              paramAdapterView.putIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS", this.a.jdField_d_of_type_JavaUtilArrayList);
+              paramAdapterView.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
+              paramAdapterView.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", this.a.l);
+              paramAdapterView.putExtra("PhotoConst.SHOW_ALBUM", true);
+              paramAdapterView.putExtra("PhotoConst.SHOW_MAGIC_USE_PASTER", this.a.p);
+              paramAdapterView.putExtra("PasterConstants.paster_id", this.a.jdField_c_of_type_JavaLangString);
+              paramAdapterView.putExtra("PasterConstants.paster_cate_id", this.a.jdField_d_of_type_JavaLangString);
+              PhotoListActivity.m = this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getFirstVisiblePosition();
+              paramView = this.a.jdField_a_of_type_Xdm.a(paramInt);
+              if (AlbumUtil.a(paramView) == 0) {
+                paramAdapterView.putExtra("PhotoConst.CURRENT_SELECTED_INDEX", paramView.position);
+              }
+              if (this.a.P) {
+                paramAdapterView.putExtra("PhotoConst.IS_FROM_QQSTORY_SLIDESHOW", true);
+              }
+              if ((PhotoListActivity.e(this.a)) || (PhotoListActivity.d(this.a)) || (PhotoListActivity.g(this.a)))
+              {
+                if (!this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(paramView.path)) {
+                  this.a.jdField_c_of_type_JavaUtilHashMap.put(paramView.path, paramView);
+                }
+                paramAdapterView.putExtra("PeakConstants.selectedMediaInfoHashMap", this.a.jdField_c_of_type_JavaUtilHashMap);
+              }
+              paramAdapterView.putExtra("PasterConstants.pasters_data", this.a.jdField_e_of_type_JavaUtilHashMap);
+              paramAdapterView.setClass(this.a, PhotoPreviewActivity.class);
+              paramAdapterView.putExtra("from_qzone", PhotoListActivity.b(this.a));
+              if (PhotoListActivity.i(this.a)) {
+                paramAdapterView.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
+              }
+              paramAdapterView.addFlags(603979776);
+              if (PhotoListActivity.d(this.a)) {
+                paramAdapterView.putExtra("PhotoConst.IS_FROM_SHUOSHUO", PhotoListActivity.d(this.a));
+              }
+              if ((this.a.jdField_c_of_type_JavaUtilArrayList != null) && (this.a.jdField_c_of_type_JavaUtilArrayList.size() > 0)) {
+                ReportController.b(null, "CliOper", "", this.a.jdField_e_of_type_JavaLangString, "0X8005674", "0X8005674", 0, this.a.jdField_c_of_type_JavaUtilArrayList.size(), 0, "", "", "", "");
+              }
+              if (PhotoListActivity.c(this.a)) {
+                this.a.startActivityForResult(paramAdapterView, 100010);
+              }
+              for (;;)
+              {
+                AlbumUtil.a(this.a, true, true);
+                return;
+                if (this.a.L)
+                {
+                  paramAdapterView.putExtra("from_health", true);
+                  this.a.startActivityForResult(paramAdapterView, 100010);
+                }
+                else
+                {
+                  this.a.startActivity(paramAdapterView);
+                  PhotoListActivity.c(this.a);
+                }
+              }
+              if ((!this.a.K) && (!this.a.jdField_c_of_type_JavaUtilArrayList.isEmpty()))
+              {
+                paramAdapterView = DialogUtil.a(this.a, 230);
+                paramAdapterView.setMessage("不能同时选择照片和视频");
+                paramAdapterView.setPositiveButton(2131433030, new DialogUtil.DialogOnClickAdapter());
+                paramAdapterView.show();
+                return;
+              }
+              if (!Utils.a())
+              {
+                QQToast.a(this.a, this.a.getResources().getString(2131434786), 0).a();
+                return;
+              }
+              paramView = this.a.jdField_a_of_type_Xdm.a(paramInt);
+            } while (paramView == null);
+            paramAdapterView = this.a.getIntent();
+            localObject = paramAdapterView.getStringExtra("PhotoConst.PLUGIN_APK");
+            str = paramAdapterView.getStringExtra("video_refer");
+            i = 0;
+            if (!TextUtils.isEmpty(str))
+            {
+              if ((!str.contains("QZonePublishMoodTabActivity")) && (!str.contains("QZoneUploadPhotoActivity"))) {
+                break label1348;
+              }
+              i = 1;
+            }
+            while (i != 0)
+            {
+              paramLong = paramAdapterView.getLongExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_CAN_UPLOAD_DURATION", 9223372036854775807L);
+              if (paramView.mDuration > paramLong)
+              {
+                paramAdapterView = "请上传不超过" + paramLong / 60L / 1000L + "分钟的视频";
+                QQToast.a(this.a, paramAdapterView, 0).b(this.a.e());
+                return;
+                i = 0;
+              }
+              else
+              {
+                paramLong = QZoneHelper.b();
+                if (paramView.fileSize > paramLong)
+                {
+                  QQToast.a(this.a, "请上传不超过" + (float)paramLong / 1024.0F / 1024.0F / 1024.0F + "G的视频", 0).b(this.a.e());
+                  return;
+                }
+              }
+            }
+            if ((this.a.M) || (i != 0) || (paramView.fileSize <= this.a.jdField_b_of_type_Long) || (this.a.N) || (PhotoListActivity.f(this.a))) {
               break;
             }
-            HbSkinInfo.c = CommonHbFragment.a(this.a, -1);
-            CommonHbFragment.a(this.a, null);
-            return;
+            paramAdapterView = DialogUtil.a(this.a, "你选择的视频文件过大，无法发送。");
+            paramAdapterView.setPositiveButton(2131433030, new DialogUtil.DialogOnClickAdapter());
+            paramAdapterView.show();
+          } while (!this.a.H);
+          paramAdapterView = this.a.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+          paramView = new Intent("key_video_size_overflow");
+          paramView.putExtra("className", paramAdapterView);
+          this.a.sendBroadcast(paramView);
+          return;
+          if (((!this.a.I) && (!this.a.H)) || (paramView.mDuration - this.a.jdField_c_of_type_Long <= 999L)) {
+            break;
           }
-          HbSkinInfo.jdField_a_of_type_Boolean = paramBundle.getBoolean("isCache");
-          CommonHbFragment.a(this.a, localGetSkinListRsp.selected_id);
-          if (QLog.isColorLevel()) {
-            QLog.d("CommonHbFragment", 2, "rsp size = " + localGetSkinListRsp.skin_list.size() + " serverSkinID = " + CommonHbFragment.a(this.a));
-          }
-          if (!CommonHbFragment.c(this.a)) {
-            HbSkinInfo.c = localGetSkinListRsp.selected_id;
-          }
-          CommonHbFragment.a(this.a).clear();
-          paramInt = i;
-          while (paramInt < localGetSkinListRsp.skin_list.size())
-          {
-            paramBundle = new HbSkinInfo((SkinInfo)localGetSkinListRsp.skin_list.get(paramInt));
-            paramBundle.jdField_a_of_type_Int = paramInt;
-            CommonHbFragment.a(this.a).add(paramBundle);
-            paramInt += 1;
-          }
-          if (!TextUtils.isEmpty(localGetSkinListRsp.more_skin_url)) {
-            localList.add(HbSkinInfo.b(localGetSkinListRsp.more_skin_url));
-          }
-          if (!TextUtils.isEmpty(localGetSkinListRsp.operate_desc))
-          {
-            CommonHbFragment.a(this.a, CommonHbFragment.a(this.a), localGetSkinListRsp.operate_desc, localGetSkinListRsp.operate_url);
-            CommonHbFragment.a(this.a, CommonHbFragment.b(this.a), localGetSkinListRsp.operate_desc, localGetSkinListRsp.operate_url);
-          }
+          paramAdapterView = DialogUtil.a(this.a, "你选择的视频时间过长，无法发送");
+          paramAdapterView.setPositiveButton(2131433030, new DialogUtil.DialogOnClickAdapter());
+          paramAdapterView.show();
+          paramAdapterView = this.a.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+        } while (!this.a.H);
+        paramView = new Intent("key_video_time_overflow");
+        paramView.putExtra("className", paramAdapterView);
+        this.a.sendBroadcast(paramView);
+        return;
+        HashMap localHashMap = AlbumUtil.jdField_c_of_type_JavaUtilHashMap;
+        if (!localHashMap.containsKey(paramView.path))
+        {
+          Pair localPair = new Pair(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
+          localHashMap.put(paramView.path, localPair);
         }
-        HbSkinInfo.a(localList);
-        CommonHbFragment.a(this.a).notifyDataSetChanged();
-        CommonHbFragment.a(this.a, CommonHbFragment.a(this.a));
+        this.a.b(paramView.path);
+        if (("cover_mall_record_video".equals(str)) && (paramView.mDuration / 1000L > this.a.jdField_d_of_type_Long / 1000L))
+        {
+          paramAdapterView = "视频时间不能超过" + this.a.jdField_d_of_type_Long / 1000L + "s，请重新选择";
+          QQToast.a(this.a, paramAdapterView, 0).b(this.a.e());
+          QLog.i("PhotoListActivity", 1, "QQToast:" + paramAdapterView);
+          return;
+        }
+        if ("qzone_plugin.apk".equals(localObject))
+        {
+          if (paramAdapterView.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME").contains("TrimVideoActivity")) {
+            break label2171;
+          }
+          if ((!this.a.g) && (paramView.mDuration <= this.a.jdField_c_of_type_Long) && (!PhotoListActivity.e(this.a)) && ((!PhotoListActivity.d(this.a)) || (!PhotoListActivity.jdField_a_of_type_Boolean))) {
+            break label2097;
+          }
+          this.a.f = true;
+        }
+        for (;;)
+        {
+          if (this.a.f) {
+            break label2298;
+          }
+          paramAdapterView.putExtra("file_send_path", paramView.path);
+          paramAdapterView.putExtra("PhotoConst.IS_VIDEO_SELECTED", true);
+          paramAdapterView.putExtra("PhotoConst.VIDEO_SIZE", paramView.fileSize);
+          paramAdapterView.putExtra("file_send_duration", paramView.mDuration);
+          paramAdapterView.putExtra("file_width", paramView.mediaWidth);
+          paramAdapterView.putExtra("file_height", paramView.mediaHeight);
+          paramAdapterView.putExtra("media_info", paramView);
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(paramView.path);
+          if (!this.a.O) {
+            break;
+          }
+          this.a.c();
+          MediaScanner.a(BaseApplicationImpl.getContext()).a(new xdh(this, paramAdapterView, (ArrayList)localObject), paramView);
+          return;
+          this.a.f = false;
+          paramAdapterView.putExtra("support_record", false);
+          paramAdapterView.putExtra("support_trim", true);
+          paramAdapterView.putExtra("PhotoConst.IS_CALL_IN_PLUGIN", false);
+          paramAdapterView.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
+          paramAdapterView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", "cooperation.qzone.QZoneVideoDownloadActivity");
+          paramAdapterView.putExtra("PhotoConst.SHOW_MAGIC_USE_PASTER", this.a.p);
+        }
+        localObject = this.a;
+        if (paramView.mDuration > this.a.jdField_c_of_type_Long) {}
+        for (boolean bool = true;; bool = false)
+        {
+          ((PhotoListActivity)localObject).f = bool;
+          paramAdapterView.putExtra("PhotoConst.IS_PREVIEW_VIDEO", this.a.f);
+          break;
+        }
+      } while (this.a.Q);
+      label2097:
+      if ((PhotoListActivity.j(this.a)) || (this.a.N))
+      {
+        this.a.c();
+        MediaScanner.a(BaseApplicationImpl.getContext()).a(new xdi(this, paramAdapterView, (ArrayList)localObject), paramView);
         return;
       }
-      paramBundle = (SetSelectedSkinRsp)paramBundle.getSerializable("rsp");
-    } while (!QLog.isColorLevel());
-    QLog.d("CommonHbFragment", 2, "SetSelectedSkinRsp = " + paramBundle);
+      PhotoUtils.a(this.a, paramAdapterView, (ArrayList)localObject, 2, false);
+      return;
+      label2298:
+      if (((PhotoListActivity.e(this.a)) || (PhotoListActivity.d(this.a)) || (PhotoListActivity.k(this.a)) || (PhotoListActivity.f(this.a))) && (this.a.K))
+      {
+        paramView = this.a.getIntent();
+        paramView.putExtra("ALBUM_NAME", this.a.jdField_a_of_type_JavaLangString);
+        paramView.putExtra("ALBUM_ID", this.a.jdField_b_of_type_JavaLangString);
+        paramView.putExtra("PhotoConst.IS_OVERLOAD", this.a.x);
+        if (!this.a.x) {
+          paramView.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.a.jdField_b_of_type_JavaUtilArrayList);
+        }
+        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.a.jdField_c_of_type_JavaUtilArrayList);
+        paramView.putIntegerArrayListExtra("PhotoConst.SELECTED_INDEXS", this.a.jdField_d_of_type_JavaUtilArrayList);
+        paramView.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
+        paramView.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", this.a.l);
+        paramView.putExtra("PhotoConst.SHOW_ALBUM", true);
+        paramView.putExtra("PhotoConst.SHOW_MAGIC_USE_PASTER", this.a.p);
+        paramView.putExtra("PasterConstants.paster_id", this.a.jdField_c_of_type_JavaLangString);
+        paramView.putExtra("PasterConstants.paster_cate_id", this.a.jdField_d_of_type_JavaLangString);
+        PhotoListActivity.m = this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getFirstVisiblePosition();
+        localObject = this.a.jdField_a_of_type_Xdm.a(paramInt);
+        paramView.putExtra("PhotoConst.CURRENT_SELECTED_INDEX", ((LocalMediaInfo)localObject).position);
+        if (!this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(((LocalMediaInfo)localObject).path)) {
+          this.a.jdField_c_of_type_JavaUtilHashMap.put(((LocalMediaInfo)localObject).path, localObject);
+        }
+        paramView.putExtra("PeakConstants.selectedMediaInfoHashMap", this.a.jdField_c_of_type_JavaUtilHashMap);
+        paramView.putExtra("PasterConstants.pasters_data", this.a.jdField_e_of_type_JavaUtilHashMap);
+        paramView.setClass(this.a, PhotoPreviewActivity.class);
+        if (PhotoListActivity.d(this.a)) {
+          paramAdapterView.putExtra("PhotoConst.IS_FROM_SHUOSHUO", PhotoListActivity.d(this.a));
+        }
+        paramView.putExtra("from_qzone", PhotoListActivity.b(this.a));
+        paramView.putExtra("PhotoConst.PHOTOLIST_IS_FROM_HWUPLOAD", PhotoListActivity.f(this.a));
+        paramView.addFlags(603979776);
+        if ((this.a.jdField_c_of_type_JavaUtilArrayList != null) && (this.a.jdField_c_of_type_JavaUtilArrayList.size() > 0)) {
+          ReportController.b(null, "CliOper", "", this.a.jdField_e_of_type_JavaLangString, "0X8005674", "0X8005674", 0, this.a.jdField_c_of_type_JavaUtilArrayList.size(), 0, "", "", "", "");
+        }
+        this.a.startActivity(paramView);
+        PhotoListActivity.d(this.a);
+        AlbumUtil.a(this.a, true, true);
+        return;
+      }
+      Object localObject = new Intent(this.a, ShortVideoPreviewActivity.class);
+      ((Intent)localObject).putExtras(paramAdapterView);
+      ((Intent)localObject).putExtra("file_send_path", paramView.path);
+      ((Intent)localObject).putExtra("file_send_size", paramView.fileSize);
+      ((Intent)localObject).putExtra("file_send_duration", paramView.mDuration);
+      ((Intent)localObject).putExtra("file_width", paramView.mediaWidth);
+      ((Intent)localObject).putExtra("file_height", paramView.mediaHeight);
+      ((Intent)localObject).putExtra("uin", this.a.j);
+      ((Intent)localObject).putExtra("uintype", this.a.k);
+      ((Intent)localObject).putExtra("file_source", "album");
+      ((Intent)localObject).putExtra("is_from_system_media", paramView.isSystemMeidaStore);
+      ((Intent)localObject).putExtra("PhotoConst.IS_FROM_TROOP_BAR", this.a.H);
+      if (this.a.M)
+      {
+        ((Intent)localObject).putExtra("from_health", true);
+        paramInt = ((Intent)localObject).getIntExtra("size_before_compress", 104857600);
+        i = ((Intent)localObject).getIntExtra("duration_max", 180000);
+        if ((paramView.fileSize > paramInt) || (paramView.mDuration > i))
+        {
+          QQToast.a(this.a, "视频文件过大，无法发送", 0).b(this.a.e());
+          return;
+        }
+      }
+      if (this.a.K)
+      {
+        ((Intent)localObject).putExtra("PhotoConst.IS_SUPPORT_VIDEO_CHECKBOX", true);
+        ((Intent)localObject).putExtra("PhotoConst.PHOTO_PATHS", this.a.jdField_c_of_type_JavaUtilArrayList);
+      }
+      if (((PhotoListActivity.e(this.a)) || ((PhotoListActivity.d(this.a)) && (PhotoListActivity.jdField_a_of_type_Boolean) && (!PhotoListActivity.jdField_b_of_type_Boolean))) && (this.a.K)) {
+        ((Intent)localObject).putExtra("preview_only", true);
+      }
+      this.a.startActivityForResult((Intent)localObject, 17);
+      return;
+    }
+    if (!Utils.a())
+    {
+      QQToast.a(this.a, this.a.getResources().getString(2131434786), 0).a();
+      return;
+    }
+    if (this.a.L)
+    {
+      paramAdapterView = new Intent();
+      paramAdapterView.putStringArrayListExtra("img_list", this.a.jdField_c_of_type_JavaUtilArrayList);
+      this.a.setResult(16, paramAdapterView);
+      this.a.finish();
+      return;
+    }
+    if ((PhotoListActivity.d(this.a)) || (PhotoListActivity.e(this.a)))
+    {
+      PhotoListActivity.e(this.a);
+      return;
+    }
+    this.a.h();
   }
 }
 

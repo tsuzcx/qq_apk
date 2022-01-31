@@ -1,25 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.addContactTroopView.TroopCardGroup;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.List;
+import tencent.im.troop_search_searchtab.searchtab.Card;
+import tencent.im.troop_search_searchtab.searchtab.Item1;
+import tencent.im.troop_search_searchtab.searchtab.TitleBar;
 
 public class kmt
-  implements AsyncBack
+  implements AdapterView.OnItemClickListener
 {
-  public kmt(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  public kmt(TroopCardGroup paramTroopCardGroup) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
-    }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
+    paramAdapterView = (searchtab.Item1)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    TroopCardGroup.a(this.a, paramAdapterView);
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_grpdata", 0, 0, String.valueOf(paramAdapterView.uint64_group_code.get()), this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.title_bar.str_desc.get(), "", "");
   }
 }
 

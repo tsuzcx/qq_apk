@@ -1,15 +1,21 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 
-public final class vbf
-  implements Runnable
+public class vbf
+  implements AnimationTextView.OnDoubleClick
 {
-  public vbf(Context paramContext) {}
+  public vbf(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131434501), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    if (DeviceTextItemBuilder.a(this.a)) {
+      return;
+    }
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

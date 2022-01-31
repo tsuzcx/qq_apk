@@ -1,67 +1,46 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.werewolves.WerewolvesObserver;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class vzd
-  implements Runnable
+  extends WerewolvesObserver
 {
-  public vzd(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vzd(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    Object localObject = null;
-    PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-    if (localPublicAccountDataManager != null) {
-      localObject = localPublicAccountDataManager.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onDownLoadedPluginResult result = " + paramInt);
     }
-    boolean bool;
-    if (localObject == null)
+    if (paramInt == 0) {
+      this.a.bf();
+    }
+    do
     {
-      bool = this.a.y();
-      this.a.x();
-      if ((bool) && (TextUtils.isEmpty(this.a.f)) && (localPublicAccountDataManager != null))
-      {
-        localObject = localPublicAccountDataManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        if ((localObject != null) && (!TextUtils.isEmpty(((AccountDetail)localObject).summary))) {
-          this.a.f = ((AccountDetail)localObject).summary;
-        }
-      }
+      return;
+      QQToast.a(this.a.a(), "游戏加载失败", 0).a();
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+  }
+  
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
     }
-    for (;;)
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager == null)) {}
+    WerewolvesPluginInterface localWerewolvesPluginInterface;
+    do
     {
-      if ((bool) || (PublicAccountChatPie.a(this.a)))
-      {
-        PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004EFB", "0X8004EFB", 0, 0, "", "", "", "", false);
-        this.a.P = true;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-      }
-      for (;;)
-      {
-        localObject = "0";
-        if (bool) {
-          localObject = "1";
-        }
-        long l = NetConnInfoCenter.getServerTime();
-        if (QLog.isColorLevel()) {
-          QLog.d("struct_log_tag", 2, "PublicAccountChatPie :CliOper|" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a + "|0X8005619|0X8005619" + 0 + "|" + 0 + "|" + Long.toString(l) + "|" + (String)localObject);
-        }
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8005619", "0X8005619", 0, 0, Long.toString(l), (String)localObject, "", "");
-        return;
-        if (!PublicAccountChatPie.b(this.a)) {
-          this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, new vze(this));
-        }
-      }
-      bool = false;
-    }
+      return;
+      localWerewolvesPluginInterface = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
+    } while (localWerewolvesPluginInterface == null);
+    localWerewolvesPluginInterface.a(String.valueOf(paramLong2), paramBoolean);
   }
 }
 

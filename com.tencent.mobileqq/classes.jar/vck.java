@@ -1,20 +1,41 @@
+import android.os.Handler;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PLNewsItemBuilder;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class vck
-  extends AbstractChatItemBuilder.ViewHolder
+  implements ActionSheet.OnButtonClickListener
 {
-  public long a;
-  public CornerImageView a;
-  public String a;
-  public View b;
-  public TextView b;
-  public TextView c;
+  public vck(FileVideoItemBuilder paramFileVideoItemBuilder, MessageForFile paramMessageForFile, ActionSheet paramActionSheet) {}
   
-  public vck(PLNewsItemBuilder paramPLNewsItemBuilder) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b.post(new vcl(this));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      return;
+      paramView = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+      if (paramView.status == 16)
+      {
+        FMToastUtil.a(2131428188);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
+      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    }
+  }
 }
 
 

@@ -1,41 +1,16 @@
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class vme
-  implements Runnable
+public class vme
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  vme(vmb paramvmb, AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
+  public vme(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AIOImageListModel localAIOImageListModel;
-    if (this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData != null)
-    {
-      localAIOImageListModel = (AIOImageListModel)vma.a(this.jdField_a_of_type_Vmb.a);
-      if (!localAIOImageListModel.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioPhotoAIORichMediaData, this.jdField_a_of_type_Int)) {
-        break label92;
-      }
-      if (vma.e(this.jdField_a_of_type_Vmb.a) != null) {
-        ((AIOGalleryScene)vma.f(this.jdField_a_of_type_Vmb.a)).u();
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Vmb.a.a != null) {
-        this.jdField_a_of_type_Vmb.a.a.h();
-      }
-      return;
-      label92:
-      if ((this.jdField_a_of_type_Vmb.a.a != null) && (this.jdField_a_of_type_Vmb.a.a() == this.jdField_a_of_type_Vmb.a.a))
-      {
-        localAIOImageListModel.a();
-        if (vma.g(this.jdField_a_of_type_Vmb.a) != null) {
-          ((AIOGalleryScene)vma.h(this.jdField_a_of_type_Vmb.a)).u();
-        }
-      }
-    }
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

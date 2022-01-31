@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
 
-public class wdw
-  implements Runnable
+class wdw
+  implements WebProcessManager.WebProcessStartListener
 {
-  public wdw(ZhituManager paramZhituManager, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
+  wdw(wdv paramwdv) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_Int);
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager));
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager).clear();
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b.trim(), null, 0);
+    if (paramBoolean) {
+      this.a.a.a.a();
+    }
   }
 }
 

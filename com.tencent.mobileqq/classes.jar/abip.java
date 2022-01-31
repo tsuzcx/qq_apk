@@ -1,20 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashBgView;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class abip
-  implements ValueAnimator.AnimatorUpdateListener
+  implements NonMainAppHeadLoader.FaceObserver
 {
-  public abip(ARMapSplashBgView paramARMapSplashBgView) {}
+  public abip(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (ARMapSplashBgView.b(this.a) != null)
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramBitmap != null) && (paramString1.equals(this.a.h)) && (this.a.j))
     {
-      ARMapSplashBgView.b(this.a).setPivotY(ARMapSplashBgView.b(this.a).getHeight() * 0.7F);
-      ARMapSplashBgView.b(this.a).setRotation(paramValueAnimator.floatValue() * ARMapSplashBgView.d(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapActivity", 2, "onFaceUpdate uin:" + paramString1 + " path=" + paramString2);
+      }
+      this.a.j = false;
+      ThreadManager.post(new abiq(this, paramBitmap), 5, null, false);
     }
   }
 }

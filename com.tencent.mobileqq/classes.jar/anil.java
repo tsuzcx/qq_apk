@@ -1,25 +1,40 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
+import cooperation.qzone.util.AlbumLibDownloaderUtil;
+import cooperation.qzone.util.FileUtils;
+import java.io.File;
 
 public class anil
-  implements MediaScanner.OnMediaInfoScannerListener
+  implements ModuleDownloadListener
 {
-  public anil(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public anil(AlbumLibDownloaderUtil paramAlbumLibDownloaderUtil) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString) {}
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
   {
-    if (!paramBoolean)
-    {
-      this.a.a(101);
+    if (!paramString.equals("pictureMarkerSo.so")) {
       return;
     }
-    this.a.a(this.a.a, paramLocalMediaInfo);
+    String str = AlbumLibDownloaderUtil.a.getPath();
+    paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
+    if (paramString.exists()) {
+      paramString.renameTo(new File(AlbumLibDownloaderUtil.a.getPath() + "/photoQulatitySo.zip"));
+    }
+    paramString = new File(str);
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
+    FileUtils.b(new File(AlbumLibDownloaderUtil.a.getPath() + "/photoQulatitySo.zip"), paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anil
  * JD-Core Version:    0.7.0.1
  */

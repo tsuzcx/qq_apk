@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import aica;
+import aigu;
 import android.annotation.TargetApi;
 import android.graphics.ImageFormat;
 import android.graphics.Rect;
@@ -208,6 +208,143 @@ public class CameraControl
     return null;
   }
   
+  private CameraControl.CustomSize a(List paramList, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getHighVersionPreviewSizeV2[wantedPreviewSize]: width=" + paramInt1 + "  height=" + paramInt2);
+    }
+    float f3 = paramInt1 / paramInt2;
+    Object localObject2 = new ArrayList();
+    Object localObject1 = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      paramList = paramList.iterator();
+    }
+    label236:
+    label879:
+    label882:
+    label885:
+    label886:
+    for (;;)
+    {
+      Object localObject3;
+      int i;
+      int j;
+      if (paramList.hasNext())
+      {
+        localObject3 = (Camera.Size)paramList.next();
+        if (localObject3 == null) {
+          continue;
+        }
+        i = Math.max(((Camera.Size)localObject3).width, ((Camera.Size)localObject3).height);
+        j = Math.min(((Camera.Size)localObject3).width, ((Camera.Size)localObject3).height);
+        if ((((Camera.Size)localObject3).height != paramInt2) || (i != paramInt1)) {
+          break label349;
+        }
+        ((List)localObject1).add(new CameraControl.CustomSize(paramInt1, paramInt2));
+        if (QLog.isColorLevel()) {
+          QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getHighVersionPreviewSizeV2 first: width=" + paramInt1 + "  height=" + paramInt2);
+        }
+      }
+      float f1;
+      float f2;
+      if (((List)localObject1).size() == 0)
+      {
+        paramList = ((List)localObject2).iterator();
+        f1 = 10000.0F;
+        if (paramList.hasNext())
+        {
+          localObject3 = (CameraControl.CustomSize)paramList.next();
+          if (localObject3 == null) {
+            break label885;
+          }
+          paramInt1 = Math.max(((CameraControl.CustomSize)localObject3).jdField_a_of_type_Int, ((CameraControl.CustomSize)localObject3).jdField_b_of_type_Int);
+          paramInt2 = Math.min(((CameraControl.CustomSize)localObject3).jdField_a_of_type_Int, ((CameraControl.CustomSize)localObject3).jdField_b_of_type_Int);
+          f2 = paramInt1 / paramInt2;
+          if (Math.abs(f3 - f2) < jdField_a_of_type_Double) {
+            ((List)localObject1).add(localObject3);
+          }
+          if (Math.abs(f3 - f2) >= f1) {
+            break label885;
+          }
+          f1 = Math.abs(f3 - f2);
+        }
+      }
+      for (;;)
+      {
+        break label236;
+        if ((i <= paramInt5) || (i >= paramInt3) || (j <= paramInt6) || (j >= paramInt4)) {
+          break label886;
+        }
+        ((List)localObject2).add(new CameraControl.CustomSize(i, j));
+        break;
+        f2 = f1;
+        if (QLog.isColorLevel())
+        {
+          f2 = f1;
+          if (localObject1 != null)
+          {
+            paramInt1 = 0;
+            for (;;)
+            {
+              f2 = f1;
+              if (paramInt1 >= ((List)localObject1).size()) {
+                break;
+              }
+              QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getHighVersionPreviewSizeV2 secend: width=" + ((CameraControl.CustomSize)((List)localObject1).get(paramInt1)).jdField_a_of_type_Int + " height=" + ((CameraControl.CustomSize)((List)localObject1).get(paramInt1)).jdField_b_of_type_Int + " w/h=" + ((CameraControl.CustomSize)((List)localObject1).get(paramInt1)).jdField_a_of_type_Int / ((CameraControl.CustomSize)((List)localObject1).get(paramInt1)).jdField_b_of_type_Int);
+              paramInt1 += 1;
+            }
+            f2 = 10000.0F;
+          }
+        }
+        if (((List)localObject1).size() == 0)
+        {
+          paramList = ((List)localObject2).iterator();
+          while (paramList.hasNext())
+          {
+            localObject2 = (CameraControl.CustomSize)paramList.next();
+            if (localObject2 != null)
+            {
+              paramInt1 = Math.max(((CameraControl.CustomSize)localObject2).jdField_a_of_type_Int, ((CameraControl.CustomSize)localObject2).jdField_b_of_type_Int);
+              paramInt2 = Math.min(((CameraControl.CustomSize)localObject2).jdField_a_of_type_Int, ((CameraControl.CustomSize)localObject2).jdField_b_of_type_Int);
+              if (Math.abs(Math.abs(f3 - paramInt1 / paramInt2) - f2) < jdField_a_of_type_Double) {
+                ((List)localObject1).add(localObject2);
+              }
+            }
+          }
+          if ((QLog.isColorLevel()) && (localObject1 != null))
+          {
+            paramInt1 = 0;
+            while (paramInt1 < ((List)localObject1).size())
+            {
+              QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getHighVersionPreviewSizeV2 third: width=" + ((CameraControl.CustomSize)((List)localObject1).get(paramInt1)).jdField_a_of_type_Int + " height=" + ((CameraControl.CustomSize)((List)localObject1).get(paramInt1)).jdField_b_of_type_Int + " w/h=" + ((CameraControl.CustomSize)((List)localObject1).get(paramInt1)).jdField_a_of_type_Int / ((CameraControl.CustomSize)((List)localObject1).get(paramInt1)).jdField_b_of_type_Int);
+              paramInt1 += 1;
+            }
+          }
+        }
+        if (((List)localObject1).size() > 0)
+        {
+          paramList = (CameraControl.CustomSize)((List)localObject1).get(0);
+          localObject2 = ((List)localObject1).iterator();
+          localObject1 = paramList;
+          if (!((Iterator)localObject2).hasNext()) {
+            break label879;
+          }
+          localObject1 = (CameraControl.CustomSize)((Iterator)localObject2).next();
+          if ((localObject1 == null) || (((CameraControl.CustomSize)localObject1).jdField_a_of_type_Int * ((CameraControl.CustomSize)localObject1).jdField_b_of_type_Int <= paramList.jdField_a_of_type_Int * paramList.jdField_b_of_type_Int)) {
+            break label882;
+          }
+          paramList = (List)localObject1;
+        }
+        for (;;)
+        {
+          break;
+          localObject1 = null;
+          return localObject1;
+        }
+      }
+    }
+  }
+  
   public static CameraControl a()
   {
     if (jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraControl == null) {}
@@ -349,12 +486,12 @@ public class CameraControl
     {
       int[] arrayOfInt2 = (int[])((Iterator)localObject2).next();
       if ((arrayOfInt2 == null) || (arrayOfInt2.length < 2) || (arrayOfInt2[1] < i)) {
-        break label314;
+        break label316;
       }
       i = arrayOfInt2[1];
     }
-    label301:
-    label314:
+    label303:
+    label316:
     for (;;)
     {
       break;
@@ -382,9 +519,9 @@ public class CameraControl
         if (localObject1[0] >= 15000)
         {
           m = localObject1[0] - 15000;
-          label211:
+          label212:
           if (m >= j) {
-            break label301;
+            break label303;
           }
           j = localObject1[0];
         }
@@ -396,7 +533,7 @@ public class CameraControl
         j = m;
         break;
         m = 15000 - localObject1[0];
-        break label211;
+        break label212;
         if (j != 2147483647)
         {
           arrayOfInt1[0] = k;
@@ -451,9 +588,9 @@ public class CameraControl
     int[] arrayOfInt1 = new int[2];
     int[] tmp5_4 = arrayOfInt1;
     tmp5_4[0] = 2147483647;
-    int[] tmp10_5 = tmp5_4;
-    tmp10_5[1] = 2147483647;
-    tmp10_5;
+    int[] tmp11_5 = tmp5_4;
+    tmp11_5[1] = 2147483647;
+    tmp11_5;
     Object localObject = paramList.iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -711,7 +848,7 @@ public class CameraControl
     Object localObject3;
     CameraControl.CustomSize localCustomSize;
     Object localObject5;
-    label261:
+    label259:
     if (FlowCameraConstant.jdField_a_of_type_Int == 1)
     {
       if (!e)
@@ -732,7 +869,7 @@ public class CameraControl
     for (;;)
     {
       if (!((Iterator)localObject5).hasNext()) {
-        break label402;
+        break label400;
       }
       Camera.Size localSize = (Camera.Size)((Iterator)localObject5).next();
       if (localSize != null)
@@ -742,7 +879,7 @@ public class CameraControl
         if (localIterator.hasNext())
         {
           if (Math.abs(((Float)localIterator.next()).floatValue() - d2) > 0.009999999776482582D) {
-            break label261;
+            break label259;
           }
           if (d2 >= d1)
           {
@@ -760,7 +897,7 @@ public class CameraControl
         }
       }
     }
-    label402:
+    label400:
     int i = GloableValue.jdField_c_of_type_Int;
     int j = GloableValue.d;
     if (QLog.isColorLevel()) {
@@ -772,12 +909,12 @@ public class CameraControl
     {
       localObject5 = (Camera.Size)((Iterator)localObject1).next();
       if ((localObject5 == null) || (((Camera.Size)localObject5).height != j) || (((Camera.Size)localObject5).width < i) || ((paramInt2 >= 0) && (((Camera.Size)localObject5).width > paramInt2))) {
-        break label1404;
+        break label1402;
       }
       paramInt2 = ((Camera.Size)localObject5).width;
     }
-    label1401:
-    label1404:
+    label1399:
+    label1402:
     for (;;)
     {
       break;
@@ -827,7 +964,7 @@ public class CameraControl
       {
         localObject5 = (Camera.Size)((Iterator)localObject1).next();
         if ((localObject5 == null) || (((Camera.Size)localObject5).height != i) || (((Camera.Size)localObject5).width < paramInt2) || ((paramInt1 >= 0) && (((Camera.Size)localObject5).width > paramInt1))) {
-          break label1401;
+          break label1399;
         }
         paramInt1 = ((Camera.Size)localObject5).width;
       }
@@ -1049,10 +1186,10 @@ public class CameraControl
     {
       paramInt3 = 0;
       if (localCustomSize != null) {
-        break label381;
+        break label379;
       }
     }
-    label381:
+    label379:
     for (paramInt4 = j;; paramInt4 = localCustomSize.jdField_b_of_type_Int)
     {
       NewFlowCameraReporter.a(4, paramInt1, paramInt2, paramInt3, paramInt4);
@@ -1076,13 +1213,13 @@ public class CameraControl
       Camera.Size localSize = (Camera.Size)paramList.next();
       paramInt2 = Math.abs(localSize.width - paramInt3);
       if (paramInt1 <= paramInt2) {
-        break label132;
+        break label133;
       }
       localCustomSize.jdField_a_of_type_Int = localSize.width;
       localCustomSize.jdField_b_of_type_Int = localSize.height;
       paramInt1 = paramInt2;
     }
-    label132:
+    label133:
     for (;;)
     {
       break;
@@ -1136,7 +1273,7 @@ public class CameraControl
       try
       {
         this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, null, new aica(this, paramInt1, paramFile, paramRect, paramPictureCallback, paramBoolean, paramInt2));
+        this.jdField_a_of_type_AndroidHardwareCamera.takePicture(null, null, null, new aigu(this, paramInt1, paramFile, paramRect, paramPictureCallback, paramBoolean, paramInt2));
         return;
       }
       catch (RuntimeException paramFile) {}
@@ -1567,9 +1704,9 @@ public class CameraControl
     int[] arrayOfInt1 = new int[2];
     int[] tmp7_5 = arrayOfInt1;
     tmp7_5[0] = 2147483647;
-    int[] tmp12_7 = tmp7_5;
-    tmp12_7[1] = 2147483647;
-    tmp12_7;
+    int[] tmp13_7 = tmp7_5;
+    tmp13_7[1] = 2147483647;
+    tmp13_7;
     int i = paramInt * 1000;
     List localList = CameraAbility.a().c();
     if (localList == null)
@@ -1655,9 +1792,8 @@ public class CameraControl
   
   public CameraControl.CustomSize b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    int j = 0;
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewSizeGuaranteeOK: dstwidth=" + paramInt1 + "  dstheight=" + paramInt2);
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewSizeV2: dstwidth=" + paramInt1 + "  dstheight=" + paramInt2);
     }
     Object localObject = CameraAbility.a().a();
     if ((QLog.isColorLevel()) && (localObject != null))
@@ -1669,7 +1805,7 @@ public class CameraControl
         i += 1;
       }
     }
-    CameraControl.CustomSize localCustomSize = a((List)localObject, GloableValue.jdField_c_of_type_Int, GloableValue.d);
+    CameraControl.CustomSize localCustomSize = a((List)localObject, paramInt1, paramInt2, 2600, 1500, 1700, 1000);
     if (localCustomSize != null)
     {
       if (QLog.isColorLevel()) {
@@ -1678,45 +1814,42 @@ public class CameraControl
       localObject = localCustomSize;
       if (paramBoolean)
       {
-        NewFlowCameraReporter.a(2, GloableValue.jdField_c_of_type_Int, GloableValue.d, localCustomSize.jdField_a_of_type_Int, localCustomSize.jdField_b_of_type_Int);
+        NewFlowCameraReporter.a(2, paramInt1, paramInt2, localCustomSize.jdField_a_of_type_Int, localCustomSize.jdField_b_of_type_Int);
         localObject = localCustomSize;
       }
     }
     do
     {
-      do
-      {
-        return localObject;
-        if (QLog.isColorLevel()) {
-          QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewSizeGuaranteeOK: Degeneration to 640*480...");
-        }
-        localCustomSize = a((List)localObject, GloableValue.jdField_a_of_type_ArrayOfInt[1], GloableValue.b[1]);
-        if (localCustomSize == null) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewSizeGuaranteeOK: 640*480 resolution os OK.");
-        }
-        localObject = localCustomSize;
-      } while (!paramBoolean);
-      NewFlowCameraReporter.a(3, GloableValue.jdField_c_of_type_Int, GloableValue.d, localCustomSize.jdField_a_of_type_Int, localCustomSize.jdField_b_of_type_Int);
-      return localCustomSize;
-      localCustomSize = a((List)localObject, paramInt1, paramInt2, paramInt3, paramInt4);
+      return localObject;
+      localCustomSize = a((List)localObject, paramInt1, paramInt2, 2600, 1500, 1000, 700);
+      if (localCustomSize == null) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewSizeGuaranteeOK: 640*480 resolution os OK.");
+      }
       localObject = localCustomSize;
     } while (!paramBoolean);
-    if (localCustomSize == null)
+    NewFlowCameraReporter.a(3, paramInt1, paramInt2, localCustomSize.jdField_a_of_type_Int, localCustomSize.jdField_b_of_type_Int);
+    return localCustomSize;
+    localObject = a((List)localObject, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (paramBoolean)
     {
-      paramInt1 = 0;
-      if (localCustomSize != null) {
-        break label415;
+      if (localObject != null) {
+        break label382;
+      }
+      paramInt3 = 0;
+      if (localObject != null) {
+        break label391;
       }
     }
-    label415:
-    for (paramInt2 = j;; paramInt2 = localCustomSize.jdField_b_of_type_Int)
+    label391:
+    for (paramInt4 = 0;; paramInt4 = ((CameraControl.CustomSize)localObject).jdField_b_of_type_Int)
     {
-      NewFlowCameraReporter.a(4, GloableValue.jdField_c_of_type_Int, GloableValue.d, paramInt1, paramInt2);
-      return localCustomSize;
-      paramInt1 = localCustomSize.jdField_a_of_type_Int;
+      NewFlowCameraReporter.a(4, paramInt1, paramInt2, paramInt3, paramInt4);
+      return localObject;
+      label382:
+      paramInt3 = ((CameraControl.CustomSize)localObject).jdField_a_of_type_Int;
       break;
     }
   }
@@ -1753,37 +1886,37 @@ public class CameraControl
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 319	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   1: getfield 337	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
     //   4: ifnonnull +5 -> 9
     //   7: iconst_0
     //   8: ireturn
     //   9: aload_0
-    //   10: getfield 487	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_Boolean	Z
+    //   10: getfield 497	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_Boolean	Z
     //   13: ifne +5 -> 18
     //   16: iconst_1
     //   17: ireturn
     //   18: aload_0
     //   19: iconst_0
-    //   20: putfield 487	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_Boolean	Z
+    //   20: putfield 497	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_Boolean	Z
     //   23: aload_0
-    //   24: invokespecial 561	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:f	()Z
+    //   24: invokespecial 571	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:f	()Z
     //   27: istore_1
     //   28: iload_1
     //   29: ifeq +10 -> 39
     //   32: aload_0
-    //   33: getfield 319	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   36: invokevirtual 564	android/hardware/Camera:cancelAutoFocus	()V
+    //   33: getfield 337	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   36: invokevirtual 574	android/hardware/Camera:cancelAutoFocus	()V
     //   39: aload_0
-    //   40: getfield 319	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   43: invokevirtual 718	android/hardware/Camera:stopPreview	()V
+    //   40: getfield 337	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   43: invokevirtual 723	android/hardware/Camera:stopPreview	()V
     //   46: aload_0
-    //   47: getfield 319	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   47: getfield 337	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
     //   50: aconst_null
-    //   51: invokevirtual 587	android/hardware/Camera:setPreviewCallback	(Landroid/hardware/Camera$PreviewCallback;)V
+    //   51: invokevirtual 597	android/hardware/Camera:setPreviewCallback	(Landroid/hardware/Camera$PreviewCallback;)V
     //   54: aload_0
-    //   55: getfield 319	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
+    //   55: getfield 337	com/tencent/mobileqq/shortvideo/mediadevice/CameraControl:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
     //   58: aconst_null
-    //   59: invokevirtual 583	android/hardware/Camera:setPreviewDisplay	(Landroid/view/SurfaceHolder;)V
+    //   59: invokevirtual 593	android/hardware/Camera:setPreviewDisplay	(Landroid/view/SurfaceHolder;)V
     //   62: iconst_1
     //   63: ireturn
     //   64: astore_2
@@ -1904,35 +2037,100 @@ public class CameraControl
   public CameraControl.CustomSize[] b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewAndPictureSizeGuarantee wanted size=" + GloableValue.jdField_c_of_type_Int + " " + GloableValue.d + " cliped=" + paramInt1 + " " + paramInt2);
-    }
-    if (0 != 0)
-    {
-      paramInt1 = GloableValue.jdField_c_of_type_Int;
-      paramInt1 = GloableValue.d;
-      throw new NullPointerException();
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewAndPictureSizeV2 wanted size=" + paramInt1 + " " + paramInt2 + " cliped=" + paramInt3 + " " + paramInt4);
     }
     CameraControl.CustomSize[] arrayOfCustomSize = new CameraControl.CustomSize[2];
-    CameraControl.CustomSize localCustomSize2 = b(paramInt1, paramInt2, paramInt3, paramInt4, true);
-    if (localCustomSize2 != null)
+    CameraControl.CustomSize localCustomSize1 = b(paramInt1, paramInt2, paramInt3, paramInt4, true);
+    if (localCustomSize1 != null)
     {
-      arrayOfCustomSize[0] = localCustomSize2;
+      arrayOfCustomSize[0] = localCustomSize1;
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewAndPictureSizeGuarantee way2 preview=" + localCustomSize2.jdField_a_of_type_Int + " " + localCustomSize2.jdField_b_of_type_Int);
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewAndPictureSizeGuarantee way2 preview=" + localCustomSize1.jdField_a_of_type_Int + " " + localCustomSize1.jdField_b_of_type_Int);
       }
-      CameraControl.CustomSize localCustomSize1 = a(localCustomSize2.jdField_a_of_type_Int, localCustomSize2.jdField_b_of_type_Int, paramInt3, paramInt4, 1);
-      arrayOfCustomSize[1] = localCustomSize1;
-      if (localCustomSize1 != null)
+      CameraControl.CustomSize localCustomSize2 = a(localCustomSize1.jdField_a_of_type_Int, localCustomSize1.jdField_b_of_type_Int, paramInt3, paramInt4, 1);
+      arrayOfCustomSize[1] = localCustomSize2;
+      if (localCustomSize2 != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewAndPictureSizeGuarantee way2 picture=" + localCustomSize1.jdField_a_of_type_Int + " " + localCustomSize1.jdField_b_of_type_Int);
+          QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewAndPictureSizeGuarantee way2 picture=" + localCustomSize2.jdField_a_of_type_Int + " " + localCustomSize2.jdField_b_of_type_Int);
         }
-        NewFlowCameraReporter.a(true, localCustomSize2.jdField_a_of_type_Int, localCustomSize2.jdField_b_of_type_Int, localCustomSize1.jdField_a_of_type_Int, localCustomSize1.jdField_b_of_type_Int);
-        return arrayOfCustomSize;
+        NewFlowCameraReporter.a(true, localCustomSize1.jdField_a_of_type_Int, localCustomSize1.jdField_b_of_type_Int, localCustomSize2.jdField_a_of_type_Int, localCustomSize2.jdField_b_of_type_Int);
       }
-      NewFlowCameraReporter.a(true, localCustomSize2.jdField_a_of_type_Int, localCustomSize2.jdField_b_of_type_Int, -1, -1);
     }
+    else
+    {
+      return arrayOfCustomSize;
+    }
+    NewFlowCameraReporter.a(true, localCustomSize1.jdField_a_of_type_Int, localCustomSize1.jdField_b_of_type_Int, -1, -1);
     return arrayOfCustomSize;
+  }
+  
+  public CameraControl.CustomSize c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
+  {
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewSizeGuaranteeOK: dstwidth=" + paramInt1 + "  dstheight=" + paramInt2);
+    }
+    Object localObject = CameraAbility.a().a();
+    if ((QLog.isColorLevel()) && (localObject != null))
+    {
+      int i = 0;
+      while (i < ((List)localObject).size())
+      {
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewSizeGuaranteeOK[list]: width=" + ((Camera.Size)((List)localObject).get(i)).width + " height=" + ((Camera.Size)((List)localObject).get(i)).height + " w/h=" + ((Camera.Size)((List)localObject).get(i)).width / ((Camera.Size)((List)localObject).get(i)).height);
+        i += 1;
+      }
+    }
+    CameraControl.CustomSize localCustomSize = a((List)localObject, GloableValue.jdField_c_of_type_Int, GloableValue.d);
+    if (localCustomSize != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewSizeGuaranteeOK: DEFAULT resolution os OK.");
+      }
+      localObject = localCustomSize;
+      if (paramBoolean)
+      {
+        NewFlowCameraReporter.a(2, GloableValue.jdField_c_of_type_Int, GloableValue.d, localCustomSize.jdField_a_of_type_Int, localCustomSize.jdField_b_of_type_Int);
+        localObject = localCustomSize;
+      }
+    }
+    do
+    {
+      do
+      {
+        return localObject;
+        if (QLog.isColorLevel()) {
+          QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewSizeGuaranteeOK: Degeneration to 640*480...");
+        }
+        localCustomSize = a((List)localObject, GloableValue.jdField_a_of_type_ArrayOfInt[1], GloableValue.b[1]);
+        if (localCustomSize == null) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewSizeGuaranteeOK: 640*480 resolution os OK.");
+        }
+        localObject = localCustomSize;
+      } while (!paramBoolean);
+      NewFlowCameraReporter.a(3, GloableValue.jdField_c_of_type_Int, GloableValue.d, localCustomSize.jdField_a_of_type_Int, localCustomSize.jdField_b_of_type_Int);
+      return localCustomSize;
+      localCustomSize = a((List)localObject, paramInt1, paramInt2, paramInt3, paramInt4);
+      localObject = localCustomSize;
+    } while (!paramBoolean);
+    if (localCustomSize == null)
+    {
+      paramInt1 = 0;
+      if (localCustomSize != null) {
+        break label413;
+      }
+    }
+    label413:
+    for (paramInt2 = j;; paramInt2 = localCustomSize.jdField_b_of_type_Int)
+    {
+      NewFlowCameraReporter.a(4, GloableValue.jdField_c_of_type_Int, GloableValue.d, paramInt1, paramInt2);
+      return localCustomSize;
+      paramInt1 = localCustomSize.jdField_a_of_type_Int;
+      break;
+    }
   }
   
   @TargetApi(14)
@@ -2020,6 +2218,40 @@ public class CameraControl
         return false;
       }
     }
+  }
+  
+  public CameraControl.CustomSize[] c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewAndPictureSizeGuarantee wanted size=" + GloableValue.jdField_c_of_type_Int + " " + GloableValue.d + " cliped=" + paramInt1 + " " + paramInt2);
+    }
+    if (0 != 0)
+    {
+      paramInt1 = GloableValue.jdField_c_of_type_Int;
+      paramInt1 = GloableValue.d;
+      throw new NullPointerException();
+    }
+    CameraControl.CustomSize[] arrayOfCustomSize = new CameraControl.CustomSize[2];
+    CameraControl.CustomSize localCustomSize1 = c(paramInt1, paramInt2, paramInt3, paramInt4, true);
+    if (localCustomSize1 != null)
+    {
+      arrayOfCustomSize[0] = localCustomSize1;
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewAndPictureSizeGuarantee way2 preview=" + localCustomSize1.jdField_a_of_type_Int + " " + localCustomSize1.jdField_b_of_type_Int);
+      }
+      CameraControl.CustomSize localCustomSize2 = a(localCustomSize1.jdField_a_of_type_Int, localCustomSize1.jdField_b_of_type_Int, paramInt3, paramInt4, 1);
+      arrayOfCustomSize[1] = localCustomSize2;
+      if (localCustomSize2 != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(jdField_b_of_type_JavaLangString, 2, "[@] getPreviewAndPictureSizeGuarantee way2 picture=" + localCustomSize2.jdField_a_of_type_Int + " " + localCustomSize2.jdField_b_of_type_Int);
+        }
+        NewFlowCameraReporter.a(true, localCustomSize1.jdField_a_of_type_Int, localCustomSize1.jdField_b_of_type_Int, localCustomSize2.jdField_a_of_type_Int, localCustomSize2.jdField_b_of_type_Int);
+        return arrayOfCustomSize;
+      }
+      NewFlowCameraReporter.a(true, localCustomSize1.jdField_a_of_type_Int, localCustomSize1.jdField_b_of_type_Int, -1, -1);
+    }
+    return arrayOfCustomSize;
   }
   
   @TargetApi(14)

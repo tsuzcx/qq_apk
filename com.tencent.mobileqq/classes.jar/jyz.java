@@ -1,35 +1,37 @@
-import com.tencent.av.ui.QAVPtvTemplateAdapter;
-import com.tencent.av.ui.QavListItemBase;
-import com.tencent.av.ui.QavListItemBase.IClickCallback;
+import android.content.res.Resources;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 import com.tencent.qphone.base.util.QLog;
 
 public class jyz
-  implements QavListItemBase.IClickCallback
+  implements Runnable
 {
-  public jyz(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter) {}
+  public jyz(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void a(int paramInt, QavListItemBase paramQavListItemBase)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QAVPtvTemplateAdapter", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
-    }
-    if ((System.currentTimeMillis() - this.a.a < 500L) && (paramInt > 0)) {
+    if ((this.a.jdField_a_of_type_AndroidViewViewGroup == null) || (this.a.i == null) || (this.a.jdField_a_of_type_AndroidContentResResources == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(this.a.c, 2, "SetTitleMaxWidth Failed --> RootView Or TitleView Or Resource is NULL");
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("QAVPtvTemplateAdapter", 2, "PtvTemplateAdapter onItemClicked position yes : " + paramInt);
+    if (this.a.h == null)
+    {
+      i = this.a.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559755);
+      this.a.i.setMaxWidth(i);
+      return;
     }
-    this.a.a = System.currentTimeMillis();
-    int i = this.a.c;
-    this.a.c = paramInt;
-    this.a.a(i, this.a.c);
-    this.a.a(this.a.c);
-    this.a.c(this.a.c);
+    int i = this.a.jdField_a_of_type_AndroidViewViewGroup.getWidth();
+    int j = this.a.h.getWidth();
+    this.a.i.setMaxWidth(i - j * 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jyz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,51 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.network.request.square.GetSquareFeedIdListRequest;
-import com.tencent.biz.qqstory.network.request.square.GetSquareFeedIdListRequest.GetSquareFeedIdListResponse;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-class obz
-  implements CmdTaskManger.CommandCallback
+public class obz
+  extends QQStoryObserver
 {
-  obz(oby paramoby, JobContext paramJobContext, Integer paramInteger) {}
+  public obz(QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter) {}
   
-  public void a(@NonNull GetSquareFeedIdListRequest paramGetSquareFeedIdListRequest, @Nullable GetSquareFeedIdListRequest.GetSquareFeedIdListResponse paramGetSquareFeedIdListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      SLog.d("Q.qqstory.discover.SquareFeedListPageLoader", "feedId pull segment cancel on net respond");
+    paramInt = 1;
+    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramGetSquareFeedIdListResponse == null))
+    if (paramBoolean1)
     {
-      SLog.a("Q.qqstory.discover.SquareFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      oby.a(this.jdField_a_of_type_Oby, paramErrorMessage);
-      return;
+      paramString = this.a.a;
+      if (paramBoolean2)
+      {
+        paramString.isSubscribe = paramInt;
+        paramString = (QQStoryManager)PlayModeUtils.a().getManager(180);
+        if (!paramBoolean2) {
+          break label125;
+        }
+        if (!paramString.i()) {
+          paramString.b();
+        }
+        QQToast.a(PlayModeUtils.a(), 2, "已关注", 0).a();
+      }
+      for (;;)
+      {
+        QQStoryMemoriesPresenter.a(this.a).d();
+        QQStoryMemoriesPresenter.a(this.a).b();
+        return;
+        paramInt = 0;
+        break;
+        label125:
+        QQToast.a(PlayModeUtils.a(), 2, "已取消关注", 0).a();
+      }
     }
-    oby.a(this.jdField_a_of_type_Oby).a(paramGetSquareFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetSquareFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetSquareFeedIdListResponse.jdField_a_of_type_Boolean);
-    paramGetSquareFeedIdListRequest = oby.a(this.jdField_a_of_type_Oby).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    oby.a(this.jdField_a_of_type_Oby, paramGetSquareFeedIdListRequest);
+    QQToast.a(PlayModeUtils.a(), 1, "操作失败，请稍后重试", 0).a();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dating;
 
-import abxt;
-import abxu;
+import acft;
+import acfu;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -31,7 +31,7 @@ public class SayHelloMsgListActivity
   
   public SayHelloMsgListActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver = new abxt(this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver = new acft(this);
   }
   
   protected List a(List paramList)
@@ -68,7 +68,7 @@ public class SayHelloMsgListActivity
       }
     }
     if (!localArrayList2.isEmpty()) {
-      ThreadManager.getFileThreadHandler().post(new abxu(this, localArrayList2));
+      ThreadManager.getFileThreadHandler().post(new acfu(this, localArrayList2));
     }
     if (QLog.isDevelopLevel())
     {
@@ -127,7 +127,7 @@ public class SayHelloMsgListActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setTitle(2131437952);
+    super.setTitle(2131437972);
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver, true);
     return true;
   }

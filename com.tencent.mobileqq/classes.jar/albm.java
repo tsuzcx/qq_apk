@@ -1,43 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
 
-class albm
-  implements DialogInterface.OnClickListener
+public class albm
+  extends ListView
 {
-  albm(albl paramalbl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public albm(DraggableGridView paramDraggableGridView, Context paramContext)
   {
-    if (paramInt == 1)
-    {
-      this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.cancel();
-      this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.finish();
-      return;
-    }
-    try
-    {
-      ForwardSdkShareOption.a(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity, true, "action_game_bind_group", Long.valueOf(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.c).longValue(), -1, this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.cancel();
-      BindGroupConfirmActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity, -1);
-      BindGroupConfirmActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("BindGroupConfirmActivity", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
-    }
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     albm
  * JD-Core Version:    0.7.0.1
  */

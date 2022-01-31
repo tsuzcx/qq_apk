@@ -1,28 +1,24 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.DBUtils;
 
 public class six
-  implements DragFrameLayout.OnDragModeChangedListener
+  implements Runnable
 {
-  private final int jdField_a_of_type_Int = -2147483648;
+  public six(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  private six(Conversation paramConversation) {}
-  
-  public void a(int paramInt, List paramList) {}
-  
-  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
+  public void run()
   {
-    if (paramDragFrameLayout.a() == -1)
+    TroopMemberInfo localTroopMemberInfo = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.app.getCurrentAccountUin());
+    if (localTroopMemberInfo != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
-      FrameHelperActivity.b(true);
-      return;
+      String str = localTroopMemberInfo.troopnick;
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = localTroopMemberInfo.troopnick;
     }
-    FrameHelperActivity.b(false);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
   }
 }
 

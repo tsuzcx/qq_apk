@@ -13,7 +13,7 @@ import com.tencent.mapsdk.raster.model.Polygon;
 import com.tencent.mapsdk.raster.model.PolygonOptions;
 import com.tencent.mapsdk.raster.model.Polyline;
 import com.tencent.mapsdk.raster.model.PolylineOptions;
-import com.tencent.mapsdk.rastercore.d.e;
+import com.tencent.mapsdk.rastercore.d.f;
 
 public class MapFragmentUtil
 {

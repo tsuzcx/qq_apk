@@ -1,21 +1,35 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class mvd
-  implements ClickableColorSpanTextView.SpanClickListener
+  implements Runnable
 {
-  public mvd(PublicAccountH5AbilityForPtt paramPublicAccountH5AbilityForPtt) {}
+  public mvd(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void run()
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    EntityManager localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
+    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
+    Message localMessage = this.a.a.obtainMessage(1);
+    localMessage.obj = localList;
+    this.a.a.sendMessage(localMessage);
+    localEntityManager.a();
+    if (localList != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNewSearchActivity", 2, "lookupHistory size: " + localList.size());
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ReadInJoyNewSearchActivity", 2, "history is null");
   }
 }
 

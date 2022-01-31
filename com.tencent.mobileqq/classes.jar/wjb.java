@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.ViewFactory.GuideView.OnItemClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.mobileqq.doutu.DoutuEmotionHorizonListView.HorizonListViewTouchListener;
+import mqq.os.MqqHandler;
 
 public class wjb
-  implements ViewFactory.GuideView.OnItemClickListener
+  implements DoutuEmotionHorizonListView.HorizonListViewTouchListener
 {
-  public wjb(SearchContactsFragment paramSearchContactsFragment) {}
+  public wjb(ZhituManager paramZhituManager, MqqHandler paramMqqHandler) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
+    switch (paramInt)
+    {
     }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.a(paramString, false);
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(85);
+      return;
+    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(85, 10000L);
   }
 }
 

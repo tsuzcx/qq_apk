@@ -1,42 +1,13 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.DataLineHandler;
 
 public class zjh
-  extends ContentObserver
+  implements Runnable
 {
-  WeakReference a;
+  public zjh(DataLineHandler paramDataLineHandler, long paramLong, int paramInt) {}
   
-  public zjh(Handler paramHandler)
+  public void run()
   {
-    super(paramHandler);
-  }
-  
-  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
-  {
-    if (this.a != null) {
-      this.a.clear();
-    }
-    if (paramPhoneContactManagerImp != null) {
-      this.a = new WeakReference(paramPhoneContactManagerImp);
-    }
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
-    }
-    if (this.a == null) {}
-    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
-    {
-      if (localPhoneContactManagerImp != null) {
-        localPhoneContactManagerImp.h = true;
-      }
-      return;
-    }
+    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

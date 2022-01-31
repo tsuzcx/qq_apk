@@ -52,7 +52,7 @@ public class RecentHotChatCenterItem
     }
     super.a(paramQQAppInterface, paramContext);
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131439116);
+      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131439143);
     }
     MsgSummary localMsgSummary = null;
     HotChatCenterManager localHotChatCenterManager = (HotChatCenterManager)paramQQAppInterface.getManager(254);
@@ -171,13 +171,13 @@ public class RecentHotChatCenterItem
     if ((paramQQAppInterface != null) && (!paramQQAppInterface.mIsRead4Folder) && (!TextUtils.isEmpty(paramQQAppInterface.mADsContent)))
     {
       this.jdField_d_of_type_JavaLangCharSequence = "[新活动]";
-      this.e = paramContext.getResources().getColor(2131494288);
+      this.e = paramContext.getResources().getColor(2131494294);
       return;
     }
     if ((this.jdField_c_of_type_Int > 0) && (paramQQAppInterface != null) && (paramQQAppInterface.mState != 1))
     {
-      this.jdField_d_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131436685), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int) });
-      this.e = paramContext.getResources().getColor(2131494288);
+      this.jdField_d_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131436705), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int) });
+      this.e = paramContext.getResources().getColor(2131494294);
       return;
     }
     this.jdField_d_of_type_JavaLangCharSequence = "";

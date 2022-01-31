@@ -29,8 +29,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import nfl;
-import nfm;
+import njv;
+import njw;
 
 public class DateCollectionListPageLoader
   extends INetPageLoader
@@ -234,7 +234,7 @@ public class DateCollectionListPageLoader
   public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
     super.a(paramTencentLocation, paramInt);
-    Bosses.get().postJob(new nfl(this));
+    Bosses.get().postJob(new njv(this));
   }
   
   protected boolean a(String paramString)
@@ -245,7 +245,7 @@ public class DateCollectionListPageLoader
   public void c()
   {
     super.c();
-    Bosses.get().postJob(new nfm(this));
+    Bosses.get().postJob(new njw(this));
   }
 }
 

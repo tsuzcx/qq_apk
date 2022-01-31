@@ -1,48 +1,30 @@
-import com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory;
-import com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory.DelegateSSLSocket;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.net.ssl.SSLSocket;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.ClipboardManager;
+import android.view.View;
+import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class aimc
-  extends NoSSLv3SocketFactory.DelegateSSLSocket
+public final class aimc
+  implements ActionSheet.OnButtonClickListener
 {
-  private aimc(NoSSLv3SocketFactory paramNoSSLv3SocketFactory, SSLSocket paramSSLSocket)
-  {
-    super(paramNoSSLv3SocketFactory, paramSSLSocket);
-  }
+  public aimc(String paramString, Context paramContext) {}
   
-  public void setEnabledProtocols(String[] paramArrayOfString)
+  public void OnClick(View paramView, int paramInt)
   {
-    String[] arrayOfString = paramArrayOfString;
-    if (paramArrayOfString != null)
+    switch (paramInt)
     {
-      arrayOfString = paramArrayOfString;
-      if (paramArrayOfString.length == 1)
-      {
-        arrayOfString = paramArrayOfString;
-        if ("SSLv3".equals(paramArrayOfString[0]))
-        {
-          paramArrayOfString = new ArrayList(Arrays.asList(this.a.getEnabledProtocols()));
-          if (paramArrayOfString.size() <= 1) {
-            break label101;
-          }
-          paramArrayOfString.remove("SSLv3");
-          QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
-        }
-      }
     }
     for (;;)
     {
-      arrayOfString = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
-      if (arrayOfString != null) {
-        super.setEnabledProtocols(arrayOfString);
-      }
+      StructMsgClickHandler.a().dismiss();
       return;
-      label101:
-      QLog.i("setEnabledProtocols", 1, "SSL stuck with protocol available for " + String.valueOf(paramArrayOfString));
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      continue;
+      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

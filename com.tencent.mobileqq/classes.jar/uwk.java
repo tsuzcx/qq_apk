@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import com.tencent.qphone.base.util.QLog;
 
-public class uwk
-  implements FMDialogUtil.FMDialogInterface
+class uwk
+  implements Runnable
 {
-  public uwk(FileItemBuilder paramFileItemBuilder, FileManagerEntity paramFileManagerEntity) {}
+  uwk(uwj paramuwj, Drawable paramDrawable) {}
   
-  public void a()
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    QLog.d("DoodleMsgLayout", 2, "setDoodleContent start update drawable:" + this.jdField_a_of_type_Uwj.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Uwj.jdField_a_of_type_Int != DoodleMsgLayout.a(this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if (DoodleMsgLayout.b(this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
+      DoodleMsgLayout.b(this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).setImageDrawable(null);
+    }
+    if (DoodleMsgLayout.c(this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
+      DoodleMsgLayout.c(this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).setImageDrawable(null);
+    }
+    if (DoodleMsgLayout.a(this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
+      DoodleMsgLayout.a(this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
+    DoodleMsgLayout.a(this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, 0);
+    if (DoodleMsgLayout.a(this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout) != null) {
+      this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(DoodleMsgLayout.a(this.jdField_a_of_type_Uwj.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout).a());
+    }
+    QLog.d("DoodleMsgLayout", 2, "setDoodleContent finish update drawable:" + this.jdField_a_of_type_Uwj.jdField_a_of_type_Int);
   }
-  
-  public void b() {}
 }
 
 

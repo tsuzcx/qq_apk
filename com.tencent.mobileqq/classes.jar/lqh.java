@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class lqh
-  implements Comparator
+  implements View.OnClickListener
 {
-  public lqh(ArticleInfoModule paramArticleInfoModule) {}
+  public lqh(ReadInJoyBBCircleFragment paramReadInJoyBBCircleFragment) {}
   
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  public void onClick(View paramView)
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
-    }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
+    this.a.a.a(true);
+    ThreadManager.executeOnSubThread(new lqi(this));
   }
 }
 

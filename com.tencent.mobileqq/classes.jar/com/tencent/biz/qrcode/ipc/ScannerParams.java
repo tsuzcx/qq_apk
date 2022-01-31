@@ -3,12 +3,12 @@ package com.tencent.biz.qrcode.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ouw;
+import ozn;
 
 public class ScannerParams
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ouw();
+  public static final Parcelable.Creator CREATOR = new ozn();
   public String a;
   public boolean a;
   public String b;

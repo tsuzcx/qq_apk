@@ -17,6 +17,7 @@ import com.tencent.mobileqq.search.model.GroupSearchModelFunction;
 import com.tencent.mobileqq.search.model.GroupSearchModelLocalContact;
 import com.tencent.mobileqq.search.model.GroupSearchModelLocalContactApproximate;
 import com.tencent.mobileqq.search.model.GroupSearchModelMessage;
+import com.tencent.mobileqq.search.model.GroupSearchModelPublicAcnt;
 import com.tencent.mobileqq.search.model.IModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
 import com.tencent.mobileqq.search.model.NetSearchTemplateBaseItem;
@@ -62,6 +63,7 @@ public class SearchUtil
       d.put(GroupSearchModelFileEntity.class.getSimpleName(), Integer.valueOf(104));
       d.put(GroupSearchModelFunction.class.getSimpleName(), Integer.valueOf(105));
       d.put(SearchResultModelForEntrance.class.getSimpleName(), Integer.valueOf(106));
+      d.put(GroupSearchModelPublicAcnt.class.getSimpleName(), Integer.valueOf(107));
     }
     Integer localInteger = (Integer)d.get(paramIModel.getClass().getSimpleName());
     if (localInteger == null) {

@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.ArResourceDownload;
+import com.tencent.mobileqq.ar.ArResourceManager;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
 public class aajo
+  implements Runnable
 {
-  public QQAppInterface a;
-  public WorldCupConfigInfo a;
-  public WorldCupMgr a;
-  public String a;
-  public WeakReference a = new WeakReference(null);
-  public WeakReference b = new WeakReference(null);
-  public WeakReference c = new WeakReference(null);
-  public WeakReference d = new WeakReference(null);
-  public WeakReference e = new WeakReference(null);
+  public aajo(ArResourceManager paramArResourceManager, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArArResourceManager.a.a(this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo, this.jdField_a_of_type_Boolean, this.b);
+  }
 }
 
 

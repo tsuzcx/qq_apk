@@ -1,40 +1,97 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.PhoneUnityBannerData;
+import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class tsk
-  implements CompoundButton.OnCheckedChangeListener
+  extends SecSvcObserver
 {
-  public tsk(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
+  public tsk(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(Object paramObject)
   {
-    boolean bool = true;
-    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!NetworkUtil.d(this.a.getActivity())))
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QQSetting2Activity", 4, String.format(Locale.getDefault(), "onGetPhoneUnityLocalData data: %s, create: %s, count: %s", new Object[] { paramObject, Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+    }
+    boolean bool1;
+    if (paramObject == null)
     {
-      this.a.a(2131437758, 0);
-      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
-      if (!paramBoolean)
+      bool1 = true;
+      boolean bool2 = bool1;
+      if (!bool1)
       {
-        paramBoolean = bool;
-        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, paramBoolean);
+        bool2 = bool1;
+        if ((paramObject instanceof PhoneUnityBannerData)) {
+          bool2 = ((PhoneUnityBannerData)paramObject).b;
+        }
+      }
+      paramObject = this.a.findViewById(2131369169);
+      if (paramObject != null)
+      {
+        if (!bool2) {
+          break label159;
+        }
+        paramObject.setVisibility(0);
+        if (!this.a.jdField_a_of_type_Boolean) {
+          break label138;
+        }
+        this.a.a(true);
       }
     }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      bool1 = false;
+      break;
+      label138:
+      if (this.a.jdField_a_of_type_Int == 0)
+      {
+        this.a.a(false);
+        continue;
+        label159:
+        paramObject.setVisibility(8);
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString)
+  {
+    boolean bool = true;
+    if (this.a.isFinishing()) {}
     do
     {
       return;
-      paramBoolean = false;
-      break;
-      if (paramCompoundButton == this.a.a.a())
+      if (paramBoolean)
       {
-        this.a.app.e(paramBoolean, true);
-        return;
+        paramString = this.a;
+        if (paramInt == 1) {}
+        for (paramBoolean = bool;; paramBoolean = false)
+        {
+          QQSettingSettingActivity.a(paramString, paramBoolean);
+          return;
+        }
       }
-    } while (paramCompoundButton != this.a.b.a());
-    this.a.app.f(paramBoolean, true);
+    } while (!this.a.isResume());
+    paramString = this.a.getString(2131436611);
+    QQToast.a(this.a.getApplicationContext(), paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (this.a.isFinishing()) {}
+    do
+    {
+      return;
+      QQSettingSettingActivity.a(this.a, paramBoolean, paramBundle);
+      QQSettingSettingActivity localQQSettingSettingActivity = this.a;
+      localQQSettingSettingActivity.jdField_a_of_type_Int -= 1;
+    } while (!QLog.isDevelopLevel());
+    QLog.i("QQSetting2Activity", 4, String.format(Locale.getDefault(), "onGetPhoneUnityInfo isSuccess: %s, data: %s, count: %s", new Object[] { Boolean.valueOf(paramBoolean), paramBundle, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
   }
 }
 

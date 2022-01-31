@@ -1,42 +1,50 @@
-import android.graphics.Matrix;
-import com.tencent.av.widget.stageview.StageEffectView.StageMember;
+import android.telephony.PhoneStateListener;
+import com.tencent.av.utils.PhoneStatusMonitor;
+import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class kim
+  extends PhoneStateListener
 {
-  public float a;
-  public int a;
-  public final Matrix a;
-  public StageEffectView.StageMember a;
-  public kil a;
-  public kim a;
-  public boolean a;
-  public float b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
+  public kim(PhoneStatusMonitor paramPhoneStatusMonitor) {}
   
-  private kim()
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  }
-  
-  public void a(kim paramkim)
-  {
-    this.jdField_a_of_type_Int = paramkim.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Float = paramkim.jdField_a_of_type_Float;
-    this.b = paramkim.b;
-    this.c = paramkim.c;
-    this.d = paramkim.d;
-    this.e = paramkim.e;
-    this.f = paramkim.d;
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramkim.jdField_a_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_Kil = paramkim.jdField_a_of_type_Kil;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      super.onCallStateChanged(paramInt, paramString);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_IDLE  mIsCalling:  " + this.a.jdField_a_of_type_Boolean);
+      }
+      if (this.a.jdField_a_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable mIsCalling: " + this.a.jdField_a_of_type_Boolean);
+        }
+        ThreadManager.post(this.a.jdField_a_of_type_JavaLangRunnable, 8, null, false);
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_RINGING or CALL_STATE_OFFHOOK");
+        }
+        if (!this.a.jdField_a_of_type_Boolean)
+        {
+          this.a.jdField_a_of_type_Boolean = true;
+          if (this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener != null) {
+            this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(true);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     kim
  * JD-Core Version:    0.7.0.1
  */

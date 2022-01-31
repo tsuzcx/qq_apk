@@ -20,9 +20,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import rea;
-import reb;
-import rec;
+import ris;
+import rit;
+import riu;
 
 public abstract class DoraemonAPIManager
 {
@@ -58,6 +58,22 @@ public abstract class DoraemonAPIManager
       }
       return;
     }
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "android";
+    case 2: 
+      return "ark";
+    case 5: 
+      return "limi";
+    case 3: 
+      return "mini_game";
+    }
+    return "mini_app";
   }
   
   private void b(APIConfig paramAPIConfig, APIParam paramAPIParam, APICallback paramAPICallback)
@@ -224,12 +240,12 @@ public abstract class DoraemonAPIManager
         return;
       }
     }
-    ThreadManager.getUIHandler().post(new reb(this, paramString, paramAPIParam, paramAPICallback));
+    ThreadManager.getUIHandler().post(new rit(this, paramString, paramAPIParam, paramAPICallback));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, String paramString4, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    ThreadManager.getUIHandler().post(new rec(this, paramString1, paramString2, paramString4, paramString3, paramOnClickListener1, paramOnClickListener2, paramOnCancelListener));
+    ThreadManager.getUIHandler().post(new riu(this, paramString1, paramString2, paramString4, paramString3, paramOnClickListener1, paramOnClickListener2, paramOnCancelListener));
   }
   
   public void a(boolean paramBoolean)
@@ -255,7 +271,7 @@ public abstract class DoraemonAPIManager
           if (a().jdField_b_of_type_Int != 1) {
             break label123;
           }
-          ThreadManager.getUIHandler().post(new rea(this, localArrayList));
+          ThreadManager.getUIHandler().post(new ris(this, localArrayList));
         }
         return;
       }

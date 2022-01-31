@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.response.GetLocationResponse;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Response;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.AddressHelper.AddressCallBack;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.ArrayList;
 
-public final class odu
-  implements Parcelable.Creator
+public class odu
+  implements AddressHelper.AddressCallBack
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
+  public odu(LocalVideoPusher paramLocalVideoPusher, ArrayList paramArrayList, LocalMediaInfo paramLocalMediaInfo) {}
+  
+  public void a(ErrorMessage paramErrorMessage)
   {
-    return new EditTakeVideoSource(paramParcel);
+    paramErrorMessage = new LocalVideoPusher.Response();
+    paramErrorMessage.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    paramErrorMessage = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.obtainMessage(2, paramErrorMessage);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.sendMessage(paramErrorMessage);
   }
   
-  public EditTakeVideoSource[] a(int paramInt)
+  public void a(GetLocationResponse paramGetLocationResponse)
   {
-    return new EditTakeVideoSource[paramInt];
+    LocalVideoPusher.Response localResponse = new LocalVideoPusher.Response();
+    localResponse.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    localResponse.b = (paramGetLocationResponse.d + paramGetLocationResponse.e);
+    localResponse.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.addedDate);
+    paramGetLocationResponse = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.obtainMessage(2, localResponse);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.sendMessage(paramGetLocationResponse);
   }
 }
 

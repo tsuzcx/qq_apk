@@ -1,82 +1,28 @@
-import com.tencent.av.random.RandomWebProtocol;
-import java.util.Random;
-import org.json.JSONObject;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.QavPanel;
 
-public class jkr
-  extends jkq
+class jkr
+  implements QavInOutAnimation.QavOutAnimationListener
 {
-  int c;
-  int d;
-  int e;
-  String f;
+  jkr(jkq paramjkq) {}
   
-  public jkr(RandomWebProtocol paramRandomWebProtocol, jkq paramjkq, String paramString, int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
+  public void a()
   {
-    super(paramRandomWebProtocol, paramjkq);
-    this.a = 1;
-    this.c = paramString;
-    this.d = paramInt1;
-    this.c = paramInt2;
-    this.e = paramInt3;
-    if ((this.e == 2) && (paramVarArgs != null) && (paramVarArgs.length == 1)) {
-      this.f = paramVarArgs[0];
+    if (this.a.a.a != null) {
+      this.a.a.a.setViewEnable(2131364272, false);
     }
-    this.d = "[d] RequestDouble";
   }
   
-  String a()
+  public void b()
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = localJSONObject1;
-    for (;;)
-    {
-      try
-      {
-        this.a = new JSONObject().put("peer_gender", this.c).put("session_type", this.d).put("reqtype", this.e);
-        localObject = localJSONObject1;
-        if (this.e == 2)
-        {
-          localObject = localJSONObject1;
-          if (this.f != null)
-          {
-            localObject = localJSONObject1;
-            this.a.put("uniqkey", this.f);
-            localObject = localJSONObject1;
-            JSONObject localJSONObject2 = new JSONObject(super.a());
-            localObject = localJSONObject1;
-            if (this.e != 1) {
-              break label178;
-            }
-            localObject = localJSONObject1;
-            i = this.b.a;
-            localObject = localJSONObject1;
-            localJSONObject1 = localJSONObject2.put("rand", i);
-            localObject = localJSONObject1;
-            return localJSONObject1.toString();
-          }
-        }
-        localObject = localJSONObject1;
-        if (this.e != 1) {
-          continue;
-        }
-        localObject = localJSONObject1;
-        this.b.a = new Random().nextInt();
-        continue;
-        localObject = localException;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return ((JSONObject)localObject).toString();
-      }
-      label178:
-      int i = new Random().nextInt();
-    }
+    GaInviteLockActivity.a(this.a.a);
+    GaInviteLockActivity.a(this.a.a, 0, 2131034269);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jkr
  * JD-Core Version:    0.7.0.1
  */

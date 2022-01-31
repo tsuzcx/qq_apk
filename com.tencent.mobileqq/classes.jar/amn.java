@@ -1,15 +1,13 @@
 import com.immersion.stickersampleapp.HapticManager;
 
 public class amn
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  public amn(HapticManager paramHapticManager) {}
   
-  public amn(HapticManager paramHapticManager, String paramString, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.c();
   }
 }
 

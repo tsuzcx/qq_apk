@@ -1,28 +1,8 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
 
 public class ahma
-  implements Runnable
 {
-  public ahma(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
-  
-  public void run()
-  {
-    if (!this.a.h)
-    {
-      this.a.a.a(EffectsCameraCaptureView.a(this.a));
-      this.a.a.b(this.a.f, this.a.g, this.a.getWidth(), this.a.getHeight());
-      this.a.a.c(this.a.f, this.a.g, this.a.getWidth(), this.a.getHeight());
-      this.a.a.c(EffectsCameraCaptureView.b(this.a));
-      this.a.h = true;
-      if (EffectsCameraCaptureView.a(this.a) != null) {
-        this.a.setFaceEffect(EffectsCameraCaptureView.a(this.a));
-      }
-      if (EffectsCameraCaptureView.a(this.a) != 0) {
-        this.a.setBeauty(EffectsCameraCaptureView.a(this.a));
-      }
-    }
-  }
+  private static final CapturePtvTemplateManager a = new CapturePtvTemplateManager(null);
 }
 
 

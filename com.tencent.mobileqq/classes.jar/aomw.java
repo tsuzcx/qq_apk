@@ -1,20 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
 
 public class aomw
-  extends Handler
+  extends Property
 {
-  public aomw(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout, Looper paramLooper)
+  public aomw(HintDrawable paramHintDrawable, Class paramClass, String paramString)
   {
-    super(paramLooper);
+    super(paramClass, paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public Float a(HintDrawable paramHintDrawable)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    if (paramHintDrawable != null) {
+      return Float.valueOf(HintDrawable.a(paramHintDrawable));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(HintDrawable paramHintDrawable, Float paramFloat)
+  {
+    if (paramHintDrawable != null) {
+      HintDrawable.a(paramHintDrawable, paramFloat.floatValue());
+    }
   }
 }
 

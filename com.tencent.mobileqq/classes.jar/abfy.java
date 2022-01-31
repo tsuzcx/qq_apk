@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPC;
-import com.tencent.mobileqq.armap.ipc.IAsyncObserver;
-import eipc.EIPCResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class abfy
-  implements Runnable
+class abfy
+  implements DialogInterface.OnDismissListener
 {
-  public abfy(ArMapIPC paramArMapIPC, IAsyncObserver paramIAsyncObserver, String paramString, EIPCResult paramEIPCResult) {}
+  abfy(abfw paramabfw) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapIpcIAsyncObserver.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
+    ARMapActivity.a(this.a.a, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMapActivity", 2, "onGetLBSPoiList clicked");
+    }
   }
 }
 

@@ -1,14 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.OnVideoPluginInstallListener;
 
 public class mip
-  implements Runnable
+  implements Handler.Callback
 {
-  public mip(ReadInJoyListViewGroup paramReadInJoyListViewGroup, Map paramMap, boolean paramBoolean) {}
+  public mip(VideoPluginInstall paramVideoPluginInstall) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup.b(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          VideoPluginInstall.a(this.a, false);
+          VideoPluginInstall.a(this.a).removeMessages(0);
+        } while (VideoPluginInstall.a(this.a) == null);
+        VideoPluginInstall.a(this.a).c(true);
+        return true;
+        VideoPluginInstall.a(this.a, false);
+        VideoPluginInstall.a(this.a).removeMessages(1);
+      } while (VideoPluginInstall.a(this.a) == null);
+      VideoPluginInstall.a(this.a).c(false);
+      return true;
+    }
+    VideoPluginInstall.a(this.a, true);
+    return true;
   }
 }
 

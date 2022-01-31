@@ -19,17 +19,17 @@ import com.tencent.mobileqq.utils.HttpDownloadUtil.HttpDownloadListener;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import mqq.os.MqqHandler;
-import ssi;
-import ssj;
-import ssk;
-import ssl;
+import sxd;
+import sxe;
+import sxf;
+import sxg;
 
 public class FriendProfileImageAvatar
   extends FriendProfileImageModel
   implements Handler.Callback, HttpDownloadUtil.HttpDownloadListener
 {
   int jdField_a_of_type_Int;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ssj(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new sxe(this);
   String jdField_a_of_type_JavaLangString;
   public URL a;
   public MqqHandler a;
@@ -100,7 +100,7 @@ public class FriendProfileImageAvatar
     if ((paramBoolean) && (!this.jdField_a_of_type_Boolean) && ((paramProfileImageInfo.jdField_a_of_type_Int == 0) || (paramProfileImageInfo.jdField_a_of_type_Int == 3)))
     {
       this.jdField_a_of_type_Boolean = true;
-      ThreadManager.postImmediately(new ssi(this, paramProfileImageInfo), null, false);
+      ThreadManager.postImmediately(new sxd(this, paramProfileImageInfo), null, false);
     }
     if (paramProfileImageInfo.jdField_a_of_type_Int == 0) {
       paramProfileImageInfo.jdField_a_of_type_Int = 1;
@@ -151,7 +151,7 @@ public class FriendProfileImageAvatar
       }
       return;
     }
-    ThreadManager.post(new ssk(this, paramString), 5, null, true);
+    ThreadManager.post(new sxf(this, paramString), 5, null, true);
   }
   
   public void a(String paramString1, byte paramByte, String paramString2)
@@ -166,7 +166,7 @@ public class FriendProfileImageAvatar
       }
       return;
     }
-    ThreadManager.post(new ssl(this, paramString1, paramByte, paramString2), 5, null, true);
+    ThreadManager.post(new sxg(this, paramString1, paramByte, paramString2), 5, null, true);
   }
   
   public void a(String paramString, int paramInt)

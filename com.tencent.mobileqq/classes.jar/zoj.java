@@ -1,26 +1,35 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.util.Pair;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.MessageRoamManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Calendar;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public final class zoj
+public class zoj
   implements Runnable
 {
-  public zoj(JSONObject paramJSONObject) {}
+  public zoj(MessageRoamManager paramMessageRoamManager, int paramInt) {}
   
   public void run()
   {
-    try
+    Object localObject = Calendar.getInstance();
+    int j = this.jdField_a_of_type_Int;
+    int i = 8;
+    while (j < this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.size())
     {
-      ark.arkNotify("com.tencent.test.groupDragon", "UpdateDragonTitle", this.a.toString(), "json");
-      ark.arkNotify("com.tencent.groupDragon", "UpdateDragonTitle", this.a.toString(), "json");
-      return;
+      ((Calendar)localObject).setTimeInMillis(((Long)this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.get(j)).longValue());
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)localObject);
+      Pair localPair = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)((Calendar)localObject).clone());
+      int k = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
+      if (i - k <= 0) {
+        break;
+      }
+      j += 1;
+      i -= k;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      QLog.e(".troop.survey", 2, "Error: arkNotify com.tencent.groupDragon error, .so notloaded", localUnsatisfiedLinkError);
-      QQCatchedExceptionReporter.reportQQCatchedException(localUnsatisfiedLinkError, "TroopHandlerCatchedException", "Error: arkNotify com.tencent.groupDragon error, .so notloaded");
-    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatHistoryForC2C.class);
+    ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(0), 0L);
   }
 }
 

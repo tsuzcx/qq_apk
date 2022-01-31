@@ -1,27 +1,15 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
+import java.util.Map;
 
 public class aoej
-  extends Property
+  implements VideoFilterPlayView.TrackerCallback
 {
-  public aoej(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aoej(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
   
-  public Integer a(MarkDrawable paramMarkDrawable)
+  public void a(Map paramMap)
   {
-    if (paramMarkDrawable != null) {
-      return Integer.valueOf(MarkDrawable.b(paramMarkDrawable));
-    }
-    return Integer.valueOf(255);
-  }
-  
-  public void a(MarkDrawable paramMarkDrawable, Integer paramInteger)
-  {
-    if (paramMarkDrawable != null) {
-      MarkDrawable.b(paramMarkDrawable, paramInteger.intValue());
-    }
+    this.a.a(new aoek(this, paramMap), 0L);
   }
 }
 

@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.util.JSONUtils.GenericType;
 import java.util.List;
-import wei;
+import wjs;
 
 public class ZhituResponse
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new wei();
+  public static final Parcelable.Creator CREATOR = new wjs();
   public String cat;
   public String cookie;
   public int hasMore;

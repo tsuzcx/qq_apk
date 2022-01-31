@@ -1,14 +1,18 @@
-import com.tencent.widget.XListView;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload.Listener;
 
-public class aodd
-  implements Runnable
+class aodd
+  implements EditWebVideoHallowenUpload.Listener
 {
-  public aodd(PoiListLayout paramPoiListLayout) {}
+  aodd(aodb paramaodb, Runnable paramRunnable) {}
   
-  public void run()
+  public void a()
   {
-    PoiListLayout.a(this.a).springBackOverScrollHeaderView();
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

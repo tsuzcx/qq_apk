@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.List;
 
 public class ugb
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public ugb(UpgradeActivity paramUpgradeActivity) {}
+  public ugb(TroopMemberListActivity paramTroopMemberListActivity, List paramList, int paramInt1, int paramInt2) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    List localList = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_Int, this.b);
+    TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, localList, this.b);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticon;
 
-import accu;
-import accv;
+import ackv;
+import ackw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -27,8 +27,8 @@ public class EPRecommendTask
   
   public EPRecommendTask(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new accu(this);
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new accv(this);
+    this.jdField_a_of_type_JavaLangRunnable = new ackv(this);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new ackw(this);
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQQAppInterface);
   }
   

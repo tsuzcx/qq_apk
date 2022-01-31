@@ -1,26 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ahtd
-  implements Runnable
+  implements Handler.Callback
 {
-  public ahtd(GroupSearchFragment paramGroupSearchFragment) {}
+  public ahtd(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (!this.a.c)
+    switch (paramMessage.what)
     {
-      this.a.a.a();
-      this.a.c = true;
+    default: 
+      return false;
     }
-    this.a.b.removeMessages(100);
-    this.a.b.sendEmptyMessage(100);
+    if (!NeoVideoFilterPlayView.a(this.a))
+    {
+      this.a.requestRender();
+      return true;
+    }
+    NeoVideoFilterPlayView.a(this.a).set(true);
+    SLog.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahtd
  * JD-Core Version:    0.7.0.1
  */

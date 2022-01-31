@@ -1,17 +1,18 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class njl
-  implements Runnable
+  extends DataSetObserver
 {
-  public njl(FeedsPlayModeBase paramFeedsPlayModeBase, AnimationDrawable paramAnimationDrawable, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder) {}
+  public njl(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
-  public void run()
+  public void onChanged()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c.setVisibility(8);
+    if (this.a.a == 0) {
+      ThreadManager.getUIHandler().post(new njm(this));
+    }
   }
 }
 

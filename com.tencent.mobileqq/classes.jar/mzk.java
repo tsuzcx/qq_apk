@@ -1,22 +1,13 @@
-import android.support.v4.util.LruCache;
-import com.tencent.biz.qqstory.base.Copyable;
-import com.tencent.biz.qqstory.base.OneObjectCacheList;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
 
 public class mzk
-  extends LruCache
+  implements DialogInterface.OnClickListener
 {
-  public mzk(OneObjectCacheList paramOneObjectCacheList, int paramInt)
-  {
-    super(paramInt);
-  }
+  public mzk(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
   
-  protected void a(boolean paramBoolean, Object paramObject, Copyable paramCopyable1, Copyable paramCopyable2)
-  {
-    this.a.a.put(paramObject, new WeakReference(paramCopyable1));
-    this.a.a();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

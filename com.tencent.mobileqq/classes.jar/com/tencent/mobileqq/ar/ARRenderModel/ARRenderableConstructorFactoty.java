@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aaao;
-import aabq;
-import aabt;
+import aahd;
+import aaif;
+import aaii;
 import android.opengl.GLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
 
@@ -18,16 +18,16 @@ public class ARRenderableConstructorFactoty
     default: 
       return null;
     case 0: 
-      paramARRenderMangerInnerCallback = new aaao(paramARRenderMangerInnerCallback, (GeneralARResourceInfo)paramARRenderResourceInfo);
+      paramARRenderMangerInnerCallback = new aahd(paramARRenderMangerInnerCallback, (GeneralARResourceInfo)paramARRenderResourceInfo);
       QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_3D here " + paramARRenderResourceInfo.toString());
       return paramARRenderMangerInnerCallback;
     case 2: 
     case 3: 
-      paramARRenderMangerInnerCallback = new aabq(paramARRenderMangerInnerCallback, (NormalVideoARResourceInfo)paramARRenderResourceInfo);
+      paramARRenderMangerInnerCallback = new aaif(paramARRenderMangerInnerCallback, (NormalVideoARResourceInfo)paramARRenderResourceInfo);
       QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_NORAML_2D_VIDEO here" + paramARRenderResourceInfo.toString());
       return paramARRenderMangerInnerCallback;
     case 4: 
-      paramARRenderMangerInnerCallback = new aabt(paramARRenderMangerInnerCallback, (OnlineVideoARRenderableInfo)paramARRenderResourceInfo);
+      paramARRenderMangerInnerCallback = new aaii(paramARRenderMangerInnerCallback, (OnlineVideoARRenderableInfo)paramARRenderResourceInfo);
       QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_ONLINE_VIDEO here" + paramARRenderResourceInfo.toString());
       return paramARRenderMangerInnerCallback;
     case 5: 

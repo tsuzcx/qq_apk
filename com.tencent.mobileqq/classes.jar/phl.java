@@ -1,22 +1,18 @@
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
 
 public class phl
-  implements PoolParams
+  implements Runnable
 {
-  public PoolParams.BucketParams getBucketParams(int paramInt)
-  {
-    return new PoolParams.BucketParams(1, 1);
-  }
+  public phl(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, String paramString, long paramLong) {}
   
-  public int getBucketPoolSize()
+  public void run()
   {
-    return 1;
+    QzoneWebViewOfflinePlugin.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizWebviewpluginQzoneWebViewOfflinePlugin.mRuntime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     phl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,35 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.view.View;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
-class aajm
-  implements ImageAssetDelegate
+public final class aajm
+  implements INetEngine.IBreakDownFix
 {
-  aajm(aajl paramaajl) {}
-  
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void a(NetReq paramNetReq, NetResp paramNetResp)
   {
-    View localView = (View)this.a.a.d.get();
-    Bitmap localBitmap2 = (Bitmap)this.a.a.a.a.a.get(paramLottieImageAsset.getFileName());
-    Bitmap localBitmap1 = localBitmap2;
-    if (localBitmap2 == null)
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      paramLottieImageAsset = new StringBuilder().append("loadRollAnimation, 加载图片失败, image[").append(paramLottieImageAsset.getFileName()).append("], canvas[");
-      if (localView == null) {
-        break label116;
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
+      paramNetResp.c = 0L;
+      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
+      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.jdField_a_of_type_JavaLangString = (str + "range=" + paramNetReq.jdField_a_of_type_Long);
       }
-    }
-    label116:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.w("WorldCupMgr", 1, bool + "]");
-      localBitmap1 = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
-      return localBitmap1;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("ArConfig_ArResourceDownload", 2, "IBreakDownFix, " + paramNetResp + ", offset=" + paramNetReq.jdField_a_of_type_Long);
   }
 }
 

@@ -1,17 +1,15 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpFilterHelper;
 
-class zis
+public class zis
   implements Runnable
 {
-  zis(ziq paramziq) {}
+  public zis(ConfigHandler paramConfigHandler) {}
   
   public void run()
   {
-    if ((this.a.a.c() == 1) && (this.a.a.a().noBindUploadContacts)) {
-      return;
-    }
-    this.a.b();
+    JumpFilterHelper.a().a(this.a.b.getApplication());
   }
 }
 

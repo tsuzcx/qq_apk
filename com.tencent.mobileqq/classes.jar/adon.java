@@ -1,37 +1,41 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import java.io.File;
 
 public class adon
-  extends Handler
+  implements Runnable
 {
-  public adon(GamePartyManager paramGamePartyManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adon(FMSettings paramFMSettings, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)GamePartyManager.a(this.a).get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    try
     {
-    default: 
+      Object localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if (!((File)localObject).exists()) {
+        return;
+      }
+      if (((File)localObject).isDirectory())
+      {
+        localObject = ((File)localObject).listFiles();
+        if ((localObject != null) && (localObject.length != 0))
+        {
+          int j = localObject.length;
+          int i = 0;
+          while (i < j)
+          {
+            localObject[i].delete();
+            i += 1;
+          }
+        }
+      }
       return;
     }
-    paramMessage = "http://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
-    this.a.a(paramMessage, null);
-    this.a.b();
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adon
  * JD-Core Version:    0.7.0.1
  */

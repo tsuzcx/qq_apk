@@ -1,53 +1,98 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class acwk
-  implements FileVideoManager.FileVideoManagerCallback
+  implements DownloadListener
 {
-  public acwk(FileVideoManager.VideoControl paramVideoControl, FileManagerEntity paramFileManagerEntity, boolean paramBoolean) {}
+  public acwk(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]on Error[" + paramInt + "]msg[" + paramString + "]");
-    }
-    Object localObject;
-    if ((paramInt == -25081) || (paramInt == -6101) || (paramInt == -7003))
+    if ("1101070898".equals(paramString1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      ((QQAppInterface)localObject).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      FMToastUtil.a(2131428190);
-      ((QQAppInterface)localObject).a().a(true, 3, null);
+      paramString1 = UniformDownloadActivity.a(this.a);
+      UniformDownloadActivity.a(this.a, paramString1);
+      paramString1 = UniformDownloadActivity.a(this.a, paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d(UniformDownloadActivity.a, 2, "tmastUrl=" + paramString1);
+      }
+      UniformDownloadActivity.a(this.a, paramString1);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangRefWeakReference != null)
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadCancel " + paramDownloadInfo.d);
+    }
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
     {
-      localObject = (FileVideoManager.FileVideoManagerCallback)this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        ((FileVideoManager.FileVideoManagerCallback)localObject).a(paramInt, paramString);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadError " + paramDownloadInfo.d);
+    }
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadFinish " + paramDownloadInfo.d);
+    }
+    ReportController.b(null, "dc00898", "", "", "0X8008F88", "0X8008F88", 1, 0, "", "", "", "");
+    this.a.runOnUiThread(new acwo(this));
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "onDownloadPause " + paramDownloadInfo.d);
+    }
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898"))) {
+      this.a.runOnUiThread(new acwn(this));
+    }
+  }
+  
+  public void onDownloadUpdate(List paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+      if (QLog.isColorLevel()) {
+        QLog.d(UniformDownloadActivity.a, 2, "onDownloadUpdate " + localDownloadInfo.d);
+      }
+      if ((localDownloadInfo != null) && (localDownloadInfo.b.equals("1101070898"))) {
+        this.a.runOnUiThread(new acwm(this, localDownloadInfo));
       }
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]onGetUrlCookies");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Boolean);
+    this.a.runOnUiThread(new acwl(this));
   }
   
-  public void ae_() {}
+  public void packageReplaced(String paramString1, String paramString2) {}
   
-  public void af_() {}
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

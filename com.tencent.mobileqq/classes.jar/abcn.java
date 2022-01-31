@@ -1,20 +1,20 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.armap.ConversationActivePendantHolderBase;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
 public class abcn
-  implements ValueAnimation.AnimationUpdateListener
+  implements abcw
 {
-  public abcn(ConversationActivePendantHolderBase paramConversationActivePendantHolderBase) {}
+  public abcn(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void a(boolean paramBoolean)
   {
-    this.a.b = paramFloat1.floatValue();
-    this.a.jdField_a_of_type_Float = (1.1F - (paramFloat1.floatValue() - 1.0F));
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.b((int)(this.a.jdField_a_of_type_Int * paramFloat1.floatValue()));
+    if (!paramBoolean)
+    {
+      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", "updateInstalledApps, network not available.");
+      return;
     }
+    this.a.c();
+    ArkLocalAppMgr.b(this.a);
   }
 }
 

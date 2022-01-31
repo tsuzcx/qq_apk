@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.activity.cloudfile;
 
-import acqa;
-import acqb;
-import acqd;
-import acqe;
-import acqf;
-import acqg;
+import acyh;
+import acyi;
+import acyk;
+import acyl;
+import acym;
+import acyn;
 import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
@@ -36,7 +36,7 @@ public class QfileCloudFileTabView
   QfileCloudFileTabView.IWeiYunImageEvent jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent = null;
   FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = null;
   private IClickListener_Ver51 jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51;
-  QfilePinnedHeaderExpandableListView.OnSelectListener jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener = new acqf(this);
+  QfilePinnedHeaderExpandableListView.OnSelectListener jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener = new acym(this);
   final int b;
   public String b;
   public int c;
@@ -94,7 +94,7 @@ public class QfileCloudFileTabView
   private void x()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new acqa(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new acyh(this);
     }
     if (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase("document") == true) {
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.c()) {
@@ -154,7 +154,7 @@ public class QfileCloudFileTabView
   
   public void a()
   {
-    a(new acqe(this));
+    a(new acyl(this));
   }
   
   protected void a(boolean paramBoolean)
@@ -217,7 +217,7 @@ public class QfileCloudFileTabView
   
   void k()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent = new acqb(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView$IWeiYunImageEvent = new acyi(this);
   }
   
   void l()
@@ -225,7 +225,7 @@ public class QfileCloudFileTabView
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acqd(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acyk(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
   
@@ -246,7 +246,7 @@ public class QfileCloudFileTabView
   
   public void o()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.runOnUiThread(new acqg(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.runOnUiThread(new acyn(this));
   }
 }
 

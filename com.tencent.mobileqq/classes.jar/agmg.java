@@ -1,39 +1,26 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.ImageShakeAnimView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agmg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public agmg(FormalView paramFormalView) {}
+  public agmg(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
+    if (ScanTorchActivity.k(this.a)) {
+      ScanTorchActivity.s(this.a);
+    }
+    while (!ScanTorchActivity.m(this.a)) {
       return;
     }
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    int i = -(int)(FormalView.a(this.a) * f);
-    int j = -(int)((1.0F - f) * FormalView.b(this.a));
-    ((RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams()).topMargin = j;
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
-    paramValueAnimator.leftMargin = i;
-    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.b(this.a).getLayoutParams();
-    paramValueAnimator.rightMargin = i;
-    FormalView.b(this.a).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
-    paramValueAnimator.topMargin = ((int)((1.0F - f) * FormalView.c(this.a)));
-    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
+    ScanTorchActivity.t(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmg
  * JD-Core Version:    0.7.0.1
  */

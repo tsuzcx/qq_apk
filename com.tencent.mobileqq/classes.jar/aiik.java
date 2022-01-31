@@ -1,29 +1,21 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemButton;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.shortvideo.util.NativeSoLoader;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class aiik
-  implements View.OnLongClickListener
+public final class aiik
+  implements Runnable
 {
-  public aiik(StructMsgItemButton paramStructMsgItemButton) {}
-  
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if (this.a.a != null)
+    if (!NativeSoLoader.a().get())
     {
-      OnLongClickAndTouchListener localOnLongClickAndTouchListener = (OnLongClickAndTouchListener)this.a.a.get();
-      if (localOnLongClickAndTouchListener != null) {
-        return localOnLongClickAndTouchListener.onLongClick(paramView);
-      }
+      boolean bool = NativeSoLoader.a("TKGLRenderer");
+      NativeSoLoader.a().getAndSet(bool);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiik
  * JD-Core Version:    0.7.0.1
  */

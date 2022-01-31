@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark.API;
 
-import aanu;
-import aanv;
-import aanw;
-import aaoq;
-import aaot;
+import aauo;
+import aaup;
+import aauq;
+import aavk;
+import aavn;
 import android.content.BroadcastReceiver;
 import android.text.TextUtils;
 import com.tencent.ark.ark.VariantWrapper;
@@ -16,10 +16,10 @@ import java.util.Locale;
 public class ArkAppDeviceModule
   extends ArkAppModuleReg.ModuleBase
 {
-  private aanu jdField_a_of_type_Aanu = new aanu(this, null);
-  private aanw jdField_a_of_type_Aanw = new aanw(this, null);
-  private aaoq jdField_a_of_type_Aaoq = new aaoq(this, null);
-  private aaot jdField_a_of_type_Aaot = new aaot(this, null);
+  private aauo jdField_a_of_type_Aauo = new aauo(this, null);
+  private aauq jdField_a_of_type_Aauq = new aauq(this, null);
+  private aavk jdField_a_of_type_Aavk = new aavk(this, null);
+  private aavn jdField_a_of_type_Aavn = new aavn(this, null);
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   public ArkAppEventObserverManager a;
   private HashMap b = new ArkAppDeviceModule.1(this);
@@ -196,9 +196,9 @@ public class ArkAppDeviceModule
     }
     if (this.b != null)
     {
-      aanv localaanv = (aanv)this.b.get(paramString);
-      if (localaanv != null) {
-        return localaanv.a(paramString, paramArrayOfVariantWrapper, paramVariantWrapper);
+      aaup localaaup = (aaup)this.b.get(paramString);
+      if (localaaup != null) {
+        return localaaup.a(paramString, paramArrayOfVariantWrapper, paramVariantWrapper);
       }
     }
     return false;

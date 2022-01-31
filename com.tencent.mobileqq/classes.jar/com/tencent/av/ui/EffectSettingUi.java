@@ -49,26 +49,26 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import jtn;
-import jto;
-import jtp;
-import jtq;
-import jtr;
-import jts;
-import jtv;
-import jtw;
-import jtx;
-import jty;
-import jtz;
+import jvr;
+import jvs;
+import jvt;
+import jvu;
+import jvv;
+import jvw;
+import jvz;
+import jwa;
+import jwb;
+import jwc;
+import jwd;
 
 public class EffectSettingUi
   extends RelativeLayout
 {
   public static Runnable a;
   public int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jtn(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jvr(this);
   public SparseArray a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new jtq(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new jvu(this);
   public ViewGroup a;
   public LinearLayout a;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
@@ -191,7 +191,7 @@ public class EffectSettingUi
       AudioHelper.a("工具栏不消失");
       if (jdField_a_of_type_JavaLangRunnable == null)
       {
-        jdField_a_of_type_JavaLangRunnable = new jtr(paramVideoAppInterface);
+        jdField_a_of_type_JavaLangRunnable = new jvv(paramVideoAppInterface);
         paramVideoAppInterface.a().postDelayed(jdField_a_of_type_JavaLangRunnable, 3000L);
       }
     }
@@ -243,17 +243,17 @@ public class EffectSettingUi
       TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, a().getDisplayMetrics().widthPixels, 0.0F, 0.0F);
       localTranslateAnimation.setFillAfter(false);
       localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new jto(this));
+      localTranslateAnimation.setAnimationListener(new jvs(this));
       startAnimation(localTranslateAnimation);
       localTranslateAnimation = new TranslateAnimation(-a().getDisplayMetrics().widthPixels, 0.0F, 0.0F, 0.0F);
       localTranslateAnimation.setFillAfter(false);
       localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new jtp(this));
+      localTranslateAnimation.setAnimationListener(new jvt(this));
       if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
         this.jdField_a_of_type_AndroidViewViewGroup.startAnimation(localTranslateAnimation);
       }
     }
-    a(Integer.valueOf(6105), Integer.valueOf(2131365941));
+    a(Integer.valueOf(6105), Integer.valueOf(2131365946));
   }
   
   private void j()
@@ -297,7 +297,7 @@ public class EffectSettingUi
     boolean bool1 = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, true);
     boolean bool2 = ((EffectSupportManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5)).a(2, "ptu_so");
     AVLog.c("EffectSettingUi", "initBtn:" + bool1 + "|" + bool2);
-    boolean bool3 = ZimuToolbar.isShow((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    boolean bool3 = ZimuToolbar.isShow(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     a(bool2, EffectToolbar.class);
     a(bool1, FaceToolbar.class);
     a(bool1, DoodleToolbar.class);
@@ -330,15 +330,15 @@ public class EffectSettingUi
   
   private void n()
   {
-    HorizontalScrollView localHorizontalScrollView = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365942);
+    HorizontalScrollView localHorizontalScrollView = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365947);
     ViewTreeObserver localViewTreeObserver = localHorizontalScrollView.getViewTreeObserver();
-    localViewTreeObserver.addOnGlobalLayoutListener(new jtv(this, localViewTreeObserver, localHorizontalScrollView));
+    localViewTreeObserver.addOnGlobalLayoutListener(new jvz(this, localViewTreeObserver, localHorizontalScrollView));
   }
   
   private void o()
   {
-    Button localButton = (Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365941);
-    localButton.setOnClickListener(new jtw(this));
+    Button localButton = (Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365946);
+    localButton.setOnClickListener(new jwa(this));
     if (AudioHelper.a(0) == 1) {
       localButton.setBackgroundColor(Color.argb(100, 0, 0, 0));
     }
@@ -488,7 +488,7 @@ public class EffectSettingUi
             ((BaseToolbar)localObject).hideToolbar();
           }
           ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).m();
-          localObject = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365942);
+          localObject = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365947);
           if (paramInt != 1) {
             break label194;
           }
@@ -539,7 +539,7 @@ public class EffectSettingUi
     if (this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event = new jts(this);
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event = new jvw(this);
     if (QLog.isDevelopLevel()) {
       QLog.d("EffectSettingUi", 4, "listenAVRedBagEvent");
     }
@@ -576,16 +576,19 @@ public class EffectSettingUi
     localObject = new TranslateAnimation(a().getDisplayMetrics().widthPixels, 0.0F, 0.0F, 0.0F);
     ((TranslateAnimation)localObject).setFillAfter(false);
     ((TranslateAnimation)localObject).setDuration(300L);
-    ((TranslateAnimation)localObject).setAnimationListener(new jty(this));
+    ((TranslateAnimation)localObject).setAnimationListener(new jwc(this));
     startAnimation((Animation)localObject);
     localObject = new TranslateAnimation(0.0F, -a().getDisplayMetrics().widthPixels, 0.0F, 0.0F);
     ((TranslateAnimation)localObject).setFillAfter(false);
     ((TranslateAnimation)localObject).setDuration(300L);
-    ((TranslateAnimation)localObject).setAnimationListener(new jtz(this));
+    ((TranslateAnimation)localObject).setAnimationListener(new jwd(this));
     this.jdField_a_of_type_AndroidViewViewGroup.startAnimation((Animation)localObject);
     a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     RedBagReport.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, (BaseToolbar)this.jdField_a_of_type_AndroidUtilSparseArray.get(7));
-    ReportController.b(null, "dc00898", "", "", "0X8008AD5", "0X8008AD5", 0, 0, "", "", "", "");
+    localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+    if ((localObject != null) && (((SessionInfo)localObject).c()) && (((SessionInfo)localObject).d == 2)) {
+      ReportController.b(null, "dc00898", "", "", "0X8008AD5", "0X8008AD5", 0, 0, "", "", "", "");
+    }
     return true;
   }
   
@@ -630,7 +633,7 @@ public class EffectSettingUi
       localObject = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     } while ((localObject == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null));
     Resources localResources = ((AVActivity)localObject).getResources();
-    HorizontalScrollView localHorizontalScrollView = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365942);
+    HorizontalScrollView localHorizontalScrollView = (HorizontalScrollView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365947);
     if (localHorizontalScrollView.getTag() == null)
     {
       QLog.w("EffectSettingUi", 1, "adjustScrollView, 等待onGlobalLayout");
@@ -683,12 +686,12 @@ public class EffectSettingUi
       if (QLog.isDevelopLevel()) {
         QLog.d("EffectSettingUi", 2, "onCreate");
       }
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969281, this).findViewById(2131365939));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new jtx(this));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getLayoutInflater().inflate(2130969279, this).findViewById(2131365944));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new jwb(this));
       Object localObject = (ViewGroup)getParent();
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((ViewGroup)localObject).findViewById(2131365387));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365944));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365943));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((ViewGroup)localObject).findViewById(2131365392));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365949));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365948));
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0, null);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1, null);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2, null);
@@ -704,7 +707,7 @@ public class EffectSettingUi
         this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-16711936);
         ((ViewGroup)localObject).setBackgroundColor(Color.argb(255, 255, 255, 255));
         this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(Color.argb(127, 0, 0, 0));
-        findViewById(2131365940).setBackgroundColor(-1);
+        findViewById(2131365945).setBackgroundColor(-1);
       }
       localObject = new IntentFilter("com.tencent.redpoint.broadcast.push.av");
       ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
@@ -791,7 +794,7 @@ public class EffectSettingUi
     if (localBaseToolbar != null) {
       localBaseToolbar.updateBtnStatus();
     }
-    boolean bool1 = ZimuToolbar.isShow((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    boolean bool1 = ZimuToolbar.isShow(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
     boolean bool2 = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, true);
     a(3, bool2);
     a(2, bool2);
@@ -842,7 +845,7 @@ public class EffectSettingUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingUi
  * JD-Core Version:    0.7.0.1
  */

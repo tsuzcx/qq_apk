@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.statistics;
 
-import aifz;
-import aiga;
-import aigb;
-import aigc;
-import aigd;
-import aige;
-import aigf;
+import aiks;
+import aikt;
+import aiku;
+import aikv;
+import aikw;
+import aikx;
+import aiky;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.content.BroadcastReceiver;
@@ -73,19 +73,19 @@ public class StatisticCollector
   private static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
   private static final Random jdField_a_of_type_JavaUtilRandom = new Random();
   public static boolean b;
+  private static boolean c;
   private static boolean d;
   private int jdField_a_of_type_Int;
-  aige jdField_a_of_type_Aige = new aige();
+  aikx jdField_a_of_type_Aikx = new aikx();
   public String a;
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder("DPC info:\n");
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private Stack jdField_a_of_type_JavaUtilStack = new Stack();
   public boolean a;
-  private aigf[] jdField_a_of_type_ArrayOfAigf = { new aigf("com.tencent.mtt", "qqBrowser"), new aigf("com.tencent.android.qqdownloader", "qqMarket"), new aigf("com.tencent.qqgame", "qqGame"), new aigf("com.tencent.qqmusic", "qqMusic"), new aigf("com.tencent.news", "qqNews"), new aigf("com.qq.reader", "qqReader"), new aigf("com.tencent.qqlive", "qqVideo"), new aigf("com.tencent.wblog", "qqMicroblog"), new aigf("com.tencent.qqphonebook", "qqPhonebook") };
+  private aiky[] jdField_a_of_type_ArrayOfAiky = { new aiky("com.tencent.mtt", "qqBrowser"), new aiky("com.tencent.android.qqdownloader", "qqMarket"), new aiky("com.tencent.qqgame", "qqGame"), new aiky("com.tencent.qqmusic", "qqMusic"), new aiky("com.tencent.news", "qqNews"), new aiky("com.qq.reader", "qqReader"), new aiky("com.tencent.qqlive", "qqVideo"), new aiky("com.tencent.wblog", "qqMicroblog"), new aiky("com.tencent.qqphonebook", "qqPhonebook") };
   private String jdField_b_of_type_JavaLangString;
   private StringBuilder jdField_b_of_type_JavaLangStringBuilder = new StringBuilder("Thread info:\n");
-  private boolean c;
   
   private StatisticCollector(Context paramContext, long paramLong)
   {
@@ -94,7 +94,7 @@ public class StatisticCollector
     jdField_a_of_type_AndroidContentContext = paramContext;
     UserAction.setUserID("10000");
     UserAction.initUserAction(jdField_a_of_type_AndroidContentContext, false, paramLong);
-    UserAction.setChannelID("10001264");
+    UserAction.setChannelID("70124");
   }
   
   public static int a()
@@ -205,7 +205,7 @@ public class StatisticCollector
   
   public static boolean a()
   {
-    if ("7.6.3".startsWith("7.1.")) {}
+    if ("7.6.8".startsWith("7.1.")) {}
     return false;
   }
   
@@ -327,16 +327,16 @@ public class StatisticCollector
     try
     {
       Object localObject = new JSONObject(str);
-      this.jdField_a_of_type_Aige.jdField_a_of_type_Boolean = ((JSONObject)localObject).getBoolean("control_switch");
-      this.jdField_a_of_type_Aige.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("control_level");
-      this.jdField_a_of_type_Aige.b = ((JSONObject)localObject).getInt("control_window");
-      this.jdField_a_of_type_Aige.c = ((JSONObject)localObject).getInt("control_freq");
+      this.jdField_a_of_type_Aikx.jdField_a_of_type_Boolean = ((JSONObject)localObject).getBoolean("control_switch");
+      this.jdField_a_of_type_Aikx.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("control_level");
+      this.jdField_a_of_type_Aikx.b = ((JSONObject)localObject).getInt("control_window");
+      this.jdField_a_of_type_Aikx.c = ((JSONObject)localObject).getInt("control_freq");
       localObject = this.jdField_a_of_type_JavaLangStringBuilder.append("initCrashControl");
       ((StringBuilder)localObject).append(",controlJson=").append(str);
-      ((StringBuilder)localObject).append(",switch=").append(this.jdField_a_of_type_Aige.jdField_a_of_type_Boolean);
-      ((StringBuilder)localObject).append(",level=").append(this.jdField_a_of_type_Aige.jdField_a_of_type_Int);
-      ((StringBuilder)localObject).append(",window=").append(this.jdField_a_of_type_Aige.b);
-      ((StringBuilder)localObject).append(",Freq=").append(this.jdField_a_of_type_Aige.c);
+      ((StringBuilder)localObject).append(",switch=").append(this.jdField_a_of_type_Aikx.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(",level=").append(this.jdField_a_of_type_Aikx.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(",window=").append(this.jdField_a_of_type_Aikx.b);
+      ((StringBuilder)localObject).append(",Freq=").append(this.jdField_a_of_type_Aikx.c);
       this.jdField_a_of_type_JavaLangStringBuilder.append("\n");
       return;
     }
@@ -344,7 +344,7 @@ public class StatisticCollector
     {
       for (;;)
       {
-        this.jdField_a_of_type_Aige.a();
+        this.jdField_a_of_type_Aikx.a();
         QLog.d("StatisticCollector", 1, "initCrashControl parse json throws an exception, so reset.");
       }
     }
@@ -381,11 +381,11 @@ public class StatisticCollector
     for (;;)
     {
       return;
-      paramString1 = new aigd(System.currentTimeMillis(), paramString1, paramString2);
+      paramString1 = new aikw(System.currentTimeMillis(), paramString1, paramString2);
       this.jdField_a_of_type_JavaUtilLinkedList.add(paramString1);
       int i = this.jdField_a_of_type_Int;
       for (this.jdField_a_of_type_Int = (paramString1.jdField_a_of_type_Int + i); (this.jdField_a_of_type_Int > 15360L) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 1); this.jdField_a_of_type_Int -= paramString1.jdField_a_of_type_Int) {
-        paramString1 = (aigd)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
+        paramString1 = (aikw)this.jdField_a_of_type_JavaUtilLinkedList.removeLast();
       }
     }
   }
@@ -441,7 +441,7 @@ public class StatisticCollector
         paramString1 = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), paramHashMap);
         paramString1.setAppId(AppSetting.jdField_a_of_type_Int);
         paramString1.setTimeout(30000L);
-        ThreadManager.post(new aigc(this, paramString1), 5, null, true);
+        ThreadManager.post(new aikv(this, paramString1), 5, null, true);
         return;
       }
       catch (Exception paramString1)
@@ -472,16 +472,16 @@ public class StatisticCollector
     //   0: new 109	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   7: ldc_w 907
+    //   7: ldc_w 906
     //   10: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13: invokestatic 636	android/os/Process:myPid	()I
+    //   13: invokestatic 635	android/os/Process:myPid	()I
     //   16: invokevirtual 236	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   19: ldc_w 909
+    //   19: ldc_w 908
     //   22: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   28: astore 9
     //   30: aload_1
-    //   31: ldc_w 911
+    //   31: ldc_w 910
     //   34: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: pop
     //   38: aconst_null
@@ -490,13 +490,13 @@ public class StatisticCollector
     //   42: astore 8
     //   44: aconst_null
     //   45: astore 5
-    //   47: invokestatic 735	java/lang/System:currentTimeMillis	()J
+    //   47: invokestatic 734	java/lang/System:currentTimeMillis	()J
     //   50: lstore_3
-    //   51: new 913	java/io/File
+    //   51: new 912	java/io/File
     //   54: dup
     //   55: aload 9
-    //   57: invokespecial 914	java/io/File:<init>	(Ljava/lang/String;)V
-    //   60: invokevirtual 918	java/io/File:list	()[Ljava/lang/String;
+    //   57: invokespecial 913	java/io/File:<init>	(Ljava/lang/String;)V
+    //   60: invokevirtual 917	java/io/File:list	()[Ljava/lang/String;
     //   63: astore 10
     //   65: iconst_0
     //   66: istore_2
@@ -512,34 +512,34 @@ public class StatisticCollector
     //   84: astore 6
     //   86: aload 5
     //   88: astore 8
-    //   90: new 913	java/io/File
+    //   90: new 912	java/io/File
     //   93: dup
     //   94: new 109	java/lang/StringBuilder
     //   97: dup
     //   98: invokespecial 222	java/lang/StringBuilder:<init>	()V
     //   101: aload 9
     //   103: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: ldc_w 920
+    //   106: ldc_w 919
     //   109: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: aload 10
     //   114: iload_2
     //   115: aaload
     //   116: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: ldc_w 922
+    //   119: ldc_w 921
     //   122: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokespecial 914	java/io/File:<init>	(Ljava/lang/String;)V
+    //   128: invokespecial 913	java/io/File:<init>	(Ljava/lang/String;)V
     //   131: astore 7
     //   133: aload 5
     //   135: astore 6
     //   137: aload 5
     //   139: astore 8
-    //   141: invokestatic 735	java/lang/System:currentTimeMillis	()J
+    //   141: invokestatic 734	java/lang/System:currentTimeMillis	()J
     //   144: lload_3
     //   145: lsub
-    //   146: ldc2_w 923
+    //   146: ldc2_w 922
     //   149: lcmp
-    //   150: ifle +145 -> 295
+    //   150: ifle +192 -> 342
     //   153: aload 5
     //   155: astore 6
     //   157: aload 5
@@ -556,7 +556,7 @@ public class StatisticCollector
     //   180: anewarray 4	java/lang/Object
     //   183: dup
     //   184: iconst_0
-    //   185: ldc_w 926
+    //   185: ldc_w 925
     //   188: aastore
     //   189: dup
     //   190: iconst_1
@@ -569,7 +569,7 @@ public class StatisticCollector
     //   203: aload 5
     //   205: astore 8
     //   207: aload_1
-    //   208: ldc_w 928
+    //   208: ldc_w 927
     //   211: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   214: aload 10
     //   216: arraylength
@@ -579,214 +579,242 @@ public class StatisticCollector
     //   223: astore 6
     //   225: aload 5
     //   227: astore 8
-    //   229: invokestatic 504	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   232: ifeq +52 -> 284
+    //   229: invokestatic 932	com/tencent/mobileqq/app/ThreadLog:needRecordJob	()Z
+    //   232: ifeq +36 -> 268
     //   235: aload 5
     //   237: astore 6
     //   239: aload 5
     //   241: astore 8
-    //   243: ldc_w 366
-    //   246: iconst_2
-    //   247: iconst_4
-    //   248: anewarray 4	java/lang/Object
-    //   251: dup
-    //   252: iconst_0
-    //   253: ldc_w 930
-    //   256: aastore
-    //   257: dup
-    //   258: iconst_1
-    //   259: invokestatic 735	java/lang/System:currentTimeMillis	()J
-    //   262: lload_3
-    //   263: lsub
-    //   264: invokestatic 935	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   267: aastore
-    //   268: dup
-    //   269: iconst_2
-    //   270: ldc_w 937
-    //   273: aastore
-    //   274: dup
-    //   275: iconst_3
-    //   276: aload_1
-    //   277: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   280: aastore
-    //   281: invokestatic 519	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   284: aload 5
-    //   286: ifnull +8 -> 294
-    //   289: aload 5
-    //   291: invokevirtual 942	java/io/BufferedReader:close	()V
-    //   294: return
-    //   295: aload 5
-    //   297: astore 6
-    //   299: aload 5
-    //   301: astore 8
-    //   303: aload 7
-    //   305: invokevirtual 945	java/io/File:exists	()Z
-    //   308: ifeq +233 -> 541
-    //   311: aload 5
-    //   313: astore 6
-    //   315: aload 5
-    //   317: astore 8
-    //   319: new 939	java/io/BufferedReader
-    //   322: dup
-    //   323: new 947	java/io/FileReader
-    //   326: dup
-    //   327: aload 7
-    //   329: invokespecial 950	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   332: bipush 64
-    //   334: invokespecial 953	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   337: astore 7
-    //   339: aconst_null
-    //   340: astore 6
-    //   342: aload 7
-    //   344: invokevirtual 956	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   347: astore 8
-    //   349: aload 6
-    //   351: astore 5
-    //   353: aload 8
-    //   355: ifnull +29 -> 384
-    //   358: aload 8
-    //   360: ldc_w 958
-    //   363: invokevirtual 461	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   366: ifeq -24 -> 342
-    //   369: aload 8
-    //   371: ldc_w 960
-    //   374: invokevirtual 489	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   377: iconst_1
-    //   378: aaload
-    //   379: invokevirtual 963	java/lang/String:trim	()Ljava/lang/String;
-    //   382: astore 5
-    //   384: aload_1
-    //   385: aload 5
-    //   387: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   390: ldc_w 965
-    //   393: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   396: pop
-    //   397: aload 7
-    //   399: astore 5
-    //   401: aload 7
-    //   403: ifnull +11 -> 414
-    //   406: aload 7
-    //   408: invokevirtual 942	java/io/BufferedReader:close	()V
-    //   411: aconst_null
-    //   412: astore 5
-    //   414: iload_2
-    //   415: iconst_1
-    //   416: iadd
-    //   417: istore_2
-    //   418: goto -351 -> 67
-    //   421: astore 5
-    //   423: ldc_w 366
-    //   426: iconst_2
-    //   427: ldc_w 967
-    //   430: aload 5
-    //   432: invokestatic 524	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   435: aload 7
-    //   437: astore 5
-    //   439: goto -25 -> 414
-    //   442: astore_1
-    //   443: aload 7
-    //   445: astore 8
-    //   447: aload 8
-    //   449: astore 6
-    //   451: ldc_w 366
-    //   454: iconst_2
-    //   455: ldc_w 967
-    //   458: aload_1
-    //   459: invokestatic 524	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   462: aload 8
-    //   464: ifnull -170 -> 294
-    //   467: aload 8
-    //   469: invokevirtual 942	java/io/BufferedReader:close	()V
-    //   472: return
-    //   473: astore_1
-    //   474: ldc_w 366
-    //   477: iconst_2
-    //   478: ldc_w 967
-    //   481: aload_1
-    //   482: invokestatic 524	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   485: return
-    //   486: astore_1
-    //   487: ldc_w 366
-    //   490: iconst_2
-    //   491: ldc_w 967
-    //   494: aload_1
-    //   495: invokestatic 524	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   498: return
-    //   499: astore_1
-    //   500: aload 6
-    //   502: ifnull +8 -> 510
-    //   505: aload 6
-    //   507: invokevirtual 942	java/io/BufferedReader:close	()V
-    //   510: aload_1
-    //   511: athrow
-    //   512: astore 5
-    //   514: ldc_w 366
-    //   517: iconst_2
-    //   518: ldc_w 967
-    //   521: aload 5
-    //   523: invokestatic 524	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   526: goto -16 -> 510
-    //   529: astore_1
-    //   530: aload 7
-    //   532: astore 6
-    //   534: goto -34 -> 500
-    //   537: astore_1
-    //   538: goto -91 -> 447
-    //   541: goto -127 -> 414
+    //   243: aload 10
+    //   245: arraylength
+    //   246: sipush 200
+    //   249: if_icmple +19 -> 268
+    //   252: aload 5
+    //   254: astore 6
+    //   256: aload 5
+    //   258: astore 8
+    //   260: aload_1
+    //   261: invokestatic 935	com/tencent/mobileqq/app/ThreadManager:reportCurrentState	()Ljava/lang/String;
+    //   264: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: pop
+    //   268: aload 5
+    //   270: astore 6
+    //   272: aload 5
+    //   274: astore 8
+    //   276: invokestatic 504	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   279: ifeq +52 -> 331
+    //   282: aload 5
+    //   284: astore 6
+    //   286: aload 5
+    //   288: astore 8
+    //   290: ldc_w 366
+    //   293: iconst_2
+    //   294: iconst_4
+    //   295: anewarray 4	java/lang/Object
+    //   298: dup
+    //   299: iconst_0
+    //   300: ldc_w 937
+    //   303: aastore
+    //   304: dup
+    //   305: iconst_1
+    //   306: invokestatic 734	java/lang/System:currentTimeMillis	()J
+    //   309: lload_3
+    //   310: lsub
+    //   311: invokestatic 942	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   314: aastore
+    //   315: dup
+    //   316: iconst_2
+    //   317: ldc_w 944
+    //   320: aastore
+    //   321: dup
+    //   322: iconst_3
+    //   323: aload_1
+    //   324: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   327: aastore
+    //   328: invokestatic 519	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   331: aload 5
+    //   333: ifnull +8 -> 341
+    //   336: aload 5
+    //   338: invokevirtual 949	java/io/BufferedReader:close	()V
+    //   341: return
+    //   342: aload 5
+    //   344: astore 6
+    //   346: aload 5
+    //   348: astore 8
+    //   350: aload 7
+    //   352: invokevirtual 952	java/io/File:exists	()Z
+    //   355: ifeq +233 -> 588
+    //   358: aload 5
+    //   360: astore 6
+    //   362: aload 5
+    //   364: astore 8
+    //   366: new 946	java/io/BufferedReader
+    //   369: dup
+    //   370: new 954	java/io/FileReader
+    //   373: dup
+    //   374: aload 7
+    //   376: invokespecial 957	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   379: bipush 64
+    //   381: invokespecial 960	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   384: astore 7
+    //   386: aconst_null
+    //   387: astore 6
+    //   389: aload 7
+    //   391: invokevirtual 963	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   394: astore 8
+    //   396: aload 6
+    //   398: astore 5
+    //   400: aload 8
+    //   402: ifnull +29 -> 431
+    //   405: aload 8
+    //   407: ldc_w 965
+    //   410: invokevirtual 461	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   413: ifeq -24 -> 389
+    //   416: aload 8
+    //   418: ldc_w 967
+    //   421: invokevirtual 489	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   424: iconst_1
+    //   425: aaload
+    //   426: invokevirtual 970	java/lang/String:trim	()Ljava/lang/String;
+    //   429: astore 5
+    //   431: aload_1
+    //   432: aload 5
+    //   434: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   437: ldc_w 972
+    //   440: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   443: pop
+    //   444: aload 7
+    //   446: astore 5
+    //   448: aload 7
+    //   450: ifnull +11 -> 461
+    //   453: aload 7
+    //   455: invokevirtual 949	java/io/BufferedReader:close	()V
+    //   458: aconst_null
+    //   459: astore 5
+    //   461: iload_2
+    //   462: iconst_1
+    //   463: iadd
+    //   464: istore_2
+    //   465: goto -398 -> 67
+    //   468: astore 5
+    //   470: ldc_w 366
+    //   473: iconst_2
+    //   474: ldc_w 974
+    //   477: aload 5
+    //   479: invokestatic 524	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   482: aload 7
+    //   484: astore 5
+    //   486: goto -25 -> 461
+    //   489: astore_1
+    //   490: aload 7
+    //   492: astore 8
+    //   494: aload 8
+    //   496: astore 6
+    //   498: ldc_w 366
+    //   501: iconst_2
+    //   502: ldc_w 974
+    //   505: aload_1
+    //   506: invokestatic 524	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   509: aload 8
+    //   511: ifnull -170 -> 341
+    //   514: aload 8
+    //   516: invokevirtual 949	java/io/BufferedReader:close	()V
+    //   519: return
+    //   520: astore_1
+    //   521: ldc_w 366
+    //   524: iconst_2
+    //   525: ldc_w 974
+    //   528: aload_1
+    //   529: invokestatic 524	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   532: return
+    //   533: astore_1
+    //   534: ldc_w 366
+    //   537: iconst_2
+    //   538: ldc_w 974
+    //   541: aload_1
+    //   542: invokestatic 524	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   545: return
+    //   546: astore_1
+    //   547: aload 6
+    //   549: ifnull +8 -> 557
+    //   552: aload 6
+    //   554: invokevirtual 949	java/io/BufferedReader:close	()V
+    //   557: aload_1
+    //   558: athrow
+    //   559: astore 5
+    //   561: ldc_w 366
+    //   564: iconst_2
+    //   565: ldc_w 974
+    //   568: aload 5
+    //   570: invokestatic 524	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   573: goto -16 -> 557
+    //   576: astore_1
+    //   577: aload 7
+    //   579: astore 6
+    //   581: goto -34 -> 547
+    //   584: astore_1
+    //   585: goto -91 -> 494
+    //   588: goto -127 -> 461
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	544	0	this	StatisticCollector
-    //   0	544	1	paramStringBuilder	StringBuilder
-    //   66	352	2	i	int
-    //   50	213	3	l	long
-    //   45	368	5	localObject1	Object
-    //   421	10	5	localIOException1	java.io.IOException
-    //   437	1	5	localObject2	Object
-    //   512	10	5	localIOException2	java.io.IOException
-    //   39	494	6	localObject3	Object
-    //   131	400	7	localObject4	Object
-    //   42	426	8	localObject5	Object
+    //   0	591	0	this	StatisticCollector
+    //   0	591	1	paramStringBuilder	StringBuilder
+    //   66	399	2	i	int
+    //   50	260	3	l	long
+    //   45	415	5	localObject1	Object
+    //   468	10	5	localIOException1	java.io.IOException
+    //   484	1	5	localObject2	Object
+    //   559	10	5	localIOException2	java.io.IOException
+    //   39	541	6	localObject3	Object
+    //   131	447	7	localObject4	Object
+    //   42	473	8	localObject5	Object
     //   28	74	9	str	String
-    //   63	152	10	arrayOfString	String[]
+    //   63	181	10	arrayOfString	String[]
     // Exception table:
     //   from	to	target	type
-    //   406	411	421	java/io/IOException
-    //   342	349	442	java/lang/Exception
-    //   358	384	442	java/lang/Exception
-    //   384	397	442	java/lang/Exception
-    //   406	411	442	java/lang/Exception
-    //   423	435	442	java/lang/Exception
-    //   467	472	473	java/io/IOException
-    //   289	294	486	java/io/IOException
-    //   51	65	499	finally
-    //   75	82	499	finally
-    //   90	133	499	finally
-    //   141	153	499	finally
-    //   161	167	499	finally
-    //   175	199	499	finally
-    //   207	221	499	finally
-    //   229	235	499	finally
-    //   243	284	499	finally
-    //   303	311	499	finally
-    //   319	339	499	finally
-    //   451	462	499	finally
-    //   505	510	512	java/io/IOException
-    //   342	349	529	finally
-    //   358	384	529	finally
-    //   384	397	529	finally
-    //   406	411	529	finally
-    //   423	435	529	finally
-    //   51	65	537	java/lang/Exception
-    //   75	82	537	java/lang/Exception
-    //   90	133	537	java/lang/Exception
-    //   141	153	537	java/lang/Exception
-    //   161	167	537	java/lang/Exception
-    //   175	199	537	java/lang/Exception
-    //   207	221	537	java/lang/Exception
-    //   229	235	537	java/lang/Exception
-    //   243	284	537	java/lang/Exception
-    //   303	311	537	java/lang/Exception
-    //   319	339	537	java/lang/Exception
+    //   453	458	468	java/io/IOException
+    //   389	396	489	java/lang/Exception
+    //   405	431	489	java/lang/Exception
+    //   431	444	489	java/lang/Exception
+    //   453	458	489	java/lang/Exception
+    //   470	482	489	java/lang/Exception
+    //   514	519	520	java/io/IOException
+    //   336	341	533	java/io/IOException
+    //   51	65	546	finally
+    //   75	82	546	finally
+    //   90	133	546	finally
+    //   141	153	546	finally
+    //   161	167	546	finally
+    //   175	199	546	finally
+    //   207	221	546	finally
+    //   229	235	546	finally
+    //   243	252	546	finally
+    //   260	268	546	finally
+    //   276	282	546	finally
+    //   290	331	546	finally
+    //   350	358	546	finally
+    //   366	386	546	finally
+    //   498	509	546	finally
+    //   552	557	559	java/io/IOException
+    //   389	396	576	finally
+    //   405	431	576	finally
+    //   431	444	576	finally
+    //   453	458	576	finally
+    //   470	482	576	finally
+    //   51	65	584	java/lang/Exception
+    //   75	82	584	java/lang/Exception
+    //   90	133	584	java/lang/Exception
+    //   141	153	584	java/lang/Exception
+    //   161	167	584	java/lang/Exception
+    //   175	199	584	java/lang/Exception
+    //   207	221	584	java/lang/Exception
+    //   229	235	584	java/lang/Exception
+    //   243	252	584	java/lang/Exception
+    //   260	268	584	java/lang/Exception
+    //   276	282	584	java/lang/Exception
+    //   290	331	584	java/lang/Exception
+    //   350	358	584	java/lang/Exception
+    //   366	386	584	java/lang/Exception
   }
   
   public void a(AppRuntime paramAppRuntime)
@@ -1007,7 +1035,7 @@ public class StatisticCollector
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Aige.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Aikx.jdField_a_of_type_Boolean) {
       QLog.d("StatisticCollector", 1, "updateLocalCrashData crash control is off..");
     }
     Object localObject;
@@ -1015,7 +1043,7 @@ public class StatisticCollector
     {
       return;
       localObject = BaseApplicationImpl.getApplication().startComponentInfo;
-      if ((this.jdField_a_of_type_Aige.jdField_a_of_type_Int == 2) && ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains("QQBroadcastReceiver"))))
+      if ((this.jdField_a_of_type_Aikx.jdField_a_of_type_Int == 2) && ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).contains("QQBroadcastReceiver"))))
       {
         QLog.d("StatisticCollector", 1, "updateLocalCrashData controllevel is 2 but not QQBroadcastReceiver start QQ.");
         return;
@@ -1026,14 +1054,14 @@ public class StatisticCollector
     int i = ((SharedPreferences)localObject).getInt("crashcount", 0);
     long l2 = System.currentTimeMillis();
     this.jdField_a_of_type_JavaLangStringBuilder.append("updateLocalCrashData startTime=").append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l1))).append(",currenttime=").append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l2))).append(",crashCount=").append(i).append(",mCurUin=").append(this.jdField_a_of_type_JavaLangString).append("\n");
-    if ((l1 <= 0L) || (l2 <= l1) || (i < 0) || (l2 - l1 > this.jdField_a_of_type_Aige.b * 1000))
+    if ((l1 <= 0L) || (l2 <= l1) || (i < 0) || (l2 - l1 > this.jdField_a_of_type_Aikx.b * 1000))
     {
       i = 1;
       l1 = l2;
     }
     for (;;)
     {
-      if (i > this.jdField_a_of_type_Aige.c) {
+      if (i > this.jdField_a_of_type_Aikx.c) {
         this.jdField_a_of_type_Boolean = true;
       }
       this.jdField_a_of_type_JavaLangStringBuilder.append("updateLocalCrashData shouldStopMsf=").append(this.jdField_a_of_type_Boolean).append("\n");
@@ -1053,7 +1081,7 @@ public class StatisticCollector
   public void b(String paramString)
   {
     boolean bool1 = true;
-    if (!this.jdField_a_of_type_Aige.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Aikx.jdField_a_of_type_Boolean) {
       QLog.d("StatisticCollector", 1, "updatePreloadCrashData crash control is off..");
     }
     SharedPreferences localSharedPreferences;
@@ -1067,18 +1095,18 @@ public class StatisticCollector
     boolean bool2 = localSharedPreferences.getBoolean("allowpreload", true);
     long l2 = System.currentTimeMillis();
     this.jdField_a_of_type_JavaLangStringBuilder.append("updatePreloadCrashData process=").append(paramString).append(",startTime=").append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l1))).append(",currenttime=").append(jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l2))).append(",crashCount=").append(i).append(",allowPreload=").append(bool2).append(",mCurUin=").append(this.jdField_a_of_type_JavaLangString).append("\n");
-    if ((l1 <= 0L) || (l2 <= l1) || (i < 0) || (l2 - l1 > this.jdField_a_of_type_Aige.b * 1000))
+    if ((l1 <= 0L) || (l2 <= l1) || (i < 0) || (l2 - l1 > this.jdField_a_of_type_Aikx.b * 1000))
     {
       i = 1;
       l1 = l2;
     }
     for (;;)
     {
-      if (i > this.jdField_a_of_type_Aige.c) {
+      if (i > this.jdField_a_of_type_Aikx.c) {
         bool1 = false;
       }
       this.jdField_a_of_type_JavaLangStringBuilder.append("updatePreloadCrashData update allowPreload=").append(bool1).append("\n");
-      localSharedPreferences.edit().putLong("starttime", l1).putInt("crashcount", i).putBoolean("allowpreload", bool1).putInt("controlwindow", this.jdField_a_of_type_Aige.b).commit();
+      localSharedPreferences.edit().putLong("starttime", l1).putInt("crashcount", i).putBoolean("allowpreload", bool1).putInt("controlwindow", this.jdField_a_of_type_Aikx.b).commit();
       return;
       i += 1;
     }
@@ -1149,21 +1177,21 @@ public class StatisticCollector
       ((CrashStrategyBean)localObject).setMaxStackFrame(6);
       QLog.d("StatisticCollector", 1, "initCrashReport process=" + BaseApplicationImpl.processName + ", pid=" + Process.myPid());
       if (BaseApplicationImpl.processName.endsWith(":qzone")) {
-        ThreadManager.executeOnSubThread(new aifz(this));
+        ThreadManager.executeOnSubThread(new aiks(this));
       }
       Context localContext = jdField_a_of_type_AndroidContentContext;
-      aiga localaiga = new aiga(this);
+      aikt localaikt = new aikt(this);
       boolean bool;
       if (BaseApplicationImpl.sProcessId == 1)
       {
         bool = true;
-        CrashReport.initCrashReport(localContext, localaiga, null, bool, (CrashStrategyBean)localObject, 30000L);
+        CrashReport.initCrashReport(localContext, localaikt, null, bool, (CrashStrategyBean)localObject, 30000L);
         localObject = jdField_a_of_type_AndroidContentContext.getDir("tombs", 0).getAbsolutePath();
       }
       try
       {
         QLog.d("StatisticCollector", 1, "initNativeCrashReport process=" + BaseApplicationImpl.processName + ", pid=" + Process.myPid());
-        CrashReport.initNativeCrashReport(jdField_a_of_type_AndroidContentContext, (String)localObject, false);
+        CrashReport.initNativeCrashReport(jdField_a_of_type_AndroidContentContext, (String)localObject, false, null, null, 0L);
         CrashReport.filterSysLog(true, true);
         QLog.d("StatisticCollector", 1, "CrashReport init finished.");
         ANRReport.stopANRMonitor();
@@ -1178,7 +1206,7 @@ public class StatisticCollector
         if (!BaseApplicationImpl.processName.equals("com.tencent.mobileqq")) {
           continue;
         }
-        ThreadManager.getSubThreadHandler().postDelayed(new aigb(this, paramString), 3000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new aiku(this, paramString), 3000L);
         return;
         bool = false;
       }

@@ -1,63 +1,34 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment.ListAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class wtq
-  extends ContactBindObserver
+  implements View.OnClickListener
 {
-  public wtq(BindNumberFromPcActivity paramBindNumberFromPcActivity) {}
+  public wtq(PublicAccountFragment.ListAdapter paramListAdapter) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.b();
-    int i;
-    if (paramBoolean)
+    switch (paramView.getId())
     {
-      i = paramBundle.getInt("k_result");
-      if ((i == 104) || (i == 0))
-      {
-        paramBundle = new Intent(this.a, BindVerifyActivity.class);
-        paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        paramBundle.putExtra("k_country_code", this.a.b);
-        if ((paramBundle != null) && (!this.a.isFinishing()))
-        {
-          paramBundle.addFlags(536870912);
-          this.a.startActivityForResult(paramBundle, 1);
-        }
-      }
     }
-    for (;;)
+    String str;
+    do
     {
-      this.a.app.unRegistObserver(BindNumberFromPcActivity.a(this.a));
-      BindNumberFromPcActivity.a(this.a, null);
       return;
-      if (i == 107)
-      {
-        Intent localIntent = new Intent(this.a, RebindActivity.class);
-        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
-        localIntent.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-        localIntent.putExtra("k_country_code", this.a.b);
-        paramBundle = localIntent;
+      str = (String)paramView.getTag(-1);
+      paramView = (String)paramView.getTag(-2);
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramView))) {
         break;
       }
-      if (i == 106)
-      {
-        this.a.setResult(-1);
-        this.a.finish();
-        paramBundle = null;
-        break;
-      }
-      this.a.b(a(i));
-      paramBundle = null;
-      break;
-      this.a.b(2131434455);
-    }
+    } while (!QLog.isColorLevel());
+    QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str + ", name = " + paramView);
+    return;
+    CrmUtils.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, str, "IvrEnterpriseDetailEngineFalse");
   }
 }
 

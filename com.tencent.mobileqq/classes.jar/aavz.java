@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetLocalAppPath;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
 
 class aavz
   implements Runnable
 {
-  aavz(aavy paramaavy, String paramString) {}
+  aavz(aavt paramaavt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aavy.a.a(this.jdField_a_of_type_JavaLangString);
+    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"none".equals(ArkAppEventObserverManager.a(this.a.a))))
+    {
+      ArkAppEventObserverManager.a(this.a.a).a(true, "none");
+      ArkAppEventObserverManager.a(this.a.a, "none");
+    }
   }
 }
 

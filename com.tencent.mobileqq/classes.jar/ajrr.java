@@ -1,6 +1,7 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
 
 class ajrr
   implements Runnable
@@ -9,13 +10,7 @@ class ajrr
   
   public void run()
   {
-    Bitmap localBitmap = this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.a;
-    if ((localBitmap != null) && (!localBitmap.isRecycled()))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageBitmap(localBitmap);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageDrawable(null);
+    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a, 2);
   }
 }
 

@@ -17,15 +17,15 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import xtz;
-import xua;
+import yai;
+import yaj;
 
 public class SaveVideoActivity
   extends FlowActivity
 {
   private static FFmpeg jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg;
   private static boolean jdField_a_of_type_Boolean;
-  private xua jdField_a_of_type_Xua;
+  private yaj jdField_a_of_type_Yaj;
   private boolean d;
   
   public static Intent a(Context paramContext, String paramString, int paramInt1, int paramInt2)
@@ -79,8 +79,8 @@ public class SaveVideoActivity
   
   protected void onCreate(Bundle paramBundle)
   {
-    this.U = false;
-    this.V = false;
+    this.W = false;
+    this.X = false;
     super.onCreate(paramBundle);
     paramBundle = getIntent();
     if (paramBundle == null)
@@ -90,12 +90,12 @@ public class SaveVideoActivity
     }
     com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.z = paramBundle.getIntExtra("sv_total_frame_count", 0);
     com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.y = paramBundle.getIntExtra("sv_total_record_time", 0);
-    this.jdField_a_of_type_Xua = new xua(this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    xua.a(this.jdField_a_of_type_Xua, paramBundle.getStringExtra("mc_video.mp4"));
-    xua.b(this.jdField_a_of_type_Xua, paramBundle.getStringExtra("mc_audio.mp4"));
-    xua.c(this.jdField_a_of_type_Xua, paramBundle.getStringExtra("all_i_mc_video.mp4"));
-    xua.a(this.jdField_a_of_type_Xua, paramBundle.getBooleanExtra("mediacodec_encode_enable", false));
-    Utils.executeAsyncTaskOnSerialExcuter(this.jdField_a_of_type_Xua, new Void[] { (Void)null });
+    this.jdField_a_of_type_Yaj = new yaj(this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    yaj.a(this.jdField_a_of_type_Yaj, paramBundle.getStringExtra("mc_video.mp4"));
+    yaj.b(this.jdField_a_of_type_Yaj, paramBundle.getStringExtra("mc_audio.mp4"));
+    yaj.c(this.jdField_a_of_type_Yaj, paramBundle.getStringExtra("all_i_mc_video.mp4"));
+    yaj.a(this.jdField_a_of_type_Yaj, paramBundle.getBooleanExtra("mediacodec_encode_enable", false));
+    Utils.executeAsyncTaskOnSerialExcuter(this.jdField_a_of_type_Yaj, new Void[] { (Void)null });
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -103,15 +103,15 @@ public class SaveVideoActivity
     if (paramInt == 4)
     {
       this.d = true;
-      if ((this.jdField_a_of_type_Xua != null) && (!isFinishing()))
+      if ((this.jdField_a_of_type_Yaj != null) && (!isFinishing()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("SaveVideoActivity", 2, "cancel save video");
         }
-        xua.a(this.jdField_a_of_type_Xua).set(true);
+        yaj.a(this.jdField_a_of_type_Yaj).set(true);
         setResult(0, getIntent());
         if (getIntent() != null) {
-          ThreadManager.postImmediately(new xtz(this, getIntent().getStringExtra("fakeId")), null, true);
+          ThreadManager.postImmediately(new yai(this, getIntent().getStringExtra("fakeId")), null, true);
         }
       }
     }

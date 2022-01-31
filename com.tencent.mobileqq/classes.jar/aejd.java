@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.leba.QZoneEntryController;
 
 public class aejd
-  implements DialogInterface.OnClickListener
+  implements ViewSwitcher.ViewFactory
 {
-  public aejd(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aejd(QZoneEntryController paramQZoneEntryController) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public View makeView()
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.a, "CliOper", "", "", AIOShareActionSheet.b, AIOShareActionSheet.b, 0, 0, "", "", "", "");
+    ImageView localImageView = new ImageView(this.a.a);
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

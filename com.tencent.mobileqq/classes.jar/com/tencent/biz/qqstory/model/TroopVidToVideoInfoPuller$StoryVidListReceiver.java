@@ -28,9 +28,9 @@ public class TroopVidToVideoInfoPuller$StoryVidListReceiver
       if (paramTroopVidToVideoInfoPuller.jdField_a_of_type_JavaLangString.equals(paramGetTroopVidListEvent.jdField_a_of_type_JavaLangString)) {}
       for (int i = 1; i != 0; i = 0)
       {
-        if (paramGetTroopVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+        if (paramGetTroopVidListEvent.errorInfo.isFail())
         {
-          paramTroopVidToVideoInfoPuller.a(new ArrayList(), paramGetTroopVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage, true, false);
+          paramTroopVidToVideoInfoPuller.a(new ArrayList(), paramGetTroopVidListEvent.errorInfo, true, false);
           Dispatchers.get().unRegisterSubscriber(this);
           paramTroopVidToVideoInfoPuller.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller$StoryVidListReceiver = null;
           return;

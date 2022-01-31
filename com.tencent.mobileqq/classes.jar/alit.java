@@ -1,23 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener;
-import com.tencent.open.downloadnew.MyAppDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.agent.BindGroupActivity;
 
-public class alit
-  implements Runnable
+class alit
+  implements DialogInterface.OnClickListener
 {
-  public alit(MyAppApi.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
+  alit(alis paramalis) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener.a.a != null) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener.a.a.isShowing())) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener.a.a.dismiss();
+    if (paramInt == 1)
+    {
+      this.a.a.a.a.cancel();
+      this.a.a.a.finish();
     }
-    DownloadManager.a().c(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    new Handler(Looper.getMainLooper()).postAtTime(new aliu(this), 1000L);
   }
 }
 

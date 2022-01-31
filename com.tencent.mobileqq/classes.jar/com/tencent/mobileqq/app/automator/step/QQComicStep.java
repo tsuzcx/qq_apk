@@ -5,16 +5,16 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import mqq.os.MqqHandler;
-import zrg;
-import zrh;
+import zxr;
+import zxs;
 
 public class QQComicStep
   extends AsyncStep
 {
   protected int a()
   {
-    this.a.a.addObserver(new zrg(this), true);
-    ThreadManager.getUIHandler().postDelayed(new zrh(this), 3000L);
+    this.a.a.addObserver(new zxr(this), true);
+    ThreadManager.getUIHandler().postDelayed(new zxs(this), 3000L);
     return 7;
   }
 }

@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import anqy;
+import anzl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -822,9 +822,7 @@ public class DataReporter
   
   public void a(QQAppInterface paramQQAppInterface, @NonNull List paramList)
   {
-    if (paramQQAppInterface == null) {
-      throw new IllegalStateException("QQAppInterface is null");
-    }
+    if (paramQQAppInterface == null) {}
     ArrayList localArrayList = new ArrayList();
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -833,7 +831,7 @@ public class DataReporter
         localArrayList.add(new QIMMsgReportItem((QIMMsgReportItem)paramList.next()));
       }
     }
-    ThreadManager.post(new anqy(this, localArrayList, paramQQAppInterface), 5, null, true);
+    ThreadManager.post(new anzl(this, localArrayList, paramQQAppInterface), 5, null, true);
   }
   
   public void a(QQAppInterface paramQQAppInterface, @NonNull List paramList, @Nullable String paramString, @Nullable DataReporter.Destination paramDestination)

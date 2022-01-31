@@ -1,44 +1,29 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Context;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
+import com.tencent.mobileqq.widget.QQToast;
 
 class afez
-  implements View.OnClickListener
+  implements NearbyMomentProtocol.ReportCallback
 {
   afez(afey paramafey) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(NearbyProfileDisplayTribePanel.a(this.a.jdField_a_of_type_Afex.a).strGodJumpUrl)) {
-      return;
-    }
-    paramView = new Intent(this.a.jdField_a_of_type_Afex.a.a, QQBrowserActivity.class);
-    Object localObject = new StringBuilder().append(NearbyProfileDisplayTribePanel.a(this.a.jdField_a_of_type_Afex.a).strGodJumpUrl).append("&gender=");
+    Context localContext = this.a.a;
     int i;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataCard == null)
+    if (paramBoolean)
     {
-      i = 0;
-      paramView.putExtra("url", i);
-      this.a.jdField_a_of_type_Afex.a.a.startActivity(paramView);
-      localObject = this.a.jdField_a_of_type_Afex.a.a.app;
-      if (this.a.jdField_a_of_type_Afex.a.a.e != 2) {
-        break label202;
+      i = 2;
+      if (!paramBoolean) {
+        break label40;
       }
     }
-    label202:
-    for (paramView = "1";; paramView = "2")
+    label40:
+    for (String str = "举报成功";; str = "举报失败")
     {
-      ReportController.b((QQAppInterface)localObject, "dc00899", "grp_lbs", "", "rank_list", "clk_icon", 0, 0, paramView, "", "", "");
+      QQToast.a(localContext, i, str, 0).a();
       return;
-      i = this.a.jdField_a_of_type_ComTencentMobileqqDataCard.shGender + 1;
+      i = 1;
       break;
     }
   }

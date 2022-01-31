@@ -1,20 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class wns
-  implements Runnable
+  extends SosoInterface.OnLocationListener
 {
-  public wns(PhoneContactFragment paramPhoneContactFragment) {}
-  
-  public void run()
+  public wns(PublicView paramPublicView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (PhoneContactFragment.a(this.a) == null) {
-      PhoneContactFragment.a(this.a, (PhoneContactManagerImp)this.a.a.getManager(10));
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicView", 2, "onLocationFinish() errCode=" + paramInt);
     }
-    boolean bool = PhoneContactFragment.a(this.a).f();
-    PhoneContactFragment.a(this.a).post(new wnt(this, bool));
+    PublicView.a(this.a, true);
+    PublicView.a(this.a, paramSosoLbsInfo);
   }
 }
 

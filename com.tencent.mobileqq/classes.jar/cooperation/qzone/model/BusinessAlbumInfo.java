@@ -3,7 +3,7 @@ package cooperation.qzone.model;
 import NS_MOBILE_MATERIAL.MaterialFile;
 import NS_MOBILE_MATERIAL.MaterialItem;
 import NS_MOBILE_PHOTO.Album;
-import amui;
+import anbt;
 import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class BusinessAlbumInfo
   extends BaseBusinessAlbumInfo
 {
-  public static final Parcelable.Creator CREATOR = new amui();
+  public static final Parcelable.Creator CREATOR = new anbt();
   
   private BusinessAlbumInfo(Parcel paramParcel)
   {
@@ -151,17 +151,17 @@ public class BusinessAlbumInfo
     while (i == 0)
     {
       return null;
-      i = 2131432933;
+      i = 2131432947;
       continue;
-      i = 2131432934;
+      i = 2131432948;
       continue;
-      i = 2131432472;
+      i = 2131432483;
       continue;
-      i = 2131432473;
+      i = 2131432484;
       continue;
-      i = 2131432474;
+      i = 2131432485;
       continue;
-      i = 2131432475;
+      i = 2131432486;
     }
     return BaseApplication.getContext().getResources().getString(i);
   }

@@ -1,54 +1,32 @@
-import android.content.Intent;
-import com.tencent.device.file.DevLittleVideoOperator;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.shortvideo.AioShortVideoOperator;
-import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
-import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.BaseAnimDrawer;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
 
-class ycx
+public class ycx
   implements Runnable
 {
-  ycx(ycw paramycw) {}
+  public ycx(SubtitleLayout paramSubtitleLayout) {}
   
   public void run()
   {
-    Object localObject;
-    ShortVideoUploadInfo localShortVideoUploadInfo;
-    if (this.a.jdField_a_of_type_AndroidContentIntent != null)
+    if (SubtitleLayout.a(this.a))
     {
-      int i = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_business_type", 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("SendVideoActivity", 2, "#SendTask# run(), busiType = " + i + ",VideoFileDir = " + this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("file_video_source_dir"));
-      }
-      int j = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", -1);
-      if (j == 9501) {
-        i = 4;
-      }
-      localObject = ShortVideoBusiManager.a(0, i);
-      localShortVideoUploadInfo = ShortVideoBusiManager.a(this.a.jdField_a_of_type_AndroidContentIntent, (ShortVideoReq)localObject);
-      ((ShortVideoReq)localObject).a(localShortVideoUploadInfo);
-      if (j != 9501) {
-        break label214;
-      }
-      localObject = new DevLittleVideoOperator(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-      ((DevLittleVideoOperator)localObject).a(((DevLittleVideoOperator)localObject).a(localShortVideoUploadInfo));
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendVideoActivity", 2, "#SendTask# run(): success");
-      }
-      if (!this.a.jdField_a_of_type_Boolean)
+      if (SubtitleLayout.a(this.a) != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+        long l = System.currentTimeMillis();
+        String str1 = "录制时说话可以添加字幕。";
+        String str2 = "Record and speak with subtitles added.";
+        if (!AudioTranslator.a(false))
+        {
+          str1 = "网络状态差无法识别你的语音";
+          str2 = "Unable to Recognize Your Speaking due to Poor Internet Connection";
+        }
+        if (SubtitleLayout.a(this.a).a(false) <= 4) {
+          SubtitleLayout.a(this.a).a(l, 1000L + l, str1, str2, true);
+        }
       }
-      return;
-      label214:
-      localObject = new AioShortVideoOperator(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-      ((AioShortVideoOperator)localObject).a(((AioShortVideoOperator)localObject).a(localShortVideoUploadInfo));
+      SubtitleLayout.a(this.a, 1000);
+      SubtitleLayout.b(this.a);
     }
   }
 }

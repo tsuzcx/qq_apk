@@ -1,22 +1,13 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import java.nio.ByteBuffer;
 
-public class nux
-  implements View.OnFocusChangeListener
+class nux
 {
-  public nux(DetailCommentHelper paramDetailCommentHelper) {}
+  protected long a;
+  protected ByteBuffer a;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  nux(int paramInt)
   {
-    if (!paramBoolean) {
-      this.a.b();
-    }
-    while (DetailCommentHelper.a(this.a)) {
-      return;
-    }
-    new Handler().postDelayed(new nuy(this), 200L);
+    this.a = ByteBuffer.allocate(paramInt);
   }
 }
 

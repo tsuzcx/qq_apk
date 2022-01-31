@@ -12,11 +12,11 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import wum;
-import wun;
-import wuo;
-import wup;
-import wuq;
+import xaa;
+import xab;
+import xac;
+import xad;
+import xae;
 
 public class DialogBaseActivity
   extends IphoneTitleBarActivity
@@ -24,16 +24,16 @@ public class DialogBaseActivity
   private View jdField_a_of_type_AndroidViewView;
   public PhoneContactManagerImp a;
   public QQProgressDialog a;
-  private wuq jdField_a_of_type_Wuq;
+  private xae jdField_a_of_type_Xae;
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Wuq;
+    Object localObject = this.jdField_a_of_type_Xae;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localObject = ((wuq)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Wuq.sendMessageDelayed((Message)localObject, paramLong);
+      localObject = ((xae)localObject).obtainMessage(1, paramInt, i);
+      this.jdField_a_of_type_Xae.sendMessageDelayed((Message)localObject, paramLong);
       return;
     }
   }
@@ -43,7 +43,7 @@ public class DialogBaseActivity
     if ((!isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new wup(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new xad(this));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(paramBoolean);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
@@ -54,7 +54,7 @@ public class DialogBaseActivity
   public void a(String paramString1, String paramString2)
   {
     if (!isFinishing()) {
-      DialogUtil.a(this, 231, paramString1, paramString2, new wum(this), null).show();
+      DialogUtil.a(this, 231, paramString1, paramString2, new xaa(this), null).show();
     }
   }
   
@@ -65,7 +65,7 @@ public class DialogBaseActivity
     if (!isFinishing())
     {
       ReportController.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
-      str3 = getResources().getString(2131436860);
+      str3 = getResources().getString(2131436880);
       if (!paramBoolean) {
         break label94;
       }
@@ -78,7 +78,7 @@ public class DialogBaseActivity
     label100:
     for (String str2 = "跳过";; str2 = "关闭")
     {
-      DialogUtil.a(this, 230, str1, str3, "继续绑定", str2, new wun(this, paramBoolean), new wuo(this, paramBoolean)).show();
+      DialogUtil.a(this, 230, str1, str3, "继续绑定", str2, new xab(this, paramBoolean), new xac(this, paramBoolean)).show();
       return;
       str1 = "确定关闭吗？";
       break;
@@ -100,9 +100,9 @@ public class DialogBaseActivity
   public boolean b()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Wuq.hasMessages(1))
+    if (this.jdField_a_of_type_Xae.hasMessages(1))
     {
-      this.jdField_a_of_type_Wuq.removeMessages(1);
+      this.jdField_a_of_type_Xae.removeMessages(1);
       bool = true;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
@@ -117,7 +117,7 @@ public class DialogBaseActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Wuq = new wuq(this);
+    this.jdField_a_of_type_Xae = new xae(this);
     this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = ((PhoneContactManagerImp)this.app.getManager(10));
     return true;
   }

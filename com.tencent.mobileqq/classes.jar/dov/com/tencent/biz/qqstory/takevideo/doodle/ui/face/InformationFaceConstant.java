@@ -59,7 +59,6 @@ public class InformationFaceConstant
   
   public static BitmapDrawable a(String paramString1, Context paramContext, String paramString2)
   {
-    Object localObject2 = null;
     try
     {
       if (QLog.isColorLevel()) {
@@ -72,25 +71,33 @@ public class InformationFaceConstant
       for (;;)
       {
         JSONObject localJSONObject;
-        int i;
         if (QLog.isColorLevel()) {
           QLog.e("InformationFaceConstant", 2, localJSONException, new Object[0]);
         }
-        Object localObject1 = null;
-        continue;
+        localObject = null;
+      }
+      i = localObject.optInt("type", 0);
+      switch (i)
+      {
+      default: 
+        paramString1 = null;
+      }
+    }
+    if (localJSONObject == null) {}
+    for (;;)
+    {
+      return null;
+      Object localObject;
+      int i;
+      while (paramString1 != null)
+      {
+        return new BitmapDrawable(paramContext.getResources(), paramString1.a());
         paramString1 = new Left2RigthInfoStickerDrawable(paramContext, paramString1).a(paramString1);
         paramString1 = new Left2RigthInfoStickerDrawable(paramContext, Left2RigthInfoStickerDrawable.a(i, paramString1[0], paramString2, paramString1[2]));
         continue;
         paramString1 = new EaseInLocationStickerDrawable(paramContext, paramString1).a(paramString1);
         paramString1 = new EaseInLocationStickerDrawable(paramContext, EaseInLocationStickerDrawable.a(i, paramString2, paramString1[1], paramString1[3], paramString1[2]));
       }
-    }
-    i = localJSONObject.optInt("type", 0);
-    switch (i)
-    {
-    default: 
-      paramString1 = localObject2;
-      return new BitmapDrawable(paramContext.getResources(), paramString1.a());
     }
   }
   

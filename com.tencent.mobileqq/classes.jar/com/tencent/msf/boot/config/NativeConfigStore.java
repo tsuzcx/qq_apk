@@ -190,22 +190,31 @@ public class NativeConfigStore
     //   24: aload_0
     //   25: aload_1
     //   26: aload_2
-    //   27: invokevirtual 212	com/tencent/msf/boot/config/NativeConfigStore:setConfig	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokevirtual 214	com/tencent/msf/boot/config/NativeConfigStore:setConfig	(Ljava/lang/String;Ljava/lang/String;)V
     //   30: goto -9 -> 21
     //   33: astore_1
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: aload_1
-    //   37: athrow
+    //   34: getstatic 20	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
+    //   37: iconst_1
+    //   38: ldc 216
+    //   40: aload_1
+    //   41: invokestatic 66	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   44: goto -23 -> 21
+    //   47: astore_1
+    //   48: aload_0
+    //   49: monitorexit
+    //   50: aload_1
+    //   51: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	38	0	this	NativeConfigStore
-    //   0	38	1	paramString1	String
-    //   0	38	2	paramString2	String
+    //   0	52	0	this	NativeConfigStore
+    //   0	52	1	paramString1	String
+    //   0	52	2	paramString2	String
     // Exception table:
     //   from	to	target	type
-    //   2	21	33	finally
-    //   24	30	33	finally
+    //   24	30	33	java/lang/UnsatisfiedLinkError
+    //   2	21	47	finally
+    //   24	30	47	finally
+    //   34	44	47	finally
   }
   
   public synchronized native void removeConfig(String paramString);

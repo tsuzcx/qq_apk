@@ -53,7 +53,7 @@ public class NoticeUpdateHandler
     {
       if (Build.VERSION.SDK_INT > 10)
       {
-        paramNotification.contentView.setOnClickPendingIntent(2131365710, paramPendingIntent);
+        paramNotification.contentView.setOnClickPendingIntent(2131365715, paramPendingIntent);
         return;
       }
       paramNotification.contentIntent = paramPendingIntent;
@@ -108,8 +108,12 @@ public class NoticeUpdateHandler
           AppNotificationManager.a().a(i, this.jdField_a_of_type_AndroidAppNotification);
           LogUtility.c("NoticeUpdateHandler", "notify key=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.f + " type=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int + "appid=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
           return;
-          localObject1 = new RemoteViews(CommonDataAdapter.a().a().getPackageName(), 2130969245);
+          localObject1 = new RemoteViews(CommonDataAdapter.a().a().getPackageName(), 2130969243);
           AppNotificationManager.a().a((RemoteViews)localObject1);
+          ((RemoteViews)localObject1).setInt(2131365715, "setBackgroundColor", -1);
+          ((RemoteViews)localObject1).setInt(2131365718, "setTextColor", -16777216);
+          ((RemoteViews)localObject1).setInt(2131365719, "setTextColor", -12303292);
+          ((RemoteViews)localObject1).setInt(2131365720, "setTextColor", -12303292);
           this.jdField_a_of_type_AndroidAppNotification.contentView = ((RemoteViews)localObject1);
           continue;
         }
@@ -121,32 +125,32 @@ public class NoticeUpdateHandler
         LogUtility.b("NoticeUpdateHandler", ">>downloading:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
         LogUtility.c("NoticeUpdateHandler", "size = " + ((DownloadInfo)localObject2).jdField_g_of_type_Int + " content = ");
         this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131428556, new Object[] { ((DownloadInfo)localObject2).e });
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365715, 8);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365716, 0);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365714, 0);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setProgressBar(2131365717, 100, ((DownloadInfo)localObject2).jdField_g_of_type_Int, false);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365714, ((DownloadInfo)localObject2).jdField_g_of_type_Int * 100 / 100 + "%");
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131365711, 2130841665);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365713, StringAddition.a(a(2131428559, new Object[] { ((DownloadInfo)localObject2).e }), 18, true));
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365720, 8);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365721, 0);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365719, 0);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setProgressBar(2131365722, 100, ((DownloadInfo)localObject2).jdField_g_of_type_Int, false);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365719, ((DownloadInfo)localObject2).jdField_g_of_type_Int * 100 / 100 + "%");
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131365716, 2130841692);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365718, StringAddition.a(a(2131428559, new Object[] { ((DownloadInfo)localObject2).e }), 18, true));
         a(this.jdField_a_of_type_AndroidAppNotification, IntentFactory.a(2, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
         if (!TextUtils.isEmpty(""))
         {
-          this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365715, 0);
-          this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365715, Html.fromHtml(""));
+          this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365720, 0);
+          this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365720, Html.fromHtml(""));
           this.jdField_a_of_type_AndroidAppNotification.flags = 32;
           paramMessage = this.jdField_a_of_type_AndroidAppNotification;
           paramMessage.flags |= 0x2;
           continue;
         }
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365715, 8);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365720, 8);
         continue;
         this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131428556, new Object[] { ((DownloadInfo)localObject2).e });
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365715, 0);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365716, 8);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365714, 8);
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365713, StringAddition.a(a(2131428559, new Object[] { ((DownloadInfo)localObject2).e }), 18, true));
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365715, a(2131428565));
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131365711, 2130841665);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365720, 0);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365721, 8);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365719, 8);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365718, StringAddition.a(a(2131428559, new Object[] { ((DownloadInfo)localObject2).e }), 18, true));
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365720, a(2131428565));
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131365716, 2130841692);
         a(this.jdField_a_of_type_AndroidAppNotification, IntentFactory.a(2, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
         this.jdField_a_of_type_AndroidAppNotification.flags = 32;
         paramMessage = this.jdField_a_of_type_AndroidAppNotification;
@@ -161,15 +165,15 @@ public class NoticeUpdateHandler
         break;
       }
       this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131428557);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365715, 0);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365716, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365714, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365715, a(2131428564));
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365713, StringAddition.a(((DownloadInfo)localObject2).e, 18, true));
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365720, 0);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365721, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365719, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365720, a(2131428564));
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365718, StringAddition.a(((DownloadInfo)localObject2).e, 18, true));
       a(this.jdField_a_of_type_AndroidAppNotification, IntentFactory.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), false);
       paramMessage = ImageUtil.a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
       if (paramMessage != null) {
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewBitmap(2131365711, paramMessage);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewBitmap(2131365716, paramMessage);
       }
       for (;;)
       {
@@ -179,16 +183,16 @@ public class NoticeUpdateHandler
         AppNotificationManager.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.f);
         break;
         LogUtility.b("NoticeUpdateHandler", ">>download icon fail,so we use default notification icon");
-        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131365711, 2130841665);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131365716, 2130841692);
       }
       LogUtility.b("NoticeUpdateHandler", ">>pause:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131428562);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365715, 0);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365716, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365714, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131365711, 2130841668);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365713, StringAddition.a(((DownloadInfo)localObject2).e, 18, true));
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365715, a(2131428562));
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365720, 0);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365721, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365719, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131365716, 2130841695);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365718, StringAddition.a(((DownloadInfo)localObject2).e, 18, true));
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365720, a(2131428562));
       a(this.jdField_a_of_type_AndroidAppNotification, IntentFactory.a(1, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
       this.jdField_a_of_type_AndroidAppNotification.flags = 16;
       paramMessage = this.jdField_a_of_type_AndroidAppNotification;
@@ -196,18 +200,18 @@ public class NoticeUpdateHandler
       AppNotificationManager.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.f);
       continue;
       LogUtility.b("NoticeUpdateHandler", ">>error:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365715, 0);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365716, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365714, 8);
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131365711, 2130841666);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365720, 0);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365721, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131365719, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131365716, 2130841693);
       String str = (String)paramMessage.obj;
       paramMessage = str;
       if (TextUtils.isEmpty(str)) {
         paramMessage = a(2131428568);
       }
       this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131428558, new Object[] { paramMessage });
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365715, a(2131428563, new Object[] { paramMessage }));
-      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365713, StringAddition.a(((DownloadInfo)localObject2).e, 18, true));
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365720, a(2131428563, new Object[] { paramMessage }));
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131365718, StringAddition.a(((DownloadInfo)localObject2).e, 18, true));
       a(this.jdField_a_of_type_AndroidAppNotification, IntentFactory.a(1, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
       this.jdField_a_of_type_AndroidAppNotification.flags = 16;
       paramMessage = this.jdField_a_of_type_AndroidAppNotification;

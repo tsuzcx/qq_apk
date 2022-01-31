@@ -1,60 +1,18 @@
-import android.os.AsyncTask;
-import com.tencent.device.msg.data.DeviceComnFileMsgProcessor;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RouterHandler;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import cooperation.troop.TroopFileProxyActivity;
-import java.util.ArrayList;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
 class adjr
-  extends AsyncTask
+  implements FMDialogUtil.FMDialogInterface
 {
-  adjr(adjq paramadjq) {}
+  adjr(adjq paramadjq, Intent paramIntent) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void a()
   {
-    paramVarArgs = SendBottomBar.a(this.a.a).a();
-    int i = SendBottomBar.a(this.a.a).a();
-    if (i == 5)
-    {
-      TroopFileProxyActivity.a.addAll(FMDataCache.b());
-      return null;
-    }
-    if (paramVarArgs.equals(AppConstants.y))
-    {
-      paramVarArgs = FMDataCache.b();
-      ((DataLineHandler)SendBottomBar.a(this.a.a).a(8)).a(paramVarArgs);
-      return null;
-    }
-    if (i == 6002)
-    {
-      localObject = FMDataCache.b();
-      ((RouterHandler)SendBottomBar.a(this.a.a).a(48)).a((ArrayList)localObject, null, null, Long.parseLong(paramVarArgs));
-      return null;
-    }
-    if (i == 9501)
-    {
-      ((DeviceMsgHandle)SendBottomBar.a(this.a.a).a(49)).a().a(paramVarArgs, FMDataCache.b());
-      return null;
-    }
-    Object localObject = SendBottomBar.a(this.a.a).b();
-    SendBottomBar.a(this.a.a).a().a((String)localObject, paramVarArgs, i);
-    return null;
+    ForwardBaseOption.a(this.jdField_a_of_type_Adjq.a, this.jdField_a_of_type_AndroidContentIntent, 103);
   }
   
-  protected void a(Void paramVoid)
-  {
-    super.onPostExecute(paramVoid);
-    this.a.a.d();
-    FMDataCache.b();
-    SendBottomBar.d(this.a.a);
-  }
+  public void b() {}
 }
 
 

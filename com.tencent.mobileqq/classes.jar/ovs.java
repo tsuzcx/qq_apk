@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
 
 public class ovs
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ovs(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  public ovs(QQStoryPullToRefreshListView paramQQStoryPullToRefreshListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    QQStoryPullToRefreshListView.a(this.a);
   }
 }
 

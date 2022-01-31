@@ -1,21 +1,19 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
 public class ajjq
-  implements SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ajjq(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public ajjq(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = SearchReciteArticleFragment.a(this.a).a(paramInt);
-    SearchReciteArticleFragment.a(this.a).setText(paramView);
-    SearchReciteArticleFragment.a(this.a).setSelection(paramView.length());
-    TroopReportor.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { SearchReciteArticleFragment.a(this.a), paramView });
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
+    }
   }
 }
 

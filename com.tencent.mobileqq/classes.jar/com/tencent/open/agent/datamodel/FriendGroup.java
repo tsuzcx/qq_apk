@@ -1,6 +1,6 @@
 package com.tencent.open.agent.datamodel;
 
-import alcv;
+import alkn;
 import android.content.ContentValues;
 import android.os.Parcel;
 import com.tencent.open.base.StringAddition;
@@ -22,7 +22,7 @@ public class FriendGroup
   
   static
   {
-    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new alcv();
+    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new alkn();
   }
   
   public FriendGroup()

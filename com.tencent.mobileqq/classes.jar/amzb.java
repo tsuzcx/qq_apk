@@ -1,37 +1,32 @@
-import android.content.res.Resources;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.share.QZoneShareActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QZoneHelper;
 
-class amzb
+public final class amzb
   implements Runnable
 {
-  amzb(amza paramamza, int paramInt) {}
+  public amzb(QQAppInterface paramQQAppInterface, PreloadProcHitPluginSession paramPreloadProcHitPluginSession) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Amza.a.a == null) {}
-    do
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessEnable", 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard enable:" + i);
+    }
+    if (i == 1)
     {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_Int <= 0) {
-          break;
-        }
-        String str = "超出" + this.jdField_a_of_type_Int + "个字";
-        int i = this.jdField_a_of_type_Amza.a.getResources().getColor(2131493818);
-        this.jdField_a_of_type_Amza.a.a.setTextColor(i);
-        this.jdField_a_of_type_Amza.a.a.setText(str);
-        if (this.jdField_a_of_type_Amza.a.a.getVisibility() != 0) {
-          this.jdField_a_of_type_Amza.a.a.setVisibility(0);
-        }
-      } while (!this.jdField_a_of_type_Amza.a.b);
-      QQToast.a(this.jdField_a_of_type_Amza.a, 2131432446, 0).a();
-      this.jdField_a_of_type_Amza.a.b = false;
-      return;
-    } while (this.jdField_a_of_type_Amza.a.a.getVisibility() == 8);
-    this.jdField_a_of_type_Amza.a.a.setVisibility(8);
+      long l = DeviceInfoUtil.e() / 1048576L;
+      i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessRamThreshold", 1024);
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard totalMemSize:" + l + ",threshold:" + i);
+      }
+      if (l >= i) {
+        QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "FriendProfileCardActivity", this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession);
+      }
+    }
   }
 }
 

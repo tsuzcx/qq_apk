@@ -1,17 +1,13 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
 
 class vdb
-  implements ImageAssetDelegate
+  implements Runnable
 {
   vdb(vda paramvda) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void run()
   {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+    GivingHeartItemBuilder.a(this.a.a);
   }
 }
 

@@ -1,27 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.PresenceInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Application;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
+import com.tencent.mobileqq.widget.TabBarView;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import java.util.HashMap;
 
 public class adrj
-  implements View.OnClickListener
+  implements TabBarView.OnTabChangeListener
 {
-  public adrj(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  public adrj(QfileTabBarView paramQfileTabBarView) {}
   
-  public void onClick(View paramView)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if (this.a.a == null) {
+    if (this.a.a(paramInt2) == null) {}
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelected(true);
+      this.a.b(paramInt2);
+    } while (!this.a.jdField_a_of_type_Boolean);
+    try
+    {
+      SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+      localEditor.putInt("last_select_tab_view", ((Integer)this.a.c.get(Integer.valueOf(paramInt2))).intValue());
+      localEditor.commit();
       return;
     }
-    this.a.a.a(3, paramView);
-    QLog.d("HotVideoRelativeLayout", 2, "click mute view");
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adrj
  * JD-Core Version:    0.7.0.1
  */

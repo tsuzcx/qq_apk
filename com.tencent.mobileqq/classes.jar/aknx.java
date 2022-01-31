@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.webview.swift.WebViewWrapper;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-
-public class aknx
-  extends aknz
+public final class aknx
+  implements akoc
 {
-  public aknx(WebViewWrapper paramWebViewWrapper)
+  public Integer a(float paramFloat, Integer paramInteger1, Integer paramInteger2)
   {
-    super(paramWebViewWrapper);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    return a(paramWebView, paramString);
+    int i = paramInteger1.intValue();
+    float f = i;
+    return Integer.valueOf((int)((paramInteger2.intValue() - i) * paramFloat + f));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aknx
  * JD-Core Version:    0.7.0.1
  */

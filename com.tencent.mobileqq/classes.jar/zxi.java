@@ -1,34 +1,31 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.ar.ARGlobalRemoteManager;
-import com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager.Stub;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.HotChatObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
 
 public class zxi
-  implements ServiceConnection
+  extends HotChatObserver
 {
-  public zxi(ARGlobalRemoteManager paramARGlobalRemoteManager) {}
+  private zxi(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  protected void a(int paramInt)
   {
-    ARGlobalRemoteManager.a(this.a, IArGlobalConfigManager.Stub.a(paramIBinder));
-    if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + ARGlobalRemoteManager.a(this.a));
+    if (GetJoinedHotChatListStep.a(this.a) != null)
+    {
+      GetJoinedHotChatListStep.a(this.a).b.removeObserver(GetJoinedHotChatListStep.a(this.a));
+      GetJoinedHotChatListStep.a(this.a, null);
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    ARGlobalRemoteManager.a(this.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + ARGlobalRemoteManager.a(this.a));
+    if (paramInt == 0)
+    {
+      this.a.a(7);
+      return;
     }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxi
  * JD-Core Version:    0.7.0.1
  */

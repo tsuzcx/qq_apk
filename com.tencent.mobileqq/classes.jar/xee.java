@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgEntryDialog;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class xee
-  implements Runnable
+class xee
+  implements FMDialogUtil.FMDialogInterface
 {
-  public xee(GoldMsgAioState paramGoldMsgAioState, GoldMsgEntryDialog paramGoldMsgEntryDialog, BaseChatPie paramBaseChatPie, boolean paramBoolean1, boolean paramBoolean2, String paramString) {}
+  xee(xed paramxed) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgEntryDialog.cancel();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgAioState.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+    this.a.a.i();
+  }
+  
+  public void b()
+  {
+    this.a.a.b.setClickable(true);
   }
 }
 

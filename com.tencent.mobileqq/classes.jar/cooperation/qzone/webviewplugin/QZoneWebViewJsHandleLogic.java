@@ -1,7 +1,5 @@
 package cooperation.qzone.webviewplugin;
 
-import ancb;
-import ancc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +11,8 @@ import android.net.Uri.Builder;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
+import ankb;
+import ankc;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -207,9 +207,9 @@ public class QZoneWebViewJsHandleLogic
   public static void a(Context paramContext, WebViewPlugin.PluginRuntime paramPluginRuntime)
   {
     paramPluginRuntime = DialogUtil.a(paramContext, 0);
-    paramPluginRuntime.setMessage(paramContext.getString(2131434607));
-    paramPluginRuntime.setPositiveButton(paramContext.getString(2131434609), new ancb(paramContext));
-    paramPluginRuntime.setNegativeButton(paramContext.getString(2131435886), new ancc(paramPluginRuntime));
+    paramPluginRuntime.setMessage(paramContext.getString(2131434623));
+    paramPluginRuntime.setPositiveButton(paramContext.getString(2131434625), new ankb(paramContext));
+    paramPluginRuntime.setNegativeButton(paramContext.getString(2131435902), new ankc(paramPluginRuntime));
     try
     {
       if (!paramPluginRuntime.isShowing()) {
@@ -556,7 +556,7 @@ public class QZoneWebViewJsHandleLogic
       localIntent.putExtra("injectrecommend", true);
       localIntent.setData(Uri.parse(paramString));
       localIntent.addFlags(268435456);
-      localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432876));
+      localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432890));
       paramContext.startActivity(localIntent);
     } while (!QLog.isColorLevel());
     QLog.d("handleurl", 2, "jump to browser: " + paramString);
@@ -743,7 +743,7 @@ public class QZoneWebViewJsHandleLogic
           if ((paramVarArgs != null) && (paramVarArgs.length() > 0) && (localJSONArray != null) && (localJSONArray.length() == paramVarArgs.length()))
           {
             if ((((JSONObject)localObject).has("toast")) && (((JSONObject)localObject).getBoolean("toast"))) {
-              QQToast.a(paramPluginRuntime.a(), 2, 2131437252, 0).a();
+              QQToast.a(paramPluginRuntime.a(), 2, 2131437272, 0).a();
             }
             localObject = new long[paramVarArgs.length()];
             long[] arrayOfLong = new long[localJSONArray.length()];

@@ -1,16 +1,32 @@
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.ClickHelper;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-class mun
+public class mun
   implements Runnable
 {
-  mun(mul parammul) {}
+  protected View a;
+  protected ViewBase a;
+  
+  public mun(ClickHelper paramClickHelper) {}
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(ViewBase paramViewBase)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = paramViewBase;
+  }
   
   public void run()
   {
-    GalleryShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).dismiss();
-    QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 1, "分享失败，请稍后重试！", 0).a();
+    if ((!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.a) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.c, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.d, true)) && (this.jdField_a_of_type_AndroidViewView != null))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.b = true;
+      this.jdField_a_of_type_AndroidViewView.performHapticFeedback(0);
+    }
   }
 }
 

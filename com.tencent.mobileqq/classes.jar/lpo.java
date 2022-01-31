@@ -1,14 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ForeBackGround;
+import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
 
-public class lpo
-  implements Runnable
+public final class lpo
+  implements lpp
 {
-  public lpo(ArticleInfoModule paramArticleInfoModule, int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2) {}
-  
-  public void run()
+  public void a()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+    ReadinjoyReportUtils.a(2, true, System.currentTimeMillis(), 0, 0, false);
+  }
+  
+  public void b()
+  {
+    ReadinjoyReportUtils.a(2, false, ReadinjoySPEventReport.ForeBackGround.d, 0, 0, false);
   }
 }
 

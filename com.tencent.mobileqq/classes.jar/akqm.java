@@ -1,33 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils.OfflineData;
-import com.tencent.smtt.sdk.QbSdk;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class akqm
-  implements Runnable
+  extends Handler
 {
-  public akqm(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler, String paramString) {}
+  public akqm(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (QbSdk.getTbsVersion(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity) >= 43810)
+    switch (paramMessage.what)
     {
-      Object localObject2 = null;
-      Object localObject1 = localObject2;
-      if (SwiftOfflineDataUtils.a(this.jdField_a_of_type_JavaLangString))
-      {
-        SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.a(this.jdField_a_of_type_JavaLangString);
-        localObject1 = localObject2;
-        if (localOfflineData != null) {
-          localObject1 = localOfflineData.b;
-        }
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        SwiftBrowserTBSHandler.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a, this.jdField_a_of_type_JavaLangString, (String)localObject1);
-      }
+    default: 
+      return;
+    case 0: 
+      QLog.d("HealthBusinessPlugin", 1, "plugin success");
+      return;
+    case 1: 
+      QLog.d("HealthBusinessPlugin", 1, "plugin fail");
+      return;
     }
+    QLog.d("HealthBusinessPlugin", 1, String.format("plugin install %d", new Object[] { Integer.valueOf(this.a.c) }));
   }
 }
 

@@ -57,32 +57,6 @@ public class NearbyDataManager
     return this.jdField_a_of_type_Int;
   }
   
-  public oidb_0x8dd.SelfInfo a()
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), 4);
-    if (localSharedPreferences != null)
-    {
-      oidb_0x8dd.SelfInfo localSelfInfo = new oidb_0x8dd.SelfInfo();
-      localSelfInfo.bytes_nick.set(ByteStringMicro.copyFromUtf8(localSharedPreferences.getString("nick", "")));
-      localSelfInfo.uint32_charm_level.set(localSharedPreferences.getInt("charm_level", 0));
-      localSelfInfo.uint32_charm.set(localSharedPreferences.getInt("charm", 0));
-      localSelfInfo.uint32_vote_num.set(localSharedPreferences.getInt("vote", 0));
-      localSelfInfo.uint32_vote_increment.set(localSharedPreferences.getInt("vote_increment", 0));
-      localSelfInfo.uint32_god_flag.set(localSharedPreferences.getInt("god_flag", 0));
-      localSelfInfo.str_third_line_info.set(localSharedPreferences.getString("third_line", ""));
-      localSelfInfo.str_third_line_icon.set(localSharedPreferences.getString("third_line_icon", ""));
-      localSelfInfo.uint32_real_video_flag.set(localSharedPreferences.getInt("real_video_auth", 0));
-      localSelfInfo.uint32_age.set(localSharedPreferences.getInt("age", 0));
-      localSelfInfo.uint32_gender.set(localSharedPreferences.getInt("gender", 0));
-      localSelfInfo.uint32_finish_task_num.set(localSharedPreferences.getInt("task_finished", 0));
-      localSelfInfo.uint32_all_task_num.set(localSharedPreferences.getInt("task_total", 0));
-      QLog.d("NearbyNiche", 2, "readSelfInfo" + localSelfInfo);
-      return localSelfInfo;
-    }
-    QLog.d("NearbyNiche", 2, "readSelfInfo = null");
-    return null;
-  }
-  
   public void a() {}
   
   public void a(NearbyAppInterface paramNearbyAppInterface, oidb_0x8dd.SelfInfo paramSelfInfo)

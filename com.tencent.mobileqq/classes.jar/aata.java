@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class aata
-  implements aath
+class aata
+  implements Runnable
 {
-  public aata(ArkAppCGI paramArkAppCGI) {}
+  aata(aasz paramaasz, int paramInt) {}
   
-  public void a(aati paramaati, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void run()
   {
-    ArkAppCGI.a(this.a, (aato)paramaati, paramBoolean, paramArrayOfByte);
+    ThreadManager.getUIHandler().post(new aatb(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aata
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragment;
 
 public class ahmz
   implements Runnable
 {
-  public ahmz(SplitEffectsCameraCaptureView paramSplitEffectsCameraCaptureView) {}
+  public ahmz(CaptureSoDownloadFragment paramCaptureSoDownloadFragment) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer = new RenderBuffer(this.a.f, this.a.g, 33984);
-    this.a.k = this.a.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
-    if ((this.a.h) && (this.a.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(this.a.f, this.a.g, this.a.getWidth(), this.a.getHeight());
-    }
+    this.a.a();
   }
 }
 

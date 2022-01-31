@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.ar.arengine.ARWorldCupBaseResDownload;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.olympic.activity.ARTipsManager;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.OcrClickListener;
 
 public class agiz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public agiz(ScanTorchActivity paramScanTorchActivity) {}
+  public agiz(ARTipsManager paramARTipsManager, agjf paramagjf) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ScanTorchActivity.x(this.a, true);
-    QLog.d("ScanTorchActivity", 2, "startDownloadTimeoutCheck timeout happened.");
-    if (ScanTorchActivity.a(this.a) != null)
-    {
-      QLog.i("ScanTorchActivity", 1, "ARLoadFailed. mIsDownloadTimeout = " + ScanTorchActivity.q(this.a));
-      ScanTorchActivity.a(this.a).a("AR组件加载失败，请退出后重试。");
-    }
-    if ((!this.a.f()) || (ScanTorchActivity.a(this.a).b())) {
-      return;
-    }
-    this.a.e(10);
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
+    this.jdField_a_of_type_Agjf.a.b();
   }
 }
 

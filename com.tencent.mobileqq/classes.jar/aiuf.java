@@ -1,29 +1,12 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
 
 public class aiuf
-  implements AdapterView.OnItemSelectedListener
 {
-  public aiuf(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public LocalMediaInfo a;
+  public boolean a;
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if (paramView == null) {
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(false, paramInt);
-    }
-    this.a.jdField_a_of_type_Int = paramInt;
-    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
-  }
+  public aiuf(DataLineDownloader paramDataLineDownloader) {}
 }
 
 

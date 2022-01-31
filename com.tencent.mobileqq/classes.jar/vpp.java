@@ -1,16 +1,55 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.widget.HorizontalListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TroopPobingItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TroopPobingItemBuilder.ConfigableWordingSetter;
+import com.tencent.mobileqq.activity.aio.item.TroopPobingItemBuilder.TroopPobingViewHolder;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.qphone.base.util.QLog;
 
-class vpp
-  implements Runnable
+public class vpp
+  implements View.OnClickListener
 {
-  vpp(vpo paramvpo) {}
+  public vpp(TroopPobingItemBuilder paramTroopPobingItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.a.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    TroopPobingItemBuilder.TroopPobingViewHolder localTroopPobingViewHolder = (TroopPobingItemBuilder.TroopPobingViewHolder)AIOUtils.a(paramView);
+    TroopPobingItemBuilder.a(localTroopPobingViewHolder.a.senderuin);
+    if (paramView == localTroopPobingViewHolder.b)
+    {
+      paramView = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment();
+      if ((paramView != null) && (paramView.a() != null))
+      {
+        paramView = (TroopChatPie)paramView.a();
+        TroopPobingItemBuilder.a(this.a).a(paramView.a);
+        TroopPobingItemBuilder.a(this.a).a(0, localTroopPobingViewHolder.a);
+      }
+      new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_welcome").a(new String[] { localTroopPobingViewHolder.a.frienduin }).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopPobingItemBuilder", 2, "点击欢迎");
+      }
+      TroopPobingItemBuilder.a(1);
+    }
+    while (paramView != localTroopPobingViewHolder.c) {
+      return;
+    }
+    paramView = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment();
+    if ((paramView != null) && (paramView.a() != null))
+    {
+      paramView = (TroopChatPie)paramView.a();
+      TroopPobingItemBuilder.a(this.a).a(paramView.a);
+      TroopPobingItemBuilder.a(this.a).a(1, localTroopPobingViewHolder.a);
+    }
+    new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("clk_play").a(new String[] { localTroopPobingViewHolder.a.frienduin }).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPobingItemBuilder", 2, "点击撩一下");
+    }
+    TroopPobingItemBuilder.a(2);
   }
 }
 

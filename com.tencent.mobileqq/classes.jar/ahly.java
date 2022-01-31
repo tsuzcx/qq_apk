@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahly
   implements Runnable
 {
-  public ahly(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
+  public ahly(CapturePtvTemplateManager paramCapturePtvTemplateManager) {}
   
   public void run()
   {
-    if ((this.a.h) && (this.a.a != null))
-    {
-      this.a.a.c(this.a.f, this.a.g, this.a.getWidth(), this.a.getHeight());
-      if (EffectsCameraCaptureView.a(this.a) != null) {
-        this.a.setFaceEffect(EffectsCameraCaptureView.a(this.a));
-      }
-      if (EffectsCameraCaptureView.a(this.a) != 0) {
-        this.a.setBeauty(EffectsCameraCaptureView.a(this.a));
-      }
+    this.a.c(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMRedDotConfig", 2, "saved to red dot config file");
     }
   }
 }

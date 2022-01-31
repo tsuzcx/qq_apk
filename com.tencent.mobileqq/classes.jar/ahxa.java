@@ -1,26 +1,35 @@
-import android.os.Handler;
-import com.tencent.mobileqq.secspy.SecSpyFileManager;
-import com.tencent.mobileqq.secspy.SecSpyFileManager.UploadProgressInfo;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.VADActivity;
+import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import com.tencent.mobileqq.search.util.ObjectTransfer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ahxa
   implements Runnable
 {
-  public ahxa(SecSpyFileManager paramSecSpyFileManager, SecSpyFileManager.UploadProgressInfo paramUploadProgressInfo, long paramLong) {}
+  public ahxa(VADActivity paramVADActivity) {}
   
   public void run()
   {
-    if (SecSpyFileManager.UploadProgressInfo.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo)) {
-      return;
+    Object localObject = new ApproximateSearchEngine(this.a.app, 2, 793, null);
+    ((ApproximateSearchEngine)localObject).a();
+    if (!VADActivity.a(this.a).get())
+    {
+      VADActivity.a(this.a, (ApproximateSearchEngine)localObject);
+      VADActivity.a(this.a).set(true);
     }
-    float f = SecSpyFileManager.UploadProgressInfo.a(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo) / SecSpyFileManager.UploadProgressInfo.b(this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$UploadProgressInfo);
-    this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager.a(this.jdField_a_of_type_Long, 3, new Object[] { Integer.valueOf((int)(f * 100.0F)) });
-    this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager.a.a().postDelayed(this, 20000L);
+    localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    VADActivity.a(this.a, new GroupSearchEngine((QQAppInterface)localObject, VADActivity.b()));
+    VADActivity.a(this.a).a();
+    VADActivity.a(this.a, ObjectTransfer.a().a(VADActivity.a(this.a)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxa
  * JD-Core Version:    0.7.0.1
  */

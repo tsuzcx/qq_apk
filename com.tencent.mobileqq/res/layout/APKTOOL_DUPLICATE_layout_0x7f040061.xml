@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.doutu.DoutuEmotionLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<com.tencent.mobileqq.doutu.DoutuEmotionLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0532" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.doutu.DoutuEmotionTransParendView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0222eb" android:layout_width="fill_parent" android:layout_height="44.0dip" />
-    <com.tencent.mobileqq.doutu.DoutuEmotionHorizonListView android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02193e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" />
+    <com.tencent.mobileqq.doutu.DoutuEmotionTransParendView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02233d" android:layout_width="fill_parent" android:layout_height="44.0dip" />
+    <com.tencent.mobileqq.doutu.DoutuEmotionHorizonListView android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0533" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021980" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" />
 </com.tencent.mobileqq.doutu.DoutuEmotionLayout>

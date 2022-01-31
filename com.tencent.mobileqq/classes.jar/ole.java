@@ -1,27 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.ComplexPart;
-import com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Group;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionPart.PartCallback;
+import android.app.Dialog;
+import com.tencent.biz.qqstory.takevideo.EditVideoSave;
 
 public class ole
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ole(ComplexPart paramComplexPart, ComplexPart.Group paramGroup) {}
+  public ole(EditVideoSave paramEditVideoSave) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a()) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.b();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart.a != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart.a.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart);
-      }
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.c();
-    }
+    EditVideoSave.a(this.a).show();
   }
 }
 

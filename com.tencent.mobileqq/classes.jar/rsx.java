@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.flashchat.FlashChatObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
 
 public class rsx
-  extends FlashChatObserver
+  extends Handler
 {
-  public rsx(BaseChatPie paramBaseChatPie) {}
+  public rsx(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.ag();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131434857);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
 public class tpm
   implements Runnable
 {
-  public tpm(RegisterNewBaseActivity paramRegisterNewBaseActivity, String paramString1, String paramString2) {}
+  public tpm(QQSettingMe paramQQSettingMe) {}
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131436320, new tpn(this));
-    localQQCustomDialog.show();
+    Object localObject = (RedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(35);
+    this.a.j = ((RedTouchManager)localObject).a(String.valueOf(100460));
+    if ((this.a.j != null) && (this.a.j.iNewFlag.has()) && (this.a.j.iNewFlag.get() == 1)) {}
+    boolean bool = QQSettingMe.b(this.a);
+    if (QQSettingMe.c(this.a) != bool)
+    {
+      localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    }
   }
 }
 

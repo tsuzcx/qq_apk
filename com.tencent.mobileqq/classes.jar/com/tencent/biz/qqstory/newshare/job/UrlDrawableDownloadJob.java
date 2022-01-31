@@ -6,7 +6,7 @@ import com.tencent.biz.qqstory.newshare.util.ShareUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.util.Map;
-import ngg;
+import nkq;
 
 public class UrlDrawableDownloadJob
   extends Job
@@ -29,7 +29,7 @@ public class UrlDrawableDownloadJob
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new ngg(this));
+    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new nkq(this));
     if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
     {
       a("UrlDrawableDownloadJob_dra", this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());

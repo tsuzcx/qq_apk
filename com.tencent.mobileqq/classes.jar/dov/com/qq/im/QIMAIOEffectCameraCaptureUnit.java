@@ -27,12 +27,13 @@ public class QIMAIOEffectCameraCaptureUnit
 {
   protected TextView a;
   private QIMAIOEffectCameraCaptureUnit.Session a;
-  private int c = 10000;
+  private int c;
   private String d;
   
   public QIMAIOEffectCameraCaptureUnit(IQIMCameraContainer paramIQIMCameraContainer, ICameraEntrance paramICameraEntrance)
   {
     super(paramIQIMCameraContainer, paramICameraEntrance);
+    this.jdField_c_of_type_Int = 10000;
     this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams = new CaptureEntranceParams(10000, 100, 2);
     this.jdField_a_of_type_Int = 1;
   }
@@ -46,13 +47,13 @@ public class QIMAIOEffectCameraCaptureUnit
   
   protected int a()
   {
-    return 2130970090;
+    return 2130970102;
   }
   
   public View a()
   {
     View localView = super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363993));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364018));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     return localView;
   }
@@ -62,12 +63,6 @@ public class QIMAIOEffectCameraCaptureUnit
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.jdField_a_of_type_AndroidWidgetTextView);
     return localArrayList;
-  }
-  
-  public void a()
-  {
-    super.a();
-    CaptureFreqMonitor.jdField_a_of_type_DovComQqImCaptureUtilCaptureFreqMonitorItem.a(2, System.currentTimeMillis());
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -87,7 +82,7 @@ public class QIMAIOEffectCameraCaptureUnit
   {
     super.a(paramBundle);
     this.jdField_a_of_type_DovComQqImQIMAIOEffectCameraCaptureUnit$Session = ((QIMAIOEffectCameraCaptureUnit.Session)this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a().getIntent().getSerializableExtra("ARG_SESSION_INFO"));
-    this.c = this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a().getIntent().getIntExtra("edit_video_type", 10000);
+    this.jdField_c_of_type_Int = this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a().getIntent().getIntExtra("edit_video_type", 10000);
     this.d = this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a().getIntent().getStringExtra("ARG_AIO_CLASS");
     paramBundle = this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a().getIntent();
     long l = paramBundle.getLongExtra("ACTIVITY_START_TIME", -1L);
@@ -122,17 +117,23 @@ public class QIMAIOEffectCameraCaptureUnit
     JumpUtil.a(this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a(), paramVideoCaptureResult, paramLocalMediaInfo, this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
   }
   
+  public void d()
+  {
+    super.d();
+    CaptureFreqMonitor.jdField_a_of_type_DovComQqImCaptureUtilCaptureFreqMonitorItem.a(2, System.currentTimeMillis());
+  }
+  
   protected void e()
   {
     super.e();
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.jdField_c_of_type_Boolean) {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }
   
-  protected void f()
+  protected void g()
   {
-    super.f();
+    super.g();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }

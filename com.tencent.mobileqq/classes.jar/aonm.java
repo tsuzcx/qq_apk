@@ -1,44 +1,47 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleStickerTracker2;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
+import com.tencent.biz.qqstory.network.request.GetTagListRequest;
+import com.tencent.biz.qqstory.network.response.GetTagListResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.tag.TagItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import dov.com.tencent.biz.qqstory.takevideo.tag.IEditVideoTagView;
+import java.util.List;
 
 public class aonm
-  extends Handler
+  extends CmdTaskManger.UIThreadCallback
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public aonm(EditVideoTagPresenter paramEditVideoTagPresenter) {}
   
-  public aonm(SimpleStickerTracker2 paramSimpleStickerTracker21, Looper paramLooper, SimpleStickerTracker2 paramSimpleStickerTracker22)
+  public void a(@NonNull GetTagListRequest paramGetTagListRequest, @Nullable GetTagListResponse paramGetTagListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSimpleStickerTracker22);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    paramMessage = (SimpleStickerTracker2)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramMessage == null)
+    SLog.b("EditVideoTagPresenter", "refresh onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramGetTagListResponse != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("SimpleStickerTracker2", 2, "ProcesserHandler.handleMessage: Processor is null");
+      SLog.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramGetTagListResponse.toString());
+      paramGetTagListRequest = paramGetTagListResponse.jdField_a_of_type_JavaUtilList;
+      if (paramGetTagListRequest.contains(EditVideoTagPresenter.a(this.a)))
+      {
+        int i = paramGetTagListRequest.indexOf(EditVideoTagPresenter.a(this.a));
+        EditVideoTagPresenter.a(this.a, (TagItem)paramGetTagListRequest.get(i));
+        EditVideoTagPresenter.a(this.a).clear();
+        EditVideoTagPresenter.a(this.a).addAll(paramGetTagListRequest);
+        EditVideoTagPresenter.a(this.a, paramGetTagListResponse.jdField_a_of_type_JavaLangString);
+        EditVideoTagPresenter.a(this.a, paramGetTagListResponse.b);
+        ThreadManager.executeOnSubThread(new aonn(this));
       }
-      return;
     }
-    switch (i)
+    for (;;)
     {
-    default: 
-      throw new RuntimeException("Unhandled msg what=" + i);
-    case 1: 
-      paramMessage.e();
+      EditVideoTagPresenter.a(this.a).a(paramErrorMessage.errorCode, EditVideoTagPresenter.a(this.a), this.a.a());
       return;
-    case 2: 
-      paramMessage.g();
-      return;
+      EditVideoTagPresenter.a(this.a, null);
+      break;
+      SLog.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
-    paramMessage.f();
   }
 }
 

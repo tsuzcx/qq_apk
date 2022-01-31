@@ -1,73 +1,57 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.SessionMgr;
-import com.tencent.av.VideoController;
-import com.tencent.av.VideoController.GAudioFriends;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.utils.NearbyPeopleProfileHelper;
-import com.tencent.av.utils.NearbyPeopleProfileHelper.INearbyPeopleProfileCallBack;
-import com.tencent.av.utils.NearbyPeopleProfileHelper.NearbyProfileData;
+import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.av.service.IAVRedPacketCallback.Stub;
+import com.tencent.av.ui.redbag.AVRedBagConfig;
+import com.tencent.av.ui.redbag.AVRedBagConfig.Info;
+import com.tencent.av.ui.redbag.RedBagUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class kfz
-  extends BroadcastReceiver
+  extends IAVRedPacketCallback.Stub
 {
-  public kfz(NearbyPeopleProfileHelper paramNearbyPeopleProfileHelper) {}
+  public kfz(AVRedBagConfig paramAVRedBagConfig) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig)
   {
-    NearbyPeopleProfileHelper.NearbyProfileData localNearbyProfileData;
-    if (paramIntent.getAction().equals("tencent.video.q2v.getNearByProfile"))
-    {
-      paramContext = paramIntent.getStringExtra("uin");
-      localNearbyProfileData = new NearbyPeopleProfileHelper.NearbyProfileData(this.a);
-      localNearbyProfileData.jdField_a_of_type_JavaLangString = paramContext;
-      localNearbyProfileData.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("nickname");
-      localNearbyProfileData.jdField_a_of_type_Int = paramIntent.getIntExtra("gender", -1);
-      localNearbyProfileData.jdField_b_of_type_Int = paramIntent.getIntExtra("age", 0);
-      localNearbyProfileData.jdField_a_of_type_Byte = paramIntent.getByteExtra("constellation", (byte)-1);
-      paramIntent = SessionMgr.a().a(this.a.jdField_a_of_type_JavaLangString);
-      if (paramIntent != null) {
-        break label98;
-      }
+    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info = new AVRedBagConfig.Info();
+    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = paramAVRedPacketConfig;
+    if ((paramBoolean) && (paramAVRedPacketConfig != null) && (paramAVRedPacketConfig.mainSwitch)) {
+      this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info.jdField_a_of_type_Boolean = true;
     }
-    label98:
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
-      {
-        VideoController.GAudioFriends localGAudioFriends = this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramContext);
-        if (localGAudioFriends != null)
-        {
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramContext, localNearbyProfileData.jdField_b_of_type_JavaLangString, false);
-          localGAudioFriends.jdField_b_of_type_Int = localNearbyProfileData.jdField_a_of_type_Int;
-        }
-        if (paramContext.equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount()))
-        {
-          paramIntent.a.d = localNearbyProfileData.jdField_a_of_type_Int;
-          paramIntent.a.f = localNearbyProfileData.jdField_b_of_type_JavaLangString;
-        }
-        if (paramContext.equals(paramIntent.c))
-        {
-          paramIntent.a.c = localNearbyProfileData.jdField_a_of_type_Int;
-          paramIntent.a.jdField_b_of_type_JavaLangString = localNearbyProfileData.jdField_b_of_type_JavaLangString;
-        }
-      }
-    } while ((this.a.jdField_a_of_type_ComTencentAvUtilsNearbyPeopleProfileHelper$INearbyPeopleProfileCallBack == null) || (!this.a.jdField_a_of_type_JavaUtilList.contains(paramContext)));
     if (QLog.isColorLevel()) {
-      QLog.d("NearbyPeopleProfileHelper", 2, "onGetNearbyPeopleProfile uin :" + paramContext + ", nickname:" + localNearbyProfileData.jdField_b_of_type_JavaLangString + ", gender:" + localNearbyProfileData.jdField_a_of_type_Int);
+      QLog.w(this.a.i, 1, "onGetAVRedPacketConfig红包配置获取结果, isSuccess[" + paramBoolean + "], config[" + paramAVRedPacketConfig + "], mMainSwitch[" + this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info.jdField_a_of_type_Boolean + "], mNeedDownloadRes[" + this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info.jdField_b_of_type_Boolean + "], Thread[" + Thread.currentThread().getId() + "]");
     }
-    this.a.jdField_a_of_type_ComTencentAvUtilsNearbyPeopleProfileHelper$INearbyPeopleProfileCallBack.a(paramContext, localNearbyProfileData);
-    this.a.jdField_a_of_type_JavaUtilList.remove(paramContext);
+    this.a.a(this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info);
+    if ((this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info.jdField_b_of_type_Boolean) && (paramAVRedPacketConfig != null))
+    {
+      if (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.jdField_a_of_type_ComTencentAvServiceIAVRedPacketCallback))
+      {
+        QLog.w(this.a.i, 1, "startDownloadAVRedPacketRes, 调用失败");
+        return;
+      }
+      this.a.b(this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info);
+      return;
+    }
+    this.a.b(this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info);
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.i, 1, "红包资源下载结果, isSuccess[" + paramBoolean + "], resPath[" + paramString1 + "], bgMusicPath[" + paramString2 + "]");
+    }
+    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info.jdField_a_of_type_JavaLangString = paramString1;
+    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info.jdField_b_of_type_JavaLangString = paramString2;
+    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info.c = paramBoolean;
+    if (paramBoolean) {
+      RedBagUtil.a(paramString1);
+    }
+    this.a.b(this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagConfig$Info);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kfz
  * JD-Core Version:    0.7.0.1
  */

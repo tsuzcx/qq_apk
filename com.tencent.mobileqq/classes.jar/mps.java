@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher.ItemShowCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
 
-public final class mps
-  implements Parcelable.Creator
+public class mps
+  implements ItemShowDispatcher.ItemShowCallback
 {
-  public FastWebVideoInfo.ChannelInfo a(Parcel paramParcel)
-  {
-    return new FastWebVideoInfo.ChannelInfo(paramParcel);
-  }
+  public mps(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public FastWebVideoInfo.ChannelInfo[] a(int paramInt)
+  public void a()
   {
-    return new FastWebVideoInfo.ChannelInfo[paramInt];
+    ReportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.app, (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
   }
 }
 

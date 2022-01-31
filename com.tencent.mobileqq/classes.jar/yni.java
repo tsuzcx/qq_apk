@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
+import java.lang.ref.WeakReference;
 
 public class yni
-  implements Runnable
+  implements View.OnClickListener
 {
-  public yni(GLTextureView paramGLTextureView) {}
+  private WeakReference a;
   
-  public void run()
+  public yni(BuddyListAdapter paramBuddyListAdapter)
   {
-    if ((GLTextureView.access$1600(this.a)) && (GLTextureView.access$1200(this.a)) && (GLTextureView.access$1700(this.a) != 1.0F)) {
-      GLTextureView.access$1800(this.a, 1.0F);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("GLTextureView", 2, "TextureView mCheckSurfaceChangeTask, mSurfaceHadDraw:" + GLTextureView.access$1200(this.a));
+    this.a = new WeakReference(paramBuddyListAdapter);
+  }
+  
+  public void onClick(View paramView)
+  {
+    BuddyListAdapter localBuddyListAdapter = (BuddyListAdapter)this.a.get();
+    if (localBuddyListAdapter != null) {
+      localBuddyListAdapter.onClick(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yni
  * JD-Core Version:    0.7.0.1
  */

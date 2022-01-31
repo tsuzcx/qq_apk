@@ -1,43 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class aocl
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aocl(VideoFrameLoader paramVideoFrameLoader) {}
+  public aocl(EditVideoGuide paramEditVideoGuide) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (VideoFrameLoader.a(this.a) != VideoFrameLoader.a(this.a).size())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + VideoFrameLoader.a(this.a) + "-" + VideoFrameLoader.a(this.a).size());
-      }
-      if ((!VideoFrameLoader.a(this.a)) && (VideoFrameLoader.a(this.a).size() == 0))
-      {
-        VideoFrameLoader.a(this.a, true);
-        this.a.b();
-        VideoFrameLoader.a(this.a, new aocg(VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), VideoFrameLoader.c(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.d(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), this.a));
-        ThreadManager.post(VideoFrameLoader.a(this.a), 10, null, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
-        }
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (VideoFrameLoader.a(this.a) != null) {}
-      for (VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.a).get(); localVideoFrameLoaderListener != null; localVideoFrameLoaderListener = null)
-      {
-        localVideoFrameLoaderListener.c();
-        return;
-      }
-    }
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.b = 3;
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(14);
   }
 }
 

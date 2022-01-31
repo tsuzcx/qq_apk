@@ -1,27 +1,37 @@
-import android.view.View;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
 public class annv
-  implements Runnable
+  extends Handler
 {
-  public annv(DynamicTextItem paramDynamicTextItem, View paramView) {}
+  public annv(TroopHWJsPlugin paramTroopHWJsPlugin) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    DynamicTextItem.Pair localPair = DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
-    if (!((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue()) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramMessage.what)
     {
-      localPair.b = Boolean.valueOf(bool);
-      this.jdField_a_of_type_AndroidViewView.invalidate();
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131430625, 0).a();
+      return;
+    case 1: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131430624, 0).a();
+      return;
+    case 3: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131430626, 0).a();
       return;
     }
+    QQToast.a(BaseApplicationImpl.getContext(), 2131430627, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annv
  * JD-Core Version:    0.7.0.1
  */

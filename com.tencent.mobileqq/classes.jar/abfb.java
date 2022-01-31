@@ -1,26 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.armap.config.ARMapConfig;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.ark.ArkTipsManager;
 
 public class abfb
-  implements Runnable
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public abfb(ARMapConfigManager paramARMapConfigManager) {}
+  public abfb(ArkTipsManager paramArkTipsManager, Context paramContext) {}
   
-  public void run()
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapConfigManager", 2, "onGetARMapConfig ,excute runnable");
-    }
-    if (ARMapConfigManager.a(this.a) != null) {}
-    synchronized (ARMapConfigManager.a(this.a))
-    {
-      if (ARMapConfigManager.a(this.a) != null) {
-        ARMapConfigManager.a(this.a).saveToFile(ARMapConfigManager.a(this.a).getCurrentAccountUin());
-      }
-      ARMapConfigManager.a(this.a);
-      return;
+    if (paramBitmap != null) {
+      ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
     }
   }
 }

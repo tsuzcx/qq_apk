@@ -1,16 +1,24 @@
-import android.app.ProgressDialog;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
+import com.tencent.mobileqq.profile.diy.VipDiyCardConstants;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-class adxo
-  implements Runnable
+public final class adxo
+  implements HiBoomFont.HiBoomFontDownloader
 {
-  adxo(adxn paramadxn, File paramFile) {}
-  
-  public void run()
+  public String a()
   {
-    this.jdField_a_of_type_Adxn.a.b.dismiss();
-    this.jdField_a_of_type_Adxn.a.a(this.jdField_a_of_type_JavaIoFile);
+    return VipDiyCardConstants.a;
+  }
+  
+  public void a(int paramInt)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((VasQuickUpdateManager)localAppRuntime.getManager(183)).a(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
+    }
   }
 }
 

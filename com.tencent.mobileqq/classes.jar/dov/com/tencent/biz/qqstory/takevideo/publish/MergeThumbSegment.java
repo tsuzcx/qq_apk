@@ -65,7 +65,7 @@ public class MergeThumbSegment
         SLog.e("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image failed : " + paramJobContext);
       }
       if (i == 0) {
-        break label707;
+        break label712;
       }
       FileUtils.a(new File(paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath), new File(QQStoryTakeVideoCloseAnimationActivity.jdField_a_of_type_JavaLangString));
       super.notifyResult(paramGenerateContext);
@@ -108,15 +108,15 @@ public class MergeThumbSegment
           try
           {
             localObject1 = BitmapUtils.a(str2);
-            if ((!(paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) || (!paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.getBooleanExtra("landscape_video", false))) {
-              break label725;
+            if ((localObject1 == null) || (!(paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource)) || (!paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.getBooleanExtra("landscape_video", false))) {
+              break label730;
             }
             paramJobContext = GenerateDoodleImageSegment.a((Bitmap)localObject1, -90);
             if (paramJobContext == null) {
-              break label725;
+              break label730;
             }
             if (paramJobContext == null) {
-              break label731;
+              break label736;
             }
             localObject1 = BitmapUtils.a((Bitmap)localObject3, paramJobContext);
             paramJobContext.recycle();
@@ -132,11 +132,11 @@ public class MergeThumbSegment
             {
               localObject3 = BitmapFactory.decodeFile(str1);
               if (localObject3 == null) {
-                break label722;
+                break label727;
               }
               localObject1 = BitmapUtils.a(paramJobContext, (Bitmap)localObject3);
               if (localObject1 == null) {
-                break label722;
+                break label727;
               }
               paramJobContext.recycle();
               ((Bitmap)localObject3).recycle();
@@ -153,11 +153,11 @@ public class MergeThumbSegment
               FileUtils.a(QQStoryConstant.c);
               boolean bool = BitmapUtils.a(localJobContext3, (String)localObject2);
               if (localJobContext3 == null) {
-                break label580;
+                break label585;
               }
               localJobContext3.recycle();
               if (!bool) {
-                break label624;
+                break label629;
               }
               paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = ((String)localObject2);
               SLog.b("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image success : " + (String)localObject2);
@@ -188,8 +188,8 @@ public class MergeThumbSegment
         }
       }
       JobContext localJobContext3;
-      label580:
-      label624:
+      label585:
+      label629:
       SLog.a("Q.qqstory.publish.edit.MergeThumbSegment", "use thumb image as merged image, copy to target destination = %s", localObject2);
       if (FileUtils.a(new File((String)localObject3), new File((String)localObject2)))
       {
@@ -199,15 +199,15 @@ public class MergeThumbSegment
       }
       SLog.d("Q.qqstory.publish.edit.MergeThumbSegment", "copy failed, original = %s, target = %s", new Object[] { localObject3, localObject2 });
       break;
-      label707:
+      label712:
       super.notifyError(new ErrorMessage(-1, "图片合成失败"));
       return;
-      label722:
+      label727:
       continue;
-      label725:
+      label730:
       paramJobContext = localJobContext3;
       continue;
-      label731:
+      label736:
       paramJobContext = (JobContext)localObject3;
     }
   }

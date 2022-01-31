@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.app.RedTouchObserver;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 
-public class sys
-  extends RedTouchObserver
+class sys
+  implements Runnable
 {
-  public sys(LebaListMgrActivity paramLebaListMgrActivity) {}
+  sys(syp paramsyp) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
-    }
-    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
-      return;
-    }
-    paramObject = LebaGridShowManager.a().c(this.a.app);
-    this.a.runOnUiThread(new syt(this, paramObject));
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

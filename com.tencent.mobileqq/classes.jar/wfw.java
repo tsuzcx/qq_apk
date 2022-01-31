@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.activity.bless.CountDownView;
-import com.tencent.mobileqq.activity.bless.CountDownView.CountDownFinishedListener;
+import android.text.TextUtils;
+import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousStatusListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import mqq.os.MqqHandler;
 
 public class wfw
-  implements Runnable
+  implements AnonymousChatHelper.AnonymousStatusListener
 {
-  public wfw(CountDownView paramCountDownView) {}
+  public wfw(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2)
   {
-    if ((CountDownView.a(this.a)) && (CountDownView.a(this.a) >= CountDownView.a().length))
-    {
-      this.a.a();
-      if (CountDownView.a(this.a) != null) {
-        CountDownView.a(this.a).a();
-      }
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.a.a))) {
+      TroopChatPie.m(this.a).post(new wfx(this, paramString2));
     }
-    while (CountDownView.a(this.a) >= CountDownView.a().length) {
-      return;
-    }
-    CountDownView.a(this.a);
-    this.a.setImageResource(CountDownView.a()[CountDownView.a(this.a)]);
-    this.a.postDelayed(CountDownView.a(this.a), 1000L);
-    CountDownView.b(this.a);
   }
 }
 

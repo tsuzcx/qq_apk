@@ -1,19 +1,19 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.utils.AudioUtil;
 
-public class akje
+class akje
   implements Runnable
 {
-  public akje(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  akje(akjd paramakjd) {}
   
   public void run()
   {
-    this.a.a.setVisibility(8);
+    this.a.a.onCompletion(AudioUtil.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akje
  * JD-Core Version:    0.7.0.1
  */

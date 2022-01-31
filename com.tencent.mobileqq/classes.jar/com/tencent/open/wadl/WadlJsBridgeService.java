@@ -1,6 +1,6 @@
 package com.tencent.open.wadl;
 
-import alju;
+import alrm;
 import android.content.Intent;
 import android.os.HandlerThread;
 import android.os.IBinder;
@@ -17,7 +17,7 @@ public class WadlJsBridgeService
   extends AppService
 {
   private static String jdField_a_of_type_JavaLangString = "WadlJsBridgeService";
-  private alju jdField_a_of_type_Alju;
+  private alrm jdField_a_of_type_Alrm;
   private Looper jdField_a_of_type_AndroidOsLooper;
   private WadlProxyServiceWrap jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap;
   
@@ -73,7 +73,7 @@ public class WadlJsBridgeService
     Object localObject = new HandlerThread("WadlJsBridgeService.Thread", 10);
     ((HandlerThread)localObject).start();
     this.jdField_a_of_type_AndroidOsLooper = ((HandlerThread)localObject).getLooper();
-    this.jdField_a_of_type_Alju = new alju(this, this.jdField_a_of_type_AndroidOsLooper);
+    this.jdField_a_of_type_Alrm = new alrm(this, this.jdField_a_of_type_AndroidOsLooper);
     if (this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap == null)
     {
       localObject = BaseApplicationImpl.getApplication().getRuntime();
@@ -96,10 +96,10 @@ public class WadlJsBridgeService
       String str = paramIntent.getStringExtra("ACTIONNAME");
       paramIntent = paramIntent.getStringExtra("appid");
       WLog.b(jdField_a_of_type_JavaLangString, "##@ACTIONNAME = " + str + "," + paramIntent);
-      Message localMessage = this.jdField_a_of_type_Alju.obtainMessage();
+      Message localMessage = this.jdField_a_of_type_Alrm.obtainMessage();
       localMessage.what = a(str);
       localMessage.obj = paramIntent;
-      this.jdField_a_of_type_Alju.sendMessage(localMessage);
+      this.jdField_a_of_type_Alrm.sendMessage(localMessage);
     }
     return 2;
   }

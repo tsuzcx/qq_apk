@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-public final class yab
-  implements Parcelable.Creator
+public class yab
+  implements ModuleDownloadListener
 {
-  public ResultRecord a(Parcel paramParcel)
+  public yab(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
+  
+  public void onDownloadCanceled(String paramString)
   {
-    return new ResultRecord(paramParcel, null);
+    QZLog.i("QzDynamicVideoPreviewActivity", 2, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public ResultRecord[] a(int paramInt)
+  public void onDownloadFailed(String paramString)
   {
-    return new ResultRecord[paramInt];
+    QZLog.i("QzDynamicVideoPreviewActivity", 2, new Object[] { "onDownloadFailed ", paramString });
+    this.a.runOnUiThread(new yad(this));
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("cyber_clink.jar")) {
+      return;
+    }
+    this.a.runOnUiThread(new yac(this));
   }
 }
 

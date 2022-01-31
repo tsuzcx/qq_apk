@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.mobileqq.ptt.LSRecordTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-public class agtd
+public final class agtd
   implements Runnable
 {
-  public agtd(LSRecordPanel paramLSRecordPanel, int paramInt, double paramDouble) {}
+  public agtd(String paramString, QQAppInterface paramQQAppInterface, ProfileCardInfo paramProfileCardInfo, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    int i = AudioPanel.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel.b(i);
-    LSRecordPanel.a(this.jdField_a_of_type_ComTencentMobileqqPttLSRecordPanel).setText(AudioPanel.a(this.jdField_a_of_type_Double));
+    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.vPersonalityLabelV2 = this.jdField_a_of_type_ArrayOfByte;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agtd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config.struct;
 
-import abtf;
+import acas;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.NearbySPUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -34,7 +34,7 @@ public class NearbyBannerManager
         localObject = Arrays.asList(((File)localObject).listFiles());
         if (((List)localObject).size() > 10)
         {
-          Collections.sort((List)localObject, new abtf(this));
+          Collections.sort((List)localObject, new acas(this));
           i = 10;
         }
       }

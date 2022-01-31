@@ -1,55 +1,56 @@
-import com.tencent.widget.TCWDatePicker;
-import com.tencent.widget.TCWNumberPicker;
-import com.tencent.widget.TCWNumberPicker.OnChangedListener;
-import java.util.Calendar;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import com.tencent.qqconnect.wtlogin.Login;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class amds
-  implements TCWNumberPicker.OnChangedListener
+  implements View.OnClickListener
 {
-  public amds(TCWDatePicker paramTCWDatePicker) {}
+  public amds(Login paramLogin) {}
   
-  public void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    TCWDatePicker.b(this.a).setTimeInMillis(TCWDatePicker.a(this.a).getTimeInMillis());
-    int i;
-    if (paramTCWNumberPicker == TCWDatePicker.a(this.a))
-    {
-      i = TCWDatePicker.b(this.a).getActualMaximum(5);
-      if ((paramInt1 == i) && (paramInt2 == 1)) {
-        TCWDatePicker.b(this.a).add(5, 1);
-      }
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetButton) {
+      this.a.b();
     }
-    for (;;)
+    do
     {
-      TCWDatePicker.a(this.a, TCWDatePicker.b(this.a).get(1), TCWDatePicker.b(this.a).get(2), TCWDatePicker.b(this.a).get(5));
-      TCWDatePicker.b(this.a);
-      TCWDatePicker.c(this.a);
       return;
-      if ((paramInt1 == 1) && (paramInt2 == i))
+      if (paramView == this.a.c)
       {
-        TCWDatePicker.b(this.a).add(5, -1);
+        paramView = (InputMethodManager)this.a.getSystemService("input_method");
+        if (paramView != null) {
+          paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+        }
+        paramView = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+        paramView.what = 0;
+        this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessageDelayed(paramView, 100L);
+        return;
       }
-      else
+      if (paramView == this.a.jdField_a_of_type_AndroidViewView)
       {
-        TCWDatePicker.b(this.a).add(5, paramInt2 - paramInt1);
-        continue;
-        if (paramTCWNumberPicker == TCWDatePicker.b(this.a))
-        {
-          TCWDatePicker.a(this.a);
-          if ((paramInt1 == 11) && (paramInt2 == 0)) {
-            TCWDatePicker.b(this.a).add(2, 1);
-          } else if ((paramInt1 == 0) && (paramInt2 == 11)) {
-            TCWDatePicker.b(this.a).add(2, -1);
-          } else {
-            TCWDatePicker.b(this.a).add(2, paramInt2 - paramInt1);
-          }
-        }
-        else if (paramTCWNumberPicker == TCWDatePicker.c(this.a))
-        {
-          TCWDatePicker.b(this.a).set(1, paramInt2);
-        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+        return;
       }
-    }
+      if (paramView == this.a.jdField_b_of_type_AndroidViewView)
+      {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
+        return;
+      }
+      if (paramView == this.a.jdField_a_of_type_AndroidWidgetTextView)
+      {
+        paramView = new Intent(this.a, LoginPhoneNumActivity2.class);
+        paramView.putExtra("key_req_src", this.a.jdField_a_of_type_Int);
+        this.a.startActivityForResult(paramView, 10000);
+        return;
+      }
+    } while (paramView != this.a.jdField_b_of_type_AndroidWidgetTextView);
+    this.a.e();
   }
 }
 

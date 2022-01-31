@@ -1,61 +1,97 @@
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.persistence.Entity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
 import java.util.Comparator;
 
 public class zpu
   implements Comparator
 {
-  private boolean a;
+  public zpu(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public zpu(boolean paramBoolean)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    this.a = paramBoolean;
-  }
-  
-  public int a(Entity paramEntity1, Entity paramEntity2)
-  {
-    long l5 = 2L;
-    paramEntity1 = (RecentUser)paramEntity1;
-    paramEntity2 = (RecentUser)paramEntity2;
-    long l1 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
-    long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
-    if (l1 > l2) {
-      l1 = 3L;
+    int n = 0;
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
     }
-    long l3;
-    long l4;
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
+    }
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    int k;
+    label99:
+    label112:
+    int m;
+    if (j == 0)
+    {
+      if (TextUtils.isEmpty(paramPhoneContact1.uin)) {
+        break label176;
+      }
+      i = 1;
+      if ((i == 0) || (paramPhoneContact1.uin.equals("0"))) {
+        break label181;
+      }
+      k = 1;
+      if (TextUtils.isEmpty(paramPhoneContact2.uin)) {
+        break label187;
+      }
+      j = 1;
+      if ((j == 0) || (paramPhoneContact2.uin.equals("0"))) {
+        break label193;
+      }
+      m = 1;
+      label132:
+      if (k == 0) {
+        break label199;
+      }
+      i = 0;
+    }
     for (;;)
     {
-      l3 = l1;
-      l4 = l5;
-      if (this.a)
+      label139:
+      if (m != 0) {
+        j = n;
+      }
+      for (;;)
       {
-        l2 = l1;
-        if (paramEntity1.showUpTime > 0L) {
-          l2 = l1 | 0x1000;
+        i -= j;
+        j = i;
+        if (i == 0) {
+          j = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
         }
-        l3 = l2;
-        l4 = l5;
-        if (paramEntity2.showUpTime > 0L)
-        {
-          l4 = 0x2 | 0x1000;
-          l3 = l2;
-        }
-      }
-      if (l3 >= l4) {
+        return j;
+        label176:
+        i = 0;
         break;
+        label181:
+        k = 0;
+        break label99;
+        label187:
+        j = 0;
+        break label112;
+        label193:
+        m = 0;
+        break label132;
+        label199:
+        if (i == 0) {
+          break label225;
+        }
+        i = 1;
+        break label139;
+        if (j != 0) {
+          j = 1;
+        } else {
+          j = 2;
+        }
       }
-      return 1;
-      if (l1 < l2) {
-        l1 = 1L;
-      } else {
-        l1 = 2L;
-      }
+      label225:
+      i = 2;
     }
-    if (l3 == l4) {
-      return 0;
-    }
-    return -1;
   }
 }
 

@@ -12,9 +12,9 @@ import android.graphics.RectF;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.util.Property;
-import aodq;
-import aodr;
-import aods;
+import aomi;
+import aomj;
+import aomk;
 import com.tencent.qphone.base.util.QLog;
 
 public class ContainerDrawable
@@ -25,7 +25,7 @@ public class ContainerDrawable
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  Property jdField_a_of_type_AndroidUtilProperty = new aodq(this, Integer.class, "backAlpha");
+  Property jdField_a_of_type_AndroidUtilProperty = new aomi(this, Integer.class, "backAlpha");
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
   private boolean jdField_b_of_type_Boolean;
@@ -55,8 +55,8 @@ public class ContainerDrawable
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aodr(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aods(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aomj(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aomk(this));
         this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       }
       return;

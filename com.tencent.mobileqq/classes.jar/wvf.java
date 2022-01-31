@@ -1,33 +1,27 @@
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class wvf
-  extends ContactBindObserver
+  implements NewFriendManager.INewFriendListener
 {
-  public wvf(PhoneMatchActivity paramPhoneMatchActivity) {}
+  public wvf(MainAssistObserver paramMainAssistObserver) {}
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void R_() {}
+  
+  public void a(int paramInt)
   {
-    this.a.b();
-    if (paramBoolean)
-    {
-      this.a.finish();
-      return;
-    }
-    this.a.b("更新失败，请稍后重试。");
+    this.a.f();
   }
   
-  protected void e(boolean paramBoolean, int paramInt)
+  public void b()
   {
-    this.a.b();
-    if (paramBoolean)
-    {
-      ContactBindedActivity.a(this.a.app, 222);
-      this.a.finish();
+    if ((this.a.a == null) || (this.a.a.app == null)) {
       return;
     }
-    this.a.b("更新失败，请稍后重试。");
+    ((NewFriendManager)this.a.a.app.getManager(33)).b();
   }
 }
 

@@ -1,17 +1,29 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.OnPlayStateListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
 
 public class mjt
-  extends View.AccessibilityDelegate
+  implements VideoPlayManager.OnPlayStateListener
 {
-  public mjt(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  public mjt(VideoVolumeControl paramVideoVolumeControl) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam, VideoPlayerWrapper paramVideoPlayerWrapper, int paramInt1, int paramInt2, Object paramObject)
   {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
+    if (paramInt2 == 0) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramInt2 == 1) || (paramInt2 == 2));
+      if (paramInt2 == 3)
+      {
+        this.a.a(true, "PLAY_STATE_PLAYING");
+        this.a.a(this.a.b(), "video playing", 1);
+        return;
+      }
+    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
   }
 }
 

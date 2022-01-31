@@ -1,37 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
-class akqu
+public class akqu
   implements Runnable
 {
-  akqu(akqt paramakqt, int paramInt) {}
+  public akqu(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
   public void run()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Int == 202)
+    Iterator localIterator = this.a.d.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      localObject = new String[2];
-      localObject[0] = "https://qc.vip.qq.com/";
-      localObject[1] = "http://m.gamecenter.qq.com";
-      int j = localObject.length;
-      while (i < j)
-      {
-        String str = localObject[i];
-        SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(str);
-        if (localSwiftBrowserCookieMonster != null) {
-          localSwiftBrowserCookieMonster.a(str, null, null, null);
-        }
-        i += 1;
-      }
+      Object localObject = (String)localIterator.next();
+      localObject = (ImageView)((FrameLayout)this.a.e.get(localObject)).findViewById(2131362358);
+      ((ImageView)localObject).setImageResource(2130845367);
+      ((ImageView)localObject).setVisibility(0);
     }
-    Object localObject = SwiftBrowserCookieMonster.a("http://zb.vip.qq.com/");
-    if (localObject != null) {
-      ((SwiftBrowserCookieMonster)localObject).a("http://zb.vip.qq.com/", null, null, null);
-    }
-    this.jdField_a_of_type_Akqt.jdField_a_of_type_AndroidOsBundle.putBoolean("_should_set_cookie_", true);
-    this.jdField_a_of_type_Akqt.jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator.a(this.jdField_a_of_type_Akqt.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

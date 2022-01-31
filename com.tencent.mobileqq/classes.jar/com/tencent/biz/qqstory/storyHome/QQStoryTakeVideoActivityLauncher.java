@@ -86,7 +86,7 @@ public class QQStoryTakeVideoActivityLauncher
         }
         boolean bool2 = PtvFilterSoLoad.a(this.a, BaseApplicationImpl.getContext());
         localObject1 = PlusPanelUtils.a(QQStoryConstant.c);
-        localObject2 = new File(AppConstants.aV);
+        localObject2 = new File(AppConstants.aW);
         if (!((File)localObject2).exists()) {
           ((File)localObject2).mkdirs();
         }

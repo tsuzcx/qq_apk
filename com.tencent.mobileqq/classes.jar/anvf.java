@@ -1,21 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import dov.com.qq.im.capture.paster.CaptureComboNormalPaster;
+import dov.com.qq.im.capture.util.DoodleLayoutConnector;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class anvf
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public anvf(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide) {}
+  public anvf(CaptureComboNormalPaster paramCaptureComboNormalPaster, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "showSyncStoryGuide ->onDismiss-------");
+    DoodleLayout localDoodleLayout = DoodleLayoutConnector.a().a(this.jdField_a_of_type_Int);
+    if (localDoodleLayout != null) {
+      CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster.a, CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), ScreenUtil.jdField_a_of_type_Int, ScreenUtil.b, CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), CaptureComboNormalPaster.b(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), CaptureComboNormalPaster.c(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), localDoodleLayout.a());
     }
-    SharedPreUtils.b(this.a.a.a());
   }
 }
 

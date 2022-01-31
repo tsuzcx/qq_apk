@@ -1,25 +1,48 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Date;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class tnw
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public tnw(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public tnw(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject = this.a.getSharedPreferences("sp_qs_settings", 0);
-    long l1 = ((SharedPreferences)localObject).getLong("qsec_status_update_last_time" + this.a.app.getCurrentAccountUin(), 0L);
-    long l2 = ((SharedPreferences)localObject).getLong("qsec_status_expired_time" + this.a.app.getCurrentAccountUin(), 3600L);
-    if (new Date().getTime() - l1 <= l2 * 1000L)
+    paramView = (RecentBaseData)QQLSActivity.a(this.a).getItem(paramInt);
+    paramLong = paramAdapterView.getAdapter().getItemId(paramInt);
+    if ((paramLong == QQLSActivity.a(this.a)) && (Math.abs(QQLSActivity.b(this.a) - System.currentTimeMillis()) < 300L))
     {
-      localObject = ((SharedPreferences)localObject).getString("qsec_status_tip_text" + this.a.app.getCurrentAccountUin(), "");
-      this.a.runOnUiThread(new tnx(this, (String)localObject));
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLSActivity", 2, "mRecentList is double click");
+      }
+      QQLSActivity.a(this.a, -1L);
+      QQLSActivity.b(this.a, 0L);
+      QQLSActivity.a(this.a, paramView);
+      QQLSActivity.a(this.a, true);
       return;
     }
-    QQSettingSettingActivity.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.e("QQLSActivity", 2, "mRecentList  click once");
+    }
+    QQLSActivity.a(this.a, paramLong);
+    QQLSActivity.b(this.a, System.currentTimeMillis());
+    if (QQLSActivity.a(this.a)) {
+      QQLSActivity.a(this.a).setText(2131437369);
+    }
+    for (;;)
+    {
+      paramAdapterView = QQLSActivity.a(this.a).obtainMessage(6);
+      QQLSActivity.a(this.a).sendMessageDelayed(paramAdapterView, 500L);
+      return;
+      QQLSActivity.a(this.a).setText(2131437368);
+    }
   }
 }
 

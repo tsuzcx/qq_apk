@@ -1,16 +1,30 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
-import java.util.ArrayList;
+import android.annotation.TargetApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class andj
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public andj(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public andj(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void run()
+  @TargetApi(9)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RemoteHandleManager.a().a().a(this.jdField_a_of_type_JavaUtilArrayList, this.b);
+    paramDialogInterface = BaseApplication.getContext().getSharedPreferences("share", 0);
+    if (Build.VERSION.SDK_INT >= 9) {
+      paramDialogInterface.edit().putBoolean("qzone_bg_music_auto_play_warn_flag", false).apply();
+    }
+    for (;;)
+    {
+      QzoneWebMusicJsPlugin.access$400(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_Int, this.b, this.c);
+      return;
+      paramDialogInterface.edit().putBoolean("qzone_bg_music_auto_play_warn_flag", false).commit();
+    }
   }
 }
 

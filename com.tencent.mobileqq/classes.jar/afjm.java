@@ -1,74 +1,27 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.profilecard.ProfileQiqiLiveController;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 
 public class afjm
-  extends AsyncTask
+  implements View.OnClickListener
 {
-  public afjm(ProfileQiqiLiveController paramProfileQiqiLiveController) {}
+  public afjm(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, String paramString) {}
   
-  protected Bundle a(Integer... paramVarArgs)
+  public void onClick(View paramView)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("downloadcode", paramVarArgs[0].intValue());
-    try
+    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
     {
-      paramVarArgs = (HttpURLConnection)new URL("http://tiantian.qq.com/qiqimanage/qunpack/android/58.json").openConnection();
-      paramVarArgs.setConnectTimeout(5000);
-      paramVarArgs.setReadTimeout(30000);
-      paramVarArgs.setRequestMethod("GET");
-      paramVarArgs.setRequestProperty("Connection", "Keep-Alive");
-      paramVarArgs.connect();
-      paramVarArgs = new BufferedReader(new InputStreamReader(paramVarArgs.getInputStream()));
-      Object localObject = new StringBuffer();
-      for (;;)
-      {
-        String str = paramVarArgs.readLine();
-        if (str == null) {
-          break;
-        }
-        ((StringBuffer)localObject).append(str).append("\n");
-      }
-      localObject = ((StringBuffer)localObject).toString();
-      paramVarArgs.close();
-      paramVarArgs = new JSONObject((String)localObject);
-      if (paramVarArgs.optInt("errCode", -1) == 0)
-      {
-        paramVarArgs = paramVarArgs.optJSONObject("data");
-        if (paramVarArgs != null)
-        {
-          paramVarArgs = paramVarArgs.optJSONObject("package");
-          if (paramVarArgs != null)
-          {
-            localBundle.putString("DownPackage", paramVarArgs.optString("package"));
-            localBundle.putString("DownUrl", paramVarArgs.optString("url"));
-            localBundle.putString("DownAppId", paramVarArgs.optString("appid"));
-          }
-        }
-      }
-      return localBundle;
+      JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString).b();
+      return;
     }
-    catch (Exception paramVarArgs) {}
-    return null;
-  }
-  
-  protected void a(Bundle paramBundle)
-  {
-    if (paramBundle != null)
-    {
-      this.a.b = paramBundle.getString("DownPackage");
-      this.a.d = paramBundle.getString("DownUrl");
-      this.a.c = paramBundle.getString("DownAppId");
-      if ((!TextUtils.isEmpty(this.a.b)) && (!TextUtils.isEmpty(this.a.c)) && (!TextUtils.isEmpty(this.a.d))) {
-        this.a.a(paramBundle.getInt("downloadcode"));
-      }
-    }
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity(paramView);
   }
 }
 

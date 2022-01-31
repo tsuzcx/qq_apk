@@ -1,20 +1,16 @@
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
 
-public class nuf
+class nuf
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  List jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  nuf(nue paramnue, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
   
-  public nuf(boolean paramBoolean1, List paramList, int paramInt, boolean paramBoolean2, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_Nue.a.a != null) {
+      this.jdField_a_of_type_Nue.a.a.a(this.jdField_a_of_type_Nue.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    }
   }
 }
 

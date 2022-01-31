@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo;
 
-import adtg;
+import aebp;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class IVPluginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new adtg();
+  public static final Parcelable.Creator CREATOR = new aebp();
   public int a;
   public long a;
   public Bundle a;

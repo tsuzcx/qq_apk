@@ -1,21 +1,25 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class oax
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public oax(MessageNotifySegment paramMessageNotifySegment, ImageView paramImageView, Drawable paramDrawable) {}
+  public oax(StoryDiscoverActivity paramStoryDiscoverActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UserManager localUserManager = (UserManager)SuperManager.a(2);
-    String str = localUserManager.b(Long.toString(MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment)), true);
-    ThreadManager.getUIHandler().post(new oay(this, str, localUserManager));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      StoryReportor.a("content_flow", "cancel_hot", 0, 0, new String[0]);
+      return;
+    }
+    this.a.a(false, true, null);
+    StoryReportor.a("content_flow", "sure_hot", 0, 0, new String[0]);
   }
 }
 

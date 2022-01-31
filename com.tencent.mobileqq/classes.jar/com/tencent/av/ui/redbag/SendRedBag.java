@@ -11,14 +11,14 @@ import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import kfp;
+import khv;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SendRedBag
   extends BaseRedBag
 {
-  public kfp a;
+  public khv a;
   public int b = 2;
   public int c = 1;
   public String g;
@@ -49,10 +49,10 @@ public class SendRedBag
     for (boolean bool = true;; bool = false)
     {
       AVRedPacketDataCollector.a(bool, paramString, String.valueOf(this.b));
-      if (this.jdField_a_of_type_Kfp != null)
+      if (this.jdField_a_of_type_Khv != null)
       {
-        this.jdField_a_of_type_Kfp.a(this);
-        this.jdField_a_of_type_Kfp = null;
+        this.jdField_a_of_type_Khv.a(this);
+        this.jdField_a_of_type_Khv = null;
       }
       return;
     }
@@ -107,7 +107,7 @@ public class SendRedBag
     }
   }
   
-  public boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, Activity paramActivity, kfp paramkfp)
+  public boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, Activity paramActivity, khv paramkhv)
   {
     this.b = 2;
     long l1 = RedBagUtil.a(paramVideoAppInterface);
@@ -146,7 +146,7 @@ public class SendRedBag
         if (QLog.isDevelopLevel()) {
           QLog.w(this.i, 4, "SendRedBag, userId[" + l1 + "], userName[" + str + "], recv_name[" + paramVideoAppInterface + "], recv_uin[" + l2 + "], fromType[" + paramInt + "]");
         }
-        this.jdField_a_of_type_Kfp = paramkfp;
+        this.jdField_a_of_type_Khv = paramkhv;
         this.b = 1;
         this.c = paramInt;
         RedBagReport.i();
@@ -166,7 +166,7 @@ public class SendRedBag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.redbag.SendRedBag
  * JD-Core Version:    0.7.0.1
  */

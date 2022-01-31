@@ -1,20 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class mve
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public mve(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
+  public mve(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
     default: 
       return;
+    case 1: 
+      ThreadManager.post(new mvf(this), 10, null, true);
+      return;
     }
-    this.a.a = false;
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,46 +1,23 @@
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView.ListViewEventListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
 
 public class mow
-  implements FastWebVideoFeedsListView.ListViewEventListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public mow(FastWebVideoFeedsPlayActivity paramFastWebVideoFeedsPlayActivity) {}
+  public mow(VariableSizeTextView paramVariableSizeTextView, ViewGroup.LayoutParams paramLayoutParams) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayActivity", 2, "ListViewEventListener doOnLoadMoreData() 触发拉取推荐视频列表");
-    }
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(Object paramObject, boolean paramBoolean)
-  {
-    FastWebVideoFeedsPlayActivity.a(this.a, paramBoolean);
-    if (paramBoolean)
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.b)
     {
-      if (FastWebVideoFeedsPlayActivity.a(this.a) != null) {
-        FastWebVideoFeedsPlayActivity.a(this.a).b(0);
-      }
-      this.a.a.setVisibility(8);
-      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setFocusable(true);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setClickable(true);
     }
-    if (FastWebVideoFeedsPlayActivity.a(this.a) != null) {
-      FastWebVideoFeedsPlayActivity.a(this.a).b(2);
-    }
-    this.a.a.setVisibility(0);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayActivity", 2, "onFinishActivity()");
-    }
-    FastWebVideoFeedsPlayActivity.a(this.a);
+    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((int)(f + 0.5F));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
   }
 }
 

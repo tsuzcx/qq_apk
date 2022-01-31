@@ -1,18 +1,14 @@
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
 class mlb
-  extends AnimateUtils.AnimationAdapter
+  implements Runnable
 {
-  mlb(mla parammla) {}
+  mlb(mks parammks) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    ReadinjoyTabFrame.a(this.a.a, true);
-    if (ReadinjoyTabFrame.a(this.a.a) != null) {
-      ReadinjoyTabFrame.a(this.a.a, ReadinjoyTabFrame.a(this.a.a), ReadinjoyTabFrame.a(this.a.a));
-    }
+    this.a.a.notifyDataSetChanged();
+    ReadInJoyBaseAdapter.a(this.a.a, this.a.a.a, 0);
   }
 }
 

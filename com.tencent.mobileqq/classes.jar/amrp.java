@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.plugin.QZonePluginManager;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.comic.ui.QQComicTabBarView;
+import mqq.os.MqqHandler;
 
-public final class amrp
+public class amrp
   implements Runnable
 {
-  public amrp(QQAppInterface paramQQAppInterface) {}
+  public amrp(QQComicTabBarView paramQQComicTabBarView) {}
   
   public void run()
   {
-    QZonePluginManager localQZonePluginManager = (QZonePluginManager)this.a.getManager(174);
-    if (localQZonePluginManager != null) {
-      localQZonePluginManager.b();
-    }
+    Drawable localDrawable = this.a.getResources().getDrawable(2130846466);
+    ThreadManager.getUIHandler().post(new amrq(this, localDrawable));
   }
 }
 

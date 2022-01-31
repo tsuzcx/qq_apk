@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amcl;
+import amjv;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -22,7 +22,7 @@ public class LayerImageView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean;
-  private amcl[] jdField_a_of_type_ArrayOfAmcl;
+  private amjv[] jdField_a_of_type_ArrayOfAmjv;
   private boolean b;
   
   public LayerImageView(Context paramContext)
@@ -62,27 +62,27 @@ public class LayerImageView
   public void setBitmaps(Bitmap[] paramArrayOfBitmap, boolean paramBoolean)
   {
     int j = 0;
-    if ((paramBoolean) && (this.jdField_a_of_type_ArrayOfAmcl != null))
+    if ((paramBoolean) && (this.jdField_a_of_type_ArrayOfAmjv != null))
     {
-      amcl[] arrayOfamcl = this.jdField_a_of_type_ArrayOfAmcl;
-      int k = arrayOfamcl.length;
+      amjv[] arrayOfamjv = this.jdField_a_of_type_ArrayOfAmjv;
+      int k = arrayOfamjv.length;
       i = 0;
       while (i < k)
       {
-        amcl localamcl = arrayOfamcl[i];
-        if (amcl.a(localamcl) != null) {
-          amcl.a(localamcl).recycle();
+        amjv localamjv = arrayOfamjv[i];
+        if (amjv.a(localamjv) != null) {
+          amjv.a(localamjv).recycle();
         }
         i += 1;
       }
     }
-    this.jdField_a_of_type_ArrayOfAmcl = new amcl[paramArrayOfBitmap.length];
+    this.jdField_a_of_type_ArrayOfAmjv = new amjv[paramArrayOfBitmap.length];
     int i = j;
     while (i < paramArrayOfBitmap.length)
     {
-      this.jdField_a_of_type_ArrayOfAmcl[i] = new amcl(paramArrayOfBitmap[i], this.jdField_a_of_type_Int, null);
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap$Config == null) || ((amcl.a(this.jdField_a_of_type_ArrayOfAmcl[i]) != null) && (amcl.a(this.jdField_a_of_type_ArrayOfAmcl[i]).ordinal() > this.jdField_a_of_type_AndroidGraphicsBitmap$Config.ordinal()))) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap$Config = amcl.a(this.jdField_a_of_type_ArrayOfAmcl[i]);
+      this.jdField_a_of_type_ArrayOfAmjv[i] = new amjv(paramArrayOfBitmap[i], this.jdField_a_of_type_Int, null);
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap$Config == null) || ((amjv.a(this.jdField_a_of_type_ArrayOfAmjv[i]) != null) && (amjv.a(this.jdField_a_of_type_ArrayOfAmjv[i]).ordinal() > this.jdField_a_of_type_AndroidGraphicsBitmap$Config.ordinal()))) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap$Config = amjv.a(this.jdField_a_of_type_ArrayOfAmjv[i]);
       }
       i += 1;
     }
@@ -98,28 +98,28 @@ public class LayerImageView
   
   public void setLayerBitmap(int paramInt, Bitmap paramBitmap, boolean paramBoolean)
   {
-    amcl localamcl = this.jdField_a_of_type_ArrayOfAmcl[paramInt];
-    this.jdField_a_of_type_ArrayOfAmcl[paramInt] = new amcl(paramBitmap, this.jdField_a_of_type_Int, null);
-    if ((paramBoolean) && (amcl.a(localamcl) != null)) {
-      amcl.a(localamcl).recycle();
+    amjv localamjv = this.jdField_a_of_type_ArrayOfAmjv[paramInt];
+    this.jdField_a_of_type_ArrayOfAmjv[paramInt] = new amjv(paramBitmap, this.jdField_a_of_type_Int, null);
+    if ((paramBoolean) && (amjv.a(localamjv) != null)) {
+      amjv.a(localamjv).recycle();
     }
   }
   
   public void setLayerPadding(int paramInt, Rect paramRect)
   {
-    amcl.a(this.jdField_a_of_type_ArrayOfAmcl[paramInt], paramRect);
+    amjv.a(this.jdField_a_of_type_ArrayOfAmjv[paramInt], paramRect);
     b();
   }
   
   public void setLayerPadding(Rect[] paramArrayOfRect)
   {
-    if (paramArrayOfRect.length != this.jdField_a_of_type_ArrayOfAmcl.length) {
+    if (paramArrayOfRect.length != this.jdField_a_of_type_ArrayOfAmjv.length) {
       throw new IllegalArgumentException("padding must have the same size as input bitmaps");
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfAmcl.length)
+    while (i < this.jdField_a_of_type_ArrayOfAmjv.length)
     {
-      amcl.a(this.jdField_a_of_type_ArrayOfAmcl[i], paramArrayOfRect[i]);
+      amjv.a(this.jdField_a_of_type_ArrayOfAmjv[i], paramArrayOfRect[i]);
       i += 1;
     }
     b();
@@ -127,7 +127,7 @@ public class LayerImageView
   
   public void setLayerVisibility(int paramInt1, int paramInt2)
   {
-    amcl.a(this.jdField_a_of_type_ArrayOfAmcl[paramInt1], paramInt2);
+    amjv.a(this.jdField_a_of_type_ArrayOfAmjv[paramInt1], paramInt2);
     b();
   }
   

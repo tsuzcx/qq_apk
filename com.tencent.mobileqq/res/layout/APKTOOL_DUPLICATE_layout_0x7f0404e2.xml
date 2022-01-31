@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18fa" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e2e" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="#ffffffff" android:paddingTop="18.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17fa" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404b6" />
-    <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e2d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a18fb" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a17fa">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18fc" android:layout_width="208.0dip" android:layout_height="198.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e30" android:layout_centerInParent="true" />
-        <TextView android:textSize="16.0sp" android:textColor="#fffbd49d" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:text="出示红包二维码\n小伙伴可扫一扫红包" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a18fc" />
-    </RelativeLayout>
-    <Button android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04d0" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18fb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020daf" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="15.0dip" android:text="发红包" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18d2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="无需加好友，扫二维码向我付钱" />
+            <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1769" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <TextView android:textSize="21.0sp" android:textStyle="bold" android:textColor="#ff333333" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="¥" android:singleLine="true" android:includeFontPadding="false" />
+                <TextView android:textSize="44.0sp" android:textStyle="bold" android:textColor="#ff333333" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="25.80" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a176a" />
+                <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a176b" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <FrameLayout android:layout_gravity="center" android:background="#ffdfdfdf" android:layout_width="200.0dip" android:layout_height="200.0dip" android:layout_marginTop="15.0dip">
+                <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:layout_gravity="center" android:layout_width="41.0dip" android:layout_height="41.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e23" />
+                <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1797" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e13" />
+            </FrameLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                <TextView android:textSize="14.0sp" android:textColor="#ff12b7f5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18d3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="设置金额" />
+                <TextView android:textSize="14.0sp" android:textColor="#ff12b7f5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18d4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:text="保存收款码" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18d5" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="当前支付" />
+            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e00fb" />
+            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18d6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e00fb" />
+            <Button android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18d7" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="15.0dip" android:text="查看余额" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00eb" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

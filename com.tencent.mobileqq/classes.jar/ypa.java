@@ -1,39 +1,35 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.contacts.BuddyListItem;
+import com.tencent.widget.SimpleTextView;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import com.tencent.widget.SwipTextViewMenuBuilder;
 
 public class ypa
-  implements CmGameStartChecker.ICmGameConfirmListener
+  extends SwipTextViewMenuBuilder
 {
-  public ypa(CmGameStartChecker paramCmGameStartChecker, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public ypa(BuddyListItem paramBuddyListItem, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    CmGameStartChecker localCmGameStartChecker = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker;
-    String str;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      str = this.jdField_a_of_type_JavaLangString;
-      localCmGameStartChecker.a(paramStartCheckParam, str);
-      if (!"message".equals(this.c)) {
-        break label77;
-      }
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  {
+    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
+    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
+      paramSwipRightMenuItem.setTag(-10, paramObject);
     }
-    label77:
-    for (int i = 1;; i = 0)
-    {
-      VipUtils.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(paramStartCheckParam.game.gameId) });
-      return;
-      str = this.b;
-      break;
-    }
+    return paramSwipRightMenuItem;
+  }
+  
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  {
+    this.a.a(paramInt, paramArrayOfSwipRightMenuItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ypa
  * JD-Core Version:    0.7.0.1
  */

@@ -29,9 +29,9 @@ public class CellFactory
           paramView = paramReadInJoyBaseAdapter.a();
           paramView.setTag(paramReadInJoyBaseAdapter);
           if (!UtilsForComponent.c(paramInt2)) {
-            ApiCompatibilityUtils.a(paramView, paramContext.getResources().getDrawable(2130839723));
+            ApiCompatibilityUtils.a(paramView, paramContext.getResources().getDrawable(2130839738));
           } else {
-            ApiCompatibilityUtils.a(paramView, paramContext.getResources().getDrawable(2131493470));
+            ApiCompatibilityUtils.a(paramView, paramContext.getResources().getDrawable(2131493472));
           }
         }
         catch (Exception paramObject)
@@ -92,23 +92,23 @@ public class CellFactory
       continue;
       paramContext = new FeedItemCellTypeSmallSocial(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;
-      paramContext = new FeedItemCellTypeSmallVideoSocial(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
+      paramContext = new FeedItemCellTypeCommonPgcVideoSocial(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;
       paramContext = new FeedItemCellTypeNoImageSocial(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;
       paramContext = new FeedItemCellTypeBigSocial(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;
-      paramContext = new FeedItemCellTypeBigVideoSocial(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
+      paramContext = new FeedItemCellTypeCommonPgcVideoSocial(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;
       paramContext = new FeedItemCellTypeNow(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;
       paramContext = new FeedItemCellTypePgcBig(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;
-      paramContext = new FeedItemCellTypePgcBigVideo(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
+      paramContext = new FeedItemCellTypeCommonPgcVideo(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;
       paramContext = new FeedItemCellTypePgcSmall(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;
-      paramContext = new FeedItemCellTypePgcSmallVideo(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
+      paramContext = new FeedItemCellTypeCommonPgcVideo(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;
       paramContext = new FeedItemCellTypePgcPlain(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
       continue;

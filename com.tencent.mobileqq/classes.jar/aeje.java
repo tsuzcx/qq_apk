@@ -1,20 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.leba.QZoneEntryController;
+import com.tencent.mobileqq.leba.header.LebaGridShowManager;
+import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
+import com.tencent.mobileqq.leba.model.PluginInfo;
+import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
+import com.tencent.mobileqq.leba.model.pluginactions.QzonePluginAction;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeje
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aeje(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aeje(QZoneEntryController paramQZoneEntryController) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.g()) {
-      AIOShareActionSheet.a(this.a).a(false, null, false);
+    QZoneEntryController.c(this.a);
+    paramView = LebaGridShowManager.a().a(10000);
+    QzonePluginAction localQzonePluginAction = new QzonePluginAction(this.a.jdField_a_of_type_AndroidContentContext);
+    if (paramView == null) {
+      QLog.i("UndealCount.QZoneEntryController", 1, "user clicked qzone feed entry. lebaGridItemInfo is null");
     }
-    ReportController.b(this.a.a, "CliOper", "", "", AIOShareActionSheet.b, AIOShareActionSheet.b, 1, 0, "", "", "", "");
+    for (;;)
+    {
+      localQzonePluginAction.c(paramView);
+      paramView = (QZoneManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(9);
+      if (QZoneEntryController.a(this.a) == 4) {
+        ThreadManager.post(new aejf(this, paramView), 5, null, false);
+      }
+      QZoneEntryController.a(this.a, true);
+      paramView.a(true);
+      return;
+      QLog.i("UndealCount.QZoneEntryController", 1, "user clicked qzone feed entry. hasNew:" + localQzonePluginAction.a(paramView.a.isNew, paramView.a.pluginId));
+    }
   }
 }
 

@@ -1,26 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import android.os.Message;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class rtk
-  implements DialogInterface.OnClickListener
+public class rtk
+  implements Runnable
 {
-  rtk(rtj paramrtj) {}
+  public rtk(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a.a.a() != null)
+    ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    Iterator localIterator = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).iterator();
+    while (localIterator.hasNext())
     {
-      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
-      localIntent.putExtra("url", "https://myun.tenpay.com/mqq/auth/index.shtml?_wv=1027&from=36");
-      this.a.a.a().startActivity(localIntent);
+      Object localObject = (ChatMessage)localIterator.next();
+      if ((localObject instanceof MessageForUniteGrayTip))
+      {
+        localObject = (MessageForUniteGrayTip)localObject;
+        if (UniteGrayTipUtil.a((MessageForUniteGrayTip)localObject, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+        {
+          Message localMessage = new Message();
+          Bundle localBundle = new Bundle();
+          localBundle.putLong("messageUniseq", ((MessageForUniteGrayTip)localObject).uniseq);
+          localMessage.setData(localBundle);
+          localMessage.what = 78;
+          localMessage.arg1 = 0;
+          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+        }
+      }
     }
-    paramDialogInterface.dismiss();
   }
 }
 

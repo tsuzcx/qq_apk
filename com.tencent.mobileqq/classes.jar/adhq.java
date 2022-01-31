@@ -1,19 +1,39 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public final class adhq
-  implements CUKingCardHelper.CUKingDialogListener
+public class adhq
+  implements Runnable
 {
-  public adhq(FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
+  public adhq(UniformDownloadMgr paramUniformDownloadMgr) {}
   
-  public void callback(int paramInt)
+  public void run()
   {
-    if ((paramInt == 1) || (paramInt == 2))
+    ArrayList localArrayList = new ArrayList();
+    synchronized (UniformDownloadMgr.a(this.a))
     {
-      this.a.a();
-      return;
+      if (UniformDownloadMgr.a(this.a).size() > 0)
+      {
+        Iterator localIterator = UniformDownloadMgr.a(this.a).entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          adic localadic = (adic)((Map.Entry)localIterator.next()).getValue();
+          if ((localadic != null) && (localadic.a != null) && (localadic.a.b()) && (2 == localadic.a.g())) {
+            localArrayList.add(localadic);
+          }
+        }
+      }
     }
-    this.a.b();
+    ??? = localObject2.iterator();
+    while (((Iterator)???).hasNext()) {
+      ((adic)((Iterator)???).next()).a.e();
+    }
+    UniformDownloadMgr.b(this.a);
   }
 }
 

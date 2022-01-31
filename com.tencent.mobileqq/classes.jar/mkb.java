@@ -1,19 +1,16 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianTipFloatingWindow;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianTipFloatingWindow.TipFloatingWindowInfo;
 
-class mkb
-  extends AnimateUtils.AnimationAdapter
+public class mkb
+  implements Runnable
 {
-  mkb(mka parammka) {}
+  public mkb(KandianTipFloatingWindow paramKandianTipFloatingWindow, KandianTipFloatingWindow.TipFloatingWindowInfo paramTipFloatingWindowInfo, View paramView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = new ScaleAnimation(0.95F, 1.0F, 0.95F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(60L);
-    paramAnimation.setAnimationListener(new mkc(this));
-    this.a.a.a.a.startAnimation(paramAnimation);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianTipFloatingWindow$TipFloatingWindowInfo.a.onClick(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

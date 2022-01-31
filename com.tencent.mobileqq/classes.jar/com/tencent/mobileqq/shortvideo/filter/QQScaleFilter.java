@@ -25,21 +25,13 @@ public class QQScaleFilter
   private float[] jdField_a_of_type_ArrayOfFloat;
   private RenderBuffer jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
   private GLImage jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImage;
-  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F };
-  private int e = 640;
-  private int f = 1280;
-  private int g = 0;
-  private int h = 0;
-  private int i = 0;
-  private int j = 0;
-  private int k = 0;
-  
-  public QQScaleFilter(int paramInt1, QQFilterRenderManager paramQQFilterRenderManager, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramQQFilterRenderManager);
-    this.e = paramInt2;
-    this.f = paramInt3;
-  }
+  private float[] jdField_b_of_type_ArrayOfFloat;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
   
   private void a()
   {
@@ -73,28 +65,11 @@ public class QQScaleFilter
     }
   }
   
-  public void a(int paramInt)
-  {
-    this.i = paramInt;
-    this.j = (paramInt * 2);
-  }
-  
-  public void a(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.k = paramList.size();
-  }
-  
   public void b(int paramInt1, int paramInt2)
   {
     super.b(paramInt1, paramInt2);
     this.e = paramInt1;
     this.f = paramInt2;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.g = paramInt;
   }
   
   public void d()
@@ -106,47 +81,47 @@ public class QQScaleFilter
   public void h()
   {
     super.h();
-    if (this.g % this.j == 0)
+    if (this.g % this.i == 0)
     {
-      this.h = (this.g / this.j);
-      if (this.h < this.k)
+      this.h = (this.g / this.i);
+      if (this.h < this.j)
       {
-        Log.d("rejectliu", "scale Filter OnDrawFrame frameIndex : " + this.g + "  picRate : " + this.j + " imgSize : " + this.k + "  picIndex : " + this.h);
+        Log.d("rejectliu", "scale Filter OnDrawFrame frameIndex : " + this.g + "  picRate : " + this.i + " imgSize : " + this.j + "  picIndex : " + this.h);
         this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a((String)this.jdField_a_of_type_JavaUtilList.get(this.h));
-        if (this.h + 1 < this.k) {
+        if (this.h + 1 < this.j) {
           this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a((String)this.jdField_a_of_type_JavaUtilList.get(this.h + 1));
         }
       }
     }
-    int m = this.h * this.j;
+    int k = this.h * this.i;
     float f2;
-    if (this.g >= m) {
-      f2 = (this.g - m) / this.j;
+    if (this.g >= k) {
+      f2 = (this.g - k) / this.i;
     }
     for (float f1 = f2 * 0.1F + 1.0F;; f1 = 1.0F)
     {
-      Log.d("rejectliu", "frameIndex : " + this.g + " animRatio : " + f1 + " startIndex : " + m + " picRate : " + this.j + " animRatio : " + f1);
+      Log.d("rejectliu", "frameIndex : " + this.g + " animRatio : " + f1 + " startIndex : " + k + " picRate : " + this.i + " animRatio : " + f1);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
       GLES20.glClearColor(1.0F, 1.0F, 1.0F, 0.0F);
       GLES20.glClear(16384);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
       float f3 = f2 * 0.9F + 0.1F;
       f2 = (1.0F - f2) * 0.9F + 0.1F;
-      if (this.h + 1 < this.k)
+      if (this.h + 1 < this.j)
       {
         float f4 = this.e / this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.b() * this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.c() / this.f;
-        m = this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a();
+        k = this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a();
         a(f3);
         a(this.jdField_b_of_type_ArrayOfFloat);
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilterCompose.a(m);
-        int n = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilterCompose.a();
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilterCompose.a(k);
+        int m = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilterCompose.a();
         this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaFilter.a(n, null, null, this.jdField_a_of_type_JavaNioFloatBuffer);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaFilter.a(m, null, null, this.jdField_a_of_type_JavaNioFloatBuffer);
         a(f3);
         a(this.jdField_b_of_type_ArrayOfFloat);
         Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
         Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, 1.0F, f4, 1.0F);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaFilter.a(m, null, this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_JavaNioFloatBuffer);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaFilter.a(k, null, this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_JavaNioFloatBuffer);
         this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
       }
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
@@ -154,13 +129,13 @@ public class QQScaleFilter
       a(this.jdField_b_of_type_ArrayOfFloat);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaFilter.a(this.jdField_a_of_type_Int, null, null, this.jdField_a_of_type_JavaNioFloatBuffer);
       f3 = this.e / this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.b() * this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.c() / this.f;
-      m = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a();
+      k = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a();
       Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
       Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, f1, f1, 1.0F);
       a(f2);
       a(this.jdField_b_of_type_ArrayOfFloat);
       GLES20.glViewport(0, (int)(this.f * (1.0F - f3)) / 2, this.e, (int)(f3 * this.f));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaFilter.a(m, null, this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_JavaNioFloatBuffer);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaFilter.a(k, null, this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_JavaNioFloatBuffer);
       GLES20.glViewport(0, 0, this.e, this.f);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
       this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();

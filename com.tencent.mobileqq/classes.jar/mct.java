@@ -1,13 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class mct
-  implements View.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public mct(VideoFeedsListView paramVideoFeedsListView) {}
+  public mct(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void onClick(View paramView) {}
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
+    if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
+    {
+      if (ReadInJoyVideoTagSelectionFragment.a(this.a).a()) {
+        break label72;
+      }
+      if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).c())) {
+        ReadInJoyVideoTagSelectionFragment.a(this.a).a();
+      }
+    }
+    label72:
+    while (ReadInJoyVideoTagSelectionFragment.b(this.a).c()) {
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.b(this.a).a();
+  }
 }
 
 

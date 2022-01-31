@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
 
 public class xdd
   implements Runnable
 {
-  public xdd(CommonHbFragment paramCommonHbFragment) {}
+  public xdd(PhotoListActivity paramPhotoListActivity) {}
   
   public void run()
   {
-    CommonHbFragment.a(this.a, CommonHbFragment.e(this.a));
+    if (this.a.a == null)
+    {
+      this.a.a = new PhotoListActivity.QueryPhotoTask(this.a);
+      this.a.a.execute(new Object[0]);
+    }
   }
 }
 

@@ -1,22 +1,21 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
 
 public class aauj
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aauj(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, String paramString, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder) {}
+  public aauj(ArCardSelectMemberActivity paramArCardSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = ArkAppCenter.b(this.jdField_a_of_type_JavaLangString);
-    ArkAppCenter.a().postToMainThread(new aauk(this, str));
+    paramDialogInterface.dismiss();
+    ArCardSelectMemberActivity.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aauj
  * JD-Core Version:    0.7.0.1
  */

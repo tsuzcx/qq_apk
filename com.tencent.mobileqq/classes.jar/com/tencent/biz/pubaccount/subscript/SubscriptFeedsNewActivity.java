@@ -32,9 +32,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import mtc;
-import mtd;
-import mte;
+import mww;
+import mwx;
+import mwy;
 
 public class SubscriptFeedsNewActivity
   extends IphoneTitleBarActivity
@@ -51,7 +51,7 @@ public class SubscriptFeedsNewActivity
   
   public SubscriptFeedsNewActivity()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new mtd(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new mwx(this);
   }
   
   private void b()
@@ -65,7 +65,7 @@ public class SubscriptFeedsNewActivity
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyBaseViewController = localSubscriptionViewController;
     c();
     boolean bool = SubscriptRecommendController.e(this.app);
-    this.rightViewText.setText(2131437938);
+    this.rightViewText.setText(2131437958);
     if (bool) {
       this.rightViewText.setVisibility(0);
     }
@@ -81,7 +81,7 @@ public class SubscriptFeedsNewActivity
   private void c()
   {
     int i = 1;
-    Object localObject = "7.6.3" + this.app.c() + "subscript_guid";
+    Object localObject = "7.6.8" + this.app.c() + "subscript_guid";
     if ((this.app.getPreferences().getBoolean((String)localObject, true)) && (SubscriptRecommendController.e(this.app))) {
       if (i != 0) {
         break label70;
@@ -117,7 +117,7 @@ public class SubscriptFeedsNewActivity
         this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
         i = this.jdField_a_of_type_ComTencentBizUiCustomGuideView.b();
         int j = getResources().getDisplayMetrics().widthPixels;
-        this.rightViewText.post(new mtc(this, j, i));
+        this.rightViewText.post(new mww(this, j, i));
         return;
       }
       catch (Exception localException) {}
@@ -163,9 +163,9 @@ public class SubscriptFeedsNewActivity
       getWindow().setFlags(16777216, 16777216);
     }
     if (Build.VERSION.SDK_INT >= 19) {
-      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new mte(this), 1000L);
+      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new mwy(this), 1000L);
     }
-    setContentView(2130969624);
+    setContentView(2130969620);
     getWindow().setBackgroundDrawable(null);
     paramBundle = (ReadInJoyLogicManager)this.app.getManager(162);
     ReadInJoyLogicEngine.a().i();

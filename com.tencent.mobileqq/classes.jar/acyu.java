@@ -1,18 +1,13 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
-import cooperation.qqfav.ipc.FavoritesRemoteCommand.IRemoteCommandHandler;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileBaseTabView;
 
 public class acyu
-  implements FavoritesRemoteCommand.IRemoteCommandHandler
+  implements Runnable
 {
-  public acyu(QfavFilePreviewController paramQfavFilePreviewController) {}
+  public acyu(QfileBaseTabView paramQfileBaseTabView) {}
   
-  public boolean a(int paramInt, Bundle paramBundle)
+  public void run()
   {
-    new Handler(Looper.getMainLooper()).post(new acyv(this, paramBundle));
-    return true;
+    this.a.e = true;
   }
 }
 

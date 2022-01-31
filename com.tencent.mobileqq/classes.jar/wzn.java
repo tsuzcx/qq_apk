@@ -1,36 +1,27 @@
-import Wallet.GoldMsgGetReq;
-import Wallet.GoldMsgGetRsp;
-import Wallet.GoldMsgSetReq;
-import Wallet.GoldMsgSetRsp;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
+import cooperation.qqpim.QQPimTipsInfo;
+import cooperation.qqpim.QQPimTipsInfoHelper;
 
-public abstract class wzn
+public class wzn
+  implements QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack
 {
-  final int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  final String c;
-  final String d;
-  final String e;
+  public wzn(ContactListView paramContactListView) {}
   
-  wzn(GoldMsgSettingActivity paramGoldMsgSettingActivity, Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, int paramInt)
+  public void a(QQPimTipsInfo paramQQPimTipsInfo)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramString1;
-    this.d = paramString2;
-    this.e = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramQQPimTipsInfo == null) {
+      return;
+    }
+    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
+    QQPimTipsInfoHelper.b(this.a.getContext(), paramQQPimTipsInfo);
+    Message localMessage = new Message();
+    localMessage.what = 6;
+    localMessage.obj = paramQQPimTipsInfo;
+    this.a.a.sendMessage(localMessage);
   }
-  
-  public abstract void a(View paramView);
-  
-  void a(boolean paramBoolean, GoldMsgGetReq paramGoldMsgGetReq, GoldMsgGetRsp paramGoldMsgGetRsp) {}
-  
-  void a(boolean paramBoolean, GoldMsgSetReq paramGoldMsgSetReq, GoldMsgSetRsp paramGoldMsgSetRsp) {}
-  
-  abstract boolean a();
 }
 
 

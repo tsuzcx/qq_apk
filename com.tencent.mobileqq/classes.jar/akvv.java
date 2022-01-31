@@ -1,20 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 
 public class akvv
-  implements TroopPluginManager.TroopPluginCallback
+  implements ThreadExcutor.IThreadListener
 {
-  public akvv(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
+  public akvv(SwiftBrowserCookieMonster paramSwiftBrowserCookieMonster) {}
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.e = true;
-      ProfileCardMoreInfoView.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
-    }
-  }
+  public void onAdded() {}
+  
+  public void onPostRun() {}
+  
+  public void onPreRun() {}
 }
 
 

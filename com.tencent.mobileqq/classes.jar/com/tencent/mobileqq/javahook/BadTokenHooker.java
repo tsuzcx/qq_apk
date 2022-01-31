@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.javahook;
 
-import advn;
-import advo;
-import advp;
+import aedx;
+import aedy;
+import aedz;
 import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -16,14 +16,14 @@ import mqq.os.MqqHandler;
 @TargetApi(14)
 public class BadTokenHooker
 {
-  private static advp a = new advp(null);
+  private static aedz a = new aedz(null);
   
   public static void a()
   {
     try
     {
       localClass1 = Class.forName("android.view.ViewRootImpl");
-      JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new advn(localClass1) });
+      JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new aedx(localClass1) });
     }
     catch (NoSuchMethodException localNoSuchMethodException1)
     {
@@ -85,7 +85,7 @@ public class BadTokenHooker
   
   private static void b(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new advo(paramString1, paramString2, paramInt1), paramInt2);
+    ThreadManager.getSubThreadHandler().postDelayed(new aedy(paramString1, paramString2, paramInt1), paramInt2);
   }
 }
 

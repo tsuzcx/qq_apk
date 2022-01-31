@@ -6,10 +6,10 @@ import android.text.TextUtils;
 import android.view.View;
 import com.tencent.biz.qqstory.base.preload.FileCacheUtils;
 import java.io.File;
-import nqa;
-import nqb;
-import nqc;
-import nqd;
+import nuq;
+import nur;
+import nus;
+import nut;
 
 public class VideoViewTextureImpl
   implements IVideoView
@@ -54,26 +54,26 @@ public class VideoViewTextureImpl
   
   public void a(IVideoView.OnCompletionListener paramOnCompletionListener)
   {
-    this.a.setOnCompletionListener(new nqa(this, paramOnCompletionListener));
+    this.a.setOnCompletionListener(new nuq(this, paramOnCompletionListener));
   }
   
   public void a(IVideoView.OnDownloadListener paramOnDownloadListener) {}
   
   public void a(IVideoView.OnErrorListener paramOnErrorListener)
   {
-    this.a.setOnErrorListener(new nqb(this, paramOnErrorListener, null));
+    this.a.setOnErrorListener(new nur(this, paramOnErrorListener, null));
   }
   
   public void a(IVideoView.OnInfoListener paramOnInfoListener)
   {
-    this.a.setOnInfoListener(new nqc(this, paramOnInfoListener));
+    this.a.setOnInfoListener(new nus(this, paramOnInfoListener));
   }
   
   public void a(IVideoView.OnPreparedListener paramOnPreparedListener)
   {
     TextureVideoView localTextureVideoView = this.a;
     if (paramOnPreparedListener == null) {}
-    for (paramOnPreparedListener = null;; paramOnPreparedListener = new nqd(this, paramOnPreparedListener))
+    for (paramOnPreparedListener = null;; paramOnPreparedListener = new nut(this, paramOnPreparedListener))
     {
       localTextureVideoView.setOnPreparedListener(paramOnPreparedListener);
       return;

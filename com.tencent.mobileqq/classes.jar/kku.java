@@ -1,72 +1,42 @@
-import android.view.LayoutInflater;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint.FontMetrics;
+import android.text.TextPaint;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.addContactTroopView.TroopCardXingquBuluo;
-import com.tencent.biz.addContactTroopView.TroopCardXingquBuluo.ViewHolder;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.List;
-import tencent.im.troop_search_searchtab.searchtab.Item3;
+import com.tencent.av.widget.stageview.MemberEffect;
+import com.tencent.av.widget.stageview.StageMemberView;
 
 public class kku
-  extends BaseAdapter
+  extends View
 {
-  public kku(TroopCardXingquBuluo paramTroopCardXingquBuluo) {}
-  
-  public int getCount()
+  public kku(StageMemberView paramStageMemberView, Context paramContext)
   {
-    if (this.a.a != null) {
-      return this.a.a.size();
-    }
-    return 0;
+    super(paramContext);
   }
   
-  public Object getItem(int paramInt)
+  public void draw(Canvas paramCanvas)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
+    float f;
+    if (StageMemberView.a(this.a) != null)
     {
-      localObject = new TroopCardXingquBuluo.ViewHolder();
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2130969417, paramViewGroup, false);
-      ((TroopCardXingquBuluo.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366419));
-      ((TroopCardXingquBuluo.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366421));
-      ((TroopCardXingquBuluo.ViewHolder)localObject).b = ((TextView)paramView.findViewById(2131366423));
-      ((TroopCardXingquBuluo.ViewHolder)localObject).c = ((TextView)paramView.findViewById(2131366424));
-      paramView.setTag(localObject);
-    }
-    for (paramViewGroup = (ViewGroup)localObject;; paramViewGroup = (TroopCardXingquBuluo.ViewHolder)paramView.getTag())
-    {
-      localObject = (searchtab.Item3)this.a.a.get(paramInt);
-      paramInt = AIOUtils.a(30.0F, this.a.getResources());
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(((searchtab.Item3)localObject).str_img_url.get(), paramInt, paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
-      if ((localURLDrawable != null) && (1 != localURLDrawable.getStatus())) {
-        localURLDrawable.restartDownload();
+      f = -StageMemberView.a(this.a).getFontMetrics().ascent;
+      if (this.a.a == null) {
+        break label76;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((searchtab.Item3)localObject).str_name.get());
-      paramViewGroup.b.setText(((searchtab.Item3)localObject).str_desc1.get());
-      paramViewGroup.c.setText(((searchtab.Item3)localObject).str_desc2.get());
-      return paramView;
+      StageMemberView.a(this.a).setColor(this.a.a.a);
+    }
+    for (;;)
+    {
+      paramCanvas.drawText(StageMemberView.a(this.a), 0.0F, f, StageMemberView.a(this.a));
+      return;
+      label76:
+      StageMemberView.a(this.a).setColor(-1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kku
  * JD-Core Version:    0.7.0.1
  */

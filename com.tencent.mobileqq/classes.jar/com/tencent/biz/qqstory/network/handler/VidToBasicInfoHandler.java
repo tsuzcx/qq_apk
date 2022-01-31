@@ -22,11 +22,10 @@ public class VidToBasicInfoHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback
 {
-  protected List a;
+  protected List a = new ArrayList();
   
   public VidToBasicInfoHandler(List paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     if (paramList != null)
     {
       paramList = paramList.iterator();
@@ -34,7 +33,7 @@ public class VidToBasicInfoHandler
       {
         String str = (String)paramList.next();
         if (!StoryVideoItem.isFakeVid(str)) {
-          this.jdField_a_of_type_JavaUtilList.add(str);
+          this.a.add(str);
         }
       }
     }
@@ -43,7 +42,7 @@ public class VidToBasicInfoHandler
   public void a()
   {
     GetVideoFullInfoListRequest localGetVideoFullInfoListRequest = new GetVideoFullInfoListRequest();
-    localGetVideoFullInfoListRequest.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    localGetVideoFullInfoListRequest.a = this.a;
     CmdTaskManger.a().a(localGetVideoFullInfoListRequest, this);
   }
   
@@ -53,20 +52,20 @@ public class VidToBasicInfoHandler
     if ((paramGetVideoFullInfoListResponse == null) || (paramErrorMessage.isFail()))
     {
       c();
-      paramGetVideoFullInfoListRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      paramGetVideoFullInfoListRequest.errorInfo = paramErrorMessage;
       Dispatchers.get().dispatch(paramGetVideoFullInfoListRequest);
       return;
     }
     paramErrorMessage = (StoryManager)SuperManager.a(5);
-    if (paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList != null)
+    if (paramGetVideoFullInfoListResponse.a != null)
     {
-      Iterator localIterator = paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = paramGetVideoFullInfoListResponse.a.iterator();
       while (localIterator.hasNext()) {
         ((StoryVideoItem)localIterator.next()).mBasicInfoState = 1;
       }
     }
-    paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList = paramErrorMessage.a(paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList);
-    paramGetVideoFullInfoListRequest.jdField_a_of_type_JavaUtilList = paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList;
+    paramGetVideoFullInfoListResponse.a = paramErrorMessage.a(paramGetVideoFullInfoListResponse.a);
+    paramGetVideoFullInfoListRequest.a = paramGetVideoFullInfoListResponse.a;
     ((DownloadUrlManager)SuperManager.a(28)).a(paramGetVideoFullInfoListResponse.b);
     Dispatchers.get().dispatch(paramGetVideoFullInfoListRequest);
     b();
@@ -74,7 +73,7 @@ public class VidToBasicInfoHandler
   
   public String toString()
   {
-    return "VidToBasicInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return "VidToBasicInfoHandler{mVidList=" + this.a + '}';
   }
 }
 

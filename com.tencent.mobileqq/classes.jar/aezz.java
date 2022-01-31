@@ -1,20 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.view.View;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnGroupClickListener;
 
 public class aezz
-  extends GestureDetector.SimpleOnGestureListener
+  implements ExpandableListView.OnGroupClickListener
 {
-  public aezz(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aezz(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
     return true;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
   }
 }
 

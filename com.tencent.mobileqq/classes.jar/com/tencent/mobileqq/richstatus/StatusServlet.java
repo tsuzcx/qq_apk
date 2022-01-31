@@ -2371,7 +2371,7 @@ public class StatusServlet
       localObject3 = paramIntent.getByteArrayExtra("k_sign_data");
       paramIntent = new SigActPb.Platform();
       paramIntent.platform.set(109L);
-      paramIntent.mqqver.set("7.6.3");
+      paramIntent.mqqver.set("7.6.8");
       paramIntent.osver.set(DeviceInfoUtil.f());
       localObject2 = new SigActPb.SigauthReq();
       ((SigActPb.SigauthReq)localObject2).uin_disable.set(Long.parseLong(((AppInterface)localObject1).getCurrentAccountUin()));

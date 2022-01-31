@@ -161,7 +161,7 @@ public class VacContentServlet
   
   private void a(Packet paramPacket)
   {
-    ContentRequest localContentRequest = new ContentRequest(8L, a(), "7.6.3");
+    ContentRequest localContentRequest = new ContentRequest(8L, a(), "7.6.8");
     paramPacket.setSSOCommand("QQWifiSvc.getContentList");
     paramPacket.setServantName("MQQ.AsyncContentMgrServer.AsyncContentMgrObj");
     paramPacket.setFuncName("getContentList");

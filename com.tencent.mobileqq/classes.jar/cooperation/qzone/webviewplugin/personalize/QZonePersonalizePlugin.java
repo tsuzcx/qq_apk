@@ -2,7 +2,7 @@ package cooperation.qzone.webviewplugin.personalize;
 
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
-import andx;
+import anlx;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.MultiNameSpacePluginCompact;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -16,7 +16,7 @@ public class QZonePersonalizePlugin
   extends WebViewPlugin
   implements MultiNameSpacePluginCompact
 {
-  private BroadcastReceiver a = new andx(this);
+  private BroadcastReceiver a = new anlx(this);
   
   public void a()
   {

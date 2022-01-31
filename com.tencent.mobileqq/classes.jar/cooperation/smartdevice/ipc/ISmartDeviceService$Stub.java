@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import anem;
+import anmp;
 
 public abstract class ISmartDeviceService$Stub
   extends Binder
@@ -26,7 +26,7 @@ public abstract class ISmartDeviceService$Stub
     if ((localIInterface != null) && ((localIInterface instanceof ISmartDeviceService))) {
       return (ISmartDeviceService)localIInterface;
     }
-    return new anem(paramIBinder);
+    return new anmp(paramIBinder);
   }
   
   public IBinder asBinder()

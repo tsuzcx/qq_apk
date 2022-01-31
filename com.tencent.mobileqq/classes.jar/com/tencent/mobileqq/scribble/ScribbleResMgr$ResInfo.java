@@ -12,6 +12,22 @@ public class ScribbleResMgr$ResInfo
   public int sourceId;
   public String sourceMd5 = "";
   public String sourceUrl = "";
+  
+  ResInfo cpy(ResInfo paramResInfo)
+  {
+    ResInfo localResInfo = new ResInfo();
+    localResInfo.resType = paramResInfo.resType;
+    localResInfo.sourceId = paramResInfo.sourceId;
+    localResInfo.sourceUrl = paramResInfo.sourceUrl;
+    localResInfo.sourceMd5 = paramResInfo.sourceMd5;
+    localResInfo.name = paramResInfo.name;
+    localResInfo.predownload = paramResInfo.predownload;
+    localResInfo.downloading = paramResInfo.downloading;
+    localResInfo.isShow = paramResInfo.isShow;
+    localResInfo.showInApp = paramResInfo.showInApp;
+    localResInfo.orderIndex = paramResInfo.orderIndex;
+    return localResInfo;
+  }
 }
 
 

@@ -1,44 +1,109 @@
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
+import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class wpr
-  implements Runnable
+  extends DiscussionObserver
 {
-  public wpr(LebaShowListManager paramLebaShowListManager, RedTouchManager paramRedTouchManager, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3) {}
+  private wpr(DiscussionView paramDiscussionView) {}
   
-  public void run()
+  protected void a()
   {
-    for (;;)
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.i();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    if (this.a.c)
     {
-      try
+      this.a.c = false;
+      if (paramBoolean)
       {
-        RedTouchManager localRedTouchManager = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager;
-        i = (int)this.jdField_a_of_type_Long;
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (this.b != -9223372036854775808L) {
-          continue;
-        }
-        l = this.c;
-        i = localRedTouchManager.a(i, bool, l);
+        DiscussionView.a(this.a).a(0);
+        this.a.a(100, 800L);
       }
-      catch (Exception localException)
-      {
-        long l;
-        int j = -2;
-        int i = j;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("Q.lebatab.mgr", 2, localException.toString());
-        i = j;
-        continue;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, result = " + i);
-      }
+    }
+    else
+    {
       return;
-      l = this.b;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
+    this.a.b(2131434365);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b()
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
     }
   }
 }

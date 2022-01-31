@@ -1,26 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
 
 public class xjr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xjr(BannerManager paramBannerManager, String paramString) {}
+  public xjr(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "click move to url:" + this.jdField_a_of_type_JavaLangString);
-    }
-    paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), QQBrowserDelegationActivity.class);
-    paramView.putExtra("injectrecommend", true);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
-    ReportController.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).app, "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
+    ThemeHbFragment.a(this.a).startAnimation(ThemeHbFragment.a(this.a));
+    ThemeHbFragment.a(this.a).setVisibility(0);
+    this.a.a.a("theme.pack.show", 2);
   }
 }
 

@@ -1,20 +1,44 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioTips;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rvu
-  implements DialogInterface.OnClickListener
+class rvu
+  implements Runnable
 {
-  public rvu(QQAppInterface paramQQAppInterface, Context paramContext) {}
+  rvu(rvt paramrvt, MessageRecord paramMessageRecord) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 2, 16);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80067FC", "0X80067FC", 2, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().isFinishing()) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.jdField_a_of_type_Rvt.jdField_a_of_type_Int > 200));
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.aio.BaseChatPie.troop.special_msg", 2, "refreshHeadMessage==>fistseq:" + this.jdField_a_of_type_Rvt.jdField_b_of_type_Long + ", mr.shmsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq);
+      }
+      if ((int)this.jdField_a_of_type_Rvt.jdField_b_of_type_Long >= this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + 1L)
+      {
+        if (this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) {
+          this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a(this.jdField_a_of_type_Rvt.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, false);
+        }
+        if (this.jdField_a_of_type_Rvt.jdField_b_of_type_Int == 5) {
+          this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+        }
+        this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_Rvt.jdField_b_of_type_Int, 0, -1, this.jdField_a_of_type_Rvt.jdField_a_of_type_JavaLangRunnable);
+        return;
+      }
+      i = this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    } while (i == -1);
+    this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_Rvt.jdField_b_of_type_Int, i, i, null);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.werewolves;
 
-import akru;
-import akrv;
+import akzl;
+import akzm;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -40,7 +40,7 @@ public class HalfScreenBrowserActivity
     super.b(paramWebView, paramString);
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    runOnUiThread(new akrv(this));
+    runOnUiThread(new akzm(this));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -48,11 +48,11 @@ public class HalfScreenBrowserActivity
     setImmersiveStatus(0);
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new akru(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new akzl(this));
     paramBundle = getIntent().getStringExtra("url");
     FrameLayout localFrameLayout = new FrameLayout(this);
     this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130839225));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130839244));
     Object localObject = new FrameLayout.LayoutParams(AIOUtils.a(25.0F, getResources()), AIOUtils.a(25.0F, getResources()));
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
     localFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetProgressBar, (ViewGroup.LayoutParams)localObject);
@@ -76,7 +76,7 @@ public class HalfScreenBrowserActivity
       }
       try
       {
-        findViewById(2131363244).setVisibility(8);
+        findViewById(2131363261).setVisibility(8);
         label226:
         this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
         AlbumUtil.a(this, false, true);
@@ -120,7 +120,7 @@ public class HalfScreenBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

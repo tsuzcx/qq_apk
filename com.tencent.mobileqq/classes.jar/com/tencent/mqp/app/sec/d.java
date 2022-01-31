@@ -1,6 +1,6 @@
 package com.tencent.mqp.app.sec;
 
-import akzh;
+import algz;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -36,7 +36,7 @@ public class d
   
   public static void e1(int paramInt, Object[] paramArrayOfObject, byte[] paramArrayOfByte)
   {
-    ThreadManager.post(new akzh(paramInt, paramArrayOfObject, paramArrayOfByte), 8, null, false);
+    ThreadManager.post(new algz(paramInt, paramArrayOfObject, paramArrayOfByte), 8, null, false);
   }
   
   public static void s(ToServiceMsg paramToServiceMsg)

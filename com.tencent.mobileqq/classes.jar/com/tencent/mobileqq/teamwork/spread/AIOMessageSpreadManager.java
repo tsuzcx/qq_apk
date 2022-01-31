@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import aina;
-import ainc;
-import aind;
+import airz;
+import aisb;
+import aisc;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -42,10 +41,9 @@ public class AIOMessageSpreadManager
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private BaseTimAIOTipsProcessor jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBaseTimAIOTipsProcessor;
   private ConfigSetting jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting;
-  private String jdField_a_of_type_JavaLangString = ".docs.qq.com/ep/pad/newpad?opendocxfrom=qq&templateId=";
+  private String jdField_a_of_type_JavaLangString = "https://docs.qq.com/scenario/createpad.html?";
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString = ".docs.qq.com/ep/pad/newsheet?opendocxfrom=qq&templateId=";
+  private long b;
   
   public AIOMessageSpreadManager(QQAppInterface paramQQAppInterface)
   {
@@ -196,7 +194,7 @@ public class AIOMessageSpreadManager
       QLog.i("AIOMessageSpreadManager", 1, "insertGaryTips:" + paramString1 + " link:" + paramString2);
     }
     this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting.a(paramChatMessage);
-    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new ainc(this, paramChatMessage, paramString1, paramTeamworkKeyWords, paramString2, paramString3), 1000L);
+    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new aisb(this, paramChatMessage, paramString1, paramTeamworkKeyWords, paramString2, paramString3), 1000L);
   }
   
   static boolean a(char paramChar)
@@ -256,19 +254,20 @@ public class AIOMessageSpreadManager
         FileManagerUtil.a();
       }
     }
-    if ((this.jdField_b_of_type_Long == paramChatMessage.uniseq) && ((paramChatMessage instanceof MessageForText))) {
+    if ((this.b == paramChatMessage.uniseq) && ((paramChatMessage instanceof MessageForText))) {
       return;
     }
     if ((paramChatMessage instanceof MessageForText)) {
-      this.jdField_b_of_type_Long = paramChatMessage.uniseq;
+      this.b = paramChatMessage.uniseq;
     }
-    ThreadManager.executeOnSubThread(new aina(this, paramChatMessage));
+    ThreadManager.executeOnSubThread(new airz(this, paramChatMessage));
   }
   
   public void a(ChatMessage paramChatMessage, Context paramContext, SessionInfo paramSessionInfo)
   {
     Object localObject1 = paramChatMessage.getExtInfoFromExtStr("tim_aio_file_msg_uiniseq");
-    String str;
+    Object localObject3;
+    Object localObject2;
     do
     {
       try
@@ -283,19 +282,19 @@ public class AIOMessageSpreadManager
           return;
         }
       }
-      catch (Exception localException)
+      catch (Exception localException1)
       {
         long l;
         for (;;)
         {
-          QLog.e("AIOMessageSpreadManager", 1, localException.toString());
+          QLog.e("AIOMessageSpreadManager", 1, localException1.toString());
           l = 0L;
         }
         localObject3 = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_type");
         if (((String)localObject3).equalsIgnoreCase("keyword")) {
           ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009078", "0X8009078", 0, 0, "", "", "", "");
         }
-        while ((localException instanceof MessageForFile))
+        while ((localException1 instanceof MessageForFile))
         {
           paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l, paramChatMessage.frienduin, paramChatMessage.istroop);
           if (paramChatMessage == null)
@@ -315,9 +314,9 @@ public class AIOMessageSpreadManager
           }
         }
       }
-      if ((localException instanceof MessageForTroopFile))
+      if ((localException1 instanceof MessageForTroopFile))
       {
-        paramChatMessage = (MessageForTroopFile)localException;
+        paramChatMessage = (MessageForTroopFile)localException1;
         localObject2 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
         localObject3 = new TeamWorkFileImportInfo();
         ((TeamWorkFileImportInfo)localObject3).jdField_c_of_type_JavaLangString = ((TroopFileStatusInfo)localObject2).jdField_a_of_type_JavaLangString;
@@ -340,50 +339,35 @@ public class AIOMessageSpreadManager
       if (!(localObject2 instanceof MessageForText)) {
         break;
       }
-      str = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_template_id");
-      paramChatMessage = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_type");
-    } while (TextUtils.isEmpty(str));
-    Object localObject2 = new Bundle();
-    Object localObject3 = new TeamWorkFileImportInfo();
-    for (int i = 0;; i = j)
+      localObject2 = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_template_id");
+      localObject3 = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_template_type");
+      paramChatMessage = paramChatMessage.getExtInfoFromExtStr("tim_aio_tips_keyword");
+    } while (TextUtils.isEmpty((CharSequence)localObject2));
+    Bundle localBundle = new Bundle();
+    TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
+    try
     {
-      try
+      if (Integer.parseInt((String)localObject3) == 0) {}
+      for (localTeamWorkFileImportInfo.jdField_d_of_type_Int = 3;; localTeamWorkFileImportInfo.jdField_d_of_type_Int = 6)
       {
-        j = Integer.parseInt(paramChatMessage);
-        if (j != 0) {
-          break label672;
-        }
-        i = j;
-        ((TeamWorkFileImportInfo)localObject3).jdField_d_of_type_Int = 3;
-        i = j;
+        localBundle.putString("url", this.jdField_a_of_type_JavaLangString + "type=" + (String)localObject3 + "&template_id=" + (String)localObject2 + "&title=" + paramChatMessage);
+        localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = true;
+        localTeamWorkFileImportInfo.jdField_c_of_type_Int = 1;
+        localTeamWorkFileImportInfo.jdField_a_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
+        localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
+        localTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString = paramSessionInfo.jdField_b_of_type_JavaLangString;
+        localTeamWorkFileImportInfo.jdField_e_of_type_Boolean = true;
+        localBundle.putParcelable("key_team_work_file_import_info", localTeamWorkFileImportInfo);
+        TeamWorkDocEditBrowserActivity.a(paramContext, localBundle, false);
+        return;
       }
-      catch (Exception paramChatMessage)
+    }
+    catch (Exception localException2)
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          int j;
-          label672:
-          QLog.e("AIOMessageSpreadManager", 2, paramChatMessage.getMessage());
-          continue;
-          paramChatMessage = "https://" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + this.jdField_b_of_type_JavaLangString + str;
-        }
+        QLog.e("AIOMessageSpreadManager", 2, localException2.getMessage());
       }
-      if (i != 0) {
-        break;
-      }
-      paramChatMessage = "https://" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + this.jdField_a_of_type_JavaLangString + str;
-      ((Bundle)localObject2).putString("url", paramChatMessage);
-      ((TeamWorkFileImportInfo)localObject3).jdField_b_of_type_Boolean = true;
-      ((TeamWorkFileImportInfo)localObject3).jdField_c_of_type_Int = 1;
-      ((TeamWorkFileImportInfo)localObject3).jdField_a_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
-      ((TeamWorkFileImportInfo)localObject3).jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      ((TeamWorkFileImportInfo)localObject3).jdField_e_of_type_JavaLangString = paramSessionInfo.jdField_b_of_type_JavaLangString;
-      ((TeamWorkFileImportInfo)localObject3).jdField_e_of_type_Boolean = true;
-      ((Bundle)localObject2).putParcelable("key_team_work_file_import_info", (Parcelable)localObject3);
-      TeamWorkDocEditBrowserActivity.a(paramContext, (Bundle)localObject2, false);
-      return;
-      i = j;
-      ((TeamWorkFileImportInfo)localObject3).jdField_d_of_type_Int = 6;
     }
     QLog.e("AIOMessageSpreadManager", 1, "unknow msg type!");
   }
@@ -398,7 +382,7 @@ public class AIOMessageSpreadManager
     if (QLog.isColorLevel()) {
       QLog.i("AIOMessageSpreadManager", 1, "send file:" + paramMessageRecord.msgUid);
     }
-    ThreadManager.getUIHandler().postDelayed(new aind(this), 1000L);
+    ThreadManager.getUIHandler().postDelayed(new aisc(this), 1000L);
     try
     {
       this.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
@@ -435,7 +419,7 @@ public class AIOMessageSpreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager
  * JD-Core Version:    0.7.0.1
  */

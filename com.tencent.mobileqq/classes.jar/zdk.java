@@ -1,44 +1,27 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.widget.RandomCoverView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.DrawerCoverUtil;
+import com.tencent.mobileqq.data.ApolloGameRankData;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
 
-public class zdk
+public final class zdk
   implements Runnable
 {
-  public zdk(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface) {}
+  public zdk(QQAppInterface paramQQAppInterface, ApolloGameRankData paramApolloGameRankData) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_AndroidViewViewGroup == null) {
-      return;
-    }
-    RandomCoverView localRandomCoverView = (RandomCoverView)this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371362);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localObject = ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
-    String str = (String)localObject.getCoverData(0)[0];
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.", 2, "[getCoverData] getCovertUrl from cache,url:" + str);
-    }
-    if ((!TextUtils.isEmpty(str)) && (!DrawerCoverUtil.b()))
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData != null))
     {
-      DrawerCoverUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Card)localObject, localRandomCoverView, str, FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity), this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.a());
-      return;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData);
+      ((ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), localArrayList);
     }
-    if (DrawerCoverUtil.b()) {}
-    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new zdl(this, (Card)localObject), 3000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zdk
  * JD-Core Version:    0.7.0.1
  */

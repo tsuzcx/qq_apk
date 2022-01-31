@@ -12,8 +12,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import jir;
-import jis;
+import jku;
+import jkv;
 import mqq.manager.TicketManager;
 
 public class GameHeroesProtocol
@@ -21,18 +21,18 @@ public class GameHeroesProtocol
   public VideoAppInterface a;
   public String a;
   public Map a;
-  public jir a;
+  public jku a;
   public String b;
   public String c;
   
   GameHeroesProtocol(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_Jir = null;
+    this.jdField_a_of_type_Jku = null;
     this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount();
-    this.b = "7.6.3";
+    this.b = "7.6.8";
     this.c = ((TicketManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_JavaLangString);
   }
   
@@ -89,10 +89,10 @@ public class GameHeroesProtocol
         if ((l == -1L) || (paramLong == -1L))
         {
           paramHeroDetail.a -= 1;
-          if (this.jdField_a_of_type_Jir == null) {
+          if (this.jdField_a_of_type_Jku == null) {
             break;
           }
-          this.jdField_a_of_type_Jir.a();
+          this.jdField_a_of_type_Jku.a();
           return;
         }
       }
@@ -102,13 +102,13 @@ public class GameHeroesProtocol
         continue;
         str = "" + l + paramLong;
       }
-      if ((jis)this.jdField_a_of_type_JavaUtilMap.get(str) != null) {
+      if ((jkv)this.jdField_a_of_type_JavaUtilMap.get(str) != null) {
         break;
       }
       if (QLog.isColorLevel()) {
         QLog.d("GameHeroesProtocol", 2, "[GameHeroesProtocol] ====== pull info ====== uin(" + paramString + "), groupId(" + paramLong + ")");
       }
-      paramString = new jis(this, l, paramLong, paramHeroDetail);
+      paramString = new jkv(this, l, paramLong, paramHeroDetail);
       this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
       paramString.start();
       return;
@@ -116,14 +116,14 @@ public class GameHeroesProtocol
     }
   }
   
-  void a(jir paramjir)
+  void a(jku paramjku)
   {
-    this.jdField_a_of_type_Jir = paramjir;
+    this.jdField_a_of_type_Jku = paramjku;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.guild.GameHeroesProtocol
  * JD-Core Version:    0.7.0.1
  */

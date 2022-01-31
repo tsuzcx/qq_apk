@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.bubble;
 
-import abkv;
-import abla;
-import ablb;
-import ablc;
-import abld;
-import able;
-import ablf;
-import ablg;
-import ablh;
-import abli;
+import abrw;
+import absb;
+import absc;
+import absd;
+import abse;
+import absf;
+import absg;
+import absh;
+import absi;
+import absj;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.Keyframe;
@@ -77,7 +77,7 @@ public class BubbleInterActiveAnim
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new abla(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new absb(this, Looper.getMainLooper());
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_Int = AIOUtils.a(12.0F, paramListView.getContext().getResources());
     this.c = AIOUtils.a(50.0F, paramListView.getContext().getResources());
@@ -441,7 +441,7 @@ public class BubbleInterActiveAnim
     }
     for (;;)
     {
-      localObjectAnimator.addListener(new able(this, (ObjectAnimator)localObject1, paramAnimHolder));
+      localObjectAnimator.addListener(new absf(this, (ObjectAnimator)localObject1, paramAnimHolder));
       return localObjectAnimator;
       l = localObjectAnimator.getDuration();
       break;
@@ -748,7 +748,7 @@ public class BubbleInterActiveAnim
   
   public void a(long paramLong1, long paramLong2)
   {
-    ThreadManager.post(new ablb(this, paramLong1, paramLong2), 5, null, true);
+    ThreadManager.post(new absc(this, paramLong1, paramLong2), 5, null, true);
   }
   
   public void a(BubbleInterActiveAnim.AnimHolder paramAnimHolder)
@@ -941,7 +941,7 @@ public class BubbleInterActiveAnim
     }
     ((ObjectAnimator)localObject2).setDuration(((ObjectAnimator)localObject2).getDuration() / 2L);
     ((ObjectAnimator)localObject2).setRepeatCount(-1);
-    ((ObjectAnimator)localObject1).addListener(new ablf(this, paramAnimHolder, (ObjectAnimator)localObject2));
+    ((ObjectAnimator)localObject1).addListener(new absg(this, paramAnimHolder, (ObjectAnimator)localObject2));
     return localObject1;
   }
   
@@ -1071,8 +1071,8 @@ public class BubbleInterActiveAnim
       return;
     }
     localAnimHolder.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3, localObject });
-    localAnimHolder.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new ablc(this, localAnimHolder));
-    this.jdField_a_of_type_AndroidOsHandler.post(new abld(this, localAnimHolder));
+    localAnimHolder.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new absd(this, localAnimHolder));
+    this.jdField_a_of_type_AndroidOsHandler.post(new abse(this, localAnimHolder));
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), localAnimHolder);
   }
   
@@ -1086,7 +1086,7 @@ public class BubbleInterActiveAnim
       return null;
     }
     localObjectAnimator.setRepeatCount(localInterActiveAnimConf.jdField_a_of_type_Int - 1);
-    localObjectAnimator.addListener(new ablg(this, paramAnimHolder));
+    localObjectAnimator.addListener(new absh(this, paramAnimHolder));
     return localObjectAnimator;
   }
   
@@ -1117,14 +1117,14 @@ public class BubbleInterActiveAnim
         if ((f < this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getTop()) || (f > this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getBottom() + this.jdField_d_of_type_Int))
         {
           QLog.w("BubbleInterActiveAnim", 1, String.format("setBitmapData: now scroll over screen, stop bubble animator set!, y: %d, up: %d, download: %d", new Object[] { Integer.valueOf((int)f), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getTop()), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getBottom() + this.jdField_d_of_type_Int) }));
-          this.jdField_a_of_type_AndroidOsHandler.post(new ablh(this, paramAnimFrameData));
+          this.jdField_a_of_type_AndroidOsHandler.post(new absi(this, paramAnimFrameData));
           return;
         }
       } while (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramAnimFrameData.jdField_a_of_type_JavaLangString));
       if (paramAnimFrameData.jdField_a_of_type_AndroidGraphicsBitmap != null)
       {
-        localObject = new abkv(paramAnimFrameData.jdField_a_of_type_AndroidGraphicsBitmap);
-        ((abkv)localObject).jdField_a_of_type_Boolean = paramAnimFrameData.jdField_a_of_type_JavaLangBoolean.booleanValue();
+        localObject = new abrw(paramAnimFrameData.jdField_a_of_type_AndroidGraphicsBitmap);
+        ((abrw)localObject).jdField_a_of_type_Boolean = paramAnimFrameData.jdField_a_of_type_JavaLangBoolean.booleanValue();
         paramAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
         this.jdField_a_of_type_JavaLangString = paramAnimFrameData.jdField_a_of_type_JavaLangString;
         paramAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.jdField_a_of_type_AndroidWidgetImageView.invalidate();
@@ -1135,8 +1135,8 @@ public class BubbleInterActiveAnim
       }
       localObject = (Bitmap)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramAnimFrameData.jdField_a_of_type_JavaLangString);
     } while (localObject == null);
-    Object localObject = new abkv((Bitmap)localObject);
-    ((abkv)localObject).jdField_a_of_type_Boolean = paramAnimFrameData.jdField_a_of_type_JavaLangBoolean.booleanValue();
+    Object localObject = new abrw((Bitmap)localObject);
+    ((abrw)localObject).jdField_a_of_type_Boolean = paramAnimFrameData.jdField_a_of_type_JavaLangBoolean.booleanValue();
     paramAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
     this.jdField_a_of_type_JavaLangString = paramAnimFrameData.jdField_a_of_type_JavaLangString;
     paramAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.jdField_a_of_type_AndroidWidgetImageView.invalidate();
@@ -1189,7 +1189,7 @@ public class BubbleInterActiveAnim
         break label585;
       }
       QLog.w("BubbleInterActiveAnim", 1, String.format("setPathLocation: now scroll over screen, stop bubble animator set!, y: %d, up: %d, down: %d", new Object[] { Integer.valueOf((int)f3), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getTop()), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getBottom() + this.jdField_d_of_type_Int) }));
-      this.jdField_a_of_type_AndroidOsHandler.post(new abli(this, paramAnimFrameData));
+      this.jdField_a_of_type_AndroidOsHandler.post(new absj(this, paramAnimFrameData));
       return;
       label456:
       if (paramAnimFrameData.jdField_a_of_type_ComTencentMobileqqBubblePathPoint.c != 0.0F)

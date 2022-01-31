@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.stt;
 
-import aikf;
+import aipa;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -124,7 +124,7 @@ public class SttManager
       HashMap localHashMap = new HashMap();
       localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
       localHashMap.put("param_FailCode", String.valueOf(paramInt));
-      localHashMap.put("appversion", "7.6.3");
+      localHashMap.put("appversion", "7.6.8");
       localStatisticCollector.a("", "PttSttEntryChange", false, 0L, 0L, localHashMap, "");
       return;
     }
@@ -190,11 +190,11 @@ public class SttManager
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
         }
-        localObject = (aikf)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localLong);
+        localObject = (aipa)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localLong);
         paramArrayOfByte = (byte[])localObject;
         if (localObject == null)
         {
-          paramArrayOfByte = new aikf(null);
+          paramArrayOfByte = new aipa(null);
           paramArrayOfByte.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(k);
           this.jdField_a_of_type_AndroidOsHandler.removeMessages(1, localLong);
           localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, localLong);

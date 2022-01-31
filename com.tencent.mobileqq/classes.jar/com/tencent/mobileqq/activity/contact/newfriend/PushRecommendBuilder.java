@@ -72,14 +72,14 @@ public class PushRecommendBuilder
     if ((paramView == null) || (!(paramView.getTag() instanceof PushRecommendBuilder.PushRecommendHolder)))
     {
       localPushRecommendHolder = new PushRecommendBuilder.PushRecommendHolder();
-      localView = a(this.jdField_a_of_type_AndroidContentContext, 2130970637, localPushRecommendHolder);
-      localPushRecommendHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366545));
-      localPushRecommendHolder.h = ((TextView)localView.findViewById(2131362894));
-      localPushRecommendHolder.i = ((TextView)localView.findViewById(2131369982));
-      localPushRecommendHolder.l = ((TextView)localView.findViewById(2131371532));
-      localPushRecommendHolder.j = ((TextView)localView.findViewById(2131369984));
-      localPushRecommendHolder.k = ((TextView)localView.findViewById(2131368974));
-      localPushRecommendHolder.a = ((Button)localView.findViewById(2131368973));
+      localView = a(this.jdField_a_of_type_AndroidContentContext, 2130970650, localPushRecommendHolder);
+      localPushRecommendHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366543));
+      localPushRecommendHolder.h = ((TextView)localView.findViewById(2131362899));
+      localPushRecommendHolder.i = ((TextView)localView.findViewById(2131369991));
+      localPushRecommendHolder.l = ((TextView)localView.findViewById(2131371530));
+      localPushRecommendHolder.j = ((TextView)localView.findViewById(2131369993));
+      localPushRecommendHolder.k = ((TextView)localView.findViewById(2131368975));
+      localPushRecommendHolder.a = ((Button)localView.findViewById(2131368974));
       localView.setTag(localPushRecommendHolder);
       localPushRecommendHolder.jdField_f_of_type_AndroidViewView.setTag(localPushRecommendHolder);
       localPushRecommendHolder.jdField_f_of_type_AndroidViewView.setOnClickListener(this);
@@ -88,7 +88,7 @@ public class PushRecommendBuilder
       if (this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage.a()) {
         break label961;
       }
-      localPushRecommendHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838589);
+      localPushRecommendHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838595);
       if (localPushRecommend.fromSource <= 20) {
         break label954;
       }
@@ -130,7 +130,7 @@ public class PushRecommendBuilder
       if ((TextUtils.isEmpty(localPushRecommend.uin)) || (!Utils.b(localPushRecommend.uin))) {
         break label1006;
       }
-      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839751);
+      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839766);
       paramView.setBounds(0, 0, AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       localPushRecommendHolder.h.setCompoundDrawables(null, null, paramView, null);
       paramInt = 0;
@@ -138,7 +138,7 @@ public class PushRecommendBuilder
       {
       default: 
         i = 0;
-        localPushRecommendHolder.l.setBackgroundResource(2130843120);
+        localPushRecommendHolder.l.setBackgroundResource(2130843152);
         if (localPushRecommend.age > 0)
         {
           localPushRecommendHolder.l.setText(String.valueOf(localPushRecommend.age));
@@ -174,11 +174,11 @@ public class PushRecommendBuilder
           localPushRecommendHolder.a.setVisibility(0);
           localPushRecommendHolder.a.setText("添加");
           localPushRecommendHolder.a.setTag(localPushRecommend);
-          paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494238);
+          paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494244);
           if (paramView != null) {
             localPushRecommendHolder.a.setTextColor(paramView);
           }
-          localPushRecommendHolder.a.setBackgroundResource(2130838520);
+          localPushRecommendHolder.a.setBackgroundResource(2130838526);
           localPushRecommendHolder.k.setVisibility(8);
           if (AppSetting.b)
           {
@@ -207,7 +207,7 @@ public class PushRecommendBuilder
       paramView = "0X8007793";
       break label231;
       label961:
-      localPushRecommendHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838585);
+      localPushRecommendHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838591);
       break label363;
       label975:
       paramView = localPushRecommend.nick;
@@ -222,8 +222,8 @@ public class PushRecommendBuilder
       localPushRecommendHolder.h.setCompoundDrawables(null, null, null, null);
       break label561;
       j = 1;
-      int k = 2130843119;
-      localPushRecommendHolder.l.setBackgroundResource(2130843120);
+      int k = 2130843151;
+      localPushRecommendHolder.l.setBackgroundResource(2130843152);
       i = k;
       paramInt = j;
       if (!AppSetting.b) {
@@ -234,8 +234,8 @@ public class PushRecommendBuilder
       paramInt = j;
       break label605;
       j = 1;
-      k = 2130843117;
-      localPushRecommendHolder.l.setBackgroundResource(2130843118);
+      k = 2130843149;
+      localPushRecommendHolder.l.setBackgroundResource(2130843150);
       i = k;
       paramInt = j;
       if (!AppSetting.b) {
@@ -262,7 +262,7 @@ public class PushRecommendBuilder
       localPushRecommendHolder.j.setText(localPushRecommend.sourceReason);
       if (localPushRecommend.fromSource == 1)
       {
-        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838234);
+        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838245);
         paramView.setBounds(0, 0, AIOUtils.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
         localPushRecommendHolder.j.setCompoundDrawables(paramView, null, null, null);
         localPushRecommendHolder.j.setCompoundDrawablePadding(AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
@@ -283,7 +283,7 @@ public class PushRecommendBuilder
       {
         localPushRecommendHolder.a.setVisibility(8);
         localPushRecommendHolder.k.setVisibility(0);
-        localPushRecommendHolder.k.setText(2131433048);
+        localPushRecommendHolder.k.setText(2131433062);
         if (AppSetting.b)
         {
           localStringBuilder.append(",等待验证");
@@ -294,7 +294,7 @@ public class PushRecommendBuilder
       {
         localPushRecommendHolder.a.setVisibility(8);
         localPushRecommendHolder.k.setVisibility(0);
-        localPushRecommendHolder.k.setText(2131433034);
+        localPushRecommendHolder.k.setText(2131433048);
         if (AppSetting.b)
         {
           localStringBuilder.append(",已添加");
@@ -328,7 +328,7 @@ public class PushRecommendBuilder
     {
     default: 
       a(paramView);
-    case 2131366544: 
+    case 2131366542: 
       do
       {
         do
@@ -390,7 +390,7 @@ public class PushRecommendBuilder
       }
       if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433009), 0).b(b());
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433023), 0).b(b());
         return;
       }
       localPushRecommend = (PushRecommend)paramView;
@@ -421,7 +421,7 @@ public class PushRecommendBuilder
       label922:
       for (;;)
       {
-        localObject = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, localPushRecommend.uin, null, i, j, paramView, null, null, this.jdField_a_of_type_AndroidContentContext.getString(2131435226), null);
+        localObject = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, localPushRecommend.uin, null, i, j, paramView, null, null, this.jdField_a_of_type_AndroidContentContext.getString(2131435242), null);
         if (localPushRecommend.wzrySourceId > 0)
         {
           ((Intent)localObject).putExtra("param_wzry_data", KplRoleInfo.WZRYUIinfo.createInfo(localPushRecommend.uin, paramView, localPushRecommend.wzryVerifyStr, localPushRecommend.sourceId, localPushRecommend.subSourceId));

@@ -18,11 +18,11 @@ import com.tencent.mobileqq.ar.ARRecord.renderer.ARTextureRender;
 import com.tencent.mobileqq.ar.ScanEntranceDPC;
 import com.tencent.mobileqq.arcard.ARCardUtils;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglCore;
 import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import javax.microedition.khronos.egl.EGLConfig;
 
 public class VideoRecordController
   implements Handler.Callback, ARVideoRecordDataSource, VideoEncoder.VideoEncoderCallback
@@ -93,7 +93,7 @@ public class VideoRecordController
   {
     QLog.d("VideoRecordController", 2, String.format("loadWaterMarkTexture screenWidth=%s screenHeight=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     if (this.jdField_b_of_type_Int == -1) {
-      this.jdField_b_of_type_Int = 2130838182;
+      this.jdField_b_of_type_Int = 2130838187;
     }
     try
     {
@@ -398,16 +398,7 @@ public class VideoRecordController
     this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener = paramRecordListener;
   }
   
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.h = true;
-    }
-  }
-  
-  public void a(EGLConfig arg1, int paramInt1, int paramInt2)
+  public void a(EglCore paramEglCore, int paramInt1, int paramInt2)
   {
     QLog.d("VideoRecordController", 2, String.format("doStartRecord mState=%s mIsRecording=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State, Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -423,29 +414,38 @@ public class VideoRecordController
         this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder = new VideoEncoder();
         this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig, this);
         this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder.a();
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface = new VideoEncoderWindowSurface(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.a(), this.jdField_a_of_type_AndroidViewSurface);
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderWindowSurface = new VideoEncoderWindowSurface(paramEglCore, this.jdField_a_of_type_AndroidViewSurface);
         this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = new TextureRender();
         this.jdField_a_of_type_ComTencentMobileqqArARRecordRendererARTextureRender = new ARTextureRender();
         a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_b_of_type_Int);
         if (!FileUtil.a(this.jdField_b_of_type_JavaLangString)) {
-          break label260;
+          break label257;
         }
         this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController = new PcmRecordController(this, this.jdField_b_of_type_JavaLangString);
         this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController.b();
         f();
         this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$State = VideoRecordController.State.STARTED;
       }
-      catch (Exception localException)
+      catch (Exception paramEglCore)
       {
         for (;;)
         {
-          label260:
-          QLog.e("VideoRecordController", 1, "doStartRecord fail.", localException);
+          label257:
+          QLog.e("VideoRecordController", 1, "doStartRecord fail.", paramEglCore);
           c(1);
         }
       }
       return;
       this.jdField_a_of_type_ComTencentMobileqqArARRecordAudioRecordController = new MicRecordController(this);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.h = true;
     }
   }
   

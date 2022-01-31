@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.imaxad.ImaxAdUtil;
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
 
 public class adsx
-  implements TVK_SDKMgr.InstallListener
+  implements DialogInterface.OnClickListener
 {
-  public adsx(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager) {}
+  public adsx(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ImaxAdUtil.b("installSDK onInstalledFailed arg0=" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    ImaxAdUtil.b("installSDK onInstalledSuccessed");
-    ImaxAdVideoPreloadManager.a(this.a);
+    ForwardFileBaseOption.a(this.a, false);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adsx
  * JD-Core Version:    0.7.0.1
  */

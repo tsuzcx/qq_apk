@@ -1,17 +1,27 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import cooperation.qzone.QzoneGiftFullScreenViewController;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.dingdong.data.ScheduleTipsDialog;
 
-class amss
-  implements Runnable
+public class amss
+  extends BroadcastReceiver
 {
-  amss(amsr paramamsr, ActionGlobalData paramActionGlobalData) {}
+  public amss(ScheduleTipsDialog paramScheduleTipsDialog) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    URLDrawable.pause();
-    ((View)this.jdField_a_of_type_Amsr.a.a).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.a);
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey")) && (ScheduleTipsDialog.b(this.a))) {
+        ScheduleTipsDialog.a(this.a, this.a);
+      }
+    }
+    while ((!paramContext.equals("android.intent.action.SCREEN_OFF")) || (!ScheduleTipsDialog.b(this.a))) {
+      return;
+    }
+    ScheduleTipsDialog.a(this.a, this.a);
   }
 }
 

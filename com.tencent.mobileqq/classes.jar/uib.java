@@ -1,17 +1,24 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class uib
-  extends AnimateUtils.AnimationAdapter
+  implements View.OnClickListener
 {
-  public uib(VisitorsActivity paramVisitorsActivity) {}
+  public uib(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_f_of_type_Boolean = true;
+    paramView = new Intent(this.a, AccountDetailActivity.class);
+    paramView.putExtra("uin", this.a.a.req_uin.get() + "");
+    paramView.putExtra("source", 112);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
   }
 }
 

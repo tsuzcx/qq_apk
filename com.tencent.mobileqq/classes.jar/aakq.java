@@ -1,49 +1,19 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public abstract class aakq
+public class aakq
+  implements Runnable
 {
-  final long a = AudioHelper.a();
-  public int g = 1;
+  public aakq(ScanEntranceReport paramScanEntranceReport, int paramInt1, int paramInt2, long paramLong) {}
   
-  abstract void a();
-  
-  final void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      this.g = 20;
-      return;
-    }
-    this.g = 36;
-  }
-  
-  public final boolean a()
-  {
-    return (this.g != 20) && (this.g != 2);
-  }
-  
-  abstract boolean a(Resources paramResources);
-  
-  public final void b()
-  {
-    this.g = 2;
-  }
-  
-  public final boolean b()
-  {
-    return (this.g & 0x2) == 2;
-  }
-  
-  public final void c()
-  {
-    this.g = 1;
-    a();
-  }
-  
-  public final boolean c()
-  {
-    return (this.g & 0x14) == 20;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("zoom_count", String.valueOf(this.b));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_qr_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-class aaos
+public class aaos
   implements Runnable
 {
-  aaos(aaor paramaaor, String paramString1, String paramString2) {}
+  public aaos(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
-    ArkAppDeviceModule.a(this.jdField_a_of_type_Aaor.jdField_a_of_type_Aaoq.a, this.jdField_a_of_type_Aaor.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
+    if (this.jdField_a_of_type_Boolean) {
+      localHashMap.put("result", "0");
+    }
+    for (;;)
+    {
+      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalFaceRecogInit", true, 0L, 0L, localHashMap, "");
+      return;
+      localHashMap.put("result", "1");
+    }
   }
 }
 

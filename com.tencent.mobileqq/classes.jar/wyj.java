@@ -1,28 +1,17 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wyj
-  implements View.OnClickListener
+class wyj
+  implements Runnable
 {
-  public wyj(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  wyj(wyi paramwyi, Bitmap paramBitmap) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.a.b.isChecked())
-    {
-      if (this.a.a() > 0)
-      {
-        QQToast.a(this.a, this.a.getResources().getString(2131435920), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
-        return;
-      }
-      this.a.b.setChecked(true);
-      return;
-    }
-    this.a.b.setChecked(false);
+    this.jdField_a_of_type_Wyi.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_Wyi.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
 }
 

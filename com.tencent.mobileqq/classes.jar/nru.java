@@ -1,17 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.mobileqq.app.ContactSorter;
+import java.util.Comparator;
 
 public class nru
-  implements nrp
+  implements Comparator
 {
-  public nru(ShareGroupIconManager paramShareGroupIconManager, List paramList, String paramString) {}
+  public nru(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  @NonNull
-  public Stream a(nrl paramnrl)
+  public int a(QQUserUIItem paramQQUserUIItem1, QQUserUIItem paramQQUserUIItem2)
   {
-    return ShareGroupIconManager.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    return ContactSorter.a(paramQQUserUIItem1.mComparePartInt, paramQQUserUIItem1.mCompareSpell, paramQQUserUIItem2.mComparePartInt, paramQQUserUIItem2.mCompareSpell);
   }
 }
 

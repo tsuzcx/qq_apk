@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.leba.view.LebaGridIndicator.onPageSeletedListener;
+import com.tencent.mobileqq.leba.view.LebaTopBarView;
 
 public class aeix
-  implements DialogInterface.OnClickListener
+  implements LebaGridIndicator.onPageSeletedListener
 {
-  public aeix(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aeix(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    LebaWithFeeds.a(this.a).c(1);
   }
 }
 

@@ -1,12 +1,14 @@
-import android.graphics.Path;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
 
-public class utc
+class utc
+  implements Runnable
 {
-  public int a;
-  public Path a;
-  public List a;
-  public boolean a;
+  utc(utb paramutb) {}
+  
+  public void run()
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation.c(this.a.jdField_a_of_type_ArrayOfJavaLangObject);
+  }
 }
 
 

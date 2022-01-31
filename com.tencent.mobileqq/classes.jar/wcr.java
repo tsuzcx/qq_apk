@@ -1,5 +1,6 @@
-import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 class wcr
   implements Runnable
@@ -8,8 +9,10 @@ class wcr
   
   public void run()
   {
-    FraudTipsBar.a(this.a.a, 2);
-    FraudTipsBar.a(this.a.a).a();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("isNeedFinish", true);
+    this.a.a.a.setResult(-1, localIntent);
+    this.a.a.A();
   }
 }
 

@@ -16,7 +16,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import zrf;
+import zxq;
 
 public class MonitorSocketDownload
   extends AsyncStep
@@ -30,7 +30,7 @@ public class MonitorSocketDownload
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new zrf();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new zxq();
   }
   
   private int b()

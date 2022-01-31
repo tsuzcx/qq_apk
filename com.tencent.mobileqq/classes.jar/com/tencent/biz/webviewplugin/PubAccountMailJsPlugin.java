@@ -17,8 +17,8 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
-import pce;
-import pcf;
+import pgw;
+import pgx;
 
 public class PubAccountMailJsPlugin
   extends WebViewPlugin
@@ -69,15 +69,15 @@ public class PubAccountMailJsPlugin
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog == null)
     {
       QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-      localQQCustomMenu.a(1, localActivity.getString(2131437495));
-      localQQCustomMenu.a(2, localActivity.getString(2131437496));
-      localQQCustomMenu.a(String.format(localActivity.getString(2131437494), new Object[] { this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog = DialogUtil.a(localActivity, localQQCustomMenu, new pcf(this));
+      localQQCustomMenu.a(1, localActivity.getString(2131437515));
+      localQQCustomMenu.a(2, localActivity.getString(2131437516));
+      localQQCustomMenu.a(String.format(localActivity.getString(2131437514), new Object[] { this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog = DialogUtil.a(localActivity, localQQCustomMenu, new pgx(this));
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog != null) {}
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog.setTitle(String.format(localActivity.getString(2131437494), new Object[] { this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog.setTitle(String.format(localActivity.getString(2131437514), new Object[] { this.jdField_a_of_type_JavaLangString }));
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog.show();
   }
@@ -123,18 +123,18 @@ public class PubAccountMailJsPlugin
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(this.mRuntime.a());
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131435092), this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131437493);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131437494);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435093);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new pce(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131435108), this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131437513);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131437514);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435109);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new pgw(this));
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       return;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(0, String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131435092), this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(0, String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131435108), this.jdField_a_of_type_JavaLangString }));
     }
   }
   

@@ -1,35 +1,27 @@
-import android.os.SystemClock;
-import com.tencent.av.avgesture.AVGestureWrapper;
-import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask;
-import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask.GestureDetectTaskResult;
-import com.tencent.mobileqq.shortvideo.facedancegame.GestureDetectManager;
-import com.tencent.mobileqq.shortvideo.facedancegame.IGestureDetectCallBack;
+import com.tencent.mobileqq.search.model.PublicAccountSearchResultModel;
+import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
+import java.util.Comparator;
 
-public class aibe
-  implements Runnable
+public final class aibe
+  implements Comparator
 {
-  public aibe(GestureDetectManager paramGestureDetectManager, byte[] paramArrayOfByte, int paramInt1, int paramInt2, IGestureDetectCallBack paramIGestureDetectCallBack) {}
-  
-  public void run()
+  public int a(PublicAccountSearchResultModel paramPublicAccountSearchResultModel1, PublicAccountSearchResultModel paramPublicAccountSearchResultModel2)
   {
-    long l = SystemClock.elapsedRealtimeNanos();
-    AVGestureWrapper localAVGestureWrapper = new AVGestureWrapper();
-    boolean bool = localAVGestureWrapper.doCalc(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, 0, 0, true);
-    FaceDanceDetectTask.a("AVGestureWrapper.doCalc", l, SystemClock.elapsedRealtimeNanos());
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFacedancegameIGestureDetectCallBack != null)
-    {
-      FaceDanceDetectTask.GestureDetectTaskResult localGestureDetectTaskResult = new FaceDanceDetectTask.GestureDetectTaskResult();
-      localGestureDetectTaskResult.jdField_a_of_type_Boolean = bool;
-      if (bool) {
-        localGestureDetectTaskResult.jdField_a_of_type_JavaLangString = localAVGestureWrapper.getGestureType();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFacedancegameIGestureDetectCallBack.a(localGestureDetectTaskResult);
+    int j = Long.signum(paramPublicAccountSearchResultModel2.b() - paramPublicAccountSearchResultModel1.b());
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(paramPublicAccountSearchResultModel2.a() - paramPublicAccountSearchResultModel1.a());
     }
+    j = i;
+    if (i == 0) {
+      j = PublicAccountSearchEngine.a(paramPublicAccountSearchResultModel1, paramPublicAccountSearchResultModel2);
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aibe
  * JD-Core Version:    0.7.0.1
  */

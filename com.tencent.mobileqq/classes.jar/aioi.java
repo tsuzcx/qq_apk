@@ -1,19 +1,31 @@
-import android.content.Context;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemPAAudio;
 
 public class aioi
-  implements Runnable
+  extends URLDrawableDownListener.Adapter
 {
-  public aioi(ThemeSwitchManager paramThemeSwitchManager, Context paramContext, String paramString) {}
+  public aioi(StructMsgItemPAAudio paramStructMsgItemPAAudio) {}
   
-  public void run()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, "漫游主题已更新", 4000).a();
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeSwitchManager", 2, "setSkinTheme, QQToast.makeText: set sv theme id=" + this.jdField_a_of_type_JavaLangString);
-    }
+    super.onLoadCancelled(paramView, paramURLDrawable);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(paramURLDrawable);
   }
 }
 

@@ -5,8 +5,8 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
-import jmh;
-import jmi;
+import jok;
+import jol;
 
 public class VideoConnRateReport
 {
@@ -869,7 +869,7 @@ public class VideoConnRateReport
   
   public void a()
   {
-    new Thread(new jmh(this)).start();
+    new Thread(new jok(this)).start();
   }
   
   public void a(long paramLong)
@@ -1447,7 +1447,7 @@ public class VideoConnRateReport
     //   72: checkcast 75	com/tencent/av/report/VideoSerializeData
     //   75: astore 7
     //   77: aload 5
-    //   79: ifnull +456 -> 535
+    //   79: ifnull +463 -> 542
     //   82: aload 5
     //   84: invokevirtual 452	java/io/ByteArrayInputStream:close	()V
     //   87: iconst_1
@@ -1526,16 +1526,16 @@ public class VideoConnRateReport
     //   235: goto -128 -> 107
     //   238: astore_1
     //   239: aconst_null
-    //   240: astore 5
-    //   242: aconst_null
-    //   243: astore_1
-    //   244: aload 5
-    //   246: ifnull +8 -> 254
-    //   249: aload 5
-    //   251: invokevirtual 452	java/io/ByteArrayInputStream:close	()V
-    //   254: aload_1
-    //   255: ifnull +7 -> 262
-    //   258: aload_1
+    //   240: astore_1
+    //   241: aconst_null
+    //   242: astore 5
+    //   244: aload_1
+    //   245: ifnull +7 -> 252
+    //   248: aload_1
+    //   249: invokevirtual 452	java/io/ByteArrayInputStream:close	()V
+    //   252: aload 5
+    //   254: ifnull +8 -> 262
+    //   257: aload 5
     //   259: invokevirtual 453	java/io/ObjectInputStream:close	()V
     //   262: iconst_0
     //   263: ifeq -253 -> 10
@@ -1606,7 +1606,7 @@ public class VideoConnRateReport
     //   395: aconst_null
     //   396: astore 6
     //   398: aload 5
-    //   400: ifnull +130 -> 530
+    //   400: ifnull +137 -> 537
     //   403: aload 5
     //   405: invokevirtual 452	java/io/ByteArrayInputStream:close	()V
     //   408: iconst_1
@@ -1628,79 +1628,82 @@ public class VideoConnRateReport
     //   438: astore_1
     //   439: iconst_0
     //   440: ireturn
-    //   441: astore 5
-    //   443: goto -189 -> 254
-    //   446: astore_1
-    //   447: iconst_0
-    //   448: ireturn
-    //   449: astore_1
-    //   450: goto -159 -> 291
-    //   453: astore_1
-    //   454: iconst_0
-    //   455: ireturn
-    //   456: astore_1
-    //   457: goto -127 -> 330
-    //   460: astore_1
-    //   461: iconst_0
-    //   462: ireturn
-    //   463: astore_1
-    //   464: goto -95 -> 369
-    //   467: astore_1
-    //   468: iconst_0
-    //   469: ireturn
-    //   470: astore_1
-    //   471: iconst_0
-    //   472: ireturn
-    //   473: astore_1
-    //   474: aconst_null
-    //   475: astore 6
-    //   477: goto -79 -> 398
-    //   480: astore_1
-    //   481: goto -83 -> 398
-    //   484: astore_1
-    //   485: aconst_null
-    //   486: astore 6
-    //   488: goto -129 -> 359
-    //   491: astore_1
-    //   492: goto -133 -> 359
-    //   495: astore_1
-    //   496: aconst_null
-    //   497: astore 6
-    //   499: goto -179 -> 320
-    //   502: astore_1
-    //   503: goto -183 -> 320
-    //   506: astore_1
-    //   507: aconst_null
-    //   508: astore 6
-    //   510: goto -229 -> 281
-    //   513: astore_1
-    //   514: goto -233 -> 281
-    //   517: astore_1
-    //   518: aconst_null
+    //   441: astore_1
+    //   442: goto -190 -> 252
+    //   445: astore_1
+    //   446: iconst_0
+    //   447: ireturn
+    //   448: astore_1
+    //   449: goto -158 -> 291
+    //   452: astore_1
+    //   453: iconst_0
+    //   454: ireturn
+    //   455: astore_1
+    //   456: goto -126 -> 330
+    //   459: astore_1
+    //   460: iconst_0
+    //   461: ireturn
+    //   462: astore_1
+    //   463: goto -94 -> 369
+    //   466: astore_1
+    //   467: iconst_0
+    //   468: ireturn
+    //   469: astore_1
+    //   470: iconst_0
+    //   471: ireturn
+    //   472: astore_1
+    //   473: aconst_null
+    //   474: astore 6
+    //   476: goto -78 -> 398
+    //   479: astore_1
+    //   480: goto -82 -> 398
+    //   483: astore_1
+    //   484: aconst_null
+    //   485: astore 6
+    //   487: goto -128 -> 359
+    //   490: astore_1
+    //   491: goto -132 -> 359
+    //   494: astore_1
+    //   495: aconst_null
+    //   496: astore 6
+    //   498: goto -178 -> 320
+    //   501: astore_1
+    //   502: goto -182 -> 320
+    //   505: astore_1
+    //   506: aconst_null
+    //   507: astore 6
+    //   509: goto -228 -> 281
+    //   512: astore_1
+    //   513: goto -232 -> 281
+    //   516: astore_1
+    //   517: aload 5
     //   519: astore_1
-    //   520: goto -276 -> 244
-    //   523: astore_1
-    //   524: aload 6
+    //   520: aconst_null
+    //   521: astore 5
+    //   523: goto -279 -> 244
     //   526: astore_1
-    //   527: goto -283 -> 244
-    //   530: iconst_1
-    //   531: istore_2
-    //   532: goto -122 -> 410
-    //   535: iconst_1
-    //   536: istore_3
-    //   537: goto -448 -> 89
+    //   527: aload 5
+    //   529: astore_1
+    //   530: aload 6
+    //   532: astore 5
+    //   534: goto -290 -> 244
+    //   537: iconst_1
+    //   538: istore_2
+    //   539: goto -129 -> 410
+    //   542: iconst_1
+    //   543: istore_3
+    //   544: goto -455 -> 89
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	540	0	this	VideoConnRateReport
-    //   0	540	1	paramString	String
-    //   0	540	2	paramBoolean	boolean
-    //   88	449	3	bool1	boolean
+    //   0	547	0	this	VideoConnRateReport
+    //   0	547	1	paramString	String
+    //   0	547	2	paramBoolean	boolean
+    //   88	456	3	bool1	boolean
     //   105	129	4	bool2	boolean
     //   49	34	5	localByteArrayInputStream	java.io.ByteArrayInputStream
-    //   110	1	5	localIOException1	java.io.IOException
-    //   207	197	5	str	String
-    //   441	1	5	localIOException2	java.io.IOException
-    //   60	465	6	localObjectInputStream	java.io.ObjectInputStream
+    //   110	1	5	localIOException	java.io.IOException
+    //   207	326	5	localObject	Object
+    //   60	471	6	localObjectInputStream	java.io.ObjectInputStream
     //   1	215	7	localVideoSerializeData	VideoSerializeData
     // Exception table:
     //   from	to	target	type
@@ -1712,25 +1715,25 @@ public class VideoConnRateReport
     //   12	51	391	finally
     //   403	408	432	java/io/IOException
     //   94	99	438	java/lang/Exception
-    //   249	254	441	java/io/IOException
-    //   258	262	446	java/lang/Exception
-    //   286	291	449	java/io/IOException
-    //   296	301	453	java/lang/Exception
-    //   325	330	456	java/io/IOException
-    //   335	340	460	java/lang/Exception
-    //   364	369	463	java/io/IOException
-    //   374	379	467	java/lang/Exception
-    //   415	420	470	java/lang/Exception
-    //   51	62	473	finally
-    //   67	77	480	finally
-    //   51	62	484	java/io/IOException
-    //   67	77	491	java/io/IOException
-    //   51	62	495	java/lang/ClassNotFoundException
-    //   67	77	502	java/lang/ClassNotFoundException
-    //   51	62	506	java/io/OptionalDataException
-    //   67	77	513	java/io/OptionalDataException
-    //   51	62	517	java/io/FileNotFoundException
-    //   67	77	523	java/io/FileNotFoundException
+    //   248	252	441	java/io/IOException
+    //   257	262	445	java/lang/Exception
+    //   286	291	448	java/io/IOException
+    //   296	301	452	java/lang/Exception
+    //   325	330	455	java/io/IOException
+    //   335	340	459	java/lang/Exception
+    //   364	369	462	java/io/IOException
+    //   374	379	466	java/lang/Exception
+    //   415	420	469	java/lang/Exception
+    //   51	62	472	finally
+    //   67	77	479	finally
+    //   51	62	483	java/io/IOException
+    //   67	77	490	java/io/IOException
+    //   51	62	494	java/lang/ClassNotFoundException
+    //   67	77	501	java/lang/ClassNotFoundException
+    //   51	62	505	java/io/OptionalDataException
+    //   67	77	512	java/io/OptionalDataException
+    //   51	62	516	java/io/FileNotFoundException
+    //   67	77	526	java/io/FileNotFoundException
   }
   
   public void b()
@@ -1738,13 +1741,13 @@ public class VideoConnRateReport
     if (!this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Boolean = true;
-      new Thread(new jmi(this)).start();
+      new Thread(new jol(this)).start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.report.VideoConnRateReport
  * JD-Core Version:    0.7.0.1
  */

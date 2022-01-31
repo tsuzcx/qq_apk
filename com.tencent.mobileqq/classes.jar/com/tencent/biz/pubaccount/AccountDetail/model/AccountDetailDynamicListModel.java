@@ -18,7 +18,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import kqh;
+import kso;
 import mqq.app.NewIntent;
 
 public class AccountDetailDynamicListModel
@@ -129,7 +129,7 @@ public class AccountDetailDynamicListModel
     NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), PublicAccountServlet.class);
     localNewIntent.putExtra("cmd", "pull_account_detail_dynamic_list");
     Object localObject = new account_detail_dynamic_list.AccountDetailDynamicListRequest();
-    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).versionInfo.set("7.6.3,3,3565");
+    ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).versionInfo.set("7.6.8,3,3615");
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).puin.set(paramLong1);
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).last_msg_id.set(paramLong2);
     ((account_detail_dynamic_list.AccountDetailDynamicListRequest)localObject).msg_cnt.set(paramInt);
@@ -164,7 +164,7 @@ public class AccountDetailDynamicListModel
       for (localObject = "02";; localObject = "01")
       {
         PublicAccountReportUtils.a(null, str1, "0X80077FF", "0X80077FF", 0, 0, "1", str2, (String)localObject, String.valueOf(i), false);
-        localNewIntent.setObserver(new kqh(paramQQAppInterface, bool, paramPublicAccountObserver));
+        localNewIntent.setObserver(new kso(paramQQAppInterface, bool, paramPublicAccountObserver));
         paramQQAppInterface.startServlet(localNewIntent);
         if (QLog.isColorLevel()) {
           QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList exit");

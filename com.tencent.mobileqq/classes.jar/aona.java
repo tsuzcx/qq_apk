@@ -1,48 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
 
 public class aona
-  extends AnimatorListenerAdapter
+  extends Property
 {
-  public aona(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout, boolean paramBoolean) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public aona(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraSegmentCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + " segmentShot:" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.c.get() + ", mActionUpAnimator:" + this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.b.get());
-    }
-    if (!this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.b.get())
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      }
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.c.set(true);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCountTimeLayout.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.b.set(false);
-      return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.d();
-        this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a(1.0F);
-      }
-    }
+    super(paramClass, paramString);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public Integer a(MarkDrawable paramMarkDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraSegmentCaptureLayout", 2, "scaleAnimator start!");
+    if (paramMarkDrawable != null) {
+      return Integer.valueOf(MarkDrawable.a(paramMarkDrawable));
+    }
+    return Integer.valueOf(0);
+  }
+  
+  public void a(MarkDrawable paramMarkDrawable, Integer paramInteger)
+  {
+    if (paramMarkDrawable != null) {
+      MarkDrawable.a(paramMarkDrawable, paramInteger.intValue());
     }
   }
 }

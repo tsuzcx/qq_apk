@@ -1,18 +1,33 @@
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.mobileqq.ar.ARMusicController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
 public class aaee
-  implements Runnable
+  implements SoundPool.OnLoadCompleteListener
 {
-  public aaee(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData1, ScanningData paramScanningData2) {}
+  public aaee(ARMusicController paramARMusicController) {}
   
-  public void run()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    ScanningData localScanningData = this.jdField_a_of_type_ComTencentMobileqqArScanningData;
-    if ((this.b != null) && (this.b.a) && (this.b.f) && (!this.b.e)) {}
-    for (boolean bool = true;; bool = false)
+    if (paramInt2 != 0) {}
+    try
     {
-      localScanningData.a(bool);
+      QLog.e("ARMusicController", 2, "load fire music failed. id=" + paramInt1);
+      return;
+    }
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. id=" + paramInt1);
+    }
+    ARMusicController.a(this.a).add(Integer.valueOf(paramInt1));
+    if (ARMusicController.b(this.a).contains(Integer.valueOf(paramInt1)))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
       return;
     }
   }

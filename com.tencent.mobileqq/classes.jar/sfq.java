@@ -1,30 +1,24 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
 
-public class sfq
-  extends ContactBindObserver
+class sfq
+  implements Runnable
 {
-  public sfq(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  sfq(sfp paramsfp, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    if (paramBoolean1)
+    this.jdField_a_of_type_Sfp.a.a.d();
+    if (this.jdField_a_of_type_Boolean)
     {
-      int i = ContactSyncJumpActivity.a(this.a).c();
-      if ((i == 1) || (i == 5))
-      {
-        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
-        this.a.finish();
-      }
+      this.jdField_a_of_type_Sfp.a.a.b(false);
+      return;
     }
+    this.jdField_a_of_type_Sfp.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     sfq
  * JD-Core Version:    0.7.0.1
  */

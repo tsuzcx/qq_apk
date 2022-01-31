@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg;
 
-import aiih;
+import ainc;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.SparseArray;
@@ -32,7 +32,7 @@ public class StructMsgGroupElement
   {
     this.jdField_a_of_type_AndroidUtilSparseArray = null;
     this.jdField_a_of_type_AndroidViewViewGroup = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiih(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ainc(this);
     this.jdField_a_of_type_JavaLangString = "group";
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
@@ -63,17 +63,17 @@ public class StructMsgGroupElement
         break label280;
       }
       paramView = ((AbsStructMsgElement)localObject).a(paramContext, null, paramBundle);
-      localView = paramView.findViewById(2131362367);
+      localView = paramView.findViewById(2131362370);
       if (localView != null)
       {
-        if ((LinearLayout)paramView.findViewById(2131362365) != null) {
+        if ((LinearLayout)paramView.findViewById(2131362368) != null) {
           break label258;
         }
         localView.setOnClickListener((View.OnClickListener)localObject);
         localView.setTag(localObject);
-        localObject = (ImageView)paramView.findViewById(2131362366);
+        localObject = (ImageView)paramView.findViewById(2131362369);
         if (localObject != null) {
-          ((ImageView)localObject).setBackgroundResource(2130841723);
+          ((ImageView)localObject).setBackgroundResource(2130841750);
         }
       }
       label178:

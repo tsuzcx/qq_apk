@@ -12,11 +12,11 @@ import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.widget.ActionSheet;
 import java.io.File;
 import java.util.List;
-import klu;
-import klv;
-import klw;
-import klx;
-import kly;
+import kob;
+import koc;
+import kod;
+import koe;
+import kof;
 
 public class FileChooserHelper
 {
@@ -37,17 +37,17 @@ public class FileChooserHelper
   
   private void a(Activity paramActivity)
   {
-    Object localObject = new File(AppConstants.aJ + "photo/");
+    Object localObject = new File(AppConstants.aK + "photo/");
     if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
     {
       a();
-      QQToast.a(paramActivity, 1, paramActivity.getString(2131435028), 0).a();
+      QQToast.a(paramActivity, 1, paramActivity.getString(2131435044), 0).a();
       return;
     }
     this.jdField_a_of_type_AndroidNetUri = Uri.fromFile(new File((File)localObject, "IMG_" + System.currentTimeMillis() + ".jpg"));
     localObject = new Intent("android.media.action.IMAGE_CAPTURE");
     ((Intent)localObject).putExtra("output", this.jdField_a_of_type_AndroidNetUri);
-    a(paramActivity, (Intent)localObject, 2131434794);
+    a(paramActivity, (Intent)localObject, 2131434810);
   }
   
   private void a(Activity paramActivity, Intent paramIntent, int paramInt)
@@ -84,28 +84,28 @@ public class FileChooserHelper
       str = "*/*";
     }
     localIntent.setType(str);
-    a(paramActivity, localIntent, 2131435029);
+    a(paramActivity, localIntent, 2131435045);
   }
   
   private void b(Activity paramActivity)
   {
-    Object localObject = new File(AppConstants.aJ + "photo/");
+    Object localObject = new File(AppConstants.aK + "photo/");
     if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
     {
       a();
-      QQToast.a(paramActivity, 1, paramActivity.getString(2131435028), 0).a();
+      QQToast.a(paramActivity, 1, paramActivity.getString(2131435044), 0).a();
       return;
     }
     this.jdField_a_of_type_AndroidNetUri = Uri.fromFile(new File((File)localObject, "VID_" + System.currentTimeMillis() + ".mp4"));
     localObject = new Intent("android.media.action.VIDEO_CAPTURE");
     ((Intent)localObject).putExtra("output", this.jdField_a_of_type_AndroidNetUri);
     ((Intent)localObject).putExtra("android.intent.extra.videoQuality", 1);
-    a(paramActivity, (Intent)localObject, 2131434794);
+    a(paramActivity, (Intent)localObject, 2131434810);
   }
   
   private void c(Activity paramActivity)
   {
-    a(paramActivity, new Intent("android.provider.MediaStore.RECORD_SOUND"), 2131435031);
+    a(paramActivity, new Intent("android.provider.MediaStore.RECORD_SOUND"), 2131435047);
   }
   
   public void a(Activity paramActivity, int paramInt, ValueCallback paramValueCallback, String paramString1, String paramString2)
@@ -157,13 +157,13 @@ public class FileChooserHelper
       if (paramInt != 0)
       {
         paramString2 = ActionSheet.a(paramActivity);
-        paramString2.a(new klu(this));
-        paramString2.setOnCancelListener(new klv(this));
+        paramString2.a(new kob(this));
+        paramString2.setOnCancelListener(new koc(this));
         if (paramValueCallback.equals("camera"))
         {
-          paramString2.a(paramActivity.getString(2131434991), 0);
-          paramString2.a(paramActivity.getString(2131435621), 0);
-          paramString2.a(new klw(this, paramActivity, paramString1, paramString2));
+          paramString2.a(paramActivity.getString(2131435007), 0);
+          paramString2.a(paramActivity.getString(2131435637), 0);
+          paramString2.a(new kod(this, paramActivity, paramString1, paramString2));
         }
         for (;;)
         {
@@ -186,15 +186,15 @@ public class FileChooserHelper
           break label144;
           if (paramValueCallback.equals("camcorder"))
           {
-            paramString2.a(paramActivity.getString(2131436159), 0);
-            paramString2.a(paramActivity.getString(2131435621), 0);
-            paramString2.a(new klx(this, paramActivity, paramString1, paramString2));
+            paramString2.a(paramActivity.getString(2131436177), 0);
+            paramString2.a(paramActivity.getString(2131435637), 0);
+            paramString2.a(new koe(this, paramActivity, paramString1, paramString2));
           }
           else if (paramValueCallback.equals("microphone"))
           {
-            paramString2.a(paramActivity.getString(2131435030), 0);
-            paramString2.a(paramActivity.getString(2131435621), 0);
-            paramString2.a(new kly(this, paramActivity, paramString1, paramString2));
+            paramString2.a(paramActivity.getString(2131435046), 0);
+            paramString2.a(paramActivity.getString(2131435637), 0);
+            paramString2.a(new kof(this, paramActivity, paramString1, paramString2));
           }
         }
       }

@@ -13,7 +13,7 @@ public class SignatureTemplateConfig
     //   0: new 19	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 20	java/lang/StringBuilder:<init>	()V
-    //   7: getstatic 26	com/tencent/mobileqq/app/AppConstants:bx	Ljava/lang/String;
+    //   7: getstatic 26	com/tencent/mobileqq/app/AppConstants:by	Ljava/lang/String;
     //   10: invokevirtual 30	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   13: iload_1
     //   14: invokevirtual 33	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -570,7 +570,7 @@ public class SignatureTemplateConfig
     if (TextUtils.isEmpty(paramString2)) {
       return null;
     }
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.bx);
+    StringBuilder localStringBuilder = new StringBuilder(AppConstants.by);
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramString1);
     localStringBuilder.append(File.separator);
@@ -1511,7 +1511,7 @@ public class SignatureTemplateConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vas.SignatureTemplateConfig
  * JD-Core Version:    0.7.0.1
  */

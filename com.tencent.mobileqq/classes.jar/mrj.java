@@ -1,35 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.NativeWebVideoCoverGetCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.VideoData;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class mrj
-  implements Runnable
+class mrj
+  implements ReadInJoyUtils.NativeWebVideoCoverGetCallback
 {
-  public mrj(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  mrj(mri parammri, VideoData paramVideoData) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    EntityManager localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
-    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
-    Message localMessage = this.a.a.obtainMessage(1);
-    localMessage.obj = localList;
-    this.a.a.sendMessage(localMessage);
-    localEntityManager.a();
-    if (localList != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNewSearchActivity", 2, "lookupHistory size: " + localList.size());
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_JavaLangString, paramString1)))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_JavaLangString = paramString2;
+      if ((paramInt1 > 0) && (paramInt2 > 0))
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_a_of_type_Int = paramInt1;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataVideoData.jdField_b_of_type_Int = paramInt2;
       }
+      ThreadManager.getUIHandler().post(new mrk(this));
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ReadInJoyNewSearchActivity", 2, "history is null");
   }
 }
 

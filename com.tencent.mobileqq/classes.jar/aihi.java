@@ -1,45 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
+import com.tencent.mobileqq.shortvideo.ml.decisiontree.ID3.ImpurityFunction;
 
-public class aihi
-  implements Runnable
+public final class aihi
+  extends ID3.ImpurityFunction
 {
-  public aihi(AbsStructMsgElement paramAbsStructMsgElement1, AbsStructMsgElement paramAbsStructMsgElement2, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public double a(int paramInt1, int paramInt2)
   {
-    long l = NetConnInfoCenter.getServerTime();
-    int j = -1;
-    int i = j;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.s)) {}
-    try
-    {
-      i = Integer.parseInt(this.b.s);
-      if (PublicAccountChatPie.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.t, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-      {
-        j = 1;
-        PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.t, "0X80055C7", "0X80055C7", i, 0, Long.toString(l), Long.toString(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.a), this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsgElement.c, Integer.toString(j), false);
-        return;
-      }
+    if (paramInt1 > paramInt2) {
+      return paramInt2 / (paramInt1 + paramInt2);
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        i = j;
-        continue;
-        j = 0;
-      }
-    }
+    return paramInt1 / (paramInt1 + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aihi
  * JD-Core Version:    0.7.0.1
  */

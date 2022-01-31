@@ -19,7 +19,7 @@ public class TroopBindPubAccountProtocol
       return;
     }
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.3,3,3565");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.8,3,3615");
     localGetPublicAccountDetailInfoRequest.version.set(1);
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
@@ -43,7 +43,7 @@ public class TroopBindPubAccountProtocol
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol
  * JD-Core Version:    0.7.0.1
  */

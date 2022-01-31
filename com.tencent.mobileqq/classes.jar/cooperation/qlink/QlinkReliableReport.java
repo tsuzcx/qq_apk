@@ -1,7 +1,8 @@
 package cooperation.qlink;
 
-import amnp;
-import amnq;
+import amva;
+import amvb;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -10,14 +11,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Timer;
+import mqq.os.MqqHandler;
 
 public class QlinkReliableReport
 {
   private static QlinkReliableReport jdField_a_of_type_CooperationQlinkQlinkReliableReport;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private Runnable jdField_a_of_type_JavaLangRunnable;
   private List jdField_a_of_type_JavaUtilList;
-  private Timer jdField_a_of_type_JavaUtilTimer;
   
   public static QlinkReliableReport a()
   {
@@ -40,17 +41,17 @@ public class QlinkReliableReport
     }
   }
   
-  private void a(amnq paramamnq)
+  private void a(amvb paramamvb)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.d("QlinkReliableReport", 2, "addPerformanceReporting:" + paramamnq);
+      QLog.d("QlinkReliableReport", 2, "addPerformanceReporting:" + paramamvb);
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if (this.jdField_a_of_type_JavaUtilList == null) {
         this.jdField_a_of_type_JavaUtilList = new ArrayList();
       }
-      this.jdField_a_of_type_JavaUtilList.add(paramamnq);
+      this.jdField_a_of_type_JavaUtilList.add(paramamvb);
       return;
     }
   }
@@ -62,7 +63,7 @@ public class QlinkReliableReport
     }
     QlinkReliableReport localQlinkReliableReport = a();
     if (localQlinkReliableReport != null) {
-      localQlinkReliableReport.a(new amnq(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap));
+      localQlinkReliableReport.a(new amvb(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap));
     }
   }
   
@@ -105,8 +106,8 @@ public class QlinkReliableReport
           Iterator localIterator = localList.iterator();
           if (localIterator.hasNext())
           {
-            amnq localamnq = (amnq)localIterator.next();
-            ((StatisticCollector)???).a(localamnq.a(), localamnq.b(), localamnq.a(), localamnq.a(), localamnq.b(), localamnq.a(), null);
+            amvb localamvb = (amvb)localIterator.next();
+            ((StatisticCollector)???).a(localamvb.a(), localamvb.b(), localamvb.a(), localamvb.a(), localamvb.b(), localamvb.a(), null);
           }
         }
       }
@@ -130,25 +131,20 @@ public class QlinkReliableReport
   public void e()
   {
     QLog.d("QlinkReliableReport", 2, "doStartReportTimer");
-    try
+    if (this.jdField_a_of_type_JavaLangRunnable == null)
     {
-      if (this.jdField_a_of_type_JavaUtilTimer == null)
-      {
-        this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_JavaUtilTimer.schedule(new amnp(this), 60000L);
-      }
-      return;
+      this.jdField_a_of_type_JavaLangRunnable = new amva(this);
+      ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
   }
   
   public void f()
   {
     QLog.d("QlinkReliableReport", 2, "doStopReportTimer");
-    if (this.jdField_a_of_type_JavaUtilTimer != null)
+    if (this.jdField_a_of_type_JavaLangRunnable != null)
     {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
-      this.jdField_a_of_type_JavaUtilTimer = null;
+      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable = null;
     }
   }
 }

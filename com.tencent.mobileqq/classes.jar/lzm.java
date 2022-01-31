@@ -1,38 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.FileUploadController.FileUploadListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.NormalVideoDeliverController;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lzm
-  implements FileUploadController.FileUploadListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public lzm(NormalVideoDeliverController paramNormalVideoDeliverController) {}
+  public lzm(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void a() {}
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
-    default: 
-      return;
-    case 0: 
-      NormalVideoDeliverController.a(this.a, paramString1);
-      NormalVideoDeliverController.b(this.a, paramString2);
-      NormalVideoDeliverController.a(this.a, 4);
-      return;
-    case 1001: 
-      NormalVideoDeliverController.b(this.a, 10);
-      return;
-    case 1002: 
-      NormalVideoDeliverController.b(this.a, 9);
-      return;
-    case 1003: 
-      NormalVideoDeliverController.b(this.a, 11);
-      return;
     }
-    NormalVideoDeliverController.b(this.a, 13);
-    NormalVideoDeliverController.c(this.a, 1002);
+    for (;;)
+    {
+      ComponentHeaderTopicRecommend.a(this.a).dismiss();
+      return;
+      ComponentHeaderTopicRecommend.a(this.a, false);
+    }
   }
 }
 

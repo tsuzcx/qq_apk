@@ -1,14 +1,30 @@
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener;
+import android.app.Activity;
+import android.content.res.Resources;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.agent.BindGroupActivity;
 
-public class alis
+class alis
   implements Runnable
 {
-  public alis(MyAppApi.QQDownloadListener paramQQDownloadListener) {}
+  alis(alir paramalir) {}
   
   public void run()
   {
-    DownloadManager.a().c();
+    if (this.a.a.a != null) {
+      if (!this.a.a.a.isShowing()) {
+        this.a.a.a.show();
+      }
+    }
+    do
+    {
+      return;
+      this.a.a.a = DialogUtil.a(this.a.a, 230);
+      this.a.a.a.setMessage(this.a.a.getActivity().getResources().getString(2131433700));
+      alit localalit = new alit(this);
+      this.a.a.a.setPositiveButton(2131432428, localalit);
+    } while (this.a.a.a.isShowing());
+    this.a.a.a.show();
   }
 }
 

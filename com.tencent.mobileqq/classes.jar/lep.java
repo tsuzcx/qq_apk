@@ -1,34 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.Switch;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class lep
-  implements DialogInterface.OnKeyListener
+  implements TextWatcher
 {
-  public lep(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public lep(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void afterTextChanged(Editable paramEditable)
   {
-    boolean bool = true;
-    if (paramInt == 4)
-    {
-      ReadInJoySettingActivity.a(this.a, true);
-      paramDialogInterface = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label53;
-      }
-    }
-    for (;;)
-    {
-      paramDialogInterface.setChecked(bool);
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return false;
-      label53:
-      bool = false;
-    }
+    this.a.a(paramEditable);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
   }
 }
 

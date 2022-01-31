@@ -1,34 +1,13 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ar.config.MainDownAni;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ArConfigService;
 
 class aajf
-  implements ImageAssetDelegate
+  implements Runnable
 {
-  aajf(aaje paramaaje) {}
+  aajf(aaje paramaaje, ArConfigService paramArConfigService, int paramInt) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void run()
   {
-    if ((ImageView)this.a.a.e.get() != null)
-    {
-      String str = paramLottieImageAsset.getFileName();
-      Bitmap localBitmap = (Bitmap)this.a.a.a.a.a.get(str);
-      paramLottieImageAsset = localBitmap;
-      if (localBitmap == null)
-      {
-        QLog.w(MainDownAni.a(), 1, "loadDownAnimation, 加载图片失败, image[" + str + "]");
-        paramLottieImageAsset = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
-      }
-      return paramLottieImageAsset;
-    }
-    return null;
+    ArConfigService.a(this.jdField_a_of_type_ComTencentMobileqqArArConfigService, this.jdField_a_of_type_Int);
   }
 }
 

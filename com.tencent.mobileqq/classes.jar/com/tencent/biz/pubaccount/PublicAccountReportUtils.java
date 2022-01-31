@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
-import kzb;
+import lbi;
 import mqq.app.AppRuntime;
 
 public class PublicAccountReportUtils
@@ -187,7 +187,7 @@ public class PublicAccountReportUtils
   
   public static void c(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean)
   {
-    ThreadManager.post(new kzb(paramString7, paramString1, paramQQAppInterface, paramString2, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramString6, paramBoolean), 5, null, true);
+    ThreadManager.post(new lbi(paramString7, paramString1, paramQQAppInterface, paramString2, paramString3, paramInt1, paramInt2, paramString4, paramString5, paramString6, paramBoolean), 5, null, true);
   }
 }
 

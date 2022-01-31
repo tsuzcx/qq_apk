@@ -1,16 +1,14 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
 
 class msm
   implements Runnable
 {
-  msm(msi parammsi) {}
+  msm(msl parammsl) {}
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.h();
-    }
+    FastWebVideoFeedsPlayActivity.a(this.a.a).c();
   }
 }
 

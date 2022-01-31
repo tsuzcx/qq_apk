@@ -1,6 +1,5 @@
 package com.tencent.tencentmap.mapsdk.map;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -23,27 +22,29 @@ import com.tencent.mapsdk.raster.model.PolylineOptions;
 import com.tencent.mapsdk.raster.model.QMapLanguage;
 import com.tencent.mapsdk.raster.model.TileOverlay;
 import com.tencent.mapsdk.raster.model.TileOverlayOptions;
+import com.tencent.mapsdk.rastercore.b.d;
 import com.tencent.mapsdk.rastercore.d.b;
 import com.tencent.mapsdk.rastercore.d.c;
-import com.tencent.mapsdk.rastercore.d.f;
+import com.tencent.mapsdk.rastercore.d.g;
+import com.tencent.mapsdk.rastercore.tile.MapTile.MapSource;
 
 public class TencentMap
 {
   private static OnErrorListener onErrorListener;
   private com.tencent.mapsdk.rastercore.d.a contentLayer;
-  private com.tencent.mapsdk.rastercore.d.e mapContext;
+  private com.tencent.mapsdk.rastercore.d.f mapContext;
   private c projection;
   
-  public TencentMap(com.tencent.mapsdk.rastercore.d.e parame)
+  public TencentMap(com.tencent.mapsdk.rastercore.d.f paramf)
   {
-    this.mapContext = parame;
-    this.contentLayer = parame.e();
-    this.projection = parame.b();
+    this.mapContext = paramf;
+    this.contentLayer = paramf.e();
+    this.projection = paramf.b();
   }
   
   private void changeCamera(CameraUpdate paramCameraUpdate, long paramLong, CancelableCallback paramCancelableCallback)
   {
-    if ((!this.mapContext.f().k()) || (paramLong <= 0L)) {
+    if ((!this.mapContext.f().k()) || (paramLong < 0L)) {
       paramCameraUpdate.getCameraUpdateFactoryDelegate().a(false);
     }
     paramCameraUpdate.getCameraUpdateFactoryDelegate().a(paramCancelableCallback);
@@ -56,16 +57,6 @@ public class TencentMap
     return onErrorListener;
   }
   
-  public static void preLoadTiles(Context paramContext, LatLng paramLatLng, double paramDouble, int paramInt)
-  {
-    com.tencent.mapsdk.rastercore.f.a.a(paramContext).a(paramLatLng, paramDouble, paramInt);
-  }
-  
-  public static void preLoadTiles(Context paramContext, LatLng paramLatLng, double paramDouble, int paramInt1, int paramInt2)
-  {
-    com.tencent.mapsdk.rastercore.f.a.a(paramContext).a(paramLatLng, paramDouble, paramInt1, paramInt2);
-  }
-  
   private boolean setBounds(LatLngBounds paramLatLngBounds)
   {
     return this.projection.a(paramLatLngBounds);
@@ -74,6 +65,16 @@ public class TencentMap
   public static void setErrorListener(OnErrorListener paramOnErrorListener)
   {
     onErrorListener = paramOnErrorListener;
+  }
+  
+  private void setMaxZoomLevel(int paramInt)
+  {
+    this.projection.c(paramInt);
+  }
+  
+  private void setMinZoomLevel(int paramInt)
+  {
+    this.projection.d(paramInt);
   }
   
   public Circle addCircle(CircleOptions paramCircleOptions)
@@ -154,21 +155,17 @@ public class TencentMap
   public final void clearAllOverlays()
   {
     this.contentLayer.a();
+    this.mapContext.a(false, false);
   }
   
   public boolean clearCache()
   {
-    return com.tencent.mapsdk.rastercore.tile.a.a.a().b();
+    return (com.tencent.mapsdk.rastercore.tile.a.a.a().a(MapTile.MapSource.WORLD)) && (com.tencent.mapsdk.rastercore.tile.a.a.a().a(MapTile.MapSource.TENCENT)) && (com.tencent.mapsdk.rastercore.tile.a.a.a().a(MapTile.MapSource.SATELLITE));
   }
   
   public LatLng getMapCenter()
   {
     return this.projection.d().getTarget();
-  }
-  
-  public int getMapScene()
-  {
-    return com.tencent.mapsdk.rastercore.d.e.x();
   }
   
   public int getMaxZoomLevel()
@@ -193,7 +190,7 @@ public class TencentMap
   
   public final String getVersion()
   {
-    return "1.2.6";
+    return "1.3.1.3";
   }
   
   public int getZoomLevel()
@@ -203,7 +200,15 @@ public class TencentMap
   
   public final boolean isAppKeyAvailable()
   {
-    return com.tencent.mapsdk.rastercore.d.e.q();
+    return com.tencent.mapsdk.rastercore.d.f.p();
+  }
+  
+  public boolean isHandDrawMapEnable()
+  {
+    if (this.mapContext == null) {
+      return false;
+    }
+    return this.mapContext.r();
   }
   
   public final boolean isSatelliteEnabled()
@@ -249,8 +254,14 @@ public class TencentMap
   
   public void setCenter(LatLng paramLatLng)
   {
-    this.mapContext.f(true);
     changeCamera(CameraUpdateFactory.newLatLngZoom(paramLatLng, getZoomLevel()), 0L, null);
+  }
+  
+  public void setHandDrawMapEnable(boolean paramBoolean)
+  {
+    if (this.mapContext != null) {
+      this.mapContext.g(paramBoolean);
+    }
   }
   
   public void setInfoWindowAdapter(InfoWindowAdapter paramInfoWindowAdapter)
@@ -260,18 +271,8 @@ public class TencentMap
   
   public void setLanguage(QMapLanguage paramQMapLanguage)
   {
-    com.tencent.mapsdk.rastercore.d.e.a(QMapLanguage.getLanguageCode(paramQMapLanguage));
+    com.tencent.mapsdk.rastercore.d.f.a(QMapLanguage.getLanguageCode(paramQMapLanguage));
     this.mapContext.a(true, true);
-  }
-  
-  public void setMaxZoomLevel(int paramInt)
-  {
-    this.projection.c(paramInt);
-  }
-  
-  public void setMinZoomLevel(int paramInt)
-  {
-    this.projection.d(paramInt);
   }
   
   public void setOnInfoWindowClickListener(OnInfoWindowClickListener paramOnInfoWindowClickListener)

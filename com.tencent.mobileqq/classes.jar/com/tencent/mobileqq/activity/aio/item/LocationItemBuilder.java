@@ -45,16 +45,16 @@ import cooperation.qqfav.QfavBuilder;
 import cooperation.qqfav.QfavReport;
 import java.net.MalformedURLException;
 import java.net.URL;
-import vak;
-import val;
-import vam;
-import van;
+import vfm;
+import vfn;
+import vfo;
+import vfp;
 
 public class LocationItemBuilder
   extends BaseBubbleBuilder
 {
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = a();
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new vak(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new vfm(this);
   float b = 2.0F;
   
   public LocationItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
@@ -64,7 +64,7 @@ public class LocationItemBuilder
   
   private Drawable a()
   {
-    Bitmap localBitmap1 = BitmapManager.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130838864);
+    Bitmap localBitmap1 = BitmapManager.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130838898);
     if (localBitmap1 == null) {
       return null;
     }
@@ -95,7 +95,7 @@ public class LocationItemBuilder
   public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramChatMessage = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
-    paramView = (van)paramChatMessage.getTag();
+    paramView = (vfp)paramChatMessage.getTag();
     paramInt1 = AIOUtils.a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     paramInt2 = paramView.jdField_a_of_type_AndroidViewView.getPaddingLeft();
     int i = paramView.jdField_a_of_type_AndroidViewView.getPaddingRight();
@@ -107,18 +107,18 @@ public class LocationItemBuilder
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    van localvan = (van)paramViewHolder;
+    vfp localvfp = (vfp)paramViewHolder;
     paramBaseChatItemLayout = (MessageForText)paramChatMessage;
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968750, null);
-      localvan.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363575));
-      localvan.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363574));
+      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968753, null);
+      localvfp.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363594));
+      localvfp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363593));
     }
     paramView = paramBaseChatItemLayout.location;
     if ((paramView == null) || (paramView.length() == 0)) {
-      localvan.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      localvfp.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
     for (;;)
     {
@@ -137,19 +137,19 @@ public class LocationItemBuilder
       }
       paramView = URLDrawable.getDrawable(paramView, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       paramView.setTag(paramChatMessage);
-      localvan.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramView);
+      localvfp.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramView);
       paramViewHolder.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
       paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
       return paramViewHolder;
-      localvan.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localvan.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+      localvfp.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localvfp.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
     }
   }
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new van(this);
+    return new vfp(this);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -159,12 +159,12 @@ public class LocationItemBuilder
   
   String a(MessageForText paramMessageForText)
   {
-    return AppConstants.bE + paramMessageForText.latitude + "_" + paramMessageForText.longitude + ".png";
+    return AppConstants.bF + paramMessageForText.latitude + "_" + paramMessageForText.longitude + ".png";
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt == 2131363517)
+    if (paramInt == 2131363536)
     {
       paramChatMessage = (MessageForText)paramChatMessage;
       paramContext = new Bundle();
@@ -183,24 +183,24 @@ public class LocationItemBuilder
     do
     {
       return;
-      if (paramInt == 2131375567)
+      if (paramInt == 2131375633)
       {
         ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
         return;
       }
-      if (paramInt == 2131375577)
+      if (paramInt == 2131375643)
       {
         super.c(paramChatMessage);
         return;
       }
-      if (paramInt == 2131366776)
+      if (paramInt == 2131366774)
       {
         paramContext = (MessageForText)paramChatMessage;
         QfavBuilder.a(Float.valueOf(paramContext.latitude).floatValue(), Float.valueOf(paramContext.longitude).floatValue(), null, paramContext.location, null).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext).a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
         QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 7);
         return;
       }
-    } while (paramInt != 2131375576);
+    } while (paramInt != 2131375642);
     super.c(paramChatMessage);
   }
   
@@ -214,18 +214,18 @@ public class LocationItemBuilder
     {
       return;
       paramView = (MessageForText)AIOUtils.a(paramView);
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433649);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433650);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new val(this, paramView), new vam(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new vfn(this, paramView), new vfo(this)).show();
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
+    paramView.a(2131363536, this.jdField_a_of_type_AndroidContentContext.getString(2131435099), 2130838318);
     if (AIOUtils.a(5) == 1) {
-      paramView.a(2131366776, this.jdField_a_of_type_AndroidContentContext.getString(2131431563), 2130838312);
+      paramView.a(2131366774, this.jdField_a_of_type_AndroidContentContext.getString(2131431574), 2130838317);
     }
     ChatActivityFacade.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     super.b(paramView, this.jdField_a_of_type_AndroidContentContext);

@@ -1,22 +1,58 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class uam
-  implements View.OnTouchListener
+  extends FriendListObserver
 {
-  public uam(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public uam(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter == null) {}
+    do
     {
-      this.a.j();
-      paramView = this.a.n;
-      this.a.a("Clk_find", paramView, "");
+      do
+      {
+        return;
+      } while (!paramBoolean1);
+      this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
+    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+    this.a.b();
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map paramMap)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter == null) {
+      return;
     }
-    return true;
+    if ((paramBoolean) && (paramMap != null))
+    {
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Integer localInteger = (Integer)paramMap.get(str);
+        if (localInteger != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+      this.a.b();
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+    this.a.b();
+    QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131434530), 0).b(this.a.getTitleBarHeight());
   }
 }
 

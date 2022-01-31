@@ -1,21 +1,29 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
+import java.util.ArrayList;
 
 public class tvq
-  implements CompoundButton.OnCheckedChangeListener
+  implements ScoreQAVFragment.OnItemClickListener
 {
-  public tvq(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public tvq(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(View paramView, int paramInt)
   {
-    switch (paramCompoundButton.getId())
+    paramView = (Button)paramView.findViewById(2131366256);
+    if (paramView.isSelected())
     {
-    default: 
-      return;
+      paramView.setSelected(false);
+      this.a.a(paramInt);
+      if (this.a.a.size() != 0) {}
     }
-    TroopAssistantManager.a().a(this.a.app, paramBoolean);
+    do
+    {
+      return;
+      paramView.setSelected(true);
+      this.a.a.add(Integer.valueOf(paramInt));
+    } while (this.a.a.size() <= 0);
   }
 }
 

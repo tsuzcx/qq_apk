@@ -40,9 +40,9 @@ public class NearbyBaseFragment
     this.jdField_a_of_type_Int = paramTabInfo.jdField_a_of_type_Int;
   }
   
-  public void ar_()
+  public void at_()
   {
-    super.ar_();
+    super.at_();
     if (!this.e)
     {
       if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.f) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1))) {

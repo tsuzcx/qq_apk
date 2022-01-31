@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import aofj;
+import aoob;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.text.QzoneTextBuilder;
@@ -93,7 +93,7 @@ public class EditVideoQzComment
     return false;
   }
   
-  private void j()
+  private void i()
   {
     Typeface localTypeface = null;
     if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
@@ -173,13 +173,13 @@ public class EditVideoQzComment
     //   119: aload_2
     //   120: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   123: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: invokestatic 196	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   126: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   129: aload_2
     //   130: astore_3
     //   131: aload_1
     //   132: ifnull +11 -> 143
     //   135: aload_1
-    //   136: invokeinterface 199 1 0
+    //   136: invokeinterface 198 1 0
     //   141: aload_2
     //   142: astore_3
     //   143: aload_3
@@ -187,7 +187,7 @@ public class EditVideoQzComment
     //   145: astore_3
     //   146: aconst_null
     //   147: astore_2
-    //   148: ldc 201
+    //   148: ldc 200
     //   150: astore_1
     //   151: invokestatic 189	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   154: ifeq +31 -> 185
@@ -196,10 +196,10 @@ public class EditVideoQzComment
     //   160: new 80	java/lang/StringBuilder
     //   163: dup
     //   164: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   167: ldc 203
+    //   167: ldc 202
     //   169: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: aload_3
-    //   173: invokestatic 207	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   173: invokestatic 206	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   176: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   179: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   182: invokestatic 101	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -208,7 +208,7 @@ public class EditVideoQzComment
     //   187: aload_2
     //   188: ifnull -45 -> 143
     //   191: aload_2
-    //   192: invokeinterface 199 1 0
+    //   192: invokeinterface 198 1 0
     //   197: aload_1
     //   198: areturn
     //   199: astore_2
@@ -217,7 +217,7 @@ public class EditVideoQzComment
     //   202: aload_1
     //   203: ifnull +9 -> 212
     //   206: aload_1
-    //   207: invokeinterface 199 1 0
+    //   207: invokeinterface 198 1 0
     //   212: aload_2
     //   213: athrow
     //   214: astore_2
@@ -231,7 +231,7 @@ public class EditVideoQzComment
     //   226: astore_3
     //   227: aload_1
     //   228: astore_2
-    //   229: ldc 201
+    //   229: ldc 200
     //   231: astore_1
     //   232: goto -81 -> 151
     //   235: astore 4
@@ -244,10 +244,10 @@ public class EditVideoQzComment
     //   243: aload 4
     //   245: astore_3
     //   246: goto -95 -> 151
-    //   249: ldc 201
+    //   249: ldc 200
     //   251: astore_2
     //   252: goto -154 -> 98
-    //   255: ldc 201
+    //   255: ldc 200
     //   257: astore_2
     //   258: goto -129 -> 129
     // Local variable table:
@@ -279,11 +279,11 @@ public class EditVideoQzComment
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131373529));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131373532));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131373530));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131373531));
-    this.jdField_a_of_type_AndroidViewView = a(2131373533);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131373556));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)a(2131373559));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131373557));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131373558));
+    this.jdField_a_of_type_AndroidViewView = a(2131373560);
     this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(QzoneTextBuilder.b);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -294,11 +294,11 @@ public class EditVideoQzComment
     {
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new aofj(this));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new aoob(this));
       this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
     }
     if (a(QQStoryContext.a().a())) {
-      j();
+      i();
     }
   }
   
@@ -391,7 +391,7 @@ public class EditVideoQzComment
     this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_d_of_type_Int = localBundle.getInt("extra_key_font_id", -1);
     this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.e = localBundle.getInt("extra_key_font_format_type");
     this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaQzEditVideoPartManager.jdField_d_of_type_JavaLangString = localBundle.getString("extra_key_font_url");
-    j();
+    i();
   }
   
   protected boolean a(Message paramMessage)
@@ -463,7 +463,7 @@ public class EditVideoQzComment
       {
         return;
         i = paramView.getId();
-        if (i == 2131373531)
+        if (i == 2131373558)
         {
           paramView = QzoneConfig.getInstance().getConfig("H5Url", "UgcPermitSetting", "https://h5.qzone.qq.com/ugc/setting?_wv=3&type=mood&uin={uin}&qua={qua}&_proxy=1").replace("{uin}", QQStoryContext.a().a()).replace("{qua}", QUA.a());
           QzEditVideoPartManager.b("608", "6", "0", true);
@@ -485,7 +485,7 @@ public class EditVideoQzComment
           QZoneHelper.a((BaseActivity)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi, paramView, 1, (Bundle)localObject1, "");
           return;
         }
-      } while (i != 2131373530);
+      } while (i != 2131373557);
       QzEditVideoPartManager.b("608", "5", "0", true);
       QZoneHelper.UserInfo.a();
       paramView = new Bundle();

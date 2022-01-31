@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCloseListener;
 
 public class ansa
-  implements DialogInterface.OnClickListener
+  implements GuideVideoView.OnCloseListener
 {
-  public ansa(EditRecognitionPart paramEditRecognitionPart) {}
+  public ansa(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    QIMEffectCameraCaptureUnit.g(this.a);
   }
 }
 

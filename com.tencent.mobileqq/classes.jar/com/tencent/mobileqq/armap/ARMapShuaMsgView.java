@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import abcc;
+import abjc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -25,7 +25,7 @@ public class ARMapShuaMsgView
   ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   public ConversationPullDownActiveBase a;
   public StrokeTextView a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new abcc(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new abjc(this);
   
   public ARMapShuaMsgView(Context paramContext)
   {
@@ -33,10 +33,10 @@ public class ARMapShuaMsgView
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    LayoutInflater.from(paramContext).inflate(2130970233, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369759);
-    this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131363944));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363049));
+    LayoutInflater.from(paramContext).inflate(2130970248, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369769);
+    this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131363969));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363054));
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setInnerTextColor(Color.parseColor("#565a5c"));
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeColor(Color.parseColor("#ffffff"));
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeSize(AIOUtils.a(1.5F, getResources()));
@@ -89,14 +89,14 @@ public class ARMapShuaMsgView
     {
       this.jdField_a_of_type_Int = -1;
       return;
-      localDrawable = getResources().getDrawable(2130845445);
-      str = getResources().getString(2131434353);
+      localDrawable = getResources().getDrawable(2130845526);
+      str = getResources().getString(2131434369);
       break;
-      localDrawable = getResources().getDrawable(2130845443);
-      str = getResources().getString(2131434349);
+      localDrawable = getResources().getDrawable(2130845524);
+      str = getResources().getString(2131434365);
       break;
-      localDrawable = getResources().getDrawable(2130845444);
-      str = getResources().getString(2131434349);
+      localDrawable = getResources().getDrawable(2130845525);
+      str = getResources().getString(2131434365);
       break;
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     }

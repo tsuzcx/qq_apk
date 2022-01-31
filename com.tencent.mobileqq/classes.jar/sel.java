@@ -1,28 +1,16 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 
 public class sel
-  extends ViewPager.SimpleOnPageChangeListener
+  implements View.OnClickListener
 {
-  public sel(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sel(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, String paramString) {}
   
-  public void onPageSelected(int paramInt)
+  public void onClick(View paramView)
   {
-    super.onPageSelected(paramInt);
-    if ((this.a.d == 1) || (this.a.a.isMember))
-    {
-      TroopReportor.a("Grp_set_new", "grpData_admin", "slide_head", 0, 0, new String[] { this.a.a.troopUin, TroopReportor.a(this.a.a) });
-      return;
-    }
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.isMember) {}
-    for (String str1 = "1";; str1 = "0")
-    {
-      TroopReportor.a("Grp_set_new", "grpData_visitor", "slide_head", 0, 0, new String[] { str2, str1 });
-      return;
-    }
+    View localView = (View)paramView.getParent();
+    new sem(this, paramView.getTag(), localView).run();
   }
 }
 

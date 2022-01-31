@@ -1,13 +1,15 @@
-import android.view.View;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
 
-public final class ajzc
+public class ajzc
   implements Runnable
 {
-  public ajzc(View paramView) {}
+  public ajzc(AvatarWallAdapter paramAvatarWallAdapter, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
-    this.a.sendAccessibilityEvent(8);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
   }
 }
 

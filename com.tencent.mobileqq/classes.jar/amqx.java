@@ -1,30 +1,16 @@
-import android.os.Handler.Callback;
 import android.os.Message;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.util.WeakReferenceHandler;
+import cooperation.comic.VipComicJumpActivity;
+import cooperation.comic.utils.QQComicPluginBridge.PluginInstallCallback;
 
-public final class amqx
-  extends WtloginObserver
+class amqx
+  implements QQComicPluginBridge.PluginInstallCallback
 {
-  public amqx(Handler.Callback paramCallback) {}
+  amqx(amqw paramamqw) {}
   
-  public void OnException(String paramString, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    paramString = Message.obtain();
-    paramString.what = 1001;
-    if (this.a != null) {
-      this.a.handleMessage(paramString);
-    }
-  }
-  
-  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    paramString = Message.obtain();
-    paramString.what = 1000;
-    if (this.a != null) {
-      this.a.handleMessage(paramString);
-    }
+    this.a.a.a.obtainMessage(1001, paramInt, 0, paramString).sendToTarget();
   }
 }
 

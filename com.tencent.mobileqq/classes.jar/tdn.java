@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
 
 public class tdn
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public tdn(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public tdn(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.a.finish();
+    LebaListMgrActivity.a(this.a, true);
   }
 }
 

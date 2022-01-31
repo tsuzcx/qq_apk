@@ -1,19 +1,48 @@
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import com.tencent.widget.PinnedFooterExpandableListView.FooterExpandListViewListener;
 
 public class yfk
-  implements Runnable
+  implements PinnedFooterExpandableListView.FooterExpandListViewListener
 {
-  public yfk(QvipSpecialSoundManager paramQvipSpecialSoundManager, String paramString) {}
+  public yfk(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void run()
+  public void a()
   {
-    FileUtils.b(this.jdField_a_of_type_JavaLangString + "http://i.gtimg.cn/club/moblie/special_sound/new_config.json", this.jdField_a_of_type_JavaLangString + "pddata/vas/special_remind/new_config.json");
+    this.a.a = true;
+    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+  }
+  
+  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  {
+    if (!this.a.a)
+    {
+      if (paramInt - 1 >= 0) {
+        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      }
+      for (;;)
+      {
+        this.a.a = true;
+        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
+        }
+      }
+    }
+    if (paramPinnedFooterExpandableListView.c(paramInt))
+    {
+      paramPinnedFooterExpandableListView.b(paramInt);
+      return;
+    }
+    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yfk
  * JD-Core Version:    0.7.0.1
  */

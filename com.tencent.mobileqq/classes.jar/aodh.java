@@ -1,20 +1,37 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.SearchPoiListLayout;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
 
 public class aodh
-  implements TextWatcher
+  extends SimpleObserver
 {
-  public aodh(SearchPoiListLayout paramSearchPoiListLayout) {}
+  public aodh(EditVideoPlayer paramEditVideoPlayer) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(Bitmap paramBitmap)
   {
-    SearchPoiListLayout.a(this.a);
+    super.onNext(paramBitmap);
+    if (paramBitmap != null)
+    {
+      if (this.a.b)
+      {
+        this.a.a.setImageBitmap(paramBitmap);
+        SLog.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
+      }
+    }
+    else {
+      return;
+    }
+    SLog.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    SLog.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
+  }
 }
 
 

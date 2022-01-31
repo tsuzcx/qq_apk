@@ -1,27 +1,31 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.app.ThreadRegulator.CpuBusyness;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.troop.data.TroopMessageManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class znx
-  extends MqqHandler
+  implements Runnable
 {
-  public znx(ThreadRegulator paramThreadRegulator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public znx(MessageHandler paramMessageHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    paramMessage = (ThreadRegulator.CpuBusyness)paramMessage.obj;
-    if (paramMessage != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MessageHandler.trooptroop_pull_msg", 2, "onReceive,cost:" + (System.currentTimeMillis() - TroopMessageManager.b));
+    }
+    try
     {
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject, false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
       if (QLog.isColorLevel()) {
-        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+        QLog.w("Q.msg.MessageHandler", 2, "handleGetPullTroopMsgResp_PB exception ! ", localException);
       }
-      paramMessage.recycle();
+      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
     }
   }
 }

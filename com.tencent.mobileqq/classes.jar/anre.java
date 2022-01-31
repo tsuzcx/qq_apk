@@ -1,29 +1,36 @@
-import android.widget.TextView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
 public class anre
-  implements Callbacks.Callback
+  implements Runnable
 {
-  public anre(EditLocalVideoPlayer paramEditLocalVideoPlayer) {}
+  public anre(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, String paramString) {}
   
-  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult)
+  public void run()
   {
-    if (paramBoolean.booleanValue())
+    Object localObject = this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.a.a();
+    if (localObject == null) {}
+    do
     {
-      SLog.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramThumbnailResult.b.size(), paramThumbnailResult.jdField_a_of_type_JavaUtilList.size())));
-      this.a.a.setEnabled(true);
-    }
-    for (;;)
-    {
-      return null;
-      SLog.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramThumbnailResult.jdField_a_of_type_Int);
-      QQToast.a(this.a.a(), 1, "生成缩略图出错, 错误码:" + paramThumbnailResult.jdField_a_of_type_Int, 1);
-    }
+      return;
+      QLog.e("VERSION_CODES", 2, "onCameraStarted error = " + this.jdField_a_of_type_JavaLangString);
+      String str = ((Activity)localObject).getString(2131428347);
+      localObject = DialogUtil.a((Context)localObject, 230).setMessage(str).setPositiveButton(((Activity)localObject).getString(2131428346), new anrf(this));
+      try
+      {
+        ((QQCustomDialog)localObject).setCancelable(false);
+        ((QQCustomDialog)localObject).show();
+        return;
+      }
+      catch (WindowManager.BadTokenException localBadTokenException) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("VERSION_CODES", 2, "", localBadTokenException);
   }
 }
 

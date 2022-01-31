@@ -119,7 +119,7 @@ public class SonicFileUtils
   {
     HashMap localHashMap = new HashMap();
     long l3 = System.currentTimeMillis();
-    long l1 = calcCacheSize(getSonicCacheDirPath(), localHashMap);
+    long l1 = calcCacheSize(getSonicResourceCachePath(), localHashMap);
     long l4 = SonicEngine.getInstance().getConfig().SONIC_RESOURCE_CACHE_MAX_SIZE;
     List localList;
     int i;

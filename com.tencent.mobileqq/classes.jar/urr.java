@@ -1,34 +1,15 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import java.util.TimerTask;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class urr
-  extends TimerTask
+class urr
+  implements Runnable
 {
-  public urr(DoodleMsgView paramDoodleMsgView, long paramLong1, long paramLong2) {}
+  urr(urq paramurq, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.a(new urs(this));
-    }
-    do
-    {
-      return;
-      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) < 0L) {
-        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView, this.jdField_a_of_type_Long);
-      }
-      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) < this.jdField_a_of_type_Long) {
-        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView, DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) + this.b);
-      }
-      DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView).a(DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView), true);
-      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) >= this.jdField_a_of_type_Long)
-      {
-        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView);
-        return;
-      }
-    } while (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView));
-    DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView).a(this.jdField_a_of_type_Long, true);
+    this.jdField_a_of_type_Urq.a.a(PokeItemHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
   }
 }
 

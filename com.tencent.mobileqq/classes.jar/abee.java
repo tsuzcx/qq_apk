@@ -1,21 +1,18 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.ar.RemoteArConfigManager;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
 
-class abee
+public class abee
   implements Runnable
 {
-  abee(abed paramabed) {}
+  public abee(ArkRecommendController paramArkRecommendController, RecommendCommonMessage paramRecommendCommonMessage) {}
   
   public void run()
   {
-    if (!ShopScanActivity.a(this.a.a))
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.c();
-      this.a.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.a.a.f.setVisibility(8);
+    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) == null) {
+      return;
     }
+    ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController);
   }
 }
 

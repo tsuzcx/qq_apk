@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
+import android.os.FileObserver;
+import com.tencent.mobileqq.statistics.ThreadTraceHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class aikz
-  implements Runnable
+public class aikz
+  extends FileObserver
 {
-  aikz(aiky paramaiky, String paramString) {}
-  
-  public void run()
+  public aikz(String paramString, int paramInt)
   {
-    Layer localLayer = SceneBuilder.a(this.jdField_a_of_type_Aiky.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder, this.jdField_a_of_type_Aiky.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aiky.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$OnBuiltListener.a(localLayer);
+    super(paramString, paramInt);
+  }
+  
+  public void onEvent(int paramInt, String arg2)
+  {
+    QLog.e("UnifiedMonitor.Trace", 1, "dumpTraces onEvent " + ???);
+    synchronized (ThreadTraceHelper.a())
+    {
+      notifyAll();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aikz
  * JD-Core Version:    0.7.0.1
  */

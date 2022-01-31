@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.EmoticonHandler;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
-class acnc
+public class acnc
   implements Runnable
 {
-  acnc(acnb paramacnb) {}
+  public acnc(EmoticonMainPanel paramEmoticonMainPanel, EmoticonHandler paramEmoticonHandler, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
-    this.a.a.a.c = System.currentTimeMillis();
-    try
-    {
-      this.a.a.a.a.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('addMorePage',{})");
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("<FileAssistant>FilePreviewActivity", 1, localException.toString());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppEmoticonHandler.c();
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastRequestTime", System.currentTimeMillis()).apply();
   }
 }
 

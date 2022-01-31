@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew;
 
-import alit;
-import aliv;
+import alql;
+import alqn;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.upgrade.UpgradeController;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
@@ -21,35 +21,7 @@ public class MyAppApi$YYBDownloadListener
 {
   protected MyAppApi$YYBDownloadListener(MyAppApi paramMyAppApi) {}
   
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
-    {
-      LogUtility.c("MyAppApi", "onDownloadWait");
-      if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
-        this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramDownloadInfo.g, paramDownloadInfo.a());
-      }
-    }
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
-    {
-      LogUtility.c("MyAppApi", "onDownloadError");
-      if ((paramDownloadInfo.g != 100) && (paramDownloadInfo.f != 4)) {
-        break label46;
-      }
-      c(paramDownloadInfo);
-    }
-    label46:
-    while ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog == null) || (!this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) || (!this.a.c)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramDownloadInfo.g, paramDownloadInfo.a());
-  }
-  
-  public void a(String paramString1, String paramString2)
+  public void installSucceed(String paramString1, String paramString2)
   {
     if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
     {
@@ -61,39 +33,37 @@ public class MyAppApi$YYBDownloadListener
     }
   }
   
-  public void a(List paramList)
-  {
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        if (localDownloadInfo.b.equals("1101070898"))
-        {
-          LogUtility.c("MyAppApi", "onDownloadUpdate STATE = " + localDownloadInfo.a());
-          if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
-            this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(localDownloadInfo.g, localDownloadInfo.a());
-          }
-        }
-      }
-    }
-  }
-  
-  public void b(DownloadInfo paramDownloadInfo)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
     if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
     {
-      LogUtility.c("MyAppApi", "onDownloadPause");
+      LogUtility.c("MyAppApi", "onDownloadCancel");
       if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
         this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramDownloadInfo.g, paramDownloadInfo.a());
       }
+      DownloadManager.a().b(this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener);
+      this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener = null;
     }
   }
   
-  public void b(String paramString1, String paramString2) {}
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
+    {
+      LogUtility.c("MyAppApi", "onDownloadError");
+      if ((paramDownloadInfo.g != 100) && (paramDownloadInfo.f != 4)) {
+        break label46;
+      }
+      onDownloadFinish(paramDownloadInfo);
+    }
+    label46:
+    while ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog == null) || (!this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) || (!this.a.c)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramDownloadInfo.g, paramDownloadInfo.a());
+  }
   
-  public void c(DownloadInfo paramDownloadInfo)
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
     label213:
     long l2;
@@ -121,7 +91,7 @@ public class MyAppApi$YYBDownloadListener
         if (!this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean) {
           break label369;
         }
-        ThreadManager.getSubThreadHandler().postDelayed(new alit(this, paramDownloadInfo), 500L);
+        ThreadManager.getSubThreadHandler().postDelayed(new alql(this, paramDownloadInfo), 500L);
         this.a.jdField_a_of_type_Boolean = true;
         this.a.jdField_b_of_type_Boolean = false;
         l2 = 0L;
@@ -148,7 +118,7 @@ public class MyAppApi$YYBDownloadListener
       if ((AppUtil.a() != 1) || (!ControlPolicyUtil.c())) {
         break label213;
       }
-      ThreadManager.getSubThreadHandler().postDelayed(new aliv(this, paramDownloadInfo), 500L);
+      ThreadManager.getSubThreadHandler().postDelayed(new alqn(this, paramDownloadInfo), 500L);
       this.a.jdField_a_of_type_Boolean = true;
       this.a.jdField_b_of_type_Boolean = false;
       break label213;
@@ -169,20 +139,50 @@ public class MyAppApi$YYBDownloadListener
     }
   }
   
-  public void c(String paramString1, String paramString2) {}
-  
-  public void d(DownloadInfo paramDownloadInfo)
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
     if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
     {
-      LogUtility.c("MyAppApi", "onDownloadCancel");
+      LogUtility.c("MyAppApi", "onDownloadPause");
       if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
         this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramDownloadInfo.g, paramDownloadInfo.a());
       }
-      DownloadManager.a().b(this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener);
-      this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener = null;
     }
   }
+  
+  public void onDownloadUpdate(List paramList)
+  {
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        if (localDownloadInfo.b.equals("1101070898"))
+        {
+          LogUtility.c("MyAppApi", "onDownloadUpdate STATE = " + localDownloadInfo.a());
+          if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
+            this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(localDownloadInfo.g, localDownloadInfo.a());
+          }
+        }
+      }
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.b.equals("1101070898")))
+    {
+      LogUtility.c("MyAppApi", "onDownloadWait");
+      if ((this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing()) && (this.a.c)) {
+        this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a(paramDownloadInfo.g, paramDownloadInfo.a());
+      }
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

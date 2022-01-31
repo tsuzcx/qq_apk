@@ -1,27 +1,21 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import android.widget.ImageButton;
+import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
 
 public class oqy
-  extends AccessibilityDelegateCompat
+  implements ProviderContainerView.ContainerViewListener
 {
-  public oqy(LeftTabBarView paramLeftTabBarView) {}
+  public oqy(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void a(View paramView, int paramInt)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
+    StoryLocalPublishPart.a(this.a).setVisibility(8);
   }
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void y_()
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    StoryLocalPublishPart.a(this.a).setVisibility(0);
   }
 }
 

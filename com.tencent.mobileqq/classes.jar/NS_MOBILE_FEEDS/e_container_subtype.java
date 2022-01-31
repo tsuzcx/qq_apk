@@ -7,6 +7,7 @@ public final class e_container_subtype
 {
   public static final int _enum_frdShortVideo_container = 3;
   public static final int _enum_frdlike_container = 2;
+  public static final int _enum_frdlike_container_vertical = 4;
   public static final int _enum_multi_adv_type = 0;
   public static final int _enum_single_adv_type = 1;
 }

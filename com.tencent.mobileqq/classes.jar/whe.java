@@ -1,26 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.PADetailReportUtil;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
 
-public class whe
-  extends Handler
+class whe
+  implements Runnable
 {
-  public whe(AddContactsActivity paramAddContactsActivity) {}
+  whe(whd paramwhd) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.b();
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    PADetailReportUtil.a().a(300);
+    this.a.a.b(StickerBubbleAnimationViewHolder.a(this.a.a));
   }
 }
 

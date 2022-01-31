@@ -1,34 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.QzEditVideoPartManager;
-import com.tencent.open.base.ToastUtil;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
-public class xsj
-  implements View.OnClickListener
+class xsj
+  implements Runnable
 {
-  public xsj(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
+  xsj(xsi paramxsi, Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!NewFlowEditVideoActivity.a(this.a))
+    if (this.jdField_a_of_type_JavaLangObject != null)
     {
-      NewFlowEditVideoActivity.a(this.a);
+      this.jdField_a_of_type_Xsi.a.a.a(true, this.jdField_a_of_type_JavaLangObject);
       return;
     }
-    if (NewFlowEditVideoActivity.b(this.a))
+    if (LoginView.b(this.jdField_a_of_type_Xsi.a))
     {
-      ToastUtil.a().a("不使用超清");
-      NewFlowEditVideoActivity.a(this.a, false);
-      NewFlowEditVideoActivity.a(this.a).setBackgroundResource(2130845304);
-      ((QzEditVideoPartManager)NewFlowEditVideoActivity.a(this.a)).f = false;
+      this.jdField_a_of_type_Xsi.a.a.a(true, null);
       return;
     }
-    ToastUtil.a().a("使用超清");
-    NewFlowEditVideoActivity.a(this.a, true);
-    NewFlowEditVideoActivity.a(this.a).setBackgroundResource(2130845303);
-    ((QzEditVideoPartManager)NewFlowEditVideoActivity.b(this.a)).f = true;
+    this.jdField_a_of_type_Xsi.a.a.a(false, null);
   }
 }
 

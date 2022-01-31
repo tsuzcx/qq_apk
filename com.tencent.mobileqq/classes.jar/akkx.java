@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.vip.AioVipKeywordHelper;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class akkx
+public class akkx
   implements Runnable
 {
-  akkx(akkw paramakkw, String paramString) {}
+  public akkx(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Akkw.jdField_a_of_type_ComTencentMobileqqVipAioVipKeywordHelper.a(this.jdField_a_of_type_Akkw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Akkw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString, false);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog$YYBDownloadListener.a.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akkx
  * JD-Core Version:    0.7.0.1
  */

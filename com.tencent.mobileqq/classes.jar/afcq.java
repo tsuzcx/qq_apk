@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayBasePanel;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.now.utils.CommentsUtil;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class afcq
-  implements Runnable
+public class afcq
+  implements TextWatcher
 {
-  afcq(afcp paramafcp, String paramString, boolean paramBoolean) {}
+  public afcq(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.jdField_a_of_type_Afcp.a.e == 1) {}
-    do
-    {
+    if (ShortVideoCommentsView.a(this.a) == null) {}
+    while (CommentsUtil.a(paramEditable.toString()) <= 140) {
       return;
-      if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Afcp.a) != null)
-      {
-        NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Afcp.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.nearby_people_card.", 2, "mDisplayModel == null ！");
+    }
+    int j = Selection.getSelectionEnd(paramEditable);
+    paramEditable = CommentsUtil.a(paramEditable.toString(), 0, 140).toString();
+    ShortVideoCommentsView.a(this.a).setText(paramEditable);
+    paramEditable = ShortVideoCommentsView.a(this.a).getText();
+    int i = j;
+    if (j > paramEditable.length()) {
+      i = paramEditable.length();
+    }
+    Selection.setSelection(paramEditable, i);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

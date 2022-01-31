@@ -1,26 +1,16 @@
-import android.view.ViewParent;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerBarLayout;
+import dov.com.tencent.biz.qqstory.takevideo.EditMusicExport;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
 
 public class aoeo
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  
-  public aoeo(PickerBarLayout paramPickerBarLayout) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = PickerBarLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout);
-  }
+  public aoeo(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.getParent() != null) && (this.jdField_a_of_type_Int == PickerBarLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout)))
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.a = true;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.getParent().requestDisallowInterceptTouchEvent(true);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.sendAccessibilityEvent(2);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout.a(PickerBarLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout));
+    EditMusicExport localEditMusicExport = (EditMusicExport)this.a.a(EditMusicExport.class);
+    if (localEditMusicExport != null) {
+      localEditMusicExport.au_();
     }
   }
 }

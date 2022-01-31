@@ -1,21 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
 
-class yxd
-  implements Animation.AnimationListener
+public class yxd
+  implements Runnable
 {
-  yxd(yxc paramyxc) {}
+  public yxd(CmGameAvHandler paramCmGameAvHandler) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new yxe(this), 300L);
+    CmGameAvHandler.a(this.a, false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

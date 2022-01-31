@@ -1,28 +1,20 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase;
 
-class admk
-  implements Runnable
+public class admk
+  implements View.OnClickListener
 {
-  admk(admj paramadmj) {}
+  public admk(FileBrowserPresenterBase paramFileBrowserPresenterBase) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentImageURLDrawable.setBounds(0, 0, this.a.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicWidth(), this.a.jdField_a_of_type_ComTencentImageURLDrawable.getIntrinsicHeight());
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.a.jdField_a_of_type_ComTencentImageURLDrawable, true, 0, true);
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.b != 0))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption.a, this.a.jdField_a_of_type_Int), ShortVideoUtils.a(this.a.b * 1000));
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, null, null);
-      return;
+    paramView = this.a.a.a();
+    if (paramView != null) {
+      paramView.a();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setVideoFormat(true, false, null, null);
   }
 }
 

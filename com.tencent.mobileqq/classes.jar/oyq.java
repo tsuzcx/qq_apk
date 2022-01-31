@@ -1,47 +1,73 @@
-import com.tencent.biz.troopgift.AIOGiftPanelContainer;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class oyq
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public oyq(AIOGiftPanelContainer paramAIOGiftPanelContainer, int paramInt1, int paramInt2) {}
+  public oyq(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int j = 4;
-    long l = System.currentTimeMillis();
-    AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(222);
-    TroopGiftManager localTroopGiftManager = (TroopGiftManager)this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(112);
-    int i;
-    if (this.jdField_a_of_type_Int == 4)
+    switch (paramView.getId())
     {
-      i = 6;
-      if (!(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a instanceof FriendChatPie)) {
-        break label123;
-      }
-      j = 11;
-      i = 8;
     }
     for (;;)
     {
-      localTroopGiftManager.a("OidbSvc.0x6c3", 1731, 1, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, 2, i, j, new oyr(this, l, localTroopGiftManager, localAIOAnimationControlManager));
-      return;
-      i = 1;
-      break;
-      label123:
-      if ((this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a instanceof DiscussChatPie)) {
-        i = 9;
-      } else if ((this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a instanceof StrangerChatPie)) {
-        i = 10;
-      } else {
-        j = 0;
+      return false;
+      if (paramMotionEvent.getAction() == 0)
+      {
+        this.a.b.setImageResource(2130843940);
+      }
+      else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.a.b.setImageResource(2130843939);
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!QRDisplayActivity.a(paramView, i, j))
+        {
+          this.a.b.setImageResource(2130843939);
+          continue;
+          if (paramMotionEvent.getAction() == 0)
+          {
+            this.a.c.setImageResource(2130843942);
+          }
+          else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+          {
+            this.a.c.setImageResource(2130843941);
+          }
+          else if (paramMotionEvent.getAction() == 2)
+          {
+            i = (int)paramMotionEvent.getRawX();
+            j = (int)paramMotionEvent.getRawY();
+            if (!QRDisplayActivity.a(paramView, i, j))
+            {
+              this.a.c.setImageResource(2130843941);
+              continue;
+              if (paramMotionEvent.getAction() == 0)
+              {
+                this.a.d.setImageResource(2130843944);
+              }
+              else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+              {
+                this.a.d.setImageResource(2130843943);
+              }
+              else if (paramMotionEvent.getAction() == 2)
+              {
+                i = (int)paramMotionEvent.getRawX();
+                j = (int)paramMotionEvent.getRawY();
+                if (!QRDisplayActivity.a(paramView, i, j)) {
+                  this.a.d.setImageResource(2130843943);
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

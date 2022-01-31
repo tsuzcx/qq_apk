@@ -37,9 +37,9 @@ import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Constants;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 import java.util.List;
-import oek;
-import oel;
-import oem;
+import oiz;
+import oja;
+import ojb;
 
 public class EditVideoFilter
   extends EditVideoPart
@@ -142,9 +142,9 @@ public class EditVideoFilter
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager = ((UnHandleTouchEventViewPager)a(2131364413));
-    this.jdField_a_of_type_AndroidViewView = a(2131372076);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new oek(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager = ((UnHandleTouchEventViewPager)a(2131364438));
+    this.jdField_a_of_type_AndroidViewView = a(2131372084);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new oiz(this));
     if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 12))
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getLayoutParams();
@@ -152,9 +152,9 @@ public class EditVideoFilter
       this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setLayoutParams(localLayoutParams);
     }
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter = new EditVideoFilter.FilterPagerAdapter(a());
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(new oel(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(new oja(this));
     this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setOnPageChangeListener(new oem(this, null));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setOnPageChangeListener(new ojb(this, null));
     SLog.b("Q.qqstory.publish.edit.EditVideoFilter", "init filter view pager : " + this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager);
     e();
     h();
@@ -475,14 +475,14 @@ public class EditVideoFilter
         SLog.d("Q.qqstory.publish.edit.EditVideoFilter", "it's fast black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
         break;
       }
-      localArrayList.add(new VideoEffectsFilterData("快速", 1, 2130843478, 2));
+      localArrayList.add(new VideoEffectsFilterData("快速", 1, 2130843512, 2));
       break;
       if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 10) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.i()))
       {
         SLog.d("Q.qqstory.publish.edit.EditVideoFilter", "it's tribe slow black model, disable slow!");
         break label201;
       }
-      localArrayList.add(new VideoEffectsFilterData("慢速", 2, 2130843479, 3));
+      localArrayList.add(new VideoEffectsFilterData("慢速", 2, 2130843513, 3));
       break label201;
       label509:
       if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 10) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.h()))
@@ -490,7 +490,7 @@ public class EditVideoFilter
         SLog.d("Q.qqstory.publish.edit.EditVideoFilter", "it's tribe revert black model, disable revert!");
         break label247;
       }
-      VideoEffectsFilterData localVideoEffectsFilterData = new VideoEffectsFilterData("倒带", 3, 2130843477, 1);
+      VideoEffectsFilterData localVideoEffectsFilterData = new VideoEffectsFilterData("倒带", 3, 2130843511, 1);
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.g()) {}
       for (String str = "正在处理中...";; str = null)
       {

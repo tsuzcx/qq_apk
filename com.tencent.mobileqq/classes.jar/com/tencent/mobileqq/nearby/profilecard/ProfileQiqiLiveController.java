@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import afjm;
+import afol;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -65,7 +65,7 @@ public class ProfileQiqiLiveController
         break;
       }
     } while (this.jdField_a_of_type_AndroidOsAsyncTask != null);
-    this.jdField_a_of_type_AndroidOsAsyncTask = new afjm(this);
+    this.jdField_a_of_type_AndroidOsAsyncTask = new afol(this);
     this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(paramInt) });
     return;
     Bundle localBundle = new Bundle();
@@ -102,13 +102,13 @@ public class ProfileQiqiLiveController
     // Byte code:
     //   0: lconst_0
     //   1: lstore 10
-    //   3: new 212	afjn
+    //   3: new 212	afom
     //   6: dup
     //   7: aload_0
     //   8: aload 4
     //   10: aload_2
     //   11: iload 6
-    //   13: invokespecial 215	afjn:<init>	(Lcom/tencent/mobileqq/nearby/profilecard/ProfileQiqiLiveController;Ljava/lang/String;Landroid/content/Context;I)V
+    //   13: invokespecial 215	afom:<init>	(Lcom/tencent/mobileqq/nearby/profilecard/ProfileQiqiLiveController;Ljava/lang/String;Landroid/content/Context;I)V
     //   16: astore 14
     //   18: aload_0
     //   19: getfield 26	com/tencent/mobileqq/nearby/profilecard/ProfileQiqiLiveController:jdField_a_of_type_MqqAppNewIntent	Lmqq/app/NewIntent;
@@ -355,7 +355,7 @@ public class ProfileQiqiLiveController
     //   261	55	13	localMessageDigest	java.security.MessageDigest
     //   367	10	13	localNoSuchAlgorithmException1	java.security.NoSuchAlgorithmException
     //   500	1	13	localNoSuchAlgorithmException2	java.security.NoSuchAlgorithmException
-    //   16	420	14	localafjn	afjn
+    //   16	420	14	localafom	afom
     //   46	377	15	localAuthorizeRequest	com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeRequest
     //   238	35	16	arrayOfSignature	android.content.pm.Signature[]
     // Exception table:

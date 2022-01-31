@@ -3,7 +3,7 @@ package dov.com.qq.im.capture.util;
 import android.content.res.AssetManager;
 import android.os.Build.VERSION;
 import android.os.Environment;
-import anor;
+import anxe;
 import com.tencent.biz.common.util.Util;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
@@ -33,7 +33,7 @@ public class QIMFileUtils
       break label13;
     }
     if (i != 0) {
-      return new File(AppConstants.aJ);
+      return new File(AppConstants.aK);
     }
     return BaseApplicationImpl.getApplication().getCacheDir();
   }
@@ -150,7 +150,7 @@ public class QIMFileUtils
   
   public static void a(File paramFile, String paramString1, String paramString2)
   {
-    ThreadManager.getFileThreadHandler().post(new anor(paramFile, paramString1, paramString2));
+    ThreadManager.getFileThreadHandler().post(new anxe(paramFile, paramString1, paramString2));
   }
 }
 

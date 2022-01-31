@@ -1,27 +1,21 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.data.CaptureComboManager;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools.DataSet;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class anso
   implements Runnable
 {
-  public anso(EditVideoButton paramEditVideoButton) {}
+  public anso(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
   public void run()
   {
-    Object localObject = new Rect();
-    EditVideoButton.a(this.a).setEnabled(true);
-    EditVideoButton.a(this.a).getHitRect((Rect)localObject);
-    if (this.a.a != null)
-    {
-      ((Rect)localObject).top -= UIUtils.a(this.a.a(), 8.0F);
-      ((Rect)localObject).bottom += UIUtils.a(this.a.a(), 8.0F);
+    CaptureComboManager localCaptureComboManager = (CaptureComboManager)QIMManager.a(5);
+    VideoFilterViewPager localVideoFilterViewPager = QIMEffectCameraCaptureUnit.a(this.a);
+    if ((localVideoFilterViewPager != null) && (localCaptureComboManager.a() != null)) {
+      localVideoFilterViewPager.a(localCaptureComboManager.a().c);
     }
-    localObject = new TouchDelegate((Rect)localObject, EditVideoButton.a(this.a));
-    ((View)EditVideoButton.a(this.a).getParent()).setTouchDelegate((TouchDelegate)localObject);
   }
 }
 

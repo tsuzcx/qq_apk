@@ -1,37 +1,45 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.pendant.AVEffectPendantReport;
-import com.tencent.av.business.manager.pendant.PendantItem;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public final class jfy
+public class jfy
   implements Runnable
 {
+  public jfy(VideoController paramVideoController) {}
+  
   public void run()
   {
-    if ((AVEffectPendantReport.a() == null) || (AVEffectPendantReport.a().isEmpty()))
+    if (this.a.a() == null) {}
+    do
     {
-      AVEffectPendantReport.e();
-      return;
+      int i;
+      do
+      {
+        do
+        {
+          return;
+        } while ((!this.a.a().n()) || (!this.a.a().af));
+        if (QLog.isColorLevel()) {
+          QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "MultiCheckCallNotAcceptRunnable");
+        }
+        i = this.a.c().size();
+      } while (i <= 0);
+      this.a.a().L = true;
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(701), Integer.valueOf(i) });
+    } while ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null));
+    if (this.a.jdField_a_of_type_Jfz == null) {
+      this.a.jdField_a_of_type_Jfz = new jfz(this.a);
     }
-    AVEffectPendantReport.a(0);
-    AVEffectPendantReport.b(0);
-    Iterator localIterator = AVEffectPendantReport.a().iterator();
-    while (localIterator.hasNext())
-    {
-      PendantItem localPendantItem = (PendantItem)localIterator.next();
-      AVEffectPendantReport.a();
-      if (AVEffectPendantReport.a(localPendantItem)) {
-        AVEffectPendantReport.b();
-      }
-    }
-    AVLog.c("AVEffectPendantReport", "refleshAndSetDownloadInfo()  mTotalCount = " + AVEffectPendantReport.c() + "  mDownloadCount = " + AVEffectPendantReport.d());
-    AVEffectPendantReport.a();
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.jdField_a_of_type_Jfz);
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_a_of_type_Jfz, this.a.i * 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jfy
  * JD-Core Version:    0.7.0.1
  */

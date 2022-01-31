@@ -1,67 +1,112 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.DrawerPushItem;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadScheduler;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class zga
-  extends zeq
+  implements Runnable
 {
-  protected void a()
-  {
-    super.a();
-    if (this.c >= zeo.a().a(this.a.jdField_a_of_type_Array2dOfLong, this.a.jdField_a_of_type_Int, this.a.b, MemoryManager.a(Process.myPid())) / 12000L) {
-      this.a.a(7, null);
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.d != 1L);
-        MemoryManager.a().a("LITE_GUARD");
-        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      } while (localObject == null);
-      localObject = (PreDownloadScheduler)((QQAppInterface)localObject).getManager(232);
-    } while (localObject == null);
-    ((PreDownloadScheduler)localObject).a(true);
-  }
+  public zga(ApolloPanel paramApolloPanel, BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean, String paramString) {}
   
-  protected void a(String paramString)
+  public void run()
   {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
-    {
-      localGuardManager.a(i, paramString);
+    boolean bool4 = false;
+    boolean bool3 = false;
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a == null)) {
       return;
     }
-  }
-  
-  protected void b()
-  {
-    if (this.c > 2L) {
-      this.c -= 2L;
+    bool1 = bool3;
+    boolean bool2;
+    label54:
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null)
+    {
+      if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get() != 1) {
+        break label385;
+      }
+      bool2 = true;
+      localObject = this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.buffer.get();
+      bool1 = bool3;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, new Object[] { "parseShopRedTouchManager:", localObject, ", isNewRed：", Boolean.valueOf(bool2), ",refreshByGetUserAction:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+        }
+      }
     }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    CoreService.startCoreService(zeo.a().a);
-    this.a.b();
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(3, 0L, 0L);
+    for (;;)
+    {
+      for (;;)
+      {
+        try
+        {
+          JSONObject localJSONObject = new JSONObject((String)localObject);
+          localObject = localJSONObject.optString("_show_mission");
+          localJSONObject = localJSONObject.optJSONObject("msg");
+          bool1 = bool3;
+          if (localJSONObject != null)
+          {
+            localJSONObject = localJSONObject.optJSONObject((String)localObject);
+            bool1 = bool3;
+            if (localJSONObject != null)
+            {
+              ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.getManager(152);
+              ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, localApolloManager.a(this.jdField_a_of_type_JavaLangString, (String)localObject, localJSONObject, bool2, 6));
+              localObject = ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
+              bool1 = bool3;
+              if (localObject == null) {}
+            }
+          }
+        }
+        catch (Exception localException1)
+        {
+          label385:
+          bool1 = bool4;
+        }
+        try
+        {
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloPanel", 2, new Object[] { "parseShopRedTouchManager pushItem:", ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).toString() });
+            }
+            ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).icon_url);
+            ApolloPanel.d(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
+            VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a, "cmshow", "Apollo", "house_new_view", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.b()), 0, new String[] { ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).msg_id });
+          }
+          bool1 = true;
+          ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, bool1);
+          if (bool1) {
+            break;
+          }
+          ApolloPanel.e(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
+          return;
+        }
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            bool1 = true;
+          }
+        }
+      }
+      bool2 = false;
+      break label54;
+      QLog.e("ApolloPanel", 1, "parseShopRedTouchManager error :", localException1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zga
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
-import mic;
+import mlq;
 
 public abstract class ReadInJoyBaseListView
   extends XListView
@@ -80,7 +80,7 @@ public abstract class ReadInJoyBaseListView
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     localRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.a(62.0F, getResources())));
     TextView localTextView = new TextView(getContext());
-    localTextView.setText(2131438928);
+    localTextView.setText(2131438952);
     localTextView.setTextColor(-4473925);
     localTextView.setTextSize(14.0F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -98,7 +98,7 @@ public abstract class ReadInJoyBaseListView
       if ((a()) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView$RefreshCallback != null))
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131432083);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131432094);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         a(0);
         this.jdField_c_of_type_Int = 1;
@@ -111,7 +111,7 @@ public abstract class ReadInJoyBaseListView
       if (a())
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131432083);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131432094);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         a(0);
       }
@@ -122,9 +122,9 @@ public abstract class ReadInJoyBaseListView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2130969690, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366826));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366827));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2130969687, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366824));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366825));
     addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
   }
   
@@ -183,7 +183,7 @@ public abstract class ReadInJoyBaseListView
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
       this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131432084);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131432095);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       a(-this.jdField_a_of_type_Int);
@@ -217,7 +217,7 @@ public abstract class ReadInJoyBaseListView
   {
     super.setAdapter(paramListAdapter);
     if ((paramListAdapter != null) && ((paramListAdapter instanceof ReadInJoyBaseAdapter))) {
-      ((ReadInJoyBaseAdapter)paramListAdapter).a(new mic(this));
+      ((ReadInJoyBaseAdapter)paramListAdapter).a(new mlq(this));
     }
   }
   

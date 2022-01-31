@@ -1,71 +1,19 @@
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.apollo.ApolloManager;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class yqb
   implements Runnable
 {
-  public yqb(CmGameServerQIPCModule paramCmGameServerQIPCModule, QQAppInterface paramQQAppInterface, CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  public yqb(ApolloGameNormalStartHandler paramApolloGameNormalStartHandler, int paramInt1, int paramInt2, int paramInt3, QQAppInterface paramQQAppInterface, String paramString1, int paramInt4, String paramString2, Activity paramActivity) {}
   
   public void run()
   {
-    Object localObject = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
-    ((ApolloDaoManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);
-    ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152);
-    if ((((ApolloDaoManager)localObject).a != null) && (((ApolloDaoManager)localObject).a.containsKey(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId))))
-    {
-      localObject = (String)((ApolloDaoManager)localObject).a.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId));
-      localApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId, (String)localObject);
-    }
-    try
-    {
-      localObject = new ArrayList();
-      ((ArrayList)localObject).add(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId));
-      ((ApolloGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(210)).a("android.playgame", "apollo_aio_game.add_games_to_user_gamepanel", (ArrayList)localObject);
-      if (!this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.isPatch)
-      {
-        int k = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
-        if ((k == 2) || (k == 1))
-        {
-          i = 1;
-          int j;
-          if ((k != 2) && (k != 5))
-          {
-            j = k;
-            if (k != 3) {}
-          }
-          else
-          {
-            j = 1;
-          }
-          VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "game_renew_succeed", i, j, new String[] { this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId + "", localApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId) });
-        }
-      }
-      else
-      {
-        ApolloContentUpdateHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        QLog.e("cmgame_process.CmGameServerQIPCModule", 1, "errInfo->" + localException.getMessage());
-        continue;
-        int i = 0;
-      }
-    }
+    CmGameStartChecker.StartCheckParam localStartCheckParam = new CmGameStartChecker.StartCheckParam(this.jdField_a_of_type_Int, true, "normalStart", 0L, 7, this.jdField_b_of_type_Int, this.c, ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaLangString, this.d);
+    localStartCheckParam.extendJson = this.jdField_b_of_type_JavaLangString;
+    ApolloGameUtil.a(this.jdField_a_of_type_AndroidAppActivity, localStartCheckParam);
   }
 }
 

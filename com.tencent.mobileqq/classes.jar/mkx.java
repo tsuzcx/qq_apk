@@ -1,16 +1,25 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
-public class mkx
-  implements View.OnClickListener
+class mkx
+  implements Runnable
 {
-  public mkx(ReadinjoyTabFrame paramReadinjoyTabFrame, Context paramContext) {}
+  mkx(mks parammks) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, this.jdField_a_of_type_AndroidContentContext, paramView);
+    this.a.a.notifyDataSetChanged();
+    if (this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a())
+    {
+      this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.e(true);
+      this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a().g();
+    }
+    while ((this.a.a.jdField_a_of_type_Boolean) || (!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c())) {
+      return;
+    }
+    this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.d(true);
+    this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a().g();
   }
 }
 

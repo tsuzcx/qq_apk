@@ -3,14 +3,14 @@ package com.tencent.component.media.image;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
 import com.tencent.component.media.utils.BaseHandler;
-import phh;
-import php;
-import phq;
-import phr;
-import phs;
+import plz;
+import pmh;
+import pmi;
+import pmj;
+import pmk;
 
 public class UICallbackTask
-  extends phh
+  extends plz
 {
   private static int jdField_a_of_type_Int;
   private static UICallbackTask jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask;
@@ -26,9 +26,9 @@ public class UICallbackTask
     clearAndInitSize();
   }
   
-  private UICallbackTask(phh paramphh)
+  private UICallbackTask(plz paramplz)
   {
-    super(paramphh);
+    super(paramplz);
   }
   
   private String a(ImageKey paramImageKey)
@@ -55,7 +55,7 @@ public class UICallbackTask
     if (paramImageKey.options == null) {}
     for (boolean bool = false; bool; bool = paramImageKey.options.useMainThread)
     {
-      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new php(this, paramImageKey));
+      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pmh(this, paramImageKey));
       return;
     }
     paramImageKey.listener.onImageFailed(a(paramImageKey), paramImageKey.options);
@@ -80,7 +80,7 @@ public class UICallbackTask
     if (paramImageKey.options == null) {}
     for (boolean bool = false; bool; bool = paramImageKey.options.useMainThread)
     {
-      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new phs(this, paramImageKey, paramFloat));
+      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pmk(this, paramImageKey, paramFloat));
       return;
     }
     paramImageKey.listener.onImageProgress(a(paramImageKey), paramFloat, paramImageKey.options);
@@ -99,7 +99,7 @@ public class UICallbackTask
     if (paramImageKey.options == null) {}
     for (boolean bool = false; bool; bool = paramImageKey.options.useMainThread)
     {
-      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new phr(this, paramImageKey, paramDrawable));
+      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pmj(this, paramImageKey, paramDrawable));
       return;
     }
     paramImageKey.listener.onImageLoaded(a(paramImageKey), paramDrawable, paramImageKey.options);
@@ -120,7 +120,7 @@ public class UICallbackTask
     if (paramImageKey.options == null) {}
     for (boolean bool = false; bool; bool = paramImageKey.options.useMainThread)
     {
-      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new phq(this, paramImageKey));
+      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pmi(this, paramImageKey));
       return;
     }
     paramImageKey.listener.onImageCanceled(a(paramImageKey), paramImageKey.options);
@@ -144,7 +144,7 @@ public class UICallbackTask
     }
   }
   
-  public static UICallbackTask obtain(phh paramphh)
+  public static UICallbackTask obtain(plz paramplz)
   {
     if (needRecycle) {}
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -155,10 +155,10 @@ public class UICallbackTask
         jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask = jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask.b;
         localUICallbackTask.b = null;
         jdField_a_of_type_Int -= 1;
-        localUICallbackTask.setImageTask(paramphh);
+        localUICallbackTask.setImageTask(paramplz);
         return localUICallbackTask;
       }
-      return new UICallbackTask(paramphh);
+      return new UICallbackTask(paramplz);
     }
   }
   

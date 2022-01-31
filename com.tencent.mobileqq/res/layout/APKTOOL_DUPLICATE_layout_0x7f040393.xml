@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <com.tencent.widget.SegmentedControlView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1325" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="110.0dip" android:layout_marginRight="97.0dip" android:divider="@null" android:checkedButton="@id/APKTOOL_DUPLICATE_id_0x7f0a087f" android:dividerPadding="0.0dip" tencent:firstButtonBackground="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f3f" tencent:lastButtonBackground="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f40" tencent:middleButtonBackground="@null" tencent:uniqueButtonBackground="@null">
-        <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0dip" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1326" android:background="@null" android:layout_width="60.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2722" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01c9" />
-        <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0dip" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1327" android:background="@null" android:layout_width="60.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2723" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01c9" />
-    </com.tencent.widget.SegmentedControlView>
-</LinearLayout>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1331" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1332" android:background="#ffd8dae0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1333" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1334" android:visibility="visible" android:layout_width="62.0dip" android:layout_height="62.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d6c" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

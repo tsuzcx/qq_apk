@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView.VideoInfoListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
 public class aewy
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aewy(MagazinePlayerView paramMagazinePlayerView) {}
+  public aewy(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void run()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.b();
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.c();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

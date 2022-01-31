@@ -51,7 +51,7 @@ public class ExtendFriendFeedView
   public ExtendFriendFeedView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2130970337, this, true);
+    LayoutInflater.from(paramContext).inflate(2130970352, this, true);
     this.jdField_a_of_type_Float = AIOUtils.a(4.0F, getResources());
   }
   

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.businessCard.views;
 
-import abot;
-import abou;
-import abov;
+import abvu;
+import abvv;
+import abvw;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 public class BusinessCardView
   extends FrameLayout
-  implements abot, BusinessCardViewScroller.DeckViewScrollerCallbacks, ViewPool.ViewPoolConsumer
+  implements abvu, BusinessCardViewScroller.DeckViewScrollerCallbacks, ViewPool.ViewPoolConsumer
 {
   public float a;
   public int a;
@@ -61,7 +61,7 @@ public class BusinessCardView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangRunnable = new abou(this);
+    this.jdField_a_of_type_JavaLangRunnable = new abvv(this);
     this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131559194);
   }
   
@@ -186,7 +186,7 @@ public class BusinessCardView
   
   public BusinessCardChildView a(Context paramContext)
   {
-    return (BusinessCardChildView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970249, this, false);
+    return (BusinessCardChildView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970264, this, false);
   }
   
   public BusinessCardChildView a(Object paramObject)
@@ -272,7 +272,7 @@ public class BusinessCardView
         f = this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a(f - 0.5F);
         this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a(), f, (Runnable)localObject1, BusinessCardViewScroller.d);
         return;
-        localObject1 = new abov(this, paramBoolean2);
+        localObject1 = new abvw(this, paramBoolean2);
       }
     } while (localObject1 == null);
     ((Runnable)localObject1).run();

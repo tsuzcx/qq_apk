@@ -1,29 +1,48 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aesd
-  implements URLDrawable.URLDrawableListener
+  implements Runnable
 {
-  public aesd(StoryPlayController paramStoryPlayController, VideoInfoListenerImpl paramVideoInfoListenerImpl) {}
+  public aesd(QQPlayerService paramQQPlayerService) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewLogicVideoInfoListenerImpl != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewLogicVideoInfoListenerImpl.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.mobileqq.intent.logout");
+    localIntentFilter.addAction("qqplayer_exit_action");
+    try
+    {
+      BaseApplicationImpl.getContext().registerReceiver(QQPlayerService.a(this.a), localIntentFilter);
+    }
+    catch (Exception localException)
+    {
+      try
+      {
+        for (;;)
+        {
+          QQPlayerService.a(this.a);
+          return;
+          localException = localException;
+          if (QLog.isColorLevel()) {
+            QLog.d("QQPlayerService", 2, "onCreate registerReceiver exception ");
+          }
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("QQPlayerService", 2, "initMediaPlayer", localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesd
  * JD-Core Version:    0.7.0.1
  */

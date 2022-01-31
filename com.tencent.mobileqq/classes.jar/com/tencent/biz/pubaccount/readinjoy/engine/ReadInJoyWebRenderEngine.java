@@ -18,8 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.atomic.AtomicBoolean;
-import lmd;
-import lme;
+import los;
+import lot;
 
 public class ReadInJoyWebRenderEngine
 {
@@ -53,7 +53,7 @@ public class ReadInJoyWebRenderEngine
   public ReadInJoyWebRenderEngine()
   {
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderStateMachineScheduler = new ReadInJoyWebRenderStateMachineScheduler(new lmd(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyWebRenderStateMachineScheduler = new ReadInJoyWebRenderStateMachineScheduler(new los(this));
   }
   
   public static ReadInJoyWebRenderEngine.RenderHtmlData a(String paramString)
@@ -173,10 +173,10 @@ public class ReadInJoyWebRenderEngine
     //   54: invokevirtual 193	java/util/concurrent/atomic/AtomicBoolean:getAndSet	(Z)Z
     //   57: ifne -17 -> 40
     //   60: invokestatic 199	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   63: new 201	lmf
+    //   63: new 201	lou
     //   66: dup
     //   67: aload_0
-    //   68: invokespecial 203	lmf:<init>	(Ljava/lang/String;)V
+    //   68: invokespecial 203	lou:<init>	(Ljava/lang/String;)V
     //   71: invokevirtual 209	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   74: pop
     //   75: goto -35 -> 40
@@ -205,7 +205,7 @@ public class ReadInJoyWebRenderEngine
       if (QLog.isColorLevel()) {
         QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render onStart timestamp = " + System.currentTimeMillis() + " ; url = " + paramString1 + ";data = " + paramString2);
       }
-      ThreadManager.post(new lme(this), 8, null, true);
+      ThreadManager.post(new lot(this), 8, null, true);
       ReadInJoyUtils.a(ReadInJoyUtils.a(), true, 1);
       return;
     }

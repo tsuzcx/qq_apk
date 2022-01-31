@@ -21,10 +21,10 @@ import com.tencent.mobileqq.widget.ConfigClearableEditText;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.observer.WtloginObserver;
 import mqq.os.MqqHandler;
-import tak;
-import tal;
-import tam;
-import tan;
+import tfc;
+import tfd;
+import tfe;
+import tff;
 
 public class LoginPhoneNumActivity
   extends RegisterNewBaseActivity
@@ -34,8 +34,8 @@ public class LoginPhoneNumActivity
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ConfigClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new tan(this);
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tak(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new tff(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tfc(this);
   private boolean jdField_a_of_type_Boolean;
   private TextView b;
   private String c;
@@ -124,7 +124,7 @@ public class LoginPhoneNumActivity
     this.jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.getText().toString());
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      a(2131434249, 1);
+      a(2131434265, 1);
       bool = false;
     }
     return bool;
@@ -132,30 +132,30 @@ public class LoginPhoneNumActivity
   
   private void d()
   {
-    c(2131433207);
+    c(2131433221);
     b();
     a(false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370404));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370413));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370405));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370414));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370407));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370416));
     this.jdField_b_of_type_JavaLangString = PhoneCodeUtils.b(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setText("+" + this.jdField_b_of_type_JavaLangString);
     if ("86".equals(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131434317));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131434333));
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText = ((ConfigClearableEditText)findViewById(2131365431));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText = ((ConfigClearableEditText)findViewById(2131365436));
     this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.addTextChangedListener(this);
     if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setCustomSelectionActionModeCallback(new tal(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setCustomSelectionActionModeCallback(new tfd(this));
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370409));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370418));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setOnCreateContextMenuListener(new tam(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText.setOnCreateContextMenuListener(new tfe(this));
     }
   }
   
@@ -167,13 +167,13 @@ public class LoginPhoneNumActivity
       return;
       if (!NetworkUtil.d(BaseApplication.getContext()))
       {
-        a(2131433009, 0);
+        a(2131433023, 0);
         return;
       }
-      b(2131434231);
+      b(2131434247);
     } while (PhoneNumLoginImpl.a().a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
     c();
-    a(getString(2131434215), 1);
+    a(getString(2131434231), 1);
   }
   
   public void a()
@@ -208,7 +208,7 @@ public class LoginPhoneNumActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970402);
+    setContentView(2130970417);
     paramBundle = getIntent();
     if (paramBundle != null) {
       this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("isSubaccount", false);
@@ -260,13 +260,13 @@ public class LoginPhoneNumActivity
   {
     switch (paramView.getId())
     {
-    case 2131370406: 
-    case 2131370407: 
-    case 2131370408: 
+    case 2131370415: 
+    case 2131370416: 
+    case 2131370417: 
     default: 
       return;
-    case 2131370404: 
-    case 2131370405: 
+    case 2131370413: 
+    case 2131370414: 
       startActivityForResult(new Intent(this, NewStyleCountryActivity.class), 1);
       return;
     }

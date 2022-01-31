@@ -28,12 +28,12 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import jqm;
-import jqn;
-import jqo;
-import jqp;
-import jqq;
-import jqr;
+import jsq;
+import jsr;
+import jss;
+import jst;
+import jsu;
+import jsv;
 
 public class BeautySettingUi
   implements SeekBar.OnSeekBarChangeListener
@@ -120,11 +120,11 @@ public class BeautySettingUi
   {
     switch (paramView.getId())
     {
-    case 2131365894: 
-    case 2131365895: 
+    case 2131365899: 
+    case 2131365900: 
     default: 
       return;
-    case 2131365896: 
+    case 2131365901: 
       AVNotifyCenter.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), this.jdField_c_of_type_Int);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(117) });
       if (this.jdField_c_of_type_Boolean)
@@ -211,19 +211,19 @@ public class BeautySettingUi
       AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (localAVActivity != null)
       {
-        localAVActivity.getLayoutInflater().inflate(2130969269, this.jdField_a_of_type_AndroidViewViewGroup);
+        localAVActivity.getLayoutInflater().inflate(2130969267, this.jdField_a_of_type_AndroidViewViewGroup);
         this.jdField_a_of_type_AndroidContentResResources = localAVActivity.getResources();
       }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365893));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365896));
-    this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar = ((BidirectionSeekBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365897));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365898));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365898));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365901));
+    this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar = ((BidirectionSeekBar)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365902));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365903));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = null;
-    ThreadManager.post(new jqm(this), 5, null, false);
+    ThreadManager.post(new jsq(this), 5, null, false);
     this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.setMax(100);
     this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.setOnSeekBarChangeListener(this);
-    this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.getViewTreeObserver().addOnGlobalLayoutListener(new jqn(this));
+    this.jdField_a_of_type_ComTencentAvWidgetBidirectionSeekBar.getViewTreeObserver().addOnGlobalLayoutListener(new jsr(this));
   }
   
   public void b(int paramInt)
@@ -248,12 +248,12 @@ public class BeautySettingUi
       return;
       i = 1;
     }
-    localObject = DialogUtil.a(localAVActivity, 230).setMessage(str).setTitle((String)localObject).setNegativeButton(2131433015, new jqq(this, localAVActivity));
+    localObject = DialogUtil.a(localAVActivity, 230).setMessage(str).setTitle((String)localObject).setNegativeButton(2131433029, new jsu(this, localAVActivity));
     if (UITools.a(localAVActivity)) {}
     for (i = 2131429208;; i = 2131429209)
     {
-      localObject = ((QQCustomDialog)localObject).setPositiveButton(i, new jqp(this, localAVActivity));
-      ((QQCustomDialog)localObject).setOnDismissListener(new jqr(this, paramInt));
+      localObject = ((QQCustomDialog)localObject).setPositiveButton(i, new jst(this, localAVActivity));
+      ((QQCustomDialog)localObject).setOnDismissListener(new jsv(this, paramInt));
       ((QQCustomDialog)localObject).show();
       return;
     }
@@ -325,8 +325,8 @@ public class BeautySettingUi
   
   void f()
   {
-    jqo localjqo = new jqo(this);
-    new Handler().post(localjqo);
+    jss localjss = new jss(this);
+    new Handler().post(localjss);
   }
   
   void g()
@@ -370,7 +370,7 @@ public class BeautySettingUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.BeautySettingUi
  * JD-Core Version:    0.7.0.1
  */

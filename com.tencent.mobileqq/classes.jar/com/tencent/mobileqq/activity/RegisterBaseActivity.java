@@ -7,10 +7,10 @@ import android.os.Handler;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.QQToastNotifier;
-import toz;
-import tpa;
-import tpc;
-import tpd;
+import ttr;
+import tts;
+import ttu;
+import ttv;
 
 public class RegisterBaseActivity
   extends IphoneTitleBarActivity
@@ -26,14 +26,14 @@ public class RegisterBaseActivity
   public RegisterBaseActivity()
   {
     this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_b_of_type_AndroidOsHandler = new toz(this);
+    this.jdField_b_of_type_AndroidOsHandler = new ttr(this);
   }
   
   protected void a(int paramInt)
   {
     try
     {
-      this.jdField_b_of_type_AndroidOsHandler.post(new tpd(this, paramInt));
+      this.jdField_b_of_type_AndroidOsHandler.post(new ttv(this, paramInt));
       return;
     }
     catch (Exception localException)
@@ -63,7 +63,7 @@ public class RegisterBaseActivity
   {
     try
     {
-      this.jdField_b_of_type_AndroidOsHandler.post(new tpa(this, paramString1, paramString2));
+      this.jdField_b_of_type_AndroidOsHandler.post(new tts(this, paramString1, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -74,7 +74,7 @@ public class RegisterBaseActivity
   
   public void c()
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new tpc(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new ttu(this));
   }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)

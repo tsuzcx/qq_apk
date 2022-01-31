@@ -1,27 +1,49 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import android.app.Activity;
+import android.os.AsyncTask;
+import com.dataline.util.file.FileUtil;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class vsx
-  implements Animation.AnimationListener
+public final class vsx
+  extends AsyncTask
 {
-  vsx(vsw paramvsw) {}
+  public vsx(File paramFile1, File paramFile2, Activity paramActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected String a(Void... paramVarArgs)
   {
-    if (this.a.a.q != null)
+    paramVarArgs = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+    try
     {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2131034320);
-      paramAnimation.setAnimationListener(this);
-      this.a.a.q.startAnimation(paramAnimation);
+      if (FileUtil.a(this.b, this.jdField_a_of_type_JavaIoFile))
+      {
+        ImageUtil.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        return this.jdField_a_of_type_AndroidAppActivity.getString(2131434598) + " " + paramVarArgs;
+      }
+      paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getString(2131434599);
+      return paramVarArgs;
     }
+    catch (OutOfMemoryError paramVarArgs)
+    {
+      paramVarArgs = this.jdField_a_of_type_AndroidAppActivity.getString(2131434599);
+      if (QLog.isColorLevel()) {
+        QLog.e("AIOGalleryUtils", 2, "savePhoto  OOM ");
+      }
+    }
+    return paramVarArgs;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
+    for (int i = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();; i = 0)
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, paramString, 0).b(i);
+      return;
+    }
+  }
 }
 
 

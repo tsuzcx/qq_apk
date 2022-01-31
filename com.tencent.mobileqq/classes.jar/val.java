@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
-import com.tencent.mobileqq.data.MessageForText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder;
 
 public class val
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public val(LocationItemBuilder paramLocationItemBuilder, MessageForText paramMessageForText) {}
+  public val(CommonHobbyForAIOShowItemBuilder paramCommonHobbyForAIOShowItemBuilder, ImageView paramImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
-    ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLocationItemBuilder.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842779);
   }
 }
 

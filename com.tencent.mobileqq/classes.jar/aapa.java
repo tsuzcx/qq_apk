@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-class aapa
+public class aapa
   implements Runnable
 {
-  aapa(aaoz paramaaoz) {}
+  public aapa(ARReport paramARReport, long paramLong) {}
   
   public void run()
   {
-    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"none".equals(ArkAppEventObserverManager.a(this.a.a))))
-    {
-      ArkAppEventObserverManager.a(this.a.a).a(true, "none");
-      ArkAppEventObserverManager.a(this.a.a, "none");
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("loadingtime", String.valueOf(this.jdField_a_of_type_Long));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARWebView", true, 0L, 0L, localHashMap, "");
   }
 }
 

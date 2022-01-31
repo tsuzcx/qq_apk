@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import nhx;
+import nmh;
 
 public class StoryPushMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new nhx();
+  public static final Parcelable.Creator CREATOR = new nmh();
   public int a;
   public long a;
   public Bundle a;

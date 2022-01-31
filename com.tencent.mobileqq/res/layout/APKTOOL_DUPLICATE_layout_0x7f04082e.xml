@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0419" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.QQViewPager android:id="@id/viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0686" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b7" />
+    <RelativeLayout android:id="@id/head" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038b" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/title" android:layout_marginLeft="12.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b3" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a36" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02c0" />
+        <LinearLayout android:id="@id/content" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02bc">
+            <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e02c6" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2636" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02be" />
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04e2" android:id="@id/info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="-7.0dip" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0154" android:layout_marginBottom="8.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0686" android:layout_below="@id/head" android:layout_alignParentLeft="true" android:lineSpacingExtra="4.0dip" />
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_below="@id/info" />
+</RelativeLayout>

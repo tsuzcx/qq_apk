@@ -18,7 +18,7 @@ public class QzoneContactsFeedUtils
   
   public static newest_feeds_req a(int paramInt, long paramLong1, ArrayList paramArrayList, long paramLong2, String paramString)
   {
-    return new newest_feeds_req(paramInt, paramLong1, paramArrayList, paramLong2, paramString, QUA.a());
+    return new newest_feeds_req(paramInt, paramLong1, paramArrayList, paramLong2, paramString, QUA.a(), null);
   }
   
   public static newest_feeds_req a(Intent paramIntent)

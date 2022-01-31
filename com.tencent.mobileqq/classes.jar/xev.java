@@ -1,42 +1,17 @@
-import android.graphics.BitmapFactory;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.util.DisplayUtil;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
 
-class xev
-  implements PreloadManager.OnGetPathListener
+public class xev
+  implements View.OnClickListener
 {
-  xev(xeu paramxeu) {}
+  public xev(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(View paramView)
   {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDialog.isShowing()) {}
-    for (;;)
-    {
-      return;
-      if (paramInt == 0) {
-        try
-        {
-          paramPathResult = GoldMsgDialog.a(BitmapFactory.decodeFile(paramPathResult.filePath), DisplayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDialog.getContext(), 5.0F), true);
-          if (paramPathResult != null)
-          {
-            this.a.jdField_a_of_type_MqqAppAppRuntime.runOnUiThread(new xew(this, paramPathResult));
-            return;
-          }
-        }
-        catch (OutOfMemoryError paramPathResult)
-        {
-          paramPathResult.printStackTrace();
-          return;
-        }
-        catch (Exception paramPathResult)
-        {
-          paramPathResult.printStackTrace();
-        }
-      }
-    }
+    GoldMsgAioState.a(this.a.getWindow(), this.a, null);
+    this.a.finish();
   }
 }
 

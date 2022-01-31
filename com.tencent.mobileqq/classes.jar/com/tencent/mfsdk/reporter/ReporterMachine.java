@@ -23,11 +23,11 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import rdv;
-import rdw;
-import rdx;
-import rdy;
-import rdz;
+import rin;
+import rio;
+import rip;
+import riq;
+import rir;
 
 public class ReporterMachine
 {
@@ -107,7 +107,7 @@ public class ReporterMachine
     }
     if (jdField_a_of_type_MqqOsMqqHandler != null)
     {
-      paramResultObject = new rdx(paramResultObject);
+      paramResultObject = new rip(paramResultObject);
       jdField_a_of_type_MqqOsMqqHandler.post(paramResultObject);
       return;
     }
@@ -129,20 +129,20 @@ public class ReporterMachine
       localJSONObject.put("rdmuuid", jdField_a_of_type_JavaLangString);
       localJSONObject.put("deviceid", PhoneUtil.a(BaseApplicationImpl.sApplication));
       if ((jdField_a_of_type_Int & 0x1) > 0) {
-        jdField_a_of_type_ComTencentMfsdkReporterIReporter.a(paramResultObject, new rdv());
+        jdField_a_of_type_ComTencentMfsdkReporterIReporter.a(paramResultObject, new rin());
       }
     } while ((jdField_a_of_type_Int & 0x2) <= 0);
-    b.a(paramResultObject, new rdw());
+    b.a(paramResultObject, new rio());
   }
   
   public void a()
   {
     if (!jdField_a_of_type_Boolean)
     {
-      rdy localrdy = new rdy(this, null);
-      rdz localrdz = new rdz();
-      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localrdz, 120000L);
-      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localrdy, 300000L);
+      riq localriq = new riq(this, null);
+      rir localrir = new rir();
+      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localrir, 120000L);
+      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localriq, 300000L);
       jdField_a_of_type_Boolean = true;
     }
   }

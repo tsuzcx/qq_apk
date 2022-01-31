@@ -1,16 +1,28 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
+import com.tencent.widget.XPanelContainer;
 import mqq.os.MqqHandler;
 
 public class uoc
-  implements Runnable
+  extends ActivateFriendsObserver
 {
-  public uoc(XBubbleAnimation paramXBubbleAnimation, Object[] paramArrayOfObject) {}
+  public uoc(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation.b(this.jdField_a_of_type_ArrayOfJavaLangObject);
-    ThreadManager.getUIHandler().postDelayed(new uod(this), 100L);
+    this.a.d();
+    SendBirthdayWishesActivity.a(this.a, paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    }
+    if (paramInt != 2)
+    {
+      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
+      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
+    }
   }
 }
 

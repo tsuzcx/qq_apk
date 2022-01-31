@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.plugin.PluginRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
+import java.io.IOException;
+import java.io.InputStream;
 
-public final class amxb
-  implements Parcelable.Creator
+public class amxb
+  implements DialogInterface.OnClickListener
 {
-  public PluginRecord a(Parcel paramParcel)
-  {
-    return new PluginRecord(paramParcel);
-  }
+  public amxb(QfavJumpActivity paramQfavJumpActivity, InputStream paramInputStream) {}
   
-  public PluginRecord[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new PluginRecord[paramInt];
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.finish();
+      return;
+    }
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxb
  * JD-Core Version:    0.7.0.1
  */

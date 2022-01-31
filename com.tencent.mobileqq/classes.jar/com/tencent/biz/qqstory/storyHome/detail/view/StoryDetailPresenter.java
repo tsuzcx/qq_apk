@@ -50,12 +50,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nvj;
-import nvk;
-import nvl;
-import nvm;
-import nvn;
-import nvo;
+import nzy;
+import nzz;
+import oaa;
+import oab;
+import oac;
+import oad;
 
 public class StoryDetailPresenter
   implements DetailEventCallback, DetailFeedAllInfoPuller.OnFeedItemPullListener, DetailCommentHelper.CommentHelperCallback, IEventReceiver
@@ -82,9 +82,9 @@ public class StoryDetailPresenter
   private FeedVideoManager jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoManager;
   private final String jdField_a_of_type_JavaLangString;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private nvm jdField_a_of_type_Nvm;
-  private nvn jdField_a_of_type_Nvn;
-  private nvo jdField_a_of_type_Nvo;
+  private oab jdField_a_of_type_Oab;
+  private oac jdField_a_of_type_Oac;
+  private oad jdField_a_of_type_Oad;
   private final int jdField_b_of_type_Int;
   private CommentListPageLoader jdField_b_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader;
   private DetailLikeListLoader jdField_b_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader;
@@ -92,7 +92,7 @@ public class StoryDetailPresenter
   
   public StoryDetailPresenter(StoryDetailFragment paramStoryDetailFragment, String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nvl(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new oaa(this);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment = paramStoryDetailFragment;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt1;
@@ -537,7 +537,7 @@ public class StoryDetailPresenter
   
   public void b(CommentEntry paramCommentEntry)
   {
-    FeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a, paramCommentEntry, true, this.jdField_a_of_type_Int, new nvj(this));
+    FeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a, paramCommentEntry, true, this.jdField_a_of_type_Int, new nzy(this));
   }
   
   public void b(boolean paramBoolean)
@@ -556,7 +556,7 @@ public class StoryDetailPresenter
     }
     if (((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner() instanceof ShareGroupItem)) && (!((ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner()).isPublic()) && (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().isSubscribe()))
     {
-      QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131432104), 0).a();
+      QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131432115), 0).a();
       return;
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.mHadLike == 0) {}
@@ -588,7 +588,7 @@ public class StoryDetailPresenter
       return;
     }
     localCommentEntry.status = 1;
-    FeedCommentDataProvider.a(localCommentEntry, new nvk(this, localCommentEntry, bool));
+    FeedCommentDataProvider.a(localCommentEntry, new nzz(this, localCommentEntry, bool));
   }
   
   public void d()
@@ -614,12 +614,12 @@ public class StoryDetailPresenter
   
   public void f()
   {
-    this.jdField_a_of_type_Nvn = new nvn(this);
-    Dispatchers.get().registerSubscriber("StoryDetailPresenter", this.jdField_a_of_type_Nvn);
-    this.jdField_a_of_type_Nvo = new nvo(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nvo);
-    this.jdField_a_of_type_Nvm = new nvm(this);
-    Dispatchers.get().registerSubscriber("StoryDetailPresenter", this.jdField_a_of_type_Nvm);
+    this.jdField_a_of_type_Oac = new oac(this);
+    Dispatchers.get().registerSubscriber("StoryDetailPresenter", this.jdField_a_of_type_Oac);
+    this.jdField_a_of_type_Oad = new oad(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Oad);
+    this.jdField_a_of_type_Oab = new oab(this);
+    Dispatchers.get().registerSubscriber("StoryDetailPresenter", this.jdField_a_of_type_Oab);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$FeedInfoUpdateReceiver = new StoryDetailPresenter.FeedInfoUpdateReceiver(this);
     Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$FeedInfoUpdateReceiver);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$UploadStatusReceiver = new StoryDetailPresenter.UploadStatusReceiver(this);
@@ -647,9 +647,9 @@ public class StoryDetailPresenter
   
   public void g()
   {
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nvn);
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nvo);
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nvm);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Oac);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Oad);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Oab);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$FeedInfoUpdateReceiver);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$UploadStatusReceiver);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailPresenter$VideoDeleteReceiver);

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="30.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03ad" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3591" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="使用有效期截至" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c013d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3592" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="续费" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a3591" />
+    </RelativeLayout>
+</RelativeLayout>

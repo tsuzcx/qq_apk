@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class rwe
-  implements DialogInterface.OnClickListener
+public class rwe
+  implements Runnable
 {
-  public rwe(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public rwe(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a != null) {
-      this.a.a();
+    if (this.a.g != null)
+    {
+      this.a.g.getVisibility();
+      this.a.g.setVisibility(8);
     }
-    paramDialogInterface.dismiss();
+    if (BaseChatPie.a(this.a) != null) {
+      BaseChatPie.a(this.a).setVisibility(8);
+    }
   }
 }
 

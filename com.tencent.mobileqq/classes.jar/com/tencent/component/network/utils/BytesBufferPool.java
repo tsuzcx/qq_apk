@@ -44,7 +44,7 @@ public class BytesBufferPool
     //   36: aload_0
     //   37: getfield 24	com/tencent/component/network/utils/BytesBufferPool:b	I
     //   40: aconst_null
-    //   41: invokespecial 39	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:<init>	(ILpkx;)V
+    //   41: invokespecial 39	com/tencent/component/network/utils/BytesBufferPool$BytesBuffer:<init>	(ILppp;)V
     //   44: astore_2
     //   45: goto -17 -> 28
     //   48: astore_2

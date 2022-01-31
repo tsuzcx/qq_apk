@@ -1,22 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.Status;
 
-public class lrt
-  implements Runnable
+public final class lrt
+  implements Parcelable.Creator
 {
-  public lrt(SubscriptionInfoModule paramSubscriptionInfoModule) {}
-  
-  public void run()
+  public Status a(Parcel paramParcel)
   {
-    ((PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(55)).a();
-    TroopBarAssistantManager localTroopBarAssistantManager = TroopBarAssistantManager.a();
-    localTroopBarAssistantManager.c((QQAppInterface)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if (localTroopBarAssistantManager.a((QQAppInterface)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
-      localTroopBarAssistantManager.a(this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (QQAppInterface)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    }
+    return new Status(paramParcel, null);
+  }
+  
+  public Status[] a(int paramInt)
+  {
+    return new Status[paramInt];
   }
 }
 

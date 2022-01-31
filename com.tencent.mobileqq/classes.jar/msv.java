@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class msv
-  implements Runnable
+class msv
+  implements DialogInterface.OnClickListener
 {
-  public msv(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  msv(mst parammst) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((PublicAccountDataManager)this.a.app.getManager(55)).a();
-    TroopBarAssistantManager.a().c(this.a.app);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
 
-public class acsh
-  implements Comparator
+class acsh
+  implements Runnable
 {
-  public acsh(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  acsh(acsg paramacsg) {}
   
-  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
+  public void run()
   {
-    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
-      return 1;
+    if (ExtendFriendVoiceView.a(this.a.a) != null) {
+      ExtendFriendVoiceView.a(this.a.a).setBackgroundDrawable(ExtendFriendVoiceView.a(this.a.a));
     }
-    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
-      return -1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsh
  * JD-Core Version:    0.7.0.1
  */

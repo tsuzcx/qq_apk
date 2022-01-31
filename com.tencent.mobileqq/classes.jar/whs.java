@@ -1,24 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.theme.SkinEngine;
+import mqq.os.MqqHandler;
 
-public class whs
-  implements DialogInterface.OnClickListener
+public final class whs
+  implements Runnable
 {
-  public whs(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public whs(TextView paramTextView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new wht(this), 10, null, true);
-      return;
-    }
-    paramDialogInterface.dismiss();
+    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845961);
+    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845963);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
+    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);
+    ThreadManager.getUIHandler().post(new wht(this, localStateListDrawable));
   }
 }
 

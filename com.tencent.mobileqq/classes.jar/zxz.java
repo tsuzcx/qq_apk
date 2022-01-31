@@ -1,28 +1,29 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.automator.step.RegisterPush;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
-public final class zxz
-  implements Runnable
+public class zxz
+  extends AccountObserver
 {
-  public zxz(String paramString1, String paramString2) {}
+  private zxz(RegisterPush paramRegisterPush) {}
   
-  public void run()
+  public void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onlineStatusChanged isSuccess=" + paramBoolean1 + ",curStatus=" + paramStatus.toString() + ",isFriendListChang=" + paramBoolean2 + ",timeStamp=" + paramLong + ",isGatherListChange=" + paramBoolean3);
+    }
+    if (paramBoolean1)
     {
-      DialogUtil.a(ARVideoRecordUIControllerImpl.a().a(), 230, this.a, this.b, "", "我知道了", new zya(this), null).show();
+      this.a.a(7);
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxz
  * JD-Core Version:    0.7.0.1
  */

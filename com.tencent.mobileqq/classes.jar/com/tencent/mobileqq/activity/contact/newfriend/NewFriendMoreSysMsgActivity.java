@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.NewFriendManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.SwipListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import wjq;
+import wpa;
 
 public class NewFriendMoreSysMsgActivity
   extends BaseActivity
@@ -32,23 +32,23 @@ public class NewFriendMoreSysMsgActivity
   {
     super.doOnCreate(paramBundle);
     int i = getIntent().getIntExtra("first_visible_index", 0);
-    setContentView(2130970498);
-    paramBundle = (LinearLayout)findViewById(2131362840);
+    setContentView(2130970510);
+    paramBundle = (LinearLayout)findViewById(2131362845);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.a(this), 0, 0);
     }
-    paramBundle = (SwipListView)findViewById(2131370881);
-    View localView = findViewById(2131370882);
-    TextView localTextView = (TextView)findViewById(2131363381);
+    paramBundle = (SwipListView)findViewById(2131370868);
+    View localView = findViewById(2131370869);
+    TextView localTextView = (TextView)findViewById(2131363400);
     localTextView.setVisibility(0);
-    localTextView.setText(2131433325);
-    setTitle(getString(2131433325));
-    localTextView = (TextView)findViewById(2131363245);
+    localTextView.setText(2131433339);
+    setTitle(getString(2131433339));
+    localTextView = (TextView)findViewById(2131363262);
     localTextView.setVisibility(0);
-    localTextView.setText(2131433698);
-    localTextView.setOnClickListener(new wjq(this));
+    localTextView.setText(2131433712);
+    localTextView.setOnClickListener(new wpa(this));
     this.a = new NewFriendMoreSysMsgAdapter(this, this.app, paramBundle, localView, this.mFlingHandler, i);
     return true;
   }

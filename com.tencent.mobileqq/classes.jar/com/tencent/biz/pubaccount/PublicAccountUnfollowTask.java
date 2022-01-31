@@ -11,8 +11,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.qphone.base.util.QLog;
-import kzf;
-import kzg;
+import lbm;
+import lbn;
 import mqq.os.MqqHandler;
 
 public class PublicAccountUnfollowTask
@@ -46,7 +46,7 @@ public class PublicAccountUnfollowTask
       QLog.d("PublicAccountUnfollowTask", 2, "retry count reach max value or app = null ! retryCount : " + this.jdField_a_of_type_Int);
       return;
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new kzf(this));
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new lbm(this));
   }
   
   public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
@@ -56,7 +56,7 @@ public class PublicAccountUnfollowTask
     if (i < 3)
     {
       QLog.d("PublicAccountUnfollowTask", 2, "unfollow account fail ! uin : " + this.jdField_a_of_type_JavaLangString + " , errCode : " + paramInt + ", retry : " + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new kzg(this));
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new lbn(this));
     }
     while (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountUnfollowTask$UnFollowPublicAccountListenner == null) {
       return;

@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.plugin.IPluginManager;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class amti
-  implements Runnable
+public final class amti
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public amti(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity, PluginBaseInfo paramPluginBaseInfo) {}
-  
-  public void run()
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    try
-    {
-      if (QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity) != null) {
-        QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.mID, null, QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity));
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
     }
-    catch (Exception localException)
+    IPluginManager.a(paramPluginManagerClient);
+    IPluginManager.a(null);
+    while (!IPluginManager.a().isEmpty())
     {
-      QLog.e("QzoneVerticalVideoDownloadActivity", 1, localException, new Object[0]);
+      paramPluginManagerClient = (amtn)IPluginManager.a().poll();
+      if (paramPluginManagerClient != null) {
+        IPluginManager.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
+      }
     }
   }
 }

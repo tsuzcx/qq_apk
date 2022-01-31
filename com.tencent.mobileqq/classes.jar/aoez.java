@@ -1,16 +1,15 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.os.Message;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
 public class aoez
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public aoez(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public aoez(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, long paramLong) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 13, Long.valueOf(this.jdField_a_of_type_Long / 1000000L)));
   }
 }
 

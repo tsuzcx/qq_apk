@@ -8,14 +8,14 @@ import android.os.Message;
 import android.os.Process;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import rcr;
+import rhj;
 
 public class ReportThread
   extends Thread
 {
   public Looper a;
   public Object a;
-  public rcr a;
+  public rhj a;
   
   public ReportThread()
   {
@@ -288,21 +288,21 @@ public class ReportThread
   
   public void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if (this.jdField_a_of_type_Rcr == null) {
+    if (this.jdField_a_of_type_Rhj == null) {
       return;
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_Rcr != null)
+      if (this.jdField_a_of_type_Rhj != null)
       {
-        Message localMessage = this.jdField_a_of_type_Rcr.obtainMessage();
+        Message localMessage = this.jdField_a_of_type_Rhj.obtainMessage();
         Bundle localBundle = new Bundle();
         localBundle.putInt("KEY_TYPE", paramInt1);
         localBundle.putInt("KEY_INDEX", paramInt2);
         localBundle.putInt("KEY_SUBINDEX", paramInt3);
         localBundle.putString("KEY_EXTRAINFO", paramString);
         localMessage.setData(localBundle);
-        this.jdField_a_of_type_Rcr.sendMessage(localMessage);
+        this.jdField_a_of_type_Rhj.sendMessage(localMessage);
       }
       return;
     }
@@ -311,7 +311,7 @@ public class ReportThread
   public void run()
   {
     Looper.prepare();
-    this.jdField_a_of_type_Rcr = new rcr();
+    this.jdField_a_of_type_Rhj = new rhj();
     this.jdField_a_of_type_AndroidOsLooper = Looper.myLooper();
     Process.setThreadPriority(11);
     Common.Log.a("KingKongReportThread", "ReportThread " + Process.myTid() + " priority : " + Process.getThreadPriority(Process.myTid()));

@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import org.json.JSONObject;
 
-public class akdn
-  implements Runnable
+class akdn
+  implements FrameSprite.OnFrameEndListener
 {
-  public akdn(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener) {}
+  akdn(akdm paramakdm) {}
   
-  public void run()
+  public void a()
   {
-    NewUpgradeDialog.d(this.a.a);
+    if (this.a.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a == null) {}
+    do
+    {
+      return;
+      if (this.a.jdField_a_of_type_Int > this.a.jdField_b_of_type_Int + this.a.c)
+      {
+        String str = this.a.jdField_a_of_type_JavaLangString + this.a.jdField_b_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
+        this.a.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a.a(str, new akdo(this));
+        return;
+      }
+      this.a.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
+    } while (this.a.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener == null);
+    this.a.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdn
  * JD-Core Version:    0.7.0.1
  */

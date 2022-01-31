@@ -1,50 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.FlowControlDownloadStruct;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import java.util.LinkedList;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
 
 public class xfv
-  extends Handler
+  implements View.OnClickListener
 {
-  private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean;
+  public xfv(PayCodeEntryActivity paramPayCodeEntryActivity, xfw paramxfw) {}
   
-  public xfv(PreloadManager paramPreloadManager, Looper paramLooper)
+  public void onClick(View paramView)
   {
-    super(paramLooper);
-  }
-  
-  private void a()
-  {
-    PreloadManager.FlowControlDownloadStruct localFlowControlDownloadStruct = (PreloadManager.FlowControlDownloadStruct)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
-    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-    localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.handleFlowConfig(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager, localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, localFlowControlDownloadStruct.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_JavaUtilLinkedList.addLast((PreloadManager.FlowControlDownloadStruct)paramMessage.obj);
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Boolean = true;
-      sendEmptyMessage(2);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.a("payCodeEntry.cheCode2", "actQQWlxclick", "0003");
+    paramView = new Intent("com.tencent.mobileqq.action.jtcode");
+    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity, JumpActivity.class);
+    if (!TextUtils.isEmpty(PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity))) {
+      paramView.putExtra("city_name", PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity));
     }
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
-    {
-      a();
-      return;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.b)) {
+      paramView.putExtra("city_code", this.jdField_a_of_type_Xfw.b);
     }
-    this.jdField_a_of_type_Boolean = false;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.a)) {
+      paramView.putExtra("ykt_id", this.jdField_a_of_type_Xfw.a);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.c)) {
+      paramView.putExtra("show_name", this.jdField_a_of_type_Xfw.c);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.startActivityForResult(paramView, 102);
   }
 }
 

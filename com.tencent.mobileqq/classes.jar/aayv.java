@@ -1,25 +1,40 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import com.tencent.mobileqq.ark.ArkAiDictMgr;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.VasUtils;
+import com.tencent.wordsegment.WordSegment;
+import java.util.Locale;
 
-public class aayv
-  implements CompoundButton.OnCheckedChangeListener
+public final class aayv
+  implements Runnable
 {
-  public aayv(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
+  public aayv(QQAppInterface paramQQAppInterface) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    paramCompoundButton = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
-    String str1 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
+    try
     {
-      ArkAppModuleReg.ModuleQQ.a(paramCompoundButton, str1, str2, i);
+      if (ArkAiDictMgr.a(this.a))
+      {
+        WordSegment.uninit();
+        int i = WordSegment.init(ArkAppCenter.e() + '/');
+        if (i != 0)
+        {
+          ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));
+          return;
+        }
+        ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData success", new Object[0]));
+        ArkAiDictMgr.b = true;
+        VasUtils.a(this.a);
+        return;
+      }
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      ArkAppCenter.b("ArkApp.Dict", "reloadWordData, UnsatisfiedLinkError, err:" + localUnsatisfiedLinkError.getMessage());
       return;
     }
+    ArkAppCenter.b("ArkApp.Dict", String.format("reloadWordData, dict flag is off", new Object[0]));
   }
 }
 

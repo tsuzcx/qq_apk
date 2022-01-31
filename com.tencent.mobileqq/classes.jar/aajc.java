@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.ar.config.MainDownAni;
+import com.tencent.mobileqq.ar.ArConfigService;
 
 public class aajc
   implements Runnable
 {
-  public aajc(MainDownAni paramMainDownAni, aaji paramaaji, aajp paramaajp) {}
+  public aajc(ArConfigService paramArConfigService) {}
   
   public void run()
   {
-    MainDownAni.a(this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni, this.jdField_a_of_type_Aaji, this.jdField_a_of_type_Aajp);
+    ArConfigService.e(this.a);
   }
 }
 

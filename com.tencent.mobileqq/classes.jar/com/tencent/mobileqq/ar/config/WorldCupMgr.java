@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.ar.config;
 
-import aake;
-import aakf;
-import aakh;
-import aakj;
-import aakk;
-import aakl;
-import aakm;
-import aakn;
-import aako;
-import aakp;
-import aakq;
+import aaqx;
+import aaqy;
+import aara;
+import aarb;
+import aard;
+import aare;
+import aarf;
+import aarg;
+import aarh;
+import aari;
+import aarj;
+import aark;
 import android.app.Activity;
 import android.content.IntentFilter;
 import android.content.res.Resources;
@@ -21,6 +22,7 @@ import android.view.View;
 import com.tencent.av.ui.redbag.RedBagUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.UserguideActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -28,6 +30,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.armap.ResDownloadManager;
 import com.tencent.mobileqq.armap.ResDownloadManager.IResDownloadListener;
 import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureRecognitionUtils;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.mobileqq.transfile.predownload.RunnableTask;
 import com.tencent.mobileqq.util.SystemUtil;
@@ -47,6 +50,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
 import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -55,25 +59,30 @@ public class WorldCupMgr
 {
   public static WorldCupConfigInfo a;
   private static WorldCupMgr jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr;
-  static String jdField_b_of_type_JavaLangString;
-  aakl jdField_a_of_type_Aakl = new aakl("menuicon_fixed", 1);
-  public aakn a;
-  public aako a;
-  public aakp a;
+  static String c;
+  aarf jdField_a_of_type_Aarf;
+  public aarh a;
+  public final aari a;
+  public final aarj a;
   DownloadDependRes jdField_a_of_type_ComTencentMobileqqArConfigDownloadDependRes;
   MainDownAni jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni;
   MainEntryAni jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni;
   SplashPopupWin jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin;
-  String jdField_a_of_type_JavaLangString;
+  public final String a;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  aakl jdField_b_of_type_Aakl = new aakl("menuleft_fixed", 1);
+  aarf jdField_b_of_type_Aarf;
+  public WorldCupConfigInfo b;
+  String jdField_b_of_type_JavaLangString;
   
   public WorldCupMgr(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Aakn = null;
-    this.jdField_a_of_type_Aakp = new aakp();
-    this.jdField_a_of_type_Aako = new aako();
-    this.jdField_a_of_type_JavaLangString = paramAppInterface.getAccount();
+    this.jdField_a_of_type_Aarh = null;
+    this.jdField_a_of_type_JavaLangString = ("WorldCupMgr_" + AudioHelper.a());
+    this.jdField_b_of_type_JavaLangString = paramAppInterface.getAccount();
+    this.jdField_a_of_type_Aarf = new aarf(this.jdField_a_of_type_JavaLangString, "menuicon_fixed", 1);
+    this.jdField_b_of_type_Aarf = new aarf(this.jdField_a_of_type_JavaLangString, "menuleft_fixed", 1);
+    this.jdField_a_of_type_Aarj = new aarj(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aari = new aari(this.jdField_a_of_type_JavaLangString);
   }
   
   static int a(int paramInt)
@@ -107,7 +116,7 @@ public class WorldCupMgr
       {
         jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr = new WorldCupMgr(paramAppInterface);
         jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.a(paramAppInterface);
-        QLog.w("WorldCupMgr", 1, "getInstance, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
+        QLog.w(jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_JavaLangString, 1, "getInstance, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
       }
       return jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr;
     }
@@ -116,16 +125,16 @@ public class WorldCupMgr
   
   public static String a()
   {
-    if (jdField_b_of_type_JavaLangString == null) {
+    if (c == null) {
       if (!SystemUtil.a()) {
         break label53;
       }
     }
     label53:
-    for (String str = AppConstants.aJ + "pddata/prd/" + "ar_worldcup" + File.separator;; str = BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/" + "ar_worldcup" + File.separator)
+    for (String str = AppConstants.aK + "pddata/prd/" + "ar_worldcup" + File.separator;; str = BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/" + "ar_worldcup" + File.separator)
     {
-      jdField_b_of_type_JavaLangString = str;
-      return jdField_b_of_type_JavaLangString;
+      c = str;
+      return c;
     }
   }
   
@@ -143,40 +152,40 @@ public class WorldCupMgr
   public static String a(String paramString)
   {
     // Byte code:
-    //   0: new 162	java/io/FileInputStream
+    //   0: new 175	java/io/FileInputStream
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 165	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 176	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   8: astore_2
     //   9: aload_2
     //   10: astore_1
-    //   11: new 167	java/io/BufferedReader
+    //   11: new 178	java/io/BufferedReader
     //   14: dup
-    //   15: new 169	java/io/InputStreamReader
+    //   15: new 180	java/io/InputStreamReader
     //   18: dup
     //   19: aload_2
-    //   20: invokespecial 172	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   23: invokespecial 175	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   20: invokespecial 183	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   23: invokespecial 186	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   26: astore 4
-    //   28: ldc 177
+    //   28: ldc 188
     //   30: astore_0
     //   31: aload_2
     //   32: astore_1
     //   33: aload 4
-    //   35: invokevirtual 180	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   35: invokevirtual 191	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   38: astore_3
     //   39: aload_3
     //   40: ifnull +29 -> 69
     //   43: aload_2
     //   44: astore_1
-    //   45: new 83	java/lang/StringBuilder
+    //   45: new 35	java/lang/StringBuilder
     //   48: dup
-    //   49: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   49: invokespecial 36	java/lang/StringBuilder:<init>	()V
     //   52: aload_0
-    //   53: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: aload_3
-    //   57: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   63: astore_3
     //   64: aload_3
     //   65: astore_0
@@ -184,13 +193,13 @@ public class WorldCupMgr
     //   69: aload_2
     //   70: astore_1
     //   71: aload 4
-    //   73: invokevirtual 183	java/io/BufferedReader:close	()V
+    //   73: invokevirtual 194	java/io/BufferedReader:close	()V
     //   76: aload_0
     //   77: astore_1
     //   78: aload_2
     //   79: ifnull +9 -> 88
     //   82: aload_2
-    //   83: invokevirtual 184	java/io/FileInputStream:close	()V
+    //   83: invokevirtual 195	java/io/FileInputStream:close	()V
     //   86: aload_0
     //   87: astore_1
     //   88: aload_1
@@ -198,18 +207,18 @@ public class WorldCupMgr
     //   90: astore_3
     //   91: aconst_null
     //   92: astore_2
-    //   93: ldc 177
+    //   93: ldc 188
     //   95: astore_0
     //   96: aload_2
     //   97: astore_1
     //   98: aload_3
-    //   99: invokevirtual 187	java/lang/Exception:printStackTrace	()V
+    //   99: invokevirtual 198	java/lang/Exception:printStackTrace	()V
     //   102: aload_0
     //   103: astore_1
     //   104: aload_2
     //   105: ifnull -17 -> 88
     //   108: aload_2
-    //   109: invokevirtual 184	java/io/FileInputStream:close	()V
+    //   109: invokevirtual 195	java/io/FileInputStream:close	()V
     //   112: aload_0
     //   113: areturn
     //   114: astore_1
@@ -221,7 +230,7 @@ public class WorldCupMgr
     //   120: aload_1
     //   121: ifnull +7 -> 128
     //   124: aload_1
-    //   125: invokevirtual 184	java/io/FileInputStream:close	()V
+    //   125: invokevirtual 195	java/io/FileInputStream:close	()V
     //   128: aload_0
     //   129: athrow
     //   130: astore_1
@@ -232,7 +241,7 @@ public class WorldCupMgr
     //   137: astore_0
     //   138: goto -18 -> 120
     //   141: astore_3
-    //   142: ldc 177
+    //   142: ldc 188
     //   144: astore_0
     //   145: goto -49 -> 96
     //   148: astore_3
@@ -280,177 +289,197 @@ public class WorldCupMgr
   }
   
   /* Error */
-  public static JSONObject a(String paramString, int paramInt1, int paramInt2)
+  public static JSONObject a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: new 195	org/json/JSONObject
+    //   0: new 206	org/json/JSONObject
     //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 196	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   8: astore_0
-    //   9: iload_2
-    //   10: ifne +134 -> 144
-    //   13: aload_0
-    //   14: ldc 197
-    //   16: invokevirtual 201	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   19: istore_3
-    //   20: iload_1
-    //   21: iload_3
-    //   22: isub
-    //   23: istore 4
-    //   25: ldc 81
-    //   27: iconst_1
-    //   28: new 83	java/lang/StringBuilder
-    //   31: dup
-    //   32: invokespecial 84	java/lang/StringBuilder:<init>	()V
-    //   35: ldc 203
-    //   37: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: iload_1
-    //   41: invokevirtual 99	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   44: ldc 205
-    //   46: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: iload_3
-    //   50: invokevirtual 99	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   53: ldc 207
-    //   55: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: iload 4
-    //   60: invokevirtual 99	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   63: ldc 209
-    //   65: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: iload_2
-    //   69: invokevirtual 99	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   72: ldc 106
-    //   74: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokestatic 115	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   83: iload_2
-    //   84: ifne +70 -> 154
-    //   87: aload_0
-    //   88: ldc 197
-    //   90: iload_1
-    //   91: invokevirtual 213	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   94: pop
-    //   95: aload_0
-    //   96: ldc 215
-    //   98: invokevirtual 219	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   101: astore 7
-    //   103: aload 7
-    //   105: ifnull +142 -> 247
-    //   108: aload 7
-    //   110: invokevirtual 225	org/json/JSONArray:length	()I
-    //   113: istore 5
-    //   115: iconst_0
-    //   116: istore_1
-    //   117: iload_1
-    //   118: iload 5
-    //   120: if_icmpge +127 -> 247
-    //   123: aload 7
-    //   125: iload_1
-    //   126: invokevirtual 229	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   129: ldc 231
-    //   131: invokevirtual 234	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   134: astore 8
-    //   136: aload 8
-    //   138: ifnonnull +27 -> 165
-    //   141: goto +111 -> 252
-    //   144: aload_0
-    //   145: ldc 236
-    //   147: invokevirtual 201	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   150: istore_3
-    //   151: goto -131 -> 20
-    //   154: aload_0
-    //   155: ldc 236
-    //   157: iload_1
-    //   158: invokevirtual 213	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   161: pop
-    //   162: goto -67 -> 95
-    //   165: aload 8
-    //   167: ldc 238
-    //   169: invokevirtual 234	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   172: astore 8
-    //   174: aload 8
-    //   176: ifnull +76 -> 252
-    //   179: aload 8
-    //   181: ldc 240
-    //   183: invokevirtual 219	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   186: astore 8
-    //   188: aload 8
-    //   190: ifnull +62 -> 252
-    //   193: aload 8
-    //   195: invokevirtual 225	org/json/JSONArray:length	()I
-    //   198: istore 6
-    //   200: iconst_0
-    //   201: istore_3
-    //   202: iload_3
-    //   203: iload 6
-    //   205: if_icmpge +47 -> 252
-    //   208: aload 8
-    //   210: iload_3
-    //   211: invokevirtual 229	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   214: astore 9
-    //   216: iload_1
-    //   217: iload_3
-    //   218: aload 9
-    //   220: ldc 242
-    //   222: iload 4
-    //   224: iload_2
-    //   225: invokestatic 245	com/tencent/mobileqq/ar/config/WorldCupMgr:a	(IILorg/json/JSONObject;Ljava/lang/String;II)V
-    //   228: iload_1
-    //   229: iload_3
-    //   230: aload 9
-    //   232: ldc 247
-    //   234: iload 4
-    //   236: iload_2
-    //   237: invokestatic 245	com/tencent/mobileqq/ar/config/WorldCupMgr:a	(IILorg/json/JSONObject;Ljava/lang/String;II)V
-    //   240: iload_3
-    //   241: iconst_1
-    //   242: iadd
-    //   243: istore_3
-    //   244: goto -42 -> 202
-    //   247: aload_0
-    //   248: areturn
-    //   249: astore_0
-    //   250: aconst_null
-    //   251: areturn
-    //   252: iload_1
+    //   4: aload_1
+    //   5: invokespecial 207	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   8: astore_1
+    //   9: iload_3
+    //   10: ifne +136 -> 146
+    //   13: aload_1
+    //   14: ldc 208
+    //   16: invokevirtual 212	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   19: istore 4
+    //   21: iload_2
+    //   22: iload 4
+    //   24: isub
+    //   25: istore 5
+    //   27: aload_0
+    //   28: iconst_1
+    //   29: new 35	java/lang/StringBuilder
+    //   32: dup
+    //   33: invokespecial 36	java/lang/StringBuilder:<init>	()V
+    //   36: ldc 214
+    //   38: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: iload_2
+    //   42: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   45: ldc 216
+    //   47: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: iload 4
+    //   52: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   55: ldc 218
+    //   57: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: iload 5
+    //   62: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   65: ldc 220
+    //   67: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: iload_3
+    //   71: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   74: ldc 122
+    //   76: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   82: invokestatic 128	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   85: iload_3
+    //   86: ifne +71 -> 157
+    //   89: aload_1
+    //   90: ldc 208
+    //   92: iload_2
+    //   93: invokevirtual 224	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   96: pop
+    //   97: aload_1
+    //   98: ldc 226
+    //   100: invokevirtual 230	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   103: astore 8
+    //   105: aload 8
+    //   107: ifnull +153 -> 260
+    //   110: aload 8
+    //   112: invokevirtual 236	org/json/JSONArray:length	()I
+    //   115: istore 6
+    //   117: iconst_0
+    //   118: istore_2
+    //   119: iload_2
+    //   120: iload 6
+    //   122: if_icmpge +138 -> 260
+    //   125: aload 8
+    //   127: iload_2
+    //   128: invokevirtual 240	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   131: ldc 242
+    //   133: invokevirtual 245	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   136: astore 9
+    //   138: aload 9
+    //   140: ifnonnull +28 -> 168
+    //   143: goto +122 -> 265
+    //   146: aload_1
+    //   147: ldc 247
+    //   149: invokevirtual 212	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   152: istore 4
+    //   154: goto -133 -> 21
+    //   157: aload_1
+    //   158: ldc 247
+    //   160: iload_2
+    //   161: invokevirtual 224	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   164: pop
+    //   165: goto -68 -> 97
+    //   168: aload 9
+    //   170: ldc 249
+    //   172: invokevirtual 245	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   175: astore 9
+    //   177: aload 9
+    //   179: ifnull +86 -> 265
+    //   182: aload 9
+    //   184: ldc 251
+    //   186: invokevirtual 230	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   189: astore 9
+    //   191: aload 9
+    //   193: ifnull +72 -> 265
+    //   196: aload 9
+    //   198: invokevirtual 236	org/json/JSONArray:length	()I
+    //   201: istore 7
+    //   203: iconst_0
+    //   204: istore 4
+    //   206: iload 4
+    //   208: iload 7
+    //   210: if_icmpge +55 -> 265
+    //   213: aload 9
+    //   215: iload 4
+    //   217: invokevirtual 240	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   220: astore 10
+    //   222: aload_0
+    //   223: iload_2
+    //   224: iload 4
+    //   226: aload 10
+    //   228: ldc 253
+    //   230: iload 5
+    //   232: iload_3
+    //   233: invokestatic 256	com/tencent/mobileqq/ar/config/WorldCupMgr:a	(Ljava/lang/String;IILorg/json/JSONObject;Ljava/lang/String;II)V
+    //   236: aload_0
+    //   237: iload_2
+    //   238: iload 4
+    //   240: aload 10
+    //   242: ldc_w 258
+    //   245: iload 5
+    //   247: iload_3
+    //   248: invokestatic 256	com/tencent/mobileqq/ar/config/WorldCupMgr:a	(Ljava/lang/String;IILorg/json/JSONObject;Ljava/lang/String;II)V
+    //   251: iload 4
     //   253: iconst_1
     //   254: iadd
-    //   255: istore_1
-    //   256: goto -139 -> 117
-    //   259: astore 7
-    //   261: aload_0
-    //   262: areturn
+    //   255: istore 4
+    //   257: goto -51 -> 206
+    //   260: aload_1
+    //   261: areturn
+    //   262: astore_0
+    //   263: aconst_null
+    //   264: areturn
+    //   265: iload_2
+    //   266: iconst_1
+    //   267: iadd
+    //   268: istore_2
+    //   269: goto -150 -> 119
+    //   272: astore_0
+    //   273: aload_1
+    //   274: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	263	0	paramString	String
-    //   0	263	1	paramInt1	int
-    //   0	263	2	paramInt2	int
-    //   19	225	3	i	int
-    //   23	212	4	j	int
-    //   113	8	5	k	int
-    //   198	8	6	m	int
-    //   101	23	7	localJSONArray	JSONArray
-    //   259	1	7	localException	Exception
-    //   134	75	8	localObject	Object
-    //   214	17	9	localJSONObject	JSONObject
+    //   0	275	0	paramString1	String
+    //   0	275	1	paramString2	String
+    //   0	275	2	paramInt1	int
+    //   0	275	3	paramInt2	int
+    //   19	237	4	i	int
+    //   25	221	5	j	int
+    //   115	8	6	k	int
+    //   201	10	7	m	int
+    //   103	23	8	localJSONArray	JSONArray
+    //   136	78	9	localObject	Object
+    //   220	21	10	localJSONObject	JSONObject
     // Exception table:
     //   from	to	target	type
-    //   0	9	249	java/lang/Exception
-    //   13	20	259	java/lang/Exception
-    //   25	83	259	java/lang/Exception
-    //   87	95	259	java/lang/Exception
-    //   95	103	259	java/lang/Exception
-    //   108	115	259	java/lang/Exception
-    //   123	136	259	java/lang/Exception
-    //   144	151	259	java/lang/Exception
-    //   154	162	259	java/lang/Exception
-    //   165	174	259	java/lang/Exception
-    //   179	188	259	java/lang/Exception
-    //   193	200	259	java/lang/Exception
-    //   208	240	259	java/lang/Exception
+    //   0	9	262	java/lang/Exception
+    //   13	21	272	java/lang/Exception
+    //   27	85	272	java/lang/Exception
+    //   89	97	272	java/lang/Exception
+    //   97	105	272	java/lang/Exception
+    //   110	117	272	java/lang/Exception
+    //   125	138	272	java/lang/Exception
+    //   146	154	272	java/lang/Exception
+    //   157	165	272	java/lang/Exception
+    //   168	177	272	java/lang/Exception
+    //   182	191	272	java/lang/Exception
+    //   196	203	272	java/lang/Exception
+    //   213	251	272	java/lang/Exception
   }
   
-  static void a(int paramInt1, int paramInt2, JSONObject paramJSONObject, String paramString, int paramInt3, int paramInt4)
+  static void a(Resources paramResources, ArrayList paramArrayList, aarg paramaarg)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      aark localaark = (aark)localIterator.next();
+      if (localaark.a()) {
+        localArrayList.add(localaark);
+      }
+    }
+    localIterator = localArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((aark)localIterator.next()).b();
+    }
+    ThreadManager.post(new aaqy(localArrayList, paramResources, paramaarg, paramArrayList), 8, null, true);
+  }
+  
+  static void a(String paramString1, int paramInt1, int paramInt2, JSONObject paramJSONObject, String paramString2, int paramInt3, int paramInt4)
   {
     if (AudioHelper.a(0) == 1) {}
     JSONArray localJSONArray1;
@@ -458,14 +487,14 @@ public class WorldCupMgr
     int k;
     for (int i = 1;; i = 0)
     {
-      localObject1 = paramJSONObject.opt(paramString);
+      localObject1 = paramJSONObject.opt(paramString2);
       if (!(localObject1 instanceof JSONArray)) {
-        break label375;
+        break label378;
       }
       localJSONArray1 = (JSONArray)localObject1;
       localJSONArray2 = new JSONArray();
       if (localJSONArray1.length() <= paramInt4) {
-        break label375;
+        break label378;
       }
       k = 0;
       int j = 0;
@@ -484,7 +513,7 @@ public class WorldCupMgr
       localObject2 = String.valueOf(paramInt4);
       localObject1 = localObject2;
       if (paramInt4 <= 60) {
-        break label376;
+        break label379;
       }
       paramInt3 = paramInt4 + paramInt3;
       str = String.valueOf(paramInt3);
@@ -496,7 +525,7 @@ public class WorldCupMgr
     for (;;)
     {
       if (i != 0) {
-        QLog.w("WorldCupMgr", 1, "readJson, layer[" + paramInt1 + "], keyFrame[" + paramInt2 + "], " + paramString + "[" + (String)localObject1 + "->" + (String)localObject2 + "]");
+        QLog.w(paramString1, 1, "readJson, layer[" + paramInt1 + "], keyFrame[" + paramInt2 + "], " + paramString2 + "[" + (String)localObject1 + "->" + (String)localObject2 + "]");
       }
       if (paramInt3 != 0)
       {
@@ -509,13 +538,13 @@ public class WorldCupMgr
             paramInt1 += 1;
             continue;
             if (!(localObject1 instanceof Double)) {
-              break label387;
+              break label390;
             }
             localObject2 = (Double)localObject1;
             str = String.valueOf(localObject2);
             localObject1 = str;
             if (((Double)localObject2).doubleValue() <= 60.0D) {
-              break label376;
+              break label379;
             }
             localObject1 = Double.valueOf(((Double)localObject2).doubleValue() + paramInt3);
             localObject2 = String.valueOf(localObject1);
@@ -525,80 +554,80 @@ public class WorldCupMgr
             break;
           }
         }
-        paramJSONObject.remove(paramString);
-        paramJSONObject.put(paramString, localJSONArray2);
+        paramJSONObject.remove(paramString2);
+        paramJSONObject.put(paramString2, localJSONArray2);
       }
-      label375:
+      label378:
       return;
-      label376:
+      label379:
       localObject2 = localObject1;
       paramInt3 = k;
       continue;
-      label387:
+      label390:
       localObject2 = null;
       localObject1 = null;
       paramInt3 = k;
     }
   }
   
-  static void a(Resources paramResources, ArrayList paramArrayList, aakm paramaakm)
+  static void a(String paramString1, String paramString2)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
+    try
     {
-      aakq localaakq = (aakq)localIterator.next();
-      if (localaakq.a()) {
-        localArrayList.add(localaakq);
-      }
+      File localFile = new File(paramString2);
+      boolean bool1 = localFile.exists();
+      FileUtils.b(paramString2);
+      localFile.delete();
+      boolean bool2 = localFile.exists();
+      QLog.w(paramString1, 1, "deleteDir, path[" + paramString2 + "], [" + bool1 + "->" + bool2 + "]");
+      return;
     }
-    localIterator = localArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aakq)localIterator.next()).b();
+    catch (Exception paramString2)
+    {
+      QLog.w(paramString1, 1, "deleteDir, Exception", paramString2);
     }
-    ThreadManager.post(new aakf(localArrayList, paramResources, paramaakm, paramArrayList), 8, null, true);
   }
   
-  private void a(String paramString, boolean paramBoolean, QQAppInterface paramQQAppInterface, int paramInt, aake paramaake)
+  private void a(String paramString, boolean paramBoolean, QQAppInterface paramQQAppInterface, int paramInt, aaqx paramaaqx)
   {
     i = 0;
-    if ((jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo == null) || (paramaake == null))
+    if ((this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo == null) || (paramaaqx == null))
     {
       b(paramInt, -3);
       return;
     }
-    ResDownloadManager.IResDownloadListener localIResDownloadListener = a(paramQQAppInterface, paramaake);
-    paramaake.jdField_b_of_type_Long = System.currentTimeMillis();
-    if (jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.a(paramInt))
+    ResDownloadManager.IResDownloadListener localIResDownloadListener = a(paramQQAppInterface, paramaaqx);
+    paramaaqx.jdField_b_of_type_Long = System.currentTimeMillis();
+    if (this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.a(paramInt))
     {
-      paramQQAppInterface = paramaake.jdField_a_of_type_JavaLangObject;
+      paramQQAppInterface = paramaaqx.jdField_a_of_type_JavaLangObject;
       if (!paramBoolean) {}
       try
       {
-        paramaake.jdField_b_of_type_Boolean = false;
-        QLog.w("WorldCupMgr", 1, "innerDownloadRes[" + paramString + "], 资源已经存在, callByPreDownload[" + paramBoolean + "], item[" + paramaake + "]");
-        localIResDownloadListener.a(paramaake.jdField_a_of_type_JavaLangString, paramaake.jdField_b_of_type_JavaLangString, 100, a().a(paramInt), paramaake);
+        paramaaqx.jdField_b_of_type_Boolean = false;
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString + "], 资源已经存在, callByPreDownload[" + paramBoolean + "], item[" + paramaaqx + "]");
+        localIResDownloadListener.a(paramaaqx.jdField_a_of_type_JavaLangString, paramaaqx.jdField_b_of_type_JavaLangString, 100, a().a(paramInt), paramaaqx);
         return;
       }
       finally {}
     }
-    Object localObject = paramaake.jdField_a_of_type_JavaLangObject;
+    Object localObject = paramaaqx.jdField_a_of_type_JavaLangObject;
     if (!paramBoolean) {}
     for (;;)
     {
       try
       {
-        paramaake.jdField_b_of_type_Boolean = false;
-        if (paramaake.c)
+        paramaaqx.jdField_b_of_type_Boolean = false;
+        if (paramaaqx.c)
         {
-          QLog.w("WorldCupMgr", 1, "innerDownloadRes[" + paramString + "], 已经在下载中, callByPreDownload[" + paramBoolean + "], item[" + paramaake + "]");
+          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString + "], 已经在下载中, callByPreDownload[" + paramBoolean + "], item[" + paramaaqx + "]");
           return;
         }
       }
       finally {}
       try
       {
-        bool = new File(a(paramInt, paramaake.jdField_b_of_type_JavaLangString)).exists();
+        bool = new File(a(paramInt, paramaaqx.jdField_b_of_type_JavaLangString)).exists();
         if (!bool) {
           break;
         }
@@ -608,36 +637,39 @@ public class WorldCupMgr
         for (;;)
         {
           boolean bool;
+          String str;
           i = 1;
           continue;
           i = 1;
         }
       }
-      if (i != 0) {
-        b(a(paramInt));
+      if (i != 0)
+      {
+        str = a(paramInt);
+        a(this.jdField_a_of_type_JavaLangString, str);
       }
-      ((PreDownloadController)paramQQAppInterface.getManager(192)).a(paramaake.jdField_a_of_type_JavaLangString);
-      paramaake.c = true;
-      bool = ((ResDownloadManager)paramQQAppInterface.getManager(190)).a(paramaake.jdField_a_of_type_JavaLangString, paramaake.jdField_b_of_type_JavaLangString, ".zip", true, 5, paramaake, paramaake.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener);
-      QLog.w("WorldCupMgr", 1, "innerDownloadRes[" + paramString + "], 开始下载, callByPreDownload[" + paramBoolean + "], ret[" + bool + "], item[" + paramaake + "]");
+      ((PreDownloadController)paramQQAppInterface.getManager(192)).a(paramaaqx.jdField_a_of_type_JavaLangString);
+      paramaaqx.c = true;
+      bool = ((ResDownloadManager)paramQQAppInterface.getManager(190)).a(paramaaqx.jdField_a_of_type_JavaLangString, paramaaqx.jdField_b_of_type_JavaLangString, ".zip", true, 5, paramaaqx, paramaaqx.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener);
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerDownloadRes[" + paramString + "], 开始下载, callByPreDownload[" + paramBoolean + "], ret[" + bool + "], item[" + paramaaqx + "]");
       if (!bool) {
-        localIResDownloadListener.a(paramaake.jdField_a_of_type_JavaLangString, paramaake.jdField_b_of_type_JavaLangString, -4, null, paramaake);
+        localIResDownloadListener.a(paramaaqx.jdField_a_of_type_JavaLangString, paramaaqx.jdField_b_of_type_JavaLangString, -4, null, paramaaqx);
       }
     }
   }
   
-  public static boolean a(Resources paramResources, aakl paramaakl, String paramString)
+  public static boolean a(String paramString1, Resources paramResources, aarf paramaarf, String paramString2)
   {
     long l1 = AudioHelper.b();
-    paramString = paramString + paramaakl.jdField_a_of_type_JavaLangString + "/";
+    paramString2 = paramString2 + paramaarf.jdField_a_of_type_JavaLangString + "/";
     int i = 0;
-    while (i < paramaakl.jdField_a_of_type_Int)
+    while (i < paramaarf.jdField_a_of_type_Int)
     {
-      if ((Bitmap)paramaakl.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)) == null)
+      if ((Bitmap)paramaarf.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)) == null)
       {
-        Bitmap localBitmap = RedBagUtil.a(paramResources, paramString + i + ".png");
+        Bitmap localBitmap = RedBagUtil.a(paramResources, paramString2 + i + ".png");
         if (localBitmap != null) {
-          paramaakl.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localBitmap);
+          paramaarf.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localBitmap);
         }
       }
       else
@@ -645,20 +677,20 @@ public class WorldCupMgr
         i += 1;
         continue;
       }
-      QLog.w("WorldCupMgr", 1, "loadBitmap[" + paramaakl.jdField_a_of_type_JavaLangString + "], 图片不存在 index[" + i + "]");
-      paramaakl.jdField_a_of_type_JavaUtilHashMap.clear();
+      QLog.w(paramString1, 1, "loadBitmap[" + paramaarf.jdField_a_of_type_JavaLangString + "], 图片不存在 index[" + i + "]");
+      paramaarf.jdField_a_of_type_JavaUtilHashMap.clear();
       return false;
     }
     long l2 = AudioHelper.b();
-    QLog.w("WorldCupMgr", 1, "loadBitmap[" + paramaakl.jdField_a_of_type_JavaLangString + "], suc, cost[" + (l2 - l1) + "]");
+    QLog.w(paramString1, 1, "loadBitmap[" + paramaarf.jdField_a_of_type_JavaLangString + "], suc, cost[" + (l2 - l1) + "]");
     return true;
   }
   
-  public static boolean a(JSONObject paramJSONObject, String paramString)
+  public static boolean a(String paramString1, JSONObject paramJSONObject, String paramString2)
   {
-    paramString = new File(paramString);
-    if (paramString.exists()) {
-      paramString.delete();
+    paramString2 = new File(paramString2);
+    if (paramString2.exists()) {
+      paramString2.delete();
     }
     if (paramJSONObject == null) {
       return false;
@@ -666,17 +698,17 @@ public class WorldCupMgr
     try
     {
       paramJSONObject = paramJSONObject.toString();
-      QLog.w("WorldCupMgr", 1, "readJson, json[\n\n" + paramJSONObject + "\n\n]");
-      paramString.createNewFile();
-      paramString = new PrintStream(paramString);
-      paramString.print(paramJSONObject);
-      paramString.flush();
-      paramString.close();
+      QLog.w(paramString1, 1, "readJson, json[\n\n" + paramJSONObject + "\n\n]");
+      paramString2.createNewFile();
+      paramString2 = new PrintStream(paramString2);
+      paramString2.print(paramJSONObject);
+      paramString2.flush();
+      paramString2.close();
       return true;
     }
     catch (Exception paramJSONObject)
     {
-      QLog.w("WorldCupMgr", 1, "readJson, Exception", paramJSONObject);
+      QLog.w(paramString1, 1, "readJson, Exception", paramJSONObject);
       paramJSONObject.printStackTrace();
     }
     return false;
@@ -687,77 +719,60 @@ public class WorldCupMgr
     return a(paramInt) + paramString + File.separator;
   }
   
-  static void b(String paramString)
-  {
-    try
-    {
-      File localFile = new File(paramString);
-      boolean bool1 = localFile.exists();
-      FileUtils.b(paramString);
-      localFile.delete();
-      boolean bool2 = localFile.exists();
-      QLog.w("WorldCupMgr", 1, "deleteDir, path[" + paramString + "], [" + bool1 + "->" + bool2 + "]");
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.w("WorldCupMgr", 1, "deleteDir, Exception", paramString);
-    }
-  }
-  
   int a(AppInterface paramAppInterface, View paramView, PopupMenuDialog paramPopupMenuDialog, int paramInt)
   {
     if (!WorldCupConfigInfo.c(a())) {
       return paramInt;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni == null) {
-      this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni = new MainDownAni();
+      this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni = new MainDownAni(this.jdField_a_of_type_JavaLangString);
     }
     return this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a(paramAppInterface, this, paramView, paramPopupMenuDialog, paramInt);
   }
   
   public WorldCupConfigInfo a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo == null) {}
+    if (this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo == null) {}
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo == null)
+      if (this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo == null)
       {
-        jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = WorldCupConfigInfo.a(this.jdField_a_of_type_JavaLangString, null);
-        QLog.w("WorldCupMgr", 1, "getConfigInfo, Uin[" + this.jdField_a_of_type_JavaLangString + "], mConfigInfo[" + jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo + "]");
+        this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = WorldCupConfigInfo.a(this.jdField_b_of_type_JavaLangString, null);
+        jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo;
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "getConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "], mConfigInfo[" + this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo + "]");
       }
-      return jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo;
+      return this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo;
     }
     finally {}
   }
   
   /* Error */
-  ResDownloadManager.IResDownloadListener a(QQAppInterface paramQQAppInterface, aake paramaake)
+  ResDownloadManager.IResDownloadListener a(QQAppInterface paramQQAppInterface, aaqx paramaaqx)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_2
-    //   3: getfield 417	aake:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
+    //   3: getfield 441	aaqx:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
     //   6: ifnull +12 -> 18
     //   9: aload_2
-    //   10: getfield 417	aake:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
+    //   10: getfield 441	aaqx:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
     //   13: astore_1
     //   14: aload_0
     //   15: monitorexit
     //   16: aload_1
     //   17: areturn
     //   18: aload_2
-    //   19: new 527	aaki
+    //   19: new 535	aarc
     //   22: dup
     //   23: aload_0
     //   24: aload_1
     //   25: aload_2
-    //   26: getfield 528	aake:jdField_a_of_type_Int	I
-    //   29: invokespecial 531	aaki:<init>	(Lcom/tencent/mobileqq/ar/config/WorldCupMgr;Lcom/tencent/mobileqq/app/QQAppInterface;I)V
-    //   32: putfield 417	aake:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
+    //   26: getfield 536	aaqx:jdField_a_of_type_Int	I
+    //   29: invokespecial 539	aarc:<init>	(Lcom/tencent/mobileqq/ar/config/WorldCupMgr;Lcom/tencent/mobileqq/app/QQAppInterface;I)V
+    //   32: putfield 441	aaqx:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
     //   35: aload_2
-    //   36: getfield 417	aake:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
+    //   36: getfield 441	aaqx:jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener	Lcom/tencent/mobileqq/armap/ResDownloadManager$IResDownloadListener;
     //   39: astore_1
     //   40: goto -26 -> 14
     //   43: astore_1
@@ -769,7 +784,7 @@ public class WorldCupMgr
     //   start	length	slot	name	signature
     //   0	48	0	this	WorldCupMgr
     //   0	48	1	paramQQAppInterface	QQAppInterface
-    //   0	48	2	paramaake	aake
+    //   0	48	2	paramaaqx	aaqx
     // Exception table:
     //   from	to	target	type
     //   2	14	43	finally
@@ -805,8 +820,8 @@ public class WorldCupMgr
   {
     if ((paramAppInterface instanceof QQAppInterface))
     {
-      aake localaake = (aake)a().b.get(Integer.valueOf(paramInt));
-      a("主动触发", false, (QQAppInterface)paramAppInterface, paramInt, localaake);
+      aaqx localaaqx = (aaqx)a().b.get(Integer.valueOf(paramInt));
+      a("主动触发", false, (QQAppInterface)paramAppInterface, paramInt, localaaqx);
       return;
     }
     BusinessCommonConfig.a(2, paramInt);
@@ -814,11 +829,12 @@ public class WorldCupMgr
   
   public void a(QQAppInterface paramQQAppInterface)
   {
+    WorldCupConfigInfo localWorldCupConfigInfo = a();
     if (AudioHelper.e()) {
-      QLog.w("WorldCupMgr", 1, "onGetConfig, enable[" + jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.jdField_a_of_type_Boolean + "], ZipList[" + jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.b.size() + "], isDevicesSupport[" + WorldCup.a() + "]");
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetConfig, WorldCupConfigInfo[" + localWorldCupConfigInfo + "], isDevicesSupport[" + WorldCup.a() + "]");
     }
     if (!WorldCup.a()) {}
-    while ((!jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.jdField_a_of_type_Boolean) || (jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.b.size() == 0)) {
+    while ((localWorldCupConfigInfo == null) || (!localWorldCupConfigInfo.jdField_a_of_type_Boolean) || (localWorldCupConfigInfo.b.size() == 0)) {
       return;
     }
     a(paramQQAppInterface, true, 0);
@@ -844,7 +860,7 @@ public class WorldCupMgr
         break;
       }
     } while (!AudioHelper.e());
-    QLog.w("WorldCupMgr", 1, "onConversatoinTagShow, 资源未准备");
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "playPromotion, 资源未准备");
     return;
     a(paramQQAppInterface, paramFragmentActivity, paramView);
     a(paramQQAppInterface, paramFragmentActivity, paramView);
@@ -855,20 +871,21 @@ public class WorldCupMgr
     boolean bool;
     if (QLog.isDevelopLevel())
     {
+      String str = this.jdField_a_of_type_JavaLangString;
       StringBuilder localStringBuilder = new StringBuilder().append("onMainFragmentTabShow, curTabTag[").append(paramString).append("], Account[").append(paramQQAppInterface.getAccount()).append("], activity[");
       if (paramFragmentActivity != null)
       {
         bool = true;
-        QLog.w("WorldCupMgr", 1, bool + "]");
+        QLog.w(str, 1, bool + "]");
       }
     }
     else
     {
       if (paramFragmentActivity != null) {
-        break label84;
+        break label90;
       }
     }
-    label84:
+    label90:
     do
     {
       do
@@ -878,22 +895,23 @@ public class WorldCupMgr
         break;
       } while ((WorldCupStaticInstance.a().jdField_a_of_type_Long != -1L) && (!WorldCup.a()));
       if (!"消息".equals(paramString)) {
-        break label136;
+        break label142;
       }
     } while (a("onMainFragmentTabShow", paramQQAppInterface, paramFragmentActivity, paramView, true));
     a(paramQQAppInterface, paramFragmentActivity, paramView);
     return;
-    label136:
+    label142:
     a("onConversatoinTabHide", paramQQAppInterface, paramFragmentActivity, paramView);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, WorldCupConfigInfo paramWorldCupConfigInfo)
   {
+    String str = this.jdField_a_of_type_JavaLangString;
     StringBuilder localStringBuilder = new StringBuilder().append("onGetConfig, from server, configInfo[");
     if (paramWorldCupConfigInfo != null) {}
     for (boolean bool = true;; bool = false)
     {
-      QLog.w("WorldCupMgr", 1, bool + "]");
+      QLog.w(str, 1, bool + "]");
       if (paramWorldCupConfigInfo != null) {
         a(paramWorldCupConfigInfo);
       }
@@ -908,42 +926,43 @@ public class WorldCupMgr
   
   public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt)
   {
-    if (jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo == null)
+    Object localObject1 = a();
+    if (localObject1 == null)
     {
-      QLog.w("WorldCupMgr", 1, "requestPreDownload, ConfigInfo为空, callByPreDownload[" + paramBoolean + "], downloadIndex[" + paramInt + "]");
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, ConfigInfo为空, callByPreDownload[" + paramBoolean + "], downloadIndex[" + paramInt + "]");
       return;
     }
-    Object localObject = jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.b.entrySet().iterator();
+    Object localObject2 = ((WorldCupConfigInfo)localObject1).b.entrySet().iterator();
     int i = -1;
-    aake localaake;
+    aaqx localaaqx;
     do
     {
-      if (!((Iterator)localObject).hasNext()) {
+      if (!((Iterator)localObject2).hasNext()) {
         break;
       }
       i += 1;
-      localaake = (aake)((Map.Entry)((Iterator)localObject).next()).getValue();
-    } while ((localaake.jdField_a_of_type_Int < paramInt) || (a(localaake.jdField_b_of_type_Int) == 0) || (jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.a(localaake.jdField_a_of_type_Int)));
+      localaaqx = (aaqx)((Map.Entry)((Iterator)localObject2).next()).getValue();
+    } while ((localaaqx.jdField_a_of_type_Int < paramInt) || (a(localaaqx.jdField_b_of_type_Int) == 0) || (((WorldCupConfigInfo)localObject1).a(localaaqx.jdField_a_of_type_Int)));
     for (;;)
     {
-      QLog.w("WorldCupMgr", 1, "requestPreDownload, expectIndex[" + paramInt + "], zipItem[" + localaake + "], index[" + i + "]");
-      if (localaake == null) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, expectIndex[" + paramInt + "], zipItem[" + localaaqx + "], index[" + i + "]");
+      if (localaaqx == null) {
         break;
       }
-      localObject = "md5_" + localaake.jdField_a_of_type_Int;
-      RunnableTask localRunnableTask = new RunnableTask(paramQQAppInterface, (String)localObject, new aakk(this, paramQQAppInterface, localaake), 0L);
+      localObject1 = "md5_" + localaaqx.jdField_a_of_type_Int;
+      localObject2 = new RunnableTask(paramQQAppInterface, (String)localObject1, new aare(this, paramQQAppInterface, localaaqx), 0L);
       paramQQAppInterface = (PreDownloadController)paramQQAppInterface.getManager(192);
-      String str1 = localaake.jdField_a_of_type_JavaLangString;
-      String str2 = a(localaake.jdField_a_of_type_Int);
+      String str1 = localaaqx.jdField_a_of_type_JavaLangString;
+      String str2 = a(localaaqx.jdField_a_of_type_Int);
       if (paramBoolean) {}
-      for (paramInt = a(localaake.jdField_b_of_type_Int);; paramInt = 2)
+      for (paramInt = a(localaaqx.jdField_b_of_type_Int);; paramInt = 2)
       {
-        paramBoolean = paramQQAppInterface.a(10074, "prd", (String)localObject, 0, str1, str2, paramInt, 0, true, localRunnableTask);
-        localaake.jdField_a_of_type_Long = System.currentTimeMillis();
-        QLog.w("WorldCupMgr", 1, "onGetConfig, 申请调度, ret[" + paramBoolean + "], index[" + localaake.jdField_a_of_type_Int + "]");
+        paramBoolean = paramQQAppInterface.a(10074, "prd", (String)localObject1, 0, str1, str2, paramInt, 0, true, (AbsPreDownloadTask)localObject2);
+        localaaqx.jdField_a_of_type_Long = System.currentTimeMillis();
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetConfig, 申请调度, ret[" + paramBoolean + "], index[" + localaaqx.jdField_a_of_type_Int + "]");
         return;
       }
-      localaake = null;
+      localaaqx = null;
     }
   }
   
@@ -951,6 +970,7 @@ public class WorldCupMgr
   {
     try
     {
+      this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = paramWorldCupConfigInfo;
       jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = paramWorldCupConfigInfo;
       return;
     }
@@ -974,8 +994,8 @@ public class WorldCupMgr
   
   void a(String paramString, QQAppInterface paramQQAppInterface, Activity paramActivity, View paramView)
   {
-    if (this.jdField_a_of_type_Aakn != null) {
-      this.jdField_a_of_type_Aakn.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Aarh != null) {
+      this.jdField_a_of_type_Aarh.jdField_a_of_type_Boolean = false;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni != null) {
       this.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni.a(paramQQAppInterface, paramActivity, paramView);
@@ -987,14 +1007,14 @@ public class WorldCupMgr
   
   boolean a()
   {
-    return jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo != null;
+    return this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo != null;
   }
   
   boolean a(AppInterface paramAppInterface)
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
-    return paramAppInterface.getApp().registerReceiver(new aakh(this), localIntentFilter) != null;
+    return paramAppInterface.getApp().registerReceiver(new aara(this), localIntentFilter) != null;
   }
   
   boolean a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, View paramView)
@@ -1008,24 +1028,36 @@ public class WorldCupMgr
       }
       return this.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni.a(paramQQAppInterface, this, paramFragmentActivity, paramView);
     }
-    QLog.w("WorldCupMgr", 1, "playMainAni加号菜单已经显示");
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "playMainAni加号菜单已经显示");
     return false;
   }
   
   boolean a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, View paramView)
   {
-    WorldCupConfigInfo localWorldCupConfigInfo = a();
-    if (!WorldCupConfigInfo.b(localWorldCupConfigInfo)) {}
-    while (!localWorldCupConfigInfo.a(0))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin != null)
-      {
-        QLog.w("WorldCupMgr", 1, "playSplash, 清除闪屏");
-        this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a();
-        this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin = null;
-      }
-      return false;
+    if (UserguideActivity.jdField_b_of_type_Boolean) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "playPromotion, sIsUserGuiderShowed为true。登陆前的图片前置引导界面 显示过");
     }
+    WorldCupConfigInfo localWorldCupConfigInfo;
+    do
+    {
+      while (this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin == null)
+      {
+        return false;
+        if ((this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin != null) && (this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a()))
+        {
+          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "playSplash 闪屏正在播放");
+          return true;
+        }
+        localWorldCupConfigInfo = a();
+        if (WorldCupConfigInfo.b(localWorldCupConfigInfo)) {
+          break;
+        }
+      }
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "playSplash, 清除闪屏");
+      this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a();
+      this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin = null;
+      return false;
+    } while (!localWorldCupConfigInfo.a(0));
     if (this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin == null) {
       this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin = new SplashPopupWin();
     }
@@ -1037,25 +1069,29 @@ public class WorldCupMgr
     if ((a()) && (WorldCupStaticInstance.a().jdField_a_of_type_Long != -1L)) {
       return false;
     }
-    if (this.jdField_a_of_type_Aakn == null) {
-      this.jdField_a_of_type_Aakn = new aakn(this.jdField_a_of_type_JavaLangString, paramQQAppInterface);
+    Object localObject2 = this.jdField_a_of_type_Aarh;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new aarh(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramQQAppInterface);
+      this.jdField_a_of_type_Aarh = ((aarh)localObject1);
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_Aakn.jdField_a_of_type_Boolean = true;
+      ((aarh)localObject1).jdField_a_of_type_Boolean = true;
     }
-    if (this.jdField_a_of_type_Aakn.a())
+    if (((aarh)localObject1).a())
     {
-      QLog.w("WorldCupMgr", 1, "异步加载config[" + paramString + "]");
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "异步加载config[" + paramString + "]");
       paramFragmentActivity = new WeakReference(paramFragmentActivity);
       paramView = new WeakReference(paramView);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_Aakn);
-      a(null, localArrayList, new aakj(this, paramFragmentActivity, paramView, paramQQAppInterface, paramString));
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(localObject1);
+      a(null, (ArrayList)localObject2, new aard(this, paramFragmentActivity, paramView, paramQQAppInterface, paramString));
     }
     for (;;)
     {
       return true;
-      QLog.w("WorldCupMgr", 1, "异步加载config[" + paramString + "], 已经在加载中");
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "异步加载config[" + paramString + "], 已经在加载中");
     }
   }
   
@@ -1074,12 +1110,13 @@ public class WorldCupMgr
     }
   }
   
-  public void c(String paramString)
+  public void b(String paramString)
   {
     try
     {
-      jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = WorldCupConfigInfo.a(this.jdField_a_of_type_JavaLangString, paramString);
-      QLog.w("WorldCupMgr", 1, "reloadConfigInfo, Uin[" + this.jdField_a_of_type_JavaLangString + "] mConfigInfo[" + jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo + "]");
+      this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = WorldCupConfigInfo.a(this.jdField_b_of_type_JavaLangString, paramString);
+      jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo;
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] mConfigInfo[" + this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo + "]");
       return;
     }
     finally {}
@@ -1087,30 +1124,32 @@ public class WorldCupMgr
   
   public void onDestroy()
   {
-    QLog.w("WorldCupMgr", 1, "onDestroy, ThreadID[" + Thread.currentThread().getId() + "], Tid[" + Process.myTid() + "]");
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onDestroy, ThreadID[" + Thread.currentThread().getId() + "], Tid[" + Process.myTid() + "]");
     if (this.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni != null)
     {
-      QLog.w("WorldCupMgr", 1, "onDestroy, 清除动画");
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onDestroy, 清除动画");
       this.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni.a();
       this.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin != null)
     {
-      QLog.w("WorldCupMgr", 1, "onDestroy, 清除闪屏");
-      this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a();
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onDestroy, 异步清除闪屏");
+      SplashPopupWin localSplashPopupWin = this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin;
       this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin = null;
+      ThreadManager.getUIHandler().post(new aarb(this, localSplashPopupWin));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqArConfigDownloadDependRes != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqArConfigDownloadDependRes.a();
       this.jdField_a_of_type_ComTencentMobileqqArConfigDownloadDependRes = null;
     }
-    if (this.jdField_a_of_type_Aakn != null)
+    if (this.jdField_a_of_type_Aarh != null)
     {
-      this.jdField_a_of_type_Aakn.c();
-      this.jdField_a_of_type_Aakn = null;
+      this.jdField_a_of_type_Aarh.c();
+      this.jdField_a_of_type_Aarh = null;
     }
     WorldCupStaticInstance.a().a();
+    this.jdField_b_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = null;
     jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = null;
   }
 }

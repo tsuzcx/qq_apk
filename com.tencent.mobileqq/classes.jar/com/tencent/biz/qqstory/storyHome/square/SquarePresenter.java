@@ -8,7 +8,7 @@ import com.tribe.async.dispatch.IEventReceiver;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
-import oca;
+import ogp;
 
 public class SquarePresenter
   implements FeedListPageLoaderBase.OnFeedItemPageLoadListener, IEventReceiver
@@ -21,7 +21,7 @@ public class SquarePresenter
   public void a(SquareFeedData paramSquareFeedData)
   {
     SLog.a("Q.qqstory.discover.SquarePresenter", "data return %s", paramSquareFeedData);
-    ThreadManager.getUIHandler().post(new oca(this, paramSquareFeedData));
+    ThreadManager.getUIHandler().post(new ogp(this, paramSquareFeedData));
   }
   
   public boolean isValidate()

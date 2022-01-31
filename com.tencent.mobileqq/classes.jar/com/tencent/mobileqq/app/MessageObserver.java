@@ -22,6 +22,8 @@ public class MessageObserver
   
   public void a(int paramInt1, int paramInt2) {}
   
+  public void a(int paramInt, byte[] paramArrayOfByte) {}
+  
   public void a(long paramLong, int paramInt) {}
   
   public void a(long paramLong1, int paramInt, long paramLong2) {}
@@ -350,13 +352,13 @@ public class MessageObserver
       case 5003: 
         if (paramBoolean) {
           if ((localObject1 == null) || (localObject1.length < 1)) {
-            break label3065;
+            break label3133;
           }
         }
         break;
       }
-      label3054:
-      label3065:
+      label3122:
+      label3133:
       for (paramObject = (byte[])localObject1[0];; paramObject = null)
       {
         if ((localObject1 != null) && (localObject1.length >= 2)) {}
@@ -376,7 +378,7 @@ public class MessageObserver
           return;
           if (paramBoolean) {
             if ((localObject1 == null) || (localObject1.length < 1)) {
-              break label3054;
+              break label3122;
             }
           }
           for (paramObject = (MessageFactoryReceiver.OffLineFileInfo)localObject1[0];; paramObject = null)
@@ -621,24 +623,25 @@ public class MessageObserver
             if ((paramObject instanceof MessageForDanceMachine)) {
               a((MessageForDanceMachine)paramObject);
             }
-            if (paramBoolean)
-            {
-              if ((localObject1 != null) && (localObject1.length >= 8))
-              {
+            if (paramBoolean) {
+              if ((localObject1 != null) && (localObject1.length >= 8)) {
                 a((String)localObject1[0], ((Integer)localObject1[1]).intValue(), ((Integer)localObject1[2]).intValue(), (SendMessageHandler)localObject1[3], ((Long)localObject1[4]).longValue(), ((Long)localObject1[5]).longValue(), (String)localObject1[6], ((Integer)localObject1[7]).intValue());
-                return;
               }
-              if ((localObject1 == null) || (localObject1.length < 4)) {
-                break;
-              }
-              a(true, (String)localObject1[0], ((Integer)localObject1[1]).intValue(), ((Long)localObject1[2]).longValue(), ((Integer)localObject1[3]).intValue());
+            }
+            while ((localObject1 != null) && (localObject1.length >= 2) && ((localObject1[0] instanceof Integer)) && ((localObject1[1] instanceof byte[])))
+            {
+              a(((Integer)localObject1[0]).intValue(), (byte[])localObject1[1]);
               return;
+              if ((localObject1 != null) && (localObject1.length >= 4))
+              {
+                a(true, (String)localObject1[0], ((Integer)localObject1[1]).intValue(), ((Long)localObject1[2]).longValue(), ((Integer)localObject1[3]).intValue());
+                continue;
+                if ((localObject1 != null) && (localObject1.length >= 8)) {
+                  a((String)localObject1[0], ((Integer)localObject1[1]).intValue(), ((Integer)localObject1[2]).intValue(), (SendMessageHandler)localObject1[3], ((Long)localObject1[4]).longValue(), ((Long)localObject1[5]).longValue(), (String)localObject1[6], ((Integer)localObject1[7]).intValue());
+                }
+              }
             }
-            if ((localObject1 == null) || (localObject1.length < 8)) {
-              break;
-            }
-            a((String)localObject1[0], ((Integer)localObject1[1]).intValue(), ((Integer)localObject1[2]).intValue(), (SendMessageHandler)localObject1[3], ((Long)localObject1[4]).longValue(), ((Long)localObject1[5]).longValue(), (String)localObject1[6], ((Integer)localObject1[7]).intValue());
-            return;
+            break;
           }
         }
       }

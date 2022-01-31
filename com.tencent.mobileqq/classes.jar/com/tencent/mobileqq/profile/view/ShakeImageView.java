@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.view;
 
-import agsf;
-import agsg;
+import agws;
+import agwt;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -27,7 +27,7 @@ public class ShakeImageView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  Runnable jdField_a_of_type_JavaLangRunnable = new agsf(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new agws(this);
   float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 0.0F };
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -78,10 +78,11 @@ public class ShakeImageView
   
   protected void onDetachedFromWindow()
   {
+    QLog.d("ShakeImageView", 2, "onDetachedFromWindow");
     super.onDetachedFromWindow();
     ThreadManager.getFileThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     if (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
-      ThreadManager.executeOnFileThread(new agsg(this));
+      ThreadManager.executeOnFileThread(new agwt(this));
     }
   }
   
@@ -174,10 +175,10 @@ public class ShakeImageView
     //   1: astore 7
     //   3: aload_0
     //   4: iload_2
-    //   5: putfield 117	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_Int	I
+    //   5: putfield 126	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_Int	I
     //   8: aload_0
     //   9: iload_3
-    //   10: putfield 119	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_b_of_type_Int	I
+    //   10: putfield 128	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_b_of_type_Int	I
     //   13: fload 4
     //   15: fconst_0
     //   16: fcmpl
@@ -185,43 +186,43 @@ public class ShakeImageView
     //   20: aload_0
     //   21: fconst_1
     //   22: putfield 23	com/tencent/mobileqq/profile/view/ShakeImageView:c	F
-    //   25: new 206	java/io/BufferedInputStream
+    //   25: new 210	java/io/BufferedInputStream
     //   28: dup
-    //   29: new 208	java/io/FileInputStream
+    //   29: new 212	java/io/FileInputStream
     //   32: dup
     //   33: aload_1
-    //   34: invokespecial 211	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   37: invokespecial 214	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   34: invokespecial 215	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   37: invokespecial 218	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   40: astore_1
     //   41: aload_1
     //   42: astore 6
     //   44: aload_1
-    //   45: invokestatic 220	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   45: invokestatic 224	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   48: astore 7
     //   50: aload_1
     //   51: astore 6
     //   53: aload 7
-    //   55: invokevirtual 155	android/graphics/Bitmap:getWidth	()I
+    //   55: invokevirtual 164	android/graphics/Bitmap:getWidth	()I
     //   58: iload_2
     //   59: if_icmpne +42 -> 101
     //   62: aload_1
     //   63: astore 6
     //   65: aload 7
-    //   67: invokevirtual 158	android/graphics/Bitmap:getHeight	()I
+    //   67: invokevirtual 167	android/graphics/Bitmap:getHeight	()I
     //   70: iload_3
     //   71: if_icmpne +30 -> 101
     //   74: aload_1
     //   75: astore 6
     //   77: aload_0
     //   78: aload 7
-    //   80: putfield 121	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   80: putfield 130	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   83: aload_1
     //   84: ifnull +7 -> 91
     //   87: aload_1
-    //   88: invokevirtual 223	java/io/BufferedInputStream:close	()V
+    //   88: invokevirtual 227	java/io/BufferedInputStream:close	()V
     //   91: return
     //   92: aload_0
-    //   93: ldc 159
+    //   93: ldc 168
     //   95: putfield 23	com/tencent/mobileqq/profile/view/ShakeImageView:c	F
     //   98: goto -73 -> 25
     //   101: iload_2
@@ -231,7 +232,7 @@ public class ShakeImageView
     //   106: astore 6
     //   108: fload 4
     //   110: aload 7
-    //   112: invokevirtual 155	android/graphics/Bitmap:getWidth	()I
+    //   112: invokevirtual 164	android/graphics/Bitmap:getWidth	()I
     //   115: i2f
     //   116: fdiv
     //   117: fstore 4
@@ -240,22 +241,22 @@ public class ShakeImageView
     //   122: iload_3
     //   123: i2f
     //   124: aload 7
-    //   126: invokevirtual 158	android/graphics/Bitmap:getHeight	()I
+    //   126: invokevirtual 167	android/graphics/Bitmap:getHeight	()I
     //   129: i2f
     //   130: fdiv
     //   131: fstore 5
     //   133: aload_1
     //   134: astore 6
-    //   136: new 161	android/graphics/Matrix
+    //   136: new 170	android/graphics/Matrix
     //   139: dup
-    //   140: invokespecial 162	android/graphics/Matrix:<init>	()V
+    //   140: invokespecial 171	android/graphics/Matrix:<init>	()V
     //   143: astore 8
     //   145: aload_1
     //   146: astore 6
     //   148: aload 8
     //   150: fload 4
     //   152: fload 5
-    //   154: invokevirtual 166	android/graphics/Matrix:postScale	(FF)Z
+    //   154: invokevirtual 175	android/graphics/Matrix:postScale	(FF)Z
     //   157: pop
     //   158: aload_1
     //   159: astore 6
@@ -264,67 +265,67 @@ public class ShakeImageView
     //   164: iconst_0
     //   165: iconst_0
     //   166: aload 7
-    //   168: invokevirtual 155	android/graphics/Bitmap:getWidth	()I
+    //   168: invokevirtual 164	android/graphics/Bitmap:getWidth	()I
     //   171: aload 7
-    //   173: invokevirtual 158	android/graphics/Bitmap:getHeight	()I
+    //   173: invokevirtual 167	android/graphics/Bitmap:getHeight	()I
     //   176: aload 8
     //   178: iconst_0
-    //   179: invokestatic 170	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
-    //   182: putfield 121	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   179: invokestatic 179	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   182: putfield 130	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   185: aload_1
     //   186: astore 6
     //   188: aload 7
-    //   190: invokevirtual 226	android/graphics/Bitmap:recycle	()V
+    //   190: invokevirtual 230	android/graphics/Bitmap:recycle	()V
     //   193: goto -110 -> 83
     //   196: astore 6
     //   198: aload_0
     //   199: aconst_null
-    //   200: putfield 121	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   203: ldc 172
+    //   200: putfield 130	com/tencent/mobileqq/profile/view/ShakeImageView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   203: ldc 95
     //   205: iconst_1
-    //   206: ldc 228
+    //   206: ldc 232
     //   208: aload 6
-    //   210: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   210: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   213: aload_1
     //   214: ifnull -123 -> 91
     //   217: aload_1
-    //   218: invokevirtual 223	java/io/BufferedInputStream:close	()V
+    //   218: invokevirtual 227	java/io/BufferedInputStream:close	()V
     //   221: return
     //   222: astore_1
-    //   223: ldc 172
+    //   223: ldc 95
     //   225: iconst_1
-    //   226: ldc 228
+    //   226: ldc 232
     //   228: aload_1
-    //   229: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   229: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   232: return
     //   233: astore_1
-    //   234: ldc 172
+    //   234: ldc 95
     //   236: iconst_1
-    //   237: ldc 228
+    //   237: ldc 232
     //   239: aload_1
-    //   240: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   240: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   243: return
     //   244: astore 7
     //   246: aconst_null
     //   247: astore_1
     //   248: aload_1
     //   249: astore 6
-    //   251: ldc 172
+    //   251: ldc 95
     //   253: iconst_1
-    //   254: ldc 228
+    //   254: ldc 232
     //   256: aload 7
-    //   258: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   258: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   261: aload_1
     //   262: ifnull -171 -> 91
     //   265: aload_1
-    //   266: invokevirtual 223	java/io/BufferedInputStream:close	()V
+    //   266: invokevirtual 227	java/io/BufferedInputStream:close	()V
     //   269: return
     //   270: astore_1
-    //   271: ldc 172
+    //   271: ldc 95
     //   273: iconst_1
-    //   274: ldc 228
+    //   274: ldc 232
     //   276: aload_1
-    //   277: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   277: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   280: return
     //   281: astore_1
     //   282: aconst_null
@@ -332,15 +333,15 @@ public class ShakeImageView
     //   285: aload 6
     //   287: ifnull +8 -> 295
     //   290: aload 6
-    //   292: invokevirtual 223	java/io/BufferedInputStream:close	()V
+    //   292: invokevirtual 227	java/io/BufferedInputStream:close	()V
     //   295: aload_1
     //   296: athrow
     //   297: astore 6
-    //   299: ldc 172
+    //   299: ldc 95
     //   301: iconst_1
-    //   302: ldc 228
+    //   302: ldc 232
     //   304: aload 6
-    //   306: invokestatic 231	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   306: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   309: goto -14 -> 295
     //   312: astore_1
     //   313: goto -28 -> 285

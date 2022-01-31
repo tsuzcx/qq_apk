@@ -1,25 +1,33 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySubscriptionListViewGroup;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class mjl
-  implements ActionSheet.OnButtonClickListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public mjl(ReadInJoySubscriptionListViewGroup paramReadInJoySubscriptionListViewGroup, String paramString, ActionSheet paramActionSheet) {}
+  public mjl(VideoUIManager paramVideoUIManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    switch (paramInt)
-    {
+    int i = paramSeekBar.getProgress();
+    int j = VideoUIManager.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + VideoPlayUtils.a(j));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (j == 3) {
+      VideoUIManager.a(this.a).a(i * 1000, VideoUIManager.a(this.a));
+    }
+    while (j != 5) {
       return;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySubscriptionListViewGroup.a());
     }
+    VideoUIManager.a(this.a).c(i * 1000);
   }
 }
 

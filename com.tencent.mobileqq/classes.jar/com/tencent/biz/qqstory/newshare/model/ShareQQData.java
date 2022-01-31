@@ -11,7 +11,7 @@ public class ShareQQData
   public String d;
   public int e = 1;
   public String e;
-  public String f = "日迹";
+  public String f = "小视频";
   public String g = "mqqapi://qstory/open?src_type=internal&version=1";
   public String h;
   public String i = "";

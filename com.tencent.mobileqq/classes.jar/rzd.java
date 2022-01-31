@@ -1,29 +1,17 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.widget.CursorAdapter;
+import com.tencent.mobileqq.activity.BaseSystemActivity;
 
 public class rzd
-  implements AbsListView.OnScrollListener
+  implements Runnable
 {
-  public rzd(ChatHistory paramChatHistory) {}
+  public rzd(BaseSystemActivity paramBaseSystemActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    this.a.m = paramInt;
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      return;
+    if (this.a.a.getCursor() != null) {
+      this.a.b();
     }
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
-      this.a.a.d();
-    }
-    AbstractGifImage.pauseAll();
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

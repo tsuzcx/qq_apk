@@ -1,38 +1,40 @@
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVRoomMulti;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
+import mqq.app.MobileQQ;
 
-public class yqh
+public final class yqh
   implements Runnable
 {
-  public yqh(CmGameAvHandler paramCmGameAvHandler, Boolean paramBoolean) {}
+  public yqh(AppInterface paramAppInterface) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-      if (CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).size() > 0)
-      {
-        localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {
-          break label115;
-        }
-      }
-    }
-    label115:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    if (this.a != null)
     {
-      if (localObject == null) {
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, "[checkJsonParse]");
       }
-      localObject = ((QQAppInterface)localObject).c();
-      CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler, (String[])CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).toArray(new String[CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).size()]), (String)localObject);
-      return;
-      AVManager.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new yqi(this));
-      return;
+      Object localObject = (ApolloDaoManager)this.a.getManager(154);
+      ApolloManager localApolloManager = (ApolloManager)this.a.getManager(152);
+      List localList = ((ApolloDaoManager)localObject).a();
+      boolean bool = this.a.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean("7.6.8" + this.a.getCurrentAccountUin(), false);
+      if ((localList == null) || (localList.size() == 0) || (!bool))
+      {
+        localApolloManager.b();
+        QLog.d("ApolloManager", 1, "[checkJsonParse] parse action json");
+      }
+      localObject = ((ApolloDaoManager)localObject).f();
+      if (((localObject == null) || (((List)localObject).size() == 0)) && (new File(ApolloUtil.b).exists()))
+      {
+        localApolloManager.c();
+        QLog.d("ApolloManager", 1, "[checkJsonParse] parse game json");
+      }
     }
   }
 }

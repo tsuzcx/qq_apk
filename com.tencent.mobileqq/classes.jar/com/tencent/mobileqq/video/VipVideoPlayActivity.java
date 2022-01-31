@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.video;
 
-import akkr;
-import akks;
-import akkt;
-import akku;
+import aksg;
+import aksh;
+import aksi;
+import aksj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -66,11 +66,11 @@ public class VipVideoPlayActivity
           i = 1;
           setRequestedOrientation(i);
         }
-        setContentViewNoTitle(2130971038);
+        setContentViewNoTitle(2130971056);
         this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
         if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null)
         {
-          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131372640));
+          this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131372651));
           this.jdField_a_of_type_AndroidViewView = ((View)this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView(getApplication()));
           this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
           Object localObject = new FrameLayout.LayoutParams(-1, -1);
@@ -84,9 +84,9 @@ public class VipVideoPlayActivity
             i = UIUtils.a(this, 20.0F);
             ((FrameLayout.LayoutParams)localObject).setMargins(i, i, 0, 0);
             this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840963);
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840983);
             this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-            this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new akkr(this));
+            this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aksg(this));
           }
           long l1 = System.currentTimeMillis();
           this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(getApplication(), (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
@@ -94,9 +94,9 @@ public class VipVideoPlayActivity
           if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
           {
             this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.attachDanmuView();
-            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnControllerClickListener(new akks(this));
-            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new akku(this));
-            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new akkt(this));
+            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnControllerClickListener(new aksh(this));
+            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new aksj(this));
+            this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new aksi(this));
             this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.attachControllerView();
             if (this.jdField_a_of_type_Boolean)
             {
@@ -265,7 +265,7 @@ public class VipVideoPlayActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoPlayActivity
  * JD-Core Version:    0.7.0.1
  */

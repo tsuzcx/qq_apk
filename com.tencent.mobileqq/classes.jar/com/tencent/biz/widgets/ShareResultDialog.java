@@ -9,8 +9,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
-import pel;
-import pem;
+import pjd;
+import pje;
 
 public class ShareResultDialog
   extends Dialog
@@ -29,22 +29,22 @@ public class ShareResultDialog
   public ShareResultDialog(Context paramContext)
   {
     super(paramContext, 2131624516);
-    super.setContentView(2130968986);
+    super.setContentView(2130968988);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364585);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131364588);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364037));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364038));
-    this.c = ((TextView)super.findViewById(2131364587));
-    ((ImageView)super.findViewById(2131364586)).setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
-    this.d = ((TextView)super.findViewById(2131364590));
-    ((ImageView)super.findViewById(2131364589)).setColorFilter(-909794, PorterDuff.Mode.MULTIPLY);
-    this.e = ((TextView)super.findViewById(2131364591));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131364609);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131364612);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364062));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364063));
+    this.c = ((TextView)super.findViewById(2131364611));
+    ((ImageView)super.findViewById(2131364610)).setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
+    this.d = ((TextView)super.findViewById(2131364614));
+    ((ImageView)super.findViewById(2131364613)).setColorFilter(-909794, PorterDuff.Mode.MULTIPLY);
+    this.e = ((TextView)super.findViewById(2131364615));
   }
   
   private void b(boolean paramBoolean)
@@ -105,7 +105,7 @@ public class ShareResultDialog
   public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new pel(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new pjd(this, paramOnClickListener));
   }
   
   public void a(boolean paramBoolean)
@@ -136,7 +136,7 @@ public class ShareResultDialog
     }
     b(true);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new pem(this, paramOnClickListener));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new pje(this, paramOnClickListener));
   }
   
   public void c(int paramInt)

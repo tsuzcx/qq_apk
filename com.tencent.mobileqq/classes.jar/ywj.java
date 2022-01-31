@@ -1,49 +1,70 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ywj
   implements Runnable
 {
-  public ywj(ApolloGameShare paramApolloGameShare, int paramInt) {}
+  public ywj(CmGameServerQIPCModule paramCmGameServerQIPCModule, QQAppInterface paramQQAppInterface, CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
   
   public void run()
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(ApolloConstant.n).append(ApolloGameShare.a(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare)).append("/inviteIcon.png");
+    Object localObject = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
+    ((ApolloDaoManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);
+    ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152);
+    if ((((ApolloDaoManager)localObject).a != null) && (((ApolloDaoManager)localObject).a.containsKey(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId))))
+    {
+      localObject = (String)((ApolloDaoManager)localObject).a.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId));
+      localApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId, (String)localObject);
+    }
     try
     {
-      if (new File(((StringBuilder)localObject).toString()).exists()) {
-        localObject = BitmapFactory.decodeFile(((StringBuilder)localObject).toString());
-      } else {
-        localObject = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130838155);
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId));
+      ((ApolloGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(210)).a("android.playgame", "apollo_aio_game.add_games_to_user_gamepanel", (ArrayList)localObject);
+      if (!this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.isPatch)
+      {
+        int k = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
+        if ((k == 2) || (k == 1))
+        {
+          i = 1;
+          int j;
+          if ((k != 2) && (k != 5))
+          {
+            j = k;
+            if (k != 3) {}
+          }
+          else
+          {
+            j = 1;
+          }
+          VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "game_renew_succeed", i, j, new String[] { this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId + "", localApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId) });
+        }
+      }
+      else
+      {
+        ApolloContentUpdateHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
+        return;
       }
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (Exception localException)
     {
-      QLog.e("ApolloGameShare", 1, "fail to invite wxFriend, oom happens, errInfo->" + localOutOfMemoryError.getMessage());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloGameShare", 1, "fail to invite wxFriend, error happens, errInfo->" + localThrowable.getMessage());
-      return;
-    }
-    Bitmap localBitmap;
-    while (localBitmap != null)
-    {
-      localBitmap = TroopShareUtility.a(localThrowable);
-      ApolloGameShare.a(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare, String.valueOf(System.currentTimeMillis()));
-      WXShareHelper.a().a(new ywk(this));
-      WXShareHelper.a().a(ApolloGameShare.a(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), ApolloGameShare.b(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), localBitmap, ApolloGameShare.c(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), ApolloGameShare.d(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), this.jdField_a_of_type_Int);
-      return;
+      for (;;)
+      {
+        localException.printStackTrace();
+        QLog.e("cmgame_process.CmGameServerQIPCModule", 1, "errInfo->" + localException.getMessage());
+        continue;
+        int i = 0;
+      }
     }
   }
 }

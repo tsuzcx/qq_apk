@@ -42,13 +42,13 @@ public class BigEmotionUpdateAdapter
         if (QLog.isColorLevel()) {
           QLog.d("BigEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemtype = " + i + ";view from inflater");
         }
-        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970947, null);
+        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970965, null);
         paramViewHolder.setLayoutParams(paramView);
         paramViewHolder.setPadding(0, (int)(10.0F * this.jdField_a_of_type_Float), 0, 0);
         a(7, paramViewHolder);
-        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewHolder.findViewById(2131364477));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131364482));
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramViewHolder.findViewById(2131364483));
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewHolder.findViewById(2131364504));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131364509));
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramViewHolder.findViewById(2131364510));
         paramViewHolder.setTag(paramViewGroup);
       }
     }

@@ -222,6 +222,7 @@ public class QWalletRedPkgUtils
       try
       {
         paramString1.put("bigAnimId", k);
+        paramString1.put("hb_from", paramMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.hbFrom);
         if (paramSessionInfo.jdField_a_of_type_Int == 1008)
         {
           paramSessionInfo = new JSONObject();
@@ -241,10 +242,7 @@ public class QWalletRedPkgUtils
             paramSessionInfo.put("app_info", paramString5);
             paramSessionInfo.put("come_from", 2);
             paramSessionInfo.put("extra_data", paramString1);
-            paramMessageForQQWalletMsg = MsgProxyUtils.c(paramMessageForQQWalletMsg);
-            paramQQAppInterface = ContactUtils.b(paramQQAppInterface, paramMessageForQQWalletMsg, true);
-            paramSessionInfo.put("senderuin", paramMessageForQQWalletMsg);
-            paramSessionInfo.put("sendernickname", paramQQAppInterface);
+            paramSessionInfo.put("senderuin", MsgProxyUtils.c(paramMessageForQQWalletMsg));
             return paramSessionInfo;
             paramSessionInfo = paramSessionInfo;
           } while (!QLog.isDevelopLevel());

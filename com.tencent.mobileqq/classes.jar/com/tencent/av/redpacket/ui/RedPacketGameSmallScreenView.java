@@ -121,7 +121,7 @@ public class RedPacketGameSmallScreenView
   
   public void a(Context paramContext)
   {
-    setId(2131362538);
+    setId(2131362543);
   }
   
   public void a(Canvas paramCanvas, long paramLong)
@@ -229,7 +229,7 @@ public class RedPacketGameSmallScreenView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketGameSmallScreenView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,15 @@
-import com.tencent.biz.qqstory.newshare.StoryShare;
-import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.ui.OnShareUIListener;
+import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
+import com.tencent.biz.qqstory.comment.FeedLikeLego;
 
-public class nfy
-  implements OnShareUIListener
+class nfy
+  implements Runnable
 {
-  public nfy(StoryShare paramStoryShare) {}
+  nfy(nfx paramnfx) {}
   
-  public void a()
+  public void run()
   {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).c();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    StoryShare.a(this.a).a(paramInt);
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).b(paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d();
-    }
-  }
-  
-  public void c()
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d(-1);
-    }
+    this.a.a.a(this.a.a.a);
+    ((FeedCommentLikeLego)this.a.a.a()).d();
   }
 }
 

@@ -18,7 +18,7 @@ class v
     }
     catch (InterruptedException localInterruptedException)
     {
-      r.b("TMAssistantDownloadSDKService", "exception:", localInterruptedException);
+      r.b("TMADownloadSDKService", "exception:", localInterruptedException);
       localInterruptedException.printStackTrace();
     }
   }

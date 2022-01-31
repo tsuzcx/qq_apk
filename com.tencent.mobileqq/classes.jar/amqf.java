@@ -1,37 +1,82 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.SignatureObserver;
-import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import java.util.Map.Entry;
 
 public class amqf
-  extends SignatureObserver
+  implements Map.Entry
 {
-  public amqf(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
+  private final Object a;
+  private Object b;
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public amqf(Map.Entry paramEntry)
   {
-    if (paramBoolean)
+    this.a = paramEntry.getKey();
+    this.b = paramEntry.getValue();
+  }
+  
+  private static boolean a(Object paramObject1, Object paramObject2)
+  {
+    if (paramObject1 == null) {
+      return paramObject2 == null;
+    }
+    return paramObject1.equals(paramObject2);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof Map.Entry)) {}
+    do
     {
-      paramObject = (Bundle)paramObject;
-      paramObject.putInt("which_method", 0);
-      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
+      return false;
+      paramObject = (Map.Entry)paramObject;
+    } while ((!a(this.a, paramObject.getKey())) || (!a(this.b, paramObject.getValue())));
+    return true;
+  }
+  
+  public Object getKey()
+  {
+    return this.a;
+  }
+  
+  public Object getValue()
+  {
+    return this.b;
+  }
+  
+  public int hashCode()
+  {
+    int j = 0;
+    int i;
+    if (this.a == null)
+    {
+      i = 0;
+      if (this.b != null) {
+        break label33;
+      }
+    }
+    for (;;)
+    {
+      return i ^ j;
+      i = this.a.hashCode();
+      break;
+      label33:
+      j = this.b.hashCode();
     }
   }
   
-  protected void c(boolean paramBoolean, Object paramObject)
+  public Object setValue(Object paramObject)
   {
-    if (paramBoolean)
-    {
-      paramObject = (Bundle)paramObject;
-      paramObject.putInt("which_method", 1);
-      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
-    }
+    Object localObject = this.b;
+    this.b = paramObject;
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    return this.a + "=" + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amqf
  * JD-Core Version:    0.7.0.1
  */

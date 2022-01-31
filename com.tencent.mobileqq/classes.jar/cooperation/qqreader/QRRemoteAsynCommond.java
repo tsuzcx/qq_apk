@@ -1,6 +1,6 @@
 package cooperation.qqreader;
 
-import amqy;
+import amyj;
 import android.os.Bundle;
 import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -38,7 +38,7 @@ public class QRRemoteAsynCommond
       if (a() != null)
       {
         paramBundle = paramBundle.getString("publicaccount_uin");
-        PublicAccountUtil.a(a(), a().getApp(), paramBundle, new amqy(this, paramOnInvokeFinishLinstener));
+        PublicAccountUtil.a(a(), a().getApp(), paramBundle, new amyj(this, paramOnInvokeFinishLinstener));
         continue;
         QWalletHelper.preloadQWallet(a());
       }

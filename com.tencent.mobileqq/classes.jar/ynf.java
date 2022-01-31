@@ -1,22 +1,32 @@
-import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.CheckGameListener;
+import com.tencent.mobileqq.activity.aio.HotReactiveHelper;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ynf
-  implements ApolloGameWrapper.CheckGameListener
+  implements Runnable
 {
-  public ynf(ChatPieApolloViewController paramChatPieApolloViewController) {}
+  public ynf(BuddyListAdapter paramBuddyListAdapter) {}
   
-  public void a(boolean paramBoolean, CmGameMainManager paramCmGameMainManager)
+  public void run()
   {
-    if ((paramBoolean) && (paramCmGameMainManager != null)) {
-      paramCmGameMainManager.d();
+    if ((FriendsManager)BuddyListAdapter.a(this.a).getManager(50) != null)
+    {
+      HashSet localHashSet = HotReactiveHelper.a();
+      if ((localHashSet != null) && (localHashSet.size() > 0))
+      {
+        ArrayList localArrayList = new ArrayList(localHashSet);
+        BuddyListAdapter.a(this.a).b(localArrayList);
+        localHashSet.clear();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ynf
  * JD-Core Version:    0.7.0.1
  */

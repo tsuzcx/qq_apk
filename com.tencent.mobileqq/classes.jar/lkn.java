@@ -1,24 +1,99 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraVideoMergeHelper;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
-public final class lkn
-  implements Runnable
+public class lkn
 {
-  public lkn(QQAppInterface paramQQAppInterface) {}
+  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
+  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
+  public Process a;
   
-  public void run()
+  public void a()
   {
-    if ((this.a == null) || (!this.a.isLogin())) {}
-    do
+    if (this.jdField_a_of_type_JavaLangProcess != null)
     {
-      do
+      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
+      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
+      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangProcess != null) {}
+    try
+    {
+      for (;;)
       {
-        return;
-      } while (!ReadInJoyUtils.i());
-      ReadInJoyUtils.e(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("ReadInJoyUtils", 2, "handNet2Wifi is show conversation");
+        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
+        if (str == null) {
+          break;
+        }
+        ReadInJoyCameraVideoMergeHelper.a("[@] compressVideo log:" + str);
+      }
+      label176:
+      return;
+    }
+    catch (IOException localIOException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (this.jdField_a_of_type_JavaIoInputStream != null) {
+            this.jdField_a_of_type_JavaIoInputStream.close();
+          }
+          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+            this.jdField_a_of_type_JavaIoInputStreamReader.close();
+          }
+          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
+            this.jdField_a_of_type_JavaIoBufferedReader.close();
+          }
+          return;
+        }
+        catch (IOException localIOException3) {}
+        try
+        {
+          if (this.jdField_a_of_type_JavaIoInputStream != null) {
+            this.jdField_a_of_type_JavaIoInputStream.close();
+          }
+          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+            this.jdField_a_of_type_JavaIoInputStreamReader.close();
+          }
+          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
+            continue;
+          }
+          this.jdField_a_of_type_JavaIoBufferedReader.close();
+          return;
+        }
+        catch (IOException localIOException2)
+        {
+          return;
+        }
+      }
+    }
+    finally
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaIoInputStream != null) {
+          this.jdField_a_of_type_JavaIoInputStream.close();
+        }
+        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+          this.jdField_a_of_type_JavaIoInputStreamReader.close();
+        }
+        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
+          this.jdField_a_of_type_JavaIoBufferedReader.close();
+        }
+      }
+      catch (IOException localIOException4)
+      {
+        break label176;
+      }
+    }
   }
 }
 

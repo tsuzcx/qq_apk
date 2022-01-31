@@ -1,18 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ProfileCardMessageProcessor;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.ShieldOperationItem;
 
-public class ztt
-  implements Runnable
+public final class ztt
+  implements Parcelable.Creator
 {
-  public ztt(ProfileCardMessageProcessor paramProfileCardMessageProcessor) {}
-  
-  public void run()
+  public ShieldOperationItem a(Parcel paramParcel)
   {
-    if (!TextUtils.isEmpty(this.a.a.getAccount())) {
-      ((FriendListHandler)this.a.a.a(1)).b(this.a.a.getAccount());
-    }
+    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
+    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localShieldOperationItem.b = paramParcel.readInt();
+    localShieldOperationItem.c = paramParcel.readInt();
+    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
+    localShieldOperationItem.d = paramParcel.readInt();
+    return localShieldOperationItem;
+  }
+  
+  public ShieldOperationItem[] a(int paramInt)
+  {
+    return null;
   }
 }
 

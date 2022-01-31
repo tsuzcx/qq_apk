@@ -1,52 +1,49 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.TroopFileVideoOnlinePlayManager.TroopFileWhiteListCallback;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnPreviewVideoOnlineListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import com.tencent.mobileqq.filemanager.offlinefile.OfflineFileUpload.OfflineFileUploadPara;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.TbsVideo;
+import java.io.UnsupportedEncodingException;
 
 public class addw
-  implements TroopFileVideoOnlinePlayManager.TroopFileWhiteListCallback
+  implements Runnable
 {
-  public addw(TroopFileModel paramTroopFileModel, FileBrowserModelBase.OnPreviewVideoOnlineListener paramOnPreviewVideoOnlineListener, TroopInfo paramTroopInfo, TroopManager paramTroopManager) {}
+  public addw(FileManagerRSWorker paramFileManagerRSWorker) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener != null)
-    {
-      if (paramInt1 == 0) {
-        break label144;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.ac_();
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "running OfflineFileHitReq:" + MessageCache.a());
     }
-    while (paramInt1 != 0)
+    OfflineFileUploadPara localOfflineFileUploadPara = new OfflineFileUploadPara();
+    localOfflineFileUploadPara.jdField_a_of_type_JavaLangString = this.a.e;
+    localOfflineFileUploadPara.jdField_a_of_type_Long = this.a.d;
+    this.a.jdField_a_of_type_ArrayOfByte = FileManagerUtil.c(this.a.jdField_b_of_type_JavaLangString);
+    this.a.jdField_b_of_type_ArrayOfByte = FileManagerUtil.a(this.a.jdField_b_of_type_JavaLangString);
+    this.a.c = FileManagerUtil.b(this.a.jdField_b_of_type_JavaLangString);
+    if ((this.a.jdField_a_of_type_ArrayOfByte == null) || (this.a.jdField_b_of_type_ArrayOfByte == null) || (this.a.c == null))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.ac_();
-      }
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_troopfile_video_cloudPlay", "online_play_show", 0, 0, "0", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.mTroopFileVideoIsWhite = paramInt1;
-      this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.mTroopFileVideoReqInterval = (System.currentTimeMillis() + paramInt2 * 1000);
-      ThreadManager.post(new addx(this), 5, null, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "OfflineVideoFileView initVarView() is_white = " + paramInt1 + ", req_interval = " + paramInt2);
-      }
+      this.a.a(null, 0);
       return;
-      label144:
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.ad_();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.ad_();
-    }
-    if (TbsVideo.canUseYunbo(BaseApplicationImpl.getContext())) {}
-    for (String str = "0";; str = "-1")
+    localOfflineFileUploadPara.c = this.a.jdField_a_of_type_ArrayOfByte;
+    localOfflineFileUploadPara.d = this.a.jdField_b_of_type_ArrayOfByte;
+    localOfflineFileUploadPara.e = this.a.c;
+    try
     {
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_troopfile_video_cloudPlay", "online_play_show", 0, 0, "-1", str, "-1", "-1");
-      break;
+      localOfflineFileUploadPara.jdField_b_of_type_ArrayOfByte = FileManagerUtil.a(this.a.jdField_b_of_type_JavaLangString).getBytes("utf-8");
+      localOfflineFileUploadPara.jdField_a_of_type_ArrayOfByte = this.a.jdField_b_of_type_JavaLangString.getBytes("utf-8");
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localOfflineFileUploadPara, FileManagerRSWorker.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      return;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+      }
     }
   }
 }

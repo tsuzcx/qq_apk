@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import aclv;
-import aclw;
-import aclx;
-import acly;
-import aclz;
-import acma;
+import acuc;
+import acud;
+import acue;
+import acuf;
+import acug;
+import acuh;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -55,7 +55,7 @@ public class FMActivity
   implements View.OnClickListener
 {
   static long jdField_b_of_type_Long;
-  acma jdField_a_of_type_Acma = null;
+  acuh jdField_a_of_type_Acuh = null;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   public View a;
   public LinearLayout a;
@@ -129,7 +129,7 @@ public class FMActivity
   
   private void c(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView = ((QfileTabBarView)findViewById(2131368787));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView = ((QfileTabBarView)findViewById(2131368790));
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView;
     int k;
     if (this.j)
@@ -147,17 +147,17 @@ public class FMActivity
       if ((!c()) || (paramInt == 5) || (paramInt == 8) || (this.jdField_d_of_type_Boolean)) {
         break label461;
       }
-      this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131363966));
+      this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131363991));
       this.jdField_a_of_type_AndroidWidgetRadioGroup.setVisibility(0);
       if (this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener == null) {
         n();
       }
       this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener);
-      this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131368781));
-      this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131368780));
+      this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131368784));
+      this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)findViewById(2131368783));
       if (FontSettingManager.a() > 17.0F)
       {
-        localObject = (RadioButton)findViewById(2131368782);
+        localObject = (RadioButton)findViewById(2131368785);
         float f1 = getResources().getDisplayMetrics().density;
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams((int)(40.0F * f1), (int)(f1 * 30.0F));
         this.jdField_b_of_type_AndroidWidgetRadioButton.setLayoutParams(localLayoutParams);
@@ -185,10 +185,10 @@ public class FMActivity
       break;
       if ((this.jdField_f_of_type_JavaLangString != null) && (this.jdField_f_of_type_JavaLangString.trim().length() != 0) && (this.jdField_e_of_type_Int != -1))
       {
-        setLeftViewName(2131435275);
+        setLeftViewName(2131435291);
         break label72;
       }
-      setLeftViewName(2131432414);
+      setLeftViewName(2131432425);
       break label72;
       if ((this.jdField_g_of_type_Boolean) || (this.jdField_h_of_type_Boolean)) {
         break label461;
@@ -204,8 +204,8 @@ public class FMActivity
     label461:
     if (this.jdField_i_of_type_Boolean)
     {
-      findViewById(2131363966).setVisibility(8);
-      findViewById(2131368779).setVisibility(0);
+      findViewById(2131363991).setVisibility(8);
+      findViewById(2131368782).setVisibility(0);
     }
     g();
     switch (paramInt)
@@ -217,11 +217,11 @@ public class FMActivity
     case 6: 
     case 7: 
       if (paramInt == 0) {}
-      for (this.jdField_b_of_type_JavaLangString = getString(2131433651);; this.jdField_b_of_type_JavaLangString = getString(2131428102))
+      for (this.jdField_b_of_type_JavaLangString = getString(2131433665);; this.jdField_b_of_type_JavaLangString = getString(2131428102))
       {
         setTitle(this.jdField_b_of_type_JavaLangString);
         if ((this.jdField_a_of_type_AndroidWidgetRadioGroup != null) && (this.jdField_a_of_type_AndroidWidgetRadioGroup.getVisibility() == 0)) {
-          ((RadioButton)findViewById(2131368780)).setChecked(true);
+          ((RadioButton)findViewById(2131368783)).setChecked(true);
         }
         o();
         return;
@@ -231,7 +231,7 @@ public class FMActivity
       this.jdField_b_of_type_JavaLangString = getString(2131428096);
       setTitle(this.jdField_b_of_type_JavaLangString);
       if ((this.jdField_a_of_type_AndroidWidgetRadioGroup != null) && (this.jdField_a_of_type_AndroidWidgetRadioGroup.getVisibility() == 0)) {
-        ((RadioButton)findViewById(2131368782)).setChecked(true);
+        ((RadioButton)findViewById(2131368785)).setChecked(true);
       }
       d(paramInt);
       return;
@@ -251,7 +251,7 @@ public class FMActivity
         p();
         if ((c()) && ((this.jdField_d_of_type_Boolean) || (this.jdField_a_of_type_Int == 5)))
         {
-          this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
+          this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363262));
           setLeftViewName(2131428085);
           this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
           if (this.jdField_h_of_type_Int <= 0) {
@@ -279,8 +279,8 @@ public class FMActivity
     }
     this.jdField_b_of_type_JavaLangString = "选择已下载的文件";
     setTitle(this.jdField_b_of_type_JavaLangString);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
-    setLeftViewName(2131432414);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363262));
+    setLeftViewName(2131432425);
     getRightTextView().setVisibility(8);
     t();
   }
@@ -295,7 +295,7 @@ public class FMActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = new VerifyPwdView(this);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a(this.jdField_b_of_type_AndroidWidgetRelativeLayout, new acly(this, paramInt));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a(this.jdField_b_of_type_AndroidWidgetRelativeLayout, new acuf(this, paramInt));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.b();
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
@@ -320,9 +320,9 @@ public class FMActivity
   private void m()
   {
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
-    localQQCustomDialog.setMessage(2131429887);
-    localQQCustomDialog.setTitle(2131429886);
-    localQQCustomDialog.setNegativeButton(getString(2131429889), new aclv(this));
+    localQQCustomDialog.setMessage(2131429888);
+    localQQCustomDialog.setTitle(2131429887);
+    localQQCustomDialog.setNegativeButton(getString(2131429890), new acuc(this));
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     localQQCustomDialog.setCancelable(false);
     if (!isFinishing()) {
@@ -332,7 +332,7 @@ public class FMActivity
   
   private void n()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new aclx(this);
+    this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new acue(this);
   }
   
   private void o()
@@ -370,7 +370,7 @@ public class FMActivity
     if (f())
     {
       if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368778));
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368781));
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setText(2131428301);
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -474,7 +474,7 @@ public class FMActivity
       }
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
       {
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aclz(this);
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new acug(this);
         IntentFilter localIntentFilter = new IntentFilter();
         localIntentFilter.addAction("com.tencent.qlink.destory.fmactivity");
         this.app.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
@@ -649,18 +649,18 @@ public class FMActivity
       if ((!c()) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 8) || (this.jdField_a_of_type_Int == 6) || (this.jdField_d_of_type_Boolean)) {
         break label661;
       }
-      a(2130970013);
-      ((LinearLayout)findViewById(2131368777)).setLayoutParams(new RelativeLayout.LayoutParams(-1, k));
+      a(2130970024);
+      ((LinearLayout)findViewById(2131368780)).setLayoutParams(new RelativeLayout.LayoutParams(-1, k));
       if ((ImmersiveUtils.isSupporImmersive() != 1) || (!f())) {}
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363514));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368784));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new aclw(this));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363533));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131368787));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new acud(this));
       if ((!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) && (this.jdField_e_of_type_Int == -1))
       {
-        setLeftViewName(2131435551);
+        setLeftViewName(2131435567);
         if (this.rightViewText != null) {
           this.rightViewText.setVisibility(8);
         }
@@ -682,9 +682,9 @@ public class FMActivity
       this.jdField_g_of_type_Boolean = true;
       break;
       label661:
-      setContentView(2130970013);
-      ((RelativeLayout)findViewById(2131362862)).setVisibility(8);
-      paramBundle = (LinearLayout)findViewById(2131368777);
+      setContentView(2130970024);
+      ((RelativeLayout)findViewById(2131362867)).setVisibility(8);
+      paramBundle = (LinearLayout)findViewById(2131368780);
     }
   }
   
@@ -713,8 +713,8 @@ public class FMActivity
   
   protected void doOnPause()
   {
-    if (this.jdField_a_of_type_Acma != null) {
-      removeObserver(this.jdField_a_of_type_Acma);
+    if (this.jdField_a_of_type_Acuh != null) {
+      removeObserver(this.jdField_a_of_type_Acuh);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantIBaseTabViewEvent != null) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantIBaseTabViewEvent.q();
@@ -727,8 +727,8 @@ public class FMActivity
     if ((getIntent().getBooleanExtra("key_check_troop_privilege", false)) && (this.jdField_g_of_type_JavaLangString != null))
     {
       ((TroopHandler)this.app.a(20)).n(this.jdField_g_of_type_JavaLangString);
-      this.jdField_a_of_type_Acma = new acma(this);
-      addObserver(this.jdField_a_of_type_Acma);
+      this.jdField_a_of_type_Acuh = new acuh(this);
+      addObserver(this.jdField_a_of_type_Acuh);
     }
     super.doOnResume();
   }
@@ -762,7 +762,7 @@ public class FMActivity
       localIntent.putExtra("STRING_Show_Pic_Category", false);
       localIntent.putExtra("STRING_Show_Driver_Category", false);
       localIntent.putExtra("STRING_Show_First_Space", false);
-      if ((paramView.getId() == 2131368778) || (paramView.getId() == 2131363245))
+      if ((paramView.getId() == 2131368781) || (paramView.getId() == 2131363262))
       {
         localIntent.putExtra("localSdCardfile", 1408041717);
         localIntent.putExtra("STRING_Show_Download_Category", false);
@@ -772,7 +772,7 @@ public class FMActivity
         overridePendingTransition(2131034308, 2131034311);
         return;
       }
-    } while (paramView.getId() != 2131368821);
+    } while (paramView.getId() != 2131368824);
     localIntent.putExtra("localSdCardfile", 1408041716);
     localIntent.putExtra("STRING_Show_Download_Category", false);
     a().am();

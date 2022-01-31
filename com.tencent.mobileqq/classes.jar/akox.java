@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.vas.ColorRingPlayer;
 
-class akox
-  implements Runnable
+public class akox
+  implements DialogInterface.OnClickListener
 {
-  akox(akou paramakou) {}
+  public akox(ColorRingPlayer paramColorRingPlayer) {}
   
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SwiftBrowserLongClickHandler", 2, "showQR Button");
-    }
-    this.a.a.a.b(2131435874);
-    this.a.a.a.b();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
-public class vpr
+class vpr
   implements Runnable
 {
-  public vpr(PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
+  vpr(vpq paramvpq) {}
   
   public void run()
   {
-    this.a.a.set(true);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder.a != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder.a.ad)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.m();
+    }
   }
 }
 

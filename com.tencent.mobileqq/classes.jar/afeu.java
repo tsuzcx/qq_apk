@@ -1,13 +1,33 @@
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
+import com.tencent.mobileqq.widget.QQToast;
 
 class afeu
-  implements Runnable
+  implements NearbyMomentManager.DeleteFeedCallback
 {
   afeu(afet paramafet) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    ConnectNearbyProcService.a(4144);
+    if (paramBoolean)
+    {
+      NearbyMomentManager localNearbyMomentManager = (NearbyMomentManager)this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262);
+      if (localNearbyMomentManager != null) {
+        localNearbyMomentManager.d(paramString);
+      }
+      PlayOperationViewModel.a(this.a.a.a, paramString);
+      if ((this.a.a.a.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity)) {
+        ((BaseActivity)this.a.a.a.jdField_a_of_type_AndroidViewView.getContext()).finish();
+      }
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "删除失败", 0).a();
   }
 }
 

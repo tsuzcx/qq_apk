@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/search_box" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407e5" />
-    <RelativeLayout android:id="@id/result_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/search_box" android:layout_alignParentBottom="true">
-        <com.tencent.widget.XListView android:id="@id/searchList" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" />
-        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040287" />
-    </RelativeLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03be" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <com.tencent.mobileqq.widget.QQViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f31" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <RadioGroup android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f32" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View android:layout_width="fill_parent" android:layout_height="45.0dip" />
+    </LinearLayout>
 </RelativeLayout>

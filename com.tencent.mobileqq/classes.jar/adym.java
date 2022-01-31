@@ -1,30 +1,44 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
-import com.tencent.mobileqq.leba.view.LebaFPSXListView;
-import com.tencent.mobileqq.leba.view.LebaFeedsViewBase;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
 
 public class adym
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Handler
 {
-  public adym(LebaFeedsAdapter paramLebaFeedsAdapter, LebaFeedsViewBase paramLebaFeedsViewBase, int paramInt) {}
+  public adym(HotPicPageView paramHotPicPageView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i <= 240)
+    switch (paramMessage.what)
     {
-      float f = i / 240.0F;
-      this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsViewBase.setAlpha(1.0F - f);
     }
+    int i;
     do
     {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (HotPicPageView.b);
+          this.a.i();
+          return;
+        } while ((HotPicPageView.b) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() != 0) || (this.a.jdField_a_of_type_Adyx == null) || (this.a.jdField_a_of_type_Adyx.getItemCount() == 0));
+        i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
+      } while (i < 0);
+      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
+    } while ((paramMessage == null) || (!(paramMessage instanceof HotPicPageView.MyVideoViewHolder)));
+    paramMessage = (HotPicPageView.MyVideoViewHolder)paramMessage;
+    if (paramMessage.jdField_a_of_type_Int == 0)
+    {
+      this.a.b(paramMessage, i);
       return;
-      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsViewBase.getLayoutParams();
-    } while (paramValueAnimator == null);
-    paramValueAnimator.height = (this.jdField_a_of_type_Int - (int)((i - 240) / 120.0F * this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsViewBase.setLayoutParams(paramValueAnimator);
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter).requestLayout();
+    }
+    paramMessage.jdField_a_of_type_Boolean = true;
   }
 }
 

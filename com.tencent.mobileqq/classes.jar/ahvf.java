@@ -1,40 +1,13 @@
-import com.tencent.mobileqq.search.searchengine.ContactSearchEngine;
+import com.tencent.mobileqq.search.BusinessSearchEntryModel;
 
-public class ahvf
+class ahvf
+  implements Runnable
 {
-  boolean jdField_a_of_type_Boolean;
+  ahvf(ahve paramahve) {}
   
-  public ahvf(ContactSearchEngine paramContactSearchEngine, boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchBusinessSearchEntryModel.b(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelBusinessSearchEntryDataModel);
   }
 }
 

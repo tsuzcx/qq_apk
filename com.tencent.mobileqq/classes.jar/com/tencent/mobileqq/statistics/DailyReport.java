@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import aifs;
+import aikm;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -86,7 +86,7 @@ public class DailyReport
   private static int d = 50000;
   BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new aifs(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new aikm(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
   
   private static String a(Context paramContext)
   {
@@ -1438,7 +1438,7 @@ public class DailyReport
           if (i > 0) {
             localStatisticCollector.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject3, "", "background", "bkground_replace", 0, i, 0);
           }
-          bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getString(2131435404), "qqsetting_lock_screen_whenexit_key", true);
+          bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getString(2131435420), "qqsetting_lock_screen_whenexit_key", true);
           localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
           if (!Boolean.valueOf(bool).booleanValue()) {
             break label1616;

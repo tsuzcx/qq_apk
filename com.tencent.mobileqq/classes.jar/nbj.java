@@ -1,12 +1,17 @@
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
-public final class nbj
-  implements InvocationHandler
+public class nbj
+  implements View.OnClickListener
 {
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public nbj(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return null;
+    PublicAccountImageCollectionCommentActivity.a(this.a);
+    PublicAccountImageCollectionCommentActivity.a(this.a, -1);
+    PublicAccountImageCollectionCommentActivity.b(this.a, false);
   }
 }
 

@@ -12,11 +12,11 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.ResidentTip;
 import com.tencent.av.utils.TipsManager;
 import com.tencent.ttpic.util.VideoMaterialUtil.TRIGGER_TYPE;
-import jga;
-import jgb;
-import jgc;
-import jgd;
-import jge;
+import jid;
+import jie;
+import jif;
+import jig;
+import jih;
 
 public class EffectPendantTips
 {
@@ -63,17 +63,17 @@ public class EffectPendantTips
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new jgd(this, paramInt2, paramInt1));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jig(this, paramInt2, paramInt1));
   }
   
   public void a(int paramInt, Drawable paramDrawable, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new jgb(this, paramString, paramInt, paramDrawable));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jie(this, paramString, paramInt, paramDrawable));
   }
   
   public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new jga(this, paramString, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jid(this, paramString, paramInt));
   }
   
   public void a(VideoAppInterface paramVideoAppInterface)
@@ -83,12 +83,12 @@ public class EffectPendantTips
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new jgc(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jif(this, paramInt));
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new jge(this, paramInt1), paramInt2);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new jih(this, paramInt1), paramInt2);
   }
   
   public void b(int paramInt, Drawable paramDrawable, String paramString)
@@ -119,7 +119,7 @@ public class EffectPendantTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTips
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class aeyr
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public aeyr(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  public aeyr(NearbyGuideActivity paramNearbyGuideActivity, ActionSheet paramActionSheet) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoViewTVKImpl", 2, "onCompletion() called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "]");
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.h();
+      return;
     }
-    ThreadManager.getUIHandler().post(new aeys(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.i();
   }
 }
 

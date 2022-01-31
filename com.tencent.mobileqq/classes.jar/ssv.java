@@ -1,33 +1,36 @@
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ssv
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public ssv(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, ActionSheet paramActionSheet) {}
+  public ssv(ForwardRecentActivity paramForwardRecentActivity, Resources paramResources, DeviceInfo paramDeviceInfo, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, "目前没有网络，请稍后再试!", 1000).b(this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131558448));
       return;
-      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a("0X80081E5", 2);
-      continue;
-      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a("0X80081E5", 3);
     }
+    paramView = new Bundle();
+    paramView.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din));
+    paramView.putInt("uintype", 9501);
+    paramView.putString("uinname", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.a(ForwardAbility.ForwardAbilityType.j.intValue(), paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ssv
  * JD-Core Version:    0.7.0.1
  */

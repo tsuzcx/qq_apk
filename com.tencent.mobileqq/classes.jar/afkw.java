@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.LikeCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.NearbyVideoUtils;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
 
 public class afkw
-  implements NearbyMomentProtocol.LikeCallback
+  implements View.OnClickListener
 {
-  public afkw(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
+  public afkw(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.a(this.jdField_a_of_type_JavaLangString, paramInt);
+    int i = 1;
+    if (((this.a.a.e == 2) || (this.a.a.e == 4)) && (!NearbyVideoUtils.a(this.a.a, this.a.a.app))) {
+      NearbyVideoUtils.a(this.a.a, this.a.a.app, 1);
+    }
+    paramView = NearbyProfileDisplayTribePanel.a(this.a).uin;
+    StringBuilder localStringBuilder = new StringBuilder().append("");
+    if (this.a.a.e == 2) {}
+    for (;;)
+    {
+      NearbyVideoUtils.a("clk_video_entry", new String[] { "2", paramView, i });
+      return;
+      i = 2;
     }
   }
 }

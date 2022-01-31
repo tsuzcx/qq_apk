@@ -1,15 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class xhy
-  implements BusinessObserver
+public class xhy
+  implements View.OnClickListener
 {
-  xhy(xhx paramxhx, long paramLong) {}
+  public xhy(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    ThreadManager.postImmediately(new xhz(this, paramBoolean, paramBundle, paramInt), null, false);
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    QWalletTools.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
+    if (TroopUnAccalimedRedPacketList.a() != null) {
+      TroopUnAccalimedRedPacketList.a().dismiss();
+    }
   }
 }
 

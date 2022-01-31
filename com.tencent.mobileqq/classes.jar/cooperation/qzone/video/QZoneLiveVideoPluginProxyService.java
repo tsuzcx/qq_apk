@@ -8,7 +8,6 @@ import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 import cooperation.qzone.plugin.IQZonePluginManager;
 import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 import cooperation.qzone.plugin.QZonePluginUtils;
@@ -20,44 +19,14 @@ public class QZoneLiveVideoPluginProxyService
   public static void a(Context paramContext, String paramString1, Intent paramIntent, ServiceConnection paramServiceConnection, String paramString2)
   {
     paramIntent.putExtra("useSkinEngine", -1);
-    if ("qzone_vertical_video_plugin.apk".equals(paramString2)) {
-      if (QzoneVerticalVideoDownloadActivity.a())
-      {
-        paramString2 = new IPluginManager.PluginParams(0);
-        paramString2.b = "qzone_vertical_video_plugin.apk";
-        paramString2.d = "QZoneVerticalVideo";
-        paramString2.jdField_a_of_type_JavaLangString = paramString1;
-        paramString2.e = "com.qzone.verticalvideo.app.QZoneVerticalVideoPreloadService";
-        paramString2.jdField_a_of_type_AndroidContentIntent = paramIntent;
-        paramString2.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-        QLog.i("PluginDebug", 1, "加载原始插件");
-        IPluginManager.b(paramContext, paramString2);
-      }
+    Object localObject1 = QZonePluginUtils.a();
+    Object localObject2 = paramIntent.getAction();
+    paramString2 = "";
+    if ("com.qzone.preloadLiveVideo".equals(localObject2)) {
+      paramString2 = "com.qzone.adapter.livevideo.LiveVideoPreloadPluginService";
     }
-    Object localObject1;
     do
     {
-      do
-      {
-        return;
-        localObject1 = new File(QZonePluginUtils.a(paramContext), "qzone_vertical_video_plugin.apk");
-        QLog.i("PluginDebug", 1, "bindService 加载动态包:hackPluginID:" + paramString2);
-      } while (!((File)localObject1).exists());
-      paramString2 = new IQZonePluginManager.PluginParams(0);
-      paramString2.b = "qzone_vertical_video_plugin.apk";
-      paramString2.d = "QZoneVerticalVideo";
-      paramString2.jdField_a_of_type_JavaLangString = paramString1;
-      paramString2.e = "com.qzone.verticalvideo.app.QZoneVerticalVideoPreloadService";
-      paramString2.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      paramString2.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-      IQZonePluginManager.a(paramContext, paramString2);
-      return;
-      localObject1 = QZonePluginUtils.a();
-      localObject2 = paramIntent.getAction();
-      paramString2 = "";
-      if ("com.qzone.preloadLiveVideo".equals(localObject2)) {
-        paramString2 = "com.qzone.adapter.livevideo.LiveVideoPreloadPluginService";
-      }
       while (TextUtils.isEmpty(paramString2))
       {
         QLog.e("PluginDebug", 1, "启动失败 conponentName 为空");
@@ -79,7 +48,7 @@ public class QZoneLiveVideoPluginProxyService
         QLog.d("PluginDebug", 2, "bindService 加载动态包:hackPluginID:" + (String)localObject1);
       }
     } while (!((File)localObject2).exists());
-    Object localObject2 = new IQZonePluginManager.PluginParams(0);
+    localObject2 = new IQZonePluginManager.PluginParams(0);
     ((IQZonePluginManager.PluginParams)localObject2).b = "qzone_live_video_plugin_hack.apk";
     ((IQZonePluginManager.PluginParams)localObject2).d = "QZoneLiveVideo";
     ((IQZonePluginManager.PluginParams)localObject2).jdField_a_of_type_JavaLangString = paramString1;

@@ -1,53 +1,72 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
+import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.PublicAccountObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class lfh
-  extends PublicAccountObserver
+  implements Runnable
 {
-  public lfh(ReadinjoyMsgManagerActivity paramReadinjoyMsgManagerActivity) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void b(boolean paramBoolean, int paramInt)
+  public lfh(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity1, ReadInJoyFeedsActivity paramReadInJoyFeedsActivity2)
   {
-    if (ReadinjoyMsgManagerActivity.a(this.a).isShowing()) {
-      ReadinjoyMsgManagerActivity.a(this.a).dismiss();
-    }
-    if (paramInt != ReadinjoyMsgManagerActivity.a(this.a).get()) {
-      return;
-    }
-    if (paramBoolean)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadInJoyFeedsActivity2);
+  }
+  
+  public void run()
+  {
+    if (WebProcessManager.c()) {}
+    for (;;)
     {
-      boolean bool = ReadinjoyMsgManagerActivity.a(this.a).isChecked();
-      ReadinjoyMsgManagerActivity localReadinjoyMsgManagerActivity = this.a;
-      if (!bool)
+      return;
+      WebProcessManager localWebProcessManager;
+      int i;
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
       {
-        paramBoolean = true;
-        ReadinjoyMsgManagerActivity.a(localReadinjoyMsgManagerActivity, paramBoolean);
-        if (bool) {
-          break label127;
+        localWebProcessManager = (WebProcessManager)((ReadInJoyFeedsActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).app.getManager(12);
+        if (localWebProcessManager != null)
+        {
+          i = ReadInJoyUtils.f();
+          if (!ReadInJoyUtils.f()) {}
         }
-        PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8007DB6", "0X8007DB6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
       }
-      for (;;)
+      try
       {
-        ((KandianMergeManager)this.a.app.getManager(161)).a(bool);
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
+        localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.e()));
+        localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.f()));
+        localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.b()));
+        localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.a()));
+        localHashMap.put("param_preloadLevel", String.valueOf(i));
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyBaseActivity", 2, "preloadToolProcessReport:" + localHashMap.toString());
+        }
+        StatisticCollector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyFeedsActivity.app.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
+      }
+      catch (Exception localException)
+      {
+        label206:
+        break label206;
+      }
+      if (i == 1) {
+        localWebProcessManager.a(200);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("ReadInJoyBaseActivity", 2, "enter folder preload web process");
         return;
-        paramBoolean = false;
-        break;
-        label127:
-        PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800676D", "0X800676D", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
+        if (i == 2) {
+          localWebProcessManager.a(201);
+        }
       }
     }
-    QQToast.a(this.a.getApplicationContext(), 2131428480, 0).a();
-    QLog.d("ReadinjoyMsgManagerActivity", 1, "handle setkandian recomm failed");
   }
 }
 

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.startup.step;
 
-import aifk;
-import aifl;
+import aike;
+import aikf;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.cache.MemoryClearManagerNew;
 import com.tencent.common.config.AppSetting;
@@ -25,7 +26,9 @@ public class NewRuntime
   
   protected boolean a()
   {
-    b();
+    if (Build.VERSION.SDK_INT <= 20) {
+      b();
+    }
     if (BaseApplicationImpl.sProcessId == 1) {}
     for (;;)
     {
@@ -60,7 +63,7 @@ public class NewRuntime
         }
       }
       if ((BaseApplicationImpl.sProcessId != 1) && (BaseApplicationImpl.sProcessId != 4) && (BaseApplicationImpl.sProcessId != -1)) {
-        ThreadManager.getSubThreadHandler().postDelayed(new aifk(this), 5000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new aike(this), 5000L);
       }
       return true;
       bool = false;
@@ -93,14 +96,14 @@ public class NewRuntime
     if ((bool) && (BaseApplicationImpl.sProcessId == 1)) {
       localSharedPreferences.edit().putLong("key_last_hack_verify_time", System.currentTimeMillis()).commit();
     }
-    DalvikReplacer.a(BaseApplicationImpl.sApplication, 16777216, bool);
+    DalvikReplacer.a(BaseApplicationImpl.sApplication, 20971520, bool);
     QLog.e("QQAppInterface", 1, "laResult: " + DalvikReplacer.a + ", verifyResult: " + DalvikReplacer.b);
     a = DalvikReplacer.a;
     if (bool) {
       b = DalvikReplacer.b;
     }
     if ((bool) && (BaseApplicationImpl.sProcessId == 1)) {
-      ThreadManager.getSubThreadHandler().postDelayed(new aifl(this), 5000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new aikf(this), 5000L);
     }
     return true;
   }

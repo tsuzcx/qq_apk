@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.smartdevice.SmartDevicePluginLoader;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
+import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 
-public class anek
-  implements DialogInterface.OnDismissListener
+public final class anek
+  implements IQZonePluginManager.OnPluginReadyListener
 {
-  public anek(SmartDevicePluginLoader paramSmartDevicePluginLoader, DialogInterface.OnDismissListener paramOnDismissListener) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      IQZonePluginManager.c(paramContext, paramPluginParams);
     }
   }
 }

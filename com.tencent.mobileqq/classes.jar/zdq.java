@@ -1,49 +1,80 @@
-import android.content.res.Resources;
-import android.os.Vibrator;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity.HeadViewLongClick;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.service.message.MessageUtils;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public class zdq
-  implements View.OnLongClickListener
+public final class zdq
+  implements Runnable
 {
-  public zdq(FrameHelperActivity paramFrameHelperActivity) {}
+  public zdq(CharSequence paramCharSequence, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if (!SubAccountControll.c(this.a.getActivity().app, false)) {}
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.b())) {
-      return true;
-    }
-    if ((paramView == this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqSubaccountAssociatedAccountOptPopBar != null))
+    Object localObject1 = (QQText)this.jdField_a_of_type_JavaLangCharSequence;
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2 = (QQText.EmoticonSpan[])((QQText)localObject1).getSpans(0, ((QQText)localObject1).length(), QQText.EmoticonSpan.class);
+    if ((localObject2 != null) && (localObject2.length > 0))
     {
-      if ((this.a.getActivity().app != null) && (this.a.getActivity().app.getApp() != null))
+      int j = localObject2.length;
+      i = 0;
+      while (i < j)
       {
-        paramView = (Vibrator)this.a.getActivity().app.getApp().getSystemService("vibrator");
-        if (paramView != null) {
-          paramView.vibrate(new long[] { 0L, 1L, 20L, 21L }, -1);
+        int k = localObject2[i].a();
+        if ((TextUtils.a(k)) && (k >= 0) && (k < MessageUtils.a.length)) {
+          localArrayList.add(Integer.valueOf(ApolloUtil.f(MessageUtils.a[k])));
+        }
+        i += 1;
+      }
+    }
+    if (localArrayList.size() == 0) {
+      ApolloUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (QQText)localObject1, localArrayList);
+    }
+    for (int i = 1;; i = 0)
+    {
+      QQAppInterface localQQAppInterface;
+      ChatMessage localChatMessage;
+      if (localArrayList.size() > 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloUtil", 2, new Object[] { "[playApolloEmoticonAction] send action list to play, actionList=", localArrayList });
+        }
+        localObject2 = ApolloMsgPlayController.a();
+        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localChatMessage = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        if (i == 0) {
+          break label273;
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqSubaccountAssociatedAccountOptPopBar.a(this.a.b, this.a.getResources().getDimensionPixelSize(2131558953), this.a.getResources().getDimensionPixelSize(2131558954));
+      label273:
+      for (localObject1 = localArrayList;; localObject1 = null)
+      {
+        ((ApolloMsgPlayController)localObject2).a(localQQAppInterface, localChatMessage, localArrayList, (ArrayList)localObject1);
+        localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+        if (localObject1 != null)
+        {
+          localObject1 = (QQMessageFacade)((AppRuntime)localObject1).getManager(19);
+          if (localObject1 != null) {
+            ((QQMessageFacade)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
+          }
+        }
+        return;
+      }
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$HeadViewLongClick != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$HeadViewLongClick.a();
-    }
-    ReportController.b(this.a.getActivity().app, "CliOper", "", "", "0X80072D1", "0X80072D1", 0, 0, "", "", "", "");
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zdq
  * JD-Core Version:    0.7.0.1
  */

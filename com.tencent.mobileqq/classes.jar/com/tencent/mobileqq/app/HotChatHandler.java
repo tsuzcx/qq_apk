@@ -91,8 +91,8 @@ import tencent.im.oidb.hotchat.oidb_0x8a8.ReqBody;
 import tencent.im.oidb.hotchat.oidb_0x8ab.ReqBody;
 import tencent.im.oidb.hotchat.oidb_0x8ab.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import zew;
-import zex;
+import zlx;
+import zly;
 
 public class HotChatHandler
   extends BusinessHandler
@@ -623,7 +623,7 @@ public class HotChatHandler
         bool3 = false;
         ((HotChatManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59)).a(paramToServiceMsg, bool2);
         if (bool2) {
-          new Handler(Looper.getMainLooper()).post(new zex(this, bool3, paramToServiceMsg));
+          new Handler(Looper.getMainLooper()).post(new zly(this, bool3, paramToServiceMsg));
         }
         a(1031, true, null);
         return;
@@ -1523,7 +1523,7 @@ public class HotChatHandler
           if (paramToServiceMsg.msg_kick_visitor.has()) {
             paramToServiceMsg = (oidb_0x823.KickPublicGroupVisitorRspBody)paramToServiceMsg.msg_kick_visitor.get();
           }
-          AddMessageHelper.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(str2), str4 + BaseApplicationImpl.getContext().getString(2131437329), 1, false, true);
+          AddMessageHelper.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(str2), str4 + BaseApplicationImpl.getContext().getString(2131437349), 1, false, true);
           a(1052, true, new Object[] { str1, Integer.valueOf(i), str3, null });
           if (QLog.isColorLevel()) {
             QLog.i("HotChatHandlerQ.hotchat.hotchat_kick_mem_by_global_admin", 2, "handleKickHotChatMemberByGlobalAmdminResp,result= " + i + ",groupuin=" + str1 + ",memberUin=" + str3 + ",strErr=" + null);
@@ -1632,7 +1632,7 @@ public class HotChatHandler
           paramToServiceMsg = null;
         }
       }
-      AddMessageHelper.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(str3), str4 + BaseApplicationImpl.getContext().getString(2131437329), 1, false, true);
+      AddMessageHelper.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(str3), str4 + BaseApplicationImpl.getContext().getString(2131437349), 1, false, true);
       a(1037, true, new Object[] { str1, Integer.valueOf(i), str2, paramToServiceMsg });
       if (QLog.isColorLevel()) {
         QLog.i("HotChatHandler", 2, "handleKickHotChatMemberResp,result= " + i + ",groupuin=" + str1 + ",memberUin=" + str2 + ",strErr=" + paramToServiceMsg);
@@ -2595,7 +2595,7 @@ public class HotChatHandler
       a(2);
     }
     if (SharedPreUtils.l(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), c())) {
-      ((WerewolvesHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(107)).a(new zew(this));
+      ((WerewolvesHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(107)).a(new zlx(this));
     }
   }
   
@@ -2804,7 +2804,7 @@ public class HotChatHandler
   
   public void b(String paramString1, String paramString2, String paramString3)
   {
-    AddMessageHelper.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramString1), paramString3 + BaseApplicationImpl.getContext().getString(2131437329), 1, false, true);
+    AddMessageHelper.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramString1), paramString3 + BaseApplicationImpl.getContext().getString(2131437349), 1, false, true);
     a(1037, true, new Object[] { paramString1, Integer.valueOf(0), paramString2, "" });
   }
   

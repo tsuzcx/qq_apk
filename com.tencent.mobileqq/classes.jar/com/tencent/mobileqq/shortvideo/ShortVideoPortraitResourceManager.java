@@ -13,7 +13,7 @@ import java.io.File;
 
 public class ShortVideoPortraitResourceManager
 {
-  private static String a = "Xiaomi;Redmi 4X;23|LGE;Nexus 5X;27|HUAWEI;CAM-UL00;23";
+  private static String a = "Xiaomi;Redmi 4X;23|LGE;Nexus 5X;27|HUAWEI;CAM-UL00;23|Meizu;M2 E;23";
   
   public static String a()
   {

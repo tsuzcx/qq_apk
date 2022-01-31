@@ -1,6 +1,6 @@
 package com.tencent.mqq;
 
-import akzj;
+import alhb;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -29,7 +29,7 @@ public class MqqImageLoader
       return;
     }
     paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
-    paramString.setURLDrawableListener(new akzj(this, paramListener));
+    paramString.setURLDrawableListener(new alhb(this, paramListener));
     paramString.startDownload();
   }
   

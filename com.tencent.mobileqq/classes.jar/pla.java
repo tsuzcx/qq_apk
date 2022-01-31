@@ -1,30 +1,69 @@
-import com.tencent.component.network.utils.http.pool.AbstractConnPool;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import org.apache.commons.logging.Log;
-import org.apache.http.conn.OperatedClientConnection;
-import org.apache.http.conn.routing.HttpRoute;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+import com.tencent.component.media.image.DecodeImageTask;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.ImageLoader.Options;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.image.ImageTaskTracer;
+import com.tencent.component.media.utils.ImageManagerLog;
 
 public class pla
-  extends AbstractConnPool
+  implements Comparable, Runnable
 {
-  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
-  private final long jdField_a_of_type_Long;
-  private final TimeUnit jdField_a_of_type_JavaUtilConcurrentTimeUnit;
-  private final Log jdField_a_of_type_OrgApacheCommonsLoggingLog;
+  private ImageKey jdField_a_of_type_ComTencentComponentMediaImageImageKey = null;
   
-  public pla(Log paramLog, int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit)
+  public pla(DecodeImageTask paramDecodeImageTask, ImageKey paramImageKey)
   {
-    super(new plb(), paramInt1, paramInt2);
-    this.jdField_a_of_type_OrgApacheCommonsLoggingLog = paramLog;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilConcurrentTimeUnit = paramTimeUnit;
+    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey = paramImageKey;
   }
   
-  protected plc a(HttpRoute paramHttpRoute, OperatedClientConnection paramOperatedClientConnection)
+  public int a(pla parampla)
   {
-    String str = Long.toString(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement());
-    return new plc(this.jdField_a_of_type_OrgApacheCommonsLoggingLog, str, paramHttpRoute, paramOperatedClientConnection, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilConcurrentTimeUnit);
+    if ((this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey != null) && (this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.options != null) && (this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.options.priority)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public void run()
+  {
+    System.currentTimeMillis();
+    if (this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey != null)
+    {
+      ImageTaskTracer.removeImageDecodeThreadPendingRecord(this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.hashCodeEx());
+      ImageTaskTracer.addImageDecodeThreadDecodingRecord(this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.hashCodeEx());
+    }
+    for (;;)
+    {
+      try
+      {
+        Drawable localDrawable = ImageManager.getInstance().a(this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey);
+        if (localDrawable == null) {
+          continue;
+        }
+        this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.setResult(11, new Object[] { localDrawable });
+      }
+      catch (Throwable localThrowable)
+      {
+        ImageManagerLog.e(DecodeImageTask.a(), Log.getStackTraceString(localThrowable));
+        if (this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.options == null) {
+          continue;
+        }
+        this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.options.errCode = ImageManager.getErrorString(this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey, 101);
+        this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.setResult(9, new Object[0]);
+        if (this.jdField_a_of_type_ComTencentComponentMediaImageImageKey == null) {
+          continue;
+        }
+        ImageTaskTracer.addImageDecodeFailedRecord(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.hashCodeEx());
+        ImageTaskTracer.removeImageDecodeThreadDecodingRecord(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.hashCodeEx());
+        continue;
+      }
+      System.currentTimeMillis();
+      ImageManager.getInstance().nocachedDeleteLocalFile(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey);
+      this.jdField_a_of_type_ComTencentComponentMediaImageImageKey = null;
+      return;
+      DecodeImageTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey);
+    }
   }
 }
 

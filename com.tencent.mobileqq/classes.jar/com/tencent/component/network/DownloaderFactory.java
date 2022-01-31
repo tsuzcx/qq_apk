@@ -15,8 +15,8 @@ import com.tencent.component.network.module.base.inter.IDownloadConfig;
 import com.tencent.component.network.module.base.inter.Log;
 import com.tencent.component.network.module.common.DnsService;
 import java.util.concurrent.Executor;
-import pje;
-import pjf;
+import pnw;
+import pnx;
 
 public class DownloaderFactory
 {
@@ -24,7 +24,7 @@ public class DownloaderFactory
   private static volatile DownloaderFactory mInstance = null;
   private Downloader mCommonDownloader;
   private Downloader mImageDownloader;
-  private FileHandler mImageFileHandler = new pje(this);
+  private FileHandler mImageFileHandler = new pnw(this);
   private PortConfigStrategy mPortConfig;
   protected IPStrategy pBackupIPConfig;
   protected IPStrategy pDirectIPConfig;
@@ -134,7 +134,7 @@ public class DownloaderFactory
     localDownloaderImpl.setUrlKeyGenerator(UrlKeyGenerator.b);
     localDownloaderImpl.setFileHandler(this.mImageFileHandler);
     localDownloaderImpl.enableResumeTransfer();
-    localDownloaderImpl.setContentHandler(new pjf(this));
+    localDownloaderImpl.setContentHandler(new pnx(this));
     this.mImageDownloader = localDownloaderImpl;
     return localDownloaderImpl;
   }

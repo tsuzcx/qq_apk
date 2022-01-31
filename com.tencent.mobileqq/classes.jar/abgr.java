@@ -1,17 +1,44 @@
-import com.tencent.mobileqq.armap.ArMapHandler;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.armap.ARMapActivity;
 import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog.POIExtarData;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class abgr
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public abgr(ARGridMapViewDialog paramARGridMapViewDialog, ARGridMapViewDialog.POIExtarData paramPOIExtarData) {}
+  public abgr(ARMapActivity paramARMapActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a.addObserver(ARGridMapViewDialog.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog));
-    ((ArMapHandler)this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$POIExtarData.b, this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$POIExtarData.a, null);
+    if (ARMapActivity.g(this.a)) {
+      return;
+    }
+    if (paramInt == 0) {
+      this.a.g();
+    }
+    for (;;)
+    {
+      ARMapActivity.f(this.a, true);
+      ARMapActivity.a(this.a).dismiss();
+      return;
+      if (paramInt == 1)
+      {
+        paramView = new Intent(this.a, QQBrowserActivity.class);
+        paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
+        paramView.putExtra("url", "https://wa.qq.com/help/rule.html");
+        this.a.startActivity(paramView);
+      }
+      else if (paramInt == 2)
+      {
+        paramView = new Intent(this.a, QQBrowserActivity.class);
+        paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
+        paramView.putExtra("url", "https://mma.qq.com/poi_feedback/index.html?_wv=1&poiid=10001");
+        this.a.startActivity(paramView);
+      }
+    }
   }
 }
 

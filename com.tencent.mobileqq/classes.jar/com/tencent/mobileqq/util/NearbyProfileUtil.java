@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import akah;
+import akhv;
 import android.os.Bundle;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,12 +26,12 @@ public class NearbyProfileUtil
   static
   {
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "男", "女" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130842855, 2130842862 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130842885, 2130842892 };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "保密", "单身", "恋爱中", "已婚" };
     c = new String[] { "", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
     d = new String[] { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
     e = new String[] { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130843136, 2130842312, 2130842312, 2130842312, 2130842936, 2130842936, 2130843152, 2130843152, 2130842754, 2130842754, 2130842754, 2130843136, 2130843136, 2130842990, 2130843136 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130843168, 2130842347, 2130842347, 2130842347, 2130842968, 2130842968, 2130843184, 2130843184, 2130842789, 2130842789, 2130842789, 2130843168, 2130843168, 2130843022, 2130843168 };
   }
   
   public static final int a(int paramInt)
@@ -98,7 +98,7 @@ public class NearbyProfileUtil
       if (localNearbyCardHandler == null) {
         break;
       }
-      paramQQAppInterface.a(new akah(localNearbyCardHandler, localBundle));
+      paramQQAppInterface.a(new akhv(localNearbyCardHandler, localBundle));
       return;
     }
   }
@@ -267,7 +267,7 @@ public class NearbyProfileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.NearbyProfileUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.DataReport;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleItem;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel.DoodlePanelListener;
 
-public final class rxg
-  implements DialogInterface.OnClickListener
+public class rxg
+  implements DoodlePanel.DoodlePanelListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public rxg(BaseChatPie paramBaseChatPie) {}
+  
+  public void a(Bitmap paramBitmap, DoodleItem paramDoodleItem, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    DataReport.b();
+    this.a.ai();
   }
 }
 

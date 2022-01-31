@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vashealth;
 
-import akki;
-import akkj;
+import akrx;
+import akry;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -44,7 +44,7 @@ public class StepAlarmReceiver
             break;
           }
         } while ((!SSOHttpUtils.a(2)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
-        ThreadManager.post(new akki(this), 5, null, true);
+        ThreadManager.post(new akrx(this), 5, null, true);
         return;
         if (!"action_sport_timer2".equals(paramContext)) {
           break;
@@ -59,12 +59,12 @@ public class StepAlarmReceiver
     if (!paramIntent.getBooleanExtra("VerifyResult", true)) {
       SSOHttpUtils.a(-1000, "verifyFailed");
     }
-    ThreadManager.post(new akkj(this), 5, null, true);
+    ThreadManager.post(new akry(this), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.StepAlarmReceiver
  * JD-Core Version:    0.7.0.1
  */

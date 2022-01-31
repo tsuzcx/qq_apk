@@ -1,30 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.widget.StoryNewGuideDialog;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
 
 public class aesi
   implements Runnable
 {
-  public aesi(StoryPlayController paramStoryPlayController) {}
+  public aesi(QQPlayerService paramQQPlayerService, QQPlayerService.QQPlayerCallback paramQQPlayerCallback, int paramInt) {}
   
   public void run()
   {
-    if ((StoryPlayController.a(this.a) != null) && (StoryPlayController.a(this.a).isShowing()))
-    {
-      if (((this.a.a instanceof Activity)) && ((StoryPlayController.b(this.a)) || (((Activity)this.a.a).isFinishing()))) {
-        StoryPlayController.a(this.a, null);
-      }
-    }
-    else {
-      return;
-    }
-    StoryPlayController.a(this.a).dismiss();
-    StoryPlayController.a(this.a, null);
+    this.jdField_a_of_type_ComTencentMobileqqMusicQQPlayerService$QQPlayerCallback.onPlayStateChanged(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesi
  * JD-Core Version:    0.7.0.1
  */

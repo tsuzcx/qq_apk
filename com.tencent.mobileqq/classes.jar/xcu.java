@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class xcu
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public xcu(CommonHbFragment paramCommonHbFragment) {}
+  public xcu(PhotoListActivity paramPhotoListActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CommonHbFragment.a(this.a);
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
   }
 }
 

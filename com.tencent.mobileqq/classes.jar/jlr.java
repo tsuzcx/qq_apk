@@ -1,24 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.ui.RedPacketGameView;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.AVLog;
+import com.tencent.av.camera.CameraObserver;
+import com.tencent.av.opengl.effects.EffectsRenderController;
 
 public class jlr
-  implements View.OnClickListener
+  extends CameraObserver
 {
-  public jlr(RedPacketGameView paramRedPacketGameView, AVActivity paramAVActivity) {}
+  public jlr(EffectsRenderController paramEffectsRenderController) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.a.v();
-    ((VideoAppInterface)this.jdField_a_of_type_ComTencentAvUiAVActivity.getAppRuntime()).a(new Object[] { Integer.valueOf(105), Boolean.valueOf(true) });
+    AVLog.c(EffectsRenderController.jdField_a_of_type_JavaLangString, "onAfterOpenCamera: " + paramBoolean + "|" + paramInt);
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4).sendToTarget();
+    }
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    AVLog.c(EffectsRenderController.jdField_a_of_type_JavaLangString, "onAfterReopenCamera: " + paramBoolean);
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4).sendToTarget();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jlr
  * JD-Core Version:    0.7.0.1
  */

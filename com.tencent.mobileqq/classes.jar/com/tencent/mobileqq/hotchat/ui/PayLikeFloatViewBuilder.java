@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotchat.ui;
 
-import adpo;
+import adxx;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -60,7 +60,7 @@ public class PayLikeFloatViewBuilder
     paramContext = new Bundle();
     localDownloadTask = new DownloadTask("http://pub.idqqimg.com/pc/misc/nearby_pay_zan_anim.png", new File(str + ".tmp"));
     localDownloadTask.b = 2;
-    ((DownloaderFactory)paramQQAppInterface.getManager(46)).a(1).a(localDownloadTask, new adpo(str), paramContext);
+    ((DownloaderFactory)paramQQAppInterface.getManager(46)).a(1).a(localDownloadTask, new adxx(str), paramContext);
     return null;
   }
   

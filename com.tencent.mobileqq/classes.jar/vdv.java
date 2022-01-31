@@ -1,19 +1,45 @@
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.QQStoryMsgHolder;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.StoryChatVideoView;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class vdv
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  vdv(vdu paramvdu) {}
+  vdv(vdt paramvdt, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Long localLong = (Long)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.a.getTag();
-    if ((localLong == null) || (localLong.longValue() != this.a.jdField_a_of_type_Long)) {
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    QQStoryItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.a, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.c, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a);
+    String str;
+    if (this.jdField_a_of_type_Vdt.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006)
+    {
+      str = this.jdField_a_of_type_Vdt.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      paramView = null;
+    }
+    for (;;)
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_Vdt.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Vdt.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vdt.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Vdt.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, str, true, this.jdField_a_of_type_Vdt.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
+      str = ChatActivityUtils.a(this.jdField_a_of_type_Vdt.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      paramView = str;
+      if (str == null) {
+        paramView = "";
+      }
+      ReportController.b(this.jdField_a_of_type_Vdt.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "13", paramView, "", "");
+      ReportController.b(this.jdField_a_of_type_Vdt.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
+      return;
+      paramView = this.jdField_a_of_type_Vdt.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      str = null;
+    }
   }
 }
 

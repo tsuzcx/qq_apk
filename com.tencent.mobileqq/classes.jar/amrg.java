@@ -1,29 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.CellInfo;
+import cooperation.comic.jsp.QQComicJsPlugin;
+import org.json.JSONObject;
 
-public final class amrg
-  implements Parcelable.Creator
+public class amrg
+  implements Runnable
 {
-  public LbsDataV2.CellInfo a(Parcel paramParcel)
-  {
-    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
-    if (paramParcel != null)
-    {
-      localCellInfo.mcc = paramParcel.readInt();
-      localCellInfo.mnc = paramParcel.readInt();
-      localCellInfo.lac = paramParcel.readInt();
-      localCellInfo.cellId = paramParcel.readInt();
-      localCellInfo.rssi = paramParcel.readInt();
-      localCellInfo.stationLat = paramParcel.readDouble();
-      localCellInfo.stationLon = paramParcel.readDouble();
-    }
-    return localCellInfo;
-  }
+  public amrg(QQComicJsPlugin paramQQComicJsPlugin, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
-  public LbsDataV2.CellInfo[] a(int paramInt)
+  public void run()
   {
-    return null;
+    this.jdField_a_of_type_CooperationComicJspQQComicJsPlugin.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.b);
   }
 }
 

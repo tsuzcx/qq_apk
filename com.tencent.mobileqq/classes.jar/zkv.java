@@ -1,35 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
+import mqq.os.MqqHandler;
 
 public class zkv
-  implements Runnable
+  extends MqqHandler
 {
-  public zkv(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public zkv(FriendListHandler paramFriendListHandler, Looper paramLooper)
   {
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.a.getApp()).edit();
-    localEditor.putString("LastScreenShotUri", "");
-    localEditor.commit();
-    this.a.o();
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      QQAppInterface.i(this.a).unregisterReceiver(QQAppInterface.b(this.a));
-      try
-      {
-        label58:
-        QQAppInterface.j(this.a).unregisterReceiver(QQAppInterface.c(this.a));
-        return;
-      }
-      catch (Exception localException1) {}
+    default: 
+      return;
     }
-    catch (Exception localException2)
-    {
-      break label58;
-    }
+    FriendListHandler.a(this.a);
   }
 }
 

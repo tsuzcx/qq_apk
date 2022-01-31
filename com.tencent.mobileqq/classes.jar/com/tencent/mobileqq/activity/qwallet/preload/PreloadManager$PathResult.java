@@ -22,6 +22,11 @@ public class PreloadManager$PathResult
   {
     return new PathResult(null, null, paramString);
   }
+  
+  public String toString()
+  {
+    return "PathResult{file='" + this.filePath + '\'' + ", folder='" + this.folderPath + '\'' + ", url='" + this.url + '\'' + '}';
+  }
 }
 
 

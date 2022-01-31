@@ -1,42 +1,21 @@
-import com.tencent.component.network.utils.thread.AsyncTask;
-import com.tencent.component.network.utils.thread.internel.ArrayDeque;
-import java.util.concurrent.Executor;
+import com.tencent.component.media.ImageManagerEnv;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.image.PoolParams;
+import com.tencent.component.media.image.PoolParams.BucketParams;
 
 public class plr
-  implements Executor
+  implements PoolParams
 {
-  final ArrayDeque jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque = new ArrayDeque();
-  Runnable jdField_a_of_type_JavaLangRunnable;
+  public plr(ImageManager paramImageManager) {}
   
-  protected void a()
+  public PoolParams.BucketParams getBucketParams(int paramInt)
   {
-    try
-    {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque.poll();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null) {
-        AsyncTask.a.execute(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      return;
-    }
-    finally {}
+    return new PoolParams.BucketParams(16384, ImageManagerEnv.g().getDecodeThreadNum(ImageManager.a()) + 2);
   }
   
-  public void execute(Runnable paramRunnable)
+  public int getBucketPoolSize()
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque.offer(new pls(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        a();
-      }
-      return;
-    }
-    finally
-    {
-      paramRunnable = finally;
-      throw paramRunnable;
-    }
+    return 1;
   }
 }
 

@@ -1,39 +1,22 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.widget.ActionSheet;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
 
-public class uzr
-  extends ClickableSpan
+class uzr
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public uzr(GrayTipsItemBuilder paramGrayTipsItemBuilder, int paramInt) {}
+  uzr(uzq paramuzq) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a instanceof Activity))
+    if (paramBitmap != null)
     {
-      paramView = ActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a);
-      paramView.b(2131436688);
-      paramView.c(2131433015);
-      paramView.a(new uzs(this, paramView));
-      paramView.show();
-      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a).getChatFragment().a();
-      if ((localBaseChatPie instanceof DiscussChatPie)) {
-        ((DiscussChatPie)localBaseChatPie).a = paramView;
-      }
+      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

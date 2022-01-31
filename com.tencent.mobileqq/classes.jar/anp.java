@@ -1,38 +1,26 @@
-import android.os.Bundle;
-import com.qq.im.poi.LbsPackManager;
-import com.qq.im.poi.LbsPackObserver;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.qq.im.poi.LbsPackPoiListActivity;
-import com.qq.im.poi.LbsPackPoiListAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.widget.XListView;
 
 public class anp
-  extends LbsPackObserver
+  implements Handler.Callback
 {
   public anp(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
   
-  public void onGetSendPOIList(boolean paramBoolean, Bundle paramBundle)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LbsPack", 2, "isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      paramBundle = LbsPackPoiListActivity.a(this.a).a();
-      if (paramBundle != null)
-      {
-        LbsPackPoiListActivity.a(this.a).clear();
-        LbsPackPoiListActivity.a(this.a).addAll(paramBundle);
-      }
-      if (LbsPackPoiListActivity.a(this.a) != null)
-      {
-        LbsPackPoiListActivity.a(this.a).a(LbsPackPoiListActivity.a(this.a));
-        this.a.a.sendEmptyMessageDelayed(101, 200L);
-      }
-      return;
+    default: 
+      return true;
+    case 100: 
+      this.a.a = false;
+      LbsPackPoiListActivity.a(this.a).springBackOverScrollHeaderView();
+      return true;
     }
-    this.a.a.sendEmptyMessage(101);
+    this.a.runOnUiThread(new anq(this));
+    return true;
   }
 }
 

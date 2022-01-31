@@ -1,22 +1,19 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
 
-public class swu
-  implements View.OnFocusChangeListener
+class swu
+  implements Runnable
 {
-  public swu(Leba paramLeba) {}
+  swu(swt paramswt, ExtensionInfo paramExtensionInfo) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      UniteSearchActivity.a(this.a.a(), null, 21, 0L, (HotWordSearchEntryDataModel.HotSearchItem)Leba.a(this.a).getTag(), 3);
-    }
+    this.jdField_a_of_type_Swt.a.b.setVisibility(0);
+    ((AvatarPendantManager)this.jdField_a_of_type_Swt.a.app.getManager(45)).a(this.jdField_a_of_type_Swt.a.a).a(this.jdField_a_of_type_Swt.a.b, 1, PendantInfo.d, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.uin, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
   }
 }
 

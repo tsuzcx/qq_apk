@@ -1,31 +1,22 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetMomentListCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyProfileCardMomentAdapter;
-import java.util.List;
+import com.tencent.mobileqq.nearby.FaceScoreCallBack;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
 
 public class afkp
-  implements NearbyMomentManager.GetMomentListCallback
+  extends FaceScoreCallBack
 {
-  public afkp(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public afkp(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel, long paramLong) {}
   
-  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
+  public void a(long paramLong1, long paramLong2)
   {
-    NearbyMomentFragment.a(this.a, false);
-    if (paramBoolean1)
+    if (this.jdField_a_of_type_Long == paramLong1)
     {
-      NearbyMomentFragment.b(this.a, paramBoolean2);
-      if (paramBoolean2) {
-        NearbyMomentFragment.a(this.a).setText("没有更多动态");
+      NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel).tinyId = paramLong2;
+      NearbyPeopleProfileActivity localNearbyPeopleProfileActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a;
+      if (!NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.j)) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.jdField_a_of_type_Long = paramLong2;
       }
-      NearbyMomentFragment.a(this.a, paramInt);
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        paramList = NearbyMomentFragment.a(this.a, paramList);
-        NearbyMomentFragment.a(this.a).addAll(paramList);
-        NearbyMomentFragment.a(this.a).b(paramList);
-        NearbyMomentFragment.a(this.a, paramList);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a(paramLong2);
     }
   }
 }

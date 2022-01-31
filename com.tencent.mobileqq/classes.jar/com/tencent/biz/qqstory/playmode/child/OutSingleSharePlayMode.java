@@ -12,12 +12,12 @@ import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nlb;
+import npl;
 
 public class OutSingleSharePlayMode
   extends CommentPlayMode
 {
-  private FriendListObserver b = new nlb(this);
+  private FriendListObserver b = new npl(this);
   
   public OutSingleSharePlayMode(int paramInt, StoryVideoPlayer paramStoryVideoPlayer, VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, Bundle paramBundle)
   {

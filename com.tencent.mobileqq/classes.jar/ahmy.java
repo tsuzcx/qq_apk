@@ -1,28 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.widget.Button;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 
 public class ahmy
   implements Runnable
 {
-  public ahmy(SplitEffectsCameraCaptureView paramSplitEffectsCameraCaptureView) {}
+  public ahmy(CameraCaptureFragment paramCameraCaptureFragment, boolean paramBoolean) {}
   
   public void run()
   {
-    while (SplitEffectsCameraCaptureView.a(this.a).size() > 0)
+    if (!CameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment))
     {
-      String str = (String)SplitEffectsCameraCaptureView.a(this.a).get(0);
-      if (!TextUtils.isEmpty(str))
-      {
-        FileUtils.d(str);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.cameracapture.SplitEffectsCameraCaptureView", 2, "deleteLastSegment()：deleteFilePath=" + str);
-        }
+      if (!this.jdField_a_of_type_Boolean) {
+        break label73;
       }
-      SplitEffectsCameraCaptureView.a(this.a).remove(0);
+      if (!CameraCaptureFragment.d(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setSelected(true);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.a.c(this.jdField_a_of_type_Boolean);
+        CameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment, false);
+      }
     }
+    return;
+    label73:
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setSelected(false);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.a.c(this.jdField_a_of_type_Boolean);
+    CameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment, false);
   }
 }
 

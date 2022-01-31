@@ -52,7 +52,7 @@ public class VoteLayer$VoteItem
     }
     paramCanvas.restore();
     if (this.j) {
-      DisplayUtil.a(paramCanvas, VoteLayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer), this, -1, 2130842006, 2130842013);
+      DisplayUtil.a(paramCanvas, VoteLayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer), this, -1, 2130842037, 2130842044);
     }
   }
 }

@@ -1,12 +1,21 @@
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginDownloader.OnPluginDownloadListner;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ConfigObserver;
+import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
 
 public class amxp
+  extends ConfigObserver
 {
-  private int jdField_a_of_type_Int;
-  private PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
-  private QZonePluginDownloader.OnPluginDownloadListner jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader$OnPluginDownloadListner;
-  private String jdField_a_of_type_JavaLangString;
+  public amxp(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
+  
+  protected void a(boolean paramBoolean, int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putInt("result", paramInt);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 3, localBundle);
+  }
 }
 
 

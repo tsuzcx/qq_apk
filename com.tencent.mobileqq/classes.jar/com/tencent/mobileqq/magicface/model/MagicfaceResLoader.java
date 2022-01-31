@@ -111,7 +111,7 @@ public class MagicfaceResLoader
     //   18: astore 5
     //   20: aload 8
     //   22: invokevirtual 101	java/io/File:exists	()Z
-    //   25: ifne +47 -> 72
+    //   25: ifne +51 -> 76
     //   28: new 96	java/io/File
     //   31: dup
     //   32: aload_1
@@ -124,112 +124,121 @@ public class MagicfaceResLoader
     //   47: invokevirtual 101	java/io/File:exists	()Z
     //   50: istore 4
     //   52: iload 4
-    //   54: ifne +18 -> 72
-    //   57: iconst_0
-    //   58: ifeq +11 -> 69
-    //   61: new 109	java/lang/NullPointerException
-    //   64: dup
-    //   65: invokespecial 110	java/lang/NullPointerException:<init>	()V
-    //   68: athrow
-    //   69: aload 6
-    //   71: areturn
-    //   72: new 112	java/io/FileInputStream
-    //   75: dup
-    //   76: aload 5
-    //   78: invokespecial 115	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   81: astore 5
-    //   83: aload 5
-    //   85: invokevirtual 120	java/io/InputStream:available	()I
-    //   88: istore_2
-    //   89: iload_2
-    //   90: newarray byte
-    //   92: astore_1
-    //   93: aload 5
-    //   95: aload_1
-    //   96: invokevirtual 124	java/io/InputStream:read	([B)I
-    //   99: istore_3
-    //   100: iload_3
-    //   101: iload_2
-    //   102: if_icmpeq +3 -> 105
-    //   105: aload 5
-    //   107: ifnull +8 -> 115
-    //   110: aload 5
-    //   112: invokevirtual 127	java/io/InputStream:close	()V
-    //   115: aload_1
-    //   116: areturn
-    //   117: astore_1
-    //   118: aconst_null
-    //   119: astore_1
-    //   120: aload_1
-    //   121: ifnull -52 -> 69
-    //   124: aload_1
-    //   125: invokevirtual 127	java/io/InputStream:close	()V
-    //   128: aconst_null
-    //   129: areturn
-    //   130: astore_1
-    //   131: aconst_null
-    //   132: areturn
-    //   133: astore_1
-    //   134: aconst_null
-    //   135: astore 5
-    //   137: aload 7
-    //   139: astore_1
-    //   140: aload_1
-    //   141: astore 6
-    //   143: aload 5
-    //   145: ifnull -76 -> 69
-    //   148: aload 5
-    //   150: invokevirtual 127	java/io/InputStream:close	()V
-    //   153: aload_1
-    //   154: areturn
-    //   155: astore 5
-    //   157: aload_1
-    //   158: areturn
-    //   159: astore_1
-    //   160: aconst_null
-    //   161: areturn
-    //   162: astore 5
-    //   164: goto -49 -> 115
+    //   54: ifne +22 -> 76
+    //   57: aload 6
+    //   59: astore 5
+    //   61: iconst_0
+    //   62: ifeq +11 -> 73
+    //   65: new 109	java/lang/NullPointerException
+    //   68: dup
+    //   69: invokespecial 110	java/lang/NullPointerException:<init>	()V
+    //   72: athrow
+    //   73: aload 5
+    //   75: areturn
+    //   76: new 112	java/io/FileInputStream
+    //   79: dup
+    //   80: aload 5
+    //   82: invokespecial 115	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   85: astore 5
+    //   87: aload 5
+    //   89: invokevirtual 120	java/io/InputStream:available	()I
+    //   92: istore_2
+    //   93: iload_2
+    //   94: newarray byte
+    //   96: astore_1
+    //   97: aload 5
+    //   99: aload_1
+    //   100: invokevirtual 124	java/io/InputStream:read	([B)I
+    //   103: istore_3
+    //   104: iload_3
+    //   105: iload_2
+    //   106: if_icmpeq +3 -> 109
+    //   109: aload 5
+    //   111: ifnull +8 -> 119
+    //   114: aload 5
+    //   116: invokevirtual 127	java/io/InputStream:close	()V
+    //   119: aload_1
+    //   120: areturn
+    //   121: astore_1
+    //   122: aconst_null
+    //   123: astore_1
+    //   124: aload 6
+    //   126: astore 5
+    //   128: aload_1
+    //   129: ifnull -56 -> 73
+    //   132: aload_1
+    //   133: invokevirtual 127	java/io/InputStream:close	()V
+    //   136: aconst_null
+    //   137: areturn
+    //   138: astore_1
+    //   139: aconst_null
+    //   140: areturn
+    //   141: astore_1
+    //   142: aconst_null
+    //   143: astore 6
+    //   145: aload 7
+    //   147: astore_1
+    //   148: aload_1
+    //   149: astore 5
+    //   151: aload 6
+    //   153: ifnull -80 -> 73
+    //   156: aload 6
+    //   158: invokevirtual 127	java/io/InputStream:close	()V
+    //   161: aload_1
+    //   162: areturn
+    //   163: astore 5
+    //   165: aload_1
+    //   166: areturn
     //   167: astore_1
-    //   168: aload 7
-    //   170: astore_1
-    //   171: goto -31 -> 140
-    //   174: astore 6
-    //   176: goto -36 -> 140
-    //   179: astore_1
-    //   180: aload 5
-    //   182: astore_1
-    //   183: goto -63 -> 120
+    //   168: aconst_null
+    //   169: areturn
+    //   170: astore 5
+    //   172: goto -53 -> 119
+    //   175: astore_1
+    //   176: aload 7
+    //   178: astore_1
+    //   179: aload 5
+    //   181: astore 6
+    //   183: goto -35 -> 148
+    //   186: astore 6
+    //   188: aload 5
+    //   190: astore 6
+    //   192: goto -44 -> 148
+    //   195: astore_1
+    //   196: aload 5
+    //   198: astore_1
+    //   199: goto -75 -> 124
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	186	0	this	MagicfaceResLoader
-    //   0	186	1	paramString	String
-    //   88	15	2	i	int
-    //   99	4	3	j	int
+    //   0	202	0	this	MagicfaceResLoader
+    //   0	202	1	paramString	String
+    //   92	15	2	i	int
+    //   103	4	3	j	int
     //   50	3	4	bool	boolean
-    //   18	131	5	localObject1	Object
-    //   155	1	5	localException1	java.lang.Exception
-    //   162	19	5	localException2	java.lang.Exception
-    //   4	138	6	localObject2	Object
-    //   174	1	6	localObject3	Object
-    //   1	168	7	localObject4	Object
+    //   18	132	5	localObject1	Object
+    //   163	1	5	localException1	java.lang.Exception
+    //   170	27	5	localException2	java.lang.Exception
+    //   4	178	6	localObject2	Object
+    //   186	1	6	localObject3	Object
+    //   190	1	6	localObject4	Object
+    //   1	176	7	localObject5	Object
     //   14	7	8	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   6	16	117	java/lang/Exception
-    //   20	52	117	java/lang/Exception
-    //   72	83	117	java/lang/Exception
-    //   124	128	130	java/lang/Exception
-    //   6	16	133	finally
-    //   20	52	133	finally
-    //   72	83	133	finally
-    //   148	153	155	java/lang/Exception
-    //   61	69	159	java/lang/Exception
-    //   110	115	162	java/lang/Exception
-    //   83	93	167	finally
-    //   93	100	174	finally
-    //   83	93	179	java/lang/Exception
-    //   93	100	179	java/lang/Exception
+    //   6	16	121	java/lang/Exception
+    //   20	52	121	java/lang/Exception
+    //   76	87	121	java/lang/Exception
+    //   132	136	138	java/lang/Exception
+    //   6	16	141	finally
+    //   20	52	141	finally
+    //   76	87	141	finally
+    //   156	161	163	java/lang/Exception
+    //   65	73	167	java/lang/Exception
+    //   114	119	170	java/lang/Exception
+    //   87	97	175	finally
+    //   97	104	186	finally
+    //   87	97	195	java/lang/Exception
+    //   97	104	195	java/lang/Exception
   }
   
   public MagicfaceData a(String paramString1, String paramString2)

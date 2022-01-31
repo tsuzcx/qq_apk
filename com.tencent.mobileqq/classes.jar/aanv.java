@@ -1,8 +1,17 @@
-import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
 
-public abstract interface aanv
+public class aanv
+  implements Runnable
 {
-  public abstract boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
+  public aanv(AREngine paramAREngine) {}
+  
+  public void run()
+  {
+    if (AREngine.a(this.a) != null) {
+      AREngine.a(this.a).a();
+    }
+  }
 }
 
 

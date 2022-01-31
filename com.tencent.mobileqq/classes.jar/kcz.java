@@ -1,27 +1,38 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageButton;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class kcz
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  public kcz(EffectFilterTextPager paramEffectFilterTextPager) {}
+  public kcz(VideoInviteActivity paramVideoInviteActivity, boolean paramBoolean) {}
   
-  public void run()
+  public void onDismiss()
   {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(1), Float.valueOf(this.a.jdField_a_of_type_Float), Float.valueOf(this.a.b) });
-      if (QLog.isColorLevel()) {
-        QLog.e("EffectFilterTextPager", 2, "[childLock] trigger animation");
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (str = "0X80043A4";; str = "0X80043B6")
+      {
+        ReportController.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+        if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
+        {
+          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setEnabled(true);
+          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
+        }
+        return;
       }
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+    for (String str = "0X80043AA";; str = "0X80043B0") {
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-import com.tencent.qidian.QidianManager;
+import android.os.Bundle;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
+import cooperation.qappcenter.remote.RemoteServiceProxy;
+import cooperation.qappcenter.remote.SendMsg;
 
 public class allr
   implements Runnable
 {
-  public allr(QidianManager paramQidianManager, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
+  public allr(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
   
   public void run()
   {
-    QidianManager.a(this.jdField_a_of_type_ComTencentQidianQidianManager, this.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo);
+    boolean bool = false;
+    if (this.jdField_a_of_type_JavaLangString.equals("1")) {
+      bool = true;
+    }
+    if (BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack) != null)
+    {
+      SendMsg localSendMsg = new SendMsg("changeLoadingTip");
+      localSendMsg.a.putBoolean("showLoadingView", bool);
+      BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack).b(localSendMsg);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     allr
  * JD-Core Version:    0.7.0.1
  */

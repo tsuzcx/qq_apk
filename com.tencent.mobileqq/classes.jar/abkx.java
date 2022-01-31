@@ -1,38 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.QQBroadcastReceiver;
 
 public class abkx
-  implements Runnable
+  extends QQBroadcastReceiver
 {
-  public abkx(BubbleDiyFetcher paramBubbleDiyFetcher, QQAppInterface paramQQAppInterface) {}
+  public abkx(ShopScanActivity paramShopScanActivity) {}
   
-  public void run()
+  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(BubbleDiyEntity.class, true, null, null, null, null, null, " 20 ");
-    if ((localList != null) && (localList.size() > 0))
+    if (paramIntent == null) {}
+    do
     {
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext())
-      {
-        BubbleDiyEntity localBubbleDiyEntity = (BubbleDiyEntity)localIterator.next();
-        if (!TextUtils.isEmpty(localBubbleDiyEntity.uinAndDiyId))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.diyText);
-          this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.convertToPasterMap());
-        }
-      }
+      return;
+      paramAppRuntime = paramIntent.getAction();
       if (QLog.isColorLevel()) {
-        QLog.i("BubbleDiyFetcher", 2, "initCacheFromDB, size: " + localList.size());
+        QLog.d("ShopScanActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
       }
-    }
+    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
+    ShopScanActivity.a(this.a);
   }
 }
 

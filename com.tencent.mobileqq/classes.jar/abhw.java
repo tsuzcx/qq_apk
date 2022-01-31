@@ -1,22 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.ARMapManager;
+import com.tencent.mobileqq.armap.ArMapInterface;
+import com.tencent.mobileqq.armap.RedPackRainCloudView;
 
 public class abhw
   implements Runnable
 {
-  public abhw(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  public abhw(ARMapActivity paramARMapActivity) {}
   
   public void run()
   {
-    if (ARMapLoadingActivity.a(this.a) >= 0L)
-    {
-      ARMapLoadingActivity.a(this.a).sendEmptyMessage(101);
-      return;
+    ARMapManager localARMapManager = (ARMapManager)this.a.app.getManager(209);
+    if ((localARMapManager != null) && (this.a.a != null)) {
+      this.a.a.a(localARMapManager.d());
     }
-    Message localMessage = ARMapLoadingActivity.a(this.a).obtainMessage(104);
-    localMessage.arg1 = 1;
-    ARMapLoadingActivity.a(this.a).sendMessage(localMessage);
   }
 }
 

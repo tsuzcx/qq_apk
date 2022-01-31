@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.freshnews;
 
-import adoj;
-import adok;
-import adol;
-import adom;
+import adwr;
+import adws;
+import adwt;
+import adwu;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -73,13 +73,13 @@ public class QQInputView
     this.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
     if (this.jdField_a_of_type_Int == 0)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new adok(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new adws(this));
       return;
     }
     InputMethodUtil.b(this.jdField_a_of_type_ComTencentWidgetXEditTextEx);
     if (this.c == this.d)
     {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new adol(this), 50L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new adwt(this), 50L);
       return;
     }
     this.jdField_a_of_type_Boolean = true;
@@ -87,13 +87,13 @@ public class QQInputView
   
   private void a(Context paramContext)
   {
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970353, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970368, this, true);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364075));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)super.findViewById(2131363497));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365527));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131366607));
-    this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar = ((InputBar)super.findViewById(2131363494));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364100));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)super.findViewById(2131363516));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365532));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131366605));
+    this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar = ((InputBar)super.findViewById(2131363513));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel = TroopBarPublishUtils.a(getContext(), this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentWidgetXEditTextEx, this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -123,7 +123,7 @@ public class QQInputView
   private void e()
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844545);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844609);
     if (AppSetting.b) {
       this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("键盘");
     }
@@ -242,7 +242,7 @@ public class QQInputView
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = false;
-        post(new adom(this));
+        post(new adwu(this));
       }
     }
     for (;;)
@@ -290,7 +290,7 @@ public class QQInputView
           }
         }
         if (this.jdField_a_of_type_ComTencentMobileqqFreshnewsQQInputView$IQQInputCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFreshnewsQQInputView$IQQInputCallback.aq_();
+          this.jdField_a_of_type_ComTencentMobileqqFreshnewsQQInputView$IQQInputCallback.as_();
         }
       }
       else if ((paramInt2 != this.f) && (this.jdField_a_of_type_ComTencentMobileqqFreshnewsQQInputView$IQQInputCallback != null))
@@ -305,7 +305,7 @@ public class QQInputView
   public void setCallback(QQInputView.IQQInputCallback paramIQQInputCallback)
   {
     this.jdField_a_of_type_ComTencentMobileqqFreshnewsQQInputView$IQQInputCallback = paramIQQInputCallback;
-    this.jdField_a_of_type_AndroidOsHandler.post(new adoj(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new adwr(this));
   }
   
   public void setContentMaxLength(int paramInt)

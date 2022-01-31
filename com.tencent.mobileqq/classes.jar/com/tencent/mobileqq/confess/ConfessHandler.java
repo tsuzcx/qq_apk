@@ -46,13 +46,13 @@ public class ConfessHandler
     }
     ConfessConfig.a(paramQQAppInterface, "redpoint_box_show", l1);
     ConfessMsgUtil.a(paramQQAppInterface, false, true);
-    paramQQAppInterface.a().a().d(AppConstants.aE, 1032);
+    paramQQAppInterface.a().a().d(AppConstants.aF, 1032);
     RecentUserProxy localRecentUserProxy = paramQQAppInterface.a().a();
-    RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.aE, 1032);
+    RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.aF, 1032);
     if (localRecentUser == null)
     {
       paramQQAppInterface = new RecentUser();
-      paramQQAppInterface.uin = AppConstants.aE;
+      paramQQAppInterface.uin = AppConstants.aF;
       paramQQAppInterface.type = 1032;
       paramQQAppInterface.lastmsgtime = l1;
       i = 1;
@@ -162,7 +162,7 @@ public class ConfessHandler
     if (QLog.isColorLevel()) {
       QLog.i("ConfessHandler", 2, "onNeedShowContactRedPoint");
     }
-    paramConfessConfig.b();
+    paramConfessConfig.c();
     ConfessConfig.a(paramQQAppInterface, "redpoint_contact_show", MessageCache.a());
     ((ConfessHandler)this.a.getBusinessHandler(125)).a(6, true, null);
   }
@@ -190,7 +190,7 @@ public class ConfessHandler
     if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;
     }
-    if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b(AppConstants.aE, 1032) != null)
+    if (this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b(AppConstants.aF, 1032) != null)
     {
       MqqHandler localMqqHandler = this.a.getHandler(Conversation.class);
       if (localMqqHandler != null) {
@@ -278,13 +278,13 @@ public class ConfessHandler
     if ((paramFrdConfessInfo != null) && (paramFrdConfessInfo.a()))
     {
       localRecentUserProxy = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-      localRecentUser2 = localRecentUserProxy.b(AppConstants.aE, 1032);
+      localRecentUser2 = localRecentUserProxy.b(AppConstants.aF, 1032);
       i = 0;
       if (localRecentUser2 != null) {
         break label123;
       }
       localRecentUser1 = new RecentUser();
-      localRecentUser1.uin = AppConstants.aE;
+      localRecentUser1.uin = AppConstants.aF;
       localRecentUser1.type = 1032;
       localRecentUser1.lastmsgtime = paramFrdConfessInfo.a;
       i = 1;

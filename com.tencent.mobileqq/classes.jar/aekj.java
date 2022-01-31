@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
 
 public class aekj
-  extends IQQPlayerCallback.Stub
+  implements Runnable
 {
-  public aekj(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public aekj(LightReplyMenuManager paramLightReplyMenuManager) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    MusicGeneWebViewPlugin.a(this.a, paramInt);
-    if (paramInt == 2) {
-      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).c());
-    }
-  }
-  
-  public void a(SongInfo paramSongInfo)
-  {
-    if (MusicGeneWebViewPlugin.a(this.a) != null) {
-      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).a());
+    if (this.a.a != null)
+    {
+      LightReplyMenuManager.b(this.a, this.a.a);
+      this.a.e();
     }
   }
 }

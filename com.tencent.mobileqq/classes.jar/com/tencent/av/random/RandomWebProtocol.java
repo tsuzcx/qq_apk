@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import jko;
-import jkp;
-import jkq;
-import jkr;
-import jks;
-import jkt;
-import jku;
+import jmr;
+import jms;
+import jmt;
+import jmu;
+import jmv;
+import jmw;
+import jmx;
 
 public class RandomWebProtocol
 {
@@ -23,14 +23,14 @@ public class RandomWebProtocol
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   public List a;
   private Map jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private jkq jdField_a_of_type_Jkq;
+  private jmt jdField_a_of_type_Jmt;
   
   RandomWebProtocol(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Jkq = new jkq(this);
+    this.jdField_a_of_type_Jmt = new jmt(this);
   }
   
   /* Error */
@@ -197,15 +197,15 @@ public class RandomWebProtocol
       if (b()) {
         QLog.w("RandomWebProtocol", 2, "[randomWeb]In Test Env");
       }
-      paramString = new jku(this, paramInt1, paramLong, paramInt2, paramString);
-      if ((jkp)this.jdField_a_of_type_JavaUtilMap.get(paramString.d) == null)
+      paramString = new jmx(this, paramInt1, paramLong, paramInt2, paramString);
+      if ((jms)this.jdField_a_of_type_JavaUtilMap.get(paramString.d) == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("RandomWebProtocol", 2, "[randomWeb][multiRoomOwner]sessionType(" + paramInt1 + ")");
         }
-        jkp localjkp = new jkp(this, paramString);
-        this.jdField_a_of_type_JavaUtilMap.put(paramString.d, localjkp);
-        localjkp.start();
+        jms localjms = new jms(this, paramString);
+        this.jdField_a_of_type_JavaUtilMap.put(paramString.d, localjms);
+        localjms.start();
       }
     }
   }
@@ -472,19 +472,19 @@ public class RandomWebProtocol
   
   public void a()
   {
-    jkp localjkp = (jkp)this.jdField_a_of_type_JavaUtilMap.get("[d] RequestDouble");
-    if (localjkp != null) {
-      localjkp.a();
+    jms localjms = (jms)this.jdField_a_of_type_JavaUtilMap.get("[d] RequestDouble");
+    if (localjms != null) {
+      localjms.a();
     }
-    localjkp = (jkp)this.jdField_a_of_type_JavaUtilMap.get("[m] RequestMulti");
-    if (localjkp != null) {
-      localjkp.a();
+    localjms = (jms)this.jdField_a_of_type_JavaUtilMap.get("[m] RequestMulti");
+    if (localjms != null) {
+      localjms.a();
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Jkq.b = paramInt;
+    this.jdField_a_of_type_Jmt.b = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
@@ -499,18 +499,18 @@ public class RandomWebProtocol
     if (bool) {}
     for (Object localObject = "https://play.mobile.qq.com/dchat_test/cgi-bin/chatplay/onechat";; localObject = "https://play.mobile.qq.com/dchat/cgi-bin/chatplay/onechat")
     {
-      paramVarArgs = new jkr(this, this.jdField_a_of_type_Jkq, (String)localObject, paramInt1, paramInt2, paramInt3, paramVarArgs);
-      localObject = (jkp)this.jdField_a_of_type_JavaUtilMap.get(paramVarArgs.d);
+      paramVarArgs = new jmu(this, this.jdField_a_of_type_Jmt, (String)localObject, paramInt1, paramInt2, paramInt3, paramVarArgs);
+      localObject = (jms)this.jdField_a_of_type_JavaUtilMap.get(paramVarArgs.d);
       if (localObject != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("RandomWebProtocol", 2, "[randomWeb] matchDouble: last matching not finished, dropped it!");
         }
-        ((jkp)localObject).a();
+        ((jms)localObject).a();
       }
-      localObject = new jkp(this, paramVarArgs);
+      localObject = new jms(this, paramVarArgs);
       this.jdField_a_of_type_JavaUtilMap.put(paramVarArgs.d, localObject);
-      ((jkp)localObject).start();
+      ((jms)localObject).start();
       return;
     }
   }
@@ -527,15 +527,15 @@ public class RandomWebProtocol
     if (bool) {}
     for (Object localObject = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/grouppull";; localObject = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/grouppull")
     {
-      localObject = new jkt(this, this.jdField_a_of_type_Jkq, (String)localObject, paramInt1, paramInt2, paramString, paramInt3, paramLong);
-      if ((jkp)this.jdField_a_of_type_JavaUtilMap.get(((jkt)localObject).d) != null) {
+      localObject = new jmw(this, this.jdField_a_of_type_Jmt, (String)localObject, paramInt1, paramInt2, paramString, paramInt3, paramLong);
+      if ((jms)this.jdField_a_of_type_JavaUtilMap.get(((jmw)localObject).d) != null) {
         break;
       }
       if (QLog.isColorLevel()) {
         QLog.d("RandomWebProtocol", 2, "[randomWeb][pullhead] ====== pullMulti ====== type(" + paramInt2 + "), uin(" + paramString + "), groupId(" + paramLong + "), gender(" + paramInt3 + ")");
       }
-      paramString = new jkp(this, (jkq)localObject);
-      this.jdField_a_of_type_JavaUtilMap.put(((jkt)localObject).d, paramString);
+      paramString = new jms(this, (jmt)localObject);
+      this.jdField_a_of_type_JavaUtilMap.put(((jmw)localObject).d, paramString);
       paramString.start();
       return;
     }
@@ -551,7 +551,7 @@ public class RandomWebProtocol
     if (QLog.isColorLevel()) {
       QLog.d("RandomWebProtocol", 2, "[randomWeb] ====== pullDouble ====== uin(" + paramString1 + "), url(" + paramString2 + ")");
     }
-    new jko(this, paramString2, paramString1).start();
+    new jmr(this, paramString2, paramString1).start();
   }
   
   public void a(boolean paramBoolean, int paramInt)
@@ -566,38 +566,38 @@ public class RandomWebProtocol
     if (bool) {}
     for (Object localObject = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/groupchat";; localObject = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/groupchat")
     {
-      localObject = new jks(this, this.jdField_a_of_type_Jkq, (String)localObject, paramBoolean, paramInt);
-      jkp localjkp = (jkp)this.jdField_a_of_type_JavaUtilMap.get(((jks)localObject).d);
-      if (localjkp != null)
+      localObject = new jmv(this, this.jdField_a_of_type_Jmt, (String)localObject, paramBoolean, paramInt);
+      jms localjms = (jms)this.jdField_a_of_type_JavaUtilMap.get(((jmv)localObject).d);
+      if (localjms != null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("RandomWebProtocol", 2, "[randomWeb] matchMulti~: last matching not finished, dropped it!");
         }
-        localjkp.a();
+        localjms.a();
       }
-      localjkp = new jkp(this, (jkq)localObject);
-      this.jdField_a_of_type_JavaUtilMap.put(((jks)localObject).d, localjkp);
-      localjkp.start();
+      localjms = new jms(this, (jmt)localObject);
+      this.jdField_a_of_type_JavaUtilMap.put(((jmv)localObject).d, localjms);
+      localjms.start();
       return;
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Jkq.b != -1;
+    return this.jdField_a_of_type_Jmt.b != -1;
   }
   
   public void b()
   {
-    jkp localjkp = (jkp)this.jdField_a_of_type_JavaUtilMap.get("[m] RequestMultiRoomOwner");
-    if (localjkp != null) {
-      localjkp.a();
+    jms localjms = (jms)this.jdField_a_of_type_JavaUtilMap.get("[m] RequestMultiRoomOwner");
+    if (localjms != null) {
+      localjms.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.random.RandomWebProtocol
  * JD-Core Version:    0.7.0.1
  */

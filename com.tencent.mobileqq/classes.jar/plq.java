@@ -1,28 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.component.network.utils.thread.AsyncTask;
+import com.tencent.component.media.image.ImageDefaultConfig;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.image.PoolParams;
+import com.tencent.component.media.image.PoolParams.BucketParams;
 
 public class plq
-  extends Handler
+  implements PoolParams
 {
-  public plq(Looper paramLooper)
+  public plq(ImageManager paramImageManager, boolean paramBoolean) {}
+  
+  public PoolParams.BucketParams getBucketParams(int paramInt)
   {
-    super(paramLooper);
+    if (this.jdField_a_of_type_Boolean) {
+      return new PoolParams.BucketParams(ImageDefaultConfig.BYTE_ARRAY_LOCAL[paramInt][1], ImageDefaultConfig.BYTE_ARRAY_LOCAL[paramInt][0]);
+    }
+    return new PoolParams.BucketParams(ImageDefaultConfig.BYTE_ARRAY[paramInt][1], ImageDefaultConfig.BYTE_ARRAY[paramInt][0]);
   }
   
-  public void handleMessage(Message paramMessage)
+  public int getBucketPoolSize()
   {
-    plo localplo = (plo)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      AsyncTask.b(localplo.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask, localplo.jdField_a_of_type_ArrayOfJavaLangObject[0]);
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      return ImageDefaultConfig.BYTE_ARRAY_LOCAL.length;
     }
-    localplo.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask.a(localplo.jdField_a_of_type_ArrayOfJavaLangObject);
+    return ImageDefaultConfig.BYTE_ARRAY.length;
   }
 }
 

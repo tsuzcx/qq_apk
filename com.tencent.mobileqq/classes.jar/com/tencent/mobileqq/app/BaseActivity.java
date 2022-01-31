@@ -73,13 +73,13 @@ import mqq.app.AppRuntime;
 import mqq.app.Foreground;
 import mqq.os.MqqHandler;
 import mqq.os.MqqInterceptHandler;
-import zad;
-import zae;
-import zaf;
-import zag;
-import zah;
-import zai;
-import zaj;
+import zhd;
+import zhe;
+import zhf;
+import zhg;
+import zhh;
+import zhi;
+import zhj;
 
 public class BaseActivity
   extends AppActivity
@@ -345,7 +345,7 @@ public class BaseActivity
     }
     if (!sSensorReady)
     {
-      ThreadManager.getSubThreadHandler().postDelayed(new zad(this), 300L);
+      ThreadManager.getSubThreadHandler().postDelayed(new zhd(this), 300L);
       sSensorReady = true;
     }
     if (isWrapContent())
@@ -440,7 +440,7 @@ public class BaseActivity
     if ((TextUtils.isEmpty((CharSequence)localObject)) || ("true".equals(localObject))) {}
     try
     {
-      localObject = new zag(this);
+      localObject = new zhg(this);
       ThreadManager.getSubThreadHandler().post((Runnable)localObject);
       return;
     }
@@ -522,7 +522,7 @@ public class BaseActivity
       }
       try
       {
-        localObject = new zaf(this);
+        localObject = new zhf(this);
         ThreadManager.getSubThreadHandler().post((Runnable)localObject);
         this.mIsStatusBarVisibilityNeedGone = false;
         if ((!isNeedInterruptDoMulitWindow()) && (this.mIsAttachedToWindow) && (isInMultiWindow()))
@@ -628,7 +628,7 @@ public class BaseActivity
           continue;
         }
         if (this.runnableRemoveNotification == null) {
-          this.runnableRemoveNotification = new zae(this);
+          this.runnableRemoveNotification = new zhe(this);
         }
         ThreadManager.getUIHandler().postDelayed(this.runnableRemoveNotification, 3000L);
         if ((!isNeedInterruptDoMulitWindow()) && (!this.mIsAttachedToWindow) && (isInMultiWindow()))
@@ -847,14 +847,14 @@ public class BaseActivity
     if (this.mSystemBarComp != null)
     {
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        this.mSystemBarComp.setStatusBarDrawable(getResources().getDrawable(2130843344));
+        this.mSystemBarComp.setStatusBarDrawable(getResources().getDrawable(2130843377));
       }
     }
     else {
       return;
     }
     this.mSystemBarComp.setStatusBarDrawable(null);
-    this.mSystemBarComp.setStatusBarColor(getResources().getColor(2131494254));
+    this.mSystemBarComp.setStatusBarColor(getResources().getColor(2131494260));
   }
   
   public void onPreThemeChanged() {}
@@ -899,14 +899,14 @@ public class BaseActivity
       getWindow().addFlags(67108864);
       if (this.mActNeedImmersive)
       {
-        int i = getResources().getColor(2131494254);
+        int i = getResources().getColor(2131494260);
         if (this.mSystemBarComp == null)
         {
           this.mSystemBarComp = new SystemBarCompact(this, true, i);
           if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
             break label88;
           }
-          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130843344));
+          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130843377));
         }
       }
     }
@@ -928,7 +928,7 @@ public class BaseActivity
   
   public String setLastActivityName()
   {
-    return getString(2131433698);
+    return getString(2131433712);
   }
   
   @TargetApi(11)
@@ -942,13 +942,13 @@ public class BaseActivity
         return;
         if (Build.VERSION.SDK_INT >= 21)
         {
-          zaj localzaj = new zaj(this);
+          zhj localzhj = new zhj(this);
           try
           {
             View localView = getWindow().getDecorView();
-            localView.setOnSystemUiVisibilityChangeListener(localzaj);
+            localView.setOnSystemUiVisibilityChangeListener(localzhj);
             if (localView.getSystemUiVisibility() != 0) {
-              localzaj.onSystemUiVisibilityChange(localView.getSystemUiVisibility());
+              localzhj.onSystemUiVisibilityChange(localView.getSystemUiVisibility());
             }
             if (QLog.isDevelopLevel())
             {
@@ -966,7 +966,7 @@ public class BaseActivity
   public void setStatusBarBlue()
   {
     if ((ThemeUtil.isDefaultOrDIYTheme(false)) && (this.mSystemBarComp != null)) {
-      this.mSystemBarComp.setStatusBarDrawable(getResources().getDrawable(2130843344));
+      this.mSystemBarComp.setStatusBarDrawable(getResources().getDrawable(2130843377));
     }
   }
   
@@ -1023,24 +1023,24 @@ public class BaseActivity
   
   public void turnOffShake()
   {
-    zai localzai = new zai(this);
+    zhi localzhi = new zhi(this);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      ThreadManager.getSubThreadHandler().post(localzai);
+      ThreadManager.getSubThreadHandler().post(localzhi);
       return;
     }
-    localzai.run();
+    localzhi.run();
   }
   
   public void turnOnShake()
   {
-    zah localzah = new zah(this);
+    zhh localzhh = new zhh(this);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      ThreadManager.getSubThreadHandler().post(localzah);
+      ThreadManager.getSubThreadHandler().post(localzhh);
       return;
     }
-    localzah.run();
+    localzhh.run();
   }
   
   public void updateAppRuntime()

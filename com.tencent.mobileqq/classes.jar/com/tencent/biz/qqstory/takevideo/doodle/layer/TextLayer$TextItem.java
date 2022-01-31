@@ -22,9 +22,9 @@ import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper;
 import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import oij;
-import oik;
-import oil;
+import omy;
+import omz;
+import ona;
 
 public class TextLayer$TextItem
   extends GestureHelper.ZoomItem
@@ -50,7 +50,7 @@ public class TextLayer$TextItem
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo = new TextInfo();
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.b = paramTextLayer.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131560262);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.b = paramTextLayer.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131560263);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.c = 2;
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.d = -1;
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
@@ -100,7 +100,7 @@ public class TextLayer$TextItem
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
       localValueAnimator.setDuration(270L);
-      localValueAnimator.addUpdateListener(new oij(this));
+      localValueAnimator.addUpdateListener(new omy(this));
       localValueAnimator.start();
     }
   }
@@ -148,7 +148,7 @@ public class TextLayer$TextItem
       if (!this.jdField_d_of_type_Boolean) {
         break;
       }
-      DisplayUtil.a(paramCanvas, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextLayer.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, 0, 2130842005, 2130842012);
+      DisplayUtil.a(paramCanvas, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextLayer.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, 0, 2130842036, 2130842043);
       return;
       this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
       paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
@@ -182,8 +182,8 @@ public class TextLayer$TextItem
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new oik(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new oil(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new omz(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new ona(this));
     }
     if (!this.jdField_c_of_type_Boolean) {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();

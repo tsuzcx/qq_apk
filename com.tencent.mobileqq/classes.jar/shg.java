@@ -1,30 +1,41 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troopshare.TroopShareUtility.OnShareListener;
+import com.tencent.mobileqq.util.TroopReportor;
 
 class shg
-  implements Runnable
+  implements TroopShareUtility.OnShareListener
 {
-  shg(she paramshe, boolean paramBoolean) {}
+  shg(shf paramshf) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    Conversation.a(this.jdField_a_of_type_She.a, 800L);
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.jdField_a_of_type_She.a.a != null)
+    String str1;
+    if ((this.a.a.d == 1) || (this.a.a.a.isMember))
     {
-      localPullRefreshHeader = this.jdField_a_of_type_She.a.a;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label66;
+      str1 = "";
+      switch (paramInt)
+      {
       }
     }
-    label66:
-    for (int i = 0;; i = 2)
+    while (TextUtils.isEmpty(str1))
     {
-      localPullRefreshHeader.a(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoMonitor", 2, "ConversationTab[onRefleshRecentListFinished_ui]");
-      }
+      return;
+      str1 = "share_circle";
+      continue;
+      str1 = "share_qq";
+      continue;
+      str1 = "share_qzone";
+      continue;
+      str1 = "share_wechat";
+    }
+    String str3 = this.a.a.a.troopUin;
+    String str4 = TroopReportor.a(this.a.a.a);
+    if (paramBoolean) {}
+    for (String str2 = "0";; str2 = "1")
+    {
+      TroopReportor.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
       return;
     }
   }

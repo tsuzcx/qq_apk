@@ -1,35 +1,49 @@
-import android.graphics.Rect;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotify;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotifyAd;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.widget.BounceScrollView;
-import com.tencent.mobileqq.widget.BounceScrollView.OnScrollChangedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.utils.ContactUtils;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
-public class oxu
-  implements BounceScrollView.OnScrollChangedListener
+class oxu
+  implements Runnable
 {
-  public oxu(TroopNewGuidePopWindow paramTroopNewGuidePopWindow) {}
+  oxu(oxs paramoxs, String paramString) {}
   
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd != null) && (this.a.d))
+    if (this.jdField_a_of_type_Oxs.a.isFinishing()) {
+      return;
+    }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      Rect localRect = new Rect();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getHitRect(localRect);
-      if (this.a.jdField_a_of_type_ComTencentImageURLImageView.getLocalVisibleRect(localRect))
-      {
-        this.a.d = false;
-        TroopBarUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd.a, 0, null, null);
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "exp_ad", 0, 0, this.a.b, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.a), "8020205751015455", "");
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopTipsPopWindow", 2, "onScrollChanged 广告图片可见-------------------------");
-        }
+      if (this.jdField_a_of_type_Oxs.a.jdField_c_of_type_Int == 2) {
+        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.jdField_a_of_type_Oxs.a.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Oxs.a.jdField_a_of_type_Int), "1" });
+      }
+      QRUtils.a(1, 2131430006);
+      return;
+    }
+    String str;
+    if (this.jdField_a_of_type_Oxs.a.jdField_c_of_type_Int == 2) {
+      if (this.jdField_a_of_type_Oxs.a.jdField_c_of_type_Boolean) {
+        str = this.jdField_a_of_type_Oxs.a.getString(2131429973, new Object[] { this.jdField_a_of_type_Oxs.a.jdField_a_of_type_JavaLangString });
+      }
+    }
+    for (;;)
+    {
+      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
+      localUserInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Oxs.a.app.getAccount();
+      localUserInfo.b = ContactUtils.j(this.jdField_a_of_type_Oxs.a.app, this.jdField_a_of_type_Oxs.a.app.getAccount());
+      QZoneHelper.a(this.jdField_a_of_type_Oxs.a, localUserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Oxs.a.getString(2131429970), str, 1);
+      return;
+      str = this.jdField_a_of_type_Oxs.a.getString(2131429972, new Object[] { this.jdField_a_of_type_Oxs.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Oxs.a.jdField_c_of_type_JavaLangString });
+      continue;
+      if (this.jdField_a_of_type_Oxs.a.jdField_c_of_type_Int == 5) {
+        str = this.jdField_a_of_type_Oxs.a.getString(2131429971, new Object[] { this.jdField_a_of_type_Oxs.a.jdField_a_of_type_JavaLangString });
+      } else {
+        str = this.jdField_a_of_type_Oxs.a.getString(2131429974);
       }
     }
   }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu;
 
-import abxy;
+import acfy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +11,7 @@ public class DoutuData
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abxy();
+  public static final Parcelable.Creator CREATOR = new acfy();
   public String pic_down_url;
   public int pic_height;
   public String pic_md5;

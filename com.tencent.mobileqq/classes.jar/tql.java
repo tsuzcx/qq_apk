@@ -1,31 +1,17 @@
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.data.Card;
 
-public class tql
-  extends MqqHandler
+class tql
+  implements Runnable
 {
-  public tql(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  tql(tqi paramtqi, Card paramCard) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    case 107: 
-    default: 
-      return;
-    case 106: 
-      this.a.finish();
-      return;
+    if (QQSettingMe.a(this.jdField_a_of_type_Tqi.a) != null) {
+      QQSettingMe.a(this.jdField_a_of_type_Tqi.a).a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
     }
-    int i = 0;
-    while (i < 6)
-    {
-      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
-      i += 1;
-    }
-    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
 }
 

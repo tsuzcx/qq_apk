@@ -1,28 +1,16 @@
-import com.tencent.image.URLImageView;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
-import com.tencent.qidian.data.PublicAccountItem;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Comparator;
 
-class almz
-  implements Runnable
+public class almz
+  implements Comparator
 {
-  almz(almx paramalmx, PublicAccountItem paramPublicAccountItem, URLImageView paramURLImageView) {}
-  
-  public void run()
+  public int a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int == 1) {}
-    for (String str = this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.c;; str = this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_JavaLangString)
-    {
-      this.jdField_a_of_type_Almx.a.a.put(this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_JavaLangString, new QidianProfileCardActivity.PaGroupStruct(this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int, str));
-      this.jdField_a_of_type_Almx.a.a(this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLImageView, str, false);
-      return;
-    }
+    return paramString1.compareTo(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     almz
  * JD-Core Version:    0.7.0.1
  */

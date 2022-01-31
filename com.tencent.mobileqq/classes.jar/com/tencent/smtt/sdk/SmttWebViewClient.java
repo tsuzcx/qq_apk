@@ -19,7 +19,6 @@ import com.tencent.smtt.export.external.interfaces.WebResourceError;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.export.external.proxy.X5ProxyWebViewClient;
-import com.tencent.smtt.utils.QBApkProcesser;
 import com.tencent.smtt.utils.TbsConfigFile;
 import com.tencent.smtt.utils.TbsLog;
 
@@ -251,12 +250,10 @@ class SmttWebViewClient
     if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null)) {}
     for (String str = paramWebResourceRequest.getUrl().toString();; str = null)
     {
-      if ((str == null) || (this.mWebView.showDebugView(str))) {}
-      do
-      {
+      if ((str == null) || (this.mWebView.showDebugView(str))) {
         return true;
-        this.mWebView.setX5WebView(paramIX5WebViewBase);
-      } while (QBApkProcesser.getInstance().hiJackUrl(this.mWebView.getContext().getApplicationContext(), str));
+      }
+      this.mWebView.setX5WebView(paramIX5WebViewBase);
       boolean bool = this.mClient.shouldOverrideUrlLoading(this.mWebView, paramWebResourceRequest);
       if (!bool)
       {
@@ -278,12 +275,10 @@ class SmttWebViewClient
   
   public boolean shouldOverrideUrlLoading(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
-    if ((paramString == null) || (this.mWebView.showDebugView(paramString))) {}
-    do
-    {
+    if ((paramString == null) || (this.mWebView.showDebugView(paramString))) {
       return true;
-      this.mWebView.setX5WebView(paramIX5WebViewBase);
-    } while (QBApkProcesser.getInstance().hiJackUrl(this.mWebView.getContext().getApplicationContext(), paramString));
+    }
+    this.mWebView.setX5WebView(paramIX5WebViewBase);
     boolean bool = this.mClient.shouldOverrideUrlLoading(this.mWebView, paramString);
     if (!bool)
     {

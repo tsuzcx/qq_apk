@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler;
-import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
 
-public class yrf
+public final class yrf
   implements Runnable
 {
-  public yrf(CmGameSubProcessHandler paramCmGameSubProcessHandler) {}
+  public yrf(ApolloRender paramApolloRender, View paramView) {}
   
   public void run()
   {
-    if (CmGameSubProcessHandler.a(this.a) != null) {
-      CmGameSubProcessHandler.a(this.a).a();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mShowEditWindow = true;
+    ApolloRender.setVisiblePopEidtor(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender);
   }
 }
 

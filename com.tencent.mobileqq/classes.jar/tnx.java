@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.widget.XEditTextEx;
 
-class tnx
-  implements Runnable
+public class tnx
+  implements View.OnTouchListener
 {
-  tnx(tnw paramtnw, String paramString) {}
+  public tnx(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QQSettingSettingActivity.a(this.jdField_a_of_type_Tnw.a, this.jdField_a_of_type_JavaLangString);
+    QQLSActivity.a(this.a).setCursorVisible(true);
+    return false;
   }
 }
 

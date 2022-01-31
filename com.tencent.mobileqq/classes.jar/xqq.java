@@ -1,14 +1,13 @@
-import android.os.Process;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
 
 public class xqq
   implements Runnable
 {
-  public xqq(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xqq(RecentOptPopBar paramRecentOptPopBar) {}
   
   public void run()
   {
-    Process.killProcess(Process.myPid());
+    this.a.g();
   }
 }
 

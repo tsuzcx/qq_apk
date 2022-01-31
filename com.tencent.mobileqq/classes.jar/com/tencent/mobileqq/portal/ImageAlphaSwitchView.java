@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.portal;
 
-import agmn;
+import agrc;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -46,7 +46,7 @@ public class ImageAlphaSwitchView
   
   private void a()
   {
-    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(255.0F), new agmn(this));
+    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(255.0F), new agrc(this));
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
     }

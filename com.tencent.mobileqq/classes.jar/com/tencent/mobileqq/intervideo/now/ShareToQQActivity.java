@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import advg;
-import advh;
+import aedq;
+import aedr;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -29,8 +29,8 @@ public class ShareToQQActivity
 {
   static boolean jdField_a_of_type_Boolean;
   public ProfileActivity.AllInOne a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new advg(this);
-  ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new advh(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new aedq(this);
+  ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new aedr(this);
   public String a;
   String b;
   private String c = "";
@@ -64,7 +64,7 @@ public class ShareToQQActivity
     String str = getIntent().getStringExtra("sourceFrom");
     if ((TextUtils.equals(this.c, "share_from_troop_member_card")) && (paramInt2 == -1))
     {
-      paramIntent.putExtra("selfSet_leftViewText", getString(2131433297));
+      paramIntent.putExtra("selfSet_leftViewText", getString(2131433311));
       new Intent(this, SplashActivity.class);
       localObject = AIOUtils.a(paramIntent, null);
       ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
@@ -182,7 +182,7 @@ public class ShareToQQActivity
         localObject = new MessageForQQStory();
         ((MessageForQQStory)localObject).coverImgUrl = paramBundle.getStringExtra("imageUrl");
         ((MessageForQQStory)localObject).brief = paramBundle.getStringExtra("summary");
-        ((MessageForQQStory)localObject).srcName = "日迹";
+        ((MessageForQQStory)localObject).srcName = "小视频";
         ((MessageForQQStory)localObject).srcAction = "mqqapi://qstory/opendiscovery?src_type=internal&version=1";
         ((MessageForQQStory)localObject).msgAction = String.format("mqqapi://now/openroom?src_type=app&version=1&roomid=%s&first=%d&bid=1&contentType=2&unionid=%s", new Object[] { Long.valueOf(paramBundle.getLongExtra("roomid", 0L)), Integer.valueOf(2), paramBundle.getStringExtra("unionid") });
         ((MessageForQQStory)localObject).authorName = paramBundle.getStringExtra("anchorname");

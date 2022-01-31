@@ -1,21 +1,28 @@
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-class ygt
-  implements Runnable
+public class ygt
+  implements ChatActivityUtils.StartVideoListener
 {
-  ygt(ygs paramygs, TextView paramTextView, int paramInt) {}
+  public ygt(SelectMemberActivity paramSelectMemberActivity, Intent paramIntent) {}
   
-  public void run()
+  public void a() {}
+  
+  public void b()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetTextView.getWidth();
-    int j = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(new LinearLayout.LayoutParams(i - j, -2));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.g = 2;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ygt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,24 @@
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
 public class aklx
-  implements Runnable
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public aklx(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public aklx(int paramInt, WebProcessManager.WebProcessStartListener paramWebProcessStartListener)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebProcessStartListener);
-  }
-  
-  public void run()
-  {
-    WebProcessManager.WebProcessStartListener localWebProcessStartListener = (WebProcessManager.WebProcessStartListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!WebProcessManager.c())
-    {
-      WebProcessManager.b(true);
-      WebProcessManager.a(false);
-      WebProcessManager.b(this.jdField_a_of_type_Int);
-      if (localWebProcessStartListener != null) {
-        localWebProcessStartListener.a(true);
-      }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
     }
-    while (localWebProcessStartListener == null) {
-      return;
-    }
-    localWebProcessStartListener.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aklx
  * JD-Core Version:    0.7.0.1
  */

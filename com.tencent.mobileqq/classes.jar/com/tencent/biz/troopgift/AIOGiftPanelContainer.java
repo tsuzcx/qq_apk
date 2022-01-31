@@ -21,7 +21,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopGiftManager;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import com.tencent.mobileqq.widget.TabBarView;
-import oyq;
+import pdi;
 
 public class AIOGiftPanelContainer
 {
@@ -82,7 +82,7 @@ public class AIOGiftPanelContainer
   
   public void a(int paramInt1, int paramInt2)
   {
-    ThreadManager.post(new oyq(this, paramInt2, paramInt1), 8, null, true);
+    ThreadManager.post(new pdi(this, paramInt2, paramInt1), 8, null, true);
   }
   
   public void a(boolean paramBoolean, int paramInt)

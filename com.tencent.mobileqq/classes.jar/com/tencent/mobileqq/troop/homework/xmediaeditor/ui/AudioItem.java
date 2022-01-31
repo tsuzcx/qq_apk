@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import ajkq;
-import ajks;
-import ajkt;
-import ajku;
-import ajkv;
+import ajsc;
+import ajse;
+import ajsf;
+import ajsg;
+import ajsh;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -31,11 +31,11 @@ import java.io.File;
 public class AudioItem
   extends UploadEditItem
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ajku(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ajsg(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   private AudioInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo;
-  private VoicePlayer.VoicePlayerListener jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer$VoicePlayerListener = new ajkt(this);
+  private VoicePlayer.VoicePlayerListener jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer$VoicePlayerListener = new ajsf(this);
   private VoicePlayer jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
   boolean jdField_a_of_type_Boolean = false;
   private boolean b;
@@ -79,20 +79,20 @@ public class AudioItem
       paramAudioInfo.start();
       return;
     }
-    localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843903);
+    localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843969);
   }
   
   private void h(AudioInfo paramAudioInfo)
   {
     TroopHomeworkHelper.UploadFileTask localUploadFileTask = new TroopHomeworkHelper.UploadFileTask(PlayModeUtils.a(), paramAudioInfo.jdField_a_of_type_JavaLangString, paramAudioInfo.jdField_c_of_type_JavaLangString);
-    localUploadFileTask.a(new ajkv(this, paramAudioInfo));
+    localUploadFileTask.a(new ajsh(this, paramAudioInfo));
     paramAudioInfo.g = 1;
-    ThreadManager.post(new ajks(this, localUploadFileTask), 8, null, true);
+    ThreadManager.post(new ajse(this, localUploadFileTask), 8, null, true);
   }
   
   public AudioItem.AudioViewHolder a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = new AudioItem.AudioViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970648, paramViewGroup, false));
+    paramViewGroup = new AudioItem.AudioViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970661, paramViewGroup, false));
     b(paramViewGroup.b, paramViewGroup);
     b(paramViewGroup.c, paramViewGroup);
     b(paramViewGroup.jdField_a_of_type_AndroidViewView, paramViewGroup);
@@ -195,7 +195,7 @@ public class AudioItem
         paramAudioViewHolder.c.setVisibility(4);
       }
     }
-    paramAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843903);
+    paramAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843969);
   }
   
   public void b(AudioInfo paramAudioInfo)
@@ -221,7 +221,7 @@ public class AudioItem
     }
     return;
     label93:
-    localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843903);
+    localAudioViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843969);
   }
   
   public void c(AudioInfo paramAudioInfo)
@@ -237,7 +237,7 @@ public class AudioItem
       QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131427563), 0).a();
       return;
     }
-    ThreadManager.post(new ajkq(this, paramAudioInfo), 8, null, true);
+    ThreadManager.post(new ajsc(this, paramAudioInfo), 8, null, true);
   }
   
   public void d(AudioInfo paramAudioInfo)
@@ -262,7 +262,7 @@ public class AudioItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem
  * JD-Core Version:    0.7.0.1
  */

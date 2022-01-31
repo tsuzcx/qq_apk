@@ -2,13 +2,13 @@ package com.tencent.mobileqq.activity.qwallet.voice;
 
 public abstract interface RecordMicView$StatusListener
 {
+  public abstract void a();
+  
   public abstract void b();
   
-  public abstract void c();
+  public abstract void d();
   
   public abstract void e();
-  
-  public abstract void f();
 }
 
 

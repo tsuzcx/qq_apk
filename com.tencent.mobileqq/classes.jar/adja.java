@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class adja
-  implements Runnable
+public final class adja
+  implements Parcelable.Creator
 {
-  public adja(QfileHorizontalListView paramQfileHorizontalListView) {}
-  
-  public void run()
+  public WeiYunFileInfo a(Parcel paramParcel)
   {
-    this.a.requestLayout();
+    return new WeiYunFileInfo(paramParcel);
+  }
+  
+  public WeiYunFileInfo[] a(int paramInt)
+  {
+    return new WeiYunFileInfo[paramInt];
   }
 }
 

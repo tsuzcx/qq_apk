@@ -1,51 +1,89 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
-import com.tencent.biz.troop.VideoCombineHelper.Task;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Parcelable;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import com.tencent.biz.qrcode.CodeMaskManager.Callback;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class owy
-  extends VideoCombineHelper.TaskListener
+public class owy
+  extends Thread
 {
-  owy(owx paramowx)
+  Bundle jdField_a_of_type_AndroidOsBundle;
+  CodeMaskManager.Callback jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  
+  public owy(CodeMaskManager paramCodeMaskManager, CodeMaskManager.Callback paramCallback, Bundle paramBundle)
   {
-    super(paramowx.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper);
+    super("qr_code_mask_prepare_thread");
+    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback = paramCallback;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public void a(VideoCombineHelper.Task paramTask)
+  Bundle a()
   {
-    do
+    try
     {
-      synchronized (this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_JavaLangObject)
+      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrsz"))
       {
-        this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_JavaUtilHashMap.remove(paramTask.c);
-        if ((paramTask instanceof oxm))
-        {
-          this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "download failed! msg = " + paramTask.d);
-          return;
+        Object localObject1 = ((QRDisplayActivity)this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidAppActivity).a();
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
+        if (!bool) {
+          try
+          {
+            localObject1 = QRUtils.a((String)localObject1, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
+            if (localObject1 == null) {
+              return null;
+            }
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              localObject2 = null;
+            }
+          }
         }
       }
-      if ((paramTask instanceof oxe))
+      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("bkgUrl"))
       {
-        this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "combine failed! msg = " + paramTask.d);
-        return;
+        localObject2 = CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager, this.jdField_a_of_type_AndroidOsBundle.getString("bkgUrl"));
+        this.jdField_a_of_type_AndroidOsBundle.putParcelable("bkg", (Parcelable)localObject2);
+        this.jdField_a_of_type_AndroidOsBundle.remove("bkgUrl");
       }
-    } while (!(paramTask instanceof oxp));
-    this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "sending failed! msg = " + paramTask.d);
+      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrbkgUrl"))
+      {
+        localObject2 = CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager, this.jdField_a_of_type_AndroidOsBundle.getString("qrbkgUrl"));
+        this.jdField_a_of_type_AndroidOsBundle.putParcelable("qrbkg", (Parcelable)localObject2);
+        this.jdField_a_of_type_AndroidOsBundle.remove("qrbkgUrl");
+      }
+      Object localObject2 = this.jdField_a_of_type_AndroidOsBundle;
+      return localObject2;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CodeMaskManager", 2, localOutOfMemoryError.getMessage());
+      }
+      System.gc();
+      return null;
+    }
+    catch (IOException localIOException)
+    {
+      label184:
+      break label184;
+    }
   }
   
-  public void b(VideoCombineHelper.Task paramTask)
+  public void run()
   {
-    VideoCombineHelper.CombineParams localCombineParams = paramTask.a();
-    if (((paramTask instanceof oxe)) || (localCombineParams.b)) {}
-    synchronized (this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_JavaUtilHashMap.remove(paramTask.c);
-      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(localCombineParams.e, true, "seding success");
-      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
-      return;
+    Bundle localBundle = a();
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+      this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.jdField_a_of_type_AndroidOsHandler.post(new owz(this, localBundle));
     }
   }
 }

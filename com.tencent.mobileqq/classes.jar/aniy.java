@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.setting.ICameraEntrance;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-class aniy
-  implements DialogInterface.OnClickListener
+public class aniy
+  implements FileFilter
 {
-  aniy(anix paramanix) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean accept(File paramFile)
   {
-    this.a.a.a.a(2);
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aniy
  * JD-Core Version:    0.7.0.1
  */

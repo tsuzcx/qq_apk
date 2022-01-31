@@ -1,11 +1,11 @@
 package cooperation.qzone.webviewplugin;
 
-import andr;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import ands;
+import anlr;
+import anls;
 import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
@@ -99,7 +99,7 @@ public class QzoneZipCacheHelper
         return false;
       }
       label274:
-      ThreadManager.postDownLoadTask(new ands(paramString2, str, paramInt, paramString1, paramAppInterface), 2, null, false);
+      ThreadManager.postDownLoadTask(new anls(paramString2, str, paramInt, paramString1, paramAppInterface), 2, null, false);
       continue;
       label300:
       return true;
@@ -274,7 +274,7 @@ public class QzoneZipCacheHelper
   
   private static void updateLruFileInNewThread(String paramString1, String paramString2)
   {
-    PriorityThreadPool.getDefault().submit(new andr(paramString1, paramString2), PriorityThreadPool.Priority.LOW);
+    PriorityThreadPool.getDefault().submit(new anlr(paramString1, paramString2), PriorityThreadPool.Priority.LOW);
   }
 }
 

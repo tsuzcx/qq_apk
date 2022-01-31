@@ -22,20 +22,22 @@ public class ETParagraph
   private boolean jdField_d_of_type_Boolean;
   private int e;
   private int f;
+  private int g;
   
-  public ETParagraph(QQText.EmoticonSpan paramEmoticonSpan, int paramInt1, int paramInt2, boolean paramBoolean)
+  public ETParagraph(QQText.EmoticonSpan paramEmoticonSpan, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqTextQQText$EmoticonSpan = paramEmoticonSpan;
-    this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
     this.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt1;
   }
   
   public ETParagraph(String paramString, int paramInt1, int paramInt2, ETFont paramETFont, boolean paramBoolean)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
     this.jdField_a_of_type_ComEtrumpMixlayoutETFont = paramETFont;
     this.jdField_d_of_type_Boolean = paramBoolean;
   }
@@ -45,7 +47,7 @@ public class ETParagraph
     if ((paramString == null) || (paramString.length() <= 0)) {
       return 0;
     }
-    long l = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_textLayoutLock(paramString, this.e, 1073741823, this.f, 0, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+    long l = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_textLayoutLock(paramString, this.f, 1073741823, this.g, 0, this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
     int j = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_textLayoutLineTotal(l);
     if (j < 1)
     {
@@ -55,12 +57,12 @@ public class ETParagraph
     if (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_textLayoutHasPreLine(l) == true)
     {
       localObject = new ETFragment("");
-      ((ETFragment)localObject).c(this.jdField_d_of_type_Int);
-      ((ETFragment)localObject).d(0);
+      ((ETFragment)localObject).d(this.e);
+      ((ETFragment)localObject).e(0);
       ((ETFragment)localObject).a(this);
       this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      this.f = 0;
-      this.jdField_d_of_type_Int += 1;
+      this.g = 0;
+      this.e += 1;
     }
     Object localObject = new ETFragment[j];
     int i = 0;
@@ -77,10 +79,10 @@ public class ETParagraph
       int n = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_textLayoutLineWidth(l, i);
       int i1 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_textLayoutLineHeight(l, i);
       localObject[i].a(paramString.substring(k, m));
-      localObject[i].a(n);
-      localObject[i].b(i1);
-      localObject[i].c(this.jdField_d_of_type_Int + i);
-      localObject[i].d(0);
+      localObject[i].b(n);
+      localObject[i].c(i1);
+      localObject[i].d(this.e + i);
+      localObject[i].e(0);
       localObject[i].a(this);
       this.jdField_a_of_type_JavaUtilArrayList.add(localObject[i]);
       i += 1;
@@ -88,65 +90,23 @@ public class ETParagraph
     if (paramString.substring(paramString.length() - 1).equals("\n"))
     {
       paramString = new ETFragment("");
-      paramString.c(this.jdField_d_of_type_Int);
-      paramString.d(0);
+      paramString.d(this.e);
+      paramString.e(0);
       paramString.a(this);
       this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      this.f = 0;
-      this.jdField_d_of_type_Int += 1;
+      this.g = 0;
+      this.e += 1;
     }
     if (j == 1) {}
-    for (this.f += localObject[0].a();; this.f = localObject[(j - 1)].a())
+    for (this.g += localObject[0].c();; this.g = localObject[(j - 1)].c())
     {
-      this.jdField_d_of_type_Int += j - 1;
+      this.e += j - 1;
       this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_textLayoutUnlock(l);
       return j;
     }
   }
   
-  private void a(QQText.EmoticonSpan paramEmoticonSpan)
-  {
-    if (paramEmoticonSpan == null) {
-      return;
-    }
-    Rect localRect = paramEmoticonSpan.a().getBounds();
-    if (this.jdField_b_of_type_Boolean == true) {
-      if (this.f != 0)
-      {
-        this.f = localRect.width();
-        this.jdField_d_of_type_Int += 1;
-      }
-    }
-    for (;;)
-    {
-      paramEmoticonSpan = new ETFragment(paramEmoticonSpan);
-      paramEmoticonSpan.c(this.jdField_d_of_type_Int);
-      paramEmoticonSpan.a(this);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramEmoticonSpan);
-      if ((this.jdField_b_of_type_Boolean != true) || (this.f == 0)) {
-        break;
-      }
-      this.f = 0;
-      this.jdField_d_of_type_Int += 1;
-      return;
-      if (this.f == 0)
-      {
-        this.f = localRect.width();
-      }
-      else if (this.e < localRect.width() + this.f)
-      {
-        this.f = localRect.width();
-        this.jdField_d_of_type_Int += 1;
-      }
-      else
-      {
-        int i = this.f;
-        this.f = (localRect.width() + i);
-      }
-    }
-  }
-  
-  private void a(String paramString)
+  private void a()
   {
     int k = -1;
     int n = this.jdField_a_of_type_JavaLangString.length();
@@ -158,7 +118,7 @@ public class ETParagraph
       if ((Character.isHighSurrogate(this.jdField_a_of_type_JavaLangString.charAt(j))) && (j + 1 < n) && (Character.isLowSurrogate(this.jdField_a_of_type_JavaLangString.charAt(j + 1))))
       {
         a(this.jdField_a_of_type_JavaLangString.substring(k + 1, j));
-        c(this.jdField_a_of_type_JavaLangString.substring(j, j + 2));
+        a(this.jdField_a_of_type_JavaLangString.substring(j, j + 2));
         m = j + 1;
         i = m;
       }
@@ -179,7 +139,75 @@ public class ETParagraph
     }
   }
   
-  private void b(String paramString)
+  private void a(QQText.EmoticonSpan paramEmoticonSpan, int paramInt)
+  {
+    if (paramEmoticonSpan == null) {
+      return;
+    }
+    Rect localRect = paramEmoticonSpan.a().getBounds();
+    if (this.jdField_b_of_type_Boolean == true) {
+      if (this.g != 0)
+      {
+        this.g = localRect.width();
+        this.e += 1;
+      }
+    }
+    for (;;)
+    {
+      paramEmoticonSpan = new ETFragment(paramEmoticonSpan, paramInt);
+      paramEmoticonSpan.d(this.e);
+      paramEmoticonSpan.a(this);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramEmoticonSpan);
+      if ((this.jdField_b_of_type_Boolean != true) || (this.g == 0)) {
+        break;
+      }
+      this.g = 0;
+      this.e += 1;
+      return;
+      if (this.g == 0)
+      {
+        this.g = localRect.width();
+      }
+      else if (this.f < localRect.width() + this.g)
+      {
+        this.g = localRect.width();
+        this.e += 1;
+      }
+      else
+      {
+        int i = this.g;
+        this.g = (localRect.width() + i);
+      }
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    int i = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.sysMeasureText(paramString, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.getSize(), 0, 0, 0, 0, 0, 0, 0);
+    int j = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.sysFontHeight(paramString, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.getSize(), 0, 0, 0, 0, 0, 0, 0);
+    if (this.f < this.g + i)
+    {
+      this.g = i;
+      this.e += 1;
+    }
+    for (;;)
+    {
+      paramString = new ETFragment(paramString);
+      paramString.b(i);
+      paramString.c(j);
+      paramString.d(this.e);
+      paramString.e(1);
+      paramString.a(this);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      return;
+      this.g += i;
+    }
+  }
+  
+  private void b()
   {
     int m = -1;
     int n = this.jdField_a_of_type_JavaLangString.length();
@@ -192,7 +220,7 @@ public class ETParagraph
       if ((Character.isHighSurrogate(c1)) && (i + 1 < n) && (Character.isLowSurrogate(this.jdField_a_of_type_JavaLangString.charAt(i + 1))))
       {
         a(this.jdField_a_of_type_JavaLangString.substring(m + 1, i));
-        c(this.jdField_a_of_type_JavaLangString.substring(i, i + 2));
+        a(this.jdField_a_of_type_JavaLangString.substring(i, i + 2));
         k = i + 1;
         j = k;
       }
@@ -204,7 +232,7 @@ public class ETParagraph
         if (!this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isPaintableChar(c1, this.jdField_a_of_type_ComEtrumpMixlayoutETFont))
         {
           a(this.jdField_a_of_type_JavaLangString.substring(m + 1, i));
-          c(String.valueOf(c1));
+          a(String.valueOf(c1));
           j = i;
           k = i;
         }
@@ -223,58 +251,32 @@ public class ETParagraph
     }
   }
   
-  private void c(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    int i = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.sysMeasureText(paramString, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.getSize(), 0, 0, 0, 0, 0, 0, 0);
-    int j = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.sysFontHeight(paramString, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.getSize(), 0, 0, 0, 0, 0, 0, 0);
-    if (this.e < this.f + i)
-    {
-      this.f = i;
-      this.jdField_d_of_type_Int += 1;
-    }
-    for (;;)
-    {
-      paramString = new ETFragment(paramString);
-      paramString.a(i);
-      paramString.b(j);
-      paramString.c(this.jdField_d_of_type_Int);
-      paramString.d(1);
-      paramString.a(this);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      return;
-      this.f += i;
-    }
-  }
-  
   protected int a()
   {
-    return this.f;
+    return this.g;
   }
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_d_of_type_Int = paramInt3;
-    this.e = paramInt1;
-    this.f = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt1;
+    this.g = paramInt2;
     if (this.jdField_a_of_type_ComTencentMobileqqTextQQText$EmoticonSpan != null)
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqTextQQText$EmoticonSpan);
-      return this.jdField_d_of_type_Int;
+      a(this.jdField_a_of_type_ComTencentMobileqqTextQQText$EmoticonSpan, this.jdField_a_of_type_Int);
+      return this.e;
     }
     if ((this.jdField_a_of_type_ComEtrumpMixlayoutETEngine == null) || (this.jdField_a_of_type_JavaLangString == null)) {
-      return this.jdField_d_of_type_Int;
+      return this.e;
     }
     if (ETEngine.getInstance().isEnableCallbackDrawing()) {
-      a(this.jdField_a_of_type_JavaLangString);
+      a();
     }
     for (;;)
     {
-      return this.jdField_d_of_type_Int;
-      b(this.jdField_a_of_type_JavaLangString);
+      return this.e;
+      b();
     }
   }
   
@@ -290,7 +292,7 @@ public class ETParagraph
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_d_of_type_Int = paramInt;
   }
   
   public boolean a()
@@ -300,7 +302,7 @@ public class ETParagraph
   
   public int b()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_b_of_type_Int;
   }
   
   public boolean b()
@@ -310,7 +312,7 @@ public class ETParagraph
   
   public int c()
   {
-    return this.jdField_c_of_type_Int;
+    return this.jdField_d_of_type_Int;
   }
 }
 

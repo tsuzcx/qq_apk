@@ -1,15 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.PAVideoView;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class akvk
-  implements Runnable
+  implements ThreadExcutor.IThreadListener
 {
-  public akvk(PAVideoView paramPAVideoView, ImageView paramImageView) {}
+  public akvk(WebViewPlugin paramWebViewPlugin) {}
   
-  public void run()
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.a.onPostPluginAsyncTask();
   }
+  
+  public void onPreRun() {}
 }
 
 

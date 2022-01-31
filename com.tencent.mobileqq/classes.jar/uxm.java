@@ -1,68 +1,141 @@
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicHolder;
-import com.tencent.mobileqq.app.FlashPicHelper;
-import com.tencent.mobileqq.app.HotChatHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.aio.doodle.LineLayer;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.lang.ref.WeakReference;
 
 public class uxm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public uxm(FlashPicItemBuilder paramFlashPicItemBuilder) {}
+  private int jdField_a_of_type_Int = -1;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  public final String a;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private int b = -1;
   
-  public void onClick(View paramView)
+  public uxm(LineLayer paramLineLayer, int paramInt1, int paramInt2, Bitmap paramBitmap, uyd paramuyd)
   {
-    long l = SystemClock.uptimeMillis();
-    if (l - FlashPicItemBuilder.a(this.a) < 800L) {}
-    FlashPicItemBuilder.FlashPicHolder localFlashPicHolder;
-    label169:
+    this.jdField_a_of_type_JavaLangString = (AppConstants.bN + "temp" + File.separator);
+    QLog.d("SaveTempFileJob", 2, "SaveTempFileJob begin:");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramuyd);
+    if (paramBitmap == null) {
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
     for (;;)
     {
-      return;
-      FlashPicItemBuilder.a(this.a, l);
-      localFlashPicHolder = (FlashPicItemBuilder.FlashPicHolder)AIOUtils.a(paramView);
-      if (localFlashPicHolder != null)
+      try
       {
-        Object localObject2 = localFlashPicHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-        Object localObject1 = null;
-        paramView = localObject1;
-        if (localObject2 != null)
-        {
-          localObject2 = this.a.a.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
-          paramView = localObject1;
-          if ((localObject2 instanceof MessageForPic)) {
-            paramView = (MessageForPic)localObject2;
-          }
+        if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+          continue;
         }
-        if (paramView != null)
-        {
-          if (HotChatHelper.a(paramView)) {}
-          for (boolean bool = HotChatHelper.b(paramView);; bool = FlashPicHelper.b(paramView))
-          {
-            if (bool) {
-              break label169;
-            }
-            if (localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 0) {
-              break label171;
-            }
-            if (localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted()) {
-              break;
-            }
-            localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-            return;
-          }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        paramLineLayer = new Paint();
+        paramLineLayer.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+        new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawBitmap(paramBitmap, 0.0F, 0.0F, paramLineLayer);
+      }
+      catch (Exception paramLineLayer)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.d("SaveTempFileJob", 2, "SaveTempFileJob exception:" + paramLineLayer);
+        continue;
+      }
+      catch (OutOfMemoryError paramLineLayer)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("SaveTempFileJob", 2, "SaveTempFileJob OOM:" + paramLineLayer.toString());
+        continue;
+      }
+      QLog.d("SaveTempFileJob", 2, "SaveTempFileJob end:");
+      return;
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() != paramBitmap.getHeight()) || (this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() != paramBitmap.getWidth()))
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
       }
     }
-    label171:
-    FlashPicItemBuilder.a(this.a, paramView, localFlashPicHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder$FlashPicAIOThumbView);
+  }
+  
+  private String a(int paramInt, Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        String str = this.jdField_a_of_type_JavaLangString + paramInt + ".tmp";
+        if (FileUtils.a(str)) {
+          FileUtils.d(str);
+        }
+        FileOutputStream localFileOutputStream = new FileOutputStream(str);
+        paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localFileOutputStream);
+        localFileOutputStream.flush();
+        localFileOutputStream.close();
+        return str;
+      }
+      catch (Exception paramBitmap)
+      {
+        paramBitmap.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("SaveTempFileJob", 2, "saveFileCache exception:" + paramBitmap);
+    return null;
+  }
+  
+  private void a()
+  {
+    try
+    {
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("SaveTempFileJobdownloading", 2, "makedir execption: " + localException);
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    new Handler(Looper.getMainLooper()).post(new uxn(this, paramString));
+  }
+  
+  public void run()
+  {
+    if (LineLayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer) == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+      {
+        a(null);
+        return;
+      }
+      a();
+      a(a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap));
+    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
 }
 

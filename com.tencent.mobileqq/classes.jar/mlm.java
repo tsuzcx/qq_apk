@@ -1,37 +1,23 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DialogAppInPushNotification;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.ViewHolder;
+import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
+import java.util.ArrayList;
 
 public class mlm
-  implements View.OnTouchListener
+  implements KandianPopupWindow.OnUninterestConfirmListener
 {
-  public mlm(DialogAppInPushNotification paramDialogAppInPushNotification, ImageView paramImageView) {}
+  public mlm(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, int paramInt, ReadInJoyBaseAdapter.ViewHolder paramViewHolder, BaseArticleInfo paramBaseArticleInfo) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    if (paramInt == this.jdField_a_of_type_Int)
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
-      }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
-    }
-    for (;;)
-    {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.k();
+      ((Animation)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.getTag(2131362291)).setAnimationListener(new mln(this, paramArrayList, paramObject));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.startAnimation((Animation)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.getTag(2131362291));
     }
   }
 }

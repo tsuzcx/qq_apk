@@ -210,7 +210,7 @@ public class MessageForArkBabyqReply
     if (!TextUtils.isEmpty(this.babyqReplyText)) {
       return this.babyqReplyText;
     }
-    return BaseApplicationImpl.sApplication.getString(2131438243);
+    return BaseApplicationImpl.sApplication.getString(2131438263);
   }
   
   protected void postRead()

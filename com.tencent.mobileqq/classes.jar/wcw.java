@@ -1,25 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.tips.HomeworkTroopSurveyBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wcw
-  implements TroopManager.ITroopMemberInfoCallBack
+  implements View.OnClickListener
 {
-  public wcw(HomeworkTroopSurveyBar paramHomeworkTroopSurveyBar, TroopManager paramTroopManager, TipsManager paramTipsManager) {}
+  public wcw(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void onClick(View paramView)
   {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread())
-    {
-      new Handler(localLooper).post(new wcx(this, paramTroopMemberInfo));
-      return;
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    if (this.a.b != null) {
+      this.a.b.setVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, paramTroopMemberInfo);
+    if (this.a.j != null) {
+      this.a.j.setVisibility(0);
+    }
+    if (this.a.k != null) {
+      this.a.k.setVisibility(0);
+    }
+    this.a.ap();
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.b(this.a.a()) != 0) {
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    }
   }
 }
 

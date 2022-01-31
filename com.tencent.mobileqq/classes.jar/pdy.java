@@ -1,16 +1,13 @@
-import com.tencent.biz.widgets.ScannerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-class pdy
-  implements Runnable
+public class pdy
+  implements DialogInterface.OnClickListener
 {
-  pdy(pdx parampdx) {}
+  public pdy(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void run()
-  {
-    if (ScannerView.a(this.a.a) != null) {
-      ScannerView.a(this.a.a).a();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

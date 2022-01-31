@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
 
-public class aghd
-  implements Runnable
+public final class aghd
+  implements Parcelable.Creator
 {
-  public aghd(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void run()
+  public OcrConfig a(Parcel paramParcel)
   {
-    ScanTorchActivity.l(this.a);
-    ScanTorchActivity.k(this.a);
+    return new OcrConfig(paramParcel);
+  }
+  
+  public OcrConfig[] a(int paramInt)
+  {
+    return new OcrConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghd
  * JD-Core Version:    0.7.0.1
  */

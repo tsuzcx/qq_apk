@@ -1,23 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.doutu.DoutuManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class rlo
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public rlo(AssistantSettingActivity paramAssistantSettingActivity, DoutuManager paramDoutuManager) {}
+  public rlo(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a(paramBoolean);
-    if (!paramBoolean)
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
-      return;
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
+    this.a.i();
   }
 }
 

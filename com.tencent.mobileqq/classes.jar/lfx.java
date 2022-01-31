@@ -1,32 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkUtil;
-import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-class lfx
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+public class lfx
+  implements Runnable
 {
-  lfx(lfw paramlfw) {}
+  public lfx(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyArkUtil", 2, new Object[] { "retCode: ", Integer.valueOf(paramInt), ", msg: ", paramString });
-    }
-    if ((paramAppPathInfo != null) && (paramInt == 0))
+    QQMessageFacade localQQMessageFacade = this.a.app.a();
+    if (localQQMessageFacade != null)
     {
-      paramString = paramAppPathInfo.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDesc;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArkUtil", 2, new Object[] { "preDownloadArkApp succeed, appPath: ", paramAppPathInfo.jdField_a_of_type_JavaLangString, ", appName: ", paramString.jdField_a_of_type_JavaLangString, ", appVersion: ", paramString.b });
-      }
-      ReadInJoyArkUtil.a(new lfy(this, paramString), 5);
-      return;
+      int i = localQQMessageFacade.b();
+      this.a.f(i);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyArkUtil", 2, new Object[] { "preDownloadArkApp appPath is null or downloadFailed, retryTimes: ", Integer.valueOf(this.a.jdField_a_of_type_Int) });
-    }
-    ReadInJoyArkUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage, this.a.jdField_a_of_type_Int + 1);
   }
 }
 

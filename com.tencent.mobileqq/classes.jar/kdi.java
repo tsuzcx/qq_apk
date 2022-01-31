@@ -1,30 +1,59 @@
-import com.tencent.av.ui.funchat.record.AudioFileDecoder.Callback;
-import com.tencent.av.ui.funchat.record.QavRecordReporter;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.GAudioUIObserver;
+import com.tencent.av.ui.QavInOutAnimation;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.ui.VideoInviteFull;
+import com.tencent.av.utils.TraeHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public final class kdi
-  implements AudioFileDecoder.Callback
+public class kdi
+  extends GAudioUIObserver
 {
-  public void a(int paramInt)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onError " + paramInt);
-    QavRecordReporter.a(false, paramInt);
-  }
+  public kdi(VideoInviteActivity paramVideoInviteActivity) {}
   
-  public void a(String paramString)
+  protected void a(long paramLong, int paramInt)
   {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onStart " + paramString);
-  }
-  
-  public void b(String paramString)
-  {
-    QLog.i("QavRecordUtils", 1, "convertMp3ToPcm onFinish " + paramString);
-    QavRecordReporter.a(true, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteActivity", 2, "VideoInviteActivity onDestroyInviteUI, relationId:" + paramLong);
+    }
+    boolean bool = this.a.h;
+    if ((bool) && (this.a.c != null) && (this.a.c.equals(String.valueOf(paramLong))))
+    {
+      super.c(paramLong);
+      TraeHelper.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      TraeHelper.a().a("VideoInviteActivity.onDestroyInviteUI");
+      if ((bool) && (this.a.c.length() > 2) && (paramLong != 0L))
+      {
+        paramLong = Long.valueOf(this.a.c).longValue();
+        if (!this.a.g)
+        {
+          this.a.g = true;
+          if (paramInt != 1) {
+            break label217;
+          }
+          this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, 7);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.e = true;
+      if ((this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation == null) || (!(this.a instanceof VideoInviteFull))) {
+        break;
+      }
+      this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new kdj(this));
+      return;
+      label217:
+      if (paramInt == 2) {
+        this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, 2);
+      }
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kdi
  * JD-Core Version:    0.7.0.1
  */

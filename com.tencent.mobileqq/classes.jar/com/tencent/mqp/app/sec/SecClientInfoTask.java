@@ -1,6 +1,6 @@
 package com.tencent.mqp.app.sec;
 
-import akzf;
+import algx;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class SecClientInfoTask
@@ -26,7 +26,7 @@ public class SecClientInfoTask
   
   public void run()
   {
-    ThreadManager.post(new akzf(this), 5, null, true);
+    ThreadManager.post(new algx(this), 5, null, true);
   }
 }
 

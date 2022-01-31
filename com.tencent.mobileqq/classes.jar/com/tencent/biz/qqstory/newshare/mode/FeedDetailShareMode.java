@@ -20,7 +20,7 @@ public class FeedDetailShareMode
   
   static
   {
-    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + StoryApi.a(2131432086);
+    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + StoryApi.a(2131432097);
   }
   
   public FeedDetailShareMode(StoryVideoItem paramStoryVideoItem, String paramString, int paramInt)
@@ -32,8 +32,8 @@ public class FeedDetailShareMode
     UserManager localUserManager = (UserManager)SuperManager.a(2);
     localObject = (QQUserUIItem)((FeedItem)localObject).getOwner();
     this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_d_of_type_JavaLangString = (((QQUserUIItem)localObject).nickName + "的" + "日迹");
-    this.e = (((QQUserUIItem)localObject).nickName + "的" + "日迹");
+    this.jdField_d_of_type_JavaLangString = (((QQUserUIItem)localObject).nickName + "的" + "小视频");
+    this.e = (((QQUserUIItem)localObject).nickName + "的" + "小视频");
     this.f = localUserManager.a(((QQUserUIItem)localObject).getUnionId(), false);
     int i;
     if (((QQUserUIItem)localObject).isMe())
@@ -47,7 +47,7 @@ public class FeedDetailShareMode
       this.k = a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime);
       paramStoryVideoItem = new SimpleDateFormat("M月d日").format(Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime));
       this.i = (paramStoryVideoItem + " · " + this.jdField_d_of_type_Int + "个小视频");
-      this.j = ("#日迹# " + this.jdField_c_of_type_JavaLangString + "的" + "日迹" + "（" + this.i + "）");
+      this.j = ("#小视频# " + this.jdField_c_of_type_JavaLangString + "的" + "小视频" + "（" + this.i + "）");
       if (this.jdField_a_of_type_Int != 0) {
         break label374;
       }

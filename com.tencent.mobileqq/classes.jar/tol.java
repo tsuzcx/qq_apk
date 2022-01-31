@@ -1,17 +1,19 @@
 import android.app.Dialog;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class tol
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tol(RegisterActivity paramRegisterActivity) {}
+  public tol(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-      this.a.a.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.runOnUiThread(new tom(this));
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    this.a.a = null;
   }
 }
 

@@ -1,27 +1,17 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag.EditBehavior;
+import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
 
 public class aodw
-  extends Property
+  implements QQStoryPullToRefreshListView.PullToRefreshListener
 {
-  public aodw(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aodw(EditVideoTag paramEditVideoTag) {}
   
-  public Integer a(GroundDrawable paramGroundDrawable)
+  public void a()
   {
-    if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.b(paramGroundDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.b(paramGroundDrawable, paramInteger.intValue());
-    }
+    EditVideoTag.EditBehavior localEditBehavior = EditVideoTag.a(this.a);
+    EditVideoTag.a(this.a, EditVideoTag.a(this.a)).a(localEditBehavior);
   }
 }
 

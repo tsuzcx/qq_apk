@@ -1,31 +1,43 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.AVLog;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.business.manager.magicface.MagicDataReport;
-import com.tencent.av.ui.AVActivity;
+import com.tencent.av.service.IQQServiceLocationCallback;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import java.lang.ref.WeakReference;
 
 public class jpl
-  implements View.OnClickListener
+  implements ConditionSearchManager.IConfigListener
 {
-  public jpl(AVActivity paramAVActivity, String paramString) {}
+  private WeakReference a;
+  private WeakReference b;
+  private WeakReference c;
   
-  public void onClick(View paramView)
+  public jpl(jpn paramjpn, ConditionSearchManager paramConditionSearchManager, IQQServiceLocationCallback paramIQQServiceLocationCallback)
   {
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.n();
-    AVActivity.a(this.jdField_a_of_type_ComTencentAvUiAVActivity, 2, false);
-    MagicDataReport.d(this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a(this.jdField_a_of_type_ComTencentAvUiAVActivity.a.a().c) + "");
-    AVLog.c(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, "showDoubleScreenTips click: " + this.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(Integer.valueOf(6100), this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+    this.a = new WeakReference(paramjpn);
+    this.b = new WeakReference(paramConditionSearchManager);
+    this.c = new WeakReference(paramIQQServiceLocationCallback);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    Object localObject = (ConditionSearchManager)this.b.get();
+    if (localObject != null) {
+      ((ConditionSearchManager)localObject).d(this);
     }
+    localObject = (jpn)this.a.get();
+    IQQServiceLocationCallback localIQQServiceLocationCallback = (IQQServiceLocationCallback)this.c.get();
+    if ((localObject != null) && (localIQQServiceLocationCallback != null)) {
+      ((jpn)localObject).a(paramBoolean, localIQQServiceLocationCallback);
+    }
+  }
+  
+  public void a(IQQServiceLocationCallback paramIQQServiceLocationCallback)
+  {
+    this.c = new WeakReference(paramIQQServiceLocationCallback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpl
  * JD-Core Version:    0.7.0.1
  */

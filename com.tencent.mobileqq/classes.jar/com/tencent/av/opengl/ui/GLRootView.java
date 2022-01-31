@@ -22,28 +22,31 @@ import com.tencent.av.opengl.utils.Utils;
 import com.tencent.av.switchface.SwitchFaceView;
 import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;
-import jjy;
+import jmb;
 
 public class GLRootView
   extends GLSurfaceView
   implements GLSurfaceView.Renderer
 {
   final int jdField_a_of_type_Int = 20;
-  long jdField_a_of_type_Long = 0L;
+  final long jdField_a_of_type_Long = AudioHelper.a();
   private GLCanvas jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas;
   public GLView a;
   private SwitchFaceView jdField_a_of_type_ComTencentAvSwitchfaceSwitchFaceView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new jjy(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new jmb(this);
+  private final String jdField_a_of_type_JavaLangString = "GLRootView_" + this.jdField_a_of_type_Long;
   private final Condition jdField_a_of_type_JavaUtilConcurrentLocksCondition = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.newCondition();
   private final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
   private volatile boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = 2;
   private boolean jdField_c_of_type_Boolean;
@@ -58,6 +61,9 @@ public class GLRootView
   public GLRootView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "GLRootView, 构造");
+    }
     CameraUtils.a(paramContext);
     GraphicRenderMgr.loadSo();
     if (isInEditMode()) {
@@ -79,7 +85,7 @@ public class GLRootView
       for (;;)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("GLRootView", 2, "GLRootView e = " + localException);
+          QLog.e(this.jdField_a_of_type_JavaLangString, 2, "GLRootView e = " + localException);
         }
         paramAttributeSet.recycle();
       }
@@ -232,34 +238,41 @@ public class GLRootView
   protected void finalize()
   {
     // Byte code:
-    //   0: invokestatic 238	com/tencent/av/opengl/program/TextureProgramFactory:a	()V
+    //   0: invokestatic 260	com/tencent/av/opengl/program/TextureProgramFactory:a	()V
     //   3: aload_0
-    //   4: invokevirtual 240	com/tencent/av/opengl/ui/GLRootView:b	()V
+    //   4: invokevirtual 262	com/tencent/av/opengl/ui/GLRootView:b	()V
     //   7: aload_0
-    //   8: invokespecial 242	android/opengl/GLSurfaceView:finalize	()V
-    //   11: return
-    //   12: astore_1
-    //   13: aload_0
-    //   14: invokevirtual 240	com/tencent/av/opengl/ui/GLRootView:b	()V
+    //   8: invokespecial 264	android/opengl/GLSurfaceView:finalize	()V
+    //   11: invokestatic 93	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   14: ifeq +14 -> 28
     //   17: aload_0
-    //   18: invokespecial 242	android/opengl/GLSurfaceView:finalize	()V
-    //   21: return
-    //   22: astore_1
-    //   23: aload_0
-    //   24: invokevirtual 240	com/tencent/av/opengl/ui/GLRootView:b	()V
-    //   27: aload_0
-    //   28: invokespecial 242	android/opengl/GLSurfaceView:finalize	()V
-    //   31: aload_1
-    //   32: athrow
+    //   18: getfield 87	com/tencent/av/opengl/ui/GLRootView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   21: iconst_1
+    //   22: ldc_w 266
+    //   25: invokestatic 99	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   28: return
+    //   29: astore_1
+    //   30: aload_0
+    //   31: invokevirtual 262	com/tencent/av/opengl/ui/GLRootView:b	()V
+    //   34: aload_0
+    //   35: invokespecial 264	android/opengl/GLSurfaceView:finalize	()V
+    //   38: goto -27 -> 11
+    //   41: astore_1
+    //   42: aload_0
+    //   43: invokevirtual 262	com/tencent/av/opengl/ui/GLRootView:b	()V
+    //   46: aload_0
+    //   47: invokespecial 264	android/opengl/GLSurfaceView:finalize	()V
+    //   50: aload_1
+    //   51: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	33	0	this	GLRootView
-    //   12	1	1	localException	Exception
-    //   22	10	1	localObject	Object
+    //   0	52	0	this	GLRootView
+    //   29	1	1	localException	Exception
+    //   41	10	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	3	12	java/lang/Exception
-    //   0	3	22	finally
+    //   0	3	29	java/lang/Exception
+    //   0	3	41	finally
   }
   
   protected void onDetachedFromWindow()
@@ -298,9 +311,9 @@ public class GLRootView
     {
       this.jdField_b_of_type_Boolean = false;
       if (!QLog.isColorLevel()) {
-        break label287;
+        break label293;
       }
-      QLog.e("GLRootView", 2, "WL_DEBUG onDrawFrame e = " + paramGL10);
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "WL_DEBUG onDrawFrame e = " + paramGL10);
       StackTraceElement[] arrayOfStackTraceElement = paramGL10.getStackTrace();
       int j = arrayOfStackTraceElement.length;
       paramGL10 = "";
@@ -310,7 +323,7 @@ public class GLRootView
         paramGL10 = paramGL10 + "WL_DEBUG onDrawFrame ste[" + i + "]" + arrayOfStackTraceElement[i].toString() + "\n";
         i += 1;
       }
-      QLog.e("GLRootView", 2, paramGL10);
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, paramGL10);
       this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
       break label94;
     }
@@ -323,8 +336,8 @@ public class GLRootView
       this.e = false;
       this.jdField_a_of_type_ComTencentAvOpenglUiGLView.d();
     }
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    QLog.e("GLRootView", 2, "WL_DEBUG onDrawFrame cost = " + (this.jdField_a_of_type_Long - l));
+    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+    QLog.e(this.jdField_a_of_type_JavaLangString, 2, "WL_DEBUG onDrawFrame cost = " + (this.jdField_b_of_type_Long - l));
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -349,7 +362,7 @@ public class GLRootView
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("GLRootView", 2, "onSurfaceChanged: " + paramInt1 + "x" + paramInt2 + ", gl10: " + paramGL10.toString());
+      QLog.i(this.jdField_a_of_type_JavaLangString, 2, "onSurfaceChanged: " + paramInt1 + "x" + paramInt2 + ", gl10: " + paramGL10.toString());
     }
     Process.setThreadPriority(-4);
     this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas.a(paramInt1, paramInt2);
@@ -382,7 +395,7 @@ public class GLRootView
       return;
     }
     this.jdField_b_of_type_Boolean = true;
-    long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+    long l = SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long;
     if ((l > 0L) && (l < 20L))
     {
       try
@@ -444,7 +457,7 @@ public class GLRootView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.opengl.ui.GLRootView
  * JD-Core Version:    0.7.0.1
  */

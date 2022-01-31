@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
+import mqq.os.MqqHandler;
 
 public class ajsp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ajsp(MessageSubtitleView paramMessageSubtitleView) {}
+  public ajsp(TextItem paramTextItem) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MessageSubtitleView.a(this.a);
+    if (!paramView.hasFocus())
+    {
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+      ThreadManager.getUIHandler().post(new ajsq(this, paramView));
+    }
   }
 }
 

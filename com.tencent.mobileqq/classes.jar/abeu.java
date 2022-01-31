@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.ArkPassiveSearchInfo;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
+import java.lang.ref.WeakReference;
 
-public final class abeu
-  implements Parcelable.Creator
+public class abeu
+  implements ArkMessageServerLogic.IPassiveSearchIntentByServerHandler
 {
-  public ARMapConfig a(Parcel paramParcel)
-  {
-    return new ARMapConfig(paramParcel);
-  }
+  public abeu(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference1, WeakReference paramWeakReference2, RecommendCommonMessage paramRecommendCommonMessage) {}
   
-  public ARMapConfig[] a(int paramInt)
+  public void a(String paramString, Object paramObject, ArkMessageServerLogic.ArkPassiveSearchInfo paramArkPassiveSearchInfo)
   {
-    return new ARMapConfig[paramInt];
+    ArkAppCenter.a().post(new abev(this, paramArkPassiveSearchInfo));
   }
 }
 

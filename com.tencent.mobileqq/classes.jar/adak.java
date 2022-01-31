@@ -1,39 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDocDownloadAbsMsgRsp;
-import cooperation.weiyun.sdk.api.IWeiyunCallback;
-import cooperation.weiyun.utils.StringUtils;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import java.util.LinkedHashMap;
 
-public class adak
-  implements IWeiyunCallback
+class adak
+  implements Runnable
 {
-  public adak(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  adak(adaj paramadaj, LinkedHashMap paramLinkedHashMap, int paramInt1, int paramInt2) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.DiskFileDocDownloadAbsMsgRsp paramDiskFileDocDownloadAbsMsgRsp)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "get weiyun file PreviewAddress onFailed,errCode[" + paramInt + "],errMsg[" + paramString + "]");
+    this.jdField_a_of_type_Adaj.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    this.jdField_a_of_type_Adaj.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    this.jdField_a_of_type_Adaj.a.i();
+    if ((this.jdField_a_of_type_Int == -1) || (this.b == -1))
+    {
+      this.jdField_a_of_type_Adaj.a.setSelect(0);
+      return;
     }
-    WeiYunLogicCenter.a(this.a).a().a(false, 278, new Object[] { Integer.valueOf(paramInt), paramString, "", "", "", "", Integer.valueOf(0) });
-  }
-  
-  public void a(WeiyunPB.DiskFileDocDownloadAbsMsgRsp paramDiskFileDocDownloadAbsMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "get weiyun file PreviewAddress onSucceed");
+    if ((this.jdField_a_of_type_Adaj.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.g()) || (this.jdField_a_of_type_Adaj.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.h()))
+    {
+      this.jdField_a_of_type_Adaj.a.setPos(this.jdField_a_of_type_Int, this.b);
+      return;
     }
-    String str = StringUtils.a(paramDiskFileDocDownloadAbsMsgRsp.downloadkey.get());
-    WeiYunLogicCenter.a(this.a).a().a(true, 278, new Object[] { Integer.valueOf(0), "", str, paramDiskFileDocDownloadAbsMsgRsp.cookie.get(), paramDiskFileDocDownloadAbsMsgRsp.downloadip.get(), paramDiskFileDocDownloadAbsMsgRsp.downloaddns.get(), Integer.valueOf(paramDiskFileDocDownloadAbsMsgRsp.downloadport.get()) });
+    this.jdField_a_of_type_Adaj.a.setSelect(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adak
  * JD-Core Version:    0.7.0.1
  */

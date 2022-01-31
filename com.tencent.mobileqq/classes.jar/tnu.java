@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class tnu
+public class tnu
   implements Runnable
 {
-  tnu(tnt paramtnt) {}
+  public tnu(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    this.a.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("moveTaskToBack", 2, "moveTaskToBackInSubThread");
+    }
+    try
+    {
+      this.a.moveTaskToBack(true);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("moveTaskToBack", 2, "moveTaskToBack e=" + localThrowable.toString());
+    }
   }
 }
 

@@ -1,28 +1,17 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class nrz
-  implements ActionSheet.OnButtonClickListener
+  implements AbsListView.OnScrollListener
 {
-  public nrz(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, ActionSheet paramActionSheet) {}
+  public nrz(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (UIUtils.b()) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-    } while (!"查看群资料卡".equals(this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt)));
-    paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c, 0);
-    paramView.putInt("extra_last_open_from", this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a);
-    ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramView, 2);
+    this.a.a = paramInt1;
   }
 }
 

@@ -1,13 +1,16 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Bundle;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
+import java.util.ArrayList;
 
 public class amwe
-  implements amwl
+  implements Runnable
 {
-  public amwe(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  public amwe(DatalineRemoteManager paramDatalineRemoteManager, Bundle paramBundle) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playAudioList(this.jdField_a_of_type_JavaLangString);
+    DatalineRemoteManager.a(this.jdField_a_of_type_CooperationQqdatalineIpcDatalineRemoteManager, this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_CooperationQqdatalineIpcDatalineRemoteManager.a.add(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

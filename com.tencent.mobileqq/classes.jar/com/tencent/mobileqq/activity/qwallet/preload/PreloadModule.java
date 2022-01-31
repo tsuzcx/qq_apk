@@ -13,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xfy;
+import xls;
 
 public class PreloadModule
   implements Serializable
@@ -69,7 +69,7 @@ public class PreloadModule
       paramString.printStackTrace();
       return;
     }
-    HtmlOffline.b(paramString, paramAppRuntime, true, new xfy(this));
+    HtmlOffline.b(paramString, paramAppRuntime, true, new xls(this));
   }
   
   private boolean a(String paramString)

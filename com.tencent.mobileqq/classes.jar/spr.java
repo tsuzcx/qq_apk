@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
-class spr
-  implements ActionSheet.OnDismissListener
+public class spr
+  implements View.OnClickListener
 {
-  spr(spp paramspp) {}
+  public spr(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    ReportController.b(this.a.a.app, "CliOper", "", "", "0X8008406", "0X8008406", 0, 0, "", "", "", "");
+    this.a.a.setText("");
   }
 }
 

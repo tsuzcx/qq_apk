@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import aoks;
+import aotl;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
@@ -51,7 +51,7 @@ public class CompoundProcessor
   {
     CodecParam.z = this.jdField_c_of_type_Int;
     CodecParam.y = this.jdField_b_of_type_Int;
-    Object localObject = new EncodeThread(null, new aoks(Looper.getMainLooper()), paramString, null, null);
+    Object localObject = new EncodeThread(null, new aotl(Looper.getMainLooper()), paramString, null, null);
     ((EncodeThread)localObject).run();
     localObject = ((EncodeThread)localObject).jdField_a_of_type_JavaLangString;
     LogTag.a(this.jdField_a_of_type_JavaLangString, "CompoundProcessor.compressYUV2MP4", "[peak] videoFileDir = " + paramString + ",videoPath = " + (String)localObject + ",CodecParam.mRecordFrames = " + CodecParam.z + ",CodecParam.mRecordTime = " + CodecParam.y);
@@ -249,10 +249,10 @@ public class CompoundProcessor
     //   103: aload_0
     //   104: getfield 307	dov/com/tencent/mobileqq/richmedia/CompoundProcessor:jdField_c_of_type_Boolean	Z
     //   107: ifne -38 -> 69
-    //   110: new 331	aokr
+    //   110: new 331	aotk
     //   113: dup
     //   114: aload_0
-    //   115: invokespecial 334	aokr:<init>	(Ldov/com/tencent/mobileqq/richmedia/CompoundProcessor;)V
+    //   115: invokespecial 334	aotk:<init>	(Ldov/com/tencent/mobileqq/richmedia/CompoundProcessor;)V
     //   118: bipush 8
     //   120: aconst_null
     //   121: iconst_1

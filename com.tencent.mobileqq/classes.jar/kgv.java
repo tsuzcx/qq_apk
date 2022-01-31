@@ -1,26 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.utils.SensorReport;
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.av.ui.redbag.GameSink;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public final class kgv
-  extends BroadcastReceiver
+public class kgv
+  implements Runnable
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public kgv(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
+  
+  public void run()
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    while (!SensorReport.a.equals(paramIntent.getAction())) {
-      return;
-    }
-    paramContext = (HashMap)paramIntent.getSerializableExtra("params");
-    UserAction.onUserAction(SensorReport.a, true, -1L, -1L, paramContext, true);
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.jdField_c_of_type_JavaLangString = "0";
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.d = "0";
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.jdField_c_of_type_Boolean = false;
+    AudioHelper.a("开始模拟onGameEnd, RedBagID[" + this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a + "], playerGetRedbagResultCode[" + this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.jdField_c_of_type_JavaLangString + "], playerGetRedbagResultState[" + this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.d + "]");
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a().a(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a, this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a().getCurrentAccountUin(), this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a, this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.b, 1000, 2000, 2, 5, "231", "0", null, true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgv
  * JD-Core Version:    0.7.0.1
  */

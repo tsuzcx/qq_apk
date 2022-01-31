@@ -1,16 +1,28 @@
-import com.qq.im.poi.LbsPackManager;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.qq.im.poi.LbsPackListAdapter;
+import com.tencent.mobileqq.businessCard.helpers.ViewHelper;
 
 public class and
-  implements Runnable
+  extends Animation
 {
-  public and(LbsPackManager paramLbsPackManager, ARMapActivity paramARMapActivity, long paramLong, String paramString) {}
+  public and(LbsPackListAdapter paramLbsPackListAdapter, View paramView, int paramInt) {}
   
-  public void run()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    ARMapEngine localARMapEngine = this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a;
-    ARMapEngine.nativeUnpackedOne(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    if (paramFloat == 1.0F)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+    }
+    float f = this.jdField_a_of_type_Int;
+    ViewHelper.g(this.jdField_a_of_type_AndroidViewView, -1.0F * f * paramFloat);
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

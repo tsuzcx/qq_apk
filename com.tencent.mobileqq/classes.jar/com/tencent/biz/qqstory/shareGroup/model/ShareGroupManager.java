@@ -28,7 +28,7 @@ import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import nsq;
+import nxg;
 
 public class ShareGroupManager
   implements IManager
@@ -116,7 +116,7 @@ public class ShareGroupManager
     ((qqstory_service.ReqLoadMoreVideoList)localObject).video_count.set(10);
     Bundle localBundle = new Bundle();
     localBundle.putString("extra_feedid", localVideoCollectionItem.feedId);
-    ProtoUtils.a(PlayModeUtils.a(), new nsq(this, i, paramString, paramInt), ((qqstory_service.ReqLoadMoreVideoList)localObject).toByteArray(), StoryApi.a("StoryGroupSvc.datacard_load_more_video"), localBundle);
+    ProtoUtils.a(PlayModeUtils.a(), new nxg(this, i, paramString, paramInt), ((qqstory_service.ReqLoadMoreVideoList)localObject).toByteArray(), StoryApi.a("StoryGroupSvc.datacard_load_more_video"), localBundle);
   }
   
   public void a(String paramString1, String paramString2)

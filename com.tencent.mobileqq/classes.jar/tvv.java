@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class tvv
-  implements Runnable
+  extends FriendListObserver
 {
-  public tvv(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public tvv(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((this.a.a != null) && (this.a.a.equals("conversation"))) {
-      this.a.a();
+    if (paramBoolean) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null)) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
   }
 }

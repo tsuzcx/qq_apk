@@ -1,30 +1,110 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class akij
-  implements URLDrawableDownListener
+public final class akij
+  implements Runnable
 {
-  public akij(VipGrayConfigHelper paramVipGrayConfigHelper, String paramString, URLImageView paramURLImageView) {}
+  public akij(QQAppInterface paramQQAppInterface) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void run()
   {
-    QLog.e("friends_king", 1, "namePlateOfKing drawable fail url = " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+    int i = 0;
+    boolean bool = true;
+    if (this.a != null)
+    {
+      SharedPreferences localSharedPreferences = this.a.getPreferences();
+      String str2 = localSharedPreferences.getString("cardTemplateVersion", "0");
+      String str1 = localSharedPreferences.getString("cardTemplateServerVersion", "0");
+      Object localObject = localSharedPreferences.getString("cardTemplateServerUrl", "0");
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileCardUtil", 2, "func downloadProfileStyleFile, serverUrl:" + (String)localObject + ",localVersion:" + str2 + ",serverVersion:" + str1);
+      }
+      if ((!TextUtils.equals(str2, str1)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ProfileCardUtil", 2, "downloadProfileStyleFile start downloadProfileStyleFile url=" + (String)localObject + ",version=" + str1);
+        }
+        for (;;)
+        {
+          try
+          {
+            str2 = ProfileCardUtil.b(this.a.getApplication());
+            File localFile = new File(str2 + ".tmp");
+            DownloadTask localDownloadTask = new DownloadTask((String)localObject, localFile);
+            localDownloadTask.f = "profileCardDownload";
+            localDownloadTask.e = "VIP_profilecard";
+            localDownloadTask.a = 1;
+            int j = DownloaderFactory.a(localDownloadTask, this.a);
+            if (j != 0) {
+              break label595;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("ProfileCardUtil", 2, "func downloadProfileStyleFile, downloadSuccess:" + bool);
+            }
+            if (bool)
+            {
+              if (!localFile.exists()) {
+                break;
+              }
+              localObject = FileUtils.a(localFile);
+              if ((TextUtils.isEmpty((CharSequence)localObject)) || (new JSONObject((String)localObject).optJSONArray("style").length() <= 0)) {
+                break;
+              }
+              FileUtils.d(str2 + ".tmp", str2);
+              localFile.delete();
+              localObject = new File(str2).getParentFile().listFiles();
+              if ((localObject != null) && (localObject.length > 0) && (i < localObject.length))
+              {
+                str2 = localObject[i].getName();
+                if ((str2.startsWith("qvip_profile_template.json")) && (!str2.endsWith("7.6.8")))
+                {
+                  FileUtils.d(str2);
+                  if (QLog.isColorLevel()) {
+                    QLog.i("Q.profilecard.FrdProfileCard", 2, "delete old file=" + str2);
+                  }
+                }
+              }
+              else
+              {
+                localSharedPreferences.edit().putString("cardTemplateVersion", str1).commit();
+                ProfileCardUtil.a(this.a, true);
+                if (!QLog.isColorLevel()) {
+                  break;
+                }
+                QLog.d("Q.profilecard.FrdProfileCard", 2, "ProfileCardCheckUpdate update template list file success version=" + str1);
+              }
+            }
+            else
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("Q.profilecard.FrdProfileCard", 2, "ProfileCardCheckUpdate download error resultCode=" + j + ",url=" + (String)localObject);
+              return;
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            localThrowable.printStackTrace();
+            return;
+          }
+          i += 1;
+          continue;
+          label595:
+          bool = false;
+        }
+      }
+    }
   }
 }
 

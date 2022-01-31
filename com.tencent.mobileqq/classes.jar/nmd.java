@@ -1,29 +1,51 @@
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.biz.qqstory.channel.CmdTaskManger;
+import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.DecryptCallback;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public class nmd
-  extends IPlayVideoStatusChangeListener
+public final class nmd
+  implements Runnable
 {
-  public nmd(VidListPlayMode paramVidListPlayMode) {}
+  public nmd(String paramString, QQProgressDialog paramQQProgressDialog, Context paramContext, StoryShareEncryptHelper.DecryptCallback paramDecryptCallback) {}
   
-  public void c(int paramInt)
+  public void run()
   {
-    if (paramInt < this.a.a.a.size() - 1) {
-      StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt params:" + this.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public void d(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
-  }
-  
-  public void e(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
+    long l = System.currentTimeMillis();
+    StoryShareTranslateTokenRequest localStoryShareTranslateTokenRequest = new StoryShareTranslateTokenRequest();
+    localStoryShareTranslateTokenRequest.c = 2;
+    localStoryShareTranslateTokenRequest.b = this.jdField_a_of_type_JavaLangString;
+    QQProgressDialog localQQProgressDialog1;
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    {
+      QQProgressDialog localQQProgressDialog2 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      localQQProgressDialog1 = localQQProgressDialog2;
+      if (!localQQProgressDialog2.isShowing())
+      {
+        localQQProgressDialog2.show();
+        localQQProgressDialog1 = localQQProgressDialog2;
+      }
+    }
+    for (;;)
+    {
+      CmdTaskManger.a().a(localStoryShareTranslateTokenRequest, new nme(this, l, localQQProgressDialog1));
+      return;
+      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+      {
+        localQQProgressDialog1 = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext);
+        localQQProgressDialog1.a("正在加载...");
+        localQQProgressDialog1.show();
+      }
+      else
+      {
+        localQQProgressDialog1 = null;
+      }
+    }
   }
 }
 

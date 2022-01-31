@@ -1,69 +1,50 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.FloorJumper;
-import com.tencent.mobileqq.activity.aio.anim.FloorJumperSet;
-import com.tencent.mobileqq.activity.aio.anim.IAioAnimListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendServlet;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class unq
-  implements Runnable
+  extends CardObserver
 {
-  private unq(FloorJumperSet paramFloorJumperSet) {}
+  public unq(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void run()
+  protected void k(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-    long l1 = -1L;
-    if (localIterator.hasNext())
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
     {
-      Object localObject = (FloorJumper)localIterator.next();
-      long l2 = ((FloorJumper)localObject).a();
-      if (l2 >= 0L)
-      {
-        if (l1 < 0L) {}
-        for (l1 = l2;; l1 = Math.min(l1, l2)) {
-          break;
-        }
+      ActivateFriendServlet.a(this.a.app, false, true, false, true);
+      this.a.a();
+    }
+    ActivateFriendActivity.a(this.a, paramBoolean2);
+  }
+  
+  protected void l(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    {
+      ActivateFriendServlet.a(this.a.app, false, true, false, true);
+      this.a.a();
+    }
+    if (!this.a.isFinishing())
+    {
+      if (!paramBoolean1) {
+        break label133;
       }
-      localIterator.remove();
-      if (QLog.isColorLevel()) {
-        QLog.d("FloorJumperSet", 2, "removed businessId:" + ((FloorJumper)localObject).c);
-      }
-      if (((FloorJumper)localObject).c == 1)
-      {
-        localObject = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-        } while (((FloorJumper)((Iterator)localObject).next()).c != 1);
+      ActivateFriendActivity.a(this.a, paramBoolean2);
+      if (!ActivateFriendActivity.a(this.a)) {
+        break label120;
       }
     }
-    for (int i = 1;; i = 0)
+    label120:
+    for (String str = this.a.getString(2131437270);; str = this.a.getString(2131437271))
     {
-      if ((i == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a.b();
-      }
-      break;
-      if (l1 >= 0L)
-      {
-        if (FloorJumperSet.a(this.a) == 0L) {
-          this.a.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this, l1);
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
-      }
-      do
-      {
-        return;
-        this.a.d();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a == null);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a.b();
+      str = this.a.getString(2131437273, new Object[] { str });
+      QQToast.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
       return;
     }
+    label133:
+    QQToast.a(this.a, 1, this.a.getResources().getString(2131436084), 0).b(this.a.getTitleBarHeight());
   }
 }
 

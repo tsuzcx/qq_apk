@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
-import java.util.Comparator;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.shortvideo.common.GloableValue;
 
 public class ahqe
-  implements Comparator
+  implements Runnable
 {
-  public ahqe(ScribbleResMgr paramScribbleResMgr) {}
+  public ahqe(CameraCaptureView paramCameraCaptureView) {}
   
-  public int a(ScribbleResMgr.ResInfo paramResInfo1, ScribbleResMgr.ResInfo paramResInfo2)
-  {
-    if ((paramResInfo1 != null) && (paramResInfo2 != null)) {
-      return paramResInfo1.orderIndex - paramResInfo2.orderIndex;
-    }
-    return -1;
-  }
+  public void run() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahqe
  * JD-Core Version:    0.7.0.1
  */

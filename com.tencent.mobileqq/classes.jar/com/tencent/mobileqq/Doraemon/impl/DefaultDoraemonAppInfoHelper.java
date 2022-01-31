@@ -20,13 +20,13 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rei;
-import rej;
-import rek;
-import rel;
-import rem;
-import ren;
-import rep;
+import rja;
+import rjb;
+import rjc;
+import rjd;
+import rje;
+import rjf;
+import rjh;
 
 public class DefaultDoraemonAppInfoHelper
 {
@@ -400,17 +400,17 @@ public class DefaultDoraemonAppInfoHelper
   
   public void a(String paramString1, int paramInt, String paramString2, DefaultDoraemonAppInfoHelper.OnGetAppInfo paramOnGetAppInfo)
   {
-    rem localrem = (rem)this.jdField_b_of_type_JavaUtilMap.get(paramString1);
-    if ((localrem != null) && (localrem.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis()))
+    rje localrje = (rje)this.jdField_b_of_type_JavaUtilMap.get(paramString1);
+    if ((localrje != null) && (localrje.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis()))
     {
-      ThreadManager.getUIHandler().post(new rej(this, paramOnGetAppInfo, localrem));
+      ThreadManager.getUIHandler().post(new rjb(this, paramOnGetAppInfo, localrje));
       return;
     }
-    localrem = new rem(null);
-    localrem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo = new AppInfo();
-    localrem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_Int = paramInt;
-    localrem.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaLangString = paramString2;
-    Stream.of(localrem).map(new ThreadOffFunction(16)).map(new rel(this)).map(new ren(null)).map(new rep(null)).map(new UIThreadOffFunction(null)).subscribe(new rek(this, paramString1, paramOnGetAppInfo));
+    localrje = new rje(null);
+    localrje.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo = new AppInfo();
+    localrje.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_Int = paramInt;
+    localrje.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaLangString = paramString2;
+    Stream.of(localrje).map(new ThreadOffFunction(16)).map(new rjd(this)).map(new rjf(null)).map(new rjh(null)).map(new UIThreadOffFunction(null)).subscribe(new rjc(this, paramString1, paramOnGetAppInfo));
   }
   
   public void a(List paramList, Set paramSet)
@@ -455,7 +455,7 @@ public class DefaultDoraemonAppInfoHelper
       if (l > this.jdField_a_of_type_Long)
       {
         this.jdField_a_of_type_Long = (l + 300000L);
-        ThreadManager.post(new rei(this), 5, null, false);
+        ThreadManager.post(new rja(this), 5, null, false);
         return;
       }
       return;

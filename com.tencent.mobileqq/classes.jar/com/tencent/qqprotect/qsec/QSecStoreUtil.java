@@ -105,32 +105,30 @@ public class QSecStoreUtil
     //   164: ireturn
     //   165: astore_1
     //   166: aload_3
-    //   167: astore_2
-    //   168: aload_2
-    //   169: ifnull +7 -> 176
-    //   172: aload_2
-    //   173: invokevirtual 59	java/io/DataOutputStream:close	()V
-    //   176: aload_1
-    //   177: athrow
-    //   178: astore_2
-    //   179: aload_2
-    //   180: invokevirtual 37	java/io/IOException:printStackTrace	()V
-    //   183: goto -7 -> 176
+    //   167: ifnull +7 -> 174
+    //   170: aload_3
+    //   171: invokevirtual 59	java/io/DataOutputStream:close	()V
+    //   174: aload_1
+    //   175: athrow
+    //   176: astore_2
+    //   177: aload_2
+    //   178: invokevirtual 37	java/io/IOException:printStackTrace	()V
+    //   181: goto -7 -> 174
+    //   184: astore_2
+    //   185: aload_1
     //   186: astore_3
-    //   187: aload_1
-    //   188: astore_2
-    //   189: aload_3
-    //   190: astore_1
-    //   191: goto -23 -> 168
-    //   194: astore_2
-    //   195: goto -61 -> 134
+    //   187: aload_2
+    //   188: astore_1
+    //   189: goto -23 -> 166
+    //   192: astore_2
+    //   193: goto -59 -> 134
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	198	0	this	QSecStoreUtil
-    //   0	198	1	paramString1	java.lang.String
-    //   0	198	2	paramArrayOfByte	byte[]
-    //   0	198	3	paramString2	java.lang.String
-    //   0	198	4	paramInt	int
+    //   0	196	0	this	QSecStoreUtil
+    //   0	196	1	paramString1	java.lang.String
+    //   0	196	2	paramArrayOfByte	byte[]
+    //   0	196	3	paramString2	java.lang.String
+    //   0	196	4	paramInt	int
     //   7	22	5	str	java.lang.String
     //   4	128	6	localObject1	Object
     //   1	71	7	localObject2	Object
@@ -147,9 +145,9 @@ public class QSecStoreUtil
     //   74	90	165	finally
     //   136	142	165	finally
     //   144	148	165	finally
-    //   172	176	178	java/io/IOException
-    //   90	112	186	finally
-    //   90	112	194	java/io/IOException
+    //   170	174	176	java/io/IOException
+    //   90	112	184	finally
+    //   90	112	192	java/io/IOException
   }
   
   /* Error */

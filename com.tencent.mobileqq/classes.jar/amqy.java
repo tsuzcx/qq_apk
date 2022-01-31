@@ -1,19 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qqreader.QRRemoteAsynCommond;
-
 public class amqy
-  extends PublicAccountObserver
 {
-  public amqy(QRRemoteAsynCommond paramQRRemoteAsynCommond, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    paramString = new Bundle();
-    paramString.putBoolean("isSuccess", paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(paramString);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = "";
+  public String e;
 }
 
 

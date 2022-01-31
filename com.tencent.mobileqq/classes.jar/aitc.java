@@ -1,44 +1,32 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor;
-import com.tencent.mobileqq.tribe.videoupload.TribeVideoFileObject;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.theme.NightModeLogic;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class aitc
-  implements UpCallBack
+  implements DialogInterface.OnDismissListener
 {
-  public aitc(TribeVideoFileObject paramTribeVideoFileObject) {}
+  public aitc(NightModeLogic paramNightModeLogic) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return null;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
-  {
-    if (paramSendResult.jdField_b_of_type_Int == 0)
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putInt("start_status", 2);
+    this.a.a(0, paramDialogInterface);
+    this.a.jdField_a_of_type_AndroidAppDialog = null;
+    try
     {
-      this.a.a.c = paramSendResult.jdField_b_of_type_JavaLangString;
-      this.a.a.a = paramSendResult.c;
-      TribeVideoFileObject.a(this.a);
-      TribeVideoFileObject.a(this.a, new ErrorMessage());
+      paramDialogInterface = new HashMap();
+      paramDialogInterface.put("param_FailCode", "2");
+      StatisticCollector.a(this.a.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext()).a(((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime).getAccount(), "VipNightThemeDialogClick", false, 1L, 0L, paramDialogInterface, "", false);
       return;
     }
-    if ((paramSendResult.jdField_b_of_type_Int == StoryUploadProcessor.a(940010)) && (TribeVideoFileObject.a(this.a).getAndIncrement() < 2))
-    {
-      TribeVideoFileObject.b(this.a);
-      SLog.d("tribe_publish_TribeVideoFileObject", "retry load file");
-      return;
-    }
-    TribeVideoFileObject.c(this.a);
-    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
-    TribeVideoFileObject.a(this.a, paramSendResult);
+    catch (Exception paramDialogInterface) {}
   }
 }
 

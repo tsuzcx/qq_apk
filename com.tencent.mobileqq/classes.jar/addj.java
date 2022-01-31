@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class addj
-  extends MessageObserver
+  implements FileVideoManager.FileVideoManagerInitCallback
 {
-  public addj(MPcFileModel paramMPcFileModel) {}
+  public addj(FileManagerRSCenter paramFileManagerRSCenter, FileManagerEntity paramFileManagerEntity) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void a() {}
+  
+  public void b()
   {
-    if (paramInt1 == 0)
-    {
-      if (MPcFileModel.b(this.a)) {
-        FMToastUtil.a(2131427615);
-      }
-      MPcFileModel.a(this.a, false);
-      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
-    }
+    FileVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     addj
  * JD-Core Version:    0.7.0.1
  */

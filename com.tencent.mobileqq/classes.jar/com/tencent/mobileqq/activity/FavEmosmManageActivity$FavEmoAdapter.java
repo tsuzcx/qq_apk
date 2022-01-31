@@ -63,12 +63,12 @@ class FavEmosmManageActivity$FavEmoAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968965, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968967, null);
       paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqActivityFavEmosmManageActivity.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityFavEmosmManageActivity.b));
       paramViewGroup = new FavEmosmManageActivity.FavEmoAdapter.Holder(this);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131364509));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364511));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364510);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131364533));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364535));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364534);
       paramView.setTag(paramViewGroup);
     }
     for (;;)

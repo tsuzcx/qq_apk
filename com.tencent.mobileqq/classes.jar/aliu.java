@@ -1,48 +1,78 @@
-import android.content.Context;
 import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.biz.widgets.ShareAioResultDialog;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.ToastUtil;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aliu
-  implements Runnable
+public class aliu
+  implements HttpCgiAsyncTask.Callback
 {
-  aliu(alit paramalit) {}
+  public aliu(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public void run()
+  public void a(Exception paramException)
   {
-    if (CommonDataAdapter.a().a() != null)
-    {
-      Object localObject1 = new DisplayMetrics();
-      ((WindowManager)CommonDataAdapter.a().a().getSystemService("window")).getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
-      int i = ((DisplayMetrics)localObject1).widthPixels;
-      float f = ((DisplayMetrics)localObject1).density;
-      Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-      localObject1 = new RelativeLayout(CommonDataAdapter.a().a());
-      ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((RelativeLayout)localObject1).setBackgroundColor(-855638017);
-      ((RelativeLayout)localObject1).setGravity(17);
-      ((RelativeLayout)localObject1).setPadding((int)(10.0F * f + 0.5F), (int)(10.0F * f + 0.5F), (int)(10.0F * f + 0.5F), (int)(10.0F * f + 0.5F));
-      localObject2 = new TextView(CommonDataAdapter.a().a());
-      ((TextView)localObject2).setWidth((int)(i * 0.9D));
-      ((TextView)localObject2).setHeight((int)(96.0F * f + 0.5F));
-      ((TextView)localObject2).setBackgroundColor(CommonDataAdapter.a().a().getResources().getColor(2131492924));
-      ((TextView)localObject2).setText(2131428540);
-      ((TextView)localObject2).setTextColor(CommonDataAdapter.a().a().getResources().getColor(2131492971));
-      ((TextView)localObject2).setSingleLine();
-      ((TextView)localObject2).setGravity(17);
-      ((RelativeLayout)localObject1).addView((View)localObject2);
-      ToastUtil.a().a((View)localObject1, 1);
-      LogUtility.c("MyAppApi", "弹出应用宝的安装Toast，当前时间 = " + System.currentTimeMillis());
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
+    this.a.b(paramException);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+    try
+    {
+      if (paramJSONObject.getInt("ret") == 0)
+      {
+        if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog == null)
+        {
+          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this.a);
+          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131428667));
+          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131428668, new Object[] { this.a.d }), this.a);
+          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a);
+        }
+        if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.isShowing()) {
+          return;
+        }
+        this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
+        return;
+      }
+      if ((paramJSONObject.getInt("ret") == 10071) || (paramJSONObject.getInt("ret") == 10000))
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this.a, 230, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131428664), this.a.jdField_a_of_type_AndroidContentResResources.getString(2131428665), 2131434953, 2131433030, this.a, null);
+        }
+        paramJSONObject = paramJSONObject.getString("msg");
+        if (!TextUtils.isEmpty(paramJSONObject)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramJSONObject);
+        }
+        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+          return;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+        return;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      a(paramJSONObject);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
+    }
+    paramJSONObject = paramJSONObject.getString("msg");
+    QQToast.a(CommonDataAdapter.a().a(), paramJSONObject, 0).a(this.a.getTitleBarHeight()).show();
   }
 }
 

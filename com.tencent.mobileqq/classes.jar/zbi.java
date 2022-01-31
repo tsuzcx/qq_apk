@@ -1,25 +1,31 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import java.util.Comparator;
+import com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor;
+import com.tencent.mobileqq.apollo.store.webview.ApolloWebStatistics;
+import com.tencent.qphone.base.util.QLog;
 
 public class zbi
-  implements Comparator
+  implements Runnable
 {
-  public zbi(ConditionSearchManager paramConditionSearchManager) {}
+  public zbi(ApolloUrlInterceptor paramApolloUrlInterceptor) {}
   
-  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
+  public void run()
   {
-    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
-    int i = j;
-    if (j == 0) {
-      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runSonicFlow in AsyncThread start!");
     }
-    return i;
+    ApolloWebStatistics localApolloWebStatistics = ApolloUrlInterceptor.a(this.a);
+    long l = System.currentTimeMillis();
+    localApolloWebStatistics.g = l;
+    ApolloUrlInterceptor.a(this.a);
+    ApolloUrlInterceptor.b(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runSonicFlow use:" + (System.currentTimeMillis() - l));
+    }
+    ApolloUrlInterceptor.a(this.a).h = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zbi
  * JD-Core Version:    0.7.0.1
  */

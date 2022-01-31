@@ -1,18 +1,33 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-class rkn
+public class rkn
   implements Runnable
 {
-  rkn(rkm paramrkm) {}
+  public rkn(AccountManageActivity paramAccountManageActivity) {}
   
   public void run()
   {
-    Card localCard = ((FriendsManager)this.a.a.app.getManager(50)).a(this.a.a.a);
-    if (localCard != null) {
-      this.a.a.runOnUiThread(new rko(this, localCard));
+    try
+    {
+      if (this.a.app != null)
+      {
+        FriendsManager localFriendsManager = (FriendsManager)this.a.app.getManager(50);
+        if (localFriendsManager != null) {
+          AccountManageActivity.a(this.a, localFriendsManager.a(this.a.app.getCurrentAccountUin()));
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.w("AccountManageActivity", 2, "showLogoutDialog getCard Exception! ");
     }
   }
 }

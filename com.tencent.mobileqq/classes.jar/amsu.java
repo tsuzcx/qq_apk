@@ -1,20 +1,41 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import cooperation.qzone.QZoneHelper;
+import android.os.Handler;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
 
-public final class amsu
-  implements DialogInterface.OnClickListener
+public class amsu
+  extends OnPluginInstallListener.Stub
 {
-  public amsu(Activity paramActivity, int paramInt, String paramString, Intent paramIntent) {}
+  public amsu(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInstallBegin(String paramString)
   {
-    if (!QZoneHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
-      QZoneHelper.a(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("sid"), this.jdField_a_of_type_AndroidAppActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallBegin...");
     }
-    paramDialogInterface.dismiss();
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallDownloadProgress...");
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallError...");
+    }
+    this.a.b.sendEmptyMessageDelayed(3, 200L);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Group video plugin onInstallFinish...");
+    }
+    this.a.b.sendEmptyMessageDelayed(1, 1000L);
   }
 }
 

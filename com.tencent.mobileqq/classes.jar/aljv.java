@@ -1,46 +1,43 @@
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
-import com.tencent.plato.IPlatoManager.IRenderListener;
-import com.tencent.plato.PlatoAppFragment;
-import com.tencent.plato.PlatoAppManager;
+import com.tencent.open.agent.OpenSdkFriendService;
+import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback;
+import com.tencent.open.agent.datamodel.ImageLoader;
+import com.tencent.open.agent.datamodel.QZonePortraitData;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aljv
-  implements IPlatoManager.IRenderListener
+  implements Runnable
 {
-  public aljv(PlatoAppFragment paramPlatoAppFragment) {}
+  public aljv(OpenSdkFriendService.CheckAvatarUpdateCallback paramCheckAvatarUpdateCallback, int paramInt, JSONArray paramJSONArray) {}
   
-  public void onCreateDomFinish() {}
-  
-  public void onRenderFinished(String paramString)
+  public void run()
   {
-    PlatoAppFragment.a(this.a);
-    long l1;
-    long l2;
-    if (PlatoAppFragment.b(this.a) <= 2)
+    int i = 0;
+    for (;;)
     {
-      if (PlatoAppFragment.b(this.a) != 1) {
-        break label84;
+      if (i < this.jdField_a_of_type_Int) {
+        try
+        {
+          String str = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i).getString("openid");
+          str = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$CheckAvatarUpdateCallback.a.a, str);
+          ImageLoader.a().a(str);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
       }
-      paramString = "start_all_cost";
-      l1 = System.currentTimeMillis();
-      l2 = PlatoAppFragment.a(this.a);
-      if (!PlatoAppFragment.a(this.a)) {
-        break label90;
-      }
-    }
-    label84:
-    label90:
-    for (String str = "1";; str = "0")
-    {
-      TroopTechReportUtils.a("plato_v1", paramString, String.valueOf(l1 - l2), str, String.valueOf(PlatoAppManager.a), "");
-      return;
-      paramString = "start_databack_cost";
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljv
  * JD-Core Version:    0.7.0.1
  */

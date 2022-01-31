@@ -1,24 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mfsdk.persist.DBHandler;
+import com.tencent.mfsdk.reporter.IReporter.ReportResultCallback;
 
-public class rio
-  implements View.OnTouchListener
+public final class rio
+  implements IReporter.ReportResultCallback
 {
-  public rio(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
-    return false;
+    MagnifierSDK.a.a("result_objects", paramInt, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rio
  * JD-Core Version:    0.7.0.1
  */

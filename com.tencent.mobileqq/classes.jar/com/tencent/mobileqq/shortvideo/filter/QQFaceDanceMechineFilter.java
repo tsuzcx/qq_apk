@@ -91,13 +91,18 @@ public class QQFaceDanceMechineFilter
   {
     this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFaceDanceDetectFilter.e();
     GLShaderManager.a();
-    GLFrameImage.ak_();
+    GLFrameImage.am_();
   }
   
   public void f()
   {
     FaceDanceDetectTask.a("QQFaceDanceMechineFilter.onResume");
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.f();
+  }
+  
+  public boolean f_()
+  {
+    return jdField_a_of_type_Boolean;
   }
   
   public void g()
@@ -139,11 +144,6 @@ public class QQFaceDanceMechineFilter
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
       this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
     }
-  }
-  
-  public boolean i_()
-  {
-    return jdField_a_of_type_Boolean;
   }
 }
 

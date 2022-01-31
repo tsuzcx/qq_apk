@@ -9,7 +9,6 @@ import android.view.WindowManager;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
 import com.tencent.mobileqq.leba.model.PluginInfo;
-import com.tencent.mobileqq.leba.view.LebaGridMenuView;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.io.File;
@@ -102,19 +101,6 @@ public class LebaGridUtils
     return paramContext.getFileStreamPath(paramString1);
   }
   
-  public static void a(LebaGridMenuView paramLebaGridMenuView, List paramList)
-  {
-    int[] arrayOfInt = paramLebaGridMenuView.a();
-    int i = 0;
-    while (i < arrayOfInt.length)
-    {
-      if ((arrayOfInt[i] == 1) && (!a(paramList, i))) {
-        paramLebaGridMenuView.a(i);
-      }
-      i += 1;
-    }
-  }
-  
   public static void a(List paramList1, List paramList2)
   {
     Collections.sort(paramList2, new LebaGridUtils.LebaItemComparator());
@@ -184,28 +170,6 @@ public class LebaGridUtils
   public static boolean a(String paramString)
   {
     return paramString.startsWith("http");
-  }
-  
-  public static boolean a(List paramList, int paramInt)
-  {
-    boolean bool2 = false;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < paramList.size())
-      {
-        LebaGridItemInfo localLebaGridItemInfo = (LebaGridItemInfo)paramList.get(i);
-        if ((localLebaGridItemInfo.c == paramInt) && (localLebaGridItemInfo.b == 1)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
-    }
   }
 }
 

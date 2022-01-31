@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.QZoneShareData;
 
-public class amzn
-  implements View.OnClickListener
+public final class amzn
+  implements Parcelable.Creator
 {
-  public amzn(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void onClick(View paramView)
+  public QZoneShareData a(Parcel paramParcel)
   {
-    QZoneShareActivity.b(this.a);
+    return new QZoneShareData(paramParcel, null);
+  }
+  
+  public QZoneShareData[] a(int paramInt)
+  {
+    return new QZoneShareData[paramInt];
   }
 }
 

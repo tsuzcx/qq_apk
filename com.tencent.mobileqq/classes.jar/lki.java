@@ -1,19 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeProteus;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateAdapter;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
-class lki
-  implements ViewBase.OnClickListener
+public class lki
+  implements PtvTemplateManager.IPtvTemplateDownloadListener
 {
-  lki(lkh paramlkh, ViewBase paramViewBase) {}
+  public lki(ReadInJoyCameraTemplateAdapter paramReadInJoyCameraTemplateAdapter) {}
   
-  public void a(ViewBase paramViewBase)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    paramViewBase = new FeedItemCellTypeProteus(this.jdField_a_of_type_Lkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a(), this.jdField_a_of_type_Lkh.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.jdField_a_of_type_Lkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter);
-    paramViewBase.a(this.jdField_a_of_type_Lkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel);
-    paramViewBase.a(this.jdField_a_of_type_Lkh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-    paramViewBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a());
+    ReadInJoyCameraTemplateAdapter.a(this.a).post(new lkk(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    ReadInJoyCameraTemplateAdapter.a(this.a).post(new lkj(this, paramPtvTemplateInfo, paramBoolean));
   }
 }
 

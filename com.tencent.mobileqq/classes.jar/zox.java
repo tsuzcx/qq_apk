@@ -1,17 +1,49 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
+import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class zox
-  implements Runnable
+  implements PhoneContactManager.IPhoneContactListener
 {
-  public zox(TroopManager paramTroopManager, String paramString, TroopManager.callbackInMainThread paramcallbackInMainThread) {}
+  public zox(NewFriendManager paramNewFriendManager) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.d(this.jdField_a_of_type_JavaLangString);
-    ThreadManager.getUIHandler().post(new zoy(this, str));
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
+    }
+    this.a.b();
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
+    }
+    this.a.b();
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
+    }
+    if ((paramInt & 0x1) != 0) {
+      synchronized (NewFriendManager.a(this.a))
+      {
+        Iterator localIterator = NewFriendManager.a(this.a).iterator();
+        if (localIterator.hasNext()) {
+          ((NewFriendManager.INewFriendListener)localIterator.next()).b();
+        }
+      }
+    }
   }
 }
 

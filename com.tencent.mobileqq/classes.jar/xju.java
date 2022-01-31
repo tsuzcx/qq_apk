@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
 
 public class xju
-  implements View.OnClickListener
+  implements AnimationView.MyAnimationListener
 {
-  public xju(BannerManager paramBannerManager) {}
+  public xju(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(AnimationView paramAnimationView) {}
+  
+  public void onAnimationRepeat(AnimationView paramAnimationView) {}
+  
+  public void onAnimationStart(AnimationView paramAnimationView)
   {
-    paramView = CmGameMainManager.a();
-    if (paramView != null)
-    {
-      paramView.a(BannerManager.a(this.a));
-      paramView.a();
-      CmGameMainManager.f();
-    }
+    ThemeHbFragment.a(this.a).removeViewAt(0);
   }
 }
 

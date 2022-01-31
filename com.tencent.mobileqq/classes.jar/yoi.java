@@ -1,38 +1,22 @@
-import com.tencent.mobileqq.apollo.ai.ApolloAIActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import java.io.File;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
+import com.tencent.mobileqq.richstatus.IIconListener;
 
 public class yoi
-  implements Runnable
+  implements IIconListener
 {
-  public yoi(ApolloAIActivity paramApolloAIActivity) {}
+  public yoi(RecommendFriendAdapter paramRecommendFriendAdapter) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    try
-    {
-      File[] arrayOfFile = new File(ApolloConstant.m).listFiles();
-      if (arrayOfFile != null)
-      {
-        int j = arrayOfFile.length;
-        int i = 0;
-        while (i < j)
-        {
-          File localFile = arrayOfFile[i];
-          if (localFile.exists()) {
-            localFile.delete();
-          }
-          i += 1;
-        }
-      }
-      return;
+    if ((paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.notifyDataSetChanged();
     }
-    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yoi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class akqr
   implements Runnable
 {
-  public akqr(SwiftWebAccelerator paramSwiftWebAccelerator, long paramLong, Bundle paramBundle) {}
+  public akqr(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
   public void run()
   {
-    SwiftWebAccelerator.TbsAccelerator.b();
-    SwiftBrowserStatistics.C = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on sub thread, cost " + SwiftBrowserStatistics.C + "ms.");
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator.a(this.jdField_a_of_type_AndroidOsBundle);
+    TVK_SDKMgr.installPlugin(this.a.mRuntime.a().getApplication(), new akqs(this));
   }
 }
 

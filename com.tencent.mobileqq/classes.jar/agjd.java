@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
 
 public class agjd
-  implements DialogInterface.OnDismissListener
+  extends AnimatorListenerAdapter
 {
-  public agjd(ScanTorchActivity paramScanTorchActivity) {}
+  public agjd(ARTipsManager paramARTipsManager, View paramView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ScanTorchActivity.a(this.a, null);
-    ScanTorchActivity.a(this.a, null);
-    this.a.a.b(false);
-    this.a.a.c(false);
-    ScanTorchActivity.c(this.a, true);
+    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeView(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

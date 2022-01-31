@@ -1,6 +1,32 @@
-public abstract interface anif
+import android.os.Process;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.BaseHandler;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public final class anif
+  implements Runnable
 {
-  public static final String[] a = { "_id", "uid", "file_name", "p_dir_key", "file_id", "cloud_sha", "file_size", "local_dir", "insert_time", "thumb_uri", "state", "error_code", "error_msg", "total_size", "cur_size", "local_path", "file_version", "p_dir_uid", "group_root_dir_key" };
+  public void run()
+  {
+    try
+    {
+      long l = Thread.currentThread().getId();
+      int j = Process.getThreadPriority(Process.myTid());
+      BaseHandler.InitalPriority.set(Integer.valueOf(j));
+      BaseHandler.isRegulated.set(Boolean.valueOf(true));
+      if (BaseHandler.access$400(BaseHandler.access$300(Thread.currentThread().getName()))) {}
+      for (int i = BaseHandler.regulalteCount.incrementAndGet();; i = BaseHandler.regulalteCount.get())
+      {
+        QLog.i("BaseHandler", 1, "regultorPriority ThreadName:" + Thread.currentThread().getName() + "(" + Long.valueOf(l) + ") currentPriority: " + j + ",changed:" + Process.getThreadPriority(Process.myTid()) + " regulated:" + i);
+        return;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.w("BaseHandler", 1, "", localException);
+    }
+  }
 }
 
 

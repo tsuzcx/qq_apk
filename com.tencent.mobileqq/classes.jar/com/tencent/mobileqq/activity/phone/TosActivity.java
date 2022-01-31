@@ -8,7 +8,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.ProtectedWebView;
-import wvp;
+import xbd;
 
 public class TosActivity
   extends IphoneTitleBarActivity
@@ -36,7 +36,7 @@ public class TosActivity
     }
     for (;;)
     {
-      this.a.setOnLongClickListener(new wvp(this));
+      this.a.setOnLongClickListener(new xbd(this));
       return true;
       this.a.loadUrl("file:///android_asset/phone_tos.html");
       continue;

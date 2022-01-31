@@ -2002,18 +2002,18 @@ public class QQStoryHandler
         {
           paramArrayOfByte = localMsgBody.bytes_feed_id.get().toStringUtf8();
           if (!localMsgBody.bytes_union_id.has()) {
-            break label447;
+            break label440;
           }
           str2 = localMsgBody.bytes_union_id.get().toStringUtf8();
           if (!localMsgBody.bytes_cover_url.has()) {
-            break label573;
+            break label566;
           }
           localObject1 = localMsgBody.bytes_cover_url.get().toStringUtf8();
           i2 = localMsgBody.uint32_comment_id.get();
           localObject4 = null;
           str3 = null;
           if (!localMsgBody.bytes_ext_info.has()) {
-            break label556;
+            break label549;
           }
           localObject5 = localMsgBody.bytes_ext_info.get().toStringUtf8();
           str1 = str3;
@@ -2047,7 +2047,7 @@ public class QQStoryHandler
       }
       catch (Exception paramArrayOfByte)
       {
-        label447:
+        label440:
         SLog.b("Q.qqstory.protocol", "decode json fail", paramArrayOfByte);
         localObject4 = localObject3;
         paramArrayOfByte = (byte[])localObject2;
@@ -2071,7 +2071,7 @@ public class QQStoryHandler
         if (TextUtils.isEmpty(paramArrayOfByte)) {
           break;
         }
-        new GetUserIconHandler().a(paramArrayOfByte);
+        GetUserIconHandler.a(paramArrayOfByte);
         return;
         if (!QLog.isColorLevel()) {
           break;
@@ -2083,13 +2083,13 @@ public class QQStoryHandler
         str2 = "";
         continue;
       }
-      label556:
+      label549:
       Object localObject2 = null;
       String str1 = null;
       Object localObject3 = localObject1;
       Object localObject1 = str1;
       continue;
-      label573:
+      label566:
       localObject1 = null;
     }
   }
@@ -2236,18 +2236,18 @@ public class QQStoryHandler
     //   47: aload_3
     //   48: invokestatic 363	com/tencent/biz/qqstory/base/QQStoryHandler:a	(Ljava/lang/Object;)Z
     //   51: ifeq +267 -> 318
-    //   54: new 1247	com/tencent/biz/qqstory/network/pb/qqstory_pgc$RspReport
+    //   54: new 1246	com/tencent/biz/qqstory/network/pb/qqstory_pgc$RspReport
     //   57: dup
-    //   58: invokespecial 1248	com/tencent/biz/qqstory/network/pb/qqstory_pgc$RspReport:<init>	()V
+    //   58: invokespecial 1247	com/tencent/biz/qqstory/network/pb/qqstory_pgc$RspReport:<init>	()V
     //   61: astore_2
     //   62: aload_2
     //   63: aload_3
     //   64: checkcast 90	[B
     //   67: checkcast 90	[B
-    //   70: invokevirtual 1249	com/tencent/biz/qqstory/network/pb/qqstory_pgc$RspReport:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   70: invokevirtual 1248	com/tencent/biz/qqstory/network/pb/qqstory_pgc$RspReport:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   73: pop
     //   74: aload_2
-    //   75: getfield 1250	com/tencent/biz/qqstory/network/pb/qqstory_pgc$RspReport:result	Lcom/tencent/biz/qqstory/network/pb/qqstory_pgc$ErrorInfo;
+    //   75: getfield 1249	com/tencent/biz/qqstory/network/pb/qqstory_pgc$RspReport:result	Lcom/tencent/biz/qqstory/network/pb/qqstory_pgc$ErrorInfo;
     //   78: invokevirtual 373	com/tencent/biz/qqstory/network/pb/qqstory_pgc$ErrorInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
     //   81: checkcast 372	com/tencent/biz/qqstory/network/pb/qqstory_pgc$ErrorInfo
     //   84: astore_3
@@ -2290,7 +2290,7 @@ public class QQStoryHandler
     //   153: new 219	java/lang/StringBuilder
     //   156: dup
     //   157: invokespecial 220	java/lang/StringBuilder:<init>	()V
-    //   160: ldc_w 1252
+    //   160: ldc_w 1251
     //   163: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   166: iconst_1
     //   167: invokevirtual 426	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
@@ -2340,7 +2340,7 @@ public class QQStoryHandler
     //   264: new 219	java/lang/StringBuilder
     //   267: dup
     //   268: invokespecial 220	java/lang/StringBuilder:<init>	()V
-    //   271: ldc_w 1254
+    //   271: ldc_w 1253
     //   274: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   277: aload_3
     //   278: getfield 374	com/tencent/biz/qqstory/network/pb/qqstory_pgc$ErrorInfo:error_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;

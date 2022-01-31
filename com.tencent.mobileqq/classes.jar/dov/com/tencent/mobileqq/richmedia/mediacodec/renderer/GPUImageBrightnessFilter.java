@@ -7,7 +7,7 @@ import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 public class GPUImageBrightnessFilter
   extends GPUDrawPartFilter
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.a(BaseApplicationImpl.getContext(), 2131230750);
+  private static String jdField_a_of_type_JavaLangString = GlUtil.a(BaseApplicationImpl.getContext(), 2131230751);
   private float jdField_a_of_type_Float;
   private int e;
   
@@ -27,16 +27,16 @@ public class GPUImageBrightnessFilter
     this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void b()
+  public void c()
   {
-    super.b();
+    super.c();
     this.e = GLES20.glGetUniformLocation(a(), "brightness");
     a(this.jdField_a_of_type_Float);
   }
   
-  protected void e()
+  protected void f()
   {
-    super.e();
+    super.f();
     GLES20.glUniform1f(this.e, this.jdField_a_of_type_Float);
   }
 }

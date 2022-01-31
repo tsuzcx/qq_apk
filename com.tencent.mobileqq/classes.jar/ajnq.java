@@ -1,59 +1,40 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.TroopInfoManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.AppInfo;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
+import android.support.annotation.NonNull;
+import android.widget.LinearLayout;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.AssertUtils;
+import com.tencent.mobileqq.troop.homework.arithmetic.stream.SendArithHomeResultSegment.RspInfo;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
 
-public final class ajnq
-  implements Runnable
+public class ajnq
+  extends SimpleObserver
 {
-  public ajnq(QQAppInterface paramQQAppInterface, String paramString) {}
+  public ajnq(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
   
-  public void run()
+  public void a(SendArithHomeResultSegment.RspInfo paramRspInfo)
   {
-    TroopInfoManager localTroopInfoManager = (TroopInfoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36);
-    Object localObject = localTroopInfoManager.a(this.jdField_a_of_type_JavaLangString);
-    if (localObject != null) {
-      try
-      {
-        oidb_0xaf4.RspBody localRspBody = new oidb_0xaf4.RspBody();
-        localRspBody.mergeFrom((byte[])localObject);
-        localObject = localRspBody.infos.get();
-        if ((localObject == null) || (((List)localObject).size() == 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("hw_troop", 2, "setAIOHomeworkBtnRedPoint: appList == null || appList.size() == 0");
-          }
-        }
-        else
-        {
-          Iterator localIterator = ((List)localObject).iterator();
-          while (localIterator.hasNext())
-          {
-            oidb_0xaf4.AppInfo localAppInfo = (oidb_0xaf4.AppInfo)localIterator.next();
-            if (localAppInfo.appid.get() == 1104445552L)
-            {
-              localAppInfo.push_red_point.set(0);
-              localRspBody.infos.set((List)localObject);
-              localTroopInfoManager.a(this.jdField_a_of_type_JavaLangString, localRspBody.toByteArray());
-              return;
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("hw_troop", 2, "setAIOHomeworkBtnRedPoint: InvalidProtocolBufferMicroException.");
-        }
-      }
-    }
+    super.onNext(paramRspInfo);
+    SLog.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+    AssertUtils.a(paramRspInfo.a);
+    AssertUtils.a(paramRspInfo.b);
+    CheckArithHWResultFragment.a(this.a, paramRspInfo.a, paramRspInfo.b);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    SLog.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
+    QQToast.a(this.a.getActivity(), 1, "上传作业失败", 0).a();
+    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+    CheckArithHWResultFragment.a(this.a, null, null);
   }
 }
 

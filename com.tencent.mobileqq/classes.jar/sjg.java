@@ -1,32 +1,15 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class sjg
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public sjg(DevlockPushActivity paramDevlockPushActivity) {}
+  public sjg(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if ((this.a.a == null) && (!this.a.isFinishing()))
-      {
-        this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
-        this.a.a.c(2131435070);
-      }
-      if ((this.a.a != null) && (!this.a.a.isShowing())) {
-        this.a.a.show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.B();
   }
 }
 

@@ -39,8 +39,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import mgr;
-import mgs;
+import mke;
+import mkf;
 import mqq.manager.TicketManager;
 import org.json.JSONObject;
 import tencent.im.oidb.gallery.gallery.GalleryInfo;
@@ -56,7 +56,7 @@ public class ReadInJoyAllInOneBar
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   KandianFavoriteBroadcastReceiver jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicKandianFavoriteBroadcastReceiver = new KandianFavoriteBroadcastReceiver(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback);
-  ReadInJoyAtlasManager.AtlasCallback jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback = new mgr(this);
+  ReadInJoyAtlasManager.AtlasCallback jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback = new mke(this);
   private ReadInJoyAllInOneBar.OnAllInOnEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar$OnAllInOnEventListener;
   protected HttpWebCgiAsyncTask.Callback a;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -81,20 +81,20 @@ public class ReadInJoyAllInOneBar
   public ReadInJoyAllInOneBar(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new mgs(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new mkf(this);
   }
   
   public ReadInJoyAllInOneBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new mgs(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new mkf(this);
     a(paramContext);
     LayoutInflater.from(paramContext).inflate(a(), this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364014);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364015));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364017));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364018));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364016));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364039);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364040));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364042));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364043));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364041));
     a(this.jdField_a_of_type_AndroidViewView);
     a(this.jdField_a_of_type_AndroidWidgetImageView);
     a(this.jdField_b_of_type_AndroidWidgetImageView);
@@ -173,7 +173,7 @@ public class ReadInJoyAllInOneBar
   
   public int a()
   {
-    return 2130968836;
+    return 2130968840;
   }
   
   public void a()
@@ -371,7 +371,7 @@ public class ReadInJoyAllInOneBar
       }
       switch (paramView.getId())
       {
-      case 2131364016: 
+      case 2131364041: 
       default: 
         i = 2;
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar$OnAllInOnEventListener.a(i, paramView)) {
@@ -404,7 +404,7 @@ public class ReadInJoyAllInOneBar
             break;
             switch (paramView.getId())
             {
-            case 2131364016: 
+            case 2131364041: 
             default: 
               return;
             }

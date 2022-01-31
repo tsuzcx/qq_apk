@@ -47,11 +47,11 @@ public class ChildGuideUi
       AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (localAVActivity != null)
       {
-        localAVActivity.getLayoutInflater().inflate(2130969274, this.jdField_a_of_type_AndroidViewViewGroup);
+        localAVActivity.getLayoutInflater().inflate(2130969272, this.jdField_a_of_type_AndroidViewViewGroup);
         this.jdField_a_of_type_AndroidContentResResources = localAVActivity.getResources();
       }
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365918));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365923));
   }
   
   void a(View paramView)
@@ -123,7 +123,7 @@ public class ChildGuideUi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.ChildGuideUi
  * JD-Core Version:    0.7.0.1
  */

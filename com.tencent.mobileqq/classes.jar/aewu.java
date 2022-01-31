@@ -1,33 +1,38 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil;
+import android.view.View;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class aewu
-  implements URLDrawable.URLDrawableListener
+public class aewu
+  implements aexx
 {
-  public aewu(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public aewu(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(View paramView)
   {
-    SLog.c("ShortVideoShareUtil", "onLoadCanceled --");
+    this.a.f();
+    ReportController.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_more", 0, 0, "", "", "", "");
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(View paramView, aeyc paramaeyc)
   {
-    ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, null);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    SLog.c("ShortVideoShareUtil", "onLoadProgressed --" + paramInt);
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = ShortVideoShareUtil.a(paramURLDrawable);
-    ShortVideoShareUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, paramURLDrawable);
+    if (paramaeyc.jdField_a_of_type_Boolean) {
+      QQToast.a(this.a, 1, "已发送邀请链接~", 1).a();
+    }
+    do
+    {
+      return;
+      GameRoomInviteActivity.a(this.a, paramaeyc.jdField_a_of_type_JavaLangString, paramaeyc.jdField_a_of_type_Int);
+      paramaeyc.jdField_a_of_type_Boolean = true;
+      this.a.a.a(paramView, paramaeyc.jdField_a_of_type_Boolean);
+      if (paramaeyc.jdField_a_of_type_Int == 1)
+      {
+        ReportController.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
+        return;
+      }
+    } while (paramaeyc.jdField_a_of_type_Int != 0);
+    ReportController.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
   }
 }
 

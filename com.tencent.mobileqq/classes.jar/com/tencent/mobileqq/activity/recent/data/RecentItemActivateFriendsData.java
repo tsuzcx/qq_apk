@@ -45,7 +45,7 @@ public class RecentItemActivateFriendsData
       this.jdField_c_of_type_JavaLangCharSequence = localMessage.getMessageText();
       e();
       if (TextUtils.isEmpty(this.b)) {
-        this.b = paramContext.getString(2131437234);
+        this.b = paramContext.getString(2131437254);
       }
     } while (!AppSetting.b);
     paramQQAppInterface = new StringBuilder();

@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
+import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
 
 public class nlm
-  implements DialogInterface.OnDismissListener
+  extends EncryptUrlJob
 {
-  public nlm(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public nlm(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareWeChatData paramShareWeChatData)
   {
-    this.a.s();
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.d = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

@@ -1,55 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppSSO;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class aawp
+public class aawp
   implements Runnable
 {
-  aawp(aawo paramaawo, aawy paramaawy, String paramString, double paramDouble1, double paramDouble2) {}
+  public aawp(ArkAppModuleReg.ModuleQQ paramModuleQQ, String paramString1, String paramString2, long paramLong1, String paramString3, long paramLong2) {}
   
   public void run()
   {
-    Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject1 == null) {
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, qq app is null");
-    }
-    for (;;)
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(BaseActivity.sTopActivity, 2131624516);
+    localQQCustomDialog.setContentView(2130968847);
+    localQQCustomDialog.setTitle(BaseActivity.sTopActivity.getString(2131438264, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    ((ImageView)localQQCustomDialog.findViewById(2131364066)).setImageDrawable(BaseActivity.sTopActivity.getResources().getDrawable(2130838205));
+    ((TextView)localQQCustomDialog.findViewById(2131364067)).setText(this.jdField_a_of_type_JavaLangString);
+    ((TextView)localQQCustomDialog.findViewById(2131362781)).setText(BaseActivity.sTopActivity.getString(2131438852));
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    ArkAppCenter.a(this.jdField_b_of_type_JavaLangString, new aawq(this, localQQCustomDialog));
+    localQQCustomDialog.setNegativeButton(2131434690, new aawr(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(2131434688, new aawt(this, localQQCustomDialog));
+    try
     {
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, fail");
-      if (this.jdField_a_of_type_Aawy.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler != null) {
-        this.jdField_a_of_type_Aawy.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler.a(this.jdField_a_of_type_Aawy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aawy.jdField_a_of_type_JavaLangObject, null, true);
+      localQQCustomDialog.show();
+      label159:
+      if (ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_login", this.c) == 0) {
+        ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_login", this.c, 2);
       }
-      Object localObject2;
-      String str;
-      do
-      {
-        return;
-        localObject2 = (ArkAppCenter)((QQAppInterface)localObject1).getManager(120);
-        if (localObject2 == null)
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, ark center is null");
-          break;
-        }
-        localObject1 = ((ArkAppCenter)localObject2).a();
-        localObject2 = ((ArkAppCenter)localObject2).a();
-        if (localObject2 == null)
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, ark sso is null");
-          break;
-        }
-        str = ArkMessageServerLogic.a(this.jdField_a_of_type_Aawy, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Double, this.b);
-        if (TextUtils.isEmpty(str))
-        {
-          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, req json is null");
-          break;
-        }
-      } while (((ArkAppSSO)localObject2).a("ArkSearchService.ActiveSearch", str, 10000, 0, new aawq(this, (ArkLocalAppMgr)localObject1)));
-      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "sendBabyQTextIntent, fail send sso request");
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label159;
     }
   }
 }

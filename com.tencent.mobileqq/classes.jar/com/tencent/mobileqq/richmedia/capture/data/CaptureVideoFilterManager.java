@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import ahhn;
-import ahho;
-import ahhp;
-import ahhq;
-import ahhr;
+import ahme;
+import ahmf;
+import ahmg;
+import ahmh;
+import ahmi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -65,9 +65,9 @@ public class CaptureVideoFilterManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "capture_qsvf" + File.separator;
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "capture_qsvf" + File.separator;
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "capture_res" + File.separator;
-    f = AppConstants.aJ + "qav" + File.separator + "beauty" + File.separator;
+    f = AppConstants.aK + "qav" + File.separator + "beauty" + File.separator;
     g = f + "SKINCOLOR" + File.separator;
     jdField_c_of_type_JavaLangString = f;
     jdField_a_of_type_JavaLangObject = new Object();
@@ -158,7 +158,7 @@ public class CaptureVideoFilterManager
   
   public static final CaptureVideoFilterManager a()
   {
-    return ahho.a();
+    return ahmf.a();
   }
   
   public static String a(Context paramContext)
@@ -199,7 +199,7 @@ public class CaptureVideoFilterManager
         if (!((File)localObject).exists())
         {
           localObject = new HttpNetReq();
-          ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahhq();
+          ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahmh();
           ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
           ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
           ((HttpNetReq)localObject).jdField_c_of_type_JavaLangString = (f + "skin_color.zip");
@@ -553,7 +553,7 @@ public class CaptureVideoFilterManager
           else
           {
             this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
-            this.jdField_a_of_type_AndroidOsHandler.post(new ahhn(this));
+            this.jdField_a_of_type_AndroidOsHandler.post(new ahme(this));
           }
         }
         else {
@@ -631,7 +631,7 @@ public class CaptureVideoFilterManager
                   if (!((File)localObject3).exists())
                   {
                     localObject3 = new HttpNetReq();
-                    ((HttpNetReq)localObject3).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahhr(this);
+                    ((HttpNetReq)localObject3).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahmi(this);
                     ((HttpNetReq)localObject3).jdField_a_of_type_JavaLangString = localFilterDesc.jdField_c_of_type_JavaLangString;
                     ((HttpNetReq)localObject3).jdField_a_of_type_Int = 0;
                     ((HttpNetReq)localObject3).jdField_c_of_type_JavaLangString = ((String)localObject2);
@@ -648,7 +648,7 @@ public class CaptureVideoFilterManager
                   if (!((File)localObject3).exists())
                   {
                     localObject2 = new HttpNetReq();
-                    ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahhp(this);
+                    ((HttpNetReq)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahmg(this);
                     ((HttpNetReq)localObject2).jdField_a_of_type_JavaLangString = localFilterDesc.jdField_a_of_type_JavaLangString;
                     ((HttpNetReq)localObject2).jdField_a_of_type_Int = 0;
                     ((HttpNetReq)localObject2).jdField_c_of_type_JavaLangString = (jdField_b_of_type_JavaLangString + localFilterDesc.e + ".zip");

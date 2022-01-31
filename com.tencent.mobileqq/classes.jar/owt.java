@@ -1,44 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.animation.TypeEvaluator;
 
-class owt
-  implements ShortVideoResourceManager.INet_ShortVideoResource
+final class owt
+  implements TypeEvaluator
 {
-  owt(ows paramows) {}
+  private ows a;
   
-  public void C_()
+  public ows a(float paramFloat, ows paramows1, ows paramows2)
   {
-    this.a.jdField_a_of_type_Owi.a.b = false;
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label146;
-      }
-      VideoEnvironment.a("TroopMemberApiService", "短视频插件下载失败[" + paramInt + "]", null);
-      ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
-      ShortVideoErrorReport.a(2, paramInt);
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+    float f1 = paramows1.a + (paramows2.a - paramows1.a) * paramFloat;
+    float f2 = paramows1.b + (paramows2.b - paramows1.b) * paramFloat;
+    paramFloat = paramows1.c + (paramows2.c - paramows1.c) * paramFloat;
+    if (this.a == null) {
+      this.a = new ows(f1, f2, paramFloat);
     }
     for (;;)
     {
-      VideoEnvironment.a("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      this.a.jdField_a_of_type_Owi.a.a(94, this.a.jdField_a_of_type_AndroidOsBundle);
-      this.a.jdField_a_of_type_Owi.a.b = false;
-      return;
-      label146:
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
+      return this.a;
+      this.a.a = f1;
+      this.a.b = f2;
+      this.a.c = paramFloat;
     }
   }
-  
-  public void a(String paramString, long paramLong1, long paramLong2) {}
 }
 
 

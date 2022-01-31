@@ -1,41 +1,13 @@
-import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class ses
-  extends OpenIdObserver
+  implements DialogInterface.OnClickListener
 {
-  public ses(ChatSettingForTroop paramChatSettingForTroop) {}
+  public ses(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
-  {
-    if ((this.a.isFinishing()) || (this.a.n)) {}
-    do
-    {
-      do
-      {
-        return;
-        this.a.s();
-        if (this.a.b != null) {
-          this.a.b.removeCallbacksAndMessages(null);
-        }
-        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
-        }
-      } while (paramOpenID.openID.equals(this.a.d));
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
-      }
-      this.a.C();
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

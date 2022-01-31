@@ -1,59 +1,17 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchResultAdapter;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
 public class ubm
-  extends DiscussionObserver
+  extends TransProcessorHandler
 {
-  public ubm(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ubm(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  protected void a(boolean paramBoolean, Long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
-      this.a.a(paramLong2 + "");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
-      }
-      if (this.a.h)
-      {
-        this.a.a(paramLong2 + "");
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$SearchResultAdapter != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$SearchResultAdapter.notifyDataSetChanged();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      return;
-      QQToast.a(this.a, 1, this.a.getString(2131433752), 0).b(this.a.getTitleBarHeight());
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2)
-  {
-    this.a.runOnUiThread(new ubn(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2));
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.c();
     }
   }
 }

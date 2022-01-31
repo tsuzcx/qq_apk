@@ -12,7 +12,7 @@ import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
-import mzi;
+import ndc;
 
 public class PublicAccountImageCollectionUtils
 {
@@ -106,7 +106,7 @@ public class PublicAccountImageCollectionUtils
       {
         int i;
         if (!WXShareHelper.a().a()) {
-          i = 2131435319;
+          i = 2131435335;
         }
         for (;;)
         {
@@ -118,13 +118,13 @@ public class PublicAccountImageCollectionUtils
             }
             return;
             if (!WXShareHelper.a().b()) {
-              i = 2131435320;
+              i = 2131435336;
             }
           }
           else
           {
             paramString2 = String.valueOf(System.currentTimeMillis());
-            Object localObject = new mzi(paramString2);
+            Object localObject = new ndc(paramString2);
             WXShareHelper.a().a((WXShareHelper.WXShareListener)localObject);
             localObject = WXShareHelper.a();
             paramBitmap = a(paramBitmap);

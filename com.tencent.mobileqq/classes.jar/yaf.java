@@ -1,43 +1,19 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class yaf
-  implements View.OnFocusChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public yaf(SelectMemberActivity paramSelectMemberActivity) {}
+  public yaf(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && ((this.a.l == 6) || (this.a.l == 7) || (this.a.l != this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a())))
-    {
-      paramView = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
-      if (paramView != null)
-      {
-        paramView.a(this.a.a(), this.a.f);
-        FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
-        }
-        localFragmentTransaction.add(2131363923, paramView);
-        localFragmentTransaction.commitAllowingStateLoss();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
-      }
-      if (this.a.d == 0) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 1, 0, "", "", "", "");
-      }
-    }
-    else
-    {
-      return;
-    }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 2, 0, "", "", "", "");
+    QzDynamicVideoPreviewActivity.a(this.a).dismiss();
+    LpReportInfo_pf00064.allReport(680, 1, 4, true);
+    QzDynamicVideoPreviewActivity.d(this.a);
   }
 }
 

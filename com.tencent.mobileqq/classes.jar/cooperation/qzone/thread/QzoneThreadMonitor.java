@@ -1,13 +1,13 @@
 package cooperation.qzone.thread;
 
-import anaj;
-import anak;
-import anal;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Printer;
+import anih;
+import anii;
+import anij;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ public class QzoneThreadMonitor
   private static final long THREAD_DELAY_WARN_THRESHOLD_REAL_TIME = 500L;
   public static boolean enableMonitor;
   private static QzoneThreadMonitor instance;
-  private Printer handlerDumpPrinter = new anak(this);
+  private Printer handlerDumpPrinter = new anii(this);
   private ConcurrentHashMap id2Msg = new ConcurrentHashMap(8, 0.75F, 2);
   private Handler monitorHandler;
   private List realTimeThreadNames = Arrays.asList(new String[] { "RealTime_HandlerThread" });
@@ -41,7 +41,7 @@ public class QzoneThreadMonitor
   {
     HandlerThread localHandlerThread = new HandlerThread("qzone_thread_monitor");
     localHandlerThread.start();
-    this.monitorHandler = new anaj(this, localHandlerThread.getLooper());
+    this.monitorHandler = new anih(this, localHandlerThread.getLooper());
   }
   
   private static String buildStackTraceString(StackTraceElement[] paramArrayOfStackTraceElement, String paramString)
@@ -81,7 +81,7 @@ public class QzoneThreadMonitor
     }
     label6:
     String str;
-    anal localanal;
+    anij localanij;
     for (;;)
     {
       return;
@@ -92,8 +92,8 @@ public class QzoneThreadMonitor
           if (QzoneHandlerThreadFactory.mHandlerThreadMap.containsKey(paramBaseHandler))
           {
             str = String.valueOf(paramMessage.hashCode()) + paramMessage.getWhen();
-            localanal = (anal)this.id2Msg.get(str);
-            if (localanal == null)
+            localanij = (anij)this.id2Msg.get(str);
+            if (localanij == null)
             {
               QZLog.w("QzoneThreadMonitor", 1, new Object[] { "massage info missing. id=", str });
               return;
@@ -107,10 +107,10 @@ public class QzoneThreadMonitor
         }
       }
     }
-    localanal.jdField_b_of_type_Long = paramLong;
-    long l = paramLong - localanal.a;
-    if (localanal.jdField_b_of_type_Int != 3) {
-      if (localanal.jdField_b_of_type_Int != 1) {
+    localanij.jdField_b_of_type_Long = paramLong;
+    long l = paramLong - localanij.a;
+    if (localanij.jdField_b_of_type_Int != 3) {
+      if (localanij.jdField_b_of_type_Int != 1) {
         break label385;
       }
     }
@@ -118,21 +118,21 @@ public class QzoneThreadMonitor
     for (paramLong = 2000L;; paramLong = 500L)
     {
       if (l > paramLong) {
-        QZLog.w("QzoneThreadMonitor", 1, new Object[] { "[begin handle] ", paramBaseHandler, " id=", str + " delay=", Long.valueOf(l), " what=", paramMessage.what + " msg.target=", localanal.jdField_c_of_type_JavaLangString, " msg.callback=", localanal.d });
+        QZLog.w("QzoneThreadMonitor", 1, new Object[] { "[begin handle] ", paramBaseHandler, " id=", str + " delay=", Long.valueOf(l), " what=", paramMessage.what + " msg.target=", localanij.jdField_c_of_type_JavaLangString, " msg.callback=", localanij.d });
       }
       paramMessage = (PriorityBlockingQueue)this.thread2Msg.get(paramBaseHandler);
       if (paramMessage == null) {
         break;
       }
-      for (paramBaseHandler = (anal)paramMessage.peek(); (paramBaseHandler != null) && (paramBaseHandler.a < localanal.a); paramBaseHandler = (anal)paramMessage.peek()) {
+      for (paramBaseHandler = (anij)paramMessage.peek(); (paramBaseHandler != null) && (paramBaseHandler.a < localanij.a); paramBaseHandler = (anij)paramMessage.peek()) {
         paramMessage.poll();
       }
-      if (localanal.jdField_b_of_type_Int == 3) {
+      if (localanij.jdField_b_of_type_Int == 3) {
         break;
       }
-      paramBaseHandler = Message.obtain(this.monitorHandler, 1, 0, 0, localanal);
+      paramBaseHandler = Message.obtain(this.monitorHandler, 1, 0, 0, localanij);
       paramMessage = this.monitorHandler;
-      if (localanal.jdField_b_of_type_Int == 1) {}
+      if (localanij.jdField_b_of_type_Int == 1) {}
       for (paramLong = 2000L;; paramLong = 500L)
       {
         paramMessage.sendMessageDelayed(paramBaseHandler, paramLong);
@@ -181,7 +181,7 @@ public class QzoneThreadMonitor
             break label225;
           }
           i = 2;
-          localObject = new anal(this, str2, str1, paramMessage.what, paramBaseHandler, (String)localObject, paramLong, i);
+          localObject = new anij(this, str2, str1, paramMessage.what, paramBaseHandler, (String)localObject, paramLong, i);
           this.id2Msg.put(str2, localObject);
           paramMessage = (PriorityBlockingQueue)this.thread2Msg.get(str1);
           paramBaseHandler = paramMessage;
@@ -230,7 +230,7 @@ public class QzoneThreadMonitor
           if (QzoneHandlerThreadFactory.mHandlerThreadMap.containsKey(str1))
           {
             str2 = String.valueOf(paramMessage.hashCode()) + paramMessage.getWhen();
-            paramBaseHandler = (anal)this.id2Msg.remove(str2);
+            paramBaseHandler = (anij)this.id2Msg.remove(str2);
             if (paramBaseHandler == null)
             {
               QZLog.w("QzoneThreadMonitor", 1, new Object[] { "massage info missing. id=", str2 });

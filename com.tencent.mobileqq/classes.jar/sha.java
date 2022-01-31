@@ -1,28 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.data.AppShareID;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troop.widget.ExpandableTextView.OnExpandStateListener;
 
 public class sha
-  extends ConfigObserver
+  implements ExpandableTextView.OnExpandStateListener
 {
-  public sha(Conversation paramConversation) {}
+  public sha(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
   {
-    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
-    {
-      ReportController.b(this.a.a, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
-      this.a.a(new shb(this, paramString3, paramString1, paramString2));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
-  {
-    if (paramBoolean) {
-      this.a.a(0L);
-    }
+    paramView.setVisibility(8);
   }
 }
 

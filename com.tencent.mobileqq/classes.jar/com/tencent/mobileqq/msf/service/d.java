@@ -268,11 +268,20 @@ public class d
   
   public static void a(HashMap paramHashMap)
   {
-    ActivityManager localActivityManager = (ActivityManager)BaseApplication.getContext().getSystemService("activity");
-    ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-    localActivityManager.getMemoryInfo(localMemoryInfo);
-    paramHashMap.put("availMem", String.valueOf(localMemoryInfo.availMem));
-    paramHashMap.put("lowMemory", String.valueOf(localMemoryInfo.lowMemory));
+    try
+    {
+      ActivityManager localActivityManager = (ActivityManager)BaseApplication.getContext().getSystemService("activity");
+      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+      localActivityManager.getMemoryInfo(localMemoryInfo);
+      paramHashMap.put("availMem", String.valueOf(localMemoryInfo.availMem));
+      paramHashMap.put("lowMemory", String.valueOf(localMemoryInfo.lowMemory));
+      return;
+    }
+    catch (Exception paramHashMap)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MSF.S.AppProcessManager", 2, "getSystemStatus exception", paramHashMap);
+    }
   }
   
   public static boolean a()

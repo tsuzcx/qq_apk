@@ -1,15 +1,17 @@
-import com.tencent.biz.qrcode.CodeMaskManager;
-import org.json.JSONArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
 
 class osg
-  implements Runnable
+  implements View.OnClickListener
 {
-  osg(osf paramosf, JSONArray paramJSONArray) {}
+  osg(osf paramosf, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_Osf.a.a) {
-      CodeMaskManager.a(this.jdField_a_of_type_Osf.a, this.jdField_a_of_type_OrgJsonJSONArray);
+    if (this.jdField_a_of_type_Osf.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      this.jdField_a_of_type_Osf.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Osf.jdField_b_of_type_ComTencentImageURLImageView);
     }
   }
 }

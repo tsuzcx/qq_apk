@@ -1,27 +1,50 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
 
 public class abjv
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public abjv(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  public abjv(ConversationPullDownActiveBase paramConversationPullDownActiveBase, View paramView1, View paramView2) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.a.c.setVisibility(4);
-    this.a.d.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.a.b.setVisibility(4);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(4);
-    this.a.e.setVisibility(0);
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.g);
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.k)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.g);
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.k)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.k) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abjv
  * JD-Core Version:    0.7.0.1
  */

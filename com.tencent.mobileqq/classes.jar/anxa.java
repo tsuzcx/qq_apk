@@ -1,17 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.TextParcelData;
 
-public class anxa
-  implements ValueAnimator.AnimatorUpdateListener
+public final class anxa
+  implements Parcelable.Creator
 {
-  public anxa(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public TextParcelData a(Parcel paramParcel)
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.k();
+    return new TextParcelData(paramParcel);
+  }
+  
+  public TextParcelData[] a(int paramInt)
+  {
+    return new TextParcelData[paramInt];
   }
 }
 

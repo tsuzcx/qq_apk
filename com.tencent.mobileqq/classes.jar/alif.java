@@ -1,36 +1,34 @@
-import android.app.Activity;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.InstallParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.open.agent.AuthorityLoginView;
 
 public class alif
-  implements Runnable
+  implements View.OnClickListener
 {
-  public alif(MyAppApi paramMyAppApi, boolean paramBoolean, Activity paramActivity, String paramString) {}
+  public alif(AuthorityLoginView paramAuthorityLoginView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LogUtility.c("MyAppApi", "---isAutoInstall:" + ControlPolicyUtil.c() + " url:" + ControlPolicyUtil.a() + " interval:" + ControlPolicyUtil.a());
-    boolean bool = ControlPolicyUtil.b();
-    if ((!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b()) && (bool))
+    paramView = this.a.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
+    View localView = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131365732);
+    if (paramView == this.a.b)
     {
-      LogUtility.c("MyAppApi", "---startDownloadYYB---");
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = new MyAppApi.InstallParams(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.b = false;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidOsBundle = null;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Int = -1;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
+      if (localView != null) {
+        localView.setVisibility(8);
       }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     }
-    else
-    {
+    while (paramView != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 1);
+    if (localView != null) {
+      localView.setVisibility(0);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.b);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
   }
 }
 

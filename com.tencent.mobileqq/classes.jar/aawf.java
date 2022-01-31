@@ -1,13 +1,35 @@
-import com.tencent.ark.ark.PlayerStub;
-import com.tencent.ark.ark.PlayerStubFactory;
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import com.tencent.ark.ark;
+import com.tencent.ark.ark.Container;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import java.lang.ref.WeakReference;
 
-public final class aawf
-  implements ark.PlayerStubFactory
+public class aawf
+  implements Runnable
 {
-  public ark.PlayerStub CreateStub()
+  public aawf(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong, String paramString) {}
+  
+  public void run()
   {
-    return new ArkMediaPlayer();
+    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
+    if (localObject == null) {}
+    ArkFullScreenAppActivity localArkFullScreenAppActivity;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
+        localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
+        localObject = ArkAppContainer.a((ark.Container)localObject);
+      } while (localObject == null);
+      localObject = (ArkAppContainer)((WeakReference)localObject).get();
+    } while (localObject == null);
+    localArkFullScreenAppActivity.a((ArkAppContainer)localObject, this.jdField_a_of_type_JavaLangString);
   }
 }
 

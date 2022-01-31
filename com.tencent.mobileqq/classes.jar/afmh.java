@@ -1,33 +1,39 @@
-import android.os.Handler;
-import android.os.Process;
-import com.tencent.mobileqq.nearby.smooth.ItemLoader;
-import java.lang.ref.SoftReference;
-import java.util.Map;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.common.galleryactivity.AnimationUtils;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class afmh
-  implements Runnable
+class afmh
+  implements ActionSheet.OnButtonClickListener
 {
-  private final afmf jdField_a_of_type_Afmf;
-  private final ItemLoader jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
+  afmh(afmg paramafmg, View paramView, PicInfo paramPicInfo, ActionSheet paramActionSheet) {}
   
-  public afmh(ItemLoader paramItemLoader, afmf paramafmf)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader = paramItemLoader;
-    this.jdField_a_of_type_Afmf = paramafmf;
-  }
-  
-  public void run()
-  {
-    Process.setThreadPriority(10);
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.b.remove(this.jdField_a_of_type_Afmf.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Afmf)) {}
-    do
+    int i = paramInt;
+    if (this.jdField_a_of_type_Afmg.jdField_a_of_type_Int == 0) {
+      i = paramInt + 1;
+    }
+    switch (i)
     {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
       return;
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Afmf.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Afmf.jdField_a_of_type_JavaLangInteger.intValue());
-      this.jdField_a_of_type_Afmf.c = new SoftReference(localObject);
-    } while ((this.jdField_a_of_type_Afmf.b == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Afmf)));
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a.post(new afme(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader, this.jdField_a_of_type_Afmf, false));
+      this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, 0);
+      NearbyProfileEditPanel.a(this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel);
+      continue;
+      paramView = AnimationUtils.a(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(this.jdField_a_of_type_Afmg.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_JavaUtilArrayList);
+      continue;
+      NearbyProfileEditPanel.a(this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel, this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo, this.jdField_a_of_type_AndroidViewView);
+    }
   }
 }
 

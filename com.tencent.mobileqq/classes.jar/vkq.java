@@ -1,14 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-class vkq
-  implements Runnable
+public class vkq
+  implements DialogInterface.OnClickListener
 {
-  vkq(vkp paramvkp) {}
+  public vkq(ShortVideoItemBuilder paramShortVideoItemBuilder, MessageForShortVideo paramMessageForShortVideo, long paramLong) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.d.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long);
+    com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = true;
   }
 }
 

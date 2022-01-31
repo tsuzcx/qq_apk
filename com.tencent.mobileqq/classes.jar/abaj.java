@@ -1,18 +1,11 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
-import com.tencent.qphone.base.util.QLog;
-
 public class abaj
-  implements Runnable
+  extends abad
 {
-  public abaj(ARMapActivity paramARMapActivity) {}
+  public String d;
   
-  public void run()
+  private abaj()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapActivity", 2, "doOnActivityResult nativeRequestPOIList");
-    }
-    ARMapEngine.nativeRequestPOIList();
+    super(null);
   }
 }
 

@@ -24,17 +24,17 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
-import nqe;
-import nqi;
-import nqj;
-import nqk;
-import nql;
-import nqn;
-import nqo;
-import nqp;
-import nqq;
-import nqr;
-import nqs;
+import nuu;
+import nuy;
+import nuz;
+import nva;
+import nvb;
+import nvd;
+import nve;
+import nvf;
+import nvg;
+import nvh;
+import nvi;
 
 public class MediaPlayer
   implements IMediaPlayer
@@ -59,11 +59,11 @@ public class MediaPlayer
   public IMediaPlayer.OnVideoSizeChangedListener a;
   public final Object a;
   private CountDownLatch a;
-  public nqe a;
-  public nqi a;
-  public nqq a;
-  public nqr a;
-  public nqs a;
+  public nuu a;
+  public nuy a;
+  public nvg a;
+  public nvh a;
+  public nvi a;
   public boolean a;
   protected float b;
   protected int b;
@@ -90,9 +90,9 @@ public class MediaPlayer
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_b_of_type_Float = 1.0F;
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Nqr = null;
-    this.jdField_a_of_type_Nqq = new nqq(this, null);
-    this.jdField_a_of_type_Nqs = new nqs();
+    this.jdField_a_of_type_Nvh = null;
+    this.jdField_a_of_type_Nvg = new nvg(this, null);
+    this.jdField_a_of_type_Nvi = new nvi();
     this.jdField_c_of_type_Int = 0;
     this.jdField_d_of_type_Int = 3;
   }
@@ -141,22 +141,22 @@ public class MediaPlayer
   {
     if (this.jdField_b_of_type_AndroidMediaMediaFormat != null)
     {
-      this.jdField_a_of_type_Nqe = new nqe();
-      this.jdField_a_of_type_Nqe.a(this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Nuu = new nuu();
+      this.jdField_a_of_type_Nuu.a(this.jdField_c_of_type_Int);
       a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
     }
-    nqo localnqo = new nqo(this);
+    nve localnve = new nve(this);
     if (this.h == 6) {
       return;
     }
-    this.jdField_a_of_type_Nqi = new nqi();
+    this.jdField_a_of_type_Nuy = new nuy();
     if (this.jdField_a_of_type_Int != -1) {}
     for (;;)
     {
       try
       {
-        Object localObject = new nqn(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor, false, this.jdField_a_of_type_Int, localnqo, this.jdField_a_of_type_AndroidViewSurface, MediaPlayer.VideoRenderTimingMode.a(this.g));
-        this.jdField_a_of_type_Nqi.a((nqk)localObject);
+        Object localObject = new nvd(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor, false, this.jdField_a_of_type_Int, localnve, this.jdField_a_of_type_AndroidViewSurface, MediaPlayer.VideoRenderTimingMode.a(this.g));
+        this.jdField_a_of_type_Nuy.a((nva)localObject);
         if (this.jdField_b_of_type_Int != -1) {}
         try
         {
@@ -172,16 +172,16 @@ public class MediaPlayer
           MediaExtractor localMediaExtractor;
           Log.e("Story-MediaPlayer", "cannot create audio decoder: " + localException2.getMessage());
           continue;
-          if (this.jdField_a_of_type_Nqe == null) {
+          if (this.jdField_a_of_type_Nuu == null) {
             break label331;
           }
-          this.jdField_c_of_type_Int = this.jdField_a_of_type_Nqe.a();
-          this.jdField_d_of_type_Int = this.jdField_a_of_type_Nqe.b();
-          if (this.jdField_a_of_type_Nqi.a() == null) {
+          this.jdField_c_of_type_Int = this.jdField_a_of_type_Nuu.a();
+          this.jdField_d_of_type_Int = this.jdField_a_of_type_Nuu.b();
+          if (this.jdField_a_of_type_Nuy.a() == null) {
             break label406;
           }
-          i = this.jdField_a_of_type_Nqi.a().a();
-          j = this.jdField_a_of_type_Nqi.a().b();
+          i = this.jdField_a_of_type_Nuy.a().a();
+          j = this.jdField_a_of_type_Nuy.a().b();
           k = this.jdField_f_of_type_Int;
           if ((k <= 0) || (k == 180)) {
             break label520;
@@ -189,14 +189,14 @@ public class MediaPlayer
           this.jdField_f_of_type_Boolean = true;
           k = j;
           j = i;
-          this.jdField_a_of_type_Nqq.sendMessage(this.jdField_a_of_type_Nqq.obtainMessage(5, k, j));
+          this.jdField_a_of_type_Nvg.sendMessage(this.jdField_a_of_type_Nvg.obtainMessage(5, k, j));
         }
         if (this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor != null)
         {
           localObject = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor;
-          localObject = new nqj((MediaExtractor)localObject, bool, this.jdField_b_of_type_Int, localnqo, this.jdField_a_of_type_Nqe);
-          this.jdField_a_of_type_Nqi.a((nqk)localObject);
-          if (!this.jdField_a_of_type_Nqi.a().isEmpty()) {
+          localObject = new nuz((MediaExtractor)localObject, bool, this.jdField_b_of_type_Int, localnve, this.jdField_a_of_type_Nuu);
+          this.jdField_a_of_type_Nuy.a((nva)localObject);
+          if (!this.jdField_a_of_type_Nuy.a().isEmpty()) {
             break label302;
           }
           throw new IOException("cannot decode any stream");
@@ -221,25 +221,25 @@ public class MediaPlayer
         if (this.h == 6) {
           break label523;
         }
-        if (this.jdField_a_of_type_Nqi.a() != null)
+        if (this.jdField_a_of_type_Nuy.a() != null)
         {
-          nql localnql = this.jdField_a_of_type_Nqi.a(true);
-          this.jdField_a_of_type_Nqi.a().b(localnql);
+          nvb localnvb = this.jdField_a_of_type_Nuy.a(true);
+          this.jdField_a_of_type_Nuy.a().b(localnvb);
         }
         for (;;)
         {
-          if (this.jdField_a_of_type_Nqe != null) {
-            this.jdField_a_of_type_Nqe.a(true);
+          if (this.jdField_a_of_type_Nuu != null) {
+            this.jdField_a_of_type_Nuu.a(true);
           }
-          this.jdField_a_of_type_Nqi.a(MediaPlayer.SeekMode.a(0), 0L);
+          this.jdField_a_of_type_Nuy.a(MediaPlayer.SeekMode.a(0), 0L);
           if (this.h == 6) {
             break;
           }
-          this.jdField_a_of_type_Nqr = new nqr(this);
-          this.jdField_a_of_type_Nqr.start();
+          this.jdField_a_of_type_Nvh = new nvh(this);
+          this.jdField_a_of_type_Nvh.start();
           this.h = 4;
           return;
-          this.jdField_a_of_type_Nqi.a(false);
+          this.jdField_a_of_type_Nuy.a(false);
         }
         label520:
         int k = i;
@@ -255,8 +255,8 @@ public class MediaPlayer
   {
     this.jdField_a_of_type_Float = paramFloat1;
     this.jdField_b_of_type_Float = paramFloat2;
-    if (this.jdField_a_of_type_Nqe != null) {
-      this.jdField_a_of_type_Nqe.a(paramFloat1, paramFloat2);
+    if (this.jdField_a_of_type_Nuu != null) {
+      this.jdField_a_of_type_Nuu.a(paramFloat1, paramFloat2);
     }
   }
   
@@ -278,7 +278,7 @@ public class MediaPlayer
     }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_d_of_type_Long = Math.max(this.jdField_a_of_type_Long, paramLong);
-    this.jdField_a_of_type_Nqr.a(4, Long.valueOf(this.jdField_d_of_type_Long));
+    this.jdField_a_of_type_Nvh.a(4, Long.valueOf(this.jdField_d_of_type_Long));
   }
   
   @Deprecated
@@ -295,13 +295,13 @@ public class MediaPlayer
       Log.w("Story-MediaPlayer", "setScreenOnWhilePlaying(true) is ineffective for Surface");
     }
     this.jdField_a_of_type_AndroidViewSurfaceHolder = null;
-    if (this.jdField_a_of_type_Nqr == null)
+    if (this.jdField_a_of_type_Nvh == null)
     {
       d(2);
       i();
       return;
     }
-    this.jdField_a_of_type_Nqr.a(this.jdField_a_of_type_AndroidViewSurface);
+    this.jdField_a_of_type_Nvh.a(this.jdField_a_of_type_AndroidViewSurface);
   }
   
   @TargetApi(16)
@@ -367,7 +367,7 @@ public class MediaPlayer
     if ((this.jdField_a_of_type_Int == -1) && (this.jdField_b_of_type_Int == -1)) {
       throw new IOException("invalid data source, no supported stream found");
     }
-    if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Nqr == null) && (this.jdField_a_of_type_AndroidViewSurface == null)) {
+    if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Nvh == null) && (this.jdField_a_of_type_AndroidViewSurface == null)) {
       Log.i("Story-MediaPlayer", "no video output surface specified");
     }
     this.h = 2;
@@ -440,7 +440,7 @@ public class MediaPlayer
       this.h = 8;
       throw new IllegalStateException();
     }
-    return (this.jdField_a_of_type_Nqr != null) && (!this.jdField_a_of_type_Nqr.a());
+    return (this.jdField_a_of_type_Nvh != null) && (!this.jdField_a_of_type_Nvh.a());
   }
   
   public int b()
@@ -463,7 +463,7 @@ public class MediaPlayer
     }
     this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
     this.h = 3;
-    new Thread(new nqp(this)).start();
+    new Thread(new nvf(this)).start();
   }
   
   public void b(int paramInt)
@@ -515,7 +515,7 @@ public class MediaPlayer
       this.h = 8;
       throw new IllegalStateException();
     }
-    this.jdField_a_of_type_Nqr.a(1, null);
+    this.jdField_a_of_type_Nvh.a(1, null);
     c(true);
   }
   
@@ -574,13 +574,13 @@ public class MediaPlayer
       this.h = 8;
       throw new IllegalStateException();
     }
-    this.jdField_a_of_type_Nqr.a(2, null);
+    this.jdField_a_of_type_Nvh.a(2, null);
     c(false);
   }
   
   void d(int paramInt)
   {
-    if (this.jdField_a_of_type_Nqr != null) {
+    if (this.jdField_a_of_type_Nvh != null) {
       throw new IllegalStateException("called after prepare/prepareAsync");
     }
     if ((paramInt == 3) && (Build.VERSION.SDK_INT < 21)) {
@@ -618,14 +618,14 @@ public class MediaPlayer
     //   21: aconst_null
     //   22: putfield 83	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_JavaUtilConcurrentCountDownLatch	Ljava/util/concurrent/CountDownLatch;
     //   25: aload_0
-    //   26: getfield 59	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_Nqr	Lnqr;
+    //   26: getfield 59	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_Nvh	Lnvh;
     //   29: ifnull +44 -> 73
     //   32: aload_0
-    //   33: getfield 59	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_Nqr	Lnqr;
-    //   36: invokestatic 495	nqr:a	(Lnqr;)V
+    //   33: getfield 59	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_Nvh	Lnvh;
+    //   36: invokestatic 495	nvh:a	(Lnvh;)V
     //   39: aload_0
     //   40: aconst_null
-    //   41: putfield 59	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_Nqr	Lnqr;
+    //   41: putfield 59	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_Nvh	Lnvh;
     //   44: aload_0
     //   45: iconst_0
     //   46: invokevirtual 462	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:c	(Z)V
@@ -667,11 +667,11 @@ public class MediaPlayer
   public void h()
   {
     int j = 1;
-    if (this.jdField_a_of_type_Nqi != null) {
-      this.jdField_a_of_type_Nqi.a();
+    if (this.jdField_a_of_type_Nuy != null) {
+      this.jdField_a_of_type_Nuy.a();
     }
-    if (this.jdField_a_of_type_Nqe != null) {
-      this.jdField_a_of_type_Nqe.d();
+    if (this.jdField_a_of_type_Nuu != null) {
+      this.jdField_a_of_type_Nuu.d();
     }
     int i;
     if (this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor != null)

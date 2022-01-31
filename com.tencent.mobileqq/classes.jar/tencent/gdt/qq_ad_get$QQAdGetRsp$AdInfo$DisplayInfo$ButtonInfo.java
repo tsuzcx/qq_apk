@@ -10,6 +10,7 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$DisplayInfo$ButtonInfo
   extends MessageMicro
 {
   public static final int BUTTON_POS_LEFT_BOTTOM_CORNER = 1;
+  public static final int BUTTON_POS_RIGHT_BOTTOM_CORNER = 2;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24 }, new String[] { "txt", "url", "pos" }, new Object[] { "", "", Integer.valueOf(1) }, ButtonInfo.class);
   public final PBEnumField pos = PBField.initEnum(1);
   public final PBStringField txt = PBField.initString("");

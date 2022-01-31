@@ -32,7 +32,7 @@ import org.json.JSONObject;
 public class LocalDataJsPlugin
   extends VasWebviewJsPlugin
 {
-  private static final String[] FILE_PATH_WHITE_LIST = { AppConstants.bx };
+  private static final String[] FILE_PATH_WHITE_LIST = { AppConstants.by };
   public static final String NAME_SPACE = "localData";
   private static final String TAG = "LocalDataJsPlugin";
   private BrowserAppInterface browserApp;
@@ -303,7 +303,7 @@ public class LocalDataJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.LocalDataJsPlugin
  * JD-Core Version:    0.7.0.1
  */

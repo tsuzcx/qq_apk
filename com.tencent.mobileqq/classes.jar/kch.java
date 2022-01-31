@@ -1,32 +1,21 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.VideoLayerUIBase;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.SysCallTransparentActivity;
 
-public class kch
-  implements Runnable
+class kch
+  implements DialogInterface.OnClickListener
 {
-  public kch(VideoLayerUIBase paramVideoLayerUIBase) {}
+  kch(kcg paramkcg) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null) {}
-    try
-    {
-      String str = this.a.jdField_a_of_type_ComTencentAvVideoController.a().c;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.b(str);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "pauseVideo Runnable exception", localException);
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kch
  * JD-Core Version:    0.7.0.1
  */

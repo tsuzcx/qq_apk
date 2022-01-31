@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
-import mzl;
-import mzm;
+import ndg;
+import ndh;
 import org.json.JSONObject;
 
 public class QQStoryFeedManager
@@ -145,19 +145,19 @@ public class QQStoryFeedManager
     if (QLog.isColorLevel()) {
       QLog.i("QQStoryFeedManager", 2, "insertAIOQQStoryFeedFromCacheSync: invoked. ");
     }
-    mzl localmzl = new mzl(this);
+    ndg localndg = new ndg(this);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      ThreadManager.post(localmzl, 10, null, false);
+      ThreadManager.post(localndg, 10, null, false);
       return;
     }
-    localmzl.run();
+    localndg.run();
   }
   
   public void a(ConfigurationService.Config paramConfig)
   {
     int i = paramConfig.version.get();
-    int j = SharedPreUtils.aU(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    int j = SharedPreUtils.aT(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     String str;
     if (i != j)
     {
@@ -217,7 +217,7 @@ public class QQStoryFeedManager
   
   public void a(String paramString)
   {
-    paramString = new mzm(this, paramString);
+    paramString = new ndh(this, paramString);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
       ThreadManager.post(paramString, 8, null, true);

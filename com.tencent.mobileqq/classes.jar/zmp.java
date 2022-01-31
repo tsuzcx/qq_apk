@@ -1,19 +1,23 @@
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.RouterHandler;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.HotchatSCMng;
+import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
+import java.util.Comparator;
 
 public class zmp
-  implements Runnable
+  implements Comparator
 {
-  public zmp(RouterHandler paramRouterHandler, long paramLong, int paramInt) {}
+  public zmp(HotchatSCMng paramHotchatSCMng) {}
   
-  public void run()
+  public int a(HotchatSCMng.HotchatNote paramHotchatNote1, HotchatSCMng.HotchatNote paramHotchatNote2)
   {
-    Session localSession = (Session)this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.e.get(Long.valueOf(this.jdField_a_of_type_Long));
-    if ((this.jdField_a_of_type_Int == 2) && (localSession != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.e.remove(Long.valueOf(this.jdField_a_of_type_Long));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.a(2, localSession, 0.0D, this.jdField_a_of_type_Int);
+    if ((paramHotchatNote1 == null) || (paramHotchatNote2 == null)) {}
+    do
+    {
+      return 0;
+      if (paramHotchatNote1.a > paramHotchatNote2.a) {
+        return 1;
+      }
+    } while (paramHotchatNote1.a >= paramHotchatNote2.a);
+    return -1;
   }
 }
 

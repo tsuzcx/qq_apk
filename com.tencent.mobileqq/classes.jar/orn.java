@@ -1,50 +1,15 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewHeaderViewAdapter;
-import com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewHeaderViewAdapter.ContentDataObserver;
-import java.util.List;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
 
 public class orn
-  extends RecyclerView.AdapterDataObserver
+  implements Runnable
 {
-  public orn(RecyclerViewHeaderViewAdapter paramRecyclerViewHeaderViewAdapter) {}
+  public orn(TroopStoryMainActivity paramTroopStoryMainActivity) {}
   
-  public void onChanged()
+  public void run()
   {
-    this.a.notifyDataSetChanged();
-    if (RecyclerViewHeaderViewAdapter.a(this.a) != null) {
-      RecyclerViewHeaderViewAdapter.a(this.a).a(RecyclerViewHeaderViewAdapter.a(this.a));
-    }
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeChanged(RecyclerViewHeaderViewAdapter.a(this.a).size() + paramInt1, paramInt2);
-    if (RecyclerViewHeaderViewAdapter.a(this.a) != null) {
-      RecyclerViewHeaderViewAdapter.a(this.a).a(RecyclerViewHeaderViewAdapter.a(this.a));
-    }
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeInserted(RecyclerViewHeaderViewAdapter.a(this.a).size() + paramInt1, paramInt2);
-    if (RecyclerViewHeaderViewAdapter.a(this.a) != null) {
-      RecyclerViewHeaderViewAdapter.a(this.a).a(RecyclerViewHeaderViewAdapter.a(this.a));
-    }
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.notifyItemMoved(RecyclerViewHeaderViewAdapter.a(this.a).size() + paramInt1, RecyclerViewHeaderViewAdapter.a(this.a).size() + paramInt2);
-    if (RecyclerViewHeaderViewAdapter.a(this.a) != null) {
-      RecyclerViewHeaderViewAdapter.a(this.a).a(RecyclerViewHeaderViewAdapter.a(this.a));
-    }
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(RecyclerViewHeaderViewAdapter.a(this.a).size() + paramInt1, paramInt2);
-    if (RecyclerViewHeaderViewAdapter.a(this.a) != null) {
-      RecyclerViewHeaderViewAdapter.a(this.a).a(RecyclerViewHeaderViewAdapter.a(this.a));
+    if ((this.a.a != null) && (!this.a.isFinishing())) {
+      this.a.a.b();
     }
   }
 }

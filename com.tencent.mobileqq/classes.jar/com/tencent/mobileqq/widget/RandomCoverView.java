@@ -94,7 +94,7 @@ public class RandomCoverView
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#4CFFFFFF"));
         this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(f);
       }
-      this.jdField_b_of_type_JavaLangString = getResources().getString(2131436747);
+      this.jdField_b_of_type_JavaLangString = getResources().getString(2131436767);
     }
     label141:
     for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
@@ -130,7 +130,7 @@ public class RandomCoverView
           }
           QLog.i("Q.profilecard.", 2, "updateCover " + paramString);
           return;
-          localDrawable = getResources().getDrawable(2130843018);
+          localDrawable = getResources().getDrawable(2130843050);
           ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
         }
         return;
@@ -169,7 +169,7 @@ public class RandomCoverView
           }
           QLog.i("Q.profilecard.", 2, "updateCover " + paramString + " isDef:" + paramBoolean);
           return;
-          localObject2 = getResources().getDrawable(2130843018);
+          localObject2 = getResources().getDrawable(2130843050);
           ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
         }
         return;
@@ -205,7 +205,7 @@ public class RandomCoverView
     Object localObject2 = null;
     try
     {
-      localObject1 = getResources().getDrawable(2130843018);
+      localObject1 = getResources().getDrawable(2130843050);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
       return;
     }
@@ -225,7 +225,7 @@ public class RandomCoverView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RandomCoverView
  * JD-Core Version:    0.7.0.1
  */

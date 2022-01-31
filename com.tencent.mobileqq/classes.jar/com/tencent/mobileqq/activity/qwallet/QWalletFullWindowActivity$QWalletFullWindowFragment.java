@@ -5,12 +5,12 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
-import xaq;
+import xgg;
 
 public class QWalletFullWindowActivity$QWalletFullWindowFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
 {
-  BroadcastReceiver a = new xaq(this);
+  BroadcastReceiver a = new xgg(this);
   
   protected int a(Bundle paramBundle)
   {

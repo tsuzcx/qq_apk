@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
 
 public class wrg
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wrg(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
+  public wrg(ContactsDeviceAdapter paramContactsDeviceAdapter) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.setText("");
+    this.a.a = true;
   }
 }
 

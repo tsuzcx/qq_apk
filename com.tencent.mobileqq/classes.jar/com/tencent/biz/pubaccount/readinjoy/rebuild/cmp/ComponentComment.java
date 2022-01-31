@@ -20,8 +20,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 import java.util.List;
-import lve;
-import lvf;
+import lyo;
+import lyp;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.CommentInfo;
 
 public class ComponentComment
@@ -62,10 +62,10 @@ public class ComponentComment
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969530, this, true);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366848);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366850));
-    this.b = ((TextView)paramContext.findViewById(2131366849));
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969526, this, true);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366847);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366849));
+    this.b = ((TextView)paramContext.findViewById(2131366848));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
@@ -114,8 +114,8 @@ public class ComponentComment
     for (;;)
     {
       this.b.setText(paramObject);
-      this.b.setOnClickListener(new lve(this, str1, localArticleInfo));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new lvf(this, l, localArticleInfo));
+      this.b.setOnClickListener(new lyo(this, str1, localArticleInfo));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new lyp(this, l, localArticleInfo));
       if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.f()) {
         break label361;
       }

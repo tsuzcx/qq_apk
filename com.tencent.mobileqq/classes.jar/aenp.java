@@ -1,29 +1,53 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.utils.SharedPreferencesHandler;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
 
 public class aenp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public aenp(GameRoomFloatView paramGameRoomFloatView, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
+  public aenp(TroopAssistantManager paramTroopAssistantManager, QQAppInterface paramQQAppInterface) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.b)
+    localObject3 = null;
+    localObject4 = this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaLangObject;
+    localObject1 = localObject3;
+    try
     {
-      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaUtilSet != null)
+      {
+        localObject1 = localObject3;
+        if (this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaUtilSet.size() > 0) {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaUtilSet.toArray();
+        }
+      }
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      for (;;)
+      {
+        localObject1 = localObject3;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("troopassist_guide", 2, localIllegalArgumentException.getMessage());
+          localObject1 = localObject3;
+        }
+      }
+    }
+    finally {}
+    if (localObject1 != null) {
+      SharedPreferencesHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "troop_assis_new_unread_list", (Object[])localObject1).commit();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenp
  * JD-Core Version:    0.7.0.1
  */

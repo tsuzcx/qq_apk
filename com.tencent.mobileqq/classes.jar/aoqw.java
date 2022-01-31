@@ -1,16 +1,24 @@
-import dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
+import dov.com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
 
-public class aoqw
-  implements Runnable
+public final class aoqw
+  implements ExtendEditText.LengthConvertor
 {
-  public aoqw(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
-  
-  public void run()
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    if (this.a.a != null) {
-      this.a.a.au_();
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
     }
+    return -paramInt1;
+  }
+  
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
   }
 }
 

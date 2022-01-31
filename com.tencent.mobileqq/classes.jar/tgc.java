@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.ar.config.WorldCup;
 
-class tgc
-  implements DialogInterface.OnClickListener
+public class tgc
+  implements Runnable
 {
-  tgc(tgb paramtgb) {}
+  public tgc(MainFragment paramMainFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    String str = MainFragment.a(this.a);
+    WorldCup.a(MainFragment.a(this.a), this.a.getActivity(), this.a.getView(), str);
   }
 }
 

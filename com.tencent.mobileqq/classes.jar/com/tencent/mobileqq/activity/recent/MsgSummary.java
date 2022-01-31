@@ -49,7 +49,7 @@ public class MsgSummary
         if (this.jdField_a_of_type_Int != 2) {
           continue;
         }
-        paramContext = ((Resources)localObject1).getDrawable(2130845435);
+        paramContext = ((Resources)localObject1).getDrawable(2130845516);
         i = j + "F ".length();
         if (paramContext != null)
         {
@@ -71,7 +71,7 @@ public class MsgSummary
       paramContext = localStringBuffer;
       if (this.jdField_a_of_type_Int == 1)
       {
-        paramContext = ((Resources)localObject1).getDrawable(2130845436);
+        paramContext = ((Resources)localObject1).getDrawable(2130845517);
         i = "S ".length();
         i = j + i;
         continue;
@@ -104,7 +104,7 @@ public class MsgSummary
             try
             {
               if (this.jdField_a_of_type_Int == 2) {
-                paramContext = ((Resources)localObject1).getDrawable(2130845435);
+                paramContext = ((Resources)localObject1).getDrawable(2130845516);
               }
               for (;;)
               {
@@ -125,7 +125,7 @@ public class MsgSummary
                 break label326;
                 paramContext = localObject2;
                 if (this.jdField_a_of_type_Int == 1) {
-                  paramContext = ((Resources)localObject1).getDrawable(2130845436);
+                  paramContext = ((Resources)localObject1).getDrawable(2130845517);
                 }
               }
             }
@@ -172,11 +172,11 @@ public class MsgSummary
       {
         if (this.jdField_a_of_type_Int == 2)
         {
-          localObject1 = localResources.getDrawable(2130845435);
+          localObject1 = localResources.getDrawable(2130845516);
           if (paramInt <= 0) {
             break label618;
           }
-          paramInt = paramContext.getResources().getColor(2131494288);
+          paramInt = paramContext.getResources().getColor(2131494294);
           if (!(this.jdField_b_of_type_JavaLangCharSequence instanceof QQText)) {
             break label369;
           }
@@ -219,7 +219,7 @@ public class MsgSummary
         if (this.jdField_a_of_type_Int != 1) {
           continue;
         }
-        localObject1 = localResources.getDrawable(2130845436);
+        localObject1 = localResources.getDrawable(2130845517);
         continue;
         localObject2 = null;
       }

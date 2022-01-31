@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.BaseSearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
 public class ahwg
-  implements ISearchListener
+  implements View.OnClickListener
 {
-  public ahwg(NetSearchEngine paramNetSearchEngine, List paramList) {}
+  public ahwg(BaseSearchActivity paramBaseSearchActivity) {}
   
-  public void a(List paramList) {}
-  
-  public void a(List paramList, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    SearchUtils.a();
-    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
+    BaseSearchActivity.b = 1;
+    this.a.a.setText("");
   }
 }
 

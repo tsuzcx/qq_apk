@@ -1,28 +1,43 @@
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
 
 public class aabc
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public aabc(Interactive3DRenderable paramInteractive3DRenderable) {}
+  public aabc(MsgNotifyPushDialog paramMsgNotifyPushDialog, ImageView paramImageView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (Interactive3DRenderable.a(this.a) != 9) {}
-    do
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
     {
-      return;
-      if (Interactive3DRenderable.a(this.a) != null) {
-        Interactive3DRenderable.a(this.a).a(0, 2);
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
       }
-    } while (Interactive3DRenderable.a(this.a) == null);
-    Interactive3DRenderable.a(this.a).a(true);
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+    }
+    for (;;)
+    {
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aabc
  * JD-Core Version:    0.7.0.1
  */

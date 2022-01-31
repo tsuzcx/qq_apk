@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import muo;
+import myi;
 
 public class PAH5Manager
   implements INetEngine.INetEngineListener
@@ -30,7 +30,7 @@ public class PAH5Manager
   public TroopMemberApiService a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new muo(this);
+  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new myi(this);
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public HashMap a;
@@ -244,8 +244,8 @@ public class PAH5Manager
         break;
       }
       localObject1 = localObject1[(localObject1.length - 2)];
-      localHttpNetReq.jdField_c_of_type_JavaLangString = (AppConstants.aJ + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "/" + "c2bPIC/" + (String)localObject1 + ".png");
-      Object localObject2 = new File(AppConstants.aJ + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "/" + "c2bPIC/");
+      localHttpNetReq.jdField_c_of_type_JavaLangString = (AppConstants.aK + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "/" + "c2bPIC/" + (String)localObject1 + ".png");
+      Object localObject2 = new File(AppConstants.aK + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "/" + "c2bPIC/");
       ArrayList localArrayList = new ArrayList();
       localObject2 = ((File)localObject2).listFiles();
       if (localObject2 != null)
@@ -335,7 +335,7 @@ public class PAH5Manager
     ((TransferRequest)localObject).jdField_a_of_type_Long = ((Math.random() * 1000.0D));
     ((TransferRequest)localObject).jdField_a_of_type_Boolean = false;
     ((TransferRequest)localObject).jdField_e_of_type_JavaLangString = str;
-    ((TransferRequest)localObject).h = (AppConstants.aJ + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "/" + "c2bPTT/" + str + ".amr");
+    ((TransferRequest)localObject).h = (AppConstants.aK + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "/" + "c2bPTT/" + str + ".amr");
     if (new File(((TransferRequest)localObject).h).exists())
     {
       paramBundle.putString("pic_local_id", new PublicAccountH5AbilityForPtt().a(((TransferRequest)localObject).h));

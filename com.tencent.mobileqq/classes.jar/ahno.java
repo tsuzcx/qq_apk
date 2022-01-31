@@ -1,22 +1,27 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.dc.DCShortVideo;
-import com.tencent.mobileqq.richmedia.dc.DataReport;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.gesture.GLGestureProxy;
+import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
 
 public class ahno
   implements Runnable
 {
-  public ahno(DCShortVideo paramDCShortVideo, AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString) {}
+  public ahno(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
   public void run()
   {
-    Object localObject = new ahnu();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCShortVideo.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (ahnt)localObject);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("DCShortVideo", 4, "[reportSave]shortVideoType=" + ((ahnu)localObject).f + ",uinType = " + ((ahnu)localObject).b + ",groupMemCount = " + ((ahnu)localObject).c + ",age = " + ((ahnu)localObject).d + ",gender = " + ((ahnu)localObject).e + ",reprotHour = " + ((ahnu)localObject).g + ",netType = " + ((ahnu)localObject).h);
+    DanceLog.a("EffectsFragment", "readySceneBegin begin exe...");
+    this.a.a = false;
+    this.a.g();
+    EffectsCameraCaptureFragment.g(this.a, true);
+    EffectsCameraCaptureFragment.a(this.a).setVisibility(0);
+    EffectsCameraCaptureFragment.a(this.a).setEnabled(true);
+    DanceLog.a("EffectsFragment", "readySceneBegin end exe...");
+    boolean bool = GLGestureProxy.a().a(EffectsCameraCaptureFragment.a(this.a));
+    DanceLog.a("EffectsFragment", "readySceneBegin end hasDanceListener=" + bool);
+    if (!bool) {
+      GLGestureProxy.a().a(EffectsCameraCaptureFragment.a(this.a));
     }
-    localObject = new ahnz("ShortVideo.Save", ((ahnu)localObject).a("ShortVideo.Save"));
-    DataReport.a().a((ahnz)localObject);
   }
 }
 

@@ -61,16 +61,16 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pbs;
-import pbt;
-import pbu;
-import pbv;
-import pbw;
-import pbx;
-import pby;
-import pbz;
-import pca;
-import pcb;
+import pgk;
+import pgl;
+import pgm;
+import pgn;
+import pgo;
+import pgp;
+import pgq;
+import pgr;
+import pgs;
+import pgt;
 
 public class OfflinePlugin
   extends WebViewPlugin
@@ -83,13 +83,13 @@ public class OfflinePlugin
   private static boolean f;
   public volatile long a;
   public Handler a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new pbz(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new pgr(this);
   public LinearLayout a;
   public ProgressBar a;
   public RelativeLayout a;
   public TextView a;
   private AuthorizeConfig jdField_a_of_type_ComTencentBizAuthorizeConfig;
-  private LoadedBack2 jdField_a_of_type_ComTencentBizCommonUtilLoadedBack2 = new pca(this);
+  private LoadedBack2 jdField_a_of_type_ComTencentBizCommonUtilLoadedBack2 = new pgs(this);
   public OfflineWebResManager a;
   public Runnable a;
   public String a;
@@ -128,7 +128,7 @@ public class OfflinePlugin
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet(6);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangRunnable = new pcb(this);
+    this.jdField_a_of_type_JavaLangRunnable = new pgt(this);
     this.mPluginNameSpace = "offline";
   }
   
@@ -278,12 +278,12 @@ public class OfflinePlugin
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.getFileThreadHandler().post(new pbt(paramString));
+    ThreadManager.getFileThreadHandler().post(new pgl(paramString));
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new pbu(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new pgm(this, Looper.getMainLooper());
   }
   
   public static void d(String paramString)
@@ -304,13 +304,13 @@ public class OfflinePlugin
       do
       {
         return;
-        localViewStub = (ViewStub)this.mRuntime.a().findViewById(2131363455);
+        localViewStub = (ViewStub)this.mRuntime.a().findViewById(2131363474);
       } while (localViewStub == null);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localViewStub.inflate());
     } while (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363462));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363461));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363460));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363481));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363480));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363479));
   }
   
   private void e(String paramString)
@@ -893,7 +893,7 @@ public class OfflinePlugin
     if (i != -1) {
       localObject = str1.substring(0, i);
     }
-    ThreadManager.post(new pby(this, (String)localObject, str2, localCustomWebView), 8, null, false);
+    ThreadManager.post(new pgq(this, (String)localObject, str2, localCustomWebView), 8, null, false);
   }
   
   public void a(String paramString)
@@ -908,7 +908,7 @@ public class OfflinePlugin
     if (QLog.isColorLevel()) {
       QLog.i("OfflinePluginQQ", 2, "-->offline:checkOfflineUp.");
     }
-    HtmlOffline.a(paramString, this.mRuntime.a(), new pbs(this));
+    HtmlOffline.a(paramString, this.mRuntime.a(), new pgk(this));
   }
   
   public void a(String paramString, int paramInt)
@@ -957,7 +957,7 @@ public class OfflinePlugin
             localOfflineUpdateStatus.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("wifiUpdatingText");
             localOfflineUpdateStatus.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("updateCompletedText");
           }
-          localOfflineUpdateStatus.e = ((Activity)localObject1).getResources().getString(2131430201);
+          localOfflineUpdateStatus.e = ((Activity)localObject1).getResources().getString(2131430204);
           jdField_a_of_type_JavaUtilHashMap.put(this.jdField_d_of_type_JavaLangString, localOfflineUpdateStatus);
           localObject2 = paramJSONObject.optString("url");
           localOfflineUpdateStatus.f = ((String)localObject2);
@@ -973,7 +973,7 @@ public class OfflinePlugin
           paramJSONObject = localOfflineUpdateStatus.e;
         } while ((TextUtils.isEmpty((CharSequence)localObject2)) || (i <= 0));
         e();
-        localOfflineUpdateStatus.b(1);
+        localOfflineUpdateStatus.a(1);
         if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
           this.jdField_a_of_type_AndroidWidgetTextView.setText(paramJSONObject + "0%");
         }
@@ -995,8 +995,8 @@ public class OfflinePlugin
         paramJSONObject = localOfflineUpdateStatus.jdField_c_of_type_JavaLangString;
       } while ((TextUtils.isEmpty((CharSequence)localObject2)) || (i <= 0));
       e();
-      localOfflineUpdateStatus.b(0);
-      Object localObject1 = ((Activity)localObject1).getResources().getDrawable(2130842434);
+      localOfflineUpdateStatus.a(0);
+      Object localObject1 = ((Activity)localObject1).getResources().getDrawable(2130842469);
       ((Drawable)localObject1).setBounds(0, 0, 40, 40);
       if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
         this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject1, null, null, null);
@@ -1173,7 +1173,7 @@ public class OfflinePlugin
               if (paramString == null) {
                 return false;
               }
-              paramString = paramString.getResources().getDrawable(2130838572);
+              paramString = paramString.getResources().getDrawable(2130838578);
               paramString.setBounds(0, 0, paramString.getMinimumWidth(), paramString.getMinimumHeight());
               if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
                 this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramString, null, null, null);
@@ -1195,7 +1195,7 @@ public class OfflinePlugin
                   if (paramString == null) {
                     return false;
                   }
-                  paramString = paramString.getResources().getDrawable(2130842434);
+                  paramString = paramString.getResources().getDrawable(2130842469);
                   paramString.setBounds(0, 0, 40, 40);
                   if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
                     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramString, null, null, null);
@@ -1210,7 +1210,7 @@ public class OfflinePlugin
                     if (paramLong == 8589934594L)
                     {
                       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-                      ThreadManager.post(new pbx(this), 5, null, false);
+                      ThreadManager.post(new pgp(this), 5, null, false);
                       if (this.jdField_a_of_type_ComTencentBizWebviewpluginOfflineWebResManager != null) {
                         this.jdField_a_of_type_ComTencentBizWebviewpluginOfflineWebResManager.a(5);
                       }
@@ -1347,7 +1347,7 @@ public class OfflinePlugin
             paramString2.add(paramString1.optString(i));
             i += 1;
           }
-          HtmlOffline.a(paramString2, this.mRuntime.a(), new pbv(this, paramJsBridgeListener), true, false);
+          HtmlOffline.a(paramString2, this.mRuntime.a(), new pgn(this, paramJsBridgeListener), true, false);
           return true;
         }
         catch (JSONException paramJsBridgeListener)
@@ -1382,7 +1382,7 @@ public class OfflinePlugin
     paramString2 = SwiftBrowserOfflineHandler.a(paramString1);
     if ((paramString2 != null) && (!paramString2.a()))
     {
-      paramString2.a(new pbw(this, l, paramString1), paramString1);
+      paramString2.a(new pgo(this, l, paramString1), paramString1);
       return true;
     }
     if (paramString2 != null) {}

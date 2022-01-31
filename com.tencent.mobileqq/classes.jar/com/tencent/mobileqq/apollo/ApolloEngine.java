@@ -330,6 +330,18 @@ public class ApolloEngine
       nativeScriptCreate(this.jdField_a_of_type_Long, paramString, i);
       return;
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ApolloManager.Engine", 2, localOutOfMemoryError.getMessage());
+          i = j;
+        }
+      }
+    }
     catch (Exception localException)
     {
       for (;;)

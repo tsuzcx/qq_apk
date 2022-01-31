@@ -1,18 +1,13 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.mobileqq.emoticonview.HorizontalListViewEx;
 
-class acof
+public class acof
   implements Runnable
 {
-  acof(acod paramacod, DownloadInfo paramDownloadInfo) {}
+  public acof(HorizontalListViewEx paramHorizontalListViewEx) {}
   
   public void run()
   {
-    UniformDownloadActivity.b(this.jdField_a_of_type_Acod.a).setVisibility(0);
-    UniformDownloadActivity.a(this.jdField_a_of_type_Acod.a).setVisibility(0);
-    UniformDownloadActivity.b(this.jdField_a_of_type_Acod.a).setText(this.jdField_a_of_type_Acod.a.getString(2131428580, new Object[] { this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g + "%" }));
+    this.a.requestLayout();
   }
 }
 

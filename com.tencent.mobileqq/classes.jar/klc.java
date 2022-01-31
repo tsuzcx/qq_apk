@@ -1,35 +1,27 @@
-import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.JoinGroupHandler;
+import com.tencent.biz.JoinGroupHandler.IJoinGroupCB;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
 
-class klc
-  extends Thread
+public class klc
+  extends TroopObserver
 {
-  klc(klb paramklb) {}
+  public klc(JoinGroupHandler paramJoinGroupHandler) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
-    if (this.a.a.b == 1) {}
-    for (;;)
-    {
-      try
-      {
-        Thread.sleep(5000L);
-        this.a.a.b();
-        return;
-      }
-      catch (InterruptedException localInterruptedException1)
-      {
-        localInterruptedException1.printStackTrace();
-        continue;
-      }
-      try
-      {
-        Thread.sleep(10000L);
-      }
-      catch (InterruptedException localInterruptedException2)
-      {
-        localInterruptedException2.printStackTrace();
-      }
+    if (paramLong != this.a.jdField_a_of_type_Long) {
+      return;
     }
+    this.a.jdField_a_of_type_Long = 0L;
+    JoinGroupHandler.a(this.a);
+    if (paramBoolean)
+    {
+      JoinGroupHandler.a(this.a, paramTroopInfo);
+      return;
+    }
+    JoinGroupHandler.a(this.a, 2131434480, 1);
+    this.a.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
   }
 }
 

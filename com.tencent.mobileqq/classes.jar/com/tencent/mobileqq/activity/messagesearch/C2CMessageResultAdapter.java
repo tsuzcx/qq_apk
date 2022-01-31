@@ -29,9 +29,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import wrc;
-import wrd;
-import wre;
+import wwn;
+import wwo;
+import wwp;
 
 public class C2CMessageResultAdapter
   extends BaseMessageResultAdapter
@@ -58,14 +58,14 @@ public class C2CMessageResultAdapter
     if (QLog.isColorLevel()) {
       QLog.d("C2CMessageResultAdapter", 2, "displayCloudMessages...");
     }
-    ThreadManager.getSubThreadHandler().post(new wrd(this, paramString, paramLong));
+    ThreadManager.getSubThreadHandler().post(new wwo(this, paramString, paramLong));
   }
   
   void a(List paramList)
   {
     long l = SystemClock.uptimeMillis();
     if (paramList.size() > 0) {
-      Collections.sort(paramList, new wre(this));
+      Collections.sort(paramList, new wwp(this));
     }
     if (QLog.isColorLevel()) {
       QLog.d("C2CMessageResultAdapter", 2, "resortRecords cost time: " + (SystemClock.uptimeMillis() - l));
@@ -131,7 +131,7 @@ public class C2CMessageResultAdapter
     if (QLog.isColorLevel()) {
       QLog.d("C2CMessageResultAdapter", 2, "displayCloudMessages...");
     }
-    ThreadManager.post(new wrc(this, paramString, paramLong, paramList), 8, null, false);
+    ThreadManager.post(new wwn(this, paramString, paramLong, paramList), 8, null, false);
   }
   
   public void a(List paramList, boolean paramBoolean)
@@ -341,12 +341,12 @@ public class C2CMessageResultAdapter
     Object localObject;
     if (paramView == null)
     {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969073, null);
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969076, null);
       paramViewGroup = new BaseMessageResultAdapter.MessageHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363896));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131363901));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131363201));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363921));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131363926));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362724));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131363205));
       paramView.setTag(paramViewGroup);
       localMessageRecord = localMessageItem.a;
       str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localMessageRecord.isSend(), localMessageRecord.senderuin);
@@ -360,7 +360,7 @@ public class C2CMessageResultAdapter
         break label274;
       }
       localObject = AnonymousChatHelper.a(localMessageRecord);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430287) + ((AnonymousChatHelper.AnonymousExtInfo)localObject).jdField_b_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430290) + ((AnonymousChatHelper.AnonymousExtInfo)localObject).jdField_b_of_type_JavaLangString);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(AnonymousChatHelper.a(((AnonymousChatHelper.AnonymousExtInfo)localObject).jdField_b_of_type_Int)));
     }
     for (;;)

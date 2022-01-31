@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar;
 
-import aacy;
-import aacz;
+import aajp;
+import aajq;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
@@ -63,7 +63,7 @@ public class FaceScanDownloadManager
       while (i < localObject.length)
       {
         FaceScanDownloadManager.DownloadCallback localDownloadCallback = (FaceScanDownloadManager.DownloadCallback)localObject[i];
-        jdField_a_of_type_AndroidOsHandler.post(new aacy(localDownloadCallback, paramInt1, paramInt2));
+        jdField_a_of_type_AndroidOsHandler.post(new aajp(localDownloadCallback, paramInt1, paramInt2));
         i += 1;
       }
     }
@@ -124,7 +124,7 @@ public class FaceScanDownloadManager
       while (i < localObject.length)
       {
         FaceScanDownloadManager.DownloadCallback localDownloadCallback = (FaceScanDownloadManager.DownloadCallback)localObject[i];
-        jdField_a_of_type_AndroidOsHandler.post(new aacz(localDownloadCallback, paramInt, paramBoolean));
+        jdField_a_of_type_AndroidOsHandler.post(new aajq(localDownloadCallback, paramInt, paramBoolean));
         i += 1;
       }
     }

@@ -1,26 +1,96 @@
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloFavActionData;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class acjv
+class acjv
   implements Runnable
 {
-  public acjv(ExtendFriendReport paramExtendFriendReport, String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
+  acjv(acjg paramacjg, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
-    try
+    int i = 0;
+    Object localObject2;
+    Object localObject1;
+    ArrayList localArrayList;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
-      return;
+      localObject2 = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
+      JSONObject localJSONObject = new JSONObject();
+      localObject1 = new JSONArray();
+      localArrayList = new ArrayList();
     }
-    catch (Exception localException) {}
+    for (;;)
+    {
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(this.jdField_a_of_type_JavaLangString);
+        if (i >= localJSONArray.length()) {
+          break label180;
+        }
+        Object localObject3 = localJSONArray.getJSONObject(i);
+        long l = ((JSONObject)localObject3).optLong("seq");
+        int j = ((JSONObject)localObject3).optInt("actionId");
+        localObject3 = ((ApolloDaoManager)localObject2).a(l);
+        if ((localObject3 == null) || (j != ((ApolloFavActionData)localObject3).acitonId)) {
+          ((JSONArray)localObject1).put(l);
+        } else {
+          localArrayList.add(localObject3);
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
+        }
+      }
+      return;
+      label180:
+      if (localArrayList.size() > 0)
+      {
+        ((ApolloDaoManager)localObject2).g(localArrayList);
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+        if (localObject2 != null)
+        {
+          localObject2 = ((MqqHandler)localObject2).obtainMessage(66);
+          ((Message)localObject2).arg1 = 1;
+          ((Message)localObject2).sendToTarget();
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.emoji.web.MessengerService", 2, "del fav action success +" + localJSONException.toString());
+          }
+        }
+      }
+      if (((JSONArray)localObject1).length() > 0) {
+        localJSONException.put("delHasError", true);
+      }
+      for (;;)
+      {
+        localJSONException.put("errorList", ((JSONArray)localObject1).toString());
+        localObject1 = new Bundle();
+        ((Bundle)localObject1).putString("delFavListAction", localJSONException.toString());
+        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        return;
+        localJSONException.put("delHasError", false);
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acjv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,44 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class wsn
-  extends AvatarPendantActivity.AnimationScrollListener
+  extends MessageObserver
 {
-  public wsn(AvatarPendantActivity paramAvatarPendantActivity)
-  {
-    super(paramAvatarPendantActivity);
-  }
+  public wsn(DeviceFragment paramDeviceFragment) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (this.a.e == AvatarPendantActivity.d) {}
-    while (Build.VERSION.SDK_INT < 14) {
+    if (this.a.a == null) {
       return;
     }
-    this.a.b();
+    DeviceFragment localDeviceFragment = this.a;
+    if (paramInt1 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localDeviceFragment.c = bool;
+      this.a.a.c();
+      this.a.a.notifyDataSetChanged();
+      return;
+    }
+  }
+  
+  protected void c(int paramInt1, int paramInt2)
+  {
+    if (this.a.a == null) {
+      return;
+    }
+    DeviceFragment localDeviceFragment = this.a;
+    if (paramInt1 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localDeviceFragment.d = bool;
+      this.a.a.d();
+      this.a.a.a(this.a.d, AppConstants.z);
+      this.a.a.notifyDataSetChanged();
+      return;
+    }
   }
 }
 

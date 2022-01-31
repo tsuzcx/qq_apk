@@ -1,17 +1,13 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
 
 public class mvj
-  implements TroopMemberApiClient.Callback
+  implements Runnable
 {
-  public mvj(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
+  public mvj(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.k();
-    }
+    this.a.b(false);
   }
 }
 

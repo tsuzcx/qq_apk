@@ -1,31 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.werewolves.ReflectUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.lang.reflect.Method;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
 
 public class aksg
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public aksg(WerewolvesHostInterface paramWerewolvesHostInterface, Object paramObject, ActionSheet paramActionSheet) {}
+  public aksg(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = ReflectUtils.a(this.jdField_a_of_type_JavaLangObject.getClass(), "onClick", new Class[] { Integer.TYPE });
-    try
+    if (this.a.getRequestedOrientation() == 0)
     {
-      paramView.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.setRequestedOrientation(1);
       return;
     }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-      }
-    }
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 

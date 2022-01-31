@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.widget;
 
 import NearbyGroup.GroupLabel;
-import ajtz;
+import akbm;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -32,7 +32,7 @@ public class TroopLabelLayout
   int jdField_a_of_type_Int = 5;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new ajtz(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new akbm(this);
   private String jdField_a_of_type_JavaLangString = "TroopLabelLayout";
   public ArrayList a;
   private Map jdField_a_of_type_JavaUtilMap;
@@ -140,7 +140,7 @@ public class TroopLabelLayout
             n = AIOUtils.a(16.0F, getResources());
             ((TroopLabelTextView)???).setWidth(k);
             ((TroopLabelTextView)???).setHeight(n);
-            ((TroopLabelTextView)???).setMaskImage(2130841446);
+            ((TroopLabelTextView)???).setMaskImage(2130841473);
             if (localGroupLabel.strWording.length() < 2) {
               break label671;
             }
@@ -156,7 +156,7 @@ public class TroopLabelLayout
             if (this.b != 0) {
               break label677;
             }
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846297);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846379);
           }
           k = (int)(((TroopLabelTextView)???).getTextSize() * 0.8D + 0.5D);
           this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, k, k);
@@ -180,7 +180,7 @@ public class TroopLabelLayout
           break label350;
           k = 1;
           break label421;
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130841440);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130841467);
           break label514;
           ((TroopLabelTextView)???).setText(localGroupLabel.strWording + "");
           ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording);
@@ -327,7 +327,7 @@ public class TroopLabelLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopLabelLayout
  * JD-Core Version:    0.7.0.1
  */

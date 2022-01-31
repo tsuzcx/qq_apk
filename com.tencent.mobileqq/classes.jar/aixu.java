@@ -1,16 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.util.InputMethodUtil;
+import android.widget.Button;
+import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
 
 public class aixu
   implements Runnable
 {
-  public aixu(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aixu(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
   
   public void run()
   {
-    this.a.d.requestFocus();
-    InputMethodUtil.a(this.a.d);
+    this.a.a.setVisibility(0);
   }
 }
 

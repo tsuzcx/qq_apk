@@ -1,52 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.biz.lebasearch.SearchProtocol;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import cooperation.comic.PluginPreloader;
-import cooperation.comic.QQComicPreloadManager;
-import cooperation.qqreader.QRProcessManager;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class syb
-  implements Runnable
+  implements ConditionSearchManager.IConfigListener
 {
-  public syb(Leba paramLeba) {}
+  public syb(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    Object localObject = this.a.a.getCurrentAccountUin();
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if ((this.a.a == 1) || (this.a.a == 2))
     {
-      long l = WebProcessManager.a((String)localObject);
-      if (System.currentTimeMillis() - l < 604800000L) {
-        WebProcessManager.a(Leba.a(), "key_health_dns_parse");
+      if (paramBoolean) {
+        break label55;
       }
-      l = WebProcessManager.c((String)localObject);
-      if (System.currentTimeMillis() - l < 259200000L) {
-        WebProcessManager.a(Leba.b(), "key_gamecenter_dns_parse");
-      }
-      l = WebProcessManager.a((String)localObject, "key_reader_click_time");
-      if (System.currentTimeMillis() - l < 259200000L) {
-        WebProcessManager.a(Leba.c(), "key_reader_dns_parse");
-      }
+      FriendProfileMoreInfoActivity.a(this.a);
+      QQToast.a(this.a, 2131437318, 0).b(this.a.getTitleBarHeight());
     }
-    localObject = (QRProcessManager)this.a.a.getManager(128);
-    if (localObject != null) {
-      ((QRProcessManager)localObject).a(6);
+    label55:
+    while (paramInt != 2) {
+      return;
     }
-    localObject = (QQComicPreloadManager)this.a.a.getManager(141);
-    if (localObject != null) {
-      PluginPreloader.a(((QQComicPreloadManager)localObject).a(6), 500L);
-    }
-    if (LebaShowListManager.a().a())
-    {
-      SearchProtocol.a(this.a.a(), 10800000L, "Leba");
-      SearchProtocol.a(this.a.a, this.a.a());
-      Leba.b(this.a);
-    }
-    ThreadManager.post(new syc(this), 5, null, false);
+    FriendProfileMoreInfoActivity.a(this.a);
+    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
   }
 }
 

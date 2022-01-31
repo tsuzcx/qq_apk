@@ -8,7 +8,6 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.opencl.OpenclInfoManager;
-import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.mobileqq.shortvideo.util.MediaCodecDPC;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -124,6 +123,13 @@ public class QmcfDevicesStrategy
       str1 = FileUtils.c("qmcf_rule_config.xml");
     }
     return str1;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    paramContext = paramContext.getSharedPreferences("QmcfConfig", 4).edit();
+    paramContext.putInt("qmcf_mobile_support", 1);
+    paramContext.commit();
   }
   
   private static void a(String paramString)
@@ -450,7 +456,7 @@ public class QmcfDevicesStrategy
   {
     try
     {
-      QmcfManager.a().b();
+      a(paramContext);
       paramContext = paramContext.getSharedPreferences("qmcf_gpu_config", 0).edit();
       paramContext.putString("cfg_content", paramString);
       paramContext.putInt("cfg_version", paramInt);

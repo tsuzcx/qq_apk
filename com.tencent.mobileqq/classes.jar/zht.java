@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.app.NearbyGrayTipsManager;
-import com.tencent.mobileqq.app.NearbyGrayTipsManager.FaceScoreWording;
+import com.tencent.mobileqq.app.BrowserAppInterface;
 
 public class zht
   implements Runnable
 {
-  public zht(NearbyGrayTipsManager.FaceScoreWording paramFaceScoreWording1, NearbyGrayTipsManager.FaceScoreWording paramFaceScoreWording2) {}
+  public zht(BrowserAppInterface paramBrowserAppInterface, String paramString) {}
   
   public void run()
   {
-    String str = NearbyGrayTipsManager.FaceScoreWording.getPath(this.a.id);
-    NearbyGrayTipsManager.a(this.a, str);
+    BrowserAppInterface.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,24 +1,22 @@
-import com.tencent.component.media.gif.AnimationListener;
-import com.tencent.component.media.gif.NewGifDrawable;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.biz.webviewplugin.NearbyTroopsPlugin;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.OnAnimationPlayEndListener;
 
-class pgc
-  implements Runnable
+public class pgc
+  implements AIOAnimationControlManager.OnAnimationPlayEndListener
 {
-  pgc(pgb parampgb) {}
+  public pgc(NearbyTroopsPlugin paramNearbyTroopsPlugin, String paramString) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2)
   {
-    Iterator localIterator = this.a.b.a.iterator();
-    while (localIterator.hasNext()) {
-      ((AnimationListener)localIterator.next()).onAnimationCompleted();
+    if (AIOAnimationControlManager.jdField_a_of_type_JavaLangString.equals(paramString2)) {
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNearbyTroopsPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pgc
  * JD-Core Version:    0.7.0.1
  */

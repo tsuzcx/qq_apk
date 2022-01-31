@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aiql;
-import aiqm;
+import aivo;
+import aivp;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.util.Log;
@@ -83,7 +83,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramLong != 0L))
       {
-        ThreadManager.getTimer().schedule(new aiql(this, paramHttpNetReq), paramLong);
+        ThreadManager.getTimer().schedule(new aivo(this, paramHttpNetReq), paramLong);
         return;
       }
       if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
@@ -103,7 +103,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
     label200:
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      ThreadManager.getTimer().schedule(new aiqm(this, paramHttpNetReq), paramLong);
+      ThreadManager.getTimer().schedule(new aivp(this, paramHttpNetReq), paramLong);
       return;
     }
     if ((QLog.isColorLevel()) && (paramHttpNetReq != null))
@@ -806,7 +806,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
             if (paramHttpMsg2.c() >= 400)
             {
               k = i;
-              if (paramHttpMsg2.c() <= 424)
+              if (paramHttpMsg2.c() < 500)
               {
                 i = 0;
                 k = i;
@@ -972,7 +972,7 @@ public class OldHttpEngine$OldHttpCommunicatorListner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner
  * JD-Core Version:    0.7.0.1
  */

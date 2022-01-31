@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift;
 
-import aknt;
+import akvk;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
@@ -257,7 +257,7 @@ public class WebViewPlugin
   
   public void postPluginAsyncTask(Runnable paramRunnable)
   {
-    ThreadManager.post(paramRunnable, 5, new aknt(this), false);
+    ThreadManager.post(paramRunnable, 5, new akvk(this), false);
   }
   
   public WebViewPlugin setHandler(Handler paramHandler)
@@ -299,7 +299,7 @@ public class WebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

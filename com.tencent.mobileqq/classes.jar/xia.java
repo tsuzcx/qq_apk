@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.qwallet.ScrollPlayer;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 public class xia
-  implements WtTicketPromise
+  extends RecyclerView.OnScrollListener
 {
-  public xia(VoiceRedPacketHelper paramVoiceRedPacketHelper, xib paramxib) {}
+  public xia(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void Done(Ticket paramTicket)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramTicket = new String(paramTicket._sig);
-      this.jdField_a_of_type_Xib.a(paramTicket);
+      ScrollPlayer.a(bool);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey is null");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey failed");
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceVoiceRedPacketHelper.b("get skey time out");
   }
 }
 

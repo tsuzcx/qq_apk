@@ -1,63 +1,38 @@
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
+import com.tencent.mobileqq.activity.recent.RecentUtil;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class mvo
   implements Runnable
 {
-  public mvo(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
+  public mvo(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, String paramString, ServiceAccountFolderFeed paramServiceAccountFolderFeed) {}
   
   public void run()
   {
-    CompressInfo localCompressInfo = new CompressInfo(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.m, 0);
-    localCompressInfo.f = 0;
-    CompressOperator.a(localCompressInfo);
-    String str;
-    if (!StringUtil.a(localCompressInfo.e))
+    PublicAccountManager.a().a(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_JavaLangString);
+    Object localObject = (PublicAccountDataManager)ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).getManager(55);
+    if (localObject != null)
     {
-      str = "mqqpa://resourceid/" + this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.o;
-      PublicAccountH5AbilityPlugin.b.put(str, localCompressInfo.e);
-    }
-    for (;;)
-    {
-      try
+      ((PublicAccountDataManager)localObject).c(this.jdField_a_of_type_JavaLangString);
+      ((PublicAccountDataManager)localObject).b(this.jdField_a_of_type_JavaLangString);
+      AccountDetail localAccountDetail = ((PublicAccountDataManager)localObject).a(this.jdField_a_of_type_JavaLangString);
+      if (localAccountDetail != null)
       {
-        this.jdField_a_of_type_OrgJsonJSONArray.put(0, str);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("value", this.jdField_a_of_type_OrgJsonJSONArray);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 0);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "Success");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.callJs(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.m = "";
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n = "";
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.o = "";
-        return;
-      }
-      catch (JSONException localJSONException1)
-      {
-        localJSONException1.printStackTrace();
-        continue;
-      }
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", -1);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "compress fail");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.callJs(this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, -1, "1", "", "", "");
-      }
-      catch (JSONException localJSONException2)
-      {
-        localJSONException2.printStackTrace();
+        ((PublicAccountDataManager)localObject).a(this.jdField_a_of_type_JavaLangString);
+        localObject = ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).getEntityManagerFactory().createEntityManager();
+        ((EntityManager)localObject).b(localAccountDetail);
+        ((EntityManager)localObject).a();
       }
     }
+    ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).a().a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, 1008);
+    RecentUtil.b(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_JavaLangString, 1008);
   }
 }
 

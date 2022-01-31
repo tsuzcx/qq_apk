@@ -1,45 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListEvent;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeHomeFeed;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.HomeFeedPresenterListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.parallel.SimpleParallelObserver;
+import mqq.os.MqqHandler;
 
 public class nyx
-  extends UIBaseEventReceiver
+  extends SimpleParallelObserver
 {
-  public nyx(HomeFeedPresenter paramHomeFeedPresenter)
-  {
-    super(paramHomeFeedPresenter);
-  }
+  public nyx(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
   
-  public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent)
+  public void onAllFunctionComplete(boolean paramBoolean)
   {
-    Object localObject = paramHomeFeedPresenter.a(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (paramGetLikeListEvent.jdField_a_of_type_Boolean))
-    {
-      SLog.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramGetLikeListEvent.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramGetLikeListEvent.jdField_a_of_type_Boolean) });
-      return;
-    }
-    if (!(localObject instanceof CommentLikeHomeFeed))
-    {
-      SLog.e(this.TAG, "that is error type!");
-      return;
-    }
-    localObject = (CommentLikeHomeFeed)localObject;
-    ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mLikeCount = paramGetLikeListEvent.b;
-    ((CommentLikeHomeFeed)localObject).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true);
-    HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
+    super.onAllFunctionComplete(paramBoolean);
+    ThreadManager.getUIHandler().post(new nyy(this, paramBoolean));
   }
-  
-  public Class acceptEventClass()
-  {
-    return DetailLikeListLoader.GetLikeListEvent.class;
-  }
-  
-  public void b(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent) {}
 }
 
 

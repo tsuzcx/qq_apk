@@ -8,7 +8,7 @@ import com.tencent.mobileqq.managers.DraftTextManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
-import vum;
+import vzs;
 
 public class GetTextDraftJob
   implements Runnable
@@ -42,7 +42,7 @@ public class GetTextDraftJob
       return;
     }
     localObject = this.jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager.b((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new vum(this, (DraftTextInfo)localObject));
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new vzs(this, (DraftTextInfo)localObject));
   }
 }
 

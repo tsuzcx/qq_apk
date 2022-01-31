@@ -1,16 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.ArrayMap;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.hotpic.HotVideoBlurTaskManager;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader;
 
 public class adzo
-  implements View.OnClickListener
+  implements Runnable
 {
-  public adzo(LebaWithFeeds paramLebaWithFeeds) {}
+  public adzo(HotVideoBlurTaskManager paramHotVideoBlurTaskManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a(LebaWithFeeds.a(this.a), paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
+    HotVideoData localHotVideoData = (HotVideoData)this.a.jdField_a_of_type_AndroidSupportV4UtilArrayMap.keyAt(0);
+    HotPicPageView.MyVideoViewHolder localMyVideoViewHolder = (HotPicPageView.MyVideoViewHolder)this.a.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localHotVideoData);
+    if (localMyVideoViewHolder.a(localHotVideoData))
+    {
+      Drawable localDrawable = HotVideoPreviewDownloader.a(this.a.jdField_a_of_type_AndroidContentContext, localHotVideoData);
+      if ((localDrawable != null) && (localMyVideoViewHolder.a(localHotVideoData))) {
+        localMyVideoViewHolder.b(localDrawable);
+      }
+      this.a.a(localHotVideoData);
+    }
+    for (;;)
+    {
+      this.a.a();
+      return;
+      this.a.a(localHotVideoData);
+    }
   }
 }
 

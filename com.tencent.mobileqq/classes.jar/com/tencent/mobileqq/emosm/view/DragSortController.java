@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm.view;
 
-import acaf;
+import acif;
 import android.graphics.Point;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
@@ -15,7 +15,7 @@ public class DragSortController
 {
   public float a;
   public int a;
-  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new acaf(this);
+  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new acif(this);
   GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   public DragSortListView a;
   boolean jdField_a_of_type_Boolean = false;

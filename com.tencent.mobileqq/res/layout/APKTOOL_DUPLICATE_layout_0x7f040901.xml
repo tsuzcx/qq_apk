@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a285b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.5dip" android:layout_marginBottom="14.5dip">
-        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a285c" android:paddingLeft="5.0dip" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0ae3" android:layout_centerVertical="true" />
-        <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ae3" android:padding="5.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021774" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</merge>
+    <LinearLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a282b" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02044a" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12c3" />
+    </LinearLayout>
+</LinearLayout>

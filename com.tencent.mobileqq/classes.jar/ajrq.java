@@ -1,56 +1,21 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.os.Handler;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.EditText;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.TextInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
+import mqq.os.MqqHandler;
 
 public class ajrq
   implements Runnable
 {
-  public ajrq(AvatarWallAdapter paramAvatarWallAdapter, String paramString, int paramInt, AvatarWallAdapter.AvatarInfo paramAvatarInfo, BorderURLImageView paramBorderURLImageView) {}
+  public ajrq(XMediaEditor paramXMediaEditor, TextItem.TextViewHolder paramTextViewHolder) {}
   
   public void run()
   {
-    Object localObject1 = ImageUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    int i;
-    if (((BitmapFactory.Options)localObject1).outHeight > ((BitmapFactory.Options)localObject1).outWidth) {
-      i = ((BitmapFactory.Options)localObject1).outWidth;
-    }
-    try
-    {
-      for (;;)
-      {
-        localObject1 = ImageUtil.a(this.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject1);
-        Object localObject3 = localObject1;
-        if (localObject1 != null)
-        {
-          int j = TroopUtils.a(this.jdField_a_of_type_JavaLangString);
-          localObject3 = localObject1;
-          if (j != 0) {
-            localObject3 = ImageUtil.b((Bitmap)localObject1, j);
-          }
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.b = i;
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.a = ((Bitmap)localObject3);
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidOsHandler.post(new ajrr(this));
-        return;
-        i = ((BitmapFactory.Options)localObject1).outHeight;
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(AvatarWallAdapter.jdField_a_of_type_JavaLangString, 2, "viewFactory: AVATAR_LOCAL:" + localOutOfMemoryError);
-        }
-        Object localObject2 = null;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.requestFocus();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.findFocus();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(XMediaEditor.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor).a);
+    ThreadManager.getUIHandler().post(new ajrr(this));
   }
 }
 

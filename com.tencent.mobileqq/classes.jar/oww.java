@@ -1,41 +1,15 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
-import com.tencent.biz.troop.VideoCombineHelper.Task;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import org.json.JSONArray;
 
 class oww
-  extends VideoCombineHelper.TaskListener
+  implements Runnable
 {
-  oww(owv paramowv)
-  {
-    super(paramowv.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper);
-  }
+  oww(owv paramowv, JSONArray paramJSONArray) {}
   
-  public void a(VideoCombineHelper.Task paramTask)
+  public void run()
   {
-    if ((paramTask instanceof oxm)) {
-      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "download failed! msg = " + paramTask.d);
-    }
-    do
-    {
-      return;
-      if ((paramTask instanceof oxe))
-      {
-        this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "combine failed! msg = " + paramTask.d);
-        return;
-      }
-    } while (!(paramTask instanceof oxp));
-    this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "sending failed! msg = " + paramTask.d);
-  }
-  
-  public void b(VideoCombineHelper.Task paramTask)
-  {
-    if ((paramTask instanceof oxp))
-    {
-      paramTask = paramTask.a();
-      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(paramTask.e, true, "seding success");
-      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+    if (!this.jdField_a_of_type_Owv.a.a) {
+      CodeMaskManager.a(this.jdField_a_of_type_Owv.a, this.jdField_a_of_type_OrgJsonJSONArray);
     }
   }
 }

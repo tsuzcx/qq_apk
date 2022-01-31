@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic;
 
-public class ajip
-  implements DialogInterface.OnClickListener
+class ajip
+  implements Runnable
 {
-  public ajip(ReciteFragment paramReciteFragment) {}
+  ajip(ajin paramajin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReciteFragment.c(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.b);
   }
 }
 

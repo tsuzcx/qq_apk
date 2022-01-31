@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.util.ArrayList;
 
-class aazw
-  implements DialogInterface.OnDismissListener
+public class aazw
+  implements abac
 {
-  aazw(aazs paramaazs) {}
+  public aazw(ArkAppCGI paramArkAppCGI, abae paramabae) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(abad paramabad, boolean paramBoolean, byte[] arg3)
   {
-    ARMapActivity.a(this.a.a, null);
+    if ((paramBoolean) && (??? != null)) {
+      ArkAppCGI.a(this.jdField_a_of_type_Abae, ???);
+    }
+    synchronized (this.jdField_a_of_type_Abae)
+    {
+      this.jdField_a_of_type_Abae.jdField_a_of_type_JavaUtilArrayList.remove(paramabad);
+      paramBoolean = this.jdField_a_of_type_Abae.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+      if (paramBoolean) {
+        this.jdField_a_of_type_Abae.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$ArkAppCGICallback.a(true, this.jdField_a_of_type_Abae.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Abae.b);
+      }
+      return;
+      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("queryActionAppNeedUpdate, subTask fail", new Object[0]));
+    }
   }
 }
 

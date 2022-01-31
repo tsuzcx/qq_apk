@@ -1,11 +1,13 @@
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQItemBubbleBuilder;
 
-class uzc
-  implements ActionSheet.OnDismissListener
+public class uzc
+  implements DialogInterface.OnClickListener
 {
-  uzc(uzb paramuzb) {}
+  public uzc(ArkAppBabyQItemBubbleBuilder paramArkAppBabyQItemBubbleBuilder) {}
   
-  public void onDismiss() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -6,25 +6,25 @@ import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import java.util.Map;
 import java.util.Set;
-import ply;
+import pqq;
 
 public class SharedPreferencesWrapper
   implements SharedPreferences
 {
   private final SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private final ply jdField_a_of_type_Ply;
+  private final pqq jdField_a_of_type_Pqq;
   
-  public SharedPreferencesWrapper(SharedPreferences paramSharedPreferences, ply paramply)
+  public SharedPreferencesWrapper(SharedPreferences paramSharedPreferences, pqq parampqq)
   {
     this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
-    this.jdField_a_of_type_Ply = paramply;
+    this.jdField_a_of_type_Pqq = parampqq;
   }
   
   private String a(String paramString)
   {
     String str = paramString;
-    if (this.jdField_a_of_type_Ply != null) {
-      str = this.jdField_a_of_type_Ply.a(paramString);
+    if (this.jdField_a_of_type_Pqq != null) {
+      str = this.jdField_a_of_type_Pqq.a(paramString);
     }
     return str;
   }
@@ -34,9 +34,9 @@ public class SharedPreferencesWrapper
     return this.jdField_a_of_type_AndroidContentSharedPreferences;
   }
   
-  public final ply a()
+  public final pqq a()
   {
-    return this.jdField_a_of_type_Ply;
+    return this.jdField_a_of_type_Pqq;
   }
   
   public boolean contains(String paramString)

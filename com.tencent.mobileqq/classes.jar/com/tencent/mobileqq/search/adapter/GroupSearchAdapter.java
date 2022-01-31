@@ -66,8 +66,6 @@ import com.tencent.mobileqq.search.view.IView;
 import com.tencent.mobileqq.search.view.NetSearchTemplateAvatarsView;
 import com.tencent.mobileqq.search.view.NetSearchTemplateBannerTitleView;
 import com.tencent.mobileqq.search.view.NetSearchTemplateHorizontalContainerView;
-import com.tencent.mobileqq.search.view.NetSearchTemplateMovieView;
-import com.tencent.mobileqq.search.view.NetSearchTemplateNormalView;
 import com.tencent.mobileqq.search.view.NetSearchTemplateSubItemTitleView;
 import com.tencent.mobileqq.search.view.NetSearchTemplateSubItemView;
 import com.tencent.mobileqq.search.view.NetSearchTemplateUniversalView;
@@ -142,6 +140,8 @@ public class GroupSearchAdapter
     case 18: 
     case 19: 
     case 20: 
+    case 37: 
+    case 43: 
     default: 
       return new SearchResultGroupPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
     case 41: 
@@ -192,11 +192,9 @@ public class GroupSearchAdapter
     case 35: 
     case 36: 
       return new EntranceResultPresenter();
-    case 37: 
     case 38: 
     case 39: 
     case 42: 
-    case 43: 
     case 44: 
     case 45: 
     case 47: 
@@ -208,7 +206,6 @@ public class GroupSearchAdapter
   
   protected IView a(int paramInt, ViewGroup paramViewGroup)
   {
-    int j = 0;
     boolean bool2 = false;
     Object localObject;
     switch (getItemViewType(paramInt))
@@ -220,9 +217,10 @@ public class GroupSearchAdapter
     case 8: 
     case 18: 
     case 20: 
+    case 37: 
+    case 43: 
     default: 
-      paramViewGroup = new SearchResultGroupView(paramViewGroup, 2130971525);
-      return paramViewGroup;
+      return new SearchResultGroupView(paramViewGroup, 2130971551);
     case 41: 
       return new FunctionSearchResultGroupView(paramViewGroup);
     case 3: 
@@ -244,39 +242,15 @@ public class GroupSearchAdapter
         bool2 = true;
       }
       return new SearchResultGroupTitleView(paramViewGroup, bool2, bool1);
-      return new SearchResultGroupView(paramViewGroup, 2130969233);
+      return new SearchResultGroupView(paramViewGroup, 2130969231);
       return new SearchResultGroupFooterView(paramViewGroup);
-      return new SearchResultGroupMoreItemView(paramViewGroup, 2130971543, 2130843264, -1);
-      return new SearchResultGroupMoreItemView(paramViewGroup, 2130971543, 2130843264, 12);
-      localObject = new SearchResultView(paramViewGroup, 2130969410);
-      int i = j;
-      if (paramInt >= 1)
-      {
-        paramInt = getItemViewType(paramInt - 1);
-        if (paramInt != 11)
-        {
-          i = j;
-          if (paramInt != 10) {}
-        }
-        else
-        {
-          i = 1;
-        }
-      }
-      paramViewGroup = (ViewGroup)localObject;
-      if (i == 0) {
-        break;
-      }
-      paramViewGroup = (ViewGroup)localObject;
-      if (((SearchResultView)localObject).b() == null) {
-        break;
-      }
-      ((SearchResultView)localObject).b().setVisibility(8);
-      return localObject;
-      return new ContactSearchResultGroupView(paramViewGroup, 2130971529);
-      return new ApproximateSearchResultGroupView(paramViewGroup, 2130971571);
-      return new SearchResultGroupView(paramViewGroup, 2130971526);
-      return new SearchResultGroupView(paramViewGroup, 2130971531);
+      return new SearchResultGroupMoreItemView(paramViewGroup, 2130971569, 2130843297, -1);
+      return new SearchResultGroupMoreItemView(paramViewGroup, 2130971569, 2130843297, 12);
+      return new SearchResultView(paramViewGroup, 2130969406);
+      return new ContactSearchResultGroupView(paramViewGroup, 2130971555);
+      return new ApproximateSearchResultGroupView(paramViewGroup, 2130971597);
+      return new SearchResultGroupView(paramViewGroup, 2130971552);
+      return new SearchResultGroupView(paramViewGroup, 2130971557);
       return new SearchResultFromNetView(paramViewGroup, a(paramInt));
       localObject = a(paramInt);
       if ((localObject instanceof SearchResultModelForEntrance)) {
@@ -289,18 +263,15 @@ public class GroupSearchAdapter
         localObject = (NetSearchTemplateBaseItem)localObject;
         switch (((NetSearchTemplateBaseItem)localObject).b())
         {
+        case 5: 
         default: 
           throw new RuntimeException("NetSearchTemplateBaseItem.getLayoutId() is " + ((NetSearchTemplateBaseItem)localObject).e() + " which is not supported!!!");
-        case 1: 
-          return new NetSearchTemplateNormalView(paramViewGroup, ((NetSearchTemplateBaseItem)localObject).e());
         case 2: 
           return new NetSearchTemplateAvatarsView(paramViewGroup, ((NetSearchTemplateBaseItem)localObject).e());
         case 3: 
           return new NetSearchTemplateUpdatesView(paramViewGroup, ((NetSearchTemplateBaseItem)localObject).e());
         case 4: 
           return new NetSearchTemplateBannerTitleView(paramViewGroup, ((NetSearchTemplateBaseItem)localObject).e());
-        case 5: 
-          return new NetSearchTemplateMovieView(paramViewGroup, ((NetSearchTemplateBaseItem)localObject).e());
         case 7: 
           return new NetSearchTemplateHorizontalContainerView(paramViewGroup, ((NetSearchTemplateBaseItem)localObject).e());
         case 6: 
@@ -311,7 +282,7 @@ public class GroupSearchAdapter
         return new NetSearchTemplateSubItemTitleView(paramViewGroup, ((NetSearchTemplateBaseItem)localObject).e());
       }
       throw new RuntimeException("model type is TYPE_UNITE_TEMPLATE_NORMAL or TYPE_UNITE_TEMPLATE_NEWS, but model item is not instance NetSearchTemplateBaseItem.");
-      return new SearchResultView(paramViewGroup, 2130969234);
+      return new SearchResultView(paramViewGroup, 2130969232);
     }
   }
   
@@ -484,18 +455,15 @@ public class GroupSearchAdapter
     {
       switch (((NetSearchTemplateBaseItem)a(paramInt)).b())
       {
+      case 5: 
       default: 
-        return 37;
-      case 1: 
-        return 37;
+        return 45;
       case 2: 
         return 38;
       case 3: 
         return 39;
       case 4: 
         return 42;
-      case 5: 
-        return 43;
       case 7: 
         return 44;
       case 6: 
@@ -516,6 +484,7 @@ public class GroupSearchAdapter
     IModel localIModel = a(paramInt);
     Object localObject1;
     Object localObject2;
+    int j;
     int i;
     if (SearchUtil.a(localIModel) > 0)
     {
@@ -544,7 +513,7 @@ public class GroupSearchAdapter
           localObject1 = ((ISearchResultGroupModel)localObject2).a();
           if ((localObject1 != null) && (((List)localObject1).size() > 0))
           {
-            int j = Math.min(((List)localObject1).size(), ((ISearchResultGroupModel)localObject2).a());
+            j = Math.min(((List)localObject1).size(), ((ISearchResultGroupModel)localObject2).a());
             i = 0;
             if (i < j) {
               if (SearchUtil.c.containsKey(((List)localObject1).get(i)))
@@ -716,7 +685,7 @@ public class GroupSearchAdapter
             }
             localObject2 = this.jdField_a_of_type_ComTencentWidgetListView.getContext();
             if (!(localObject2 instanceof UniteSearchActivity)) {
-              break label2525;
+              break label2618;
             }
             i = ((UniteSearchActivity)localObject2).jdField_a_of_type_Int;
             SearchUtils.a("all_result", "exp_relatedsearch_list", new String[] { ((SearchUtil.ObjectItemInfo)localObject1).jdField_a_of_type_JavaLangString, i + "" });
@@ -762,7 +731,7 @@ public class GroupSearchAdapter
             if ((((SearchResultModelForEntrance)localObject2).jdField_a_of_type_Int == -3) || (((SearchResultModelForEntrance)localObject2).jdField_a_of_type_Int == -4))
             {
               if (!((SearchUtil.ObjectItemInfo)localObject1).jdField_b_of_type_Boolean) {
-                break label2519;
+                break label2612;
               }
               i = 2;
               SearchUtils.a("all_result", "exp_net_search", i, 0, new String[] { ((SearchUtil.ObjectItemInfo)localObject1).jdField_a_of_type_JavaLangString, ((SearchUtil.ObjectItemInfo)localObject1).jdField_a_of_type_Long + "", ((SearchUtil.ObjectItemInfo)localObject1).jdField_b_of_type_JavaLangString, ((SearchUtil.ObjectItemInfo)localObject1).jdField_a_of_type_Int + "" });
@@ -782,7 +751,32 @@ public class GroupSearchAdapter
               }
             }
           }
-          return super.getView(paramInt, paramView, paramViewGroup);
+          paramView = super.getView(paramInt, paramView, paramViewGroup);
+          j = 0;
+          i = j;
+          if (paramInt >= 1)
+          {
+            int k = getItemViewType(paramInt);
+            paramInt = getItemViewType(paramInt - 1);
+            if (k != 11)
+            {
+              i = j;
+              if (k != 10) {}
+            }
+            else if (paramInt != 11)
+            {
+              i = j;
+              if (paramInt != 10) {}
+            }
+            else
+            {
+              i = 1;
+            }
+          }
+          if ((i != 0) && (paramView.findViewById(2131363953) != null)) {
+            paramView.findViewById(2131363953).setVisibility(8);
+          }
+          return paramView;
         }
         catch (JSONException localJSONException5)
         {
@@ -790,11 +784,11 @@ public class GroupSearchAdapter
           {
             QLog.e("Q.uniteSearch.BaseMvpAdapter", 2, "e = " + localJSONException5);
             continue;
-            label2519:
+            label2612:
             i = 1;
           }
         }
-        label2525:
+        label2618:
         i = -1;
       }
     }

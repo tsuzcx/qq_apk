@@ -1,18 +1,25 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class vxl
-  implements Runnable
+public class vxl
+  implements View.OnClickListener
 {
-  vxl(vxk paramvxk) {}
+  public vxl(DiscussChatPie paramDiscussChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("isNeedFinish", true);
-    this.a.a.a.setResult(-1, localIntent);
-    this.a.a.A();
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet = PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, 1);
+    long l = Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b() != l) {
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Multi_call", "Mc_corner_launch", 0, 0, "", "", "", "");
+    }
   }
 }
 

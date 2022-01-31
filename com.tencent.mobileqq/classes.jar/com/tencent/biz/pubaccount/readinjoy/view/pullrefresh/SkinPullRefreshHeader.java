@@ -60,15 +60,6 @@ public class SkinPullRefreshHeader
     }
   }
   
-  public void Y_()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    }
-  }
-  
   public long a()
   {
     return this.jdField_a_of_type_Long;
@@ -96,6 +87,15 @@ public class SkinPullRefreshHeader
     }
   }
   
+  public void aa_()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    }
+  }
+  
   public void b(long paramLong) {}
   
   public void c(long paramLong)
@@ -108,9 +108,9 @@ public class SkinPullRefreshHeader
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363057));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363049));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375095));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363062));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363054));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375147));
     c(0L);
   }
   

@@ -1,31 +1,46 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.widget.TextView;
+import com.tencent.mobileqq.trooponline.TroopOnlineMemberBar;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class akeb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akeb(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public akeb(TroopOnlineMemberBar paramTroopOnlineMemberBar) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, 1);
-    }
-    try
+    if (TroopOnlineMemberBar.a(this.a) != 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if ((TroopOnlineMemberBar.a(this.a) != 2) && (NetworkUtil.g(this.a.jdField_a_of_type_AndroidContentContext))) {
+        break label118;
       }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429901);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      if ((this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.isRunning())) {
+        this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+      }
+      TroopOnlineMemberBar.a(this.a, 2);
+    }
+    label118:
+    while (TroopOnlineMemberBar.a(this.a) != 1) {
       return;
     }
-    catch (Exception paramView) {}
+    if (this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable == null) {
+      this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838602));
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(null);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);
+    this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akeb
  * JD-Core Version:    0.7.0.1
  */

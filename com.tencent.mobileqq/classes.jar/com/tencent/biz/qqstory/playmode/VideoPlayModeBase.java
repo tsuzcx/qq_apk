@@ -86,22 +86,22 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import nig;
-import nii;
-import nil;
-import nim;
-import nin;
-import niq;
-import nir;
-import niu;
-import niv;
-import niw;
-import nix;
-import niy;
-import niz;
-import nja;
-import njb;
-import nje;
+import nmq;
+import nms;
+import nmv;
+import nmw;
+import nmx;
+import nna;
+import nnb;
+import nne;
+import nnf;
+import nng;
+import nnh;
+import nni;
+import nnj;
+import nnk;
+import nnl;
+import nno;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -195,11 +195,11 @@ public abstract class VideoPlayModeBase
     this.jdField_d_of_type_Boolean = true;
     this.jdField_h_of_type_Int = -1;
     this.jdField_i_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener = new nja(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener = new nnk(this);
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$HideProgressBarRunnable = new VideoPlayModeBase.HideProgressBarRunnable(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener = new nii(this);
-    this.jdField_a_of_type_JavaLangRunnable = new nil(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new niq(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener = new nms(this);
+    this.jdField_a_of_type_JavaLangRunnable = new nmv(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new nna(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = PlayModeUtils.a();
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer = paramStoryVideoPlayer;
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter = paramVideoPlayerPagerAdapter;
@@ -275,7 +275,7 @@ public abstract class VideoPlayModeBase
         ((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.get(paramInt + 1)).mIsPlaying = 0;
       }
     }
-    ThreadManager.post(new nix(this), 8, null, true);
+    ThreadManager.post(new nnh(this), 8, null, true);
     this.jdField_b_of_type_Int = paramInt;
     localObject = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     this.jdField_f_of_type_JavaLangString = ((StoryVideoItem)localObject).mVid;
@@ -388,9 +388,9 @@ public abstract class VideoPlayModeBase
       }
     } while (this.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog != null);
     this.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog = new StoryNewGuideDialog(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog.a("左右滑动可切换日迹");
+    this.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog.a("左右滑动可切换小视频");
     c(1);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog.setOnDismissListener(new njb(this, paramStoryVideoItem));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog.setOnDismissListener(new nnl(this, paramStoryVideoItem));
     this.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog.show();
     localStoryConfigManager.a(true);
   }
@@ -422,7 +422,7 @@ public abstract class VideoPlayModeBase
       return;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      if (paramPlayerVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+      if (paramPlayerVideoListEvent.errorInfo.isFail())
       {
         if (QLog.isColorLevel()) {
           QLog.i("VideoPlayModeBase", 2, "event.errorInfo.isFail()");
@@ -432,7 +432,7 @@ public abstract class VideoPlayModeBase
           this.jdField_a_of_type_Boolean = true;
           return;
         }
-        if (paramPlayerVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 880001)
+        if (paramPlayerVideoListEvent.errorInfo.errorCode == 880001)
         {
           if (QLog.isColorLevel()) {
             QLog.i("VideoPlayModeBase", 2, "event.errorInfo.isFail(): ERROR_NO_NETWORK");
@@ -443,15 +443,15 @@ public abstract class VideoPlayModeBase
           this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_Int = 1;
           this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_b_of_type_Int = 880001;
           this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
-          this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new niw(this));
+          this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nng(this));
           return;
         }
         if (QLog.isColorLevel()) {
-          QLog.i("VideoPlayModeBase", 2, "event.errorInfo.isFail(): errorCode:" + paramPlayerVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode);
+          QLog.i("VideoPlayModeBase", 2, "event.errorInfo.isFail(): errorCode:" + paramPlayerVideoListEvent.errorInfo.errorCode);
         }
         this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(0);
         this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_Int = 1;
-        this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_b_of_type_Int = paramPlayerVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode;
+        this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_b_of_type_Int = paramPlayerVideoListEvent.errorInfo.errorCode;
         this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
         this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
         return;
@@ -498,7 +498,7 @@ public abstract class VideoPlayModeBase
   public void a(PollWidgetUtils.IPollWidget paramIPollWidget)
   {
     Context localContext = this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.getContext();
-    Object localObject = a(((Integer)paramIPollWidget.a().getTag(2131362460)).intValue());
+    Object localObject = a(((Integer)paramIPollWidget.a().getTag(2131362463)).intValue());
     if (localObject != null)
     {
       StoryReportor.a("play_video", "vote_detail", 1, 0, new String[0]);
@@ -526,7 +526,7 @@ public abstract class VideoPlayModeBase
   public void a(RateWidget paramRateWidget)
   {
     Context localContext = this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.getContext();
-    Object localObject = a(((Integer)paramRateWidget.a().getTag(2131362460)).intValue());
+    Object localObject = a(((Integer)paramRateWidget.a().getTag(2131362463)).intValue());
     if (localObject != null)
     {
       StoryReportor.a("play_video", "vote_detail", 2, 0, new String[0]);
@@ -558,7 +558,7 @@ public abstract class VideoPlayModeBase
   {
     Context localContext = this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.getContext();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new niz(this, localContext, paramBoolean, paramCharSequence), paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new nnj(this, localContext, paramBoolean, paramCharSequence), paramLong);
   }
   
   public void a(String paramString, int paramInt)
@@ -587,7 +587,7 @@ public abstract class VideoPlayModeBase
           localVideoViewHolder.jdField_a_of_type_Int = 4;
           localVideoViewHolder.jdField_b_of_type_Int = localStoryVideoItem.mErrorCode;
           localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(0);
-          localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setTipsText(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.getResources().getString(2131432097));
+          localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setTipsText(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.getResources().getString(2131432108));
           localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(null);
           StoryReportor.b("play_video", "play_done", 0, 0, new String[] { "1", String.valueOf(110), "", localStoryVideoItem.mVid });
         }
@@ -612,7 +612,7 @@ public abstract class VideoPlayModeBase
         }
         localVideoViewHolder.jdField_a_of_type_Int = 6;
         localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
-        localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nin(this, localVideoViewHolder, paramInt, paramString));
+        localVideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nmx(this, localVideoViewHolder, paramInt, paramString));
         break;
         label398:
         if (TextUtils.isEmpty(localStoryVideoItem.mLocalVideoPath)) {
@@ -648,9 +648,9 @@ public abstract class VideoPlayModeBase
           paramString2.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
           SLog.b("Q.qqstory.player.YPlayModeUtils", "onDownloadError set progress bar GONE");
           paramString2.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-          paramString2.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nim(this, paramString2, paramString1));
+          paramString2.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nmw(this, paramString2, paramString1));
           if ((this.jdField_b_of_type_Int == k) && (!NetworkUtil.a(a()))) {
-            QQToast.a(a(), 1, 2131433213, 0).a();
+            QQToast.a(a(), 1, 2131433227, 0).a();
           }
         }
       }
@@ -774,7 +774,7 @@ public abstract class VideoPlayModeBase
               localObject1 = ((String)localObject2).substring(7);
             }
           }
-          localIVideoView.a(new nje(this, paramInt, localIVideoView, (ImageView)localObject3, localQQStoryLoadingView));
+          localIVideoView.a(new nno(this, paramInt, localIVideoView, (ImageView)localObject3, localQQStoryLoadingView));
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
             break;
           }
@@ -800,8 +800,8 @@ public abstract class VideoPlayModeBase
           }
           else
           {
-            localIVideoView.a(new nir(this, (String)localObject1, localStoryVideoItem, localDownloadUrlManager, paramInt));
-            localIVideoView.a(new niu(this, localStoryVideoItem, localQQStoryLoadingView));
+            localIVideoView.a(new nnb(this, (String)localObject1, localStoryVideoItem, localDownloadUrlManager, paramInt));
+            localIVideoView.a(new nne(this, localStoryVideoItem, localQQStoryLoadingView));
             this.jdField_e_of_type_Long = 0L;
             localStoryVideoItem.mIsPlaying = 1;
             if (bool) {
@@ -836,7 +836,7 @@ public abstract class VideoPlayModeBase
       for (;;)
       {
         if (!((StoryConfigManager)SuperManager.a(10)).a()) {
-          this.jdField_a_of_type_AndroidOsHandler.post(new niv(this, localQQStoryLoadingView, localQQStoryVideoPlayerErrorView, paramInt, localStoryVideoItem));
+          this.jdField_a_of_type_AndroidOsHandler.post(new nnf(this, localQQStoryLoadingView, localQQStoryVideoPlayerErrorView, paramInt, localStoryVideoItem));
         }
         return true;
         localQQStoryLoadingView.setVisibility(0);
@@ -1135,7 +1135,7 @@ public abstract class VideoPlayModeBase
         }
         bool = true;
         AssertUtils.a(bool, "storyVideoItem.mSourceType is illegal");
-        ((JSONObject)localObject2).put("video_orig", localStoryVideoItem.mSourceType);
+        ((JSONObject)localObject2).put("video_origin", localStoryVideoItem.mSourceType);
         paramInt1 = a();
         String str3 = ((JSONObject)localObject2).toString();
         if (localVideoListFeedItem != null) {
@@ -1271,7 +1271,7 @@ public abstract class VideoPlayModeBase
       String str2 = this.jdField_d_of_type_JavaLangString;
       int k = paramVideoViewHolder.jdField_c_of_type_Int;
       if (!PlayModeUtils.b(paramStoryVideoItem)) {
-        PlayModeUtils.a(str1, str2, new nig(this, k, str1, str2, paramStoryVideoItem), false);
+        PlayModeUtils.a(str1, str2, new nmq(this, k, str1, str2, paramStoryVideoItem), false);
       }
       return;
       paramVideoViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -1653,7 +1653,7 @@ public abstract class VideoPlayModeBase
   public void r()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.post(new niy(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new nni(this));
   }
   
   public void s()

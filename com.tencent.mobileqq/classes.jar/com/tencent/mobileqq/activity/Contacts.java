@@ -50,7 +50,7 @@ import com.tencent.widget.CustomWidgetUtil;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import sfr;
+import skj;
 
 public class Contacts
   extends Frame
@@ -65,7 +65,7 @@ public class Contacts
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ContactsViewController jdField_a_of_type_ComTencentMobileqqActivityContactsBaseContactsViewController;
   private CommonLoadingView jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView;
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new sfr(this);
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new skj(this);
   private RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
   private RedDotTextView jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView;
   private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
@@ -97,7 +97,7 @@ public class Contacts
         if (paramBoolean) {
           ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800707A", "0X800707A", 0, 0, "", "", "", "");
         }
-        localStringBuilder.append(a().getString(2131433315)).append(" 有更新");
+        localStringBuilder.append(a().getString(2131433329)).append(" 有更新");
         i = 1;
       }
     }
@@ -120,7 +120,7 @@ public class Contacts
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800707B", "0X800707B", 0, 0, "", "", "", "");
       }
       i = 3;
-      localStringBuilder.append(a().getString(2131433315)).append(" ");
+      localStringBuilder.append(a().getString(2131433329)).append(" ");
       if (paramInt > 99) {
         localStringBuilder.append("多于99条未读");
       } else {
@@ -138,22 +138,22 @@ public class Contacts
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseContactsViewController.a();
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseContactsViewController.a(this.jdField_a_of_type_Int);
     p();
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView = ((CommonLoadingView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363809));
+    this.jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView = ((CommonLoadingView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363833));
     this.jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView.setOnFirstDrawListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363833));
-    R_();
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363857));
+    S_();
     o();
   }
   
   private void o()
   {
-    View localView1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363835);
-    View localView2 = localView1.findViewById(2131369967);
-    localView2.findViewById(2131368321).setVisibility(8);
+    View localView1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363859);
+    View localView2 = localView1.findViewById(2131369976);
+    localView2.findViewById(2131368323).setVisibility(8);
     IphoneTitleBarActivity.setLayerType(localView2);
-    EditText localEditText = (EditText)localView2.findViewById(2131368322);
-    this.d = ((TextView)localView2.findViewById(2131368735));
-    localView2 = localView2.findViewById(2131370344);
+    EditText localEditText = (EditText)localView2.findViewById(2131368324);
+    this.d = ((TextView)localView2.findViewById(2131368738));
+    localView2 = localView2.findViewById(2131370353);
     localView2.setOnClickListener(this);
     if (SearchConfigManager.a()) {
       localView2.setVisibility(0);
@@ -163,10 +163,10 @@ public class Contacts
       localEditText.setFocusableInTouchMode(false);
       localEditText.setCursorVisible(false);
       localEditText.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131363920);
-      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363910));
+      this.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131363945);
+      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363935));
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = localView1.findViewById(2131363921);
+      this.jdField_b_of_type_AndroidViewView = localView1.findViewById(2131363946);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
       return;
       localView2.setVisibility(8);
@@ -175,20 +175,20 @@ public class Contacts
   
   private void p()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131363831));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362862));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363826));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131363855));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362867));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363850));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView = ((RedDotTextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363428));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView = ((RedDotTextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363447));
     this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setContentDescription("添加");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setText(2131434355);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setText(2131434371);
     this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(a(), this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView).a(21).e(10).a();
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363381));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363400));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363379));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363825));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363398));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363849));
     IphoneTitleBarActivity.setLayerType(this.jdField_b_of_type_AndroidWidgetRelativeLayout);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_AndroidWidgetTextView);
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView);
@@ -204,9 +204,9 @@ public class Contacts
     }
     a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, false);
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845871);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494212));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setTextColor(a().getColorStateList(2131494212));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845951);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494218));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setTextColor(a().getColorStateList(2131494218));
   }
   
   private void q()
@@ -230,9 +230,9 @@ public class Contacts
     }
   }
   
-  public void Q_() {}
+  public void R_() {}
   
-  void R_()
+  void S_()
   {
     int j = 0;
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseContactsViewController != null) {
@@ -268,7 +268,7 @@ public class Contacts
         if ((i != 0) || (j != 0)) {
           break label236;
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838215);
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838220);
         this.jdField_a_of_type_AndroidWidgetImageView.setTag(null);
         return;
         localObject = new ThemeBackground();
@@ -276,7 +276,7 @@ public class Contacts
         if (ThemeUtil.isNowThemeIsAnimate())
         {
           localObject = ThemeUtil.getAnimatePathByTag(2);
-          Drawable localDrawable = super.a().getDrawable(2130845807);
+          Drawable localDrawable = super.a().getDrawable(2130845888);
           localObject = VasApngUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, "-conversation-", localDrawable, VasApngUtil.a, "-contacts-", null);
           if (localObject != null)
           {
@@ -293,7 +293,7 @@ public class Contacts
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    paramLayoutInflater = LayoutInflater.from(a()).inflate(2130968803, null);
+    paramLayoutInflater = LayoutInflater.from(a()).inflate(2130968807, null);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseContactsViewController = new ContactsViewController(a());
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseContactsViewController.a(paramLayoutInflater);
     return paramLayoutInflater;
@@ -301,7 +301,7 @@ public class Contacts
   
   protected String a()
   {
-    return a().getString(2131433271);
+    return a().getString(2131433285);
   }
   
   public void a()
@@ -316,7 +316,7 @@ public class Contacts
     {
       return;
     }
-    R_();
+    S_();
     ((NewFriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33)).b();
   }
   
@@ -349,9 +349,9 @@ public class Contacts
     if (AppSetting.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setFocusable(true);
-      String str = a(2131433271);
+      String str = a(2131433285);
       this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(str);
-      a().setTitle(a(2131433271));
+      a().setTitle(a(2131433285));
     }
     this.d.setText(SearchEntryConfigManager.b());
     s();
@@ -439,7 +439,7 @@ public class Contacts
   
   public void l()
   {
-    R_();
+    S_();
     if (ThemeUtil.isDefaultOrDIYTheme(false))
     {
       a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, true);
@@ -453,10 +453,10 @@ public class Contacts
       BuddyListItem.a.clear();
       return;
       a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845871);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845951);
       a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, false);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494212));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setTextColor(a().getColorStateList(2131494212));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494218));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRedDotTextView.setTextColor(a().getColorStateList(2131494218));
     }
   }
   
@@ -466,7 +466,7 @@ public class Contacts
     switch (paramView.getId())
     {
     default: 
-    case 2131368322: 
+    case 2131368324: 
       long l;
       do
       {
@@ -480,7 +480,7 @@ public class Contacts
       FrameHelperActivity.b(false);
       UniteSearchActivity.a(a(), null, 2, 2);
       return;
-    case 2131363428: 
+    case 2131363447: 
       paramView = new Intent(a(), AddContactsActivity.class);
       paramView.putExtra("entrence_data_report", 1);
       paramView.putExtra("EntranceId", 3);
@@ -495,14 +495,14 @@ public class Contacts
       {
         return;
       }
-    case 2131363920: 
+    case 2131363945: 
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007F18", "0X8007F18", 0, 0, "", "", "", "");
       paramView = new Intent(a(), NewFriendActivity.class);
       paramView.putExtra("EntranceId", 2);
       paramView.setFlags(67108864);
       a(paramView);
       return;
-    case 2131363921: 
+    case 2131363946: 
       paramView = new Intent(a(), NewTroopCreateActivity.class);
       paramView.putExtra("param_default_tab", 1);
       paramView.putExtra("param_exit_animation", 1);

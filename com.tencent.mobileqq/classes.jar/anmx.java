@@ -1,32 +1,25 @@
-import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import dov.com.qq.im.capture.paster.PasterDataManager;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import cooperation.thirdpay.ThirdPayGate;
 
 public class anmx
-  extends LbsManager.OnLocationListener
+  implements DialogInterface.OnClickListener
 {
-  public anmx(PasterDataManager paramPasterDataManager, String paramString)
-  {
-    super(paramString);
-  }
+  public anmx(ThirdPayGate paramThirdPayGate, Bundle paramBundle, Activity paramActivity) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      SLog.b("PasterDataManager", "onLocationUpdate() latitude=" + paramSosoLbsInfo.a.a + " longitude=" + paramSosoLbsInfo.a.b);
-      this.a.e();
-      return;
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isactivityfinish")) {
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
-    SLog.b("PasterDataManager", "onLocationUpdate() error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,95 +1,52 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class rny
-  implements InputFilter
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 32;
+  public rny(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public rny(AuthDevRenameActivity paramAuthDevRenameActivity) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    int j = paramInt1;
-    int k = 0;
-    if (j < paramInt2)
+    if (this.a.a != null)
     {
-      i = paramCharSequence.charAt(j);
-      if (i < 128) {
-        i = 1;
-      }
-      for (;;)
-      {
-        j += 1;
-        k += i;
+      this.a.getWindow().setSoftInputMode(2);
+      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
+      AddFriendVerifyActivity.a(this.a).clearFocus();
+    }
+    if (AddFriendVerifyActivity.a(this.a).getText().toString().length() > 90)
+    {
+      paramView = new Dialog(this.a, 2131624516);
+      paramView.setContentView(2130971534);
+      ((TextView)paramView.findViewById(2131362781)).setText(this.a.getString(2131434800));
+      ((ProgressBar)paramView.findViewById(2131362780)).setVisibility(8);
+      ((ImageView)paramView.findViewById(2131374274)).setImageResource(2130838761);
+      paramView.show();
+    }
+    do
+    {
+      return;
+      this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
+      if (!NetworkUtil.d(this.a)) {
         break;
-        if (i < 2048) {
-          i = 2;
-        } else {
-          i = 3;
-        }
       }
-    }
-    int n = paramSpanned.length();
-    int i = 0;
-    int m = 0;
-    if (m < n)
-    {
-      if ((m >= paramInt3) && (m < paramInt4)) {
-        break label272;
-      }
-      j = paramSpanned.charAt(m);
-      if (j < 128)
-      {
-        j = 1;
-        label127:
-        i = j + i;
-      }
-    }
-    label272:
-    for (;;)
-    {
-      m += 1;
-      break;
-      if (j < 2048)
-      {
-        j = 2;
-        break label127;
-      }
-      j = 3;
-      break label127;
-      i = this.jdField_a_of_type_Int - i;
-      if (i <= 0) {
-        return "";
-      }
-      if (i >= k) {
-        return null;
-      }
-      paramInt4 = paramInt1;
-      while (paramInt4 < paramInt2)
-      {
-        paramInt3 = paramCharSequence.charAt(paramInt4);
-        if (paramInt3 < 128) {
-          paramInt3 = 1;
-        }
-        for (;;)
-        {
-          i -= paramInt3;
-          if (i >= 0) {
-            break;
-          }
-          return paramCharSequence.subSequence(paramInt1, paramInt4);
-          if (paramInt3 < 2048) {
-            paramInt3 = 2;
-          } else {
-            paramInt3 = 3;
-          }
-        }
-        paramInt4 += 1;
-      }
-      return null;
-    }
+      AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0));
+    } while (!"d2g".equals(this.a.getIntent().getStringExtra("jump_from")));
+    ReportController.b(this.a.app, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, AddFriendVerifyActivity.a(this.a), "", "", "");
+    return;
+    QQToast.a(this.a, 1, 2131434827, 0).b(this.a.getTitleBarHeight());
   }
 }
 

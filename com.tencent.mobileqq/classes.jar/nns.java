@@ -1,22 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
+import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
+import com.tencent.biz.qqstory.playmode.child.DiscoverPlayMode;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import java.util.ArrayList;
 
 public class nns
-  extends Handler
+  extends IPlayVideoStatusChangeListener
 {
-  public nns(ProgressControler paramProgressControler, Looper paramLooper)
+  public nns(DiscoverPlayMode paramDiscoverPlayMode) {}
+  
+  public void c(int paramInt)
   {
-    super(paramLooper);
+    if (paramInt < this.a.a.a.size() - 1) {
+      StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void d(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
+    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
+  }
+  
+  public void e(int paramInt)
+  {
+    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
   }
 }
 

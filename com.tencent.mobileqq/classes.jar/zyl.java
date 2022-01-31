@@ -1,64 +1,31 @@
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.AccostMessageProcessor;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class zyl
-  implements Runnable
+  implements BaseMessageProcessor.RequestBuilder
 {
-  public zyl(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl, int paramInt) {}
+  public zyl(AccostMessageProcessor paramAccostMessageProcessor, byte[] paramArrayOfByte, int paramInt) {}
   
-  public void run()
+  public ToServiceMsg a()
   {
-    if (ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl) != null) {
-      ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl).a(0);
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageAccostMessageProcessor.a.a("MessageSvc.GetMsgV4");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "--->getC2CMessage cChannel: 4vCookies: " + this.jdField_a_of_type_ArrayOfByte + ",cSyncFlag:" + this.jdField_a_of_type_Int);
     }
-    if (this.jdField_a_of_type_Int == 0) {
-      if (ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl) != -1) {
-        switch (ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl))
-        {
-        case 5: 
-        default: 
-          ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl, -1);
-        }
-      }
-    }
-    for (;;)
-    {
-      ARVideoRecordUIControllerImpl.b(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl, false);
-      if (!ARVideoRecordUIControllerImpl.c(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl)) {
-        ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl);
-      }
-      return;
-      ARVideoRecordUIControllerImpl.a("0X8008A56");
-      ARRecordUtils.a("AR视频已保存", "录制的AR视频已保存至“相册”，可在手机“相册”中查看。");
-      break;
-      ARRecordUtils.a("录制的AR视频已保存至“相册”", true);
-      break;
-      ARVideoRecordUIControllerImpl.a("0X8008A56");
-      ARRecordUtils.a("录制的AR视频已保存至“相册”", true);
-      break;
-      if (ARVideoRecordUIControllerImpl.b(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl) == true)
-      {
-        ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl, false);
-      }
-      else
-      {
-        ARVideoRecordUIControllerImpl.a("0X8008A56");
-        ARRecordUtils.a("录制的AR视频已保存至“相册”", true);
-        continue;
-        ARVideoRecordUIControllerImpl.a("0X8008A56");
-        if (this.jdField_a_of_type_Int == 1) {
-          ARRecordUtils.a("AR视频已保存", "已达到最大录屏时间，录制的AR视频已存至“相册”，可在手机“相册”中查看。");
-        } else {
-          ARRecordUtils.a("AR视频已保存", "手机可用存储空间不足，录制的AR视频已存至“相册”，可在手机“相册”中查看。");
-        }
-      }
-    }
+    localToServiceMsg.extraData.putByte("cChannel", (byte)4);
+    localToServiceMsg.extraData.putByteArray("vCookies", this.jdField_a_of_type_ArrayOfByte);
+    localToServiceMsg.extraData.putInt("cSyncFlag", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putByte("onlineSyncFlag", (byte)1);
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zyl
  * JD-Core Version:    0.7.0.1
  */

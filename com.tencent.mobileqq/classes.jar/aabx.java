@@ -1,29 +1,21 @@
-import com.tencent.mobileqq.ar.ARRenderModel.SensorTrackManager;
-import com.tencent.mobileqq.ar.ARRenderModel.SensorTrackManager.ARSensorTrackCallback;
-import com.tencent.mobileqq.armap.sensor.SimpleSensorChangeListener;
+import com.dataline.mpfile.MpfileTaskRecord;
+import com.dataline.util.WaitEvent;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy;
 
 public class aabx
-  extends SimpleSensorChangeListener
+  implements Runnable
 {
-  public aabx(SensorTrackManager paramSensorTrackManager) {}
+  public aabx(MpfileTaskProxy paramMpfileTaskProxy, MpfileTaskRecord paramMpfileTaskRecord, WaitEvent paramWaitEvent) {}
   
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
+  public void run()
   {
-    if (SensorTrackManager.a(this.a) != null) {
-      SensorTrackManager.a(this.a).a(paramArrayOfFloat);
-    }
-  }
-  
-  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    if (SensorTrackManager.a(this.a) != null) {
-      SensorTrackManager.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyMpfileTaskProxy.a(this.jdField_a_of_type_ComDatalineMpfileMpfileTaskRecord, null);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aabx
  * JD-Core Version:    0.7.0.1
  */

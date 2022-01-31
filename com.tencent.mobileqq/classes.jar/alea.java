@@ -1,62 +1,126 @@
-import com.tencent.open.appcommon.js.DownloadInterface;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import mqq.os.MqqHandler;
 
 public class alea
-  implements DownloadQueryListener
+  extends Toast
 {
-  public alea(DownloadInterface paramDownloadInterface, String paramString) {}
+  private static WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+  private static Class jdField_a_of_type_JavaLangClass;
+  private static Field jdField_a_of_type_JavaLangReflectField;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private static Field jdField_b_of_type_JavaLangReflectField;
+  private static Method jdField_b_of_type_JavaLangReflectMethod;
+  public Runnable a;
   
-  public void a(int paramInt, String paramString)
+  public alea(Context paramContext)
   {
-    LogUtility.e(this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.TAG, "innerQueryDownloadInfo ERROR");
+    super(paramContext);
+    this.jdField_a_of_type_JavaLangRunnable = new aleb(this);
   }
   
-  public void b_(List paramList)
+  public void cancel()
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.TAG, "innerQueryDownloadInfo onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    try
     {
-      if (i < j)
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, new Object[] { "", "cancel!" });
+      }
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      if (!QQToast.a(false))
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.b);
-          localJSONObject.put("pro", localDownloadInfo.g);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.c);
-          localJSONObject.put("download_from", localDownloadInfo.i);
-          localJSONObject.put("writecodestate", localDownloadInfo.k);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+        super.cancel();
+        return;
+      }
+      Object localObject = jdField_a_of_type_JavaLangReflectField.get(this);
+      if (jdField_b_of_type_JavaLangReflectMethod == null)
+      {
+        jdField_b_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("hide", new Class[0]);
+        jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
+      }
+      jdField_b_of_type_JavaLangReflectMethod.invoke(localObject, new Object[0]);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "", localThrowable);
       }
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.TAG, "querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramList);
+  }
+  
+  public void show()
+  {
+    try
+    {
+      if (getView() == null) {
+        throw new RuntimeException("setView must have been called");
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "", localThrowable);
+      }
+      return;
+    }
+    if (jdField_a_of_type_JavaLangReflectField == null)
+    {
+      jdField_a_of_type_JavaLangReflectField = Toast.class.getDeclaredField("mTN");
+      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+    }
+    Object localObject1 = jdField_a_of_type_JavaLangReflectField.get(this);
+    if (QQToast.a())
+    {
+      localObject2 = localObject1.getClass().getDeclaredField("mParams");
+      ((Field)localObject2).setAccessible(true);
+      jdField_a_of_type_AndroidViewWindowManager$LayoutParams = (WindowManager.LayoutParams)((Field)localObject2).get(localObject1);
+      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 67108904;
+      jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = 2131624712;
+    }
+    Object localObject2 = (TextView)getView().findViewById(2131364130);
+    if ((localObject2 != null) && (((TextView)localObject2).getText().length() < 6)) {}
+    for (long l = 900L;; l = 1900L)
+    {
+      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "show");
+      }
+      if (!QQToast.a(false))
+      {
+        super.show();
+        return;
+      }
+      if (jdField_a_of_type_JavaLangClass == null) {
+        jdField_a_of_type_JavaLangClass = Class.forName("android.widget.Toast$TN");
+      }
+      if (jdField_b_of_type_JavaLangReflectField == null)
+      {
+        jdField_b_of_type_JavaLangReflectField = jdField_a_of_type_JavaLangClass.getDeclaredField("mNextView");
+        jdField_b_of_type_JavaLangReflectField.setAccessible(true);
+      }
+      jdField_b_of_type_JavaLangReflectField.set(localObject1, getView());
+      if (jdField_a_of_type_JavaLangReflectMethod == null)
+      {
+        jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("show", new Class[0]);
+        jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
+      }
+      jdField_a_of_type_JavaLangReflectMethod.invoke(localObject1, new Object[0]);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alea
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class adux
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adux(NowLoadingActivity paramNowLoadingActivity) {}
+  public adux(CommonTabFragment paramCommonTabFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    if ((this.a.a == null) || (this.a.a.a == null)) {}
+    do
+    {
+      return;
+      paramView = this.a.a.a.a();
+    } while (paramView == null);
+    paramView.a(this.a.a.a.getUrl(), 8589934606L, null);
   }
 }
 

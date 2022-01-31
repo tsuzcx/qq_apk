@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 public abstract interface IQGPlayListener
 {
+  public abstract byte[] onGetValue(int paramInt, String paramString);
+  
   public abstract void onPlayEvent(int paramInt, Bundle paramBundle);
   
   public abstract void onPlayerStatus(int paramInt, Bundle paramBundle);

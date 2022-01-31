@@ -1,14 +1,19 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.view.CommentsAdapter;
+import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenter;
+import java.util.List;
 
 public class afbs
-  implements Runnable
+  implements View.OnClickListener
 {
-  public afbs(PicBrowserImage paramPicBrowserImage, URLDrawable paramURLDrawable) {}
+  public afbs(CommentsAdapter paramCommentsAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+    CommentsAdapter.a(this.a).a.clear();
+    CommentsAdapter.a(this.a).a();
   }
 }
 

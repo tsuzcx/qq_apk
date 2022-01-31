@@ -20,9 +20,9 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import kno;
-import knp;
-import knq;
+import kpv;
+import kpw;
+import kpx;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 
@@ -42,7 +42,7 @@ public class SearchProtocol
     }
     if (System.currentTimeMillis() - paramContext.getLong("search_lbs_timestamp", 0L) > paramLong)
     {
-      SosoInterface.a(new kno(0, true, false, 300000L, false, false, paramString, paramContext));
+      SosoInterface.a(new kpv(0, true, false, 300000L, false, false, paramString, paramContext));
       return;
     }
     a = paramContext.getFloat("search_lbs_latitude", -1.0F);
@@ -73,7 +73,7 @@ public class SearchProtocol
     if ((paramAppInterface == null) || (paramSearchObserver == null)) {
       return;
     }
-    paramContext = new knp(Looper.getMainLooper(), paramSearchObserver);
+    paramContext = new kpw(Looper.getMainLooper(), paramSearchObserver);
     if (HttpUtil.a() == 0)
     {
       paramAppInterface = paramContext.obtainMessage();
@@ -88,9 +88,9 @@ public class SearchProtocol
     mobileqq_dynamic_search.RootSearcherRequest localRootSearcherRequest = new mobileqq_dynamic_search.RootSearcherRequest();
     localRootSearcherRequest.business.set(128);
     localRequestBody.search_request.set(localRootSearcherRequest);
-    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     paramSearchObserver.putExtra("data", localRequestBody.toByteArray());
-    paramSearchObserver.setObserver(new knq(paramContext));
+    paramSearchObserver.setObserver(new kpx(paramContext));
     paramAppInterface.startServlet(paramSearchObserver);
   }
   

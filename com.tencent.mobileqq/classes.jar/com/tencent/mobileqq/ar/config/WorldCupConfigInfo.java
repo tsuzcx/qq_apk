@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.config;
 
-import aake;
+import aaqx;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -29,6 +29,7 @@ public class WorldCupConfigInfo
   static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "flag_show_splash", "flag_show_mainani", "flag_iconinaddbtn_clicked" };
   long jdField_a_of_type_Long = 0L;
   private WorldCupShareInfo jdField_a_of_type_ComTencentMobileqqArConfigWorldCupShareInfo = new WorldCupShareInfo();
+  public String a;
   final TreeMap jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
   boolean jdField_a_of_type_Boolean = false;
   long jdField_b_of_type_Long = 0L;
@@ -40,9 +41,11 @@ public class WorldCupConfigInfo
   long f = 0L;
   long g = 3L;
   long h = 3600L;
+  public long i = 5L;
   
   public WorldCupConfigInfo()
   {
+    this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_Boolean = true;
   }
   
@@ -106,15 +109,15 @@ public class WorldCupConfigInfo
   
   public static WorldCupConfigInfo a(String paramString1, String paramString2)
   {
-    int i = 0;
+    int j = 0;
     String str = paramString2;
     if (TextUtils.isEmpty(paramString2))
     {
       str = a(paramString1).getString("config", null);
-      i = 1;
+      j = 1;
     }
     if (AudioHelper.d()) {
-      QLog.w("WorldCupMgr", 1, "ConfigInfo.get, step[" + i + "], configText[" + str + "]");
+      QLog.w("WorldCupMgr", 1, "ConfigInfo.get, step[" + j + "], configText[" + str + "]");
     }
     paramString2 = new WorldCupConfigInfo();
     paramString2.a(paramString1);
@@ -193,10 +196,15 @@ public class WorldCupConfigInfo
       l2 = paramWorldCupConfigInfo.h * 1000L * l1;
       boolean bool = a(paramWorldCupConfigInfo.jdField_a_of_type_Long + l2, paramWorldCupConfigInfo.jdField_b_of_type_Long);
       QLog.w("WorldCupMgr", 1, "canShowSplash, 延迟[" + l1 + "], src[" + paramWorldCupConfigInfo.jdField_a_of_type_Long + "], fix[" + (l2 + paramWorldCupConfigInfo.jdField_a_of_type_Long) + "], show[" + bool + "], uin[" + str + "]");
-      if (!bool) {
-        return false;
+      if ((!bool) && (AudioHelper.a(10) == 1))
+      {
+        QLog.w("WorldCupMgr", 1, "强制展示闪屏");
+        bool = true;
+        if (!bool) {
+          return false;
+        }
+        return b(paramWorldCupConfigInfo.l) == 0L;
       }
-      return b(paramWorldCupConfigInfo.l) == 0L;
     }
     catch (Exception localException)
     {
@@ -289,11 +297,11 @@ public class WorldCupConfigInfo
   
   public String a(int paramInt)
   {
-    aake localaake = (aake)this.jdField_b_of_type_JavaUtilTreeMap.get(Integer.valueOf(paramInt));
-    if (localaake == null) {
+    aaqx localaaqx = (aaqx)this.jdField_b_of_type_JavaUtilTreeMap.get(Integer.valueOf(paramInt));
+    if (localaaqx == null) {
       return null;
     }
-    return WorldCupMgr.b(localaake.jdField_a_of_type_Int, localaake.jdField_b_of_type_JavaLangString);
+    return WorldCupMgr.b(localaaqx.jdField_a_of_type_Int, localaaqx.jdField_b_of_type_JavaLangString);
   }
   
   public boolean a()
@@ -303,13 +311,13 @@ public class WorldCupConfigInfo
   
   public boolean a(int paramInt)
   {
-    aake localaake = (aake)this.jdField_b_of_type_JavaUtilTreeMap.get(Integer.valueOf(paramInt));
-    if (localaake == null)
+    aaqx localaaqx = (aaqx)this.jdField_b_of_type_JavaUtilTreeMap.get(Integer.valueOf(paramInt));
+    if (localaaqx == null)
     {
       QLog.w("WorldCupMgr", 1, "isResReady, 没有ZipItem, index[" + paramInt + "]");
       return false;
     }
-    return BusinessCommonConfig.a("WorldCupMgr", a(), "md5_" + localaake.jdField_a_of_type_Int, localaake.jdField_b_of_type_JavaLangString, a(localaake.jdField_a_of_type_Int));
+    return BusinessCommonConfig.a("WorldCupMgr", a(), "md5_" + localaaqx.jdField_a_of_type_Int, localaaqx.jdField_b_of_type_JavaLangString, a(localaaqx.jdField_a_of_type_Int));
   }
   
   protected boolean a(JSONObject paramJSONObject)
@@ -329,6 +337,10 @@ public class WorldCupConfigInfo
       this.e = ArMapUtil.c(paramJSONObject.optString("scanEntranceBeginTime"));
       this.f = ArMapUtil.c(paramJSONObject.optString("scanEntranceEndTime"));
       this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("splashSwitch", true);
+      this.i = paramJSONObject.optLong("splashDisplayTime", this.i);
+      if (this.i <= 0L) {
+        this.i = 5L;
+      }
       this.g = paramJSONObject.optLong("splashDealyCount", this.g);
       this.h = paramJSONObject.optLong("splashDealyTime", this.h);
       if (this.g <= 0L) {
@@ -337,34 +349,35 @@ public class WorldCupConfigInfo
       if (this.h <= 0L) {
         this.h = 3600L;
       }
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
       JSONArray localJSONArray = paramJSONObject.optJSONArray("mainEntrance");
-      int i;
+      int j;
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
       {
-        i = 0;
-        while (i < localJSONArray.length())
+        j = 0;
+        while (j < localJSONArray.length())
         {
-          long l = ArMapUtil.c(localJSONArray.getJSONObject(i).optString("time"));
+          long l = ArMapUtil.c(localJSONArray.getJSONObject(j).optString("time"));
           this.jdField_a_of_type_JavaUtilTreeMap.put(Long.valueOf(l), Long.valueOf(l));
-          i += 1;
+          j += 1;
         }
       }
       new TreeMap();
       localJSONArray = paramJSONObject.optJSONArray("zip_list");
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
       {
-        i = 0;
-        while (i < localJSONArray.length())
+        j = 0;
+        while (j < localJSONArray.length())
         {
-          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-          aake localaake = new aake();
-          localaake.jdField_a_of_type_Int = Integer.valueOf(localJSONObject.getString("index")).intValue();
-          localaake.jdField_b_of_type_Int = Integer.valueOf(localJSONObject.getString("net_type")).intValue();
-          localaake.jdField_a_of_type_Boolean = localJSONObject.getBoolean("auto_next");
-          localaake.jdField_a_of_type_JavaLangString = localJSONObject.getString("url");
-          localaake.jdField_b_of_type_JavaLangString = localJSONObject.getString("md5");
-          this.jdField_b_of_type_JavaUtilTreeMap.put(Integer.valueOf(localaake.jdField_a_of_type_Int), localaake);
-          i += 1;
+          JSONObject localJSONObject = localJSONArray.getJSONObject(j);
+          aaqx localaaqx = new aaqx();
+          localaaqx.jdField_a_of_type_Int = Integer.valueOf(localJSONObject.getString("index")).intValue();
+          localaaqx.jdField_b_of_type_Int = Integer.valueOf(localJSONObject.getString("net_type")).intValue();
+          localaaqx.jdField_a_of_type_Boolean = localJSONObject.getBoolean("auto_next");
+          localaaqx.jdField_a_of_type_JavaLangString = localJSONObject.getString("url");
+          localaaqx.jdField_b_of_type_JavaLangString = localJSONObject.getString("md5");
+          this.jdField_b_of_type_JavaUtilTreeMap.put(Integer.valueOf(localaaqx.jdField_a_of_type_Int), localaaqx);
+          j += 1;
         }
       }
       this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupShareInfo.parseShare(paramJSONObject);
@@ -381,11 +394,11 @@ public class WorldCupConfigInfo
   public String toString()
   {
     Iterator localIterator = this.jdField_b_of_type_JavaUtilTreeMap.values().iterator();
-    aake localaake;
-    for (String str = ""; localIterator.hasNext(); str = str + "\n" + localaake) {
-      localaake = (aake)localIterator.next();
+    aaqx localaaqx;
+    for (String str = ""; localIterator.hasNext(); str = str + "\n" + localaaqx) {
+      localaaqx = (aaqx)localIterator.next();
     }
-    return "task_id[" + this.jdField_b_of_type_Int + "], _parseRet[" + this.jdField_a_of_type_Int + "], mUin[" + this.l + "], enable[" + this.jdField_a_of_type_Boolean + "], splashSwitch[" + this.jdField_b_of_type_Boolean + "], splashEntranceBeginTime[" + this.jdField_a_of_type_Long + "], splashEntranceEndTime[" + this.jdField_b_of_type_Long + "], mainEntranceBeginTime[" + this.c + "], mainEntranceEndTime[" + this.d + "], scanEntranceBeginTime[" + this.e + "], scanEntranceEndTime[" + this.f + "], splashDealyTime[" + this.h + "], splashDealyCount[" + this.g + "], ZipItems[" + str + "\n]";
+    return "task_id[" + this.jdField_b_of_type_Int + "], _parseRet[" + this.jdField_a_of_type_Int + "], mUin[" + this.l + "], enable[" + this.jdField_a_of_type_Boolean + "], splashSwitch[" + this.jdField_b_of_type_Boolean + "], splashEntranceBeginTime[" + this.jdField_a_of_type_Long + "], splashEntranceEndTime[" + this.jdField_b_of_type_Long + "], mainEntranceBeginTime[" + this.c + "], mainEntranceEndTime[" + this.d + "], scanEntranceBeginTime[" + this.e + "], scanEntranceEndTime[" + this.f + "], splashDealyTime[" + this.h + "], splashDealyCount[" + this.g + "], splashDisplayTime[" + this.i + "], title[" + this.jdField_a_of_type_JavaLangString + "], ZipItems[" + str + "\n]";
   }
 }
 

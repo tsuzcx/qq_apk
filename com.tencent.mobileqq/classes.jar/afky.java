@@ -1,20 +1,42 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
 public class afky
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public afky(NearbyMomentManager paramNearbyMomentManager, String paramString, boolean paramBoolean) {}
+  public afky(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Iterator localIterator = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager).iterator();
-    while (localIterator.hasNext())
+    if (paramAnimation == NearbyProfileDisplayTribePanel.b(this.a))
     {
-      ((NearbyMomentManager.MomentDataChangeObserver)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-      NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager, null);
+      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(8);
+      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(4);
+      NearbyProfileDisplayTribePanel.a(this.a).clearAnimation();
+      NearbyProfileDisplayTribePanel.a(this.a).clearAnimation();
+      NearbyProfileDisplayTribePanel.a(this.a).setBackgroundResource(2130845349);
+      NearbyProfileDisplayTribePanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494194));
+      NearbyProfileDisplayTribePanel.b(this.a).setTextColor(this.a.a.getResources().getColor(2131494194));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (paramAnimation == NearbyProfileDisplayTribePanel.a(this.a))
+    {
+      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(0);
+      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(0);
+      NearbyProfileDisplayTribePanel.a(this.a).setBackgroundResource(2130846346);
+      NearbyProfileDisplayTribePanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494216));
+      NearbyProfileDisplayTribePanel.b(this.a).setTextColor(this.a.a.getResources().getColor(2131494216));
     }
   }
 }

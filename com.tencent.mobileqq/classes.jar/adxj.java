@@ -1,22 +1,39 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class adxj
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public adxj(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
+  public adxj(HiBoomFontDrawer paramHiBoomFontDrawer) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
+    if (this.a.a == null) {
+      return;
+    }
+    int i = 0;
+    label13:
+    HiBoomTextView localHiBoomTextView;
+    if (i < this.a.a.size())
+    {
+      localHiBoomTextView = (HiBoomTextView)((WeakReference)this.a.a.get(i)).get();
+      if ((localHiBoomTextView != null) && (localHiBoomTextView.a == this.a.b)) {
+        break label89;
+      }
+      this.a.a.remove(i);
+      i -= 1;
+    }
+    for (;;)
+    {
+      i += 1;
+      break label13;
+      break;
+      label89:
+      localHiBoomTextView.a();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

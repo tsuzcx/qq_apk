@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew;
 
-import aljb;
+import alqt;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -84,20 +84,6 @@ public class WebViewDownloadListener
     }
   }
   
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo.b, paramInt2, paramDownloadInfo.g, paramDownloadInfo.d, paramDownloadInfo.c, paramString, paramInt1, paramDownloadInfo.k));
-    }
-  }
-  
   protected void a(String paramString)
   {
     JsCallbackManager localJsCallbackManager = JsCallbackManager.a();
@@ -117,7 +103,7 @@ public class WebViewDownloadListener
             {
               localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
               LogUtility.a(jdField_a_of_type_JavaLangString, " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new aljb(this, localWebView, (String)localObject));
+              this.jdField_a_of_type_AndroidOsHandler.post(new alqt(this, localWebView, (String)localObject));
             }
             else
             {
@@ -139,12 +125,40 @@ public class WebViewDownloadListener
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  public void installSucceed(String paramString1, String paramString2)
   {
     a(a(paramString1, 6, paramString2));
   }
   
-  public void a(List paramList)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(paramDownloadInfo.a().toString());
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if (paramDownloadInfo != null) {
+      a(a(paramDownloadInfo.b, paramInt2, paramDownloadInfo.g, paramDownloadInfo.d, paramDownloadInfo.c, paramString, paramInt1, paramDownloadInfo.k));
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(paramDownloadInfo.a().toString());
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(paramDownloadInfo.a().toString());
+    }
+  }
+  
+  public void onDownloadUpdate(List paramList)
   {
     if (paramList != null)
     {
@@ -157,35 +171,21 @@ public class WebViewDownloadListener
     }
   }
   
-  public void b(DownloadInfo paramDownloadInfo)
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
     if (paramDownloadInfo != null) {
       a(paramDownloadInfo.a().toString());
     }
   }
   
-  public void b(String paramString1, String paramString2)
-  {
-    a(a(paramString1, 9, paramString2));
-  }
-  
-  public void c(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
-  
-  public void c(String paramString1, String paramString2)
+  public void packageReplaced(String paramString1, String paramString2)
   {
     a(a(paramString1, 13, paramString2));
   }
   
-  public void d(DownloadInfo paramDownloadInfo)
+  public void uninstallSucceed(String paramString1, String paramString2)
   {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
+    a(a(paramString1, 9, paramString2));
   }
 }
 

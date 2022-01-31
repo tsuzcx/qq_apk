@@ -1,13 +1,31 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
+import android.os.Message;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class sml
+class sml
   implements Runnable
 {
-  public sml(EmosmActivity paramEmosmActivity) {}
+  sml(smi paramsmi, long paramLong) {}
   
   public void run()
   {
-    this.a.d();
+    if (this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager != null)
+    {
+      this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a();
+      if (this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Long) == 2)
+      {
+        Message localMessage = new Message();
+        localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(32, localMessage);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_Smi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
   }
 }
 

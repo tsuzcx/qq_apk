@@ -1,27 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.now.NowSmallVideoObserver;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
 
 public class afen
-  implements View.OnClickListener
+  extends NowSmallVideoObserver
 {
-  public afen(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, String paramString) {}
+  public afen(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
-    {
-      JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString).b();
-      return;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(PlayOperationViewModel.b(this.a) + ""))) {
+      this.a.h(paramBoolean);
     }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity(paramView);
   }
 }
 

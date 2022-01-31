@@ -187,11 +187,11 @@ public class DatalineFilesAdapter
         if (paramFloat < ((DataLineMsgRecord)localObject).progress) {
           f = ((DataLineMsgRecord)localObject).progress;
         }
-        localObject = (ProgressBar)paramListView.findViewById(2131364117);
+        localObject = (ProgressBar)paramListView.findViewById(2131364142);
         if (localObject != null) {
           ((ProgressBar)localObject).setProgress((int)(f * 100.0F));
         }
-        paramListView = (TextView)paramListView.findViewById(2131364116);
+        paramListView = (TextView)paramListView.findViewById(2131364141);
         if (paramListView == null) {
           break;
         }
@@ -253,9 +253,9 @@ public class DatalineFilesAdapter
         localItemHolder = new DatalineFilesAdapter.ItemHolder(this);
         if (i != 0)
         {
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968877, null);
-          localItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364131));
-          localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView = ((WaitTextView)paramView.findViewById(2131364132));
+          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968881, null);
+          localItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364156));
+          localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView = ((WaitTextView)paramView.findViewById(2131364157));
           paramView.setTag(localItemHolder);
           if (i == 0) {
             break label519;
@@ -272,18 +272,18 @@ public class DatalineFilesAdapter
         return paramView;
         i = 0;
         break;
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968876, null);
-        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364111));
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968880, null);
+        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364136));
         localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.b);
         localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localItemHolder);
-        localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131364112));
-        localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130841584);
+        localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131364137));
+        localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130841611);
         localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
-        localItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364113));
-        localItemHolder.b = ((TextView)paramView.findViewById(2131364115));
-        localItemHolder.c = ((TextView)paramView.findViewById(2131364116));
-        localItemHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131364117));
-        localItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364130));
+        localItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364138));
+        localItemHolder.b = ((TextView)paramView.findViewById(2131364140));
+        localItemHolder.c = ((TextView)paramView.findViewById(2131364141));
+        localItemHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131364142));
+        localItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364155));
         localItemHolder.jdField_a_of_type_AndroidWidgetButton.setTag(localItemHolder);
         localItemHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         break label88;
@@ -320,7 +320,7 @@ public class DatalineFilesAdapter
         localItemHolder.jdField_a_of_type_Int = paramViewGroup.msgtype;
         if ((paramViewGroup.strMoloKey != null) && (paramViewGroup.bIsApkFile))
         {
-          localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130841584);
+          localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130841611);
           localItemHolder.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(paramViewGroup.strMoloIconUrl);
         }
         for (;;)

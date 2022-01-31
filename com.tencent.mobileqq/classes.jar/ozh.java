@@ -1,36 +1,22 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import java.io.PrintStream;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 public class ozh
-  implements InputFilter
+  implements Handler.Callback
 {
-  protected int a;
+  public ozh(ScannerActivity paramScannerActivity) {}
   
-  public ozh(TroopGiftPanel paramTroopGiftPanel, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-  {
-    System.out.println("filter() source = " + paramCharSequence + ", dest = " + paramSpanned + ", start = " + paramInt1 + ", dstart = " + paramInt3 + ", dend = " + paramInt4);
-    if (paramCharSequence.length() != 1) {
-      return "";
+    switch (paramMessage.what)
+    {
     }
-    paramInt1 = paramCharSequence.charAt(0);
-    if ((paramInt1 < 48) || (paramInt1 > 57)) {
-      return "";
+    for (;;)
+    {
+      return true;
+      this.a.c();
     }
-    if ((paramInt3 == 0) && (paramInt1 == 48)) {
-      return "";
-    }
-    if ((this.jdField_a_of_type_Int > 0) && (paramSpanned.length() >= this.jdField_a_of_type_Int)) {
-      return "";
-    }
-    return null;
   }
 }
 

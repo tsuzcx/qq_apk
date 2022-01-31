@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class aanp
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aanp(ArCardSelectMemberActivity paramArCardSelectMemberActivity) {}
+  public aanp(AREngine paramAREngine) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    ArCardSelectMemberActivity.a(this.a, null);
+    QLog.i("AREngine_AREngine", 2, "downloadWorldCupIdx1Res. download timeout.");
+    WorldCupMgr.a(AREngine.a(this.a)).b(this.a.a);
+    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null)) {
+      AREngine.b(this.a, 7);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aanp
  * JD-Core Version:    0.7.0.1
  */

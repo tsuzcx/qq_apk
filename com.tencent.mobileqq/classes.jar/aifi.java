@@ -1,28 +1,32 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView.StatusListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DancePlayFilter;
 
 public class aifi
+  implements GLRecognizeRegionView.StatusListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  public aifi(DancePlayFilter paramDancePlayFilter) {}
   
-  private aifi(MigrateSubscribeDB paramMigrateSubscribeDB) {}
-  
-  public String toString()
+  public void a(int paramInt)
   {
-    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
+    if (paramInt == 2)
+    {
+      DancePlayFilter.a(this.a, DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a), 75, 1));
+      DancePlayFilter.a(this.a).e();
+      DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a));
+    }
+    if (paramInt == 3)
+    {
+      DancePlayFilter.b(this.a, DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a), 75, 2));
+      DancePlayFilter.a(this.a).e();
+      DancePlayFilter.a(this.a).a(DancePlayFilter.b(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aifi
  * JD-Core Version:    0.7.0.1
  */

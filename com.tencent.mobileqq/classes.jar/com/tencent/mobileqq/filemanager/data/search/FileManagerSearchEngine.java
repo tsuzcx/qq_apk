@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import adav;
+import adjc;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -19,7 +19,7 @@ import java.util.Set;
 public class FileManagerSearchEngine
   implements ISearchEngine
 {
-  private adav jdField_a_of_type_Adav = new adav(this, null);
+  private adjc jdField_a_of_type_Adjc = new adjc(this, null);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public FileManagerSearchEngine(QQAppInterface paramQQAppInterface)
@@ -53,23 +53,23 @@ public class FileManagerSearchEngine
     if ((paramSearchRequest == null) || (paramSearchRequest.jdField_a_of_type_JavaLangString == null) || (TextUtils.isEmpty(paramSearchRequest.jdField_a_of_type_JavaLangString.trim()))) {
       return;
     }
-    synchronized (this.jdField_a_of_type_Adav)
+    synchronized (this.jdField_a_of_type_Adjc)
     {
-      this.jdField_a_of_type_Adav.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = paramSearchRequest;
-      this.jdField_a_of_type_Adav.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = paramISearchListener;
-      ThreadManager.remove(this.jdField_a_of_type_Adav);
-      ThreadManager.postImmediately(this.jdField_a_of_type_Adav, null, false);
+      this.jdField_a_of_type_Adjc.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = paramSearchRequest;
+      this.jdField_a_of_type_Adjc.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = paramISearchListener;
+      ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_Adjc, 64);
+      ThreadManager.executeOnFileThread(this.jdField_a_of_type_Adjc);
       return;
     }
   }
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_Adav)
+    synchronized (this.jdField_a_of_type_Adjc)
     {
-      this.jdField_a_of_type_Adav.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = null;
-      this.jdField_a_of_type_Adav.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = null;
-      ThreadManager.remove(this.jdField_a_of_type_Adav);
+      this.jdField_a_of_type_Adjc.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = null;
+      this.jdField_a_of_type_Adjc.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = null;
+      ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_Adjc, 64);
       return;
     }
   }

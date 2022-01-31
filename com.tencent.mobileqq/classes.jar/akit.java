@@ -1,31 +1,21 @@
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import android.os.Bundle;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
 
-class akit
+public class akit
   implements Runnable
 {
-  akit(akis paramakis, SeekBar paramSeekBar, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3, TextView paramTextView3) {}
+  public akit(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Akis.a.a.c)
-    {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_Akis.a.a.f = false;
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    if (!AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil).containsKey(this.jdField_a_of_type_JavaLangString)) {
+      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akit
  * JD-Core Version:    0.7.0.1
  */

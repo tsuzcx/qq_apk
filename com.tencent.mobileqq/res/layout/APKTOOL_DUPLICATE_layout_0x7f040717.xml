@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a039c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageSwitcher android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2165" android:visibility="visible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="5.0dip" android:layout_marginLeft="8.0dip" />
-    <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2166" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="5.0dip" android:layout_marginLeft="8.0dip" />
-    <TextView android:id="@id/qzone_feed_reddot" android:visibility="visible" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02d4" />
-</FrameLayout>
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0327" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040104" />
+    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2131" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@android:color/transparent" android:divider="@android:color/white" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0327" />
+    <TextView android:textSize="18.0dip" android:textColor="#ff777777" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0530" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="获取地点失败，去别处试试吧。" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0327" />
+</RelativeLayout>

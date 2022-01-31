@@ -3,8 +3,6 @@ package com.tencent.mobileqq.leba.view;
 public abstract interface LebaGridIndicator$onPageSeletedListener
 {
   public abstract void a(int paramInt);
-  
-  public abstract void b(int paramInt);
 }
 
 

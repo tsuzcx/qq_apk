@@ -6,7 +6,7 @@ import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 public class GPUImageGrayFilter
   extends GPUDrawPartFilter
 {
-  private static String a = GlUtil.a(BaseApplicationImpl.getContext(), 2131230751);
+  private static String a = GlUtil.a(BaseApplicationImpl.getContext(), 2131230752);
   
   public GPUImageGrayFilter()
   {

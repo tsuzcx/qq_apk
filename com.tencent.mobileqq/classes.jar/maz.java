@@ -1,25 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.skin.SkinGifImageDownloader;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 public class maz
-  implements DialogInterface.OnDismissListener
+  extends NativeGifImage
 {
-  public maz(VideoFeedsAdapter paramVideoFeedsAdapter) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public maz(SkinGifImageDownloader paramSkinGifImageDownloader, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
+  }
+  
+  protected void executeNewTask()
+  {
+    if (this.mCurrentLoop == 1) {
+      return;
     }
-    if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).b()) && (VideoFeedsAdapter.g(this.a)) && (!VideoFeedsAdapter.i(this.a)) && (VideoFeedsAdapter.h(this.a))) {
-      VideoFeedsAdapter.a(this.a).d();
-    }
-    VideoFeedsAdapter.a(this.a).setNeedDetectScreenOrientation(true);
-    VideoFeedsAdapter.e(this.a, false);
+    super.executeNewTask();
+  }
+  
+  public void reset()
+  {
+    super.reset();
   }
 }
 

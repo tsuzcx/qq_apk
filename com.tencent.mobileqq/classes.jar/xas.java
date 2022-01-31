@@ -1,18 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
-import cooperation.qwallet.plugin.QWalletPrivacyUtils;
+import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class xas
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xas(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  public xas(PhoneMatchActivity paramPhoneMatchActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    QWalletPrivacyUtils.setHasClickAgree(this.a.getActivity().app);
-    this.a.b();
+    int i = this.a.a.c();
+    if ((i == 2) || (i == 3))
+    {
+      this.a.a.h();
+      return;
+    }
+    this.a.a.g();
   }
 }
 

@@ -1,22 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoCropAction;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
 
 public class wws
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public wws(PhotoCropAction paramPhotoCropAction, ActionSheet paramActionSheet) {}
+  public wws(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt != this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.a(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropAction.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.a();
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.a = null;
+    this.a.dismiss();
   }
 }
 

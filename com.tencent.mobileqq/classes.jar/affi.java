@@ -1,22 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
 
 public class affi
-  implements Runnable
+  implements GestureDetector.OnDoubleTapListener
 {
-  public affi(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public affi(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void run()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null)
+    if (System.currentTimeMillis() - PlayOperationViewModel.a(this.a) >= 500L)
     {
-      localEntityManager.a(NearbyProfileDisplayTribePanel.a(this.a));
-      localEntityManager.a();
+      int i = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131370588)).a(i, j);
+      if (!PlayOperationViewModel.a(this.a)) {
+        break label73;
+      }
     }
+    for (;;)
+    {
+      PlayOperationViewModel.a(this.a, System.currentTimeMillis());
+      return true;
+      label73:
+      if ((!PlayOperationViewModel.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131370588).getVisibility() == 0))
+      {
+        PlayOperationViewModel.a(this.a, false);
+        this.a.c(null);
+        new NowVideoReporter().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      }
+    }
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

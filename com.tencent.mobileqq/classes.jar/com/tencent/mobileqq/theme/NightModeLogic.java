@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.theme;
 
-import ainx;
-import ainy;
-import ainz;
-import aioa;
-import aiob;
+import aita;
+import aitb;
+import aitc;
+import aitd;
+import aite;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.res.Resources;
@@ -31,7 +31,7 @@ public class NightModeLogic
   private Activity jdField_a_of_type_AndroidAppActivity;
   public Dialog a;
   public Handler a;
-  ThemeDownloader.ThemeDownloadListener jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeDownloadListener = new aioa(this);
+  ThemeDownloader.ThemeDownloadListener jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeDownloadListener = new aitd(this);
   ThemeDownloader jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader;
   ThemeSwitchManager jdField_a_of_type_ComTencentMobileqqThemeThemeSwitchManager;
   private ThemeUtil.ThemeInfo jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo;
@@ -43,7 +43,7 @@ public class NightModeLogic
   
   public NightModeLogic(AppRuntime paramAppRuntime, Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new aiob(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aite(this, Looper.getMainLooper());
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     if ((paramAppRuntime instanceof QQAppInterface)) {}
@@ -70,22 +70,22 @@ public class NightModeLogic
     for (paramString = String.format((String)localObject1, new Object[] { paramString });; paramString = (String)localObject1)
     {
       localObject1 = new Dialog(this.jdField_a_of_type_AndroidAppActivity, 2131624516);
-      ((Dialog)localObject1).setContentView(2130968842);
-      TextView localTextView = (TextView)((Dialog)localObject1).findViewById(2131364034);
+      ((Dialog)localObject1).setContentView(2130968846);
+      TextView localTextView = (TextView)((Dialog)localObject1).findViewById(2131364059);
       if (localTextView != null) {
         localTextView.setText((CharSequence)localObject2);
       }
-      localObject2 = (TextView)((Dialog)localObject1).findViewById(2131362776);
+      localObject2 = (TextView)((Dialog)localObject1).findViewById(2131362781);
       if (localObject2 != null) {
         ((TextView)localObject2).setText(paramString);
       }
-      paramString = (TextView)((Dialog)localObject1).findViewById(2131364037);
+      paramString = (TextView)((Dialog)localObject1).findViewById(2131364062);
       if (paramString != null)
       {
         paramString.setText(str2);
         paramString.setOnClickListener(paramOnClickListener1);
       }
-      paramString = (TextView)((Dialog)localObject1).findViewById(2131364038);
+      paramString = (TextView)((Dialog)localObject1).findViewById(2131364063);
       if (paramString != null)
       {
         paramString.setText(str1);
@@ -100,8 +100,8 @@ public class NightModeLogic
     if (QLog.isColorLevel()) {
       QLog.i("NightModeLogic", 2, "showDownloadDialog");
     }
-    this.jdField_a_of_type_AndroidAppDialog = a(2131434121, 2131434122, 2131433015, 2131434609, (float)Math.round(this.jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo.size / 1024.0D / 1024.0D * 100.0D) / 100.0F + "", new ainx(this), new ainy(this));
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new ainz(this));
+    this.jdField_a_of_type_AndroidAppDialog = a(2131434137, 2131434138, 2131433029, 2131434625, (float)Math.round(this.jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo.size / 1024.0D / 1024.0D * 100.0D) / 100.0F + "", new aita(this), new aitb(this));
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new aitc(this));
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
   
@@ -488,7 +488,7 @@ public class NightModeLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.NightModeLogic
  * JD-Core Version:    0.7.0.1
  */

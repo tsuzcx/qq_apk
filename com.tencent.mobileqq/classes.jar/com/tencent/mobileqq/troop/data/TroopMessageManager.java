@@ -74,6 +74,7 @@ public class TroopMessageManager
   
   public MessageForGrayTips a(QQAppInterface paramQQAppInterface, String paramString, TroopTipsEntity paramTroopTipsEntity)
   {
+    int n = 0;
     if ((paramString == null) || (paramTroopTipsEntity == null))
     {
       if (QLog.isColorLevel()) {
@@ -84,25 +85,70 @@ public class TroopMessageManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.BaseMessageManager", 2, "addTroopTipsMessage troopTipsEntity.optShowLatest:" + paramTroopTipsEntity.optShowLatest);
     }
+    int j;
+    int k;
+    label150:
+    int m;
     if (((paramQQAppInterface.a().a() == 1) && (paramString.equals(paramQQAppInterface.a().a()))) || (paramTroopTipsEntity.need2InsertIntoMsgListRightNow()))
+    {
+      paramString = paramQQAppInterface.a(1).b(paramString, 1);
+      if (paramString == null)
+      {
+        j = 0;
+        i = n;
+        if (paramTroopTipsEntity.repeatInterval > 0)
+        {
+          i = n;
+          if (j > 0)
+          {
+            if (paramTroopTipsEntity.repeatInterval >= paramString.size()) {
+              break label299;
+            }
+            k = paramTroopTipsEntity.repeatInterval;
+            m = 0;
+            label153:
+            i = n;
+            if (m < k)
+            {
+              MessageRecord localMessageRecord = (MessageRecord)paramString.get(j - k + m);
+              if ((localMessageRecord.msgtype != 2024) || (!String.valueOf(paramTroopTipsEntity.serviceType).equals(localMessageRecord.getExtInfoFromExtStr("gray_tips_serviceType")))) {
+                break label310;
+              }
+              if (!QLog.isColorLevel()) {
+                break label355;
+              }
+              QLog.i("Q.msg.BaseMessageManager", 2, String.format("processTroopTipsEntity discard seq:%s interval:%d", new Object[] { Long.valueOf(paramTroopTipsEntity.msgSeq), Integer.valueOf(paramTroopTipsEntity.repeatInterval) }));
+            }
+          }
+        }
+      }
+    }
+    label299:
+    label310:
+    label355:
+    for (int i = 1;; i = 1)
     {
       paramTroopTipsEntity.read = true;
       paramQQAppInterface = (TroopTipsMsgMgr)paramQQAppInterface.getManager(80);
-      if (paramQQAppInterface != null) {
+      if ((paramQQAppInterface != null) && (i == 0))
+      {
         return paramQQAppInterface.b(paramTroopTipsEntity);
+        j = paramString.size();
+        break;
+        k = paramString.size();
+        break label150;
+        m += 1;
+        break label153;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.BaseMessageManager", 2, "saveTroopTips");
+        }
+        paramString = (TroopTipsMsgMgr)paramQQAppInterface.getManager(80);
+        if (paramString != null) {
+          paramString.a(paramQQAppInterface, paramTroopTipsEntity);
+        }
       }
+      return null;
     }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "saveTroopTips");
-      }
-      paramString = (TroopTipsMsgMgr)paramQQAppInterface.getManager(80);
-      if (paramString != null) {
-        paramString.a(paramQQAppInterface, paramTroopTipsEntity);
-      }
-    }
-    return null;
   }
   
   protected String a(String paramString1, String paramString2)
@@ -465,42 +511,42 @@ public class TroopMessageManager
     //   5: dup
     //   6: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   9: lload_2
-    //   10: invokevirtual 524	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   13: ldc_w 285
+    //   10: invokevirtual 568	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   13: ldc_w 336
     //   16: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: lload 4
-    //   21: invokevirtual 524	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 568	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   24: invokevirtual 107	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   27: astore 6
     //   29: aload_0
     //   30: getfield 26	com/tencent/mobileqq/troop/data/TroopMessageManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   33: aload_1
-    //   34: invokevirtual 525	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   34: invokevirtual 569	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   37: ifeq +23 -> 60
     //   40: aload_0
     //   41: getfield 26	com/tencent/mobileqq/troop/data/TroopMessageManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   44: aload_1
-    //   45: invokevirtual 526	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   48: checkcast 528	java/util/HashSet
+    //   45: invokevirtual 570	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   48: checkcast 572	java/util/HashSet
     //   51: aload 6
-    //   53: invokevirtual 531	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   53: invokevirtual 575	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   56: pop
     //   57: aload_0
     //   58: monitorexit
     //   59: return
-    //   60: new 528	java/util/HashSet
+    //   60: new 572	java/util/HashSet
     //   63: dup
-    //   64: invokespecial 532	java/util/HashSet:<init>	()V
+    //   64: invokespecial 576	java/util/HashSet:<init>	()V
     //   67: astore 7
     //   69: aload 7
     //   71: aload 6
-    //   73: invokevirtual 531	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   73: invokevirtual 575	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   76: pop
     //   77: aload_0
     //   78: getfield 26	com/tencent/mobileqq/troop/data/TroopMessageManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   81: aload_1
     //   82: aload 7
-    //   84: invokevirtual 533	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   84: invokevirtual 577	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   87: pop
     //   88: goto -31 -> 57
     //   91: astore_1
@@ -531,7 +577,7 @@ public class TroopMessageManager
     //   2: aload_0
     //   3: getfield 26	com/tencent/mobileqq/troop/data/TroopMessageManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   6: aload_1
-    //   7: invokevirtual 525	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   7: invokevirtual 569	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   10: istore_2
     //   11: iload_2
     //   12: ifeq +9 -> 21
@@ -601,7 +647,7 @@ public class TroopMessageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopMessageManager
  * JD-Core Version:    0.7.0.1
  */

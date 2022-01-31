@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
 
 public class ubz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ubz(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ubz(TroopGagActivity paramTroopGagActivity, TroopGagMgr paramTroopGagMgr) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity.a, true);
   }
 }
 

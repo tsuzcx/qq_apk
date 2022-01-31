@@ -9,7 +9,7 @@ import com.tencent.mobileqq.activity.aio.qwallet.elem.VipRedPkgElem;
 import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
-import zft;
+import zmu;
 
 public class IndividualRedPacketManager$VIPHBStrategy
   implements CustomizeStrategyFactory.HBCustomizeStrategy
@@ -52,7 +52,7 @@ public class IndividualRedPacketManager$VIPHBStrategy
         return;
       }
     }
-    ThreadManager.post(new zft(this, (IndividualRedPacketManager)localObject, paramRedPacketInfo), 8, null, true);
+    ThreadManager.post(new zmu(this, (IndividualRedPacketManager)localObject, paramRedPacketInfo), 8, null, true);
   }
   
   public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)

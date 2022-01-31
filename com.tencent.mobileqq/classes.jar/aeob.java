@@ -1,38 +1,32 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.mobileqq.medalwall.ParticleSystem;
 
 public class aeob
-  implements WerewolvesHandler.Callback
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aeob(GameRoomInviteActivity paramGameRoomInviteActivity, aeor paramaeor) {}
+  public aeob(MedalGuideView paramMedalGuideView) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramInt == 0) && (paramRspBody != null))
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    MedalGuideView.a(this.a, f);
+    if (this.a.a != null)
     {
-      paramRspBody = this.jdField_a_of_type_Aeor;
-      if (!this.jdField_a_of_type_Aeor.a)
-      {
-        bool = true;
-        paramRspBody.a = bool;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
+      this.a.a.a(f);
+      if (f <= 0.05F) {
+        this.a.a.b();
       }
     }
-    while (paramRspBody == null) {
-      for (;;)
-      {
-        return;
-        boolean bool = false;
-      }
+    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, "设置失败");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeob
  * JD-Core Version:    0.7.0.1
  */

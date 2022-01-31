@@ -10,7 +10,7 @@ import com.tencent.biz.qqstory.storyHome.memory.view.adapter.MemoriesInnerListAd
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import nxp;
+import oce;
 
 @TargetApi(9)
 public class MemoriesInnerListView
@@ -40,7 +40,7 @@ public class MemoriesInnerListView
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter = new MemoriesInnerListAdapter(getContext());
     super.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter);
     super.setOnItemClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter);
-    super.setOnScrollStateChangedListener(new nxp(this));
+    super.setOnScrollStateChangedListener(new oce(this));
     setOverScrollMode(1);
   }
   

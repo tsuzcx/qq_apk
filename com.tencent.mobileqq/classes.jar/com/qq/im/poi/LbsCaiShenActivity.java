@@ -185,10 +185,10 @@ public class LbsCaiShenActivity
   {
     super.doOnCreate(paramBundle);
     getWindow().addFlags(128);
-    setContentView(2130970207);
-    this.mNickNameView = ((TextView)super.findViewById(2131369578));
+    setContentView(2130970222);
+    this.mNickNameView = ((TextView)super.findViewById(2131369588));
     this.mNickNameView.setVisibility(0);
-    paramBundle = (Button)findViewById(2131369577);
+    paramBundle = (Button)findViewById(2131369587);
     paramBundle.setOnClickListener(new LbsCaiShenActivity.1(this));
     Object localObject;
     if (this.mSystemBarComp != null)
@@ -222,17 +222,17 @@ public class LbsCaiShenActivity
     }
     for (;;)
     {
-      this.mNickNameView = ((TextView)super.findViewById(2131369578));
+      this.mNickNameView = ((TextView)super.findViewById(2131369588));
       this.mNickNameView.setText(paramBundle + "的红包");
       if (QLog.isColorLevel()) {
         QLog.i("LbsPack", 2, "packInfo= " + this.mPackInfo.toString());
       }
-      this.mCameraSurfaceView = ((CameraSurfaceView)findViewById(2131369575));
+      this.mCameraSurfaceView = ((CameraSurfaceView)findViewById(2131369585));
       this.mCameraSurfaceView.setPreviewCallback(this.mPreviewCallback);
       this.mCameraSurfaceView.setCameraSurfaceCallBack(this);
       this.mCameraSurfaceView.setDisplay(getWindowManager().getDefaultDisplay());
-      this.mCameraCover = findViewById(2131369576);
-      this.mGLSurfaceView = ((ARGLSurfaceView)findViewById(2131365948));
+      this.mCameraCover = findViewById(2131369586);
+      this.mGLSurfaceView = ((ARGLSurfaceView)findViewById(2131365953));
       this.mGLSurfaceView.getHolder().setFormat(-3);
       this.mGLSurfaceView.init(this, this.mResPath, 22);
       this.mGLSurfaceView.initSensor(new SimpleSensorChangeListener(), 4);
@@ -387,7 +387,7 @@ public class LbsCaiShenActivity
       }
       showNoPermissionView(true);
       if (this.mCameraNoPermissionDialog == null) {
-        this.mCameraNoPermissionDialog = DialogUtil.a(this, 230, getResources().getString(2131438753), getResources().getString(2131438754), getResources().getString(2131438750), "", null, new LbsCaiShenActivity.3(this));
+        this.mCameraNoPermissionDialog = DialogUtil.a(this, 230, getResources().getString(2131438776), getResources().getString(2131438777), getResources().getString(2131438773), "", null, new LbsCaiShenActivity.3(this));
       }
       this.mCameraNoPermissionDialog.show();
     }

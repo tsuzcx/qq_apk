@@ -15,12 +15,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
 import com.tencent.qphone.base.util.QLog;
-import uoz;
+import uty;
 
 public class GoldMsgLayAnim
   extends BaseGoldMsgAnimator
 {
-  ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new uoz(this);
+  ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new uty(this);
   public ValueAnimator a;
   View jdField_a_of_type_AndroidViewView;
   RotateAnimation jdField_a_of_type_AndroidViewAnimationRotateAnimation;
@@ -37,9 +37,9 @@ public class GoldMsgLayAnim
   public GoldMsgLayAnim(int paramInt, GoldMsgAnimatorCtr paramGoldMsgAnimatorCtr, RelativeLayout paramRelativeLayout)
   {
     super(paramInt, paramGoldMsgAnimatorCtr, paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewView = paramRelativeLayout.findViewById(2131362398);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramRelativeLayout.findViewById(2131372514));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131372512));
+    this.jdField_a_of_type_AndroidViewView = paramRelativeLayout.findViewById(2131362401);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramRelativeLayout.findViewById(2131372525));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131372523));
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 100 }).setDuration(this.d);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());

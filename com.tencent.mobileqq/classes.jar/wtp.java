@@ -1,18 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-class wtp
-  implements DialogInterface.OnClickListener
+public class wtp
 {
-  wtp(wtl paramwtl) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public wtp(PublicAccountInfo paramPublicAccountInfo)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.setText("");
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

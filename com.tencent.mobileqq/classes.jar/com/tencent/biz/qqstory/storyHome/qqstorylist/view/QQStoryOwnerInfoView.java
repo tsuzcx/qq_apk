@@ -73,20 +73,20 @@ public class QQStoryOwnerInfoView
   {
     TraceUtils.a("QQStoryInfoView.init");
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131371741);
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131371740);
     addView(this.jdField_a_of_type_AndroidWidgetImageView);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView = new StoryQIMBadgeView(getContext());
     addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970732, this, false));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970748, this, false));
     addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970731, this, false));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970747, this, false));
     addView(this.jdField_b_of_type_AndroidWidgetTextView);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView = new StoryUserBadgeView(getContext());
     addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970731, this, false));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970747, this, false));
     addView(this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)LayoutInflater.from(getContext()).inflate(2130970730, this, false));
-    this.jdField_a_of_type_AndroidWidgetButton.setId(2131371726);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)LayoutInflater.from(getContext()).inflate(2130970746, this, false));
+    this.jdField_a_of_type_AndroidWidgetButton.setId(2131371725);
     addView(this.jdField_a_of_type_AndroidWidgetButton);
     TraceUtils.a();
   }
@@ -161,21 +161,21 @@ public class QQStoryOwnerInfoView
   
   private void b()
   {
-    this.jdField_c_of_type_Int = getContext().getResources().getDimensionPixelSize(2131560268);
+    this.jdField_c_of_type_Int = getContext().getResources().getDimensionPixelSize(2131560269);
     this.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
-    this.f = getContext().getResources().getDimensionPixelSize(2131560270);
-    this.e = getContext().getResources().getDimensionPixelSize(2131560277);
-    this.g = getContext().getResources().getDimensionPixelSize(2131560272);
+    this.f = getContext().getResources().getDimensionPixelSize(2131560271);
+    this.e = getContext().getResources().getDimensionPixelSize(2131560278);
+    this.g = getContext().getResources().getDimensionPixelSize(2131560273);
     this.h = this.g;
-    this.q = getContext().getResources().getDimensionPixelSize(2131560271);
-    this.i = getContext().getResources().getDimensionPixelSize(2131560274);
+    this.q = getContext().getResources().getDimensionPixelSize(2131560272);
+    this.i = getContext().getResources().getDimensionPixelSize(2131560275);
     this.j = this.i;
-    this.l = getContext().getResources().getDimensionPixelSize(2131560275);
-    this.k = getContext().getResources().getDimensionPixelSize(2131560276);
+    this.l = getContext().getResources().getDimensionPixelSize(2131560276);
+    this.k = getContext().getResources().getDimensionPixelSize(2131560277);
     this.r = UIUtils.a(getContext(), 2.0F);
     this.o = UIUtils.a(getContext(), 10.0F);
     this.p = UIUtils.a(getContext(), 15.0F);
-    this.n = getContext().getResources().getDimensionPixelSize(2131560273);
+    this.n = getContext().getResources().getDimensionPixelSize(2131560274);
     this.m = 0;
   }
   

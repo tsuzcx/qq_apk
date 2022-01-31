@@ -1,14 +1,13 @@
 package com.tencent.mapsdk.rastercore.c;
 
 import com.tencent.mapsdk.rastercore.d.b;
-import com.tencent.mapsdk.rastercore.d.e;
 
 public final class f
   extends a
 {
-  public final void a(e parame)
+  public final void a(com.tencent.mapsdk.rastercore.d.f paramf)
   {
-    parame.c().a(this.a, this.c);
+    paramf.c().a(this.a, this.c);
   }
 }
 

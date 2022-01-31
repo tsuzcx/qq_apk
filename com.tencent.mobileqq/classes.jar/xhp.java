@@ -1,24 +1,66 @@
-import java.io.File;
-import java.util.Comparator;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-public final class xhp
-  implements Comparator
+public class xhp
+  implements TextWatcher
 {
-  private int a(String paramString)
+  public xhp(TransactionActivity paramTransactionActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
+    if (TransactionActivity.a(this.a).getText().length() > 4) {
+      if (!TransactionActivity.a(this.a).isEnabled())
+      {
+        TransactionActivity.a(this.a).setEnabled(true);
+        TransactionActivity.a(this.a).setClickable(true);
+        this.a.a(TransactionActivity.a(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.a(this.a), "");
+      }
+    }
     try
     {
-      int i = Integer.parseInt(paramString.substring(0, paramString.lastIndexOf('.')));
-      return i;
+      if ((TransactionActivity.b(this.a).getText().length() > 0) && (!TransactionActivity.b(this.a).getText().toString().startsWith(".")) && (!TransactionActivity.b(this.a).getText().toString().endsWith(".")) && (TransactionActivity.a(this.a, TransactionActivity.b(this.a).getText().toString())))
+      {
+        f = Float.parseFloat(paramEditable.toString());
+        if ((TransactionActivity.b(this.a) > 0) && (!TextUtils.isEmpty(TransactionActivity.b(this.a))) && (f * 100.0F >= TransactionActivity.b(this.a)) && (!TextUtils.isEmpty(TransactionActivity.b(this.a)))) {
+          this.a.a(TransactionActivity.b(this.a));
+        }
+        if (!TransactionActivity.b(this.a).isEnabled())
+        {
+          TransactionActivity.b(this.a).setEnabled(true);
+          TransactionActivity.b(this.a).setClickable(true);
+          this.a.a(TransactionActivity.a(this.a), 128, "transfer.amount.enable", "", "", TransactionActivity.a(this.a), "");
+        }
+      }
+      while (!TransactionActivity.b(this.a).isEnabled())
+      {
+        float f;
+        return;
+        if (!TransactionActivity.a(this.a).isEnabled()) {
+          break;
+        }
+        TransactionActivity.a(this.a).setClickable(false);
+        TransactionActivity.a(this.a).setEnabled(false);
+        this.a.a(TransactionActivity.a(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.a(this.a), "");
+        break;
+      }
+      TransactionActivity.b(this.a).setClickable(false);
+      TransactionActivity.b(this.a).setEnabled(false);
+      this.a.a(TransactionActivity.a(this.a), 128, "transfer.amount.disable", "", "", TransactionActivity.a(this.a), "");
+      return;
     }
-    catch (Exception paramString) {}
-    return 0;
+    catch (Exception paramEditable)
+    {
+      paramEditable.printStackTrace();
+    }
   }
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    return a(paramFile1.getName()) - a(paramFile2.getName());
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

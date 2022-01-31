@@ -2,10 +2,10 @@ package cooperation.troop_homework;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import anfj;
-import anfk;
-import anfl;
-import anfm;
+import annm;
+import annn;
+import anno;
+import annp;
 import com.squareup.okhttp.OkHttpClient;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -170,7 +170,7 @@ public class TroopHomeworkHelper$UploadFileTask
         }
         TroopTechReportUtils.a("grp_hw", "upload_video", "-5", "", i + "", "");
         if (this.jdField_b_of_type_Boolean) {
-          ThreadManager.getUIHandler().post(new anfk(this));
+          ThreadManager.getUIHandler().post(new annn(this));
         }
       } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
       this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(4);
@@ -274,7 +274,7 @@ public class TroopHomeworkHelper$UploadFileTask
         }
         TroopTechReportUtils.a("grp_hw", "upload_video", "-5", "", i + "", "");
         if (this.jdField_b_of_type_Boolean) {
-          ThreadManager.getUIHandler().post(new anfl(this));
+          ThreadManager.getUIHandler().post(new anno(this));
         }
       } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
       this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(4);
@@ -1087,7 +1087,7 @@ public class TroopHomeworkHelper$UploadFileTask
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      ThreadManager.post(new anfj(this), 8, null, true);
+      ThreadManager.post(new annm(this), 8, null, true);
       return;
     }
     File localFile = new File(this.c);
@@ -1114,7 +1114,7 @@ public class TroopHomeworkHelper$UploadFileTask
   public void b()
   {
     if (Looper.myLooper() == Looper.getMainLooper()) {
-      ThreadManager.post(new anfm(this), 8, null, true);
+      ThreadManager.post(new annp(this), 8, null, true);
     }
     do
     {

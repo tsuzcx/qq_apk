@@ -1,6 +1,19 @@
-public class aavv
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
+
+class aavv
+  implements Runnable
 {
-  String[] a;
+  aavv(aavt paramaavt) {}
+  
+  public void run()
+  {
+    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"cellular".equals(ArkAppEventObserverManager.a(this.a.a))))
+    {
+      ArkAppEventObserverManager.a(this.a.a).a(true, "cellular");
+      ArkAppEventObserverManager.a(this.a.a, "cellular");
+    }
+  }
 }
 
 

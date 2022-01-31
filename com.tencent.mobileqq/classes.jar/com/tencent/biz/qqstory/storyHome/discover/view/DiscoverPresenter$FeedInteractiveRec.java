@@ -16,7 +16,7 @@ public class DiscoverPresenter$FeedInteractiveRec
   
   public void a(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull FeedInfoChangeEvent paramFeedInfoChangeEvent)
   {
-    if ((paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)) {
+    if ((paramFeedInfoChangeEvent.errorInfo.isSuccess()) && (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)) {
       DiscoverPresenter.a(paramDiscoverPresenter, paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString, paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount);
     }
   }

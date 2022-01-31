@@ -1,26 +1,18 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class aghu
-  implements View.OnClickListener
+class aghu
+  implements Runnable
 {
-  public aghu(ScanTorchActivity paramScanTorchActivity) {}
+  aghu(aght paramaght, View paramView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (ScanTorchActivity.k(this.a)) {
-      ScanTorchActivity.s(this.a);
-    }
-    while (!ScanTorchActivity.m(this.a)) {
-      return;
-    }
-    ScanTorchActivity.t(this.a);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghu
  * JD-Core Version:    0.7.0.1
  */

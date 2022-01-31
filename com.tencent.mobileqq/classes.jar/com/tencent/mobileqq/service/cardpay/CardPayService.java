@@ -44,7 +44,7 @@ public class CardPayService
             break label246;
           }
           paramToServiceMsg = new LBSInfo();
-          paramToServiceMsg = new ReqChannel(i, j, paramToServiceMsg, Build.MODEL, k, "7.6.3");
+          paramToServiceMsg = new ReqChannel(i, j, paramToServiceMsg, Build.MODEL, k, "7.6.8");
           paramUniPacket.setServantName("MQQ.CardPayControlServer.CardPayControlObj");
           paramUniPacket.setFuncName("queryChannel");
           paramUniPacket.put("ReqChannel", paramToServiceMsg);

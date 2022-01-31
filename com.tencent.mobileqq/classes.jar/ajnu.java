@@ -1,33 +1,17 @@
-import android.graphics.Bitmap;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache;
+import com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajnu
-  extends Handler
+  implements Runnable
 {
-  public ajnu(RollangleImageView.ImageCache paramImageCache, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ajnu(BeginnerGuideDownloadManager paramBeginnerGuideDownloadManager, Handler paramHandler, int paramInt, boolean paramBoolean) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a) {}
-    Object localObject;
-    String str;
-    do
-    {
-      return;
-      localObject = (Object[])paramMessage.obj;
-      paramMessage = (RollangleImageView)localObject[0];
-      str = (String)localObject[1];
-      localObject = (Bitmap)localObject[2];
-    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
-    paramMessage.setImageBitmap((Bitmap)localObject);
+    if ((!BeginnerGuideDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkConfigBeginnerGuideDownloadManager, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean)) && (QLog.isColorLevel())) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "postDownload return false");
+    }
   }
 }
 

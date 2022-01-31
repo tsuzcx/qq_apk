@@ -1,20 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoStatusListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
 
-public class mig
+class mig
   implements Runnable
 {
-  public mig(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  mig(mid parammid) {}
   
   public void run()
   {
-    KandianOx210MsgInfo localKandianOx210MsgInfo = ((KandianMergeManager)ReadInJoyUtils.a().getManager(161)).f();
-    ThreadManager.getUIHandler().post(new mih(this, localKandianOx210MsgInfo));
+    if (VideoPlayManager.a(this.a.a) != null) {
+      VideoPlayManager.a(this.a.a).a(VideoPlayManager.a(this.a.a));
+    }
+    VideoPlayManager.a(this.a.a, VideoPlayManager.a(this.a.a), VideoPlayManager.a(this.a.a), 7, null);
+    if (VideoPlayManager.a(this.a.a) != null)
+    {
+      VideoPlayManager.a(this.a.a).d = -1;
+      VideoPlayManager.a(this.a.a).b = 0L;
+      VideoPlayManager.a(this.a.a, null);
+    }
+    if (VideoPlayManager.a(this.a.a) != null)
+    {
+      VideoPlayManager.a(this.a.a).h();
+      VideoPlayManager.a(this.a.a, null);
+    }
   }
 }
 

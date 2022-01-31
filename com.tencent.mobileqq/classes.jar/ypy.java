@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ypy
   implements Runnable
 {
-  public ypy(ApolloWebViewFragment paramApolloWebViewFragment, String paramString) {}
+  public ypy(ApolloGameManager paramApolloGameManager) {}
   
   public void run()
   {
-    WebAccelerateHelper.getInstance().preGetKey(this.jdField_a_of_type_JavaLangString, ApolloWebViewFragment.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloWebViewFragment), null);
-    WebAccelerateHelper.getInstance().preCheckOffline(this.jdField_a_of_type_JavaLangString);
-    WebAccelerateHelper.getInstance().preFetchResource(this.jdField_a_of_type_JavaLangString);
+    if (ApolloGameManager.a(this.a) != null)
+    {
+      ((ApolloManager)ApolloGameManager.a(this.a).getManager(152)).e();
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameManager", 2, "[onGetGameList] change reload");
+      }
+    }
   }
 }
 

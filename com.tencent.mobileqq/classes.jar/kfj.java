@@ -1,100 +1,54 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.redbag.ResultData;
-import com.tencent.av.ui.redbag.ResultUI;
-import com.tencent.qphone.base.util.QLog;
-
 public class kfj
-  implements Runnable
 {
-  public kfj(ResultUI paramResultUI) {}
+  public int a;
+  public kfi a;
+  public boolean a;
   
-  public void run()
+  public kfj(kfi paramkfi, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      QLog.w(this.a.i, 1, "innerShow 已经显示了");
-      return;
-    }
-    this.a.b();
-    AVActivity localAVActivity = this.a.a();
-    if (localAVActivity == null)
-    {
-      QLog.w(this.a.i, 1, "innerShow avActivity为空");
-      return;
-    }
-    if (!localAVActivity.d())
-    {
-      QLog.w(this.a.i, 1, "innerShow avActivity不在top, avActivity[" + localAVActivity + "]");
-      return;
-    }
-    QLog.w(this.a.i, 1, "innerShow, avActivity[" + localAVActivity + "]");
-    this.a.jdField_a_of_type_Boolean = true;
-    if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.b())
-    {
-      if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.b)
-      {
-        this.a.b(localAVActivity);
-        return;
-      }
-      this.a.c(localAVActivity);
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.a())
-    {
-      if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.b)
-      {
-        this.a.b(localAVActivity);
-        return;
-      }
-      this.a.a(localAVActivity);
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.f == 3)
-    {
-      if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.b) {
-        localAVActivity.a("网络异常，无法开始游戏，红包金额将在24小时后退回。", 3000, null);
-      }
+    this.jdField_a_of_type_Kfi = paramkfi;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
       for (;;)
       {
-        this.a.a("EXCEPTION_BEFORE_GAME");
-        return;
-        localAVActivity.a("网络异常，无法开始游戏。", 3000, null);
+        i = paramInt2;
+        if (paramInt1 >= paramInt2) {
+          break;
+        }
+        if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Kfi.a.length) {
+          this.jdField_a_of_type_Int = 0;
+        }
+        i = Math.min(this.jdField_a_of_type_Kfi.a.length - this.jdField_a_of_type_Int, paramInt2 - paramInt1);
+        System.arraycopy(this.jdField_a_of_type_Kfi.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, i);
+        this.jdField_a_of_type_Int += i;
+        paramInt1 += i;
       }
     }
-    if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.f == 4)
+    if (a())
     {
-      if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.b)
-      {
-        this.a.b(localAVActivity);
-        return;
-      }
-      this.a.c(localAVActivity);
-      this.a.a(localAVActivity, this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData);
-      return;
+      i = 0;
+      return i;
     }
-    if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.f == 6)
-    {
-      if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.b) {
-        localAVActivity.a("网络异常，无法开始游戏，24小时后退回金额。", 5000, null);
-      }
-      this.a.a("EXCEPTION_NOT_RECEIVE_REDBAG");
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.f == 7)
-    {
-      if (this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.b) {
-        localAVActivity.a("网络异常，请到消息窗口点击红包查看领取详情。", 5000, null);
-      }
-      this.a.a("EXCEPTION_GAME_TIMEOUT");
-      return;
-    }
-    QLog.w(this.a.i, 1, "innerShow, 不展示, mHitScore[" + this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.a + "], mExceptionType[" + this.a.jdField_a_of_type_ComTencentAvUiRedbagResultData.f + "]");
-    this.a.a("other");
+    paramInt2 = Math.min(this.jdField_a_of_type_Kfi.a.length - this.jdField_a_of_type_Int, paramInt2);
+    System.arraycopy(this.jdField_a_of_type_Kfi.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, paramInt2);
+    this.jdField_a_of_type_Int += paramInt2;
+    return paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Kfi.a.length);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kfj
  * JD-Core Version:    0.7.0.1
  */

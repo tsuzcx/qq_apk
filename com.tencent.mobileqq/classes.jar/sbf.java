@@ -1,32 +1,32 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class sbf
-  extends WtloginObserver
+public final class sbf
+  implements DialogInterface.OnClickListener
 {
-  public sbf(ChatHistoryForC2C paramChatHistoryForC2C, long paramLong, boolean paramBoolean) {}
+  public sbf(boolean paramBoolean, int paramInt, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l;
-    if (QLog.isColorLevel())
+    if (this.jdField_a_of_type_Boolean)
     {
-      l = System.currentTimeMillis();
-      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
-      if (paramDevlockInfo != null) {
-        break label93;
+      if (this.jdField_a_of_type_Int != 2) {
+        break label56;
       }
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
     }
-    label93:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      QLog.d("ChatHistoryForC2C", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.runOnUiThread(new sbg(this, paramInt, paramDevlockInfo));
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+      }
       return;
+      label56:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      }
     }
   }
 }

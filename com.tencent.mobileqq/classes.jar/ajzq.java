@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.util.FaceDecoderImpl;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.mobileqq.util.IdleUpdater;
-import java.util.concurrent.ConcurrentHashMap;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.ExpandableTextView;
 
 public class ajzq
-  extends IdleUpdater
+  implements Runnable
 {
-  public ajzq(FaceDecoderImpl paramFaceDecoderImpl, FaceInfo paramFaceInfo) {}
+  public ajzq(ExpandableTextView paramExpandableTextView) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoderImpl.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b, false, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, true, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Byte, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.d, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Boolean);
-    FaceDecoderImpl.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoderImpl).remove(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString);
+    ExpandableTextView.a(this.a, this.a.getHeight() - this.a.a.getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzq
  * JD-Core Version:    0.7.0.1
  */

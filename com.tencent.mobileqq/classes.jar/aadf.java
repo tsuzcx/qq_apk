@@ -1,33 +1,56 @@
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 
-public class aadf
-  implements Runnable
+public final class aadf
+  implements Parcelable.Creator
 {
-  public aadf(ObjectSurfaceView paramObjectSurfaceView) {}
-  
-  public void run()
+  public UpgradeTIMWrapper a(Parcel paramParcel)
   {
-    while (ObjectSurfaceView.a(this.a))
+    Object localObject = null;
+    String str2 = paramParcel.readString();
+    String str3 = paramParcel.readString();
+    String str4 = paramParcel.readString();
+    String str5 = paramParcel.readString();
+    String str6 = paramParcel.readString();
+    int j = 0;
+    for (;;)
     {
-      long l = System.currentTimeMillis();
-      ObjectSurfaceView.a(this.a);
       try
       {
-        Thread.sleep(Math.max(0L, ObjectSurfaceView.a(this.a) - (System.currentTimeMillis() - l)));
+        int i = paramParcel.readInt();
+        j = i;
+        String str1 = paramParcel.readString();
+        paramParcel.printStackTrace();
       }
-      catch (InterruptedException localInterruptedException)
+      catch (Exception paramParcel)
       {
-        localInterruptedException.printStackTrace();
+        try
+        {
+          paramParcel = paramParcel.readString();
+          return new UpgradeTIMWrapper(str2, str3, str4, str5, str6, i, str1, paramParcel);
+        }
+        catch (Exception paramParcel)
+        {
+          break label81;
+        }
+        paramParcel = paramParcel;
+        str1 = null;
+        i = j;
       }
+      label81:
+      paramParcel = localObject;
     }
-    if (ObjectSurfaceView.b(this.a)) {
-      ObjectSurfaceView.a(this.a);
-    }
+  }
+  
+  public UpgradeTIMWrapper[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aadf
  * JD-Core Version:    0.7.0.1
  */

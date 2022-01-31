@@ -1,32 +1,36 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import java.util.List;
 
 public class xic
-  implements Animation.AnimationListener
+  implements IRedPacket.OnGetAvailableListListener
 {
-  public xic(AnonymousEntranceView paramAnonymousEntranceView) {}
+  public xic(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnGetAvailableList(List paramList)
   {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(4);
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
     }
-    if (AnonymousEntranceView.b(this.a) != null)
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      AnonymousEntranceView.b(this.a).clearAnimation();
-      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
+      TroopUnAccalimedRedPacketList.a().setVisibility(8);
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      TroopUnAccalimedRedPacketList.a(this.a).setText("暂无未领红包");
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(0);
-    }
+    do
+    {
+      return;
+      TroopUnAccalimedRedPacketList.a().setVisibility(0);
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      TroopUnAccalimedRedPacketList.a().a(paramList);
+    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+    TroopUnAccalimedRedPacketList.a(this.a).start();
   }
 }
 

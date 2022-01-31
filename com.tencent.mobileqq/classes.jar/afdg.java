@@ -1,23 +1,29 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerView.VideoInfoListener;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnCompletionListener;
 
 public class afdg
-  implements View.OnClickListener
+  implements IVideoView.OnCompletionListener
 {
-  public afdg(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public afdg(VideoPlayerView paramVideoPlayerView) {}
   
-  public void onClick(View paramView)
+  public void a(IVideoView paramIVideoView)
   {
-    if ((this.a.b != null) && (!this.a.isFinishing()))
-    {
-      this.a.b.dismiss();
-      this.a.b = null;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.a();
     }
-    this.a.a(300L);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+    paramIVideoView = VideoPlayerView.a(this.a).a;
+    if (this.a.c()) {}
+    for (int i = 1;; i = 2)
+    {
+      QualityReporter.a(paramIVideoView, i);
+      return;
+    }
   }
 }
 

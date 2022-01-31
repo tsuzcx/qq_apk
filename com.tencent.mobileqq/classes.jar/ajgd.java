@@ -1,28 +1,13 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.ArithResult;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import org.json.JSONException;
 
-public class ajgd
-  implements View.OnClickListener
+class ajgd
+  implements Runnable
 {
-  public ajgd(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  ajgd(ajgc paramajgc, View paramView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    try
-    {
-      CheckArithHWResultFragment.a(this.a, CheckArithHWResultFragment.a(this.a).a(), CheckArithHWResultFragment.a(this.a).a());
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-      AssertUtils.a("QQ.Troop.homework.CheckArithHWResultFragment//onClick toJSON error:" + paramView, new Object[0]);
-    }
+    this.jdField_a_of_type_AndroidViewView.sendAccessibilityEvent(8);
   }
 }
 

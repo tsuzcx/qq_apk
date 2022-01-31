@@ -20,21 +20,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
-import kgv;
-import kgw;
-import kgx;
+import kjb;
+import kjc;
+import kjd;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SensorReport
 {
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kgv();
+  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kjb();
   public static String a;
   public int a;
   private long jdField_a_of_type_Long;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  kgx jdField_a_of_type_Kgx = null;
+  kjd jdField_a_of_type_Kjd = null;
   int jdField_b_of_type_Int = 1;
   private long jdField_b_of_type_Long;
   private String jdField_b_of_type_JavaLangString = "";
@@ -83,12 +83,12 @@ public class SensorReport
         paramArrayList = paramArrayList.iterator();
         while (paramArrayList.hasNext())
         {
-          kgx localkgx = (kgx)paramArrayList.next();
+          kjd localkjd = (kjd)paramArrayList.next();
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("i", localkgx.jdField_a_of_type_Int);
-          localJSONObject.put("off", localkgx.jdField_a_of_type_Long);
-          localJSONObject.put("on", localkgx.jdField_b_of_type_Long);
-          localJSONObject.put("why", localkgx.jdField_c_of_type_Long);
+          localJSONObject.put("i", localkjd.jdField_a_of_type_Int);
+          localJSONObject.put("off", localkjd.jdField_a_of_type_Long);
+          localJSONObject.put("on", localkjd.jdField_b_of_type_Long);
+          localJSONObject.put("why", localkjd.jdField_c_of_type_Long);
           ((JSONArray)localObject2).put(localJSONObject);
         }
       }
@@ -132,7 +132,7 @@ public class SensorReport
             ((VideoAppInterface)localObject1).getApp().sendBroadcast((Intent)localObject2);
           }
           this.jdField_b_of_type_JavaLangString = "";
-          this.jdField_a_of_type_Kgx = null;
+          this.jdField_a_of_type_Kjd = null;
           if (paramInt == 1) {
             break;
           }
@@ -162,7 +162,7 @@ public class SensorReport
     AudioHelper.a(paramContext);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction(jdField_a_of_type_JavaLangString);
-    ThreadManager.post(new kgw(paramContext, localIntentFilter), 5, null, false);
+    ThreadManager.post(new kjc(paramContext, localIntentFilter), 5, null, false);
   }
   
   public static void b(Context paramContext)
@@ -246,8 +246,8 @@ public class SensorReport
       paramInt = m | this.g;
     }
     long l = System.currentTimeMillis();
-    paramVideoController = this.jdField_a_of_type_Kgx;
-    this.jdField_a_of_type_Kgx = null;
+    paramVideoController = this.jdField_a_of_type_Kjd;
+    this.jdField_a_of_type_Kjd = null;
     if (paramVideoController != null)
     {
       paramVideoController.jdField_b_of_type_Long = l;
@@ -279,11 +279,11 @@ public class SensorReport
   
   void c()
   {
-    this.jdField_a_of_type_Kgx = new kgx(this);
-    this.jdField_a_of_type_Kgx.jdField_a_of_type_Int = this.h;
+    this.jdField_a_of_type_Kjd = new kjd(this);
+    this.jdField_a_of_type_Kjd.jdField_a_of_type_Int = this.h;
     this.h += 1;
-    this.jdField_a_of_type_Kgx.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Kgx);
+    this.jdField_a_of_type_Kjd.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_Kjd);
   }
   
   public void d()
@@ -306,7 +306,7 @@ public class SensorReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.SensorReport
  * JD-Core Version:    0.7.0.1
  */

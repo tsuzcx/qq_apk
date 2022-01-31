@@ -366,7 +366,7 @@ public class ForwardPhotoOption
       for (;;)
       {
         return true;
-        QQToast.a(BaseApplication.getContext(), 1, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434464), 0).a();
+        QQToast.a(BaseApplication.getContext(), 1, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434480), 0).a();
       }
     }
     if (j == 1008)
@@ -508,7 +508,7 @@ public class ForwardPhotoOption
   protected String d()
   {
     if (jdField_f_of_type_JavaLangString == null) {
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131436285);
+      return this.jdField_a_of_type_AndroidContentContext.getString(2131436305);
     }
     return jdField_f_of_type_JavaLangString;
   }
@@ -573,7 +573,7 @@ public class ForwardPhotoOption
         if (!TextUtils.isEmpty(FileUtil.a((String)localObject1))) {
           break label295;
         }
-        localObject2 = AppConstants.aJ + "photo/" + String.valueOf(System.currentTimeMillis()) + ".jpg";
+        localObject2 = AppConstants.aK + "photo/" + String.valueOf(System.currentTimeMillis()) + ".jpg";
         FileUtils.d((String)localObject1, (String)localObject2);
         localObject1 = localObject2;
         localObject2 = (DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49);

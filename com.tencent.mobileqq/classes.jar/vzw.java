@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
 
-class vzw
+public class vzw
   implements Runnable
 {
-  vzw(vzv paramvzv) {}
+  public vzw(HotChatPie paramHotChatPie) {}
   
   public void run()
   {
-    this.a.a.a.bk();
+    ConfigServlet.a(this.a.a, this.a.a.getAccount(), -1);
   }
 }
 

@@ -1,55 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.ar.arengine.ARCamera;
 
-public class aalr
-  extends AnimatorListenerAdapter
+class aalr
+  implements Runnable
 {
-  public aalr(ARCardCamereButtonLayout paramARCardCamereButtonLayout) {}
+  aalr(aalq paramaalq) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARCardCamereButtonLayout", 2, "scaleAnimator cancel!");
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARCardCamereButtonLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
+    ARCamera localARCamera = this.a.a;
+    int j = ARCamera.a(this.a.a) / 2;
+    int k = ARCamera.b(this.a.a) / 2;
+    int m = ARCamera.a(this.a.a);
+    int n = ARCamera.b(this.a.a);
+    if (!ARCamera.a(this.a.a)) {}
+    for (int i = ARCamera.f();; i = ARCamera.a(this.a.a) * 3 / 4)
     {
-      this.a.a.set(true);
-      ARCardCamereButtonLayout.a(this.a).sendEmptyMessage(2);
-      ARCardCamereButtonLayout.a(this.a, System.currentTimeMillis());
-      ARCardCamereButtonLayout.a(this.a).sendEmptyMessage(5);
-    }
-    for (;;)
-    {
-      this.a.b.set(false);
+      ARCamera.a(localARCamera, j, k, m, n, i);
       return;
-      ARCardCamereButtonLayout.a(this.a).setVisibility(8);
-      ARCardCamereButtonLayout.a(this.a);
-      ARCardCamereButtonLayout.a(this.a, 1.0F);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARCardCamereButtonLayout", 2, "scaleAnimator start!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aalr
  * JD-Core Version:    0.7.0.1
  */

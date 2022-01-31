@@ -1,21 +1,20 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator;
+import com.tencent.qphone.base.util.QLog;
 
 public class akyi
-  implements NonMainAppHeadLoader.FaceObserver
+  implements Runnable
 {
-  public akyi(WorldCupShareFragment paramWorldCupShareFragment) {}
+  public akyi(SwiftWebAccelerator paramSwiftWebAccelerator, long paramLong, Bundle paramBundle) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void run()
   {
-    if (WorldCupShareFragment.a(this.a).getCurrentAccountUin().equals(paramString1)) {
-      ((ImageView)this.a.getActivity().findViewById(2131375482)).setImageDrawable(new BitmapDrawable(this.a.getResources(), paramBitmap));
-    }
+    SwiftWebAccelerator.TbsAccelerator.b();
+    SwiftBrowserStatistics.C = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on sub thread, cost " + SwiftBrowserStatistics.C + "ms.");
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

@@ -14,7 +14,7 @@ import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
-import tww;
+import ubp;
 
 public class TroopClassChoiceActivity
   extends IphoneTitleBarActivity
@@ -24,7 +24,7 @@ public class TroopClassChoiceActivity
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   public String a;
   public ArrayList a;
-  private tww jdField_a_of_type_Tww;
+  private ubp jdField_a_of_type_Ubp;
   private String b;
   
   private void b()
@@ -62,11 +62,11 @@ public class TroopClassChoiceActivity
   
   private void c()
   {
-    setContentBackgroundResource(2130838214);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131375286));
+    setContentBackgroundResource(2130838219);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131375346));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Tww = new tww(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Tww);
+    this.jdField_a_of_type_Ubp = new ubp(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ubp);
   }
   
   public void a()
@@ -104,8 +104,8 @@ public class TroopClassChoiceActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130971661);
-    setTitle(2131433659);
+    super.setContentView(2130971690);
+    setTitle(2131433673);
     b();
     c();
   }

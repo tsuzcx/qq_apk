@@ -1,17 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.observer.VipGifObserver;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import mqq.os.MqqHandler;
 
 public class wpt
-  extends VipGifObserver
+  extends MqqHandler
 {
-  public wpt(MainAssistObserver paramMainAssistObserver) {}
+  public wpt(NotificationView paramNotificationView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt == 0) && (paramBoolean == true)) {
-      MainAssistObserver.a(this.a);
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter == null);
+      this.a.i();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter.a = GroupSystemMsgController.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter.notifyDataSetChanged();
+      return;
     }
+    this.a.j();
   }
 }
 

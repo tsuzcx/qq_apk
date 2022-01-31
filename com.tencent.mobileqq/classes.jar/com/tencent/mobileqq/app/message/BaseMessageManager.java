@@ -68,6 +68,7 @@ import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
 import com.tencent.mobileqq.data.MessageForTribeShortVideo;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageForTroopReward;
 import com.tencent.mobileqq.data.MessageForTroopSign;
@@ -106,6 +107,8 @@ import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.troop.data.TroopTipsEntity;
 import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
+import com.tencent.mobileqq.troop.utils.TroopBusinessUtil;
+import com.tencent.mobileqq.troop.utils.TroopBusinessUtil.TroopBusinessMessage;
 import com.tencent.mobileqq.troop.utils.TroopRobotManager;
 import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
@@ -140,11 +143,11 @@ import org.json.JSONObject;
 import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MsgBody;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import zsc;
-import zse;
-import zsf;
-import zsg;
-import zsh;
+import zyn;
+import zyp;
+import zyq;
+import zyr;
+import zys;
 
 public abstract class BaseMessageManager
   extends Observable
@@ -261,10 +264,10 @@ public abstract class BaseMessageManager
     }
     for (;;)
     {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430850);
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430853);
       int i = paramString1.length() + ((String)localObject2).length();
       int j = i + ((String)localObject1).length();
-      paramString1 = paramString1 + (String)localObject2 + (String)localObject1 + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430851);
+      paramString1 = paramString1 + (String)localObject2 + (String)localObject1 + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430854);
       paramString3 = new UniteGrayTipParam(paramString3, paramString4, paramString1, paramInt, -5040, 1, paramLong);
       paramString4 = new Bundle();
       paramString4.putInt(ContactUtils.jdField_a_of_type_JavaLangString, ContactUtils.jdField_b_of_type_Int);
@@ -295,32 +298,32 @@ public abstract class BaseMessageManager
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      zsh localzsh1 = (zsh)localEntry.getValue();
-      if (localzsh1.jdField_b_of_type_Boolean)
+      zys localzys1 = (zys)localEntry.getValue();
+      if (localzys1.jdField_b_of_type_Boolean)
       {
         String str = (String)paramQQAppInterface.g.get(localEntry.getKey());
         if ((!TextUtils.isEmpty(str)) && (paramHashMap.containsKey(str)))
         {
-          zsh localzsh2 = (zsh)paramHashMap.get(str);
+          zys localzys2 = (zys)paramHashMap.get(str);
           localHashSet.add(str);
-          localzsh1.jdField_a_of_type_Int += localzsh2.jdField_a_of_type_Int;
-          localzsh1.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(localzsh2.jdField_a_of_type_JavaUtilLinkedHashSet);
-          if ((localzsh1.jdField_a_of_type_Boolean) || (localzsh2.jdField_a_of_type_Boolean)) {}
+          localzys1.jdField_a_of_type_Int += localzys2.jdField_a_of_type_Int;
+          localzys1.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(localzys2.jdField_a_of_type_JavaUtilLinkedHashSet);
+          if ((localzys1.jdField_a_of_type_Boolean) || (localzys2.jdField_a_of_type_Boolean)) {}
           for (boolean bool = true;; bool = false)
           {
-            localzsh1.jdField_a_of_type_Boolean = bool;
-            if (localzsh1.jdField_b_of_type_Long < localzsh2.jdField_b_of_type_Long)
+            localzys1.jdField_a_of_type_Boolean = bool;
+            if (localzys1.jdField_b_of_type_Long < localzys2.jdField_b_of_type_Long)
             {
-              localzsh1.jdField_b_of_type_Long = localzsh2.jdField_b_of_type_Long;
-              localzsh1.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = localzsh2.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg;
-              localzsh1.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg.redBagIndex = ((String)localEntry.getKey());
+              localzys1.jdField_b_of_type_Long = localzys2.jdField_b_of_type_Long;
+              localzys1.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = localzys2.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg;
+              localzys1.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg.redBagIndex = ((String)localEntry.getKey());
             }
-            if (localzsh1.jdField_a_of_type_Long <= localzsh2.jdField_a_of_type_Long) {
+            if (localzys1.jdField_a_of_type_Long <= localzys2.jdField_a_of_type_Long) {
               break;
             }
-            localzsh1.jdField_a_of_type_Long = localzsh2.jdField_a_of_type_Long;
-            localzsh1.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = localzsh2.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg;
-            localzsh1.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg.redBagIndex = ((String)localEntry.getKey());
+            localzys1.jdField_a_of_type_Long = localzys2.jdField_a_of_type_Long;
+            localzys1.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = localzys2.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg;
+            localzys1.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg.redBagIndex = ((String)localEntry.getKey());
             break;
           }
         }
@@ -393,35 +396,35 @@ public abstract class BaseMessageManager
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             break label533;
           }
-          localObject3 = (zsh)((HashMap)localObject4).get(localObject1);
+          localObject3 = (zys)((HashMap)localObject4).get(localObject1);
           localObject2 = localObject3;
           if (localObject3 == null)
           {
-            localObject2 = new zsh();
+            localObject2 = new zys();
             ((HashMap)localObject4).put(localObject1, localObject2);
           }
-          ((zsh)localObject2).jdField_b_of_type_Boolean = bool;
+          ((zys)localObject2).jdField_b_of_type_Boolean = bool;
           if (localMessageForFoldMsg.foldFlag) {
             break label535;
           }
-          ((zsh)localObject2).jdField_a_of_type_Boolean = true;
-          if (localMessageForFoldMsg.shmsgseq <= ((zsh)localObject2).jdField_b_of_type_Long) {
+          ((zys)localObject2).jdField_a_of_type_Boolean = true;
+          if (localMessageForFoldMsg.shmsgseq <= ((zys)localObject2).jdField_b_of_type_Long) {
             break;
           }
-          ((zsh)localObject2).jdField_b_of_type_Long = localMessageForFoldMsg.shmsgseq;
-          ((zsh)localObject2).jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = localMessageForFoldMsg;
+          ((zys)localObject2).jdField_b_of_type_Long = localMessageForFoldMsg.shmsgseq;
+          ((zys)localObject2).jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = localMessageForFoldMsg;
           break;
           bool = false;
           break label345;
         }
         break label208;
-        ((zsh)localObject2).jdField_a_of_type_Int += 1;
-        ((zsh)localObject2).jdField_a_of_type_JavaUtilLinkedHashSet.add(localMessageForFoldMsg.senderuin);
-        if (localMessageForFoldMsg.shmsgseq >= ((zsh)localObject2).jdField_a_of_type_Long) {
+        ((zys)localObject2).jdField_a_of_type_Int += 1;
+        ((zys)localObject2).jdField_a_of_type_JavaUtilLinkedHashSet.add(localMessageForFoldMsg.senderuin);
+        if (localMessageForFoldMsg.shmsgseq >= ((zys)localObject2).jdField_a_of_type_Long) {
           break label208;
         }
-        ((zsh)localObject2).jdField_a_of_type_Long = localMessageForFoldMsg.shmsgseq;
-        ((zsh)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = localMessageForFoldMsg;
+        ((zys)localObject2).jdField_a_of_type_Long = localMessageForFoldMsg.shmsgseq;
+        ((zys)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = localMessageForFoldMsg;
         break label208;
         if (((HashMap)localObject4).isEmpty()) {
           break;
@@ -431,11 +434,11 @@ public abstract class BaseMessageManager
         label621:
         while (((Iterator)localObject2).hasNext())
         {
-          localObject3 = (zsh)((Map.Entry)((Iterator)localObject2).next()).getValue();
-          if (((zsh)localObject3).jdField_a_of_type_Int > 0)
+          localObject3 = (zys)((Map.Entry)((Iterator)localObject2).next()).getValue();
+          if (((zys)localObject3).jdField_a_of_type_Int > 0)
           {
-            if (((zsh)localObject3).jdField_a_of_type_Boolean) {
-              ((zsh)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = ((zsh)localObject3).jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg;
+            if (((zys)localObject3).jdField_a_of_type_Boolean) {
+              ((zys)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = ((zys)localObject3).jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg;
             }
             if (paramList2 != null) {
               break label940;
@@ -444,7 +447,7 @@ public abstract class BaseMessageManager
         }
         for (localObject1 = (List)MsgPool.a(paramQQAppInterface.getAccount()).b().get(MsgProxyUtils.a(((MessageRecord)paramList1.get(0)).frienduin, ((MessageRecord)paramList1.get(0)).istroop));; localObject1 = paramList2)
         {
-          localObject1 = localPasswdRedBagManager.a((List)localObject1, ((zsh)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg, ((zsh)localObject3).jdField_a_of_type_JavaUtilLinkedHashSet, ((zsh)localObject3).jdField_a_of_type_Int, paramBoolean1, paramBoolean2);
+          localObject1 = localPasswdRedBagManager.a((List)localObject1, ((zys)localObject3).jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg, ((zys)localObject3).jdField_a_of_type_JavaUtilLinkedHashSet, ((zys)localObject3).jdField_a_of_type_Int, paramBoolean1, paramBoolean2);
           if ((localObject1 == null) || (paramList2 != null)) {
             break label621;
           }
@@ -504,7 +507,7 @@ public abstract class BaseMessageManager
   private void e(MessageRecord paramMessageRecord)
   {
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zsg(this, paramMessageRecord, l));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zyr(this, paramMessageRecord, l));
   }
   
   public int a(int paramInt, ConversationInfo paramConversationInfo)
@@ -677,9 +680,6 @@ public abstract class BaseMessageManager
           }
         }
       }
-      if ((localObject1 != null) && (((QQMessageFacade.Message)localObject1).isSendFromLocal()) && (((QQMessageFacade.Message)localObject1).extraflag == 32772) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((MessageRecord)localObject1))) {
-        ((QQMessageFacade.Message)localObject1).extraflag = 32768;
-      }
       if (localObject1 != null)
       {
         if (((paramString.equals(String.valueOf(AppConstants.y))) || (paramString.equals(String.valueOf(AppConstants.z)))) && (((QQMessageFacade.Message)localObject1).msgData != null))
@@ -846,7 +846,8 @@ public abstract class BaseMessageManager
     if (CacheConstants.jdField_a_of_type_Boolean) {
       MsgPool.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).a().addCacheOpWeight(MsgProxyUtils.a(paramString, paramInt1), CacheConstants.k);
     }
-    Object localObject2 = (List)((ArrayList)localObject1).clone();
+    Object localObject2 = new ArrayList(((List)localObject1).size());
+    ((List)localObject2).addAll((Collection)localObject1);
     if (PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramString)) {
       a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject2, null, false, true);
     }
@@ -866,7 +867,7 @@ public abstract class BaseMessageManager
     Object localObject3;
     ArrayList localArrayList2;
     ArrayList localArrayList1;
-    label465:
+    label478:
     Object localObject4;
     if (QLog.isColorLevel())
     {
@@ -884,15 +885,15 @@ public abstract class BaseMessageManager
       localArrayList1 = new ArrayList();
       Iterator localIterator = ((List)localObject2).iterator();
       if (!localIterator.hasNext()) {
-        break label1097;
+        break label1110;
       }
       localObject1 = (MessageRecord)localIterator.next();
       if (!(localObject1 instanceof MessageForArkApp)) {
-        break label1384;
+        break label1397;
       }
       localObject2 = ArkTipsManager.a().a();
       if ((localObject2 == null) || (((MessageRecord)localObject1).uniseq != ((MessageForArkApp)localObject2).uniseq)) {
-        break label1384;
+        break label1397;
       }
       localObject4 = ArkTipsManager.a().a();
       if (localObject4 != null)
@@ -904,11 +905,11 @@ public abstract class BaseMessageManager
         QLog.d("ArkTipsManager", 2, "refill ark msg: " + ((MessageForArkApp)localObject2).uniseq + " ark c=" + ((MessageForArkApp)localObject2).arkContainer);
       }
     }
-    label1097:
-    label1362:
-    label1370:
-    label1379:
-    label1384:
+    label1110:
+    label1375:
+    label1383:
+    label1392:
+    label1397:
     for (;;)
     {
       for (;;)
@@ -920,7 +921,7 @@ public abstract class BaseMessageManager
           if (((MessageRecord)localObject1).isSend())
           {
             ((MessageRecord)localObject1).saveExtInfoToExtStr("sens_msg_need_parse", Boolean.toString(false));
-            break label465;
+            break label478;
             localObject1 = "clone is null";
             break;
           }
@@ -934,7 +935,7 @@ public abstract class BaseMessageManager
             paramInt2 = ((bankcode_info.BankcodeCtrlInfo)localObject4).msgtail_id.get();
           }
           if (paramInt2 != 1) {
-            break label465;
+            break label478;
           }
           ((ChatMessage)localObject1).parse();
           localObject2 = MessageRecordFactory.a(-1014);
@@ -976,7 +977,7 @@ public abstract class BaseMessageManager
         }
       }
       if (paramBoolean) {
-        break label465;
+        break label478;
       }
       if ((paramInt1 == 0) && ((localObject1 instanceof MessageForPoke)))
       {
@@ -985,22 +986,22 @@ public abstract class BaseMessageManager
           localArrayList2.add(localObject2);
         }
         if ((((MessageForPoke)localObject2).interactType == 126) && (!((MessageForPoke)localObject2).isPlayed) && (!((MessageForPoke)localObject2).isSend())) {
-          break label465;
+          break label478;
         }
         if ((((MessageForPoke)localObject2).isread) && (!((MessageForPoke)localObject2).isPlayed) && (!((MessageForPoke)localObject2).isSend())) {
           ((MessageForPoke)localObject2).setPlayed(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         }
       }
       if ((paramInt1 != 0) || (!(localObject1 instanceof MessageForPokeEmo))) {
-        break label465;
+        break label478;
       }
       localArrayList1.add((MessageForPokeEmo)localObject1);
-      break label465;
+      break label478;
       if (!paramBoolean)
       {
         paramInt2 = localArrayList2.size();
         if (paramInt2 <= 1) {
-          break label1379;
+          break label1392;
         }
         paramString = (MessageForPoke)localArrayList2.get(paramInt2 - 1);
         paramInt1 = 0;
@@ -1031,16 +1032,16 @@ public abstract class BaseMessageManager
               paramString.setPlayed(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
             }
             if ((localObject1 == null) || (paramInt1 == 0)) {
-              break label1370;
+              break label1383;
             }
             if (paramInt2 - 3 >= 0) {
-              break label1362;
+              break label1375;
             }
           }
           for (paramInt1 = 0;; paramInt1 = paramInt2 - 3)
           {
             if (paramInt2 <= 3) {
-              break label1370;
+              break label1383;
             }
             paramInt2 -= 1;
             while (paramInt2 >= paramInt1)
@@ -1208,13 +1209,13 @@ public abstract class BaseMessageManager
             paramMessage = paramMessage;
             throw paramMessage;
           }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131434668);
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131434684);
           continue;
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131434669);
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131434685);
           continue;
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131434670);
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131434686);
           continue;
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131434678);
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131434694);
           continue;
           localObject1 = "";
           i = ((structmsg.StructMsg)localObject4).msg.group_msg_type.get();
@@ -1313,12 +1314,12 @@ public abstract class BaseMessageManager
               label1132:
               if (paramMessage.msgtype == -2007)
               {
-                paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436276);
+                paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436296);
                 return;
               }
               if (paramMessage.msgtype == -2058)
               {
-                paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436277);
+                paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436297);
                 return;
               }
               if (paramMessage.msgtype == -1035)
@@ -1417,7 +1418,7 @@ public abstract class BaseMessageManager
                   paramMessage.nickName = PublicAccountConfigUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
                   return;
                 }
-                paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436122);
+                paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436140);
                 return;
               }
               if (paramMessage.msgtype != -2010) {
@@ -1432,7 +1433,7 @@ public abstract class BaseMessageManager
                 }
                 if (((FunnyFaceMessage)localObject2).faceId == 1)
                 {
-                  paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433427);
+                  paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433441);
                   return;
                 }
               }
@@ -1452,34 +1453,34 @@ public abstract class BaseMessageManager
         if (((FunnyFaceMessage)localObject3).faceId != 2) {
           break;
         }
-        paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433428);
+        paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433442);
         return;
         label1992:
         if (paramMessage.msgtype == -2000)
         {
-          paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433021);
+          paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433035);
           return;
         }
         if (paramMessage.msgtype == -2005)
         {
-          paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435081);
+          paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435097);
           return;
         }
         if (paramMessage.msgtype == -2020)
         {
-          paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433347);
+          paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433361);
           if (MsgUtils.a(paramMessage.issend))
           {
             localObject3 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessage.frienduin, "", 0, 0);
-            paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433348, new Object[] { localObject3 });
+            paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433362, new Object[] { localObject3 });
             return;
           }
-          paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433347);
+          paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433361);
           return;
         }
         if ((paramMessage.msgtype == -2002) || (paramMessage.msgtype == -1031))
         {
-          paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435570);
+          paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435586);
           try
           {
             localObject3 = (MessageForPtt)this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(paramMessage.frienduin, paramMessage.istroop, paramMessage.uniseq);
@@ -1574,10 +1575,6 @@ public abstract class BaseMessageManager
           break;
         }
         paramMessage.msg = ((HiBoomMessage)MessagePkgUtils.a(paramMessage.msgData)).text;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("HiBoomFont.BaseMessageManager", 2, "update messageList " + paramMessage.msg);
         return;
       }
       if (paramMessage.msgtype == -2048)
@@ -1617,6 +1614,22 @@ public abstract class BaseMessageManager
         paramMessage.msg = "[秀图]";
         return;
       }
+      if (paramMessage.msgtype == -2067)
+      {
+        localObject3 = new MessageForTroopConfess();
+        ((MessageForTroopConfess)localObject3).msgData = paramMessage.msgData;
+        ((MessageForTroopConfess)localObject3).doParse();
+        paramMessage.msg = ((MessageForTroopConfess)localObject3).msg;
+        localObject3 = TroopBusinessUtil.a(paramMessage);
+        if (localObject3 != null) {
+          paramMessage.nickName = ((TroopBusinessUtil.TroopBusinessMessage)localObject3).jdField_c_of_type_JavaLangString;
+        }
+        if (!TextUtils.isEmpty(paramMessage.nickName)) {
+          break;
+        }
+        paramMessage.nickName = "有人说";
+        return;
+      }
       if ((paramMessage.msg == null) || ("".equals(paramMessage.msg))) {
         break;
       }
@@ -1630,7 +1643,7 @@ public abstract class BaseMessageManager
         if (localObject3.length < 2)
         {
           i = 1;
-          label2869:
+          label2913:
           paramMessage.fileType = i;
         }
         for (;;)
@@ -1655,9 +1668,9 @@ public abstract class BaseMessageManager
             if (paramMessage.msgtype != -3001) {
               continue;
             }
-            paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436278);
+            paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436298);
             return;
-            paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433021);
+            paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433035);
             return;
           }
           switch (i)
@@ -1666,14 +1679,14 @@ public abstract class BaseMessageManager
           default: 
             return;
           case 0: 
-            paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435081);
+            paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435097);
             return;
             i = Integer.valueOf(localObject3[2]).intValue();
-            break label2869;
+            break label2913;
             l = Long.valueOf(localObject3[1]).longValue();
           }
         }
-        paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435570);
+        paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435586);
         paramMessage.pttUrl = localObject3[0];
         return;
       }
@@ -1682,12 +1695,12 @@ public abstract class BaseMessageManager
         if (QLog.isColorLevel()) {
           QLog.e("Q.msg.BaseMessageManager", 2, "<0x7f_trace>  0x7f in MsgTab decodeMsg method !");
         }
-        paramMessage.msg = (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435570) + "(0x7f)");
+        paramMessage.msg = (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435586) + "(0x7f)");
         return;
       }
       if (paramMessage.msgtype == -2008)
       {
-        paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436161);
+        paramMessage.msg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436179);
         return;
       }
       if (paramMessage.msg.indexOf("http://maps.google.com/maps?q=") != -1)
@@ -1703,7 +1716,7 @@ public abstract class BaseMessageManager
           }
         }
         paramMessage.fileType = 65536;
-        paramMessage.msg = ("[" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433839) + "] " + (String)localObject3);
+        paramMessage.msg = ("[" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433855) + "] " + (String)localObject3);
         return;
       }
       if (paramMessage.msgtype == -2029)
@@ -1729,7 +1742,7 @@ public abstract class BaseMessageManager
       {
         localObject5 = BaseApplicationImpl.sApplication.getRuntime();
         if (!QQAppInterface.class.isInstance(localObject5)) {
-          break label3552;
+          break label3596;
         }
         localObject5 = AtTroopMemberSpan.a((QQAppInterface)localObject5, (StringBuilder)localObject3, (String)localObject7, paramMessage.frienduin, paramMessage.isSend());
         localObject3 = localObject5;
@@ -1750,16 +1763,16 @@ public abstract class BaseMessageManager
       {
         localObject3 = MsgUtils.c(((StringBuilder)localObject5).toString());
         if ((!LoveLanguageManager.a(paramMessage)) || (!((LoveLanguageManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(273)).b())) {
-          break label3607;
+          break label3651;
         }
         localObject3 = LoveLanguageManager.a((String)localObject3);
       }
-      label3607:
+      label3596:
+      label3651:
       for (;;)
       {
         paramMessage.emoRecentMsg = new QQText((CharSequence)localObject3, 3, 16);
         return;
-        label3552:
         if (QLog.isColorLevel()) {
           QLog.e("Q.msg.BaseMessageManager", 1, "We get error AppRuntime");
         }
@@ -2026,7 +2039,7 @@ public abstract class BaseMessageManager
         {
           QLog.d("Q.msg.BaseMessageManager", 1, "longmsg receive report error!", paramEntityManager);
           continue;
-          ThreadManager.getSubThreadHandler().postDelayed(new zsf(this, paramEntityManager, paramMessageRecord), 10000L);
+          ThreadManager.getSubThreadHandler().postDelayed(new zyq(this, paramEntityManager, paramMessageRecord), 10000L);
         }
         try
         {
@@ -2054,7 +2067,7 @@ public abstract class BaseMessageManager
         continue;
         a(paramMessageRecord, true, 1);
         continue;
-        ThreadManager.getSubThreadHandler().postDelayed(new zse(this, paramEntityManager, paramMessageRecord), 10000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new zyp(this, paramEntityManager, paramMessageRecord), 10000L);
       }
     }
   }
@@ -2162,7 +2175,7 @@ public abstract class BaseMessageManager
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b.put(str, Boolean.valueOf(true));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zsc(this, paramString, paramInt1, paramInt2, paramRefreshMessageContext, str));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zyn(this, paramString, paramInt1, paramInt2, paramRefreshMessageContext, str));
   }
   
   public void a(String paramString, int paramInt, long paramLong) {}
@@ -2581,11 +2594,11 @@ public abstract class BaseMessageManager
         l = ((RevokeMsgInfo)localObject2).jdField_c_of_type_Long;
         break;
         label723:
-        ??? = "你" + BaseApplicationImpl.getApplication().getString(2131430849);
+        ??? = "你" + BaseApplicationImpl.getApplication().getString(2131430852);
         paramArrayList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
         localObject2 = new UniteGrayTipParam(str, paramArrayList, (String)???, i, -5040, 1, ((MessageRecord)localObject3).time);
         break label466;
-        ??? = "你" + BaseApplicationImpl.getApplication().getString(2131438102);
+        ??? = "你" + BaseApplicationImpl.getApplication().getString(2131438122);
         paramArrayList = ((MessageRecord)localObject3).senderuin;
         localObject2 = new UniteGrayTipParam(str, paramArrayList, (String)???, i, -5040, 1, ((MessageRecord)localObject3).time);
         break label466;
@@ -2837,14 +2850,14 @@ public abstract class BaseMessageManager
       if (MsgProxyUtils.g(paramMessageRecord.msgtype)) {
         break;
       }
-      if (paramMessageRecord.frienduin.equals(AppConstants.ap))
+      if (paramMessageRecord.frienduin.equals(AppConstants.aq))
       {
         bool1 = bool2;
         if (paramMessageRecord.istroop == 0) {
           break;
         }
       }
-      if (paramMessageRecord.frienduin.equals(AppConstants.aw))
+      if (paramMessageRecord.frienduin.equals(AppConstants.ax))
       {
         bool1 = bool2;
         if (paramMessageRecord.istroop == 0) {
@@ -3084,9 +3097,6 @@ public abstract class BaseMessageManager
             localObject = paramEntityManager;
           }
         }
-      }
-      if ((localObject != null) && (((QQMessageFacade.Message)localObject).isSendFromLocal()) && (((QQMessageFacade.Message)localObject).extraflag == 32772) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b((MessageRecord)localObject))) {
-        ((QQMessageFacade.Message)localObject).extraflag = 32768;
       }
       paramEntityManager = (EntityManager)localObject;
       if (localObject == null)
@@ -3550,7 +3560,7 @@ public abstract class BaseMessageManager
     }
     for (int i = 1;; i = 0)
     {
-      if (paramString.equals(AppConstants.aE))
+      if (paramString.equals(AppConstants.aF))
       {
         ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, true);
         ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false);
@@ -3791,16 +3801,16 @@ public abstract class BaseMessageManager
         paramArrayList = "对方";
         break label545;
         label1142:
-        paramArrayList = new UniteGrayTipParam((String)???, (String)localObject3, paramArrayList.concat(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430849)), n, -5040, 1, l);
+        paramArrayList = new UniteGrayTipParam((String)???, (String)localObject3, paramArrayList.concat(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430852)), n, -5040, 1, l);
         break label604;
         label1182:
         if (k == 2) {}
-        for (localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430592);; localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430591))
+        for (localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430595);; localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430594))
         {
           k = ((String)localObject5).length();
           m = ((String)localObject5).length();
           int i1 = paramArrayList.length();
-          paramArrayList = new UniteGrayTipParam((String)???, (String)localObject3, (String)localObject5 + paramArrayList + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430849), n, -5040, 1, l);
+          paramArrayList = new UniteGrayTipParam((String)???, (String)localObject3, (String)localObject5 + paramArrayList + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131430852), n, -5040, 1, l);
           localObject3 = new Bundle();
           ((Bundle)localObject3).putInt(ContactUtils.jdField_a_of_type_JavaLangString, ContactUtils.jdField_b_of_type_Int);
           ((Bundle)localObject3).putLong(ContactUtils.jdField_b_of_type_JavaLangString, ((MessageForUniteGrayTip)localObject6).uniseq);
@@ -3815,7 +3825,7 @@ public abstract class BaseMessageManager
         if (paramArrayList.length() > 12) {
           localObject5 = paramArrayList.substring(0, 11) + "...";
         }
-        paramArrayList = new UniteGrayTipParam((String)???, (String)localObject3, ((String)localObject5).concat(BaseApplicationImpl.getApplication().getString(2131438102)), n, -5040, 1, l);
+        paramArrayList = new UniteGrayTipParam((String)???, (String)localObject3, ((String)localObject5).concat(BaseApplicationImpl.getApplication().getString(2131438122)), n, -5040, 1, l);
         break label604;
         label1450:
         l = localRevokeMsgInfo.jdField_b_of_type_Long;

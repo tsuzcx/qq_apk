@@ -1,49 +1,63 @@
-import android.content.Context;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
-import com.tencent.plato.PlatoAppManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import mqq.manager.WtloginManager;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public final class aljy
-  implements AsyncBack
+public class aljy
+  extends WtloginObserver
 {
-  public aljy(Context paramContext, AppRuntime paramAppRuntime, long paramLong, long[] paramArrayOfLong) {}
+  public aljy(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(PlatoAppManager.a(), 2, "preInitV8So loaded,code=" + paramInt + ", param :" + paramString);
+      QLog.d("Q.quicklogin.", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
     }
     if (paramInt == 0)
     {
-      if (paramString != null) {
-        break label85;
-      }
-      PlatoAppManager.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_MqqAppAppRuntime);
-      TroopTechReportUtils.a("plato_v1", "v8_so_unzip", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "", "", "");
+      this.a.a(null);
+      this.a.moveTaskToBack(true);
+      return;
     }
-    label85:
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "登录失败(" + paramInt + ")", 2000).a();
+    this.a.a(null);
+    this.a.moveTaskToBack(true);
+  }
+  
+  public void OnException(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.quicklogin.", 2, "OnException e=" + paramString);
+    }
+    this.a.a(null);
+    this.a.moveTaskToBack(true);
+  }
+  
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (paramInt == 0)
+    {
+      paramArrayOfByte1 = new ArrayList();
+      this.a.a.CloseCode(paramString, 16L, QuickLoginAuthorityActivity.a(this.a), 1, paramArrayOfByte1, QuickLoginAuthorityActivity.a(this.a));
+    }
     do
     {
       return;
-      if (paramString.contains("url"))
-      {
-        PlatoAppManager.a.set(false);
-        this.jdField_a_of_type_ArrayOfLong[0] = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
-        TroopTechReportUtils.a("plato_v1", "v8_so_download", String.valueOf(this.jdField_a_of_type_ArrayOfLong[0]), "", "", "");
-        return;
-      }
-    } while (PlatoAppManager.a.get());
-    PlatoAppManager.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_MqqAppAppRuntime);
+      QQToast.a(BaseApplicationImpl.getContext(), 1, "登录失败(" + paramInt + ")", 2000).a();
+      this.a.a(null);
+      this.a.moveTaskToBack(true);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.quicklogin.", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljy
  * JD-Core Version:    0.7.0.1
  */

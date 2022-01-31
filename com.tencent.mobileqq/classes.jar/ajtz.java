@@ -1,74 +1,29 @@
-import NearbyGroup.GroupLabel;
-import android.util.SparseIntArray;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class ajtz
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public ajtz(TroopLabelLayout paramTroopLabelLayout) {}
+  public ajtz(BulkSendMessageFragment paramBulkSendMessageFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int k = 0;
-    for (;;)
-    {
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() != 0)) {
-          break label235;
-        }
-        return;
-        GroupLabel localGroupLabel;
-        Object localObject2;
-        if (j < this.a.jdField_a_of_type_JavaUtilArrayList.size())
-        {
-          localGroupLabel = (GroupLabel)this.a.jdField_a_of_type_JavaUtilArrayList.get(j);
-          if (j == 0)
-          {
-            i = 0;
-            break label242;
-          }
-          localObject2 = (GroupLabel)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if (TroopLabelLayout.jdField_a_of_type_AndroidUtilSparseIntArray.get((int)((GroupLabel)localObject2).type) <= TroopLabelLayout.jdField_a_of_type_AndroidUtilSparseIntArray.get((int)localGroupLabel.type))
-          {
-            i = j;
-            break label242;
-          }
-        }
-        else
-        {
-          localGroupLabel = (GroupLabel)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-          i = k;
-          if (i < this.a.getChildCount())
-          {
-            localObject2 = this.a.getChildAt(i);
-            if (!(localObject2 instanceof TextView)) {
-              break label249;
-            }
-            localObject2 = (TextView)localObject2;
-            if (!((TextView)localObject2).getText().toString().equals(localGroupLabel.strWording)) {
-              break label249;
-            }
-            ((TextView)localObject2).setVisibility(8);
-            this.a.requestLayout();
-            break label249;
-          }
-          return;
-        }
-      }
-      break label242;
-      label235:
-      int j = 0;
-      int i = 0;
-      continue;
-      label242:
-      j += 1;
-      continue;
-      label249:
-      i += 1;
+    boolean bool1 = this.a.a.canScrollVertically(-1);
+    boolean bool2 = this.a.a.canScrollVertically(1);
+    if ((paramView.isFocused()) && ((bool1) || (bool2))) {
+      paramView.getParent().requestDisallowInterceptTouchEvent(true);
     }
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    default: 
+      return false;
+    }
+    paramView.getParent().requestDisallowInterceptTouchEvent(false);
+    return false;
   }
 }
 

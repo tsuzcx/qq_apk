@@ -126,7 +126,7 @@ public class DiyPendantHandler
     DiyAddonPbInfo.AddonReqComm localAddonReqComm = new DiyAddonPbInfo.AddonReqComm();
     localAddonReqComm.platform.set(109L);
     localAddonReqComm.osver.set(Build.VERSION.RELEASE);
-    localAddonReqComm.mqqver.set("7.6.3");
+    localAddonReqComm.mqqver.set("7.6.8");
     DiyAddonPbInfo.AddonGetDiyInfoReq localAddonGetDiyInfoReq = new DiyAddonPbInfo.AddonGetDiyInfoReq();
     localAddonGetDiyInfoReq.uin.set(paramList);
     paramList = new DiyAddonPbInfo.ReadAddonReq();

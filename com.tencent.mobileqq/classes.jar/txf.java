@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.activity.TroopDisbandActivity.MemberGridAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class txf
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
-  public txf(TroopDisbandActivity paramTroopDisbandActivity) {}
+  public txf(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
-      this.a.a.notifyDataSetChanged();
-    }
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

@@ -1,21 +1,21 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
 
 public class uji
   implements Runnable
 {
-  public uji(SendBirthdayWishesActivity paramSendBirthdayWishesActivity, int paramInt) {}
+  public uji(TroopTransferActivity paramTroopTransferActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 2)
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setImageResource(2130837627);
-      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setContentDescription("键盘");
+      if (this.a.a != null) {
+        this.a.a.notifyDataSetChanged();
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setImageResource(2130844545);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setContentDescription("表情功能面板");
+    catch (Throwable localThrowable) {}
   }
 }
 

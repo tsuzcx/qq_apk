@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adse;
+import aean;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.AdapterDataObserver;
@@ -11,7 +11,7 @@ public class RecyclerFooterWrapperAdapter
   extends RecyclerView.Adapter
 {
   private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new adse(this);
+  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new aean(this);
   HotPicFooterInterface jdField_a_of_type_ComTencentMobileqqHotpicHotPicFooterInterface;
   
   public RecyclerFooterWrapperAdapter(@NonNull RecyclerView.Adapter paramAdapter, HotPicFooterInterface paramHotPicFooterInterface)

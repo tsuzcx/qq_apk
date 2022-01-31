@@ -1,56 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.OfflineEnvHelper;
-import com.tencent.biz.viewplugin.ViewPluginLoader;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.widget.FrameLayout;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.util.Timer;
 
 public class paf
-  implements AsyncBack
 {
-  public paf(ViewPluginLoader paramViewPluginLoader, QQAppInterface paramQQAppInterface) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "checkUp loaded json = " + paramString + " code = " + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      String str;
-      try
-      {
-        paramString = new JSONObject(paramString).optJSONArray("data").optJSONObject(0);
-        str = paramString.optString("url");
-        paramInt = paramString.optInt("filesize");
-        if ((str != null) && (str.endsWith("patch")))
-        {
-          FileUtils.a(OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a) + this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a);
-          this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.b();
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
-        return;
-      }
-      if ((!TextUtils.isEmpty(str)) && (paramInt != 0))
-      {
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a(paramString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader.a();
-  }
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  private String jdField_a_of_type_JavaLangString;
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  private pad jdField_a_of_type_Pad;
+  private boolean jdField_a_of_type_Boolean;
+  private double jdField_b_of_type_Double;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private double jdField_c_of_type_Double;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private double jdField_d_of_type_Double;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private double jdField_e_of_type_Double;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private double jdField_f_of_type_Double;
+  private int jdField_f_of_type_Int;
+  private int g;
+  private int h;
 }
 
 

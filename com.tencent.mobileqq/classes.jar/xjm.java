@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class xjm
-  implements View.OnClickListener
+  implements PreloadImgManager.OnSingleDownloadCallback
 {
-  public xjm(BannerManager paramBannerManager) {}
+  public xjm(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(Object paramObject)
   {
-    this.a.a(18, 0);
-    this.a.a(-1, null);
-    ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
+    if ((paramObject instanceof Bitmap))
+    {
+      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
+      paramObject.what = 102;
+      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+    }
   }
 }
 

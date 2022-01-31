@@ -1,30 +1,14 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.qcall.LightalkSwitchManager;
-import com.tencent.mobileqq.qcall.LightalkSwitchObserver;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class teu
-  extends LightalkSwitchObserver
+class teu
+  implements Runnable
 {
-  public teu(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  teu(tes paramtes) {}
   
-  protected void a(boolean paramBoolean)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-    if (!paramBoolean) {
-      PermisionPrivacyActivity.a(this.a, 2131436066);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.i.a(), PermisionPrivacyActivity.a(this.a).b());
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.i.a(), paramBoolean2);
-    }
+    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131436529), 0).b(this.a.a.a.getTitleBarHeight());
   }
 }
 

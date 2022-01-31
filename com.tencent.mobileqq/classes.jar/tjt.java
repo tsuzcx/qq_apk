@@ -1,20 +1,32 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class tjt
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tjt(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  public tjt(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    int i = ((FriendsManager)this.a.app.getManager(50)).c();
+    Object localObject = (PhoneContactManagerImp)this.a.app.getManager(10);
+    int j = ((PhoneContactManagerImp)localObject).c();
+    if ((((PhoneContactManagerImp)localObject).c()) || (j == 8)) {
+      i = ((PhoneContactManagerImp)localObject).a(false).size() + i;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
+    for (;;)
+    {
+      if (i > 0) {}
+      for (localObject = i + "人";; localObject = "暂无")
+      {
+        ThreadManager.getUIHandler().post(new tju(this, (String)localObject));
+        return;
+      }
     }
   }
 }

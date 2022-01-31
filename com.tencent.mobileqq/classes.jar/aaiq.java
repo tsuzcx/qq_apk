@@ -1,86 +1,52 @@
-import com.tencent.mobileqq.ar.arengine.ARResouceDir;
-import com.tencent.mobileqq.ar.arengine.ARResourceDownload.ARResourceDownloadCallback;
-import com.tencent.mobileqq.ar.arengine.ARResourceDownload.DownloadInfo;
-import com.tencent.mobileqq.ar.arengine.ARResourceManagerTools;
-import com.tencent.mobileqq.ar.arengine.ARResourceManagerTools.ARResourceCallback;
-import com.tencent.mobileqq.ar.arengine.ArResourceConfigUtils;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.earlydownload.EarlyDownloadManager.EarlyDownLoadListener;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class aaiq
-  implements ARResourceDownload.ARResourceDownloadCallback
+  implements EarlyDownloadManager.EarlyDownLoadListener
 {
-  public aaiq(ARResourceManagerTools paramARResourceManagerTools, ARResourceManagerTools.ARResourceCallback paramARResourceCallback, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public aaiq(ArConfigService paramArConfigService) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void a(XmlData paramXmlData) {}
+  
+  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(ARResourceManagerTools.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools, paramLong1, 0));
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    if ("qq.android.ar.native.so_v7.6.5.2".equals(paramXmlData.strResName)) {
+      ArConfigService.a(this.a, (int)(100L * paramLong1 / paramLong2));
+    }
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a)) / 3;
+    if (!ArConfigService.d(this.a)) {
+      ArConfigService.a(this.a).post(new aair(this, i));
     }
   }
   
-  public void a(boolean paramBoolean, ARResourceDownload.DownloadInfo paramDownloadInfo)
+  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
   {
-    QLog.i("AREngine_ARResourceManagerTools", 1, "onARResourceDownloadComplete result" + paramBoolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(paramDownloadInfo.jdField_a_of_type_Int, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadFinish data=%s result=%s", new Object[] { paramXmlData, Boolean.valueOf(paramBoolean1) }));
     }
-    if (paramBoolean)
+    if (paramBoolean1)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext())
-        {
-          ARResourceDownload.DownloadInfo localDownloadInfo = (ARResourceDownload.DownloadInfo)localIterator.next();
-          if (!localDownloadInfo.jdField_a_of_type_JavaLangString.equals(paramDownloadInfo.jdField_a_of_type_JavaLangString)) {
-            continue;
-          }
-          if (paramDownloadInfo.jdField_a_of_type_Boolean) {}
-          try
-          {
-            System.currentTimeMillis();
-            if (paramDownloadInfo.jdField_a_of_type_Int == 6)
-            {
-              new File(paramDownloadInfo.c);
-              ArResourceConfigUtils.a(paramDownloadInfo.c, ARResouceDir.c());
-            }
-            for (;;)
-            {
-              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  ");
-              this.b.remove(localDownloadInfo);
-              break;
-              File localFile = new File(paramDownloadInfo.c);
-              ArResourceConfigUtils.a(paramDownloadInfo.c, localFile.getParentFile().getAbsolutePath() + File.separator + paramDownloadInfo.b + File.separator);
-            }
-            return;
-          }
-          catch (Exception localException)
-          {
-            new File(paramDownloadInfo.c).delete();
-            QLog.i("AREngine_ARResourceManagerTools", 1, "Download end. uncompressZip error. url = ");
-            if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-              this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(false);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
-            QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerAllDownloadComplete  ");
-          }
-        }
+      if ("qq.android.ar.native.so_v7.6.5.2".equals(paramXmlData.strResName)) {
+        ArConfigService.b(this.a, true);
       }
-      while (this.b.size() != 0) {}
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(true);
+      if ((ArConfigService.e(this.a)) && (ArConfigService.f(this.a)) && (ArConfigService.g(this.a))) {
+        ArConfigService.a(this.a).post(new aais(this));
       }
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+    }
+    while (ArConfigService.d(this.a)) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(false);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+    ArConfigService.a(this.a).post(new aait(this));
+    ArConfigService.a(this.a, true);
   }
+  
+  public void b(XmlData paramXmlData) {}
 }
 
 

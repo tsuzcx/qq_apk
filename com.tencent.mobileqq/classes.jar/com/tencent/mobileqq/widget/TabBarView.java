@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import akxa;
-import akxb;
-import akxc;
+import aler;
+import ales;
+import alet;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -39,7 +39,7 @@ public class TabBarView
   private float jdField_a_of_type_Float;
   public long a;
   public final Paint a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new akxa(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new aler(this);
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   public TabBarView.OnTabChangeListener a;
   public List a;
@@ -79,14 +79,14 @@ public class TabBarView
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_c_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.p = paramContext.getResources().getColor(2131494220);
-    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131494214);
+    this.p = paramContext.getResources().getColor(2131494226);
+    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131494220);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.p);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(0, -1);
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.weight = 1.0F;
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.gravity = 17;
-    setBackgroundDrawable(getResources().getDrawable(2130846046));
+    setBackgroundDrawable(getResources().getDrawable(2130846128));
     if (jdField_a_of_type_Int == 0) {
       jdField_a_of_type_Int = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay().getWidth();
     }
@@ -191,7 +191,7 @@ public class TabBarView
     if (localView == null) {
       return null;
     }
-    localView = localView.findViewById(2131362344);
+    localView = localView.findViewById(2131362347);
     if ((localView instanceof RedDotTextView)) {
       return (RedDotTextView)localView;
     }
@@ -219,9 +219,9 @@ public class TabBarView
     localRedDotTextView.setContentDescription(paramString);
     localRedDotTextView.setGravity(17);
     if (!TextUtils.isEmpty(paramString)) {
-      localLinearLayout1.setOnClickListener(new akxb(this, paramInt));
+      localLinearLayout1.setOnClickListener(new ales(this, paramInt));
     }
-    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new akxc(this));
+    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new alet(this));
     this.jdField_a_of_type_JavaUtilList.add(localRedDotTextView);
     this.jdField_b_of_type_JavaUtilList.add(localLinearLayout1);
     this.jdField_c_of_type_JavaUtilList.add(paramString);
@@ -311,7 +311,7 @@ public class TabBarView
         paramString.weight = 1.0F;
         break label347;
         label766:
-        localRedDotTextView.setId(2131362344);
+        localRedDotTextView.setId(2131362347);
         if ((localHashMap != null) && (localHashMap.get("paddingLeft") != null))
         {
           localLinearLayout1.addView(localRedDotTextView, paramString);
@@ -505,7 +505,7 @@ public class TabBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView
  * JD-Core Version:    0.7.0.1
  */

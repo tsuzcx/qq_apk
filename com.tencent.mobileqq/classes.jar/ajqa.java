@@ -1,21 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import mqq.app.AppRuntime;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.Button;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class ajqa
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public ajqa(TroopLinkManager paramTroopLinkManager, String paramString1, String paramString2) {}
+  public ajqa(ReciteFragment paramReciteFragment, Button paramButton) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!FileUtils.a(this.jdField_a_of_type_JavaLangString, this.b)) {
-      BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("troop_link_config_version", 0).commit();
-    }
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

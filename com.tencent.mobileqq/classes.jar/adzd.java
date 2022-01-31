@@ -1,36 +1,23 @@
-import android.os.Handler;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
 
 public class adzd
-  implements TVK_SDKMgr.InstallListener
+  implements Animation.AnimationListener
 {
-  private Handler a;
+  public adzd(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder) {}
   
-  public adzd(Handler paramHandler)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramHandler;
-  }
-  
-  public void onInstallProgress(float paramFloat)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(2);
+    if (this.a.a == 3) {
+      this.a.d.setVisibility(8);
     }
   }
   
-  public void onInstalledFailed(int paramInt)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(1);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onInstalledSuccessed()
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(0);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

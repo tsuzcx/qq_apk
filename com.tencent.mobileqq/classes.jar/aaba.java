@@ -1,57 +1,34 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class aaba
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aaba(GreetingCardRender paramGreetingCardRender) {}
+  public aaba(MsgNotifyPushDialog paramMsgNotifyPushDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (GreetingCardRender.a(this.a) != null) {}
-    try
-    {
-      GreetingCardRender.a(this.a).stop();
-      return;
+    if (MsgNotifyPushDialog.a != null) {
+      MsgNotifyPushDialog.a(this.a).startActivity(MsgNotifyPushDialog.a);
     }
-    catch (Exception localException)
-    {
-      QLog.e("GreetingCardRender", 2, "playVideo fail.", localException);
-      return;
-    }
-    finally
-    {
-      if (GreetingCardRender.a(this.a) != null)
-      {
-        GreetingCardRender.a(this.a).setOnFrameAvailableListener(null);
-        GreetingCardRender.a(this.a).release();
-        GreetingCardRender.a(this.a, null);
-      }
-      if (GreetingCardRender.a(this.a) != -1)
-      {
-        GLES20.glDeleteTextures(1, new int[] { GreetingCardRender.a(this.a) }, 0);
-        GreetingCardRender.c(this.a, -1);
-      }
-      if (GreetingCardRender.a(this.a) != null)
-      {
-        GreetingCardRender.a(this.a).d();
-        GreetingCardRender.a(this.a, null);
-      }
-      if (GreetingCardRender.b(this.a) != null)
-      {
-        GreetingCardRender.b(this.a).d();
-        GreetingCardRender.b(this.a, null);
-      }
-    }
+    ReportController.b(null, "CliOper", "", "", "0X8006B15", "0X8006B15", 0, 0, "", "", "", "");
+    paramView = PreferenceManager.getDefaultSharedPreferences(MsgNotifyPushDialog.a(this.a));
+    int i = paramView.getInt("push_msg_notify_open", 0);
+    paramView = paramView.edit();
+    paramView.putInt("push_msg_notify_open", i + 1);
+    paramView.commit();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaba
  * JD-Core Version:    0.7.0.1
  */

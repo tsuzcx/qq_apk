@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.upgrade;
 
+import aadb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -13,12 +14,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import org.xmlpull.v1.XmlPullParser;
 import protocol.KQQConfig.UpgradeInfo;
-import zwo;
 
 public class UpgradeDetailWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new zwo();
+  public static final Parcelable.Creator CREATOR = new aadb();
   static String a;
   public int a;
   public ApkUpdateDetail a;

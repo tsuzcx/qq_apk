@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.BaseAdapter;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.data.IFaceSelectedListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
 
 public abstract class BaseFaceListAdapter
@@ -12,11 +13,13 @@ public abstract class BaseFaceListAdapter
   public int a;
   protected Context a;
   protected IFaceSelectedListener a;
+  protected FaceListPage a;
   protected FacePackage a;
   
-  public BaseFaceListAdapter(Context paramContext)
+  public BaseFaceListAdapter(Context paramContext, FaceListPage paramFaceListPage)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage = paramFaceListPage;
   }
   
   public void a(IFaceSelectedListener paramIFaceSelectedListener)
@@ -27,6 +30,11 @@ public abstract class BaseFaceListAdapter
   public void a(FacePackage paramFacePackage)
   {
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage = paramFacePackage;
+  }
+  
+  protected boolean a()
+  {
+    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a;
   }
   
   public int getCount()

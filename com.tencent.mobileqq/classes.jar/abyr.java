@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.doutu.combo.ComboUIManager;
+import com.tencent.mobileqq.confess.ConfessConfig;
 
 public class abyr
   implements Runnable
 {
-  public abyr(ComboUIManager paramComboUIManager) {}
+  public abyr(ConfessConfig paramConfessConfig) {}
   
   public void run()
   {
-    this.a.c();
+    this.a.a();
   }
 }
 

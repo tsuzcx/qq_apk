@@ -1,27 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
 
-public class llu
+class llu
   implements Runnable
 {
-  public llu(KandianMergeManager paramKandianMergeManager, QQMessageFacade paramQQMessageFacade, String paramString1, String paramString2, int paramInt, boolean paramBoolean) {}
+  llu(llt paramllt) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.as, 7220);
-    if (localMessageRecord != null) {}
-    for (localMessageRecord = KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);; localMessageRecord = KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int))
+    ZhituManager localZhituManager = ReadInJoyCommentComponentFragment.a(this.a.a);
+    if ((localZhituManager != null) && (ReadInJoyCommentComponentFragment.a(this.a.a)))
     {
-      if (localMessageRecord != null)
-      {
-        ReadInJoyUtils.a(localMessageRecord);
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord, KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).c());
-      }
-      return;
+      localZhituManager.c();
+      ReadInJoyCommentComponentFragment.a(this.a.a, false);
+      this.a.a.f.setSelected(false);
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(ReadInJoyDeliverUGCActivity.a(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData));
+    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    ReadInJoyCommentComponentFragment.a(this.a.a);
+    if (this.a.a.jdField_a_of_type_Boolean)
+    {
+      this.a.a.g.setImageResource(2130840778);
+      ReadInJoyCommentComponentFragment.b(this.a.a, true);
     }
   }
 }

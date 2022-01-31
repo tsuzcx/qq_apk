@@ -1,32 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
 
-public class uql
-  implements Animation.AnimationListener
+public final class uql
+  implements Parcelable.Creator
 {
-  public uql(PressToSpeakPanel paramPressToSpeakPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public ForwardUtils.SectionBase a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
-    }
+    return new ForwardUtils.SectionBase(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public ForwardUtils.SectionBase[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "startRecord(),onAnimationStart is called,time is:" + System.currentTimeMillis());
-    }
+    return new ForwardUtils.SectionBase[paramInt];
   }
 }
 

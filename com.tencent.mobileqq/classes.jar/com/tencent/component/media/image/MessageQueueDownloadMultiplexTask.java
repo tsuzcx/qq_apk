@@ -7,11 +7,11 @@ import com.tencent.component.media.ImageManagerEnv;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import phh;
-import phk;
+import plz;
+import pmc;
 
 public class MessageQueueDownloadMultiplexTask
-  extends phh
+  extends plz
 {
   private static int jdField_a_of_type_Int;
   private static Handler jdField_a_of_type_AndroidOsHandler;
@@ -30,7 +30,7 @@ public class MessageQueueDownloadMultiplexTask
       localHandlerThread = new HandlerThread("ImageDownloadMultiplexThread");
       localHandlerThread.start();
     }
-    for (jdField_a_of_type_AndroidOsHandler = new phk(localHandlerThread.getLooper());; jdField_a_of_type_AndroidOsHandler = new phk(ImageManagerEnv.g().getDispatcher()))
+    for (jdField_a_of_type_AndroidOsHandler = new pmc(localHandlerThread.getLooper());; jdField_a_of_type_AndroidOsHandler = new pmc(ImageManagerEnv.g().getDispatcher()))
     {
       jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask = null;
       jdField_a_of_type_JavaLangObject = new Object();
@@ -40,9 +40,9 @@ public class MessageQueueDownloadMultiplexTask
     }
   }
   
-  private MessageQueueDownloadMultiplexTask(phh paramphh)
+  private MessageQueueDownloadMultiplexTask(plz paramplz)
   {
-    super(paramphh);
+    super(paramplz);
   }
   
   private static List b(String paramString)
@@ -82,7 +82,7 @@ public class MessageQueueDownloadMultiplexTask
     }
   }
   
-  public static MessageQueueDownloadMultiplexTask obtain(phh paramphh)
+  public static MessageQueueDownloadMultiplexTask obtain(plz paramplz)
   {
     if (needRecycle) {}
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -93,10 +93,10 @@ public class MessageQueueDownloadMultiplexTask
         jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask = jdField_a_of_type_ComTencentComponentMediaImageMessageQueueDownloadMultiplexTask.b;
         localMessageQueueDownloadMultiplexTask.b = null;
         jdField_a_of_type_Int -= 1;
-        localMessageQueueDownloadMultiplexTask.setImageTask(paramphh);
+        localMessageQueueDownloadMultiplexTask.setImageTask(paramplz);
         return localMessageQueueDownloadMultiplexTask;
       }
-      return new MessageQueueDownloadMultiplexTask(paramphh);
+      return new MessageQueueDownloadMultiplexTask(paramplz);
     }
   }
   

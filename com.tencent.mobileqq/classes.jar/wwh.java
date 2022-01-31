@@ -1,8 +1,43 @@
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class wwh
+  extends GameCenterObserver
 {
-  URLImageView a;
+  public wwh(MainAssistObserver paramMainAssistObserver) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
+      }
+    }
+    switch (paramInt)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      this.a.g();
+      this.a.i();
+      return;
+    case 1: 
+      this.a.g();
+      this.a.i();
+      return;
+    case 4: 
+      this.a.g();
+      this.a.i();
+      return;
+    }
+    this.a.g();
+    this.a.e();
+    this.a.f();
+    this.a.i();
+  }
 }
 
 

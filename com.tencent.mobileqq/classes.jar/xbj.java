@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 
 public class xbj
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xbj(RedPacketRecordFragment paramRedPacketRecordFragment) {}
+  public xbj(AlbumListAdapter paramAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
   }
 }
 

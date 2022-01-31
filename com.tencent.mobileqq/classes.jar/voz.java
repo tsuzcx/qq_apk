@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TroopFileVideoItemBuilder;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class voz
-  implements HorizontalListView.OnScrollStateChangedListener
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public voz(PhotoListPanel paramPhotoListPanel) {}
+  public RelativeLayout a;
+  public TextView a;
+  public BubbleImageView a;
+  public MessageProgressView a;
+  public RelativeLayout b;
+  public int e;
+  public int f;
   
-  public void a(int paramInt)
-  {
-    this.a.k = paramInt;
-  }
+  public voz(TroopFileVideoItemBuilder paramTroopFileVideoItemBuilder) {}
 }
 
 

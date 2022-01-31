@@ -1,22 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.ContactFriendInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class xzp
-  implements DialogInterface.OnClickListener
+class xzp
+  implements Runnable
 {
-  public xzp(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
+  xzp(xzn paramxzn, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    ((ContactFriendInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80063FA", "0X80063FA", 1, 0, "", "", "", "");
+    if (QzDynamicVideoPreviewActivity.d(this.jdField_a_of_type_Xzn.a)) {
+      QzDynamicVideoPreviewActivity.b(this.jdField_a_of_type_Xzn.a);
+    }
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      if (this.jdField_a_of_type_Int != -1)
+      {
+        QQToast.a(this.jdField_a_of_type_Xzn.a, "合成错误(" + this.jdField_a_of_type_Int + ")，请稍后重试", 0).a();
+        return;
+      }
+      break;
+    case 4: 
+    case 5: 
+      QQToast.a(this.jdField_a_of_type_Xzn.a, "存在不支持格式的素材，合成错误(" + this.jdField_a_of_type_Int + ")", 0).a();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_Xzn.a, "合成错误，请稍后重试", 0).a();
   }
 }
 

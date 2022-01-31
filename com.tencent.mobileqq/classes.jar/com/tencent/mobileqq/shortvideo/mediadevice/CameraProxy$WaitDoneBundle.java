@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import aicl;
+import aihf;
 import android.os.Message;
 
 public class CameraProxy$WaitDoneBundle
@@ -11,7 +11,7 @@ public class CameraProxy$WaitDoneBundle
   CameraProxy$WaitDoneBundle()
   {
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaLangRunnable = new aicl(this);
+    this.jdField_a_of_type_JavaLangRunnable = new aihf(this);
   }
   
   public static void a(Message paramMessage)

@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import aduj;
-import aduk;
-import adul;
+import aecs;
+import aect;
+import aecu;
+import aecv;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
@@ -14,12 +15,14 @@ import android.text.TextUtils;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.hydevteam.common.progress.ProgressFuture;
 import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.hydevteam.pluginframework.installedplugin.PluginRunningPath;
 import com.tencent.hydevteam.pluginframework.pluginmanager.MultiTargetDownloadInfo;
 import com.tencent.hydevteam.pluginframework.pluginmanager.TargetDownloadInfo;
 import com.tencent.hydevteam.pluginframework.pluginmanager.UpgradeablePluginManager;
 import com.tencent.hydevteam.pluginframework.pluginmanager.VersionCheckException;
 import com.tencent.hydevteam.pluginframework.pluginmanager.VersionChecker;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
@@ -35,11 +38,12 @@ public class HuayangPluginNewDownloader
   private static HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private adul jdField_a_of_type_Adul;
+  private aecv jdField_a_of_type_Aecv;
   private final Context jdField_a_of_type_AndroidContentContext;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aduj(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aecs(this);
   private final Handler jdField_a_of_type_AndroidOsHandler;
   private final UpgradeablePluginManager jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginmanagerUpgradeablePluginManager;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aecu(this);
   public String a;
   private volatile List jdField_a_of_type_JavaUtilList;
   private Map jdField_a_of_type_JavaUtilMap;
@@ -441,7 +445,7 @@ public class HuayangPluginNewDownloader
     if (Monitor.jdField_a_of_type_Boolean) {}
     for (String str = "huayang";; str = "group_video")
     {
-      StoryReportor.a(str, paramString1, paramInt1, paramInt2, new String[] { paramString2, paramString3, this.d + "_" + this.jdField_b_of_type_JavaLangString, "7.6.3" });
+      StoryReportor.a(str, paramString1, paramInt1, paramInt2, new String[] { paramString2, paramString3, this.d + "_" + this.jdField_b_of_type_JavaLangString, "7.6.8" });
       return;
     }
   }
@@ -501,6 +505,149 @@ public class HuayangPluginNewDownloader
     }
   }
   
+  private void b()
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginmanagerUpgradeablePluginManager.getCachedLatestPlugin(this.d);
+    if ((localObject1 != null) && (((List)localObject1).size() == 1) && (((InstalledPlugin)((List)localObject1).get(0)).pluginFileType == 0))
+    {
+      localObject1 = (InstalledPlugin)((List)localObject1).get(0);
+      this.jdField_b_of_type_Boolean = true;
+      a((InstalledPlugin)localObject1, true);
+      b((InstalledPlugin)localObject1, true);
+      if (this.jdField_b_of_type_Boolean) {
+        break label290;
+      }
+    }
+    long l;
+    label290:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      l = 0L;
+      if (!bool1) {
+        l = System.currentTimeMillis();
+      }
+      if ((TextUtils.equals(this.jdField_c_of_type_JavaLangString, "slientDownload")) || (bool1)) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(7);
+      }
+      try
+      {
+        localObject2 = a(bool1);
+        localObject1 = null;
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("HuayangPluginNewDownloader", 2, localException1, new Object[0]);
+          }
+          HuayangCrashReport.a(localException1);
+          localObject2 = null;
+        }
+      }
+      if (!"checkVersion".equals(this.jdField_c_of_type_JavaLangString)) {
+        break label326;
+      }
+      this.jdField_c_of_type_Boolean = false;
+      return;
+      if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (InstalledPlugin)((Iterator)localObject1).next();
+          if (((InstalledPlugin)localObject2).pluginPackageName.equals(this.jdField_b_of_type_JavaLangString))
+          {
+            this.jdField_b_of_type_Boolean = true;
+            a((InstalledPlugin)localObject2, true);
+            b((InstalledPlugin)localObject2, true);
+          }
+          else
+          {
+            b((InstalledPlugin)localObject2, false);
+          }
+        }
+        break;
+      }
+      if (MonitorConfig.jdField_a_of_type_JavaUtilMap.get(this.d) == null) {
+        break;
+      }
+      Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.jdField_a_of_type_JavaUtilMap.get(this.d)).g));
+      break;
+    }
+    label326:
+    if (bool1) {
+      if (localException1 == null)
+      {
+        a(100);
+        a((InstalledPlugin)localObject2, false);
+        label348:
+        if ((localObject2 == null) || (PluginRunningPath.isPreOdexFileExists(this.jdField_a_of_type_AndroidContentContext, ((InstalledPlugin)localObject2).pluginPackageName, ((InstalledPlugin)localObject2).pluginVersionForPluginLoaderManage, ((InstalledPlugin)localObject2).pluginFile.getName()))) {
+          break label607;
+        }
+        a("HuayangPluginNewDownloader", "下载下来的版本没有预加载，进行预加载...");
+        a((InstalledPlugin)localObject2);
+      }
+    }
+    for (;;)
+    {
+      List localList = this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_JavaUtilList = null;
+      this.jdField_c_of_type_Boolean = false;
+      if (localList == null) {
+        break;
+      }
+      int i = 1;
+      while (i < localList.size())
+      {
+        try
+        {
+          localObject2 = (InstalledPlugin)((ProgressFuture)localList.get(i)).get();
+          if (localObject2 == null) {}
+        }
+        catch (Exception localException2)
+        {
+          label607:
+          localObject2 = null;
+        }
+        try
+        {
+          if (!PluginRunningPath.isPreOdexFileExists(this.jdField_a_of_type_AndroidContentContext, ((InstalledPlugin)localObject2).pluginPackageName, ((InstalledPlugin)localObject2).pluginVersionForPluginLoaderManage, ((InstalledPlugin)localObject2).pluginFile.getName()))
+          {
+            boolean bool2 = TextUtils.equals(this.d, "group_video");
+            this.jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginmanagerUpgradeablePluginManager.preloadApk(this.jdField_a_of_type_AndroidContentContext, (InstalledPlugin)localObject2, bool2).get();
+          }
+          if ((localObject2 != null) && (bool1) && ((IVPluginInfo)this.jdField_a_of_type_JavaUtilMap.get(((InstalledPlugin)localObject2).pluginPackageName) != null))
+          {
+            Monitor.a("2633399");
+            b((InstalledPlugin)localObject2, false);
+          }
+          i += 1;
+        }
+        catch (Exception localException3)
+        {
+          break label634;
+        }
+      }
+      a(3, localException1.toString());
+      a(false, null, null, localException1.toString());
+      break label348;
+      a((InstalledPlugin)localObject2, localException1, (int)(System.currentTimeMillis() - l));
+      break label348;
+      if ((localObject2 != null) && (!this.jdField_b_of_type_Boolean)) {
+        b((InstalledPlugin)localObject2, true);
+      }
+    }
+    label634:
+    Monitor.a("2633400");
+    if (localObject2 == null) {}
+    for (Object localObject2 = null;; localObject2 = ((InstalledPlugin)localObject2).toString())
+    {
+      a("loadSecondPlugin", 0, 0, (String)localObject2, localException2.toString());
+      break;
+    }
+  }
+  
   private void b(InstalledPlugin paramInstalledPlugin, boolean paramBoolean)
   {
     a("HuayangPluginNewDownloader", "通知预下载完成: installedPlugin  " + paramInstalledPlugin);
@@ -526,9 +673,9 @@ public class HuayangPluginNewDownloader
     }
   }
   
-  public void a(adul paramadul)
+  public void a(aecv paramaecv)
   {
-    this.jdField_a_of_type_Adul = paramadul;
+    this.jdField_a_of_type_Aecv = paramaecv;
   }
   
   public void a(String paramString1, String paramString2, String paramString3, Map paramMap)
@@ -545,7 +692,9 @@ public class HuayangPluginNewDownloader
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.d = paramString1;
     this.jdField_a_of_type_Int = 0;
-    ThreadManager.postDownLoadTask(new aduk(this, paramString1), 8, null, false);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 40000L);
+    ThreadManager.postDownLoadTask(new aect(this), 8, null, false);
   }
 }
 

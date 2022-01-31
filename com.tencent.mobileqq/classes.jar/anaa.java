@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.WXShareFromQZHelper;
+import cooperation.qzone.QzoneGiftFullScreenActionManager;
+import cooperation.qzone.QzoneGiftFullScreenActionManager.MagicfaceCloseListener;
+import cooperation.qzone.QzoneGiftFullScreenViewController;
 
 public class anaa
-  implements Runnable
+  implements QzoneGiftFullScreenActionManager.MagicfaceCloseListener
 {
-  public anaa(WXShareFromQZHelper paramWXShareFromQZHelper) {}
+  public anaa(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController, QzoneGiftFullScreenActionManager paramQzoneGiftFullScreenActionManager) {}
   
-  public void run()
+  public void a()
   {
-    QQToast.a(BaseApplication.getContext(), 2131432726, 0).a();
+    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a();
   }
 }
 

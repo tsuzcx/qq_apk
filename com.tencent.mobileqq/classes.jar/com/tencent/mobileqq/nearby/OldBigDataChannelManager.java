@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import aeni;
+import aevt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.Manager;
@@ -11,7 +11,7 @@ public class OldBigDataChannelManager
 {
   private int jdField_a_of_type_Int;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new aeni(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new aevt(this);
   private byte[] jdField_a_of_type_ArrayOfByte;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private byte[] b;

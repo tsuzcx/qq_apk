@@ -1,20 +1,33 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import java.util.HashMap;
 
-class anye
-  implements Runnable
+public class anye
+  implements View.OnClickListener
 {
-  anye(anyd paramanyd) {}
+  public anye(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    EditTextDialog.EditTextDialogEventListener localEditTextDialogEventListener = this.a.a.a;
-    if (this.a.a.f != 0) {}
-    for (boolean bool = true;; bool = false)
+    if (paramView.getId() == 2131362500)
     {
-      localEditTextDialogEventListener.b(bool);
-      return;
+      MusicProviderView localMusicProviderView = (MusicProviderView)QIMProviderContainerView.a(this.a).get(Integer.valueOf(104));
+      if ((localMusicProviderView != null) && (!localMusicProviderView.c())) {
+        QQToast.a(BaseApplicationImpl.getContext(), "分段视频拍摄过程中不支持选择音乐", 0).a();
+      }
     }
+    do
+    {
+      return;
+      int i = ((Integer)paramView.getTag()).intValue();
+      this.a.a(i, 0, null, false);
+    } while (QIMProviderContainerView.a(this.a) == null);
+    QIMProviderContainerView.a(this.a).e();
   }
 }
 

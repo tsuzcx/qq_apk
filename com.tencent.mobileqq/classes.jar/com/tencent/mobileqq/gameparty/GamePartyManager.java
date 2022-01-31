@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.gameparty;
 
-import adon;
-import adoo;
-import adop;
-import adoq;
-import ador;
+import adwv;
+import adww;
+import adwx;
+import adwy;
+import adwz;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -81,7 +81,7 @@ public class GamePartyManager
   public GamePartyManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_AndroidOsHandler = new adon(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new adwv(this, Looper.getMainLooper());
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     this.jdField_a_of_type_Boolean = false;
     this.f = -1;
@@ -105,7 +105,7 @@ public class GamePartyManager
       try
       {
         this.jdField_a_of_type_JavaLangString = new JSONObject((String)localObject).getString("teamId");
-        a("http://openmobile.qq.com/gameteam/get_team_context?uin=" + paramQQAppInterface.getCurrentAccountUin(), new adoo(this));
+        a("http://openmobile.qq.com/gameteam/get_team_context?uin=" + paramQQAppInterface.getCurrentAccountUin(), new adww(this));
         this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyNotifyCenter = ((GamePartyNotifyCenter)a());
         ArkAppCenterCheckEvent.a("com.tencent.qqopen.teamup", this);
         return;
@@ -341,19 +341,19 @@ public class GamePartyManager
     Object localObject1;
     if (bool)
     {
-      paramGameTeam_TurnOverMessage = localQQAppInterface.getApp().getString(2131438434);
+      paramGameTeam_TurnOverMessage = localQQAppInterface.getApp().getString(2131438454);
       switch (j)
       {
       case 5: 
       default: 
         return;
       case 1: 
-        localObject1 = localQQAppInterface.getApp().getString(2131438430);
+        localObject1 = localQQAppInterface.getApp().getString(2131438450);
       }
     }
     for (;;)
     {
-      String str3 = localQQAppInterface.getApp().getString(2131438435);
+      String str3 = localQQAppInterface.getApp().getString(2131438455);
       paramGameTeam_TurnOverMessage = paramGameTeam_TurnOverMessage + (String)localObject1 + str3;
       localObject1 = (MessageForGrayTips)MessageRecordFactory.a(-2049);
       ((MessageForGrayTips)localObject1).init(localQQAppInterface.getAccount(), (String)localObject2, str1, paramGameTeam_TurnOverMessage, l, -2049, k, 0L);
@@ -381,11 +381,11 @@ public class GamePartyManager
       case 3000: 
         paramGameTeam_TurnOverMessage = ContactUtils.a(localQQAppInterface, str1, (String)localObject2, 2, 0);
         break;
-        localObject1 = localQQAppInterface.getApp().getString(2131438431);
+        localObject1 = localQQAppInterface.getApp().getString(2131438451);
         continue;
-        localObject1 = localQQAppInterface.getApp().getString(2131438432);
+        localObject1 = localQQAppInterface.getApp().getString(2131438452);
         continue;
-        localObject1 = localQQAppInterface.getApp().getString(2131438433);
+        localObject1 = localQQAppInterface.getApp().getString(2131438453);
       }
     }
   }
@@ -530,7 +530,7 @@ public class GamePartyManager
   
   public void a(String paramString, GamePartyManager.AsyncRequestCallback paramAsyncRequestCallback)
   {
-    ThreadManager.post(new ador(this, paramString, paramAsyncRequestCallback), 5, null, false);
+    ThreadManager.post(new adwz(this, paramString, paramAsyncRequestCallback), 5, null, false);
   }
   
   protected void a(SubMsgType0xaa.GameTeam_StartGameMessage paramGameTeam_StartGameMessage, boolean paramBoolean)
@@ -580,7 +580,7 @@ public class GamePartyManager
           localUnsupportedEncodingException.printStackTrace();
         }
       }
-      a("http://openmobile.qq.com/gameteam/get_team_info?uin=" + localQQAppInterface.getCurrentAccountUin() + "&team_list=" + (String)localObject, new adop(this, l1, paramGameTeam_StartGameMessage, l2, paramBoolean));
+      a("http://openmobile.qq.com/gameteam/get_team_info?uin=" + localQQAppInterface.getCurrentAccountUin() + "&team_list=" + (String)localObject, new adwx(this, l1, paramGameTeam_StartGameMessage, l2, paramBoolean));
       return;
       if (!QLog.isColorLevel()) {
         break;
@@ -667,7 +667,7 @@ public class GamePartyManager
         ((JSONObject)localObject).put("member_count", j);
         label242:
         localObject = ((JSONObject)localObject).toString();
-        ArkAppCenter.a().post(new adoq(this, (String)localObject));
+        ArkAppCenter.a().post(new adwy(this, (String)localObject));
         localObject = new Intent();
         ((Intent)localObject).setAction("android.intent.action.gameparty.notify");
         ((Intent)localObject).putExtra("uin", localQQAppInterface.getCurrentAccountUin());

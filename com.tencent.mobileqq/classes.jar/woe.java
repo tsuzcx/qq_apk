@@ -1,33 +1,32 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class woe
+  extends Handler
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  public woe(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public woe(PublicAccountInfo paramPublicAccountInfo)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    if (SearchBaseFragment.a(this.a) != null) {
+      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
     }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.a();
+      return;
+    case 1: 
+      this.a.a((String)paramMessage.obj);
+      return;
+    case 2: 
+      this.a.g();
+      return;
     }
-    this.b = str;
+    this.a.c();
   }
 }
 

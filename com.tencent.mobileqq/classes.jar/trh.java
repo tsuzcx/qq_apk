@@ -1,22 +1,26 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SecurityPickproofActivity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.qphone.base.util.QLog;
 
 public class trh
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public trh(SecurityPickproofActivity paramSecurityPickproofActivity) {}
+  public trh(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SecurityPickproofActivity.a(this.a, false);
-    FMToastUtil.a(2131434613);
-    SecurityPickproofActivity.a(this.a).setText(SecurityPickproofActivity.a(this.a));
-    SecurityPickproofActivity.b(this.a).setVisibility(0);
-    SecurityPickproofActivity.a(this.a).setVisibility(0);
-    SecurityPickproofActivity.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
+    }
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
+      }
+      this.a.z();
+    }
   }
 }
 

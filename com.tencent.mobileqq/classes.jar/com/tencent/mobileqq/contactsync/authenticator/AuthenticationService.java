@@ -3,7 +3,6 @@ package com.tencent.mobileqq.contactsync.authenticator;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import mqq.app.MobileQQ;
 
 public class AuthenticationService
   extends Service
@@ -18,10 +17,6 @@ public class AuthenticationService
   public void onCreate()
   {
     super.onCreate();
-    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
-    Intent localIntent = new Intent();
-    localIntent.putExtra("k_start_mode", 2);
-    localMobileQQ.onActivityCreate(this, localIntent);
     this.a = new Authenticator(this);
   }
   

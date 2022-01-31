@@ -1,16 +1,14 @@
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import java.io.File;
-
-class mum
-  implements Runnable
+public class mum
 {
-  mum(mul parammul, File paramFile) {}
+  public String a;
+  public mum a;
+  public boolean a;
+  public String b;
   
-  public void run()
+  public mum(String paramString, mum parammum)
   {
-    GalleryShareHelper.a(this.jdField_a_of_type_Mul.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).dismiss();
-    this.jdField_a_of_type_Mul.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper.a(this.jdField_a_of_type_Mul.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Mum = parammum;
   }
 }
 

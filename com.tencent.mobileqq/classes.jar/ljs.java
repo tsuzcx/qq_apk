@@ -1,18 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager.VideoDownloadCallback;
 
 public class ljs
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ReadInJoyVideoDownloadManager.VideoDownloadCallback
 {
-  public ljs(ReadInJoyCommentTopGestureLayout paramReadInJoyCommentTopGestureLayout, ViewGroup.LayoutParams paramLayoutParams) {}
+  public ljs(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    ReadInJoyCommentTopGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentTopGestureLayout).setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    ReadInJoyCameraCaptureActivity.a(this.a).post(new lju(this, paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    ReadInJoyCameraCaptureActivity.a(this.a).post(new ljt(this, paramBoolean, paramString2));
   }
 }
 

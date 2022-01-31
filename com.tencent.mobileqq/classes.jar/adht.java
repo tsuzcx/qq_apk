@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
 
-public final class adht
-  implements FMDialogUtil.FMDialogInterface
+class adht
+  implements Runnable
 {
-  public adht(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
+  adht(adhs paramadhs, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    FileManagerUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      UniformDownloadUtil.a(this.jdField_a_of_type_Adhs.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    UniformDownloadUtil.b(this.jdField_a_of_type_Adhs.jdField_a_of_type_JavaLangString);
   }
-  
-  public void b() {}
 }
 
 

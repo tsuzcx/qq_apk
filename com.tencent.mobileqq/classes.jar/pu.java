@@ -15,7 +15,7 @@ public class pu
     if (this.a.getTag(2131362292) != null) {}
     for (boolean bool = ((Boolean)this.a.getTag(2131362292)).booleanValue();; bool = false)
     {
-      if ((this.a.j) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnSingleClick != null) && (!bool))
+      if ((this.a.i) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnSingleClick != null) && (!bool))
       {
         if (this.a.c())
         {

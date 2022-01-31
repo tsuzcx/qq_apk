@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.Context;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.vas.ColorRingPlayer;
 
-class akow
-  implements Runnable
+public class akow
+  extends QQCustomDialog
 {
-  akow(akou paramakou) {}
-  
-  public void run()
+  public akow(ColorRingPlayer paramColorRingPlayer, Context paramContext, int paramInt)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
-      this.a.a.a.dismiss();
-    }
+    super(paramContext, paramInt);
+  }
+  
+  public void onBackPressed()
+  {
+    super.onBackPressed();
   }
 }
 

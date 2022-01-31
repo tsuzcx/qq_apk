@@ -15,7 +15,7 @@ import com.tribe.async.async.Bosses;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import mzy;
+import ndt;
 
 public class AsyncFileDownloader
 {
@@ -117,7 +117,7 @@ public class AsyncFileDownloader
         }
         return false;
       }
-      Bosses.get().postJob(new mzy(this, paramDownloadTask));
+      Bosses.get().postJob(new ndt(this, paramDownloadTask));
       return true;
     }
   }

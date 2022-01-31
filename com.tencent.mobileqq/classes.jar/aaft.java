@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
+import com.tencent.mobileqq.arcard.ARcardSound;
 
 public class aaft
   implements Runnable
 {
-  public aaft(AREngine paramAREngine, ARCloudRecogResult paramARCloudRecogResult) {}
+  public aaft(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
   public void run()
   {
-    QLog.i("AREngine_AREngine", 1, "processCloudRecogResult start.");
-    this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a(null, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult);
+    if ((ARWorldCupGlobalSceneRenderable.a(this.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a) == 6)) {
+      ARWorldCupGlobalSceneRenderable.a(this.a).a(ARWorldCupGlobalSceneRenderable.a(this.a).a() + "/res/worldcup/doorOpen.mp3", false);
+    }
   }
 }
 

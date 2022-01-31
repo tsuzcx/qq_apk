@@ -1,15 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
-public class aczw
+class aczw
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public Bundle a;
-  public String a;
-  public boolean a;
+  aczw(aczv paramaczv) {}
   
-  public aczw(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public void run()
+  {
+    if (this.a.a.b != null)
+    {
+      Iterator localIterator = this.a.a.b.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (((List)this.a.a.b.get(str)).size() == 0) {
+          localIterator.remove();
+        }
+      }
+    }
+    this.a.a.a.putAll(this.a.a.b);
+    this.a.a.i();
+    this.a.a.setSelect(0);
+    this.a.a.b.clear();
+    this.a.a.a(true);
+  }
 }
 
 

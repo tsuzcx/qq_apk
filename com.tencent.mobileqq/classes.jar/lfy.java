@@ -1,16 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 
-class lfy
+public class lfy
   implements Runnable
 {
-  lfy(lfx paramlfx, ArkAppInfo.AppDesc paramAppDesc) {}
+  public lfy(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
   
   public void run()
   {
-    ReadInJoyHelper.c(ReadInJoyUtils.a(), this.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDesc.a);
-    ReadInJoyHelper.d(ReadInJoyUtils.a(), this.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDesc.b);
+    if (this.jdField_a_of_type_Int <= 0)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(2131433311);
+      return;
+    }
+    if (this.jdField_a_of_type_Int > 99)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getString(2131433311), Integer.valueOf(99) }));
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getString(2131433311), Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
 }
 

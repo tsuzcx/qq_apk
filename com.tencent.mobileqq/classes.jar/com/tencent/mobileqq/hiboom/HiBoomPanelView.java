@@ -1,116 +1,127 @@
 package com.tencent.mobileqq.hiboom;
 
-import adpe;
-import adpf;
+import adxp;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.flashchat.FlashChatItem;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
-import com.tencent.mobileqq.flashchat.OnHolderItemClickListener;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.app.SVIPObserver;
+import com.tencent.mobileqq.vas.VasH5PayUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class HiBoomPanelView
-  extends FlashChatTextEffectView
-  implements Handler.Callback
+  extends RelativeLayout
+  implements Handler.Callback, View.OnClickListener
 {
+  public static int a;
+  public static int b;
+  public static int c;
   public Handler a;
+  GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
+  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
+  private SVIPObserver jdField_a_of_type_ComTencentMobileqqAppSVIPObserver = new adxp(this);
   public HiBoomPanelView.HiBoomAdapter a;
-  private VasQuickUpdateManager.CallBacker a;
-  int jdField_b_of_type_Int;
-  StaggeredGridLayoutManager jdField_b_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager;
-  BaseChatPie jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie = null;
-  OnHolderItemClickListener jdField_b_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
   
-  public HiBoomPanelView(Context arg1, BaseChatPie paramBaseChatPie, OnHolderItemClickListener paramOnHolderItemClickListener, int paramInt)
+  static
+  {
+    Resources localResources = BaseApplicationImpl.sApplication.getResources();
+    b = localResources.getDisplayMetrics().widthPixels / 3;
+    jdField_a_of_type_Int = b;
+    c = AIOUtils.a(2.0F, localResources);
+  }
+  
+  public HiBoomPanelView(Context arg1, BaseChatPie paramBaseChatPie)
   {
     super(???);
     this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter = null;
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new adpf(this);
-    this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    paramBaseChatPie = (HiBoomManager)this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218);
+    paramBaseChatPie = (HiBoomManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218);
     synchronized (paramBaseChatPie.jdField_a_of_type_JavaLangObject)
     {
       paramBaseChatPie.jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
-      ((VasQuickUpdateManager)this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(183)).a(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-      this.jdField_b_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
-      this.jdField_b_of_type_Int = paramInt;
       setClipToPadding(false);
+      c();
       a();
       b();
       return;
     }
   }
   
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.a == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.a.size();
-  }
-  
-  public FlashChatItem a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.a == null) {
-      return null;
-    }
-    return (HiBoomItem)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.a.get(paramInt);
-  }
-  
-  @TargetApi(9)
   public void a()
   {
-    setOverScrollMode(2);
-    this.jdField_b_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager = new StaggeredGridLayoutManager(3, 1);
-    setLayoutManager(this.jdField_b_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter = new HiBoomPanelView.HiBoomAdapter(this, this.jdField_b_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener);
-    setAdapter(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter);
-  }
-  
-  public void a(int paramInt)
-  {
-    HiBoomManager localHiBoomManager = (HiBoomManager)this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218);
-    if (paramInt == -1)
-    {
-      localHiBoomManager.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.notifyDataSetChanged();
-      return;
+    HiBoomManager localHiBoomManager = (HiBoomManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218);
+    if (!localHiBoomManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      localHiBoomManager.a(true, false);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.a != null)
+    for (;;)
     {
-      localHiBoomManager.jdField_a_of_type_Int = ((HiBoomItem)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.a.get(paramInt)).jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.notifyDataSetChanged();
+      if (localHiBoomManager.a()) {
+        localHiBoomManager.a(localHiBoomManager.c);
+      }
       return;
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.a(localHiBoomManager.jdField_a_of_type_JavaUtilVector);
+      if (QLog.isColorLevel()) {
+        QLog.d("HiBoomFont.HiBoomPanelView", 2, "loadData setList size = " + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.a.size());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.notifyDataSetChanged();
     }
-    QLog.e("HiBoomFont.HiBoomPanelView", 1, "select position = " + paramInt + " no item");
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.HiBoomPanelView", 2, "loadData");
-    }
-    HiBoomManager localHiBoomManager = (HiBoomManager)this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218);
-    if (!localHiBoomManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    switch (((HiBoomManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218)).a())
     {
-      ThreadManager.post(new adpe(this, localHiBoomManager), 8, null, true);
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      return;
+    case 1: 
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("开通超级会员解锁嗨爆字体");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.a(localHiBoomManager.b);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter.notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("续费超级会员解锁嗨爆字体");
+  }
+  
+  @TargetApi(9)
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2130969027, this, false));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364805));
+    addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(getContext());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
+    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(getContext(), 3);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    localLayoutParams.addRule(3, 2131364803);
+    addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, localLayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter = new HiBoomPanelView.HiBoomAdapter(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView$HiBoomAdapter);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -121,13 +132,24 @@ public class HiBoomPanelView
     for (;;)
     {
       return false;
-      b();
+      a();
     }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    VasH5PayUtil.a(getContext(), "mvip.g.a.zt_high", "CJCLUBT", 3, false, true);
+    ((HiBoomManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218)).b.set(false);
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
-    paramView = (HiBoomManager)this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218);
+    paramView = (HiBoomManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(218);
     if (paramInt == 0)
     {
       if (QLog.isColorLevel()) {
@@ -136,8 +158,9 @@ public class HiBoomPanelView
       synchronized (paramView.jdField_a_of_type_JavaLangObject)
       {
         paramView.jdField_a_of_type_AndroidOsHandler = this.jdField_a_of_type_AndroidOsHandler;
-        ((VasQuickUpdateManager)this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(183)).a(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-        b();
+        a();
+        paramView.a(paramView.b);
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
         return;
       }
     }
@@ -147,7 +170,7 @@ public class HiBoomPanelView
     synchronized (paramView.jdField_a_of_type_JavaLangObject)
     {
       paramView.jdField_a_of_type_AndroidOsHandler = null;
-      ((VasQuickUpdateManager)this.jdField_b_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(183)).b(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSVIPObserver);
       return;
     }
   }

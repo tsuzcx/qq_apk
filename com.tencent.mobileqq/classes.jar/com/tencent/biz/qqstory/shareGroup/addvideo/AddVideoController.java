@@ -11,7 +11,7 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.ActionSheet;
-import nrk;
+import nwa;
 
 public class AddVideoController
 {
@@ -38,9 +38,9 @@ public class AddVideoController
     }
     ActionSheet localActionSheet = ActionSheet.a(paramContext);
     localActionSheet.a("拍摄", 5);
-    localActionSheet.a("从已发表的日迹选择", 5);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new nrk(this, localActionSheet, paramContext, paramInt1, paramString1, paramString2, paramLong, paramInt2, paramInt3));
+    localActionSheet.a("从已发表的小视频选择", 5);
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new nwa(this, localActionSheet, paramContext, paramInt1, paramString1, paramString2, paramLong, paramInt2, paramInt3));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
     }

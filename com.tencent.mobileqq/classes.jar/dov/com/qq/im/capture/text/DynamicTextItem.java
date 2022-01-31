@@ -13,9 +13,9 @@ import android.support.annotation.Nullable;
 import android.text.StaticLayout;
 import android.view.MotionEvent;
 import android.view.View;
-import annv;
-import annw;
-import annx;
+import anwi;
+import anwj;
+import anwk;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper;
@@ -158,43 +158,43 @@ public abstract class DynamicTextItem
   }
   
   @NonNull
-  protected final String a(int paramInt, @Nullable annx paramannx)
+  protected final String a(int paramInt, @Nullable anwk paramanwk)
   {
     paramInt = a(paramInt);
     String str2 = a(paramInt);
     String str1 = str2;
-    if (paramannx != null) {
-      str1 = paramannx.a(paramInt, str2);
+    if (paramanwk != null) {
+      str1 = paramanwk.a(paramInt, str2);
     }
-    paramannx = str1;
+    paramanwk = str1;
     int i;
     if (this.jdField_a_of_type_Int != 0)
     {
-      paramannx = str1;
+      paramanwk = str1;
       if (str1.length() > 20)
       {
-        paramannx = new StringBuilder();
+        paramanwk = new StringBuilder();
         paramInt = 0;
         i = 0;
         if ((paramInt < str1.length()) && (i < 20)) {
           break label126;
         }
-        paramannx = paramannx.toString();
-        if (paramannx.isEmpty()) {
-          return paramannx;
+        paramanwk = paramanwk.toString();
+        if (paramanwk.isEmpty()) {
+          return paramanwk;
         }
-        if (!Character.isHighSurrogate(paramannx.charAt(paramannx.length() - 1))) {
+        if (!Character.isHighSurrogate(paramanwk.charAt(paramanwk.length() - 1))) {
           break label180;
         }
       }
     }
     label180:
-    for (paramInt = paramannx.length() - 1;; paramInt = paramannx.length())
+    for (paramInt = paramanwk.length() - 1;; paramInt = paramanwk.length())
     {
-      paramannx = paramannx.substring(0, paramInt);
-      return paramannx;
+      paramanwk = paramanwk.substring(0, paramInt);
+      return paramanwk;
       label126:
-      paramannx.append(str1.charAt(paramInt));
+      paramanwk.append(str1.charAt(paramInt));
       int j = i;
       if (str1.charAt(paramInt) != '\n')
       {
@@ -207,7 +207,7 @@ public abstract class DynamicTextItem
       i = j;
       break;
     }
-    return paramannx;
+    return paramanwk;
   }
   
   public String a(int paramInt, String paramString)
@@ -290,12 +290,12 @@ public abstract class DynamicTextItem
       paramInt1 = i;
       while (paramInt1 < paramInt2 - paramInt3)
       {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new annv(this, paramView), paramInt1);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new anwi(this, paramView), paramInt1);
         paramInt1 += paramInt3;
       }
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new annw(this, paramBoolean, paramView, paramRunnable), paramInt1);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new anwj(this, paramBoolean, paramView, paramRunnable), paramInt1);
   }
   
   public void a(int paramInt, String paramString)

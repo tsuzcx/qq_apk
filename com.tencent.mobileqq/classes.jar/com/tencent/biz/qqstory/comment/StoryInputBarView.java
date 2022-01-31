@@ -35,12 +35,12 @@ import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XEditTextEx;
 import java.util.List;
-import ncg;
-import nch;
-import nci;
-import ncj;
-import nck;
-import ncl;
+import ngb;
+import ngc;
+import ngd;
+import nge;
+import ngf;
+import ngg;
 
 public class StoryInputBarView
   extends RelativeLayout
@@ -60,7 +60,7 @@ public class StoryInputBarView
   public CommentLikeFeedItem a;
   private FeedSegment.InputViewHideListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment$InputViewHideListener;
   public BubbleTextView a;
-  EmoticonCallback jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback = new ncl(this);
+  EmoticonCallback jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback = new ngg(this);
   protected SystemEmoticonPanel a;
   public XEditTextEx a;
   public boolean a;
@@ -119,7 +119,7 @@ public class StoryInputBarView
           {
             localLayoutParams.leftMargin = UIUtils.a(paramContext, 12.0F);
             paramList.addView(localBubbleTextView, localLayoutParams);
-            localBubbleTextView.setOnClickListener(new ncj(paramEditText));
+            localBubbleTextView.setOnClickListener(new nge(paramEditText));
             localStoryConfigManager.b("has_show_at_video_intro", Boolean.valueOf(true));
             StoryReportor.a("home_page", "guide_at", 0, 0, new String[0]);
             return localBubbleTextView;
@@ -182,18 +182,18 @@ public class StoryInputBarView
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970722, this, true);
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131371668));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364497));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970738, this, true);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131371666));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364521));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = TroopBarPublishUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364504);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131371669));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131364528);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131371667));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363499));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363518));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new ncg(this));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnTouchListener(new nch(this));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnFocusChangeListener(new nci(this));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new ngb(this));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnTouchListener(new ngc(this));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnFocusChangeListener(new ngd(this));
   }
   
   public void a(FeedCommentLego paramFeedCommentLego, CommentEntry paramCommentEntry)
@@ -287,7 +287,7 @@ public class StoryInputBarView
           return;
         }
         setKeyBoardState(false);
-        new Handler().postDelayed(new nck(this), 200L);
+        new Handler().postDelayed(new ngf(this), 200L);
         return;
         paramView = this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
       } while (paramView.length() <= 0);

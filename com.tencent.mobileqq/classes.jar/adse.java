@@ -1,39 +1,62 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.hotpic.RecyclerFooterWrapperAdapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.flashchat.FlashChatItem;
+import com.tencent.mobileqq.flashchat.FlashChatPanel.PluginData;
+import com.tencent.mobileqq.flashchat.OnHolderItemClickListener;
 
 public class adse
-  extends RecyclerView.AdapterDataObserver
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public adse(RecyclerFooterWrapperAdapter paramRecyclerFooterWrapperAdapter) {}
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public TextView a;
+  public FlashChatItem a;
+  public FlashChatPanel.PluginData a;
+  OnHolderItemClickListener jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
+  public int b;
+  public ImageView b;
+  int c;
+  public ImageView c;
+  public ImageView d;
   
-  public void onChanged()
+  public adse(View paramView, OnHolderItemClickListener paramOnHolderItemClickListener, int paramInt)
   {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
+    super(paramView);
+    if (paramOnHolderItemClickListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
+    }
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363725));
+    this.b = ((ImageView)paramView.findViewById(2131363724));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362966));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362750));
+    this.d = ((ImageView)paramView.findViewById(2131370115));
+    this.itemView.setOnClickListener(this);
+    this.itemView.setOnLongClickListener(this);
+    this.itemView.setOnTouchListener(paramOnHolderItemClickListener);
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    super.onItemRangeChanged(paramInt1, paramInt2);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener.a(paramView, getPosition(), this.jdField_c_of_type_Int);
+    }
   }
   
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  public boolean onLongClick(View paramView)
   {
-    super.onItemRangeInserted(paramInt1, paramInt2);
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeRemoved(paramInt1, paramInt2);
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+    boolean bool = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener.b(paramView, getPosition(), this.jdField_c_of_type_Int);
+      bool = true;
+    }
+    return bool;
   }
 }
 

@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.app.HotChatObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 
 public class zqx
-  extends HotChatObserver
+  implements Runnable
 {
-  private zqx(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
+  public zqx(PublicAccountHandler paramPublicAccountHandler, long paramLong, boolean paramBoolean) {}
   
-  protected void a(int paramInt)
+  public void run()
   {
-    if (GetJoinedHotChatListStep.a(this.a) != null)
-    {
-      GetJoinedHotChatListStep.a(this.a).b.removeObserver(GetJoinedHotChatListStep.a(this.a));
-      GetJoinedHotChatListStep.a(this.a, null);
-    }
-    if (paramInt == 0)
-    {
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.scribble.ScribbleMsgUtils;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class uxa
-  implements FMDialogUtil.FMDialogInterface
+class uxa
+  implements Runnable
 {
-  public uxa(FilePicItemBuilder paramFilePicItemBuilder, FileManagerEntity paramFileManagerEntity) {}
+  uxa(uwz paramuwz, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    this.jdField_a_of_type_Uwz.a.d();
+    if (this.jdField_a_of_type_Int == ScribbleMsgUtils.d)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      this.jdField_a_of_type_Uwz.a.c();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    QQToast.a(this.jdField_a_of_type_Uwz.a.getContext(), 2131439095, 0).b(DoodlePanel.a(this.jdField_a_of_type_Uwz.a).a());
   }
-  
-  public void b() {}
 }
 
 

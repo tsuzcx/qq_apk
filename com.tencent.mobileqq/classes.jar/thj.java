@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class thj
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
-  public thj(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public thj(NotificationActivity paramNotificationActivity) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.e();
-    }
+    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     thj
  * JD-Core Version:    0.7.0.1
  */

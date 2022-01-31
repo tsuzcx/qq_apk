@@ -1,26 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.provider.QZConfigProviderUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import common.config.service.QzoneConfig;
 
-public class ampy
-  implements DialogInterface.OnDismissListener
+class ampy
+  implements Runnable
 {
-  public ampy(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
+  ampy(ampx paramampx, boolean paramBoolean) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (this.a.a) {
-      QQIndividualityBridgeActivity.b(this.a);
-    }
+    String str = QZConfigProviderUtil.b();
     if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
+      QLog.d("QzoneConfig", 2, "QZoneConfigService onChange from:" + str + " ,processName:" + BaseApplicationImpl.processName + " ,selfChange:" + this.jdField_a_of_type_Boolean);
     }
+    if ((str != null) && (!str.equals(BaseApplicationImpl.processName)))
+    {
+      QzoneConfig.getInstance().clearConfigs();
+      QzoneConfig.getInstance().loadAllConfigs();
+    }
+    QzoneConfig.access$000(this.jdField_a_of_type_Ampx.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ampy
  * JD-Core Version:    0.7.0.1
  */

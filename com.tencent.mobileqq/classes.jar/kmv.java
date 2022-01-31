@@ -1,72 +1,80 @@
-import OnlinePushPack.SvcRespPushMsg;
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.biz.game.MSFToWebViewConnector;
-import com.tencent.biz.game.MSFToWebViewConnector.IOnMsgReceiveListener;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.compatible.TempServlet;
-import com.tencent.mobileqq.service.MobileQQService;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.addContactTroopView.TroopCardPopClassfic;
+import com.tencent.biz.addContactTroopView.TroopCardPopClassfic.ViewHolder;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.util.DisplayUtil;
+import tencent.im.troop_search_popclassifc.popclassifc.PopCard;
+import tencent.im.troop_search_popclassifc.popclassifc.PopItem;
 
 public class kmv
-  implements MSFToWebViewConnector.IOnMsgReceiveListener
+  extends BaseAdapter
 {
-  public kmv(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  public kmv(TroopCardPopClassfic paramTroopCardPopClassfic) {}
   
-  public void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg)
+  private void a(TroopCardPopClassfic.ViewHolder paramViewHolder, popclassifc.PopItem paramPopItem)
   {
-    if (this.a.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      AppInterface localAppInterface = this.a.mRuntime.a();
-      if (localAppInterface != null)
-      {
-        ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", localAppInterface.getAccount(), "OnlinePush.RespPush");
-        localToServiceMsg.setNeedCallback(false);
-        UniPacket localUniPacket = new UniPacket(true);
-        localUniPacket.setEncodeName("utf-8");
-        int i = MobileQQService.a;
-        MobileQQService.a = i + 1;
-        localUniPacket.setRequestId(i);
-        localUniPacket.setServantName("OnlinePush");
-        localUniPacket.setFuncName("SvcRespPushMsg");
-        localUniPacket.setRequestId(paramInt);
-        localUniPacket.put("resp", paramSvcRespPushMsg);
-        localToServiceMsg.putWupBuffer(localUniPacket.encode());
-        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), TempServlet.class);
-        paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
-        localAppInterface.startServlet(paramSvcRespPushMsg);
-        if (QLog.isColorLevel()) {
-          QLog.d("SensorApi", 2, "reply push");
-        }
-      }
+    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramPopItem.str_desc.get());
+    int i = DisplayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), 48.0F);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, i);
+    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    paramPopItem = URLDrawable.getDrawable(paramPopItem.str_icon_url.get(), null);
+    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramPopItem);
+    if ((paramPopItem != null) && (1 != paramPopItem.getStatus())) {
+      paramPopItem.restartDownload();
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public int getCount()
   {
-    String str = SensorAPIJavaScript.jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector.a(String.valueOf(paramInt));
-    if (!TextUtils.isEmpty(str))
+    if (this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard != null) {
+      return ((popclassifc.PopCard)this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard.get()).rpt_pop_items.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    popclassifc.PopItem localPopItem = (popclassifc.PopItem)((popclassifc.PopCard)this.a.jdField_a_of_type_TencentImTroop_search_popclassifcPopclassifc$PopCard.get()).rpt_pop_items.get(paramInt);
+    View localView;
+    if (paramView == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SensorApi", 2, "send data to appId=" + paramInt);
-      }
-      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
-        this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new kmw(this, str, paramString));
+      paramView = new TroopCardPopClassfic.ViewHolder();
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2130969415, paramViewGroup, false);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366428));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366427));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      a(paramViewGroup, localPopItem);
+      localView.setOnClickListener(this.a);
+      return localView;
+      paramViewGroup = (TroopCardPopClassfic.ViewHolder)paramView.getTag();
+      localView = paramView;
     }
-    QLog.d("SensorApi", 2, "appId=" + paramInt + "'s callback is empty");
   }
 }
 

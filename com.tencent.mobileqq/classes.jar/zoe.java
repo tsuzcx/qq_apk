@@ -1,27 +1,43 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.app.MessageRoamConstants;
+import com.tencent.mobileqq.app.MessageRoamManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class zoe
-  extends ProtoUtils.TroopProtocolObserver
+  extends DownloadListener
 {
-  public zoe(TroopHandler paramTroopHandler, String paramString1, String paramString2) {}
+  public zoe(MessageRoamManager paramMessageRoamManager) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(6, true, new Object[] { Integer.valueOf(8), Integer.valueOf(0), this.jdField_a_of_type_JavaLangString });
-      paramArrayOfByte = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b.getManager(51)).b(this.jdField_a_of_type_JavaLangString);
-      if ((paramArrayOfByte != null) && (!paramArrayOfByte.hasSetTroopHead())) {
-        this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b(Long.parseLong(this.b));
-      }
-      return;
+    super.onDone(paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + paramDownloadTask.e + ", url: " + paramDownloadTask.a);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(6, false, new Object[] { Integer.valueOf(8), Integer.valueOf(paramInt) });
+    int i = paramDownloadTask.a.indexOf("?");
+    String str;
+    if (i == -1)
+    {
+      str = paramDownloadTask.a;
+      if (!MessageRoamConstants.a.contains(str)) {
+        break label105;
+      }
+      this.a.a(paramDownloadTask);
+    }
+    label105:
+    do
+    {
+      return;
+      str = paramDownloadTask.a.substring(0, i - 1);
+      break;
+      if ("http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
+      {
+        this.a.b(paramDownloadTask);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + paramDownloadTask.a);
   }
 }
 

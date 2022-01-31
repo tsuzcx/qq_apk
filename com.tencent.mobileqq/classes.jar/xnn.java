@@ -1,14 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.content.res.Resources;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
+import java.lang.ref.WeakReference;
 
-public class xnn
+class xnn
   implements Runnable
 {
-  public xnn(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  xnn(xnm paramxnm) {}
   
   public void run()
   {
-    EditLocalVideoActivity.a(this.a).setVisibility(8);
+    RedDotImageView localRedDotImageView = (RedDotImageView)this.a.b.get();
+    if (localRedDotImageView != null)
+    {
+      localRedDotImageView.setReddotXOffsetDp(15);
+      localRedDotImageView.setRedDotDrawable(localRedDotImageView.getResources().getDrawable(2130846134));
+      localRedDotImageView.a(true);
+    }
   }
 }
 

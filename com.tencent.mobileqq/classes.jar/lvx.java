@@ -1,23 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
+import java.util.Map;
 
 public class lvx
-  implements PublicAccountImageDownListener
+  implements FeedItemCell.CellListener
 {
-  public lvx(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  public lvx(ProteusItemView paramProteusItemView, ReadInJoyBaseAdapter.OnLastReadRefreshListener paramOnLastReadRefreshListener) {}
   
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
+  public void a(View paramView, Map paramMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
-    }
-    ComponentHeaderTopicRecommend.a(this.a, paramCloseableBitmap.a());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$OnLastReadRefreshListener.a();
   }
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
 }
 
 

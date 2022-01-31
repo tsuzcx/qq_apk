@@ -39,11 +39,11 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import xsr;
-import xss;
-import xst;
-import xsu;
-import xsv;
+import xyy;
+import xyz;
+import xza;
+import xzb;
+import xzc;
 
 public class NewPreFlowCamera
   extends BaseActivity
@@ -69,7 +69,7 @@ public class NewPreFlowCamera
   private void a(String paramString)
   {
     e();
-    ThreadManager.getUIHandler().post(new xsr(this, paramString));
+    ThreadManager.getUIHandler().post(new xyy(this, paramString));
   }
   
   private boolean a()
@@ -79,7 +79,7 @@ public class NewPreFlowCamera
   
   private void b(String paramString)
   {
-    ThreadManager.getUIHandler().post(new xss(this, paramString));
+    ThreadManager.getUIHandler().post(new xyz(this, paramString));
   }
   
   private void d()
@@ -204,7 +204,7 @@ public class NewPreFlowCamera
   
   public void a(int paramInt)
   {
-    ThreadManager.getUIHandler().post(new xsv(this, paramInt));
+    ThreadManager.getUIHandler().post(new xzc(this, paramInt));
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -318,7 +318,7 @@ public class NewPreFlowCamera
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new xsu(this, paramBoolean1, paramInt));
+    ThreadManager.getUIHandler().post(new xzb(this, paramBoolean1, paramInt));
   }
   
   public void c()
@@ -331,7 +331,7 @@ public class NewPreFlowCamera
     }
     if (!bool)
     {
-      ThreadManager.getUIHandler().post(new xst(this));
+      ThreadManager.getUIHandler().post(new xza(this));
       return;
     }
     this.jdField_d_of_type_Int = 101;
@@ -370,15 +370,15 @@ public class NewPreFlowCamera
     this.jdField_c_of_type_Boolean = getIntent().getBooleanExtra("flow_key_from_guide", false);
     this.e = getIntent().getIntExtra("edit_video_type", 10000);
     this.f = getIntent().getIntExtra("entrance_type", 99);
-    setContentView(2130970348);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362840));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370151));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131369008));
+    setContentView(2130970363);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362845));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370160));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131369010));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492969), 100, getResources().getColor(2131493308));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(6.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369521));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369530));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (!VideoEnvironment.c(this.app))
     {

@@ -11,7 +11,7 @@ import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
-import mbs;
+import mff;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -48,7 +48,7 @@ public class VideoFeedsAppJumpManager
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayActivity = paramVideoFeedsPlayActivity;
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367372));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367377));
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.h = paramBoolean;
@@ -90,7 +90,7 @@ public class VideoFeedsAppJumpManager
     for (String str = "打开看看";; str = "下载微视")
     {
       localTextView.setText(str);
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new mbs(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new mff(this));
       return;
       PublicAccountReportUtils.a(null, null, "0X8009033", "0X8009033", 0, 0, String.valueOf(j), "", "", VideoReporter.a(null, null, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g, null), false);
       break;
@@ -102,8 +102,8 @@ public class VideoFeedsAppJumpManager
     Object localObject;
     if (!this.e)
     {
-      this.jdField_b_of_type_JavaLangString = ReadInJoyHelper.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localObject = ReadInJoyHelper.k(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_b_of_type_JavaLangString = ReadInJoyHelper.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject = ReadInJoyHelper.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       boolean bool = ReadInJoyHelper.n(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "checkIsNeedShowAd() 后台下发原始配置：" + this.jdField_b_of_type_JavaLangString + "\n本地副本配置：" + (String)localObject + "\n本地副本配置是否为当天：" + bool);
@@ -166,7 +166,7 @@ public class VideoFeedsAppJumpManager
         QLog.d(jdField_a_of_type_JavaLangString, 2, "checkIsNeedShowAd() 初始剩余次数 mDisplayCountEachEntrance = " + this.jdField_b_of_type_Int + ", mDisplayCountEachDay = " + this.jdField_c_of_type_Int);
       }
       if ((this.jdField_c_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0)) {
-        break label533;
+        break label532;
       }
       this.jdField_c_of_type_Int -= 1;
       this.jdField_b_of_type_Int -= 1;
@@ -178,7 +178,7 @@ public class VideoFeedsAppJumpManager
       continue;
       j += 1;
     }
-    label533:
+    label532:
     return false;
   }
   
@@ -216,7 +216,7 @@ public class VideoFeedsAppJumpManager
           n = 0;
           k = j;
           if (n >= i1) {
-            break label370;
+            break label369;
           }
           String str = arrayOfString[n];
           k = j;
@@ -257,7 +257,7 @@ public class VideoFeedsAppJumpManager
       }
       if (k != 0)
       {
-        label370:
+        label369:
         m += 1;
         j = k;
       }
@@ -271,7 +271,7 @@ public class VideoFeedsAppJumpManager
   
   public void a(float paramFloat)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.i != 0) && (paramFloat >= this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.h) && (!this.jdField_c_of_type_Boolean)) {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j != 0) && (paramFloat >= this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.i) && (!this.jdField_c_of_type_Boolean)) {
       a(true);
     }
   }
@@ -304,13 +304,13 @@ public class VideoFeedsAppJumpManager
     this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter$BaseVideoItemHolder = paramBaseVideoItemHolder;
     this.jdField_c_of_type_Boolean = false;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.i != 0) && (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.h <= 0)) {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j != 0) && (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.i <= 0)) {
       a(true);
     }
     for (;;)
     {
-      if ((paramVideoInfo != null) && (QLog.isColorLevel())) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "setPlayingVideoInfo() videoInfo.isWeishi=" + paramVideoInfo.f + ", videoInfo.appJumpTipsDisplayTimePosition=" + paramVideoInfo.h + ", videoInfo.adsJumpType=" + paramVideoInfo.i);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "setPlayingVideoInfo() videoInfo.isWeishi=" + paramVideoInfo.f + ", videoInfo.appJumpTipsDisplayTimePosition=" + paramVideoInfo.i + ", videoInfo.adsJumpType=" + paramVideoInfo.j);
       }
       return;
       b();

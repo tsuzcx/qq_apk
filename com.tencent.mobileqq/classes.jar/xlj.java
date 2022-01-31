@@ -1,46 +1,51 @@
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import Wallet.DownloadChooseRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadBackControlConfig;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import mqq.observer.BusinessObserver;
 
-public final class xlj
-  implements Runnable
+public class xlj
+  implements BusinessObserver
 {
-  public xlj(QQAppInterface paramQQAppInterface) {}
+  public xlj(PreloadManager paramPreloadManager, List paramList, DownloadListener paramDownloadListener, boolean paramBoolean) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    List localList = TroopBarAssistantManager.a().a(this.a);
-    int i;
-    int j;
-    label19:
-    Object localObject;
-    if (localList == null)
+    if (!paramBoolean) {}
+    do
     {
-      i = 0;
-      j = 0;
-      if (j >= i) {
+      for (;;)
+      {
         return;
+        if (paramInt == 3) {
+          try
+          {
+            paramBundle = (DownloadChooseRsp)paramBundle.getSerializable("rsp");
+            if (paramBundle != null) {
+              break label89;
+            }
+            if (QLog.isColorLevel())
+            {
+              QLog.d("PreloadManager", 2, "download choose rsp is null:" + paramBundle);
+              return;
+            }
+          }
+          catch (Throwable paramBundle) {}
+        }
       }
-      localObject = (TroopBarData)localList.get(j);
-      if (localObject != null) {
-        break label58;
-      }
+    } while (!QLog.isColorLevel());
+    QLog.d("PreloadManager", 2, "downloadBackControlModules onReceive exception:" + paramBundle);
+    return;
+    label89:
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "download choose rsp:" + paramBundle.vecResInfo);
     }
-    for (;;)
-    {
-      j += 1;
-      break label19;
-      i = localList.size();
-      break;
-      label58:
-      localObject = this.a.a().a(((TroopBarData)localObject).mUin, 1008);
-      if (localObject != null) {
-        TroopBarAssistantManager.a().a(this.a, ((QQMessageFacade.Message)localObject).time);
-      }
-    }
+    PreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager).update(paramBundle.vecResInfo);
+    ThreadManager.post(new xlk(this), 5, null, true);
   }
 }
 

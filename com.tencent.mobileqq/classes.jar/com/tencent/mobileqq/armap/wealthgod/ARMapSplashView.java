@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.armap.wealthgod;
 
-import abiu;
-import abiv;
-import abiw;
-import abix;
+import abpv;
+import abpw;
+import abpx;
+import abpy;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
@@ -127,10 +127,10 @@ public class ARMapSplashView
   public ARMapSplashView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2130970237, this, true);
+    LayoutInflater.from(paramContext).inflate(2130970252, this, true);
     setBackgroundColor(-1);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new abix(this, Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new abpy(this, Looper.getMainLooper(), this);
     j();
     g();
     h();
@@ -258,16 +258,16 @@ public class ARMapSplashView
           QLog.i("ARMapSplashView", 4, "adjustWealthGodSize real in");
         }
         this.jdField_a_of_type_Float = f1;
-        paramInt1 = (int)(getResources().getDimensionPixelSize(2131560235) * f1);
-        this.h = ((int)(getResources().getDimensionPixelSize(2131560237) * f1));
-        this.i = ((int)(getResources().getDimensionPixelSize(2131560238) * f1));
-        this.j = ((int)(getResources().getDimensionPixelSize(2131560239) * f1));
-        this.k = ((int)(getResources().getDimensionPixelSize(2131560240) * f1));
-        this.l = ((int)(getResources().getDimensionPixelSize(2131560241) * f1));
-        this.m = ((int)(getResources().getDimensionPixelSize(2131560242) * f1));
-        this.n = ((int)(getResources().getDimensionPixelSize(2131560243) * f1));
-        this.o = ((int)(getResources().getDimensionPixelSize(2131560244) * f1));
-        paramInt2 = (int)(f1 * getResources().getDimensionPixelSize(2131560245));
+        paramInt1 = (int)(getResources().getDimensionPixelSize(2131560236) * f1);
+        this.h = ((int)(getResources().getDimensionPixelSize(2131560238) * f1));
+        this.i = ((int)(getResources().getDimensionPixelSize(2131560239) * f1));
+        this.j = ((int)(getResources().getDimensionPixelSize(2131560240) * f1));
+        this.k = ((int)(getResources().getDimensionPixelSize(2131560241) * f1));
+        this.l = ((int)(getResources().getDimensionPixelSize(2131560242) * f1));
+        this.m = ((int)(getResources().getDimensionPixelSize(2131560243) * f1));
+        this.n = ((int)(getResources().getDimensionPixelSize(2131560244) * f1));
+        this.o = ((int)(getResources().getDimensionPixelSize(2131560245) * f1));
+        paramInt2 = (int)(f1 * getResources().getDimensionPixelSize(2131560246));
         if (this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView != null)
         {
           localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView.getLayoutParams();
@@ -472,13 +472,13 @@ public class ARMapSplashView
       if (this.jdField_c_of_type_Int == 1)
       {
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432069);
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432080);
         return;
       }
       if (this.jdField_c_of_type_Int == 2)
       {
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432070);
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432081);
         return;
       }
     } while (this.jdField_c_of_type_Int != 3);
@@ -486,15 +486,15 @@ public class ARMapSplashView
     switch (this.jdField_d_of_type_Int)
     {
     default: 
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432071);
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432082);
       return;
     case 1: 
     case 4: 
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432072);
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432083);
       p();
       return;
     }
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432073);
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432084);
   }
   
   private void i()
@@ -527,10 +527,10 @@ public class ARMapSplashView
       this.jdField_c_of_type_AndroidWidgetTextView.setText(" ");
       localObject1 = d();
       this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashInfoView.setText(Html.fromHtml((String)localObject1));
-      i5 = 2130842308;
-      i4 = 2131432067;
-      i3 = 2131493744;
-      i2 = 2130842299;
+      i5 = 2130842343;
+      i4 = 2131432078;
+      i3 = 2131493749;
+      i2 = 2130842334;
       i1 = 2;
       i7 = this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashInfoView.getVisibility();
       i8 = this.jdField_b_of_type_AndroidViewView.getVisibility();
@@ -612,7 +612,7 @@ public class ARMapSplashView
           Object localObject2 = localObject1;
           if (localObject1 == null)
           {
-            i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131560207);
+            i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131560208);
             localObject1 = URLDrawable.URLDrawableOptions.obtain();
             ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = i1;
             ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = i1;
@@ -637,14 +637,14 @@ public class ARMapSplashView
             localObject1 = a();
             this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashInfoView.setText(Html.fromHtml((String)localObject1));
             this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-            i5 = 2130842308;
-            i4 = 2131432067;
-            i3 = 2131493744;
-            i2 = 2130842299;
+            i5 = 2130842343;
+            i4 = 2131432078;
+            i3 = 2131493749;
+            i2 = 2130842334;
             i1 = 0;
             break;
             label870:
-            ((URLDrawable)localObject2).setURLDrawableListener(new abiu(this));
+            ((URLDrawable)localObject2).setURLDrawableListener(new abpv(this));
           }
         }
         catch (Exception localException)
@@ -659,10 +659,10 @@ public class ARMapSplashView
             this.jdField_b_of_type_AndroidViewView.setVisibility(4);
             str = b();
             this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashInfoView.setText(Html.fromHtml(str));
-            i5 = 2130842308;
-            i4 = 2131432067;
-            i3 = 2131493744;
-            i2 = 2130842299;
+            i5 = 2130842343;
+            i4 = 2131432078;
+            i3 = 2131493749;
+            i2 = 2130842334;
             i1 = 2;
             break;
           }
@@ -673,10 +673,10 @@ public class ARMapSplashView
             if (this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodWealthGodInfo.jdField_a_of_type_Int == 0) {
               this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
             }
-            i5 = 2130842308;
-            i4 = 2131432067;
-            i3 = 2131493744;
-            i2 = 2130842299;
+            i5 = 2130842343;
+            i4 = 2131432078;
+            i3 = 2131493749;
+            i2 = 2130842334;
             i1 = 2;
             break;
           }
@@ -684,10 +684,10 @@ public class ARMapSplashView
           {
             str = b(this.jdField_a_of_type_Long);
             this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashInfoView.setText(Html.fromHtml(str));
-            i5 = 2130842309;
-            i4 = 2131432068;
-            i3 = 2131494124;
-            i2 = 2130842303;
+            i5 = 2130842344;
+            i4 = 2131432079;
+            i3 = 2131494130;
+            i2 = 2130842338;
             i1 = 1;
             break;
           }
@@ -695,19 +695,19 @@ public class ARMapSplashView
           {
             str = c();
             this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashInfoView.setText(Html.fromHtml(str));
-            i5 = 2130842309;
-            i4 = 2131432068;
-            i3 = 2131494124;
-            i2 = 2130842303;
+            i5 = 2130842344;
+            i4 = 2131432079;
+            i3 = 2131494130;
+            i2 = 2130842338;
             i1 = 1;
             break;
           }
           String str = d();
           this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashInfoView.setText(Html.fromHtml(str));
-          i5 = 2130842308;
-          i4 = 2131432067;
-          i3 = 2131493744;
-          i2 = 2130842299;
+          i5 = 2130842343;
+          i4 = 2131432078;
+          i3 = 2131493749;
+          i2 = 2130842334;
           i1 = 2;
         }
       }
@@ -730,48 +730,48 @@ public class ARMapSplashView
   
   private void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashBgView = ((ARMapSplashBgView)findViewById(2131369774));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369777);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369778));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369779));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131369780);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369782));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369783));
-    this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashInfoView = ((ARMapSplashInfoView)findViewById(2131369784));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369787));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131369788);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369789));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369790));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369791));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369786));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369785));
+    this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashBgView = ((ARMapSplashBgView)findViewById(2131369784));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369787);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369788));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369789));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131369790);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369792));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369793));
+    this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashInfoView = ((ARMapSplashInfoView)findViewById(2131369794));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369797));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131369798);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369799));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369800));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369801));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369796));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369795));
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     }
     setClickable(true);
     setFocusable(true);
-    this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView = ((SdCardImageAnimView)findViewById(2131369775));
+    this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView = ((SdCardImageAnimView)findViewById(2131369785));
     this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView.bringToFront();
-    this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131369776));
-    this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(2131438795);
+    this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView = ((StrokeTextView)findViewById(2131369786));
+    this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(2131438818);
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setInnerTextColor(Color.parseColor("#0f5371"));
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeColor(Color.parseColor("#ffffff"));
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeSize(AIOUtils.a(2.0F, getResources()));
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setTextSize(1, 18.0F);
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setStrokeEnable(true);
     this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setVisibility(8);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131560246);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131560247);
     if (ImmersiveUtils.isSupporImmersive() != 1) {
       this.jdField_a_of_type_Int += ImmersiveUtils.a(getContext());
     }
-    this.h = getResources().getDimensionPixelSize(2131560237);
-    this.i = getResources().getDimensionPixelSize(2131560238);
-    this.j = getResources().getDimensionPixelSize(2131560239);
-    this.k = getResources().getDimensionPixelSize(2131560240);
-    this.l = getResources().getDimensionPixelSize(2131560241);
-    this.m = getResources().getDimensionPixelSize(2131560242);
-    this.n = getResources().getDimensionPixelSize(2131560243);
-    this.o = getResources().getDimensionPixelSize(2131560244);
+    this.h = getResources().getDimensionPixelSize(2131560238);
+    this.i = getResources().getDimensionPixelSize(2131560239);
+    this.j = getResources().getDimensionPixelSize(2131560240);
+    this.k = getResources().getDimensionPixelSize(2131560241);
+    this.l = getResources().getDimensionPixelSize(2131560242);
+    this.m = getResources().getDimensionPixelSize(2131560243);
+    this.n = getResources().getDimensionPixelSize(2131560244);
+    this.o = getResources().getDimensionPixelSize(2131560245);
   }
   
   private void k()
@@ -779,7 +779,7 @@ public class ARMapSplashView
     IntentFilter localIntentFilter;
     if ((this.jdField_b_of_type_Int == 1) && (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null))
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new abiw(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new abpx(this);
       localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.tencent.mobileqq.armap.ACTION_START_ARMAP_LOADING_COMPLETED");
     }
@@ -998,7 +998,7 @@ public class ARMapSplashView
             this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
             this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
             this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(9000);
-            this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new abiv(this));
+            this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new abpw(this));
           }
           paramArMapInterface = ((ARMapManager)paramArMapInterface.getManager(209)).c();
           localArrayList = new ArrayList();
@@ -1330,7 +1330,7 @@ public class ARMapSplashView
       }
       this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView.setPadding(this.h, this.i, this.j, this.k);
       str = "KEY_SPLASH_BG_WEALTH_GOD_SLEEP";
-      this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(2131438796);
+      this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(2131438819);
     }
     for (;;)
     {
@@ -1351,7 +1351,7 @@ public class ARMapSplashView
         {
           this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView.setPadding(this.l, this.m, this.n, this.o);
           str = "KEY_SPLASH_BG_WEALTH_GOD_WORK";
-          this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(2131438795);
+          this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(2131438818);
           continue;
         }
         if (this.jdField_e_of_type_Int != 2) {
@@ -1359,7 +1359,7 @@ public class ARMapSplashView
         }
         this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView.setPadding(this.h, this.i, this.j, this.k);
         str = "KEY_SPLASH_BG_WEALTH_GOD_BAOXIANG";
-        this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(2131438796);
+        this.jdField_a_of_type_ComTencentMobileqqPortalStrokeTextView.setText(2131438819);
         continue;
       }
       SplashBitmapUtils.a(this.jdField_a_of_type_AndroidContentContext, str, this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView, this.jdField_b_of_type_Boolean);

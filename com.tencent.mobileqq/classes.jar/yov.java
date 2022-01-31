@@ -1,58 +1,83 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel.IRequestHandler;
-import com.tencent.mobileqq.apollo.aioChannel.HandleResult;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class yov
-  implements Runnable
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private String b;
+  public yov(TroopListAdapter2 paramTroopListAdapter2) {}
   
-  public yov(ApolloCmdChannel paramApolloCmdChannel, long paramLong, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloCmdChannel);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    ApolloCmdChannel localApolloCmdChannel;
-    do
-    {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+    Object localObject = (View)paramView.getParent();
+    if ((localObject instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localObject).d();
+    }
+    paramView = paramView.getTag();
+    if (!(paramView instanceof TroopInfo)) {
       return;
-      localApolloCmdChannel = (ApolloCmdChannel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localApolloCmdChannel == null) || (this.jdField_a_of_type_Long == -1L) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)));
-    synchronized (ApolloCmdChannel.access$000(localApolloCmdChannel))
+    }
+    localObject = (TroopInfo)paramView;
+    boolean bool = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(((TroopInfo)localObject).troopuin);
+    paramView = (BizTroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+    int i;
+    label100:
+    label120:
+    ReportTask localReportTask;
+    label190:
+    String str;
+    if (bool)
     {
-      Iterator localIterator = ApolloCmdChannel.access$000(localApolloCmdChannel).iterator();
-      while (localIterator.hasNext())
-      {
-        HandleResult localHandleResult = ((ApolloCmdChannel.IRequestHandler)localIterator.next()).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
-        if (localHandleResult != null)
-        {
-          if (localHandleResult.jdField_a_of_type_Boolean) {
-            localIterator.remove();
-          }
-          if (localHandleResult.b) {
-            localApolloCmdChannel.callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, localHandleResult.jdField_a_of_type_JavaLangString);
-          }
-        }
+      i = 1;
+      if (!paramView.a(((TroopInfo)localObject).troopcode, i)) {
+        break label241;
       }
+      if (!bool) {
+        break label243;
+      }
+      paramView = "Clk_uncommgrp";
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_set", "", "Grp_contactlist", paramView, 0, 0, ((TroopInfo)localObject).troopuin, "", "", "");
+      localReportTask = new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_set").c("Grp_contactlist");
+      if (!bool) {
+        break label249;
+      }
+      paramView = "Clk_unstick";
+      localReportTask = localReportTask.d(paramView);
+      str = ((TroopInfo)localObject).troopuin;
+      if (!((TroopInfo)localObject).hasSetTroopHead()) {
+        break label255;
+      }
+    }
+    label241:
+    label243:
+    label249:
+    label255:
+    for (paramView = "1";; paramView = "0")
+    {
+      localReportTask.a(new String[] { str, paramView }).a();
+      return;
+      i = 0;
+      break label100;
+      break;
+      paramView = "Clk_setcommgrp";
+      break label120;
+      paramView = "Clk_stick";
+      break label190;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yov
  * JD-Core Version:    0.7.0.1
  */

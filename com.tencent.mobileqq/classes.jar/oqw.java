@@ -1,19 +1,32 @@
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
-import com.tencent.biz.qqstory.view.widget.InnerListView.OnItemLongClickListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo2.LayoutModifier.FactoryMerger;
+import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureFragment;
+import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureView;
 
 public class oqw
-  implements View.OnLongClickListener
+  extends LayoutModifier.FactoryMerger
 {
-  public oqw(InnerListView paramInnerListView, int paramInt) {}
-  
-  public boolean onLongClick(View paramView)
+  public oqw(StoryEffectsCameraCaptureFragment paramStoryEffectsCameraCaptureFragment, LayoutInflater paramLayoutInflater)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      return InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
+    super(paramLayoutInflater);
+  }
+  
+  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16842960 });
+    int i = localTypedArray.getResourceId(0, -1);
+    localTypedArray.recycle();
+    if (i == 2131366943)
+    {
+      SLog.a("story.publish.CaptureFragment", "create view for R.id.camera_capture_view : StoryEffectsCameraCaptureView, name=%s", paramString);
+      return new StoryEffectsCameraCaptureView(paramContext, paramAttributeSet);
     }
-    return false;
+    return super.a(paramView, paramString, paramContext, paramAttributeSet);
   }
 }
 

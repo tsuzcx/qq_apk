@@ -1,24 +1,28 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
 
-class sfu
-  implements Runnable
+public class sfu
+  implements Animation.AnimationListener
 {
-  sfu(sft paramsft, boolean paramBoolean1, boolean paramBoolean2) {}
+  public sfu(ChatHistoryForC2C paramChatHistoryForC2C, View paramView1, View paramView2) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Sft.a.a.a.a(15, 2);
-      this.jdField_a_of_type_Sft.a.a.a.a(15, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.show();
+    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.b.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    while (!this.b) {
-      return;
-    }
-    this.jdField_a_of_type_Sft.a.a.a.a(15, 0);
-    this.jdField_a_of_type_Sft.a.a.a.a(15, null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

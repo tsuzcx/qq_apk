@@ -1,21 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
-class acnb
+public class acnb
   implements Runnable
 {
-  acnb(acna paramacna) {}
+  public acnb(EmoticonMainPanel paramEmoticonMainPanel) {}
   
   public void run()
   {
-    if (this.a.a.f)
-    {
-      this.a.a.d();
-      return;
-    }
-    this.a.a.e();
-    this.a.a.d();
-    new Handler().postDelayed(new acnc(this), 1500L);
+    EmoticonMainPanel.b(this.a);
   }
 }
 

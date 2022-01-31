@@ -24,11 +24,11 @@ public class RecentEmptyItemBuilder
     if (paramView != null)
     {
       paramRecentFaceDecoder = paramView;
-      if ("R.layout.conversation_no_chat".equals(paramView.getTag(2130968828))) {}
+      if ("R.layout.conversation_no_chat".equals(paramView.getTag(2130968832))) {}
     }
     else
     {
-      paramRecentFaceDecoder = View.inflate(paramContext, 2130968828, null);
+      paramRecentFaceDecoder = View.inflate(paramContext, 2130968832, null);
       this.b = paramContext.getResources().getDimensionPixelSize(2131558588);
       this.a = paramContext.getResources().getDimensionPixelSize(2131558584);
       this.c = paramContext.getResources().getDimensionPixelSize(2131558590);
@@ -41,8 +41,8 @@ public class RecentEmptyItemBuilder
       paramView.height = i;
       paramRecentFaceDecoder.setLayoutParams(paramView);
       paramRecentFaceDecoder.setTag(Boolean.valueOf(true));
-      paramView = (TextView)paramRecentFaceDecoder.findViewById(2131363980);
-      paramViewGroup = (Button)paramRecentFaceDecoder.findViewById(2131363981);
+      paramView = (TextView)paramRecentFaceDecoder.findViewById(2131364005);
+      paramViewGroup = (Button)paramRecentFaceDecoder.findViewById(2131364006);
       if (!(paramObject instanceof Integer)) {
         break label382;
       }
@@ -50,17 +50,17 @@ public class RecentEmptyItemBuilder
       if (i != 1) {
         break label263;
       }
-      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130839525, 0, 0);
+      paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130839540, 0, 0);
       paramView.setVisibility(0);
-      paramView.setText(2131436130);
-      paramView.setTextColor(paramContext.getResources().getColorStateList(2131494269));
+      paramView.setText(2131436148);
+      paramView.setTextColor(paramContext.getResources().getColorStateList(2131494275));
       paramViewGroup.setVisibility(8);
       paramViewGroup.setOnClickListener(null);
     }
     for (;;)
     {
       paramRecentFaceDecoder.setTag(-1, Integer.valueOf(paramInt));
-      paramRecentFaceDecoder.setTag(2130968828, "R.layout.conversation_no_chat");
+      paramRecentFaceDecoder.setTag(2130968832, "R.layout.conversation_no_chat");
       return paramRecentFaceDecoder;
       i = this.c;
       break;
@@ -78,10 +78,10 @@ public class RecentEmptyItemBuilder
         }
         else
         {
-          paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130839525, 0, 0);
+          paramView.setCompoundDrawablesWithIntrinsicBounds(0, 2130839540, 0, 0);
           paramView.setVisibility(0);
-          paramView.setText(2131434680);
-          paramView.setTextColor(paramContext.getResources().getColorStateList(2131494269));
+          paramView.setText(2131434696);
+          paramView.setTextColor(paramContext.getResources().getColorStateList(2131494275));
           paramViewGroup.setVisibility(8);
           paramViewGroup.setOnClickListener(null);
         }

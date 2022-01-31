@@ -1,31 +1,35 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.tips.ArkTipsBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class wcm
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public wcm(ArkTipsBar paramArkTipsBar) {}
+  public wcm(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    if (this.a.ac) {
+      return;
+    }
+    this.a.ac = true;
+    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
     {
-      paramView = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (paramView != null)
-      {
-        paramView = paramView.a();
-        if (paramView != null) {
-          paramView.a(ArkTipsBar.a(this.a));
-        }
+      this.a.v(2131430031);
+      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
+      if (paramInt == 0) {
+        this.a.b(true, 0);
       }
-      ArkTipsManager.a().a();
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.a.b(false, paramInt);
+      continue;
+      this.a.v(2131430031);
+      this.a.b(true, 0);
     }
   }
 }

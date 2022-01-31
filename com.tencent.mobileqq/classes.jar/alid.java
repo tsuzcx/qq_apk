@@ -1,9 +1,16 @@
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.AuthorityLoginView;
+import com.tencent.open.agent.CardContainer;
+
 class alid
   implements Runnable
 {
   alid(alic paramalic) {}
   
-  public void run() {}
+  public void run()
+  {
+    this.a.a.a.a.a.a(false);
+  }
 }
 
 

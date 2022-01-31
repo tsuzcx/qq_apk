@@ -1,29 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil.DownLoadHandler;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
 
-public final class vot
-  implements Parcelable.Creator
+public class vot
+  implements ApolloUtil.DownLoadHandler
 {
-  public AIORichMediaData a(Parcel paramParcel)
-  {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIORichMediaData.a((String)localObject);
-      ((AIORichMediaData)localObject).a(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
-  }
-  
-  public AIORichMediaData[] a(int paramInt)
-  {
-    return new AIORichMediaData[paramInt];
-  }
+  public vot(TroopFileItemBuilder paramTroopFileItemBuilder, TroopFileStatusInfo paramTroopFileStatusInfo, TroopFileItemOperation paramTroopFileItemOperation) {}
 }
 
 

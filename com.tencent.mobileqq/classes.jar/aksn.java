@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.widget.AdaptiveLayout;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 
-public class aksn
+public final class aksn
+  extends DownloadListener
 {
-  public int a;
-  public int b;
-  
-  public aksn(AdaptiveLayout paramAdaptiveLayout, int paramInt1, int paramInt2)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    super.onDone(paramDownloadTask);
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    return true;
   }
 }
 

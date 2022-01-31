@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.interact.EditVideoInteract;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdateEvent;
 
 public class aobx
-  implements DialogInterface.OnClickListener
+  extends QQUIEventReceiver
 {
-  public aobx(EditVideoInteract paramEditVideoInteract) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aobx(@NonNull EditVideoDoodle paramEditVideoDoodle)
   {
-    paramDialogInterface.dismiss();
+    super(paramEditVideoDoodle);
+  }
+  
+  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiUpdateEvent paramDoodleEmojiUpdateEvent) {}
+  
+  public Class acceptEventClass()
+  {
+    return DoodleEmojiManager.DoodleEmojiUpdateEvent.class;
   }
 }
 

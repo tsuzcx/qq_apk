@@ -1,14 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySelfInnerListViewAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUploadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class mjp
+  implements UpCallBack
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  public mjp(VideoUploadManager paramVideoUploadManager) {}
   
-  private mjp(ReadInjoySelfInnerListViewAdapter paramReadInjoySelfInnerListViewAdapter) {}
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult) {}
 }
 
 

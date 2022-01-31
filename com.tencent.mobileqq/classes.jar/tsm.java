@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
 
-public class tsm
-  implements DialogInterface.OnDismissListener
+class tsm
+  implements Runnable
 {
-  public tsm(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  tsm(tsl paramtsl) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    this.a.a.a();
   }
 }
 

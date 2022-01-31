@@ -1,79 +1,33 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import com.tencent.av.AVLog;
-import com.tencent.av.app.QQServiceProxy;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.app.VideoNotifyCenter;
-import com.tencent.av.service.IQQServiceForAV;
-import com.tencent.av.service.IQQServiceForAV.Stub;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 
 public class jex
-  implements ServiceConnection
+  implements MediaPlayer.OnCompletionListener
 {
-  public jex(QQServiceProxy paramQQServiceProxy) {}
+  public jex(VideoController paramVideoController) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    QLog.w("QQServiceProxy", 1, "QQServiceForAV onServiceConnected, name[" + paramComponentName + "]");
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = IQQServiceForAV.Stub.a(paramIBinder);
-    try
+    AVLog.d(VideoController.a, "onCompletion onClose");
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
+    }
+    if (!this.a.a().h())
     {
-      this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.a(this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceCallback$Stub, "video_process_cookie");
-      if (this.a.b) {
-        this.a.e();
-      }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(10) });
+      AVLog.d(VideoController.a, "onCompletion onClose is not Closing2");
       return;
     }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
-      {
-        try
-        {
-          this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.asBinder().linkToDeath(new jey(this), 0);
-          return;
-        }
-        catch (Exception paramComponentName)
-        {
-          AVLog.e("QQServiceProxy", "QQServiceForAV onServiceConnected Exception msg = " + paramComponentName.getMessage());
-        }
-        paramComponentName = paramComponentName;
-        AVLog.e("QQServiceProxy", "QQServiceForAV onServiceConnected Exception msg = " + paramComponentName.getMessage());
-      }
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceProxy", 2, "QQServiceForAV onServiceDisconnected");
-    }
-    try
-    {
-      if (this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV != null) {
-        this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV.a(this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceCallback$Stub);
-      }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(11) });
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().deleteObservers();
-    }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
-      {
-        QLog.e("QQServiceProxy", 2, "QQServiceForAV onServiceDisconnected RemoteException", paramComponentName);
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentAvServiceIQQServiceForAV = null;
+    this.a.a(this.a.a().c, 0);
+    this.a.b(217);
+    this.a.c(this.a.a().c, this.a.a().z);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jex
  * JD-Core Version:    0.7.0.1
  */

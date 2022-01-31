@@ -1,28 +1,35 @@
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class xjd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xjd(BannerManager paramBannerManager) {}
+  public xjd(CommonHbFragment paramCommonHbFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (UpgradeController.a().a() == 4) {
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
-    }
-    for (;;)
+    if ((CommonHbFragment.b(this.a) == null) || (CommonHbFragment.b(this.a).size() <= 0)) {}
+    View localView;
+    do
     {
-      this.a.a(12, 0);
-      this.a.a(-1, null);
+      do
+      {
+        return;
+        localView = ((View)CommonHbFragment.b(this.a).get(CommonHbFragment.a(this.a).getCurrentItem())).findViewById(2131368041);
+        if (localView != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("CommonHbFragment", 2, "tempView is null");
       return;
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
+    } while ((localView.getVisibility() != 0) || (!"1".equals(CommonHbFragment.g(this.a))));
+    if (QLog.isColorLevel()) {
+      QLog.i("CommonHbFragment", 2, "start perform click sub type");
     }
+    localView.performClick();
   }
 }
 

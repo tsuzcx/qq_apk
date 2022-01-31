@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.apollo.game.ApolloJSContext;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.TMG.sdk.AVVideoCtrl.RemoteVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 
-public class yps
-  implements Runnable
+class yps
+  extends AVVideoCtrl.RemoteVideoPreviewCallback
 {
-  public yps(ApolloJSContext paramApolloJSContext, String paramString, ValueCallback paramValueCallback) {}
+  yps(ypp paramypp) {}
   
-  public void run()
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
   {
-    if (ApolloJSContext.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext) != null) {
-      ApolloJSContext.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext).evaluateJavascript(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSmttSdkValueCallback);
-    }
+    Object localObject = CmGameUtil.a(AVCameraCaptureModel.a(this.a.a));
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((CmGameLauncher)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new ypt(this, paramVideoFrame, (ApolloSurfaceView)localObject));
   }
 }
 

@@ -1,27 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQNoResultBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView.DrawItem;
+import java.util.List;
 
 public class uuf
-  implements DialogInterface.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public uuf(ArkAppBabyQNoResultBuilder paramArkAppBabyQNoResultBuilder, MessageForArkBabyqReply paramMessageForArkBabyqReply) {}
+  public uuf(GoldMsgQueueView paramGoldMsgQueueView, boolean paramBoolean1, GoldMsgQueueView.DrawItem paramDrawItem, boolean paramBoolean2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface = (MessageForArkBabyqReply)MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkBabyqReply);
-    if (paramDialogInterface.msgData == null) {
-      paramDialogInterface.msgData = paramDialogInterface.toBytes();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    super.onAnimationEnd(paramAnimator);
+    if (this.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkBabyqReply.uniseq);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
+      GoldMsgQueueView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView).remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem.drawable != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem.drawable.setCallback(null);
+      }
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem.isUseToShowNum = true;
     }
   }
 }

@@ -13,9 +13,9 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.utils.UITools;
 import java.lang.ref.SoftReference;
-import jze;
-import jzf;
-import jzg;
+import kbi;
+import kbj;
+import kbk;
 
 public class QavInOutAnimation
 {
@@ -118,9 +118,9 @@ public class QavInOutAnimation
       this.jdField_g_of_type_AndroidViewAnimationAnimation.setDuration(620);
       this.m = new AlphaAnimation(0.0F, 0.0F);
       this.m.setDuration(620);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new jze(this);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new jzf(this);
-      this.jdField_c_of_type_AndroidViewAnimationAnimation$AnimationListener = new jzg(this);
+      this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new kbi(this);
+      this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new kbj(this);
+      this.jdField_c_of_type_AndroidViewAnimationAnimation$AnimationListener = new kbk(this);
       return;
       if (paramInt <= 480) {
         paramInt = paramContext.getResources().getDimensionPixelSize(2131560032) + paramContext.getResources().getDimensionPixelSize(2131560035);
@@ -283,7 +283,7 @@ public class QavInOutAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.QavInOutAnimation
  * JD-Core Version:    0.7.0.1
  */

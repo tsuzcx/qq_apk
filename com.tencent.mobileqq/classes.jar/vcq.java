@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
+import com.tencent.qphone.base.util.QLog;
 
 public class vcq
   implements Runnable
 {
-  public vcq(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic) {}
+  public vcq(FlashPicItemBuilder.FlashPicAIOThumbView paramFlashPicAIOThumbView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+    try
+    {
+      synchronized (BaseApplicationImpl.sImageCache) {}
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.hotchat", 2, "cache flashpic abumb exception:" + localException);
+      }
+    }
   }
 }
 

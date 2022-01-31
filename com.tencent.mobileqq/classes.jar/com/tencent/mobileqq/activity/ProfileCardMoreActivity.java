@@ -79,15 +79,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import mqq.os.MqqHandler;
-import tgm;
-import tgn;
-import tgo;
-import tgp;
-import tgq;
-import tgr;
-import tgt;
-import tgu;
-import tgv;
+import tlg;
+import tlh;
+import tli;
+import tlj;
+import tlk;
+import tll;
+import tln;
+import tlo;
+import tlp;
 
 public class ProfileCardMoreActivity
   extends IphoneTitleBarActivity
@@ -99,12 +99,12 @@ public class ProfileCardMoreActivity
   public RelativeLayout a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public ProfileActivity.AllInOne a;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new tgu(this);
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tgr(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new tgp(this);
-  ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new tgq(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new tlo(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tll(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new tlj(this);
+  ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new tlk(this);
   BusinessCardManager jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager;
-  BusinessCardObserver jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardObserver = new tgt(this);
+  BusinessCardObserver jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardObserver = new tln(this);
   public BusinessCard a;
   FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
@@ -267,7 +267,7 @@ public class ProfileCardMoreActivity
     //   220: invokevirtual 143	com/tencent/mobileqq/activity/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
     //   223: astore 17
     //   225: getstatic 149	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   228: astore 16
+    //   228: astore 13
     //   230: new 151	java/lang/StringBuilder
     //   233: dup
     //   234: invokespecial 152	java/lang/StringBuilder:<init>	()V
@@ -303,9 +303,9 @@ public class ProfileCardMoreActivity
     //   309: ldc 160
     //   311: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   314: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   317: astore 13
+    //   317: astore 16
     //   319: aload 17
-    //   321: aload 16
+    //   321: aload 13
     //   323: iconst_5
     //   324: anewarray 98	java/lang/String
     //   327: dup
@@ -328,7 +328,7 @@ public class ProfileCardMoreActivity
     //   348: iconst_4
     //   349: ldc 205
     //   351: aastore
-    //   352: aload 13
+    //   352: aload 16
     //   354: aconst_null
     //   355: aconst_null
     //   356: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
@@ -730,7 +730,7 @@ public class ProfileCardMoreActivity
     //   1227: invokevirtual 143	com/tencent/mobileqq/activity/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
     //   1230: astore 14
     //   1232: getstatic 149	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   1235: astore 16
+    //   1235: astore 12
     //   1237: new 151	java/lang/StringBuilder
     //   1240: dup
     //   1241: invokespecial 152	java/lang/StringBuilder:<init>	()V
@@ -757,9 +757,9 @@ public class ProfileCardMoreActivity
     //   1294: ldc 160
     //   1296: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1299: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1302: astore 12
+    //   1302: astore 16
     //   1304: aload 14
-    //   1306: aload 16
+    //   1306: aload 12
     //   1308: iconst_5
     //   1309: anewarray 98	java/lang/String
     //   1312: dup
@@ -782,7 +782,7 @@ public class ProfileCardMoreActivity
     //   1334: iconst_4
     //   1335: ldc 205
     //   1337: aastore
-    //   1338: aload 12
+    //   1338: aload 16
     //   1340: aconst_null
     //   1341: aconst_null
     //   1342: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
@@ -852,9 +852,9 @@ public class ProfileCardMoreActivity
     //   1500: astore 11
     //   1502: aload_0
     //   1503: invokevirtual 143	com/tencent/mobileqq/activity/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   1506: astore 16
+    //   1506: astore 14
     //   1508: getstatic 149	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   1511: astore 14
+    //   1511: astore 16
     //   1513: new 151	java/lang/StringBuilder
     //   1516: dup
     //   1517: invokespecial 152	java/lang/StringBuilder:<init>	()V
@@ -882,8 +882,8 @@ public class ProfileCardMoreActivity
     //   1572: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1575: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1578: astore 12
-    //   1580: aload 16
-    //   1582: aload 14
+    //   1580: aload 14
+    //   1582: aload 16
     //   1584: iconst_5
     //   1585: anewarray 98	java/lang/String
     //   1588: dup
@@ -976,7 +976,7 @@ public class ProfileCardMoreActivity
     //   1774: astore 11
     //   1776: aload_0
     //   1777: invokevirtual 143	com/tencent/mobileqq/activity/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   1780: astore 16
+    //   1780: astore 14
     //   1782: getstatic 149	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
     //   1785: astore 12
     //   1787: new 151	java/lang/StringBuilder
@@ -1005,8 +1005,8 @@ public class ProfileCardMoreActivity
     //   1843: ldc 160
     //   1845: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1848: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1851: astore 14
-    //   1853: aload 16
+    //   1851: astore 16
+    //   1853: aload 14
     //   1855: aload 12
     //   1857: iconst_5
     //   1858: anewarray 98	java/lang/String
@@ -1030,7 +1030,7 @@ public class ProfileCardMoreActivity
     //   1882: iconst_4
     //   1883: ldc 205
     //   1885: aastore
-    //   1886: aload 14
+    //   1886: aload 16
     //   1888: aconst_null
     //   1889: aconst_null
     //   1890: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
@@ -1105,9 +1105,9 @@ public class ProfileCardMoreActivity
     //   2057: astore 11
     //   2059: aload_0
     //   2060: invokevirtual 143	com/tencent/mobileqq/activity/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
-    //   2063: astore 14
+    //   2063: astore 12
     //   2065: getstatic 149	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   2068: astore 12
+    //   2068: astore 16
     //   2070: new 151	java/lang/StringBuilder
     //   2073: dup
     //   2074: invokespecial 152	java/lang/StringBuilder:<init>	()V
@@ -1134,9 +1134,9 @@ public class ProfileCardMoreActivity
     //   2127: ldc 160
     //   2129: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2132: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2135: astore 16
-    //   2137: aload 14
-    //   2139: aload 12
+    //   2135: astore 14
+    //   2137: aload 12
+    //   2139: aload 16
     //   2141: iconst_5
     //   2142: anewarray 98	java/lang/String
     //   2145: dup
@@ -1159,7 +1159,7 @@ public class ProfileCardMoreActivity
     //   2166: iconst_4
     //   2167: ldc 205
     //   2169: aastore
-    //   2170: aload 16
+    //   2170: aload 14
     //   2172: aconst_null
     //   2173: aconst_null
     //   2174: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
@@ -1233,7 +1233,7 @@ public class ProfileCardMoreActivity
     //   2338: invokevirtual 143	com/tencent/mobileqq/activity/ProfileCardMoreActivity:getContentResolver	()Landroid/content/ContentResolver;
     //   2341: astore 14
     //   2343: getstatic 149	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   2346: astore 12
+    //   2346: astore 15
     //   2348: new 151	java/lang/StringBuilder
     //   2351: dup
     //   2352: invokespecial 152	java/lang/StringBuilder:<init>	()V
@@ -1260,9 +1260,9 @@ public class ProfileCardMoreActivity
     //   2405: ldc 160
     //   2407: invokevirtual 158	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2410: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2413: astore 15
+    //   2413: astore 12
     //   2415: aload 14
-    //   2417: aload 12
+    //   2417: aload 15
     //   2419: iconst_5
     //   2420: anewarray 98	java/lang/String
     //   2423: dup
@@ -1285,7 +1285,7 @@ public class ProfileCardMoreActivity
     //   2444: iconst_4
     //   2445: ldc 205
     //   2447: aastore
-    //   2448: aload 15
+    //   2448: aload 12
     //   2450: aconst_null
     //   2451: aconst_null
     //   2452: invokevirtual 177	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
@@ -1701,7 +1701,7 @@ public class ProfileCardMoreActivity
     //   3221	1	14	localException15	Exception
     //   3226	1	14	localException16	Exception
     //   44	3222	15	localObject14	Object
-    //   95	2076	16	localObject15	Object
+    //   95	2045	16	localObject15	Object
     //   3193	7	16	localObject16	Object
     //   3206	9	16	localObject17	Object
     //   223	97	17	localContentResolver	android.content.ContentResolver
@@ -1800,7 +1800,7 @@ public class ProfileCardMoreActivity
   
   void a()
   {
-    setContentViewB(2130970539);
+    setContentViewB(2130970552);
     Object localObject1;
     label77:
     label109:
@@ -1811,15 +1811,15 @@ public class ProfileCardMoreActivity
     {
       localObject1 = "好友设置";
       setTitle((CharSequence)localObject1);
-      this.leftView.setText(2131433698);
+      this.leftView.setText(2131433712);
       this.rightViewText.setVisibility(8);
-      localObject1 = findViewById(2131363723);
+      localObject1 = findViewById(2131363747);
       if (this.jdField_a_of_type_ArrayOfInt[14] != 1) {
         break label225;
       }
       ((View)localObject1).setVisibility(0);
       ((View)localObject1).setOnClickListener(this);
-      localObject1 = findViewById(2131363734);
+      localObject1 = findViewById(2131363758);
       if (this.jdField_a_of_type_ArrayOfInt[15] != 1) {
         break label235;
       }
@@ -1861,7 +1861,7 @@ public class ProfileCardMoreActivity
         i2 = i4;
         n = i3;
       }
-      localObject1 = getString(2131437157);
+      localObject1 = getString(2131437177);
       break;
       label225:
       ((View)localObject1).setVisibility(8);
@@ -1874,24 +1874,24 @@ public class ProfileCardMoreActivity
         m = 5;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371042));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371038));
     a(0, this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, n, i2);
     this.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("key_nick_name");
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(this.jdField_e_of_type_JavaLangString);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371043));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371039));
     if (this.jdField_d_of_type_Boolean)
     {
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131371044));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371047));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131371040));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371043));
       a(2, this.jdField_a_of_type_AndroidWidgetRelativeLayout, n, i2);
       a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.post(new tgn(this));
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371048));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.post(new tlh(this));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371044));
       a(3, this.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem, n, i2);
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371050));
+      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371046));
       a(4, this.jdField_d_of_type_ComTencentMobileqqWidgetFormSimpleItem, n, i2);
-      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371049));
+      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371045));
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         break label673;
       }
@@ -1900,7 +1900,7 @@ public class ProfileCardMoreActivity
         this.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText((CharSequence)localObject1);
       }
       label508:
-      this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371051));
+      this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371047));
       if ((!BmqqSegmentUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) && (!QidianManager.b(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
         break label685;
       }
@@ -1911,7 +1911,7 @@ public class ProfileCardMoreActivity
       }
       a(6, this.jdField_g_of_type_ComTencentMobileqqWidgetFormSimpleItem, n, i2);
       label573:
-      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371052));
+      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371048));
       if (!"troopMembercard".equals(getIntent().getStringExtra("from"))) {
         break label703;
       }
@@ -1959,19 +1959,19 @@ public class ProfileCardMoreActivity
       a(7, this.jdField_f_of_type_ComTencentMobileqqWidgetFormSimpleItem, 7, 7);
       break label615;
       label730:
-      this.h = ((FormSimpleItem)findViewById(2131371053));
+      this.h = ((FormSimpleItem)findViewById(2131371049));
       a(8, this.h, n, m);
       if (i1 != 0) {
         this.h.setVisibility(8);
       }
-      this.i = ((FormSimpleItem)findViewById(2131371054));
+      this.i = ((FormSimpleItem)findViewById(2131371050));
       a(9, this.i, n, m);
       if ((i1 != 0) || (!QQStoryManager.j())) {
         this.i.setVisibility(8);
       }
-      this.j = ((FormSimpleItem)findViewById(2131363720));
+      this.j = ((FormSimpleItem)findViewById(2131363744));
       a(10, this.j, n, m);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371055));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371051));
       Object localObject2;
       if ((i1 == 0) && (this.jdField_a_of_type_ArrayOfInt[12] == 1)) {
         if ((12 == n) && (12 == m))
@@ -1979,7 +1979,7 @@ public class ProfileCardMoreActivity
           this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setBgType(0);
           this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
           this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131363721));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131363745));
           if (this.jdField_a_of_type_ArrayOfInt[11] != 1) {
             break label1437;
           }
@@ -1990,15 +1990,15 @@ public class ProfileCardMoreActivity
           this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
           this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("屏蔽此人");
           this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371056));
+          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371052));
           if (this.jdField_a_of_type_ArrayOfInt[13] != 1) {
             break label1449;
           }
-          localObject1 = ((FriendsManager)this.app.getManager(50)).b(AppConstants.au);
+          localObject1 = ((FriendsManager)this.app.getManager(50)).b(AppConstants.av);
           this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Card)localObject1).babyQSwitch);
           this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setBgType(0);
           this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
-          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131437164));
+          this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131437184));
           this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
           ((CardHandler)this.app.a(2)).r();
           if (ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))
@@ -2046,7 +2046,7 @@ public class ProfileCardMoreActivity
         {
           this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription("收起到不常联系好友 ");
           this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setFocusable(true);
-          this.j.setContentDescription(getString(2131436861));
+          this.j.setContentDescription(getString(2131436881));
         }
         return;
         if (12 == n)
@@ -2104,20 +2104,20 @@ public class ProfileCardMoreActivity
       paramRelativeLayout.setOnClickListener(this);
       if ((paramInt1 == paramInt2) && (paramInt1 == paramInt3))
       {
-        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130838623));
+        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130838629));
         return;
       }
       if (paramInt1 == paramInt2)
       {
-        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130838635));
+        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130838641));
         return;
       }
       if (paramInt1 == paramInt3)
       {
-        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130838630));
+        paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130838636));
         return;
       }
-      paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130838633));
+      paramRelativeLayout.setBackgroundDrawable(getResources().getDrawable(2130838639));
       return;
     }
     paramRelativeLayout.setVisibility(8);
@@ -2196,7 +2196,7 @@ public class ProfileCardMoreActivity
       if (TextUtils.isEmpty(paramBusinessCard.picUrl)) {
         break label242;
       }
-      a(this.jdField_a_of_type_AndroidWidgetTextView, getResources().getDrawable(2130843044));
+      a(this.jdField_a_of_type_AndroidWidgetTextView, getResources().getDrawable(2130843076));
     }
     int k;
     for (;;)
@@ -2249,16 +2249,16 @@ public class ProfileCardMoreActivity
   {
     ActionSheet localActionSheet = ActionSheet.a(this);
     if (Utils.b(paramString)) {
-      localActionSheet.a(2131434528);
+      localActionSheet.a(2131434544);
     }
     for (;;)
     {
-      localActionSheet.a(2131434518, 3);
-      localActionSheet.c(2131433015);
-      localActionSheet.a(new tgo(this, paramString, localActionSheet));
+      localActionSheet.a(2131434534, 3);
+      localActionSheet.c(2131433029);
+      localActionSheet.a(new tli(this, paramString, localActionSheet));
       localActionSheet.show();
       return;
-      localActionSheet.a(2131434527);
+      localActionSheet.a(2131434543);
     }
   }
   
@@ -2274,7 +2274,7 @@ public class ProfileCardMoreActivity
     String str1 = "mqqapi://card/show_pslcard?src_type=internal&card_type=qq_bussiness_account&uin=" + paramString1 + "&version=1&cspecialflag=" + k;
     String str2 = "http://share.mp.qq.com/cgi/share.php?uin=" + paramString1 + "&account_flag=" + -7 + "&jumptype=1&card_type=crm&cspecialflag=" + k;
     localObject1 = "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + paramString1;
-    localObject2 = ((AbsShareMsg.Builder)localObject2).b(14).a(2).a("推荐了" + paramString2).a("plugin", str2, "", (String)localObject3, str1).b(getResources().getString(2131433768)).a();
+    localObject2 = ((AbsShareMsg.Builder)localObject2).b(14).a(2).a("推荐了" + paramString2).a("plugin", str2, "", (String)localObject3, str1).b(getResources().getString(2131433782)).a();
     localObject3 = new StructMsgItemLayout2();
     ((AbsStructMsgItem)localObject3).b(1);
     ((AbsStructMsgItem)localObject3).a(new StructMsgItemCover((String)localObject1));
@@ -2395,16 +2395,16 @@ public class ProfileCardMoreActivity
       }
       label314:
       if (paramBoolean) {
-        a(2131434511, 1);
+        a(2131434527, 1);
       }
       for (;;)
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Boolean);
         return;
-        a(2131434510, 1);
+        a(2131434526, 1);
       }
     }
-    a(2131433009, 1);
+    a(2131433023, 1);
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Boolean);
   }
   
@@ -2419,7 +2419,7 @@ public class ProfileCardMoreActivity
       if (!paramBoolean2) {
         break label61;
       }
-      a(2131434512, 2);
+      a(2131434528, 2);
     }
     for (;;)
     {
@@ -2428,13 +2428,13 @@ public class ProfileCardMoreActivity
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_a_of_type_Boolean);
       return;
       label61:
-      a(2131434508, 2);
+      a(2131434524, 2);
       continue;
       label72:
       if (paramBoolean2) {
-        a(2131434511, 1);
+        a(2131434527, 1);
       } else {
-        a(2131434510, 1);
+        a(2131434526, 1);
       }
     }
   }
@@ -2611,7 +2611,7 @@ public class ProfileCardMoreActivity
       return;
     }
     if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371057));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371053));
     }
     if (paramInt1 < 0) {}
     for (paramInt1 = 0;; paramInt1 = AIOUtils.a(10.0F, getResources()))
@@ -2634,7 +2634,7 @@ public class ProfileCardMoreActivity
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434453);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434469);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
@@ -2693,15 +2693,15 @@ public class ProfileCardMoreActivity
               QZoneDistributedAppCtrl.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString).a(paramIntent);
               return;
             }
-            a(2131435781, 1);
+            a(2131435797, 1);
             return;
           }
-          a(2131435780, 0);
+          a(2131435796, 0);
           return;
         }
-        a(2131434612, 1);
+        a(2131434628, 1);
         return;
-        paramIntent.putExtra("selfSet_leftViewText", getString(2131433297));
+        paramIntent.putExtra("selfSet_leftViewText", getString(2131433311));
         localObject = AIOUtils.a(new Intent(this, SplashActivity.class), null);
         ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
         paramIntent = ForwardUtils.a((Intent)localObject);
@@ -2737,7 +2737,7 @@ public class ProfileCardMoreActivity
         if (this.jdField_d_of_type_JavaLangString != null) {
           continue;
         }
-        ThreadManager.post(new tgm(this), 5, null, true);
+        ThreadManager.post(new tlg(this), 5, null, true);
         return true;
       }
       catch (NoSuchFieldError paramBundle)
@@ -2768,13 +2768,13 @@ public class ProfileCardMoreActivity
     if (this.j.getVisibility() == 0)
     {
       if ((localSpecialCareInfo == null) || (localSpecialCareInfo.globalSwitch == 0)) {
-        this.j.setRightText(getString(2131436036));
+        this.j.setRightText(getString(2131436054));
       }
     }
     else {
       return;
     }
-    this.j.setRightText(getString(2131436037));
+    this.j.setRightText(getString(2131436055));
   }
   
   public void e()
@@ -2877,7 +2877,7 @@ public class ProfileCardMoreActivity
           ReportController.b(this.app, "CliOper", "", "", "0X8004C5B", "0X8004C5B", 0, 0, "", "", "", "");
           return;
         }
-        a(2131433009, 1);
+        a(2131433023, 1);
         this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
         paramCompoundButton = this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
         if (!paramBoolean) {}
@@ -2901,7 +2901,7 @@ public class ProfileCardMoreActivity
         k = 0;
       }
     }
-    a(2131433009, 1);
+    a(2131433023, 1);
     this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
     paramCompoundButton = this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem;
     if (!paramBoolean) {}
@@ -2923,10 +2923,10 @@ public class ProfileCardMoreActivity
     switch (k)
     {
     default: 
-    case 2131371043: 
+    case 2131371039: 
+    case 2131371040: 
     case 2131371044: 
-    case 2131371048: 
-    case 2131371051: 
+    case 2131371047: 
       do
       {
         long l;
@@ -2950,9 +2950,9 @@ public class ProfileCardMoreActivity
         return;
       } while (this.jdField_b_of_type_Boolean);
       this.jdField_b_of_type_Boolean = true;
-      ThreadManager.getFileThreadHandler().post(new tgv(this));
+      ThreadManager.getFileThreadHandler().post(new tlp(this));
       return;
-    case 2131371052: 
+    case 2131371048: 
       if (ProfileActivity.AllInOne.i(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))
       {
         localObject = getIntent().getStringExtra("recommend_campus_name");
@@ -2976,7 +2976,7 @@ public class ProfileCardMoreActivity
         localObject = "";
       }
       str1 = String.format(Locale.getDefault(), "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=campus_circle&source=sharecard&uin=%s&name=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramView });
-      a("推荐校园圈联系人", paramView, (String)localObject, 109, "AppCmd://OpenContactInfo/?uin=" + this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, str1, str1, getResources().getString(2131433770));
+      a("推荐校园圈联系人", paramView, (String)localObject, 109, "AppCmd://OpenContactInfo/?uin=" + this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, str1, str1, getResources().getString(2131433784));
       if (ProfileActivity.AllInOne.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) {}
       for (k = 1;; k = 2)
       {
@@ -3005,7 +3005,7 @@ public class ProfileCardMoreActivity
         if (localObject == null) {
           paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_JavaLangString;
         }
-        a("推荐联系人", paramView, "帐号: " + this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 14, str2, str1, str1, getResources().getString(2131433768));
+        a("推荐联系人", paramView, "帐号: " + this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 14, str2, str1, str1, getResources().getString(2131433782));
         break;
       }
       for (;;)

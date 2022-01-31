@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import abud;
-import abue;
+import acbv;
+import acbw;
+import acbx;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,10 +24,12 @@ import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
 import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
 import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkViewExtraInterface;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
 import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
 import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -180,6 +183,71 @@ public class MessageForArkApp
     return bool1;
   }
   
+  public static boolean isSetSizeByConfig(ArkAppMessage.Config paramConfig)
+  {
+    int i;
+    if ((paramConfig != null) && ("normal".equals(paramConfig.type)))
+    {
+      j = 1;
+      if ((j == 0) || (paramConfig.width == null) || (paramConfig.width.intValue() == 0)) {
+        break label80;
+      }
+      i = 1;
+      label42:
+      if ((j == 0) || (paramConfig.height == null) || (paramConfig.height.intValue() == 0)) {
+        break label85;
+      }
+    }
+    label80:
+    label85:
+    for (int j = 1;; j = 0)
+    {
+      if ((j == 0) || (i == 0)) {
+        break label90;
+      }
+      return true;
+      j = 0;
+      break;
+      i = 0;
+      break label42;
+    }
+    label90:
+    return false;
+  }
+  
+  public static MessageForArkApp.Size limitToSizeRange(Context paramContext, int paramInt1, int paramInt2)
+  {
+    int k = 30;
+    float f = paramContext.getResources().getDisplayMetrics().scaledDensity;
+    int j = (int)(BaseChatItemLayout.e / f);
+    int i = 390;
+    if (paramInt1 < 30) {
+      paramInt1 = 30;
+    }
+    for (;;)
+    {
+      if (paramInt2 < 30) {
+        paramInt2 = k;
+      }
+      for (;;)
+      {
+        if ((j > 0) && (paramInt1 > j)) {
+          paramInt1 = j;
+        }
+        for (;;)
+        {
+          if (paramInt2 > 390) {
+            paramInt2 = i;
+          }
+          for (;;)
+          {
+            return new MessageForArkApp.Size(AIOUtils.a(paramInt1, paramContext.getResources()), AIOUtils.a(paramInt2, paramContext.getResources()));
+          }
+        }
+      }
+    }
+  }
+  
   private void openThirdApp(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     String str = this.ark_app_message.mSourceUrl;
@@ -204,7 +272,7 @@ public class MessageForArkApp
   
   public void attachArkView(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, int paramInt)
   {
-    paramItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842247);
+    paramItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842282);
     if (this.arkContainer == null)
     {
       this.arkContainer = new ArkAioContainerWrapper();
@@ -226,7 +294,7 @@ public class MessageForArkApp
     ((ArkAioContainerWrapper)localObject).setFixSize(BaseChatItemLayout.d, BaseChatItemLayout.d);
     ((ArkAioContainerWrapper)localObject).setMaxSize(BaseChatItemLayout.d, BaseChatItemLayout.d);
     ((ArkAioContainerWrapper)localObject).setMinSize(BaseChatItemLayout.d * 7 / 10, BaseChatItemLayout.d);
-    localObject = new abud(this, paramItemViewHolder, paramArkHorizontalListViewAdapter, (ArkAioContainerWrapper)localObject, paramInt);
+    localObject = new acbv(this, paramItemViewHolder, paramArkHorizontalListViewAdapter, (ArkAioContainerWrapper)localObject, paramInt);
     ArkAppView localArkAppView1 = paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
     ArkAppView localArkAppView2 = paramItemViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
     localArkAppView1.setClipRadius(15.0F);
@@ -244,23 +312,37 @@ public class MessageForArkApp
     paramItemViewHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
   }
   
-  public void clickTail(ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, Context paramContext)
+  public void clickTail(ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkAppItemBubbleBuilder.Holder paramHolder, Context paramContext)
   {
     QQAppInterface localQQAppInterface;
     if (this.ark_app_message != null)
     {
       localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (TextUtils.isEmpty(this.ark_app_message.appId)) {
-        break label58;
+      if (paramItemViewHolder != null)
+      {
+        if (TextUtils.isEmpty(this.ark_app_message.appId)) {
+          break label109;
+        }
+        paramItemViewHolder.b.setBackgroundResource(2130840661);
+        paramItemViewHolder.b.setOnClickListener(new acbw(this, localQQAppInterface, paramContext));
       }
-      paramItemViewHolder.b.setBackgroundResource(2130840646);
+      if (paramHolder != null)
+      {
+        if (TextUtils.isEmpty(this.ark_app_message.appId)) {
+          break label122;
+        }
+        paramHolder.a.setBackgroundResource(2130840661);
+      }
     }
     for (;;)
     {
-      paramItemViewHolder.b.setOnClickListener(new abue(this, localQQAppInterface, paramContext));
+      paramHolder.a.setOnClickListener(new acbx(this, localQQAppInterface, paramContext));
       return;
-      label58:
-      paramItemViewHolder.b.setBackgroundResource(2130840645);
+      label109:
+      paramItemViewHolder.b.setBackgroundResource(2130840660);
+      break;
+      label122:
+      paramHolder.a.setBackgroundResource(2130840660);
     }
   }
   

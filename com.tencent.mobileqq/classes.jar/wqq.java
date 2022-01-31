@@ -1,34 +1,46 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.GuardManager;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
 
 public class wqq
-  extends QZoneObserver
+  implements PopupMenuDialog.OnClickActionListener
 {
-  public wqq(MainAssistObserver paramMainAssistObserver) {}
+  public wqq(TroopActivity paramTroopActivity) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void a(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    if ((paramBoolean1) && (paramBoolean2))
+    switch (paramMenuItem.a)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
-      }
-      if ((this.a.a != null) && (this.a.a.app != null)) {}
-    }
-    else
-    {
+    default: 
+    case 0: 
+      do
+      {
+        return;
+        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_create", 0, 0, "", "", "", "");
+        ReportController.b(this.a.app, "CliOper", "", "", "0X8006622", "0X8006622", 0, 0, "", "", "", "");
+        paramMenuItem = (TroopCreateLogic)this.a.app.getManager(31);
+      } while (paramMenuItem == null);
+      paramMenuItem.a(this.a, 0);
+      return;
+    case 1: 
+      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_join", 0, 0, "", "", "", "");
+      ReportController.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_join", 47, 0, "", "", "", "");
+      AddContactsActivity.a(this.a, 1);
+      return;
+    case 2: 
+      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
+      ReportController.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_setting", 0, 0, "", "", "", "");
+      paramMenuItem = new Intent(this.a, TroopAssisSettingActivity.class);
+      this.a.startActivity(paramMenuItem);
       return;
     }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    if (!GuardManager.a.a()) {
-      ThreadManager.post(new wqr(this, localQQAppInterface), 8, null, false);
-    }
-    this.a.g();
+    TroopActivity.b(this.a);
   }
 }
 

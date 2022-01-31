@@ -1,31 +1,29 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
-class aghm
-  implements Runnable
+public class aghm
+  implements TextView.OnEditorActionListener
 {
-  aghm(aghl paramaghl) {}
+  public aghm(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    long l = System.currentTimeMillis() - ScanTorchActivity.a(this.a.a);
-    if (l > 300L)
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      if (TextUtils.isEmpty(ScanTorchActivity.b(this.a.a)))
-      {
-        ScanTorchActivity.s(this.a.a);
-        return;
-      }
-      ScanTorchActivity.c(this.a.a, ScanTorchActivity.b(this.a.a));
-      return;
+      OCRTextSearchActivity.a(this.a);
+      this.a.a.setSelection(this.a.a.getText().length());
+      return true;
     }
-    ScanTorchActivity.b(this.a.a).postDelayed(new aghn(this), 300L - l);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghm
  * JD-Core Version:    0.7.0.1
  */

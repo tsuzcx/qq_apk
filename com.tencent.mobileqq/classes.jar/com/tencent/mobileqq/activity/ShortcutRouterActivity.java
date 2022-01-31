@@ -14,14 +14,14 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import mqq.app.AppRuntime;
-import tsl;
-import tsm;
-import tsn;
+import txd;
+import txe;
+import txf;
 
 public class ShortcutRouterActivity
   extends BaseActivity
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new tsn(this);
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new txf(this);
   private ChatActivityUtils.StartVideoListener jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener;
   
   private int a(Intent paramIntent)
@@ -54,9 +54,9 @@ public class ShortcutRouterActivity
     }
     for (;;)
     {
-      localQQCustomDialog.setNegativeButton(2131435269, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      localQQCustomDialog.setNegativeButton(2131435285, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
       localQQCustomDialog.addView(localTextView);
-      localQQCustomDialog.setOnDismissListener(new tsm(this));
+      localQQCustomDialog.setOnDismissListener(new txe(this));
       if (!isFinishing()) {
         localQQCustomDialog.show();
       }
@@ -119,7 +119,7 @@ public class ShortcutRouterActivity
         }
         break;
       case 1: 
-        QQToast.a(this, getString(2131433236), 0).b(getTitleBarHeight());
+        QQToast.a(this, getString(2131433250), 0).b(getTitleBarHeight());
         finish();
         return true;
       case 2: 
@@ -131,7 +131,7 @@ public class ShortcutRouterActivity
       i = paramBundle.getIntExtra("uintype", 0);
       paramBundle = paramBundle.getStringExtra("extraUin");
       if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener = new tsl(this);
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener = new txd(this);
       }
       bool1 = bool2;
     } while (!ChatActivityUtils.a(this.app, this, i, str1, str2, null, true, paramBundle, true, true, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, "from_internal"));

@@ -399,18 +399,18 @@ public class SupercellActivity
     if (QLog.isColorLevel()) {
       QLog.d("SupercellActivity", 2, "doOnCreate");
     }
-    setContentView(2130970239);
+    setContentView(2130970254);
     if (this.mSystemBarComp != null)
     {
       this.mSystemBarComp.setStatusBarColor(0);
       this.mSystemBarComp.setStatusColor(0);
       this.mSystemBarComp.setStatusDrawable(null);
     }
-    this.mCameraSurfaceView = ((CameraSurfaceView)findViewById(2131369796));
+    this.mCameraSurfaceView = ((CameraSurfaceView)findViewById(2131369806));
     this.mCameraSurfaceView.setDisplay(getWindowManager().getDefaultDisplay());
     this.mCameraSurfaceView.setCameraSurfaceCallBack(this.cameraCallBack);
     this.mCameraSurfaceView.setPreviewCallback(this.mPreviewCallback);
-    this.mGLSurfaceView = ((ARGLSurfaceView)findViewById(2131369797));
+    this.mGLSurfaceView = ((ARGLSurfaceView)findViewById(2131369807));
     this.mGLSurfaceView.setOnClickListener(this);
     paramBundle = getIntent();
     if (paramBundle != null)
@@ -437,7 +437,7 @@ public class SupercellActivity
     }
     for (;;)
     {
-      ((Button)findViewById(2131369577)).setOnClickListener(new SupercellActivity.3(this));
+      ((Button)findViewById(2131369587)).setOnClickListener(new SupercellActivity.3(this));
       if (ARTreasurePlayControl.a(this)) {
         showGuide();
       }
@@ -682,7 +682,7 @@ public class SupercellActivity
   
   protected void initGuide(String paramString, Handler paramHandler)
   {
-    this.mGuideTips = ((TextView)findViewById(2131369582));
+    this.mGuideTips = ((TextView)findViewById(2131369592));
   }
   
   public boolean initMediaEnd(String paramString)
@@ -880,7 +880,7 @@ public class SupercellActivity
               this.mCardDialog.dismiss();
             }
           } while (isFinishing());
-          findViewById(2131369583).setVisibility(0);
+          findViewById(2131369593).setVisibility(0);
           this.mCardDialog.show();
           return;
         }

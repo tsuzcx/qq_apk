@@ -1,25 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
 import java.util.List;
 
 public class lqq
   implements Runnable
 {
-  public lqq(ChannelCoverInfoModule paramChannelCoverInfoModule, int paramInt, List paramList) {}
+  public lqq(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, List paramList) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChannelCoverInfoModule", 2, "notifyUIToRefresh channelId=" + this.jdField_a_of_type_Int + " ;size = " + this.jdField_a_of_type_JavaUtilList.size());
-    }
-    if (this.jdField_a_of_type_Int == 0) {
-      ReadInJoyLogicEngineEventDispatcher.a().e(true, this.jdField_a_of_type_JavaUtilList);
-    }
-    while (this.jdField_a_of_type_Int != 56) {
-      return;
-    }
-    ReadInJoyLogicEngineEventDispatcher.a().f(true, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

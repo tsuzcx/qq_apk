@@ -1,41 +1,23 @@
-import android.text.Html;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.LinkData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
 
 public class mni
-  extends BaseItemViewHolder
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  private TextView a;
+  public mni(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
   
-  public mni(View paramView, BaseData paramBaseData)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367129));
-    paramView.setOnClickListener(this);
+    this.a.setRotation(0.0F);
+    this.a.setAlpha(1.0F);
   }
   
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    switch (paramBaseData2.d)
-    {
-    default: 
-      return;
-    }
-    paramBaseData1 = (LinkData)paramBaseData2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(Html.fromHtml(paramBaseData1.a));
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = (LinkData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-    ReadInJoyUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), paramView.b);
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

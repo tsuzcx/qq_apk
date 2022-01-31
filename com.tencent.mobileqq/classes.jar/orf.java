@@ -1,16 +1,20 @@
-import com.tencent.biz.qqstory.view.widget.RateWidget;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureView.CaptureRequest;
+import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class orf
-  implements Runnable
+  implements StoryEffectsCameraCaptureView.CaptureRequest
 {
-  public orf(RateWidget paramRateWidget) {}
+  public orf(StoryMultiFragmentPart paramStoryMultiFragmentPart, Context paramContext) {}
   
-  public void run()
+  public void a(Bitmap paramBitmap)
   {
-    if (RateWidget.a(this.a))
-    {
-      RateWidget.a(this.a, false);
-      this.a.c(false);
+    SLog.a("story.publish.StoryMultiFragmentPart", "requestGetCurrentFrameBitmap done %s", paramBitmap);
+    if (paramBitmap != null) {
+      ThreadManager.postImmediately(new org(this, paramBitmap), null, false);
     }
   }
 }

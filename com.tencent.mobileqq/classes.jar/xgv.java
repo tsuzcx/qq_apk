@@ -1,27 +1,42 @@
-import Wallet.GetSkinListRsp;
-import com.qq.taf.jce.JceOutputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
 
-class xgv
+public class xgv
   implements Runnable
 {
-  xgv(xgu paramxgu, GetSkinListRsp paramGetSkinListRsp) {}
+  public xgv(RedPacketRecordFragment paramRedPacketRecordFragment, int paramInt, String paramString) {}
   
   public void run()
   {
-    try
-    {
-      JceOutputStream localJceOutputStream = new JceOutputStream();
-      localJceOutputStream.setServerEncoding("utf-8");
-      this.jdField_a_of_type_WalletGetSkinListRsp.writeTo(localJceOutputStream);
-      FileUtils.a(localJceOutputStream.toByteArray(), BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_Xgu.a.getCurrentAccountUin());
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.a()) {
       return;
     }
-    catch (Throwable localThrowable)
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.getResources().getString(2131432352);
+    String str1;
+    if (this.jdField_a_of_type_Int == 2) {
+      str1 = this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
     {
-      localThrowable.printStackTrace();
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.c.setText(str1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView.c();
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment);
+      if (RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment) == null) {
+        break;
+      }
+      RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment).removeCallbacksAndMessages(null);
+      return;
+      str1 = str2;
+      if (this.jdField_a_of_type_Int == 3)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.getActivity());
+        str1 = str2;
+      }
     }
   }
 }

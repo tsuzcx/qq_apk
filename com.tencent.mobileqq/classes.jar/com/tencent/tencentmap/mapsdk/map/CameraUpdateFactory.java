@@ -5,37 +5,37 @@ import com.tencent.mapsdk.raster.model.CameraPosition;
 import com.tencent.mapsdk.raster.model.CameraPosition.Builder;
 import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mapsdk.raster.model.LatLngBounds;
+import com.tencent.mapsdk.rastercore.c;
 import com.tencent.mapsdk.rastercore.c.d;
 import com.tencent.mapsdk.rastercore.c.f;
 import com.tencent.mapsdk.rastercore.c.g;
 import com.tencent.mapsdk.rastercore.c.h;
-import com.tencent.mapsdk.rastercore.d.a;
 
 public final class CameraUpdateFactory
 {
   public static CameraUpdate newCameraPosition(CameraPosition paramCameraPosition)
   {
-    return new CameraUpdate(d.a.a(paramCameraPosition));
+    return new CameraUpdate(c.a(paramCameraPosition));
   }
   
   public static CameraUpdate newLatLng(LatLng paramLatLng)
   {
-    return new CameraUpdate(d.a.a(CameraPosition.builder().target(paramLatLng).build()));
+    return new CameraUpdate(c.a(CameraPosition.builder().target(paramLatLng).build()));
   }
   
   public static CameraUpdate newLatLngBounds(LatLngBounds paramLatLngBounds, int paramInt)
   {
-    return new CameraUpdate(d.a.a(paramLatLngBounds, 0, 0, paramInt));
+    return new CameraUpdate(c.a(paramLatLngBounds, 0, 0, paramInt));
   }
   
   public static CameraUpdate newLatLngBounds(LatLngBounds paramLatLngBounds, int paramInt1, int paramInt2, int paramInt3)
   {
-    return new CameraUpdate(d.a.a(paramLatLngBounds, paramInt1, paramInt2, paramInt3));
+    return new CameraUpdate(c.a(paramLatLngBounds, paramInt1, paramInt2, paramInt3));
   }
   
   public static CameraUpdate newLatLngZoom(LatLng paramLatLng, float paramFloat)
   {
-    return new CameraUpdate(d.a.a(CameraPosition.builder().target(paramLatLng).zoom(paramFloat).build()));
+    return new CameraUpdate(c.a(CameraPosition.builder().target(paramLatLng).zoom(paramFloat).build()));
   }
   
   public static CameraUpdate scrollBy(float paramFloat1, float paramFloat2)
@@ -48,12 +48,12 @@ public final class CameraUpdateFactory
   
   public static CameraUpdate zoomBy(float paramFloat)
   {
-    return new CameraUpdate(d.a.a(paramFloat, null));
+    return new CameraUpdate(c.a(paramFloat, null));
   }
   
   public static CameraUpdate zoomBy(float paramFloat, Point paramPoint)
   {
-    return new CameraUpdate(d.a.a(paramFloat, paramPoint));
+    return new CameraUpdate(c.a(paramFloat, paramPoint));
   }
   
   public static CameraUpdate zoomIn()

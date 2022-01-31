@@ -1,42 +1,26 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.activity.aio.stickerbubble.ManualDecodeGifImage;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 public class wbs
   implements Runnable
 {
-  public wbs(StickerBubbleAnimationView paramStickerBubbleAnimationView, BitmapDrawable[] paramArrayOfBitmapDrawable, ManualDecodeGifImage paramManualDecodeGifImage, String paramString, int paramInt) {}
+  public wbs(NearbyChatPie paramNearbyChatPie, String paramString) {}
   
   public void run()
   {
-    int j = 0;
-    int i = 1;
-    if (i < this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.a();
-      Object localObject = StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.a(), 0.7D);
-      BitmapDrawable[] arrayOfBitmapDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-      if (localObject != null) {}
-      for (localObject = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.getResources(), (Bitmap)localObject);; localObject = null)
-      {
-        arrayOfBitmapDrawable[i] = localObject;
-        QLog.d("StickerBubbleAnimationView", 2, "decode gif: " + i + " / " + this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.c() + " / " + this.jdField_a_of_type_JavaLangString);
-        if (i != this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.c())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("StickerBubbleAnimationView", 2, "index is not matched, " + i + " / " + this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length + " / " + this.jdField_a_of_type_JavaLangString);
-          }
-          j = 1;
-        }
-        i += 1;
-        break;
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.f, 4, "0X80052C5, " + this.jdField_a_of_type_JavaLangString);
     }
-    if (j == 0) {
-      StickerBubbleAnimationHelper.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable, this.jdField_a_of_type_Int);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052C5", "0X80052C5", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangString, "");
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) {}
+    for (String str = "0";; str = "1")
+    {
+      ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_send", 0, 0, str, "", "", "");
+      return;
     }
   }
 }

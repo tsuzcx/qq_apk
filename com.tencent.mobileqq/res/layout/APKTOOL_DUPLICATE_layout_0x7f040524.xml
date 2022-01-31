@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19c1" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true"
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043f" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="19.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0544" android:ellipsize="end" android:gravity="center" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" />
-    <TextView android:textSize="10.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0544" android:ellipsize="end" android:gravity="center" android:id="@id/title_sub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" android:includeFontPadding="false" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="63.5dip" android:layout_marginRight="23.5dip">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c8a" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="11.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02066c" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
+            <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054d" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff949494" android:id="@id/lastMsgTime" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:layout_width="13.5dip" android:layout_height="17.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d31" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

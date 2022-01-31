@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.view.QIMSlidingTabView;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import cooperation.weiyun.sdk.download.WyDownloader;
 
 public class anqa
-  implements View.OnClickListener
+  implements ThreadPool.Job
 {
-  public anqa(QIMSlidingTabView paramQIMSlidingTabView, int paramInt) {}
+  public anqa(WyDownloader paramWyDownloader, HttpNetReq paramHttpNetReq) {}
   
-  public void onClick(View paramView)
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(this.jdField_a_of_type_Int);
+    WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.CommonRequest;
-import com.tencent.biz.qqstory.network.response.CommonResponse;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class nvz
-  implements CmdTaskManger.CommandCallback
+class nvz
 {
-  public nvz(DiscoverPresenter paramDiscoverPresenter) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void a(@NonNull CommonRequest paramCommonRequest, @Nullable CommonResponse paramCommonResponse, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if ((paramErrorMessage.isFail()) || (paramCommonResponse == null))
-    {
-      SLog.e("Q.qqstory.discover.DiscoverPresenter", "StorySvc.get_hot_topic_info request fail! %s", new Object[] { paramErrorMessage.toString() });
-      return;
-    }
-    ((DiscoverManager)SuperManager.a(22)).a(DiscoverPresenter.a(this.a), paramCommonResponse.a);
-    DiscoverPresenter.a(this.a, paramCommonResponse.a);
-  }
+  nvz(nvy paramnvy) {}
 }
 
 

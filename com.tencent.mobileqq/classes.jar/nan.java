@@ -1,20 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.pubaccount.util.PreloadManager;
+import com.tencent.biz.pubaccount.util.PreloadManager.ImgStruct;
 
 public final class nan
-  extends SimpleJob
+  implements Runnable
 {
-  public nan(String paramString) {}
+  public nan(PreloadManager paramPreloadManager, PreloadManager.ImgStruct paramImgStruct) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    int i = StoryVideoUploadManager.a();
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
-    return null;
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager$ImgStruct.a);
   }
 }
 

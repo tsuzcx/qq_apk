@@ -1,21 +1,53 @@
-import com.tencent.plato.PlatoLoadEvent;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.open.agent.util.AuthorityUtil;
 
-public final class alka
-  implements Runnable
+public class alka
+  extends Handler
 {
-  public alka(String paramString1, String paramString2) {}
-  
-  public void run()
+  public alka(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
   {
-    PlatoLoadEvent localPlatoLoadEvent = PlatoLoadEvent.a(0, this.a, this.b);
-    Dispatchers.get().dispatch(localPlatoLoadEvent);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramMessage = (Bitmap)paramMessage.obj;
+        } while (paramMessage == null);
+        paramMessage = AuthorityUtil.a(this.a, paramMessage, 50, 50);
+        localMessage = Message.obtain();
+        localMessage.what = 1002;
+        localMessage.obj = paramMessage;
+        this.a.b.sendMessage(localMessage);
+        return;
+        paramMessage = (String)paramMessage.obj;
+      } while (TextUtils.isEmpty(paramMessage));
+      paramMessage = AuthorityActivity.a(paramMessage);
+    } while (paramMessage == null);
+    Message localMessage = Message.obtain();
+    localMessage.what = 1003;
+    localMessage.obj = paramMessage;
+    this.a.b.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alka
  * JD-Core Version:    0.7.0.1
  */

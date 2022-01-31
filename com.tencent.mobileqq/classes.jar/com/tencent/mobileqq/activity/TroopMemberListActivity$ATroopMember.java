@@ -22,6 +22,7 @@ public class TroopMemberListActivity$ATroopMember
   public boolean d;
   public int e;
   public String e = "";
+  public boolean e;
   public String f = "";
   public String g = "";
   public String h = "";

@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.armap.config;
 
-import abez;
-import abfa;
-import abfc;
-import abfd;
-import abfe;
-import abff;
-import abfg;
-import abfh;
-import abfi;
-import abfj;
+import ablz;
+import abma;
+import abmb;
+import abmd;
+import abme;
+import abmf;
+import abmg;
+import abmh;
+import abmi;
+import abmj;
+import abmk;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
@@ -19,7 +20,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.soso.SosoInterface;
@@ -43,7 +43,6 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.map.TencentMap;
 import com.tencent.util.WeakReferenceHandler;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -55,20 +54,21 @@ import java.util.Locale;
 import java.util.TimeZone;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class ARMapConfigManager
   implements Manager
 {
   public static long a;
   private double jdField_a_of_type_Double;
-  private abfj jdField_a_of_type_Abfj;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abff(this);
+  private abmk jdField_a_of_type_Abmk;
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abmg(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public SosoInterface.OnLocationListener a;
   private ArMapHandler jdField_a_of_type_ComTencentMobileqqArmapArMapHandler;
-  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new abfe(this);
-  private ResDownloadManager.IResDownloadListener jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener = new abfa(this);
+  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new abmf(this);
+  private ResDownloadManager.IResDownloadListener jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener = new abmb(this);
   private ResDownloadManager jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager;
   private ARMapConfig jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig;
   private ARMapConfigManager.ARMapShower jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfigManager$ARMapShower;
@@ -81,12 +81,12 @@ public class ARMapConfigManager
   public boolean a;
   private double jdField_b_of_type_Double;
   public long b;
-  private Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new abfg(this);
-  private SosoInterface.OnLocationListener jdField_b_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abfd(this, 3, true, true, 120000L, false, false, "wealthgod_locate_check");
+  private Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new abmh(this);
+  private SosoInterface.OnLocationListener jdField_b_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abme(this, 3, true, true, 120000L, false, false, "wealthgod_locate_check");
   private Object jdField_b_of_type_JavaLangObject = new Object();
   public boolean b;
   long jdField_c_of_type_Long;
-  private SosoInterface.OnLocationListener jdField_c_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abfh(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
+  private SosoInterface.OnLocationListener jdField_c_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abmj(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
   public boolean c;
   public long d;
   private SosoInterface.OnLocationListener d;
@@ -109,12 +109,12 @@ public class ARMapConfigManager
   public ARMapConfigManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_b_of_type_Long = 900000L;
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abfc(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
-    this.jdField_d_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abfi(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abmd(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
+    this.jdField_d_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abma(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     ArMapIPCProxy.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqArmapConfigConfigCheckHander = new ConfigCheckHander(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ThreadManager.postImmediately(new abez(this), null, true);
+    ThreadManager.postImmediately(new ablz(this), null, true);
     this.jdField_a_of_type_ComTencentMobileqqArmapArMapHandler = ((ArMapHandler)paramQQAppInterface.a(101));
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
     this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this.jdField_b_of_type_AndroidOsHandler$Callback);
@@ -134,10 +134,10 @@ public class ARMapConfigManager
     if (??? != null)
     {
       str = ???.a + "_" + ???.jdField_c_of_type_Long;
-      if ((this.jdField_a_of_type_Abfj == null) || (!this.jdField_a_of_type_Abfj.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str))) {
+      if ((this.jdField_a_of_type_Abmk == null) || (!this.jdField_a_of_type_Abmk.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str))) {
         break label119;
       }
-      m = this.jdField_a_of_type_Abfj.jdField_a_of_type_Int;
+      m = this.jdField_a_of_type_Abmk.jdField_a_of_type_Int;
       n = m;
       if (QLog.isColorLevel())
       {
@@ -151,8 +151,8 @@ public class ARMapConfigManager
       label119:
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        this.jdField_a_of_type_Abfj = new abfj(null);
-        this.jdField_a_of_type_Abfj.jdField_a_of_type_JavaLangString = str;
+        this.jdField_a_of_type_Abmk = new abmk(null);
+        this.jdField_a_of_type_Abmk.jdField_a_of_type_JavaLangString = str;
         Object localObject2 = ArMapUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getString("wealth_god_pendant_status", "");
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           break label278;
@@ -169,13 +169,13 @@ public class ARMapConfigManager
         if (localObject2[m].equalsIgnoreCase(str))
         {
           m = 1;
-          localObject2 = this.jdField_a_of_type_Abfj;
+          localObject2 = this.jdField_a_of_type_Abmk;
           n = i1;
           if (m != 0) {
             n = 2;
           }
-          ((abfj)localObject2).jdField_a_of_type_Int = n;
-          m = this.jdField_a_of_type_Abfj.jdField_a_of_type_Int;
+          ((abmk)localObject2).jdField_a_of_type_Int = n;
+          m = this.jdField_a_of_type_Abmk.jdField_a_of_type_Int;
           if (QLog.isColorLevel()) {
             QLog.d("ARMapConfigManager", 2, "create a new pendant!");
           }
@@ -269,20 +269,6 @@ public class ARMapConfigManager
   private void c(double paramDouble1, double paramDouble2)
   {
     QLog.d("ARMapConfigManager.preloadMap", 1, "preloadGridMapData lat:" + paramDouble1 + ",lng:" + paramDouble2);
-    try
-    {
-      TencentMap.preLoadTiles(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), new LatLng(paramDouble1, paramDouble2), 4000.0D, 16);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("ARMapConfigManager.preloadMap", 1, "preloadGridMapData exp:" + localException.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.d("ARMapConfigManager.preloadMap", 1, "preloadGridMapData oom");
-    }
   }
   
   private void c(long paramLong)
@@ -758,11 +744,11 @@ public class ARMapConfigManager
     //   14: new 178	java/lang/StringBuilder
     //   17: dup
     //   18: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   21: ldc_w 842
+    //   21: ldc_w 818
     //   24: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: iload_2
     //   28: invokevirtual 269	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   31: ldc_w 844
+    //   31: ldc_w 820
     //   34: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: aload_1
     //   38: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -782,67 +768,67 @@ public class ARMapConfigManager
     //   68: aload_0
     //   69: aload_0
     //   70: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   73: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   76: getfield 847	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:locateFrequency	I
+    //   73: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   76: getfield 823	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:locateFrequency	I
     //   79: i2l
     //   80: putfield 52	com/tencent/mobileqq/armap/config/ARMapConfigManager:h	J
     //   83: aload_0
     //   84: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   87: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   90: getfield 850	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pbReqInterval	I
+    //   87: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   90: getfield 826	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pbReqInterval	I
     //   93: ifle +18 -> 111
     //   96: aload_0
     //   97: aload_0
     //   98: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   101: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   104: getfield 850	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pbReqInterval	I
+    //   101: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   104: getfield 826	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pbReqInterval	I
     //   107: i2l
     //   108: putfield 64	com/tencent/mobileqq/armap/config/ARMapConfigManager:f	J
     //   111: aload_0
     //   112: aload_0
     //   113: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   116: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   119: getfield 853	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:locatePreCheckGap	I
+    //   116: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   119: getfield 829	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:locatePreCheckGap	I
     //   122: i2l
     //   123: putfield 54	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_i_of_type_Long	J
     //   126: aload_0
     //   127: aload_0
     //   128: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   131: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   134: getfield 856	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pendantPreShowGap	I
+    //   131: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   134: getfield 832	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pendantPreShowGap	I
     //   137: i2l
     //   138: putfield 56	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_j_of_type_Long	J
     //   141: aload_0
     //   142: aload_0
     //   143: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   146: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   149: getfield 859	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:permanentLedBeginTime	J
-    //   152: putfield 860	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_c_of_type_Long	J
+    //   146: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   149: getfield 835	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:permanentLedBeginTime	J
+    //   152: putfield 836	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_c_of_type_Long	J
     //   155: aload_0
     //   156: aload_0
     //   157: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   160: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   163: getfield 863	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:permanentLedEndTime	J
-    //   166: putfield 865	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_d_of_type_Long	J
+    //   160: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   163: getfield 839	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:permanentLedEndTime	J
+    //   166: putfield 841	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_d_of_type_Long	J
     //   169: aload_0
     //   170: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   173: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   176: getfield 868	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:showSpecialLoadingPage	I
+    //   173: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   176: getfield 844	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:showSpecialLoadingPage	I
     //   179: iconst_1
     //   180: if_icmpne +8 -> 188
     //   183: aload_0
     //   184: iconst_1
-    //   185: putfield 869	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_Boolean	Z
+    //   185: putfield 845	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_Boolean	Z
     //   188: aload_0
     //   189: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   192: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   195: getfield 872	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pendantDisplayDuration	I
+    //   192: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   195: getfield 848	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pendantDisplayDuration	I
     //   198: ifle +18 -> 216
     //   201: aload_0
     //   202: aload_0
     //   203: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   206: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   209: getfield 872	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pendantDisplayDuration	I
+    //   206: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   209: getfield 848	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pendantDisplayDuration	I
     //   212: i2l
     //   213: putfield 48	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_b_of_type_Long	J
     //   216: invokestatic 174	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -852,50 +838,50 @@ public class ARMapConfigManager
     //   225: new 178	java/lang/StringBuilder
     //   228: dup
     //   229: invokespecial 179	java/lang/StringBuilder:<init>	()V
-    //   232: ldc_w 842
+    //   232: ldc_w 818
     //   235: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   238: iload_2
     //   239: invokevirtual 269	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   242: ldc_w 844
+    //   242: ldc_w 820
     //   245: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   248: aload_1
     //   249: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   252: ldc_w 874
+    //   252: ldc_w 850
     //   255: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   258: aload_0
     //   259: getfield 52	com/tencent/mobileqq/armap/config/ARMapConfigManager:h	J
     //   262: invokevirtual 245	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   265: ldc_w 876
+    //   265: ldc_w 852
     //   268: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   271: aload_0
     //   272: getfield 64	com/tencent/mobileqq/armap/config/ARMapConfigManager:f	J
     //   275: invokevirtual 245	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   278: ldc_w 878
+    //   278: ldc_w 854
     //   281: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   284: aload_0
     //   285: getfield 54	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_i_of_type_Long	J
     //   288: invokevirtual 245	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   291: ldc_w 880
+    //   291: ldc_w 856
     //   294: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   297: aload_0
     //   298: getfield 56	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_j_of_type_Long	J
     //   301: invokevirtual 245	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   304: ldc_w 882
+    //   304: ldc_w 858
     //   307: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   310: aload_0
-    //   311: getfield 860	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_c_of_type_Long	J
+    //   311: getfield 836	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_c_of_type_Long	J
     //   314: invokevirtual 245	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   317: ldc_w 884
+    //   317: ldc_w 860
     //   320: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   323: aload_0
-    //   324: getfield 865	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_d_of_type_Long	J
+    //   324: getfield 841	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_d_of_type_Long	J
     //   327: invokevirtual 245	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   330: ldc_w 886
+    //   330: ldc_w 862
     //   333: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   336: aload_0
-    //   337: getfield 869	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_Boolean	Z
-    //   340: invokevirtual 595	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   343: ldc_w 888
+    //   337: getfield 845	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_Boolean	Z
+    //   340: invokevirtual 571	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   343: ldc_w 864
     //   346: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   349: aload_0
     //   350: getfield 48	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_b_of_type_Long	J
@@ -904,47 +890,47 @@ public class ARMapConfigManager
     //   359: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   362: aload_0
     //   363: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   366: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   369: getfield 891	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:showDailyPendantPercent	I
+    //   366: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   369: getfield 867	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:showDailyPendantPercent	I
     //   372: istore_2
     //   373: aload_0
     //   374: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   377: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   380: getfield 894	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pendantSwitcher	I
+    //   377: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   380: getfield 870	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:pendantSwitcher	I
     //   383: iconst_1
     //   384: if_icmpne +66 -> 450
     //   387: iconst_1
     //   388: istore_3
     //   389: aload_0
     //   390: getfield 307	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig;
-    //   393: getfield 795	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
-    //   396: getfield 897	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:splashLight	I
+    //   393: getfield 771	com/tencent/mobileqq/armap/config/ARMapConfig:wealthGodConfig	Lcom/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig;
+    //   396: getfield 873	com/tencent/mobileqq/armap/config/ARMapConfig$WealthGodConfig:splashLight	I
     //   399: iconst_1
     //   400: if_icmpne +55 -> 455
     //   403: aload_0
     //   404: iload_2
     //   405: iload_3
     //   406: iload 4
-    //   408: invokevirtual 899	com/tencent/mobileqq/armap/config/ARMapConfigManager:a	(IZZ)V
+    //   408: invokevirtual 875	com/tencent/mobileqq/armap/config/ARMapConfigManager:a	(IZZ)V
     //   411: aload 5
     //   413: monitorexit
-    //   414: invokestatic 903	com/tencent/mobileqq/app/ThreadManager:getFileThreadHandler	()Lmqq/os/MqqHandler;
-    //   417: new 905	abfb
+    //   414: invokestatic 879	com/tencent/mobileqq/app/ThreadManager:getFileThreadHandler	()Lmqq/os/MqqHandler;
+    //   417: new 881	abmc
     //   420: dup
     //   421: aload_0
-    //   422: invokespecial 906	abfb:<init>	(Lcom/tencent/mobileqq/armap/config/ARMapConfigManager;)V
-    //   425: invokevirtual 912	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   422: invokespecial 882	abmc:<init>	(Lcom/tencent/mobileqq/armap/config/ARMapConfigManager;)V
+    //   425: invokevirtual 888	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   428: pop
     //   429: aload_0
     //   430: iconst_1
     //   431: putfield 404	com/tencent/mobileqq/armap/config/ARMapConfigManager:jdField_i_of_type_Boolean	Z
     //   434: aload_0
     //   435: lconst_0
-    //   436: invokespecial 525	com/tencent/mobileqq/armap/config/ARMapConfigManager:c	(J)V
+    //   436: invokespecial 500	com/tencent/mobileqq/armap/config/ARMapConfigManager:c	(J)V
     //   439: aload_0
-    //   440: invokespecial 914	com/tencent/mobileqq/armap/config/ARMapConfigManager:i	()V
+    //   440: invokespecial 890	com/tencent/mobileqq/armap/config/ARMapConfigManager:i	()V
     //   443: aload_0
-    //   444: invokespecial 916	com/tencent/mobileqq/armap/config/ARMapConfigManager:j	()V
+    //   444: invokespecial 892	com/tencent/mobileqq/armap/config/ARMapConfigManager:j	()V
     //   447: aload_0
     //   448: monitorexit
     //   449: return
@@ -1452,7 +1438,6 @@ public class ARMapConfigManager
       QLog.d("ARMapConfigManager", 2, "onDestroy");
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqArmapArMapObserver);
-    this.jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfigManager$ARMapShower = null;
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
@@ -1460,6 +1445,7 @@ public class ARMapConfigManager
       this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
     }
     ArMapIPCProxy.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ThreadManager.getUIHandler().post(new abmi(this));
   }
 }
 

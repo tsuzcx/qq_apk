@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aixe;
+import ajch;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -61,9 +61,9 @@ public class TroopBarImagePreviewAdapter
     this.jdField_a_of_type_Int = 9;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView = paramExtendGridView;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844504);
-    this.jdField_a_of_type_JavaLangCharSequence = BaseApplication.getContext().getText(2131430337);
-    this.jdField_b_of_type_JavaLangCharSequence = BaseApplication.getContext().getResources().getText(2131432674);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844568);
+    this.jdField_a_of_type_JavaLangCharSequence = BaseApplication.getContext().getText(2131430340);
+    this.jdField_b_of_type_JavaLangCharSequence = BaseApplication.getContext().getResources().getText(2131432688);
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mUseMemoryCache = false;
@@ -207,16 +207,16 @@ public class TroopBarImagePreviewAdapter
     int k = 2147483647;
     long l = System.currentTimeMillis();
     View localView;
-    aixe localaixe;
+    ajch localajch;
     int i;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969476, null);
-      localaixe = new aixe();
-      localaixe.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366643));
-      localaixe.b = ((ImageView)localView.findViewById(2131366645));
-      localaixe.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366644));
-      localView.setTag(localaixe);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969472, null);
+      localajch = new ajch();
+      localajch.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366641));
+      localajch.b = ((ImageView)localView.findViewById(2131366643));
+      localajch.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366642));
+      localView.setTag(localajch);
       i = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.a();
       paramView = localView.getLayoutParams();
       if ((paramView != null) && ((paramView instanceof AbsListView.LayoutParams))) {
@@ -228,10 +228,10 @@ public class TroopBarImagePreviewAdapter
       if (!a(paramInt)) {
         break label260;
       }
-      localaixe.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      localaixe.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840555);
-      localaixe.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
-      localaixe.b.setVisibility(8);
+      localajch.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      localajch.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130840570);
+      localajch.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
+      localajch.b.setVisibility(8);
     }
     label245:
     String str;
@@ -242,7 +242,7 @@ public class TroopBarImagePreviewAdapter
         QLog.d("TroopBar", 2, "---getView time is " + (System.currentTimeMillis() - l));
       }
       return localView;
-      localaixe = (aixe)paramView.getTag();
+      localajch = (ajch)paramView.getTag();
       localView = paramView;
       break;
       paramView.width = i;
@@ -262,7 +262,7 @@ public class TroopBarImagePreviewAdapter
       i = k;
       label306:
       i = Math.min(100, i);
-      localaixe.jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
+      localajch.jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
       paramView = new File(str);
       if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 18) {
         c();
@@ -276,12 +276,12 @@ public class TroopBarImagePreviewAdapter
     for (;;)
     {
       paramView.setBounds(0, 0, j, i);
-      localaixe.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramView);
-      localaixe.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_b_of_type_JavaLangCharSequence);
-      localaixe.b.setVisibility(0);
-      localaixe.b.setTag(Integer.valueOf(paramInt));
-      localaixe.b.setOnClickListener(this);
-      localaixe.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      localajch.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramView);
+      localajch.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_b_of_type_JavaLangCharSequence);
+      localajch.b.setVisibility(0);
+      localajch.b.setTag(Integer.valueOf(paramInt));
+      localajch.b.setOnClickListener(this);
+      localajch.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
       break;
       j = i;
       break label288;
@@ -338,7 +338,7 @@ public class TroopBarImagePreviewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarImagePreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

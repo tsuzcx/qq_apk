@@ -1,70 +1,23 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.LinkedList;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class wgy
-  extends BaseAdapter
+public final class wgy
+  implements Animation.AnimationListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List jdField_a_of_type_JavaUtilList = new LinkedList();
-  
-  public wgy(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, Context paramContext)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  boolean a(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    return true;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969073, null);
-      paramViewGroup = new wgv();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363896));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131363901));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131363201));
-      paramView.setTag(paramViewGroup);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
     }
-    for (;;)
-    {
-      wgx localwgx = (wgx)getItem(paramInt);
-      paramViewGroup.b.setText(localwgx.jdField_a_of_type_JavaLangCharSequence);
-      paramViewGroup.c.setText(localwgx.a());
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.b, localwgx.jdField_a_of_type_JavaLangString));
-      FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a, 1, localwgx.jdField_a_of_type_JavaLangString);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localFaceDrawable);
-      paramView.setContentDescription(localwgx.jdField_a_of_type_JavaLangCharSequence + " " + localwgx.a());
-      return paramView;
-      paramViewGroup = (wgv)paramView.getTag();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
     }
   }
 }

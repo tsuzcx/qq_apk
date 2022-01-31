@@ -289,6 +289,18 @@ public class QGPlayerNativeManager
     dispatchPlayEvent(paramString, 2305, localBundle);
   }
   
+  public static byte[] onGetValue(String paramString1, int paramInt, String paramString2)
+  {
+    if (c.a(paramString1)) {
+      return new byte[0];
+    }
+    paramString1 = getQGPlayListener(paramString1);
+    if (paramString1 != null) {
+      return paramString1.onGetValue(paramInt, paramString2);
+    }
+    return new byte[0];
+  }
+  
   public static void onLogCallback(int paramInt, String paramString1, String paramString2)
   {
     if (SimpleQGPlayer.logListener != null) {
@@ -322,6 +334,10 @@ public class QGPlayerNativeManager
       paramArrayOfByte = "begin to loading";
       continue;
       paramArrayOfByte = "update time";
+      localBundle.putLong("update_time_progress", paramLong1);
+      localBundle.putLong("update_time_duration", paramLong2);
+      continue;
+      paramArrayOfByte = "update buffered time";
       localBundle.putLong("update_time_progress", paramLong1);
       localBundle.putLong("update_time_duration", paramLong2);
       continue;

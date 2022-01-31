@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -19,26 +18,22 @@ public class ReportClientInfo
   
   private static void a(long paramLong, boolean paramBoolean)
   {
-    if (paramBoolean) {}
     try
     {
-      if (!BaseApplicationImpl.isFirstLogin) {
+      if (!a(paramLong)) {
         return;
       }
-      if (a(paramLong))
-      {
-        int i = new Random().nextInt() & 0x7FFFFFFF;
-        new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTask(paramLong, 1, i), 5000L);
-        int j = new Random().nextInt(50000);
-        new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTask(paramLong, 2, i), j + 120000);
-        i = new Random().nextInt() & 0x7FFFFFFF;
-        j = new Random().nextInt(50000);
-        new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTaskEx(paramLong, 1, i), j + 10000);
-        Handler localHandler = new Handler(ThreadManager.getSubThreadLooper());
-        j = new Random().nextInt(50000);
-        localHandler.postDelayed(new SecClientInfoTaskEx(paramLong, 2, i), j + 240000);
-        return;
-      }
+      int i = new Random().nextInt() & 0x7FFFFFFF;
+      new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTask(paramLong, 1, i), 20000L);
+      int j = new Random().nextInt(50000);
+      new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTask(paramLong, 2, i), j + 120000);
+      i = new Random().nextInt() & 0x7FFFFFFF;
+      j = new Random().nextInt(50000);
+      new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new SecClientInfoTaskEx(paramLong, 1, i), j + 60000);
+      Handler localHandler = new Handler(ThreadManager.getSubThreadLooper());
+      j = new Random().nextInt(50000);
+      localHandler.postDelayed(new SecClientInfoTaskEx(paramLong, 2, i), j + 240000);
+      return;
     }
     catch (Exception localException)
     {

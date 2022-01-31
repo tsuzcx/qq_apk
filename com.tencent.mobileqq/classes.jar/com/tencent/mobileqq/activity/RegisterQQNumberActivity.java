@@ -34,22 +34,22 @@ import mqq.app.AppRuntime;
 import mqq.observer.AccountObserver;
 import mqq.observer.WtloginObserver;
 import mqq.os.MqqHandler;
-import tqb;
-import tqc;
-import tqd;
-import tqe;
-import tqf;
-import tqg;
+import tut;
+import tuu;
+import tuv;
+import tuw;
+import tux;
+import tuy;
 
 public class RegisterQQNumberActivity
   extends RegisterNewBaseActivity
   implements View.OnClickListener
 {
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new tqd(this);
+  ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new tuv(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tqe(this);
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new tqc(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new tuw(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new tuu(this);
   private boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private byte[] b;
@@ -65,44 +65,44 @@ public class RegisterQQNumberActivity
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    for (int i = 2131434283;; i = 2131434284)
+    for (int i = 2131434299;; i = 2131434300)
     {
       c(i);
       b();
       a(100);
-      localObject1 = (ImageView)findViewById(2131374933);
+      localObject1 = (ImageView)findViewById(2131374985);
       ((ImageView)localObject1).setVisibility(0);
       localObject2 = new LinearLayout.LayoutParams(-2, -2);
       ((LinearLayout.LayoutParams)localObject2).rightMargin = ((int)(10.0F * getResources().getDisplayMetrics().density));
       ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      Object localObject4 = (ImageView)findViewById(2131374933);
-      TextView localTextView = (TextView)findViewById(2131370069);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372212));
-      localObject2 = (Button)findViewById(2131372214);
+      Object localObject4 = (ImageView)findViewById(2131374985);
+      TextView localTextView = (TextView)findViewById(2131370078);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372222));
+      localObject2 = (Button)findViewById(2131372224);
       ((Button)localObject2).setOnClickListener(this);
-      localObject1 = (TextView)findViewById(2131372213);
-      localObject3 = (TextView)findViewById(2131372215);
+      localObject1 = (TextView)findViewById(2131372223);
+      localObject3 = (TextView)findViewById(2131372225);
       if (this.f) {
         break;
       }
-      ((ImageView)localObject4).setImageResource(2130843860);
+      ((ImageView)localObject4).setImageResource(2130843926);
       localTextView.setVisibility(8);
       localObject4 = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject4).addRule(3, 2131372211);
+      ((RelativeLayout.LayoutParams)localObject4).addRule(3, 2131372221);
       ((RelativeLayout.LayoutParams)localObject4).topMargin = ((int)(50.0F * getResources().getDisplayMetrics().density));
       ((RelativeLayout.LayoutParams)localObject4).leftMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       ((RelativeLayout.LayoutParams)localObject4).rightMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject4);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 20.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434285);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434301);
       ((TextView)localObject1).setVisibility(8);
       localObject1 = new RelativeLayout.LayoutParams(-1, -2);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131372212);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131372222);
       ((RelativeLayout.LayoutParams)localObject1).topMargin = ((int)(50.0F * getResources().getDisplayMetrics().density));
       ((RelativeLayout.LayoutParams)localObject1).leftMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)(getResources().getDisplayMetrics().density * 27.5F));
       ((Button)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      ((Button)localObject2).setText(2131436320);
+      ((Button)localObject2).setText(2131436340);
       ((TextView)localObject3).setVisibility(8);
       return;
     }
@@ -111,7 +111,7 @@ public class RegisterQQNumberActivity
     {
       if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
       {
-        localObject2 = new SpannableString(String.format(getString(2131434322), new Object[] { this.jdField_d_of_type_JavaLangString }));
+        localObject2 = new SpannableString(String.format(getString(2131434338), new Object[] { this.jdField_d_of_type_JavaLangString }));
         ((SpannableString)localObject2).setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 8, this.jdField_d_of_type_JavaLangString.length() + 8, 33);
         ((TextView)localObject1).setText((CharSequence)localObject2);
         return;
@@ -122,7 +122,7 @@ public class RegisterQQNumberActivity
     if (!this.jdField_d_of_type_Boolean)
     {
       localObject2 = "+" + this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString.substring(0, 3) + "-" + this.jdField_a_of_type_JavaLangString.substring(3, 7) + "-" + this.jdField_a_of_type_JavaLangString.substring(7);
-      localObject3 = new SpannableString(String.format(getString(2131434321), new Object[] { localObject2 }));
+      localObject3 = new SpannableString(String.format(getString(2131434337), new Object[] { localObject2 }));
       ((SpannableString)localObject3).setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 9, ((String)localObject2).length() + 9, 33);
       ((TextView)localObject1).setText((CharSequence)localObject3);
       return;
@@ -181,12 +181,12 @@ public class RegisterQQNumberActivity
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new tqf(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new tux(this));
   }
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new tqg(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new tuy(this));
   }
   
   protected boolean isWrapContent()
@@ -225,7 +225,7 @@ public class RegisterQQNumberActivity
     this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.app.a(new tqb(this));
+      this.app.a(new tut(this));
       QQToast.a(BaseApplicationImpl.sApplication, "特征码匹配中。", 0).a();
     }
     LoginActivity.a(this.app, this.app.getAccount());
@@ -249,7 +249,7 @@ public class RegisterQQNumberActivity
         ReportController.a(this.app, "dc00898", "", "", "0X80072FC", "0X80072FC", 0, 0, "", "", "", "");
       }
       if (!NetworkUtil.d(BaseApplication.getContext())) {
-        a(2131433009, 0);
+        a(2131433023, 0);
       }
     }
     else
@@ -285,7 +285,7 @@ public class RegisterQQNumberActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130970922);
+    setContentView(2130970940);
     this.e = getIntent().getBooleanExtra("key_register_from_quick_register", false);
     if (this.e) {
       this.jdField_d_of_type_JavaLangString = getIntent().getStringExtra("key_register_secret_phone");
@@ -304,6 +304,12 @@ public class RegisterQQNumberActivity
       QLog.d("RegisterQQNumberActivity", 2, "onCreate ,pwd = " + paramBundle + ",mPassByte = " + this.jdField_b_of_type_ArrayOfByte);
     }
     this.jdField_d_of_type_Boolean = getIntent().getBooleanExtra("key_register_unbind", false);
+    if (this.app == null)
+    {
+      QLog.d("RegisterQQNumberActivity", 2, "onCreate app is null");
+      finish();
+      return;
+    }
     this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     this.f = getIntent().getBooleanExtra("key_register_result", true);
     a();
@@ -329,10 +335,10 @@ public class RegisterQQNumberActivity
     {
       paramBundle = "0X800735F";
       if (!this.f) {
-        break label443;
+        break label465;
       }
     }
-    label443:
+    label465:
     for (String str = "0X800735F";; str = "0X8007CCA")
     {
       ReportController.a(localQQAppInterface, "dc00898", "", "", paramBundle, str, 0, 0, "", "", "", "");
@@ -346,7 +352,9 @@ public class RegisterQQNumberActivity
   protected void onDestroy()
   {
     super.onDestroy();
-    this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+    if (this.app != null) {
+      this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+    }
     c();
     g();
   }

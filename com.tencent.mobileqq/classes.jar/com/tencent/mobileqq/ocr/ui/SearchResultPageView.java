@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.ui;
 
-import agdi;
+import aghs;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -61,12 +61,12 @@ public class SearchResultPageView
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      paramContext = LayoutInflater.from(paramContext).inflate(2130970503, null);
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramContext.findViewById(2131363924));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131366739));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363925));
+      paramContext = LayoutInflater.from(paramContext).inflate(2130970515, null);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramContext.findViewById(2131363949));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131366737));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363950));
       this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment.a);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131366740));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext.findViewById(2131366738));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
       this.jdField_a_of_type_AndroidViewView = paramContext;
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultAdapter);
@@ -93,12 +93,12 @@ public class SearchResultPageView
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131430527);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131430530);
       continue;
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131439041);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131439065);
       continue;
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
@@ -161,7 +161,7 @@ public class SearchResultPageView
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new agdi(this), 50L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aghs(this), 50L);
   }
 }
 

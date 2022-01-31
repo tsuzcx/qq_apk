@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import ajwv;
-import ajww;
+import akei;
+import akej;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
@@ -65,7 +65,7 @@ public class TroopPicEffectsController
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a(), -1, paramInt2);
       this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.setBitmap(paramBitmap);
       this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ajww(this, paramOnAnimationEndListener), 6000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akej(this, paramOnAnimationEndListener), 6000L);
       return;
       this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new PhantomPicView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
       continue;
@@ -80,7 +80,7 @@ public class TroopPicEffectsController
     PicReq localPicReq = PicBusiManager.a(6, 1536, 1);
     PicDownloadInfo localPicDownloadInfo = paramMessageForTroopEffectPic.getPicDownloadInfo();
     localPicReq.a(paramMessageForTroopEffectPic, localPicDownloadInfo);
-    localPicReq.a(new ajwv(this, localPicDownloadInfo, paramTroopChatPie, paramMessageForTroopEffectPic, paramBoolean));
+    localPicReq.a(new akei(this, localPicDownloadInfo, paramTroopChatPie, paramMessageForTroopEffectPic, paramBoolean));
     PicBusiManager.a(localPicReq, paramTroopChatPie.a);
   }
   
@@ -91,7 +91,7 @@ public class TroopPicEffectsController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.BusinessCardManager;
-import com.tencent.mobileqq.businessCard.BusinessCardObserver;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-public class ste
-  extends BusinessCardObserver
+class ste
+  implements Runnable
 {
-  public ste(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  ste(std paramstd) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      BusinessCardManager localBusinessCardManager = (BusinessCardManager)this.a.app.getManager(111);
-      this.a.a = localBusinessCardManager.a(paramString);
-    }
+    this.a.a.a(this.a.a.a.a, true);
   }
 }
 

@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import mqq.os.MqqHandler;
-import zhu;
+import zot;
 
 public class NearbyGrayTipsManager$GreetWording
   implements Serializable
@@ -93,7 +93,7 @@ public class NearbyGrayTipsManager$GreetWording
         if ((!paramBoolean) || (localObject1 == null)) {
           continue;
         }
-        ThreadManager.getFileThreadHandler().post(new zhu(this, (GreetWording)localObject1));
+        ThreadManager.getFileThreadHandler().post(new zot(this, (GreetWording)localObject1));
         return;
       }
     }

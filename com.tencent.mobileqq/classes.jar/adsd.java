@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.flashchat.FlashChatObserver;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
 
-class adsd
-  implements Runnable
+public class adsd
+  extends FlashChatObserver
 {
-  adsd(adsc paramadsc) {}
+  public adsd(FlashChatTextEffectView paramFlashChatTextEffectView) {}
   
-  public void run()
+  public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.a(0, this.a.a.a);
+    super.b(paramBoolean, paramBundle);
+    if (paramBoolean) {
+      this.a.a();
+    }
   }
 }
 

@@ -1,29 +1,43 @@
-import android.graphics.Bitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper;
+import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.IdleTask;
+import java.util.ArrayList;
 
-class akyf
-  implements ImageAssetDelegate
+public class akyf
+  implements MessageQueue.IdleHandler
 {
-  akyf(akye paramakye) {}
+  public akyf(SwiftBrowserIdleTaskHelper paramSwiftBrowserIdleTaskHelper) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public boolean queueIdle()
   {
-    paramLottieImageAsset = this.a.a + paramLottieImageAsset.getFileName();
-    QLog.i("WorldCupShareFragment", 1, "initLoadingAnimation. fetchBitmap. imageFileName = " + paramLottieImageAsset);
-    try
+    Object localObject;
+    int i;
+    if (!SwiftBrowserIdleTaskHelper.a().isEmpty())
     {
-      paramLottieImageAsset = SafeBitmapFactory.decodeFile(paramLottieImageAsset);
-      if (paramLottieImageAsset != null) {}
-      return paramLottieImageAsset;
+      localObject = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.a().remove(0);
+      i = ((SwiftBrowserIdleTaskHelper.IdleTask)localObject).a();
+      if (2 == i) {
+        SwiftBrowserIdleTaskHelper.a().add(localObject);
+      }
     }
-    catch (Exception paramLottieImageAsset)
+    else
     {
-      QLog.i("WorldCupShareFragment", 2, "initLoadingAnimation failed. err = " + paramLottieImageAsset.getMessage());
+      label38:
+      localObject = this.a;
+      if (SwiftBrowserIdleTaskHelper.a().isEmpty()) {
+        break label75;
+      }
     }
-    return null;
+    label75:
+    for (boolean bool = true;; bool = false)
+    {
+      ((SwiftBrowserIdleTaskHelper)localObject).a = bool;
+      return this.a.a;
+      if (1 != i) {
+        break;
+      }
+      break label38;
+    }
   }
 }
 

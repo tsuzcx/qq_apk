@@ -1,108 +1,66 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.util.Pair;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.util.WeakReferenceHandler;
 
 public class stn
-  implements TextWatcher
+  extends CardObserver
 {
-  private int jdField_a_of_type_Int;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  public boolean a;
-  private int b;
-  public boolean b;
-  private int c;
+  public stn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public stn(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, int paramInt, EditText paramEditText)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    localObject1 = paramEditable;
-    if (paramEditable.getBytes().length > this.jdField_a_of_type_Int) {
-      localEditable = paramEditable;
-    }
-    try
+    for (;;)
     {
-      String str1 = paramEditable.substring(0, this.jdField_b_of_type_Int);
-      localEditable = paramEditable;
-      String str2 = paramEditable.substring(this.jdField_b_of_type_Int + this.c, paramEditable.length());
-      localEditable = paramEditable;
-      Object localObject2 = paramEditable.substring(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.c);
-      localObject1 = paramEditable;
-      localEditable = paramEditable;
-      if (str1.getBytes().length + str2.getBytes().length <= this.jdField_a_of_type_Int)
+      try
       {
-        localObject1 = localObject2;
-        for (;;)
-        {
-          localEditable = paramEditable;
-          if (paramEditable.getBytes().length <= this.jdField_a_of_type_Int) {
-            break;
-          }
-          localEditable = paramEditable;
-          if (((String)localObject1).length() <= 0) {
-            break;
-          }
-          localEditable = paramEditable;
-          localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 1);
-          localEditable = paramEditable;
-          paramEditable = str1 + (String)localObject1 + str2;
+        if (this.a.isFinishing()) {
+          break;
         }
-        localEditable = paramEditable;
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
-        localEditable = paramEditable;
-        localObject2 = this.jdField_a_of_type_AndroidWidgetEditText;
-        localEditable = paramEditable;
-        int i = str1.length();
-        localEditable = paramEditable;
-        ((EditText)localObject2).setSelection(((String)localObject1).length() + i);
-        localObject1 = paramEditable;
+        this.a.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacks(this.a.jdField_b_of_type_JavaLangRunnable);
+        this.a.G();
+        if ((!paramBoolean) || (paramObject == null)) {
+          break;
+        }
+        if ((paramObject instanceof Card))
+        {
+          ThreadManager.post(new sto(this, (Card)paramObject), 5, null, true);
+          return;
+        }
+        if (!(paramObject instanceof Pair)) {
+          break;
+        }
+        paramObject = (Pair)paramObject;
+        if (((Integer)paramObject.first).intValue() == 101107)
+        {
+          this.a.f = 1;
+          this.a.J();
+          return;
+        }
       }
-    }
-    catch (Exception paramEditable)
-    {
-      for (;;)
+      catch (Exception paramObject)
       {
-        label292:
-        localObject1 = localEditable;
-      }
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_AndroidWidgetEditText != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.jdField_a_of_type_AndroidWidgetEditText) {
-        break label292;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131437497), (String)localObject1);
-    }
-    do
-    {
-      return;
-      this.jdField_b_of_type_Boolean = true;
-      break;
-      if (this.jdField_a_of_type_AndroidWidgetEditText == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131437509), (String)localObject1);
+        paramObject.printStackTrace();
         return;
       }
-    } while (this.jdField_a_of_type_AndroidWidgetEditText != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131437517), (String)localObject1);
+      if (((Integer)paramObject.first).intValue() == 101108)
+      {
+        this.a.f = 2;
+      }
+      else
+      {
+        if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999))
+        {
+          Toast.makeText(this.a.getApplicationContext(), (CharSequence)paramObject.second, 0).show();
+          return;
+        }
+        Toast.makeText(this.a.getApplicationContext(), 2131436764, 0).show();
+      }
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

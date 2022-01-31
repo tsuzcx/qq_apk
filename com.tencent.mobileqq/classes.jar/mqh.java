@@ -1,22 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebContentGetCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.TimeUtil;
 
-class mqh
-  implements View.OnClickListener
+public class mqh
+  implements FastWebModule.FastWebContentGetCallback
 {
-  mqh(mqg parammqg, View.OnClickListener paramOnClickListener) {}
+  public mqh(FastWebActivity paramFastWebActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onClick: " + mqg.a(this.jdField_a_of_type_Mqg).mChannelCoverName);
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    if ((paramBoolean1) && (!paramBoolean2) && (paramFastWebArticleInfo != null))
+    {
+      paramBoolean1 = true;
+      TimeUtil.b("fast_web_show_light_house_2");
     }
-    ReadInJoyHelper.a(mqg.a(this.jdField_a_of_type_Mqg).mChannelCoverId, true);
-    mqg.a(this.jdField_a_of_type_Mqg);
+    for (;;)
+    {
+      this.a.runOnUiThread(new mqi(this, paramBoolean1, paramFastWebArticleInfo));
+      return;
+      paramBoolean1 = false;
+    }
   }
 }
 

@@ -1,14 +1,15 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.observer.BusinessObserver;
 
 class xnv
-  implements Runnable
+  implements BusinessObserver
 {
-  xnv(xnu paramxnu) {}
+  xnv(xnu paramxnu, long paramLong) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    EditLocalVideoActivity.a(this.a.a.a).setVisibility(8);
+    ThreadManager.postImmediately(new xnw(this, paramBoolean, paramBundle, paramInt), null, false);
   }
 }
 

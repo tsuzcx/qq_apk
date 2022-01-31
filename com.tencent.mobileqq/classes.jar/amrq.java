@@ -1,32 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneHelper;
+import android.graphics.drawable.Drawable;
+import cooperation.comic.ui.QQComicTabBarView;
 
-public final class amrq
+class amrq
   implements Runnable
 {
-  public amrq(QQAppInterface paramQQAppInterface, PreloadProcHitPluginSession paramPreloadProcHitPluginSession) {}
+  amrq(amrp paramamrp, Drawable paramDrawable) {}
   
   public void run()
   {
-    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessEnable", 1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard enable:" + i);
-    }
-    if (i == 1)
-    {
-      long l = DeviceInfoUtil.e() / 1048576L;
-      i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessRamThreshold", 1024);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneHelper", 2, "preloadInFriendProfileCard totalMemSize:" + l + ",threshold:" + i);
-      }
-      if (l >= i) {
-        QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "FriendProfileCardActivity", this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession);
-      }
-    }
+    this.jdField_a_of_type_Amrp.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

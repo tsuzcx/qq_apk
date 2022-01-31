@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class slc
+  implements Runnable
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public slc(Conversation paramConversation) {}
   
-  private slc(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public void run()
+  {
+    PublicAccountManager.a().a(this.a.a);
+  }
 }
 
 

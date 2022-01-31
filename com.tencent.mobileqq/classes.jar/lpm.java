@@ -1,16 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ForeBackGround;
 
-public class lpm
-  implements Runnable
+public final class lpm
+  implements lpp
 {
-  public lpm(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
+  public void a() {}
   
-  public void run()
+  public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    }
+    ReadinjoySPEventReport.a().a("2909288299", ReadinjoySPEventReport.ForeBackGround.b, false, null, false);
   }
 }
 

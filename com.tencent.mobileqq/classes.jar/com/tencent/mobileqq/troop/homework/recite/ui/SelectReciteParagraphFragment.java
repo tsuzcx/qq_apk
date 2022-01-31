@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import ajjw;
-import ajjx;
-import ajjy;
+import ajri;
+import ajrj;
+import ajrk;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +31,7 @@ public class SelectReciteParagraphFragment
   extends AbsHomeWorkFragment
   implements HttpWebCgiAsyncTask.Callback
 {
-  private ajjy jdField_a_of_type_Ajjy;
+  private ajrk jdField_a_of_type_Ajrk;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ArticleInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo;
   private TroopReciteCgiHandler jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsTroopReciteCgiHandler;
@@ -58,21 +58,21 @@ public class SelectReciteParagraphFragment
     AbsHomeWorkFragment.a((Activity)paramContext, SelectReciteParagraphFragment.class, localIntent, paramInt, "");
   }
   
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131368452));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131368454));
+  }
+  
   private void c()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)a(2131368450));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131368452));
+    setTitle("选择背诵的段落");
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new ajri(this));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ajrj(this));
+    e();
   }
   
   private void d()
-  {
-    a("选择背诵的段落");
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new ajjw(this));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ajjx(this));
-    f();
-  }
-  
-  private void e()
   {
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface != null) {
@@ -80,18 +80,18 @@ public class SelectReciteParagraphFragment
     }
   }
   
-  private void f()
+  private void e()
   {
     if (this.jdField_a_of_type_JavaUtilSet.isEmpty())
     {
       this.jdField_a_of_type_AndroidWidgetButton.setText("背诵选中段落");
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
     }
-    while (this.jdField_a_of_type_Ajjy == null) {
+    while (this.jdField_a_of_type_Ajrk == null) {
       return;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    if (this.jdField_a_of_type_JavaUtilSet.size() == this.jdField_a_of_type_Ajjy.getCount())
+    if (this.jdField_a_of_type_JavaUtilSet.size() == this.jdField_a_of_type_Ajrk.getCount())
     {
       this.jdField_a_of_type_AndroidWidgetButton.setText("背诵全文");
       return;
@@ -101,7 +101,7 @@ public class SelectReciteParagraphFragment
     if (localIterator.hasNext())
     {
       int j = ((Integer)localIterator.next()).intValue();
-      String str = this.jdField_a_of_type_Ajjy.a(j).content_html;
+      String str = this.jdField_a_of_type_Ajrk.a(j).content_html;
       if (str == null) {
         break label178;
       }
@@ -116,26 +116,16 @@ public class SelectReciteParagraphFragment
     }
   }
   
-  private void g()
+  private void f()
   {
     QQToast.a(getActivity(), "网络异常，请检查网络设置。", 0).a();
   }
   
-  protected int a()
+  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return 2130969911;
-  }
-  
-  protected void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("troop_uin", "");
-    this.b = paramBundle.getString("kid", "");
-    paramBundle = paramBundle.getIntegerArrayList("selected_list");
-    if ((paramBundle != null) && (!paramBundle.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilSet.addAll(paramBundle);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsTroopReciteCgiHandler = new TroopReciteCgiHandler();
+    b();
+    c();
+    d();
   }
   
   protected void a(@Nullable String paramString) {}
@@ -153,19 +143,29 @@ public class SelectReciteParagraphFragment
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo = ArticleInfo.onHandleGetArticleDetail(paramBundle, paramJSONObject);
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo == null)
     {
-      g();
+      f();
       return;
     }
-    this.jdField_a_of_type_Ajjy = new ajjy(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_JavaUtilSet);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ajjy);
-    f();
+    this.jdField_a_of_type_Ajrk = new ajrk(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs, this.jdField_a_of_type_JavaUtilSet);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ajrk);
+    e();
   }
   
-  protected void b(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected int getContentLayoutId()
   {
-    c();
-    d();
-    e();
+    return 2130969922;
+  }
+  
+  protected void init(Bundle paramBundle)
+  {
+    super.init(paramBundle);
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("troop_uin", "");
+    this.b = paramBundle.getString("kid", "");
+    paramBundle = paramBundle.getIntegerArrayList("selected_list");
+    if ((paramBundle != null) && (!paramBundle.isEmpty())) {
+      this.jdField_a_of_type_JavaUtilSet.addAll(paramBundle);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsTroopReciteCgiHandler = new TroopReciteCgiHandler();
   }
   
   public void onDestroy()
@@ -179,7 +179,7 @@ public class SelectReciteParagraphFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment
  * JD-Core Version:    0.7.0.1
  */

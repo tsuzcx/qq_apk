@@ -5,7 +5,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.biz.pubaccount.util.ScreenshotContentObserver;
-import mje;
+import mmv;
 
 public class ReadInJoyScreenShotReporter
 {
@@ -24,7 +24,7 @@ public class ReadInJoyScreenShotReporter
       int i = localDisplayMetrics.widthPixels;
       int j = localDisplayMetrics.heightPixels;
       jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyScreenShotReporter.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver = new ScreenshotContentObserver(paramActivity, i, j);
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyScreenShotReporter.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver.a(new mje());
+      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyScreenShotReporter.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver.a(new mmv());
     }
     return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyScreenShotReporter;
   }

@@ -1,17 +1,17 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
 
 public class aohm
   implements Runnable
 {
-  public aohm(RMVideoRecordState paramRMVideoRecordState, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public aohm(DoodleLayout paramDoodleLayout, LineLayer paramLineLayer, int paramInt, int[] paramArrayOfInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.unlockFrameSync();
-    }
+    ((PersonalityOperator)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerLineLayer.a.a(102)).b(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ArrayOfInt[0] = 1;
   }
 }
 

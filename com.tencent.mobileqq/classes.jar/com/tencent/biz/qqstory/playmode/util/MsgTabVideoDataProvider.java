@@ -15,8 +15,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import nmo;
-import nmp;
+import nqy;
+import nqz;
 
 public class MsgTabVideoDataProvider
 {
@@ -106,7 +106,7 @@ public class MsgTabVideoDataProvider
     for (int j = 1;; j = 2)
     {
       StoryReportor.b("play_video", "msg_tab", i, j, new String[] { String.valueOf(l - paramLong), String.valueOf(paramInt1), String.valueOf(paramInt2) });
-      ThreadManager.getUIHandler().post(new nmp(this, paramMsgTabNodeInfo2, paramMsgTabNodeInfo1, paramInt1, paramBoolean1, paramList, paramInt2, paramBoolean2));
+      ThreadManager.getUIHandler().post(new nqz(this, paramMsgTabNodeInfo2, paramMsgTabNodeInfo1, paramInt1, paramBoolean1, paramList, paramInt2, paramBoolean2));
       return;
       i = 2;
       break;
@@ -142,7 +142,7 @@ public class MsgTabVideoDataProvider
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.msgTab.MsgTabVideoDataProvider", 2, new Object[] { "requestVideoList first db then network. nodeId=", paramMsgTabNodeInfo1.a });
     }
-    Stream.of(paramMsgTabNodeInfo1).map(new ThreadOffFunction(2)).map(new MsgTabNodeVidListPullSegment(false)).map(new MsgTabNodePullVideoBasicInfoSegment()).map(new MsgTabNodeInsertLocalVideoInfoSegment(paramMsgTabNodeInfo1)).subscribe(new nmo(this, paramMsgTabNodeInfo1, paramMsgTabNodeInfo2, paramInt, l));
+    Stream.of(paramMsgTabNodeInfo1).map(new ThreadOffFunction(2)).map(new MsgTabNodeVidListPullSegment(false)).map(new MsgTabNodePullVideoBasicInfoSegment()).map(new MsgTabNodeInsertLocalVideoInfoSegment(paramMsgTabNodeInfo1)).subscribe(new nqy(this, paramMsgTabNodeInfo1, paramMsgTabNodeInfo2, paramInt, l));
   }
   
   public void a(String paramString1, String paramString2)

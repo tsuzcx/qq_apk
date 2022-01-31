@@ -1,18 +1,17 @@
 package cooperation.qzone.plugin;
 
-import amxs;
-import amxt;
-import amxv;
-import amxw;
-import amxx;
-import amxz;
-import amyd;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.RemoteException;
 import android.text.TextUtils;
+import anfg;
+import anfh;
+import anfj;
+import anfk;
+import anfl;
+import anfn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -32,11 +31,11 @@ import mqq.manager.Manager;
 
 public class QZonePluginManager
   extends IQZonePluginManager
-  implements amxs, amxt, Handler.Callback, QZoneLiveSoDownloader.OnSoDownloadListener, QZonePluginDownloader.OnPluginDownloadListner, QZonePluginUpdater.OnUpdateListner, Manager
+  implements Handler.Callback, anfg, anfh, QZoneLiveSoDownloader.OnSoDownloadListener, QZonePluginDownloader.OnPluginDownloadListner, QZonePluginUpdater.OnUpdateListner, Manager
 {
-  private amxz jdField_a_of_type_Amxz;
   Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private anfn jdField_a_of_type_Anfn;
   private QZoneLiveSoDownloader jdField_a_of_type_CooperationQzonePluginQZoneLiveSoDownloader;
   private QZonePluginDownloader jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader;
   private QZonePluginInstaller jdField_a_of_type_CooperationQzonePluginQZonePluginInstaller;
@@ -53,6 +52,8 @@ public class QZonePluginManager
   
   public QZonePluginManager(QQAppInterface paramQQAppInterface)
   {
+    QLog.i("QZonePluginManger", 1, "QZonePluginManager init");
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
     this.jdField_a_of_type_AndroidContentContext = paramQQAppInterface.getApp();
     this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater = new QZonePluginUpdater(paramQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidOsHandler);
     this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a(this);
@@ -62,12 +63,12 @@ public class QZonePluginManager
     this.jdField_a_of_type_CooperationQzonePluginQZoneLiveSoDownloader = new QZoneLiveSoDownloader(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_CooperationQzonePluginQZonePluginInstaller = new QZonePluginInstaller(this.jdField_a_of_type_AndroidContentContext);
     this.c = false;
-    amyd.a().a(paramQQAppInterface);
+    QZoneRemotePluginHandler.a().a(paramQQAppInterface);
   }
   
   private void a(int paramInt, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams, IQZonePluginManager.OnPluginReadyListener paramOnPluginReadyListener)
   {
-    if (c()) {}
+    if (paramPluginParams == null) {}
     do
     {
       do
@@ -76,10 +77,11 @@ public class QZonePluginManager
         {
           do
           {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("QZonePluginManger", 2, "doInstallAndLaunch. confirmCode, pluginId:" + paramInt + "," + paramPluginParams.b);
-            }
+            do
+            {
+              return;
+              QLog.i("QZonePluginManger", 1, "doInstallAndLaunch. confirmCode, pluginId:" + paramInt + "," + paramPluginParams.b);
+            } while (c());
             if (this.jdField_b_of_type_Boolean) {
               break;
             }
@@ -115,7 +117,7 @@ public class QZonePluginManager
           ((QZonePluginManager.LaunchState)localObject2).jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
           try
           {
-            a((String)localObject1, new amxx(this, (QZonePluginManager.LaunchState)localObject2), 0);
+            a((String)localObject1, new anfl(this, (QZonePluginManager.LaunchState)localObject2), 0);
             return;
           }
           catch (RemoteException paramContext)
@@ -134,7 +136,7 @@ public class QZonePluginManager
     ((QZonePluginManager.LaunchState)localObject2).jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener = paramOnPluginReadyListener;
     try
     {
-      a((String)localObject1, new amxx(this, (QZonePluginManager.LaunchState)localObject2), 0);
+      a((String)localObject1, new anfl(this, (QZonePluginManager.LaunchState)localObject2), 0);
       return;
     }
     catch (RemoteException paramContext)
@@ -145,7 +147,7 @@ public class QZonePluginManager
   
   private void a(String paramString, int paramInt)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amxv(this, paramString, paramInt));
+    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new anfj(this, paramString, paramInt));
   }
   
   private boolean a(int paramInt)
@@ -155,51 +157,48 @@ public class QZonePluginManager
   
   private PluginRecord b(String paramString)
   {
-    Object localObject2 = null;
-    if (c()) {}
+    if (c()) {
+      QLog.i("QZonePluginManger", 1, "getPluginRecordInner: manager is close. pluginId=" + paramString);
+    }
     do
     {
-      return localObject2;
+      return null;
       QLog.i("QZonePluginManger", 1, "getPluginRecordInner " + paramString + "");
     } while (TextUtils.isEmpty(paramString));
-    localObject2 = (PluginRecord)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    QLog.i("QZonePluginManger", 1, "mProcessingPlugins getInstalledPlugininfo " + localObject2 + "");
-    Object localObject1;
-    if (localObject2 == null)
+    PluginRecord localPluginRecord2 = (PluginRecord)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    QLog.i("QZonePluginManger", 1, "mProcessingPlugins getInstalledPlugininfo " + localPluginRecord2 + "");
+    PluginRecord localPluginRecord1;
+    if (localPluginRecord2 == null)
     {
-      localObject1 = this.jdField_a_of_type_CooperationQzonePluginQZonePluginInstaller.a(paramString);
-      QLog.i("QZonePluginManger", 1, "installer getInstalledPlugininfo " + localObject1 + "");
-      if (localObject1 == null)
+      localPluginRecord1 = this.jdField_a_of_type_CooperationQzonePluginQZonePluginInstaller.a(paramString);
+      QLog.i("QZonePluginManger", 1, "installer getInstalledPlugininfo " + localPluginRecord1 + "");
+      if (localPluginRecord1 == null)
       {
-        localObject1 = this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a(paramString);
-        QLog.i("QZonePluginManger", 1, "updater getNewPluginRecord " + localObject1 + "");
+        localPluginRecord1 = this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a(paramString);
+        QLog.i("QZonePluginManger", 1, "updater getNewPluginRecord " + localPluginRecord1 + "");
       }
     }
     for (;;)
     {
-      localObject2 = localObject1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QZonePluginManger", 2, "getPluginRecordInner final record " + localObject1 + "");
-      return localObject1;
-      boolean bool = this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a((PluginRecord)localObject1);
+      QLog.i("QZonePluginManger", 1, "getPluginRecordInner final record " + localPluginRecord1 + "");
+      return localPluginRecord1;
+      boolean bool = this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a(localPluginRecord1);
       QLog.i("QZonePluginManger", 1, "updater.checkUpToDate: " + bool + "");
       if (!bool)
       {
-        localObject1 = this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a(paramString);
-        QLog.i("QZonePluginManger", 1, "updater getNewPluginRecord " + localObject1 + "");
+        localPluginRecord1 = this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a(paramString);
+        QLog.i("QZonePluginManger", 1, "updater getNewPluginRecord " + localPluginRecord1 + "");
         continue;
-        int i = ((PluginRecord)localObject2).jdField_a_of_type_Int;
+        int i = localPluginRecord2.jdField_a_of_type_Int;
         if ((i != -1) && (i != 4))
         {
-          localObject1 = localObject2;
+          localPluginRecord1 = localPluginRecord2;
           if (i != -2) {}
         }
         else
         {
           this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-          localObject1 = localObject2;
+          localPluginRecord1 = localPluginRecord2;
         }
       }
     }
@@ -207,7 +206,7 @@ public class QZonePluginManager
   
   private void b(Context paramContext, IQZonePluginManager.PluginParams paramPluginParams, IQZonePluginManager.OnPluginReadyListener paramOnPluginReadyListener)
   {
-    if (c()) {}
+    if (paramPluginParams == null) {}
     Object localObject;
     do
     {
@@ -216,10 +215,8 @@ public class QZonePluginManager
         do
         {
           return;
-        } while (paramPluginParams == null);
-        if (QLog.isColorLevel()) {
-          QLog.d("QZonePluginManger", 2, "checkUpdate:" + paramPluginParams.b);
-        }
+          QLog.i("QZonePluginManger", 1, "checkUpdate:" + paramPluginParams.b);
+        } while (c());
         if (this.jdField_b_of_type_Boolean) {
           break;
         }
@@ -306,14 +303,11 @@ public class QZonePluginManager
   
   private void c()
   {
+    QLog.i("QZonePluginManger", 2, "getPluginList  pluginInfoRequesting:" + this.jdField_a_of_type_Boolean);
     if (c()) {}
-    do
-    {
+    while (this.jdField_a_of_type_Boolean) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, "getPluginList  pluginInfoRequesting:" + this.jdField_a_of_type_Boolean + "");
-      }
-    } while (this.jdField_a_of_type_Boolean);
+    }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a();
   }
@@ -325,38 +319,30 @@ public class QZonePluginManager
   
   private void d()
   {
+    QLog.i("QZonePluginManger", 1, "getPluginListIfNeed  pluginInfoRequesting:" + this.jdField_a_of_type_Boolean + " isReady:" + a() + " :lastUpdateSuccess:" + this.d);
     if (c()) {}
-    do
-    {
+    while ((this.jdField_a_of_type_Boolean) || (this.d)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, "getPluginListIfNeed  pluginInfoRequesting:" + this.jdField_a_of_type_Boolean + " isReady:" + a() + " :lastUpdateSuccess:" + this.d);
-      }
-    } while ((this.jdField_a_of_type_Boolean) || (this.d));
+    }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
   }
   
   public PluginRecord a(String paramString)
   {
-    Object localObject2 = null;
-    if (c()) {}
-    Object localObject1;
-    do
-    {
-      do
-      {
-        return localObject2;
-      } while (TextUtils.isEmpty(paramString));
-      localObject2 = b(paramString);
-      localObject1 = localObject2;
-      if (localObject2 != null) {
-        localObject1 = ((PluginRecord)localObject2).a();
-      }
-      d();
-      localObject2 = localObject1;
-    } while (!QLog.isColorLevel());
-    QLog.d("QZonePluginManger", 2, "queryPlugin queryPlugin：" + paramString + ",record:" + localObject1);
-    return localObject1;
+    if (c()) {
+      QLog.i("QZonePluginManger", 1, "queryPlugin: manager is close. pluginId=" + paramString);
+    }
+    while (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    PluginRecord localPluginRecord2 = b(paramString);
+    PluginRecord localPluginRecord1 = localPluginRecord2;
+    if (localPluginRecord2 != null) {
+      localPluginRecord1 = localPluginRecord2.a();
+    }
+    d();
+    QLog.i("QZonePluginManger", 1, "queryPlugin queryPlugin：" + paramString + ",record:" + localPluginRecord1);
+    return localPluginRecord1;
   }
   
   public void a()
@@ -364,7 +350,7 @@ public class QZonePluginManager
     if (QLog.isColorLevel()) {
       QLog.d("QZonePluginManger", 1, "triggerQQDownloadPtuFilter");
     }
-    QQAppInterface localQQAppInterface = amyd.a().a();
+    QQAppInterface localQQAppInterface = QZoneRemotePluginHandler.a().a();
     if (localQQAppInterface == null) {
       QLog.w("QZonePluginManger", 1, "triggerQQDownloadPtuFilter, app is null");
     }
@@ -423,10 +409,8 @@ public class QZonePluginManager
   
   public void a(OnQZoneLiveSoDownloadListener paramOnQZoneLiveSoDownloadListener, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 1, "installPituSo");
-    }
-    if (amyd.a().a() == null) {
+    QLog.i("QZonePluginManger", 1, "installPituSo");
+    if (QZoneRemotePluginHandler.a().a() == null) {
       QLog.w("QZonePluginManger", 1, "installPituSo, app is null");
     }
     do
@@ -440,35 +424,37 @@ public class QZonePluginManager
   
   public void a(PluginRecord paramPluginRecord)
   {
-    if (c()) {}
+    QLog.i("QZonePluginManger", 1, "onDownLoadStart record:" + paramPluginRecord);
+    if (c()) {
+      break label33;
+    }
     for (;;)
     {
+      label33:
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, "onDownLoadStart record:" + paramPluginRecord);
-      }
       if (paramPluginRecord != null)
       {
         Object localObject = (PluginRecord)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramPluginRecord.f);
-        if (localObject != null)
+        if (localObject == null) {
+          break;
+        }
+        ((PluginRecord)localObject).jdField_a_of_type_Int = 1;
+        localObject = (WeakReference)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramPluginRecord.f);
+        if (localObject == null) {
+          break;
+        }
+        try
         {
-          ((PluginRecord)localObject).jdField_a_of_type_Int = 1;
-          localObject = (WeakReference)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramPluginRecord.f);
-          if (localObject != null) {
-            try
-            {
-              localObject = (OnQZonePluginInstallListner)((WeakReference)localObject).get();
-              if (localObject != null)
-              {
-                ((OnQZonePluginInstallListner)localObject).a(paramPluginRecord.f);
-                return;
-              }
-            }
-            catch (RemoteException paramPluginRecord)
-            {
-              QLog.e("QZonePluginManger", 1, paramPluginRecord, new Object[0]);
-            }
+          localObject = (OnQZonePluginInstallListner)((WeakReference)localObject).get();
+          if (localObject != null)
+          {
+            ((OnQZonePluginInstallListner)localObject).a(paramPluginRecord.f);
+            return;
           }
+        }
+        catch (RemoteException paramPluginRecord)
+        {
+          QLog.e("QZonePluginManger", 1, paramPluginRecord, new Object[0]);
         }
       }
     }
@@ -476,37 +462,39 @@ public class QZonePluginManager
   
   public void a(PluginRecord paramPluginRecord, int paramInt)
   {
-    if (c()) {}
+    QLog.i("QZonePluginManger", 1, "onDownloadFailed record:" + paramPluginRecord);
+    if (c()) {
+      break label33;
+    }
+    label33:
     Object localObject;
     for (;;)
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, "onDownloadFailed record:" + paramPluginRecord);
-      }
       if (paramPluginRecord != null)
       {
         paramPluginRecord.jdField_a_of_type_Int = -2;
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramPluginRecord.f);
         localObject = (WeakReference)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramPluginRecord.f);
-        if (localObject != null) {
-          try
-          {
-            localObject = (OnQZonePluginInstallListner)((WeakReference)localObject).get();
-            if (localObject != null) {
-              if (-9998 == paramInt)
-              {
-                ((OnQZonePluginInstallListner)localObject).a(paramPluginRecord.f, 8);
-                b(paramPluginRecord.f, 8);
-                return;
-              }
+        if (localObject == null) {
+          break;
+        }
+        try
+        {
+          localObject = (OnQZonePluginInstallListner)((WeakReference)localObject).get();
+          if (localObject != null) {
+            if (-9998 == paramInt)
+            {
+              ((OnQZonePluginInstallListner)localObject).a(paramPluginRecord.f, 8);
+              b(paramPluginRecord.f, 8);
+              return;
             }
           }
-          catch (RemoteException paramPluginRecord)
-          {
-            QLog.e("QZonePluginManger", 1, paramPluginRecord, new Object[0]);
-            return;
-          }
+        }
+        catch (RemoteException paramPluginRecord)
+        {
+          QLog.e("QZonePluginManger", 1, paramPluginRecord, new Object[0]);
+          return;
         }
       }
     }
@@ -533,14 +521,14 @@ public class QZonePluginManager
   
   public void a(boolean paramBoolean)
   {
+    QLog.i("QZonePluginManger", 1, "onUpdatefinish success:" + paramBoolean);
     if (c()) {
       return;
     }
-    QLog.i("QZonePluginManger", 1, "onUpdatefinish success:" + paramBoolean);
     this.d = paramBoolean;
     this.jdField_b_of_type_Boolean = true;
-    if ((paramBoolean) && (this.jdField_a_of_type_Amxz != null)) {
-      this.jdField_a_of_type_Amxz.a();
+    if ((paramBoolean) && (this.jdField_a_of_type_Anfn != null)) {
+      this.jdField_a_of_type_Anfn.a();
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -550,7 +538,7 @@ public class QZonePluginManager
         QZonePluginManager.LaunchState localLaunchState = this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState;
         b(localLaunchState.jdField_a_of_type_AndroidContentContext, localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams, localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener);
         this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState = null;
-        this.jdField_a_of_type_AndroidOsHandler.post(new amxw(this));
+        this.jdField_a_of_type_AndroidOsHandler.post(new anfk(this));
         return;
       }
       QLog.i("QZonePluginManger", 1, "mPendingLaunchState is null");
@@ -559,14 +547,11 @@ public class QZonePluginManager
   
   public void a(boolean paramBoolean, PluginRecord paramPluginRecord)
   {
+    QLog.i("QZonePluginManger", 1, "onInstallFinish record:" + paramPluginRecord);
     if (c()) {}
-    do
-    {
+    while (paramPluginRecord == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, "onInstallFinish record:" + paramPluginRecord);
-      }
-    } while (paramPluginRecord == null);
+    }
     Object localObject = (WeakReference)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramPluginRecord.f);
     try
     {
@@ -609,30 +594,31 @@ public class QZonePluginManager
   
   public boolean a(String paramString)
   {
+    boolean bool = true;
+    QLog.i("QZonePluginManger", 1, "isPluginInstalled: " + paramString);
     if (c()) {}
     do
     {
       do
       {
-        do
-        {
-          return false;
-          if (QLog.isColorLevel()) {
-            QLog.d("QZonePluginManger", 2, "isPluginInstalled: " + paramString + "");
-          }
-        } while (TextUtils.isEmpty(paramString));
-        paramString = a(paramString);
-      } while (paramString == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, " isPluginInstalled record :" + paramString);
-      }
-    } while (paramString.jdField_a_of_type_Int != 4);
-    return true;
+        return false;
+      } while (TextUtils.isEmpty(paramString));
+      paramString = a(paramString);
+    } while (paramString == null);
+    QLog.i("QZonePluginManger", 1, " isPluginInstalled record :" + paramString);
+    if (paramString.jdField_a_of_type_Int == 4) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
   }
   
   public boolean a(String paramString, OnQZonePluginInstallListner paramOnQZonePluginInstallListner, int paramInt)
   {
-    if (c()) {}
+    if (c()) {
+      QLog.i("QZonePluginManger", 1, "installPlugin: manager is closed. pluginId=" + paramString);
+    }
     do
     {
       return false;
@@ -658,8 +644,8 @@ public class QZonePluginManager
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Amxz == null) {
-        this.jdField_a_of_type_Amxz = new amxz(this, this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater);
+      if (this.jdField_a_of_type_Anfn == null) {
+        this.jdField_a_of_type_Anfn = new anfn(this, this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater);
       }
       return true;
       QLog.i("QZonePluginManger", 1, "installPlugin " + paramString + " 未安装,开始下载");
@@ -686,14 +672,11 @@ public class QZonePluginManager
   
   public void b(PluginRecord paramPluginRecord)
   {
+    QLog.i("QZonePluginManger", 1, "onDownloadCanceled record:" + paramPluginRecord);
     if (c()) {}
-    do
-    {
+    while (paramPluginRecord == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, "onDownloadCanceled record:" + paramPluginRecord);
-      }
-    } while (paramPluginRecord == null);
+    }
     paramPluginRecord.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramPluginRecord.f);
     Object localObject = (WeakReference)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramPluginRecord.f);
@@ -717,6 +700,7 @@ public class QZonePluginManager
   
   public void b(PluginRecord paramPluginRecord, int paramInt)
   {
+    QLog.i("QZonePluginManger", 1, "onDownloadSucceed record:" + paramPluginRecord + " refer=" + paramInt);
     if (c()) {}
     PluginRecord localPluginRecord;
     do
@@ -724,25 +708,26 @@ public class QZonePluginManager
       do
       {
         return;
-        QLog.i("QZonePluginManger", 1, "onDownloadSucceed record:" + paramPluginRecord + " refer=" + paramInt);
       } while (paramPluginRecord == null);
       localPluginRecord = (PluginRecord)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramPluginRecord.f);
     } while (localPluginRecord == null);
     localPluginRecord.jdField_a_of_type_Int = 2;
+    boolean bool;
     if ((a(paramInt)) && (QZonePluginUtils.a(paramPluginRecord, this.jdField_a_of_type_AndroidContentContext)))
     {
-      if ((!paramPluginRecord.f.equals("qzone_vertical_video_plugin.apk")) && (!paramPluginRecord.f.equals(QZonePluginUtils.a()))) {
-        break label221;
+      if (!paramPluginRecord.f.equals(QZonePluginUtils.a())) {
+        break label248;
       }
       if (!ProcessUtils.f(ProcessUtils.a())) {
-        break label216;
+        break label243;
       }
-      paramInt = 1;
+      bool = true;
     }
     for (;;)
     {
+      QLog.i("QZonePluginManger", 1, "onDownloadSucceed record=" + paramPluginRecord + " isPluginRealRunning=" + bool);
       Object localObject;
-      if (paramInt != 0)
+      if (bool)
       {
         localObject = (WeakReference)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramPluginRecord.f);
         if (localObject != null)
@@ -765,11 +750,11 @@ public class QZonePluginManager
           QLog.e("QZonePluginManger", 1, localRemoteException, new Object[0]);
         }
       }
-      label216:
-      paramInt = 0;
+      label243:
+      bool = false;
       continue;
-      label221:
-      paramInt = 1;
+      label248:
+      bool = true;
     }
   }
   
@@ -792,23 +777,17 @@ public class QZonePluginManager
   
   public void b(boolean paramBoolean, PluginRecord paramPluginRecord)
   {
+    QLog.i("QZonePluginManger", 1, "onUnInstallFinish reslut:" + paramBoolean + "record:" + paramPluginRecord);
     if (c()) {}
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QZonePluginManger", 2, "onUnInstallFinish reslut:" + paramBoolean + "record:" + paramPluginRecord);
   }
   
   public boolean b(String paramString)
   {
+    QLog.i("QZonePluginManger", 1, "cancelInstall " + paramString + "");
     if (c()) {}
-    do
-    {
+    while (TextUtils.isEmpty(paramString)) {
       return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, "cancelInstall " + paramString + "");
-      }
-    } while (TextUtils.isEmpty(paramString));
+    }
     paramString = this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a(paramString);
     this.jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader.a(paramString, this);
     return false;
@@ -869,13 +848,13 @@ public class QZonePluginManager
   
   public boolean c(String paramString)
   {
+    QLog.i("QZonePluginManger", 1, "uninstallPlugin " + paramString);
     if (c()) {}
     do
     {
       do
       {
         return false;
-        QLog.i("QZonePluginManger", 1, "uninstallPlugin " + paramString);
       } while (TextUtils.isEmpty(paramString));
       paramString = this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a(paramString);
       this.jdField_a_of_type_CooperationQzonePluginQZonePluginInstaller.a(paramString, null);
@@ -888,35 +867,37 @@ public class QZonePluginManager
   
   public void d(PluginRecord paramPluginRecord)
   {
-    if (c()) {}
+    QLog.i("QZonePluginManger", 1, "onInstallBegin record:" + paramPluginRecord);
+    if (c()) {
+      break label33;
+    }
     for (;;)
     {
+      label33:
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginManger", 2, "onInstallBegin record:" + paramPluginRecord);
-      }
       if (paramPluginRecord != null)
       {
         Object localObject = (PluginRecord)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramPluginRecord.f);
-        if (localObject != null)
+        if (localObject == null) {
+          break;
+        }
+        ((PluginRecord)localObject).jdField_a_of_type_Int = 3;
+        localObject = (WeakReference)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramPluginRecord.f);
+        if (localObject == null) {
+          break;
+        }
+        try
         {
-          ((PluginRecord)localObject).jdField_a_of_type_Int = 3;
-          localObject = (WeakReference)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramPluginRecord.f);
-          if (localObject != null) {
-            try
-            {
-              localObject = (OnQZonePluginInstallListner)((WeakReference)localObject).get();
-              if (localObject != null)
-              {
-                ((OnQZonePluginInstallListner)localObject).a(paramPluginRecord.f);
-                return;
-              }
-            }
-            catch (RemoteException paramPluginRecord)
-            {
-              QLog.e("QZonePluginManger", 1, paramPluginRecord, new Object[0]);
-            }
+          localObject = (OnQZonePluginInstallListner)((WeakReference)localObject).get();
+          if (localObject != null)
+          {
+            ((OnQZonePluginInstallListner)localObject).a(paramPluginRecord.f);
+            return;
           }
+        }
+        catch (RemoteException paramPluginRecord)
+        {
+          QLog.e("QZonePluginManger", 1, paramPluginRecord, new Object[0]);
         }
       }
     }
@@ -941,11 +922,8 @@ public class QZonePluginManager
   
   public void e(PluginRecord paramPluginRecord)
   {
+    QLog.i("QZonePluginManger", 1, "onUnInstallBegin record:" + paramPluginRecord);
     if (c()) {}
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QZonePluginManger", 2, "onUnInstallBegin record:" + paramPluginRecord);
   }
   
   public void e(QZoneLiveSoDownloader.DownloadSoRecord paramDownloadSoRecord)
@@ -979,9 +957,7 @@ public class QZonePluginManager
   
   public void onDestroy()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onDestroy");
-    }
+    QLog.i("QZonePluginManger", 1, "onDestroy");
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater = null;
@@ -991,10 +967,10 @@ public class QZonePluginManager
     }
     this.jdField_a_of_type_CooperationQzonePluginQZoneLiveSoDownloader = null;
     this.jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader = null;
-    if (this.jdField_a_of_type_Amxz != null) {
-      this.jdField_a_of_type_Amxz.b();
+    if (this.jdField_a_of_type_Anfn != null) {
+      this.jdField_a_of_type_Anfn.b();
     }
-    this.jdField_a_of_type_Amxz = null;
+    this.jdField_a_of_type_Anfn = null;
     this.c = true;
   }
 }

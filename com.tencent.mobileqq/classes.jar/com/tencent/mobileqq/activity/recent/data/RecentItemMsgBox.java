@@ -97,15 +97,15 @@ public class RecentItemMsgBox
           if (!AppConstants.G.equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)) {
             break label1933;
           }
-          this.jdField_b_of_type_JavaLangString = paramContext.getString(2131434026);
+          this.jdField_b_of_type_JavaLangString = paramContext.getString(2131434042);
           this.jdField_d_of_type_JavaLangCharSequence = "";
           if (!DatingUtil.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type)) {
             break label1071;
           }
-          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131437897);
-          this.e = paramContext.getResources().getColor(2131494288);
+          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131437917);
+          this.e = paramContext.getResources().getColor(2131494294);
           if (localConversationFacade != null) {
-            localMsgSummary.b = localConversationFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, 1001, paramContext.getResources().getString(2131437898), 0);
+            localMsgSummary.b = localConversationFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, 1001, paramContext.getResources().getString(2131437918), 0);
           }
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg_box", 2, "recent item update:[uin:" + this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin + ",type:" + this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type + ",hasUnreadRedPacketMsg]");
@@ -119,15 +119,15 @@ public class RecentItemMsgBox
           localObject1 = new MessageForNearbyRecommenderTips();
           ((MessageForNearbyRecommenderTips)localObject1).msgData = localObject4.msgData;
           ((MessageForNearbyRecommenderTips)localObject1).parse();
-          localMsgSummary.b = paramContext.getResources().getString(2131437415);
+          localMsgSummary.b = paramContext.getResources().getString(2131437435);
           if ((((MessageForNearbyRecommenderTips)localObject1).strBrief != null) && (!"".equals(((MessageForNearbyRecommenderTips)localObject1).strBrief))) {
             localMsgSummary.b = ((MessageForNearbyRecommenderTips)localObject1).strBrief;
           }
           if (((MessageForNearbyRecommenderTips)localObject1).readFlag) {
             break label1274;
           }
-          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131437416);
-          this.e = paramContext.getResources().getColor(2131494288);
+          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131437436);
+          this.e = paramContext.getResources().getColor(2131494294);
         }
         catch (Exception localException)
         {
@@ -213,8 +213,8 @@ public class RecentItemMsgBox
           break label376;
           if (DatingUtil.b(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type))
           {
-            this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131438802);
-            this.e = paramContext.getResources().getColor(2131494288);
+            this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131438826);
+            this.e = paramContext.getResources().getColor(2131494294);
             if (!QLog.isColorLevel()) {
               break label547;
             }
@@ -224,8 +224,8 @@ public class RecentItemMsgBox
           if (!DatingUtil.a(paramQQAppInterface, localObject4)) {
             break label547;
           }
-          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131437967);
-          this.e = paramContext.getResources().getColor(2131494288);
+          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131437987);
+          this.e = paramContext.getResources().getColor(2131494294);
           if (!QLog.isColorLevel()) {
             break label547;
           }
@@ -247,7 +247,7 @@ public class RecentItemMsgBox
             ((MessageForNearbyLiveTip)localObject2).parse();
             localMsgSummary.a = null;
             this.jdField_b_of_type_Int = 1;
-            localObject3 = paramContext.getResources().getString(2131437862);
+            localObject3 = paramContext.getResources().getString(2131437882);
             if (!TextUtils.isEmpty(((MessageForNearbyLiveTip)localObject2).c2cMsgWording))
             {
               localMsgSummary.b = ((MessageForNearbyLiveTip)localObject2).c2cMsgWording;
@@ -306,11 +306,11 @@ public class RecentItemMsgBox
           if ((!TextUtils.isEmpty((CharSequence)localObject2)) || (DatingUtil.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type)) || (!DatingUtil.b(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type))) {
             break label661;
           }
-          localMsgSummary.b = paramContext.getString(2131434027);
+          localMsgSummary.b = paramContext.getString(2131434043);
           break label661;
           if (AppConstants.X.equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin))
           {
-            this.jdField_b_of_type_JavaLangString = paramContext.getString(2131437594);
+            this.jdField_b_of_type_JavaLangString = paramContext.getString(2131437614);
             if (localQQMessageFacade != null)
             {
               this.jdField_b_of_type_Int = 1;
@@ -323,7 +323,7 @@ public class RecentItemMsgBox
             }
             if ((localObject4.msg == null) || (-999 == localObject4.msgtype))
             {
-              localMsgSummary.b = paramContext.getString(2131437595);
+              localMsgSummary.b = paramContext.getString(2131437615);
               localObject3 = localObject2;
             }
             for (;;)
@@ -342,23 +342,23 @@ public class RecentItemMsgBox
                   }
                 }
                 if (localObject4.isSendFromLocal()) {
-                  localMsgSummary.b = paramContext.getString(2131437665, new Object[] { localObject3 });
+                  localMsgSummary.b = paramContext.getString(2131437685, new Object[] { localObject3 });
                 } else {
-                  localMsgSummary.b = paramContext.getString(2131437666, new Object[] { localObject3 });
+                  localMsgSummary.b = paramContext.getString(2131437686, new Object[] { localObject3 });
                 }
               }
             }
           }
           if (AppConstants.v.equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin))
           {
-            this.jdField_b_of_type_JavaLangString = paramContext.getString(2131434034);
+            this.jdField_b_of_type_JavaLangString = paramContext.getString(2131434050);
             if (localQQMessageFacade != null) {
               this.jdField_c_of_type_Int = localQQMessageFacade.c();
             }
             if ((-999 != localObject4.msgtype) && (localObject4.msg != null)) {
               break label661;
             }
-            localMsgSummary.b = paramContext.getString(2131434035);
+            localMsgSummary.b = paramContext.getString(2131434051);
             break label661;
           }
           this.jdField_b_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, true);

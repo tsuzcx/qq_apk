@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abpx;
-import abpy;
+import abwy;
+import abwz;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -32,7 +32,7 @@ public class CampusCircleSelTopicFragment
 {
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   public IphoneTitleBarActivity a;
-  CampusCircleObserver jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver = new abpy(this);
+  CampusCircleObserver jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver = new abwz(this);
   TopicAdapter jdField_a_of_type_ComTencentMobileqqCampuscircleTopicAdapter;
   public WeakReferenceHandler a;
   HorizontalLabelLayout jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout;
@@ -61,7 +61,7 @@ public class CampusCircleSelTopicFragment
           if (paramMessage != null)
           {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramMessage);
-            paramMessage = paramMessage.findViewById(2131368914);
+            paramMessage = paramMessage.findViewById(2131368917);
             paramMessage.setTag(this.jdField_a_of_type_ComTencentMobileqqCampuscircleTopicAdapter.getItem(i));
             paramMessage.setOnClickListener(this);
           }
@@ -77,7 +77,7 @@ public class CampusCircleSelTopicFragment
             if (paramMessage != null)
             {
               this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.addView(paramMessage);
-              paramMessage = paramMessage.findViewById(2131368914);
+              paramMessage = paramMessage.findViewById(2131368917);
               paramMessage.setTag(this.jdField_b_of_type_ComTencentMobileqqCampuscircleTopicAdapter.getItem(i));
               paramMessage.setOnClickListener(this);
             }
@@ -115,7 +115,7 @@ public class CampusCircleSelTopicFragment
       this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver, true);
       paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources();
       i = paramBundle.getColor(2131493382);
-      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarView().setBackgroundDrawable(paramBundle.getDrawable(2130842360));
+      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarView().setBackgroundDrawable(paramBundle.getDrawable(2130842395));
       if (this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.mSystemBarComp != null) {
         break label197;
       }
@@ -124,15 +124,15 @@ public class CampusCircleSelTopicFragment
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.setTitle("选择版块");
-      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.setLeftButton(2131432414, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.centerView.setTextColor(paramBundle.getColorStateList(2131494127));
+      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.setLeftButton(2131432425, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.centerView.setTextColor(paramBundle.getColorStateList(2131494133));
       TextView localTextView = this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.leftViewNotBack;
       localTextView.setBackgroundDrawable(null);
       localTextView.setTextSize(1, 17.0F);
-      localTextView.setTextColor(paramBundle.getColorStateList(2131494127));
-      localTextView.setCompoundDrawablesWithIntrinsicBounds(2130842354, 0, 0, 0);
+      localTextView.setTextColor(paramBundle.getColorStateList(2131494133));
+      localTextView.setCompoundDrawablesWithIntrinsicBounds(2130842389, 0, 0, 0);
       localTextView.setCompoundDrawablePadding(8);
-      ThreadManager.post(new abpx(this), 5, null, true);
+      ThreadManager.post(new abwy(this), 5, null, true);
       if (QLog.isDevelopLevel()) {
         QLog.i("CampusCircleSelTopicFragment", 4, "onActivityCreated");
       }
@@ -183,11 +183,11 @@ public class CampusCircleSelTopicFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130970277, null);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131369927));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout = ((HorizontalLabelLayout)paramLayoutInflater.findViewById(2131369928));
+    paramLayoutInflater = paramLayoutInflater.inflate(2130970292, null);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131369937));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout = ((HorizontalLabelLayout)paramLayoutInflater.findViewById(2131369938));
     this.jdField_a_of_type_ComTencentWidgetHorizontalLabelLayout.setStyle(1);
-    this.jdField_b_of_type_ComTencentWidgetHorizontalLabelLayout = ((HorizontalLabelLayout)paramLayoutInflater.findViewById(2131369930));
+    this.jdField_b_of_type_ComTencentWidgetHorizontalLabelLayout = ((HorizontalLabelLayout)paramLayoutInflater.findViewById(2131369940));
     this.jdField_a_of_type_ComTencentMobileqqCampuscircleTopicAdapter = new TopicAdapter(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, 2);
     this.jdField_b_of_type_ComTencentMobileqqCampuscircleTopicAdapter = new TopicAdapter(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, 2);
     this.c = new TopicAdapter(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, 1);

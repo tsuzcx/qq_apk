@@ -1,23 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.EffectSettingUi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
 
-public class jtn
-  extends BroadcastReceiver
+class jtn
+  implements DialogInterface.OnClickListener
 {
-  public jtn(EffectSettingUi paramEffectSettingUi) {}
+  jtn(jti paramjti) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent.getAction().equals("com.tencent.redpoint.broadcast.push.av")) {
-      EffectSettingUi.a(this.a);
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jtn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,179 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.webso.HybridWebReporter;
+import com.tencent.mobileqq.webview.webso.HybridWebReporter.HybridWebReportInfo;
+import com.tencent.open.base.http.HttpBaseUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneHttpUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.zip.GZIPInputStream;
+import mqq.app.AppRuntime;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class akyu
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public akyu(WorldCupShareFragment paramWorldCupShareFragment) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
+  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public akyu(ArrayList paramArrayList)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("WorldCupShareFragment", 2, "WL_DEBUG onReceive action = " + paramContext + ", mIsRecordSuccess = " + WorldCupShareFragment.a(this.a));
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    if ((paramContext.equals("tencent.ar.worldcup.record")) && (!WorldCupShareFragment.b(this.a)))
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
     {
-      WorldCupShareFragment.a(this.a, paramIntent.getBooleanExtra("key_result", false));
-      WorldCupShareFragment.d(this.a, paramIntent.getStringExtra("key_cover_pic"));
-      WorldCupShareFragment.e(this.a, paramIntent.getStringExtra("key_video"));
-      if (QLog.isColorLevel()) {
-        QLog.d("WorldCupShareFragment", 2, "WL_DEBUG onReceive mIsRecordSuccess = " + WorldCupShareFragment.a(this.a) + ", mCoverPath = " + WorldCupShareFragment.d(this.a) + ", mVideoPath = " + WorldCupShareFragment.a(this.a));
+      QLog.e("HybridWebReporter", 1, "listToSend is empty.");
+      return;
+    }
+    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+    JSONObject localJSONObject = new JSONObject();
+    JSONArray localJSONArray;
+    Object localObject1;
+    try
+    {
+      localJSONArray = new JSONArray();
+      localObject2 = ((ArrayList)localObject2).iterator();
+      for (;;)
+      {
+        if (((Iterator)localObject2).hasNext())
+        {
+          localJSONArray.put(((HybridWebReporter.HybridWebReportInfo)((Iterator)localObject2).next()).a());
+          continue;
+          if (localObject1 == null) {
+            break;
+          }
+        }
       }
-      WorldCupShareFragment.a(this.a, true, this.a.getView());
-      WorldCupShareFragment.c(this.a);
-      QLog.d("WorldCupShareFragment", 1, "WL_DEBUG mCoverPath = " + WorldCupShareFragment.d(this.a) + ", mVideoPath = " + WorldCupShareFragment.a(this.a) + ", mIsMergeFinish = " + WorldCupShareFragment.b(this.a) + ", mIsRecordSuccess = " + WorldCupShareFragment.a(this.a));
+    }
+    catch (Exception localException)
+    {
+      QLog.w("HybridWebReporter", 1, localException.toString());
+      localObject1 = null;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaLangString = localObject1.toString();
+      if (QLog.isColorLevel()) {
+        QLog.i("HybridWebReporter", 2, "json : " + this.jdField_a_of_type_JavaLangString);
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      localObject1.put("data", localJSONArray);
+    }
+  }
+  
+  public void run()
+  {
+    Object localObject = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatCgiURL", "https://h5.qzone.qq.com/report/native");
+    String str2 = (String)localObject + "?uin=" + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    a();
+    if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("HybridWebReporter", 2, "start report thread.");
+    }
+    label85:
+    if ((!this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Int <= 1)) {
+      if (this.jdField_a_of_type_Int > 1)
+      {
+        new Handler(ThreadManager.getSubThreadLooper()).postDelayed(this, 300000L);
+        this.jdField_b_of_type_Int += 1;
+        this.jdField_a_of_type_Int = 0;
+        return;
+      }
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        for (;;)
+        {
+          localObject = QZoneHttpUtil.a(BaseApplication.getContext(), str2, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
+          if (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200) {
+            break label416;
+          }
+          this.jdField_a_of_type_JavaUtilArrayList.clear();
+          this.jdField_b_of_type_Boolean = true;
+          QLog.d("HybridWebReporter", 4, "report success.");
+          try
+          {
+            Header[] arrayOfHeader = ((HttpResponse)localObject).getHeaders("Content-Encoding");
+            int k = arrayOfHeader.length;
+            i = 0;
+            int j = 0;
+            if (i < k)
+            {
+              if (!arrayOfHeader[i].getValue().equals("gzip")) {
+                break label466;
+              }
+              j = 1;
+              break label466;
+            }
+            localObject = ((HttpResponse)localObject).getEntity();
+            if (j == 0) {
+              break label406;
+            }
+            localObject = HttpBaseUtil.a(new GZIPInputStream(((HttpEntity)localObject).getContent()));
+            if (QLog.isColorLevel()) {
+              QLog.d("HybridWebReporter", 2, "HybridWeb report response result = " + (String)localObject);
+            }
+            if (TextUtils.isEmpty((CharSequence)localObject)) {
+              break;
+            }
+            localObject = new JSONObject((String)localObject);
+            if (!(((JSONObject)localObject).opt("urlPrefixConfig") instanceof JSONArray)) {
+              break label85;
+            }
+            HybridWebReporter.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).toString();
+            LocalMultiProcConfig.putString("urlPrefixConfig", HybridWebReporter.jdField_a_of_type_JavaLangString);
+          }
+          catch (Throwable localThrowable1)
+          {
+            QLog.w("HybridWebReporter", 1, "save url prefix report err.", localThrowable1);
+          }
+        }
+      }
+      catch (Throwable localThrowable2)
+      {
+        this.jdField_a_of_type_Int += 1;
+        QLog.w("HybridWebReporter", 1, "exception when report", localThrowable2);
+      }
+      break label85;
+      label406:
+      String str1 = EntityUtils.toString(localThrowable2);
+      continue;
+      label416:
+      QLog.e("HybridWebReporter", 1, "HttpStatus error when report : " + str1.getStatusLine().getStatusCode());
+      this.jdField_a_of_type_Int += 1;
+      break label85;
+      break;
+      label466:
+      i += 1;
     }
   }
 }

@@ -1,59 +1,44 @@
-import android.os.Handler;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
 import android.os.Message;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout.CaptureButtonListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.mobileqq.richmedia.ICallBack;
+import com.tencent.mobileqq.richmedia.LOG;
+import com.tencent.mobileqq.richmedia.RichmediaClient;
+import com.tencent.util.BinderWarpper;
 
 public class ahlc
-  extends Handler
+  implements ServiceConnection
 {
-  public ahlc(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public ahlc(RichmediaClient paramRichmediaClient) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    super.handleMessage(paramMessage);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "handleMessage what:" + paramMessage.what + ", shortVideoShot:" + this.a.a.get());
-    }
-    switch (paramMessage.what)
+    LOG.a("PTV.RichmediaClient", "onServiceConnected");
+    this.a.b = new Messenger(paramIBinder);
+    paramComponentName = Message.obtain(null, 1);
+    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
+    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_ComTencentMobileqqRichmediaICallBack.asBinder());
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
+    paramComponentName.setData(localBundle);
+    try
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            CameraCaptureButtonLayout.c(this.a);
-            return;
-          } while (CameraCaptureButtonLayout.a(this.a) == null);
-          CameraCaptureButtonLayout.a(this.a).h();
-          return;
-        } while (!this.a.a.get());
-        if (CameraCaptureButtonLayout.a(this.a) != null) {
-          CameraCaptureButtonLayout.a(this.a).d();
-        }
-        this.a.a.set(false);
-        CameraCaptureButtonLayout.d(this.a);
-        return;
-        if (CameraCaptureButtonLayout.a(this.a) != null) {
-          CameraCaptureButtonLayout.a(this.a).a();
-        }
-        CameraCaptureButtonLayout.d(this.a);
-        return;
-      } while (!this.a.a.get());
-      CameraCaptureButtonLayout.e(this.a);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(5, 50L);
+      this.a.b.send(paramComponentName);
       return;
     }
-    this.a.b();
+    catch (RemoteException paramComponentName)
+    {
+      LOG.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.b = null;
   }
 }
 

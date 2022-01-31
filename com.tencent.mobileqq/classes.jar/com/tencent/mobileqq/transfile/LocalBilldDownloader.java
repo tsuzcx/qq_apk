@@ -22,7 +22,7 @@ public class LocalBilldDownloader
     //   4: astore 6
     //   6: new 19	java/io/File
     //   9: dup
-    //   10: getstatic 25	com/tencent/mobileqq/app/AppConstants:bA	Ljava/lang/String;
+    //   10: getstatic 25	com/tencent/mobileqq/app/AppConstants:bB	Ljava/lang/String;
     //   13: invokespecial 28	java/io/File:<init>	(Ljava/lang/String;)V
     //   16: astore_3
     //   17: aload_3
@@ -235,7 +235,7 @@ public class LocalBilldDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.LocalBilldDownloader
  * JD-Core Version:    0.7.0.1
  */

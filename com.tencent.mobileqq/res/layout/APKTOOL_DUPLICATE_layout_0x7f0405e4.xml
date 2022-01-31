@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.SwipPinnedHeaderExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c0b" android:visibility="visible" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:indicatorLeft="16.0dip" android:indicatorRight="28.0dip" android:divider="@null" android:overScrollHeader="@null" />
-</LinearLayout>
+    <android.opengl.GLSurfaceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <dov.com.qq.im.cropvideo.RegionView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="3.0dip" android:max="100" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021914" android:minHeight="3.0dip" style="?android:attr/progressBarStyleHorizontal" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a61" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentTop="true">
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="取消" android:layout_centerVertical="true" android:contentDescription="取消" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01c3" />
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2194" android:layout_centerInParent="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b2194" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01c3" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a84" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0035" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0445" android:layout_alignParentBottom="true">
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1be4" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0242" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0447" android:layout_height="fill_parent" android:text="确定" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="确定" />
+    </RelativeLayout>
+</RelativeLayout>

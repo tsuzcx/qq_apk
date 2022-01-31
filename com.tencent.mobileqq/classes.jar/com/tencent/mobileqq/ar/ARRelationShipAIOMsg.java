@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar;
 
+import aafl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zyx;
 
 public class ARRelationShipAIOMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new zyx();
+  public static final Parcelable.Creator CREATOR = new aafl();
   public String a;
   public String b;
   public String c;

@@ -1,16 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import com.tencent.biz.pubaccount.util.GifPlayTimeHttpDownloader.OnPlayFinish;
-import com.tencent.image.URLImageView;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 public class mqe
-  implements GifPlayTimeHttpDownloader.OnPlayFinish
+  implements Runnable
 {
-  public mqe(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController, ChannelCoverInfo paramChannelCoverInfo) {}
+  public mqe(FastWebActivity paramFastWebActivity) {}
   
-  public void a()
+  public void run()
   {
-    ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController).setImageDrawable(ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo, false));
+    if (FastWebActivity.a(this.a) != null) {
+      FastWebActivity.a(this.a).setVisibility(0);
+    }
   }
 }
 

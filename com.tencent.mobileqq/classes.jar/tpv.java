@@ -1,30 +1,23 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 
 public class tpv
-  implements ActionMode.Callback
+  implements Runnable
 {
-  public tpv(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public tpv(QQSettingMe paramQQSettingMe) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void run()
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramMenu.clear();
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    if (this.a.a == null) {}
+    String str;
+    do
+    {
+      return;
+      str = this.a.a.getCurrentAccountUin();
+    } while (TextUtils.isEmpty(str));
+    WebProcessManager.b(str, System.currentTimeMillis());
   }
 }
 

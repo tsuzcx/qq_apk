@@ -7,7 +7,7 @@ public class TroopCalendarMsg
 {
   public TroopCalendarMsg(Context paramContext)
   {
-    this.a = ("[" + paramContext.getString(2131430783) + "]");
+    this.a = ("[" + paramContext.getString(2131430786) + "]");
   }
 }
 

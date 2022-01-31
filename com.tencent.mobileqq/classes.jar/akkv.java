@@ -1,25 +1,20 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.MyAppApi;
 
-class akkv
+public final class akkv
   implements Runnable
 {
-  akkv(akku paramakku) {}
+  public akkv(Activity paramActivity, Bundle paramBundle) {}
   
   public void run()
   {
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = VipVideoPlayActivity.a(this.a.a);
-    this.a.a.a("play_success", 0, 0, l1 - l2, "");
-    if (VipVideoPlayActivity.a(this.a.a) != null) {
-      VipVideoPlayActivity.a(this.a.a).start();
-    }
+    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akkv
  * JD-Core Version:    0.7.0.1
  */

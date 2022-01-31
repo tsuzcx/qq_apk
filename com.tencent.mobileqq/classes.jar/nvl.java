@@ -1,36 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnBufferingUpdateListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnBufferingUpdateListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
 
 public class nvl
-  extends QQStoryObserver
+  implements MediaPlayer.OnBufferingUpdateListener
 {
-  public nvl(StoryDetailPresenter paramStoryDetailPresenter) {}
+  public nvl(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnBufferingUpdateListener paramOnBufferingUpdateListener) {}
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    if ((!TextUtils.equals(StoryDetailPresenter.a(this.a), paramStoryPushMsg.d)) || (StoryDetailPresenter.a(this.a) == null))
-    {
-      SLog.a("Q.qqstory.detail.StoryDetailPresenter", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, StoryDetailPresenter.a(this.a));
-      return;
-    }
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
-    {
-      SLog.a("Q.qqstory.detail.StoryDetailPresenter", "Receive new comment PUSH: %s, refreshing comments......", paramStoryPushMsg);
-      StoryDetailPresenter.a(this.a);
-    }
-    for (;;)
-    {
-      this.a.i();
-      return;
-      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 16) || (paramStoryPushMsg.a == 18))
-      {
-        SLog.a("Q.qqstory.detail.StoryDetailPresenter", "Receive new like PUSH: %s, refreshing likes......", paramStoryPushMsg);
-        StoryDetailPresenter.b(this.a);
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper, paramInt);
   }
 }
 

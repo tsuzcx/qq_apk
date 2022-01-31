@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import aoby;
+import aokt;
 import com.tencent.mobileqq.R.styleable;
 import java.math.BigDecimal;
 
@@ -48,7 +48,7 @@ public class RateWidgetRatingBar
     while (i < this.jdField_a_of_type_Int)
     {
       paramAttributeSet = a(paramContext, this.jdField_b_of_type_Boolean);
-      paramAttributeSet.setOnClickListener(new aoby(this));
+      paramAttributeSet.setOnClickListener(new aokt(this));
       addView(paramAttributeSet);
       i += 1;
     }

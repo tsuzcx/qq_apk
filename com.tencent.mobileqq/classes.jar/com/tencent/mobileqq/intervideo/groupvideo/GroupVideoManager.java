@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import adtq;
-import adtr;
-import adts;
-import adtu;
-import adtv;
-import adtw;
-import adtx;
+import aebz;
+import aeca;
+import aecb;
+import aecd;
+import aece;
+import aecf;
+import aecg;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -42,8 +42,8 @@ public class GroupVideoManager
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PluginLoadListener jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPluginLoadListener = new adtr(this);
-  private INetEventHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new adtw(this);
+  private PluginLoadListener jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPluginLoadListener = new aeca(this);
+  private INetEventHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new aecf(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   
   public GroupVideoManager(QQAppInterface paramQQAppInterface)
@@ -71,7 +71,7 @@ public class GroupVideoManager
   
   public static void a(String paramString, GroupVideoManager.CheckListener paramCheckListener)
   {
-    ThreadManager.executeOnFileThread(new adtx(paramString, paramCheckListener));
+    ThreadManager.executeOnFileThread(new aecg(paramString, paramCheckListener));
   }
   
   public void a(Context paramContext)
@@ -107,7 +107,7 @@ public class GroupVideoManager
     localQQProgressDialog.c(2131429510);
     localQQProgressDialog.show();
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = localQQProgressDialog;
-    a("group_video", new adtq(this, paramContext, paramString2, paramString1, paramString3, paramString4));
+    a("group_video", new aebz(this, paramContext, paramString2, paramString1, paramString3, paramString4));
   }
   
   public void a(String paramString)
@@ -116,7 +116,7 @@ public class GroupVideoManager
     while (!NetworkUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
       return;
     }
-    GVideoGrayConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new adts(this));
+    GVideoGrayConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new aecb(this));
   }
   
   public void a(boolean paramBoolean)
@@ -148,7 +148,7 @@ public class GroupVideoManager
           catch (NumberFormatException localNumberFormatException) {}
         }
       }
-      localObject2 = new adtu(this, paramBoolean);
+      localObject2 = new aecd(this, paramBoolean);
       if (((List)localObject1).size() <= 0) {
         break;
       }
@@ -156,7 +156,7 @@ public class GroupVideoManager
       this.jdField_a_of_type_Int = 0;
       localObject2 = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
     } while (localObject2 == null);
-    ((TroopHandler)localObject2).a((List)localObject1, new adtv(this));
+    ((TroopHandler)localObject2).a((List)localObject1, new aece(this));
     return;
     if (QLog.isColorLevel()) {
       QLog.d("GroupVideoManager", 2, "updateGroupVideoStateList try count:" + this.jdField_a_of_type_Int);

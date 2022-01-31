@@ -1,17 +1,59 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.util.TroopReportor;
 
-class shv
-  implements Runnable
+public class shv
+  implements View.OnClickListener
 {
-  shv(shq paramshq) {}
+  public shv(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  @SuppressLint({"ServiceCast"})
+  @TargetApi(11)
+  public void onClick(View paramView)
   {
-    if (this.a.a.a != null)
+    String str;
+    try
     {
-      this.a.a.a.a();
-      this.a.a.a.a(-1, null);
+      paramView = String.format(this.a.getString(2131435247), new Object[] { this.a.a.newTroopName, this.a.a.troopUin });
+      if (Build.VERSION.SDK_INT < 11)
+      {
+        ((android.text.ClipboardManager)this.a.getSystemService("clipboard")).setText(paramView);
+        if ((this.a.d != 1) && (!this.a.a.isMember)) {
+          break label178;
+        }
+        str = this.a.a.troopUin;
+        if (!this.a.a.isMember) {
+          break label172;
+        }
+        paramView = "1";
+        TroopReportor.a("Grp_set_new", "grpData_admin", "copy_grpuin", 0, 0, new String[] { str, paramView });
+      }
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+        paramView = "";
+        continue;
+        ((android.content.ClipboardManager)this.a.getSystemService("clipboard")).setText(paramView);
+        continue;
+        label172:
+        paramView = "0";
+      }
+      label178:
+      str = this.a.a.troopUin;
+      if (!this.a.a.isMember) {}
+    }
+    for (paramView = "1";; paramView = "0")
+    {
+      TroopReportor.a("Grp_set_new", "grpData_visitor", "copy_grpuin", 0, 0, new String[] { str, paramView });
+      return;
     }
   }
 }

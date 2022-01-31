@@ -13,8 +13,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
-import lrq;
-import lrr;
+import java.util.concurrent.RejectedExecutionException;
+import luu;
+import luv;
 
 public class ReadInJoyUserInfoRepository
 {
@@ -62,7 +63,7 @@ public class ReadInJoyUserInfoRepository
   {
     QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "saveReadInJoyUserInfoToDB, \n  userInfo = ", paramReadInJoyUserInfo });
     if ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService != null) && (paramReadInJoyUserInfo != null) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lrq(this, paramReadInJoyUserInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new luu(this, paramReadInJoyUserInfo));
     }
   }
   
@@ -115,8 +116,17 @@ public class ReadInJoyUserInfoRepository
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService != null) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lrr(this, paramInt));
+    try
+    {
+      if ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService != null) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new luv(this, paramInt));
+      }
+      return;
+    }
+    catch (RejectedExecutionException localRejectedExecutionException)
+    {
+      QLog.d("ReadInJoyUserInfoRepository", 1, "loadReadInJoyUserInfoFromDB exception.");
+      localRejectedExecutionException.printStackTrace();
     }
   }
   

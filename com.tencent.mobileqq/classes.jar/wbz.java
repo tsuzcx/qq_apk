@@ -1,10 +1,15 @@
-import android.annotation.SuppressLint;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class wbz
+  implements Runnable
 {
-  @SuppressLint({"StaticFieldLeak"})
-  private static StickerBubbleAnimationViewHolder a = new StickerBubbleAnimationViewHolder(null);
+  public wbz(PublicAccountChatPie paramPublicAccountChatPie) {}
+  
+  public void run()
+  {
+    PublicAccountChatPie.a(this.a).removeView(this.a.o);
+  }
 }
 
 

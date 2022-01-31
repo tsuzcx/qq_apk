@@ -1,87 +1,61 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class sgz
-  extends BizTroopObserver
+  extends TroopObserver
 {
-  public sgz(Conversation paramConversation) {}
+  public sgz(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a(int paramInt1, int paramInt2, Map paramMap, String paramString)
+  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList, String paramString)
   {
-    paramString = this.a.a();
-    String str1 = this.a.a.getCurrentAccountUin();
-    if ((paramMap != null) && (paramMap.size() > 0))
+    super.a(paramBoolean, paramInt, paramArrayList, paramString);
+    if (!paramBoolean) {}
+    Object localObject1;
+    do
     {
-      Iterator localIterator = paramMap.keySet().iterator();
-      paramInt1 = 0;
-      if (localIterator.hasNext())
-      {
-        String str2 = (String)localIterator.next();
-        paramInt2 = ((Integer)paramMap.get(str2)).intValue();
-        if (paramInt2 == 4000) {
-          SharedPreUtils.k(paramString, str1, str2);
-        }
-      }
-    }
-    for (;;)
-    {
-      break;
-      if (paramInt2 != 0)
-      {
-        paramInt1 = 1;
-        continue;
-        if (paramInt1 == 0) {
-          SharedPreUtils.l(this.a.a(), this.a.a.getCurrentAccountUin());
-        }
-        return;
-      }
-    }
-  }
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (paramInt2 != 0)
-    {
-      paramString1 = paramString2;
-      if (!this.a.a().isFinishing())
-      {
-        paramString1 = paramString2;
-        if (Conversation.a(this.a))
-        {
-          paramString1 = paramString2;
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString1 = this.a.a().getString(2131435580);
-          }
-          QQToast.a(this.a.a(), 1, paramString1, 0).a();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "onSetCommonUsedTroop, retCode = " + paramInt2 + " , wording = " + paramString1);
-      }
       return;
-      this.a.a(9, paramString1, 1);
-      paramString1 = paramString2;
+      localObject2 = "";
+      localObject1 = localObject2;
+      if (this.a.a != null)
+      {
+        localObject1 = localObject2;
+        if (this.a.a.troopuin != null) {
+          localObject1 = this.a.a.troopuin;
+        }
+      }
+    } while (this.a.e == null);
+    Object localObject2 = new HashSet();
+    if ((paramString != null) && (paramString.equals(localObject1)))
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        paramString = (String)paramArrayList.next();
+        localObject1 = this.a.e.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)((Iterator)localObject1).next();
+          if (paramString.equals(localmemberlist.uint64_member_uin.get() + "")) {
+            ((Collection)localObject2).add(localmemberlist);
+          }
+        }
+      }
+      paramArrayList = ((Collection)localObject2).iterator();
+      while (paramArrayList.hasNext())
+      {
+        paramString = (oidb_0x899.memberlist)paramArrayList.next();
+        this.a.e.remove(paramString);
+      }
     }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      this.a.a(8, paramString1, 1);
-    }
+    this.a.a(this.a.e);
   }
 }
 

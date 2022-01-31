@@ -1,48 +1,36 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ahmx
+public class ahmx
+  implements Runnable
 {
-  private final Drawable a;
-  private final Drawable b;
+  public ahmx(CameraCaptureFragment paramCameraCaptureFragment, int paramInt) {}
   
-  ahmx(Context paramContext)
+  public void run()
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837525);
-    this.b = paramContext.getDrawable(2130837527);
-  }
-  
-  private Drawable a(Drawable paramDrawable)
-  {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
-  }
-  
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+    case 101: 
+    case 104: 
+      FragmentActivity localFragmentActivity;
+      do
+      {
+        return;
+        QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
+        localFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.getActivity();
+      } while ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()));
+      localFragmentActivity.finish();
+      return;
+    case 102: 
+      QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.z_();
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), "拍照出现异常，请重试", 0).a();
   }
 }
 

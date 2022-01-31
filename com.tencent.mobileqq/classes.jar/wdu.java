@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class wdu
   implements Runnable
 {
-  public wdu(ZhituManager paramZhituManager) {}
+  public wdu(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    ZhituManager.a(this.a);
+    try
+    {
+      ark.arkNotify("com.tencent.weather", "pubaccountPendantRefresh", "", "json");
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
   }
 }
 

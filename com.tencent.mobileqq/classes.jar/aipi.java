@@ -1,21 +1,35 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.transfile.FileAssistantDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import java.net.URL;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SubAccountObserver;
 
-public class aipi
-  implements BitmapDecoder
+public final class aipi
+  extends SubAccountObserver
 {
-  public aipi(FileAssistantDownloader paramFileAssistantDownloader) {}
+  public aipi(QQAppInterface paramQQAppInterface) {}
   
-  public Bitmap a(URL paramURL)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    paramURL = this.a.a(paramURL);
-    if (paramURL == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("SUB_ACCOUNT", 2, "initAllData() onGetKeyBack() thread.name=" + Thread.currentThread().getName());
     }
-    return ShortVideoUtils.a(null, paramURL.a);
+    paramString1 = (SubAccountManager)this.a.getManager(60);
+    int j;
+    if ((paramString3 != null) && (paramString3.length() > 0))
+    {
+      j = 1;
+      i = j;
+      if (paramString1 != null) {
+        paramString1.a(paramString2, paramString3, false);
+      }
+    }
+    for (int i = j;; i = 0)
+    {
+      if (i == 0) {
+        paramString1.e(paramString2);
+      }
+      return;
+    }
   }
 }
 

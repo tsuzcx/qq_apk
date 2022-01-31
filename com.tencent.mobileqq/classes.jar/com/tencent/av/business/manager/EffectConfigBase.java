@@ -26,10 +26,10 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jfd;
-import jfe;
-import jff;
-import jfg;
+import jhf;
+import jhg;
+import jhh;
+import jhi;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -46,14 +46,14 @@ public abstract class EffectConfigBase
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "qav" + File.separator;
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "qav" + File.separator;
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "effect" + File.separator;
   }
   
   public EffectConfigBase(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_AndroidOsHandler = new jff(this);
+    this.jdField_a_of_type_AndroidOsHandler = new jhh(this);
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
   }
   
@@ -195,7 +195,7 @@ public abstract class EffectConfigBase
   
   static void a(String paramString1, String paramString2, String paramString3)
   {
-    ThreadManager.getFileThreadHandler().post(new jfe(paramString2, paramString3, paramString1));
+    ThreadManager.getFileThreadHandler().post(new jhg(paramString2, paramString3, paramString1));
   }
   
   static boolean a(int paramInt)
@@ -305,13 +305,13 @@ public abstract class EffectConfigBase
       return;
     }
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jfd(this, paramItemBase);
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jhf(this, paramItemBase);
     localHttpNetReq.jdField_a_of_type_JavaLangString = paramItemBase.getResurl();
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.jdField_c_of_type_JavaLangString = a(paramItemBase);
     localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
     localHttpNetReq.a(paramItemBase);
-    ThreadManager.post(new jfg(this, localHttpNetReq), 5, null, true);
+    ThreadManager.post(new jhi(this, localHttpNetReq), 5, null, true);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -439,7 +439,7 @@ public abstract class EffectConfigBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.EffectConfigBase
  * JD-Core Version:    0.7.0.1
  */

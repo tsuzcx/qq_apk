@@ -1,37 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.ar.arengine.AREngine;
 
-class aanf
-  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
+public class aanf
+  implements Runnable
 {
-  aanf(aanc paramaanc) {}
+  public aanf(AREngine paramAREngine) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.a.a.a(1, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    ARVideoPreviewActivity.a(this.a.a).post(new aang(this));
-  }
-  
-  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp) {}
-  
-  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo)
-  {
-    paramString = paramUploadPicExtInfo.bytes_download_url.get().toStringUtf8();
-    this.a.a.a(1, paramString);
+    AREngine.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aanf
  * JD-Core Version:    0.7.0.1
  */

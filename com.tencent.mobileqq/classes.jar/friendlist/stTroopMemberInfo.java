@@ -6,7 +6,9 @@ import com.qq.taf.jce.JceStruct;
 
 public final class stTroopMemberInfo
   extends JceStruct
+  implements Cloneable
 {
+  static QzoneUserInfo cache_qzusrinfo = new QzoneUserInfo();
   public byte Age;
   public short FaceId;
   public byte Gender;
@@ -23,12 +25,15 @@ public final class stTroopMemberInfo
   public long dwFlag;
   public long dwFlagExt;
   public long dwGlobalGroupLevel;
+  public long dwGlobalGroupPoint;
   public long dwJoinTime;
   public long dwLastSpeakTime;
   public long dwMemberLevel;
   public long dwPoint;
+  public long dwShutupTimestap;
   public long dwSpecialTitleExpireTime;
   public long dwTitleId;
+  public QzoneUserInfo qzusrinfo;
   public String sEmail = "";
   public String sMemo = "";
   public String sName = "";
@@ -39,7 +44,7 @@ public final class stTroopMemberInfo
   
   public stTroopMemberInfo() {}
   
-  public stTroopMemberInfo(long paramLong1, short paramShort, byte paramByte1, byte paramByte2, String paramString1, byte paramByte3, String paramString2, String paramString3, byte paramByte4, String paramString4, String paramString5, String paramString6, String paramString7, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, byte paramByte5, byte paramByte6, String paramString8, long paramLong9, String paramString9, byte paramByte7, long paramLong10, long paramLong11, long paramLong12)
+  public stTroopMemberInfo(long paramLong1, short paramShort, byte paramByte1, byte paramByte2, String paramString1, byte paramByte3, String paramString2, String paramString3, byte paramByte4, String paramString4, String paramString5, String paramString6, String paramString7, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, byte paramByte5, byte paramByte6, String paramString8, long paramLong9, String paramString9, byte paramByte7, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, QzoneUserInfo paramQzoneUserInfo)
   {
     this.MemberUin = paramLong1;
     this.FaceId = paramShort;
@@ -70,6 +75,9 @@ public final class stTroopMemberInfo
     this.dwApolloTimestamp = paramLong10;
     this.dwGlobalGroupLevel = paramLong11;
     this.dwTitleId = paramLong12;
+    this.dwShutupTimestap = paramLong13;
+    this.dwGlobalGroupPoint = paramLong14;
+    this.qzusrinfo = paramQzoneUserInfo;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -103,6 +111,9 @@ public final class stTroopMemberInfo
     this.dwApolloTimestamp = paramJceInputStream.read(this.dwApolloTimestamp, 27, false);
     this.dwGlobalGroupLevel = paramJceInputStream.read(this.dwGlobalGroupLevel, 28, false);
     this.dwTitleId = paramJceInputStream.read(this.dwTitleId, 29, false);
+    this.dwShutupTimestap = paramJceInputStream.read(this.dwShutupTimestap, 30, false);
+    this.dwGlobalGroupPoint = paramJceInputStream.read(this.dwGlobalGroupPoint, 31, false);
+    this.qzusrinfo = ((QzoneUserInfo)paramJceInputStream.read(cache_qzusrinfo, 32, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -152,6 +163,11 @@ public final class stTroopMemberInfo
     paramJceOutputStream.write(this.dwApolloTimestamp, 27);
     paramJceOutputStream.write(this.dwGlobalGroupLevel, 28);
     paramJceOutputStream.write(this.dwTitleId, 29);
+    paramJceOutputStream.write(this.dwShutupTimestap, 30);
+    paramJceOutputStream.write(this.dwGlobalGroupPoint, 31);
+    if (this.qzusrinfo != null) {
+      paramJceOutputStream.write(this.qzusrinfo, 32);
+    }
   }
 }
 

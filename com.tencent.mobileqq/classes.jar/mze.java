@@ -1,68 +1,81 @@
-import android.support.v4.util.MQLruCache;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.PhotoCollectionInfo;
-import com.tencent.mobileqq.ac.ArticleComment.GetPhotoCollectionInfoResponse;
-import com.tencent.mobileqq.app.AppConstants;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileInputStream;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class mze
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  String jdField_a_of_type_JavaLangString;
+  public mze(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public mze(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, String paramString)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void run()
-  {
+    String str2;
+    JSONObject localJSONObject;
+    if (paramBundle != null)
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.l();
+      }
+      str2 = paramBundle.getString("pic_local_id");
+      localJSONObject = new JSONObject();
+    }
     for (;;)
     {
       try
       {
-        localFileInputStream = new FileInputStream(AppConstants.ct + this.jdField_a_of_type_JavaLangString);
-        localObject1 = null;
-      }
-      catch (Exception localException1)
-      {
-        FileInputStream localFileInputStream;
-        Object localObject1;
-        Object localObject2;
-        int i;
-        if (!QLog.isColorLevel()) {
+        if (!"-1".equals(str2)) {
           continue;
         }
-        QLog.d(PublicAccountImageCollectionPreloadManager.a(), 2, "read Exception " + localException1);
+        localJSONObject.put("retCode", -1);
+        localJSONObject.put("msg", "fail");
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+        paramBundle = str2;
+        localJSONObject.put("localId", paramBundle);
       }
-      try
+      catch (JSONException paramBundle)
       {
-        localObject2 = new byte[localFileInputStream.available()];
-        localObject1 = localObject2;
-        localFileInputStream.read((byte[])localObject2);
-        localObject1 = localObject2;
-        i = 1;
+        String str1;
+        paramBundle.printStackTrace();
+        continue;
       }
-      catch (Exception localException2)
-      {
-        i = 0;
+      this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.c(this.b);
       }
-    }
-    localFileInputStream.close();
-    if (i != 0)
-    {
+      return;
+      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+      paramBundle = str2;
+      continue;
+      str1 = str2;
+      if (this.jdField_a_of_type_Boolean) {
+        str1 = "mqqpa://resourceid/" + str2;
+      }
+      paramBundle = paramBundle.getString("pic_local_path");
+      PublicAccountH5AbilityPlugin.b.put(str1, paramBundle);
+      localJSONObject.put("retCode", 0);
+      localJSONObject.put("msg", "下载成功，localld为" + str1);
       if (QLog.isColorLevel()) {
-        QLog.d(PublicAccountImageCollectionPreloadManager.a(), 2, "preloadFileToCache");
+        QLog.i("PublicAccountH5AbilityPlugin", 2, "下载成功，localld为  " + str1);
       }
-      localObject2 = new ArticleComment.GetPhotoCollectionInfoResponse();
-      ((ArticleComment.GetPhotoCollectionInfoResponse)localObject2).mergeFrom((byte[])localObject1);
-      localObject1 = PublicAccountImageCollectionPreloadManager.a(this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager, (ArticleComment.GetPhotoCollectionInfoResponse)localObject2, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a.put(this.jdField_a_of_type_JavaLangString, localObject1);
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a((PublicAccountImageCollectionUtils.PhotoCollectionInfo)localObject1);
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b((PublicAccountImageCollectionUtils.PhotoCollectionInfo)localObject1);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
+        paramBundle = str1;
+      }
+      else
+      {
+        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
+        paramBundle = str1;
+      }
     }
-    return;
   }
 }
 

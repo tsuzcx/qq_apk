@@ -1,22 +1,55 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.app.UniteSearchObserver;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import pb.unite.search.DynamicAssociationWord.SuggestUrlItem;
 
 public class ahwf
-  extends SosoInterface.OnLocationListener
+  extends UniteSearchObserver
 {
-  public ahwf(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public ahwf(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  
+  public void a(String paramString, int paramInt, List paramList1, List paramList2, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleSuggestUrlResult keyword=" + paramString + " activity keyword=" + this.a.jdField_a_of_type_JavaLangString + " size=" + paramList2.size());
+    }
+    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
+      }
+      paramString = new ArrayList();
+      paramList2 = new AssociateSearchWordsFragment.AssociateItem();
+      paramList2.jdField_a_of_type_Int = 1;
+      if ((paramList1 != null) && (paramList1.size() > 0))
+      {
+        paramInt = 0;
+        while (paramInt < paramList1.size())
+        {
+          paramSuggestUrlItem = ((AssociateSearchWordsFragment.AssociateItem)paramList1.get(paramInt)).jdField_a_of_type_JavaLangString;
+          AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
+          localAssociateItem.jdField_a_of_type_JavaLangString = paramSuggestUrlItem;
+          localAssociateItem.jdField_a_of_type_Int = 3;
+          localAssociateItem.d = (paramInt + 1);
+          paramString.add(localAssociateItem);
+          if (paramInt != paramList1.size() - 1) {
+            paramString.add(paramList2);
+          }
+          paramInt += 1;
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
+    }
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(String paramString1, Integer paramInteger, String paramString2)
   {
-    if (paramInt == 0)
-    {
-      NetSearchEngine.a = paramSosoLbsInfo.a.a;
-      NetSearchEngine.b = paramSosoLbsInfo.a.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
     }
   }
 }

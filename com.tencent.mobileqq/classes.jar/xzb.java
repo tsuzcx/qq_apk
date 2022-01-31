@@ -1,43 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import com.tencent.widget.PinnedFooterExpandableListView.FooterExpandListViewListener;
 
 public class xzb
-  implements PinnedFooterExpandableListView.FooterExpandListViewListener
+  implements Runnable
 {
-  public xzb(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  public xzb(NewPreFlowCamera paramNewPreFlowCamera, boolean paramBoolean, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a = true;
-    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-  }
-  
-  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
-  {
-    if (!this.a.a)
-    {
-      if (paramInt - 1 >= 0) {
-        paramPinnedFooterExpandableListView.b(paramInt - 1);
-      }
-      for (;;)
-      {
-        this.a.a = true;
-        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("NewPreFlowCamera", 2, "onStatusChanged: " + this.jdField_a_of_type_Boolean + " error:" + this.jdField_a_of_type_Int);
     }
-    if (paramPinnedFooterExpandableListView.c(paramInt))
+    if (!this.jdField_a_of_type_Boolean)
     {
-      paramPinnedFooterExpandableListView.b(paramInt);
+      QQToast.a(BaseApplicationImpl.getContext(), 2131432992, 0).a();
+      NewPreFlowCamera.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera, -1);
       return;
     }
-    paramPinnedFooterExpandableListView.a(paramInt);
+    NewPreFlowCamera.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera, 101);
+    NewPreFlowCamera.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewPreFlowCamera, "onStatusChanged");
   }
 }
 

@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class spa
-  implements Runnable
+  extends BizTroopObserver
 {
-  public spa(FriendProfileCardActivity paramFriendProfileCardActivity, PersonalityLabelHandler paramPersonalityLabelHandler) {}
+  public spa(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {
+    this.a.i();
+    if (paramBoolean)
+    {
+      if (paramBoolean1.booleanValue()) {
+        DiscussionInfoCardActivity.e(this.a);
+      }
       return;
     }
-    PersonalityLabelHandler localPersonalityLabelHandler = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelHandler;
-    PersonalityLabelHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a);
+    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 

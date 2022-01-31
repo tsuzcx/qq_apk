@@ -1,51 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicHelper;
-import cooperation.comic.utils.QQComicPluginBridge;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.HorizontalListView;
 
-public final class amjj
-  extends amjo
+public class amjj
+  implements Runnable
 {
-  public amjj(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public amjj(HorizontalListView paramHorizontalListView, amjo paramamjo) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    if (localQQAppInterface == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!QQComicPluginBridge.a(localQQAppInterface)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QQComicDebug", 2, "plugin is installed.");
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("QQComicDebug", 2, "wait for plugin installation...");
-        }
-        VipComicHelper.a(2, localQQAppInterface);
-        if (QQComicPluginBridge.a(localQQAppInterface, true, null)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQComicDebug", 2, "plugin install failed.");
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("QQComicDebug", 2, "plugin is installed now.");
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.p = -1;
+    HorizontalListView.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView);
+    if (!this.jdField_a_of_type_ComTencentWidgetHorizontalListView.b) {
+      this.jdField_a_of_type_Amjo.run();
+    }
+    HorizontalListView.a(this.jdField_a_of_type_ComTencentWidgetHorizontalListView, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjj
  * JD-Core Version:    0.7.0.1
  */

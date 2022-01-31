@@ -1,32 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import cooperation.qzone.plugin.PluginRecord;
 
-class anfh
-  extends Handler
+public abstract interface anfh
 {
-  anfh(anfg paramanfg, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void b(boolean paramBoolean, PluginRecord paramPluginRecord);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(0);
-      return;
-    } while (this.a.a == null);
-    this.a.a.a(2);
-  }
+  public abstract void e(PluginRecord paramPluginRecord);
 }
 
 

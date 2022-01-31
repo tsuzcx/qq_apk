@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import java.util.ArrayList;
 
-public final class afly
-  implements ImageFeedsUploader.UploadListener
+public class afly
+  implements Runnable
 {
-  public void a(PicFeedUploadInfo paramPicFeedUploadInfo) {}
+  public afly(NearbyProfileEditPanel paramNearbyProfileEditPanel, NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle, ArrayList paramArrayList) {}
   
-  public void a(PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
+  public void run()
   {
-    ThreadManager.getUIHandler().post(new aflz(this, paramPicFeedUploadInfo, paramUploadResult));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_ArrayOfComTencentMobileqqNearbyInterestTagInterestTag, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.d, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.b(), false);
   }
-  
-  public void b(PicFeedUploadInfo paramPicFeedUploadInfo) {}
 }
 
 

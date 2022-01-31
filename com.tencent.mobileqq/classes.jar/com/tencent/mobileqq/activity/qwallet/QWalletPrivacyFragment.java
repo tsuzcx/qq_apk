@@ -17,9 +17,9 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
-import xar;
-import xas;
-import xat;
+import xgh;
+import xgi;
+import xgj;
 
 public class QWalletPrivacyFragment
   extends PublicBaseFragment
@@ -36,17 +36,17 @@ public class QWalletPrivacyFragment
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = ((String)localObject2).replace("\\n", "\n");
     }
-    localObject2 = QWalletTools.a((String)localObject1, getActivity(), new xar(this));
+    localObject2 = QWalletTools.a((String)localObject1, getActivity(), new xgh(this));
     if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty(str1)))
     {
-      b();
+      a();
       return;
     }
-    localObject1 = DialogUtil.a(getActivity(), 230, 2130971048, str2, (CharSequence)localObject2, 2131432346, 2131432345, new xas(this), new xat(this));
+    localObject1 = DialogUtil.a(getActivity(), 230, 2130971066, str2, (CharSequence)localObject2, 2131432357, 2131432356, new xgi(this), new xgj(this));
     ((QQCustomDialog)localObject1).setCancelable(false);
     ((QQCustomDialog)localObject1).setCanceledOnTouchOutside(false);
     ((QQCustomDialog)localObject1).show();
-    paramView = (RelativeLayout)paramView.findViewById(2131372739);
+    paramView = (RelativeLayout)paramView.findViewById(2131372750);
     localObject1 = new ColorDrawable(-1);
     localObject2 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
@@ -54,25 +54,25 @@ public class QWalletPrivacyFragment
     paramView.setBackgroundDrawable(URLDrawable.getDrawable(str1, (URLDrawable.URLDrawableOptions)localObject2));
   }
   
-  public void b()
+  public void a()
   {
     QWalletHelper.launchQWalletAct(getActivity(), getActivity().app, false);
     getActivity().finish();
   }
   
-  public boolean b()
+  public boolean isWrapContent()
   {
     return false;
   }
   
-  public boolean c()
+  public boolean needImmersive()
   {
     return false;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2130971047, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2130971065, paramViewGroup, false);
   }
   
   public void onDestroy()
@@ -92,7 +92,7 @@ public class QWalletPrivacyFragment
     catch (Throwable paramView)
     {
       paramView.printStackTrace();
-      b();
+      a();
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import aetn;
-import aeto;
+import afaz;
+import afba;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -254,7 +254,7 @@ public class InfinitePlayListDataModel
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_JavaLangString + "&num=" + 10, new aeto(this));
+    new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_JavaLangString + "&num=" + 10, new afba(this));
   }
   
   public void a(Bundle paramBundle)
@@ -280,7 +280,7 @@ public class InfinitePlayListDataModel
     if (this.jdField_b_of_type_Boolean) {
       return;
     }
-    new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_JavaLangString + "&num=" + 10, new aetn(this));
+    new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_JavaLangString + "&num=" + 10, new afaz(this));
   }
 }
 

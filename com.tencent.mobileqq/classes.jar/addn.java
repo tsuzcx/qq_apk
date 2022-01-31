@@ -1,17 +1,33 @@
-import com.tencent.biz.troop.file.TroopFileProtocol.OnGetZipFileList;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnZipEventListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 class addn
-  implements TroopFileProtocol.OnGetZipFileList
+  implements Runnable
 {
-  addn(addm paramaddm) {}
+  addn(addl paramaddl) {}
   
-  public void a(List paramList)
+  public void run()
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(paramList, this.a.a.jdField_a_of_type_JavaLangString, this.a.a.b, this.a.a.c, this.a.a.d);
+    try
+    {
+      if (this.a.a.jdField_a_of_type_JavaIoOutputStream == null) {
+        this.a.a.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.a.a.d, true);
+      }
+      if (this.a.a.b == 1) {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.a.c, 2002);
+      }
+      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+      this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
+      FileManagerRSWorker.a(this.a.a, this.a.a.jdField_a_of_type_Long, this.a.a.h);
+      return;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      localFileNotFoundException.printStackTrace();
     }
   }
 }

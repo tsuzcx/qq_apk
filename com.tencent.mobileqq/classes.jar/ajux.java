@@ -1,15 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
 class ajux
-  implements Action.OnActionEndListener
+  implements Runnable
 {
   ajux(ajuw paramajuw) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.a.post(new ajuy(this));
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.jdField_a_of_type_Boolean);
   }
 }
 

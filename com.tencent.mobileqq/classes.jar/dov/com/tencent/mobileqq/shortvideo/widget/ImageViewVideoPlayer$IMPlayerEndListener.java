@@ -2,11 +2,11 @@ package dov.com.tencent.mobileqq.shortvideo.widget;
 
 public abstract interface ImageViewVideoPlayer$IMPlayerEndListener
 {
-  public abstract void au_();
+  public abstract void aw_();
   
-  public abstract void av_();
+  public abstract void ax_();
   
-  public abstract void j();
+  public abstract void i();
 }
 
 

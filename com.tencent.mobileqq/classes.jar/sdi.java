@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DBUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class sdi
-  implements Runnable
+public class sdi
+  implements DialogInterface.OnClickListener
 {
-  sdi(sdg paramsdg, String paramString) {}
+  public sdi(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DBUtils.a(this.jdField_a_of_type_Sdg.a.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
+    ThreadManager.post(new sdj(this), 8, null, false);
   }
 }
 

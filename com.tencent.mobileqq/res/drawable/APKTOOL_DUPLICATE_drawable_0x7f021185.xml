@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c022c" />
-    <item android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c022c" />
-</selector>
+    <corners android:radius="8.0dip" />
+    <solid android:color="#ffffffff" />
+    <stroke android:width="3.0dip" android:color="#ffffc11b" />
+    <size android:height="35.0dip" android:width="200.0dip" />
+</shape>

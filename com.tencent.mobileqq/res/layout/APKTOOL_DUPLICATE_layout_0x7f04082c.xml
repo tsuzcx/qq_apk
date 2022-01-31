@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:clickable="false" android:layout_width="fill_parent" android:layout_height="10.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="-3.0dip" android:layout_marginBottom="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f6e" />
+    <TextView android:id="@id/title" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b3" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0686" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b6" />
+    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2635" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02ba" />
+</RelativeLayout>

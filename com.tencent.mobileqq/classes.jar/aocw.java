@@ -1,11 +1,19 @@
-import dov.com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Friend;
-import dov.com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Group;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-public class aocw
+public final class aocw
+  implements Parcelable.Creator
 {
-  public int a;
-  public ComplexPart.Friend a;
-  public ComplexPart.Group a;
+  public EditVideoParams a(Parcel paramParcel)
+  {
+    return new EditVideoParams(paramParcel);
+  }
+  
+  public EditVideoParams[] a(int paramInt)
+  {
+    return new EditVideoParams[paramInt];
+  }
 }
 
 

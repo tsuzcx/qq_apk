@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.richmedia.dc.DCShortVideo;
-import com.tencent.mobileqq.richmedia.dc.DataReport;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
 
 public class ahnq
   implements Runnable
 {
-  public ahnq(DCShortVideo paramDCShortVideo, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, long paramLong) {}
+  public ahnq(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
   public void run()
   {
-    ahnw localahnw = new ahnw();
-    localahnw.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localahnw.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localahnw.b = this.b;
-    localahnw.c = this.c;
-    localahnw.d = this.d;
-    localahnw.e = this.e;
-    localahnw.f = this.f;
-    localahnw.g = this.g;
-    localahnw.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    ahnz localahnz = new ahnz("actStreamingVideoPlay", localahnw.a("actStreamingVideoPlay"));
-    DataReport.a().a(localahnz);
-    if (QLog.isColorLevel()) {
-      QLog.d("DCShortVideo", 2, "reportProgressivePlayData():" + localahnw.toString());
-    }
+    DanceLog.a("EffectsFragment", "playSceneEndEvent  begin exe...");
+    EffectsCameraCaptureFragment.a(this.a).setVisibility(8);
+    EffectsCameraCaptureFragment.a(this.a).setEnabled(false);
+    EffectsCameraCaptureFragment.a(this.a, 0);
+    EffectsCameraCaptureFragment.a(this.a, EffectsCameraCaptureFragment.a(this.a));
+    EffectsCameraCaptureFragment.e(this.a).setVisibility(0);
+    this.a.a.postDelayed(EffectsCameraCaptureFragment.a(this.a), 500L);
+    DanceLog.a("EffectsFragment", "playSceneEndEvent  end exe...");
   }
 }
 

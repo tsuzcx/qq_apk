@@ -1,19 +1,15 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
 
-class aauk
+public class aauk
   implements Runnable
 {
-  aauk(aauj paramaauj, String paramString) {}
+  public aauk(ArCardSelectMemberActivity paramArCardSelectMemberActivity) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_Aauj.a.a.setText(this.jdField_a_of_type_JavaLangString);
-  }
+  public void run() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aauk
  * JD-Core Version:    0.7.0.1
  */

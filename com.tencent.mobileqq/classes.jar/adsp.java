@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import android.app.Activity;
+import android.content.Intent;
+import com.dataline.core.DirectForwarder;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
-public class adsp
-  implements Cloneable
+class adsp
+  implements FMDialogUtil.FMDialogInterface
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b = "";
+  adsp(adso paramadso) {}
   
-  public adsp(VideoBaseItem paramVideoBaseItem, int paramInt, long paramLong)
+  public void a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    DirectForwarder.b(this.a.a.jdField_a_of_type_AndroidAppActivity, 0);
+    this.a.a.jdField_a_of_type_AndroidContentIntent.putExtra("NOCANCEL4DATALIN", true);
+    this.a.a.jdField_a_of_type_AndroidAppActivity.setResult(0, this.a.a.jdField_a_of_type_AndroidContentIntent);
+    this.a.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
   
-  protected adsp a()
+  public void b()
   {
-    return (adsp)super.clone();
+    this.a.a.jdField_a_of_type_AndroidAppActivity.setResult(0, this.a.a.jdField_a_of_type_AndroidContentIntent);
+    this.a.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsp
  * JD-Core Version:    0.7.0.1
  */

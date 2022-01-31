@@ -4,8 +4,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import anuc;
-import anud;
+import aocs;
+import aoct;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.qphone.base.util.QLog;
@@ -78,7 +78,7 @@ public class EditVideoMultiSegment
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new anud(this), 3000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aoct(this), 3000L);
       bool2 = false;
       l2 = 0L;
       l1 = l2;
@@ -142,7 +142,7 @@ public class EditVideoMultiSegment
     }
   }
   
-  private void j()
+  private void i()
   {
     if (!QLog.isColorLevel()) {
       return;
@@ -208,7 +208,7 @@ public class EditVideoMultiSegment
       b(paramLong, paramBoolean);
       return;
     }
-    ThreadManager.getUIHandler().post(new anuc(this, paramLong, paramBoolean));
+    ThreadManager.getUIHandler().post(new aocs(this, paramLong, paramBoolean));
   }
   
   public void a(List paramList)
@@ -218,7 +218,7 @@ public class EditVideoMultiSegment
     }
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    j();
+    i();
   }
   
   protected boolean a(Message paramMessage)
@@ -236,7 +236,7 @@ public class EditVideoMultiSegment
     return true;
   }
   
-  public void aA_()
+  public void b()
   {
     Object localObject = (EditVideoPlayerExport)a(EditVideoPlayerExport.class);
     if (localObject != null) {
@@ -256,7 +256,7 @@ public class EditVideoMultiSegment
     }
     localObject = (EditMusicExport)a(EditMusicExport.class);
     if (localObject != null) {
-      ((EditMusicExport)localObject).at_();
+      ((EditMusicExport)localObject).av_();
     }
   }
   

@@ -1,18 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import java.util.List;
 
 public class acmp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acmp(FilePreviewActivity paramFilePreviewActivity) {}
+  public acmp(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8009065", "0X8009065", 0, 0, "", "", "", "");
-    FilePreviewActivity.a(this.a, TeamWorkConvertUtils.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131439137), true));
+    int i;
+    EmotionPanelInfo localEmotionPanelInfo;
+    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    {
+      i = 0;
+      if (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      {
+        localEmotionPanelInfo = (EmotionPanelInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.a != 4)) {}
+      }
+    }
+    for (;;)
+    {
+      if ((localEmotionPanelInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localEmotionPanelInfo);
+      }
+      return;
+      i += 1;
+      break;
+      localEmotionPanelInfo = null;
+    }
   }
 }
 

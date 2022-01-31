@@ -1,14 +1,14 @@
 package com.tencent.chirp;
 
 import android.content.Context;
-import pep;
+import pjh;
 
 public class PCMRecorder
 {
   private int jdField_a_of_type_Int = 44100;
   private Context jdField_a_of_type_AndroidContentContext;
   private PCMRecorder.OnQQRecorderListener jdField_a_of_type_ComTencentChirpPCMRecorder$OnQQRecorderListener;
-  private volatile pep jdField_a_of_type_Pep;
+  private volatile pjh jdField_a_of_type_Pjh;
   private int b;
   
   public PCMRecorder(Context paramContext, int paramInt, PCMRecorder.OnQQRecorderListener paramOnQQRecorderListener)
@@ -21,19 +21,19 @@ public class PCMRecorder
   
   public void a()
   {
-    if (this.jdField_a_of_type_Pep != null)
+    if (this.jdField_a_of_type_Pjh != null)
     {
-      this.jdField_a_of_type_Pep.a = false;
-      this.jdField_a_of_type_Pep = null;
+      this.jdField_a_of_type_Pjh.a = false;
+      this.jdField_a_of_type_Pjh = null;
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Pep == null)
+    if (this.jdField_a_of_type_Pjh == null)
     {
-      this.jdField_a_of_type_Pep = new pep(this);
-      this.jdField_a_of_type_Pep.start();
+      this.jdField_a_of_type_Pjh = new pjh(this);
+      this.jdField_a_of_type_Pjh.start();
       return true;
     }
     return false;

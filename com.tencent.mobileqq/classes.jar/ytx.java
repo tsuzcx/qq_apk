@@ -1,33 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.util.Log;
+import java.io.Writer;
 
 public class ytx
-  implements DialogInterface.OnClickListener
+  extends Writer
 {
-  public ytx(ApolloStoreActivity paramApolloStoreActivity) {}
+  private StringBuilder a = new StringBuilder();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private void a()
   {
-    if (!TextUtils.isEmpty(ApolloConstant.X)) {}
-    for (String str = ApolloConstant.X;; str = ApolloConstant.M)
+    if (this.a.length() > 0)
     {
-      long l1 = DeviceInfoUtil.k();
-      long l2 = DeviceInfoUtil.j();
-      str = str + "&screenWidth=" + (int)((float)l2 / ApolloStoreActivity.a(this.a)) + "&screenHeight=" + (int)((float)l1 / ApolloStoreActivity.a(this.a)) + "&tab=mall&view=role";
-      WebViewFragment localWebViewFragment = this.a.b();
-      if ((localWebViewFragment != null) && (localWebViewFragment.a != null)) {
-        localWebViewFragment.a.loadUrl(str);
+      Log.v("GLTextureView", this.a.toString());
+      this.a.delete(0, this.a.length());
+    }
+  }
+  
+  public void close()
+  {
+    a();
+  }
+  
+  public void flush()
+  {
+    a();
+  }
+  
+  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    if (i < paramInt2)
+    {
+      char c = paramArrayOfChar[(paramInt1 + i)];
+      if (c == '\n') {
+        a();
       }
-      paramDialogInterface.dismiss();
-      VipUtils.a(null, "cmshow", "Apollo", "AI_alert_mall", 0, 0, new String[0]);
-      return;
+      for (;;)
+      {
+        i += 1;
+        break;
+        this.a.append(c);
+      }
     }
   }
 }

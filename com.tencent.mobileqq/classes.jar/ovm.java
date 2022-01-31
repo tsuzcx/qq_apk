@@ -1,16 +1,21 @@
-import android.widget.ProgressBar;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
 public class ovm
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
+  public ovm(LeftTabBarView paramLeftTabBarView, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    long l = System.currentTimeMillis();
+    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {
+      return;
+    }
+    LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
+  }
 }
 
 

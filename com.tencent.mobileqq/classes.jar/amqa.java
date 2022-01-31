@@ -1,30 +1,22 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.Map.Entry;
 
 public class amqa
-  extends QQProgressDialog
+  extends amqc
 {
-  public amqa(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext, int paramInt)
+  amqa(SoftHashMap paramSoftHashMap)
   {
-    super(paramContext, paramInt);
+    super(paramSoftHashMap);
   }
   
-  public void onBackPressed()
+  public Map.Entry a()
   {
-    if (this.a.a) {
-      super.onBackPressed();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
+    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amqa
  * JD-Core Version:    0.7.0.1
  */

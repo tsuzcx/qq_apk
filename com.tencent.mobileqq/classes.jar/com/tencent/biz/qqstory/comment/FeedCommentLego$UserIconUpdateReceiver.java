@@ -20,7 +20,7 @@ public class FeedCommentLego$UserIconUpdateReceiver
   
   public void a(@NonNull FeedCommentLego paramFeedCommentLego, @NonNull GetUserIconHandler.UserIconUpdateEvent paramUserIconUpdateEvent)
   {
-    if (paramUserIconUpdateEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    if (paramUserIconUpdateEvent.errorInfo.isFail()) {}
     CommentEntry localCommentEntry;
     do
     {
@@ -30,7 +30,7 @@ public class FeedCommentLego$UserIconUpdateReceiver
         localIterator = paramFeedCommentLego.a.iterator();
       }
       localCommentEntry = (CommentEntry)localIterator.next();
-    } while ((paramUserIconUpdateEvent.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) == null) && (paramUserIconUpdateEvent.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) == null));
+    } while ((paramUserIconUpdateEvent.a.get(localCommentEntry.authorUnionId) == null) && (paramUserIconUpdateEvent.a.get(localCommentEntry.replierUnionId) == null));
     paramFeedCommentLego.f();
     SLog.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
   }

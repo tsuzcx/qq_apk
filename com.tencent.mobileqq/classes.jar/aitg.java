@@ -1,32 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.PrefixSelectedListener;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.theme.ThemeSwitchManager;
+import com.tencent.mobileqq.theme.diy.ResData;
+import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic.StyleCallBack;
+import com.tencent.qphone.base.util.QLog;
 
 public class aitg
-  implements View.OnClickListener
+  implements ThemeDiyStyleLogic.StyleCallBack
 {
-  private aith jdField_a_of_type_Aith;
-  private TribeTitlePrefixPanelView.PrefixSelectedListener jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener;
+  public aitg(ThemeSwitchManager paramThemeSwitchManager) {}
   
-  public aitg(aith paramaith)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    this.jdField_a_of_type_Aith = paramaith;
-  }
-  
-  public void a(TribeTitlePrefixPanelView.PrefixSelectedListener paramPrefixSelectedListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener = paramPrefixSelectedListener;
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag()).intValue();
-    aith.a(this.jdField_a_of_type_Aith, i);
-    if (this.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener.a((TribeTitlePrefixPanelView.TitlePrefixItem)aith.a(this.jdField_a_of_type_Aith).get(i));
+    if (paramInt2 == 4)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeSwitchManager", 2, "saveThemeToSVCallBack:save theme server ok, themeId=" + this.a.a + ",version=" + this.a.b);
+      }
+      new aitn(this.a).execute(new Object[] { this.a.a, this.a.b });
+      return 0;
     }
+    QLog.e("ThemeSwitchManager", 1, "saveThemeToSVCallBack:save theme server error, themeId=" + this.a.a + ",version=" + this.a.b);
+    this.a.a(-2, this.a.a, this.a.b, 20);
+    return 0;
   }
 }
 

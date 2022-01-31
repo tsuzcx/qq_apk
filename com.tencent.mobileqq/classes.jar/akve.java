@@ -1,25 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView.DropdownCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
-class akve
-  implements Runnable
+public class akve
+  extends SosoInterface.OnLocationListener
 {
-  akve(akvd paramakvd, View paramView) {}
-  
-  public void run()
+  public akve(WebViewFragment paramWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewStyleDropdownView", 2, "arrow clicked and postDelayed 250 run, set icon up and isLastDropDown true");
-    }
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Akvd.a.b);
-    if (this.jdField_a_of_type_Akvd.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
-      this.jdField_a_of_type_Akvd.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.b();
-    }
-    this.jdField_a_of_type_Akvd.a.jdField_a_of_type_Boolean = true;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
 }
 
 

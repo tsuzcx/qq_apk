@@ -14,7 +14,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mqj;
+import mub;
 
 public class ImageManager
 {
@@ -23,7 +23,7 @@ public class ImageManager
   HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  mqj jdField_a_of_type_Mqj;
+  mub jdField_a_of_type_Mub;
   HashMap b = new HashMap();
   
   static
@@ -44,12 +44,12 @@ public class ImageManager
       if (QLog.isColorLevel()) {
         Utils.a(jdField_a_of_type_JavaLangString, "start memLimit:" + i);
       }
-      this.jdField_a_of_type_Mqj = new mqj(i);
+      this.jdField_a_of_type_Mub = new mub(i);
       ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-      localThreadPoolParams.jdField_a_of_type_JavaLangString = "image-manager";
-      localThreadPoolParams.b = 4;
-      localThreadPoolParams.c = 8;
-      localThreadPoolParams.jdField_a_of_type_Int = 3;
+      localThreadPoolParams.poolThreadName = "image-manager";
+      localThreadPoolParams.corePoolsize = 4;
+      localThreadPoolParams.maxPooolSize = 8;
+      localThreadPoolParams.priority = 3;
       this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = ((ThreadPoolExecutor)ThreadManager.newFreeThreadPool(localThreadPoolParams));
       return;
       int j = (int)(MemoryManager.a() / 10L);
@@ -83,7 +83,7 @@ public class ImageManager
       return paramImageRequest;
       try
       {
-        paramImageRequest = this.jdField_a_of_type_Mqj.a(paramImageRequest);
+        paramImageRequest = this.jdField_a_of_type_Mub.a(paramImageRequest);
       }
       finally {}
     }
@@ -96,7 +96,7 @@ public class ImageManager
       if (QLog.isColorLevel()) {
         Utils.a(jdField_a_of_type_JavaLangString, "clean");
       }
-      this.jdField_a_of_type_Mqj.a();
+      this.jdField_a_of_type_Mub.a();
       Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
       while (localIterator.hasNext()) {
         ((RunningJob)((Map.Entry)localIterator.next()).getValue()).a();
@@ -129,7 +129,7 @@ public class ImageManager
       return;
       try
       {
-        localObject = this.jdField_a_of_type_Mqj.a(paramImageRequest);
+        localObject = this.jdField_a_of_type_Mub.a(paramImageRequest);
         if (localObject != null)
         {
           ((CloseableBitmap)localObject).a();
@@ -182,17 +182,17 @@ public class ImageManager
     //   2: aload_0
     //   3: getfield 43	com/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   6: aload_1
-    //   7: invokevirtual 170	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   10: checkcast 161	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob
+    //   7: invokevirtual 174	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   10: checkcast 165	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob
     //   13: astore_2
     //   14: aload_2
     //   15: ifnull +19 -> 34
     //   18: aload_2
-    //   19: invokevirtual 162	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	()V
+    //   19: invokevirtual 166	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	()V
     //   22: aload_0
-    //   23: getfield 116	com/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageManager:jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor	Ljava/util/concurrent/ThreadPoolExecutor;
+    //   23: getfield 120	com/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageManager:jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor	Ljava/util/concurrent/ThreadPoolExecutor;
     //   26: aload_2
-    //   27: invokevirtual 222	java/util/concurrent/ThreadPoolExecutor:remove	(Ljava/lang/Runnable;)Z
+    //   27: invokevirtual 226	java/util/concurrent/ThreadPoolExecutor:remove	(Ljava/lang/Runnable;)Z
     //   30: pop
     //   31: aload_0
     //   32: monitorexit
@@ -200,13 +200,13 @@ public class ImageManager
     //   34: aload_0
     //   35: getfield 52	com/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageManager:b	Ljava/util/HashMap;
     //   38: aload_1
-    //   39: invokevirtual 170	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   42: checkcast 161	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob
+    //   39: invokevirtual 174	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   42: checkcast 165	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob
     //   45: astore_1
     //   46: aload_1
     //   47: ifnull -16 -> 31
     //   50: aload_1
-    //   51: invokevirtual 162	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	()V
+    //   51: invokevirtual 166	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:a	()V
     //   54: goto -23 -> 31
     //   57: astore_1
     //   58: aload_0

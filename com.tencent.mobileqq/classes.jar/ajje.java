@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.TroopFeedParserHelper;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
+import java.util.List;
+import org.json.JSONObject;
 
-public class ajje
-  implements DialogInterface.OnClickListener
+class ajje
+  implements Runnable
 {
-  public ajje(ReciteRecordLayout paramReciteRecordLayout) {}
+  ajje(ajjd paramajjd, JSONObject paramJSONObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.c();
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).d();
-    }
-    paramDialogInterface.dismiss();
+    Object localObject = TroopFeedParserHelper.a(this.jdField_a_of_type_OrgJsonJSONObject, "" + this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    List localList = (List)localObject[0];
+    localObject = (List)localObject[1];
+    ((List)localObject).addAll(this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_JavaUtilList);
+    Message localMessage = this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
+    localMessage.obj = this.jdField_a_of_type_Ajjd.a.a(localList, (List)localObject);
+    this.jdField_a_of_type_Ajjd.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }
 

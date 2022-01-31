@@ -20,15 +20,15 @@ public class SearchResultGroupView
   public SearchResultGroupView(ViewGroup paramViewGroup, int paramInt)
   {
     this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.c = ((TextView)this.b.findViewById(2131362715));
+    this.c = ((TextView)this.b.findViewById(2131362720));
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.b.findViewById(2131365680)));
-    this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.b.findViewById(2131365681)));
-    this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.b.findViewById(2131365682)));
-    if ((paramInt == 2130969233) || (paramInt == 2130971525))
+    this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.b.findViewById(2131365685)));
+    this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.b.findViewById(2131365686)));
+    this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.b.findViewById(2131365687)));
+    if ((paramInt == 2130969231) || (paramInt == 2130971551))
     {
-      this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.b.findViewById(2131365683)));
-      this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.b.findViewById(2131365684)));
+      this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.b.findViewById(2131365688)));
+      this.jdField_a_of_type_JavaUtilList.add(new SearchResultView(this.b.findViewById(2131365689)));
     }
   }
   

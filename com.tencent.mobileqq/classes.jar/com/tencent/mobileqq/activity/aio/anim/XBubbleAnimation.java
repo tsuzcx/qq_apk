@@ -18,11 +18,11 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 import com.tencent.widget.ListView;
 import java.io.IOException;
-import uoa;
-import uob;
-import uoc;
-import uoe;
-import uoh;
+import usz;
+import uta;
+import utb;
+import utd;
+import utg;
 
 public class XBubbleAnimation
   extends AIOAnimationConatiner.AIOAnimator
@@ -158,7 +158,7 @@ public class XBubbleAnimation
       {
         label78:
         if (paramInt != 0) {
-          this.jdField_a_of_type_AndroidOsHandler.post(new uob(this));
+          this.jdField_a_of_type_AndroidOsHandler.post(new uta(this));
         }
         return;
       }
@@ -361,7 +361,7 @@ public class XBubbleAnimation
               QLog.d("XBubbleAnimation", 2, "bindView mLinkView dx=" + j + ",dy=" + i);
             }
           }
-          this.jdField_a_of_type_AndroidOsHandler.post(new uoa(this));
+          this.jdField_a_of_type_AndroidOsHandler.post(new usz(this));
           return false;
         }
         return bool1;
@@ -393,7 +393,7 @@ public class XBubbleAnimation
   
   protected boolean a(Object... paramVarArgs)
   {
-    ThreadManager.post(new uoc(this, paramVarArgs), 8, null, true);
+    ThreadManager.post(new utb(this, paramVarArgs), 8, null, true);
     return true;
   }
   
@@ -484,7 +484,7 @@ public class XBubbleAnimation
     }
     else
     {
-      this.jdField_b_of_type_AndroidViewView = new uoe(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
+      this.jdField_b_of_type_AndroidViewView = new utd(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
       this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_b_of_type_AndroidViewView, -1, AIOAnimationConatiner.a, false);
       this.jdField_b_of_type_AndroidViewView.layout(0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.h);
@@ -500,7 +500,7 @@ public class XBubbleAnimation
           i = 1;
           paramArrayOfObject.f = i;
         }
-        this.jdField_a_of_type_AndroidViewView = new uoh(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
+        this.jdField_a_of_type_AndroidViewView = new utg(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
         this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_b_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_a_of_type_AndroidViewView, -1, AIOAnimationConatiner.a, false);
         this.jdField_a_of_type_AndroidViewView.layout(0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.h);

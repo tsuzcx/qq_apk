@@ -1,25 +1,36 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack.Stub;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.qphone.base.util.QLog;
 
-class vmb
-  extends IAIOImageProviderCallBack.Stub
+public class vmb
+  implements Animator.AnimatorListener
 {
-  vmb(vma paramvma) {}
+  public vmb(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.runOnUiThread(new vmd(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
+    if (!SixCombolEffectView.jdField_a_of_type_Boolean) {
+      return;
+    }
+    SixCombolEffectView.a(this.a).start();
+    this.a.a();
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
-  {
-    this.a.a.runOnUiThread(new vmc(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.a.runOnUiThread(new vme(this, paramArrayOfAIORichMediaData, paramInt));
+    if (SixCombolEffectView.a(this.a)) {}
+    do
+    {
+      return;
+      SixCombolEffectView.jdField_a_of_type_Int = 1;
+    } while (!QLog.isColorLevel());
+    QLog.w("SixCombolEffectView", 2, "Animation 1 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
   }
 }
 

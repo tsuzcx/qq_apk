@@ -194,7 +194,7 @@ public class ReadInJoyMSFHandlerUtils
         }
         localArticleInfo1.mCommentsObj = paramArticleSummary.rpt_comments.get();
         if (!paramArticleSummary.msg_pack_info.has()) {
-          break label1584;
+          break label1598;
         }
         localArticleInfo1.mPackInfoObj = ((oidb_cmd0x68b.PackInfo)paramArticleSummary.msg_pack_info.get());
         localArticleInfo1.mGroupId = localArticleInfo1.mPackInfoObj.uint64_pack_id.get();
@@ -204,18 +204,18 @@ public class ReadInJoyMSFHandlerUtils
         }
         localArticleInfo1.businessId = localArticleInfo1.mPolymericInfo.f;
         if (!QLog.isColorLevel()) {
-          break label1584;
+          break label1598;
         }
-        QLog.d("PolymericSmallVideo_ReadInJoyMSFHandlerUtils", 2, "groupId:" + localArticleInfo1.mGroupId + " articleID:" + localArticleInfo1.mArticleID + " type:" + ((oidb_cmd0x68b.PackInfo)localArticleInfo1.mPackInfoObj.get()).pack_type.get() + " recommendId:" + localArticleInfo1.mRecommendSeq);
+        QLog.d("PolymericSmallVideo_ReadInJoyMSFHandlerUtils", 2, "groupId:" + localArticleInfo1.mGroupId + " articleID:" + localArticleInfo1.mArticleID + " type:" + ((oidb_cmd0x68b.PackInfo)localArticleInfo1.mPackInfoObj.get()).pack_type.get() + " recommendId:" + localArticleInfo1.mRecommendSeq + " mPolymericInfo = " + localArticleInfo1.mPolymericInfo);
         if (!paramArticleSummary.bytes_circle_id.has()) {
-          break label2308;
+          break label2322;
         }
         localArticleInfo1.mStrCircleId = paramArticleSummary.bytes_circle_id.get().toStringUtf8();
         if (!paramArticleSummary.uint32_is_active.has()) {
-          break label2325;
+          break label2339;
         }
         if (paramArticleSummary.uint32_is_active.get() != 1) {
-          break label2319;
+          break label2333;
         }
         bool1 = bool2;
         for (localArticleInfo1.mPUinIsActive = bool1;; localArticleInfo1.mPUinIsActive = true)
@@ -269,14 +269,14 @@ public class ReadInJoyMSFHandlerUtils
             }
           }
           if (!paramArticleSummary.msg_sub_article_summary.has()) {
-            break label2381;
+            break label2395;
           }
           localArticleInfo1.mSubSummaryListObj = paramArticleSummary.msg_sub_article_summary.get();
           if (QLog.isColorLevel()) {
             QLog.e("ReadInJoyMSFHandlerUtils", 2, "convertArticleInfo(): summary.msg_sub_article_summary.has() = true");
           }
           if ((localArticleInfo1.mSubSummaryListObj == null) || (localArticleInfo1.mSubSummaryListObj.size() <= 0)) {
-            break label2381;
+            break label2395;
           }
           paramArticleInfo = new ArrayList(localArticleInfo1.mSubSummaryListObj.size());
           localObject = localArticleInfo1.mSubSummaryListObj.iterator();
@@ -294,41 +294,49 @@ public class ReadInJoyMSFHandlerUtils
           localArticleInfo1.mStrCircleId = "";
           break;
           bool1 = false;
-          break label1634;
+          break label1648;
         }
         localArticleInfo1.mSubArtilceList = paramArticleInfo;
         if (!QLog.isColorLevel()) {
-          break label2381;
+          break label2395;
         }
         QLog.e("ReadInJoyMSFHandlerUtils", 2, "convertArticleInfo(): summary.msg_sub_article_summary.size = " + localArticleInfo1.mSubSummaryListObj.size());
         if (!paramArticleSummary.bytes_interface_data.has()) {
-          break label2406;
+          break label2420;
         }
         localArticleInfo1.proteusItemsData = paramArticleSummary.bytes_interface_data.get().toStringUtf8();
         if (!paramArticleSummary.uint32_video_comment_count.has()) {
-          break label2428;
+          break label2442;
         }
         localArticleInfo1.mVideoCommentCount = paramArticleSummary.uint32_video_comment_count.get();
         if ((!paramArticleSummary.bytes_video_subscript_txt.has()) || (paramArticleSummary.bytes_video_subscript_txt.get() == null)) {
-          break label2463;
+          break label2477;
         }
         localArticleInfo1.mVideoArticleSubsText = paramArticleSummary.bytes_video_subscript_txt.get().toStringUtf8();
         if ((!paramArticleSummary.bytes_video_subscript_color.has()) || (paramArticleSummary.bytes_video_subscript_color.get() == null)) {
-          break label2498;
+          break label2512;
         }
         localArticleInfo1.mVideoArticleSubsColor = paramArticleSummary.bytes_video_subscript_color.get().toStringUtf8();
         if ((!paramArticleSummary.bytes_ads_jump_url.has()) || (paramArticleSummary.bytes_ads_jump_url.get() == null)) {
-          break label2533;
+          break label2547;
         }
         localArticleInfo1.mVideoAdsJumpUrl = paramArticleSummary.bytes_ads_jump_url.get().toStringUtf8();
         if (!paramArticleSummary.uint32_ads_jump_type.has()) {
-          break label2555;
+          break label2569;
         }
         localArticleInfo1.mVideoAdsJumpType = paramArticleSummary.uint32_ads_jump_type.get();
         if (!paramArticleSummary.uint32_ads_source.has()) {
-          break label2577;
+          break label2591;
         }
         localArticleInfo1.mVideoAdsSource = paramArticleSummary.uint32_ads_source.get();
+        if ((!paramArticleSummary.bytes_video_report_info.has()) || (paramArticleSummary.bytes_video_report_info.get() == null)) {
+          break label2676;
+        }
+        localArticleInfo1.videoReportInfo = paramArticleSummary.bytes_video_report_info.get().toStringUtf8();
+        if (!QLog.isColorLevel()) {
+          break label2676;
+        }
+        QLog.i("ReadInJoyMSFHandlerUtils", 2, "articleInfo.mArticleID = " + localArticleInfo1.mArticleID + "videoReportInfo = " + localArticleInfo1.videoReportInfo);
         ReadInJoyUtils.a(localArticleInfo1);
       }
       if ((paramArticleSummary.bytes_friend_like_wording.has()) && (paramArticleSummary.bytes_friend_like_wording.get() != null)) {
@@ -397,7 +405,8 @@ public class ReadInJoyMSFHandlerUtils
     }
     label1378:
     label1391:
-    label2428:
+    label1648:
+    label2420:
     return localArticleInfo1;
   }
   
@@ -722,7 +731,7 @@ public class ReadInJoyMSFHandlerUtils
     if (paramFeedsInfo.feeds_type.has()) {
       paramArticleInfo.mFeedType = paramFeedsInfo.feeds_type.get();
     }
-    if (paramFeedsInfo.uint32_business_id.has()) {
+    if ((paramFeedsInfo.uint32_business_id.has()) && ((paramArticleInfo.mPolymericInfo == null) || (paramArticleInfo.mPolymericInfo.jdField_a_of_type_Int != 9))) {
       paramArticleInfo.businessId = paramFeedsInfo.uint32_business_id.get();
     }
     if (paramFeedsInfo.bytes_feeds_cookie.has()) {
@@ -753,10 +762,10 @@ public class ReadInJoyMSFHandlerUtils
       paramArticleInfo.mTopicRecommendFeedsInfo = TopicRecommendFeedsInfo.a((oidb_cmd0x68b.TopicRecommendFeedsInfo)localObject);
       paramArticleInfo.mTopicRecommendFeedsInfoByte = ((oidb_cmd0x68b.TopicRecommendFeedsInfo)localObject).toByteArray();
       if (paramArticleInfo.mTopicRecommendFeedsInfo == null) {
-        break label366;
+        break label385;
       }
     }
-    label366:
+    label385:
     for (long l = paramArticleInfo.mTopicRecommendFeedsInfo.jdField_a_of_type_Long;; l = 0L)
     {
       paramArticleInfo.mFeedId = l;

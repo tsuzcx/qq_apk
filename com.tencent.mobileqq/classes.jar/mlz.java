@@ -1,16 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher.ItemShowCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.MessageObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class mlz
-  implements ItemShowDispatcher.ItemShowCallback
+  implements KandianMergeManager.MessageObserver
 {
-  public mlz(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
+  public mlz(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a()
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
   {
-    ReportUtil.a(FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    this.a.a().runOnUiThread(new mmb(this));
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    this.a.a().runOnUiThread(new mma(this));
   }
 }
 

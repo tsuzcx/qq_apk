@@ -1,9 +1,10 @@
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
-
 public final class anie
-  implements IHttpCommunicatorFlowCount
+  extends ThreadLocal
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  protected Boolean a()
+  {
+    return Boolean.valueOf(false);
+  }
 }
 
 

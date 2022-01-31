@@ -1,26 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public class ajjw
-  implements AdapterView.OnItemClickListener
+class ajjw
+  implements DialogInterface.OnClickListener
 {
-  public ajjw(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
+  ajjw(ajjv paramajjv) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (SelectReciteParagraphFragment.a(this.a).contains(Integer.valueOf(paramInt))) {
-      SelectReciteParagraphFragment.a(this.a).remove(Integer.valueOf(paramInt));
-    }
-    for (;;)
+    switch (paramInt)
     {
-      SelectReciteParagraphFragment.a(this.a).notifyDataSetChanged();
-      SelectReciteParagraphFragment.a(this.a);
-      return;
-      SelectReciteParagraphFragment.a(this.a).add(Integer.valueOf(paramInt));
     }
+    do
+    {
+      return;
+    } while (TroopFileItemOperation.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) == 0);
+    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.b).b(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
   }
 }
 

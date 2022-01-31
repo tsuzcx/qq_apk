@@ -16,6 +16,8 @@ public class ARLocalGestureCircleRecogResult$ARCircleResult
   public int f = 8;
   public int g;
   public int h;
+  public int i;
+  public int j;
   
   public ARLocalGestureCircleRecogResult$ARCircleResult()
   {
@@ -39,11 +41,13 @@ public class ARLocalGestureCircleRecogResult$ARCircleResult
     this.f = 10;
     this.g = 0;
     this.h = 0;
+    this.i = 0;
+    this.j = 0;
   }
   
   public String toString()
   {
-    return "ARCircleResult{, state = " + this.jdField_a_of_type_Int + ", lastState = " + this.jdField_b_of_type_Int + ", pointCnt = " + this.c + ", lastPointCnt = " + this.d + ", genIdx = " + this.g + ", circle(r,x,y,c) = (" + (int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Float + "," + (int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.b + "," + (int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.c + "," + this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Boolean + ")" + '}';
+    return "ARCircleResult{, state = " + this.jdField_a_of_type_Int + ", lastState = " + this.jdField_b_of_type_Int + ", pointCnt = " + this.c + ", lastPointCnt = " + this.d + ", genIdx = " + this.g + ", gesturePointCnt = " + this.h + ", stillPointCnt = " + this.i + ", goodPointCnt = " + this.j + ", circle(r,x,y,c) = (" + (int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Float + "," + (int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.b + "," + (int)this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.c + "," + this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircle.jdField_a_of_type_Boolean + ")" + '}';
   }
 }
 

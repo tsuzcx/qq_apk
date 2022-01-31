@@ -1,120 +1,47 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.GLVideoView;
-import com.tencent.av.ui.VideoLayerUI;
-import java.util.List;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
 
 public class kcd
-  extends ExploreByTouchHelper
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public kcd(VideoLayerUI paramVideoLayerUI, View paramView)
-  {
-    super(paramView);
-  }
+  public kcd(QavVideoRecordUICtrl paramQavVideoRecordUICtrl, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7) {}
   
-  private Rect a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Rect localRect = new Rect(0, 0, 1, 1);
-    if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt].f() == 0)) {
-      localRect.set(this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt].b());
-    }
-    return localRect;
-  }
-  
-  private String a(int paramInt)
-  {
-    if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null) && (paramInt >= 0) && (paramInt < this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length))
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins((int)((1.0F - f1) * this.jdField_a_of_type_Int), 0, 0, 0);
+    QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
+    QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins(this.b - (int)(this.jdField_a_of_type_Int * f1), 0, 0, 0);
+    QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
+    float f2;
+    if (i <= 220)
     {
-      int i = -1;
-      int j = this.a.jdField_a_of_type_ComTencentAvVideoController.a().i;
-      if (j == 3000) {
-        i = 1004;
-      }
-      Resources localResources;
-      String str2;
-      for (;;)
-      {
-        localResources = this.a.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources();
-        String str1 = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-        str2 = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[paramInt].a();
-        if (str2 == null) {
-          break label214;
-        }
-        if (!str2.equals(str1)) {
-          break;
-        }
-        return localResources.getString(2131433116) + localResources.getString(2131429681);
-        if (j == 1) {
-          i = 1000;
-        } else if (j == 0) {
-          i = 0;
-        }
-      }
-      return this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, str2, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().f)) + localResources.getString(2131429681);
+      f2 = i / 220.0F;
+      QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setAlpha(f2);
     }
-    label214:
-    return "";
-  }
-  
-  protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
-  {
-    if (this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null)
+    QavVideoRecordUICtrl.c(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins(this.c + (int)(this.d * f1), 0, 0, 0);
+    QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.c(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
+    if (i <= 160)
     {
-      int i = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length - 1;
-      while (i >= 0)
-      {
-        if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].f() == 0) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[i].b().contains((int)paramFloat1, (int)paramFloat2))) {
-          return i;
-        }
-        i -= 1;
-      }
+      f2 = i / 100.0F;
+      QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setAlpha(f2);
     }
-    return 0;
-  }
-  
-  protected void getVisibleVirtualViews(List paramList)
-  {
-    if (this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null)
-    {
-      int j = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramList.add(Integer.valueOf(i));
-        i += 1;
-      }
-    }
-  }
-  
-  protected boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    return false;
-  }
-  
-  protected void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    paramAccessibilityEvent.setContentDescription(a(paramInt));
-  }
-  
-  protected void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    paramAccessibilityNodeInfoCompat.addAction(16);
-    paramAccessibilityNodeInfoCompat.setContentDescription(a(paramInt));
-    paramAccessibilityNodeInfoCompat.setBoundsInParent(a(paramInt));
+    QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins((int)((this.e + 0) * f1) + 0, 0, 0, 0);
+    QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).width = (this.f - (int)((this.f - this.g) * f1));
+    QavVideoRecordUICtrl.c(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
+    QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setAlpha(1.0F - f1);
+    QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcd
  * JD-Core Version:    0.7.0.1
  */

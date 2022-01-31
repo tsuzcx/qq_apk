@@ -1,22 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView.OnTrimVDPlayCompelteListener;
+import com.tencent.mobileqq.activity.qwallet.QWalletCameraInterface;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.util.List;
 
 public class xwu
-  implements MediaPlayer.OnCompletionListener
+  implements QWalletCameraInterface
 {
-  public xwu(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public xwu(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List paramList)
   {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
+    if ((this.a.F) && (paramInt1 > 0)) {
+      NewFlowCameraActivity.d = true;
     }
   }
 }

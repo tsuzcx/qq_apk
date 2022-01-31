@@ -1,92 +1,28 @@
 import android.app.Activity;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQzoneFeed;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.util.URLUtil;
-import cooperation.qzone.QZoneClickReport;
-import cooperation.qzone.QZoneClickReport.ReportInfo;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class veb
-  implements View.OnClickListener
+class veb
+  implements ActionSheet.OnButtonClickListener
 {
-  public veb(QzoneFeedItemBuilder paramQzoneFeedItemBuilder, MessageForQzoneFeed paramMessageForQzoneFeed) {}
+  veb(vdz paramvdz, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl = QzoneFeedItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl)) {
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
+    {
+    default: 
       return;
     }
-    Map localMap = URLUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
-    Object localObject = null;
-    if (localMap != null) {
-      localObject = (String)localMap.get("g");
-    }
-    if (("110".equals(localObject)) || ("279".equals(localObject)) || ("318".equals(localObject)))
-    {
-      paramView = paramView.getContext();
-      localObject = QZoneHelper.UserInfo.a();
-      ((QZoneHelper.UserInfo)localObject).a = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getCurrentAccountUin();
-      ((QZoneHelper.UserInfo)localObject).b = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getCurrentNickname();
-      QZoneHelper.a((Activity)paramView, (QZoneHelper.UserInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl, "mqqChat.QzoneCard", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.appId, -1);
-      paramView = new QZoneClickReport.ReportInfo();
-      paramView.c = "1";
-      paramView.d = "0";
-      paramView.b = 4;
-      paramView.k = "3";
-      paramView.l = "AIO";
-      paramView.m = "detailPage";
-      QZoneClickReport.startReportImediately(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getAccount(), paramView);
-      paramView = new HashMap();
-      paramView.put("source_type", "3");
-      paramView.put("source_from", "AIO");
-      paramView.put("source_to", "detailPage");
-      StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, paramView, null);
-      paramView = null;
-      if (localMap != null) {
-        paramView = (String)localMap.get("a");
-      }
-      if (paramView != null)
-      {
-        if (!paramView.equals("4")) {
-          break label415;
-        }
-        paramView = "1";
-      }
-    }
-    for (;;)
-    {
-      localObject = new QZoneClickReport.ReportInfo();
-      ((QZoneClickReport.ReportInfo)localObject).c = "330";
-      ((QZoneClickReport.ReportInfo)localObject).d = "2";
-      ((QZoneClickReport.ReportInfo)localObject).e = paramView;
-      ((QZoneClickReport.ReportInfo)localObject).a = new ArrayList();
-      ((QZoneClickReport.ReportInfo)localObject).a.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
-      QZoneClickReport.startReportImediately(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getAccount(), (QZoneClickReport.ReportInfo)localObject);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a, "CliOper", "", "", "0X8006000", "0X8006000", 0, 0, "", "", "", "");
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
-      break;
-      label415:
-      if (paramView.equals("311")) {
-        paramView = "2";
-      } else if (paramView.equals("2")) {
-        paramView = "3";
-      } else {
-        paramView = "4";
-      }
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Vdz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Vdz.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vdz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Vdz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
+    ReportController.b(this.jdField_a_of_type_Vdz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8003F02", "0X8003F02", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_Vdz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
   }
 }
 

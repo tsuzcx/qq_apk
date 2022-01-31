@@ -39,15 +39,15 @@ import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yvp;
-import yvq;
-import yvr;
-import yvt;
-import yvu;
-import yvv;
-import yvw;
-import yvx;
-import yvy;
+import zci;
+import zcj;
+import zck;
+import zcm;
+import zcn;
+import zco;
+import zcp;
+import zcq;
+import zcr;
 
 public class ApolloDaoManager
   implements Manager
@@ -55,7 +55,7 @@ public class ApolloDaoManager
   private volatile int jdField_a_of_type_Int = 1;
   public QQAppInterface a;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new yvp(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new zci(this);
   public List a;
   public ConcurrentHashMap a;
   private boolean jdField_a_of_type_Boolean = true;
@@ -493,7 +493,7 @@ public class ApolloDaoManager
     if (paramSessionInfo == null) {
       return null;
     }
-    Object localObject = i();
+    Object localObject = j();
     if ((localObject == null) || (((List)localObject).size() == 0)) {
       return null;
     }
@@ -633,7 +633,7 @@ public class ApolloDaoManager
       QLog.d("ApolloDaoManager", 2, "getFavPanelActionPairInfo");
     }
     List localList = d();
-    Collections.sort(localList, new yvt(this));
+    Collections.sort(localList, new zcm(this));
     ArrayList localArrayList = new ArrayList(localList.size());
     int i2 = localList.size();
     int i1 = 0;
@@ -1106,11 +1106,11 @@ public class ApolloDaoManager
         }
       }
     }
-    Collections.sort(paramBaseChatPie, new yvv(this));
-    Collections.sort(localArrayList1, new yvw(this));
-    Collections.sort((List)localObject, new yvx(this));
-    Collections.sort(localArrayList2, new yvy(this));
-    Collections.sort(localArrayList3, new yvq(this));
+    Collections.sort(paramBaseChatPie, new zco(this));
+    Collections.sort(localArrayList1, new zcp(this));
+    Collections.sort((List)localObject, new zcq(this));
+    Collections.sort(localArrayList2, new zcr(this));
+    Collections.sort(localArrayList3, new zcj(this));
     paramList.clear();
     paramList.addAll(paramBaseChatPie);
     paramList.addAll(localArrayList1);
@@ -2462,7 +2462,7 @@ public class ApolloDaoManager
       if ((n != 0) || (a((ApolloGameRoamData)localObject1))) {
         break label758;
       }
-      ThreadManager.post(new yvr(this, (ApolloGameRoamData)localObject1), 5, null, true);
+      ThreadManager.post(new zck(this, (ApolloGameRoamData)localObject1), 5, null, true);
       n = 1;
       label156:
       i1 += 1;
@@ -2665,7 +2665,7 @@ public class ApolloDaoManager
         return true;
       }
       localConcurrentHashMap.remove(Integer.valueOf(paramInt));
-      ThreadManager.post(new yvu(this, paramInt), 5, null, true);
+      ThreadManager.post(new zcn(this, paramInt), 5, null, true);
     }
     return false;
   }
@@ -2950,10 +2950,10 @@ public class ApolloDaoManager
     //   89: checkcast 173	com/tencent/mobileqq/data/ApolloGameRoamData
     //   92: invokespecial 802	com/tencent/mobileqq/apollo/utils/ApolloDaoManager:a	(Lcom/tencent/mobileqq/data/ApolloGameRoamData;)Z
     //   95: ifne -22 -> 73
-    //   98: new 874	yvs
+    //   98: new 874	zcl
     //   101: dup
     //   102: aload_0
-    //   103: invokespecial 875	yvs:<init>	(Lcom/tencent/mobileqq/apollo/utils/ApolloDaoManager;)V
+    //   103: invokespecial 875	zcl:<init>	(Lcom/tencent/mobileqq/apollo/utils/ApolloDaoManager;)V
     //   106: iconst_5
     //   107: aconst_null
     //   108: iconst_1
@@ -4137,7 +4137,7 @@ public class ApolloDaoManager
       if (localIterator.hasNext())
       {
         ApolloGameData localApolloGameData = (ApolloGameData)localIterator.next();
-        if ((localApolloGameData == null) || (localApolloGameRoamData == null) || (localApolloGameData.gameId != localApolloGameRoamData.gameId) || (localApolloGameData.isShow == 0) || (localApolloGameData.gameId == 1) || (localApolloGameData.gameId == 2) || (!ApolloConfigUtils.a("7.6.3", localApolloGameData.minVer, localApolloGameData.maxVer))) {
+        if ((localApolloGameData == null) || (localApolloGameRoamData == null) || (localApolloGameData.gameId != localApolloGameRoamData.gameId) || (localApolloGameData.isShow == 0) || (localApolloGameData.gameId == 1) || (localApolloGameData.gameId == 2) || (!ApolloConfigUtils.a("7.6.8", localApolloGameData.minVer, localApolloGameData.maxVer))) {
           break;
         }
         localApolloGameData.type = localApolloGameRoamData.type;
@@ -4152,6 +4152,46 @@ public class ApolloDaoManager
   }
   
   public List i()
+  {
+    List localList = f();
+    if (localList == null)
+    {
+      QLog.i("ApolloDaoManager", 1, "[getPanelGameList] no game data info");
+      return null;
+    }
+    Object localObject = g();
+    if (localObject == null)
+    {
+      QLog.i("ApolloDaoManager", 1, "[getPanelGameList] no user game list");
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    for (;;)
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break label206;
+      }
+      ApolloGameRoamData localApolloGameRoamData = (ApolloGameRoamData)((Iterator)localObject).next();
+      Iterator localIterator = localList.iterator();
+      if (localIterator.hasNext())
+      {
+        ApolloGameData localApolloGameData = (ApolloGameData)localIterator.next();
+        if ((localApolloGameData == null) || (localApolloGameRoamData == null) || (localApolloGameData.gameId != localApolloGameRoamData.gameId) || (localApolloGameData.isShow == 0) || (localApolloGameData.gameId == 1) || (localApolloGameData.gameId == 2) || (localApolloGameRoamData.type != 2) || (!ApolloConfigUtils.a("7.6.8", localApolloGameData.minVer, localApolloGameData.maxVer))) {
+          break;
+        }
+        localApolloGameData.type = localApolloGameRoamData.type;
+        localArrayList.add(localApolloGameData);
+      }
+    }
+    label206:
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloDaoManager", 2, new Object[] { "[getPanelGameList] panelGameList size:", Integer.valueOf(localArrayList.size()) });
+    }
+    return localArrayList;
+  }
+  
+  public List j()
   {
     ArrayList localArrayList = null;
     if ((this.g != null) && (this.g.size() > 0)) {

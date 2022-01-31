@@ -13,8 +13,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import usy;
-import usz;
+import uxy;
+import uxz;
 
 public class PlayLastLogic
 {
@@ -47,10 +47,10 @@ public class PlayLastLogic
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "checkPlayable: bRealPlay:" + paramBoolean);
     }
-    usz localusz = (usz)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if (localusz != null)
+    uxz localuxz = (uxz)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    if (localuxz != null)
     {
-      Object localObject = localusz.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject = localuxz.jdField_a_of_type_JavaLangRefWeakReference;
       if (localObject != null)
       {
         localObject = (DoodleMsgLayout)((WeakReference)localObject).get();
@@ -59,12 +59,12 @@ public class PlayLastLogic
           Rect localRect = new Rect();
           if ((((DoodleMsgLayout)localObject).getGlobalVisibleRect(localRect)) && (localRect.height() > ((DoodleMsgLayout)localObject).getHeight() * 0.9D))
           {
-            if ((!((DoodleMsgLayout)localObject).b()) && (this.jdField_a_of_type_Long != localusz.jdField_b_of_type_Long) && (((DoodleMsgLayout)localObject).a()))
+            if ((!((DoodleMsgLayout)localObject).b()) && (this.jdField_a_of_type_Long != localuxz.jdField_b_of_type_Long) && (((DoodleMsgLayout)localObject).a()))
             {
               if (paramBoolean)
               {
                 a((DoodleMsgLayout)localObject, false);
-                if (localusz.jdField_b_of_type_Long == this.jdField_c_of_type_Long) {
+                if (localuxz.jdField_b_of_type_Long == this.jdField_c_of_type_Long) {
                   this.jdField_a_of_type_Boolean = true;
                 }
               }
@@ -75,7 +75,7 @@ public class PlayLastLogic
               return 1;
             }
             if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "checkPlayable: can not play:" + localusz.jdField_a_of_type_Long + "uniID:" + localusz.jdField_b_of_type_Long + " mPlayedID:" + this.jdField_a_of_type_Long);
+              QLog.d(jdField_a_of_type_JavaLangString, 2, "checkPlayable: can not play:" + localuxz.jdField_a_of_type_Long + "uniID:" + localuxz.jdField_b_of_type_Long + " mPlayedID:" + this.jdField_a_of_type_Long);
             }
             if (!((DoodleMsgLayout)localObject).b()) {
               break label365;
@@ -83,7 +83,7 @@ public class PlayLastLogic
             return 3;
           }
           if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "checkPlayable: invisible MsgID:" + localusz.jdField_a_of_type_Long + "uniID:" + localusz.jdField_b_of_type_Long);
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "checkPlayable: invisible MsgID:" + localuxz.jdField_a_of_type_Long + "uniID:" + localuxz.jdField_b_of_type_Long);
           }
         }
       }
@@ -124,8 +124,8 @@ public class PlayLastLogic
       Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
-        usz localusz = (usz)((Map.Entry)localIterator.next()).getValue();
-        if ((localusz == null) || (localusz.jdField_a_of_type_Int < paramInt1) || (localusz.jdField_a_of_type_Int > paramInt2)) {
+        uxz localuxz = (uxz)((Map.Entry)localIterator.next()).getValue();
+        if ((localuxz == null) || (localuxz.jdField_a_of_type_Int < paramInt1) || (localuxz.jdField_a_of_type_Int > paramInt2)) {
           localIterator.remove();
         }
       }
@@ -141,10 +141,10 @@ public class PlayLastLogic
       Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
       while (localIterator.hasNext())
       {
-        Object localObject = (usz)localIterator.next();
-        if ((localObject != null) && (((usz)localObject).jdField_a_of_type_Int >= this.d) && (((usz)localObject).jdField_a_of_type_Int <= this.e))
+        Object localObject = (uxz)localIterator.next();
+        if ((localObject != null) && (((uxz)localObject).jdField_a_of_type_Int >= this.d) && (((uxz)localObject).jdField_a_of_type_Int <= this.e))
         {
-          localObject = ((usz)localObject).jdField_a_of_type_JavaLangRefWeakReference;
+          localObject = ((uxz)localObject).jdField_a_of_type_JavaLangRefWeakReference;
           if (localObject != null)
           {
             localObject = (DoodleMsgLayout)((WeakReference)localObject).get();
@@ -174,11 +174,11 @@ public class PlayLastLogic
             this.jdField_a_of_type_Boolean = true;
             localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
           } while (!((Iterator)localObject).hasNext());
-          usz localusz = (usz)((Iterator)localObject).next();
-          if (localusz.jdField_b_of_type_Long != this.jdField_c_of_type_Long) {
+          uxz localuxz = (uxz)((Iterator)localObject).next();
+          if (localuxz.jdField_b_of_type_Long != this.jdField_c_of_type_Long) {
             break;
           }
-          localObject = localusz.jdField_a_of_type_JavaLangRefWeakReference;
+          localObject = localuxz.jdField_a_of_type_JavaLangRefWeakReference;
         } while (localObject == null);
         localObject = (DoodleMsgLayout)((WeakReference)localObject).get();
       } while (localObject == null);
@@ -198,10 +198,10 @@ public class PlayLastLogic
       break label115;
       break;
       label135:
-      localObject = (usz)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-      if ((localObject != null) && ((((usz)localObject).jdField_a_of_type_Long > this.jdField_b_of_type_Long) || (((usz)localObject).jdField_b_of_type_Long == this.jdField_c_of_type_Long)))
+      localObject = (uxz)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+      if ((localObject != null) && ((((uxz)localObject).jdField_a_of_type_Long > this.jdField_b_of_type_Long) || (((uxz)localObject).jdField_b_of_type_Long == this.jdField_c_of_type_Long)))
       {
-        localObject = ((usz)localObject).jdField_a_of_type_JavaLangRefWeakReference;
+        localObject = ((uxz)localObject).jdField_a_of_type_JavaLangRefWeakReference;
         if (localObject != null)
         {
           localObject = (DoodleMsgLayout)((WeakReference)localObject).get();
@@ -247,7 +247,7 @@ public class PlayLastLogic
       return;
     }
     if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new usy(this);
+      this.jdField_a_of_type_JavaLangRunnable = new uxy(this);
     }
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt);
   }
@@ -420,7 +420,7 @@ public class PlayLastLogic
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "registLayout:" + paramLong2 + " pos:" + paramInt + " uniid:" + paramLong1);
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), new usz(this, paramLong1, paramLong2, paramInt, paramDoodleMsgLayout));
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), new uxz(this, paramLong1, paramLong2, paramInt, paramDoodleMsgLayout));
     boolean bool;
     if (this.jdField_a_of_type_Int != 0)
     {
@@ -479,10 +479,10 @@ public class PlayLastLogic
         Object localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
         while (((Iterator)localObject).hasNext())
         {
-          usz localusz = (usz)((Iterator)localObject).next();
-          if ((localusz.jdField_a_of_type_JavaLangRefWeakReference != null) && (localusz.jdField_a_of_type_JavaLangRefWeakReference.get() == paramDoodleMsgLayout))
+          uxz localuxz = (uxz)((Iterator)localObject).next();
+          if ((localuxz.jdField_a_of_type_JavaLangRefWeakReference != null) && (localuxz.jdField_a_of_type_JavaLangRefWeakReference.get() == paramDoodleMsgLayout))
           {
-            this.jdField_a_of_type_Long = localusz.jdField_b_of_type_Long;
+            this.jdField_a_of_type_Long = localuxz.jdField_b_of_type_Long;
             if (QLog.isColorLevel()) {
               QLog.d(jdField_a_of_type_JavaLangString, 2, "playLayout: lastPlayedID:" + this.jdField_a_of_type_Long);
             }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.activity;
 
-import ahrw;
+import ahwj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -64,7 +64,7 @@ public class ContactSearchComponentActivity
     ArrayList localArrayList = new ArrayList();
     if ((i == 7) || (i == 6) || (i == 23))
     {
-      localArrayList.add(AppConstants.au);
+      localArrayList.add(AppConstants.av);
       return ContactSearchFragment.a(i, j, str, localArrayList, null);
     }
     return super.a();
@@ -74,7 +74,7 @@ public class ContactSearchComponentActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131371266).setOnTouchListener(new ahrw(this));
+    findViewById(2131371264).setOnTouchListener(new ahwj(this));
     return true;
   }
   

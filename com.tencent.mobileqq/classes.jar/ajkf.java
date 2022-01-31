@@ -1,16 +1,29 @@
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
+import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
 
-class ajkf
-  implements Runnable
+public final class ajkf
+  implements Parcelable.Creator
 {
-  ajkf(ajke paramajke) {}
-  
-  public void run()
+  public TroopTopicDetailInfo a(Parcel paramParcel)
   {
-    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a, 2);
+    TroopTopicDetailInfo localTroopTopicDetailInfo = new TroopTopicDetailInfo();
+    localTroopTopicDetailInfo.troopUin = paramParcel.readString();
+    localTroopTopicDetailInfo.msgSeq = paramParcel.readLong();
+    localTroopTopicDetailInfo.bid = paramParcel.readLong();
+    localTroopTopicDetailInfo.pid = paramParcel.readString();
+    paramParcel.readByteArray(localTroopTopicDetailInfo.detailInfoData);
+    if ((localTroopTopicDetailInfo.detailInfoData != null) && (localTroopTopicDetailInfo.detailInfoData.length > 0)) {
+      localTroopTopicDetailInfo.detailStructMsg = StructMsgFactory.a(localTroopTopicDetailInfo.detailInfoData, 0);
+    }
+    localTroopTopicDetailInfo.pVersion = paramParcel.readLong();
+    return localTroopTopicDetailInfo;
+  }
+  
+  public TroopTopicDetailInfo[] a(int paramInt)
+  {
+    return new TroopTopicDetailInfo[paramInt];
   }
 }
 

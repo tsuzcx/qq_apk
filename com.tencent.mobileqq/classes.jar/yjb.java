@@ -1,41 +1,49 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.addon.DiyPendantEntity;
-import com.tencent.mobileqq.addon.DiyPendantFetcher;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.util.Iterator;
-import java.util.List;
 
 public class yjb
-  implements Runnable
+  implements yjd
 {
-  public yjb(DiyPendantFetcher paramDiyPendantFetcher, QQAppInterface paramQQAppInterface) {}
+  public yjb(EncodeVideoTask paramEncodeVideoTask) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
-    if ((localList != null) && (localList.size() > 0))
-    {
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext())
-      {
-        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)localIterator.next();
-        if (!TextUtils.isEmpty(localDiyPendantEntity.uinAndDiyId)) {
-          this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "initCacheFromDB, size: " + localList.size());
-      }
+    if (EncodeVideoTask.a(this.a) != null) {
+      EncodeVideoTask.a(this.a).a(paramInt);
     }
+  }
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
+    }
+    if (EncodeVideoTask.a(this.a))
+    {
+      b(paramPublishVideoEntry, paramString);
+      return;
+    }
+    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (FileUtils.b(paramPublishVideoEntry.doodlePath)))
+    {
+      EncodeVideoTask.a(paramString, paramPublishVideoEntry, EncodeVideoTask.a(this.a));
+      return;
+    }
+    b(paramPublishVideoEntry, paramString);
+  }
+  
+  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    ThreadManager.postImmediately(new yjc(this, paramPublishVideoEntry, paramString), null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yjb
  * JD-Core Version:    0.7.0.1
  */

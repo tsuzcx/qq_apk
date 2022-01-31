@@ -79,14 +79,14 @@ public class GLRecognizeRegionView
   private void d(int paramInt)
   {
     this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.c(paramInt);
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.h_(true);
+    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.f_(true);
     this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.e();
     this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.c(paramInt);
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.h_(true);
+    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.f_(true);
     this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.e();
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.h_(false);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.f_(false);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.e();
     }
     for (;;)
@@ -94,7 +94,7 @@ public class GLRecognizeRegionView
       e(paramInt);
       return;
       this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.c(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.h_(true);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.f_(true);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.e();
     }
   }
@@ -157,9 +157,9 @@ public class GLRecognizeRegionView
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.h_(false);
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.h_(false);
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.h_(false);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.f_(false);
+    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.f_(false);
+    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.f_(false);
   }
   
   public AnimationSet a(GlView paramGlView, int paramInt1, int paramInt2)
@@ -301,7 +301,7 @@ public class GLRecognizeRegionView
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.a(localArrayList);
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.a(0);
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.b();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.h_(false);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.f_(false);
   }
   
   public void a(List paramList)
@@ -323,10 +323,10 @@ public class GLRecognizeRegionView
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(paramBoolean);
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(paramBoolean);
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(paramBoolean);
-    this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(paramBoolean);
+    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(paramBoolean);
+    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(paramBoolean);
+    this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(paramBoolean);
   }
   
   public void b()
@@ -439,7 +439,7 @@ public class GLRecognizeRegionView
     this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.a(localArrayList);
     this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.a(0);
     this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.b();
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.h_(false);
+    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.f_(false);
   }
   
   public void c()
@@ -490,7 +490,7 @@ public class GLRecognizeRegionView
     this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.a(localArrayList);
     this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.a(0);
     this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.b();
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.h_(false);
+    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLFrameImage.f_(false);
   }
   
   public void d(String paramString)

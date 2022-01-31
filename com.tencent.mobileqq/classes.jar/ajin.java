@@ -1,15 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateCallback;
+import com.tencent.mobileqq.troop.logic.TroopSearchLogic.TroopSearchCallback;
+import com.tencent.mobileqq.troop.utils.TroopNameHelper;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.os.MqqHandler;
 
 public class ajin
-  implements DialogInterface.OnClickListener
+  implements TroopSearchLogic.TroopSearchCallback
 {
-  public ajin(ReciteFragment paramReciteFragment) {}
+  public ajin(TroopCreateLogic paramTroopCreateLogic, ArrayList paramArrayList1, BaseActivity paramBaseActivity, TroopCreateLogic.TroopCreateCallback paramTroopCreateCallback, ArrayList paramArrayList2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ArrayList paramArrayList)
   {
-    ReciteFragment.b(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    if (paramArrayList.size() > 0)
+    {
+      paramArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        paramArrayList.add(((ajiv)localIterator.next()).a);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.c = TroopNameHelper.a(paramArrayList);
+      new Handler(Looper.getMainLooper()).post(new ajio(this));
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(TroopCreateLogic.class).post(new ajip(this));
   }
 }
 

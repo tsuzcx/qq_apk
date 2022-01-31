@@ -1,15 +1,26 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.leba.view.LebaGridMenuView;
+import com.tencent.mobileqq.leba.view.LebaTopBarView;
 
 class aeik
   implements Runnable
 {
-  aeik(aeij paramaeij, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend) {}
+  aeik(aeij paramaeij, String paramString, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aeij.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.put(this.jdField_a_of_type_Aeij.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend);
+    if (LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a) != null)
+    {
+      LebaGridMenuView localLebaGridMenuView = LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a).a();
+      if (localLebaGridMenuView != null) {
+        LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a, localLebaGridMenuView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+    }
+    if (LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a) != null) {
+      LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a, LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

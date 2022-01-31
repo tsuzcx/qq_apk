@@ -1,28 +1,14 @@
-import android.view.WindowManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.RobotSpriteVideoView;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask;
+import java.util.TimerTask;
 
-class ajmh
-  implements ImageButton.OnClickListener
+public class ajmh
+  extends TimerTask
 {
-  ajmh(ajmg paramajmg) {}
+  public ajmh(TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask) {}
   
-  public void a(Sprite paramSprite)
+  public void run()
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView != null)
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView.n();
-      RobotResourcesManager.a(this.a.a).removeView(this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView);
-    }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlRobotSpriteVideoView = null;
-    this.a.a.jdField_a_of_type_JavaLangString = null;
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.notifyDataSetChanged();
-    }
+    this.a.a(-6, false);
   }
 }
 

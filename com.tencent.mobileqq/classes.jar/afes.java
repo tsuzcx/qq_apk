@@ -1,46 +1,42 @@
-import android.content.Intent;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.nearby.profilecard.OnTagClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class afes
-  implements OnTagClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public afes(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public afes(PlayOperationViewModel paramPlayOperationViewModel, ActionSheet paramActionSheet) {}
   
-  public void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayTribePanel", 2, "click troops item  tuin:" + paramInterestTagInfo.tagJumpUrl);
-    }
-    if (paramInterestTagInfo.tagJumpUrl.equals("icon_more_url"))
+    switch (paramInt)
     {
-      paramView = new Intent(this.a.a, QQBrowserActivity.class);
-      paramView.putExtra("url", this.a.e);
-      this.a.a.startActivity(paramView);
-      paramInterestTagInfo = this.a.a.app;
-      if (this.a.a.e == 2) {}
-      for (paramView = "1";; paramView = "2")
-      {
-        ReportController.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_more_grp", 0, 0, paramView, "", "", "");
-        return;
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       }
-    }
-    paramView = TroopInfoActivity.a(paramInterestTagInfo.tagJumpUrl, 33);
-    ChatSettingForTroop.a(this.a.a, paramView, -1);
-    paramInterestTagInfo = this.a.a.app;
-    if (this.a.a.e == 2) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      ReportController.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_grp", 0, 0, paramView, "", "", "");
       return;
+      if (PlayOperationViewModel.e(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel))
+      {
+        PlayOperationViewModel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel, DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_AndroidViewView.getContext(), 230, "确定删除该动态？", null, "取消", "删除", new afet(this), new afev(this)));
+        PlayOperationViewModel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel).show();
+      }
+      else if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.b != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      {
+        String str2 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.b);
+        String str1 = str2;
+        if (StringUtil.a(str2)) {
+          str1 = "0";
+        }
+        PlayOperationViewModel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel, paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, str1);
+      }
     }
   }
 }

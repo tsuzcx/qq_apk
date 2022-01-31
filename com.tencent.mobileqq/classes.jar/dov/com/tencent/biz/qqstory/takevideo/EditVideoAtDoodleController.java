@@ -37,9 +37,9 @@ public class EditVideoAtDoodleController
   public EditVideoAtDoodleController(Context paramContext, RelativeLayout paramRelativeLayout)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView = ((DoodleView)paramRelativeLayout.findViewById(2131371644));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramRelativeLayout.findViewById(2131364370));
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView = ((ElasticImageView)paramRelativeLayout.findViewById(2131364371));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView = ((DoodleView)paramRelativeLayout.findViewById(2131371645));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramRelativeLayout.findViewById(2131364395));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView = ((ElasticImageView)paramRelativeLayout.findViewById(2131364396));
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory = new StoryFaceDrawableFactory(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.a(this);
     c();

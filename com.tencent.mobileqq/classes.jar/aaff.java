@@ -1,16 +1,36 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.ar.arengine.ARCloudImageSelect;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaff
   implements Runnable
 {
-  public aaff(ARCloudControl paramARCloudControl) {}
+  public aaff(ARVideoRecordViewProxy paramARVideoRecordViewProxy, int paramInt) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), String.format("选图成功 neon=%d", new Object[] { Integer.valueOf(this.a.a.c) }), 0).a();
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setShowState(2);
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy);
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy, 0);
+      if (QLog.isColorLevel()) {
+        QLog.i("ARVideoRecordViewProxy", 2, "switchUIdisplayMode run RECORD_NORMAL_MODE");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Int != 1);
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setShowState(3);
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setVisibility(0);
+      ARVideoRecordViewProxy.b(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setVisibility(0);
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy, 1);
+    } while (!QLog.isColorLevel());
+    QLog.i("ARVideoRecordViewProxy", 2, "switchUIdisplayMode run RECORD_PROGRESS_MODE");
   }
 }
 

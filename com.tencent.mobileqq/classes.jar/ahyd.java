@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
 
 public class ahyd
   implements Runnable
 {
-  public ahyd(QZoneNotifyServlet paramQZoneNotifyServlet) {}
+  public ahyd(PublicAcntSearchFragment paramPublicAcntSearchFragment) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.UndealCount.QZoneNotifyServlet", 2, "QZone scheduled QZoneFeedTimeTask run. currentTime:" + System.currentTimeMillis());
-    }
-    AppRuntime localAppRuntime = this.a.getAppRuntime();
-    if (localAppRuntime == null) {
-      return;
-    }
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), QZoneNotifyServlet.class);
-    localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
-    localNewIntent.putExtra("bNotWorkInBackGround", true);
-    localNewIntent.putExtra("qzone_send_by_time", 4);
-    localAppRuntime.startServlet(localNewIntent);
+    this.a.c.setVisibility(0);
+    this.a.b.setVisibility(8);
+    this.a.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahyd
  * JD-Core Version:    0.7.0.1
  */

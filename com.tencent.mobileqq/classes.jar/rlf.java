@@ -1,31 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public class rlf
-  implements CompoundButton.OnCheckedChangeListener
+class rlf
+  implements Runnable
 {
-  public rlf(AssistantSettingActivity paramAssistantSettingActivity) {}
+  rlf(rle paramrle, long paramLong) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    paramCompoundButton = (ArkAppCenter)this.a.app.getManager(120);
-    if (paramCompoundButton != null)
-    {
-      paramCompoundButton.a().a(this.a.app, paramBoolean);
-      if (!paramBoolean) {
-        ArkAppDataReport.a();
-      }
-    }
-    else
-    {
-      return;
-    }
-    ArkAppDataReport.b();
+    this.jdField_a_of_type_Rle.a.a(this.jdField_a_of_type_Long);
+    AccountManageActivity.a(this.jdField_a_of_type_Rle.a, true);
   }
 }
 

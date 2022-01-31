@@ -1,20 +1,22 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class wla
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wla(ShowExternalTroopListActivity paramShowExternalTroopListActivity, TextView paramTextView1, TextView paramTextView2) {}
+  public wla(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.a);
-    Card localCard = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.app.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.a);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.runOnUiThread(new wlb(this, str, localCard));
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    }
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
   }
 }
 

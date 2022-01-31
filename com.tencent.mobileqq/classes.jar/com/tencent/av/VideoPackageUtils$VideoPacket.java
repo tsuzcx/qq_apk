@@ -4,9 +4,11 @@ public class VideoPackageUtils$VideoPacket
 {
   public int a;
   public long a;
+  public String a;
   public boolean a;
   public int b;
   public long b;
+  public String b;
   public int c;
   public long c;
   public int d;
@@ -20,12 +22,16 @@ public class VideoPackageUtils$VideoPacket
   
   public String toString()
   {
-    return "VideoPacket{roomId=" + this.jdField_a_of_type_Long + ", bodyType=" + this.jdField_a_of_type_Int + ", uin=" + this.jdField_b_of_type_Long + ", fromuin=" + this.jdField_c_of_type_Long + ", subServiceType=" + this.jdField_b_of_type_Int + ", seq=" + this.jdField_c_of_type_Int + ", business_flag=" + this.jdField_d_of_type_Int + ", terminal_switch_flag =" + this.jdField_a_of_type_Boolean + ", u32AccountType =" + this.e + ", uint64_group_uin =" + this.jdField_d_of_type_Long + '}';
+    StringBuilder localStringBuilder = new StringBuilder().append("VideoPacket{roomId=").append(this.jdField_a_of_type_Long).append(", bodyType=").append(this.jdField_a_of_type_Int).append(", uin=").append(this.jdField_b_of_type_Long).append(", fromuin=").append(this.jdField_c_of_type_Long).append(", subServiceType=").append(this.jdField_b_of_type_Int).append(", seq=").append(this.jdField_c_of_type_Int).append(", business_flag=").append(this.jdField_d_of_type_Int).append(", terminal_switch_flag =").append(this.jdField_a_of_type_Boolean).append(", u32AccountType =").append(this.e).append(", uint64_group_uin =").append(this.jdField_d_of_type_Long).append(", str_from_nation =").append(this.jdField_b_of_type_JavaLangString).append(", str_from_mobile =");
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (boolean bool = true;; bool = false) {
+      return bool + '}';
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.VideoPackageUtils.VideoPacket
  * JD-Core Version:    0.7.0.1
  */

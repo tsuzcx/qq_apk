@@ -1,28 +1,19 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporter.OnFrequenceDataUpdateListener;
+import java.util.HashMap;
 
-public class rka
+class rka
   implements Runnable
 {
-  public rka(AddRequestActivity paramAddRequestActivity) {}
+  rka(rjy paramrjy, DoraemonAPIReporter.OnFrequenceDataUpdateListener paramOnFrequenceDataUpdateListener, String paramString, HashMap paramHashMap) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView == null) {
-      return;
-    }
-    if (!TextUtils.isEmpty(this.a.b))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.b);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter$OnFrequenceDataUpdateListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rka
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.setting;
 
-import aayu;
+import abfu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,7 +22,7 @@ public class ArkAppListActivity
     super.doOnCreate(paramBundle);
     paramBundle = new LinearLayout(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838215);
+    paramBundle.setBackgroundResource(2130838220);
     paramBundle.setLayoutParams(localLayoutParams);
     paramBundle.setOrientation(1);
     paramBundle.setPadding(0, AIOUtils.a(20.0F, getResources()), 0, 0);
@@ -39,14 +39,14 @@ public class ArkAppListActivity
           FormSimpleItem localFormSimpleItem = new FormSimpleItem(this);
           localFormSimpleItem.setLeftText(localLayoutParams);
           localFormSimpleItem.a(true);
-          localFormSimpleItem.setOnClickListener(new aayu(this, localLayoutParams));
+          localFormSimpleItem.setOnClickListener(new abfu(this, localLayoutParams));
           this.a.addView(localFormSimpleItem);
         }
         i += 1;
       }
     }
     super.setContentView(this.a);
-    super.setTitle(2131438818);
+    super.setTitle(2131438842);
     return true;
   }
 }

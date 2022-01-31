@@ -1,22 +1,18 @@
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import java.io.File;
+import com.tencent.mobileqq.servlet.CliNotifyPush;
 
 public class aick
+  implements Runnable
 {
-  public int a;
-  public Rect a;
-  public CameraCover.PictureCallback a;
-  public File a;
-  public boolean a;
-  public int b;
+  public aick(CliNotifyPush paramCliNotifyPush) {}
   
-  private aick(CameraProxy paramCameraProxy) {}
+  public void run()
+  {
+    CliNotifyPush.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aick
  * JD-Core Version:    0.7.0.1
  */

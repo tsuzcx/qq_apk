@@ -1,21 +1,14 @@
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.biz.qqstory.playmode.child.MyVideoFromMessageNotifyPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
-class nok
+public class nok
   implements Runnable
 {
-  nok(noj paramnoj, TVKPreloader.PreloadItem paramPreloadItem) {}
+  public nok(MyVideoFromMessageNotifyPlayMode paramMyVideoFromMessageNotifyPlayMode) {}
   
   public void run()
   {
-    Iterator localIterator = TVKPreloader.a().iterator();
-    while (localIterator.hasNext()) {
-      ((TVKPreloader.PreloadListener)localIterator.next()).b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem);
-    }
-    TVKPreloader.a(true);
+    this.a.a.setCurrentItem(0, false);
   }
 }
 

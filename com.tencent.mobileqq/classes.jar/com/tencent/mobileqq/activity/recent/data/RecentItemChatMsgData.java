@@ -39,6 +39,7 @@ import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.FeedsManager;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.MessageForApproval;
 import com.tencent.mobileqq.data.MessageForDeviceFile;
@@ -67,9 +68,9 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
-import xlq;
-import xlr;
-import xls;
+import xrx;
+import xry;
+import xrz;
 
 public class RecentItemChatMsgData
   extends RecentUserBaseData
@@ -81,6 +82,7 @@ public class RecentItemChatMsgData
   public boolean c;
   public long d;
   private boolean d;
+  public long e;
   private boolean e;
   public int j;
   public int k;
@@ -88,11 +90,13 @@ public class RecentItemChatMsgData
   public int m;
   public int n;
   public int o;
+  public int p;
+  public int q;
   
   public RecentItemChatMsgData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    this.jdField_e_of_type_Boolean = android.text.TextUtils.equals(paramRecentUser.uin, AppConstants.ar);
+    this.jdField_e_of_type_Boolean = android.text.TextUtils.equals(paramRecentUser.uin, AppConstants.as);
     if (this.jdField_e_of_type_Boolean) {
       this.jdField_b_of_type_Int = 2;
     }
@@ -101,14 +105,38 @@ public class RecentItemChatMsgData
   private void a(Context paramContext, QQMessageFacade.Message paramMessage, MessageForStructing paramMessageForStructing)
   {
     String str1 = paramMessageForStructing.structingMsg.mMsgBrief;
-    String str2 = paramContext.getString(2131438977);
+    String str2 = paramContext.getString(2131439001);
     if ((!paramMessageForStructing.isread) && (!android.text.TextUtils.isEmpty(str1))) {}
     for (this.jdField_d_of_type_JavaLangCharSequence = str2;; this.jdField_d_of_type_JavaLangCharSequence = "")
     {
       paramMessage.msg = str1;
-      this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494318);
+      this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494324);
       return;
     }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, Context paramContext, QQMessageFacade.Message paramMessage)
+  {
+    if (a(paramMessage))
+    {
+      paramQQAppInterface = (FeedsManager)paramQQAppInterface.getManager(275);
+      paramMessage = paramQQAppInterface.getSummary(a());
+      if (!android.text.TextUtils.isEmpty(paramMessage))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgSummary.b = paramMessage;
+        this.jdField_d_of_type_JavaLangCharSequence = "[新动态]";
+        this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494324);
+        if (!FeedsManager.isShowStatus(a())) {
+          FeedsManager.showStatus(a());
+        }
+        paramQQAppInterface.reportExposeStatus(a());
+      }
+    }
+    else
+    {
+      return;
+    }
+    FeedsManager.hideStatus(a());
   }
   
   private boolean a(FriendsManager paramFriendsManager, String paramString)
@@ -129,6 +157,11 @@ public class RecentItemChatMsgData
     return true;
   }
   
+  private boolean a(QQMessageFacade.Message paramMessage)
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type == 0) && (android.text.TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) && (b() <= 0) && (this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgSummary.jdField_a_of_type_Int == 0) && ((paramMessage == null) || (paramMessage.msgtype != -5040)) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgSummary.jdField_c_of_type_JavaLangCharSequence == null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgSummary.jdField_a_of_type_JavaLangCharSequence == null);
+  }
+  
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     if ((paramQQAppInterface == null) || (paramContext == null)) {
@@ -136,58 +169,60 @@ public class RecentItemChatMsgData
     }
     super.a(paramQQAppInterface, paramContext);
     this.jdField_d_of_type_Boolean = false;
-    Object localObject5 = paramQQAppInterface.a();
-    if (localObject5 != null) {}
-    for (Object localObject2 = ((QQMessageFacade)localObject5).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);; localObject2 = null)
+    Object localObject4 = paramQQAppInterface.a();
+    if (localObject4 != null) {}
+    for (QQMessageFacade.Message localMessage = ((QQMessageFacade)localObject4).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);; localMessage = null)
     {
       Object localObject1 = paramQQAppInterface.a();
       MsgSummary localMsgSummary;
       int i1;
-      if ((localObject1 != null) && (localObject2 != null))
+      if ((localObject1 != null) && (localMessage != null))
       {
-        this.jdField_c_of_type_Int = ((ConversationFacade)localObject1).a(((QQMessageFacade.Message)localObject2).frienduin, ((QQMessageFacade.Message)localObject2).istroop);
-        if (localObject2 != null)
+        this.jdField_c_of_type_Int = ((ConversationFacade)localObject1).a(localMessage.frienduin, localMessage.istroop);
+        if (localMessage != null)
         {
-          localObject1 = QCallFacade.a(paramQQAppInterface, ((QQMessageFacade.Message)localObject2).frienduin, ((QQMessageFacade.Message)localObject2).istroop, this.jdField_c_of_type_Int, (QQMessageFacade.Message)localObject2);
+          localObject1 = QCallFacade.a(paramQQAppInterface, localMessage.frienduin, localMessage.istroop, this.jdField_c_of_type_Int, localMessage);
           this.jdField_c_of_type_Int += ((QCallFacade.CallUnreadCountInfo)localObject1).a();
           if (((QCallFacade.CallUnreadCountInfo)localObject1).a() > 0)
           {
             this.jdField_d_of_type_JavaLangCharSequence = ((QCallFacade.CallUnreadCountInfo)localObject1).a();
-            this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494288);
+            this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494294);
           }
         }
+        FeedsManager.hideStatus(a());
         if (("2909288299".equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)) && (this.jdField_c_of_type_Int > 0))
         {
-          localObject1 = ((QQMessageFacade.Message)localObject2).getExtInfoFromExtStr("news_has_report");
+          localObject1 = localMessage.getExtInfoFromExtStr("news_has_report");
           if ((android.text.TextUtils.isEmpty((CharSequence)localObject1)) || (!"1".equals(localObject1)))
           {
-            ((QQMessageFacade.Message)localObject2).saveExtInfoToExtStr("news_has_report", "1");
+            localMessage.saveExtInfoToExtStr("news_has_report", "1");
             ReportController.b(paramQQAppInterface, "dc00899", "Pb_account_lifeservice", "", "0X8007054", "0X8007054", 0, 0, "", "", "", "");
           }
         }
         localMsgSummary = a();
         i1 = 0;
       }
-      label513:
-      label610:
-      label622:
+      label472:
+      label616:
       int i;
-      label646:
-      label670:
-      label695:
-      label976:
-      Object localObject3;
-      label905:
-      label923:
-      label1060:
-      label1202:
-      label1208:
-      label1341:
+      label516:
+      label664:
+      label688:
+      label713:
+      label993:
+      Object localObject2;
+      label640:
+      label922:
+      label940:
+      label1077:
+      label1219:
+      label1225:
+      label1358:
       long l1;
-      label1165:
-      label1336:
-      label2281:
-      Object localObject4;
+      label1182:
+      label1353:
+      label2298:
+      Object localObject3;
       switch (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type)
       {
       default: 
@@ -196,58 +231,58 @@ public class RecentItemChatMsgData
         {
           a(paramQQAppInterface);
           a(paramQQAppInterface, localMsgSummary);
-          if ((localMsgSummary.jdField_a_of_type_Boolean) && (this.jdField_d_of_type_Boolean))
-          {
-            localMsgSummary.b = "";
-            this.jdField_d_of_type_JavaLangCharSequence = "";
+          if ((!localMsgSummary.jdField_a_of_type_Boolean) || (!this.jdField_d_of_type_Boolean)) {
+            break label4777;
           }
+          localMsgSummary.b = "";
+          this.jdField_d_of_type_JavaLangCharSequence = "";
           a(paramQQAppInterface, paramContext, localMsgSummary);
           if (AppSetting.b)
           {
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString).append(",");
+            paramQQAppInterface = new StringBuilder();
+            paramQQAppInterface.append(this.jdField_b_of_type_JavaLangString).append(",");
             if (this.jdField_c_of_type_Int != 0) {
-              break label4728;
+              break label4788;
             }
             if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-              ((StringBuilder)localObject1).append(this.jdField_d_of_type_JavaLangCharSequence + ",");
+              paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
             }
-            ((StringBuilder)localObject1).append(com.tencent.mobileqq.text.TextUtils.d(this.jdField_c_of_type_JavaLangCharSequence.toString())).append(",").append(this.jdField_c_of_type_JavaLangString);
+            paramQQAppInterface.append(com.tencent.mobileqq.text.TextUtils.d(this.jdField_c_of_type_JavaLangCharSequence.toString())).append(",").append(this.jdField_c_of_type_JavaLangString);
             if (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type == 0)
             {
-              if (this.m != 1) {
-                break label4809;
-              }
-              if (!this.jdField_c_of_type_Boolean) {
-                break label4800;
-              }
-              paramQQAppInterface = HotReactiveHelper.a(paramContext, 59);
-              ((StringBuilder)localObject1).append(paramQQAppInterface).append(",");
               if (this.l != 1) {
-                break label4856;
+                break label4857;
               }
-              ((StringBuilder)localObject1).append(HotReactiveHelper.a(paramContext, 3)).append(",");
-              if (this.k != 1) {
-                break label4883;
-              }
-              ((StringBuilder)localObject1).append(HotReactiveHelper.a(paramContext, 1)).append(",");
+              paramQQAppInterface.append(HotReactiveHelper.a(paramContext, 59)).append(",");
               if (this.n != 1) {
-                break label4910;
+                break label4885;
               }
-              ((StringBuilder)localObject1).append(HotReactiveHelper.a(paramContext, 36)).append(",");
+              paramQQAppInterface.append(HotReactiveHelper.a(paramContext, 5)).append(",");
+              if (this.m != 1) {
+                break label4913;
+              }
+              paramQQAppInterface.append(HotReactiveHelper.a(paramContext, 3)).append(",");
+              if (this.k != 1) {
+                break label4940;
+              }
+              paramQQAppInterface.append(HotReactiveHelper.a(paramContext, 1)).append(",");
+              if (this.p != 1) {
+                break label4967;
+              }
+              paramQQAppInterface.append(HotReactiveHelper.a(paramContext, 36)).append(",");
             }
-            this.jdField_d_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
+            this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
           }
           e();
           return;
           this.jdField_c_of_type_Int = 0;
           break;
-          if (localObject2 != null)
+          if (localMessage != null)
           {
-            localMsgSummary.b = ((QQMessageFacade.Message)localObject2).msg;
-            this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject2).time;
+            localMsgSummary.b = localMessage.msg;
+            this.jdField_a_of_type_Long = localMessage.time;
             this.jdField_d_of_type_Int = 0;
-            if ((((QQMessageFacade.Message)localObject2).msgtype == -4502) && (((QQMessageFacade.Message)localObject2).frienduin.equals(AppConstants.x))) {
+            if ((localMessage.msgtype == -4502) && (localMessage.frienduin.equals(AppConstants.x))) {
               this.jdField_b_of_type_JavaLangString = "QQ物联";
             }
             for (;;)
@@ -256,18 +291,18 @@ public class RecentItemChatMsgData
                 localMsgSummary.b = this.jdField_b_of_type_JavaLangString;
               }
               this.f = 1;
-              if (((QQMessageFacade.Message)localObject2).msgtype != -4500) {
-                break label923;
+              if (localMessage.msgtype != -4500) {
+                break label940;
               }
               localObject1 = new MessageForDeviceFile();
-              ((MessageForDeviceFile)localObject1).msgData = ((QQMessageFacade.Message)localObject2).msgData;
+              ((MessageForDeviceFile)localObject1).msgData = localMessage.msgData;
               ((MessageForDeviceFile)localObject1).parse();
               if (((MessageForDeviceFile)localObject1).msgStatus != 1) {
-                break label905;
+                break label922;
               }
               localMsgSummary.jdField_a_of_type_Int = 2;
               break;
-              localObject1 = ((SmartDeviceProxyMgr)paramQQAppInterface.a(51)).a(Long.parseLong(((QQMessageFacade.Message)localObject2).frienduin));
+              localObject1 = ((SmartDeviceProxyMgr)paramQQAppInterface.a(51)).a(Long.parseLong(localMessage.frienduin));
               if (localObject1 != null) {
                 this.jdField_b_of_type_JavaLangString = SmartDeviceUtil.a((DeviceInfo)localObject1);
               }
@@ -276,36 +311,36 @@ public class RecentItemChatMsgData
             {
               localMsgSummary.jdField_a_of_type_Int = 1;
               continue;
-              if (((QQMessageFacade.Message)localObject2).msgtype == -4501)
+              if (localMessage.msgtype == -4501)
               {
                 localObject1 = new MessageForDevPtt();
-                ((MessageForDevPtt)localObject1).msgData = ((QQMessageFacade.Message)localObject2).msgData;
+                ((MessageForDevPtt)localObject1).msgData = localMessage.msgData;
                 ((MessageForDevPtt)localObject1).parse();
                 if (((MessageForDevPtt)localObject1).fileSize == -1L)
                 {
                   localMsgSummary.jdField_a_of_type_Int = 2;
-                  if (!"device_groupchat".equals(((QQMessageFacade.Message)localObject2).extStr)) {
+                  if (!"device_groupchat".equals(localMessage.extStr)) {
                     continue;
                   }
-                  if (!((QQMessageFacade.Message)localObject2).isSend()) {
-                    break label1060;
+                  if (!localMessage.isSend()) {
+                    break label1077;
                   }
                 }
-                for (((QQMessageFacade.Message)localObject2).nickName = paramQQAppInterface.getApp().getString(2131433116);; ((QQMessageFacade.Message)localObject2).nickName = ContactUtils.b(paramQQAppInterface, ((QQMessageFacade.Message)localObject2).senderuin, true))
+                for (localMessage.nickName = paramQQAppInterface.getApp().getString(2131433130);; localMessage.nickName = ContactUtils.b(paramQQAppInterface, localMessage.senderuin, true))
                 {
-                  MsgUtils.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject2, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, localMsgSummary, ((QQMessageFacade.Message)localObject2).nickName, true, false);
+                  MsgUtils.a(paramContext, paramQQAppInterface, localMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, localMsgSummary, localMessage.nickName, true, false);
                   break;
                   if (((MessageForDevPtt)localObject1).fileSize != -3L) {
-                    break label976;
+                    break label993;
                   }
                   localMsgSummary.jdField_a_of_type_Int = 1;
-                  break label976;
+                  break label993;
                 }
               }
-              else if (((QQMessageFacade.Message)localObject2).msgtype == -4503)
+              else if (localMessage.msgtype == -4503)
               {
                 localObject1 = new MessageForDevShortVideo();
-                ((MessageForDevShortVideo)localObject1).msgData = ((QQMessageFacade.Message)localObject2).msgData;
+                ((MessageForDevShortVideo)localObject1).msgData = localMessage.msgData;
                 ((MessageForDevShortVideo)localObject1).parse();
                 if (((MessageForDevShortVideo)localObject1).videoFileStatus == 1005)
                 {
@@ -317,27 +352,27 @@ public class RecentItemChatMsgData
                   if (localObject1 != null)
                   {
                     i = 1;
-                    if (((DeviceAVFileMsgObserver)localObject1).a(((QQMessageFacade.Message)localObject2).uniseq)) {
-                      break label1202;
+                    if (((DeviceAVFileMsgObserver)localObject1).a(localMessage.uniseq)) {
+                      break label1219;
                     }
                   }
                   for (i1 = 1;; i1 = 0)
                   {
                     if ((i & i1) == 0) {
-                      break label1208;
+                      break label1225;
                     }
                     localMsgSummary.jdField_a_of_type_Int = 2;
                     break;
                     i = 0;
-                    break label1165;
+                    break label1182;
                   }
                   localMsgSummary.jdField_a_of_type_Int = 1;
                 }
               }
-              else if (((QQMessageFacade.Message)localObject2).msgtype == -4509)
+              else if (localMessage.msgtype == -4509)
               {
                 localObject1 = new MessageForDevLittleVideo();
-                ((MessageForDevLittleVideo)localObject1).msgData = ((QQMessageFacade.Message)localObject2).msgData;
+                ((MessageForDevLittleVideo)localObject1).msgData = localMessage.msgData;
                 ((MessageForDevLittleVideo)localObject1).parse();
                 if (((MessageForDevLittleVideo)localObject1).videoFileStatus == 1005)
                 {
@@ -345,16 +380,16 @@ public class RecentItemChatMsgData
                 }
                 else if (((MessageForDevLittleVideo)localObject1).videoFileStatus == 1002)
                 {
-                  localObject3 = ((DeviceMsgHandle)paramQQAppInterface.a(49)).a();
+                  localObject2 = ((DeviceMsgHandle)paramQQAppInterface.a(49)).a();
                   if (!DeviceMsgChatPie.b((MessageRecord)localObject1)) {
-                    if (localObject3 == null) {
-                      break label1336;
+                    if (localObject2 == null) {
+                      break label1353;
                     }
                   }
                   for (i = 1;; i = 0)
                   {
-                    if ((i & ((DeviceAVFileMsgObserver)localObject3).a(((QQMessageFacade.Message)localObject2).uniseq)) == 0) {
-                      break label1341;
+                    if ((i & ((DeviceAVFileMsgObserver)localObject2).a(localMessage.uniseq)) == 0) {
+                      break label1358;
                     }
                     localMsgSummary.jdField_a_of_type_Int = 1;
                     break;
@@ -362,79 +397,79 @@ public class RecentItemChatMsgData
                   localMsgSummary.jdField_a_of_type_Int = 2;
                 }
               }
-              else if (((QQMessageFacade.Message)localObject2).msgtype == -4508)
+              else if (localMessage.msgtype == -4508)
               {
-                if ("device_groupchat".equals(((QQMessageFacade.Message)localObject2).extStr))
+                if ("device_groupchat".equals(localMessage.extStr))
                 {
-                  if (((QQMessageFacade.Message)localObject2).isSend()) {}
-                  for (((QQMessageFacade.Message)localObject2).nickName = paramQQAppInterface.getApp().getString(2131433116);; ((QQMessageFacade.Message)localObject2).nickName = ContactUtils.b(paramQQAppInterface, ((QQMessageFacade.Message)localObject2).senderuin, true))
+                  if (localMessage.isSend()) {}
+                  for (localMessage.nickName = paramQQAppInterface.getApp().getString(2131433130);; localMessage.nickName = ContactUtils.b(paramQQAppInterface, localMessage.senderuin, true))
                   {
-                    MsgUtils.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject2, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, localMsgSummary, ((QQMessageFacade.Message)localObject2).nickName, true, false);
+                    MsgUtils.a(paramContext, paramQQAppInterface, localMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, localMsgSummary, localMessage.nickName, true, false);
                     break;
                   }
                 }
-                MsgUtils.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject2, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, localMsgSummary, null, true, false);
+                MsgUtils.a(paramContext, paramQQAppInterface, localMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, localMsgSummary, null, true, false);
               }
             }
           }
         }
       case 1008: 
-        if (localObject2 != null)
+        if (localMessage != null)
         {
-          i = ((QQMessageFacade.Message)localObject2).msgtype;
+          i = localMessage.msgtype;
           if ((i == -3006) || (i == -5004)) {
-            break label2281;
+            break label2298;
           }
-          a((QQMessageFacade.Message)localObject2, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, localMsgSummary);
+          a(localMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, localMsgSummary);
           if ((i == -2025) && (this.jdField_c_of_type_Int > 0) && (ServiceAccountFolderManager.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)))
           {
             this.jdField_e_of_type_Int = -881592;
-            this.jdField_d_of_type_JavaLangCharSequence = ((QQMessageFacade.Message)localObject2).msg;
+            this.jdField_d_of_type_JavaLangCharSequence = localMessage.msg;
             localMsgSummary.b = "";
           }
         }
         else
         {
           localObject1 = null;
-          localObject3 = (PublicAccountDataManager)paramQQAppInterface.getManager(55);
-          if (localObject3 != null) {
-            localObject1 = ((PublicAccountDataManager)localObject3).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+          localObject2 = (PublicAccountDataManager)paramQQAppInterface.getManager(55);
+          if (localObject2 != null) {
+            localObject1 = ((PublicAccountDataManager)localObject2).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
           }
-          if ((localObject1 == null) && (localObject3 != null))
+          if ((localObject1 == null) && (localObject2 != null))
           {
-            localObject3 = ((PublicAccountDataManager)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
-            if (localObject3 != null) {
-              this.jdField_b_of_type_JavaLangString = ((AccountDetail)localObject3).name;
+            localObject2 = ((PublicAccountDataManager)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+            if (localObject2 != null) {
+              this.jdField_b_of_type_JavaLangString = ((AccountDetail)localObject2).name;
             }
             if (this.jdField_e_of_type_Boolean) {
               this.jdField_b_of_type_JavaLangString = PublicAccountConfigUtil.b(paramQQAppInterface, paramQQAppInterface.getApp());
             }
           }
           if (localObject1 == null) {
-            break label2463;
+            break label2480;
           }
           this.jdField_b_of_type_JavaLangString = ((PublicAccountInfo)localObject1).name;
           if (((PublicAccountInfo)localObject1).certifiedGrade <= 0L) {
-            break label2455;
+            break label2472;
           }
-          this.jdField_d_of_type_Int = 2130839751;
-          if ((localObject2 == null) || (((QQMessageFacade.Message)localObject2).getMessageText() == null)) {
-            break label2471;
+          this.jdField_d_of_type_Int = 2130839766;
+          if ((localMessage == null) || (localMessage.getMessageText() == null)) {
+            break label2488;
           }
-          this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject2).time;
+          this.jdField_a_of_type_Long = localMessage.time;
           if ((!this.jdField_e_of_type_Boolean) && (ServiceAccountFolderManager.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)))
           {
             i = paramQQAppInterface.a().f(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);
             if (this.jdField_c_of_type_Int > 0)
             {
               if ((this.jdField_c_of_type_Int != 1) || (i <= 0)) {
-                break label2485;
+                break label2502;
               }
               this.jdField_b_of_type_Int = 2;
             }
           }
         }
-        while (AppConstants.aH.equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin))
+        while (AppConstants.aI.equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin))
         {
           for (;;)
           {
@@ -444,9 +479,9 @@ public class RecentItemChatMsgData
             this.jdField_e_of_type_Int = 0;
             if (this.jdField_e_of_type_Boolean)
             {
-              localObject1 = ((QQMessageFacade)localObject5).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);
+              localObject1 = ((QQMessageFacade)localObject4).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);
               if ((localObject1 == null) || (!(localObject1 instanceof MessageForStructing))) {
-                break label1557;
+                break label1574;
               }
               localObject1 = (MessageForStructing)localObject1;
               if (((MessageForStructing)localObject1).structingMsg == null) {
@@ -458,16 +493,16 @@ public class RecentItemChatMsgData
                 if (((MessageForStructing)localObject1).structingMsg.mOrangeWord.length() >= 8)
                 {
                   this.jdField_d_of_type_JavaLangCharSequence = ("[" + ((MessageForStructing)localObject1).structingMsg.mOrangeWord.substring(0, 8) + "]");
-                  this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494288);
+                  this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494294);
                 }
               }
               else
               {
                 if ((((MessageForStructing)localObject1).extInt != 1) || (((MessageForStructing)localObject1).extLong != 1)) {
-                  break label1557;
+                  break label1574;
                 }
                 ((MessageForStructing)localObject1).extLong = 0;
-                ThreadManager.post(new xlq(this, paramQQAppInterface, (MessageForStructing)localObject1), 8, null, false);
+                ThreadManager.post(new xrx(this, paramQQAppInterface, (MessageForStructing)localObject1), 8, null, false);
                 l2 = -1L;
                 l1 = l2;
                 if (((MessageForStructing)localObject1).structingMsg != null)
@@ -475,25 +510,25 @@ public class RecentItemChatMsgData
                   l1 = l2;
                   if (!android.text.TextUtils.isEmpty(((MessageForStructing)localObject1).structingMsg.mMsgActionData))
                   {
-                    localObject3 = PublicAccountUtil.a(((MessageForStructing)localObject1).structingMsg.mMsgActionData);
+                    localObject2 = PublicAccountUtil.a(((MessageForStructing)localObject1).structingMsg.mMsgActionData);
                     l1 = l2;
-                    if (localObject3 == null) {}
+                    if (localObject2 == null) {}
                   }
                 }
               }
               try
               {
-                l1 = Long.parseLong(((JSONObject)localObject3).getString("id"));
+                l1 = Long.parseLong(((JSONObject)localObject2).getString("id"));
                 if (l1 != -1L)
                 {
                   PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F3", "0X80066F3", 0, 0, String.valueOf(this.i + 1), "", String.valueOf(l1), "", false);
                   PublicAccountReportUtils.a("0X80066F3", "", String.valueOf(this.i + 1), "", String.valueOf(l1), "");
                 }
                 if (((MessageForStructing)localObject1).structingMsg == null) {
-                  break label1557;
+                  break label1574;
                 }
                 PublicAccountUtil.a(paramQQAppInterface, (MessageForStructing)localObject1, 7);
-                break label1557;
+                break label1574;
                 this.jdField_d_of_type_JavaLangCharSequence = ("[" + ((MessageForStructing)localObject1).structingMsg.mOrangeWord + "]");
               }
               catch (Exception localException)
@@ -507,21 +542,21 @@ public class RecentItemChatMsgData
             }
           }
           localObject1 = PubAccountTips.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
-          if ((localObject1 == null) || (((PubAccountTips.PubAccountTipsMsg)localObject1).jdField_d_of_type_Long != ((QQMessageFacade.Message)localObject2).uniseq) || (!((PubAccountTips.PubAccountTipsMsg)localObject1).b())) {
-            break label1557;
+          if ((localObject1 == null) || (((PubAccountTips.PubAccountTipsMsg)localObject1).jdField_d_of_type_Long != localMessage.uniseq) || (!((PubAccountTips.PubAccountTipsMsg)localObject1).b())) {
+            break label1574;
           }
-          ThreadManager.post(new xlr(this, paramQQAppInterface, (PubAccountTips.PubAccountTipsMsg)localObject1), 2, null, false);
-          break label1557;
+          ThreadManager.post(new xry(this, paramQQAppInterface, (PubAccountTips.PubAccountTipsMsg)localObject1), 2, null, false);
+          break label1574;
           localMsgSummary.b = "";
-          localObject4 = XMLMessageUtils.a((MessageRecord)localObject2);
-          if ((localObject4 == null) || (((PAMessage)localObject4).items == null) || (((PAMessage)localObject4).items.size() == 0))
+          localObject3 = XMLMessageUtils.a(localMessage);
+          if ((localObject3 == null) || (((PAMessage)localObject3).items == null) || (((PAMessage)localObject3).items.size() == 0))
           {
-            a((QQMessageFacade.Message)localObject2, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, localMsgSummary);
-            break label1557;
+            a(localMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, localMsgSummary);
+            break label1574;
           }
-          localObject1 = ((PAMessage.Item)((PAMessage)localObject4).items.get(0)).title;
-          if ((((PAMessage.Item)((PAMessage)localObject4).items.get(0)).cover == null) && (((PAMessage.Item)((PAMessage)localObject4).items.get(0)).digestList != null)) {
-            localObject1 = (String)localObject1 + "：" + (String)((PAMessage.Item)((PAMessage)localObject4).items.get(0)).digestList.get(0);
+          localObject1 = ((PAMessage.Item)((PAMessage)localObject3).items.get(0)).title;
+          if ((((PAMessage.Item)((PAMessage)localObject3).items.get(0)).cover == null) && (((PAMessage.Item)((PAMessage)localObject3).items.get(0)).digestList != null)) {
+            localObject1 = (String)localObject1 + "：" + (String)((PAMessage.Item)((PAMessage)localObject3).items.get(0)).digestList.get(0);
           }
           for (;;)
           {
@@ -529,11 +564,11 @@ public class RecentItemChatMsgData
             break;
           }
           this.jdField_d_of_type_Int = 0;
-          break label1678;
+          break label1695;
           this.jdField_d_of_type_Int = 0;
-          break label1678;
+          break label1695;
           this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.lastmsgtime;
-          break label1700;
+          break label1717;
           if (i > 0)
           {
             this.jdField_c_of_type_Int -= 1;
@@ -541,14 +576,14 @@ public class RecentItemChatMsgData
           }
         }
       case 1006: 
-        label1557:
-        label1700:
-        label2471:
-        label2485:
-        localObject4 = ContactUtils.g(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
-        label1678:
-        label2455:
-        label2463:
+        label1574:
+        label1717:
+        label2488:
+        label2502:
+        localObject3 = ContactUtils.g(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+        label1695:
+        label2472:
+        label2480:
         localObject1 = (PhoneContactManager)paramQQAppInterface.getManager(10);
         if (localObject1 == null) {
           break;
@@ -561,26 +596,26 @@ public class RecentItemChatMsgData
         }
         for (;;)
         {
-          a((QQMessageFacade.Message)localObject2, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, localMsgSummary);
-          if ((localObject2 == null) || ((((QQMessageFacade.Message)localObject2).getMessageText() == null) && ((((QQMessageFacade.Message)localObject2).msgtype != -2011) || (((QQMessageFacade.Message)localObject2).msgData == null)))) {
-            break label2660;
+          a(localMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, localMsgSummary);
+          if ((localMessage == null) || ((localMessage.getMessageText() == null) && ((localMessage.msgtype != -2011) || (localMessage.msgData == null)))) {
+            break label2677;
           }
-          this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject2).time;
+          this.jdField_a_of_type_Long = localMessage.time;
           break;
-          if (localObject4 != null) {
-            this.jdField_b_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, (String)localObject4, true);
+          if (localObject3 != null) {
+            this.jdField_b_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, (String)localObject3, true);
           } else {
             this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
           }
         }
-        label2660:
+        label2677:
         this.jdField_a_of_type_Long = 0L;
         break;
         this.jdField_b_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, true);
-        a((QQMessageFacade.Message)localObject2, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, localMsgSummary);
-        if ((localObject2 != null) && ((((QQMessageFacade.Message)localObject2).getMessageText() != null) || ((((QQMessageFacade.Message)localObject2).msgtype == -2011) && (((QQMessageFacade.Message)localObject2).msgData != null))))
+        a(localMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, localMsgSummary);
+        if ((localMessage != null) && ((localMessage.getMessageText() != null) || ((localMessage.msgtype == -2011) && (localMessage.msgData != null))))
         {
-          this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject2).time;
+          this.jdField_a_of_type_Long = localMessage.time;
           break;
         }
         this.jdField_a_of_type_Long = 0L;
@@ -588,8 +623,8 @@ public class RecentItemChatMsgData
         boolean bool1 = QvipSpecialCareManager.a(paramQQAppInterface.getCurrentAccountUin() + this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
         if ((this.jdField_c_of_type_Int > 0) && (bool1))
         {
-          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131436880);
-          this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494288);
+          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131436900);
+          this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494294);
         }
         if (0 == 0) {}
         for (localObject1 = (FriendsManager)paramQQAppInterface.getManager(50);; localObject1 = null)
@@ -598,163 +633,167 @@ public class RecentItemChatMsgData
           this.l = 0;
           this.m = 0;
           this.n = 0;
+          this.p = 0;
           if ((this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type == 0) && (((FriendsManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)))
           {
             if (QIMUserManager.a().a(paramQQAppInterface) != 1) {
-              break label3736;
+              break label3785;
             }
             i = 1;
-            label2894:
+            label2916:
             this.j = 0;
             if ((i != 0) && (QIMUserManager.a().a()))
             {
-              localObject4 = ((FriendsManager)localObject1).c(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
-              if ((localObject4 != null) && (((Friends)localObject4).netTypeIconId == 11))
+              localObject3 = ((FriendsManager)localObject1).c(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+              if ((localObject3 != null) && (((Friends)localObject3).netTypeIconId == 11))
               {
                 this.j = 1;
-                ThreadManager.post(new xls(this, paramQQAppInterface), 5, null, true);
+                ThreadManager.post(new xrz(this, paramQQAppInterface), 5, null, true);
               }
             }
             boolean bool2 = ((FriendsManager)localObject1).c();
             if (!bool2)
             {
-              localObject4 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
-              this.k = ((FriendsManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (ExtensionInfo)localObject4, bool2);
-              this.l = ((FriendsManager)localObject1).c(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (ExtensionInfo)localObject4, bool2);
-              this.m = ((FriendsManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (ExtensionInfo)localObject4, bool2);
-              this.n = ((FriendsManager)localObject1).d(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (ExtensionInfo)localObject4, bool2);
-              this.jdField_c_of_type_Boolean = ((FriendsManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (ExtensionInfo)localObject4, bool2);
-              if (localObject4 != null)
+              localObject3 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+              this.k = ((FriendsManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (ExtensionInfo)localObject3, bool2);
+              this.l = ((FriendsManager)localObject1).c(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (ExtensionInfo)localObject3, bool2);
+              this.m = ((FriendsManager)localObject1).d(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (ExtensionInfo)localObject3, bool2);
+              this.n = ((FriendsManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (ExtensionInfo)localObject3, bool2);
+              this.p = ((FriendsManager)localObject1).e(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (ExtensionInfo)localObject3, bool2);
+              if (localObject3 != null)
               {
-                this.jdField_b_of_type_Long = ((ExtensionInfo)localObject4).lastpraiseTime;
-                this.jdField_c_of_type_Long = ((ExtensionInfo)localObject4).lastChatTime;
-                this.jdField_d_of_type_Long = ((ExtensionInfo)localObject4).lastQzoneVisitTime;
+                this.jdField_b_of_type_Long = ((ExtensionInfo)localObject3).lastpraiseTime;
+                this.jdField_c_of_type_Long = ((ExtensionInfo)localObject3).lastChatTime;
+                this.jdField_d_of_type_Long = ((ExtensionInfo)localObject3).loverLastChatTime;
+                this.jdField_e_of_type_Long = ((ExtensionInfo)localObject3).lastQzoneVisitTime;
+                this.o = ((ExtensionInfo)localObject3).loverFlag;
+                this.jdField_c_of_type_Boolean = ((ExtensionInfo)localObject3).loverTransFlag;
               }
             }
           }
           if (a((FriendsManager)localObject1, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin))
           {
             this.jdField_b_of_type_Int = 4;
-            label3140:
-            if ((localObject2 == null) || ((((QQMessageFacade.Message)localObject2).getMessageText() == null) && (((QQMessageFacade.Message)localObject2).msgData == null) && ((((QQMessageFacade.Message)localObject2).msgtype != -2011) || (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type != 0)))) {
-              break label3809;
+            label3189:
+            if ((localMessage == null) || ((localMessage.getMessageText() == null) && (localMessage.msgData == null) && ((localMessage.msgtype != -2011) || (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type != 0)))) {
+              break label3858;
             }
-            this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject2).time;
+            this.jdField_a_of_type_Long = localMessage.time;
             i = i1;
-            if (((QQMessageFacade.Message)localObject2).msgtype == -2011)
+            if (localMessage.msgtype == -2011)
             {
-              l1 = paramQQAppInterface.getApplication().getSharedPreferences("now_msg_sp" + paramQQAppInterface.getCurrentAccountUin(), 0).getLong("uid" + ((QQMessageFacade.Message)localObject2).frienduin, 0L);
-              localObject4 = ((QQMessageFacade)localObject5).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);
-              if ((localObject4 == null) || (!(localObject4 instanceof MessageForStructing))) {
-                break label4952;
+              l1 = paramQQAppInterface.getApplication().getSharedPreferences("now_msg_sp" + paramQQAppInterface.getCurrentAccountUin(), 0).getLong("uid" + localMessage.frienduin, 0L);
+              localObject3 = ((QQMessageFacade)localObject4).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);
+              if ((localObject3 == null) || (!(localObject3 instanceof MessageForStructing))) {
+                break label5009;
               }
-              localObject5 = (MessageForStructing)localObject4;
-              if (((MessageForStructing)localObject5).structingMsg == null) {
-                ((MessageForStructing)localObject5).parse();
+              localObject4 = (MessageForStructing)localObject3;
+              if (((MessageForStructing)localObject4).structingMsg == null) {
+                ((MessageForStructing)localObject4).parse();
               }
-              if (((MessageForStructing)localObject5).structingMsg == null) {
-                break label4952;
+              if (((MessageForStructing)localObject4).structingMsg == null) {
+                break label5009;
               }
-              if ((l1 != ((QQMessageFacade.Message)localObject2).msgUid) || (((MessageForStructing)localObject5).structingMsg.mMsgServiceID != 76)) {
-                break label3765;
+              if ((l1 != localMessage.msgUid) || (((MessageForStructing)localObject4).structingMsg.mMsgServiceID != 76)) {
+                break label3814;
               }
-              localObject5 = ((MessageForStructing)localObject5).structingMsg.mMsgBrief;
-              String str = paramContext.getString(2131430829);
-              if ((((MessageRecord)localObject4).isread) || (android.text.TextUtils.isEmpty((CharSequence)localObject5)) || (!((String)localObject5).startsWith(str))) {
-                break label3749;
+              localObject4 = ((MessageForStructing)localObject4).structingMsg.mMsgBrief;
+              String str = paramContext.getString(2131430832);
+              if ((((MessageRecord)localObject3).isread) || (android.text.TextUtils.isEmpty((CharSequence)localObject4)) || (!((String)localObject4).startsWith(str))) {
+                break label3798;
               }
               this.jdField_d_of_type_JavaLangCharSequence = str;
-              ((QQMessageFacade.Message)localObject2).msg = ((String)localObject5).substring(str.length());
-              label3420:
-              this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494318);
+              localMessage.msg = ((String)localObject4).substring(str.length());
+              label3469:
+              this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494324);
               i = 0;
             }
           }
           for (;;)
           {
-            label3435:
-            a((QQMessageFacade.Message)localObject2, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, localMsgSummary);
+            label3484:
+            a(localMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramQQAppInterface, paramContext, localMsgSummary);
             if ((i != 0) && (this.jdField_c_of_type_Int > 0) && ((this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg instanceof MessageRecord)) && (!((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg).isread)) {
               localMsgSummary.jdField_c_of_type_JavaLangCharSequence = "";
             }
             if ((i == 0) && ((this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg instanceof MessageForStructing)))
             {
-              localObject4 = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg;
-              if ((!((MessageForStructing)localObject4).isread) && (((MessageForStructing)localObject4).structingMsg.mMsgServiceID == 107)) {
-                a(paramContext, (QQMessageFacade.Message)localObject2, (MessageForStructing)localObject4);
+              localObject3 = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg;
+              if ((!((MessageForStructing)localObject3).isread) && (((MessageForStructing)localObject3).structingMsg.mMsgServiceID == 107)) {
+                a(paramContext, localMessage, (MessageForStructing)localObject3);
               }
             }
-            if ((localObject2 != null) && (((QQMessageFacade.Message)localObject2).msgtype == -1034))
+            if ((localMessage != null) && (localMessage.msgtype == -1034))
             {
               if (jdField_a_of_type_ComTencentMobileqqDataMessageForRichState == null) {
                 jdField_a_of_type_ComTencentMobileqqDataMessageForRichState = new MessageForRichState();
               }
-              jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.msg = ((QQMessageFacade.Message)localObject2).msg;
+              jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.msg = localMessage.msg;
               jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.mIsParsed = false;
               jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.parse();
-              if (paramQQAppInterface.a().e(((QQMessageFacade.Message)localObject2).frienduin) < jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.time)
+              if (paramQQAppInterface.a().e(localMessage.frienduin) < jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.time)
               {
                 this.jdField_d_of_type_JavaLangCharSequence = "[新签名]";
-                this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494288);
-                label3656:
+                this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494294);
+                label3705:
                 this.jdField_d_of_type_Boolean = true;
               }
             }
             else
             {
               if (!AppConstants.H.equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)) {
-                break label3844;
+                break label3893;
               }
-              this.jdField_b_of_type_JavaLangString = paramContext.getString(2131434941);
+              this.jdField_b_of_type_JavaLangString = paramContext.getString(2131434957);
             }
             for (;;)
             {
-              if ((localObject2 == null) || (((QQMessageFacade.Message)localObject2).msgtype != -2040)) {
-                break label4097;
+              if ((localMessage == null) || (localMessage.msgtype != -2040)) {
+                break label4146;
               }
               localObject1 = new MessageForApproval();
-              ((MessageForApproval)localObject1).msgData = ((QQMessageFacade.Message)localObject2).msgData;
+              ((MessageForApproval)localObject1).msgData = localMessage.msgData;
               localMsgSummary.b = ((MessageForApproval)localObject1).getFullTitle();
               break;
-              label3736:
+              label3785:
               i = 0;
-              break label2894;
+              break label2916;
               this.jdField_b_of_type_Int = 1;
-              break label3140;
-              label3749:
+              break label3189;
+              label3798:
               this.jdField_d_of_type_JavaLangCharSequence = "";
-              ((QQMessageFacade.Message)localObject2).msg = ((String)localObject5);
-              break label3420;
-              label3765:
-              if ((((MessageForStructing)localObject5).structingMsg.mMsgServiceID != 107) || (bool1)) {
-                break label4952;
+              localMessage.msg = ((String)localObject4);
+              break label3469;
+              label3814:
+              if ((((MessageForStructing)localObject4).structingMsg.mMsgServiceID != 107) || (bool1)) {
+                break label5009;
               }
-              a(paramContext, (QQMessageFacade.Message)localObject2, (MessageForStructing)localObject4);
-              this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = localObject5;
+              a(paramContext, localMessage, (MessageForStructing)localObject3);
+              this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = localObject4;
               i = 1;
-              break label3435;
-              label3809:
+              break label3484;
+              label3858:
               this.jdField_a_of_type_Long = 0L;
               i = i1;
-              break label3435;
+              break label3484;
               this.jdField_d_of_type_JavaLangCharSequence = "[签名]";
-              this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494264);
-              break label3656;
-              label3844:
+              this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494270);
+              break label3705;
+              label3893:
               if (AppConstants.D.equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin))
               {
-                this.jdField_b_of_type_JavaLangString = paramContext.getString(2131434982);
-                if ((localObject2 != null) && (((QQMessageFacade.Message)localObject2).msg != null)) {
-                  localMsgSummary.b = ((QQMessageFacade.Message)localObject2).msg;
+                this.jdField_b_of_type_JavaLangString = paramContext.getString(2131434998);
+                if ((localMessage != null) && (localMessage.msg != null)) {
+                  localMsgSummary.b = localMessage.msg;
                 }
               }
               else if (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type == 1000)
               {
-                localObject4 = (TroopManager)paramQQAppInterface.getManager(51);
-                if (localObject4 != null)
+                localObject3 = (TroopManager)paramQQAppInterface.getManager(51);
+                if (localObject3 != null)
                 {
-                  localObject4 = ((TroopManager)localObject4).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin);
-                  this.jdField_b_of_type_JavaLangString = ContactUtils.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (String)localObject4, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin, true, null);
+                  localObject3 = ((TroopManager)localObject3).b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin);
+                  this.jdField_b_of_type_JavaLangString = ContactUtils.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, (String)localObject3, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin, true, null);
                 }
               }
               else if (this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type == 1004)
@@ -773,54 +812,54 @@ public class RecentItemChatMsgData
                 this.jdField_b_of_type_JavaLangString = ContactUtils.b(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, true);
               }
             }
-            label4097:
-            if ((localObject2 != null) && (((QQMessageFacade.Message)localObject2).msgtype == -2041))
+            label4146:
+            if ((localMessage != null) && (localMessage.msgtype == -2041))
             {
-              localObject1 = paramContext.getString(2131438331);
-              localObject2 = paramContext.getString(2131438332);
-              localMsgSummary.b = ((String)localObject1 + " " + (String)localObject2);
+              localObject1 = paramContext.getString(2131438351);
+              localObject3 = paramContext.getString(2131438352);
+              localMsgSummary.b = ((String)localObject1 + " " + (String)localObject3);
               break;
             }
-            if ((localObject2 != null) && (((QQMessageFacade.Message)localObject2).msgtype == -2025))
+            if ((localMessage != null) && (localMessage.msgtype == -2025))
             {
               if (this.jdField_c_of_type_Int <= 0) {
-                break label4382;
+                break label4431;
               }
               this.jdField_e_of_type_Int = -881592;
               if (!bool1) {
-                break label4370;
+                break label4419;
               }
-              this.jdField_d_of_type_JavaLangCharSequence += ((QQMessageFacade.Message)localObject2).msg;
-              label4229:
+              this.jdField_d_of_type_JavaLangCharSequence += localMessage.msg;
+              label4278:
               localMsgSummary.b = "";
             }
             for (;;)
             {
-              if ((localObject2 != null) && (((QQMessageFacade.Message)localObject2).msgtype == -2061)) {
+              if ((localMessage != null) && (localMessage.msgtype == -2061)) {
                 localMsgSummary.b = "";
               }
               if ((this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type == 1024) && (!QidianManager.b(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin))) {
                 this.jdField_d_of_type_Int = CrmUtils.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
               }
               if (Utils.b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)) {
-                this.jdField_d_of_type_Int = 2130839751;
+                this.jdField_d_of_type_Int = 2130839766;
               }
               if ((this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type != 0) || (((FriendsManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin) != 1)) {
                 break;
               }
               this.jdField_a_of_type_JavaLangString = ((FlashChatManager)paramQQAppInterface.getManager(216)).a.jdField_d_of_type_JavaLangString;
               break;
-              label4370:
-              this.jdField_d_of_type_JavaLangCharSequence = ((QQMessageFacade.Message)localObject2).msg;
-              break label4229;
-              label4382:
+              label4419:
+              this.jdField_d_of_type_JavaLangCharSequence = localMessage.msg;
+              break label4278;
+              label4431:
               this.jdField_d_of_type_JavaLangCharSequence = "";
             }
-            this.jdField_b_of_type_JavaLangString = paramContext.getString(2131430177);
-            localObject4 = "";
+            this.jdField_b_of_type_JavaLangString = paramContext.getString(2131430180);
+            localObject3 = "";
             localObject1 = null;
-            if (localObject5 != null) {
-              localObject1 = ((QQMessageFacade)localObject5).b(AppConstants.C, 4000);
+            if (localObject4 != null) {
+              localObject1 = ((QQMessageFacade)localObject4).b(AppConstants.C, 4000);
             }
             if ((localObject1 != null) && (((List)localObject1).size() > 0))
             {
@@ -836,9 +875,9 @@ public class RecentItemChatMsgData
             for (;;)
             {
               localMsgSummary.b = ((CharSequence)localObject1);
-              if ((localObject2 != null) && (((QQMessageFacade.Message)localObject2).getMessageText() != null))
+              if ((localMessage != null) && (localMessage.getMessageText() != null))
               {
-                this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject2).time;
+                this.jdField_a_of_type_Long = localMessage.time;
                 break;
                 if (((MessageRecord)localObject1).msgtype == -1030)
                 {
@@ -850,18 +889,18 @@ public class RecentItemChatMsgData
                 {
                   localObject1 = (RecommendTroopManagerImp)paramQQAppInterface.getManager(21);
                   if (localObject1 == null) {
-                    break label4945;
+                    break label5002;
                   }
-                  localObject1 = paramContext.getResources().getString(2131430179) + ((RecommendTroopManagerImp)localObject1).a();
+                  localObject1 = paramContext.getResources().getString(2131430182) + ((RecommendTroopManagerImp)localObject1).a();
                   continue;
                 }
                 if (((MessageRecord)localObject1).msgtype != -1040) {
-                  break label4938;
+                  break label4995;
                 }
-                localObject5 = (RecommendTroopManagerImp)paramQQAppInterface.getManager(21);
-                localObject1 = localObject4;
-                if (localObject5 != null) {
-                  localObject1 = ((RecommendTroopManagerImp)localObject5).a();
+                localObject4 = (RecommendTroopManagerImp)paramQQAppInterface.getManager(21);
+                localObject1 = localObject3;
+                if (localObject4 != null) {
+                  localObject1 = ((RecommendTroopManagerImp)localObject4).a();
                 }
                 continue;
               }
@@ -871,60 +910,62 @@ public class RecentItemChatMsgData
               localMsgSummary.b = "可连接ArkIDE进行真机调试";
               this.jdField_c_of_type_Int = 0;
               break;
-              label4728:
+              label4777:
+              a(paramQQAppInterface, paramContext, localMessage);
+              break label472;
+              label4788:
               if (this.jdField_c_of_type_Int == 1)
               {
-                ((StringBuilder)localObject1).append("有一条未读");
-                break label513;
+                paramQQAppInterface.append("有一条未读");
+                break label516;
               }
               if (this.jdField_c_of_type_Int == 2)
               {
-                ((StringBuilder)localObject1).append("有两条未读");
-                break label513;
+                paramQQAppInterface.append("有两条未读");
+                break label516;
               }
               if (this.jdField_c_of_type_Int <= 0) {
-                break label513;
+                break label516;
               }
-              ((StringBuilder)localObject1).append("有").append(this.jdField_c_of_type_Int).append("条未读,");
-              break label513;
-              label4800:
-              paramQQAppInterface = HotReactiveHelper.a(paramContext, 5);
-              break label610;
-              label4809:
-              if (this.m != 2) {
-                break label622;
-              }
-              if (this.jdField_c_of_type_Boolean) {}
-              for (paramQQAppInterface = HotReactiveHelper.a(paramContext, 60);; paramQQAppInterface = HotReactiveHelper.a(paramContext, 6))
-              {
-                ((StringBuilder)localObject1).append(paramQQAppInterface).append(",");
-                break;
-              }
-              label4856:
+              paramQQAppInterface.append("有").append(this.jdField_c_of_type_Int).append("条未读,");
+              break label516;
+              label4857:
               if (this.l != 2) {
-                break label646;
+                break label616;
               }
-              ((StringBuilder)localObject1).append(HotReactiveHelper.a(paramContext, 4)).append(",");
-              break label646;
-              label4883:
-              if (this.k != 2) {
-                break label670;
-              }
-              ((StringBuilder)localObject1).append(HotReactiveHelper.a(paramContext, 2)).append(",");
-              break label670;
-              label4910:
+              paramQQAppInterface.append(HotReactiveHelper.a(paramContext, 60)).append(",");
+              break label616;
+              label4885:
               if (this.n != 2) {
-                break label695;
+                break label640;
               }
-              ((StringBuilder)localObject1).append(HotReactiveHelper.a(paramContext, 37)).append(",");
-              break label695;
-              label4938:
+              paramQQAppInterface.append(HotReactiveHelper.a(paramContext, 6)).append(",");
+              break label640;
+              label4913:
+              if (this.m != 2) {
+                break label664;
+              }
+              paramQQAppInterface.append(HotReactiveHelper.a(paramContext, 4)).append(",");
+              break label664;
+              label4940:
+              if (this.k != 2) {
+                break label688;
+              }
+              paramQQAppInterface.append(HotReactiveHelper.a(paramContext, 2)).append(",");
+              break label688;
+              label4967:
+              if (this.p != 2) {
+                break label713;
+              }
+              paramQQAppInterface.append(HotReactiveHelper.a(paramContext, 37)).append(",");
+              break label713;
+              label4995:
               localObject1 = "";
               continue;
-              label4945:
+              label5002:
               localObject1 = "";
             }
-            label4952:
+            label5009:
             i = 0;
           }
         }

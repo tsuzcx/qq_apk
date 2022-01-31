@@ -1,65 +1,109 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.IndividualRedPacketManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.io.File;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
 
-class zmr
-  implements BusinessObserver
+public class zmr
+  implements Runnable
 {
-  zmr(zmq paramzmq, BubbleDiyFetcher paramBubbleDiyFetcher) {}
+  public zmr(IndividualRedPacketManager paramIndividualRedPacketManager) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void run()
   {
+    int i = 0;
+    String str = "font";
+    Object localObject1 = str;
     try
     {
-      String str1 = String.valueOf(this.jdField_a_of_type_Zmq.a.b());
-      if ((paramObject instanceof List))
+      arrayOfString = new String[4];
+      localObject1 = str;
+      arrayOfString[0] = IndividualRedPacketManager.a(5);
+      localObject1 = str;
+      arrayOfString[1] = IndividualRedPacketManager.a(6);
+      localObject1 = str;
+      arrayOfString[2] = IndividualRedPacketManager.a(7);
+      localObject1 = str;
+      arrayOfString[3] = IndividualRedPacketManager.a(8);
+    }
+    catch (Exception localException2)
+    {
+      for (;;)
       {
-        paramObject = (List)paramObject;
-        if (paramObject.size() > 0)
+        String[] arrayOfString;
+        Object localObject3;
+        File[] arrayOfFile;
+        int j;
+        if (QLog.isColorLevel()) {
+          QLog.e(IndividualRedPacketManager.b(), 2, "eliminateImageCache error: " + localException2.getMessage() + ", in step=" + (String)localObject1);
+        }
+        label425:
+        try
         {
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("param_FailCode", localObject1);
+          StatisticCollector.a(BaseApplicationImpl.sApplication.getApplicationContext()).a(((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getAccount(), "RedpacketClearCacheError", false, 1L, 0L, localHashMap, "", false);
+          return;
+        }
+        catch (Exception localException1) {}
+        i += 1;
+      }
+    }
+    localObject1 = str;
+    if (i < arrayOfString.length)
+    {
+      localObject1 = str;
+      str = new String[] { "font", "aio", "tp", "send" }[i];
+      localObject1 = str;
+      localObject3 = new File(arrayOfString[i]);
+      localObject1 = str;
+      if (!((File)localObject3).exists()) {
+        break label425;
+      }
+      localObject1 = str;
+      if (!((File)localObject3).isDirectory()) {
+        break label425;
+      }
+      localObject1 = str;
+      arrayOfFile = ((File)localObject3).listFiles();
+      if (arrayOfFile == null) {
+        break label425;
+      }
+      localObject1 = str;
+      if (arrayOfFile.length <= 150) {
+        break label425;
+      }
+      localObject1 = str;
+      Arrays.sort(arrayOfFile, this.a.jdField_a_of_type_JavaUtilComparator);
+      j = 100;
+      for (;;)
+      {
+        localObject1 = str;
+        if (j < arrayOfFile.length)
+        {
+          localObject1 = str;
+          localObject3 = this.a.jdField_a_of_type_JavaUtilLinkedList;
+          localObject1 = str;
+          try
           {
-            Object localObject = (BubbleDiyEntity)paramObject.next();
-            String str2;
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
-            {
-              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject);
-            }
+            this.a.jdField_a_of_type_JavaUtilLinkedList.add(arrayOfFile[j].getAbsolutePath());
+            localObject1 = new File(arrayOfFile[j].getParent() + File.separator + System.currentTimeMillis());
+            arrayOfFile[j].renameTo((File)localObject1);
+            ((File)localObject1).delete();
+            this.a.jdField_a_of_type_JavaUtilLinkedList.remove(arrayOfFile[j].getAbsolutePath());
+            j += 1;
+          }
+          finally
+          {
+            localObject1 = str;
           }
         }
       }
-      return;
     }
-    catch (Exception paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SVIPHandler", 2, paramObject.getMessage());
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b();
   }
 }
 

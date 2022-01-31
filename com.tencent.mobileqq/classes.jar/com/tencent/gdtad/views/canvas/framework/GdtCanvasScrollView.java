@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.ScrollView;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.mobileqq.utils.ViewUtils;
-import qmf;
-import qmg;
-import qmh;
-import qmi;
+import qqw;
+import qqx;
+import qqy;
+import qqz;
 
 public class GdtCanvasScrollView
   extends ScrollView
@@ -47,8 +47,8 @@ public class GdtCanvasScrollView
   {
     setVerticalScrollBarEnabled(false);
     setVerticalFadingEdgeEnabled(false);
-    this.jdField_a_of_type_JavaLangRunnable = new qmf(this);
-    setOnTouchListener(new qmg(this));
+    this.jdField_a_of_type_JavaLangRunnable = new qqw(this);
+    setOnTouchListener(new qqx(this));
   }
   
   private boolean a(MotionEvent paramMotionEvent)
@@ -63,7 +63,7 @@ public class GdtCanvasScrollView
       if ((this.c - i > this.jdField_a_of_type_Int) && (paramMotionEvent != null) && (paramMotionEvent.getMeasuredHeight() <= this.d + getHeight() + (this.e - i)) && (!this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_Boolean = true;
-        post(new qmh(this));
+        post(new qqy(this));
         if (this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener != null) {
           this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener.a();
         }
@@ -75,7 +75,7 @@ public class GdtCanvasScrollView
           break;
         }
         this.jdField_a_of_type_Boolean = true;
-        post(new qmi(this));
+        post(new qqz(this));
       } while (this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener == null);
       this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener.b();
       return true;

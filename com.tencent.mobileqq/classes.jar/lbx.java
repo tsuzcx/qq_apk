@@ -1,13 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public class lbx
-  implements Runnable
+public final class lbx
+  implements WXShareHelper.WXShareListener
 {
-  public lbx(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public lbx(String paramString) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    ReadInJoyBaseDeliverActivity.a(this.a);
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435319);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      QRUtils.a(2, 2131435318);
+    }
   }
 }
 

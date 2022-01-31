@@ -21,9 +21,9 @@ import com.tencent.util.LRULinkedHashMap;
 import java.util.Iterator;
 import java.util.Set;
 import org.json.JSONObject;
-import yuv;
-import yuw;
-import yux;
+import zbn;
+import zbo;
+import zbp;
 
 public class ApolloWebDataHandler
 {
@@ -72,7 +72,7 @@ public class ApolloWebDataHandler
       QLog.d("apollo_client_ApolloWebDataHandler", 2, "apollo_client initInAsyncThread isInstanceCreated():" + a());
     }
     if (!a()) {
-      ThreadManager.postImmediately(new yuv(), null, true);
+      ThreadManager.postImmediately(new zbn(), null, true);
     }
   }
   
@@ -120,26 +120,26 @@ public class ApolloWebDataHandler
         return null;
       }
       paramString2 = ApolloSSOConfig.a(paramString2, paramString1);
-      yux localyux = (yux)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString2);
-      if (localyux != null) {
-        if (yux.a(localyux))
+      zbp localzbp = (zbp)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString2);
+      if (localzbp != null) {
+        if (zbp.a(localzbp))
         {
-          if (localyux.a(paramString1))
+          if (localzbp.a(paramString1))
           {
             if (QLog.isColorLevel()) {
-              QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource, webSSOTask.isValid true, webSSOTask=" + localyux);
+              QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource, webSSOTask.isValid true, webSSOTask=" + localzbp);
             }
-            if (yux.a(localyux) != null)
+            if (zbp.a(localzbp) != null)
             {
-              yux.a(localyux).c = System.currentTimeMillis();
-              yux.a(localyux).d = System.currentTimeMillis();
+              zbp.a(localzbp).c = System.currentTimeMillis();
+              zbp.a(localzbp).d = System.currentTimeMillis();
             }
-            paramString1 = new WebResourceResponse("text/plain", "utf-8", ApolloClientUtil.a(yux.a(localyux).toString()));
+            paramString1 = new WebResourceResponse("text/plain", "utf-8", ApolloClientUtil.a(zbp.a(localzbp).toString()));
             this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(paramString2);
             return paramString1;
           }
           if (QLog.isColorLevel()) {
-            QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource, webSSOTask.isValid false,webSSOTask:" + localyux);
+            QLog.d("apollo_client_ApolloWebDataHandler", 2, "getApolloCmdResource, webSSOTask.isValid false,webSSOTask:" + localzbp);
           }
           this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(paramString2);
         }
@@ -202,24 +202,24 @@ public class ApolloWebDataHandler
     {
       Object localObject2 = (String)((Iterator)localObject1).next();
       String str = ApolloSSOConfig.a(paramString1, (String)localObject2);
-      yux localyux = (yux)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str);
-      if ((localyux != null) && (localyux.a((String)localObject2)))
+      zbp localzbp = (zbp)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str);
+      if ((localzbp != null) && (localzbp.a((String)localObject2)))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " mPreloadSSOCmds.has WebSSOTask:" + localyux);
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " mPreloadSSOCmds.has WebSSOTask:" + localzbp);
         }
       }
       else
       {
         this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(str);
-        localyux = new yux(paramApolloWebStatistics, str, (String)localObject2);
-        this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str, localyux);
+        localzbp = new zbp(paramApolloWebStatistics, str, (String)localObject2);
+        this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(str, localzbp);
         localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloSSOConfig.a(paramString2, paramString1, (String)localObject2, paramAppInterface);
         if (QLog.isColorLevel()) {
           QLog.d("apollo_client_ApolloWebDataHandler", 2, "preloadSSOCmd, apolloClientId:" + paramString1 + " create new WebSSOTask, requestJson" + localObject2);
         }
         if (localObject2 != null) {
-          localyux.a(paramContext, paramString2, (JSONObject)localObject2, paramAppInterface);
+          localzbp.a(paramContext, paramString2, (JSONObject)localObject2, paramAppInterface);
         }
       }
     }
@@ -335,22 +335,22 @@ public class ApolloWebDataHandler
           break label739;
         }
         str3 = ApolloSSOConfig.a(str3, str2);
-        paramString2 = (yux)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str3);
+        paramString2 = (zbp)this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(str3);
         if (paramString2 != null)
         {
-          if (yux.a(paramString2))
+          if (zbp.a(paramString2))
           {
             if (paramString2.a(str2))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("apollo_client_ApolloWebDataHandler", 2, "doInterceptApolloCmd, webSSOTask.isValid true, mResultJson=" + paramString2);
               }
-              if (yux.a(paramString2) != null)
+              if (zbp.a(paramString2) != null)
               {
-                yux.a(paramString2).c = System.currentTimeMillis();
-                yux.a(paramString2).d = System.currentTimeMillis();
+                zbp.a(paramString2).c = System.currentTimeMillis();
+                zbp.a(paramString2).d = System.currentTimeMillis();
               }
-              paramWebViewPlugin.callJs(str1, new String[] { yux.a(paramString2).toString() });
+              paramWebViewPlugin.callJs(str1, new String[] { zbp.a(paramString2).toString() });
               this.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.remove(str3);
               return true;
             }
@@ -366,8 +366,8 @@ public class ApolloWebDataHandler
             {
               paramString2 = localApolloUrlInterceptor.a();
               paramString2.c = System.currentTimeMillis();
-              paramString2 = new yux(paramString2, str3, str2);
-              paramString2.a(new yuw(this, str1, paramWebViewPlugin));
+              paramString2 = new zbp(paramString2, str3, str2);
+              paramString2.a(new zbo(this, str1, paramWebViewPlugin));
               if (paramWebViewPlugin.mRuntime != null) {
                 paramString2.a(paramWebViewPlugin.mRuntime.a(), paramString1, localJSONObject, paramAppInterface);
               }
@@ -377,10 +377,10 @@ public class ApolloWebDataHandler
           }
           else
           {
-            if (yux.a(paramString2) != null) {
-              yux.a(paramString2).c = System.currentTimeMillis();
+            if (zbp.a(paramString2) != null) {
+              zbp.a(paramString2).c = System.currentTimeMillis();
             }
-            paramString2.a(new yuw(this, str1, paramWebViewPlugin));
+            paramString2.a(new zbo(this, str1, paramWebViewPlugin));
             if (!QLog.isColorLevel()) {
               break label729;
             }

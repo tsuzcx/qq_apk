@@ -1,37 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.TabView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.utils.SensorReport;
 
 public class kjd
-  implements View.OnClickListener
 {
-  public kjd(PoiMapActivity paramPoiMapActivity) {}
+  public int a;
+  public long a;
+  public long b = 0L;
+  public long c = this.jdField_a_of_type_ComTencentAvUtilsSensorReport.jdField_a_of_type_Int;
   
-  public void onClick(View paramView)
+  public kjd(SensorReport paramSensorReport)
   {
-    if ((paramView instanceof PoiMapActivity.TabView))
-    {
-      this.a.a(((PoiMapActivity.TabView)paramView).a);
-      this.a.i();
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
-      }
-      if (PoiMapActivity.a(this.a)) {
-        this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kjd
  * JD-Core Version:    0.7.0.1
  */

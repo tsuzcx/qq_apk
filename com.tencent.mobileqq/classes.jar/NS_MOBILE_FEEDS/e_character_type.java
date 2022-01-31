@@ -7,11 +7,13 @@ public final class e_character_type
 {
   public static final int _AdvBarStyle = 12;
   public static final int _AdvButtonAnimation = 13;
+  public static final int _AdvButtonStyle = 22;
   public static final int _AdvCardStyle = 10;
   public static final int _AdvClickReportNewProtocol = 11;
   public static final int _AdvContainerPicStyle = 2;
   public static final int _AdvContainerThreeGridStyle = 19;
   public static final int _AdvJumpVideoFloatLayer = 20;
+  public static final int _AdvOfflineResourcePreload = 23;
   public static final int _AdvPopStyle = 21;
   public static final int _AppAdvFilterIsInstalled = 3;
   public static final int _BrandUgcAdvFeeds = 8;

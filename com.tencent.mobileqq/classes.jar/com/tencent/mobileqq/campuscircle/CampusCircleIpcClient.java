@@ -6,6 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
+import java.util.List;
 
 public class CampusCircleIpcClient
   implements EIPCResultCallback
@@ -177,6 +178,56 @@ public class CampusCircleIpcClient
     finally {}
   }
   
+  public Object[] a(String paramString)
+  {
+    label241:
+    for (;;)
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("CampusCircleIpcClient", 2, "getTroopMembers " + paramString);
+        }
+        Object localObject1 = new Bundle();
+        ((Bundle)localObject1).putString("troopUin", paramString);
+        localObject1 = QIPCClientHelper.getInstance().getClient().callServer("CampusCircleIpcServer_Model", "action_confess_get_troop_members", (Bundle)localObject1);
+        if ((localObject1 != null) && (((EIPCResult)localObject1).code == 0))
+        {
+          Object localObject2 = ((EIPCResult)localObject1).data;
+          if (localObject2 != null)
+          {
+            try
+            {
+              localObject2 = (List)((EIPCResult)localObject1).data.getSerializable("troopUin");
+              boolean bool1 = ((EIPCResult)localObject1).data.getBoolean("isAdmin", false);
+              boolean bool2 = ((EIPCResult)localObject1).data.getBoolean("enableMemInvite", false);
+              if (QLog.isColorLevel()) {
+                QLog.i("CampusCircleIpcClient", 2, String.format("getTroopMembers troopUin:%s isAdmin:%s enableInvite:%s", new Object[] { paramString, Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+              }
+              paramString = new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), localObject2 };
+              return paramString;
+            }
+            catch (Exception paramString)
+            {
+              if (!QLog.isColorLevel()) {
+                break label241;
+              }
+            }
+            QLog.i("CampusCircleIpcClient", 2, "getTroopMembers err", paramString);
+            break label241;
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("CampusCircleIpcClient", 2, "getTroopMembers err");
+        }
+        paramString = null;
+        continue;
+        paramString = null;
+      }
+      finally {}
+    }
+  }
+  
   /* Error */
   public Bundle b()
   {
@@ -189,7 +240,7 @@ public class CampusCircleIpcClient
     //   7: ifeq +11 -> 18
     //   10: ldc 26
     //   12: iconst_2
-    //   13: ldc 117
+    //   13: ldc 166
     //   15: invokestatic 32	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   18: new 34	android/os/Bundle
     //   21: dup
@@ -198,7 +249,7 @@ public class CampusCircleIpcClient
     //   26: invokestatic 41	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
     //   29: invokevirtual 45	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
     //   32: ldc 47
-    //   34: ldc 119
+    //   34: ldc 168
     //   36: aload_3
     //   37: invokevirtual 55	eipc/EIPCClient:callServer	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Leipc/EIPCResult;
     //   40: astore_3
@@ -207,7 +258,7 @@ public class CampusCircleIpcClient
     //   47: new 82	java/lang/StringBuilder
     //   50: dup
     //   51: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   54: ldc 121
+    //   54: ldc 170
     //   56: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: astore 4
     //   61: aload_3
@@ -216,8 +267,8 @@ public class CampusCircleIpcClient
     //   66: istore_1
     //   67: aload 4
     //   69: iload_1
-    //   70: invokevirtual 124	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   73: ldc 126
+    //   70: invokevirtual 173	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   73: ldc 175
     //   75: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: astore 4
     //   80: aload_3
@@ -231,9 +282,9 @@ public class CampusCircleIpcClient
     //   95: iconst_4
     //   96: aload 4
     //   98: iload_1
-    //   99: invokevirtual 124	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   99: invokevirtual 173	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   102: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   105: invokestatic 129	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   105: invokestatic 158	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   108: aload_3
     //   109: ifnull +36 -> 145
     //   112: aload_3

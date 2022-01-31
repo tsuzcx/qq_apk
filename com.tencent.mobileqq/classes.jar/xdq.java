@@ -1,15 +1,14 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbLogic.QwTextAdapter;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
 
 public class xdq
-  extends SendHbLogic.QwTextAdapter
+  implements Runnable
 {
-  public xdq(QzoneHbFragment paramQzoneHbFragment) {}
+  public xdq(PhotoListActivity.QueryPhotoTask paramQueryPhotoTask) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
+    this.a.a.d();
   }
 }
 

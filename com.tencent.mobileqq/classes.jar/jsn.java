@@ -1,18 +1,27 @@
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import android.graphics.Bitmap;
+import com.tencent.av.gaudio.BaseGaInvite.GetGaFaceRunnable.OnGetSink;
+import com.tencent.av.ui.BaseInviteFloatBarUICtr;
+import com.tencent.av.ui.VideoInviteFloatBar;
 
 public class jsn
-  implements Runnable
+  implements BaseGaInvite.GetGaFaceRunnable.OnGetSink
 {
-  public jsn(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jsn(BaseInviteFloatBarUICtr paramBaseInviteFloatBarUICtr) {}
   
-  public void run()
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    this.a.h(true);
+    boolean bool = false;
+    if (this.a.a != null)
+    {
+      this.a.a.a(paramBitmap);
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jsn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajqh;
-import ajqi;
-import ajqj;
-import ajqk;
-import ajql;
-import ajqm;
-import ajqn;
-import ajqo;
-import ajqp;
-import ajqq;
+import ajxu;
+import ajxv;
+import ajxw;
+import ajxx;
+import ajxy;
+import ajxz;
+import ajya;
+import ajyb;
+import ajyc;
+import ajyd;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -108,7 +108,7 @@ public class TroopRobotManager
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_c_of_type_JavaUtilList.add("你好$ROBOTNICK$");
     this.jdField_d_of_type_JavaUtilList.add("再见$ROBOTNICK$");
-    ThreadManager.post(new ajqh(this), 5, null, true);
+    ThreadManager.post(new ajxu(this), 5, null, true);
   }
   
   public static void a(MessageRecord paramMessageRecord)
@@ -159,7 +159,7 @@ public class TroopRobotManager
     this.jdField_b_of_type_JavaLangString = paramString1;
     this.jdField_c_of_type_JavaLangString = paramString2;
     a(true);
-    b(Long.parseLong(paramMessageRecord.frienduin), paramString3, new ajql(this, paramString3));
+    b(Long.parseLong(paramMessageRecord.frienduin), paramString3, new ajxy(this, paramString3));
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
@@ -176,7 +176,7 @@ public class TroopRobotManager
       paramTextView.setText(paramMessageRecord.getExtInfoFromExtStr("robot_short_link_description"));
       paramTextView.append("\r\n");
       SpannableString localSpannableString = new SpannableString("更多详情");
-      localSpannableString.setSpan(new ajqi(str, paramMessageRecord), 0, "更多详情".length(), 33);
+      localSpannableString.setSpan(new ajxv(str, paramMessageRecord), 0, "更多详情".length(), 33);
       paramTextView.append(localSpannableString);
       bool = true;
     }
@@ -398,7 +398,7 @@ public class TroopRobotManager
     localReqBody.cmd.set(1, true);
     localReqBody.version.set(paramInt, true);
     localReqBody.group_id.set(paramLong, true);
-    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajqo(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
+    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajyb(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
   }
   
   public void a(long paramLong1, long paramLong2)
@@ -417,7 +417,7 @@ public class TroopRobotManager
     localReqBody.cmd.set(3, true);
     localReqBody.group_id.set(paramLong, true);
     localReqBody.keyword.set(paramString, true);
-    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajqp(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
+    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajyc(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
   }
   
   public void a(Context paramContext, BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, EditText paramEditText, SessionInfo paramSessionInfo, ChatMessage paramChatMessage, String paramString)
@@ -513,7 +513,7 @@ public class TroopRobotManager
     if (this.jdField_c_of_type_JavaLangString != null)
     {
       if (!TextUtils.isEmpty(paramString1)) {
-        b(Long.parseLong(paramString1), paramString2, new ajqk(this, paramString2));
+        b(Long.parseLong(paramString1), paramString2, new ajxx(this, paramString2));
       }
       this.jdField_b_of_type_JavaLangString = null;
       this.jdField_c_of_type_JavaLangString = null;
@@ -531,7 +531,7 @@ public class TroopRobotManager
   
   public void a(String paramString1, String paramString2, cmd0x934.RspBody paramRspBody)
   {
-    ThreadManager.post(new ajqn(this, paramString1, paramString2, paramRspBody), 5, null, true);
+    ThreadManager.post(new ajya(this, paramString1, paramString2, paramRspBody), 5, null, true);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -571,7 +571,7 @@ public class TroopRobotManager
   public void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidOsHandler.post(new ajqj(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ajxw(this));
   }
   
   public boolean a()
@@ -842,12 +842,12 @@ public class TroopRobotManager
     localReqBody.cmd.set(2, true);
     localReqBody.group_id.set(paramLong, true);
     localReqBody.keyword.set(paramString, true);
-    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajqq(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
+    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajyd(this, paramCallback), localReqBody.toByteArray(), "OidbSvc.0x934_1", 2356, 1, new Bundle(), 12000L);
   }
   
   public void b(oidb_0x496.Robot paramRobot)
   {
-    ThreadManager.post(new ajqm(this, paramRobot), 5, null, true);
+    ThreadManager.post(new ajxz(this, paramRobot), 5, null, true);
   }
   
   public boolean b(String paramString)
@@ -909,7 +909,7 @@ public class TroopRobotManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRobotManager
  * JD-Core Version:    0.7.0.1
  */

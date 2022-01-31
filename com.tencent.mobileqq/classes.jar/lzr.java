@@ -1,60 +1,42 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector.OnOrientationChangedListener;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
+import mqq.app.AppRuntime;
 
 public class lzr
-  extends OrientationEventListener
+  implements UserOperationModule.Ox978RespCallBack
 {
-  public lzr(OrientationDetector paramOrientationDetector, Context paramContext, OrientationDetector.OnOrientationChangedListener paramOnOrientationChangedListener)
-  {
-    super(paramContext);
-  }
+  public lzr(ComponentHeaderUgc paramComponentHeaderUgc, AppRuntime paramAppRuntime, ArticleInfo paramArticleInfo) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (!OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, paramInt)) {}
-    label136:
-    for (;;)
+    QLog.d("ComponentHeaderUgc", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
+    if ((paramBoolean) && (paramInt == 2))
     {
+      ReadInJoyHelper.d(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = paramInt;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText("已关注");
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = 2;
+      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      ReadInJoyLogicEngine.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a, paramInt);
+      ReadInJoyLogicEngineEventDispatcher.a().b();
       return;
-      int j = OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector);
-      int i;
-      if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
-        i = 1;
-      }
-      for (;;)
-      {
-        if (i == OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector)) {
-          break label136;
-        }
-        OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, i);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector$OnOrientationChangedListener == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector$OnOrientationChangedListener.a(i);
-        return;
-        if ((paramInt > 70) && (paramInt <= 110))
-        {
-          i = 8;
-        }
-        else if ((paramInt > 150) && (paramInt <= 210))
-        {
-          i = 9;
-        }
-        else
-        {
-          i = j;
-          if (paramInt > 250)
-          {
-            i = j;
-            if (paramInt <= 290) {
-              i = 0;
-            }
-          }
-        }
-      }
     }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText("关注");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(true);
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), "关注失败", 0).a();
   }
 }
 

@@ -1,79 +1,59 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.annotation.TargetApi;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.BaseMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BannerAdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.JumpAdUtils;
-import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
 
+@TargetApi(11)
 public class mne
-  extends BaseItemViewHolder
-  implements View.OnClickListener
+  extends BaseMovementMethod
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private TextView b;
-  private TextView c;
+  private static mne a;
   
-  public mne(View paramView, BaseData paramBaseData)
+  public static mne a()
   {
-    super(paramView, paramBaseData);
-    paramView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367103));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361926));
-    this.b = ((TextView)paramView.findViewById(2131367106));
-    this.c = ((TextView)paramView.findViewById(2131367107));
+    if (a == null) {
+      a = new mne();
+    }
+    return a;
   }
   
-  private void a()
+  public void initialize(TextView paramTextView, Spannable paramSpannable)
   {
-    BannerAdData localBannerAdData = (BannerAdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-    if (localBannerAdData.jdField_b_of_type_Int == 12)
+    Selection.removeSelection(paramSpannable);
+  }
+  
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getActionMasked();
+    if ((i == 1) || (i == 0))
     {
-      if (TextUtils.isEmpty(localBannerAdData.h)) {}
-      while (!NativeAdUtils.a(this.jdField_a_of_type_AndroidViewView.getContext(), localBannerAdData.h)) {
-        return;
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      paramMotionEvent = paramTextView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramMotionEvent = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (paramMotionEvent.length > 0)
+      {
+        if (i == 1) {
+          paramMotionEvent[0].onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(paramMotionEvent[0]), paramSpannable.getSpanEnd(paramMotionEvent[0]));
+        }
       }
-      this.c.setText("立即打开");
-      return;
+      Selection.removeSelection(paramSpannable);
     }
-    this.c.setText("查看详情");
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    switch (paramBaseData2.d)
-    {
-    default: 
-      throw new IllegalArgumentException();
-    }
-    paramBaseData1 = (BannerAdData)paramBaseData2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.jdField_b_of_type_JavaLangString);
-    this.b.setText(paramBaseData1.i);
-    paramBaseData2 = URLDrawable.URLDrawableOptions.obtain();
-    paramBaseData2.mLoadingDrawable = new ColorDrawable(-2565414);
-    paramBaseData2.mPlayGifImage = true;
-    paramBaseData2.mMemoryCacheKeySuffix = "fast_web";
-    paramBaseData1 = URLDrawable.getDrawable(PubAccountHttpDownloader.a(paramBaseData1.d, 4), paramBaseData2);
-    if ((paramBaseData1 != null) && (paramBaseData1.getStatus() == 2)) {
-      paramBaseData1.restartDownload();
-    }
-    a();
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBaseData1);
-  }
-  
-  public void onClick(View paramView)
-  {
-    JumpAdUtils.a((Activity)paramView.getContext(), (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    return false;
   }
 }
 

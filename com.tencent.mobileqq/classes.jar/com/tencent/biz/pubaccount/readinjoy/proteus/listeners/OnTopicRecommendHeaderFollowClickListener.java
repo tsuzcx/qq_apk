@@ -15,10 +15,10 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
 import java.util.ArrayList;
-import lsu;
-import lsv;
-import lsw;
-import lsy;
+import lvy;
+import lvz;
+import lwa;
+import lwc;
 import mqq.app.AppRuntime;
 
 public class OnTopicRecommendHeaderFollowClickListener
@@ -50,14 +50,14 @@ public class OnTopicRecommendHeaderFollowClickListener
     {
       localObject = ((AppRuntime)localObject).getAccount();
       if (paramBoolean) {
-        ReadInJoyLogicEngine.a().a().a((String)localObject, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.a), true, new lsw(this), 3);
+        ReadInJoyLogicEngine.a().a().a((String)localObject, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.a), true, new lwa(this), 3);
       }
     }
     else
     {
       return;
     }
-    ReadInJoyLogicEngine.a().a().a((String)localObject, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.a), false, new lsy(this), 3);
+    ReadInJoyLogicEngine.a().a().a((String)localObject, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.a), false, new lwc(this), 3);
   }
   
   private void b()
@@ -80,10 +80,10 @@ public class OnTopicRecommendHeaderFollowClickListener
   protected void a()
   {
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131430019, 3);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new lsu(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new lsv(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131430021, 3);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new lvy(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new lvz(this));
     if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
     }

@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler;
+import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.Callback;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class acgv
   implements Runnable
 {
-  public acgv(StickerGestureDetector paramStickerGestureDetector) {}
+  public acgv(ChirpSoHandler paramChirpSoHandler) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout);
+    synchronized (ChirpSoHandler.a(this.a))
+    {
+      Iterator localIterator = ChirpSoHandler.a(this.a).iterator();
+      if (localIterator.hasNext()) {
+        ((ChirpSoHandler.Callback)localIterator.next()).k();
+      }
+    }
   }
 }
 

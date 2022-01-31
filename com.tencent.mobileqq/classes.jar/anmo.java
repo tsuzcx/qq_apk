@@ -1,19 +1,21 @@
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import cooperation.smartdevice.SmartDevicePluginLoader;
 
 public class anmo
-  implements Runnable
+  implements DialogInterface.OnShowListener
 {
-  public anmo(HummingActivity paramHummingActivity, String paramString) {}
+  public anmo(SmartDevicePluginLoader paramSmartDevicePluginLoader, QQProgressDialog paramQQProgressDialog) {}
   
-  public void run()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    new File(this.jdField_a_of_type_JavaLangString).delete();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmo
  * JD-Core Version:    0.7.0.1
  */

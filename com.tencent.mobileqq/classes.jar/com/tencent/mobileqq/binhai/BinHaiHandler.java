@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.binhai;
 
-import abks;
+import abrt;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -450,7 +450,7 @@ public class BinHaiHandler
       QLog.d("BinHaiHandler", 2, "reqJoinActivity, picId=" + paramString);
     }
     jdField_a_of_type_TencentImOidbCmd0x98bOidb_0x98b$LBSInfo = null;
-    SosoInterface.a(new abks(this, 3, true, true, 1000L, true, false, "binhai", paramString));
+    SosoInterface.a(new abrt(this, 3, true, true, 1000L, true, false, "binhai", paramString));
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

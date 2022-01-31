@@ -3,7 +3,7 @@ package com.tencent.component.media.image;
 import com.tencent.component.media.ImageManagerEnv;
 import com.tencent.component.media.utils.LruCache;
 import java.util.concurrent.ConcurrentHashMap;
-import phi;
+import pma;
 
 public class ImageTaskTracer
 {
@@ -355,7 +355,7 @@ public class ImageTaskTracer
       ImageManagerEnv.g().reportGetImageCacheToMM(jdField_f_of_type_Int);
       return;
     }
-    if (phi.a().a(paramImageKey.hashCodeEx()))
+    if (pma.a().a(paramImageKey.hashCodeEx()))
     {
       ImageManagerEnv.g().reportGetImageCacheToMM(jdField_g_of_type_Int);
       return;

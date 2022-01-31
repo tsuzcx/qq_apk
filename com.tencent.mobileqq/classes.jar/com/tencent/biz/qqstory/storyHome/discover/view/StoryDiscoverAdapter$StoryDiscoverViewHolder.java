@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import nwl;
+import oba;
 
 public class StoryDiscoverAdapter$StoryDiscoverViewHolder
   extends RecyclerView.ViewHolder
@@ -23,16 +23,16 @@ public class StoryDiscoverAdapter$StoryDiscoverViewHolder
   public StoryDiscoverAdapter$StoryDiscoverViewHolder(View paramView, StoryDiscoverAdapter.OnHolderItemClickListener paramOnHolderItemClickListener)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371807));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371808));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371809));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371811));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371812));
-    this.d = ((TextView)paramView.findViewById(2131371813));
-    this.e = ((TextView)paramView.findViewById(2131371814));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371815));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371806));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371807));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371808));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371810));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371811));
+    this.d = ((TextView)paramView.findViewById(2131371812));
+    this.e = ((TextView)paramView.findViewById(2131371813));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371814));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener = paramOnHolderItemClickListener;
-    paramView.setOnClickListener(new nwl(this, paramView));
+    paramView.setOnClickListener(new oba(this, paramView));
   }
 }
 

@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.app.ShakeListener;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
 
-public final class aeml
-  implements Runnable
+public class aeml
+  extends ShakeListener
 {
-  public aeml(String paramString) {}
-  
-  public void run()
-  {
-    NearbyProcessMonitor.b(this.a);
-    NearbyProcessMonitor.a(this.a);
-    NearbyProcessMonitor.a += 1;
-    NearbySPUtil.a(this.a);
-    NearbyProcessMonitor.a();
-  }
+  public aeml(MagicfaceActionManager paramMagicfaceActionManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeml
  * JD-Core Version:    0.7.0.1
  */

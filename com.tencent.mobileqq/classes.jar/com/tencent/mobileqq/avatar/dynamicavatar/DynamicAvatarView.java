@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abka;
-import abkb;
+import abrb;
+import abrc;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
@@ -29,9 +29,9 @@ public class DynamicAvatarView
   extends URLTextImageView
 {
   public int a;
-  private VideoDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener = new abkb(this);
+  private VideoDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener = new abrc(this);
   public DynamicFaceDrawable a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new abka(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new abrb(this);
   public String a;
   public boolean a;
   public String b;

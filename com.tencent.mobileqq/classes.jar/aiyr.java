@@ -1,62 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import java.util.ArrayList;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemBar;
 
 public class aiyr
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aiyr(TroopBarReplyActivity paramTroopBarReplyActivity, int paramInt) {}
+  public aiyr(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      return;
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.a(5, 0);
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130844610);
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.a.getString(2131430345));
+    if (this.a.b != null) {
+      this.a.b.requestLayout();
     }
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 4: 
-    case 6: 
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.h();
-      return;
-    case 2: 
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiys(this), 200L);
-      return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.b(4);
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.g();
-      return;
-    case 7: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.b(3);
-      return;
-    }
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiyt(this), 200L);
   }
 }
 

@@ -1,17 +1,26 @@
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVVideoCtrl;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.ApolloPushManager;
+import com.tencent.mobileqq.apollo.ApolloPushManager.OnActionPushListener;
+import com.tencent.mobileqq.data.ApolloActionPush;
+import com.tencent.qphone.base.util.QLog;
 
 public class yqz
-  implements Runnable
+  implements ApolloPushManager.OnActionPushListener
 {
-  public yqz(CmGameAvHandler paramCmGameAvHandler, int paramInt, long paramLong) {}
+  public yqz(ApolloPushManager paramApolloPushManager) {}
   
-  public void run()
+  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
   {
-    AVManager.a(BaseApplicationImpl.getContext()).a().getVideoCtrl().switchCamera(this.jdField_a_of_type_Int, new yra(this));
+    if ((ApolloPushManager.a(this.a) != null) && (paramApolloActionPush != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
+      }
+      if ((ApolloPushManager.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == ApolloPushManager.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(ApolloPushManager.a(this.a).jdField_a_of_type_JavaLangString)) && (ApolloPushManager.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
+        this.a.a(paramApolloActionPush);
+      }
+    }
   }
 }
 

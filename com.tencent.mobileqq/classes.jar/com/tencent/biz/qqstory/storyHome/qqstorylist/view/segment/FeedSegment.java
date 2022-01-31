@@ -142,20 +142,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
-import oab;
-import oac;
-import oad;
-import oae;
-import oah;
-import oai;
-import oaj;
-import oak;
-import oal;
-import oam;
-import oan;
-import oao;
-import oap;
-import oaq;
+import oeq;
+import oer;
+import oes;
+import oet;
+import oew;
+import oex;
+import oey;
+import oez;
+import ofa;
+import ofb;
+import ofc;
+import ofd;
+import ofe;
+import off;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -176,25 +176,25 @@ public class FeedSegment
   private StoryHomeFeed jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed;
   protected AutoPlayManager a;
   private QQStoryAutoPlayView jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView;
-  ChildViewClickListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new oaj(this);
+  ChildViewClickListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new oey(this);
   private IMyStoryListView jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView;
   private FeedSegment.DeleteShareGroupMemberEventReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment$DeleteShareGroupMemberEventReceiver;
   private FeedSegment.GetUserInfoReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment$GetUserInfoReceiver;
   private FeedSegment.GetVideoBasicInfoListReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment$GetVideoBasicInfoListReceiver;
   private FeedSegment.StoryVideoDownloadedReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment$StoryVideoDownloadedReceiver;
   private FeedSegment.TroopNickNameUpdateEventReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment$TroopNickNameUpdateEventReceiver;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new oaq(this);
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new off(this);
   private List jdField_a_of_type_JavaUtilList;
   protected Map a;
   protected AtomicBoolean a;
   private final int jdField_b_of_type_Int;
-  ChildViewClickListener jdField_b_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new oak(this);
+  ChildViewClickListener jdField_b_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new oez(this);
   private boolean jdField_b_of_type_Boolean = true;
   private final int jdField_c_of_type_Int;
-  ChildViewClickListener jdField_c_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new oal(this);
+  ChildViewClickListener jdField_c_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new ofa(this);
   private boolean jdField_c_of_type_Boolean;
   private int jdField_d_of_type_Int = -1;
-  ChildViewClickListener jdField_d_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new oam(this);
+  ChildViewClickListener jdField_d_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new ofb(this);
   private boolean jdField_d_of_type_Boolean;
   private int jdField_e_of_type_Int = -1;
   private boolean jdField_e_of_type_Boolean;
@@ -239,8 +239,8 @@ public class FeedSegment
     for (;;)
     {
       this.jdField_f_of_type_Boolean = false;
-      this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131560277);
-      this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131560280);
+      this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131560278);
+      this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131560281);
       return;
       if (this.jdField_a_of_type_Int == 11) {
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager.a(2);
@@ -279,8 +279,8 @@ public class FeedSegment
   
   private View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup, GeneralRecommendHomeFeed paramGeneralRecommendHomeFeed)
   {
-    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371747);
-    FrameLayout localFrameLayout = (FrameLayout)paramBaseViewHolder.a(2131371746);
+    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371746);
+    FrameLayout localFrameLayout = (FrameLayout)paramBaseViewHolder.a(2131371745);
     b(paramBaseViewHolder);
     a(paramInt, paramBaseViewHolder, this.jdField_d_of_type_Boolean);
     a(paramInt, paramBaseViewHolder, paramGeneralRecommendHomeFeed, paramGeneralRecommendHomeFeed.a().getOwner());
@@ -289,7 +289,7 @@ public class FeedSegment
     a(paramInt, paramBaseViewHolder);
     paramInt = -3355444;
     if (this.jdField_d_of_type_Boolean) {
-      paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494274);
+      paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494280);
     }
     paramViewGroup.setBackgroundColor(paramInt);
     paramBaseViewHolder.a("feed_id", paramGeneralRecommendHomeFeed.a().feedId);
@@ -306,7 +306,7 @@ public class FeedSegment
   
   private View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup, HotRecommendHomeFeed paramHotRecommendHomeFeed)
   {
-    paramViewGroup = (VideoListLayout)paramBaseViewHolder.a(2131371745);
+    paramViewGroup = (VideoListLayout)paramBaseViewHolder.a(2131371744);
     Object localObject1 = paramViewGroup.a();
     Object localObject2 = paramViewGroup.b();
     TextView localTextView = paramViewGroup.c();
@@ -359,7 +359,7 @@ public class FeedSegment
       {
         ((StoryHomeHorizontalListView)localObject1).setLoadMoreComplete(bool);
         if (j > paramInt) {
-          ((StoryHomeHorizontalListView)localObject1).post(new oan(this, (StoryHomeHorizontalListView)localObject1));
+          ((StoryHomeHorizontalListView)localObject1).post(new ofc(this, (StoryHomeHorizontalListView)localObject1));
         }
         if (paramInt > j) {
           ((StoryHomeHorizontalListView)localObject1).a();
@@ -374,7 +374,7 @@ public class FeedSegment
   
   private View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup, TagHomeFeed paramTagHomeFeed)
   {
-    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371747);
+    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371746);
     a(paramInt, paramBaseViewHolder, this.jdField_d_of_type_Boolean);
     a(paramBaseViewHolder, paramTagHomeFeed);
     a(paramInt, paramBaseViewHolder);
@@ -382,7 +382,7 @@ public class FeedSegment
     a(null, paramBaseViewHolder);
     paramInt = -3355444;
     if (this.jdField_d_of_type_Boolean) {
-      paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494274);
+      paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494280);
     }
     paramViewGroup.setBackgroundColor(paramInt);
     StoryReportor.c("ID_exp", "IDexp_topicrecommend", 0, 0, new String[] { "", ((TagFeedItem)paramTagHomeFeed.a()).feedId });
@@ -391,15 +391,15 @@ public class FeedSegment
   
   private View a(int paramInt, BaseViewHolder paramBaseViewHolder, BannerHomeFeed paramBannerHomeFeed)
   {
-    Object localObject = (QQStoryOwnerInfoView)paramBaseViewHolder.a(2131371656);
+    Object localObject = (QQStoryOwnerInfoView)paramBaseViewHolder.a(2131371657);
     TextView localTextView1 = ((QQStoryOwnerInfoView)localObject).a();
     TextView localTextView2 = ((QQStoryOwnerInfoView)localObject).b();
     TextView localTextView3 = ((QQStoryOwnerInfoView)localObject).c();
-    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131371658);
+    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131371659);
     ImageView localImageView = ((QQStoryOwnerInfoView)localObject).a();
     Button localButton = ((QQStoryOwnerInfoView)localObject).a();
-    RoundCornerImageView localRoundCornerImageView = (RoundCornerImageView)paramBaseViewHolder.a(2131371657);
-    FrameLayout localFrameLayout = (FrameLayout)paramBaseViewHolder.a(2131371659);
+    RoundCornerImageView localRoundCornerImageView = (RoundCornerImageView)paramBaseViewHolder.a(2131371658);
+    FrameLayout localFrameLayout = (FrameLayout)paramBaseViewHolder.a(2131371660);
     StoryQIMBadgeView localStoryQIMBadgeView = ((QQStoryOwnerInfoView)localObject).a();
     StoryUserBadgeView localStoryUserBadgeView = ((QQStoryOwnerInfoView)localObject).a();
     BannerFeedItem localBannerFeedItem = (BannerFeedItem)paramBannerHomeFeed.a();
@@ -521,7 +521,7 @@ public class FeedSegment
   private void a(int paramInt, BaseViewHolder paramBaseViewHolder, VideoListHomeFeed paramVideoListHomeFeed, ShareGroupItem paramShareGroupItem)
   {
     TraceUtils.a("FeedSegment.bindFeedShareGroupInfo");
-    paramBaseViewHolder = (QQStoryOwnerInfoView)paramBaseViewHolder.a(2131371656);
+    paramBaseViewHolder = (QQStoryOwnerInfoView)paramBaseViewHolder.a(2131371657);
     if (paramShareGroupItem == null)
     {
       paramBaseViewHolder.setSubTitle(null);
@@ -530,7 +530,7 @@ public class FeedSegment
       paramBaseViewHolder.setSubTitleSuffix(null);
       paramBaseViewHolder.setButtonTxt(null);
       paramBaseViewHolder.setName(PlayModeUtils.b);
-      paramBaseViewHolder.setAvatar(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843419));
+      paramBaseViewHolder.setAvatar(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843453));
       TraceUtils.a();
       return;
     }
@@ -552,7 +552,7 @@ public class FeedSegment
       if (paramShareGroupItem.getRelationType() != 2) {
         break label295;
       }
-      ((StoryUserBadgeView)localObject1).setImageResource(2130843716);
+      ((StoryUserBadgeView)localObject1).setImageResource(2130843788);
       label199:
       if (paramVideoListHomeFeed.a().type == 2)
       {
@@ -577,10 +577,10 @@ public class FeedSegment
       label295:
       if (paramShareGroupItem.isPublic())
       {
-        ((StoryUserBadgeView)localObject1).setImageResource(2130843718);
+        ((StoryUserBadgeView)localObject1).setImageResource(2130843790);
         break label199;
       }
-      ((StoryUserBadgeView)localObject1).setImageResource(2130843717);
+      ((StoryUserBadgeView)localObject1).setImageResource(2130843789);
       break label199;
       label325:
       a(paramBaseViewHolder, null, false);
@@ -679,9 +679,9 @@ public class FeedSegment
     {
       localActionSheet.a(str, 5);
       localActionSheet.a("不感兴趣", 5);
-      localActionSheet.c(2131433015);
-      localActionSheet.a(new oae(this, localActionSheet, localQQUserUIItem, paramStoryVideoItem, paramHotRecommendFeedItem));
-      localActionSheet.a(new oah(this));
+      localActionSheet.c(2131433029);
+      localActionSheet.a(new oet(this, localActionSheet, localQQUserUIItem, paramStoryVideoItem, paramHotRecommendFeedItem));
+      localActionSheet.a(new oew(this));
       if (!localActionSheet.isShowing()) {
         localActionSheet.show();
       }
@@ -813,37 +813,8 @@ public class FeedSegment
     }
   }
   
-  private void a(VideoListHomeFeed paramVideoListHomeFeed, BaseViewHolder paramBaseViewHolder)
-  {
-    Object localObject = (VideoListLayout)paramBaseViewHolder.a(2131371745);
-    paramBaseViewHolder = ((VideoListLayout)localObject).a();
-    localObject = ((VideoListLayout)localObject).a();
-    if (paramVideoListHomeFeed == null)
-    {
-      paramBaseViewHolder.setVisibility(8);
-      ((TextView)localObject).setVisibility(8);
-      return;
-    }
-    int j = 0;
-    int m;
-    for (int k = 0; j < paramVideoListHomeFeed.a().size(); k = m)
-    {
-      m = k;
-      if (((StoryVideoItem)paramVideoListHomeFeed.a().get(j)).isUploadFail()) {
-        m = k + 1;
-      }
-      j += 1;
-    }
-    if (k > 0)
-    {
-      paramBaseViewHolder.setVisibility(0);
-      ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(StoryApi.a(2131432095, new Object[] { Integer.valueOf(k) }));
-      return;
-    }
-    paramBaseViewHolder.setVisibility(8);
-    ((TextView)localObject).setVisibility(8);
-  }
+  @Deprecated
+  private void a(VideoListHomeFeed paramVideoListHomeFeed, BaseViewHolder paramBaseViewHolder) {}
   
   private void a(VideoListHomeFeed paramVideoListHomeFeed, BaseViewHolder paramBaseViewHolder, FrameLayout paramFrameLayout, ShareGroupItem paramShareGroupItem)
   {
@@ -909,7 +880,7 @@ public class FeedSegment
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     Drawable localDrawable = paramDrawable;
     if (paramDrawable == null) {
-      localDrawable = paramQQStoryAutoPlayView.getResources().getDrawable(2130843554);
+      localDrawable = paramQQStoryAutoPlayView.getResources().getDrawable(2130843587);
     }
     if (TextUtils.isEmpty(paramString1))
     {
@@ -944,7 +915,7 @@ public class FeedSegment
   private void a(BaseViewHolder paramBaseViewHolder, VideoListHomeFeed paramVideoListHomeFeed, boolean paramBoolean)
   {
     TraceUtils.a("FeedSegment.bindVideoList");
-    Object localObject2 = (VideoListLayout)paramBaseViewHolder.a(2131371745);
+    Object localObject2 = (VideoListLayout)paramBaseViewHolder.a(2131371744);
     Object localObject1 = ((VideoListLayout)localObject2).a();
     Object localObject3 = ((VideoListLayout)localObject2).b();
     TextView localTextView = ((VideoListLayout)localObject2).c();
@@ -1008,7 +979,7 @@ public class FeedSegment
         }
         j = k + UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
         ((VideoListLayout)localObject2).setHorizontalViewHeight(j);
-        localStoryHomeHorizontalListView.setDividerWidth(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131560280));
+        localStoryHomeHorizontalListView.setDividerWidth(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131560281));
         ((FeedItemThumbAdapter)localObject1).a(paramVideoListHomeFeed.a(), paramVideoListHomeFeed.a());
         if (StoryDepends.a())
         {
@@ -1064,13 +1035,13 @@ public class FeedSegment
         }
         if (((StoryVideoItem)localObject2).mHadRead == 1)
         {
-          ((TextView)localObject3).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494277));
+          ((TextView)localObject3).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494283));
           label894:
           if (!((StoryVideoItem)localObject2).isUploadFail()) {
             break label1102;
           }
           ((TextView)localObject3).setText("上传失败");
-          ((TextView)localObject3).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494277));
+          ((TextView)localObject3).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494283));
           localTextView.setVisibility(8);
         }
         for (;;)
@@ -1087,7 +1058,7 @@ public class FeedSegment
           }
           StoryReportor.c("video_exp", "exp_topicrecommend", 0, 0, new String[] { "", "", "", ((StoryVideoItem)localObject2).mVid });
           break;
-          ((TextView)localObject3).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494214));
+          ((TextView)localObject3).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494220));
           break label894;
           if (((StoryVideoItem)localObject2).mTimeZoneOffsetMillis != 2147483647L)
           {
@@ -1138,8 +1109,8 @@ public class FeedSegment
     {
       j = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 13.0F);
       int k = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
-      localButton.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494214));
-      localButton.setBackgroundResource(2130843489);
+      localButton.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494220));
+      localButton.setBackgroundResource(2130843523);
       localButton.setPadding(j, k, j, k);
     }
     for (;;)
@@ -1148,7 +1119,7 @@ public class FeedSegment
       UIUtils.a(localButton, j, j, j, j);
       return;
       localButton.setBackgroundDrawable(null);
-      localButton.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493774));
+      localButton.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493779));
       localButton.setPadding(0, 0, 0, 0);
     }
   }
@@ -1282,7 +1253,7 @@ public class FeedSegment
         }
       }
       SLog.d("Q.qqstory.home:FeedSegment", "preloadStoryVideo, startIndex=%d, preloadCount=%d, vidList=%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(k), new JSONArray(localArrayList) });
-      Bosses.get().postJob(new oao(this, localArrayList));
+      Bosses.get().postJob(new ofd(this, localArrayList));
     }
   }
   
@@ -1295,10 +1266,10 @@ public class FeedSegment
   
   private BaseViewHolder c(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970752, paramViewGroup, false));
-    paramViewGroup.a(2131371820).setOnClickListener(paramViewGroup);
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970768, paramViewGroup, false));
+    paramViewGroup.a(2131371819).setOnClickListener(paramViewGroup);
     paramViewGroup.a(this.jdField_d_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener);
-    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramViewGroup.a(2131371754);
+    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramViewGroup.a(2131371753);
     FeedSegment.VideoListTouchEventHandler localVideoListTouchEventHandler = new FeedSegment.VideoListTouchEventHandler(this);
     localStoryHomeHorizontalListView.setOnLoadMoreListener(localVideoListTouchEventHandler);
     localStoryHomeHorizontalListView.setOnOverScrollRightListener(localVideoListTouchEventHandler);
@@ -1311,14 +1282,14 @@ public class FeedSegment
   
   private BaseViewHolder d(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970850, paramViewGroup, false));
-    Object localObject = (QQStoryOwnerInfoView)paramViewGroup.a(2131371656);
-    paramViewGroup.a(2131371741).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131371700).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131372034).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131372031).setOnClickListener(paramViewGroup);
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970867, paramViewGroup, false));
+    Object localObject = (QQStoryOwnerInfoView)paramViewGroup.a(2131371657);
+    paramViewGroup.a(2131371740).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131371698).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131372042).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131372039).setOnClickListener(paramViewGroup);
     paramViewGroup.a(this.jdField_c_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener);
-    localObject = (StoryHomeHorizontalListView)paramViewGroup.a(2131371754);
+    localObject = (StoryHomeHorizontalListView)paramViewGroup.a(2131371753);
     FeedSegment.VideoListTouchEventHandler localVideoListTouchEventHandler = new FeedSegment.VideoListTouchEventHandler(this);
     paramViewGroup.a("general_touch_handler", localVideoListTouchEventHandler);
     paramViewGroup.a("general_adapter", null);
@@ -1409,12 +1380,12 @@ public class FeedSegment
   
   private BaseViewHolder e(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970687, paramViewGroup, false));
-    QQStoryOwnerInfoView localQQStoryOwnerInfoView = (QQStoryOwnerInfoView)paramViewGroup.a(2131371656);
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970704, paramViewGroup, false));
+    QQStoryOwnerInfoView localQQStoryOwnerInfoView = (QQStoryOwnerInfoView)paramViewGroup.a(2131371657);
     localQQStoryOwnerInfoView.setOwnerInfoOnClickListener(paramViewGroup);
     localQQStoryOwnerInfoView.a().setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131371657).setOnClickListener(paramViewGroup);
     paramViewGroup.a(2131371658).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131371659).setOnClickListener(paramViewGroup);
     paramViewGroup.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener);
     paramViewGroup.a("type", "BannerView");
     return paramViewGroup;
@@ -1425,9 +1396,9 @@ public class FeedSegment
     ActionSheet localActionSheet = ActionSheet.a(this.jdField_a_of_type_AndroidContentContext);
     StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt);
     localActionSheet.a("隐藏此条推荐", 5);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new oac(this, localActionSheet, paramInt, localStoryHomeFeed));
-    localActionSheet.a(new oad(this, paramInt));
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new oer(this, localActionSheet, paramInt, localStoryHomeFeed));
+    localActionSheet.a(new oes(this, paramInt));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
     }
@@ -1464,7 +1435,7 @@ public class FeedSegment
     {
       FeedUtils.a(str, paramInt, l);
       localObject = ((StoryHomeFeed)localObject).a().feedId;
-      Bosses.get().postJob(new oai(this, (String)localObject));
+      Bosses.get().postJob(new oex(this, (String)localObject));
       m();
       return;
       l = ((BannerFeedItem)((StoryHomeFeed)localObject).a()).recommendId;
@@ -1584,8 +1555,10 @@ public class FeedSegment
   public View a()
   {
     int j = 0;
-    while (j < this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().size()) {
-      if (((StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(j)).a().type != 1)
+    while (j < this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().size())
+    {
+      localObject1 = (StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(j);
+      if ((((StoryHomeFeed)localObject1).a().type != 1) && (((StoryHomeFeed)localObject1).a().type != 2))
       {
         j += 1;
       }
@@ -1593,15 +1566,15 @@ public class FeedSegment
       {
         localObject1 = a(j);
         if (localObject1 != null) {
-          break label63;
+          break label76;
         }
       }
     }
     for (;;)
     {
       return null;
-      label63:
-      localObject2 = (VideoListLayout)((BaseViewHolder)localObject1).a(2131371745);
+      label76:
+      localObject2 = (VideoListLayout)((BaseViewHolder)localObject1).a(2131371744);
       if (localObject2 != null) {
         break;
       }
@@ -1616,7 +1589,7 @@ public class FeedSegment
     }
     if ((localObject2 != null) && (((StoryHomeHorizontalListView)localObject2).getVisibility() == 0) && (((StoryHomeHorizontalListView)localObject2).getChildAt(0) != null))
     {
-      localObject1 = (QQStoryAutoPlayView)((StoryHomeHorizontalListView)localObject2).getChildAt(0).findViewById(2131371751);
+      localObject1 = (QQStoryAutoPlayView)((StoryHomeHorizontalListView)localObject2).getChildAt(0).findViewById(2131371750);
       InfoPrinter.b("Q.qqstory.home:FeedSegment_animation", new Object[] { "返回了+++++多+++++个视频的view：", ((QQStoryAutoPlayView)localObject1).a().getThumbUrl() });
       return localObject1;
     }
@@ -1664,8 +1637,8 @@ public class FeedSegment
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup, GeneralHomeFeed paramGeneralHomeFeed)
   {
     SLog.a("Q.qqstory.home.position", "bindView position%d", Integer.valueOf(paramInt));
-    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371747);
-    FrameLayout localFrameLayout = (FrameLayout)paramBaseViewHolder.a(2131371746);
+    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371746);
+    FrameLayout localFrameLayout = (FrameLayout)paramBaseViewHolder.a(2131371745);
     a(paramGeneralHomeFeed, paramBaseViewHolder);
     a(paramInt, paramBaseViewHolder, this.jdField_d_of_type_Boolean);
     a(paramInt, paramBaseViewHolder, paramGeneralHomeFeed, paramGeneralHomeFeed.a().getOwner());
@@ -1673,7 +1646,7 @@ public class FeedSegment
     a(paramInt, paramBaseViewHolder);
     paramInt = -3355444;
     if (this.jdField_d_of_type_Boolean) {
-      paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494274);
+      paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494280);
     }
     paramViewGroup.setBackgroundColor(paramInt);
     paramBaseViewHolder.a("feed_id", paramGeneralHomeFeed.a().feedId);
@@ -1685,8 +1658,8 @@ public class FeedSegment
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup, ShareGroupHomeFeed paramShareGroupHomeFeed)
   {
     SLog.a("Q.qqstory.home.position", "bindView position%d", Integer.valueOf(paramInt));
-    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371747);
-    FrameLayout localFrameLayout = (FrameLayout)paramBaseViewHolder.a(2131371746);
+    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371746);
+    FrameLayout localFrameLayout = (FrameLayout)paramBaseViewHolder.a(2131371745);
     a(paramShareGroupHomeFeed, paramBaseViewHolder);
     a(paramInt, paramBaseViewHolder, this.jdField_d_of_type_Boolean);
     a(paramInt, paramBaseViewHolder, paramShareGroupHomeFeed, ((ShareGroupFeedItem)paramShareGroupHomeFeed.a()).getOwner());
@@ -1695,7 +1668,7 @@ public class FeedSegment
     a(paramInt, paramBaseViewHolder);
     paramInt = -3355444;
     if (this.jdField_d_of_type_Boolean) {
-      paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494274);
+      paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494280);
     }
     paramViewGroup.setBackgroundColor(paramInt);
     paramBaseViewHolder.a("feed_id", ((ShareGroupFeedItem)paramShareGroupHomeFeed.a()).feedId);
@@ -1790,9 +1763,9 @@ public class FeedSegment
   
   protected void a(int paramInt, BaseViewHolder paramBaseViewHolder)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371748);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371749);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131371750);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371747);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371748);
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131371749);
     if (localRelativeLayout == null) {
       return;
     }
@@ -1874,7 +1847,7 @@ public class FeedSegment
   public void a(int paramInt, BaseViewHolder paramBaseViewHolder, VideoListHomeFeed paramVideoListHomeFeed, QQUserUIItem paramQQUserUIItem)
   {
     TraceUtils.a("FeedSegment.bindFeedUserInfo");
-    QQStoryOwnerInfoView localQQStoryOwnerInfoView = (QQStoryOwnerInfoView)paramBaseViewHolder.a(2131371656);
+    QQStoryOwnerInfoView localQQStoryOwnerInfoView = (QQStoryOwnerInfoView)paramBaseViewHolder.a(2131371657);
     if (paramQQUserUIItem == null)
     {
       localQQStoryOwnerInfoView.setSubTitle(null);
@@ -1883,7 +1856,7 @@ public class FeedSegment
       localQQStoryOwnerInfoView.setSubTitleSuffix(null);
       localQQStoryOwnerInfoView.setButtonTxt(null);
       localQQStoryOwnerInfoView.setName(PlayModeUtils.b);
-      localQQStoryOwnerInfoView.setAvatar(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843419));
+      localQQStoryOwnerInfoView.setAvatar(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843453));
       TraceUtils.a();
       return;
     }
@@ -1942,11 +1915,11 @@ public class FeedSegment
   
   public void a(int paramInt, BaseViewHolder paramBaseViewHolder, boolean paramBoolean)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371652);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371653);
     TraceUtils.a("FeedSegment.setCalendar");
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371653);
-    Object localObject1 = (ImageView)paramBaseViewHolder.a(2131371655);
-    paramBaseViewHolder = (ImageView)paramBaseViewHolder.a(2131371654);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371654);
+    Object localObject1 = (ImageView)paramBaseViewHolder.a(2131371656);
+    paramBaseViewHolder = (ImageView)paramBaseViewHolder.a(2131371655);
     Object localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a();
     if (((List)localObject2).size() <= paramInt)
     {
@@ -1956,8 +1929,8 @@ public class FeedSegment
     }
     if (paramBoolean)
     {
-      ((ImageView)localObject1).setImageResource(2130843470);
-      paramBaseViewHolder.setImageResource(2130843472);
+      ((ImageView)localObject1).setImageResource(2130843504);
+      paramBaseViewHolder.setImageResource(2130843506);
       if (paramInt != 0) {
         break label165;
       }
@@ -1969,8 +1942,8 @@ public class FeedSegment
     {
       TraceUtils.a();
       return;
-      ((ImageView)localObject1).setImageResource(2130843469);
-      paramBaseViewHolder.setImageResource(2130843471);
+      ((ImageView)localObject1).setImageResource(2130843503);
+      paramBaseViewHolder.setImageResource(2130843505);
       break;
       label165:
       paramBaseViewHolder = (StoryHomeFeed)((List)localObject2).get(paramInt - 1);
@@ -2132,7 +2105,7 @@ public class FeedSegment
   
   protected void a(GeneralHomeFeed paramGeneralHomeFeed, BaseViewHolder paramBaseViewHolder)
   {
-    paramGeneralHomeFeed = (VideoListLayout)paramBaseViewHolder.a(2131371745);
+    paramGeneralHomeFeed = (VideoListLayout)paramBaseViewHolder.a(2131371744);
     if (paramGeneralHomeFeed != null)
     {
       paramGeneralHomeFeed = paramGeneralHomeFeed.a();
@@ -2152,14 +2125,14 @@ public class FeedSegment
     do
     {
       return;
-      if (paramHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage == null)
+      if (paramHomeFeedData.errorInfo == null)
       {
         AssertUtils.a("FeedSegment onFeedItemBack feedData.errorInfo=null!!," + paramHomeFeedData, new Object[0]);
         c(false);
         return;
       }
-      SLog.d("Q.qqstory.home:FeedSegment", paramHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.toString());
-      if (!paramHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {
+      SLog.d("Q.qqstory.home:FeedSegment", paramHomeFeedData.errorInfo.toString());
+      if (!paramHomeFeedData.errorInfo.isFail()) {
         break;
       }
       c(false);
@@ -2168,7 +2141,7 @@ public class FeedSegment
     } while (paramHomeFeedData.jdField_b_of_type_Boolean);
     SegmentList localSegmentList = a();
     String str = a();
-    boolean bool2 = paramHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess();
+    boolean bool2 = paramHomeFeedData.errorInfo.isSuccess();
     if (!paramHomeFeedData.jdField_a_of_type_Boolean) {}
     for (;;)
     {
@@ -2182,7 +2155,7 @@ public class FeedSegment
   
   protected void a(ShareGroupHomeFeed paramShareGroupHomeFeed, BaseViewHolder paramBaseViewHolder)
   {
-    paramShareGroupHomeFeed = (VideoListLayout)paramBaseViewHolder.a(2131371745);
+    paramShareGroupHomeFeed = (VideoListLayout)paramBaseViewHolder.a(2131371744);
     if (paramShareGroupHomeFeed != null)
     {
       paramShareGroupHomeFeed = paramShareGroupHomeFeed.a();
@@ -2205,7 +2178,7 @@ public class FeedSegment
   
   public void a(BaseViewHolder paramBaseViewHolder)
   {
-    Object localObject = (VideoListLayout)paramBaseViewHolder.a(2131371745);
+    Object localObject = (VideoListLayout)paramBaseViewHolder.a(2131371744);
     ((VideoListLayout)localObject).a().setOnClickListener(paramBaseViewHolder);
     ((VideoListLayout)localObject).a().setOnClickListener(paramBaseViewHolder);
     localObject = ((VideoListLayout)localObject).a();
@@ -2222,9 +2195,9 @@ public class FeedSegment
   
   protected void a(BaseViewHolder paramBaseViewHolder, TagHomeFeed paramTagHomeFeed)
   {
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131372032);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131372033);
-    paramBaseViewHolder = (TextView)paramBaseViewHolder.a(2131372034);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131372040);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131372041);
+    paramBaseViewHolder = (TextView)paramBaseViewHolder.a(2131372042);
     TagItem localTagItem = ((TagFeedItem)paramTagHomeFeed.a()).tagItem;
     if (localTagItem != null)
     {
@@ -2291,9 +2264,9 @@ public class FeedSegment
   
   public BaseViewHolder b(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970727, paramViewGroup, false));
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970743, paramViewGroup, false));
     paramViewGroup.a().setOnClickListener(paramViewGroup);
-    QQStoryOwnerInfoView localQQStoryOwnerInfoView = (QQStoryOwnerInfoView)paramViewGroup.a(2131371656);
+    QQStoryOwnerInfoView localQQStoryOwnerInfoView = (QQStoryOwnerInfoView)paramViewGroup.a(2131371657);
     localQQStoryOwnerInfoView.a().setOnClickListener(paramViewGroup);
     localQQStoryOwnerInfoView.setOwnerInfoOnClickListener(paramViewGroup);
     a(paramViewGroup);
@@ -2320,7 +2293,7 @@ public class FeedSegment
       QQStoryAutoPlayView localQQStoryAutoPlayView;
       if (localIterator.hasNext())
       {
-        localObject = (VideoListLayout)((BaseViewHolder)localIterator.next()).a(2131371745);
+        localObject = (VideoListLayout)((BaseViewHolder)localIterator.next()).a(2131371744);
         if (localObject == null) {
           continue;
         }
@@ -2341,7 +2314,7 @@ public class FeedSegment
           if ((localObject == null) || (((StoryHomeHorizontalListView)localObject).getVisibility() != 0) || (((StoryHomeHorizontalListView)localObject).getChildAt(0) == null)) {
             break label545;
           }
-          localQQStoryAutoPlayView = (QQStoryAutoPlayView)((StoryHomeHorizontalListView)localObject).getChildAt(0).findViewById(2131371751);
+          localQQStoryAutoPlayView = (QQStoryAutoPlayView)((StoryHomeHorizontalListView)localObject).getChildAt(0).findViewById(2131371750);
           continue;
         }
         int k;
@@ -2413,7 +2386,7 @@ public class FeedSegment
   
   protected void b(BaseViewHolder paramBaseViewHolder)
   {
-    ((VideoListLayout)paramBaseViewHolder.a(2131371745)).a().setVisibility(8);
+    ((VideoListLayout)paramBaseViewHolder.a(2131371744)).a().setVisibility(8);
   }
   
   public void b(String paramString)
@@ -2458,7 +2431,7 @@ public class FeedSegment
   {
     TraceUtils.a("FeedSegment.onMovedToScrapHeap");
     this.jdField_a_of_type_JavaUtilList.remove(paramBaseViewHolder);
-    VideoListLayout localVideoListLayout = (VideoListLayout)paramBaseViewHolder.a(2131371745);
+    VideoListLayout localVideoListLayout = (VideoListLayout)paramBaseViewHolder.a(2131371744);
     if (localVideoListLayout == null)
     {
       TraceUtils.a();
@@ -2486,7 +2459,7 @@ public class FeedSegment
         {
           paramBaseViewHolder = localVideoListLayout;
           if (localStoryHomeHorizontalListView.getChildAt(0) != null) {
-            paramBaseViewHolder = (QQStoryAutoPlayView)localStoryHomeHorizontalListView.getChildAt(0).findViewById(2131371751);
+            paramBaseViewHolder = (QQStoryAutoPlayView)localStoryHomeHorizontalListView.getChildAt(0).findViewById(2131371750);
           }
         }
       }
@@ -2577,18 +2550,18 @@ public class FeedSegment
     d(paramInt);
   }
   
+  public void e_(boolean paramBoolean)
+  {
+    super.e_(paramBoolean);
+    if (this.jdField_a_of_type_Boolean) {
+      h();
+    }
+  }
+  
   public void f()
   {
     SLog.b("Q.qqstory.home:FeedSegment", "tag list update");
     c(true);
-  }
-  
-  public void f_(boolean paramBoolean)
-  {
-    super.f_(paramBoolean);
-    if (this.jdField_a_of_type_Boolean) {
-      h();
-    }
   }
   
   protected void g()
@@ -2611,7 +2584,7 @@ public class FeedSegment
   
   public void h()
   {
-    a().setOnLoadMoreListener(a(), new oab(this));
+    a().setOnLoadMoreListener(a(), new oeq(this));
     SegmentList localSegmentList = a();
     String str = a();
     if (!a()) {}
@@ -2635,7 +2608,7 @@ public class FeedSegment
       return true;
     case 1: 
       paramMessage = (HomeFeedData)paramMessage.obj;
-      if ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+      if ((paramMessage == null) || (paramMessage.errorInfo.isFail()))
       {
         c(false);
         return true;
@@ -2700,7 +2673,7 @@ public class FeedSegment
       {
         SLog.b("Q.qqstory.home:FeedSegment_animation", "发了动画时间过去了");
         paramMessage = (Rect)paramMessage.obj;
-        ThreadManager.getSubThreadHandler().post(new oap(this, paramMessage));
+        ThreadManager.getSubThreadHandler().post(new ofe(this, paramMessage));
         return true;
       }
       this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(13, paramMessage.obj), 50L);

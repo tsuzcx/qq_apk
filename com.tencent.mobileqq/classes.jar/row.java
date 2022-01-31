@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
-public class row
+class row
   implements Runnable
 {
-  public row(BaseChatPie paramBaseChatPie) {}
+  row(rot paramrot) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "checkAllSourceDowned showPokePanel");
-    }
-    PokePanel.a(this.a.a);
+    this.a.a.d();
   }
 }
 

@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.FileUploadMgrObserver;
 
-class ajnb
+public class ajnb
   implements Runnable
 {
-  ajnb(ajna paramajna) {}
+  public ajnb(TroopFileUploadMgr.FileUploadMgrObserver paramFileUploadMgrObserver, Object paramObject) {}
   
   public void run()
   {
-    if (this.a.a.a == 3) {
-      this.a.a.a = 1;
-    }
-    this.a.a.g();
+    TroopFileUploadMgr.FileUploadMgrObserver.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadMgr$FileUploadMgrObserver, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

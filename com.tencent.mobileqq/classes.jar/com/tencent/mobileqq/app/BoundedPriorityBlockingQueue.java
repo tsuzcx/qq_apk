@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
-import zas;
+import zhs;
 
 public class BoundedPriorityBlockingQueue
   extends AbstractQueue
@@ -373,7 +373,7 @@ public class BoundedPriorityBlockingQueue
   
   public Iterator iterator()
   {
-    return new zas(this, toArray());
+    return new zhs(this, toArray());
   }
   
   public boolean offer(Object paramObject)

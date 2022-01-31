@@ -16,9 +16,9 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import loc;
-import lod;
-import lof;
+import lqx;
+import lqy;
+import lra;
 import tencent.im.oidb.oidb_0xb7e.DiandianTopConfig;
 import tencent.im.oidb.oidb_0xb7e.ReqBody;
 import tencent.im.oidb.oidb_0xb7e.RspBody;
@@ -118,7 +118,7 @@ public class DiandianTopConfigManager
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "saveDiandianTopConfig");
     }
-    ThreadManager.post(new lof(this, paramArrayOfByte, paramLong), 5, null, true);
+    ThreadManager.post(new lra(this, paramArrayOfByte, paramLong), 5, null, true);
   }
   
   public static boolean a()
@@ -133,7 +133,7 @@ public class DiandianTopConfigManager
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "loadDiandianTopConfig");
     }
-    ThreadManager.post(new lod(this), 5, null, true);
+    ThreadManager.post(new lqy(this), 5, null, true);
   }
   
   public void a(boolean paramBoolean)
@@ -142,7 +142,7 @@ public class DiandianTopConfigManager
       QLog.d(jdField_a_of_type_JavaLangString, 2, "requestDiandianTopConfig");
     }
     oidb_0xb7e.ReqBody localReqBody = new oidb_0xb7e.ReqBody();
-    ProtoUtils.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new loc(this, paramBoolean), localReqBody.toByteArray(), "OidbSvc.0xb7e", 2942, 0, null, 0L);
+    ProtoUtils.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new lqx(this, paramBoolean), localReqBody.toByteArray(), "OidbSvc.0xb7e", 2942, 0, null, 0L);
   }
 }
 

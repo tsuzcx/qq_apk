@@ -1,14 +1,17 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
 
-class ktx
-  implements Runnable
+public class ktx
+  implements View.OnClickListener
 {
-  ktx(ktv paramktv) {}
+  public ktx(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, String paramString, PaConfigAttr.PaConfigInfo paramPaConfigInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    VideoCoverFragment.a(this.a.a).setCurrentItem(VideoCoverFragment.a(this.a.a) + 1, true);
+    AccountDetailGroupListContainer.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_JavaLangString);
+    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.jdField_a_of_type_JavaLangString);
   }
 }
 

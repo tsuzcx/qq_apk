@@ -1,25 +1,18 @@
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agla
-  extends TimerTask
+  implements Runnable
 {
-  public agla(PicPreDownloader paramPicPreDownloader) {}
+  public agla(ScanTorchActivity paramScanTorchActivity) {}
   
   public void run()
   {
-    if (!this.a.a.get())
-    {
-      this.a.a.set(true);
-      Logger.b("PIC_TAG_PRELOAD", "timer count off,picPreDownload set on", "mIsPicPreloadSuitable" + this.a.a.get());
-    }
+    ScanTorchActivity.a(this.a, "AR_RES_DOWNLOAD_STATE_START", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agla
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.statistics.storage;
 
-import aihd;
-import aihe;
+import ailw;
+import ailx;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.pool.RecyclablePool;
@@ -19,13 +21,15 @@ import java.util.Stack;
 
 public class StorageReport
 {
+  private static volatile Handler jdField_a_of_type_AndroidOsHandler;
+  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private static final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(StorageItem.class, 50);
   private static volatile StorageReport jdField_a_of_type_ComTencentMobileqqStatisticsStorageStorageReport;
   public static final String[] a;
   public static final String[] b;
   private long jdField_a_of_type_Long;
-  private aihd jdField_a_of_type_Aihd = new aihd(null);
-  private aihe jdField_a_of_type_Aihe = new aihe(null);
+  private ailw jdField_a_of_type_Ailw = new ailw(null);
+  private ailx jdField_a_of_type_Ailx = new ailx(null);
   private String jdField_a_of_type_JavaLangString = "";
   private Field jdField_a_of_type_JavaLangReflectField;
   private Method jdField_a_of_type_JavaLangReflectMethod;
@@ -81,7 +85,7 @@ public class StorageReport
     {
       this.jdField_a_of_type_JavaUtilArrayList.add(localStorageItem);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 20) {
-        Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Aihd);
+        Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Ailw);
       }
       return localStorageItem.jdField_a_of_type_Long;
     }
@@ -91,7 +95,7 @@ public class StorageReport
       this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
       jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.recycle(paramString1);
       this.jdField_a_of_type_JavaUtilArrayList.add(localStorageItem);
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Aihd);
+      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Ailw);
       return localStorageItem.jdField_a_of_type_Long;
     }
     jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.recycle(localStorageItem);
@@ -165,6 +169,22 @@ public class StorageReport
     return localBundle;
   }
   
+  public static Handler a()
+  {
+    try
+    {
+      if (jdField_a_of_type_AndroidOsHandler == null)
+      {
+        jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SETTING_STORAGE_CLEAN_SCAN", 0);
+        jdField_a_of_type_AndroidOsHandlerThread.start();
+        jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      }
+      Handler localHandler = jdField_a_of_type_AndroidOsHandler;
+      return localHandler;
+    }
+    finally {}
+  }
+  
   public static StorageReport a()
   {
     if (jdField_a_of_type_ComTencentMobileqqStatisticsStorageStorageReport == null) {}
@@ -193,6 +213,25 @@ public class StorageReport
       i += 1;
     }
     return localStringBuilder.toString();
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      if (jdField_a_of_type_AndroidOsHandler != null)
+      {
+        jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
+        jdField_a_of_type_AndroidOsHandler = null;
+      }
+      if (jdField_a_of_type_AndroidOsHandlerThread != null)
+      {
+        jdField_a_of_type_AndroidOsHandlerThread.quit();
+        jdField_a_of_type_AndroidOsHandlerThread = null;
+      }
+      return;
+    }
+    finally {}
   }
   
   private void a(StorageItem paramStorageItem)
@@ -269,1532 +308,1599 @@ public class StorageReport
   public long a(com.tencent.mobileqq.activity.QQSettingCleanActivity.IProgressCallback paramIProgressCallback, int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: ifnull +10 -> 11
-    //   4: aload_1
-    //   5: iload_2
-    //   6: invokeinterface 336 2 0
-    //   11: lconst_0
-    //   12: lstore 54
-    //   14: lconst_0
-    //   15: lstore 12
-    //   17: lconst_0
-    //   18: lstore 10
-    //   20: aload_0
-    //   21: invokestatic 341	java/lang/System:currentTimeMillis	()J
-    //   24: ldc2_w 342
-    //   27: ldiv
-    //   28: putfield 344	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Long	J
-    //   31: invokestatic 304	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   34: invokevirtual 348	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   37: checkcast 350	com/tencent/mobileqq/app/QQAppInterface
-    //   40: astore 64
-    //   42: aload 64
-    //   44: ifnull +12 -> 56
-    //   47: aload_0
-    //   48: aload 64
-    //   50: invokevirtual 353	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   53: putfield 95	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   56: aload_0
-    //   57: new 118	java/lang/StringBuilder
-    //   60: dup
-    //   61: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   64: aload_0
-    //   65: getfield 95	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   68: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: ldc_w 355
-    //   74: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: aload_0
-    //   78: getfield 344	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Long	J
-    //   81: invokestatic 278	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   84: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: putfield 95	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   93: invokestatic 304	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   96: ldc_w 357
-    //   99: iconst_0
-    //   100: invokevirtual 361	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   103: astore 64
-    //   105: aload 64
-    //   107: ldc_w 363
-    //   110: lconst_0
-    //   111: invokeinterface 369 4 0
-    //   116: lstore 6
-    //   118: aload_0
-    //   119: getfield 91	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Boolean	Z
-    //   122: ifeq +41 -> 163
-    //   125: lload 6
-    //   127: lconst_0
-    //   128: lcmp
-    //   129: ifle +34 -> 163
-    //   132: aload_0
-    //   133: getfield 344	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Long	J
-    //   136: lload 6
-    //   138: lsub
-    //   139: invokestatic 373	java/lang/Math:abs	(J)J
-    //   142: ldc2_w 374
-    //   145: lcmp
-    //   146: ifge +17 -> 163
-    //   149: aload_0
-    //   150: iconst_0
-    //   151: putfield 91	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Boolean	Z
-    //   154: ldc 161
-    //   156: iconst_2
-    //   157: ldc_w 377
-    //   160: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   163: aload_0
-    //   164: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   167: invokevirtual 380	java/util/ArrayList:clear	()V
-    //   170: aload_0
-    //   171: getfield 75	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   174: invokevirtual 380	java/util/ArrayList:clear	()V
-    //   177: aload_0
-    //   178: getfield 97	com/tencent/mobileqq/statistics/storage/StorageReport:c	Ljava/util/ArrayList;
-    //   181: invokevirtual 380	java/util/ArrayList:clear	()V
-    //   184: aload_0
-    //   185: getfield 99	com/tencent/mobileqq/statistics/storage/StorageReport:d	Ljava/util/ArrayList;
-    //   188: invokevirtual 380	java/util/ArrayList:clear	()V
-    //   191: iconst_0
-    //   192: istore_2
-    //   193: iload_2
-    //   194: bipush 7
-    //   196: if_icmpge +80 -> 276
-    //   199: getstatic 31	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool	Lcom/tencent/commonsdk/pool/RecyclablePool;
-    //   202: ldc 25
-    //   204: invokevirtual 140	com/tencent/commonsdk/pool/RecyclablePool:obtain	(Ljava/lang/Class;)Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;
-    //   207: checkcast 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   210: astore 65
-    //   212: aload 65
-    //   214: lconst_0
-    //   215: putfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   218: aload 65
-    //   220: lconst_0
-    //   221: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   224: aload_0
-    //   225: getfield 97	com/tencent/mobileqq/statistics/storage/StorageReport:c	Ljava/util/ArrayList;
-    //   228: aload 65
-    //   230: invokevirtual 185	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   233: pop
-    //   234: getstatic 31	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool	Lcom/tencent/commonsdk/pool/RecyclablePool;
-    //   237: ldc 25
-    //   239: invokevirtual 140	com/tencent/commonsdk/pool/RecyclablePool:obtain	(Ljava/lang/Class;)Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;
-    //   242: checkcast 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   245: astore 65
-    //   247: aload 65
-    //   249: lconst_0
-    //   250: putfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   253: aload 65
-    //   255: lconst_0
-    //   256: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   259: aload_0
-    //   260: getfield 99	com/tencent/mobileqq/statistics/storage/StorageReport:d	Ljava/util/ArrayList;
-    //   263: aload 65
-    //   265: invokevirtual 185	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   268: pop
-    //   269: iload_2
-    //   270: iconst_1
-    //   271: iadd
-    //   272: istore_2
-    //   273: goto -80 -> 193
-    //   276: new 116	java/io/File
-    //   279: dup
-    //   280: getstatic 59	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   283: iconst_0
-    //   284: aaload
-    //   285: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
-    //   288: invokevirtual 223	java/io/File:list	()[Ljava/lang/String;
-    //   291: astore 65
-    //   293: lload 10
-    //   295: lstore 6
-    //   297: lload 12
-    //   299: lstore 8
-    //   301: aload 65
-    //   303: ifnull +207 -> 510
-    //   306: lload 10
-    //   308: lstore 6
-    //   310: lload 12
-    //   312: lstore 8
-    //   314: aload 65
-    //   316: arraylength
-    //   317: ifle +193 -> 510
-    //   320: iconst_0
-    //   321: istore_2
-    //   322: lload 10
-    //   324: lstore 6
-    //   326: lload 12
-    //   328: lstore 8
-    //   330: iload_2
-    //   331: aload 65
-    //   333: arraylength
-    //   334: if_icmpge +176 -> 510
-    //   337: new 116	java/io/File
-    //   340: dup
-    //   341: new 118	java/lang/StringBuilder
-    //   344: dup
-    //   345: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   348: getstatic 59	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   351: iconst_0
-    //   352: aaload
-    //   353: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   356: ldc 125
-    //   358: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   361: aload 65
-    //   363: iload_2
-    //   364: aaload
-    //   365: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   368: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   371: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
-    //   374: astore 66
-    //   376: aload 66
-    //   378: invokevirtual 136	java/io/File:isDirectory	()Z
-    //   381: ifeq +102 -> 483
-    //   384: new 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   387: dup
-    //   388: invokespecial 381	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
-    //   391: astore 67
-    //   393: aload 67
-    //   395: iconst_0
-    //   396: putfield 142	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
-    //   399: aload 67
-    //   401: aload_0
-    //   402: aload 66
-    //   404: invokevirtual 153	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/io/File;)J
-    //   407: putfield 155	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
-    //   410: aload 67
-    //   412: aload 65
-    //   414: iload_2
-    //   415: aaload
-    //   416: putfield 141	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   419: aload 67
-    //   421: new 118	java/lang/StringBuilder
-    //   424: dup
-    //   425: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   428: getstatic 59	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   431: iconst_0
-    //   432: aaload
-    //   433: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   436: ldc 125
-    //   438: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   441: aload 65
-    //   443: iload_2
-    //   444: aaload
-    //   445: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   448: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   451: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   454: aload 67
-    //   456: lconst_0
-    //   457: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   460: aload 67
-    //   462: lconst_0
-    //   463: putfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   466: aload_0
-    //   467: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   470: aload 67
-    //   472: invokevirtual 185	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   475: pop
-    //   476: iload_2
-    //   477: iconst_1
-    //   478: iadd
-    //   479: istore_2
-    //   480: goto -158 -> 322
-    //   483: lload 12
-    //   485: aload_0
-    //   486: getstatic 59	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   489: iconst_0
-    //   490: aaload
-    //   491: aload 65
-    //   493: iload_2
-    //   494: aaload
-    //   495: invokespecial 231	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/lang/String;Ljava/lang/String;)J
-    //   498: ladd
-    //   499: lstore 12
-    //   501: lload 10
-    //   503: lconst_1
-    //   504: ladd
-    //   505: lstore 10
-    //   507: goto -31 -> 476
-    //   510: iconst_1
-    //   511: istore_2
-    //   512: iload_2
-    //   513: getstatic 59	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   516: arraylength
-    //   517: if_icmpge +105 -> 622
-    //   520: getstatic 59	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   523: iload_2
-    //   524: aaload
-    //   525: astore 65
-    //   527: new 116	java/io/File
-    //   530: dup
-    //   531: aload 65
-    //   533: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
-    //   536: astore 66
-    //   538: aload 66
-    //   540: invokevirtual 136	java/io/File:isDirectory	()Z
-    //   543: ifeq +72 -> 615
-    //   546: new 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   549: dup
-    //   550: invokespecial 381	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
-    //   553: astore 67
-    //   555: aload 67
-    //   557: iconst_0
-    //   558: putfield 142	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
-    //   561: aload 67
-    //   563: aload_0
-    //   564: aload 66
-    //   566: invokevirtual 153	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/io/File;)J
-    //   569: putfield 155	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
-    //   572: aload 67
-    //   574: aload 65
-    //   576: ldc 125
-    //   578: invokevirtual 385	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   581: iconst_2
-    //   582: aaload
-    //   583: putfield 141	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   586: aload 67
-    //   588: aload 65
-    //   590: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   593: aload 67
-    //   595: lconst_0
-    //   596: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   599: aload 67
-    //   601: lconst_0
-    //   602: putfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   605: aload_0
-    //   606: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   609: aload 67
-    //   611: invokevirtual 185	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   614: pop
-    //   615: iload_2
-    //   616: iconst_1
-    //   617: iadd
-    //   618: istore_2
-    //   619: goto -107 -> 512
-    //   622: iconst_0
-    //   623: istore_2
-    //   624: iload_2
-    //   625: getstatic 65	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   628: arraylength
-    //   629: if_icmpge +282 -> 911
-    //   632: getstatic 65	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   635: iload_2
-    //   636: aaload
-    //   637: astore 65
-    //   639: new 116	java/io/File
-    //   642: dup
-    //   643: aload 65
-    //   645: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
-    //   648: invokevirtual 223	java/io/File:list	()[Ljava/lang/String;
-    //   651: astore 66
-    //   653: aload 66
-    //   655: ifnull +249 -> 904
-    //   658: aload 66
-    //   660: arraylength
-    //   661: ifle +243 -> 904
-    //   664: iconst_0
-    //   665: istore 4
-    //   667: iload 4
-    //   669: aload 66
-    //   671: arraylength
-    //   672: if_icmpge +232 -> 904
-    //   675: new 116	java/io/File
-    //   678: dup
-    //   679: new 118	java/lang/StringBuilder
-    //   682: dup
-    //   683: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   686: aload 65
-    //   688: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   691: ldc 125
-    //   693: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   696: aload 66
-    //   698: iload 4
-    //   700: aaload
-    //   701: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   704: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   707: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
-    //   710: astore 67
-    //   712: ldc 63
-    //   714: new 118	java/lang/StringBuilder
-    //   717: dup
-    //   718: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   721: aload 65
-    //   723: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   726: ldc 125
-    //   728: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   731: aload 66
-    //   733: iload 4
-    //   735: aaload
-    //   736: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   739: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   742: invokevirtual 388	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   745: ifeq +42 -> 787
-    //   748: ldc 161
-    //   750: iconst_2
-    //   751: new 118	java/lang/StringBuilder
-    //   754: dup
-    //   755: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   758: ldc_w 390
-    //   761: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   764: aload 66
-    //   766: iload 4
-    //   768: aaload
-    //   769: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   772: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   775: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   778: iload 4
-    //   780: iconst_1
-    //   781: iadd
-    //   782: istore 4
-    //   784: goto -117 -> 667
-    //   787: aload 67
-    //   789: invokevirtual 136	java/io/File:isDirectory	()Z
-    //   792: ifeq +97 -> 889
-    //   795: new 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   798: dup
-    //   799: invokespecial 381	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
-    //   802: astore 68
-    //   804: aload 68
-    //   806: iconst_0
-    //   807: putfield 142	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
-    //   810: aload 68
-    //   812: aload_0
-    //   813: aload 67
-    //   815: invokevirtual 153	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/io/File;)J
-    //   818: putfield 155	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
-    //   821: aload 68
-    //   823: aload 66
-    //   825: iload 4
-    //   827: aaload
-    //   828: putfield 141	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   831: aload 68
-    //   833: new 118	java/lang/StringBuilder
-    //   836: dup
-    //   837: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   840: aload 65
-    //   842: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   845: ldc 125
-    //   847: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   850: aload 66
-    //   852: iload 4
-    //   854: aaload
-    //   855: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   858: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   861: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   864: aload 68
-    //   866: lconst_0
-    //   867: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   870: aload 68
-    //   872: lconst_0
-    //   873: putfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   876: aload_0
-    //   877: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   880: aload 68
-    //   882: invokevirtual 185	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   885: pop
-    //   886: goto -108 -> 778
-    //   889: aload_0
-    //   890: aload 65
-    //   892: aload 66
-    //   894: iload 4
-    //   896: aaload
-    //   897: invokespecial 231	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/lang/String;Ljava/lang/String;)J
-    //   900: pop2
-    //   901: goto -123 -> 778
-    //   904: iload_2
-    //   905: iconst_1
-    //   906: iadd
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +10 -> 13
+    //   6: aload_1
+    //   7: iload_2
+    //   8: invokeinterface 369 2 0
+    //   13: lconst_0
+    //   14: lstore 54
+    //   16: aload_0
+    //   17: invokestatic 374	java/lang/System:currentTimeMillis	()J
+    //   20: ldc2_w 375
+    //   23: ldiv
+    //   24: putfield 377	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Long	J
+    //   27: invokestatic 337	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   30: invokevirtual 381	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   33: checkcast 383	com/tencent/mobileqq/app/QQAppInterface
+    //   36: astore 64
+    //   38: aload 64
+    //   40: ifnull +12 -> 52
+    //   43: aload_0
+    //   44: aload 64
+    //   46: invokevirtual 386	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   49: putfield 97	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   52: aload_0
+    //   53: new 120	java/lang/StringBuilder
+    //   56: dup
+    //   57: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   60: aload_0
+    //   61: getfield 97	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   64: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: ldc_w 388
+    //   70: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: aload_0
+    //   74: getfield 377	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Long	J
+    //   77: invokestatic 311	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   80: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   86: putfield 97	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   89: invokestatic 337	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   92: ldc_w 390
+    //   95: iconst_0
+    //   96: invokevirtual 394	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   99: astore 64
+    //   101: aload 64
+    //   103: ldc_w 396
+    //   106: lconst_0
+    //   107: invokeinterface 402 4 0
+    //   112: lstore 6
+    //   114: aload_0
+    //   115: getfield 93	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Boolean	Z
+    //   118: ifeq +41 -> 159
+    //   121: lload 6
+    //   123: lconst_0
+    //   124: lcmp
+    //   125: ifle +34 -> 159
+    //   128: aload_0
+    //   129: getfield 377	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Long	J
+    //   132: lload 6
+    //   134: lsub
+    //   135: invokestatic 406	java/lang/Math:abs	(J)J
+    //   138: ldc2_w 407
+    //   141: lcmp
+    //   142: ifge +17 -> 159
+    //   145: aload_0
+    //   146: iconst_0
+    //   147: putfield 93	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Boolean	Z
+    //   150: ldc 163
+    //   152: iconst_2
+    //   153: ldc_w 410
+    //   156: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   159: aload_0
+    //   160: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   163: invokevirtual 413	java/util/ArrayList:clear	()V
+    //   166: aload_0
+    //   167: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   170: invokevirtual 413	java/util/ArrayList:clear	()V
+    //   173: aload_0
+    //   174: getfield 99	com/tencent/mobileqq/statistics/storage/StorageReport:c	Ljava/util/ArrayList;
+    //   177: invokevirtual 413	java/util/ArrayList:clear	()V
+    //   180: aload_0
+    //   181: getfield 101	com/tencent/mobileqq/statistics/storage/StorageReport:d	Ljava/util/ArrayList;
+    //   184: invokevirtual 413	java/util/ArrayList:clear	()V
+    //   187: iconst_0
+    //   188: istore_2
+    //   189: iload_2
+    //   190: bipush 7
+    //   192: if_icmpge +80 -> 272
+    //   195: getstatic 33	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool	Lcom/tencent/commonsdk/pool/RecyclablePool;
+    //   198: ldc 27
+    //   200: invokevirtual 142	com/tencent/commonsdk/pool/RecyclablePool:obtain	(Ljava/lang/Class;)Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;
+    //   203: checkcast 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   206: astore 65
+    //   208: aload 65
+    //   210: lconst_0
+    //   211: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   214: aload 65
+    //   216: lconst_0
+    //   217: putfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   220: aload_0
+    //   221: getfield 99	com/tencent/mobileqq/statistics/storage/StorageReport:c	Ljava/util/ArrayList;
+    //   224: aload 65
+    //   226: invokevirtual 187	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   229: pop
+    //   230: getstatic 33	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool	Lcom/tencent/commonsdk/pool/RecyclablePool;
+    //   233: ldc 27
+    //   235: invokevirtual 142	com/tencent/commonsdk/pool/RecyclablePool:obtain	(Ljava/lang/Class;)Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;
+    //   238: checkcast 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   241: astore 65
+    //   243: aload 65
+    //   245: lconst_0
+    //   246: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   249: aload 65
+    //   251: lconst_0
+    //   252: putfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   255: aload_0
+    //   256: getfield 101	com/tencent/mobileqq/statistics/storage/StorageReport:d	Ljava/util/ArrayList;
+    //   259: aload 65
+    //   261: invokevirtual 187	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   264: pop
+    //   265: iload_2
+    //   266: iconst_1
+    //   267: iadd
+    //   268: istore_2
+    //   269: goto -80 -> 189
+    //   272: new 118	java/io/File
+    //   275: dup
+    //   276: getstatic 61	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   279: iconst_0
+    //   280: aaload
+    //   281: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
+    //   284: invokevirtual 225	java/io/File:list	()[Ljava/lang/String;
+    //   287: astore 65
+    //   289: aload 65
+    //   291: ifnull +2726 -> 3017
+    //   294: aload 65
+    //   296: arraylength
+    //   297: ifle +2720 -> 3017
+    //   300: lconst_0
+    //   301: lstore 10
+    //   303: lconst_0
+    //   304: lstore 12
+    //   306: iconst_0
+    //   307: istore_2
+    //   308: lload 10
+    //   310: lstore 8
+    //   312: lload 12
+    //   314: lstore 6
+    //   316: iload_2
+    //   317: aload 65
+    //   319: arraylength
+    //   320: if_icmpge +2703 -> 3023
+    //   323: new 118	java/io/File
+    //   326: dup
+    //   327: new 120	java/lang/StringBuilder
+    //   330: dup
+    //   331: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   334: getstatic 61	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   337: iconst_0
+    //   338: aaload
+    //   339: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   342: ldc 127
+    //   344: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: aload 65
+    //   349: iload_2
+    //   350: aaload
+    //   351: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   354: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   357: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
+    //   360: astore 66
+    //   362: aload 66
+    //   364: invokevirtual 138	java/io/File:isDirectory	()Z
+    //   367: ifeq +98 -> 465
+    //   370: new 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   373: dup
+    //   374: invokespecial 414	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
+    //   377: astore 67
+    //   379: aload 67
+    //   381: iconst_0
+    //   382: putfield 144	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
+    //   385: aload 67
+    //   387: aload_0
+    //   388: aload 66
+    //   390: invokevirtual 155	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/io/File;)J
+    //   393: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
+    //   396: aload 67
+    //   398: aload 65
+    //   400: iload_2
+    //   401: aaload
+    //   402: putfield 143	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   405: aload 67
+    //   407: new 120	java/lang/StringBuilder
+    //   410: dup
+    //   411: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   414: getstatic 61	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   417: iconst_0
+    //   418: aaload
+    //   419: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   422: ldc 127
+    //   424: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   427: aload 65
+    //   429: iload_2
+    //   430: aaload
+    //   431: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   434: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   437: putfield 152	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   440: aload 67
+    //   442: lconst_0
+    //   443: putfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   446: aload 67
+    //   448: lconst_0
+    //   449: putfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   452: aload_0
+    //   453: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   456: aload 67
+    //   458: invokevirtual 187	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   461: pop
+    //   462: goto +2548 -> 3010
+    //   465: lload 12
+    //   467: aload_0
+    //   468: getstatic 61	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   471: iconst_0
+    //   472: aaload
+    //   473: aload 65
+    //   475: iload_2
+    //   476: aaload
+    //   477: invokespecial 233	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/lang/String;Ljava/lang/String;)J
+    //   480: ladd
+    //   481: lstore 12
+    //   483: lload 10
+    //   485: lconst_1
+    //   486: ladd
+    //   487: lstore 10
+    //   489: goto +2521 -> 3010
+    //   492: iload_2
+    //   493: getstatic 61	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   496: arraylength
+    //   497: if_icmpge +2538 -> 3035
+    //   500: getstatic 61	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   503: iload_2
+    //   504: aaload
+    //   505: astore 65
+    //   507: new 118	java/io/File
+    //   510: dup
+    //   511: aload 65
+    //   513: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
+    //   516: astore 66
+    //   518: aload 66
+    //   520: invokevirtual 138	java/io/File:isDirectory	()Z
+    //   523: ifeq +2505 -> 3028
+    //   526: new 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   529: dup
+    //   530: invokespecial 414	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
+    //   533: astore 67
+    //   535: aload 67
+    //   537: iconst_0
+    //   538: putfield 144	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
+    //   541: aload 67
+    //   543: aload_0
+    //   544: aload 66
+    //   546: invokevirtual 155	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/io/File;)J
+    //   549: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
+    //   552: aload 67
+    //   554: aload 65
+    //   556: ldc 127
+    //   558: invokevirtual 418	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   561: iconst_2
+    //   562: aaload
+    //   563: putfield 143	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   566: aload 67
+    //   568: aload 65
+    //   570: putfield 152	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   573: aload 67
+    //   575: lconst_0
+    //   576: putfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   579: aload 67
+    //   581: lconst_0
+    //   582: putfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   585: aload_0
+    //   586: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   589: aload 67
+    //   591: invokevirtual 187	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   594: pop
+    //   595: goto +2433 -> 3028
+    //   598: iload_2
+    //   599: getstatic 67	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   602: arraylength
+    //   603: if_icmpge +274 -> 877
+    //   606: getstatic 67	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   609: iload_2
+    //   610: aaload
+    //   611: astore 65
+    //   613: new 118	java/io/File
+    //   616: dup
+    //   617: aload 65
+    //   619: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
+    //   622: invokevirtual 225	java/io/File:list	()[Ljava/lang/String;
+    //   625: astore 66
+    //   627: aload 66
+    //   629: ifnull +2420 -> 3049
+    //   632: aload 66
+    //   634: arraylength
+    //   635: ifle +2414 -> 3049
+    //   638: iconst_0
+    //   639: istore 4
+    //   641: iload 4
+    //   643: aload 66
+    //   645: arraylength
+    //   646: if_icmpge +2403 -> 3049
+    //   649: new 118	java/io/File
+    //   652: dup
+    //   653: new 120	java/lang/StringBuilder
+    //   656: dup
+    //   657: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   660: aload 65
+    //   662: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   665: ldc 127
+    //   667: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   670: aload 66
+    //   672: iload 4
+    //   674: aaload
+    //   675: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   678: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   681: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
+    //   684: astore 67
+    //   686: ldc 65
+    //   688: new 120	java/lang/StringBuilder
+    //   691: dup
+    //   692: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   695: aload 65
+    //   697: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   700: ldc 127
+    //   702: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   705: aload 66
+    //   707: iload 4
+    //   709: aaload
+    //   710: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   713: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   716: invokevirtual 421	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   719: ifeq +36 -> 755
+    //   722: ldc 163
+    //   724: iconst_2
+    //   725: new 120	java/lang/StringBuilder
+    //   728: dup
+    //   729: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   732: ldc_w 423
+    //   735: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   738: aload 66
+    //   740: iload 4
+    //   742: aaload
+    //   743: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   746: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   749: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   752: goto +2288 -> 3040
+    //   755: aload 67
+    //   757: invokevirtual 138	java/io/File:isDirectory	()Z
+    //   760: ifeq +102 -> 862
+    //   763: new 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   766: dup
+    //   767: invokespecial 414	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
+    //   770: astore 68
+    //   772: aload 68
+    //   774: iconst_0
+    //   775: putfield 144	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
+    //   778: aload 68
+    //   780: aload_0
+    //   781: aload 67
+    //   783: invokevirtual 155	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/io/File;)J
+    //   786: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
+    //   789: aload 68
+    //   791: aload 66
+    //   793: iload 4
+    //   795: aaload
+    //   796: putfield 143	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   799: aload 68
+    //   801: new 120	java/lang/StringBuilder
+    //   804: dup
+    //   805: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   808: aload 65
+    //   810: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   813: ldc 127
+    //   815: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   818: aload 66
+    //   820: iload 4
+    //   822: aaload
+    //   823: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   826: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   829: putfield 152	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   832: aload 68
+    //   834: lconst_0
+    //   835: putfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   838: aload 68
+    //   840: lconst_0
+    //   841: putfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   844: aload_0
+    //   845: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   848: aload 68
+    //   850: invokevirtual 187	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   853: pop
+    //   854: goto +2186 -> 3040
+    //   857: astore_1
+    //   858: aload_0
+    //   859: monitorexit
+    //   860: aload_1
+    //   861: athrow
+    //   862: aload_0
+    //   863: aload 65
+    //   865: aload 66
+    //   867: iload 4
+    //   869: aaload
+    //   870: invokespecial 233	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/lang/String;Ljava/lang/String;)J
+    //   873: pop2
+    //   874: goto +2166 -> 3040
+    //   877: ldc 163
+    //   879: iconst_2
+    //   880: new 120	java/lang/StringBuilder
+    //   883: dup
+    //   884: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   887: ldc_w 425
+    //   890: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   893: aload_0
+    //   894: getfield 377	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Long	J
+    //   897: invokevirtual 282	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   900: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   903: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   906: iconst_0
     //   907: istore_2
-    //   908: goto -284 -> 624
-    //   911: ldc 161
-    //   913: iconst_2
-    //   914: new 118	java/lang/StringBuilder
-    //   917: dup
-    //   918: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   921: ldc_w 392
-    //   924: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   927: aload_0
-    //   928: getfield 344	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Long	J
-    //   931: invokevirtual 256	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   934: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   937: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   940: iconst_0
-    //   941: istore_2
-    //   942: lconst_0
-    //   943: lstore 20
-    //   945: lconst_0
-    //   946: lstore 22
-    //   948: lconst_0
-    //   949: lstore 10
-    //   951: lconst_0
-    //   952: lstore 14
-    //   954: lconst_0
-    //   955: lstore 18
-    //   957: lconst_0
-    //   958: lstore 32
-    //   960: lconst_0
-    //   961: lstore 12
-    //   963: lload 8
-    //   965: lstore 24
-    //   967: lload 6
-    //   969: lstore 16
-    //   971: lload 18
-    //   973: lstore 8
-    //   975: lload 12
-    //   977: lstore 6
-    //   979: iload_2
-    //   980: aload_0
-    //   981: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   984: invokevirtual 181	java/util/ArrayList:size	()I
-    //   987: if_icmpge +1491 -> 2478
-    //   990: aload_0
-    //   991: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   994: invokevirtual 181	java/util/ArrayList:size	()I
-    //   997: sipush 500
-    //   1000: if_icmplt +471 -> 1471
-    //   1003: ldc2_w 393
-    //   1006: invokestatic 400	java/lang/Thread:sleep	(J)V
-    //   1009: aload_0
-    //   1010: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   1013: iload_2
-    //   1014: invokevirtual 195	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   1017: checkcast 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   1020: astore 65
-    //   1022: aload 65
-    //   1024: lconst_0
-    //   1025: putfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   1028: aload 65
-    //   1030: lconst_0
-    //   1031: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   1034: aload 65
-    //   1036: lconst_0
-    //   1037: putfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   1040: aload 65
-    //   1042: getfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1045: astore 66
-    //   1047: lload 6
-    //   1049: lstore 62
-    //   1051: lload 14
-    //   1053: lstore 46
-    //   1055: lload 20
-    //   1057: lstore 42
-    //   1059: lload 8
-    //   1061: lstore 60
-    //   1063: lload 22
-    //   1065: lstore 38
-    //   1067: lload 32
-    //   1069: lstore 36
-    //   1071: lload 10
-    //   1073: lstore 58
-    //   1075: lload 16
-    //   1077: lstore 18
-    //   1079: lload 24
-    //   1081: lstore 12
-    //   1083: lload 54
-    //   1085: lstore 56
-    //   1087: new 116	java/io/File
-    //   1090: dup
-    //   1091: aload 66
-    //   1093: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
-    //   1096: invokevirtual 223	java/io/File:list	()[Ljava/lang/String;
-    //   1099: astore 67
-    //   1101: aload 67
-    //   1103: ifnull +387 -> 1490
-    //   1106: lload 6
-    //   1108: lstore 62
-    //   1110: lload 14
-    //   1112: lstore 46
-    //   1114: lload 20
-    //   1116: lstore 42
-    //   1118: lload 8
-    //   1120: lstore 60
-    //   1122: lload 22
-    //   1124: lstore 38
-    //   1126: lload 32
-    //   1128: lstore 36
-    //   1130: lload 10
-    //   1132: lstore 58
-    //   1134: lload 16
-    //   1136: lstore 18
-    //   1138: lload 24
-    //   1140: lstore 12
-    //   1142: lload 54
-    //   1144: lstore 56
-    //   1146: aload 67
-    //   1148: arraylength
-    //   1149: ifle +341 -> 1490
-    //   1152: lload 6
-    //   1154: lstore 62
-    //   1156: lload 14
-    //   1158: lstore 46
-    //   1160: lload 20
-    //   1162: lstore 42
-    //   1164: lload 8
-    //   1166: lstore 60
-    //   1168: lload 22
-    //   1170: lstore 38
-    //   1172: lload 32
-    //   1174: lstore 36
-    //   1176: lload 10
-    //   1178: lstore 58
-    //   1180: lload 16
-    //   1182: lstore 18
-    //   1184: lload 24
-    //   1186: lstore 12
-    //   1188: lload 54
-    //   1190: lstore 56
-    //   1192: aload 67
-    //   1194: arraylength
-    //   1195: istore 5
-    //   1197: iconst_0
-    //   1198: istore 4
-    //   1200: iload 4
-    //   1202: iload 5
-    //   1204: if_icmpge +286 -> 1490
-    //   1207: aload 67
-    //   1209: iload 4
-    //   1211: aaload
-    //   1212: astore 68
-    //   1214: lload 6
-    //   1216: lstore 62
-    //   1218: lload 14
-    //   1220: lstore 46
-    //   1222: lload 20
-    //   1224: lstore 42
-    //   1226: lload 8
-    //   1228: lstore 60
-    //   1230: lload 22
-    //   1232: lstore 38
-    //   1234: lload 32
-    //   1236: lstore 36
-    //   1238: lload 10
-    //   1240: lstore 58
-    //   1242: lload 16
-    //   1244: lstore 18
-    //   1246: lload 24
-    //   1248: lstore 12
-    //   1250: lload 54
-    //   1252: lstore 56
-    //   1254: aload_0
-    //   1255: new 118	java/lang/StringBuilder
-    //   1258: dup
-    //   1259: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   1262: aload 66
-    //   1264: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1267: ldc 125
-    //   1269: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1272: aload 68
-    //   1274: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1277: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1280: invokespecial 402	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/lang/String;)Landroid/os/Bundle;
-    //   1283: astore 68
-    //   1285: lload 6
-    //   1287: lstore 62
-    //   1289: lload 14
-    //   1291: lstore 46
-    //   1293: lload 20
-    //   1295: lstore 42
-    //   1297: lload 8
-    //   1299: lstore 60
-    //   1301: lload 22
-    //   1303: lstore 38
-    //   1305: lload 32
-    //   1307: lstore 36
-    //   1309: lload 10
-    //   1311: lstore 58
-    //   1313: lload 16
-    //   1315: lstore 18
-    //   1317: lload 24
-    //   1319: lstore 12
-    //   1321: lload 54
-    //   1323: lstore 56
-    //   1325: aload 65
-    //   1327: aload 65
-    //   1329: getfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   1332: aload 68
-    //   1334: ldc 239
-    //   1336: lconst_0
-    //   1337: invokevirtual 403	android/os/Bundle:getLong	(Ljava/lang/String;J)J
-    //   1340: ladd
-    //   1341: putfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   1344: lload 6
-    //   1346: lstore 62
-    //   1348: lload 14
-    //   1350: lstore 46
-    //   1352: lload 20
-    //   1354: lstore 42
-    //   1356: lload 8
-    //   1358: lstore 60
-    //   1360: lload 22
-    //   1362: lstore 38
-    //   1364: lload 32
-    //   1366: lstore 36
-    //   1368: lload 10
-    //   1370: lstore 58
-    //   1372: lload 16
-    //   1374: lstore 18
-    //   1376: lload 24
-    //   1378: lstore 12
-    //   1380: lload 54
-    //   1382: lstore 56
-    //   1384: aload 65
-    //   1386: aload 65
-    //   1388: getfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   1391: aload 68
-    //   1393: ldc 245
-    //   1395: lconst_0
-    //   1396: invokevirtual 403	android/os/Bundle:getLong	(Ljava/lang/String;J)J
-    //   1399: ladd
-    //   1400: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   1403: lload 6
-    //   1405: lstore 62
-    //   1407: lload 14
-    //   1409: lstore 46
-    //   1411: lload 20
-    //   1413: lstore 42
-    //   1415: lload 8
-    //   1417: lstore 60
-    //   1419: lload 22
-    //   1421: lstore 38
-    //   1423: lload 32
-    //   1425: lstore 36
-    //   1427: lload 10
-    //   1429: lstore 58
-    //   1431: lload 16
-    //   1433: lstore 18
-    //   1435: lload 24
-    //   1437: lstore 12
-    //   1439: lload 54
-    //   1441: lstore 56
-    //   1443: aload 65
-    //   1445: aload 65
-    //   1447: getfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   1450: aload 68
-    //   1452: ldc 247
-    //   1454: lconst_0
-    //   1455: invokevirtual 403	android/os/Bundle:getLong	(Ljava/lang/String;J)J
-    //   1458: ladd
-    //   1459: putfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   1462: iload 4
-    //   1464: iconst_1
-    //   1465: iadd
-    //   1466: istore 4
-    //   1468: goto -268 -> 1200
-    //   1471: ldc2_w 404
-    //   1474: invokestatic 400	java/lang/Thread:sleep	(J)V
-    //   1477: goto -468 -> 1009
-    //   1480: astore 65
-    //   1482: aload 65
-    //   1484: invokevirtual 408	java/lang/InterruptedException:printStackTrace	()V
-    //   1487: goto -478 -> 1009
-    //   1490: lload 6
-    //   1492: lstore 62
-    //   1494: lload 14
-    //   1496: lstore 46
-    //   1498: lload 20
-    //   1500: lstore 42
-    //   1502: lload 8
-    //   1504: lstore 60
-    //   1506: lload 22
-    //   1508: lstore 38
-    //   1510: lload 32
-    //   1512: lstore 36
-    //   1514: lload 10
-    //   1516: lstore 58
-    //   1518: lload 16
-    //   1520: lstore 18
-    //   1522: lload 24
-    //   1524: lstore 12
-    //   1526: lload 54
-    //   1528: lstore 56
-    //   1530: aload 66
-    //   1532: ldc_w 410
-    //   1535: invokevirtual 319	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   1538: ifeq +597 -> 2135
-    //   1541: lload 6
-    //   1543: lstore 62
-    //   1545: lload 14
-    //   1547: lstore 46
-    //   1549: lload 20
-    //   1551: lstore 42
-    //   1553: lload 8
-    //   1555: lstore 60
-    //   1557: lload 22
-    //   1559: lstore 38
-    //   1561: lload 32
-    //   1563: lstore 36
-    //   1565: lload 10
-    //   1567: lstore 58
-    //   1569: lload 16
-    //   1571: lstore 18
-    //   1573: lload 24
-    //   1575: lstore 12
-    //   1577: lload 54
-    //   1579: lstore 56
-    //   1581: aload 66
-    //   1583: ldc_w 412
-    //   1586: invokevirtual 319	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   1589: ifeq +369 -> 1958
-    //   1592: lload 6
-    //   1594: lstore 62
-    //   1596: lload 14
-    //   1598: lstore 46
-    //   1600: lload 20
-    //   1602: lstore 42
-    //   1604: lload 8
-    //   1606: lstore 60
-    //   1608: lload 22
-    //   1610: lstore 38
-    //   1612: lload 32
-    //   1614: lstore 36
-    //   1616: lload 10
-    //   1618: lstore 58
-    //   1620: lload 16
-    //   1622: lstore 18
-    //   1624: lload 24
-    //   1626: lstore 12
-    //   1628: lload 54
-    //   1630: lstore 56
-    //   1632: lload 20
-    //   1634: aload 65
-    //   1636: getfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   1639: ladd
-    //   1640: lstore 30
-    //   1642: lload 6
-    //   1644: lstore 62
-    //   1646: lload 14
-    //   1648: lstore 46
-    //   1650: lload 30
-    //   1652: lstore 42
-    //   1654: lload 8
-    //   1656: lstore 60
-    //   1658: lload 22
-    //   1660: lstore 38
-    //   1662: lload 32
-    //   1664: lstore 36
-    //   1666: lload 10
-    //   1668: lstore 58
-    //   1670: lload 16
-    //   1672: lstore 18
-    //   1674: lload 24
-    //   1676: lstore 12
-    //   1678: lload 54
-    //   1680: lstore 56
-    //   1682: lload 14
-    //   1684: aload 65
-    //   1686: getfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   1689: ladd
-    //   1690: lstore 28
-    //   1692: lload 6
-    //   1694: lstore 62
-    //   1696: lload 28
-    //   1698: lstore 46
-    //   1700: lload 30
-    //   1702: lstore 42
-    //   1704: lload 8
-    //   1706: lstore 60
-    //   1708: lload 22
-    //   1710: lstore 38
-    //   1712: lload 32
-    //   1714: lstore 36
-    //   1716: lload 10
-    //   1718: lstore 58
-    //   1720: lload 16
-    //   1722: lstore 18
-    //   1724: lload 24
-    //   1726: lstore 12
-    //   1728: lload 54
-    //   1730: lstore 56
-    //   1732: lload 6
-    //   1734: aload 65
-    //   1736: getfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   1739: ladd
-    //   1740: lstore 26
-    //   1742: lload 24
-    //   1744: lstore 52
-    //   1746: lload 16
-    //   1748: lstore 50
-    //   1750: lload 10
-    //   1752: lstore 48
-    //   1754: lload 32
-    //   1756: lstore 44
-    //   1758: lload 22
-    //   1760: lstore 40
-    //   1762: lload 8
-    //   1764: lstore 34
-    //   1766: lload 26
-    //   1768: lstore 62
-    //   1770: lload 28
-    //   1772: lstore 46
-    //   1774: lload 30
-    //   1776: lstore 42
-    //   1778: lload 34
-    //   1780: lstore 60
-    //   1782: lload 40
-    //   1784: lstore 38
-    //   1786: lload 44
-    //   1788: lstore 36
-    //   1790: lload 48
-    //   1792: lstore 58
-    //   1794: lload 50
-    //   1796: lstore 18
-    //   1798: lload 52
-    //   1800: lstore 12
-    //   1802: lload 54
-    //   1804: lstore 56
-    //   1806: lload 54
-    //   1808: aload 65
-    //   1810: getfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   1813: ladd
-    //   1814: lstore 54
-    //   1816: lload 26
-    //   1818: lstore 62
-    //   1820: lload 28
-    //   1822: lstore 46
-    //   1824: lload 30
-    //   1826: lstore 42
-    //   1828: lload 34
-    //   1830: lstore 60
-    //   1832: lload 40
-    //   1834: lstore 38
-    //   1836: lload 44
-    //   1838: lstore 36
-    //   1840: lload 48
-    //   1842: lstore 58
-    //   1844: lload 50
-    //   1846: lstore 18
-    //   1848: lload 52
-    //   1850: lstore 12
-    //   1852: lload 54
-    //   1854: lstore 56
-    //   1856: ldc 161
-    //   1858: iconst_1
-    //   1859: new 118	java/lang/StringBuilder
-    //   1862: dup
-    //   1863: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   1866: ldc_w 414
-    //   1869: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1872: aload 65
-    //   1874: invokevirtual 164	com/tencent/mobileqq/statistics/storage/StorageItem:toString	()Ljava/lang/String;
-    //   1877: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1880: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1883: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1886: lload 52
-    //   1888: lstore 12
-    //   1890: lload 50
-    //   1892: lstore 16
-    //   1894: lload 48
-    //   1896: lstore 10
-    //   1898: lload 44
-    //   1900: lstore 32
-    //   1902: lload 40
-    //   1904: lstore 22
-    //   1906: lload 34
-    //   1908: lstore 8
-    //   1910: lload 30
-    //   1912: lstore 20
-    //   1914: lload 28
-    //   1916: lstore 14
-    //   1918: lload 26
-    //   1920: lstore 6
-    //   1922: aload_1
-    //   1923: ifnull +24 -> 1947
-    //   1926: aload_1
-    //   1927: iload_2
-    //   1928: iconst_1
-    //   1929: iadd
-    //   1930: iload_3
-    //   1931: iconst_2
-    //   1932: isub
-    //   1933: imul
-    //   1934: aload_0
-    //   1935: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   1938: invokevirtual 181	java/util/ArrayList:size	()I
-    //   1941: idiv
-    //   1942: invokeinterface 336 2 0
-    //   1947: iload_2
-    //   1948: iconst_1
-    //   1949: iadd
-    //   1950: istore_2
-    //   1951: lload 12
-    //   1953: lstore 24
-    //   1955: goto -976 -> 979
-    //   1958: lload 6
-    //   1960: lstore 62
-    //   1962: lload 14
-    //   1964: lstore 46
-    //   1966: lload 20
-    //   1968: lstore 42
-    //   1970: lload 8
-    //   1972: lstore 60
-    //   1974: lload 22
-    //   1976: lstore 38
-    //   1978: lload 32
-    //   1980: lstore 36
-    //   1982: lload 10
-    //   1984: lstore 58
-    //   1986: lload 16
-    //   1988: lstore 18
-    //   1990: lload 24
-    //   1992: lstore 12
-    //   1994: lload 54
-    //   1996: lstore 56
-    //   1998: lload 24
-    //   2000: aload 65
-    //   2002: getfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   2005: ladd
-    //   2006: lstore 52
-    //   2008: lload 6
-    //   2010: lstore 62
-    //   2012: lload 14
-    //   2014: lstore 46
-    //   2016: lload 20
-    //   2018: lstore 42
-    //   2020: lload 8
-    //   2022: lstore 60
-    //   2024: lload 22
-    //   2026: lstore 38
-    //   2028: lload 32
-    //   2030: lstore 36
-    //   2032: lload 10
-    //   2034: lstore 58
-    //   2036: lload 16
-    //   2038: lstore 18
-    //   2040: lload 52
-    //   2042: lstore 12
-    //   2044: lload 54
-    //   2046: lstore 56
-    //   2048: lload 16
-    //   2050: aload 65
-    //   2052: getfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   2055: ladd
-    //   2056: lstore 50
-    //   2058: lload 6
-    //   2060: lstore 62
-    //   2062: lload 14
-    //   2064: lstore 46
-    //   2066: lload 20
-    //   2068: lstore 42
-    //   2070: lload 8
-    //   2072: lstore 60
-    //   2074: lload 22
-    //   2076: lstore 38
-    //   2078: lload 32
-    //   2080: lstore 36
-    //   2082: lload 10
-    //   2084: lstore 58
-    //   2086: lload 50
-    //   2088: lstore 18
-    //   2090: lload 52
-    //   2092: lstore 12
-    //   2094: lload 54
-    //   2096: lstore 56
-    //   2098: lload 10
-    //   2100: aload 65
-    //   2102: getfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   2105: ladd
-    //   2106: lstore 48
-    //   2108: lload 6
-    //   2110: lstore 26
-    //   2112: lload 14
-    //   2114: lstore 28
-    //   2116: lload 20
-    //   2118: lstore 30
-    //   2120: lload 8
-    //   2122: lstore 34
-    //   2124: lload 22
-    //   2126: lstore 40
-    //   2128: lload 32
-    //   2130: lstore 44
-    //   2132: goto -366 -> 1766
-    //   2135: lload 6
-    //   2137: lstore 26
-    //   2139: lload 14
-    //   2141: lstore 28
-    //   2143: lload 20
-    //   2145: lstore 30
-    //   2147: lload 8
-    //   2149: lstore 34
-    //   2151: lload 22
-    //   2153: lstore 40
-    //   2155: lload 32
-    //   2157: lstore 44
-    //   2159: lload 10
-    //   2161: lstore 48
-    //   2163: lload 16
-    //   2165: lstore 50
-    //   2167: lload 24
-    //   2169: lstore 52
-    //   2171: lload 6
-    //   2173: lstore 62
-    //   2175: lload 14
-    //   2177: lstore 46
-    //   2179: lload 20
-    //   2181: lstore 42
-    //   2183: lload 8
-    //   2185: lstore 60
-    //   2187: lload 22
-    //   2189: lstore 38
-    //   2191: lload 32
-    //   2193: lstore 36
-    //   2195: lload 10
-    //   2197: lstore 58
-    //   2199: lload 16
-    //   2201: lstore 18
-    //   2203: lload 24
-    //   2205: lstore 12
-    //   2207: lload 54
-    //   2209: lstore 56
-    //   2211: aload 66
-    //   2213: ldc 61
-    //   2215: invokevirtual 319	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   2218: ifeq -452 -> 1766
-    //   2221: lload 6
-    //   2223: lstore 62
-    //   2225: lload 14
-    //   2227: lstore 46
-    //   2229: lload 20
-    //   2231: lstore 42
-    //   2233: lload 8
-    //   2235: lstore 60
-    //   2237: lload 22
-    //   2239: lstore 38
-    //   2241: lload 32
-    //   2243: lstore 36
-    //   2245: lload 10
-    //   2247: lstore 58
-    //   2249: lload 16
-    //   2251: lstore 18
-    //   2253: lload 24
-    //   2255: lstore 12
-    //   2257: lload 54
-    //   2259: lstore 56
-    //   2261: lload 32
-    //   2263: aload 65
-    //   2265: getfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   2268: ladd
-    //   2269: lstore 44
-    //   2271: lload 6
-    //   2273: lstore 62
-    //   2275: lload 14
-    //   2277: lstore 46
-    //   2279: lload 20
-    //   2281: lstore 42
-    //   2283: lload 8
-    //   2285: lstore 60
-    //   2287: lload 22
-    //   2289: lstore 38
-    //   2291: lload 44
-    //   2293: lstore 36
-    //   2295: lload 10
-    //   2297: lstore 58
-    //   2299: lload 16
-    //   2301: lstore 18
-    //   2303: lload 24
-    //   2305: lstore 12
-    //   2307: lload 54
-    //   2309: lstore 56
-    //   2311: lload 22
-    //   2313: aload 65
-    //   2315: getfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   2318: ladd
-    //   2319: lstore 40
-    //   2321: lload 6
-    //   2323: lstore 62
-    //   2325: lload 14
-    //   2327: lstore 46
-    //   2329: lload 20
-    //   2331: lstore 42
-    //   2333: lload 8
-    //   2335: lstore 60
-    //   2337: lload 40
-    //   2339: lstore 38
-    //   2341: lload 44
-    //   2343: lstore 36
-    //   2345: lload 10
-    //   2347: lstore 58
-    //   2349: lload 16
-    //   2351: lstore 18
-    //   2353: lload 24
-    //   2355: lstore 12
-    //   2357: lload 54
-    //   2359: lstore 56
-    //   2361: aload 65
-    //   2363: getfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   2366: lstore 22
-    //   2368: lload 8
-    //   2370: lload 22
-    //   2372: ladd
-    //   2373: lstore 34
-    //   2375: lload 6
-    //   2377: lstore 26
-    //   2379: lload 14
-    //   2381: lstore 28
-    //   2383: lload 20
-    //   2385: lstore 30
-    //   2387: lload 10
-    //   2389: lstore 48
-    //   2391: lload 16
-    //   2393: lstore 50
-    //   2395: lload 24
-    //   2397: lstore 52
-    //   2399: goto -633 -> 1766
-    //   2402: astore 65
-    //   2404: aload 65
-    //   2406: invokevirtual 415	java/lang/Exception:printStackTrace	()V
-    //   2409: ldc 161
-    //   2411: iconst_1
-    //   2412: new 118	java/lang/StringBuilder
-    //   2415: dup
-    //   2416: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   2419: ldc_w 417
-    //   2422: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2425: aload 65
-    //   2427: invokevirtual 421	java/lang/Exception:getStackTrace	()[Ljava/lang/StackTraceElement;
-    //   2430: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   2433: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2436: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2439: lload 62
-    //   2441: lstore 6
-    //   2443: lload 46
-    //   2445: lstore 14
-    //   2447: lload 42
-    //   2449: lstore 20
-    //   2451: lload 60
-    //   2453: lstore 8
-    //   2455: lload 38
-    //   2457: lstore 22
-    //   2459: lload 36
-    //   2461: lstore 32
-    //   2463: lload 58
-    //   2465: lstore 10
-    //   2467: lload 18
-    //   2469: lstore 16
-    //   2471: lload 56
-    //   2473: lstore 54
-    //   2475: goto -553 -> 1922
-    //   2478: aload_0
-    //   2479: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   908: lconst_0
+    //   909: lstore 14
+    //   911: lconst_0
+    //   912: lstore 18
+    //   914: lconst_0
+    //   915: lstore 32
+    //   917: lconst_0
+    //   918: lstore 10
+    //   920: lconst_0
+    //   921: lstore 12
+    //   923: lconst_0
+    //   924: lstore 20
+    //   926: lconst_0
+    //   927: lstore 22
+    //   929: lload 6
+    //   931: lstore 24
+    //   933: lload 8
+    //   935: lstore 16
+    //   937: lload 18
+    //   939: lstore 8
+    //   941: lload 12
+    //   943: lstore 6
+    //   945: aload_0
+    //   946: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   949: invokevirtual 183	java/util/ArrayList:size	()I
+    //   952: istore 4
+    //   954: iload_2
+    //   955: iload 4
+    //   957: if_icmpge +1491 -> 2448
+    //   960: aload_0
+    //   961: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   964: invokevirtual 183	java/util/ArrayList:size	()I
+    //   967: sipush 500
+    //   970: if_icmplt +471 -> 1441
+    //   973: ldc2_w 426
+    //   976: invokestatic 433	java/lang/Thread:sleep	(J)V
+    //   979: aload_0
+    //   980: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   983: iload_2
+    //   984: invokevirtual 197	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   987: checkcast 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   990: astore 65
+    //   992: aload 65
+    //   994: lconst_0
+    //   995: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   998: aload 65
+    //   1000: lconst_0
+    //   1001: putfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   1004: aload 65
+    //   1006: lconst_0
+    //   1007: putfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   1010: aload 65
+    //   1012: getfield 152	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1015: astore 66
+    //   1017: lload 6
+    //   1019: lstore 62
+    //   1021: lload 14
+    //   1023: lstore 46
+    //   1025: lload 20
+    //   1027: lstore 42
+    //   1029: lload 8
+    //   1031: lstore 60
+    //   1033: lload 22
+    //   1035: lstore 38
+    //   1037: lload 32
+    //   1039: lstore 36
+    //   1041: lload 10
+    //   1043: lstore 58
+    //   1045: lload 16
+    //   1047: lstore 18
+    //   1049: lload 24
+    //   1051: lstore 12
+    //   1053: lload 54
+    //   1055: lstore 56
+    //   1057: new 118	java/io/File
+    //   1060: dup
+    //   1061: aload 66
+    //   1063: invokespecial 134	java/io/File:<init>	(Ljava/lang/String;)V
+    //   1066: invokevirtual 225	java/io/File:list	()[Ljava/lang/String;
+    //   1069: astore 67
+    //   1071: aload 67
+    //   1073: ifnull +387 -> 1460
+    //   1076: lload 6
+    //   1078: lstore 62
+    //   1080: lload 14
+    //   1082: lstore 46
+    //   1084: lload 20
+    //   1086: lstore 42
+    //   1088: lload 8
+    //   1090: lstore 60
+    //   1092: lload 22
+    //   1094: lstore 38
+    //   1096: lload 32
+    //   1098: lstore 36
+    //   1100: lload 10
+    //   1102: lstore 58
+    //   1104: lload 16
+    //   1106: lstore 18
+    //   1108: lload 24
+    //   1110: lstore 12
+    //   1112: lload 54
+    //   1114: lstore 56
+    //   1116: aload 67
+    //   1118: arraylength
+    //   1119: ifle +341 -> 1460
+    //   1122: lload 6
+    //   1124: lstore 62
+    //   1126: lload 14
+    //   1128: lstore 46
+    //   1130: lload 20
+    //   1132: lstore 42
+    //   1134: lload 8
+    //   1136: lstore 60
+    //   1138: lload 22
+    //   1140: lstore 38
+    //   1142: lload 32
+    //   1144: lstore 36
+    //   1146: lload 10
+    //   1148: lstore 58
+    //   1150: lload 16
+    //   1152: lstore 18
+    //   1154: lload 24
+    //   1156: lstore 12
+    //   1158: lload 54
+    //   1160: lstore 56
+    //   1162: aload 67
+    //   1164: arraylength
+    //   1165: istore 5
+    //   1167: iconst_0
+    //   1168: istore 4
+    //   1170: iload 4
+    //   1172: iload 5
+    //   1174: if_icmpge +286 -> 1460
+    //   1177: aload 67
+    //   1179: iload 4
+    //   1181: aaload
+    //   1182: astore 68
+    //   1184: lload 6
+    //   1186: lstore 62
+    //   1188: lload 14
+    //   1190: lstore 46
+    //   1192: lload 20
+    //   1194: lstore 42
+    //   1196: lload 8
+    //   1198: lstore 60
+    //   1200: lload 22
+    //   1202: lstore 38
+    //   1204: lload 32
+    //   1206: lstore 36
+    //   1208: lload 10
+    //   1210: lstore 58
+    //   1212: lload 16
+    //   1214: lstore 18
+    //   1216: lload 24
+    //   1218: lstore 12
+    //   1220: lload 54
+    //   1222: lstore 56
+    //   1224: aload_0
+    //   1225: new 120	java/lang/StringBuilder
+    //   1228: dup
+    //   1229: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   1232: aload 66
+    //   1234: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1237: ldc 127
+    //   1239: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1242: aload 68
+    //   1244: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1247: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1250: invokespecial 435	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   1253: astore 68
+    //   1255: lload 6
+    //   1257: lstore 62
+    //   1259: lload 14
+    //   1261: lstore 46
+    //   1263: lload 20
+    //   1265: lstore 42
+    //   1267: lload 8
+    //   1269: lstore 60
+    //   1271: lload 22
+    //   1273: lstore 38
+    //   1275: lload 32
+    //   1277: lstore 36
+    //   1279: lload 10
+    //   1281: lstore 58
+    //   1283: lload 16
+    //   1285: lstore 18
+    //   1287: lload 24
+    //   1289: lstore 12
+    //   1291: lload 54
+    //   1293: lstore 56
+    //   1295: aload 65
+    //   1297: aload 65
+    //   1299: getfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   1302: aload 68
+    //   1304: ldc 241
+    //   1306: lconst_0
+    //   1307: invokevirtual 436	android/os/Bundle:getLong	(Ljava/lang/String;J)J
+    //   1310: ladd
+    //   1311: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   1314: lload 6
+    //   1316: lstore 62
+    //   1318: lload 14
+    //   1320: lstore 46
+    //   1322: lload 20
+    //   1324: lstore 42
+    //   1326: lload 8
+    //   1328: lstore 60
+    //   1330: lload 22
+    //   1332: lstore 38
+    //   1334: lload 32
+    //   1336: lstore 36
+    //   1338: lload 10
+    //   1340: lstore 58
+    //   1342: lload 16
+    //   1344: lstore 18
+    //   1346: lload 24
+    //   1348: lstore 12
+    //   1350: lload 54
+    //   1352: lstore 56
+    //   1354: aload 65
+    //   1356: aload 65
+    //   1358: getfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   1361: aload 68
+    //   1363: ldc 247
+    //   1365: lconst_0
+    //   1366: invokevirtual 436	android/os/Bundle:getLong	(Ljava/lang/String;J)J
+    //   1369: ladd
+    //   1370: putfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   1373: lload 6
+    //   1375: lstore 62
+    //   1377: lload 14
+    //   1379: lstore 46
+    //   1381: lload 20
+    //   1383: lstore 42
+    //   1385: lload 8
+    //   1387: lstore 60
+    //   1389: lload 22
+    //   1391: lstore 38
+    //   1393: lload 32
+    //   1395: lstore 36
+    //   1397: lload 10
+    //   1399: lstore 58
+    //   1401: lload 16
+    //   1403: lstore 18
+    //   1405: lload 24
+    //   1407: lstore 12
+    //   1409: lload 54
+    //   1411: lstore 56
+    //   1413: aload 65
+    //   1415: aload 65
+    //   1417: getfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   1420: aload 68
+    //   1422: ldc 249
+    //   1424: lconst_0
+    //   1425: invokevirtual 436	android/os/Bundle:getLong	(Ljava/lang/String;J)J
+    //   1428: ladd
+    //   1429: putfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   1432: iload 4
+    //   1434: iconst_1
+    //   1435: iadd
+    //   1436: istore 4
+    //   1438: goto -268 -> 1170
+    //   1441: ldc2_w 437
+    //   1444: invokestatic 433	java/lang/Thread:sleep	(J)V
+    //   1447: goto -468 -> 979
+    //   1450: astore 65
+    //   1452: aload 65
+    //   1454: invokevirtual 441	java/lang/InterruptedException:printStackTrace	()V
+    //   1457: goto -478 -> 979
+    //   1460: lload 6
+    //   1462: lstore 62
+    //   1464: lload 14
+    //   1466: lstore 46
+    //   1468: lload 20
+    //   1470: lstore 42
+    //   1472: lload 8
+    //   1474: lstore 60
+    //   1476: lload 22
+    //   1478: lstore 38
+    //   1480: lload 32
+    //   1482: lstore 36
+    //   1484: lload 10
+    //   1486: lstore 58
+    //   1488: lload 16
+    //   1490: lstore 18
+    //   1492: lload 24
+    //   1494: lstore 12
+    //   1496: lload 54
+    //   1498: lstore 56
+    //   1500: aload 66
+    //   1502: ldc_w 443
+    //   1505: invokevirtual 352	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   1508: ifeq +597 -> 2105
+    //   1511: lload 6
+    //   1513: lstore 62
+    //   1515: lload 14
+    //   1517: lstore 46
+    //   1519: lload 20
+    //   1521: lstore 42
+    //   1523: lload 8
+    //   1525: lstore 60
+    //   1527: lload 22
+    //   1529: lstore 38
+    //   1531: lload 32
+    //   1533: lstore 36
+    //   1535: lload 10
+    //   1537: lstore 58
+    //   1539: lload 16
+    //   1541: lstore 18
+    //   1543: lload 24
+    //   1545: lstore 12
+    //   1547: lload 54
+    //   1549: lstore 56
+    //   1551: aload 66
+    //   1553: ldc_w 445
+    //   1556: invokevirtual 352	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   1559: ifeq +369 -> 1928
+    //   1562: lload 6
+    //   1564: lstore 62
+    //   1566: lload 14
+    //   1568: lstore 46
+    //   1570: lload 20
+    //   1572: lstore 42
+    //   1574: lload 8
+    //   1576: lstore 60
+    //   1578: lload 22
+    //   1580: lstore 38
+    //   1582: lload 32
+    //   1584: lstore 36
+    //   1586: lload 10
+    //   1588: lstore 58
+    //   1590: lload 16
+    //   1592: lstore 18
+    //   1594: lload 24
+    //   1596: lstore 12
+    //   1598: lload 54
+    //   1600: lstore 56
+    //   1602: lload 20
+    //   1604: aload 65
+    //   1606: getfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   1609: ladd
+    //   1610: lstore 30
+    //   1612: lload 6
+    //   1614: lstore 62
+    //   1616: lload 14
+    //   1618: lstore 46
+    //   1620: lload 30
+    //   1622: lstore 42
+    //   1624: lload 8
+    //   1626: lstore 60
+    //   1628: lload 22
+    //   1630: lstore 38
+    //   1632: lload 32
+    //   1634: lstore 36
+    //   1636: lload 10
+    //   1638: lstore 58
+    //   1640: lload 16
+    //   1642: lstore 18
+    //   1644: lload 24
+    //   1646: lstore 12
+    //   1648: lload 54
+    //   1650: lstore 56
+    //   1652: lload 14
+    //   1654: aload 65
+    //   1656: getfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   1659: ladd
+    //   1660: lstore 28
+    //   1662: lload 6
+    //   1664: lstore 62
+    //   1666: lload 28
+    //   1668: lstore 46
+    //   1670: lload 30
+    //   1672: lstore 42
+    //   1674: lload 8
+    //   1676: lstore 60
+    //   1678: lload 22
+    //   1680: lstore 38
+    //   1682: lload 32
+    //   1684: lstore 36
+    //   1686: lload 10
+    //   1688: lstore 58
+    //   1690: lload 16
+    //   1692: lstore 18
+    //   1694: lload 24
+    //   1696: lstore 12
+    //   1698: lload 54
+    //   1700: lstore 56
+    //   1702: lload 6
+    //   1704: aload 65
+    //   1706: getfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   1709: ladd
+    //   1710: lstore 26
+    //   1712: lload 24
+    //   1714: lstore 52
+    //   1716: lload 16
+    //   1718: lstore 50
+    //   1720: lload 10
+    //   1722: lstore 48
+    //   1724: lload 32
+    //   1726: lstore 44
+    //   1728: lload 22
+    //   1730: lstore 40
+    //   1732: lload 8
+    //   1734: lstore 34
+    //   1736: lload 26
+    //   1738: lstore 62
+    //   1740: lload 28
+    //   1742: lstore 46
+    //   1744: lload 30
+    //   1746: lstore 42
+    //   1748: lload 34
+    //   1750: lstore 60
+    //   1752: lload 40
+    //   1754: lstore 38
+    //   1756: lload 44
+    //   1758: lstore 36
+    //   1760: lload 48
+    //   1762: lstore 58
+    //   1764: lload 50
+    //   1766: lstore 18
+    //   1768: lload 52
+    //   1770: lstore 12
+    //   1772: lload 54
+    //   1774: lstore 56
+    //   1776: lload 54
+    //   1778: aload 65
+    //   1780: getfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   1783: ladd
+    //   1784: lstore 54
+    //   1786: lload 26
+    //   1788: lstore 62
+    //   1790: lload 28
+    //   1792: lstore 46
+    //   1794: lload 30
+    //   1796: lstore 42
+    //   1798: lload 34
+    //   1800: lstore 60
+    //   1802: lload 40
+    //   1804: lstore 38
+    //   1806: lload 44
+    //   1808: lstore 36
+    //   1810: lload 48
+    //   1812: lstore 58
+    //   1814: lload 50
+    //   1816: lstore 18
+    //   1818: lload 52
+    //   1820: lstore 12
+    //   1822: lload 54
+    //   1824: lstore 56
+    //   1826: ldc 163
+    //   1828: iconst_1
+    //   1829: new 120	java/lang/StringBuilder
+    //   1832: dup
+    //   1833: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   1836: ldc_w 447
+    //   1839: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1842: aload 65
+    //   1844: invokevirtual 166	com/tencent/mobileqq/statistics/storage/StorageItem:toString	()Ljava/lang/String;
+    //   1847: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1850: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1853: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1856: lload 52
+    //   1858: lstore 12
+    //   1860: lload 50
+    //   1862: lstore 16
+    //   1864: lload 48
+    //   1866: lstore 10
+    //   1868: lload 44
+    //   1870: lstore 32
+    //   1872: lload 40
+    //   1874: lstore 22
+    //   1876: lload 34
+    //   1878: lstore 8
+    //   1880: lload 30
+    //   1882: lstore 20
+    //   1884: lload 28
+    //   1886: lstore 14
+    //   1888: lload 26
+    //   1890: lstore 6
+    //   1892: aload_1
+    //   1893: ifnull +24 -> 1917
+    //   1896: aload_1
+    //   1897: iload_2
+    //   1898: iconst_1
+    //   1899: iadd
+    //   1900: iload_3
+    //   1901: iconst_2
+    //   1902: isub
+    //   1903: imul
+    //   1904: aload_0
+    //   1905: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   1908: invokevirtual 183	java/util/ArrayList:size	()I
+    //   1911: idiv
+    //   1912: invokeinterface 369 2 0
+    //   1917: iload_2
+    //   1918: iconst_1
+    //   1919: iadd
+    //   1920: istore_2
+    //   1921: lload 12
+    //   1923: lstore 24
+    //   1925: goto -980 -> 945
+    //   1928: lload 6
+    //   1930: lstore 62
+    //   1932: lload 14
+    //   1934: lstore 46
+    //   1936: lload 20
+    //   1938: lstore 42
+    //   1940: lload 8
+    //   1942: lstore 60
+    //   1944: lload 22
+    //   1946: lstore 38
+    //   1948: lload 32
+    //   1950: lstore 36
+    //   1952: lload 10
+    //   1954: lstore 58
+    //   1956: lload 16
+    //   1958: lstore 18
+    //   1960: lload 24
+    //   1962: lstore 12
+    //   1964: lload 54
+    //   1966: lstore 56
+    //   1968: lload 24
+    //   1970: aload 65
+    //   1972: getfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   1975: ladd
+    //   1976: lstore 52
+    //   1978: lload 6
+    //   1980: lstore 62
+    //   1982: lload 14
+    //   1984: lstore 46
+    //   1986: lload 20
+    //   1988: lstore 42
+    //   1990: lload 8
+    //   1992: lstore 60
+    //   1994: lload 22
+    //   1996: lstore 38
+    //   1998: lload 32
+    //   2000: lstore 36
+    //   2002: lload 10
+    //   2004: lstore 58
+    //   2006: lload 16
+    //   2008: lstore 18
+    //   2010: lload 52
+    //   2012: lstore 12
+    //   2014: lload 54
+    //   2016: lstore 56
+    //   2018: lload 16
+    //   2020: aload 65
+    //   2022: getfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   2025: ladd
+    //   2026: lstore 50
+    //   2028: lload 6
+    //   2030: lstore 62
+    //   2032: lload 14
+    //   2034: lstore 46
+    //   2036: lload 20
+    //   2038: lstore 42
+    //   2040: lload 8
+    //   2042: lstore 60
+    //   2044: lload 22
+    //   2046: lstore 38
+    //   2048: lload 32
+    //   2050: lstore 36
+    //   2052: lload 10
+    //   2054: lstore 58
+    //   2056: lload 50
+    //   2058: lstore 18
+    //   2060: lload 52
+    //   2062: lstore 12
+    //   2064: lload 54
+    //   2066: lstore 56
+    //   2068: lload 10
+    //   2070: aload 65
+    //   2072: getfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   2075: ladd
+    //   2076: lstore 48
+    //   2078: lload 6
+    //   2080: lstore 26
+    //   2082: lload 14
+    //   2084: lstore 28
+    //   2086: lload 20
+    //   2088: lstore 30
+    //   2090: lload 8
+    //   2092: lstore 34
+    //   2094: lload 22
+    //   2096: lstore 40
+    //   2098: lload 32
+    //   2100: lstore 44
+    //   2102: goto -366 -> 1736
+    //   2105: lload 6
+    //   2107: lstore 26
+    //   2109: lload 14
+    //   2111: lstore 28
+    //   2113: lload 20
+    //   2115: lstore 30
+    //   2117: lload 8
+    //   2119: lstore 34
+    //   2121: lload 22
+    //   2123: lstore 40
+    //   2125: lload 32
+    //   2127: lstore 44
+    //   2129: lload 10
+    //   2131: lstore 48
+    //   2133: lload 16
+    //   2135: lstore 50
+    //   2137: lload 24
+    //   2139: lstore 52
+    //   2141: lload 6
+    //   2143: lstore 62
+    //   2145: lload 14
+    //   2147: lstore 46
+    //   2149: lload 20
+    //   2151: lstore 42
+    //   2153: lload 8
+    //   2155: lstore 60
+    //   2157: lload 22
+    //   2159: lstore 38
+    //   2161: lload 32
+    //   2163: lstore 36
+    //   2165: lload 10
+    //   2167: lstore 58
+    //   2169: lload 16
+    //   2171: lstore 18
+    //   2173: lload 24
+    //   2175: lstore 12
+    //   2177: lload 54
+    //   2179: lstore 56
+    //   2181: aload 66
+    //   2183: ldc 63
+    //   2185: invokevirtual 352	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   2188: ifeq -452 -> 1736
+    //   2191: lload 6
+    //   2193: lstore 62
+    //   2195: lload 14
+    //   2197: lstore 46
+    //   2199: lload 20
+    //   2201: lstore 42
+    //   2203: lload 8
+    //   2205: lstore 60
+    //   2207: lload 22
+    //   2209: lstore 38
+    //   2211: lload 32
+    //   2213: lstore 36
+    //   2215: lload 10
+    //   2217: lstore 58
+    //   2219: lload 16
+    //   2221: lstore 18
+    //   2223: lload 24
+    //   2225: lstore 12
+    //   2227: lload 54
+    //   2229: lstore 56
+    //   2231: lload 32
+    //   2233: aload 65
+    //   2235: getfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   2238: ladd
+    //   2239: lstore 44
+    //   2241: lload 6
+    //   2243: lstore 62
+    //   2245: lload 14
+    //   2247: lstore 46
+    //   2249: lload 20
+    //   2251: lstore 42
+    //   2253: lload 8
+    //   2255: lstore 60
+    //   2257: lload 22
+    //   2259: lstore 38
+    //   2261: lload 44
+    //   2263: lstore 36
+    //   2265: lload 10
+    //   2267: lstore 58
+    //   2269: lload 16
+    //   2271: lstore 18
+    //   2273: lload 24
+    //   2275: lstore 12
+    //   2277: lload 54
+    //   2279: lstore 56
+    //   2281: lload 22
+    //   2283: aload 65
+    //   2285: getfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   2288: ladd
+    //   2289: lstore 40
+    //   2291: lload 6
+    //   2293: lstore 62
+    //   2295: lload 14
+    //   2297: lstore 46
+    //   2299: lload 20
+    //   2301: lstore 42
+    //   2303: lload 8
+    //   2305: lstore 60
+    //   2307: lload 40
+    //   2309: lstore 38
+    //   2311: lload 44
+    //   2313: lstore 36
+    //   2315: lload 10
+    //   2317: lstore 58
+    //   2319: lload 16
+    //   2321: lstore 18
+    //   2323: lload 24
+    //   2325: lstore 12
+    //   2327: lload 54
+    //   2329: lstore 56
+    //   2331: aload 65
+    //   2333: getfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   2336: lstore 22
+    //   2338: lload 8
+    //   2340: lload 22
+    //   2342: ladd
+    //   2343: lstore 34
+    //   2345: lload 6
+    //   2347: lstore 26
+    //   2349: lload 14
+    //   2351: lstore 28
+    //   2353: lload 20
+    //   2355: lstore 30
+    //   2357: lload 10
+    //   2359: lstore 48
+    //   2361: lload 16
+    //   2363: lstore 50
+    //   2365: lload 24
+    //   2367: lstore 52
+    //   2369: goto -633 -> 1736
+    //   2372: astore 65
+    //   2374: aload 65
+    //   2376: invokevirtual 448	java/lang/Exception:printStackTrace	()V
+    //   2379: ldc 163
+    //   2381: iconst_1
+    //   2382: new 120	java/lang/StringBuilder
+    //   2385: dup
+    //   2386: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   2389: ldc_w 450
+    //   2392: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2395: aload 65
+    //   2397: invokevirtual 454	java/lang/Exception:getStackTrace	()[Ljava/lang/StackTraceElement;
+    //   2400: invokevirtual 457	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2403: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2406: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2409: lload 62
+    //   2411: lstore 6
+    //   2413: lload 46
+    //   2415: lstore 14
+    //   2417: lload 42
+    //   2419: lstore 20
+    //   2421: lload 60
+    //   2423: lstore 8
+    //   2425: lload 38
+    //   2427: lstore 22
+    //   2429: lload 36
+    //   2431: lstore 32
+    //   2433: lload 58
+    //   2435: lstore 10
+    //   2437: lload 18
+    //   2439: lstore 16
+    //   2441: lload 56
+    //   2443: lstore 54
+    //   2445: goto -553 -> 1892
+    //   2448: aload_0
+    //   2449: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   2452: aload_0
+    //   2453: getfield 91	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Ailx	Lailx;
+    //   2456: invokestatic 193	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   2459: ldc 163
+    //   2461: iconst_1
+    //   2462: ldc_w 459
+    //   2465: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2468: iconst_0
+    //   2469: istore_2
+    //   2470: iload_2
+    //   2471: aload_0
+    //   2472: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   2475: invokevirtual 183	java/util/ArrayList:size	()I
+    //   2478: if_icmpge +25 -> 2503
+    //   2481: aload_0
     //   2482: aload_0
-    //   2483: getfield 89	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Aihe	Laihe;
-    //   2486: invokestatic 191	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   2489: ldc 161
-    //   2491: iconst_1
-    //   2492: ldc_w 426
-    //   2495: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2498: iconst_0
+    //   2483: getfield 79	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   2486: iload_2
+    //   2487: invokevirtual 197	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2490: checkcast 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   2493: invokespecial 176	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Lcom/tencent/mobileqq/statistics/storage/StorageItem;)V
+    //   2496: iload_2
+    //   2497: iconst_1
+    //   2498: iadd
     //   2499: istore_2
-    //   2500: iload_2
-    //   2501: aload_0
-    //   2502: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   2505: invokevirtual 181	java/util/ArrayList:size	()I
-    //   2508: if_icmpge +25 -> 2533
-    //   2511: aload_0
-    //   2512: aload_0
-    //   2513: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   2516: iload_2
-    //   2517: invokevirtual 195	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2520: checkcast 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   2523: invokespecial 174	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Lcom/tencent/mobileqq/statistics/storage/StorageItem;)V
-    //   2526: iload_2
-    //   2527: iconst_1
-    //   2528: iadd
-    //   2529: istore_2
-    //   2530: goto -30 -> 2500
-    //   2533: ldc 161
-    //   2535: iconst_1
-    //   2536: new 118	java/lang/StringBuilder
-    //   2539: dup
-    //   2540: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   2543: ldc_w 428
-    //   2546: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2549: lload 54
-    //   2551: invokevirtual 256	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2554: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2557: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2560: new 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   2563: dup
-    //   2564: invokespecial 381	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
-    //   2567: astore 65
-    //   2569: aload 65
-    //   2571: iconst_0
-    //   2572: putfield 142	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
-    //   2575: aload 65
-    //   2577: ldc_w 430
-    //   2580: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   2583: aload 65
-    //   2585: lload 16
-    //   2587: lload 22
-    //   2589: ladd
-    //   2590: lload 14
-    //   2592: ladd
-    //   2593: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   2596: aload 65
-    //   2598: lload 10
-    //   2600: lload 8
-    //   2602: ladd
-    //   2603: lload 6
-    //   2605: ladd
-    //   2606: putfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   2609: aload 65
-    //   2611: lconst_0
-    //   2612: putfield 155	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
-    //   2615: aload 65
-    //   2617: lload 54
-    //   2619: putfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   2622: aload_0
-    //   2623: aload 65
-    //   2625: invokespecial 174	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Lcom/tencent/mobileqq/statistics/storage/StorageItem;)V
-    //   2628: ldc 161
-    //   2630: iconst_1
-    //   2631: new 118	java/lang/StringBuilder
-    //   2634: dup
-    //   2635: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   2638: ldc_w 432
-    //   2641: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2644: aload 65
-    //   2646: invokevirtual 164	com/tencent/mobileqq/statistics/storage/StorageItem:toString	()Ljava/lang/String;
-    //   2649: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2652: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2655: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2658: new 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   2661: dup
-    //   2662: invokespecial 381	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
-    //   2665: astore 65
-    //   2667: aload 65
-    //   2669: iconst_0
-    //   2670: putfield 142	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
-    //   2673: aload 65
-    //   2675: ldc_w 434
-    //   2678: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   2681: aload 65
-    //   2683: aload_0
-    //   2684: aload_0
-    //   2685: getfield 97	com/tencent/mobileqq/statistics/storage/StorageReport:c	Ljava/util/ArrayList;
-    //   2688: invokespecial 436	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/util/ArrayList;)Ljava/lang/String;
-    //   2691: putfield 141	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2694: aload 65
-    //   2696: lload 14
-    //   2698: lload 16
-    //   2700: ladd
-    //   2701: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   2704: aload 65
-    //   2706: lload 6
-    //   2708: lload 10
-    //   2710: ladd
-    //   2711: putfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   2714: aload 65
-    //   2716: lconst_0
-    //   2717: putfield 155	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
-    //   2720: aload 65
-    //   2722: lload 24
-    //   2724: lload 20
-    //   2726: ladd
-    //   2727: putfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   2730: aload_0
-    //   2731: aload 65
-    //   2733: invokespecial 174	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Lcom/tencent/mobileqq/statistics/storage/StorageItem;)V
-    //   2736: ldc 161
-    //   2738: iconst_1
-    //   2739: new 118	java/lang/StringBuilder
-    //   2742: dup
-    //   2743: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   2746: ldc_w 438
-    //   2749: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2752: aload 65
-    //   2754: invokevirtual 164	com/tencent/mobileqq/statistics/storage/StorageItem:toString	()Ljava/lang/String;
-    //   2757: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2760: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2763: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2766: new 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   2769: dup
-    //   2770: invokespecial 381	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
-    //   2773: astore 65
-    //   2775: aload 65
-    //   2777: iconst_0
-    //   2778: putfield 142	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
-    //   2781: aload 65
-    //   2783: ldc_w 440
-    //   2786: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   2789: aload 65
-    //   2791: aload_0
-    //   2792: aload_0
-    //   2793: getfield 99	com/tencent/mobileqq/statistics/storage/StorageReport:d	Ljava/util/ArrayList;
-    //   2796: invokespecial 436	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/util/ArrayList;)Ljava/lang/String;
-    //   2799: putfield 141	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2802: aload 65
-    //   2804: lload 22
-    //   2806: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
-    //   2809: aload 65
-    //   2811: lload 8
-    //   2813: putfield 291	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
-    //   2816: aload 65
-    //   2818: lconst_0
-    //   2819: putfield 155	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
-    //   2822: aload 65
-    //   2824: lload 32
-    //   2826: putfield 148	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
-    //   2829: aload_0
-    //   2830: aload 65
-    //   2832: invokespecial 174	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Lcom/tencent/mobileqq/statistics/storage/StorageItem;)V
-    //   2835: ldc 161
+    //   2500: goto -30 -> 2470
+    //   2503: ldc 163
+    //   2505: iconst_1
+    //   2506: new 120	java/lang/StringBuilder
+    //   2509: dup
+    //   2510: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   2513: ldc_w 461
+    //   2516: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2519: lload 54
+    //   2521: invokevirtual 282	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2524: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2527: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2530: new 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   2533: dup
+    //   2534: invokespecial 414	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
+    //   2537: astore 65
+    //   2539: aload 65
+    //   2541: iconst_0
+    //   2542: putfield 144	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
+    //   2545: aload 65
+    //   2547: ldc_w 463
+    //   2550: putfield 152	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2553: aload 65
+    //   2555: lload 16
+    //   2557: lload 22
+    //   2559: ladd
+    //   2560: lload 14
+    //   2562: ladd
+    //   2563: putfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   2566: aload 65
+    //   2568: lload 10
+    //   2570: lload 8
+    //   2572: ladd
+    //   2573: lload 6
+    //   2575: ladd
+    //   2576: putfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   2579: aload 65
+    //   2581: lconst_0
+    //   2582: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
+    //   2585: aload 65
+    //   2587: lload 54
+    //   2589: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   2592: aload_0
+    //   2593: aload 65
+    //   2595: invokespecial 176	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Lcom/tencent/mobileqq/statistics/storage/StorageItem;)V
+    //   2598: ldc 163
+    //   2600: iconst_1
+    //   2601: new 120	java/lang/StringBuilder
+    //   2604: dup
+    //   2605: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   2608: ldc_w 465
+    //   2611: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2614: aload 65
+    //   2616: invokevirtual 166	com/tencent/mobileqq/statistics/storage/StorageItem:toString	()Ljava/lang/String;
+    //   2619: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2622: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2625: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2628: new 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   2631: dup
+    //   2632: invokespecial 414	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
+    //   2635: astore 65
+    //   2637: aload 65
+    //   2639: iconst_0
+    //   2640: putfield 144	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
+    //   2643: aload 65
+    //   2645: ldc_w 467
+    //   2648: putfield 152	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2651: aload 65
+    //   2653: aload_0
+    //   2654: aload_0
+    //   2655: getfield 99	com/tencent/mobileqq/statistics/storage/StorageReport:c	Ljava/util/ArrayList;
+    //   2658: invokespecial 469	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/util/ArrayList;)Ljava/lang/String;
+    //   2661: putfield 143	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2664: aload 65
+    //   2666: lload 14
+    //   2668: lload 16
+    //   2670: ladd
+    //   2671: putfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   2674: aload 65
+    //   2676: lload 6
+    //   2678: lload 10
+    //   2680: ladd
+    //   2681: putfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   2684: aload 65
+    //   2686: lconst_0
+    //   2687: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
+    //   2690: aload 65
+    //   2692: lload 24
+    //   2694: lload 20
+    //   2696: ladd
+    //   2697: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   2700: aload_0
+    //   2701: aload 65
+    //   2703: invokespecial 176	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Lcom/tencent/mobileqq/statistics/storage/StorageItem;)V
+    //   2706: ldc 163
+    //   2708: iconst_1
+    //   2709: new 120	java/lang/StringBuilder
+    //   2712: dup
+    //   2713: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   2716: ldc_w 471
+    //   2719: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2722: aload 65
+    //   2724: invokevirtual 166	com/tencent/mobileqq/statistics/storage/StorageItem:toString	()Ljava/lang/String;
+    //   2727: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2730: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2733: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2736: new 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   2739: dup
+    //   2740: invokespecial 414	com/tencent/mobileqq/statistics/storage/StorageItem:<init>	()V
+    //   2743: astore 65
+    //   2745: aload 65
+    //   2747: iconst_0
+    //   2748: putfield 144	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Boolean	Z
+    //   2751: aload 65
+    //   2753: ldc_w 473
+    //   2756: putfield 152	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   2759: aload 65
+    //   2761: aload_0
+    //   2762: aload_0
+    //   2763: getfield 101	com/tencent/mobileqq/statistics/storage/StorageReport:d	Ljava/util/ArrayList;
+    //   2766: invokespecial 469	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Ljava/util/ArrayList;)Ljava/lang/String;
+    //   2769: putfield 143	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2772: aload 65
+    //   2774: lload 22
+    //   2776: putfield 159	com/tencent/mobileqq/statistics/storage/StorageItem:c	J
+    //   2779: aload 65
+    //   2781: lload 8
+    //   2783: putfield 324	com/tencent/mobileqq/statistics/storage/StorageItem:d	J
+    //   2786: aload 65
+    //   2788: lconst_0
+    //   2789: putfield 157	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_b_of_type_Long	J
+    //   2792: aload 65
+    //   2794: lload 32
+    //   2796: putfield 150	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_Long	J
+    //   2799: aload_0
+    //   2800: aload 65
+    //   2802: invokespecial 176	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Lcom/tencent/mobileqq/statistics/storage/StorageItem;)V
+    //   2805: ldc 163
+    //   2807: iconst_1
+    //   2808: new 120	java/lang/StringBuilder
+    //   2811: dup
+    //   2812: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   2815: ldc_w 475
+    //   2818: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2821: aload 65
+    //   2823: invokevirtual 166	com/tencent/mobileqq/statistics/storage/StorageItem:toString	()Ljava/lang/String;
+    //   2826: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2829: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2832: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2835: ldc 163
     //   2837: iconst_1
-    //   2838: new 118	java/lang/StringBuilder
-    //   2841: dup
-    //   2842: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   2845: ldc_w 442
-    //   2848: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2851: aload 65
-    //   2853: invokevirtual 164	com/tencent/mobileqq/statistics/storage/StorageItem:toString	()Ljava/lang/String;
-    //   2856: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2859: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2862: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2865: ldc 161
-    //   2867: iconst_1
-    //   2868: ldc_w 444
-    //   2871: invokestatic 169	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   2874: iconst_0
-    //   2875: istore_2
-    //   2876: iload_2
-    //   2877: aload_0
-    //   2878: getfield 75	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   2881: invokevirtual 181	java/util/ArrayList:size	()I
-    //   2884: if_icmpge +58 -> 2942
-    //   2887: aload_0
-    //   2888: getfield 75	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   2891: iload_2
-    //   2892: invokevirtual 195	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2895: checkcast 25	com/tencent/mobileqq/statistics/storage/StorageItem
-    //   2898: astore 65
+    //   2838: ldc_w 477
+    //   2841: invokestatic 171	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   2844: iconst_0
+    //   2845: istore_2
+    //   2846: iload_2
+    //   2847: aload_0
+    //   2848: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   2851: invokevirtual 183	java/util/ArrayList:size	()I
+    //   2854: if_icmpge +58 -> 2912
+    //   2857: aload_0
+    //   2858: getfield 77	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   2861: iload_2
+    //   2862: invokevirtual 197	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2865: checkcast 27	com/tencent/mobileqq/statistics/storage/StorageItem
+    //   2868: astore 65
+    //   2870: aload 65
+    //   2872: new 120	java/lang/StringBuilder
+    //   2875: dup
+    //   2876: invokespecial 121	java/lang/StringBuilder:<init>	()V
+    //   2879: ldc_w 479
+    //   2882: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2885: aload 65
+    //   2887: getfield 143	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2890: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2893: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2896: putfield 143	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2899: aload_0
     //   2900: aload 65
-    //   2902: new 118	java/lang/StringBuilder
-    //   2905: dup
-    //   2906: invokespecial 119	java/lang/StringBuilder:<init>	()V
-    //   2909: ldc_w 446
-    //   2912: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2915: aload 65
-    //   2917: getfield 141	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   2920: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2923: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2926: putfield 141	com/tencent/mobileqq/statistics/storage/StorageItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2902: invokespecial 176	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Lcom/tencent/mobileqq/statistics/storage/StorageItem;)V
+    //   2905: iload_2
+    //   2906: iconst_1
+    //   2907: iadd
+    //   2908: istore_2
+    //   2909: goto -63 -> 2846
+    //   2912: aload_0
+    //   2913: getfield 93	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Boolean	Z
+    //   2916: ifeq +140 -> 3056
+    //   2919: aload 64
+    //   2921: invokeinterface 483 1 0
+    //   2926: ldc_w 396
     //   2929: aload_0
-    //   2930: aload 65
-    //   2932: invokespecial 174	com/tencent/mobileqq/statistics/storage/StorageReport:a	(Lcom/tencent/mobileqq/statistics/storage/StorageItem;)V
-    //   2935: iload_2
-    //   2936: iconst_1
-    //   2937: iadd
-    //   2938: istore_2
-    //   2939: goto -63 -> 2876
-    //   2942: aload_0
-    //   2943: getfield 91	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Boolean	Z
-    //   2946: ifeq +28 -> 2974
-    //   2949: aload 64
-    //   2951: invokeinterface 450 1 0
-    //   2956: ldc_w 363
-    //   2959: aload_0
-    //   2960: getfield 344	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Long	J
-    //   2963: invokeinterface 455 4 0
-    //   2968: invokeinterface 458 1 0
-    //   2973: pop
-    //   2974: iconst_0
-    //   2975: istore_2
-    //   2976: iload_2
-    //   2977: bipush 7
-    //   2979: if_icmpge +44 -> 3023
-    //   2982: getstatic 31	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool	Lcom/tencent/commonsdk/pool/RecyclablePool;
-    //   2985: aload_0
-    //   2986: getfield 97	com/tencent/mobileqq/statistics/storage/StorageReport:c	Ljava/util/ArrayList;
-    //   2989: iload_2
-    //   2990: invokevirtual 195	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   2993: checkcast 460	com/tencent/commonsdk/pool/RecyclablePool$Recyclable
-    //   2996: invokevirtual 202	com/tencent/commonsdk/pool/RecyclablePool:recycle	(Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;)V
-    //   2999: getstatic 31	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool	Lcom/tencent/commonsdk/pool/RecyclablePool;
-    //   3002: aload_0
-    //   3003: getfield 99	com/tencent/mobileqq/statistics/storage/StorageReport:d	Ljava/util/ArrayList;
-    //   3006: iload_2
-    //   3007: invokevirtual 195	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   3010: checkcast 460	com/tencent/commonsdk/pool/RecyclablePool$Recyclable
-    //   3013: invokevirtual 202	com/tencent/commonsdk/pool/RecyclablePool:recycle	(Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;)V
-    //   3016: iload_2
-    //   3017: iconst_1
-    //   3018: iadd
-    //   3019: istore_2
-    //   3020: goto -44 -> 2976
-    //   3023: aload_1
-    //   3024: ifnull +10 -> 3034
-    //   3027: aload_1
-    //   3028: iload_3
-    //   3029: invokeinterface 336 2 0
-    //   3034: lload 24
-    //   3036: lreturn
+    //   2930: getfield 377	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_Long	J
+    //   2933: invokeinterface 488 4 0
+    //   2938: invokeinterface 491 1 0
+    //   2943: pop
+    //   2944: goto +112 -> 3056
+    //   2947: iload_2
+    //   2948: bipush 7
+    //   2950: if_icmpge +44 -> 2994
+    //   2953: getstatic 33	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool	Lcom/tencent/commonsdk/pool/RecyclablePool;
+    //   2956: aload_0
+    //   2957: getfield 99	com/tencent/mobileqq/statistics/storage/StorageReport:c	Ljava/util/ArrayList;
+    //   2960: iload_2
+    //   2961: invokevirtual 197	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2964: checkcast 493	com/tencent/commonsdk/pool/RecyclablePool$Recyclable
+    //   2967: invokevirtual 204	com/tencent/commonsdk/pool/RecyclablePool:recycle	(Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;)V
+    //   2970: getstatic 33	com/tencent/mobileqq/statistics/storage/StorageReport:jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool	Lcom/tencent/commonsdk/pool/RecyclablePool;
+    //   2973: aload_0
+    //   2974: getfield 101	com/tencent/mobileqq/statistics/storage/StorageReport:d	Ljava/util/ArrayList;
+    //   2977: iload_2
+    //   2978: invokevirtual 197	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   2981: checkcast 493	com/tencent/commonsdk/pool/RecyclablePool$Recyclable
+    //   2984: invokevirtual 204	com/tencent/commonsdk/pool/RecyclablePool:recycle	(Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;)V
+    //   2987: iload_2
+    //   2988: iconst_1
+    //   2989: iadd
+    //   2990: istore_2
+    //   2991: goto -44 -> 2947
+    //   2994: aload_1
+    //   2995: ifnull +10 -> 3005
+    //   2998: aload_1
+    //   2999: iload_3
+    //   3000: invokeinterface 369 2 0
+    //   3005: aload_0
+    //   3006: monitorexit
+    //   3007: lload 24
+    //   3009: lreturn
+    //   3010: iload_2
+    //   3011: iconst_1
+    //   3012: iadd
+    //   3013: istore_2
+    //   3014: goto -2706 -> 308
+    //   3017: lconst_0
+    //   3018: lstore 8
+    //   3020: lconst_0
+    //   3021: lstore 6
+    //   3023: iconst_1
+    //   3024: istore_2
+    //   3025: goto -2533 -> 492
+    //   3028: iload_2
+    //   3029: iconst_1
+    //   3030: iadd
+    //   3031: istore_2
+    //   3032: goto -2540 -> 492
+    //   3035: iconst_0
+    //   3036: istore_2
+    //   3037: goto -2439 -> 598
+    //   3040: iload 4
+    //   3042: iconst_1
+    //   3043: iadd
+    //   3044: istore 4
+    //   3046: goto -2405 -> 641
+    //   3049: iload_2
+    //   3050: iconst_1
+    //   3051: iadd
+    //   3052: istore_2
+    //   3053: goto -2455 -> 598
+    //   3056: iconst_0
+    //   3057: istore_2
+    //   3058: goto -111 -> 2947
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	3037	0	this	StorageReport
-    //   0	3037	1	paramIProgressCallback	com.tencent.mobileqq.activity.QQSettingCleanActivity.IProgressCallback
-    //   0	3037	2	paramInt1	int
-    //   0	3037	3	paramInt2	int
-    //   665	802	4	i	int
-    //   1195	10	5	j	int
-    //   116	2591	6	l1	long
-    //   299	2513	8	l2	long
-    //   18	2691	10	l3	long
-    //   15	2341	12	l4	long
-    //   952	1745	14	l5	long
-    //   969	1730	16	l6	long
-    //   955	1513	18	l7	long
-    //   943	1782	20	l8	long
-    //   946	1859	22	l9	long
-    //   965	2070	24	l10	long
-    //   1740	638	26	l11	long
-    //   1690	692	28	l12	long
-    //   1640	746	30	l13	long
-    //   958	1867	32	l14	long
-    //   1764	610	34	l15	long
-    //   1069	1391	36	l16	long
-    //   1065	1391	38	l17	long
-    //   1760	578	40	l18	long
-    //   1057	1391	42	l19	long
-    //   1756	586	44	l20	long
-    //   1053	1391	46	l21	long
-    //   1752	638	48	l22	long
-    //   1748	646	50	l23	long
-    //   1744	654	52	l24	long
-    //   12	2606	54	l25	long
-    //   1085	1387	56	l26	long
-    //   1073	1391	58	l27	long
-    //   1061	1391	60	l28	long
-    //   1049	1391	62	l29	long
-    //   40	2910	64	localObject1	Object
-    //   210	1236	65	localObject2	Object
-    //   1480	882	65	localInterruptedException	java.lang.InterruptedException
-    //   2402	24	65	localException	java.lang.Exception
-    //   2567	364	65	localStorageItem	StorageItem
-    //   374	1838	66	localObject3	Object
-    //   391	817	67	localObject4	Object
-    //   802	649	68	localObject5	Object
+    //   0	3061	0	this	StorageReport
+    //   0	3061	1	paramIProgressCallback	com.tencent.mobileqq.activity.QQSettingCleanActivity.IProgressCallback
+    //   0	3061	2	paramInt1	int
+    //   0	3061	3	paramInt2	int
+    //   639	2406	4	i	int
+    //   1165	10	5	j	int
+    //   112	2910	6	l1	long
+    //   310	2709	8	l2	long
+    //   301	2378	10	l3	long
+    //   304	2022	12	l4	long
+    //   909	1758	14	l5	long
+    //   935	1734	16	l6	long
+    //   912	1526	18	l7	long
+    //   924	1771	20	l8	long
+    //   927	1848	22	l9	long
+    //   931	2077	24	l10	long
+    //   1710	638	26	l11	long
+    //   1660	692	28	l12	long
+    //   1610	746	30	l13	long
+    //   915	1880	32	l14	long
+    //   1734	610	34	l15	long
+    //   1039	1391	36	l16	long
+    //   1035	1391	38	l17	long
+    //   1730	578	40	l18	long
+    //   1027	1391	42	l19	long
+    //   1726	586	44	l20	long
+    //   1023	1391	46	l21	long
+    //   1722	638	48	l22	long
+    //   1718	646	50	l23	long
+    //   1714	654	52	l24	long
+    //   14	2574	54	l25	long
+    //   1055	1387	56	l26	long
+    //   1043	1391	58	l27	long
+    //   1031	1391	60	l28	long
+    //   1019	1391	62	l29	long
+    //   36	2884	64	localObject1	Object
+    //   206	1210	65	localObject2	Object
+    //   1450	882	65	localInterruptedException	java.lang.InterruptedException
+    //   2372	24	65	localException	java.lang.Exception
+    //   2537	364	65	localStorageItem	StorageItem
+    //   360	1822	66	localObject3	Object
+    //   377	801	67	localObject4	Object
+    //   770	651	68	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   990	1009	1480	java/lang/InterruptedException
-    //   1471	1477	1480	java/lang/InterruptedException
-    //   1087	1101	2402	java/lang/Exception
-    //   1146	1152	2402	java/lang/Exception
-    //   1192	1197	2402	java/lang/Exception
-    //   1254	1285	2402	java/lang/Exception
-    //   1325	1344	2402	java/lang/Exception
-    //   1384	1403	2402	java/lang/Exception
-    //   1443	1462	2402	java/lang/Exception
-    //   1530	1541	2402	java/lang/Exception
-    //   1581	1592	2402	java/lang/Exception
-    //   1632	1642	2402	java/lang/Exception
-    //   1682	1692	2402	java/lang/Exception
-    //   1732	1742	2402	java/lang/Exception
-    //   1806	1816	2402	java/lang/Exception
-    //   1856	1886	2402	java/lang/Exception
-    //   1998	2008	2402	java/lang/Exception
-    //   2048	2058	2402	java/lang/Exception
-    //   2098	2108	2402	java/lang/Exception
-    //   2211	2221	2402	java/lang/Exception
-    //   2261	2271	2402	java/lang/Exception
-    //   2311	2321	2402	java/lang/Exception
-    //   2361	2368	2402	java/lang/Exception
+    //   6	13	857	finally
+    //   16	38	857	finally
+    //   43	52	857	finally
+    //   52	121	857	finally
+    //   128	159	857	finally
+    //   159	187	857	finally
+    //   195	265	857	finally
+    //   272	289	857	finally
+    //   294	300	857	finally
+    //   316	462	857	finally
+    //   465	483	857	finally
+    //   492	595	857	finally
+    //   598	627	857	finally
+    //   632	638	857	finally
+    //   641	752	857	finally
+    //   755	854	857	finally
+    //   862	874	857	finally
+    //   877	906	857	finally
+    //   945	954	857	finally
+    //   960	979	857	finally
+    //   979	1017	857	finally
+    //   1057	1071	857	finally
+    //   1116	1122	857	finally
+    //   1162	1167	857	finally
+    //   1224	1255	857	finally
+    //   1295	1314	857	finally
+    //   1354	1373	857	finally
+    //   1413	1432	857	finally
+    //   1441	1447	857	finally
+    //   1452	1457	857	finally
+    //   1500	1511	857	finally
+    //   1551	1562	857	finally
+    //   1602	1612	857	finally
+    //   1652	1662	857	finally
+    //   1702	1712	857	finally
+    //   1776	1786	857	finally
+    //   1826	1856	857	finally
+    //   1896	1917	857	finally
+    //   1968	1978	857	finally
+    //   2018	2028	857	finally
+    //   2068	2078	857	finally
+    //   2181	2191	857	finally
+    //   2231	2241	857	finally
+    //   2281	2291	857	finally
+    //   2331	2338	857	finally
+    //   2374	2409	857	finally
+    //   2448	2468	857	finally
+    //   2470	2496	857	finally
+    //   2503	2844	857	finally
+    //   2846	2905	857	finally
+    //   2912	2944	857	finally
+    //   2953	2987	857	finally
+    //   2998	3005	857	finally
+    //   960	979	1450	java/lang/InterruptedException
+    //   1441	1447	1450	java/lang/InterruptedException
+    //   1057	1071	2372	java/lang/Exception
+    //   1116	1122	2372	java/lang/Exception
+    //   1162	1167	2372	java/lang/Exception
+    //   1224	1255	2372	java/lang/Exception
+    //   1295	1314	2372	java/lang/Exception
+    //   1354	1373	2372	java/lang/Exception
+    //   1413	1432	2372	java/lang/Exception
+    //   1500	1511	2372	java/lang/Exception
+    //   1551	1562	2372	java/lang/Exception
+    //   1602	1612	2372	java/lang/Exception
+    //   1652	1662	2372	java/lang/Exception
+    //   1702	1712	2372	java/lang/Exception
+    //   1776	1786	2372	java/lang/Exception
+    //   1826	1856	2372	java/lang/Exception
+    //   1968	1978	2372	java/lang/Exception
+    //   2018	2028	2372	java/lang/Exception
+    //   2068	2078	2372	java/lang/Exception
+    //   2181	2191	2372	java/lang/Exception
+    //   2231	2241	2372	java/lang/Exception
+    //   2281	2291	2372	java/lang/Exception
+    //   2331	2338	2372	java/lang/Exception
   }
   
   public long a(File paramFile)

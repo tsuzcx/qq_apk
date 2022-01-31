@@ -1,15 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-public final class adha
-  implements Runnable
+public class adha
 {
-  public adha(String paramString) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c = false;
   
-  public void run()
+  public adha(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 0, this.a, 0).b(FMToastUtil.a());
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

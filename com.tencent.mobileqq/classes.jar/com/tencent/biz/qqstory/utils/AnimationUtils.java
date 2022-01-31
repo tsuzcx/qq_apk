@@ -4,11 +4,17 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.utils.DynamicUnitUtils;
 import com.tencent.biz.qqstory.msgTabNode.util.MsgTabStoryUtil;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.lang.ref.SoftReference;
 import java.util.concurrent.ConcurrentHashMap;
@@ -85,6 +91,53 @@ public class AnimationUtils
         paramActivity.startActivity(paramIntent);
       }
       return;
+    }
+    paramIntent.putExtra("need_image_animation", false);
+    paramActivity.startActivity(paramIntent);
+    paramActivity.overridePendingTransition(2131034336, 2131034167);
+  }
+  
+  public static void c(Activity paramActivity, Intent paramIntent, View paramView)
+  {
+    if (MsgTabStoryUtil.a())
+    {
+      Rect localRect;
+      Object localObject;
+      QQStoryManager localQQStoryManager;
+      if (paramView != null)
+      {
+        localRect = new Rect();
+        paramView.getGlobalVisibleRect(localRect);
+        if ((paramView instanceof ImageView))
+        {
+          localObject = (ImageView)paramView;
+          if (((ImageView)localObject).getDrawable() != null)
+          {
+            localObject = ((ImageView)localObject).getDrawable().getConstantState();
+            if (localObject != null)
+            {
+              Drawable localDrawable = ((Drawable.ConstantState)localObject).newDrawable();
+              localQQStoryManager = (QQStoryManager)PlayModeUtils.a().getManager(180);
+              if (!(localDrawable instanceof URLDrawable)) {
+                break label213;
+              }
+              if (((URLDrawable)localDrawable).getCurrDrawable() == null) {}
+            }
+          }
+        }
+      }
+      label213:
+      for (localQQStoryManager.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable.ConstantState)localObject).newDrawable().mutate();; localQQStoryManager.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable.ConstantState)localObject).newDrawable().mutate())
+      {
+        paramIntent.putExtra("EXTRA_RECT_REVEAL_LEFT", localRect.left + paramView.getPaddingLeft());
+        paramIntent.putExtra("EXTRA_RECT_REVEAL_TOP", localRect.top + paramView.getPaddingTop());
+        paramIntent.putExtra("EXTRA_RECT_REVEAL_WIDTH", localRect.width() - paramView.getPaddingLeft() - paramView.getPaddingRight());
+        paramIntent.putExtra("EXTRA_RECT_REVEAL_HEIGHT", localRect.height() - paramView.getPaddingTop() - paramView.getPaddingBottom());
+        paramIntent.putExtra("EXTRA_RECT_REVEAL_RADIUS", DynamicUnitUtils.a(8.0F));
+        paramIntent.putExtra("extra_transition_mode", 2);
+        paramActivity.startActivity(paramIntent);
+        return;
+      }
     }
     paramIntent.putExtra("need_image_animation", false);
     paramActivity.startActivity(paramIntent);

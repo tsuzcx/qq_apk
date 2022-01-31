@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208b6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f2e" android:clickable="true" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03a8" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03a9" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:scaleType="centerCrop" />
-    <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2b80" android:singleLine="true" android:includeFontPadding="false" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a041e" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.image.URLImageView android:layout_gravity="center_horizontal" android:id="@id/head" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206b8" />
+        <com.tencent.av.widget.EllipseTextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054c" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c7" android:layout_width="75.0dip" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="name" android:singleLine="true" />
+    </LinearLayout>
 </LinearLayout>

@@ -1,35 +1,31 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.ARCloudControlCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class aalz
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public aalz(ARCardPageProcess paramARCardPageProcess, boolean paramBoolean) {}
+  public aalz(ARCloudControl paramARCloudControl) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.b) && (this.jdField_a_of_type_Boolean))
+    if ((ARCloudControl.a(this.a) != null) && (ARCloudControl.b(this.a)))
     {
-      ARCardPageProcess.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess).remove(0);
-      ARCardPageProcess.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess);
+      QLog.i("AREngine_ARCloudControl", 1, "onARCloudUploadImgComplete .isTimeOut= ");
+      if (!ARCloudControl.a(this.a)) {}
     }
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.jdField_a_of_type_Boolean = false;
+    else
+    {
+      return;
+    }
+    ARCloudControl.a(this.a, true);
+    ARCloudControl.a(this.a).a(1, null);
+    this.a.b = System.currentTimeMillis();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aalz
  * JD-Core Version:    0.7.0.1
  */

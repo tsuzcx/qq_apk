@@ -1,11 +1,20 @@
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class uyt
-  implements ActionSheet.OnDismissListener
+public final class uyt
+  implements Runnable
 {
-  uyt(uys paramuys) {}
+  public uyt(Context paramContext, int paramInt, String paramString) {}
   
-  public void onDismiss() {}
+  public void run()
+  {
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloItemBuilder", 2, "fav action number is 144");
+    }
+  }
 }
 
 

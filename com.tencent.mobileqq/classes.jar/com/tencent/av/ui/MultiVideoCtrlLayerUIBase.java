@@ -54,21 +54,21 @@ import com.tencent.sharp.jni.TraeMediaPlayer;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import jwv;
-import jww;
-import jwx;
-import jwy;
-import jwz;
-import jxa;
-import jxb;
-import jxc;
-import jxd;
-import jxf;
-import jxg;
-import jxi;
-import jxj;
-import jxk;
-import jxl;
+import jyz;
+import jza;
+import jzb;
+import jzc;
+import jzd;
+import jze;
+import jzf;
+import jzg;
+import jzh;
+import jzj;
+import jzk;
+import jzm;
+import jzn;
+import jzo;
+import jzp;
 import mqq.app.BaseActivity;
 import mqq.app.MobileQQ;
 
@@ -91,13 +91,13 @@ public abstract class MultiVideoCtrlLayerUIBase
   Runnable jdField_a_of_type_JavaLangRunnable = null;
   String jdField_a_of_type_JavaLangString = null;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public jxd a;
-  jxl jdField_a_of_type_Jxl = new jxl(this);
+  public jzh a;
+  jzp jdField_a_of_type_Jzp = new jzp(this);
   public int b;
   public long b;
   View jdField_b_of_type_AndroidViewView = null;
   TextView jdField_b_of_type_AndroidWidgetTextView = null;
-  GAudioUIObserver jdField_b_of_type_ComTencentAvAppGAudioUIObserver = new jxb(this);
+  GAudioUIObserver jdField_b_of_type_ComTencentAvAppGAudioUIObserver = new jzf(this);
   Runnable jdField_b_of_type_JavaLangRunnable = null;
   public String b;
   public int c;
@@ -150,9 +150,9 @@ public abstract class MultiVideoCtrlLayerUIBase
     this.jdField_g_of_type_Int = 0;
     this.jdField_e_of_type_Boolean = true;
     this.jdField_f_of_type_Boolean = false;
-    this.jdField_g_of_type_JavaLangRunnable = new jwv(this);
+    this.jdField_g_of_type_JavaLangRunnable = new jyz(this);
     this.jdField_i_of_type_Int = 1;
-    this.jdField_a_of_type_Jxd = new jxd(this);
+    this.jdField_a_of_type_Jzh = new jzh(this);
   }
   
   protected abstract void D();
@@ -164,7 +164,7 @@ public abstract class MultiVideoCtrlLayerUIBase
     if ((this.jdField_a_of_type_ComTencentAvVideoController != null) && (this.jdField_a_of_type_ComTencentAvVideoController.jdField_e_of_type_Boolean))
     {
       if (this.jdField_a_of_type_ComTencentAvVideoController.h()) {
-        super.s(2131365397);
+        super.s(2131365402);
       }
       this.jdField_a_of_type_ComTencentAvVideoController.u();
       if ((this.jdField_a_of_type_ComTencentAvVideoController.a().F == 2) && (this.jdField_a_of_type_ComTencentAvVideoController.a().x == 1))
@@ -216,7 +216,7 @@ public abstract class MultiVideoCtrlLayerUIBase
       QLog.d(this.jdField_c_of_type_JavaLangString, 2, "resumeVideo");
     }
     if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new jxc(this);
+      this.jdField_a_of_type_JavaLangRunnable = new jzg(this);
     }
     for (;;)
     {
@@ -232,22 +232,22 @@ public abstract class MultiVideoCtrlLayerUIBase
     {
       n();
       j(false);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365397, true);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365397, true);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365402, true);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365402, true);
       if (!this.jdField_a_of_type_ComTencentAvVideoController.h()) {
         break label92;
       }
-      s(2131365397);
+      s(2131365402);
     }
     for (;;)
     {
       T();
       long l = this.jdField_b_of_type_Long;
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_c_of_type_Int, String.valueOf(l));
-      t_();
+      s_();
       return;
       label92:
-      t(2131365397);
+      t(2131365402);
     }
   }
   
@@ -272,10 +272,10 @@ public abstract class MultiVideoCtrlLayerUIBase
     }
     if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365399, false);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365399, false);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365399, false);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365399, this.jdField_a_of_type_AndroidContentResResources.getString(2131428884));
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365404, false);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365404, false);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365404, false);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365404, this.jdField_a_of_type_AndroidContentResResources.getString(2131428884));
     }
   }
   
@@ -328,7 +328,7 @@ public abstract class MultiVideoCtrlLayerUIBase
           if (localObject == null) {
             break;
           }
-          DialogUtil.b((Context)localObject, 230, this.jdField_a_of_type_AndroidContentResResources.getString(2131429041), this.jdField_a_of_type_AndroidContentResResources.getString(2131429035), 2131429048, 2131429053, new jwx(this), new jwy(this)).show();
+          DialogUtil.b((Context)localObject, 230, this.jdField_a_of_type_AndroidContentResResources.getString(2131429041), this.jdField_a_of_type_AndroidContentResResources.getString(2131429035), 2131429048, 2131429053, new jzb(this), new jzc(this)).show();
           k = 0;
         }
         if (k == 0) {
@@ -376,7 +376,7 @@ public abstract class MultiVideoCtrlLayerUIBase
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().l()) {}
     for (int j = 2131429039;; j = 2131429040)
     {
-      DialogUtil.b(localContext, 230, null, this.jdField_a_of_type_AndroidContentResResources.getString(j), 2131429048, 2131429053, new jwz(this), new jxa(this)).show();
+      DialogUtil.b(localContext, 230, null, this.jdField_a_of_type_AndroidContentResResources.getString(j), 2131429048, 2131429053, new jzd(this), new jze(this)).show();
       return;
     }
   }
@@ -421,7 +421,7 @@ public abstract class MultiVideoCtrlLayerUIBase
     for (;;)
     {
       this.jdField_a_of_type_ComTencentAvVideoController.a("MultiVideoCtrlLayerUIBase.pressMuteBtn.1", l, true, true);
-      super.t(2131365397);
+      super.t(2131365402);
       if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
       }
@@ -438,7 +438,7 @@ public abstract class MultiVideoCtrlLayerUIBase
     for (;;)
     {
       this.jdField_a_of_type_ComTencentAvVideoController.a("MultiVideoCtrlLayerUIBase.pressMuteBtn.2", l, false, true);
-      super.s(2131365397);
+      super.s(2131365402);
       if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
         break;
       }
@@ -1058,9 +1058,9 @@ public abstract class MultiVideoCtrlLayerUIBase
   {
     SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvVideoController.a();
     QLog.w(this.jdField_c_of_type_JavaLangString, 1, "initUI, SessionType[" + localSessionInfo.jdField_d_of_type_Int + "], switchToGaudio[" + localSessionInfo.T + "], localMute[" + localSessionInfo.jdField_c_of_type_Boolean + "]");
-    super.q(2130969285);
+    super.q(2130969283);
     super.b();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365953));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365958));
     m(localSessionInfo.jdField_d_of_type_Int);
     if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
@@ -1079,17 +1079,17 @@ public abstract class MultiVideoCtrlLayerUIBase
     if ((localSessionInfo.F == 2) && (localSessionInfo.x == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoNetStateBar != null)) {
       this.jdField_a_of_type_ComTencentAvUiVideoNetStateBar.b(8);
     }
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365954);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365955));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365956);
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365957));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365959);
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365960));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365961);
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365962));
     this.jdField_g_of_type_AndroidWidgetTextView = this.jdField_i_of_type_AndroidWidgetTextView;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365365));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365367));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362754));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365370));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365372));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362759));
     this.jdField_i_of_type_AndroidWidgetTextView.post(this.jdField_g_of_type_JavaLangRunnable);
     this.jdField_i_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365376));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365381));
     if (!this.jdField_a_of_type_ComTencentAvVideoController.jdField_e_of_type_Boolean)
     {
       L();
@@ -1104,17 +1104,17 @@ public abstract class MultiVideoCtrlLayerUIBase
       return;
     }
     this.jdField_a_of_type_ComTencentAvUiPstnCallbackWaitingUi = new PstnCallbackWaitingUi((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((AVActivity)localObject).findViewById(2131365837));
-    TintStateDrawable.a(this.jdField_a_of_type_AndroidWidgetButton, 2130840162, 2131494051);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((AVActivity)localObject).findViewById(2131364246));
-    this.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI = ((MultiMembersAudioUI)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365950));
-    this.jdField_a_of_type_ComTencentAvUiMultiMembersVideoUI = ((MultiMembersVideoUI)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365951));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((AVActivity)localObject).findViewById(2131365842));
+    TintStateDrawable.a(this.jdField_a_of_type_AndroidWidgetButton, 2130840177, 2131494057);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((AVActivity)localObject).findViewById(2131364271));
+    this.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI = ((MultiMembersAudioUI)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365955));
+    this.jdField_a_of_type_ComTencentAvUiMultiMembersVideoUI = ((MultiMembersVideoUI)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365956));
     a(((AVActivity)localObject).getApplicationContext());
     e();
     if ((this.jdField_c_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentAvUiQavPanel != null))
     {
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365391, false);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365391, this.jdField_a_of_type_AndroidContentResResources.getString(2131428898));
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365396, false);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365396, this.jdField_a_of_type_AndroidContentResResources.getString(2131428898));
     }
     GAudioSoundUtil.a(((AVActivity)localObject).getApplicationContext());
     if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_e_of_type_Boolean)
@@ -1128,14 +1128,14 @@ public abstract class MultiVideoCtrlLayerUIBase
     if ((localSessionInfo.T) && (localSessionInfo.jdField_c_of_type_Boolean))
     {
       this.jdField_a_of_type_ComTencentAvVideoController.a("MultiVideoCtrlLayerUIBase.initUI", localSessionInfo.jdField_f_of_type_Long, false, true);
-      super.s(2131365397);
+      super.s(2131365402);
     }
     this.jdField_a_of_type_ComTencentAvUtilsTraeHelper.a();
-    this.jdField_j_of_type_AndroidWidgetTextView.setOnClickListener(new jww(this));
+    this.jdField_j_of_type_AndroidWidgetTextView.setOnClickListener(new jza(this));
     this.jdField_a_of_type_ComTencentAvUtilsTipsManager.jdField_b_of_type_AndroidWidgetTextView = this.jdField_j_of_type_AndroidWidgetTextView;
     if ((Build.VERSION.SDK_INT >= 19) && (ImmersiveUtils.isSupporImmersive() != 1))
     {
-      localObject = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366269);
+      localObject = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366274);
       if (localObject != null)
       {
         RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((RelativeLayout)localObject).getLayoutParams();
@@ -1144,11 +1144,11 @@ public abstract class MultiVideoCtrlLayerUIBase
       }
     }
     if (this.jdField_f_of_type_JavaLangRunnable == null) {
-      this.jdField_f_of_type_JavaLangRunnable = new jxf(this);
+      this.jdField_f_of_type_JavaLangRunnable = new jzj(this);
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_f_of_type_JavaLangRunnable);
-    t_();
-    this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation = new QavInOutAnimation((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentAvVideoController, 3, this.jdField_a_of_type_ComTencentAvUiQavPanel, this.jdField_d_of_type_AndroidWidgetRelativeLayout, null, null, this.jdField_d_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365377), null);
+    s_();
+    this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation = new QavInOutAnimation((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentAvVideoController, 3, this.jdField_a_of_type_ComTencentAvUiQavPanel, this.jdField_d_of_type_AndroidWidgetRelativeLayout, null, null, this.jdField_d_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365382), null);
     this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a();
     if (localSessionInfo.jdField_d_of_type_Int == 4) {
       R();
@@ -1255,33 +1255,29 @@ public abstract class MultiVideoCtrlLayerUIBase
   public void c(long paramLong, int paramInt1, boolean paramBoolean, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_c_of_type_JavaLangString, 2, "refreshUI-->uin = " + paramLong + " , refreshType = " + paramInt1 + " , isRefreshTitle = " + paramBoolean + " , originalType = " + paramInt2);
+      QLog.w(this.jdField_c_of_type_JavaLangString, 1, "refreshUI, uin[" + paramLong + "], refreshType[" + paramInt1 + "], needRefresh[" + paramBoolean + "], originalType[" + paramInt2 + "]");
     }
-    if (paramLong == 0L) {
-      if (QLog.isColorLevel()) {
-        QLog.e(this.jdField_c_of_type_JavaLangString, 2, " refreshUI-->uin == 0");
-      }
-    }
-    label208:
-    label226:
+    if (paramLong == 0L) {}
+    label197:
+    label215:
     for (;;)
     {
       return;
-      jxj localjxj = new jxj(this, paramLong, paramInt1, paramBoolean, paramInt2);
+      jzn localjzn = new jzn(this, paramLong, paramInt1, paramBoolean, paramInt2);
       Object localObject;
       if (this.jdField_a_of_type_JavaLangRefWeakReference == null)
       {
         localObject = null;
         localObject = (AVActivity)localObject;
         if (localObject == null) {
-          break label208;
+          break label197;
         }
-        ((AVActivity)localObject).runOnUiThread(localjxj);
+        ((AVActivity)localObject).runOnUiThread(localjzn);
       }
       for (;;)
       {
         if ((this.jdField_a_of_type_ComTencentAvUiMultiMembersVideoUI == null) || (this.jdField_a_of_type_ComTencentAvVideoController == null)) {
-          break label226;
+          break label215;
         }
         this.jdField_a_of_type_ComTencentAvUiMultiMembersVideoUI.a(this.jdField_c_of_type_Long, 0, 0, this.jdField_a_of_type_ComTencentAvVideoController.h());
         this.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(this.jdField_c_of_type_Long, 0, 0, this.jdField_a_of_type_ComTencentAvVideoController.h());
@@ -1348,23 +1344,23 @@ public abstract class MultiVideoCtrlLayerUIBase
       }
       if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null)
       {
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365399, false);
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365399, false);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365404, false);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365404, false);
       }
     }
     while (this.jdField_a_of_type_ComTencentAvUiQavPanel == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365399, true);
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365399, true);
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365404, true);
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365404, true);
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365399, true);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365399, this.jdField_a_of_type_AndroidContentResResources.getString(2131428881));
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365404, true);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365404, this.jdField_a_of_type_AndroidContentResResources.getString(2131428881));
       return;
     }
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365399, false);
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365399, this.jdField_a_of_type_AndroidContentResResources.getString(2131428880));
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365404, false);
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365404, this.jdField_a_of_type_AndroidContentResResources.getString(2131428880));
   }
   
   public boolean c()
@@ -1414,7 +1410,7 @@ public abstract class MultiVideoCtrlLayerUIBase
     if (paramBoolean)
     {
       if (this.jdField_d_of_type_AndroidWidgetRelativeLayout != null) {
-        this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130840340);
+        this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130840355);
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -1492,10 +1488,10 @@ public abstract class MultiVideoCtrlLayerUIBase
         this.jdField_a_of_type_ComTencentAvVideoController.a().k = false;
         if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null)
         {
-          this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365397, false);
-          this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365397, false);
+          this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365402, false);
+          this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365402, false);
         }
-        FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365396);
+        FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365401);
         if (localFrameLayout != null) {
           localFrameLayout.setClickable(true);
         }
@@ -1638,7 +1634,7 @@ public abstract class MultiVideoCtrlLayerUIBase
     }
     if (this.jdField_d_of_type_JavaLangRunnable == null)
     {
-      this.jdField_d_of_type_JavaLangRunnable = new jxg(this);
+      this.jdField_d_of_type_JavaLangRunnable = new jzk(this);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_d_of_type_JavaLangRunnable, 2000L);
     }
     if (this.jdField_a_of_type_ComTencentAvUiPstnCallbackWaitingUi != null) {
@@ -1743,7 +1739,7 @@ public abstract class MultiVideoCtrlLayerUIBase
       this.jdField_a_of_type_ComTencentAvVideoController.a().a(this.jdField_c_of_type_Long, true, true);
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_j_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_Jxl);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_Jzp);
   }
   
   public void h(int paramInt) {}
@@ -1845,7 +1841,7 @@ public abstract class MultiVideoCtrlLayerUIBase
       do
       {
         return;
-        localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365949);
+        localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365954);
         localObject = (AVActivity)localObject;
         if (!paramBoolean) {
           break;
@@ -1856,7 +1852,7 @@ public abstract class MultiVideoCtrlLayerUIBase
       ((AVActivity)localObject).d(false);
       ((AVActivity)localObject).c(true);
       return;
-      localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131493537));
+      localRelativeLayout.setBackgroundColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131493539));
     } while (localObject == null);
     ((AVActivity)localObject).b(true);
     ((AVActivity)localObject).d(true);
@@ -1875,7 +1871,7 @@ public abstract class MultiVideoCtrlLayerUIBase
     {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 30000L);
       return;
-      this.jdField_b_of_type_JavaLangRunnable = new jxk(this);
+      this.jdField_b_of_type_JavaLangRunnable = new jzo(this);
     }
   }
   
@@ -1918,16 +1914,16 @@ public abstract class MultiVideoCtrlLayerUIBase
     {
       if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null)
       {
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365397, false);
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365397, false);
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365397, false);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365402, false);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365402, false);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365402, false);
       }
       return;
     }
     paramBoolean = this.jdField_a_of_type_ComTencentAvVideoController.h();
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365397, paramBoolean);
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365397, true);
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365397, true);
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365402, paramBoolean);
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365402, true);
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365402, true);
   }
   
   public void k()
@@ -1941,7 +1937,7 @@ public abstract class MultiVideoCtrlLayerUIBase
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_d_of_type_JavaLangRunnable);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_i_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_Jxd);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_Jzh);
     if (this.jdField_e_of_type_JavaLangRunnable != null) {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_e_of_type_JavaLangRunnable);
     }
@@ -1951,7 +1947,7 @@ public abstract class MultiVideoCtrlLayerUIBase
     this.jdField_c_of_type_JavaLangRunnable = null;
     this.jdField_d_of_type_JavaLangRunnable = null;
     this.jdField_i_of_type_JavaLangRunnable = null;
-    this.jdField_a_of_type_Jxd = null;
+    this.jdField_a_of_type_Jzh = null;
     this.jdField_e_of_type_JavaLangRunnable = null;
     this.jdField_f_of_type_JavaLangRunnable = null;
     TipsManager.c(102);
@@ -2010,13 +2006,13 @@ public abstract class MultiVideoCtrlLayerUIBase
   
   void m(int paramInt)
   {
-    int k = 2130840214;
+    int k = 2130840229;
     int j = k;
     if (this.jdField_a_of_type_AndroidWidgetImageButton.isEnabled())
     {
       j = k;
       if (this.jdField_a_of_type_AndroidWidgetImageButton.isClickable()) {
-        j = 2130840215;
+        j = 2130840230;
       }
     }
     if (paramInt == 3) {
@@ -2035,7 +2031,7 @@ public abstract class MultiVideoCtrlLayerUIBase
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_c_of_type_JavaLangString, 2, "showStatusTips --> Type = " + paramInt);
     }
-    jxi localjxi = new jxi(this, paramInt, false);
+    jzm localjzm = new jzm(this, paramInt, false);
     Object localObject;
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null)
     {
@@ -2044,7 +2040,7 @@ public abstract class MultiVideoCtrlLayerUIBase
       if (localObject == null) {
         break label86;
       }
-      ((AVActivity)localObject).runOnUiThread(localjxi);
+      ((AVActivity)localObject).runOnUiThread(localjzm);
     }
     label86:
     while (!QLog.isColorLevel())
@@ -2081,18 +2077,18 @@ public abstract class MultiVideoCtrlLayerUIBase
     QLog.e(this.jdField_c_of_type_JavaLangString, 2, "startRecvAllVideo-->GLVersion not support");
   }
   
-  public void t_()
+  public void s_()
   {
     if (this.jdField_a_of_type_ComTencentAvUiQavPanel == null) {
       return;
     }
     if (i())
     {
-      if (((this instanceof MultiVideoCtrlLayerUI4NewGroupChat)) && (this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365391))) {
+      if (((this instanceof MultiVideoCtrlLayerUI4NewGroupChat)) && (this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365396))) {
         QAVGroupConfig.Report.f(false);
       }
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365391, false);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365391, this.jdField_a_of_type_AndroidContentResResources.getString(2131428898));
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365396, false);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365396, this.jdField_a_of_type_AndroidContentResResources.getString(2131428898));
       return;
     }
     if ((this.jdField_a_of_type_ComTencentAvVideoController != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {}
@@ -2100,23 +2096,23 @@ public abstract class MultiVideoCtrlLayerUIBase
     {
       if ((b()) || (bool))
       {
-        if (((this instanceof MultiVideoCtrlLayerUI4NewGroupChat)) && (this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365391))) {
+        if (((this instanceof MultiVideoCtrlLayerUI4NewGroupChat)) && (this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365396))) {
           QAVGroupConfig.Report.f(false);
         }
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365391, false);
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365391, false);
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365391, this.jdField_a_of_type_AndroidContentResResources.getString(2131428898));
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365396, false);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365396, false);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365396, this.jdField_a_of_type_AndroidContentResResources.getString(2131428898));
         return;
       }
-      if (((this instanceof MultiVideoCtrlLayerUI4NewGroupChat)) && (!this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365391))) {
+      if (((this instanceof MultiVideoCtrlLayerUI4NewGroupChat)) && (!this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365396))) {
         QAVGroupConfig.Report.f(true);
       }
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365391, true);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365391, true);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365391, this.jdField_a_of_type_AndroidContentResResources.getString(2131428919));
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365390, true);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365390, true);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365390, this.jdField_a_of_type_AndroidContentResResources.getString(2131428919));
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365396, true);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365396, true);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365396, this.jdField_a_of_type_AndroidContentResResources.getString(2131428919));
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365395, true);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365395, true);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365395, this.jdField_a_of_type_AndroidContentResResources.getString(2131428919));
       return;
     }
   }
@@ -2132,7 +2128,7 @@ public abstract class MultiVideoCtrlLayerUIBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase
  * JD-Core Version:    0.7.0.1
  */

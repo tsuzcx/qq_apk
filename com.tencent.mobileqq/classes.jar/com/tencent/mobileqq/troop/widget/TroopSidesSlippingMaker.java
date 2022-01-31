@@ -554,7 +554,9 @@ public class TroopSidesSlippingMaker
     if (this.jdField_c_of_type_AndroidViewView != null)
     {
       this.jdField_c_of_type_AndroidViewView.scrollTo((int)f1, 0);
-      this.jdField_a_of_type_ComTencentWidgetListView.invalidate();
+      if (this.jdField_a_of_type_ComTencentWidgetListView != null) {
+        this.jdField_a_of_type_ComTencentWidgetListView.invalidate();
+      }
     }
     if (bool)
     {
@@ -567,7 +569,7 @@ public class TroopSidesSlippingMaker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopSidesSlippingMaker
  * JD-Core Version:    0.7.0.1
  */

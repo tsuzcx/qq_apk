@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class unr
-  implements Runnable
+  extends ActivateFriendsObserver
 {
-  public unr(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable) {}
+  public unr(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
+    }
+    ActivateFriendActivity.b(this.a);
   }
 }
 

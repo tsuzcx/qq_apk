@@ -87,12 +87,12 @@ public class TrafficDetailActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130968909);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131364228));
-    setTitle(2131433565);
+    super.setContentView(2130968911);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131364253));
+    setTitle(2131433579);
     a();
     this.app.registObserver(this);
-    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, this.jdField_a_of_type_JavaUtilList, 2130971643, new String[] { "name", "dayTraffic", "monthTraffic" }, new int[] { 2131375256, 2131375257, 2131375258 });
+    this.jdField_a_of_type_AndroidWidgetSimpleAdapter = new SimpleAdapter(this, this.jdField_a_of_type_JavaUtilList, 2130971672, new String[] { "name", "dayTraffic", "monthTraffic" }, new int[] { 2131375316, 2131375317, 2131375318 });
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_AndroidWidgetSimpleAdapter);
   }
   
@@ -113,7 +113,7 @@ public class TrafficDetailActivity
     else {
       return;
     }
-    Toast.makeText(getApplicationContext(), getString(2131434460), 1).show();
+    Toast.makeText(getApplicationContext(), getString(2131434476), 1).show();
   }
 }
 

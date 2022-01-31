@@ -19,16 +19,16 @@ public class RecentTabHaloPresenter$HaloResponseReceiver
     do
     {
       return;
-      if (paramRecentTabHaloEvent.jdField_a_of_type_Boolean)
+      if (paramRecentTabHaloEvent.a)
       {
         RecentTabHaloPresenter.a(paramRecentTabHaloPresenter);
         return;
       }
-      if ((paramRecentTabHaloEvent.a() != null) && (!paramRecentTabHaloEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {
+      if ((paramRecentTabHaloEvent.a() != null) && (!paramRecentTabHaloEvent.errorInfo.isFail())) {
         break;
       }
     } while (!QLog.isColorLevel());
-    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramRecentTabHaloEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    QLog.e("HaloResponseReceiver", 2, "onEvent: failed. Message: exception: " + paramRecentTabHaloEvent.errorInfo);
     return;
     RecentTabHaloPresenter.a(paramRecentTabHaloPresenter);
   }

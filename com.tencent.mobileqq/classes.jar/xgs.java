@@ -1,35 +1,23 @@
-import Wallet.GetSkinListRsp;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
 
 public class xgs
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xgs(RedPacketManager paramRedPacketManager, QQAppInterface paramQQAppInterface) {}
+  public xgs(RedPacketRecordFragment paramRedPacketRecordFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    if ((!this.a.a()) && (RedPacketRecordFragment.a(this.a) != null) && (paramView != null))
     {
-      Object localObject = FileUtils.a(BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        localObject = new JceInputStream((byte[])localObject);
-        ((JceInputStream)localObject).setServerEncoding("utf-8");
-        GetSkinListRsp localGetSkinListRsp = new GetSkinListRsp();
-        localGetSkinListRsp.readFrom((JceInputStream)localObject);
-        if (localGetSkinListRsp != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new xgt(this, localGetSkinListRsp));
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
+      localIntent.putExtras(RedPacketRecordFragment.a(this.a));
+      localIntent.putExtra("pay_requestcode", 5);
+      paramView.getContext().startActivity(localIntent);
     }
   }
 }

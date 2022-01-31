@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class FontSoLoader
 {
   public static AtomicBoolean a = new AtomicBoolean(false);
-  private static AtomicBoolean b = new AtomicBoolean(false);
+  public static AtomicBoolean b = new AtomicBoolean(false);
   
   public static String a()
   {
@@ -51,7 +51,7 @@ public class FontSoLoader
       if (bool2)
       {
         String str = VasUtils.a();
-        bool1 = new File(str + "libvipfont.so").exists();
+        bool1 = new File(str + "libvipfont765.so").exists();
       }
       return bool1;
     }
@@ -135,7 +135,7 @@ public class FontSoLoader
   {
     try
     {
-      boolean bool = b.get();
+      boolean bool = a.get();
       return bool;
     }
     finally
@@ -157,7 +157,7 @@ public class FontSoLoader
           bool = false;
           return bool;
         }
-        switch (VasUtils.a(VasUtils.a(), "libvipfont.so"))
+        switch (VasUtils.a(VasUtils.a(), "libvipfont765.so"))
         {
         case 1: 
           localObject1 = BaseApplicationImpl.getApplication().getRuntime();
@@ -165,7 +165,7 @@ public class FontSoLoader
             break label250;
           }
           QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
-          ((VasQuickUpdateManager)localQQAppInterface.getManager(183)).a(1004L, "libVipFont_735", "FontManager_initHYEngine");
+          ((VasQuickUpdateManager)localQQAppInterface.getManager(183)).a(1004L, "libVipFont_765", "FontManager_initHYEngine");
           localObject1 = ((FriendsManager)localQQAppInterface.getManager(50)).a(localQQAppInterface.getAccount());
           if ((localObject1 != null) && (0L != ((ExtensionInfo)localObject1).uVipFont) && (((ExtensionInfo)localObject1).vipFontType == 1))
           {
@@ -184,7 +184,7 @@ public class FontSoLoader
       continue;
       ETEngine.isSOLoaded.set(true);
       HiBoomFont.a().a();
-      b.set(true);
+      a.set(true);
       BaseApplication.getContext().getSharedPreferences("early_qq.android.native.vipfont.v5", 0).edit().putBoolean("vip_font_so_downloaded", true).commit();
       boolean bool = true;
       continue;

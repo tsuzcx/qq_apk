@@ -1,25 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.Frame;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
 
 public class tbd
-  extends tbo
+  implements Runnable
 {
-  public tbd(MainFragment paramMainFragment)
-  {
-    super(null);
-  }
+  public tbd(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Frame localFrame = MainFragment.a(this.a);
-    if ((localFrame instanceof ReadinjoyTabFrame)) {
-      ((ReadinjoyTabFrame)localFrame).l();
-    }
-    ReadInJoyLogicEngine.a().a(0);
-    super.onClick(paramView);
+    KPLProfileCardActivity.a(this.a, this.a.a);
   }
 }
 

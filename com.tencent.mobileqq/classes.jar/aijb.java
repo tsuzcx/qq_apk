@@ -1,21 +1,27 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout20;
-import com.tencent.widget.SingleLineTextView;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
 
 public class aijb
+  extends aijd
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public SingleLineTextView a;
+  public aijb(TCProgressBar paramTCProgressBar)
+  {
+    super(paramTCProgressBar);
+  }
   
-  public aijb(StructMsgItemLayout20 paramStructMsgItemLayout20) {}
+  public void a(Canvas paramCanvas)
+  {
+    this.a.b.left = this.f;
+    this.a.b.right = (this.f + this.g);
+    this.a.a.setColor(this.a.m);
+    paramCanvas.drawRect(this.a.b, this.a.a);
+    super.a(paramCanvas);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aijb
  * JD-Core Version:    0.7.0.1
  */

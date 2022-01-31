@@ -1,8 +1,8 @@
 package com.tencent.open.appcommon.js;
 
-import alea;
-import aleb;
-import alec;
+import alls;
+import allt;
+import allu;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -104,7 +104,7 @@ public class DownloadInterface
         localArrayList.add(localDownloadInfo);
         i += 1;
       }
-      DownloadApi.a(localArrayList, new alea(this, paramString));
+      DownloadApi.a(localArrayList, new alls(this, paramString));
       return;
     }
     catch (JSONException paramJSONArray)
@@ -117,7 +117,7 @@ public class DownloadInterface
   {
     try
     {
-      DownloadApi.a(paramString1, new aleb(this, paramString2));
+      DownloadApi.a(paramString1, new allt(this, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -521,7 +521,7 @@ public class DownloadInterface
   
   public void jsCallBack(String paramString)
   {
-    this.mHandler.post(new alec(this, paramString));
+    this.mHandler.post(new allu(this, paramString));
   }
   
   public int openDownloaderWebview(String paramString)

@@ -1,25 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.ar.FaceUIController;
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aaka
-  implements View.OnTouchListener
+public class aaka
+  implements ARTipsManager.BaikeClickListener
 {
-  public aaka(ImageView paramImageView) {}
+  public aaka(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.setAlpha(1.0F);
+    if (QLog.isColorLevel()) {
+      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
     }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 0) {
-        this.a.setAlpha(0.5F);
-      }
-    }
+    ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView.a.a();
   }
 }
 

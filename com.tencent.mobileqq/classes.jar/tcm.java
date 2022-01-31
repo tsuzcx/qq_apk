@@ -1,25 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
 
-public class tcm
-  implements DialogInterface.OnClickListener
+class tcm
+  implements Runnable
 {
-  public tcm(NotificationActivity paramNotificationActivity) {}
+  tcm(tck paramtck) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = "http://aq.qq.com/007?from=andapp&account=" + NotificationActivity.b(this.a);
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    this.a.startActivity(localIntent.putExtra("url", paramDialogInterface));
-    this.a.finish();
+    if (Leba.a(this.a.a) != null) {
+      Leba.a(this.a.a).e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tcm
  * JD-Core Version:    0.7.0.1
  */

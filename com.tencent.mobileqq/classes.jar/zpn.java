@@ -1,27 +1,64 @@
-import android.content.SharedPreferences;
-import android.os.Handler;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendServlet;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
-import com.tencent.mobileqq.service.message.MessageCache;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.qphone.base.util.QLog;
 
 public class zpn
   implements Runnable
 {
-  public zpn(ActivateFriendsManager paramActivateFriendsManager) {}
+  public zpn(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean) {}
   
   public void run()
   {
-    long l = ActivateFriendsManager.a(this.a).getLong("key_last_birth_msg_stamp", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.Manager", 2, "local birth timestamp = " + l);
-    }
-    if (MessageCache.a() - l > 259200L)
+    int i = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.c();
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      ActivateFriendsManager.a(this.a).removeCallbacks(ActivateFriendsManager.a(this.a));
-      this.a.a = ActivateFriendsManager.b(this.a);
-      ActivateFriendServlet.a(ActivateFriendsManager.a(this.a), false, true, false, true);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
+      StringBuilder localStringBuilder = new StringBuilder().append("checkUpdateLocalContact, bindState = ").append(i);
+      if (localObject == null)
+      {
+        localObject = ",getSelfBindInfo is null";
+        QLog.d("PhoneContact.Manager", 2, (String)localObject + ", changed = " + this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h + ", firstQuery = " + this.jdField_a_of_type_Boolean);
+      }
     }
+    else
+    {
+      if ((i == 8) || (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e())) {
+        break label137;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.g();
+    }
+    label137:
+    label172:
+    label229:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localObject = ", lastFlag = " + ((RespondQueryQQBindingStat)localObject).lastUsedFlag;
+          break;
+          if (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.c()) {
+            break label172;
+          }
+        } while ((!this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h));
+        PhoneContactManagerImp.f(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp);
+        return;
+        if ((i != 4) && (this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h();
+          return;
+        }
+        if (i != 1) {
+          break label229;
+        }
+      } while ((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a().noBindUploadContacts));
+      PhoneContactManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, true);
+      return;
+    } while ((i != 2) || ((!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b) && (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h)));
+    PhoneContactManagerImp.g(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp);
   }
 }
 

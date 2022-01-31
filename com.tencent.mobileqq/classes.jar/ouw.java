@@ -1,19 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.view.StoryNewGuideDialog;
 
-public final class ouw
-  implements Parcelable.Creator
+public class ouw
+  implements Animation.AnimationListener
 {
-  public ScannerParams a(Parcel paramParcel)
+  public ouw(StoryNewGuideDialog paramStoryNewGuideDialog) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new ScannerParams(paramParcel);
+    this.a.dismiss();
   }
   
-  public ScannerParams[] a(int paramInt)
-  {
-    return new ScannerParams[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

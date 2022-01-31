@@ -1,24 +1,23 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.music.SongInfo;
 
-public class aesq
-  implements View.OnClickListener
+public final class aesq
+  implements Parcelable.Creator
 {
-  public aesq(SelectLocationFragment paramSelectLocationFragment) {}
-  
-  public void onClick(View paramView)
+  public SongInfo a(Parcel paramParcel)
   {
-    this.a.b();
-    new NowVideoReporter().h("video_public").i("search_poi").d(SmallVideoCameraCaptureFragment.a).a(SelectLocationFragment.a(this.a)).b(this.a.getActivity().app);
+    return new SongInfo(paramParcel, null);
+  }
+  
+  public SongInfo[] a(int paramInt)
+  {
+    return new SongInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesq
  * JD-Core Version:    0.7.0.1
  */

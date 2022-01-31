@@ -1,17 +1,31 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.parallel.SimpleParallelObserver;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnInfoListener;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
 
-public class nuh
-  extends SimpleParallelObserver
+class nuh
+  implements Runnable
 {
-  public nuh(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
+  nuh(nug paramnug, int paramInt, Object paramObject) {}
   
-  public void onAllFunctionComplete(boolean paramBoolean)
+  public void run()
   {
-    super.onAllFunctionComplete(paramBoolean);
-    ThreadManager.getUIHandler().post(new nui(this, paramBoolean));
+    int i;
+    if (this.jdField_a_of_type_Nug.a.a != null)
+    {
+      i = this.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_Int != 21) {
+        break label58;
+      }
+      i = 2;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Nug.a.a.a(this.jdField_a_of_type_Nug.a, i, this.jdField_a_of_type_JavaLangObject);
+      return;
+      label58:
+      if (this.jdField_a_of_type_Int == 22) {
+        i = 3;
+      }
+    }
   }
 }
 

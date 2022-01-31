@@ -1,41 +1,60 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdQueryMsgRsp;
-import cooperation.weiyun.sdk.api.IWeiyunCallback;
-import cooperation.weiyun.sdk.api.WeiyunApi;
-import mqq.app.MobileQQ;
+import android.content.Context;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class adab
-  implements IWeiyunCallback
+  implements Runnable
 {
-  public adab(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  public adab(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView, int paramInt, Context paramContext) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
+    ArrayList localArrayList = new ArrayList();
+    Map localMap;
+    Iterator localIterator;
+    String str;
+    if ((this.jdField_a_of_type_Int & 0x1) > 0)
+    {
+      localMap = FileCategoryUtil.c(this.jdField_a_of_type_AndroidContentContext);
+      if (localMap != null)
+      {
+        localIterator = localMap.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          if (str.equalsIgnoreCase("QQfile_recv") != true) {
+            localArrayList.addAll((List)localMap.get(str));
+          }
+        }
+      }
     }
-    WeiYunLogicCenter.a(this.a).a().a(false, 44, new Object[] { Integer.valueOf(paramInt), paramString, null });
-  }
-  
-  public void a(WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd, onSucceed  need pwd[" + paramPwdQueryMsgRsp.pwd_open.get() + "]");
+    if ((this.jdField_a_of_type_Int & 0x2) > 0)
+    {
+      localMap = FileCategoryUtil.b(this.jdField_a_of_type_AndroidContentContext);
+      if (localMap != null)
+      {
+        localIterator = localMap.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          if (str.equalsIgnoreCase("QQfile_recv") != true) {
+            localArrayList.addAll((List)localMap.get(str));
+          }
+        }
+      }
     }
-    WeiyunApi.a(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
-    if (paramPwdQueryMsgRsp.pwd_open.get()) {
-      WeiyunApi.b(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
-    }
-    WeiYunLogicCenter.a(this.a).a().a(true, 44, new Object[] { Integer.valueOf(0), null, Boolean.valueOf(paramPwdQueryMsgRsp.pwd_open.get()) });
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.addAll(localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adab
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,17 @@
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.app.proxy.FTSDBManager;
-import com.tencent.mobileqq.app.proxy.fts.FTSSyncHandler;
-import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
+import mqq.os.MqqHandler;
 
 public class zvi
   implements Runnable
 {
-  public zvi(FTSDBManager paramFTSDBManager) {}
+  public zvi(TroopManager paramTroopManager, String paramString, TroopManager.callbackInMainThread paramcallbackInMainThread) {}
   
   public void run()
   {
-    if (this.a.a()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (SQLiteFTSUtils.g(FTSDBManager.a(this.a)))
-          {
-            FTSDBManager.a(this.a);
-            return;
-          }
-        } while ((!SQLiteFTSUtils.h(FTSDBManager.a(this.a))) || (this.a.b));
-        FTSDBManager.a(this.a);
-        ThreadRegulator.a().b();
-      } while (FTSDBManager.a(this.a));
-      if ((FTSDBManager.b(this.a) > 10) || (FTSDBManager.c(this.a) == 1))
-      {
-        FTSDBManager.a(this.a);
-        return;
-      }
-    } while (FTSDBManager.c(this.a) != -1);
-    this.a.a.postDelayed(this, 5000L);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.d(this.jdField_a_of_type_JavaLangString);
+    ThreadManager.getUIHandler().post(new zvj(this, str));
   }
 }
 

@@ -1,19 +1,21 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.os.Message;
+import dov.com.tencent.biz.qqstory.takevideo.EditMusicExport;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
 public class aofa
-  implements AdapterView.OnItemSelectedListener
+  implements Runnable
 {
-  public aofa(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public aofa(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
   
-  public void onItemSelected(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    EditMusicExport localEditMusicExport = (EditMusicExport)this.a.a(EditMusicExport.class);
+    if (localEditMusicExport != null) {
+      localEditMusicExport.au_();
+    }
+    this.a.a.a(Message.obtain(null, 14));
   }
-  
-  public void onNothingSelected(AdapterView paramAdapterView) {}
 }
 
 

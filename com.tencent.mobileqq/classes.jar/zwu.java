@@ -1,34 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import java.io.File;
+import java.util.Comparator;
 
-public final class zwu
-  implements Runnable
+class zwu
+  implements Comparator
 {
-  public zwu(QQAppInterface paramQQAppInterface, String paramString) {}
+  zwu(zwq paramzwq) {}
   
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    Object localObject1 = ((TroopManager)localObject2).a(this.jdField_a_of_type_JavaLangString);
-    String str;
-    if (localObject1 != null)
-    {
-      ((TroopInfo)localObject1).wClickBAFTipCount += 1;
-      ((TroopManager)localObject2).b((TroopInfo)localObject1);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str = this.jdField_a_of_type_JavaLangString;
-      if (((TroopInfo)localObject1).wInsertBAFTipCount != 1) {
-        break label85;
-      }
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
-    label85:
-    for (localObject1 = "0";; localObject1 = "1")
-    {
-      ReportController.b((QQAppInterface)localObject2, "dc00899", "Grp_addFrd", "", "Grp_AIO", "greyTips_clk", 0, 0, str, (String)localObject1, "", "");
-      return;
-    }
+    return 0;
   }
 }
 

@@ -1,62 +1,26 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
 
-class akeu
-  implements Runnable
+public class akeu
+  extends Handler
 {
-  akeu(aket paramaket) {}
+  public akeu(OrientationAdapterImageView paramOrientationAdapterImageView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    int k = this.a.a.a(this.a.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-    int m = this.a.a.a(this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    int n = this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    Object localObject = this.a.a.getWindow().getAttributes();
-    int i;
-    int j;
-    StringBuilder localStringBuilder;
-    if (k - n > 0)
-    {
-      i = this.a.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.getHeight() / 2;
-      ((WindowManager.LayoutParams)localObject).y = (-i);
-      this.a.a.getWindow().setAttributes((WindowManager.LayoutParams)localObject);
-      if (QLog.isColorLevel())
-      {
-        localObject = (Context)this.a.a.jdField_a_of_type_JavaLangRefSoftReference.get();
-        j = 0;
-        if (localObject != null) {
-          j = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
-        }
-        localStringBuilder = new StringBuilder(128);
-        if (localObject != null) {
-          break label259;
-        }
-        localStringBuilder.append("|context is null");
-      }
+    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.a.invalidate();
     }
-    for (;;)
-    {
-      localStringBuilder.append("|screenHeight=").append(j).append("|emoSpaceY=").append(k).append("|dialogY=").append(m).append("|dialogHeight=").append(n).append("|moveY=").append(i);
-      QLog.d("QQCustomDialogWtihEmoticonInput.meassure", 2, localStringBuilder.toString());
-      return;
-      i = m + n - k;
-      break;
-      label259:
-      localStringBuilder.append("|context is not null");
+    if (QLog.isColorLevel()) {
+      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akeu
  * JD-Core Version:    0.7.0.1
  */

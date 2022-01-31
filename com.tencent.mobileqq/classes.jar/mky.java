@@ -1,28 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
-public class mky
-  implements Animation.AnimationListener
+class mky
+  implements Runnable
 {
-  public mky(ReadinjoyTabFrame paramReadinjoyTabFrame, View paramView, Context paramContext) {}
+  mky(mks parammks) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = new ScaleAnimation(0.8F, 1.0F, 0.8F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(150L);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-    }
-    paramAnimation.setAnimationListener(new mkz(this));
+    this.a.a.notifyDataSetChanged();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

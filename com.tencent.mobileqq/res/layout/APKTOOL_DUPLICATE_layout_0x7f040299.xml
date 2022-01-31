@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f3b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f3f" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f40" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202bc" />
-    <RelativeLayout android:layout_gravity="bottom|center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f41" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02199a" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:visibility="gone" android:layout_width="102.0dip" android:layout_height="19.0dip">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f42" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021999" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="12.0dip" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f43" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0f42" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</FrameLayout>
+    <com.tencent.open.appcircle.widget.AppNewsTitleBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f4e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04029a" />
+    <include android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04022b" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f4f" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f50" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

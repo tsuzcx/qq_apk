@@ -1,54 +1,30 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import java.util.HashMap;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class pbz
-  implements View.OnClickListener
+class pbz
+  implements VideoCombineHelper.Callback
 {
-  public pbz(OfflinePlugin paramOfflinePlugin) {}
+  pbz(pby parampby, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    paramView = this.a.mRuntime.a();
-    if (paramView == null) {}
-    OfflineUpdateStatus localOfflineUpdateStatus;
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((OfflinePlugin.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(OfflinePlugin.a(this.a))));
-        localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
-      } while (localOfflineUpdateStatus == null);
-      if (localOfflineUpdateStatus.b() == 3)
-      {
-        localOfflineUpdateStatus.a();
-        this.a.b();
-        localOfflineUpdateStatus.b(4);
-        if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-          this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        }
-        OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.remove(OfflinePlugin.a(this.a));
-        return;
-      }
-    } while (localOfflineUpdateStatus.b() != 0);
-    HtmlOffline.a(paramView.getApplicationContext(), OfflinePlugin.a(this.a), localOfflineUpdateStatus.f, localOfflineUpdateStatus.a, localOfflineUpdateStatus);
-    localOfflineUpdateStatus.b(1);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 2000L);
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
+    {
+      this.jdField_a_of_type_Pby.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.e = paramString1;
+      this.jdField_a_of_type_Pby.a.jdField_a_of_type_Pbw.a.b(this.jdField_a_of_type_Pby.a.jdField_a_of_type_Pbw);
+      this.jdField_a_of_type_Pby.a.jdField_a_of_type_Pbw.b();
+      return;
+    }
+    this.jdField_a_of_type_Pby.a.jdField_a_of_type_Pbw.d = paramString2;
+    this.jdField_a_of_type_Pby.a.jdField_a_of_type_Pbw.a.a(this.jdField_a_of_type_Pby.a.jdField_a_of_type_Pbw);
   }
 }
 

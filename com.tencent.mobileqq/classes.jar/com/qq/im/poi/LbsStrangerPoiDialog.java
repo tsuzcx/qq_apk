@@ -17,11 +17,11 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anw;
-import anx;
 import any;
 import anz;
 import aoa;
+import aob;
+import aoc;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.armap.ARMapActivity;
@@ -51,7 +51,7 @@ public class LbsStrangerPoiDialog
   URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   ARMapActivity jdField_a_of_type_ComTencentMobileqqArmapARMapActivity;
   ArMapInterface jdField_a_of_type_ComTencentMobileqqArmapArMapInterface;
-  NonMainAppHeadLoader.FaceObserver jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader$FaceObserver = new aoa(this);
+  NonMainAppHeadLoader.FaceObserver jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader$FaceObserver = new aoc(this);
   String jdField_a_of_type_JavaLangString;
   int jdField_b_of_type_Int;
   long jdField_b_of_type_Long;
@@ -69,8 +69,8 @@ public class LbsStrangerPoiDialog
   public LbsStrangerPoiDialog(ARMapActivity paramARMapActivity, ArMapInterface paramArMapInterface, long paramLong1, long paramLong2, int paramInt, String paramString1, String paramString2, long paramLong3)
   {
     super(paramARMapActivity, 2131624516);
-    this.jdField_a_of_type_AndroidOsHandler = new any(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComQqImPoiLbsPackObserver = new anz(this);
+    this.jdField_a_of_type_AndroidOsHandler = new aoa(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComQqImPoiLbsPackObserver = new aob(this);
     this.jdField_a_of_type_AndroidContentContext = paramARMapActivity;
     this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface = paramArMapInterface;
     this.jdField_a_of_type_Long = paramLong1;
@@ -81,17 +81,17 @@ public class LbsStrangerPoiDialog
     this.jdField_b_of_type_JavaLangString = paramString2;
     this.jdField_c_of_type_Long = paramLong3;
     this.jdField_a_of_type_ComQqImPoiLbsPackManager = ((LbsPackManager)paramArMapInterface.getManager(214));
-    setContentView(2130970228);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369729));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369727));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369725));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369728));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369731));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369732));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new anw(this));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369721));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369723));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369724));
+    setContentView(2130970243);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369739));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369737));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369735));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369738));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369741));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369742));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new any(this));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369731));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369733));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369734));
     paramString1 = getWindow();
     WindowManager.LayoutParams localLayoutParams = paramString1.getAttributes();
     localLayoutParams.width = paramARMapActivity.getResources().getDisplayMetrics().widthPixels;
@@ -121,7 +121,7 @@ public class LbsStrangerPoiDialog
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
-    localAnimationSet.setAnimationListener(new anx(this));
+    localAnimationSet.setAnimationListener(new anz(this));
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -188,7 +188,7 @@ public class LbsStrangerPoiDialog
       }
     }
     label391:
-    for (localObject = "等" + paramInt + "人发" + getContext().getString(2131438776);; localObject = getContext().getString(2131438776))
+    for (localObject = "等" + paramInt + "人发" + getContext().getString(2131438799);; localObject = getContext().getString(2131438799))
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setText(paramLbsPackInfo + (String)localObject);
       return;

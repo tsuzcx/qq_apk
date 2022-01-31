@@ -1,18 +1,12 @@
 package dov.com.qq.im.capture;
 
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import com.tencent.common.app.AppInterface;
 
 public abstract class IQIMManager
 {
-  public QQAppInterface a()
+  public AppInterface a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
+    return CaptureContext.a();
   }
   
   public abstract void a();

@@ -1,14 +1,15 @@
-import android.view.View;
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class wgp
+class wgp
+  implements Runnable
 {
-  public TextView a;
+  wgp(wgo paramwgo, Context paramContext) {}
   
-  public wgp(View paramView)
+  public void run()
   {
-    this.a = ((TextView)paramView.findViewById(2131363632));
-    paramView.setTag(this);
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, "你已不在当前群聊。", 1).b(this.jdField_a_of_type_Wgo.a.a());
   }
 }
 

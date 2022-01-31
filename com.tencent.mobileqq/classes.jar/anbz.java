@@ -1,37 +1,18 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.GpsInfo4LocalImage;
 
-public class anbz
-  implements Downloader.DownloadListener
+public final class anbz
+  implements Parcelable.Creator
 {
-  public anbz(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
-  
-  public void onDownloadCanceled(String paramString)
+  public GpsInfo4LocalImage a(Parcel paramParcel)
   {
-    QZLog.i("QZoneSharePictureJsPlugin", "onDownloadCanceled");
+    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public GpsInfo4LocalImage[] a(int paramInt)
   {
-    QZLog.w("QZoneSharePictureJsPlugin", "下载GIF组件失败，请稍后重试");
-    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, "下载GIF组件失败，请稍后重试", 1);
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    QZLog.i("QZoneSharePictureJsPlugin", "下载GIF组件成功");
-    if (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a != null)
-    {
-      QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime, this.jdField_a_of_type_ArrayOfJavaLangString);
-      return;
-    }
-    QZLog.w("QZoneSharePictureJsPlugin", "parentPlugin is null");
-    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, "请稍后重试", 1);
+    return null;
   }
 }
 

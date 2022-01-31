@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import amdf;
-import amdg;
+import amkp;
+import amkq;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -21,7 +21,7 @@ public class PullToZoomListView
   private static final Interpolator a;
   protected float a;
   protected int a;
-  protected amdg a;
+  protected amkq a;
   public View a;
   public FrameLayout a;
   public boolean a;
@@ -34,7 +34,7 @@ public class PullToZoomListView
   
   static
   {
-    jdField_a_of_type_AndroidViewAnimationInterpolator = new amdf();
+    jdField_a_of_type_AndroidViewAnimationInterpolator = new amkp();
   }
   
   public PullToZoomListView(Context paramContext)
@@ -78,7 +78,7 @@ public class PullToZoomListView
     if ((this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() >= this.jdField_b_of_type_Int) && (QLog.isColorLevel())) {
       QLog.d("PullToZoomListView", 2, "endScraling");
     }
-    this.jdField_a_of_type_Amdg.a(200L);
+    this.jdField_a_of_type_Amkq.a(200L);
   }
   
   private void a(Context paramContext)
@@ -86,7 +86,7 @@ public class PullToZoomListView
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
     this.d = localDisplayMetrics.heightPixels;
-    this.jdField_a_of_type_Amdg = new amdg(this);
+    this.jdField_a_of_type_Amkq = new amkq(this);
   }
   
   private void a(View paramView)
@@ -134,8 +134,8 @@ public class PullToZoomListView
     for (;;)
     {
       return super.dispatchTouchEvent(paramMotionEvent);
-      if (!this.jdField_a_of_type_Amdg.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Amdg.a();
+      if (!this.jdField_a_of_type_Amkq.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Amkq.a();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getY();
       this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);

@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
 public class aefo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aefo(MedalGuideView paramMedalGuideView, QQAppInterface paramQQAppInterface) {}
+  public aefo(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80088E9", "0X80088E9", this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalGuideView.e, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.b(this.jdField_a_of_type_OrgJsonJSONObject);
+    paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+    if (!TextUtils.isEmpty(paramView)) {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(paramView, new String[] { String.valueOf(0) });
+    }
   }
 }
 

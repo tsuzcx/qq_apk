@@ -24,11 +24,11 @@ import com.tencent.widget.GestureSelectGridView;
 import com.tencent.widget.GestureSelectGridView.OnSelectListener;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import pey;
-import pez;
-import pfa;
-import pfb;
-import pfc;
+import pjq;
+import pjr;
+import pjs;
+import pjt;
+import pju;
 
 public abstract class AbstractImageListScene
   extends ImageScene
@@ -44,7 +44,7 @@ public abstract class AbstractImageListScene
   protected AbstractAnimationManager a;
   public AbstractImageAdapter a;
   protected AbstractImageListModel a;
-  AnimationLister jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister = new pfc(this);
+  AnimationLister jdField_a_of_type_ComTencentCommonGalleryactivityAnimationLister = new pju(this);
   public QQCustomDialog a;
   public GestureSelectGridView a;
   public boolean a;
@@ -65,21 +65,21 @@ public abstract class AbstractImageListScene
   
   private void c(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970188, null));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970203, null));
     if (paramViewGroup == null) {
       this.jdField_a_of_type_AndroidAppActivity.addContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new ViewGroup.LayoutParams(-1, -1));
     }
     for (;;)
     {
       b(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363378));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363978));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369467));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369469));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369470));
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369468);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369466));
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369471));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363397));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131364003));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369476));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369478));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369479));
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369477);
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369475));
+      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView = ((GestureSelectGridView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131369480));
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setScrollBarStyle(0);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setNumColumns(4);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setColumnWidth(this.jdField_a_of_type_Int);
@@ -90,7 +90,7 @@ public abstract class AbstractImageListScene
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setOnIndexChangedListener(a());
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter = a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
       this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setAdapter(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageAdapter);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436696);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436716);
       n();
       o();
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
@@ -117,22 +117,22 @@ public abstract class AbstractImageListScene
       }
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new pey(this));
+      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new pjq(this));
     }
     for (;;)
     {
       if (this.jdField_c_of_type_AndroidWidgetTextView != null)
       {
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131436701);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131436721);
         this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(a());
       }
       return;
       label92:
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131436703);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new pez(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131436723);
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new pjr(this));
     }
   }
   
@@ -143,8 +143,8 @@ public abstract class AbstractImageListScene
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new pfa(this));
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new pfb(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new pjs(this));
+      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new pjt(this));
       return;
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
@@ -238,12 +238,12 @@ public abstract class AbstractImageListScene
       }
       if (((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).a != null)
       {
-        i = this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131494254);
+        i = this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131494260);
         ((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).a.setStatusColor(i);
         ((AIOGalleryActivity)this.jdField_a_of_type_AndroidAppActivity).a.setStatusBarColor(i);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436696);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131436716);
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     }

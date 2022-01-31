@@ -19,13 +19,13 @@ public class ShareGroupMultiSharePlayMode
   extends CommentPlayMode
 {
   protected String h;
-  protected int l;
+  protected int m;
   
   public ShareGroupMultiSharePlayMode(int paramInt, StoryVideoPlayer paramStoryVideoPlayer, VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, Bundle paramBundle)
   {
     super(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
     this.h = paramBundle.getString("extra_share_time");
-    this.l = paramBundle.getInt("extra_share_time_zone");
+    this.m = paramBundle.getInt("extra_share_time_zone");
     this.jdField_j_of_type_Int = 1;
     b(2);
     this.p = 1;

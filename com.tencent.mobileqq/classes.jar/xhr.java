@@ -1,29 +1,29 @@
-import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
-import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager.ShowInfo;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.KeyEvent;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-public final class xhr
-  implements Runnable
+public class xhr
+  implements TextView.OnEditorActionListener
 {
-  public xhr(WeakReference paramWeakReference1, WeakReference paramWeakReference2, int paramInt) {}
+  public xhr(TransactionActivity paramTransactionActivity) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    RedDotImageView localRedDotImageView = (RedDotImageView)this.b.get();
-    if ((localObject != null) && (localRedDotImageView != null))
+    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      localObject = (QWalletRedManager)((QQAppInterface)localObject).getManager(272);
-      QWalletRedManager.ShowInfo localShowInfo = ((QWalletRedManager)localObject).a("2001");
-      if ((localShowInfo.a) && (QWalletTools.a(localShowInfo.b, this.jdField_a_of_type_Int)))
-      {
-        ((QWalletRedManager)localObject).b("2001");
-        localRedDotImageView.post(new xhs(this));
+      if (TransactionActivity.b(this.a).isEnabled()) {
+        TransactionActivity.b(this.a).performClick();
+      }
+      if (TransactionActivity.a(this.a) != null) {
+        ((InputMethodManager)TransactionActivity.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(TransactionActivity.c(this.a).getWindowToken(), 0);
       }
     }
+    return false;
   }
 }
 

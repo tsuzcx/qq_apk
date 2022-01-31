@@ -1,27 +1,48 @@
-import android.hardware.SensorEvent;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.OrientationCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aaoy
   implements Runnable
 {
-  public aaoy(ArkAppEventObserverManager paramArkAppEventObserverManager, long paramLong, SensorEvent paramSensorEvent) {}
+  public aaoy(ARReport paramARReport, long paramLong1, long paramLong2, long paramLong3, int paramInt1, String paramString, int paramInt2, long paramLong4, long paramLong5, long paramLong6, int paramInt3) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onOrientationSensorChange curTime=" + this.jdField_a_of_type_Long + ", event[0]=" + this.jdField_a_of_type_AndroidHardwareSensorEvent.values[0] + ", event[1]=" + this.jdField_a_of_type_AndroidHardwareSensorEvent.values[1] + ", event[2]=" + this.jdField_a_of_type_AndroidHardwareSensorEvent.values[2]);
+    HashMap localHashMap = new HashMap();
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_a_of_type_Long)) {
+      localHashMap.put("cloud_choose_time", String.valueOf(this.jdField_a_of_type_Long));
     }
-    ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager, 360.0F - this.jdField_a_of_type_AndroidHardwareSensorEvent.values[0]);
-    ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager, -this.jdField_a_of_type_AndroidHardwareSensorEvent.values[1]);
-    ArkAppEventObserverManager.c(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager, -this.jdField_a_of_type_AndroidHardwareSensorEvent.values[2]);
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onOrientationSensorChange update alpha=" + ArkAppEventObserverManager.c(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) + ", update beta=" + ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) + ", update gamma=" + ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager));
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_b_of_type_Long)) {
+      localHashMap.put("cloud_upload_time", String.valueOf(this.jdField_b_of_type_Long));
     }
-    if (ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager) != null) {
-      ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager).a(true, ArkAppEventObserverManager.c(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager), ArkAppEventObserverManager.b(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager), ArkAppEventObserverManager.a(this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppEventObserverManager));
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_c_of_type_Long)) {
+      localHashMap.put("cloud_upload_size", String.valueOf(this.jdField_c_of_type_Long));
     }
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_a_of_type_Int)) {
+      localHashMap.put("cloud_upload_times", String.valueOf(this.jdField_a_of_type_Int));
+    }
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localHashMap.put("cloud_upload_imgid", this.jdField_a_of_type_JavaLangString);
+    }
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_b_of_type_Int)) {
+      localHashMap.put("cloud_recognize_time", String.valueOf(this.jdField_b_of_type_Int));
+    }
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.d)) {
+      localHashMap.put("cloud_all_size", String.valueOf(this.d));
+    }
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.e)) {
+      localHashMap.put("cloud_time", String.valueOf(this.e));
+    }
+    localHashMap.put("cloud_net_type", String.valueOf(NetworkUtil.a(BaseApplication.getContext())));
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.f)) {
+      localHashMap.put("cloud_all_time", String.valueOf(this.f));
+    }
+    localHashMap.put("cloud_all_result", String.valueOf(this.jdField_c_of_type_Int));
+    localHashMap.put("cloud_type", "0");
+    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARCloud", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

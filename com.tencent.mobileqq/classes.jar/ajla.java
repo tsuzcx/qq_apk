@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import java.util.List;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.troop.filemanager.TroopFileDataBaseProxy;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
+import java.util.UUID;
 
-public final class ajla
-  implements DialogInterface.OnClickListener
+public class ajla
+  implements ProxyListener
 {
-  public ajla(XMediaEditor paramXMediaEditor, List paramList) {}
+  public ajla(TroopFileDataBaseProxy paramTroopFileDataBaseProxy, UUID paramUUID) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(this.jdField_a_of_type_JavaUtilList);
-    paramDialogInterface.dismiss();
+    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
   }
 }
 

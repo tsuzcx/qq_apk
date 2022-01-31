@@ -1,19 +1,15 @@
-import android.view.ViewGroup;
-import android.widget.ListView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI.FacePoiSearchUIListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
 
-class aoan
-  implements Runnable
+public class aoan
+  implements FacePoiSearchUI.FacePoiSearchUIListener
 {
-  aoan(aoam paramaoam) {}
+  public aoan(EditProviderPart paramEditProviderPart) {}
   
-  public void run()
+  public void aE_()
   {
-    FaceListPage.a(this.a.a.a).setVisibility(4);
-    FaceListPage.b(this.a.a.a).setVisibility(4);
-    FaceListPage.a(this.a.a.a).setVisibility(0);
-    FaceListPage.a(this.a.a.a).notifyDataSetChanged();
+    EditProviderPart.a(this.a).e();
   }
 }
 

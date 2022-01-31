@@ -1,35 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.ResUtil;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 
 public class xfo
-  extends DownloadListener
+  implements Runnable
 {
-  public xfo(PreloadManager paramPreloadManager, WeakReference paramWeakReference, boolean paramBoolean, PreloadManager.OnGetPathListener paramOnGetPathListener) {}
+  public xfo(PasswdRedBagManager paramPasswdRedBagManager, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public void onDoneFile(DownloadTask paramDownloadTask)
+  public void run()
   {
-    super.onDoneFile(paramDownloadTask);
-    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!PreloadManager.a((PreloadManager)localObject)) {
-      return;
-    }
-    if (paramDownloadTask.jdField_a_of_type_Int == 0)
-    {
-      localObject = ResUtil.a(paramDownloadTask.jdField_a_of_type_JavaLangString, (PreloadManager)localObject, this.jdField_a_of_type_Boolean, 0);
-      PreloadManager.PathResult localPathResult = new PreloadManager.PathResult();
-      localPathResult.url = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      localPathResult.filePath = ((ResourceInfo)localObject).filePath;
-      localPathResult.folderPath = ((ResourceInfo)localObject).folderPath;
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(0, localPathResult);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$OnGetPathListener.onResult(1, PreloadManager.PathResult.getFailRes(paramDownloadTask.jdField_a_of_type_JavaLangString));
+    PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager).a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
   }
 }
 

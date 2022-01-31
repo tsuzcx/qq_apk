@@ -1,25 +1,27 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.InfoUpdateListener;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetail.handler.AccountDetailBaseItemClickHandler;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailCustomModuleBaseWrapper;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
 
 public class kta
-  implements FriendProfileImageModel.InfoUpdateListener
+  implements AdapterView.OnItemClickListener
 {
-  WeakReference a;
+  public kta(AccountDetailCustomModuleBaseWrapper paramAccountDetailCustomModuleBaseWrapper) {}
   
-  public kta(AccountDetailActivity paramAccountDetailActivity)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramAccountDetailActivity);
-  }
-  
-  public void a(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "onItemClick!");
     }
-    ((AccountDetailActivity)this.a.get()).a(paramProfileImageInfo);
-    ((AccountDetailActivity)this.a.get()).N();
+    paramAdapterView = (PaConfigAttr.PaConfigInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailHandlerAccountDetailBaseItemClickHandler != null) {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailHandlerAccountDetailBaseItemClickHandler.a(paramAdapterView);
+    }
+    this.a.a(paramAdapterView);
   }
 }
 

@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.automator.step.AfterSyncMsg;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class zwh
-  extends SosoInterface.OnLocationListener
+public class zwh
+  implements Runnable
 {
-  public zwh(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public zwh(AfterSyncMsg paramAfterSyncMsg) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SOSO.LBS", 2, "onLocationFinish() lock.notifyAll()");
-    }
-    synchronized (SosoInterface.a)
-    {
-      SosoInterface.a.notifyAll();
-      return;
+    if (!BmqqSegmentUtil.a.get()) {
+      BmqqSegmentUtil.a(BaseApplicationImpl.getContext());
     }
   }
 }

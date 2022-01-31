@@ -130,8 +130,8 @@ public class MediaCodecSendTask
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCanceledOnTouchOutside(false);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969178);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363418));
       }
       return;
     }
@@ -388,7 +388,7 @@ public class MediaCodecSendTask
   
   protected void onPreExecute()
   {
-    a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity, 2131436145);
+    a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaMediaCodecSendTask$VideoSendPublicParam.jdField_a_of_type_AndroidAppActivity, 2131436163);
   }
 }
 

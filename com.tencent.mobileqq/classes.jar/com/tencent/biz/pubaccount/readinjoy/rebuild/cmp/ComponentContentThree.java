@@ -60,7 +60,7 @@ public class ComponentContentThree
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969573, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969569, this, true);
   }
   
   public void a() {}
@@ -72,7 +72,7 @@ public class ComponentContentThree
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366877));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366876));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131361794));
     this.b = ((KandianUrlImageView)paramView.findViewById(2131361800));
     this.c = ((KandianUrlImageView)paramView.findViewById(2131361795));

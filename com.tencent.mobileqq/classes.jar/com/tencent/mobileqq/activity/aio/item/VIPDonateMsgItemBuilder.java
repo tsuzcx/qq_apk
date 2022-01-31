@@ -32,8 +32,8 @@ import com.tencent.mobileqq.data.VIPDonateMsg;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
-import vli;
-import vlj;
+import vql;
+import vqm;
 
 public class VIPDonateMsgItemBuilder
   extends BaseBubbleBuilder
@@ -54,7 +54,7 @@ public class VIPDonateMsgItemBuilder
   public VIPDonateMsgItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vli(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vql(this);
     this.jdField_b_of_type_AndroidContentContext = paramContext;
     float f1 = paramContext.getResources().getDisplayMetrics().density;
     this.e = ((int)(1.0F * f1 + 0.5F));
@@ -116,7 +116,7 @@ public class VIPDonateMsgItemBuilder
     localObject1 = new RelativeLayout.LayoutParams(this.h, -2);
     ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131362208);
     localQQWalletTransferBubbleView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localQQWalletTransferBubbleView.setBackgroundResource(2130844052);
+    localQQWalletTransferBubbleView.setBackgroundResource(2130844118);
     localQQWalletTransferBubbleView.setId(2131362212);
     paramContext = new TextView(paramContext);
     localObject1 = new RelativeLayout.LayoutParams(-2, -2);
@@ -145,7 +145,7 @@ public class VIPDonateMsgItemBuilder
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     boolean bool2 = true;
-    paramView = (vlj)paramViewHolder;
+    paramView = (vqm)paramViewHolder;
     if (paramView.a == null) {
       paramView.a = a(this.jdField_b_of_type_AndroidContentContext);
     }
@@ -171,14 +171,14 @@ public class VIPDonateMsgItemBuilder
       paramBaseChatItemLayout.setText(paramViewHolder.subTitle);
       paramBaseChatItemLayout.setTextColor(-1);
       ((TextView)paramView.a.findViewById(2131362213)).setText(paramViewHolder.footer);
-      ((ImageView)paramView.a.findViewById(2131362209)).setImageResource(2130846369);
+      ((ImageView)paramView.a.findViewById(2131362209)).setImageResource(2130846451);
       paramBaseChatItemLayout = (QQWalletTransferBubbleView)paramView.a.findViewById(2131362212);
       QQWalletTransferBubbleView localQQWalletTransferBubbleView = (QQWalletTransferBubbleView)paramView.a.findViewById(2131362208);
       int m = Color.rgb(255, 170, 57);
       if (!paramChatMessage.isSend())
       {
         bool1 = true;
-        localQQWalletTransferBubbleView.setBubbleBackground(2130844051, m, bool1);
+        localQQWalletTransferBubbleView.setBubbleBackground(2130844117, m, bool1);
         m = Color.rgb(255, 255, 255);
         if (paramChatMessage.isSend()) {
           break label346;
@@ -187,7 +187,7 @@ public class VIPDonateMsgItemBuilder
       label346:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        paramBaseChatItemLayout.setBubbleBackground(2130844052, m, bool1);
+        paramBaseChatItemLayout.setBubbleBackground(2130844118, m, bool1);
         if (jdField_b_of_type_Boolean) {
           paramView.a.setContentDescription(paramViewHolder.subTitle + paramViewHolder.title);
         }
@@ -203,7 +203,7 @@ public class VIPDonateMsgItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new vlj(this, null);
+    return new vqm(this, null);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -218,7 +218,7 @@ public class VIPDonateMsgItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131375567: 
+    case 2131375633: 
       ChatActivityFacade.a(this.jdField_b_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }

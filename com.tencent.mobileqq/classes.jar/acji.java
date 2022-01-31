@@ -1,39 +1,47 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class acji
-  extends RecyclerView.ItemDecoration
+class acji
+  extends WtloginObserver
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
-  private int d;
+  acji(acjg paramacjg, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
   
-  public acji(ExtendFriendSquareFragment paramExtendFriendSquareFragment)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.jdField_a_of_type_Int = AIOUtils.a(11.0F, paramExtendFriendSquareFragment.getResources());
-    this.b = AIOUtils.a(11.0F, paramExtendFriendSquareFragment.getResources());
-    this.c = AIOUtils.a(8.0F, paramExtendFriendSquareFragment.getResources());
-    this.d = AIOUtils.a(8.0F, paramExtendFriendSquareFragment.getResources());
-  }
-  
-  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
-  {
-    if (paramInt == paramRecyclerView.getAdapter().getItemCount() - 1)
+    boolean bool2 = true;
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      paramRect.set(this.c, this.jdField_a_of_type_Int, this.d, this.b);
-      return;
+      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
+      if (paramDevlockInfo.AllowSet != 1) {
+        break label85;
+      }
+      bool1 = true;
+      paramWUserSigInfo.putBoolean("hasSecurityPhoneNumber", bool1);
+      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
+      if (paramDevlockInfo.DevSetup != 1) {
+        break label91;
+      }
     }
-    paramRect.set(this.c, this.jdField_a_of_type_Int, this.d, 0);
+    label85:
+    label91:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramWUserSigInfo.putBoolean("devlockIsOpen", bool1);
+      this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acji
  * JD-Core Version:    0.7.0.1
  */

@@ -25,8 +25,8 @@ public class PhoneLaunchView
   public PhoneLaunchView(Activity paramActivity, int paramInt)
   {
     super(paramActivity, paramInt);
-    a(2130969167);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131365481));
+    a(2130969165);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131365486));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -97,8 +97,8 @@ public class PhoneLaunchView
     super.a(paramIntent, paramPhoneInnerFrame);
     if (this.jdField_a_of_type_Int == 3)
     {
-      ((ImageView)a(2131365479)).setImageResource(2130839555);
-      ((TextView)a(2131365480)).setText(2131435512);
+      ((ImageView)a(2131365484)).setImageResource(2130839570);
+      ((TextView)a(2131365485)).setText(2131435528);
     }
   }
   

@@ -1,63 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.util.Map;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class algr
   implements Runnable
 {
-  public algr(DownloadManager paramDownloadManager, String paramString, Map paramMap, int paramInt, DownloadInfo paramDownloadInfo1, DownloadInfo paramDownloadInfo2) {}
+  public algr(MQPSensitiveMsgUtil paramMQPSensitiveMsgUtil, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "startDownload download file, url = " + this.jdField_a_of_type_JavaLangString + "params = " + this.jdField_a_of_type_JavaUtilMap);
-    }
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          int i;
-          if (this.jdField_a_of_type_Int == 0)
-          {
-            i = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, "application/vnd.android.package-archive", this.jdField_a_of_type_JavaUtilMap);
-            LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "startDownloadTask downloadSDKClient result=" + i + " url=" + this.jdField_a_of_type_JavaLangString);
-            if (i == 0) {
-              break;
-            }
-            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, i, "");
-            return;
-          }
-          if (this.jdField_a_of_type_Int == 1)
-          {
-            this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADTYPE, String.valueOf(3));
-            i = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, "application/tm.android.apkdiff", this.jdField_a_of_type_JavaUtilMap);
-          }
-          else
-          {
-            LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "startDownload download unapk file, url = " + this.jdField_a_of_type_JavaLangString + ",filename = " + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d);
-            i = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().startDownloadTask(this.jdField_a_of_type_JavaLangString, 0, "resource/tm.android.unknown", this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e, this.jdField_a_of_type_JavaUtilMap);
-            continue;
-            i = 3;
-          }
-        }
-        catch (Exception localException)
-        {
-          LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
-        }
-      }
-    } while ((this.b != this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) || (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f != 20));
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(20, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    Object localObject = "sp_confirmed_sensmsg_" + MQPSensitiveMsgUtil.a();
+    localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 0).edit();
+    ((SharedPreferences.Editor)localObject).putString(this.jdField_a_of_type_JavaLangString, this.b);
+    ((SharedPreferences.Editor)localObject).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     algr
  * JD-Core Version:    0.7.0.1
  */

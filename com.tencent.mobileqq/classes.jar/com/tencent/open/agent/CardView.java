@@ -34,7 +34,7 @@ public class CardView
     if (paramInt1 < super.getChildCount())
     {
       View localView = super.getChildAt(paramInt1);
-      if (localView.getId() == 2131365734) {
+      if (localView.getId() == 2131365739) {
         localView.layout(0, 0, getWidth(), getHeight());
       }
       for (;;)

@@ -1,113 +1,67 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.flashchat.OnHolderItemClickListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.statistics.QIMReportController;
+import com.tencent.mobileqq.statistics.reportitem.QIMReadWriteReportItem;
+import com.tencent.widget.BubblePopupWindow;
+import dov.com.tencent.biz.qqstory.takevideo.DataReporter;
+import dov.com.tencent.biz.qqstory.takevideo.DataReporter.Destination;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import mqq.app.AppRuntime;
 
 public class aobe
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public View a;
-  public ImageView a;
-  OnHolderItemClickListener a;
-  public DynamicTextConfigManager.DynamicTextConfigBean a;
-  public QIMCommonLoadingView a;
-  View b;
-  public ImageView b;
-  public ImageView c;
-  public ImageView d;
+  public aobe(EditVideoButton paramEditVideoButton, Intent paramIntent) {}
   
-  public aobe(View paramView, OnHolderItemClickListener paramOnHolderItemClickListener)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371715));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371716));
-    this.c = ((ImageView)paramView.findViewById(2131371718));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131371717);
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = ((QIMCommonLoadingView)paramView.findViewById(2131363452));
-    this.d = ((ImageView)paramView.findViewById(2131371719));
-    paramView.setOnClickListener(this);
-    paramOnHolderItemClickListener = (RelativeLayout.LayoutParams)this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
-    paramView = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    paramOnHolderItemClickListener.width = paramView.width;
-    paramOnHolderItemClickListener.height = paramView.height;
-    paramOnHolderItemClickListener.addRule(10);
-    paramOnHolderItemClickListener.addRule(9);
-    paramOnHolderItemClickListener.addRule(12);
-    paramOnHolderItemClickListener.addRule(11);
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setLayoutParams(paramOnHolderItemClickListener);
-    localLayoutParams.width = paramView.width;
-    localLayoutParams.height = paramView.height;
-    localLayoutParams.addRule(10);
-    localLayoutParams.addRule(9);
-    localLayoutParams.addRule(12);
-    localLayoutParams.addRule(11);
-    this.c.setLayoutParams(localLayoutParams);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getVisibility() != 0) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(0);
-    }
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setProgress((int)paramFloat);
-    int i = this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getMeasuredWidth();
-    int j = this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getMeasuredHeight();
-    if (QLog.isColorLevel()) {
-      QLog.i("DText", 2, "updateProgress progress is: " + paramFloat + " pos is: " + this.jdField_a_of_type_Int + " width is: " + i + "height is: " + j);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getVisibility() != 8) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(8);
-    }
-    if (paramBoolean) {
-      if (this.d.getVisibility() != 8) {
-        this.d.setVisibility(8);
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.a(EditVideoButton.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton), paramBoolean);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.e = paramBoolean;
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DText", 2, "finish download pos is: " + this.jdField_a_of_type_Int);
+      if ((EditVideoButton.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton) == null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.jdField_a_of_type_Boolean = false;
+        BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4).edit().putBoolean("showFlashPic", false).commit();
+        EditVideoButton.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton, new BubblePopupWindow(-2, -2));
+        paramCompoundButton = new TextView(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a());
+        i = AIOUtils.a(10.0F, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.a());
+        paramCompoundButton.setPadding(i, 0, i, 0);
+        paramCompoundButton.setTextColor(-1);
+        paramCompoundButton.setText("选中的图片每人只能查看一次");
+        paramCompoundButton.setTextSize(15.0F);
+        EditVideoButton.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton).a(paramCompoundButton);
+        EditVideoButton.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton).a(false);
+        EditVideoButton.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton).b(EditVideoButton.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton));
       }
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.b) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.b = false;
+      }
+    }
+    while ((EditVideoButton.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton) == null) || (!EditVideoButton.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton).b()))
+    {
       return;
-      if (this.d.getVisibility() != 0) {
-        this.d.setVisibility(0);
+      int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("uintype", 0);
+      Object localObject = DataReporter.a().a(i);
+      paramCompoundButton = (CompoundButton)localObject;
+      if (localObject == null) {
+        paramCompoundButton = DataReporter.Destination.UNKNOWN;
       }
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.c.getVisibility() != 0) {
-        this.c.setVisibility(0);
-      }
-    }
-    while (this.c.getVisibility() == 8) {
+      localObject = new QIMReadWriteReportItem();
+      ((QIMReadWriteReportItem)localObject).d = "0X800894C";
+      ((QIMReadWriteReportItem)localObject).g = paramCompoundButton.toString();
+      ((QIMReadWriteReportItem)localObject).f = "3";
+      QIMReportController.b(null, (QIMReadWriteReportItem)localObject);
       return;
     }
-    this.c.setVisibility(8);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView == this.jdField_a_of_type_AndroidViewView) && (this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener.a(paramView, getPosition(), -1);
-    }
+    EditVideoButton.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton).a();
   }
 }
 

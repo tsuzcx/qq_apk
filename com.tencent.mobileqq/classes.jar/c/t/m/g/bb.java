@@ -1,17 +1,71 @@
 package c.t.m.g;
 
+import java.io.Serializable;
+import java.util.Map;
+
 public final class bb
-  extends ax
+  implements Serializable
 {
+  long a;
+  String b;
+  String c;
+  private String d;
+  private Map<String, String> e;
+  
   public final String a()
   {
-    return "state";
+    try
+    {
+      String str = this.d;
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final void a_()
+  public final void a(String paramString)
   {
-    by.c();
-    String str = l.d;
+    try
+    {
+      this.d = paramString;
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public final void a(Map<String, String> paramMap)
+  {
+    try
+    {
+      this.e = paramMap;
+      return;
+    }
+    finally
+    {
+      paramMap = finally;
+      throw paramMap;
+    }
+  }
+  
+  public final Map<String, String> b()
+  {
+    try
+    {
+      Map localMap = this.e;
+      return localMap;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

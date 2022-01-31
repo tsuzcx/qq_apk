@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.lyric.widget.LyricViewScroll android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0644" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.lyric.widget.LyricViewInternalDetail android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0645" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </FrameLayout>
-</com.tencent.mobileqq.lyric.widget.LyricViewScroll>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0649" android:layout_width="wrap_content" android:layout_height="12.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202e3" android:scaleType="fitXY" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a064a" android:layout_width="210.0dip" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a064b" android:layout_width="wrap_content" android:layout_height="12.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202e3" android:scaleType="fitXY" />
+</LinearLayout>

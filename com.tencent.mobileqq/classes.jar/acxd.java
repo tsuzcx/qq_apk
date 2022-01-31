@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class acxd
+  implements FMDialogUtil.FMDialogInterface
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
+  public acxd(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public acxd(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = MessageCache.a();
+    UniformDownloadActivity.a(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acxd
  * JD-Core Version:    0.7.0.1
  */

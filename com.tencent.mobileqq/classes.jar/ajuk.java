@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.OnOnPlayedListener;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
-public class ajuk
-  implements VideoSprite.OnOnPlayedListener
+class ajuk
+  implements Runnable
 {
-  public ajuk(TroopSignVideoView paramTroopSignVideoView) {}
+  ajuk(ajuj paramajuj) {}
   
-  public void a()
+  public void run()
   {
-    if (TroopSignVideoView.a(this.a) != null) {
-      TroopSignVideoView.a(this.a).a();
+    if (this.a.a.a == 3) {
+      this.a.a.a = 1;
     }
+    this.a.a.g();
   }
 }
 

@@ -29,13 +29,13 @@ import com.tencent.mobileqq.activity.contacts.base.InterceptListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import wop;
+import wua;
 
 @TargetApi(14)
 public class SlideCardView
   extends LinearLayout
 {
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new wop();
+  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new wua();
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -315,7 +315,7 @@ public class SlideCardView
     View localView2;
     if ((paramInt == 1) && ((localView1 instanceof ViewGroup)))
     {
-      localView2 = ((ViewGroup)localView1).findViewById(2131363846);
+      localView2 = ((ViewGroup)localView1).findViewById(2131363870);
       if (!this.jdField_i_of_type_Boolean) {
         break label237;
       }
@@ -505,7 +505,7 @@ public class SlideCardView
     if ((paramView instanceof ViewGroup))
     {
       paramView = (ViewGroup)paramView;
-      localView = paramView.findViewById(2131363846);
+      localView = paramView.findViewById(2131363870);
       paramView.setAlpha(1.0F);
       if (localView != null)
       {
@@ -616,7 +616,7 @@ public class SlideCardView
       bool1 = bool2;
       if (localView.getVisibility() == 0)
       {
-        localView = localView.findViewById(2131363853);
+        localView = localView.findViewById(2131363877);
         bool1 = bool2;
         if (localView != null)
         {

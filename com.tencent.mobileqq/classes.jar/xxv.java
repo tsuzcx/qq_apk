@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.Callback;
+import com.tencent.qphone.base.util.QLog;
 
 public class xxv
-  implements Runnable
+  implements CameraExceptionHandler.Callback
 {
-  public xxv(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
+  public xxv(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void a(RuntimeException paramRuntimeException)
   {
-    LbsFilterStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    }
   }
 }
 

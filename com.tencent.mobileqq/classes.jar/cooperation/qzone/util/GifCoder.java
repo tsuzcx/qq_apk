@@ -1,6 +1,5 @@
 package cooperation.qzone.util;
 
-import anaq;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -9,6 +8,7 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Matrix;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import anip;
 import com.tencent.component.network.utils.Base64;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.cache.CacheManager;
@@ -279,7 +279,7 @@ public class GifCoder
     boolean[] arrayOfBoolean = new boolean[1];
     arrayOfBoolean[0] = false;
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    AlbumLibDownloaderUtil.a().b(new anaq(arrayOfBoolean, localCountDownLatch));
+    AlbumLibDownloaderUtil.a().b(new anip(arrayOfBoolean, localCountDownLatch));
     try
     {
       localCountDownLatch.await(30L, TimeUnit.SECONDS);

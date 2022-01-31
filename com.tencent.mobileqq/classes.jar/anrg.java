@@ -1,14 +1,16 @@
-import android.widget.ImageView;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.PhotoCaptureResult;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
 public class anrg
   implements Runnable
 {
-  public anrg(EditLocalVideoPlayer paramEditLocalVideoPlayer) {}
+  public anrg(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult) {}
   
   public void run()
   {
-    this.a.a.setVisibility(8);
+    Toast.makeText(BaseApplicationImpl.getContext(), "onPhotoCaptured : " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$PhotoCaptureResult.a, 1).show();
   }
 }
 

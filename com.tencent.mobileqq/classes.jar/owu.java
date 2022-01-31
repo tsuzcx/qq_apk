@@ -1,15 +1,24 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.RectF;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import com.tencent.biz.qqstory.widget.circularreveal.RectangleRevealAnimator;
 
 public class owu
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public owu(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.CombineParams paramCombineParams, VideoCombineHelper.Callback paramCallback) {}
+  public owu(RectangleRevealAnimator paramRectangleRevealAnimator, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback);
+    RectF localRectF = new RectF();
+    localRectF.top = ((Float)paramValueAnimator.getAnimatedValue("top")).floatValue();
+    localRectF.left = ((Float)paramValueAnimator.getAnimatedValue("left")).floatValue();
+    float f = localRectF.left;
+    localRectF.right = (((Float)paramValueAnimator.getAnimatedValue("width")).floatValue() + f);
+    f = localRectF.top;
+    localRectF.bottom = (((Float)paramValueAnimator.getAnimatedValue("height")).floatValue() + f);
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setClipRect(localRectF, ((Float)paramValueAnimator.getAnimatedValue("radius")).floatValue());
   }
 }
 

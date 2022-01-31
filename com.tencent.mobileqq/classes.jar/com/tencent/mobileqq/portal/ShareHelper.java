@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.portal;
 
-import agmy;
-import agna;
+import agrn;
+import agrp;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -53,7 +53,7 @@ public class ShareHelper
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
     for (Bitmap localBitmap = null; localBitmap == null; localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangRefWeakReference.get())
     {
-      ThreadManager.post(new agmy(this, paramString4, paramInt, paramString1, paramString2, paramString3), 5, null, false);
+      ThreadManager.post(new agrn(this, paramString4, paramInt, paramString1, paramString2, paramString3), 5, null, false);
       return;
     }
     a(paramInt, paramString1, paramString2, paramString3, paramString4, localBitmap);
@@ -120,7 +120,7 @@ public class ShareHelper
         paramBitmap.putExtra("image_url_remote", paramString4);
         paramBitmap.putExtra("req_type", 1);
         paramBitmap.putExtra("pluginName", "web_share");
-        paramBitmap.putExtra("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131430117, new Object[] { paramString1 }));
+        paramBitmap.putExtra("brief_key", this.jdField_a_of_type_AndroidAppActivity.getString(2131430119, new Object[] { paramString1 }));
         paramBitmap.putExtra("struct_share_key_content_action", "web");
         paramBitmap.putExtra("pubUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         paramString1 = StructMsgFactory.a(paramBitmap.getExtras());
@@ -134,7 +134,7 @@ public class ShareHelper
     label394:
     int i;
     if (!WXShareHelper.a().a()) {
-      i = 2131435319;
+      i = 2131435335;
     }
     for (;;)
     {
@@ -145,11 +145,11 @@ public class ShareHelper
         if (WXShareHelper.a().b()) {
           break label524;
         }
-        i = 2131435320;
+        i = 2131435336;
         continue;
       }
       paramString4 = String.valueOf(System.currentTimeMillis());
-      localObject = new agna(this, paramString4);
+      localObject = new agrp(this, paramString4);
       WXShareHelper.a().a((WXShareHelper.WXShareListener)localObject);
       if (paramInt == 3)
       {

@@ -1,49 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.config.ConfigInfo;
-import com.tencent.av.report.TraeConfigUpdate;
-import com.tencent.av.ui.ConfigInfoTips;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
 
-public class jrw
-  extends BroadcastReceiver
+class jrw
+  implements Runnable
 {
-  public jrw(ConfigInfoTips paramConfigInfoTips) {}
+  jrw(jrv paramjrv) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
+    if ((this.a.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().g != 4) && (this.a.a.b == 1) && (!this.a.a.jdField_a_of_type_Boolean))
     {
-      if (!ConfigInfoTips.a(this.a))
+      this.a.a.b(false);
+      this.a.a.d(false);
+      if ((this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null) && ((this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI instanceof DoubleVideoCtrlUI)))
       {
-        ConfigInfoTips.a(this.a, true);
-        if (ConfigInfoTips.b(this.a)) {
-          ConfigInfoTips.a(this.a);
-        }
-      }
-      paramContext = ConfigInfo.instance();
-      if (paramContext != null)
-      {
-        int i = paramContext.getSharpConfigVersionFromFile();
-        TraeConfigUpdate.a().a("update", i);
+        ((DoubleVideoCtrlUI)this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI).a();
+        ((DoubleVideoCtrlUI)this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI).b(true);
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramContext.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (ConfigInfoTips.b(this.a)));
-      ConfigInfoTips.b(this.a, true);
-      ConfigInfoTips.a(this.a, paramIntent.getIntExtra("version", 0));
-    } while (!ConfigInfoTips.a(this.a));
-    ConfigInfoTips.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jrw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,38 @@
-import android.net.Uri;
-import android.provider.ContactsContract.Data;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.photo.PeakService;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 
-public final class advt
-  implements HookMethodCallback
+public class advt
+  implements Runnable
 {
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  public advt(NearbyHybridFragment paramNearbyHybridFragment) {}
+  
+  public void run()
   {
-    paramMethodHookParam = ((Uri)paramMethodHookParam.args[0]).toString();
-    if ((paramMethodHookParam.contains(ContactsContract.RawContacts.CONTENT_URI.toString())) || (paramMethodHookParam.contains(ContactsContract.Data.CONTENT_URI.toString())))
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyHybridFragment", 2, "start preload peak process");
+    }
+    Intent localIntent;
+    if (this.a.getActivity() != null)
     {
-      paramMethodHookParam = new StringBuilder(1000);
-      StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-      int i = 0;
-      while (i < arrayOfStackTraceElement.length)
-      {
-        paramMethodHookParam.append(arrayOfStackTraceElement[i] + "-");
-        i += 1;
+      localIntent = new Intent(this.a.getActivity(), PeakService.class);
+      if (VideoEnvironment.d(this.a.a)) {
+        localIntent.putExtra("ServiceAction", 2);
       }
-      QLog.d("ContactDelete", 1, paramMethodHookParam.toString());
+    }
+    try
+    {
+      this.a.getActivity().startService(localIntent);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("NearbyHybridFragment", 1, "preLoadPeak startService ", localException);
     }
   }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

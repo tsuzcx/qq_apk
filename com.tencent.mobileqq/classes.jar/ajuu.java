@@ -1,14 +1,14 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
 class ajuu
   implements Runnable
 {
-  ajuu(ajut paramajut) {}
+  ajuu(ajus paramajus) {}
   
   public void run()
   {
-    this.a.a.a.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.armap;
 
-import abcp;
-import abcq;
-import abcr;
-import abcs;
-import abct;
-import abcu;
-import abcv;
+import abjp;
+import abjq;
+import abjr;
+import abjs;
+import abjt;
+import abju;
+import abjv;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.res.Resources;
@@ -105,8 +105,8 @@ public class ConversationPullDownActiveBase
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new abcs(this, paramView2, paramView1, paramView3));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new abct(this, paramView3);
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new abjs(this, paramView2, paramView1, paramView3));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new abjt(this, paramView3);
     }
     if ((this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator != null) && (this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.isRunning()))
     {
@@ -134,8 +134,8 @@ public class ConversationPullDownActiveBase
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new abcu(this, paramView2, paramView1, paramView3));
-      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new abcv(this, paramView3, paramView1);
+      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new abju(this, paramView2, paramView1, paramView3));
+      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new abjv(this, paramView3, paramView1);
     }
     if ((this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator != null) && (this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.isRunning()))
     {
@@ -316,7 +316,7 @@ public class ConversationPullDownActiveBase
   public boolean c()
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363973));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363998));
     }
     if (QLog.isColorLevel()) {
       QLog.d("ConversationPullDownActiveBase", 2, "startGestureGuide mIsShowGesture=" + this.i + "  this=" + this);
@@ -359,9 +359,9 @@ public class ConversationPullDownActiveBase
       }
     } while ((!this.jdField_e_of_type_Boolean) || (!this.c) || (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView == null));
     if (!this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.jdField_d_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.e();
+      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.d();
     }
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.g();
+    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.f();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -442,7 +442,7 @@ public class ConversationPullDownActiveBase
   public void n()
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363973));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363998));
     }
     if (QLog.isColorLevel()) {
       QLog.d("ConversationPullDownActiveBase", 2, "stopGestureGuide");
@@ -455,7 +455,7 @@ public class ConversationPullDownActiveBase
   public void o()
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363973));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363998));
     }
     if (QLog.isColorLevel()) {
       QLog.d("ConversationPullDownActiveBase", 2, "doGestureGuide  this=" + this);
@@ -465,18 +465,18 @@ public class ConversationPullDownActiveBase
     localAlphaAnimation.setStartOffset(1L);
     localAlphaAnimation.setDuration(200L);
     localAlphaAnimation.setInterpolator(new AccelerateInterpolator());
-    localAlphaAnimation.setAnimationListener(new abcp(this));
+    localAlphaAnimation.setAnimationListener(new abjp(this));
     int m = (int)this.jdField_a_of_type_AndroidViewViewGroup.getResources().getDimension(2131559600);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0, 0.0F, 0, 0.0F, 0, -this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.b(), 0, m + -this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.b());
     localTranslateAnimation.setDuration(1500L);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new abcq(this));
+    localTranslateAnimation.setAnimationListener(new abjq(this));
     localAnimationSet.addAnimation(localTranslateAnimation);
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(500L);
     localAlphaAnimation.setStartOffset(1000L);
-    localAlphaAnimation.setAnimationListener(new abcr(this));
+    localAlphaAnimation.setAnimationListener(new abjr(this));
     localAnimationSet.addAnimation(localAlphaAnimation);
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAnimationSet);
   }

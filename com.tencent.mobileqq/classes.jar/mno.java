@@ -1,20 +1,66 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import org.json.JSONObject;
 
-class mno
-  implements Runnable
+public class mno
+  implements View.OnClickListener
 {
-  mno(mnn parammnn) {}
+  public mno(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!mnm.a(this.a.a))
-    {
-      mnm.a(this.a.a, mnm.b(this.a.a));
-      return;
+    ReadinjoyTabFrame.a(this.a).b();
+    ReadInJoyActivityHelper.a(this.a.a().getApplicationContext(), false);
+    if ((ReadinjoyTabFrame.a(this.a) != null) && (ReadinjoyTabFrame.a(this.a).a())) {
+      ReadinjoyTabFrame.a(this.a).a(null);
     }
-    mnm.a(this.a.a).setVisibility(8);
-    mnm.a(this.a.a).setVisibility(8);
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = ReadInJoyUtils.a();
+        localJSONObject.put("folder_status", ReadInJoyUtils.d);
+        if (!ReadinjoyTabFrame.a(this.a).a()) {
+          continue;
+        }
+        i = 2;
+        localJSONObject.put("reddot", i);
+        localJSONObject.put("kandian_mode", ReadInJoyUtils.e());
+        localJSONObject.put("kandian_mode_new", VideoReporter.a());
+        paramView = (ReadInJoySkinManager)this.a.a.getManager(260);
+        if ((paramView.a() != 1) || (TextUtils.isEmpty(paramView.a()))) {
+          continue;
+        }
+        paramView = paramView.a();
+        localJSONObject.put("skin_id", paramView);
+        localJSONObject.put("button_state", 0);
+        PublicAccountReportUtils.a(this.a.a, "CliOper", "", "", "0X80081C5", "0X80081C5", 0, 1, "4", null, null, localJSONObject.toString(), false);
+        PublicAccountReportUtils.a(this.a.a, "", "0X8007DB0", "0X8007DB0", 0, 0, "4", "", "", localJSONObject.toString(), false);
+      }
+      catch (Exception paramView)
+      {
+        int i;
+        paramView.printStackTrace();
+        continue;
+      }
+      PublicTracker.a(null, "self_tab_cost");
+      return;
+      i = 1;
+      continue;
+      paramView = "0";
+    }
   }
 }
 

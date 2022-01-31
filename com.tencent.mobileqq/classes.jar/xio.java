@@ -1,28 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.KeyEvent;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.util.InputMethodUtil;
 
 public class xio
-  implements View.OnClickListener
+  implements TextView.OnEditorActionListener
 {
-  public xio(BannerManager paramBannerManager) {}
+  public xio(CommonHbFragment paramCommonHbFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (UpgradeController.a().a() == 4) {
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
-    }
-    for (;;)
+    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      this.a.a(10, 0);
-      this.a.a(-1, null);
-      return;
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
+      if (CommonHbFragment.a(this.a).isEnabled()) {
+        CommonHbFragment.a(this.a).performClick();
+      }
+      InputMethodUtil.b(CommonHbFragment.a(this.a));
     }
+    return false;
   }
 }
 

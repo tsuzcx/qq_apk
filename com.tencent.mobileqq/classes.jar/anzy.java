@@ -1,16 +1,21 @@
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 
 public class anzy
-  implements View.OnLayoutChangeListener
+  implements ThreadExcutor.IThreadListener
 {
-  public anzy(GLTextureView paramGLTextureView) {}
+  public anzy(EditPicSave paramEditPicSave) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.a.a(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    this.a.a.a().postDelayed(new anzz(this), 500L);
   }
+  
+  public void onPreRun() {}
 }
 
 

@@ -1,46 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.model.BasePagePlayingListSync;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
 
-public class not
-  extends QQUIEventReceiver
+class not
+  implements Runnable
 {
-  public not(@NonNull BasePagePlayingListSync paramBasePagePlayingListSync)
-  {
-    super(paramBasePagePlayingListSync);
-  }
+  not(nos paramnos, String paramString) {}
   
-  public void a(@NonNull BasePagePlayingListSync paramBasePagePlayingListSync, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
+  public void run()
   {
-    Iterator localIterator = paramBasePagePlayingListSync.a.iterator();
-    int i = 0;
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
-        if (paramDeleteStoryVideoEvent.a.equals(localStoryVideoItem.mVid))
-        {
-          paramBasePagePlayingListSync.a.remove(i);
-          SLog.a("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "remove vid:%s", localStoryVideoItem.mVid);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return DeleteStoryVideoEvent.class;
+    PlayModeUtils.a(this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a, this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
+    PlayModeUtils.a(this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a, this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c), this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
   }
 }
 

@@ -1,28 +1,25 @@
-import com.tencent.mobileqq.shortvideo.ml.decisiontree.ID3.ImpurityFunction;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 
-public final class aicn
-  extends ID3.ImpurityFunction
+public class aicn
+  extends ContentObserver
 {
-  public double a(int paramInt1, int paramInt2)
+  public aicn(QZoneManagerImp paramQZoneManagerImp, Handler paramHandler)
   {
-    double d2 = paramInt1 / (paramInt1 + paramInt2);
-    double d3 = paramInt2 / (paramInt1 + paramInt2);
-    double d1 = 0.0D;
-    if (paramInt1 > 0)
-    {
-      d1 = -d2;
-      d1 = 0.0D + Math.log(d2) * d1;
-    }
-    d2 = d1;
-    if (paramInt2 > 0) {
-      d2 = d1 + -d3 * Math.log(d3);
-    }
-    return d2 / Math.log(2.0D);
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    ThreadManager.post(new aico(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aicn
  * JD-Core Version:    0.7.0.1
  */

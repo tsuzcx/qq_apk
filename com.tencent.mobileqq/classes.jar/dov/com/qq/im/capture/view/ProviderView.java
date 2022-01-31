@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.CaptureContext;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
 
 public abstract class ProviderView
@@ -69,14 +69,14 @@ public abstract class ProviderView
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = CaptureContext.a();
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2130970077, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2130970088, this, false);
       addView(paramBundle);
-      this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131368943));
-      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131368946));
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131368945));
+      this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131368946));
+      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131368949));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131368948));
     }
     paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
     paramBundle.height = UIUtils.a(getContext(), this.e);
@@ -89,9 +89,9 @@ public abstract class ProviderView
       {
         this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setVisibility(0);
         if (this.jdField_d_of_type_Int != 1) {
-          break label176;
+          break label170;
         }
-        findViewById(2131368944).setVisibility(0);
+        findViewById(2131368947).setVisibility(0);
       }
     }
     for (;;)
@@ -100,7 +100,7 @@ public abstract class ProviderView
       return;
       paramBundle = this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView;
       break;
-      label176:
+      label170:
       if (this.jdField_d_of_type_Int != 2) {}
     }
   }
@@ -135,14 +135,14 @@ public abstract class ProviderView
     if (this.jdField_a_of_type_AndroidViewView == null) {}
     try
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2130970077, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2130970088, this, false);
       addView(paramBundle);
       if (this.jdField_b_of_type_AndroidViewView == null)
       {
         this.jdField_b_of_type_AndroidViewView = paramBundle;
-        this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368943));
-        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368946));
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131368945));
+        this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368946));
+        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368949));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131368948));
       }
       paramBundle = LayoutInflater.from(getContext()).inflate(a(), this, false);
       if (this.jdField_a_of_type_AndroidViewView == null) {

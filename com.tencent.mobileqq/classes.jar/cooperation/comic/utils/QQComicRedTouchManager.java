@@ -1,6 +1,6 @@
 package cooperation.comic.utils;
 
-import amkn;
+import amrz;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -28,7 +28,7 @@ public class QQComicRedTouchManager
   public QQComicRedTouchManager(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new amkn(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new amrz(this);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.redpoint.broadcast.push.av"));
   }
   

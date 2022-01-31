@@ -1,107 +1,151 @@
-import android.graphics.Bitmap;
-import com.tencent.component.network.utils.thread.AsyncTask;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBitmapImageRender;
-import java.util.List;
+import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
+import cooperation.qzone.webviewplugin.QzoneUiJsPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class anlh
-  extends AsyncTask
+public class anlh
+  extends BroadcastReceiver
 {
-  public anlh(boolean paramBoolean1, List paramList, boolean paramBoolean2) {}
+  public anlh(QzoneUiJsPlugin paramQzoneUiJsPlugin) {}
   
-  protected Bitmap a(Void... paramVarArgs)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramVarArgs = VideoFilterTools.a();
-    try
-    {
-      paramVarArgs = paramVarArgs.a();
-      Object localObject = paramVarArgs;
-      Void[] arrayOfVoid;
-      if (paramVarArgs != null)
-      {
-        localObject = paramVarArgs;
-        arrayOfVoid = paramVarArgs;
-      }
-      GPUBitmapImageRender localGPUBitmapImageRender;
-      Bitmap localBitmap;
-      label114:
-      return localObject;
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneUiJsPlugin", 2, paramContext);
     }
-    catch (Exception paramVarArgs)
+    if ("com.qzone.topic.video.FakeFeed".equals(paramContext)) {
+      if (!TextUtils.isEmpty(QzoneUiJsPlugin.a(this.a))) {}
+    }
+    int i;
+    do
+    {
+      JSONObject localJSONObject;
+      do
+      {
+        return;
+        paramContext = paramIntent.getStringExtra("key_topic_video_thumb_path");
+        i = paramIntent.getIntExtra("key_topic_video_thumb_width", 0);
+        int j = paramIntent.getIntExtra("key_topic_video_thumb_height", 0);
+        if (TextUtils.isEmpty(paramContext))
+        {
+          QLog.w("QzoneUiJsPlugin", 1, "topic video upload, video path is empty");
+          return;
+        }
+        localObject2 = QzoneDynamicAlbumPlugin.a(paramContext, i, j, true);
+        if (TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          QLog.w("QzoneUiJsPlugin", 1, "topic video upload pic not exist,imageBase64 empty. path=" + paramContext);
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("QzoneUiJsPlugin", 2, "topicUploadVideo base64=data:image/jpg;base64," + (String)localObject2);
+        }
+        localObject1 = paramIntent.getStringExtra("key_topic_video_shuoshuo_content");
+        paramContext = (Context)localObject1;
+        if (localObject1 == null) {
+          paramContext = "";
+        }
+        paramIntent = paramIntent.getStringExtra("key_topic_video_clientkey");
+        localObject1 = new JSONObject();
+        try
+        {
+          ((JSONObject)localObject1).put("code", 0);
+          localJSONObject = new JSONObject();
+          localJSONObject.put("content", paramContext);
+          localJSONObject.put("msg", "");
+          localJSONObject.put("base64", "data:image/jpg;base64," + (String)localObject2);
+          localJSONObject.put("timestamp", paramIntent);
+          localJSONObject.put("isFakeFeed", true);
+          ((JSONObject)localObject1).put("data", localJSONObject);
+          this.a.a.callJs(QzoneUiJsPlugin.a(this.a), new String[] { ((JSONObject)localObject1).toString() });
+          return;
+        }
+        catch (JSONException paramContext)
+        {
+          QLog.w("QzoneUiJsPlugin", 1, "topicUploadVideo fake feed  callback error", paramContext);
+          return;
+        }
+        if (!"com.qzone.topic.video.HalfFakeFeed".equals(paramContext)) {
+          break;
+        }
+      } while (TextUtils.isEmpty(QzoneUiJsPlugin.a(this.a)));
+      paramContext = paramIntent.getStringExtra("key_topic_video_publish_msg");
+      localObject1 = paramIntent.getStringExtra("key_topic_video_tid");
+      paramIntent = paramIntent.getStringExtra("key_topic_video_clientkey");
+      localObject2 = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject2).put("code", 0);
+        localJSONObject = new JSONObject();
+        localJSONObject.put("msg", paramContext);
+        localJSONObject.put("timestamp", paramIntent);
+        localJSONObject.put("ugcKey", localObject1);
+        ((JSONObject)localObject2).put("data", localJSONObject);
+        this.a.a.callJs(QzoneUiJsPlugin.a(this.a), new String[] { ((JSONObject)localObject2).toString() });
+        return;
+      }
+      catch (JSONException paramContext)
+      {
+        QLog.w("QzoneUiJsPlugin", 1, "topicUploadVideo half fake feed  callback error", paramContext);
+        return;
+      }
+    } while ((!"com.qzone.h5.video.recordCallback".equals(paramContext)) || (TextUtils.isEmpty(QzoneUiJsPlugin.b(this.a))));
+    paramContext = paramIntent.getStringExtra("param.thumbnailPath");
+    if (TextUtils.isEmpty(paramContext))
+    {
+      QLog.e("QzoneUiJsPlugin", 1, "recordVideo callback thumbnailPath is empty");
+      return;
+    }
+    Object localObject2 = QzoneDynamicAlbumPlugin.a(paramContext, paramIntent.getIntExtra("param.thumbnailWidth", 0), paramIntent.getIntExtra("param.thumbnailHeight", 0), true);
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      QLog.w("QzoneUiJsPlugin", 1, "h5 video record pic not exist,imageBase64 empty. thumbnailPath=" + paramContext);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QzoneUiJsPlugin", 2, "h5 video record base64=data:image/jpg;base64," + (String)localObject2);
+    }
+    Object localObject1 = paramIntent.getStringExtra("param.content");
+    paramContext = (Context)localObject1;
+    if (localObject1 == null) {
+      paramContext = "";
+    }
+    boolean bool = paramIntent.getBooleanExtra("param.topicSyncQzone", false);
+    for (;;)
     {
       try
       {
-        if (!this.jdField_a_of_type_Boolean)
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("text", paramContext);
+        if (bool)
         {
-          localObject = paramVarArgs;
-          arrayOfVoid = paramVarArgs;
-          localGPUBitmapImageRender = new GPUBitmapImageRender();
-          localObject = paramVarArgs;
-          arrayOfVoid = paramVarArgs;
-          localGPUBitmapImageRender.b(paramVarArgs.getWidth(), paramVarArgs.getHeight());
-          localObject = paramVarArgs;
-          arrayOfVoid = paramVarArgs;
-          localBitmap = localGPUBitmapImageRender.a(paramVarArgs, this.jdField_a_of_type_JavaUtilList, this.b);
-          if (localBitmap != null) {
-            paramVarArgs = localBitmap;
-          }
-          localObject = paramVarArgs;
-          arrayOfVoid = paramVarArgs;
-          localGPUBitmapImageRender.a();
-          return paramVarArgs;
-        }
-        localObject = paramVarArgs;
-        arrayOfVoid = paramVarArgs;
-        paramVarArgs = paramVarArgs.copy(paramVarArgs.getConfig(), true);
-        return paramVarArgs;
-      }
-      catch (Error localError2)
-      {
-        for (;;)
-        {
-          paramVarArgs = (Void[])localObject;
+          i = 1;
+          ((JSONObject)localObject1).put("sync_qzone", i);
+          ((JSONObject)localObject1).put("thumbnail", "data:image/jpg;base64," + (String)localObject2);
+          ((JSONObject)localObject1).put("video_info", QzoneUiJsPlugin.a(this.a, paramIntent));
+          this.a.a.callJs(QzoneUiJsPlugin.b(this.a), new String[] { ((JSONObject)localObject1).toString() });
+          return;
         }
       }
-      catch (Exception paramVarArgs)
+      catch (JSONException paramContext)
       {
-        break label114;
+        QLog.w("QzoneUiJsPlugin", 1, "recordVideo callback error", paramContext);
+        return;
       }
-      paramVarArgs = paramVarArgs;
-      arrayOfVoid = null;
-      localObject = arrayOfVoid;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QCombo", 1, "applyFiltersForEditPic excep!", paramVarArgs);
-        return arrayOfVoid;
-      }
-    }
-    catch (Error localError1)
-    {
-      paramVarArgs = null;
-      localObject = paramVarArgs;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QCombo", 1, "applyFiltersForEditPic error!", localError1);
-        return paramVarArgs;
-      }
-    }
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    EditVideoPartManager localEditVideoPartManager = VideoFilterTools.a().a();
-    if (localEditVideoPartManager != null)
-    {
-      localEditVideoPartManager.a(paramBitmap, true);
-      localEditVideoPartManager.v();
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlh
  * JD-Core Version:    0.7.0.1
  */

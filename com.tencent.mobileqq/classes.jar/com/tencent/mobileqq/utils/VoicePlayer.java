@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import akgu;
-import akgv;
+import akoh;
+import akoi;
 import android.content.Context;
 import android.os.Handler;
 import com.tencent.mobileqq.ptt.player.AmrPlayer;
@@ -19,7 +19,7 @@ public class VoicePlayer
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private IPttPlayer jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayer;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new akgu(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new akoh(this);
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
@@ -105,7 +105,7 @@ public class VoicePlayer
       if (this.jdField_a_of_type_AndroidOsHandler != null)
       {
         this.jdField_a_of_type_Int = 7;
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akgv(this), 500L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akoi(this), 500L);
         return;
       }
       a(false);

@@ -1,25 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.util.LruCache;
+import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
+import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager;
 
 public class nwi
-  implements DialogInterface.OnClickListener
+  extends LruCache
 {
-  public nwi(StoryDiscoverActivity paramStoryDiscoverActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nwi(ShareGroupIconManager paramShareGroupIconManager, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      StoryReportor.a("content_flow", "cancel_hot", 0, 0, new String[0]);
-      return;
-    }
-    this.a.a(false, true, null);
-    StoryReportor.a("content_flow", "sure_hot", 0, 0, new String[0]);
+    super(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, nwb paramnwb1, nwb paramnwb2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramnwb1, paramnwb2);
+    IconLog.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
+    paramnwb1.a();
   }
 }
 

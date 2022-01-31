@@ -1,18 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class zng
+  implements Runnable
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  Intent jdField_a_of_type_AndroidContentIntent;
-  public String a;
+  public zng(MayknowRecommendManager paramMayknowRecommendManager) {}
   
-  public zng(StartAppCheckHandler paramStartAppCheckHandler, String paramString, Context paramContext, Intent paramIntent)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    if (Math.abs(MayknowRecommendManager.a(this.a).getLong("sp_get_mayknow_timestamp", 0L) - System.currentTimeMillis()) >= 86400000L)
+    {
+      ((FriendListHandler)MayknowRecommendManager.a(this.a).a(1)).a((short)MayknowRecommendManager.b());
+      MayknowRecommendManager.a(this.a).edit().putLong("sp_get_mayknow_timestamp", System.currentTimeMillis()).commit();
+      QLog.d("MayknowRecommendManager", 1, "getMayKnowRecommendRemote, >24hour, update timestamp");
+      return;
+    }
+    QLog.d("MayknowRecommendManager", 1, "getMayKnowRecommendRemote, <24hour, return");
   }
 }
 

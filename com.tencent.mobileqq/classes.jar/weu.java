@@ -1,27 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.widget.QQVideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.utils.BatchAddFriendData;
+import com.tencent.mobileqq.troop.utils.TroopMemberGlobalLevelUtils;
 
-class weu
+public class weu
   implements Runnable
 {
-  weu(wet paramwet) {}
+  public weu(TroopChatPie paramTroopChatPie) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a.a), 2, "videoview bring to top");
-    }
-    if (BlessActivity.b(this.a.a) != null) {
-      BlessActivity.b(this.a.a).setVisibility(8);
-    }
-    if (BlessActivity.a(this.a.a) != null) {
-      BlessActivity.a(this.a.a).bringToFront();
-    }
-    this.a.a.findViewById(2131363381).bringToFront();
-    this.a.a.findViewById(2131363378).bringToFront();
+    TroopMemberGlobalLevelUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
+    BatchAddFriendData.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
   }
 }
 

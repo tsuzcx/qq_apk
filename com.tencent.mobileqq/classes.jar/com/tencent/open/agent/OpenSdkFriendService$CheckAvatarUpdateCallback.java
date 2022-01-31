@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import alcd;
+import aljv;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -33,7 +33,7 @@ public class OpenSdkFriendService$CheckAvatarUpdateCallback
         localObject = paramJSONObject.getJSONArray("update_list");
         i = ((JSONArray)localObject).length();
         if (i > 0) {
-          ThreadManager.executeOnSubThread(new alcd(this, i, (JSONArray)localObject));
+          ThreadManager.executeOnSubThread(new aljv(this, i, (JSONArray)localObject));
         }
         localObject = OpensdkPreference.a(CommonDataAdapter.a().a(), "prefer_last_avatar_update_time").edit();
         ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));

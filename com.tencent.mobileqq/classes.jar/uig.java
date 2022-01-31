@@ -1,55 +1,31 @@
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.graphics.Color;
+import android.text.Editable;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.TroopRequestRefuseActivity;
 
 public class uig
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public uig(VisitorsActivity paramVisitorsActivity) {}
+  public uig(TroopRequestRefuseActivity paramTroopRequestRefuseActivity, Editable paramEditable) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
+    if (this.jdField_a_of_type_AndroidTextEditable.length() > 25)
     {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(-65536);
+      TroopRequestRefuseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, false);
     }
     for (;;)
     {
-      return true;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-        this.a.b.setAlpha(127);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-          this.a.b.setAlpha(255);
-        }
-        ReportController.b(this.a.app, "dc00898", "", "", "0X8007611", "0X8007611", 0, 0, "", "", "", "");
-        paramView = new Intent(this.a, LikeRankingListActivity.class);
-        this.a.startActivity(paramView);
-        this.a.d.setVisibility(8);
-        this.a.f.clearAnimation();
-        this.a.c = 0;
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-          this.a.b.setAlpha(255);
-        }
+      String str2 = "" + (25 - this.jdField_a_of_type_AndroidTextEditable.length());
+      String str1 = str2;
+      if (str2.length() > 4) {
+        str1 = str2.substring(0, 2) + "…";
       }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setText(str1);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(Color.rgb(119, 119, 119));
+      TroopRequestRefuseActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, true);
     }
   }
 }

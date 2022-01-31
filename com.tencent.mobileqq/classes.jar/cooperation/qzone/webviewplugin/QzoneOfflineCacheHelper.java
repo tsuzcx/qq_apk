@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
-import ancr;
-import ancs;
 import android.text.TextUtils;
+import ankr;
+import anks;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -148,7 +148,7 @@ public class QzoneOfflineCacheHelper
         }
       }
       label103:
-      paramAppInterface = new ancs(paramString1, paramString2, paramAppInterface, paramString3, paramInt);
+      paramAppInterface = new anks(paramString1, paramString2, paramAppInterface, paramString3, paramInt);
       QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").postDelayed(paramAppInterface, 10000L);
       return;
       label133:
@@ -228,7 +228,7 @@ public class QzoneOfflineCacheHelper
   
   public static void updateLruFileInNewThread(String paramString)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").postDelayed(new ancr(paramString), 20000L);
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").postDelayed(new ankr(paramString), 20000L);
   }
   
   private static String urlKey2FileName(String paramString, boolean paramBoolean)

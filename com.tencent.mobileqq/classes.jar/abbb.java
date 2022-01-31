@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppManagerPanel;
+import java.util.ArrayList;
 
 public class abbb
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public abbb(ARMapActivity paramARMapActivity) {}
+  public abbb(ArkAppManagerPanel paramArkAppManagerPanel, ArrayList paramArrayList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

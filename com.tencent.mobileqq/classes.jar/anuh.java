@@ -1,24 +1,14 @@
-import android.view.View;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import dov.com.qq.im.capture.music.MusicPlayerScene;
 
 public class anuh
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public anuh(EditVideoPartManager paramEditVideoPartManager, ActionSheet paramActionSheet) {}
+  public anuh(MusicPlayerScene paramMusicPlayerScene, String paramString, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b();
-    }
+    this.jdField_a_of_type_DovComQqImCaptureMusicMusicPlayerScene.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
   }
 }
 

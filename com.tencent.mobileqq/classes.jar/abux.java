@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.data.MessageForInteractAndFollow;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 
 public class abux
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public abux(MsgBoxInterFollowManager paramMsgBoxInterFollowManager, MessageForInteractAndFollow paramMessageForInteractAndFollow) {}
+  public abux(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MsgBoxInterFollowManager.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMsgBoxInterFollowManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForInteractAndFollow);
+    CardPicGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 

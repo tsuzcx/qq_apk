@@ -1,30 +1,37 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.PicPreDownloader;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.QQBroadcastReceiver;
 
 public class aglb
-  implements Runnable
+  extends QQBroadcastReceiver
 {
-  public aglb(PicPreDownloader paramPicPreDownloader, MessageForPic paramMessageForPic, int paramInt) {}
+  public aglb(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
+  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a())
+    if (paramIntent == null) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PIC_TAG_PRELOAD", 2, "productAysnc(): cannot predownload");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -1);
-    }
-    while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null) || (!(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic instanceof MessageForPic))) {
       return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_Int, 5);
+      paramAppRuntime = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
+      }
+      if ("com.tencent.mobileqq__alive".equals(paramAppRuntime))
+      {
+        ScanTorchActivity.a(this.a);
+        return;
+      }
+    } while (!"tencent.ar.worldcup.finishScanTorch".equals(paramAppRuntime));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglb
  * JD-Core Version:    0.7.0.1
  */

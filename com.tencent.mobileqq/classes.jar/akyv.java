@@ -1,19 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
 public class akyv
-  extends BroadcastReceiver
+  extends LruCache
 {
-  public akyv(WXShareHelper paramWXShareHelper) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public akyv(WebSoService paramWebSoService, int paramInt)
   {
-    if (WXShareHelper.a(this.a) != null) {
-      WXShareHelper.a(this.a).handleIntent(paramIntent, this.a);
-    }
+    super(paramInt);
+  }
+  
+  protected WebSoService.WebSoState a(String paramString)
+  {
+    return new WebSoService.WebSoState();
   }
 }
 

@@ -21,7 +21,7 @@ import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
 import mqq.os.MqqHandler;
-import ycw;
+import yjf;
 
 public class SendVideoActivity
   extends BaseActivity
@@ -94,7 +94,7 @@ public class SendVideoActivity
       }
       else
       {
-        ThreadManager.getSubThreadHandler().post(new ycw(this, null));
+        ThreadManager.getSubThreadHandler().post(new yjf(this, null));
         if (getIntent().getIntExtra("param_key_redbag_type", 0) == LocalMediaInfo.REDBAG_TYPE_GET)
         {
           int j = getIntent().getIntExtra("uintype", -1);
@@ -133,9 +133,9 @@ public class SendVideoActivity
           }
           else
           {
-            ThreadManager.getSubThreadHandler().post(new ycw(this, null));
+            ThreadManager.getSubThreadHandler().post(new yjf(this, null));
             continue;
-            ThreadManager.getSubThreadHandler().post(new ycw(this, null));
+            ThreadManager.getSubThreadHandler().post(new yjf(this, null));
           }
         }
       }

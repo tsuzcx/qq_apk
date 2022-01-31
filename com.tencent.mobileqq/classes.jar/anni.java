@@ -1,24 +1,30 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager;
+import cooperation.troop.TroopPluginManager.TroopPluginCallback;
 
 public class anni
-  implements TextWatcher
+  extends Handler
 {
-  public anni(FacePoiSearchUI paramFacePoiSearchUI) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public anni(TroopPluginManager paramTroopPluginManager, Looper paramLooper)
   {
-    FacePoiSearchUI.a(this.a);
+    super(paramLooper);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ((TroopPluginManager.TroopPluginCallback)paramMessage.obj).a(paramMessage.arg1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anni
  * JD-Core Version:    0.7.0.1
  */

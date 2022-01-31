@@ -1,29 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.utils.ImageUtil;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class mkm
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public mkm(ReadinjoyTabFrame paramReadinjoyTabFrame, ZImageView paramZImageView, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  public mkm(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setRound(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a(ImageUtil.a()).a(new URL(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo)));
+    default: 
       return;
     }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      localMalformedURLException.printStackTrace();
-    }
+    ReadInJoyBaseAdapter.b(this.a, paramAbsListView);
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

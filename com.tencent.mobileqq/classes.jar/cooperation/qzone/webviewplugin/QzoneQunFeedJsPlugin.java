@@ -1,11 +1,5 @@
 package cooperation.qzone.webviewplugin;
 
-import ancw;
-import ancx;
-import ancy;
-import ancz;
-import anda;
-import andb;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -15,6 +9,12 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import ankw;
+import ankx;
+import anky;
+import ankz;
+import anla;
+import anlb;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
@@ -41,7 +41,7 @@ public class QzoneQunFeedJsPlugin
 {
   private static String jdField_a_of_type_JavaLangString = "";
   Dialog jdField_a_of_type_AndroidAppDialog;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ancw(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ankw(this);
   
   private void a(int paramInt)
   {
@@ -69,14 +69,14 @@ public class QzoneQunFeedJsPlugin
       String str = "";
       if (paramInt1 > 0)
       {
-        str = String.format(localActivity.getString(2131432600), new Object[] { Integer.valueOf(paramInt1) }) + "，";
+        str = String.format(localActivity.getString(2131432614), new Object[] { Integer.valueOf(paramInt1) }) + "，";
         str = str + paramString + "目录下，";
       }
-      paramString = str + String.format(localActivity.getString(2131432601), new Object[] { Integer.valueOf(paramInt2) });
-      DialogUtil.a(localActivity, 232).setMessage(paramString).setNegativeButton(2131432598, new andb(this)).show();
+      paramString = str + String.format(localActivity.getString(2131432615), new Object[] { Integer.valueOf(paramInt2) });
+      DialogUtil.a(localActivity, 232).setMessage(paramString).setNegativeButton(2131432612, new anlb(this)).show();
       return;
     }
-    ToastUtil.a().a(localActivity.getString(2131432599) + paramString + "目录下。");
+    ToastUtil.a().a(localActivity.getString(2131432613) + paramString + "目录下。");
   }
   
   private void a(String paramString)
@@ -84,10 +84,10 @@ public class QzoneQunFeedJsPlugin
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
       this.jdField_a_of_type_AndroidAppDialog = new QzoneQunFeedJsPlugin.LoadingDialog(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
-      this.jdField_a_of_type_AndroidAppDialog.setTitle(2131432597);
+      this.jdField_a_of_type_AndroidAppDialog.setTitle(2131432611);
       this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
     }
-    this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new anda(this, paramString));
+    this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new anla(this, paramString));
     this.jdField_a_of_type_AndroidAppDialog.show();
     RemoteHandleManager.a().a().d(paramString);
   }
@@ -153,7 +153,7 @@ public class QzoneQunFeedJsPlugin
         if (WebViewPluginFactory.a.containsKey("Qzone")) {
           localIntent.putExtra("insertPluginsArray", new String[] { "Qzone" });
         }
-        localIntent.putExtra("source_name", this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getString(2131432876));
+        localIntent.putExtra("source_name", this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getString(2131432890));
         localIntent.setData(Uri.parse(paramVarArgs));
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.startActivityForResult(localIntent, (byte)0);
         return;
@@ -236,7 +236,7 @@ public class QzoneQunFeedJsPlugin
       QLog.d("QzoneQunFeedJsPlugin", 4, "handleQunDownloadPhoto " + paramVarArgs[0]);
     }
     new Intent().putExtra("photos", paramVarArgs[0]);
-    RemoteHandleManager.a().a(new ancx(this));
+    RemoteHandleManager.a().a(new ankx(this));
     if (!a())
     {
       ToastUtil.a().a("SD卡不存在，无法下载。");
@@ -250,7 +250,7 @@ public class QzoneQunFeedJsPlugin
     if (!NetworkState.isWifiConn())
     {
       Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-      DialogUtil.a(localActivity, 230).setTitle(localActivity.getString(2131432596)).setMessage(localActivity.getString(2131432602)).setPositiveButton(localActivity.getString(2131432603), new ancz(this, paramVarArgs)).setNegativeButton(localActivity.getString(2131432604), new ancy(this)).show();
+      DialogUtil.a(localActivity, 230).setTitle(localActivity.getString(2131432610)).setMessage(localActivity.getString(2131432616)).setPositiveButton(localActivity.getString(2131432617), new ankz(this, paramVarArgs)).setNegativeButton(localActivity.getString(2131432618), new anky(this)).show();
       return;
     }
     a(paramVarArgs[0]);

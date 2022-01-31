@@ -1,15 +1,26 @@
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
-class txn
-  extends FacePreloadBaseAdapter.ViewHolder
+public class txn
+  extends ClickableSpan
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public txn(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  private txn(txm paramtxm) {}
+  public void onClick(View paramView)
+  {
+    SoundAndVibrateActivity.b(this.a);
+    VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(this.a.getResources().getColor(2131494226));
+  }
 }
 
 

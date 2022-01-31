@@ -1,37 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoStatusListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 
-public class mot
-  extends FastWebVideoFeedsPlayManager.VideoStatusListener
+class mot
+  implements Animation.AnimationListener
 {
-  public mot(FastWebVideoFeedsPlayActivity paramFastWebVideoFeedsPlayActivity) {}
+  mot(mos parammos) {}
   
-  public void a(FastWebVideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayActivity", 2, "video play completion!, move to next position");
+    if (this.a.a != null) {
+      PublicFragmentActivity.a(this.a.a, ReadInJoyBBCircleFragment.class);
     }
-    boolean bool = FastWebVideoFeedsPlayActivity.a(this.a);
-    if (FastWebVideoFeedsPlayActivity.a(this.a)) {
-      FastWebVideoFeedsPlayActivity.a(this.a).post(new mou(this));
-    }
-    if (FastWebVideoFeedsPlayActivity.b(this.a))
-    {
-      if (!bool) {
-        FastWebVideoFeedsPlayActivity.a(this.a);
-      }
-      FastWebVideoFeedsPlayActivity.a(this.a).a(5);
-    }
-    while (this.a.a() == FastWebVideoFeedsPlayActivity.a(this.a).size() - 1) {
-      return;
-    }
-    FastWebVideoFeedsPlayActivity.a(this.a).postDelayed(new mov(this), 600L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

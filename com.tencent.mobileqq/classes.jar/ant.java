@@ -1,48 +1,33 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.qq.im.poi.LbsPackManager;
-import com.qq.im.poi.LbsPackObserver;
-import com.qq.im.poi.LbsPackSendActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.qq.im.poi.PoiInfo;
 
 public class ant
-  extends LbsPackObserver
 {
-  public ant(LbsPackSendActivity paramLbsPackSendActivity) {}
+  public PoiInfo a;
+  public String a;
+  public String b = "";
   
-  public void onGetLbsPid(boolean paramBoolean, Bundle paramBundle)
+  public ant(PoiInfo paramPoiInfo)
   {
-    this.a.d();
-    String str = paramBundle.getString("key_pid");
-    paramBundle = paramBundle.getString("key_erro_msg");
-    if ((paramBoolean) && (str != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LbsPack", 2, "onGetLbsPid  pid = " + str);
-      }
-      this.a.jdField_b_of_type_JavaLangString = str;
-      this.a.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_ComQqImPoiPoiInfo);
-      return;
-    }
-    if (TextUtils.isEmpty(paramBundle))
-    {
-      this.a.a(this.a.getString(2131438790), -1);
-      return;
-    }
-    this.a.a(paramBundle, -1);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComQqImPoiPoiInfo = paramPoiInfo;
   }
   
-  public void onGetSendPOIList(boolean paramBoolean, Bundle paramBundle)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LbsPack", 2, "onGetSendPOIList  isSuccess = " + paramBoolean);
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    if (paramBoolean)
-    {
-      this.a.a(this.a.jdField_a_of_type_ComQqImPoiLbsPackManager.a());
-      return;
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    this.a.a(2131438779, 2131438780);
+    this.b = str;
   }
 }
 

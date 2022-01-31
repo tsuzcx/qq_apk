@@ -1,20 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.statistics.storage.StorageItem;
+import java.util.Comparator;
 
 public class ailx
-  implements Runnable
+  implements Comparator
 {
-  public ailx(FriendSystemMsgController paramFriendSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
-  
-  public void run()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("friend_system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
+    paramObject1 = (StorageItem)paramObject1;
+    paramObject2 = (StorageItem)paramObject2;
+    if (paramObject1.a > paramObject2.a) {
+      return -1;
     }
+    if (paramObject1.a < paramObject2.a) {
+      return 1;
+    }
+    return 0;
   }
 }
 

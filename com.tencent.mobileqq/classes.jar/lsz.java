@@ -1,15 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import java.util.List;
 
 class lsz
   implements Runnable
 {
-  lsz(lsy paramlsy) {}
+  lsz(lsy paramlsy, List paramList1, List paramList2) {}
   
   public void run()
   {
-    ReadInJoyLogicEngine.a().a((int)OnTopicRecommendHeaderFollowClickListener.a(this.a.a).businessId, 0);
+    ReadInJoyLogicEngineEventDispatcher.a().c(0, this.jdField_a_of_type_JavaUtilList);
+    ReadInJoyLogicEngineEventDispatcher.a().c(70, this.b);
   }
 }
 

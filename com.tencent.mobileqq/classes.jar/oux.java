@@ -1,22 +1,52 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import com.tencent.biz.qrcode.ipc.VoiceScan;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.biz.qqstory.view.pull2refresh.XRecyclerView;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
 
 public class oux
-  implements Runnable
+  extends RecyclerView.OnScrollListener
 {
-  public oux(VoiceScan paramVoiceScan) {}
+  public oux(XRecyclerView paramXRecyclerView) {}
   
-  public void run()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    SpannableString localSpannableString = new SpannableString(VoiceScan.a(this.a).getString(2131433410));
-    localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(VoiceScan.a(this.a).getResources().getColor(2131493062), VoiceScan.a(this.a).getResources().getColor(2131493063)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
-    VoiceScan.a(this.a, DialogUtil.a(VoiceScan.a(this.a), VoiceScan.a(this.a).getString(2131433409), localSpannableString, 0, 2131433697, null, null, new ouy(this)));
-    VoiceScan.a(this.a).show();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((paramInt == 0) && (XRecyclerView.a(this.a) == 2)) {
+      this.a.a();
+    }
+    if (paramInt == 2)
+    {
+      UIUtils.a(true);
+      i = paramRecyclerView.getChildCount();
+      if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+      {
+        paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+        int j = paramRecyclerView.getItemCount();
+        paramRecyclerView = paramRecyclerView.findFirstVisibleItemPositions(null);
+        int k = XRecyclerView.a(this.a).a();
+        if (j - i > paramRecyclerView[0] + k) {
+          break label131;
+        }
+      }
+    }
+    label131:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        XRecyclerView.a(this.a).b(false);
+      }
+      XRecyclerView.a(this.a, paramInt);
+      return;
+      UIUtils.a(false);
+      break;
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

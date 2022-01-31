@@ -3,7 +3,7 @@ package dov.com.tencent.biz.qqstory.takevideo.filter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
-import aobu;
+import aokp;
 
 public class TimeFilterData
   extends FilterData
@@ -18,13 +18,13 @@ public class TimeFilterData
   @NonNull
   public FilterData.FilterPageItem a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return new aobu(this, paramContext, paramViewGroup, null);
+    return new aokp(this, paramContext, paramViewGroup, null);
   }
   
   @NonNull
   public Class a()
   {
-    return aobu.class;
+    return aokp.class;
   }
   
   public boolean a()

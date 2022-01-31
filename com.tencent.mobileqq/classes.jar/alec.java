@@ -1,31 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.open.appcommon.js.DownloadInterface;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.QQToast.IToastValidListener;
+import java.lang.ref.WeakReference;
 
 public class alec
-  implements Runnable
 {
-  public alec(DownloadInterface paramDownloadInterface, String paramString) {}
+  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  public alec(QQToast paramQQToast, QQToast.IToastValidListener paramIToastValidListener)
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.webview.loadUrl(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = paramQQToast;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIToastValidListener);
+  }
+  
+  private boolean a()
+  {
+    QQToast.IToastValidListener localIToastValidListener = (QQToast.IToastValidListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return (localIToastValidListener != null) && (localIToastValidListener.a());
+  }
+  
+  @Nullable
+  QQToast a()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
     }
-    catch (Exception localException)
-    {
-      LogUtility.a(this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.TAG, "webview loadUrl>>> ", localException);
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alec
  * JD-Core Version:    0.7.0.1
  */

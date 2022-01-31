@@ -1,28 +1,49 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
+import com.tencent.av.camera.CameraUtils;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class jix
   extends BroadcastReceiver
 {
-  public jix(GuildMultiActivity paramGuildMultiActivity) {}
+  public jix(CameraUtils paramCameraUtils) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    if (paramIntent == null) {}
+    for (;;)
     {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (this.a.a != null) && (paramContext.equals("homekey")) && (GuildMultiActivity.a(this.a) != null)) {
-        GuildMultiActivity.a(this.a).b(this.a.isResume());
+      return;
+      paramContext = paramIntent.getStringExtra("camera_id");
+      int i = paramIntent.getIntExtra("availability", 1);
+      CameraUtils.a(this.a).put(paramContext, Integer.valueOf(i));
+      if ((i == 1) && (this.a.c()))
+      {
+        paramContext = CameraUtils.a(this.a).entrySet().iterator();
+        do
+        {
+          if (!paramContext.hasNext()) {
+            break;
+          }
+        } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+      }
+      for (i = 0; i != 0; i = 1)
+      {
+        CameraUtils.a(this.a).a("CameraAvailabilityReceiver", -1, -1);
+        return;
+        CameraUtils.a(this.a).a();
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jix
  * JD-Core Version:    0.7.0.1
  */

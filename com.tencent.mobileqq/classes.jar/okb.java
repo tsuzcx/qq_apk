@@ -1,26 +1,15 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class okb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public okb(DoodleTextureView paramDoodleTextureView) {}
+  public okb(EditVideoPartManager paramEditVideoPartManager) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.g();
-      PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.a.a(102);
-      if (localPersonalityOperator != null) {
-        localPersonalityOperator.b();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleTextureView", 2, "onDestroy end");
-    }
+    this.a.c();
   }
 }
 

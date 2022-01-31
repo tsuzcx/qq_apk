@@ -1,38 +1,20 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.widget.ActionSheet;
 
 public class afik
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
-  public afik(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afik(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
-    }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new afix(this.a, paramView), paramView, 0);
-    localObject = NearbyProfileEditTribePanel.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    NearbyProfileEditTribePanel.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
-    {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(NearbyProfileEditTribePanel.a(this.a), i);
-      return true;
-    }
-    paramView.setVisibility(4);
-    return true;
+    paramView = ActionSheet.a(this.a.a);
+    paramView.a(2131432537, 1);
+    paramView.c(2131433029);
+    paramView.a(new afil(this, paramView));
+    paramView.show();
   }
 }
 

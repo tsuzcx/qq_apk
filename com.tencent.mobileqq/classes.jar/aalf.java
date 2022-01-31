@@ -1,34 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
-import com.tencent.mobileqq.arcard.ARBlessWordFragment;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
-public class aalf
-  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
+public final class aalf
+  implements Parcelable.Creator
 {
-  public aalf(ARBlessWordFragment paramARBlessWordFragment) {}
-  
-  public void a(int paramInt)
+  public ArConfigInfo a(Parcel paramParcel)
   {
-    this.a.a(paramInt);
+    return new ArConfigInfo(paramParcel);
   }
   
-  public void a(String paramString)
+  public ArConfigInfo[] a(int paramInt)
   {
-    ARBlessWordFragment.a(this.a).post(new aalh(this));
-  }
-  
-  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp) {}
-  
-  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo)
-  {
-    ARBlessWordFragment.a(this.a).post(new aalg(this, paramUploadPicExtInfo));
+    return new ArConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aalf
  * JD-Core Version:    0.7.0.1
  */

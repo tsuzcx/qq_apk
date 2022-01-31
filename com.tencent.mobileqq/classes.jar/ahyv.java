@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.model.ISearchResultModel;
+import com.tencent.mobileqq.search.presenter.ContactSearchResultMobilePresenter;
 
-public final class ahyv
-  implements Runnable
+public class ahyv
+  implements View.OnClickListener
 {
-  public ahyv(String paramString1, String paramString2) {}
+  public ahyv(ContactSearchResultMobilePresenter paramContactSearchResultMobilePresenter, ISearchResultModel paramISearchResultModel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FileUtils.a(PtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "save Config to file finish.");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahyv
  * JD-Core Version:    0.7.0.1
  */

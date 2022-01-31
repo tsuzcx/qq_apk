@@ -1,40 +1,73 @@
-import android.os.Handler;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener.Stub;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.utils.QQComicPluginBridge;
+import cooperation.comic.utils.QQComicPluginBridge.PluginInstallCallback;
+import cooperation.comic.utils.QQComicPluginBridge.PluginInstallObserver;
 
-public class amry
-  extends OnQZoneLiveSoDownloadListener.Stub
+class amry
+  implements OnPluginInstallListener
 {
-  public amry(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  amry(amrx paramamrx) {}
   
-  public void a()
+  public IBinder asBinder()
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1000;
-    localMessage.arg1 = 1;
-    this.a.a.sendMessage(localMessage);
-    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
-    this.a.a.sendEmptyMessageDelayed(1009, i);
+    return null;
   }
   
-  public void a(float paramFloat)
+  public void onInstallBegin(String paramString)
   {
-    this.a.runOnUiThread(new amrz(this, paramFloat));
+    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback != null)) {
+      this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback.a(98, "载入中,（我会越来越快的>_<）");
+    }
   }
   
-  public void a(int paramInt)
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    this.a.a.obtainMessage(1008).sendToTarget();
+    if ((this.a.a != null) && (paramInt1 > 0) && (paramInt2 > 0))
+    {
+      this.a.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback != null)
+      {
+        paramInt1 = (int)(paramInt1 / paramInt2 * 95.0F);
+        this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback.a(paramInt1, "加载中,（别紧张啊我很小的>_<）");
+      }
+    }
   }
   
-  public void b()
+  public void onInstallError(String arg1, int paramInt)
   {
-    this.a.runOnUiThread(new amsa(this));
+    synchronized ()
+    {
+      QQComicPluginBridge.a().notifyAll();
+      if (this.a.a != null) {
+        this.a.a.jdField_a_of_type_Int = paramInt;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicPluginBridge", 2, "QQComic install error");
+      }
+      return;
+    }
   }
   
-  public void c() {}
+  public void onInstallFinish(String arg1)
+  {
+    synchronized ()
+    {
+      QQComicPluginBridge.a().notifyAll();
+      if (this.a.a != null)
+      {
+        this.a.a.b = System.currentTimeMillis();
+        if (this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback != null) {
+          this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback.a(99, "载入中,（我会越来越快的>_<）");
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicPluginBridge", 2, "QQComic is installed");
+      }
+      return;
+    }
+  }
 }
 
 

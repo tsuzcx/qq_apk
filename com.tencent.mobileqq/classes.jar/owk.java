@@ -1,35 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.HotchatSCHelper;
-import com.tencent.mobileqq.app.HotchatSCHelper.OnShowNoteListener;
-import com.tencent.mobileqq.app.HotchatSCMng;
-import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-class owk
-  implements HotchatSCHelper.OnShowNoteListener
+public class owk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  owk(owi paramowi, Bundle paramBundle) {}
+  public owk(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public boolean a(HotchatSCMng.HotchatNote paramHotchatNote)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Bundle localBundle = new Bundle();
-    HotchatSCMng.HotchatNote localHotchatNote = paramHotchatNote;
-    if (paramHotchatNote == null) {
-      localHotchatNote = this.jdField_a_of_type_Owi.a.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCMng.a(this.jdField_a_of_type_Owi.a.a.jdField_a_of_type_JavaLangString, 1, HotchatSCHelper.a());
-    }
-    if (localHotchatNote != null)
-    {
-      localBundle.putString("url", localHotchatNote.b);
-      localBundle.putString("content", localHotchatNote.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
-      this.jdField_a_of_type_Owi.a.a(102, localBundle);
-      return false;
-      localBundle.putString("url", "");
-      localBundle.putString("content", "");
-    }
+    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

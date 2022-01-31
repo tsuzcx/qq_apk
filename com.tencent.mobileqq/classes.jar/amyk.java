@@ -1,40 +1,14 @@
-import android.os.RemoteException;
-import cooperation.qzone.remote.IServiceHandler;
-import cooperation.qzone.remote.RecvMsg;
-import cooperation.qzone.remote.RemoteServiceProxy;
-import cooperation.qzone.remote.SendMsg;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class amyk
+public final class amyk
   implements Runnable
 {
-  public amyk(RemoteServiceProxy paramRemoteServiceProxy, SendMsg paramSendMsg) {}
+  public amyk(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    try
-    {
-      if (this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.serviceHandler != null)
-      {
-        this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.serviceHandler.sendMsg(this.jdField_a_of_type_CooperationQzoneRemoteSendMsg);
-        return;
-      }
-      try
-      {
-        RecvMsg localRecvMsg = this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.createWaiteRespTimeout(this.jdField_a_of_type_CooperationQzoneRemoteSendMsg, "main thread sendMsgToServiceFailed. serviceHandler is null.");
-        this.jdField_a_of_type_CooperationQzoneRemoteRemoteServiceProxy.sendFailedRespToApp(this.jdField_a_of_type_CooperationQzoneRemoteSendMsg, localRecvMsg);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        return;
-      }
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      localRemoteException.printStackTrace();
-    }
+    HtmlOffline.b("2036", this.a, true, new amyl(this));
   }
 }
 

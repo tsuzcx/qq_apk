@@ -1,25 +1,23 @@
+import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import java.util.ArrayList;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
-class adjm
-  implements FMDialogUtil.FMDialogInterface
+public class adjm
+  extends BroadcastReceiver
 {
-  adjm(adjk paramadjk) {}
+  public adjm(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public void a()
+  @TargetApi(5)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ArrayList localArrayList = FMDataCache.b();
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    SendBottomBar.a(this.a.a).setResult(-1, localIntent);
-    SendBottomBar.a(this.a.a).finish();
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
   }
-  
-  public void b() {}
 }
 
 

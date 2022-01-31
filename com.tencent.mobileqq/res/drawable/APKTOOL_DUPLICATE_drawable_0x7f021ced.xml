@@ -1,35 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <solid android:color="#ffe4f5ff" />
-            <stroke android:width="1.0dip" android:color="#ff2e8ae7" />
-            <corners android:topLeftRadius="2.0dip" android:topRightRadius="2.0dip" android:bottomLeftRadius="2.0dip" android:bottomRightRadius="2.0dip" />
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="8.0dip" />
+            <gradient android:startColor="#4cffffff" android:endColor="#4cffffff" android:angle="270.0" android:centerY="0.75" android:centerColor="#4cffffff" />
         </shape>
     </item>
-    <item android:state_focused="true">
-        <shape
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <solid android:color="#ffe4f5ff" />
-            <stroke android:width="1.0dip" android:color="#ff2e8ae7" />
-            <corners android:topLeftRadius="2.0dip" android:topRightRadius="2.0dip" android:bottomLeftRadius="2.0dip" android:bottomRightRadius="2.0dip" />
-        </shape>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="8.0dip" />
+                <gradient android:startColor="#ffffffff" android:endColor="#ffffffff" android:angle="270.0" android:centerY="0.75" android:centerColor="#ffffffff" />
+            </shape>
+        </clip>
     </item>
-    <item>
-        <shape
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <solid android:color="#00000000" />
-            <stroke android:width="1.0dip" android:color="#ff2e8ae7" />
-            <corners android:topLeftRadius="2.0dip" android:topRightRadius="2.0dip" android:bottomLeftRadius="2.0dip" android:bottomRightRadius="2.0dip" />
-        </shape>
-    </item>
-    <item android:state_enabled="false">
-        <shape
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <solid android:color="#fff0f0f0" />
-            <corners android:topLeftRadius="2.0dip" android:topRightRadius="2.0dip" android:bottomLeftRadius="2.0dip" android:bottomRightRadius="2.0dip" />
-        </shape>
-    </item>
-</selector>
+</layer-list>

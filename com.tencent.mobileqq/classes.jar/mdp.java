@@ -1,29 +1,8 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class mdp
-  extends Handler
+public abstract interface mdp
 {
-  public mdp(VideoFeedsPlayActivity paramVideoFeedsPlayActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    VideoFeedsPlayActivity.b(this.a);
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

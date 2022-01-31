@@ -1,17 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
 
 public class lst
-  implements FeedItemCell.CellListener
+  implements Runnable
 {
-  public lst(ProteusItemView paramProteusItemView, ReadInJoyBaseAdapter.OnLastReadRefreshListener paramOnLastReadRefreshListener) {}
+  public lst(ArticleInfoModule paramArticleInfoModule, int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2) {}
   
-  public void a(View paramView, Map paramMap)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$OnLastReadRefreshListener.a();
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
   }
 }
 

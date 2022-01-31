@@ -60,7 +60,7 @@ public class GVideoTranslucentBrowerActivity$GVideoBrowserFragment
     if (!this.jdField_a_of_type_Boolean)
     {
       Monitor.a("2489207");
-      ReportController.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "7.6.3", "", "");
+      ReportController.b(null, "dc00899", "Huayang_video", "", "group_video", "loadHideWeb", 1, 0, "", "7.6.8", "", "");
     }
   }
 }

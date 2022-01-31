@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aksn;
+import alae;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -80,7 +80,7 @@ public class AdaptiveLayout
             m -= this.b;
             i1 = Math.max(j, m);
             n = i + (this.c + k);
-            this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i4), new aksn(this, m, k));
+            this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i4), new alae(this, m, k));
             i = this.mPaddingLeft;
             i3 = this.mPaddingRight + i;
             i2 = 0;
@@ -111,7 +111,7 @@ public class AdaptiveLayout
       m -= this.b;
       i1 = Math.max(j, m);
       n = i + k;
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i4), new aksn(this, m, k));
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i4), new alae(this, m, k));
     }
     this.e = i1;
     this.f = n;
@@ -164,7 +164,7 @@ public class AdaptiveLayout
     label505:
     for (;;)
     {
-      localObject = (aksn)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+      localObject = (alae)this.jdField_a_of_type_JavaUtilMap.get(localObject);
       int k = this.b;
       int m = this.c;
       int i3;
@@ -191,20 +191,20 @@ public class AdaptiveLayout
             i5 = i4;
             if (localView.getVisibility() != 8)
             {
-              i5 = (((aksn)localObject).b - localView.getMeasuredHeight()) / 2 + (k + j);
+              i5 = (((alae)localObject).b - localView.getMeasuredHeight()) / 2 + (k + j);
               localView.layout(i4, i5, localView.getMeasuredWidth() + i4, localView.getMeasuredHeight() + i5);
               i5 = i4 + (localView.getMeasuredWidth() + i3);
             }
             i2 += 1;
           }
-          i = this.mPaddingLeft + paramInt3 - paramInt1 - ((aksn)localObject).jdField_a_of_type_Int;
+          i = this.mPaddingLeft + paramInt3 - paramInt1 - ((alae)localObject).jdField_a_of_type_Int;
           i3 = k;
           break label162;
-          i = this.mPaddingLeft + (paramInt3 - paramInt1 - ((aksn)localObject).jdField_a_of_type_Int) / 2;
+          i = this.mPaddingLeft + (paramInt3 - paramInt1 - ((alae)localObject).jdField_a_of_type_Int) / 2;
           i3 = k;
           break label162;
           i = i1 - i2;
-          k = (paramInt3 - paramInt1 - (((aksn)localObject).jdField_a_of_type_Int - this.b * (i - 1))) / i;
+          k = (paramInt3 - paramInt1 - (((alae)localObject).jdField_a_of_type_Int - this.b * (i - 1))) / i;
           break;
           k = this.mPaddingTop + paramInt4 - paramInt2 - this.f;
           continue;
@@ -213,7 +213,7 @@ public class AdaptiveLayout
         m = (paramInt4 - paramInt2 - (this.f - this.c * (i7 - 1))) / i7;
       }
       if (i != i4) {}
-      for (int i = ((aksn)localObject).b + m + j;; i = j)
+      for (int i = ((alae)localObject).b + m + j;; i = j)
       {
         n += 1;
         j = i;
@@ -269,7 +269,7 @@ public class AdaptiveLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AdaptiveLayout
  * JD-Core Version:    0.7.0.1
  */

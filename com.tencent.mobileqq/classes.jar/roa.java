@@ -1,10 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.util.Utils;
 
 public class roa
-  extends Handler
+  implements Runnable
 {
-  public roa(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  public roa(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  
+  public void run()
+  {
+    if ((ProfileActivity.e(AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null))
+    {
+      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getText().toString();
+      if (Utils.a(this.jdField_a_of_type_JavaLangString, str)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.e);
+      }
+    }
+  }
 }
 
 

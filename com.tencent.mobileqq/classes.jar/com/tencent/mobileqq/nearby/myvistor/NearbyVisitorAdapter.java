@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.myvistor;
 
-import aern;
+import aezy;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -112,7 +112,7 @@ public class NearbyVisitorAdapter
   
   public int a()
   {
-    return 2130970488;
+    return 2130970500;
   }
   
   public StrangerInfo a(int paramInt1, int paramInt2)
@@ -237,8 +237,8 @@ public class NearbyVisitorAdapter
       if (localStrangerInfo.gender != 1) {
         break label1407;
       }
-      paramChildItemHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843137);
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842843);
+      paramChildItemHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843169);
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842873);
       paramChildItemHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(TroopUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), -17883, (Drawable)localObject1));
       paramChildItemHolder.jdField_b_of_type_AndroidWidgetTextView.setText("女神");
       paramChildItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0);
@@ -369,7 +369,7 @@ public class NearbyVisitorAdapter
         localLayoutParams.leftMargin = AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         if ("svip".equalsIgnoreCase(localStrangerInfo.vipInfo))
         {
-          ((ImageView)localObject3).setImageResource(2130839489);
+          ((ImageView)localObject3).setImageResource(2130839504);
           a(paramChildItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView, true);
           label1026:
           paramChildItemHolder.jdField_c_of_type_AndroidWidgetLinearLayout.addView((View)localObject3, localLayoutParams);
@@ -405,7 +405,7 @@ public class NearbyVisitorAdapter
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
             break label1731;
           }
-          paramChildItemHolder.d.setCompoundDrawablesWithIntrinsicBounds(2130842811, 0);
+          paramChildItemHolder.d.setCompoundDrawablesWithIntrinsicBounds(2130842846, 0);
           paramChildItemHolder.d.setCompoundDrawablePadding((int)(5.0F * this.jdField_a_of_type_Float));
           if (!paramChildItemHolder.d.a().equals(localObject2)) {
             paramChildItemHolder.d.setText((CharSequence)localObject2);
@@ -429,8 +429,8 @@ public class NearbyVisitorAdapter
         localStrangerInfo.tinyId = 0L;
         break;
         label1407:
-        paramChildItemHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843137);
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842843);
+        paramChildItemHolder.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843169);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842873);
         paramChildItemHolder.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(TroopUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), -17883, (Drawable)localObject1));
         paramChildItemHolder.jdField_b_of_type_AndroidWidgetTextView.setText("男神");
         break label171;
@@ -440,7 +440,7 @@ public class NearbyVisitorAdapter
         label1479:
         paramChildItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText("");
         break label228;
-        localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839487);
+        localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839502);
         paramInt2 = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493246);
         paramInt1 = paramInt2;
         localObject1 = localObject3;
@@ -451,7 +451,7 @@ public class NearbyVisitorAdapter
         paramInt1 = paramInt2;
         localObject1 = localObject3;
         break label408;
-        localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839485);
+        localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839500);
         paramInt2 = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493245);
         paramInt1 = paramInt2;
         localObject1 = localObject3;
@@ -472,7 +472,7 @@ public class NearbyVisitorAdapter
         break label648;
         if ("vip".equalsIgnoreCase(localStrangerInfo.vipInfo))
         {
-          ((ImageView)localObject3).setImageResource(2130839490);
+          ((ImageView)localObject3).setImageResource(2130839505);
           a(paramChildItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView, true);
           break label1026;
         }
@@ -507,16 +507,16 @@ public class NearbyVisitorAdapter
   
   public void a(View paramView, int paramInt)
   {
-    aern localaern2 = (aern)paramView.getTag();
-    aern localaern1 = localaern2;
-    if (localaern2 == null)
+    aezy localaezy2 = (aezy)paramView.getTag();
+    aezy localaezy1 = localaezy2;
+    if (localaezy2 == null)
     {
-      localaern1 = new aern(this, null);
-      localaern1.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131370852));
-      int i = paramView.getResources().getColor(2131494129);
-      ((ImageView)paramView.findViewById(2131370853)).setBackgroundColor(i);
+      localaezy1 = new aezy(this, null);
+      localaezy1.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131370839));
+      int i = paramView.getResources().getColor(2131494135);
+      ((ImageView)paramView.findViewById(2131370840)).setBackgroundColor(i);
     }
-    localaern1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)this.jdField_d_of_type_JavaUtilList.get(paramInt));
+    localaezy1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)this.jdField_d_of_type_JavaUtilList.get(paramInt));
   }
   
   public void a(StrangerInfo paramStrangerInfo, ImageView paramImageView)
@@ -571,13 +571,13 @@ public class NearbyVisitorAdapter
     if (paramBoolean)
     {
       if (this.jdField_a_of_type_AndroidContentResColorStateList == null) {
-        this.jdField_a_of_type_AndroidContentResColorStateList = paramSingleLineTextView.getResources().getColorStateList(2131494302);
+        this.jdField_a_of_type_AndroidContentResColorStateList = paramSingleLineTextView.getResources().getColorStateList(2131494308);
       }
       paramSingleLineTextView.setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
       return;
     }
     if (this.jdField_b_of_type_AndroidContentResColorStateList == null) {
-      this.jdField_b_of_type_AndroidContentResColorStateList = paramSingleLineTextView.getResources().getColorStateList(2131494257);
+      this.jdField_b_of_type_AndroidContentResColorStateList = paramSingleLineTextView.getResources().getColorStateList(2131494263);
     }
     paramSingleLineTextView.setTextColor(this.jdField_b_of_type_AndroidContentResColorStateList);
   }
@@ -613,13 +613,13 @@ public class NearbyVisitorAdapter
         if (this.jdField_b_of_type_JavaUtilList.size() > 0)
         {
           this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList);
-          paramList = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131438418), new Object[] { Long.valueOf(this.jdField_a_of_type_Long) });
+          paramList = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131438438), new Object[] { Long.valueOf(this.jdField_a_of_type_Long) });
           this.jdField_d_of_type_JavaUtilList.add(paramList);
         }
         if (this.jdField_c_of_type_JavaUtilList.size() > 0)
         {
           this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
-          paramList = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131438419), new Object[] { Long.valueOf(this.jdField_b_of_type_Long) });
+          paramList = String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131438439), new Object[] { Long.valueOf(this.jdField_b_of_type_Long) });
           this.jdField_d_of_type_JavaUtilList.add(paramList);
         }
         notifyDataSetChanged();
@@ -642,20 +642,20 @@ public class NearbyVisitorAdapter
     if (paramView == null)
     {
       paramView = new NearbyVisitorAdapter.ChildItemHolder();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969108, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362719));
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365195));
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131364863));
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131363896));
-      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365197));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365198));
-      paramView.jdField_c_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131365215));
-      paramView.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365204));
-      paramView.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365207));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365211));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131363630);
-      paramView.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131364869));
-      paramView.d = ((SingleLineTextView)localView.findViewById(2131365214));
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969111, paramViewGroup, false);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362724));
+      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365222));
+      paramView.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131364890));
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131363921));
+      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365224));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365225));
+      paramView.jdField_c_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131365242));
+      paramView.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365231));
+      paramView.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365234));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365238));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131363649);
+      paramView.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131364896));
+      paramView.d = ((SingleLineTextView)localView.findViewById(2131365241));
       localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       localView.setTag(paramView);
     }
@@ -687,12 +687,12 @@ public class NearbyVisitorAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = new aern(this, null);
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970488, paramViewGroup, false);
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131370852));
+      paramView = new aezy(this, null);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970500, paramViewGroup, false);
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131370839));
       localView.setTag(paramView);
     }
-    ((aern)localView.getTag()).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)this.jdField_d_of_type_JavaUtilList.get(paramInt));
+    ((aezy)localView.getTag()).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)this.jdField_d_of_type_JavaUtilList.get(paramInt));
     return localView;
   }
   

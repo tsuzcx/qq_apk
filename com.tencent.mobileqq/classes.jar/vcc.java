@@ -1,13 +1,27 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.MyEnterTroopChatItemBuilder;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
+import com.tencent.mobileqq.customviews.PicProgressView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class vcc
-  extends AbstractChatItemBuilder.ViewHolder
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public TextView b;
+  public FrameLayout a;
+  public RelativeLayout a;
+  public URLDrawable a;
+  public PicProgressView a;
+  public BubbleImageView a;
+  public boolean a;
+  public int e;
+  public int f;
   
-  public vcc(MyEnterTroopChatItemBuilder paramMyEnterTroopChatItemBuilder) {}
+  public vcc(FilePicItemBuilder paramFilePicItemBuilder)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
 }
 
 

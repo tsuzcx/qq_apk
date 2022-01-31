@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajoj;
-import ajok;
+import ajvw;
+import ajvx;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -36,8 +36,8 @@ public class TroopFileError
   
   private static void a(Context paramContext, long paramLong)
   {
-    ajok localajok = new ajok(paramLong);
-    DialogUtil.b(paramContext, 230, paramContext.getResources().getString(2131429811), paramContext.getResources().getString(2131429812), 2131429745, 2131429746, localajok, localajok).show();
+    ajvx localajvx = new ajvx(paramLong);
+    DialogUtil.b(paramContext, 230, paramContext.getResources().getString(2131429811), paramContext.getResources().getString(2131429812), 2131429745, 2131429746, localajvx, localajvx).show();
   }
   
   public static void a(Context paramContext, String paramString)
@@ -56,7 +56,7 @@ public class TroopFileError
       i = paramContext.getResources().getDimensionPixelSize(2131558448);
       if (Looper.getMainLooper() != Looper.myLooper())
       {
-        new Handler(Looper.getMainLooper()).post(new ajoj(paramContext, paramInt, paramString, i));
+        new Handler(Looper.getMainLooper()).post(new ajvw(paramContext, paramInt, paramString, i));
         return;
       }
     }
@@ -304,7 +304,7 @@ public class TroopFileError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileError
  * JD-Core Version:    0.7.0.1
  */

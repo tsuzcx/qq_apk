@@ -1,13 +1,13 @@
 package com.tencent.gdtad.jsbridge;
 
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import qks;
-import qkt;
-import qku;
-import qkw;
-import qkx;
-import qky;
-import qkz;
+import qpj;
+import qpk;
+import qpl;
+import qpn;
+import qpo;
+import qpp;
+import qpq;
 
 public class GdtAdPluginFactory
   extends VasWebviewJsPlugin
@@ -17,13 +17,13 @@ public class GdtAdPluginFactory
   GdtAppJumpJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtAppJumpJsCallHandler;
   GdtLoadAdJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtLoadAdJsCallHandler;
   GdtLocationJsCallHandler jdField_a_of_type_ComTencentGdtadJsbridgeGdtLocationJsCallHandler;
-  qks jdField_a_of_type_Qks;
-  qkt jdField_a_of_type_Qkt;
-  qku jdField_a_of_type_Qku;
-  qkw jdField_a_of_type_Qkw;
-  qkx jdField_a_of_type_Qkx;
-  qky jdField_a_of_type_Qky;
-  qkz jdField_a_of_type_Qkz;
+  qpj jdField_a_of_type_Qpj;
+  qpk jdField_a_of_type_Qpk;
+  qpl jdField_a_of_type_Qpl;
+  qpn jdField_a_of_type_Qpn;
+  qpo jdField_a_of_type_Qpo;
+  qpp jdField_a_of_type_Qpp;
+  qpq jdField_a_of_type_Qpq;
   
   public static GdtAdPluginFactory a()
   {
@@ -50,10 +50,10 @@ public class GdtAdPluginFactory
       }
       return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtAppJumpJsCallHandler;
     case 2: 
-      if (this.jdField_a_of_type_Qkz == null) {
-        this.jdField_a_of_type_Qkz = new qkz();
+      if (this.jdField_a_of_type_Qpq == null) {
+        this.jdField_a_of_type_Qpq = new qpq();
       }
-      return this.jdField_a_of_type_Qkz;
+      return this.jdField_a_of_type_Qpq;
     case 3: 
       if (this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdReportJsCallHandler == null) {
         this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtAdReportJsCallHandler = new GdtAdReportJsCallHandler();
@@ -70,35 +70,35 @@ public class GdtAdPluginFactory
       }
       return this.jdField_a_of_type_ComTencentGdtadJsbridgeGdtLoadAdJsCallHandler;
     case 6: 
-      if (this.jdField_a_of_type_Qks == null) {
-        this.jdField_a_of_type_Qks = new qks();
+      if (this.jdField_a_of_type_Qpj == null) {
+        this.jdField_a_of_type_Qpj = new qpj();
       }
-      return this.jdField_a_of_type_Qks;
+      return this.jdField_a_of_type_Qpj;
     case 7: 
-      if (this.jdField_a_of_type_Qku == null) {
-        this.jdField_a_of_type_Qku = new qku();
+      if (this.jdField_a_of_type_Qpl == null) {
+        this.jdField_a_of_type_Qpl = new qpl();
       }
-      return this.jdField_a_of_type_Qku;
+      return this.jdField_a_of_type_Qpl;
     case 8: 
-      if (this.jdField_a_of_type_Qkw == null) {
-        this.jdField_a_of_type_Qkw = new qkw();
+      if (this.jdField_a_of_type_Qpn == null) {
+        this.jdField_a_of_type_Qpn = new qpn();
       }
-      return this.jdField_a_of_type_Qkw;
+      return this.jdField_a_of_type_Qpn;
     case 9: 
-      if (this.jdField_a_of_type_Qkt == null) {
-        this.jdField_a_of_type_Qkt = new qkt();
+      if (this.jdField_a_of_type_Qpk == null) {
+        this.jdField_a_of_type_Qpk = new qpk();
       }
-      return this.jdField_a_of_type_Qkt;
+      return this.jdField_a_of_type_Qpk;
     case 10: 
-      if (this.jdField_a_of_type_Qkx == null) {
-        this.jdField_a_of_type_Qkx = new qkx();
+      if (this.jdField_a_of_type_Qpo == null) {
+        this.jdField_a_of_type_Qpo = new qpo();
       }
-      return this.jdField_a_of_type_Qkx;
+      return this.jdField_a_of_type_Qpo;
     }
-    if (this.jdField_a_of_type_Qky == null) {
-      this.jdField_a_of_type_Qky = new qky();
+    if (this.jdField_a_of_type_Qpp == null) {
+      this.jdField_a_of_type_Qpp = new qpp();
     }
-    return this.jdField_a_of_type_Qky;
+    return this.jdField_a_of_type_Qpp;
   }
 }
 

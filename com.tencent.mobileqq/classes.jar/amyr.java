@@ -1,14 +1,29 @@
-import cooperation.qzone.report.lp.LpReportInfo;
-import cooperation.qzone.report.lp.LpReportManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.CellInfo;
 
-public class amyr
-  implements Runnable
+public final class amyr
+  implements Parcelable.Creator
 {
-  public amyr(LpReportManager paramLpReportManager, int paramInt, LpReportInfo paramLpReportInfo, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void run()
+  public LbsDataV2.CellInfo a(Parcel paramParcel)
   {
-    LpReportManager.access$000(this.jdField_a_of_type_CooperationQzoneReportLpLpReportManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo, this.jdField_a_of_type_Boolean, this.b);
+    LbsDataV2.CellInfo localCellInfo = new LbsDataV2.CellInfo();
+    if (paramParcel != null)
+    {
+      localCellInfo.mcc = paramParcel.readInt();
+      localCellInfo.mnc = paramParcel.readInt();
+      localCellInfo.lac = paramParcel.readInt();
+      localCellInfo.cellId = paramParcel.readInt();
+      localCellInfo.rssi = paramParcel.readInt();
+      localCellInfo.stationLat = paramParcel.readDouble();
+      localCellInfo.stationLon = paramParcel.readDouble();
+    }
+    return localCellInfo;
+  }
+  
+  public LbsDataV2.CellInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

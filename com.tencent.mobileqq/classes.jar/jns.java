@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.ui.RedPacketGameView;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
 
-public final class jns
-  implements Parcelable.Creator
+public class jns
+  implements View.OnClickListener
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  public jns(RedPacketGameView paramRedPacketGameView, AVActivity paramAVActivity) {}
   
-  public RecvMsg[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new RecvMsg[paramInt];
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a.v();
+    ((VideoAppInterface)this.jdField_a_of_type_ComTencentAvUiAVActivity.getAppRuntime()).a(new Object[] { Integer.valueOf(105), Boolean.valueOf(true) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jns
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,34 @@
-import com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class ygq
-  extends Thread
+  implements TextWatcher
 {
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  boolean jdField_a_of_type_Boolean = false;
-  public String b;
-  boolean b;
+  public ygq(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public ygq(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  void a()
-  {
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      this.a.b.setVisibility(8);
+    }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (bool) {}
+      if (this.a.a != null) {
+        this.a.a.a(paramEditable);
       }
-      try
-      {
-        VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->wait 5 seconds");
-        this.jdField_a_of_type_JavaLangObject.wait(5000L);
-        if (this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->download task " + this.jdField_b_of_type_JavaLangString + " timeout");
-        this.jdField_b_of_type_Boolean = true;
-        JSONObject localJSONObject1 = new JSONObject();
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("status", -2);
-        localJSONObject1.put("code", 0);
-        localJSONObject1.put("data", localJSONObject2);
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
-        return;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->wait() is interrupted");
-        continue;
-        localObject2 = finally;
-        throw localObject2;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->json exception:" + localJSONException.toString());
-        }
-      }
-    }
-  }
-  
-  void b()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
       return;
+      this.a.b.setVisibility(0);
     }
   }
   
-  public void run()
-  {
-    a();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

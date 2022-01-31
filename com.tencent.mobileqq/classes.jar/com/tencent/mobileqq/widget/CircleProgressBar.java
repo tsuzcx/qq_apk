@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aksv;
+import alam;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -23,7 +23,7 @@ public class CircleProgressBar
   public float a;
   public int a;
   public long a;
-  aksv a;
+  alam a;
   public Paint a;
   public RectF a;
   public TextPaint a;
@@ -70,7 +70,7 @@ public class CircleProgressBar
     this.jdField_h_of_type_Int = -90;
     this.jdField_i_of_type_Int = this.jdField_h_of_type_Int;
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_Aksv = new aksv(this);
+    this.jdField_a_of_type_Alam = new alam(this);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CircleProgressBar);
     this.jdField_a_of_type_Int = paramContext.getColor(0, Color.parseColor("#999999"));
     this.jdField_b_of_type_Int = paramContext.getColor(1, Color.parseColor("#12b7f5"));
@@ -109,13 +109,13 @@ public class CircleProgressBar
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = false;
     postInvalidate();
-    this.jdField_a_of_type_Aksv.sendEmptyMessageDelayed(10000, 50L);
+    this.jdField_a_of_type_Alam.sendEmptyMessageDelayed(10000, 50L);
   }
   
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Aksv.removeMessages(10000);
+    this.jdField_a_of_type_Alam.removeMessages(10000);
     postInvalidate();
   }
   
@@ -263,7 +263,7 @@ public class CircleProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleProgressBar
  * JD-Core Version:    0.7.0.1
  */

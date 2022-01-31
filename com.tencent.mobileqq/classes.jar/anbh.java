@@ -1,16 +1,9 @@
-import cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneLiveVideoTransparentActivity;
+import cooperation.qzone.cache.CacheManager;
 
-public class anbh
+public final class anbh
+  implements Runnable
 {
-  public static Class a(String paramString)
-  {
-    if (QzoneLiveVideoPluginProxyActivity.a(QzoneLiveVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneLiveVideoTransparentActivity.class;
-    }
-    return QzoneLiveVideoGpuProxyActivity.class;
-  }
+  public void run() {}
 }
 
 

@@ -1,20 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 
-public class anzz
+class anzz
   implements Runnable
 {
-  public anzz(GLTextureView paramGLTextureView) {}
+  anzz(anzy paramanzy) {}
   
   public void run()
   {
-    GLTextureView.a(this.a).a(this.a.getWidth(), this.a.getHeight());
-    if (QLog.isColorLevel()) {
-      QLog.d("GLTextureView", 2, "TextureView mCheckAlphaTask,alpha:" + GLTextureView.a(this.a));
+    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(EditPicSave.a(this.a.a));
+    this.a.a.jdField_a_of_type_Boolean = true;
+    this.a.a.a(100);
+    this.a.a.d();
+    if (this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a() == 102)
+    {
+      EditPicSave.a(this.a.a, this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a());
+      return;
     }
-    if (GLTextureView.a(this.a) != 1.0F) {
-      GLTextureView.a(this.a, 1.0F);
-    }
+    QQToast.a(this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "保存成功", 0).a();
   }
 }
 

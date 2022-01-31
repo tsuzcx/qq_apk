@@ -5,13 +5,13 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.qqstory.database.TroopStoryEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import ong;
+import ors;
 
 public class TroopStoryItemInfo
   extends BaseUIItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ong();
+  public static final Parcelable.Creator CREATOR = new ors();
   public static final int ITEM_TYPE_DAY = 1;
   public static final int ITEM_TYPE_EMPTY = 4;
   public static final int ITEM_TYPE_SHOOTING = 3;

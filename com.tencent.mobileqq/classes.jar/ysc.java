@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskHandler;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import android.text.Editable;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public final class ysc
+class ysc
   implements Runnable
 {
-  public ysc(SpriteTaskHandler paramSpriteTaskHandler, SpriteTaskParam paramSpriteTaskParam) {}
+  ysc(ysb paramysb, Editable paramEditable) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskHandler.b(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
+    ApolloRender localApolloRender = this.jdField_a_of_type_Ysb.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender();
+    if ((localApolloRender != null) && (this.jdField_a_of_type_Ysb.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr != 0L)) {
+      localApolloRender.getSavaWrapper().a(this.jdField_a_of_type_Ysb.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditorAddr, this.jdField_a_of_type_AndroidTextEditable.toString());
     }
   }
 }

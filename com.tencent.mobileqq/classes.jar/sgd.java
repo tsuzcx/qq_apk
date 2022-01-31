@@ -1,18 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.Conversation;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
 
 public class sgd
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public sgd(Conversation paramConversation) {}
+  public sgd(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

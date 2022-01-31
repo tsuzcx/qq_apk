@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.app.utils;
 
+import aadp;
+import aadq;
 import android.text.format.Time;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -8,13 +10,11 @@ import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.app.MobileQQ;
-import zxb;
-import zxc;
 
 public class QQConfMeetingLogReportHelper
 {
   static QQConfMeetingLogReportHelper jdField_a_of_type_ComTencentMobileqqAppUtilsQQConfMeetingLogReportHelper;
-  private ShareAppLogHelper.OnGetLocalLogListener jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper$OnGetLocalLogListener = new zxb(this);
+  private ShareAppLogHelper.OnGetLocalLogListener jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper$OnGetLocalLogListener = new aadp(this);
   public ShareAppLogHelper a;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
@@ -32,7 +32,7 @@ public class QQConfMeetingLogReportHelper
   private void a(String paramString)
   {
     QLog.w("QQConfMeetingLogReportHelper", 1, "sendFile begin, path[" + paramString + "], Thread[" + Thread.currentThread().getId() + "]");
-    ThreadManager.post(new zxc(this, paramString), 2, null, true);
+    ThreadManager.post(new aadq(this, paramString), 2, null, true);
   }
   
   protected int a(long paramLong)

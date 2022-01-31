@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import xvi;
+import ybr;
 
 public class RMVideoThumbGenMgr$ThumbGenItem
 {
   public int a;
   public String a;
   public AtomicInteger a;
-  xvi jdField_a_of_type_Xvi = new xvi(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr);
+  ybr jdField_a_of_type_Ybr = new ybr(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoThumbGenMgr);
   public volatile boolean a;
   public int b;
   public String b;

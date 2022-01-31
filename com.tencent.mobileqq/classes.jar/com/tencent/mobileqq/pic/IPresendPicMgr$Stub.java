@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import agkw;
+import agpk;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -24,7 +24,7 @@ public abstract class IPresendPicMgr$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IPresendPicMgr))) {
       return (IPresendPicMgr)localIInterface;
     }
-    return new agkw(paramIBinder);
+    return new agpk(paramIBinder);
   }
   
   public IBinder asBinder()

@@ -1,24 +1,13 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
-class msk
-  implements Runnable
+public class msk
+  implements View.OnClickListener
 {
-  msk(msi parammsi) {}
+  public msk(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
   
-  public void run()
-  {
-    boolean bool = true;
-    SubscriptFeedsActivity.a(this.a.a).b = true;
-    SubscriptFeedsActivity localSubscriptFeedsActivity = this.a.a;
-    if (SubscriptFeedsActivity.a(this.a.a).g == 1) {}
-    for (;;)
-    {
-      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, bool, false);
-      return;
-      bool = false;
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

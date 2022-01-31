@@ -1,39 +1,46 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
-import com.tencent.biz.qqstory.view.widget.ViewPagerTapBlockView;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransformation;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.BitmapUtils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
-public class org
-  implements ViewPager.OnPageChangeListener
+class org
+  implements Runnable
 {
-  public org(SlideTabViewPager paramSlideTabViewPager) {}
+  org(orf paramorf, Bitmap paramBitmap) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void run()
   {
-    if (SlideTabViewPager.a(this.a) == 0)
+    int i = AIOUtils.a(47.0F, this.jdField_a_of_type_Orf.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = AIOUtils.a(75.0F, this.jdField_a_of_type_Orf.jdField_a_of_type_AndroidContentContext.getResources());
+    Bitmap localBitmap1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, j, false);
+    if (localBitmap1 == null)
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)SlideTabViewPager.a(this.a).getLayoutParams();
-      SlideTabViewPager localSlideTabViewPager = this.a;
-      paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-      SlideTabViewPager.a(localSlideTabViewPager, localLayoutParams.leftMargin + paramInt2);
+      SLog.e("story.publish.StoryMultiFragmentPart", "resizeThumb = null.");
+      return;
     }
-    paramInt2 = (int)(SlideTabViewPager.a(this.a, 12.5F) + SlideTabViewPager.a(this.a) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setOffset(paramInt2);
-    paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-    int i = SlideTabViewPager.a(this.a).getWidth();
-    paramInt1 = (int)(paramInt2 + (i - paramInt2) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setBlockWidth(paramInt1);
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.a.b(paramInt);
-    if (SlideTabViewPager.a(this.a) != null) {
-      onPageSelected(paramInt);
+    Bitmap localBitmap2 = new RoundedTransformation(AIOUtils.a(3.0F, this.jdField_a_of_type_Orf.jdField_a_of_type_AndroidContentContext.getResources()), 0, j * 1.0F / i, null, null).a(localBitmap1);
+    if (localBitmap2 == null)
+    {
+      SLog.e("story.publish.StoryMultiFragmentPart", "roundThumb = null.");
+      return;
     }
+    i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    float f1 = ScreenUtil.a;
+    float f2 = ScreenUtil.a(this.jdField_a_of_type_Orf.jdField_a_of_type_AndroidContentContext);
+    if (i / j > f1 / f2) {}
+    for (localBitmap1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (int)(f1 / f2 * j), j, true); localBitmap1 == null; localBitmap1 = BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, i, (int)(f2 / f1 * i), true))
+    {
+      SLog.e("story.publish.StoryMultiFragmentPart", "animBitmap = null.");
+      return;
+    }
+    SLog.b("story.publish.StoryMultiFragmentPart", "post RunnableUpdateThumb");
+    new Handler(Looper.getMainLooper()).post(new ori(this.jdField_a_of_type_Orf.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryMultiFragmentPart, localBitmap1, localBitmap2, this.jdField_a_of_type_Orf.jdField_a_of_type_AndroidContentContext));
   }
 }
 

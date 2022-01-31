@@ -1,39 +1,22 @@
-import android.net.Uri;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyScreenShotReporter;
-import com.tencent.biz.pubaccount.util.ScreenshotContentObserver.Listener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import java.util.ArrayList;
 
-public final class mje
-  implements ScreenshotContentObserver.Listener
+class mje
+  implements Animation.AnimationListener
 {
-  public void a(Uri paramUri, String paramString, int paramInt)
+  mje(mjd parammjd, ArrayList paramArrayList) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder().append("onDetectScreenshot() path=").append(paramString).append(", channelID=");
-      if (ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a()) != null) {
-        break label129;
-      }
-      paramUri = "null";
-      paramString = paramString.append(paramUri).append(", channelType=");
-      if (ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a()) != null) {
-        break label139;
-      }
-    }
-    label129:
-    label139:
-    for (paramUri = "null";; paramUri = ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a()))
-    {
-      QLog.d("ReadInJoyScreenShotReporter", 2, paramUri);
-      if (ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a()) != null) {
-        PublicAccountReportUtils.b(null, "", "0X8008100", "0X8008100", 0, 0, String.valueOf(System.currentTimeMillis() / 1000L), String.valueOf(ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a())), String.valueOf(ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a())), null, false);
-      }
-      return;
-      paramUri = ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a());
-      break;
-    }
+    VideoShareHelper.a(this.jdField_a_of_type_Mjd.a).post(new mjf(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

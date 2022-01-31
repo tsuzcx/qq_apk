@@ -1,79 +1,19 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.discussion.LinkShareActionSheetBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.ContactMatchBuilder;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.newfriend.ContactMatchMessage;
+import mqq.os.MqqHandler;
 
 public class wov
-  extends BaseAdapter
+  implements Runnable
 {
-  private wov(LinkShareActionSheetBuilder paramLinkShareActionSheetBuilder) {}
+  public wov(ContactMatchBuilder paramContactMatchBuilder) {}
   
-  public int getCount()
+  public void run()
   {
-    return 6;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2130971668, null);
-    }
-    int j;
-    int i;
-    switch (paramInt)
-    {
-    case 4: 
-    default: 
-      j = 2130838332;
-      i = 2131435309;
-      paramInt = 2131435333;
-    }
-    for (;;)
-    {
-      paramView = (ImageView)paramViewGroup.findViewById(2131366751);
-      TextView localTextView = (TextView)paramViewGroup.findViewById(2131364316);
-      paramView.setImageResource(j);
-      localTextView.setText(i);
-      if (AppSetting.b) {
-        paramViewGroup.setContentDescription(LinkShareActionSheetBuilder.a(this.a).getString(paramInt));
-      }
-      return paramViewGroup;
-      i = 2131435301;
-      j = 2130838336;
-      paramInt = 2131435331;
-      continue;
-      i = 2131435308;
-      j = 2130838337;
-      paramInt = 2131435332;
-      continue;
-      i = 2131435299;
-      j = 2130838340;
-      paramInt = 2131435330;
-      continue;
-      i = 2131435298;
-      j = 2130838334;
-      paramInt = 2131435329;
-      continue;
-      paramInt = 2131429999;
-      i = 2131429999;
-      j = 2130840508;
-    }
+    ((PhoneContactManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).a(((ContactMatchMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
+    ThreadManager.getUIHandler().post(new wow(this));
   }
 }
 

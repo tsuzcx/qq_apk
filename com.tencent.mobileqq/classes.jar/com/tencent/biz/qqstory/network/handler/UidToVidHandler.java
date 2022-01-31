@@ -46,7 +46,7 @@ public class UidToVidHandler
   public void a(@NonNull GetVidListRequest paramGetVidListRequest, @Nullable GetVidListResponse paramGetVidListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     UidToVidHandler.GetUserVidListEvent localGetUserVidListEvent = new UidToVidHandler.GetUserVidListEvent();
-    localGetUserVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    localGetUserVidListEvent.errorInfo = paramErrorMessage;
     localGetUserVidListEvent.jdField_a_of_type_JavaUtilList = paramGetVidListRequest.jdField_a_of_type_JavaUtilList;
     localGetUserVidListEvent.jdField_a_of_type_Int = paramGetVidListRequest.c;
     if ((paramGetVidListResponse == null) || (paramErrorMessage.isFail()))

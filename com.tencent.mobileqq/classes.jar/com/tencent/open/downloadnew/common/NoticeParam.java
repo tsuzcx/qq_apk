@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew.common;
 
-import alje;
+import alqw;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable.Creator;
 public class NoticeParam
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new alje();
+  public static final Parcelable.Creator CREATOR = new alqw();
   public int a;
   public long a;
   public Intent a;

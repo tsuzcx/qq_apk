@@ -1,21 +1,19 @@
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.MemoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.StoryBoss;
+import com.tribe.async.async.FutureListener.SimpleFutureListener;
+import com.tribe.async.async.JobController.DoneEvent;
+import com.tribe.async.async.Worker;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
 public class ndl
-  extends SimpleJob
+  extends FutureListener.SimpleFutureListener
 {
-  public ndl(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
+  public ndl(StoryBoss paramStoryBoss, Worker paramWorker) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onFutureDone(@Nullable Object paramObject)
   {
-    paramJobContext = ((MemoryManager)SuperManager.a(19)).a(this.a.a);
-    this.a.a(paramJobContext);
-    return null;
+    Dispatchers.get().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
   }
 }
 

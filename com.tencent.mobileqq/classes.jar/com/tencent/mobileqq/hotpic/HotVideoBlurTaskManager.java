@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adrf;
+import adzo;
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -238,7 +238,7 @@ public class HotVideoBlurTaskManager
       return;
     }
     this.b = true;
-    ThreadManager.post(new adrf(this), 5, null, true);
+    ThreadManager.post(new adzo(this), 5, null, true);
   }
   
   public void a(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, HotVideoData paramHotVideoData)

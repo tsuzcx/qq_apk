@@ -1,14 +1,16 @@
-import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 
-class wrn
-  implements BubblePopupWindow.OnDismissListener
+public class wrn
+  implements Runnable
 {
-  wrn(wrm paramwrm, View paramView) {}
+  public wrn(ContactsTroopAdapter paramContactsTroopAdapter) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    ((TroopManager)this.a.a.getManager(51)).a();
+    this.a.a.runOnUiThread(new wro(this));
   }
 }
 

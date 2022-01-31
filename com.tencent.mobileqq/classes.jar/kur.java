@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class kur
   implements Runnable
 {
-  public kur(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kur(AccountDetailActivity paramAccountDetailActivity) {}
   
   public void run()
   {
-    this.a.a(3);
+    this.a.a.setEnabled(true);
   }
 }
 

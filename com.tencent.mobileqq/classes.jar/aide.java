@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
 
 public class aide
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aide(RedBagVideoManager paramRedBagVideoManager) {}
+  public aide(PtvTemplateManager paramPtvTemplateManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    RedBagVideoManager.a(this.a, RedBagVideoManager.a(this.a));
-    RedBagVideoManager.b(this.a, System.currentTimeMillis());
-    if (RedBagVideoManager.a(this.a) - RedBagVideoManager.b(this.a) < 300L) {
-      return;
-    }
-    RedBagVideoManager.a(this.a);
+    this.a.a();
   }
 }
 

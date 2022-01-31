@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
 
 public class aobk
-  implements FMDialogUtil.FMDialogInterface
+  extends AnimatorListenerAdapter
 {
-  public aobk(EditTextPanel paramEditTextPanel, DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean) {}
+  public aobk(EditVideoButton paramEditVideoButton) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean, EditTextPanel.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel));
+    EditVideoButton.a(this.a).setVisibility(8);
+    EditVideoButton.a(this.a).setVisibility(8);
+    EditVideoButton.a(this.a, EditVideoButton.b(this.a));
+    if (this.a.a != null) {
+      this.a.a(2131363427);
+    }
   }
-  
-  public void b() {}
 }
 
 

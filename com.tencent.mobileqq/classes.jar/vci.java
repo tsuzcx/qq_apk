@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PATextItemBuilder;
+import android.graphics.drawable.ColorDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.io.File;
 
-public class vci
-  extends AbstractChatItemBuilder.ViewHolder
+class vci
+  implements Runnable
 {
-  public Object a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  vci(vch paramvch) {}
   
-  public vci(PATextItemBuilder paramPATextItemBuilder) {}
+  public void run()
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(-16777216);
+    URLDrawable.getDrawable(new File(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath), localURLDrawableOptions);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b();
+  }
 }
 
 

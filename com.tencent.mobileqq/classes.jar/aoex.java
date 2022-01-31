@@ -1,13 +1,15 @@
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import android.os.Message;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
-class aoex
+public class aoex
   implements Runnable
 {
-  aoex(aoew paramaoew) {}
+  public aoex(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, int paramInt) {}
   
   public void run()
   {
-    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 8, 1, this.jdField_a_of_type_Int));
   }
 }
 

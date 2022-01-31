@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aaer;
+import aali;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -24,7 +24,7 @@ public abstract class IArFaceCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IArFaceCallback))) {
       return (IArFaceCallback)localIInterface;
     }
-    return new aaer(paramIBinder);
+    return new aali(paramIBinder);
   }
   
   public IBinder asBinder()

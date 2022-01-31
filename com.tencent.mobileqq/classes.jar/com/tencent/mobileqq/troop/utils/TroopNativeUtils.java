@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajqg;
+import ajxt;
 import android.graphics.Bitmap;
 import com.tencent.av.core.VcSystemInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ public class TroopNativeUtils
   
   public static TroopNativeUtils a()
   {
-    return ajqg.a;
+    return ajxt.a;
   }
   
   public void a()
@@ -64,7 +64,7 @@ public class TroopNativeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopNativeUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.wholepeople.WholePeoplePlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public class aksk
-  implements View.OnClickListener
+class aksk
+  implements Runnable
 {
-  public aksk(WholePeoplePlugin paramWholePeoplePlugin, String paramString) {}
+  aksk(aksj paramaksj) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WholePeoplePlugin", 2, "onClick " + this.jdField_a_of_type_JavaLangString);
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = VipVideoPlayActivity.a(this.a.a);
+    this.a.a.a("play_success", 0, 0, l1 - l2, "");
+    if (VipVideoPlayActivity.a(this.a.a) != null) {
+      VipVideoPlayActivity.a(this.a.a).start();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWholepeopleWholePeoplePlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
   }
 }
 

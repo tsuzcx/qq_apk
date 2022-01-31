@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.MatcherCallback;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.WordMatcher;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
 public class tvj
-  implements WordMatchManager.MatcherCallback
+  implements Handler.Callback
 {
-  public tvj(TextPreviewActivity paramTextPreviewActivity) {}
+  public tvj(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void a(WordMatchManager.WordMatcher paramWordMatcher)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$WordMatcher = paramWordMatcher;
-    if (this.a.h != 0) {
-      paramWordMatcher.a(this.a.h);
+    switch (paramMessage.what)
+    {
     }
-    this.a.h = paramWordMatcher.a(1, this.a.c, 3, this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$MatchCallback);
+    for (;;)
+    {
+      return true;
+      paramMessage = new tvk(this);
+      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
+    }
   }
 }
 

@@ -1,25 +1,25 @@
-import android.os.Handler;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
 import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import java.util.ArrayList;
 
 public class nnu
-  extends TimerTask
+  implements Runnable
 {
-  public nnu(ProgressControler paramProgressControler) {}
+  public nnu(FeedsPlayModeBase paramFeedsPlayModeBase, boolean paramBoolean) {}
   
   public void run()
   {
-    ProgressControler localProgressControler = this.a;
-    localProgressControler.c += 50L;
-    if (this.a.c >= this.a.b)
-    {
-      this.a.c = this.a.b;
-      if (this.a.jdField_a_of_type_JavaUtilTimer != null) {
-        this.a.jdField_a_of_type_JavaUtilTimer.cancel();
-      }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.e = false;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.g();
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    while ((this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() <= 0) || (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a() <= 1)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a() - 1);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.b, false);
   }
 }
 

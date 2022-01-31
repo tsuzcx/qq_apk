@@ -1,14 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class lrz
-  extends PublicAccountObserver
+  implements Runnable
 {
-  public lrz(SubscriptionInfoModule paramSubscriptionInfoModule) {}
+  public lrz(AdvertisementInfoModule paramAdvertisementInfoModule, AdvertisementInfo paramAdvertisementInfo) {}
   
-  public void b(boolean paramBoolean, String paramString)
+  public void run()
   {
-    this.a.f();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
   }
 }
 

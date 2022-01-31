@@ -15,8 +15,8 @@ import com.tencent.mobileqq.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import nbs;
-import nbt;
+import nfn;
+import nfo;
 
 public class FeedCommentEventHandler$OnActionSheetButtonClickListener
   implements ActionSheet.OnButtonClickListener
@@ -67,7 +67,7 @@ public class FeedCommentEventHandler$OnActionSheetButtonClickListener
         break label121;
         if ("回复".equals(paramView))
         {
-          this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_AndroidOsHandler.postDelayed(new nbs(this), 500L);
+          this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_AndroidOsHandler.postDelayed(new nfn(this), 500L);
         }
         else if ("举报".equals(paramView))
         {
@@ -83,7 +83,7 @@ public class FeedCommentEventHandler$OnActionSheetButtonClickListener
           this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.e();
           this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.pbType = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getCommentLikeType();
           StoryQQTextCacher.a().jdField_a_of_type_JavaLangString = "";
-          FeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, false, this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_Int, new nbt(this));
+          FeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, false, this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentEventHandler.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.jdField_a_of_type_Int, new nfo(this));
         }
       }
     } while (!"复制".equals(paramView));

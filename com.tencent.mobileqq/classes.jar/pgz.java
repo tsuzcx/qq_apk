@@ -1,26 +1,28 @@
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
 public class pgz
-  implements PoolParams
+  implements Animation.AnimationListener
 {
-  public pgz(ImageManager paramImageManager) {}
+  public pgz(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, URLDrawable paramURLDrawable, ScaleAnimation paramScaleAnimation) {}
   
-  public PoolParams.BucketParams getBucketParams(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new PoolParams.BucketParams(16384, ImageManagerEnv.g().getDecodeThreadNum(ImageManager.a()) + 2);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
   
-  public int getBucketPoolSize()
-  {
-    return 1;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pgz
  * JD-Core Version:    0.7.0.1
  */

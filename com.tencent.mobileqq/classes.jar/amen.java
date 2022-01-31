@@ -1,19 +1,19 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.widget.immersive.SoftInputResizeLayout;
+import com.tencent.qqprotect.qsec.FilterManager;
+import com.tencent.qqprotect.qsec.IScanner;
 
 public class amen
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public amen(SoftInputResizeLayout paramSoftInputResizeLayout) {}
+  public amen(FilterManager paramFilterManager, IScanner paramIScanner) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    SoftInputResizeLayout.a(this.a);
+    this.jdField_a_of_type_ComTencentQqprotectQsecIScanner.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amen
  * JD-Core Version:    0.7.0.1
  */

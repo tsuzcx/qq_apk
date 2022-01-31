@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
 
-public class akku
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+class akku
+  implements Runnable
 {
-  public akku(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  akku(akkt paramakkt, int paramInt) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
-    }
-    this.a.runOnUiThread(new akkv(this));
+    NewUpgradeDialog.a(this.jdField_a_of_type_Akkt.a, 2);
+    this.jdField_a_of_type_Akkt.a.a(this.jdField_a_of_type_Int, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akku
  * JD-Core Version:    0.7.0.1
  */

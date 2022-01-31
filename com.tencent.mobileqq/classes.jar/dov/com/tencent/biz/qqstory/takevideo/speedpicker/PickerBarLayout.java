@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aoed;
-import aoen;
-import aoeo;
-import aoep;
+import aomv;
+import aonf;
+import aong;
+import aonh;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -19,12 +19,12 @@ import java.util.List;
 
 public class PickerBarLayout
   extends RelativeLayout
-  implements aoed, aoen
+  implements aomv, aonf
 {
   private float jdField_a_of_type_Float = 38.0F;
   private int jdField_a_of_type_Int = -1;
   private View jdField_a_of_type_AndroidViewView;
-  private aoeo jdField_a_of_type_Aoeo;
+  private aong jdField_a_of_type_Aong;
   private GroundDrawable jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable;
   private MarkDrawable jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
@@ -88,9 +88,9 @@ public class PickerBarLayout
   {
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
     {
-      aoep localaoep = (aoep)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaoep != null) {
-        localaoep.a(paramInt, (String)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramBoolean1, paramBoolean2);
+      aonh localaonh = (aonh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localaonh != null) {
+        localaonh.a(paramInt, (String)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramBoolean1, paramBoolean2);
       }
     }
   }
@@ -125,7 +125,7 @@ public class PickerBarLayout
   {
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable = new MarkDrawable();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(getContext(), 2130838851, 2130838848, 2130838852, this);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(getContext(), 2130838864, 2130838862, 2130838878, this);
     this.jdField_a_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(Math.round(this.d), Math.round(this.e));
     localLayoutParams.addRule(11);
@@ -135,11 +135,11 @@ public class PickerBarLayout
   
   private void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    aoep localaoep;
+    aonh localaonh;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      localaoep = (aoep)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaoep != null)
+      localaonh = (aonh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localaonh != null)
       {
         if (!paramBoolean1) {
           break label50;
@@ -147,20 +147,20 @@ public class PickerBarLayout
         if (!paramBoolean2) {
           break label41;
         }
-        localaoep.a(paramInt);
+        localaonh.a(paramInt);
       }
     }
     return;
     label41:
-    localaoep.b(paramInt);
+    localaonh.b(paramInt);
     return;
     label50:
     if (paramBoolean2)
     {
-      localaoep.c(paramInt);
+      localaonh.c(paramInt);
       return;
     }
-    localaoep.d(paramInt);
+    localaonh.d(paramInt);
   }
   
   private void c()
@@ -347,9 +347,9 @@ public class PickerBarLayout
     invalidate();
   }
   
-  public boolean a(Context paramContext, aoep paramaoep)
+  public boolean a(Context paramContext, aonh paramaonh)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaoep);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaonh);
     a(paramContext);
     this.jdField_a_of_type_JavaUtilList.add("4x");
     this.jdField_a_of_type_JavaUtilList.add("2x");
@@ -513,11 +513,11 @@ public class PickerBarLayout
       }
       this.j = paramMotionEvent.getY();
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Aoeo == null) {
-        this.jdField_a_of_type_Aoeo = new aoeo(this);
+      if (this.jdField_a_of_type_Aong == null) {
+        this.jdField_a_of_type_Aong = new aong(this);
       }
-      this.jdField_a_of_type_Aoeo.a();
-      postDelayed(this.jdField_a_of_type_Aoeo, ViewConfiguration.getLongPressTimeout());
+      this.jdField_a_of_type_Aong.a();
+      postDelayed(this.jdField_a_of_type_Aong, ViewConfiguration.getLongPressTimeout());
       continue;
       int k = paramMotionEvent.findPointerIndex(this.jdField_a_of_type_Int);
       if (k != -1)
@@ -538,8 +538,8 @@ public class PickerBarLayout
             if (this.jdField_a_of_type_Boolean) {
               break label270;
             }
-            if (this.jdField_a_of_type_Aoeo != null) {
-              removeCallbacks(this.jdField_a_of_type_Aoeo);
+            if (this.jdField_a_of_type_Aong != null) {
+              removeCallbacks(this.jdField_a_of_type_Aong);
             }
             if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable == null) {
               break;

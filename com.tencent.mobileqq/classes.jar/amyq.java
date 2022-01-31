@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.QzoneOnlineTimeCollectRptService;
-import mqq.os.MqqHandler;
+import cooperation.qzone.CrashGuard;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class amyq
   implements Runnable
 {
-  public amyq(QzoneOnlineTimeCollectRptService paramQzoneOnlineTimeCollectRptService) {}
+  public amyq(CrashGuard paramCrashGuard, long paramLong) {}
   
   public void run()
   {
-    ThreadManager.getSubThreadHandler().removeCallbacks(QzoneOnlineTimeCollectRptService.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneOnlineTimeCollectRptService", 2, "mOnlineTimeCheckTraceRunnable run");
-    }
-    this.a.d();
-    ThreadManager.getSubThreadHandler().postDelayed(this, QzoneOnlineTimeCollectRptService.a(this.a));
+    this.jdField_a_of_type_CooperationQzoneCrashGuard.isTimeOvered.set(true);
+    QLog.i("QZLog", 1, "clear crash count with no crash");
+    LocalMultiProcConfig.putInt4Uin("key_crash_count", 0, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amyq
  * JD-Core Version:    0.7.0.1
  */

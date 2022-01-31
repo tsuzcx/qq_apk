@@ -1,23 +1,13 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
 
 public class aecd
   implements Runnable
 {
-  public aecd(LightReplyMenuManager paramLightReplyMenuManager) {}
+  public aecd(GroupVideoManager paramGroupVideoManager, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.setVisibility(8);
-      LightReplyMenuManager.a(this.a, null);
-      this.a.a = null;
-      this.a.b = false;
-      this.a.c = false;
-      LightReplyMenuManager.a(this.a, false);
-      this.a.e();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager.a(this.jdField_a_of_type_Boolean);
   }
 }
 

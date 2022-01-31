@@ -1,38 +1,39 @@
-import android.widget.Button;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.GifAntishakeModule;
+import cooperation.qzone.vision.PhotoUtil;
+import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 
 public class anio
   implements Runnable
 {
-  public anio(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, boolean paramBoolean) {}
+  public anio(GifAntishakeModule paramGifAntishakeModule, ArrayList paramArrayList, int paramInt, CountDownLatch paramCountDownLatch, Bitmap paramBitmap, boolean[] paramArrayOfBoolean) {}
   
   public void run()
   {
-    if (!QIMCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit))
+    Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+    if (localBitmap == null)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label73;
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+    }
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      float f = PhotoUtil.getImageSimilarity(this.jdField_a_of_type_AndroidGraphicsBitmap, localBitmap);
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneVision", 2, "第一帧与第" + (this.jdField_a_of_type_Int + 1) + "帧的相似度为" + f);
       }
-      if (!QIMCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit))
-      {
-        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setVisibility(0);
-        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setSelected(true);
-        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.a.c(this.jdField_a_of_type_Boolean);
-        QIMCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit, false);
+      if ((localBitmap.getWidth() == this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) && (localBitmap.getHeight() == this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) && (f > GifAntishakeModule.a(this.jdField_a_of_type_CooperationQzoneUtilGifAntishakeModule))) {
+        this.jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] = true;
       }
     }
-    return;
-    label73:
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setVisibility(8);
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c.setSelected(false);
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.a.c(this.jdField_a_of_type_Boolean);
-    QIMCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit, false);
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anio
  * JD-Core Version:    0.7.0.1
  */

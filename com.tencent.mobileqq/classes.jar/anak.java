@@ -1,16 +1,15 @@
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneThreadMonitor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class anak
-  implements Printer
+class anak
+  implements DialogInterface.OnDismissListener
 {
-  public anak(QzoneThreadMonitor paramQzoneThreadMonitor) {}
+  anak(anaj paramanaj) {}
   
-  public void println(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneThreadMonitor", 4, paramString);
+    if (this.a.a.a != null) {
+      this.a.a.a.onDismiss(paramDialogInterface);
     }
   }
 }

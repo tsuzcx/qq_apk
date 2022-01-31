@@ -1,33 +1,13 @@
-import com.tencent.mobileqq.ar.aidl.IArSoCallback.Stub;
-import com.tencent.mobileqq.ar.config.DownloadDependRes;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ArConfigService;
 
-public class aaiw
-  extends IArSoCallback.Stub
+class aaiw
+  implements Runnable
 {
-  public aaiw(DownloadDependRes paramDownloadDependRes) {}
+  aaiw(aaiu paramaaiu) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WorldCupMgr", 2, "onArSoDownloadSuccess");
-    }
-    this.a.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WorldCupMgr", 2, "onArSoDownloadProcess process=" + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WorldCupMgr", 2, "onArSoDownloadFail");
-    }
-    this.a.a();
+    ArConfigService.d(this.a.a);
   }
 }
 

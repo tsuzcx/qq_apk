@@ -58,7 +58,7 @@ public class AppSharePicItemBuilder
         paramHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         return;
       }
-      String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131435146);
+      String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131435162);
       String str1;
       if (((MessageForPic)localObject).shareAppID != 0L)
       {
@@ -68,7 +68,7 @@ public class AppSharePicItemBuilder
         {
           str1 = str2;
           if (localAppShareID.messagetail != null) {
-            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131435145) + localAppShareID.messagetail;
+            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131435161) + localAppShareID.messagetail;
           }
         }
       }
@@ -86,7 +86,7 @@ public class AppSharePicItemBuilder
           continue;
           str1 = str2;
           if (((MessageForPic)localObject).msgtype == -3001) {
-            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131435585);
+            str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131435601);
           }
         }
       }
@@ -117,7 +117,7 @@ public class AppSharePicItemBuilder
       paramViewHolder = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
       paramViewHolder.setOrientation(1);
       paramView = new ChatThumbView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setId(2131366640);
+      paramView.setId(2131366638);
       if (!jdField_a_of_type_Boolean) {
         paramView.setAdjustViewBounds(true);
       }
@@ -172,10 +172,10 @@ public class AppSharePicItemBuilder
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    if (paramInt == 2131375567) {
+    if (paramInt == 2131375633) {
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
     }
-    while (paramInt != 2131375577) {
+    while (paramInt != 2131375643) {
       return;
     }
     super.c(paramChatMessage);

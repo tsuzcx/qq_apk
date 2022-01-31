@@ -1,20 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import mqq.app.AppRuntime;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
 
 public class xex
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public xex(GoldMsgPayManager paramGoldMsgPayManager, MessageRecord paramMessageRecord) {}
+  public xex(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)localAppRuntime).a().a(8022, true, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin });
+    if (paramBoolean != this.a.a) {
+      GoldMsgSettingActivity.a(this.a, paramBoolean, true);
     }
   }
 }

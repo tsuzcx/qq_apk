@@ -1,37 +1,32 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-public class adfg
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+class adfg
+  extends BroadcastReceiver
 {
-  public adfg(VideoFilePresenter paramVideoFilePresenter) {}
+  adfg(adff paramadff) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l1 = 0L;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.g(false);
-    long l2 = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileBrowserPresenter<FileAssistant>", 4, "Video Total Time:" + l2);
-    }
-    paramTVK_IMediaPlayer = this.a;
-    if (l2 < 0L) {}
-    for (;;)
+    if (paramIntent != null)
     {
-      VideoFilePresenter.a(paramTVK_IMediaPlayer, l1);
-      this.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adfh(this));
-      return;
-      l1 = l2;
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && (paramContext.equals("com.tencent.mobileqq.intent.logout")))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "OLfilesession[] logout.....!");
+        }
+        this.a.a.a();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adfg
  * JD-Core Version:    0.7.0.1
  */

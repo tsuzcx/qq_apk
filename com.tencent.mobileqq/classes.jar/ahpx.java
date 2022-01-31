@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
-import com.tencent.mobileqq.richstatus.TipsInfo;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 
-class ahpx
+public class ahpx
   implements Runnable
 {
-  ahpx(ahpw paramahpw, int paramInt, RichStatus paramRichStatus, TipsInfo paramTipsInfo) {}
+  public ahpx(CameraCaptureView paramCameraCaptureView) {}
   
   public void run()
   {
-    if (StatusManager.b(this.jdField_a_of_type_Ahpw.a.a) != null)
-    {
-      Iterator localIterator = StatusManager.b(this.jdField_a_of_type_Ahpw.a.a).iterator();
-      while (localIterator.hasNext()) {
-        ((IStatusListener)localIterator.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus, this.jdField_a_of_type_ComTencentMobileqqRichstatusTipsInfo);
-      }
-    }
+    CameraCaptureView.a(this.a, false);
   }
 }
 

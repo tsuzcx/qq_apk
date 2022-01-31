@@ -1,16 +1,16 @@
 package cooperation.qzone.thread;
 
-import anae;
-import anaf;
-import anag;
-import anah;
-import anai;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
+import anic;
+import anid;
+import anie;
+import anif;
+import anig;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -18,16 +18,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BaseHandler
   extends Handler
 {
-  public static ThreadLocal InitalPriority = new anaf();
+  public static ThreadLocal InitalPriority = new anid();
   private static final String TAG = "BaseHandler";
   private static final long Time_Lv1 = 20L;
   private static final long Time_Lv2 = 100L;
   private static final long Time_Lv3 = 500L;
   public static volatile boolean isBusy;
-  public static ThreadLocal isRegulated = new anag();
+  public static ThreadLocal isRegulated = new anie();
   public static AtomicInteger regulalteCount = new AtomicInteger(0);
-  static Runnable regultorPriority = new anah();
-  static Runnable resetPriority = new anai();
+  static Runnable regultorPriority = new anif();
+  static Runnable resetPriority = new anig();
   private Handler.Callback mCallbackEx;
   
   public BaseHandler() {}
@@ -36,7 +36,7 @@ public class BaseHandler
   {
     super(paramLooper);
     if (Looper.getMainLooper() != paramLooper) {
-      paramLooper.setMessageLogging(new anae(this));
+      paramLooper.setMessageLogging(new anic(this));
     }
   }
   

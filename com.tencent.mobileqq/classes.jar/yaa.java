@@ -1,15 +1,16 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.filter.BaseFilter;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IControllerFilterProvider;
 
 public class yaa
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements IControllerFilterProvider
 {
-  public CheckBox a;
-  public TextView a;
+  public yaa(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
   
-  private yaa(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
+  public BaseFilter getFilter()
+  {
+    return null;
+  }
 }
 
 

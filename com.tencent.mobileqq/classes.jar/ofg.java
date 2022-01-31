@@ -1,39 +1,26 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoTagExport;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedVideoPreloader;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedVideoPreloader.CurrentVid;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
 public class ofg
-  implements Runnable
+  extends SimpleJob
 {
-  public ofg(EditVideoMusic paramEditVideoMusic) {}
+  public ofg(FeedVideoPreloader paramFeedVideoPreloader, StoryVideoItem paramStoryVideoItem, List paramList) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
   {
-    if ((!this.a.d) && (this.a.e))
+    synchronized (FeedVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader))
     {
-      this.a.d = true;
-      localObject = this.a.a(EditVideoTagExport.class);
-      if (localObject == null) {
-        break label145;
-      }
-    }
-    label145:
-    for (Object localObject = ((EditVideoTagExport)localObject).a(this.a.a.a());; localObject = null)
-    {
-      boolean bool2 = false;
-      boolean bool1 = bool2;
-      if (localObject != null)
-      {
-        bool1 = bool2;
-        if (((TagItem)localObject).a.a == 1) {
-          bool1 = true;
-        }
-      }
-      new EditVideoMusicDialog(this.a.a(), this.a, this.a.c, (int)this.a.a.a(this.a.a.a()), this.a.a.a, true, bool1);
-      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$CurrentVid = new FeedVideoPreloader.CurrentVid(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader.b();
+      return null;
     }
   }
 }

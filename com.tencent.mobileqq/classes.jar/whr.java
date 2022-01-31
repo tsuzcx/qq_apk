@@ -1,25 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
 
-public class whr
+class whr
   implements Runnable
 {
-  public whr(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  whr(whq paramwhq, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, StateListDrawable paramStateListDrawable) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
-    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
-    Message localMessage = this.a.a.obtainMessage(1);
-    localMessage.obj = localList;
-    this.a.a.sendMessage(localMessage);
-    localEntityManager.a();
+    this.jdField_a_of_type_Whq.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (this.jdField_a_of_type_Whq.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
+    {
+      this.jdField_a_of_type_Whq.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundDrawable(this.b);
+      this.jdField_a_of_type_Whq.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTextColor(-16777216);
+    }
+    this.jdField_a_of_type_Whq.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setBackgroundDrawable(this.c);
+    this.jdField_a_of_type_Whq.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
   }
 }
 

@@ -1,18 +1,19 @@
-import android.app.ProgressDialog;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.SVIPObserver;
+import com.tencent.mobileqq.hiboom.HiBoomPanelView;
+import com.tencent.mobileqq.hiboom.HiBoomPanelView.HiBoomAdapter;
 
-class adxp
-  implements Runnable
+public class adxp
+  extends SVIPObserver
 {
-  adxp(adxn paramadxn) {}
+  public adxp(HiBoomPanelView paramHiBoomPanelView) {}
   
-  public void run()
+  public void b(boolean paramBoolean, Object paramObject)
   {
-    this.a.a.b.dismiss();
-    QQToast.a(this.a.a.mRuntime.a().getApplication(), 1, "分享失败，请稍后重试！", 0).a();
+    if (paramBoolean)
+    {
+      this.a.b();
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

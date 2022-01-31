@@ -14,7 +14,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CopyOnWriteArrayList;
-import ysm;
+import yzd;
 
 public class SpriteDrawerInfoBridge
   implements ISpriteBridgeInterface
@@ -84,7 +84,7 @@ public class SpriteDrawerInfoBridge
     if (paramSpriteTaskParam == null) {
       return;
     }
-    ThreadManager.post(new ysm(this, paramSpriteTaskParam), 8, null, true);
+    ThreadManager.post(new yzd(this, paramSpriteTaskParam), 8, null, true);
   }
   
   public void b(SpriteTaskParam paramSpriteTaskParam)

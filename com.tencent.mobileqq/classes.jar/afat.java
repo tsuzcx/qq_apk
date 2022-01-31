@@ -1,11 +1,26 @@
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.view.widget.StoryNewGuideDialog;
 
 public class afat
+  implements Runnable
 {
-  public String a;
-  public String b;
+  public afat(StoryPlayController paramStoryPlayController) {}
   
-  private afat(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public void run()
+  {
+    if ((StoryPlayController.a(this.a) != null) && (StoryPlayController.a(this.a).isShowing()))
+    {
+      if (((this.a.a instanceof Activity)) && ((StoryPlayController.b(this.a)) || (((Activity)this.a.a).isFinishing()))) {
+        StoryPlayController.a(this.a, null);
+      }
+    }
+    else {
+      return;
+    }
+    StoryPlayController.a(this.a).dismiss();
+    StoryPlayController.a(this.a, null);
+  }
 }
 
 

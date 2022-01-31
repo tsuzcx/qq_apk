@@ -1,26 +1,41 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.intervideo.now.NowWebViewPlugin;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public class advf
-  implements TroopMemberApiClient.Callback
+public final class advf
+  implements Runnable
 {
-  public advf(NowWebViewPlugin paramNowWebViewPlugin) {}
-  
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    int i = paramBundle.getInt("msg");
-    if (i == 91)
-    {
-      NowWebViewPlugin.a(this.a, paramBundle.getInt("state"));
-      NowWebViewPlugin.a(this.a, NowWebViewPlugin.a(this.a), NowWebViewPlugin.b(this.a));
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject = localAppRuntime;
+    if (localAppRuntime != null) {
+      localObject = localAppRuntime.getAppRuntime("module_nearby");
     }
-    while (i != 92) {
+    if ((localObject instanceof NearbyAppInterface))
+    {
+      localObject = (NearbyProcManager)((NearbyAppInterface)localObject).getManager(213);
+      if (localObject != null)
+      {
+        com.tencent.mobileqq.fragment.NearbyHybridFragment.l = true;
+        ((NearbyProcManager)localObject).c();
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyHybridFragment", 2, "pre load now plugin!");
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("NearbyHybridFragment", 2, "pre load now plugin! err npb null;");
       return;
     }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    NowWebViewPlugin.a(this.a, i, paramBundle);
+    QLog.d("NearbyHybridFragment", 2, "pre load now plugin! err runtime null or wrong! app = " + localObject);
   }
 }
 

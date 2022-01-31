@@ -1,31 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.mobileqq.nearby.now.location.adapter.LocationListAdapter;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.now.widget.ItemClickHelper;
-import com.tencent.util.LogUtil;
-import java.util.List;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import java.util.TimerTask;
 
 public class aesx
-  extends ItemClickHelper
+  extends TimerTask
 {
-  public aesx(SelectLocationFragment paramSelectLocationFragment) {}
+  public aesx(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void a(int paramInt, View paramView)
+  public void run()
   {
-    LogUtil.d("SelectLocationFragment", "onItemClick: " + paramInt);
-    SelectLocationFragment.a(this.a, paramInt);
-    SelectLocationFragment.b(this.a, (LocationInfo)SelectLocationFragment.a(this.a).a().get(paramInt));
-    new NowVideoReporter().h("video_public").i("change_poi").d(SmallVideoCameraCaptureFragment.a).a(SelectLocationFragment.a(this.a)).b(this.a.getActivity().app);
-    LogUtil.d("SelectLocationFragment", "onItemClick: " + SelectLocationFragment.b(this.a).toString());
+    MusicGeneWebViewPlugin.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesx
  * JD-Core Version:    0.7.0.1
  */

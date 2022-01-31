@@ -1,46 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.SetCookiesCallback;
 
 public class kyd
-  extends Thread
+  implements SwiftBrowserCookieMonster.SetCookiesCallback
 {
-  public kyd(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, JSONObject paramJSONObject, String paramString2) {}
+  public kyd(CustomWebView paramCustomWebView, kyh paramkyh) {}
   
-  public void run()
+  public void a(String paramString, Bundle paramBundle, long paramLong)
   {
-    try
+    switch (this.jdField_a_of_type_Kyh.a)
     {
-      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      String str2 = localJSONObject.optString("callid");
-      String str1 = str2;
-      if (!TextUtils.isEmpty(str2)) {
-        str1 = str2.replace("\\", "\\\\").replace("'", "\\'");
-      }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("callid", str1);
-      str1 = localJSONObject.optString("url");
-      if (!TextUtils.isEmpty(str1))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:1, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
-        str1 = PublicAccountJavascriptInterface.a(str1);
-        if (str1 != null)
-        {
-          str1 = str1.replace("\\", "\\\\").replace("'", "\\'");
-          this.jdField_a_of_type_OrgJsonJSONObject.put("data", str1);
-          this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:0, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
-          return;
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-10, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
-        return;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-2, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+    default: 
+      return;
+    case 1: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
+      return;
+    case 2: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(paramString);
+      return;
+    case 3: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Kyh.c, this.jdField_a_of_type_Kyh.d);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-4, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Kyh.b, this.jdField_a_of_type_Kyh.c, this.jdField_a_of_type_Kyh.d, this.jdField_a_of_type_Kyh.e);
   }
 }
 

@@ -1,30 +1,73 @@
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.newfriend.FriendSystemMessage;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class zov
-  implements Runnable
+public class zov
+  extends FriendListObserver
 {
-  zov(zou paramzou, TroopMemberInfo paramTroopMemberInfo) {}
+  public zov(NewFriendManager paramNewFriendManager) {}
   
-  public void run()
+  protected void onAddFriend(String paramString)
   {
-    Object localObject = (List)this.jdField_a_of_type_Zou.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b.remove(this.jdField_a_of_type_Zou.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Zou.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopManager", 2, "getTroopMemberInfo, size=" + ((List)localObject).size());
-    }
-    localObject = ((List)localObject).iterator();
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      localObject = this.a.b();
+    } while (((ArrayList)localObject).isEmpty());
+    Object localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      TroopManager.ITroopMemberInfoCallBack localITroopMemberInfoCallBack = (TroopManager.ITroopMemberInfoCallBack)((WeakReference)((Iterator)localObject).next()).get();
-      if (localITroopMemberInfoCallBack != null) {
-        localITroopMemberInfoCallBack.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      NewFriendMessage localNewFriendMessage = (NewFriendMessage)((Iterator)localObject).next();
+      if ((localNewFriendMessage instanceof FriendSystemMessage))
+      {
+        int i = ((FriendSystemMessage)localNewFriendMessage).a.structMsg.msg.sub_type.get();
+        String str = ((FriendSystemMessage)localNewFriendMessage).a.senderuin;
+        if ((i == 13) && (paramString.equals(str)))
+        {
+          ((Iterator)localObject).remove();
+          NewFriendManager.a(this.a).a().b(AppConstants.K, 0, ((FriendSystemMessage)localNewFriendMessage).a.uniseq, false);
+        }
       }
+    }
+    NewFriendManager.a(this.a).sendEmptyMessage(2);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
+      NewFriendManager.a(this.a).sendEmptyMessage(2);
+    }
+  }
+  
+  protected void onGetPushRecommend(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
+      NewFriendManager.a(this.a).sendEmptyMessage(2);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    NewFriendManager.a(this.a).runOnUiThread(new zow(this, paramBoolean));
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
+      NewFriendManager.a(this.a).sendEmptyMessage(2);
     }
   }
 }

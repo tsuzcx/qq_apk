@@ -1,23 +1,24 @@
 package com.tencent.open.downloadnew;
 
-import alhs;
-import alht;
-import alhw;
-import alhx;
-import alhy;
-import alib;
-import alic;
-import alie;
-import alif;
-import alig;
-import alih;
-import alii;
-import alij;
-import alik;
-import alil;
-import alim;
-import alin;
+import alpk;
+import alpl;
+import alpo;
+import alpp;
+import alpq;
+import alpt;
+import alpu;
+import alpw;
+import alpx;
+import alpy;
+import alpz;
+import alqa;
+import alqb;
+import alqc;
+import alqd;
+import alqe;
+import alqf;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
@@ -142,7 +143,7 @@ public class MyAppApi
   
   public static void c()
   {
-    ThreadManager.executeOnSubThread(new alhs());
+    ThreadManager.executeOnSubThread(new alpk());
   }
   
   private static void c(OuterCallReportModel paramOuterCallReportModel)
@@ -162,6 +163,11 @@ public class MyAppApi
     catch (SecurityException paramOuterCallReportModel)
     {
       paramOuterCallReportModel.printStackTrace();
+      return;
+    }
+    catch (ActivityNotFoundException paramOuterCallReportModel)
+    {
+      LogUtility.e("TAMST_WAKE", "activity not found error:" + paramOuterCallReportModel.getMessage());
     }
   }
   
@@ -422,13 +428,13 @@ public class MyAppApi
   
   public void a(Activity paramActivity)
   {
-    ThreadManager.getSubThreadHandler().post(new alih(this, paramActivity));
+    ThreadManager.getSubThreadHandler().post(new alpz(this, paramActivity));
   }
   
   public void a(Activity paramActivity, int paramInt)
   {
     LogUtility.c("NewUpgradeDialog", "preDownload called,get updateDetail info");
-    ThreadManager.getSubThreadHandler().postDelayed(new alie(this, paramActivity), 0L);
+    ThreadManager.getSubThreadHandler().postDelayed(new alpw(this, paramActivity), 0L);
   }
   
   public void a(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener, int paramInt3, boolean paramBoolean, String paramString2)
@@ -479,7 +485,7 @@ public class MyAppApi
           paramString2.b(paramString1);
           paramString2.setCancelable(true);
           paramString2.setOnCancelListener(paramOnCancelListener);
-          paramString2.setOnDismissListener(new alhw(this));
+          paramString2.setOnDismissListener(new alpo(this));
           if ((!(paramActivity instanceof AppActivity)) || (((AppActivity)paramActivity).isResume())) {
             break label469;
           }
@@ -587,7 +593,7 @@ public class MyAppApi
       LogUtility.e("MyAppApi", "startToAuthorizedDirect mLastAuthorizeParam = null, needCarryQQIdentity = false");
       return;
       localTicketUtils = new TicketUtils();
-      localTicketUtils.a(new alhy(this, localTicketUtils, l, paramActivity, paramOnClickListener));
+      localTicketUtils.a(new alpq(this, localTicketUtils, l, paramActivity, paramOnClickListener));
     } while (!(paramActivity instanceof BaseActivity));
     localTicketUtils.a(((BaseActivity)paramActivity).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
   }
@@ -671,9 +677,9 @@ public class MyAppApi
           StaticAnalyz.a("200", str2, str1);
           return;
         }
-        ThreadManager.getSubThreadHandler().post(new alij(this, str2, str1));
+        ThreadManager.getSubThreadHandler().post(new alqb(this, str2, str1));
         bool4 = ControlPolicyUtil.a();
-        alik localalik = new alik(this, bool2, paramOnClickListener, paramBundle, k, bool4, paramActivity, str2, bool1, bool3, str1);
+        alqc localalqc = new alqc(this, bool2, paramOnClickListener, paramBundle, k, bool4, paramActivity, str2, bool1, bool3, str1);
         MyAppApi.ClickListenerProxy localClickListenerProxy = new MyAppApi.ClickListenerProxy(this, paramOnClickListener, str2, str1);
         MyAppApi.BackListener localBackListener = new MyAppApi.BackListener(this, str2, str1);
         Object localObject2 = null;
@@ -691,8 +697,8 @@ public class MyAppApi
           }
         }
         k = paramBundle.getInt("source");
-        ThreadManager.getUIHandler().post(new alil(this, paramActivity, j, i, (String)localObject1, localalik, localClickListenerProxy, localBackListener, k, bool4, paramBundle));
-        ThreadManager.getSubThreadHandler().post(new alim(this, str2, str1));
+        ThreadManager.getUIHandler().post(new alqd(this, paramActivity, j, i, (String)localObject1, localalqc, localClickListenerProxy, localBackListener, k, bool4, paramBundle));
+        ThreadManager.getSubThreadHandler().post(new alqe(this, str2, str1));
         this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
         return;
         if (i != 0) {
@@ -797,7 +803,7 @@ public class MyAppApi
   
   public void a(Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new alif(this, paramBoolean, paramActivity, paramString), 0L);
+    ThreadManager.getSubThreadHandler().postDelayed(new alpx(this, paramBoolean, paramActivity, paramString), 0L);
   }
   
   public void a(Context paramContext, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
@@ -854,7 +860,7 @@ public class MyAppApi
       ((TMAssistantCallYYB_V2)a()).startToDownloadTaskList(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, j);
       return;
       localObject = new TicketUtils();
-      ((TicketUtils)localObject).a(new alht(this, (TicketUtils)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
+      ((TicketUtils)localObject).a(new alpl(this, (TicketUtils)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
       if (!(paramContext instanceof BaseActivity)) {
         break;
       }
@@ -865,7 +871,7 @@ public class MyAppApi
   
   public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity)
   {
-    ThreadManager.getSubThreadHandler().post(new alhx(this, paramString, paramOnClickListener, paramActivity));
+    ThreadManager.getSubThreadHandler().post(new alpp(this, paramString, paramOnClickListener, paramActivity));
   }
   
   public void a(boolean paramBoolean)
@@ -957,7 +963,7 @@ public class MyAppApi
           return false;
         }
         localObject = new TicketUtils();
-        ((TicketUtils)localObject).a(new alin(this, (TicketUtils)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
+        ((TicketUtils)localObject).a(new alqf(this, (TicketUtils)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
         if ((paramContext instanceof BaseActivity)) {
           ((TicketUtils)localObject).a(((BaseActivity)paramContext).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
         }
@@ -1058,7 +1064,7 @@ public class MyAppApi
       if (this.jdField_d_of_type_Boolean)
       {
         if (!b()) {
-          new Handler(Looper.getMainLooper()).postDelayed(new alii(this), 2000L);
+          new Handler(Looper.getMainLooper()).postDelayed(new alqa(this), 2000L);
         }
         this.jdField_d_of_type_Boolean = false;
         paramActivity = CommonDataAdapter.a().a().getSharedPreferences("showTost_pf", 0).edit();
@@ -1206,7 +1212,7 @@ public class MyAppApi
     }
     for (long l1 = 2000L;; l1 = 0L)
     {
-      ThreadManager.getSubThreadHandler().postDelayed(new alic(this, paramActivity, paramString), l1);
+      ThreadManager.getSubThreadHandler().postDelayed(new alpu(this, paramActivity, paramString), l1);
       return;
     }
   }
@@ -1255,7 +1261,7 @@ public class MyAppApi
         {
           paramString = str1;
           boolean bool = ControlPolicyUtil.a();
-          a(paramActivity, 1, 1, "0", new alib(this, localBundle, bool, paramActivity, str4, paramOnClickListener, str3), new MyAppApi.ClickListenerProxy(this, paramOnClickListener, str4, str3), new MyAppApi.BackListener(this, str4, str3), 0, bool, paramString);
+          a(paramActivity, 1, 1, "0", new alpt(this, localBundle, bool, paramActivity, str4, paramOnClickListener, str3), new MyAppApi.ClickListenerProxy(this, paramOnClickListener, str4, str3), new MyAppApi.BackListener(this, str4, str3), 0, bool, paramString);
           return;
         }
       }
@@ -1310,8 +1316,8 @@ public class MyAppApi
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
-    alig localalig = new alig(this);
-    CommonDataAdapter.a().a().registerReceiver(localalig, localIntentFilter);
+    alpy localalpy = new alpy(this);
+    CommonDataAdapter.a().a().registerReceiver(localalpy, localIntentFilter);
   }
   
   public void d(Activity paramActivity)

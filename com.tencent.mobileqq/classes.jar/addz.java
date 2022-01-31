@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ApkSimpleFilePresenter;
+import com.tencent.mobileqq.filemanager.core.FileUploader;
 
 public class addz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public addz(ApkSimpleFilePresenter paramApkSimpleFilePresenter) {}
+  public addz(FileUploader paramFileUploader) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.e();
+    if (FileUploader.a(this.a)) {
+      return;
+    }
+    this.a.a(FileUploader.a(this.a));
   }
 }
 

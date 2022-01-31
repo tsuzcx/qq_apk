@@ -1,26 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
 
-class abwx
-  implements View.OnClickListener
+public class abwx
+  implements Runnable
 {
-  abwx(abww paramabww) {}
+  public abwx(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
-    {
-      HotChatFlashPicActivity.a(this.a.a).dismiss();
-      HotChatFlashPicActivity.a(this.a.a, null);
-      this.a.a.finish();
-    }
+    CampusCircleReplyActivity.a(this.a, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwx
  * JD-Core Version:    0.7.0.1
  */

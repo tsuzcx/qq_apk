@@ -1,14 +1,6 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-
-public class aoih
-  implements Runnable
+public abstract interface aoih
 {
-  public aoih(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean) {}
-  
-  public void run()
-  {
-    LbsFilterStatusManager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-  }
+  public abstract void c(boolean paramBoolean);
 }
 
 

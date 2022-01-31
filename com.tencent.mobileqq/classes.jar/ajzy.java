@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.util.FaceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.ViewHolder;
 
 public class ajzy
-  extends DiscussionObserver
+  implements View.OnClickListener
 {
-  private ajzy(FaceManager paramFaceManager) {}
+  public ajzy(MediaPreviewAdapter paramMediaPreviewAdapter, MediaPreviewAdapter.ViewHolder paramViewHolder, MediaPreviewInfo paramMediaPreviewInfo) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void onClick(View paramView)
   {
-    this.a.b(1007, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.a.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewInfo, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder);
   }
 }
 

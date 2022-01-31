@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
-import akgi;
+import aknv;
 
 public class UIThreadPool
 {
-  private static akgi a;
+  private static aknv a;
   
   public static void a(Runnable paramRunnable)
   {
@@ -12,7 +12,7 @@ public class UIThreadPool
       return;
     }
     if (a == null) {
-      a = new akgi(3, 10L);
+      a = new aknv(3, 10L);
     }
     a.execute(paramRunnable);
   }

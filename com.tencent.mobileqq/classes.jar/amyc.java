@@ -1,13 +1,12 @@
-import java.io.File;
-import java.io.FileFilter;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class amyc
-  implements FileFilter
+class amyc
+  implements EIPCResultCallback
 {
-  public boolean accept(File paramFile)
-  {
-    return paramFile.getName().endsWith(".cfg");
-  }
+  amyc(amyb paramamyb) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult) {}
 }
 
 

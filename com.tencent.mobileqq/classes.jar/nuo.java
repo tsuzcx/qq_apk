@@ -1,22 +1,16 @@
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.network.request.GetFeedFeatureRequest;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
 
-public class nuo
-  extends ParallelJobSegment
+class nuo
+  implements Runnable
 {
-  public nuo(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
+  nuo(nun paramnun) {}
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public void run()
   {
-    GetFeedFeatureRequest localGetFeedFeatureRequest = new GetFeedFeatureRequest();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    localGetFeedFeatureRequest.a = localArrayList;
-    CmdTaskManger.a().a(localGetFeedFeatureRequest, new nup(this, paramJobContext, paramString));
+    if (this.a.a.a != null) {
+      this.a.a.a.a(this.a.a, 102, 201, 0, "", null);
+    }
   }
 }
 

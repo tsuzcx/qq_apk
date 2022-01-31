@@ -1,15 +1,30 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import java.lang.ref.WeakReference;
 
 public class mmr
-  implements MessageQueue.IdleHandler
+  extends Handler
 {
-  public mmr(FastWebActivity paramFastWebActivity) {}
+  private WeakReference a;
   
-  public boolean queueIdle()
+  public mmr(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
   {
-    FastWebActivity.a(this.a, FastWebActivity.a(this.a));
-    return false;
+    this.a = new WeakReference(paramReadInJoyNavigationGridview);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
+    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
   }
 }
 

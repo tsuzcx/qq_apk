@@ -1,6 +1,6 @@
 package cooperation.qappcenter.remote;
 
-import ammv;
+import amug;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new ammv();
+  public static final Parcelable.Creator CREATOR = new amug();
   public int a;
   public Bundle a;
   public String a;

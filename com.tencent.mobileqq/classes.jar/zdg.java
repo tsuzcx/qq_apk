@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.widget.UpSideDownDrawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 
-public class zdg
+class zdg
   implements Runnable
 {
-  public zdg(FrameHelperActivity paramFrameHelperActivity, UpSideDownDrawable paramUpSideDownDrawable) {}
+  zdg(zdf paramzdf, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.b();
+    ApolloGameUtil.a(this.jdField_a_of_type_Zdf.a, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zdg
  * JD-Core Version:    0.7.0.1
  */

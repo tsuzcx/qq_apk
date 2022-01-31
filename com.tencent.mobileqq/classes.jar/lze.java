@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
 
 public class lze
-  extends ReadInJoyObserver
+  implements Runnable
 {
-  public lze(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public lze(ComponentHeaderPolymeric paramComponentHeaderPolymeric, ArticleInfo paramArticleInfo, int paramInt) {}
   
-  public void c(List paramList)
+  public void run()
   {
-    ReadInJoyVideoTagSelectionFragment.a(this.a).addAll(paramList);
-    ReadInJoyLogicEngineEventDispatcher.a().b(this);
+    ReadInJoyLogicEngine.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.b, this.jdField_a_of_type_Int);
   }
 }
 

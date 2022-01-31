@@ -1,52 +1,34 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.biz.qqstory.view.pull2refresh.XRecyclerView;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager.SlideShowAdapter;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager.SlideShowViewHolder;
+import com.tencent.biz.troopgift.GridListAdapter;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class oqi
-  extends RecyclerView.OnScrollListener
+  implements Runnable
 {
-  public oqi(XRecyclerView paramXRecyclerView) {}
+  public oqi(SlideShowPhotoListManager.SlideShowAdapter paramSlideShowAdapter, SlideShowPhotoListManager.SlideShowViewHolder paramSlideShowViewHolder) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void run()
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 0) && (XRecyclerView.a(this.a) == 2)) {
-      this.a.a();
-    }
-    if (paramInt == 2)
-    {
-      UIUtils.a(true);
-      i = paramRecyclerView.getChildCount();
-      if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
-      {
-        paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-        int j = paramRecyclerView.getItemCount();
-        paramRecyclerView = paramRecyclerView.findFirstVisibleItemPositions(null);
-        int k = XRecyclerView.a(this.a).a();
-        if (j - i > paramRecyclerView[0] + k) {
-          break label131;
-        }
-      }
-    }
-    label131:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        XRecyclerView.a(this.a).b(false);
-      }
-      XRecyclerView.a(this.a, paramInt);
+    int i = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowViewHolder.a.getWidth();
+    int j = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowViewHolder.a.getHeight();
+    if ((i == 0) || (j == 0)) {
       return;
-      UIUtils.a(false);
-      break;
     }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (SlideShowPhotoListManager.SlideShowAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter) == null)
+    {
+      int k = DisplayUtil.a(SlideShowPhotoListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter.a), 1.0F);
+      new Paint().setTextSize(DisplayUtil.a(SlideShowPhotoListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter.a), 11.0F));
+      int m = DisplayUtil.a(SlideShowPhotoListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter.a), 1.0F);
+      SlideShowPhotoListManager.SlideShowAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter, GridListAdapter.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowViewHolder.a.setBackgroundDrawable(new BitmapDrawable(SlideShowPhotoListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter.a).getResources(), SlideShowPhotoListManager.SlideShowAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter)));
   }
 }
 

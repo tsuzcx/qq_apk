@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.takevideo.slideshow.TransitionHandler;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -27,19 +28,21 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.Vector;
-import zie;
+import mqq.os.MqqHandler;
+import zpb;
+import zpc;
 
 public class PeakAppInterface
   extends AppInterface
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new zie(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new zpc(this);
   private QQStoryContext jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   public PeakMsfServletProxy a;
   private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
   public List a;
   public boolean a;
-  private BusinessHandler[] jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler = new BusinessHandler[1];
+  private BusinessHandler[] jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler = new BusinessHandler[2];
   boolean b = false;
   
   public PeakAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -62,8 +65,10 @@ public class PeakAppInterface
     {
     default: 
       return null;
+    case 0: 
+      return new PeakAudioTransHandler(this);
     }
-    return new PeakAudioTransHandler(this);
+    return new TransitionHandler(this);
   }
   
   public QQStoryContext a()
@@ -178,6 +183,7 @@ public class PeakAppInterface
     this.jdField_a_of_type_JavaUtilList = new Vector();
     this.b = a();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy = new PeakMsfServletProxy(this);
+    ThreadManager.getSubThreadHandler().post(new zpb(this));
   }
   
   protected void onDestroy()

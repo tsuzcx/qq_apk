@@ -1,12 +1,19 @@
-class abum
-  implements Runnable
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+
+public class abum
+  implements View.OnClickListener
 {
-  abum(abul paramabul) {}
+  public abum(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = this.a.a(true);
-    this.a.c(str);
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView)) {
+      this.a.a(paramView);
+    }
   }
 }
 

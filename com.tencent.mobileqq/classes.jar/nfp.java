@@ -1,37 +1,18 @@
-import com.tencent.biz.qqstory.network.handler.GetUserIconHandler;
-import java.util.ArrayList;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.PostCommentCallback;
+import com.tencent.biz.qqstory.comment.FeedCommentLego;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
 public class nfp
-  implements Runnable
+  extends FeedCommentEventHandler.PostCommentCallback
 {
-  public nfp(GetUserIconHandler paramGetUserIconHandler) {}
+  public nfp(FeedCommentLego paramFeedCommentLego) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    for (;;)
-    {
-      try
-      {
-        Thread.sleep(1000L);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        continue;
-      }
-      synchronized (GetUserIconHandler.a())
-      {
-        if (!GetUserIconHandler.a().isEmpty())
-        {
-          ArrayList localArrayList2 = new ArrayList(GetUserIconHandler.a());
-          GetUserIconHandler.a().clear();
-          GetUserIconHandler.a().clear();
-          this.a.a(localArrayList2);
-        }
-        this.a.a = false;
-        return;
-      }
+    this.a.e();
+    if (paramBoolean) {
+      this.a.a(true, paramCommentEntry);
     }
   }
 }

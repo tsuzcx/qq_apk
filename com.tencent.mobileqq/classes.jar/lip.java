@@ -1,12 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
 
 public class lip
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public TextView a;
-  public BubbleImageView a;
-  public TextView b;
-  public BubbleImageView b;
+  public lip(ReadInJoyArkViewController paramReadInJoyArkViewController, String paramString1, String paramString2) {}
+  
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyArkReadInJoyArkViewController.a(this.jdField_a_of_type_JavaLangString, this.b, "download", paramInt);
+  }
 }
 
 

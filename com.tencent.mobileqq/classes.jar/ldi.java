@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
 
-class ldi
+public class ldi
   implements Runnable
 {
-  ldi(ldh paramldh) {}
+  public ldi(ReadInJoyNaviController paramReadInJoyNaviController) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.e(this.a.jdField_a_of_type_Int);
+    ReadInJoyNaviController.a(this.a, true);
   }
 }
 

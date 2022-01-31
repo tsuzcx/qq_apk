@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import ajkh;
+import ajrt;
 import android.text.TextUtils;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.qphone.base.util.QLog;
@@ -46,7 +46,7 @@ public class ImageInfo$UploadMediaSegment
         break;
       }
       this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask = paramImageInfo.a(paramJobContext, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a(new ajkh(this));
+      this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a(new ajrt(this));
       this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.b();
       return;
     }
@@ -79,7 +79,7 @@ public class ImageInfo$UploadMediaSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment
  * JD-Core Version:    0.7.0.1
  */

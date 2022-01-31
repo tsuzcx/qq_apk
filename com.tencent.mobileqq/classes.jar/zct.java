@@ -1,49 +1,52 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
+import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyGameDressReady;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import eipc.EIPCResult;
+import org.json.JSONObject;
 
-public class zct
-  extends BroadcastReceiver
+public final class zct
+  implements ApolloGameBasicEventUtil.NotifyGameDressReady
 {
-  public zct(DeviceProfileManager paramDeviceProfileManager) {}
+  public zct(int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.e("DeviceProfileManager", 4, "onReceive");
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
     }
-    if (paramIntent == null) {}
-    do
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
+      return;
+    }
+    try
     {
-      for (;;)
+      paramQQAppInterface = ApolloGameBasicEventUtil.a(paramInt2, paramArrayOfInt);
+      if (paramQQAppInterface == null)
       {
+        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
         return;
-        try
-        {
-          paramContext = paramIntent.getExtras();
-          if (paramContext != null)
-          {
-            DeviceProfileManager.a(this.a, (HashMap)paramContext.getSerializable("featureMapLV2"));
-            if (DeviceProfileManager.a() != null)
-            {
-              DeviceProfileManager.a().a = ((HashMap)paramContext.getSerializable("featureAccountMapLV2"));
-              return;
-            }
-          }
-        }
-        catch (Exception paramContext) {}
       }
-    } while (!QLog.isDevelopLevel());
-    paramContext.printStackTrace();
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
+      return;
+    }
+    if (this.a == 1000) {
+      paramQQAppInterface.put("uin", paramString1);
+    }
+    paramQQAppInterface.put("openId", paramString2);
+    paramString1 = new Bundle();
+    paramString1.putString("resData", paramQQAppInterface.toString());
+    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
+    CmGameServerQIPCModule.a().callbackResult(paramInt1, paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zct
  * JD-Core Version:    0.7.0.1
  */

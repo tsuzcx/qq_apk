@@ -7,8 +7,8 @@ import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import kia;
-import kib;
+import kkh;
+import kki;
 
 public class ShimmerTextView
   extends TextView
@@ -23,7 +23,7 @@ public class ShimmerTextView
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper = new ShimmerViewHelper(this, getPaint(), null);
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new kia(this));
+    ViewCompat.setAccessibilityDelegate(this, new kkh(this));
   }
   
   public ShimmerTextView(Context paramContext, AttributeSet paramAttributeSet)
@@ -32,7 +32,7 @@ public class ShimmerTextView
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper = new ShimmerViewHelper(this, getPaint(), paramAttributeSet);
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new kia(this));
+    ViewCompat.setAccessibilityDelegate(this, new kkh(this));
   }
   
   public ShimmerTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -41,7 +41,7 @@ public class ShimmerTextView
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper = new ShimmerViewHelper(this, getPaint(), paramAttributeSet);
     this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new kia(this));
+    ViewCompat.setAccessibilityDelegate(this, new kkh(this));
   }
   
   public boolean a()
@@ -69,7 +69,7 @@ public class ShimmerTextView
     }
     super.onDraw(paramCanvas);
     if (a()) {
-      postDelayed(new kib(this), 40L);
+      postDelayed(new kki(this), 40L);
     }
   }
   
@@ -125,7 +125,7 @@ public class ShimmerTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.widget.shimmer.ShimmerTextView
  * JD-Core Version:    0.7.0.1
  */

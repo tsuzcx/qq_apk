@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.PublishCommentCallback;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.CommentsView;
-import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.util.InputMethodUtil;
 
 public class aezi
-  implements CommentsDataSource.PublishCommentCallback
+  implements AbsListView.OnScrollListener
 {
-  public aezi(CommentsPresenterImpl paramCommentsPresenterImpl) {}
+  public aezi(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a(Comments.Comment paramComment)
-  {
-    if (CommentsPresenterImpl.a(this.a) != null) {
-      CommentsPresenterImpl.a(this.a).a(paramComment);
-    }
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(Comments.Comment paramComment, int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (CommentsPresenterImpl.a(this.a) != null) {
-      CommentsPresenterImpl.a(this.a).a(paramComment, paramInt);
+    if (paramInt == 1) {
+      InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
     }
   }
 }

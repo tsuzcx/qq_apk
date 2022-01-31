@@ -154,7 +154,7 @@ public class Util
     {
       paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo.mAdExt).optString("pkg_name");
       if (PackageUtil.a(BaseApplicationImpl.getContext(), paramBaseArticleInfo)) {}
-      for (str1 = BaseApplicationImpl.getContext().getResources().getString(2131438686);; str1 = BaseApplicationImpl.getContext().getResources().getString(2131438685))
+      for (str1 = BaseApplicationImpl.getContext().getResources().getString(2131438709);; str1 = BaseApplicationImpl.getContext().getResources().getString(2131438708))
       {
         if (!TextUtils.isEmpty(str1))
         {

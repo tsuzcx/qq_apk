@@ -1,22 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.Callback;
+import com.tencent.qphone.base.util.QLog;
 
 public class abqy
-  extends Handler
+  implements CameraExceptionHandler.Callback
 {
-  public abqy(LocationSelectActivity paramLocationSelectActivity) {}
+  public abqy(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(RuntimeException paramRuntimeException)
   {
-    if (paramMessage.what == 1000) {
-      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
+    if (QLog.isColorLevel()) {
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqy
  * JD-Core Version:    0.7.0.1
  */

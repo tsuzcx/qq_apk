@@ -55,8 +55,8 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
-import zmc;
-import zmd;
+import zsy;
+import zsz;
 
 public class RedpointHandler
   extends BusinessHandler
@@ -75,7 +75,7 @@ public class RedpointHandler
   {
     super(paramQQAppInterface);
     this.jdField_a_of_type_Int = 600000;
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new zmc(this, 0, false, false, this.jdField_a_of_type_Int, false, false, "RedpointHandler");
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new zsy(this, 0, false, false, this.jdField_a_of_type_Int, false, false, "RedpointHandler");
   }
   
   private BusinessInfoCheckUpdate.LbsInfo a(SosoInterface.SosoLocation paramSosoLocation)
@@ -303,7 +303,7 @@ public class RedpointHandler
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      ThreadManager.post(new zmd(this, paramInt, paramSosoLbsInfo), 5, null, true);
+      ThreadManager.post(new zsz(this, paramInt, paramSosoLbsInfo), 5, null, true);
       return;
     }
     b(paramInt, paramSosoLbsInfo);
@@ -647,7 +647,7 @@ public class RedpointHandler
     BusinessInfoCheckUpdate.TimeReqBody localTimeReqBody = new BusinessInfoCheckUpdate.TimeReqBody();
     localTimeReqBody.iProtocolVer.set(1);
     localTimeReqBody.uiClientPlatID.set(109);
-    localTimeReqBody.sClientVer.set("7.6.3.3565");
+    localTimeReqBody.sClientVer.set("7.6.8.3615");
     localTimeReqBody.uiUin.set(Long.parseLong(this.b.getCurrentAccountUin()));
     int i = NetworkUtil.a(BaseApplication.getContext());
     localTimeReqBody.uiNetType.set(i);

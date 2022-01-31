@@ -1,10 +1,18 @@
 package c.t.m.g;
 
 public final class bi
+  extends bd
 {
-  public byte a = 1;
-  public String b = cc.a();
-  public String c = l.h();
+  public final String b()
+  {
+    return "state";
+  }
+  
+  public final void c()
+  {
+    cg.d();
+    String str = m.c;
+  }
 }
 
 

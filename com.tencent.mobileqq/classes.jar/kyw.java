@@ -1,55 +1,56 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.pubaccount.PublicAccountManager.refuseAcceptDone;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetRefuseFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
 
 public class kyw
-  implements BusinessObserver
+  implements INetInfoHandler
 {
-  public kyw(PublicAccountManager paramPublicAccountManager, NewIntent paramNewIntent, PublicAccountManager.refuseAcceptDone paramrefuseAcceptDone) {}
+  public kyw(AdModuleBase paramAdModuleBase) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onNetMobile2None()
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
     if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountManager", 2, "success:" + String.valueOf(paramBoolean));
+      QLog.d("AdModuleBase", 2, "onNetMobile2None");
     }
-    bool = paramBoolean;
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      mobileqq_mp.SetRefuseFollowResponse localSetRefuseFollowResponse = new mobileqq_mp.SetRefuseFollowResponse();
-      localSetRefuseFollowResponse.mergeFrom(paramBundle);
-      bool = paramBoolean;
-      if (localSetRefuseFollowResponse.ret_info.has())
-      {
-        bool = paramBoolean;
-        if (localSetRefuseFollowResponse.ret_info.ret_code.has())
-        {
-          paramInt = localSetRefuseFollowResponse.ret_info.ret_code.get();
-          bool = paramBoolean;
-          if (paramInt != 0L) {
-            bool = false;
-          }
-        }
-      }
+    AdModuleBase.b(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2Wifi");
     }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        bool = false;
-      }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Mobile");
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$refuseAcceptDone != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager$refuseAcceptDone.a(bool);
+    AdModuleBase.b(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Wifi");
     }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2Mobile");
+    }
+    AdModuleBase.b(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2None");
+    }
+    AdModuleBase.b(this.a);
   }
 }
 

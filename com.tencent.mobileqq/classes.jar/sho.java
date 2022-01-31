@@ -1,49 +1,21 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineObserver;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.DBUtils;
 
 public class sho
-  extends DataLineObserver
+  implements Runnable
 {
-  public sho(Conversation paramConversation) {}
+  public sho(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void run()
   {
-    super.a(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, AppConstants.y, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6000);
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
-    if (i == 0) {
-      this.a.a(9, AppConstants.y, 6003);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6003);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (i == 0) {
-      this.a.a(8, AppConstants.y, 6000);
-    }
-    while (i != 1) {
-      return;
-    }
-    this.a.a(8, AppConstants.z, 6003);
+    int i = DBUtils.a(this.a.app.getCurrentAccountUin(), "troop_game_feed", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(20);
+    localMessage.arg1 = i;
+    localMessage.sendToTarget();
   }
 }
 

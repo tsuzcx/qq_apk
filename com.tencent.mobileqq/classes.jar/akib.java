@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasMonitorHandler;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.FaceScoreCallBack;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public final class akib
-  implements Runnable
+  extends FaceScoreCallBack
 {
-  public akib(QQAppInterface paramQQAppInterface, String paramString1, ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString2) {}
+  public akib(BaseActivity paramBaseActivity, String paramString1, String paramString2, int paramInt, QQProgressDialog paramQQProgressDialog) {}
   
-  public void run()
+  public void a(long paramLong1, long paramLong2)
   {
-    VasMonitorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaLangString);
+    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, String.valueOf(paramLong2), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
   }
 }
 

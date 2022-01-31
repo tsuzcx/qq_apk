@@ -1,52 +1,28 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import java.lang.ref.WeakReference;
 
 public class tfb
-  extends TroopObserver
+  implements Runnable
 {
-  public tfb(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  private int jdField_a_of_type_Int;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public tfb(int paramInt, WeakReference paramWeakReference)
   {
-    TextView localTextView;
-    if (paramBoolean1)
-    {
-      this.a.e.a().setChecked(paramBoolean2);
-      localTextView = this.a.a;
-      if (!paramBoolean2) {
-        break label59;
-      }
-    }
-    label59:
-    for (int i = 2131435392;; i = 2131435393)
-    {
-      localTextView.setText(i);
-      SharedPreUtils.j(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    boolean bool = true;
-    if (!paramBoolean1)
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      QQToast.a(this.a, 1, "设置失败", 0).a();
-      Switch localSwitch = this.a.e.a();
-      if (!paramBoolean2) {}
-      for (paramBoolean1 = bool;; paramBoolean1 = false)
-      {
-        localSwitch.setChecked(paramBoolean1);
-        return;
+      FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localFormSimpleItem != null) {
+        localFormSimpleItem.setRightText(localFormSimpleItem.getResources().getString(this.jdField_a_of_type_Int));
       }
     }
-    SharedPreUtils.j(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
   }
 }
 

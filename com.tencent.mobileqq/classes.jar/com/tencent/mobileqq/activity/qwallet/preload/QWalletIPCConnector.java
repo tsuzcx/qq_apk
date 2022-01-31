@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity.qwallet.preload;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
-import xgd;
-import xge;
+import xlx;
+import xly;
 
 public class QWalletIPCConnector
 {
@@ -33,9 +33,9 @@ public class QWalletIPCConnector
     if (QLog.isColorLevel()) {
       QLog.d("QWalletIPCConnector", 2, "begin connect:");
     }
-    QIPCClientHelper.getInstance().getClient().addListener(new xgd(this));
+    QIPCClientHelper.getInstance().getClient().addListener(new xlx(this));
     long l = System.currentTimeMillis();
-    QIPCClientHelper.getInstance().getClient().connect(new xge(this, l));
+    QIPCClientHelper.getInstance().getClient().connect(new xly(this, l));
   }
   
   public void a()

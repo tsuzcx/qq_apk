@@ -1,21 +1,21 @@
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.av.opengl.ui.GLView;
+import com.tencent.av.opengl.ui.GLView.OnZOrderChangedListener;
+import com.tencent.av.opengl.ui.GLViewGroup;
+import java.util.Collections;
 
 public class jmc
-  implements Runnable
+  implements GLView.OnZOrderChangedListener
 {
-  public jmc(RedPacketShareFragment paramRedPacketShareFragment, int paramInt) {}
+  public jmc(GLViewGroup paramGLViewGroup) {}
   
-  public void run()
+  public void a(GLView paramGLView, int paramInt1, int paramInt2)
   {
-    String str = RedPacketShareFragment.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment);
-    ThreadManager.getUIHandler().post(new jmd(this, str));
+    Collections.sort(GLViewGroup.a(this.a), GLViewGroup.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jmc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,57 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
-import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.hotpic.VideoItemEventManager.onVideoItemEventListener;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
+import com.tencent.qphone.base.util.QLog;
 
 public class aehi
-  extends MessageObserver
+  implements VideoItemEventManager.onVideoItemEventListener
 {
-  public aehi(MixedMsgManager paramMixedMsgManager, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, String paramString, int paramInt) {}
+  public aehi(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(6003, true, new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq + "" });
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
-    if (paramBoolean)
-    {
-      MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
-      return;
-    }
-    MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true, "sendStructLongMsg fail : errCode = " + paramStatictisInfo.b);
+    LebaFeedsVideoPlayController.a(this.a, 1000L);
   }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LebaFeedsVideoPlayController", 2, "onVolumChange");
+    }
+    boolean bool;
+    int i;
+    if ((LebaFeedsVideoPlayController.a(this.a) != null) && (LebaFeedsVideoPlayController.a(this.a)) && (LebaFeedsVideoPlayController.a(this.a) != null))
+    {
+      bool = LebaFeedsVideoPlayController.a(this.a).c();
+      if ((LebaFeedsVideoPlayController.a(this.a) == null) || (!LebaFeedsVideoPlayController.a(this.a).b())) {
+        break label115;
+      }
+      i = 1;
+      if (i == 0) {
+        break label120;
+      }
+      LebaFeedsVideoPlayController.a(this.a).a(true);
+      LebaFeedsVideoPlayController.a(this.a, true);
+      LebaFeedsVideoPlayController.a(this.a, true);
+    }
+    label115:
+    label120:
+    while (!bool)
+    {
+      return;
+      i = 0;
+      break;
+    }
+    LebaFeedsVideoPlayController.a(this.a).a(false);
+    LebaFeedsVideoPlayController.a(this.a, false);
+    LebaFeedsVideoPlayController.a(this.a, false);
+  }
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean) {}
 }
 
 

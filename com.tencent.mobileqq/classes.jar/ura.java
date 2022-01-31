@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 
 public class ura
   implements Runnable
 {
-  public ura(RecordSoundPanel paramRecordSoundPanel) {}
+  public ura(PlusPanel paramPlusPanel) {}
   
   public void run()
   {
-    this.a.b();
+    this.a.a.a.setSelected(8);
   }
 }
 

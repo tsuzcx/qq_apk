@@ -1,31 +1,110 @@
 package c.t.m.g;
 
-import android.location.Location;
-import android.os.Bundle;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.util.LinkedList;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.InflaterInputStream;
+import org.eclipse.jdt.annotation.Nullable;
 
 public final class dk
 {
-  public static final Location a = new Location("Empty");
+  LinkedList<ec> a = null;
+  ed b = null;
+  ed c = null;
+  float d = 0.0F;
+  float e = 0.0F;
+  long f = 0L;
+  boolean g = true;
+  float h = 0.0F;
+  dl i;
+  private float j = 1.0F;
+  private float k = 0.6F;
   
-  static
+  public static String a(String paramString)
   {
-    new Bundle();
+    try
+    {
+      Object localObject = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject).update(paramString.getBytes());
+      localObject = ((MessageDigest)localObject).digest();
+      StringBuilder localStringBuilder = new StringBuilder();
+      int n = localObject.length;
+      int m = 0;
+      while (m < n)
+      {
+        localStringBuilder.append(Integer.toHexString(localObject[m] & 0xFF)).append("");
+        m += 1;
+      }
+      localObject = localStringBuilder.toString();
+      return localObject;
+    }
+    catch (Exception localException) {}
+    return paramString;
   }
   
-  public static String a(int paramInt1, int paramInt2)
+  public static byte[] a(byte[] paramArrayOfByte)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    boolean bool = cy.a().d("https");
-    StringBuilder localStringBuilder2 = new StringBuilder("http");
-    if (bool) {}
-    for (String str = "s";; str = "")
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    DeflaterOutputStream localDeflaterOutputStream = new DeflaterOutputStream(localByteArrayOutputStream);
+    try
     {
-      localStringBuilder1.append(str + "://lbs.map.qq.com/loc");
-      localStringBuilder1.append("?");
-      localStringBuilder1.append("c=1");
-      localStringBuilder1.append("&mars=").append(paramInt1);
-      localStringBuilder1.append("&obs=").append(paramInt2);
-      return localStringBuilder1.toString();
+      localDeflaterOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+      localDeflaterOutputStream.finish();
+      localDeflaterOutputStream.flush();
+      localDeflaterOutputStream.close();
+      return localByteArrayOutputStream.toByteArray();
+    }
+    catch (Exception paramArrayOfByte) {}
+    return null;
+  }
+  
+  @Nullable
+  public static byte[] b(byte[] paramArrayOfByte)
+  {
+    int m = 0;
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
+    InflaterInputStream localInflaterInputStream = new InflaterInputStream(localByteArrayInputStream);
+    paramArrayOfByte = new byte[0];
+    byte[] arrayOfByte2 = new byte[1024];
+    for (;;)
+    {
+      try
+      {
+        int n = localInflaterInputStream.read(arrayOfByte2);
+        if (n > 0)
+        {
+          m += n;
+          byte[] arrayOfByte1 = new byte[m];
+          System.arraycopy(paramArrayOfByte, 0, arrayOfByte1, 0, paramArrayOfByte.length);
+          System.arraycopy(arrayOfByte2, 0, arrayOfByte1, paramArrayOfByte.length, n);
+          paramArrayOfByte = arrayOfByte1;
+          if (n <= 0) {
+            try
+            {
+              localByteArrayInputStream.close();
+              localInflaterInputStream.close();
+              return paramArrayOfByte;
+            }
+            catch (IOException paramArrayOfByte)
+            {
+              return null;
+            }
+          }
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        return null;
+      }
     }
   }
 }

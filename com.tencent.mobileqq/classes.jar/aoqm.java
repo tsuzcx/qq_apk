@@ -1,8 +1,18 @@
-public class aoqm
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
+
+public final class aoqm
+  implements Runnable
 {
-  public int a = -1;
-  public boolean a;
-  public int b;
+  public aoqm(String paramString) {}
+  
+  public void run()
+  {
+    String str = GloableValue.a();
+    if ((str != null) && (!"".equals(str)) && (str.contains("/Android/data/com.tencent.mobileqq/qq/video"))) {
+      RMVideoStateMgr.a(str, this.a, false);
+    }
+  }
 }
 
 

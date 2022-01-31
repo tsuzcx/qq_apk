@@ -1,14 +1,38 @@
-import cooperation.qzone.report.lp.LpReportInfo;
-import cooperation.qzone.report.lp.MachinelearningReport;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GpsInfo;
+import cooperation.qzone.LbsDataV2.PoiInfo;
 
-public class amyv
-  implements Runnable
+public final class amyv
+  implements Parcelable.Creator
 {
-  public amyv(MachinelearningReport paramMachinelearningReport, int paramInt, LpReportInfo paramLpReportInfo) {}
-  
-  public void run()
+  public LbsDataV2.PoiInfo a(Parcel paramParcel)
   {
-    MachinelearningReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachinelearningReport, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo);
+    LbsDataV2.PoiInfo localPoiInfo = new LbsDataV2.PoiInfo();
+    if (paramParcel != null)
+    {
+      localPoiInfo.poiId = paramParcel.readString();
+      localPoiInfo.poiName = paramParcel.readString();
+      localPoiInfo.poiType = paramParcel.readInt();
+      localPoiInfo.poiTypeName = paramParcel.readString();
+      localPoiInfo.poiDefaultName = paramParcel.readString();
+      localPoiInfo.address = paramParcel.readString();
+      localPoiInfo.districtCode = paramParcel.readInt();
+      localPoiInfo.distance = paramParcel.readInt();
+      localPoiInfo.hotValue = paramParcel.readInt();
+      localPoiInfo.phoneNumber = paramParcel.readString();
+      localPoiInfo.poiOrderType = paramParcel.readInt();
+      localPoiInfo.poiNum = paramParcel.readInt();
+      localPoiInfo.dianPingId = paramParcel.readString();
+      localPoiInfo.gpsInfo = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
+      localPoiInfo.show_poi = paramParcel.readInt();
+    }
+    return localPoiInfo;
+  }
+  
+  public LbsDataV2.PoiInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

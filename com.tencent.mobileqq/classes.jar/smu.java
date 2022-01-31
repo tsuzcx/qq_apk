@@ -1,69 +1,16 @@
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class smu
-  implements FavroamingDBManager.FavEmotionDataInPanelCallback
+  implements Runnable
 {
-  public smu(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public smu(Conversation paramConversation, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(List paramList)
+  public void run()
   {
-    List localList2 = paramList;
-    if (paramList != null) {
-      localList1 = paramList;
-    }
-    try
-    {
-      Collections.reverse(paramList);
-      localList2 = paramList;
-      localList1 = paramList;
-      if (paramList.size() > FavEmoConstant.b)
-      {
-        localList1 = paramList;
-        int i = paramList.size() - FavEmoConstant.b;
-        localList1 = paramList;
-        paramList = paramList.subList(i, paramList.size());
-        localList2 = paramList;
-        localList1 = paramList;
-        if (QLog.isColorLevel())
-        {
-          localList1 = paramList;
-          QLog.d("FavEmoRoamingHandler", 2, "fav emoticon overflow size" + i);
-          localList2 = paramList;
-        }
-      }
-      paramList = localList2;
-    }
-    catch (UnsupportedOperationException paramList)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FavEmoRoamingHandler", 2, paramList.getMessage());
-        }
-        paramList = localList1;
-      }
-    }
-    if (paramList == null)
-    {
-      paramList = new ArrayList();
-      if (paramList.size() >= FavEmoConstant.a) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
-      }
-      if (paramList.size() >= FavEmoConstant.b) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
-      }
-      paramList.add(0, new EmoticonInfo());
-      this.a.a(paramList);
-      return;
-    }
+    long l = ServiceAccountFolderManager.a().a();
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "dc00899", "Pb_account_lifeservice", "", "0X8006E12", "0X8006E12", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), String.valueOf(this.c), String.valueOf(l));
   }
 }
 

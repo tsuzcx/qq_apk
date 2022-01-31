@@ -1,28 +1,18 @@
-import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
+import com.tencent.av.app.VideoObserver;
 
 public class jhd
+  implements Runnable
 {
-  public byte a;
-  public byte b = 0;
-  public byte c = 0;
-  public byte d = 0;
-  public byte e = 0;
-  public byte f = 0;
-  public byte g = 0;
-  public byte h = 0;
-  public byte i = 0;
-  public byte j = 0;
-  public byte k = 0;
-  public byte l = 0;
+  public jhd(VideoObserver paramVideoObserver, Object paramObject) {}
   
-  public jhd(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
+  public void run()
   {
-    this.jdField_a_of_type_Byte = 0;
+    this.jdField_a_of_type_ComTencentAvAppVideoObserver.a(this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhd
  * JD-Core Version:    0.7.0.1
  */

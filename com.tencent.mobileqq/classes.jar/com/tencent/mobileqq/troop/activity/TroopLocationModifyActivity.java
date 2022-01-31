@@ -51,7 +51,7 @@ public class TroopLocationModifyActivity
     if (i == 0)
     {
       if (bool) {
-        QQToast.a(this, 2131435559, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131435575, 0).b(getTitleBarHeight());
       }
       for (;;)
       {
@@ -62,20 +62,20 @@ public class TroopLocationModifyActivity
         setResult(-1, localIntent);
         finish();
         break;
-        QQToast.a(this, 2131435557, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131435573, 0).b(getTitleBarHeight());
       }
     }
     if (i == 1002) {
-      str = getString(2131435561);
+      str = getString(2131435577);
     }
     for (;;)
     {
       QQToast.a(this, str, 0).b(getTitleBarHeight());
       break;
       if (bool) {
-        str = getString(2131435560);
+        str = getString(2131435576);
       } else {
-        str = getString(2131435558);
+        str = getString(2131435574);
       }
     }
   }
@@ -97,7 +97,7 @@ public class TroopLocationModifyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,27 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatHistorySearchData;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class wrd
-  implements Runnable
+  extends BizTroopObserver
 {
-  public wrd(C2CMessageResultAdapter paramC2CMessageResultAdapter, String paramString, long paramLong) {}
+  public wrd(TroopView paramTroopView) {}
   
-  public void run()
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    int j = 0;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-    int i;
-    MessageRecord localMessageRecord;
-    if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
-    {
-      i = 0;
-      while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
-      {
-        localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(localMessageRecord))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
-        }
-        i += 1;
-      }
+    if (paramInt2 == 0) {
+      this.a.j();
     }
-    if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
-      if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
-      {
-        i = j;
-        while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
-        {
-          localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(localMessageRecord))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
-            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
-          }
-          i += 1;
-        }
-      }
+    while (this.a.b()) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMessageResultAdapter", 2, "localCacheMsgs size: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.size());
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131435596);
     }
-    localObject = new HashMap();
-    ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(8, localObject).sendToTarget();
+    QQToast.a(this.a.a(), 1, paramString1, 0).a();
   }
 }
 

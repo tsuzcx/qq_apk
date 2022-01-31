@@ -1,24 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import com.tencent.qphone.base.util.QLog;
 
 public class yig
-  extends TroopObserver
+  implements Runnable
 {
-  public yig(ShowExternalTroopListAdapter paramShowExternalTroopListAdapter) {}
+  public yig(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void run()
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString);
-    if (localBitmap != null) {
-      this.a.a(paramString, localBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopAddFrdsInnerFrame", 2, "read troop members from database before updating data from server");
     }
+    TroopAddFrdsInnerFrame.a(this.a, this.a.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yig
  * JD-Core Version:    0.7.0.1
  */

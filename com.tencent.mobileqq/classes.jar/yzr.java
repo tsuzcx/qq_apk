@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
+import android.content.Intent;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class yzr
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private QQFrameZipDecoder jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  
-  public void a(QQFrameZipDecoder paramQQFrameZipDecoder, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder = paramQQFrameZipDecoder;
-  }
+  public yzr(ApolloGameActivity paramApolloGameActivity, int paramInt1, int paramInt2, Intent paramIntent) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    if (ApolloGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity).a().getRender() != null) {
+      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
     }
   }
 }

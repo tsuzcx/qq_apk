@@ -1,35 +1,69 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.activity.phone.RebindActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.utils.CardUtil;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class wvi
-  extends ContactBindObserver
+  implements Runnable
 {
-  public wvi(RebindActivity paramRebindActivity) {}
+  public wvi(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
   
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    this.a.b();
-    if (paramBoolean)
+    for (;;)
     {
-      paramBundle = new Intent(this.a, BindVerifyActivity.class);
-      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
-      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
-      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
-      paramBundle.putExtra("keyReqBindMode", 1);
-      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
-      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
-      paramBundle.addFlags(67108864);
-      paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
-      paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
-      paramBundle.putExtra("key_is_from_qav_multi_call", this.a.getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
-      this.a.startActivityForResult(paramBundle, 1);
-      return;
+      try
+      {
+        Object localObject1 = (NewFriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33);
+        int i = ((NewFriendManager)localObject1).d() + CardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        Object localObject3;
+        if (i > 0)
+        {
+          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(5);
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set(i + "");
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("{'cn':'#FF0000'}");
+          localObject1 = localObject3;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("UndealCount.updateTabContactNotify", 2, "unread=" + i);
+            localObject1 = localObject3;
+          }
+          localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.obtainMessage(3);
+          ((Message)localObject3).obj = localObject1;
+          this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.sendMessage((Message)localObject3);
+          return;
+        }
+        if (((NewFriendManager)localObject1).a())
+        {
+          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set("");
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("");
+          localObject1 = localObject3;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("UndealCount.updateTabContactNotify", 2, "redpoint");
+            localObject1 = localObject3;
+          }
+        }
+        else
+        {
+          Object localObject2 = null;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
     }
-    this.a.b(2131434455);
   }
 }
 

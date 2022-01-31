@@ -13,7 +13,7 @@ public class qi
   
   public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if ((paramLong == 1004L) && ("libVipFont_735".equals(paramString1))) {
+    if ((paramLong == 1004L) && ("libVipFont_765".equals(paramString1))) {
       if (paramInt1 != 0) {
         break label110;
       }

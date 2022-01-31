@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class uhe
-  implements Runnable
+  extends Handler
 {
-  public uhe(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, File paramFile, String paramString) {}
+  public uhe(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
-    localDownloadTask.f = "profileCardDownload";
-    localDownloadTask.e = "VIP_profilecard";
-    int i = DownloaderFactory.a(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.app);
-    if (i == 0)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.c(this.jdField_a_of_type_JavaLangString);
+    default: 
+      return;
+    case 0: 
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131434478), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131434480), 0).b(this.a.getTitleBarHeight());
       return;
     }
-    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + i + ", url=" + this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.jdField_a_of_type_JavaLangString);
+    paramMessage = (String)paramMessage.obj;
+    this.a.p.setText(paramMessage + "");
+    this.a.p.setContentDescription(paramMessage + "");
+    this.a.p.setVisibility(0);
   }
 }
 

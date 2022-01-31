@@ -13,7 +13,7 @@ final class Elf64_Phdr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.facebook.soloader.Elf64_Phdr
  * JD-Core Version:    0.7.0.1
  */

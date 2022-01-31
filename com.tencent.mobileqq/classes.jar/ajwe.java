@@ -1,19 +1,52 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import com.tencent.mobileqq.app.AppConstants;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-class ajwe
-  implements FrameSprite.OnFrameEndListener
+public final class ajwe
+  implements Runnable
 {
-  ajwe(ajwd paramajwd) {}
-  
-  public void a()
+  public void run()
   {
-    this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
-    if (this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-      this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    File[] arrayOfFile;
+    do
+    {
+      try
+      {
+        Thread.sleep(3000L);
+        File localFile = new File(AppConstants.bb);
+        if (!localFile.isDirectory()) {
+          return;
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+        return;
+      }
+      arrayOfFile = localInterruptedException.listFiles(new ajwf(this));
+    } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
+    Object localObject = new ArrayList(arrayOfFile.length);
+    int j = arrayOfFile.length;
+    int i = 0;
+    while (i < j)
+    {
+      ((List)localObject).add(Long.valueOf(arrayOfFile[i].lastModified()));
+      i += 1;
     }
-    this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a, true);
+    Collections.sort((List)localObject);
+    long l = ((Long)((List)localObject).get(((List)localObject).size() - 100)).longValue();
+    j = arrayOfFile.length;
+    i = 0;
+    while (i < j)
+    {
+      localObject = arrayOfFile[i];
+      if (((File)localObject).lastModified() < l) {
+        ((File)localObject).deleteOnExit();
+      }
+      i += 1;
+    }
   }
 }
 

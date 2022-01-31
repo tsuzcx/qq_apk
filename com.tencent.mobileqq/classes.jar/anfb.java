@@ -1,9 +1,4 @@
-import cooperation.thirdpay.ThirdPayGate;
-
-public class anfb
-{
-  public static final ThirdPayGate a = new ThirdPayGate(null);
-}
+public class anfb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

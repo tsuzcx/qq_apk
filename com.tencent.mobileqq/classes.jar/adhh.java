@@ -1,51 +1,34 @@
-import android.graphics.Bitmap;
-import com.dataline.util.file.MediaStoreUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.ThumbTask;
+import java.util.LinkedHashMap;
+import java.util.List;
 
-public final class adhh
-  implements FileManagerUtil.IGetVideoCallback
+public class adhh
+  implements Runnable
 {
-  public adhh(String paramString1, String paramString2) {}
+  public adhh(ThumbDownloadManager paramThumbDownloadManager) {}
   
-  public void a(Bitmap paramBitmap)
+  public void run()
   {
-    if (paramBitmap == null) {
+    if (ThumbDownloadManager.a(this.a).size() >= 8) {}
+    while (ThumbDownloadManager.a(this.a).size() == 0) {
       return;
     }
-    try
+    ThumbDownloadManager.ThumbTask localThumbTask = (ThumbDownloadManager.ThumbTask)ThumbDownloadManager.a(this.a).get(0);
+    if (localThumbTask == null)
     {
-      FileUtil.a(paramBitmap, this.a);
-      paramBitmap.recycle();
-      int i = MediaStoreUtil.a(this.b);
-      MediaStoreUtil.a(this.a, i);
+      ThumbDownloadManager.a(this.a).remove(0);
+      ThumbDownloadManager.a(this.a);
       return;
     }
-    catch (FileNotFoundException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (IOException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
-    }
+    ThumbDownloadManager.a(this.a).remove(localThumbTask);
+    ThumbDownloadManager.a(this.a, localThumbTask);
+    ThumbDownloadManager.b(this.a, localThumbTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adhh
  * JD-Core Version:    0.7.0.1
  */

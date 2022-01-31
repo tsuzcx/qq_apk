@@ -12,7 +12,7 @@ public class P2VUtil
 {
   private static int jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "P2VFunEnable", 1);
   private static P2VUtil jdField_a_of_type_CooperationQzoneUtilP2VUtil;
-  private static final String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "P2VFunBlackList", "MI 3,GT-N7108,vivo Y51A,OPPO R6007,vivo Y31A,CAM-AL00,CAM-UL00,CAM-TL00,M821");
+  private static final String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "P2VFunBlackList", "MI 3,GT-N7108,vivo Y51A,OPPO R6007,vivo Y31A,CAM-AL00,CAM-UL00,CAM-TL00,M821,SM-A7000,MI 2SC,SM-G6000");
   private static int jdField_b_of_type_Int = -1;
   private static final long jdField_b_of_type_Long = QzoneConfig.getInstance().getConfig("QZoneSetting", "P2VStorageLimt", 62914560L);
   private static long c = -1L;

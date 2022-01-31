@@ -1,16 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.model.AtlasModel;
+import com.tencent.biz.pubaccount.readinjoy.model.AtlasModelImage;
 import com.tencent.image.URLImageView;
 
 public class ReadInJoyAtlasAdapter$ViewHolder
 {
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  AtlasModel jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAtlasModel;
+  AtlasModelImage jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAtlasModelImage;
   URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
   protected ReadInJoyAtlasAdapter$ViewHolder(ReadInJoyAtlasAdapter paramReadInJoyAtlasAdapter) {}
+  
+  public void a(AtlasModelImage paramAtlasModelImage)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasAdapter.a(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasAdapter.a(paramAtlasModelImage, this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAtlasModelImage = paramAtlasModelImage;
+  }
 }
 
 

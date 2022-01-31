@@ -37,11 +37,11 @@ public class HuayangOpenHelper
       QLog.i("HuayangOpenHelper", 2, String.format("appType = %s,openType = %s, fromId = %s, uri = %s ，action = %s,pkgName = %s", new Object[] { paramString1, paramString2, paramString4, paramString3, paramString5, paramString6 }));
     }
     a(paramQQAppInterface.getApp(), paramString2);
-    MonitorConfig.a();
+    MonitorConfig.a(paramQQAppInterface.getApp(), paramString1);
     if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString6)))
     {
       if (!"slientDownload".equals(paramString5)) {
-        break label155;
+        break label160;
       }
       Monitor.a("2587808");
       paramString7 = IVPluginInfo.a(paramString7);
@@ -50,12 +50,12 @@ public class HuayangOpenHelper
         paramString4 = IVPluginInfo.a();
       }
       if (!TextUtils.isEmpty(paramString1)) {
-        break label254;
+        break label213;
       }
       paramString1 = "hy_sixgod";
     }
-    label155:
-    label254:
+    label160:
+    label213:
     for (;;)
     {
       HuayangDowanloadHelper.a(paramQQAppInterface.getApp(), paramString6, paramString1).a(paramString1, paramQQAppInterface.c(), paramString3, paramString5, paramString4);
@@ -74,16 +74,7 @@ public class HuayangOpenHelper
         Monitor.a("2597718");
         break;
       }
-      if (MonitorConfig.jdField_a_of_type_JavaUtilMap.get(paramString1) != null)
-      {
-        Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.jdField_a_of_type_JavaUtilMap.get(paramString1)).jdField_a_of_type_Int));
-        break;
-      }
-      MonitorConfig.a(paramQQAppInterface);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("HuayangOpenHelper", 2, "没有找到匹配的monitor离线配置文件，重新拉取一次");
+      MonitorConfig.b(paramQQAppInterface.getApp(), paramString1);
       break;
     }
   }

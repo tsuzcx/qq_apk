@@ -614,7 +614,7 @@ public class SpriteRscBuilder
     int i;
     if (paramInt == 0)
     {
-      QLog.i("cmshow_scripted_SpriteRscBuilder", 1, "role id is 0, uin:" + paramString);
+      QLog.i("cmshow_scripted_SpriteRscBuilder", 1, "role id is 0, uin:" + ApolloUtil.d(paramString));
       i = 1;
     }
     for (;;)
@@ -627,7 +627,7 @@ public class SpriteRscBuilder
         for (;;)
         {
           if (i >= paramArrayOfInt.length) {
-            break label149;
+            break label152;
           }
           if (!ApolloUtil.b(paramArrayOfInt[i]))
           {
@@ -643,7 +643,7 @@ public class SpriteRscBuilder
       }
       paramNotifyDressReady.a(-1L, paramQQAppInterface, paramString, "", "", paramInt, paramArrayOfInt, 10);
       return;
-      label149:
+      label152:
       i = 0;
     }
   }
@@ -848,7 +848,7 @@ public class SpriteRscBuilder
     //   171: anewarray 4	java/lang/Object
     //   174: dup
     //   175: iconst_0
-    //   176: ldc_w 578
+    //   176: ldc_w 580
     //   179: aastore
     //   180: dup
     //   181: iconst_1
@@ -891,7 +891,7 @@ public class SpriteRscBuilder
     //   252: astore_1
     //   253: ldc 129
     //   255: iconst_1
-    //   256: ldc_w 580
+    //   256: ldc_w 582
     //   259: aload_1
     //   260: invokestatic 181	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   263: invokestatic 287	java/lang/System:currentTimeMillis	()J
@@ -904,7 +904,7 @@ public class SpriteRscBuilder
     //   278: anewarray 4	java/lang/Object
     //   281: dup
     //   282: iconst_0
-    //   283: ldc_w 578
+    //   283: ldc_w 580
     //   286: aastore
     //   287: dup
     //   288: iconst_1
@@ -927,7 +927,7 @@ public class SpriteRscBuilder
     //   318: anewarray 4	java/lang/Object
     //   321: dup
     //   322: iconst_0
-    //   323: ldc_w 578
+    //   323: ldc_w 580
     //   326: aastore
     //   327: dup
     //   328: iconst_1
@@ -1074,14 +1074,14 @@ public class SpriteRscBuilder
       return (String)this.c.get(localObject);
     }
     localObject = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getManager(152);
-    if (TextUtils.isEmpty(((ApolloManager)localObject).k)) {
+    if (TextUtils.isEmpty(((ApolloManager)localObject).h)) {
       return null;
     }
     for (;;)
     {
       try
       {
-        JSONArray localJSONArray = new JSONArray(((ApolloManager)localObject).k);
+        JSONArray localJSONArray = new JSONArray(((ApolloManager)localObject).h);
         int j = localJSONArray.length();
         if (i < j)
         {
@@ -1294,9 +1294,9 @@ public class SpriteRscBuilder
     //   16: istore 6
     //   18: iconst_m1
     //   19: istore 5
-    //   21: new 556	java/util/ArrayList
+    //   21: new 558	java/util/ArrayList
     //   24: dup
-    //   25: invokespecial 751	java/util/ArrayList:<init>	()V
+    //   25: invokespecial 753	java/util/ArrayList:<init>	()V
     //   28: astore 15
     //   30: aload_2
     //   31: invokevirtual 208	com/tencent/mobileqq/apollo/script/SpriteContext:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -1325,7 +1325,7 @@ public class SpriteRscBuilder
     //   81: iload 12
     //   83: istore 8
     //   85: aload 16
-    //   87: invokevirtual 755	com/tencent/mobileqq/data/ApolloBaseInfo:getApolloPetDress	()Lcom/tencent/mobileqq/apollo/data/ApolloDress;
+    //   87: invokevirtual 757	com/tencent/mobileqq/data/ApolloBaseInfo:getApolloPetDress	()Lcom/tencent/mobileqq/apollo/data/ApolloDress;
     //   90: astore 17
     //   92: aload 17
     //   94: ifnull +988 -> 1082
@@ -1349,7 +1349,7 @@ public class SpriteRscBuilder
     //   133: iload 12
     //   135: istore 8
     //   137: aload 17
-    //   139: getfield 760	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   139: getfield 762	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   142: ifnull +940 -> 1082
     //   145: iload 5
     //   147: istore 9
@@ -1360,8 +1360,8 @@ public class SpriteRscBuilder
     //   157: iload 12
     //   159: istore 8
     //   161: aload 17
-    //   163: getfield 760	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   166: invokevirtual 762	java/util/HashMap:isEmpty	()Z
+    //   163: getfield 762	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   166: invokevirtual 764	java/util/HashMap:isEmpty	()Z
     //   169: ifne +913 -> 1082
     //   172: iload 5
     //   174: istore 9
@@ -1375,7 +1375,7 @@ public class SpriteRscBuilder
     //   190: ldc_w 442
     //   193: iconst_0
     //   194: aload 17
-    //   196: getfield 763	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
+    //   196: getfield 765	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
     //   199: invokestatic 438	com/tencent/mobileqq/apollo/task/ApolloActionHelper:a	(II)Ljava/lang/String;
     //   202: invokevirtual 309	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   205: pop
@@ -1391,8 +1391,8 @@ public class SpriteRscBuilder
     //   224: istore 8
     //   226: iconst_1
     //   227: aload 17
-    //   229: getfield 763	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
-    //   232: invokestatic 765	com/tencent/mobileqq/apollo/utils/ApolloUtil:b	(II)Z
+    //   229: getfield 765	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
+    //   232: invokestatic 767	com/tencent/mobileqq/apollo/utils/ApolloUtil:b	(II)Z
     //   235: ifne +27 -> 262
     //   238: iconst_0
     //   239: istore 7
@@ -1405,7 +1405,7 @@ public class SpriteRscBuilder
     //   251: iload 5
     //   253: istore 10
     //   255: aload 17
-    //   257: getfield 763	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
+    //   257: getfield 765	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
     //   260: istore 4
     //   262: iload 4
     //   264: istore 9
@@ -1416,8 +1416,8 @@ public class SpriteRscBuilder
     //   274: iload 6
     //   276: istore 8
     //   278: aload 17
-    //   280: getfield 760	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   283: invokevirtual 766	java/util/HashMap:size	()I
+    //   280: getfield 762	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   283: invokevirtual 768	java/util/HashMap:size	()I
     //   286: newarray int
     //   288: astore 18
     //   290: iload 4
@@ -1429,9 +1429,9 @@ public class SpriteRscBuilder
     //   302: iload 6
     //   304: istore 8
     //   306: aload 17
-    //   308: getfield 760	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   311: invokevirtual 770	java/util/HashMap:entrySet	()Ljava/util/Set;
-    //   314: invokeinterface 776 1 0
+    //   308: getfield 762	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   311: invokevirtual 772	java/util/HashMap:entrySet	()Ljava/util/Set;
+    //   314: invokeinterface 778 1 0
     //   319: astore 19
     //   321: iconst_0
     //   322: istore 5
@@ -1444,7 +1444,7 @@ public class SpriteRscBuilder
     //   336: iload 6
     //   338: istore 8
     //   340: aload 19
-    //   342: invokeinterface 781 1 0
+    //   342: invokeinterface 783 1 0
     //   347: ifeq +54 -> 401
     //   350: iload 4
     //   352: istore 9
@@ -1457,9 +1457,9 @@ public class SpriteRscBuilder
     //   366: aload 18
     //   368: iload 5
     //   370: aload 19
-    //   372: invokeinterface 785 1 0
-    //   377: checkcast 787	java/util/Map$Entry
-    //   380: invokeinterface 790 1 0
+    //   372: invokeinterface 787 1 0
+    //   377: checkcast 789	java/util/Map$Entry
+    //   380: invokeinterface 792 1 0
     //   385: checkcast 61	java/lang/Integer
     //   388: invokevirtual 65	java/lang/Integer:intValue	()I
     //   391: iastore
@@ -1518,7 +1518,7 @@ public class SpriteRscBuilder
     //   494: istore 7
     //   496: iconst_2
     //   497: iload 9
-    //   499: invokestatic 765	com/tencent/mobileqq/apollo/utils/ApolloUtil:b	(II)Z
+    //   499: invokestatic 767	com/tencent/mobileqq/apollo/utils/ApolloUtil:b	(II)Z
     //   502: ifne +934 -> 1436
     //   505: iconst_0
     //   506: istore 7
@@ -1529,7 +1529,7 @@ public class SpriteRscBuilder
     //   514: aload 15
     //   516: iload 9
     //   518: invokestatic 135	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   521: invokeinterface 795 2 0
+    //   521: invokeinterface 797 2 0
     //   526: pop
     //   527: goto +909 -> 1436
     //   530: iload 5
@@ -1548,7 +1548,7 @@ public class SpriteRscBuilder
     //   557: aload 14
     //   559: ldc_w 266
     //   562: aload 17
-    //   564: getfield 763	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
+    //   564: getfield 765	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
     //   567: invokevirtual 374	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   570: pop
     //   571: iload 5
@@ -1557,9 +1557,9 @@ public class SpriteRscBuilder
     //   577: istore 7
     //   579: aload_0
     //   580: aload 17
-    //   582: getfield 763	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
-    //   585: ldc_w 797
-    //   588: invokevirtual 799	com/tencent/mobileqq/apollo/script/SpriteRscBuilder:a	(ILjava/lang/String;)Ljava/lang/String;
+    //   582: getfield 765	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
+    //   585: ldc_w 799
+    //   588: invokevirtual 801	com/tencent/mobileqq/apollo/script/SpriteRscBuilder:a	(ILjava/lang/String;)Ljava/lang/String;
     //   591: astore 18
     //   593: iload 5
     //   595: istore 6
@@ -1567,9 +1567,9 @@ public class SpriteRscBuilder
     //   599: istore 7
     //   601: aload_0
     //   602: aload 17
-    //   604: getfield 763	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
-    //   607: ldc_w 801
-    //   610: invokevirtual 799	com/tencent/mobileqq/apollo/script/SpriteRscBuilder:a	(ILjava/lang/String;)Ljava/lang/String;
+    //   604: getfield 765	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
+    //   607: ldc_w 803
+    //   610: invokevirtual 801	com/tencent/mobileqq/apollo/script/SpriteRscBuilder:a	(ILjava/lang/String;)Ljava/lang/String;
     //   613: astore 19
     //   615: iload 5
     //   617: istore 6
@@ -1590,7 +1590,7 @@ public class SpriteRscBuilder
     //   651: iload 5
     //   653: istore 7
     //   655: aload 14
-    //   657: ldc_w 803
+    //   657: ldc_w 805
     //   660: aload 19
     //   662: invokevirtual 309	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   665: pop
@@ -1599,7 +1599,7 @@ public class SpriteRscBuilder
     //   670: iload 5
     //   672: istore 7
     //   674: aload 14
-    //   676: ldc_w 805
+    //   676: ldc_w 807
     //   679: aload 18
     //   681: invokevirtual 309	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   684: pop
@@ -1609,8 +1609,8 @@ public class SpriteRscBuilder
     //   691: istore 7
     //   693: aload_0
     //   694: aload 17
-    //   696: getfield 763	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
-    //   699: invokespecial 807	com/tencent/mobileqq/apollo/script/SpriteRscBuilder:a	(I)Ljava/lang/String;
+    //   696: getfield 765	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
+    //   699: invokespecial 809	com/tencent/mobileqq/apollo/script/SpriteRscBuilder:a	(I)Ljava/lang/String;
     //   702: astore 18
     //   704: iload 5
     //   706: istore 6
@@ -1624,7 +1624,7 @@ public class SpriteRscBuilder
     //   724: iload 5
     //   726: istore 7
     //   728: aload 14
-    //   730: ldc_w 809
+    //   730: ldc_w 811
     //   733: aload 18
     //   735: invokevirtual 309	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   738: pop
@@ -1633,7 +1633,7 @@ public class SpriteRscBuilder
     //   743: iload 5
     //   745: istore 7
     //   747: aload 16
-    //   749: getfield 812	com/tencent/mobileqq/data/ApolloBaseInfo:petNick	Ljava/lang/String;
+    //   749: getfield 814	com/tencent/mobileqq/data/ApolloBaseInfo:petNick	Ljava/lang/String;
     //   752: invokestatic 49	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   755: ifne +53 -> 808
     //   758: iload 5
@@ -1641,7 +1641,7 @@ public class SpriteRscBuilder
     //   762: iload 5
     //   764: istore 7
     //   766: aload_2
-    //   767: getfield 813	com/tencent/mobileqq/apollo/script/SpriteContext:jdField_d_of_type_Int	I
+    //   767: getfield 815	com/tencent/mobileqq/apollo/script/SpriteContext:jdField_d_of_type_Int	I
     //   770: ifne +38 -> 808
     //   773: iload 5
     //   775: istore 6
@@ -1650,7 +1650,7 @@ public class SpriteRscBuilder
     //   781: aload 14
     //   783: ldc_w 455
     //   786: aload 16
-    //   788: getfield 812	com/tencent/mobileqq/data/ApolloBaseInfo:petNick	Ljava/lang/String;
+    //   788: getfield 814	com/tencent/mobileqq/data/ApolloBaseInfo:petNick	Ljava/lang/String;
     //   791: ldc_w 457
     //   794: invokevirtual 461	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   797: iconst_0
@@ -1665,11 +1665,11 @@ public class SpriteRscBuilder
     //   816: aload 14
     //   818: ldc_w 448
     //   821: aload 13
-    //   823: getfield 655	com/tencent/mobileqq/apollo/ApolloManager:k	Ljava/lang/String;
+    //   823: getfield 657	com/tencent/mobileqq/apollo/ApolloManager:h	Ljava/lang/String;
     //   826: aload 17
-    //   828: getfield 763	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
+    //   828: getfield 765	com/tencent/mobileqq/apollo/data/ApolloDress:jdField_a_of_type_Int	I
     //   831: iload_3
-    //   832: invokestatic 815	com/tencent/mobileqq/apollo/script/SpriteRscBuilder:a	(Ljava/lang/String;IZ)Ljava/lang/String;
+    //   832: invokestatic 817	com/tencent/mobileqq/apollo/script/SpriteRscBuilder:a	(Ljava/lang/String;IZ)Ljava/lang/String;
     //   835: invokevirtual 309	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   838: pop
     //   839: iload 5
@@ -1733,30 +1733,30 @@ public class SpriteRscBuilder
     //   965: new 210	java/lang/StringBuilder
     //   968: dup
     //   969: invokespecial 211	java/lang/StringBuilder:<init>	()V
-    //   972: ldc_w 817
+    //   972: ldc_w 819
     //   975: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   978: aload_1
     //   979: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   982: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   985: invokestatic 659	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   985: invokestatic 661	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   988: aload 13
     //   990: ifnull +89 -> 1079
     //   993: aload 15
-    //   995: invokeinterface 818 1 0
+    //   995: invokeinterface 820 1 0
     //   1000: newarray int
     //   1002: astore 16
     //   1004: aload 15
-    //   1006: invokeinterface 819 1 0
+    //   1006: invokeinterface 821 1 0
     //   1011: astore 15
     //   1013: iconst_0
     //   1014: istore 5
     //   1016: aload 15
-    //   1018: invokeinterface 781 1 0
+    //   1018: invokeinterface 783 1 0
     //   1023: ifeq +36 -> 1059
     //   1026: aload 16
     //   1028: iload 5
     //   1030: aload 15
-    //   1032: invokeinterface 785 1 0
+    //   1032: invokeinterface 787 1 0
     //   1037: checkcast 61	java/lang/Integer
     //   1040: invokevirtual 65	java/lang/Integer:intValue	()I
     //   1043: iastore
@@ -1772,13 +1772,13 @@ public class SpriteRscBuilder
     //   1060: invokevirtual 208	com/tencent/mobileqq/apollo/script/SpriteContext:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1063: aload_1
     //   1064: aload 13
-    //   1066: invokevirtual 822	com/tencent/mobileqq/apollo/ApolloManager:a	()Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;
+    //   1066: invokevirtual 824	com/tencent/mobileqq/apollo/ApolloManager:a	()Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;
     //   1069: iload 4
     //   1071: aload 16
     //   1073: iconst_m1
     //   1074: iconst_m1
     //   1075: iconst_1
-    //   1076: invokestatic 825	com/tencent/mobileqq/apollo/store/ApolloResDownloader:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;I[IIIZ)V
+    //   1076: invokestatic 827	com/tencent/mobileqq/apollo/store/ApolloResDownloader:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;I[IIIZ)V
     //   1079: aload 14
     //   1081: areturn
     //   1082: aconst_null
@@ -1810,30 +1810,30 @@ public class SpriteRscBuilder
     //   1131: new 210	java/lang/StringBuilder
     //   1134: dup
     //   1135: invokespecial 211	java/lang/StringBuilder:<init>	()V
-    //   1138: ldc_w 817
+    //   1138: ldc_w 819
     //   1141: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1144: aload_1
     //   1145: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1148: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1151: invokestatic 659	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1151: invokestatic 661	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1154: aload 13
     //   1156: ifnull +83 -> 1239
     //   1159: aload 15
-    //   1161: invokeinterface 818 1 0
+    //   1161: invokeinterface 820 1 0
     //   1166: newarray int
     //   1168: astore 14
     //   1170: aload 15
-    //   1172: invokeinterface 819 1 0
+    //   1172: invokeinterface 821 1 0
     //   1177: astore 15
     //   1179: iconst_0
     //   1180: istore 5
     //   1182: aload 15
-    //   1184: invokeinterface 781 1 0
+    //   1184: invokeinterface 783 1 0
     //   1189: ifeq +30 -> 1219
     //   1192: aload 14
     //   1194: iload 5
     //   1196: aload 15
-    //   1198: invokeinterface 785 1 0
+    //   1198: invokeinterface 787 1 0
     //   1203: checkcast 61	java/lang/Integer
     //   1206: invokevirtual 65	java/lang/Integer:intValue	()I
     //   1209: iastore
@@ -1846,13 +1846,13 @@ public class SpriteRscBuilder
     //   1220: invokevirtual 208	com/tencent/mobileqq/apollo/script/SpriteContext:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1223: aload_1
     //   1224: aload 13
-    //   1226: invokevirtual 822	com/tencent/mobileqq/apollo/ApolloManager:a	()Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;
+    //   1226: invokevirtual 824	com/tencent/mobileqq/apollo/ApolloManager:a	()Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;
     //   1229: iload 4
     //   1231: aload 14
     //   1233: iconst_m1
     //   1234: iconst_m1
     //   1235: iconst_1
-    //   1236: invokestatic 825	com/tencent/mobileqq/apollo/store/ApolloResDownloader:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;I[IIIZ)V
+    //   1236: invokestatic 827	com/tencent/mobileqq/apollo/store/ApolloResDownloader:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;I[IIIZ)V
     //   1239: aconst_null
     //   1240: areturn
     //   1241: astore 14
@@ -1876,30 +1876,30 @@ public class SpriteRscBuilder
     //   1276: new 210	java/lang/StringBuilder
     //   1279: dup
     //   1280: invokespecial 211	java/lang/StringBuilder:<init>	()V
-    //   1283: ldc_w 817
+    //   1283: ldc_w 819
     //   1286: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1289: aload_1
     //   1290: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1293: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1296: invokestatic 659	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1296: invokestatic 661	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1299: aload 13
     //   1301: ifnull +83 -> 1384
     //   1304: aload 15
-    //   1306: invokeinterface 818 1 0
+    //   1306: invokeinterface 820 1 0
     //   1311: newarray int
     //   1313: astore 16
     //   1315: aload 15
-    //   1317: invokeinterface 819 1 0
+    //   1317: invokeinterface 821 1 0
     //   1322: astore 15
     //   1324: iconst_0
     //   1325: istore 5
     //   1327: aload 15
-    //   1329: invokeinterface 781 1 0
+    //   1329: invokeinterface 783 1 0
     //   1334: ifeq +30 -> 1364
     //   1337: aload 16
     //   1339: iload 5
     //   1341: aload 15
-    //   1343: invokeinterface 785 1 0
+    //   1343: invokeinterface 787 1 0
     //   1348: checkcast 61	java/lang/Integer
     //   1351: invokevirtual 65	java/lang/Integer:intValue	()I
     //   1354: iastore
@@ -1912,13 +1912,13 @@ public class SpriteRscBuilder
     //   1365: invokevirtual 208	com/tencent/mobileqq/apollo/script/SpriteContext:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1368: aload_1
     //   1369: aload 13
-    //   1371: invokevirtual 822	com/tencent/mobileqq/apollo/ApolloManager:a	()Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;
+    //   1371: invokevirtual 824	com/tencent/mobileqq/apollo/ApolloManager:a	()Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;
     //   1374: iload 4
     //   1376: aload 16
     //   1378: iconst_m1
     //   1379: iconst_m1
     //   1380: iconst_1
-    //   1381: invokestatic 825	com/tencent/mobileqq/apollo/store/ApolloResDownloader:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;I[IIIZ)V
+    //   1381: invokestatic 827	com/tencent/mobileqq/apollo/store/ApolloResDownloader:a	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/apollo/store/ApolloResDownloader$OnApolloDownLoadListener;I[IIIZ)V
     //   1384: aload 14
     //   1386: athrow
     //   1387: astore 14

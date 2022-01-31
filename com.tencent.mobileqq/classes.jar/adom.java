@@ -1,19 +1,45 @@
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.freshnews.QQInputView;
+import android.app.Activity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.qphone.base.util.QLog;
 
 public class adom
-  implements Runnable
+  implements FileVideoManager.FileVideoManagerInitCallback
 {
-  public adom(QQInputView paramQQInputView) {}
+  public adom(FileModel paramFileModel, Activity paramActivity) {}
   
-  public void run()
+  public void a() {}
+  
+  public void b()
   {
-    QQInputView.a(this.a).setVisibility(0);
-    QQInputView.a(this.a).setImageResource(2130844546);
-    if (AppSetting.b) {
-      QQInputView.a(this.a).setContentDescription("表情");
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localQQAppInterface == null)
+      {
+        QLog.e("FileModel<FileAssistant>", 1, "Start VideoActivity is not in QQ!");
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      Object localObject;
+      for (;;)
+      {
+        localObject = null;
+      }
+      if (((FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel).status == 0) || (FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel).status == 3)) && (((this.jdField_a_of_type_AndroidAppActivity instanceof ChatActivity)) || ((this.jdField_a_of_type_AndroidAppActivity instanceof SplashActivity))) && (!FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel).bSend))
+      {
+        localObject.a().a(FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel).nSessionId);
+        return;
+      }
+      FileModel.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel, this.jdField_a_of_type_AndroidAppActivity);
     }
   }
 }

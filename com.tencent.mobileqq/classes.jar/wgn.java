@@ -1,15 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
 
 public class wgn
-  implements BubblePopupWindow.OnDismissListener
+  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
 {
-  public wgn(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
+  public wgn(TroopChatPie paramTroopChatPie) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if (!HWTroopUtils.a(paramInt)) {
+      this.a.br();
+    }
+    if (this.a.a != null) {
+      this.a.a.c(HWTroopUtils.b(paramInt));
+    }
   }
 }
 

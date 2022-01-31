@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView.IAddTopicClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalInfo;
 
-class afbd
-  implements View.OnClickListener
+public final class afbd
+  implements Parcelable.Creator
 {
-  afbd(afbc paramafbc) {}
-  
-  public void onClick(View paramView)
+  public MedalInfo a(Parcel paramParcel)
   {
-    if (paramView == null) {}
-    while (StartLiveTopicLabelListView.a(this.a.a) == null) {
-      return;
-    }
-    StartLiveTopicLabelListView.a(this.a.a).a();
+    return new MedalInfo(paramParcel);
+  }
+  
+  public MedalInfo[] a(int paramInt)
+  {
+    return new MedalInfo[paramInt];
   }
 }
 

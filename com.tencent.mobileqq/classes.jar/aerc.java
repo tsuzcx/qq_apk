@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView.IInterestTagItemViewCallback;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aerc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aerc(InterestTagItemView paramInterestTagItemView) {}
+  public aerc(EmoticonManager paramEmoticonManager, Emoticon paramEmoticon) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((paramView == InterestTagItemView.a(this.a)) || (paramView == this.a))
-    {
-      InterestTagItemView.a(this.a).a(InterestTagItemView.a(this.a));
-      this.a.a();
+    EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+    if (!EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon)) {
+      QLog.e("EmoticonManager", 1, "saveEmoticon fail epId = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId + ", eId = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerc
  * JD-Core Version:    0.7.0.1
  */

@@ -112,7 +112,7 @@ public class FTSEntitySearchDetailActivity
     super.doOnCreate(paramBundle);
     this.b = jdField_a_of_type_JavaUtilList;
     this.jdField_a_of_type_Int = getIntent().getIntExtra("extra_key_fts_type", 0);
-    setContentView(2130968794);
+    setContentView(2130968798);
     paramBundle = getIntent().getStringExtra("uin");
     int i = getIntent().getIntExtra("uinType", -1);
     if (i == 3000) {
@@ -123,7 +123,7 @@ public class FTSEntitySearchDetailActivity
       Object localObject = super.getSupportFragmentManager();
       paramBundle = FTSEntitySearchDetailFragment.a(getIntent().getStringExtra("original_keyword"), getIntent().getStringExtra("segment_keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131362369, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131362372, paramBundle);
       ((FragmentTransaction)localObject).commit();
       return true;
       super.setTitle(ContactUtils.a(this.app, paramBundle, i));

@@ -22,8 +22,8 @@ import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import obx;
-import oby;
+import ogm;
+import ogn;
 
 public class SquareFeedListPageLoader
   extends FeedListPageLoaderBase
@@ -36,14 +36,14 @@ public class SquareFeedListPageLoader
   private void d()
   {
     GetSquareBannerRequest localGetSquareBannerRequest = new GetSquareBannerRequest();
-    CmdTaskManger.a().a(localGetSquareBannerRequest, new obx(this));
+    CmdTaskManger.a().a(localGetSquareBannerRequest, new ogm(this));
   }
   
   private void e()
   {
     if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestSquareGetSquareBannerRequest$GetSquareBannerResponse != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData != null))
     {
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestSquareGetSquareBannerRequest$GetSquareBannerResponse.jdField_a_of_type_Int != 0) || (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.a.isSuccess())) {
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestSquareGetSquareBannerRequest$GetSquareBannerResponse.jdField_a_of_type_Int != 0) || (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.errorInfo.isSuccess())) {
         break label65;
       }
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.jdField_c_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestSquareGetSquareBannerRequest$GetSquareBannerResponse.jdField_a_of_type_JavaUtilList;
@@ -53,8 +53,8 @@ public class SquareFeedListPageLoader
       this.b.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData);
       return;
       label65:
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.a.isSuccess()) {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.a = new ErrorMessage(this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestSquareGetSquareBannerRequest$GetSquareBannerResponse.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestSquareGetSquareBannerRequest$GetSquareBannerResponse.b);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.errorInfo.isSuccess()) {
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.errorInfo = new ErrorMessage(this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestSquareGetSquareBannerRequest$GetSquareBannerResponse.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestSquareGetSquareBannerRequest$GetSquareBannerResponse.b);
       }
     }
   }
@@ -104,7 +104,7 @@ public class SquareFeedListPageLoader
   
   protected JobSegment a(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
   {
-    return new oby(paramFeedIdListCache, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation);
+    return new ogn(paramFeedIdListCache, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation);
   }
   
   public void a(SquareFeedData paramSquareFeedData)

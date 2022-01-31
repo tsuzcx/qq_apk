@@ -1,53 +1,16 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.OutSingleSharePlayMode;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-import com.tencent.mobileqq.app.FriendListObserver;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
 
 public class nlb
-  extends FriendListObserver
+  extends DownloadPic2FileJob
 {
-  public nlb(OutSingleSharePlayMode paramOutSingleSharePlayMode) {}
+  public nlb(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public boolean b()
   {
-    String str;
-    if ((paramBoolean) && (paramString != null))
-    {
-      str = QQStoryContext.a().a(paramString);
-      if (!TextUtils.equals(str, paramString)) {
-        break label27;
-      }
-    }
-    label137:
-    for (;;)
-    {
-      return;
-      label27:
-      int i = 0;
-      for (;;)
-      {
-        if (i >= this.a.a.jdField_a_of_type_AndroidUtilSparseArray.size()) {
-          break label137;
-        }
-        VideoPlayerPagerAdapter.VideoViewHolder localVideoViewHolder = (VideoPlayerPagerAdapter.VideoViewHolder)this.a.a.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-        if (localVideoViewHolder == null) {
-          break;
-        }
-        if (TextUtils.equals(paramString, String.valueOf(((StoryVideoItem)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(localVideoViewHolder.c)).mOwnerUid)))
-        {
-          this.a.d();
-          SLog.d("Q.qqstory.player.NewFriendsPlayMode", "update nickname=%s, uin=%s", new Object[] { str, paramString });
-          return;
-        }
-        i += 1;
-      }
-    }
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
+    return true;
   }
 }
 

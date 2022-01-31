@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
-public class aaro
-  implements ArkAppContainer.ArkAppModuleCallback
+public final class aaro
+  implements Parcelable.Creator
 {
-  public aaro(ArkAiAppPanel paramArkAiAppPanel) {}
-  
-  public boolean a(ArkAppContainer paramArkAppContainer)
+  public ArFeatureInfo a(Parcel paramParcel)
   {
-    if (ArkAiAppPanel.a(this.a) != null)
-    {
-      ArkAiAppPanel.a(this.a).ai();
-      return true;
-    }
-    return false;
+    return new ArFeatureInfo(paramParcel);
   }
   
-  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
+  public ArFeatureInfo[] a(int paramInt)
   {
-    return false;
+    return new ArFeatureInfo[paramInt];
   }
 }
 

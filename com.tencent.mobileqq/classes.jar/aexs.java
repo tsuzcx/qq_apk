@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aexs
-  implements View.OnClickListener
+public final class aexs
+  implements DialogInterface.OnClickListener
 {
-  public aexs(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.j();
-    ShortVideoCommentsView.a(this.a).setVisibility(8);
-    ShortVideoCommentsView.a(this.a, 2);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

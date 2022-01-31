@@ -1,35 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.telephony.TelephonyManager;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
 
 public class jrk
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  public jrk(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jrk(AVActivity paramAVActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramIntent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL")) {
-      return;
-    }
-    switch (((TelephonyManager)paramContext.getSystemService("phone")).getCallState())
+    if (this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null)
     {
-    default: 
-      return;
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().r = false;
+      this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.l(true);
+      this.a.jdField_a_of_type_ComTencentAvUiVoiceChangeChooseDialog = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(CallbackWaitingActivityExt.a(), 2, "state is TelephonyManager.CALL_STATE_RINGING");
-    }
-    AudioUtil.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jrk
  * JD-Core Version:    0.7.0.1
  */

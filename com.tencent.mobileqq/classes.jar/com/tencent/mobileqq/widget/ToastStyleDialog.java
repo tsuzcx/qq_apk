@@ -16,8 +16,8 @@ public class ToastStyleDialog
     getWindow().setFlags(16, 16);
     getWindow().setFlags(8, 8);
     getWindow().setGravity(17);
-    setContentView(2130970642);
-    this.a = ((TextView)findViewById(2131364105));
+    setContentView(2130970655);
+    this.a = ((TextView)findViewById(2131364130));
     setCancelable(false);
   }
   
@@ -28,7 +28,7 @@ public class ToastStyleDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ToastStyleDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,19 @@
 import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.IApolloRenderView;
-import com.tencent.mobileqq.apollo.script.SpriteAioScript;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
-public class yrv
+class yrv
   implements Runnable
 {
-  public yrv(SpriteAioScript paramSpriteAioScript, IApolloRenderView paramIApolloRenderView, String paramString) {}
+  yrv(yru paramyru, byte[] paramArrayOfByte, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker() != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker().a != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.getWorker().a.a(this.jdField_a_of_type_JavaLangString);
+    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ArrayOfByte != null)) {
+      QLog.d("ApolloRender", 2, "httpLog httpCallBack data.len=" + this.jdField_a_of_type_ArrayOfByte.length);
     }
+    ((ApolloSurfaceView)this.jdField_a_of_type_Yru.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(this.jdField_a_of_type_Yru.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

@@ -1,23 +1,24 @@
-import android.widget.ImageView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
+import cooperation.qzone.webviewplugin.QZoneGiftFullScreenJsPlugin;
 
 public class anjn
-  implements Runnable
+  implements QzoneGiftFullScreenViewController.GiftFullScreenPlayListener
 {
-  public anjn(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anjn(QZoneGiftFullScreenJsPlugin paramQZoneGiftFullScreenJsPlugin, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    this.a.d = false;
-    this.a.s();
-    QIMEffectCameraCaptureUnit.f(this.a, true);
-    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(0);
-    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(true);
+    if (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneGiftFullScreenJsPlugin.a != null)
+    {
+      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playFinish:1})";
+      this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneGiftFullScreenJsPlugin.a.callJs(str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjn
  * JD-Core Version:    0.7.0.1
  */

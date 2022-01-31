@@ -1,24 +1,39 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.OnApolloViewListener;
+import android.os.Message;
+import android.widget.SeekBar;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class yky
   implements Runnable
 {
-  public yky(ApolloRender paramApolloRender, OnApolloViewListener paramOnApolloViewListener, int paramInt1, int paramInt2) {}
+  public yky(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloOnApolloViewListener != null)
+    Message localMessage;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.b()) && (this.a.jdField_a_of_type_AndroidViewSurfaceView != null))
     {
-      QLog.d("ApolloRender", 2, "cb.onSurfaceReady");
-      this.jdField_a_of_type_ComTencentMobileqqApolloOnApolloViewListener.onSurfaceReady(this.jdField_a_of_type_Int, this.b);
+      localMessage = Message.obtain();
+      localMessage.arg1 = this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "此时时间为+" + localMessage.arg1);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(localMessage.arg1);
+      if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {}
     }
+    else
+    {
+      return;
+    }
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yky
  * JD-Core Version:    0.7.0.1
  */

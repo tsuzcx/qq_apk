@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
-public final class mcb
-  extends PublicAccountObserver
+class mcb
+  implements Runnable
 {
-  public mcb(boolean paramBoolean) {}
+  mcb(mbz parammbz) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean + ", isUGC=" + this.a);
-    }
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "initCompositionManager: error, show toast");
+    QQToast.a(this.a.a, 2131438942, 0).a();
   }
 }
 

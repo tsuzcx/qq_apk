@@ -35,23 +35,7 @@ public class ReadInJoyNativeAdAppFragment
   private String b;
   private String c;
   
-  public static void a(Activity paramActivity, Class paramClass, Bundle paramBundle)
-  {
-    if ((paramActivity == null) || (paramBundle == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNativeAdAppFragment", 2, "error");
-      }
-      return;
-    }
-    GdtLog.b("ReadInJoyNativeAdAppFragment", "start");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("public_fragment_window_feature", 1);
-    localIntent.putExtras(paramBundle);
-    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, paramClass);
-  }
-  
-  private void b()
+  private void a()
   {
     Object localObject1 = getArguments();
     Object localObject2 = ((Bundle)localObject1).getString("param_ad_json");
@@ -63,6 +47,7 @@ public class ReadInJoyNativeAdAppFragment
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdKdPos = ((Bundle)localObject1).getInt("param_ad_app_info_kd_pos");
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdProductId = ((Bundle)localObject1).getString("param_ad_app_info_product_id");
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdProductType = ((Bundle)localObject1).getInt("param_ad_app_info_product_type");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdApurl = ((Bundle)localObject1).getString("param_ad_app_info_ap_url");
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyNativeAdAppFragment", 2, "check data: " + (String)localObject2);
     }
@@ -110,9 +95,25 @@ public class ReadInJoyNativeAdAppFragment
     }
   }
   
-  public void a(Activity paramActivity)
+  public static void a(Activity paramActivity, Class paramClass, Bundle paramBundle)
   {
-    super.a(paramActivity);
+    if ((paramActivity == null) || (paramBundle == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNativeAdAppFragment", 2, "error");
+      }
+      return;
+    }
+    GdtLog.b("ReadInJoyNativeAdAppFragment", "start");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    localIntent.putExtras(paramBundle);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, paramClass);
+  }
+  
+  public void initWindowStyleAndAnimation(Activity paramActivity)
+  {
+    super.initWindowStyleAndAnimation(paramActivity);
     if (paramActivity == null) {
       return;
     }
@@ -120,7 +121,7 @@ public class ReadInJoyNativeAdAppFragment
     paramActivity.getWindow().addFlags(1024);
   }
   
-  public boolean b()
+  public boolean needImmersive()
   {
     return false;
   }
@@ -129,12 +130,12 @@ public class ReadInJoyNativeAdAppFragment
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppInterface());
-    b();
+    a();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969632, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969628, paramViewGroup, false);
     this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView = ((ReadInJoyNativeAdAppContentView)paramLayoutInflater.findViewById(2131367239));
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView.setData((AdModuleVideo)this.jdField_a_of_type_JavaUtilArrayList.get(0), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);

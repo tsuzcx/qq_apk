@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import java.util.List;
+import com.tencent.biz.pubaccount.PublicAccountManager.refuseAcceptDone;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class wdi
-  implements Runnable
+  implements PublicAccountManager.refuseAcceptDone
 {
-  public wdi(TipsManager paramTipsManager) {}
+  public wdi(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (TipsManager.a(this.a) != null) {
-      TipsManager.a(this.a).a();
+    this.a.aY();
+    if (!paramBoolean)
+    {
+      this.a.w(2131430035);
+      return;
     }
-    TipsManager.a(this.a, null);
-    if (this.a.a != null) {
-      this.a.a.clear();
+    EntityManager localEntityManager = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    AccountDetail localAccountDetail = (AccountDetail)localEntityManager.a(AccountDetail.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (localAccountDetail != null) {
+      localEntityManager.b(localAccountDetail);
     }
+    localEntityManager.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
+    this.a.A();
   }
 }
 

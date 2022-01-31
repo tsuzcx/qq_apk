@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.vas.VasExtensionObserver;
 
 public class sjp
-  implements DialogInterface.OnClickListener
+  extends VasExtensionObserver
 {
-  public sjp(DialogActivity paramDialogActivity) {}
+  public sjp(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface = this.a.app.a();
-    paramDialogInterface.e();
-    paramDialogInterface.d();
-    this.a.finish();
+    if (paramBoolean) {
+      this.a.a(true);
+    }
   }
 }
 

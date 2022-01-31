@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
 
-public final class adar
-  implements Parcelable.Creator
+class adar
+  implements Runnable
 {
-  public ForwardFileInfo a(Parcel paramParcel)
-  {
-    return new ForwardFileInfo(paramParcel, null);
-  }
+  adar(adap paramadap, long paramLong) {}
   
-  public ForwardFileInfo[] a(int paramInt)
+  public void run()
   {
-    return new ForwardFileInfo[paramInt];
+    this.jdField_a_of_type_Adap.a.e();
+    QfileBaseRecentFileTabView.E(this.jdField_a_of_type_Adap.a).a().a(this.jdField_a_of_type_Long);
   }
 }
 

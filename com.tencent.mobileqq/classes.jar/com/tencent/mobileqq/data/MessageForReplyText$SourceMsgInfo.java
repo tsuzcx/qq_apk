@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class MessageForReplyText$SourceMsgInfo
   implements Serializable
 {
+  public static final int REPLY_TYPE_ABNORMAL = -1;
   public static final int REPLY_TYPE_NORMAL = 0;
   public static final int REPLY_TYPE_PIC_COMMENT = 2;
   public static final int REPLY_TYPE_SHARE_COMMENT = 1;

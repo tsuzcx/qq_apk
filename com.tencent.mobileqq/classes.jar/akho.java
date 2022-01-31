@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.util.FaceManager;
 
 public class akho
+  extends TroopObserver
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b = "";
+  private akho(FaceManager paramFaceManager) {}
   
-  public akho(ColorRingPlayer paramColorRingPlayer)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
+    this.a.c(103, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
   }
 }
 

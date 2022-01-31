@@ -1,65 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.binhai.BinHaiHandler;
-import com.tencent.mobileqq.binhai.BinHaiOpenRedPackDialog;
-import com.tencent.mobileqq.binhai.BinHaiOpenRedPackDialog.Listener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class agir
-  implements BinHaiOpenRedPackDialog.Listener
+public final class agir
+  implements INetEngine.IBreakDownFix
 {
-  agir(agiq paramagiq) {}
-  
-  public void a(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog)
+  public void a(NetReq paramNetReq, NetResp paramNetResp)
   {
-    boolean bool = paramBinHaiOpenRedPackDialog.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "onRedPackDialogBackPress isShowingRank=" + bool);
-    }
-    if (bool)
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      paramBinHaiOpenRedPackDialog.dismiss();
-      ScanTorchActivity.w(this.a.a, false);
-      this.a.a.finish();
-    }
-  }
-  
-  public void a(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog, String paramString1, String paramString2)
-  {
-    ScanTorchActivity.t(this.a.a, true);
-  }
-  
-  public void b(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog)
-  {
-    ScanTorchActivity.w(this.a.a, false);
-    this.a.a.b.reportClickEvent("dc00898", "", this.a.a.b.getCurrentAccountUin(), "0X8008390", "0X8008390", 0, 0, "", "", paramBinHaiOpenRedPackDialog.h, "");
-  }
-  
-  public void b(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "binhai onOpenRedBag, bill=" + paramString1 + ", actId=" + paramString2);
-    }
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1))) {
-      ((BinHaiHandler)this.a.a.b.getBusinessHandler(3)).a(paramString2, paramString1);
-    }
-    this.a.a.b.reportClickEvent("dc00898", "", this.a.a.b.getCurrentAccountUin(), "0X800838F", "0X800838F", 0, 0, "", "", ScanTorchActivity.c(this.a.a), "");
-    if (!this.a.a.isFinishing()) {
-      ScanTorchActivity.n(this.a.a);
-    }
-  }
-  
-  public void c(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog)
-  {
-    this.a.a.finish();
-  }
-  
-  public void d(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog)
-  {
-    paramBinHaiOpenRedPackDialog.dismiss();
-    ScanTorchActivity.w(this.a.a, false);
-    this.a.a.finish();
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
+      paramNetResp.c = 0L;
+      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
+      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.jdField_a_of_type_JavaLangString = (str + "range=" + paramNetReq.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("OlympicResources", 2, "IBreakDownFix, " + paramNetResp);
   }
 }
 

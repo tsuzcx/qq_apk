@@ -1,34 +1,74 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.Iterator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ArticleTopicData.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import java.util.ArrayList;
 import java.util.List;
 
-class mrl
-  implements Runnable
+public final class mrl
+  implements Parcelable.Creator
 {
-  mrl(mrk parammrk) {}
-  
-  public void run()
+  public FastWebArticleInfo a(Parcel paramParcel)
   {
-    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class);
-    if (localList == null) {
-      return;
+    int i = 0;
+    boolean bool2 = true;
+    FastWebArticleInfo localFastWebArticleInfo = new FastWebArticleInfo();
+    localFastWebArticleInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localFastWebArticleInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localFastWebArticleInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.d = paramParcel.readString();
+    localFastWebArticleInfo.e = paramParcel.readString();
+    localFastWebArticleInfo.f = paramParcel.readString();
+    localFastWebArticleInfo.h = paramParcel.readString();
+    localFastWebArticleInfo.g = paramParcel.readString();
+    localFastWebArticleInfo.j = paramParcel.readString();
+    localFastWebArticleInfo.i = paramParcel.readString();
+    localFastWebArticleInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localFastWebArticleInfo.k = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
+    {
+      bool1 = true;
+      localFastWebArticleInfo.jdField_a_of_type_Boolean = bool1;
+      localFastWebArticleInfo.l = paramParcel.readString();
+      localFastWebArticleInfo.jdField_c_of_type_Long = paramParcel.readLong();
+      if (paramParcel.readInt() != 1) {
+        break label277;
+      }
     }
-    Object localObject = localList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localEntityManager.b((ReadInJoySearchHistoryEntity)((Iterator)localObject).next());
+    ArrayList localArrayList;
+    label277:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localFastWebArticleInfo.jdField_b_of_type_Boolean = bool1;
+      int j = paramParcel.readInt();
+      if (j < 0) {
+        break label293;
+      }
+      localArrayList = new ArrayList();
+      while (i < j)
+      {
+        ArticleTopicData.TopicInfo localTopicInfo = new ArticleTopicData.TopicInfo();
+        localTopicInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+        localTopicInfo.jdField_a_of_type_Long = paramParcel.readLong();
+        localTopicInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+        localArrayList.add(localTopicInfo);
+        i += 1;
+      }
+      bool1 = false;
+      break;
     }
-    localList.clear();
-    localObject = this.a.a.a.obtainMessage(1);
-    ((Message)localObject).obj = localList;
-    this.a.a.a.sendMessage((Message)localObject);
-    localEntityManager.a();
+    localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = localArrayList;
+    return localFastWebArticleInfo;
+    label293:
+    localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = null;
+    return localFastWebArticleInfo;
+  }
+  
+  public FastWebArticleInfo[] a(int paramInt)
+  {
+    return new FastWebArticleInfo[paramInt];
   }
 }
 

@@ -1,38 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.view.View;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 class aaqd
-  implements DialogInterface.OnClickListener
+  implements ImageAssetDelegate
 {
-  aaqd(aaqb paramaaqb, QQCustomDialog paramQQCustomDialog) {}
+  aaqd(aaqc paramaaqc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    ArkAppCenter.a().post(new aaqe(this));
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    View localView = (View)this.a.a.d.get();
+    Bitmap localBitmap2 = (Bitmap)this.a.a.a.a.a.get(paramLottieImageAsset.getFileName());
+    Bitmap localBitmap1 = localBitmap2;
+    if (localBitmap2 == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label38:
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaqb.a, "ark_authority_api_user_info", this.jdField_a_of_type_Aaqb.c, 2);
-      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438819), 2131435269, 2131435269, new DialogUtil.DialogOnClickAdapter(), null);
-      try
-      {
-        paramDialogInterface.show();
-        return;
+      paramLottieImageAsset = new StringBuilder().append("loadRollAnimation, 加载图片失败, image[").append(paramLottieImageAsset.getFileName()).append("], canvas[");
+      if (localView == null) {
+        break label116;
       }
-      catch (Exception paramDialogInterface) {}
     }
-    catch (Exception paramDialogInterface)
+    label116:
+    for (boolean bool = true;; bool = false)
     {
-      break label38;
+      QLog.w("WorldCupMgr", 1, bool + "]");
+      localBitmap1 = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
+      return localBitmap1;
     }
   }
 }

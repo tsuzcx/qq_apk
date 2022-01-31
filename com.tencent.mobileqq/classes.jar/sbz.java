@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class sbz
-  extends QvipSpecialCareObserver
+public final class sbz
+  implements DialogInterface.OnClickListener
 {
-  public sbz(ChatSettingActivity paramChatSettingActivity) {}
-  
-  public void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramObject != null) {
-      ((Integer)paramObject).intValue();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

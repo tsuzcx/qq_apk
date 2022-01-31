@@ -1,20 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import java.net.URL;
 
 public class nbn
-  extends Job
 {
-  public nbn(QQStoryCmdHandler paramQQStoryCmdHandler, NetworkRequest paramNetworkRequest) {}
+  public int a;
+  public URL a;
+  public int b;
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public static nbn a(URL paramURL, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a().a(880001, "no network", null);
-    return null;
+    nbn localnbn = new nbn();
+    localnbn.jdField_a_of_type_JavaNetURL = paramURL;
+    localnbn.jdField_a_of_type_Int = paramInt1;
+    localnbn.b = paramInt2;
+    return localnbn;
   }
 }
 

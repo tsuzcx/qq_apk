@@ -1,22 +1,20 @@
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
-import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
 public class aoff
-  implements Runnable
+  implements IMediaPlayer.OnPreparedListener
 {
-  public aoff(VoteDashItem paramVoteDashItem, VoteLayer.VoteItem paramVoteItem, View paramView) {}
+  public aoff(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void run()
+  public void a_(IMediaPlayer paramIMediaPlayer)
   {
-    VoteLayer.VoteItem localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem;
-    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem.a) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localVoteItem.a = bool;
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-      return;
-    }
+    SLog.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
+    LocalVideoSelectActivity.a(this.a).b();
+    LocalVideoSelectActivity.a(this.a).postDelayed(new aofg(this), 300L);
   }
 }
 

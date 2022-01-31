@@ -1,19 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class wca
-  implements wcd
+  implements Animator.AnimatorListener
 {
-  public wca(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
+  public wca(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void a(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramView.getTag() instanceof Integer))
-    {
-      paramView = (Integer)paramView.getTag();
-      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
-    }
+    this.a.a.removeHeaderView(PublicAccountChatPie.a(this.a));
+    PublicAccountChatPie.a(this.a, true);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

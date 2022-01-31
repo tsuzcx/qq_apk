@@ -13,8 +13,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.manager.Manager;
-import zry;
-import zrz;
+import zyj;
+import zyk;
 
 public class LbsInfoMgr
   implements Manager
@@ -30,7 +30,7 @@ public class LbsInfoMgr
   {
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_Int = 900000;
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new zrz(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new zyk(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler = ((BizTroopHandler)paramQQAppInterface.a(22));
     this.jdField_a_of_type_ComTencentMobileqqAppLbsLbsInfoMgr$LocationInfo = new LbsInfoMgr.LocationInfo();
@@ -78,7 +78,7 @@ public class LbsInfoMgr
       return;
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    ThreadManager.post(new zry(this), 5, null, false);
+    ThreadManager.post(new zyj(this), 5, null, false);
   }
   
   public boolean b()

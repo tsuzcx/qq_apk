@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
 
-class tnq
+public class tnq
   implements Runnable
 {
-  tnq(tnp paramtnp, Card paramCard) {}
+  public tnq(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    QQSettingSettingActivity.a(this.jdField_a_of_type_Tnp.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    if (QQLSActivity.c(this.a) != null) {
+      QQLSActivity.a(this.a).removeView(QQLSActivity.c(this.a));
+    }
+    QQLSActivity.a(this.a, null);
   }
 }
 

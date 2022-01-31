@@ -1,25 +1,54 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenter;
 
 public class afcs
-  implements ConditionSearchManager.IConfigListener
+  implements View.OnClickListener
 {
-  public afcs(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public afcs(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramInt == 2))
+    String str2 = ShortVideoCommentsView.a(this.a).getText().toString();
+    if (str2.equals(""))
     {
-      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
-        break label41;
-      }
-      NearbyPeopleProfileActivity.a(this.a).d();
-    }
-    label41:
-    while (NearbyPeopleProfileActivity.a(this.a) == null) {
+      this.a.a(this.a.getContext().getResources().getString(2131430843));
       return;
     }
+    if (str2.length() > 140)
+    {
+      this.a.a(this.a.getContext().getResources().getString(2131430844));
+      return;
+    }
+    Comments.Comment localComment = new Comments.Comment();
+    localComment.jdField_c_of_type_Long = Long.parseLong(this.a.a.getCurrentAccountUin());
+    localComment.jdField_c_of_type_JavaLangString = "";
+    String str1 = BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + this.a.a.getCurrentAccountUin(), 4).getString("nick", "");
+    paramView = str1;
+    if (TextUtils.isEmpty(str1)) {
+      paramView = this.a.a.getCurrentNickname();
+    }
+    localComment.jdField_b_of_type_JavaLangString = paramView;
+    localComment.jdField_a_of_type_JavaLangString = str2;
+    localComment.jdField_b_of_type_Long = (System.currentTimeMillis() / 1000L);
+    localComment.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfo = ShortVideoCommentsView.a(this.a);
+    if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).jdField_c_of_type_Long > 0L))
+    {
+      localComment.e = ShortVideoCommentsView.a(this.a).jdField_c_of_type_JavaLangString;
+      localComment.jdField_d_of_type_JavaLangString = ShortVideoCommentsView.a(this.a).jdField_b_of_type_JavaLangString;
+      localComment.jdField_d_of_type_Long = ShortVideoCommentsView.a(this.a).jdField_c_of_type_Long;
+    }
+    ShortVideoCommentsView.a(this.a).a(localComment);
+    ShortVideoCommentsView.a(this.a, localComment);
   }
 }
 

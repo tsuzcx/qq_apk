@@ -42,11 +42,11 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
 import mqq.os.MqqHandler;
-import nzv;
-import nzw;
-import nzx;
-import nzy;
-import nzz;
+import oek;
+import oel;
+import oem;
+import oen;
+import oeo;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class MystoryListView
@@ -67,7 +67,7 @@ public class MystoryListView
   protected boolean a;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
-  private AbsListView.OnScrollListener jdField_b_of_type_ComTencentWidgetAbsListView$OnScrollListener = new nzv(this);
+  private AbsListView.OnScrollListener jdField_b_of_type_ComTencentWidgetAbsListView$OnScrollListener = new oek(this);
   private boolean c;
   private boolean d;
   private boolean e;
@@ -173,7 +173,7 @@ public class MystoryListView
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
     super.setBackgroundColor(-1);
-    super.setContentBackground(2130838583);
+    super.setContentBackground(2130838589);
   }
   
   public void a(Activity paramActivity, IMyStoryListView paramIMyStoryListView, View paramView)
@@ -243,7 +243,7 @@ public class MystoryListView
   
   public void b()
   {
-    ThreadManager.getUIHandler().postDelayed(new nzz(this), 300L);
+    ThreadManager.getUIHandler().postDelayed(new oeo(this), 300L);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.j();
   }
   
@@ -336,7 +336,7 @@ public class MystoryListView
     v();
     if (!this.jdField_f_of_type_Boolean)
     {
-      ThreadManager.getUIHandler().postDelayed(new nzw(this), 500L);
+      ThreadManager.getUIHandler().postDelayed(new oel(this), 500L);
       return;
     }
     Object localObject = (FeedManager)SuperManager.a(11);
@@ -479,7 +479,7 @@ public class MystoryListView
     for (boolean bool = true;; bool = false)
     {
       AssertUtils.a(bool);
-      this.jdField_a_of_type_JavaLangRunnable = new nzx(this, arrayOfInt1, arrayOfInt2, arrayOfFloat);
+      this.jdField_a_of_type_JavaLangRunnable = new oem(this, arrayOfInt1, arrayOfInt2, arrayOfFloat);
       if ((getFirstVisiblePosition() == 0) && (getChildCount() > 0))
       {
         int m = getChildAt(0).getTop();
@@ -493,7 +493,7 @@ public class MystoryListView
       if (this.jdField_a_of_type_JavaLangRunnable != null)
       {
         SLog.d("Q.qqstory.home.MyStoryListView", "doUIPulldownRefresh(), smoothScrollToPostion(0)!");
-        this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(0, 0, new nzy(this));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(0, 0, new oen(this));
       }
       return;
     }

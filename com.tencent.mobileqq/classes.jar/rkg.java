@@ -1,23 +1,16 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMessageHelper;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.grayversion.ShareAppLogActivity;
 
 public class rkg
   implements View.OnClickListener
 {
-  public rkg(AddRequestActivity paramAddRequestActivity) {}
+  public rkg(AboutActivity paramAboutActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = this.a.getIntent();
-    paramView.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
-    SystemMessageHelper.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), paramView);
-    if (AddRequestActivity.a(this.a) != null) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
-    }
+    this.a.startActivity(ShareAppLogActivity.buildIntent(this.a));
   }
 }
 

@@ -1,13 +1,49 @@
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.RemoteException;
+import com.tencent.mobileqq.nearby.ipc.MainProcessInterface;
+import com.tencent.mobileqq.nearby.ipc.MainProcessInterface.Stub;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcess;
+import com.tencent.qphone.base.util.QLog;
 
-class aezu
-  implements Runnable
+public class aezu
+  implements ServiceConnection
 {
-  aezu(aezt paramaezt) {}
+  public aezu(NearbyProcess paramNearbyProcess) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    PlayOperationViewModel.a(this.a.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface = MainProcessInterface.Stub.a(paramIBinder);
+    try
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface);
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceConnected.");
+      }
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isDevelopLevel()) {
+          paramComponentName.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName arg1)
+  {
+    synchronized (NearbyProcess.a(this.a))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface = null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceDisConnected.");
+      }
+      return;
+    }
   }
 }
 

@@ -1,20 +1,12 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
+import cooperation.qqfav.globalsearch.FunctionSearchEngine;
+import cooperation.qqfav.globalsearch.FunctionSearchEngine.SearchRunnable;
 
-public final class amwv
-  implements IQZonePluginManager.OnPluginReadyListener
+public class amwv
+  extends FunctionSearchEngine.SearchRunnable
 {
-  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
+  public amwv(FunctionSearchEngine paramFunctionSearchEngine)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      IQZonePluginManager.d(paramContext, paramPluginParams);
-    }
+    super(paramFunctionSearchEngine);
   }
 }
 

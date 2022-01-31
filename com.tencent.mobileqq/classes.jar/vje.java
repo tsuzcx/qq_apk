@@ -1,25 +1,40 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.TribeShortVideoMsgHolder;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 public class vje
-  implements View.OnClickListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public vje(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
+  public long a;
+  public ImageView a;
+  public CornerImageView a;
+  public String a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public CornerImageView b;
+  public String b;
+  public View c;
+  public ImageView c;
+  public TextView c;
+  public CornerImageView c;
+  public View d;
+  public TextView d;
+  public CornerImageView d;
+  public View e;
+  public TextView e;
+  public View f;
+  public TextView f;
+  public View g;
+  public TextView g;
+  public TextView h;
+  public TextView i;
+  public TextView j;
   
-  public void onClick(View paramView)
-  {
-    TribeShortVideoItemBuilder.TribeShortVideoMsgHolder localTribeShortVideoMsgHolder = (TribeShortVideoItemBuilder.TribeShortVideoMsgHolder)AIOUtils.a(paramView);
-    if (paramView == localTribeShortVideoMsgHolder.jdField_a_of_type_AndroidWidgetFrameLayout) {
-      this.a.b(localTribeShortVideoMsgHolder);
-    }
-    while (paramView != localTribeShortVideoMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout) {
-      return;
-    }
-    this.a.a(localTribeShortVideoMsgHolder);
-  }
+  public vje(QzoneFeedItemBuilder paramQzoneFeedItemBuilder) {}
 }
 
 

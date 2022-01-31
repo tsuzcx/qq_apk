@@ -1,41 +1,14 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-public class wwy
-  implements View.OnClickListener
+class wwy
+  implements BubblePopupWindow.OnDismissListener
 {
-  public wwy(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
+  wwy(wwx paramwwx, View paramView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    int i = 1;
-    paramView = this.a.a;
-    boolean bool;
-    String str;
-    if (!this.a.a.isChecked())
-    {
-      bool = true;
-      paramView.setChecked(bool);
-      this.a.c = this.a.a.isChecked();
-      this.a.h = 2;
-      paramView = this.a;
-      str = this.a.getCurrentAccountUin();
-      if (!this.a.c) {
-        break label92;
-      }
-    }
-    for (;;)
-    {
-      SharedPreUtils.O(paramView, str, i);
-      return;
-      bool = false;
-      break;
-      label92:
-      i = 0;
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

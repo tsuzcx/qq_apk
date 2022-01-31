@@ -1,26 +1,17 @@
-import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.util.ProfilePerformanceReport;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView.OnCloseListener;
 
 public class afcz
-  implements OnDrawCompleteListener
+  implements View.OnClickListener
 {
-  public afcz(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public afcz(StuffContainerView paramStuffContainerView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ProfilePerformanceReport localProfilePerformanceReport = ProfilePerformanceReport.b;
-    if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a()))
-    {
-      if (!localProfilePerformanceReport.a(1)) {
-        localProfilePerformanceReport.b(1);
-      }
-      if ((!localProfilePerformanceReport.a(8)) && (localProfilePerformanceReport.a(5))) {
-        localProfilePerformanceReport.b(8);
-      }
-      if ((!localProfilePerformanceReport.a(9)) && (localProfilePerformanceReport.a(6))) {
-        localProfilePerformanceReport.b(9);
-      }
+    if (this.a.a != null) {
+      this.a.a.a(0);
     }
   }
 }

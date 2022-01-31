@@ -1,24 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-class ytf
-  implements View.OnClickListener
+public class ytf
+  implements Runnable
 {
-  ytf(yte paramyte) {}
+  public ytf(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ApolloGameActivity.c(this.a.jdField_a_of_type_Ytc.a).setVisibility(4);
-    ApolloGameActivity.a(this.a.jdField_a_of_type_Ytc.a).setVisibility(4);
-    ApolloGameActivity.a(this.a.jdField_a_of_type_Ytc.a).setVisibility(0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$ICmGameConfirmListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$ICmGameConfirmListener.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
-    }
+    ApolloTextureView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
   }
 }
 

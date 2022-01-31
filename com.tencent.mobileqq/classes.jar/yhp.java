@@ -1,20 +1,19 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class yhp
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  yhp(yho paramyho, Bitmap paramBitmap) {}
+  yhp(yhn paramyhn) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Yho.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yhp
  * JD-Core Version:    0.7.0.1
  */

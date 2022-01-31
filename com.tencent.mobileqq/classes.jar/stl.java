@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.data.Card;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 class stl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  stl(stk paramstk, Card paramCard) {}
+  stl(stk paramstk) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_Stk.a, this.jdField_a_of_type_ComTencentMobileqqDataCard, false);
+    if (NetworkUtil.g(this.a.jdField_a_of_type_Stg.a))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.c(this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_Stg.a.H();
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.j();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.a.jdField_a_of_type_Stg.a.a.a.jdField_a_of_type_JavaLangString, "");
+    this.a.jdField_a_of_type_Stg.a.a("请确认网络状态后重试", 0);
+    this.a.jdField_a_of_type_Stg.a.G();
   }
 }
 

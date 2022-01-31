@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acgu;
+import acox;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
@@ -157,11 +157,11 @@ public class SmallEmotionDownloadedAdapter
               paramViewHolder.leftMargin = ((int)(5.0F * this.jdField_a_of_type_Float));
               paramViewHolder.gravity = 16;
               localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-              ((ImageView)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843961));
+              ((ImageView)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844027));
               localLinearLayout.addView((View)localObject2, paramViewHolder);
               paramViewGroup.addView(localLinearLayout);
               ((SmallEmotionDownloadedAdapter.SmallEmotionDownloadedViewHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout = localLinearLayout;
-              ((SmallEmotionDownloadedAdapter.SmallEmotionDownloadedViewHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new acgu(this, paramView));
+              ((SmallEmotionDownloadedAdapter.SmallEmotionDownloadedViewHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new acox(this, paramView));
               paramViewGroup.setTag(localObject1);
               if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
                 break label843;

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.fragment;
 
-import ahkk;
+import ahpb;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -53,11 +53,11 @@ import java.util.ArrayList;
 public class WebEffectsCameraCaptureFragment
   extends AIOEffectsCameraCaptureFragment
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahkk(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString;
-  private int c;
+  private BroadcastReceiver a;
+  private int jdField_c_of_type_Int;
+  private View jdField_c_of_type_AndroidViewView;
   private int d;
+  private String e;
   private String f;
   private String g;
   private String h;
@@ -74,6 +74,11 @@ public class WebEffectsCameraCaptureFragment
   private boolean o;
   private boolean p;
   private boolean q;
+  
+  public WebEffectsCameraCaptureFragment()
+  {
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ahpb(this);
+  }
   
   public static Bundle a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, String paramString1, String paramString2, boolean paramBoolean6, boolean paramBoolean7, String paramString3, String paramString4, boolean paramBoolean8, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
   {
@@ -111,7 +116,7 @@ public class WebEffectsCameraCaptureFragment
     localIntent.putExtra("refer", "schemeActiveFeeds");
     QzonePluginProxyActivity.a(localIntent, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
     localIntent.addFlags(805306368);
-    QZoneHelper.b(paramActivity, localAppInterface.getCurrentAccountUin(), localIntent, -1);
+    QZoneHelper.c(paramActivity, localAppInterface.getCurrentAccountUin(), localIntent, -1);
   }
   
   private void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo, String paramString)
@@ -138,7 +143,7 @@ public class WebEffectsCameraCaptureFragment
   protected CameraCaptureView.CaptureParam a()
   {
     CameraCaptureView.CaptureParam localCaptureParam = super.a();
-    localCaptureParam.c(this.jdField_c_of_type_Int);
+    localCaptureParam.g(this.jdField_c_of_type_Int);
     return localCaptureParam;
   }
   
@@ -151,7 +156,7 @@ public class WebEffectsCameraCaptureFragment
   public void a(CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult)
   {
     i();
-    JumpUtil.a(this, paramPhotoCaptureResult, 6, 10007, null, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a(), null, 0L, this.jdField_d_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    JumpUtil.a(this, paramPhotoCaptureResult, 6, 10007, null, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a(), null, 0L, this.jdField_d_of_type_Int, this.jdField_e_of_type_JavaLangString);
   }
   
   protected void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
@@ -174,9 +179,9 @@ public class WebEffectsCameraCaptureFragment
       {
         DanceMachineVideoParam localDanceMachineVideoParam = new DanceMachineVideoParam();
         localDanceMachineVideoParam.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-        localDanceMachineVideoParam.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-        localDanceMachineVideoParam.jdField_g_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-        localDanceMachineVideoParam.jdField_f_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+        localDanceMachineVideoParam.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+        localDanceMachineVideoParam.jdField_g_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+        localDanceMachineVideoParam.jdField_f_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
         TemplateGroupItem localTemplateGroupItem = CapturePtvTemplateManager.a().a(((PtvTemplateManager.PtvTemplateInfo)localObject1).categoryId);
         if (localTemplateGroupItem == null) {
           continue;
@@ -203,7 +208,7 @@ public class WebEffectsCameraCaptureFragment
       {
         localObject1 = new DanceMachineVideoParam();
         ((DanceMachineVideoParam)localObject1).jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-        JumpUtil.a(this, paramVideoCaptureResult, paramLocalMediaInfo, a(true), 6, 10007, this.jdField_d_of_type_Int, this.jdField_a_of_type_JavaLangString, (VideoBusinessParam)localObject1, null);
+        JumpUtil.a(this, paramVideoCaptureResult, paramLocalMediaInfo, a(true), 6, 10007, this.jdField_d_of_type_Int, this.jdField_e_of_type_JavaLangString, (VideoBusinessParam)localObject1, null);
         return;
         throw new IllegalStateException();
       }
@@ -261,9 +266,9 @@ public class WebEffectsCameraCaptureFragment
     }
   }
   
-  protected void e()
+  protected void d()
   {
-    super.e();
+    super.d();
     Object localObject;
     boolean bool;
     if (this.jdField_l_of_type_Boolean)
@@ -406,11 +411,11 @@ public class WebEffectsCameraCaptureFragment
         if (paramIntent == null) {
           break;
         }
-        if (this.jdField_a_of_type_AndroidViewView == null)
+        if (this.jdField_c_of_type_AndroidViewView == null)
         {
-          this.jdField_a_of_type_AndroidViewView = new ImageView((Context)localObject2);
-          this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-          ((ViewGroup)getView()).addView(this.jdField_a_of_type_AndroidViewView, -1, -1);
+          this.jdField_c_of_type_AndroidViewView = new ImageView((Context)localObject2);
+          this.jdField_c_of_type_AndroidViewView.setBackgroundColor(-16777216);
+          ((ViewGroup)getView()).addView(this.jdField_c_of_type_AndroidViewView, -1, -1);
         }
         if (paramIntent.jdField_j_of_type_Int != 1) {
           break;
@@ -453,7 +458,7 @@ public class WebEffectsCameraCaptureFragment
     this.jdField_j_of_type_JavaLangString = paramBundle.getString("ARG_FILTER_CATEGORY_NAME");
     this.jdField_k_of_type_JavaLangString = paramBundle.getString("ARG_FILTER_ITEM_ID");
     this.jdField_d_of_type_Int = paramBundle.getInt("ARG_DEAL_TYPE");
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("ARG_WEB_CALLBACK");
+    this.jdField_e_of_type_JavaLangString = paramBundle.getString("ARG_WEB_CALLBACK");
     this.jdField_g_of_type_JavaLangString = paramBundle.getString("ARG_ACTIVITY_ID");
     this.jdField_f_of_type_JavaLangString = paramBundle.getString("ARG_ACTIVITY_TYPE");
     this.jdField_a_of_type_Int = 10007;
@@ -480,10 +485,10 @@ public class WebEffectsCameraCaptureFragment
     super.onResume();
     if (this.q)
     {
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      if (this.jdField_c_of_type_AndroidViewView != null)
       {
-        ((ViewGroup)getView()).removeView(this.jdField_a_of_type_AndroidViewView);
-        this.jdField_a_of_type_AndroidViewView = null;
+        ((ViewGroup)getView()).removeView(this.jdField_c_of_type_AndroidViewView);
+        this.jdField_c_of_type_AndroidViewView = null;
       }
       this.q = false;
     }

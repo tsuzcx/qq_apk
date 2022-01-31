@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.activity.StructMsgObserver;
-import com.tencent.mobileqq.activity.WebAccelerator;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class tts
   implements Runnable
 {
-  public tts(StructMsgObserver paramStructMsgObserver, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public tts(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
   
   public void run()
   {
-    WebAccelerator.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
+    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
+    localQQCustomDialog.setMessage(this.b);
+    localQQCustomDialog.setPositiveButton(2131436340, new ttt(this));
+    localQQCustomDialog.show();
   }
 }
 

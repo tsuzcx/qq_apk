@@ -1,30 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import dov.com.qq.im.capture.data.CaptureComboManager;
-import dov.com.qq.im.capture.data.CaptureSet;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
+import java.util.ArrayList;
 
 public class anlj
-  implements Handler.Callback
+  implements Runnable
 {
-  public anlj(CaptureComboManager paramCaptureComboManager) {}
+  public anlj(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMessage.obj instanceof CaptureSet)) {
-        paramMessage = (CaptureSet)paramMessage.obj;
-      }
-    }
+    RemoteHandleManager.a().a().a(this.jdField_a_of_type_JavaUtilArrayList, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlj
  * JD-Core Version:    0.7.0.1
  */

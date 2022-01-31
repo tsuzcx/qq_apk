@@ -1,20 +1,19 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.io.IOException;
+import com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailArgs;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailTaskContext;
 
-class oph
+public class oph
+  implements Runnable
 {
-  Process a(String[] paramArrayOfString)
+  public oph(MediaCodecThumbnailGenerator.CodecHandler paramCodecHandler, MediaCodecThumbnailGenerator.ThumbnailTaskContext paramThumbnailTaskContext, boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult) {}
+  
+  public void run()
   {
-    try
-    {
-      Process localProcess = Runtime.getRuntime().exec(paramArrayOfString);
-      return localProcess;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.b != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailTaskContext.a.b.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailResult);
     }
-    catch (IOException localIOException)
-    {
-      SLog.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
-    }
-    return null;
   }
 }
 

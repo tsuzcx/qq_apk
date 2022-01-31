@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
 
-class ydo
-  implements DialogInterface.OnClickListener
+public class ydo
+  implements Runnable
 {
-  ydo(ydn paramydn) {}
+  public ydo(CameraFilterGLView paramCameraFilterGLView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.b, this.a.a.a, this.a.a.g + ".mp4", true));
+    if ((!CameraFilterGLView.a(this.a).a) || (CameraFilterGLView.a(this.a).a == 0)) {
+      return;
+    }
+    CameraFilterGLView.a(this.a).b = true;
+    CameraFilterGLView.a(this.a).c = false;
   }
 }
 

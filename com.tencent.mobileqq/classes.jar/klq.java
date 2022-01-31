@@ -1,24 +1,20 @@
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.OfflineExpire;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.PoiMapActivity;
 
 public class klq
-  extends AbsPreDownloadTask
+  implements View.OnTouchListener
 {
-  BidDownloader a;
+  public klq(PoiMapActivity paramPoiMapActivity) {}
   
-  public klq(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramQQAppInterface, paramString);
-    this.a = paramBidDownloader;
-  }
-  
-  protected void a()
-  {
-    QLog.i(OfflineExpire.a, 1, "start predown bid=" + this.a.a);
-    this.a.a();
+    if (this.a.a != null) {
+      this.a.a.onTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
 }
 

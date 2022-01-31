@@ -1,27 +1,9 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.util.List;
-import java.util.Map;
+import android.widget.TextView;
 
 public class xak
-  extends DownloadListener
 {
-  public xak(PreloadImgManager paramPreloadImgManager, AppInterface paramAppInterface) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    super.onDone(paramDownloadTask);
-    List localList = (List)PreloadImgManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager).get(paramDownloadTask.c);
-    if (paramDownloadTask.c.endsWith(".zip")) {
-      PreloadImgManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramDownloadTask.c, localList);
-    }
-    while (!paramDownloadTask.c.endsWith(".png")) {
-      return;
-    }
-    PreloadImgManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramDownloadTask.c, localList);
-  }
+  public TextView a;
+  public xaj a;
 }
 
 

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a101f" android:background="#99cccccc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="61.0dip" android:layout_marginBottom="61.0dip" android:layout_centerInParent="true"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minWidth="66.0dip" android:minHeight="66.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0287" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1020" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <HorizontalScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ScrollView android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0287" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1021" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="320.0dip" />
-        </ScrollView>
-    </HorizontalScrollView>
-</LinearLayout>
+    <ImageView android:id="@id/icon" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginBottom="7.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021325" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/check" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="20.0dip" android:src="@drawable/name" android:baselineAlignBottom="true" android:layout_alignBottom="@id/icon" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054c" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/icon" android:layout_centerHorizontal="true" />
+</RelativeLayout>

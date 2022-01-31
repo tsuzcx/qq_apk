@@ -32,7 +32,7 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import java.util.Iterator;
 import java.util.List;
-import knn;
+import kpu;
 
 public class LebaSearchPluginManagerActivity
   extends BaseActivity
@@ -45,7 +45,7 @@ public class LebaSearchPluginManagerActivity
   public float a;
   long jdField_a_of_type_Long = -1L;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new knn(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new kpu(this);
   public View a;
   protected Button a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -93,17 +93,17 @@ public class LebaSearchPluginManagerActivity
     //   20: aload_0
     //   21: getfield 77	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
     //   24: invokevirtual 83	android/view/View:getViewTreeObserver	()Landroid/view/ViewTreeObserver;
-    //   27: new 85	knh
+    //   27: new 85	kpo
     //   30: dup
     //   31: aload_0
-    //   32: invokespecial 86	knh:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
+    //   32: invokespecial 86	kpo:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
     //   35: invokevirtual 92	android/view/ViewTreeObserver:addOnGlobalLayoutListener	(Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;)V
     //   38: aload_0
     //   39: getfield 74	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
-    //   42: new 94	kni
+    //   42: new 94	kpp
     //   45: dup
     //   46: aload_0
-    //   47: invokespecial 95	kni:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
+    //   47: invokespecial 95	kpp:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
     //   50: invokevirtual 99	android/view/View:addOnLayoutChangeListener	(Landroid/view/View$OnLayoutChangeListener;)V
     //   53: aload_0
     //   54: aload_0
@@ -239,17 +239,17 @@ public class LebaSearchPluginManagerActivity
     //   321: putfield 189	android/widget/RelativeLayout$LayoutParams:topMargin	I
     //   324: aload_0
     //   325: getfield 175	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView	Lcom/tencent/biz/pubaccount/AccountDetailBounceScrollView;
-    //   328: new 191	knj
+    //   328: new 191	kpq
     //   331: dup
     //   332: aload_0
-    //   333: invokespecial 192	knj:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
+    //   333: invokespecial 192	kpq:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
     //   336: invokevirtual 196	com/tencent/biz/pubaccount/AccountDetailBounceScrollView:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
     //   339: aload_0
     //   340: getfield 175	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView	Lcom/tencent/biz/pubaccount/AccountDetailBounceScrollView;
-    //   343: new 198	knl
+    //   343: new 198	kps
     //   346: dup
     //   347: aload_0
-    //   348: invokespecial 199	knl:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
+    //   348: invokespecial 199	kps:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
     //   351: invokevirtual 203	com/tencent/biz/pubaccount/AccountDetailBounceScrollView:setOnScrollChangedListener	(Lcom/tencent/mobileqq/widget/BounceScrollView$OnScrollChangedListener;)V
     //   354: aload_0
     //   355: getfield 52	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem	Lcom/tencent/mobileqq/config/struct/LebaViewItem;
@@ -358,10 +358,10 @@ public class LebaSearchPluginManagerActivity
     //   579: astore_2
     //   580: goto -188 -> 392
     //   583: aload 4
-    //   585: new 292	knm
+    //   585: new 292	kpt
     //   588: dup
     //   589: aload_0
-    //   590: invokespecial 293	knm:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
+    //   590: invokespecial 293	kpt:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
     //   593: invokevirtual 297	com/tencent/image/URLDrawable:setURLDrawableListener	(Lcom/tencent/image/URLDrawable$URLDrawableListener;)V
     //   596: aload_0
     //   597: getfield 144	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_c_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
@@ -446,7 +446,7 @@ public class LebaSearchPluginManagerActivity
     this.jdField_a_of_type_Byte = this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.jdField_a_of_type_Byte;
     try
     {
-      localObject = BitmapFactory.decodeResource(getResources(), 2130840373);
+      localObject = BitmapFactory.decodeResource(getResources(), 2130840388);
       this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.c((Bitmap)localObject, 110, 110);
       ((Bitmap)localObject).recycle();
       label226:
@@ -467,8 +467,8 @@ public class LebaSearchPluginManagerActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.jdField_a_of_type_Byte == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838504);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131430534);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838510);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131430537);
       if (this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.jdField_a_of_type_Byte == this.jdField_a_of_type_Byte) {
         break label75;
       }
@@ -478,8 +478,8 @@ public class LebaSearchPluginManagerActivity
     {
       setResult(i);
       return;
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838491);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131430533);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838497);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131430536);
       break;
     }
   }
@@ -619,7 +619,7 @@ public class LebaSearchPluginManagerActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    setContentView(2130969393);
+    setContentView(2130969391);
     LebaShowListManager.jdField_a_of_type_Int |= 0x1;
     if (!a())
     {
@@ -647,7 +647,7 @@ public class LebaSearchPluginManagerActivity
     {
     default: 
       return;
-    case 2131366359: 
+    case 2131366364: 
       if (this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.jdField_a_of_type_Byte != 0) {}
       for (boolean bool = true;; bool = false)
       {

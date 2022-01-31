@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1033" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1034" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d067a" android:layout_alignParentBottom="true">
-        <Button android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0287" android:gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1035" android:background="@null" android:paddingRight="7.0dip" android:layout_width="60.0dip" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0865" android:layout_alignParentLeft="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b057f" />
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1035">
-            <HorizontalScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1036" android:scrollbars="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fillViewport="false" android:layout_alignParentRight="true">
-                <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1037" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.399994dip" android:layout_alignParentRight="true" />
-            </HorizontalScrollView>
-        </RelativeLayout>
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1038" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1034" />
-    <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0410" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1039" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a89" android:paddingLeft="9.25dip" android:paddingTop="6.5dip" android:paddingRight="1.0dip" android:paddingBottom="14.5dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="84.0dip" android:layout_marginBottom="36.0dip" android:text="左右分屏，互动更有趣。" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <View android:id="@id/head" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+    <TextView android:textSize="16.0dip" android:textColor="@android:color/white" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0743" android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shadowColor="#66000000" android:shadowDx="2.0" android:shadowDy="0.0" android:shadowRadius="4.0" android:lineSpacingExtra="0.0dip" android:lineSpacingMultiplier="1.2" />
+</LinearLayout>

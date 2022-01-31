@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class xox
+class xox
   implements Runnable
 {
-  public xox(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  xox(xow paramxow) {}
   
   public void run()
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a(2002, "抱歉，摄像头可能被禁止了", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@] ERR_CODE_CAMERA_CREATE  黑名单机型,2秒还没有获取到预览帧,可能没有权限");
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(26, 2);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(26, this.a.jdField_a_of_type_AndroidOsMessage);
+    this.a.jdField_a_of_type_AndroidOsMessage.recycle();
   }
 }
 

@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.armap.ARGLSurfaceView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapTracer.TraceResultListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.qphone.base.util.QLog;
 
-class abbj
-  implements ARMapTracer.TraceResultListener
+public class abbj
+  implements Runnable
 {
-  abbj(abbi paramabbi) {}
+  public abbj(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
-  public boolean a(int paramInt)
+  public void run()
   {
-    ARGLSurfaceView localARGLSurfaceView = this.a.a.a;
-    if (localARGLSurfaceView != null) {
-      localARGLSurfaceView.runOnGlThread(new abbk(this, localARGLSurfaceView, paramInt));
+    try
+    {
+      ArkAppCenter.a(true);
+      ArkLocalAppMgr.a(this.a);
+      return;
     }
-    return true;
+    catch (NoClassDefFoundError localNoClassDefFoundError)
+    {
+      QLog.e("ArkApp.ArkLocalAppMgr", 1, localNoClassDefFoundError.toString());
+    }
   }
 }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a198a" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_middle" android:paddingRight="15.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="32.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a59" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <com.tencent.mobileqq.widget.BubbleImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a5a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
-        <View android:layout_width="1.0dip" android:layout_height="8.0dip" />
-    </LinearLayout>
-    <com.tencent.mobileqq.widget.BubbleImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a5b" android:layout_width="82.0dip" android:layout_height="82.0dip" android:scaleType="centerCrop" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c058d" android:layout_gravity="center_vertical" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:text="问题" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a43" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip">
+        <EditText android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c058f" android:textColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c058d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0aa2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02233d" android:layout_marginLeft="0.0dip" android:drawablePadding="15.0dip" android:imeOptions="actionDone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b3" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a44" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020437" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

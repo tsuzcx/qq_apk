@@ -1,42 +1,45 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.ForwardImageProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class aium
-  extends AsyncTask
+  extends TransProcessorHandler
 {
-  public aium(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public aium(ForwardImageProcessor paramForwardImageProcessor) {}
   
-  protected String a(Void... paramVarArgs)
+  public void handleMessage(Message paramMessage)
   {
-    try
+    int i = paramMessage.what;
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((i == 2002) || ((ForwardImageProcessor.a(this.a).equals(localFileMsg.p)) && (localFileMsg.b == 1) && (i != 2002)))
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
+      if ((localFileMsg.r == null) || (!localFileMsg.r.equals(ForwardImageProcessor.b(this.a)))) {
+        return;
+      }
+      switch (i)
       {
-        ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131434582) + " " + paramVarArgs;
       }
     }
-    catch (Exception paramVarArgs)
+    for (;;)
     {
-      for (;;)
+      super.handleMessage(paramMessage);
+      return;
+      ForwardImageProcessor.a(this.a);
+      continue;
+      if (FileUtils.b(ForwardImageProcessor.c(this.a)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("PhotoPreviewActivity", 2, QLog.getStackTraceString(paramVarArgs));
-        }
-        paramVarArgs = null;
+        ForwardImageProcessor.a(this.a).a().b(this);
+        ForwardImageProcessor.b(this.a);
+      }
+      else
+      {
+        ForwardImageProcessor.a(this.a);
       }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131434583);
-  }
-  
-  protected void a(String paramString)
-  {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
   }
 }
 

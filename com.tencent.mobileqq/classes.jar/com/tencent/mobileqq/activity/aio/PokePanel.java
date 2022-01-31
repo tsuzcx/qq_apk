@@ -41,9 +41,9 @@ import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.os.MqqHandler;
-import ump;
-import umr;
-import umu;
+import uro;
+import urq;
+import urt;
 
 public class PokePanel
   extends RelativeLayout
@@ -57,30 +57,30 @@ public class PokePanel
   private PokePanelAdapter jdField_a_of_type_ComTencentMobileqqActivityAioPokePanelAdapter;
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new umu(this);
+  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new urt(this);
   public VasQuickUpdateManager.CallBacker a;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   public boolean a;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131433340, 2130838416, 3 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131433354, 2130838421, 3 };
   public int b;
   long jdField_b_of_type_Long = 0L;
   public boolean b;
-  private final int[] jdField_b_of_type_ArrayOfInt = { 2131433344, 2130838385, 1 };
+  private final int[] jdField_b_of_type_ArrayOfInt = { 2131433358, 2130838390, 1 };
   private final int[] c;
   private boolean jdField_d_of_type_Boolean;
-  private final int[] jdField_d_of_type_ArrayOfInt = { 2131433341, 2130838414, 4 };
+  private final int[] jdField_d_of_type_ArrayOfInt = { 2131433355, 2130838419, 4 };
   private boolean jdField_e_of_type_Boolean;
-  private final int[] jdField_e_of_type_ArrayOfInt = { 2131433342, 2130838415, 5 };
-  private final int[] f = { 2131433343, 2130838386, 6 };
+  private final int[] jdField_e_of_type_ArrayOfInt = { 2131433356, 2130838420, 5 };
+  private final int[] f = { 2131433357, 2130838391, 6 };
   
   public PokePanel(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new umr(this);
-    this.jdField_c_of_type_ArrayOfInt = new int[] { 2131433339, 2130838383, 2 };
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new urq(this);
+    this.jdField_c_of_type_ArrayOfInt = new int[] { 2131433353, 2130838388, 2 };
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = 1;
   }
@@ -88,8 +88,8 @@ public class PokePanel
   public PokePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new umr(this);
-    this.jdField_c_of_type_ArrayOfInt = new int[] { 2131433339, 2130838383, 2 };
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new urq(this);
+    this.jdField_c_of_type_ArrayOfInt = new int[] { 2131433353, 2130838388, 2 };
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = 1;
   }
@@ -102,7 +102,7 @@ public class PokePanel
       int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilArrayList.get(i);
       PokePanel.PokeData localPokeData = new PokePanel.PokeData();
       if ((arrayOfInt[2] == 1) && (!PokeItemHelper.b(arrayOfInt[2]))) {
-        localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130837677);
+        localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130837676);
       }
       for (;;)
       {
@@ -186,7 +186,7 @@ public class PokePanel
       if (localObject != null) {
         ((PokeResHandler)localObject).a(true);
       }
-      if (paramQQAppInterface != null) {
+      if ((paramQQAppInterface != null) && (!PokeBigResHandler.a())) {
         paramQQAppInterface.a(true);
       }
     }
@@ -318,10 +318,10 @@ public class PokePanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.a();
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131363038));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131363043));
     this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver);
-    paramBaseChatPie = getResources().getDrawable(2130845947);
+    paramBaseChatPie = getResources().getDrawable(2130846029);
     if ((paramBaseChatPie instanceof BitmapDrawable)) {
       paramBaseChatPie = ((BitmapDrawable)paramBaseChatPie).getBitmap();
     }
@@ -354,9 +354,12 @@ public class PokePanel
   
   public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt != 0) && (this.jdField_d_of_type_Boolean)) {
+    if ((paramInt != 0) && (this.jdField_d_of_type_Boolean))
+    {
       this.jdField_e_of_type_Boolean = true;
+      return;
     }
+    this.jdField_e_of_type_Boolean = false;
   }
   
   public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
@@ -382,7 +385,7 @@ public class PokePanel
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanelAdapter.a(this);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanelAdapter.a(this);
       this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanelAdapter);
-      ThreadManager.getFileThreadHandler().post(new ump(this, paramString, localArrayList));
+      ThreadManager.getFileThreadHandler().post(new uro(this, paramString, localArrayList));
       return;
       this.jdField_a_of_type_JavaUtilArrayList.clear();
     }

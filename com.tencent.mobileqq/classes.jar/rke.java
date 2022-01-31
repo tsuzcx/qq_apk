@@ -1,13 +1,39 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class rke
-  implements Runnable
+public class rke
+  implements View.OnClickListener
 {
-  rke(rkb paramrkb) {}
+  public rke(AboutActivity paramAboutActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.d();
+    if (!TextUtils.isEmpty(AboutActivity.b())) {}
+    for (int i = Integer.parseInt(AboutActivity.b());; i = 0)
+    {
+      if (i < 5)
+      {
+        AboutActivity.a(AboutActivity.a(this.a));
+        i = Integer.parseInt(AboutActivity.b());
+        if (i == 5)
+        {
+          ArkIDESettingFragment.a("");
+          ArkIDESettingFragment.a().b();
+          QQToast.a(BaseApplication.getContext(), BaseActivity.sTopActivity.getString(2131438861), 0).a();
+          ArkAppCenter.b("ArkDebugSwitch", String.format("show flag=%d", new Object[] { Integer.valueOf(i) }));
+        }
+        return;
+      }
+      ArkAppCenter.b("ArkDebugSwitch", String.format("ArkDebug is open and click limit=%d", new Object[] { Integer.valueOf(i) }));
+      return;
+    }
   }
 }
 

@@ -1,70 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiDictMgr;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.VasUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.wordsegment.WordSegment;
-import java.lang.ref.WeakReference;
-import java.util.Locale;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
+import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
 
 public class aarz
-  implements Runnable
+  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
 {
-  public aarz(ArkAiDictMgr paramArkAiDictMgr) {}
+  public aarz(ARBlessWordFragment paramARBlessWordFragment) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.get();
-    if (localQQAppInterface == null)
-    {
-      ArkAppCenter.b("ArkApp.Dict", "initWordData, qq app is null, return.");
-      return;
-    }
-    int j = -1;
-    for (int i = j;; i = j)
-    {
-      try
-      {
-        WordSegment.setLogCallback(new aasa(this));
-        i = j;
-        if (!ArkAiDictMgr.a(localQQAppInterface)) {
-          break label124;
-        }
-        i = j;
-        j = WordSegment.init(ArkAppCenter.e() + '/');
-        i = j;
-        ArkAppCenter.b("ArkApp.Dict", String.format("getWordInitState, WordSegment_Init State is opened", new Object[0]));
-        i = j;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        for (;;)
-        {
-          label124:
-          j = i;
-          i = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArkApp.Dict", 2, "initWordData, UnsatisfiedLinkError, err:" + localUnsatisfiedLinkError.getMessage());
-            i = j;
-          }
-        }
-        ArkAiDictMgr.b = true;
-        VasUtils.a(localQQAppInterface);
-      }
-      if (i == 0) {
-        break;
-      }
-      ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "initWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));
-      return;
-      i = j;
-      ArkAppCenter.b("ArkApp.Dict", String.format("getWordInitState, WordSegment_Init State is closed", new Object[0]));
-    }
+    this.a.a(paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    ARBlessWordFragment.a(this.a).post(new aasb(this));
+  }
+  
+  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp) {}
+  
+  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo)
+  {
+    ARBlessWordFragment.a(this.a).post(new aasa(this, paramUploadPicExtInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aarz
  * JD-Core Version:    0.7.0.1
  */

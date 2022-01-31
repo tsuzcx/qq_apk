@@ -1,18 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild;
 
-import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallVideo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.util.FaceDecoder;
 
 public class FeedItemCellTypeSmallVideoSocial
   extends FeedItemCellTypeSmallSocial
 {
-  public FeedItemCellTypeSmallVideoSocial(Context paramContext, FaceDecoder paramFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
-  {
-    super(paramContext, paramFaceDecoder, paramReadInJoyBaseAdapter);
-  }
-  
   public FeedItemCell g()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildComponentView = new ComponentContentSmallVideo(this.jdField_a_of_type_AndroidContentContext);

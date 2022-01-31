@@ -1,25 +1,12 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.CheckOfflineCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.vas.PendantInfo;
 
 public class akpi
-  implements Runnable
 {
-  public akpi(SwiftBrowserOfflineHandler paramSwiftBrowserOfflineHandler) {}
+  public String a;
   
-  public void run()
+  public akpi(PendantInfo paramPendantInfo, String paramString)
   {
-    if ((QLog.isColorLevel()) && (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != 0)) {
-      QLog.i("SwiftBrowserOfflineHandler", 2, "now post offline callback, bid is " + this.a.jdField_a_of_type_JavaLangString + ", mode: " + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-    }
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((SwiftBrowserOfflineHandler.CheckOfflineCallback)localIterator.next()).a(this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
-    }
-    this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

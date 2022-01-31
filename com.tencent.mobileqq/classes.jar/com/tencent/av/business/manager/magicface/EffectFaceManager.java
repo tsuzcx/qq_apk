@@ -222,7 +222,7 @@ public class EffectFaceManager
       str1 = paramString.substring(0, paramInt);
       String str2 = paramString.substring(paramInt + 1, paramString.length());
       if ("START".equals(str1)) {
-        if (!"0".equalsIgnoreCase(str2))
+        if ((!"0".equalsIgnoreCase(str2)) && (!"0_iOS".equalsIgnoreCase(str2)))
         {
           a(Integer.valueOf(6104), paramString, null);
           a(Integer.valueOf(6100), str2, Boolean.valueOf(false));
@@ -499,7 +499,7 @@ public class EffectFaceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.EffectFaceManager
  * JD-Core Version:    0.7.0.1
  */

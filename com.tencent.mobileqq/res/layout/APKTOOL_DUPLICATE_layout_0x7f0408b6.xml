@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11e5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0731" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-    <TextView android:textSize="80.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27a7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26ec" android:paddingBottom="100.0dip" android:focusable="false" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" />
+    <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2730" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="85.0dip" android:layout_height="85.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218b3" android:scaleType="centerInside" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:onClick="onClick" android:contentDescription="按住拍" />
 </RelativeLayout>

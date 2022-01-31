@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import abui;
-import abuj;
+import accb;
+import accc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -215,22 +215,26 @@ public class MessageForGrayTips$HightlightClickableSpan
     localIntent.putExtra("key_isReadModeEnabled", true);
     PublicAccountUtil.a(this.message, localIntent, paramString);
     this.context.startActivity(localIntent);
+    paramString = (QQAppInterface)this.mApp.get();
+    if ((paramString != null) && ((this.message instanceof MessageForGrayTips)) && (String.valueOf(11).equals(this.message.getExtInfoFromExtStr("gray_tips_serviceType")))) {
+      ReportController.b(paramString, "dc00898", "", "", "0X8009328", "0X8009328", 0, 0, "", "", "", "");
+    }
     return true;
   }
   
   public void onClick(View paramView)
   {
     if ((this.item == null) || (this.mApp == null) || (this.mApp.get() == null)) {}
-    label345:
+    label360:
     int i;
-    label637:
+    label663:
     Object localObject1;
-    label952:
+    label978:
     Object localObject2;
-    label2069:
-    label2253:
+    label2095:
+    label2279:
     Object localObject3;
-    label2306:
+    label2332:
     int j;
     Object localObject4;
     Object localObject5;
@@ -303,38 +307,45 @@ public class MessageForGrayTips$HightlightClickableSpan
                                                         if (paramView != null)
                                                         {
                                                           if (paramView.b != 2359297) {
-                                                            break label345;
+                                                            break label360;
                                                           }
                                                           ReportController.b(null, "P_CliOper", "cmshow", "", "Apollo", "Invitetip_clk", 0, 0, "", "", "", "");
                                                         }
                                                       }
-                                                      for (;;)
+                                                      if (TextUtils.isEmpty(this.item.mMsgActionData)) {}
+                                                      for (paramView = this.item.mMsg_A_ActionData;; paramView = this.item.mMsgActionData)
                                                       {
-                                                        clickWebMsg(this.item.mMsgActionData);
+                                                        clickWebMsg(paramView);
                                                         return;
                                                         if (paramView.b == 2359298)
                                                         {
                                                           ReportController.b(null, "P_CliOper", "cmshow", "", "Apollo", "clk_intro", 0, 0, "", "", "", "");
+                                                          break;
                                                         }
-                                                        else if (paramView.b == 2490369)
+                                                        if (paramView.b == 2490369)
                                                         {
                                                           ReportController.b(null, "dc00898", "", "", "0X8007F12", "0X8007F12", 0, 0, "", "", "", "");
+                                                          break;
                                                         }
-                                                        else if (paramView.b == 2621441)
+                                                        if (paramView.b == 2621441)
                                                         {
                                                           paramView = ((MessageForUniteGrayTip)this.message).appGuideTipsOpKey;
-                                                          if (!TextUtils.isEmpty(paramView)) {
-                                                            ReportController.b(null, "dc00898", "", "", paramView, paramView, 0, 0, "", "", "", "");
+                                                          if (TextUtils.isEmpty(paramView)) {
+                                                            break;
                                                           }
+                                                          ReportController.b(null, "dc00898", "", "", paramView, paramView, 0, 0, "", "", "", "");
+                                                          break;
                                                         }
-                                                        else if (paramView.b == 3145729)
+                                                        if (paramView.b == 3145729)
                                                         {
                                                           ReportController.b(null, "dc00898", "", "", "0X800812B", "0X800812B", 0, 0, "", "", "", "");
+                                                          break;
                                                         }
-                                                        else if (paramView.b == 131078)
-                                                        {
-                                                          VasWebviewUtil.reportCommercialDrainage(((QQAppInterface)this.mApp.get()).c(), "style", "0X8009133", "", 1, 0, 0, "", "", "0");
+                                                        if (paramView.b != 131078) {
+                                                          break;
                                                         }
+                                                        VasWebviewUtil.reportCommercialDrainage(((QQAppInterface)this.mApp.get()).c(), "style", "0X8009133", "", 1, 0, 0, "", "", "0");
+                                                        break;
                                                       }
                                                     case 3: 
                                                       clickPluginMsg(this.item.mMsgActionData, this.item.mMsg_A_ActionData);
@@ -395,7 +406,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                               paramView.putExtra("edit_type", 0);
                                               paramView.putExtra("troopUin", this.frienduin);
                                               paramView.putExtra("uin", (String)localObject1);
-                                              paramView.putExtra("title", this.context.getResources().getString(2131430595));
+                                              paramView.putExtra("title", this.context.getResources().getString(2131430598));
                                               paramView.putExtra("isTroopNick", true);
                                               paramView.putExtra("default_text", (String)localObject2);
                                               paramView.putExtra("max_num", 60);
@@ -439,10 +450,10 @@ public class MessageForGrayTips$HightlightClickableSpan
                                           paramView.putExtra("param_groupcode", this.frienduin);
                                           paramView.putExtra("param_type", 1);
                                           paramView.putExtra("param_subtype", 1);
-                                          paramView.putExtra("param_done_button_wording", this.context.getString(2131430617));
+                                          paramView.putExtra("param_done_button_wording", this.context.getString(2131430620));
                                           paramView.putExtra("param_only_friends", true);
                                           paramView.putExtra("param_is_troop_admin", true);
-                                          paramView.putExtra("param_title", this.context.getString(2131430200));
+                                          paramView.putExtra("param_title", this.context.getString(2131430203));
                                           this.context.startActivity(paramView);
                                           return;
                                         } while (((TroopManager)((QQAppInterface)this.mApp.get()).getManager(51)).b(this.frienduin) == null);
@@ -464,7 +475,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                   ((QidianHandler)localObject1).a(paramView.extUin, paramView.masterUin, paramView.taskId, paramView.uniseq, paramView.istroop);
                                   return;
                                   paramView = new Intent(this.context, EditActivity.class);
-                                  paramView.putExtra("title", 2131433493).putExtra("current", this.item.remark).putExtra("action", 103).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("multiLine", false);
+                                  paramView.putExtra("title", 2131433507).putExtra("current", this.item.remark).putExtra("action", 103).putExtra("limit", 96).putExtra("canPostNull", true).putExtra("multiLine", false);
                                   if ((this.context instanceof BaseActivity)) {
                                     ((BaseActivity)this.context).startActivityForResult(paramView, 13008);
                                   }
@@ -481,7 +492,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                   paramView = new Intent(this.context, MoveToGroupActivity.class);
                                   i = this.item.groupId;
                                   if ((i != -1) && ((i != 0) || (!"from_batch_add_frd_for_troop".equals(this.item.mMsgActionData)))) {
-                                    break label4441;
+                                    break label4465;
                                   }
                                   localObject1 = ((FriendsManager)((QQAppInterface)this.mApp.get()).getManager(50)).c(this.frienduin);
                                   if (localObject1 != null)
@@ -489,7 +500,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                     i = ((Friends)localObject1).groupid;
                                     paramView.putExtra("friendUin", this.frienduin).putExtra("mgid", (byte)i);
                                     if (!(this.context instanceof BaseActivity)) {
-                                      break label2253;
+                                      break label2279;
                                     }
                                     ((BaseActivity)this.context).startActivityForResult(paramView, 13009);
                                   }
@@ -505,7 +516,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                                     ReportController.b((QQAppInterface)this.mApp.get(), "dc00899", "Grp_addFrd", "", "Frd_AIO", "setGrpTips_clk", 0, 0, "", "", "", "");
                                     return;
                                     i = 0;
-                                    break label2069;
+                                    break label2095;
                                     this.context.startActivity(paramView);
                                   }
                                   if ((this.message == null) || (this.message.msg == null)) {
@@ -637,7 +648,7 @@ public class MessageForGrayTips$HightlightClickableSpan
                         }
                       }
                     } while (paramView == null);
-                    paramView = DialogUtil.b(this.context, 0, "确认永久屏蔽？", "永久屏蔽后，你将不再收到对方的坦白说消息，此操作不可撤销，确认永久屏蔽吗？", 2131433015, 2131433016, new abui(this, (QQAppInterface)localObject4, (String)localObject2, i, j, (ConfessInfo)localObject3, paramView), new abuj(this));
+                    paramView = DialogUtil.b(this.context, 0, "确认永久屏蔽？", "永久屏蔽后，你将不再收到对方的坦白说消息，此操作不可撤销，确认永久屏蔽吗？", 2131433029, 2131433030, new accb(this, (QQAppInterface)localObject4, (String)localObject2, i, j, (ConfessInfo)localObject3, paramView), new accc(this));
                   } while (((FragmentActivity)this.context).isFinishing());
                   paramView.show();
                   return;
@@ -676,11 +687,11 @@ public class MessageForGrayTips$HightlightClickableSpan
     QLog.d("MessageForGrayTips", 2, "revoke msg clickspan chatpie input is null");
     return;
     ((BaseChatPie)localObject1).jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().clear();
-    label3548:
+    label3574:
     int k;
-    label3626:
+    label3652:
     int m;
-    label3732:
+    label3758:
     Object localObject6;
     Context localContext;
     String str;
@@ -756,13 +767,11 @@ public class MessageForGrayTips$HightlightClickableSpan
         str = this.frienduin;
         localXEditTextEx = ((BaseChatPie)localObject1).jdField_a_of_type_ComTencentWidgetXEditTextEx;
         if (n != 1) {
-          break label4462;
+          break label4486;
         }
       }
     }
-    label4441:
-    label4455:
-    label4462:
+    label4486:
     for (boolean bool = true;; bool = false)
     {
       localObject4 = AtTroopMemberSpan.a((QQAppInterface)localObject6, localContext, str, (String)localObject4, (String)localObject5, false, localXEditTextEx, bool);
@@ -785,14 +794,14 @@ public class MessageForGrayTips$HightlightClickableSpan
           {
             localObject4 = paramView.substring(k, paramView.length());
             ((BaseChatPie)localObject1).jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().insert(k, (CharSequence)localObject4);
-            break label4455;
+            break label4479;
             i += 1;
-            break label3626;
+            break label3652;
             if (QLog.isColorLevel()) {
               QLog.d("MessageForGrayTips", 2, "revoke msg click handle at info is empty");
             }
             ((BaseChatPie)localObject1).jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(paramView);
-            break label3548;
+            break label3574;
             paramView = (QQAppInterface)this.mApp.get();
             if ((paramView == null) || ((!(this.context instanceof ChatActivity)) && (!(this.context instanceof SplashActivity)))) {
               break;
@@ -838,17 +847,19 @@ public class MessageForGrayTips$HightlightClickableSpan
             VasWebviewUtil.reportCommercialDrainage(((QQAppInterface)this.mApp.get()).c(), "style", "0X8009133", "", 1, 0, 0, "", "", "1");
             return;
             paramView = "";
-            break label2306;
-            break label2069;
+            break label2332;
+            label4465:
+            break label2095;
             paramView = "";
-            break label952;
+            break label978;
             i = 1;
-            break label637;
+            break label663;
           }
         }
       }
+      label4479:
       j += 1;
-      break label3732;
+      break label3758;
     }
   }
   

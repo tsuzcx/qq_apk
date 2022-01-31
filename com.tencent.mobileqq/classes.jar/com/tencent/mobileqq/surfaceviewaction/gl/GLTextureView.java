@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ailf;
+import aiqa;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLSurfaceView.Renderer;
@@ -26,7 +26,7 @@ public class GLTextureView
   implements TextureView.SurfaceTextureListener
 {
   private int jdField_a_of_type_Int = 16;
-  private ailf jdField_a_of_type_Ailf;
+  private aiqa jdField_a_of_type_Aiqa;
   private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
   private GLSurfaceView.Renderer jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer;
   private Object jdField_a_of_type_JavaLangObject = new Object();
@@ -66,7 +66,7 @@ public class GLTextureView
     if (paramRenderer != null) {}
     try
     {
-      if ((this.jdField_a_of_type_Ailf != null) && (this.jdField_a_of_type_Ailf.jdField_a_of_type_Boolean))
+      if ((this.jdField_a_of_type_Aiqa != null) && (this.jdField_a_of_type_Aiqa.jdField_a_of_type_Boolean))
       {
         paramRenderer.onSurfaceCreated(this.jdField_a_of_type_JavaxMicroeditionKhronosOpenglesGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig);
         paramRenderer.onSurfaceChanged(this.jdField_a_of_type_JavaxMicroeditionKhronosOpenglesGL10, this.c, this.jdField_b_of_type_Int);
@@ -173,15 +173,15 @@ public class GLTextureView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ailf != null)
+    if (this.jdField_a_of_type_Aiqa != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("GLTextureView", 2, "Stopping and joining GLTextureView");
       }
       try
       {
-        this.jdField_a_of_type_Ailf.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Ailf = null;
+        this.jdField_a_of_type_Aiqa.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Aiqa = null;
         return;
       }
       finally {}
@@ -193,10 +193,10 @@ public class GLTextureView
     if (QLog.isColorLevel()) {
       QLog.d("GLTextureView", 2, "Starting GLTextureView thread");
     }
-    this.jdField_a_of_type_Ailf = new ailf(this, null);
+    this.jdField_a_of_type_Aiqa = new aiqa(this, null);
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
     setDimensions(paramInt1, paramInt2);
-    ThreadManager.post(this.jdField_a_of_type_Ailf, 10, null, true);
+    ThreadManager.post(this.jdField_a_of_type_Aiqa, 10, null, true);
   }
   
   public void a(GLTextureView.OnSurfaceChangedListener paramOnSurfaceChangedListener)

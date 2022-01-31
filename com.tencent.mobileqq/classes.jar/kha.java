@@ -1,22 +1,28 @@
-import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
-import com.tencent.av.utils.SignalStrengthReport;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class kha
-  extends PhoneStateListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  public kha(SignalStrengthReport paramSignalStrengthReport) {}
+  public kha(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
   
-  public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    super.onSignalStrengthsChanged(paramSignalStrength);
-    this.a.c = this.a.a(paramSignalStrength);
-    this.a.d = this.a.b(paramSignalStrength);
+    paramMenuItem = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin() + "qav_SP", 0).edit();
+    paramMenuItem.putBoolean("qav_UserGuide2_for_av_redbag", true);
+    paramMenuItem.putBoolean("qav_userguide_for_recever", true);
+    paramMenuItem.commit();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kha
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,23 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.data.ApolloPandora;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class yki
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yki(ApolloManager paramApolloManager, String paramString) {}
+  public yki(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ApolloPandora localApolloPandora = this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a(this.jdField_a_of_type_JavaLangString, true);
-    if (localApolloPandora != null)
-    {
-      localApolloPandora.hadStolen = 1;
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a(localApolloPandora);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, "setCapsuleHadStolenAsync uin had Stolen");
-      }
+    if (this.a.a != null) {
+      this.a.a.pauseDownload();
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ApolloManager", 2, "setCapsuleHadStolenAsync local not save apolloPandora");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yki
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportMgr;
 
-class xnc
-  implements DialogInterface.OnClickListener
+public class xnc
+  implements Runnable
 {
-  xnc(xnb paramxnb) {}
+  public xnc(VACDReportMgr paramVACDReportMgr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.finish();
+    VACDReportMgr.a(this.a).a(VACDReportMgr.a(this.a));
   }
 }
 

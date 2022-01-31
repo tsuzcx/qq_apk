@@ -1,37 +1,14 @@
-import Wallet.RedInfoSyncRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
 
 public class xgq
-  implements BusinessObserver
+  implements Runnable
 {
-  public xgq(QWalletRedManager paramQWalletRedManager) {}
+  public xgq(QWalletSkinHandler paramQWalletSkinHandler, QWalletSkinHandler.SkinListener paramSkinListener, boolean paramBoolean) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "redInfoSyncReq onReceive" + paramBoolean);
-    }
-    StringBuilder localStringBuilder;
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = (RedInfoSyncRsp)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("RedInfoSyncRsp|");
-        if (paramBundle == null) {
-          break label97;
-        }
-      }
-    }
-    label97:
-    for (paramBundle = Integer.valueOf(paramBundle.result);; paramBundle = "")
-    {
-      QLog.d("QWalletRedManager", 2, paramBundle);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener.onResult(this.jdField_a_of_type_Boolean);
   }
 }
 

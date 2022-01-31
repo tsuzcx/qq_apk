@@ -7,7 +7,6 @@ public class FlashChatItem
   public String a;
   public int b;
   public String b;
-  public int c;
   public String c;
   public String d;
   public String e;

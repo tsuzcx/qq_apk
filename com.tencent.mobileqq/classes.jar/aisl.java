@@ -1,33 +1,13 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
 
 public class aisl
-  implements Animator.AnimatorListener
 {
-  public aisl(TribePostTitlePrefixPanelController paramTribePostTitlePrefixPanelController) {}
+  public String a;
+  public String[] a;
+  public String b;
+  public String[] b;
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), -TribePostTitlePrefixPanelController.a(this.a), 0, 0);
-    TribePostTitlePrefixPanelController.a(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), 0, 0, 0);
-    TribePostTitlePrefixPanelController.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), -TribePostTitlePrefixPanelController.a(this.a), 0, 0);
-    TribePostTitlePrefixPanelController.a(this.a, true);
-  }
+  private aisl(ConfigSetting paramConfigSetting) {}
 }
 
 

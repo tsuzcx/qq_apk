@@ -1,18 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.CompletedHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class obk
-  implements SimpleStepExector.CompletedHandler
+  extends QQUIEventReceiver
 {
-  public obk(NewMyStorySegment paramNewMyStorySegment) {}
-  
-  public void a()
+  public obk(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter)
   {
-    SLog.d("NewMyStorySegment", "finish get all data from server steps");
-    new Handler(Looper.getMainLooper()).post(new obl(this));
+    super(paramMemoriesProfilePresenter);
+  }
+  
+  public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
+  {
+    if (paramGetCollectionListEvent.errorInfo.isSuccess())
+    {
+      SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramGetCollectionListEvent.a));
+      MemoriesProfilePresenter.a(paramMemoriesProfilePresenter, paramGetCollectionListEvent.a);
+      if (paramMemoriesProfilePresenter.a != null)
+      {
+        paramMemoriesProfilePresenter.a.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
+        ThreadManager.post(new obl(this, paramMemoriesProfilePresenter), 5, null, false);
+      }
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DateCollectionListPageLoader.GetCollectionListEvent.class;
   }
 }
 

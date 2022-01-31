@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
+import com.tencent.qphone.base.util.QLog;
 
 public class actn
-  extends FMObserver
+  implements Animation.AnimationListener
 {
-  public actn(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
+  public actn(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
   
-  protected void a(ThumbnailInfo paramThumbnailInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.a(paramThumbnailInfo);
-    if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0)) {
-      this.a.i();
+    if (QLog.isColorLevel()) {
+      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendDisappearAnimation disappear ( disappearCount: " + this.a.h + ", disappearSize: " + this.a.i + " )");
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

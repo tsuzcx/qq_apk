@@ -108,6 +108,11 @@ public class QQSVArtFilterNew
     }
   }
   
+  public boolean f_()
+  {
+    return QmcfManager.a().a() == 1;
+  }
+  
   public void h()
   {
     if (QmcfManager.a().a() != 1) {
@@ -160,11 +165,6 @@ public class QQSVArtFilterNew
         SLog.a("QQSVArtFilter", "process excep!", localError);
       }
     }
-  }
-  
-  public boolean i_()
-  {
-    return QmcfManager.a().a() == 1;
   }
 }
 

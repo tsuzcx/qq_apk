@@ -1,51 +1,18 @@
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class tmw
-  extends FriendListObserver
+class tmw
+  implements View.OnLongClickListener
 {
-  public tmw(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  tmw(tmv paramtmv, long paramLong) {}
   
-  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map paramMap)
+  public boolean onLongClick(View paramView)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
-    }
-    this.a.e();
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.getApplicationContext(), 2, 2131434994, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (QQSettingMsgHistoryActivity.a(this.a) != null)
-    {
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramMap = QQSettingMsgHistoryActivity.a(this.a);
-      if (this.a.app.e() != 1) {
-        break label159;
-      }
-    }
-    label159:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramMap.setChecked(paramBoolean);
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      QQToast.a(this.a.getApplicationContext(), 2131434995, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-  }
-  
-  protected void onSetMessageRaoam(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      QQSettingMsgHistoryActivity.b(this.a);
-    }
+    DialogUtil.a(this.jdField_a_of_type_Tmv.a, 230).setTitle(this.jdField_a_of_type_Tmv.a.getString(2131434957)).setItems(2131296268, new tmx(this)).show();
+    return true;
   }
 }
 

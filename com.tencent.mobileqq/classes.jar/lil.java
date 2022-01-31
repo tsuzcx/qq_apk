@@ -1,43 +1,32 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkUtil;
+import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class lil
-  implements Runnable
+class lil
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public lil(ChannelCoverView paramChannelCoverView, ChannelCoverInfo paramChannelCoverInfo) {}
+  lil(lik paramlik) {}
   
-  public void run()
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("is_followed", "1");
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mIsTopic)
-        {
-          String str1 = "0X80088BB";
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mIsTopic)
-          {
-            str3 = "0X80088BB";
-            PublicAccountReportUtils.a(null, "", str1, str3, 0, 0, "1", "", "", VideoReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, localJSONObject), false);
-            return;
-          }
-          String str3 = "0X8007BE6";
-          continue;
-        }
-        String str2 = "0X8007BE6";
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        return;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyArkUtil", 2, new Object[] { "retCode: ", Integer.valueOf(paramInt), ", msg: ", paramString });
     }
+    if ((paramAppPathInfo != null) && (paramInt == 0))
+    {
+      paramString = paramAppPathInfo.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDesc;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArkUtil", 2, new Object[] { "preDownloadArkApp succeed, appPath: ", paramAppPathInfo.jdField_a_of_type_JavaLangString, ", appName: ", paramString.jdField_a_of_type_JavaLangString, ", appVersion: ", paramString.b });
+      }
+      ReadInJoyArkUtil.a(new lim(this, paramString), 5);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyArkUtil", 2, new Object[] { "preDownloadArkApp appPath is null or downloadFailed, retryTimes: ", Integer.valueOf(this.a.jdField_a_of_type_Int) });
+    }
+    ReadInJoyArkUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage, this.a.jdField_a_of_type_Int + 1);
   }
 }
 

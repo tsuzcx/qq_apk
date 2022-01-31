@@ -1,16 +1,13 @@
-import android.animation.AnimatorSet;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimFrameData;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 
 public class abli
   implements Runnable
 {
-  public abli(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimFrameData paramAnimFrameData) {}
+  public abli(ShopScanActivity paramShopScanActivity, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimFrameData.a.a.cancel();
+    ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

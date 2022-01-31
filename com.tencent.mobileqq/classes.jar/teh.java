@@ -1,14 +1,29 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.mobileqq.activity.Now;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.kingkong.Common;
+import com.tencent.mobileqq.activity.recent.RecentDataListManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class teh
+public final class teh
   implements Runnable
 {
-  public teh(Now paramNow) {}
+  public teh(QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    this.a.a.a(null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b = NetConnInfoCenter.getServerTime();
+    RecentDataListManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.sApplication, false);
+    try
+    {
+      Common.OnLogin(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("login", 2, "loginSuccessInit kingkong OnLogin throwable: " + localThrowable);
+    }
   }
 }
 

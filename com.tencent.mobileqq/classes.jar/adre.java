@@ -1,15 +1,21 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicTab;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class adre
+  implements FMDialogUtil.FMDialogInterface
 {
-  public TextView a;
+  public adre(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  adre(HotPicTab paramHotPicTab) {}
+  public void a()
+  {
+    QfileEditBottomBar.a(this.a);
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adre
  * JD-Core Version:    0.7.0.1
  */

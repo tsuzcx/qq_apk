@@ -18,11 +18,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ndl;
-import ndm;
-import ndo;
-import ndp;
-import ndq;
+import nhg;
+import nhh;
+import nhj;
+import nhk;
+import nhl;
 
 public class VidToVideoInfoPuller
   implements IVidToVideoInfoPuller, IEventReceiver
@@ -69,7 +69,7 @@ public class VidToVideoInfoPuller
   {
     BatchHandlerListPuller localBatchHandlerListPuller = BatchHandlerListPuller.a(paramList);
     localBatchHandlerListPuller.a("Q.qqstory.net:VidToVideoInfoPuller");
-    localBatchHandlerListPuller.a(new ndq(this, paramList));
+    localBatchHandlerListPuller.a(new nhl(this, paramList));
     return localBatchHandlerListPuller;
   }
   
@@ -118,7 +118,7 @@ public class VidToVideoInfoPuller
       ((List)localObject1).add(paramList);
       break;
       paramList = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-      paramList.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      paramList.errorInfo = paramErrorMessage;
       boolean bool;
       int i;
       if (!paramBoolean1)
@@ -243,7 +243,7 @@ public class VidToVideoInfoPuller
   protected void d()
   {
     AssertUtils.a(this.jdField_a_of_type_JavaLangString);
-    Bosses.get().postJob(new ndl(this));
+    Bosses.get().postJob(new nhg(this));
   }
   
   protected void e()
@@ -251,7 +251,7 @@ public class VidToVideoInfoPuller
     if (!this.jdField_a_of_type_Boolean)
     {
       SLog.d("Q.qqstory.net:VidToVideoInfoPuller", "requestMyVidList() load from local storage");
-      Bosses.get().postJob(new ndm(this));
+      Bosses.get().postJob(new nhh(this));
       return;
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver == null)
@@ -268,12 +268,12 @@ public class VidToVideoInfoPuller
   
   protected void f()
   {
-    Bosses.get().postJob(new ndo(this));
+    Bosses.get().postJob(new nhj(this));
   }
   
   protected void g()
   {
-    Bosses.get().postJob(new ndp(this));
+    Bosses.get().postJob(new nhk(this));
   }
   
   public boolean isValidate()

@@ -69,10 +69,10 @@ public class EditVideoShareTo
     EditButtonExport localEditButtonExport = (EditButtonExport)super.a(EditButtonExport.class);
     if (VideoSpreadGroupList.a((VideoSpreadGroupList)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a())))
     {
-      localEditButtonExport.b(2130843742);
+      localEditButtonExport.b(2130843815);
       return;
     }
-    localEditButtonExport.b(2130843743);
+    localEditButtonExport.b(2130843816);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)

@@ -336,6 +336,11 @@ public class BaseFilter
   
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3) {}
   
+  public boolean checkApplyGLSLFilterResult()
+  {
+    return this.glFilterId != 0L;
+  }
+  
   public void clearGLSLSelf()
   {
     Iterator localIterator = this.mParamList.values().iterator();

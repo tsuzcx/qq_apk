@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.wxapi;
 
-import akyv;
+import algn;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -34,7 +34,7 @@ public class WXShareHelper
 {
   private static WXShareHelper jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new akyv(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new algn(this);
   private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxf0a80d0ac2e82aa7", true);
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
   private IWXAPI b;
@@ -128,7 +128,7 @@ public class WXShareHelper
   {
     if (TextUtils.isEmpty(paramString))
     {
-      QRUtils.a(1, 2131430004);
+      QRUtils.a(1, 2131430006);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -149,7 +149,7 @@ public class WXShareHelper
   {
     if (TextUtils.isEmpty(paramString1))
     {
-      QRUtils.a(1, 2131430004);
+      QRUtils.a(1, 2131430006);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -380,7 +380,7 @@ public class WXShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.WXShareHelper
  * JD-Core Version:    0.7.0.1
  */

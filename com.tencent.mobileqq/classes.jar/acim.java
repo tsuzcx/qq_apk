@@ -1,28 +1,71 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.graphics.Point;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.widget.RoundBGTextView;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 public class acim
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  extends aciq
 {
-  public RoundBGTextView a;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
   
-  public acim(ExtendFriendGroupFragment paramExtendFriendGroupFragment, ViewGroup paramViewGroup)
+  public acim(DragSortListView paramDragSortListView, float paramFloat, int paramInt)
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_ComTencentWidgetRoundBGTextView = ((RoundBGTextView)paramViewGroup.findViewById(2131370092));
-    this.jdField_a_of_type_ComTencentWidgetRoundBGTextView.setRoundCornerSize(2);
+    super(paramDragSortListView, paramFloat, paramInt);
   }
   
-  public void onClick(View paramView) {}
+  private int a()
+  {
+    int i = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getFirstVisiblePosition();
+    int j = (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.h + this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getDividerHeight()) / 2;
+    View localView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(this.jdField_a_of_type_Int - i);
+    if (localView != null)
+    {
+      if (this.jdField_a_of_type_Int == this.jdField_b_of_type_Int) {
+        return localView.getTop();
+      }
+      if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int) {
+        return localView.getTop() - j;
+      }
+      return localView.getBottom() + j - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.i;
+    }
+    d();
+    return -1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e;
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.g = 2;
+    this.jdField_a_of_type_Float = (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a.y - a());
+    this.jdField_b_of_type_Float = (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a.x - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getPaddingLeft());
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    int i = a();
+    int j = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getPaddingLeft();
+    paramFloat1 = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a.y - i;
+    float f = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a.x - j;
+    paramFloat2 = 1.0F - paramFloat2;
+    if ((paramFloat2 < Math.abs(paramFloat1 / this.jdField_a_of_type_Float)) || (paramFloat2 < Math.abs(f / this.jdField_b_of_type_Float)))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a.y = (i + (int)(this.jdField_a_of_type_Float * paramFloat2));
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a.x = (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getPaddingLeft() + (int)(this.jdField_b_of_type_Float * paramFloat2));
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(true);
+    }
+  }
+  
+  public void b()
+  {
+    DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acim
  * JD-Core Version:    0.7.0.1
  */

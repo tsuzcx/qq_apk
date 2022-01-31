@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import ajky;
-import ajkz;
-import ajla;
-import ajlb;
+import ajsk;
+import ajsl;
+import ajsm;
+import ajsn;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -163,7 +163,7 @@ public class ImageItem
         if (QLog.isColorLevel()) {
           QLog.d("ImageItem", 2, "no network toast from select media");
         }
-        QQToast.a(paramIntent, 2131430298, 0).a();
+        QQToast.a(paramIntent, 2131430301, 0).a();
         return paramBoolean;
       }
       if ((i > 0) && (!NetworkUtil.h(paramIntent)))
@@ -173,7 +173,7 @@ public class ImageItem
         }
         if (!paramBoolean)
         {
-          DialogUtil.b(paramIntent, 230, paramXMediaEditor.getResources().getString(2131429041), paramXMediaEditor.getResources().getString(2131429035), 2131429048, 2131429053, new ajla(paramXMediaEditor, localArrayList), new ajlb()).show();
+          DialogUtil.b(paramIntent, 230, paramXMediaEditor.getResources().getString(2131429041), paramXMediaEditor.getResources().getString(2131429035), 2131429048, 2131429053, new ajsm(paramXMediaEditor, localArrayList), new ajsn()).show();
           return true;
         }
       }
@@ -223,7 +223,7 @@ public class ImageItem
   
   public ImageItem.ImageViewHolder a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = new ImageItem.ImageViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969903, paramViewGroup, false));
+    paramViewGroup = new ImageItem.ImageViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969914, paramViewGroup, false));
     if (QLog.isColorLevel()) {
       QLog.d("ImageItem", 2, new Object[] { "Image onCreateViewHolder. vh hash=", Integer.valueOf(paramViewGroup.hashCode()) });
     }
@@ -235,7 +235,7 @@ public class ImageItem
   
   protected SimpleObserver a(ImageInfo paramImageInfo)
   {
-    return new ajkz(this, paramImageInfo);
+    return new ajsl(this, paramImageInfo);
   }
   
   public void a()
@@ -309,10 +309,10 @@ public class ImageItem
     ImageInfo localImageInfo = (ImageInfo)paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase;
     switch (paramView.getId())
     {
-    case 2131368420: 
-    default: 
-    case 2131368421: 
     case 2131368422: 
+    default: 
+    case 2131368423: 
+    case 2131368424: 
       do
       {
         return;
@@ -467,7 +467,7 @@ public class ImageItem
       if (QLog.isColorLevel()) {
         QLog.d("ImageItem", 2, new Object[] { "onItemAdded. editor getWidth fail result: ", Integer.valueOf(i) });
       }
-      ThreadManager.getUIHandler().postDelayed(new ajky(this, paramEditItemInfoBase), 50L);
+      ThreadManager.getUIHandler().postDelayed(new ajsk(this, paramEditItemInfoBase), 50L);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -496,7 +496,7 @@ public class ImageItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem
  * JD-Core Version:    0.7.0.1
  */

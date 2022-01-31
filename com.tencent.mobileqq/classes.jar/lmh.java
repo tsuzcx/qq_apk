@@ -1,29 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CommentLikeObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter.SecondCommentOperationCallback;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class lmh
-  implements Runnable
+public final class lmh
+  implements ArticleCommentModule.CommentLikeObserver
 {
-  public lmh(ReadinjoySPEventReport paramReadinjoySPEventReport, String paramString, long paramLong) {}
+  public lmh(int paramInt, ReadInJoySecondCommentListAdapter.SecondCommentOperationCallback paramSecondCommentOperationCallback) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo, String paramString, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    oidb_cmd0x80a.AttributeList localAttributeList1 = new oidb_cmd0x80a.AttributeList();
-    localAttributeList1.att_id.set(1);
-    localAttributeList1.att_name.set("uin");
-    localAttributeList1.att_value.set("" + this.jdField_a_of_type_JavaLangString);
-    oidb_cmd0x80a.AttributeList localAttributeList2 = new oidb_cmd0x80a.AttributeList();
-    localAttributeList2.att_id.set(2);
-    localAttributeList2.att_name.set("time");
-    localAttributeList2.att_value.set(String.valueOf(ReadinjoySPEventReport.a(this.jdField_a_of_type_Long) / 1000L));
-    localArrayList.add(localAttributeList1);
-    localArrayList.add(localAttributeList2);
-    PublicAccountUtil.a(21, "ExitMsgBusiness", localArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentUtils", 2, "zan cancel success,comment type =" + this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter$SecondCommentOperationCallback != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter$SecondCommentOperationCallback.a(paramString, null, 4, null);
+    }
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentUtils", 2, "zan cancel failed,comment type =" + this.jdField_a_of_type_Int + "comment id =" + paramString1 + "err code = " + paramInt + "errMsg =" + paramString2);
+    }
   }
 }
 

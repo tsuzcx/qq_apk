@@ -1,12 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
 
 class aojl
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  aojl(aojj paramaojj) {}
+  aojl(aojk paramaojk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    if (this.a.a != null)
+    {
+      this.a.a.notifyDataSetChanged();
+      if (QLog.isColorLevel()) {
+        QLog.d("InformationFaceAdapter", 2, "onResp , local exist ApngSoLoadCallBack!");
+      }
+    }
+  }
 }
 
 

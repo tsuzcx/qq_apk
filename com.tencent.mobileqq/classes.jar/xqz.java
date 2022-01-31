@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class xqz
   implements Runnable
 {
-  public xqz(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
+  public xqz(RecentOptPopBar paramRecentOptPopBar) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.b(this.jdField_a_of_type_Int + 1, 0, 0);
+    ShortVideoUtils.a(this.a.a.app);
   }
 }
 

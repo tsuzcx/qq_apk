@@ -1,14 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class lps
   implements Runnable
 {
-  public lps(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
+  public lps(WeishiManager paramWeishiManager, QQMessageFacade paramQQMessageFacade, String paramString, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.aI, 1008);
+    if (localMessageRecord != null) {}
+    for (localMessageRecord = WeishiManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineWeishiManager, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);; localMessageRecord = WeishiManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineWeishiManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long))
+    {
+      if (localMessageRecord != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord, WeishiManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineWeishiManager).c());
+      }
+      return;
+    }
   }
 }
 

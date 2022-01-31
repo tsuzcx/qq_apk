@@ -28,7 +28,7 @@ public class WatchVideoHandler
   public void a(@NonNull WatchVideoRequest paramWatchVideoRequest, @Nullable WatchVideoResponse paramWatchVideoResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     WatchVideoHandler.WatchVideoEvent localWatchVideoEvent = new WatchVideoHandler.WatchVideoEvent();
-    localWatchVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    localWatchVideoEvent.errorInfo = paramErrorMessage;
     localWatchVideoEvent.jdField_a_of_type_JavaLangString = paramWatchVideoRequest.b;
     if (TroopStoryUtil.a(localWatchVideoEvent.jdField_a_of_type_JavaLangString)) {
       paramWatchVideoRequest.jdField_c_of_type_JavaLangString = "4_10000";

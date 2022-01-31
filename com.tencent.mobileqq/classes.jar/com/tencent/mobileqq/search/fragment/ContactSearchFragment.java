@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahsy;
-import ahsz;
+import ahxp;
+import ahxq;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -72,7 +72,7 @@ public class ContactSearchFragment
   
   protected BaseMvpAdapter a()
   {
-    return new ahsz(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new ahxq(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
   }
   
   protected ISearchEngine a()
@@ -123,7 +123,7 @@ public class ContactSearchFragment
     return;
     label71:
     this.f = true;
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838214);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838219);
   }
   
   public void a(List paramList, int paramInt)
@@ -246,7 +246,7 @@ public class ContactSearchFragment
     for (;;)
     {
       this.f = false;
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahsy(this));
+      this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahxp(this));
       return;
       label54:
       this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493241);

@@ -1,39 +1,36 @@
-import android.app.Activity;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.AbstractImageListModel;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
-import com.tencent.mobileqq.profile.FriendProfileCardPicScene;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
-public class sts
-  extends GalleryManager
+class sts
+  implements Runnable
 {
-  public sts(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
+  sts(stq paramstq, String paramString1, String paramString2) {}
   
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public void run()
   {
-    return super.a(paramActivity, paramAbstractImageListModel);
-  }
-  
-  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    this.a.a = new FriendProfileCardPicScene((FriendProfilePicBrowserActivity)paramActivity, paramAbstractImageListModel);
-    return this.a.a;
-  }
-  
-  public AbstractImageListModel a(Activity paramActivity)
-  {
-    paramActivity = new PicBrowserModel(this.a, FriendProfilePicBrowserActivity.a(this.a));
-    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
-    return paramActivity;
-  }
-  
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.profilecard.FrdProfileCard", 2, "onUpdateAddFriend, uin: " + this.jdField_a_of_type_JavaLangString + ", mobileNum = " + this.b);
+    }
+    Object localObject1 = (FriendsManager)this.jdField_a_of_type_Stq.a.app.getManager(50);
+    if (localObject1 == null) {}
+    for (localObject1 = null;; localObject1 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_Stq.a.a.a.jdField_a_of_type_JavaLangString))
+    {
+      Message localMessage = Message.obtain();
+      localMessage.what = 3;
+      Object localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = this.jdField_a_of_type_JavaLangString;
+      }
+      localMessage.obj = localObject2;
+      this.jdField_a_of_type_Stq.a.b.sendMessage(localMessage);
+      return;
+    }
   }
 }
 

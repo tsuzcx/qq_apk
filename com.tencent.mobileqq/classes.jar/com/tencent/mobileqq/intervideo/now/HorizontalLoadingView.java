@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import aduq;
+import aecz;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -34,7 +34,7 @@ public class HorizontalLoadingView
   
   private void a()
   {
-    getViewTreeObserver().addOnGlobalLayoutListener(new aduq(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new aecz(this));
   }
   
   @TargetApi(11)

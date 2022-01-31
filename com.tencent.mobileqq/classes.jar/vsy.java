@@ -1,50 +1,109 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.tips.GatherContactsTips;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
-public class vsy
-  extends FriendListObserver
+public final class vsy
+  extends AsyncTask
 {
-  public vsy(FriendChatPie paramFriendChatPie) {}
+  public vsy(Context paramContext, int paramInt, URLDrawable paramURLDrawable, QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, PicMessageExtraData paramPicMessageExtraData) {}
   
-  protected void onSetAsNormalContacts(boolean paramBoolean, List paramList)
+  protected Integer a(Void... paramVarArgs)
   {
-    if ((paramBoolean) && (FriendChatPie.a(this.a) != null))
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly(false);
+    }
+    URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    paramVarArgs = ((MessageForPic)this.jdField_a_of_type_ComTencentImageURLDrawable.getTag()).path;
+    paramVarArgs = AIOGalleryUtils.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs);
+    if (paramVarArgs != null)
     {
-      if ((FriendChatPie.a(this.a).a()) && (!FriendChatPie.a(this.a).b()))
+      AIOGalleryUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, paramVarArgs);
+      return Integer.valueOf(2);
+    }
+    paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
+    if (!AbsDownloader.a(paramVarArgs)) {
+      return Integer.valueOf(1);
+    }
+    paramVarArgs = AbsDownloader.a(paramVarArgs);
+    if (paramVarArgs != null) {}
+    label299:
+    label310:
+    for (paramVarArgs = SecUtil.getFileMd5(paramVarArgs.getAbsolutePath());; paramVarArgs = null)
+    {
+      if ((paramVarArgs == null) || ("".equals(paramVarArgs))) {
+        return Integer.valueOf(1);
+      }
+      FileUtils.c(AppConstants.aV + ".nomedia");
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      int i;
+      StringBuilder localStringBuilder;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null) && (this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.isDiyDouTu()))
       {
-        FriendChatPie.a(this.a).b(1);
-        FriendChatPie.a(this.a).a(2);
+        i = 1;
+        if (i == 0) {
+          break label310;
+        }
+        localStringBuilder = new StringBuilder().append("_diydoutu@");
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId)) {
+          break label299;
+        }
+        str1 = "0";
       }
-      return;
+      label220:
+      for (String str1 = str1;; str1 = "")
+      {
+        paramVarArgs = AppConstants.aV + str2 + paramVarArgs + str1 + ".jpg";
+        try
+        {
+          this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(paramVarArgs);
+          return Integer.valueOf(AIOGalleryUtils.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData));
+        }
+        catch (IOException paramVarArgs)
+        {
+          paramVarArgs.printStackTrace();
+          QLog.d("AIOGalleryUtils", 1, paramVarArgs, new Object[0]);
+          return Integer.valueOf(1);
+        }
+        i = 0;
+        break;
+        str1 = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId;
+        break label220;
+      }
     }
-    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131437762), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
   }
   
-  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List paramList)
+  protected void a(Integer paramInteger)
   {
-    if ((paramBoolean) && (FriendChatPie.a(this.a) != null)) {
-      FriendChatPie.a(this.a).b(2);
-    }
-  }
-  
-  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    super.onUpdateHotFriendLevel(paramBoolean, paramArrayList);
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.contains(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+    if (paramInteger.intValue() == 0) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendChatPie", 2, "onUpdateHotFriendLevel");
+      return;
+      if (paramInteger.intValue() == 1)
+      {
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131434600, 0).b(this.jdField_a_of_type_Int);
+        return;
       }
-      this.a.y();
-    }
+      if (paramInteger.intValue() == 2)
+      {
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, 2131434517, 0).b(this.jdField_a_of_type_Int);
+        return;
+      }
+    } while (paramInteger.intValue() != 3);
   }
 }
 

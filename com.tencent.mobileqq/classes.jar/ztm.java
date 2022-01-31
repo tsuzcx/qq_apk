@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
 
-public final class ztm
+public class ztm
   implements Runnable
 {
-  public ztm(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2) {}
+  public ztm(SVIPHandler paramSVIPHandler, String paramString) {}
   
   public void run()
   {
-    MsgProxyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    BubbleDiyFetcher localBubbleDiyFetcher = BubbleDiyFetcher.a();
+    localBubbleDiyFetcher.a(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler.b, this.jdField_a_of_type_JavaLangString, new ztn(this, localBubbleDiyFetcher));
   }
 }
 

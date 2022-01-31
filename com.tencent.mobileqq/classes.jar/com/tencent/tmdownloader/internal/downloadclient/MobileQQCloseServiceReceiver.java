@@ -10,7 +10,6 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ServiceInfo;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.text.format.Time;
 import android.util.Log;
 import com.tencent.hlyyb.HalleyAgent;
@@ -30,9 +29,7 @@ public class MobileQQCloseServiceReceiver
 {
   protected static MobileQQCloseServiceReceiver b = null;
   public boolean a = false;
-  public HandlerThread c = new HandlerThread("checkIsAllFinishThread");
-  public Handler d = null;
-  private long e = 0L;
+  private long c = 0L;
   
   public static MobileQQCloseServiceReceiver a()
   {
@@ -79,13 +76,13 @@ public class MobileQQCloseServiceReceiver
     try
     {
       r.c("MQQCloseServiceReceiver", "exitProcess thread id:" + Thread.currentThread().getId());
-      if (System.currentTimeMillis() - this.e < 1000L) {
+      if (System.currentTimeMillis() - this.c < 1000L) {
         Log.i("MQQCloseServiceReceiver", "exitProcess is running!!");
       }
       for (;;)
       {
         return;
-        this.e = System.currentTimeMillis();
+        this.c = System.currentTimeMillis();
         bool1 = m.b();
         if (!bool1) {
           try
@@ -214,14 +211,7 @@ public class MobileQQCloseServiceReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     r.c("MQQCloseServiceReceiver", "receive broadcast close all service");
-    if (!this.c.isAlive())
-    {
-      this.c.start();
-      this.d = new Handler(this.c.getLooper());
-    }
-    if (this.d != null) {
-      this.d.post(new a(this, paramContext, paramIntent));
-    }
+    f.a().post(new a(this, paramContext, paramIntent));
   }
 }
 

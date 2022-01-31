@@ -196,7 +196,7 @@ public final class WeiyunHelper
   {
     c = FMSettings.a().b();
     if ("mounted".equals(Environment.getExternalStorageState())) {}
-    for (paramApplication = new File(AppConstants.aJ);; paramApplication = paramApplication.getCacheDir())
+    for (paramApplication = new File(AppConstants.aK);; paramApplication = paramApplication.getCacheDir())
     {
       d = new File(paramApplication, "diskcache").getAbsolutePath();
       return;

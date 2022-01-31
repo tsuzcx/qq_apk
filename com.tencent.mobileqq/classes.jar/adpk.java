@@ -1,18 +1,12 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.hotchat.PttShowRoomMng;
-import com.tencent.mobileqq.hotchat.PttShowRoomMng.Guest;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
-public class adpk
-  extends LruCache
+public final class adpk
+  implements Comparator
 {
-  public adpk(PttShowRoomMng paramPttShowRoomMng, int paramInt)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    super(paramInt);
-  }
-  
-  protected int a(String paramString, PttShowRoomMng.Guest paramGuest)
-  {
-    return 1;
+    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
   }
 }
 

@@ -1,16 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnCompletionListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
 
 public class aezd
-  implements IMediaPlayer.OnCompletionListener
+  implements Animation.AnimationListener
 {
-  public aezd(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnCompletionListener paramOnCompletionListener) {}
+  public aezd(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnCompletionListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl);
+    ChooseInterestTagActivity.a(this.a).fullScroll(66);
   }
 }
 

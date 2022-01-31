@@ -1,28 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter.CacheRefMap;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
 
 public class aojw
-  extends BroadcastReceiver
+  extends SoftReference
 {
-  public aojw(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  private Object jdField_a_of_type_JavaLangObject;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aojw(NormalFaceAdapter.CacheRefMap paramCacheRefMap, Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
-    }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
-    {
-      if ((this.a.a != null) && (this.a.a.isPlaying())) {
-        this.a.h = true;
-      }
-      this.a.j();
-    }
+    super(paramObject2, paramReferenceQueue);
+    this.jdField_a_of_type_JavaLangObject = paramObject1;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
   }
 }
 

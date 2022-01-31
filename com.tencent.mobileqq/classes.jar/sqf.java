@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileBaseView;
+import com.tencent.mobileqq.activity.EditActivity;
 
-class sqf
+public class sqf
   implements Runnable
 {
-  sqf(sqe paramsqe) {}
+  public sqf(EditActivity paramEditActivity) {}
   
   public void run()
   {
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) && ((this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileBaseView))) {
-      ((ProfileBaseView)this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView).b(this.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, true);
-    }
+    this.a.a();
   }
 }
 

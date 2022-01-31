@@ -1,22 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class yzn
-  implements Animation.AnimationListener
+public class yzn
+  implements Runnable
 {
-  yzn(yzm paramyzm) {}
+  public yzn(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.a = null;
+    try
+    {
+      this.a.b();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.ApolloGameActivity", 1, localThrowable, new Object[0]);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

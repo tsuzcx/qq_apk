@@ -1,19 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class ansu
-  extends AnimatorListenerAdapter
+  implements EditVideoPoiPickerCallback
 {
-  public ansu(EditVideoButton paramEditVideoButton) {}
+  public ansu(QIMCaptureController paramQIMCaptureController) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a() {}
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
   {
-    EditVideoButton.b(this.a).setVisibility(8);
-    EditVideoButton.c(this.a).setVisibility(8);
-    EditVideoButton.d(this.a).setVisibility(8);
-    EditVideoButton.a(this.a, EditVideoButton.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureController", 2, "onSelectLocation " + paramTroopBarPOI);
+    }
+    this.a.a.setLocation(paramTroopBarPOI);
+    if (paramTroopBarPOI != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.b = bool;
+      return;
+    }
   }
 }
 

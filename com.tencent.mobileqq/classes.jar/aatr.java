@@ -1,38 +1,49 @@
-import android.os.Build;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.startup.step.UpdateArkSo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderUtils;
+import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import com.tencent.mobileqq.arcard.ARGreetingCardListManager.BtnState;
+import java.util.List;
 
-public final class aatr
+public class aatr
   implements Runnable
 {
+  public aatr(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  
   public void run()
   {
-    if ((!ArkAppCenter.b) && (ArkAppCenter.c))
+    if (ARGreetingCardListManager.a(this.a) == ARGreetingCardListManager.BtnState.MASTER_STATE_1)
     {
-      long l1 = System.currentTimeMillis();
-      UpdateArkSo.a(BaseApplicationImpl.getContext(), "png-armeabi-v7a");
-      ArkAppCenter.b = UpdateArkSo.b(BaseApplicationImpl.getContext(), "ark-armeabi-v7a");
-      long l2 = System.currentTimeMillis();
-      QLog.d("ArkApp", 1, "load libark.so for ARMv7!, loaded=" + Boolean.toString(ArkAppCenter.b) + ", time=" + (l2 - l1));
+      ARGreetingCardListManager.a(this.a).setVisibility(8);
+      if (ARGreetingCardListManager.a(this.a).isEmpty())
+      {
+        ARGreetingCardListManager.a(this.a).setVisibility(0);
+        ARGreetingCardListManager.a(this.a).setVisibility(0);
+        if (VideoEncoderUtils.a())
+        {
+          ARGreetingCardListManager.b(this.a).setVisibility(0);
+          ARGreetingCardListManager.c(this.a).setVisibility(0);
+          ARGreetingCardListManager.d(this.a).setVisibility(8);
+        }
+      }
     }
-    if (ArkAppCenter.d()) {
+    while ((ARGreetingCardListManager.a(this.a) != ARGreetingCardListManager.BtnState.MASTER_STATE_2) && (ARGreetingCardListManager.a(this.a) != ARGreetingCardListManager.BtnState.MASTER_STATE_3) && (ARGreetingCardListManager.a(this.a) != ARGreetingCardListManager.BtnState.GUEST_STATE_1) && (ARGreetingCardListManager.a(this.a) != ARGreetingCardListManager.BtnState.GUEST_STATE_2))
+    {
+      return;
+      ARGreetingCardListManager.b(this.a).setVisibility(8);
+      ARGreetingCardListManager.c(this.a).setVisibility(8);
+      ARGreetingCardListManager.d(this.a).setVisibility(0);
+      return;
+      ARGreetingCardListManager.a(this.a);
       return;
     }
-    ArkAppCenter.a(true);
-    if (ArkAppCenter.b)
-    {
-      ReportController.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.success", 0, 0, "0", "0", Build.CPU_ABI, Build.CPU_ABI2);
-      return;
-    }
-    ReportController.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.fail", 1, 1, "1", "1", Build.CPU_ABI, Build.CPU_ABI2);
+    ARGreetingCardListManager.a(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aatr
  * JD-Core Version:    0.7.0.1
  */

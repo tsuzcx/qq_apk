@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiFeedCommInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QlinkReliableReport;
 
-public final class amva
-  implements Parcelable.Creator
+public class amva
+  implements Runnable
 {
-  public WeishiFeedCommInfo a(Parcel paramParcel)
-  {
-    return new WeishiFeedCommInfo(paramParcel);
-  }
+  public amva(QlinkReliableReport paramQlinkReliableReport) {}
   
-  public WeishiFeedCommInfo[] a(int paramInt)
+  public void run()
   {
-    return new WeishiFeedCommInfo[paramInt];
+    QLog.d("QlinkReliableReport", 2, "doStopReportTimer :  on timer");
+    QlinkReliableReport.a(this.a, null);
+    QlinkReliableReport.g();
   }
 }
 

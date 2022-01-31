@@ -1,18 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.widget.XListView.DrawFinishedListener;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
+import java.io.File;
 
 public class lcy
-  implements XListView.DrawFinishedListener
+  implements Runnable
 {
-  public lcy(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
+  public lcy(KanDianViewController.PullRefreshCompleteListener paramPullRefreshCompleteListener) {}
   
-  public void a()
+  public void run()
   {
-    if ((!this.a.a) && (this.a.b))
+    String str = RefreshRes.e();
+    if ((str != null) && (new File(str).exists()))
     {
-      this.a.a = true;
-      PublicTracker.a("subscribe_tab_cost", null);
+      KanDianViewController.a(this.a.a, str);
+      KanDianViewController.a(this.a.a).removeMessages(3);
+      KanDianViewController.a(this.a.a).sendEmptyMessage(2);
     }
   }
 }

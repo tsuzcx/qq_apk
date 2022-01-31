@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.leba;
 
-import adyk;
-import adyl;
-import adym;
-import adyn;
-import adyo;
-import adyp;
-import adyz;
+import aegu;
+import aegv;
+import aegw;
+import aegx;
+import aegy;
+import aegz;
+import aehj;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.content.BroadcastReceiver;
@@ -58,14 +58,14 @@ import java.util.List;
 
 public class LebaFeedsAdapter
   extends BaseAdapter
-  implements adyz, LebaFPSXListView.Listener, LebaFeedsViewBase.ItemClickListener, AbsListView.OnScrollListener
+  implements aehj, LebaFPSXListView.Listener, LebaFeedsViewBase.ItemClickListener, AbsListView.OnScrollListener
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private adyp jdField_a_of_type_Adyp;
+  private aegz jdField_a_of_type_Aegz;
   private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adyo(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aegy(this);
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
@@ -98,7 +98,7 @@ public class LebaFeedsAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFPSXListView = paramLebaFPSXListView;
     this.jdField_a_of_type_ComTencentMobileqqLebaLebaWithFeeds = paramLebaWithFeeds;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370335));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370344));
     this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController = new LebaFeedsVideoPlayController(paramContext, paramView, paramLebaFPSXListView);
     this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFPSXListView.setListener(this);
     o();
@@ -157,7 +157,7 @@ public class LebaFeedsAdapter
     case 5: 
       return LebaFeedsArkHelper.a().a(this.jdField_a_of_type_AndroidContentContext, paramView);
     }
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969496, null);
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969492, null);
   }
   
   private String a(int paramInt)
@@ -255,8 +255,8 @@ public class LebaFeedsAdapter
     int i = paramLebaFeedsViewBase.getHeight();
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 360 });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(360L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new adym(this, paramLebaFeedsViewBase, i));
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new adyn(this, paramLebaFeedInfo);
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aegw(this, paramLebaFeedsViewBase, i));
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new aegx(this, paramLebaFeedInfo);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
     r();
@@ -544,10 +544,10 @@ public class LebaFeedsAdapter
   
   private void o()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969497, null);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366712));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366714));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131366713));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969493, null);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366710));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366712));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131366711));
     p();
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
     Object localObject = localLayoutParams;
@@ -556,19 +556,19 @@ public class LebaFeedsAdapter
     }
     ((ViewGroup.LayoutParams)localObject).height = AIOUtils.a(55.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new adyk(this));
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new adyl(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aegu(this));
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new aegv(this));
     e();
   }
   
   private void p()
   {
-    int j = 2131493444;
+    int j = 2131493446;
     int i = j;
     switch (LebaUtils.jdField_a_of_type_Int)
     {
     }
-    for (i = j;; i = 2131494267)
+    for (i = j;; i = 2131494273)
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(i));
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(i));
@@ -615,7 +615,7 @@ public class LebaFeedsAdapter
   
   private void r()
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131439338, 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131439370, 0).a();
   }
   
   public int a()
@@ -649,9 +649,9 @@ public class LebaFeedsAdapter
     m();
   }
   
-  public void a(adyp paramadyp)
+  public void a(aegz paramaegz)
   {
-    this.jdField_a_of_type_Adyp = paramadyp;
+    this.jdField_a_of_type_Aegz = paramaegz;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -674,8 +674,8 @@ public class LebaFeedsAdapter
     if ((paramLebaFeedsViewBase == null) || (paramLebaFeedInfo == null)) {
       return;
     }
-    if (this.jdField_a_of_type_Adyp != null) {
-      this.jdField_a_of_type_Adyp.a(paramLebaFeedInfo);
+    if (this.jdField_a_of_type_Aegz != null) {
+      this.jdField_a_of_type_Aegz.a(paramLebaFeedInfo);
     }
     a(paramLebaFeedsViewBase, paramLebaFeedInfo);
     LebaUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLebaFeedInfo, paramInt, "trends_feeds", "feeds_dislike", 0L);
@@ -684,8 +684,8 @@ public class LebaFeedsAdapter
   public void a(AbsListView paramAbsListView, int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController.a(paramAbsListView, paramInt);
-    if ((paramAbsListView != null) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (paramInt == 0) && (this.jdField_a_of_type_Adyp != null)) {
-      this.jdField_a_of_type_Adyp.b();
+    if ((paramAbsListView != null) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (paramInt == 0) && (this.jdField_a_of_type_Aegz != null)) {
+      this.jdField_a_of_type_Aegz.b();
     }
     if ((paramInt == 1) && (this.jdField_b_of_type_Long > 0L)) {
       a(this.jdField_b_of_type_Long, true);
@@ -787,7 +787,7 @@ public class LebaFeedsAdapter
   
   public void b(LebaFeedsViewBase paramLebaFeedsViewBase, LebaFeedInfo paramLebaFeedInfo, int paramInt)
   {
-    if (this.jdField_a_of_type_Adyp != null)
+    if (this.jdField_a_of_type_Aegz != null)
     {
       Object localObject2 = null;
       Object localObject1 = localObject2;
@@ -814,7 +814,7 @@ public class LebaFeedsAdapter
           }
         }
       }
-      this.jdField_a_of_type_Adyp.a(paramLebaFeedInfo, (HashMap)localObject1);
+      this.jdField_a_of_type_Aegz.a(paramLebaFeedInfo, (HashMap)localObject1);
     }
     LebaUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLebaFeedInfo, paramInt, "trends_feeds", "feeds_clk", 0L);
     this.jdField_a_of_type_ComTencentMobileqqDataLebaFeedInfo = paramLebaFeedInfo;
@@ -849,8 +849,8 @@ public class LebaFeedsAdapter
   
   public void c(LebaFeedsViewBase paramLebaFeedsViewBase, LebaFeedInfo paramLebaFeedInfo, int paramInt)
   {
-    if (this.jdField_a_of_type_Adyp != null) {
-      this.jdField_a_of_type_Adyp.b(paramLebaFeedInfo);
+    if (this.jdField_a_of_type_Aegz != null) {
+      this.jdField_a_of_type_Aegz.b(paramLebaFeedInfo);
     }
     LebaUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLebaFeedInfo, paramInt, "trends_feeds", "feeds_business_clk", 0L);
   }

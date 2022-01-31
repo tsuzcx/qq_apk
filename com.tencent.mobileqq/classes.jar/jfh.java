@@ -1,25 +1,28 @@
-import com.tencent.av.business.manager.EffectOperateManager;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class jfh
-  extends jfk
+  implements Runnable
 {
-  public jfh(EffectOperateManager paramEffectOperateManager)
-  {
-    super(paramEffectOperateManager);
-  }
+  public jfh(VideoController paramVideoController) {}
   
   public void run()
   {
-    EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.a.get();
-    if (localEffectOperateManager != null) {
-      localEffectOperateManager.e();
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoController.a, 2, "connectingRunnable");
+    }
+    if (!this.a.a().f())
+    {
+      this.a.a(this.a.a().c, 0);
+      this.a.b(216);
+      this.a.c(this.a.a().c, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jfh
  * JD-Core Version:    0.7.0.1
  */

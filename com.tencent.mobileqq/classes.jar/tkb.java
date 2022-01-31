@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class tkb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tkb(QQMapActivity paramQQMapActivity) {}
+  public tkb(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.u();
-    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
+    this.a.e.setBackgroundDrawable(FormSwitchItem.a(this.a.getResources(), 0));
   }
 }
 

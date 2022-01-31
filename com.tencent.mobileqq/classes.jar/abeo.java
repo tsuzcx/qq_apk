@@ -1,37 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.armap.ShopScanDragView;
+import android.view.View.OnClickListener;
 
 public class abeo
-  implements Animator.AnimatorListener
+  extends ClickableSpan
 {
-  public abeo(ShopScanDragView paramShopScanDragView) {}
+  private final View.OnClickListener a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public abeo(View.OnClickListener paramOnClickListener)
   {
-    ShopScanDragView.a(this.a).setAlpha(1.0F);
-    ShopScanDragView.b(this.a).setAlpha(0.0F);
-    ShopScanDragView.a(this.a).setVisibility(0);
-    ShopScanDragView.b(this.a).setVisibility(4);
+    this.a = paramOnClickListener;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    ShopScanDragView.a(this.a).setAlpha(1.0F);
-    ShopScanDragView.b(this.a).setAlpha(0.0F);
-    ShopScanDragView.a(this.a).setVisibility(0);
-    ShopScanDragView.b(this.a).setVisibility(4);
+    this.a.onClick(paramView);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    ShopScanDragView.a(this.a).setAlpha(0.0F);
-    ShopScanDragView.a(this.a).setVisibility(0);
-    ShopScanDragView.b(this.a).setAlpha(1.0F);
-    ShopScanDragView.b(this.a).setVisibility(0);
+    paramTextPaint.setColor(1226741);
+    paramTextPaint.setAlpha(255);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

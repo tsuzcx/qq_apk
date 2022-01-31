@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import ajiv;
-import ajiw;
-import ajix;
-import ajiy;
-import ajiz;
-import ajja;
-import ajjb;
-import ajjc;
-import ajjd;
-import ajje;
-import ajjf;
-import ajjg;
-import ajjh;
-import ajji;
-import ajjl;
-import ajjm;
-import ajjn;
-import ajjo;
+import ajqh;
+import ajqi;
+import ajqj;
+import ajqk;
+import ajql;
+import ajqm;
+import ajqn;
+import ajqo;
+import ajqp;
+import ajqq;
+import ajqr;
+import ajqs;
+import ajqt;
+import ajqu;
+import ajqx;
+import ajqy;
+import ajqz;
+import ajra;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -123,9 +123,9 @@ public class ReciteRecordLayout
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    View.inflate(paramContext, 2130969946, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368532));
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiVolumeVisualizerView = ((VolumeVisualizerView)findViewById(2131368531));
+    View.inflate(paramContext, 2130969957, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368535));
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiVolumeVisualizerView = ((VolumeVisualizerView)findViewById(2131368534));
   }
   
   private void f()
@@ -135,7 +135,7 @@ public class ReciteRecordLayout
       b();
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131431551).setNegativeButton("退出", new ajjf(this)).setPositiveButton(2131431550, new ajiv(this), false);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131431562).setNegativeButton("退出", new ajqr(this)).setPositiveButton(2131431561, new ajqh(this), false);
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
       }
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -144,9 +144,9 @@ public class ReciteRecordLayout
   
   private void g()
   {
-    this.jdField_b_of_type_AndroidOsCountDownTimer = new ajjg(this, 3000L, 1000L);
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new ajjh(this);
-    this.jdField_a_of_type_AndroidOsCountDownTimer = new ajji(this, 10000L, 1000L);
+    this.jdField_b_of_type_AndroidOsCountDownTimer = new ajqs(this, 3000L, 1000L);
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new ajqt(this);
+    this.jdField_a_of_type_AndroidOsCountDownTimer = new ajqu(this, 10000L, 1000L);
   }
   
   private void h()
@@ -162,7 +162,7 @@ public class ReciteRecordLayout
     Object localObject = Build.MANUFACTURER;
     int i;
     if (((String)localObject).equalsIgnoreCase("meizu")) {
-      i = 2131433390;
+      i = 2131433404;
     }
     for (;;)
     {
@@ -173,7 +173,7 @@ public class ReciteRecordLayout
           break label237;
         }
         ((SpannableString)localObject).setSpan(new StatableSpanTextView.StatableForegroundColorSpan(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131493062), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131493063)), ((SpannableString)localObject).length() - 7, ((SpannableString)localObject).length() - 1, 33);
-        DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "权限提示", (CharSequence)localObject, 0, 2131435196, null, null, new ajjb(this)).show();
+        DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "权限提示", (CharSequence)localObject, 0, 2131435212, null, null, new ajqn(this)).show();
         return;
       }
       catch (Exception localException) {}
@@ -184,25 +184,25 @@ public class ReciteRecordLayout
       return;
       if (localException.equalsIgnoreCase("xiaomi"))
       {
-        i = 2131433391;
+        i = 2131433405;
       }
       else if (localException.equalsIgnoreCase("vivo"))
       {
-        i = 2131433392;
+        i = 2131433406;
       }
       else
       {
-        i = 2131433389;
+        i = 2131433403;
         j = 1;
       }
     }
     label237:
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, "权限提示", localException.toString(), "我知道了", "", null, new ajjc(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, "权限提示", localException.toString(), "我知道了", "", null, new ajqo(this)).show();
   }
   
   public int a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ajiw(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ajqi(this));
     return 0;
   }
   
@@ -219,22 +219,22 @@ public class ReciteRecordLayout
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131431557, 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131431568, 0).a();
       return null;
     }
     if (!FileUtils.a())
     {
-      DialogUtil.a(paramBaseActivity, 230).setMessage(2131431559).setPositiveButton(2131431558, new ajjl(this)).show();
+      DialogUtil.a(paramBaseActivity, 230).setMessage(2131431570).setPositiveButton(2131431569, new ajqx(this)).show();
       return null;
     }
     if ((!QQRecorder.d()) || (!QQRecorder.a(1)))
     {
-      DialogUtil.a(paramBaseActivity, 230).setMessage(2131431560).setPositiveButton(2131431558, new ajjm(this)).show();
+      DialogUtil.a(paramBaseActivity, 230).setMessage(2131431571).setPositiveButton(2131431569, new ajqy(this)).show();
       return null;
     }
     if (paramBaseActivity.app.c())
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131433788, 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131433804, 0).a();
       return null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null)
@@ -292,13 +292,13 @@ public class ReciteRecordLayout
       paramRecorderParam = RecordParams.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
       ReciteRecordBuffer.a(paramString, paramRecorderParam, paramRecorderParam.length);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ajjo(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ajra(this));
   }
   
   public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
   {
     ReciteRecordBuffer.b(paramString);
-    this.jdField_a_of_type_AndroidOsHandler.post(new ajix(this, paramString, paramDouble));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ajqj(this, paramString, paramDouble));
   }
   
   public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
@@ -308,7 +308,7 @@ public class ReciteRecordLayout
     }
     ReciteRecordBuffer.a(paramString1);
     c();
-    this.jdField_a_of_type_AndroidOsHandler.post(new ajiz(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ajql(this));
   }
   
   public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
@@ -323,7 +323,7 @@ public class ReciteRecordLayout
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new ajjn(this, paramInt2));
+      this.jdField_a_of_type_AndroidOsHandler.post(new ajqz(this, paramInt2));
       return;
       if (this.jdField_a_of_type_Boolean)
       {
@@ -356,7 +356,7 @@ public class ReciteRecordLayout
   public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
     c();
-    this.jdField_a_of_type_AndroidOsHandler.post(new ajja(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ajqm(this));
   }
   
   public boolean b()
@@ -385,7 +385,7 @@ public class ReciteRecordLayout
   public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
   {
     c();
-    this.jdField_a_of_type_AndroidOsHandler.post(new ajiy(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ajqk(this));
   }
   
   public void d()
@@ -395,7 +395,7 @@ public class ReciteRecordLayout
       b();
       if (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
       {
-        this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131431554).setNegativeButton(2131431552, new ajje(this)).setPositiveButton(2131431553, new ajjd(this));
+        this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131431565).setNegativeButton(2131431563, new ajqq(this)).setPositiveButton(2131431564, new ajqp(this));
         this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
       }
       this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -454,7 +454,7 @@ public class ReciteRecordLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout
  * JD-Core Version:    0.7.0.1
  */

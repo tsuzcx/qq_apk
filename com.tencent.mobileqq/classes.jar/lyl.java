@@ -1,22 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeUgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
-class lyl
-  implements Runnable
+public class lyl
+  implements View.OnClickListener
 {
-  lyl(lyk paramlyk) {}
+  public lyl(FeedItemCellTypeUgcVideo paramFeedItemCellTypeUgcVideo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.app.getManager(12);
-    if ((localWebProcessManager != null) && (localWebProcessManager.d()))
-    {
-      localWebProcessManager.a(-1, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("allentest", 2, "sbbbb");
-      }
+    ReadInJoyBaseAdapter.OnSubRegionClickListener localOnSubRegionClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (localOnSubRegionClickListener != null) {
+      localOnSubRegionClickListener.a(paramView, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
   }
 }

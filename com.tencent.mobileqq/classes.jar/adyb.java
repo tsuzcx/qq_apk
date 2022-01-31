@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.util.ScreenShotUtil;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONObject;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 
-public class adyb
+class adyb
   implements Runnable
 {
-  public adyb(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
+  adyb(adya paramadya) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.i = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
-    ScreenShotUtil.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), new adyc(this));
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a(this.a.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 

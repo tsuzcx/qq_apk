@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.wealthgod;
 
-import abiy;
+import abpz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -669,7 +669,7 @@ public class SplashBitmapUtils
             QLog.e("SplashBitmapUtils", 1, String.format("loadDrawableByKeyAsync from res Exception! key=%s", new Object[] { paramString }));
             continue;
           }
-          ThreadManager.postImmediately(new abiy(paramString, paramContext, paramImageView), null, false);
+          ThreadManager.postImmediately(new abpz(paramString, paramContext, paramImageView), null, false);
           break;
           paramImageView.setBackgroundDrawable((Drawable)localObject1);
         }

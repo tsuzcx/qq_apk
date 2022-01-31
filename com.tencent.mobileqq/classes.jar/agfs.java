@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.arengine.ARCamera;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.ocr.OcrCamera;
 
 public class agfs
-  implements Runnable
+  extends OrientationEventListener
 {
-  public agfs(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void run()
+  public agfs(OcrCamera paramOcrCamera, Context paramContext)
   {
-    ScanTorchActivity.c(this.a, false);
-    this.a.a.a.a.b();
-    ScanTorchActivity.i(this.a);
-    ScanTorchActivity.j(this.a);
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (paramInt == -1) {
+      this.a.b = 0;
+    }
+    do
+    {
+      return;
+      this.a.b = ((paramInt + 45) / 90 * 90);
+    } while (this.a.b >= 0);
+    this.a.b = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agfs
  * JD-Core Version:    0.7.0.1
  */

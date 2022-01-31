@@ -1,173 +1,49 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment.ViewHolder;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
-import java.util.ArrayList;
+import com.tencent.biz.troop.file.TroopFileProtocol.GetOneFileInfoObserver;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
 public class ajmr
-  extends BaseAdapter
-  implements View.OnClickListener
+  extends TroopFileProtocol.GetOneFileInfoObserver
 {
-  public ArrayList a;
-  public boolean a;
+  public ajmr(TroopFileUploadFeedsSender paramTroopFileUploadFeedsSender) {}
   
-  public ajmr(BulkSendMessageFragment paramBulkSendMessageFragment)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public int getCount()
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0) {
-      return i + j;
-    }
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size());
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    TextView localTextView;
-    ImageView localImageView;
+    if ((!paramBoolean) || (paramFileInfo == null)) {}
     Object localObject2;
-    String str;
     Object localObject1;
-    if (paramView == null)
+    do
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity()).inflate(2130968771, null);
-      paramViewGroup = new BulkSendMessageFragment.ViewHolder(localView);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362719));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362754));
-      localView.setTag(paramViewGroup);
-      localView.setVisibility(0);
-      localView.setFocusable(false);
-      localTextView = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
-      localImageView = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      localObject2 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50);
-      if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label392;
-      }
-      localImageView.setImageResource(2130842370);
-      localTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getResources().getColor(2131494277));
-      str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) + "";
-      paramViewGroup.jdField_a_of_type_JavaLangString = str;
-      localObject1 = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaLangString, str);
-      if (!TextUtils.isEmpty(str)) {
-        break label283;
-      }
-      if (localObject1 != null) {
-        break label277;
-      }
-      paramView = "";
-      label216:
-      localTextView.setText(paramView);
-      localImageView.setImageDrawable(ImageUtil.b());
-      label230:
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(2131373079, null);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-    }
-    for (;;)
-    {
-      if (AppSetting.b) {
-        ViewCompat.setImportantForAccessibility(localImageView, 2);
-      }
-      return localView;
-      paramViewGroup = (BulkSendMessageFragment.ViewHolder)paramView.getTag();
-      localView = paramView;
-      break;
-      label277:
-      paramView = (View)localObject1;
-      break label216;
-      label283:
-      paramView = (View)localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+      do
       {
-        paramView = (View)localObject1;
-        if (localObject2 != null)
+        do
         {
-          localObject2 = ((FriendsManager)localObject2).c(str);
-          paramView = (View)localObject1;
-          if (localObject2 != null)
+          do
           {
-            paramView = (View)localObject1;
-            if (((Friends)localObject2).isFriend()) {
-              paramView = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-            }
+            return;
+            localObject2 = paramFileInfo.str_file_id.get();
+          } while (TextUtils.isEmpty((CharSequence)localObject2));
+          localObject1 = localObject2;
+          if (!((String)localObject2).startsWith("/")) {
+            localObject1 = "/" + (String)localObject2;
           }
-        }
-      }
-      localObject1 = paramView;
-      if (TextUtils.isEmpty(paramView)) {
-        localObject1 = "群聊成员";
-      }
-      localTextView.setText((CharSequence)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.a(paramViewGroup, null, true);
-      localImageView.setTag(2131362362, str);
-      localImageView.setTag(null);
-      break label230;
-      label392:
-      localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getString(2131435226));
-      localTextView.setTextColor(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getResources().getColorStateList(2131494160));
-      localImageView.setBackgroundDrawable(null);
-      localImageView.setImageResource(2130838420);
-      localImageView.setEnabled(true);
-      localImageView.setTag(Integer.valueOf(0));
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(2131373079, Integer.valueOf(0));
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    super.notifyDataSetChanged();
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (Integer)paramView.getTag(2131373079);
-    if (paramView == null) {}
-    while (paramView.intValue() != 0) {
-      return;
-    }
-    paramView = TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaLangString, 20);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    paramView.putStringArrayListExtra("param_pick_selected_list", this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_Ajmr.jdField_a_of_type_JavaUtilArrayList);
-    paramView.putStringArrayListExtra("param_hide_filter_member_list", localArrayList);
-    paramView.putExtra("param_pick_max_num", this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_Int);
-    paramView.putExtra("param_pick_max_num_exceeds_wording", 2131430854);
-    paramView.putExtra("param_pick_title_string", "添加接收人");
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.startActivityForResult(paramView, 1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.getActivity().overridePendingTransition(2131034380, 2131034131);
+        } while (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath));
+        TroopFileTransferUtil.Log.c("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onGetOneFileResult. bus_id:" + paramFileInfo.uint32_bus_id.get() + " dead_time:" + paramFileInfo.uint32_dead_time.get());
+        localObject2 = TroopFileTransferUtil.a(this.a.jdField_a_of_type_Long);
+      } while (localObject2 == null);
+      localObject1 = ((TroopFileManager)localObject2).a((String)localObject1);
+    } while (localObject1 == null);
+    ((TroopFileInfo)localObject1).a = paramFileInfo.uint32_bus_id.get();
+    ((TroopFileInfo)localObject1).c = paramFileInfo.uint32_dead_time.get();
+    ((TroopFileManager)localObject2).d((TroopFileInfo)localObject1);
   }
 }
 

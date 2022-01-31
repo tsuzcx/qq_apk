@@ -6,6 +6,7 @@ import com.tencent.biz.qqstory.channel.NetworkRequest;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqQQStoryGuide;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class QQStoryGuideRequest
@@ -13,10 +14,12 @@ public class QQStoryGuideRequest
 {
   public static String a = StoryApi.a("StorySvc.new_user_guide");
   public String b;
+  public String c;
   
-  public QQStoryGuideRequest(String paramString)
+  public QQStoryGuideRequest(String paramString1, String paramString2)
   {
-    this.b = paramString;
+    this.b = paramString1;
+    this.c = paramString2;
   }
   
   public BaseResponse a(byte[] paramArrayOfByte)
@@ -47,6 +50,7 @@ public class QQStoryGuideRequest
     try
     {
       localReqQQStoryGuide.to_uid.set(Long.valueOf(this.b).longValue());
+      localReqQQStoryGuide.version.set(this.c);
       return localReqQQStoryGuide.toByteArray();
     }
     catch (NumberFormatException localNumberFormatException)
@@ -60,7 +64,7 @@ public class QQStoryGuideRequest
   
   public String toString()
   {
-    return "QQStoryGuideRequest{toUid='" + this.b + '\'' + '}';
+    return "QQStoryGuideRequest{toUid='" + this.b + '\'' + "version='" + this.c + '\'' + '}';
   }
 }
 

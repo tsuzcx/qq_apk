@@ -1,24 +1,30 @@
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
-import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder;
+import android.app.Activity;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import com.tencent.mobileqq.apollo.utils.ApolloSoLoader;
+import com.tencent.mobileqq.apollo.utils.ApolloSoLoader.OnCmSoLoadCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class yxy
-  implements Runnable
+  implements ApolloSoLoader.OnCmSoLoadCompleteCallback
 {
-  public yxy(ApolloMainViewBinder paramApolloMainViewBinder, ImageView paramImageView, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2, ApolloLinearLayout.ViewHolder paramViewHolder) {}
+  public yxy(CmGameLauncher paramCmGameLauncher) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setRepeatCount(1);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new yxz(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localTranslateAnimation);
+    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
+    ApolloSoLoader.b(CmGameLauncher.a(this.a));
+    Activity localActivity = this.a.a();
+    if (paramInt == 0) {
+      if ((localActivity != null) && (!CmGameLauncher.b(this.a)))
+      {
+        CmGameLauncher.a(this.a, true);
+        this.a.a(localActivity, CmGameLauncher.a(this.a));
+      }
+    }
+    while (localActivity == null) {
+      return;
+    }
+    localActivity.finish();
   }
 }
 

@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class rre
   implements Runnable
 {
-  public rre(BaseChatPie paramBaseChatPie) {}
+  public rre(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
   public void run()
   {
-    this.a.a.setSelectionFromBottom(this.a.a.getCount() - 1, 0);
+    if (this.a.a != null) {
+      this.a.a.springBackOverScrollHeaderView();
+    }
   }
 }
 

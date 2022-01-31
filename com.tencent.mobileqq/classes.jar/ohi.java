@@ -1,22 +1,24 @@
-import com.tencent.biz.qqstory.takevideo.EditMusicExport;
-import com.tencent.biz.qqstory.takevideo.EditSubtitleExport;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.image.URLImageView;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
 public class ohi
   implements Runnable
 {
-  public ohi(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public ohi(EditGifImage paramEditGifImage) {}
   
   public void run()
   {
-    Object localObject = (EditMusicExport)this.a.a(EditMusicExport.class);
-    if (localObject != null) {
-      ((EditMusicExport)localObject).b();
-    }
-    localObject = (EditSubtitleExport)this.a.a(EditSubtitleExport.class);
-    if (localObject != null) {
-      ((EditSubtitleExport)localObject).b();
-    }
+    FastAnimationDrawable localFastAnimationDrawable = this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable;
+    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
+    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = this.a.b;
+    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
+    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
+    this.a.d = false;
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true, false);
+    this.a.b = localFastAnimationDrawable;
   }
 }
 

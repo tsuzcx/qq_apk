@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-class shw
-  implements Runnable
+public class shw
+  implements BubblePopupWindow.OnDismissListener
 {
-  shw(shq paramshq) {}
+  public shw(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
-  {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.a();
-      this.a.a.a.a(-1, null);
-    }
-  }
+  public void a() {}
 }
 
 

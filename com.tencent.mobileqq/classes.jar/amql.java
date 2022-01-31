@@ -1,39 +1,51 @@
-import android.os.Message;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import cooperation.qqpim.QQPimBridgeActivity;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimPluginLoadRunnable.IPluginLoadListener;
+import cooperation.buscard.BuscardPluginInstallActivity;
+import cooperation.plugin.IPluginManager;
 
 public class amql
-  implements QQPimPluginLoadRunnable.IPluginLoadListener
+  implements OnPluginInstallListener
 {
-  public amql(QQPimBridgeActivity paramQQPimBridgeActivity) {}
+  public amql(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
   
-  public void a()
+  public IBinder asBinder()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimBridgeActivity.hasInstalled()");
-    }
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
+    return null;
   }
   
-  public void a(float paramFloat) {}
+  public void onInstallBegin(String paramString) {}
   
-  public void a(int paramInt)
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimBridgeActivity.downloadError()");
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BuscardPluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 2;
-    localMessage.arg1 = paramInt;
-    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
+    QQToast.a(this.a.getApplicationContext(), 2131438315, 0);
+    BuscardPluginInstallActivity.a(this.a, false);
+    this.a.finish();
   }
   
-  public void b()
+  public void onInstallFinish(String paramString)
   {
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
+    long l = System.currentTimeMillis();
+    BuscardPluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
+    if (QLog.isDevelopLevel()) {
+      QLog.i("BuscardPluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
+    }
+    boolean bool = BuscardPluginInstallActivity.a(this.a).isPlugininstalled("BuscardPlugin.apk");
+    BuscardPluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
+    if (bool)
+    {
+      BuscardPluginInstallActivity.a(this.a);
+      return;
+    }
+    QQToast.a(this.a.getApplicationContext(), 2131438315, 0);
+    BuscardPluginInstallActivity.a(this.a, false);
+    this.a.finish();
   }
 }
 

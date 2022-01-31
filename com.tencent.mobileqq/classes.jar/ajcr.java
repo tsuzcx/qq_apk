@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 class ajcr
-  implements Runnable
+  implements View.OnClickListener
 {
-  ajcr(ajcq paramajcq, List paramList) {}
+  ajcr(ajcq paramajcq) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TroopAioKeywordHelper.a(this.jdField_a_of_type_Ajcq.a.a, this.jdField_a_of_type_JavaUtilList);
+    this.a.a.s();
   }
 }
 

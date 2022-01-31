@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.config;
 
-import aajj;
-import aajk;
-import aajl;
-import aajo;
-import aajp;
-import aakp;
+import aaqa;
+import aaqb;
+import aaqc;
+import aaqf;
+import aaqg;
+import aarj;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
@@ -28,12 +28,12 @@ import mqq.os.MqqHandler;
 
 public class MainEntryAni
 {
-  aajo jdField_a_of_type_Aajo = null;
+  aaqf jdField_a_of_type_Aaqf = null;
   boolean jdField_a_of_type_Boolean = false;
   
-  static aajp a(aajp paramaajp, View paramView1, View paramView2)
+  static aaqg a(aaqg paramaaqg, View paramView1, View paramView2)
   {
-    paramView1 = paramView1.findViewById(2131374912);
+    paramView1 = paramView1.findViewById(2131374956);
     int[] arrayOfInt = new int[2];
     paramView1.getLocationOnScreen(arrayOfInt);
     int i = arrayOfInt[0];
@@ -44,40 +44,40 @@ public class MainEntryAni
     k = paramView1[1];
     paramView2.getWidth();
     int m = paramView2.getHeight();
-    paramView1 = (RelativeLayout)paramView2.findViewById(2131368807);
+    paramView1 = (RelativeLayout)paramView2.findViewById(2131368810);
     paramView2 = new int[2];
     paramView1.getLocationOnScreen(paramView2);
-    paramaajp.m = paramaajp.g;
-    paramaajp.n = paramaajp.h;
-    paramaajp.o = paramaajp.i;
-    paramaajp.p = ((k * 2 + m - paramaajp.n) / 2);
-    paramaajp.q = (paramaajp.o - paramView2[0]);
-    paramaajp.r = (paramaajp.p - paramView2[1]);
-    paramaajp.u = paramaajp.i;
-    paramaajp.v = paramaajp.j;
-    paramaajp.s = paramaajp.g;
-    paramaajp.t = (paramaajp.p + paramaajp.n - paramaajp.v);
-    paramaajp.w = (paramaajp.u - i);
-    paramaajp.x = (paramaajp.v - j);
-    QLog.w("WorldCupMgr", 1, "calcIconInMenu, icon[" + paramaajp.o + ", " + paramaajp.p + "], local[" + paramaajp.q + ", " + paramaajp.r + "], size[" + paramaajp.m + ", " + paramaajp.n + "], canvas[" + paramaajp.u + ", " + paramaajp.v + "], local[" + paramaajp.w + ", " + paramaajp.x + "], size[" + paramaajp.s + ", " + paramaajp.t + "], rightLayoutLT[" + paramView2[0] + ", " + paramView2[1] + "], menuItem_Height[" + m + "]");
-    return paramaajp;
+    paramaaqg.m = paramaaqg.g;
+    paramaaqg.n = paramaaqg.h;
+    paramaaqg.o = paramaaqg.i;
+    paramaaqg.p = ((k * 2 + m - paramaaqg.n) / 2);
+    paramaaqg.q = (paramaaqg.o - paramView2[0]);
+    paramaaqg.r = (paramaaqg.p - paramView2[1]);
+    paramaaqg.u = paramaaqg.i;
+    paramaaqg.v = paramaaqg.j;
+    paramaaqg.s = paramaaqg.g;
+    paramaaqg.t = (paramaaqg.p + paramaaqg.n - paramaaqg.v);
+    paramaaqg.w = (paramaaqg.u - i);
+    paramaaqg.x = (paramaaqg.v - j);
+    QLog.w("WorldCupMgr", 1, "calcIconInMenu, icon[" + paramaaqg.o + ", " + paramaaqg.p + "], local[" + paramaaqg.q + ", " + paramaaqg.r + "], size[" + paramaaqg.m + ", " + paramaaqg.n + "], canvas[" + paramaaqg.u + ", " + paramaaqg.v + "], local[" + paramaaqg.w + ", " + paramaaqg.x + "], size[" + paramaaqg.s + ", " + paramaaqg.t + "], rightLayoutLT[" + paramView2[0] + ", " + paramView2[1] + "], menuItem_Height[" + m + "]");
+    return paramaaqg;
   }
   
-  public static aajp a(aajp paramaajp, DragFrameLayout paramDragFrameLayout)
+  public static aaqg a(aaqg paramaaqg, DragFrameLayout paramDragFrameLayout)
   {
     int[] arrayOfInt = new int[2];
     paramDragFrameLayout.getLocationOnScreen(arrayOfInt);
-    paramaajp.a = (paramaajp.i + paramaajp.g);
-    paramaajp.b = AIOUtils.a(60.0F, paramDragFrameLayout.getResources());
-    paramaajp.c = 0;
-    paramaajp.d = paramaajp.j;
-    paramaajp.e = (paramaajp.c - arrayOfInt[0]);
-    paramaajp.f = (paramaajp.d - arrayOfInt[1]);
-    QLog.w("WorldCupMgr", 1, "calcFootballMoving, moving[" + paramaajp.c + ", " + paramaajp.d + "], local[" + paramaajp.e + ", " + paramaajp.f + "], size[" + paramaajp.a + ", " + paramaajp.b + "], contentFrameLT[" + arrayOfInt[0] + ", " + arrayOfInt[1] + "], size[" + paramDragFrameLayout.getWidth() + ", " + paramDragFrameLayout.getHeight() + "]");
-    return paramaajp;
+    paramaaqg.a = (paramaaqg.i + paramaaqg.g);
+    paramaaqg.b = AIOUtils.a(60.0F, paramDragFrameLayout.getResources());
+    paramaaqg.c = 0;
+    paramaaqg.d = paramaaqg.j;
+    paramaaqg.e = (paramaaqg.c - arrayOfInt[0]);
+    paramaaqg.f = (paramaaqg.d - arrayOfInt[1]);
+    QLog.w("WorldCupMgr", 1, "calcFootballMoving, moving[" + paramaaqg.c + ", " + paramaaqg.d + "], local[" + paramaaqg.e + ", " + paramaaqg.f + "], size[" + paramaaqg.a + ", " + paramaaqg.b + "], contentFrameLT[" + arrayOfInt[0] + ", " + arrayOfInt[1] + "], size[" + paramDragFrameLayout.getWidth() + ", " + paramDragFrameLayout.getHeight() + "]");
+    return paramaaqg;
   }
   
-  public static aajp a(View paramView)
+  public static aaqg a(View paramView)
   {
     Object localObject1 = a(paramView);
     if (localObject1 == null)
@@ -85,8 +85,8 @@ public class MainEntryAni
       QLog.w("WorldCupMgr", 1, "calcFootballInAddBtn, 找不到titleBar");
       return null;
     }
-    Object localObject2 = (RelativeLayout)((RelativeLayout)localObject1).findViewById(2131363970);
-    localObject1 = new aajp();
+    Object localObject2 = (RelativeLayout)((RelativeLayout)localObject1).findViewById(2131363995);
+    localObject1 = new aaqg();
     Resources localResources = paramView.getResources();
     int[] arrayOfInt = new int[2];
     ((RelativeLayout)localObject2).getLocationOnScreen(arrayOfInt);
@@ -100,13 +100,13 @@ public class MainEntryAni
     int i1 = AIOUtils.a(3.0F, localResources);
     int i2 = i + n;
     int i3 = k - n - i1;
-    ((aajp)localObject1).g = AIOUtils.a(60.0F, localResources);
-    ((aajp)localObject1).h = AIOUtils.a(60.0F, localResources);
-    ((aajp)localObject1).i = ((i2 * 2 + i3 - ((aajp)localObject1).g) / 2);
-    ((aajp)localObject1).j = ((j * 2 + m - ((aajp)localObject1).h) / 2);
-    ((aajp)localObject1).k = (((aajp)localObject1).i - arrayOfInt[0]);
-    ((aajp)localObject1).l = (((aajp)localObject1).j - arrayOfInt[1]);
-    QLog.w("WorldCupMgr", 1, "calcFootballInAddBtn, addBtn[" + i + ", " + j + "], size[" + k + ", " + m + "], addBtn_paddingLeft[" + n + "], addBtn_paddingRight[" + i1 + "], realIcon[" + i2 + ", " + j + "], size[" + i3 + ", " + m + "], football[" + ((aajp)localObject1).i + ", " + ((aajp)localObject1).j + "], local_football[" + ((aajp)localObject1).k + ", " + ((aajp)localObject1).l + "], size[" + ((aajp)localObject1).g + ", " + ((aajp)localObject1).h + "]");
+    ((aaqg)localObject1).g = AIOUtils.a(60.0F, localResources);
+    ((aaqg)localObject1).h = AIOUtils.a(60.0F, localResources);
+    ((aaqg)localObject1).i = ((i2 * 2 + i3 - ((aaqg)localObject1).g) / 2);
+    ((aaqg)localObject1).j = ((j * 2 + m - ((aaqg)localObject1).h) / 2);
+    ((aaqg)localObject1).k = (((aaqg)localObject1).i - arrayOfInt[0]);
+    ((aaqg)localObject1).l = (((aaqg)localObject1).j - arrayOfInt[1]);
+    QLog.w("WorldCupMgr", 1, "calcFootballInAddBtn, addBtn[" + i + ", " + j + "], size[" + k + ", " + m + "], addBtn_paddingLeft[" + n + "], addBtn_paddingRight[" + i1 + "], realIcon[" + i2 + ", " + j + "], size[" + i3 + ", " + m + "], football[" + ((aaqg)localObject1).i + ", " + ((aaqg)localObject1).j + "], local_football[" + ((aaqg)localObject1).k + ", " + ((aaqg)localObject1).l + "], size[" + ((aaqg)localObject1).g + ", " + ((aaqg)localObject1).h + "]");
     return localObject1;
   }
   
@@ -116,7 +116,7 @@ public class MainEntryAni
     ViewParent localViewParent;
     do
     {
-      if (((paramView instanceof RelativeLayout)) && (((RelativeLayout)paramView).getId() == 2131363965)) {
+      if (((paramView instanceof RelativeLayout)) && (((RelativeLayout)paramView).getId() == 2131363990)) {
         return (RelativeLayout)paramView;
       }
       localViewParent = paramView.getParent();
@@ -126,44 +126,44 @@ public class MainEntryAni
     return null;
   }
   
-  private void a(aajo paramaajo)
+  private void a(aaqf paramaaqf)
   {
     QLog.w("WorldCupMgr", 1, "MainEntryAni.clean");
-    if (paramaajo != null)
+    if (paramaaqf != null)
     {
-      ImageView localImageView = (ImageView)paramaajo.d.get();
+      ImageView localImageView = (ImageView)paramaaqf.d.get();
       if (localImageView != null)
       {
         localImageView.setVisibility(4);
         localImageView.setImageDrawable(null);
       }
-      paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakp.c();
+      paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarj.c();
     }
     WorldCupStaticInstance.a().b = false;
     this.jdField_a_of_type_Boolean = false;
   }
   
-  private boolean a(aajo paramaajo, aajp paramaajp)
+  private boolean a(aaqf paramaaqf, aaqg paramaaqg)
   {
-    DragFrameLayout localDragFrameLayout = (DragFrameLayout)paramaajo.c.get();
+    DragFrameLayout localDragFrameLayout = (DragFrameLayout)paramaaqf.c.get();
     if (localDragFrameLayout == null)
     {
       QLog.i("WorldCupMgr", 1, "loadRollAnimation, dragFrameLayout为空");
-      a(paramaajo);
+      a(paramaaqf);
       return false;
     }
-    if (!paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakp.c())
+    if (!paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarj.c())
     {
       QLog.i("WorldCupMgr", 1, "loadRollAnimation, 资源未准备好");
-      a(paramaajo);
+      a(paramaaqf);
       return false;
     }
-    paramaajp = new aajl(this, paramaajo, paramaajp, paramaajo.jdField_a_of_type_JavaLangString + "addbtn_moving/images/");
-    LottieComposition.Factory.fromJson(localDragFrameLayout.getResources(), paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakp.jdField_a_of_type_OrgJsonJSONObject, paramaajp);
+    paramaaqg = new aaqc(this, paramaaqf, paramaaqg, paramaaqf.jdField_a_of_type_JavaLangString + "addbtn_moving/images/");
+    LottieComposition.Factory.fromJson(localDragFrameLayout.getResources(), paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarj.jdField_a_of_type_OrgJsonJSONObject, paramaaqg);
     return true;
   }
   
-  private void b(aajo paramaajo)
+  private void b(aaqf paramaaqf)
   {
     boolean bool2 = false;
     if (!this.jdField_a_of_type_Boolean) {
@@ -172,8 +172,8 @@ public class MainEntryAni
     do
     {
       return;
-      Object localObject1 = (DragFrameLayout)paramaajo.c.get();
-      Object localObject2 = (RelativeLayout)paramaajo.b.get();
+      Object localObject1 = (DragFrameLayout)paramaaqf.c.get();
+      Object localObject2 = (RelativeLayout)paramaaqf.b.get();
       if ((localObject2 == null) || (localObject1 == null))
       {
         localObject3 = new StringBuilder().append("MainDownAni.innerPlay, 控件为空, titleBar[");
@@ -186,86 +186,86 @@ public class MainEntryAni
             bool1 = true;
           }
           QLog.w("WorldCupMgr", 1, bool1 + "]");
-          a(paramaajo);
+          a(paramaaqf);
           return;
         }
       }
-      Object localObject3 = (ImageView)((RelativeLayout)localObject2).findViewById(2131363968);
+      Object localObject3 = (ImageView)((RelativeLayout)localObject2).findViewById(2131363993);
       if (localObject3 == null)
       {
         QLog.w("WorldCupMgr", 1, "MainEntryAni, 没找到conversation_title_right_btn");
-        a(paramaajo);
+        a(paramaaqf);
         return;
       }
       localObject3 = a((View)localObject3);
       if (localObject3 == null)
       {
         QLog.w("WorldCupMgr", 1, "MainDownAni.innerPlay, positionInfo为空");
-        a(paramaajo);
+        a(paramaaqf);
         return;
       }
       QLog.w("WorldCupMgr", 1, "MainEntryAni.innerPlay, AddBtnMenuShow[" + WorldCupStaticInstance.a().jdField_a_of_type_Boolean + "]");
-      a((aajp)localObject3, (DragFrameLayout)localObject1);
-      if (WorldCupConfigInfo.e(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo))
+      a((aaqg)localObject3, (DragFrameLayout)localObject1);
+      if (WorldCupConfigInfo.e(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo))
       {
         QLog.w("WorldCupMgr", 1, "MainEntryAni.innerPlay, 播放从左到右动画");
-        localObject1 = a((DragFrameLayout)localObject1, (aajp)localObject3);
-        paramaajo.d = new WeakReference(localObject1);
-        localObject2 = a((RelativeLayout)localObject2, (aajp)localObject3);
+        localObject1 = a((DragFrameLayout)localObject1, (aaqg)localObject3);
+        paramaaqf.d = new WeakReference(localObject1);
+        localObject2 = a((RelativeLayout)localObject2, (aaqg)localObject3);
         ((ImageView)localObject2).setVisibility(4);
-        paramaajo.e = new WeakReference(localObject2);
+        paramaaqf.e = new WeakReference(localObject2);
         ((ImageView)localObject1).setVisibility(0);
-        WorldCupConfigInfo.c(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.l, 0L);
-        a(paramaajo, (aajp)localObject3);
+        WorldCupConfigInfo.c(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.l, 0L);
+        a(paramaaqf, (aaqg)localObject3);
         return;
       }
-      if (WorldCupConfigInfo.d(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo))
+      if (WorldCupConfigInfo.d(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo))
       {
         QLog.w("WorldCupMgr", 1, "MainEntryAni.innerPlay, 直接显示加号上的足球");
-        a(paramaajo, (aajp)localObject3);
-        a(paramaajo);
+        a(paramaaqf, (aaqg)localObject3);
+        a(paramaaqf);
         return;
       }
-    } while (!WorldCupConfigInfo.c(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo));
+    } while (!WorldCupConfigInfo.c(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo));
     QLog.w("WorldCupMgr", 1, "MainEntryAni.innerPlay, 外面不需要显示");
-    a(paramaajo);
+    a(paramaaqf);
   }
   
-  ImageView a(RelativeLayout paramRelativeLayout, aajp paramaajp)
+  ImageView a(RelativeLayout paramRelativeLayout, aaqg paramaaqg)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramRelativeLayout.findViewById(2131363970);
-    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131362515);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramRelativeLayout.findViewById(2131363995);
+    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131362519);
     ImageView localImageView1 = localImageView2;
     if (localImageView2 == null)
     {
       localImageView1 = new ImageView(paramRelativeLayout.getContext());
-      localImageView1.setId(2131362515);
-      paramRelativeLayout = new RelativeLayout.LayoutParams(paramaajp.g, paramaajp.h);
+      localImageView1.setId(2131362519);
+      paramRelativeLayout = new RelativeLayout.LayoutParams(paramaaqg.g, paramaaqg.h);
       paramRelativeLayout.addRule(10, -1);
       paramRelativeLayout.addRule(9, -1);
-      paramRelativeLayout.setMargins(paramaajp.k, paramaajp.l, 0, 0);
+      paramRelativeLayout.setMargins(paramaaqg.k, paramaaqg.l, 0, 0);
       localRelativeLayout.addView(localImageView1, paramRelativeLayout);
     }
-    paramRelativeLayout = new RelativeLayout.LayoutParams(paramaajp.g, paramaajp.h);
+    paramRelativeLayout = new RelativeLayout.LayoutParams(paramaaqg.g, paramaaqg.h);
     paramRelativeLayout.addRule(10, -1);
     paramRelativeLayout.addRule(9, -1);
-    paramRelativeLayout.setMargins(paramaajp.k, paramaajp.l, 0, 0);
+    paramRelativeLayout.setMargins(paramaaqg.k, paramaaqg.l, 0, 0);
     localImageView1.setLayoutParams(paramRelativeLayout);
     return localImageView1;
   }
   
-  ImageView a(DragFrameLayout paramDragFrameLayout, aajp paramaajp)
+  ImageView a(DragFrameLayout paramDragFrameLayout, aaqg paramaaqg)
   {
-    Object localObject2 = (ImageView)paramDragFrameLayout.findViewById(2131362516);
+    Object localObject2 = (ImageView)paramDragFrameLayout.findViewById(2131362520);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new ImageView(paramDragFrameLayout.getContext());
-      ((ImageView)localObject1).setId(2131362516);
+      ((ImageView)localObject1).setId(2131362520);
       paramDragFrameLayout.addView((View)localObject1);
     }
-    localObject2 = new FrameLayout.LayoutParams(paramaajp.a, paramaajp.b);
-    ((FrameLayout.LayoutParams)localObject2).setMargins(paramaajp.e, paramaajp.f, 0, 0);
+    localObject2 = new FrameLayout.LayoutParams(paramaaqg.a, paramaaqg.b);
+    ((FrameLayout.LayoutParams)localObject2).setMargins(paramaaqg.e, paramaaqg.f, 0, 0);
     ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     paramDragFrameLayout.bringChildToFront((View)localObject1);
     return localObject1;
@@ -275,26 +275,31 @@ public class MainEntryAni
   {
     this.jdField_a_of_type_Boolean = false;
     WorldCupStaticInstance.a().b = false;
-    if (this.jdField_a_of_type_Aajo != null)
+    if (this.jdField_a_of_type_Aaqf != null)
     {
-      Object localObject = (ImageView)this.jdField_a_of_type_Aajo.e.get();
+      Object localObject = (ImageView)this.jdField_a_of_type_Aaqf.e.get();
       if (localObject != null)
       {
         localObject = new WeakReference(localObject);
-        ThreadManager.getUIHandler().post(new aajj(this, (WeakReference)localObject));
-        this.jdField_a_of_type_Aajo.e.clear();
+        ThreadManager.getUIHandler().post(new aaqa(this, (WeakReference)localObject));
+        this.jdField_a_of_type_Aaqf.e.clear();
       }
-      this.jdField_a_of_type_Aajo = null;
+      this.jdField_a_of_type_Aaqf = null;
     }
   }
   
-  public void a(aajo paramaajo, aajp paramaajp)
+  public void a(aaqf paramaaqf, aaqg paramaaqg)
   {
-    paramaajp = a((RelativeLayout)paramaajo.b.get(), paramaajp);
-    paramaajo.e = new WeakReference(paramaajp);
-    paramaajp.setImageBitmap(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakp.jdField_a_of_type_AndroidGraphicsBitmap);
-    paramaajp.setClickable(false);
-    paramaajp.setVisibility(0);
+    if (paramaaqf.b.get() == null)
+    {
+      QLog.w("WorldCupMgr", 1, "showFootballInAddBtn, mTitleBar已经被释放");
+      return;
+    }
+    paramaaqg = a((RelativeLayout)paramaaqf.b.get(), paramaaqg);
+    paramaaqf.e = new WeakReference(paramaaqg);
+    paramaaqg.setImageBitmap(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarj.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramaaqg.setClickable(false);
+    paramaaqg.setVisibility(0);
   }
   
   void a(QQAppInterface paramQQAppInterface, Activity paramActivity, View paramView)
@@ -302,13 +307,13 @@ public class MainEntryAni
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    paramQQAppInterface = (DragFrameLayout)paramActivity.findViewById(2131364934);
+    paramQQAppInterface = (DragFrameLayout)paramActivity.findViewById(2131364961);
     if (paramQQAppInterface == null)
     {
       QLog.w("WorldCupMgr", 1, "MainEntryAni.hide, 没找到contentFrame");
       return;
     }
-    paramQQAppInterface = (ImageView)paramQQAppInterface.findViewById(2131362516);
+    paramQQAppInterface = (ImageView)paramQQAppInterface.findViewById(2131362520);
     if (paramQQAppInterface == null)
     {
       QLog.w("WorldCupMgr", 1, "MainEntryAni.hide, 没找到ar_football_Ani");
@@ -317,40 +322,40 @@ public class MainEntryAni
     paramQQAppInterface.setVisibility(4);
   }
   
-  boolean a(aajo paramaajo, View paramView)
+  boolean a(aaqf paramaaqf, View paramView)
   {
     ArrayList localArrayList = new ArrayList();
-    paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakp.a(paramaajo.jdField_a_of_type_JavaLangString, (DragFrameLayout)paramaajo.c.get(), paramView);
-    paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakl.b = paramaajo.jdField_a_of_type_JavaLangString;
-    paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b.b = paramaajo.jdField_a_of_type_JavaLangString;
-    paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aako.jdField_a_of_type_JavaLangString = paramaajo.jdField_a_of_type_JavaLangString;
-    if (WorldCupConfigInfo.e(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo))
+    paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarj.a(paramaaqf.jdField_a_of_type_JavaLangString, (DragFrameLayout)paramaaqf.c.get(), paramView);
+    paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarf.b = paramaaqf.jdField_a_of_type_JavaLangString;
+    paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b.b = paramaaqf.jdField_a_of_type_JavaLangString;
+    paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aari.jdField_a_of_type_JavaLangString = paramaaqf.jdField_a_of_type_JavaLangString;
+    if (WorldCupConfigInfo.e(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo))
     {
-      localArrayList.add(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakp);
-      localArrayList.add(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakl);
-      localArrayList.add(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b);
-      localArrayList.add(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aako);
+      localArrayList.add(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarj);
+      localArrayList.add(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarf);
+      localArrayList.add(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b);
+      localArrayList.add(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aari);
       QLog.w("WorldCupMgr", 1, "checkBitmap, 显示从左到右的动画");
     }
     for (;;)
     {
-      WorldCup.a(paramaajo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      WorldCupMgr.a(((View)paramaajo.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources(), localArrayList, new aajk(this, localArrayList, localArrayList, paramaajo));
+      WorldCup.a(paramaaqf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      WorldCupMgr.a(((View)paramaaqf.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources(), localArrayList, new aaqb(this, localArrayList, localArrayList, paramaaqf));
       return true;
-      if (WorldCupConfigInfo.d(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo))
+      if (WorldCupConfigInfo.d(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo))
       {
-        localArrayList.add(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakp);
-        localArrayList.add(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakl);
-        localArrayList.add(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b);
-        localArrayList.add(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aako);
+        localArrayList.add(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarj);
+        localArrayList.add(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarf);
+        localArrayList.add(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b);
+        localArrayList.add(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aari);
         QLog.w("WorldCupMgr", 1, "checkBitmap, 显示加号上的动画");
       }
       else
       {
-        if (!WorldCupConfigInfo.c(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo)) {
+        if (!WorldCupConfigInfo.c(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo)) {
           break;
         }
-        localArrayList.add(paramaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aakl);
+        localArrayList.add(paramaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.jdField_a_of_type_Aarf);
         QLog.w("WorldCupMgr", 1, "checkBitmap, 扫一扫菜单旁边显示icon");
       }
     }
@@ -361,7 +366,7 @@ public class MainEntryAni
   {
     WorldCupConfigInfo localWorldCupConfigInfo = WorldCup.a(paramQQAppInterface);
     String str = localWorldCupConfigInfo.a(0);
-    DragFrameLayout localDragFrameLayout = (DragFrameLayout)paramFragmentActivity.findViewById(2131364934);
+    DragFrameLayout localDragFrameLayout = (DragFrameLayout)paramFragmentActivity.findViewById(2131364961);
     if (localDragFrameLayout == null)
     {
       QLog.w("WorldCupMgr", 1, "MainEntryAni.play, 没找到contentFrame");
@@ -370,7 +375,7 @@ public class MainEntryAni
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      paramQQAppInterface = (ImageView)localDragFrameLayout.findViewById(2131362516);
+      paramQQAppInterface = (ImageView)localDragFrameLayout.findViewById(2131362520);
       if (paramQQAppInterface == null)
       {
         QLog.w("WorldCupMgr", 1, "MainEntryAni.play, 没找到ar_football_Ani");
@@ -382,46 +387,46 @@ public class MainEntryAni
     }
     this.jdField_a_of_type_Boolean = true;
     WorldCupStaticInstance.a().b = true;
-    Object localObject = (RelativeLayout)paramFragmentActivity.findViewById(2131364935);
+    Object localObject = (RelativeLayout)paramFragmentActivity.findViewById(2131364962);
     if (localObject == null)
     {
       QLog.w("WorldCupMgr", 1, "MainEntryAni.play, 没找到layout_head");
       a(null);
       return false;
     }
-    if ((ImageView)((RelativeLayout)localObject).findViewById(2131369996) == null)
+    if ((ImageView)((RelativeLayout)localObject).findViewById(2131370005) == null)
     {
       QLog.w("WorldCupMgr", 1, "MainEntryAni.play, 没找到conversation_head");
       a(null);
       return false;
     }
-    paramFragmentActivity = (RelativeLayout)paramFragmentActivity.findViewById(2131363965);
+    paramFragmentActivity = (RelativeLayout)paramFragmentActivity.findViewById(2131363990);
     if (paramFragmentActivity == null)
     {
       QLog.w("WorldCupMgr", 1, "MainEntryAni.play, 没找到conversation_activity_title");
       a(null);
       return false;
     }
-    localObject = (ImageView)paramFragmentActivity.findViewById(2131363968);
+    localObject = (ImageView)paramFragmentActivity.findViewById(2131363993);
     if (localObject == null)
     {
       QLog.w("WorldCupMgr", 1, "MainEntryAni.play, 没找到conversation_title_right_btn");
       a(null);
       return false;
     }
-    aajo localaajo = new aajo();
-    this.jdField_a_of_type_Aajo = localaajo;
-    localaajo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    localaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr = paramWorldCupMgr;
-    localaajo.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    localaajo.jdField_a_of_type_JavaLangString = str;
-    localaajo.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = localWorldCupConfigInfo;
-    localaajo.c = new WeakReference(localDragFrameLayout);
-    localaajo.b = new WeakReference(paramFragmentActivity);
-    if (!a(localaajo, (View)localObject))
+    aaqf localaaqf = new aaqf();
+    this.jdField_a_of_type_Aaqf = localaaqf;
+    localaaqf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    localaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr = paramWorldCupMgr;
+    localaaqf.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    localaaqf.jdField_a_of_type_JavaLangString = str;
+    localaaqf.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = localWorldCupConfigInfo;
+    localaaqf.c = new WeakReference(localDragFrameLayout);
+    localaaqf.b = new WeakReference(paramFragmentActivity);
+    if (!a(localaaqf, (View)localObject))
     {
       QLog.w("WorldCupMgr", 1, "MainEntryAni.play, 检查图片失败");
-      a(localaajo);
+      a(localaaqf);
       return false;
     }
     return true;

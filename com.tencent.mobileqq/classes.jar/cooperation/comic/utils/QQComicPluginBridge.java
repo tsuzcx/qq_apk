@@ -1,6 +1,6 @@
 package cooperation.comic.utils;
 
-import amkl;
+import amrx;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -341,7 +341,7 @@ public class QQComicPluginBridge
       } while (!QLog.isColorLevel());
       QLog.d("QQComicPluginBridge", 2, "PluginManager is NOT ready");
       return false;
-      ThreadManager.executeOnNetWorkThread(new amkl(paramAppRuntime, ???));
+      ThreadManager.executeOnNetWorkThread(new amrx(paramAppRuntime, ???));
     } while (!paramBoolean);
     PluginInfo localPluginInfo = paramAppRuntime.a("comic_plugin.apk");
     if ((localPluginInfo != null) && (localPluginInfo.mState != 4)) {}

@@ -1,17 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
 
 public class vae
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public vae(HeartCombolEffectView paramHeartCombolEffectView, vag paramvag) {}
+  public vae(ArkFlashChatItemBubbleBuilder paramArkFlashChatItemBubbleBuilder) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Vag.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Vag.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Vag.jdField_b_of_type_Float > 0.0F)) {
-      this.jdField_a_of_type_Vag.jdField_b_of_type_Boolean = true;
+    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
+    if (localMessageRecord != null) {
+      ((FlashChatManager)this.a.a.getManager(216)).a(paramView.getContext(), localMessageRecord);
     }
   }
 }

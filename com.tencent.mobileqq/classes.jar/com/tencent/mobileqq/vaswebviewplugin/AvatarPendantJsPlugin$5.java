@@ -35,11 +35,11 @@ class AvatarPendantJsPlugin$5
       catch (Exception paramView) {}
       if (!QavCameraUsage.b(BaseApplicationImpl.getContext()))
       {
-        paramView = new File(AppConstants.aJ + "photo/");
+        paramView = new File(AppConstants.aK + "photo/");
         if (!paramView.exists()) {
           paramView.mkdirs();
         }
-        paramView = Uri.fromFile(new File(AppConstants.aJ + "photo/" + System.currentTimeMillis() + ".jpg"));
+        paramView = Uri.fromFile(new File(AppConstants.aK + "photo/" + System.currentTimeMillis() + ".jpg"));
         Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
         localIntent.putExtra("output", paramView);
         localIntent.putExtra("android.intent.extra.videoQuality", 100);
@@ -61,7 +61,7 @@ class AvatarPendantJsPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

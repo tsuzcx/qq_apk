@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory;
-import okk;
+import ooz;
 
 @TargetApi(14)
 public class ElasticImageView
@@ -71,7 +71,7 @@ public class ElasticImageView
   
   private ValueAnimator a(float paramFloat1, float paramFloat2, long paramLong)
   {
-    return AnimatorFactory.a(paramLong, paramFloat1, paramFloat2, new okk(this));
+    return AnimatorFactory.a(paramLong, paramFloat1, paramFloat2, new ooz(this));
   }
   
   private void a()

@@ -5,9 +5,9 @@ import java.util.List;
 
 public abstract interface ReadInJoyAtlasManager$AtlasCallback
 {
-  public abstract void a(boolean paramBoolean, long paramLong, int paramInt);
+  public abstract void a(boolean paramBoolean, int paramInt, Object paramObject);
   
-  public abstract void a(boolean paramBoolean, Object paramObject);
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt);
   
   public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
   

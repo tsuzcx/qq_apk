@@ -1,20 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import com.tencent.biz.qqstory.newshare.job.ShortenUrlJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
+import java.util.HashMap;
 
-class nkx
-  extends Job
+public class nkx
+  extends ShortenUrlJob
 {
-  nkx(nkw paramnkw, DeleteStoryVideoEvent paramDeleteStoryVideoEvent) {}
+  public nkx(ShareModeBase paramShareModeBase, ShareCopyLinkData paramShareCopyLinkData) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public boolean b()
   {
-    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryModelDeleteStoryVideoEvent);
-    return null;
+    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)localHashMap.get(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a));
+    return true;
   }
 }
 

@@ -1,24 +1,25 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.activity.aio.tips.ReaderTipsBar;
 
 public class wio
   implements View.OnClickListener
 {
-  public wio(SearchBaseActivity paramSearchBaseActivity) {}
+  public wio(ReaderTipsBar paramReaderTipsBar) {}
   
   public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText()))
-    {
-      this.a.setResult(0);
-      this.a.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
+    paramView = new Intent();
+    paramView.putExtra("bookid", ReaderTipsBar.a(this.a));
+    paramView.putExtra("is_from_conversation", true);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramView);
+    localIntent.putExtra("readtype", "15");
+    localIntent.setClassName(ReaderTipsBar.a(this.a), "cooperation.qqreader.QRBridgeActivity");
+    localIntent.addFlags(268435456);
+    ReaderTipsBar.a(this.a).startActivity(localIntent);
   }
 }
 

@@ -1,33 +1,47 @@
-import dov.com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import dov.com.tencent.mobileqq.richmedia.capture.data.TemplateGroupItem;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.voicechange.IVoiceChangeListener;
+import dov.com.tencent.biz.qqstory.takevideo.music.BlessVoiceChangeManager;
+import dov.com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
+import java.io.File;
 
 public class aolk
-  implements Runnable
+  implements IVoiceChangeListener
 {
-  public aolk(CapturePtvTemplateManager paramCapturePtvTemplateManager) {}
+  private QQStoryMusicInfo jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  public aolk(QQStoryMusicInfo paramQQStoryMusicInfo, String paramString)
   {
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = paramQQStoryMusicInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void b()
+  {
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.c)).concat(".pcm"));
+    if (((File)localObject).exists())
     {
-      Object localObject = (TemplateGroupItem)localIterator.next();
-      if (((TemplateGroupItem)localObject).a != null)
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      FileUtils.a((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
+      if (BlessVoiceChangeManager.a() != null)
       {
-        localObject = ((TemplateGroupItem)localObject).a.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
-          if (localPtvTemplateInfo != null) {
-            localPtvTemplateInfo.usable = this.a.a(localPtvTemplateInfo);
-          }
-        }
+        localObject = BlessVoiceChangeManager.a().obtainMessage(10);
+        ((Message)localObject).obj = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
+        BlessVoiceChangeManager.a().sendMessage((Message)localObject);
       }
     }
   }
+  
+  public void c() {}
 }
 
 

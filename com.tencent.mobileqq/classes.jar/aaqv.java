@@ -1,34 +1,30 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppInfo.ContextActionAppInfo;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.mobileqq.ar.config.WorldCup;
+import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
+import com.tencent.mobileqq.ar.config.WorldCupReport;
 
 public class aaqv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aaqv(ArkActionAppMgr paramArkActionAppMgr) {}
+  public aaqv(SplashPopupWin paramSplashPopupWin, aaqw paramaaqw, AppInterface paramAppInterface, BaseActivity paramBaseActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TreeMap localTreeMap = new TreeMap(new aaqw(this));
-    ArkActionAppMgr.a(this.a, localTreeMap);
-    if (localTreeMap.isEmpty())
-    {
-      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("updateLocalAppInfo, no action need update", new Object[0]));
-      return;
+    if (SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin) != null) {
+      SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin).dismiss();
     }
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    Iterator localIterator = localTreeMap.keySet().iterator();
-    while (localIterator.hasNext())
+    if (this.jdField_a_of_type_Aaqw.a.b)
     {
-      ArkAppInfo.ContextActionAppInfo localContextActionAppInfo = (ArkAppInfo.ContextActionAppInfo)localIterator.next();
-      aarf localaarf = (aarf)localTreeMap.get(localContextActionAppInfo);
-      localStringBuilder.append(String.format("%s.%s(%d-%d);", new Object[] { localContextActionAppInfo.a, localContextActionAppInfo.b, Long.valueOf(localaarf.a), Long.valueOf(localaarf.b) }));
+      WorldCup.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 1);
+      WorldCupReport.d();
+      RecentOptPopBar.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2L, 4096L, 2);
     }
-    ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("updateLocalAppInfo, actions=%s", new Object[] { localStringBuilder.toString() }));
-    ArkActionAppMgr.b(this.a, localTreeMap);
   }
 }
 

@@ -27,7 +27,7 @@ public class RingAvatarView
   
   public void a()
   {
-    setBackgroundDrawable(getContext().getResources().getDrawable(2130845420));
+    setBackgroundDrawable(getContext().getResources().getDrawable(2130845501));
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
     localLayoutParams.width = AIOUtils.a(43.0F, getContext().getResources());
     localLayoutParams.height = AIOUtils.a(43.0F, getContext().getResources());

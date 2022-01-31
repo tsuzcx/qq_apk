@@ -1,39 +1,22 @@
-import com.tencent.mobileqq.apollo.ApolloPanelManager;
-import com.tencent.mobileqq.apollo.script.SpriteActionMessage;
-import com.tencent.mobileqq.apollo.script.SpriteScriptManager;
-import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class yku
-  implements Runnable
+  implements FMDialogUtil.FMDialogInterface
 {
-  public yku(ApolloPanelManager paramApolloPanelManager) {}
+  public yku(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void a()
   {
-    Object localObject = this.a;
-    int i = this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((ApolloPanelManager)localObject).a(i, bool, ApolloPanelManager.a(this.a));
-      if ((this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) && (!ApolloPanelManager.a(this.a)) && (this.a.a() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo != null))
-      {
-        localObject = SpriteUtil.a(this.a.a()).a();
-        if (localObject != null) {
-          ((SpriteActionMessage)localObject).a(this.a.b);
-        }
-      }
-      if (((ApolloPanelManager.a(this.a)) || (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo != null)) {
-        ApolloPanelManager.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo);
-      }
-      return;
-    }
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yku
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,26 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
+import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
+import com.tencent.mobileqq.activity.aio.item.TroopStoryItemBuilder;
+import com.tencent.mobileqq.data.MessageForTroopStory;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class vpx
-  implements View.OnTouchListener
+public class vpx
+  implements ActionSheet.OnButtonClickListener
 {
-  vpx(vpw paramvpw, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
+  public vpx(TroopStoryItemBuilder paramTroopStoryItemBuilder, MessageForTroopStory paramMessageForTroopStory, ActionSheet paramActionSheet) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = paramView.getParent();
-    if (paramView != null) {
-      paramView.requestDisallowInterceptTouchEvent(true);
+    switch (paramInt)
+    {
     }
-    return false;
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      TroopStoryForwardTask.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopStoryItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
+    }
   }
 }
 

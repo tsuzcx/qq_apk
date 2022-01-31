@@ -20,23 +20,23 @@ import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
-import kgy;
-import kgz;
-import kha;
+import kje;
+import kjf;
+import kjg;
 import org.json.JSONObject;
 
 public class SignalStrengthReport
 {
   static volatile SignalStrengthReport jdField_a_of_type_ComTencentAvUtilsSignalStrengthReport;
-  static final String jdField_a_of_type_JavaLangString = AppConstants.aJ + "qav" + File.separator + "signal_strength" + File.separator;
+  static final String jdField_a_of_type_JavaLangString = AppConstants.aK + "qav" + File.separator + "signal_strength" + File.separator;
   public int a;
   WifiManager jdField_a_of_type_AndroidNetWifiWifiManager;
   public Handler a;
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager;
-  Runnable jdField_a_of_type_JavaLangRunnable = new kgy(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new kje(this);
   WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  kha jdField_a_of_type_Kha;
+  kjg jdField_a_of_type_Kjg;
   public int b;
   Runnable b;
   public String b;
@@ -48,10 +48,10 @@ public class SignalStrengthReport
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = 0;
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangRunnable = new kgz(this);
+    this.jdField_b_of_type_JavaLangRunnable = new kjf(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
     if (Looper.myLooper() != null) {
-      this.jdField_a_of_type_Kha = new kha(this);
+      this.jdField_a_of_type_Kjg = new kjg(this);
     }
     if (paramContext != null)
     {
@@ -272,8 +272,8 @@ public class SignalStrengthReport
       if (this.jdField_b_of_type_JavaLangRunnable != null) {
         this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_b_of_type_JavaLangRunnable);
       }
-    } while ((this.jdField_a_of_type_Kha == null) || (this.jdField_a_of_type_AndroidTelephonyTelephonyManager == null));
-    this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Kha, 256);
+    } while ((this.jdField_a_of_type_Kjg == null) || (this.jdField_a_of_type_AndroidTelephonyTelephonyManager == null));
+    this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Kjg, 256);
   }
   
   public int b()
@@ -414,8 +414,8 @@ public class SignalStrengthReport
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
     this.jdField_a_of_type_Int = -1;
-    if ((this.jdField_a_of_type_Kha != null) && (this.jdField_a_of_type_AndroidTelephonyTelephonyManager != null)) {
-      this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Kha, 0);
+    if ((this.jdField_a_of_type_Kjg != null) && (this.jdField_a_of_type_AndroidTelephonyTelephonyManager != null)) {
+      this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Kjg, 0);
     }
     if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
     {
@@ -484,7 +484,7 @@ public class SignalStrengthReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.SignalStrengthReport
  * JD-Core Version:    0.7.0.1
  */

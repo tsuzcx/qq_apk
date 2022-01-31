@@ -1,13 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class xkb
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public xkb(DrawerFrame paramDrawerFrame) {}
+  public xkb(GoldMsgAioState paramGoldMsgAioState, Context paramContext) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    GoldMsgAioState.a(((QQCustomDialog)paramDialogInterface).getWindow(), this.jdField_a_of_type_AndroidContentContext, null);
+    paramDialogInterface.dismiss();
+  }
 }
 
 

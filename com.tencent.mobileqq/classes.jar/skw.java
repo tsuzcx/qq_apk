@@ -1,20 +1,19 @@
 import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView.NowFloatViewCallBack;
 
-class skw
-  implements Runnable
+public class skw
+  implements HongBao2018ListView.NowFloatViewCallBack
 {
-  skw(skv paramskv) {}
+  public skw(Conversation paramConversation) {}
   
-  public void run()
+  public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(-this.a.jdField_a_of_type_Int);
-    DiscussionMemberActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getWindow().peekDecorView().getWindowToken(), 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    if (this.a.b != null)
+    {
+      this.a.h = true;
+      this.a.b.setVisibility(8);
+    }
   }
 }
 

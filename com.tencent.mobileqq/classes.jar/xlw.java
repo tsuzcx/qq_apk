@@ -1,18 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import java.util.TimerTask;
 
-public class xlw
-  implements Runnable
+public abstract class xlw
+  extends TimerTask
 {
-  public xlw(LoginView paramLoginView) {}
+  private boolean a;
+  
+  public abstract void a();
+  
+  public boolean a()
+  {
+    return this.a;
+  }
   
   public void run()
   {
-    int[] arrayOfInt = new int[2];
-    this.a.b.getLocationInWindow(arrayOfInt);
-    LoginView localLoginView = this.a;
-    int i = this.a.b.getHeight();
-    LoginView.a(localLoginView, arrayOfInt[1] + i);
+    a();
+    this.a = true;
   }
 }
 

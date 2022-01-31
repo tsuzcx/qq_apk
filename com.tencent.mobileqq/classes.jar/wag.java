@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class wag
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public wag(TroopChatPie paramTroopChatPie) {}
+  public wag(HotChatPie paramHotChatPie, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.showOverScrollHeader();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

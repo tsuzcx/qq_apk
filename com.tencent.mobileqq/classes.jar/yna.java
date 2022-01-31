@@ -1,46 +1,39 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.GLTextureView.EGLContextFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.PendantMarketConfig.EntryConfig;
+import com.tencent.mobileqq.adapter.AvatarPendantAdapter;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class yna
-  implements GLTextureView.EGLContextFactory
+  implements View.OnClickListener
 {
-  private yna(ApolloTextureView paramApolloTextureView) {}
+  public yna(AvatarPendantAdapter paramAvatarPendantAdapter, PendantMarketConfig.EntryConfig paramEntryConfig, int paramInt) {}
   
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloTextureView", 2, "[createContext], id:" + Thread.currentThread().getId());
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantMarketConfig$EntryConfig.b);
+    paramView.putExtra("isShowAd", false);
+    this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    if ((this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
+      ((AvatarPendantActivity)this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext).a = -1L;
     }
-    if (this.a.mIsDestroy != null) {
-      this.a.mIsDestroy.set(false);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
+      return;
     }
-    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
-  }
-  
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloTextureView", 2, "[destroyContext], id:" + Thread.currentThread().getId());
-    }
-    if (this.a.mIsDestroy != null) {
-      this.a.mIsDestroy.set(true);
-    }
-    if (this.a.mRender != null) {
-      this.a.mRender.onDestroy();
-    }
-    paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yna
  * JD-Core Version:    0.7.0.1
  */

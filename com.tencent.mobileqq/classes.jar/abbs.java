@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.content.Context;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class abbs
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public abbs(ARMapActivity paramARMapActivity) {}
+  public abbs(ArkLocalAppMgr paramArkLocalAppMgr, abcq paramabcq, abcx paramabcx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
+    this.jdField_a_of_type_Abcq.a = ArkLocalAppMgr.a();
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    localBaseApplication.getSharedPreferences("ArkAppUpdateRecord", 0);
+    localBaseApplication.getSharedPreferences("ArkAppUpdatePeriod", 0);
+    localBaseApplication.getSharedPreferences("ArkAppLastUsedTime", 0);
+    this.jdField_a_of_type_Abcx.a(this.jdField_a_of_type_Abcq.a);
   }
 }
 

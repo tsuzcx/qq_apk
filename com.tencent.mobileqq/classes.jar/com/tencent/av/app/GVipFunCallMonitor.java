@@ -3,7 +3,7 @@ package com.tencent.av.app;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import com.tencent.qphone.base.util.QLog;
-import jeu;
+import jgw;
 import mqq.app.MobileQQ;
 
 public class GVipFunCallMonitor
@@ -15,7 +15,7 @@ public class GVipFunCallMonitor
   public GVipFunCallMonitor(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new jeu(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new jgw(this);
   }
   
   public void a()
@@ -41,7 +41,7 @@ public class GVipFunCallMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.GVipFunCallMonitor
  * JD-Core Version:    0.7.0.1
  */

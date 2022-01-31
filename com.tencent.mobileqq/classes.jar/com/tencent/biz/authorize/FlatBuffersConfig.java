@@ -13,7 +13,7 @@ import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.HashMap;
-import kky;
+import knf;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -450,13 +450,13 @@ public class FlatBuffersConfig
     //   160: astore 7
     //   162: aload 6
     //   164: ifnull -155 -> 9
-    //   167: new 315	kkz
+    //   167: new 315	kng
     //   170: dup
     //   171: aload_0
     //   172: aload_1
     //   173: aload 6
     //   175: iload_2
-    //   176: invokespecial 318	kkz:<init>	(Lcom/tencent/biz/authorize/FlatBuffersConfig;Ljava/nio/ByteBuffer;Ljava/io/File;Z)V
+    //   176: invokespecial 318	kng:<init>	(Lcom/tencent/biz/authorize/FlatBuffersConfig;Ljava/nio/ByteBuffer;Ljava/io/File;Z)V
     //   179: bipush 8
     //   181: aconst_null
     //   182: iconst_1
@@ -1511,7 +1511,7 @@ public class FlatBuffersConfig
     if ((!FlatBuffersParser.a()) || (this.jdField_a_of_type_ComTencentBizFlatbuffersFbTable != null)) {
       return;
     }
-    ThreadManager.post(new kky(this), 8, null, true);
+    ThreadManager.post(new knf(this), 8, null, true);
   }
   
   public String c()

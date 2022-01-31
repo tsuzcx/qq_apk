@@ -1,16 +1,18 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class vaa
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public vaa(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
+  public vaa(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    }
   }
 }
 

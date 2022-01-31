@@ -1,22 +1,34 @@
 import android.os.Handler;
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.util.IOfflineDownloader;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.biz.JoinGroupHandler;
+import com.tencent.biz.JoinGroupTransitActivity;
+import java.lang.ref.WeakReference;
 
 public class kle
-  implements Runnable
+  extends Handler
 {
-  public kle(BidDownloader paramBidDownloader) {}
+  private WeakReference a;
   
-  public void run()
+  public kle(JoinGroupTransitActivity paramJoinGroupTransitActivity)
   {
-    int i = BidDownloader.jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.a.c);
-    if (QLog.isColorLevel()) {
-      QLog.i(BidDownloader.d, 2, "state = " + i);
+    this.a = new WeakReference(paramJoinGroupTransitActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
+    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
+      return;
     }
-    if (i != 2) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
+      return;
     }
+    localJoinGroupTransitActivity.finish();
   }
 }
 

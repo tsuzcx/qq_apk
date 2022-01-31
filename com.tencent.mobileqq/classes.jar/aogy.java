@@ -1,25 +1,17 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.GuideHelper;
 
 public class aogy
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aogy(VideoFilterViewPager paramVideoFilterViewPager, ImageView paramImageView) {}
+  public aogy(GuideHelper paramGuideHelper, ViewGroup paramViewGroup) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    paramAnimation = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    if ((paramAnimation instanceof AnimationDrawable)) {
-      ((AnimationDrawable)paramAnimation).start();
-    }
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiGuideHelper.a(this.jdField_a_of_type_AndroidViewViewGroup);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

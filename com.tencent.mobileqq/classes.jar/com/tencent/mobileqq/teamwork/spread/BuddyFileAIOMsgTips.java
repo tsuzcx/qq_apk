@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import aine;
+import aisd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -25,12 +25,12 @@ public class BuddyFileAIOMsgTips
     if (QLog.isColorLevel()) {
       QLog.i("BuddyFileAIOMsgTips", 1, "getWordsList by buddyFile[" + System.currentTimeMillis() + "]");
     }
-    ThreadManager.post(new aine(this, paramListResult), 8, null, true);
+    ThreadManager.post(new aisd(this, paramListResult), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips
  * JD-Core Version:    0.7.0.1
  */

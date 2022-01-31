@@ -1,53 +1,68 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.thread.QzoneThreadMonitor;
-import cooperation.qzone.util.QZLog;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.pluginsdk.PluginTab;
+import com.tencent.mobileqq.widget.QzoneProgressDialog;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.qzone.util.QZoneExceptionReport;
-import cooperation.qzone.util.exception.QZoneStartupFailException;
-import java.util.concurrent.ConcurrentHashMap;
 
-public class anaj
-  extends Handler
+class anaj
+  implements Runnable
 {
-  public anaj(QzoneThreadMonitor paramQzoneThreadMonitor, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  anaj(anai paramanai, String paramString, boolean paramBoolean1, boolean paramBoolean2, IPluginManager.PluginParams paramPluginParams) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    boolean bool = true;
+    Object localObject1 = this.jdField_a_of_type_Anai.jdField_a_of_type_AndroidAppActivity;
+    Object localObject2;
+    if ((this.jdField_a_of_type_Anai.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity))
     {
-    default: 
-      return;
+      localObject2 = ((BasePluginActivity)this.jdField_a_of_type_Anai.jdField_a_of_type_AndroidAppActivity).getOutActivity();
+      QLog.w("QzonePluginProxyActivity", 1, "参数错误，尝试进行兼容" + this.jdField_a_of_type_JavaLangString + ",context:" + this.jdField_a_of_type_Anai.jdField_a_of_type_AndroidAppActivity);
+      localObject1 = localObject2;
+      if (localObject2 != null)
+      {
+        localObject1 = localObject2;
+        if ((localObject2 instanceof PluginTab)) {
+          localObject1 = ((PluginTab)localObject2).getOutActivity();
+        }
+      }
     }
-    anal localanal = (anal)paramMessage.obj;
-    if (!QzoneThreadMonitor.access$000(this.a).containsKey(localanal.jdField_a_of_type_JavaLangString))
+    for (;;)
     {
-      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "massage has been canceled. id=", localanal.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    if (paramMessage.arg1 >= 10)
-    {
-      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "stack check for too many times. id=", localanal.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    Object localObject = QzoneThreadMonitor.access$100(QzoneHandlerThreadFactory.getHandlerThreadLooper(localanal.jdField_b_of_type_JavaLangString).getThread().getStackTrace(), localanal.jdField_b_of_type_JavaLangString + " id=" + localanal.jdField_a_of_type_JavaLangString + ": ");
-    QZLog.w("QzoneThreadMonitor", 1, new Object[] { "[stack] ", localanal.jdField_b_of_type_JavaLangString, " id=", localanal.jdField_a_of_type_JavaLangString, " what=", Integer.valueOf(localanal.jdField_a_of_type_Int), " msg.target=", localanal.c, " msg.callback=", localanal.d });
-    QZLog.w("QzoneThreadMonitor", 1, new Object[] { localObject });
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "report_backgroudmonitor", "0").equals("1")) {
-      QZoneExceptionReport.a(new QZoneStartupFailException(new Throwable((String)localObject)), ((String)localObject).toString());
-    }
-    paramMessage = Message.obtain(QzoneThreadMonitor.access$200(this.a), 1, paramMessage.arg1 + 1, 0, localanal);
-    localObject = QzoneThreadMonitor.access$200(this.a);
-    if (localanal.jdField_b_of_type_Int == 1) {}
-    for (long l = 500L;; l = 250L)
-    {
-      ((Handler)localObject).sendMessageDelayed(paramMessage, l);
-      return;
+      if ((localObject1 == null) || ((localObject1 instanceof BasePluginActivity)))
+      {
+        QLog.e("QzonePluginProxyActivity", 1, "activity 参数错误，尝试进行兼容失败");
+        QZoneExceptionReport.a(new IllegalArgumentException("跳转参数传递错误 activityName：" + this.jdField_a_of_type_JavaLangString + ",context:" + this.jdField_a_of_type_Anai.jdField_a_of_type_AndroidAppActivity), "跳转错误");
+        return;
+      }
+      Intent localIntent = null;
+      localObject2 = localIntent;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localObject2 = localIntent;
+        if (!this.b)
+        {
+          localObject2 = new QzoneProgressDialog((Context)localObject1, this.jdField_a_of_type_Anai.jdField_a_of_type_AndroidContentIntent);
+          ((QzoneProgressDialog)localObject2).a("  正在加载...");
+          ((QzoneProgressDialog)localObject2).setOnDismissListener(new anak(this));
+        }
+      }
+      localIntent = this.jdField_a_of_type_Anai.jdField_a_of_type_AndroidContentIntent;
+      if (localObject2 != null) {}
+      for (;;)
+      {
+        localIntent.putExtra("QZoneExtra.Plugin.isloading", bool);
+        this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a = ((Dialog)localObject2);
+        IPluginManager.a((Activity)localObject1, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+        return;
+        bool = false;
+      }
     }
   }
 }

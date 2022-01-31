@@ -1,33 +1,17 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.shortvideo.util.SimpleAudioPlayer;
-import com.tencent.sveffects.Logger;
-import com.tencent.sveffects.SdkContext;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aiea
-  extends Thread
+  implements Runnable
 {
-  private aiea(SimpleAudioPlayer paramSimpleAudioPlayer) {}
+  public aiea(ShortVideoPreDownloader paramShortVideoPreDownloader) {}
   
   public void run()
   {
-    if (SdkContext.a().a().a()) {
-      SdkContext.a().a().d("SimpleAudioPlayer", "playSimpleAudio " + SimpleAudioPlayer.a(this.a));
-    }
-    try
+    if (!this.a.a.get())
     {
-      if (SimpleAudioPlayer.a(this.a) != SimpleAudioPlayer.a) {
-        SimpleAudioPlayer.a(this.a).setAudioStreamType(SimpleAudioPlayer.a(this.a));
-      }
-      SimpleAudioPlayer.a(this.a).prepare();
-      SimpleAudioPlayer.a(this.a).start();
-      if (SimpleAudioPlayer.b(this.a) > 0) {
-        SimpleAudioPlayer.a(this.a).seekTo(SimpleAudioPlayer.b(this.a));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      SdkContext.a().a().a("SimpleAudioPlayer", "playSimpleAudio " + SimpleAudioPlayer.a(this.a) + "error: " + localException.toString());
+      this.a.a.set(true);
+      ShortVideoPreDownloader.a("openRunnable", "Timer count off, mIsPreDownloaderOpen=" + this.a.a.get());
     }
   }
 }

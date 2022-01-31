@@ -1,31 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInsertLocalVideoInfoSegment;
+import com.tencent.biz.qqstory.msgTabNode.util.MsgTabStoryUtil;
+import com.tencent.biz.qqstory.playmode.util.MsgTabVideoData;
+import java.util.Comparator;
 
-public final class nhx
-  implements Parcelable.Creator
+public class nhx
+  implements Comparator
 {
-  public StoryPushMsg a(Parcel paramParcel)
-  {
-    int i = paramParcel.readInt();
-    Object localObject = paramParcel.readString();
-    String str1 = paramParcel.readString();
-    long l = paramParcel.readLong();
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    int j = paramParcel.readInt();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    paramParcel = paramParcel.readBundle();
-    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
-    ((StoryPushMsg)localObject).a = paramParcel;
-    return localObject;
-  }
+  public nhx(MsgTabNodeInsertLocalVideoInfoSegment paramMsgTabNodeInsertLocalVideoInfoSegment) {}
   
-  public StoryPushMsg[] a(int paramInt)
+  public int a(MsgTabVideoData paramMsgTabVideoData1, MsgTabVideoData paramMsgTabVideoData2)
   {
-    return new StoryPushMsg[paramInt];
+    return MsgTabStoryUtil.a(paramMsgTabVideoData1.a.mCreateTime, paramMsgTabVideoData2.a.mCreateTime);
   }
 }
 

@@ -1,32 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.MultiImageTextView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-class sea
-  implements Runnable
+public class sea
+  implements Animation.AnimationListener
 {
-  sea(sdz paramsdz, String paramString) {}
+  public sea(ChatHistory paramChatHistory, View paramView, int paramInt) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FormSimpleItem localFormSimpleItem;
-    if (this.jdField_a_of_type_Sdz.a.a != null)
-    {
-      localFormSimpleItem = (FormSimpleItem)this.jdField_a_of_type_Sdz.a.a[6];
-      if ((localFormSimpleItem != null) && (!TextUtils.equals(localFormSimpleItem.a().getText(), this.jdField_a_of_type_JavaLangString)))
-      {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label78;
-        }
-        localFormSimpleItem.setRightText(this.jdField_a_of_type_Sdz.a.getString(2131430597));
-      }
-    }
-    return;
-    label78:
-    localFormSimpleItem.setRightText(new QQText(this.jdField_a_of_type_JavaLangString, 3));
+    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

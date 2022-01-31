@@ -39,7 +39,7 @@ public class ChatHistory$HistoryItemOnlongClickListener
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131375567) {
+    if (paramView.getId() == 2131375633) {
       this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
     this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
@@ -53,7 +53,7 @@ public class ChatHistory$HistoryItemOnlongClickListener
       return false;
     }
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131375567, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131433638), 2130838309);
+    localQQCustomMenu.a(2131375633, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131433652), 2130838314);
     if (localQQCustomMenu.a() > 0)
     {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((ChatHistory.Holder)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;

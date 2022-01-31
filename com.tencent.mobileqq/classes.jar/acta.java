@@ -1,19 +1,23 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class acta
-  implements FMDialogUtil.FMDialogInterface
+  implements Animation.AnimationListener
 {
-  public acta(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView, Intent paramIntent) {}
+  public acta(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QfileBaseRecentFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 102);
+    this.a.l = false;
+    this.a.a.setVisibility(8);
+    this.a.e();
   }
   
-  public void b() {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

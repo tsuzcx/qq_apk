@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.model;
 
-import ahua;
+import ahyr;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.view.View;
@@ -97,15 +97,15 @@ public class ContactSearchModelDiscussion
       j = 0;
       while (j < ((List)paramList.get(i)).size())
       {
-        localObject = ((ahua)((List)paramList.get(i)).get(j)).jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo;
+        localObject = ((ahyr)((List)paramList.get(i)).get(j)).jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo;
         if (!localHashMap3.containsKey(localObject))
         {
           localHashMap3.put(localObject, Integer.valueOf(-1));
           localHashMap1.put(localObject, Long.valueOf(0L));
         }
         l2 = l1;
-        if (((ahua)((List)paramList.get(i)).get(j)).jdField_a_of_type_Long > l1) {
-          l2 = ((ahua)((List)paramList.get(i)).get(j)).jdField_a_of_type_Long;
+        if (((ahyr)((List)paramList.get(i)).get(j)).jdField_a_of_type_Long > l1) {
+          l2 = ((ahyr)((List)paramList.get(i)).get(j)).jdField_a_of_type_Long;
         }
         j += 1;
         l1 = l2;
@@ -181,13 +181,13 @@ public class ContactSearchModelDiscussion
       if (i >= paramList.size()) {
         break;
       }
-      long l3 = ((ahua)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_Long;
+      long l3 = ((ahyr)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_Long;
       l2 = l1;
       if (l3 > l1) {
         l2 = l3;
       }
-      this.jdField_a_of_type_JavaUtilSet.add(((ahua)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo);
-      this.jdField_b_of_type_JavaUtilList.add(((ahua)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilSet.add(((ahyr)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo);
+      this.jdField_b_of_type_JavaUtilList.add(((ahyr)((List)paramList.get(i)).get(arrayOfInt[i])).jdField_a_of_type_JavaLangString);
       i += 1;
       l1 = l2;
     }
@@ -331,13 +331,13 @@ public class ContactSearchModelDiscussion
     int i = 0;
     if (i < ((List)paramList.get(paramInt)).size())
     {
-      DiscussionMemberInfo localDiscussionMemberInfo = ((ahua)((List)paramList.get(paramInt)).get(i)).jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo;
+      DiscussionMemberInfo localDiscussionMemberInfo = ((ahyr)((List)paramList.get(paramInt)).get(i)).jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo;
       if (paramSet.contains(localDiscussionMemberInfo)) {}
       for (;;)
       {
         i += 1;
         break;
-        long l = paramArrayOfLong[paramInt] + ((Long)paramMap1.get(localDiscussionMemberInfo)).longValue() - ((ahua)((List)paramList.get(paramInt)).get(i)).jdField_a_of_type_Long;
+        long l = paramArrayOfLong[paramInt] + ((Long)paramMap1.get(localDiscussionMemberInfo)).longValue() - ((ahyr)((List)paramList.get(paramInt)).get(i)).jdField_a_of_type_Long;
         if (l == 0L)
         {
           paramSet.add(localDiscussionMemberInfo);
@@ -433,11 +433,11 @@ public class ContactSearchModelDiscussion
             long l = ((Long)arrayOfObject[0]).longValue();
             if (l != -9223372036854775808L)
             {
-              ahua localahua = new ahua();
-              localahua.jdField_a_of_type_Long = l;
-              localahua.jdField_a_of_type_JavaLangString = ((String)arrayOfObject[1]);
-              localahua.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo = ((DiscussionMemberInfo)this.jdField_a_of_type_JavaUtilList.get(j));
-              localArrayList2.add(localahua);
+              ahyr localahyr = new ahyr();
+              localahyr.jdField_a_of_type_Long = l;
+              localahyr.jdField_a_of_type_JavaLangString = ((String)arrayOfObject[1]);
+              localahyr.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo = ((DiscussionMemberInfo)this.jdField_a_of_type_JavaUtilList.get(j));
+              localArrayList2.add(localahyr);
             }
           }
         }

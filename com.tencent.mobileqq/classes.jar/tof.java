@@ -1,84 +1,52 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.managers.QQLSRecentManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class tof
-  extends FriendListObserver
+  extends BroadcastReceiver
 {
-  public tof(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  protected void onDelHistoryDevResult(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onDelHistoryDevResult isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
-    }
-    RecentLoginDevActivity.b(this.a);
-    if (paramBoolean)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
-      if ((paramInt > -1) && (RecentLoginDevActivity.a(this.a) != null) && (paramInt < RecentLoginDevActivity.a(this.a).size()))
-      {
-        RecentLoginDevActivity.a(this.a).remove(paramInt);
-        RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
-      }
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131436586), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131436508), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
-  }
+  private tof(QQLSActivity paramQQLSActivity) {}
   
-  protected void onGetHistoryDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    RecentLoginDevActivity.b(this.a);
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult success");
-      }
-      RecentLoginDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo);
-      if (QLog.isColorLevel())
+      do
       {
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = RecentLoginDevActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
+        do
         {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("Q.devlock.RecentLoginDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
+          return;
+          this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+          if (!"android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString)) {
+            break;
           }
+        } while (!QLog.isColorLevel());
+        QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
+        return;
+        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+          break;
         }
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
-      }
-      RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
+      } while (!QLog.isColorLevel());
+      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
       return;
-    }
+    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
     if (QLog.isColorLevel())
     {
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label288;
-      }
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data is null");
+      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
+      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+      QLog.d("QQLSActivity", 2, QQLSRecentManager.f);
     }
-    for (;;)
-    {
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131436584), 0).b(this.a.getTitleBarHeight());
-      return;
-      label288:
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+    if (!QQLSRecentManager.f) {
+      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
   }
 }
 

@@ -39,10 +39,10 @@ class BusinessCardGroupLogic$BusinessCardGroupAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970253, paramViewGroup, false);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970268, paramViewGroup, false);
       paramView = new BusinessCardGroupLogic.BusinessCardGroupAdapter.ViewHolder(this);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363842));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368695);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363866));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368698);
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }

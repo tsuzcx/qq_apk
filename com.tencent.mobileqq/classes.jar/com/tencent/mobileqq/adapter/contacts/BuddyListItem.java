@@ -14,7 +14,7 @@ import com.tencent.widget.SwipRightMenuBuilder;
 import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
 import java.util.HashMap;
 import java.util.Map;
-import yiv;
+import ypa;
 
 public abstract class BuddyListItem
 {
@@ -67,7 +67,7 @@ public abstract class BuddyListItem
     paramContext = a();
     int[] arrayOfInt1 = b();
     int[] arrayOfInt2 = c();
-    return new yiv(this, j, k, new int[] { i }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+    return new ypa(this, j, k, new int[] { i }, -1, paramContext, arrayOfInt1, arrayOfInt2);
   }
   
   public void a(int paramInt, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem) {}

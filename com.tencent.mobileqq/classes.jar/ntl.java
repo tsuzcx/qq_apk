@@ -1,14 +1,21 @@
-import android.app.Dialog;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.model.MyVideoSharePlayingListSync;
+import java.util.Comparator;
 
 public class ntl
-  implements Runnable
+  implements Comparator
 {
-  public ntl(QQStoryBaseFragment paramQQStoryBaseFragment) {}
+  public ntl(MyVideoSharePlayingListSync paramMyVideoSharePlayingListSync) {}
   
-  public void run()
+  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
   {
-    this.a.a.dismiss();
+    if (paramStoryVideoItem1.mCreateTime > paramStoryVideoItem2.mCreateTime) {
+      return 1;
+    }
+    if (paramStoryVideoItem1.mCreateTime < paramStoryVideoItem2.mCreateTime) {
+      return -1;
+    }
+    return 0;
   }
 }
 

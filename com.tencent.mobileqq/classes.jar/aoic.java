@@ -1,24 +1,17 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-public final class aoic
-  implements ExtendEditText.LengthConvertor
+class aoic
+  implements aoii
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
-  }
+  aoic(aoib paramaoib, boolean paramBoolean) {}
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void a()
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    if (DoodleLayout.a(this.jdField_a_of_type_Aoib.a) != null) {
+      DoodleLayout.a(this.jdField_a_of_type_Aoib.a).c(true);
     }
-    return -paramInt1;
+    this.jdField_a_of_type_Aoib.a.a().b(this.jdField_a_of_type_Boolean);
   }
 }
 

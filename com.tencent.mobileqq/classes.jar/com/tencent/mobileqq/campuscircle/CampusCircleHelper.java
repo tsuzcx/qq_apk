@@ -3,7 +3,7 @@ package com.tencent.mobileqq.campuscircle;
 import SummaryCard.RespSummaryCard;
 import SummaryCard.TCampusCircleInfo;
 import SummaryCard.TCampusSchoolInfo;
-import abpg;
+import abwh;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
@@ -503,7 +503,7 @@ public class CampusCircleHelper
   
   public static void a(String paramString1, String paramString2, int paramInt, long paramLong)
   {
-    ThreadManager.post(new abpg(paramInt, paramString1, paramString2, Math.abs(SystemClock.elapsedRealtime() - paramLong)), 5, null, false);
+    ThreadManager.post(new abwh(paramInt, paramString1, paramString2, Math.abs(SystemClock.elapsedRealtime() - paramLong)), 5, null, false);
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)

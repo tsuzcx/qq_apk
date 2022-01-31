@@ -163,69 +163,69 @@ import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rvn;
-import rvo;
-import rvp;
-import rvq;
-import rvr;
-import rvs;
-import rvt;
-import rvu;
-import rvv;
-import rvw;
-import rvx;
-import rvy;
-import rvz;
-import rwa;
-import rwb;
-import rwc;
-import rwd;
-import rwe;
-import rwf;
-import rwg;
-import rwh;
-import rwi;
-import rwj;
-import rwk;
-import rwl;
-import rwm;
-import rwn;
-import rwo;
-import rwp;
-import rwq;
-import rwr;
-import rws;
-import rwt;
-import rwu;
-import rwv;
-import rww;
-import rwy;
-import rwz;
-import rxa;
-import rxb;
-import rxc;
-import rxd;
-import rxe;
-import rxf;
-import rxg;
-import rxh;
-import rxi;
-import rxj;
-import rxk;
-import rxl;
-import rxm;
-import rxp;
-import rxq;
-import rxr;
-import rxs;
-import rxt;
-import rxx;
-import rxy;
-import rxz;
-import rya;
-import ryb;
-import ryc;
-import ryd;
+import saf;
+import sag;
+import sah;
+import sai;
+import saj;
+import sak;
+import sal;
+import sam;
+import san;
+import sao;
+import sap;
+import saq;
+import sar;
+import sas;
+import sat;
+import sau;
+import sav;
+import saw;
+import sax;
+import say;
+import saz;
+import sba;
+import sbb;
+import sbc;
+import sbd;
+import sbe;
+import sbf;
+import sbg;
+import sbh;
+import sbi;
+import sbj;
+import sbk;
+import sbl;
+import sbm;
+import sbn;
+import sbo;
+import sbq;
+import sbr;
+import sbs;
+import sbt;
+import sbu;
+import sbv;
+import sbw;
+import sbx;
+import sby;
+import sbz;
+import sca;
+import scb;
+import scc;
+import scd;
+import sce;
+import sch;
+import sci;
+import scj;
+import sck;
+import scl;
+import scp;
+import scq;
+import scr;
+import scs;
+import sct;
+import scu;
+import scv;
 
 public class ChatActivityUtils
 {
@@ -415,8 +415,8 @@ public class ChatActivityUtils
     localToast.setView(localView);
     localToast.setGravity(55, 0, paramContext.getResources().getDimensionPixelSize(2131558448));
     localToast.setDuration(1);
-    ((TextView)localView.findViewById(2131363081)).setText(paramString);
-    localView.setOnClickListener(new rxx(localToast));
+    ((TextView)localView.findViewById(2131363085)).setText(paramString);
+    localView.setOnClickListener(new scp(localToast));
     return localToast;
   }
   
@@ -470,7 +470,7 @@ public class ChatActivityUtils
     for (paramQQAppInterface = paramContext;; paramQQAppInterface = BaseActivity.sTopActivity)
     {
       paramQQAppInterface = (Activity)paramQQAppInterface;
-      if ((paramQQAppInterface != null) && (!CUKingCardHelper.a(paramQQAppInterface, 4, new rya(paramOnClickListener1, paramOnClickListener2), "qav"))) {
+      if ((paramQQAppInterface != null) && (!CUKingCardHelper.a(paramQQAppInterface, 4, new scs(paramOnClickListener1, paramOnClickListener2), "qav"))) {
         break;
       }
       return PopupDialog.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
@@ -494,7 +494,7 @@ public class ChatActivityUtils
       if (1000 == i)
       {
         paramQQAppInterface = ContactUtils.o(paramQQAppInterface, (String)localObject1);
-        localObject1 = String.format(paramContext.getString(2131435836), new Object[] { paramSessionInfo.d, paramQQAppInterface });
+        localObject1 = String.format(paramContext.getString(2131435852), new Object[] { paramSessionInfo.d, paramQQAppInterface });
         a(paramSessionInfo, paramMessageRecord);
       }
     }
@@ -512,45 +512,45 @@ public class ChatActivityUtils
     }
     label533:
     label638:
-    for (paramQQAppInterface = String.format(paramContext.getString(2131435837), new Object[] { paramSessionInfo.d, paramQQAppInterface });; paramQQAppInterface = null)
+    for (paramQQAppInterface = String.format(paramContext.getString(2131435853), new Object[] { paramSessionInfo.d, paramQQAppInterface });; paramQQAppInterface = null)
     {
       return paramQQAppInterface;
       if (1004 == i)
       {
         paramQQAppInterface = ContactUtils.b(paramQQAppInterface, (String)localObject1, 3000);
-        paramQQAppInterface = String.format(paramContext.getString(2131435838), new Object[] { paramSessionInfo.d, paramQQAppInterface });
+        paramQQAppInterface = String.format(paramContext.getString(2131435854), new Object[] { paramSessionInfo.d, paramQQAppInterface });
         a(paramSessionInfo, paramMessageRecord);
         return paramQQAppInterface;
       }
       if (1001 == i) {
-        return String.format(paramContext.getString(2131435839), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131435855), new Object[] { paramSessionInfo.d });
       }
       if (10002 == i) {
-        return String.format(paramContext.getString(2131435840), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131435856), new Object[] { paramSessionInfo.d });
       }
       if (10004 == i) {
-        return String.format(paramContext.getString(2131435852), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131435868), new Object[] { paramSessionInfo.d });
       }
       if (1006 == i) {
-        return String.format(paramContext.getString(2131435841), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131435857), new Object[] { paramSessionInfo.d });
       }
       if (1009 == i) {
-        return String.format(paramContext.getString(2131435843), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131435859), new Object[] { paramSessionInfo.d });
       }
       if (1005 == i) {
-        return String.format(paramContext.getString(2131435844), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131435860), new Object[] { paramSessionInfo.d });
       }
       if (1021 == i) {
-        return String.format(paramContext.getString(2131435845), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131435861), new Object[] { paramSessionInfo.d });
       }
       if (1022 == i) {
-        return String.format(paramContext.getString(2131435846), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131435862), new Object[] { paramSessionInfo.d });
       }
       if (1029 == i) {
-        return String.format(paramContext.getString(2131435851), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131435867), new Object[] { paramSessionInfo.d });
       }
       if (1023 == i) {
-        return String.format(paramContext.getString(2131435847), new Object[] { paramSessionInfo.d });
+        return String.format(paramContext.getString(2131435863), new Object[] { paramSessionInfo.d });
       }
       localObject1 = localObject2;
       if (1010 != i) {
@@ -561,8 +561,8 @@ public class ChatActivityUtils
       if (1006 != i) {
         break;
       }
-      paramSessionInfo = String.format(paramContext.getString(2131435842), new Object[] { paramSessionInfo.d });
-      paramQQAppInterface = paramContext.getString(2131435848);
+      paramSessionInfo = String.format(paramContext.getString(2131435858), new Object[] { paramSessionInfo.d });
+      paramQQAppInterface = paramContext.getString(2131435864);
       if (jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$AddFriendSpan == null) {
         jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$AddFriendSpan = new ChatActivityUtils.AddFriendSpan(paramQQAppInterface, paramContext.getResources().getColor(2131493060));
       }
@@ -608,19 +608,19 @@ public class ChatActivityUtils
     {
       paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(51)).a(paramString);
       if (paramQQAppInterface == null) {
-        return paramContext.getString(2131435853);
+        return paramContext.getString(2131435869);
       }
       if (TextUtils.isEmpty(paramQQAppInterface.getTroopName())) {
-        return paramContext.getString(2131435853);
+        return paramContext.getString(2131435869);
       }
-      paramQQAppInterface = String.format(paramContext.getString(2131435854), new Object[] { paramQQAppInterface.getTroopName() });
+      paramQQAppInterface = String.format(paramContext.getString(2131435870), new Object[] { paramQQAppInterface.getTroopName() });
       return paramQQAppInterface;
     }
     catch (Exception paramQQAppInterface)
     {
       paramQQAppInterface.printStackTrace();
     }
-    return paramContext.getString(2131435853);
+    return paramContext.getString(2131435869);
   }
   
   public static String a(Context paramContext, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -648,24 +648,24 @@ public class ChatActivityUtils
               paramMessageRecord = paramQQAppInterface.a(paramQQAppInterface.c(paramMessageRecord.senderuin));
               if (paramMessageRecord == null)
               {
-                paramMessageRecord = paramContext.getString(2131435853);
+                paramMessageRecord = paramContext.getString(2131435869);
                 paramContext = paramMessageRecord;
               }
               else if (TextUtils.isEmpty(paramMessageRecord.getTroopName()))
               {
-                paramMessageRecord = paramContext.getString(2131435853);
+                paramMessageRecord = paramContext.getString(2131435869);
                 paramContext = paramMessageRecord;
               }
               else
               {
-                paramMessageRecord = String.format(paramContext.getString(2131435854), new Object[] { paramMessageRecord.getTroopName() });
+                paramMessageRecord = String.format(paramContext.getString(2131435870), new Object[] { paramMessageRecord.getTroopName() });
                 paramContext = paramMessageRecord;
               }
             }
             catch (Exception paramMessageRecord)
             {
               paramMessageRecord.printStackTrace();
-              paramContext = paramContext.getString(2131435853);
+              paramContext = paramContext.getString(2131435869);
               localObject1 = paramContext;
             }
           } while (!QLog.isColorLevel());
@@ -687,21 +687,21 @@ public class ChatActivityUtils
       }
       break;
     }
-    for (paramContext = paramContext.getString(2131435855);; paramContext = null)
+    for (paramContext = paramContext.getString(2131435871);; paramContext = null)
     {
       return paramContext;
-      return paramContext.getString(2131435856);
-      return paramContext.getString(2131435857);
-      return paramContext.getString(2131437423);
-      return paramContext.getString(2131435869);
-      return paramContext.getString(2131435858);
-      return paramContext.getString(2131435859);
-      return paramContext.getString(2131435860);
-      return paramContext.getString(2131435861);
-      return paramContext.getString(2131435862);
-      return paramContext.getString(2131435863);
-      return paramContext.getString(2131435864);
-      return paramContext.getString(2131435865);
+      return paramContext.getString(2131435872);
+      return paramContext.getString(2131435873);
+      return paramContext.getString(2131437443);
+      return paramContext.getString(2131435885);
+      return paramContext.getString(2131435874);
+      return paramContext.getString(2131435875);
+      return paramContext.getString(2131435876);
+      return paramContext.getString(2131435877);
+      return paramContext.getString(2131435878);
+      return paramContext.getString(2131435879);
+      return paramContext.getString(2131435880);
+      return paramContext.getString(2131435881);
     }
     return paramContext;
   }
@@ -839,7 +839,7 @@ public class ChatActivityUtils
         if (jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
         {
           jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131558448));
-          jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434453);
+          jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434469);
         }
         jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         return;
@@ -868,7 +868,7 @@ public class ChatActivityUtils
         if (LBSHandler.a(localFragmentActivity.getChatFragment().a(), paramSessionInfo.jdField_a_of_type_JavaLangString)) {
           break label361;
         }
-        localFragmentActivity.getChatFragment().a().d(localFragmentActivity.getString(2131437409));
+        localFragmentActivity.getChatFragment().a().d(localFragmentActivity.getString(2131437429));
       }
       break;
     }
@@ -909,7 +909,7 @@ public class ChatActivityUtils
         localFragmentActivity = (FragmentActivity)paramActivity;
         if (!DatingUtil.a(localFragmentActivity.getChatFragment().a(), paramSessionInfo.jdField_a_of_type_JavaLangString))
         {
-          localFragmentActivity.getChatFragment().a().d(localFragmentActivity.getString(2131437409));
+          localFragmentActivity.getChatFragment().a().d(localFragmentActivity.getString(2131437429));
           return;
         }
       }
@@ -941,17 +941,17 @@ public class ChatActivityUtils
     }
     if (paramBoolean2)
     {
-      b(paramActivity, 2131434511, 1);
+      b(paramActivity, 2131434527, 1);
       return;
     }
-    b(paramActivity, 2131434510, 1);
+    b(paramActivity, 2131434526, 1);
   }
   
   public static void a(Context paramContext)
   {
-    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131433410));
+    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131433424));
     localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramContext.getResources().getColor(2131493062), paramContext.getResources().getColor(2131493063)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
-    DialogUtil.a(paramContext, paramContext.getString(2131433409), localSpannableString, 0, 2131433697, null, null, new rxy(paramContext)).show();
+    DialogUtil.a(paramContext, paramContext.getString(2131433423), localSpannableString, 0, 2131433711, null, null, new scq(paramContext)).show();
   }
   
   public static void a(Context paramContext, int paramInt)
@@ -1217,13 +1217,13 @@ public class ChatActivityUtils
       }
       if (paramBoolean1)
       {
-        b(paramActivity, 2131434511, 1);
+        b(paramActivity, 2131434527, 1);
         return;
       }
-      b(paramActivity, 2131434510, 1);
+      b(paramActivity, 2131434526, 1);
       return;
     }
-    b(paramActivity, 2131433103, 1);
+    b(paramActivity, 2131433117, 1);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo, int paramInt1, Intent paramIntent, int paramInt2)
@@ -1265,12 +1265,12 @@ public class ChatActivityUtils
       ImageUtil.a(paramActivity, str);
       if (!FileUtils.e(str))
       {
-        QQToast.a(paramActivity, paramActivity.getString(2131434504), 0).b(paramActivity.getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(paramActivity, paramActivity.getString(2131434520), 0).b(paramActivity.getResources().getDimensionPixelSize(2131558448));
         return;
       }
       if (!new File(str).exists())
       {
-        QQToast.a(paramActivity, paramActivity.getString(2131434505), 0).b(paramActivity.getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(paramActivity, paramActivity.getString(2131434521), 0).b(paramActivity.getResources().getDimensionPixelSize(2131558448));
         return;
       }
     }
@@ -1363,7 +1363,7 @@ public class ChatActivityUtils
       paramActivity.startActivityForResult((Intent)localObject, i);
       return;
       label825:
-      QQToast.a(paramActivity, paramActivity.getString(2131434505), 0).b(paramActivity.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(paramActivity, paramActivity.getString(2131434521), 0).b(paramActivity.getResources().getDimensionPixelSize(2131558448));
       return;
       if ((paramActivity instanceof SplashActivity))
       {
@@ -2163,9 +2163,9 @@ public class ChatActivityUtils
     //   1724: aload_1
     //   1725: ldc_w 1435
     //   1728: invokevirtual 419	android/content/Context:getString	(I)Ljava/lang/String;
-    //   1731: new 1437	rwx
+    //   1731: new 1437	sbp
     //   1734: dup
-    //   1735: invokespecial 1438	rwx:<init>	()V
+    //   1735: invokespecial 1438	sbp:<init>	()V
     //   1738: aconst_null
     //   1739: invokestatic 1441	com/tencent/mobileqq/utils/DialogUtil:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   1742: invokevirtual 1442	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
@@ -2958,8 +2958,8 @@ public class ChatActivityUtils
     QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramContext);
     localQQProgressDialog.c(2131429510);
     localQQProgressDialog.show();
-    paramContext = new rxm(localQQProgressDialog, paramQQAppInterface, paramContext, paramInt, paramString, paramMap);
-    localQQProgressDialog.a(new rxp(paramContext));
+    paramContext = new sce(localQQProgressDialog, paramMap, paramQQAppInterface, paramContext, paramInt, paramString);
+    localQQProgressDialog.a(new sch(paramContext));
     GVideoGrayConfig.a().a(paramQQAppInterface, paramString, paramContext);
   }
   
@@ -2978,7 +2978,7 @@ public class ChatActivityUtils
       return;
       if (!NetworkUtil.d(BaseApplication.getContext()))
       {
-        QQToast.a(paramContext, 2131433103, 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(paramContext, 2131433117, 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
         ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005767", "0X8005767", 0, 0, "", "", "", "");
         return;
       }
@@ -2989,7 +2989,7 @@ public class ChatActivityUtils
           QLog.d("ChatActivityUtils", 2, "enterNewGroupVideo phone is calling!");
         }
         paramQQAppInterface = paramContext.getString(2131429045);
-        DialogUtil.b(paramContext, 230, paramContext.getString(2131429041), paramQQAppInterface, 2131433015, 2131433016, new rxg(), null).show();
+        DialogUtil.b(paramContext, 230, paramContext.getString(2131429041), paramQQAppInterface, 2131433029, 2131433030, new sby(), null).show();
         DataReport.a();
         return;
       }
@@ -3001,7 +3001,7 @@ public class ChatActivityUtils
         if (paramInt == 1011)
         {
           paramString = paramContext.getString(2131429248);
-          DialogUtil.b(paramContext, 230, paramContext.getString(2131429041), paramString, 2131433015, 2131429056, new rxh(), null).show();
+          DialogUtil.b(paramContext, 230, paramContext.getString(2131429041), paramString, 2131433029, 2131429056, new sbz(), null).show();
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80053BD", "0X80053BD", 0, 0, "", "", "", "");
           return;
         }
@@ -3103,7 +3103,7 @@ public class ChatActivityUtils
         localObject1 = localObject3;
         continue;
       }
-      a(paramQQAppInterface, paramContext, 230, (String)localObject2, (String)localObject1, 2131429048, 2131429053, new rxi(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean2, paramMap), new rxj());
+      a(paramQQAppInterface, paramContext, 230, (String)localObject2, (String)localObject1, 2131429048, 2131429053, new sca(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean2, paramMap), new scb());
       return;
       if ((paramBoolean2) && (paramQQAppInterface.c()))
       {
@@ -3133,7 +3133,7 @@ public class ChatActivityUtils
           }
           localObject1 = paramContext.getString(2131428983);
           j = TroopMemberUtil.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), paramString + "");
-          PopupDialog.a(paramContext, 230, null, (String)localObject1, 2131429048, 2131429053, new rxk(paramQQAppInterface, paramContext, m, i, paramInt, paramString, paramBoolean1, paramMap), new rxl(paramQQAppInterface, paramString));
+          PopupDialog.a(paramContext, 230, null, (String)localObject1, 2131429048, 2131429053, new scc(paramQQAppInterface, paramContext, m, i, paramInt, paramString, paramBoolean1, paramMap), new scd(paramQQAppInterface, paramString));
           ReportController.b(null, "dc00899", "Grp_video", "", "video_jump", "exp_jump", 0, 0, paramString + "", j + "", "", "");
           return;
         }
@@ -3307,7 +3307,7 @@ public class ChatActivityUtils
           break label265;
         }
       }
-      for (paramQQAppInterface = localContext.getString(2131436164);; paramQQAppInterface = localContext.getString(2131436163))
+      for (paramQQAppInterface = localContext.getString(2131436182);; paramQQAppInterface = localContext.getString(2131436181))
       {
         break;
         bool1 = false;
@@ -3785,7 +3785,7 @@ public class ChatActivityUtils
   {
     if (!NetworkUtil.g(paramContext))
     {
-      QQToast.a(paramContext, 0, 2131433213, 0).a();
+      QQToast.a(paramContext, 0, 2131433227, 0).a();
       return false;
     }
     Object localObject2 = (PhoneContactManager)paramQQAppInterface.getManager(10);
@@ -3810,8 +3810,8 @@ public class ChatActivityUtils
       if ((!paramBoolean4) || (paramInt1 != 0) || (localPstnManager.a()) || (!PstnUtils.a(paramQQAppInterface, 1)) || (!a(paramQQAppInterface, paramInt1, paramString1)) || (i == 0)) {
         break label373;
       }
-      localObject1 = paramQQAppInterface.getApplication().getResources().getString(2131438408);
-      localObject2 = paramQQAppInterface.getApplication().getResources().getString(2131438409);
+      localObject1 = paramQQAppInterface.getApplication().getResources().getString(2131438428);
+      localObject2 = paramQQAppInterface.getApplication().getResources().getString(2131438429);
       str = localPstnManager.a("pstn_c2c_trans_wording");
       localObject3 = localPstnManager.a("pstn_c2c_trans_check_wording");
       if (!TextUtils.isEmpty(str)) {
@@ -3824,7 +3824,7 @@ public class ChatActivityUtils
     }
     for (;;)
     {
-      DialogUtil.a(paramContext, 230, "确认呼叫方式", (String)localObject1, (String)localObject2, "取消", "呼叫", null, new ryb(localPstnManager, paramQQAppInterface, paramContext, paramInt1, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramBoolean2, paramBoolean3, paramStartVideoListener, paramMap, paramInt2), new ryc(paramStartVideoListener, paramQQAppInterface)).show();
+      DialogUtil.a(paramContext, 230, "确认呼叫方式", (String)localObject1, (String)localObject2, "取消", "呼叫", null, new sct(localPstnManager, paramQQAppInterface, paramContext, paramInt1, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramBoolean2, paramBoolean3, paramStartVideoListener, paramMap, paramInt2), new scu(paramStartVideoListener, paramQQAppInterface)).show();
       return false;
       i = 0;
       break;
@@ -3917,10 +3917,10 @@ public class ChatActivityUtils
       }
       if (!paramQQAppInterface.a().a(j, l, i))
       {
-        if (!a(paramQQAppInterface, paramContext, paramStartVideoListener, new rxd(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean2, paramStartVideoListener, paramBundle), paramBoolean1, bool)) {
+        if (!a(paramQQAppInterface, paramContext, paramStartVideoListener, new sbv(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean2, paramStartVideoListener, paramBundle), paramBoolean1, bool)) {
           return true;
         }
-        if (a(paramQQAppInterface, paramContext, paramStartVideoListener, new rxe(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean1, paramStartVideoListener, paramBundle), paramBoolean2, paramString, j, l, i)) {
+        if (a(paramQQAppInterface, paramContext, paramStartVideoListener, new sbw(paramQQAppInterface, paramContext, paramInt, paramString, paramBoolean1, paramStartVideoListener, paramBundle), paramBoolean2, paramString, j, l, i)) {
           return true;
         }
       }
@@ -3966,7 +3966,7 @@ public class ChatActivityUtils
       if (NetworkUtil.g(paramContext)) {
         break;
       }
-      QQToast.a(paramContext, 0, 2131433213, 0).a();
+      QQToast.a(paramContext, 0, 2131433227, 0).a();
       return false;
     }
     if (paramQQAppInterface.c())
@@ -4012,7 +4012,7 @@ public class ChatActivityUtils
         {
           if ((PstnUtils.b(paramQQAppInterface, 1)) && (paramBoolean))
           {
-            DialogUtil.a(paramContext, 230, "时长不足", PstnUtils.a(paramQQAppInterface, 1), "购买时长", "继续拨打", new rvn(paramQQAppInterface, paramContext, paramPstnSessionInfo, paramInt, paramStartVideoListener), new rvy(paramQQAppInterface, paramContext, paramStartVideoListener)).show();
+            DialogUtil.a(paramContext, 230, "时长不足", PstnUtils.a(paramQQAppInterface, 1), "购买时长", "继续拨打", new saf(paramQQAppInterface, paramContext, paramPstnSessionInfo, paramInt, paramStartVideoListener), new saq(paramQQAppInterface, paramContext, paramStartVideoListener)).show();
             return false;
           }
           if ((paramContext instanceof BaseActivity)) {
@@ -4057,12 +4057,12 @@ public class ChatActivityUtils
         for (i = 1;; i = 0)
         {
           if (i != 0) {
-            DialogUtil.a(paramContext, str1, str2, str3, new rwj(paramQQAppInterface, paramContext, paramInt), paramContext.getString(2131429559), new rwu(paramQQAppInterface, paramContext, paramPstnSessionInfo, paramInt)).show();
+            DialogUtil.a(paramContext, str1, str2, str3, new sbb(paramQQAppInterface, paramContext, paramInt), paramContext.getString(2131429559), new sbm(paramQQAppInterface, paramContext, paramPstnSessionInfo, paramInt)).show();
           }
           for (;;)
           {
             return false;
-            DialogUtil.a(paramContext, 230, str1, str2, paramContext.getString(2131428675), str3, new rxf(paramQQAppInterface, paramContext, paramInt), new rxs(paramQQAppInterface, paramInt)).show();
+            DialogUtil.a(paramContext, 230, str1, str2, paramContext.getString(2131428675), str3, new sbx(paramQQAppInterface, paramContext, paramInt), new sck(paramQQAppInterface, paramInt)).show();
             continue;
             PstnUtils.a(paramQQAppInterface, paramContext, 1, 8);
           }
@@ -4081,7 +4081,7 @@ public class ChatActivityUtils
     if (!NetworkUtil.d(BaseApplication.getContext()))
     {
       QLog.d("ChatActivityUtils", 1, "startGroupAudio, 当前网络不可用");
-      QQToast.a(paramContext, 2131433103, 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(paramContext, 2131433117, 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005767", "0X8005767", 0, 0, "", "", "", "");
       return false;
     }
@@ -4111,7 +4111,7 @@ public class ChatActivityUtils
       if ((paramContext instanceof Activity)) {}
       for (;;)
       {
-        DialogUtil.b(paramContext, 230, paramString, paramQQAppInterface, 2131433015, 2131433016, new rwy(paramStartVideoListener), null).show();
+        DialogUtil.b(paramContext, 230, paramString, paramQQAppInterface, 2131433029, 2131433030, new sbq(paramStartVideoListener), null).show();
         DataReport.a();
         return false;
         paramContext = BaseActivity.sTopActivity;
@@ -4123,7 +4123,7 @@ public class ChatActivityUtils
       if (paramInt == 1011)
       {
         paramString = paramContext.getString(2131429248);
-        DialogUtil.b(paramContext, 230, paramContext.getString(2131429041), paramString, 2131433015, 2131429056, new rwz(paramStartVideoListener), null).show();
+        DialogUtil.b(paramContext, 230, paramContext.getString(2131429041), paramString, 2131433029, 2131429056, new sbr(paramStartVideoListener), null).show();
         ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80053BD", "0X80053BD", 0, 0, "", "", "", "");
         return false;
       }
@@ -4179,7 +4179,7 @@ public class ChatActivityUtils
       return false;
       String str = paramContext.getString(2131428983);
       i = TroopMemberUtil.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), paramString + "");
-      PopupDialog.a(paramContext, 230, null, str, 2131429048, 2131429053, new rxb(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramOnClickListener, paramString, i), new rxc(paramStartVideoListener, paramString, i, paramQQAppInterface));
+      PopupDialog.a(paramContext, 230, null, str, 2131429048, 2131429053, new sbt(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramOnClickListener, paramString, i), new sbu(paramStartVideoListener, paramString, i, paramQQAppInterface));
       ReportController.b(null, "dc00899", "Grp_video", "", "video_jump", "exp_jump", 0, 0, paramString + "", i + "", "", "");
       return true;
     }
@@ -4221,7 +4221,7 @@ public class ChatActivityUtils
         }
         else
         {
-          a(paramQQAppInterface, paramContext, 230, (String)localObject2, (String)localObject1, 2131429048, 2131429053, paramOnClickListener, new rxa(paramStartVideoListener));
+          a(paramQQAppInterface, paramContext, 230, (String)localObject2, (String)localObject1, 2131429048, 2131429053, paramOnClickListener, new sbs(paramStartVideoListener));
           return false;
           return true;
           Object localObject3 = localObject2;
@@ -4811,7 +4811,7 @@ public class ChatActivityUtils
   
   public static void b(Context paramContext)
   {
-    DialogUtil.a(paramContext, 230, paramContext.getString(2131433411), paramContext.getString(2131433412), new rxz(), null).show();
+    DialogUtil.a(paramContext, 230, paramContext.getString(2131433425), paramContext.getString(2131433426), new scr(), null).show();
   }
   
   public static void b(Context paramContext, int paramInt1, int paramInt2)
@@ -4850,7 +4850,7 @@ public class ChatActivityUtils
         if (localDiscussionInfo.isPSTNConf())
         {
           AudioHelper.b("发起音视频_获取会议id");
-          ChatActivityUtils.ConfIdownloadTask.a("ChatActivityUtils", localDiscussionInfo.uin, new rxq(paramBundle, paramQQAppInterface, paramContext, paramInt, paramString));
+          ChatActivityUtils.ConfIdownloadTask.a("ChatActivityUtils", localDiscussionInfo.uin, new sci(paramBundle, paramQQAppInterface, paramContext, paramInt, paramString));
           i = 1;
         }
       }
@@ -4864,7 +4864,7 @@ public class ChatActivityUtils
       if ((localDiscussionInfo.isDiscussHrMeeting()) && ((paramBundle == null) || (!paramBundle.containsKey("MeetingStasks"))))
       {
         AudioHelper.b("发起音视频_获取hr信息");
-        QAVHrMeeting.a(paramQQAppInterface, paramString, paramQQAppInterface.getCurrentAccountUin(), new rxr(paramBundle, paramQQAppInterface, paramContext, paramInt, paramString));
+        QAVHrMeeting.a(paramQQAppInterface, paramString, paramQQAppInterface.getCurrentAccountUin(), new scj(paramBundle, paramQQAppInterface, paramContext, paramInt, paramString));
         i = 1;
       }
       else
@@ -4921,7 +4921,7 @@ public class ChatActivityUtils
           QLog.d("ChatActivityUtils", 2, "startVideo phone is calling!");
         }
         paramString1 = paramContext.getString(2131429045);
-        PopupDialog.a(paramContext, 230, paramContext.getString(2131429041), paramString1, 2131433015, 2131433016, new rwc(paramStartVideoListener, paramBoolean1), null);
+        PopupDialog.a(paramContext, 230, paramContext.getString(2131429041), paramString1, 2131433029, 2131433030, new sau(paramStartVideoListener, paramBoolean1), null);
         DataReport.a(paramBoolean1);
         if (paramInt == 1024) {
           ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "Judge_phone_calling_false", 0, 0, "", "", "", "");
@@ -4947,7 +4947,7 @@ public class ChatActivityUtils
               break label756;
             }
             paramString2 = paramContext.getString(2131429248);
-            PopupDialog.a(paramContext, 230, paramContext.getString(2131429041), paramString2, 2131433015, 2131429056, new rwd(paramStartVideoListener), null);
+            PopupDialog.a(paramContext, 230, paramContext.getString(2131429041), paramString2, 2131433029, 2131429056, new sav(paramStartVideoListener), null);
             if (!paramString1.equals("randomc2c")) {
               break label726;
             }
@@ -4977,7 +4977,7 @@ public class ChatActivityUtils
           QLog.d("ChatActivityUtils", 2, "startVideo audio disabled!");
         }
         paramString1 = paramContext.getString(2131429046);
-        PopupDialog.a(paramContext, 230, paramContext.getString(2131429041), paramString1, 2131433015, 2131429056, new rwe(paramStartVideoListener), null);
+        PopupDialog.a(paramContext, 230, paramContext.getString(2131429041), paramString1, 2131433029, 2131429056, new saw(paramStartVideoListener), null);
         if (paramBoolean1)
         {
           ReportController.b(null, "CliOper", "", "", "Two_call", "Judge_language_false", 0, 0, "", "", "", "");
@@ -4992,9 +4992,9 @@ public class ChatActivityUtils
         if (QLog.isColorLevel()) {
           QLog.d("ChatActivityUtils", 2, "startVideo don't allow date session!");
         }
-        paramQQAppInterface = PopupDialog.a(paramContext, 230, null, paramContext.getString(2131429043), 2131429048, 2131429058, new rwf(paramQQAppInterface, paramBoolean1, paramContext, paramInt, paramString1, paramString2, paramString3, paramString4, paramBoolean2, paramBoolean3, paramStartVideoListener, paramString5, paramMap, paramBoolean4, paramBoolean5), new rwg(paramBoolean1, paramStartVideoListener));
+        paramQQAppInterface = PopupDialog.a(paramContext, 230, null, paramContext.getString(2131429043), 2131429048, 2131429058, new sax(paramQQAppInterface, paramBoolean1, paramContext, paramInt, paramString1, paramString2, paramString3, paramString4, paramBoolean2, paramBoolean3, paramStartVideoListener, paramString5, paramMap, paramBoolean4, paramBoolean5), new say(paramBoolean1, paramStartVideoListener));
         if (paramQQAppInterface != null) {
-          paramQQAppInterface.setOnCancelListener(new rwh(paramBoolean1, paramStartVideoListener));
+          paramQQAppInterface.setOnCancelListener(new saz(paramBoolean1, paramStartVideoListener));
         }
         return false;
       }
@@ -5007,9 +5007,9 @@ public class ChatActivityUtils
           ReportController.b(null, "CliOper", "", "", "Two_call", "Shield_btn_appear", 0, 0, "", "", "", "");
         }
         localObject1 = paramContext.getString(2131429042);
-        paramQQAppInterface = PopupDialog.a(paramContext, 230, paramContext.getString(2131429041), (String)localObject1, 2131429048, 2131429058, new rwi(paramQQAppInterface, paramInt, paramString1, paramString3, paramBoolean1, paramContext, paramString2, paramString4, paramStartVideoListener, paramString5, paramMap, paramBoolean4, paramBoolean5), new rwk(paramBoolean1, paramStartVideoListener));
+        paramQQAppInterface = PopupDialog.a(paramContext, 230, paramContext.getString(2131429041), (String)localObject1, 2131429048, 2131429058, new sba(paramQQAppInterface, paramInt, paramString1, paramString3, paramBoolean1, paramContext, paramString2, paramString4, paramStartVideoListener, paramString5, paramMap, paramBoolean4, paramBoolean5), new sbc(paramBoolean1, paramStartVideoListener));
         if (paramQQAppInterface != null) {
-          paramQQAppInterface.setOnCancelListener(new rwl(paramBoolean1, paramStartVideoListener));
+          paramQQAppInterface.setOnCancelListener(new sbd(paramBoolean1, paramStartVideoListener));
         }
         return false;
       }
@@ -5018,7 +5018,7 @@ public class ChatActivityUtils
         if (QLog.isColorLevel()) {
           QLog.d("ChatActivityUtils", 2, "startVideo network not support!");
         }
-        QQToast.a(paramContext, 2131433103, 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(paramContext, 2131433117, 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
         if (paramBoolean1)
         {
           ReportController.b(null, "CliOper", "", "", "Two_call", "Judge_network_false", 0, 0, "1", "", "", "");
@@ -5113,9 +5113,9 @@ public class ChatActivityUtils
           }
           else
           {
-            paramQQAppInterface = a(paramQQAppInterface, paramContext, 230, (String)localObject2, (String)localObject1, 2131429048, 2131429053, new rwm(paramBoolean1, i, paramQQAppInterface, paramContext, paramInt, paramString1, paramString2, paramString3, paramString4, paramStartVideoListener, paramString5, paramMap, paramBoolean4, paramBoolean5), new rwn(paramBoolean1, i, paramStartVideoListener));
+            paramQQAppInterface = a(paramQQAppInterface, paramContext, 230, (String)localObject2, (String)localObject1, 2131429048, 2131429053, new sbe(paramBoolean1, i, paramQQAppInterface, paramContext, paramInt, paramString1, paramString2, paramString3, paramString4, paramStartVideoListener, paramString5, paramMap, paramBoolean4, paramBoolean5), new sbf(paramBoolean1, i, paramStartVideoListener));
             if (paramQQAppInterface != null) {
-              paramQQAppInterface.setOnCancelListener(new rwo(paramBoolean1, i, paramStartVideoListener));
+              paramQQAppInterface.setOnCancelListener(new sbg(paramBoolean1, i, paramStartVideoListener));
             }
             return false;
             i = paramQQAppInterface.a().e();
@@ -5176,7 +5176,7 @@ public class ChatActivityUtils
                 }
                 while (i == 0)
                 {
-                  PopupDialog.a(paramContext, 230, null, paramContext.getString(2131428983), 2131429048, 2131429053, new rwp(paramQQAppInterface, paramContext, paramInt, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramBoolean2, paramBoolean3, paramStartVideoListener, paramString5, paramMap, paramBoolean4), new rwq(paramStartVideoListener));
+                  PopupDialog.a(paramContext, 230, null, paramContext.getString(2131428983), 2131429048, 2131429053, new sbh(paramQQAppInterface, paramContext, paramInt, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramBoolean2, paramBoolean3, paramStartVideoListener, paramString5, paramMap, paramBoolean4), new sbi(paramStartVideoListener));
                   a(paramQQAppInterface, paramMap);
                   return false;
                   i = 0;
@@ -5254,7 +5254,7 @@ public class ChatActivityUtils
                       if (QLog.isColorLevel()) {
                         QLog.d("ChatActivityUtils", 2, "startVideo is multi calling!");
                       }
-                      PopupDialog.a(paramContext, 230, null, paramContext.getString(2131428983), 2131429048, 2131429053, new rwr(paramInt, paramMap, paramQQAppInterface, paramContext, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramBoolean2, paramBoolean3, paramStartVideoListener, paramString5, paramBoolean4), new rws(paramStartVideoListener));
+                      PopupDialog.a(paramContext, 230, null, paramContext.getString(2131428983), 2131429048, 2131429053, new sbj(paramInt, paramMap, paramQQAppInterface, paramContext, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramBoolean2, paramBoolean3, paramStartVideoListener, paramString5, paramBoolean4), new sbk(paramStartVideoListener));
                       a(paramQQAppInterface, paramMap);
                       return false;
                     }
@@ -5274,7 +5274,7 @@ public class ChatActivityUtils
                 for (paramInt = 2131429217;; paramInt = 2131429216)
                 {
                   paramQQAppInterface = paramContext.getString(paramInt);
-                  DialogUtil.b(paramContext, 230, paramContext.getString(2131429041), paramQQAppInterface, 2131433015, 2131429057, new rwt(), null).show();
+                  DialogUtil.b(paramContext, 230, paramContext.getString(2131429041), paramQQAppInterface, 2131433029, 2131429057, new sbl(), null).show();
                   return false;
                 }
               }
@@ -5282,7 +5282,7 @@ public class ChatActivityUtils
               {
                 if (AVNotifyCenter.e(paramQQAppInterface.getCurrentAccountUin()))
                 {
-                  jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramContext, 230, 2130969268, null, paramContext.getString(2131429037), 2131428677, 2131428674, new rwv(paramQQAppInterface, paramContext, paramInt, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramStartVideoListener, paramString5, paramMap, paramBoolean5), new rww(paramQQAppInterface, paramContext, paramInt, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramStartVideoListener, paramString5, paramMap, paramBoolean5));
+                  jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramContext, 230, 2130969266, null, paramContext.getString(2131429037), 2131428677, 2131428674, new sbn(paramQQAppInterface, paramContext, paramInt, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramStartVideoListener, paramString5, paramMap, paramBoolean5), new sbo(paramQQAppInterface, paramContext, paramInt, paramString1, paramString2, paramString3, paramBoolean1, paramString4, paramStartVideoListener, paramString5, paramMap, paramBoolean5));
                   jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
                   ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005014", "0X8005014", 0, 0, "", "", "", "");
                   return false;
@@ -5323,7 +5323,7 @@ public class ChatActivityUtils
   {
     if (!NetworkUtil.g(paramContext))
     {
-      QQToast.a(paramContext, 0, 2131433213, 0).a();
+      QQToast.a(paramContext, 0, 2131433227, 0).a();
       return false;
     }
     Object localObject2 = PstnUtils.b(paramQQAppInterface, 2);
@@ -5387,7 +5387,7 @@ public class ChatActivityUtils
     label847:
     label854:
     label1371:
-    for (paramInt3 = 2131438385;; paramInt3 = 2131438384)
+    for (paramInt3 = 2131438405;; paramInt3 = 2131438404)
     {
       if (!a(paramQQAppInterface, paramBoolean3, paramInt1, paramString, (ArrayList)localObject3, paramArrayList, localArrayList))
       {
@@ -5396,7 +5396,7 @@ public class ChatActivityUtils
         }
         if ((PstnUtils.b(paramQQAppInterface, 2)) && (paramBoolean5))
         {
-          DialogUtil.a(paramContext, 230, "时长不足", PstnUtils.a(paramQQAppInterface, 2), "购买时长", "继续拨打", new ryd(paramQQAppInterface, paramContext, paramInt1, paramString, paramBoolean1, paramBoolean2, paramStartVideoListener, (Map)localObject1), new rvo(paramQQAppInterface, paramContext)).show();
+          DialogUtil.a(paramContext, 230, "时长不足", PstnUtils.a(paramQQAppInterface, 2), "购买时长", "继续拨打", new scv(paramQQAppInterface, paramContext, paramInt1, paramString, paramBoolean1, paramBoolean2, paramStartVideoListener, (Map)localObject1), new sag(paramQQAppInterface, paramContext)).show();
           return false;
         }
         a(paramQQAppInterface, paramContext, paramInt1, paramString, paramBoolean1, paramBoolean2, paramStartVideoListener, (Map)localObject1);
@@ -5407,7 +5407,7 @@ public class ChatActivityUtils
         PhoneContactSelectActivity.a(paramContext, paramInt2, localArrayList, paramInt3);
         return true;
         if ((paramInt3 == 6) || (paramInt3 == 3)) {
-          DialogUtil.a(paramContext, 230, (String)localObject2, str1, paramContext.getString(2131428675), str2, new rvp(paramQQAppInterface, paramContext, paramStartVideoListener, paramInt3), new rvq(paramQQAppInterface, paramInt3)).show();
+          DialogUtil.a(paramContext, 230, (String)localObject2, str1, paramContext.getString(2131428675), str2, new sah(paramQQAppInterface, paramContext, paramStartVideoListener, paramInt3), new sai(paramQQAppInterface, paramInt3)).show();
         }
         for (;;)
         {
@@ -5429,8 +5429,8 @@ public class ChatActivityUtils
               if ((paramQQAppInterface.a().a(j, l1)) || (((PstnManager)localObject3).d() != 1) || (((PstnManager)localObject3).b()) || ((!a(paramQQAppInterface, paramInt1, paramString, paramArrayList)) && (NetworkUtil.a(paramContext.getApplicationContext()) != 2)) || (i == 0) || (6 == paramInt3) || (!paramBoolean4)) {
                 break label861;
               }
-              localObject1 = paramQQAppInterface.getApplication().getResources().getString(2131438411);
-              localObject2 = paramQQAppInterface.getApplication().getResources().getString(2131438412);
+              localObject1 = paramQQAppInterface.getApplication().getResources().getString(2131438431);
+              localObject2 = paramQQAppInterface.getApplication().getResources().getString(2131438432);
               str2 = ((PstnManager)localObject3).a("pstn_multi_trans_wording");
               str1 = ((PstnManager)localObject3).a("pstn_multi_trans_check_wording");
               if (!TextUtils.isEmpty(str2)) {
@@ -5442,7 +5442,7 @@ public class ChatActivityUtils
             }
             for (;;)
             {
-              DialogUtil.a(paramContext, 230, "确认呼叫方式", (String)localObject1, (String)localObject2, "取消", "呼叫", null, new rvr((PstnManager)localObject3, paramQQAppInterface, paramContext, paramInt1, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramStartVideoListener, paramArrayList, paramInt2, paramInt3, paramBoolean5), new rvs(paramStartVideoListener, paramQQAppInterface)).show();
+              DialogUtil.a(paramContext, 230, "确认呼叫方式", (String)localObject1, (String)localObject2, "取消", "呼叫", null, new saj((PstnManager)localObject3, paramQQAppInterface, paramContext, paramInt1, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramStartVideoListener, paramArrayList, paramInt2, paramInt3, paramBoolean5), new sak(paramStartVideoListener, paramQQAppInterface)).show();
               return false;
               i = 0;
               break;
@@ -5453,7 +5453,7 @@ public class ChatActivityUtils
             label861:
             if ((PstnUtils.b(paramQQAppInterface, 2)) && (paramBoolean5))
             {
-              DialogUtil.a(paramContext, 230, "时长不足", PstnUtils.a(paramQQAppInterface, 2), "购买时长", "继续拨打", new rvt(paramQQAppInterface, paramContext, paramInt1, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramStartVideoListener, paramArrayList, paramInt2, paramInt3, paramBoolean4), new rvu(paramQQAppInterface, paramContext)).show();
+              DialogUtil.a(paramContext, 230, "时长不足", PstnUtils.a(paramQQAppInterface, 2), "购买时长", "继续拨打", new sal(paramQQAppInterface, paramContext, paramInt1, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramStartVideoListener, paramArrayList, paramInt2, paramInt3, paramBoolean4), new sam(paramQQAppInterface, paramContext)).show();
               return false;
             }
             if (paramInt2 == 4) {
@@ -5485,11 +5485,11 @@ public class ChatActivityUtils
           localObject3 = ((DiscussionManager)paramQQAppInterface.getManager(52)).a(paramString);
           if ((localObject3 != null) && (((List)localObject3).size() == 1) && (((DiscussionMemberInfo)((List)localObject3).get(0)).memberUin.equals(paramQQAppInterface.getCurrentAccountUin())))
           {
-            DialogUtil.a(paramContext, 230, (String)localObject2, str1, paramContext.getString(2131428675), str2, new rvv(paramQQAppInterface, paramContext, paramStartVideoListener, paramInt3), new rvw(paramQQAppInterface, paramInt3)).show();
+            DialogUtil.a(paramContext, 230, (String)localObject2, str1, paramContext.getString(2131428675), str2, new san(paramQQAppInterface, paramContext, paramStartVideoListener, paramInt3), new sao(paramQQAppInterface, paramInt3)).show();
           }
           else if ((paramArrayList != null) && (paramArrayList.size() > 0))
           {
-            DialogUtil.a(paramContext, (String)localObject2, str1, str2, new rvx(paramQQAppInterface, paramContext, paramStartVideoListener, paramInt3), paramContext.getString(2131429560), new rvz((Map)localObject1, paramQQAppInterface, paramContext, paramInt1, paramString, paramBoolean1, paramBoolean2, paramStartVideoListener, paramInt3)).show();
+            DialogUtil.a(paramContext, (String)localObject2, str1, str2, new sap(paramQQAppInterface, paramContext, paramStartVideoListener, paramInt3), paramContext.getString(2131429560), new sar((Map)localObject1, paramQQAppInterface, paramContext, paramInt1, paramString, paramBoolean1, paramBoolean2, paramStartVideoListener, paramInt3)).show();
           }
           else
           {
@@ -5500,7 +5500,7 @@ public class ChatActivityUtils
         }
         else
         {
-          DialogUtil.a(paramContext, 230, (String)localObject2, str1, paramContext.getString(2131428675), str2, new rwa(paramQQAppInterface, paramContext, paramStartVideoListener), new rwb()).show();
+          DialogUtil.a(paramContext, 230, (String)localObject2, str1, paramContext.getString(2131428675), str2, new sas(paramQQAppInterface, paramContext, paramStartVideoListener), new sat()).show();
         }
       }
     }
@@ -5693,7 +5693,7 @@ public class ChatActivityUtils
           localIntent.putExtra("troopmember", bool);
           break;
           a(paramQQAppInterface, localIntent);
-          GVideoUpdateUtil.a(paramContext, paramString, j, new rxt(i, paramInt, paramQQAppInterface, (QCallFacade)paramQQAppInterface.getManager(37), l1, localIntent, l1, "start_group_audio_time" + paramQQAppInterface.getCurrentAccountUin()));
+          GVideoUpdateUtil.a(paramContext, paramString, j, new scl(i, paramInt, paramQQAppInterface, (QCallFacade)paramQQAppInterface.getManager(37), l1, localIntent, l1, "start_group_audio_time" + paramQQAppInterface.getCurrentAccountUin()));
           return;
         }
         label984:

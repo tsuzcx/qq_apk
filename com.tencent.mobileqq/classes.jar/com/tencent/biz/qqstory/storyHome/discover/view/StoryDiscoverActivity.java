@@ -32,11 +32,11 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import java.util.ArrayList;
-import nwf;
-import nwg;
-import nwh;
-import nwi;
-import nwj;
+import oau;
+import oav;
+import oaw;
+import oax;
+import oay;
 
 public class StoryDiscoverActivity
   extends QQStoryBaseActivity
@@ -86,11 +86,11 @@ public class StoryDiscoverActivity
     this.rightViewText.setVisibility(8);
     this.rightViewImg.setVisibility(0);
     this.rightViewImg.setContentDescription("分享");
-    this.rightViewImg.setImageResource(2130843645);
+    this.rightViewImg.setImageResource(2130843715);
     this.rightViewImg.getLayoutParams().width = -2;
     this.rightViewImg.setPadding(0, 0, DisplayUtil.a(this, 5.0F), 0);
-    new nwf(this);
-    this.rightViewImg.setOnClickListener(new nwg(this));
+    new oau(this);
+    this.rightViewImg.setOnClickListener(new oav(this));
   }
   
   private boolean b()
@@ -129,13 +129,13 @@ public class StoryDiscoverActivity
   
   private void c()
   {
-    setContentView(2130970754);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTakeVideoButtonMainPart = new TakeVideoButtonMainPart(new nwh(this), findViewById(2131371825));
+    setContentView(2130970770);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTakeVideoButtonMainPart = new TakeVideoButtonMainPart(new oaw(this), findViewById(2131371824));
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewQQStoryDiscoverFragment = QQStoryDiscoverFragment.a(this.b, this.c, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int);
-      localFragmentTransaction.replace(2131362841, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewQQStoryDiscoverFragment);
+      localFragmentTransaction.replace(2131362846, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewQQStoryDiscoverFragment);
       setTitle("广场");
     }
     for (;;)
@@ -148,14 +148,14 @@ public class StoryDiscoverActivity
       if (this.jdField_a_of_type_Long > 0L)
       {
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewQQStoryDiscoverFragment = QQStoryDiscoverFragment.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
-        localFragmentTransaction.replace(2131362841, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewQQStoryDiscoverFragment);
+        localFragmentTransaction.replace(2131362846, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewQQStoryDiscoverFragment);
         setTitle("热门活动");
         b();
       }
       else
       {
         this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewQQStoryDiscoverFragment = QQStoryDiscoverFragment.a(this.jdField_a_of_type_Int);
-        localFragmentTransaction.replace(2131362841, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewQQStoryDiscoverFragment);
+        localFragmentTransaction.replace(2131362846, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewQQStoryDiscoverFragment);
         setTitle("广场");
         if (!StoryApi.a()) {
           this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTakeVideoButtonMainPart.a(8);
@@ -166,12 +166,12 @@ public class StoryDiscoverActivity
   
   public void a()
   {
-    nwi localnwi = new nwi(this);
+    oax localoax = new oax(this);
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
     localQQCustomDialog.setTitle("参加热门活动");
     localQQCustomDialog.setMessage("今天的所有视频将会公开展示在热门活动和广场中");
-    localQQCustomDialog.setNegativeButton(2131433015, localnwi);
-    localQQCustomDialog.setPositiveButton(2131433016, localnwi);
+    localQQCustomDialog.setNegativeButton(2131433029, localoax);
+    localQQCustomDialog.setPositiveButton(2131433030, localoax);
     localQQCustomDialog.setCancelable(false);
     localQQCustomDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     localQQCustomDialog.show();
@@ -301,7 +301,7 @@ public class StoryDiscoverActivity
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       return;
       SLog.d("Q.qqstory.discover.StoryDiscoverActivity", "doOnActivityResult post createStoryVideo ... ");
-      Bosses.get().postJob(new nwj(this));
+      Bosses.get().postJob(new oay(this));
       QQToast.a(this, 2, "小视频发表中，请稍候", 0).a();
       continue;
       a(false, false, null);

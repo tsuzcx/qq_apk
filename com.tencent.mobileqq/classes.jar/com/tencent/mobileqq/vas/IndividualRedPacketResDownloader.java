@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import akhr;
+import akpe;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -64,7 +64,7 @@ public class IndividualRedPacketResDownloader
     this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo = new IndividualRedPacketResDownloader.RedPacketResInfo();
     this.jdField_c_of_type_JavaUtilMap = new HashMap();
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new akhr(this);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new akpe(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager = paramIndividualRedPacketManager;
@@ -392,20 +392,20 @@ public class IndividualRedPacketResDownloader
     Object localObject7;
     label230:
     Object localObject8;
-    label447:
-    label503:
+    label428:
+    label484:
     Object localObject9;
-    label546:
-    label576:
+    label527:
+    label557:
+    label635:
     int j;
-    label654:
     int i;
     int m;
     int n;
-    label713:
+    label694:
     int i1;
-    label829:
-    label858:
+    label810:
+    label839:
     String str1;
     for (;;)
     {
@@ -476,12 +476,12 @@ public class IndividualRedPacketResDownloader
       }
       catch (JSONException localJSONException)
       {
-        QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse parse Json config JSONException: " + localJSONException.getMessage());
+        QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse parse Json config JSONException: ", localJSONException);
         VasMonitorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_redpacket_json_err", "decode_json_err", localJSONException.getMessage(), null, 0.0F);
         continue;
         Object localObject4 = ((JSONObject)localObject7).optJSONArray("activityInfo");
         if ((localObject4 == null) || (((JSONArray)localObject4).length() <= 0)) {
-          break label1809;
+          break label1771;
         }
         localObject4 = ((JSONArray)localObject4).optJSONObject(0);
         paramBoolean1 = false;
@@ -491,7 +491,7 @@ public class IndividualRedPacketResDownloader
           if (!TextUtils.isEmpty((CharSequence)localObject8))
           {
             if (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse((String)localObject8).getTime() - NetConnInfoCenter.getServerTimeMillis() >= 172800000L) {
-              break label1815;
+              break label1777;
             }
             paramBoolean1 = true;
           }
@@ -500,7 +500,7 @@ public class IndividualRedPacketResDownloader
           if (((JSONObject)localObject4).has("androidShowSwitch"))
           {
             if (((JSONObject)localObject4).getInt("androidShowSwitch") != 1) {
-              break label1820;
+              break label1782;
             }
             paramBoolean2 = true;
             this.jdField_a_of_type_Boolean = paramBoolean2;
@@ -508,23 +508,23 @@ public class IndividualRedPacketResDownloader
           if (((JSONObject)localObject4).has("androidEntrySwitch"))
           {
             if (((JSONObject)localObject4).getInt("androidEntrySwitch") != 1) {
-              break label1825;
+              break label1787;
             }
             paramBoolean2 = true;
             this.jdField_b_of_type_Boolean = paramBoolean2;
           }
           if ((this.jdField_a_of_type_Boolean == ((SharedPreferences)localObject8).getBoolean("redpacket_is_show_switch", false)) && (this.jdField_b_of_type_Boolean == ((SharedPreferences)localObject8).getBoolean("mall_entrance_switch", false))) {
-            break label1797;
+            break label1759;
           }
           ((SharedPreferences.Editor)localObject9).putBoolean("redpacket_is_show_switch", this.jdField_a_of_type_Boolean);
           ((SharedPreferences.Editor)localObject9).putBoolean("mall_entrance_switch", this.jdField_b_of_type_Boolean);
           ((SharedPreferences.Editor)localObject9).commit();
-          break label1797;
+          break label1759;
           localObject4 = ((JSONObject)localObject7).optJSONArray("isPreload");
           j = 0;
           i = 0;
           if ((localObject4 == null) || (((JSONArray)localObject4).length() <= 0)) {
-            break label1787;
+            break label1749;
           }
           localObject4 = ((JSONArray)localObject4).optJSONObject(0);
           m = ((JSONObject)localObject4).optInt("isPreload", 5);
@@ -534,7 +534,7 @@ public class IndividualRedPacketResDownloader
           {
             localObject9 = new StringBuilder().append("checkAndDownloadBeforeUse ,emergencyDownload:").append(paramBoolean1).append(", templateIdList:");
             if (localObject8 != null) {
-              break label892;
+              break label873;
             }
           }
         }
@@ -546,50 +546,49 @@ public class IndividualRedPacketResDownloader
           }
           localObject9 = new ArrayList();
           if (localObject8 == null) {
-            break label1433;
+            break label1395;
           }
           i1 = 0;
           j = i;
           if (i1 >= ((JSONArray)localObject8).length()) {
-            break label1433;
+            break label1395;
           }
           if ((i1 >= n) || (i >= m)) {
-            break label1830;
+            break label1792;
           }
           j = 1;
           str1 = ((JSONArray)localObject8).optString(i1);
           if (!TextUtils.isEmpty(str1)) {
-            break label905;
+            break label886;
           }
-          break label1800;
+          break label1762;
           QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse ,activityInfoObj0 == null");
           paramBoolean1 = false;
           break;
         }
-        label905:
         localObject4 = (IndividualRedPacketResDownloader.RedPacketTemplateInfo)this.jdField_b_of_type_JavaUtilMap.get(str1);
         synchronized (this.jdField_c_of_type_JavaUtilMap)
         {
           if (!this.jdField_c_of_type_JavaUtilMap.containsKey(str1)) {
-            break label1781;
+            break label1743;
           }
           if ((localObject4 != null) && (!a(((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject4).jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo)) && (!a(((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject4).jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo)) && (!a(((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject4).jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo))) {
-            break label1778;
+            break label1740;
           }
           localObject4 = a(str1);
-          label990:
+          label971:
           if ((localObject4 == null) || (!a(((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject4).jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo)) || (!a(((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject4).jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo)) || (!a(((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject4).jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo))) {
-            break label1389;
+            break label1351;
           }
           List localList = (List)this.jdField_c_of_type_JavaUtilMap.get(str1);
           k = 0;
-          label1047:
+          label1028:
           if (k >= localList.size()) {
             break;
           }
           String str2 = (String)localList.get(k);
           if (TextUtils.isEmpty(str2)) {
-            break label1836;
+            break label1798;
           }
           this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.a(str2, ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject4).jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f);
           this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.a(str2 + "_tp", ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject4).jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo.f);
@@ -598,13 +597,14 @@ public class IndividualRedPacketResDownloader
       }
       catch (Exception localException)
       {
-        label892:
-        QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse parse Json config error: " + localException.getMessage());
+        label873:
+        label886:
+        QLog.e("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse parse Json config error: ", localException);
       }
     }
     this.jdField_c_of_type_JavaUtilMap.remove(str1);
     int k = 0;
-    label1234:
+    label1196:
     Object localObject6;
     if (localException == null)
     {
@@ -617,10 +617,11 @@ public class IndividualRedPacketResDownloader
       if (new File(IndividualRedPacketManager.a(str1, null, 0, 0, 0)).exists()) {
         j = 0;
       }
-      label1433:
+      label1351:
+      label1395:
       for (;;)
       {
-        label1307:
+        label1269:
         if ((j != 0) && (k == 0))
         {
           i += 1;
@@ -629,13 +630,12 @@ public class IndividualRedPacketResDownloader
           ((IndividualRedPacketResDownloader.DownloadHolder)localObject6).jdField_a_of_type_JavaLangString = ("luckyMoney.item." + str1);
           ((IndividualRedPacketResDownloader.DownloadHolder)localObject6).jdField_b_of_type_JavaLangString = IndividualRedPacketManager.a(str1, null, 0, 0, 0);
           ((ArrayList)localObject9).add(localObject6);
-          break label1800;
-          label1389:
+          break label1762;
           a(16L, str1, null);
           k = 1;
           break;
           if (new File(IndividualRedPacketManager.a(str1, null, 3, 0, 0)).exists()) {
-            break label1845;
+            break label1807;
           }
           j = 1;
           continue;
@@ -669,14 +669,14 @@ public class IndividualRedPacketResDownloader
         if (QLog.isColorLevel()) {
           QLog.d("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse mAioTailURL:" + this.jdField_b_of_type_JavaLangString + ", mTencentPayURL:" + this.jdField_c_of_type_JavaLangString + ", mPersonalityMallURL:" + this.jdField_a_of_type_JavaLangString);
         }
-        label1671:
+        label1633:
         i = NetworkUtil.a(null);
         if (this.jdField_a_of_type_JavaUtilArrayList == null)
         {
           this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject9);
-          label1689:
+          label1651:
           if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || ((1 != i) && (!paramBoolean1)) || (!this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.b())) {
-            break label1764;
+            break label1726;
           }
           a();
         }
@@ -685,52 +685,52 @@ public class IndividualRedPacketResDownloader
           this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
           break;
           if (!QLog.isColorLevel()) {
-            break label1671;
+            break label1633;
           }
           QLog.d("IndividualRedPacketResDownloader", 2, "checkAndDownloadBeforeUse urllist == null");
-          break label1671;
+          break label1633;
           this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject9);
-          break label1689;
-          label1764:
+          break label1651;
+          label1726:
           this.jdField_a_of_type_JavaUtilArrayList = null;
         }
-        break label1800;
-        break label1307;
-        label1778:
-        break label990;
-        label1781:
+        break label1762;
+        break label1269;
+        label1740:
+        break label971;
+        label1743:
         k = 0;
-        break label1234;
-        label1787:
+        break label1196;
+        label1749:
         m = 5;
         n = 50;
-        break label713;
-        label1797:
-        break label654;
-        label1800:
+        break label694;
+        label1759:
+        break label635;
+        label1762:
         i1 += 1;
-        break label829;
-        label1809:
+        break label810;
+        label1771:
         localObject6 = null;
-        break label447;
-        label1815:
+        break label428;
+        label1777:
         paramBoolean1 = false;
-        break label503;
-        label1820:
+        break label484;
+        label1782:
         paramBoolean2 = false;
-        break label546;
-        label1825:
+        break label527;
+        label1787:
         paramBoolean2 = false;
-        break label576;
-        label1830:
+        break label557;
+        label1792:
         j = 0;
-        break label858;
-        label1836:
+        break label839;
+        label1798:
         k += 1;
-        break label1047;
-        label1845:
+        break label1028;
+        label1807:
         j = 0;
-        break label1307;
+        break label1269;
       }
       i += 1;
     }
@@ -815,7 +815,7 @@ public class IndividualRedPacketResDownloader
             localFile = new File(IndividualRedPacketManager.a(null, null, 26, 0, 0));
             localObject2 = IndividualRedPacketManager.a(2) + "images";
             if (!a(localFile.getAbsolutePath(), (String)localObject2)) {
-              break label700;
+              break label681;
             }
             this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager.b().edit().putString("special_unzip_version_key", paramString).commit();
           }
@@ -831,11 +831,11 @@ public class IndividualRedPacketResDownloader
       }
       catch (Throwable paramString)
       {
-        QLog.e("IndividualRedPacketResDownloader", 2, "initJsonBySCID parse Json config JSONException: " + paramString.getMessage());
+        QLog.e("IndividualRedPacketResDownloader", 2, "initJsonBySCID parse Json config JSONException: ", paramString);
         VasMonitorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_redpacket_json_err", "decode_json_err", paramString.getMessage(), null, 0.0F);
         return;
       }
-      label700:
+      label681:
       if ((!localFile.exists()) && (paramFile != null)) {
         paramFile.delete();
       }
@@ -1044,9 +1044,9 @@ public class IndividualRedPacketResDownloader
             if ((((File)localObject1).exists()) && (!((File)localObject3).exists())) {
               ((File)localObject1).renameTo((File)localObject3);
             }
-            localFile1 = new File(AppConstants.aJ + "RedPacket/templateAIO");
-            localFile2 = new File(AppConstants.aJ + "RedPacket/templateTENPAY");
-            localFile3 = new File(AppConstants.aJ + "RedPacket/templateSEND");
+            localFile1 = new File(AppConstants.aK + "RedPacket/templateAIO");
+            localFile2 = new File(AppConstants.aK + "RedPacket/templateTENPAY");
+            localFile3 = new File(AppConstants.aK + "RedPacket/templateSEND");
             j = 0;
             i = j;
             if (localFile1.exists())
@@ -1212,7 +1212,7 @@ public class IndividualRedPacketResDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividualRedPacketResDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomUtils;
 
 public class aewo
-  implements CsTask.OnCsError
+  implements DialogInterface.OnClickListener
 {
-  public aewo(VideoFeedsUploader paramVideoFeedsUploader) {}
+  public aewo(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoFeedsUploader.a(this.a).a = -1004;
-    VideoFeedsUploader.a(this.a).c = paramInt;
-    VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
+    GameRoomUtils.a(this.a, 10);
+    GameRoomInviteActivity.b(this.a);
   }
 }
 

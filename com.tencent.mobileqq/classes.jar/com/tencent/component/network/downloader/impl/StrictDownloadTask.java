@@ -583,7 +583,7 @@ public class StrictDownloadTask
     //   20: iconst_1
     //   21: aload_2
     //   22: aastore
-    //   23: invokestatic 454	pjp:a	([Ljava/lang/Object;)I
+    //   23: invokestatic 454	poh:a	([Ljava/lang/Object;)I
     //   26: istore 7
     //   28: lconst_0
     //   29: lstore 8

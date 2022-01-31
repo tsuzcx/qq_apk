@@ -1,19 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.AudioAnimationView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.vipav.VipFunCallMediaListener;
 
-public class akst
-  implements Runnable
+public final class akst
+  implements MediaPlayer.OnPreparedListener
 {
-  private akst(AudioAnimationView paramAudioAnimationView) {}
+  public akst(VipFunCallMediaListener paramVipFunCallMediaListener) {}
   
-  public void run()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.a.b();
-    if (this.a.a) {
-      AudioAnimationView.a(this.a).postDelayed(this, 100L);
+    paramMediaPlayer.start();
+    paramMediaPlayer.setLooping(true);
+    if (this.a != null) {
+      this.a.a();
     }
-    this.a.requestLayout();
-    this.a.invalidate();
   }
 }
 

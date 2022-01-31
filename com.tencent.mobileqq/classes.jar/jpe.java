@@ -1,27 +1,24 @@
-import com.tencent.av.switchface.SwitchFaceView;
-import com.tencent.av.ui.GLVideoView;
-import java.util.ArrayList;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.groupvideo.GroupVideoWrapper;
 
 public class jpe
+  extends MessageObserver
 {
-  public int a;
-  public GLVideoView a;
-  public ArrayList a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public jpe(QQServiceForAV paramQQServiceForAV) {}
   
-  jpe(SwitchFaceView paramSwitchFaceView)
+  protected void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (localQQAppInterface != null) {
+      new GroupVideoWrapper(localQQAppInterface).a(new jpf(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpe
  * JD-Core Version:    0.7.0.1
  */

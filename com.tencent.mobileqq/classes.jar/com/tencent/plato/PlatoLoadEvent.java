@@ -5,32 +5,36 @@ import com.tencent.biz.qqstory.base.BaseEvent;
 public class PlatoLoadEvent
   extends BaseEvent
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public static final int Error = 1;
+  public static final int SUCCESS = 0;
+  public static final int TYPE_BUNDLER_JS = 1;
+  public static final int TYPE_V8_SO = 0;
+  public String bid;
+  public int code;
+  public String path;
+  public int type;
   
-  public static PlatoLoadEvent a(int paramInt)
+  public static PlatoLoadEvent createBundlerLoadEvent(int paramInt, String paramString1, String paramString2)
   {
     PlatoLoadEvent localPlatoLoadEvent = new PlatoLoadEvent();
-    localPlatoLoadEvent.jdField_a_of_type_Int = paramInt;
-    localPlatoLoadEvent.jdField_b_of_type_Int = 0;
+    localPlatoLoadEvent.code = paramInt;
+    localPlatoLoadEvent.bid = paramString1;
+    localPlatoLoadEvent.path = paramString2;
+    localPlatoLoadEvent.type = 1;
     return localPlatoLoadEvent;
   }
   
-  public static PlatoLoadEvent a(int paramInt, String paramString1, String paramString2)
+  public static PlatoLoadEvent createSoLoadEvent(int paramInt)
   {
     PlatoLoadEvent localPlatoLoadEvent = new PlatoLoadEvent();
-    localPlatoLoadEvent.jdField_a_of_type_Int = paramInt;
-    localPlatoLoadEvent.jdField_a_of_type_JavaLangString = paramString1;
-    localPlatoLoadEvent.jdField_b_of_type_JavaLangString = paramString2;
-    localPlatoLoadEvent.jdField_b_of_type_Int = 1;
+    localPlatoLoadEvent.code = paramInt;
+    localPlatoLoadEvent.type = 0;
     return localPlatoLoadEvent;
   }
   
   public String toString()
   {
-    return "PlatoLoadEvent { bid=" + this.jdField_a_of_type_JavaLangString + ", code= " + this.jdField_a_of_type_Int + ", type=" + this.jdField_b_of_type_Int + ", path= " + this.jdField_b_of_type_JavaLangString + " }";
+    return "PlatoLoadEvent { bid=" + this.bid + ", code= " + this.code + ", type=" + this.type + ", path= " + this.path + " }";
   }
 }
 

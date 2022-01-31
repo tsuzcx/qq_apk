@@ -1,54 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
-import java.util.ArrayList;
-import java.util.Date;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiOperationInfo;
 
-public class anco
-  implements Runnable
+public final class anco
+  implements Parcelable.Creator
 {
-  public anco(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin, ArrayList paramArrayList, int paramInt) {}
-  
-  public void run()
+  public WeishiOperationInfo a(Parcel paramParcel)
   {
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (this.jdField_a_of_type_JavaUtilArrayList.get(i) == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        String str1 = QzoneDynamicAlbumPlugin.jdField_a_of_type_JavaLangString + (new Date().getTime() + i);
-        String str2 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        boolean bool = QzoneDynamicAlbumPlugin.a(BaseApplicationImpl.getContext(), str2, str1, QzoneDynamicAlbumPlugin.b()[0], QzoneDynamicAlbumPlugin.b()[1]);
-        if ((bool) && (i == 0) && (!QzoneDynamicAlbumPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneDynamicAlbumPlugin)))
-        {
-          QLog.d("QzoneDynamicAlbumPlugin", 4, "pickDynamicAlbumImage uploadFirstDynamicPhoto:" + str1);
-          RemoteHandleManager.a().a().a(str1, this.jdField_a_of_type_JavaUtilArrayList.size());
-        }
-        for (;;)
-        {
-          if (!bool) {
-            break label234;
-          }
-          QLog.d("QzoneDynamicAlbumPlugin", 2, "pickDynamicAlbumImage sendMsg: MSG_PICK_PHOTO_COMPRESS_FINISH");
-          Message localMessage = Message.obtain();
-          localMessage.what = 2;
-          localMessage.arg1 = this.jdField_a_of_type_Int;
-          localMessage.obj = new String[] { str2, str1 };
-          this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneDynamicAlbumPlugin.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-          break;
-          QLog.d("QzoneDynamicAlbumPlugin", 4, "no launch uploadFirstDynamicPhoto;");
-        }
-        label234:
-        QLog.e("QzoneDynamicAlbumPlugin", 2, "compressDynamicAlbumImage failed! skip this photo.");
-      }
-    }
+    return new WeishiOperationInfo(paramParcel);
+  }
+  
+  public WeishiOperationInfo[] a(int paramInt)
+  {
+    return new WeishiOperationInfo[paramInt];
   }
 }
 

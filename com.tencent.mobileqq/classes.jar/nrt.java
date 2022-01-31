@@ -1,17 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class nrt
-  implements nrp
+  implements View.OnTouchListener
 {
-  public nrt(ShareGroupIconManager paramShareGroupIconManager, List paramList, String paramString) {}
+  public nrt(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  @NonNull
-  public Stream a(nrl paramnrl)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return ShareGroupIconManager.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

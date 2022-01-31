@@ -44,13 +44,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
-import rkr;
-import rks;
-import rkt;
-import rku;
-import rkv;
-import rkw;
-import rkx;
+import rpj;
+import rpk;
+import rpl;
+import rpm;
+import rpn;
+import rpo;
+import rpp;
 
 public class ArkFullScreenAppActivity
   extends IphoneTitleBarActivity
@@ -58,7 +58,7 @@ public class ArkFullScreenAppActivity
   private static ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private int jdField_a_of_type_Int = 0;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ArkAppContainer.ArkAppModuleCallback jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer$ArkAppModuleCallback = new rkr(this);
+  private ArkAppContainer.ArkAppModuleCallback jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer$ArkAppModuleCallback = new rpj(this);
   ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
   protected ArkTopGestureLayout a;
   private QQCustomArkDialog.AppInfo jdField_a_of_type_ComTencentMobileqqUtilsQQCustomArkDialog$AppInfo;
@@ -154,14 +154,14 @@ public class ArkFullScreenAppActivity
     }
   }
   
-  public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat)
+  public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, float paramFloat)
   {
-    return a(paramContext, paramString1, paramString2, paramString3, paramString4, paramFloat, ArkAppCenter.a(paramString2, "0.0.0.1"));
+    return a(paramContext, paramString1, paramString2, paramString3, paramString4, paramString5, paramFloat, ArkAppCenter.a(paramString2, "0.0.0.1"));
   }
   
-  public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, Map paramMap)
+  public static Intent a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, float paramFloat, Map paramMap)
   {
-    Object localObject1 = "0.0.0.1";
+    Object localObject = "0.0.0.1";
     for (;;)
     {
       try
@@ -176,43 +176,39 @@ public class ArkFullScreenAppActivity
           {
             str1 = (String)paramMap.get("desc");
             if (!paramMap.containsKey("version")) {
-              break label356;
+              break label319;
             }
             paramMap = (String)paramMap.get("version");
-            break label372;
+            break label335;
           }
         }
         else
         {
           if (!TextUtils.isEmpty(str1)) {
-            break label363;
+            break label326;
           }
           paramMap = paramString2;
           str1 = String.format("[应用]%s", new Object[] { paramMap });
-          Object localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("forward", 1);
-          ((JSONObject)localObject2).put("autosize", 1);
-          ((JSONObject)localObject2).put("type", "card");
-          String str2 = ((JSONObject)localObject2).toString();
-          localObject2 = QQCustomArkDialog.AppInfo.a(paramString2, paramString1, (String)localObject1, paramString3, paramFloat, null, null);
-          ((Bundle)localObject2).putBoolean("forward_ark_app_direct", false);
-          ((Bundle)localObject2).putString("forward_ark_app_name", paramString2);
-          ((Bundle)localObject2).putString("forward_ark_app_view", paramString1);
-          ((Bundle)localObject2).putString("forward_ark_app_desc", paramMap);
-          ((Bundle)localObject2).putString("forward_ark_app_ver", (String)localObject1);
-          ((Bundle)localObject2).putString("forward_ark_app_meta", paramString3);
-          ((Bundle)localObject2).putString("forward_ark_app_prompt", str1);
-          ((Bundle)localObject2).putString("forward_ark_app_config", str2);
-          ((Bundle)localObject2).putBoolean("forward_ark_from_sdk", true);
-          ((Bundle)localObject2).putString("forward_appId_ark_from_sdk", paramString4);
+          String str2 = a(paramString4);
+          paramString4 = QQCustomArkDialog.AppInfo.a(paramString2, paramString1, (String)localObject, paramString3, paramFloat, null, null);
+          paramString4.putBoolean("forward_ark_app_direct", false);
+          paramString4.putString("forward_ark_app_name", paramString2);
+          paramString4.putString("forward_ark_app_view", paramString1);
+          paramString4.putString("forward_ark_app_desc", paramMap);
+          paramString4.putString("forward_ark_app_ver", (String)localObject);
+          paramString4.putString("forward_ark_app_meta", paramString3);
+          paramString4.putString("forward_ark_app_prompt", str1);
+          paramString4.putString("forward_ark_app_config", str2);
+          paramString4.putBoolean("forward_ark_from_sdk", true);
+          paramString4.putString("forward_appId_ark_from_sdk", paramString5);
           paramString1 = new Intent();
           paramString1.setClass(paramContext, ForwardRecentActivity.class);
           paramString1.putExtra("forward_type", 11);
-          paramString1.putExtras((Bundle)localObject2);
+          paramString1.putExtras(paramString4);
           if (!QLog.isColorLevel()) {
-            break label370;
+            break label333;
           }
-          QLog.i("ArkFullScreenAppActivity", 2, "buildForwardIntent: " + localObject2);
+          QLog.i("ArkFullScreenAppActivity", 2, "buildForwardIntent: " + paramString4);
           return paramString1;
         }
       }
@@ -225,16 +221,16 @@ public class ArkFullScreenAppActivity
       }
       String str1 = "";
       continue;
-      label356:
+      label319:
       paramMap = "0.0.0.1";
-      break label372;
-      label363:
+      break label335;
+      label326:
       paramMap = str1;
       continue;
-      label370:
+      label333:
       return paramString1;
-      label372:
-      localObject1 = paramMap;
+      label335:
+      localObject = paramMap;
     }
   }
   
@@ -253,6 +249,29 @@ public class ArkFullScreenAppActivity
     localArkAppContainer.setMinSize(i, j);
     localArkAppContainer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer$ArkAppModuleCallback);
     return localArkAppContainer;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      localJSONObject.put("forward", 1);
+      paramString = localJSONObject;
+      if (!localJSONObject.has("type"))
+      {
+        localJSONObject.put("type", "card");
+        paramString = localJSONObject;
+      }
+    }
+    for (;;)
+    {
+      return paramString.toString();
+      paramString = new JSONObject();
+      paramString.put("forward", 1);
+      paramString.put("autosize", 1);
+      paramString.put("type", "card");
+    }
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
@@ -369,9 +388,9 @@ public class ArkFullScreenAppActivity
   public void a()
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.a(getString(2131438245), 0);
-    localActionSheet.a(new rkx(this, localActionSheet));
-    localActionSheet.c(2131433015);
+    localActionSheet.a(getString(2131438265), 0);
+    localActionSheet.a(new rpp(this, localActionSheet));
+    localActionSheet.c(2131433029);
     localActionSheet.show();
   }
   
@@ -451,40 +470,40 @@ public class ArkFullScreenAppActivity
       finish();
       return false;
     }
-    setContentView(2130968704);
+    setContentView(2130968707);
     Object localObject = (FrameLayout)findViewById(16908290);
     if (this.titleRoot != null) {
-      this.titleRoot.setBackgroundColor(getResources().getColor(2131493857));
+      this.titleRoot.setBackgroundColor(getResources().getColor(2131493862));
     }
     ((NavBarCommon)this.vg).a(true);
     this.leftView.setText("");
     this.leftView.setMinWidth(AIOUtils.a(35.0F, getResources()));
-    localObject = (RelativeLayout)findViewById(2131363244);
+    localObject = (RelativeLayout)findViewById(2131363261);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839146);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839161);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(15);
-    localLayoutParams.addRule(1, 2131363245);
+    localLayoutParams.addRule(1, 2131363262);
     ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new rks(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new rpk(this));
     int i = AIOUtils.a(6.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding(i, 0, i, 0);
-    this.rightViewImg = ((ImageView)findViewById(2131363474));
+    this.rightViewImg = ((ImageView)findViewById(2131363493));
     this.rightViewImg.setBackgroundDrawable(null);
     setLayerType(this.rightViewImg);
     this.rightViewImg.setVisibility(4);
-    this.rightViewImg.setImageResource(2130839148);
+    this.rightViewImg.setImageResource(2130839163);
     this.rightViewImg.setContentDescription("分享");
-    this.rightViewImg.setOnClickListener(new rkt(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)findViewById(2131363309));
+    this.rightViewImg.setOnClickListener(new rpl(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)findViewById(2131363326));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setBorderType(0);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new rku(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.post(new rkv(this, paramBundle));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new rpm(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.post(new rpn(this, paramBundle));
     if (QLog.isColorLevel()) {
       QLog.d("ArkFullScreenAppActivity", 2, "doOnCreate:" + paramBundle);
     }
-    findViewById(2131363244);
+    findViewById(2131363261);
     ArkAppDataReport.d(this.app, paramBundle.getString("appName"), ArkAppDataReport.h, 0);
     ArkViewAdjustFromKeyboard.a(this, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler)))
@@ -494,19 +513,19 @@ public class ArkFullScreenAppActivity
     }
     if (ThemeUtil.isInNightMode(this.app))
     {
-      paramBundle = (RelativeLayout)findViewById(2131364019);
-      LayoutInflater.from(this).inflate(2130969641, paramBundle);
+      paramBundle = (RelativeLayout)findViewById(2131364044);
+      LayoutInflater.from(this).inflate(2130969637, paramBundle);
     }
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("show_as_card", false);
     this.b = getIntent().getIntExtra("card_height", 0);
     if ((this.jdField_a_of_type_Boolean) && (this.b > 0))
     {
-      findViewById(2131363244).setVisibility(8);
+      findViewById(2131363261).setVisibility(8);
       paramBundle = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLayoutParams();
       paramBundle.addRule(12);
       paramBundle.height = this.b;
       this.titleRoot.setBackgroundResource(0);
-      this.titleRoot.setOnClickListener(new rkw(this));
+      this.titleRoot.setOnClickListener(new rpo(this));
     }
     return true;
   }

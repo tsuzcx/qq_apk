@@ -1,19 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-public final class wei
-  implements Parcelable.Creator
+public class wei
+  implements AsyncBack
 {
-  public ZhituResponse a(Parcel paramParcel)
-  {
-    return new ZhituResponse(paramParcel);
-  }
+  public wei(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public ZhituResponse[] a(int paramInt)
-  {
-    return new ZhituResponse[paramInt];
-  }
+  public void loaded(String paramString, int paramInt) {}
+  
+  public void progress(int paramInt) {}
 }
 
 

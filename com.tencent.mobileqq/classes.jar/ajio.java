@@ -1,21 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.Button;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopSearchResultDialog;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic;
 
-public class ajio
-  implements Animation.AnimationListener
+class ajio
+  implements Runnable
 {
-  public ajio(ReciteFragment paramReciteFragment, Button paramButton) {}
+  ajio(ajin paramajin) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    TroopCreateLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic);
+    new NewTroopSearchResultDialog(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback).show();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

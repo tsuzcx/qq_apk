@@ -86,21 +86,21 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import kyj;
-import kyl;
-import kym;
-import kyn;
-import kyo;
-import kyp;
-import kyq;
-import kyr;
-import kyt;
-import kyu;
-import kyw;
-import kyx;
-import kyy;
-import kyz;
-import kza;
+import laq;
+import las;
+import lat;
+import lau;
+import lav;
+import law;
+import lax;
+import lay;
+import lba;
+import lbb;
+import lbd;
+import lbe;
+import lbf;
+import lbg;
+import lbh;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
@@ -142,7 +142,7 @@ public class PublicAccountManager
     this.jdField_c_of_type_AndroidContentBroadcastReceiver = null;
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_c_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaLangRunnable = new kyu(this);
+    this.jdField_a_of_type_JavaLangRunnable = new lbb(this);
   }
   
   public static int a(String paramString, AppInterface paramAppInterface)
@@ -171,7 +171,7 @@ public class PublicAccountManager
       localSendMenuEventRequest.key.set(paramString);
       localSendMenuEventRequest.msg_id.set(0L);
       localSendMenuEventRequest.s_type.set(1);
-      localSendMenuEventRequest.versionInfo.set("7.6.3,3,3565");
+      localSendMenuEventRequest.versionInfo.set("7.6.8,3,3615");
       localSendMenuEventRequest.menu_type.set(b(str));
       if (paramBoolean) {
         localSendMenuEventRequest.is_new_menu.set(paramBoolean);
@@ -286,12 +286,12 @@ public class PublicAccountManager
   {
     if (AudioHelper.b(0))
     {
-      DialogUtil.a(paramContext, 230, paramContext.getString(2131433411), paramContext.getString(2131433412), new kyz(this), null).show();
+      DialogUtil.a(paramContext, 230, paramContext.getString(2131433425), paramContext.getString(2131433426), new lbg(this), null).show();
       return;
     }
     if (AudioHelper.a(0))
     {
-      DialogUtil.a(paramContext, 230, paramContext.getString(2131433411), paramContext.getString(2131433413), new kza(this), null).show();
+      DialogUtil.a(paramContext, 230, paramContext.getString(2131433425), paramContext.getString(2131433427), new lbh(this), null).show();
       return;
     }
     paramQQAppInterface.a().b();
@@ -303,7 +303,7 @@ public class PublicAccountManager
       paramContext.unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
       label122:
       this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
-      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new kyl(this);
+      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new las(this);
       paramQQAppInterface = new IntentFilter("com.tencent.biz.pubaccount.picResultAction");
       paramContext.registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface, "com.tencent.msg.permission.pushnotify", null);
       this.jdField_a_of_type_Int = 1;
@@ -349,7 +349,7 @@ public class PublicAccountManager
       ((Intent)localObject).putExtra("url", paramButtonInfo.toString());
       ((Intent)localObject).putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
       ((Intent)localObject).putExtra("puin", paramString);
-      ((Intent)localObject).putExtra("assignBackText", paramContext.getResources().getString(2131433698));
+      ((Intent)localObject).putExtra("assignBackText", paramContext.getResources().getString(2131433712));
       ((Intent)localObject).putExtra("FORCE_BLANK_SCREEN_REPORTE", true);
       if (paramString.equalsIgnoreCase("2632129500")) {
         ((Intent)localObject).putExtra("hide_operation_bar", true);
@@ -377,7 +377,7 @@ public class PublicAccountManager
     localIntent.putExtra("click_from", paramString3);
     localIntent.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
     localIntent.putExtra("puin", paramString2);
-    localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131433698));
+    localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131433712));
     paramContext.startActivity(localIntent);
   }
   
@@ -393,7 +393,7 @@ public class PublicAccountManager
       paramContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       label62:
       this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new kyy(this, paramBoolean, paramMqqHandler);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lbf(this, paramBoolean, paramMqqHandler);
       paramMqqHandler = new IntentFilter("com.tencent.biz.pubaccount.scanResultAction");
       paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramMqqHandler, "com.tencent.msg.permission.pushnotify", null);
       paramContext.startActivity(localIntent);
@@ -506,7 +506,7 @@ public class PublicAccountManager
     NewIntent localNewIntent = new NewIntent(localContext, PublicAccountServlet.class);
     localNewIntent.putExtra("cmd", "send_menu_evt");
     localNewIntent.putExtra("data", paramSendMenuEventRequest.toByteArray());
-    localNewIntent.setObserver(new kyp(this, localNewIntent, localContext, str, localBusinessObserver, localQQAppInterface));
+    localNewIntent.setObserver(new law(this, localNewIntent, localContext, str, localBusinessObserver, localQQAppInterface));
     if (localQQAppInterface != null) {
       localQQAppInterface.startServlet(localNewIntent);
     }
@@ -575,8 +575,8 @@ public class PublicAccountManager
         localActionSheet.c(arrayOfString[i]);
         i += 1;
       }
-      localActionSheet.c(2131433015);
-      localActionSheet.a(new kym(this, paramQQAppInterface, paramContext, localUri, paramSessionInfo, localActionSheet));
+      localActionSheet.c(2131433029);
+      localActionSheet.a(new lat(this, paramQQAppInterface, paramContext, localUri, paramSessionInfo, localActionSheet));
       localActionSheet.show();
     }
     for (;;)
@@ -587,7 +587,7 @@ public class PublicAccountManager
         paramContext.unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
         label120:
         this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
-        this.jdField_b_of_type_AndroidContentBroadcastReceiver = new kyn(this);
+        this.jdField_b_of_type_AndroidContentBroadcastReceiver = new lau(this);
         paramQQAppInterface = new IntentFilter("com.tencent.biz.pubaccount.picResultAction");
         paramContext.registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface, "com.tencent.msg.permission.pushnotify", null);
         this.jdField_a_of_type_Int = 2;
@@ -623,7 +623,7 @@ public class PublicAccountManager
       }
     }
     localRecentUserProxy.a(localRecentUser);
-    ThreadManager.executeOnSubThread(new kyq(paramQQAppInterface, paramString));
+    ThreadManager.executeOnSubThread(new lax(paramQQAppInterface, paramString));
   }
   
   private void c(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
@@ -646,7 +646,7 @@ public class PublicAccountManager
         paramContext.unregisterReceiver(this.jdField_c_of_type_AndroidContentBroadcastReceiver);
         label84:
         this.jdField_c_of_type_AndroidContentBroadcastReceiver = null;
-        this.jdField_c_of_type_AndroidContentBroadcastReceiver = new kyo(this, paramQQAppInterface, bool);
+        this.jdField_c_of_type_AndroidContentBroadcastReceiver = new lav(this, paramQQAppInterface, bool);
         paramQQAppInterface = new IntentFilter("com.tencent.biz.pubaccount.locationResultAction");
         paramContext.registerReceiver(this.jdField_c_of_type_AndroidContentBroadcastReceiver, paramQQAppInterface, "com.tencent.msg.permission.pushnotify", null);
         return;
@@ -789,7 +789,7 @@ public class PublicAccountManager
       localSendPublicAccountMessageReceiptRequest.pcuin.set(paramLong3);
       localSendPublicAccountMessageReceiptRequest.cuin.set(paramLong4);
       paramContext.putExtra("data", localSendPublicAccountMessageReceiptRequest.toByteArray());
-      paramContext.setObserver(new kyx(this, paramContext));
+      paramContext.setObserver(new lbe(this, paramContext));
       if (paramAppInterface != null) {
         paramAppInterface.startServlet(paramContext);
       }
@@ -840,7 +840,7 @@ public class PublicAccountManager
       localGetPublicAccountMenuRequest.seqno.set(i);
       localGetPublicAccountMenuRequest.uin.set((int)l);
       localNewIntent.putExtra("data", localGetPublicAccountMenuRequest.toByteArray());
-      localNewIntent.setObserver(new kyr(this, localNewIntent, paramQQAppInterface, paramString, paramContext, paramBusinessObserver));
+      localNewIntent.setObserver(new lay(this, localNewIntent, paramQQAppInterface, paramString, paramContext, paramBusinessObserver));
       paramContext = localNewIntent;
     } while (paramQQAppInterface == null);
     paramQQAppInterface.startServlet(localNewIntent);
@@ -859,7 +859,7 @@ public class PublicAccountManager
       localSetRefuseFollowRequest.refuse_period.set(paramInt);
     }
     paramContext.putExtra("data", localSetRefuseFollowRequest.toByteArray());
-    paramContext.setObserver(new kyw(this, paramContext, paramrefuseAcceptDone));
+    paramContext.setObserver(new lbd(this, paramContext, paramrefuseAcceptDone));
     if (paramAppInterface != null) {
       paramAppInterface.startServlet(paramContext);
     }
@@ -929,7 +929,7 @@ public class PublicAccountManager
       a(paramString1);
     }
     this.jdField_c_of_type_JavaLangString = paramString1;
-    ThreadManager.executeOnSubThread(new kyj(this, paramString2, paramQQAppInterface, paramInitDoneObserver, paramContext));
+    ThreadManager.executeOnSubThread(new laq(this, paramString2, paramQQAppInterface, paramInitDoneObserver, paramContext));
   }
   
   public void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean, double paramDouble1, double paramDouble2, BusinessObserver paramBusinessObserver)
@@ -961,7 +961,7 @@ public class PublicAccountManager
         localSendMenuEventRequest.longitude.set(paramDouble2);
       }
       localNewIntent.putExtra("data", localSendMenuEventRequest.toByteArray());
-      localNewIntent.setObserver(new kyt(this, localNewIntent, paramContext, paramString1, paramBusinessObserver, paramQQAppInterface));
+      localNewIntent.setObserver(new lba(this, localNewIntent, paramContext, paramString1, paramBusinessObserver, paramQQAppInterface));
       if (paramQQAppInterface != null) {
         paramQQAppInterface.startServlet(localNewIntent);
       }

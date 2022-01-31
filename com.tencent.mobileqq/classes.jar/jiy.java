@@ -1,21 +1,29 @@
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.SessionInfo.GuildInfo;
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.av.utils.ImageResUtil;
+import com.tencent.av.camera.CameraUtils;
+import java.util.Observable;
 
 public class jiy
-  implements Runnable
+  extends Observable
 {
-  public jiy(GuildMultiActivity paramGuildMultiActivity, SessionInfo paramSessionInfo) {}
+  public jiy(CameraUtils paramCameraUtils) {}
   
-  public void run()
+  public void a(Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_ComTencentAvAppSessionInfo.a.a = ImageResUtil.a(this.jdField_a_of_type_ComTencentAvGuildGuildMultiActivity.a, this.jdField_a_of_type_ComTencentAvAppSessionInfo.a.i);
+    try
+    {
+      super.setChanged();
+      super.notifyObservers(paramArrayOfObject);
+      return;
+    }
+    finally
+    {
+      paramArrayOfObject = finally;
+      throw paramArrayOfObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jiy
  * JD-Core Version:    0.7.0.1
  */

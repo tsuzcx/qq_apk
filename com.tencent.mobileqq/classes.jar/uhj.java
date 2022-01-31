@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class uhj
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  public uhj(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public uhj(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.a.l();
-    this.a.a(ProfileCardTemplate.g, this.a.a, false);
-    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.a(), "2", "1");
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
+    }
+    ThreadManager.post(new uhk(this, paramString), 5, null, true);
   }
 }
 

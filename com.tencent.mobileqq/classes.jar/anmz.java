@@ -1,21 +1,25 @@
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.IInformationPasterResDownloaderCallback;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import cooperation.thirdpay.ThirdPayGate;
 
 public class anmz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anmz(QIMInformationPasterManager paramQIMInformationPasterManager, InfomationFacePackage.Item paramItem, QIMInformationPasterManager.IInformationPasterResDownloaderCallback paramIInformationPasterResDownloaderCallback) {}
+  public anmz(ThirdPayGate paramThirdPayGate, Bundle paramBundle, Activity paramActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceInfomationFacePackage$Item, this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager$IInformationPasterResDownloaderCallback);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isactivityfinish")) {
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,42 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.messagenotify.MessageData;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity.ProgressView;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nxw
-  extends ProtoUtils.StoryProtocolObserver
+  implements Runnable
 {
-  public nxw(StoryMessageListActivity paramStoryMessageListActivity)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public nxw(QQStoryBaseActivity paramQQStoryBaseActivity, Context paramContext, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean, CharSequence paramCharSequence) {}
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgList", 2, "fetch message list result, code=" + paramInt);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.isFinishing())
+    {
+      SLog.d("Q.qqstory.QQStoryBaseActivity", "Activity has been destroy.");
+      return;
     }
-    paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_message.RspStoryMessageList localRspStoryMessageList;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        localRspStoryMessageList = new qqstory_710_message.RspStoryMessageList();
-        localRspStoryMessageList.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_710_message.ErrorInfo)localRspStoryMessageList.errinfo.get();
-        paramBundle.error_code.set(paramArrayOfByte.error_code.get());
-        paramBundle.error_desc.set(paramArrayOfByte.error_desc.get());
-        if ((localRspStoryMessageList.errinfo.error_code.has()) && (localRspStoryMessageList.errinfo.error_code.get() == 0))
-        {
-          paramArrayOfByte = new ArrayList(localRspStoryMessageList.message_num.get());
-          Iterator localIterator = localRspStoryMessageList.message_list.get().iterator();
-          while (localIterator.hasNext()) {
-            paramArrayOfByte.add(new MessageData((qqstory_710_message.StoryMessage)localIterator.next()));
-          }
-        }
-        ThreadManager.getUIHandler().post(new nxy(this));
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.msgList", 2, "parse RspStoryMessageList error", paramArrayOfByte);
-        }
-      }
-    } else {
-      return paramBundle;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog == null)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity$ProgressView = new QQStoryBaseActivity.ProgressView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setContentView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity$ProgressView);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
     }
-    ThreadManager.getUIHandler().post(new nxx(this, paramArrayOfByte, localRspStoryMessageList));
-    return paramBundle;
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setCancelable(this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity$ProgressView.a(this.jdField_a_of_type_JavaLangCharSequence);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.show();
+      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_checked="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ed7" />
-    <item android:state_enabled="true" android:state_checked="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ed8" />
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ed7" />
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020398" />
+    <item android:state_focused="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020398" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020397" />
 </selector>

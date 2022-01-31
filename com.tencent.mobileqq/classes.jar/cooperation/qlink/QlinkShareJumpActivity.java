@@ -1,9 +1,9 @@
 package cooperation.qlink;
 
-import amnu;
-import amnv;
-import amnw;
-import amnx;
+import amvf;
+import amvg;
+import amvh;
+import amvi;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
@@ -95,14 +95,14 @@ public class QlinkShareJumpActivity
   {
     this.jdField_a_of_type_JavaUtilArrayList = a();
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      DialogUtil.b(this, 230, getString(2131431966), getString(2131432024), 2131431924, 2131431924, new amnv(this), null).show();
+      DialogUtil.b(this, 230, getString(2131431977), getString(2131432035), 2131431935, 2131431935, new amvg(this), null).show();
     }
     do
     {
       return;
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 50)
       {
-        DialogUtil.b(this, 230, getString(2131431966), getString(2131432025), 2131431924, 2131431924, new amnw(this), null).show();
+        DialogUtil.b(this, 230, getString(2131431977), getString(2131432036), 2131431935, 2131431935, new amvh(this), null).show();
         return;
       }
     } while ((a()) || (a(false)));
@@ -175,7 +175,7 @@ public class QlinkShareJumpActivity
       QQProxyForQlink.a(this, 10, localBundle);
       finish();
       return;
-      DialogUtil.b(this, 230, getString(2131431966), getString(2131432024), 2131431924, 2131431924, new amnx(this), null).show();
+      DialogUtil.b(this, 230, getString(2131431977), getString(2131432035), 2131431935, 2131431935, new amvi(this), null).show();
       return;
     }
   }
@@ -235,7 +235,7 @@ public class QlinkShareJumpActivity
       catch (Exception paramBundle)
       {
         paramBundle.printStackTrace();
-        DialogUtil.b(this, 230, getString(2131431966), getString(2131432024), 2131431924, 2131431924, new amnu(this), null).show();
+        DialogUtil.b(this, 230, getString(2131431977), getString(2131432035), 2131431935, 2131431935, new amvf(this), null).show();
         return false;
       }
       b();

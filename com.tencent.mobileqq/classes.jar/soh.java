@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.util.WeakReferenceHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class soh
-  extends VasQuickUpdateManager.CallBacker
+class soh
+  implements DialogInterface.OnClickListener
 {
-  public soh(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  soh(sof paramsof) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((VipProfileCardDiyActivity.a(paramLong, paramString1, this.a.a.a.diyTextFontId)) && (paramInt1 == 0))
-    {
-      paramString1 = this.a.b.obtainMessage();
-      paramString1.what = 5;
-      paramString1.obj = this.a.a.a;
-      paramString1.arg1 = 0;
-      paramString1.arg2 = 17;
-      this.a.b.sendMessage(paramString1);
-      paramVasQuickUpdateManager.b(this);
-    }
+    this.a.a.a();
+    DevlockQuickLoginActivity.c(this.a.a);
+    DevlockQuickLoginActivity.c(this.a.a, 0, 2131034135);
   }
 }
 

@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
-class tlw
-  implements Runnable
+public class tlw
+  implements DialogInterface.OnClickListener
 {
-  tlw(tlt paramtlt) {}
+  public tlw(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.B();
+    this.a.finish();
   }
 }
 

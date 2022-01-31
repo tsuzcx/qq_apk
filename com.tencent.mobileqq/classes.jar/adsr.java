@@ -1,79 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.hotpic.VideoItemEventManager;
-import com.tencent.mobileqq.hotpic.VideoItemEventManager.onVideoItemEventListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class adsr
-  extends BroadcastReceiver
+  extends DiscussionObserver
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
+  public adsr(ForwardBaseOption paramForwardBaseOption) {}
   
-  public adsr(VideoItemEventManager paramVideoItemEventManager) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    paramContext = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d("VideoItemEventManager", 2, "onReceive ===>" + paramContext);
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "updateDiscussionInfo start: isSuccess=" + paramBoolean);
     }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    String str = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
+    paramObject = (ArrayList)paramObject;
+    int i = paramObject.indexOf(str);
+    if (i != -1)
     {
-      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
-      while (paramContext.hasNext()) {
-        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).b(false);
-      }
-    }
-    if ("android.intent.action.SCREEN_ON".equals(paramContext))
-    {
-      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
-      while (paramContext.hasNext()) {
-        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).b(true);
-      }
-    }
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-    {
-      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
-      while (paramContext.hasNext()) {
-        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).c(true);
-      }
-    }
-    if ("tencent.av.v2q.StopVideoChat".equals(paramContext))
-    {
-      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
-      while (paramContext.hasNext()) {
-        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).c(false);
-      }
-    }
-    if ("VolumeBtnDown".equals(paramIntent.getAction()))
-    {
-      paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
-      while (paramContext.hasNext()) {
-        ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).b();
-      }
-    }
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if (paramContext != null) {
-        break label294;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label294:
-      if (paramContext.equals("homekey"))
+      paramObject = (Boolean)paramObject.get(i + 1);
+      if ((paramBoolean) && (paramObject.booleanValue()))
       {
-        paramContext = VideoItemEventManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager).iterator();
-        while (paramContext.hasNext())
-        {
-          ((VideoItemEventManager.onVideoItemEventListener)paramContext.next()).a();
-          QLog.d("VideoItemEventManager", 2, "onReceive ===>homekey press");
+        paramObject = ((DiscussionManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(str);
+        if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.discussionName)) && (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle("发送到 多人聊天" + paramObject.discussionName);
         }
       }
     }
@@ -81,7 +37,7 @@ public class adsr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsr
  * JD-Core Version:    0.7.0.1
  */

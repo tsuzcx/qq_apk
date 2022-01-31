@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abvd;
+import accz;
 import android.annotation.TargetApi;
 import android.database.Cursor;
 import com.dataline.mpfile.MpfileTaskRecord;
@@ -31,6 +31,7 @@ import com.tencent.mobileqq.config.operation.QQOperationVoipTipsTaskExcuteRecord
 import com.tencent.mobileqq.data.fts.FTSNewTroopSync;
 import com.tencent.mobileqq.data.fts.FTSTroopSync;
 import com.tencent.mobileqq.data.fts.FTSTroopTime;
+import com.tencent.mobileqq.data.qzone.FeedInfo;
 import com.tencent.mobileqq.doutu.DoutuData;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.hotpic.HotPicData;
@@ -85,7 +86,7 @@ import mqq.app.MobileQQ;
 public class QQEntityManagerFactory
   extends EntityManagerFactory
 {
-  private static final Class[] EXTRA_CLASSES = { MultiMsgNick.class, FTSTroopSync.class, Reporting.class, BusinessCard.class, FTSTroopTime.class, DoutuData.class, QQOperationViopTipTask.class, HotPicTagInfo.class, BmqqAccountType.class, QQOperationTaskRecord.class, QQOperationVoipTipsTaskExcuteRecord.class, TroopNotificationCache.class, TroopAIOAppInfo.class, ReadInJoyActivityDAUInfo.class, HotPicData.class, HotVideoData.class, ProfileShoppingPhotoInfo.class, DrawerPushItem.class, TroopAioKeyBlackRule.class, TroopAioKeywordTipInfo.class, TroopAllOnlineData.class, DynamicInfoEntity.class, DiyPendantEntity.class, ApolloObtainedActionData.class, RecentInviteUser.class, ApolloGameRedDot.class, InterestTagInfo.class, OcrRecogResult.class, ArDownloadInfo.class, BlessPtvModule.class, BlessWording.class, QQStoryUserInfo.class, HotPicSendData.class, PstnCardInfo.class, TroopTipsEntity.class, BubbleDiyEntity.class, TroopGiftBagInfo.class, TroopTopicDetailInfo.class, HotChatInfo.class, ApolloGameData.class, EmoticonKeywords.class, BlessTask.class, VideoRedbagData.class, ApolloActionRecentData.class, TroopAioTopADInfo.class, NotificationRecommendTroopItem.class, ApolloGameModeData.class, FTSNewTroopSync.class, GuideData.class };
+  private static final Class[] EXTRA_CLASSES = { MultiMsgNick.class, FTSTroopSync.class, Reporting.class, BusinessCard.class, FTSTroopTime.class, DoutuData.class, QQOperationViopTipTask.class, HotPicTagInfo.class, BmqqAccountType.class, QQOperationTaskRecord.class, QQOperationVoipTipsTaskExcuteRecord.class, TroopNotificationCache.class, TroopAIOAppInfo.class, ReadInJoyActivityDAUInfo.class, HotPicData.class, HotVideoData.class, ProfileShoppingPhotoInfo.class, DrawerPushItem.class, TroopAioKeyBlackRule.class, TroopAioKeywordTipInfo.class, TroopAllOnlineData.class, DynamicInfoEntity.class, DiyPendantEntity.class, ApolloObtainedActionData.class, RecentInviteUser.class, ApolloGameRedDot.class, InterestTagInfo.class, OcrRecogResult.class, ArDownloadInfo.class, BlessPtvModule.class, BlessWording.class, QQStoryUserInfo.class, HotPicSendData.class, PstnCardInfo.class, TroopTipsEntity.class, BubbleDiyEntity.class, TroopGiftBagInfo.class, TroopTopicDetailInfo.class, HotChatInfo.class, ApolloGameData.class, EmoticonKeywords.class, BlessTask.class, VideoRedbagData.class, ApolloActionRecentData.class, TroopAioTopADInfo.class, NotificationRecommendTroopItem.class, ApolloGameModeData.class, FTSNewTroopSync.class, GuideData.class, FeedInfo.class };
   private static final String[] FORCE_IGNORED_TABLE = { "PAReportInfo", "CircleBuddy ", "CircleGroup ", "Sticker", "TopicInfo", "FriendMore", "FreshNewsNotify", "QQCardFolder", "bubble_diytext", "ApolloGameBtnData", "ApolloGameActivityConfig", "CardProfilev2", "SecMsgSession" };
   private static final String[] NO_ENTITY_TABLE = { "msg_sync_log", "msg_upgrade_log" };
   private static final String[] SYSTEM_TABLE;
@@ -360,50 +361,50 @@ public class QQEntityManagerFactory
     //   3: astore_2
     //   4: aconst_null
     //   5: astore_0
-    //   6: ldc_w 450
+    //   6: ldc_w 452
     //   9: astore_3
-    //   10: ldc_w 452
+    //   10: ldc_w 454
     //   13: aconst_null
-    //   14: invokestatic 456	android/database/sqlite/SQLiteDatabase:openOrCreateDatabase	(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;)Landroid/database/sqlite/SQLiteDatabase;
+    //   14: invokestatic 458	android/database/sqlite/SQLiteDatabase:openOrCreateDatabase	(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;)Landroid/database/sqlite/SQLiteDatabase;
     //   17: astore 4
     //   19: aload 4
     //   21: astore_0
     //   22: aload_2
     //   23: astore_1
     //   24: aload_0
-    //   25: ldc_w 458
+    //   25: ldc_w 460
     //   28: aconst_null
-    //   29: invokevirtual 209	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   29: invokevirtual 211	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   32: astore_2
     //   33: aload_2
     //   34: astore_1
     //   35: aload_2
-    //   36: invokeinterface 219 1 0
+    //   36: invokeinterface 221 1 0
     //   41: ifeq +33 -> 74
     //   44: aload_2
     //   45: astore_1
-    //   46: new 344	java/lang/StringBuilder
+    //   46: new 346	java/lang/StringBuilder
     //   49: dup
-    //   50: invokespecial 345	java/lang/StringBuilder:<init>	()V
+    //   50: invokespecial 347	java/lang/StringBuilder:<init>	()V
     //   53: aload_3
-    //   54: invokevirtual 351	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 353	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: aload_2
     //   58: iconst_0
-    //   59: invokeinterface 223 2 0
-    //   64: invokevirtual 351	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokeinterface 225 2 0
+    //   64: invokevirtual 353	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 358	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   70: astore_3
     //   71: goto -38 -> 33
     //   74: aload_2
     //   75: ifnull +9 -> 84
     //   78: aload_2
-    //   79: invokeinterface 250 1 0
+    //   79: invokeinterface 252 1 0
     //   84: aload_3
     //   85: astore_1
     //   86: aload_0
     //   87: ifnull +9 -> 96
     //   90: aload_0
-    //   91: invokevirtual 459	android/database/sqlite/SQLiteDatabase:close	()V
+    //   91: invokevirtual 461	android/database/sqlite/SQLiteDatabase:close	()V
     //   94: aload_3
     //   95: astore_1
     //   96: aload_1
@@ -411,24 +412,24 @@ public class QQEntityManagerFactory
     //   98: astore_2
     //   99: aconst_null
     //   100: astore_1
-    //   101: ldc_w 461
+    //   101: ldc_w 463
     //   104: astore_3
-    //   105: ldc_w 463
+    //   105: ldc_w 465
     //   108: iconst_1
-    //   109: ldc_w 465
+    //   109: ldc_w 467
     //   112: aload_2
-    //   113: invokestatic 469	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   113: invokestatic 471	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   116: aload_1
     //   117: ifnull +9 -> 126
     //   120: aload_1
-    //   121: invokeinterface 250 1 0
+    //   121: invokeinterface 252 1 0
     //   126: aload_3
     //   127: astore_1
     //   128: aload_0
     //   129: ifnull -33 -> 96
     //   132: aload_0
-    //   133: invokevirtual 459	android/database/sqlite/SQLiteDatabase:close	()V
-    //   136: ldc_w 461
+    //   133: invokevirtual 461	android/database/sqlite/SQLiteDatabase:close	()V
+    //   136: ldc_w 463
     //   139: areturn
     //   140: astore_2
     //   141: aconst_null
@@ -436,11 +437,11 @@ public class QQEntityManagerFactory
     //   143: aload_1
     //   144: ifnull +9 -> 153
     //   147: aload_1
-    //   148: invokeinterface 250 1 0
+    //   148: invokeinterface 252 1 0
     //   153: aload_0
     //   154: ifnull +7 -> 161
     //   157: aload_0
-    //   158: invokevirtual 459	android/database/sqlite/SQLiteDatabase:close	()V
+    //   158: invokevirtual 461	android/database/sqlite/SQLiteDatabase:close	()V
     //   161: aload_2
     //   162: athrow
     //   163: astore_2
@@ -500,7 +501,7 @@ public class QQEntityManagerFactory
       if (!VersionUtils.e()) {
         break label183;
       }
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 222, new abvd(this));
+      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 224, new accz(this));
     }
     for (;;)
     {
@@ -520,7 +521,7 @@ public class QQEntityManagerFactory
         QLog.d(this.TAG, 1, new Object[] { "new SQLiteOpenHelper = : ", this.dbHelper });
         return this.dbHelper;
         label183:
-        this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 222);
+        this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 224);
       }
       catch (Exception paramString)
       {

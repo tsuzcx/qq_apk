@@ -1,42 +1,42 @@
 package com.tencent.mobileqq.statistics;
 
-import aifq;
-import aifr;
+import aikk;
+import aikl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppReportController
 {
-  private static String a(aifr paramaifr)
+  private static String a(aikl paramaikl)
   {
-    return paramaifr.a();
+    return paramaikl.a();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
   {
-    aifr localaifr = new aifr();
-    localaifr.jdField_a_of_type_JavaLangString = paramString1;
-    localaifr.jdField_b_of_type_JavaLangString = paramString2;
-    localaifr.jdField_c_of_type_JavaLangString = paramString3;
-    localaifr.jdField_a_of_type_Long = paramLong1;
-    localaifr.jdField_b_of_type_Long = paramLong2;
-    localaifr.jdField_d_of_type_Long = paramLong3;
-    localaifr.f = paramLong4;
-    localaifr.g = paramLong5;
-    localaifr.jdField_d_of_type_JavaLangString = paramString4;
-    localaifr.e = paramString5;
-    localaifr.jdField_c_of_type_Long = 1L;
+    aikl localaikl = new aikl();
+    localaikl.jdField_a_of_type_JavaLangString = paramString1;
+    localaikl.jdField_b_of_type_JavaLangString = paramString2;
+    localaikl.jdField_c_of_type_JavaLangString = paramString3;
+    localaikl.jdField_a_of_type_Long = paramLong1;
+    localaikl.jdField_b_of_type_Long = paramLong2;
+    localaikl.jdField_d_of_type_Long = paramLong3;
+    localaikl.f = paramLong4;
+    localaikl.g = paramLong5;
+    localaikl.jdField_d_of_type_JavaLangString = paramString4;
+    localaikl.e = paramString5;
+    localaikl.jdField_c_of_type_Long = 1L;
     if (paramQQAppInterface == null)
     {
-      paramQQAppInterface = a(localaifr);
+      paramQQAppInterface = a(localaikl);
       if (QLog.isColorLevel()) {
         QLog.i("ArkAppReportController", 1, "POST getReportingDetail=" + paramQQAppInterface);
       }
-      ThreadManager.executeOnSubThread(new aifq(paramQQAppInterface));
+      ThreadManager.executeOnSubThread(new aikk(paramQQAppInterface));
       return;
     }
-    paramString1 = a(localaifr);
+    paramString1 = a(localaikl);
     if (QLog.isColorLevel()) {
       QLog.i("ArkAppReportController", 1, "getReportingDetail=" + paramString1);
     }

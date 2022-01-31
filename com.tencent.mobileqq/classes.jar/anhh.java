@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.RDMEtraMsgCollector;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public final class anhh
-  implements FMDialogUtil.FMDialogInterface
+public class anhh
+  implements View.OnClickListener
 {
-  public anhh(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  public anhh(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
+    RDMEtraMsgCollector.a().a(QZoneShareActivity.a, paramView);
+    this.a.a(false);
+    paramView = new Intent(BaseApplication.getContext(), SelectMemberActivity.class);
+    paramView.putExtra("param_only_friends", true);
+    paramView.putExtra("param_min", 1);
+    this.a.startActivityForResult(paramView, 1000);
   }
-  
-  public void b() {}
 }
 
 

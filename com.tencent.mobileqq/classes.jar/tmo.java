@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class tmo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tmo(QQSettingMe paramQQSettingMe) {}
+  public tmo(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "init parse config json");
-    }
-    VipGrayConfigHelper.a().a(this.a.a);
+    this.a.a.cancel();
   }
 }
 

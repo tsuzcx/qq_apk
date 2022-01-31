@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffffffff" />
-    <corners android:radius="3.0dip" />
-    <stroke android:width="1.0px" android:color="#ffc3c8cc" />
-</shape>
+    <item>
+        <color android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0387" />
+    </item>
+    <item android:bottom="2.0dip">
+        <color android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" />
+    </item>
+</layer-list>

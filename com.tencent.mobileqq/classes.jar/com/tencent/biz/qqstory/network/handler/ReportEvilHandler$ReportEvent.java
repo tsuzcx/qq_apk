@@ -12,7 +12,7 @@ public class ReportEvilHandler$ReportEvent
   
   public ReportEvilHandler$ReportEvent(ReportEvilHandler paramReportEvilHandler, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.errorInfo = paramErrorMessage;
     this.b = paramString2;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_Int = paramInt;

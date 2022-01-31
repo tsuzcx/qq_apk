@@ -1,17 +1,15 @@
-import cooperation.qzone.webviewplugin.QzoneUploadPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class andi
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public andi(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public andi(QzoneUploadPlugin paramQzoneUploadPlugin, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.getPlayMode();
   }
 }
 

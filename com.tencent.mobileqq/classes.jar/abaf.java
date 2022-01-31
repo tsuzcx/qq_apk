@@ -1,18 +1,9 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
-
-class abaf
-  implements Runnable
+public class abaf
+  extends abad
 {
-  abaf(abae paramabae) {}
-  
-  public void run()
+  private abaf()
   {
-    if (this.a.a.a != null)
-    {
-      ARMapEngine localARMapEngine = this.a.a.a;
-      ARMapEngine.nativeOnShowRedPackRainPoi();
-    }
+    super(null);
   }
 }
 

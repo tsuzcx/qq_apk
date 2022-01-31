@@ -1,10 +1,10 @@
 package com.tencent.msfmqpsdkbridge;
 
-import akzk;
-import akzl;
-import akzm;
-import akzn;
-import akzo;
+import alhc;
+import alhd;
+import alhe;
+import alhf;
+import alhg;
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.app.DownloadManager.Request;
@@ -65,7 +65,7 @@ public class MSFIntChkStrike
     }
     this.jdField_b_of_type_Int = 31;
     IntentFilter localIntentFilter = new IntentFilter("android.intent.action.DOWNLOAD_COMPLETE");
-    ((Context)localObject).registerReceiver(new akzo(this, localDownloadManager), localIntentFilter);
+    ((Context)localObject).registerReceiver(new alhg(this, localDownloadManager), localIntentFilter);
     try
     {
       localObject = new DownloadManager.Request(Uri.parse(this.jdField_a_of_type_JavaLangString));
@@ -252,7 +252,7 @@ public class MSFIntChkStrike
               }
               paramString = (Element)paramString.item(0);
               paramIIntChkStrikeResultListener = paramString.getAttribute("text");
-              paramString = new akzk(this, Integer.parseInt(paramString.getAttribute("action")));
+              paramString = new alhc(this, Integer.parseInt(paramString.getAttribute("action")));
               localObject3 = "";
               localObject1 = ((Element)localObject1).getElementsByTagName("btn_cancel");
               if (((NodeList)localObject1).getLength() <= 0) {
@@ -260,9 +260,9 @@ public class MSFIntChkStrike
               }
               localObject1 = (Element)((NodeList)localObject1).item(0);
               localObject3 = ((Element)localObject1).getAttribute("text");
-              localObject1 = new akzl(this, Integer.parseInt(((Element)localObject1).getAttribute("action")));
-              akzm localakzm = new akzm(this);
-              new Handler(Looper.getMainLooper()).post(new akzn(this, str1, str2, paramString, (DialogInterface.OnClickListener)localObject1, (String)localObject3, paramIIntChkStrikeResultListener, localakzm));
+              localObject1 = new alhd(this, Integer.parseInt(((Element)localObject1).getAttribute("action")));
+              alhe localalhe = new alhe(this);
+              new Handler(Looper.getMainLooper()).post(new alhf(this, str1, str2, paramString, (DialogInterface.OnClickListener)localObject1, (String)localObject3, paramIIntChkStrikeResultListener, localalhe));
               return;
             }
             catch (Exception paramString)

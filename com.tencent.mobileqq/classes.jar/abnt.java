@@ -1,20 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.qq.im.poi.LbsPackMapPoiPackServlet;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog.LbsRedBagExtraData;
 
 public class abnt
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public abnt(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public abnt(ARGridMapViewDialog paramARGridMapViewDialog, ARGridMapViewDialog.LbsRedBagExtraData paramLbsRedBagExtraData) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.overridePendingTransition(0, 2131034423);
-      this.a.finish();
-    }
+    LbsPackMapPoiPackServlet.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a, this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$LbsRedBagExtraData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$LbsRedBagExtraData.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$LbsRedBagExtraData.c);
   }
 }
 

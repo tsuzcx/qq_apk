@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.redtouch;
 
-import ahfn;
-import ahfo;
-import ahfp;
-import ahfq;
-import ahfr;
+import ahke;
+import ahkf;
+import ahkg;
+import ahkh;
+import ahki;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -72,7 +72,7 @@ public class RedTouchManager
 {
   protected long a;
   public AppInterface a;
-  private BusinessObserver jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new ahfr(this);
+  private BusinessObserver jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new ahki(this);
   protected BusinessInfoCheckUpdate.TimeRspBody a;
   Object jdField_a_of_type_JavaLangObject = new Object();
   protected String a;
@@ -237,7 +237,7 @@ public class RedTouchManager
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.3.3565");
+    localReportReqBody.clientver.set("7.6.8.3615");
     localReportReqBody.platid.set(109);
     localReportReqBody.appid.set(a(paramAppInfo.path.get()));
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
@@ -276,7 +276,7 @@ public class RedTouchManager
     {
       BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
       localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-      localReportReqBody.clientver.set("7.6.3.3565");
+      localReportReqBody.clientver.set("7.6.8.3615");
       localReportReqBody.platid.set(109);
       localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
       localReportReqBody.buffer.set(paramJSONObject.toString());
@@ -323,7 +323,7 @@ public class RedTouchManager
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.3.3565");
+    localReportReqBody.clientver.set("7.6.8.3615");
     localReportReqBody.platid.set(109);
     localReportReqBody.appid.set(a(paramString));
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
@@ -373,8 +373,8 @@ public class RedTouchManager
   
   private boolean a(String paramString1, String paramString2)
   {
-    if ((a(paramString1, "7.6.3") == 1) && (!paramString1.equals("0"))) {}
-    while ((a("7.6.3", paramString2) == -1) && (!paramString2.equals("0"))) {
+    if ((a(paramString1, "7.6.8") == 1) && (!paramString1.equals("0"))) {}
+    while ((a("7.6.8", paramString2) == -1) && (!paramString2.equals("0"))) {
       return false;
     }
     return true;
@@ -439,7 +439,7 @@ public class RedTouchManager
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      ThreadManager.post(new ahfp(this, paramAppInfo, paramInt, paramBoolean, paramList), 2, null, true);
+      ThreadManager.post(new ahkg(this, paramAppInfo, paramInt, paramBoolean, paramList), 2, null, true);
       return;
     }
     a(paramAppInfo, paramInt, paramBoolean, paramList);
@@ -787,7 +787,7 @@ public class RedTouchManager
       }
       if (Looper.getMainLooper() == Looper.myLooper())
       {
-        ThreadManager.post(new ahfn(this), 5, null, true);
+        ThreadManager.post(new ahke(this), 5, null, true);
         return null;
       }
     }
@@ -1141,7 +1141,7 @@ public class RedTouchManager
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.3.3565");
+    localReportReqBody.clientver.set("7.6.8.3615");
     localReportReqBody.platid.set(109);
     localReportReqBody.appid.set(paramInt2);
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
@@ -1216,7 +1216,7 @@ public class RedTouchManager
       QLog.e("residenceReport", 2, "residenceReport time = " + paramLong + ";path = " + this.jdField_a_of_type_JavaLangString);
     }
     this.jdField_a_of_type_JavaLangString = null;
-    ThreadManager.post(new ahfo(this, localAppInfo, paramLong), 2, null, true);
+    ThreadManager.post(new ahkf(this, localAppInfo, paramLong), 2, null, true);
   }
   
   public void a(RedTouchManager.BannerInfoHandler paramBannerInfoHandler)
@@ -1366,7 +1366,7 @@ public class RedTouchManager
             }
           }
         }
-        ThreadManager.post(new ahfq(this, localTimeRspBody), 8, null, true);
+        ThreadManager.post(new ahkh(this, localTimeRspBody), 8, null, true);
         return;
       }
       catch (Exception paramString)
@@ -1492,6 +1492,11 @@ public class RedTouchManager
       catch (Exception paramTimeRspBody)
       {
         QLog.e("RedPointManage", 1, "saveTimeRepBody exception e = ", paramTimeRspBody);
+        return false;
+      }
+      catch (OutOfMemoryError paramTimeRspBody)
+      {
+        QLog.e("RedPointManage", 1, "saveTimeRepBody oom");
         return false;
       }
     }
@@ -1745,7 +1750,7 @@ public class RedTouchManager
     }
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.3.3565");
+    localReportReqBody.clientver.set("7.6.8.3615");
     localReportReqBody.platid.set(109);
     localReportReqBody.missionid.set(paramAppInfo.missions.get());
     localReportReqBody.appid.set(paramAppInfo.uiAppId.get());

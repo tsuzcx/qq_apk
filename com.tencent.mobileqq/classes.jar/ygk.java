@@ -1,22 +1,18 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
-public class ygk
-  implements Runnable
+public final class ygk
+  implements Parcelable.Creator
 {
-  public ygk(VipSpecialCareHandler paramVipSpecialCareHandler) {}
-  
-  public void run()
+  public ResultRecord a(Parcel paramParcel)
   {
-    VipSpecialCareHandler.a(this.a, ThreadManager.newFreeHandlerThread("special-timer", 0));
-    VipSpecialCareHandler.a(this.a).start();
-    Looper localLooper = VipSpecialCareHandler.a(this.a).getLooper();
-    if (localLooper == null) {
-      return;
-    }
-    VipSpecialCareHandler.a(this.a, new ygl(this, localLooper));
+    return new ResultRecord(paramParcel, null);
+  }
+  
+  public ResultRecord[] a(int paramInt)
+  {
+    return new ResultRecord[paramInt];
   }
 }
 

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anlp;
+import anuc;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anlp();
+  public static final Parcelable.Creator CREATOR = new anuc();
   public int a;
   public String a;
   public List a;
@@ -92,7 +92,7 @@ public class FilterCategory
         localQIMFilterCategoryItem.e = localJSONObject.optString("type_combo");
         localQIMFilterCategoryItem.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
         localQIMFilterCategoryItem.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-        localQIMFilterCategoryItem.g = localJSONObject.optString("jump_ws");
+        localQIMFilterCategoryItem.g = localJSONObject.optString("jump_app");
         JSONArray localJSONArray = localJSONObject.optJSONArray("filters");
         if (localJSONArray != null)
         {

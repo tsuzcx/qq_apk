@@ -12,7 +12,7 @@ import com.tencent.mobileqq.ptt.preop.PTTPreDownloader;
 import com.tencent.mobileqq.servlet.PushServlet;
 import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
 import mqq.app.MobileQQ;
-import zqv;
+import zxg;
 
 public class GetGeneralSettings
   extends AsyncStep
@@ -41,7 +41,7 @@ public class GetGeneralSettings
       }
       if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zqv(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zxg(this, null);
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver, true);
       }
       if (!this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(bool)) {

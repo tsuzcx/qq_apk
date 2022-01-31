@@ -1,32 +1,50 @@
-import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.util.TroopReportor;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
+import cooperation.dingdong.DingdongCalendarSyncUtil;
+import cooperation.dingdong.DingdongPluginDataFactory.ScheduleSummaryData;
 
-public class amsb
-  extends OnQZonePluginInstallListner.Stub
+public final class amsb
+  implements Runnable
 {
-  public amsb(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  public amsb(DingdongPluginDataFactory.ScheduleSummaryData paramScheduleSummaryData) {}
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    QLog.w("QZoneLiveVideoDownLoadActivtyV2", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
-    paramString = this.a.a.obtainMessage();
-    paramString.what = 1010;
-    if (8 == paramInt) {}
-    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
+    String str1;
+    String str2;
+    String str3;
+    String str4;
+    long l1;
+    long l2;
+    if (DingdongCalendarSyncUtil.a())
     {
-      this.a.a.sendMessage(paramString);
-      return;
+      str1 = this.a.id;
+      str2 = this.a.title;
+      str3 = DingdongCalendarSyncUtil.a(this.a);
+      str4 = this.a.location;
+      l1 = this.a.beginTime;
+      l2 = this.a.endTime;
+      if (!DingdongCalendarSyncUtil.a(str1)) {
+        break label80;
+      }
+      DingdongCalendarSyncUtil.a(str1, str2, str3, str4, l1, l2);
     }
+    label80:
+    String str5;
+    do
+    {
+      return;
+      str5 = DingdongCalendarSyncUtil.a();
+      if (!TextUtils.isEmpty(str5)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("DingdongCalendarSyncUtil", 2, "accountId not create");
+    return;
+    DingdongCalendarSyncUtil.a(str1, str5, str2, str3, str4, l1, l2);
+    TroopReportor.a("Grp_edu", "Grp_notice", "NoticeSys_Set", 0, 0, new String[] { String.valueOf(this.a.sourceId) });
   }
-  
-  public void b(String paramString) {}
 }
 
 

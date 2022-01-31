@@ -1,42 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
 
 public class aicv
-  extends BroadcastReceiver
+  extends Handler
 {
-  public aicv(RedBagVideoManager paramRedBagVideoManager) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aicv(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
   {
-    if (paramIntent == null) {}
-    for (;;)
-    {
-      return;
-      paramContext = paramIntent.getStringExtra("event");
-      if (paramContext != null)
-      {
-        paramIntent = paramIntent.getStringExtra("data");
-        if ((paramIntent != null) && (paramContext.equals("ShortVideoHongbaoInfoUpdate"))) {
-          try
-          {
-            paramContext = new JSONObject(paramIntent);
-            paramIntent = paramContext.optString("shortVideoId");
-            boolean bool = paramContext.optBoolean("isPaid");
-            if ((RedBagVideoManager.a(this.a) != null) && (RedBagVideoManager.a(this.a).g != 1) && (bool) && (RedBagVideoManager.a(this.a).c.equals(paramIntent)))
-            {
-              new aidl(this.a).execute(new String[0]);
-              return;
-            }
-          }
-          catch (JSONException paramContext) {}
-        }
-      }
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 

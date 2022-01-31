@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.ar;
 
+import aadw;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -7,13 +8,12 @@ import android.os.RemoteException;
 import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 import com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager;
 import com.tencent.qphone.base.util.QLog;
-import zxi;
 
 public final class ARGlobalRemoteManager
 {
   private static volatile ARGlobalRemoteManager jdField_a_of_type_ComTencentMobileqqArARGlobalRemoteManager;
   private Context jdField_a_of_type_AndroidContentContext;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new zxi(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new aadw(this);
   private volatile IArGlobalConfigManager jdField_a_of_type_ComTencentMobileqqArAidlIArGlobalConfigManager;
   
   private ARGlobalRemoteManager(Context paramContext)

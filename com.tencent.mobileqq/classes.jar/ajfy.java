@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.SingleItemViewHolder;
 
-public final class ajfy
-  implements Parcelable.Creator
+public class ajfy
+  implements View.OnTouchListener
 {
-  public HWGuideItem a(Parcel paramParcel)
-  {
-    return new HWGuideItem(paramParcel);
-  }
+  public ajfy(CateListAdapter.SingleItemViewHolder paramSingleItemViewHolder) {}
   
-  public HWGuideItem[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new HWGuideItem[paramInt];
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
+      this.a.c.setAlpha(0.5F);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 3) || (i == 1))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+        this.a.c.setAlpha(1.0F);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

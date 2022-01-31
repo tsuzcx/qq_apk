@@ -1,29 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneWanbaJsPlugin;
+import android.os.Bundle;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class andn
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public andn(QzoneWanbaJsPlugin paramQzoneWanbaJsPlugin) {}
+  public andn(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString, Bundle paramBundle) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    try
-    {
-      paramContext = paramIntent.getStringExtra("callback");
-      int i = paramIntent.getIntExtra("ret", 1);
-      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
-      this.a.a.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e("QzoneWanbaJsPlugin", "callback error", paramContext);
-    }
+    QzoneWebMusicJsPlugin.access$800(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

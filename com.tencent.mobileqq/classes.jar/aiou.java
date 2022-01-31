@@ -1,33 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.structmsg.CGILoader;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
 
 public class aiou
   implements Runnable
 {
-  public aiou(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  public aiou(StructMsgItemVideo paramStructMsgItemVideo, Context paramContext, View paramView) {}
   
   public void run()
   {
-    switch (this.a.v)
+    String str = CGILoader.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.t, StructMsgItemVideo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo));
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.obtainMessage().obj = this.jdField_a_of_type_AndroidViewView;
+    if (!TextUtils.isEmpty(str))
     {
-    default: 
-      return;
-    case 0: 
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() BUT current status is INIT");
-      return;
-    case 2: 
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume HTTP channel");
-      this.a.r();
+      StructMsgItemVideo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo, this.jdField_a_of_type_AndroidContentContext, str);
       return;
     }
-    if (this.a.b != null)
-    {
-      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel");
-      this.a.a.getHwEngine().resumeTransactionTask(this.a.b);
-      return;
-    }
-    this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel, but trans == null");
+    StructMsgItemVideo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

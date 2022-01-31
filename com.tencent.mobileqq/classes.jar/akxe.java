@@ -1,21 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
 
-public final class akxe
-  implements ValueAnimator.AnimatorUpdateListener
+class akxe
+  implements Runnable
 {
-  private final TabDragAnimationView a;
+  akxe(akxc paramakxc) {}
   
-  public akxe(TabDragAnimationView paramTabDragAnimationView)
+  public void run()
   {
-    this.a = paramTabDragAnimationView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f, 0.0F, true);
+    this.a.a.f(this.a.a.e);
   }
 }
 

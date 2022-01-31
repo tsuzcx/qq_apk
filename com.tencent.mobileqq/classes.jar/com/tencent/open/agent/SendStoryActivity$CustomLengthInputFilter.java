@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import alco;
+import alkg;
 import android.text.Editable;
 import android.text.Spanned;
 import android.widget.EditText;
@@ -23,7 +23,7 @@ public class SendStoryActivity$CustomLengthInputFilter
     paramSpanned = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText();
     StringBuilder localStringBuilder = new StringBuilder(paramSpanned.toString());
     Friend[] arrayOfFriend = (Friend[])paramSpanned.getSpans(0, paramSpanned.length(), Friend.class);
-    Arrays.sort(arrayOfFriend, new alco(this, paramSpanned));
+    Arrays.sort(arrayOfFriend, new alkg(this, paramSpanned));
     paramInt4 = arrayOfFriend.length;
     while (paramInt3 < paramInt4)
     {

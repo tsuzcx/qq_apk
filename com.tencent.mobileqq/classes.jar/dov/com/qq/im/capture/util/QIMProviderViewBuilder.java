@@ -11,6 +11,7 @@ import dov.com.qq.im.capture.view.QIMFilterProviderView;
 import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
 import dov.com.qq.im.capture.view.SpeedProviderView;
 import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import dov.com.qq.im.capture.view.TransitionProviderView;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 import java.util.ArrayList;
@@ -21,9 +22,10 @@ public class QIMProviderViewBuilder
   public static final int[] b;
   public static final int[] c;
   public static final int[] d;
-  public static final int[] e = { 104, 2130845513, 2130845513, 2131362497 };
-  public static final int[] f = { 105, 2130845510, 2130845510, 2131362498 };
-  public static final int[] g = { 107, 2130841819, 2130841819, 2131362499 };
+  public static final int[] e = { 104, 2130845594, 2130845594, 2131362500 };
+  public static final int[] f = { 105, 2130845591, 2130845591, 2131362501 };
+  public static final int[] g = { 107, 2130841848, 2130841848, 2131362502 };
+  public static final int[] h = { 112, 2130841851, 2130841851, 2131362503 };
   private int jdField_a_of_type_Int = 0;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
@@ -33,10 +35,10 @@ public class QIMProviderViewBuilder
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 108, 2130845511, 2130841749, 2131362493 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 101, 2130845512, 2130841829, 2131362494 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 102, 2130845514, 2130842028, 2131362495 };
-    jdField_d_of_type_ArrayOfInt = new int[] { 103, 2130845515, 2130845515, 2131362496 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 108, 2130845592, 2130841778, 2131362496 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 101, 2130845593, 2130841860, 2131362497 };
+    jdField_c_of_type_ArrayOfInt = new int[] { 102, 2130845595, 2130842059, 2131362498 };
+    jdField_d_of_type_ArrayOfInt = new int[] { 103, 2130845596, 2130845596, 2131362499 };
   }
   
   public QIMProviderViewBuilder(int paramInt)
@@ -67,6 +69,9 @@ public class QIMProviderViewBuilder
     switch (paramInt)
     {
     case 106: 
+    case 109: 
+    case 110: 
+    case 111: 
     default: 
       paramContext = localObject;
       if (QLog.isColorLevel())
@@ -89,24 +94,26 @@ public class QIMProviderViewBuilder
       }
       return paramContext;
       paramContext = new ComboProviderView(paramContext);
-      paramContext.setId(2131362417);
+      paramContext.setId(2131362420);
       continue;
       paramContext = new QIMFilterProviderView(paramContext);
-      paramContext.setId(2131362418);
+      paramContext.setId(2131362421);
       continue;
       paramContext = new StaticStickerProviderView(paramContext);
-      paramContext.setId(2131362419);
+      paramContext.setId(2131362422);
       continue;
       paramContext = new QIMPtvTemplateProviderView(paramContext);
       continue;
       paramContext = new MusicProviderView(paramContext);
-      paramContext.setId(2131362420);
+      paramContext.setId(2131362423);
       continue;
       paramContext = new AdvancedProviderView(paramContext);
       paramContext.setNeedTabBar(false);
       continue;
       paramContext = new SpeedProviderView(paramContext);
       paramContext.setNeedTabBar(false);
+      continue;
+      paramContext = new TransitionProviderView(paramContext);
     }
     paramContext.setTabBarPosition(1);
     if (paramContext.e())
@@ -157,6 +164,7 @@ public class QIMProviderViewBuilder
       this.jdField_a_of_type_JavaUtilArrayList.add(g);
     }
     this.jdField_a_of_type_JavaUtilArrayList.add(e);
+    this.jdField_a_of_type_JavaUtilArrayList.add(h);
   }
   
   public void a(int paramInt)

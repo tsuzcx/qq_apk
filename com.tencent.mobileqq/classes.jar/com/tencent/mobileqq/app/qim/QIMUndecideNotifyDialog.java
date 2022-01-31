@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.app.qim;
 
+import aacf;
+import aacg;
+import aach;
 import android.app.Dialog;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -42,22 +45,19 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import mqq.app.MobileQQ;
-import zvu;
-import zvv;
-import zvw;
 
 public class QIMUndecideNotifyDialog
   extends Dialog
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
   int jdField_a_of_type_Int = 0;
+  aach jdField_a_of_type_Aach;
   public View a;
   public BaseActivity a;
   public QIMNewFriendManager a;
   FlashChatManager jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager;
   ListView jdField_a_of_type_ComTencentWidgetListView;
   List jdField_a_of_type_JavaUtilList = new ArrayList();
-  zvw jdField_a_of_type_Zvw;
   public List b = new LinkedList();
   
   public QIMUndecideNotifyDialog(@NonNull BaseActivity paramBaseActivity, @NonNull ArrayList paramArrayList)
@@ -82,7 +82,7 @@ public class QIMUndecideNotifyDialog
       paramBaseActivity = ((FlashChatManager)paramBaseActivity.app.getManager(216)).a.e;
       if (!TextUtils.isEmpty(paramBaseActivity))
       {
-        paramArrayList = (ImageView)paramArrayList.findViewById(2131368935);
+        paramArrayList = (ImageView)paramArrayList.findViewById(2131368938);
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
         localURLDrawableOptions.mFailedDrawable = new ColorDrawable(0);
@@ -112,20 +112,20 @@ public class QIMUndecideNotifyDialog
   private View a()
   {
     List localList = this.jdField_a_of_type_JavaUtilList;
-    View localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130970075, null, false);
-    localView.findViewById(2131368932).setOnClickListener(this);
-    localView.findViewById(2131362868).setOnClickListener(this);
-    TextView localTextView = (TextView)localView.findViewById(2131368934);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130970086, null, false);
+    localView.findViewById(2131368935).setOnClickListener(this);
+    localView.findViewById(2131362873).setOnClickListener(this);
+    TextView localTextView = (TextView)localView.findViewById(2131368937);
     String str = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager.d();
     if (!TextUtils.isEmpty(str)) {
       localTextView.setText(str);
     }
-    this.jdField_a_of_type_ComTencentWidgetListView = ((XListView)localView.findViewById(2131364045));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((XListView)localView.findViewById(2131364070));
     this.jdField_a_of_type_ComTencentWidgetListView.setSelector(new ColorDrawable(0));
-    this.jdField_a_of_type_Zvw = new zvw(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-    this.jdField_a_of_type_Zvw.a(localList);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Zvw);
-    ((Button)localView.findViewById(2131364082)).setOnClickListener(this);
+    this.jdField_a_of_type_Aach = new aach(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+    this.jdField_a_of_type_Aach.a(localList);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Aach);
+    ((Button)localView.findViewById(2131364107)).setOnClickListener(this);
     return localView;
   }
   
@@ -133,34 +133,34 @@ public class QIMUndecideNotifyDialog
   {
     Object localObject1 = (QIMNotifyAddFriend)this.jdField_a_of_type_JavaUtilList.get(0);
     this.b.add(localObject1);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130970143, null, false);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130970156, null, false);
     localRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewView = localRelativeLayout;
-    Object localObject2 = localRelativeLayout.findViewById(2131369204);
+    Object localObject2 = localRelativeLayout.findViewById(2131369208);
     ((View)localObject2).setOnClickListener(this);
     Object localObject3 = (RelativeLayout.LayoutParams)((View)localObject2).getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject3).width = AIOUtils.a(286.0F, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources());
     ((RelativeLayout.LayoutParams)localObject3).height = -2;
     ((RelativeLayout.LayoutParams)localObject3).addRule(13);
     localObject3 = new PressDarkImageView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    ((PressDarkImageView)localObject3).setId(2131362868);
-    ((PressDarkImageView)localObject3).setImageResource(2130843488);
+    ((PressDarkImageView)localObject3).setId(2131362873);
+    ((PressDarkImageView)localObject3).setImageResource(2130843522);
     Object localObject4 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject4).addRule(3, 2131369204);
+    ((RelativeLayout.LayoutParams)localObject4).addRule(3, 2131369208);
     ((RelativeLayout.LayoutParams)localObject4).addRule(14);
     ((RelativeLayout.LayoutParams)localObject4).topMargin = AIOUtils.a(28.0F, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources());
     localRelativeLayout.addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
     ((PressDarkImageView)localObject3).setOnClickListener(this);
-    localObject3 = (TextView)((View)localObject2).findViewById(2131365337);
+    localObject3 = (TextView)((View)localObject2).findViewById(2131365342);
     localObject4 = this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatManager.d();
     if (!TextUtils.isEmpty((CharSequence)localObject4)) {
       ((TextView)localObject3).setText((CharSequence)localObject4);
     }
-    localObject4 = (ImageView)((View)localObject2).findViewById(2131369205);
-    Object localObject5 = (TextView)((View)localObject2).findViewById(2131369188);
-    localObject3 = (TextView)((View)localObject2).findViewById(2131369208);
-    ((View)localObject2).findViewById(2131364082).setOnClickListener(this);
-    Object localObject6 = (TextView)((View)localObject2).findViewById(2131369206);
+    localObject4 = (ImageView)((View)localObject2).findViewById(2131369209);
+    Object localObject5 = (TextView)((View)localObject2).findViewById(2131369189);
+    localObject3 = (TextView)((View)localObject2).findViewById(2131369212);
+    ((View)localObject2).findViewById(2131364107).setOnClickListener(this);
+    Object localObject6 = (TextView)((View)localObject2).findViewById(2131369210);
     ((TextView)localObject6).setTag(Long.valueOf(((QIMNotifyAddFriend)localObject1).uin));
     Object localObject7 = this.jdField_a_of_type_ComTencentMobileqqAppQIMNewFriendManager.a(((QIMNotifyAddFriend)localObject1).uin, ((QIMNotifyAddFriend)localObject1).qqUin);
     label409:
@@ -180,7 +180,7 @@ public class QIMUndecideNotifyDialog
       i = ((QIMNotifyAddFriend)localObject1).videoInfos.size();
       if (i > 0)
       {
-        localObject2 = (LinearLayout)((View)localObject2).findViewById(2131369207);
+        localObject2 = (LinearLayout)((View)localObject2).findViewById(2131369211);
         ((LinearLayout)localObject2).setVisibility(0);
         if (i != 1) {
           break label684;
@@ -192,7 +192,7 @@ public class QIMUndecideNotifyDialog
         localObject4 = new LinearLayout.LayoutParams(i, j);
         ((LinearLayout.LayoutParams)localObject4).rightMargin = k;
         localObject5 = URLDrawable.URLDrawableOptions.obtain();
-        localObject6 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130838719);
+        localObject6 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130838728);
         ((URLDrawable.URLDrawableOptions)localObject5).mFailedDrawable = ((Drawable)localObject6);
         ((URLDrawable.URLDrawableOptions)localObject5).mLoadingDrawable = ((Drawable)localObject6);
         localObject5 = URLDrawable.getDrawable(((QIMNotifyAddFriend.VideoInfo)((QIMNotifyAddFriend)localObject1).videoInfos.get(0)).coverUrl, (URLDrawable.URLDrawableOptions)localObject5);
@@ -205,7 +205,7 @@ public class QIMUndecideNotifyDialog
     for (;;)
     {
       ((ImageView)localObject3).setImageDrawable((Drawable)localObject5);
-      ((ImageView)localObject3).setOnClickListener(new zvu(this, ((QIMNotifyAddFriend.VideoInfo)((QIMNotifyAddFriend)localObject1).videoInfos.get(0)).videoVid));
+      ((ImageView)localObject3).setOnClickListener(new aacf(this, ((QIMNotifyAddFriend.VideoInfo)((QIMNotifyAddFriend)localObject1).videoInfos.get(0)).videoVid));
       ((LinearLayout)localObject2).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
       return localRelativeLayout;
       ((TextView)localObject6).setVisibility(0);
@@ -237,7 +237,7 @@ public class QIMUndecideNotifyDialog
         localObject6 = new LinearLayout.LayoutParams(j, k);
         ((LinearLayout.LayoutParams)localObject6).rightMargin = m;
         localObject7 = URLDrawable.URLDrawableOptions.obtain();
-        Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130838719);
+        Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130838728);
         ((URLDrawable.URLDrawableOptions)localObject7).mFailedDrawable = localDrawable;
         ((URLDrawable.URLDrawableOptions)localObject7).mLoadingDrawable = localDrawable;
         localObject7 = URLDrawable.getDrawable(((QIMNotifyAddFriend.VideoInfo)localObject4).coverUrl, (URLDrawable.URLDrawableOptions)localObject7);
@@ -250,7 +250,7 @@ public class QIMUndecideNotifyDialog
       {
         ((URLImageView)localObject5).setImageDrawable((Drawable)localObject7);
         ((ArrayList)localObject3).add(((QIMNotifyAddFriend.VideoInfo)localObject4).videoVid);
-        ((URLImageView)localObject5).setOnClickListener(new zvv(this, (ArrayList)localObject3, i));
+        ((URLImageView)localObject5).setOnClickListener(new aacg(this, (ArrayList)localObject3, i));
         ((LinearLayout)localObject2).addView((View)localObject5, (ViewGroup.LayoutParams)localObject6);
         i += 1;
         break label725;
@@ -263,7 +263,7 @@ public class QIMUndecideNotifyDialog
   
   public void a()
   {
-    Button localButton = (Button)getWindow().findViewById(2131364082);
+    Button localButton = (Button)getWindow().findViewById(2131364107);
     localButton.setOnClickListener(this);
     localButton.setText("OK（" + this.b.size() + "）");
     if (!this.b.isEmpty()) {}
@@ -277,11 +277,11 @@ public class QIMUndecideNotifyDialog
   public boolean a(List paramList)
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Zvw != null)
+    if (this.jdField_a_of_type_Aach != null)
     {
       this.jdField_a_of_type_JavaUtilList.addAll(0, paramList);
       this.b.addAll(paramList);
-      this.jdField_a_of_type_Zvw.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Aach.a(this.jdField_a_of_type_JavaUtilList);
       a();
       bool = true;
     }
@@ -325,7 +325,7 @@ public class QIMUndecideNotifyDialog
       if ((this.jdField_a_of_type_AndroidViewView == paramView) || (paramView == getWindow().getDecorView())) {
         dismiss();
       }
-    case 2131364082: 
+    case 2131364107: 
       do
       {
         return;
@@ -341,7 +341,7 @@ public class QIMUndecideNotifyDialog
       } while (this.jdField_a_of_type_Int != 2);
       ReportController.b(null, "dc00898", "", "", "0X8008AA2", "0X8008AA2", 0, 0, "", "", "", "");
       return;
-    case 2131362868: 
+    case 2131362873: 
       if (this.jdField_a_of_type_Int == 1) {
         ReportController.b(null, "dc00898", "", "", "0X8008AA0", "0X8008AA0", 0, 0, "", "", "", "");
       }

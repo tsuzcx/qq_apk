@@ -29,22 +29,22 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.Arrays;
-import wna;
-import wnb;
-import wnc;
-import wnd;
-import wne;
-import wnf;
+import wsl;
+import wsm;
+import wsn;
+import wso;
+import wsp;
+import wsq;
 
 public class DeviceFragment
   extends ContactsBaseFragment
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private final SmartDeviceObserver jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver = new wnf(this);
+  private final SmartDeviceObserver jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceObserver = new wsq(this);
   public ContactsDeviceAdapter a;
-  private final DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new wnd(this);
-  private final FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wne(this);
-  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wnc(this);
+  private final DataLineObserver jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new wso(this);
+  private final FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wsp(this);
+  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wsn(this);
   public XListView a;
   public boolean c;
   public boolean d;
@@ -59,7 +59,7 @@ public class DeviceFragment
       if (arrayOfDeviceInfo != null)
       {
         ((SmartDeviceProxyMgr)localObject1).a(1, true, new ArrayList(Arrays.asList(arrayOfDeviceInfo)));
-        ThreadManager.post(new wnb(this), 5, null, true);
+        ThreadManager.post(new wsm(this), 5, null, true);
       }
     }
     try
@@ -88,7 +88,7 @@ public class DeviceFragment
     if (this.jdField_a_of_type_ComTencentWidgetXListView == null)
     {
       this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setId(2131362392);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setId(2131362395);
       this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(true);
       this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
@@ -114,7 +114,7 @@ public class DeviceFragment
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.X_();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.Z_();
     }
     e();
   }
@@ -138,7 +138,7 @@ public class DeviceFragment
     BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
     h();
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new wna(this), 500L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new wsl(this), 500L);
   }
   
   public void b()
@@ -202,7 +202,7 @@ public class DeviceFragment
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.X_();
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.Z_();
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)

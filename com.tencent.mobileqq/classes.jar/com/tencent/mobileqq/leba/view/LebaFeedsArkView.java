@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.leba.view;
 
-import aebe;
-import aebf;
+import aejo;
+import aejp;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -55,16 +55,16 @@ public class LebaFeedsArkView
   public LebaFeedsArkView(Context paramContext)
   {
     super(paramContext);
-    LayoutInflater.from(paramContext).inflate(2130969492, this, true);
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363057));
-    this.e = ((RelativeLayout)super.findViewById(2131363109));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366698));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366697));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366699));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131366703);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)super.findViewById(2131365225));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131366696));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366700));
+    LayoutInflater.from(paramContext).inflate(2130969488, this, true);
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363062));
+    this.e = ((RelativeLayout)super.findViewById(2131363113));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366696));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366695));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366697));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131366701);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)super.findViewById(2131365252));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131366694));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366698));
     if (jdField_a_of_type_Int < 0) {
       jdField_a_of_type_Int = (int)(DeviceInfoUtil.n() - AIOUtils.a(40.0F, getResources()));
     }
@@ -138,8 +138,8 @@ public class LebaFeedsArkView
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new aebe(this));
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setLoadCallback(new aebf(this));
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setCallback(new aejo(this));
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setLoadCallback(new aejp(this));
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.a(jdField_a_of_type_Int, jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnTouchListener(this);

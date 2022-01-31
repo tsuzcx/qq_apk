@@ -50,6 +50,8 @@ public class FileManagerEntity
   public long lastTime;
   @notColumn
   public Object mContext;
+  @notColumn
+  public int mThumbRetryCount;
   public long mTroopFileVideoReqInterval;
   public long msgSeq;
   public long msgTime;
@@ -134,6 +136,7 @@ public class FileManagerEntity
     this.tmpSessionType = 0L;
     this.bCannotPlay = false;
     this.bOnceSuccess = false;
+    this.mThumbRetryCount = 0;
   }
   
   public static String tableName()

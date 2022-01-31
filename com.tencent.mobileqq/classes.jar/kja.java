@@ -1,31 +1,98 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import com.tencent.biz.PoiMapActivity;
+import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.PowerManager;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.av.VideoController;
+import com.tencent.av.utils.SensorHelper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class kja
-  implements View.OnKeyListener
+  extends BroadcastReceiver
 {
-  public kja(PoiMapActivity paramPoiMapActivity) {}
+  public kja(SensorHelper paramSensorHelper) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
+    String str = paramIntent.getAction();
+    boolean bool3;
+    boolean bool1;
+    int i;
+    if (str.equals("android.intent.action.SCREEN_ON"))
     {
-      paramView = ((TextView)paramView).getText().toString();
-      if (!TextUtils.isEmpty(paramView)) {
-        this.a.a(paramView);
+      bool3 = ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
+      if (Build.VERSION.SDK_INT < 20) {
+        break label445;
       }
-      return true;
+      bool1 = ((PowerManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("power")).isInteractive();
+      paramContext = ((WindowManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("window")).getDefaultDisplay();
+      if (paramContext == null) {
+        break label440;
+      }
+      i = paramContext.getState();
     }
-    return false;
+    for (;;)
+    {
+      paramContext = this.a.jdField_a_of_type_JavaLangString;
+      paramIntent = new StringBuilder().append("ACTION_SCREEN_ON, mVideoController[");
+      boolean bool2;
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+      {
+        bool2 = true;
+        QLog.d(paramContext, 1, bool2 + "], isInteractive[" + bool1 + "], nState[" + i + "], inKeyguardRestrictedInputMode[" + bool3 + "], mIsStarted[" + this.a.d + "]");
+        if (this.a.d)
+        {
+          this.a.jdField_a_of_type_Int = 1;
+          SensorHelper.a(this.a, SensorHelper.a(this.a));
+        }
+      }
+      label321:
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            bool2 = false;
+            break;
+            if (!str.equals("android.intent.action.SCREEN_OFF")) {
+              break label321;
+            }
+            i = paramIntent.getIntExtra("why", 0);
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_SCREEN_OFF, why[" + i + "]");
+          } while (this.a.jdField_a_of_type_ComTencentAvVideoController == null);
+          this.a.jdField_a_of_type_ComTencentAvVideoController.a("backgroundReason", "4");
+          com.tencent.av.VideoConstants.ProcessInfo.jdField_a_of_type_JavaLangString = "4";
+          return;
+          if (str.equals("android.intent.action.USER_PRESENT"))
+          {
+            QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_USER_PRESENT");
+            return;
+          }
+        } while (!str.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
+        paramContext = paramIntent.getStringExtra("reason");
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_CLOSE_SYSTEM_DIALOGS, reason[" + paramContext + "]");
+      } while ((!"homekey".equalsIgnoreCase(paramContext)) || (!this.a.d));
+      this.a.jdField_a_of_type_Int = 1;
+      SensorHelper.a(this.a, SensorHelper.a(this.a));
+      return;
+      label440:
+      i = 2;
+      continue;
+      label445:
+      i = 2;
+      bool1 = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kja
  * JD-Core Version:    0.7.0.1
  */

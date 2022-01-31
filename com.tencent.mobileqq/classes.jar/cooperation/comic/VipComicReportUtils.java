@@ -1,7 +1,7 @@
 package cooperation.comic;
 
-import amjp;
-import amjq;
+import amrb;
+import amrc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -30,7 +30,7 @@ public class VipComicReportUtils
   public static TelephonyManager a;
   private static Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
   public static String a;
-  private static ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new amjp();
+  private static ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new amrb();
   private static Field jdField_a_of_type_JavaLangReflectField;
   private static final Random jdField_a_of_type_JavaUtilRandom = new Random();
   public static AtomicInteger a;
@@ -169,7 +169,7 @@ public class VipComicReportUtils
         paramContext[i] = paramVarArgs[i];
         i += 1;
       }
-      paramString1 = Arrays.asList(new String[] { "1", paramString1, jdField_a_of_type_JavaLangString, "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", "", "", "", "", paramString2, "", "", paramString3, paramString4, paramString5, "", "", "7.6.3", "", "", "", "", "", "android", str, jdField_b_of_type_JavaLangString, "", paramContext[0], paramContext[1], paramContext[2], paramContext[3], paramContext[4], paramContext[5], paramContext[6], paramContext[7], paramContext[8] });
+      paramString1 = Arrays.asList(new String[] { "1", paramString1, jdField_a_of_type_JavaLangString, "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", "", "", "", "", paramString2, "", "", paramString3, paramString4, paramString5, "", "", "7.6.8", "", "", "", "", "", "android", str, jdField_b_of_type_JavaLangString, "", paramContext[0], paramContext[1], paramContext[2], paramContext[3], paramContext[4], paramContext[5], paramContext[6], paramContext[7], paramContext[8] });
       if ((paramAppInterface instanceof QQAppInterface))
       {
         paramAppInterface = (QQAppInterface)paramAppInterface;
@@ -248,7 +248,7 @@ public class VipComicReportUtils
       if (TextUtils.isEmpty(VipComicHelper.jdField_b_of_type_JavaLangString))
       {
         paramVarArgs = "";
-        paramString2 = Arrays.asList(new String[] { "1", str1, jdField_a_of_type_JavaLangString, "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", paramVarArgs, paramString9, "", "", paramString1, paramString5, "", paramString2, paramString3, paramString4, "", "", "7.6.3", "", "", paramString10, "", "", "android", str2, jdField_b_of_type_JavaLangString, "", localObject[0], localObject[1], localObject[2], localObject[3], localObject[4], localObject[5], localObject[6], localObject[7], localObject[8], paramString7, paramString8, paramString6, "", "" });
+        paramString2 = Arrays.asList(new String[] { "1", str1, jdField_a_of_type_JavaLangString, "", "android", "201", Build.VERSION.RELEASE, "8001", "8001001", "", "", paramVarArgs, paramString9, "", "", paramString1, paramString5, "", paramString2, paramString3, paramString4, "", "", "7.6.8", "", "", paramString10, "", "", "android", str2, jdField_b_of_type_JavaLangString, "", localObject[0], localObject[1], localObject[2], localObject[3], localObject[4], localObject[5], localObject[6], localObject[7], localObject[8], paramString7, paramString8, paramString6, "", "" });
         if (!"3025".equals(paramString1)) {
           break label690;
         }
@@ -322,7 +322,7 @@ public class VipComicReportUtils
   
   public static void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    ThreadManager.executeOnNetWorkThread(new amjq(paramString1, paramString2, paramString3, paramInt, paramString4, paramString5, paramString6, paramString7));
+    ThreadManager.executeOnNetWorkThread(new amrc(paramString1, paramString2, paramString3, paramInt, paramString4, paramString5, paramString6, paramString7));
   }
 }
 

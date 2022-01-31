@@ -1,19 +1,16 @@
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.freshnews.QQInputView;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
 
 public class adol
-  implements Runnable
+  implements CUKingCardHelper.CUKingDialogListener
 {
-  public adol(QQInputView paramQQInputView) {}
+  public adol(FileModel paramFileModel, Activity paramActivity) {}
   
-  public void run()
+  public void callback(int paramInt)
   {
-    QQInputView.a(this.a).setVisibility(0);
-    QQInputView.a(this.a).setImageResource(2130844546);
-    if (AppSetting.b) {
-      QQInputView.a(this.a).setContentDescription("表情");
+    if ((paramInt == 1) || (paramInt == 2)) {
+      FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel, this.jdField_a_of_type_AndroidAppActivity);
     }
   }
 }

@@ -1,41 +1,21 @@
-import android.text.TextUtils;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.fragment.UnitedVerifyMsgEditFragment;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
 
-class adog
-  implements Runnable
+public class adog
+  implements View.OnClickListener
 {
-  adog(adof paramadof, String paramString1, String paramString2) {}
+  public adog(VideoFileViewer paramVideoFileViewer) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Adof.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_JavaLangString);
-    try
-    {
-      if (!TextUtils.isEmpty(this.b)) {
-        this.jdField_a_of_type_Adof.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.lastIndexOf(this.b), this.jdField_a_of_type_JavaLangString.length());
-      }
-      for (;;)
-      {
-        label58:
-        this.jdField_a_of_type_Adof.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().setSoftInputMode(4);
-        return;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_Adof.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.length());
-        }
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      break label58;
-    }
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adog
  * JD-Core Version:    0.7.0.1
  */

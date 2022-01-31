@@ -1,68 +1,15 @@
-import com.tencent.biz.pubaccount.util.PreloadManager;
-import com.tencent.biz.pubaccount.util.PreloadManager.ImgStruct;
-import cooperation.qzone.util.NetworkState;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
 
 public class mut
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mut(PreloadManager paramPreloadManager) {}
+  public mut(NativeText paramNativeText) {}
   
-  PreloadManager.ImgStruct a()
+  public void onClick(View paramView)
   {
-    Object localObject1 = this.a.a;
-    int i = 3;
-    while (i > 0)
-    {
-      try
-      {
-        PreloadManager.ImgStruct localImgStruct;
-        do
-        {
-          Iterator localIterator = PreloadManager.a(this.a).values().iterator();
-          Object localObject3;
-          while (!((Iterator)localObject3).hasNext())
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject3 = (ArrayList)localIterator.next();
-            if ((localObject3 == null) || (((ArrayList)localObject3).size() == 0)) {
-              return null;
-            }
-            localObject3 = ((ArrayList)localObject3).iterator();
-          }
-          localImgStruct = (PreloadManager.ImgStruct)((Iterator)localObject3).next();
-          if (localImgStruct == null) {
-            return null;
-          }
-        } while ((PreloadManager.a(localImgStruct.jdField_a_of_type_JavaLangString) != 0) || (localImgStruct.jdField_a_of_type_Int != i));
-        return localImgStruct;
-      }
-      finally {}
-      i -= 1;
-    }
-    return null;
-  }
-  
-  public void run()
-  {
-    this.a.b = true;
-    for (;;)
-    {
-      PreloadManager.ImgStruct localImgStruct = a();
-      if (localImgStruct == null) {
-        break;
-      }
-      if (NetworkState.getNetworkType() != 1) {
-        return;
-      }
-      this.a.b(localImgStruct.jdField_a_of_type_JavaLangString);
-    }
-    this.a.b = false;
+    this.a.a(0, 0, false);
   }
 }
 

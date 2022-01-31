@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a159a" android:background="#fff8f9fa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="44.0dip">
-        <TextView android:textSize="17.0dip" android:textColor="#ff333333" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2d4e" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/close" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ca6" android:scaleType="centerInside" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1448" android:layout_width="fill_parent" android:layout_height="0.0dip" android:divider="@null" android:layout_weight="1.0" />
-    <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="44.0dip">
-        <LinearLayout android:orientation="horizontal" android:id="@id/input" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ca2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="6.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a144b">
-            <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ca3" />
-            <TextView android:textSize="14.0dip" android:textColor="#ffbbbbbb" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1564" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2d4f" />
-        </LinearLayout>
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a144b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="21.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ca4" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d08" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip">
+        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/icon" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="2.5dip" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="1条新消息" />
+        <ImageView android:layout_width="6.0dip" android:layout_height="11.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020da9" />
+    </LinearLayout>
 </LinearLayout>

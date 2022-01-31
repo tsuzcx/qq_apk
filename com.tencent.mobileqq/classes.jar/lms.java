@@ -1,25 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 
 public class lms
-  implements Runnable
 {
-  public lms(ReadinjoySPEventReport paramReadinjoySPEventReport) {}
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public ReadInJoyHeadImageView a;
+  public ReadInJoyNickNameTextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
   
-  public void run()
-  {
-    ArrayList localArrayList = new ArrayList();
-    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(1);
-    localAttributeList.att_name.set("OneClickRead");
-    localAttributeList.att_value.set(String.valueOf(System.currentTimeMillis() / 1000L));
-    localArrayList.add(localAttributeList);
-    PublicAccountUtil.a(13, "OneClickRead", localArrayList);
-  }
+  public lms(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter) {}
 }
 
 

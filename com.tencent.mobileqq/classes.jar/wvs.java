@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.utils.LogTag;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
 
 public class wvs
-  implements Runnable
+  extends GetRedPointExObserver
 {
-  public wvs(AlbumListAdapter paramAlbumListAdapter) {}
+  public wvs(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
+  protected void a(Object paramObject)
   {
-    LogTag.a();
-    this.a.a(100);
-    LogTag.a("PEAK", "queryAlbumList");
+    this.a.g();
+    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
+      this.a.a.app.a().e();
+    }
   }
 }
 

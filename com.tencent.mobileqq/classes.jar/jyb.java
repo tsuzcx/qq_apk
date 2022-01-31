@@ -1,78 +1,25 @@
-import com.tencent.av.app.GAudioUIObserver;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
+import com.tencent.av.utils.MultiVideoMembersClickListener;
 
 public class jyb
-  extends GAudioUIObserver
+  implements View.OnTouchListener
 {
-  public jyb(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  public jyb(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  protected void a(long paramLong1, long paramLong2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Jyc != null)) {
-      this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Jyc != null)) {
-      this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    super.a(paramLong1, paramLong2, paramBoolean);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      if (this.a.jdField_a_of_type_Jyc != null) {
-        this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
-      }
-      this.a.c();
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      if (this.a.jdField_a_of_type_Jyc != null) {
-        this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
-      }
-      this.a.c();
-    }
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Jyc != null)) {
-      this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
-  {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Jyc != null)) {
-      this.a.jdField_a_of_type_Jyc.notifyDataSetChanged();
-    }
-  }
-  
-  protected void f(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiVideoMembersListviewAvtivity", 2, "onCloseMemberListActivity --> RelationId = " + paramLong + "mRelationUin = " + this.a.jdField_a_of_type_Long);
-    }
-    if (paramLong == this.a.jdField_a_of_type_Long) {
-      MultiVideoMembersListviewAvtivity.b(this.a);
-    }
-    super.f(paramLong);
+    return paramMotionEvent.getAction() == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jyb
  * JD-Core Version:    0.7.0.1
  */

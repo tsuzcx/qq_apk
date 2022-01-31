@@ -41,8 +41,10 @@ public class LpReportInfo_dc02880
     try
     {
       String str = Uri.parse(paramString).getQueryParameter("hydtgzh");
-      if (!TextUtils.isEmpty(str)) {
+      if (!TextUtils.isEmpty(str))
+      {
         report(paramString, str);
+        QZoneLoginReportHelper.reportLoginFromMQQPublicAccount(str);
       }
       return;
     }

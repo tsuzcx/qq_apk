@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.music;
 
-import aejq;
+import aesa;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ public abstract class IQQPlayerService$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQQPlayerService))) {
       return (IQQPlayerService)localIInterface;
     }
-    return new aejq(paramIBinder);
+    return new aesa(paramIBinder);
   }
   
   public IBinder asBinder()

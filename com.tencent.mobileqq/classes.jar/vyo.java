@@ -1,19 +1,22 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class vyo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vyo(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vyo(FriendChatPie paramFriendChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      ark.arkNotify("com.tencent.weather", "pubaccountPendantRefresh", "", "json");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("FriendChatPie", 2, "mQimStatusOnClickListener.onClick: invoked. info: v = " + paramView);
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80087E6");
+    QIMUserManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

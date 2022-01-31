@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.app.message.BaseMessageProcessorForTroopAndDisc;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import java.util.concurrent.atomic.AtomicBoolean;
+import msf.msgcomm.msg_comm.Msg;
 
 public class zsp
-  implements Comparator
 {
-  public zsp(BaseMessageProcessorForTroopAndDisc paramBaseMessageProcessorForTroopAndDisc) {}
+  public long a;
+  public AtomicBoolean a;
+  public msg_comm.Msg a;
+  public long b;
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public zsp(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0406d9" />
+    <com.tencent.biz.qqstory.view.PressDarkImageButton android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26c6" android:background="@android:color/darker_gray" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="12.0dip" android:layout_marginBottom="34.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="本地视频" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20b2" android:layout_width="47.0dip" android:layout_height="75.0dip" android:layout_marginLeft="12.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20bb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0045" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20b3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218c6" android:visibility="gone" android:layout_width="47.0dip" android:layout_height="75.0dip" android:layout_marginLeft="12.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20b9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+</RelativeLayout>

@@ -248,18 +248,18 @@ public class t
     //   19: pop
     //   20: aload_1
     //   21: invokeinterface 289 1 0
-    //   26: astore_2
-    //   27: aload_2
+    //   26: astore_1
+    //   27: aload_1
     //   28: invokeinterface 294 1 0
     //   33: ifeq +103 -> 136
-    //   36: aload_2
+    //   36: aload_1
     //   37: invokeinterface 298 1 0
     //   42: checkcast 300	com/tencent/qphone/base/remote/SimpleAccount
-    //   45: astore_1
+    //   45: astore_2
     //   46: aload_3
-    //   47: aload_1
+    //   47: aload_2
     //   48: invokevirtual 301	com/tencent/qphone/base/remote/SimpleAccount:getUin	()Ljava/lang/String;
-    //   51: aload_1
+    //   51: aload_2
     //   52: invokevirtual 304	com/tencent/qphone/base/remote/SimpleAccount:toStoreString	()Ljava/lang/String;
     //   55: invokevirtual 308	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   58: pop
@@ -386,7 +386,7 @@ public class t
     //   start	length	slot	name	signature
     //   0	287	0	paramFile	File
     //   0	287	1	paramList	List
-    //   26	182	2	localObject	Object
+    //   45	163	2	localObject	Object
     //   243	2	2	localIOException	IOException
     //   7	40	3	localProperties	Properties
     //   62	86	3	localException1	Exception
@@ -500,41 +500,59 @@ public class t
   
   public static void c()
   {
-    TelephonyManager localTelephonyManager = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
-    try
+    for (;;)
     {
-      localObject1 = localTelephonyManager.getSubscriberId();
-      if (localObject1 != null)
+      try
       {
-        t = (String)localObject1;
-        u = (String)localObject1;
+        localObject1 = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
       }
-      localObject1 = localTelephonyManager.getNetworkOperatorName();
-      if (localObject1 != null) {
-        w = (String)localObject1;
+      catch (Exception localException4)
+      {
+        Object localObject1;
+        Object localObject4;
+        Object localObject6;
+        SharedPreferences localSharedPreferences;
+        label660:
+        Object localObject3 = null;
+        continue;
+        Object localObject5 = null;
+        continue;
       }
-      o = localTelephonyManager.getNetworkCountryIso();
-      p = localTelephonyManager.getSimCountryIso();
-      localObject1 = localTelephonyManager.getCellLocation();
-      if (!(localObject1 instanceof CdmaCellLocation)) {
-        break label560;
+      try
+      {
+        localObject4 = ((TelephonyManager)localObject1).getSubscriberId();
+        if (localObject4 != null)
+        {
+          t = (String)localObject4;
+          u = (String)localObject4;
+        }
+        localObject4 = ((TelephonyManager)localObject1).getNetworkOperatorName();
+        if (localObject4 != null) {
+          w = (String)localObject4;
+        }
+        o = ((TelephonyManager)localObject1).getNetworkCountryIso();
+        p = ((TelephonyManager)localObject1).getSimCountryIso();
+        localObject4 = ((TelephonyManager)localObject1).getCellLocation();
+        if (!(localObject4 instanceof CdmaCellLocation)) {
+          continue;
+        }
+        localObject4 = (CdmaCellLocation)((TelephonyManager)localObject1).getCellLocation();
+        localObject6 = localObject1;
+        if (localObject4 != null)
+        {
+          q = ((CdmaCellLocation)localObject4).getBaseStationId();
+          localObject6 = localObject1;
+        }
       }
-      localObject1 = (CdmaCellLocation)localTelephonyManager.getCellLocation();
-      if (localObject1 != null) {
-        q = ((CdmaCellLocation)localObject1).getBaseStationId();
-      }
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
+      catch (Exception localException3)
       {
         try
         {
-          Object localObject1 = BaseApplication.getContext().getAssets().open("revision.txt");
+          localObject1 = BaseApplication.getContext().getAssets().open("revision.txt");
           try
           {
             localObject4 = new byte[64];
-            i1 = ((InputStream)localObject1).read((byte[])localObject4, 0, 64);
+            int i1 = ((InputStream)localObject1).read((byte[])localObject4, 0, 64);
             if (i1 != -1)
             {
               v = new String((byte[])localObject4, 0, i1);
@@ -546,40 +564,45 @@ public class t
           }
           catch (IOException localIOException)
           {
-            label560:
+            String str;
+            Object localObject2;
             QLog.d("MSF.C.Util", 1, "get revision IOException " + localIOException.getMessage());
             return;
           }
-          if (!(localObject1 instanceof GsmCellLocation)) {
+          localObject6 = localObject1;
+          if (!(localObject4 instanceof GsmCellLocation)) {
             continue;
           }
-          localObject1 = (GsmCellLocation)localTelephonyManager.getCellLocation();
-          if (localObject1 == null) {
+          localObject4 = (GsmCellLocation)((TelephonyManager)localObject1).getCellLocation();
+          localObject6 = localObject1;
+          if (localObject4 == null) {
             continue;
           }
-          q = ((GsmCellLocation)localObject1).getCid();
+          q = ((GsmCellLocation)localObject4).getCid();
+          localObject6 = localObject1;
         }
-        catch (Exception localException3)
+        catch (Exception localException2)
         {
-          QLog.d("MSF.C.Util", 1, "get revision error " + localException3.getMessage());
+          QLog.d("MSF.C.Util", 1, "get revision error " + localException2.getMessage());
           return;
         }
-        localException1 = localException1;
-        QLog.d("MSF.C.Util", 1, "get imsi error " + localException1, localException1);
+        localException3 = localException3;
+        QLog.d("MSF.C.Util", 1, "get imsi error " + localException3, localException3);
+        localObject6 = localObject1;
         continue;
-        if (t.length() > 5)
-        {
-          t = t.substring(0, 5);
+        if (t.length() <= 5) {
           continue;
-          localObject4 = m();
-          j = 4;
-          localObject2 = localObject4;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("MSF.C.Util", 2, "load imei:" + (String)localObject4);
-            localObject2 = localObject4;
-          }
         }
+        t = t.substring(0, 5);
+        continue;
+        str = m();
+        j = 4;
+        localObject1 = str;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("MSF.C.Util", 2, "load imei:" + str);
+        localObject1 = str;
       }
     }
     if (t == null)
@@ -589,80 +612,74 @@ public class t
         QLog.d("MSF.C.Util", 2, "imsi:" + t + " networkOperatorName:" + w);
       }
     }
-    for (;;)
+    try
     {
-      try
-      {
-        j = 0;
-        if (!new File(MsfCore.SAVEPATH_IMEI).exists()) {
-          break label800;
-        }
-        localObject4 = MsfSdkUtils.loadConfig(MsfCore.SAVEPATH_IMEI).getProperty("imei");
-        if (localObject4 != null)
-        {
-          localObject1 = localObject4;
-          if (((String)localObject4).length() != 0) {}
-        }
-        else
-        {
-          Thread.sleep(200L);
-          localObject1 = MsfSdkUtils.loadConfig(MsfCore.SAVEPATH_IMEI).getProperty("imei", null);
-        }
-        j = 1;
-        localObject4 = localObject1;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MSF.C.Util", 2, "read imei from file " + MsfCore.SAVEPATH_IMEI + ", imei:" + (String)localObject1);
-          localObject4 = localObject1;
-        }
-        localSharedPreferences = BaseApplication.getContext().getSharedPreferences("MSF.C.Util", 0);
-        if ((localObject4 != null) && (((String)localObject4).length() != 0)) {
-          continue;
-        }
-        localObject1 = localSharedPreferences.getString("sp_imei", null);
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.Util", 2, "read imei from sharepreference:" + (String)localObject1);
-        }
-        if ((localObject1 != null) && (((String)localObject1).length() != 0)) {
-          continue;
-        }
-        localObject4 = localTelephonyManager.getDeviceId();
-        if ((localObject4 == null) || (((String)localObject4).length() <= 0)) {
-          continue;
-        }
-        j = 3;
-        localObject1 = localObject4;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MSF.C.Util", 2, "read sys imei:" + (String)localObject4);
-          localObject1 = localObject4;
-        }
+      j = 0;
+      if (!new File(MsfCore.SAVEPATH_IMEI).exists()) {
+        break label822;
       }
-      catch (Exception localException2)
+      localObject4 = MsfSdkUtils.loadConfig(MsfCore.SAVEPATH_IMEI).getProperty("imei");
+      if (localObject4 != null)
       {
-        SharedPreferences localSharedPreferences;
-        int i1;
-        Object localObject2;
-        QLog.d("MSF.C.Util", 1, "read sys imei error " + localException2, localException2);
+        localObject1 = localObject4;
+        if (((String)localObject4).length() != 0) {}
+      }
+      else
+      {
+        Thread.sleep(200L);
+        localObject1 = MsfSdkUtils.loadConfig(MsfCore.SAVEPATH_IMEI).getProperty("imei", null);
+      }
+      j = 1;
+      localObject4 = localObject1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MSF.C.Util", 2, "read imei from file " + MsfCore.SAVEPATH_IMEI + ", imei:" + (String)localObject1);
+        localObject4 = localObject1;
+      }
+      localSharedPreferences = BaseApplication.getContext().getSharedPreferences("MSF.C.Util", 0);
+      if ((localObject4 != null) && (((String)localObject4).length() != 0)) {
+        break label745;
+      }
+      localObject1 = localSharedPreferences.getString("sp_imei", null);
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.Util", 2, "read imei from sharepreference:" + (String)localObject1);
+      }
+      if (((localObject1 != null) && (((String)localObject1).length() != 0)) || (localObject6 == null)) {
+        break label738;
+      }
+      localObject4 = localObject6.getDeviceId();
+      if ((localObject4 == null) || (((String)localObject4).length() <= 0)) {
+        break label660;
+      }
+      j = 3;
+      localObject1 = localObject4;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MSF.C.Util", 2, "read sys imei:" + (String)localObject4);
+        localObject1 = localObject4;
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        QLog.d("MSF.C.Util", 1, "read sys imei error " + localException1, localException1);
         continue;
         j = 2;
         continue;
         j = 1;
-        Object localObject3 = localObject4;
-        continue;
+        localObject2 = str;
       }
-      a((String)localObject1);
-      Object localObject4 = localSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject4).putString("sp_imei", (String)localObject1);
-      ((SharedPreferences.Editor)localObject4).commit();
-      s = (String)localObject1;
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.Util", 1, "save imei:" + s + ",with order:" + j);
-      }
-      v = "testrevision";
-      label800:
-      localObject4 = null;
     }
+    a((String)localObject1);
+    localObject4 = localSharedPreferences.edit();
+    ((SharedPreferences.Editor)localObject4).putString("sp_imei", (String)localObject1);
+    ((SharedPreferences.Editor)localObject4).commit();
+    s = (String)localObject1;
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.Util", 1, "save imei:" + s + ",with order:" + j);
+    }
+    v = "testrevision";
   }
   
   public static String d()

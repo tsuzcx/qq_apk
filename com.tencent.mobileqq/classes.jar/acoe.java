@@ -1,17 +1,19 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
+import com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter;
+import java.util.List;
 
-class acoe
-  implements Runnable
+public class acoe
+  implements EmotionPanelDataBuilder.EmotionPanelDataCallback
 {
-  acoe(acod paramacod) {}
+  public acoe(FavoriteEmotionAdapter paramFavoriteEmotionAdapter) {}
   
-  public void run()
+  public void a(List paramList)
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(0);
-    UniformDownloadActivity.a(this.a.a).setVisibility(0);
-    UniformDownloadActivity.b(this.a.a).setText(this.a.a.getString(2131428580, new Object[] { "0%" }));
+    if (paramList != null)
+    {
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 

@@ -1,23 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender;
 
-public class ajmq
-  implements ActionSheet.OnButtonClickListener
+class ajmq
+  implements Runnable
 {
-  public ajmq(BulkSendMessageFragment paramBulkSendMessageFragment, ActionSheet paramActionSheet) {}
+  ajmq(ajmp paramajmp, String paramString, TroopFileInfo paramTroopFileInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt < this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.size())
-    {
-      paramView = (String)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.get(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramView);
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b)) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b;
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
+    if (localQQAppInterface == null)
+    {
+      TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_Ajmp.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
+      return;
+    }
+    localObject = (MessageForTroopFile)localQQAppInterface.a().a(String.valueOf(this.jdField_a_of_type_Ajmp.a.jdField_a_of_type_Long), 1, (String)localObject);
+    if (localObject != null)
+    {
+      ((AIOMessageSpreadManager)localQQAppInterface.getManager(271)).a((MessageRecord)localObject);
+      return;
+    }
+    TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_Ajmp.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Ajmp.a.jdField_a_of_type_Long + "], id:" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
   }
 }
 

@@ -1,24 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
 
 public class jjg
-  implements DialogInterface.OnClickListener
 {
-  public jjg(GuildMultiActivity paramGuildMultiActivity) {}
+  public byte a;
+  public byte b = 0;
+  public byte c = 0;
+  public byte d = 0;
+  public byte e = 0;
+  public byte f = 0;
+  public byte g = 0;
+  public byte h = 0;
+  public byte i = 0;
+  public byte j = 0;
+  public byte k = 0;
+  public byte l = 0;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public jjg(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(GuildMultiActivity.a, 2, "showEnterRoomFailDialog: exitMultiRoom");
-    }
-    this.a.d();
+    this.jdField_a_of_type_Byte = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jjg
  * JD-Core Version:    0.7.0.1
  */

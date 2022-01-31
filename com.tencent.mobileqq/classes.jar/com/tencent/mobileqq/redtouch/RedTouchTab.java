@@ -38,7 +38,7 @@ public class RedTouchTab
           break;
         }
         localTextView.setIncludeFontPadding(false);
-        localTextView.setBackgroundResource(2130846057);
+        localTextView.setBackgroundResource(2130846139);
         localTextView.setLayoutParams(a());
         if (this.b)
         {
@@ -56,7 +56,7 @@ public class RedTouchTab
       {
         localTextView.setText(paramString.trim());
         continue;
-        localTextView.setBackgroundResource(2130846055);
+        localTextView.setBackgroundResource(2130846137);
         continue;
         label180:
         localTextView.setTextSize(13.0F);

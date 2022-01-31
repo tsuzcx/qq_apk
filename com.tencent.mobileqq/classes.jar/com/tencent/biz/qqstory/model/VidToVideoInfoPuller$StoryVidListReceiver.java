@@ -35,9 +35,9 @@ public class VidToVideoInfoPuller$StoryVidListReceiver
       } while (!((String)((Iterator)localObject).next()).equals(paramVidToVideoInfoPuller.jdField_b_of_type_JavaLangString));
       for (int i = 1; i != 0; i = 0)
       {
-        if (paramGetUserVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+        if (paramGetUserVidListEvent.errorInfo.isFail())
         {
-          paramVidToVideoInfoPuller.a(new ArrayList(), paramGetUserVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage, true, false);
+          paramVidToVideoInfoPuller.a(new ArrayList(), paramGetUserVidListEvent.errorInfo, true, false);
           Dispatchers.get().unRegisterSubscriber(this);
           paramVidToVideoInfoPuller.a = null;
           return;

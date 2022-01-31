@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.floatscr;
 
-import adjz;
+import adsf;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -141,7 +141,7 @@ public class ColorScreenManager
   
   public void a(int paramInt, VasManager.CompleteListener paramCompleteListener)
   {
-    ThreadManager.post(new adjz(this, paramInt, paramCompleteListener), 5, null, false);
+    ThreadManager.post(new adsf(this, paramInt, paramCompleteListener), 5, null, false);
   }
   
   public void a(String paramString)

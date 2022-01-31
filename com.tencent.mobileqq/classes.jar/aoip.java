@@ -1,12 +1,18 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public abstract interface aoip
+public class aoip
+  implements Runnable
 {
-  public abstract void a(int paramInt);
+  public aoip(DoodleView paramDoodleView, long paramLong) {}
   
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
-  
-  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  public void run()
+  {
+    if (DoodleView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView, this.jdField_a_of_type_Long))
+    {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.requestLayout();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
+    }
+  }
 }
 
 

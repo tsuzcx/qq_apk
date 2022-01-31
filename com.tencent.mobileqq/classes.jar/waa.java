@@ -1,47 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.SelfGagInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.HotChatManager;
 
 public class waa
-  extends Handler
+  implements Runnable
 {
-  public waa(TroopChatPie paramTroopChatPie, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public waa(HotChatPie paramHotChatPie) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    case 3: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a(null, false);
-          return;
-          paramMessage = paramMessage.obj;
-        } while (!(paramMessage instanceof TroopGagMgr.SelfGagInfo));
-        this.a.a((TroopGagMgr.SelfGagInfo)paramMessage);
-        return;
-      } while (TroopChatPie.i(this.a) == null);
-      TroopChatPie.j(this.a).a();
-      return;
-    }
-    String str = (String)paramMessage.obj;
-    int i = paramMessage.arg1;
-    QQToast.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
+    this.a.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
   }
 }
 

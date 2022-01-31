@@ -24,7 +24,7 @@ public class DoubleCommentSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (SlideTabViewPager)paramBaseViewHolder.a(2131371689);
+    paramViewGroup = (SlideTabViewPager)paramBaseViewHolder.a(2131371687);
     TextView localTextView1;
     TextView localTextView2;
     if (paramViewGroup.a() == 0)
@@ -51,7 +51,7 @@ public class DoubleCommentSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2130970699, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2130970715, paramViewGroup, false));
   }
   
   public String a()

@@ -1,22 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI.FacePoiSearchUIListener;
 
 public class answ
-  implements DialogInterface.OnDismissListener
+  implements FacePoiSearchUI.FacePoiSearchUIListener
 {
-  public answ(EditVideoDoodle paramEditVideoDoodle) {}
+  public answ(QIMCaptureController paramQIMCaptureController) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void aE_()
   {
-    paramDialogInterface = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a;
-    if (paramDialogInterface != null) {
-      paramDialogInterface.b();
-    }
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(true, 0.0F, 0.0F, 0.0F, 0.0F);
+    QIMCaptureController.a(this.a).e();
   }
 }
 

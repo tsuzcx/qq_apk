@@ -1,17 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.mobileqq.app.qim.QIMUndecideNotifyDialog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendServlet;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
+import com.tencent.qphone.base.util.QLog;
 
-class zvx
-  implements View.OnClickListener
+public class zvx
+  implements Runnable
 {
-  zvx(zvw paramzvw, ArrayList paramArrayList, int paramInt) {}
+  public zvx(ActivateFriendsManager paramActivateFriendsManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    StoryPlayVideoActivity.a(this.jdField_a_of_type_Zvw.a.a, paramView, this.jdField_a_of_type_JavaUtilArrayList, null, this.jdField_a_of_type_Int, 120, 1);
+    boolean bool2 = true;
+    boolean bool1;
+    if (Math.abs(System.currentTimeMillis() - ActivateFriendsManager.a(this.a)) > ActivateFriendsManager.b(this.a))
+    {
+      bool1 = true;
+      if (Math.abs(System.currentTimeMillis() - ActivateFriendsManager.c(this.a)) <= ActivateFriendsManager.d(this.a)) {
+        break label168;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ActivateFriends.Manager", 2, "checkRunnable | lastBirthdayCheckInStamp = " + ActivateFriendsManager.a(this.a) + " | checkBirthdayInterval = " + ActivateFriendsManager.b(this.a) + " | lastMemorialCheckInStamp = " + ActivateFriendsManager.c(this.a) + " | checkMemorialInterval = " + ActivateFriendsManager.d(this.a) + " | isBirthday = " + bool1 + " | isMemorial = " + bool2);
+      }
+      if ((bool1) || (bool2)) {
+        break label173;
+      }
+      return;
+      bool1 = false;
+      break;
+      label168:
+      bool2 = false;
+    }
+    label173:
+    ActivateFriendServlet.a(ActivateFriendsManager.a(this.a), bool1, bool2);
+    this.a.a = ActivateFriendsManager.a(this.a);
   }
 }
 

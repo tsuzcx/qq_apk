@@ -33,7 +33,6 @@ public class OffScreenInputSurface
   
   static int a(EGLContext paramEGLContext)
   {
-    if (Build.VERSION.SDK_INT >= 17) {}
     return 0;
   }
   

@@ -1,37 +1,42 @@
-import android.animation.Animator;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.AnimatorAdapter;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.FlowPlusPanel;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class xop
-  extends AnimatorAdapter
+  implements View.OnClickListener
 {
-  public xop(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xop(BannerManager paramBannerManager) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
+    paramView = QQPlayerService.a();
+    int i;
+    if (paramView != null)
+    {
+      BannerManager.a(this.a).startActivity(paramView);
+      paramView = paramView.getComponent().getClassName();
+      if (!paramView.equals(MusicPlayerActivity.class.getName())) {
+        break label92;
+      }
+      i = 0;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowPlusPanel != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowPlusPanel.a();
-    }
-    this.a.k();
-    this.a.e.setVisibility(4);
-    this.a.e.setPadding(0, 0, 0, 0);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.y();
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
+    for (;;)
+    {
+      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+      return;
+      label92:
+      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
+        i = 1;
+      } else {
+        i = -1;
+      }
     }
   }
 }

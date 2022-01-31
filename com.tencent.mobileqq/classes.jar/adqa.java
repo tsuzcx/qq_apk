@@ -1,32 +1,25 @@
-import com.tencent.mobileqq.hotpic.HotPicManager;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public class adqa
-  implements Comparator
+public final class adqa
+  implements FMDialogUtil.FMDialogInterface
 {
-  public adqa(HotPicManager paramHotPicManager) {}
+  public adqa(FileManagerEntity paramFileManagerEntity, QQAppInterface paramQQAppInterface) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void a()
   {
-    if (paramFile1.lastModified() > paramFile2.lastModified()) {}
-    do
-    {
-      return -1;
-      if (paramFile1.lastModified() != paramFile2.lastModified()) {
-        break;
-      }
-      if (paramFile1.length() > paramFile2.length()) {
-        return 1;
-      }
-    } while (paramFile1.length() < paramFile2.length());
-    return 0;
-    return 1;
+    FileManagerUtil.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adqa
  * JD-Core Version:    0.7.0.1
  */

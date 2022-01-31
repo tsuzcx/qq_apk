@@ -1,18 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardListActivity;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardGroupLogic;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.armap.test.ARWebTestActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aboq
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public aboq(BusinessCardGroupLogic paramBusinessCardGroupLogic) {}
+  public aboq(ARWebTestActivity paramARWebTestActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    this.a.a.a(paramInt);
-    this.a.a(false);
+    QQToast.a(BaseApplication.getContext(), "onMapLoadFinished", 0).b(this.a.getTitleBarHeight());
   }
 }
 

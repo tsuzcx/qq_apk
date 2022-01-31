@@ -1,17 +1,9 @@
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatusEditText;
-
-public class ahpm
+class ahpm
   implements Runnable
 {
-  public ahpm(EditActivity paramEditActivity) {}
+  ahpm(ahpl paramahpl) {}
   
-  public void run()
-  {
-    EditActivity.a(this.a).requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(EditActivity.a(this.a), 2);
-  }
+  public void run() {}
 }
 
 

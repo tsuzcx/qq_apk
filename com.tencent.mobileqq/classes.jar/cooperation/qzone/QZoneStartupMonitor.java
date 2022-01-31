@@ -1,7 +1,7 @@
 package cooperation.qzone;
 
-import amse;
-import amsf;
+import amzp;
+import amzq;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Environment;
@@ -28,10 +28,10 @@ import mqq.app.MobileQQ;
 
 public class QZoneStartupMonitor
 {
-  private static Singleton jdField_a_of_type_ComTencentMobileqqLyricUtilSingleton = new amse();
+  private static Singleton jdField_a_of_type_ComTencentMobileqqLyricUtilSingleton = new amzp();
   private final byte jdField_a_of_type_Byte = 2;
   private FileObserver jdField_a_of_type_AndroidOsFileObserver;
-  private Handler jdField_a_of_type_AndroidOsHandler = new amsf(this, ThreadManager.getSubThreadLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new amzq(this, ThreadManager.getSubThreadLooper());
   private volatile boolean jdField_a_of_type_Boolean;
   private final byte jdField_b_of_type_Byte = 1;
   private volatile boolean jdField_b_of_type_Boolean;
@@ -365,13 +365,13 @@ public class QZoneStartupMonitor
     //   88: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   91: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   94: aload_0
-    //   95: new 430	amsh
+    //   95: new 430	amzs
     //   98: dup
     //   99: aload_0
     //   100: aload_2
     //   101: invokevirtual 357	java/io/File:getPath	()Ljava/lang/String;
     //   104: sipush 768
-    //   107: invokespecial 433	amsh:<init>	(Lcooperation/qzone/QZoneStartupMonitor;Ljava/lang/String;I)V
+    //   107: invokespecial 433	amzs:<init>	(Lcooperation/qzone/QZoneStartupMonitor;Ljava/lang/String;I)V
     //   110: putfield 426	cooperation/qzone/QZoneStartupMonitor:jdField_a_of_type_AndroidOsFileObserver	Landroid/os/FileObserver;
     //   113: aload_0
     //   114: getfield 426	cooperation/qzone/QZoneStartupMonitor:jdField_a_of_type_AndroidOsFileObserver	Landroid/os/FileObserver;

@@ -1,16 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.ar.ARDeviceController;
 
-public class skz
-  implements View.OnClickListener
+class skz
+  implements Runnable
 {
-  public skz(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  skz(sky paramsky) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    ARDeviceController.a().a(this.a.a.a);
   }
 }
 

@@ -1,25 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.mobileqq.ark.ArkAiBubbleView;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
 
 public class aayr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aayr(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public aayr(ArkAiBubbleView paramArkAiBubbleView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (ActionSheet)ActionSheetHelper.a(BaseActivity.sTopActivity, null);
-    paramView.a(BaseActivity.sTopActivity.getString(2131438839));
-    paramView.a(2131438841, 3);
-    paramView.c(2131438842);
-    paramView.setOnDismissListener(new aays(this, paramView));
-    paramView.a(new aayt(this, paramView));
-    if (!paramView.isShowing()) {
-      paramView.show();
+    ViewParent localViewParent = this.a.jdField_a_of_type_AndroidViewView.getParent();
+    if ((localViewParent instanceof ViewGroup)) {
+      ((ViewGroup)localViewParent).removeView(this.a.jdField_a_of_type_AndroidViewView);
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar = null;
     }
   }
 }

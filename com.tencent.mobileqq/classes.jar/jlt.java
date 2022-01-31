@@ -1,29 +1,30 @@
-import android.view.View;
-import com.tencent.av.redpacket.ui.RedPacketRollNumberView;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import com.tencent.av.opengl.effects.FilterProcessRender;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.util.youtu.VideoPreviewFaceOutlineDetector;
 
 public class jlt
   implements Runnable
 {
-  public jlt(RedPacketRollNumberView paramRedPacketRollNumberView) {}
+  public jlt(FilterProcessRender paramFilterProcessRender, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    RedPacketRollNumberView.a(this.a, this.a.getChildCount());
-    int i = 0;
-    while (i < RedPacketRollNumberView.a(this.a))
+    try
     {
-      View localView = this.a.getChildAt(i);
-      if ((localView != null) && ((localView instanceof RedPacketRollTextView))) {
-        ((RedPacketRollTextView)localView).b();
-      }
-      i += 1;
+      FilterProcessRender.a(this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender).doFaceDetect(this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.e, this.jdField_a_of_type_Int / 4, this.b / 4);
+      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a = System.currentTimeMillis();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("FilterProcessRender", 2, "faceDetect.run e = " + localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jlt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.confess.FrdConfessInfo;
 
-public class abze
-  implements Handler.Callback
+public final class abze
+  implements Runnable
 {
-  public abze(EmoticonFromGroupManager paramEmoticonFromGroupManager) {}
+  public abze(FrdConfessInfo paramFrdConfessInfo) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-      QQToast.a(EmoticonFromGroupManager.a(this.a), 2131428195, 0).b(2131558448);
-      return true;
-    }
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
-      this.a.a(paramMessage);
-      return true;
-    }
-    QQToast.a(EmoticonFromGroupManager.a(this.a), 1, 2131434501, 0).b(2131558448);
-    return true;
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abze
  * JD-Core Version:    0.7.0.1
  */

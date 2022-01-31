@@ -1,17 +1,9 @@
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
 
 public class aoja
-  implements Runnable
+  extends aoit
 {
-  public aoja(ShortVideoPlayActivity paramShortVideoPlayActivity, String paramString) {}
-  
-  public void run()
-  {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity, 232, null, this.jdField_a_of_type_JavaLangString, new aojb(this), null);
-    ShortVideoPlayActivity.a(this.jdField_a_of_type_DovComTencentMobileqqActivityShortvideoShortVideoPlayActivity, localQQCustomDialog);
-  }
+  public aoja(GLTextureView paramGLTextureView, boolean paramBoolean) {}
 }
 
 

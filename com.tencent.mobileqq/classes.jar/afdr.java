@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
 
-public class afdr
+class afdr
   implements Runnable
 {
-  public afdr(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afdr(afdq paramafdq, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null)
-    {
-      localEntityManager.a(NearbyProfileDisplayPanel.a(this.a));
-      localEntityManager.a();
+    if (this.jdField_a_of_type_Afdq.a.a != null) {
+      this.jdField_a_of_type_Afdq.a.a.a(this.jdField_a_of_type_Afdq.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
     }
   }
 }

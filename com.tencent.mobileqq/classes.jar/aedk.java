@@ -1,40 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
-import com.tencent.mobileqq.magicface.drawable.PngGifEngine;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.now.NowPlugin;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.txproxy.HostInterface;
+import mqq.app.AppRuntime;
 
 public class aedk
-  implements Runnable
+  implements HostInterface
 {
-  public aedk(PngFrameManager paramPngFrameManager, String paramString, PngFrameManager.RandomDrawableParam paramRandomDrawableParam) {}
+  public aedk(NowPlugin paramNowPlugin) {}
   
-  public void run()
+  public boolean isMobileNet()
   {
-    if (FileUtils.a(this.jdField_a_of_type_JavaLangString))
-    {
-      ??? = PngGifEngine.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangObject = ???;
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler != null) {
-          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(227, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-        }
-        return;
-      }
+    return AppNetConnInfo.isMobileConn();
+  }
+  
+  public void reportBadIp(String paramString1, String paramString2)
+  {
+    InnerDns.a().a(paramString1, paramString2, 1017);
+  }
+  
+  public String reqDns(String paramString)
+  {
+    return InnerDns.a().a(paramString, 1017);
+  }
+  
+  public boolean useIpDirectConnect()
+  {
+    QQAppInterface localQQAppInterface = NowPlugin.a(this.a);
+    Object localObject = localQQAppInterface;
+    if (localQQAppInterface == null) {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
     }
-    ??? = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.eId;
-    ??? = new DownloadTask(EmoticonUtils.j.replace("[eIdSub]", ((String)???).substring(0, 2)).replace("[eId]", (CharSequence)???).replace("[width]", "200").replace("[height]", "200"), new File(this.jdField_a_of_type_JavaLangString));
-    ((DownloadTask)???).l = true;
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)???, new aedl(this), null);
+    if (localObject != null) {
+      return ((Integer)NearbySPUtil.a(((AppRuntime)localObject).getAccount(), "now_ip_conn_switch", Integer.valueOf(0))).intValue() == 1;
+    }
+    return false;
   }
 }
 

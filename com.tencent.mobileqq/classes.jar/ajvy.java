@@ -1,17 +1,52 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.OnProgressChangedListener;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import java.util.List;
 
-class ajvy
-  implements VideoSprite.OnProgressChangedListener
+public class ajvy
+  extends Handler
 {
-  ajvy(ajvw paramajvw) {}
-  
-  public void a(int paramInt)
+  public ajvy(TroopFileManager paramTroopFileManager, Looper paramLooper)
   {
-    if (this.a.a.a.a != null) {
-      this.a.a.a.a.setProgress(paramInt / 30);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    Object[] arrayOfObject = (Object[])paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (List)arrayOfObject[0];
+      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
+      String str = (String)arrayOfObject[2];
+      long l = ((Long)arrayOfObject[3]).longValue();
+      this.a.a(paramMessage, bool, str, l);
+      return;
+    case 2: 
+      paramMessage = (TroopFileInfo)arrayOfObject[0];
+      this.a.f(paramMessage);
+      return;
+    case 3: 
+      paramMessage = (TroopFileInfo)arrayOfObject[0];
+      this.a.g(paramMessage);
+      return;
+    case 4: 
+      paramMessage = (TroopFileInfo)arrayOfObject[0];
+      this.a.h(paramMessage);
+      return;
+    case 5: 
+      int i = paramMessage.arg1;
+      this.a.a(i);
+      return;
     }
+    paramMessage = (TroopFileInfo)arrayOfObject[0];
+    this.a.j(paramMessage);
   }
 }
 

@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.olympic.OlympicManager;
 
 public class agil
   implements Runnable
 {
-  public agil(ScanTorchActivity paramScanTorchActivity) {}
+  public agil(OlympicManager paramOlympicManager, int paramInt) {}
   
   public void run()
   {
-    ScanTorchActivity.c(this.a, true, ScanTorchActivity.c(this.a));
-    ScanTorchActivity.y(this.a);
+    synchronized (OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager))
+    {
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager.a.getPreferences();
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putInt("isTorchbearer", this.jdField_a_of_type_Int).commit();
+      }
+      return;
+    }
   }
 }
 

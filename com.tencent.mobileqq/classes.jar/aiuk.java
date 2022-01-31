@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.transfile.FileAssistantDownloader;
 
 public class aiuk
-  implements DialogInterface.OnClickListener
 {
-  public aiuk(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b = false;
+  public boolean c = false;
+  public boolean d = false;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aiuk(FileAssistantDownloader paramFileAssistantDownloader)
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 

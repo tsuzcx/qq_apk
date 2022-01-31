@@ -1,15 +1,24 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import java.net.URL;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class kyg
   implements Runnable
 {
-  public kyg(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  public kyg(CustomWebView paramCustomWebView, String paramString) {}
   
   public void run()
   {
-    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.b) {
+      return;
+    }
+    try
+    {
+      CustomWebView.a(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, "javascript:" + this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

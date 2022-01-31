@@ -1,19 +1,30 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.ShareAioResultDialog;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.biz.ui.CustomMenuBar;
 
 public class pek
-  implements View.OnClickListener
+  implements PopupWindow.OnDismissListener
 {
-  public pek(ShareAioResultDialog paramShareAioResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public pek(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog, 1);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840949);
+    if (CustomMenuBar.a()) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131494090));
     }
-    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.dismiss();
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = true;
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable, 50L);
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131494089));
+    }
   }
 }
 

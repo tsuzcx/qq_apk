@@ -1,25 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.contacts.adapter.PhoneContactAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
 
-public class wta
+class wta
   implements Runnable
 {
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public wta(AvatarPendantActivity paramAvatarPendantActivity, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-  }
+  wta(wsz paramwsz, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.b) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.b.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.setVisibility(8);
+    PhoneContactFragment.a(this.jdField_a_of_type_Wsz.a, this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_Wsz.a.a != null) {
+      this.jdField_a_of_type_Wsz.a.a.notifyDataSetChanged();
     }
   }
 }

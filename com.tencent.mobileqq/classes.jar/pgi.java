@@ -1,74 +1,67 @@
-import android.graphics.drawable.Drawable;
-import android.util.Log;
-import com.tencent.component.media.image.DecodeImageTask;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.ImageTaskTracer;
-import com.tencent.component.media.utils.ImageManagerLog;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import org.json.JSONObject;
 
 public class pgi
-  implements Comparable, Runnable
+  implements IphonePickerView.IphonePickListener
 {
-  private ImageKey jdField_a_of_type_ComTencentComponentMediaImageImageKey = null;
+  public pgi(NewerGuidePlugin paramNewerGuidePlugin, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
   
-  public pgi(DecodeImageTask paramDecodeImageTask, ImageKey paramImageKey)
+  public void onConfirmBtClicked()
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey = paramImageKey;
-  }
-  
-  public int a(pgi parampgi)
-  {
-    if ((this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey != null) && (this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.options != null) && (this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.options.priority)) {
-      return 1;
+    int i = NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897;
+    int j = NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
+    int k = NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, String.format("onDismissOperations year=%s month=%s day=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }));
     }
-    return 0;
+    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("result", 1);
+      localJSONObject.put("year", i);
+      localJSONObject.put("month", j);
+      localJSONObject.put("date", k);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respDatePicker", new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("NewerGuidePlugin", 1, "sendDatePickerResp fail", localException);
+      }
+    }
   }
   
-  public void run()
+  public void onItemSelected(int paramInt1, int paramInt2)
   {
-    System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey != null)
+    switch (paramInt1)
     {
-      ImageTaskTracer.removeImageDecodeThreadPendingRecord(this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.hashCodeEx());
-      ImageTaskTracer.addImageDecodeThreadDecodingRecord(this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.hashCodeEx());
     }
     for (;;)
     {
-      try
-      {
-        Drawable localDrawable = ImageManager.getInstance().a(this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey);
-        if (localDrawable == null) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.setResult(11, new Object[] { localDrawable });
+      if ((this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
       }
-      catch (Throwable localThrowable)
-      {
-        ImageManagerLog.e(DecodeImageTask.a(), Log.getStackTraceString(localThrowable));
-        if (this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.options == null) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey.options.errCode = ImageManager.getErrorString(this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.mImageKey, 101);
-        this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.setResult(9, new Object[0]);
-        if (this.jdField_a_of_type_ComTencentComponentMediaImageImageKey == null) {
-          continue;
-        }
-        ImageTaskTracer.addImageDecodeFailedRecord(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.hashCodeEx());
-        ImageTaskTracer.removeImageDecodeThreadDecodingRecord(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.hashCodeEx());
-        continue;
-      }
-      System.currentTimeMillis();
-      ImageManager.getInstance().nocachedDeleteLocalFile(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey);
-      this.jdField_a_of_type_ComTencentComponentMediaImageImageKey = null;
       return;
-      DecodeImageTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey);
+      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+      continue;
+      NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+      continue;
+      NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pgi
  * JD-Core Version:    0.7.0.1
  */

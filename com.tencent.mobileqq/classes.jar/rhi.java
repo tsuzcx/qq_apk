@@ -1,46 +1,55 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.kingkong.Common;
+import com.tencent.kingkong.Common.Log;
+import com.tencent.kingkong.PatchManager;
+import com.tencent.kingkong.ReportThread;
+import com.tencent.kingkong.UpdateManager;
+import com.tencent.kingkong.Utils.InterProcessLock;
 
-public class rhi
-  implements ActionSheet.OnButtonClickListener
+public final class rhi
+  extends Thread
 {
-  int jdField_a_of_type_Int = -1;
-  
-  public rhi(AccountManageActivity paramAccountManageActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
-    switch (paramInt)
+    try
     {
-    }
-    do
-    {
-      do
+      if ((!Common.jdField_a_of_type_Boolean) && (Common.b()) && (Common.c()) && (Common.d()))
       {
+        if (!Common.jdField_a_of_type_ComTencentKingkongUtils$InterProcessLock.a()) {
+          return;
+        }
+        Common.a(true);
+        if (PatchManager.a(Common.jdField_a_of_type_AndroidContentContext))
+        {
+          if (Common.jdField_a_of_type_ComTencentKingkongReportThread == null)
+          {
+            Common.jdField_a_of_type_ComTencentKingkongReportThread = new ReportThread();
+            Common.jdField_a_of_type_ComTencentKingkongReportThread.start();
+          }
+          UpdateManager.a(Common.jdField_a_of_type_AndroidContentContext);
+          if (UpdateManager.b()) {
+            UpdateManager.b();
+          }
+          if (UpdateManager.a()) {
+            UpdateManager.a();
+          }
+          PatchManager.a();
+        }
+        Common.jdField_a_of_type_Boolean = true;
+        Common.a(false);
+        Common.jdField_a_of_type_ComTencentKingkongUtils$InterProcessLock.a();
         return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-      } while (this.jdField_a_of_type_Int < 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-    } while (this.jdField_a_of_type_Int < 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+      }
+    }
+    catch (Exception localException)
+    {
+      Common.jdField_a_of_type_Boolean = false;
+      Common.Log.a("KingKongCommon", " SetSafeStatus Exception : " + localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rhi
  * JD-Core Version:    0.7.0.1
  */

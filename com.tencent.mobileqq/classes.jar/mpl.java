@@ -1,34 +1,19 @@
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo.NotifyInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class mpl
-  implements Runnable
+  implements AppInPushNotification.OnClickListener
 {
-  public mpl(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  public mpl(KandianAppInPush paramKandianAppInPush, String paramString, int paramInt, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo) {}
   
-  public void run()
+  public void a()
   {
-    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).c() == 5))
-    {
-      FastWebVideoFeedsPlayManager.a(this.a).e();
-      FastWebVideoFeedsPlayManager.a(this.a, 8);
-      if ((FastWebVideoFeedsPlayManager.a(this.a) == null) || (FastWebVideoFeedsPlayManager.a(this.a).c.getVisibility() != 0)) {
-        break label104;
-      }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      if (FastWebVideoFeedsPlayManager.c(this.a)) {
-        FastWebVideoFeedsPlayManager.a(this.a).a.f = ReadinjoyAdVideoReportData.b;
-      }
-      return;
-      label104:
-      this.a.a(4);
-    }
+    ReadInJoyUtils.a(BaseActivity.sTopActivity, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush.a("0X8008459", this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo);
+    KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush, null);
   }
 }
 

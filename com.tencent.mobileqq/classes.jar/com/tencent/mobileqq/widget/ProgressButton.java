@@ -37,7 +37,7 @@ public class ProgressButton
   private void a()
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    int i = getResources().getColorStateList(2131494238).getDefaultColor();
+    int i = getResources().getColorStateList(2131494244).getDefaultColor();
     if (this.jdField_b_of_type_Int == -1)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
@@ -74,7 +74,7 @@ public class ProgressButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProgressButton
  * JD-Core Version:    0.7.0.1
  */

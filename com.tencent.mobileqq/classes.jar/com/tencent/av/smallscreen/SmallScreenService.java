@@ -26,21 +26,21 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import jon;
-import joo;
-import jop;
-import joq;
-import jor;
+import jqq;
+import jqr;
+import jqs;
+import jqt;
+import jqu;
 
 public class SmallScreenService
   extends BaseSmallScreenService
   implements SmallScreenRelativeLayout.FloatListener
 {
   public static boolean g;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jon(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jqq(this);
   WindowManager jdField_a_of_type_AndroidViewWindowManager = null;
   public VideoController a;
-  private GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new joo(this);
+  private GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jqr(this);
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   SmallScreenVideoController jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController = null;
   Runnable c;
@@ -312,7 +312,7 @@ public class SmallScreenService
         if (i == 0) {
           break label1069;
         }
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840326);
+        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840341);
         label576:
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         ((RelativeLayout.LayoutParams)localObject2).leftMargin = this.jdField_g_of_type_Int;
@@ -429,12 +429,12 @@ public class SmallScreenService
           bool7 = false;
           break label250;
           label1069:
-          this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840323);
+          this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840338);
           break label576;
           label1082:
           this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
           if (i != 0) {
-            this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840327);
+            this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840342);
           }
           for (;;)
           {
@@ -443,7 +443,7 @@ public class SmallScreenService
             ((RelativeLayout.LayoutParams)localObject2).topMargin = this.j;
             localLayoutParams.bottomMargin = this.l;
             break;
-            this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840325);
+            this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840340);
           }
           label1163:
           this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
@@ -493,7 +493,7 @@ public class SmallScreenService
               if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() != null))
               {
                 if (this.jdField_c_of_type_JavaLangRunnable == null) {
-                  this.jdField_c_of_type_JavaLangRunnable = new joq(this);
+                  this.jdField_c_of_type_JavaLangRunnable = new jqt(this);
                 }
                 a().removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
                 jdField_g_of_type_Boolean = true;
@@ -571,7 +571,7 @@ public class SmallScreenService
   
   void h()
   {
-    ThreadManager.post(new jop(this), 10, null, true);
+    ThreadManager.post(new jqs(this), 10, null, true);
   }
   
   public void onCreate()
@@ -592,7 +592,7 @@ public class SmallScreenService
       this.jdField_b_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setCurPosition(this.n);
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setCurPosition(this.n);
       if (this.jdField_d_of_type_JavaLangRunnable == null) {
-        this.jdField_d_of_type_JavaLangRunnable = new jor(this);
+        this.jdField_d_of_type_JavaLangRunnable = new jqu(this);
       }
       localObject = new IntentFilter();
       ((IntentFilter)localObject).addAction("android.intent.action.NEW_OUTGOING_CALL");
@@ -645,7 +645,7 @@ public class SmallScreenService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenService
  * JD-Core Version:    0.7.0.1
  */

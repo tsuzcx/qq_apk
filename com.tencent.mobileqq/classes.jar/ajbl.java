@@ -1,33 +1,32 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class ajbl
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  public ajbl(NewTroopContactView paramNewTroopContactView) {}
+  public ajbl(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    switch (paramView.getId())
     {
-      paramView = this.a.a();
-      if (paramView != null)
-      {
-        paramView.a(NewTroopContactView.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList);
-        FragmentTransaction localFragmentTransaction = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getSupportFragmentManager().beginTransaction();
-        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
-        }
-        localFragmentTransaction.add(2131363923, paramView);
-        localFragmentTransaction.commitAllowingStateLoss();
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = paramView;
-      }
+    default: 
+      return;
+    case 2131362745: 
+      paramView = (ActionSheet)ActionSheetHelper.a(this.a, null);
+      paramView.a(2131435901, 3);
+      paramView.c(2131433029);
+      paramView.a(new ajbm(this, paramView));
+      paramView.show();
+      return;
+    case 2131364825: 
+      TroopAvatarWallPreviewActivity.c(this.a);
+      return;
     }
+    TroopAvatarWallPreviewActivity.h(this.a);
   }
 }
 

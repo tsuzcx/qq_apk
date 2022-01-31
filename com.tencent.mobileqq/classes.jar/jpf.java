@@ -1,25 +1,20 @@
-import com.tencent.av.opengl.glrenderer.GLCanvas;
-import com.tencent.av.switchface.SwitchFaceView;
+import cooperation.groupvideo.GroupVideoWrapper;
+import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
 
-public class jpf
+class jpf
+  implements GroupVideoWrapper.OnGVideoReadyListener
 {
-  public GLCanvas a;
-  public jpe[] a;
+  jpf(jpe paramjpe) {}
   
-  public jpf(SwitchFaceView paramSwitchFaceView)
+  public void a(GroupVideoWrapper paramGroupVideoWrapper)
   {
-    this.jdField_a_of_type_ArrayOfJpe = new jpe[2];
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfJpe.length)
-    {
-      this.jdField_a_of_type_ArrayOfJpe[i] = new jpe(paramSwitchFaceView);
-      i += 1;
-    }
+    paramGroupVideoWrapper.b();
+    paramGroupVideoWrapper.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpf
  * JD-Core Version:    0.7.0.1
  */

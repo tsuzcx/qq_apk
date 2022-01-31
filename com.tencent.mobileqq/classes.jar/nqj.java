@@ -1,42 +1,15 @@
-import android.media.MediaCodec;
-import android.media.MediaFormat;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaExtractor;
+import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
 public class nqj
-  extends nqk
+  implements Runnable
 {
-  private nqe a;
+  public nqj(VidListPlayMode paramVidListPlayMode) {}
   
-  public nqj(MediaExtractor paramMediaExtractor, boolean paramBoolean, int paramInt, nqm paramnqm, nqe paramnqe)
+  public void run()
   {
-    super(paramMediaExtractor, paramBoolean, paramInt, paramnqm);
-    this.a = paramnqe;
-    a();
-  }
-  
-  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-  {
-    super.a(paramMediaCodec, paramMediaFormat);
-    this.a.a(paramMediaFormat);
-  }
-  
-  protected void a(MediaFormat paramMediaFormat)
-  {
-    this.a.a(paramMediaFormat);
-  }
-  
-  public void a(nql paramnql, long paramLong)
-  {
-    this.a.a(paramnql.jdField_a_of_type_JavaNioByteBuffer, paramnql.jdField_a_of_type_Long);
-    b(paramnql);
-  }
-  
-  protected boolean a()
-  {
-    if (!c()) {
-      return this.a.a() < 200000L;
-    }
-    return super.a();
+    this.a.e = false;
+    this.a.a.setCurrentItem(this.a.b, false);
   }
 }
 

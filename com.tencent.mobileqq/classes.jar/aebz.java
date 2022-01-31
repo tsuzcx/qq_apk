@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
+import android.content.Context;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
 
 public class aebz
-  implements Runnable
+  implements GroupVideoManager.CheckListener
 {
-  public aebz(LightReplyMenuManager paramLightReplyMenuManager) {}
+  public aebz(GroupVideoManager paramGroupVideoManager, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a != null)
+    if (paramBoolean)
     {
-      LightReplyMenuManager.b(this.a, this.a.a);
-      this.a.e();
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, 1, "download", this.c, null, this.d, null, GroupVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager));
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, 1, "download", this.c, null, this.d, null);
+    GroupVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager);
   }
 }
 

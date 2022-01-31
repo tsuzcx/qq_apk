@@ -8,12 +8,12 @@ import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import java.util.ArrayList;
 import java.util.List;
-import pjw;
+import poo;
 
 public class Const$SimpleRequest
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pjw();
+  public static final Parcelable.Creator CREATOR = new poo();
   public int a;
   public Downloader.DownloadListener a;
   public Downloader.DownloadMode a;

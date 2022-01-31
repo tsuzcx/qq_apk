@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
 
 public class aojc
   implements Runnable
 {
-  public aojc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public aojc(FaceListPage paramFaceListPage, FacePackage paramFacePackage) {}
   
   public void run()
   {
-    this.a.a.serial();
-    this.a.app.a().a(this.a.a.frienduin, this.a.a.istroop, this.a.a.uniseq, this.a.a.msgData);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage);
   }
 }
 

@@ -1,32 +1,43 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.dingdong.data.ScheduleTipsDialog;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.widget.TCWNumberPicker;
 
 public class amlg
-  extends BroadcastReceiver
+  implements InputFilter
 {
-  public amlg(ScheduleTipsDialog paramScheduleTipsDialog) {}
+  private amlg(TCWNumberPicker paramTCWNumberPicker) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    int i = 0;
+    if (TCWNumberPicker.a(this.a) == null)
     {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (paramContext.equals("homekey")) && (ScheduleTipsDialog.b(this.a))) {
-        ScheduleTipsDialog.a(this.a, this.a);
+      paramCharSequence = TCWNumberPicker.a(this.a).filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      return paramCharSequence;
+    }
+    String str = String.valueOf(paramCharSequence.subSequence(paramInt1, paramInt2));
+    paramSpanned = String.valueOf(String.valueOf(paramSpanned.subSequence(0, paramInt3)) + str + paramSpanned.subSequence(paramInt4, paramSpanned.length())).toLowerCase();
+    String[] arrayOfString = TCWNumberPicker.a(this.a);
+    paramInt2 = arrayOfString.length;
+    paramInt1 = i;
+    for (;;)
+    {
+      if (paramInt1 >= paramInt2) {
+        break label154;
       }
+      paramCharSequence = str;
+      if (arrayOfString[paramInt1].toLowerCase().startsWith(paramSpanned)) {
+        break;
+      }
+      paramInt1 += 1;
     }
-    while ((!paramContext.equals("android.intent.action.SCREEN_OFF")) || (!ScheduleTipsDialog.b(this.a))) {
-      return;
-    }
-    ScheduleTipsDialog.a(this.a, this.a);
+    label154:
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlg
  * JD-Core Version:    0.7.0.1
  */

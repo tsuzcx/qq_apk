@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
 
 public class adva
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public adva(NowLoadingActivity paramNowLoadingActivity) {}
+  public adva(HotChatFragment paramHotChatFragment) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!this.a.isFinishing()) {
-      this.a.finish();
+    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.a != null)) {
+      this.a.a.x();
     }
   }
 }

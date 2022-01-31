@@ -1,39 +1,60 @@
-import com.tencent.mobileqq.armap.ResDownloadManager.IResDownloadListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ar.RemoteArConfigManager;
+import com.tencent.mobileqq.ar.aidl.IArFaceCallback.Stub;
+import com.tencent.qphone.base.util.QLog;
 
 public class aake
+  extends IArFaceCallback.Stub
 {
-  public int a;
-  public long a;
-  public ResDownloadManager.IResDownloadListener a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  long c;
-  public boolean c;
+  public aake(RemoteArConfigManager paramRemoteArConfigManager) {}
   
-  public aake()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_c_of_type_Int = -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
+    }
+    if (RemoteArConfigManager.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 6;
+    localMessage.arg1 = paramInt;
+    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
   }
   
-  public String toString()
+  public void a(int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_Int + ", net_type[" + this.jdField_b_of_type_Int + "], auto_next[" + this.jdField_a_of_type_Boolean + "], url[" + this.jdField_a_of_type_JavaLangString + "], md5[" + this.jdField_b_of_type_JavaLangString + "], callByPreDownload[" + this.jdField_b_of_type_Boolean + "], downloading[" + this.jdField_c_of_type_Boolean + "]";
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
+    }
+    if (RemoteArConfigManager.a(this.a) == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 7;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
+    }
+    if (RemoteArConfigManager.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 8;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
   }
 }
 

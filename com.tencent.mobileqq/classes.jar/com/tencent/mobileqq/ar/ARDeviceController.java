@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.ar;
 
+import aadr;
 import android.app.ActivityManager;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -19,7 +20,6 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import zxd;
 
 public class ARDeviceController
 {
@@ -274,7 +274,7 @@ public class ARDeviceController
     if ((this.e) || (this.jdField_c_of_type_Int != paramInt))
     {
       this.e = false;
-      ThreadManager.post(new zxd(this, paramInt, paramBoolean), 5, null, true);
+      ThreadManager.post(new aadr(this, paramInt, paramBoolean), 5, null, true);
     }
     this.jdField_c_of_type_Int = paramInt;
   }

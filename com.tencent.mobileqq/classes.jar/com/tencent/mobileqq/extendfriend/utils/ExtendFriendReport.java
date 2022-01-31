@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.utils;
 
-import acjv;
+import acsc;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public class ExtendFriendReport
   
   private void a(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3)
   {
-    ThreadManager.post(new acjv(this, paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3), 5, null, false);
+    ThreadManager.post(new acsc(this, paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3), 5, null, false);
   }
   
   public void a()

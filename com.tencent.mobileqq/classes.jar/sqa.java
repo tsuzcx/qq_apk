@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class sqa
-  implements Runnable
+  implements TextWatcher
 {
-  public sqa(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  private sqa(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.onBackPressed();
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.a(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

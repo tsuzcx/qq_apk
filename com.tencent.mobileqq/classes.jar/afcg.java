@@ -1,25 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
+import android.view.View;
+import android.widget.ListView;
+import com.tencent.av.utils.UITools;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import java.util.List;
 
 public class afcg
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public afcg(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public afcg(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = this.a;
-    paramAnimation.k += 1;
-    if (NearbyPeopleProfileActivity.a(this.a) != null) {
-      NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
+    int i = UITools.b(this.a.getContext());
+    if (ShortVideoCommentsView.a() * this.a.a.a.size() + ShortVideoCommentsView.b(this.a).getMeasuredHeight() >= i)
+    {
+      ShortVideoCommentsView.a(this.a).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.a).getMeasuredHeight());
+      return;
     }
+    ShortVideoCommentsView.a(this.a).setSelection(this.a.a.a.size() + 1);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

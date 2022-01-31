@@ -1,8 +1,8 @@
 package com.tencent.open.appcommon.now.download;
 
-import aleq;
-import aler;
-import ales;
+import almi;
+import almj;
+import almk;
 import android.text.TextUtils;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -24,8 +24,8 @@ import mqq.os.MqqHandler;
 public class DownloadCenterImpl
 {
   private static DownloadCenterImpl jdField_a_of_type_ComTencentOpenAppcommonNowDownloadDownloadCenterImpl;
-  private INetEventHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new aleq(this);
-  private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new aler(this);
+  private INetEventHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new almi(this);
+  private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new almj(this);
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   public DownloadCenterImpl()
@@ -231,7 +231,7 @@ public class DownloadCenterImpl
       LogUtility.a("DownloadCenterImpl", "getDownloadProgressById infos == null");
       return -1;
     }
-    ThreadManager.getSubThreadHandler().post(new ales(this, paramArrayList));
+    ThreadManager.getSubThreadHandler().post(new almk(this, paramArrayList));
     return 0;
   }
   
@@ -254,7 +254,7 @@ public class DownloadCenterImpl
       paramDownloadInfo.a(4);
       paramDownloadInfo.k = NowUtil.b();
       DownloadManager.a().e(paramDownloadInfo);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener.c(paramDownloadInfo);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener.onDownloadFinish(paramDownloadInfo);
       return;
     }
     DownloadManager.a().a(paramDownloadInfo);

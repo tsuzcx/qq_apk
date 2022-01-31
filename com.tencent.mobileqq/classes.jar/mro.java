@@ -1,16 +1,13 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class mro
+class mro
   implements Runnable
 {
-  public mro(ServiceAccountFolderActivity paramServiceAccountFolderActivity, ServiceAccountFolderManager paramServiceAccountFolderManager) {}
+  mro(mrn parammrn) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.b(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity.app);
-    ServiceAccountFolderActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity).sendEmptyMessage(100);
+    ReadInJoyLogicEngineEventDispatcher.a().c();
   }
 }
 

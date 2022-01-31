@@ -1,22 +1,37 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoVote;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
 
 public class aodz
-  extends Property
+  implements DialogInterface.OnClickListener
 {
-  public aodz(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
+  static
   {
-    super(paramClass, paramString);
+    if (!EditVideoVote.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
   }
   
-  public Float a(GroundDrawable paramGroundDrawable)
-  {
-    return Float.valueOf(GroundDrawable.c(paramGroundDrawable));
-  }
+  public aodz(EditVideoVote paramEditVideoVote, int paramInt) {}
   
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GroundDrawable.b(paramGroundDrawable, paramFloat.floatValue());
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Bundle();
+    VoteLayer.VoteItem localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoVote.a().a;
+    if ((!jdField_a_of_type_Boolean) && (localVoteItem == null)) {
+      throw new AssertionError();
+    }
+    EditVideoVote.a(paramDialogInterface, localVoteItem);
+    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoVote.a.a(35, paramDialogInterface);
   }
 }
 

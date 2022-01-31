@@ -1,24 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.statistics.battery.BatteryIPCModule;
-import com.tencent.mobileqq.statistics.battery.BatteryStatsImpl;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
 
 public class aigm
-  implements EIPCResultCallback
+  extends GestureKeyInfo
 {
-  public aigm(BatteryIPCModule paramBatteryIPCModule) {}
+  public String b;
+  public int e = 0;
+  public int f = 0;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public aigm(GestureMgrRecognize paramGestureMgrRecognize) {}
+  
+  public void a(aigm paramaigm)
   {
-    if ((paramEIPCResult.isSuccess()) && (paramEIPCResult.data.getBoolean("key_monitor"))) {
-      BatteryStatsImpl.a().e();
-    }
+    super.a(paramaigm);
+    paramaigm.e = this.e;
+    paramaigm.f = this.f;
+    paramaigm.b = this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aigm
  * JD-Core Version:    0.7.0.1
  */

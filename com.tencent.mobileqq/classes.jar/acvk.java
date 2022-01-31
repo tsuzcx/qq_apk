@@ -1,10 +1,38 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.ChangeNewPath;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class acvk
-  implements FileManagerRSWorker.ChangeNewPath
+  implements AbsListView.OnScrollListener
 {
-  public acvk(FileManagerRSWorker paramFileManagerRSWorker) {}
+  public acvk(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPhotoTrace", 2, LocalFileBrowserActivity.e + ",onScrollStateChanged() is called,scrollState is:" + paramInt + ",time is:" + System.currentTimeMillis());
+    }
+    if (paramInt == 0)
+    {
+      URLDrawable.resume();
+      return;
+    }
+    URLDrawable.pause();
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramInt1 <= 0) || (paramInt1 + paramInt2 >= paramInt3 - 1)) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt1 != 0) {
+        URLDrawable.resume();
+      }
+      return;
+    }
+  }
 }
 
 

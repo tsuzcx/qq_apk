@@ -12,7 +12,6 @@ public class ETTextLine
   private int c;
   private int d;
   private int e;
-  private int f;
   
   public int a()
   {
@@ -30,7 +29,7 @@ public class ETTextLine
     while (j < n)
     {
       ETFragment localETFragment = (ETFragment)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      k += localETFragment.a();
+      k += localETFragment.c();
       if ((i <= paramInt) && (paramInt < k)) {
         return localETFragment;
       }
@@ -40,42 +39,41 @@ public class ETTextLine
     return null;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public ArrayList a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     int i = 0;
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
     this.c = 0;
-    this.d = 0;
+    this.d = paramInt3;
     paramInt2 = this.jdField_a_of_type_JavaUtilArrayList.size();
     paramInt1 = 0;
     ETFragment localETFragment;
-    int j;
     while (paramInt1 < paramInt2)
     {
       localETFragment = (ETFragment)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-      if (localETFragment.b() > this.d) {
-        this.d = localETFragment.b();
+      if (localETFragment.d() > this.d) {
+        this.d = localETFragment.d();
       }
-      j = this.c;
-      this.c = (localETFragment.a() + j);
+      paramInt3 = this.c;
+      this.c = (localETFragment.c() + paramInt3);
       paramInt1 += 1;
     }
     this.e = 0;
-    this.f = 0;
     paramInt1 = i;
     while (paramInt1 < paramInt2)
     {
       localETFragment = (ETFragment)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-      if (localETFragment.d() == 0)
+      if (localETFragment.f() == 0)
       {
-        i = localETFragment.e();
-        j = localETFragment.b();
-        if (i > this.e) {
-          this.e = i;
-        }
-        if (j > this.f) {
-          this.f = j;
+        paramInt3 = localETFragment.g();
+        if (paramInt3 > this.e) {
+          this.e = paramInt3;
         }
       }
       paramInt1 += 1;
@@ -91,10 +89,8 @@ public class ETTextLine
     while (paramInt1 < k)
     {
       ETFragment localETFragment = (ETFragment)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-      if (localETFragment.d() == 0) {
-        localETFragment.a(paramBitmap, i, this.e + paramInt2 - localETFragment.e() + this.d - this.f);
-      }
-      i += localETFragment.a();
+      localETFragment.a(paramBitmap, i, this.d - localETFragment.d() + paramInt2 - (this.e - localETFragment.g()));
+      i += localETFragment.c();
       paramInt1 += 1;
     }
   }
@@ -109,7 +105,7 @@ public class ETTextLine
     {
       ETFragment localETFragment = (ETFragment)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
       localETFragment.a(paramCanvas, i, paramInt2, this.d);
-      i += localETFragment.a();
+      i += localETFragment.c();
       paramInt1 += 1;
     }
   }
@@ -132,6 +128,11 @@ public class ETTextLine
   public int d()
   {
     return this.b;
+  }
+  
+  public int e()
+  {
+    return this.e;
   }
 }
 

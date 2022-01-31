@@ -31,8 +31,8 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForTroopFee;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import vjk;
-import vjl;
+import vom;
+import von;
 
 public class TroopFeeMsgItemBuilder
   extends BaseBubbleBuilder
@@ -64,7 +64,7 @@ public class TroopFeeMsgItemBuilder
   public TroopFeeMsgItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vjk(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vom(this);
     float f1 = paramContext.getResources().getDisplayMetrics().density;
     this.i = ((int)(42.0F * f1 + 0.5F));
     this.j = ((int)(21.0F * f1 + 0.5F));
@@ -91,7 +91,7 @@ public class TroopFeeMsgItemBuilder
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramViewHolder = (vjl)paramViewHolder;
+    paramViewHolder = (von)paramViewHolder;
     paramBaseChatItemLayout = (MessageForTroopFee)paramChatMessage;
     if ((paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramViewHolder.jdField_a_of_type_Long == paramChatMessage.uniseq)) {
       return paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -130,7 +130,7 @@ public class TroopFeeMsgItemBuilder
       localTextView1.setText(paramBaseChatItemLayout.summary);
       localTextView1.setTextColor(-1);
       localTextView2.setText(paramBaseChatItemLayout.source);
-      localImageView.setImageResource(2130844053);
+      localImageView.setImageResource(2130844119);
       i1 = Color.parseColor(paramBaseChatItemLayout.backgroundColor);
       if (paramChatMessage.isSend()) {
         break label401;
@@ -139,7 +139,7 @@ public class TroopFeeMsgItemBuilder
     label401:
     for (boolean bool = true;; bool = false)
     {
-      localQQWalletTransferBubbleView.setBubbleBackground(2130844051, i1, bool);
+      localQQWalletTransferBubbleView.setBubbleBackground(2130844117, i1, bool);
       paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setContentDescription(paramBaseChatItemLayout.title + paramBaseChatItemLayout.summary + paramBaseChatItemLayout.source);
       paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(paramOnLongClickAndTouchListener);
@@ -203,7 +203,7 @@ public class TroopFeeMsgItemBuilder
     localObject2 = new RelativeLayout.LayoutParams(this.h, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131362100);
     ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    ((RelativeLayout)localObject1).setBackgroundResource(2130844052);
+    ((RelativeLayout)localObject1).setBackgroundResource(2130844118);
     ((RelativeLayout)localObject1).setId(2131362104);
     paramContext = new TextView(paramContext);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
@@ -226,7 +226,7 @@ public class TroopFeeMsgItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new vjl(this, null);
+    return new von(this, null);
   }
   
   protected String a(ChatMessage paramChatMessage)
@@ -242,7 +242,7 @@ public class TroopFeeMsgItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131375567: 
+    case 2131375633: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }

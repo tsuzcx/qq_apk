@@ -1,43 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.zimu.ARZimuUtil;
-import com.tencent.av.business.manager.zimu.EffectZimuManager.DataReport;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
-import com.tencent.av.ui.QavListItemBase.ItemInfo;
-import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import android.content.Context;
+import android.view.Window;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.widget.ActionSheet;
 
 public class kdl
-  implements QAVPtvTemplateAdapter.IEffectCallback
+  extends ActionSheet
 {
-  public kdl(ZimuToolbar paramZimuToolbar) {}
-  
-  public void a()
+  public kdl(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
   {
-    EffectSettingUi.a(ZimuToolbar.access$300(this.a));
-  }
-  
-  public void a(QavListItemBase.ItemInfo paramItemInfo)
-  {
-    ZimuToolbar.access$000(this.a, paramItemInfo.a);
-    if ((!TextUtils.isEmpty(paramItemInfo.a)) && (!"0".equalsIgnoreCase(paramItemInfo.a)))
-    {
-      EffectZimuManager.DataReport.a("0X80085CD", paramItemInfo.a);
-      if (ARZimuUtil.a(paramItemInfo.a))
-      {
-        paramItemInfo = ZimuToolbar.access$100(this.a).a().a().c;
-        String str = ZimuToolbar.access$200(this.a).getCurrentAccountUin();
-        EffectZimuManager.DataReport.a("0X8009191", str, paramItemInfo);
-        EffectZimuManager.DataReport.a("0X8009192", str, paramItemInfo);
-      }
-    }
+    super(paramContext);
+    super.getWindow().addFlags(524288);
+    super.getWindow().addFlags(128);
+    super.getWindow().addFlags(1024);
+    super.getWindow().addFlags(2097152);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kdl
  * JD-Core Version:    0.7.0.1
  */

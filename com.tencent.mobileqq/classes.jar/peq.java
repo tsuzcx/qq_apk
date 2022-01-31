@@ -1,7 +1,18 @@
-public class peq {}
+import com.tencent.biz.ui.PopupMenu;
+
+class peq
+  implements Runnable
+{
+  peq(pep parampep) {}
+  
+  public void run()
+  {
+    this.a.a.b();
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     peq
  * JD-Core Version:    0.7.0.1
  */

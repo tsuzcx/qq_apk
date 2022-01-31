@@ -1,38 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
-import java.util.Queue;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase.OnEditItemListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
 
 public class ajsr
-  implements Animator.AnimatorListener
+  implements View.OnKeyListener
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean = false;
+  public ajsr(TextItem paramTextItem, TextItem.TextViewHolder paramTextViewHolder) {}
   
-  public ajsr(MessageSubtitleView paramMessageSubtitleView, boolean paramBoolean, int paramInt)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getSelectionStart() == 0))
     {
-      if (this.jdField_a_of_type_Int == MessageSubtitleView.c) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.b();
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.a.isEmpty()) {
-        MessageSubtitleView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder);
+      return true;
     }
+    return false;
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

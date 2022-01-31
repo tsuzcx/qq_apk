@@ -1,21 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
 
 public class aofu
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aofu(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public aofu(FaceLayer.FaceItem paramFaceItem) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!this.a.b)
-    {
-      this.a.a.a(2002, "抱歉，摄像头可能被禁止了", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@] ERR_CODE_CAMERA_CREATE  黑名单机型,2秒还没有获取到预览帧,可能没有权限");
-      }
-    }
+    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.k();
   }
 }
 

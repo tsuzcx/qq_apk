@@ -1,103 +1,54 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PrecoverResource;
-import com.tencent.mobileqq.precover.PrecoverManager;
-import com.tencent.mobileqq.precover.PrecoverReporter;
-import com.tencent.mobileqq.precover.PrecoverResDownloader;
-import com.tencent.mobileqq.precover.PrecoverUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.armap.ItemInfo;
+import com.tencent.mobileqq.binhai.BinHaiOpenRedPackDialog;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import tencent.im.oidb.cmd0x98b.oidb_0x98b.ItemInfo;
 
 public class agnc
   implements Runnable
 {
-  public agnc(PrecoverManager paramPrecoverManager, String paramString) {}
+  public agnc(ScanTorchActivity paramScanTorchActivity, ArrayList paramArrayList, int paramInt, String paramString) {}
   
   public void run()
   {
-    boolean bool1 = true;
-    Object localObject4;
-    Object localObject3;
-    for (;;)
+    Bitmap localBitmap = null;
+    Object localObject2;
+    if (ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) == null)
     {
-      synchronized (PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager))
-      {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          Object localObject1 = PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).keySet();
-          localObject4 = new ArrayList();
-          localObject1 = ((Set)localObject1).iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          Object localObject5 = (String)((Iterator)localObject1).next();
-          if (QLog.isColorLevel()) {
-            QLog.d("PrecoverManager", 2, new Object[] { "startDownload, download business=", localObject5 });
-          }
-          localObject5 = (List)PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).get(localObject5);
-          if ((localObject5 == null) || (((List)localObject5).size() <= 0)) {
-            continue;
-          }
-          ((List)localObject4).addAll((Collection)localObject5);
-        }
+      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, new BinHaiOpenRedPackDialog(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.b));
+      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).a(new agnd(this));
+      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false, 0);
+      localObject1 = ItemInfo.a((oidb_0x98b.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+      localObject2 = ((ItemInfo)localObject1).jdField_a_of_type_JavaLangString;
+      String str = "http://sqimg.qq.com/qq_product_operations/mma/binhai_redpack_2017/rank.html?_wv=536929249&_wwv=5&actid=" + ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
+      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).a((String)localObject2, "", "", "", (ItemInfo)localObject1, this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaLangString);
+      localObject2 = ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, "res/redpack/redpack_bg.png", true);
+      if (this.jdField_a_of_type_Int <= 1) {
+        break label247;
       }
-      localObject3 = new HashSet();
-      ((Set)localObject3).add(this.jdField_a_of_type_JavaLangString);
     }
-    if ((this.jdField_a_of_type_JavaLangString == null) && (PrecoverUtils.a(PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).getApp(), "res_cover"))) {}
-    for (;;)
+    label247:
+    for (Object localObject1 = ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, "res/redpack/redpack_left.png", true);; localObject1 = null)
     {
-      if (bool1)
-      {
-        PrecoverUtils.a(PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).getApp(), "res_cover");
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager, true);
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager, new HashSet());
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager);
+      if (this.jdField_a_of_type_Int > 1) {
+        localBitmap = ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, "res/redpack/redpack_right.png", true);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PrecoverManager", 2, new Object[] { "startDownload, needReport=", Boolean.valueOf(bool1), ", resToDownload.size=", Integer.valueOf(((List)localObject4).size()) });
-      }
-      localObject3 = ((List)localObject4).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (PrecoverResource)((Iterator)localObject3).next();
-        if ((localObject4 != null) && (((PrecoverResource)localObject4).isValid()))
-        {
-          if ((bool1) && (PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager) != null)) {
-            PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).add(localObject4);
-          }
-          boolean bool2 = PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).a((PrecoverResource)localObject4, null, true, false);
-          if ((bool1) && (PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager) != null) && (!bool2)) {
-            PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).remove(localObject4);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("PrecoverManager", 2, "startDownload, res=" + localObject4 + ", started=" + bool2);
-          }
-        }
-      }
-      if ((bool1) && (PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager) != null) && (PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).size() == 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PrecoverManager", 2, "startDownload, nothing need download, doing report");
-        }
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager, false);
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).b(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager);
-        PrecoverManager.a(this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverManager).a();
-      }
+      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).a((Bitmap)localObject2, (Bitmap)localObject1, localBitmap);
+      ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false);
+      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).show();
       return;
-      bool1 = false;
+      if (!ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).isShowing()) {
+        break;
+      }
+      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).dismiss();
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agnc
  * JD-Core Version:    0.7.0.1
  */

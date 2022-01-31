@@ -1,22 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
+import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class swj
-  implements View.OnTouchListener
+  implements WebProcessManager.WebProcessStartListener
 {
-  public swj(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  private WeakReference a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public swj(PreloadProcHitSession paramPreloadProcHitSession)
   {
-    if (!this.a.a)
+    this.a = new WeakReference(paramPreloadProcHitSession);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
-      this.a.a = true;
+      PreloadProcHitSession localPreloadProcHitSession = (PreloadProcHitSession)this.a.get();
+      if (localPreloadProcHitSession != null) {
+        localPreloadProcHitSession.a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileCardActivity", 2, "check friend's profile and preload web-process!");
+      }
     }
-    return false;
   }
 }
 

@@ -5,7 +5,7 @@ import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureSoMana
 import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.qipc.QIPCModule;
-import mck;
+import mfy;
 
 public class VideoFeedsIPCServer
 {
@@ -14,7 +14,7 @@ public class VideoFeedsIPCServer
   private ReadInJoyCameraCaptureSoManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureSoManager;
   private FileTransferManager.Callback jdField_a_of_type_ComTencentMobileqqActivityAioFileTransferManager$Callback;
   private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new mck(this, "Module_VideoFeedsIPCServer");
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new mfy(this, "Module_VideoFeedsIPCServer");
   
   public static VideoFeedsIPCServer a()
   {

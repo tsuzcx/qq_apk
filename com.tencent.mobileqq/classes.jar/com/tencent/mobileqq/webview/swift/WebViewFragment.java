@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.webview.swift;
 
-import akne;
-import aknf;
-import akng;
-import aknh;
-import akni;
-import aknj;
-import aknk;
-import aknl;
-import aknm;
-import aknn;
-import akno;
-import aknq;
-import aknr;
-import akns;
+import akuv;
+import akuw;
+import akux;
+import akuy;
+import akuz;
+import akva;
+import akvb;
+import akvc;
+import akvd;
+import akve;
+import akvf;
+import akvh;
+import akvi;
+import akvj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -168,7 +168,7 @@ public class WebViewFragment
 {
   public static int g;
   public Intent a;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new akng(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new akux(this);
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   public AuthorizeConfig a;
   protected FileChooserHelper a;
@@ -240,7 +240,7 @@ public class WebViewFragment
     this.jdField_l_of_type_JavaLangString = "";
     this.jdField_m_of_type_Int = 1;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider = a();
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSchedulerSwiftBrowserStateMachineScheduler = new SwiftBrowserStateMachineScheduler(new akne(this));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSchedulerSwiftBrowserStateMachineScheduler = new SwiftBrowserStateMachineScheduler(new akuv(this));
   }
   
   public static WebViewFragment a(Intent paramIntent)
@@ -289,11 +289,11 @@ public class WebViewFragment
   private void a(View paramView)
   {
     if ((Build.VERSION.SDK_INT >= 11) && (paramView != null)) {
-      paramView.addOnLayoutChangeListener(new aknf(this));
+      paramView.addOnLayoutChangeListener(new akuw(this));
     }
   }
   
-  private void f()
+  private void h()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyle == null)
     {
@@ -301,7 +301,7 @@ public class WebViewFragment
       int i2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.getPaddingBottom();
       int i3 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.getPaddingLeft();
       int i4 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.getPaddingRight();
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(super.getResources().getDrawable(2130845871));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(super.getResources().getDrawable(2130845951));
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.setPadding(i3, i1, i4, i2);
       return;
     }
@@ -312,37 +312,36 @@ public class WebViewFragment
   
   public void A()
   {
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) {
-      n();
-    }
-    HashMap localHashMap;
-    do
-    {
-      return;
-      if (!this.jdField_a_of_type_ComTencentBizUiTouchWebView.canGoBack()) {
-        break;
-      }
-      localHashMap = new HashMap(1);
-      localHashMap.put("target", Integer.valueOf(2));
-    } while (!this.jdField_a_of_type_ComTencentBizUiTouchWebView.a(localHashMap));
-    o();
-    return;
-    n();
-  }
-  
-  public void B()
-  {
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.e();
   }
   
-  public final void C()
+  public final void B()
   {
-    a("返回游戏中心继续浏览", 2130837945, null, SingleTaskQQBrowser.class.getName());
+    a("返回游戏中心继续浏览", 2130837944, null, SingleTaskQQBrowser.class.getName());
   }
   
-  public void D()
+  public void C()
   {
     d(SwiftWebViewUtils.a(this, this.jdField_a_of_type_AndroidContentIntent));
+  }
+  
+  public void U_()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      this.jdField_g_of_type_Boolean = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      a(8589934604L, null);
+    }
+    if ((this.jdField_d_of_type_AndroidViewView != null) && (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_g_of_type_Boolean))
+    {
+      if (ThemeUtil.isDefaultOrDIYTheme(false)) {
+        this.jdField_d_of_type_AndroidViewView.setBackgroundResource(2130845952);
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_d_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131494260));
   }
   
   public int a(Bundle paramBundle)
@@ -355,11 +354,11 @@ public class WebViewFragment
     Util.b("Web_IPCSetup");
     if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Long & 0x400000) > 0L)
     {
-      SosoInterface.a(new aknm(this, 0, false, false, 600000L, false, false, "webview"));
-      SosoInterface.a(new aknn(this, 0, true, false, 600000L, false, false, "webview"));
+      SosoInterface.a(new akvd(this, 0, false, false, 600000L, false, false, "webview"));
+      SosoInterface.a(new akve(this, 0, true, false, 600000L, false, false, "webview"));
     }
-    ThreadManager.getUIHandler().postDelayed(new akno(this), 3000L);
-    SwiftBrowserIdleTaskHelper.a().a(new aknq(this, 2));
+    ThreadManager.getUIHandler().postDelayed(new akvf(this), 3000L);
+    SwiftBrowserIdleTaskHelper.a().a(new akvh(this, 2));
     Util.b("Web_qqbrowser_state_machine_init_FINAL");
     Util.b("Web_qqbrowser_state_machine_all");
     this.jdField_m_of_type_Int = 1;
@@ -503,7 +502,7 @@ public class WebViewFragment
         if (QLog.isColorLevel()) {
           QLog.d("WebLog_WebViewFragment", 2, "using custom AudioManager");
         }
-        return new aknr(BaseApplicationImpl.getApplication());
+        return new akvi(BaseApplicationImpl.getApplication());
         localAuthorizeConfig = this.jdField_a_of_type_ComTencentBizAuthorizeConfig;
       }
     }
@@ -871,7 +870,7 @@ public class WebViewFragment
     if ((this.jdField_h_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
       return;
     }
-    x();
+    w();
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     QLog.e("WebLog_WebViewFragment", 1, "errorCode=" + paramInt + "descrip=" + paramString1 + "failingUrl" + Util.b(paramString2, new String[0]));
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView, paramInt, paramString1, paramString2);
@@ -883,7 +882,7 @@ public class WebViewFragment
     do
     {
       return;
-      x();
+      w();
       if ((!"about:blank".equalsIgnoreCase(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics$CrashStepStatsEntry.jdField_a_of_type_Int == 2))
       {
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics$CrashStepStatsEntry.jdField_a_of_type_Int = 8;
@@ -910,7 +909,7 @@ public class WebViewFragment
           {
             int i1 = ((Bundle)localObject).getInt("AIO_Scroll_Y");
             if ((i1 > 0) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getView() != null)) {
-              ThreadManager.getUIHandler().post(new aknh(this, i1));
+              ThreadManager.getUIHandler().post(new akuy(this, i1));
             }
           }
         }
@@ -935,7 +934,7 @@ public class WebViewFragment
     do
     {
       return;
-      x();
+      w();
       paramWebView = new Bundle();
       paramWebView.putString("url", paramString);
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(6, paramWebView);
@@ -1014,7 +1013,7 @@ public class WebViewFragment
   {
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, paramJsBridgeListener, paramOnClickListener);
     ((SwiftBrowserShareMenuHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(4)).d();
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.f();
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.g();
   }
   
   public void a(JSONObject paramJSONObject)
@@ -1038,7 +1037,7 @@ public class WebViewFragment
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Boolean)
     {
       super.getActivity().getWindow().setFlags(1024, 1024);
-      y();
+      x();
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_WebViewFragment", 2, "init view 1, cost = " + (System.nanoTime() - l1) / 1000000L);
       }
@@ -1067,7 +1066,7 @@ public class WebViewFragment
       if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_k_of_type_Boolean))
       {
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_l_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(super.getResources().getDrawable(2130846407));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(super.getResources().getDrawable(2130846489));
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.d(-1);
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.e(-1);
         if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_m_of_type_Boolean) {
@@ -1093,7 +1092,7 @@ public class WebViewFragment
           if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_k_of_type_Boolean)) {
             break;
           }
-          f();
+          h();
           break;
           this.n = true;
           this.jdField_o_of_type_Boolean = true;
@@ -1130,7 +1129,7 @@ public class WebViewFragment
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.a(this.jdField_a_of_type_AndroidContentIntent);
     s();
     if (!b(d())) {
-      ThreadManager.post(new akni(this), 5, null, true);
+      ThreadManager.post(new akuz(this), 5, null, true);
     }
     Util.a("Web_qqbrowser_dooncreate");
     this.jdField_o_of_type_Boolean = false;
@@ -1263,8 +1262,8 @@ public class WebViewFragment
       }
       if (Boolean.valueOf(bool).booleanValue())
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(super.getResources().getString(2131433698));
-        a(this.jdField_i_of_type_Int, paramBundle, new aknl(this));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(super.getResources().getString(2131433712));
+        a(this.jdField_i_of_type_Int, paramBundle, new akvc(this));
       }
     }
     this.jdField_m_of_type_Int = 512;
@@ -1293,12 +1292,12 @@ public class WebViewFragment
   public View b()
   {
     if (this.jdField_f_of_type_AndroidViewView == null) {
-      this.jdField_f_of_type_AndroidViewView = LayoutInflater.from(super.getActivity()).inflate(2130971713, null);
+      this.jdField_f_of_type_AndroidViewView = LayoutInflater.from(super.getActivity()).inflate(2130971742, null);
     }
     return this.jdField_f_of_type_AndroidViewView;
   }
   
-  Share b()
+  public Share b()
   {
     if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare == null) {
       this.jdField_a_of_type_ComTencentBizWebviewpluginShare = new Share(this.jdField_a_of_type_ComTencentCommonAppAppInterface, super.getActivity());
@@ -1350,7 +1349,7 @@ public class WebViewFragment
   
   void b(int paramInt1, int paramInt2)
   {
-    Object localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.findViewById(2131366767);
+    Object localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.findViewById(2131366765);
     if (localObject1 != null)
     {
       localObject2 = (LinearLayout.LayoutParams)((TextView)localObject1).getLayoutParams();
@@ -1360,7 +1359,7 @@ public class WebViewFragment
         ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.findViewById(2131366769);
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.findViewById(2131366767);
     Object localObject2 = (FrameLayout.LayoutParams)((View)localObject1).getLayoutParams();
     if (localObject2 != null)
     {
@@ -1818,7 +1817,7 @@ public class WebViewFragment
     {
       this.jdField_a_of_type_ComTencentBizUiTouchWebView = a(null).a();
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.getView().setOnTouchListener(this);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnLongClickListener(new akns(this));
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnLongClickListener(new akvj(this));
       l1 = System.currentTimeMillis();
       if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Long & 0x10000) == 0L) {
         break label410;
@@ -1919,7 +1918,7 @@ public class WebViewFragment
   public int f(Bundle paramBundle)
   {
     Util.a("Web_qqbrowser_state_machine_init_data");
-    QbSdk.setQQBuildNumber("3565");
+    QbSdk.setQQBuildNumber("3615");
     paramBundle = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("options");
     if (paramBundle != null) {}
     try
@@ -2015,7 +2014,7 @@ public class WebViewFragment
         if (paramBoolean)
         {
           localObject = new View(super.getActivity());
-          ((View)localObject).setId(2131362370);
+          ((View)localObject).setId(2131362373);
           ((View)localObject).setBackgroundColor(-16777216);
           RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ImmersiveUtils.a(BaseApplicationImpl.getApplication()));
           localLayoutParams.addRule(10, -1);
@@ -2028,9 +2027,9 @@ public class WebViewFragment
       return;
       label195:
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        this.jdField_d_of_type_AndroidViewView.setBackgroundResource(2130845872);
+        this.jdField_d_of_type_AndroidViewView.setBackgroundResource(2130845952);
       } else {
-        this.jdField_d_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131494254));
+        this.jdField_d_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131494260));
       }
     }
   }
@@ -2181,7 +2180,7 @@ public class WebViewFragment
   {
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b(paramBoolean);
     ((SwiftBrowserShareMenuHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(4)).d();
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.f();
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.g();
   }
   
   public void n()
@@ -2394,9 +2393,9 @@ public class WebViewFragment
           this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.b.setVisibility(8);
           this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView, true);
           this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.i.setVisibility(8);
-          if (!TextUtils.isEmpty(a().q))
+          if (!TextUtils.isEmpty(a().s))
           {
-            this.jdField_a_of_type_ComTencentBizUiTouchWebView.a(a().q, new String[] { "" });
+            this.jdField_a_of_type_ComTencentBizUiTouchWebView.a(a().s, new String[] { "" });
             if (QLog.isColorLevel()) {
               QLog.d("WebLog_WebViewFragment", 2, "call js function getShare().mOnShareHandler");
             }
@@ -2414,13 +2413,13 @@ public class WebViewFragment
         if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getTitle())) {}
         for (paramView = "游戏中心";; paramView = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getTitle())
         {
-          a(String.format("返回%s继续浏览", new Object[] { paramView }), 2130837945, null, SingleTaskQQBrowser.class.getName());
+          a(String.format("返回%s继续浏览", new Object[] { paramView }), 2130837944, null, SingleTaskQQBrowser.class.getName());
           ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "fold", "", "", "");
           return;
         }
       }
     } while (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.A);
-    a().D();
+    a().C();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -2587,12 +2586,12 @@ public class WebViewFragment
       if (i1 != 0) {
         a(2L, null);
       }
-      ThreadManager.executeOnSubThread(new aknk(this, (Activity)localObject));
+      ThreadManager.executeOnSubThread(new akvb(this, (Activity)localObject));
       if (this.jdField_l_of_type_Boolean) {
         QzoneOnlineTimeCollectRptService.a().b(1);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Boolean) {
-        y();
+        x();
       }
       Util.b("Web_qqbrowser_doonresume");
       super.onResume();
@@ -2620,7 +2619,7 @@ public class WebViewFragment
     if ((paramMotionEvent.getAction() & 0xFF) == 0)
     {
       this.jdField_e_of_type_Long = System.currentTimeMillis();
-      if (paramView.getId() == 2131366431)
+      if (paramView.getId() == 2131366429)
       {
         paramMotionEvent = paramView.getParent();
         if ((paramMotionEvent != null) && ((paramMotionEvent instanceof ViewGroup))) {
@@ -2694,7 +2693,7 @@ public class WebViewFragment
       this.jdField_i_of_type_Boolean = true;
       String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
       if (WebSoUtils.b(str)) {
-        ThreadManager.postImmediately(new aknj(this, str), null, false);
+        ThreadManager.postImmediately(new akva(this, str), null, false);
       }
     }
   }
@@ -2744,26 +2743,7 @@ public class WebViewFragment
     Util.b("Web_qqbrowser_createtabbar");
   }
   
-  public void w()
-  {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
-    {
-      this.jdField_g_of_type_Boolean = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      a(8589934604L, null);
-    }
-    if ((this.jdField_d_of_type_AndroidViewView != null) && (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_g_of_type_Boolean))
-    {
-      if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        this.jdField_d_of_type_AndroidViewView.setBackgroundResource(2130845872);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_d_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131494254));
-  }
-  
-  void x()
+  void w()
   {
     if (1 != this.jdField_m_of_type_Int)
     {
@@ -2774,7 +2754,7 @@ public class WebViewFragment
     }
   }
   
-  public void y()
+  public void x()
   {
     FragmentActivity localFragmentActivity = super.getActivity();
     if (localFragmentActivity != null) {
@@ -2782,14 +2762,34 @@ public class WebViewFragment
     }
   }
   
-  public void z()
+  public void y()
   {
     f(false);
+  }
+  
+  public void z()
+  {
+    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) {
+      n();
+    }
+    HashMap localHashMap;
+    do
+    {
+      return;
+      if (!this.jdField_a_of_type_ComTencentBizUiTouchWebView.canGoBack()) {
+        break;
+      }
+      localHashMap = new HashMap(1);
+      localHashMap.put("target", Integer.valueOf(2));
+    } while (!this.jdField_a_of_type_ComTencentBizUiTouchWebView.a(localHashMap));
+    o();
+    return;
+    n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,127 +1,58 @@
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.adapter.AssociatedAccountListAdapter.ViewHolder;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SubAccountMessageProcessor;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.data.SubAccountMessage;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.subaccount.AssociatedAccountListItemData;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.Locale;
 
 public class rmd
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public rmd(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public rmd(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramView == null) || (!(paramView.getTag() instanceof AssociatedAccountListAdapter.ViewHolder))) {}
-    Object localObject;
-    do
+    if (AddAccountActivity.a(this.a)) {
+      return;
+    }
+    if (paramInt == 0)
     {
-      do
-      {
-        return;
-        paramView = (AssociatedAccountListAdapter.ViewHolder)paramView.getTag();
-      } while ((paramView == null) || (paramView.a == null));
-      localObject = paramView.a;
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onItemClick type = " + ((AssociatedAccountListItemData)localObject).jdField_a_of_type_Int);
+      ReportController.a(this.a.app, "dc00898", "", "", "0X8007353", "0X8007353", 0, 0, "", "", "", "");
+      paramView = null;
+      if (this.a.a != null) {
+        paramView = this.a.a.getText().toString();
       }
-      switch (((AssociatedAccountListItemData)localObject).jdField_a_of_type_Int)
-      {
-      case 5: 
-      default: 
-        paramView = null;
-      }
-    } while ((TextUtils.isEmpty(paramView)) || (!PhoneNumLoginImpl.a().a(this.a.app, this.a)) || (!this.a.b()));
-    this.a.a(2131435613);
-    int j;
-    if (((AssociatedAccountListItemData)localObject).jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onItemClick mNeed2ConfirmMsgNum = " + this.a.b + "  toUin=" + paramView);
-      }
-      if (this.a.b > 0)
-      {
-        this.a.jdField_a_of_type_JavaLangString = paramView;
-        localObject = (MessageHandler)this.a.app.a(0);
-        SubAccountManager localSubAccountManager = (SubAccountManager)this.a.app.getManager(60);
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        int i = 0;
-        for (;;)
-        {
-          j = i;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          SubAccountInfo localSubAccountInfo = (SubAccountInfo)localIterator.next();
-          if ((localSubAccountInfo != null) && (!TextUtils.isEmpty(localSubAccountInfo.subuin)) && (localSubAccountManager.c(localSubAccountInfo.subuin) > 0))
-          {
-            i += 1;
-            ((MessageHandler)localObject).a().a(localSubAccountInfo.subuin, "sub.account.switchAccount");
-          }
-        }
-        if ((((AssociatedAccountListItemData)localObject).jdField_a_of_type_JavaLangObject == null) || (!(((AssociatedAccountListItemData)localObject).jdField_a_of_type_JavaLangObject instanceof SimpleAccount))) {
-          break label771;
-        }
+      if (TextUtils.isEmpty(paramView)) {
+        break label292;
       }
     }
-    label771:
-    for (paramView = ((SimpleAccount)((AssociatedAccountListItemData)localObject).jdField_a_of_type_JavaLangObject).getUin();; paramView = null)
+    label292:
+    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756", paramView });; paramView = "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756")
     {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8007141", "0X8007141", 0, 0, "", "", "", "");
-      break;
-      AssociatedAccountActivity.c(this.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800714A", "0X800714A", 0, 0, "", "", "", "");
-      return;
-      if ((((AssociatedAccountListItemData)localObject).jdField_a_of_type_JavaLangObject != null) && ((((AssociatedAccountListItemData)localObject).jdField_a_of_type_JavaLangObject instanceof SubAccountMessage))) {}
-      for (paramView = ((SubAccountMessage)((AssociatedAccountListItemData)localObject).jdField_a_of_type_JavaLangObject).subUin;; paramView = null)
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
+      localIntent.putExtra("reqType", 3);
+      localIntent.putExtra("url", paramView);
+      this.a.startActivity(localIntent);
+      for (;;)
       {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8007140", "0X8007140", 0, 0, "", "", "", "");
-        break;
-        if ((((AssociatedAccountListItemData)localObject).jdField_a_of_type_JavaLangObject != null) && ((((AssociatedAccountListItemData)localObject).jdField_a_of_type_JavaLangObject instanceof SubAccountInfo))) {}
-        for (paramView = ((SubAccountInfo)((AssociatedAccountListItemData)localObject).jdField_a_of_type_JavaLangObject).subuin;; paramView = null)
+        AddAccountActivity.b(this.a, true);
+        AddAccountActivity.a(this.a).dismiss();
+        return;
+        if (paramInt == 1)
         {
-          if (((AssociatedAccountListItemData)localObject).jdField_a_of_type_Int == 2)
-          {
-            ReportController.b(this.a.app, "CliOper", "", "", "0X800713F", "0X800713F", 0, 0, "", "", "", "");
-            break;
-          }
-          ReportController.b(this.a.app, "CliOper", "", "", "0X8007140", "0X8007140", 0, 0, "", "", "", "");
-          break;
-          j = 0;
-          if (j > 0)
-          {
-            this.a.b = j;
-            return;
-          }
-          AssociatedAccountActivity.c(this.a, false);
-          AssociatedAccountActivity.a(this.a, paramView);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("AssociatedAccountActivity", 2, "onItemClick goto SubAccountUgActivity");
-          }
-          this.a.c();
-          this.a.jdField_a_of_type_JavaLangString = paramView;
-          this.a.d = true;
-          localObject = new Intent("before_account_change");
-          this.a.sendBroadcast((Intent)localObject);
-          localObject = new Intent(this.a, SubAccountUgActivity.class);
-          ((Intent)localObject).putExtra("subAccount", paramView);
-          this.a.startActivity((Intent)localObject);
-          return;
+          ReportController.a(this.a.app, "dc00898", "", "", "0X8007354", "0X8007354", 0, 0, "", "", "", "");
+          ReportController.b(this.a.app, "CliOper", "", "", "Mobile_signup", "Clk_ems_login", 0, 0, "", "", "", "");
+          boolean bool = this.a.getIntent().getBooleanExtra("login_from_account_change", false);
+          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
+          paramView.putExtra("login_from_account_change", bool);
+          this.a.startActivity(paramView);
         }
       }
     }

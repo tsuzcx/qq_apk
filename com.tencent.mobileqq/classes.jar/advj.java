@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.intervideo.od.LoadingUI;
-import com.tencent.mobileqq.intervideo.od.LoadingUI.Event;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
 
-public class advj
-  implements View.OnClickListener
+class advj
+  implements Runnable
 {
-  public advj(LoadingUI paramLoadingUI) {}
+  advj(advi paramadvi) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (LoadingUI.a(this.a) != null) {
-      LoadingUI.a(this.a).a();
-    }
+    this.a.a.j();
   }
 }
 

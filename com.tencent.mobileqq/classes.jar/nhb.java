@@ -1,19 +1,37 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQQData;
+import com.tencent.biz.qqstory.model.TroopNickNameManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class nhb
-  extends EncryptUrlJob
+  implements Runnable
 {
-  public nhb(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareQQData paramShareQQData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public nhb(TroopNickNameManager paramTroopNickNameManager) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.h = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    long l = System.currentTimeMillis();
+    Iterator localIterator = this.a.a.entrySet().iterator();
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      if (l - ((Long)((Map.Entry)localIterator.next()).getValue()).longValue() < 30000L) {
+        break label115;
+      }
+      localIterator.remove();
+      i += 1;
+    }
+    label115:
+    for (;;)
+    {
+      break;
+      if ((i > 0) && (QLog.isColorLevel())) {
+        QLog.d("TroopNickNameManager", 2, "timeout count=" + i);
+      }
+      return;
+    }
   }
 }
 

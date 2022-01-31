@@ -1,25 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 
 public class ygj
-  implements IIconListener
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  private ygj(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public CheckBox a;
+  public TextView a;
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((paramBitmap != null) && (paramInt2 == 200))
-    {
-      if (this.b.d != 0) {
-        this.b.b = true;
-      }
-    }
-    else {
-      return;
-    }
-    this.b.a.notifyDataSetChanged();
-  }
+  private ygj(RecentMemberInnerFrame paramRecentMemberInnerFrame) {}
 }
 
 

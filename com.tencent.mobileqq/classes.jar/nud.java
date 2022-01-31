@@ -1,20 +1,16 @@
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnCompletionListener;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
 
-public class nud
-  implements RadioGroup.OnCheckedChangeListener
+class nud
+  implements Runnable
 {
-  public nud(VideoEncodeActivity paramVideoEncodeActivity) {}
+  nud(nuc paramnuc) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void run()
   {
-    paramRadioGroup = (RadioButton)paramRadioGroup.findViewById(paramInt);
-    VideoEncodeActivity.a(this.a, (String)paramRadioGroup.getTag());
-    SLog.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
-    VideoEncodeActivity.a(this.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.a(this.a.a);
+    }
   }
 }
 

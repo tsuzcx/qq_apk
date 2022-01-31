@@ -1,47 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.os.Message;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler;
 
-class akwt
-  implements Animation.AnimationListener
+public class akwt
+  implements View.OnTouchListener
 {
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.getBackground();
+  public akwt(SwiftBrowserMiscHandler paramSwiftBrowserMiscHandler) {}
   
-  akwt(akws paramakws) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.getParent() != null)
-    {
-      this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.clearAnimation();
-      if (QLog.isColorLevel()) {
-        QLog.i("ScrollerRunnable", 2, "onAnimationEnd-->clearAnimation");
-      }
-    }
-    this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationEnd:" + hashCode() + "," + this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.hashCode() + "," + this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.getParent());
-    }
-    if ((TroopAioMsgNavigateBar.a(ScrollerRunnable.a(this.jdField_a_of_type_Akws.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable))) && (ScrollerRunnable.a(this.jdField_a_of_type_Akws.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable) != null)) {
-      ScrollerRunnable.a(this.jdField_a_of_type_Akws.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable).obtainMessage(50).sendToTarget();
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.setBackgroundResource(17170443);
-    if (QLog.isColorLevel()) {
-      QLog.i("ScrollerRunnable", 2, "onAnimationStart:" + hashCode() + "," + this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.hashCode() + "," + this.jdField_a_of_type_Akws.jdField_a_of_type_AndroidViewView.getParent());
-    }
+    return true;
   }
 }
 

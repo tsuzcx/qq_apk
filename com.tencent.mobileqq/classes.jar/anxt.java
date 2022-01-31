@@ -1,19 +1,21 @@
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.qq.im.capture.text.EditTextPreView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.widget.AdapterView;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
 
 public class anxt
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anxt(EditTextDialog paramEditTextDialog) {}
+  public anxt(MusicProviderView paramMusicProviderView, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
-    if (EditTextDialog.a(this.a) != 1) {
-      this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(), true);
-    }
-    this.a.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.invalidate();
+    paramDialogInterface.dismiss();
+    MusicProviderView.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.aA_();
+    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
   }
 }
 

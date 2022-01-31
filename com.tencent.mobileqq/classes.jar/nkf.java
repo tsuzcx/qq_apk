@@ -1,28 +1,34 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nkf
-  extends OnPlayModeShareListener
+  implements Runnable
 {
-  public nkf(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode, VideoPlayModeBase paramVideoPlayModeBase, VideoListFeedItem paramVideoListFeedItem, String paramString, StoryVideoItem paramStoryVideoItem)
-  {
-    super(paramVideoPlayModeBase);
-  }
+  public nkf(ReportEvilToXinanHandler paramReportEvilToXinanHandler, String paramString) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    super.a(paramInt);
-    StoryReportor.a("host_share", "suc_share", 1, paramInt, new String[] { String.valueOf(StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    StoryReportor.a("host_share", "share_chanel", 1, paramInt, new String[] { String.valueOf(StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    try
+    {
+      i = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("rtn_code");
+      if (i == 0)
+      {
+        QQToast.a(BaseApplication.getContext(), "举报成功，客服人员将尽快处理", 0).a();
+        return;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+        int i = -1;
+      }
+      QQToast.a(BaseApplication.getContext(), "举报失败，请稍后重试", 0).a();
+    }
   }
 }
 

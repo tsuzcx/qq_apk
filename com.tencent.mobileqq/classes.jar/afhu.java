@@ -1,21 +1,38 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.utils.StringUtil;
 
 public class afhu
-  implements TextWatcher
+  implements Runnable
 {
-  public afhu(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afhu(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    NearbyUtils.a(this.a.e, 90);
+    if (!StringUtil.a(NearbyPeopleProfileActivity.a(this.a).uin)) {
+      this.a.app.a(NearbyPeopleProfileActivity.a(this.a).uin, 200, false);
+    }
+    if (this.a.a > 0L) {
+      this.a.app.a(String.valueOf(this.a.a), 202, false);
+    }
+    EntityManager localEntityManager;
+    do
+    {
+      do
+      {
+        return;
+      } while (StringUtil.a(NearbyPeopleProfileActivity.a(this.a).uin));
+      localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
+    } while (localEntityManager == null);
+    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)localEntityManager.a(NearbyPeopleCard.class, "uin=?", new String[] { NearbyPeopleProfileActivity.a(this.a).uin });
+    if ((localNearbyPeopleCard != null) && (localNearbyPeopleCard.tinyId > 0L)) {
+      this.a.app.a(String.valueOf(localNearbyPeopleCard.tinyId), 202, false);
+    }
+    localEntityManager.a();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

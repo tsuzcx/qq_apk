@@ -27,7 +27,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import qjd;
+import qnv;
 
 public class GameCenterActivity$GameCenterFragment
   extends WebViewFragment
@@ -138,7 +138,7 @@ public class GameCenterActivity$GameCenterFragment
     return true;
   }
   
-  private void f()
+  private void h()
   {
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
       this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
@@ -193,7 +193,7 @@ public class GameCenterActivity$GameCenterFragment
     {
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setVisibility(0);
       if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b instanceof TextView)) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131431788);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131431799);
       }
     }
     return i;
@@ -211,7 +211,7 @@ public class GameCenterActivity$GameCenterFragment
       if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) || (!this.jdField_a_of_type_ComTencentBizUiTouchWebView.canGoBack()) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a == null)) {
         break label70;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setText(2131432414);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setText(2131432425);
     }
     for (;;)
     {
@@ -288,7 +288,7 @@ public class GameCenterActivity$GameCenterFragment
         }
         super.a(paramBundle);
         this.jdField_a_of_type_Boolean = false;
-        ThreadManager.postImmediately(new qjd(this), null, false);
+        ThreadManager.postImmediately(new qnv(this), null, false);
         return true;
       }
       catch (Exception localException)
@@ -297,7 +297,7 @@ public class GameCenterActivity$GameCenterFragment
         Object localObject = null;
         continue;
       }
-      Toast.makeText(super.getActivity().getApplicationContext(), 2131431791, 0).show();
+      Toast.makeText(super.getActivity().getApplicationContext(), 2131431802, 0).show();
       super.getActivity().finish();
     }
   }
@@ -306,7 +306,7 @@ public class GameCenterActivity$GameCenterFragment
   {
     super.c();
     if (AuthorizeConfig.a().e(this.g)) {
-      f();
+      h();
     }
   }
   

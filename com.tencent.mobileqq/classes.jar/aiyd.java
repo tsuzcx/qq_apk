@@ -1,38 +1,14 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aiyd
-  extends ClickableSpan
+class aiyd
+  implements Runnable
 {
-  public aiyd(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  aiyd(aiyb paramaiyb) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a != null)
-    {
-      if (!this.a.a.a()) {
-        break label42;
-      }
-      this.a.a.b();
-    }
-    for (;;)
-    {
-      this.a.e(true);
-      return;
-      label42:
-      this.a.a.a();
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.r, "", "", "");
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
+    QQToast.a(this.a.a.getActivity(), 1, "保存至本地相册失败，请重试", 0).a();
   }
 }
 

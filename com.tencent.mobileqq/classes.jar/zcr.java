@@ -1,33 +1,26 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.DataMigrationService;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
 public class zcr
-  extends Handler
+  implements Comparator
 {
-  public zcr(DataMigrationService paramDataMigrationService) {}
+  public zcr(ApolloDaoManager paramApolloDaoManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    int i = paramMessage.arg1;
-    paramMessage = (Intent)paramMessage.obj;
-    if (paramMessage == null)
-    {
-      this.a.stopSelf(i);
-      return;
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
     }
-    if ("com.tencent.mobileqq.action.MIGRATION_DATA".equals(paramMessage.getAction()))
-    {
-      DataMigrationService.a(this.a, paramMessage, i);
-      return;
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
     }
-    this.a.stopSelf(i);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zcr
  * JD-Core Version:    0.7.0.1
  */

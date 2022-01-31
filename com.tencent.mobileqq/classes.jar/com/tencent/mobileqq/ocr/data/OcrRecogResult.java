@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.data;
 
-import agcv;
+import aghf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,6 +9,8 @@ import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,15 +18,19 @@ public class OcrRecogResult
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new agcv();
+  public static final Parcelable.Creator CREATOR = new aghf();
+  public ArrayList dst_translate_languages;
   @unique
   public String filename;
   public String goodsDetailUrl;
   public String goodsName;
   public String goodsPicUrl;
   public float goodsPrice;
+  public String language;
+  public HashMap language_descs;
   public String moreUrl;
   public String ocrContent;
+  public ArrayList ocr_languages;
   public long saveTime;
   
   public OcrRecogResult() {}
@@ -39,6 +45,22 @@ public class OcrRecogResult
     this.goodsPrice = paramParcel.readFloat();
     this.goodsDetailUrl = paramParcel.readString();
     this.moreUrl = paramParcel.readString();
+    try
+    {
+      this.language = paramParcel.readString();
+      this.ocr_languages = paramParcel.readArrayList(getClass().getClassLoader());
+      this.dst_translate_languages = paramParcel.readArrayList(getClass().getClassLoader());
+      this.language_descs = paramParcel.readHashMap(getClass().getClassLoader());
+      return;
+    }
+    catch (Throwable paramParcel)
+    {
+      this.language = null;
+      this.ocr_languages = null;
+      this.dst_translate_languages = null;
+      this.language_descs = null;
+      QLog.e("OcrRecogResult", 1, "OcrRecogResult(Parcel in) e:" + paramParcel.getMessage());
+    }
   }
   
   public static OcrRecogResult find(EntityManager paramEntityManager, String paramString)
@@ -114,7 +136,7 @@ public class OcrRecogResult
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ocrContent = ").append(this.ocrContent).append("\n").append("goodsPicUrl = ").append(this.goodsPicUrl).append("\n").append("goodsName = ").append(this.goodsName).append("\n").append("goodsPrice = ").append(this.goodsPrice).append("\n").append("goodsDetailUrl = ").append(this.goodsDetailUrl).append("\n").append("filename = ").append(this.filename).append("\n").append("saveTime = ").append(this.saveTime).append("moreUrl = ").append(this.moreUrl);
+    localStringBuilder.append("OcrRecogResult ocrContent = ").append(this.ocrContent).append("\n").append("language = ").append(this.language).append("\n").append("ocr_languages = ").append(this.ocr_languages).append("\n").append("dst_translate_languages = ").append(this.dst_translate_languages).append("\n").append("language_descs = ").append(this.language_descs).append("\n").append("goodsPicUrl = ").append(this.goodsPicUrl).append("\n").append("goodsName = ").append(this.goodsName).append("\n").append("goodsPrice = ").append(this.goodsPrice).append("\n").append("goodsDetailUrl = ").append(this.goodsDetailUrl).append("\n").append("filename = ").append(this.filename).append("\n").append("saveTime = ").append(this.saveTime).append("moreUrl = ").append(this.moreUrl);
     return localStringBuilder.toString();
   }
   
@@ -128,6 +150,18 @@ public class OcrRecogResult
     paramParcel.writeFloat(this.goodsPrice);
     paramParcel.writeString(this.goodsDetailUrl);
     paramParcel.writeString(this.moreUrl);
+    try
+    {
+      paramParcel.writeString(this.language);
+      paramParcel.writeList(this.ocr_languages);
+      paramParcel.writeList(this.dst_translate_languages);
+      paramParcel.writeMap(this.language_descs);
+      return;
+    }
+    catch (Throwable paramParcel)
+    {
+      QLog.e("OcrRecogResult", 1, "writeToParcel() e:" + paramParcel.getMessage());
+    }
   }
 }
 

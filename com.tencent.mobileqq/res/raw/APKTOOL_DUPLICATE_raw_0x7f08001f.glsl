@@ -1,8 +1,7 @@
-//#extension GL_OES_EGL_image_external : require
 precision mediump float;
 varying vec2 vTextureCoord;
 uniform sampler2D sTexture;
-const mediump vec3 W = vec3(0.2125, 0.7154, 0.0721);
+uniform lowp float brightness;
 
 uniform float percent;
 uniform float drawPart;
@@ -19,9 +18,7 @@ float getAlpha(){
 }
 
 void main(){
-    lowp vec4 textureColor = texture2D(sTexture, vTextureCoord);
-    float luminance = dot(textureColor.rgb, W);
+    vec4 textureColor = texture2D(sTexture, vTextureCoord);
 
-    float alpha = getAlpha();
-    gl_FragColor = vec4(vec3(luminance), alpha);
+    gl_FragColor = vec4((textureColor.rgb + vec3(brightness)), textureColor.w);
 }

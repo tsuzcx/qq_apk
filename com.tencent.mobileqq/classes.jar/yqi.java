@@ -1,11 +1,17 @@
-import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class yqi
-  implements AVCallback
+public final class yqi
+  implements Runnable
 {
-  yqi(yqh paramyqh) {}
+  public yqi(ApolloManager paramApolloManager, QQAppInterface paramQQAppInterface) {}
   
-  public void onComplete(int paramInt, String paramString) {}
+  public void run()
+  {
+    if (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager) == null) {
+      ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager, this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
+    }
+  }
 }
 
 

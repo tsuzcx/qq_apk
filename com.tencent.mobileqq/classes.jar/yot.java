@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class yot
   implements Runnable
 {
-  public yot(ApolloCmdChannel paramApolloCmdChannel, long paramLong, int paramInt) {}
+  public yot(TroopListAdapter2 paramTroopListAdapter2) {}
   
   public void run()
   {
-    ApolloCmdChannel.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    List localList = TroopListAdapter2.a(this.a);
+    ThreadManager.getUIHandler().post(new you(this, localList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yot
  * JD-Core Version:    0.7.0.1
  */

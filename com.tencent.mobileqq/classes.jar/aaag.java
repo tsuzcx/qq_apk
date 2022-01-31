@@ -1,23 +1,30 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.arcard.ARcardSound;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaag
   implements Runnable
 {
-  public aaag(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aaag(QQMessageFacade paramQQMessageFacade, MessageRecord paramMessageRecord, MessageObserver paramMessageObserver, boolean paramBoolean) {}
   
   public void run()
   {
-    if (ARWorldCupGlobalSceneRenderable.a(this.a) != null)
+    try
     {
-      ARWorldCupGlobalSceneRenderable.a(this.a).a();
-      ARWorldCupGlobalSceneRenderable.a(this.a, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver, this.jdField_a_of_type_Boolean);
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      QLog.e("Q.msg.QQMessageFacade", 1, "smr error :", localRuntimeException);
+      throw localRuntimeException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaag
  * JD-Core Version:    0.7.0.1
  */

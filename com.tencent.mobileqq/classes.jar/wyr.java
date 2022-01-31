@@ -1,49 +1,15 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
 public class wyr
-  implements AdapterView.OnItemClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public wyr(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wyr(BaseActivityView paramBaseActivityView) {}
   
-  @TargetApi(11)
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.b)
-    {
-      this.a.h();
-      return;
-    }
-    paramAdapterView = (String)paramAdapterView.getItemAtPosition(paramInt);
-    if (PhotoPreviewActivity.a(this.a, paramAdapterView) == 1)
-    {
-      this.a.p = paramAdapterView;
-      switch (this.a.b())
-      {
-      default: 
-        return;
-      case 0: 
-        this.a.a(0);
-        return;
-      case 1: 
-        this.a.l();
-        return;
-      case 2: 
-        this.a.k();
-        return;
-      }
-      this.a.a(0);
-      return;
-    }
-    if (this.a.e)
-    {
-      this.a.c();
-      return;
-    }
-    this.a.d();
+    this.a.a = null;
   }
 }
 

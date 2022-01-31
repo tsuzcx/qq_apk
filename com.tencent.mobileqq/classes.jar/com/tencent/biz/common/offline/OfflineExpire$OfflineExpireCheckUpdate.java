@@ -20,7 +20,7 @@ import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
-import klp;
+import knw;
 import mqq.os.MqqHandler;
 import tencent.im.sso.offlinpkg.OfflinePkg.BidPkg;
 import tencent.im.sso.offlinpkg.OfflinePkg.ReqBody;
@@ -68,9 +68,9 @@ public class OfflineExpire$OfflineExpireCheckUpdate
       localReqBody.uint32_cmd.set(2);
       localReqBody.uint32_platform.set(OfflineExpire.jdField_a_of_type_Int);
       if (QLog.isColorLevel()) {
-        QLog.d(OfflineExpire.jdField_a_of_type_JavaLangString, 1, String.format("OfflineExpireCheckUpdate, check update QQ Version: %s", new Object[] { "7.6.3.3565" }));
+        QLog.d(OfflineExpire.jdField_a_of_type_JavaLangString, 1, String.format("OfflineExpireCheckUpdate, check update QQ Version: %s", new Object[] { "7.6.8.3615" }));
       }
-      localReqBody.str_qver.set(ByteStringMicro.copyFrom("7.6.3.3565".getBytes()));
+      localReqBody.str_qver.set(ByteStringMicro.copyFrom("7.6.8.3615".getBytes()));
       localReqBody.str_osrelease.set(ByteStringMicro.copyFrom(Build.VERSION.RELEASE.getBytes()));
       i = NetworkUtil.a(((QQAppInterface)localObject).getApp());
       localReqBody.int32_network.set(i);
@@ -182,7 +182,7 @@ public class OfflineExpire$OfflineExpireCheckUpdate
         localRspBody.mergeFrom(paramRespItem);
         OfflineExpire.a(new String(localRspBody.str_expire_pkg.get().toByteArray(), "UTF-8"));
         OfflineExpire.a(new String(localRspBody.str_predown_pkg_ex.get().toByteArray(), "UTF-8"), (QQAppInterface)localObject, ((QQAppInterface)localObject).getApp().getApplicationContext(), 1);
-        ThreadManager.getSubThreadHandler().postDelayed(new klp(this), 180000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new knw(this), 180000L);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramRespItem)

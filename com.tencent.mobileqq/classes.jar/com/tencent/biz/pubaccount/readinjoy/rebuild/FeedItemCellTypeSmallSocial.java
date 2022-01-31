@@ -18,12 +18,12 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.AbsListView.LayoutParams;
-import lum;
-import lun;
-import luo;
-import lup;
-import luq;
-import lur;
+import lxw;
+import lxx;
+import lxy;
+import lxz;
+import lya;
+import lyb;
 
 public class FeedItemCellTypeSmallSocial
   extends FeedItemCellTypeSmallImage
@@ -53,7 +53,7 @@ public class FeedItemCellTypeSmallSocial
     LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
     localLinearLayout2.setOrientation(1);
     localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    ApiCompatibilityUtils.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839724));
+    ApiCompatibilityUtils.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839739));
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary);
     }
@@ -80,17 +80,17 @@ public class FeedItemCellTypeSmallSocial
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setId(2);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      localRelativeLayout.setOnClickListener(new lum(this));
+      localRelativeLayout.setOnClickListener(new lxw(this));
       localRelativeLayout.setDuplicateParentStateEnabled(true);
-      localRelativeLayout.setOnTouchListener(new lun(this, localRelativeLayout));
-      localLinearLayout2.setOnTouchListener(new luo(this, localRelativeLayout));
-      ApiCompatibilityUtils.a(localRelativeLayout, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840774));
+      localRelativeLayout.setOnTouchListener(new lxx(this, localRelativeLayout));
+      localLinearLayout2.setOnTouchListener(new lxy(this, localRelativeLayout));
+      ApiCompatibilityUtils.a(localRelativeLayout, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840792));
       localLinearLayout2.addView(localRelativeLayout);
       localLinearLayout2.setDuplicateParentStateEnabled(true);
-      localLinearLayout2.setOnTouchListener(new lup(this, localLinearLayout2));
-      localLinearLayout1.setOnTouchListener(new luq(this, localLinearLayout2, localRelativeLayout));
+      localLinearLayout2.setOnTouchListener(new lxz(this, localLinearLayout2));
+      localLinearLayout1.setOnTouchListener(new lya(this, localLinearLayout2, localRelativeLayout));
     }
-    localLinearLayout2.setOnClickListener(new lur(this));
+    localLinearLayout2.setOnClickListener(new lyb(this));
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
     }

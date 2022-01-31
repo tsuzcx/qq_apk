@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aaeq;
+import aalh;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -25,7 +25,7 @@ public abstract class IArConfigManager$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IArConfigManager))) {
       return (IArConfigManager)localIInterface;
     }
-    return new aaeq(paramIBinder);
+    return new aalh(paramIBinder);
   }
   
   public IBinder asBinder()

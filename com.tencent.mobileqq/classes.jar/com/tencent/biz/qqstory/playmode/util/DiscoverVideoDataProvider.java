@@ -4,9 +4,9 @@ import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import nml;
-import nmm;
-import nmn;
+import nqv;
+import nqw;
+import nqx;
 
 public class DiscoverVideoDataProvider
   extends MultiGroupVideoDataProvider
@@ -97,7 +97,7 @@ public class DiscoverVideoDataProvider
     this.c = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = ((CardItem.CardVideoInfo)this.jdField_a_of_type_JavaUtilList.get(this.c));
     BatchGetVideoInfo localBatchGetVideoInfo = new BatchGetVideoInfo(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo.a());
-    localBatchGetVideoInfo.a(new nml(this, localBatchGetVideoInfo));
+    localBatchGetVideoInfo.a(new nqv(this, localBatchGetVideoInfo));
     localBatchGetVideoInfo.b();
     return true;
   }
@@ -115,7 +115,7 @@ public class DiscoverVideoDataProvider
       this.c = this.b;
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = ((CardItem.CardVideoInfo)this.jdField_a_of_type_JavaUtilList.get(this.c));
       BatchGetVideoInfo localBatchGetVideoInfo = new BatchGetVideoInfo(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo.a());
-      localBatchGetVideoInfo.a(new nmm(this, localBatchGetVideoInfo));
+      localBatchGetVideoInfo.a(new nqw(this, localBatchGetVideoInfo));
       localBatchGetVideoInfo.b();
       return true;
     }
@@ -135,7 +135,7 @@ public class DiscoverVideoDataProvider
       this.c = this.jdField_a_of_type_Int;
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = ((CardItem.CardVideoInfo)this.jdField_a_of_type_JavaUtilList.get(this.c));
       BatchGetVideoInfo localBatchGetVideoInfo = new BatchGetVideoInfo(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo.a());
-      localBatchGetVideoInfo.a(new nmn(this, localBatchGetVideoInfo));
+      localBatchGetVideoInfo.a(new nqx(this, localBatchGetVideoInfo));
       localBatchGetVideoInfo.b();
       return true;
     }

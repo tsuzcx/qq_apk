@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview;
 
-import akmi;
+import aktz;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -52,7 +52,7 @@ public class WebSecurityPlugin
   WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   String jdField_a_of_type_JavaLangString;
   private Set jdField_a_of_type_JavaUtilSet = new HashSet();
-  private final BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new akmi(this);
+  private final BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new aktz(this);
   boolean jdField_a_of_type_Boolean = true;
   private boolean c;
   
@@ -421,7 +421,7 @@ public class WebSecurityPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebSecurityPlugin
  * JD-Core Version:    0.7.0.1
  */

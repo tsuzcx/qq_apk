@@ -1,25 +1,33 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class addc
-  implements FMDialogUtil.FMDialogInterface
+public class addc
+  implements Runnable
 {
-  addc(addb paramaddb) {}
+  public addc(FileManagerDataCenter paramFileManagerDataCenter) {}
   
-  public void a()
+  public void run()
   {
-    DeviceFileModel.a(this.a.a);
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
+    if ((this.a.a != null) && (this.a.a.getApp() != null))
+    {
+      if (FileManagerDataCenter.a(this.a) != null) {
+        this.a.a.getApp().unregisterReceiver(FileManagerDataCenter.a(this.a));
+      }
+      if (FileManagerDataCenter.a(this.a) == null) {
+        FileManagerDataCenter.a(this.a, new addd(this));
+      }
+      IntentFilter localIntentFilter = new IntentFilter("com.opensdk.downloadmanager.renameFilename");
+      this.a.a.getApp().registerReceiver(FileManagerDataCenter.a(this.a), localIntentFilter);
+      FMSettings.a();
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     addc
  * JD-Core Version:    0.7.0.1
  */

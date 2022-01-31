@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abul;
+import acce;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableString;
@@ -132,7 +132,7 @@ public class MessageForNearbyMarketGrayTips
         }
         for (;;)
         {
-          localSpannableString.setSpan(new abul(paramQQAppInterface, paramContext, this.mId, Color.rgb(26, 144, 240), i, this.mLink, this.mScene, this), j, k, 33);
+          localSpannableString.setSpan(new acce(paramQQAppInterface, paramContext, this.mId, Color.rgb(26, 144, 240), i, this.mLink, this.mScene, this), j, k, 33);
           return localSpannableString;
           if (TextUtils.isEmpty(this.mLink)) {
             break;

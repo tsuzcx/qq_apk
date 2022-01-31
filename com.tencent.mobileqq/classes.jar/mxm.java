@@ -1,17 +1,21 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
 
 public class mxm
-  implements TextView.OnEditorActionListener
+  implements Animation.AnimationListener
 {
-  public mxm(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public mxm(SubscriptRecommendController paramSubscriptRecommendController) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return paramKeyEvent.getKeyCode() == 66;
+    this.a.a(SubscriptRecommendController.a(this.a));
+    this.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

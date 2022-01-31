@@ -1,70 +1,58 @@
 package com.tencent.gdtad.aditem;
 
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.net.GdtNetUtil;
-import com.tencent.gdtad.qqproxy.GdtLocationUtil;
-import com.tencent.gdtad.qqproxy.GdtVersionUtil;
+import com.tencent.gdtad.net.GdtHttp;
+import com.tencent.gdtad.net.GdtHttp.Listener;
+import com.tencent.gdtad.net.GdtHttp.Params;
 import com.tencent.gdtad.util.GdtDeviceUtil;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import java.util.Set;
-import qko;
+import qpg;
+import tencent.gdt.qq_ad_get.QQAdGet;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
 
 public class GdtAdLoader
 {
-  private static Set a = new HashSet();
+  private GdtAdLoader.Session jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session;
+  private GdtHttp.Listener jdField_a_of_type_ComTencentGdtadNetGdtHttp$Listener = new qpg(this);
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static void a(Context paramContext, GdtAdLoader.Session paramSession, WeakReference paramWeakReference)
+  public GdtAdLoader(GdtAdLoader.Session paramSession, WeakReference paramWeakReference)
   {
-    qko.a(new qko(paramSession, paramWeakReference), paramContext);
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session = paramSession;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
-  public static void a(Context paramContext, qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo)
+  private void a()
   {
-    if (paramDeviceInfo == null)
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((GdtAdLoader.Listener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this);
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+  }
+  
+  public GdtAdLoader.Session a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session;
+  }
+  
+  public void a(Context paramContext)
+  {
+    if ((paramContext == null) || (this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session == null) || (!this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a())) {}
+    do
     {
-      GdtLog.d("GdtAdLoader", "initDeviceInfo error");
+      a();
       return;
-    }
-    String str1 = GdtDeviceUtil.a(paramContext);
-    String str2 = GdtDeviceUtil.b(paramContext);
-    if (!TextUtils.isEmpty(str1))
-    {
-      paramDeviceInfo.muid.set(str1);
-      paramDeviceInfo.muid_type.set(1);
-    }
-    for (;;)
-    {
-      paramDeviceInfo.conn.set(GdtNetUtil.a(paramContext));
-      paramDeviceInfo.carrier_code.set(GdtDeviceUtil.a(paramContext));
-      paramDeviceInfo.os_ver.set(Build.VERSION.RELEASE);
-      paramDeviceInfo.qq_ver.set(GdtVersionUtil.a());
-      paramDeviceInfo.os_type.set(2);
-      paramContext = GdtLocationUtil.INSTANCE.getLocation();
-      if ((paramContext == null) || (paramContext.length != 2)) {
-        break;
+      paramContext = GdtDeviceUtil.a(paramContext);
+      if (paramContext != null) {
+        this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a.device_info.set(paramContext);
       }
-      paramDeviceInfo.location.latitude.set(paramContext[0]);
-      paramDeviceInfo.location.longitude.set(paramContext[1]);
-      return;
-      if (!TextUtils.isEmpty(str2))
-      {
-        paramDeviceInfo.muid.set(str2);
-        paramDeviceInfo.muid_type.set(3);
-      }
-      else
-      {
-        paramDeviceInfo.muid_type.set(0);
-      }
-    }
+      paramContext = new GdtHttp.Params();
+      paramContext.a("https://mi.gdt.qq.com/rpc/gdt.display.QQAdService.GetAds");
+      paramContext.jdField_a_of_type_JavaLangString = "POST";
+      paramContext.b = "application/x-protobuf";
+      paramContext.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a.toByteArray();
+    } while (!paramContext.a());
+    GdtHttp.a(paramContext, new WeakReference(this.jdField_a_of_type_ComTencentGdtadNetGdtHttp$Listener));
   }
 }
 

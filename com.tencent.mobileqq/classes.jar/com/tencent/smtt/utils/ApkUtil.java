@@ -3,6 +3,8 @@ package com.tencent.smtt.utils;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Build.VERSION;
 import java.io.File;
 
 public class ApkUtil
@@ -12,27 +14,237 @@ public class ApkUtil
   
   public static int getApkVersion(Context paramContext, File paramFile)
   {
+    return getApkVersion(paramContext, paramFile, false);
+  }
+  
+  public static int getApkVersion(Context paramContext, File paramFile, boolean paramBoolean)
+  {
+    int i = 1;
     int j = 0;
-    int i = j;
-    if (paramFile != null)
+    if (paramFile != null) {}
+    for (;;)
     {
-      i = j;
-      if (!paramFile.exists()) {}
-    }
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramFile.getAbsolutePath(), 1);
-      i = j;
-      if (paramContext != null) {
-        i = paramContext.versionCode;
+      try
+      {
+        if (!paramFile.exists()) {
+          break label59;
+        }
+        if ((Build.VERSION.SDK_INT != 23) || (!Build.MANUFACTURER.toLowerCase().contains("mi"))) {
+          break label110;
+        }
       }
-      return i;
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+      i = getApkVersionByReadFile(paramFile);
+      if (i > 0) {
+        return i;
+      }
+      label59:
+      label110:
+      do
+      {
+        for (;;)
+        {
+          i = j;
+          if (paramFile == null) {
+            break;
+          }
+          i = j;
+          if (!paramFile.exists()) {
+            break;
+          }
+          try
+          {
+            paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramFile.getAbsolutePath(), 1);
+            i = j;
+            if (paramContext == null) {
+              break;
+            }
+            i = paramContext.versionCode;
+            return i;
+          }
+          catch (Throwable paramContext)
+          {
+            paramContext.printStackTrace();
+            return -1;
+          }
+        }
+        i = 0;
+        if (paramBoolean) {
+          break;
+        }
+      } while (i == 0);
     }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return -1;
+  }
+  
+  /* Error */
+  private static int getApkVersionByReadFile(File paramFile)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: new 83	java/util/jar/JarFile
+    //   5: dup
+    //   6: aload_0
+    //   7: invokespecial 86	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
+    //   10: astore_3
+    //   11: new 88	java/io/BufferedReader
+    //   14: dup
+    //   15: new 90	java/io/InputStreamReader
+    //   18: dup
+    //   19: aload_3
+    //   20: aload_3
+    //   21: ldc 92
+    //   23: invokevirtual 96	java/util/jar/JarFile:getJarEntry	(Ljava/lang/String;)Ljava/util/jar/JarEntry;
+    //   26: invokevirtual 100	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   29: invokespecial 103	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   32: invokespecial 106	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   35: astore_0
+    //   36: aload_0
+    //   37: invokevirtual 109	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   40: astore_2
+    //   41: aload_2
+    //   42: ifnull +105 -> 147
+    //   45: aload_2
+    //   46: ldc 111
+    //   48: invokevirtual 52	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   51: ifeq -15 -> 36
+    //   54: aload_2
+    //   55: ldc 113
+    //   57: invokevirtual 117	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   60: astore_2
+    //   61: aload_2
+    //   62: ifnull -26 -> 36
+    //   65: aload_2
+    //   66: arraylength
+    //   67: iconst_2
+    //   68: if_icmpne -32 -> 36
+    //   71: aload_2
+    //   72: iconst_1
+    //   73: aaload
+    //   74: invokevirtual 120	java/lang/String:trim	()Ljava/lang/String;
+    //   77: invokestatic 126	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   80: istore_1
+    //   81: aload_0
+    //   82: ifnull +7 -> 89
+    //   85: aload_0
+    //   86: invokevirtual 129	java/io/BufferedReader:close	()V
+    //   89: aload_3
+    //   90: ifnull +7 -> 97
+    //   93: aload_3
+    //   94: invokevirtual 130	java/util/jar/JarFile:close	()V
+    //   97: iload_1
+    //   98: ireturn
+    //   99: astore_3
+    //   100: aconst_null
+    //   101: astore_0
+    //   102: aload_3
+    //   103: invokevirtual 131	java/lang/Exception:printStackTrace	()V
+    //   106: aload_0
+    //   107: ifnull +7 -> 114
+    //   110: aload_0
+    //   111: invokevirtual 129	java/io/BufferedReader:close	()V
+    //   114: aload_2
+    //   115: ifnull +7 -> 122
+    //   118: aload_2
+    //   119: invokevirtual 130	java/util/jar/JarFile:close	()V
+    //   122: iconst_m1
+    //   123: ireturn
+    //   124: astore_2
+    //   125: aconst_null
+    //   126: astore_0
+    //   127: aconst_null
+    //   128: astore_3
+    //   129: aload_0
+    //   130: ifnull +7 -> 137
+    //   133: aload_0
+    //   134: invokevirtual 129	java/io/BufferedReader:close	()V
+    //   137: aload_3
+    //   138: ifnull +7 -> 145
+    //   141: aload_3
+    //   142: invokevirtual 130	java/util/jar/JarFile:close	()V
+    //   145: aload_2
+    //   146: athrow
+    //   147: aload_0
+    //   148: ifnull +7 -> 155
+    //   151: aload_0
+    //   152: invokevirtual 129	java/io/BufferedReader:close	()V
+    //   155: aload_3
+    //   156: ifnull -34 -> 122
+    //   159: aload_3
+    //   160: invokevirtual 130	java/util/jar/JarFile:close	()V
+    //   163: goto -41 -> 122
+    //   166: astore_0
+    //   167: goto -45 -> 122
+    //   170: astore_0
+    //   171: iload_1
+    //   172: ireturn
+    //   173: astore_0
+    //   174: goto -29 -> 145
+    //   177: astore_2
+    //   178: aconst_null
+    //   179: astore_0
+    //   180: goto -51 -> 129
+    //   183: astore_2
+    //   184: goto -55 -> 129
+    //   187: astore 4
+    //   189: aload_2
+    //   190: astore_3
+    //   191: aload 4
+    //   193: astore_2
+    //   194: goto -65 -> 129
+    //   197: astore 4
+    //   199: aconst_null
+    //   200: astore_0
+    //   201: aload_3
+    //   202: astore_2
+    //   203: aload 4
+    //   205: astore_3
+    //   206: goto -104 -> 102
+    //   209: astore 4
+    //   211: aload_3
+    //   212: astore_2
+    //   213: aload 4
+    //   215: astore_3
+    //   216: goto -114 -> 102
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	219	0	paramFile	File
+    //   80	92	1	i	int
+    //   1	118	2	localObject1	Object
+    //   124	22	2	localObject2	Object
+    //   177	1	2	localObject3	Object
+    //   183	7	2	localObject4	Object
+    //   193	20	2	localObject5	Object
+    //   10	84	3	localJarFile	java.util.jar.JarFile
+    //   99	4	3	localException1	Exception
+    //   128	88	3	localObject6	Object
+    //   187	5	4	localObject7	Object
+    //   197	7	4	localException2	Exception
+    //   209	5	4	localException3	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   2	11	99	java/lang/Exception
+    //   2	11	124	finally
+    //   110	114	166	java/lang/Exception
+    //   118	122	166	java/lang/Exception
+    //   151	155	166	java/lang/Exception
+    //   159	163	166	java/lang/Exception
+    //   85	89	170	java/lang/Exception
+    //   93	97	170	java/lang/Exception
+    //   133	137	173	java/lang/Exception
+    //   141	145	173	java/lang/Exception
+    //   11	36	177	finally
+    //   36	41	183	finally
+    //   45	61	183	finally
+    //   65	81	183	finally
+    //   102	106	187	finally
+    //   11	36	197	java/lang/Exception
+    //   36	41	209	java/lang/Exception
+    //   45	61	209	java/lang/Exception
+    //   65	81	209	java/lang/Exception
   }
   
   /* Error */
@@ -47,79 +259,79 @@ public class ApkUtil
     //   8: aload 6
     //   10: dup
     //   11: iconst_0
-    //   12: ldc 58
+    //   12: ldc 136
     //   14: castore
     //   15: dup
     //   16: iconst_1
-    //   17: ldc 59
+    //   17: ldc 137
     //   19: castore
     //   20: dup
     //   21: iconst_2
-    //   22: ldc 60
+    //   22: ldc 138
     //   24: castore
     //   25: dup
     //   26: iconst_3
-    //   27: ldc 61
+    //   27: ldc 139
     //   29: castore
     //   30: dup
     //   31: iconst_4
-    //   32: ldc 62
+    //   32: ldc 140
     //   34: castore
     //   35: dup
     //   36: iconst_5
-    //   37: ldc 63
+    //   37: ldc 141
     //   39: castore
     //   40: dup
     //   41: bipush 6
-    //   43: ldc 64
+    //   43: ldc 142
     //   45: castore
     //   46: dup
     //   47: bipush 7
-    //   49: ldc 65
+    //   49: ldc 143
     //   51: castore
     //   52: dup
     //   53: bipush 8
-    //   55: ldc 66
+    //   55: ldc 144
     //   57: castore
     //   58: dup
     //   59: bipush 9
-    //   61: ldc 67
+    //   61: ldc 145
     //   63: castore
     //   64: dup
     //   65: bipush 10
-    //   67: ldc 68
+    //   67: ldc 146
     //   69: castore
     //   70: dup
     //   71: bipush 11
-    //   73: ldc 69
+    //   73: ldc 147
     //   75: castore
     //   76: dup
     //   77: bipush 12
-    //   79: ldc 70
+    //   79: ldc 148
     //   81: castore
     //   82: dup
     //   83: bipush 13
-    //   85: ldc 71
+    //   85: ldc 149
     //   87: castore
     //   88: dup
     //   89: bipush 14
-    //   91: ldc 72
+    //   91: ldc 150
     //   93: castore
     //   94: dup
     //   95: bipush 15
-    //   97: ldc 73
+    //   97: ldc 151
     //   99: castore
     //   100: pop
     //   101: bipush 32
     //   103: newarray char
     //   105: astore 7
-    //   107: ldc 75
-    //   109: invokestatic 81	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   107: ldc 153
+    //   109: invokestatic 159	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   112: astore 8
-    //   114: new 83	java/io/FileInputStream
+    //   114: new 161	java/io/FileInputStream
     //   117: dup
     //   118: aload_0
-    //   119: invokespecial 86	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   119: invokespecial 162	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   122: astore 5
     //   124: aload 5
     //   126: astore_0
@@ -130,7 +342,7 @@ public class ApkUtil
     //   136: astore_0
     //   137: aload 5
     //   139: aload 9
-    //   141: invokevirtual 90	java/io/FileInputStream:read	([B)I
+    //   141: invokevirtual 166	java/io/FileInputStream:read	([B)I
     //   144: istore_2
     //   145: iload_2
     //   146: iconst_m1
@@ -141,17 +353,17 @@ public class ApkUtil
     //   155: aload 9
     //   157: iconst_0
     //   158: iload_2
-    //   159: invokevirtual 94	java/security/MessageDigest:update	([BII)V
+    //   159: invokevirtual 170	java/security/MessageDigest:update	([BII)V
     //   162: goto -28 -> 134
     //   165: astore 6
     //   167: aload 5
     //   169: astore_0
     //   170: aload 6
-    //   172: invokevirtual 95	java/lang/Exception:printStackTrace	()V
+    //   172: invokevirtual 131	java/lang/Exception:printStackTrace	()V
     //   175: aload 5
     //   177: ifnull +8 -> 185
     //   180: aload 5
-    //   182: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   182: invokevirtual 171	java/io/FileInputStream:close	()V
     //   185: aconst_null
     //   186: astore_0
     //   187: aload_0
@@ -159,29 +371,29 @@ public class ApkUtil
     //   189: aload 5
     //   191: astore_0
     //   192: aload 8
-    //   194: invokevirtual 102	java/security/MessageDigest:digest	()[B
+    //   194: invokevirtual 175	java/security/MessageDigest:digest	()[B
     //   197: astore 8
     //   199: iconst_0
     //   200: istore_2
     //   201: goto +85 -> 286
     //   204: aload 5
     //   206: astore_0
-    //   207: new 104	java/lang/String
+    //   207: new 42	java/lang/String
     //   210: dup
     //   211: aload 7
-    //   213: invokespecial 107	java/lang/String:<init>	([C)V
+    //   213: invokespecial 178	java/lang/String:<init>	([C)V
     //   216: astore 6
     //   218: aload 6
     //   220: astore_0
     //   221: aload 5
     //   223: ifnull -36 -> 187
     //   226: aload 5
-    //   228: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   228: invokevirtual 171	java/io/FileInputStream:close	()V
     //   231: aload 6
     //   233: areturn
     //   234: astore_0
     //   235: aload_0
-    //   236: invokevirtual 108	java/io/IOException:printStackTrace	()V
+    //   236: invokevirtual 179	java/io/IOException:printStackTrace	()V
     //   239: aload 6
     //   241: areturn
     //   242: astore 5
@@ -190,16 +402,16 @@ public class ApkUtil
     //   246: aload_0
     //   247: ifnull +7 -> 254
     //   250: aload_0
-    //   251: invokevirtual 98	java/io/FileInputStream:close	()V
+    //   251: invokevirtual 171	java/io/FileInputStream:close	()V
     //   254: aload 5
     //   256: athrow
     //   257: astore_0
     //   258: aload_0
-    //   259: invokevirtual 108	java/io/IOException:printStackTrace	()V
+    //   259: invokevirtual 179	java/io/IOException:printStackTrace	()V
     //   262: goto -8 -> 254
     //   265: astore_0
     //   266: aload_0
-    //   267: invokevirtual 108	java/io/IOException:printStackTrace	()V
+    //   267: invokevirtual 179	java/io/IOException:printStackTrace	()V
     //   270: goto -85 -> 185
     //   273: astore 5
     //   275: goto -29 -> 246

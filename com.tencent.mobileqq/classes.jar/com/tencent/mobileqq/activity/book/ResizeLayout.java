@@ -6,7 +6,7 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
-import wfy;
+import wli;
 
 public class ResizeLayout
   extends ScrollView
@@ -37,7 +37,7 @@ public class ResizeLayout
       if (paramInt2 > paramInt4) {}
       for (this.jdField_a_of_type_Boolean = false; this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout$OnResizeListener != null; this.jdField_a_of_type_Boolean = true)
       {
-        new Handler(Looper.getMainLooper()).postDelayed(new wfy(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
+        new Handler(Looper.getMainLooper()).postDelayed(new wli(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
         return;
       }
     }

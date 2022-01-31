@@ -31,7 +31,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import java.util.ArrayList;
-import ode;
+import oht;
 
 public class EditPicCropPart
   extends EditVideoPart
@@ -122,14 +122,14 @@ public class EditPicCropPart
       if (paramBoolean)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
-        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a().getDrawable(2130838508));
+        this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a().getDrawable(2130838514));
       }
     }
     else {
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#BBBBBB"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a().getDrawable(2130845833));
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a().getDrawable(2130845913));
   }
   
   private boolean c()
@@ -147,8 +147,8 @@ public class EditPicCropPart
       }
       if (!this.jdField_e_of_type_Boolean)
       {
-        ode localode = new ode(this);
-        DialogUtil.b(a(), 230, a().getString(2131439064), a().getString(2131439065), 2131438535, 2131438535, null, localode).show();
+        oht localoht = new oht(this);
+        DialogUtil.b(a(), 230, a().getString(2131439090), a().getString(2131439091), 2131438555, 2131438555, null, localoht).show();
       }
       bool1 = true;
     }
@@ -166,7 +166,7 @@ public class EditPicCropPart
         bool1 = bool2;
         if (!NetworkUtil.g(a()))
         {
-          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439043, 0).a();
+          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439067, 0).a();
           bool1 = true;
         }
       }
@@ -196,24 +196,24 @@ public class EditPicCropPart
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364356));
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiCropCropView = ((CropView)a(2131364400));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364381));
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiCropCropView = ((CropView)a(2131364425));
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiCropCropView.setCropListener(this);
-      this.jdField_a_of_type_AndroidViewView = a(2131364398);
+      this.jdField_a_of_type_AndroidViewView = a(2131364423);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = a(2131364399);
+      this.jdField_b_of_type_AndroidViewView = a(2131364424);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364403));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364428));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131364402));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131364427));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131364393));
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364395));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131364418));
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131364420));
       this.jdField_b_of_type_AndroidViewViewGroup.setOnTouchListener(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiCropCropView);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131364401));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131364426));
       this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131364394));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)a(2131371941));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131364419));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)a(2131371949));
     }
   }
   
@@ -260,7 +260,7 @@ public class EditPicCropPart
       this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
       if ((this.jdField_a_of_type_AndroidWidgetTextView instanceof TextView)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131439042);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131439066);
       }
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     }
@@ -275,11 +275,11 @@ public class EditPicCropPart
         if ((this.jdField_a_of_type_AndroidWidgetTextView instanceof TextView))
         {
           Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-          ((TextView)localObject).setTextColor(a().getColor(2131494236));
-          ((TextView)localObject).setText(a().getString(2131434534));
+          ((TextView)localObject).setTextColor(a().getColor(2131494242));
+          ((TextView)localObject).setText(a().getString(2131434550));
           ((TextView)localObject).setTextColor(Color.parseColor("#BBBBBB"));
           ((TextView)localObject).setTextSize(1, 14.0F);
-          ((TextView)localObject).setBackgroundDrawable(a().getDrawable(2130845833));
+          ((TextView)localObject).setBackgroundDrawable(a().getDrawable(2130845913));
           localObject = (ViewGroup.MarginLayoutParams)((TextView)localObject).getLayoutParams();
           ((ViewGroup.MarginLayoutParams)localObject).width = AIOUtils.a(60.0F, a());
           ((ViewGroup.MarginLayoutParams)localObject).height = AIOUtils.a(30.0F, a());
@@ -287,11 +287,11 @@ public class EditPicCropPart
         this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
         ((ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiCropCropView.getLayoutParams()).topMargin = AIOUtils.a(70.0F, a());
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(a().getString(2131439059));
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(a().getString(2131439085));
         this.jdField_e_of_type_AndroidWidgetTextView.setTextSize(1, 20.0F);
         ((ViewGroup.MarginLayoutParams)this.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams()).topMargin = AIOUtils.a(16.0F, a());
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(a().getString(2131439058));
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(a().getString(2131439084));
         this.jdField_e_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
         ((ViewGroup.MarginLayoutParams)this.jdField_e_of_type_AndroidWidgetTextView.getLayoutParams()).topMargin = AIOUtils.a(6.0F, a());
       } while (Build.VERSION.SDK_INT < 18);
@@ -301,11 +301,11 @@ public class EditPicCropPart
     } while (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a() != 11);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131439321));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(a(2131439322));
-    this.jdField_f_of_type_AndroidWidgetTextView.setText(a(2131439323));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColor(2131494236));
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a().getDrawable(2130845824));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(a(2131439353));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(a(2131439354));
+    this.jdField_f_of_type_AndroidWidgetTextView.setText(a(2131439355));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColor(2131494242));
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a().getDrawable(2130845904));
     this.jdField_a_of_type_AndroidWidgetTextView.setMinWidth(AIOUtils.a(62.0F, a()));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     TroopReportor.a("Grp_edu", "Grp_oral", "Oral_Photoedit_In", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_AndroidOsBundle.getString("troop_uin", ""), "" });
@@ -327,7 +327,7 @@ public class EditPicCropPart
   public void a(int paramInt)
   {
     if (paramInt == 7) {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getString(2131438723), 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getString(2131438746), 0).a();
     }
   }
   
@@ -399,11 +399,11 @@ public class EditPicCropPart
   {
     switch (paramView.getId())
     {
-    case 2131364400: 
+    case 2131364425: 
     default: 
-    case 2131364398: 
-    case 2131364399: 
-    case 2131364403: 
+    case 2131364423: 
+    case 2131364424: 
+    case 2131364428: 
       do
       {
         do
@@ -452,7 +452,7 @@ public class EditPicCropPart
       VideoEditReport.b("0X80075D2");
       GeneratePicArgs.a(this.jdField_a_of_type_ArrayOfInt);
       return;
-    case 2131364402: 
+    case 2131364427: 
       if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager != null) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3)) {
         LpReportInfo_pf00064.allReport(615, 2, 5);
       }

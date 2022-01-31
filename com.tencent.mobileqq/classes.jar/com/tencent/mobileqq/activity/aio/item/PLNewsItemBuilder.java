@@ -28,8 +28,8 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import java.net.MalformedURLException;
 import java.net.URL;
-import vcj;
-import vck;
+import vhl;
+import vhm;
 
 public class PLNewsItemBuilder
   extends AbstractChatItemBuilder
@@ -43,43 +43,43 @@ public class PLNewsItemBuilder
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Int = (paramContext.getResources().getDisplayMetrics().widthPixels - paramContext.getResources().getDimensionPixelSize(2131560654) * 2);
+    this.jdField_a_of_type_Int = (paramContext.getResources().getDisplayMetrics().widthPixels - paramContext.getResources().getDimensionPixelSize(2131560655) * 2);
     this.jdField_b_of_type_Int = ((int)paramContext.getResources().getDimension(2131559448));
     this.c = paramContext.getResources().getDimensionPixelSize(2131559449);
   }
   
-  private int a(vck paramvck)
+  private int a(vhm paramvhm)
   {
-    int i = paramvck.c.getBackground().getIntrinsicWidth();
-    return paramvck.c.getBackground().getIntrinsicHeight() * this.jdField_a_of_type_Int / i;
+    int i = paramvhm.c.getBackground().getIntrinsicWidth();
+    return paramvhm.c.getBackground().getIntrinsicHeight() * this.jdField_a_of_type_Int / i;
   }
   
-  private View a(View paramView, vck paramvck)
+  private View a(View paramView, vhm paramvhm)
   {
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968759, null);
-      paramvck.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363057);
-      paramvck.c = ((TextView)paramView.findViewById(2131363632));
-      paramvck.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363378));
-      paramvck.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131363534));
-      paramvck.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(this.jdField_b_of_type_Int);
-      paramvck.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressMask(true);
-      int i = a(paramvck);
-      paramvck.c.getLayoutParams().width = this.jdField_a_of_type_Int;
-      paramvck.c.getLayoutParams().height = i;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968762, null);
+      paramvhm.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363062);
+      paramvhm.c = ((TextView)paramView.findViewById(2131363651));
+      paramvhm.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363397));
+      paramvhm.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131363553));
+      paramvhm.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(this.jdField_b_of_type_Int);
+      paramvhm.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressMask(true);
+      int i = a(paramvhm);
+      paramvhm.c.getLayoutParams().width = this.jdField_a_of_type_Int;
+      paramvhm.c.getLayoutParams().height = i;
       localView = paramView;
       if (jdField_b_of_type_Boolean)
       {
-        paramvck.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
+        paramvhm.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
         localView = paramView;
       }
     }
     if (jdField_b_of_type_Boolean)
     {
       localView.setContentDescription(null);
-      paramvck.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramvck.jdField_b_of_type_JavaLangStringBuilder.length(), "");
+      paramvhm.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramvhm.jdField_b_of_type_JavaLangStringBuilder.length(), "");
     }
     return localView;
   }
@@ -130,7 +130,7 @@ public class PLNewsItemBuilder
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     paramLinearLayout = (MessageForPLNews)paramMessageRecord;
-    paramViewHolder = (vck)paramViewHolder;
+    paramViewHolder = (vhm)paramViewHolder;
     paramView = a(paramView, paramViewHolder);
     paramViewHolder.jdField_a_of_type_Long = paramLinearLayout.uniseq;
     paramViewHolder.jdField_a_of_type_JavaLangString = paramLinearLayout.frienduin;
@@ -142,8 +142,8 @@ public class PLNewsItemBuilder
     if (!paramViewHolder.c.getText().equals(paramLinearLayout.text)) {
       paramViewHolder.c.setText(paramLinearLayout.text);
     }
-    paramMessageRecord = (String)paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131362403);
-    Object localObject = (Integer)paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131362404);
+    paramMessageRecord = (String)paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131362406);
+    Object localObject = (Integer)paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131362407);
     int j;
     if (localObject == null)
     {
@@ -183,11 +183,11 @@ public class PLNewsItemBuilder
             paramMessageRecord = URLDrawable.getDrawable(paramMessageRecord, a(paramViewHolder), a(paramViewHolder), localRoundedColorDrawable, (Drawable)localObject);
             paramMessageRecord.setDecodeHandler(URLDrawableDecodeHandler.o);
             paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(paramMessageRecord);
-            paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131362403, paramLinearLayout.cover);
+            paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131362406, paramLinearLayout.cover);
             if (paramMessageRecord == null)
             {
               paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable((Drawable)localObject);
-              paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131362404, Integer.valueOf(paramLinearLayout.bgColor));
+              paramViewHolder.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131362407, Integer.valueOf(paramLinearLayout.bgColor));
             }
             if (!TextUtils.isEmpty(paramLinearLayout.cover))
             {
@@ -201,7 +201,7 @@ public class PLNewsItemBuilder
                 paramView.setContentDescription(paramViewHolder.jdField_b_of_type_JavaLangStringBuilder.toString());
               }
               paramViewHolder.jdField_b_of_type_AndroidViewView.setTag(paramViewHolder);
-              paramViewHolder.jdField_b_of_type_AndroidViewView.setOnClickListener(new vcj(this, paramLinearLayout, paramOnLongClickAndTouchListener));
+              paramViewHolder.jdField_b_of_type_AndroidViewView.setOnClickListener(new vhl(this, paramLinearLayout, paramOnLongClickAndTouchListener));
               return paramView;
               j = ((Integer)localObject).intValue();
             }
@@ -222,7 +222,7 @@ public class PLNewsItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new vck(this);
+    return new vhm(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

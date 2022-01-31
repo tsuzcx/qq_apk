@@ -1,17 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
 
 public class kwr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public kwr(AdModuleBase paramAdModuleBase) {}
+  public kwr(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.dismiss();
-    AdModuleBase.c(this.a);
+    this.a.a(1);
   }
 }
 

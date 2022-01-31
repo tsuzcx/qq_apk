@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.HistorySearchEntryModel;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 
 public class ahqw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ahqw(HistorySearchEntryModel paramHistorySearchEntryModel) {}
+  public ahqw(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    HistorySearchEntryModel.a(this.a).a(this.a.a, paramView, i, 0L);
+    this.a.a.k();
+    this.a.q();
+    this.a.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahqw
  * JD-Core Version:    0.7.0.1
  */

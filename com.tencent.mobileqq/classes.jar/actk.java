@@ -1,11 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class actk
+class actk
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public int b;
+  actk(acth paramacth) {}
   
-  public actk(QfileRecentFileBaseExpandableListAdapter paramQfileRecentFileBaseExpandableListAdapter) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    acth.a(this.a).dismiss();
+  }
 }
 
 

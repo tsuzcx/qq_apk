@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import adas;
+import adiz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class OfflineFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new adas();
+  public static final Parcelable.Creator CREATOR = new adiz();
   public int a;
   public long a;
   public String a;

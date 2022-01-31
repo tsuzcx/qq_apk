@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ptt.player;
 
-import agto;
-import agtp;
+import agyb;
+import agyc;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -16,11 +16,11 @@ public final class AmrPlayer
   implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, Handler.Callback, IPttPlayer
 {
   private int jdField_a_of_type_Int = -1;
-  private agtp jdField_a_of_type_Agtp;
+  private agyc jdField_a_of_type_Agyc;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   private IPttPlayerListener jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  Runnable jdField_a_of_type_JavaLangRunnable = new agto(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new agyb(this);
   private String jdField_a_of_type_JavaLangString;
   
   public AmrPlayer()
@@ -44,10 +44,10 @@ public final class AmrPlayer
   {
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(this);
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
-    if (this.jdField_a_of_type_Agtp == null)
+    if (this.jdField_a_of_type_Agyc == null)
     {
-      this.jdField_a_of_type_Agtp = new agtp(this, null);
-      this.jdField_a_of_type_Agtp.start();
+      this.jdField_a_of_type_Agyc = new agyc(this, null);
+      this.jdField_a_of_type_Agyc.start();
     }
   }
   
@@ -94,7 +94,7 @@ public final class AmrPlayer
   public void c()
   {
     this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    this.jdField_a_of_type_Agtp = null;
+    this.jdField_a_of_type_Agyc = null;
   }
   
   public void d()
@@ -133,7 +133,7 @@ public final class AmrPlayer
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_Agtp = null;
+    this.jdField_a_of_type_Agyc = null;
     if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener.a();
     }
@@ -141,7 +141,7 @@ public final class AmrPlayer
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Agtp = null;
+    this.jdField_a_of_type_Agyc = null;
     if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener.a(this, paramInt1, paramInt2);
     }

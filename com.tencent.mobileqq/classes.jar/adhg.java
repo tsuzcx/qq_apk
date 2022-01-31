@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
 
-public final class adhg
+public class adhg
   implements Runnable
 {
-  public adhg(FileManagerEntity paramFileManagerEntity) {}
+  public adhg(ThumbDownloadManager paramThumbDownloadManager, String paramString) {}
   
   public void run()
   {
-    FilePicURLDrawlableHelper.a(this.a);
+    ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_JavaLangString);
+    ThumbDownloadManager.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adhg
  * JD-Core Version:    0.7.0.1
  */

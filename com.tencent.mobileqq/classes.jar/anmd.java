@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import dov.com.qq.im.capture.music.QQMusicPlayerScene;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import cooperation.qzone.widget.QzoneGuideBubbleHelper;
 
 public class anmd
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public anmd(QQMusicPlayerScene paramQQMusicPlayerScene, String paramString, int paramInt1, int paramInt2) {}
+  public anmd(QzoneGuideBubbleHelper paramQzoneGuideBubbleHelper) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_DovComQqImCaptureMusicQQMusicPlayerScene.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_DovComQqImCaptureMusicQQMusicPlayerScene.a(this.b);
+    this.a.a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmd
  * JD-Core Version:    0.7.0.1
  */

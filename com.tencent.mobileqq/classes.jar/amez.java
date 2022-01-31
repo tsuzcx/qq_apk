@@ -1,17 +1,16 @@
-import android.view.animation.Interpolator;
+import com.tencent.qqprotect.qsec.GGMM;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public final class amez
-  implements Interpolator
+public class amez
+  implements Runnable
 {
-  public float getInterpolation(float paramFloat)
-  {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
-  }
+  public amez(QSecFramework paramQSecFramework) {}
+  
+  public void run() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amez
  * JD-Core Version:    0.7.0.1
  */

@@ -17,14 +17,14 @@ import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ybq;
+import yhz;
 
 public class SelectMemberFromFriendGroup
   extends SelectMemberInnerFrame
 {
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public List a;
-  ybq jdField_a_of_type_Ybq;
+  yhz jdField_a_of_type_Yhz;
   List b = new ArrayList();
   
   public SelectMemberFromFriendGroup(Context paramContext)
@@ -77,7 +77,7 @@ public class SelectMemberFromFriendGroup
         {
           localObject2 = new Groups();
           ((Groups)localObject2).group_id = 1003;
-          ((Groups)localObject2).group_name = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131433336);
+          ((Groups)localObject2).group_name = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131433350);
           ((Groups)localObject2).group_friend_count = ((List)localObject1).size();
           ((Groups)localObject2).seqid = 0;
           this.jdField_a_of_type_JavaUtilArrayList.add(0, localObject2);
@@ -171,7 +171,7 @@ public class SelectMemberFromFriendGroup
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131435991), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131435519));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131436009), this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131435535));
     f();
   }
   
@@ -240,7 +240,7 @@ public class SelectMemberFromFriendGroup
           i = 1;
           continue;
           if (i != 0) {
-            this.jdField_a_of_type_Ybq.notifyDataSetChanged();
+            this.jdField_a_of_type_Yhz.notifyDataSetChanged();
           }
           return;
         }
@@ -257,8 +257,8 @@ public class SelectMemberFromFriendGroup
     localXListView.setDivider(null);
     localLinearLayout.addView(localXListView);
     localXListView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Ybq = new ybq(this);
-    localXListView.setAdapter(this.jdField_a_of_type_Ybq);
+    this.jdField_a_of_type_Yhz = new yhz(this);
+    localXListView.setAdapter(this.jdField_a_of_type_Yhz);
     setContentView(localLinearLayout);
   }
   

@@ -1,31 +1,14 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 class xuc
-  extends ExecuteBinResponseCallback
+  implements Runnable
 {
-  xuc(xua paramxua, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
+  xuc(xub paramxub) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
-    {
-      xua.a(this.jdField_a_of_type_Xua, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
-    }
-    xua.a(this.jdField_a_of_type_Xua, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-  }
-  
-  public void b(String paramString)
-  {
-    xua.a(this.jdField_a_of_type_Xua, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    EditLocalVideoActivity.a(this.a.a.a).setVisibility(8);
   }
 }
 

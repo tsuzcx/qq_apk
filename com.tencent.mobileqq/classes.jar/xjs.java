@@ -1,26 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class xjs
-  implements View.OnClickListener
+  implements PreloadImgManager.OnSingleDownloadCallback
 {
-  public xjs(BannerManager paramBannerManager, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public xjs(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper click banner, jump");
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (ThemeHbFragment.a(this.a) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
+      }
     }
-    paramView = (QQAppInterface)BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getAppRuntime();
-    ((UpgradeTIMManager)paramView.getManager(255)).a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.g);
-    ReportController.b(paramView, "CliOper", "", "", "0X8008659", "0X8008659", 0, 0, "", "", "", "");
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back bitmap = " + paramObject);
+      }
+    } while (!(paramObject instanceof Bitmap));
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
+    }
+    ThemeHbFragment.a(this.a).post(new xjt(this, paramObject));
   }
 }
 

@@ -24,28 +24,28 @@ public class EditShareGroupHandler
   public void a()
   {
     EditShareGroupRequest localEditShareGroupRequest = new EditShareGroupRequest();
-    localEditShareGroupRequest.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
+    localEditShareGroupRequest.a = this.a;
     CmdTaskManger.a().a(localEditShareGroupRequest, this);
     if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.shareGroup.ReqEditShareGroupHandler", 2, "ReqEditShareGroupHandler sendRequest shareGroupInfo = " + this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      QLog.e("Q.qqstory.shareGroup.ReqEditShareGroupHandler", 2, "ReqEditShareGroupHandler sendRequest shareGroupInfo = " + this.a);
     }
   }
   
   public void a(@NonNull EditShareGroupRequest paramEditShareGroupRequest, @Nullable EditShareGroupResponse paramEditShareGroupResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     paramEditShareGroupRequest = (ShareGroupManager)SuperManager.a(7);
-    ShareGroupItem localShareGroupItem = paramEditShareGroupRequest.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId);
+    ShareGroupItem localShareGroupItem = paramEditShareGroupRequest.a(this.a.shareGroupId);
     EditShareGroupHandler.EditShareGroupEvent localEditShareGroupEvent = new EditShareGroupHandler.EditShareGroupEvent();
-    localEditShareGroupEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    localEditShareGroupEvent.errorInfo = paramErrorMessage;
     if ((paramErrorMessage.isSuccess()) && (paramEditShareGroupResponse != null))
     {
-      localShareGroupItem.name = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.name;
+      localShareGroupItem.name = this.a.name;
       paramEditShareGroupRequest.a(localShareGroupItem);
       b();
     }
     for (;;)
     {
-      localEditShareGroupEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = localShareGroupItem;
+      localEditShareGroupEvent.a = localShareGroupItem;
       Dispatchers.get().dispatch(localEditShareGroupEvent);
       return;
       c();

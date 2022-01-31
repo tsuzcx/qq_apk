@@ -1,20 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.game.ApolloFragmentManager;
-import com.tencent.mobileqq.apollo.game.ApolloGameView;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.TMG.opengl.GraphicRendererMgr;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVVideoCtrl;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
 
 public class ypp
-  implements View.OnClickListener
+  implements SurfaceHolder.Callback
 {
-  public ypp(ApolloGameView paramApolloGameView, ImageView paramImageView) {}
+  public ypp(AVCameraCaptureModel paramAVCameraCaptureModel) {}
   
-  public void onClick(View paramView)
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    ApolloFragmentManager.a().a(null);
-    if (ApolloFragmentManager.a().a() <= 1) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (paramSurfaceHolder.getSurface() == null) {
+      return;
     }
+    paramSurfaceHolder.setFixedSize(paramInt2, paramInt3);
+    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceChanged");
+  }
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    if (GraphicRendererMgr.getInstance() != null)
+    {
+      AVManager.a(AVCameraCaptureModel.a(this.a)).a().setRenderMgrAndHolder(GraphicRendererMgr.getInstance(), paramSurfaceHolder);
+      AVManager.a(AVCameraCaptureModel.a(this.a)).a().getVideoCtrl().setLocalVideoPreviewCallback(new ypq(this));
+      AVManager.a(AVCameraCaptureModel.a(this.a)).a().getVideoCtrl().setRemoteVideoPreviewCallback(new yps(this));
+    }
+    for (;;)
+    {
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceCreated");
+      return;
+      QLog.e("AVCameraCaptureModel", 0, "GraphicRendererMgr is null, so can't load");
+    }
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = this.a.a();
+    if (paramSurfaceHolder == null)
+    {
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed avCtrl == null");
+      return;
+    }
+    paramSurfaceHolder.enableCamera(0, false, new ypu(this));
+    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed");
   }
 }
 

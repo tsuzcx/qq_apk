@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public final class olj
-  implements Parcelable.Creator
+public class olj
+  implements DialogInterface.OnDismissListener
 {
-  public PublishParam a(Parcel paramParcel)
-  {
-    return new PublishParam(paramParcel);
-  }
+  public olj(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide) {}
   
-  public PublishParam[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new PublishParam[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "showSyncStoryGuide ->onDismiss-------");
+    }
+    SharedPreUtils.b(this.a.a.a());
   }
 }
 

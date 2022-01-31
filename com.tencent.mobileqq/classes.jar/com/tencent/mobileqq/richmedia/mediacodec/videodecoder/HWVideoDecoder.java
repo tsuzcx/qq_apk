@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.videodecoder;
 
-import ahov;
+import ahtn;
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.view.Surface;
@@ -10,9 +10,27 @@ import com.tencent.sveffects.SdkContext;
 @TargetApi(16)
 public class HWVideoDecoder
 {
-  private ahov jdField_a_of_type_Ahov;
+  private ahtn jdField_a_of_type_Ahtn;
   private DecodeOutputSurface jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeOutputSurface;
   private Thread jdField_a_of_type_JavaLangThread;
+  
+  public static final float a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 1.0F;
+    case 1: 
+      return 2.0F;
+    case 2: 
+      return 0.5F;
+    case 3: 
+      return 1.5F;
+    case 4: 
+      return 0.25F;
+    }
+    return -1.0F;
+  }
   
   private void a(DecodeConfig paramDecodeConfig, Surface paramSurface, HWDecodeListener paramHWDecodeListener)
   {
@@ -29,9 +47,9 @@ public class HWVideoDecoder
     try
     {
       localThread.join();
-      this.jdField_a_of_type_Ahov = new ahov(paramDecodeConfig.a, paramSurface, paramHWDecodeListener);
-      this.jdField_a_of_type_Ahov.a(paramDecodeConfig);
-      this.jdField_a_of_type_JavaLangThread = new Thread(this.jdField_a_of_type_Ahov, "HWVideoDecoder-Thread");
+      this.jdField_a_of_type_Ahtn = new ahtn(paramDecodeConfig.a, paramSurface, paramHWDecodeListener);
+      this.jdField_a_of_type_Ahtn.a(paramDecodeConfig);
+      this.jdField_a_of_type_JavaLangThread = new Thread(this.jdField_a_of_type_Ahtn, "HWVideoDecoder-Thread");
       this.jdField_a_of_type_JavaLangThread.start();
       return;
     }
@@ -50,15 +68,15 @@ public class HWVideoDecoder
       this.jdField_a_of_type_JavaLangThread.interrupt();
     }
     this.jdField_a_of_type_JavaLangThread = null;
-    this.jdField_a_of_type_Ahov = null;
+    this.jdField_a_of_type_Ahtn = null;
   }
   
   public void a(int paramInt)
   {
-    ahov localahov = this.jdField_a_of_type_Ahov;
-    if (localahov != null)
+    ahtn localahtn = this.jdField_a_of_type_Ahtn;
+    if (localahtn != null)
     {
-      localahov.a(paramInt);
+      localahtn.a(paramInt);
       SdkContext.a().a().d("HWVideoDecoder", "setSpeedType" + paramInt);
       return;
     }
@@ -67,10 +85,10 @@ public class HWVideoDecoder
   
   public void a(long paramLong)
   {
-    ahov localahov = this.jdField_a_of_type_Ahov;
-    if (localahov != null)
+    ahtn localahtn = this.jdField_a_of_type_Ahtn;
+    if (localahtn != null)
     {
-      localahov.b(paramLong);
+      localahtn.b(paramLong);
       SdkContext.a().a().d("HWVideoDecoder", "seekTo " + paramLong + " ms");
       return;
     }
@@ -79,11 +97,11 @@ public class HWVideoDecoder
   
   public void a(long paramLong1, long paramLong2)
   {
-    ahov localahov = this.jdField_a_of_type_Ahov;
-    if (localahov != null)
+    ahtn localahtn = this.jdField_a_of_type_Ahtn;
+    if (localahtn != null)
     {
       SdkContext.a().a().d("HWVideoDecoder", "setPlayRange [" + paramLong1 + " ms, " + paramLong2 + " ms]");
-      localahov.a(paramLong1, paramLong2);
+      localahtn.a(paramLong1, paramLong2);
       return;
     }
     SdkContext.a().a().b("HWVideoDecoder", "setPlayRange failed, can not find DecodeRunnable");
@@ -97,10 +115,10 @@ public class HWVideoDecoder
   
   public void b()
   {
-    ahov localahov = this.jdField_a_of_type_Ahov;
-    if (localahov != null)
+    ahtn localahtn = this.jdField_a_of_type_Ahtn;
+    if (localahtn != null)
     {
-      ahov.a(localahov, true);
+      ahtn.a(localahtn, true);
       SdkContext.a().a().d("HWVideoDecoder", "pauseDecode");
       return;
     }
@@ -109,10 +127,10 @@ public class HWVideoDecoder
   
   public void b(int paramInt)
   {
-    ahov localahov = this.jdField_a_of_type_Ahov;
-    if (localahov != null)
+    ahtn localahtn = this.jdField_a_of_type_Ahtn;
+    if (localahtn != null)
     {
-      localahov.a(paramInt);
+      localahtn.a(paramInt);
       SdkContext.a().a().d("HWVideoDecoder", "seekTo " + paramInt + " ms");
       return;
     }
@@ -121,14 +139,14 @@ public class HWVideoDecoder
   
   public void c()
   {
-    ahov localahov = this.jdField_a_of_type_Ahov;
-    if (localahov != null)
+    ahtn localahtn = this.jdField_a_of_type_Ahtn;
+    if (localahtn != null)
     {
-      localahov.a();
-      ahov.a(localahov, false);
-      synchronized (ahov.a(localahov))
+      localahtn.a();
+      ahtn.a(localahtn, false);
+      synchronized (ahtn.a(localahtn))
       {
-        ahov.a(localahov).notifyAll();
+        ahtn.a(localahtn).notifyAll();
         SdkContext.a().a().d("HWVideoDecoder", "resumeDecode");
         return;
       }
@@ -138,11 +156,11 @@ public class HWVideoDecoder
   
   public void d()
   {
-    ahov localahov = this.jdField_a_of_type_Ahov;
-    if ((localahov != null) && (ahov.a(localahov))) {
-      synchronized (ahov.a(localahov))
+    ahtn localahtn = this.jdField_a_of_type_Ahtn;
+    if ((localahtn != null) && (ahtn.a(localahtn))) {
+      synchronized (ahtn.a(localahtn))
       {
-        ahov.a(localahov).notifyAll();
+        ahtn.a(localahtn).notifyAll();
         SdkContext.a().a().d("HWVideoDecoder", "decodeFrame");
         return;
       }

@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public final class aaen
-  implements Parcelable.Creator
+  implements Runnable
 {
-  public ArCloudConfigInfo a(Parcel paramParcel)
-  {
-    return new ArCloudConfigInfo(paramParcel);
-  }
+  public aaen(String paramString1, String paramString2) {}
   
-  public ArCloudConfigInfo[] a(int paramInt)
+  public void run()
   {
-    return new ArCloudConfigInfo[paramInt];
+    try
+    {
+      DialogUtil.a(ARVideoRecordUIControllerImpl.a().a(), 230, this.a, this.b, "", "我知道了", new aaeo(this), null).show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

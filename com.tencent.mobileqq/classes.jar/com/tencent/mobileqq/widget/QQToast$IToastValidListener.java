@@ -2,7 +2,7 @@ package com.tencent.mobileqq.widget;
 
 public abstract interface QQToast$IToastValidListener
 {
-  public abstract boolean e();
+  public abstract boolean a();
 }
 
 

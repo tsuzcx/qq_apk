@@ -1,34 +1,12 @@
 package c.t.m.g;
 
-import android.text.TextUtils;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
-
-public final class ah
-  implements HostnameVerifier
+final class ah
+  implements Runnable
 {
-  private String a;
-  
-  public ah(String paramString)
+  public final void run()
   {
-    this.a = paramString;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if ((TextUtils.isEmpty(this.a)) || (!(paramObject instanceof ah))) {}
-    do
-    {
-      return false;
-      paramObject = ((ah)paramObject).a;
-    } while (TextUtils.isEmpty(paramObject));
-    return this.a.equals(paramObject);
-  }
-  
-  public final boolean verify(String paramString, SSLSession paramSSLSession)
-  {
-    return HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a, paramSSLSession);
+    m.a(cn.d());
+    x.a();
   }
 }
 

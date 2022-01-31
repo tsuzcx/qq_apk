@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import com.tencent.mobileqq.database.corrupt.DBFixLoadingDialog;
 
 public class acea
-  implements Comparator
+  implements Runnable
 {
-  public acea(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
+  public acea(DBFixDialogUI paramDBFixDialogUI, int paramInt) {}
   
-  public int a(EmosmPb.SmallYellowItem paramSmallYellowItem1, EmosmPb.SmallYellowItem paramSmallYellowItem2)
+  public void run()
   {
-    if (paramSmallYellowItem2.ts.get() > paramSmallYellowItem1.ts.get()) {
-      return 1;
+    if (this.jdField_a_of_type_Int == DBFixLoadingDialog.d) {
+      DBFixDialogUI.c(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixDialogUI);
     }
-    if (paramSmallYellowItem2.ts.get() == paramSmallYellowItem1.ts.get()) {
-      return 0;
+    while (this.jdField_a_of_type_Int != DBFixLoadingDialog.e) {
+      return;
     }
-    return -1;
+    DBFixDialogUI.d(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixDialogUI);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acea
  * JD-Core Version:    0.7.0.1
  */

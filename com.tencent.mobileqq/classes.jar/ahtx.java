@@ -1,38 +1,26 @@
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
-import java.util.Comparator;
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class ahtx
-  implements Comparator
+  extends WebChromeClient
 {
-  public ahtx(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
+  private ahtx(ActionUrlActivity paramActionUrlActivity) {}
   
-  public int a(FTSEntity paramFTSEntity1, FTSEntity paramFTSEntity2)
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    paramFTSEntity1 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity1).msgExts;
-    paramFTSEntity2 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity2).msgExts;
-    long l1;
-    if (paramFTSEntity1 != null)
-    {
-      l1 = paramFTSEntity1.time;
-      if (paramFTSEntity2 == null) {
-        break label54;
-      }
-    }
-    label54:
-    for (long l2 = paramFTSEntity2.time;; l2 = 0L)
-    {
-      return Long.signum(l2 - l1);
-      l1 = 0L;
-      break;
-    }
+    super.onProgressChanged(paramWebView, paramInt);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    this.a.setTitle(paramString);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahtx
  * JD-Core Version:    0.7.0.1
  */

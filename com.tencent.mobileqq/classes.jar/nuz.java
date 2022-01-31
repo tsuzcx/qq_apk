@@ -1,14 +1,42 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import android.media.MediaCodec;
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaExtractor;
 
 public class nuz
-  implements Runnable
+  extends nva
 {
-  public nuz(DetailCommentHelper paramDetailCommentHelper, CommentEntry paramCommentEntry, int paramInt) {}
+  private nuu a;
   
-  public void run()
+  public nuz(MediaExtractor paramMediaExtractor, boolean paramBoolean, int paramInt, nvc paramnvc, nuu paramnuu)
   {
-    DetailCommentHelper.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
+    super(paramMediaExtractor, paramBoolean, paramInt, paramnvc);
+    this.a = paramnuu;
+    a();
+  }
+  
+  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
+  {
+    super.a(paramMediaCodec, paramMediaFormat);
+    this.a.a(paramMediaFormat);
+  }
+  
+  protected void a(MediaFormat paramMediaFormat)
+  {
+    this.a.a(paramMediaFormat);
+  }
+  
+  public void a(nvb paramnvb, long paramLong)
+  {
+    this.a.a(paramnvb.jdField_a_of_type_JavaNioByteBuffer, paramnvb.jdField_a_of_type_Long);
+    b(paramnvb);
+  }
+  
+  protected boolean a()
+  {
+    if (!c()) {
+      return this.a.a() < 200000L;
+    }
+    return super.a();
   }
 }
 

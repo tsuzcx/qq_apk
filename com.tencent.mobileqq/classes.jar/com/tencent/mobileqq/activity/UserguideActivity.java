@@ -18,8 +18,17 @@ public class UserguideActivity
   extends FragmentActivity
 {
   public static boolean a;
-  private static boolean c;
-  boolean b = false;
+  public static boolean b;
+  private static boolean d;
+  boolean c = false;
+  
+  public static void a()
+  {
+    if (b) {
+      QLog.w("UserGuide", 1, "clearIsUserGuiderShowed");
+    }
+    b = false;
+  }
   
   public static boolean a(Context paramContext, String paramString)
   {
@@ -28,64 +37,80 @@ public class UserguideActivity
   
   public static boolean a(SplashActivity paramSplashActivity)
   {
-    if ((AppSetting.b) || (Build.VERSION.SDK_INT < 14) || (c)) {}
-    for (;;)
+    if ((AppSetting.b) || (Build.VERSION.SDK_INT < 14) || (d)) {}
+    do
     {
-      return false;
-      c = true;
-      try
+      for (;;)
       {
-        bool = paramSplashActivity.getIntent().getBooleanExtra("k_from_login", false);
-        a = false;
-        if (bool) {
-          continue;
-        }
-        SharedPreferences localSharedPreferences = paramSplashActivity.getSharedPreferences("UserGuide", 0);
-        String str = localSharedPreferences.getString("qq_version", null);
-        if (QLog.isColorLevel()) {
-          QLog.e("UserGuide", 2, "pkg build num is 3565, local build num is " + str);
-        }
-        if (!"3565".equals(str))
+        return false;
+        d = true;
+        try
         {
-          localHashMap = new HashMap();
-          if (TextUtils.isEmpty(str))
+          bool = paramSplashActivity.getIntent().getBooleanExtra("k_from_login", false);
+          a = false;
+          if (!bool)
           {
+            Object localObject = paramSplashActivity.getSharedPreferences("UserGuide", 0);
+            String str = ((SharedPreferences)localObject).getString("qq_version", null);
             if (QLog.isColorLevel()) {
-              QLog.e("UserGuide", 2, "this is a new install");
+              QLog.e("UserGuide", 2, "pkg build num is 3615, local build num is " + str);
             }
-            localHashMap.put("userguide_update_type", "2");
-            StatisticCollector.a(paramSplashActivity).a(null, "userguide_update2", true, 0L, 0L, localHashMap, "", false);
-            paramSplashActivity = localSharedPreferences.edit();
-            paramSplashActivity.putString("qq_version", "3565");
-            paramSplashActivity.commit();
+            if (!"3615".equals(str))
+            {
+              localHashMap = new HashMap();
+              if (TextUtils.isEmpty(str))
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("UserGuide", 2, "this is a new install");
+                }
+                localHashMap.put("userguide_update_type", "2");
+                StatisticCollector.a(paramSplashActivity).a(null, "userguide_update2", true, 0L, 0L, localHashMap, "", false);
+                localObject = ((SharedPreferences)localObject).edit();
+                ((SharedPreferences.Editor)localObject).putString("qq_version", "3615");
+                ((SharedPreferences.Editor)localObject).commit();
+                a = true;
+              }
+            }
+            else
+            {
+              QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str + ", " + "3615");
+              if (!a) {
+                continue;
+              }
+            }
           }
         }
-        else
+        catch (Exception localException)
         {
-          QLog.e("UserGuide", 1, "showUserGuide " + a + ", " + str + ", " + "3565");
-          return false;
+          for (;;)
+          {
+            HashMap localHashMap;
+            try
+            {
+              b = true;
+              UserGuideWeishiFragment.a(paramSplashActivity, null);
+              return true;
+            }
+            catch (Exception paramSplashActivity) {}
+            localException = localException;
+            if (QLog.isDevelopLevel()) {
+              localException.printStackTrace();
+            }
+            boolean bool = false;
+            continue;
+            if (QLog.isColorLevel()) {
+              QLog.e("UserGuide", 2, "this is a old install");
+            }
+            localHashMap.put("userguide_update_type", "1");
+          }
         }
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          HashMap localHashMap;
-          if (QLog.isDevelopLevel()) {
-            localException.printStackTrace();
-          }
-          boolean bool = false;
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e("UserGuide", 2, "this is a old install");
-          }
-          localHashMap.put("userguide_update_type", "1");
-        }
-      }
-    }
+    } while (!QLog.isDevelopLevel());
+    paramSplashActivity.printStackTrace();
+    return false;
   }
   
-  public void a()
+  public void b()
   {
     Intent localIntent = getIntent();
     if ((getAppRuntime() != null) && (getAppRuntime().isLogin()))
@@ -117,7 +142,7 @@ public class UserguideActivity
       QLog.d("UserGuide", 4, "UserguideActivity.doOnDestroy()");
     }
     a = false;
-    this.b = true;
+    this.c = true;
     System.gc();
   }
   
@@ -129,7 +154,7 @@ public class UserguideActivity
     if (isFinishing()) {
       return;
     }
-    a();
+    b();
     a = false;
     super.finish();
   }

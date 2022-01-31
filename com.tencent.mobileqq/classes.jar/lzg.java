@@ -1,32 +1,26 @@
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class lzg
-  implements AdapterView.OnItemClickListener
+  extends ClickableSpan
 {
-  public lzg(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public lzg(ComponentHeaderPublish paramComponentHeaderPublish) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
-    if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
-    {
-      if (ReadInJoyVideoTagSelectionFragment.a(this.a).a()) {
-        break label72;
-      }
-      if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).c())) {
-        ReadInJoyVideoTagSelectionFragment.a(this.a).a();
-      }
-    }
-    label72:
-    while (ReadInJoyVideoTagSelectionFragment.b(this.a).c()) {
-      return;
-    }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).a();
+    ReadInJoyUtils.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.a.getResources()));
   }
 }
 

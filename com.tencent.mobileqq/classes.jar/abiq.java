@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
 
-public class abiq
-  implements ValueAnimator.AnimatorUpdateListener
+class abiq
+  implements Runnable
 {
-  public abiq(ARMapSplashEntryView paramARMapSplashEntryView) {}
+  abiq(abip paramabip, Bitmap paramBitmap) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    ARMapSplashEntryView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    ARMapSplashEntryView.a(this.a);
+    ARMapActivity.a(this.jdField_a_of_type_Abip.a).a(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

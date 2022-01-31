@@ -1,28 +1,41 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManager;
+import com.tencent.mobileqq.ar.arengine.ARCamera;
+import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aash
-  implements aasr
+public class aash
+  implements Runnable
 {
-  aash(aasc paramaasc, aasp paramaasp, aasr paramaasr, String paramString) {}
+  public aash(ARCardCameraRecordFragment paramARCardCameraRecordFragment, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
+    if ((ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment) != 3) || (this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment.a == null))
     {
-      ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString }));
-      ArkAppDataReport.a(this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, 4);
-      this.jdField_a_of_type_Aasr.a(true);
+      QLog.i("ARCardCameraRecordFragment", 2, "cancel to close camera. next mCurCameraState = " + ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment));
       return;
     }
-    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString }));
-    ArkAppDataReport.a(this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, 1);
-    aasc.a(this.jdField_a_of_type_Aasc, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp, new aasi(this));
+    if ((ARCardCameraRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment) != null) && (this.jdField_a_of_type_Boolean)) {
+      ARCardCameraRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment).c();
+    }
+    if (ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment)) {
+      this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment.a.a();
+    }
+    ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, false);
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment.a.a();
+    if (ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment) != 3)
+    {
+      QLog.i("ARCardCameraRecordFragment", 2, "cancel to close camera. next mCurCameraState = " + ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment));
+      return;
+    }
+    ARCardCameraRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, 0);
+    ARCardCameraRecordFragment.d(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, false);
+    QLog.i("ARCardCameraRecordFragment", 2, "closeCamera successfully. mCurCameraState = " + ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aash
  * JD-Core Version:    0.7.0.1
  */

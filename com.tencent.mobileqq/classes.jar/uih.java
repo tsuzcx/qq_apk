@@ -1,26 +1,21 @@
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
+import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
 
 public class uih
-  extends AnimateUtils.AnimationAdapter
+  implements View.OnClickListener
 {
-  public uih(VisitorsActivity paramVisitorsActivity) {}
+  public uih(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if ((paramAnimation == this.a.b) && (this.a.d)) {
-      this.a.centerView.setText("");
-    }
-    this.a.centerView.clearAnimation();
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == this.a.a) {
-      this.a.centerView.setText(2131433084);
-    }
+    paramView = new Intent(this.a, CountrySelectActivity.class);
+    paramView.putExtra("key_country_code", this.a.a.mLocationCountyCode);
+    paramView.putExtra("key_no_limit_allow", true);
+    this.a.startActivityForResult(paramView, 111);
   }
 }
 

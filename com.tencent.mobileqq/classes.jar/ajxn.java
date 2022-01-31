@@ -1,21 +1,20 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.troop.utils.TroopLinkManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import mqq.app.AppRuntime;
 
 public class ajxn
-  implements ajxs
+  implements Runnable
 {
-  public ajxn(TroopShareUtility paramTroopShareUtility) {}
+  public ajxn(TroopLinkManager paramTroopLinkManager, String paramString1, String paramString2) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      TroopShareUtility.e(this.a);
-      return;
+    if (!FileUtils.a(this.jdField_a_of_type_JavaLangString, this.b)) {
+      BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("troop_link_config_version", 0).commit();
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "分享群聊失败!", 0).a();
   }
 }
 

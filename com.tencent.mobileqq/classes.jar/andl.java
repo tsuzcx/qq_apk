@@ -1,15 +1,17 @@
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
 
 public class andl
   implements Runnable
 {
-  public andl(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin) {}
+  public andl(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
-    RemoteHandleManager.a().a().n();
+    RemoteHandleManager.a().a().a(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.mRuntime.a().getLongAccountUin(), this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

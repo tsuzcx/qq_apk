@@ -50,7 +50,7 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   }
   
   @TargetApi(11)
-  private void f()
+  private void h()
   {
     if (super.a() != null)
     {
@@ -117,7 +117,7 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.a(paramWebView, paramInt, paramString1, paramString2);
-    QRUtils.a(1, 2131430035);
+    QRUtils.a(1, 2131430037);
     super.getActivity().finish();
   }
   
@@ -125,7 +125,7 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   protected int c(Bundle paramBundle)
   {
     int i = super.c(paramBundle);
-    f();
+    h();
     return i;
   }
 }

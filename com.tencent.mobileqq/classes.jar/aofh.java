@@ -1,16 +1,18 @@
-import dov.com.tencent.mfsdk.collector.DropFrameMonitor;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
 public class aofh
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+  implements IMediaPlayer.OnErrorListener
 {
-  public aofh(DropFrameMonitor paramDropFrameMonitor) {}
+  public aofh(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void onThreadMonitorEnd(int paramInt)
+  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (paramInt == 10) {
-      this.a.a();
-    }
+    LocalVideoSelectActivity.a(this.a).a();
+    LocalVideoSelectActivity.a(this.a).a(true);
+    return true;
   }
 }
 

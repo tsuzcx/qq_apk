@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
 public class yfd
-  extends QvipSpecialCareObserver
+  extends Handler
 {
-  public yfd(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  public yfd(FriendListInnerFrame paramFriendListInnerFrame) {}
   
-  public void a(Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
-    }
-    if (paramObject != null) {
-      this.a.stopTitleProgress();
-    }
-    switch (((Integer)paramObject).intValue())
+    switch (paramMessage.what)
     {
     default: 
       return;
+    case 1: 
+      this.a.a.setPadding(0, 0, 40, 0);
+      return;
     }
-    QQSpecialCareSettingActivity.a(this.a);
+    this.a.a.setPadding(0, 0, 0, 0);
   }
 }
 

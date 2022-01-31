@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.mobileqq.app.UniteSearchHandler;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
 import com.tencent.qphone.base.util.QLog;
 
-public class ahxy
+class ahxy
   implements Runnable
 {
-  public ahxy(QZoneManagerImp paramQZoneManagerImp) {}
+  ahxy(ahxx paramahxx, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    QZoneManagerImp.a(this.a);
-    QZoneManagerImp.a(this.a, QZoneManagerImp.b(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.QZoneManagerImp.", 2, "QZoneManagerImp init notifyQQTab type:" + Long.toBinaryString(QZoneManagerImp.a(this.a)));
+    if (this.jdField_a_of_type_ArrayOfByte != null)
+    {
+      QLog.d(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 1, "use cache!");
+      this.jdField_a_of_type_Ahxx.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler.a(null, 1000, this.jdField_a_of_type_ArrayOfByte);
     }
+    while (this.jdField_a_of_type_Ahxx.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "hot word list cache is null！");
+    }
+    this.jdField_a_of_type_Ahxx.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxy
  * JD-Core Version:    0.7.0.1
  */

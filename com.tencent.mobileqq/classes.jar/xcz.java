@@ -1,35 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class xcz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xcz(CommonHbFragment paramCommonHbFragment, View paramView) {}
+  final boolean jdField_a_of_type_Boolean = PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
   
-  public void onClick(View paramView)
+  public xcz(PhotoListActivity paramPhotoListActivity) {}
+  
+  public void run()
   {
-    long l = System.currentTimeMillis();
-    if (CommonHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment) + 1200L > l) {
-      return;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.B) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b())) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.runOnUiThread(new xda(this));
     }
-    CommonHbFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment, l);
-    paramView = new ArrayList();
-    try
-    {
-      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_AndroidViewView.getTag();
-      paramView = localArrayList;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a.a(CommonHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment), paramView);
   }
 }
 

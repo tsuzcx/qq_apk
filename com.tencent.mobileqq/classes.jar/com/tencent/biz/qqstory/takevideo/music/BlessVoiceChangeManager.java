@@ -34,8 +34,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
-import oku;
-import okv;
+import opj;
+import opk;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -57,7 +57,7 @@ public class BlessVoiceChangeManager
   static
   {
     jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getFilesDir() + File.separator + "blessVoiceChange.json";
-    jdField_b_of_type_JavaLangString = AppConstants.aJ + "voiceChange/bless/";
+    jdField_b_of_type_JavaLangString = AppConstants.aK + "voiceChange/bless/";
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     a();
   }
@@ -337,7 +337,7 @@ public class BlessVoiceChangeManager
           if (((JSONObject)localObject4).has("QQVersion"))
           {
             j = k;
-            if (IndividuationConfigInfo.a(((JSONObject)localObject4).getString("QQVersion"), "7.6.3"))
+            if (IndividuationConfigInfo.a(((JSONObject)localObject4).getString("QQVersion"), "7.6.8"))
             {
               k = 0;
               j = k;
@@ -518,7 +518,7 @@ public class BlessVoiceChangeManager
       d();
       return;
     }
-    new oku(this, this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloaderImp, l).executeOnExecutor(Bosses.get().getExecutor(16), new FileDownloadTask.Input[] { new FileDownloadTask.Input(str1, str2, null) });
+    new opj(this, this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloaderImp, l).executeOnExecutor(Bosses.get().getExecutor(16), new FileDownloadTask.Input[] { new FileDownloadTask.Input(str1, str2, null) });
   }
   
   protected void a(QQStoryMusicInfo paramQQStoryMusicInfo)
@@ -535,7 +535,7 @@ public class BlessVoiceChangeManager
         FileUtils.a(new File((String)localObject1), localFile);
       }
       localObject2 = new VoiceChangeBasicParams((String)localObject2, i, 64000, 2, paramQQStoryMusicInfo.c);
-      VoiceChangeManager.a(BaseApplicationImpl.getContext(), (VoiceChangeBasicParams)localObject2, jdField_c_of_type_JavaLangString, new okv(paramQQStoryMusicInfo, (String)localObject1), new VoiceChangeModeParams(false, false, false, true, true, null));
+      VoiceChangeManager.a(BaseApplicationImpl.getContext(), (VoiceChangeBasicParams)localObject2, jdField_c_of_type_JavaLangString, new opk(paramQQStoryMusicInfo, (String)localObject1), new VoiceChangeModeParams(false, false, false, true, true, null));
       localObject1 = new Properties();
       ((Properties)localObject1).setProperty("bless_param_voice_id", "" + paramQQStoryMusicInfo.c);
       BlessMtaReport.a("bless_event_voice_click", (Properties)localObject1);

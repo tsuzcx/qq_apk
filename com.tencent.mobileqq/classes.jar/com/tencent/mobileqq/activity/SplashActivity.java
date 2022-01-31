@@ -33,7 +33,6 @@ import com.tencent.mobileqq.activity.aio.AIOConfigManager;
 import com.tencent.mobileqq.activity.aio.AIOPreLoadEngine;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
 import com.tencent.mobileqq.activity.recent.DrawerFrame;
 import com.tencent.mobileqq.apollo.view.ApolloGameWrapper;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -65,30 +64,35 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import mqq.app.Constants.LogoutReason;
 import mqq.os.MqqHandler;
-import ttj;
-import ttl;
-import ttm;
-import ttn;
-import tto;
-import ttp;
-import ttq;
+import tyb;
+import tyd;
+import tye;
+import tyf;
+import tyg;
+import tyh;
+import tyi;
 
 public class SplashActivity
   extends FragmentActivity
 {
   public static volatile int a;
   public static volatile WeakReference a;
+  public static volatile boolean a;
   private long jdField_a_of_type_Long;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   public View a;
   private String jdField_a_of_type_JavaLangString;
   public View[] a;
+  private int jdField_b_of_type_Int = -2;
+  private long jdField_b_of_type_Long = -1L;
   public View b;
-  private String b;
+  private String jdField_b_of_type_JavaLangString;
+  private String c = "";
   
   static
   {
     jdField_a_of_type_Int = 1;
+    jdField_a_of_type_Boolean = true;
     if (!"Success".equals(BaseApplicationImpl.sInjectResult))
     {
       String str = "sInjectResult:" + BaseApplicationImpl.sInjectResult;
@@ -144,7 +148,7 @@ public class SplashActivity
   
   private boolean b(Intent paramIntent)
   {
-    if ((paramIntent.getBooleanExtra("open_now_tab_fragment", false)) && (this.app.a().a))
+    if ((paramIntent.getBooleanExtra("open_now_tab_fragment", false)) && (this.app.a().jdField_a_of_type_Boolean))
     {
       setIntent(paramIntent);
       getIntent().putExtra("isBack2Root", true);
@@ -211,6 +215,45 @@ public class SplashActivity
     }
   }
   
+  private boolean c()
+  {
+    boolean bool2 = false;
+    Intent localIntent = getIntent();
+    String str = localIntent.getStringExtra("uin");
+    int i = localIntent.getIntExtra("uintype", -1);
+    long l = SystemClock.uptimeMillis();
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(str))
+    {
+      if (str.equals(this.c)) {
+        break label110;
+      }
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      if (!bool1)
+      {
+        this.jdField_b_of_type_Long = l;
+        this.c = str;
+        this.jdField_b_of_type_Int = i;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SplashActivity", 2, "highFrequencyOpenSameAio " + bool1);
+      }
+      return bool1;
+      label110:
+      bool1 = bool2;
+      if (i == this.jdField_b_of_type_Int)
+      {
+        bool1 = bool2;
+        if (l - this.jdField_b_of_type_Long <= 800L) {
+          bool1 = true;
+        }
+      }
+    }
+  }
+  
   private boolean c(Intent paramIntent)
   {
     boolean bool = false;
@@ -229,22 +272,22 @@ public class SplashActivity
     String str2;
     if (GesturePWDUtils.getGestureUnlockFailed(this, this.app.getCurrentAccountUin()))
     {
-      str2 = getString(2131436059);
+      str2 = getString(2131436077);
       if (GesturePWDUtils.getGestureUnlockFailedType(this) != 1) {
         break label73;
       }
     }
     label73:
-    for (String str1 = getString(2131436060);; str1 = getString(2131436061))
+    for (String str1 = getString(2131436078);; str1 = getString(2131436079))
     {
-      DialogUtil.b(this, 230, str2, str1, 2131433015, 2131436058, new ttp(this), new ttq(this)).show();
+      DialogUtil.b(this, 230, str2, str1, 2131433029, 2131436076, new tyh(this), new tyi(this)).show();
       return;
     }
   }
   
   private void e()
   {
-    if (AIOUtils.a) {}
+    if (AIOUtils.jdField_a_of_type_Boolean) {}
     do
     {
       return;
@@ -253,8 +296,8 @@ public class SplashActivity
       AIOUtils.d = getIntent().getBooleanExtra("forbidHeadPendant", false);
       AIOUtils.e = getIntent().getBooleanExtra("forbidChatBubble", false);
       AIOUtils.f = getIntent().getBooleanExtra("logDBOperation", false);
-      ThreadManager.logcatBgTaskMonitor = getIntent().getBooleanExtra("logBgTaskMonitor", false);
-      AIOUtils.a = true;
+      com.tencent.mobileqq.app.ThreadSetting.logcatBgTaskMonitor = getIntent().getBooleanExtra("logBgTaskMonitor", false);
+      AIOUtils.jdField_a_of_type_Boolean = true;
     } while (!QLog.isColorLevel());
     QLog.d("SplashActivity", 2, "traceviewSwitch: " + AIOUtils.b + " isForbidChatFontFun: " + AIOUtils.c + " isForbidHeadPendantFun: " + AIOUtils.d + " isForbidChatBubbleFun: " + AIOUtils.e + " logcatDBOperation: " + AIOUtils.f + " isEnableAutoDumpLeak: " + AppSetting.c);
   }
@@ -313,11 +356,11 @@ public class SplashActivity
           localObject1 = localObject2;
           break;
         case 1: 
-          new JumpAction(this.app, this).g();
+          new JumpAction(this.app, this).h();
           localObject1 = localObject2;
           break;
         case 2: 
-          new JumpAction(this.app, this).h();
+          new JumpAction(this.app, this).i();
           localObject1 = localObject2;
           break;
         case 3: 
@@ -341,8 +384,8 @@ public class SplashActivity
     AIOPreLoadEngine.a().b();
     ThreadRegulator.a().a(1);
     StartupTracker.b(null, "AIO_Start_cost");
-    if (AIOUtils.a(this, this.app, paramBoolean, getIntent())) {}
-    label421:
+    if ((AIOUtils.a(this, this.app, paramBoolean, getIntent())) || (c())) {}
+    label428:
     for (;;)
     {
       return;
@@ -381,7 +424,7 @@ public class SplashActivity
       for (;;)
       {
         if (!getIntent().getBooleanExtra("activepull_push_flag", false)) {
-          break label421;
+          break label428;
         }
         ReportController.b(this.app, "CliOper", "", "", "0X8006593", "0X8006593", 0, 0, this.app.getCurrentAccountUin(), "", "", "");
         return;
@@ -431,10 +474,10 @@ public class SplashActivity
     if ((this.app == null) || ((!this.app.isLogin()) && (this.app.getKickIntent() == null)))
     {
       localObject = getSharedPreferences("UserGuide", 0).edit();
-      ((SharedPreferences.Editor)localObject).putString("qq_version", "3565");
+      ((SharedPreferences.Editor)localObject).putString("qq_version", "3615");
       ((SharedPreferences.Editor)localObject).commit();
       if (QLog.isColorLevel()) {
-        QLog.e("SplashActivity", 2, "record build num : 3565");
+        QLog.e("SplashActivity", 2, "record build num : 3615");
       }
       startActivity(new Intent(this, LoginActivity.class));
       return true;
@@ -494,7 +537,7 @@ public class SplashActivity
       localFragmentTransaction.commitAllowingStateLoss();
       if ((localObject != null) && (((ChatFragment)localObject).jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact != null))
       {
-        if ((!((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a) || (!((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.d) || (((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c)) {
+        if ((!((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_Boolean) || (!((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.d) || (((ChatFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c)) {
           break label199;
         }
         ((ChatFragment)localObject).jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact.setgetStatusBarVisible(false, 0);
@@ -540,7 +583,6 @@ public class SplashActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool2 = true;
-    int j = 0;
     int i;
     if ((BaseApplicationImpl.sSplashActivityEscapedMsg != null) && (BaseApplicationImpl.sSplashActivityEscapedMsg.length() > 0)) {
       i = 1;
@@ -600,43 +642,46 @@ public class SplashActivity
       {
         try
         {
-          label296:
-          do
+          boolean bool1;
+          this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("jump_action_from_h5");
+          this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("package_from_h5");
+          label292:
+          if ((a(getIntent())) || (b(getIntent()))) {}
+          for (i = 1;; i = 0)
           {
-            do
+            if (i == 0)
             {
-              this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("jump_action_from_h5");
-              this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("package_from_h5");
-              if (!a(getIntent()))
-              {
-                i = j;
-                if (!b(getIntent())) {}
-              }
-              else
-              {
-                i = 1;
-              }
-              if (i == 0)
-              {
-                paramBundle = getSupportFragmentManager();
-                jdField_a_of_type_Int = 1;
-                paramBundle.beginTransaction().add(16908290, MainFragment.a(), MainFragment.class.getName()).commitAllowingStateLoss();
-              }
-              ThreadManager.getSubThreadHandler().postDelayed(new ttj(this), 1000L);
-              c(localIntent);
-              BaseApplicationImpl.appMainActivityHasLanuch = true;
-              StartupTracker.a("Main_OnCreat", null);
+              paramBundle = getSupportFragmentManager();
+              jdField_a_of_type_Int = 1;
+              paramBundle.beginTransaction().add(16908290, MainFragment.a(), MainFragment.class.getName()).commitAllowingStateLoss();
+            }
+            ThreadManager.getSubThreadHandler().postDelayed(new tyb(this), 1000L);
+            c(localIntent);
+            BaseApplicationImpl.appMainActivityHasLanuch = true;
+            StartupTracker.a("Main_OnCreat", null);
+            if ((!ImmersiveUtils.c) && (!isInMultiWindow())) {
+              getWindow().getDecorView().post(new tyd(this));
+            }
+            paramBundle = getActivityRoutes();
+            if ((jdField_a_of_type_Int == 1) && (a() == MainFragment.jdField_a_of_type_Int) && (paramBundle.size() <= 2))
+            {
               bool1 = bool2;
-            } while (ImmersiveUtils.c);
-            boolean bool1 = bool2;
-          } while (isInMultiWindow());
-          getWindow().getDecorView().post(new ttl(this));
-          return true;
+              if (paramBundle.size() != 2) {
+                break;
+              }
+              bool1 = bool2;
+              if ("LoginActivity".equals(paramBundle.get(0))) {
+                break;
+              }
+            }
+            jdField_a_of_type_Boolean = false;
+            return true;
+          }
           localException = localException;
         }
         catch (Exception paramBundle)
         {
-          break label296;
+          break label292;
         }
       }
     }
@@ -914,16 +959,16 @@ public class SplashActivity
       {
         StartupTracker.a(null, "Main_Resume_PCActive");
         if ((!TextUtils.isEmpty(this.app.getAccount())) && (!"0".equals(this.app.getAccount()))) {
-          ThreadManager.getSubThreadHandler().postDelayed(new ttm(this), 800L);
+          ThreadManager.getSubThreadHandler().postDelayed(new tye(this), 800L);
         }
         StartupTracker.a("Main_Resume_PCActive", null);
-        ThreadManager.getSubThreadHandler().postDelayed(new ttn(this), 800L);
+        ThreadManager.getSubThreadHandler().postDelayed(new tyf(this), 800L);
         ApolloGameWrapper.a(this);
         localObject1 = getIntent();
         if ((((Intent)localObject1).getExtras() != null) && (((Intent)localObject1).getBooleanExtra(MessageConstants.h, false)))
         {
           ((Intent)localObject1).removeExtra(MessageConstants.h);
-          ThreadManager.post(new tto(this), 8, null, false);
+          ThreadManager.post(new tyg(this), 8, null, false);
         }
         if (!isInMultiWindow()) {
           break;
@@ -1165,14 +1210,10 @@ public class SplashActivity
     {
       LayoutInflater localLayoutInflater = LayoutInflater.from(this);
       this.jdField_a_of_type_ArrayOfAndroidViewView = MainFragment.a(localLayoutInflater);
-      this.jdField_a_of_type_AndroidViewView = localLayoutInflater.inflate(2130968827, null);
-      FPSSwipListView localFPSSwipListView = (FPSSwipListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363972);
+      this.jdField_a_of_type_AndroidViewView = localLayoutInflater.inflate(2130968831, null);
+      FPSSwipListView localFPSSwipListView = (FPSSwipListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363997);
       if (localFPSSwipListView != null) {
-        this.jdField_b_of_type_AndroidViewView = localLayoutInflater.inflate(2130971518, localFPSSwipListView, false);
-      }
-      PokeItemHelper.b();
-      if (PokeItemHelper.b) {
-        PokeItemHelper.b(this.app, 4);
+        this.jdField_b_of_type_AndroidViewView = localLayoutInflater.inflate(2130971544, localFPSSwipListView, false);
       }
       return;
     }

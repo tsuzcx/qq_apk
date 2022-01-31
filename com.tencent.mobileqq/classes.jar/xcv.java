@@ -1,25 +1,44 @@
-import android.view.KeyEvent;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.util.InputMethodUtil;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xcv
-  implements TextView.OnEditorActionListener
+  implements Runnable
 {
-  public xcv(CommonHbFragment paramCommonHbFragment) {}
+  public xcv(PhotoListActivity paramPhotoListActivity, List paramList) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    Object localObject = new ArrayList();
+    ((List)localObject).addAll(this.jdField_a_of_type_JavaUtilList);
+    if (localObject != null)
     {
-      if (CommonHbFragment.a(this.a).isEnabled()) {
-        CommonHbFragment.a(this.a).performClick();
+      int i = 0;
+      if (i < ((List)localObject).size())
+      {
+        LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)((List)localObject).get(i);
+        if ((localLocalMediaInfo.mediaWidth <= 0) || (localLocalMediaInfo.mediaHeight <= 0)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          if ((localLocalMediaInfo.mediaWidth / localLocalMediaInfo.mediaHeight == 2.0F) || (localLocalMediaInfo.mediaWidth / localLocalMediaInfo.mediaHeight >= 4.0F) || (localLocalMediaInfo.mediaHeight / localLocalMediaInfo.mediaWidth >= 4.0F)) {
+            PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, localLocalMediaInfo);
+          } else {
+            localLocalMediaInfo.panoramaPhotoType = 3;
+          }
+        }
       }
-      InputMethodUtil.b(CommonHbFragment.a(this.a));
     }
-    return false;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a.obtainMessage();
+      ((Message)localObject).what = 4;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a.sendMessage((Message)localObject);
+    }
   }
 }
 

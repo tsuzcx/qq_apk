@@ -1,17 +1,50 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.EditVoteExport;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.LayerEventListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class aohj
-  implements Runnable
+public class aohj
+  implements VoteLayer.LayerEventListener
 {
-  aohj(aohe paramaohe) {}
+  public aohj(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.u();
+    SLog.b("DoodleLayout", "deleteVote.");
+    if (DoodleLayout.a(this.a) != null)
+    {
+      EditVoteExport localEditVoteExport = (EditVoteExport)DoodleLayout.a(this.a).a(EditVoteExport.class);
+      if (localEditVoteExport != null) {
+        localEditVoteExport.c();
+      }
     }
+  }
+  
+  public boolean a(VoteLayer.VoteItem paramVoteItem)
+  {
+    boolean bool = false;
+    if (this.a.a != null)
+    {
+      this.a.a.setVisibility(0);
+      if (this.a.a.a.b()) {
+        this.a.a.a.a().j = false;
+      }
+      this.a.a.a.a(paramVoteItem);
+      paramVoteItem.j = true;
+      paramVoteItem = paramVoteItem.a;
+      if (!this.a.a.a()) {
+        bool = true;
+      }
+      paramVoteItem.a(bool);
+      this.a.a.requestLayout();
+      return true;
+    }
+    return false;
   }
 }
 

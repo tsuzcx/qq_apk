@@ -1,18 +1,77 @@
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.commonsdk.cache.QQLruCache;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.AppProtocolObserver;
+import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager;
+import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallback;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteRspBody;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteRspItem;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.RspBody;
 
 public class lrc
-  extends QQLruCache
+  extends ProtoUtils.AppProtocolObserver
 {
-  public lrc(FastWebModule paramFastWebModule, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public lrc(ReadInJoyAtlasManager paramReadInJoyAtlasManager, ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback) {}
   
-  protected void a(boolean paramBoolean, String paramString, List paramList1, List paramList2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
+    if (QLog.isColorLevel()) {
+      QLog.d(ReadInJoyAtlasManager.a, 2, "getAtlasFavoriteStatus onResult, errorCode=" + paramInt);
+    }
+    if ((paramInt != -1) && (paramArrayOfByte != null)) {}
+    for (;;)
+    {
+      ArrayList localArrayList;
+      try
+      {
+        paramBundle = new oidb_0xb40.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = ((oidb_0xb40.CheckFavoriteRspBody)paramBundle.msg_check_favorite_rsp.get()).rpt_msg_rsp_items.get().iterator();
+        if (paramArrayOfByte.hasNext())
+        {
+          Object localObject = (oidb_0xb40.CheckFavoriteRspItem)paramArrayOfByte.next();
+          paramBundle = ((oidb_0xb40.CheckFavoriteRspItem)localObject).bytes_rowkey.get().toStringUtf8();
+          if (((oidb_0xb40.CheckFavoriteRspItem)localObject).uint32_result.get() == 1)
+          {
+            bool = true;
+            localArrayList = new ArrayList();
+            if (!bool) {
+              break label242;
+            }
+            localObject = ((oidb_0xb40.CheckFavoriteRspItem)localObject).bytes_cid_list.get().iterator();
+            if (!((Iterator)localObject).hasNext()) {
+              break label242;
+            }
+            localArrayList.add(((ByteStringMicro)((Iterator)localObject).next()).toStringUtf8());
+            continue;
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null) {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(false, null, false, null);
+        }
+        QLog.e(ReadInJoyAtlasManager.a, 1, "getAtlasFavoriteStatus onResult(), exception=" + paramArrayOfByte.toString());
+      }
+      boolean bool = false;
+      continue;
+      label242:
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(true, paramBundle, bool, localArrayList);
+      }
+    }
   }
 }
 

@@ -1,39 +1,13 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.leba.LebaFeedsVideoSdkInstaller;
-import com.tencent.mobileqq.leba.LebaFeedsVideoSdkInstaller.OnVideoPluginInstallListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
 
 public class adzc
-  implements Handler.Callback
+  implements Runnable
 {
-  public adzc(LebaFeedsVideoSdkInstaller paramLebaFeedsVideoSdkInstaller) {}
+  public adzc(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, int paramInt) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          LebaFeedsVideoSdkInstaller.a(this.a, false);
-          LebaFeedsVideoSdkInstaller.a(this.a).removeMessages(0);
-        } while (LebaFeedsVideoSdkInstaller.a(this.a) == null);
-        LebaFeedsVideoSdkInstaller.a(this.a).c(true);
-        return true;
-        LebaFeedsVideoSdkInstaller.a(this.a, false);
-        LebaFeedsVideoSdkInstaller.a(this.a).removeMessages(1);
-      } while (LebaFeedsVideoSdkInstaller.a(this.a) == null);
-      LebaFeedsVideoSdkInstaller.a(this.a).c(false);
-      return true;
-    }
-    LebaFeedsVideoSdkInstaller.a(this.a, true);
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.b(this.jdField_a_of_type_Int);
   }
 }
 

@@ -48,8 +48,8 @@ public class P2VGlobalConfig
   public static String NO_AUDIO_MP4 = P2V_VIDEO_CACHE_ROOT + "no_audio.mp4";
   public static final int OUTPUT_VIDEO_BIT_RATE = 960000;
   public static final int OUTPUT_VIDEO_FPS = 25;
-  public static final int OUTPUT_VIDEO_HEIGHT = 720;
-  public static final int OUTPUT_VIDEO_WIDTH = 1280;
+  public static final int OUTPUT_VIDEO_HEIGHT = 1280;
+  public static final int OUTPUT_VIDEO_WIDTH = 720;
   public static final String P2V_CAN_UPLOAD_LIMIT_MS_SECONDARY_KEY = "p2v_can_upload_limit_ms_secondary_key";
   public static final String P2V_CONFIG_MAIN_KEY = "p2v_config_main_key";
   public static final long P2V_DEFAULT_VIDEO_CAN_UPLOAD_LIMIT_MS = 15000L;
@@ -62,12 +62,13 @@ public class P2VGlobalConfig
   public static final String P2V_MAX_RECOMMEND_INT_SECONDARY_KEY = "p2v_max_recommend_int";
   public static final int P2V_MAX_RECOMMEND_VIDEO_INT_DEFAULT = 3;
   public static final String P2V_MAX_RECOMMEND_VIDEO_INT_SECONDARY_KEY = "p2v_max_recommend_video_int";
-  public static final long P2V_PIC_DURING = 2000L;
-  public static final float P2V_PIC_EFFECT_DURING = 2000.0F;
+  public static final long P2V_PIC_DURING = 1500L;
+  public static final long P2V_PIC_DURING_FOR_MORE_FIVE = 3000L;
+  public static final float P2V_PIC_EFFECT_DURING = 1500.0F;
   public static String P2V_VIDEO_CACHE_ROOT;
   public static String P2V_VIDEO_ROOT;
   public static final long VIDEO_CAN_UPLOAD_LIMIT_MS;
-  public static final float VIEW_SCLE = 0.5625F;
+  public static final float VIEW_SCLE = 1.777778F;
   public static final float WATER_MARKER_BG_COLOR_ALPHA_END = 0.1F;
   public static final float WATER_MARKER_BG_COLOR_ALPHA_START = 0.0F;
   public static final int WATER_MARKER_BLUR_FADE_DURATION = 640;

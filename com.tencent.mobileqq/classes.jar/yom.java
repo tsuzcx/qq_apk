@@ -1,34 +1,27 @@
-import com.tencent.mobileqq.apollo.ai.ApolloAIPresenter;
-import com.tencent.mobileqq.apollo.ai.IApolloAIView;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter;
+import com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter.OnTroopListClickListener;
+import com.tencent.mobileqq.troop.data.NearbyTroops.CustomViewHolder;
 
 public class yom
-  extends VasExtensionObserver
+  implements View.OnClickListener
 {
-  public yom(ApolloAIPresenter paramApolloAIPresenter) {}
+  public yom(ShowExternalTroopListAdapter paramShowExternalTroopListAdapter) {}
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((!paramBoolean) && (ApolloAIPresenter.a(this.a) != null))
-    {
-      ApolloAIPresenter.a(this.a).i();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloAIPresenter", 2, "send msg to ai fail");
-      }
+    paramView = paramView.getTag();
+    if (!(paramView instanceof NearbyTroops.CustomViewHolder)) {
+      return;
     }
-  }
-  
-  protected void h(boolean paramBoolean, Object paramObject)
-  {
-    if (ApolloAIPresenter.a(this.a) != null) {
-      ApolloAIPresenter.a(this.a).b(paramBoolean);
-    }
+    paramView = (NearbyTroops.CustomViewHolder)paramView;
+    this.a.a.a(paramView.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yom
  * JD-Core Version:    0.7.0.1
  */

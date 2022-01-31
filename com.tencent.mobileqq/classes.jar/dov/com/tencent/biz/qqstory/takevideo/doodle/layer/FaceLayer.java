@@ -20,7 +20,7 @@ import android.os.Bundle;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anwz;
+import aofr;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.VideoEditReport;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -169,7 +169,7 @@ public class FaceLayer
   private void e()
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843658);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843728);
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
     this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
@@ -499,7 +499,7 @@ public class FaceLayer
   public void a(ArrayList paramArrayList, boolean paramBoolean, JSONArray paramJSONArray)
   {
     if ((paramArrayList != null) && (!paramArrayList.isEmpty())) {
-      ThreadManager.post(new anwz(this, paramArrayList, paramJSONArray, paramBoolean), 8, null, false);
+      ThreadManager.post(new aofr(this, paramArrayList, paramJSONArray, paramBoolean), 8, null, false);
     }
   }
   

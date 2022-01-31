@@ -9,7 +9,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.List;
-import usc;
+import uxc;
 
 public class DoodleParam
   implements MyParcelable
@@ -24,7 +24,7 @@ public class DoodleParam
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new usc();
+    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new uxc();
   }
   
   public DoodleParam()

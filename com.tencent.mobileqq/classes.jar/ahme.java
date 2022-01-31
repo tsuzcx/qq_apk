@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahme
   implements Runnable
 {
-  public ahme(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
+  public ahme(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
   
   public void run()
   {
-    this.a.a.k();
-    this.a.r();
-    this.a.a.c();
+    this.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMRedDotConfig", 2, "saved to red dot config file");
+    }
   }
 }
 

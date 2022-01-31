@@ -13,6 +13,7 @@ import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.transfile.BaseTransFileController;
 import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
 import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -35,6 +36,7 @@ public abstract class AppInterface
   protected final ConcurrentHashMap handlerMap = new ConcurrentHashMap();
   public HwEngine mHwEngine;
   private ProtoReqManager mProtoManager;
+  private TroopFileProtoReqMgr mTroopFileProtoReqMgr;
   protected String procName = "";
   
   public AppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -292,6 +294,19 @@ public abstract class AppInterface
   public BaseTransFileController getTransFileController()
   {
     return null;
+  }
+  
+  public TroopFileProtoReqMgr getTroopFileProtoReqMgr()
+  {
+    if (this.mTroopFileProtoReqMgr == null) {}
+    try
+    {
+      if (this.mTroopFileProtoReqMgr == null) {
+        this.mTroopFileProtoReqMgr = new TroopFileProtoReqMgr(this);
+      }
+      return this.mTroopFileProtoReqMgr;
+    }
+    finally {}
   }
   
   protected void httpCommunicatorCreate()

@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
+import common.config.service.QZoneConfigHelper.LoadIntConfigCallback;
+import common.config.service.QzoneConfig;
 
-public class ampv
-  implements DialogInterface.OnClickListener
+public final class ampv
+  implements Runnable
 {
-  public ampv(QfavJumpActivity paramQfavJumpActivity) {}
+  public ampv(QZoneConfigHelper.LoadIntConfigCallback paramLoadIntConfigCallback) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.finish();
+    int i = QzoneConfig.getInstance().getConfig("PhotoView", "ShowOPDelay", 0);
+    this.a.a(i * 1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ampv
  * JD-Core Version:    0.7.0.1
  */

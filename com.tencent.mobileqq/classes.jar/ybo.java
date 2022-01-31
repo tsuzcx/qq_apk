@@ -1,14 +1,24 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter.ViewTag;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
 
 public class ybo
-  extends SelectMemberBuddyListAdapter.ViewTag
+  implements Runnable
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public ybo(RMVideoRecordState paramRMVideoRecordState) {}
+  
+  public void run()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (!localRMVideoStateMgr.b())
+    {
+      SLog.c("RMRecordState", "run record finish, but state is not right");
+      return;
+    }
+    this.a.b();
+    localRMVideoStateMgr.a.z();
+  }
 }
 
 

@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
-import com.tencent.mobileqq.utils.QQCustomArkDialog;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
 
-public class akdu
-  implements ArkAppContainer.ArkAppModuleCallback
+class akdu
+  implements FrameSprite.OnFrameEndListener
 {
-  public akdu(QQCustomArkDialog paramQQCustomArkDialog) {}
+  akdu(akdj paramakdj) {}
   
-  public boolean a(ArkAppContainer paramArkAppContainer)
+  public void a()
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
+    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
     }
-    return false;
-  }
-  
-  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
-  {
-    return false;
+    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdu
  * JD-Core Version:    0.7.0.1
  */

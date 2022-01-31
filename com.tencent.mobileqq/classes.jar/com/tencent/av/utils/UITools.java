@@ -524,7 +524,7 @@ public class UITools
                 String str = paramAppInterface.getCurrentAccountUin();
                 bool1 = bool2;
                 if (str != null) {
-                  bool1 = localSharedPreferences.getBoolean(paramAppInterface.getApp().getString(2131433532) + str, true);
+                  bool1 = localSharedPreferences.getBoolean(paramAppInterface.getApp().getString(2131433546) + str, true);
                 }
               }
               bool2 = bool1;
@@ -590,7 +590,7 @@ public class UITools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.UITools
  * JD-Core Version:    0.7.0.1
  */

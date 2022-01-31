@@ -1,48 +1,32 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter.RecentItemHolder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public final class adbg
+public class adbg
   implements View.OnClickListener
 {
-  public adbg(String paramString, IFileBrowser paramIFileBrowser) {}
+  public adbg(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
   public void onClick(View paramView)
   {
-    try
+    Object localObject = paramView.getTag();
+    FileManagerEntity localFileManagerEntity = null;
+    if ((localObject instanceof QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)) {
+      localFileManagerEntity = (FileManagerEntity)((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)paramView.getTag()).a;
+    }
+    for (;;)
     {
-      paramView = new adbh(this);
-      FileModel localFileModel = FileModel.a(this.jdField_a_of_type_JavaLangString);
-      if (localFileModel == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("FileOperaterUtils", 2, "error. get filemodel null, filepath[ " + this.jdField_a_of_type_JavaLangString + "]");
-        }
-      }
-      else
-      {
-        if (localFileModel.a(false))
-        {
-          if (!NetworkUtil.e(BaseApplicationImpl.getContext()))
-          {
-            FMToastUtil.a(2131437312);
-            return;
-          }
-          FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 2131428241, 2131428238, paramView);
-          return;
-        }
-        paramView.a();
+      if (localFileManagerEntity != null) {
+        this.a.c(localFileManagerEntity);
       }
       return;
+      if ((localObject instanceof ImageHolder)) {
+        localFileManagerEntity = (FileManagerEntity)((ImageHolder)paramView.getTag()).a;
+      }
     }
-    catch (Exception paramView) {}
   }
 }
 

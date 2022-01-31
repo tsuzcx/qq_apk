@@ -1,14 +1,15 @@
 import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public final class amm
+public class amm
   implements Runnable
 {
+  public amm(HapticManager paramHapticManager) {}
+  
   public void run()
   {
-    if ((HapticManager.a(HapticManager.b())) && (HapticManager.a()) && (!HapticManager.b().b())) {
-      HapticManager.a(HapticManager.b());
-    }
-    HapticManager.a(false);
+    ThreadManager.getUIHandler().post(HapticManager.a(this.a));
   }
 }
 

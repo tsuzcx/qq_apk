@@ -1,8 +1,16 @@
 package c.t.m.g;
 
-public abstract interface r
+import java.util.Map;
+
+final class r
+  implements Runnable
 {
-  public abstract q a(String paramString);
+  r(String paramString1, int paramInt1, int paramInt2, String paramString2, Map paramMap1, Map paramMap2, boolean paramBoolean) {}
+  
+  public final void run()
+  {
+    q.a(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h);
+  }
 }
 
 

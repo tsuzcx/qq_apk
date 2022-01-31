@@ -1,49 +1,31 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.activity.InterestSwitchEditActivity;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class taf
-  implements CompoundButton.OnCheckedChangeListener
+  extends CardObserver
 {
-  public taf(LoginInfoActivity paramLoginInfoActivity) {}
+  public taf(InterestSwitchEditActivity paramInterestSwitchEditActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void c(boolean paramBoolean, String paramString, Card paramCard)
   {
-    int j = 1;
-    int i = 1;
-    if (paramCompoundButton == LoginInfoActivity.a(this.a).a())
+    if (paramBoolean)
     {
-      paramCompoundButton = this.a.app;
-      if (paramBoolean)
+      if ((this.a.app.getCurrentAccountUin().equals(paramString)) && (paramCard != null) && (-1 != paramCard.switch_interest) && (-1 != paramCard.switch_music) && (-1 != paramCard.switch_recent_activity) && (-1 != paramCard.switch_star) && (-1 != paramCard.switch_joined_troop) && (-1 != paramCard.switch_ktv) && (-1 != paramCard.switch_eat) && (-1 != paramCard.switch_reader) && (-1 != paramCard.switch_radio) && (-1 != paramCard.switch_now) && (-1 != paramCard.switch_comic) && (-1 != paramCard.switch_education) && (-1 != paramCard.switch_using_tim) && (-1 != paramCard.switch_weishi))
       {
-        ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
-        SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
-        this.a.app.l();
+        InterestSwitchEditActivity.a(this.a, paramCard);
+        InterestSwitchEditActivity.a(this.a);
       }
-    }
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if ((LoginInfoActivity.b(this.a) != null) && (paramCompoundButton == LoginInfoActivity.b(this.a).a()))
-      {
-        LoginInfoActivity.a(this.a, paramBoolean);
+      while (!QLog.isColorLevel()) {
         return;
       }
-    } while (paramCompoundButton != LoginInfoActivity.c(this.a).a());
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (i = j;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Security_check", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, "security_scan_key", "qqsetting_security_scan_key", paramBoolean);
+      QLog.i("InterestSwitchEditActivity", 2, "suc but has invalidate value");
       return;
     }
+    QQToast.a(this.a, "拉取开关信息失败", 0).b(this.a.getTitleBarHeight());
   }
 }
 

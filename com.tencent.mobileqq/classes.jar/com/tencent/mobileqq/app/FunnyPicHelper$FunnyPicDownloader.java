@@ -20,7 +20,7 @@ public class FunnyPicHelper$FunnyPicDownloader
     if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
     {
       paramOutputStream = (String)paramDownloadParams.tag;
-      paramDownloadParams = AppConstants.aU;
+      paramDownloadParams = AppConstants.aV;
       paramDownloadParams = new File(paramDownloadParams + Utils.Crc64String(paramOutputStream));
       if (paramDownloadParams.exists()) {
         return paramDownloadParams;

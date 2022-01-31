@@ -1,16 +1,45 @@
-import com.tencent.biz.qqstory.base.download.DownloaderImp;
-import dov.com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoLabel;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
 
 public class aocr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aocr(EditVideoMusicDialog paramEditVideoMusicDialog, String paramString1, String paramString2) {}
+  public aocr(EditVideoLabel paramEditVideoLabel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a = new DownloaderImp();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
+    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString))
+    {
+      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString;
+      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
+      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
+      {
+        EditVideoPartManager localEditVideoPartManager = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager;
+        if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a())
+        {
+          paramView = "2";
+          localEditVideoPartManager.a("use_custom_tag", 0, 0, new String[] { paramView });
+        }
+      }
+      else
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+      return;
+      paramView = "1";
+      break;
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    }
   }
 }
 

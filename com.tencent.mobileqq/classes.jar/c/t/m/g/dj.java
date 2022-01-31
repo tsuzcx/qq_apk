@@ -1,24 +1,26 @@
 package c.t.m.g;
 
-public final class dj
+public class dj
 {
-  float a = -1.0F;
-  float b;
-  long c = -1L;
-  double d = -1.0D;
-  double e = -1.0D;
-  double f = -1.0D;
-  double g;
-  double h = 0.0D;
-  double i = 0.0D;
+  private static dj g = null;
+  float a = 0.0F;
+  float b = 0.0F;
+  float c = 100.0F;
+  boolean d = false;
+  boolean e = false;
+  String f = "null";
   
-  public final void a()
+  public static dj a()
   {
-    this.f = -1.0D;
-    this.a = -1.0F;
-    this.c = -1L;
-    this.h = 0.0D;
-    this.i = 0.0D;
+    if (g == null) {}
+    try
+    {
+      if (g == null) {
+        g = new dj();
+      }
+      return g;
+    }
+    finally {}
   }
 }
 

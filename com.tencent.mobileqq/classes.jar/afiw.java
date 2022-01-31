@@ -1,19 +1,15 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
 
-class afiw
-  implements Runnable
+public class afiw
+  implements DialogInterface.OnDismissListener
 {
-  afiw(afiv paramafiv) {}
+  public afiw(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (NearbyProfileEditTribePanel.a(this.a.a) != null)
-    {
-      NearbyProfileEditTribePanel.a(this.a.a).setVisibility(0);
-      NearbyProfileEditTribePanel.a(this.a.a);
-      NearbyProfileEditTribePanel.a(this.a.a, null);
-    }
+    this.a.r = false;
   }
 }
 

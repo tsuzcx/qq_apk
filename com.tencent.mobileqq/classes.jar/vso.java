@@ -1,26 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class vso
-  implements DialogInterface.OnClickListener
+  implements EIPCResultCallback
 {
-  vso(vsn paramvsn, String paramString) {}
+  vso(vsm paramvsm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    ((DiscussionManager)this.jdField_a_of_type_Vsn.a.a.getManager(52)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Vsn.a.a.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
+    if (-102 == paramEIPCResult.code) {
+      AIOGalleryScene.M(this.a.a).finish();
     }
-    this.jdField_a_of_type_Vsn.a.A();
   }
 }
 

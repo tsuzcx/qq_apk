@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import com.tencent.mobileqq.vas.VasApngUtil.ApngSoLoadCallBack;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class akpn
-  implements Runnable
+public final class akpn
+  implements EIPCResultCallback
 {
-  akpn(akpl paramakpl) {}
+  public akpn(VasApngUtil.ApngSoLoadCallBack paramApngSoLoadCallBack) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.a.f(this.a.a.e);
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VasApngUtil", 2, "Apng.so download complete");
+    }
   }
 }
 

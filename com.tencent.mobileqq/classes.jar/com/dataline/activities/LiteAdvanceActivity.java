@@ -57,15 +57,15 @@ public class LiteAdvanceActivity
   
   private void a()
   {
-    setContentView(2130968873);
-    Object localObject1 = (ImageView)findViewById(2131362719);
-    Object localObject2 = (TextView)findViewById(2131364119);
-    TextView localTextView1 = (TextView)findViewById(2131363057);
-    TextView localTextView2 = (TextView)findViewById(2131364121);
-    TextView localTextView3 = (TextView)findViewById(2131364123);
+    setContentView(2130968877);
+    Object localObject1 = (ImageView)findViewById(2131362724);
+    Object localObject2 = (TextView)findViewById(2131364144);
+    TextView localTextView1 = (TextView)findViewById(2131363062);
+    TextView localTextView2 = (TextView)findViewById(2131364146);
+    TextView localTextView3 = (TextView)findViewById(2131364148);
     if (this.jdField_a_of_type_Int == 0)
     {
-      ((ImageView)localObject1).setBackgroundResource(2130841588);
+      ((ImageView)localObject1).setBackgroundResource(2130841615);
       ((TextView)localObject2).setText(2131427485);
       localTextView1.setText(2131427550);
       localTextView2.setText(2131427576);
@@ -73,26 +73,26 @@ public class LiteAdvanceActivity
     }
     for (;;)
     {
-      setTitle(2131430018);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131364124);
+      setTitle(2131430020);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131364149);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131364126);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131364151);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.c = findViewById(2131364127);
+      this.c = findViewById(2131364152);
       this.c.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364125));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364150));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(FMSettings.a().b());
-      this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131364120));
+      this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131364145));
       this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
       this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new bx(this));
-      this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131364122));
+      this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131364147));
       this.jdField_b_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
       this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new by(this));
       if (ChatActivityConstants.N)
       {
         localObject2 = this.leftView.getText().toString();
         localObject1 = localObject2;
-        if (!getString(2131432414).equals(localObject2)) {
+        if (!getString(2131432425).equals(localObject2)) {
           localObject1 = "返回" + (String)localObject2 + "界面";
         }
         this.leftView.setContentDescription((CharSequence)localObject1);
@@ -100,7 +100,7 @@ public class LiteAdvanceActivity
       return;
       if (this.jdField_a_of_type_Int == 1)
       {
-        ((ImageView)localObject1).setBackgroundResource(2130841586);
+        ((ImageView)localObject1).setBackgroundResource(2130841613);
         ((TextView)localObject2).setText(2131427486);
         localTextView1.setText(2131427551);
         localTextView2.setText(2131427574);
@@ -140,7 +140,7 @@ public class LiteAdvanceActivity
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     localActionSheet.a(str);
     localActionSheet.a(getResources().getString(2131427493), 3);
-    localActionSheet.c(2131433015);
+    localActionSheet.c(2131433029);
     localActionSheet.a(new bz(this, localActionSheet));
     localActionSheet.show();
   }
@@ -205,13 +205,13 @@ public class LiteAdvanceActivity
   {
     if (this.jdField_a_of_type_Int == 0)
     {
-      QQUtils.a(this.app, 2130841588, qfileJumpActivity.class.getName(), getString(2131427485), getTitleBarHeight(), this.jdField_a_of_type_AndroidOsHandler, 500);
+      QQUtils.a(this.app, 2130841615, qfileJumpActivity.class.getName(), getString(2131427485), getTitleBarHeight(), this.jdField_a_of_type_AndroidOsHandler, 500);
       DataLineReportUtil.q(this.app);
     }
     while (this.jdField_a_of_type_Int != 1) {
       return;
     }
-    QQUtils.a(this.app, 2130841586, qfileJumpActivity.class.getName(), getString(2131427486), getTitleBarHeight(), this.jdField_a_of_type_AndroidOsHandler, 500);
+    QQUtils.a(this.app, 2130841613, qfileJumpActivity.class.getName(), getString(2131427486), getTitleBarHeight(), this.jdField_a_of_type_AndroidOsHandler, 500);
     DataLineReportUtil.q(this.app);
   }
   
@@ -253,14 +253,14 @@ public class LiteAdvanceActivity
   {
     switch (paramView.getId())
     {
-    case 2131364125: 
+    case 2131364150: 
     default: 
       return;
-    case 2131364124: 
+    case 2131364149: 
       StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_ckviewrecvfile");
       c();
       return;
-    case 2131364126: 
+    case 2131364151: 
       e();
       return;
     }

@@ -1,21 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.BlurMaskFilter;
-import android.graphics.BlurMaskFilter.Blur;
-import android.graphics.Paint;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class anxe
-  implements ValueAnimator.AnimatorUpdateListener
+public final class anxe
+  implements Runnable
 {
-  public anxe(FaceLayer.FaceItem paramFaceItem) {}
+  public anxe(File paramFile, String paramString1, String paramString2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.p = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.b.g.setMaskFilter(new BlurMaskFilter(this.a.p, BlurMaskFilter.Blur.OUTER));
-    this.a.b.k();
+    FileUtils.a(this.jdField_a_of_type_JavaIoFile.getPath() + File.separator, this.jdField_a_of_type_JavaLangString, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMFileUtils", 2, "paster config save to file " + this.jdField_a_of_type_JavaIoFile.getPath() + File.separator + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

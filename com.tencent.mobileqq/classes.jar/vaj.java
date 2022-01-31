@@ -1,6 +1,20 @@
-public abstract interface vaj
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder;
+
+public class vaj
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public vaj(CommonHobbyForAIOShowItemBuilder paramCommonHobbyForAIOShowItemBuilder) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView)) {
+      CommonHobbyForAIOShowItemBuilder.a(this.a, paramView);
+    }
+  }
 }
 
 

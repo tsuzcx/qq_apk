@@ -1,35 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class twf
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public twf(TroopAssistantActivity paramTroopAssistantActivity, QQMessageFacade paramQQMessageFacade, TextView paramTextView) {}
+  public twf(SendMultiPictureHelper paramSendMultiPictureHelper) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b();
-    String str1 = "" + i;
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.e)
-    {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.getString(2131433297) + "(" + i + ")";
-      if (i > 99) {
-        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.getString(2131433297) + "(99+)";
-      }
-      if (i <= 0) {
-        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.getString(2131433297);
-      }
-    }
-    String str2 = str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.e)
-    {
-      str2 = str1;
-      if (i > 99) {
-        str2 = "99+";
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.runOnUiThread(new twg(this, i, str2));
+    this.a.b = true;
+    SendMultiPictureHelper.b(this.a);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

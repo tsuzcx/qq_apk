@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 
 public class acko
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acko(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  public acko(WebIPCOperator paramWebIPCOperator, acku paramacku) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator.e(this.jdField_a_of_type_Acku.a);
   }
 }
 

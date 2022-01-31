@@ -89,7 +89,7 @@ public class PrinterSessionAdapter
       return false;
     }
     Object localObject2 = ((RelativeLayout)localObject2).getContext();
-    localQQCustomMenu.a(2131375572, ((Context)localObject2).getString(2131427523));
+    localQQCustomMenu.a(2131375638, ((Context)localObject2).getString(2131427523));
     localObject1 = new di(this, (PrinterItemMsgRecord)localObject1, (Context)localObject2);
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView.jdField_a_of_type_AndroidWidgetRelativeLayout, localQQCustomMenu, (View.OnClickListener)localObject1);
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new dg(this));
@@ -132,24 +132,24 @@ public class PrinterSessionAdapter
       int i;
       if (paramView == null)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968885, null);
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968889, null);
         localItemHolder = new ItemHolder();
-        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364153));
+        localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364178));
         localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localItemHolder);
         localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
         localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setLongClickable(true);
         localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
         localItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setAddStatesFromChildren(true);
-        localItemHolder.b((TextView)paramView.findViewById(2131363203));
+        localItemHolder.b((TextView)paramView.findViewById(2131363207));
         localObject = (RelativeLayout)paramView.findViewById(2131361959);
         localItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject);
-        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131364112));
-        localItemHolder.a().jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364113));
-        localItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131364117));
-        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130846330);
+        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131364137));
+        localItemHolder.a().jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364138));
+        localItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131364142));
+        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultImage(2130846412);
         localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
-        localItemHolder.a((TextView)paramView.findViewById(2131363528));
+        localItemHolder.a((TextView)paramView.findViewById(2131363547));
         paramView.setTag(localItemHolder);
         localItemHolder.a(paramViewGroup);
         localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setIsDrawRound(false);
@@ -157,7 +157,7 @@ public class PrinterSessionAdapter
         if (localObject != null) {
           break label641;
         }
-        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130841670);
+        localItemHolder.a().jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setImageResource(2130841697);
         localObject = paramViewGroup.filename;
         i = paramViewGroup.filename.lastIndexOf("/");
         if (i >= 0) {

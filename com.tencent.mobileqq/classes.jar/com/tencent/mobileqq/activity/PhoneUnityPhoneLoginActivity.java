@@ -12,24 +12,24 @@ import com.tencent.mobileqq.app.SecSvcObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
-import tgb;
+import tkv;
 
 public class PhoneUnityPhoneLoginActivity
   extends IphoneTitleBarActivity
   implements CompoundButton.OnCheckedChangeListener
 {
-  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new tgb(this);
+  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new tkv(this);
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970517);
-    setTitle(getString(2131436849));
-    setContentBackgroundResource(2130838214);
-    this.leftView.setText(2131436794);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131370975));
+    super.setContentView(2130970530);
+    setTitle(getString(2131436869));
+    setContentBackgroundResource(2130838219);
+    this.leftView.setText(2131436814);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131370971));
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
     }
@@ -76,7 +76,7 @@ public class PhoneUnityPhoneLoginActivity
       if (NetworkUtil.d(this)) {
         break label81;
       }
-      QQToast.a(this, getString(2131433009), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131433023), 0).b(getTitleBarHeight());
     }
     label76:
     label81:

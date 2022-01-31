@@ -1,49 +1,33 @@
-import android.app.Activity;
 import android.content.Context;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import mqq.util.WeakReference;
+import com.tencent.biz.common.offline.AsyncCallBack;
+import com.tencent.biz.common.offline.OfflineEnvHelper;
+import com.tencent.mobileqq.troop.homework.recite.utils.SoLibraryChecker;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class ajrn
-  implements Runnable
+public class ajrn
+  implements AsyncCallBack
 {
-  ajrn(ajrm paramajrm, TroopUploadingThread.UploadState paramUploadState) {}
+  public ajrn(SoLibraryChecker paramSoLibraryChecker, long paramLong) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    AvatarWallAdapter.g = 0;
-    this.jdField_a_of_type_Ajrm.a.h = 0;
-    int i = this.jdField_a_of_type_Ajrm.a.jdField_b_of_type_Int - this.jdField_a_of_type_Ajrm.a.jdField_d_of_type_Int;
-    if (i >= 8) {}
-    Object localObject;
-    do
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLibraryLoader", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SoLibraryLoader", 4, "transToLocalUrl transUrl:" + paramString);
+    }
+    paramString = OfflineEnvHelper.a(SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker)) + SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker) + File.separator + SoLibraryChecker.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker);
+    if (!new File(paramString).exists())
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 1) {
-                break;
-              }
-              this.jdField_a_of_type_Ajrm.a.a(i, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.c);
-            } while (this.jdField_a_of_type_Ajrm.a.a(this.jdField_a_of_type_Ajrm.a.jdField_b_of_type_JavaLangString));
-            this.jdField_a_of_type_Ajrm.a.jdField_d_of_type_Boolean = false;
-            this.jdField_a_of_type_Ajrm.a.a();
-            return;
-          } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 2);
-          ReportController.b(this.jdField_a_of_type_Ajrm.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_set", "", this.jdField_a_of_type_Ajrm.a.c, "upload_head_cancel", 0, 0, this.jdField_a_of_type_Ajrm.a.jdField_b_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.jdField_b_of_type_Int), "", "");
-        } while (this.jdField_a_of_type_Ajrm.a.jdField_a_of_type_MqqUtilWeakReference == null);
-        localObject = (Activity)this.jdField_a_of_type_Ajrm.a.jdField_a_of_type_MqqUtilWeakReference.get();
-      } while (localObject == null);
-      localObject = AvatarWallAdapter.a((Context)localObject, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.jdField_b_of_type_Int);
-    } while (localObject == null);
-    this.jdField_a_of_type_Ajrm.a.a((String)localObject, i);
+      if (QLog.isColorLevel()) {
+        QLog.e("SoLibraryLoader", 2, "file not exist! path = " + paramString);
+      }
+      return;
+    }
+    FileUtils.d(paramString, SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker).getFilesDir().getAbsolutePath() + File.separator + SoLibraryChecker.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker));
   }
 }
 

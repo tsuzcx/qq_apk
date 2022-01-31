@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.intervideo.now.NowProxy;
 
 public class xxf
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xxf(CameraFilterGLView paramCameraFilterGLView) {}
+  public xxf(NewFlowCameraActivity paramNewFlowCameraActivity, NowProxy paramNowProxy) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!CameraFilterGLView.a(this.a).a) || (CameraFilterGLView.a(this.a).a == 0)) {
-      return;
-    }
-    CameraFilterGLView.a(this.a).b = true;
-    CameraFilterGLView.a(this.a).c = false;
+    StoryReportor.a("video_shoot", "down_now", 0, 0, new String[0]);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowProxy.a(null);
+    paramDialogInterface.dismiss();
   }
 }
 

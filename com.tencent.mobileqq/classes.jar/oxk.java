@@ -1,26 +1,36 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
 
-class oxk
-  extends ExecuteBinResponseCallback
+public class oxk
+  implements DialogInterface.OnClickListener
 {
-  oxk(oxe paramoxe, oxo paramoxo) {}
+  public oxk(QRCardActivity paramQRCardActivity, String paramString) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
-      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Oxe.a.a));
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
+    if (paramDialogInterface.startsWith("www.")) {
+      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
     }
-    this.jdField_a_of_type_Oxe.a.a = System.currentTimeMillis();
-  }
-  
-  public void b(String paramString)
-  {
-    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
-    this.jdField_a_of_type_Oxo.b(paramString);
+    for (;;)
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, QQBrowserDelegationActivity.class);
+      localIntent.putExtra("url", paramDialogInterface);
+      localIntent.putExtra("key_isReadModeEnabled", true);
+      localIntent.putExtra("injectrecommend", false);
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity(localIntent);
+      return;
+      if (paramDialogInterface.startsWith("https:")) {
+        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
+      } else if (paramDialogInterface.startsWith("http:")) {
+        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
+      } else {
+        paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
+      }
+    }
   }
 }
 

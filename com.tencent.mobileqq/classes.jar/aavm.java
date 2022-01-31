@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import com.tencent.mobileqq.ark.ArkAppCGI.QueryAppInfoByAppNameBatchResult;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.util.HashMap;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
 
 class aavm
-  extends ArkAppCGI.ArkAppCGICallback
+  implements Runnable
 {
-  aavm(aavl paramaavl) {}
+  aavm(aavl paramaavl, String paramString1, String paramString2) {}
   
-  public void a(ArkAppCGI.QueryAppInfoByAppNameBatchResult paramQueryAppInfoByAppNameBatchResult, Object paramObject)
+  public void run()
   {
-    paramObject = (HashMap)paramObject;
-    ArkLocalAppMgr.a(this.a.a, paramQueryAppInfoByAppNameBatchResult, paramObject);
+    ArkAppDeviceModule.a(this.jdField_a_of_type_Aavl.jdField_a_of_type_Aavk.a, this.jdField_a_of_type_Aavl.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

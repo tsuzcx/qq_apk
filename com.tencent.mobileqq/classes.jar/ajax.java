@@ -1,18 +1,32 @@
-import android.widget.ListView;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.ViewHolder;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import com.tencent.mobileqq.troop.createNewTroop.SubCateListView.OnToggleSubListListener;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ajax
-  implements SubCateListView.OnToggleSubListListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public ajax(CateListAdapter.ViewHolder paramViewHolder) {}
+  String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
   
-  public void a(boolean paramBoolean, int paramInt)
+  public ajax(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, ActionSheet paramActionSheet, URLDrawable paramURLDrawable) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramBoolean) && (paramInt > 0)) {
-      this.a.a.a.a.smoothScrollBy(paramInt, 200);
+    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131435887).equals(paramView)) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131435893).equals(paramView)) {
+        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131435890).equals(paramView)) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.c);
+      }
     }
   }
 }

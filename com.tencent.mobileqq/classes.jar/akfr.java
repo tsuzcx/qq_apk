@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public final class akfr
-  implements Parcelable.Creator
+public class akfr
+  implements FilenameFilter
 {
-  public QQRecorder.RecorderParam a(Parcel paramParcel)
-  {
-    return new QQRecorder.RecorderParam(paramParcel);
-  }
+  public akfr(UnifiedDebugManager paramUnifiedDebugManager, String paramString) {}
   
-  public QQRecorder.RecorderParam[] a(int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    return new QQRecorder.RecorderParam[paramInt];
+    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfr
  * JD-Core Version:    0.7.0.1
  */

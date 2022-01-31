@@ -1,19 +1,17 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.ttpic.util.Coffee;
+import com.tencent.ttpic.util.DecryptListener;
 
-public class aiho
-  implements Runnable
+public final class aiho
+  implements DecryptListener
 {
-  public aiho(StructMsgForAudioShare paramStructMsgForAudioShare, URLImageView paramURLImageView) {}
-  
-  public void run()
+  public byte[] decrypt(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130842744);
+    return Coffee.drink(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiho
  * JD-Core Version:    0.7.0.1
  */

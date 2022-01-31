@@ -1,28 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory.FaceDrawableListener;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 
 public class aodn
-  extends Handler
+  implements Runnable
 {
-  public aodn(StoryFaceDrawableFactory paramStoryFaceDrawableFactory, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aodn(EditVideoSave paramEditVideoSave) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1000)
-    {
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
+    this.a.i();
+    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a() != 102) {
+      QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "保存成功", 0).a();
     }
-    while ((paramMessage.what != 1002) || (this.a.a == null)) {
-      return;
-    }
-    this.a.a.a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aijd;
+import ainy;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -36,9 +36,9 @@ public class StructMsgItemLayout23
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
     Object localObject2;
-    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof aijd)))
+    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof ainy)))
     {
-      localaijd = (aijd)paramView.getTag();
+      localainy = (ainy)paramView.getTag();
       localIterator = this.a.iterator();
       for (;;)
       {
@@ -49,7 +49,7 @@ public class StructMsgItemLayout23
         localObject1 = (AbsStructMsgElement)localIterator.next();
         if ("button".equals(((AbsStructMsgElement)localObject1).a))
         {
-          localObject2 = (TextView)((AbsStructMsgElement)localObject1).a(paramContext, localaijd.a, paramBundle);
+          localObject2 = (TextView)((AbsStructMsgElement)localObject1).a(paramContext, localainy.a, paramBundle);
           if (TextUtils.isEmpty(((StructMsgItemButton)localObject1).c())) {
             ((TextView)localObject2).setTextSize(16.0F);
           }
@@ -60,7 +60,7 @@ public class StructMsgItemLayout23
       }
     }
     Object localObject1 = a(paramContext);
-    aijd localaijd = new aijd();
+    ainy localainy = new ainy();
     Iterator localIterator = this.a.iterator();
     paramView = null;
     while (localIterator.hasNext())
@@ -81,9 +81,9 @@ public class StructMsgItemLayout23
       }
     }
     if (paramView != null) {
-      localaijd.a = paramView;
+      localainy.a = paramView;
     }
-    ((LinearLayout)localObject1).setTag(localaijd);
+    ((LinearLayout)localObject1).setTag(localainy);
     return localObject1;
   }
   

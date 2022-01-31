@@ -1,21 +1,29 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class llz
-  implements Runnable
+  implements ArticleCommentModule.FetchCommentObserver
 {
-  public llz(KandianMergeManager paramKandianMergeManager) {}
+  public llz(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo)
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.a), 1).edit();
-    localEditor.remove("subscribe_push_msg_time");
-    localEditor.remove("subscribe_push_msg_uin");
-    localEditor.remove("subscribe_push_msg_status");
-    localEditor.remove("subscribe_push_msg_xml");
-    ReadInJoyHelper.a(localEditor, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentListView", 2, "first comment bottom refresh success");
+    }
+    ReadInJoyCommentListAdapter.a(this.a).a(true);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentListView", 2, "first comment bottom refresh failed ,err code =" + paramInt + "err msg = " + paramString);
+    }
+    ReadInJoyCommentListAdapter.a(this.a).a();
   }
 }
 

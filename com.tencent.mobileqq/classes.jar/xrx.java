@@ -1,31 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraOperator;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
-import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForStructing;
 
 public class xrx
   implements Runnable
 {
-  public xrx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xrx(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface, MessageForStructing paramMessageForStructing) {}
   
   public void run()
   {
-    String str = this.a.e;
-    NewFlowCameraActivity.a(this.a);
-    ShortVideoCaptureController.a(str, NewFlowCameraOperator.a);
-    this.a.q = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with capture from video");
-    }
-    NewFlowCameraActivity.a(this.a);
-    if (this.a.a == null) {}
-    for (str = "";; str = this.a.a.a())
-    {
-      FlowCameraMqqAction.a("", "0X80075BE", str, "", "", "");
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq, "extLong", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.extLong));
   }
 }
 

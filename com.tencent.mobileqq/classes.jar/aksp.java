@@ -1,23 +1,41 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.widget.AntiphingToast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
-public class aksp
-  extends Handler
+class aksp
+  implements Runnable
 {
-  public aksp(AntiphingToast paramAntiphingToast, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aksp(akso paramakso, DownloadTask paramDownloadTask) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.what == 1) {
-      this.a.a(0.0F, 0 - AntiphingToast.a(this.a).getHeight(), true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QueueDownloader", 2, "doTask | run() downloadLimitCount=" + this.jdField_a_of_type_Akso.a.get() + ",task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
     }
-    super.handleMessage(paramMessage);
+    if ((this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.c) && (DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.jdField_a_of_type_JavaLangString)))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.jdField_a_of_type_Int = -101;
+      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a(-1);
+      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.e();
+      this.jdField_a_of_type_Akso.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
+      this.jdField_a_of_type_Akso.a.addAndGet(-1);
+      this.jdField_a_of_type_Akso.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("QueueDownloader", 2, "doTask | run() task is limit of failTime, task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
+      }
+      return;
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    int i = DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, localAppRuntime);
+    if (QLog.isColorLevel()) {
+      QLog.d("QueueDownloader", 2, "doTask | run() download task result=" + i + ",task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
+    }
+    this.jdField_a_of_type_Akso.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
+    this.jdField_a_of_type_Akso.a.addAndGet(-1);
+    this.jdField_a_of_type_Akso.a();
   }
 }
 

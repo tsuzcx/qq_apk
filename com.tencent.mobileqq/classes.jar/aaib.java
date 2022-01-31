@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aaib
   implements Runnable
 {
-  public aaib(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
+  public aaib(MultiFragmentAnimRenderable paramMultiFragmentAnimRenderable) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
-    }
-    for (;;)
-    {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalFaceRecogInit", true, 0L, 0L, localHashMap, "");
-      return;
-      localHashMap.put("result", "1");
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "目前多段动画只支持普通视频、透明视频、边下边播！", 1).a();
   }
 }
 

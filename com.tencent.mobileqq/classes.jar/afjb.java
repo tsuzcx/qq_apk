@@ -1,30 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
 import com.tencent.mobileqq.statistics.ReportController;
 
 public class afjb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public afjb(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public afjb(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a(false);
-    if (this.a.a.app != null)
-    {
-      if ((NearbyProfileFragment.a(this.a).iIsGodFlag != 1) || (NearbyProfileFragment.a(this.a).gender != 0)) {
-        break label82;
-      }
-      ReportController.b(this.a.a.app, "CliOper", "", "", "0X800528A", "0X800528A", 0, 0, "", "", "", "");
-    }
-    label82:
-    while ((NearbyProfileFragment.a(this.a).iIsGodFlag != 1) || (NearbyProfileFragment.a(this.a).gender != 1)) {
-      return;
-    }
-    ReportController.b(this.a.a.app, "CliOper", "", "", "0X800528B", "0X800528B", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "CliOper", "", "", NearbyProfileDisplayPanel.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_Int - 1)], NearbyProfileDisplayPanel.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_Int - 1)], 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
   }
 }
 

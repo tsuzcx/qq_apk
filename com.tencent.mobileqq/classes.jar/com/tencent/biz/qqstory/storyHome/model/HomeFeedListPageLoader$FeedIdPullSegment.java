@@ -18,7 +18,7 @@ import com.tribe.async.async.JobSegment;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nys;
+import odh;
 
 public class HomeFeedListPageLoader$FeedIdPullSegment
   extends JobSegment
@@ -117,7 +117,7 @@ public class HomeFeedListPageLoader$FeedIdPullSegment
     GetStoryFeedIdListRequest localGetStoryFeedIdListRequest = new GetStoryFeedIdListRequest();
     localGetStoryFeedIdListRequest.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation = this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation;
     localGetStoryFeedIdListRequest.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.a();
-    CmdTaskManger.a().a(localGetStoryFeedIdListRequest, new nys(this, paramJobContext, (AtomicBoolean)localObject, paramInteger));
+    CmdTaskManger.a().a(localGetStoryFeedIdListRequest, new odh(this, paramJobContext, (AtomicBoolean)localObject, paramInteger));
   }
 }
 

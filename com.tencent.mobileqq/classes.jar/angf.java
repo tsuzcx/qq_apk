@@ -1,66 +1,13 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import cooperation.troop_homework.outer.TroopHWRecordArrangeActivity;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qzone.report.lp.LpReportManager;
 
 public class angf
-  extends Handler
+  implements Runnable
 {
-  public angf(TroopHWRecordArrangeActivity paramTroopHWRecordArrangeActivity) {}
+  public angf(LpReportManager paramLpReportManager, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 3: 
-      this.a.jdField_a_of_type_Boolean = true;
-      return;
-    case 101: 
-      this.a.setResult(0);
-      this.a.finish();
-      return;
-    }
-    paramMessage = paramMessage.obj.toString();
-    Object localObject = new File(paramMessage);
-    long l;
-    if (((File)localObject).exists()) {
-      l = ((File)localObject).length();
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
-      paramMessage = new JSONObject();
-      try
-      {
-        paramMessage.put("webid", TroopHWRecordArrangeActivity.a(this.a));
-        paramMessage.put("type", "record");
-        paramMessage.put("state", "stop");
-        paramMessage.put("time", Math.round(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.duration / 1000.0F));
-        paramMessage.put("size", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.size);
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("jscallback", paramMessage.toString());
-        ((Intent)localObject).putExtra("localPath", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
-        this.a.setResult(-1, (Intent)localObject);
-        this.a.finish();
-        return;
-        l = 0L;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
-    }
+    LpReportManager.access$200(this.jdField_a_of_type_CooperationQzoneReportLpLpReportManager, this.jdField_a_of_type_Int);
   }
 }
 

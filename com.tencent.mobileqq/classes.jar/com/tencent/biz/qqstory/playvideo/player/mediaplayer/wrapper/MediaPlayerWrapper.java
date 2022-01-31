@@ -6,13 +6,13 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.view.Surface;
 import java.util.Map;
-import nqt;
-import nqu;
-import nqv;
-import nqw;
-import nqx;
-import nqy;
-import nqz;
+import nvj;
+import nvk;
+import nvl;
+import nvm;
+import nvn;
+import nvo;
+import nvp;
 
 @TargetApi(14)
 public class MediaPlayerWrapper
@@ -47,37 +47,37 @@ public class MediaPlayerWrapper
   
   public void a(IMediaPlayer.OnBufferingUpdateListener paramOnBufferingUpdateListener)
   {
-    this.a.setOnBufferingUpdateListener(new nqv(this, paramOnBufferingUpdateListener));
+    this.a.setOnBufferingUpdateListener(new nvl(this, paramOnBufferingUpdateListener));
   }
   
   public void a(IMediaPlayer.OnCompletionListener paramOnCompletionListener)
   {
-    this.a.setOnCompletionListener(new nqu(this, paramOnCompletionListener));
+    this.a.setOnCompletionListener(new nvk(this, paramOnCompletionListener));
   }
   
   public void a(IMediaPlayer.OnErrorListener paramOnErrorListener)
   {
-    this.a.setOnErrorListener(new nqy(this, paramOnErrorListener));
+    this.a.setOnErrorListener(new nvo(this, paramOnErrorListener));
   }
   
   public void a(IMediaPlayer.OnInfoListener paramOnInfoListener)
   {
-    this.a.setOnInfoListener(new nqz(this, paramOnInfoListener));
+    this.a.setOnInfoListener(new nvp(this, paramOnInfoListener));
   }
   
   public void a(IMediaPlayer.OnPreparedListener paramOnPreparedListener)
   {
-    this.a.setOnPreparedListener(new nqt(this, paramOnPreparedListener));
+    this.a.setOnPreparedListener(new nvj(this, paramOnPreparedListener));
   }
   
   public void a(IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    this.a.setOnSeekCompleteListener(new nqw(this, paramOnSeekCompleteListener));
+    this.a.setOnSeekCompleteListener(new nvm(this, paramOnSeekCompleteListener));
   }
   
   public void a(IMediaPlayer.OnVideoSizeChangedListener paramOnVideoSizeChangedListener)
   {
-    this.a.setOnVideoSizeChangedListener(new nqx(this, paramOnVideoSizeChangedListener));
+    this.a.setOnVideoSizeChangedListener(new nvn(this, paramOnVideoSizeChangedListener));
   }
   
   public void a(boolean paramBoolean)

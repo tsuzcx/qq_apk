@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aais;
-import aait;
-import aaiu;
+import aapj;
+import aapk;
+import aapl;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.RemoteArConfigManager;
@@ -22,14 +22,14 @@ public class ARWorldCupBaseResDownload
   private ARWorldCupBaseResDownload.DownloadListener jdField_a_of_type_ComTencentMobileqqArArengineARWorldCupBaseResDownload$DownloadListener;
   public WorldCupMgr.DownloadListener a;
   public GestureMgr.GestureStatusListener a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new aaiu(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new aapl(this);
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   
   public ARWorldCupBaseResDownload(AppInterface paramAppInterface, RemoteArConfigManager paramRemoteArConfigManager, ARWorldCupBaseResDownload.DownloadListener paramDownloadListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr$DownloadListener = new aais(this);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr$GestureStatusListener = new aait(this);
+    this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr$DownloadListener = new aapj(this);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr$GestureStatusListener = new aapk(this);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager = paramRemoteArConfigManager;
     this.jdField_a_of_type_ComTencentMobileqqArArengineARWorldCupBaseResDownload$DownloadListener = paramDownloadListener;

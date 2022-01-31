@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.arcard;
 
-import aakz;
-import aala;
-import aalb;
-import aalc;
-import aald;
-import aale;
-import aalf;
-import aali;
+import aart;
+import aaru;
+import aarv;
+import aarw;
+import aarx;
+import aary;
+import aarz;
+import aasc;
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Bitmap;
@@ -60,7 +60,7 @@ public class ARBlessWordFragment
   ARRelationShipFileUpload jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload;
   private RubberStamp jdField_a_of_type_ComTencentMobileqqArcardARWordingBlessRubberStamp;
   private OnCameraVideoRecordListener jdField_a_of_type_ComTencentMobileqqArcardOnCameraVideoRecordListener;
-  final Runnable jdField_a_of_type_JavaLangRunnable = new aakz(this);
+  final Runnable jdField_a_of_type_JavaLangRunnable = new aart(this);
   private String jdField_a_of_type_JavaLangString = "";
   public boolean a;
   long jdField_b_of_type_Long;
@@ -118,20 +118,20 @@ public class ARBlessWordFragment
       }
       this.jdField_a_of_type_AndroidViewView.buildDrawingCache();
       localObject = this.jdField_a_of_type_AndroidViewView.getDrawingCache();
-      this.jdField_b_of_type_AndroidOsHandler.post(new aali(this, (Bitmap)localObject, paramRunnable));
+      this.jdField_b_of_type_AndroidOsHandler.post(new aasc(this, (Bitmap)localObject, paramRunnable));
       return;
     }
   }
   
   private void c()
   {
-    DialogUtil.b(getActivity(), 233, null, "AR贺卡发送失败，请重新发送。", 2131433015, 2131433031, new aald(this), new aale(this)).show();
+    DialogUtil.b(getActivity(), 233, null, "AR贺卡发送失败，请重新发送。", 2131433029, 2131433045, new aarx(this), new aary(this)).show();
   }
   
   private void d()
   {
     if (!NetworkUtil.g(getActivity().getApplicationContext())) {
-      QQToast.a(getActivity(), 2131437530, 1).a();
+      QQToast.a(getActivity(), 2131437550, 1).a();
     }
     do
     {
@@ -146,7 +146,7 @@ public class ARBlessWordFragment
     ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject).jdField_a_of_type_Int = 1;
     ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a();
     ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject, new aalf(this));
+    this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject, new aarz(this));
   }
   
   private void e()
@@ -215,12 +215,12 @@ public class ARBlessWordFragment
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() != 2131363497) && (paramView.getId() != 2131369538))
+    if ((paramView.getId() != 2131363516) && (paramView.getId() != 2131369547))
     {
       ((InputMethodManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
       this.jdField_a_of_type_AndroidViewView.requestFocus();
     }
-    if (paramView.getId() == 2131369536)
+    if (paramView.getId() == 2131369545)
     {
       if (!this.jdField_a_of_type_Boolean)
       {
@@ -230,7 +230,7 @@ public class ARBlessWordFragment
     }
     else
     {
-      if (paramView.getId() != 2131369540) {
+      if (paramView.getId() != 2131369549) {
         break label155;
       }
       if (!this.jdField_b_of_type_Boolean) {
@@ -240,7 +240,7 @@ public class ARBlessWordFragment
     }
     label133:
     label155:
-    while (paramView.getId() != 2131369526)
+    while (paramView.getId() != 2131369535)
     {
       return;
       this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
@@ -267,13 +267,13 @@ public class ARBlessWordFragment
     if (QLog.isColorLevel()) {
       QLog.d("ARBlessWordFragment", 2, "onCreateView");
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.inflate(2130970203, null));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369533));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.inflate(2130970218, null));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369542));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362767));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362772));
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369535));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369539));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369544));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369548));
     try
     {
       paramLayoutInflater = new BitmapFactory.Options();
@@ -281,14 +281,14 @@ public class ARBlessWordFragment
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeFile(ARResouceDir.c() + "arcard_textbg.png", paramLayoutInflater));
       this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(BitmapFactory.decodeFile(ARResouceDir.c() + "arcard_videorecord_bg.png", paramLayoutInflater));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369534);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369538));
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369228));
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369536));
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369543);
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369547));
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369232));
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369545));
       this.jdField_d_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new aala(this));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369537));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363497));
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new aaru(this));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369546));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363516));
       this.jdField_a_of_type_AndroidWidgetEditText.setHorizontallyScrolling(false);
       paramLayoutInflater = this.jdField_a_of_type_AndroidWidgetEditText.getPaint();
       paramLayoutInflater.setTypeface(this.jdField_a_of_type_AndroidWidgetEditText.getTypeface());
@@ -306,11 +306,11 @@ public class ARBlessWordFragment
       a(j);
       this.jdField_a_of_type_AndroidWidgetEditText.setMaxEms(5);
       this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.f);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aalb(this));
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new aalc(this));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369540));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aarv(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new aarw(this));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369549));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369526));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369535));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqArcardARWordingBlessRubberStamp = new RubberStamp(getActivity());

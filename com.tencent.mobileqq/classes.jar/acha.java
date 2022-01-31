@@ -1,43 +1,24 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.favroaming.EmoAddedAuthCallback;
+import com.tencent.mobileqq.vas.VasH5PayUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class acha
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  private acha(StickerGestureDetector paramStickerGestureDetector) {}
+  public acha(EmoAddedAuthCallback paramEmoAddedAuthCallback) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.post(new achb(this));
-      this.a.c();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aN();
-      this.a.jdField_b_of_type_Double = 1.0D;
-      this.a.jdField_a_of_type_Double = 0.0D;
-      if (this.a.jdField_a_of_type_AndroidViewView != null)
-      {
-        this.a.a(this.a.jdField_a_of_type_AndroidViewView, false);
-        this.a.c = null;
-      }
-      if ((this.a.jdField_b_of_type_AndroidViewView != null) && ((this.a.jdField_b_of_type_AndroidViewView instanceof BaseChatItemLayout)))
-      {
-        ((BaseChatItemLayout)this.a.jdField_b_of_type_AndroidViewView).setStickerPressStatus(false);
-        this.a.jdField_b_of_type_AndroidViewView = null;
-      }
-      com.tencent.mobileqq.emoticon.EmojiStickerManager.b = false;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (paramInt == 1) {
+      VasH5PayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436963), "");
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

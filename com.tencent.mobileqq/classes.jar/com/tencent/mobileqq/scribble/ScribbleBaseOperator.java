@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.scribble;
 
-import ahpy;
+import ahuq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForScribble;
@@ -56,7 +56,7 @@ public class ScribbleBaseOperator
   
   public boolean a(MessageForScribble paramMessageForScribble)
   {
-    ThreadManager.post(new ahpy(this, paramMessageForScribble), 8, null, false);
+    ThreadManager.post(new ahuq(this, paramMessageForScribble), 8, null, false);
     return true;
   }
   

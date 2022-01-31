@@ -1,35 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 
 public class aiic
-  extends QIPCModule
+  implements CustomFrameAnimationDrawable.AnimationEndListener
 {
-  public aiic(StructMsgForGeneralShare.GeneralClickHandler paramGeneralClickHandler, String paramString)
-  {
-    super(paramString);
-  }
+  public aiic(RedBagVideoManager paramRedBagVideoManager) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a()
   {
-    if ("receipt_set_read".equals(paramString)) {
-      StructMsgForGeneralShare.GeneralClickHandler.a(this.a, paramBundle);
-    }
-    for (;;)
-    {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.d(StructMsgForGeneralShare.access$000(), 2, "unknown action");
-      }
-    }
+    RedBagVideoManager.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiic
  * JD-Core Version:    0.7.0.1
  */

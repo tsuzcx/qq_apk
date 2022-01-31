@@ -15,9 +15,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Timer;
 import java.util.TimerTask;
 import mqq.util.WeakReference;
-import uro;
-import urr;
-import urt;
+import uwo;
+import uwr;
+import uwt;
 
 public class DoodleMsgView
   extends View
@@ -47,7 +47,7 @@ public class DoodleMsgView
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer = new DoodleDrawer();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer$DoodleDrawerListener = new uro(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer$DoodleDrawerListener = new uwo(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer$DoodleDrawerListener, 1, paramInt1, paramInt2);
   }
   
@@ -123,7 +123,7 @@ public class DoodleMsgView
       l1 = (int)((float)l1 * 1.0F / 1.2F);
       l1 /= 25L;
       long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer.a();
-      this.jdField_a_of_type_JavaUtilTimerTask = new urr(this, l2, l2 / (l1 + 1L));
+      this.jdField_a_of_type_JavaUtilTimerTask = new uwr(this, l2, l2 / (l1 + 1L));
       this.jdField_a_of_type_JavaUtilTimer = new Timer();
       this.jdField_a_of_type_Long = 0L;
       localObject = this.jdField_a_of_type_JavaUtilTimer;
@@ -138,11 +138,11 @@ public class DoodleMsgView
       if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
         break;
       }
-      localObject = (urt)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      localObject = (uwt)this.jdField_a_of_type_MqqUtilWeakReference.get();
       if (localObject == null) {
         break;
       }
-      ((urt)localObject).f();
+      ((uwt)localObject).f();
       return;
       if (l1 <= 20000L)
       {
@@ -224,9 +224,9 @@ public class DoodleMsgView
     {
       if (this.jdField_a_of_type_MqqUtilWeakReference != null)
       {
-        urt localurt = (urt)this.jdField_a_of_type_MqqUtilWeakReference.get();
-        if (localurt != null) {
-          localurt.g();
+        uwt localuwt = (uwt)this.jdField_a_of_type_MqqUtilWeakReference.get();
+        if (localuwt != null) {
+          localuwt.g();
         }
       }
       return;
@@ -242,10 +242,10 @@ public class DoodleMsgView
     this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
   }
   
-  public void a(urt paramurt, int paramInt1, int paramInt2)
+  public void a(uwt paramuwt, int paramInt1, int paramInt2)
   {
     QLog.d("DoodleMsgView", 2, "DoodleMsgView init begin");
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramurt);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramuwt);
     this.jdField_a_of_type_AndroidGraphicsCanvas = null;
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
@@ -325,7 +325,7 @@ public class DoodleMsgView
         }
         QLog.d("DoodleMsgView", 2, "drawer setdata same data:" + a());
       } while (this.jdField_a_of_type_MqqUtilWeakReference == null);
-      paramString = (urt)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      paramString = (uwt)this.jdField_a_of_type_MqqUtilWeakReference.get();
     } while (paramString == null);
     paramString.a(a());
   }

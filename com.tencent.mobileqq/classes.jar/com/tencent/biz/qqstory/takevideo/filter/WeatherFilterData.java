@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import okq;
+import opf;
 
 public class WeatherFilterData
   extends FilterData
@@ -20,13 +20,13 @@ public class WeatherFilterData
   @NonNull
   public FilterData.FilterPageItem a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return new okq(this, paramContext, paramViewGroup);
+    return new opf(this, paramContext, paramViewGroup);
   }
   
   @NonNull
   public Class a()
   {
-    return okq.class;
+    return opf.class;
   }
   
   public void a(int paramInt)

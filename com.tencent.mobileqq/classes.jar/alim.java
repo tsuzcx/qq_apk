@@ -1,16 +1,30 @@
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.AuthorityLoginView;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 
-public class alim
+class alim
   implements Runnable
 {
-  public alim(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
+  alim(alil paramalil, String paramString) {}
   
   public void run()
   {
-    StaticAnalyz.a("100", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
-    ControlPolicyUtil.a();
+    if ((AuthorityLoginView.a(this.jdField_a_of_type_Alil.a.a) instanceof AuthorityActivity)) {
+      ((AuthorityActivity)AuthorityLoginView.a(this.jdField_a_of_type_Alil.a.a)).a(this.jdField_a_of_type_JavaLangString, false);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Alil.a.a.a != null)
+      {
+        this.jdField_a_of_type_Alil.a.a.a.dismiss();
+        this.jdField_a_of_type_Alil.a.a.a = null;
+      }
+      return;
+      if ((AuthorityLoginView.a(this.jdField_a_of_type_Alil.a.a) instanceof QuickLoginAuthorityActivity)) {
+        ((QuickLoginAuthorityActivity)AuthorityLoginView.a(this.jdField_a_of_type_Alil.a.a)).a(this.jdField_a_of_type_JavaLangString, false);
+      }
+    }
   }
 }
 

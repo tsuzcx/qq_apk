@@ -41,8 +41,8 @@ public class AtLayer$AtItem
     this.jdField_a_of_type_Int = paramLayerParams.jdField_c_of_type_Int;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAtLayer.jdField_a_of_type_AndroidContentContext.getResources(), 2130843393);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAtLayer.jdField_a_of_type_AndroidContentContext.getResources(), 2130843394);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAtLayer.jdField_a_of_type_AndroidContentContext.getResources(), 2130843429);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAtLayer.jdField_a_of_type_AndroidContentContext.getResources(), 2130843430);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, (int)this.u, (int)this.v);
       this.jdField_a_of_type_JavaLangString = paramString1;
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;

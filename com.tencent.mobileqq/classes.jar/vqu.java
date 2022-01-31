@@ -1,16 +1,28 @@
-import com.tencent.ark.ArkDebugger;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.VideoVipItemBuilder;
+import com.tencent.mobileqq.data.MessageForVideoVip;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class vqu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vqu(ArkDebugChatPie paramArkDebugChatPie) {}
+  public vqu(VideoVipItemBuilder paramVideoVipItemBuilder, MessageForVideoVip paramMessageForVideoVip, MessageRecord paramMessageRecord) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArkDebugChatPie.b(this.a);
-    ArkDebugChatPie.c(this.a);
-    ArkDebugger.Destroy();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideoVip.url);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 0)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X80063FF", "0X80063FF", 0, 0, "", "", "", "");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X80063EF", "0X80063EF", 14, 0, "", "", "", "");
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop != 3000) {
+      return;
+    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X8006400", "0X8006400", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoVipItemBuilder.a, "CliOper", "", "", "0X80063EF", "0X80063EF", 13, 0, "", "", "", "");
   }
 }
 

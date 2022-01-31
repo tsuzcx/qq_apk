@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.qphone.base.util.QLog;
 
 public class ysw
   implements Runnable
 {
-  public ysw(ApolloGameActivity paramApolloGameActivity) {}
+  public ysw(ApolloSurfaceView paramApolloSurfaceView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
   
   public void run()
   {
     try
     {
-      this.a.b();
+      ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
       return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("cmgame_process.ApolloGameActivity", 1, localThrowable, new Object[0]);
+      QLog.e("ApolloSurfaceView", 1, "send touch event err e=" + localThrowable.toString());
     }
   }
 }

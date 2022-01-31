@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import aier;
-import aies;
+import aijl;
+import aijm;
 import android.os.Handler;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -120,7 +120,7 @@ public class InitMagnifierSDK
     if (BaseApplicationImpl.sProcessId != 1) {
       return;
     }
-    paramHandler.postDelayed(new aier(paramString1, paramLong1, paramLong2, paramString2), 100L);
+    paramHandler.postDelayed(new aijl(paramString1, paramLong1, paramLong2, paramString2), 100L);
   }
   
   public static void a(JSONObject paramJSONObject, long paramLong)
@@ -156,10 +156,10 @@ public class InitMagnifierSDK
   
   protected boolean a()
   {
-    Object localObject = "V 7.6.3." + ApkUtils.a(BaseApplicationImpl.sApplication);
+    Object localObject = "V 7.6.8." + ApkUtils.a(BaseApplicationImpl.sApplication);
     QLog.i("InitMagnifierSDK", 4, "init MagnifierSDK: process =  verson = " + (String)localObject);
     localObject = MagnifierSDK.a(ThreadManager.getSubThreadHandler(), 1, (String)localObject);
-    ((MagnifierSDK)localObject).a(new aies());
+    ((MagnifierSDK)localObject).a(new aijm());
     if (7 == BaseApplicationImpl.sProcessId)
     {
       ((MagnifierSDK)localObject).a(BaseApplicationImpl.getApplication(), 8);

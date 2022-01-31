@@ -1,25 +1,16 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
 
-class nkt
-  extends OnPlayModeShareListener
+public class nkt
+  extends UploadImageJob
 {
-  nkt(nks paramnks, VideoPlayModeBase paramVideoPlayModeBase)
-  {
-    super(paramVideoPlayModeBase);
-  }
+  public nkt(ShareModeBase paramShareModeBase, ShareQZoneData paramShareQZoneData) {}
   
-  public void a(int paramInt)
+  public boolean b()
   {
-    super.a(paramInt);
-    if (this.a.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 2)
-    {
-      StoryReportor.a("play_video", "guest_share_suc", i, paramInt, new String[] { "", String.valueOf(StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

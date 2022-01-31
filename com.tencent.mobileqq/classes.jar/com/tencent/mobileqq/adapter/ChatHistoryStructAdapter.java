@@ -177,9 +177,9 @@ public class ChatHistoryStructAdapter
   {
     Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
     String str = a(paramAbsShareMsg, "cover");
-    int i = 2130846093;
+    int i = 2130846175;
     if ((paramAbsShareMsg instanceof StructMsgForAudioShare)) {
-      i = 2130846102;
+      i = 2130846184;
     }
     localObject = ((Resources)localObject).getDrawable(i);
     if (TextUtils.isEmpty(str))
@@ -253,12 +253,12 @@ public class ChatHistoryStructAdapter
     {
       return paramViewGroup;
       paramViewGroup = new ChatHistoryStructAdapter.HistoryStructItemHolder(this);
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130971596, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375174));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131375175));
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131375177));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363636));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131375178));
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130971622, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375226));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131375227));
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131375229));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363655));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131375230));
       paramView.setTag(paramViewGroup);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(paramViewGroup);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -280,8 +280,8 @@ public class ChatHistoryStructAdapter
     {
       paramView.setText((String)localObject2);
       return paramViewGroup;
-      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130971597, null);
-      paramView = (TextView)paramViewGroup.findViewById(2131365553);
+      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130971623, null);
+      paramView = (TextView)paramViewGroup.findViewById(2131365558);
       paramViewGroup.setTag(paramView);
     }
   }

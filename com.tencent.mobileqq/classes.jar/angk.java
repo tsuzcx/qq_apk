@@ -1,15 +1,14 @@
-import com.tencent.open.wadl.WLog;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import cooperation.qzone.report.lp.LpReportInfo;
+import cooperation.qzone.report.lp.MachinelearningReport;
 
 public class angk
   implements Runnable
 {
-  public angk(WadlProxyServiceManager paramWadlProxyServiceManager) {}
+  public angk(MachinelearningReport paramMachinelearningReport, int paramInt, LpReportInfo paramLpReportInfo) {}
   
   public void run()
   {
-    WLog.b("WadlProxyServiceManager", "##@failed to lauch servie: reset mServiceConnecting status.");
-    this.a.a = false;
+    MachinelearningReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachinelearningReport, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo);
   }
 }
 

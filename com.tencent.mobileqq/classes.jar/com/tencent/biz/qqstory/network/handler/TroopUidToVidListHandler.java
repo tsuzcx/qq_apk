@@ -41,7 +41,7 @@ public class TroopUidToVidListHandler
   public void a(@NonNull GetGroupVidListRequest paramGetGroupVidListRequest, @Nullable GetGroupVidListResponse paramGetGroupVidListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     TroopUidToVidListHandler.GetTroopVidListEvent localGetTroopVidListEvent = new TroopUidToVidListHandler.GetTroopVidListEvent();
-    localGetTroopVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    localGetTroopVidListEvent.errorInfo = paramErrorMessage;
     localGetTroopVidListEvent.jdField_a_of_type_JavaLangString = paramGetGroupVidListRequest.b;
     localGetTroopVidListEvent.jdField_a_of_type_Int = paramGetGroupVidListRequest.c;
     if ((paramGetGroupVidListResponse == null) || (paramErrorMessage.isFail()))

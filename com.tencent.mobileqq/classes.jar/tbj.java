@@ -1,43 +1,17 @@
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.ViewStub;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.main.CommonLoadingView;
 
 public class tbj
   implements Runnable
 {
-  public tbj(MainFragment paramMainFragment) {}
+  public tbj(Leba paramLeba) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecialCare", 2, "getSpecialRecommendStat=" + FriendListHandler.a);
-    }
-    if ((FriendListHandler.a == 0) || (FriendListHandler.a == 2) || (FriendListHandler.a == 3)) {}
-    do
-    {
-      do
-      {
-        return;
-        if (!MainFragment.a(this.a)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SpecialCare", 2, "hasSpecialCareFriend=" + MainFragment.a(this.a));
-      return;
-    } while (MainFragment.a(this.a) == null);
-    List localList = ((FriendsManager)MainFragment.a(this.a).getManager(50)).b();
-    if ((localList != null) && (localList.size() > 0))
-    {
-      MainFragment.b(this.a, true);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecialCare", 2, "hasSpecialCareFriend=" + MainFragment.a(this.a));
-    }
-    ((FriendListHandler)MainFragment.a(this.a).a(1)).a(0, 10, null, true, true);
+    ViewStub localViewStub = (ViewStub)this.a.a(2131364899);
+    ((CommonLoadingView)this.a.a(2131363833)).setVisibility(8);
+    localViewStub.setVisibility(0);
   }
 }
 

@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.activity.qwallet.voice.VoiceRecognizer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-public final class xgr
-  implements Parcelable.Creator
+public class xgr
+  implements Runnable
 {
-  public RedPacketInfoBase a(Parcel paramParcel)
-  {
-    return new RedPacketInfoBase(paramParcel);
-  }
+  public xgr(RedPacketRecordFragment paramRedPacketRecordFragment, WeakReference paramWeakReference) {}
   
-  public RedPacketInfoBase[] a(int paramInt)
+  public void run()
   {
-    return new RedPacketInfoBase[paramInt];
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface != null) {
+      VoiceRecognizer.a().a(localQQAppInterface);
+    }
   }
 }
 

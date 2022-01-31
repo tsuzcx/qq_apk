@@ -1,73 +1,37 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wit
-  implements ContactSearchFacade.ISearchListener
+  implements View.OnClickListener
 {
-  public wit(SearchBaseFragment paramSearchBaseFragment) {}
+  public wit(TroopAssistTipsBar paramTroopAssistTipsBar) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    int i = 3;
-    this.a.i();
-    if (paramBoolean)
+    QQAppInterface localQQAppInterface;
+    String str;
+    if (this.a.a())
     {
-      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
-      {
-        paramObject = (ArrayList)paramObject;
-        if (paramObject.size() != 0) {
-          break label94;
-        }
-        if (this.a.a != null)
-        {
-          paramObject = this.a.a;
-          if (!this.a.b) {
-            break label89;
-          }
-          paramInt1 = 3;
-          paramObject.sendEmptyMessage(paramInt1);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
-        }
-      }
-      for (;;)
-      {
-        return;
-        label89:
-        paramInt1 = 2;
-        break;
-        label94:
-        if (paramObject.size() > 0) {}
-        try
-        {
-          paramString = (SearchResult)paramObject.get(0);
-          if ((this.a.a(paramObject)) && (this.a.a != null))
-          {
-            this.a.a.sendEmptyMessage(0);
-            return;
-          }
-        }
-        catch (Exception paramObject)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
-          }
-          paramObject = this.a.a;
-          if (!this.a.b) {}
-        }
-      }
-      for (paramInt1 = i;; paramInt1 = 2)
-      {
-        paramObject.sendEmptyMessage(paramInt1);
-        return;
+      TroopAssistantManager.a().a(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
+      TroopAssistTipsBar.a(this.a).a();
+      localQQAppInterface = TroopAssistTipsBar.a(this.a);
+      str = TroopAssistTipsBar.a(this.a).a;
+      if (TroopAssistTipsBar.a(this.a).b(TroopAssistTipsBar.a(this.a).a) != 3) {
+        break label112;
       }
     }
-    this.a.a(paramInt1, paramObject, paramInt2, paramString);
+    label112:
+    for (paramView = "1";; paramView = "0")
+    {
+      ReportController.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str, paramView, "", "");
+      return;
+    }
   }
 }
 

@@ -1,11 +1,11 @@
 package cooperation.qzone.report.lp;
 
-import amyt;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Base64;
+import angi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.MTAReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -738,7 +738,7 @@ public class MachineLearingSmartReport
       }
       if (BaseApplicationImpl.sProcessId == 2)
       {
-        QzoneModuleManager.getInstance().downloadModule(str2, new amyt(this, str2, (String)localObject2, (String)localObject1));
+        QzoneModuleManager.getInstance().downloadModule(str2, new angi(this, str2, (String)localObject2, (String)localObject1));
         return;
       }
       if (QLog.isColorLevel()) {

@@ -1,42 +1,31 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebArticleRichReqCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class mpm
-  implements SeekBar.OnSeekBarChangeListener
+  extends FastWebModule.FastWebArticleRichReqCallback
 {
-  public mpm(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  public mpm(FastWebActivity paramFastWebActivity) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt, FastWebShareInfo paramFastWebShareInfo)
   {
-    if ((FastWebVideoFeedsPlayManager.a(this.a) == null) || (!paramBoolean)) {
+    super.a(paramBoolean, paramInt, paramFastWebShareInfo);
+    if ((paramBoolean) && (paramFastWebShareInfo != null) && (!TextUtils.isEmpty(paramFastWebShareInfo.a(paramInt)))) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ThreadManager.getUIHandler().post(new mpn(this, paramBoolean, paramInt, paramFastWebShareInfo));
       return;
     }
-    FastWebVideoFeedsPlayManager.b(this.a, System.currentTimeMillis());
-    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
-    double d = paramInt / 100.0D;
-    paramInt = (int)(l * d);
-    VideoFeedsHelper.a(FastWebVideoFeedsPlayManager.a(this.a).a, paramInt);
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void a(boolean paramBoolean, String paramString, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    FastWebVideoFeedsPlayManager.d(this.a, true);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (FastWebVideoFeedsPlayManager.a(this.a) == null) {
-      return;
-    }
-    FastWebVideoFeedsPlayManager.d(this.a, false);
-    int i = paramSeekBar.getProgress();
-    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
-    i = (int)(i / 100.0D * l);
-    FastWebVideoFeedsPlayManager.a(this.a).a(i);
+    super.a(paramBoolean, paramString, paramFastWebArticleInfo);
+    this.a.runOnUiThread(new mpo(this, paramFastWebArticleInfo, paramString, paramBoolean));
   }
 }
 

@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.HttpThumbDownloader.ThumbEventCallback;
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import cooperation.weiyun.WeiyunRemoteCommand.OnStateChangeListener;
 
 public class aczb
-  implements HttpThumbDownloader.ThumbEventCallback
+  implements WeiyunRemoteCommand.OnStateChangeListener
 {
-  public aczb(ThumbDownloadManager paramThumbDownloadManager) {}
+  public aczb(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong)
+  public void a(int paramInt)
   {
-    ThumbDownloadManager.c(this.a, paramString1);
-    ThumbDownloadManager.a(this.a).a().a(paramBoolean, 60, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramString2, paramString1 });
-    ThumbDownloadManager.a(this.a);
+    this.a.runOnUiThread(new aczc(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aczb
  * JD-Core Version:    0.7.0.1
  */

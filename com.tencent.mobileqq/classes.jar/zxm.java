@@ -1,26 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.ar.ARLBSPOIDialog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.automator.step.GetTbsSwitchInfo;
+import com.tencent.smtt.sdk.QbSdk;
 
 public class zxm
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public zxm(ARLBSPOIDialog paramARLBSPOIDialog) {}
+  public zxm(GetTbsSwitchInfo paramGetTbsSwitchInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.setVisibility(8);
-    this.a.dismiss();
+    QbSdk.isX5DisabledSync(BaseApplicationImpl.getContext());
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxm
  * JD-Core Version:    0.7.0.1
  */

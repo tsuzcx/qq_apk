@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import ConfigPush.FileStoragePushFSSvcList;
 import ConfigPush.FileStorageServerListInfo;
-import airu;
+import aiwx;
 import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,7 +19,7 @@ public class SosoSrvAddrProvider
   private static SosoSrvAddrProvider jdField_a_of_type_ComTencentMobileqqTransfileSosoSrvAddrProvider;
   public static int b = jdField_a_of_type_Int + 1;
   private FileStoragePushFSSvcList jdField_a_of_type_ConfigPushFileStoragePushFSSvcList;
-  airu jdField_a_of_type_Airu = new airu(this);
+  aiwx jdField_a_of_type_Aiwx = new aiwx(this);
   Application jdField_a_of_type_AndroidAppApplication;
   
   private SosoSrvAddrProvider(Application paramApplication)
@@ -53,7 +53,7 @@ public class SosoSrvAddrProvider
     Object localObject = null;
     try
     {
-      FileStorageServerListInfo localFileStorageServerListInfo = this.jdField_a_of_type_Airu.a(paramSosoSrvAddrType);
+      FileStorageServerListInfo localFileStorageServerListInfo = this.jdField_a_of_type_Aiwx.a(paramSosoSrvAddrType);
       paramSosoSrvAddrType = localObject;
       if (localFileStorageServerListInfo != null) {
         paramSosoSrvAddrType = "http://" + localFileStorageServerListInfo.sIP + ":" + localFileStorageServerListInfo.iPort + "/";
@@ -117,7 +117,7 @@ public class SosoSrvAddrProvider
     try
     {
       this.jdField_a_of_type_ConfigPushFileStoragePushFSSvcList = paramFileStoragePushFSSvcList;
-      this.jdField_a_of_type_Airu.a(paramFileStoragePushFSSvcList);
+      this.jdField_a_of_type_Aiwx.a(paramFileStoragePushFSSvcList);
       return;
     }
     finally
@@ -162,7 +162,7 @@ public class SosoSrvAddrProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.SosoSrvAddrProvider
  * JD-Core Version:    0.7.0.1
  */

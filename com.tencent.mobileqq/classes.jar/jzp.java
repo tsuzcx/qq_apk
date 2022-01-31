@@ -1,28 +1,24 @@
-import android.os.Handler;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
-import com.tencent.av.ui.funchat.record.FileSwapHelper;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class jzp
   implements Runnable
 {
-  public jzp(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  public String a;
+  
+  public jzp(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
   public void run()
   {
-    QavVideoRecordUICtrl.a(this.a, this.a.a());
-    QavVideoRecordUICtrl.b(this.a, FileSwapHelper.a());
-    if (QavVideoRecordUICtrl.a(this.a) < 31457280L) {
-      QavVideoRecordUICtrl.a(this.a).post(new jzq(this));
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.c, 2, "StartRecvAllVideoRunnable-->FunctionName=" + this.jdField_a_of_type_JavaLangString);
     }
-    while (!QavVideoRecordUICtrl.b) {
-      return;
-    }
-    QavVideoRecordUICtrl.a(this.a).sendEmptyMessageDelayed(11, 500L);
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jzp
  * JD-Core Version:    0.7.0.1
  */

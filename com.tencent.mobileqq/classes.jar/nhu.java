@@ -1,26 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest;
-import com.tencent.biz.qqstory.network.request.StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.DecryptCallback;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestCallback;
+import java.util.Collections;
 
 class nhu
-  extends CmdTaskManger.UIThreadCallback
+  implements Runnable
 {
-  nhu(nht paramnht, long paramLong, QQProgressDialog paramQQProgressDialog) {}
+  nhu(nht paramnht, LbsManager.POIListRequestCallback paramPOIListRequestCallback, ErrorMessage paramErrorMessage) {}
   
-  public void a(@NonNull StoryShareTranslateTokenRequest paramStoryShareTranslateTokenRequest, @Nullable StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse paramStoryShareTranslateTokenResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramStoryShareTranslateTokenResponse);
-    }
-    StoryReportor.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_Nht.a.a(paramStoryShareTranslateTokenResponse, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, this.jdField_a_of_type_Nht.a, Collections.EMPTY_LIST);
   }
 }
 

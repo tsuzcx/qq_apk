@@ -1,26 +1,28 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.ui.VideoLayerUI.TouchListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class kej
-  implements MenuItem.OnMenuItemClickListener
+  implements Runnable
 {
-  public kej(AVRedBagMgr.TestFlag paramTestFlag) {}
+  public kej(VideoLayerUI.TouchListener paramTouchListener) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void run()
   {
-    paramMenuItem = this.a;
-    if (!this.a.b) {}
-    for (boolean bool = true;; bool = false)
+    if (this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      paramMenuItem.b = bool;
-      return true;
+      VideoLayerUI.TouchListener.a(this.a, true);
+      this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(1), Float.valueOf(VideoLayerUI.TouchListener.a(this.a)), Float.valueOf(VideoLayerUI.TouchListener.b(this.a)) });
+      if (QLog.isColorLevel()) {
+        QLog.e(this.a.a.jdField_a_of_type_JavaLangString, 2, "[childLock] trigger animation");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kej
  * JD-Core Version:    0.7.0.1
  */

@@ -30,8 +30,8 @@ public class QIMPtvTemplateViewPagerAdapter
   private Context jdField_a_of_type_AndroidContentContext;
   private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener;
   ProviderView.ProviderViewListener jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
   public HashMap a;
+  private List jdField_a_of_type_JavaUtilList;
   
   public QIMPtvTemplateViewPagerAdapter(Context paramContext, ProviderView.ProviderViewListener paramProviderViewListener, int paramInt)
   {
@@ -43,8 +43,8 @@ public class QIMPtvTemplateViewPagerAdapter
   
   public TemplateGroupItem a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt) && (paramInt >= 0)) {
-      return (TemplateGroupItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt) && (paramInt >= 0)) {
+      return (TemplateGroupItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
@@ -108,9 +108,9 @@ public class QIMPtvTemplateViewPagerAdapter
     return localTemplateGroupItem;
   }
   
-  public void a(ArrayList paramArrayList)
+  public void a(List paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -126,7 +126,7 @@ public class QIMPtvTemplateViewPagerAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
@@ -169,7 +169,7 @@ public class QIMPtvTemplateViewPagerAdapter
     }
     for (;;)
     {
-      localQIMPtvTemplateAdapter.a(a((TemplateGroupItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+      localQIMPtvTemplateAdapter.a(a((TemplateGroupItem)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
       localGridView.setAdapter(localQIMPtvTemplateAdapter);
       paramViewGroup.addView(localGridView);
       if (QLog.isColorLevel()) {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aiop;
+import aits;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.support.v4.util.MQLruCache;
@@ -77,7 +77,7 @@ public class BasePicDownloadProcessor
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqHighwayNetprobeWeakNetLearner = new WeakNetLearner(BaseApplication.getContext(), new aiop());
+    jdField_a_of_type_ComTencentMobileqqHighwayNetprobeWeakNetLearner = new WeakNetLearner(BaseApplication.getContext(), new aits());
     jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile(".*//[^/]*/[^/]*/(.*)/.*");
   }
   
@@ -885,7 +885,7 @@ public class BasePicDownloadProcessor
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.g == 0)
     {
       str = "&rf=aio";
-      str = "cldver=7.6.3.3565" + str;
+      str = "cldver=7.6.8.3615" + str;
       paramInt = paramString.indexOf("?");
       if (paramInt <= 0) {
         break label219;
@@ -1401,7 +1401,7 @@ public class BasePicDownloadProcessor
             this.jdField_f_of_type_Boolean = false;
             this.jdField_g_of_type_Boolean = true;
             if (paramNetResp.jdField_b_of_type_Int != -9527) {
-              break label811;
+              break label805;
             }
             localObject1 = (String)paramNetResp.jdField_a_of_type_JavaUtilHashMap.get(HttpMsg.jdField_f_of_type_JavaLangString);
             bool1 = bool2;
@@ -1433,8 +1433,14 @@ public class BasePicDownloadProcessor
               }
             }
             label674:
-            if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq != null) {
-              this.jdField_g_of_type_JavaLangString = ("encryptReqError=" + bool1 + ", ResErroCode:" + paramNetResp.jdField_b_of_type_Int + " ,erroDesc:" + paramNetResp.jdField_a_of_type_JavaLangString + " ,encryptUrl:" + ((HttpNetReq)this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq).jdField_a_of_type_JavaLangString + " ,ST:" + PkgTools.a(this.jdField_a_of_type_ArrayOfByte));
+            if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq != null)
+            {
+              if ("encryptReqError=" + bool1 + ", ResErroCode:" + paramNetResp.jdField_b_of_type_Int + " ,erroDesc:" + paramNetResp.jdField_a_of_type_JavaLangString + " ,encryptUrl:" + ((HttpNetReq)this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq).jdField_a_of_type_JavaLangString != null) {
+                break label822;
+              }
+              localObject1 = "null";
+              label754:
+              this.jdField_g_of_type_JavaLangString = ((String)localObject1);
             }
           }
           if (this.jdField_a_of_type_Boolean)
@@ -1448,13 +1454,16 @@ public class BasePicDownloadProcessor
             {
               b(true);
               break;
-              label811:
+              label805:
               bool1 = bool2;
               if (paramNetResp.jdField_b_of_type_Int != 9058) {
                 break label674;
               }
               bool1 = true;
               break label674;
+              label822:
+              localObject1 = ((HttpNetReq)this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq).jdField_a_of_type_JavaLangString + " ,ST:" + PkgTools.a(this.jdField_a_of_type_ArrayOfByte);
+              break label754;
               if ((this instanceof C2CPicDownloadProcessor)) {
                 FMTSrvAddrProvider.a().a().a(1);
               }
@@ -1820,7 +1829,7 @@ public class BasePicDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BasePicDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

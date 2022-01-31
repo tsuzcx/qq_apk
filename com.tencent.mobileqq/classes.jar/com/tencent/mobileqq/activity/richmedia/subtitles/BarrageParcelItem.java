@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity.richmedia.subtitles;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import xvn;
+import ybw;
 
 public class BarrageParcelItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new xvn();
+  public static final Parcelable.Creator CREATOR = new ybw();
   public float a;
   public int a;
   public int b;

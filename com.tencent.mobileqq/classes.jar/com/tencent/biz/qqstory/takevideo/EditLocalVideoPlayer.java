@@ -22,9 +22,9 @@ import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndLi
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.List;
-import ocz;
-import oda;
-import odb;
+import oho;
+import ohp;
+import ohq;
 
 @TargetApi(14)
 public class EditLocalVideoPlayer
@@ -47,11 +47,11 @@ public class EditLocalVideoPlayer
     super(paramEditVideoPartManager);
   }
   
-  public void L_() {}
+  public void M_() {}
   
-  public void M_()
+  public void N_()
   {
-    super.M_();
+    super.N_();
   }
   
   public long a(int paramInt)
@@ -124,11 +124,11 @@ public class EditLocalVideoPlayer
     }
     this.jdField_a_of_type_Int = ((EditLocalVideoSource)localObject).jdField_a_of_type_Int;
     this.jdField_b_of_type_Int = ((EditLocalVideoSource)localObject).jdField_b_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView = ((TrimTextureVideoView)a(2131364407));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView = ((TrimTextureVideoView)a(2131364432));
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364452));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364477));
     this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364349));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364374));
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     if (QQStoryFlowCallback.a != null)
     {
@@ -148,7 +148,7 @@ public class EditLocalVideoPlayer
       localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a("extra_upload_temp_directory");
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator = new MediaCodecThumbnailGenerator();
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator.a();
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator.a(this.jdField_a_of_type_JavaLangString, (String)localObject, this.jdField_b_of_type_Boolean, 480, k, 10000, n, true, new ocz(this), new oda(this, l, m));
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoLocalmediaDemosMediaCodecThumbnailGenerator.a(this.jdField_a_of_type_JavaLangString, (String)localObject, this.jdField_b_of_type_Boolean, 480, k, 10000, n, true, new oho(this), new ohp(this, l, m));
       StoryReportor.a("video_edit", "edit_local", 0, 0, new String[0]);
       a(EditVideoPlayerExport.class, this);
       return;
@@ -253,14 +253,14 @@ public class EditLocalVideoPlayer
   public void a_(IMediaPlayer paramIMediaPlayer)
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new odb(this), 300L);
+      this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new ohq(this), 300L);
     }
     SLog.a("Q.qqstory.record.EditLocalVideoPlayer", "onPrepared %s", this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
     this.jdField_a_of_type_Boolean = true;
     b(true);
   }
   
-  public void aa_() {}
+  public void ac_() {}
   
   public void b(int paramInt) {}
   

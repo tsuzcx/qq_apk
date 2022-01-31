@@ -1,23 +1,39 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.now.enter.NowHongbaoPushManager;
+import com.tencent.mobileqq.now.enter.NowHongbaoPushManager.Callback;
 
 public class agep
-  extends AnimatorListenerAdapter
+  implements Handler.Callback
 {
-  public agep(ARTipsManager paramARTipsManager) {}
+  public agep(NowHongbaoPushManager paramNowHongbaoPushManager) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (ARTipsManager.a(this.a) != null) {
-      ARTipsManager.a(this.a).setVisibility(0);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (NowHongbaoPushManager.a(this.a) == 0)
+      {
+        NowHongbaoPushManager.a(this.a);
+      }
+      else
+      {
+        NowHongbaoPushManager.b(this.a);
+        continue;
+        paramMessage = (NowHongbaoPushManager.Callback)paramMessage.obj;
+        NowHongbaoPushManager.a(this.a, paramMessage);
+        this.a.c();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agep
  * JD-Core Version:    0.7.0.1
  */

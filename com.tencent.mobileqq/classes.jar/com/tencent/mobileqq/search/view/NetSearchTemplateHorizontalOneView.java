@@ -9,7 +9,7 @@ public class NetSearchTemplateHorizontalOneView
   
   public NetSearchTemplateHorizontalOneView(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramViewGroup, 2130969399);
+    super(paramViewGroup, 2130969397);
     a(a());
   }
 }

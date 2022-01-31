@@ -1,27 +1,44 @@
-import android.view.View;
-import android.widget.ExpandableListAdapter;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.StatisticTroopAssist;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnChildClickListener;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class tvt
-  implements ExpandableListView.OnChildClickListener
+  extends RecyclerView.Adapter
 {
-  public tvt(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
+  public tvt(ScoreQAVFragment paramScoreQAVFragment) {}
+  
+  public tvu a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (((TroopMessageSettingAdapter)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
-      return true;
+    return new tvu(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2130969349, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener);
+  }
+  
+  public void a(ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
+  }
+  
+  public void a(tvu paramtvu, int paramInt)
+  {
+    paramtvu.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
+    {
+      paramtvu.a.setSelected(true);
+      return;
     }
-    StatisticTroopAssist.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
-    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
-    this.a.a(paramExpandableListView);
-    return true;
+    paramtvu.a.setSelected(false);
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

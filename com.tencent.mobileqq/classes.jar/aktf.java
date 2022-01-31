@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webprocess.PreloadService.PreloadImpl;
 
 public class aktf
   implements Runnable
 {
-  public aktf(ContainerView paramContainerView, int paramInt) {}
+  public aktf(PreloadService.PreloadImpl paramPreloadImpl, AppInterface paramAppInterface) {}
   
   public void run()
   {
-    ContainerView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView).smoothScrollTo(0, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqWebprocessPreloadService$PreloadImpl.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
   }
 }
 

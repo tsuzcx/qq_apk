@@ -1,14 +1,16 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.File;
 
-public class vky
+class vky
   implements Runnable
 {
-  public vky(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  vky(vkv paramvkv, MessageForShortVideo paramMessageForShortVideo) {}
   
   public void run()
   {
-    HapticManager.a().a();
+    FileUtils.a(new File(this.jdField_a_of_type_Vkv.b), new File(ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4")));
   }
 }
 

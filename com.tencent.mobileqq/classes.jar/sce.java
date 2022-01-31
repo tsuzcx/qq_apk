@@ -1,54 +1,71 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.utils.GVideoGrayConfig;
+import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
+import com.tencent.av.utils.GVideoGrayConfig.Record;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.huayang.Monitor;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.Map;
 
-public class sce
-  extends CardObserver
+public final class sce
+  implements GVideoGrayConfig.GVideoGrayConfigListener
 {
-  public sce(ChatSettingActivity paramChatSettingActivity) {}
+  public sce(QQProgressDialog paramQQProgressDialog, Map paramMap, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    try
     {
-      if ((paramBoolean) && (paramObject != null))
-      {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a).equals(paramObject.uin)))
-        {
-          String str = ContactUtils.a(this.a.app, ChatSettingActivity.b(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
-            ChatSettingActivity.c(this.a, str);
-          }
-        }
-        if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.b(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
-        }
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       }
-      return;
+      label17:
+      StoryReportor.a("group_video", "startGroupVideo", paramInt2, paramInt1, new String[] { (String)this.jdField_a_of_type_JavaUtilMap.get("from") });
+      if (paramInt2 == 1000)
+      {
+        switch (paramInt1)
+        {
+        default: 
+          return;
+        case 0: 
+          Monitor.b("3236165");
+          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, true, null, this.jdField_a_of_type_JavaUtilMap);
+          return;
+        case 1: 
+          Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+          localIntent.putExtra("url", paramRecord.jdField_a_of_type_JavaLangString);
+          if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+            localIntent.addFlags(268435456);
+          }
+          this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+          return;
+        case 2: 
+          Monitor.b("3236166");
+          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, true, this.jdField_a_of_type_JavaUtilMap);
+          return;
+        case 3: 
+          GVideoGrayConfig.a(this.jdField_a_of_type_AndroidContentContext, paramRecord.b, paramRecord.c, new scf(this));
+          return;
+        }
+        GVideoGrayConfig.a(this.jdField_a_of_type_AndroidContentContext, paramRecord.b, paramRecord.c, new scg(this));
+        return;
+      }
+      if (paramInt2 == 1002) {}
+      for (paramRecord = "操作超时，请重试";; paramRecord = "操作失败，请重试")
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramRecord, 0).a();
+        return;
+      }
     }
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.b != null) && (paramBoolean2 != this.a.b.a()))
+    catch (Throwable localThrowable)
     {
-      this.a.b.setOnCheckedChangeListener(null);
-      this.a.b.setChecked(paramBoolean2);
-      this.a.b.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.b != null) && (paramBoolean2 != this.a.b.a()))
-    {
-      this.a.b.setOnCheckedChangeListener(null);
-      this.a.b.setChecked(paramBoolean2);
-      this.a.b.setOnCheckedChangeListener(this.a);
+      break label17;
     }
   }
 }

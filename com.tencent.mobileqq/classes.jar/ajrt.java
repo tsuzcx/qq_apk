@@ -1,65 +1,95 @@
-import android.graphics.BitmapFactory;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.transfile.NearbyImgDownloader;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadCallback;
+import mqq.os.MqqHandler;
 
-class ajrt
-  implements Runnable
+public class ajrt
+  implements TroopHomeworkHelper.UploadCallback
 {
-  ajrt(ajrs paramajrs, Setting paramSetting) {}
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   
-  public void run()
+  public ajrt(ImageInfo.UploadMediaSegment paramUploadMediaSegment)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataSetting == null) || (this.jdField_a_of_type_ComTencentMobileqqDataSetting.bHeadType == 0))
+    switch (ImageInfo.UploadMediaSegment.a(paramUploadMediaSegment))
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataSetting == null) && (!this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.g))
-      {
-        this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.g = true;
-        if (!this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a()) {
-          this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b, 4, true);
-        }
-      }
-      if (this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-      try
-      {
-        this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130840543);
-        this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.b(this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.f, this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c, this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c);
-        if (this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap != null)
-        {
-          this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageBitmap(this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap);
-          return;
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(AvatarWallAdapter.jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(localOutOfMemoryError));
-          }
-        }
-        this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageResource(2130840543);
-        return;
-      }
-    }
-    try
-    {
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(NearbyImgDownloader.a(this.jdField_a_of_type_Ajrs.jdField_a_of_type_JavaLangString));
-      localURLDrawable.setTag(URLDrawableDecodeHandler.a(this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c, this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c, this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.f));
-      localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.b);
-      this.jdField_a_of_type_Ajrs.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageDrawable(localURLDrawable);
+    default: 
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Float = 1.0F;
+      return;
+    case 1: 
+      this.jdField_a_of_type_Int = 10;
+      this.jdField_a_of_type_Float = 0.85F;
       return;
     }
-    catch (MalformedURLException localMalformedURLException) {}
+    this.jdField_a_of_type_Int = 95;
+    this.jdField_a_of_type_Float = 0.05F;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.isCanceled())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress cancel. progress=", Integer.valueOf(paramInt) });
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.onCancel();
+    }
+    long l;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onProgress. mediaType=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment)), ", info hash=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).hashCode()), ", info status=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).g), ", progress=", Integer.valueOf(paramInt) });
+      }
+      l = System.currentTimeMillis();
+      paramInt = this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float * paramInt);
+    } while ((paramInt >= 100) || (l - this.jdField_a_of_type_Long <= 500L));
+    this.jdField_a_of_type_Long = l;
+    ThreadManager.getUIHandler().post(new ajrv(this, paramInt));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.isCanceled())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.onCancel();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadMediaSegment", 2, new Object[] { "MediaUploadCallback onComplete. mediaType=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment)), ", info hash=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).hashCode()), ", info status=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).g) });
+    }
+    switch (ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment))
+    {
+    }
+    while (!this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.isCanceled())
+    {
+      ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment));
+      return;
+      VideoInfo localVideoInfo = (VideoInfo)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment);
+      localVideoInfo.e = paramString;
+      ThreadManager.getUIHandler().post(new ajru(this, localVideoInfo));
+      continue;
+      ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).b = paramString;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment.onCancel();
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(getClass().getSimpleName(), 2, new Object[] { "upload onError. errorCode=", Integer.valueOf(paramInt), ", info type=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment).b()), ", mediaType=", Integer.valueOf(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment)) });
+    }
+    if (ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment) == 2)
+    {
+      ImageInfo.UploadMediaSegment.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment));
+      return;
+    }
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment, new Error("-3"));
   }
 }
 

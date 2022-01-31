@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.view.View;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class xsd
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  
-  public xsd(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramNewFlowCameraActivity.a.jdField_a_of_type_Int;
-  }
+  public xsd(LoginView paramLoginView) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.I();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.J();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.K();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.L();
-    }
+    int[] arrayOfInt = new int[2];
+    this.a.b.getLocationInWindow(arrayOfInt);
+    LoginView localLoginView = this.a;
+    int i = this.a.b.getHeight();
+    LoginView.a(localLoginView, arrayOfInt[1] + i);
   }
 }
 

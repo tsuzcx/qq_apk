@@ -1,39 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 
-public final class lks
-  implements Runnable
+public class lks
+  extends ExecuteBinResponseCallback
 {
-  public lks(QQAppInterface paramQQAppInterface) {}
+  public lks(ReadInJoyVideoCompositeManager paramReadInJoyVideoCompositeManager, PublishVideoEntry paramPublishVideoEntry, String paramString) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    if ((this.a == null) || (!this.a.isLogin())) {
-      return;
+    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString + ".doodle.mp4");
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, "compositeVideo->combineDoodle: " + paramString);
     }
-    if (NetworkUtil.a(this.a.getApp()))
-    {
-      ReadInJoyUtils.e(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyUtils", 2, "handConversationToShow is wifi");
-      }
-    }
-    if (!ReadInJoyHelper.s(this.a))
-    {
-      ReadInJoyUtils.b(this.a);
-      ReadInJoyHelper.e(this.a);
-    }
-    if (ReadInJoyHelper.o(this.a))
-    {
-      ReadInJoyHelper.k(this.a, false);
-      ((KandianMergeManager)this.a.getManager(161)).i();
-      return;
-    }
-    ((KandianMergeManager)this.a.getManager(161)).h();
+    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 999, "本地视频合成涂鸦是出错！");
   }
 }
 

@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a030c" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@null" android:numColumns="4"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02233d" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12cd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.dating.widget.InputBar android:gravity="center" android:orientation="horizontal" android:id="@id/inputBar" android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a12cd" android:layout_alignWithParentIfMissing="true">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06ba" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+        <ImageButton android:id="@id/emo_btn" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021bc1" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b0bc8" />
+        <com.tencent.widget.XEditTextEx android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c058f" android:layout_gravity="center_vertical" android:id="@id/input" android:background="@drawable/skin_aio_input_bg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:hint="添加评论..." android:maxLength="50" android:layout_weight="1.0" android:inputType="textMultiLine" android:textSelectHandle="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022261" />
+        <Button android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:id="@id/send_btn" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200f7" android:layout_width="59.0dip" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00e5" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b18ad" />
+    </com.tencent.mobileqq.dating.widget.InputBar>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12ce" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/inputBar" />
+    <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c02ce" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignBottom="@id/inputBar" />
+    <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c02ce" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignTop="@id/inputBar" />
+</RelativeLayout>

@@ -1,28 +1,55 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class mrh
-  implements TextWatcher
+class mrh
+  extends PublicAccountObserver
 {
-  public mrh(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  mrh(mre parammre) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
-    {
-      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
-      return;
+    mre.a(this.a, true);
+    Context localContext = this.a.jdField_a_of_type_AndroidViewView.getContext();
+    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
+      paramString = "2";
     }
-    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
+    for (;;)
+    {
+      paramString = ReadInJoyUtils.a(localContext, localArticleInfo, 0, paramString);
+      int i;
+      if (paramBoolean) {
+        i = 1;
+      }
+      try
+      {
+        for (;;)
+        {
+          paramString.put("is_done", i);
+          ReportUtil.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800898B", paramString.toString());
+          return;
+          paramString = "1";
+          break;
+          i = 2;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

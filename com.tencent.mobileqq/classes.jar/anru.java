@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anru
-  implements EditVideoPoiPickerCallback
+  implements Runnable
 {
-  public anru(EditProviderPart paramEditProviderPart) {}
+  public anru(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void a() {}
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "onSelectLocation " + paramTroopBarPOI);
-    }
-    EditProviderPart.a(this.a).setLocation(paramTroopBarPOI);
+    this.a.D();
   }
 }
 

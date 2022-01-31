@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.musicgene;
 
-import aeko;
-import aekt;
-import aeku;
-import aekv;
-import aekw;
-import aeky;
-import aekz;
+import aesy;
+import aetd;
+import aete;
+import aetf;
+import aetg;
+import aeti;
+import aetj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -54,15 +54,15 @@ public class MusicPlayerActivity
   private static final HashMap jdField_b_of_type_JavaUtilHashMap = new HashMap();
   private static final HashMap jdField_c_of_type_JavaUtilHashMap = new HashMap();
   private static final HashMap jdField_d_of_type_JavaUtilHashMap = new HashMap();
-  private final aekw jdField_a_of_type_Aekw = new aekw(this);
-  private final ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new aekt(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aeko(this);
+  private final aetg jdField_a_of_type_Aetg = new aetg(this);
+  private final ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new aetd(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aesy(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private Lyric jdField_a_of_type_ComTencentMobileqqLyricDataLyric;
   private LyricViewController jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController;
   public LyricViewDetail a;
-  private final IQQPlayerCallback.Stub jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub = new aeku(this);
+  private final IQQPlayerCallback.Stub jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerCallback$Stub = new aete(this);
   private IQQPlayerService jdField_a_of_type_ComTencentMobileqqMusicIQQPlayerService;
   private final MusicPlayerActivity.MusicPlayerObserver jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$MusicPlayerObserver = new MusicPlayerActivity.MusicPlayerObserver(this);
   private MusicPlayerHandler jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerHandler;
@@ -125,9 +125,9 @@ public class MusicPlayerActivity
           paramSongInfo = paramIQQPlayerService.getString("KEY_SOURCE_NAME");
         }
         return paramSongInfo;
-        str1 = getString(2131435107);
+        str1 = getString(2131435123);
         continue;
-        str1 = getString(2131438483);
+        str1 = getString(2131438503);
       }
       catch (RemoteException paramIQQPlayerService)
       {
@@ -241,15 +241,15 @@ public class MusicPlayerActivity
     }
   }
   
-  private void a(aekz paramaekz, String paramString)
+  private void a(aetj paramaetj, String paramString)
   {
-    aeky localaeky = new aeky(paramaekz.jdField_a_of_type_JavaLangString, paramaekz.b, paramaekz.e, paramaekz.d, paramaekz.c, "http://qzonestyle.gtimg.cn/ac/qzone/applogo/16/308/100497308_16.gif");
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Aekw, 51);
+    aeti localaeti = new aeti(paramaetj.jdField_a_of_type_JavaLangString, paramaetj.b, paramaetj.e, paramaetj.d, paramaetj.c, "http://qzonestyle.gtimg.cn/ac/qzone/applogo/16/308/100497308_16.gif");
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Aetg, 51);
     localMessage.arg1 = 1;
-    localMessage.obj = localaeky;
+    localMessage.obj = localaeti;
     localMessage.sendToTarget();
-    Message.obtain(this.jdField_a_of_type_Aekw, 53).sendToTarget();
-    a(paramaekz.jdField_a_of_type_JavaLangString, paramaekz.b, paramaekz.e, paramString, paramaekz.jdField_a_of_type_Boolean, true);
+    Message.obtain(this.jdField_a_of_type_Aetg, 53).sendToTarget();
+    a(paramaetj.jdField_a_of_type_JavaLangString, paramaetj.b, paramaetj.e, paramString, paramaetj.jdField_a_of_type_Boolean, true);
   }
   
   private void a(String paramString, LyricViewDetail paramLyricViewDetail)
@@ -291,7 +291,7 @@ public class MusicPlayerActivity
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Message localMessage = Message.obtain(this.jdField_a_of_type_Aekw, 52);
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Aetg, 52);
     Bundle localBundle = new Bundle();
     localBundle.putString("KEY_SONG_NAME", paramString1);
     localBundle.putString("KEY_SINGER_NAME", paramString2);
@@ -332,14 +332,14 @@ public class MusicPlayerActivity
     localIntent.putExtra("req_share_id", 1101244924L);
     localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
     localIntent.putExtra("image_url_remote", paramString4);
-    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430117, new Object[] { str }));
+    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430119, new Object[] { str }));
     localIntent.putExtra("audio_url", paramString5);
     localIntent.putExtra("req_type", 2);
     localIntent.putExtra("openerProc", MobileQQ.getMobileQQ().getProcessName());
     if (this.app != null)
     {
-      localIntent.putExtra("struct_share_key_source_name", getString(2131433004));
-      Share.a(this.app, this, this.app.getAccount(), 1101244924L, 3000L, new aekv(this, localIntent));
+      localIntent.putExtra("struct_share_key_source_name", getString(2131433018));
+      Share.a(this.app, this, this.app.getAccount(), 1101244924L, 3000L, new aetf(this, localIntent));
     }
   }
   
@@ -349,25 +349,25 @@ public class MusicPlayerActivity
     boolean bool = super.doOnCreate(paramBundle);
     try
     {
-      setContentView(2130969107);
+      setContentView(2130969110);
       bindService(new Intent(this, QQPlayerService.class), this.jdField_a_of_type_AndroidContentServiceConnection, 33);
-      paramBundle = findViewById(2131365184);
-      View localView = findViewById(2131365183);
+      paramBundle = findViewById(2131365211);
+      View localView = findViewById(2131365210);
       int i = a(this).x;
       paramBundle.getLayoutParams().height = i;
       localView.getLayoutParams().height = i;
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365189));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365194));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365192));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365191));
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365193));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365216));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365221));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365219));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365218));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365220));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerHandler = ((MusicPlayerHandler)this.app.a(92));
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail = ((LyricViewDetail)findViewById(2131365190));
+      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail = ((LyricViewDetail)findViewById(2131365217));
       this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController = new LyricViewController(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewDetail);
-      findViewById(2131365186).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      findViewById(2131365213).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365187));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365214));
       this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       addObserver(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity$MusicPlayerObserver);

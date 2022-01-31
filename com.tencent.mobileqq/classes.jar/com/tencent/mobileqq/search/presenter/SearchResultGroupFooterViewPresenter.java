@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahuj;
+import ahza;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
@@ -29,7 +29,7 @@ public class SearchResultGroupFooterViewPresenter
       }
       paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetTextView.setText(paramIModel.a);
-      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ahuj(this, paramIModel));
+      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ahza(this, paramIModel));
       bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
       localResources = paramISearchResultGroupView.a().getResources();
       if (TextUtils.isEmpty(paramIModel.b)) {
@@ -38,7 +38,7 @@ public class SearchResultGroupFooterViewPresenter
       if (!bool) {
         break label135;
       }
-      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838580);
+      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838586);
     }
     for (;;)
     {
@@ -51,7 +51,7 @@ public class SearchResultGroupFooterViewPresenter
       paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       break;
       label135:
-      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838579);
+      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838585);
     }
     label147:
     if (bool) {

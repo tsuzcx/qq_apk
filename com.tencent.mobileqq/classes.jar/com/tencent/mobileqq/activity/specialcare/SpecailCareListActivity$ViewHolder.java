@@ -26,6 +26,7 @@ public class SpecailCareListActivity$ViewHolder
   public ImageView h;
   public ImageView i;
   public ImageView j;
+  public ImageView k;
 }
 
 

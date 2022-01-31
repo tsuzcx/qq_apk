@@ -1,81 +1,63 @@
-import com.tencent.mobileqq.hotpic.VideoItemEventManager;
-import com.tencent.mobileqq.hotpic.VideoItemEventManager.onVideoItemEventListener;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import cooperation.qqfav.QfavHelper;
+import cooperation.qqfav.QfavReport;
 
 public class adsq
-  implements INetInfoHandler
+  implements DialogInterface.OnClickListener
 {
-  public adsq(VideoItemEventManager paramVideoItemEventManager) {}
+  public adsq(ForwardBaseOption paramForwardBaseOption) {}
   
-  public void onNetMobile2None()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = VideoItemEventManager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((VideoItemEventManager.onVideoItemEventListener)localIterator.next()).a(5);
+    switch (paramInt)
+    {
+    default: 
+    case -2: 
+      do
+      {
+        return;
+        if (this.a.c) {
+          ReportCenter.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
+        }
+        this.a.a(true);
+        this.a.jdField_a_of_type_AndroidAppActivity.setResult(1);
+        this.a.jdField_a_of_type_AndroidAppActivity.finish();
+      } while (!QLog.isColorLevel());
+      QLog.i("ForwardOption.ForwardBaseOption", 2, "-->showQfavResultDialog--onClick--back call");
+      return;
+    }
+    if (this.a.c) {
+      ReportCenter.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false);
     }
     if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetMobile2None onConnClose");
+      QLog.i("ForwardOption.ForwardBaseOption", 2, "-->showQfavResultDialog--onClick--send call");
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    paramString = VideoItemEventManager.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((VideoItemEventManager.onVideoItemEventListener)paramString.next()).a(4);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "shareToQQ" })));
+    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
+    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("is_share_flag", true);
+    if (this.a.jdField_a_of_type_Long > 0L) {
+      localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetMobile2Wifi onConnOK");
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    paramString = VideoItemEventManager.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((VideoItemEventManager.onVideoItemEventListener)paramString.next()).a(3);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetNone2Mobile onConnOK");
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    paramString = VideoItemEventManager.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((VideoItemEventManager.onVideoItemEventListener)paramString.next()).a(2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetNone2Wifi onConnOK");
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    paramString = VideoItemEventManager.a(this.a).iterator();
-    while (paramString.hasNext()) {
-      ((VideoItemEventManager.onVideoItemEventListener)paramString.next()).a(1);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    Iterator localIterator = VideoItemEventManager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((VideoItemEventManager.onVideoItemEventListener)localIterator.next()).a(0);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoItemEventManager", 2, "onNetWifi2None onConnClose");
-    }
+    QfavHelper.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
+    QfavReport.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 5, 0);
+    this.a.jdField_a_of_type_AndroidAppActivity.setResult(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsq
  * JD-Core Version:    0.7.0.1
  */

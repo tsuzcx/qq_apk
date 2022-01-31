@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.pic.PicBusiManager;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.PicReq;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class aglf
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aglf(PicPreDownloader paramPicPreDownloader, PicReq paramPicReq) {}
+  public aglf(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
-  {
-    PicBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountSearchActivity;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class wti
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public wti(BindNumberActivity paramBindNumberActivity) {}
+  public wti(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    PublicAccountSearchActivity.a(this.a.a, null);
   }
 }
 

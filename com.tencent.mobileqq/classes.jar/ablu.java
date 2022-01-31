@@ -1,25 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.View;
-import com.tencent.mobileqq.bubble.BubbleNewAIOAnim;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.config.ARMapConfig;
 
-public class ablu
-  extends AnimatorListenerAdapter
+public final class ablu
+  implements Parcelable.Creator
 {
-  public ablu(BubbleNewAIOAnim paramBubbleNewAIOAnim, ObjectAnimator paramObjectAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public ARMapConfig a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+    return new ARMapConfig(paramParcel);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public ARMapConfig[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c != null) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    return new ARMapConfig[paramInt];
   }
 }
 

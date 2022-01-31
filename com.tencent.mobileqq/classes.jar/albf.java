@@ -1,52 +1,66 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
 
-public class albf
-  implements Runnable
+public final class albf
+  implements AnyScaleTypeImageView.DisplayRuleDef
 {
-  public albf(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
-  
-  public void run()
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if (this.a.a == null) {}
+    float f1 = 0.0F;
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
+    }
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if (i == j)
+    {
+      f1 = paramInt2 / j;
+      localMatrix.setScale(f1, f1);
+      return localMatrix;
+    }
+    float f2;
+    if ((i <= paramInt1) || (j <= paramInt2))
+    {
+      f2 = paramInt1 - i;
+      f1 = paramInt2 - j;
+      if (f1 < 0.0F) {}
+      for (f1 *= 0.1F;; f1 *= 0.5F)
+      {
+        localMatrix.postTranslate((int)(f2 * 0.5F + 0.5F), (int)(f1 + 0.5F));
+        break;
+      }
+    }
+    float f3;
+    if (i * paramInt2 > paramInt1 * j)
+    {
+      f3 = paramInt2 / j;
+      f2 = (paramInt1 - i * f3) * 0.5F;
+    }
     for (;;)
     {
-      return;
-      Object localObject2 = null;
-      try
+      localMatrix.setScale(f3, f3);
+      localMatrix.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
+      break;
+      f3 = paramInt1 / i;
+      f1 = (paramInt2 - j) * f3;
+      if (f1 < 0.0F)
       {
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.a.a, 2130840643);
-        if (localBitmap == null) {
-          continue;
-        }
-        localBitmap = AuthorityUtil.a(this.a, localBitmap, 50, 50);
-        if (localBitmap == null) {
-          continue;
-        }
-        this.a.runOnUiThread(new albg(this, localBitmap));
-        return;
+        f2 = 0.0F;
+        f1 *= 0.1F;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      else
       {
-        for (;;)
-        {
-          Object localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("BindGroupConfirmActivity", 2, "initUI decodeResource has OutOfMemoryError!");
-            localObject1 = localObject2;
-          }
-        }
+        f2 = 0.0F;
+        f1 *= 0.5F;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     albf
  * JD-Core Version:    0.7.0.1
  */

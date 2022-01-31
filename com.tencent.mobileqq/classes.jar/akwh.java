@@ -1,24 +1,25 @@
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface.OnClickListener;
+import android.text.ClipboardManager;
+import android.widget.Toast;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentContext;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper;
 
 public class akwh
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public akwh(QQProgressDialog paramQQProgressDialog, boolean paramBoolean) {}
+  public akwh(SwiftBrowserDebugHelper paramSwiftBrowserDebugHelper, String paramString) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 84) || (paramInt == 4)) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return false;
+    ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserDebugHelper.a.a().getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+    Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserDebugHelper.a.a().getApplicationContext(), "复制成功", 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akwh
  * JD-Core Version:    0.7.0.1
  */

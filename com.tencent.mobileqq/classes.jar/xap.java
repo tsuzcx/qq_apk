@@ -1,15 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
+import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class xap
-  implements Runnable
+  extends ContactBindObserver
 {
-  public xap(QWalletCommonServlet paramQWalletCommonServlet, BusinessObserver paramBusinessObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public xap(PhoneInnerFrame paramPhoneInnerFrame) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    if (this.a.a)
+    {
+      this.a.b().a().unRegistObserver(this);
+      this.a.g();
+    }
   }
 }
 

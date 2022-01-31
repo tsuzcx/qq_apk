@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 import dalvik.system.DexClassLoader;
 import java.util.HashMap;
 import java.util.Map;
-import jeq;
+import jgs;
 import mqq.app.MobileQQ;
 
 public class GCameraAvailabilityMonitor
@@ -17,7 +17,7 @@ public class GCameraAvailabilityMonitor
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private Object jdField_a_of_type_JavaLangObject;
   private Map jdField_a_of_type_JavaUtilMap;
-  private jeq jdField_a_of_type_Jeq;
+  private jgs jdField_a_of_type_Jgs;
   
   public GCameraAvailabilityMonitor(VideoAppInterface paramVideoAppInterface)
   {
@@ -47,15 +47,15 @@ public class GCameraAvailabilityMonitor
     if (this.jdField_a_of_type_JavaUtilMap == null) {
       this.jdField_a_of_type_JavaUtilMap = new HashMap();
     }
-    if (this.jdField_a_of_type_Jeq == null)
+    if (this.jdField_a_of_type_Jgs == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("GCameraAvailabilityMonitor", 2, "register camera availability change receiver");
       }
-      this.jdField_a_of_type_Jeq = new jeq(this);
+      this.jdField_a_of_type_Jgs = new jgs(this);
       localObject = new IntentFilter();
       ((IntentFilter)localObject).addAction("com.tencent.mobileqq.qav.camera.availability");
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Jeq, (IntentFilter)localObject);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Jgs, (IntentFilter)localObject);
     }
     if (QLog.isColorLevel()) {
       QLog.d("GCameraAvailabilityMonitor", 2, "register camera availability change callback");
@@ -87,15 +87,15 @@ public class GCameraAvailabilityMonitor
     for (;;)
     {
       return;
-      if (this.jdField_a_of_type_Jeq != null) {
+      if (this.jdField_a_of_type_Jgs != null) {
         if (QLog.isColorLevel()) {
           QLog.d("GCameraAvailabilityMonitor", 2, "UnRegister camera availability change receiver");
         }
       }
       try
       {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Jeq);
-        this.jdField_a_of_type_Jeq = null;
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Jgs);
+        this.jdField_a_of_type_Jgs = null;
         if (QLog.isColorLevel()) {
           QLog.d("GCameraAvailabilityMonitor", 2, "UnRegister camera availability change callback");
         }
@@ -119,7 +119,7 @@ public class GCameraAvailabilityMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.GCameraAvailabilityMonitor
  * JD-Core Version:    0.7.0.1
  */

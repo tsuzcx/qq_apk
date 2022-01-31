@@ -1,19 +1,18 @@
-import com.tencent.av.opengl.effects.FilterProcessRender;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
 public class jjr
+  implements FileFilter
 {
-  public int a;
-  public int b;
-  
-  public jjr(FilterProcessRender paramFilterProcessRender, int paramInt1, int paramInt2)
+  public boolean accept(File paramFile)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jjr
  * JD-Core Version:    0.7.0.1
  */

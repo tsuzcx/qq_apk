@@ -1,146 +1,45 @@
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageRoamConstants;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
 
 public class zom
-  extends TroopObserver
+  implements Runnable
 {
-  public zom(TroopManager paramTroopManager) {}
+  public zom(MessageRoamManager paramMessageRoamManager) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void run()
   {
-    switch (paramInt1)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg start...");
     }
-    Object localObject2;
-    do
+    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46)).a(1);
+    if ((localDownloaderInterface != null) && (localDownloaderInterface.a(MessageRoamConstants.a) == null))
     {
-      return;
-      this.a.f(paramString);
-      synchronized (this.a)
+      Object localObject = new File(MessageRoamConstants.b);
+      DownloadTask localDownloadTask = new DownloadTask(MessageRoamConstants.a, (File)localObject);
+      if (((File)localObject).exists())
       {
-        if (TroopManager.a(this.a) != null)
+        localObject = Long.valueOf(((File)localObject).lastModified());
+        localDownloadTask.i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
+        if (((Long)localObject).longValue() != localDownloadTask.i)
         {
-          localObject2 = TroopManager.a(this.a).iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            if (((TroopInfo)((Iterator)localObject2).next()).troopuin.equals(paramString)) {
-              ((Iterator)localObject2).remove();
-            }
+          localDownloadTask.k = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localDownloadTask.i);
           }
         }
-        return;
       }
-      ??? = new ArrayList();
-      ((ArrayList)???).add(paramString);
-      this.a.b((ArrayList)???);
-      return;
-      localObject2 = this.a.a(paramString);
-    } while ((localObject2 == null) || (!TroopManager.a(this.a, (TroopInfo)localObject2, true)));
-    TroopHandler localTroopHandler = (TroopHandler)this.a.a.a(20);
-    for (;;)
-    {
-      synchronized (this.a)
-      {
-        if (TroopManager.a(this.a) == null)
-        {
-          TroopManager.a(this.a, new ArrayList());
-          TroopManager.a(this.a).add(localObject2);
-          localTroopHandler.a(true, paramString, ((TroopInfo)localObject2).troopcode, 9);
-          return;
-        }
-      }
-      TroopManager.a(this.a).add(localObject2);
-    }
-  }
-  
-  protected void a(String arg1, boolean paramBoolean, List paramList, int paramInt, long paramLong)
-  {
-    boolean bool;
-    ArrayList localArrayList;
-    if (QLog.isColorLevel())
-    {
-      paramList = new StringBuilder().append("onUpdateTroopGetMemberList(memberLimit), troopUin:").append(???).append(", mGetTroopMemberListTroops == null:");
-      if (TroopManager.a(this.a) == null)
-      {
-        bool = true;
-        QLog.i("Q.contacttab.troop", 2, bool);
-      }
-    }
-    else
-    {
-      localArrayList = new ArrayList();
-      localArrayList.add(???);
-      if (TroopManager.a(this.a) != null) {
-        break label98;
-      }
-      this.a.b(localArrayList);
-    }
-    label98:
-    TroopInfo localTroopInfo;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          bool = false;
-          break;
-        } while (TroopManager.a(this.a).size() <= 0);
-        localTroopInfo = (TroopInfo)TroopManager.a(this.a).get(0);
-      } while (!localTroopInfo.troopuin.equals(???));
-      paramList = (TroopHandler)this.a.a.a(20);
-      if ((paramBoolean) || (TroopManager.a(this.a) >= 3)) {
-        break label237;
-      }
-      paramList.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 4);
-    } while (!QLog.isColorLevel());
-    QLog.w("Q.contacttab.troop", 2, "getTroopsMemberList(memberLimit), failed, retry mRetryGetTroopMemberListCount:" + TroopManager.b(this.a) + ", troopUin" + localTroopInfo.troopuin);
-    return;
-    label237:
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.contacttab.troop", 2, "notifyTroopMembersUpdate, troopUin:" + ???);
-    }
-    if (paramBoolean) {
-      this.a.b(localArrayList);
-    }
-    synchronized (this.a)
-    {
-      TroopManager.a(this.a).remove(0);
-      if (TroopManager.a(this.a).size() > 0)
-      {
-        ??? = (TroopInfo)TroopManager.a(this.a).get(0);
-        TroopManager.a(this.a, 0);
-        paramList.a(true, ???.troopuin, ???.troopcode, 4);
-        return;
-        this.a.g(???);
-      }
-    }
-    synchronized (this.a)
-    {
-      TroopManager.a(this.a, null);
-      return;
-    }
-  }
-  
-  protected void c(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      int i = 0;
-      while (i < paramArrayList.size())
-      {
-        TroopMemberCardInfo localTroopMemberCardInfo = (TroopMemberCardInfo)paramArrayList.get(i);
-        this.a.b(localTroopMemberCardInfo.troopuin, localTroopMemberCardInfo.memberuin);
-        i += 1;
-      }
+      localDownloadTask.h = true;
+      localDownloadTask.n = false;
+      localObject = new Bundle();
+      localDownloaderInterface.a(localDownloadTask, this.a.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, (Bundle)localObject);
     }
   }
 }

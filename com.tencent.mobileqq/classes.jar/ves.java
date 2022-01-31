@@ -1,36 +1,39 @@
+import android.app.Activity;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.widget.ActionSheet;
 
 public class ves
+  extends ClickableSpan
 {
-  private Map a = new HashMap();
+  public ves(GrayTipsItemBuilder paramGrayTipsItemBuilder, int paramInt) {}
   
-  public View a(int paramInt)
+  public void onClick(View paramView)
   {
-    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    if (localLinkedList == null) {
-      return null;
-    }
-    return (View)localLinkedList.poll();
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a instanceof Activity))
     {
-      localLinkedList1 = new LinkedList();
-      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
+      paramView = ActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a);
+      paramView.b(2131436708);
+      paramView.c(2131433029);
+      paramView.a(new vet(this, paramView));
+      paramView.show();
+      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a).getChatFragment().a();
+      if ((localBaseChatPie instanceof DiscussChatPie)) {
+        ((DiscussChatPie)localBaseChatPie).a = paramView;
+      }
     }
-    localLinkedList1.add(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class sud
-  implements Runnable
+  implements View.OnLayoutChangeListener
 {
-  public sud(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public sud(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.a.a.a();
+    this.a.a.post(new sue(this));
   }
 }
 

@@ -9,15 +9,15 @@ import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResultCallback;
 import org.json.JSONObject;
-import yrg;
-import yrh;
-import yri;
-import yrj;
+import yxp;
+import yxq;
+import yxr;
+import yxs;
 
 public class CmGameToolCmdChannel
 {
-  private static String[] a = { "cs.create_room.local", "cs.game_start.local", "cs.game_tips.local", "cs.check_pubAccount_state.local", "cs.enter_pubAccount_card.local", "cs.on_get_open_key.local", "general_cmd_ui_show_toast", "cs.get_dress_path.local", "cs.send_game_msg.local", "cs.report_data_2_backstage.local", "cs.report_flow_data.local", "cs.openWebView.local", "cs.openFloatTransparentView.local", "cs.get_server_ip_port.local", "cs.save_recommend_ip.local", "cs.script_get_action_data.local", "cs.game_shell_share_callback.local" };
-  private static String[] b = { "cs.report_data_2_compass.local", "cs.invite_friends.local", "cs.share_game_result.local", "cs.share_pic.local", "cs.apolloGameWebMessage.local", "cs.openWebViewWithoutUrl.local", "cs.share_game_in_ark.local" };
+  private static String[] a = { "cs.create_room.local", "cs.game_start.local", "cs.game_tips.local", "cs.check_pubAccount_state.local", "cs.on_get_open_key.local", "general_cmd_ui_show_toast", "cs.get_dress_path.local", "cs.send_game_msg.local", "cs.report_data_2_backstage.local", "cs.report_flow_data.local", "cs.openWebView.local", "cs.openFloatTransparentView.local", "cs.get_server_ip_port.local", "cs.save_recommend_ip.local", "cs.script_get_action_data.local", "cs.game_shell_share_callback.local" };
+  private static String[] b = { "cs.report_data_2_compass.local", "cs.invite_friends.local", "cs.share_game_result.local", "cs.share_pic.local", "cs.apolloGameWebMessage.local", "cs.openWebViewWithoutUrl.local", "cs.share_game_in_ark.local", "cs.enter_pubAccount_card.local", "cs.fetch_cloud_signature.local", "cs.game_update_score.local", "cs.get_redPacket_result.local", "cs.closeWebview.local" };
   private static String[] c = { "cs.first_frame_drawn.local", "cs.join_room.local", "cs.make_room_min.local", "cs.close_room.local" };
   
   public static int a(long paramLong, String paramString1, String paramString2, boolean paramBoolean)
@@ -72,7 +72,7 @@ public class CmGameToolCmdChannel
   private static boolean a(long paramLong, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
   {
     if (paramString1.equals("cs.check_pubAccount_state.local")) {
-      a(paramString1, paramString2, paramBoolean, new yrg(paramLong), paramInt);
+      a(paramString1, paramString2, paramBoolean, new yxp(paramLong), paramInt);
     }
     label199:
     do
@@ -85,13 +85,13 @@ public class CmGameToolCmdChannel
           return false;
           if (paramString1.equals("cs.on_get_open_key.local"))
           {
-            a(paramString1, paramString2, paramBoolean, new yrh(paramLong), paramInt);
+            a(paramString1, paramString2, paramBoolean, new yxq(paramLong), paramInt);
             return false;
           }
           if (!paramString1.equals("cs.get_dress_path.local")) {
             break label199;
           }
-          localObject2 = new yri(paramLong, paramString1);
+          localObject2 = new yxr(paramLong, paramString1);
           try
           {
             CmGameLauncher localCmGameLauncher = CmGameUtil.b(paramLong);
@@ -123,7 +123,7 @@ public class CmGameToolCmdChannel
         if (!paramString1.equals("cs.script_get_action_data.local")) {
           break;
         }
-        Object localObject1 = new yrj(paramLong);
+        Object localObject1 = new yxs(paramLong);
         localObject2 = new Bundle();
         ((Bundle)localObject2).putString("cmd", paramString1);
         ((Bundle)localObject2).putString("reqData", paramString2);

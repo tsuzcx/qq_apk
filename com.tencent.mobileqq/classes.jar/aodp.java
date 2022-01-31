@@ -1,35 +1,81 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.LruCache;
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.view.StoryFaceDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
 
 public class aodp
-  implements Runnable
+  extends SimpleObserver
 {
-  public aodp(StoryFaceDrawableFactory paramStoryFaceDrawableFactory, String paramString1, String paramString2) {}
+  public aodp(EditVideoSave paramEditVideoSave, GenerateContext paramGenerateContext) {}
   
-  public void run()
+  public void a(GenerateContext paramGenerateContext)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.a(this.jdField_a_of_type_JavaLangString);
-    if (localBitmap != null)
+    super.onNext(paramGenerateContext);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.a(5);
+    paramGenerateContext = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGenerateContext.a;
+    SLog.b("EditVideoSave", "publishParam = " + paramGenerateContext);
+    Intent localIntent;
+    int j;
+    int i;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
     {
-      StoryFaceDrawable localStoryFaceDrawable = (StoryFaceDrawable)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.b);
-      if (localStoryFaceDrawable != null)
+      localIntent = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getIntent();
+      if (localIntent == null) {
+        break label283;
+      }
+      j = localIntent.getIntExtra("sv_total_frame_count", 0);
+      i = localIntent.getIntExtra("sv_total_record_time", 0);
+    }
+    for (;;)
+    {
+      localIntent = SaveVideoActivity.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), paramGenerateContext.b, i, j, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a());
+      EditVideoSave.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave, paramGenerateContext.b);
+      localIntent.putExtra("mediacodec_encode_enable", true);
+      localIntent.putExtra("mc_video.mp4", paramGenerateContext.j);
+      localIntent.putExtra("mc_audio.mp4", paramGenerateContext.k);
+      localIntent.putExtra("all_i_mc_video.mp4", paramGenerateContext.l);
+      if (paramGenerateContext.e != 0) {}
+      for (boolean bool = true;; bool = false)
       {
-        localStoryFaceDrawable.a(localBitmap);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.jdField_a_of_type_AndroidOsHandler.obtainMessage(1002).sendToTarget();
+        localIntent.putExtra("video_edit_flag", bool);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().startActivityForResult(localIntent, 111);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_Int = 5;
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.b = ((int)(7000.0D / paramGenerateContext.a * 4.0D));
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.c();
         return;
       }
-      SLog.d("Q.qqstory.record.StoryFaceDrawableFactory", "Find faceDrawable is not in cache after decoding bitmap!");
-      localStoryFaceDrawable = new StoryFaceDrawable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.jdField_a_of_type_Int, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.b);
-      localStoryFaceDrawable.a(localBitmap);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoRmwStoryFaceDrawableFactory.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.b, localStoryFaceDrawable);
-      return;
+      label283:
+      i = 0;
+      j = 0;
     }
-    SLog.e("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath return null!.");
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    SLog.d("EditVideoSave", "saveVideo cancel !");
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.i();
+    QQToast.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    SLog.e("EditVideoSave", "saveVideo error ：" + paramError);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    QQToast.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoSave.i();
   }
 }
 

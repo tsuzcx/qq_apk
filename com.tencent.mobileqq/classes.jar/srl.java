@@ -1,69 +1,51 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.drawer.FriendProfileBubble;
-import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import com.tencent.mobileqq.apollo.script.callback.ISpriteDrawerInfoCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.model.QueryCallback;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class srl
-  implements View.OnClickListener, ISpriteDrawerInfoCallback
+  implements QueryCallback
 {
-  private srl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public srl(EmosmActivity paramEmosmActivity) {}
   
-  public void a()
+  public void a(List paramList)
   {
-    if (this.a.app == null) {
-      return;
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a();
     }
-    ApolloActionData localApolloActionData = null;
-    Object localObject = localApolloActionData;
-    if (this.a.a != null)
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      localObject = localApolloActionData;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) {
-        localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
-      }
-    }
-    if ((TextUtils.isEmpty((CharSequence)localObject)) && (this.a.a != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard != null)) {
-      localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin;
-    }
-    for (;;)
-    {
-      localApolloActionData = ((ApolloManager)this.a.app.getManager(152)).a(this.a.app, (String)localObject, new int[] { 4 });
-      int i = 5;
-      if (localApolloActionData == null)
+      EmoticonPackage localEmoticonPackage;
+      if (this.a.b == 1)
       {
-        localApolloActionData = new ApolloActionData();
-        localApolloActionData.actionId = -1;
-        localApolloActionData.actionType = 0;
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
       }
-      for (;;)
+      if (this.a.b == 2)
       {
-        SpriteUtil.a(FriendProfileCardActivity.a(this.a), i, localApolloActionData);
-        new FriendProfileBubble((String)localObject).a(FriendProfileCardActivity.a(this.a), this.a, this.a.app, "这是我的厘米秀，你也来领一个吧");
-        return;
-        i = 12;
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
       }
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    ThreadManager.getUIHandler().post(new srm(this, paramInt1, paramInt2, paramString));
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(1, 0, null);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
+    }
   }
 }
 

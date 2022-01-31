@@ -1,108 +1,52 @@
-import android.text.Editable;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.tribe.view.TEditText.OnSelectionChangedListener;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.util.InputMethodUtil;
-import java.util.List;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.HashMap;
+import java.util.Map;
 
 public class aixj
-  implements TEditText.OnSelectionChangedListener
+  implements Runnable
 {
-  public aixj(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aixj(InnerDns paramInnerDns) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    int m = 1;
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.getText().length() <= 0) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("InnerDns", 1, "syncAddressData called, mServerProcName=" + InnerDns.a(this.a) + ", mConnected=" + InnerDns.a(this.a));
     }
-    int j = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem.b.length();
-    int k = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem.a.length();
-    int n = this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem.c.length() + (j + k);
-    if ((paramInt1 < this.a.K.length() + n) && (paramInt2 < this.a.K.length() + n))
-    {
-      if (TroopBarPublishActivity.a(this.a).size() > 1)
+    if (InnerDns.a(this.a)) {
+      try
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.clearFocus();
-        InputMethodUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
-    }
-    if (paramInt1 < 0) {
-      if (paramInt2 > this.a.K.length() + n)
-      {
-        paramInt1 = paramInt2;
-        label195:
-        if (paramInt1 <= i) {
-          break label431;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-      return;
-      paramInt1 = this.a.K.length() + n;
-      break label195;
-      if (paramInt2 < 0) {
-        if (paramInt1 > this.a.K.length() + n) {
-          label250:
-          if (paramInt1 <= i) {
-            break label426;
-          }
-        }
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(i);
-        return;
-        paramInt1 = this.a.K.length() + n;
-        break label250;
-        if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem.b)) {
-          break;
-        }
-        k = 0;
-        j = paramInt1;
-        if (paramInt1 < this.a.K.length() + n)
+        Object localObject1 = new Bundle();
+        localObject1 = QIPCClientHelper.getInstance().getClient().callServer("InnerDnsModule", "syncAddressData", (Bundle)localObject1);
+        if (((EIPCResult)localObject1).isSuccess())
         {
-          j = n + this.a.K.length();
-          k = 1;
-        }
-        if (paramInt2 < this.a.K.length() + n)
-        {
-          paramInt1 = n + this.a.K.length();
-          k = 1;
-        }
-        for (;;)
-        {
-          paramInt2 = j;
-          if (j > i)
-          {
-            k = 1;
-            paramInt2 = i;
-          }
-          if (paramInt1 > i) {
-            k = m;
-          }
-          while (k != 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTEditText.setSelection(paramInt2, i);
+          localObject1 = ((EIPCResult)localObject1).data.getString("addressData");
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
             return;
-            i = paramInt1;
           }
-          break;
-          paramInt1 = paramInt2;
+          localObject1 = InnerDns.a((String)localObject1);
+          if (localObject1 == null) {
+            return;
+          }
+          try
+          {
+            InnerDns.a(this.a, new HashMap((Map)localObject1));
+            return;
+          }
+          finally {}
         }
-        label426:
-        i = paramInt1;
+        QLog.e("InnerDns", 1, "syncAddressData fail, mServerProcName=" + InnerDns.a(this.a));
       }
-      label431:
-      i = paramInt1;
+      catch (Throwable localThrowable)
+      {
+        QLog.e("InnerDns", 1, "syncAddressData error:" + localThrowable.getMessage());
+        return;
+      }
     }
   }
 }

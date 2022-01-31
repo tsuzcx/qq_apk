@@ -11,7 +11,7 @@ import java.util.List;
 
 public class VideoUtils
 {
-  public static final String a = AppConstants.aJ + "av_image_data/";
+  public static final String a = AppConstants.aK + "av_image_data/";
   
   public static final boolean a()
   {
@@ -70,7 +70,7 @@ public class VideoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.VideoUtils
  * JD-Core Version:    0.7.0.1
  */

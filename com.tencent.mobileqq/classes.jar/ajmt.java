@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController.OnAnimationEndListener;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
 
 public class ajmt
-  implements TroopPicEffectsController.OnAnimationEndListener
+  implements Runnable
 {
-  public ajmt(AIOAnimationControlManager paramAIOAnimationControlManager, boolean paramBoolean) {}
+  public ajmt(TroopFileUploadMgr paramTroopFileUploadMgr) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_Boolean);
+    if (!this.a.a) {
+      return;
+    }
+    AppNetConnInfo.unregisterNetInfoHandler(this.a);
+    this.a.a = false;
   }
 }
 

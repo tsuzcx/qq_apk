@@ -1,66 +1,35 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class ykq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ykq(ApolloManager paramApolloManager, boolean paramBoolean, int paramInt) {}
+  public ykq(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a != null)
-    {
-      localObject2 = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a.getManager(154);
-      localObject1 = new ArrayList();
-      if (localObject2 != null)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label65;
-        }
-        localObject1 = ((ApolloDaoManager)localObject2).c();
-      }
-      if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
-        break label77;
-      }
-    }
-    label65:
-    label77:
-    do
-    {
-      return;
-      localObject1 = ((ApolloDaoManager)localObject2).b(this.jdField_a_of_type_Int);
-      break;
-      localObject2 = new ArrayList();
-      int i = 0;
-      while (i < ((List)localObject1).size())
-      {
-        ((List)localObject2).add(((List)localObject1).get(i));
-        if (((i + 1) % 8 == 0) || (i + 1 == ((List)localObject1).size()))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a((List)localObject2, this.jdField_a_of_type_Int + "apollo_key" + i);
-          ((List)localObject2).clear();
-        }
-        i += 1;
-      }
-    } while (!QLog.isColorLevel());
-    Object localObject2 = new StringBuilder("update action[");
-    Object localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ((StringBuilder)localObject2).append(((ApolloActionData)((Iterator)localObject1).next()).actionId).append(",");
-    }
-    ((StringBuilder)localObject2).append("]");
-    QLog.d("ApolloManager", 2, "checkPanelActionRes... action: " + ((StringBuilder)localObject2).toString());
+    Object localObject = ShortVideoPreviewActivity.a(this.a);
+    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
+    Intent localIntent = new Intent();
+    localIntent.setClassName((String)localObject, paramDialogInterface);
+    localIntent.addFlags(603979776);
+    localIntent.putExtra("file_send_path", this.a.c);
+    localIntent.putExtra("file_send_size", this.a.a);
+    localIntent.putExtra("file_send_duration", this.a.jdField_b_of_type_Long);
+    localIntent.putExtra("file_source", this.a.jdField_b_of_type_JavaLangString);
+    this.a.startActivity(localIntent);
+    ShortVideoPreviewActivity.a(this.a);
+    localObject = new Intent("key_video_select_confirm_ok_click");
+    ((Intent)localObject).putExtra("className", paramDialogInterface);
+    this.a.sendBroadcast((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ykq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ActionSheet;
-import dov.com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
 
 public class aonb
-  implements View.OnClickListener
+  extends Property
 {
-  public aonb(ShareActionSheet paramShareActionSheet) {}
-  
-  public void onClick(View paramView)
+  public aonb(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
+    super(paramClass, paramString);
+  }
+  
+  public Integer a(MarkDrawable paramMarkDrawable)
+  {
+    if (paramMarkDrawable != null) {
+      return Integer.valueOf(MarkDrawable.b(paramMarkDrawable));
+    }
+    return Integer.valueOf(255);
+  }
+  
+  public void a(MarkDrawable paramMarkDrawable, Integer paramInteger)
+  {
+    if (paramMarkDrawable != null) {
+      MarkDrawable.b(paramMarkDrawable, paramInteger.intValue());
     }
   }
 }

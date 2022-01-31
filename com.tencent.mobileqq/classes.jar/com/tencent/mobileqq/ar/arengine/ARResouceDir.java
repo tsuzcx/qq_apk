@@ -19,7 +19,7 @@ public class ARResouceDir
   public static String a()
   {
     if (a()) {
-      return AppConstants.aJ;
+      return AppConstants.aK;
     }
     if (QLog.isColorLevel()) {
       QLog.i("AREngine_ARResouceDir", 2, "no_sdcard");

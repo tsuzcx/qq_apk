@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
+import aaen;
+import aaep;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
@@ -11,8 +13,6 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 import java.io.File;
 import java.text.DecimalFormat;
 import mqq.os.MqqHandler;
-import zxz;
-import zyb;
 
 public final class ARRecordUtils
 {
@@ -49,12 +49,12 @@ public final class ARRecordUtils
   
   public static void a(String paramString1, String paramString2)
   {
-    ThreadManager.getUIHandler().post(new zxz(paramString1, paramString2));
+    ThreadManager.getUIHandler().post(new aaen(paramString1, paramString2));
   }
   
   public static void a(String paramString, boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new zyb(paramBoolean, paramString));
+    ThreadManager.getUIHandler().post(new aaep(paramBoolean, paramString));
   }
   
   public static void a(boolean paramBoolean)

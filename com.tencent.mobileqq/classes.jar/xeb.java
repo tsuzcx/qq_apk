@@ -1,26 +1,17 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class xeb
-  implements PreloadImgManager.OnSingleDownloadCallback
+  implements View.OnClickListener
 {
-  public xeb(ThemeHbFragment paramThemeHbFragment) {}
+  public xeb(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
-    }
-    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
-      ThemeHbFragment.a(this.a).post(new xec(this, paramObject));
-    }
+    this.a.h();
+    LpReportInfo_pf00064.allReport(603, 3);
   }
 }
 

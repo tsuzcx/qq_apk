@@ -1,43 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.video.VipVideoManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.mobileqq.activity.QZoneFeedsObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.FeedsManager;
+import java.util.Map;
 
 class acbk
-  implements TVK_SDKMgr.InstallListener
+  implements Runnable
 {
-  acbk(acbg paramacbg, Bundle paramBundle, MessengerService paramMessengerService) {}
+  acbk(acbj paramacbj) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void run()
   {
-    int i = (int)Math.floor(100.0F * paramFloat);
-    if (i > VipVideoManager.a)
-    {
-      VipVideoManager.a = i;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("status", 1);
-      localBundle.putFloat("progress", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    if (!this.a.a.feedInfoCache.isEmpty()) {
+      FeedsManager.access$200(this.a.a).notifyObservers(QZoneFeedsObserver.class, 10000, true, null);
     }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 2);
-    localBundle.putInt("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", 3);
-    localBundle.putBoolean("result", true);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

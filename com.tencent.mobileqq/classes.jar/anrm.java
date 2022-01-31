@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class anrm
+public class anrm
   implements Runnable
 {
-  anrm(anrl paramanrl) {}
+  public anrm(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(EditPicSave.a(this.a.a));
-    this.a.a.jdField_a_of_type_Boolean = true;
-    this.a.a.a(100);
-    this.a.a.d();
-    if (this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a() == 102)
-    {
-      EditPicSave.a(this.a.a, this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a());
-      return;
-    }
-    QQToast.a(this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "保存成功", 0).a();
+    QIMEffectCameraCaptureUnit.d(this.a);
+    QIMEffectCameraCaptureUnit.e(this.a);
   }
 }
 

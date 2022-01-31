@@ -181,7 +181,10 @@ public class TenCookie
   
   public String getTempArgs(String paramString)
   {
-    return (String)this.tempArgs.get(paramString);
+    if (this.tempArgs.containsKey(paramString)) {
+      return (String)this.tempArgs.get(paramString);
+    }
+    return null;
   }
   
   public String readTagCookie(Context paramContext, String paramString1, String paramString2)

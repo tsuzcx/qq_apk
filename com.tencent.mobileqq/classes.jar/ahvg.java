@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.search.searchengine.ContactSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.search.FunctionModuleConfigManager;
+import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class ahvg
+  implements Comparator
 {
-  public String a;
-  public List a;
+  public ahvg(FunctionModuleConfigManager paramFunctionModuleConfigManager) {}
   
-  public ahvg(ContactSearchEngine paramContactSearchEngine, String paramString, List paramList)
+  public int a(GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem1, GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    int i = paramGroupBaseNetSearchModelItem2.a[2] - paramGroupBaseNetSearchModelItem1.a[2];
+    if (i != 0) {}
+    int j;
+    do
+    {
+      return i;
+      j = paramGroupBaseNetSearchModelItem1.a[0] - paramGroupBaseNetSearchModelItem2.a[0];
+      i = j;
+    } while (j != 0);
+    paramGroupBaseNetSearchModelItem1 = paramGroupBaseNetSearchModelItem1.c.substring(paramGroupBaseNetSearchModelItem1.a[0] + paramGroupBaseNetSearchModelItem1.a[1]);
+    paramGroupBaseNetSearchModelItem2 = paramGroupBaseNetSearchModelItem2.c.substring(paramGroupBaseNetSearchModelItem2.a[0] + paramGroupBaseNetSearchModelItem2.a[1]);
+    return ChnToSpell.a(paramGroupBaseNetSearchModelItem1, 2).compareTo(ChnToSpell.a(paramGroupBaseNetSearchModelItem2, 2));
   }
 }
 

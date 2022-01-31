@@ -1,14 +1,16 @@
-import android.text.Spanned;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.widget.ActionSheet.WatchDismissActions;
 
-public final class ajoh
-  implements Comparator
+public class ajoh
+  implements ActionSheet.WatchDismissActions
 {
-  public ajoh(Spanned paramSpanned) {}
+  public ajoh(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void a()
   {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
+    PublishHomeWorkFragment.a(this.a).a();
+    PublishHomeWorkFragment.d(this.a);
   }
 }
 

@@ -1,22 +1,42 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class zik
+class zik
   implements Runnable
 {
-  public zik(PhoneContactManagerImp paramPhoneContactManagerImp, int paramInt) {}
+  zik(zij paramzij) {}
   
   public void run()
   {
-    synchronized (PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp))
+    ConditionSearchManager.a(this.a.a, false);
+    if (this.a.a.c)
     {
-      Iterator localIterator = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).iterator();
-      if (localIterator.hasNext()) {
-        ((PhoneContactManager.IPhoneContactListener)localIterator.next()).b(this.jdField_a_of_type_Int);
+      if (this.a.a.jdField_a_of_type_JavaUtilLinkedList != null)
+      {
+        Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        if (localIterator.hasNext())
+        {
+          ConditionSearchManager.IConfigListener localIConfigListener = (ConditionSearchManager.IConfigListener)localIterator.next();
+          if (ConditionSearchManager.a(this.a.a) != null) {}
+          for (boolean bool = true;; bool = false)
+          {
+            localIConfigListener.a(2, bool);
+            break;
+          }
+        }
       }
+      if (this.a.a.d) {
+        this.a.a.a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard);
+      }
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "updateLocal | SearchActivity is not running");
+    }
+    ConditionSearchManager.a(this.a.a, null);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aafo;
+import aamf;
 import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -14,7 +14,7 @@ public class ARDeviceInfo
 {
   private static int jdField_a_of_type_Int = -1;
   private static long jdField_a_of_type_Long;
-  private static final FileFilter jdField_a_of_type_JavaIoFileFilter = new aafo();
+  private static final FileFilter jdField_a_of_type_JavaIoFileFilter = new aamf();
   private static int b = -1;
   private static int c;
   

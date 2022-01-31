@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.magicface.model;
 
-import aedw;
+import aemg;
 import com.tencent.qphone.base.util.QLog;
 
 public abstract class MagicfaceDecoder
@@ -49,7 +49,7 @@ public abstract class MagicfaceDecoder
     if (!this.jdField_a_of_type_Boolean) {}
     try
     {
-      new Thread(new aedw(this)).start();
+      new Thread(new aemg(this)).start();
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)

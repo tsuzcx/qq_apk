@@ -1,19 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public class swe
+class swe
   implements Runnable
 {
-  public swe(JumpActivity paramJumpActivity, Intent paramIntent) {}
+  swe(swd paramswd) {}
   
   public void run()
   {
-    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_AndroidContentIntent.getExtras());
+    this.a.a.a.a.removeAnimatorListener(this.a);
+    this.a.a.a.a.removeUpdateListener(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     swe
  * JD-Core Version:    0.7.0.1
  */

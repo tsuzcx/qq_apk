@@ -73,7 +73,7 @@ public class GPUAlphaFilter
     GLES20.glUniformMatrix4fv(n, 1, false, arrayOfFloat, 0);
     GLES20.glActiveTexture(33984);
     GLES20.glBindTexture(this.c, paramInt);
-    e();
+    f();
     GLES20.glDrawArrays(5, 0, 4);
     a("glDrawArrays");
     GLES20.glActiveTexture(33984);

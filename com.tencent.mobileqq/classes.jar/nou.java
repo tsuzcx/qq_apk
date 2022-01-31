@@ -1,74 +1,125 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent;
-import com.tencent.biz.qqstory.model.StoryManager;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
 import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
-import com.tencent.biz.qqstory.network.handler.GetVidPollInfoHandler;
-import com.tencent.biz.qqstory.network.request.GetCollectionVideoListRequest;
-import com.tencent.biz.qqstory.network.response.GetCollectionVideoListResponse;
-import com.tencent.biz.qqstory.playvideo.model.MemorySharePlayingListSync;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.MainPageChangeEvent;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.QQStoryApiPlugin;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class nou
-  implements CmdTaskManger.CommandCallback
+  extends QQStoryObserver
 {
-  public nou(MemorySharePlayingListSync paramMemorySharePlayingListSync) {}
+  public nou(NewFriendsPlayMode paramNewFriendsPlayMode) {}
   
-  public void a(@NonNull GetCollectionVideoListRequest paramGetCollectionVideoListRequest, @Nullable GetCollectionVideoListResponse paramGetCollectionVideoListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    int i = 0;
-    this.a.c = false;
-    if ((paramGetCollectionVideoListResponse == null) || (paramErrorMessage.isFail()))
+    Object localObject1 = (UserManager)SuperManager.a(2);
+    Object localObject2 = ((UserManager)localObject1).a(paramString, false);
+    QQUserUIItem localQQUserUIItem = ((UserManager)localObject1).b(paramString);
+    QQStoryApiPlugin.a(PlayModeUtils.a(), paramBoolean2, (String)localObject2, QQStoryContext.a().a());
+    if (paramBoolean1)
     {
-      paramGetCollectionVideoListRequest = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-      paramGetCollectionVideoListRequest.jdField_a_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-      paramGetCollectionVideoListRequest.jdField_b_of_type_JavaLangString = this.a.jdField_d_of_type_JavaLangString;
-      paramGetCollectionVideoListRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      Dispatchers.get().dispatch(paramGetCollectionVideoListRequest);
-      return;
-    }
-    paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList);
-    paramErrorMessage = paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramErrorMessage.hasNext()) {
-      ((StoryVideoItem)paramErrorMessage.next()).mOwnerUid = this.a.jdField_d_of_type_JavaLangString;
-    }
-    if (TextUtils.isEmpty(paramGetCollectionVideoListRequest.jdField_d_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-    }
-    this.a.jdField_a_of_type_JavaLangString = paramGetCollectionVideoListResponse.c;
-    this.a.jdField_a_of_type_JavaUtilList.addAll(paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList);
-    this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_JavaUtilList.size();
-    this.a.jdField_b_of_type_Boolean = paramGetCollectionVideoListResponse.jdField_a_of_type_Boolean;
-    paramGetCollectionVideoListRequest = this.a;
-    if (paramGetCollectionVideoListResponse.jdField_b_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramGetCollectionVideoListRequest.jdField_d_of_type_Boolean = bool;
-      SLog.a("Q.qqstory.player.MemorySharePlayingListSync", "last load position:%d cookie:%s", Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_JavaLangString);
-      ((DownloadUrlManager)SuperManager.a(28)).a(paramGetCollectionVideoListResponse.jdField_b_of_type_JavaUtilList);
-      paramGetCollectionVideoListRequest = new ArrayList();
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      label159:
+      int j;
+      if (paramBoolean2)
       {
-        paramGetCollectionVideoListRequest.add(((StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(i)).mVid);
-        i += 1;
+        paramInt = 1;
+        localQQUserUIItem.isSubscribe = paramInt;
+        ThreadManager.post(new nov(this, (UserManager)localObject1, localQQUserUIItem), 5, null, false);
+        if (paramBoolean2)
+        {
+          localObject1 = (QQStoryManager)PlayModeUtils.a().getManager(180);
+          if (!((QQStoryManager)localObject1).h())
+          {
+            ((QQStoryManager)localObject1).c();
+            QQToast.a(PlayModeUtils.a(), 2, "已关注，可随时查看对方的最新视频", 0).a();
+          }
+          localObject1 = new MainPageChangeEvent(2);
+          Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject1);
+        }
+        int i = this.a.a.jdField_a_of_type_AndroidUtilSparseArray.size();
+        paramInt = 0;
+        if (paramInt >= i) {
+          break label454;
+        }
+        j = this.a.a.jdField_a_of_type_AndroidUtilSparseArray.keyAt(paramInt);
+        localObject1 = (VideoPlayerPagerAdapter.VideoViewHolder)this.a.a.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt);
+        if (localObject1 != null) {
+          break label217;
+        }
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break label159;
+        paramInt = 0;
+        break;
+        label217:
+        if ((Math.abs(this.a.b - j) <= 2) && (j < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()))
+        {
+          localObject2 = (StoryVideoItem)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(j);
+          if ((localObject2 != null) && (((StoryVideoItem)localObject2).mStoryType == 1) && (((StoryVideoItem)localObject2).mOwnerUid.equals(localQQUserUIItem.uid))) {
+            if (paramString.equals(((StoryVideoItem)localObject2).mOwnerUid))
+            {
+              if (paramBoolean2) {
+                ((View)((VideoPlayerPagerAdapter.VideoViewHolder)localObject1).jdField_a_of_type_AndroidUtilSparseArray.get(2131371693)).setVisibility(8);
+              } else {
+                ((View)((VideoPlayerPagerAdapter.VideoViewHolder)localObject1).jdField_a_of_type_AndroidUtilSparseArray.get(2131371693)).setVisibility(0);
+              }
+            }
+            else if (QLog.isColorLevel()) {
+              QLog.d("VipCardPlayMode", 2, "他人视频, 不刷新关注按钮");
+            }
+          }
+        }
       }
     }
-    paramErrorMessage = BatchHandlerListPuller.a(paramGetCollectionVideoListRequest);
-    paramErrorMessage.a("Q.qqstory.player.MemorySharePlayingListSync");
-    paramErrorMessage.a(new nov(this, paramErrorMessage, paramGetCollectionVideoListResponse));
-    paramErrorMessage.b();
-    GetVidPollInfoHandler.a(paramGetCollectionVideoListRequest);
+    else
+    {
+      if (!paramBoolean2) {
+        break label455;
+      }
+      paramString = "取消";
+      if (paramInt != 1) {
+        break label462;
+      }
+      QQToast.a(PlayModeUtils.a(), 1, paramString + "关注失败，请稍后重试", 0).a();
+      StoryReportor.a("play_video", "follow_fail", 0, 0, new String[] { "1" });
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipCardPlayMode", 2, "onSetPGCSubscribeStatus failed.");
+      }
+      label454:
+      return;
+      label455:
+      paramString = "";
+      break;
+      label462:
+      if (paramInt == 0)
+      {
+        QQToast.a(PlayModeUtils.a(), 1, paramString + "订阅失败，请稍后重试", 0).a();
+        StoryReportor.a("play_video", "follow_fail", 0, 0, new String[] { "2" });
+      }
+    }
   }
 }
 

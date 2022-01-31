@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.XListView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class wij
-  extends PublicAccountObserver
+  implements Runnable
 {
-  public wij(PublicView paramPublicView) {}
+  public wij(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (true == paramBoolean)
+    Object localObject = LightalkBlueTipsBar.a(this.a).getPreferences();
+    if (((SharedPreferences)localObject).getInt("LT_tip_show_times" + LightalkBlueTipsBar.a(this.a).getCurrentAccountUin(), 5) != 5)
     {
-      PublicView.a(this.a).a(0);
-      PublicView.a(this.a).sendEmptyMessage(1);
-      PublicView.a(this.a).sendEmptyMessage(3);
-      return;
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + LightalkBlueTipsBar.a(this.a).getCurrentAccountUin(), 5);
+      ((SharedPreferences.Editor)localObject).commit();
     }
-    PublicView.a(this.a).springBackOverScrollHeaderView();
-    PublicView.a(this.a, 1, 2131434349);
-    PublicView.a(this.a);
   }
 }
 

@@ -1,70 +1,31 @@
-import android.os.IBinder;
-import cooperation.qzone.remote.IActionListener;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqreader.QRBridgeActivity;
 
 public class amyf
-  implements IActionListener
+  extends OnPluginInstallListener.Stub
 {
-  private IBinder a;
+  public amyf(QRBridgeActivity paramQRBridgeActivity) {}
   
-  public amyf(IBinder paramIBinder)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    this.a = paramIBinder;
+    if (QLog.isColorLevel()) {
+      QLog.d("QRBridgeActivity", 2, "installPlugin onInstallError, pluginId = " + paramString + ", errorCode = " + paramInt);
+    }
+    ReportController.b(this.a.app, "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 1, paramInt, "", "", "", "");
   }
   
-  public IBinder asBinder()
+  public void onInstallFinish(String paramString)
   {
-    return this.a;
-  }
-  
-  /* Error */
-  public void onRecvFromMsg(cooperation.qzone.remote.RecvMsg paramRecvMsg)
-  {
-    // Byte code:
-    //   0: invokestatic 26	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 28
-    //   7: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 42	cooperation/qzone/remote/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	amyf:a	Landroid/os/IBinder;
-    //   29: iconst_1
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 48 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	amyf
-    //   0	59	1	paramRecvMsg	cooperation.qzone.remote.RecvMsg
-    //   3	51	2	localParcel	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
+    if (QLog.isColorLevel()) {
+      QLog.d("QRBridgeActivity", 2, "installPlugin onInstallFinish, pluginId = " + paramString);
+    }
+    ReportController.b(this.a.app, "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 1, 0, "", "", "", "");
   }
 }
 

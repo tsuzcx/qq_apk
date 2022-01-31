@@ -1,43 +1,35 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcess;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface.Stub;
+import com.tencent.qphone.base.util.QLog;
 
 public class aezv
-  implements ActionSheet.OnButtonClickListener
+  extends NearbyProcessInterface.Stub
 {
-  public aezv(PlayOperationViewModel paramPlayOperationViewModel, ActionSheet paramActionSheet) {}
+  public aezv(NearbyProcess paramNearbyProcess) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public Message a(Message paramMessage)
   {
-    switch (paramInt)
-    {
+    if (paramMessage == null) {
+      return null;
     }
-    for (;;)
+    return this.a.b(paramMessage);
+  }
+  
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  {
+    if (paramBasicTypeDataParcel == null) {}
+    Object[] arrayOfObject;
+    do
     {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
       }
-      return;
-      if (PlayOperationViewModel.e(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel))
-      {
-        PlayOperationViewModel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel, DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_AndroidViewView.getContext(), 230, "确定删除该动态？", null, "取消", "删除", new aezw(this), new aezy(this)));
-        PlayOperationViewModel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel).show();
-      }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.b != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        String str2 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.b);
-        String str1 = str2;
-        if (StringUtil.a(str2)) {
-          str1 = "0";
-        }
-        PlayOperationViewModel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel, paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, str1);
-      }
-    }
+      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    } while (arrayOfObject == null);
+    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
   }
 }
 

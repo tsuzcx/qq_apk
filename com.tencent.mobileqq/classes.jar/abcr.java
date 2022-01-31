@@ -1,18 +1,27 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class abcr
-  extends AnimateUtils.AnimationAdapter
 {
-  public abcr(ConversationPullDownActiveBase paramConversationPullDownActiveBase) {}
+  public int a;
+  public long a;
+  public ArkLocalAppMgr.IGetAppPathByActionCallback a;
+  public Object a;
+  public String a;
+  public final ArrayList a;
+  public final Set a;
+  public boolean a;
+  public String b;
+  public final ArrayList b = new ArrayList();
+  public final ArrayList c = new ArrayList();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private abcr()
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
   }
 }
 

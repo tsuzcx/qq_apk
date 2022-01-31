@@ -75,6 +75,9 @@ public class MessagePBDecoderConfig
     if (paramArrayList.contains("flashchat")) {
       return 30;
     }
+    if (paramArrayList.contains("troopConfessMsg")) {
+      return 34;
+    }
     if (paramArrayList.contains("textMsg")) {
       return 21;
     }
@@ -245,6 +248,10 @@ public class MessagePBDecoderConfig
       else if ((localElem.common_elem.has()) && (11 == localElem.common_elem.uint32_service_type.get()))
       {
         localArrayList.add("scribbleMsg");
+      }
+      else if ((localElem.common_elem.has()) && (21 == localElem.common_elem.uint32_service_type.get()) && (3 == localElem.common_elem.uint32_business_type.get()))
+      {
+        localArrayList.add("troopConfessMsg");
       }
       else if ((localElem.common_elem.has()) && (21 == localElem.common_elem.uint32_service_type.get()))
       {

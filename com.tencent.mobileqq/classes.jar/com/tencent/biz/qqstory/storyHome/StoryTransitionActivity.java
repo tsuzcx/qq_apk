@@ -23,7 +23,7 @@ import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import nuc;
+import nys;
 
 public class StoryTransitionActivity
   extends QQStoryBaseActivity
@@ -275,7 +275,7 @@ public class StoryTransitionActivity
       continue;
       if (2 == i)
       {
-        Bosses.get().postJob(new nuc(this));
+        Bosses.get().postJob(new nys(this));
         finish();
       }
       else if (3 == i)

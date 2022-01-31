@@ -1,36 +1,23 @@
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader.GetVideoListEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
+import java.util.HashMap;
 
 public class nky
-  extends UIBaseEventReceiver
+  extends EncryptUrlJob
 {
-  public nky(NewFriendsPlayMode paramNewFriendsPlayMode)
+  public nky(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareCopyLinkData paramShareCopyLinkData)
   {
-    super(paramNewFriendsPlayMode);
+    super(paramString1, paramString2, paramBoolean);
   }
   
-  public void a(@NonNull NewFriendsPlayMode paramNewFriendsPlayMode, @NonNull VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
+  public boolean b()
   {
-    SLog.c(this.TAG, "FeedVideoListReceiver onSuccess, event:" + paramGetVideoListEvent.toString());
-    paramNewFriendsPlayMode.a.post(new nkz(this, paramNewFriendsPlayMode, paramGetVideoListEvent));
-  }
-  
-  public Class acceptEventClass()
-  {
-    return VideoListPageLoader.GetVideoListEvent.class;
-  }
-  
-  public void b(NewFriendsPlayMode paramNewFriendsPlayMode, VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(this.TAG, 2, "FeedVideoListReceiver onError:" + paramGetVideoListEvent.a());
-    }
-    paramNewFriendsPlayMode.a.post(new nla(this, paramNewFriendsPlayMode, paramGetVideoListEvent));
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a);
+    a("ShortenUrlJob_shortenedUrls", localHashMap);
+    return true;
   }
 }
 

@@ -6,7 +6,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import com.tencent.av.AVLog;
-import jjt;
+import jlw;
 
 public abstract class GLContextThread
   extends OffscreenSurface
@@ -17,7 +17,7 @@ public abstract class GLContextThread
   {
     HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
     localHandlerThread.start();
-    this.a = new jjt(localHandlerThread.getLooper(), this);
+    this.a = new jlw(localHandlerThread.getLooper(), this);
   }
   
   public void a()
@@ -37,7 +37,7 @@ public abstract class GLContextThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.opengl.effects.GLContextThread
  * JD-Core Version:    0.7.0.1
  */

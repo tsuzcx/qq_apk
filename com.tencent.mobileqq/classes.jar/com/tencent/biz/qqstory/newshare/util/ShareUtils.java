@@ -20,7 +20,7 @@ public final class ShareUtils
   
   public static String a(String paramString)
   {
-    return AppConstants.aZ + AbsDownloader.c(paramString);
+    return AppConstants.ba + AbsDownloader.c(paramString);
   }
   
   public static String a(String paramString, boolean paramBoolean)

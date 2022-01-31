@@ -1,59 +1,26 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView.PullAndFastScrollListener;
-import com.tencent.mobileqq.hotpic.HotVideoBlurTaskManager;
-import com.tencent.mobileqq.hotpic.ScrollVelometer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter;
+import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.MenuData;
+import com.tencent.widget.ActionSheet;
+import java.util.ArrayList;
 
 public class adqz
-  extends RecyclerView.OnScrollListener
+  implements View.OnClickListener
 {
-  public adqz(HotPicRecyclerView paramHotPicRecyclerView) {}
+  public adqz(HorizontalListViewAdapter paramHorizontalListViewAdapter, int paramInt) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      HotVideoBlurTaskManager.c();
-      this.a.b();
-      if (paramInt != 2) {
-        break label128;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(true);
+    if ((HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter) != null) && (HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter).isShowing())) {
+      HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter).dismiss();
     }
-    for (;;)
-    {
-      if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
-      {
-        ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
-        if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener != null)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener.d();
-        }
-      }
-      this.a.jdField_a_of_type_Int = paramInt;
-      return;
-      this.a.c();
-      AbstractGifImage.pauseAll();
-      HotVideoBlurTaskManager.b();
-      break;
-      label128:
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(false);
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (paramInt2 > 0) {
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(paramInt2);
-    }
+    ((HorizontalListViewAdapter.MenuData)HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter).get(this.jdField_a_of_type_Int)).a.onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adqz
  * JD-Core Version:    0.7.0.1
  */

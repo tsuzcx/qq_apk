@@ -1,7 +1,7 @@
 package com.tencent.mapsdk.rastercore.tile;
 
 import android.graphics.Bitmap;
-import com.tencent.mapsdk.rastercore.d.e;
+import com.tencent.mapsdk.rastercore.d.f;
 import com.tencent.tencentmap.mapsdk.map.TencentMap;
 import com.tencent.tencentmap.mapsdk.map.TencentMap.OnErrorListener;
 import java.util.ArrayList;
@@ -17,11 +17,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public final class b
-  implements d.a
+  implements e.a
 {
   private static final TimeUnit a = TimeUnit.SECONDS;
   private static final int b = Runtime.getRuntime().availableProcessors();
-  private e c;
+  private f c;
   private Map<String, List<a>> d = new HashMap();
   private Map<String, List<a>> e = new HashMap();
   private final BlockingQueue<Runnable> f = new LinkedBlockingQueue();
@@ -43,9 +43,9 @@ public final class b
     }
   };
   
-  public b(e parame)
+  public b(f paramf)
   {
-    this.c = parame;
+    this.c = paramf;
     int k = b;
     k = b;
     if (b < 4) {}
@@ -78,12 +78,12 @@ public final class b
     }
   }
   
-  public final void a(d paramd)
+  public final void a(e parame)
   {
-    if (paramd != null)
+    if (parame != null)
     {
-      Object localObject2 = paramd.b();
-      Bitmap localBitmap = paramd.a();
+      Object localObject2 = parame.b();
+      Bitmap localBitmap = parame.a();
       synchronized (this.d)
       {
         List localList = (List)this.e.remove(localObject2);
@@ -115,56 +115,77 @@ public final class b
       {
         public final void run()
         {
-          if ((b.a(b.this).z()) && (!b.a(b.this).A())) {
-            return;
-          }
-          b.b(b.this).clear();
+          b.a(b.this).clear();
           for (;;)
           {
             int i;
             a locala;
-            StringBuilder localStringBuilder;
-            synchronized (b.c(b.this))
+            synchronized (b.b(b.this))
             {
-              b.c(b.this).clear();
-              b.c(b.this).putAll(b.d(b.this));
+              b.b(b.this).clear();
+              b.b(b.this).putAll(b.c(b.this));
               i = 0;
               if (i >= paramArrayList.size()) {
                 break;
               }
               Iterator localIterator = ((MapTile)paramArrayList.get(i)).b().iterator();
               if (!localIterator.hasNext()) {
-                break label292;
+                break label444;
               }
               locala = (a)localIterator.next();
-              ??? = null;
-              localStringBuilder = new StringBuilder();
-              try
+            }
+            com.tencent.mapsdk.rastercore.tile.a.b localb;
+            try
+            {
+              ??? = com.tencent.mapsdk.rastercore.tile.a.a.a().a(locala);
+              if ((((com.tencent.mapsdk.rastercore.tile.a.b)???).b() != null) && (((com.tencent.mapsdk.rastercore.tile.a.b)???).d() == locala.l()))
               {
-                localBitmap = com.tencent.mapsdk.rastercore.tile.a.a.a().a(locala);
-                ??? = localBitmap;
-                localBitmap.setDensity(e.B());
-              }
-              catch (Throwable localThrowable)
-              {
-                Bitmap localBitmap;
-                Object localObject3 = ???;
-                if (TencentMap.getErrorListener() == null) {
+                locala.a(((com.tencent.mapsdk.rastercore.tile.a.b)???).b());
+                if ((locala.m() == MapTile.MapSource.TENCENT) && (!b.d(b.this).r())) {
+                  f.a += 1;
+                }
+                if (locala.m() != MapTile.MapSource.WORLD) {
                   continue;
                 }
-                TencentMap.getErrorListener().collectErrorInfo("TileEngineManager getTiles Runnable call CacheManager Get occured Exception,tileInfo:x=" + locala.b() + ",y=" + locala.c() + ",z=" + locala.d() + ";Get execute path:" + localStringBuilder.toString() + ";Exception Info:" + localThrowable.toString());
-                localObject3 = ???;
+                f.b += 1;
                 continue;
-                b.a(b.this, locala);
-              }
-              if (localBitmap != null) {
-                locala.a(localBitmap);
+                localObject2 = finally;
+                throw localObject2;
               }
             }
-            continue;
-            label292:
-            b.a(b.this).c().postInvalidate();
-            i += 1;
+            catch (Throwable localThrowable)
+            {
+              for (;;)
+              {
+                if (TencentMap.getErrorListener() != null) {
+                  TencentMap.getErrorListener().collectErrorInfo("TileEngineManager getTiles Runnable call CacheManager Get occured Exception,tileInfo:x=" + locala.b() + ",y=" + locala.c() + ",z=" + locala.d() + "Exception Info:" + localThrowable.toString());
+                }
+                localb = null;
+              }
+              if ((localb.b() != null) && (localb.d() != locala.l()) && (locala.m() == MapTile.MapSource.TENCENT))
+              {
+                new StringBuilder("Have got cache,but version is not ok,tileBitmap.getVersion：").append(localb.d()).append(",tileData.getVersion:").append(locala.l());
+                b.a(b.this, locala, true, localb);
+              }
+            }
+            if (localb.b() == null)
+            {
+              b.a(b.this, locala, false, null);
+              if ((locala.m() == MapTile.MapSource.TENCENT) && (!b.d(b.this).r()))
+              {
+                b.d(b.this);
+                f.c += 1;
+              }
+              if (locala.m() == MapTile.MapSource.WORLD)
+              {
+                b.d(b.this);
+                f.d += 1;
+                continue;
+                label444:
+                b.d(b.this).c().postInvalidate();
+                i += 1;
+              }
+            }
           }
         }
       };
@@ -183,7 +204,7 @@ public final class b
     }
   }
   
-  public final void b(d arg1)
+  public final void b(e arg1)
   {
     String str;
     if (??? != null) {

@@ -1,21 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackJumpInfo;
+import android.view.animation.Interpolator;
 
 public class lwf
-  implements View.OnClickListener
+  implements Interpolator
 {
-  public lwf(ComponentJump paramComponentJump, oidb_cmd0x68b.PackJumpInfo paramPackJumpInfo) {}
-  
-  public void onClick(View paramView)
+  public float getInterpolation(float paramFloat)
   {
-    paramView = this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_url.get();
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), paramView);
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_wording.get());
+    return 12.9184F * paramFloat * paramFloat * paramFloat - 22.5776F * paramFloat * paramFloat + 9.65921F * paramFloat + 1.0F;
   }
 }
 

@@ -1,13 +1,13 @@
-import java.util.Map;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
 
-class aeih
+public class aeih
   implements Runnable
 {
-  aeih(aeig paramaeig, Map paramMap) {}
+  public aeih(LebaWithFeeds paramLebaWithFeeds) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aeig.a.jdField_a_of_type_JavaUtilMap = this.jdField_a_of_type_JavaUtilMap;
+    LebaWithFeeds.a(this.a, true);
   }
 }
 

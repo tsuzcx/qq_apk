@@ -16,7 +16,7 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.widget.QQToast;
 import cooperation.readinjoy.ReadInJoyHelper;
-import lia;
+import lko;
 import mqq.app.AppRuntime;
 
 public class ReadInJoyCaptureLauncher
@@ -44,7 +44,7 @@ public class ReadInJoyCaptureLauncher
   
   private static void a(Context paramContext)
   {
-    DialogUtil.a(paramContext, 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131433016, new lia()).show();
+    DialogUtil.a(paramContext, 230).setMessage("系统版本过低，不支持短视频功能").setPositiveButton(2131433030, new lko()).show();
   }
   
   public static void a(Context paramContext, Bundle paramBundle)
@@ -58,7 +58,7 @@ public class ReadInJoyCaptureLauncher
     boolean bool2 = CaptureUtil.a();
     if ((!bool1) && (!NetworkUtil.g(paramContext)))
     {
-      QQToast.a(paramContext, 2131432978, 0).a();
+      QQToast.a(paramContext, 2131432992, 0).a();
       return;
     }
     a();

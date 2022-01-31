@@ -13,7 +13,7 @@ public class SendVideoToFriendHelper$GenShareThumbEvent
   
   public SendVideoToFriendHelper$GenShareThumbEvent(ErrorMessage paramErrorMessage, String paramString)
   {
-    this.a = paramErrorMessage;
+    this.errorInfo = paramErrorMessage;
     this.b = paramString;
   }
 }

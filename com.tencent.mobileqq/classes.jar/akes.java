@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
-import com.tencent.util.InputMethodUtil;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.os.Handler;
+import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
 
 public class akes
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public akes(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
+  public akes(ShakePicView paramShakePicView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    InputMethodUtil.a(this.a.a);
+    this.a.a.postDelayed(new aket(this), 160L);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akes
  * JD-Core Version:    0.7.0.1
  */

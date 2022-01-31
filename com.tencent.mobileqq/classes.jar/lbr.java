@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
 
-public class lbr
-  implements ActionSheet.OnDismissListener
+public final class lbr
+  implements Parcelable.Creator
 {
-  public lbr(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public void onDismiss()
+  public VideoInfo.ChannelInfo a(Parcel paramParcel)
   {
-    if ((!this.a.a) && (this.a.h != -1)) {
-      ThreadManager.getUIHandler().postDelayed(new lbs(this), 300L);
-    }
-    this.a.a = false;
+    return new VideoInfo.ChannelInfo(paramParcel);
+  }
+  
+  public VideoInfo.ChannelInfo[] a(int paramInt)
+  {
+    return new VideoInfo.ChannelInfo[paramInt];
   }
 }
 

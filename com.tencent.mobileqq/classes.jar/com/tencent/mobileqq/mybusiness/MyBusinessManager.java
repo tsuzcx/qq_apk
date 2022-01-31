@@ -2,9 +2,9 @@ package com.tencent.mobileqq.mybusiness;
 
 import MyCarrier.Carrier;
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import aele;
-import aelg;
-import aelh;
+import aeto;
+import aetq;
+import aetr;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.qq.taf.jce.JceInputStream;
@@ -29,9 +29,9 @@ public class MyBusinessManager
   public int a;
   Carrier jdField_a_of_type_MyCarrierCarrier = null;
   public QQAppInterface a;
-  private MyBusinessObserver jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessObserver = new aele(this);
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new aelg(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aelh(this);
+  private MyBusinessObserver jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessObserver = new aeto(this);
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new aetq(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aetr(this);
   public boolean a;
   public boolean b = false;
   

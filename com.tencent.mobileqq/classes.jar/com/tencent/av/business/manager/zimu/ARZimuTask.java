@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
-import jgp;
+import jis;
 
 public abstract class ARZimuTask
 {
@@ -24,7 +24,7 @@ public abstract class ARZimuTask
   protected ARZimuTask.IARZimuShowPlayer a;
   protected EffectZimuManager a;
   protected final List a;
-  protected jgp a;
+  protected jis a;
   
   public ARZimuTask(VideoAppInterface paramVideoAppInterface)
   {
@@ -189,8 +189,8 @@ public abstract class ARZimuTask
   
   public void a()
   {
-    this.jdField_a_of_type_Jgp = new jgp(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Jgp);
+    this.jdField_a_of_type_Jis = new jis(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Jis);
   }
   
   public void a(SentenceInfo paramSentenceInfo)
@@ -223,8 +223,8 @@ public abstract class ARZimuTask
   
   public void b()
   {
-    if (this.jdField_a_of_type_Jgp != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Jgp);
+    if (this.jdField_a_of_type_Jis != null) {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Jis);
     }
   }
   
@@ -277,7 +277,7 @@ public abstract class ARZimuTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.zimu.ARZimuTask
  * JD-Core Version:    0.7.0.1
  */

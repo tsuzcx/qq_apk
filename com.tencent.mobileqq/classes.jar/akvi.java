@@ -1,20 +1,28 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.PAVideoView;
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class akvi
-  implements Runnable
+  extends AudioManager
 {
-  public akvi(PAVideoView paramPAVideoView, ImageView paramImageView) {}
-  
-  public void run()
+  public akvi(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840918);
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_ComTencentMobileqqWidgetPAVideoView.a);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetPAVideoView.j == 4) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPAVideoView.b(false);
+    super(paramContext);
+  }
+  
+  public int requestAudioFocus(AudioManager.OnAudioFocusChangeListener paramOnAudioFocusChangeListener, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      paramInt1 = super.requestAudioFocus(paramOnAudioFocusChangeListener, paramInt1, paramInt2);
+      return paramInt1;
     }
+    catch (NullPointerException paramOnAudioFocusChangeListener)
+    {
+      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "audio_manager_npe", 0, 1, 0, "", "", "", "");
+    }
+    return 0;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aifn;
+import aikh;
 import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -27,7 +27,7 @@ public class Rdm
     long l = SystemClock.uptimeMillis();
     MTAReportController localMTAReportController = MTAReportController.a(BaseApplicationImpl.sApplication);
     localMTAReportController.a(false);
-    localMTAReportController.initMtaConfig("10001264", "AGU36HSC29K4");
+    localMTAReportController.initMtaConfig("70124", "AGU36HSC29K4");
     if (!paramString1.endsWith(":openSdk")) {
       localMTAReportController.a(paramString2);
     }
@@ -73,7 +73,7 @@ public class Rdm
             StatisticCollector.a(BaseApplicationImpl.sApplication).a((String)localObject1);
             localObject2 = localObject1;
           }
-          localObject1 = new aifn(this, str);
+          localObject1 = new aikh(this, str);
           if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
             continue;
           }

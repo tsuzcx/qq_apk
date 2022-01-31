@@ -51,12 +51,12 @@ public class LebaTopEntryView
   {
     LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
     if (localLayoutInflater != null) {
-      localLayoutInflater.inflate(2130970387, this);
+      localLayoutInflater.inflate(2130970402, this);
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366363));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370330));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131370333));
-    this.b = ((TextView)findViewById(2131370332));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366368));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370339));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131370342));
+    this.b = ((TextView)findViewById(2131370341));
   }
   
   public TextView b()

@@ -13,6 +13,7 @@ public class ConfessInfo
   public static final String KEY_CONFESS_BG_TYPE = "key_confess_bg_type";
   public static final String KEY_CONFESS_DESC = "key_confess_desc";
   public static final String KEY_CONFESS_REC_NICK_NAME = "key_confess_rec_nick_name";
+  public static final String KEY_CONFESS_REC_NICK_TYPE = "key_confess_rec_nick_type";
   public static final String KEY_CONFESS_REC_UIN = "key_confess_rec_uin";
   public static final String KEY_CONFESS_SYSMSG = "key_confess_sysmsg";
   public static final String KEY_CONFESS_TIME = "key_confess_time";

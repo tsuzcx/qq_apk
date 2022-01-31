@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aaqz
-  extends ArkAppCGI.ArkAppCGICallback
+class aaqz
+  implements Runnable
 {
-  public aaqz(ArkActionAppMgr paramArkActionAppMgr) {}
+  aaqz(aaqy paramaaqy, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public void a(boolean paramBoolean, Object paramObject, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public void run()
   {
-    ThreadManager.post(new aara(this, paramObject, paramBoolean, paramArrayList1, paramArrayList2), 5, null, true);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((aark)localIterator.next()).a(true);
+    }
+    localIterator = this.b.iterator();
+    for (boolean bool = true; localIterator.hasNext(); bool = false) {
+      ((aark)localIterator.next()).a(false);
+    }
+    this.jdField_a_of_type_Aaqy.a.a(bool, this.jdField_a_of_type_Aaqy.b);
   }
 }
 

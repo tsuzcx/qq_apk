@@ -1,20 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.ProfileCardUtil;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rqq
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rqq(BaseChatPie paramBaseChatPie) {}
+  public rqq(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(230);
-    ProfileCardUtil.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, null, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 1101, null);
+    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433586), "qqsetting_auto_receive_pic_key", paramBoolean);
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      return;
+    }
   }
 }
 

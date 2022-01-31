@@ -1,19 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaTopBarView;
+import com.tencent.mobileqq.imaxad.ImaxAdUtil;
+import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import java.io.File;
 
 public class aebo
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  public aebo(LebaTopBarView paramLebaTopBarView, View paramView) {}
+  private aebo(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onComplete(String paramString1, String paramString2)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    synchronized (ImaxAdVideoPreloadManager.a(this.a))
+    {
+      String str = ImaxAdVideoPreloadManager.a(paramString1);
+      ImaxAdUtil.b("onComplete path:" + str);
+      ImaxAdUtil.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
+      ImaxAdVideoPreloadManager.a(this.a, paramString1);
+      paramString2 = new File(ImaxAdVideoPreloadManager.b(paramString1));
+      if (paramString2.exists()) {
+        paramString2.renameTo(new File(str));
+      }
+      ImaxAdVideoPreloadManager.b(this.a, paramString1);
+      ImaxAdVideoPreloadManager.b(this.a, ImaxAdVideoPreloadManager.a(this.a));
+      ImaxAdVideoPreloadManager.b(this.a);
+      return;
+    }
   }
 }
 

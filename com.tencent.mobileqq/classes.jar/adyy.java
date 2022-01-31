@@ -1,57 +1,36 @@
-import com.tencent.mobileqq.hotpic.VideoItemEventManager.onVideoItemEventListener;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlCallBack;
+import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlResult;
 import com.tencent.qphone.base.util.QLog;
 
-public class adyy
-  implements VideoItemEventManager.onVideoItemEventListener
+class adyy
+  implements HotVideoData.HotVideoGetUrlCallBack
 {
-  public adyy(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController) {}
+  adyy(adyx paramadyx, HotVideoData paramHotVideoData, HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, URLDrawable paramURLDrawable) {}
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public void a(HotVideoData.HotVideoGetUrlResult paramHotVideoGetUrlResult)
   {
-    LebaFeedsVideoPlayController.a(this.a, 1000L);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaFeedsVideoPlayController", 2, "onVolumChange");
-    }
-    boolean bool;
-    int i;
-    if ((LebaFeedsVideoPlayController.a(this.a) != null) && (LebaFeedsVideoPlayController.a(this.a)) && (LebaFeedsVideoPlayController.a(this.a) != null))
+    if (paramHotVideoGetUrlResult.jdField_a_of_type_Boolean)
     {
-      bool = LebaFeedsVideoPlayController.a(this.a).c();
-      if ((LebaFeedsVideoPlayController.a(this.a) == null) || (!LebaFeedsVideoPlayController.a(this.a).b())) {
-        break label115;
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramHotVideoGetUrlResult.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a() == this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
+        this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
       }
-      i = 1;
-      if (i == 0) {
-        break label120;
-      }
-      LebaFeedsVideoPlayController.a(this.a).a(true);
-      LebaFeedsVideoPlayController.a(this.a, true);
-      LebaFeedsVideoPlayController.a(this.a, true);
     }
-    label115:
-    label120:
-    while (!bool)
+    do
     {
       return;
-      i = 0;
-      break;
-    }
-    LebaFeedsVideoPlayController.a(this.a).a(false);
-    LebaFeedsVideoPlayController.a(this.a, false);
-    LebaFeedsVideoPlayController.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManagerHotPicPageView", 2, "onFileDownloadFailed:" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex + " GetUrlFailed msg:" + paramHotVideoGetUrlResult.jdField_a_of_type_JavaLangString);
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a() != this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(-10);
   }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean) {}
 }
 
 

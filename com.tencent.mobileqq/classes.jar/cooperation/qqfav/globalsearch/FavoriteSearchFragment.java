@@ -1,6 +1,6 @@
 package cooperation.qqfav.globalsearch;
 
-import ampi;
+import amwt;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,7 +22,7 @@ public class FavoriteSearchFragment
   
   protected BaseMvpAdapter a()
   {
-    return new ampi(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new amwt(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
   }
   
   protected ISearchEngine a()

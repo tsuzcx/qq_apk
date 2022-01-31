@@ -1,21 +1,13 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.widget.EditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
 
-public final class xdw
-  implements Runnable
+public class xdw
+  implements DialogInterface.OnClickListener
 {
-  public xdw(EditText paramEditText) {}
+  public xdw(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void run()
-  {
-    MotionEvent localMotionEvent1 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 0, 0.0F, 0.0F, 0);
-    this.a.dispatchTouchEvent(localMotionEvent1);
-    MotionEvent localMotionEvent2 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 1, 0.0F, 0.0F, 0);
-    this.a.dispatchTouchEvent(localMotionEvent2);
-    localMotionEvent1.recycle();
-    localMotionEvent2.recycle();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -40,6 +41,7 @@ import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
 import com.tencent.mobileqq.apollo.game.ApolloGameTimeReporter;
 import com.tencent.mobileqq.apollo.game.ApolloGameView;
 import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
 import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 import com.tencent.mobileqq.apollo.process.sso.CmGameObserver;
 import com.tencent.mobileqq.apollo.process.sso.CmGameSSoHandler;
@@ -61,15 +63,16 @@ import com.tencent.widget.immersive.SystemBarCompact;
 import java.lang.ref.WeakReference;
 import java.util.Observable;
 import java.util.Observer;
-import ysu;
-import ysv;
-import ysw;
-import ysx;
-import ysy;
-import ysz;
-import yta;
-import ytb;
-import ytc;
+import yzl;
+import yzm;
+import yzn;
+import yzo;
+import yzp;
+import yzq;
+import yzr;
+import yzs;
+import yzt;
+import yzu;
 
 public class ApolloGameActivity
   extends FragmentActivity
@@ -88,23 +91,24 @@ public class ApolloGameActivity
   private CmGameStartChecker jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker;
   private ApolloGameView jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView;
   private CmGameLauncher jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher;
-  private CmGameObserver jdField_a_of_type_ComTencentMobileqqApolloProcessSsoCmGameObserver = new ysu(this);
+  private CmGameObserver jdField_a_of_type_ComTencentMobileqqApolloProcessSsoCmGameObserver = new yzl(this);
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  private ytc jdField_a_of_type_Ytc;
+  private yzu jdField_a_of_type_Yzu;
   public boolean a;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private URLDrawable jdField_b_of_type_ComTencentImageURLDrawable;
   private boolean jdField_b_of_type_Boolean;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
   private boolean jdField_c_of_type_Boolean;
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aI + "/QQ_Screenshot/cmshow_game_splash.png";
+    jdField_a_of_type_JavaLangString = AppConstants.aJ + "/QQ_Screenshot/cmshow_game_splash.png";
   }
   
   public static void a(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, String paramString2)
@@ -137,48 +141,87 @@ public class ApolloGameActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362817));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362819));
-      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131362838);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362822));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362824));
+      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131362843);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131362839);
+      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131362844);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362827));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362832));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      ((TextView)super.findViewById(2131362826)).setText((CharSequence)localObject3);
-      localObject2 = (URLImageView)super.findViewById(2131362824);
+      ((TextView)super.findViewById(2131362831)).setText((CharSequence)localObject3);
+      localObject2 = (URLImageView)super.findViewById(2131362829);
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject3 = URLDrawable.URLDrawableOptions.obtain();
         Resources localResources = super.getResources();
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = localResources.getDrawable(2130838068);
-        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = localResources.getDrawable(2130838068);
-        ((URLImageView)localObject2).setImageDrawable(URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362832));
+        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = localResources.getDrawable(2130838069);
+        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = localResources.getDrawable(2130838069);
+        this.jdField_b_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
+        ((URLImageView)localObject2).setImageDrawable(this.jdField_b_of_type_ComTencentImageURLDrawable);
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362837));
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131362831));
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131362836));
         this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131362829));
+        this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131362834));
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        localObject1 = super.findViewById(2131362828);
+        localObject1 = super.findViewById(2131362833);
         if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null) || (!paramStartCheckParam.game.isFeatured)) {
-          break label320;
+          break label383;
         }
         ((View)localObject1).setVisibility(0);
-      }
-      for (;;)
-      {
-        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362830));
+        label296:
+        this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362835));
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+        if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game == null)) {
+          break label392;
+        }
+      }
+      label392:
+      for (paramStartCheckParam = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);; paramStartCheckParam = "")
+      {
+        VipUtils.a(null, "cmshow", "Apollo", "exposureUniversialFrameShareButton", 0, 0, new String[] { paramStartCheckParam });
         return;
-        ((URLImageView)localObject2).setImageResource(2130838068);
+        ((URLImageView)localObject2).setImageResource(2130838069);
         break;
-        label320:
+        label383:
         ((View)localObject1).setVisibility(8);
+        break label296;
       }
       localObject1 = null;
       localObject3 = null;
     }
+  }
+  
+  private void a(CmGameInitParams paramCmGameInitParams)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mUpdated) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mGameType = ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
+        }
+        if (!b()) {
+          break;
+        }
+      } while (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher == null);
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a(this, paramCmGameInitParams);
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.b(this, paramCmGameInitParams);
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView == null);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mUpdated) {
+      ApolloGameUtil.a(this, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId, ApolloFragmentManager.a().a(), this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.mGameType, this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView);
+    }
+    if (a()) {
+      runOnUiThread(new yzp(this));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a(paramCmGameInitParams);
+    a(0L);
   }
   
   private void a(String paramString)
@@ -226,7 +269,7 @@ public class ApolloGameActivity
     for (;;)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this, 0, null, str, 2131433016, 2131433015, null, new ytb(this));
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this, 0, null, str, 2131433030, 2131433029, null, new yzt(this));
       }
       if (!TextUtils.isEmpty(str))
       {
@@ -244,6 +287,14 @@ public class ApolloGameActivity
         str = "游戏已经结束啦，自己去玩一局试试~";
       }
     }
+  }
+  
+  public Drawable a()
+  {
+    if (this.jdField_b_of_type_ComTencentImageURLDrawable != null) {
+      return this.jdField_b_of_type_ComTencentImageURLDrawable.getCurrDrawable();
+    }
+    return null;
   }
   
   public ApolloGameView a()
@@ -282,7 +333,7 @@ public class ApolloGameActivity
   
   public void a(ApolloSurfaceView paramApolloSurfaceView)
   {
-    ((FrameLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362818)).addView(paramApolloSurfaceView, new FrameLayout.LayoutParams(-1, -1));
+    ((FrameLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362823)).addView(paramApolloSurfaceView, new FrameLayout.LayoutParams(-1, -1));
     a(3000L);
   }
   
@@ -298,8 +349,8 @@ public class ApolloGameActivity
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       Resources localResources = getResources();
-      localURLDrawableOptions.mLoadingDrawable = localResources.getDrawable(2130838068);
-      localURLDrawableOptions.mFailedDrawable = localResources.getDrawable(2130838068);
+      localURLDrawableOptions.mLoadingDrawable = localResources.getDrawable(2130838069);
+      localURLDrawableOptions.mFailedDrawable = localResources.getDrawable(2130838069);
       this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.logoUrl, localURLDrawableOptions);
       this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
       this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
@@ -336,31 +387,38 @@ public class ApolloGameActivity
       int j = paramIntent.getIntExtra("cmshow_game_id", -1);
       VipUtils.a(null, "cmshow", "Apollo", "share_url_succeed", ApolloUtil.b(i), 0, new String[] { Integer.toString(j) });
       continue;
-      if ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) && (paramIntent != null))
-      {
-        i = paramIntent.getIntExtra("share_result_key", -1);
-        if (i == 0) {}
-        try
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) {
+        if (paramInt2 == -1)
         {
-          QQToast.a(getApplicationContext(), "已成功发送消息", 0).a();
-          j = paramIntent.getIntExtra("uintype", -1);
-          String str = paramIntent.getStringExtra("uin");
-          j = ApolloGameUtil.a(CmGameUtil.a(), j, str);
-          if (b()) {
-            this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a(i, j, str);
-          }
+          this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a(0, 1, 0, "");
         }
-        catch (Throwable localThrowable)
+        else
         {
-          for (;;)
+          this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a(1, 1, 0, "");
+          continue;
+          if ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) && (paramIntent != null))
           {
-            QLog.e("cmgame_process.ApolloGameActivity", 1, localThrowable, new Object[0]);
+            i = paramIntent.getIntExtra("share_result_key", -1);
+            if (i == 0) {}
+            try
+            {
+              QQToast.a(getApplicationContext(), "已成功发送消息", 0).a();
+              j = paramIntent.getIntExtra("uintype", -1);
+              String str = paramIntent.getStringExtra("uin");
+              j = ApolloGameUtil.a(CmGameUtil.a(), j, str);
+              this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a(i, 0, j, str);
+            }
+            catch (Throwable localThrowable)
+            {
+              for (;;)
+              {
+                QLog.e("cmgame_process.ApolloGameActivity", 1, localThrowable, new Object[0]);
+              }
+            }
+            if ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a() != null)) {
+              this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a().queueEvent(new yzr(this, paramInt1, paramInt2, paramIntent));
+            }
           }
-          this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a(i, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, j);
-        }
-        continue;
-        if ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a() != null)) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a().queueEvent(new ysz(this, paramInt1, paramInt2, paramIntent));
         }
       }
     }
@@ -402,7 +460,7 @@ public class ApolloGameActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.requestCode = System.currentTimeMillis();
     QLog.i("cmgame_process.ApolloGameActivity", 1, "[doOnCreate] launch_cmgame mStartCheckParam:" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam + ", this:" + this);
-    CmGameUtil.a(1, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);
+    CmGameUtil.a(1, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
     ApolloGameTimeReporter.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
     int j;
     if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.viewMode == 1)
@@ -410,17 +468,17 @@ public class ApolloGameActivity
       super.setRequestedOrientation(8);
       i = 0;
       if (i == 0) {
-        break label545;
+        break label564;
       }
       j = 1;
-      label227:
+      label231:
       this.jdField_b_of_type_Int = j;
       if (i == 0) {
-        break label550;
+        break label569;
       }
     }
-    label545:
-    label550:
+    label564:
+    label569:
     for (int i = 2130968602;; i = 2130968603)
     {
       super.setContentView(i);
@@ -428,11 +486,11 @@ public class ApolloGameActivity
       paramBundle = CmGameUtil.a();
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker = new CmGameStartChecker(paramBundle);
-      this.jdField_a_of_type_Ytc = new ytc(this, paramBundle);
+      this.jdField_a_of_type_Yzu = new yzu(this, paramBundle);
       if (paramBundle != null)
       {
         paramBundle.addObserver(this.jdField_a_of_type_ComTencentMobileqqApolloProcessSsoCmGameObserver);
-        this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, this.jdField_a_of_type_Ytc);
+        this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam, this.jdField_a_of_type_Yzu);
         if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game != null) && (!a()))
         {
           paramBundle = CmGameUtil.a();
@@ -455,9 +513,12 @@ public class ApolloGameActivity
           this.mSystemBarComp.setStatusColor(-1);
           this.mSystemBarComp.setStatusBarColor(-1);
         }
-        ThreadManager.post(new ysv(this), 8, null, false);
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a(this);
+        }
+        ThreadManager.post(new yzm(this), 8, null, false);
       }
-      ThreadManager.post(new ysw(this), 8, null, true);
+      ThreadManager.post(new yzn(this), 8, null, true);
       return true;
       if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.viewMode == 2)
       {
@@ -469,7 +530,7 @@ public class ApolloGameActivity
       i = 1;
       break;
       j = 2;
-      break label227;
+      break label231;
     }
   }
   
@@ -477,6 +538,7 @@ public class ApolloGameActivity
   {
     super.doOnDestroy();
     QLog.i("cmgame_process.ApolloGameActivity", 1, "[doOnDestroy] this:" + this);
+    ApolloGameTimeReporter.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
     if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView != null) {
       this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a(false);
@@ -493,7 +555,7 @@ public class ApolloGameActivity
     if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.d();
-      CmGameUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a());
+      CmGameUtil.c(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a());
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game != null)) {
       CmGameUtil.a(4, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);
@@ -505,7 +567,6 @@ public class ApolloGameActivity
     if (jdField_a_of_type_JavaLangRefWeakReference != null) {
       jdField_a_of_type_JavaLangRefWeakReference.clear();
     }
-    ApolloGameTimeReporter.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
   }
   
   protected boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -535,6 +596,9 @@ public class ApolloGameActivity
     if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) {
       this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.c();
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.g();
+    }
     ApolloGameTimeReporter.b(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
   }
   
@@ -549,6 +613,9 @@ public class ApolloGameActivity
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(18, 500L);
     if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher != null) {
       this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.b();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.f();
     }
     ApolloGameTimeReporter.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
   }
@@ -621,14 +688,14 @@ public class ApolloGameActivity
               QLog.d("cmgame_process.ApolloGameActivity", 1, "[handleMessage] remove loading rootView.");
               paramMessage = new AlphaAnimation(1.0F, 0.0F);
               paramMessage.setDuration(300L);
-              paramMessage.setAnimationListener(new ysy(this));
+              paramMessage.setAnimationListener(new yzq(this));
               if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() == 0) {
                 this.jdField_c_of_type_AndroidWidgetTextView.setText("100%");
               }
               this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(paramMessage);
             } while ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enableMenu));
             QLog.d("cmgame_process.ApolloGameActivity", 1, "[handleMessage] remove top menu");
-            paramMessage = findViewById(2131362834);
+            paramMessage = findViewById(2131362839);
           } while (paramMessage == null);
           paramMessage.setVisibility(8);
           return false;
@@ -639,7 +706,7 @@ public class ApolloGameActivity
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         return false;
         QLog.d("cmgame_process.ApolloGameActivity", 1, "[handleMessage] MSG_RESET_TOP_MENU");
-        paramMessage = super.findViewById(2131362834);
+        paramMessage = super.findViewById(2131362839);
       } while ((paramMessage == null) || (paramMessage.getVisibility() != 0));
       localObject = (RelativeLayout.LayoutParams)paramMessage.getLayoutParams();
     } while (localObject == null);
@@ -676,65 +743,56 @@ public class ApolloGameActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131362838: 
+    case 2131362843: 
       do
       {
         return;
       } while ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher == null) || (!this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a()) || ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())));
-      int i;
       if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
       {
         if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (a()))
         {
           this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-          i = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
+          int i = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
           if ((i != 0) && (i != 1) && (i != 7)) {
-            break label280;
+            break label265;
           }
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131438203, 0);
+          this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131438223, 0);
           label130:
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131438201, 0);
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131438202, 0);
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131438205, 0);
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new yta(this));
+          this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131438221, 0);
+          this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131438222, 0);
+          this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131438225, 0);
+          this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
+          this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new yzs(this));
         }
       }
       else
       {
         this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
-          break label294;
-        }
-        i = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
-        label210:
         if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game == null)) {
-          break label299;
+          break label279;
         }
       }
-      label280:
-      label294:
-      label299:
+      label265:
+      label279:
       for (paramView = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);; paramView = "")
       {
-        VipUtils.a(null, "cmshow", "Apollo", "more_info", i, 0, new String[] { paramView });
+        VipUtils.a(null, "cmshow", "Apollo", "more_info", 0, 0, new String[] { paramView });
         return;
         this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.b(this, null));
         break;
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131438204, 0);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131438224, 0);
         break label130;
-        i = 0;
-        break label210;
       }
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher == null) || (!this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a()))
     {
       QLog.d("cmgame_process.ApolloGameActivity", 1, "game not running, finish");
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.d();
-      }
       finish();
       return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.d();
     }
     this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.g();
     QLog.d("cmgame_process.ApolloGameActivity", 1, "notify game");
@@ -751,7 +809,7 @@ public class ApolloGameActivity
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game != null)) {
-      ThreadManager.executeOnSubThread(new ysx(this, paramURLDrawable));
+      ThreadManager.executeOnSubThread(new yzo(this, paramURLDrawable));
     }
   }
   

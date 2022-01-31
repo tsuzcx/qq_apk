@@ -1,20 +1,16 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager.VideoDownloadCallback;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class lhe
-  implements ReadInJoyVideoDownloadManager.VideoDownloadCallback
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public lhe(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lhe(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ReadInJoyCameraCaptureActivity.a(this.a).post(new lhg(this, paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    ReadInJoyCameraCaptureActivity.a(this.a).post(new lhf(this, paramBoolean, paramString2));
+    ReadInJoySettingActivity.b(this.a, paramBoolean);
+    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
   }
 }
 

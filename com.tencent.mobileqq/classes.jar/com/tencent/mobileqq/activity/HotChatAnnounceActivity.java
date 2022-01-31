@@ -20,9 +20,9 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import svh;
-import svi;
-import svj;
+import tac;
+import tad;
+import tae;
 
 public class HotChatAnnounceActivity
   extends IphoneTitleBarActivity
@@ -30,7 +30,7 @@ public class HotChatAnnounceActivity
 {
   View jdField_a_of_type_AndroidViewView;
   public TextView a;
-  HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new svh(this);
+  HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new tac(this);
   BlockableEditTextView jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView;
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   public String a;
@@ -49,7 +49,7 @@ public class HotChatAnnounceActivity
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) && (!isFinishing()))
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435070);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435086);
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
@@ -89,18 +89,18 @@ public class HotChatAnnounceActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970363);
+    super.setContentView(2130970378);
     setTitle("热聊公告");
-    setRightButton(2131433924, this);
-    setLeftViewName(2131432414);
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131370242));
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new svi(this));
-    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131370245));
-    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new svj(this));
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131370246);
+    setRightButton(2131433940, this);
+    setLeftViewName(2131432425);
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131370251));
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new tad(this));
+    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131370254));
+    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new tae(this));
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131370255);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370243));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370244);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370252));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370253);
     paramBundle = getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("TROOPUIN");
     this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("CANADDLINK", false);
@@ -147,7 +147,7 @@ public class HotChatAnnounceActivity
     {
       if (!NetworkUtil.d(this))
       {
-        QQToast.a(this, 0, 2131433009, 0).b(getTitleBarHeight());
+        QQToast.a(this, 0, 2131433023, 0).b(getTitleBarHeight());
         return;
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getText().toString();

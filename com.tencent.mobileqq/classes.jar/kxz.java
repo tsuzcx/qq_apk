@@ -1,19 +1,17 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 
 public class kxz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public kxz(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
+  public kxz(CustomWebChromeClient paramCustomWebChromeClient, JsPromptResult paramJsPromptResult, EditText paramEditText) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = PublicAccountJavascriptInterface.a();
-    try
-    {
-      PublicAccountJavascriptInterface.a(l);
-      return;
-    }
-    finally {}
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsPromptResult.confirm(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
   }
 }
 

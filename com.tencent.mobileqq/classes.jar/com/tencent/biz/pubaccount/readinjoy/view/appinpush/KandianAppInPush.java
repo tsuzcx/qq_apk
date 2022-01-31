@@ -20,9 +20,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mlq;
-import mls;
-import mlt;
+import mpi;
+import mpk;
+import mpl;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,7 +31,7 @@ public class KandianAppInPush
 {
   private static KandianAppInPush jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush;
   private Kandian210Msg0xeeInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo;
-  private AppInPushNotification.OnDismissListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushNotification$OnDismissListener = new mlq(this);
+  private AppInPushNotification.OnDismissListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushNotification$OnDismissListener = new mpi(this);
   private AppInPushNotification jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushNotification;
   private Kandian210Msg0xeeInfo b;
   
@@ -81,7 +81,7 @@ public class KandianAppInPush
           case 2: 
           default: 
             i = 0;
-            return AppInPushNotification.a().a(paramContext).a((QQAppInterface)ReadInJoyUtils.a()).b((String)localObject3).c(str5).a(str2).d(str7).f(str3).e(str6).g(str1).b(i).a(j).h((String)localObject2).i((String)localObject1).a(l).a(new mlt(this, str8, k, paramNotifyInfo)).a(paramOnDismissListener).a();
+            return AppInPushNotification.a().a(paramContext).a((QQAppInterface)ReadInJoyUtils.a()).b((String)localObject3).c(str5).a(str2).d(str7).f(str3).e(str6).g(str1).b(i).a(j).h((String)localObject2).i((String)localObject1).a(l).a(new mpl(this, str8, k, paramNotifyInfo)).a(paramOnDismissListener).a();
             str2 = "";
             break label67;
             str1 = paramNotifyInfo.socialPushInfo.biuReason;
@@ -157,7 +157,7 @@ public class KandianAppInPush
         if (localNotifyInfo.endTime <= l) {
           QLog.d("KandianAppInPush", 2, "app in push, is skip end time , seq : " + paramKandian210Msg0xeeInfo.msgSeq);
         } else {
-          ThreadManager.getUIHandler().post(new mls(this, paramKandian210Msg0xeeInfo, localNotifyInfo));
+          ThreadManager.getUIHandler().post(new mpk(this, paramKandian210Msg0xeeInfo, localNotifyInfo));
         }
       }
       finally {}

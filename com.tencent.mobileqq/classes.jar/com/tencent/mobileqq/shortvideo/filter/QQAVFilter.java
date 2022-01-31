@@ -237,6 +237,15 @@ public class QQAVFilter
     SLog.c("avFilterRender", "AVFILTER onSurfaceDestroy");
   }
   
+  public boolean f_()
+  {
+    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender == null) {}
+    while (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender.getFilterType() == -1) {
+      return false;
+    }
+    return true;
+  }
+  
   public void h()
   {
     boolean bool = false;
@@ -252,15 +261,6 @@ public class QQAVFilter
       bool = true;
     }
     QQFilterLogManager.a("QQAvFilter", bool);
-  }
-  
-  public boolean i_()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender == null) {}
-    while (this.jdField_a_of_type_ComTencentAvVideoEffectFilterFilterRender.getFilterType() == -1) {
-      return false;
-    }
-    return true;
   }
 }
 

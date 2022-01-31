@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating;
 
-import abwp;
+import acem;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -61,8 +61,8 @@ public class CarrierHelper
   
   public View a(IFlingSwitch paramIFlingSwitch)
   {
-    View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2130970421, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView = ((CarrierADView)localView.findViewById(2131365693));
+    View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2130970436, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView = ((CarrierADView)localView.findViewById(2131365698));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.setContentDescription(",");
     this.jdField_a_of_type_ComTencentMobileqqWidgetCarrierADView.setFlingSwitch(paramIFlingSwitch);
     return localView;
@@ -116,7 +116,7 @@ public class CarrierHelper
         localLinkedList.add(Integer.valueOf(localAdData.ad_source));
       }
     }
-    ThreadManager.getSubThreadHandler().post(new abwp(this, localLinkedList));
+    ThreadManager.getSubThreadHandler().post(new acem(this, localLinkedList));
   }
   
   public void a(int paramInt, Object paramObject)
@@ -160,13 +160,13 @@ public class CarrierHelper
   
   public void a(View paramView, AdData paramAdData)
   {
-    Object localObject = (ImageView)paramView.findViewById(2131368290);
-    BorderTextView localBorderTextView = (BorderTextView)paramView.findViewById(2131370470);
-    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131370468);
-    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131370469);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131370471);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131370472);
-    View localView = paramView.findViewById(2131370473);
+    Object localObject = (ImageView)paramView.findViewById(2131368292);
+    BorderTextView localBorderTextView = (BorderTextView)paramView.findViewById(2131370479);
+    SingleLineTextView localSingleLineTextView1 = (SingleLineTextView)paramView.findViewById(2131370477);
+    SingleLineTextView localSingleLineTextView2 = (SingleLineTextView)paramView.findViewById(2131370478);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131370480);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131370481);
+    View localView = paramView.findViewById(2131370482);
     localBorderTextView.setTextSize(1, 11.0F);
     localBorderTextView.setBorderWidth(Math.round(localBorderTextView.getResources().getDisplayMetrics().density * 1.0F));
     ((ImageView)localObject).setImageDrawable(URLDrawableHelper.a(paramAdData.img_url));

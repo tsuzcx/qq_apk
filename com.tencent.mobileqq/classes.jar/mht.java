@@ -1,25 +1,36 @@
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoStatusListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import java.util.Set;
 
 public class mht
-  implements VideoPlayManager.VideoStatusListener
+  implements Runnable
 {
-  public mht(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mht(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
   
-  public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam)
+  public void run()
   {
-    this.a.a(paramVideoPlayParam);
-    if (paramVideoPlayParam != null)
+    if ((VideoFeedsPlayManager.a(this.a) != null) && (VideoFeedsPlayManager.a(this.a).c() == 2))
     {
-      paramVideoPlayParam = paramVideoPlayParam.a;
-      if ((paramVideoPlayParam != null) && (paramVideoPlayParam.mChannelID == 56L) && (AdvertisementInfo.isAdvertisementInfo(paramVideoPlayParam))) {
-        NativeAdUtils.a(null, this.a.a, NativeAdUtils.f, NativeAdUtils.l, (AdvertisementInfo)paramVideoPlayParam, null, 0L, NativeAdUtils.a(ReadInJoyBaseAdapter.h, paramVideoPlayParam.mVideoDuration, ReadInJoyBaseAdapter.i, 1, ReadInJoyBaseAdapter.f, ReadInJoyBaseAdapter.g, paramVideoPlayParam.mVideoDuration, NativeAdUtils.s));
+      this.a.b(4);
+      VideoFeedsPlayManager.a(this.a, 8);
+      VideoFeedsPlayManager.a(this.a).d();
+      if (VideoFeedsPlayManager.f(this.a))
+      {
+        String str = VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.h;
+        if (VideoFeedsPlayManager.a(this.a).contains(str)) {
+          break label125;
+        }
+        VideoFeedsPlayManager.a(this.a).add(str);
+        VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.a;
       }
     }
+    return;
+    label125:
+    VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.c;
   }
 }
 

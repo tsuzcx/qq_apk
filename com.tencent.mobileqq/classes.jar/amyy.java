@@ -1,13 +1,15 @@
-import cooperation.qzone.share.QZoneShareActivity;
+import android.content.Context;
+import cooperation.qzone.PlatformInfor;
+import cooperation.qzone.SharpPDec;
 
 public class amyy
   implements Runnable
 {
-  public amyy(QZoneShareActivity paramQZoneShareActivity) {}
+  public amyy(PlatformInfor paramPlatformInfor, Context paramContext) {}
   
   public void run()
   {
-    QZoneShareActivity.a(this.a);
+    PlatformInfor.a(this.jdField_a_of_type_CooperationQzonePlatformInfor, SharpPDec.a(this.jdField_a_of_type_AndroidContentContext));
   }
 }
 

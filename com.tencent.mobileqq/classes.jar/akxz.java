@@ -1,51 +1,19 @@
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingYUVProgram;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
-import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
-import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper.OnPlayMediaStatusListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
 
 public class akxz
   implements Runnable
 {
-  public akxz(ARWorldCupMediaPlayerWrapper paramARWorldCupMediaPlayerWrapper, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2) {}
+  public akxz(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
   
   public void run()
   {
-    if (ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper)) {}
-    for (;;)
+    this.a.a(MsfSdkUtils.insertMtype("Web", this.a.jdField_a_of_type_JavaLangString), 0);
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
     {
+      this.a.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
       return;
-      try
-      {
-        ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper);
-        ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper);
-        if ((ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper) != null) && (ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper) != null))
-        {
-          ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper).b();
-          ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.c);
-          if (!ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper).a())
-          {
-            ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper).a();
-            GreetingYUVProgram localGreetingYUVProgram = ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper);
-            ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper);
-            localGreetingYUVProgram.a(GreetingYUVProgram.f);
-          }
-          ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper).a(ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper)[0], ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper)[1], ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper)[2], this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-          ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper).b();
-          ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper).c();
-          QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupGlobalSceneRenderable ARWorldCupMediaPlayerWrapper.drawFrame softWare");
-          if ((ARWorldCupMediaPlayerWrapper.b(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper) == 2L) && (ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper) != null))
-          {
-            ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper).a(ARWorldCupMediaPlayerWrapper.b(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper), 0, ARWorldCupMediaPlayerWrapper.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupMediaPlayerWrapper).a());
-            return;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        QLog.i("ARWorldCupMediaPlayerWrapper", 1, "drawSoftFrame render error happen");
-      }
     }
   }
 }

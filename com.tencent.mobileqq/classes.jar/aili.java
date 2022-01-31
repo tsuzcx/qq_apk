@@ -1,27 +1,65 @@
-import android.content.Context;
-import com.tencent.mobileqq.surfaceviewaction.gl.RobotSpriteVideoView;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import android.os.Bundle;
+import com.tencent.mobileqq.statistics.battery.BatteryStatsImpl;
 
 public class aili
-  extends VideoSprite
 {
-  public aili(RobotSpriteVideoView paramRobotSpriteVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
+  public boolean a;
+  public String[][] a;
+  public boolean b = true;
+  public boolean c;
+  public boolean d;
+  
+  public aili(BatteryStatsImpl paramBatteryStatsImpl, String paramString)
   {
-    super(paramSpriteGLView, paramContext, paramBoolean);
+    this.jdField_a_of_type_Boolean = true;
+    paramBatteryStatsImpl = paramString.split(";");
+    this.jdField_a_of_type_Array2dOfJavaLangString = new String[paramBatteryStatsImpl.length][];
+    int i = 0;
+    while (i < paramBatteryStatsImpl.length)
+    {
+      this.jdField_a_of_type_Array2dOfJavaLangString[i] = paramBatteryStatsImpl[i].split(",");
+      i += 1;
+    }
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public void a() {}
+  
+  public void a(Bundle paramBundle) {}
+  
+  public void b()
   {
-    if (this.a.a == 0) {
-      this.a.a = paramInt2;
+    this.c = true;
+    if (!BatteryStatsImpl.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl)) {
+      this.d = true;
     }
-    super.a(paramInt1, this.a.a);
+  }
+  
+  public void c()
+  {
+    this.c = false;
+    this.d = false;
+  }
+  
+  public void d() {}
+  
+  public void e()
+  {
+    this.b = false;
+  }
+  
+  public void f()
+  {
+    this.d = false;
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aili
  * JD-Core Version:    0.7.0.1
  */

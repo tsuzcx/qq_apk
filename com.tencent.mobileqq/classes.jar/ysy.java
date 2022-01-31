@@ -1,22 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ysy
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public ysy(ApolloGameActivity paramApolloGameActivity) {}
+  public ysy(ApolloSurfaceView paramApolloSurfaceView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    ApolloGameActivity.a(this.a).setVisibility(4);
-    ApolloGameActivity.a(this.a);
+    if (this.a.mIsDestroy.get()) {
+      return;
+    }
+    if (this.a.mSurfaceCallBackData != null)
+    {
+      ApolloSurfaceView.access$901(this.a, this.a.mSurfaceCallBackData.jdField_a_of_type_AndroidViewSurfaceHolder, this.a.mSurfaceCallBackData.jdField_a_of_type_Int, this.a.mSurfaceCallBackData.b, this.a.mSurfaceCallBackData.c);
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloSurfaceView", 2, new Object[] { "mSurfaceChangeRunnable mSurfaceCallBackData:", this.a.mSurfaceCallBackData });
+      }
+    }
+    ApolloSurfaceView.access$1002(this.a, false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
 
 public class xfr
-  extends TimerTask
+  implements View.OnClickListener
 {
-  public xfr(PreloadManager paramPreloadManager, WeakReference paramWeakReference, List paramList, DownloadListener paramDownloadListener) {}
+  public xfr(PayCodeEntryActivity paramPayCodeEntryActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (PreloadManager.a(localPreloadManager)) {
-      PreloadManager.a(localPreloadManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
-    }
+    this.a.a("payCodeEntry.back", "actQQWlxclick", "0005");
+    PayCodeEntryActivity.a(this.a);
   }
 }
 

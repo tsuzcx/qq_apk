@@ -1,14 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.app.MessageHandler;
 
-public class xrp
+public final class xrp
   implements Runnable
 {
-  public xrp(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xrp(MessageHandler paramMessageHandler, String paramString, int paramInt) {}
   
   public void run()
   {
-    this.a.c.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
   }
 }
 

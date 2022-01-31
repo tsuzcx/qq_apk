@@ -26,35 +26,35 @@ public class OldApplication
       BaseApplicationImpl.sShowTime = l;
       BaseApplicationImpl.appStartTime = BaseApplicationImpl.sLaunchTime;
       BaseApplicationImpl.sUiHandler = new MqqHandler();
-      IPluginAdapterProxy.setProxy(new PluginAdapterImpl());
     }
     for (;;)
     {
+      IPluginAdapterProxy.setProxy(new PluginAdapterImpl());
       BaseApplicationImpl.sApplication.superOnCreate();
       SoLoadUtilNew.setReport(new SoLoadReportImpl());
       TimeFormatterUtils.a();
-      BaseApplicationImpl.appnewmsgicon = 2130839538;
-      BaseApplicationImpl.appnewavmsgicon = 2130840222;
-      BaseApplicationImpl.qqlaunchicon = 2130839193;
-      BaseApplicationImpl.qqWifiLayout = 2130970911;
-      BaseApplicationImpl.qqWifiStateIconViewId = 2131372178;
-      BaseApplicationImpl.qqWifiStateTextViewId = 2131372181;
-      BaseApplicationImpl.qqWifiOperationTextViewId = 2131372182;
-      BaseApplicationImpl.qqWifiSettingViewId = 2131364255;
-      BaseApplicationImpl.qqWifiStateTextSingleLine = 2131372183;
-      BaseApplicationImpl.qqWifiTextDoubleLine = 2131372180;
-      BaseApplicationImpl.qqWifiRedTouchViewId = 2131372179;
-      BaseApplicationImpl.qqWifiConnecticon3 = 2130843835;
-      BaseApplicationImpl.qqWifiNoSignal = 2130843836;
-      BaseApplicationImpl.qqWifiUserful = 2130843841;
-      BaseApplicationImpl.qqWifiSettings = 2130843840;
-      BaseApplicationImpl.qqWifiOperation = 2130843834;
-      BaseApplicationImpl.qqwifinotifyusefulicon = 2130843839;
-      BaseApplicationImpl.qqwifinotifynoneicon = 2130843838;
-      BaseApplicationImpl.qqwifinotifyconnectedicon = 2130843837;
+      BaseApplicationImpl.appnewmsgicon = 2130839553;
+      BaseApplicationImpl.appnewavmsgicon = 2130840237;
+      BaseApplicationImpl.qqlaunchicon = 2130839210;
+      BaseApplicationImpl.qqWifiLayout = 2130970929;
+      BaseApplicationImpl.qqWifiStateIconViewId = 2131372188;
+      BaseApplicationImpl.qqWifiStateTextViewId = 2131372191;
+      BaseApplicationImpl.qqWifiOperationTextViewId = 2131372192;
+      BaseApplicationImpl.qqWifiSettingViewId = 2131364280;
+      BaseApplicationImpl.qqWifiStateTextSingleLine = 2131372193;
+      BaseApplicationImpl.qqWifiTextDoubleLine = 2131372190;
+      BaseApplicationImpl.qqWifiRedTouchViewId = 2131372189;
+      BaseApplicationImpl.qqWifiConnecticon3 = 2130843901;
+      BaseApplicationImpl.qqWifiNoSignal = 2130843902;
+      BaseApplicationImpl.qqWifiUserful = 2130843907;
+      BaseApplicationImpl.qqWifiSettings = 2130843906;
+      BaseApplicationImpl.qqWifiOperation = 2130843900;
+      BaseApplicationImpl.qqwifinotifyusefulicon = 2130843905;
+      BaseApplicationImpl.qqwifinotifynoneicon = 2130843904;
+      BaseApplicationImpl.qqwifinotifyconnectedicon = 2130843903;
       BaseApplicationImpl.qqwifinotifydivide = 2131493124;
       BaseApplicationImpl.defaultNotifSoundResourceId = 2131230721;
-      BaseApplicationImpl.devlockQuickloginIcon = 2130841588;
+      BaseApplicationImpl.devlockQuickloginIcon = 2130841615;
       Foreground.init(BaseApplicationImpl.sApplication, ThreadManager.getSubThreadLooper(), BaseApplicationImpl.processName);
       try
       {
@@ -62,17 +62,13 @@ public class OldApplication
         if (BaseApplicationImpl.sProcessId == 1)
         {
           return true;
-          if (BaseApplicationImpl.sProcessId == 4) {
+          if ((BaseApplicationImpl.sProcessId == 4) || (BaseApplicationImpl.sProcessId != 2)) {
             continue;
           }
-          if (BaseApplicationImpl.sProcessId == 2)
-          {
-            l = System.currentTimeMillis();
-            BaseApplicationImpl.sLaunchTime = l;
-            BaseApplicationImpl.sShowTime = l;
-            BaseApplicationImpl.appStartTime = BaseApplicationImpl.sLaunchTime;
-          }
-          IPluginAdapterProxy.setProxy(new PluginAdapterImpl());
+          l = System.currentTimeMillis();
+          BaseApplicationImpl.sLaunchTime = l;
+          BaseApplicationImpl.sShowTime = l;
+          BaseApplicationImpl.appStartTime = BaseApplicationImpl.sLaunchTime;
         }
       }
       catch (ClassNotFoundException localClassNotFoundException)

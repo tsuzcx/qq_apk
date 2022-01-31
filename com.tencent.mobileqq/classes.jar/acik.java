@@ -1,176 +1,140 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.os.SystemClock;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.extendfriend.bean.GroupInfo;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.mobileqq.extendfriend.fragment.GroupItemClickListeneer;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendResourceUtil;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendFooterView;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.widget.SingleLineTextView;
-import java.io.File;
-import java.util.LinkedList;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.emosm.view.DragSortListView.DragScrollProfile;
 
 public class acik
-  extends RecyclerView.Adapter
+  implements Runnable
 {
+  private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private GroupItemClickListeneer jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer;
-  private LinkedList jdField_a_of_type_JavaUtilLinkedList;
+  private long jdField_a_of_type_Long;
   private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private long c;
   
-  public acik(ExtendFriendGroupFragment paramExtendFriendGroupFragment, GroupItemClickListeneer paramGroupItemClickListeneer, LinkedList paramLinkedList)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer = paramGroupItemClickListeneer;
-    this.jdField_a_of_type_JavaUtilLinkedList = paramLinkedList;
-  }
+  public acik(DragSortListView paramDragSortListView) {}
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilLinkedList.size();
+    if (this.jdField_b_of_type_Boolean) {
+      return this.jdField_b_of_type_Int;
+    }
+    return -1;
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if ((paramBoolean) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())) {
-      notifyItemChanged(getItemCount() - 1);
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = true;
+      this.c = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_Long = this.c;
+      this.jdField_b_of_type_Int = paramInt;
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.post(this);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_JavaUtilLinkedList.size() + 1;
-    }
-    if (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilLinkedList.size() + 2;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() == 0) {
-      return 2;
-    }
-    if (paramInt == 0) {
-      return 3;
-    }
-    if (paramInt < this.jdField_a_of_type_JavaUtilLinkedList.size() + 1) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    Object localObject1;
-    Object localObject2;
-    switch (getItemViewType(paramInt))
+    if (paramBoolean)
     {
-    default: 
-    case 2: 
-      do
-      {
-        return;
-        paramViewHolder = (acid)paramViewHolder;
-        paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = ExtendFriendGroupFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment).getHeight();
-        localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = URLDrawableHelper.a;
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = URLDrawableHelper.a;
-        localObject1 = ExtendFriendResourceUtil.a("expand_square_blank.png");
-      } while (!new File((String)localObject1).exists());
-      localObject2 = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject2).inPreferredConfig = Bitmap.Config.RGB_565;
-      localObject1 = ExtendFriendResourceUtil.a((String)localObject1, (BitmapFactory.Options)localObject2);
-      paramViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new BitmapDrawable((Bitmap)localObject1));
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.removeCallbacks(this);
+      this.jdField_b_of_type_Boolean = false;
       return;
-    case 0: 
-      localObject1 = (acih)paramViewHolder;
-      localObject2 = (GroupInfo)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt - 1);
-      ((acih)localObject1).jdField_a_of_type_AndroidViewView.setTag(2131362841, Integer.valueOf(paramInt - 1));
-      ((acih)localObject1).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(((GroupInfo)localObject2).groupName);
-      if (TextUtils.isEmpty(((GroupInfo)localObject2).groupDesc))
-      {
-        paramViewHolder = "群主很懒，还没有群介绍哦~";
-        if (!paramViewHolder.equals(((acih)localObject1).b.a())) {
-          ((acih)localObject1).b.setText(paramViewHolder);
-        }
-        paramViewHolder = (acil)((acih)localObject1).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getAdapter();
-        if (paramViewHolder != null) {
-          break label325;
-        }
-        paramViewHolder = new acil(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment, ((GroupInfo)localObject2).labels);
-        ((acih)localObject1).jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(paramViewHolder);
-      }
-      for (;;)
-      {
-        paramViewHolder = URLDrawable.URLDrawableOptions.obtain();
-        paramViewHolder.mLoadingDrawable = ImageUtil.c();
-        paramViewHolder.mFailedDrawable = URLDrawableHelper.a;
-        paramViewHolder = URLDrawable.getDrawable(((GroupInfo)localObject2).groupFace, paramViewHolder);
-        paramViewHolder.setTag(URLDrawableDecodeHandler.a(140, 140));
-        paramViewHolder.setDecodeHandler(URLDrawableDecodeHandler.k);
-        ((acih)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramViewHolder);
-        return;
-        paramViewHolder = ((GroupInfo)localObject2).groupDesc;
-        break;
-        label325:
-        paramViewHolder.a(((GroupInfo)localObject2).labels);
-        paramViewHolder.notifyDataSetChanged();
-      }
     }
-    paramViewHolder = (acie)paramViewHolder;
-    paramViewHolder.a(paramViewHolder, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public boolean a()
   {
-    if (paramInt == 2)
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970329, paramViewGroup, false);
-      return new acid(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment, paramViewGroup);
+      this.jdField_b_of_type_Boolean = false;
+      return;
     }
-    if (paramInt == 1)
+    int j = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getFirstVisiblePosition();
+    int i = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getLastVisiblePosition();
+    int m = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getCount();
+    int k = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getPaddingTop();
+    int n = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeight() - k - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getPaddingBottom();
+    int i1 = Math.min(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.k, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_a_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.j);
+    int i2 = Math.max(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.k, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_a_of_type_Int - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.j);
+    View localView;
+    if (this.jdField_b_of_type_Int == 0)
     {
-      paramViewGroup = new ExtendFriendFooterView(ExtendFriendGroupFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment));
-      paramViewGroup.findViewById(2131362832).getLayoutParams().height = AIOUtils.a(50.0F, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.getResources());
-      return new acie(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment, paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer);
+      localView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(0);
+      if (localView == null)
+      {
+        this.jdField_b_of_type_Boolean = false;
+        return;
+      }
+      if ((j == 0) && (localView.getTop() == k))
+      {
+        this.jdField_b_of_type_Boolean = false;
+        return;
+      }
+      this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScrollProfile.a((this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_b_of_type_Float - i2) / this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.c, this.jdField_a_of_type_Long);
+      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_Float = ((float)(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
+      this.jdField_a_of_type_Int = Math.round(this.jdField_b_of_type_Float * this.jdField_a_of_type_Float);
+      if (this.jdField_a_of_type_Int < 0) {
+        break label470;
+      }
+      this.jdField_a_of_type_Int = Math.min(n, this.jdField_a_of_type_Int);
+      i = j;
     }
-    if (paramInt == 3)
+    for (;;)
     {
-      paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970334, paramViewGroup, false);
-      return new acif(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment, paramViewGroup);
+      localView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i - j);
+      m = localView.getTop() + this.jdField_a_of_type_Int;
+      j = m;
+      if (i == 0)
+      {
+        j = m;
+        if (m > k) {
+          j = k;
+        }
+      }
+      DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, true);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setSelectionFromTop(i, j - k);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.layoutChildren();
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.invalidate();
+      DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, false);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(i, localView, false);
+      this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.post(this);
+      return;
+      localView = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getChildAt(i - j);
+      if (localView == null)
+      {
+        this.jdField_b_of_type_Boolean = false;
+        return;
+      }
+      if ((i == m - 1) && (localView.getBottom() <= n + k))
+      {
+        this.jdField_b_of_type_Boolean = false;
+        return;
+      }
+      this.jdField_b_of_type_Float = (-this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView$DragScrollProfile.a((i1 - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.jdField_a_of_type_Float) / this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.d, this.jdField_a_of_type_Long));
+      break;
+      label470:
+      this.jdField_a_of_type_Int = Math.max(-n, this.jdField_a_of_type_Int);
     }
-    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970332, paramViewGroup, false);
-    return new acih(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment, paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acik
  * JD-Core Version:    0.7.0.1
  */

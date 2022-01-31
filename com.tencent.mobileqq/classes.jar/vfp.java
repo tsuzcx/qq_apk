@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
 
 public class vfp
-  implements DialogInterface.OnClickListener
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public vfp(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
+  public ImageView a;
+  public TextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = 0L;
-  }
+  public vfp(LocationItemBuilder paramLocationItemBuilder) {}
 }
 
 

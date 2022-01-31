@@ -6,7 +6,7 @@ import android.content.IntentFilter;
 import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
-import aoqq;
+import aozc;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -20,7 +20,7 @@ public class StorageManager
   static StorageManager jdField_a_of_type_DovComTencentMobileqqShortvideoUtilStorageStorageManager;
   static final Object jdField_a_of_type_JavaLangObject = new Object();
   public static long b;
-  final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aoqq(this);
+  final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aozc(this);
   public StorageManager.OnSdCardChangedListener a;
   public String a;
   HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();

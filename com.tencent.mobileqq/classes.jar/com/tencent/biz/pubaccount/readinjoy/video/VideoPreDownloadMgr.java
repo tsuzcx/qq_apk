@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import mff;
-import mfg;
-import mfj;
+import mis;
+import mit;
+import miw;
 
 public class VideoPreDownloadMgr
   implements VideoPluginInstall.OnVideoPluginInstallListener
@@ -104,7 +104,7 @@ public class VideoPreDownloadMgr
   
   private void a(List paramList)
   {
-    ThreadManager.post(new mfj(this, paramList), 5, null, true);
+    ThreadManager.post(new miw(this, paramList), 5, null, true);
   }
   
   private void f()
@@ -118,7 +118,7 @@ public class VideoPreDownloadMgr
     if (QLog.isColorLevel()) {
       QLog.i(jdField_a_of_type_JavaLangString, 2, "initSerialPreDownload() 设置mCacheMgr回调");
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new mff(this));
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new mis(this));
   }
   
   private void g()
@@ -179,7 +179,7 @@ public class VideoPreDownloadMgr
       i = localVideoPreDownloadParam2.jdField_b_of_type_Int;
       if (2 == localVideoPreDownloadParam2.jdField_a_of_type_Int)
       {
-        ThirdVideoManager.a().a(localVideoPreDownloadParam2.jdField_a_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new mfg(this, i));
+        ThirdVideoManager.a().a(localVideoPreDownloadParam2.jdField_a_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new mit(this, i));
         return;
       }
       if (5 == localVideoPreDownloadParam2.jdField_a_of_type_Int)

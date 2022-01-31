@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
 
 public class acdj
-  implements QueryCallback
+  implements View.OnClickListener
 {
-  public acdj(SogouEmoji paramSogouEmoji, int paramInt, String paramString) {}
+  public acdj(DBFixConfigActivity paramDBFixConfigActivity) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void onClick(View paramView)
   {
-    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
-      }
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(paramEmoticon);
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
+    ThreadManager.post(this.a.a, 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdj
  * JD-Core Version:    0.7.0.1
  */

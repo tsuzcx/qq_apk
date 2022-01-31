@@ -30,7 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import zeh;
+import zli;
 
 public class FunnyPicHelper
 {
@@ -61,17 +61,6 @@ public class FunnyPicHelper
       }
     }
     return 0;
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return "";
-    }
-    Object localObject = paramQQAppInterface.getApp().getSharedPreferences("funny_pic_info", 0);
-    paramQQAppInterface = ((SharedPreferences)localObject).getString("funnypic_count_sp_key", "");
-    localObject = ((SharedPreferences)localObject).getString("funnypic_name_sp_key", "");
-    return "http://i.gtimg.cn/qqshow/admindata/comdata/vipQutu_item_" + paramQQAppInterface + "/" + (String)localObject;
   }
   
   public static String a(String paramString)
@@ -240,16 +229,16 @@ public class FunnyPicHelper
               localAtomicInteger1.decrementAndGet();
               continue;
             }
-            paramList = AppConstants.aU;
+            paramList = AppConstants.aV;
             boolean bool1 = false;
             File localFile;
             if ((localVipComicMqqManager != null) && (localVipComicMqqManager.a(localCustomEmotionData))) {
-              if ((!TextUtils.isEmpty(localCustomEmotionData.emoPath)) && (localCustomEmotionData.emoPath.startsWith(AppConstants.aU)))
+              if ((!TextUtils.isEmpty(localCustomEmotionData.emoPath)) && (localCustomEmotionData.emoPath.startsWith(AppConstants.aV)))
               {
                 paramList = localCustomEmotionData.emoPath;
                 localFile = new File(paramList);
                 if (!localFile.exists()) {
-                  break label749;
+                  break label750;
                 }
                 if (QLog.isColorLevel()) {
                   QLog.d("FunyPicHelper", 2, "download path is exsit->" + paramList);
@@ -280,7 +269,7 @@ public class FunnyPicHelper
             for (;;)
             {
               if ((localAtomicInteger1.get() != 0) || (paramIPicDownloadListener == null)) {
-                break label899;
+                break label900;
               }
               paramIPicDownloadListener.onDone(localArrayList1, localArrayList2);
               break;
@@ -336,7 +325,7 @@ public class FunnyPicHelper
                   }
                 }
               }
-              localDownloaderInterface.a(localDownloadTask, new zeh(paramList, localFile, localCustomEmotionData, bool1, paramBoolean, localFavroamingDBManager, paramIPicDownloadListener, localArrayList1, localArrayList2, paramContext, localAtomicInteger2, localAtomicInteger1), null);
+              localDownloaderInterface.a(localDownloadTask, new zli(paramList, localFile, localCustomEmotionData, bool1, paramBoolean, localFavroamingDBManager, paramIPicDownloadListener, localArrayList1, localArrayList2, paramContext, localAtomicInteger2, localAtomicInteger1), null);
             }
             continue;
           }
@@ -344,13 +333,13 @@ public class FunnyPicHelper
             paramIPicDownloadListener.onFileDone(localCustomEmotionData, false);
           }
           if (!TextUtils.isEmpty(localCustomEmotionData.RomaingType)) {
-            break label978;
+            break label979;
           }
         }
         for (paramList = "null";; paramList = localCustomEmotionData.RomaingType)
         {
           if (!QLog.isColorLevel()) {
-            break label985;
+            break label986;
           }
           QLog.d("FunyPicHelper", 2, "checkLoadEmotionPic, url is null : " + localCustomEmotionData.resid + ", romaingType:" + paramList);
           break label124;
@@ -359,11 +348,11 @@ public class FunnyPicHelper
       }
     } while (paramIPicDownloadListener == null);
     label234:
-    label749:
+    label750:
     paramIPicDownloadListener.onDone(new ArrayList(), paramList);
-    label899:
-    label978:
-    label985:
+    label900:
+    label979:
+    label986:
     return;
   }
 }

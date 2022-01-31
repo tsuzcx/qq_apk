@@ -1,19 +1,23 @@
-import cooperation.dingdong.data.ScheduleReminderMgr;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.TCWDatePicker.SavedState;
 
-public class amld
-  implements Runnable
+public final class amld
+  implements Parcelable.Creator
 {
-  public amld(ScheduleReminderMgr paramScheduleReminderMgr) {}
-  
-  public void run()
+  public TCWDatePicker.SavedState a(Parcel paramParcel)
   {
-    this.a.b(ScheduleReminderMgr.a(this.a));
-    ScheduleReminderMgr.a(this.a, null);
+    return new TCWDatePicker.SavedState(paramParcel, null);
+  }
+  
+  public TCWDatePicker.SavedState[] a(int paramInt)
+  {
+    return new TCWDatePicker.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amld
  * JD-Core Version:    0.7.0.1
  */

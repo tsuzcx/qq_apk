@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.arithmetic.ui;
 
-import ajgb;
-import ajgc;
+import ajnn;
+import ajno;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -20,8 +20,8 @@ public class BaseScaleAndMoveBitmapView
 {
   public float a;
   public Bitmap a;
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new ajgb(this, null));
-  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new ajgc(this, null));
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new ajnn(this, null));
+  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new ajno(this, null));
   private boolean jdField_a_of_type_Boolean;
   public float b;
   private boolean b;
@@ -149,7 +149,7 @@ public class BaseScaleAndMoveBitmapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView
  * JD-Core Version:    0.7.0.1
  */

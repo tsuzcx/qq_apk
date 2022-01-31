@@ -1,25 +1,21 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.av.camera.VcCamera;
-import com.tencent.av.opengl.GraphicRenderMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.AVLog;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.camera.QavCameraUsage;
 
 public class jhc
-  implements Camera.AutoFocusCallback
+  implements Runnable
 {
-  public jhc(VcCamera paramVcCamera) {}
+  public jhc(VideoAppInterface paramVideoAppInterface) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AndroidCamera", 2, "camera focus success ? " + paramBoolean);
-    }
-    GraphicRenderMgr.getInstance().setIsFocusing(false);
+    AVLog.d(VideoAppInterface.c(), "CameraUsageRunnable: ");
+    QavCameraUsage.a(this.a.getApplication(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhc
  * JD-Core Version:    0.7.0.1
  */

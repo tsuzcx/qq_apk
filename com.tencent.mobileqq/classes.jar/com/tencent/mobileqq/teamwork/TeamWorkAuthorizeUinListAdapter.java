@@ -102,12 +102,12 @@ public class TeamWorkAuthorizeUinListAdapter
     TeamWorkAuthorizeUinListAdapter.ItemData localItemData;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971633, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971660, null);
       paramViewGroup = new TeamWorkAuthorizeUinListAdapter.Holder(this);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131375220));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362743));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131363203));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366834));
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131375275));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362748));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131363207));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366832));
       paramView.setTag(paramViewGroup);
       if (this.jdField_a_of_type_Int != 2) {
         break label230;
@@ -124,7 +124,7 @@ public class TeamWorkAuthorizeUinListAdapter
       if (paramInt != 1) {
         break label249;
       }
-      paramViewGroup.b.setText(2131439164);
+      paramViewGroup.b.setText(2131439192);
     }
     for (;;)
     {
@@ -139,7 +139,7 @@ public class TeamWorkAuthorizeUinListAdapter
       break label110;
       label249:
       if (paramInt == 2) {
-        paramViewGroup.b.setText(2131439165);
+        paramViewGroup.b.setText(2131439193);
       } else {
         paramViewGroup.b.setText("状态错了，需要检查！");
       }
@@ -148,7 +148,7 @@ public class TeamWorkAuthorizeUinListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkAuthorizeUinListAdapter
  * JD-Core Version:    0.7.0.1
  */

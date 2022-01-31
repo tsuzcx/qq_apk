@@ -10,16 +10,17 @@ public class CaptureVideoParams
   public int b;
   public String b;
   public boolean b;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = true;
+  private int c;
+  public boolean c;
   private int jdField_d_of_type_Int;
   private boolean jdField_d_of_type_Boolean = true;
   private int jdField_e_of_type_Int;
   private boolean jdField_e_of_type_Boolean = true;
   private int jdField_f_of_type_Int = 1;
-  private boolean jdField_f_of_type_Boolean;
+  private boolean jdField_f_of_type_Boolean = true;
   private boolean g;
   private boolean h;
+  private boolean i;
   
   private CaptureVideoParams(CaptureVideoParams.CaptureVideoParamsBuilder paramCaptureVideoParamsBuilder)
   {
@@ -28,18 +29,19 @@ public class CaptureVideoParams
     this.jdField_b_of_type_Int = FlowCameraConstant.jdField_d_of_type_Int;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Boolean = CaptureVideoParams.CaptureVideoParamsBuilder.a(paramCaptureVideoParamsBuilder);
-    this.jdField_d_of_type_Boolean = CaptureVideoParams.CaptureVideoParamsBuilder.b(paramCaptureVideoParamsBuilder);
-    this.jdField_e_of_type_Boolean = CaptureVideoParams.CaptureVideoParamsBuilder.c(paramCaptureVideoParamsBuilder);
-    this.jdField_f_of_type_Boolean = CaptureVideoParams.CaptureVideoParamsBuilder.d(paramCaptureVideoParamsBuilder);
+    this.jdField_d_of_type_Boolean = CaptureVideoParams.CaptureVideoParamsBuilder.a(paramCaptureVideoParamsBuilder);
+    this.jdField_e_of_type_Boolean = CaptureVideoParams.CaptureVideoParamsBuilder.b(paramCaptureVideoParamsBuilder);
+    this.jdField_f_of_type_Boolean = CaptureVideoParams.CaptureVideoParamsBuilder.c(paramCaptureVideoParamsBuilder);
+    this.g = CaptureVideoParams.CaptureVideoParamsBuilder.d(paramCaptureVideoParamsBuilder);
     this.jdField_a_of_type_Boolean = paramCaptureVideoParamsBuilder.jdField_a_of_type_Boolean;
-    this.g = paramCaptureVideoParamsBuilder.jdField_b_of_type_Boolean;
+    this.h = paramCaptureVideoParamsBuilder.jdField_b_of_type_Boolean;
     this.jdField_b_of_type_Boolean = paramCaptureVideoParamsBuilder.jdField_c_of_type_Boolean;
     this.jdField_c_of_type_Int = CaptureVideoParams.CaptureVideoParamsBuilder.a(paramCaptureVideoParamsBuilder);
     this.jdField_d_of_type_Int = CaptureVideoParams.CaptureVideoParamsBuilder.b(paramCaptureVideoParamsBuilder);
-    this.h = CaptureVideoParams.CaptureVideoParamsBuilder.e(paramCaptureVideoParamsBuilder);
+    this.i = CaptureVideoParams.CaptureVideoParamsBuilder.e(paramCaptureVideoParamsBuilder);
     this.jdField_e_of_type_Int = CaptureVideoParams.CaptureVideoParamsBuilder.c(paramCaptureVideoParamsBuilder);
     this.jdField_f_of_type_Int = CaptureVideoParams.CaptureVideoParamsBuilder.d(paramCaptureVideoParamsBuilder);
+    this.jdField_c_of_type_Boolean = CaptureVideoParams.CaptureVideoParamsBuilder.f(paramCaptureVideoParamsBuilder);
   }
   
   public int a()
@@ -49,7 +51,7 @@ public class CaptureVideoParams
   
   public boolean a()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.jdField_d_of_type_Boolean;
   }
   
   public int b()
@@ -59,7 +61,7 @@ public class CaptureVideoParams
   
   public boolean b()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.jdField_e_of_type_Boolean;
   }
   
   public int c()
@@ -69,7 +71,7 @@ public class CaptureVideoParams
   
   public boolean c()
   {
-    return this.jdField_e_of_type_Boolean;
+    return this.jdField_f_of_type_Boolean;
   }
   
   public boolean d()
@@ -79,7 +81,7 @@ public class CaptureVideoParams
   
   public boolean e()
   {
-    return this.g;
+    return this.h;
   }
   
   public boolean f()
@@ -89,7 +91,7 @@ public class CaptureVideoParams
   
   public boolean g()
   {
-    return this.h;
+    return this.i;
   }
 }
 

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/midas_wrap"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a8" />
-    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d13" android:paddingLeft="15.0dip" android:paddingTop="10.0dip" android:paddingRight="15.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="62.0dip">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d14" android:visibility="invisible" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginRight="8.0dip" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c024f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d15" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="腾讯充值公众号" android:layout_weight="1.0" />
-        <CheckBox android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c024f" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d16" android:paddingLeft="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:button="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02074d" android:text="关注" />
-    </LinearLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d23" style="@style/APKTOOL_DUPLICATE_style_0x7f0e007a">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d27" android:layout_marginLeft="10.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0081" />
+        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0255" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d24" android:layout_marginLeft="35.0dip" android:text="1个月" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0063" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d26" android:text="100.00" android:layout_centerVertical="true" style="@style/midas_tx.price" />
+            <TextView android:text="元" style="@style/midas_tx.price" />
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

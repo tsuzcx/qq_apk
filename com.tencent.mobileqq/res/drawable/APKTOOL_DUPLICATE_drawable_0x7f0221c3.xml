@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221c6" />
-    <item android:id="@android:id/toggle" android:drawable="@drawable/trans" />
-</layer-list>
+<color android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0575"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

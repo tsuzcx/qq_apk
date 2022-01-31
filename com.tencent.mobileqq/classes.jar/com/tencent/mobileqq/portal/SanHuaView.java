@@ -20,7 +20,7 @@ public class SanHuaView
   Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130842602, 2130842603, 2130842604, 2130842605, 2130842606, 2130842607, 2130842608, 2130842609 };
+  private int[] jdField_a_of_type_ArrayOfInt = { 2130842637, 2130842638, 2130842639, 2130842640, 2130842641, 2130842642, 2130842643, 2130842644 };
   private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[this.jdField_a_of_type_ArrayOfInt.length];
   float jdField_b_of_type_Float;
   int jdField_b_of_type_Int;

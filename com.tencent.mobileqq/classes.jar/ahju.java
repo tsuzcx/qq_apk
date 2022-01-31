@@ -1,22 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.util.FaceDecoder;
 
 class ahju
-  implements ProviderContainerView.ContainerViewListener
+  extends RecyclerView.OnScrollListener
 {
-  ahju(ahjs paramahjs) {}
+  ahju(ahjt paramahjt) {}
   
-  public void a(View paramView, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    EffectsCameraCaptureFragment.e(this.a.a);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    ahjt.a(this.a, paramInt);
+    if (ahjt.a(this.a) == 0)
+    {
+      if (ahjt.a(this.a).a()) {
+        ahjt.a(this.a).b();
+      }
+      int i = ahjt.a(this.a).getChildCount();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        paramRecyclerView = ahjt.a(this.a).getChildAt(paramInt);
+        paramRecyclerView = (ahjw)ahjt.a(this.a).getChildViewHolder(paramRecyclerView);
+        ahjw.a(paramRecyclerView).setImageBitmap(ahjt.a(this.a, ahjw.a(paramRecyclerView)));
+        paramInt += 1;
+      }
+    }
+    ahjt.a(this.a).a();
+    ahjt.a(this.a).c();
   }
-  
-  public void y_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahju
  * JD-Core Version:    0.7.0.1
  */

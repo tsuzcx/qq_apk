@@ -1,10 +1,10 @@
 package com.tencent.qqprotect.qsec;
 
-import alwt;
-import alwu;
-import alxa;
-import alxb;
-import alxd;
+import amec;
+import amed;
+import amej;
+import amek;
+import amem;
 import android.os.HandlerThread;
 import android.text.TextUtils;
 import com.tencent.ims.QQProtectCommon.QQProtectQueryHead;
@@ -34,9 +34,9 @@ public class CloudAVEngineImpl
 {
   private static volatile CloudAVEngineImpl jdField_a_of_type_ComTencentQqprotectQsecCloudAVEngineImpl;
   private int jdField_a_of_type_Int = 1;
-  private alwu jdField_a_of_type_Alwu = new alwu(MobileQQ.sMobileQQ.getDir("qqprotect", 0).toString() + File.separator + "QSecCache.dat", 50);
-  private alxa jdField_a_of_type_Alxa = new alxa(this, QSecFramework.a().getLooper());
-  private QSecFramework.IGoingUpHandler jdField_a_of_type_ComTencentQqprotectQsecQSecFramework$IGoingUpHandler = new alxd(this, null);
+  private amed jdField_a_of_type_Amed = new amed(MobileQQ.sMobileQQ.getDir("qqprotect", 0).toString() + File.separator + "QSecCache.dat", 50);
+  private amej jdField_a_of_type_Amej = new amej(this, QSecFramework.a().getLooper());
+  private QSecFramework.IGoingUpHandler jdField_a_of_type_ComTencentQqprotectQsecQSecFramework$IGoingUpHandler = new amem(this, null);
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private List jdField_a_of_type_JavaUtilList = new LinkedList();
   private boolean jdField_a_of_type_Boolean;
@@ -47,44 +47,44 @@ public class CloudAVEngineImpl
   public CloudAVEngineImpl()
   {
     QSecFramework.a(1, this.jdField_a_of_type_ComTencentQqprotectQsecQSecFramework$IGoingUpHandler);
-    SecSvcHandlerHelper.a("QSec.AVEng", new alwt(this));
+    SecSvcHandlerHelper.a("QSec.AVEng", new amec(this));
   }
   
-  private int a(alxb paramalxb)
+  private int a(amek paramamek)
   {
     int j = 16;
-    paramalxb = paramalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle;
-    if (paramalxb.jdField_a_of_type_JavaLangString != null) {
-      j = 16 + paramalxb.jdField_a_of_type_JavaLangString.length();
+    paramamek = paramamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle;
+    if (paramamek.jdField_a_of_type_JavaLangString != null) {
+      j = 16 + paramamek.jdField_a_of_type_JavaLangString.length();
     }
     int i = j;
-    if (paramalxb.jdField_b_of_type_JavaLangString != null) {
-      i = j + paramalxb.jdField_b_of_type_JavaLangString.length();
+    if (paramamek.jdField_b_of_type_JavaLangString != null) {
+      i = j + paramamek.jdField_b_of_type_JavaLangString.length();
     }
     j = i;
-    if (paramalxb.jdField_c_of_type_JavaLangString != null) {
-      j = i + paramalxb.jdField_c_of_type_JavaLangString.length();
+    if (paramamek.jdField_c_of_type_JavaLangString != null) {
+      j = i + paramamek.jdField_c_of_type_JavaLangString.length();
     }
     i = j;
-    if (paramalxb.d != null) {
-      i = j + paramalxb.d.length();
+    if (paramamek.d != null) {
+      i = j + paramamek.d.length();
     }
     j = i;
-    if (paramalxb.e != null) {
-      j = i + paramalxb.e.length();
+    if (paramamek.e != null) {
+      j = i + paramamek.e.length();
     }
     i = j;
-    if (paramalxb.jdField_a_of_type_ArrayOfByte != null) {
-      i = j + paramalxb.jdField_a_of_type_ArrayOfByte.length;
+    if (paramamek.jdField_a_of_type_ArrayOfByte != null) {
+      i = j + paramamek.jdField_a_of_type_ArrayOfByte.length;
     }
     return i;
   }
   
-  private alxb a(Object paramObject)
+  private amek a(Object paramObject)
   {
     try
     {
-      paramObject = (alxb)paramObject;
+      paramObject = (amek)paramObject;
       return paramObject;
     }
     catch (Exception paramObject)
@@ -109,10 +109,10 @@ public class CloudAVEngineImpl
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        alxb localalxb = (alxb)paramList.next();
-        ICloudAVEngine.DetectBundle localDetectBundle = localalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle;
+        amek localamek = (amek)paramList.next();
+        ICloudAVEngine.DetectBundle localDetectBundle = localamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle;
         QSecCloudAVEngineMsg.QSecCloudQueryEntry localQSecCloudQueryEntry = new QSecCloudAVEngineMsg.QSecCloudQueryEntry();
-        localQSecCloudQueryEntry.entryId.set(localalxb.jdField_a_of_type_Int);
+        localQSecCloudQueryEntry.entryId.set(localamek.jdField_a_of_type_Int);
         localQSecCloudQueryEntry.fileType.set(localDetectBundle.jdField_a_of_type_Int);
         localQSecCloudQueryEntry.scenarioType.set(localDetectBundle.jdField_b_of_type_Int);
         localQSecCloudQueryEntry.fileSize.set(localDetectBundle.jdField_c_of_type_Int);
@@ -181,37 +181,37 @@ public class CloudAVEngineImpl
   
   private void a(int paramInt, ICloudAVEngine.ResultBundle paramResultBundle)
   {
-    alxb localalxb = (alxb)this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
+    amek localamek = (amek)this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
     if (QLog.isColorLevel()) {
       QLog.d("QSec.AVEngine", 2, "reply for id: " + paramInt + " result: " + paramResultBundle.toString());
     }
-    if (localalxb != null)
+    if (localamek != null)
     {
-      if ((paramResultBundle.jdField_a_of_type_Long != 0L) && (!TextUtils.isEmpty(localalxb.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_Alwu.a(localalxb.jdField_a_of_type_JavaLangString, paramResultBundle);
+      if ((paramResultBundle.jdField_a_of_type_Long != 0L) && (!TextUtils.isEmpty(localamek.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_Amed.a(localamek.jdField_a_of_type_JavaLangString, paramResultBundle);
       }
       paramResultBundle.jdField_a_of_type_Boolean = false;
-      a(localalxb, 3, paramResultBundle);
+      a(localamek, 3, paramResultBundle);
     }
   }
   
-  private void a(alxb paramalxb)
+  private void a(amek paramamek)
   {
-    if (paramalxb == null) {}
+    if (paramamek == null) {}
     String str;
     do
     {
       return;
-      str = paramalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.a();
-      paramalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString = str;
+      str = paramamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.a();
+      paramamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString = str;
     } while (!QLog.isColorLevel());
-    QLog.d("QSec.AVEngine", 2, String.format("File: %s, md5: %s", new Object[] { paramalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_a_of_type_JavaLangString, str }));
+    QLog.d("QSec.AVEngine", 2, String.format("File: %s, md5: %s", new Object[] { paramamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_a_of_type_JavaLangString, str }));
   }
   
-  private void a(alxb paramalxb, int paramInt, ICloudAVEngine.ResultBundle paramResultBundle)
+  private void a(amek paramamek, int paramInt, ICloudAVEngine.ResultBundle paramResultBundle)
   {
-    if (paramalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$IAVEngineEventListener != null) {
-      paramalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$IAVEngineEventListener.a(paramInt, paramalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle, paramResultBundle);
+    if (paramamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$IAVEngineEventListener != null) {
+      paramamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$IAVEngineEventListener.a(paramInt, paramamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle, paramResultBundle);
     }
   }
   
@@ -299,7 +299,7 @@ public class CloudAVEngineImpl
               localResultBundle.jdField_a_of_type_ArrayOfByte = paramObject;
               a(k, localResultBundle);
               break;
-              this.jdField_a_of_type_Alwu.a();
+              this.jdField_a_of_type_Amed.a();
               return;
             }
           }
@@ -318,15 +318,15 @@ public class CloudAVEngineImpl
     int i = 0;
     while (paramList.hasNext())
     {
-      alxb localalxb = (alxb)paramList.next();
+      amek localamek = (amek)paramList.next();
       if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Add to wait resp map: " + localalxb.toString());
+        QLog.d("QSec.AVEngine", 2, "Add to wait resp map: " + localamek.toString());
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localalxb.jdField_a_of_type_Int), localalxb);
-      arrayOfInt[i] = localalxb.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localamek.jdField_a_of_type_Int), localamek);
+      arrayOfInt[i] = localamek.jdField_a_of_type_Int;
       i += 1;
     }
-    this.jdField_a_of_type_Alxa.sendMessageDelayed(this.jdField_a_of_type_Alxa.obtainMessage(3, arrayOfInt), 30000L);
+    this.jdField_a_of_type_Amej.sendMessageDelayed(this.jdField_a_of_type_Amej.obtainMessage(3, arrayOfInt), 30000L);
   }
   
   private boolean a(QSecCloudAVEngineMsg.QSecCloudQuery paramQSecCloudQuery)
@@ -345,8 +345,8 @@ public class CloudAVEngineImpl
       if (i < k) {}
       try
       {
-        localObject = (alxb)this.jdField_a_of_type_JavaUtilList.get(i);
-        int m = ((alxb)localObject).jdField_c_of_type_Int;
+        localObject = (amek)this.jdField_a_of_type_JavaUtilList.get(i);
+        int m = ((amek)localObject).jdField_c_of_type_Int;
         if (m + j > 1000)
         {
           localObject = a(localLinkedList);
@@ -408,21 +408,21 @@ public class CloudAVEngineImpl
     }
   }
   
-  private void b(alxb paramalxb)
+  private void b(amek paramamek)
   {
-    if (paramalxb != null)
+    if (paramamek != null)
     {
-      paramalxb.jdField_a_of_type_JavaLangString = paramalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString;
+      paramamek.jdField_a_of_type_JavaLangString = paramamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString;
       if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Lookup cache, key: " + paramalxb.jdField_a_of_type_JavaLangString);
+        QLog.d("QSec.AVEngine", 2, "Lookup cache, key: " + paramamek.jdField_a_of_type_JavaLangString);
       }
-      if (!TextUtils.isEmpty(paramalxb.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(paramamek.jdField_a_of_type_JavaLangString))
       {
-        ICloudAVEngine.ResultBundle localResultBundle = this.jdField_a_of_type_Alwu.a(paramalxb.jdField_a_of_type_JavaLangString);
+        ICloudAVEngine.ResultBundle localResultBundle = this.jdField_a_of_type_Amed.a(paramamek.jdField_a_of_type_JavaLangString);
         if (localResultBundle != null)
         {
           localResultBundle.jdField_a_of_type_Boolean = true;
-          a(paramalxb, 3, localResultBundle);
+          a(paramamek, 3, localResultBundle);
         }
       }
     }
@@ -430,7 +430,7 @@ public class CloudAVEngineImpl
     {
       return;
     }
-    c(paramalxb);
+    c(paramamek);
   }
   
   private void b(Object paramObject)
@@ -444,7 +444,7 @@ public class CloudAVEngineImpl
       for (;;)
       {
         int m;
-        alxb localalxb;
+        amek localamek;
         try
         {
           paramObject = (int[])paramObject;
@@ -458,13 +458,13 @@ public class CloudAVEngineImpl
           if (QLog.isColorLevel()) {
             QLog.d("QSec.AVEngine", 2, "Timeout entry id:" + m);
           }
-          localalxb = (alxb)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(m));
-          if (localalxb == null)
+          localamek = (amek)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(m));
+          if (localamek == null)
           {
             j += 1;
             continue;
           }
-          if (localalxb.jdField_b_of_type_Int >= 2) {
+          if (localamek.jdField_b_of_type_Int >= 2) {
             break label133;
           }
         }
@@ -473,8 +473,8 @@ public class CloudAVEngineImpl
           paramObject.printStackTrace();
           return;
         }
-        localalxb.jdField_b_of_type_Int += 1;
-        e(localalxb);
+        localamek.jdField_b_of_type_Int += 1;
+        e(localamek);
         i = 1;
         continue;
         if (QLog.isColorLevel()) {
@@ -482,67 +482,67 @@ public class CloudAVEngineImpl
         }
         a();
         this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(m));
-        a(localalxb, 2, null);
+        a(localamek, 2, null);
       }
     } while (i == 0);
     flushRequest();
   }
   
-  private void c(alxb paramalxb)
+  private void c(amek paramamek)
   {
-    if (paramalxb != null)
+    if (paramamek != null)
     {
       int i = this.jdField_a_of_type_Int;
       this.jdField_a_of_type_Int = (i + 1);
-      paramalxb.jdField_a_of_type_Int = i;
-      paramalxb.jdField_b_of_type_Int = 0;
-      e(paramalxb);
+      paramamek.jdField_a_of_type_Int = i;
+      paramamek.jdField_b_of_type_Int = 0;
+      e(paramamek);
     }
   }
   
-  private void d(alxb paramalxb)
+  private void d(amek paramamek)
   {
-    if (paramalxb == null) {
+    if (paramamek == null) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QSec.AVEngine", 2, String.format("Start flow: %s", new Object[] { paramalxb.toString() }));
+      QLog.d("QSec.AVEngine", 2, String.format("Start flow: %s", new Object[] { paramamek.toString() }));
     }
-    if (TextUtils.isEmpty(paramalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString))
+    if (TextUtils.isEmpty(paramamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString))
     {
-      a(paramalxb);
-      if (TextUtils.isEmpty(paramalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString))
+      a(paramamek);
+      if (TextUtils.isEmpty(paramamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.jdField_b_of_type_JavaLangString))
       {
-        a(paramalxb, 4, null);
+        a(paramamek, 4, null);
         return;
       }
     }
-    if (paramalxb.jdField_a_of_type_Boolean)
+    if (paramamek.jdField_a_of_type_Boolean)
     {
-      b(paramalxb);
+      b(paramamek);
       return;
     }
-    c(paramalxb);
+    c(paramamek);
   }
   
-  private void e(alxb paramalxb)
+  private void e(amek paramamek)
   {
     if (this.jdField_b_of_type_Int >= 100) {
-      a(paramalxb, 1, null);
+      a(paramamek, 1, null);
     }
     do
     {
       return;
-      if (paramalxb.jdField_c_of_type_Int == 0) {
-        paramalxb.jdField_c_of_type_Int = a(paramalxb);
+      if (paramamek.jdField_c_of_type_Int == 0) {
+        paramamek.jdField_c_of_type_Int = a(paramamek);
       }
-      this.jdField_c_of_type_Int += paramalxb.jdField_c_of_type_Int;
+      this.jdField_c_of_type_Int += paramamek.jdField_c_of_type_Int;
       this.jdField_b_of_type_Int += 1;
-      this.jdField_a_of_type_JavaUtilList.add(paramalxb);
+      this.jdField_a_of_type_JavaUtilList.add(paramamek);
       if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Enqueue request, entryId: %d, pending count: %d, pending size: %d", new Object[] { Integer.valueOf(paramalxb.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int) }));
+        QLog.d("QSec.AVEngine", 2, String.format("Enqueue request, entryId: %d, pending count: %d, pending size: %d", new Object[] { Integer.valueOf(paramamek.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int) }));
       }
-    } while ((paramalxb.jdField_b_of_type_Boolean != true) && (this.jdField_c_of_type_Int < 1000));
+    } while ((paramamek.jdField_b_of_type_Boolean != true) && (this.jdField_c_of_type_Int < 1000));
     b();
   }
   
@@ -551,21 +551,21 @@ public class CloudAVEngineImpl
     if (paramDetectBundle == null) {
       return 13;
     }
-    alxb localalxb = new alxb(null);
-    localalxb.jdField_a_of_type_Boolean = paramBoolean1;
-    localalxb.jdField_b_of_type_Boolean = paramBoolean2;
-    localalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle = paramDetectBundle;
-    localalxb.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$IAVEngineEventListener = paramIAVEngineEventListener;
+    amek localamek = new amek(null);
+    localamek.jdField_a_of_type_Boolean = paramBoolean1;
+    localamek.jdField_b_of_type_Boolean = paramBoolean2;
+    localamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle = paramDetectBundle;
+    localamek.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$IAVEngineEventListener = paramIAVEngineEventListener;
     if ((paramDetectBundle.jdField_c_of_type_Int == 0) && (!TextUtils.isEmpty(paramDetectBundle.jdField_a_of_type_JavaLangString))) {
       paramDetectBundle.jdField_c_of_type_Int = ((int)new File(paramDetectBundle.jdField_a_of_type_JavaLangString).length());
     }
-    this.jdField_a_of_type_Alxa.sendMessage(this.jdField_a_of_type_Alxa.obtainMessage(1, localalxb));
+    this.jdField_a_of_type_Amej.sendMessage(this.jdField_a_of_type_Amej.obtainMessage(1, localamek));
     return 0;
   }
   
   public void flushRequest()
   {
-    this.jdField_a_of_type_Alxa.sendMessage(this.jdField_a_of_type_Alxa.obtainMessage(2));
+    this.jdField_a_of_type_Amej.sendMessage(this.jdField_a_of_type_Amej.obtainMessage(2));
   }
   
   public String getInterfaceName()

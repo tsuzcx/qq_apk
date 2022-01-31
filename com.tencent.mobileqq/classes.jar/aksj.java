@@ -1,28 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class aksj
-  extends Handler
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public aksj(WerewolvesPluginManager paramWerewolvesPluginManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aksj(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    int i = paramMessage.arg1;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
     }
-    ((WerewolvesHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(107)).a(3, true, Integer.valueOf(i));
+    this.a.runOnUiThread(new aksk(this));
   }
 }
 

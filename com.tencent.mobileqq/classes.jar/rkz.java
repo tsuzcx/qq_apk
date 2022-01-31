@@ -1,28 +1,39 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.app.Dialog;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public class rkz
-  implements CompoundButton.OnCheckedChangeListener
+class rkz
+  implements Runnable
 {
-  public rkz(AssistantSettingActivity paramAssistantSettingActivity, SharedPreferences paramSharedPreferences, String paramString) {}
+  rkz(rky paramrky) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sticker_switch_" + this.jdField_a_of_type_JavaLangString, paramBoolean).commit();
-    if ((paramBoolean) && (EmojiStickerManager.a())) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    int i = 0;
+    try
     {
-      EmojiStickerManager.e = paramBoolean;
-      if (EmojiStickerManager.e) {
-        VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app.c(), "Stick", "ClickSwitchOn", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.removeViewAt(this.a.jdField_a_of_type_Int);
+      label22:
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_Boolean) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(false);
       }
+      AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, null);
+      int j = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      while (i < j)
+      {
+        View localView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        if (localView.getTag() != null) {
+          localView.setTag(Integer.valueOf(i));
+        }
+        i += 1;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
       return;
+    }
+    catch (Exception localException)
+    {
+      break label22;
     }
   }
 }

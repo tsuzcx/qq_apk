@@ -88,11 +88,11 @@ public class ComboNavigateBar
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.e = ((ImageView)findViewById(2131362968));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362969));
-    this.b = ((ImageView)findViewById(2131362965));
-    this.c = ((ImageView)findViewById(2131362966));
-    this.d = ((ImageView)findViewById(2131362967));
+    this.e = ((ImageView)findViewById(2131362973));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362974));
+    this.b = ((ImageView)findViewById(2131362970));
+    this.c = ((ImageView)findViewById(2131362971));
+    this.d = ((ImageView)findViewById(2131362972));
     setVisibility(8);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);

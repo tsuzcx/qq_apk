@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.ui.WebViewTitlerBar;
 
-class akyp
-  implements Runnable
+public class akyp
+  implements View.OnClickListener
 {
-  akyp(akyo paramakyo, String paramString) {}
+  public akyp(WebViewTitlerBar paramWebViewTitlerBar) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    akyq localakyq = new akyq(this);
-    WXShareHelper.a().a(localakyq);
-    WorldCupShareFragment.b(this.jdField_a_of_type_Akyo.a, String.valueOf(System.currentTimeMillis()));
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, WorldCupShareFragment.a(this.jdField_a_of_type_Akyo.a), 1, true, WorldCupShareFragment.c(this.jdField_a_of_type_Akyo.a));
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
+    }
   }
 }
 

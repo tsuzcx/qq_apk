@@ -1,17 +1,44 @@
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagStatus;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.NearByFaceDownloader;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.mobileqq.util.FaceManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class zop
+public class zop
   implements Runnable
 {
-  zop(zoo paramzoo, ArrayList paramArrayList) {}
+  Setting jdField_a_of_type_ComTencentMobileqqDataSetting;
+  FaceInfo jdField_a_of_type_ComTencentMobileqqUtilFaceInfo;
+  
+  public zop(NearByFaceDownloader paramNearByFaceDownloader, Setting paramSetting, FaceInfo paramFaceInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataSetting = paramSetting;
+    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = paramFaceInfo;
+  }
   
   public void run()
   {
-    ((BizTroopHandler)this.jdField_a_of_type_Zoo.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.a(22)).d(new TroopGagMgr.GagStatus(this.jdField_a_of_type_Zoo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList));
+    Object localObject1 = (FaceManager)this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.a.getManager(215);
+    ((FaceManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a;
+    localObject2 = ((FaceManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
+    localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("/"));
+    localObject2 = ((String)localObject2).substring(((String)localObject2).lastIndexOf("/") + 1);
+    if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).endsWith("jpg_")))
+    {
+      localObject1 = (String)localObject1 + File.separator + ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("jpg_")) + "png";
+      localObject2 = new File((String)localObject1);
+      if (((File)localObject2).exists())
+      {
+        ((File)localObject2).delete();
+        if (QLog.isColorLevel()) {
+          QLog.i("qqhead", 2, "delete old file,oldpath=" + (String)localObject1);
+        }
+      }
+    }
   }
 }
 

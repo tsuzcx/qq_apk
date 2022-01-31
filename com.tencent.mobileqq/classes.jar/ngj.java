@@ -1,15 +1,20 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.common.recyclerview.BaseAdapter.OnItemLongClickListener;
+import com.tencent.biz.qqstory.common.recyclerview.BaseViewHolder;
+import com.tencent.biz.qqstory.common.recyclerview.HeaderAndFooterAdapter;
 
 public class ngj
-  extends UploadImageJob
+  implements View.OnLongClickListener
 {
-  public ngj(ShareModeBase paramShareModeBase, ShareQZoneData paramShareQZoneData) {}
+  public ngj(HeaderAndFooterAdapter paramHeaderAndFooterAdapter, BaseViewHolder paramBaseViewHolder) {}
   
-  public boolean b()
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.a = ((String)a("UploadImageJob_out_image_url"));
+    int i = this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewHeaderAndFooterAdapter.a.b(this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.itemView, i);
+    }
     return true;
   }
 }

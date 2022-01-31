@@ -1,30 +1,24 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceScoreFilter;
 
-public final class aift
-  implements Runnable
+public class aift
+  implements Animation.AnimationListener
 {
-  public aift(String paramString1, String paramString2) {}
+  public aift(DanceScoreFilter paramDanceScoreFilter) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      Intent localIntent = new Intent();
-      localIntent.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      localIntent.putExtra("reporting_tag", this.a);
-      localIntent.putExtra("reporting_detail", this.b);
-      localIntent.putExtra("reporting_count", 1);
-      localIntent.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
-      return;
-    }
-    catch (Exception localException) {}
+    DanceScoreFilter.a(this.a);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aift
  * JD-Core Version:    0.7.0.1
  */

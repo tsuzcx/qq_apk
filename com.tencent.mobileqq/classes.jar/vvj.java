@@ -1,26 +1,23 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.theme.SkinEngine;
+import mqq.os.MqqHandler;
 
-public class vvj
-  implements AsyncBack
+public final class vvj
+  implements Runnable
 {
-  public vvj(HotChatPie paramHotChatPie) {}
+  public vvj(TextView paramTextView) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
-    }
-    paramString = this.a;
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      HotChatPie.b(paramString, bool);
-      return;
-    }
+    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845961);
+    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845963);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
+    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);
+    ThreadManager.getUIHandler().post(new vvk(this, localStateListDrawable));
   }
 }
 

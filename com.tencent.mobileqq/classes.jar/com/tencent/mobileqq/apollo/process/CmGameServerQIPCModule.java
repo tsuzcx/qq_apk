@@ -16,10 +16,10 @@ import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import mqq.app.AppRuntime;
-import yqa;
-import yqb;
-import yqc;
-import yqd;
+import ywi;
+import ywj;
+import ywk;
+import ywl;
 
 public class CmGameServerQIPCModule
   extends QIPCModule
@@ -36,7 +36,7 @@ public class CmGameServerQIPCModule
   
   public static CmGameServerQIPCModule a()
   {
-    return yqd.a();
+    return ywl.a();
   }
   
   public static void a()
@@ -78,8 +78,10 @@ public class CmGameServerQIPCModule
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (!(localAppRuntime instanceof QQAppInterface)) {}
-    label543:
-    label546:
+    label567:
+    label570:
+    label572:
+    label575:
     for (;;)
     {
       return null;
@@ -100,17 +102,17 @@ public class CmGameServerQIPCModule
       {
         paramString = BaseApplicationImpl.getApplication().getRuntime();
         if ((paramString == null) || (!(paramString instanceof QQAppInterface))) {
-          break label543;
+          break label572;
         }
       }
       for (paramString = (QQAppInterface)paramString;; paramString = null)
       {
         if (paramString == null) {
-          break label546;
+          break label575;
         }
         paramString = new ReadInJoyCameraCaptureSoManager(paramString, BaseApplicationImpl.getContext());
         b = true;
-        paramString.a(new yqa(this, paramInt));
+        paramString.a(new ywi(this, paramInt));
         paramString.a();
         return null;
         if ("onGameCheckStart".equals(paramString))
@@ -150,31 +152,39 @@ public class CmGameServerQIPCModule
           if ((paramBundle == null) || (paramBundle.game == null)) {
             break;
           }
-          ThreadManager.post(new yqb(this, paramString, paramBundle), 5, null, true);
+          ThreadManager.post(new ywj(this, paramString, paramBundle), 5, null, true);
           return null;
         }
         if ("game_activity_lifecycle".equals(paramString))
         {
           paramInt = paramBundle.getInt("gameId");
           i = paramBundle.getInt("status");
+          paramString = paramBundle.getSerializable("para");
+          if ((paramString == null) || (!(paramString instanceof CmGameStartChecker.StartCheckParam))) {
+            break label567;
+          }
+        }
+        for (paramString = (CmGameStartChecker.StartCheckParam)paramString;; paramString = null)
+        {
           if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLifeCycleMgr == null) {
+            break label570;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLifeCycleMgr.a(paramInt, i, paramString);
+          return null;
+          if (!"action_get_action_data".equals(paramString)) {
             break;
           }
-          this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLifeCycleMgr.a(paramInt, i);
-          return null;
-        }
-        if (!"action_get_action_data".equals(paramString)) {
+          if (QLog.isColorLevel()) {
+            QLog.d("cmgame_process.CmGameServerQIPCModule", 2, new Object[] { "apollo_cmGame_", " ACTION_GET_ACTION_DATA params:" + paramBundle });
+          }
+          paramString = BaseApplicationImpl.getApplication().getRuntime();
+          if ((paramString != null) && ((paramString instanceof QQAppInterface))) {}
+          for (paramString = (QQAppInterface)paramString; paramString != null; paramString = null)
+          {
+            ThreadManager.post(new ywk(this, paramString, paramBundle.getString("reqData"), paramInt), 5, null, true);
+            return null;
+          }
           break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.CmGameServerQIPCModule", 2, new Object[] { "apollo_cmGame_", " ACTION_GET_ACTION_DATA params:" + paramBundle });
-        }
-        paramString = BaseApplicationImpl.getApplication().getRuntime();
-        if ((paramString != null) && ((paramString instanceof QQAppInterface))) {}
-        for (paramString = (QQAppInterface)paramString; paramString != null; paramString = null)
-        {
-          ThreadManager.post(new yqc(this, paramString, paramBundle.getString("reqData"), paramInt), 5, null, true);
-          return null;
         }
         break;
       }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import abwh;
+import acee;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -91,7 +91,7 @@ public class DBFixManager
   
   public void a(Context paramContext)
   {
-    ThreadManager.postImmediately(new abwh(this), null, true);
+    ThreadManager.postImmediately(new acee(this), null, true);
   }
   
   public void a(Context paramContext, boolean paramBoolean)

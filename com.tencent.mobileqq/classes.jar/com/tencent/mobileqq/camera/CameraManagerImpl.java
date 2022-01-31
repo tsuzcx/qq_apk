@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.camera;
 
-import abpe;
+import abwf;
 import android.annotation.TargetApi;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
@@ -11,7 +11,7 @@ import java.io.IOException;
 public class CameraManagerImpl
   implements CameraManager
 {
-  private abpe jdField_a_of_type_Abpe;
+  private abwf jdField_a_of_type_Abwf;
   private Camera.Parameters jdField_a_of_type_AndroidHardwareCamera$Parameters;
   private Camera jdField_a_of_type_AndroidHardwareCamera;
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
@@ -26,11 +26,11 @@ public class CameraManagerImpl
   
   private void a()
   {
-    if (this.jdField_a_of_type_Abpe == null)
+    if (this.jdField_a_of_type_Abwf == null)
     {
       this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("CameraThread");
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_Abpe = new abpe(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.jdField_a_of_type_Abwf = new abwf(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     }
   }
 }

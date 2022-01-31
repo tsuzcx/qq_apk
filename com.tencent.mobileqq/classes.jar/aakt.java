@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArDefaultSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.ar.ScanningData;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aakt
-  implements Parcelable.Creator
+public class aakt
+  implements Runnable
 {
-  public ArDefaultSetting a(Parcel paramParcel)
-  {
-    return new ArDefaultSetting(paramParcel);
-  }
+  public aakt(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
   
-  public ArDefaultSetting[] a(int paramInt)
+  public void run()
   {
-    return new ArDefaultSetting[paramInt];
+    try
+    {
+      URLDrawable localURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqArScanningData.a, null, null, false);
+      if (localURLDrawable != null)
+      {
+        if (localURLDrawable.getStatus() != 1)
+        {
+          localURLDrawable.startDownload();
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqArScanningData.b = ImageUtil.a(localURLDrawable);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ScanningSurfaceView", 1, "preloadImage catch an exception.", localException);
+    }
   }
 }
 

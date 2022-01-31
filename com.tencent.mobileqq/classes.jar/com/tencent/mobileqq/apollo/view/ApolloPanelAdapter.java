@@ -62,7 +62,7 @@ public class ApolloPanelAdapter
               do
               {
                 return;
-                if (((paramObject instanceof View)) && (((View)paramObject).getId() == 2131363133) && (this.d != null))
+                if (((paramObject instanceof View)) && (((View)paramObject).getId() == 2131363137) && (this.d != null))
                 {
                   this.d.a((View)paramObject);
                   if (QLog.isColorLevel()) {

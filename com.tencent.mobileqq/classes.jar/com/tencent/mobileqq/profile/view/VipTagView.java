@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.view;
 
-import agsq;
-import agsr;
+import agxd;
+import agxe;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -69,7 +69,7 @@ public final class VipTagView
   
   private void a(int paramInt)
   {
-    setBackgroundResource(2130844192);
+    setBackgroundResource(2130844258);
     if ((paramInt > 0) && (paramInt <= 5))
     {
       Object localObject = getBackground();
@@ -116,10 +116,10 @@ public final class VipTagView
     this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText("+1"), i, Bitmap.Config.ARGB_4444);
     new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawText("+1", 0.0F, i, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator = new ShakeEffectGenerator(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(1.0F), new agsq(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(1.0F), new agxd(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setDuration(800L);
     this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setAnimationListener(new agsr(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setAnimationListener(new agxe(this));
   }
   
   private void c()

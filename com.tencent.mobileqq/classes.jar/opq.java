@@ -1,14 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
+import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class opq
-  implements Runnable
+  implements DataProvider.DataUpdateListener
 {
-  public opq(StoryVideoPlayer paramStoryVideoPlayer, Bundle paramBundle) {}
+  public opq(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void run()
+  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
   {
-    StoryVideoPlayer.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer, this.jdField_a_of_type_AndroidOsBundle);
+    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
+    if ((paramBoolean) && (paramAddressInfo != null))
+    {
+      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
+      this.a.a.post(new opr(this, paramAddressInfo));
+      return;
+    }
+    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 public class PluginBaseActivity
   extends BasePluginActivity
 {
-  public boolean t = true;
+  public boolean u = true;
   
   public boolean a()
   {
@@ -16,7 +16,7 @@ public class PluginBaseActivity
   
   public String a_()
   {
-    return getString(2131433698);
+    return getString(2131433712);
   }
   
   public int g()

@@ -1,19 +1,21 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
 import java.util.Iterator;
+import java.util.List;
 
-public class neg
-  implements Runnable
+public final class neg
+  implements DialogInterface.OnClickListener
 {
-  public neg(MsgTabNodeListLoader paramMsgTabNodeListLoader, boolean paramBoolean) {}
+  public neg(List paramList) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
-      ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).b(this.jdField_a_of_type_Boolean);
+      StoryVideoUploadManager.a((String)localIterator.next());
     }
+    paramDialogInterface.dismiss();
   }
 }
 

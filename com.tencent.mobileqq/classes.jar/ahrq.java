@@ -1,40 +1,53 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
 
-public class ahrq
-  implements View.OnClickListener
+class ahrq
 {
-  public ahrq(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  private final Drawable a;
+  private final Drawable b;
   
-  public void onClick(View paramView)
+  ahrq(Context paramContext)
   {
-    this.a.c();
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCursorVisible(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.removeTextChangedListener(this.a);
-    if ((ActiveEntitySearchActivity.a(this.a) == 1) && (!TextUtils.isEmpty(this.a.b)))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText(this.a.b);
-      ActiveEntitySearchActivity.a(this.a, ActiveEntitySearchActivity.a(this.a));
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.addTextChangedListener(this.a);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText("");
-      ActiveEntitySearchActivity.a(this.a, 2);
-    }
+    paramContext = paramContext.getResources();
+    this.a = paramContext.getDrawable(2130837525);
+    this.b = paramContext.getDrawable(2130837527);
+  }
+  
+  private Drawable a(Drawable paramDrawable)
+  {
+    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+  }
+  
+  private Drawable b(Drawable paramDrawable)
+  {
+    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
+    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
+    return paramDrawable;
+  }
+  
+  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
+    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
+    return paramDrawable;
+  }
+  
+  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
+    localStateListDrawable.addState(new int[0], paramDrawable1);
+    return localStateListDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahrq
  * JD-Core Version:    0.7.0.1
  */

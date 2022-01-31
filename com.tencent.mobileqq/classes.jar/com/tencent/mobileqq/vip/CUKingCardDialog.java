@@ -67,12 +67,12 @@ public class CUKingCardDialog
   
   private void a()
   {
-    setContentView(2130968831);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363989));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363990));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363991));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363992));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363993));
+    setContentView(2130968835);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364014));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364015));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364016));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364017));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364018));
     this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CUKingCardFile_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 4);
     Object localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("guidePopupImgUrl_v2", "");
     if (QLog.isColorLevel()) {
@@ -148,8 +148,8 @@ public class CUKingCardDialog
     switch (paramView.getId())
     {
     default: 
-    case 2131363991: 
-    case 2131363992: 
+    case 2131364016: 
+    case 2131364017: 
       label106:
       do
       {
@@ -235,7 +235,7 @@ public class CUKingCardDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vip.CUKingCardDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.av.utils.TipsManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class kji
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public kji(PoiMapActivity paramPoiMapActivity) {}
+  public kji(TipsManager paramTipsManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = PoiMapActivity.m(this.a).getLayoutParams();
-    paramAnimation.height = (this.a.o + this.a.p);
-    PoiMapActivity.n(this.a).setLayoutParams(paramAnimation);
-    paramAnimation = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-    paramAnimation.bottomMargin = (-this.a.p);
-    this.a.b.setLayoutParams(paramAnimation);
-    this.a.a((this.a.o + this.a.p - PoiMapActivity.h(this.a) - this.a.s) / 2, false);
-    if (this.a.e != null) {
-      this.a.e.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("TipsManager", 2, "hideTipsRunnable, mPreviosState[" + this.a.b + "]");
     }
-    PoiMapActivity.d(this.a).clearAnimation();
-    this.a.a = false;
+    this.a.a();
+    if (this.a.b) {
+      this.a.e();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kji
  * JD-Core Version:    0.7.0.1
  */

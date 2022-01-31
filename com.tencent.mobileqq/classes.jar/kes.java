@@ -1,27 +1,45 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.av.ui.VoiceChangeChooseDialog;
 
 public class kes
-  implements MenuItem.OnMenuItemClickListener
+  extends BroadcastReceiver
 {
-  public kes(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
+  public kes(VoiceChangeChooseDialog paramVoiceChangeChooseDialog) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramMenuItem = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin() + "qav_SP", 0).edit();
-    paramMenuItem.putInt("qav_UserGuide_for_av_redbag_count", 0);
-    paramMenuItem.commit();
-    return true;
+    boolean bool = true;
+    paramContext = paramIntent.getAction();
+    if ((paramContext != null) && (paramContext.equals("android.intent.action.HEADSET_PLUG")) && (paramIntent.hasExtra("state")))
+    {
+      int i = paramIntent.getIntExtra("state", 0);
+      paramContext = this.a;
+      if (i != 1) {
+        break label114;
+      }
+    }
+    for (;;)
+    {
+      paramContext.jdField_a_of_type_Boolean = bool;
+      if ((this.a.jdField_a_of_type_Boolean) && (VoiceChangeChooseDialog.a(this.a) == 2))
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429604);
+        VoiceChangeChooseDialog.a(this.a, 0);
+      }
+      return;
+      label114:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kes
  * JD-Core Version:    0.7.0.1
  */

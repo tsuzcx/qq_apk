@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
 
 class srj
   implements Runnable
 {
-  srj(sri paramsri) {}
+  srj(sri paramsri, EmoticonPackage paramEmoticonPackage) {}
   
   public void run()
   {
-    this.a.a.a.a.removeAnimatorListener(this.a);
-    this.a.a.a.a.removeUpdateListener(this.a);
+    this.jdField_a_of_type_Sri.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(this.jdField_a_of_type_Sri.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
   }
 }
 

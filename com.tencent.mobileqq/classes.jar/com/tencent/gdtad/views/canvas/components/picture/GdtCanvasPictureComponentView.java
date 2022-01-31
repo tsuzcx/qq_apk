@@ -8,15 +8,15 @@ import com.tencent.gdtad.views.image.GdtDrawableLoader;
 import com.tencent.gdtad.views.image.GdtDrawableLoader.Listener;
 import com.tencent.image.URLImageView;
 import java.lang.ref.WeakReference;
-import qma;
-import qmb;
-import qmc;
+import qqr;
+import qqs;
+import qqt;
 
 public class GdtCanvasPictureComponentView
   extends GdtCanvasComponentView
 {
   private GdtCanvasPictureComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData;
-  private GdtDrawableLoader.Listener jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener = new qmb(this);
+  private GdtDrawableLoader.Listener jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener = new qqs(this);
   private GdtDrawableLoader jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
@@ -47,7 +47,7 @@ public class GdtCanvasPictureComponentView
     this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader = new GdtDrawableLoader(paramGdtCanvasPictureComponentData.url, new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener));
     this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a();
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a());
-    this.jdField_a_of_type_ComTencentImageURLImageView.setOnTouchListener(new qmc(new qma(this, paramGdtCanvasPictureComponentData)));
+    this.jdField_a_of_type_ComTencentImageURLImageView.setOnTouchListener(new qqt(new qqr(this, paramGdtCanvasPictureComponentData)));
     this.jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus = new GdtViewStatus(new WeakReference(this.jdField_a_of_type_ComTencentImageURLImageView), new WeakReference(this));
   }
   

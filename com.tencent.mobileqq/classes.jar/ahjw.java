@@ -1,32 +1,25 @@
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ahjw
-  implements Runnable
+  extends RecyclerView.ViewHolder
 {
-  public ahjw(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  private ahjw(View paramView)
   {
-    this.a.e();
-    CapturePtvTemplateManager.a().b(false);
-    CaptureReportUtil.h();
-    this.a.a.c();
-    if ((this.a.e) && (CaptureVideoFilterManager.a(this.a.getActivity())))
-    {
-      CaptureVideoFilterManager.a().b();
-      CaptureVideoFilterManager.a().a(new ahjx(this));
-      EffectsCameraCaptureFragment.a(this.a).c();
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363568));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364365));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjw
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ import com.tencent.mobileqq.richstatus.RichStatus.StickerInfo;
 import com.tencent.mobileqq.vas.SignatureTemplateInfo.DynamicItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import vgq;
+import vls;
 
 public final class SignatureView
   extends View
@@ -96,8 +96,8 @@ public final class SignatureView
     this.jdField_b_of_type_Float = (12.0F * this.jdField_d_of_type_Float);
     this.jdField_b_of_type_AndroidTextTextPaint.setColor(this.jdField_c_of_type_Int);
     this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_Float);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846083);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845814);
+    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846165);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845894);
     this.jdField_b_of_type_JavaLangString = "0";
     this.jdField_a_of_type_Int = Color.parseColor("#66000000");
     this.jdField_c_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_Int);
@@ -320,7 +320,7 @@ public final class SignatureView
       jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-    ThreadManager.post(new vgq(this, paramInt, paramString, paramDynamicItem), 5, null, true);
+    ThreadManager.post(new vls(this, paramInt, paramString, paramDynamicItem), 5, null, true);
   }
   
   public void setSigViewSize(int paramInt1, int paramInt2)

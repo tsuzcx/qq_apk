@@ -5,7 +5,7 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArraySet;
-import ndb;
+import ngw;
 
 public class TrimmableManager
   implements IManager
@@ -37,7 +37,7 @@ public class TrimmableManager
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ndb(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ngw(this, paramInt));
   }
   
   public void a(ITrimmable paramITrimmable)

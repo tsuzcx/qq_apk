@@ -2,48 +2,43 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.DiscoverManager;
+import com.tencent.biz.qqstory.model.MemoryManager;
 import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.square.GetSquareBannerRequest;
-import com.tencent.biz.qqstory.network.request.square.GetSquareBannerRequest.GetSquareBannerResponse;
-import com.tencent.biz.qqstory.storyHome.square.SquareFeedListPageLoader;
+import com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest;
+import com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest.GetProfileYearNodeListResponse;
+import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter;
+import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter.GetYearNodeListEvent;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.List;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class obx
   implements CmdTaskManger.CommandCallback
 {
-  public obx(SquareFeedListPageLoader paramSquareFeedListPageLoader) {}
+  public obx(ProfileFeedPresenter paramProfileFeedPresenter, boolean paramBoolean) {}
   
-  public void a(@NonNull GetSquareBannerRequest arg1, @Nullable GetSquareBannerRequest.GetSquareBannerResponse paramGetSquareBannerResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@NonNull GetProfileYearNodeListRequest paramGetProfileYearNodeListRequest, @Nullable GetProfileYearNodeListRequest.GetProfileYearNodeListResponse arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    ??? = (DiscoverManager)SuperManager.a(22);
-    if ((paramErrorMessage.isSuccess()) && (paramGetSquareBannerResponse != null))
+    if (ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter).get())
     {
-      ???.b(paramGetSquareBannerResponse.a, true);
-      SLog.a("Q.qqstory.discover.SquareFeedListPageLoader", "refresh banner :%s", paramGetSquareBannerResponse.a);
-      synchronized (this.a)
-      {
-        SquareFeedListPageLoader.a(this.a, paramGetSquareBannerResponse);
-        SquareFeedListPageLoader.a(this.a);
-        return;
-      }
+      SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
+      return;
     }
-    SLog.b("Q.qqstory.discover.SquareFeedListPageLoader", "refresh banner fail:%s", paramErrorMessage);
-    paramGetSquareBannerResponse = ???.b();
-    for (;;)
+    SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
+    paramGetProfileYearNodeListRequest = new ProfileFeedPresenter.GetYearNodeListEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter, paramErrorMessage);
+    paramGetProfileYearNodeListRequest.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    if ((??? == null) || (paramErrorMessage.isFail()))
     {
-      synchronized (this.a)
-      {
-        if (paramGetSquareBannerResponse.size() > 0)
-        {
-          SquareFeedListPageLoader.a(this.a, new GetSquareBannerRequest.GetSquareBannerResponse(new ErrorMessage()));
-          SquareFeedListPageLoader.a(this.a).a = paramGetSquareBannerResponse;
-          SquareFeedListPageLoader.a(this.a);
-          return;
-        }
-      }
-      SquareFeedListPageLoader.a(this.a, new GetSquareBannerRequest.GetSquareBannerResponse(paramErrorMessage));
+      Dispatchers.get().dispatch(paramGetProfileYearNodeListRequest);
+      return;
+    }
+    paramGetProfileYearNodeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
+    ((MemoryManager)SuperManager.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
+    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter)
+    {
+      Dispatchers.get().dispatch(paramGetProfileYearNodeListRequest);
+      return;
     }
   }
 }

@@ -1,26 +1,67 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public class lel
-  implements ActionSheet.OnButtonClickListener
+  implements EmoticonCallback
 {
-  public lel(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public lel(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(EmoticonInfo paramEmoticonInfo)
   {
-    switch (paramInt)
+    if ((paramEmoticonInfo instanceof PicEmoticonInfo))
     {
+      paramEmoticonInfo = (PicEmoticonInfo)paramEmoticonInfo;
+      if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
+        ((ReadInJoyDeliverUGCActivity)this.a).a(paramEmoticonInfo);
+      }
+      return;
     }
+    ReadInJoyBaseDeliverActivity.a(paramEmoticonInfo, this.a.a);
+  }
+  
+  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public boolean a(EmoticonInfo paramEmoticonInfo)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.a.getSelectionStart() == 0) {}
     for (;;)
     {
-      ReadInJoySettingActivity.b(this.a).cancel();
       return;
-      ReadInJoySettingActivity.d(this.a, false);
-      ReadInJoySettingActivity.c(this.a, ReadInJoySettingActivity.c(this.a));
+      try
+      {
+        Editable localEditable = this.a.a.getText();
+        int i = this.a.a.getSelectionStart();
+        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
   }
+  
+  public void b(EmoticonInfo paramEmoticonInfo) {}
+  
+  public void c() {}
+  
+  public void setting() {}
 }
 
 

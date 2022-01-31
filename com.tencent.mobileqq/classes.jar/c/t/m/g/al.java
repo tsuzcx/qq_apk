@@ -1,387 +1,252 @@
 package c.t.m.g;
 
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import java.util.ArrayList;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class al
+public final class al
+  extends aj
 {
-  Handler a;
-  ar b;
-  AtomicInteger c = new AtomicInteger(0);
-  List<String> d = new ArrayList();
-  volatile boolean e = false;
-  volatile boolean f = false;
-  protected AtomicInteger g = new AtomicInteger(0);
-  AtomicInteger h = new AtomicInteger(0);
-  int i;
-  AtomicInteger j = new AtomicInteger(0);
-  volatile boolean k = false;
-  ar.a l = new ar.a(this);
-  private final String m = a();
-  private long n;
-  private final Runnable o = new ap(this);
-  private final Runnable p = new aq(this);
+  private static boolean r = false;
+  private n A;
+  private String B;
+  private String C;
+  public boolean o = true;
+  public int p = -1;
+  public String q;
+  private boolean s = false;
+  private boolean t = false;
+  private int u;
+  private ap v;
+  private ao w;
+  private ak x;
+  private ai y = ai.a();
+  private boolean z;
   
-  public al()
+  public al(String paramString1, Map<String, String> paramMap, byte[] paramArrayOfByte, int paramInt, String paramString2, boolean paramBoolean, String paramString3)
   {
-    as.a(l.a());
-    HandlerThread localHandlerThread = new HandlerThread(this.m, 10);
-    localHandlerThread.start();
-    this.a = new Handler(localHandlerThread.getLooper());
-    this.b = new am();
-    a(true);
-    b(true, false);
-    this.i = b();
+    this.b = paramString1;
+    this.c = false;
+    this.d = paramMap;
+    this.e = paramArrayOfByte;
+    this.f = paramInt;
+    this.g = paramString2;
+    this.s = false;
+    this.u = 0;
+    this.z = paramBoolean;
+    this.B = paramString3;
   }
   
-  private void a(boolean paramBoolean)
+  public static al a(String paramString1, Map<String, String> paramMap, byte[] paramArrayOfByte, int paramInt, String paramString2)
   {
-    if (paramBoolean) {
-      this.a.postDelayed(new ao(this), 5000L);
-    }
-    while ((this.n == 0L) || (SystemClock.elapsedRealtime() - this.n <= 1800000L)) {
-      return;
-    }
-    d();
+    return new al(paramString1, paramMap, paramArrayOfByte, paramInt, paramString2, false, "");
   }
   
-  public abstract String a();
-  
-  final void a(boolean paramBoolean1, boolean paramBoolean2)
+  public final ao a()
   {
-    for (;;)
+    if (!r) {
+      r = true;
+    }
+    try
     {
-      try
-      {
-        a(false);
-        if ((paramBoolean1) && (paramBoolean2))
-        {
-          b(false, true);
-          if (this.e) {
-            if (paramBoolean1) {
-              this.f = true;
-            }
-          }
-        }
-        else
-        {
-          b(false, false);
-          continue;
-        }
-        if (paramBoolean1) {
-          break label66;
-        }
+      if ((Build.VERSION.SDK != null) && (Build.VERSION.SDK_INT < 8)) {
+        System.setProperty("http.keepAlive", "false");
       }
-      finally {}
-      this.c.set(0);
-      label66:
-      this.e = true;
-      try
-      {
-        new d(paramBoolean1, paramBoolean2).a(true);
-      }
-      catch (Throwable localThrowable)
-      {
-        this.e = false;
-      }
-    }
-  }
-  
-  public abstract int b();
-  
-  final void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean2) {
-      if (this.j.get() > 3) {
-        this.j.set(0);
-      }
-    }
-    do
-    {
-      return;
-      ab.a().a(this.o, v.a("report_real_timer_interval", 1, 60, 5) * 1000);
-      return;
-      if (paramBoolean1)
-      {
-        ab.a().a(this.p, 10000L);
-        return;
-      }
-    } while (this.k);
-    ab.a().a(this.p, v.a("report_timer_interval", 30000, 600000, 300000));
-  }
-  
-  public abstract String c();
-  
-  final void d()
-  {
-    this.n = SystemClock.elapsedRealtime();
-    int i1 = cc.c("report_missing_event");
-    int i2 = cc.c("report_using_traffic");
-    int i3 = v.a("report_using_traffic_limit", 1, 10240, 32);
-    if ((i1 == 0) && (i2 < i3 << 10)) {
-      return;
-    }
-    long l1 = cc.b("report_traffic_last_time");
-    if (l1 == 0L)
-    {
-      cc.a("report_traffic_last_time", System.currentTimeMillis());
-      return;
-    }
-    l1 = System.currentTimeMillis() - l1;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("B110", i2);
-    String str;
-    if (l1 < 0L)
-    {
-      str = "0";
-      localHashMap.put("B112", str);
-      if (i1 != 0) {
-        break label177;
-      }
-      cd.b("HLReportEvent", l.c(), 0, "", localHashMap, null, false);
-    }
-    for (;;)
-    {
-      cc.a("report_using_traffic", 0);
-      return;
-      str = l1;
-      break;
-      label177:
-      localHashMap.put("B111", i1);
-      cd.b("HLReportEvent", l.c(), -500, "", localHashMap, null, false);
-      cc.a("report_missing_event", 0);
-    }
-  }
-  
-  abstract class a
-    implements Runnable
-  {
-    private a() {}
-    
-    public final void a(boolean paramBoolean)
-    {
-      if (paramBoolean)
-      {
-        if (!al.this.a.postAtFrontOfQueue(this)) {
-          al.this.a.post(this);
-        }
-        return;
-      }
-      al.this.a.post(this);
-    }
-  }
-  
-  final class b
-    extends al.a
-  {
-    private String a;
-    private boolean b;
-    
-    public b(String paramString)
-    {
-      super((byte)0);
-      this.a = paramString;
-      this.b = true;
-    }
-    
-    public final void run()
-    {
-      al.this.h.decrementAndGet();
-      if (TextUtils.isEmpty(this.a)) {}
-      int i;
-      do
-      {
-        return;
-        i = v.a("report_new_record_num", 1, 50, 10);
-        if (au.a(al.this.c()).b(this.a) == -1L) {
-          break;
-        }
-        if (al.this.k)
-        {
-          al.this.k = false;
-          al.this.b(false, false);
-        }
-      } while (al.this.c.incrementAndGet() < i);
-      al.this.a(false, this.b);
-      return;
-      al localal = al.this;
-      cc.a("report_missing_event", cc.c("report_missing_event") + 1);
-    }
-  }
-  
-  final class c
-    extends al.a
-  {
-    private al.d a;
-    
-    public c(al.d paramd)
-    {
-      super((byte)0);
-      this.a = paramd;
-    }
-    
-    public final void run()
-    {
-      int i = 0;
-      al.this.e = false;
-      int j;
-      if (this.a.d)
-      {
-        al.this.g.addAndGet(this.a.f);
-        if (!this.a.b)
-        {
-          j = this.a.e.size();
-          ArrayList localArrayList = new ArrayList();
-          i = 0;
-          while (i < j)
-          {
-            localArrayList.add(Long.valueOf(((au.a)this.a.e.get(i)).a));
-            i += 1;
-          }
-          au.a(al.this.c()).a(localArrayList);
-          if (al.this.f)
-          {
-            al.this.f = false;
-            al.this.a(true, this.a.c);
-          }
-        }
-      }
+      label32:
+      this.w = new ao(0, "");
       for (;;)
       {
-        return;
-        if (!this.a.a)
+        Object localObject4;
+        long l2;
+        try
         {
-          SystemClock.sleep(200L);
-          al.this.a(this.a.b, this.a.c);
-          return;
-        }
-        al.this.k = true;
-        return;
-        if ((this.a.c) && (this.a.b))
-        {
-          j = this.a.e.size();
-          while (i < j)
-          {
-            au.a(al.this.c()).b(((au.a)this.a.e.get(i)).b);
-            i += 1;
-          }
-        }
-      }
-    }
-  }
-  
-  final class d
-    extends al.a
-  {
-    public boolean a;
-    public boolean b;
-    public boolean c;
-    public boolean d = false;
-    public List<au.a> e;
-    int f;
-    
-    public d(boolean paramBoolean1, boolean paramBoolean2)
-    {
-      super((byte)0);
-      this.b = paramBoolean1;
-      this.c = paramBoolean2;
-    }
-    
-    public final void run()
-    {
-      Object localObject2 = null;
-      Object localObject1 = null;
-      int k = 0;
-      this.a = false;
-      if (this.b)
-      {
-        int m = al.this.d.size();
-        if (m == 0) {}
-        for (;;)
-        {
-          this.e = ((List)localObject1);
-          if ((this.e != null) && (this.e.size() != 0)) {
+          Object localObject1 = new URL(this.b);
+          String str1 = ((URL)localObject1).getHost();
+          this.x = new ak((URL)localObject1, this.b);
+          boolean bool = ((URL)localObject1).getProtocol().toLowerCase().startsWith("https");
+          List localList = this.x.a(this.z, bool);
+          int n = localList.size();
+          long l1 = SystemClock.elapsedRealtime();
+          i = this.f;
+          int j = 0;
+          if (j >= n) {
             break;
           }
-          al.this.e = false;
-          return;
-          localObject2 = new ArrayList();
-          localObject1 = new ArrayList();
-          i = 0;
-          j = 0;
-          while ((i < m) && (j < 10))
+          this.n.incrementAndGet();
+          this.A = ((n)localList.get(j));
+          if (this.A.e < 3) {
+            this.t = true;
+          }
+          localObject4 = this.x;
+          localObject1 = this.A;
+          if (((n)localObject1).b())
           {
-            String str = (String)al.this.d.get(i);
-            ((List)localObject1).add(new au.a(0L, str));
-            ((List)localObject2).add(str);
+            localObject3 = ((ak)localObject4).b;
+            this.C = ((String)localObject3);
+            this.v = new ap(str1, this.C, this.c, this.d, this.e, i, this.g);
+            if (j != 0) {
+              this.v.r = true;
+            }
+            if ((x.i()) && (j != 0)) {
+              this.v.p = true;
+            }
+            this.v.q = this.n.get();
+            this.w = this.v.a();
+            if (((this.v.i) || (this.w.c >= 500)) && (x.h()) && (this.t)) {
+              ai.a(str1, this.A, this.w.a);
+            }
+            int m = (int)(this.f - (SystemClock.elapsedRealtime() - l1));
+            if (((this.w.a != 0) || (this.w.c < 200) || (this.w.c >= 400)) && (this.w.a != -20) && (this.w.a != -300) && (this.w.a != -306) && (j != n - 1) && (m > 200)) {
+              break label817;
+            }
+            i = 1;
+            k = i;
+            if (i == 0)
+            {
+              k = i;
+              if (this.w.a == -4)
+              {
+                k = x.a.a("direct_nonet_retry_gap", 0, 10000, 3000);
+                l2 = this.v.o;
+                if (l2 < k) {
+                  break label822;
+                }
+                k = 1;
+              }
+            }
+            if (k != 0) {
+              break;
+            }
+            a(true);
             j += 1;
-            i += 1;
+            i = m;
+            continue;
           }
-          i = 0;
-          while (i < ((List)localObject2).size())
+          if (((ak)localObject4).a.getProtocol().startsWith("https")) {
+            break label707;
+          }
+        }
+        catch (MalformedURLException localMalformedURLException)
+        {
+          this.w.a = -300;
+          return this.w;
+        }
+        Object localObject3 = "http://" + localMalformedURLException.a + ":" + localMalformedURLException.b;
+        label599:
+        String str2 = ((ak)localObject4).a.getFile();
+        Object localObject2 = localObject3;
+        if (!TextUtils.isEmpty(str2)) {
+          if (!str2.startsWith("/")) {
+            break label786;
+          }
+        }
+        label786:
+        for (localObject2 = (String)localObject3 + str2;; localObject2 = (String)localObject3 + "/" + str2)
+        {
+          localObject4 = ((ak)localObject4).a.getRef();
+          localObject3 = localObject2;
+          if (TextUtils.isEmpty((CharSequence)localObject4)) {
+            break;
+          }
+          localObject3 = (String)localObject2 + "#" + (String)localObject4;
+          break;
+          label707:
+          if (((ak)localObject4).c != 0)
           {
-            al.this.d.remove(((List)localObject2).get(i));
-            i += 1;
+            localObject3 = "https://" + ((n)localObject2).a + ":" + ((ak)localObject4).c;
+            break label599;
           }
-          if (al.this.d.size() == 0) {
-            this.a = true;
-          }
+          localObject3 = "https://" + ((n)localObject2).a + ":443";
+          break label599;
         }
+        label817:
+        int i = 0;
+        continue;
+        label822:
+        SystemClock.sleep(cn.a((int)(k - l2), 200, k, 200));
+        int k = i;
       }
-      int i = v.a("report_clear_db_num", 1, 10000, 1000);
-      if (au.a(al.this.c()).a(i)) {
-        localObject1 = localObject2;
+      return this.w;
+    }
+    catch (Exception localException)
+    {
+      break label32;
+    }
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    int i = 1;
+    HashMap localHashMap1;
+    HashMap localHashMap2;
+    StringBuilder localStringBuilder;
+    if (this.v != null)
+    {
+      if (this.i) {
+        this.v.i = true;
       }
-      for (;;)
+      localHashMap1 = new HashMap();
+      if (paramBoolean) {
+        break label531;
+      }
+      localHashMap1.put("B22", this.k);
+      if (!cn.a(this.q)) {
+        localHashMap1.put("B15", this.q);
+      }
+      if (!cn.a(this.B)) {
+        localHashMap1.put("B54", this.B);
+      }
+      localHashMap2 = new HashMap();
+      localHashMap2.put("B82", this.g);
+      if (this.l != 0L) {
+        localHashMap2.put("B83", this.l);
+      }
+      localHashMap2.put("B44", this.a);
+      if ((!TextUtils.isEmpty(this.a)) && (!this.a.equals(this.C))) {
+        localHashMap2.put("B49", this.C);
+      }
+      if (this.A != null)
       {
-        this.e = ((List)localObject1);
-        break;
-        localObject1 = au.a(al.this.c()).a();
-        if (((List)localObject1).size() <= 10)
-        {
-          this.a = true;
-          al.this.k = true;
+        if (!this.A.b()) {
+          localHashMap2.put("B10", this.A.a());
         }
-        else
-        {
-          ((List)localObject1).remove(((List)localObject1).size() - 1);
+        if (this.A.c != -1) {
+          localHashMap2.put("B45", this.A.c);
         }
-      }
-      localObject1 = new StringBuilder();
-      i = k;
-      while (i < this.e.size())
-      {
-        ((StringBuilder)localObject1).append(((au.a)this.e.get(i)).b).append("\n");
-        i += 1;
-      }
-      localObject2 = ((StringBuilder)localObject1).toString();
-      localObject1 = localObject2;
-      if (this.b)
-      {
-        localObject1 = localObject2;
-        if (((String)localObject2).contains("client_report_time")) {
-          localObject1 = ((String)localObject2).replace("client_report_time", ch.a(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss"));
+        localHashMap2.put("B202", this.A.e);
+        localHashMap2.put("B204", this.A.d);
+        localStringBuilder = new StringBuilder();
+        if (!this.t) {
+          break label547;
         }
       }
-      localObject1 = ((String)localObject1).getBytes();
-      i = localObject1.length;
-      this.f = i;
-      localObject1 = v.a((byte[])localObject1);
-      localObject2 = al.this;
-      int j = localObject1.length;
-      k = cc.c("report_using_traffic");
-      if (k == 0) {
-        cc.a("report_traffic_last_time", System.currentTimeMillis());
+    }
+    for (;;)
+    {
+      localHashMap2.put("B203", i);
+      localHashMap2.put("B53", this.n.get());
+      if (!TextUtils.isEmpty(this.x.d)) {
+        localHashMap2.put("B26", this.x.d);
       }
-      cc.a("report_using_traffic", j + k);
-      al.this.b.a((byte[])localObject1, i, this.b, this, al.this.l);
+      if (this.j) {
+        localHashMap2.put("B97", "1");
+      }
+      if (this.p != -1) {
+        localHashMap2.put("B211", this.p);
+      }
+      this.v.a(localHashMap1, localHashMap2);
+      return;
+      label531:
+      localHashMap1.put("B46", "1");
+      break;
+      label547:
+      i = 0;
     }
   }
 }

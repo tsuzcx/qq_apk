@@ -55,7 +55,7 @@ public abstract class ZimuView
     paramContext = new DisplayMetrics();
     paramVideoAppInterface.getDefaultDisplay().getMetrics(paramContext);
     this.jdField_a_of_type_Float = paramContext.density;
-    setId(2131362537);
+    setId(2131362542);
     this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager = ((EffectZimuManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
     paramVideoAppInterface = a();
     this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager.b(paramVideoAppInterface);
@@ -304,7 +304,7 @@ public abstract class ZimuView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuView
  * JD-Core Version:    0.7.0.1
  */

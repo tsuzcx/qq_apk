@@ -22,8 +22,8 @@ import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import reu;
-import rev;
+import rjm;
+import rjn;
 import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.ReqBody;
 
 public class UserInfoModule
@@ -110,7 +110,7 @@ public class UserInfoModule
     if (QLog.isColorLevel()) {
       QLog.i(jdField_a_of_type_JavaLangString + ".requestUserInfo", 2, "not main process, send to main process");
     }
-    DoraemonBridge.a(1, null, new reu(this, paramAPICallback));
+    DoraemonBridge.a(1, null, new rjm(this, paramAPICallback));
   }
   
   private void b(APIParam paramAPIParam, APICallback paramAPICallback)
@@ -123,7 +123,7 @@ public class UserInfoModule
     paramAPIParam.openid.set(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.jdField_a_of_type_JavaLangString);
     paramAPIParam.openkey.set(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.b);
     paramAPIParam.platform.set("openmobile_android");
-    ProtoUtils.a(BaseApplicationImpl.getApplication().getRuntime(), new rev(this, paramAPICallback), paramAPIParam.toByteArray(), "OidbSvc.0xb6e", 2926, 1, null, 0L);
+    ProtoUtils.a(BaseApplicationImpl.getApplication().getRuntime(), new rjn(this, paramAPICallback), paramAPIParam.toByteArray(), "OidbSvc.0xb6e", 2926, 1, null, 0L);
   }
   
   public void a()

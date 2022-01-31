@@ -1,89 +1,30 @@
-import android.content.Context;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.ark.ArkPanelPagerAdapter;
-import com.tencent.mobileqq.ark.ArkPanelPagerAdapter.ViewHolder;
-import com.tencent.widget.XPanelContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aawz
-  extends RelativeLayout
+class aawz
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  aawz(aawv paramaawv, QQCustomDialog paramQQCustomDialog) {}
   
-  public aawz(ArkPanelPagerAdapter paramArkPanelPagerAdapter, Context paramContext, AttributeSet paramAttributeSet)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    int k = paramArkPanelPagerAdapter.a();
-    int m = paramArkPanelPagerAdapter.b();
-    int n = AIOUtils.a(15.0F, getContext().getResources());
-    int i = 0;
-    while (i < m)
+    ArkAppCenter.a().post(new aaxa(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      paramArkPanelPagerAdapter = new LinearLayout(paramContext);
-      int j = (XPanelContainer.jdField_a_of_type_Int - XPanelContainer.d - n) / m;
-      paramAttributeSet = new RelativeLayout.LayoutParams(-1, j);
-      paramAttributeSet.leftMargin = AIOUtils.a(20.0F, getContext().getResources());
-      paramAttributeSet.rightMargin = AIOUtils.a(20.0F, getContext().getResources());
-      paramArkPanelPagerAdapter.setOrientation(0);
-      if (i == 0) {}
-      for (paramAttributeSet.topMargin = (XPanelContainer.d / (m + 1));; paramAttributeSet.topMargin = (j * i + XPanelContainer.d * (i + 2) / (m + 1) / 2))
-      {
-        j = 0;
-        while (j < k)
-        {
-          Object localObject = new LinearLayout.LayoutParams(-1, -1);
-          ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
-          if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-            this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-          }
-          View localView = LayoutInflater.from(paramContext).inflate(2130968772, null);
-          paramArkPanelPagerAdapter.addView(localView, (ViewGroup.LayoutParams)localObject);
-          localObject = new ArkPanelPagerAdapter.ViewHolder();
-          ((ArkPanelPagerAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131363701));
-          ((ArkPanelPagerAdapter.ViewHolder)localObject).b = ((ImageView)localView.findViewById(2131363702));
-          ((ArkPanelPagerAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362961));
-          localView.setTag(localObject);
-          j += 1;
-        }
-      }
-      addView(paramArkPanelPagerAdapter, paramAttributeSet);
-      i += 1;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aawv.a, "ark_authority_api_user_info", this.jdField_a_of_type_Aawv.c, 1);
+      return;
     }
-    setTag(Integer.valueOf(XPanelContainer.d));
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    while (i < getChildCount())
+    catch (Exception paramDialogInterface)
     {
-      Object localObject = getChildAt(i);
-      if (localObject != null)
-      {
-        localObject = (ArkPanelPagerAdapter.ViewHolder)((View)localObject).getTag();
-        if ((localObject != null) && (((ArkPanelPagerAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView != null)) {
-          ((ArkPanelPagerAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-        }
-      }
-      i += 1;
+      break label38;
     }
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

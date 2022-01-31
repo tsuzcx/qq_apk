@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.now.enter;
 
-import agah;
-import agai;
+import agek;
+import agel;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
@@ -33,9 +33,11 @@ import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
@@ -50,6 +52,7 @@ public class NowEnterManager
   public QQAppInterface a;
   private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
   public WeakReference a;
+  private List jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   protected Set a;
   private int b;
   
@@ -157,11 +160,9 @@ public class NowEnterManager
   
   public void a()
   {
-    int i = a();
-    if (this.jdField_a_of_type_Int != i)
-    {
-      this.jdField_a_of_type_Int = i;
-      new ReportTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_AIO").c("year_icon").d("scroll_down_ok").a(new String[] { String.valueOf(i) }).a();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((NowEnterManager.WebProcessBindCallback)localIterator.next()).a();
     }
   }
   
@@ -188,7 +189,7 @@ public class NowEnterManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_2
-    //   3: invokestatic 82	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: istore_3
     //   7: iload_3
     //   8: ifeq +6 -> 14
@@ -198,68 +199,68 @@ public class NowEnterManager
     //   14: aload_0
     //   15: aload_1
     //   16: aload_2
-    //   17: invokevirtual 278	com/tencent/mobileqq/now/enter/NowEnterManager:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Z
+    //   17: invokevirtual 270	com/tencent/mobileqq/now/enter/NowEnterManager:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Z
     //   20: istore_3
-    //   21: invokestatic 55	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   21: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   24: ifeq +39 -> 63
-    //   27: ldc 57
+    //   27: ldc 63
     //   29: iconst_2
-    //   30: new 59	java/lang/StringBuilder
+    //   30: new 65	java/lang/StringBuilder
     //   33: dup
-    //   34: invokespecial 60	java/lang/StringBuilder:<init>	()V
-    //   37: ldc_w 280
-    //   40: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   37: ldc_w 272
+    //   40: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: iload_3
-    //   44: invokevirtual 283	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   47: ldc_w 285
-    //   50: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: invokevirtual 275	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   47: ldc_w 277
+    //   50: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: aload_2
-    //   54: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   60: invokestatic 76	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   54: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: invokestatic 82	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   63: iload_3
     //   64: ifeq -53 -> 11
     //   67: aload_2
-    //   68: invokestatic 88	com/tencent/image/Utils:Crc64String	(Ljava/lang/String;)Ljava/lang/String;
+    //   68: invokestatic 94	com/tencent/image/Utils:Crc64String	(Ljava/lang/String;)Ljava/lang/String;
     //   71: astore 4
     //   73: aload_0
-    //   74: getfield 32	com/tencent/mobileqq/now/enter/NowEnterManager:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
+    //   74: getfield 38	com/tencent/mobileqq/now/enter/NowEnterManager:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
     //   77: aload 4
-    //   79: invokeinterface 291 2 0
+    //   79: invokeinterface 283 2 0
     //   84: pop
     //   85: aload_0
-    //   86: getfield 293	com/tencent/mobileqq/now/enter/NowEnterManager:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine	Lcom/tencent/mobileqq/transfile/INetEngine;
+    //   86: getfield 285	com/tencent/mobileqq/now/enter/NowEnterManager:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine	Lcom/tencent/mobileqq/transfile/INetEngine;
     //   89: ifnonnull +12 -> 101
     //   92: aload_0
     //   93: aload_1
     //   94: iconst_0
-    //   95: invokevirtual 297	com/tencent/mobileqq/app/QQAppInterface:getNetEngine	(I)Lcom/tencent/mobileqq/transfile/INetEngine;
-    //   98: putfield 293	com/tencent/mobileqq/now/enter/NowEnterManager:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine	Lcom/tencent/mobileqq/transfile/INetEngine;
-    //   101: new 299	com/tencent/mobileqq/transfile/HttpNetReq
+    //   95: invokevirtual 289	com/tencent/mobileqq/app/QQAppInterface:getNetEngine	(I)Lcom/tencent/mobileqq/transfile/INetEngine;
+    //   98: putfield 285	com/tencent/mobileqq/now/enter/NowEnterManager:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine	Lcom/tencent/mobileqq/transfile/INetEngine;
+    //   101: new 291	com/tencent/mobileqq/transfile/HttpNetReq
     //   104: dup
-    //   105: invokespecial 300	com/tencent/mobileqq/transfile/HttpNetReq:<init>	()V
+    //   105: invokespecial 292	com/tencent/mobileqq/transfile/HttpNetReq:<init>	()V
     //   108: astore 4
     //   110: aload 4
     //   112: aload_0
-    //   113: putfield 303	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener	Lcom/tencent/mobileqq/transfile/INetEngine$INetEngineListener;
+    //   113: putfield 295	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener	Lcom/tencent/mobileqq/transfile/INetEngine$INetEngineListener;
     //   116: aload 4
     //   118: aload_2
-    //   119: putfield 305	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   119: putfield 297	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   122: aload 4
     //   124: iconst_0
-    //   125: putfield 306	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_Int	I
+    //   125: putfield 298	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_Int	I
     //   128: aload 4
     //   130: aload_1
     //   131: aload_2
-    //   132: invokestatic 49	com/tencent/mobileqq/now/enter/NowEnterManager:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
-    //   135: putfield 308	com/tencent/mobileqq/transfile/HttpNetReq:c	Ljava/lang/String;
+    //   132: invokestatic 55	com/tencent/mobileqq/now/enter/NowEnterManager:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   135: putfield 300	com/tencent/mobileqq/transfile/HttpNetReq:c	Ljava/lang/String;
     //   138: aload 4
     //   140: iconst_2
-    //   141: putfield 310	com/tencent/mobileqq/transfile/HttpNetReq:e	I
+    //   141: putfield 302	com/tencent/mobileqq/transfile/HttpNetReq:e	I
     //   144: aload_0
-    //   145: getfield 293	com/tencent/mobileqq/now/enter/NowEnterManager:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine	Lcom/tencent/mobileqq/transfile/INetEngine;
+    //   145: getfield 285	com/tencent/mobileqq/now/enter/NowEnterManager:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine	Lcom/tencent/mobileqq/transfile/INetEngine;
     //   148: aload 4
-    //   150: invokeinterface 315 2 0
+    //   150: invokeinterface 307 2 0
     //   155: goto -144 -> 11
     //   158: astore_1
     //   159: aload_0
@@ -353,7 +354,7 @@ public class NowEnterManager
           localEditor.putLong("activeEndTime" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), l2 / 1000L);
           localEditor.commit();
           if (bool) {
-            ThreadManager.post(new agah(this, paramConfig, str1), 5, null, false);
+            ThreadManager.post(new agek(this, paramConfig, str1), 5, null, false);
           }
           localEditor.commit();
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("now_enter_config_version" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), i).commit();
@@ -385,6 +386,11 @@ public class NowEnterManager
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
   }
   
+  public void a(NowEnterManager.WebProcessBindCallback paramWebProcessBindCallback)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramWebProcessBindCallback);
+  }
+  
   public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
   
   public void a(NetResp paramNetResp)
@@ -400,7 +406,7 @@ public class NowEnterManager
         if (this.jdField_a_of_type_JavaUtilSet.contains(paramNetResp)) {
           this.jdField_a_of_type_JavaUtilSet.remove(paramNetResp);
         }
-        ThreadManager.getUIHandler().post(new agai(this, bool, localHttpNetReq));
+        ThreadManager.getUIHandler().post(new agel(this, bool, localHttpNetReq));
         if (!bool)
         {
           paramNetResp = new File(localHttpNetReq.c);
@@ -426,8 +432,7 @@ public class NowEnterManager
     for (;;)
     {
       localReportTask.a(new String[] { String.valueOf(i) }).a();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_enter_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 4).edit().putBoolean("now_answer_entrance_setting_show" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramBoolean).apply();
-      ((NowHongbaoPushManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(265)).a(paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_enter_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 4).edit().putBoolean("nowPullShow" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramBoolean).commit();
       return;
       i = 2;
     }
@@ -464,6 +469,19 @@ public class NowEnterManager
     return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_enter_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 4).getString("topViewImageUrl" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "");
   }
   
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((NowEnterManager.WebProcessBindCallback)localIterator.next()).b();
+    }
+  }
+  
+  public void b(NowEnterManager.WebProcessBindCallback paramWebProcessBindCallback)
+  {
+    this.jdField_a_of_type_JavaUtilList.remove(paramWebProcessBindCallback);
+  }
+  
   public boolean b()
   {
     return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_enter_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 4).getBoolean("autoEnterForNotWifi" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false);
@@ -476,9 +494,9 @@ public class NowEnterManager
   
   public boolean c()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_enter_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 4).getBoolean("isNowEnterSettingShow" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), false);
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_enter_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 4).getBoolean("nowPullShow" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), true);
     if (QLog.isColorLevel()) {
-      QLog.i("NowEnterManager", 2, "isSettingNowEnable -- isShowSetting = " + bool);
+      QLog.i("NowEnterManager", 2, "isNowPullShow -- isShowSetting = " + bool);
     }
     return bool;
   }
@@ -499,15 +517,6 @@ public class NowEnterManager
   
   public boolean e()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("now_enter_config" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 4).getBoolean("now_answer_entrance_setting_show" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), true);
-    if (QLog.isColorLevel()) {
-      QLog.i("NowEnterManager", 2, "getAnswerEntranceSwitch -- value = " + bool);
-    }
-    return bool;
-  }
-  
-  public boolean f()
-  {
     return NetConnInfoCenter.getServerTime() >= this.jdField_a_of_type_Long;
   }
   
@@ -515,6 +524,7 @@ public class NowEnterManager
   {
     this.b = 0;
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 

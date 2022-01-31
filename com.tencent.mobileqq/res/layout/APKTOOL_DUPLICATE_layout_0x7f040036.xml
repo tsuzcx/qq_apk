@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mobileqq.activity.aio.doodle.DoodlePanel android:id="@id/panelLayout" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.activity.aio.doodle.DoodleLayout android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a049b" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="81.0dip" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.activity.aio.doodle.DoodleLayout android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04a0" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="81.0dip" android:layout_centerHorizontal="true" />
     <LinearLayout android:orientation="horizontal" android:background="#fff8f8f8" android:layout_width="fill_parent" android:layout_height="81.0dip" android:layout_alignParentBottom="true">
         <RelativeLayout android:orientation="vertical" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a049c" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="9.0dip" android:layout_marginBottom="1.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a049d" />
-            <View android:background="#ffe6e6e6" android:layout_width="1.0px" android:layout_height="30.0dip" android:layout_marginTop="7.0dip" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a049c" />
-            <com.tencent.mobileqq.activity.aio.doodle.control.GifTemplatePicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a049d" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_alignParentBottom="true" />
+            <com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04a1" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="9.0dip" android:layout_marginBottom="1.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a04a2" />
+            <View android:background="#ffe6e6e6" android:layout_width="1.0px" android:layout_height="30.0dip" android:layout_marginTop="7.0dip" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a04a1" />
+            <com.tencent.mobileqq.activity.aio.doodle.control.GifTemplatePicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04a2" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_alignParentBottom="true" />
             <View android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="0.5px" android:layout_marginBottom="36.5dip" android:layout_alignParentBottom="true" />
         </RelativeLayout>
         <RelativeLayout android:layout_width="75.0dip" android:layout_height="81.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
-            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a049e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020040" android:layout_width="75.0dip" android:layout_height="44.0dip" android:scaleType="centerInside" android:layout_centerHorizontal="true" />
-            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a049f" android:layout_width="fill_parent" android:layout_height="37.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b189f" android:layout_alignParentBottom="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01ec" />
+            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04a3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02003f" android:layout_width="75.0dip" android:layout_height="44.0dip" android:scaleType="centerInside" android:layout_centerHorizontal="true" />
+            <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04a4" android:layout_width="fill_parent" android:layout_height="37.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b18ad" android:layout_alignParentBottom="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01ec" />
         </RelativeLayout>
     </LinearLayout>
     <View android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginBottom="81.0dip" android:layout_alignParentBottom="true" />

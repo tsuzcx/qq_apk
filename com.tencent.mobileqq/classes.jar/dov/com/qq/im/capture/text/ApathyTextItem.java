@@ -14,7 +14,7 @@ import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.TextUtils;
-import annp;
+import anwc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.troop.utils.TroopFileUtils;
@@ -29,6 +29,7 @@ public class ApathyTextItem
   private int jdField_a_of_type_Int = 4;
   private Resources jdField_a_of_type_AndroidContentResResources;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   private String jdField_a_of_type_JavaLangString = "";
@@ -112,7 +113,7 @@ public class ApathyTextItem
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    paramString = TroopFileUtils.b(a(paramInt, new annp(this))).replaceAll("\n", "");
+    paramString = TroopFileUtils.b(a(paramInt, new anwc(this))).replaceAll("\n", "");
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     paramInt = paramString.length();
@@ -175,7 +176,11 @@ public class ApathyTextItem
     }
     for (;;)
     {
-      paramCanvas.drawBitmap((Bitmap)localObject, new Rect(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight()), this.jdField_b_of_type_AndroidGraphicsRectF, null);
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+        paramCanvas.drawBitmap((Bitmap)localObject, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRectF, null);
+      }
       if (b(0)) {
         paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
       }
@@ -187,7 +192,7 @@ public class ApathyTextItem
       for (;;)
       {
         if (m < 0) {
-          break label332;
+          break label341;
         }
         localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(m);
         int i3 = ((String)localObject).length();
@@ -209,7 +214,7 @@ public class ApathyTextItem
               break;
             }
             if (3 != this.j) {
-              break label333;
+              break label342;
             }
             localObject = this.jdField_c_of_type_AndroidGraphicsBitmap;
             break;
@@ -219,9 +224,9 @@ public class ApathyTextItem
         k = (int)(this.jdField_a_of_type_Int + this.jdField_d_of_type_Float * this.jdField_a_of_type_Float + this.i);
         m -= 1;
       }
-      label332:
+      label341:
       return;
-      label333:
+      label342:
       localObject = null;
     }
   }

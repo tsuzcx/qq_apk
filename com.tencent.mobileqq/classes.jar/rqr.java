@@ -1,16 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class rqr
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rqr(BaseChatPie paramBaseChatPie) {}
+  public rqr(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.c.cancel();
+    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433586), "qqsetting_auto_receive_magic_face_key", paramBoolean);
   }
 }
 

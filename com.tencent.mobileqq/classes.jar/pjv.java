@@ -1,27 +1,20 @@
-import android.text.TextUtils;
-import com.squareup.okhttp.Response;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.DownloadResult.Content;
-import com.tencent.component.network.downloader.handler.ContentHandler;
-import com.tencent.component.network.utils.StringUtil;
-import org.apache.http.HttpResponse;
+import com.tencent.common.galleryactivity.GalleryManager;
 
-public final class pjv
-  implements ContentHandler
+public class pjv
+  implements Runnable
 {
-  public boolean a(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse, Response paramResponse)
+  public pjv(GalleryManager paramGalleryManager) {}
+  
+  public void run()
   {
-    paramDownloadResult = paramDownloadResult.getContent().type;
-    if (TextUtils.isEmpty(paramDownloadResult)) {}
-    while (!StringUtil.a(paramDownloadResult, "image")) {
-      return false;
-    }
-    return true;
+    this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = true;
+    GalleryManager.a(this.a, this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene);
+    GalleryManager.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pjv
  * JD-Core Version:    0.7.0.1
  */

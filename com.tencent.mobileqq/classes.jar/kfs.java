@@ -1,20 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.utils.AvCustomDialog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
+import java.lang.ref.WeakReference;
 
-public class kfs
-  implements View.OnClickListener
+public final class kfs
+  extends Handler
 {
-  public kfs(AvCustomDialog paramAvCustomDialog) {}
+  WeakReference a;
   
-  public void onClick(View paramView)
+  public kfs(ZimuViewMotion paramZimuViewMotion)
   {
-    this.a.dismiss();
+    this.a = new WeakReference(paramZimuViewMotion);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      paramMessage = (ZimuViewMotion)this.a.get();
+    } while (paramMessage == null);
+    paramMessage.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kfs
  * JD-Core Version:    0.7.0.1
  */

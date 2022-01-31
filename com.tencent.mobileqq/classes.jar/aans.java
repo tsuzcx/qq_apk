@@ -1,21 +1,21 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aans
-  implements DialogInterface.OnClickListener
+public class aans
+  implements Runnable
 {
-  public aans(Context paramContext) {}
+  public aans(AREngine paramAREngine) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ((ArCardSelectMemberActivity)this.a).u();
+    this.a.j();
+    AREngine.b(this.a, 0);
+    QLog.i("AREngine_AREngine", 1, "stop end. mCurEngineState = " + AREngine.e(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aans
  * JD-Core Version:    0.7.0.1
  */

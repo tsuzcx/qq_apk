@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import adkv;
+import adtb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -123,7 +123,7 @@ public class ForwardFileOption
   
   private String a(String paramString)
   {
-    String str = AppConstants.aJ + "photo/" + String.valueOf(System.currentTimeMillis()) + ".jpg";
+    String str = AppConstants.aK + "photo/" + String.valueOf(System.currentTimeMillis()) + ".jpg";
     try
     {
       ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramString, str, 600, 800);
@@ -267,7 +267,7 @@ public class ForwardFileOption
   {
     if ((this.jdField_h_of_type_Boolean) && (!this.g) && (-1L != FileManagerUtil.a(paramBundle.getInt("uintype"))))
     {
-      DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, this.jdField_a_of_type_AndroidAppActivity.getString(2131429725), this.jdField_a_of_type_AndroidAppActivity.getString(2131429726), null, this.jdField_a_of_type_AndroidAppActivity.getString(2131435196), new adkv(this), null).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, this.jdField_a_of_type_AndroidAppActivity.getString(2131429725), this.jdField_a_of_type_AndroidAppActivity.getString(2131429726), null, this.jdField_a_of_type_AndroidAppActivity.getString(2131435212), new adtb(this), null).show();
       return;
     }
     super.a(paramInt, paramBundle);
@@ -364,7 +364,7 @@ public class ForwardFileOption
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", this.jdField_a_of_type_AndroidAppActivity.getString(2131433297));
+      this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", this.jdField_a_of_type_AndroidAppActivity.getString(2131433311));
       return true;
       k = 0;
       break;
@@ -528,7 +528,7 @@ public class ForwardFileOption
   
   protected String d()
   {
-    return this.jdField_a_of_type_AndroidContentContext.getString(2131436286);
+    return this.jdField_a_of_type_AndroidContentContext.getString(2131436306);
   }
   
   protected void u()

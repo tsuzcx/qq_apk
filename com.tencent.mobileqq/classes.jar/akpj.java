@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import com.tencent.mobileqq.vas.SonicTemplateUpdateManager;
 
 public class akpj
   implements Runnable
 {
-  public akpj(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
+  public akpj(SonicTemplateUpdateManager paramSonicTemplateUpdateManager) {}
   
   public void run()
   {
-    this.a.c();
-    this.a.b(null);
+    this.a.b();
   }
 }
 

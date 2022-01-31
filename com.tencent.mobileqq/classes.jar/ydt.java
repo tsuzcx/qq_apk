@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ydt
-  implements DialogInterface.OnClickListener
 {
-  public ydt(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public AtomicBoolean a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private ydt(CameraFilterGLView paramCameraFilterGLView)
   {
-    this.a.a();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

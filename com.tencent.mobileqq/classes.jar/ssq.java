@@ -1,33 +1,30 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
 
 public class ssq
-  implements IphonePickerView.IphonePickListener
+  extends TroopObserver
 {
-  public ssq(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public ssq(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onConfirmBtClicked()
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
+    if (paramBoolean1) {
+      ForwardRecentActivity.b(this.a);
     }
   }
   
-  public void onItemSelected(int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2)
   {
-    if (paramInt2 == 0) {}
-    for (paramInt1 = 0;; paramInt1 = 1)
-    {
-      this.a.c = true;
-      this.a.a(paramInt1, true);
-      return;
+    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
+      ForwardRecentActivity.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ssq
  * JD-Core Version:    0.7.0.1
  */

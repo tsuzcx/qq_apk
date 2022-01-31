@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
+import cooperation.qzone.statistic.access.concept.Collector;
+import cooperation.qzone.statistic.access.concept.Condition;
 
-public class anhx
-  implements ThreadPool.Job
+public final class anhx
+  extends Condition
 {
-  public anhx(WyDownloader paramWyDownloader, HttpNetReq paramHttpNetReq) {}
-  
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public boolean a(Collector paramCollector)
   {
-    WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-    return null;
+    return true;
   }
 }
 

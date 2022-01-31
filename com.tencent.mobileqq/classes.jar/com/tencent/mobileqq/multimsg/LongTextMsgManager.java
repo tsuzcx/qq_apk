@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multimsg;
 
-import aejf;
-import aejg;
+import aerp;
+import aerq;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -60,7 +60,7 @@ public class LongTextMsgManager
     if (QLog.isColorLevel()) {
       QLog.d("StructLongTextMsg", 2, "requestDownloadLongTextMsg begin! touin:" + paramString1 + ",touinType:" + paramInt + ",uniseq:" + paramLong + ",fileKey:" + paramString2);
     }
-    MultiMsgManager.a().a(paramQQAppInterface, paramString2, paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, paramInt, paramLong, 1035, new aejg(paramQQAppInterface, paramString1, paramInt, paramLong, l));
+    MultiMsgManager.a().a(paramQQAppInterface, paramString2, paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, paramInt, paramLong, 1035, new aerq(paramQQAppInterface, paramString1, paramInt, paramLong, l));
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
@@ -140,7 +140,7 @@ public class LongTextMsgManager
         return;
       }
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      paramBoolean = a(paramQQAppInterface, (byte[])localObject, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, 1035, new aejf(this, paramQQAppInterface, paramMessageRecord, paramBoolean));
+      paramBoolean = a(paramQQAppInterface, (byte[])localObject, paramQQAppInterface.getCurrentAccountUin(), paramMessageRecord.frienduin, paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, 1035, new aerp(this, paramQQAppInterface, paramMessageRecord, paramBoolean));
       if (!paramBoolean) {
         break;
       }

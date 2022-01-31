@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.IRenderCallback;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.GLTextureView;
 import com.tencent.qphone.base.util.QLog;
 
 public class yto
-  implements IRenderCallback
+  implements Runnable
 {
-  public yto(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  public yto(GLTextureView paramGLTextureView) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void run()
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
-      }
-      this.a.a.getRenderImpl().a(0L);
+    if ((GLTextureView.access$1600(this.a)) && (GLTextureView.access$1200(this.a)) && (GLTextureView.access$1700(this.a) != 1.0F)) {
+      GLTextureView.access$1800(this.a, 1.0F);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GLTextureView", 2, "TextureView mCheckSurfaceChangeTask, mSurfaceHadDraw:" + GLTextureView.access$1200(this.a));
     }
   }
-  
-  public void a(int paramInt, String paramString) {}
 }
 
 

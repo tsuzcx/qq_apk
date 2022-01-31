@@ -1,65 +1,68 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
-import com.tencent.mobileqq.apollo.GLTextureView.EGLConfigChooser;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.adapter.contacts.BuddyListItem;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
-public abstract class ynk
-  implements GLTextureView.EGLConfigChooser
+public class ynk
+  implements Comparator
 {
-  protected int[] a;
-  
-  public ynk(GLTextureView paramGLTextureView, int[] paramArrayOfInt)
+  public int a(BuddyListItem paramBuddyListItem1, BuddyListItem paramBuddyListItem2)
   {
-    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
+    paramBuddyListItem1 = (Friends)paramBuddyListItem1.a;
+    paramBuddyListItem2 = (Friends)paramBuddyListItem2.a;
+    int i = a(paramBuddyListItem1);
+    int j = a(paramBuddyListItem2);
+    if (i == j) {
+      return ContactSorter.a(paramBuddyListItem1.mComparePartInt, paramBuddyListItem1.mCompareSpell, paramBuddyListItem2.mComparePartInt, paramBuddyListItem2.mCompareSpell);
+    }
+    return i - j;
   }
   
-  private int[] a(int[] paramArrayOfInt)
+  public int a(Friends paramFriends)
   {
-    if ((GLTextureView.access$200(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 2) && (GLTextureView.access$200(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 3)) {
-      return paramArrayOfInt;
-    }
-    int i = paramArrayOfInt.length;
-    int[] arrayOfInt = new int[i + 2];
-    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
-    arrayOfInt[(i - 1)] = 12352;
-    if (GLTextureView.access$200(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) == 2) {
-      arrayOfInt[i] = 4;
+    int k = ContactUtils.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
+    int j;
+    label28:
+    int i;
+    if ((k != 6) && (k != 0))
+    {
+      j = 65536;
+      if (!paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label104;
+      }
+      i = 4096;
     }
     for (;;)
     {
-      arrayOfInt[(i + 1)] = 12344;
-      return arrayOfInt;
-      arrayOfInt[i] = 64;
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        return j | i | (int)paramFriends.getLastLoginType();
+        j = 131072;
+        break label28;
+        label104:
+        if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
+          i = 8192;
+        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
+          i = 12288;
+        } else {
+          i = 16384;
+        }
+        break;
+      }
     }
+    return j | i | 0x1;
+    return j | i | 0x2;
+    return j | i | 0x3;
   }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int[] arrayOfInt = new int[1];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig failed");
-    }
-    int i = arrayOfInt[0];
-    if (i <= 0) {
-      throw new IllegalArgumentException("No configs match configSpec");
-    }
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig#2 failed");
-    }
-    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-    if (paramEGL10 == null) {
-      throw new IllegalArgumentException("No config chosen");
-    }
-    return paramEGL10;
-  }
-  
-  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ynk
  * JD-Core Version:    0.7.0.1
  */

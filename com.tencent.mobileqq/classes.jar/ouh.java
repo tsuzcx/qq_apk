@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRLoginActivity;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
-public class ouh
-  implements DialogInterface.OnCancelListener
+class ouh
+  implements Runnable
 {
-  public ouh(QRLoginActivity paramQRLoginActivity) {}
+  ouh(oug paramoug) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.b = false;
+    if (!this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.c) {
+      StoryVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer, this.a.jdField_a_of_type_AndroidOsBundle);
+    }
   }
 }
 

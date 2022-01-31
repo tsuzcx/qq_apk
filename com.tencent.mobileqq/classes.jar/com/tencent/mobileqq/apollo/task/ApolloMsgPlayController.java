@@ -23,8 +23,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import yva;
-import yvb;
+import zbt;
+import zbu;
 
 public class ApolloMsgPlayController
 {
@@ -85,7 +85,7 @@ public class ApolloMsgPlayController
         localObject1 = ((ApolloDaoManager)localObject2).a(paramSessionInfo);
         if (localObject1 != null)
         {
-          ThreadManager.getSubThreadHandler().postDelayed(new yva(this, paramQQAppInterface, (ApolloActionPush)localObject1), 500L);
+          ThreadManager.getSubThreadHandler().postDelayed(new zbt(this, paramQQAppInterface, (ApolloActionPush)localObject1), 500L);
           return;
         }
         localList = paramQQAppInterface.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, null, 5);
@@ -107,7 +107,7 @@ public class ApolloMsgPlayController
           break label262;
         }
         ApolloGameData localApolloGameData = ((ApolloDaoManager)localObject2).a(((MessageForApollo)localObject1).gameId);
-        if ((localApolloGameData == null) || (!ApolloConfigUtils.a("7.6.3", localApolloGameData.minVer, localApolloGameData.maxVer))) {
+        if ((localApolloGameData == null) || (!ApolloConfigUtils.a("7.6.8", localApolloGameData.minVer, localApolloGameData.maxVer))) {
           break label262;
         }
       }
@@ -127,7 +127,7 @@ public class ApolloMsgPlayController
               break label329;
             }
             localObject1 = ((ApolloDaoManager)localObject2).a(((MessageForApollo)localObject1).gameId);
-          } while ((localObject1 != null) && (ApolloConfigUtils.a("7.6.3", ((ApolloGameData)localObject1).minVer, ((ApolloGameData)localObject1).maxVer)));
+          } while ((localObject1 != null) && (ApolloConfigUtils.a("7.6.8", ((ApolloGameData)localObject1).minVer, ((ApolloGameData)localObject1).maxVer)));
           paramQQAppInterface = ((SpriteScriptManager)paramQQAppInterface.getManager(248)).a();
           if (paramQQAppInterface != null) {
             paramQQAppInterface.a(1, (MessageForApollo)localMessageRecord);
@@ -164,7 +164,7 @@ public class ApolloMsgPlayController
     {
       a(paramQQAppInterface, (ChatMessage)localObject2, (ArrayList)localObject1, paramSessionInfo);
       localMessageRecord.saveExtInfoToExtStr("is_apollo_emoticon_action_played", "2");
-      ThreadManager.post(new yvb(this, localMessageRecord), 5, null, false);
+      ThreadManager.post(new zbu(this, localMessageRecord), 5, null, false);
       return;
       bool1 = false;
       break;

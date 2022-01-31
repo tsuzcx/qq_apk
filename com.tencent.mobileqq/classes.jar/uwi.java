@@ -1,20 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.widget.PhotoProgressDrawable;
 
-public class uwi
-  implements FMDialogUtil.FMDialogInterface
+class uwi
+  implements Runnable
 {
-  public uwi(FileItemBuilder paramFileItemBuilder, MessageForFile paramMessageForFile, Context paramContext) {}
+  uwi(uwh paramuwh, Bitmap paramBitmap) {}
   
-  public void a()
+  public void run()
   {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+    if (DoodleMsgLayout.a(this.jdField_a_of_type_Uwh.a) != null)
+    {
+      PhotoProgressDrawable localPhotoProgressDrawable = new PhotoProgressDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
+      localPhotoProgressDrawable.setBounds(new Rect(0, 0, AIOUtils.a(19.0F, this.jdField_a_of_type_Uwh.a.getResources()), AIOUtils.a(19.0F, this.jdField_a_of_type_Uwh.a.getResources())));
+      DoodleMsgLayout.a(this.jdField_a_of_type_Uwh.a).setImageDrawable(localPhotoProgressDrawable);
+    }
+    DoodleMsgLayout.b(this.jdField_a_of_type_Uwh.a, false);
   }
-  
-  public void b() {}
 }
 
 

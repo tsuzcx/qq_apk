@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.API;
 
-import aaqr;
+import aaxl;
 import android.text.TextUtils;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.ark.ArkAppCenter;
@@ -17,7 +17,7 @@ public class ArkAppSchemeCenter$TelSchemeHandler
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ArkAppCenter.a().postToMainThread(new aaqr(this, paramString));
+    ArkAppCenter.a().postToMainThread(new aaxl(this, paramString));
   }
   
   public boolean a(String paramString1, String paramString2, long paramLong, String paramString3)

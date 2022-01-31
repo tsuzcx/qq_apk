@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ARRelationShip;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public final class aakr
-  implements Parcelable.Creator
+public class aakr
+  implements Runnable
 {
-  public ARRelationShip a(Parcel paramParcel)
-  {
-    return new ARRelationShip(paramParcel);
-  }
+  public aakr(ScanEntranceReport paramScanEntranceReport) {}
   
-  public ARRelationShip[] a(int paramInt)
+  public void run()
   {
-    return new ARRelationShip[paramInt];
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_zoom_camera", true, 0L, 0L, localHashMap, "");
   }
 }
 

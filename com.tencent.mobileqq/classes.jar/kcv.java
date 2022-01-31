@@ -1,24 +1,29 @@
-import android.database.DataSetObserver;
-import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
+import com.tencent.av.ui.ControlUIObserver;
+import com.tencent.av.ui.VideoControlUI;
 
-class kcv
-  extends DataSetObserver
+public class kcv
+  extends ControlUIObserver
 {
-  kcv(kcu paramkcu, EffectCycleViewPager paramEffectCycleViewPager) {}
+  public kcv(VideoControlUI paramVideoControlUI) {}
   
-  public void onChanged()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Kcu.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    this.jdField_a_of_type_Kcu.notifyDataSetChanged();
+    if (this.a.u == 2) {
+      if (!this.a.g())
+      {
+        if (paramBoolean) {
+          this.a.b.update(null, new Object[] { Integer.valueOf(110) });
+        }
+      }
+      else {
+        this.a.v(paramInt);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcv
  * JD-Core Version:    0.7.0.1
  */

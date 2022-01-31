@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
 
 public class ljo
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ljo(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  public ljo(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    this.a.a(true, null);
+    ReadInJoyCameraCaptureActivity.a(this.a).setVisibility(0);
   }
 }
 

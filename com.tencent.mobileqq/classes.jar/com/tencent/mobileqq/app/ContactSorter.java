@@ -10,11 +10,11 @@ import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import java.util.ArrayList;
 import java.util.Comparator;
-import zca;
+import zja;
 
 public class ContactSorter
 {
-  public static Comparator a = new zca();
+  public static Comparator a = new zja();
   
   private static int a(char paramChar)
   {

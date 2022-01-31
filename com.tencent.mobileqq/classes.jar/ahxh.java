@@ -1,23 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
 
-public class ahxh
-  extends Handler
+class ahxh
+  implements View.OnClickListener
 {
-  public ahxh(AppLaucherHelper paramAppLaucherHelper) {}
+  ahxh(ahxf paramahxf) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 0)
-    {
-      AppLaucherHelper.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
-      }
-    }
+    this.a.a.b(this.a.a.b);
+    this.a.a.f.setVisibility(8);
   }
 }
 

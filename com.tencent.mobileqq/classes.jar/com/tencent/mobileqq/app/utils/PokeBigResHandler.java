@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.utils;
 
+import aadn;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
@@ -14,7 +15,6 @@ import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import java.io.File;
-import zxa;
 
 public class PokeBigResHandler
   extends BusinessHandler
@@ -31,13 +31,12 @@ public class PokeBigResHandler
   public static final String d;
   private static String e = "";
   private static String f = "";
-  private static final String g = AppConstants.aJ + "/bigPoke";
-  private static final String h = g + "/poke";
+  private static final String g = AppConstants.aK + "/bigPoke";
   private PokeBigResHandler.NetEngine jdField_a_of_type_ComTencentMobileqqAppUtilsPokeBigResHandler$NetEngine = new PokeBigResHandler.NetEngine();
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "/newpoke";
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "/newpoke";
     jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/poke_egg";
     c = jdField_a_of_type_JavaLangString + "/poke_normal";
     d = c + "/dazhao/dazhao_move.png";
@@ -52,6 +51,10 @@ public class PokeBigResHandler
   
   private static void a(String paramString)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("BigResDown", 2, "start compress");
+    }
+    long l1 = System.currentTimeMillis();
     if (!new File(paramString).exists()) {}
     for (;;)
     {
@@ -60,15 +63,23 @@ public class PokeBigResHandler
       {
         if (!TextUtils.isEmpty(g))
         {
-          FileUtils.a(h, false);
           FileUtils.a(jdField_a_of_type_JavaLangString, false);
           FileUtils.a(paramString, jdField_a_of_type_JavaLangString, false);
-          return;
         }
+        FileUtils.a(paramString, false);
+        long l2 = System.currentTimeMillis();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("BigResDown", 2, "end compress ,cost " + (l2 - l1));
+        return;
       }
-      catch (Exception paramString)
+      catch (Exception localException)
       {
-        paramString.printStackTrace();
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
       }
     }
   }
@@ -295,9 +306,9 @@ public class PokeBigResHandler
         }
         if (!jdField_b_of_type_Boolean)
         {
-          zxa localzxa = new zxa(this);
+          aadn localaadn = new aadn(this);
           if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-            ThreadManager.post(localzxa, 10, null, false);
+            ThreadManager.post(localaadn, 10, null, false);
           } else {
             localObject.run();
           }

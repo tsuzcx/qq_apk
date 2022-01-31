@@ -61,7 +61,7 @@ public class ComponentAccountSummary
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2130969590, this, true);
+    LayoutInflater.from(paramContext).inflate(2130969586, this, true);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131367054));
   }
   
@@ -85,6 +85,9 @@ public class ComponentAccountSummary
     }
     String str = localIReadInJoyModel.a().mSubscribeName;
     paramObject = localIReadInJoyModel.a().mSummary;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.c()) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.g())) {
+      paramObject = localIReadInJoyModel.a().mTitle;
+    }
     if (TextUtils.isEmpty(paramObject)) {
       if (localIReadInJoyModel.a() == 33) {
         paramObject = "发布了话题";
@@ -98,24 +101,24 @@ public class ComponentAccountSummary
         if (localIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.b == 0L)
         {
           localObject = localIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.a;
-          label165:
+          label196:
           localSpannableStringBuilder.append(str);
           localSpannableStringBuilder.setSpan(new ComponentAccountSummary.UserSpan(this, (String)localObject, -3355444), 0, str.length(), 33);
-          label195:
+          label226:
           localSpannableStringBuilder.append(": ");
           localObject = localIReadInJoyModel.a();
           if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
-            break label721;
+            break label752;
           }
           paramObject = new SpannableStringBuilder();
           if ((((ArticleInfo)localObject).mSocialFeedInfo == null) || (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo == null) || (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a == null)) {
-            break label702;
+            break label733;
           }
           paramObject.append(((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a);
           if (QLog.isColorLevel()) {
             QLog.d("Q.readinjoy.ui", 2, "Comment String: " + ((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a);
           }
-          label318:
+          label349:
           paramObject.append(" ");
           paramObject.append("阅读原文");
           paramObject.setSpan(new ComponentAccountSummary.ReadArticleSpan((ArticleInfo)localObject, -3355444, getContext(), getResources(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt), paramObject.length() - "阅读原文".length(), paramObject.length(), 33);
@@ -153,27 +156,27 @@ public class ComponentAccountSummary
         if (ReadInJoyUtils.a())
         {
           str = ContactUtils.b((QQAppInterface)ReadInJoyUtils.a(), (String)localObject, true);
-          break label165;
+          break label196;
         }
         str = localIReadInJoyModel.a().b(localIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.b);
-        break label165;
+        break label196;
         if (localIReadInJoyModel.a().mAccountLess == 0)
         {
           localObject = localIReadInJoyModel.a().mSubscribeID;
           localSpannableStringBuilder.append(str);
           localSpannableStringBuilder.setSpan(new ComponentAccountSummary.UserSpan(this, (String)localObject, -3355444), 0, str.length(), 33);
-          break label195;
+          break label226;
         }
         localSpannableStringBuilder.append(str);
         localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.rgb(96, 96, 96)), 0, str.length(), 33);
-        break label195;
-        label702:
+        break label226;
+        label733:
         if (((ArticleInfo)localObject).mTitle == null) {
-          break label318;
+          break label349;
         }
         paramObject.append(((ArticleInfo)localObject).mTitle);
-        break label318;
-        label721:
+        break label349;
+        label752:
         if (this.c)
         {
           paramObject = new SpannableStringBuilder();

@@ -13,7 +13,7 @@ public abstract class VasBasePlugin
   public long onPageStartedTime = -1L;
   public long startOpenPageTime;
   
-  protected Intent getInfoIntent()
+  public Intent getInfoIntent()
   {
     if (this.mRuntime.a() != null) {
       return this.mRuntime.a().getIntent();
@@ -34,7 +34,7 @@ public abstract class VasBasePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasBasePlugin
  * JD-Core Version:    0.7.0.1
  */

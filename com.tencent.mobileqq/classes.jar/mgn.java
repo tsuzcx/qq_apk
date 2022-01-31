@@ -1,26 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar.TabHolder;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager.CommentEventListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
 public class mgn
-  implements Animator.AnimatorListener
+  implements VideoFeedsCommentManager.CommentEventListener
 {
-  public mgn(BaseTabbar.TabHolder paramTabHolder) {}
+  public mgn(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    QLog.d("TabBarView", 4, "onAnimationEnd");
-    BaseTabbar.TabHolder.b(this.a);
-    this.a.b.clearAnimation();
+    if ((!paramBoolean) && (VideoFeedsPlayActivity.i(this.a)))
+    {
+      VideoFeedsPlayActivity.a(this.a).postDelayed(new mgo(this), 1000L);
+      VideoFeedsPlayActivity.d(this.a, false);
+    }
+    if (!paramBoolean) {
+      this.a.d();
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

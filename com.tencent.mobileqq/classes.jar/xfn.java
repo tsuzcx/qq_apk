@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.ConfigInfo;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagInfo;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 
 public class xfn
   implements Runnable
 {
-  public xfn(PreloadManager paramPreloadManager) {}
+  public xfn(PasswdRedBagManager paramPasswdRedBagManager, PasswdRedBagInfo paramPasswdRedBagInfo) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "synDataFromMoggy");
-    }
-    Object localObject = (QWalletConfigManager)this.a.a.getManager(244);
-    if (localObject != null)
-    {
-      ((QWalletConfigManager)localObject).a("preload", this.a);
-      localObject = ((QWalletConfigManager)localObject).a("preload");
-      this.a.a((QWalletConfig.ConfigInfo)localObject);
-    }
+    PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager).a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagInfo);
   }
 }
 

@@ -29,10 +29,12 @@ public class MsgTabStoryNodeDelegate$StoryVideoPublishStatusEventReceiver
     Object localObject2;
     Object localObject1;
     int i;
-    if ((paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramStoryVideoPublishStatusEvent.jdField_b_of_type_Boolean))
+    if ((paramStoryVideoPublishStatusEvent.errorInfo.isSuccess()) && (paramStoryVideoPublishStatusEvent.jdField_b_of_type_Boolean))
     {
-      if (QLog.isDevelopLevel()) {
+      if (QLog.isDevelopLevel())
+      {
         QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", 2, new Object[] { "upload event: mFakeStoryVideoItem:  isUploading: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isUploading()), ", isUploadFaul: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isUploadFail()), ", isUploadSucc: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isUploadSuc()), ", isCancel: ", Boolean.valueOf(paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isCancel()) });
+        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", 2, new Object[] { "StoryVideoPublishStatusEvent event: ", String.valueOf(paramStoryVideoPublishStatusEvent) });
       }
       Object localObject3 = ((MsgTabStoryManager)paramMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(250)).a();
       localObject2 = paramMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.a(((MsgTabNodeInfo)localObject3).jdField_a_of_type_Int, ((MsgTabNodeInfo)localObject3).jdField_a_of_type_JavaLangString);
@@ -50,11 +52,11 @@ public class MsgTabStoryNodeDelegate$StoryVideoPublishStatusEventReceiver
       }
       ((MsgTabNodeInfo)localObject1).a((MsgTabNodeInfo)localObject3);
       if (paramStoryVideoPublishStatusEvent.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-        break label525;
+        break label565;
       }
       paramStoryVideoPublishStatusEvent = paramStoryVideoPublishStatusEvent.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
       if (!paramStoryVideoPublishStatusEvent.isUploadSuc()) {
-        break label564;
+        break label604;
       }
       localObject2 = new MsgTabNodeVideoInfo();
       ((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Boolean = false;
@@ -63,15 +65,16 @@ public class MsgTabStoryNodeDelegate$StoryVideoPublishStatusEventReceiver
         ((MsgTabNodeVideoInfo)localObject2).jdField_a_of_type_Long = paramStoryVideoPublishStatusEvent.mCreateTime;
       }
       if (((MsgTabNodeInfo)localObject1).jdField_a_of_type_JavaUtilList.indexOf(localObject2) == -1) {
-        break label533;
+        break label573;
       }
       i = 1;
-      label337:
+      label359:
       if (i != 0) {
-        break label538;
+        break label578;
       }
       ((MsgTabNodeInfo)localObject1).jdField_a_of_type_JavaUtilList.add(localObject2);
       ((MsgTabNodeInfo)localObject1).jdField_b_of_type_Int += 1;
+      ((MsgTabNodeInfo)localObject1).f = paramStoryVideoPublishStatusEvent.getThumbUrl();
       ((MsgTabNodeInfo)localObject1).d = (paramStoryVideoPublishStatusEvent.mCreateTime / 1000L);
       if (((MsgTabNodeInfo)localObject1).jdField_b_of_type_JavaUtilList == null) {
         ((MsgTabNodeInfo)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
@@ -79,6 +82,7 @@ public class MsgTabStoryNodeDelegate$StoryVideoPublishStatusEventReceiver
       localObject3 = new MsgTabVideoData();
       ((MsgTabVideoData)localObject3).jdField_a_of_type_JavaLangString = paramStoryVideoPublishStatusEvent.mAttachedFeedId;
       ((MsgTabVideoData)localObject3).b = paramStoryVideoPublishStatusEvent.mVid;
+      ((MsgTabVideoData)localObject3).jdField_a_of_type_Long = paramStoryVideoPublishStatusEvent.mVideoIndex;
       ((MsgTabVideoData)localObject3).jdField_a_of_type_Boolean = false;
       ((MsgTabVideoData)localObject3).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoPublishStatusEvent;
       ((MsgTabNodeInfo)localObject1).jdField_b_of_type_JavaUtilList.add(localObject3);
@@ -86,9 +90,9 @@ public class MsgTabStoryNodeDelegate$StoryVideoPublishStatusEventReceiver
         QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", 2, new Object[] { "add videoInfo to list , videoInfo=", localObject2, ", \nnodeInfo=", localObject1, ", \nnow videoList=", ((MsgTabNodeInfo)localObject1).jdField_a_of_type_JavaUtilList });
       }
       i = 1;
-      label503:
+      label543:
       if (j != k) {
-        break label569;
+        break label609;
       }
     }
     for (;;)
@@ -97,20 +101,20 @@ public class MsgTabStoryNodeDelegate$StoryVideoPublishStatusEventReceiver
         paramMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.a((MsgTabNodeInfo)localObject1, true);
       }
       return;
-      label525:
+      label565:
       paramStoryVideoPublishStatusEvent = paramStoryVideoPublishStatusEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
       break;
-      label533:
+      label573:
       i = 0;
-      break label337;
-      label538:
+      break label359;
+      label578:
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", 2, new Object[] { "add videoInfo to list , but exist!!! videoInfo=", localObject2 });
       }
-      label564:
+      label604:
       i = 0;
-      break label503;
-      label569:
+      break label543;
+      label609:
       i = 1;
     }
   }

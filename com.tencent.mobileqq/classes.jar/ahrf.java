@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.search.HotWordSearchEntryModel;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
 
-class ahrf
-  implements Runnable
+public class ahrf
+  implements Animation.AnimationListener
 {
-  ahrf(ahre paramahre) {}
+  public ahrf(ProviderContainerView paramProviderContainerView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.b(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel);
+    if (ProviderContainerView.a(this.a) != null)
+    {
+      ProviderContainerView.a(this.a).setAlpha(1.0F);
+      ProviderContainerView.a(this.a).setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahrf
  * JD-Core Version:    0.7.0.1
  */

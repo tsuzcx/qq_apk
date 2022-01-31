@@ -1,39 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.open.base.ToastUtil;
-import dov.com.qq.im.capture.music.MusicDownloadListener;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
 
-public class anmi
-  extends MusicDownloadListener
+class anmi
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public anmi(HummingActivity paramHummingActivity) {}
+  anmi(anmh paramanmh) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    ToastUtil.a().a("正在下载: " + HummingActivity.a(this.a), 0);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (paramString != null) && (HummingActivity.a(this.a).a().equals(paramString)))
-    {
-      paramString = new Intent();
-      paramString.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
-      this.a.setResult(-1, paramString);
-      this.a.finish();
+    if (paramInt == 0) {
+      ReadInJoyArkViewController.a().a("0", this.a.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmi
  * JD-Core Version:    0.7.0.1
  */

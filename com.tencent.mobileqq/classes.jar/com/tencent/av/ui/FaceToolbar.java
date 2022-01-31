@@ -28,7 +28,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jud;
+import jwh;
 
 public class FaceToolbar
   extends BaseToolbar
@@ -42,7 +42,7 @@ public class FaceToolbar
   View linePendant;
   QAVPtvTemplateAdapter mAdapterFace;
   QAVPtvTemplateAdapter mAdapterPendant;
-  QAVPtvTemplateAdapter.IEffectCallback mFaceClickCallback = new jud(this);
+  QAVPtvTemplateAdapter.IEffectCallback mFaceClickCallback = new jwh(this);
   EffectFaceManager mFaceManager;
   ArrayList mFaceTmpList;
   RedTouch mFaceTxRedTouch;
@@ -72,7 +72,7 @@ public class FaceToolbar
     {
       localObject1 = new QavListItemBase.ItemInfo();
       ((QavListItemBase.ItemInfo)localObject1).jdField_a_of_type_JavaLangString = "0";
-      ((QavListItemBase.ItemInfo)localObject1).jdField_b_of_type_JavaLangString = String.valueOf(2130840282);
+      ((QavListItemBase.ItemInfo)localObject1).jdField_b_of_type_JavaLangString = String.valueOf(2130840297);
       if (!bool3) {
         bool1 = true;
       }
@@ -345,9 +345,9 @@ public class FaceToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 2;
-      this.mUIInfo.g = 2130969362;
+      this.mUIInfo.g = 2130969360;
       this.mUIInfo.e = 103412;
-      this.mUIInfo.f = 2130840133;
+      this.mUIInfo.f = 2130840148;
       this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428741);
     }
     return this.mUIInfo;
@@ -373,10 +373,10 @@ public class FaceToolbar
   {
     switch (paramView.getId())
     {
-    case 2131366284: 
+    case 2131366289: 
     default: 
       return;
-    case 2131366285: 
+    case 2131366290: 
       chooseTab(2);
       this.mApp.f(getRedTouchUIAppid() + "." + 103431 + "");
       updateRedDot();
@@ -393,12 +393,12 @@ public class FaceToolbar
     this.mFaceManager = ((EffectFaceManager)this.mApp.a(3));
     this.mSupportManager = ((EffectSupportManager)this.mApp.a(5));
     this.mSelectTab = 0;
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366275));
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366280));
     this.mListView.setStayDisplayOffsetZero(true);
-    this.linePendant = this.toolbarView.findViewById(2131366286);
-    this.lineFace = this.toolbarView.findViewById(2131366284);
-    this.btnPendant = ((RedDotTextView)this.toolbarView.findViewById(2131366285));
-    this.btnFace = ((RedDotTextView)this.toolbarView.findViewById(2131366283));
+    this.linePendant = this.toolbarView.findViewById(2131366291);
+    this.lineFace = this.toolbarView.findViewById(2131366289);
+    this.btnPendant = ((RedDotTextView)this.toolbarView.findViewById(2131366290));
+    this.btnFace = ((RedDotTextView)this.toolbarView.findViewById(2131366288));
     this.btnPendant.setOnClickListener(this);
     this.btnFace.setOnClickListener(this);
     this.mPendantTxRedTouch = new RedTouch(this.mApp.getApplication(), this.btnPendant).a(53).a();
@@ -600,7 +600,7 @@ public class FaceToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.FaceToolbar
  * JD-Core Version:    0.7.0.1
  */

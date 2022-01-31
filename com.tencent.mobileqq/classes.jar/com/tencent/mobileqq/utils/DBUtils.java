@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.utils;
 
 import GeneralSettings.Setting;
-import akca;
-import akcb;
+import akjn;
+import akjo;
+import akjp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Looper;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.RoamSettingManager;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -33,6 +35,8 @@ import java.util.Set;
 
 public class DBUtils
 {
+  DBUtils.LimitQueuedRunnablePool a = new DBUtils.LimitQueuedRunnablePool(10, 32);
+  
   public static int a(String paramString1, String paramString2, String paramString3)
   {
     int i = Build.VERSION.SDK_INT;
@@ -45,7 +49,7 @@ public class DBUtils
   
   public static DBUtils a()
   {
-    return akcb.a;
+    return akjp.a;
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, int paramInt)
@@ -153,38 +157,38 @@ public class DBUtils
     //   4: aload_3
     //   5: ifnull +10 -> 15
     //   8: aload_3
-    //   9: invokevirtual 142	java/util/ArrayList:size	()I
+    //   9: invokevirtual 150	java/util/ArrayList:size	()I
     //   12: ifne +5 -> 17
     //   15: aconst_null
     //   16: areturn
-    //   17: new 139	java/util/ArrayList
+    //   17: new 147	java/util/ArrayList
     //   20: dup
-    //   21: invokespecial 143	java/util/ArrayList:<init>	()V
+    //   21: invokespecial 151	java/util/ArrayList:<init>	()V
     //   24: astore 8
     //   26: aload_1
-    //   27: invokevirtual 115	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   30: invokevirtual 121	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   27: invokevirtual 123	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   30: invokevirtual 129	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
     //   33: astore 6
     //   35: aload 6
-    //   37: invokevirtual 146	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   37: invokevirtual 154	com/tencent/mobileqq/persistence/EntityManager:a	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
     //   40: astore 7
     //   42: aload 7
-    //   44: invokevirtual 149	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
+    //   44: invokevirtual 157	com/tencent/mobileqq/persistence/EntityTransaction:a	()V
     //   47: iconst_0
     //   48: istore 4
     //   50: iload 4
     //   52: aload_3
-    //   53: invokevirtual 142	java/util/ArrayList:size	()I
+    //   53: invokevirtual 150	java/util/ArrayList:size	()I
     //   56: if_icmpge +249 -> 305
     //   59: aload_3
     //   60: iload 4
-    //   62: invokevirtual 153	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   65: checkcast 155	friendlist/stUinInfo
+    //   62: invokevirtual 161	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   65: checkcast 163	friendlist/stUinInfo
     //   68: astore 9
     //   70: aload 6
-    //   72: ldc 123
+    //   72: ldc 131
     //   74: iconst_2
-    //   75: anewarray 96	java/lang/String
+    //   75: anewarray 104	java/lang/String
     //   78: dup
     //   79: iconst_0
     //   80: aload_2
@@ -192,11 +196,11 @@ public class DBUtils
     //   82: dup
     //   83: iconst_1
     //   84: aload 9
-    //   86: getfield 159	friendlist/stUinInfo:dwuin	J
-    //   89: invokestatic 163	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   86: getfield 167	friendlist/stUinInfo:dwuin	J
+    //   89: invokestatic 171	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   92: aastore
-    //   93: invokevirtual 128	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   96: checkcast 123	com/tencent/mobileqq/data/TroopMemberCardInfo
+    //   93: invokevirtual 136	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;[Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   96: checkcast 131	com/tencent/mobileqq/data/TroopMemberCardInfo
     //   99: astore_1
     //   100: aload_1
     //   101: ifnull +164 -> 265
@@ -204,14 +208,14 @@ public class DBUtils
     //   105: istore 5
     //   107: aload_1
     //   108: aload 9
-    //   110: getfield 159	friendlist/stUinInfo:dwuin	J
-    //   113: invokestatic 163	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   116: putfield 167	com/tencent/mobileqq/data/TroopMemberCardInfo:memberuin	Ljava/lang/String;
+    //   110: getfield 167	friendlist/stUinInfo:dwuin	J
+    //   113: invokestatic 171	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   116: putfield 175	com/tencent/mobileqq/data/TroopMemberCardInfo:memberuin	Ljava/lang/String;
     //   119: aload_1
     //   120: aload_2
-    //   121: putfield 170	com/tencent/mobileqq/data/TroopMemberCardInfo:troopuin	Ljava/lang/String;
+    //   121: putfield 178	com/tencent/mobileqq/data/TroopMemberCardInfo:troopuin	Ljava/lang/String;
     //   124: aload 9
-    //   126: getfield 173	friendlist/stUinInfo:dwFlag	J
+    //   126: getfield 181	friendlist/stUinInfo:dwFlag	J
     //   129: lconst_1
     //   130: land
     //   131: lconst_0
@@ -219,100 +223,100 @@ public class DBUtils
     //   133: ifeq +12 -> 145
     //   136: aload_1
     //   137: aload 9
-    //   139: getfield 176	friendlist/stUinInfo:sName	Ljava/lang/String;
-    //   142: putfield 179	com/tencent/mobileqq/data/TroopMemberCardInfo:name	Ljava/lang/String;
+    //   139: getfield 184	friendlist/stUinInfo:sName	Ljava/lang/String;
+    //   142: putfield 187	com/tencent/mobileqq/data/TroopMemberCardInfo:name	Ljava/lang/String;
     //   145: aload 9
-    //   147: getfield 173	friendlist/stUinInfo:dwFlag	J
-    //   150: ldc2_w 180
+    //   147: getfield 181	friendlist/stUinInfo:dwFlag	J
+    //   150: ldc2_w 188
     //   153: land
     //   154: lconst_0
     //   155: lcmp
     //   156: ifeq +12 -> 168
     //   159: aload_1
     //   160: aload 9
-    //   162: getfield 185	friendlist/stUinInfo:cGender	B
-    //   165: putfield 188	com/tencent/mobileqq/data/TroopMemberCardInfo:sex	B
+    //   162: getfield 193	friendlist/stUinInfo:cGender	B
+    //   165: putfield 196	com/tencent/mobileqq/data/TroopMemberCardInfo:sex	B
     //   168: aload 9
-    //   170: getfield 173	friendlist/stUinInfo:dwFlag	J
-    //   173: ldc2_w 189
+    //   170: getfield 181	friendlist/stUinInfo:dwFlag	J
+    //   173: ldc2_w 197
     //   176: land
     //   177: lconst_0
     //   178: lcmp
     //   179: ifeq +12 -> 191
     //   182: aload_1
     //   183: aload 9
-    //   185: getfield 193	friendlist/stUinInfo:sPhone	Ljava/lang/String;
-    //   188: putfield 196	com/tencent/mobileqq/data/TroopMemberCardInfo:tel	Ljava/lang/String;
+    //   185: getfield 201	friendlist/stUinInfo:sPhone	Ljava/lang/String;
+    //   188: putfield 204	com/tencent/mobileqq/data/TroopMemberCardInfo:tel	Ljava/lang/String;
     //   191: aload 9
-    //   193: getfield 173	friendlist/stUinInfo:dwFlag	J
-    //   196: ldc2_w 197
+    //   193: getfield 181	friendlist/stUinInfo:dwFlag	J
+    //   196: ldc2_w 205
     //   199: land
     //   200: lconst_0
     //   201: lcmp
     //   202: ifeq +12 -> 214
     //   205: aload_1
     //   206: aload 9
-    //   208: getfield 201	friendlist/stUinInfo:sEmail	Ljava/lang/String;
-    //   211: putfield 204	com/tencent/mobileqq/data/TroopMemberCardInfo:email	Ljava/lang/String;
+    //   208: getfield 209	friendlist/stUinInfo:sEmail	Ljava/lang/String;
+    //   211: putfield 212	com/tencent/mobileqq/data/TroopMemberCardInfo:email	Ljava/lang/String;
     //   214: aload 9
-    //   216: getfield 173	friendlist/stUinInfo:dwFlag	J
-    //   219: ldc2_w 205
+    //   216: getfield 181	friendlist/stUinInfo:dwFlag	J
+    //   219: ldc2_w 213
     //   222: land
     //   223: lconst_0
     //   224: lcmp
     //   225: ifeq +12 -> 237
     //   228: aload_1
     //   229: aload 9
-    //   231: getfield 209	friendlist/stUinInfo:sRemark	Ljava/lang/String;
-    //   234: putfield 212	com/tencent/mobileqq/data/TroopMemberCardInfo:memo	Ljava/lang/String;
+    //   231: getfield 217	friendlist/stUinInfo:sRemark	Ljava/lang/String;
+    //   234: putfield 220	com/tencent/mobileqq/data/TroopMemberCardInfo:memo	Ljava/lang/String;
     //   237: iload 5
     //   239: ifeq +40 -> 279
     //   242: aload 6
     //   244: aload_1
-    //   245: invokevirtual 215	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   245: invokevirtual 223	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   248: pop
     //   249: aload 8
     //   251: aload_1
-    //   252: invokevirtual 219	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   252: invokevirtual 227	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   255: pop
     //   256: iload 4
     //   258: iconst_1
     //   259: iadd
     //   260: istore 4
     //   262: goto -212 -> 50
-    //   265: new 123	com/tencent/mobileqq/data/TroopMemberCardInfo
+    //   265: new 131	com/tencent/mobileqq/data/TroopMemberCardInfo
     //   268: dup
-    //   269: invokespecial 220	com/tencent/mobileqq/data/TroopMemberCardInfo:<init>	()V
+    //   269: invokespecial 228	com/tencent/mobileqq/data/TroopMemberCardInfo:<init>	()V
     //   272: astore_1
     //   273: iconst_0
     //   274: istore 5
     //   276: goto -169 -> 107
     //   279: aload 6
     //   281: aload_1
-    //   282: invokevirtual 223	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   282: invokevirtual 231	com/tencent/mobileqq/persistence/EntityManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)V
     //   285: goto -36 -> 249
     //   288: astore_1
     //   289: aload_1
-    //   290: invokevirtual 133	java/lang/Exception:printStackTrace	()V
+    //   290: invokevirtual 141	java/lang/Exception:printStackTrace	()V
     //   293: aload 7
-    //   295: invokevirtual 226	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   295: invokevirtual 234	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   298: aload 6
-    //   300: invokevirtual 130	com/tencent/mobileqq/persistence/EntityManager:a	()V
+    //   300: invokevirtual 138	com/tencent/mobileqq/persistence/EntityManager:a	()V
     //   303: aconst_null
     //   304: areturn
     //   305: aload 7
-    //   307: invokevirtual 229	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
+    //   307: invokevirtual 237	com/tencent/mobileqq/persistence/EntityTransaction:c	()V
     //   310: aload 7
-    //   312: invokevirtual 226	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   312: invokevirtual 234	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   315: aload 6
-    //   317: invokevirtual 130	com/tencent/mobileqq/persistence/EntityManager:a	()V
+    //   317: invokevirtual 138	com/tencent/mobileqq/persistence/EntityManager:a	()V
     //   320: aload 8
     //   322: areturn
     //   323: astore_1
     //   324: aload 7
-    //   326: invokevirtual 226	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
+    //   326: invokevirtual 234	com/tencent/mobileqq/persistence/EntityTransaction:b	()V
     //   329: aload 6
-    //   331: invokevirtual 130	com/tencent/mobileqq/persistence/EntityManager:a	()V
+    //   331: invokevirtual 138	com/tencent/mobileqq/persistence/EntityManager:a	()V
     //   334: aload_1
     //   335: athrow
     // Local variable table:
@@ -365,21 +369,37 @@ public class DBUtils
     if (paramQQAppInterface == null) {
       return localHashMap;
     }
-    paramQQAppInterface = (RoamSettingManager)paramQQAppInterface.getManager(39);
+    RoamSettingManager localRoamSettingManager = (RoamSettingManager)paramQQAppInterface.getManager(39);
+    ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i < paramList.size())
     {
-      String str = (String)paramList.get(i);
-      if ((str == null) || (str.length() == 0)) {}
+      String str1 = (String)paramList.get(i);
+      if ((str1 == null) || (str1.length() == 0)) {}
       for (;;)
       {
         i += 1;
         break;
-        StringBuilder localStringBuilder = new StringBuilder(40);
-        localStringBuilder.append("message.group.policy.");
-        localStringBuilder.append(str);
-        localHashMap.put(str, Integer.valueOf(paramQQAppInterface.a(localStringBuilder.toString(), paramInt)));
+        paramQQAppInterface = new StringBuilder(40);
+        paramQQAppInterface.append("message.group.policy.");
+        paramQQAppInterface.append(str1);
+        String str2 = paramQQAppInterface.toString();
+        RoamSetting localRoamSetting = localRoamSettingManager.a(str2);
+        paramQQAppInterface = localRoamSetting;
+        if (localRoamSetting == null)
+        {
+          paramQQAppInterface = localRoamSetting;
+          if (!TextUtils.isEmpty(str2))
+          {
+            paramQQAppInterface = new RoamSetting(str2, Integer.toString(paramInt));
+            localArrayList.add(paramQQAppInterface);
+          }
+        }
+        localHashMap.put(str1, Integer.valueOf(RoamSetting.getIntValue(paramQQAppInterface, paramInt)));
       }
+    }
+    if (localArrayList.size() > 0) {
+      this.a.a(new akjn(this, localArrayList, localRoamSettingManager));
     }
     return localHashMap;
   }
@@ -560,7 +580,7 @@ public class DBUtils
             break label223;
             if (Looper.getMainLooper().getThread() == Thread.currentThread())
             {
-              ThreadManager.post(new akca(this, localRoamSettingManager, localArrayList), 5, null, false);
+              ThreadManager.post(new akjo(this, localRoamSettingManager, localArrayList), 5, null, false);
               if (localObject == null) {}
             }
             try

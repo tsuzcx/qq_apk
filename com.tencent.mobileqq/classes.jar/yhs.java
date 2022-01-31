@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
 public class yhs
-  implements Comparator
+  implements BubblePopupWindow.OnDismissListener
 {
-  public yhs(NewFriendMoreSysMsgAdapter paramNewFriendMoreSysMsgAdapter) {}
+  public yhs(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter) {}
   
-  public int a(NewFriendMessage paramNewFriendMessage1, NewFriendMessage paramNewFriendMessage2)
-  {
-    return (int)(paramNewFriendMessage2.a - paramNewFriendMessage1.a);
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yhs
  * JD-Core Version:    0.7.0.1
  */

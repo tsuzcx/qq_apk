@@ -17,8 +17,8 @@ import com.tencent.mobileqq.shortvideo.util.storage.StorageManager;
 import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.concurrent.atomic.AtomicBoolean;
-import omt;
-import omv;
+import orf;
+import orh;
 
 public class StoryMultiFragmentPart
   extends StoryCapturePart
@@ -49,7 +49,7 @@ public class StoryMultiFragmentPart
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
       localAlphaAnimation.setStartOffset(1500L);
       localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setAnimationListener(new omv(this));
+      localAlphaAnimation.setAnimationListener(new orh(this));
       this.jdField_b_of_type_AndroidWidgetTextView.startAnimation(localAlphaAnimation);
     }
   }
@@ -66,13 +66,13 @@ public class StoryMultiFragmentPart
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370153));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370162));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370154));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370160));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370162));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370171));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370163));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370169));
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
       this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView = ((GLSurfaceView)paramView.findViewById(2131366945));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView = ((GLSurfaceView)paramView.findViewById(2131366943));
       c();
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryEffectsCameraCaptureFragment.a().setCaptureButtonProgressInterceptor(this);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryEffectsCameraCaptureFragment.a().setMaxDuration((float)a().getLong("capture_max_duration", 10000L));
@@ -189,7 +189,7 @@ public class StoryMultiFragmentPart
   {
     FragmentActivity localFragmentActivity = this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryEffectsCameraCaptureFragment.getActivity();
     SLog.b("story.publish.StoryMultiFragmentPart", "requestGetCurrentFrameBitmap");
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryEffectsCameraCaptureFragment.a(new omt(this, localFragmentActivity));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryEffectsCameraCaptureFragment.a(new orf(this, localFragmentActivity));
   }
 }
 

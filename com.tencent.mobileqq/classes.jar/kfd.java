@@ -1,30 +1,27 @@
-import android.graphics.Bitmap;
-import android.widget.RelativeLayout;
-import com.tencent.av.ui.redbag.GuideTip2;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class kfd
   implements Runnable
 {
-  public kfd(GuideTip2 paramGuideTip2, RelativeLayout paramRelativeLayout1, RelativeLayout paramRelativeLayout2) {}
+  public kfd(EffectFilterTextPager paramEffectFilterTextPager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.b);
-    if (this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.a != null)
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.a.recycle();
-      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.a = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.b != null)
-    {
-      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.b.recycle();
-      this.jdField_a_of_type_ComTencentAvUiRedbagGuideTip2.b = null;
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(1), Float.valueOf(this.a.jdField_a_of_type_Float), Float.valueOf(this.a.b) });
+      if (QLog.isColorLevel()) {
+        QLog.e("EffectFilterTextPager", 2, "[childLock] trigger animation");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kfd
  * JD-Core Version:    0.7.0.1
  */

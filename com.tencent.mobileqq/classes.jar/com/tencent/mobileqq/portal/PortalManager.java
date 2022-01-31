@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.portal;
 
-import agmp;
-import agmq;
-import agmr;
-import agms;
-import agmt;
-import agmv;
+import agre;
+import agrf;
+import agrg;
+import agrh;
+import agri;
+import agrk;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -108,12 +108,12 @@ public class PortalManager
   public static long f;
   public static long g;
   private static long i;
-  agmv jdField_a_of_type_Agmv;
+  agrk jdField_a_of_type_Agrk;
   private Context jdField_a_of_type_AndroidContentContext;
   private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
   private Handler jdField_a_of_type_AndroidOsHandler;
   SparseArrayCompat jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat(1);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new agmt(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new agri(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private OlympicDPC jdField_a_of_type_ComTencentMobileqqOlympicOlympicDPC;
   private PortalManager.BannerConfig jdField_a_of_type_ComTencentMobileqqPortalPortalManager$BannerConfig;
@@ -147,8 +147,8 @@ public class PortalManager
     jdField_c_of_type_Long = 180000L;
     jdField_a_of_type_Int = 1;
     jdField_a_of_type_JavaLangString = File.separator + "redPacketRes/";
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new agmr();
-    jdField_a_of_type_JavaUtilComparator = new agms();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new agrg();
+    jdField_a_of_type_JavaUtilComparator = new agrh();
     jdField_a_of_type_ComTencentMobileqqPortalPortalManager$TimerConfig = new PortalManager.TimerConfig(null);
     jdField_a_of_type_ArrayOfBoolean = new boolean[] { 0, 0, 0, 0, 0 };
     jdField_b_of_type_ArrayOfInt = new int[0];
@@ -162,10 +162,10 @@ public class PortalManager
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
     this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
-    this.jdField_a_of_type_Agmv = new agmv(this, null);
+    this.jdField_a_of_type_Agrk = new agrk(this, null);
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Agmv, new IntentFilter("com.tencent.portal.req.action"), "com.tencent.msg.permission.pushnotify", null);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Agrk, new IntentFilter("com.tencent.portal.req.action"), "com.tencent.msg.permission.pushnotify", null);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
       return;
@@ -1866,7 +1866,7 @@ public class PortalManager
     if (QLog.isColorLevel()) {
       QLog.d("PortalManager", 2, "tryDownload needReport");
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new agmq(this, paramRedPacketConfig), 60000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new agrf(this, paramRedPacketConfig), 60000L);
   }
   
   private static void a(PortalManager.RedPacketConfig paramRedPacketConfig, String paramString)
@@ -2949,7 +2949,7 @@ public class PortalManager
   
   public void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    this.jdField_b_of_type_AndroidOsHandler.post(new agmp(this, paramLong1, paramLong2, paramLong3));
+    this.jdField_b_of_type_AndroidOsHandler.post(new agre(this, paramLong1, paramLong2, paramLong3));
   }
   
   public void a(Activity paramActivity, boolean paramBoolean)
@@ -4054,7 +4054,7 @@ public class PortalManager
     //   189: getfield 167	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   192: invokevirtual 214	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   195: aload_0
-    //   196: getfield 208	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_Agmv	Lagmv;
+    //   196: getfield 208	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_Agrk	Lagrk;
     //   199: invokevirtual 2007	com/tencent/qphone/base/util/BaseApplication:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
     //   202: aload_0
     //   203: getfield 1579	com/tencent/mobileqq/portal/PortalManager:jdField_a_of_type_AndroidMediaSoundPool	Landroid/media/SoundPool;

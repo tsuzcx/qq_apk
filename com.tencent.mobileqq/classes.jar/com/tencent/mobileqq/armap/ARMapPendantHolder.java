@@ -29,11 +29,11 @@ public class ARMapPendantHolder
   
   private void f()
   {
-    int i = 2130842274;
+    int i = 2130842309;
     try
     {
       if (this.jdField_b_of_type_Boolean) {
-        i = 2130842275;
+        i = 2130842310;
       }
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(i);
       return;
@@ -86,7 +86,7 @@ public class ARMapPendantHolder
       n = this.m;
       i1 = this.h / 2;
       int i2 = i / 2;
-      this.jdField_a_of_type_ComTencentMobileqqPortalBaseAnimHolder.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842276);
+      this.jdField_a_of_type_ComTencentMobileqqPortalBaseAnimHolder.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842311);
       this.jdField_a_of_type_ComTencentMobileqqPortalBaseAnimHolder.a(i1 + paramInt1 - i2, 0, i, j + n + this.m, paramView);
     }
     if (this.jdField_b_of_type_ComTencentMobileqqPortalBaseAnimHolder == null)
@@ -98,13 +98,13 @@ public class ARMapPendantHolder
       paramInt3 /= 2;
       n = i / 2;
       i1 = this.k;
-      this.jdField_b_of_type_ComTencentMobileqqPortalBaseAnimHolder.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842273);
+      this.jdField_b_of_type_ComTencentMobileqqPortalBaseAnimHolder.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842308);
       this.jdField_b_of_type_ComTencentMobileqqPortalBaseAnimHolder.a(paramInt3 + paramInt1 - n, i1 + (paramInt2 + paramInt4), i, j, this.jdField_a_of_type_AndroidViewView);
     }
     if (this.c == null)
     {
       this.c = new BaseAnimHolder();
-      this.c.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842290);
+      this.c.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842325);
       this.l = AIOUtils.a(7.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
       this.c.a(paramInt1 - AIOUtils.a(3.5F, this.jdField_a_of_type_AndroidContentContext.getResources()), paramInt2 - this.l, AIOUtils.a(90.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(90.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), this.jdField_a_of_type_AndroidViewView);
     }

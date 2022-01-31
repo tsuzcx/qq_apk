@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class afkk
-  implements Runnable
+public class afkk
+  implements DialogInterface.OnClickListener
 {
-  afkk(afkj paramafkj) {}
+  public afkk(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NearbyMomentFragment.a(this.a.a, null);
+    this.a.d(true);
+    ReportController.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,16 +1,17 @@
-import com.tencent.biz.qqstory.base.download.DownloaderImp;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
+import com.tencent.util.InputMethodUtil;
 
 public class okx
   implements Runnable
 {
-  public okx(EditVideoMusicDialog paramEditVideoMusicDialog, String paramString1, String paramString2) {}
+  public okx(EditVideoPoiSearch paramEditVideoPoiSearch) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a = new DownloaderImp();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
+    this.a.a.setFocusableInTouchMode(true);
+    this.a.a.requestFocus();
+    InputMethodUtil.a(this.a.a);
   }
 }
 

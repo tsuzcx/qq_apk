@@ -1,19 +1,32 @@
-import android.widget.TextView;
-import com.tencent.open.applist.QZoneAppListActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class alff
-  implements Runnable
+  extends Handler
 {
-  public alff(QZoneAppListActivity paramQZoneAppListActivity, int paramInt) {}
+  public alff(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    QZoneAppListActivity.a(this.jdField_a_of_type_ComTencentOpenApplistQZoneAppListActivity).setText(this.jdField_a_of_type_Int + "%");
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.a.jdField_a_of_type_Float < 0.0F);
+    QLog.i(ARWorldCupGameLogicManager.jdField_a_of_type_JavaLangString, 1, "OnLoopPlayTick handleMessage begin." + this.a.jdField_a_of_type_Float);
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Float += 0.1F;
+    ARWorldCupGameLogicManager.a(this.a, this.a.jdField_a_of_type_Float);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alff
  * JD-Core Version:    0.7.0.1
  */

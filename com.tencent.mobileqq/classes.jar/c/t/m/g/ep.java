@@ -1,41 +1,10 @@
 package c.t.m.g;
 
-import java.util.Iterator;
+import android.os.Parcelable;
 
-public final class ep
-{
-  private final String a;
-  
-  public ep(String paramString)
-  {
-    if (paramString == null) {
-      throw new NullPointerException();
-    }
-    this.a = paramString;
-  }
-  
-  public final StringBuilder a(StringBuilder paramStringBuilder, Iterator<?> paramIterator)
-  {
-    Object localObject;
-    if (paramIterator.hasNext())
-    {
-      localObject = paramIterator.next();
-      if (localObject != null) {
-        paramStringBuilder.append(localObject.toString());
-      }
-    }
-    while (paramIterator.hasNext())
-    {
-      localObject = paramIterator.next();
-      if (localObject != null)
-      {
-        paramStringBuilder.append(this.a);
-        paramStringBuilder.append(localObject.toString());
-      }
-    }
-    return paramStringBuilder;
-  }
-}
+public abstract interface ep
+  extends Parcelable
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

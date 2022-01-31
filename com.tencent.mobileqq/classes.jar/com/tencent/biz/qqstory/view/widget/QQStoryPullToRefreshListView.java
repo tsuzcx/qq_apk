@@ -15,7 +15,7 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
 import com.tencent.widget.SwipListView;
-import ord;
+import ovs;
 
 public class QQStoryPullToRefreshListView
   extends SwipListView
@@ -90,7 +90,7 @@ public class QQStoryPullToRefreshListView
     }
     for (;;)
     {
-      postDelayed(new ord(this), 800L);
+      postDelayed(new ovs(this), 800L);
       return;
       this.b.a(1);
     }
@@ -179,9 +179,9 @@ public class QQStoryPullToRefreshListView
   
   protected void t()
   {
-    this.b = ((PullRefreshHeader)LayoutInflater.from(super.getContext()).inflate(2130970817, this, false));
+    this.b = ((PullRefreshHeader)LayoutInflater.from(super.getContext()).inflate(2130970834, this, false));
     this.b.setTextColor(-1, -1, -1, -1, -1);
-    this.b.setHeaderBgDrawable(getResources().getDrawable(2130838590));
+    this.b.setHeaderBgDrawable(getResources().getDrawable(2130838596));
     super.setOverScrollHeight(super.getResources().getDimensionPixelSize(2131558434));
     super.setOverScrollHeader(this.b);
     super.setOverScrollListener(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetOverScrollViewForwardListener);

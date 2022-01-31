@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ailh;
+import aiqc;
 import android.view.MotionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Layer
   extends Node
-  implements ailh
+  implements aiqc
 {
   public List a;
   
@@ -54,7 +54,7 @@ public class Layer
       boolean bool1 = bool2;
       if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        if (((this.jdField_a_of_type_JavaUtilList.get(i) instanceof ailh)) && (((ailh)this.jdField_a_of_type_JavaUtilList.get(i)).a(paramMotionEvent, paramInt1, paramInt2))) {
+        if (((this.jdField_a_of_type_JavaUtilList.get(i) instanceof aiqc)) && (((aiqc)this.jdField_a_of_type_JavaUtilList.get(i)).a(paramMotionEvent, paramInt1, paramInt2))) {
           bool1 = true;
         }
       }

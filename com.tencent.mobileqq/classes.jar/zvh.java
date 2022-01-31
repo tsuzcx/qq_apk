@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class zvh
   implements Runnable
 {
-  public zvh(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
+  public zvh(TroopManager paramTroopManager, String paramString) {}
   
   public void run()
   {
-    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_JavaLangString, -1L);
   }
 }
 

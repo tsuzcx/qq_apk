@@ -1,21 +1,21 @@
-import android.os.Build;
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class aaid
   implements Runnable
 {
-  public aaid(ARReport paramARReport, int paramInt, long paramLong) {}
+  public aaid(MultiFragmentAnimRenderable paramMultiFragmentAnimRenderable) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("ar_model", Build.MODEL);
-    localHashMap.put("result", this.jdField_a_of_type_Int + "");
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "AREngine_openCamera", true, 0L, 0L, localHashMap, "", true);
+    MultiFragmentAnimRenderable.a(this.a).lock();
+    if (MultiFragmentAnimRenderable.a(this.a) != null)
+    {
+      MultiFragmentAnimRenderable.a(this.a).d();
+      MultiFragmentAnimRenderable.a(this.a, null);
+    }
+    MultiFragmentAnimRenderable.a(this.a).unlock();
   }
 }
 

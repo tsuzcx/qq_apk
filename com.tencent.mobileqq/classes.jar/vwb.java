@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.app.TroopObserver;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
+import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
 
 public class vwb
-  extends TroopObserver
+  implements Runnable
 {
-  public vwb(NearbyChatPie paramNearbyChatPie) {}
+  public vwb(BaseTroopChatPie paramBaseTroopChatPie, TroopTipsMsgMgr paramTroopTipsMsgMgr) {}
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public void run()
   {
-    paramString = this.a;
-    if ((paramBoolean1) && (paramBoolean2)) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
-    {
-      paramString.U = paramBoolean1;
-      NearbyChatPie.c(this.a).post(new vwc(this));
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTipsMsgMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

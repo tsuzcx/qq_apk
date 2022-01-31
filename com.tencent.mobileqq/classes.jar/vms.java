@@ -1,20 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
+import org.json.JSONObject;
 
 class vms
-  implements DialogInterface.OnClickListener
+  implements TroopTopicMgr.DoLikeCallback
 {
   vms(vmr paramvmr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, JSONObject paramJSONObject)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFilePicData.g);
-    QQToast.a(AIOGalleryScene.ak(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), AIOGalleryScene.al(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getString(2131428195), 0).a();
+    if (paramInt == 0) {}
   }
 }
 

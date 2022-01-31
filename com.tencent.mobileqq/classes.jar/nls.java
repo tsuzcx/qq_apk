@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.TroopProfileVideoPlayMode;
+import com.tencent.biz.qqstory.newshare.model.Job;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class nls
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public nls(TroopProfileVideoPlayMode paramTroopProfileVideoPlayMode) {}
+  public nls(JobExecutor paramJobExecutor, Job paramJob, ConcurrentHashMap paramConcurrentHashMap) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.s();
+    JobExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
   }
 }
 

@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
 public class abbn
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public abbn(ARMapActivity paramARMapActivity) {}
+  public abbn(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.startActivity(new Intent("android.settings.WIFI_SETTINGS"));
+    this.a.b();
   }
 }
 

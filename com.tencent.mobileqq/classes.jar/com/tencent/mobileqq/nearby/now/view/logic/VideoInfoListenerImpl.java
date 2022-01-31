@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now.view.logic;
 
-import aeyp;
-import aeyq;
+import afdm;
+import afdn;
 import android.app.Activity;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -33,7 +33,7 @@ public class VideoInfoListenerImpl
   private ShortVideoCommentsView jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView;
   private VideoPlayerPagerAdapter.VideoViewHolder jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder;
   private HorizontalBallLoadingView jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new aeyq(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new afdn(this);
   private final String jdField_a_of_type_JavaLangString = "VideoInfoListener";
   private boolean jdField_a_of_type_Boolean;
   private int b;
@@ -55,7 +55,7 @@ public class VideoInfoListenerImpl
     if (((this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (((Activity)this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.jdField_a_of_type_AndroidContentContext).isFinishing())) {
       return;
     }
-    ThreadManager.getUIHandler().postDelayed(new aeyp(this), 1000L);
+    ThreadManager.getUIHandler().postDelayed(new afdm(this), 1000L);
   }
   
   public void a(int paramInt)
@@ -177,7 +177,7 @@ public class VideoInfoListenerImpl
     for (boolean bool = true;; bool = false)
     {
       QLog.i("VideoInfoListener", 2, bool);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView = ((HorizontalBallLoadingView)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362727));
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetHorizontalBallLoadingView = ((HorizontalBallLoadingView)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362732));
       ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
       return;
     }

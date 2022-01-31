@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.view.helper;
 
-import agsu;
+import agxh;
 import android.view.View;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
@@ -10,7 +10,7 @@ public class ShakeEffectGenerator
 {
   private final int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new agsu(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new agxh(this);
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
   private boolean jdField_a_of_type_Boolean;
   private final int b;

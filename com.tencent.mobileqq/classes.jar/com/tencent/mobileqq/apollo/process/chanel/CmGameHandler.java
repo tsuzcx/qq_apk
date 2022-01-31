@@ -83,11 +83,6 @@ public class CmGameHandler
         this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameMainManager.a(paramString2, paramInt1);
         return null;
       }
-      if ("cs.enter_pubAccount_card.local".equals(paramString1))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameMainManager.j(paramString2);
-        return null;
-      }
     } while (!"cs.on_get_open_key.local".equals(paramString1));
     this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameMainManager.b(paramString2, paramInt1);
     return null;

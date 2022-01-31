@@ -41,12 +41,12 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import jtc;
-import jtd;
-import jte;
-import jtf;
-import jtg;
-import jth;
+import jvg;
+import jvh;
+import jvi;
+import jvj;
+import jvk;
+import jvl;
 import mqq.app.BaseActivity;
 
 public class DoubleVideoMeetingCtrlUI
@@ -57,12 +57,12 @@ public class DoubleVideoMeetingCtrlUI
   ImageView jdField_a_of_type_AndroidWidgetImageView = null;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jte(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jvi(this);
   QavInOutAnimation jdField_a_of_type_ComTencentAvUiQavInOutAnimation = null;
   QAVNotification jdField_a_of_type_ComTencentAvUtilsQAVNotification = null;
   Runnable jdField_a_of_type_JavaLangRunnable = null;
   String jdField_a_of_type_JavaLangString = null;
-  jtf jdField_a_of_type_Jtf = new jtf(this);
+  jvj jdField_a_of_type_Jvj = new jvj(this);
   public boolean a;
   public long b;
   TextView jdField_b_of_type_AndroidWidgetTextView = null;
@@ -175,7 +175,7 @@ public class DoubleVideoMeetingCtrlUI
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_c_of_type_JavaLangString, 2, "avSwitch sessionType = " + paramInt);
     }
-    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365934);
+    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365939);
     AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (paramInt == 3)
     {
@@ -203,7 +203,7 @@ public class DoubleVideoMeetingCtrlUI
       if (this.jdField_a_of_type_ComTencentAvVideoController != null)
       {
         if (this.jdField_a_of_type_ComTencentAvVideoController.a().Q) {
-          super.t(2131365399);
+          super.t(2131365404);
         }
         localObject = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper;
         if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int != 3) {
@@ -233,7 +233,7 @@ public class DoubleVideoMeetingCtrlUI
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       if (this.d != null) {
-        this.d.setBackgroundResource(2130840340);
+        this.d.setBackgroundResource(2130840355);
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.g.setVisibility(8);
@@ -262,12 +262,12 @@ public class DoubleVideoMeetingCtrlUI
       QLog.d(this.jdField_c_of_type_JavaLangString, 2, "refreshUI-->relationId=" + paramLong1 + " ,friendUin=" + paramLong2 + " ,refreshType=" + paramInt);
     }
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().ar) {}
-    jtg localjtg;
+    jvk localjvk;
     AVActivity localAVActivity;
     do
     {
       return;
-      localjtg = new jtg(this, paramInt, paramLong2, paramLong1);
+      localjvk = new jvk(this, paramInt, paramLong2, paramLong1);
       localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (localAVActivity != null) {
         break;
@@ -275,7 +275,7 @@ public class DoubleVideoMeetingCtrlUI
     } while (!QLog.isColorLevel());
     QLog.e(this.jdField_c_of_type_JavaLangString, 2, "refreshUI-->Can not get AVActivity");
     return;
-    localAVActivity.runOnUiThread(localjtg);
+    localAVActivity.runOnUiThread(localjvk);
   }
   
   public void a(Intent paramIntent) {}
@@ -364,7 +364,7 @@ public class DoubleVideoMeetingCtrlUI
       QLog.d(this.jdField_c_of_type_JavaLangString, 1, "onClick QavPanel.VIEW_ENUM.HANG_UP");
       if (this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation != null)
       {
-        this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new jtd(this));
+        this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new jvh(this));
         return;
       }
       TraeHelper.a().a("DoubleVideoMeetingCtrlUI.onOutAnimationEnd_2");
@@ -575,7 +575,7 @@ public class DoubleVideoMeetingCtrlUI
   
   void b()
   {
-    super.q(2130969279);
+    super.q(2130969277);
     super.b();
     if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
@@ -591,7 +591,7 @@ public class DoubleVideoMeetingCtrlUI
         this.jdField_a_of_type_ComTencentAvUtilsTraeHelper.a();
       }
     }
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365383));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365388));
     Object localObject = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localObject == null)
     {
@@ -601,12 +601,12 @@ public class DoubleVideoMeetingCtrlUI
       d(true);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365365));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365367));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362754));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((AVActivity)localObject).findViewById(2131365837));
-    TintStateDrawable.a(this.jdField_a_of_type_AndroidWidgetButton, 2130840162, 2131494051);
-    this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation = new QavInOutAnimation((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentAvVideoController, 2, this.jdField_a_of_type_ComTencentAvUiQavPanel, this.d, null, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365936), this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365377), null);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365370));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365372));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362759));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((AVActivity)localObject).findViewById(2131365842));
+    TintStateDrawable.a(this.jdField_a_of_type_AndroidWidgetButton, 2130840177, 2131494057);
+    this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation = new QavInOutAnimation((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_ComTencentAvVideoController, 2, this.jdField_a_of_type_ComTencentAvUiQavPanel, this.d, null, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365941), this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365382), null);
   }
   
   protected void b(String paramString)
@@ -624,9 +624,9 @@ public class DoubleVideoMeetingCtrlUI
     int j = UITools.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
     int k = UITools.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364245)).getLayoutParams();
-    localLayoutParams1 = (LinearLayout.LayoutParams)((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365830)).getLayoutParams();
-    localLayoutParams1 = (LinearLayout.LayoutParams)((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364246)).getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364270)).getLayoutParams();
+    localLayoutParams1 = (LinearLayout.LayoutParams)((ImageView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365835)).getLayoutParams();
+    localLayoutParams1 = (LinearLayout.LayoutParams)((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364271)).getLayoutParams();
     if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null) {}
     for (int i = this.jdField_a_of_type_ComTencentAvUiQavPanel.a();; i = 0)
     {
@@ -685,8 +685,8 @@ public class DoubleVideoMeetingCtrlUI
         } while (this.jdField_a_of_type_ComTencentAvVideoController.a().ar);
         if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null)
         {
-          this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365399, true);
-          this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365399, true);
+          this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365404, true);
+          this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365404, true);
         }
         if (!paramBoolean) {
           break;
@@ -698,7 +698,7 @@ public class DoubleVideoMeetingCtrlUI
         if ((this.jdField_b_of_type_AndroidWidgetImageButton != null) && (this.n > 1)) {
           this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
         }
-        super.s(2131365399);
+        super.s(2131365404);
         if ((paramInt == 3) && (!this.jdField_a_of_type_ComTencentAvVideoController.a().N) && ("DEVICE_EARPHONE".equals(this.jdField_a_of_type_ComTencentAvVideoController.a().o))) {
           this.jdField_a_of_type_ComTencentAvUtilsTraeHelper.e();
         }
@@ -830,10 +830,10 @@ public class DoubleVideoMeetingCtrlUI
     Bitmap localBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, str, null, true, true);
     str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, str, null);
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365375));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365380));
     }
     if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365376));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365381));
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
@@ -921,9 +921,9 @@ public class DoubleVideoMeetingCtrlUI
   
   void g(String paramString)
   {
-    this.jdField_a_of_type_Jtf.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_Jtf);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_Jtf, 1000L);
+    this.jdField_a_of_type_Jvj.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_Jvj);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_Jvj, 1000L);
   }
   
   public void g(boolean paramBoolean)
@@ -959,7 +959,7 @@ public class DoubleVideoMeetingCtrlUI
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c("DoubleVideoMeetingCtrlUI");
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.j);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_Jtf);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_Jvj);
   }
   
   public void h(int paramInt) {}
@@ -970,7 +970,7 @@ public class DoubleVideoMeetingCtrlUI
       QLog.d(this.jdField_c_of_type_JavaLangString, 2, "addRequestVideoTimeoutRunnable,Function = " + paramString);
     }
     if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new jth(this);
+      this.jdField_a_of_type_JavaLangRunnable = new jvl(this);
     }
     for (;;)
     {
@@ -1010,7 +1010,7 @@ public class DoubleVideoMeetingCtrlUI
   
   void i(boolean paramBoolean)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365936);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365941);
     RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)localRelativeLayout.getLayoutParams();
     RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
     if (paramBoolean)
@@ -1105,20 +1105,20 @@ public class DoubleVideoMeetingCtrlUI
     }
     if (this.jdField_a_of_type_ComTencentAvVideoController.h())
     {
-      super.s(2131365397);
+      super.s(2131365402);
       if (!this.jdField_a_of_type_ComTencentAvVideoController.a().f) {
         break label93;
       }
-      super.s(2131365399);
+      super.s(2131365404);
     }
     for (;;)
     {
       a(this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int);
       return;
-      super.t(2131365397);
+      super.t(2131365402);
       break;
       label93:
-      super.t(2131365399);
+      super.t(2131365404);
     }
   }
   
@@ -1133,7 +1133,7 @@ public class DoubleVideoMeetingCtrlUI
   void t()
   {
     if (this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation != null) {
-      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new jtc(this));
+      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new jvg(this));
     }
   }
   
@@ -1141,8 +1141,8 @@ public class DoubleVideoMeetingCtrlUI
   {
     if (this.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365399, false);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365399, false);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365404, false);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365404, false);
     }
   }
   
@@ -1152,8 +1152,8 @@ public class DoubleVideoMeetingCtrlUI
   {
     this.jdField_a_of_type_ComTencentAvVideoController.z();
     this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(4);
-    super.t(2131365399);
-    super.a(2131365399, true);
+    super.t(2131365404);
+    super.a(2131365404, true);
   }
   
   void y()
@@ -1164,7 +1164,7 @@ public class DoubleVideoMeetingCtrlUI
     if (this.jdField_a_of_type_ComTencentAvVideoController.h())
     {
       this.jdField_a_of_type_ComTencentAvVideoController.a("DoubleVideoMeetingCtrlUI.pressMuteBtn.1", this.jdField_a_of_type_Long, true);
-      super.t(2131365397);
+      super.t(2131365402);
       if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
       }
@@ -1172,7 +1172,7 @@ public class DoubleVideoMeetingCtrlUI
       return;
     }
     this.jdField_a_of_type_ComTencentAvVideoController.a("DoubleVideoMeetingCtrlUI.pressMuteBtn.2", this.jdField_a_of_type_Long, false);
-    super.s(2131365397);
+    super.s(2131365402);
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(109) });
     }
@@ -1194,7 +1194,7 @@ public class DoubleVideoMeetingCtrlUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoMeetingCtrlUI
  * JD-Core Version:    0.7.0.1
  */

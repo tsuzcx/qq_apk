@@ -1,13 +1,15 @@
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.addContactTroopView.TroopCardBanner;
+import java.util.TimerTask;
 
 public class kmr
-  implements Runnable
+  extends TimerTask
 {
-  public kmr(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  public kmr(TroopCardBanner paramTroopCardBanner) {}
   
   public void run()
   {
-    SensorAPIJavaScript.returnToAio(this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient, this.a.jdField_a_of_type_AndroidAppActivity, "", false);
+    this.a.a.post(new kms(this));
   }
 }
 

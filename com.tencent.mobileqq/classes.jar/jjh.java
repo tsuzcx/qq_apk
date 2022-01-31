@@ -1,33 +1,29 @@
-import android.content.res.Resources;
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
 
 public class jjh
-  implements WXShareHelper.WXShareListener
 {
-  public jjh(GuildMultiActivity paramGuildMultiActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c = 0;
+  public int d = 0;
+  public int e = 0;
+  public int f = 0;
+  public int g = 0;
+  public int h = 0;
   
-  public void a(BaseResp paramBaseResp)
+  public jjh(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
   {
-    if ((this.a.b == null) || (!this.a.b.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      QQToast.a(this.a, 1, 2131435303, 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
-      return;
-    }
-    QQToast.a(this.a, 2, 2131435302, 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jjh
  * JD-Core Version:    0.7.0.1
  */

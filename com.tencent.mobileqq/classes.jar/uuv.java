@@ -1,19 +1,27 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
 public class uuv
-  extends GestureDetector.SimpleOnGestureListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public uuv(ArkAppRootLayout paramArkAppRootLayout) {}
+  public uuv(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (ArkAppRootLayout.a(this.a) != null) {
-      ArkAppRootLayout.a(this.a).a();
-    }
-    return super.onSingleTapUp(paramMotionEvent);
+    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
+    do
+    {
+      return;
+      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
+        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
+      }
+      if (paramInt1 == 0) {
+        this.a.a(true);
+      }
+    } while (paramVasQuickUpdateManager == null);
+    paramVasQuickUpdateManager.b(this.a.a);
   }
 }
 

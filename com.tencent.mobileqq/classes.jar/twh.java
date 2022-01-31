@@ -1,27 +1,23 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 public class twh
-  extends MqqHandler
+  implements INetEventHandler
 {
-  public twh(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public twh(SendMultiPictureHelper paramSendMultiPictureHelper) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if (!this.a.app.isLogin()) {
-      return;
-    }
-    switch (paramMessage.what)
+    if (!paramBoolean)
     {
-    default: 
-      return;
-    case 1: 
-      this.a.c();
-      return;
+      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131436311), 1).show();
+      twi localtwi = new twi(this);
+      new Handler().postDelayed(localtwi, 3000L);
     }
-    this.a.c();
   }
 }
 

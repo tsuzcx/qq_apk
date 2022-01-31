@@ -30,8 +30,8 @@ public class NewFriendMoreInfoBuilder
     if ((paramView == null) || (!(paramView.getTag() instanceof NewFriendMoreInfoBuilder.NewFriendMoreInfoHolder)))
     {
       localNewFriendMoreInfoHolder = new NewFriendMoreInfoBuilder.NewFriendMoreInfoHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970499, null);
-      localNewFriendMoreInfoHolder.a = ((TextView)paramView.findViewById(2131370883));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970511, null);
+      localNewFriendMoreInfoHolder.a = ((TextView)paramView.findViewById(2131370870));
       paramView.setTag(localNewFriendMoreInfoHolder);
     }
     for (;;)

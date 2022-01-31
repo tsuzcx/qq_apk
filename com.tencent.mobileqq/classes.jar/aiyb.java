@@ -1,19 +1,44 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-class aiyb
-  extends AnimatorListenerAdapter
+public class aiyb
+  implements Runnable
 {
-  aiyb(aiya paramaiya) {}
+  public aiyb(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.r();
+    try
+    {
+      Object localObject1 = new File(this.jdField_a_of_type_JavaLangString);
+      Object localObject2 = Environment.getExternalStorageDirectory() + "/tencent/QQfile_recv/" + ((File)localObject1).getName();
+      localObject1 = localObject2;
+      if (((String)localObject2).endsWith("mp4.tmp.mp4")) {
+        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 11) + "_" + System.currentTimeMillis() + ".mp4";
+      }
+      FileUtils.d(this.jdField_a_of_type_JavaLangString, (String)localObject1);
+      localObject2 = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      ((Intent)localObject2).setData(Uri.parse("file://" + (String)localObject1));
+      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject2);
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aiyc(this));
+      return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.requestFocus();
+    catch (Exception localException)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aiyd(this));
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().runOnUiThread(new aiye(this));
+    }
   }
 }
 

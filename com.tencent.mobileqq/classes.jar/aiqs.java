@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.transfile.RichMediaUtil;
-import java.util.TimerTask;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class aiqs
-  extends TimerTask
+public class aiqs
+  implements Runnable
 {
-  public aiqs(String paramString) {}
+  public aiqs(FriendSystemMsgController paramFriendSystemMsgController, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
   public void run()
   {
-    RichMediaUtil.a(this.a, false, null);
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putBoolean("friend_system_msg_nomore_msg", this.jdField_a_of_type_Boolean).commit();
+    }
   }
 }
 

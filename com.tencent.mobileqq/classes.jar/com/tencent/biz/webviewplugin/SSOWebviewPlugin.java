@@ -29,8 +29,8 @@ import java.util.HashMap;
 import mqq.app.NewIntent;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pcv;
-import pcw;
+import phn;
+import pho;
 
 public class SSOWebviewPlugin
   extends WebViewPlugin
@@ -208,7 +208,7 @@ public class SSOWebviewPlugin
           Object localObject = new WebSSOAgent.UniSsoServerReqComm();
           ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
           ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-          ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+          ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
           paramString1 = new WebSSOAgent.UniSsoServerReq();
           paramString1.comm.set((MessageMicro)localObject);
           localJSONObject.remove("callback");
@@ -236,7 +236,7 @@ public class SSOWebviewPlugin
           if (QLog.isColorLevel()) {
             QLog.d("SSOWebviewPlugin", 2, "uniAgent, req, cmd=" + str1 + ", reqData=" + localJSONObject.toString());
           }
-          ((NewIntent)localObject).setObserver(new pcv(this, str1));
+          ((NewIntent)localObject).setObserver(new phn(this, str1));
           if (QLog.isColorLevel()) {
             QLog.d("SSOWebviewPlugin", 2, "uniAgent, req, send request to msf");
           }
@@ -321,7 +321,7 @@ public class SSOWebviewPlugin
         paramString1.type.set(0);
         paramString1.data.set(str2);
         paramString2.putExtra("data", paramString1.toByteArray());
-        paramString2.setObserver(new pcw(this, str1));
+        paramString2.setObserver(new pho(this, str1));
         this.mRuntime.a().startServlet(paramString2);
         return;
       }

@@ -187,6 +187,9 @@ public class Friends
     this.recommReason = paramCursor.getString(paramCursor.getColumnIndex("recommReason"));
     this.friendType = paramCursor.getInt(paramCursor.getColumnIndex("friendType"));
     this.strMasterUin = paramCursor.getString(paramCursor.getColumnIndex("strMasterUin"));
+    if (QLog.isColorLevel()) {
+      QLog.i("Friends", 2, "entityByCursor uin=" + this.uin + ", cSpecialFlag=" + this.cSpecialFlag);
+    }
     return true;
   }
   

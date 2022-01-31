@@ -1,293 +1,288 @@
 package c.t.m.g;
 
-import com.tencent.map.geolocation.TencentLocation;
-import com.tencent.map.geolocation.TencentLocationUtils;
-import java.util.LinkedList;
-import java.util.ListIterator;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.telephony.CellInfo;
+import android.telephony.CellLocation;
+import android.telephony.PhoneStateListener;
+import android.telephony.ServiceState;
+import android.telephony.TelephonyManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class dv
+final class dv
+  extends PhoneStateListener
 {
-  private int a = 10;
-  private int b = 4;
-  private LinkedList<a> c = new LinkedList();
-  private dj d = new dj();
+  volatile boolean a;
+  HandlerThread b;
+  Handler c;
+  Runnable d;
+  Handler e;
+  List<String> f;
+  private final de g;
+  private final TelephonyManager h;
+  private ee i = null;
+  private ServiceState j = null;
+  private CellLocation k;
   
-  private boolean a(a parama, da paramda)
+  public dv(de paramde)
   {
-    if (paramda != null) {}
+    this.g = paramde;
+    this.h = paramde.f;
+    this.d = new Runnable()
+    {
+      public final void run()
+      {
+        dv.a(dv.this);
+        dv.this.a = true;
+      }
+    };
+  }
+  
+  private void a(int paramInt)
+  {
+    try
+    {
+      this.g.f.listen(this, paramInt);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ev.b("TxNewCellProvider", "listenCellState: failed! flags=" + paramInt + localThrowable.toString());
+    }
+  }
+  
+  private void a(List<ee> paramList)
+  {
+    ee localee = null;
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    paramList = localee;
+    if (localIterator.hasNext())
+    {
+      localee = (ee)localIterator.next();
+      localArrayList.add(localee.b());
+      if ((this.f == null) || (this.f.contains(localee.b()))) {
+        break label152;
+      }
+      paramList = localee;
+    }
+    label152:
     for (;;)
     {
-      try
+      break;
+      this.f = localArrayList;
+      if (paramList != null)
       {
-        boolean bool;
-        if (this.c != null)
+        this.i = paramList;
+        ev.b("TxNewCellProvider", "notify");
+        if ((!this.a) || (this.i == null) || (this.g == null)) {
+          return;
+        }
+        try
         {
-          i = this.c.size();
-          if (i != 0) {}
+          this.g.b(this.i);
+          return;
         }
-        else
-        {
-          bool = true;
-          return bool;
-        }
-        if (parama.d == 3)
-        {
-          bool = true;
-          continue;
-        }
-        if ((parama.d == 1) && (!es.a(paramda)) && (!es.b(paramda)))
-        {
-          bool = true;
-          continue;
-        }
-        if (parama.c - ((a)this.c.getLast()).c > 120000L)
-        {
-          this.c.clear();
-          bool = true;
-          continue;
-        }
-        if (this.c.size() < this.b) {
-          break label333;
-        }
-        i = 1;
-        if (i != 0)
-        {
-          i = 0;
-          int j = 0;
-          double d2 = 0.0D;
-          double d1 = 0.0D;
-          paramda = this.c.listIterator(this.c.size());
-          if (paramda.hasPrevious())
-          {
-            a locala = (a)paramda.previous();
-            d1 = f.a.a(locala.a, locala.b, parama.a, parama.b) / ((Math.abs(locala.c - parama.c) + 1L) / 1000.0D);
-            d2 += d1;
-            if (d1 <= 50.0D) {
-              break label330;
-            }
-            i += 1;
-            j += 1;
-            if (j <= this.b) {
-              break label327;
-            }
-            if (i > 1)
-            {
-              f.a.b("TxTrace", "badPoints=" + i);
-              bool = false;
-              continue;
-            }
-            dp.b().a(1, d2 / j, d1, parama.c);
-          }
-        }
-        else
-        {
-          bool = true;
-          continue;
-        }
-        continue;
+        finally {}
       }
-      finally {}
-      label327:
-      continue;
-      label330:
-      continue;
-      label333:
-      int i = 0;
+      ev.b("TxNewCellProvider", "onTxCellInfoChange: same cell ");
+      return;
     }
   }
   
   public final void a()
   {
-    try
-    {
-      this.c.clear();
-      this.d.a();
+    if (!this.a) {
       return;
     }
-    finally
+    this.a = false;
+    a(0);
+    try
     {
-      localObject = finally;
-      throw localObject;
+      if (this.c != null)
+      {
+        this.c.removeCallbacksAndMessages(null);
+        this.c = null;
+      }
+      if (this.b != null)
+      {
+        this.b.quit();
+        this.b = null;
+      }
+      this.j = null;
+      if (this.f != null) {
+        this.f = null;
+      }
+      ev.a("TxNewCellProvider", 4, "shutdown: state=[shutdown]");
+      return;
     }
+    finally {}
   }
   
-  public final void a(em paramem)
+  @SuppressLint({"NewApi"})
+  public final void onCellInfoChanged(List<CellInfo> paramList)
   {
-    label1222:
-    for (;;)
+    ArrayList localArrayList;
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      dj localdj;
-      double d2;
-      double d3;
-      double d1;
-      long l3;
-      try
+      localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      label126:
+      while (paramList.hasNext())
       {
-        if (paramem.getProvider().equalsIgnoreCase("gps"))
+        Object localObject = (CellInfo)paramList.next();
+        if (((CellInfo)localObject).isRegistered())
         {
-          boolean bool = cy.a().d("gps_kalman");
-          if (!bool) {
-            return;
+          localObject = ee.a(this.g, (CellInfo)localObject);
+          if ((((ee)localObject).b < 0) || (((ee)localObject).c < 0) || (((ee)localObject).b == 535) || (((ee)localObject).c == 535)) {}
+          for (int m = 0;; m = 1)
+          {
+            if (m == 0) {
+              break label126;
+            }
+            localArrayList.add(localObject);
+            break;
           }
         }
-        if ((this.c == null) || ((this.c != null) && (this.c.size() == 0))) {
-          continue;
-        }
-        localdj = this.d;
-        d2 = paramem.getLatitude();
-        d3 = paramem.getLongitude();
-        d1 = paramem.getAccuracy();
-        l3 = paramem.getTime();
-        if (d1 >= 1.0D) {
-          break label1222;
-        }
-        d1 = 1.0D;
-        f.a.b("a", "lat_me:" + d2 + ",lng_me:" + d3 + ",accuracy:" + d1 + ",time:" + l3 + ",lat:" + localdj.d + ",lng:" + localdj.e);
-        if (l3 - localdj.c >= 20000L)
-        {
-          localdj.a();
-          f.a.b("a", "Time:" + l3 + ",last_time:" + localdj.c);
-        }
-        localdj.a = ((float)(Math.abs(d2 - localdj.d) * 1000000.0D));
-        localdj.b = ((float)(Math.abs(d3 - localdj.e) * 1000000.0D));
-        f.a.b("a", "Q:" + localdj.a + ",QLng:" + localdj.b);
-        if (localdj.f < 0.0D)
-        {
-          localdj.c = l3;
-          localdj.d = d2;
-          localdj.e = d3;
-          localdj.f = (d1 * d1);
-          paramem.a(this.d.d, this.d.e);
-          continue;
-        }
-        l2 = l3 - localdj.c;
       }
-      finally {}
-      long l2;
-      long l1 = l2;
-      if (l2 < 1000L) {
-        l1 = 1000L;
+      if (localArrayList.size() <= 0) {
+        break label150;
       }
-      if (l1 > 0L)
-      {
-        localdj.f += l1;
-        localdj.g += l1;
-      }
-      double d4 = localdj.f / (localdj.f + d1 * d1 + localdj.a * 5.0F);
-      double d5 = localdj.g / (localdj.g + d1 * d1 + localdj.b * 5.0F);
-      f.a.b("a", "K:" + d4 + ",KLng:" + d5);
-      if ((d4 >= 0.4D) && (d5 >= 0.4D))
-      {
-        double d6 = localdj.d;
-        if (((localdj.h > 0.0D) && (d2 - localdj.d > 0.0D)) || ((localdj.h < 0.0D) && (d2 - localdj.d < 0.0D))) {
-          localdj.d += localdj.h * (l1 / 1000L);
-        }
-        localdj.d += (d2 - localdj.d) * d4;
-        f.a.b("a", "lat:" + localdj.d + ",tmp:" + d6 + ",timeInc:" + l1);
-        localdj.h = ((localdj.d - d6) / (l1 / 1000L));
-        d6 = localdj.e;
-        if (((localdj.i > 0.0D) && (d3 - localdj.e > 0.0D)) || ((localdj.i < 0.0D) && (d3 - localdj.e < 0.0D))) {
-          localdj.e += localdj.i * (l1 / 1000L);
-        }
-        localdj.e += (d3 - localdj.e) * d5;
-        f.a.b("a", "lng:" + localdj.e + ",tmp:" + d6 + ",timeInc:" + l1);
-        localdj.i = ((localdj.e - d6) / (l1 / 1000L));
-        localdj.f = ((1.0D - d4) * localdj.f);
-        localdj.g = ((1.0D - d5) * localdj.g);
-        localdj.c = l3;
-        f.a.b("a", "last_metres_per_second:" + localdj.h + ",last_metres_per_second_lng:" + localdj.i);
-      }
-      for (;;)
-      {
-        f.a.b("a", "variance:" + localdj.f + ",vaLng:" + localdj.g);
-        if ((d1 != 30.0D) || (d4 < 0.5D) || (d5 < 0.5D)) {
-          break;
-        }
-        localdj.d = d2;
-        localdj.e = d3;
-        localdj.c = l3;
-        localdj.h = 0.0D;
-        localdj.i = 0.0D;
-        localdj.f = (d1 * d1);
-        break;
-        if (((localdj.h > 0.0D) && (d2 - localdj.d > 0.0D)) || ((localdj.h < 0.0D) && (d2 - localdj.d < 0.0D))) {
-          localdj.d += localdj.h * (l1 / 1000L);
-        }
-        if (((localdj.i > 0.0D) && (d3 - localdj.e > 0.0D)) || ((localdj.i < 0.0D) && (d3 - localdj.e < 0.0D))) {
-          localdj.e += localdj.i * (l1 / 1000L);
-        }
-        localdj.f -= l1;
-        localdj.g -= l1;
-      }
+      a(localArrayList);
     }
-  }
-  
-  public final void a(TencentLocation paramTencentLocation)
-  {
-    try
+    label150:
+    do
     {
-      this.c.add(a.a(paramTencentLocation));
-      if (this.c.size() > this.a) {
-        this.c.removeFirst();
-      }
       return;
-    }
-    finally
-    {
-      paramTencentLocation = finally;
-      throw paramTencentLocation;
-    }
-  }
-  
-  public final boolean a(TencentLocation paramTencentLocation, da paramda)
-  {
-    try
-    {
-      boolean bool = a(a.a(paramTencentLocation), paramda);
-      return bool;
-    }
-    finally
-    {
-      paramTencentLocation = finally;
-      throw paramTencentLocation;
-    }
-  }
-  
-  static final class a
-  {
-    double a;
-    double b;
-    long c;
-    int d;
-    
-    static a a(TencentLocation paramTencentLocation)
-    {
-      int i = 2;
-      a locala = new a();
-      locala.a = paramTencentLocation.getLatitude();
-      locala.b = paramTencentLocation.getLongitude();
-      locala.c = paramTencentLocation.getTime();
-      paramTencentLocation.getSpeed();
-      if (TencentLocationUtils.isFromGps(paramTencentLocation))
+      ev.b("TxNewCellProvider", "cellInfos list is null");
+      ev.b("TxNewCellProvider", "cell info maybe has no rigister");
+      paramList = this.k;
+      if (paramList != null)
       {
-        if (paramTencentLocation.getAccuracy() < 100.0F) {
-          i = 3;
+        localArrayList = new ArrayList();
+        localArrayList.add(ee.a(this.g, paramList, null));
+        a(localArrayList);
+        return;
+      }
+      ev.b("TxNewCellProvider", "cellLocation is still null,so we use the last CellInfo,this happen when restart requestLocationUpdate");
+    } while (this.i == null);
+    paramList = new ArrayList();
+    paramList.add(this.i);
+    a(paramList);
+  }
+  
+  public final void onServiceStateChanged(ServiceState paramServiceState)
+  {
+    int n = 1;
+    int i2 = 0;
+    super.onServiceStateChanged(paramServiceState);
+    if (paramServiceState == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        ServiceState localServiceState = this.j;
+        if ((localServiceState != null) && (localServiceState.getState() == paramServiceState.getState())) {
+          continue;
         }
-        locala.d = i;
-        return locala;
+        this.j = paramServiceState;
+        if (!this.a) {
+          continue;
+        }
+        int m;
+        boolean bool;
+        if (this.j != null) {
+          if (this.j.getState() == 0)
+          {
+            m = 1;
+            paramServiceState = this.g.f;
+            bool = er.a(this.g.a);
+            if (paramServiceState == null) {
+              break label175;
+            }
+            if (paramServiceState.getSimState() != 5) {
+              break label164;
+            }
+            break label177;
+          }
+        }
+        for (;;)
+        {
+          paramServiceState = new Message();
+          paramServiceState.what = 12999;
+          paramServiceState.arg1 = 12003;
+          paramServiceState.arg2 = i1;
+          this.g.b(paramServiceState);
+          return;
+          m = this.j.getState();
+          if (m == 1)
+          {
+            m = 0;
+            break;
+          }
+          m = -1;
+          break;
+          label164:
+          n = 0;
+          label175:
+          label177:
+          do
+          {
+            i1 = m;
+            break;
+            n = 0;
+            i1 = i2;
+            if (bool) {
+              break;
+            }
+          } while (n != 0);
+          int i1 = i2;
+        }
+        return;
       }
-      if (paramTencentLocation.getAccuracy() < 500.0F) {}
-      for (;;)
-      {
-        locala.d = i;
-        return locala;
-        i = 1;
-      }
+      catch (Throwable paramServiceState) {}
+    }
+  }
+  
+  final class a
+    extends Handler
+  {
+    private a(Looper paramLooper)
+    {
+      super();
     }
     
-    public final String toString()
+    @SuppressLint({"NewApi"})
+    public final void handleMessage(Message paramMessage)
     {
-      return "[" + this.a + "," + this.b + "]";
+      if (!dv.this.a) {}
+      do
+      {
+        return;
+        paramMessage = null;
+        if (dv.b(dv.this) != null) {}
+        try
+        {
+          List localList = dv.b(dv.this).getAllCellInfo();
+          paramMessage = localList;
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            ev.a("TxNewCellProvider", "cannot get cellinfo", localThrowable);
+          }
+        }
+        dv.a(dv.this, er.a(dv.c(dv.this)));
+        dv.this.onCellInfoChanged(paramMessage);
+      } while (dv.d(dv.this) == null);
+      sendEmptyMessageDelayed(0, 30000L);
     }
   }
 }

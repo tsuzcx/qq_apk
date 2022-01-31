@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textSize="14.0dip" android:textColor="#ffff4222" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26b2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="点击重试"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,28 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
-public class mmz
+class mmz
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
-  
-  public mmz(ItemShowDispatcher paramItemShowDispatcher, AbsListView paramAbsListView, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView = paramAbsListView;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  mmz(mmy parammmy, Layer paramLayer) {}
   
   public void run()
   {
-    QLog.d(ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher), 2, "  1秒到了 ");
-    ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher, this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
-    if (ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher)) {
-      ThreadManager.getUIHandler().postDelayed(this, 1000L);
-    }
+    this.jdField_a_of_type_Mmy.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLayer);
+    PublicAccountReportUtils.a(this.jdField_a_of_type_Mmy.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C80", "0X8008C80", 0, 0, this.jdField_a_of_type_Mmy.a.b, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.jdField_a_of_type_Mmy.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
   }
 }
 

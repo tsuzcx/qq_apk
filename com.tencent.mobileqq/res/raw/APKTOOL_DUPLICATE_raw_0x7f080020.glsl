@@ -1,8 +1,9 @@
 //#extension GL_OES_EGL_image_external : require
-precision lowp float;
+precision mediump float;
 varying vec2 vTextureCoord;
 uniform sampler2D sTexture;
-uniform sampler2D sTexture2;
+const mediump vec3 W = vec3(0.2125, 0.7154, 0.0721);
+
 uniform float percent;
 uniform float drawPart;
 uniform float direction;
@@ -18,20 +19,9 @@ float getAlpha(){
 }
 
 void main(){
-    vec3 texel = texture2D(sTexture, vTextureCoord).rgb;
-
-    vec2 lookup;
-    lookup.y = .5;
-
-    lookup.x = texel.r;
-    texel.r = texture2D(sTexture2, lookup).r;
-
-    lookup.x = texel.g;
-    texel.g = texture2D(sTexture2, lookup).g;
-
-    lookup.x = texel.b;
-    texel.b = texture2D(sTexture2, lookup).b;
+    lowp vec4 textureColor = texture2D(sTexture, vTextureCoord);
+    float luminance = dot(textureColor.rgb, W);
 
     float alpha = getAlpha();
-    gl_FragColor = vec4(texel, alpha);
+    gl_FragColor = vec4(vec3(luminance), alpha);
 }

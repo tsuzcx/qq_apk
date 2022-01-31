@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.qim.QIMNewFriend;
 
-class aace
-  implements Runnable
+public final class aace
+  implements DialogInterface.OnDismissListener
 {
-  aace(aacb paramaacb) {}
-  
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ArConfigService.e(this.a.a);
+    QIMNewFriend.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aace
  * JD-Core Version:    0.7.0.1
  */

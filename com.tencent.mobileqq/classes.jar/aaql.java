@@ -1,19 +1,26 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aaql
-  implements Runnable
+class aaql
+  implements ImageAssetDelegate
 {
-  public aaql(ArkAppMusicModule paramArkAppMusicModule) {}
+  aaql(aaqk paramaaqk) {}
   
-  public void run()
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof FragmentActivity)) {
-      QQPlayerService.a(localBaseActivity);
+    String str = paramLottieImageAsset.getFileName();
+    Bitmap localBitmap = (Bitmap)this.a.a.b.get(str);
+    paramLottieImageAsset = localBitmap;
+    if (localBitmap == null)
+    {
+      QLog.w("WorldCupMgr", 1, "loadBtnAnimation, 加载图片失败, image[" + str + "]");
+      paramLottieImageAsset = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
     }
+    return paramLottieImageAsset;
   }
 }
 

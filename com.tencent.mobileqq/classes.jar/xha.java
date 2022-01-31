@@ -1,29 +1,15 @@
-import Wallet.GetGroupRedPackListRsp;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import java.lang.ref.SoftReference;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
 
-class xha
-  implements Runnable
+public class xha
+  implements DialogInterface.OnClickListener
 {
-  xha(xgz paramxgz, GetGroupRedPackListRsp paramGetGroupRedPackListRsp) {}
+  public xha(RedPacketRecordFragment paramRedPacketRecordFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Xgz.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.b != null)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_Xgz.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.b.get(this.jdField_a_of_type_Xgz.b + "_" + this.jdField_a_of_type_Xgz.jdField_a_of_type_Int) != null) {
-        localObject1 = (IRedPacket.OnGetAvailableListListener)((SoftReference)this.jdField_a_of_type_Xgz.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.b.get(this.jdField_a_of_type_Xgz.b + "_" + this.jdField_a_of_type_Xgz.jdField_a_of_type_Int)).get();
-      }
-    }
-    if (localObject1 == null) {
-      return;
-    }
-    this.jdField_a_of_type_Xgz.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager.a(this.jdField_a_of_type_Xgz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xgz.b, this.jdField_a_of_type_Xgz.jdField_a_of_type_Int, (IRedPacket.OnGetAvailableListListener)localObject1, this.jdField_a_of_type_WalletGetGroupRedPackListRsp, false);
+    paramDialogInterface.dismiss();
   }
 }
 

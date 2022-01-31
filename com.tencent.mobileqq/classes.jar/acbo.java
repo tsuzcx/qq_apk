@@ -1,29 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Comic;
+import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import java.util.ArrayList;
+import java.util.List;
 
-class acbo
-  implements ApolloResDownloader.OnApolloDownLoadListener
+public final class acbo
+  implements Parcelable.Creator
 {
-  acbo(acbg paramacbg, int paramInt, Bundle paramBundle, MessengerService paramMessengerService) {}
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public IPSiteModel.Comic a(Parcel paramParcel)
   {
-    paramString = new Bundle();
-    if (paramBoolean)
-    {
-      paramString.putInt("apollo_result", 0);
-      paramString.putInt("apollo_roleId", paramInt1);
-      paramString.putInt("apollo_fromSelf", this.jdField_a_of_type_Int);
-      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
+    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
+    localComic.comicType = paramParcel.readInt();
+    localComic.cover = paramParcel.readString();
+    localComic.desc = paramParcel.readString();
+    localComic.id = paramParcel.readString();
+    localComic.jumpUrl = paramParcel.readString();
+    localComic.name = paramParcel.readString();
+    localComic.recommDesc = paramParcel.readString();
+    localComic.typeName = paramParcel.readString();
+    if (localComic.comicRiches == null) {
+      localComic.comicRiches = new ArrayList();
     }
-    paramString.putInt("apollo_result", 1);
-    paramString.putInt("apollo_fromSelf", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    localComic.comicRiches.clear();
+    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
+    return localComic;
+  }
+  
+  public IPSiteModel.Comic[] a(int paramInt)
+  {
+    return new IPSiteModel.Comic[paramInt];
   }
 }
 

@@ -11,8 +11,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import aobw;
-import aobx;
+import aokr;
+import aoks;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
@@ -105,7 +105,7 @@ public class EditVideoInteract
     }
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractInteractPasterEditDialog = new InteractPasterEditDialog(a(), this, paramInt);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractInteractPasterEditDialog.a(a());
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractInteractPasterEditDialog.setContentView(2130970903);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractInteractPasterEditDialog.setContentView(2130970920);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractInteractPasterEditDialog.setOnDismissListener(this);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractInteractPasterEditDialog.show();
   }
@@ -310,7 +310,7 @@ public class EditVideoInteract
       }
       i += 1;
     }
-    DialogUtil.a(a(), 230, "还没有输入问题哦", null, "我知道了", "输入", new aobw(this), new aobx(this)).show();
+    DialogUtil.a(a(), 230, "还没有输入问题哦", null, "我知道了", "输入", new aokr(this), new aoks(this)).show();
     return false;
   }
   

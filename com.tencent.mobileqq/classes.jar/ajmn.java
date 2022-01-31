@@ -1,29 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScaner;
 
 public class ajmn
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ajmn(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public ajmn(TroopFileScaner paramTroopFileScaner, long paramLong) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    boolean bool1 = this.a.a.canScrollVertically(-1);
-    boolean bool2 = this.a.a.canScrollVertically(1);
-    if ((paramView.isFocused()) && ((bool1) || (bool2))) {
-      paramView.getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    default: 
-      return false;
-    }
-    paramView.getParent().requestDisallowInterceptTouchEvent(false);
-    return false;
+    TroopFileScaner.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScaner, this.jdField_a_of_type_Long);
+    TroopFileScaner.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScaner);
   }
 }
 

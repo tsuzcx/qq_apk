@@ -67,12 +67,12 @@ public class MemoryVideoDataProvider
       return;
     }
     VideoData localVideoData = new VideoData();
-    if (paramPlayerVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    if (paramPlayerVideoListEvent.errorInfo.isFail())
     {
       if (QLog.isColorLevel()) {
         QLog.i("MemoryVideoDataProvider", 2, "handleVideoListEvent: event.errorInfo.isFail()");
       }
-      localVideoData.jdField_b_of_type_Int = paramPlayerVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode;
+      localVideoData.jdField_b_of_type_Int = paramPlayerVideoListEvent.errorInfo.errorCode;
       localVideoData.jdField_a_of_type_Boolean = true;
       localVideoData.jdField_a_of_type_Int = this.e;
     }

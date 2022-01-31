@@ -1,33 +1,28 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyVideoUtils;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import mqq.os.MqqHandler;
 
 public class afcc
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public afcc(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, ActionSheet paramActionSheet) {}
+  public afcc(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      NearbyVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app, 4);
-      continue;
-      paramView = (NearbyCardHandler)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment.getActivity().app.a(60);
-      if (paramView != null) {
-        paramView.a("", 0, false);
+      if (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() != 0)
+      {
+        ShortVideoCommentsView.a(this.a).setSelection(0);
+        ThreadManager.getUIHandler().postDelayed(this, 10L);
       }
     }
+    else {
+      return;
+    }
+    ThreadManager.getUIHandler().removeCallbacks(this);
   }
 }
 

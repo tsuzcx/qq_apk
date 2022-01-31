@@ -1,16 +1,12 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.CompletedHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-
-public class nzt
-  implements SimpleStepExector.CompletedHandler
+public abstract interface nzt
 {
-  public nzt(StoryListPresenter paramStoryListPresenter) {}
+  public abstract void b(boolean paramBoolean);
   
-  public void a()
-  {
-    SLog.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
-  }
+  public abstract boolean b();
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
 }
 
 

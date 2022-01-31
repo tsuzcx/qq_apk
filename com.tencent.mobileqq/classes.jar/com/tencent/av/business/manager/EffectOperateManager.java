@@ -16,12 +16,15 @@ import com.tencent.av.business.handler.AudioTransClientInfoHandlerExtend;
 import com.tencent.av.business.handler.AudioTransClientInfoHandlerExtend.ZimuCMD;
 import com.tencent.av.business.manager.pendant.AVEffectPendantReport;
 import com.tencent.av.business.manager.pendant.EffectPendantTools;
+import com.tencent.av.business.manager.pendant.PendantItem;
 import com.tencent.av.business.manager.support.EffectSupportManager;
 import com.tencent.av.business.manager.zimu.EffectZimuManager;
 import com.tencent.av.business.manager.zimu.ZimuItem;
 import com.tencent.av.doodle.DoodleLogic;
 import com.tencent.av.doodle.DoodleUtils;
 import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.VoiceChangeToolbar;
+import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
 import com.tencent.av.ui.redbag.AVRedBagConfig.Info;
 import com.tencent.av.ui.redbag.AVRedBagMgr;
 import com.tencent.av.ui.redbag.RedBagUtil;
@@ -35,9 +38,10 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
-import jfh;
-import jfi;
-import jfj;
+import jhj;
+import jhk;
+import jhl;
+import jhm;
 import org.json.JSONObject;
 
 public class EffectOperateManager
@@ -378,10 +382,18 @@ public class EffectOperateManager
         return false;
       }
     }
-    if ((this.e == 6) && (!EffectZimuManager.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp())))
+    if (this.e == 6)
     {
-      AVLog.c("EffectOperateManager", "isShowOperateEntry do not support zimu!");
-      return false;
+      if (!EffectZimuManager.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface))
+      {
+        AVLog.c("EffectOperateManager", "isShowOperateEntry do not show zimu!");
+        return false;
+      }
+      if (!ZimuToolbar.isSupport())
+      {
+        AVLog.c("EffectOperateManager", "isShowOperateEntry do not support zimu!");
+        return false;
+      }
     }
     if (this.e == 7)
     {
@@ -448,11 +460,13 @@ public class EffectOperateManager
       }
       this.jdField_d_of_type_Boolean = true;
       return;
-      localObject1 = new jfi(this);
+      localObject1 = new jhk(this);
       continue;
-      localObject1 = new jfh(this);
+      localObject1 = new jhj(this);
       continue;
-      localObject1 = new jfj(this);
+      localObject1 = new jhm(this);
+      continue;
+      localObject1 = new jhl(this);
     }
   }
   
@@ -478,16 +492,8 @@ public class EffectOperateManager
   
   public void c()
   {
-    EffectPendantTools localEffectPendantTools = (EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2);
-    EffectConfigBase.ItemBase localItemBase = localEffectPendantTools.a(this.jdField_b_of_type_JavaLangString);
-    if (localItemBase != null)
-    {
-      AVLog.c("EffectOperateManager", "gotoEffect item: " + localItemBase + ", id: " + localItemBase.getId());
-      localEffectPendantTools.a(localItemBase);
-      if (!localItemBase.isUsable()) {
-        localEffectPendantTools.a(localItemBase);
-      }
-    }
+    AVLog.c("EffectOperateManager", "gotoVoiceChangePendant   effectId = " + this.jdField_b_of_type_JavaLangString);
+    VoiceChangeToolbar.setEffectConfigItem(this.jdField_b_of_type_JavaLangString);
   }
   
   public void c(boolean paramBoolean)
@@ -501,6 +507,27 @@ public class EffectOperateManager
   }
   
   public void d()
+  {
+    EffectPendantTools localEffectPendantTools = (EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2);
+    PendantItem localPendantItem = (PendantItem)localEffectPendantTools.a(this.jdField_b_of_type_JavaLangString);
+    if (localPendantItem != null)
+    {
+      AVLog.c("EffectOperateManager", "gotoEffect item: " + localPendantItem + ", id: " + localPendantItem.getId());
+      if (!localPendantItem.isUsable())
+      {
+        localEffectPendantTools.jdField_c_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+        a(Integer.valueOf(171), null, null);
+        localEffectPendantTools.a(localPendantItem);
+      }
+    }
+    else
+    {
+      return;
+    }
+    localEffectPendantTools.a(localPendantItem);
+  }
+  
+  public void e()
   {
     boolean bool = false;
     Object localObject = this.jdField_b_of_type_JavaLangString;
@@ -533,7 +560,7 @@ public class EffectOperateManager
     localEffectZimuManager.d();
   }
   
-  public void e()
+  public void f()
   {
     String str = this.jdField_b_of_type_JavaLangString;
     if (str.equals("0"))
@@ -547,7 +574,7 @@ public class EffectOperateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.EffectOperateManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.nearby.redtouch;
 
-import afmc;
+import afqb;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class DefaultRedPointPreHandler
-  implements afmc
+  implements afqb
 {
   QQAppInterface a;
   

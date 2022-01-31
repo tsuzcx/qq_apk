@@ -1,56 +1,25 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager.QIMUserIcon;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class vqh
   implements Runnable
 {
-  public vqh(QIMUserManager paramQIMUserManager, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public vqh(UnlimitedBladeWorks paramUnlimitedBladeWorks, Activity paramActivity) {}
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    if (((Build.VERSION.SDK_INT > 16) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {}
+    View localView;
+    do
     {
-      QIMUserManager.QIMUserIcon localQIMUserIcon = (QIMUserManager.QIMUserIcon)localIterator.next();
-      if ((this.b != null) && (this.b.size() > localQIMUserIcon.jdField_a_of_type_Int))
-      {
-        int i;
-        if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length >= 7)
-        {
-          i = 5;
-          label73:
-          if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length < 7) {
-            break label251;
-          }
-        }
-        label251:
-        for (int j = 6;; j = 5)
-        {
-          StateListDrawable localStateListDrawable = new StateListDrawable();
-          Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
-          localStateListDrawable.addState(new int[] { 16842913, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
-          localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[i]);
-          localStateListDrawable.addState(new int[] { 16842910 }, localDrawable);
-          localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
-          break;
-          i = 4;
-          break label73;
-        }
-      }
-    }
-    if (this.b != null) {
-      this.b.clear();
-    }
-    ThreadManager.getUIHandler().post(new vqi(this));
+      return;
+      localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131363510);
+    } while (localView == null);
+    localView.clearAnimation();
   }
 }
 

@@ -1,22 +1,15 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import java.util.List;
 
-public class ajhu
+class ajhu
   implements Runnable
 {
-  public ajhu(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  ajhu(ajht paramajht, List paramList) {}
   
   public void run()
   {
-    EditText localEditText = SubmitHomeWorkFragment.a(this.a, SubmitHomeWorkFragment.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("SubmitHomeWorkFragment", 2, "弹起键盘");
-    }
-    if (localEditText != null) {
-      InputMethodUtil.a(localEditText);
-    }
+    TroopAioKeywordHelper.a(this.jdField_a_of_type_Ajht.a.a, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

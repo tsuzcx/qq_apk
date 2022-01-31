@@ -1,37 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.report.lp.MachineLearingSmartReport;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GeoInfo;
+import cooperation.qzone.LbsDataV2.GetGeoInfoRsp;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
-public class amyt
-  implements ModuleDownloadListener
+public final class amyt
+  implements Parcelable.Creator
 {
-  public amyt(MachineLearingSmartReport paramMachineLearingSmartReport, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDownloadCanceled(String paramString)
+  public LbsDataV2.GetGeoInfoRsp a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadCanceled " + paramString);
+    LbsDataV2.GetGeoInfoRsp localGetGeoInfoRsp = new LbsDataV2.GetGeoInfoRsp();
+    if (paramParcel != null)
+    {
+      localGetGeoInfoRsp.stGps = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
+      localGetGeoInfoRsp.stGeoInfo = ((LbsDataV2.GeoInfo)paramParcel.readParcelable(LbsDataV2.GeoInfo.class.getClassLoader()));
     }
+    return localGetGeoInfoRsp;
   }
   
-  public void onDownloadFailed(String paramString)
+  public LbsDataV2.GetGeoInfoRsp[] a(int paramInt)
   {
-    MachineLearingSmartReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, 10, "Module onDownloadFailed " + paramString);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadProgress " + paramString + ",progress=" + Float.toString(paramFloat));
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadSucceed " + paramString);
-    }
-    MachineLearingSmartReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    return null;
   }
 }
 

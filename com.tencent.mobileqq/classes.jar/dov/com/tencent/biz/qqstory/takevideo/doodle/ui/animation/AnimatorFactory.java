@@ -3,8 +3,8 @@ package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.animation;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import anyj;
-import anyk;
+import aohb;
+import aohc;
 
 @TargetApi(11)
 public class AnimatorFactory
@@ -17,8 +17,8 @@ public class AnimatorFactory
   private static ValueAnimator a(ValueAnimator paramValueAnimator, AnimatorFactory.AnimatorListener paramAnimatorListener, long paramLong)
   {
     paramValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    paramValueAnimator.addUpdateListener(new anyj(paramAnimatorListener));
-    paramValueAnimator.addListener(new anyk(paramAnimatorListener, paramValueAnimator));
+    paramValueAnimator.addUpdateListener(new aohb(paramAnimatorListener));
+    paramValueAnimator.addListener(new aohc(paramAnimatorListener, paramValueAnimator));
     paramValueAnimator.setDuration(paramLong);
     return paramValueAnimator;
   }

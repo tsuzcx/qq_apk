@@ -6,10 +6,6 @@ public abstract class NearbyMomentManager$MomentDataChangeObserver
   
   public void a(String paramString, long paramLong) {}
   
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
   public void b(String paramString) {}
   
   public void b(String paramString, long paramLong) {}
@@ -17,8 +13,6 @@ public abstract class NearbyMomentManager$MomentDataChangeObserver
   public void c(String paramString) {}
   
   public void d(String paramString) {}
-  
-  public void e(String paramString) {}
 }
 
 

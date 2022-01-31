@@ -1,41 +1,27 @@
-import android.os.Handler;
-import com.tencent.av.AVLog;
-import com.tencent.av.utils.SignalStrengthReport;
-import com.tencent.av.utils.SignalStrengthReport.PingUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class kgz
-  implements Runnable
+  implements MenuItem.OnMenuItemClickListener
 {
-  public kgz(SignalStrengthReport paramSignalStrengthReport) {}
+  public kgz(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
   
-  public void run()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.a.b = 0;
-    if ((this.a.jdField_a_of_type_Int == -1) || (SignalStrengthReport.e() == 1)) {}
-    try
-    {
-      String str = SignalStrengthReport.a(this.a);
-      this.a.b = SignalStrengthReport.PingUtil.a("http://" + str);
-      if (this.a.b < 0) {
-        this.a.b = 0;
-      }
-      AVLog.c("SignalStrengthReport", "mPingTask gatewayIP:" + str + " | avgRtt:" + this.a.b);
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        AVLog.c("SignalStrengthReport", "mPingTask e:" + localException);
-      }
-    }
-    if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, this.a.jdField_a_of_type_Int);
-    }
+    paramMenuItem = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin() + "qav_SP", 0).edit();
+    paramMenuItem.putInt("qav_UserGuide_for_av_redbag_count", 0);
+    paramMenuItem.commit();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgz
  * JD-Core Version:    0.7.0.1
  */

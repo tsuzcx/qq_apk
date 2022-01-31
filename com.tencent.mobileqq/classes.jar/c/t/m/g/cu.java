@@ -1,41 +1,37 @@
 package c.t.m.g;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
 public final class cu
 {
-  private static cm a = null;
+  private static final byte[] a = { 84, 101, 110, 99, 101, 110, 116, 76, 111, 99, 97, 116, 105, 111, 110, 49 };
+  private static final byte[] b = new byte[0];
   
-  public static void a(cm paramcm)
+  public static byte[] a(byte[] paramArrayOfByte, String paramString)
   {
-    if (paramcm == null) {
-      a("CC_Log", "set log callback null!");
-    }
-    a = paramcm;
+    return b(paramArrayOfByte, paramString);
   }
   
-  public static final void a(String paramString1, String paramString2)
+  private static byte[] b(byte[] paramArrayOfByte, String paramString)
   {
-    if (a()) {
-      a.onLog(3, paramString1, paramString2);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return b;
     }
-  }
-  
-  public static final void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a()) {
-      a.onLog(6, paramString1, paramString2, paramThrowable);
+    try
+    {
+      paramString = new SecretKeySpec(paramString.getBytes("UTF-8"), "AES");
+      Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+      localCipher.init(1, paramString, new IvParameterSpec(a));
+      if (localCipher == null) {
+        return b;
+      }
+      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
+      return paramArrayOfByte;
     }
-  }
-  
-  private static boolean a()
-  {
-    return a != null;
-  }
-  
-  public static final void b(String paramString1, String paramString2)
-  {
-    if (a()) {
-      a.onLog(6, paramString1, paramString2);
-    }
+    catch (Throwable paramArrayOfByte) {}
+    return b;
   }
 }
 

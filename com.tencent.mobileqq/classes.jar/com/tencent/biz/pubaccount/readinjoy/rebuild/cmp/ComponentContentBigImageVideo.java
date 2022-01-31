@@ -43,31 +43,39 @@ public class ComponentContentBigImageVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969567, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969563, this, true);
   }
   
   public URL a(IReadInJoyModel paramIReadInJoyModel)
   {
-    ArticleInfo localArticleInfo = paramIReadInJoyModel.a();
+    Object localObject = paramIReadInJoyModel.a();
     if (paramIReadInJoyModel.a() == 51)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ComponentContentBigImageVideo", 2, "PolymericArticle use first page url");
       }
-      return localArticleInfo.mSinglePicture;
+      paramIReadInJoyModel = ((ArticleInfo)localObject).mSinglePicture;
     }
-    if ((localArticleInfo != null) && (localArticleInfo.getVideoCoverURL() != null)) {
-      return localArticleInfo.getVideoCoverURL();
-    }
+    do
+    {
+      return paramIReadInJoyModel;
+      localObject = ((ArticleInfo)localObject).getVideoCoverUrlWithSmartCut(false);
+      if (localObject == null) {
+        break;
+      }
+      paramIReadInJoyModel = (IReadInJoyModel)localObject;
+    } while (!QLog.isColorLevel());
+    QLog.d("ComponentContentBigImageVideo", 2, "cut url : " + localObject);
+    return localObject;
     return super.a(paramIReadInJoyModel);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364195));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367011));
-    this.b = ((TextView)paramView.findViewById(2131367012));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364220));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367009));
+    this.b = ((TextView)paramView.findViewById(2131367010));
   }
   
   public void a(Object paramObject)
@@ -77,8 +85,8 @@ public class ComponentContentBigImageVideo
     {
       paramObject = ((IReadInJoyModel)paramObject).a();
       if (paramObject != null) {
-        if (((!ReadInJoyBaseAdapter.f(paramObject)) && (!ReadInJoyBaseAdapter.g(paramObject)) && (!ReadInJoyBaseAdapter.h(paramObject)) && (!ReadInJoyBaseAdapter.i(paramObject))) || (ReadInJoyBaseAdapter.o(paramObject))) {
-          break label88;
+        if (((ReadInJoyBaseAdapter.f(paramObject)) || (ReadInJoyBaseAdapter.g(paramObject)) || (ReadInJoyBaseAdapter.h(paramObject)) || (ReadInJoyBaseAdapter.i(paramObject))) && ((ReadInJoyBaseAdapter.o(paramObject)) && (!ReadInJoyBaseAdapter.a(paramObject)) && (!ReadInJoyBaseAdapter.b(paramObject)))) {
+          break label102;
         }
       }
     }
@@ -87,12 +95,12 @@ public class ComponentContentBigImageVideo
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       this.b.setVisibility(4);
       return;
-      label88:
+      label102:
       this.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyDisplayUtils.a(paramObject.mVideoDuration));
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.b.setVisibility(0);
-    Drawable localDrawable = getContext().getResources().getDrawable(2130840876);
+    Drawable localDrawable = getContext().getResources().getDrawable(2130840894);
     this.b.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
     this.b.setCompoundDrawablePadding(AIOUtils.a(6.0F, getContext().getResources()));
     this.b.setVisibility(0);

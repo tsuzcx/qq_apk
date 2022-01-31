@@ -1,66 +1,54 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.QZonePluginMangerHelper;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
-import cooperation.qzone.plugin.QZoneRemotePluginManager.Stub;
-import java.lang.ref.WeakReference;
+import cooperation.qqpim.QQPimDefineList;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
+import cooperation.qqpim.QQPimTipsInfo;
+import eipc.EIPCResult;
 
-public final class amxy
-  implements ServiceConnection
+public class amxy
+  extends QIPCModule
 {
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public amxy(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "onServiceConnected");
-    }
-    if (QZonePluginMangerHelper.a() == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "return WeakReference<OnPluginInterfaceReadyListener> is null");
-      }
-      QZonePluginMangerHelper.a();
-      return;
-    }
-    paramComponentName = (QZonePluginMangerHelper.OnQzonePluginClientReadyListner)QZonePluginMangerHelper.a().get();
-    if (paramComponentName == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "return OnPluginManagerLoadedListener is null");
-      }
-      QZonePluginMangerHelper.a();
-      return;
-    }
-    if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "binder alive");
-      }
-      QZonePluginMangerHelper.a = new amxg(QZoneRemotePluginManager.Stub.a(paramIBinder));
-      paramComponentName.a(QZonePluginMangerHelper.a);
-    }
-    for (;;)
-    {
-      QZonePluginMangerHelper.a();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "binder not alive");
-      }
-      paramComponentName.a(null);
-    }
+    super(paramString);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "onServiceDisconnected");
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.onCall()" + paramString);
     }
-    if (QZonePluginMangerHelper.a != null)
+    if (QQPimDefineList.g.equals(paramString)) {
+      if (QQPimGetTipsInfoIPC.a() != -1) {}
+    }
+    while ((!QQPimDefineList.h.equals(paramString)) || (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L))
     {
-      QZonePluginMangerHelper.a.b();
-      QZonePluginMangerHelper.a = null;
+      do
+      {
+        do
+        {
+          return null;
+        } while (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L);
+        QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
+        if (QQPimGetTipsInfoIPC.a() == 0)
+        {
+          QQPimGetTipsInfoIPC.a(-1);
+          ThreadManager.postImmediately(new amxz(this.a, QQPimGetTipsInfoIPC.a(this.a), QQPimGetTipsInfoIPC.b(this.a)), null, true);
+          return null;
+        }
+      } while (QQPimGetTipsInfoIPC.a() != 1);
+      QQPimGetTipsInfoIPC.a(-1);
+      ThreadManager.postImmediately(new amyb(this.a, null), null, true);
+      return null;
     }
+    QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
+    paramString = new QQPimTipsInfo();
+    paramString.a = 0;
+    QQPimGetTipsInfoIPC.a(this.a).a(paramString);
+    return null;
   }
 }
 

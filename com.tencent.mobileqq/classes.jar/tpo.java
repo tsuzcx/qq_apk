@@ -1,25 +1,26 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class tpo
   implements Runnable
 {
-  public tpo(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  public tpo(QQSettingMe paramQQSettingMe) {}
   
   public void run()
   {
-    try
-    {
-      if ((this.a.a != null) && (this.a.a.isShowing())) {
-        this.a.a.dismiss();
-      }
-      this.a.a = null;
-      return;
+    boolean bool = ApolloGameUtil.a(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, new Object[] { "[updateCmshowStatus] isApolloUser=", Boolean.valueOf(bool) });
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (bool) {
+      this.a.m();
     }
+    this.a.c();
+    if (bool) {
+      this.a.d();
+    }
+    this.a.e();
   }
 }
 

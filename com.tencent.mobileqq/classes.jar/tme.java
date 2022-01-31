@@ -1,16 +1,31 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.view.FrameGifView;
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class tme
-  implements Runnable
+  extends PublicAccountObserver
 {
-  public tme(QQSettingMe paramQQSettingMe) {}
+  public tme(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    QQSettingMe.a(this.a).setGifData(100, null, ApolloConstant.ad, QQFrameZipDecoder.a(ApolloConstant.ad), true);
+    if (paramInt == 0) {
+      this.a.c();
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c();
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c();
+    }
   }
 }
 

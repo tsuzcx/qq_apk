@@ -1,19 +1,16 @@
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 public class kxu
-  implements SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory
+  implements DialogInterface.OnCancelListener
 {
-  public kxu(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
+  public kxu(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
   
-  public Object a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    return new kxy(this.a);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
   }
 }
 

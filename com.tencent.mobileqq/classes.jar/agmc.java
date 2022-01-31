@@ -1,35 +1,18 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.portal.ConversationHongBao;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class agmc
-  implements Animator.AnimatorListener
+class agmc
+  implements Runnable
 {
-  public agmc(ConversationHongBao paramConversationHongBao, View paramView) {}
+  agmc(agmb paramagmb) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.o();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.o();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
+    ScanTorchActivity.d(this.a.a.a, ScanTorchActivity.b(this.a.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,27 @@
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.camera.AndroidCamera.CameraPreviewCallback;
+import com.tencent.av.camera.CameraUtils;
 
 public class jiw
-  implements Runnable
+  implements AndroidCamera.CameraPreviewCallback
 {
-  public jiw(GuildMultiActivity paramGuildMultiActivity) {}
+  public jiw(CameraUtils paramCameraUtils) {}
   
-  public void run()
+  public void a(byte[] paramArrayOfByte, int paramInt, long paramLong, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(GuildMultiActivity.a, 2, "updateMemInStage refresh");
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+    {
+      this.a.b("onPreviewData");
+      if (this.a.jdField_a_of_type_Boolean) {
+        this.a.a("onPreviewData");
+      }
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramArrayOfByte, paramInt, paramLong, paramBoolean);
     }
-    GuildMultiActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jiw
  * JD-Core Version:    0.7.0.1
  */

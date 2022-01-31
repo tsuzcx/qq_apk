@@ -12,8 +12,8 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListAdapter;
-import anov;
-import anow;
+import anxi;
+import anxj;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.widget.QQViewPager;
@@ -48,7 +48,7 @@ public class ComboProviderView
   public Handler a;
   QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   public ComboProviderPagerAdapter a;
-  CaptureComboObeserver jdField_a_of_type_DovComQqImCaptureDataCaptureComboObeserver = new anov(this);
+  CaptureComboObeserver jdField_a_of_type_DovComQqImCaptureDataCaptureComboObeserver = new anxi(this);
   public VideoFilterTools.DataSet a;
   ArrayList jdField_a_of_type_JavaUtilArrayList;
   
@@ -82,7 +82,7 @@ public class ComboProviderView
   
   protected int a()
   {
-    return 2130970125;
+    return 2130970137;
   }
   
   protected Bundle a()
@@ -197,7 +197,7 @@ public class ComboProviderView
         if (paramString == null) {
           break;
         }
-        postDelayed(new anow(this, paramInt), 200L);
+        postDelayed(new anxj(this, paramInt), 200L);
         localObject1 = (CaptureComboManager)QIMManager.a(5);
         localObject2 = new Bundle();
         ((Bundle)localObject2).putInt("apply_source", 1);
@@ -224,7 +224,7 @@ public class ComboProviderView
     super.a(paramBundle);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     if (this.jdField_a_of_type_AndroidViewView == null) {}
-    for (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)LayoutInflater.from(getContext()).inflate(2130970125, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_AndroidViewView))
+    for (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)LayoutInflater.from(getContext()).inflate(2130970137, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_AndroidViewView))
     {
       this.jdField_a_of_type_DovComQqImCaptureAdapterComboProviderPagerAdapter = new ComboProviderPagerAdapter(this.jdField_a_of_type_AndroidContentContext, this.f);
       this.jdField_a_of_type_DovComQqImCaptureAdapterComboProviderPagerAdapter.a(this);
@@ -252,7 +252,7 @@ public class ComboProviderView
   {
     int i = b();
     paramAdapterView = (QIMFilterCategoryItem)((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (paramAdapterView.d()) {
+    if (paramAdapterView.e()) {
       WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext, paramAdapterView);
     }
     do
@@ -387,7 +387,7 @@ public class ComboProviderView
     if (localCaptureComboManager.a().c)
     {
       localCaptureComboManager.a().c = false;
-      ((QIMProviderContainerView)((Activity)getContext()).findViewById(2131368982)).a(0);
+      ((QIMProviderContainerView)((Activity)getContext()).findViewById(2131368983)).a(0);
     }
     d();
   }

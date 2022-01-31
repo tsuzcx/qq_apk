@@ -1,42 +1,57 @@
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.nearby.NearbyRelevantHandler;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class tee
   implements CompoundButton.OnCheckedChangeListener
 {
-  public tee(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tee(LikeSettingActivity paramLikeSettingActivity) {}
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (AppSetting.b) {
-      NotifyPushSettingActivity.f(this.a).setContentDescription("退出后仍接收消息通知");
-    }
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131435403), "qqsetting_receivemsg_whenexit_key", paramBoolean);
-    SyncService.a(this.a, paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
+    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label104;
-      }
+      ((NearbyRelevantHandler)this.a.app.a(66)).a(paramBoolean);
+      this.a.app.reportClickEvent("CliOper", "0X8006729");
     }
-    label104:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    do
     {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, paramCompoundButton, "", "", "");
       return;
-      i = 0;
-      break;
+      if (paramCompoundButton == this.a.c.a())
+      {
+        this.a.app.d(true, paramBoolean);
+        return;
+      }
+      if (paramCompoundButton == this.a.b.a())
+      {
+        localQQAppInterface = this.a.app;
+        if (paramBoolean) {}
+        for (paramCompoundButton = "1";; paramCompoundButton = "0")
+        {
+          ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, paramCompoundButton, "", "", "");
+          this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.e(paramBoolean);
+          return;
+        }
+      }
+    } while (paramCompoundButton != this.a.d.a());
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "2")
+    {
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, paramCompoundButton, "", "", "");
+      this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.d(paramBoolean);
+      if (paramBoolean) {
+        break;
+      }
+      this.a.b.setVisibility(8);
+      return;
     }
+    this.a.b.setVisibility(0);
   }
 }
 

@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aivc
   implements Runnable
 {
-  public aivc(TroopAdminList paramTroopAdminList) {}
+  public aivc(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
+    QQToast.a(BaseApplicationImpl.sApplication, "WebP格式的图片不支持原图发送，请使用标清质量来发送。", 1).a();
   }
 }
 

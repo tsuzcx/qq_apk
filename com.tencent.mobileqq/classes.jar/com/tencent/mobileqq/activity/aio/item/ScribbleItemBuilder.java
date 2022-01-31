@@ -49,10 +49,10 @@ import com.tencent.mobileqq.widget.ProgressPieDrawable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import vfd;
-import vfe;
-import vff;
-import vfh;
+import vkf;
+import vkg;
+import vkh;
+import vkj;
 
 public class ScribbleItemBuilder
   extends QIMTailItemBubbleBuilder
@@ -70,7 +70,7 @@ public class ScribbleItemBuilder
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
     this.jdField_b_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vfd(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vkf(this);
     if (jdField_b_of_type_Int == 0)
     {
       e = BaseChatItemLayout.j + paramContext.getResources().getDimensionPixelSize(2131559439);
@@ -165,7 +165,7 @@ public class ScribbleItemBuilder
     localProgressPieDrawable.g(3);
     localProgressPieDrawable.jdField_f_of_type_Boolean = true;
     localProgressPieDrawable.jdField_f_of_type_Int = 2;
-    localProgressPieDrawable.a(new vff(paramHandler));
+    localProgressPieDrawable.a(new vkh(paramHandler));
     return localProgressPieDrawable;
   }
   
@@ -182,9 +182,9 @@ public class ScribbleItemBuilder
   private void a(View paramView, MessageForScribble paramMessageForScribble)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-    localActionSheet.a(2131433635, 5);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new vfe(this, paramView, paramMessageForScribble, localActionSheet));
+    localActionSheet.a(2131433649, 5);
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new vkg(this, paramView, paramMessageForScribble, localActionSheet));
     localActionSheet.show();
   }
   
@@ -496,7 +496,7 @@ public class ScribbleItemBuilder
           if (localMessageForScribble.mUpdateProgressRunnable != null) {
             this.jdField_b_of_type_AndroidOsHandler.removeCallbacks(localMessageForScribble.mUpdateProgressRunnable);
           }
-          localMessageForScribble.mUpdateProgressRunnable = new vfh(localMessageForScribble, paramBaseChatItemLayout, this.jdField_b_of_type_AndroidOsHandler, this.jdField_a_of_type_AndroidContentContext);
+          localMessageForScribble.mUpdateProgressRunnable = new vkj(localMessageForScribble, paramBaseChatItemLayout, this.jdField_b_of_type_AndroidOsHandler, this.jdField_a_of_type_AndroidContentContext);
           int i = a(localMessageForScribble, paramBaseChatItemLayout, paramViewHolder);
           if (QLog.isColorLevel()) {
             QLog.i("ScribbleItemBuilder", 2, "ScribbleItemBuilder pos:" + paramBaseChatItemLayout.jdField_b_of_type_Int + " State:" + i);
@@ -583,7 +583,7 @@ public class ScribbleItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131375567: 
+    case 2131375633: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
@@ -817,7 +817,7 @@ public class ScribbleItemBuilder
     paramBaseChatItemLayout = (RelativeLayout.LayoutParams)paramContext.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getLayoutParams();
     if (paramChatMessage.isSend())
     {
-      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845789);
+      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845870);
       paramBaseChatItemLayout.topMargin = AIOUtils.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramBaseChatItemLayout.leftMargin = AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramBaseChatItemLayout.rightMargin = AIOUtils.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
@@ -828,7 +828,7 @@ public class ScribbleItemBuilder
       paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(paramInt1, i, paramInt2, j);
       paramContext.jdField_a_of_type_AndroidViewView.setPadding(0, 0, 0, 0);
       return;
-      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845625);
+      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845706);
       paramBaseChatItemLayout.topMargin = AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramBaseChatItemLayout.leftMargin = AIOUtils.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramBaseChatItemLayout.rightMargin = AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());

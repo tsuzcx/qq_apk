@@ -1,32 +1,17 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-public class abhf
-  implements URLDrawableDownListener
+class abhf
+  implements Runnable
 {
-  public abhf(ARMapPOIStarDialog paramARMapPOIStarDialog, POIInfo paramPOIInfo) {}
+  abhf(abhe paramabhe) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARMapPOIStarDialog", 2, "URLDrawable load fail, url=" + this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo.d);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARMapPOIStarDialog", 2, "URLDrawable load success, url=" + this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo.d);
+    if (this.a.a.a != null)
+    {
+      ARMapEngine localARMapEngine = this.a.a.a;
+      ARMapEngine.nativeOnShowRedPackRainPoi();
     }
   }
 }

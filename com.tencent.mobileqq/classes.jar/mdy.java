@@ -1,21 +1,18 @@
-import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.PopupMenuDialog.OnDismissListener;
 
 public class mdy
-  implements Runnable
+  implements PopupMenuDialog.OnDismissListener
 {
-  public mdy(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  public mdy(VideoFeedsAdapter paramVideoFeedsAdapter, boolean paramBoolean) {}
   
-  public void run()
+  public void a()
   {
-    if (VideoFeedsPlayManager.a(this.a) == null) {
-      return;
+    VideoFeedsAdapter.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter, false);
+    if ((VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter) != null) && (this.jdField_a_of_type_Boolean)) {
+      VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).a();
     }
-    VideoFeedsPlayManager.a(this.a).removeMessages(-2);
-    new WeakReference(VideoFeedsPlayManager.a(this.a));
-    new WeakReference(VideoFeedsPlayManager.a(this.a));
-    VideoFeedsPlayManager.a(this.a).sendEmptyMessage(-2);
   }
 }
 

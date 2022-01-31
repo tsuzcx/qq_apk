@@ -15,11 +15,11 @@ import java.util.WeakHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
-import jbt;
-import jbu;
-import jbv;
-import jbx;
-import jbz;
+import jdv;
+import jdw;
+import jdx;
+import jdz;
+import jeb;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpVersion;
@@ -84,14 +84,14 @@ public class AsyncHttpClient
             Object localObject2 = KeyStore.getInstance(KeyStore.getDefaultType());
             ((KeyStore)localObject2).load(null, null);
             localObject2 = new AsyncHttpClient.CustomSSLSocketFactory((KeyStore)localObject2);
-            ((SSLSocketFactory)localObject2).setHostnameVerifier(new jbt(this));
+            ((SSLSocketFactory)localObject2).setHostnameVerifier(new jdv(this));
             ((SchemeRegistry)localObject1).register(new Scheme("https", (SocketFactory)localObject2, 443));
             localObject1 = new ThreadSafeClientConnManager(localBasicHttpParams, (SchemeRegistry)localObject1);
             this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext = new SyncBasicHttpContext(new BasicHttpContext());
             this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient = new DefaultHttpClient((ClientConnectionManager)localObject1, localBasicHttpParams);
-            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addRequestInterceptor(new jbu(this));
-            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addResponseInterceptor(new jbv(this));
-            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.setHttpRequestRetryHandler(new jbz(3));
+            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addRequestInterceptor(new jdw(this));
+            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.addResponseInterceptor(new jdx(this));
+            this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient.setHttpRequestRetryHandler(new jeb(3));
             this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = ((ThreadPoolExecutor)Executors.newCachedThreadPool());
             this.jdField_a_of_type_JavaUtilMap = new WeakHashMap();
             this.jdField_b_of_type_JavaUtilMap = new HashMap();
@@ -190,7 +190,7 @@ public class AsyncHttpClient
     if (paramString != null) {
       paramHttpUriRequest.addHeader("Content-Type", paramString);
     }
-    paramHttpUriRequest = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(new jbx(paramDefaultHttpClient, paramHttpContext, paramHttpUriRequest, paramAsyncHttpResponseHandler));
+    paramHttpUriRequest = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(new jdz(paramDefaultHttpClient, paramHttpContext, paramHttpUriRequest, paramAsyncHttpResponseHandler));
     if (paramContext != null)
     {
       paramHttpContext = (List)this.jdField_a_of_type_JavaUtilMap.get(paramContext);

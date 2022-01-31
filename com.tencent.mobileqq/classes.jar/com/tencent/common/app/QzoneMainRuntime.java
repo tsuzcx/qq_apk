@@ -35,10 +35,14 @@ public class QzoneMainRuntime
     if (paramString.equals("qzone_plugin.apk")) {
       localAppRuntime = QZoneHelper.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
     }
-    while (!paramString.equals("qzone_widgetai.apk")) {
+    do
+    {
       return localAppRuntime;
-    }
-    return QzoneWidgetAIHelper.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
+      if (paramString.equals("qzone_widgetai.apk")) {
+        return QzoneWidgetAIHelper.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
+      }
+    } while (!paramString.equals("qzone_vertical_video_plugin.apk"));
+    return QZoneHelper.c(BaseApplicationImpl.getApplication());
   }
 }
 

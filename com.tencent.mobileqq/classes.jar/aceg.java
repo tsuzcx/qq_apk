@@ -1,27 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
 
 public class aceg
-  extends EmoticonPackageDownloadListener
+  extends FriendListObserver
 {
-  public aceg(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public aceg(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
-    do
-    {
+    if (!this.a.a) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
-      }
-    } while (this.a.m);
-    ThreadManager.getUIHandler().post(new aceh(this, paramEmoticonPackage, paramInt));
+    }
+    this.a.runOnUiThread(new acei(this, paramBoolean, paramString1, paramString2));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.a) {
+      return;
+    }
+    this.a.runOnUiThread(new aceh(this, paramBoolean, paramString));
   }
 }
 

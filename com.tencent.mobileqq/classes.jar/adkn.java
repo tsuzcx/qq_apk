@@ -1,13 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardChooseFriendOption;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserManager.IModelCreater;
+import com.tencent.mobileqq.filemanager.fileviewer.TroopFileViewerParamParser;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
+import java.util.List;
 
 public class adkn
-  implements DialogInterface.OnClickListener
+  implements FileBrowserManager.IModelCreater
 {
-  public adkn(ForwardChooseFriendOption paramForwardChooseFriendOption) {}
+  public adkn(TroopFileViewerParamParser paramTroopFileViewerParamParser, BaseActivity paramBaseActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public FileBrowserModelBase a()
+  {
+    Object localObject2 = null;
+    List localList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerTroopFileViewerParamParser.a();
+    Object localObject1 = localObject2;
+    if (localList != null)
+    {
+      localObject1 = localObject2;
+      if (localList.size() > 0) {
+        localObject1 = new TroopFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, TroopFileViewerParamParser.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerTroopFileViewerParamParser));
+      }
+    }
+    return localObject1;
+  }
 }
 
 

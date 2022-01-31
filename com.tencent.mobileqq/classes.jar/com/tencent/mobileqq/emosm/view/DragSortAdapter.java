@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm.view;
 
-import acac;
+import acic;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -51,7 +51,7 @@ public class DragSortAdapter
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   Handler jdField_a_of_type_AndroidOsHandler;
   private LruCache jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(30);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acac(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acic(this);
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   public List a;
@@ -64,7 +64,7 @@ public class DragSortAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838390);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838395);
     ClubContentJsonTask.a((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppRuntime(), ClubContentJsonTask.d);
     paramContext = ClubContentJsonTask.d.a(this.jdField_a_of_type_AndroidContentContext);
     if (paramContext != null) {}
@@ -72,7 +72,7 @@ public class DragSortAdapter
     {
       this.jdField_a_of_type_OrgJsonJSONArray = paramContext.getJSONArray("wording");
       this.jdField_a_of_type_AndroidOsHandler = new Handler();
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494238);
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494244);
       return;
     }
     catch (JSONException paramContext)
@@ -222,14 +222,14 @@ public class DragSortAdapter
   {
     if (paramEmoticonPackage.valid)
     {
-      paramProgressButton.setText(2131436075);
+      paramProgressButton.setText(2131436093);
       paramProgressButton.setTextColor(this.jdField_b_of_type_Int);
       QQAppInterface localQQAppInterface = (QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppRuntime();
       int i = a(localQQAppInterface, paramEmoticonPackage);
       if ((i == 1) || (i == 2))
       {
         paramProgressButton.setProgress((int)(((EmojiManager)localQQAppInterface.getManager(42)).a(paramEmoticonPackage.epId) * 100.0F));
-        paramProgressButton.setText(2131436077);
+        paramProgressButton.setText(2131436095);
       }
       while (this.jdField_a_of_type_Boolean)
       {
@@ -238,7 +238,7 @@ public class DragSortAdapter
         if (i == 0)
         {
           paramProgressButton.setProgress(0);
-          paramProgressButton.setText(2131436075);
+          paramProgressButton.setText(2131436093);
           if (!"".equals(paramEmoticonPackage.updateTip)) {
             paramString = paramEmoticonPackage.updateTip;
           }
@@ -246,12 +246,12 @@ public class DragSortAdapter
         else if (i == 3)
         {
           paramProgressButton.setProgress(0);
-          paramProgressButton.setText(2131436076);
+          paramProgressButton.setText(2131436094);
         }
         else
         {
           paramProgressButton.setProgress(0);
-          paramProgressButton.setText(2131436078);
+          paramProgressButton.setText(2131436096);
           paramProgressButton.setTextColor(-3355444);
         }
       }
@@ -354,7 +354,7 @@ public class DragSortAdapter
         paramEmoticonPackage.setVisibility(0);
         paramEmoticonPackage.setProgress(0);
         paramEmoticonPackage.setTextColor(this.jdField_b_of_type_Int);
-        paramEmoticonPackage.setText(2131436077);
+        paramEmoticonPackage.setText(2131436095);
       }
     }
   }
@@ -377,7 +377,7 @@ public class DragSortAdapter
       }
     }
     label81:
-    for (int i = 2131436075;; i = 2131436076)
+    for (int i = 2131436093;; i = 2131436094)
     {
       paramEmoticonPackage.setText(i);
       return;
@@ -452,7 +452,7 @@ public class DragSortAdapter
       } while ((localTaskStatus == null) || (localTaskStatus.a()));
       i = (int)localTaskStatus.a();
       paramXListView.setProgress(i);
-      paramXListView.setText(2131436077);
+      paramXListView.setText(2131436095);
       paramXListView.setTextColor(this.jdField_b_of_type_Int);
       paramXListView.setVisibility(0);
     } while (!QLog.isColorLevel());
@@ -478,13 +478,13 @@ public class DragSortAdapter
       if (paramInt != 0) {
         break;
       }
-      paramXListView.setText(2131436078);
+      paramXListView.setText(2131436096);
       paramXListView.setTextColor(-3355444);
       ReportController.b((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppRuntime(), "CliOper", "", "", "ep_mall", "Clk_pkg_download_aio-mine", 0, 0, paramEmoticonPackage.epId, "", "", "");
     } while (!QLog.isColorLevel());
     QLog.d("DragSortAdapter", 2, "===========report============" + paramEmoticonPackage.epId);
     return;
-    paramXListView.setText(2131436076);
+    paramXListView.setText(2131436094);
     paramXListView.setTextColor(this.jdField_b_of_type_Int);
   }
   
@@ -565,17 +565,17 @@ public class DragSortAdapter
     if (paramView == null)
     {
       localObject = new DragSortAdapter.ViewHolder(this);
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130968988, null);
-      ((DragSortAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362983));
-      ((DragSortAdapter.ViewHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364595));
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130968990, null);
+      ((DragSortAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362988));
+      ((DragSortAdapter.ViewHolder)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364619));
       ((DragSortAdapter.ViewHolder)localObject).c = ((ImageView)paramView.findViewById(2131361849));
-      ((DragSortAdapter.ViewHolder)localObject).d = ((ImageView)paramView.findViewById(2131364596));
-      ((DragSortAdapter.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramView.findViewById(2131364601));
-      ((DragSortAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364598));
-      ((DragSortAdapter.ViewHolder)localObject).e = ((ImageView)paramView.findViewById(2131362984));
-      ((DragSortAdapter.ViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364599));
-      ((DragSortAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362741);
-      ((DragSortAdapter.ViewHolder)localObject).jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364600);
+      ((DragSortAdapter.ViewHolder)localObject).d = ((ImageView)paramView.findViewById(2131364620));
+      ((DragSortAdapter.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramView.findViewById(2131364625));
+      ((DragSortAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364622));
+      ((DragSortAdapter.ViewHolder)localObject).e = ((ImageView)paramView.findViewById(2131362989));
+      ((DragSortAdapter.ViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364623));
+      ((DragSortAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362746);
+      ((DragSortAdapter.ViewHolder)localObject).jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364624);
       paramView.setTag(localObject);
       paramViewGroup.setTag(localObject);
       a(((DragSortAdapter.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqWidgetProgressButton);
@@ -610,8 +610,8 @@ public class DragSortAdapter
       if (a(paramInt)) {
         break label574;
       }
-      paramView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131436071) + " " + ((EmoticonPackage)localObject).name + "," + str);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843964);
+      paramView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131436089) + " " + ((EmoticonPackage)localObject).name + "," + str);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844030);
     }
     for (;;)
     {
@@ -627,8 +627,8 @@ public class DragSortAdapter
       paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(str);
       break label444;
       label574:
-      paramView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131436072) + " " + ((EmoticonPackage)localObject).name + "," + str);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843965);
+      paramView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131436090) + " " + ((EmoticonPackage)localObject).name + "," + str);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844031);
     }
     label639:
     paramView.setContentDescription(((EmoticonPackage)localObject).name + "," + str);

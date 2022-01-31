@@ -1,24 +1,14 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager.PageChangedObserver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
 
 public class aobn
-  implements ViewPager.OnPageChangeListener
+  implements Runnable
 {
-  public aobn(FaceViewPager paramFaceViewPager) {}
+  public aobn(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void run()
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((FaceViewPager.PageChangedObserver)localIterator.next()).c(paramInt);
-    }
+    QQToast.a(this.a.a(), "表情个数已达上限", 0).a();
   }
 }
 

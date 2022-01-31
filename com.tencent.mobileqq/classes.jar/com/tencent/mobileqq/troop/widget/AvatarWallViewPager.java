@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajrx;
+import ajzk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -55,7 +55,7 @@ public class AvatarWallViewPager
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Int = 500;
-    this.jdField_a_of_type_AndroidOsHandler = new ajrx(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new ajzk(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
   }
@@ -68,8 +68,8 @@ public class AvatarWallViewPager
       int i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(i, i);
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(getResources(), Color.parseColor("#80ffffff"), getResources().getDrawable(2130841314));
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(getResources(), Color.parseColor("#ffffffff"), getResources().getDrawable(2130841314));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(getResources(), Color.parseColor("#80ffffff"), getResources().getDrawable(2130841341));
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(getResources(), Color.parseColor("#ffffffff"), getResources().getDrawable(2130841341));
     }
     localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
     localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -187,7 +187,7 @@ public class AvatarWallViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class xhu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xhu(RecordMicView paramRecordMicView) {}
+  public xhu(TransactionActivity paramTransactionActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.post(new xhv(this));
+    this.a.a(TransactionActivity.a(this.a), 128, "transfer.amount.go", "", "", TransactionActivity.a(this.a), "");
+    this.a.b();
   }
 }
 

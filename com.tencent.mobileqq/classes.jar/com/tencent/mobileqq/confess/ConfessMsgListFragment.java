@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.confess;
 
-import abrv;
-import abrw;
-import abrx;
+import abza;
+import abzb;
+import abzc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -44,7 +44,7 @@ public class ConfessMsgListFragment
   implements View.OnClickListener
 {
   ConfessManager jdField_a_of_type_ComTencentMobileqqConfessConfessManager;
-  ConfessObserver jdField_a_of_type_ComTencentMobileqqConfessConfessObserver = new abrx(this);
+  ConfessObserver jdField_a_of_type_ComTencentMobileqqConfessConfessObserver = new abzc(this);
   View b;
   View c;
   
@@ -52,12 +52,12 @@ public class ConfessMsgListFragment
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("uintype", 1032);
-    localIntent.putExtra("uin", AppConstants.aE);
+    localIntent.putExtra("uin", AppConstants.aF);
     localIntent.addFlags(335544320);
     PublicFragmentActivity.a(paramContext, localIntent, ConfessMsgListFragment.class);
   }
   
-  private void e()
+  private void d()
   {
     int i = 0;
     String str = null;
@@ -72,12 +72,12 @@ public class ConfessMsgListFragment
     label76:
     Object localObject3;
     Object localObject2;
-    if (this.b.findViewById(2131363857).getVisibility() == 0)
+    if (this.b.findViewById(2131363881).getVisibility() == 0)
     {
       bool1 = true;
       if (bool2 != bool1)
       {
-        localObject1 = this.b.findViewById(2131363857);
+        localObject1 = this.b.findViewById(2131363881);
         if (!bool2) {
           break label220;
         }
@@ -92,7 +92,7 @@ public class ConfessMsgListFragment
       }
       localObject3 = ((ConfessConfig)localObject1).jdField_a_of_type_JavaLangString;
       str = ((ConfessConfig)localObject1).a();
-      localObject2 = ((ConfessConfig)localObject1).h;
+      localObject2 = ((ConfessConfig)localObject1).i;
     }
     for (;;)
     {
@@ -110,8 +110,8 @@ public class ConfessMsgListFragment
         }
         for (;;)
         {
-          localObject3 = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363057);
-          TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363579);
+          localObject3 = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363062);
+          TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363598);
           if (bool2) {}
           for (;;)
           {
@@ -168,47 +168,6 @@ public class ConfessMsgListFragment
     return localArrayList;
   }
   
-  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131439179));
-    b(2131433270);
-    b(2131433515, this);
-    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
-    this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager = ((ConfessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(268));
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager.b();
-    if ((paramBundle == null) || ((paramBundle != null) && (paramBundle.jdField_g_of_type_Int >= 1)) || (ConfessConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show")))
-    {
-      this.b = paramLayoutInflater.inflate(2130970287, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-      if ((LinearLayout.LayoutParams)this.b.getLayoutParams() != null) {
-        break label265;
-      }
-      paramBundle = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131559468));
-      paramBundle.topMargin = paramViewGroup.getDimensionPixelSize(2131559469);
-      paramBundle.bottomMargin = paramViewGroup.getDimensionPixelOffset(2131559469);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.b, paramBundle);
-      this.b.setOnClickListener(this);
-      e();
-      this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.inflate(2130970290, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-      if ((LinearLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams() != null) {
-        break label279;
-      }
-      paramLayoutInflater = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131559470));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidViewView, paramLayoutInflater);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqConfessConfessObserver, true);
-      ThreadManager.post(new abrv(this), 5, null, true);
-      return;
-      label265:
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.b);
-      break;
-      label279:
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidViewView);
-    }
-  }
-  
   public void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean)
   {
     if (QLog.isDevelopLevel()) {
@@ -218,7 +177,7 @@ public class ConfessMsgListFragment
     {
       paramView = (RecentItemConfessMsg)paramRecentBaseData;
       if ((paramView.j != 1033) && (paramView.j != 1034)) {
-        break label276;
+        break label272;
       }
       paramString = new Bundle();
       paramString.putInt("key_confessor_sex", paramView.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo.confessorSex);
@@ -227,12 +186,12 @@ public class ConfessMsgListFragment
       paramString.putLong("key_confess_time", paramView.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo.confessTime);
       ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView.a(), paramView.j, paramView.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo.topicId, paramView.b, paramString);
       if (paramView.j != 1033) {
-        break label237;
+        break label233;
       }
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4D", "0X8008F4D", 2, 0, "", "", "", "");
     }
-    label237:
-    while ((paramView.j != 1032) || (!TextUtils.equals(paramView.jdField_a_of_type_JavaLangString, AppConstants.aF))) {
+    label233:
+    while ((paramView.j != 1032) || (!TextUtils.equals(paramView.jdField_a_of_type_JavaLangString, AppConstants.aG))) {
       for (;;)
       {
         ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RecentItemConfessMsg)paramRecentBaseData, false);
@@ -240,16 +199,16 @@ public class ConfessMsgListFragment
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4E", "0X8008F4E", 2, 0, "", "", "", "");
       }
     }
-    label276:
+    label272:
     if (this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager == null)
     {
       paramView = null;
-      label308:
+      label304:
       if (paramView != null) {
-        break label416;
+        break label412;
       }
     }
-    label416:
+    label412:
     for (paramView = "https://ti.qq.com/honest-say/friends-received.html?_bid=3104&_wv=9191&_qStyle=1&adtag=message_box";; paramView = paramView.e)
     {
       paramString = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
@@ -260,7 +219,7 @@ public class ConfessMsgListFragment
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4F", "0X8008F4F", 2, 0, "", "", "", "");
       break;
       paramView = this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager.b();
-      break label308;
+      break label304;
     }
   }
   
@@ -279,7 +238,7 @@ public class ConfessMsgListFragment
     if ((paramRecentBaseData instanceof RecentItemConfessMsg)) {
       ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (RecentItemConfessMsg)paramRecentBaseData, true);
     }
-    c();
+    b();
   }
   
   public void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2)
@@ -372,7 +331,7 @@ public class ConfessMsgListFragment
         {
           localObject2 = new MessageRecord();
           ((MessageRecord)localObject2).istroop = 1032;
-          ((MessageRecord)localObject2).frienduin = AppConstants.aF;
+          ((MessageRecord)localObject2).frienduin = AppConstants.aG;
           ((MessageRecord)localObject2).time = ((FrdConfessInfo)localObject1).jdField_a_of_type_Long;
           ((MessageRecord)localObject2).senderuin = ((FrdConfessInfo)localObject1).jdField_a_of_type_JavaLangString;
           ((MessageRecord)localObject2).msg = ((FrdConfessInfo)localObject1).c;
@@ -385,7 +344,7 @@ public class ConfessMsgListFragment
         }
         j = 1;
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-        localObject2 = ((RecentUserProxy)localObject1).b(AppConstants.aE, 1032);
+        localObject2 = ((RecentUserProxy)localObject1).b(AppConstants.aF, 1032);
         bool = ConfessConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show");
         l1 = ConfessConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show");
         long l2 = ConfessConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_clear_time");
@@ -428,7 +387,7 @@ public class ConfessMsgListFragment
         if ((j == 0) && (localObject2 == null))
         {
           localObject2 = new RecentUser();
-          ((RecentUser)localObject2).uin = AppConstants.aE;
+          ((RecentUser)localObject2).uin = AppConstants.aF;
           ((RecentUser)localObject2).type = 1032;
           if (bool) {}
           for (l1 = Math.max(((MessageRecord)paramList.get(0)).time, l1);; l1 = ((MessageRecord)paramList.get(0)).time)
@@ -446,7 +405,7 @@ public class ConfessMsgListFragment
           if (localObject2 == null)
           {
             paramList = new RecentUser();
-            paramList.uin = AppConstants.aE;
+            paramList.uin = AppConstants.aF;
             paramList.type = 1032;
             paramList.lastmsgtime = l1;
             ((RecentUserProxy)localObject1).a(paramList);
@@ -459,20 +418,50 @@ public class ConfessMsgListFragment
     }
   }
   
-  public void b(boolean paramBoolean)
+  protected void c()
   {
-    super.b(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfessMsgListFragment", 2, "onWindowFocusChanged " + paramBoolean);
-    }
-    if (paramBoolean) {
-      ThreadManager.getSubThreadHandler().postDelayed(new abrw(this), 200L);
-    }
+    a();
   }
   
-  protected void d()
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    b();
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131439209));
+    setLeftViewName(2131433284);
+    setRightButton(2131433529, this);
+    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+    this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager = ((ConfessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(268));
+    paramBundle = this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager.b();
+    if ((paramBundle == null) || ((paramBundle != null) && (paramBundle.g >= 1)) || (ConfessConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_box_show")))
+    {
+      this.b = paramLayoutInflater.inflate(2130970302, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+      if ((LinearLayout.LayoutParams)this.b.getLayoutParams() != null) {
+        break label272;
+      }
+      paramBundle = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131559468));
+      paramBundle.topMargin = paramViewGroup.getDimensionPixelSize(2131559469);
+      paramBundle.bottomMargin = paramViewGroup.getDimensionPixelOffset(2131559469);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.b, paramBundle);
+      this.b.setOnClickListener(this);
+      d();
+      this.jdField_c_of_type_AndroidViewView = paramLayoutInflater.inflate(2130970305, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+      if ((LinearLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams() != null) {
+        break label286;
+      }
+      paramLayoutInflater = new LinearLayout.LayoutParams(-1, paramViewGroup.getDimensionPixelSize(2131559470));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidViewView, paramLayoutInflater);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqConfessConfessObserver, true);
+      ThreadManager.post(new abza(this), 5, null, true);
+      return;
+      label272:
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.b);
+      break;
+      label286:
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidViewView);
+    }
   }
   
   public void onClick(View paramView)
@@ -483,7 +472,7 @@ public class ConfessMsgListFragment
       {
         paramView = null;
         if (paramView != null) {
-          break label193;
+          break label192;
         }
         paramView = "https://ti.qq.com/honest-say/main.html?_bid=3104&_qStyle=1&_wv=9191&_nav_alpha=0&_nav_txtclr=FFFFFF&_nav_titleclr=FFFFFF&_nav_anim=true&_wwv=128&adtag=message_box";
         if (!TextUtils.isEmpty(paramView))
@@ -494,7 +483,7 @@ public class ConfessMsgListFragment
           ((Intent)localObject).putExtra("url", paramView);
           this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
         }
-        localObject = this.b.findViewById(2131363857);
+        localObject = this.b.findViewById(2131363881);
         if (((View)localObject).getVisibility() != 8) {
           ((View)localObject).setVisibility(8);
         }
@@ -505,8 +494,8 @@ public class ConfessMsgListFragment
         }
       }
     }
-    label193:
-    while (paramView != this.e) {
+    label192:
+    while (paramView != this.rightViewText) {
       for (;;)
       {
         return;
@@ -518,13 +507,13 @@ public class ConfessMsgListFragment
     if (this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager == null)
     {
       paramView = null;
-      label218:
+      label217:
       if (paramView != null) {
-        break label343;
+        break label341;
       }
     }
-    label343:
-    for (paramView = "https://ti.qq.com/honest-say/setting.html?_wv=9191&_wwv=4&_qStyle=1&adtag=message_box";; paramView = paramView.jdField_g_of_type_JavaLangString)
+    label341:
+    for (paramView = "https://ti.qq.com/honest-say/setting.html?_wv=9191&_wwv=4&_qStyle=1&adtag=message_box";; paramView = paramView.h)
     {
       if (!TextUtils.isEmpty(paramView))
       {
@@ -539,7 +528,7 @@ public class ConfessMsgListFragment
       QLog.i("ConfessMsgListFragment", 4, String.format(Locale.getDefault(), "click entry url: %s", new Object[] { paramView }));
       return;
       paramView = this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager.b();
-      break label218;
+      break label217;
     }
   }
   
@@ -552,7 +541,18 @@ public class ConfessMsgListFragment
   public void onResume()
   {
     super.onResume();
-    e();
+    d();
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessMsgListFragment", 2, "onWindowFocusChanged " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getSubThreadHandler().postDelayed(new abzb(this), 200L);
+    }
   }
   
   public void update(Observable paramObservable, Object paramObject)
@@ -569,7 +569,7 @@ public class ConfessMsgListFragment
     while ((paramObservable.istroop != 1032) && (paramObservable.istroop != 1033) && (paramObservable.istroop != 1034)) {
       return;
     }
-    c();
+    b();
   }
 }
 

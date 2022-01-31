@@ -1,50 +1,46 @@
-import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lak
-  extends SosoInterface.OnLocationListener
+  extends Thread
 {
-  public lak(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public lak(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentCommonAppAppInterface == null) || (this.a.jdField_a_of_type_JavaUtilList == null)) {}
-    ArrayList localArrayList;
-    double d1;
-    double d2;
-    do
+    try
     {
-      do
-      {
-        return;
-      } while ((paramInt != 0) || (paramSosoLbsInfo == null));
-      localArrayList = new ArrayList();
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
-        if (localRecentShopParcel.c != 1) {
-          try
-          {
-            localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
-          }
-          catch (Exception localException) {}
-        }
+      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      String str2 = localJSONObject.optString("callid");
+      String str1 = str2;
+      if (!TextUtils.isEmpty(str2)) {
+        str1 = str2.replace("\\", "\\\\").replace("'", "\\'");
       }
-      d1 = paramSosoLbsInfo.a.a;
-      d2 = paramSosoLbsInfo.a.b;
-    } while (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool == null);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, localArrayList, d2, d1);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("callid", str1);
+      str1 = localJSONObject.optString("url");
+      if (!TextUtils.isEmpty(str1))
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:1, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+        str1 = PublicAccountJavascriptInterface.a(str1);
+        if (str1 != null)
+        {
+          str1 = str1.replace("\\", "\\\\").replace("'", "\\'");
+          this.jdField_a_of_type_OrgJsonJSONObject.put("data", str1);
+          this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:0, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+          return;
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-10, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+        return;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-2, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-4, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
   }
 }
 

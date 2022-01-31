@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.view.StoryImageDialog;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class oqf
-  implements View.OnClickListener
+class oqf
+  implements Runnable
 {
-  public oqf(StoryImageDialog paramStoryImageDialog) {}
+  oqf(oqc paramoqc) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    StoryReportor.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.a.dismiss();
+    QQToast.a(SlideShowPhotoListManager.a(this.a.a), "处理失败，请稍后再试", 0).a();
   }
 }
 

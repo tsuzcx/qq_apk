@@ -1199,11 +1199,11 @@ public class FileUtil
     //   205: aload_1
     //   206: invokespecial 155	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   209: invokevirtual 589	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   212: astore_0
+    //   212: astore_3
     //   213: aload_2
     //   214: invokevirtual 592	java/nio/channels/FileChannel:size	()J
     //   217: lstore 5
-    //   219: aload_0
+    //   219: aload_3
     //   220: aload_2
     //   221: lconst_0
     //   222: lload 5
@@ -1217,9 +1217,9 @@ public class FileUtil
     //   238: ifnull +7 -> 245
     //   241: aload_2
     //   242: invokevirtual 597	java/nio/channels/FileChannel:close	()V
-    //   245: aload_0
+    //   245: aload_3
     //   246: ifnull +7 -> 253
-    //   249: aload_0
+    //   249: aload_3
     //   250: invokevirtual 597	java/nio/channels/FileChannel:close	()V
     //   253: iconst_0
     //   254: ireturn
@@ -1242,9 +1242,9 @@ public class FileUtil
     //   280: ifnull +7 -> 287
     //   283: aload_2
     //   284: invokevirtual 597	java/nio/channels/FileChannel:close	()V
-    //   287: aload_0
+    //   287: aload_3
     //   288: ifnull +7 -> 295
-    //   291: aload_0
+    //   291: aload_3
     //   292: invokevirtual 597	java/nio/channels/FileChannel:close	()V
     //   295: iconst_1
     //   296: ireturn
@@ -1252,18 +1252,16 @@ public class FileUtil
     //   298: aconst_null
     //   299: astore_1
     //   300: goto -39 -> 261
-    //   303: astore_3
-    //   304: aload_0
+    //   303: astore_0
+    //   304: aload_3
     //   305: astore_1
-    //   306: aload_3
-    //   307: astore_0
-    //   308: goto -47 -> 261
+    //   306: goto -45 -> 261
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	311	0	paramFile1	File
-    //   0	311	1	paramFile2	File
-    //   0	311	2	paramFileFilter	FileFilter
-    //   0	311	3	paramFileComparator	FileComparator
+    //   0	309	0	paramFile1	File
+    //   0	309	1	paramFile2	File
+    //   0	309	2	paramFileFilter	FileFilter
+    //   0	309	3	paramFileComparator	FileComparator
     //   40	119	4	bool	boolean
     //   217	11	5	l	long
     //   1	258	7	localObject	Object

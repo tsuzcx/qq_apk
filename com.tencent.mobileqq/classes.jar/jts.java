@@ -1,50 +1,27 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.redbag.AVRedBagMgr.Event;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
 
 public class jts
-  implements AVRedBagMgr.Event
+  extends BroadcastReceiver
 {
-  public jts(EffectSettingUi paramEffectSettingUi) {}
+  jts(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
-  public void a(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("EffectSettingUi", 4, "onGetConfig, enable[" + paramBoolean + "]");
-    }
-    if (paramBoolean)
+    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
-      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject != null)
-      {
-        localObject = (AVActivity)((WeakReference)localObject).get();
-        if (localObject != null) {
-          ((AVActivity)localObject).runOnUiThread(new jtt(this));
-        }
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey"))) {
+        CallbackWaitingActivityExt.a(this.a);
       }
-      return;
     }
-    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event = null;
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("EffectSettingUi", 4, "onStatusChanged");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new jtu(this, paramBoolean3, paramBoolean1, paramBoolean2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jts
  * JD-Core Version:    0.7.0.1
  */

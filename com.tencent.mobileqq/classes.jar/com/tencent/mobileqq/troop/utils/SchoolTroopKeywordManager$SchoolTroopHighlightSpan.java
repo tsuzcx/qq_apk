@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajnw;
+import ajvi;
+import ajvj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,7 +13,8 @@ import android.widget.TextView;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.BubbleContextMenu;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
@@ -25,14 +27,16 @@ public class SchoolTroopKeywordManager$SchoolTroopHighlightSpan
   implements ActionSheet.OnButtonClickListener
 {
   private final Context jdField_a_of_type_AndroidContentContext;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private final SchoolTroopKeywordManager.KeywordResult jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
   
-  public SchoolTroopKeywordManager$SchoolTroopHighlightSpan(Context paramContext, SchoolTroopKeywordManager.KeywordResult paramKeywordResult)
+  public SchoolTroopKeywordManager$SchoolTroopHighlightSpan(QQAppInterface paramQQAppInterface, Context paramContext, SchoolTroopKeywordManager.KeywordResult paramKeywordResult)
   {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult = paramKeywordResult;
-    ReportController.b(null, "dc00899", "Grp_edu", "", "Grp_AIO", "GuideWords_Show", 0, 0, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.a, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.a(), this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_Int + "", this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_JavaLangString);
+    a("Grp_edu", "", "Grp_AIO", "GuideWords_Show", 0, 0);
   }
   
   private void a()
@@ -49,8 +53,8 @@ public class SchoolTroopKeywordManager$SchoolTroopHighlightSpan
     localObject1 = MessageFormat.format(SchoolTroopKeywordManager.a()[this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_Int], new Object[] { localObject1 });
     localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968601, null);
     ((View)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837532));
-    ((View)localObject2).setOnClickListener(new ajnw(this));
-    TextView localTextView = (TextView)((View)localObject2).findViewById(2131362815);
+    ((View)localObject2).setOnClickListener(new ajvj(this));
+    TextView localTextView = (TextView)((View)localObject2).findViewById(2131362820);
     localTextView.setVisibility(0);
     localTextView.setText((CharSequence)localObject1);
     localTextView.setContentDescription((CharSequence)localObject1);
@@ -63,27 +67,34 @@ public class SchoolTroopKeywordManager$SchoolTroopHighlightSpan
     this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
   }
   
+  private void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
+  {
+    ThreadManager.excute(new ajvi(this, paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2), 32, null, true);
+  }
+  
   public void OnClick(View paramView, int paramInt)
   {
     Object localObject;
+    TroopLinkManager localTroopLinkManager;
     if (paramInt == 0)
     {
-      localObject = TroopLinkManager.a();
+      localObject = null;
+      localTroopLinkManager = TroopLinkManager.a();
       if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_Int != 1) {
-        break label248;
+        break label201;
       }
-      paramView = ((TroopLinkManager)localObject).a("troop_homework_create_notice");
+      paramView = localTroopLinkManager.a("troop_homework_create_notice");
     }
     for (;;)
     {
       if (!TextUtils.isEmpty(paramView))
       {
-        TroopLinkManager.LinkParams localLinkParams = new TroopLinkManager.LinkParams();
-        localLinkParams.a = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.a;
-        localLinkParams.c = "aio_keyword";
-        localLinkParams.h = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_JavaLangString;
-        localLinkParams.i = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.b();
-        paramView = ((TroopLinkManager)localObject).a(paramView, localLinkParams);
+        localObject = new TroopLinkManager.LinkParams();
+        ((TroopLinkManager.LinkParams)localObject).a = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.a;
+        ((TroopLinkManager.LinkParams)localObject).c = "aio_keyword";
+        ((TroopLinkManager.LinkParams)localObject).h = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_JavaLangString;
+        ((TroopLinkManager.LinkParams)localObject).i = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.b();
+        paramView = localTroopLinkManager.a(paramView, (TroopLinkManager.LinkParams)localObject);
         if (QLog.isDevelopLevel()) {
           QLog.i(SchoolTroopKeywordManager.a, 2, "do action '" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_Int + "', open url: " + paramView);
         }
@@ -91,22 +102,24 @@ public class SchoolTroopKeywordManager$SchoolTroopHighlightSpan
         ((Intent)localObject).putExtra("url", paramView);
         this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
       }
-      ReportController.b(null, "dc00899", "Grp_edu", "", "Grp_AIO", "GuideActionsheet_Clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.a, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.a(), this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_Int + "", this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_JavaLangString);
+      a("Grp_edu", "", "Grp_AIO", "GuideActionsheet_Clk", 0, 0);
       if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
         this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       }
       return;
-      label248:
+      label201:
       if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_Int == 2)
       {
-        paramView = ((TroopLinkManager)localObject).a("troop_create_homework");
+        paramView = localTroopLinkManager.a("troop_create_homework");
       }
       else
       {
-        if (QLog.isColorLevel()) {
+        paramView = (View)localObject;
+        if (QLog.isColorLevel())
+        {
           QLog.e(SchoolTroopKeywordManager.a, 2, "I don't know this action '" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_Int + "'");
+          paramView = (View)localObject;
         }
-        paramView = null;
       }
     }
   }
@@ -124,12 +137,12 @@ public class SchoolTroopKeywordManager$SchoolTroopHighlightSpan
       ((ETTextView)paramView).c = true;
     }
     a();
-    ReportController.b(null, "dc00899", "Grp_edu", "", "Grp_AIO", "GuideWords_Clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.a, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.a(), this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_Int + "", this.jdField_a_of_type_ComTencentMobileqqTroopUtilsSchoolTroopKeywordManager$KeywordResult.jdField_b_of_type_JavaLangString);
+    a("Grp_edu", "", "Grp_AIO", "GuideWords_Clk", 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan
  * JD-Core Version:    0.7.0.1
  */

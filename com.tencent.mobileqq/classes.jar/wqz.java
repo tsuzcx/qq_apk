@@ -1,11 +1,17 @@
-class wqz
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.RecommendTroopManagerImp;
+
+public class wqz
   implements Runnable
 {
-  wqz(wqy paramwqy, int paramInt) {}
+  public wqz(TroopActivity paramTroopActivity, BaseTroopView paramBaseTroopView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wqy.a.a(this.jdField_a_of_type_Int);
+    boolean bool = ((RecommendTroopManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getManager(21)).b();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.runOnUiThread(new wra(this, bool));
   }
 }
 

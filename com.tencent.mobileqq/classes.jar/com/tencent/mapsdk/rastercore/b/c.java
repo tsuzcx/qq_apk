@@ -2,58 +2,37 @@ package com.tencent.mapsdk.rastercore.b;
 
 public final class c
 {
-  private double a = 4.9E-324D;
-  private double b = 4.9E-324D;
+  private f a;
+  private f[] b;
+  private float c;
   
-  public c(double paramDouble1, double paramDouble2)
+  public c(f paramf, f[] paramArrayOff, float paramFloat)
   {
-    this.b = paramDouble1;
-    this.a = paramDouble2;
+    this.a = paramf;
+    this.b = paramArrayOff;
+    this.c = paramFloat;
   }
   
-  public final double a()
+  public final f a()
   {
     return this.a;
   }
   
-  public final void a(double paramDouble)
+  public final void a(f paramf, f[] paramArrayOff, float paramFloat)
   {
-    this.a = paramDouble;
+    this.a = paramf;
+    this.b = paramArrayOff;
+    this.c = paramFloat;
   }
   
-  public final double b()
+  public final f[] b()
   {
     return this.b;
   }
   
-  public final void b(double paramDouble)
+  public final float c()
   {
-    this.b = paramDouble;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {}
-    do
-    {
-      return true;
-      if (paramObject.hashCode() != hashCode()) {
-        return false;
-      }
-      if (!(paramObject instanceof c)) {
-        return false;
-      }
-      paramObject = (c)paramObject;
-    } while ((Double.doubleToLongBits(paramObject.b) == Double.doubleToLongBits(this.b)) && (Double.doubleToLongBits(paramObject.a) == Double.doubleToLongBits(this.a)));
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    long l1 = Double.doubleToLongBits(this.b);
-    long l2 = Double.doubleToLongBits(this.a);
-    int i = (int)(l2 ^ l2 >>> 32);
-    return (int)(l1 ^ l1 >>> 32) + (i + 31) * 31;
+    return this.c - 1.0F;
   }
 }
 

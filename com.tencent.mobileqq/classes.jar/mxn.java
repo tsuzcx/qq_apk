@@ -1,16 +1,33 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import java.lang.ref.WeakReference;
 
 public class mxn
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public mxn(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public mxn(SubscriptRecommendController paramSubscriptRecommendController) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
+    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if ((this.a.b > 0) && (this.a.c > 0)) {
+      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131368318)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
+    }
   }
 }
 

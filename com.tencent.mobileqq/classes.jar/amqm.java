@@ -1,41 +1,23 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimPluginLoadRunnable.IPluginLoadListener;
-import cooperation.qqpim.QQPimPluginProxyService;
+import cooperation.buscard.BuscardPluginInstallActivity;
 
 public class amqm
-  implements QQPimPluginLoadRunnable.IPluginLoadListener
+  extends BroadcastReceiver
 {
-  public amqm(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
+  private amqm(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("BuscardPluginInstallActivity", 4, "BuscardPluginOnResumeReceiver->onReceive, intent:" + paramIntent);
     }
-    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
+    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
+      return;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
-    }
+    this.a.finish();
   }
 }
 

@@ -34,8 +34,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
-import qbb;
-import qbc;
+import qft;
+import qfu;
 import tencent.im.oidb.device.MiniFileProto.MiniFile;
 
 public class DevSingleStructMsgProcessor
@@ -69,9 +69,9 @@ public class DevSingleStructMsgProcessor
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      Object localObject = (qbc)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      View localView = ((qbc)localObject).a();
-      localObject = ((qbc)localObject).a();
+      Object localObject = (qfu)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      View localView = ((qfu)localObject).a();
+      localObject = ((qfu)localObject).a();
       if ((localView != null) && (localObject != null)) {
         ((MessageForDeviceSingleStruct.DeviceSingleStructItemCallback)localObject).a(localView, paramMessageForDeviceSingleStruct);
       }
@@ -105,7 +105,7 @@ public class DevSingleStructMsgProcessor
       for (;;)
       {
         return 0L;
-        new Handler(paramMessageForDeviceSingleStruct).post(new qbb(this));
+        new Handler(paramMessageForDeviceSingleStruct).post(new qft(this));
       }
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.nMediaSessionID))) {
@@ -155,16 +155,16 @@ public class DevSingleStructMsgProcessor
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        qbc localqbc = (qbc)localIterator.next();
-        if (localqbc.a() == paramView) {
-          localqbc.b = new WeakReference(paramDeviceSingleStructItemCallback);
+        qfu localqfu = (qfu)localIterator.next();
+        if (localqfu.a() == paramView) {
+          localqfu.b = new WeakReference(paramDeviceSingleStructItemCallback);
         }
       }
     }
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new qbc(this, paramView, paramDeviceSingleStructItemCallback));
+        this.jdField_a_of_type_JavaUtilArrayList.add(new qfu(this, paramView, paramDeviceSingleStructItemCallback));
       }
       if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.nCoverSessionID))) {
         return paramMessageForDeviceSingleStruct.nCoverSessionID;

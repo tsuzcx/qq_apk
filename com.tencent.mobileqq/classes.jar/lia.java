@@ -1,12 +1,14 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import java.util.ArrayList;
 
-public final class lia
-  extends DialogUtil.DialogOnClickAdapter
+class lia
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  lia(lhz paramlhz, ArrayList paramArrayList) {}
+  
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lhz.a, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

@@ -1,17 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import java.util.ArrayList;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
 
 public class afij
-  implements Runnable
+  implements View.OnClickListener
 {
-  public afij(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle, ArrayList paramArrayList) {}
+  public afij(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_ArrayOfComTencentMobileqqNearbyInterestTagInterestTag, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.d, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.b(), false);
+    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://buluo.qq.com/mobile/xxq_setting.html?_wv=1027&uin=" + this.a.a.app.c());
+    paramView.putExtra("reqType", 1);
+    this.a.a.startActivity(paramView);
   }
 }
 

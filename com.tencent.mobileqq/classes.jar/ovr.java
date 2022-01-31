@@ -1,15 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
 public class ovr
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public ovr(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ovr(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
   {
-    EditUniqueTitleActivity.a(this.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    Object localObject = paramMessage.obj;
+    String str;
+    if (paramMessage.what == 8) {
+      str = "GONE";
+    }
+    for (;;)
+    {
+      SLog.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
+      this.a.setVisibility(paramMessage.what);
+      return;
+      if (paramMessage.what == 0) {
+        str = "VISIBLE";
+      } else {
+        str = "INVISIBLE";
+      }
+    }
   }
 }
 

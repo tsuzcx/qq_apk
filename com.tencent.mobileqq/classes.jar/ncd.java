@@ -1,15 +1,17 @@
-import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
-import com.tencent.biz.qqstory.comment.FeedLikeLego;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 class ncd
   implements Runnable
 {
-  ncd(ncc paramncc) {}
+  ncd(nby paramnby) {}
   
   public void run()
   {
-    this.a.a.a(this.a.a.a);
-    ((FeedCommentLikeLego)this.a.a.a()).d();
+    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null))
+    {
+      PublicAccountImageCollectionMainActivity.a(this.a.a).a(true);
+      PublicAccountImageCollectionMainActivity.a(this.a.a).notifyDataSetChanged();
+    }
   }
 }
 

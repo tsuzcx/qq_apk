@@ -1,35 +1,26 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.utils.BaseHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
+import com.tencent.image.URLImageView;
 
 public class phb
-  extends BaseHandler
+  implements Animation.AnimationListener
 {
-  public phb(ImageManager paramImageManager, Looper paramLooper)
+  public phb(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      ImageManager.a(this.a, paramMessage);
-      return;
-    case 1: 
-      ImageManager.b(this.a, paramMessage);
-      return;
-    }
-    ImageManager.c(this.a, paramMessage);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     phb
  * JD-Core Version:    0.7.0.1
  */

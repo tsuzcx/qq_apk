@@ -1,17 +1,22 @@
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class nic
-  implements LoadingMoreHelper.OnLoadMoreListener
+  implements Runnable
 {
-  public nic(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
+  public nic(MsgTabNodeListLoader paramMsgTabNodeListLoader, boolean paramBoolean) {}
   
-  public void a() {}
-  
-  public boolean a(boolean paramBoolean)
+  public void run()
   {
-    this.a.a = 2;
-    return this.a.a(this.a.b);
+    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c)
+    {
+      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
+      if (localIterator.hasNext()) {
+        ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a(this.jdField_a_of_type_Boolean);
+      }
+    }
   }
 }
 

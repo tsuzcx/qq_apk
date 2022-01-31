@@ -1,19 +1,13 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.widget.XListView.DrawFinishedListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
 public class mse
-  implements XListView.DrawFinishedListener
+  implements Runnable
 {
-  public mse(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mse(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, int paramInt1, int paramInt2) {}
   
-  public void a()
+  public void run()
   {
-    if ((!this.a.c) && (this.a.d))
-    {
-      this.a.c = true;
-      PublicTracker.a("SUBSCRIPT_FEEDS_COST", null);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.smoothScrollBy(this.jdField_a_of_type_Int, this.b);
   }
 }
 

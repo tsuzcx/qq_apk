@@ -1,20 +1,40 @@
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.RobotPanelItemData;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadCallback;
 
-public class ajta
-  implements TroopRobotManager.Callback
+public final class ajta
+  implements TroopHomeworkHelper.UploadCallback
 {
-  public ajta(TroopAIORobotPanel paramTroopAIORobotPanel, TroopAIORobotPanel.RobotPanelItemData paramRobotPanelItemData) {}
+  HWReciteInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo;
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public ajta(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo)
   {
-    if (paramInt == 0) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo = paramHWReciteInfo;
+  }
+  
+  public void a(int paramInt)
+  {
+    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new ajtb(this));
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HWReciteItem", 2, "upload onComplete " + this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.b);
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotPanel.getContext(), 1, "操作失败" + "", 0).a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.b(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.g = 3;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("HWReciteItem", 2, "onError errorCode = " + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.g = 2;
+    HWReciteItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem).post(new ajtc(this));
   }
 }
 

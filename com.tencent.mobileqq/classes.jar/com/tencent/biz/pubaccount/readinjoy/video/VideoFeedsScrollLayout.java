@@ -7,7 +7,7 @@ import android.view.View.MeasureSpec;
 import android.view.animation.AlphaAnimation;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
-import meo;
+import mib;
 
 public class VideoFeedsScrollLayout
   extends RelativeLayout
@@ -56,7 +56,7 @@ public class VideoFeedsScrollLayout
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsScrollLayout$ContentLayoutListener != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsScrollLayout$ContentLayoutListener.b();
     }
-    postDelayed(new meo(this), this.jdField_b_of_type_Int);
+    postDelayed(new mib(this), this.jdField_b_of_type_Int);
   }
   
   public void computeScroll()

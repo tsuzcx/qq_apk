@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import java.util.List;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper.SendingFileInfo;
 
-class twj
+public class twj
   implements Runnable
 {
-  twj(twi paramtwi, List paramList) {}
+  public twj(SendMultiPictureHelper paramSendMultiPictureHelper, SendMultiPictureHelper.SendingFileInfo paramSendingFileInfo, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Twi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) && (this.jdField_a_of_type_Twi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (this.jdField_a_of_type_Twi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null))
-    {
-      this.jdField_a_of_type_Twi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(4);
-      this.jdField_a_of_type_Twi.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Twi.a.d();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_Long = SendMultiPictureHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper, this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

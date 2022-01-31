@@ -1,21 +1,21 @@
 package com.tencent.open.component.cache.database;
 
-import alfy;
-import alfz;
+import alnq;
+import alnr;
 import android.content.Context;
 import java.util.HashMap;
 
 public class DbCacheService
 {
   protected static DbCacheService a;
-  protected alfy a;
+  protected alnq a;
   protected Context a;
   protected final HashMap a;
   
   protected DbCacheService(Context paramContext)
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Alfy = new alfz(this);
+    this.jdField_a_of_type_Alnq = new alnr(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
   }
   
@@ -51,7 +51,7 @@ public class DbCacheService
     if (localObject == null)
     {
       paramClass = new DbCacheManager(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
-      paramClass.a(this.jdField_a_of_type_Alfy);
+      paramClass.a(this.jdField_a_of_type_Alnq);
       this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
     }
     for (;;)

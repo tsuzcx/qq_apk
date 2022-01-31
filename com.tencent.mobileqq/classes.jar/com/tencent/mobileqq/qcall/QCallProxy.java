@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.qcall;
 
-import agvh;
-import agvi;
-import agvj;
-import agvl;
+import agzu;
+import agzv;
+import agzw;
+import agzy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
@@ -34,14 +34,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public class QCallProxy
   extends BaseProxy
 {
+  private static volatile boolean jdField_a_of_type_Boolean;
   private int jdField_a_of_type_Int = 20;
   EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = null;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private final List jdField_a_of_type_JavaUtilList = new ArrayList(20);
   private final Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
   private ConcurrentHashMap jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private boolean jdField_b_of_type_Boolean;
   
@@ -151,7 +150,7 @@ public class QCallProxy
     if (paramList == null) {
       return null;
     }
-    Collections.sort(paramList, new agvi(this));
+    Collections.sort(paramList, new agzv(this));
     SparseIntArray localSparseIntArray = new SparseIntArray();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramList.iterator();
@@ -310,7 +309,7 @@ public class QCallProxy
     for (;;)
     {
       return true;
-      ThreadManager.post(new agvj(this, paramString), 5, null, false);
+      ThreadManager.post(new agzw(this, paramString), 5, null, false);
     }
   }
   
@@ -328,8 +327,8 @@ public class QCallProxy
     //   3: aconst_null
     //   4: astore 7
     //   6: aload_0
-    //   7: getfield 122	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   10: invokevirtual 380	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   7: getfield 120	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   10: invokevirtual 375	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   13: astore 8
     //   15: aload 8
     //   17: ifnonnull +5 -> 22
@@ -343,18 +342,18 @@ public class QCallProxy
     //   32: if_icmpne +164 -> 196
     //   35: aload_1
     //   36: iload_2
-    //   37: invokestatic 361	com/tencent/mobileqq/data/QCallRecord:getTableName	(Ljava/lang/String;I)Ljava/lang/String;
+    //   37: invokestatic 356	com/tencent/mobileqq/data/QCallRecord:getTableName	(Ljava/lang/String;I)Ljava/lang/String;
     //   40: astore_1
     //   41: aload 8
     //   43: aload_1
-    //   44: invokevirtual 381	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)I
+    //   44: invokevirtual 376	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)I
     //   47: istore_2
     //   48: iload_2
     //   49: aload_0
-    //   50: getfield 37	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
+    //   50: getfield 35	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
     //   53: if_icmple +39 -> 92
     //   56: aload 8
-    //   58: ldc_w 383
+    //   58: ldc_w 378
     //   61: iconst_3
     //   62: anewarray 30	java/lang/Object
     //   65: dup
@@ -369,90 +368,90 @@ public class QCallProxy
     //   74: iconst_2
     //   75: iload_2
     //   76: aload_0
-    //   77: getfield 37	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
+    //   77: getfield 35	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
     //   80: isub
-    //   81: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   81: invokestatic 381	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   84: aastore
-    //   85: invokestatic 390	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   88: invokevirtual 393	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
+    //   85: invokestatic 385	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   88: invokevirtual 388	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
     //   91: pop
-    //   92: new 100	java/lang/StringBuilder
+    //   92: new 98	java/lang/StringBuilder
     //   95: dup
-    //   96: invokespecial 101	java/lang/StringBuilder:<init>	()V
-    //   99: ldc_w 395
-    //   102: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   99: ldc_w 390
+    //   102: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   105: aload_1
-    //   106: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: ldc_w 397
-    //   112: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   106: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: ldc_w 392
+    //   112: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   118: astore_1
     //   119: aload_0
-    //   120: invokespecial 399	com/tencent/mobileqq/qcall/QCallProxy:a	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   123: ldc 212
+    //   120: invokespecial 394	com/tencent/mobileqq/qcall/QCallProxy:a	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   123: ldc 210
     //   125: aload_1
     //   126: aconst_null
-    //   127: invokevirtual 402	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Ljava/util/List;
+    //   127: invokevirtual 397	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Ljava/util/List;
     //   130: astore_1
     //   131: aload_1
     //   132: ifnull +310 -> 442
-    //   135: invokestatic 407	com/tencent/mobileqq/service/message/MessageCache:a	()J
+    //   135: invokestatic 402	com/tencent/mobileqq/service/message/MessageCache:a	()J
     //   138: lstore 4
     //   140: aload_1
-    //   141: invokeinterface 201 1 0
+    //   141: invokeinterface 199 1 0
     //   146: astore 6
     //   148: aload 6
-    //   150: invokeinterface 206 1 0
+    //   150: invokeinterface 204 1 0
     //   155: ifeq +287 -> 442
     //   158: aload 6
-    //   160: invokeinterface 210 1 0
-    //   165: checkcast 212	com/tencent/mobileqq/data/QCallRecord
+    //   160: invokeinterface 208 1 0
+    //   165: checkcast 210	com/tencent/mobileqq/data/QCallRecord
     //   168: astore 7
     //   170: aload 7
     //   172: ifnull -24 -> 148
     //   175: aload 7
-    //   177: getfield 229	com/tencent/mobileqq/data/QCallRecord:time	J
+    //   177: getfield 227	com/tencent/mobileqq/data/QCallRecord:time	J
     //   180: lload 4
     //   182: lcmp
     //   183: ifle -35 -> 148
     //   186: aload 7
     //   188: lload 4
-    //   190: putfield 229	com/tencent/mobileqq/data/QCallRecord:time	J
+    //   190: putfield 227	com/tencent/mobileqq/data/QCallRecord:time	J
     //   193: goto -45 -> 148
     //   196: aload_0
     //   197: aload_1
-    //   198: invokespecial 93	com/tencent/mobileqq/qcall/QCallProxy:a	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   198: invokespecial 91	com/tencent/mobileqq/qcall/QCallProxy:a	(Ljava/lang/String;)Landroid/database/Cursor;
     //   201: astore_1
     //   202: aload_1
     //   203: ifnull +201 -> 404
-    //   206: new 39	java/util/ArrayList
+    //   206: new 37	java/util/ArrayList
     //   209: dup
-    //   210: invokespecial 195	java/util/ArrayList:<init>	()V
+    //   210: invokespecial 193	java/util/ArrayList:<init>	()V
     //   213: astore 6
     //   215: aload_1
-    //   216: ldc_w 409
-    //   219: invokeinterface 414 2 0
+    //   216: ldc_w 404
+    //   219: invokeinterface 409 2 0
     //   224: istore_2
     //   225: aload_1
-    //   226: invokeinterface 417 1 0
+    //   226: invokeinterface 412 1 0
     //   231: ifeq +173 -> 404
     //   234: aload_1
     //   235: iload_2
-    //   236: invokeinterface 420 2 0
-    //   241: invokestatic 423	com/tencent/mobileqq/utils/SecurityUtile:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   236: invokeinterface 415 2 0
+    //   241: invokestatic 418	com/tencent/mobileqq/utils/SecurityUtile:a	(Ljava/lang/String;)Ljava/lang/String;
     //   244: astore 7
     //   246: aload 8
     //   248: aload 7
-    //   250: invokevirtual 381	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)I
+    //   250: invokevirtual 376	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)I
     //   253: istore_3
     //   254: iload_3
     //   255: ifle -30 -> 225
     //   258: iload_3
     //   259: aload_0
-    //   260: getfield 37	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
+    //   260: getfield 35	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
     //   263: if_icmple +41 -> 304
     //   266: aload 8
-    //   268: ldc_w 383
+    //   268: ldc_w 378
     //   271: iconst_3
     //   272: anewarray 30	java/lang/Object
     //   275: dup
@@ -467,43 +466,43 @@ public class QCallProxy
     //   286: iconst_2
     //   287: iload_3
     //   288: aload_0
-    //   289: getfield 37	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
+    //   289: getfield 35	com/tencent/mobileqq/qcall/QCallProxy:jdField_a_of_type_Int	I
     //   292: isub
-    //   293: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   293: invokestatic 381	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   296: aastore
-    //   297: invokestatic 390	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   300: invokevirtual 393	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
+    //   297: invokestatic 385	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   300: invokevirtual 388	com/tencent/mobileqq/app/SQLiteDatabase:a	(Ljava/lang/String;)Z
     //   303: pop
-    //   304: new 100	java/lang/StringBuilder
+    //   304: new 98	java/lang/StringBuilder
     //   307: dup
-    //   308: invokespecial 101	java/lang/StringBuilder:<init>	()V
-    //   311: ldc_w 395
-    //   314: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   311: ldc_w 390
+    //   314: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   317: aload 7
-    //   319: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: ldc_w 397
-    //   325: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   328: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   319: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: ldc_w 392
+    //   325: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   328: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   331: astore 7
     //   333: aload_0
-    //   334: invokespecial 399	com/tencent/mobileqq/qcall/QCallProxy:a	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   337: ldc 212
+    //   334: invokespecial 394	com/tencent/mobileqq/qcall/QCallProxy:a	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   337: ldc 210
     //   339: aload 7
     //   341: aconst_null
-    //   342: invokevirtual 402	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Ljava/util/List;
+    //   342: invokevirtual 397	com/tencent/mobileqq/persistence/EntityManager:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)Ljava/util/List;
     //   345: astore 7
     //   347: aload 7
     //   349: ifnull +13 -> 362
     //   352: aload 6
     //   354: aload 7
-    //   356: invokeinterface 427 2 0
+    //   356: invokeinterface 422 2 0
     //   361: pop
     //   362: aload 6
-    //   364: new 429	agvk
+    //   364: new 424	agzx
     //   367: dup
     //   368: aload_0
-    //   369: invokespecial 430	agvk:<init>	(Lcom/tencent/mobileqq/qcall/QCallProxy;)V
-    //   372: invokestatic 191	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   369: invokespecial 425	agzx:<init>	(Lcom/tencent/mobileqq/qcall/QCallProxy;)V
+    //   372: invokestatic 189	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   375: goto -150 -> 225
     //   378: astore 7
     //   380: aload_1
@@ -513,14 +512,14 @@ public class QCallProxy
     //   386: aload 7
     //   388: ifnull -257 -> 131
     //   391: aload 7
-    //   393: invokeinterface 433 1 0
+    //   393: invokeinterface 428 1 0
     //   398: aload 6
     //   400: astore_1
     //   401: goto -270 -> 131
     //   404: aload_1
     //   405: ifnull +65 -> 470
     //   408: aload_1
-    //   409: invokeinterface 433 1 0
+    //   409: invokeinterface 428 1 0
     //   414: aload 6
     //   416: astore_1
     //   417: goto -286 -> 131
@@ -532,7 +531,7 @@ public class QCallProxy
     //   427: aload 7
     //   429: ifnull +10 -> 439
     //   432: aload 7
-    //   434: invokeinterface 433 1 0
+    //   434: invokeinterface 428 1 0
     //   439: aload 6
     //   441: athrow
     //   442: aload_1
@@ -620,7 +619,7 @@ public class QCallProxy
   
   public List a(QCallProxy.QueryRecentCallsListener arg1)
   {
-    ThreadManager.post(new agvl(this, ???), 5, null, false);
+    ThreadManager.post(new agzy(this, ???), 5, null, false);
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       ArrayList localArrayList = new ArrayList();
@@ -671,28 +670,11 @@ public class QCallProxy
   
   protected void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (jdField_a_of_type_Boolean) {
       return;
     }
-    try
-    {
-      synchronized (this.jdField_b_of_type_JavaLangObject)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          ThreadManager.post(new agvh(this), 5, null, true);
-        }
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("QCallProxy", 2, localException.getMessage(), localException);
-        }
-      }
-    }
+    jdField_a_of_type_Boolean = true;
+    ThreadManager.excute(new agzu(this), 32, null, true);
   }
   
   public void a(QCallRecent paramQCallRecent)
@@ -801,7 +783,7 @@ public class QCallProxy
     }
     e();
     c();
-    this.jdField_a_of_type_Boolean = false;
+    jdField_a_of_type_Boolean = false;
   }
   
   public void b(QCallRecent paramQCallRecent)
@@ -882,85 +864,94 @@ public class QCallProxy
     }
     this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getBoolean("Conversation_call_prompt_flag", true);
     EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    List localList1 = localEntityManager.a(QCallRecent.class, false, null, null, null, null, "lastCallTime desc", null);
-    List localList2 = this.jdField_a_of_type_JavaUtilList;
-    if (localList1 != null)
+    List localList2;
+    Object localObject5;
+    Object localObject4;
+    try
     {
-      Object localObject4;
+      List localList1 = localEntityManager.a(QCallRecent.class, false, null, null, null, null, "lastCallTime desc", null);
+      localList2 = this.jdField_a_of_type_JavaUtilList;
+      if (localList1 == null) {
+        break label515;
+      }
       long l1;
-      Object localObject3;
       boolean bool;
+      Object localObject1;
       label284:
       try
       {
         if (localList1.size() <= 0) {
-          break label505;
+          break label515;
         }
-        localObject4 = localList1;
+        localObject5 = localList1;
         if (localList1.size() > 100)
         {
           l1 = System.currentTimeMillis();
-          localObject3 = localList1;
+          localObject4 = localList1;
         }
       }
       finally {}
-      try
+    }
+    finally
+    {
+      localEntityManager.a();
+    }
+    try
+    {
+      bool = localEntityManager.b("delete from" + "recent_call" + " where lastCallTime < " + ((QCallRecent)localList1.get(90)).lastCallTime + ";");
+      localObject1 = localList1;
+      if (bool)
       {
-        bool = localEntityManager.b("delete from" + "recent_call" + " where lastCallTime < " + ((QCallRecent)localList1.get(90)).lastCallTime + ";");
-        localObject1 = localList1;
-        if (bool)
-        {
-          localObject3 = localList1;
-          localObject1 = new ArrayList(localList1.subList(0, 90));
-        }
+        localObject4 = localList1;
+        localObject1 = new ArrayList(localList1.subList(0, 90));
+      }
+      localObject5 = localObject1;
+      localObject4 = localObject1;
+      if (QLog.isColorLevel())
+      {
         localObject4 = localObject1;
-        localObject3 = localObject1;
-        if (QLog.isColorLevel())
-        {
-          localObject3 = localObject1;
-          long l2 = System.currentTimeMillis();
-          localObject3 = localObject1;
-          QLog.d("QCallProxy", 2, "doInit cache data > 100 isOk = " + bool + ",time:" + (l2 - l1));
-          localObject4 = localObject1;
-        }
+        long l2 = System.currentTimeMillis();
+        localObject4 = localObject1;
+        QLog.d("QCallProxy", 2, "doInit cache data > 100 isOk = " + bool + ",time:" + (l2 - l1));
+        localObject5 = localObject1;
       }
-      catch (Exception localException)
-      {
-        localObject4 = localObject3;
-        if (!QLog.isDevelopLevel()) {
-          break label284;
-        }
-        QLog.e("QCallProxy", 4, localException.getMessage(), localException);
-        localObject4 = localObject3;
+    }
+    catch (Exception localException)
+    {
+      localObject5 = localObject4;
+      if (!QLog.isDevelopLevel()) {
         break label284;
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      Object localObject1 = ((List)localObject4).iterator();
-      for (;;)
+      QLog.e("QCallProxy", 4, localException.getMessage(), localException);
+      localObject5 = localObject4;
+      break label284;
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    localObject1 = ((List)localObject5).iterator();
+    for (;;)
+    {
+      if (((Iterator)localObject1).hasNext())
       {
-        if (((Iterator)localObject1).hasNext())
-        {
-          localObject3 = (QCallRecent)((Iterator)localObject1).next();
-          if ((((QCallRecent)localObject3).state == 5) || (((QCallRecent)localObject3).state == 6) || (((QCallRecent)localObject3).state == 7) || (((QCallRecent)localObject3).state == 1)) {
-            ((QCallRecent)localObject3).state = 0;
-          }
-          if ((((QCallRecent)localObject3).uin != null) && (((QCallRecent)localObject3).uin.length() >= 2)) {
-            this.jdField_a_of_type_JavaUtilList.add(localObject3);
-          }
+        localObject4 = (QCallRecent)((Iterator)localObject1).next();
+        if ((((QCallRecent)localObject4).state == 5) || (((QCallRecent)localObject4).state == 6) || (((QCallRecent)localObject4).state == 7) || (((QCallRecent)localObject4).state == 1)) {
+          ((QCallRecent)localObject4).state = 0;
         }
-        else
+        if ((((QCallRecent)localObject4).uin != null) && (((QCallRecent)localObject4).uin.length() >= 2)) {
+          this.jdField_a_of_type_JavaUtilList.add(localObject4);
+        }
+      }
+      else
+      {
+        Iterator localIterator;
+        while (localIterator.hasNext())
         {
-          Iterator localIterator;
-          while (localIterator.hasNext())
-          {
-            localObject3 = (QCallRecent)localIterator.next();
-            this.jdField_a_of_type_JavaUtilMap.put(b(((QCallRecent)localObject3).uin, ((QCallRecent)localObject3).type), localObject3);
-          }
+          localObject4 = (QCallRecent)localIterator.next();
+          this.jdField_a_of_type_JavaUtilMap.put(b(((QCallRecent)localObject4).uin, ((QCallRecent)localObject4).type), localObject4);
         }
       }
     }
-    label505:
+    label515:
     if (QLog.isDevelopLevel()) {
       QLog.d("QCallProxy", 4, this.jdField_a_of_type_JavaUtilList.toString());
     }

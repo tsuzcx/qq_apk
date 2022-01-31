@@ -32,9 +32,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-import opd;
-import ope;
-import opf;
+import ots;
+import ott;
+import otu;
 
 public class FFmpegUtils
 {
@@ -291,7 +291,7 @@ public class FFmpegUtils
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.jdField_a_of_type_Int = 15;
     localFFmpegCommandUnit.jdField_a_of_type_JavaUtilArrayList = new FFmpegUtils.9(paramString1, paramString2, paramString3);
-    localFFmpegCommandUnit.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new opd(paramExecuteBinResponseCallback);
+    localFFmpegCommandUnit.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ots(paramExecuteBinResponseCallback);
     paramString1 = new ArrayList();
     paramString1.add(localFFmpegCommandUnit);
     paramContext = FFmpeg.a(paramContext, true);
@@ -382,12 +382,12 @@ public class FFmpegUtils
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.jdField_a_of_type_Int = 3;
     localFFmpegCommandUnit.jdField_a_of_type_JavaUtilArrayList = new FFmpegUtils.5(paramString2, (String)localObject2, paramInt1, paramInt2);
-    localFFmpegCommandUnit.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ope(paramExecuteBinResponseCallback);
+    localFFmpegCommandUnit.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new ott(paramExecuteBinResponseCallback);
     ((ArrayList)localObject1).add(localFFmpegCommandUnit);
     paramString2 = new FFmpegCommandUnit();
     paramString2.jdField_a_of_type_Int = 4;
     paramString2.jdField_a_of_type_JavaUtilArrayList = new FFmpegUtils.7(paramString1, (String)localObject2, paramString3, paramString4, paramBoolean2, paramInt2);
-    paramString2.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new opf(paramExecuteBinResponseCallback, (String)localObject2);
+    paramString2.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback = new otu(paramExecuteBinResponseCallback, (String)localObject2);
     ((ArrayList)localObject1).add(paramString2);
     if (paramBoolean1) {}
     for (paramContext = FFmpeg.b(paramContext, true); paramContext.a(); paramContext = FFmpeg.a(paramContext, true))
@@ -476,7 +476,7 @@ public class FFmpegUtils
   
   public static void b(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, ExecuteBinResponseCallback paramExecuteBinResponseCallback)
   {
-    a(paramContext, paramString1, paramString2, paramInt1, paramInt2, paramString3, false, paramExecuteBinResponseCallback);
+    a(paramContext, paramString1, paramString2, paramInt1, paramInt2, paramString3, true, paramExecuteBinResponseCallback);
   }
   
   public static void b(Context paramContext, String paramString1, String paramString2, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback)

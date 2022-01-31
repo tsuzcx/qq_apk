@@ -1,17 +1,18 @@
-import android.view.ViewStub;
-import com.tencent.mobileqq.activity.main.CommonLoadingView;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeaj
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aeaj(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeaj(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ViewStub localViewStub = (ViewStub)this.a.a(2131364872);
-    ((CommonLoadingView)this.a.a(2131363809)).setVisibility(8);
-    localViewStub.setVisibility(0);
+    paramDialogInterface.dismiss();
+    PresenceInterfaceImpl.a(this.a);
+    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
   }
 }
 

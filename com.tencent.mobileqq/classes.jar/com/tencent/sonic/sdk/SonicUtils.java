@@ -256,23 +256,29 @@ public class SonicUtils
   
   public static HashMap<String, String> getFilteredHeaders(Map<String, List<String>> paramMap)
   {
-    HashMap localHashMap = new HashMap();
-    if (paramMap != null)
-    {
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
+    localHashMap = new HashMap();
+    if (paramMap != null) {
+      try
       {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        if ((!"Set-Cookie".equalsIgnoreCase((String)localEntry.getKey())) && (!"Cache-Control".equalsIgnoreCase((String)localEntry.getKey())) && (!"Expires".equalsIgnoreCase((String)localEntry.getKey())) && (!"Etag".equalsIgnoreCase((String)localEntry.getKey())))
+        paramMap = paramMap.entrySet().iterator();
+        while (paramMap.hasNext())
         {
-          List localList = (List)localEntry.getValue();
-          if ((localList != null) && (1 == localList.size())) {
-            localHashMap.put(localEntry.getKey(), localList.get(0));
+          Map.Entry localEntry = (Map.Entry)paramMap.next();
+          if ((!"Set-Cookie".equalsIgnoreCase((String)localEntry.getKey())) && (!"Cache-Control".equalsIgnoreCase((String)localEntry.getKey())) && (!"Expires".equalsIgnoreCase((String)localEntry.getKey())) && (!"Etag".equalsIgnoreCase((String)localEntry.getKey())))
+          {
+            List localList = (List)localEntry.getValue();
+            if ((localList != null) && (1 == localList.size())) {
+              localHashMap.put(localEntry.getKey(), localList.get(0));
+            }
           }
         }
+        return localHashMap;
+      }
+      catch (Throwable paramMap)
+      {
+        log("SonicSdk_SonicUtils", 6, "getFilteredHeaders error! " + paramMap.getMessage());
       }
     }
-    return localHashMap;
   }
   
   public static String getMD5(String paramString)

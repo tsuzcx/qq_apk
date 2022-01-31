@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qzonealbumreddot;
 
-import agvs;
-import agvt;
+import ahaf;
+import ahag;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -27,8 +27,8 @@ public class QzonePhotoGuideNotifyService
   
   public QzonePhotoGuideNotifyService(QQAppInterface paramQQAppInterface, QzoneAlbumRedTouchManager paramQzoneAlbumRedTouchManager)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new agvs(this);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new agvt(this);
+    this.jdField_a_of_type_JavaLangRunnable = new ahaf(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ahag(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqQzonealbumreddotQzoneAlbumRedTouchManager = paramQzoneAlbumRedTouchManager;
     if (paramQQAppInterface != null) {}

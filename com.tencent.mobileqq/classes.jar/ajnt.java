@@ -1,55 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.MQLruCache;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache;
-import com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache.QueueItem;
-import java.util.LinkedList;
+import android.content.Context;
+import android.support.v4.view.PagerAdapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment.ContentViewHolder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajnt
-  implements Runnable
+  extends PagerAdapter
 {
-  public ajnt(RollangleImageView.ImageCache paramImageCache) {}
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public void run()
+  public ajnt(HomeworkGuideFragment paramHomeworkGuideFragment, Context paramContext)
   {
-    Object localObject1 = null;
-    for (;;)
-    {
-      if (this.a.a) {
-        return;
-      }
-      try
-      {
-        Thread.sleep(100L);
-        label19:
-        synchronized (this.a)
-        {
-          if (RollangleImageView.ImageCache.a(this.a) == null) {
-            return;
-          }
-        }
-        if (localObject2 != null) {
-          RollangleImageView.ImageCache.a(this.a).poll();
-        }
-        if (RollangleImageView.ImageCache.a(this.a).isEmpty()) {
-          return;
-        }
-        RollangleImageView.ImageCache.QueueItem localQueueItem = (RollangleImageView.ImageCache.QueueItem)RollangleImageView.ImageCache.a(this.a).peek();
-        ??? = RollangleImageView.a(localQueueItem.jdField_a_of_type_JavaLangString);
-        Object localObject3 = localQueueItem;
-        if (??? == null) {
-          continue;
-        }
-        RollangleImageView.a.put("troopfileimage://" + localQueueItem.jdField_a_of_type_JavaLangString, ???);
-        RollangleImageView.ImageCache.a(this.a).obtainMessage(0, new Object[] { localQueueItem.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView, localQueueItem.jdField_a_of_type_JavaLangString, ??? }).sendToTarget();
-        localObject3 = localQueueItem;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        break label19;
-      }
-    }
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    paramViewGroup.removeView((View)paramObject);
+  }
+  
+  public int getCount()
+  {
+    return HomeworkGuideFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment).size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969920, paramViewGroup, false);
+    HomeworkGuideFragment.ContentViewHolder localContentViewHolder = new HomeworkGuideFragment.ContentViewHolder(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment);
+    localContentViewHolder.a(paramInt, localView);
+    localView.setTag(localContentViewHolder);
+    HomeworkGuideFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment).add(localContentViewHolder);
+    paramViewGroup.addView(localView, 0);
+    return localView;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

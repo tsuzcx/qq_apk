@@ -31,10 +31,10 @@ public class QzoneLiveMainRuntime
     if (paramString.equals(QZonePluginUtils.a())) {
       localAppRuntime = QZoneHelper.b(BaseApplicationImpl.getApplication());
     }
-    while (!paramString.equals("qzone_vertical_video_plugin.apk")) {
+    while (!paramString.equals("qzone_weishi_feeds_plugin.apk")) {
       return localAppRuntime;
     }
-    return QZoneHelper.c(BaseApplicationImpl.getApplication());
+    return QZoneHelper.d(BaseApplicationImpl.getApplication());
   }
 }
 

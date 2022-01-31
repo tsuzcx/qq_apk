@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
+import com.tencent.mobileqq.vashealth.SSOHttpUtils;
 
-public class akrv
+class akrv
   implements Runnable
 {
-  public akrv(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
+  akrv(akru paramakru, String paramString) {}
   
   public void run()
   {
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getSystemService("input_method");
-    if ((localInputMethodManager != null) && (this.a.getCurrentFocus() != null)) {
-      localInputMethodManager.hideSoftInputFromWindow(this.a.getCurrentFocus().getWindowToken(), 0);
-    }
+    SSOHttpUtils.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

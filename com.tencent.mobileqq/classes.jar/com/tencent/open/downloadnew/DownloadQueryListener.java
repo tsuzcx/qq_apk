@@ -6,7 +6,7 @@ public abstract interface DownloadQueryListener
 {
   public abstract void a(int paramInt, String paramString);
   
-  public abstract void b_(List paramList);
+  public abstract void a(List paramList);
 }
 
 

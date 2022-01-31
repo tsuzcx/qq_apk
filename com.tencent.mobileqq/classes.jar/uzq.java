@@ -1,27 +1,22 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import cooperation.dingdong.DingdongPluginHelper;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
 
 public class uzq
-  extends ClickableSpan
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public uzq(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString, MessageForGrayTips paramMessageForGrayTips) {}
+  public uzq(ArkAppItemBubbleBuilder.Holder paramHolder1, ArkAppItemBubbleBuilder.Holder paramHolder2) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    int i = Integer.parseInt(this.jdField_a_of_type_JavaLangString);
-    DingdongPluginHelper.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a, i, this.jdField_a_of_type_ComTencentMobileqqDataMessageForGrayTips.getExtInfoFromExtStr("approval_workid"));
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
-    paramTextPaint.setUnderlineText(false);
+    if ((paramInt == 0) && (paramAppPathInfo.a != null))
+    {
+      ArkAppCenter.a(paramAppPathInfo.a, new uzr(this));
+      paramString = ArkAppCenter.b(paramAppPathInfo.a);
+      ArkAppCenter.a().postToMainThread(new uzs(this, paramString));
+    }
   }
 }
 

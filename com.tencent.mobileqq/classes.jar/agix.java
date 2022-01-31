@@ -1,17 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.armap.FrameBmpCache.EndListener;
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
 
 public class agix
-  implements FrameBmpCache.EndListener
+  implements View.OnClickListener
 {
-  public agix(ScanTorchActivity paramScanTorchActivity) {}
+  public agix(ARTipsManager paramARTipsManager, agjf paramagjf) {}
   
-  public void a(SdCardImageAnimView paramSdCardImageAnimView)
+  public void onClick(View paramView)
   {
-    paramSdCardImageAnimView.a();
-    this.a.a.post(new agiy(this));
+    this.jdField_a_of_type_Agjf.a.b();
   }
 }
 

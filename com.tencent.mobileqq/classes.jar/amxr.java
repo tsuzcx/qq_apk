@@ -1,14 +1,35 @@
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginInstaller;
+import android.os.Bundle;
+import com.tencent.mobileqq.richstatus.StatusObserver;
+import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import java.util.ArrayList;
 
 public class amxr
+  extends StatusObserver
 {
-  public amxs a;
-  public amxt a;
-  public PluginRecord a;
-  public String a;
+  private amxr(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
   
-  public amxr(QZonePluginInstaller paramQZonePluginInstaller) {}
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList paramArrayList, boolean paramBoolean3)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putInt("start", paramInt1);
+    localBundle.putInt("end", paramInt2);
+    localBundle.putBoolean("over", paramBoolean2);
+    localBundle.putSerializable("data", paramArrayList);
+    localBundle.putBoolean("isAddFromCard", paramBoolean3);
+    localBundle.putInt("which_method", 0);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
+  }
+  
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("key", paramArrayOfByte);
+    localBundle.putInt("which_method", 1);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
+  }
 }
 
 

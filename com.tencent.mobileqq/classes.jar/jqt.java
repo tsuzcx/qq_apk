@@ -1,24 +1,20 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.av.ui.BeautyToolbar;
-import com.tencent.av.widget.BidirectionSeekBar;
+import com.tencent.av.smallscreen.SmallScreenService;
 
 public class jqt
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public jqt(BeautyToolbar paramBeautyToolbar) {}
+  public jqt(SmallScreenService paramSmallScreenService) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
-    {
-      this.a.mIs1stShow = false;
-      this.a.updateTip(this.a.mSeek.getProgress());
+    if (SmallScreenService.g) {
+      this.a.b(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqt
  * JD-Core Version:    0.7.0.1
  */

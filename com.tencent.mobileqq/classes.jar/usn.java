@@ -1,28 +1,42 @@
-import android.text.TextUtils;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
 
-class usn
-  implements Runnable
+public class usn
+  extends View
 {
-  usn(usm paramusm, String paramString) {}
-  
-  public void run()
+  public usn(ComboAnimation3 paramComboAnimation3, Context paramContext)
   {
-    utd localutd;
-    if (usm.a(this.jdField_a_of_type_Usm) != null)
+    super(paramContext);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Drawable[] arrayOfDrawable = this.a.a;
+    int j = arrayOfDrawable.length;
+    int i = 0;
+    while (i < j)
     {
-      localutd = (utd)usm.a(this.jdField_a_of_type_Usm).get();
-      if (localutd != null) {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label66;
-        }
-      }
+      arrayOfDrawable[i].draw(paramCanvas);
+      i += 1;
     }
-    label66:
-    for (boolean bool = true;; bool = false)
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt1 = 0;
+    paramInt3 = paramInt4 - paramInt2;
+    Drawable[] arrayOfDrawable = this.a.a;
+    paramInt4 = arrayOfDrawable.length;
+    paramInt2 = 0;
+    while (paramInt1 < paramInt4)
     {
-      localutd.a(bool, usm.a(this.jdField_a_of_type_Usm), usm.b(this.jdField_a_of_type_Usm), this.jdField_a_of_type_JavaLangString);
-      return;
+      Drawable localDrawable = arrayOfDrawable[paramInt1];
+      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
+      paramInt2 += localDrawable.getIntrinsicWidth();
+      paramInt1 += 1;
     }
   }
 }

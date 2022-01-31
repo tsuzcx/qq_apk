@@ -1,13 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import android.graphics.Paint;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class vuk
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public vuk(GameRoomChatPie paramGameRoomChatPie) {}
+  public vuk(PhotoListPanel paramPhotoListPanel, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    Object localObject = PhotoListPanel.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel).getPaint();
+    int i = ViewUtils.a((Paint)localObject, "《");
+    int j = PhotoListPanel.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel).getLeft();
+    int k = PhotoListPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel).getRight();
+    localObject = ViewUtils.a((Paint)localObject, this.jdField_a_of_type_JavaLangString, j - k - i * 2);
+    PhotoListPanel.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel).setText("《" + (String)localObject + "》");
+    PhotoListPanel.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel).setContentDescription(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.view.GuideViewPager;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
 
 public class ajic
   implements Runnable
 {
-  public ajic(GuideViewPager paramGuideViewPager) {}
+  public ajic(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar, int paramInt) {}
   
   public void run()
   {
-    QQToast.a(this.a.getContext(), "playOnce", 0).a();
+    TroopAioMsgNavigateBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioMsgNavigateBar, this.jdField_a_of_type_Int);
   }
 }
 

@@ -168,7 +168,7 @@ public abstract class InteractPasterWidget
       throw new AssertionError();
     }
     paramView = (ViewGroup)paramView;
-    if (paramView.getId() == 2131372112)
+    if (paramView.getId() == 2131372120)
     {
       if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
         this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_b_of_type_AndroidViewView);

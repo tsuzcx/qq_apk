@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.config.struct.NearbyBannerManager;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.bubble.VipBubbleDrawable;
 
 public class abtf
-  implements Comparator
+  implements Runnable
 {
-  public abtf(NearbyBannerManager paramNearbyBannerManager) {}
+  public abtf(VipBubbleDrawable paramVipBubbleDrawable) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void run()
   {
-    if (paramFile2.lastModified() > paramFile1.lastModified()) {
-      return 1;
-    }
-    if (paramFile2.lastModified() < paramFile1.lastModified()) {
-      return -1;
-    }
-    return 0;
+    this.a.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abtf
  * JD-Core Version:    0.7.0.1
  */

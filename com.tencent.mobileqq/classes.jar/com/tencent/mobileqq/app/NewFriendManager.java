@@ -2,6 +2,7 @@ package com.tencent.mobileqq.app;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -60,13 +61,11 @@ import java.util.Observer;
 import mqq.manager.Manager;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import zhv;
-import zhw;
-import zhy;
-import zhz;
-import zia;
-import zib;
-import zic;
+import zou;
+import zov;
+import zox;
+import zoy;
+import zoz;
 
 public class NewFriendManager
   extends Observable
@@ -74,16 +73,16 @@ public class NewFriendManager
 {
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zhw(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zov(this);
   private FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
   private MayknowRecommendManager jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager;
   private PhoneContactManagerImp jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
   private QIMNewFriendManager jdField_a_of_type_ComTencentMobileqqAppQIMNewFriendManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PhoneContactManager.IPhoneContactListener jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager$IPhoneContactListener = new zhy(this);
+  private PhoneContactManager.IPhoneContactListener jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager$IPhoneContactListener = new zox(this);
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Comparator jdField_a_of_type_JavaUtilComparator = new zhv(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new zou(this);
   private HashSet jdField_a_of_type_JavaUtilHashSet = new HashSet();
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   public boolean a;
@@ -104,7 +103,7 @@ public class NewFriendManager
     this.jdField_a_of_type_ComTencentMobileqqAppQIMNewFriendManager = ((QIMNewFriendManager)paramQQAppInterface.getManager(256));
     this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager$IPhoneContactListener);
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver, true);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
   }
   
   private void a(NewFriendMessage paramNewFriendMessage)
@@ -162,7 +161,7 @@ public class NewFriendManager
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
     if ((paramString == null) || (TextUtils.isEmpty(paramString))) {}
-    while ((!paramString.equals(AppConstants.C)) && (!paramString.equals(AppConstants.ap)) && (!paramString.equals(AppConstants.K)) && (!paramString.equals(AppConstants.aw))) {
+    while ((!paramString.equals(AppConstants.C)) && (!paramString.equals(AppConstants.aq)) && (!paramString.equals(AppConstants.K)) && (!paramString.equals(AppConstants.ax))) {
       return false;
     }
     return true;
@@ -200,7 +199,7 @@ public class NewFriendManager
   private void i()
   {
     int i = d();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zhz(this, i));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zoy(this, i));
   }
   
   private void j()
@@ -345,9 +344,15 @@ public class NewFriendManager
     synchronized (this.jdField_a_of_type_JavaUtilHashSet)
     {
       this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
-      ThreadManager.executeOnFileThread(new zib(this));
-      return;
+      paramString = new StringBuilder();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      if (localIterator.hasNext())
+      {
+        paramString.append((String)localIterator.next());
+        paramString.append("#");
+      }
     }
+    BaseApplicationImpl.getApplication().getSharedPreferences("new_friend", 0).edit().putString("new_friend_list", paramString.toString()).apply();
   }
   
   public void a(String paramString1, String paramString2)
@@ -543,7 +548,7 @@ public class NewFriendManager
     {
       Collections.sort((List)localObject4, this.jdField_a_of_type_JavaUtilComparator);
       localObject3 = new NewFriendSubTitle();
-      ((NewFriendSubTitle)localObject3).title = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433325);
+      ((NewFriendSubTitle)localObject3).title = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433339);
       localArrayList1.add(new NewFriendSubTitleMessage((NewFriendSubTitle)localObject3));
       if (QLog.isColorLevel()) {
         QLog.d("NewFriendManager", 2, "loadNewFriendMsg|mLastSysMsgTotalCount = " + this.jdField_b_of_type_Int + ",notifyListSize = " + ((ArrayList)localObject4).size() + ", mSysMsgShouldAddMoreInfo = " + this.jdField_b_of_type_Boolean);
@@ -561,7 +566,7 @@ public class NewFriendManager
         i += 1;
       }
       localObject3 = new NewFriendMoreInfo();
-      ((NewFriendMoreInfo)localObject3).moreInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433326);
+      ((NewFriendMoreInfo)localObject3).moreInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433340);
       ((NewFriendMoreInfo)localObject3).type = 1000;
       localArrayList1.add(new NewFriendMoreInfoMessage((NewFriendMoreInfo)localObject3));
     }
@@ -572,9 +577,9 @@ public class NewFriendManager
         this.d = localArrayList1.size();
         Collections.sort(localArrayList2, this.jdField_a_of_type_JavaUtilComparator);
         localObject3 = new NewFriendSubTitle();
-        ((NewFriendSubTitle)localObject3).title = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433328);
+        ((NewFriendSubTitle)localObject3).title = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433342);
         localObject4 = new NewFriendMoreInfo();
-        ((NewFriendMoreInfo)localObject4).moreInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433327);
+        ((NewFriendMoreInfo)localObject4).moreInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433341);
         ((NewFriendMoreInfo)localObject4).type = 1001;
         localArrayList1.add(new NewFriendSubTitleMessage((NewFriendSubTitle)localObject3));
         localArrayList1.addAll(localArrayList2);
@@ -594,7 +599,7 @@ public class NewFriendManager
       if (((j % 20 == 0) && (!FriendSystemMsgController.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) || ((j > 20) && (!FriendSystemMsgController.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))))
       {
         localObject3 = new NewFriendMoreInfo();
-        ((NewFriendMoreInfo)localObject3).moreInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433326);
+        ((NewFriendMoreInfo)localObject3).moreInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433340);
         ((NewFriendMoreInfo)localObject3).type = 1000;
         localArrayList1.add(new NewFriendMoreInfoMessage((NewFriendMoreInfo)localObject3));
       }
@@ -629,7 +634,7 @@ public class NewFriendManager
         if (paramBoolean)
         {
           localObject3 = new NewFriendMoreInfo();
-          ((NewFriendMoreInfo)localObject3).moreInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433326);
+          ((NewFriendMoreInfo)localObject3).moreInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433340);
           ((NewFriendMoreInfo)localObject3).type = 1000;
           localArrayList1.add(new NewFriendMoreInfoMessage((NewFriendMoreInfo)localObject3));
         }
@@ -672,7 +677,7 @@ public class NewFriendManager
           break label1672;
         }
         localObject3 = new NewFriendMoreInfo();
-        ((NewFriendMoreInfo)localObject3).moreInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433326);
+        ((NewFriendMoreInfo)localObject3).moreInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getResources().getString(2131433340);
         ((NewFriendMoreInfo)localObject3).type = 1000;
         localArrayList1.add(new NewFriendMoreInfoMessage((NewFriendMoreInfo)localObject3));
         break label1672;
@@ -708,12 +713,20 @@ public class NewFriendManager
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
+    boolean bool;
     synchronized (this.jdField_a_of_type_JavaUtilHashSet)
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
-      ThreadManager.executeOnFileThread(new zic(this));
-      return bool;
+      bool = this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
+      paramString = new StringBuilder();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      if (localIterator.hasNext())
+      {
+        paramString.append((String)localIterator.next());
+        paramString.append("#");
+      }
     }
+    BaseApplicationImpl.getApplication().getSharedPreferences("new_friend", 0).edit().putString("new_friend_list", paramString.toString()).apply();
+    return bool;
   }
   
   public void addObserver(Observer paramObserver)
@@ -738,7 +751,7 @@ public class NewFriendManager
       i();
       return;
     }
-    ThreadManager.postImmediately(new zia(this), null, false);
+    ThreadManager.postImmediately(new zoz(this), null, false);
   }
   
   public void b(NewFriendManager.INewFriendListener paramINewFriendListener)

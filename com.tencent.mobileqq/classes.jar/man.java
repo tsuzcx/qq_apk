@@ -1,17 +1,17 @@
-import android.animation.ObjectAnimator;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 public class man
-  implements Runnable
+  extends CommonSkinRes
 {
-  public man(VideoFeedsAdapter paramVideoFeedsAdapter, ImageView paramImageView, ScaleAnimation paramScaleAnimation, ObjectAnimator paramObjectAnimator) {}
+  public man(ReadInJoySkinManager paramReadInJoySkinManager, AppInterface paramAppInterface) {}
   
-  public void run()
+  public Drawable a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
   }
 }
 

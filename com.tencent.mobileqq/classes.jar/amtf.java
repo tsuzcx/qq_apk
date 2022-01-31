@@ -1,26 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import java.io.File;
+import java.util.Comparator;
 
-public class amtf
-  implements URLDrawable.URLDrawableListener
+public final class amtf
+  implements Comparator
 {
-  public amtf(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public int a(File paramFile1, File paramFile2)
   {
-    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "onLoadFialed");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QzoneVerticalVideoDownloadActivity.a(this.a).setImageDrawable(paramURLDrawable);
+    long l = paramFile1.length() - paramFile2.length();
+    if (l > 0L) {
+      return 1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
   }
 }
 

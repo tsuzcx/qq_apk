@@ -1,30 +1,22 @@
-import com.tencent.av.opengl.effects.FilterProcessRender;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.util.youtu.VideoPreviewFaceOutlineDetector;
+import com.tencent.av.core.VcControllerImpl;
 
 public class jjq
-  implements Runnable
 {
-  public jjq(FilterProcessRender paramFilterProcessRender, int paramInt1, int paramInt2) {}
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public byte[] b;
+  public long c;
+  public long d;
   
-  public void run()
-  {
-    try
-    {
-      FilterProcessRender.a(this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender).doFaceDetect(this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.e, this.jdField_a_of_type_Int / 4, this.b / 4);
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a = System.currentTimeMillis();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("FilterProcessRender", 2, "faceDetect.run e = " + localThrowable);
-    }
-  }
+  public jjq(VcControllerImpl paramVcControllerImpl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jjq
  * JD-Core Version:    0.7.0.1
  */

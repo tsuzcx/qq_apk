@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import Wallet.GetSkinListRsp;
+import com.qq.taf.jce.JceOutputStream;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 
-public class xmp
-  implements DialogInterface.OnClickListener
+class xmp
+  implements Runnable
 {
-  public xmp(LoginView paramLoginView) {}
+  xmp(xmo paramxmo, GetSkinListRsp paramGetSkinListRsp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = (UpgradeDetailWrapper)this.a.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
-    UpgradeDetailActivity.a(this.a.a, paramDialogInterface, true, false, false);
+    try
+    {
+      JceOutputStream localJceOutputStream = new JceOutputStream();
+      localJceOutputStream.setServerEncoding("utf-8");
+      this.jdField_a_of_type_WalletGetSkinListRsp.writeTo(localJceOutputStream);
+      FileUtils.a(localJceOutputStream.toByteArray(), BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_Xmo.a.getCurrentAccountUin());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

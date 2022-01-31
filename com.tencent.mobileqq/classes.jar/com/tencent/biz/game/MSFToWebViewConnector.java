@@ -111,14 +111,14 @@ public class MSFToWebViewConnector
     //   146: ifeq +704 -> 850
     //   149: aload 6
     //   151: invokeinterface 117 1 0
-    //   156: checkcast 119	kmj
+    //   156: checkcast 119	koq
     //   159: astore 7
     //   161: aload 7
-    //   163: getfield 122	kmj:jdField_a_of_type_Int	I
+    //   163: getfield 122	koq:jdField_a_of_type_Int	I
     //   166: iload 4
     //   168: if_icmpne -29 -> 139
     //   171: aload 7
-    //   173: getfield 125	kmj:jdField_a_of_type_Long	J
+    //   173: getfield 125	koq:jdField_a_of_type_Long	J
     //   176: aload_1
     //   177: getfield 128	OnlinePushPack/SvcReqPushMsg:lUin	J
     //   180: lcmp
@@ -188,19 +188,19 @@ public class MSFToWebViewConnector
     //   299: invokevirtual 153	java/util/ArrayList:size	()I
     //   302: bipush 60
     //   304: if_icmpge +365 -> 669
-    //   307: new 119	kmj
+    //   307: new 119	koq
     //   310: dup
     //   311: aload_0
     //   312: aconst_null
-    //   313: invokespecial 156	kmj:<init>	(Lcom/tencent/biz/game/MSFToWebViewConnector;Lkmi;)V
+    //   313: invokespecial 156	koq:<init>	(Lcom/tencent/biz/game/MSFToWebViewConnector;Lkop;)V
     //   316: astore 6
     //   318: aload 6
     //   320: iload 4
-    //   322: putfield 122	kmj:jdField_a_of_type_Int	I
+    //   322: putfield 122	koq:jdField_a_of_type_Int	I
     //   325: aload 6
     //   327: aload_1
     //   328: getfield 128	OnlinePushPack/SvcReqPushMsg:lUin	J
-    //   331: putfield 125	kmj:jdField_a_of_type_Long	J
+    //   331: putfield 125	koq:jdField_a_of_type_Long	J
     //   334: aload_0
     //   335: getfield 39	com/tencent/biz/game/MSFToWebViewConnector:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   338: aload 6

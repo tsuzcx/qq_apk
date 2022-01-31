@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import com.tencent.qphone.base.util.QLog;
 
-public class acvj
+class acvj
   implements Runnable
 {
-  public acvj(FileManagerRSWorker paramFileManagerRSWorker, long paramLong) {}
+  acvj(acvi paramacvi) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.f, this.jdField_a_of_type_Long);
+    this.a.a.a.c = System.currentTimeMillis();
+    try
+    {
+      this.a.a.a.a.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
+      QLog.i("<FileAssistant>FilePreviewActivity", 1, "javascript:qpreview.onClientResponse('addMorePage',{})");
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("<FileAssistant>FilePreviewActivity", 1, localException.toString());
+    }
   }
 }
 

@@ -28,7 +28,7 @@ public class DiscMessageManager
   public String a(String paramString1, String paramString2)
   {
     if (this.a.getCurrentAccountUin().equals(paramString1)) {
-      return this.a.getApp().getResources().getString(2131435048);
+      return this.a.getApp().getResources().getString(2131435064);
     }
     return ContactUtils.c(this.a, paramString2, paramString1);
   }

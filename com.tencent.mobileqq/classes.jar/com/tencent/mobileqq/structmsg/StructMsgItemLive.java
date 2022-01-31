@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
-import aiii;
-import aiij;
+import aind;
+import aine;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -34,7 +34,7 @@ public class StructMsgItemLive
   
   public StructMsgItemLive()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiij(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aine(this);
     this.jdField_a_of_type_JavaLangString = "live";
   }
   
@@ -71,7 +71,7 @@ public class StructMsgItemLive
         ((LinearLayout.LayoutParams)localObject).setMargins(0, 0, 0, 0);
         paramView.setPadding(AIOUtils.a(7.0F, localResources), AIOUtils.a(8.0F, localResources), AIOUtils.a(7.0F, localResources), AIOUtils.a(8.0F, localResources));
         paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        paramView.setBackgroundResource(2130841286);
+        paramView.setBackgroundResource(2130841312);
         localLinearLayout.addView(paramView);
         localObject = new TextView(paramContext);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
@@ -100,7 +100,7 @@ public class StructMsgItemLive
       }
       localLinearLayout.setTag(paramBundle);
       paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout.setOnLongClickListener(new aiii(this));
+      paramBundle.jdField_a_of_type_ComTencentBizNowNowVideoLayout.setOnLongClickListener(new aind(this));
       return localLinearLayout;
     }
   }

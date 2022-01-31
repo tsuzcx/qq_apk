@@ -220,14 +220,14 @@ public class ArResourceConfigUtils
     //   105: astore_0
     //   106: aload_0
     //   107: invokevirtual 119	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
-    //   110: astore 6
+    //   110: astore 5
     //   112: sipush 8192
     //   115: newarray byte
-    //   117: astore 5
-    //   119: aload 6
+    //   117: astore 6
+    //   119: aload 5
     //   121: invokeinterface 124 1 0
     //   126: ifeq +335 -> 461
-    //   129: aload 6
+    //   129: aload 5
     //   131: invokeinterface 128 1 0
     //   136: checkcast 130	java/util/zip/ZipEntry
     //   139: astore 4
@@ -329,9 +329,9 @@ public class ArResourceConfigUtils
     //   344: invokevirtual 177	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   347: astore 4
     //   349: aload 4
-    //   351: aload 5
+    //   351: aload 6
     //   353: iconst_0
-    //   354: aload 5
+    //   354: aload 6
     //   356: arraylength
     //   357: invokevirtual 183	java/io/InputStream:read	([BII)I
     //   360: istore_2
@@ -339,7 +339,7 @@ public class ArResourceConfigUtils
     //   362: iconst_m1
     //   363: if_icmpeq +49 -> 412
     //   366: aload_3
-    //   367: aload 5
+    //   367: aload 6
     //   369: iconst_0
     //   370: iload_2
     //   371: invokevirtual 187	java/io/FileOutputStream:write	([BII)V
@@ -459,12 +459,12 @@ public class ArResourceConfigUtils
     //   524	24	3	localIOException2	java.io.IOException
     //   551	1	3	localObject2	Object
     //   59	500	4	localObject3	Object
-    //   117	251	5	arrayOfByte	byte[]
+    //   110	20	5	localEnumeration	java.util.Enumeration
     //   377	5	5	localObject4	Object
     //   446	10	5	localObject5	Object
     //   542	8	5	localObject6	Object
     //   555	8	5	localObject7	Object
-    //   110	20	6	localEnumeration	java.util.Enumeration
+    //   117	251	6	arrayOfByte	byte[]
     //   234	202	7	localObject8	Object
     //   315	123	8	localFile	java.io.File
     // Exception table:

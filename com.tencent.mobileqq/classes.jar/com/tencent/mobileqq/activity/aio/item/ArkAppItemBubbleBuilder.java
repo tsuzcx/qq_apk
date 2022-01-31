@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
@@ -31,6 +32,7 @@ import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.ArkAppMessage.Config;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForArkApp.Size;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.utils.DialogUtil;
@@ -39,9 +41,10 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import uuk;
-import uul;
-import uum;
+import com.tencent.qphone.base.util.QLog;
+import uzk;
+import uzl;
+import uzm;
 
 public class ArkAppItemBubbleBuilder
   extends BaseBubbleBuilder
@@ -71,27 +74,24 @@ public class ArkAppItemBubbleBuilder
     Object localObject1 = new ArkAppMessage.Config();
     ((ArkAppMessage.Config)localObject1).fromString(paramBaseChatItemLayout.ark_app_message.config);
     if ((((ArkAppMessage.Config)localObject1).autoSize != null) && (((ArkAppMessage.Config)localObject1).autoSize.intValue() == 1)) {}
-    for (int i = 1;; i = 0)
+    for (int j = 1;; j = 0)
     {
-      localObject1 = (ArkAppItemBubbleBuilder.Holder)paramViewHolder;
+      ArkAppItemBubbleBuilder.Holder localHolder = (ArkAppItemBubbleBuilder.Holder)paramViewHolder;
       paramViewHolder = paramView;
       if (paramView == null)
       {
-        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968741, null);
-        ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramViewHolder.findViewById(2131363312));
-        ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewHolder.findViewById(2131363317));
-        ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363318));
-        ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363319));
-        ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setTag(localObject1);
-        paramViewHolder.findViewById(2131363311).setPadding(0, 0, 0, 0);
-        paramView = (ArkAppLoadLayout)paramViewHolder.findViewById(2131363313);
+        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968744, null);
+        localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramViewHolder.findViewById(2131363329));
+        localHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewHolder.findViewById(2131363334));
+        localHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.findViewById(2131363335));
+        localHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131363336));
+        localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setTag(localHolder);
+        paramViewHolder.findViewById(2131363328).setPadding(0, 0, 0, 0);
+        paramView = (ArkAppLoadLayout)paramViewHolder.findViewById(2131363330);
         localObject2 = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject2).setMargins(5, 5, 5, 5);
         paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = paramView;
-        ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        paramView = new uuk(this, (ArkAppItemBubbleBuilder.Holder)localObject1, paramBaseChatItemLayout);
-        ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setLoadCallback(paramView);
+        localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = paramView;
       }
       if (ArkTipsManager.a().a(paramChatMessage.uniseq)) {
         paramBaseChatItemLayout.arkContainer = ArkTipsManager.a().a();
@@ -99,34 +99,51 @@ public class ArkAppItemBubbleBuilder
       if (paramBaseChatItemLayout.arkContainer == null) {
         paramBaseChatItemLayout.arkContainer = new ArkAioContainerWrapper();
       }
-      paramView = ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout;
+      paramView = localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout;
       paramBaseChatItemLayout.arkContainer.a(paramBaseChatItemLayout.ark_app_message.appName, paramBaseChatItemLayout.ark_app_message.appView, paramBaseChatItemLayout.ark_app_message.appMinVersion, paramBaseChatItemLayout.ark_app_message.metaList, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().scaledDensity, paramBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      int j = BaseChatItemLayout.e;
-      Object localObject2 = paramBaseChatItemLayout.arkContainer;
-      ArkAppView localArkAppView;
-      if (i != 0)
+      localHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      Object localObject2 = new uzk(this, localHolder, paramBaseChatItemLayout);
+      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setLoadCallback((ArkViewImplement.LoadCallback)localObject2);
+      int i = BaseChatItemLayout.e;
+      int k = AIOUtils.a(390.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      if (MessageForArkApp.isSetSizeByConfig((ArkAppMessage.Config)localObject1))
       {
-        i = j;
-        ((ArkAioContainerWrapper)localObject2).setFixSize(i, -1);
-        paramBaseChatItemLayout.arkContainer.setHintSize(-1, j);
-        paramBaseChatItemLayout.arkContainer.a(-1, j);
-        paramBaseChatItemLayout.arkContainer.setMaxSize(BaseChatItemLayout.d, -1);
-        ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_b_of_type_JavaLangString = paramBaseChatItemLayout.msg;
-        localObject2 = ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
-        localArkAppView = ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
-        ((ArkViewImplement.ArkViewInterface)localObject2).setClipRadius(14.0F);
-        ((ArkViewImplement.ArkViewInterface)localObject2).setBorderType(1);
+        localObject2 = MessageForArkApp.limitToSizeRange(this.jdField_a_of_type_AndroidContentContext, ((ArkAppMessage.Config)localObject1).width.intValue(), ((ArkAppMessage.Config)localObject1).height.intValue());
+        if (localObject2 != null)
+        {
+          ArkAioContainerWrapper localArkAioContainerWrapper = paramBaseChatItemLayout.arkContainer;
+          if (j == 0) {
+            break label747;
+          }
+          j = i;
+          localArkAioContainerWrapper.setFixSize(j, ((MessageForArkApp.Size)localObject2).height);
+          if (QLog.isColorLevel())
+          {
+            float f = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().scaledDensity;
+            j = (int)(((MessageForArkApp.Size)localObject2).width / f);
+            int m = (int)(((MessageForArkApp.Size)localObject2).height / f);
+            QLog.d("ArkAppItemBubbleBuilder", 2, "width_from_sdk:" + ((ArkAppMessage.Config)localObject1).width + ", height_from_sdk:" + ((ArkAppMessage.Config)localObject1).height + ", scale:" + f + ", realwidth:" + j + ", realheight:" + m);
+          }
+        }
+        paramBaseChatItemLayout.arkContainer.setHintSize(-1, i);
+        paramBaseChatItemLayout.arkContainer.a(-1, i);
+        paramBaseChatItemLayout.arkContainer.setMaxSize(BaseChatItemLayout.d, k);
+        localHolder.jdField_b_of_type_JavaLangString = paramBaseChatItemLayout.msg;
+        localObject1 = localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+        localObject2 = localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+        ((ArkViewImplement.ArkViewInterface)localObject1).setClipRadius(14.0F);
+        ((ArkViewImplement.ArkViewInterface)localObject1).setBorderType(1);
         if (paramChatMessage.isSend()) {
-          break label571;
+          break label790;
         }
       }
-      label571:
+      label790:
       for (boolean bool = true;; bool = false)
       {
-        ((ArkViewImplement.ArkViewInterface)localObject2).setAlignLeft(bool);
-        localArkAppView.a(paramBaseChatItemLayout.arkContainer, paramView);
-        ((ArkViewImplement.ArkViewInterface)localObject2).setOnTouchListener(paramOnLongClickAndTouchListener);
-        ((ArkViewImplement.ArkViewInterface)localObject2).setOnLongClickListener(paramOnLongClickAndTouchListener);
+        ((ArkViewImplement.ArkViewInterface)localObject1).setAlignLeft(bool);
+        ((ArkAppContainer.ArkViewExtraInterface)localObject2).a(paramBaseChatItemLayout.arkContainer, paramView);
+        ((ArkViewImplement.ArkViewInterface)localObject1).setOnTouchListener(paramOnLongClickAndTouchListener);
+        ((ArkViewImplement.ArkViewInterface)localObject1).setOnLongClickListener(paramOnLongClickAndTouchListener);
         if (paramView != null)
         {
           paramView.setOnTouchListener(paramOnLongClickAndTouchListener);
@@ -134,16 +151,24 @@ public class ArkAppItemBubbleBuilder
         }
         if (jdField_b_of_type_Boolean)
         {
-          if ((((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_b_of_type_JavaLangStringBuilder != null) && (((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_b_of_type_JavaLangStringBuilder.length() > 0)) {
-            ((ArkAppItemBubbleBuilder.Holder)localObject1).jdField_b_of_type_JavaLangStringBuilder.setLength(0);
+          if ((localHolder.jdField_b_of_type_JavaLangStringBuilder != null) && (localHolder.jdField_b_of_type_JavaLangStringBuilder.length() > 0)) {
+            localHolder.jdField_b_of_type_JavaLangStringBuilder.setLength(0);
           }
           paramChatMessage = a(paramBaseChatItemLayout);
           paramViewHolder.setContentDescription(paramChatMessage);
-          ((ArkViewImplement.ArkViewInterface)localObject2).setContentDescription(paramChatMessage);
+          ((ArkViewImplement.ArkViewInterface)localObject1).setContentDescription(paramChatMessage);
         }
         return paramViewHolder;
-        i = -1;
+        label747:
+        j = ((MessageForArkApp.Size)localObject2).width;
         break;
+        localObject1 = paramBaseChatItemLayout.arkContainer;
+        if (j != 0) {}
+        for (j = i;; j = -1)
+        {
+          ((ArkAioContainerWrapper)localObject1).setFixSize(j, -1);
+          break;
+        }
       }
     }
   }
@@ -176,7 +201,7 @@ public class ArkAppItemBubbleBuilder
     switch (paramInt)
     {
     default: 
-    case 2131363517: 
+    case 2131363536: 
       do
       {
         return;
@@ -232,10 +257,10 @@ public class ArkAppItemBubbleBuilder
     do
     {
       return;
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433649);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433650);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uul(this, paramView), new uum(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uzl(this, paramView), new uzm(this)).show();
   }
   
   protected void a(View paramView, ChatMessage paramChatMessage)
@@ -275,7 +300,7 @@ public class ArkAppItemBubbleBuilder
     for (;;)
     {
       if (i != 0) {
-        localQQCustomMenu.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
+        localQQCustomMenu.a(2131363536, this.jdField_a_of_type_AndroidContentContext.getString(2131435099), 2130838318);
       }
       ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       if ((paramView.extraflag != 32768) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView)))

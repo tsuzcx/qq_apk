@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
-import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import com.tencent.mobileqq.troop.utils.TroopAppMgr;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class ajvn
-  implements Action.OnActionEndListener
+  extends ThreadLocal
 {
-  public ajvn(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
+  public ajvn(TroopAppMgr paramTroopAppMgr) {}
   
-  public void a()
+  protected SimpleDateFormat a()
   {
-    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
-    localSequenceAction.a = true;
-    TroopGiftToAllSurfaceView.a(this.a).a(new Action[] { localSequenceAction });
+    return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
   }
 }
 

@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class tov
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tov(RegisterActivity paramRegisterActivity) {}
+  public tov(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (RegisterActivity.a(this.a) != null)
-      {
-        RegisterActivity.a(this.a).dismiss();
-        RegisterActivity.a(this.a).cancel();
-        RegisterActivity.a(this.a, null);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    this.a.u();
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
   }
 }
 

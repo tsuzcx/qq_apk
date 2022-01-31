@@ -1,30 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class lfk
-  implements Comparator
+class lfk
+  implements Runnable
 {
-  public lfk(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  lfk(lfj paramlfj) {}
   
-  public int a(lft paramlft1, lft paramlft2)
+  public void run()
   {
-    int j = 2147483647;
-    int i;
-    if (TextUtils.isEmpty(lft.a(paramlft1)))
+    try
     {
-      i = 2147483647;
-      if (!TextUtils.isEmpty(lft.a(paramlft2))) {
-        break label44;
-      }
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("channel_id", 70);
+      localJSONObject.put("click_source", "b2t_title_text");
+      PublicAccountReportUtils.a(null, "", "0X8009329", "0X8009329", 0, 0, "", "", "", localJSONObject.toString(), false);
+      QLog.d("IphoneTitleBarActivity", 2, "back_to_top: { channelID : 70 , click_source : b2t_title_text }");
+      return;
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      return i - j;
-      i = lft.a(paramlft1).codePointAt(0);
-      break;
-      label44:
-      j = lft.a(paramlft2).codePointAt(0);
+      localJSONException.printStackTrace();
     }
   }
 }

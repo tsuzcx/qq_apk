@@ -1,37 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.startup.step.LoadDex;
-import com.tencent.mobileqq.startup.step.Step;
-import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
-import com.tencent.mobileqq.statistics.battery.BatteryStats;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.RectF;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
+import java.util.Comparator;
 
 public class aife
-  implements Runnable
+  implements Comparator
 {
-  public aife(LoadDex paramLoadDex) {}
+  public aife(GLLittleBoyManager paramGLLittleBoyManager) {}
   
-  public void run()
+  public int a(GLLittleBoy paramGLLittleBoy1, GLLittleBoy paramGLLittleBoy2)
   {
-    try
-    {
-      QQAppInterface.a().a();
-      Step.AmStepFactory.b(28, this.a.a, null).c();
-      return;
+    int i = (int)paramGLLittleBoy1.b().centerY();
+    paramGLLittleBoy1.c = i;
+    int j = (int)paramGLLittleBoy2.b().centerY();
+    paramGLLittleBoy2.c = j;
+    if (i < j) {
+      return -1;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LoadDex", 2, "", localThrowable);
-        }
-      }
+    if (i > j) {
+      return 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aife
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter.WeiyunCallback;
+import mqq.os.MqqHandler;
 
 public class anpm
-  extends AnimatorListenerAdapter
+  implements WeiYunLogicCenter.WeiyunCallback
 {
-  public anpm(QIMCircleProgress paramQIMCircleProgress) {}
+  public MqqHandler a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public anpm(MqqHandler paramMqqHandler)
   {
-    this.a.a = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
+    this.a = paramMqqHandler;
+  }
+  
+  public void a()
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessageDelayed(100, 1500L);
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt, String paramString)
   {
-    this.a.a = false;
-    if ((this.a.c) && (this.a.b != null)) {
-      this.a.b.start();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
+    if (this.a != null) {
+      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpm
  * JD-Core Version:    0.7.0.1
  */

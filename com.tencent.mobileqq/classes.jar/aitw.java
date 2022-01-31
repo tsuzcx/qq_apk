@@ -1,23 +1,15 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aitw
-  implements InputFilter
+  implements Runnable
 {
-  public aitw(AbsPublishActivity paramAbsPublishActivity) {}
+  public aitw(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void run()
   {
-    if (paramCharSequence != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if (TroopBarUtils.a(paramCharSequence, '\n') + TroopBarUtils.a(paramSpanned.toString(), '\n') > 100) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
-    }
-    return null;
+    QQToast.a(BaseApplicationImpl.sApplication, "WebP格式的图片不支持原图发送，请使用标清质量来发送。", 1).a();
   }
 }
 

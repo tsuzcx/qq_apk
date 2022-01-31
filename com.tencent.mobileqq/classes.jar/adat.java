@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
-public final class adat
-  implements Parcelable.Creator
+class adat
+  implements Runnable
 {
-  public WeiYunFileInfo a(Parcel paramParcel)
-  {
-    return new WeiYunFileInfo(paramParcel);
-  }
+  adat(adap paramadap) {}
   
-  public WeiYunFileInfo[] a(int paramInt)
+  public void run()
   {
-    return new WeiYunFileInfo[paramInt];
+    this.a.a.e();
   }
 }
 

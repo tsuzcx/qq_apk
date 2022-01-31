@@ -1,136 +1,43 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.os.Looper;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
-import com.tribe.async.reactive.Stream;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class nrl
-  extends Drawable.ConstantState
+public final class nrl
+  implements ActionSheet.OnButtonClickListener
 {
-  private long jdField_a_of_type_Long;
-  @NonNull
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  @NonNull
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Error jdField_a_of_type_JavaLangError;
-  @NonNull
-  public final String a;
-  private final CopyOnWriteArraySet jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  @NonNull
-  private nrp jdField_a_of_type_Nrp;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private String b = "story.icon.ShareGroupDrawableState";
+  public nrl(StoryVideoItem paramStoryVideoItem, ActionSheet paramActionSheet) {}
   
-  public nrl(String paramString, Context paramContext, Drawable paramDrawable)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramString == null) || (paramContext == null) || (paramDrawable == null)) {
-      throw new IllegalArgumentException("params should not be null");
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.b = (this.b + "[" + System.identityHashCode(this) + "]");
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (Looper.getMainLooper() == Looper.myLooper())
+    switch (paramInt)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-      while (localIterator.hasNext())
-      {
-        nro localnro = (nro)localIterator.next();
-        if (nro.a(localnro))
-        {
-          if (paramBoolean) {
-            localnro.a(this);
-          } else {
-            localnro.b(this);
-          }
-        }
-        else
-        {
-          IconLog.a(this.b, "remove invalid callback %s", this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localnro);
-        }
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
+      if (!TextUtils.isEmpty(localQQUserUIItem.qq)) {
+        new ReportEvilToXinanHandler().b(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
       }
+      break;
     }
-    throw new IllegalStateException("notifyCallBack should be at Main-Thread");
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) || (paramBoolean))
+    for (;;)
     {
-      IconLog.a(this.b, "startLoad");
-      this.jdField_a_of_type_Nrp.a(this).subscribe(new nrm(this));
-    }
-    while ((this.jdField_a_of_type_JavaLangError == null) || (Math.abs(this.jdField_a_of_type_Long - SystemClock.uptimeMillis()) <= 10000L)) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      SLog.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
     }
-    IconLog.b(this.b, "load again, oldError=%s", this.jdField_a_of_type_JavaLangError);
-    this.jdField_a_of_type_JavaLangError = null;
-    b(true);
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Drawable a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    return null;
-  }
-  
-  public Error a()
-  {
-    return this.jdField_a_of_type_JavaLangError;
-  }
-  
-  public void a()
-  {
-    IconLog.b(this.b, "recycle");
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(nrn paramnrn)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new nro(paramnrn));
-  }
-  
-  public void a(@NonNull nrp paramnrp)
-  {
-    this.jdField_a_of_type_Nrp = paramnrp;
-  }
-  
-  public void b()
-  {
-    b(false);
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return 0;
-  }
-  
-  @NonNull
-  public Drawable newDrawable()
-  {
-    return new nrq(this, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

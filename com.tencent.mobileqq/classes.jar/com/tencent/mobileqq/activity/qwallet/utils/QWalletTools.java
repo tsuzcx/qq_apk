@@ -5,6 +5,7 @@ import LBS.Cell;
 import LBS.GPS;
 import LBS.LBSInfo;
 import LBS.Wifi;
+import Wallet.ReportHBGameReq;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,7 +13,11 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
@@ -20,11 +25,12 @@ import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.EditText;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet;
 import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager;
 import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager.ShowInfo;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.soso.SosoInterface;
@@ -38,7 +44,9 @@ import com.tencent.mobileqq.troop.widget.RedDotImageView;
 import com.tencent.mobileqq.util.CommonUtil;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletPayBridge;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -56,11 +64,12 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 import org.json.JSONObject;
-import xhp;
-import xhq;
-import xhr;
+import xnk;
+import xnl;
+import xnm;
+import xno;
+import xnp;
 
 public class QWalletTools
 {
@@ -182,7 +191,7 @@ public class QWalletTools
             j = k;
           }
           SpannableString localSpannableString = new SpannableString(str1);
-          localSpannableString.setSpan(new xhq(paramTextUrlClickListener, str2), 0, str1.length(), 33);
+          localSpannableString.setSpan(new xnl(paramTextUrlClickListener, str2), 0, str1.length(), 33);
           localSpannableString.setSpan(new ForegroundColorSpan(paramContext.getResources().getColor(2131493045)), 0, str1.length(), 33);
           localSpannableStringBuilder.append(localSpannableString);
           m = 1;
@@ -297,16 +306,16 @@ public class QWalletTools
     //   126: goto -20 -> 106
     //   129: astore 6
     //   131: aconst_null
-    //   132: astore 7
+    //   132: astore 8
     //   134: aload 5
     //   136: astore_3
     //   137: aconst_null
-    //   138: astore 8
+    //   138: astore 7
     //   140: aload 4
     //   142: astore_0
-    //   143: aload 7
+    //   143: aload 8
     //   145: astore 5
-    //   147: aload 8
+    //   147: aload 7
     //   149: astore 4
     //   151: aload 6
     //   153: invokevirtual 154	java/lang/Exception:printStackTrace	()V
@@ -547,54 +556,56 @@ public class QWalletTools
     //   578: astore 6
     //   580: goto -429 -> 151
     //   583: astore 9
-    //   585: aload 6
-    //   587: astore 8
-    //   589: aload_3
-    //   590: astore 7
-    //   592: aload 4
-    //   594: astore_0
-    //   595: aload 9
-    //   597: astore 6
-    //   599: aload 5
-    //   601: astore_3
-    //   602: aload 8
-    //   604: astore 4
-    //   606: aload 7
-    //   608: astore 5
-    //   610: goto -459 -> 151
+    //   585: aload 5
+    //   587: astore 7
+    //   589: aload 6
+    //   591: astore 5
+    //   593: aload_3
+    //   594: astore 8
+    //   596: aload 4
+    //   598: astore_0
+    //   599: aload 9
+    //   601: astore 6
+    //   603: aload 7
+    //   605: astore_3
+    //   606: aload 5
+    //   608: astore 4
+    //   610: aload 8
+    //   612: astore 5
+    //   614: goto -463 -> 151
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	613	0	paramString	String
+    //   0	617	0	paramString	String
     //   112	11	1	i	int
     //   16	2	2	bool	boolean
     //   59	217	3	localObject1	Object
     //   288	2	3	localIOException1	java.io.IOException
-    //   295	13	3	localOutOfMemoryError1	OutOfMemoryError
+    //   295	13	3	localOutOfMemoryError1	java.lang.OutOfMemoryError
     //   341	1	3	localObject2	Object
     //   361	2	3	localIOException2	java.io.IOException
     //   380	71	3	str	String
-    //   457	1	3	localOutOfMemoryError2	OutOfMemoryError
-    //   477	1	3	localOutOfMemoryError3	OutOfMemoryError
-    //   494	17	3	localOutOfMemoryError4	OutOfMemoryError
-    //   514	88	3	localObject3	Object
-    //   89	516	4	localObject4	Object
-    //   98	511	5	localObject5	Object
+    //   457	1	3	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   477	1	3	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   494	17	3	localOutOfMemoryError4	java.lang.OutOfMemoryError
+    //   514	92	3	localObject3	Object
+    //   89	520	4	localObject4	Object
+    //   98	515	5	localObject5	Object
     //   129	28	6	localException1	Exception
     //   163	278	6	localObject6	Object
     //   447	5	6	localObject7	Object
     //   462	58	6	localObject8	Object
     //   526	1	6	localException2	Exception
     //   541	29	6	localException3	Exception
-    //   578	20	6	localObject9	Object
-    //   132	368	7	localObject10	Object
-    //   508	5	7	localOutOfMemoryError5	OutOfMemoryError
+    //   578	24	6	localObject9	Object
+    //   138	362	7	localObject10	Object
+    //   508	5	7	localOutOfMemoryError5	java.lang.OutOfMemoryError
     //   517	38	7	localObject11	Object
     //   561	16	7	localException4	Exception
-    //   590	17	7	localObject12	Object
-    //   1	147	8	localObject13	Object
+    //   587	17	7	localObject12	Object
+    //   1	143	8	localObject13	Object
     //   159	181	8	localObject14	Object
-    //   587	16	8	localObject15	Object
-    //   583	13	9	localException5	Exception
+    //   594	17	8	localObject15	Object
+    //   583	17	9	localException5	Exception
     // Exception table:
     //   from	to	target	type
     //   25	33	74	java/io/IOException
@@ -793,6 +804,41 @@ public class QWalletTools
     paramDrawable.printStackTrace();
   }
   
+  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, ResultReceiver paramResultReceiver)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletTools", 2, "GrapHbWithParam params:" + paramString1 + ",gameid:" + paramString2 + ",score:" + paramString3);
+    }
+    if (paramAppInterface == null) {
+      return;
+    }
+    try
+    {
+      paramString2 = "gameid=" + paramString2 + "&point=" + paramString3;
+      paramString3 = new JSONObject(paramString1);
+      paramString3.put("feedsid", paramString2);
+      paramString1 = new Bundle();
+      paramString1.putString("extra_data", paramString3.toString());
+      paramString1.putString("callbackSn", "0");
+      paramString2 = new Bundle();
+      paramString2.putInt("PayInvokerId", 22);
+      paramString3 = Parcel.obtain();
+      paramResultReceiver.writeToParcel(paramString3, 0);
+      paramString3.setDataPosition(0);
+      paramResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramString3);
+      paramString3.recycle();
+      paramString2.putParcelable("_qwallet_payresult_receiver", paramResultReceiver);
+      paramString2.putBundle("_qwallet_payparams_data", paramString1);
+      paramString2.putString("_qwallet_payparams_tag", "graphb");
+      QWalletPayBridge.getWalletDataByService(BaseApplicationImpl.sApplication, paramAppInterface, paramString2);
+      return;
+    }
+    catch (Throwable paramAppInterface)
+    {
+      paramAppInterface.printStackTrace();
+    }
+  }
+  
   public static void a(QQAppInterface paramQQAppInterface, View paramView, int paramInt)
   {
     paramQQAppInterface = (QWalletRedManager)paramQQAppInterface.getManager(272);
@@ -809,7 +855,7 @@ public class QWalletTools
   public static void a(QQAppInterface paramQQAppInterface, RedDotImageView paramRedDotImageView, int paramInt)
   {
     paramRedDotImageView.a(false);
-    ThreadManager.executeOnSubThread(new xhr(new WeakReference(paramQQAppInterface), new WeakReference(paramRedDotImageView), paramInt));
+    ThreadManager.executeOnSubThread(new xnm(new WeakReference(paramQQAppInterface), new WeakReference(paramRedDotImageView), paramInt));
   }
   
   private static void a(File paramFile)
@@ -842,42 +888,42 @@ public class QWalletTools
     //   15: invokevirtual 321	java/io/File:exists	()Z
     //   18: ifne +26 -> 44
     //   21: aload_1
-    //   22: invokevirtual 594	java/io/File:getParentFile	()Ljava/io/File;
+    //   22: invokevirtual 684	java/io/File:getParentFile	()Ljava/io/File;
     //   25: invokevirtual 321	java/io/File:exists	()Z
     //   28: ifne +11 -> 39
     //   31: aload_1
-    //   32: invokevirtual 594	java/io/File:getParentFile	()Ljava/io/File;
+    //   32: invokevirtual 684	java/io/File:getParentFile	()Ljava/io/File;
     //   35: invokevirtual 382	java/io/File:mkdirs	()Z
     //   38: pop
     //   39: aload_1
-    //   40: invokevirtual 597	java/io/File:createNewFile	()Z
+    //   40: invokevirtual 687	java/io/File:createNewFile	()Z
     //   43: pop
-    //   44: new 599	java/io/FileOutputStream
+    //   44: new 689	java/io/FileOutputStream
     //   47: dup
     //   48: aload_1
-    //   49: invokespecial 600	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   49: invokespecial 690	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   52: astore_1
     //   53: new 332	java/io/ByteArrayOutputStream
     //   56: dup
     //   57: invokespecial 333	java/io/ByteArrayOutputStream:<init>	()V
     //   60: astore_3
-    //   61: new 602	java/io/ObjectOutputStream
+    //   61: new 692	java/io/ObjectOutputStream
     //   64: dup
     //   65: aload_3
-    //   66: invokespecial 605	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   66: invokespecial 695	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   69: astore_2
     //   70: aload_2
     //   71: aload_0
-    //   72: invokevirtual 608	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   72: invokevirtual 698	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   75: aload_2
-    //   76: invokevirtual 611	java/io/ObjectOutputStream:flush	()V
+    //   76: invokevirtual 701	java/io/ObjectOutputStream:flush	()V
     //   79: aload_3
     //   80: aload_1
-    //   81: invokevirtual 614	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
+    //   81: invokevirtual 704	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
     //   84: aload_2
     //   85: ifnull +7 -> 92
     //   88: aload_2
-    //   89: invokevirtual 615	java/io/ObjectOutputStream:close	()V
+    //   89: invokevirtual 705	java/io/ObjectOutputStream:close	()V
     //   92: aload_3
     //   93: ifnull +7 -> 100
     //   96: aload_3
@@ -885,7 +931,7 @@ public class QWalletTools
     //   100: aload_1
     //   101: ifnull +7 -> 108
     //   104: aload_1
-    //   105: invokevirtual 616	java/io/FileOutputStream:close	()V
+    //   105: invokevirtual 706	java/io/FileOutputStream:close	()V
     //   108: return
     //   109: astore_0
     //   110: aload_0
@@ -905,7 +951,7 @@ public class QWalletTools
     //   130: aload_2
     //   131: ifnull +7 -> 138
     //   134: aload_2
-    //   135: invokevirtual 615	java/io/ObjectOutputStream:close	()V
+    //   135: invokevirtual 705	java/io/ObjectOutputStream:close	()V
     //   138: aload_0
     //   139: ifnull +7 -> 146
     //   142: aload_0
@@ -913,7 +959,7 @@ public class QWalletTools
     //   146: aload_1
     //   147: ifnull -39 -> 108
     //   150: aload_1
-    //   151: invokevirtual 616	java/io/FileOutputStream:close	()V
+    //   151: invokevirtual 706	java/io/FileOutputStream:close	()V
     //   154: return
     //   155: astore_0
     //   156: aload_0
@@ -929,7 +975,7 @@ public class QWalletTools
     //   169: aload_2
     //   170: ifnull +7 -> 177
     //   173: aload_2
-    //   174: invokevirtual 615	java/io/ObjectOutputStream:close	()V
+    //   174: invokevirtual 705	java/io/ObjectOutputStream:close	()V
     //   177: aload_3
     //   178: ifnull +7 -> 185
     //   181: aload_3
@@ -937,7 +983,7 @@ public class QWalletTools
     //   185: aload_1
     //   186: ifnull +7 -> 193
     //   189: aload_1
-    //   190: invokevirtual 616	java/io/FileOutputStream:close	()V
+    //   190: invokevirtual 706	java/io/FileOutputStream:close	()V
     //   193: aload_0
     //   194: athrow
     //   195: astore_1
@@ -1036,6 +1082,62 @@ public class QWalletTools
     }
   }
   
+  public static void a(String paramString1, long paramLong, String paramString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
+  {
+    ReportHBGameReq localReportHBGameReq = new ReportHBGameReq();
+    localReportHBGameReq.sHBId = paramString1;
+    localReportHBGameReq.lUin = paramLong;
+    localReportHBGameReq.sPoint = paramString2;
+    localReportHBGameReq.iAmount = paramInt1;
+    localReportHBGameReq.bSucc = paramBoolean1;
+    localReportHBGameReq.bStart = paramBoolean2;
+    localReportHBGameReq.iGameId = paramInt2;
+    QWalletCommonServlet.a(localReportHBGameReq, new xnp());
+  }
+  
+  public static void a(String paramString, boolean paramBoolean, File paramFile)
+  {
+    QLog.d("QWalletTools", 2, "1.0 delete " + paramString + paramBoolean + paramFile + paramFile.exists());
+    if (paramString == null) {}
+    do
+    {
+      return;
+      paramString = new File(paramString);
+      QLog.d("QWalletTools", 2, "1.0 delete tag0" + paramString + paramString.exists());
+      if ((paramString == null) || (!paramString.exists()))
+      {
+        QLog.d("QWalletTools", 2, "1.0 delete tag1" + paramFile.exists());
+        return;
+      }
+      if (paramString.isFile())
+      {
+        QLog.d("QWalletTools", 2, "1.0 delete tag2" + paramString + paramString.exists() + paramFile.exists());
+        paramString.delete();
+        QLog.d("QWalletTools", 2, "1.0 delete tag3" + paramString + paramString.exists() + paramFile.exists());
+        return;
+      }
+      File[] arrayOfFile = paramString.listFiles();
+      if (arrayOfFile == null)
+      {
+        QLog.d("QWalletTools", 2, "1.0 delete tag4" + paramFile.exists());
+        return;
+      }
+      int j = arrayOfFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        File localFile = arrayOfFile[i];
+        QLog.d("QWalletTools", 2, "1.0 delete tag5" + localFile + paramFile.exists());
+        a(localFile.getAbsolutePath(), paramBoolean, paramFile);
+        QLog.d("QWalletTools", 2, "1.0 delete tag6" + localFile + paramFile.exists());
+        i += 1;
+      }
+    } while (paramBoolean);
+    QLog.d("QWalletTools", 2, "1.0 delete tag7" + paramString + paramFile.exists());
+    paramString.delete();
+    QLog.d("QWalletTools", 2, "1.0 delete tag8" + paramString + paramFile.exists());
+  }
+  
   private static void a(ZipFile paramZipFile, ZipEntry paramZipEntry, String paramString, boolean paramBoolean)
   {
     if (paramZipEntry.isDirectory()) {
@@ -1093,52 +1195,12 @@ public class QWalletTools
     if (paramAppRuntime == null) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Tenpay_mqq");
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("||");
-    localStringBuilder.append(paramInt2);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramString3);
-    localStringBuilder.append("|0|1|0|android.");
-    try
-    {
-      localStringBuilder.append(paramAppRuntime.getApplication().getPackageManager().getPackageInfo(paramAppRuntime.getApplication().getPackageName(), 0).versionName);
-      localStringBuilder.append("|");
-      localStringBuilder.append(CommonUtil.a());
-      localStringBuilder.append("|");
-      if ((!TextUtils.isEmpty(paramString4)) || (!TextUtils.isEmpty(paramString5)))
-      {
-        localStringBuilder.append(paramString4);
-        localStringBuilder.append(".");
-        localStringBuilder.append(paramString5);
-      }
-      localStringBuilder.append("|");
-      localStringBuilder.append(paramInt1);
-      localStringBuilder.append(".");
-      if (!TextUtils.isEmpty(paramString2)) {
-        localStringBuilder.append(paramString2.replace("|", ","));
-      }
-      localStringBuilder.append("|");
-      if (0L != paramLong) {
-        VACDReportUtil.a(paramLong, null, paramString3, "op_type=" + paramInt2, 0, "");
-      }
-      StatisticCollector.a(com.tencent.mobileqq.mqsafeedit.BaseApplication.getContext()).b(paramAppRuntime, localStringBuilder.toString());
-      return;
-    }
-    catch (Throwable paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
-    }
+    ThreadManager.post(new xno(paramString1, paramInt2, paramString3, paramAppRuntime, paramString4, paramString5, paramInt1, paramString2, paramLong), 2, null, true);
   }
   
   public static void a(File[] paramArrayOfFile)
   {
-    Arrays.sort(paramArrayOfFile, new xhp());
+    Arrays.sort(paramArrayOfFile, new xnk());
   }
   
   public static boolean a(String paramString, int paramInt)
@@ -1184,49 +1246,45 @@ public class QWalletTools
   
   public static boolean a(String paramString1, String paramString2)
   {
-    Object localObject1 = new File(paramString1);
-    if (!((File)localObject1).exists()) {
-      return false;
-    }
-    String str = paramString1 + "Tmp";
-    FileUtils.a(str, false);
-    StringBuilder localStringBuilder;
-    Object localObject2;
-    if ((QLog.isColorLevel()) && (!((File)localObject1).exists()))
+    File localFile2 = new File(paramString1);
+    if (!localFile2.exists()) {}
+    for (;;)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("0." + localObject1 + "\n");
-      localObject1 = new File(str);
-      localStringBuilder.append("1." + localObject1 + ((File)localObject1).exists() + "\n");
-      localObject2 = new File(paramString1 + "Interim");
-      localStringBuilder.append("2." + localObject2 + ((File)localObject2).exists() + "\n");
-      localObject2 = new File(paramString1.substring(0, paramString1.length() - 1));
-      localStringBuilder.append("3." + localObject2 + ((File)localObject2).exists() + "\n");
-      localObject2 = new StringBuilder().append("4.").append(((File)localObject1).isDirectory()).append(((File)localObject1).isFile());
-      if ((!((File)localObject1).exists()) || (((File)localObject1).isFile())) {
-        break label386;
+      return false;
+      String str = paramString1 + "Tmp";
+      File localFile1 = new File(str);
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletTools", 2, "unzipAtomically1" + localFile2 + localFile2.exists() + localFile1 + localFile1.exists());
+      }
+      FileUtils.a(str, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletTools", 2, "unzipAtomically2" + localFile2 + localFile2.exists() + localFile1 + localFile1.exists());
+      }
+      if ((QLog.isColorLevel()) && (!localFile2.exists())) {}
+      try
+      {
+        FileUtils.a(new byte[] { 0, 0 }, paramString1);
+        QLog.d("QWalletTools", 2, "0." + localFile2 + localFile2.exists());
+        a(str, false, localFile2);
+        QLog.d("QWalletTools", 2, "2." + localFile2 + localFile2.exists());
+        if ((!b(paramString1, str)) || (!localFile1.exists())) {
+          continue;
+        }
+        paramString1 = new File(paramString2);
+        FileUtils.a(paramString2, false);
+        if ((!FileUtils.b(localFile1, paramString1)) || (!paramString1.exists())) {
+          continue;
+        }
+        return true;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          localThrowable.printStackTrace();
+        }
       }
     }
-    label386:
-    for (localObject1 = ((File)localObject1).listFiles();; localObject1 = "**")
-    {
-      localStringBuilder.append(localObject1 + "\n");
-      QLog.d("QWalletTools", 2, "unzip exception:" + localStringBuilder.toString());
-      if (b(paramString1, str)) {
-        break;
-      }
-      return false;
-    }
-    paramString1 = new File(str);
-    if (!paramString1.exists()) {
-      return false;
-    }
-    localObject1 = new File(paramString2);
-    FileUtils.a(paramString2, false);
-    if (!FileUtils.b(paramString1, (File)localObject1)) {
-      return false;
-    }
-    return ((File)localObject1).exists();
   }
   
   /* Error */
@@ -1238,30 +1296,30 @@ public class QWalletTools
     //   4: aload_0
     //   5: invokespecial 318	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore 4
-    //   10: new 743	com/tencent/commonsdk/zip/QZipFile
+    //   10: new 865	com/tencent/commonsdk/zip/QZipFile
     //   13: dup
     //   14: aload 4
-    //   16: invokespecial 744	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
+    //   16: invokespecial 866	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   19: astore_3
     //   20: aload_3
     //   21: astore_0
     //   22: aload_3
-    //   23: invokevirtual 748	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   23: invokevirtual 870	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
     //   26: astore 5
     //   28: aload_3
     //   29: astore_0
     //   30: aload 5
-    //   32: invokeinterface 753 1 0
+    //   32: invokeinterface 875 1 0
     //   37: ifeq +81 -> 118
     //   40: aload_3
     //   41: astore_0
     //   42: aload_3
     //   43: aload 5
-    //   45: invokeinterface 756 1 0
-    //   50: checkcast 624	java/util/zip/ZipEntry
+    //   45: invokeinterface 878 1 0
+    //   50: checkcast 786	java/util/zip/ZipEntry
     //   53: aload_1
     //   54: iload_2
-    //   55: invokestatic 758	com/tencent/mobileqq/activity/qwallet/utils/QWalletTools:a	(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;Ljava/lang/String;Z)V
+    //   55: invokestatic 880	com/tencent/mobileqq/activity/qwallet/utils/QWalletTools:a	(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;Ljava/lang/String;Z)V
     //   58: goto -30 -> 28
     //   61: astore_0
     //   62: aload_3
@@ -1274,29 +1332,29 @@ public class QWalletTools
     //   71: ifeq +37 -> 108
     //   74: aload_1
     //   75: astore_0
-    //   76: ldc_w 577
+    //   76: ldc_w 667
     //   79: iconst_2
     //   80: new 60	java/lang/StringBuilder
     //   83: dup
     //   84: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   87: ldc_w 760
+    //   87: ldc_w 882
     //   90: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: aload 4
     //   95: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   98: aload_3
     //   99: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   102: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   105: invokestatic 762	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   105: invokestatic 884	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   108: aload_1
     //   109: ifnull +7 -> 116
     //   112: aload_1
-    //   113: invokevirtual 763	java/util/zip/ZipFile:close	()V
+    //   113: invokevirtual 885	java/util/zip/ZipFile:close	()V
     //   116: iconst_0
     //   117: ireturn
     //   118: aload_3
     //   119: ifnull +7 -> 126
     //   122: aload_3
-    //   123: invokevirtual 763	java/util/zip/ZipFile:close	()V
+    //   123: invokevirtual 885	java/util/zip/ZipFile:close	()V
     //   126: iconst_1
     //   127: ireturn
     //   128: astore_0
@@ -1314,7 +1372,7 @@ public class QWalletTools
     //   146: aload_0
     //   147: ifnull +7 -> 154
     //   150: aload_0
-    //   151: invokevirtual 763	java/util/zip/ZipFile:close	()V
+    //   151: invokevirtual 885	java/util/zip/ZipFile:close	()V
     //   154: aload_1
     //   155: athrow
     //   156: astore_0
@@ -1353,89 +1411,314 @@ public class QWalletTools
     //   10	20	168	java/lang/Exception
   }
   
+  /* Error */
   public static Drawable[] a(String paramString)
   {
-    int k = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("DecodeDrawables", 2, "folderPath:" + paramString);
-    }
-    paramString = new File(paramString);
-    if (!paramString.exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("DecodeDrawables", 2, "folderPath not exist");
-      }
-      return null;
-    }
-    paramString = paramString.listFiles();
-    if ((paramString == null) || (paramString.length <= 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("DecodeDrawables", 2, "nothing in unzip folder");
-      }
-      return null;
-    }
-    a(paramString);
-    Drawable[] arrayOfDrawable = new Drawable[paramString.length];
-    int j = 0;
-    int i = 0;
-    while (j < paramString.length)
-    {
-      if ((paramString[j] != null) && (paramString[j].isFile()) && (FileUtils.e(paramString[j].getAbsolutePath())))
-      {
-        try
-        {
-          arrayOfDrawable[j] = new BitmapDrawable(paramString[j].getAbsolutePath());
-          if ((i == 0) && (((BitmapDrawable)arrayOfDrawable[j]).getBitmap() != null)) {
-            break label286;
-          }
-          i = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("DecodeDrawables", 2, "decode fail till" + paramString[j].getAbsolutePath());
-            i = j;
-          }
-          while (i >= 0)
-          {
-            a(arrayOfDrawable[i]);
-            i -= 1;
-          }
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("DecodeDrawables", 2, "decode fail - OutOfMemoryError" + localOutOfMemoryError);
-            }
-            i = 1;
-          }
-        }
-        return null;
-      }
-      label286:
-      j += 1;
-    }
-    int m = arrayOfDrawable.length;
-    j = 0;
-    i = k;
-    while (i < m)
-    {
-      k = j;
-      if (arrayOfDrawable[i] != null) {
-        k = j + 1;
-      }
-      i += 1;
-      j = k;
-    }
-    if (j < 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("DecodeDrawables", 2, "no valid frame");
-      }
-      return null;
-    }
-    return arrayOfDrawable;
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: ifeq +30 -> 35
+    //   8: ldc_w 888
+    //   11: iconst_2
+    //   12: new 60	java/lang/StringBuilder
+    //   15: dup
+    //   16: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   19: ldc_w 890
+    //   22: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: aload_0
+    //   26: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   32: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: new 317	java/io/File
+    //   38: dup
+    //   39: aload_0
+    //   40: invokespecial 318	java/io/File:<init>	(Ljava/lang/String;)V
+    //   43: astore_0
+    //   44: aload_0
+    //   45: invokevirtual 321	java/io/File:exists	()Z
+    //   48: ifne +21 -> 69
+    //   51: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   54: ifeq +13 -> 67
+    //   57: ldc_w 888
+    //   60: iconst_2
+    //   61: ldc_w 892
+    //   64: invokestatic 884	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   67: aconst_null
+    //   68: areturn
+    //   69: aload_0
+    //   70: invokevirtual 768	java/io/File:listFiles	()[Ljava/io/File;
+    //   73: astore 7
+    //   75: aload 7
+    //   77: ifnull +9 -> 86
+    //   80: aload 7
+    //   82: arraylength
+    //   83: ifgt +21 -> 104
+    //   86: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   89: ifeq +13 -> 102
+    //   92: ldc_w 888
+    //   95: iconst_2
+    //   96: ldc_w 894
+    //   99: invokestatic 884	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   102: aconst_null
+    //   103: areturn
+    //   104: aload 7
+    //   106: invokestatic 896	com/tencent/mobileqq/activity/qwallet/utils/QWalletTools:a	([Ljava/io/File;)V
+    //   109: aload 7
+    //   111: arraylength
+    //   112: anewarray 509	android/graphics/drawable/Drawable
+    //   115: astore 8
+    //   117: iconst_0
+    //   118: istore_2
+    //   119: iconst_0
+    //   120: istore_1
+    //   121: iload_2
+    //   122: aload 7
+    //   124: arraylength
+    //   125: if_icmpge +359 -> 484
+    //   128: aload 7
+    //   130: iload_2
+    //   131: aaload
+    //   132: ifnull +345 -> 477
+    //   135: aload 7
+    //   137: iload_2
+    //   138: aaload
+    //   139: invokevirtual 757	java/io/File:isFile	()Z
+    //   142: ifeq +335 -> 477
+    //   145: aload 7
+    //   147: iload_2
+    //   148: aaload
+    //   149: invokevirtual 775	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   152: invokestatic 899	com/tencent/mobileqq/utils/FileUtils:e	(Ljava/lang/String;)Z
+    //   155: ifeq +322 -> 477
+    //   158: new 800	java/io/BufferedInputStream
+    //   161: dup
+    //   162: new 327	java/io/FileInputStream
+    //   165: dup
+    //   166: aload 7
+    //   168: iload_2
+    //   169: aaload
+    //   170: invokevirtual 775	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   173: invokespecial 900	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   176: invokespecial 807	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   179: astore 5
+    //   181: aload 5
+    //   183: astore_0
+    //   184: aload 8
+    //   186: iload_2
+    //   187: new 515	android/graphics/drawable/BitmapDrawable
+    //   190: dup
+    //   191: aload 5
+    //   193: invokespecial 901	android/graphics/drawable/BitmapDrawable:<init>	(Ljava/io/InputStream;)V
+    //   196: aastore
+    //   197: aload 5
+    //   199: ifnull +363 -> 562
+    //   202: aload 5
+    //   204: invokevirtual 816	java/io/BufferedInputStream:close	()V
+    //   207: iload_1
+    //   208: ifne +16 -> 224
+    //   211: aload 8
+    //   213: iload_2
+    //   214: aaload
+    //   215: checkcast 515	android/graphics/drawable/BitmapDrawable
+    //   218: invokevirtual 519	android/graphics/drawable/BitmapDrawable:getBitmap	()Landroid/graphics/Bitmap;
+    //   221: ifnonnull +256 -> 477
+    //   224: iload_2
+    //   225: istore_1
+    //   226: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   229: ifeq +38 -> 267
+    //   232: ldc_w 888
+    //   235: iconst_2
+    //   236: new 60	java/lang/StringBuilder
+    //   239: dup
+    //   240: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   243: ldc_w 903
+    //   246: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: aload 7
+    //   251: iload_2
+    //   252: aaload
+    //   253: invokevirtual 775	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   256: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   262: invokestatic 884	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   265: iload_2
+    //   266: istore_1
+    //   267: iload_1
+    //   268: iflt +207 -> 475
+    //   271: aload 8
+    //   273: iload_1
+    //   274: aaload
+    //   275: invokestatic 905	com/tencent/mobileqq/activity/qwallet/utils/QWalletTools:a	(Landroid/graphics/drawable/Drawable;)V
+    //   278: iload_1
+    //   279: iconst_1
+    //   280: isub
+    //   281: istore_1
+    //   282: goto -15 -> 267
+    //   285: astore_0
+    //   286: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   289: ifeq +30 -> 319
+    //   292: ldc_w 888
+    //   295: iconst_2
+    //   296: new 60	java/lang/StringBuilder
+    //   299: dup
+    //   300: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   303: ldc_w 907
+    //   306: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   309: aload_0
+    //   310: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   313: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   316: invokestatic 884	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   319: iconst_1
+    //   320: istore_1
+    //   321: goto -114 -> 207
+    //   324: astore 6
+    //   326: aconst_null
+    //   327: astore 5
+    //   329: aload 5
+    //   331: astore_0
+    //   332: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   335: ifeq +34 -> 369
+    //   338: aload 5
+    //   340: astore_0
+    //   341: ldc_w 888
+    //   344: iconst_2
+    //   345: new 60	java/lang/StringBuilder
+    //   348: dup
+    //   349: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   352: ldc_w 909
+    //   355: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   358: aload 6
+    //   360: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   363: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   366: invokestatic 884	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   369: aload 5
+    //   371: ifnull +186 -> 557
+    //   374: aload 5
+    //   376: invokevirtual 816	java/io/BufferedInputStream:close	()V
+    //   379: iconst_1
+    //   380: istore_1
+    //   381: goto -174 -> 207
+    //   384: astore_0
+    //   385: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   388: ifeq +30 -> 418
+    //   391: ldc_w 888
+    //   394: iconst_2
+    //   395: new 60	java/lang/StringBuilder
+    //   398: dup
+    //   399: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   402: ldc_w 907
+    //   405: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   408: aload_0
+    //   409: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   412: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   415: invokestatic 884	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   418: iconst_1
+    //   419: istore_1
+    //   420: goto -213 -> 207
+    //   423: astore 5
+    //   425: aconst_null
+    //   426: astore_0
+    //   427: aload_0
+    //   428: ifnull +7 -> 435
+    //   431: aload_0
+    //   432: invokevirtual 816	java/io/BufferedInputStream:close	()V
+    //   435: aload 5
+    //   437: athrow
+    //   438: astore_0
+    //   439: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   442: ifeq -7 -> 435
+    //   445: ldc_w 888
+    //   448: iconst_2
+    //   449: new 60	java/lang/StringBuilder
+    //   452: dup
+    //   453: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   456: ldc_w 907
+    //   459: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   462: aload_0
+    //   463: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   466: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   469: invokestatic 884	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   472: goto -37 -> 435
+    //   475: aconst_null
+    //   476: areturn
+    //   477: iload_2
+    //   478: iconst_1
+    //   479: iadd
+    //   480: istore_2
+    //   481: goto -360 -> 121
+    //   484: aload 8
+    //   486: arraylength
+    //   487: istore 4
+    //   489: iconst_0
+    //   490: istore_2
+    //   491: iload_3
+    //   492: istore_1
+    //   493: iload_1
+    //   494: iload 4
+    //   496: if_icmpge +25 -> 521
+    //   499: iload_2
+    //   500: istore_3
+    //   501: aload 8
+    //   503: iload_1
+    //   504: aaload
+    //   505: ifnull +7 -> 512
+    //   508: iload_2
+    //   509: iconst_1
+    //   510: iadd
+    //   511: istore_3
+    //   512: iload_1
+    //   513: iconst_1
+    //   514: iadd
+    //   515: istore_1
+    //   516: iload_3
+    //   517: istore_2
+    //   518: goto -25 -> 493
+    //   521: iload_2
+    //   522: iconst_1
+    //   523: if_icmpge +21 -> 544
+    //   526: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   529: ifeq +13 -> 542
+    //   532: ldc_w 888
+    //   535: iconst_2
+    //   536: ldc_w 911
+    //   539: invokestatic 884	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   542: aconst_null
+    //   543: areturn
+    //   544: aload 8
+    //   546: areturn
+    //   547: astore 5
+    //   549: goto -122 -> 427
+    //   552: astore 6
+    //   554: goto -225 -> 329
+    //   557: iconst_1
+    //   558: istore_1
+    //   559: goto -352 -> 207
+    //   562: goto -355 -> 207
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	565	0	paramString	String
+    //   120	439	1	i	int
+    //   118	406	2	j	int
+    //   1	516	3	k	int
+    //   487	10	4	m	int
+    //   179	196	5	localBufferedInputStream	BufferedInputStream
+    //   423	13	5	localObject1	Object
+    //   547	1	5	localObject2	Object
+    //   324	35	6	localThrowable1	Throwable
+    //   552	1	6	localThrowable2	Throwable
+    //   73	177	7	arrayOfFile	File[]
+    //   115	430	8	arrayOfDrawable	Drawable[]
+    // Exception table:
+    //   from	to	target	type
+    //   202	207	285	java/io/IOException
+    //   158	181	324	java/lang/Throwable
+    //   374	379	384	java/io/IOException
+    //   158	181	423	finally
+    //   431	435	438	java/io/IOException
+    //   184	197	547	finally
+    //   332	338	547	finally
+    //   341	369	547	finally
+    //   184	197	552	java/lang/Throwable
   }
   
   public static long b(String paramString)

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.service.gamecenter;
 
-import ahxh;
-import ahxi;
-import ahxj;
-import ahxk;
+import aiby;
+import aibz;
+import aica;
+import aicb;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -118,7 +118,7 @@ public class AppLaucherHelper
   
   private void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    localahxk = new ahxk(this, System.currentTimeMillis(), paramString3, paramContext, paramInt);
+    localaicb = new aicb(this, System.currentTimeMillis(), paramString3, paramContext, paramInt);
     if (this.jdField_a_of_type_MqqAppNewIntent == null) {
       this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(paramContext, ProtoServlet.class);
     }
@@ -189,7 +189,7 @@ public class AppLaucherHelper
         try
         {
           this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localAuthorizeRequest.toByteArray());
-          this.jdField_a_of_type_MqqAppNewIntent.setObserver(localahxk);
+          this.jdField_a_of_type_MqqAppNewIntent.setObserver(localaicb);
           paramAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 2000L);
           return;
@@ -261,7 +261,7 @@ public class AppLaucherHelper
     }
     jdField_a_of_type_Boolean = true;
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new ahxj(this, Looper.getMainLooper(), paramContext, paramString3, paramInt, paramAppInterface, paramString1, paramString2);
+      this.jdField_a_of_type_AndroidOsHandler = new aica(this, Looper.getMainLooper(), paramContext, paramString3, paramInt, paramAppInterface, paramString1, paramString2);
     }
     if (paramString2.startsWith("?")) {}
     for (this.jdField_a_of_type_JavaLangString = paramString2.substring(1);; this.jdField_a_of_type_JavaLangString = paramString2)
@@ -284,7 +284,7 @@ public class AppLaucherHelper
     }
     jdField_a_of_type_Boolean = true;
     if (this.jdField_b_of_type_AndroidOsHandler == null) {
-      this.jdField_b_of_type_AndroidOsHandler = new ahxh(this);
+      this.jdField_b_of_type_AndroidOsHandler = new aiby(this);
     }
     Long localLong = Long.valueOf(0L);
     try
@@ -304,7 +304,7 @@ public class AppLaucherHelper
       paramString3 = new WtloginHelper(paramAppInterface.getApplication().getApplicationContext());
       paramString5 = util.getPkgSigFromApkName(paramContext, paramString4);
       paramString3.GetA1WithA1(paramAppInterface.getAccount(), 16L, 16L, paramString4.getBytes(), 1L, paramString2.longValue(), l1, "5.2".getBytes(), paramString5, new WUserSigInfo(), new WFastLoginInfo());
-      paramString3.SetListener(new ahxi(this, paramString1, paramString3, paramInt, paramContext));
+      paramString3.SetListener(new aibz(this, paramString1, paramString3, paramInt, paramContext));
       this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
       return true;
     }

@@ -1,51 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ApolloPanelManager.PanelClickCallback;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.script.SpriteBridge;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.script.callback.ISpriteTaskInterface;
 
 public class yyr
-  implements ApolloPanelManager.PanelClickCallback
+  implements Runnable
 {
-  public yyr(ApolloPanel paramApolloPanel) {}
+  public yyr(SpriteBridge paramSpriteBridge, SpriteTaskParam paramSpriteTaskParam) {}
   
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(paramInt));
-    if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
+    if (SpriteBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge) != null)
     {
-      if ((!paramBoolean2) || (paramInt >= 5)) {
-        break label110;
+      if (SpriteBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge).a()) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.j = 1;
       }
-      this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (!paramBoolean1) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      ThreadManager.getUIHandler().removeCallbacks(ApolloPanel.a(this.a));
+      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.a = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge;
+      SpriteBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge).a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
     }
-    label94:
-    label110:
-    do
-    {
-      do
-      {
-        ThreadManager.getUIHandler().postDelayed(ApolloPanel.a(this.a), 5000L);
-        do
-        {
-          return;
-        } while (paramInt <= 0);
-        this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        return;
-        this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      } while ((paramInt != 0) || (!paramBoolean1));
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null));
-    ApolloPanel.a(this.a, this.a.jdField_b_of_type_AndroidWidgetLinearLayout, 51, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getString(2131438231), 2);
   }
 }
 

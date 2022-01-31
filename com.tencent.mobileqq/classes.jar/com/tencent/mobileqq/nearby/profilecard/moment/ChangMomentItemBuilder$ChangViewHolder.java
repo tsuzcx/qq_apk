@@ -11,7 +11,7 @@ public class ChangMomentItemBuilder$ChangViewHolder
   public View f;
   public ImageView f;
   public ImageView g;
-  public TextView j;
+  public TextView i;
   
   public ChangMomentItemBuilder$ChangViewHolder(ChangMomentItemBuilder paramChangMomentItemBuilder)
   {

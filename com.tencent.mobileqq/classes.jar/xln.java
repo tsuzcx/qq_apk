@@ -1,89 +1,47 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.IDragViewProvider;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.DownloadCallback;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.File;
+import java.util.Map;
 
 public class xln
-  implements Runnable
+  extends DownloadListener
 {
-  private int jdField_a_of_type_Int;
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  public xln(PreloadManager paramPreloadManager, PreloadManager.DownloadCallback paramDownloadCallback) {}
   
-  public xln(DragFrameLayout paramDragFrameLayout, PointF paramPointF)
+  public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramPointF);
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public Bitmap a()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Int >= 0)
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_Int >= DragFrameLayout.a().length) {}
+    int i = -5;
+    super.onDoneFile(paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "downloadRes|done" + paramDownloadTask.jdField_a_of_type_JavaLangString + "|" + paramDownloadTask.jdField_a_of_type_Int);
     }
-    try
+    Object localObject = paramDownloadTask.a();
+    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
+    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
+    if (paramDownloadTask.jdField_a_of_type_Int == 0)
     {
-      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.getResources(), DragFrameLayout.a()[this.jdField_a_of_type_Int]);
-      return localObject1;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      do
-      {
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.e("DragRelativeLayout", 2, "decodeBitmap failed" + localOutOfMemoryError, localOutOfMemoryError);
-    }
-    return null;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_Int == DragFrameLayout.a().length)
-    {
-      if (this == DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout)) {
-        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, null);
-      }
-      DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, null);
-      if (DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout) == 2) {
-        if (DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout) == null) {
-          break label221;
-        }
+      i = 0;
+      if (localObject != null) {
+        break label146;
       }
     }
-    label221:
-    for (List localList = DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout).a();; localList = null)
+    label146:
+    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager))
     {
-      if ((DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout) != null) && (localList != null) && (localList.size() > 0))
-      {
-        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, 5);
-        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, new xlm(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, localList));
-        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, null);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.invalidate();
-        return;
-        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Drag", 2, "DONE!");
-        }
-        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$DownloadCallback.onDownloadResFinished(localPreloadModule.mid, i, ((File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
+      return;
+      if (paramDownloadTask.jdField_a_of_type_Int == -5) {
         break;
-        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Drag", 2, "DONE!");
-        }
-        DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, true);
-        break;
-        this.jdField_a_of_type_Int += 1;
       }
+      i = -6;
+      break;
     }
   }
 }

@@ -1,24 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleItem;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.scribble.ScribbleMsgUtils.CombineCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class urz
-  implements ScribbleMsgUtils.CombineCallback
+  implements Runnable
 {
-  public urz(DoodlePanel paramDoodlePanel, DoodleItem paramDoodleItem) {}
+  public urz(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt, ChatMessage paramChatMessage) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    QLog.i("Scribble", 2, "bsuc " + paramInt);
-    new Handler(Looper.getMainLooper()).post(new usa(this, paramInt));
-  }
-  
-  public boolean a(String paramString)
-  {
-    return DoodlePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodlePanel, paramString, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleItem);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(1, 200, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) });
   }
 }
 

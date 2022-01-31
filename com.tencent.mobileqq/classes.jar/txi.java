@@ -1,18 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
 
-class txi
-  implements Runnable
+public class txi
+  implements View.OnClickListener
 {
-  txi(txh paramtxh, Handler paramHandler) {}
+  public txi(SigCommentListActivity paramSigCommentListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = ((TroopGagMgr)this.jdField_a_of_type_Txh.a.app.getManager(47)).a(this.jdField_a_of_type_Txh.a.a, false);
-    this.jdField_a_of_type_AndroidOsHandler.post(new txj(this, localArrayList));
+    this.a.a(true, true);
   }
 }
 

@@ -1,18 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.widget.XListView;
 
-public class uar
-  implements View.OnTouchListener
+class uar
+  implements Runnable
 {
-  public uar(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
+  uar(uaq paramuaq) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if ((this.a.a.a.getAdapter() instanceof BaseAdapter)) {
+      ((BaseAdapter)this.a.a.a.getAdapter()).notifyDataSetChanged();
+    }
   }
 }
 

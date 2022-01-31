@@ -1,17 +1,17 @@
 package com.tencent.kingkong;
 
 import android.os.Looper;
-import rcs;
+import rhk;
 
 public class UpdateManager$UpdateThread
   extends Thread
 {
-  private rcs a;
+  private rhk a;
   
   public void run()
   {
     Looper.prepare();
-    this.a = new rcs();
+    this.a = new rhk();
     Looper.loop();
   }
 }

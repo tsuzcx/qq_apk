@@ -1,22 +1,29 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class niv
-  implements Runnable
+  extends QQStoryObserver
 {
-  public niv(VideoPlayModeBase paramVideoPlayModeBase, QQStoryLoadingView paramQQStoryLoadingView, QQStoryVideoPlayerErrorView paramQQStoryVideoPlayerErrorView, int paramInt, StoryVideoItem paramStoryVideoItem) {}
+  public niv(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.getVisibility() == 0) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.getVisibility() == 0))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a.postDelayed(this, 50L);
-      return;
+    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      QQToast.a(this.a.a.a, 2, "已关注，可随时查看对方的最新视频", 0).a();
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    do
+    {
+      return;
+      if ((!paramBoolean1) && (paramBoolean2))
+      {
+        QQToast.a(this.a.a.a, 1, "关注失败，请稍后重试", 0).a();
+        return;
+      }
+    } while ((paramBoolean1) || (paramBoolean2));
+    QQToast.a(this.a.a.a, 1, "取消关注失败，请稍后重试", 0).a();
   }
 }
 

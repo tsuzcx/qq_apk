@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="12.0dip" android:paddingTop="20.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a096a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="今天" />
-    <com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27e1" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="162.0dip" android:layout_marginTop="10.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a096a" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27d8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021786" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27d9" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="12.0dip" android:scaleType="fitStart" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a27da" />
+    <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27da" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginBottom="12.0dip" android:lines="1" android:layout_alignParentBottom="true" />
 </RelativeLayout>

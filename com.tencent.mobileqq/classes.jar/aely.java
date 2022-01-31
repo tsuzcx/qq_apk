@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
-import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.ViewHolder;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
+import java.util.HashMap;
 
 public class aely
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aely(NearbyFragmentEnterAdapter paramNearbyFragmentEnterAdapter) {}
+  public aely(PngFrameManager paramPngFrameManager, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    NearbyFragmentEnterAdapter.ViewHolder localViewHolder = (NearbyFragmentEnterAdapter.ViewHolder)paramView.getTag();
-    if (this.a.a != null) {
-      this.a.a.onItemClick(null, paramView, localViewHolder.a, localViewHolder.a);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.put(Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aely
  * JD-Core Version:    0.7.0.1
  */

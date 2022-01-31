@@ -1,11 +1,19 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class aauu
-  implements Runnable
+  implements ArkAppCenter.OnGetAppIcon
 {
-  aauu(aaut paramaaut) {}
+  aauu(aaut paramaaut, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run() {}
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364066)).setImageBitmap(paramBitmap);
+    }
+  }
 }
 
 

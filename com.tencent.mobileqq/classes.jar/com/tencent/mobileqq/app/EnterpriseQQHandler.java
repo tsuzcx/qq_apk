@@ -40,7 +40,7 @@ import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 import mqq.os.MqqHandler;
-import zkg;
+import zrd;
 
 public class EnterpriseQQHandler
   extends BusinessHandler
@@ -91,11 +91,11 @@ public class EnterpriseQQHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList begin.");
     }
-    zkg localzkg = new zkg();
+    zrd localzrd = new zrd();
     if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess()) || (paramObject == null))
     {
-      localzkg.jdField_a_of_type_Int = -1;
-      localzkg.jdField_a_of_type_Boolean = true;
+      localzrd.jdField_a_of_type_Int = -1;
+      localzrd.jdField_a_of_type_Boolean = true;
       if (QLog.isColorLevel()) {
         QLog.d("Q.enterprise.EnterpriseQQHandler", 2, "handleGetList error");
       }
@@ -107,8 +107,8 @@ public class EnterpriseQQHandler
     }
     if (i != 1000)
     {
-      localzkg.jdField_a_of_type_Int = -1;
-      localzkg.jdField_a_of_type_Boolean = true;
+      localzrd.jdField_a_of_type_Int = -1;
+      localzrd.jdField_a_of_type_Boolean = true;
       return;
     }
     long l1 = paramToServiceMsg.extraData.getLong("begin");
@@ -125,19 +125,19 @@ public class EnterpriseQQHandler
           continue;
         }
         i = ((mobileqq_mp.RetInfo)paramToServiceMsg.ret_info.get()).ret_code.get();
-        localzkg.jdField_a_of_type_Int = i;
+        localzrd.jdField_a_of_type_Int = i;
         if (i == 0) {
           continue;
         }
-        localzkg.jdField_a_of_type_Boolean = true;
+        localzrd.jdField_a_of_type_Boolean = true;
         bool = false;
       }
       catch (Exception paramToServiceMsg)
       {
         long l3;
         RecentUser localRecentUser;
-        localzkg.jdField_a_of_type_Int = -1;
-        localzkg.jdField_a_of_type_Boolean = true;
+        localzrd.jdField_a_of_type_Int = -1;
+        localzrd.jdField_a_of_type_Boolean = true;
         paramToServiceMsg.printStackTrace();
         bool = false;
         continue;
@@ -147,8 +147,8 @@ public class EnterpriseQQHandler
         bool = false;
         continue;
       }
-      a(100, bool, localzkg);
-      ((PublicAccountHandler)this.b.a(11)).a(100, true, localzkg);
+      a(100, bool, localzrd);
+      ((PublicAccountHandler)this.b.a(11)).a(100, true, localzrd);
       return;
       i = 0;
       continue;
@@ -157,12 +157,12 @@ public class EnterpriseQQHandler
         i = paramToServiceMsg.seqno.get();
         l3 = Utils.a(i);
         paramFromServiceMsg = PublicAccountInfo.createPublicAccountInfoListFromEqq(paramToServiceMsg.accountInfo.get(), l2);
-        localzkg.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
+        localzrd.jdField_a_of_type_JavaUtilList = paramFromServiceMsg;
         if ((!paramToServiceMsg.is_over.has()) || (!paramToServiceMsg.is_over.get())) {
           continue;
         }
         bool = true;
-        localzkg.jdField_a_of_type_Boolean = bool;
+        localzrd.jdField_a_of_type_Boolean = bool;
         paramObject = ((PublicAccountDataManager)this.b.getManager(55)).a(paramFromServiceMsg, l2);
         i = 0;
         paramFromServiceMsg = this.b.a().a();
@@ -182,7 +182,7 @@ public class EnterpriseQQHandler
           if ((i != 0) && (paramFromServiceMsg != null)) {
             paramFromServiceMsg.sendEmptyMessage(1009);
           }
-          if (!localzkg.jdField_a_of_type_Boolean) {
+          if (!localzrd.jdField_a_of_type_Boolean) {
             if (!paramToServiceMsg.next_pos.has()) {
               break label602;
             }

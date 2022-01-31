@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a152f" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a153b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="20.0dip" android:maxWidth="168.0dip" android:text="话题更新" android:lines="1" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a153c" android:clipChildren="false" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a153b">
+        <com.tencent.widget.HorizontalListView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06b5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" />
+    </LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03a0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:maxWidth="72.0dip" android:text="更多" android:lines="1" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a153c" android:layout_alignParentRight="true" />
+    <View android:background="#ffeaeaea" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a153c" />
+</RelativeLayout>

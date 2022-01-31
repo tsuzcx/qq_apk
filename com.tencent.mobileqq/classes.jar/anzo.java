@@ -1,25 +1,37 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleBtnOperationHelper;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.widget.FastAnimationDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
+import dov.com.tencent.biz.qqstory.takevideo.EditGifSpeedControl;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-class anzo
-  implements Animation.AnimationListener
+public class anzo
+  implements SeekBar.OnSeekBarChangeListener
 {
-  anzo(anzm paramanzm) {}
+  public anzo(EditGifSpeedControl paramEditGifSpeedControl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper != null) {
-      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper.a(null);
+    if (paramBoolean)
+    {
+      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
+      if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a != null) {
+        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a.a(NativeGifImage.QZONE_DELAY);
+      }
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.e = NativeGifImage.QZONE_DELAY;
+      this.a.d = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
+      }
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

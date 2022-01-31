@@ -1,21 +1,15 @@
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class kuc
   implements Runnable
 {
-  public kuc(AdvertisementRecentUserManager paramAdvertisementRecentUserManager, AdvertisementItem paramAdvertisementItem) {}
+  public kuc(AccountDetailActivity paramAccountDetailActivity) {}
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.iterator();
-    while (localIterator.hasNext()) {
-      AdvertisementVideoPreloadManager.b(((VideoCoverItem)localIterator.next()).b);
-    }
+    this.a.jdField_a_of_type_OrgJsonJSONObject = this.a.a(this.a, this.a.d);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
   }
 }
 

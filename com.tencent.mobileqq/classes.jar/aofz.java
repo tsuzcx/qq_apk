@@ -1,34 +1,29 @@
-import android.os.MessageQueue.IdleHandler;
-import android.widget.Button;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 
 public class aofz
-  implements MessageQueue.IdleHandler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aofz(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public aofz(TextLayer.TextItem paramTextItem) {}
   
-  public boolean queueIdle()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (CameraCompatibleList.d(CameraCompatibleList.b)) {
-      this.a.b(true);
+    if (this.a.a.b == null) {
+      return;
     }
-    for (;;)
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.s = (this.a.d + this.a.f * (1.0F - f));
+    this.a.t = (this.a.e + this.a.g * (1.0F - f));
+    this.a.q = (this.a.b + this.a.h * (1.0F - f));
+    this.a.r = (this.a.c + this.a.i * (1.0F - f));
+    if (f == 1.0F)
     {
-      if ((this.a.g) && (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
-        this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
-      }
-      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      this.a.c.setEnabled(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      return false;
-      this.a.g();
+      this.a.a.b = null;
+      this.a.a.b(4);
     }
+    TextLayer.b(this.a.a);
   }
 }
 

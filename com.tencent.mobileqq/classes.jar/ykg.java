@@ -1,35 +1,18 @@
-import com.tencent.mobileqq.DrawerPushItem;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.List;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class ykg
   implements Runnable
 {
-  public ykg(ApolloManager paramApolloManager, DrawerPushItem paramDrawerPushItem) {}
+  public ykg(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null) {
-      return;
-    }
-    synchronized (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager))
-    {
-      if ((ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager) != null) && (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem != null) && (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).contains(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem))) {
-        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).remove(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-      }
-      if (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager) != null)
-      {
-        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).b(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
-        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).a();
-      }
-      return;
-    }
+    this.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ykg
  * JD-Core Version:    0.7.0.1
  */

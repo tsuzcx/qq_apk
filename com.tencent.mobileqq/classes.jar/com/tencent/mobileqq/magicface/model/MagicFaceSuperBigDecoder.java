@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.magicface.model;
 
-import aedv;
+import aemf;
 import com.tencent.mobileqq.magicface.DecoderUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ public class MagicFaceSuperBigDecoder
   
   public MagicFaceSuperBigDecoder()
   {
-    this.jdField_a_of_type_JavaLangRunnable = new aedv(this);
+    this.jdField_a_of_type_JavaLangRunnable = new aemf(this);
     if (QLog.isColorLevel()) {
       QLog.d("MagicFaceSuperBigDecoder", 2, "func MagicFaceSuperBigDecoder [Constructor] begins");
     }

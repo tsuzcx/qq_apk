@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
-import tencent.im.oidb.cmd0x857.TroopTips0x857.RedGrayTipsInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
 
 public class ajqr
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public TroopTips0x857.RedGrayTipsInfo a;
+  public ajqr(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public ajqr(TroopTipsMsgMgr paramTroopTipsMsgMgr, String paramString, TroopTips0x857.RedGrayTipsInfo paramRedGrayTipsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo = paramRedGrayTipsInfo;
+    this.a.c();
+    if (ReciteRecordLayout.a(this.a) != null) {
+      ReciteRecordLayout.a(this.a).c();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

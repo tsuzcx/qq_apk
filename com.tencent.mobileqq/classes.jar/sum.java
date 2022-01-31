@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public class sum
-  implements DialogInterface.OnDismissListener
+class sum
+  implements ActionSheet.OnDismissListener
 {
-  public sum(GroupManagerActivity paramGroupManagerActivity) {}
+  sum(suk paramsuk) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onDismiss()
   {
-    GroupManagerActivity.b(this.a, null);
+    ReportController.b(this.a.a.app, "CliOper", "", "", "0X8008406", "0X8008406", 0, 0, "", "", "", "");
   }
 }
 

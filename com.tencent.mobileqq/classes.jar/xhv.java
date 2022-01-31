@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView.StatusListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-class xhv
-  implements Runnable
+public class xhv
+  implements DialogInterface.OnClickListener
 {
-  xhv(xhu paramxhu) {}
+  public xhv(TransactionActivity paramTransactionActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.c();
-    if (RecordMicView.a(this.a.a) != null) {
-      RecordMicView.a(this.a.a).f();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

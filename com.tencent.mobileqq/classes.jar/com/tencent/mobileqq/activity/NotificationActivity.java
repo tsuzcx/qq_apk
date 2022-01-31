@@ -53,36 +53,36 @@ import mqq.app.Constants.LogoutReason;
 import mqq.app.MobileQQ;
 import mqq.util.WeakReference;
 import org.json.JSONObject;
-import tcf;
-import tch;
-import tci;
-import tcj;
-import tck;
-import tcl;
-import tcm;
-import tcn;
-import tco;
-import tcp;
-import tcq;
-import tcr;
-import tcs;
-import tct;
-import tcu;
-import tcv;
-import tcw;
-import tcx;
-import tcy;
-import tcz;
-import tdb;
-import tdc;
-import tdd;
-import tde;
-import tdf;
-import tdg;
-import tdh;
-import tdk;
-import tdl;
-import tdm;
+import tgz;
+import thb;
+import thc;
+import thd;
+import the;
+import thf;
+import thg;
+import thh;
+import thi;
+import thj;
+import thk;
+import thl;
+import thm;
+import thn;
+import tho;
+import thp;
+import thq;
+import thr;
+import ths;
+import tht;
+import thv;
+import thw;
+import thx;
+import thy;
+import thz;
+import tia;
+import tib;
+import tie;
+import tif;
+import tig;
 
 public class NotificationActivity
   extends BaseActivity
@@ -92,7 +92,7 @@ public class NotificationActivity
   private static final String e = Patterns.c.pattern() + "|" + Patterns.d.pattern();
   private int jdField_a_of_type_Int;
   private Dialog jdField_a_of_type_AndroidAppDialog;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new tdf(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new thz(this);
   String jdField_a_of_type_JavaLangString = "http://fwd.z.qq.com:8080/forward.jsp?bid=906";
   private Constants.LogoutReason jdField_a_of_type_MqqAppConstants$LogoutReason = Constants.LogoutReason.tips;
   private boolean jdField_a_of_type_Boolean;
@@ -108,16 +108,16 @@ public class NotificationActivity
     AlertDialog localAlertDialog = new AlertDialog.Builder(this).create();
     localAlertDialog.show();
     Object localObject = localAlertDialog.getWindow();
-    ((Window)localObject).setContentView(2130969141);
-    Button localButton1 = (Button)((Window)localObject).findViewById(2131365343);
-    Button localButton2 = (Button)((Window)localObject).findViewById(2131365342);
-    localObject = (TextView)((Window)localObject).findViewById(2131365337);
+    ((Window)localObject).setContentView(2130969139);
+    Button localButton1 = (Button)((Window)localObject).findViewById(2131365348);
+    Button localButton2 = (Button)((Window)localObject).findViewById(2131365347);
+    localObject = (TextView)((Window)localObject).findViewById(2131365342);
     if ((localButton1 == null) || (localObject == null)) {
       return null;
     }
-    ((TextView)localObject).setText(getString(2131435049) + "7.6.3" + getString(2131435050));
-    localButton1.setOnClickListener(new tcz(this));
-    localButton2.setOnClickListener(new tdb(this));
+    ((TextView)localObject).setText(getString(2131435065) + "7.6.8" + getString(2131435066));
+    localButton1.setOnClickListener(new tht(this));
+    localButton2.setOnClickListener(new thv(this));
     return localAlertDialog;
   }
   
@@ -139,9 +139,9 @@ public class NotificationActivity
         this.jdField_a_of_type_AndroidAppDialog.show();
       }
       return;
-      this.jdField_b_of_type_JavaLangString = getString(2131433792);
-      this.jdField_c_of_type_JavaLangString = getString(2131433794);
-      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new tdg(this));
+      this.jdField_b_of_type_JavaLangString = getString(2131433808);
+      this.jdField_c_of_type_JavaLangString = getString(2131433810);
+      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new tia(this));
       continue;
       TextView localTextView = new TextView(this);
       localTextView.setLinksClickable(true);
@@ -155,7 +155,7 @@ public class NotificationActivity
         {
           String str1 = getPackageName();
           localTextView.setText(this.jdField_c_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131437491, new tdh(this, str1), false);
+          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131437511, new tib(this, str1), false);
           paramInt = 1;
           if (paramInt != 0) {
             break;
@@ -164,7 +164,7 @@ public class NotificationActivity
             break label408;
           }
           localTextView.setText(Html.fromHtml(this.jdField_c_of_type_JavaLangString));
-          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131433519, new tdk(this));
+          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage(this.jdField_c_of_type_JavaLangString).addView(localTextView).setPositiveButton(2131433533, new tie(this));
         }
         catch (Exception localException3)
         {
@@ -173,7 +173,7 @@ public class NotificationActivity
         paramInt = 0;
         continue;
         label408:
-        localTextView.setText(Html.fromHtml(getString(2131433217)));
+        localTextView.setText(Html.fromHtml(getString(2131433231)));
       }
       try
       {
@@ -188,12 +188,12 @@ public class NotificationActivity
         sendBroadcast(new Intent("qqplayer_exit_action"));
       }
       GameRoomAVController.a().d();
-      paramInt = 2131433016;
+      paramInt = 2131433030;
       if (this.jdField_a_of_type_MqqAppConstants$LogoutReason != Constants.LogoutReason.kicked) {
-        paramInt = 2131436544;
+        paramInt = 2131436564;
       }
       Object localObject1 = a(this.jdField_c_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230, this.jdField_b_of_type_JavaLangString, (CharSequence)localObject1, paramInt, 2131433016, null, new tdl(this));
+      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230, this.jdField_b_of_type_JavaLangString, (CharSequence)localObject1, paramInt, 2131433030, null, new tif(this));
       if (this.jdField_a_of_type_MqqAppConstants$LogoutReason != Constants.LogoutReason.kicked) {
         if ((getIntent() != null) && (getIntent().getBooleanExtra("isSameDevice", false)) && (!isInMultiWindow()))
         {
@@ -202,34 +202,34 @@ public class NotificationActivity
         }
         else
         {
-          ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131433234, new tch(this));
+          ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131433248, new thb(this));
           localObject1 = new Intent("com.tencent.tim.kickedLogin.otherDevice");
           ((Intent)localObject1).putExtra("kickedUin", this.app.getAccount());
           ((Intent)localObject1).putExtra("msg", this.jdField_c_of_type_JavaLangString);
           ((Intent)localObject1).setPackage("com.tencent.tim");
           sendBroadcast((Intent)localObject1);
           continue;
-          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new tci(this));
+          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new thc(this));
           continue;
-          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new tcj(this));
+          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(17039370, new thd(this));
           continue;
-          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(getString(2131435148)).setMessage(getString(2131435151)).setPositiveButton(getString(2131435149), new tcl(this)).setNegativeButton(getString(2131435150), new tck(this));
+          this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(getString(2131435164)).setMessage(getString(2131435167)).setPositiveButton(getString(2131435165), new thf(this)).setNegativeButton(getString(2131435166), new the(this));
           continue;
           if (this.jdField_b_of_type_Int == 40) {
-            this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 0, null, this.jdField_c_of_type_JavaLangString, getString(2131436528), getString(2131436530), getString(2131436529), new tcm(this), new tcn(this), new tco(this));
+            this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 0, null, this.jdField_c_of_type_JavaLangString, getString(2131436548), getString(2131436550), getString(2131436549), new thg(this), new thh(this), new thi(this));
           } else {
             switch (this.jdField_b_of_type_Int)
             {
             default: 
-              this.jdField_a_of_type_AndroidAppDialog = DialogUtil.b(this, 230).setMessageWithUrl(this.jdField_c_of_type_JavaLangString).setTitle(getString(2131433875)).setPositiveButton(17039370, new tcs(this));
+              this.jdField_a_of_type_AndroidAppDialog = DialogUtil.b(this, 230).setMessageWithUrl(this.jdField_c_of_type_JavaLangString).setTitle(getString(2131433891)).setPositiveButton(17039370, new thm(this));
               break;
             case 41: 
             case 116: 
               if (this.jdField_b_of_type_Int == 41) {}
-              for (localObject1 = getString(2131435152);; localObject1 = getString(2131435153))
+              for (localObject1 = getString(2131435168);; localObject1 = getString(2131435169))
               {
-                str2 = getString(2131435162);
-                this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage((CharSequence)localObject1).setTitle(str2).setNegativeButton(2131435154, new tcq(this)).setPositiveButton(2131435155, new tcp(this));
+                str2 = getString(2131435178);
+                this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setMessage((CharSequence)localObject1).setTitle(str2).setNegativeButton(2131435170, new thk(this)).setPositiveButton(2131435171, new thj(this));
                 break;
               }
               Object localObject2 = getIntent().getExtras();
@@ -238,13 +238,13 @@ public class NotificationActivity
               String str3 = ((Bundle)localObject2).getString("dlg_lbutton");
               String str4 = ((Bundle)localObject2).getString("dlg_rbutton");
               localObject2 = ((Bundle)localObject2).getString("dlg_url");
-              this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle((String)localObject1).setMessage(str2).setPositiveButton(str4, new tcu(this, (String)localObject2)).setNegativeButton(str3, new tct(this));
+              this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle((String)localObject1).setMessage(str2).setPositiveButton(str4, new tho(this, (String)localObject2)).setNegativeButton(str3, new thn(this));
               continue;
-              localObject1 = getResources().getString(2131437007);
-              str2 = getResources().getString(2131437008);
-              str3 = getResources().getString(2131437011);
-              str4 = getResources().getString(2131437010);
-              Object localObject3 = getResources().getString(2131437009);
+              localObject1 = getResources().getString(2131437027);
+              str2 = getResources().getString(2131437028);
+              str3 = getResources().getString(2131437031);
+              str4 = getResources().getString(2131437030);
+              Object localObject3 = getResources().getString(2131437029);
               localObject2 = new CheckBox(this);
               ((CheckBox)localObject2).setText((CharSequence)localObject3);
               ((CheckBox)localObject2).setTextSize(getResources().getInteger(2131689474));
@@ -252,7 +252,7 @@ public class NotificationActivity
               localObject3 = this.app.getApp().getSharedPreferences(this.app.getAccount(), 0);
               boolean bool = ((SharedPreferences)localObject3).getBoolean("MemoryAlertAutoClear", false);
               ((CheckBox)localObject2).setChecked(bool);
-              this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle((String)localObject1).setMessage(str2).setView((View)localObject2).setPositiveButton(str4, new tcw(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3)).setNegativeButton(str3, new tcv(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3));
+              this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle((String)localObject1).setMessage(str2).setView((View)localObject2).setPositiveButton(str4, new thq(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3)).setNegativeButton(str3, new thp(this, (CheckBox)localObject2, bool, (SharedPreferences)localObject3));
               continue;
               try
               {
@@ -269,10 +269,10 @@ public class NotificationActivity
                 if (this.jdField_a_of_type_AndroidAppDialog != null)
                 {
                   if (!TextUtils.isEmpty(str4)) {
-                    ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(str4, new tcx(this, (String)localObject2, i, (String)localObject3));
+                    ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(str4, new thr(this, (String)localObject2, i, (String)localObject3));
                   }
                   if (!TextUtils.isEmpty(str3)) {
-                    ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(str3, new tcy(this, paramInt, (String)localObject3));
+                    ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(str3, new ths(this, paramInt, (String)localObject3));
                   }
                   ReportController.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007534", "0X8007534", 0, 0, (String)localObject3, "", "", "");
                 }
@@ -318,7 +318,7 @@ public class NotificationActivity
         SharedPreUtils.a(getApplication().getApplicationContext(), ((SimpleAccount)localObject1).getUin(), true);
         if (paramBoolean)
         {
-          new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new tdc(this, (SimpleAccount)localObject1), 500L);
+          new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new thw(this, (SimpleAccount)localObject1), 500L);
           return;
         }
         this.app.login((SimpleAccount)localObject1);
@@ -461,7 +461,7 @@ public class NotificationActivity
     for (;;)
     {
       SpannableString localSpannableString = new SpannableString(str);
-      localSpannableString.setSpan(new tdm((String)localObject, new WeakReference(this)), 0, str.length(), 33);
+      localSpannableString.setSpan(new tig((String)localObject, new WeakReference(this)), 0, str.length(), 33);
       localSpannableString.setSpan(new ForegroundColorSpan(getResources().getColor(2131493045)), 0, str.length(), 33);
       localSpannableStringBuilder.append(localSpannableString);
       k = 1;
@@ -486,7 +486,7 @@ public class NotificationActivity
           k = j;
         }
         localObject = new SpannableString(str);
-        ((SpannableString)localObject).setSpan(new tdm(str, new WeakReference(this)), 0, str.length(), 33);
+        ((SpannableString)localObject).setSpan(new tig(str, new WeakReference(this)), 0, str.length(), 33);
         ((SpannableString)localObject).setSpan(new ForegroundColorSpan(getResources().getColor(2131493045)), 0, str.length(), 33);
         localSpannableStringBuilder.append((CharSequence)localObject);
         i = k;
@@ -514,7 +514,7 @@ public class NotificationActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969139);
+    super.setContentView(2130969137);
     Object localObject = "";
     paramBundle = (Bundle)localObject;
     try
@@ -608,12 +608,12 @@ public class NotificationActivity
         }
         QLog.d("sec_sig_tag", 2, "NotificationActivity:package fail");
         return false;
-        ThreadManager.post(new tcr(this, paramBundle.u32_check_result.get(), paramBundle.u32_cache_time.get()), 5, null, false);
-        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(paramBundle.str_right_button.get(), new tdd(this, paramBundle));
+        ThreadManager.post(new thl(this, paramBundle.u32_check_result.get(), paramBundle.u32_cache_time.get()), 5, null, false);
+        this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString).setPositiveButton(paramBundle.str_right_button.get(), new thx(this, paramBundle));
         if (!paramBundle.str_left_button.has()) {
           break label651;
         }
-        ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(paramBundle.str_left_button.get(), new tde(this));
+        ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setNegativeButton(paramBundle.str_left_button.get(), new thy(this));
         if ((this.jdField_a_of_type_AndroidAppDialog == null) || (this.jdField_a_of_type_AndroidAppDialog.isShowing()) || (isFinishing())) {
           break label690;
         }
@@ -698,7 +698,7 @@ public class NotificationActivity
   {
     super.doOnResume();
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131437492, new tcf(this));
+      ((QQCustomDialog)this.jdField_a_of_type_AndroidAppDialog).setPositiveButton(2131437512, new tgz(this));
     }
   }
   

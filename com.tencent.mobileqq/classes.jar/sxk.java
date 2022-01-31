@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
 
-class sxk
-  implements Runnable
+public class sxk
+  implements IphonePickerView.PickerViewAdapter
 {
-  sxk(sxj paramsxj) {}
+  public sxk(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public int getColumnCount()
   {
-    if ((Leba.a(this.a.a) != null) && (this.a.a.a != null)) {
-      this.a.a.a.notifyDataSetChanged();
+    return 1;
+  }
+  
+  public int getRowCount(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String getText(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {
+      return this.a.getString(2131433957);
     }
+    return this.a.getString(2131433958);
   }
 }
 

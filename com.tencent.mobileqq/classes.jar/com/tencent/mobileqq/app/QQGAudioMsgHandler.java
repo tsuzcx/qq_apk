@@ -43,14 +43,14 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xc1.submsgtype0xc1.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0xcf.submsgtype0xcf.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0xdb.submsgtype0xdb.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0xe9.SubMsgType0xe9.MsgBody;
-import zll;
-import zlm;
-import zln;
-import zlo;
-import zlr;
-import zls;
-import zlt;
-import zlu;
+import zsh;
+import zsi;
+import zsj;
+import zsk;
+import zsn;
+import zso;
+import zsp;
+import zsq;
 
 public class QQGAudioMsgHandler
   implements Handler.Callback
@@ -144,10 +144,10 @@ public class QQGAudioMsgHandler
     }
     if ((j == 1) && (i == 2))
     {
-      new GroupVideoWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new zlr(this, paramArrayOfByte));
+      new GroupVideoWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new zsn(this, paramArrayOfByte));
       return;
     }
-    new QavWrapper((Context)localObject).a(new zls(this, paramArrayOfByte));
+    new QavWrapper((Context)localObject).a(new zso(this, paramArrayOfByte));
   }
   
   public void a()
@@ -621,7 +621,7 @@ public class QQGAudioMsgHandler
       if ((jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_AndroidOsHandler == null)) {
         break;
       }
-      jdField_a_of_type_JavaUtilArrayList.add(new zlt(paramMsg, Long.valueOf(paramArrayOfByte).longValue(), l2));
+      jdField_a_of_type_JavaUtilArrayList.add(new zsp(paramMsg, Long.valueOf(paramArrayOfByte).longValue(), l2));
       a(Long.valueOf(paramArrayOfByte).longValue(), 4, (byte)8);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
       return;
@@ -827,7 +827,7 @@ public class QQGAudioMsgHandler
         paramInt = 0;
         while (paramInt < jdField_a_of_type_JavaUtilArrayList.size())
         {
-          paramArrayOfByte = (zlt)jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+          paramArrayOfByte = (zsp)jdField_a_of_type_JavaUtilArrayList.get(paramInt);
           if ((paramArrayOfByte != null) && (paramArrayOfByte.jdField_a_of_type_Long == l1) && (paramArrayOfByte.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)))
           {
             localObject = new byte[8];
@@ -860,29 +860,29 @@ public class QQGAudioMsgHandler
           paramInt = 0;
           while (paramInt < jdField_a_of_type_JavaUtilArrayList.size())
           {
-            localObject = (zlt)jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-            if ((localObject != null) && (((zlt)localObject).jdField_a_of_type_Long == l1) && (((zlt)localObject).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
+            localObject = (zsp)jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+            if ((localObject != null) && (((zsp)localObject).jdField_a_of_type_Long == l1) && (((zsp)localObject).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
               paramArrayOfByte.add(localObject);
             }
             paramInt += 1;
           }
-          Collections.sort(paramArrayOfByte, new zlu());
+          Collections.sort(paramArrayOfByte, new zsq());
           paramInt = 0;
           while (paramInt < paramArrayOfByte.size() - 1)
           {
             if (QLog.isColorLevel()) {
-              QLog.d("QQGAudioMsgHandler", 2, "onRecvMultiVideoC2SACK_0x31-retCode->list =" + ((zlt)paramArrayOfByte.get(paramInt)).b);
+              QLog.d("QQGAudioMsgHandler", 2, "onRecvMultiVideoC2SACK_0x31-retCode->list =" + ((zsp)paramArrayOfByte.get(paramInt)).b);
             }
-            localObject = (zlt)paramArrayOfByte.get(paramInt);
+            localObject = (zsp)paramArrayOfByte.get(paramInt);
             arrayOfByte1 = new byte[8];
-            arrayOfByte2 = ((im_msg_body.MsgBody)((zlt)localObject).jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
+            arrayOfByte2 = ((im_msg_body.MsgBody)((zsp)localObject).jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
             System.arraycopy(arrayOfByte2, (arrayOfByte2[10] & 0xFF) + 19, arrayOfByte1, 0, 8);
             l2 = VideoPackageUtils.a(arrayOfByte1, 8);
-            VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, 6, true, Long.toString(l1), Long.toString(l2), false, null, false, new Object[] { ((zlt)localObject).jdField_a_of_type_MsfMsgcommMsg_comm$Msg });
+            VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, 6, true, Long.toString(l1), Long.toString(l2), false, null, false, new Object[] { ((zsp)localObject).jdField_a_of_type_MsfMsgcommMsg_comm$Msg });
             paramInt += 1;
           }
         } while (paramArrayOfByte.size() <= 0);
-        paramArrayOfByte = ((im_msg_body.MsgBody)((zlt)paramArrayOfByte.get(paramArrayOfByte.size() - 1)).jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
+        paramArrayOfByte = ((im_msg_body.MsgBody)((zsp)paramArrayOfByte.get(paramArrayOfByte.size() - 1)).jdField_a_of_type_MsfMsgcommMsg_comm$Msg.msg_body.get()).msg_content.get().toByteArray();
       } while (this.jdField_a_of_type_ArrayOfByte == null);
       paramInt = paramArrayOfByte.length;
     } while (paramInt < 40);
@@ -1335,7 +1335,7 @@ public class QQGAudioMsgHandler
               localByteBuffer.getInt();
             }
           }
-          GVideoGrayConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), new zll(this, l1, i));
+          GVideoGrayConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), new zsh(this, l1, i));
           j += 1;
         }
       }
@@ -1461,7 +1461,7 @@ public class QQGAudioMsgHandler
     }
     while ((j == 1) && (i == 2))
     {
-      new GroupVideoWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new zlm(this));
+      new GroupVideoWrapper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new zsi(this));
       return;
       if ((j == 1) && (i == 10))
       {
@@ -1480,7 +1480,7 @@ public class QQGAudioMsgHandler
         VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 13, false, Long.toString(k), Long.toString(l), false, null, false, i, new Object[0]);
       }
     }
-    new QavWrapper(BaseApplication.getContext()).a(new zln(this));
+    new QavWrapper(BaseApplication.getContext()).a(new zsj(this));
   }
   
   void g(byte[] paramArrayOfByte)
@@ -1499,7 +1499,7 @@ public class QQGAudioMsgHandler
     arrayOfByte = new byte[4];
     System.arraycopy(paramArrayOfByte, i + 4, arrayOfByte, 0, 4);
     long l2 = VideoPackageUtils.a(arrayOfByte, 4);
-    GVideoGrayConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l2), new zlo(this, l2, j, l1));
+    GVideoGrayConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l2), new zsk(this, l2, j, l1));
   }
   
   void h(byte[] paramArrayOfByte)

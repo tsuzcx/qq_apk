@@ -1,34 +1,39 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class acew
-  implements QueryCallback
+  implements Runnable
 {
-  public acew(EmoticonMainPanel paramEmoticonMainPanel, long paramLong) {}
+  public acew(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
   
-  public void a(Integer paramInteger)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b(paramInteger.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.c(paramInteger.intValue());
-    if ((!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.c) && (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.d)) {
-      EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.d = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "selectIndex = " + paramInteger + "[Performance] initEmoticonView duration:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList.size() > EmoticonMainPanel.e)
+    SharedPreferences.Editor localEditor = this.a.getSharedPreferences(HotChatFlashPicActivity.f(this.a), 4).edit();
+    if (HotChatFlashPicActivity.b(this.a))
     {
-      if (((EmotionPanelInfo)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList.get(EmoticonMainPanel.e)).a != 8) {
-        EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h);
+      localEditor.putInt("HOTCHAT_FLASHPIC_SHOT", HotChatFlashPicActivity.a(this.a));
+      if (HotChatFlashPicActivity.a(this.a) != 1) {
+        break label115;
       }
-      return;
+      ReportController.b(this.a.app, "CliOper", "", "", "0X800597A", "0X800597A", 0, 0, "", "", "", "");
     }
-    EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h);
+    for (;;)
+    {
+      localEditor.commit();
+      return;
+      localEditor.putInt("commen_flashpic_shot", HotChatFlashPicActivity.a(this.a));
+      break;
+      label115:
+      if (HotChatFlashPicActivity.a(this.a) == 2)
+      {
+        if (!HotChatFlashPicActivity.b(this.a)) {
+          localEditor.putLong("commen_flashpic_shot_deadlineday", HotChatFlashPicActivity.b(this.a) + 518400000L);
+        }
+        ReportController.b(this.a.app, "CliOper", "", "", "0X800597B", "0X800597B", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

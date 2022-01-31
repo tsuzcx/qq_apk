@@ -1,24 +1,15 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
-public class abgt
-  implements View.OnClickListener
+class abgt
+  implements DialogInterface.OnDismissListener
 {
-  public abgt(ARGridMapViewDialog paramARGridMapViewDialog, String paramString) {}
+  abgt(abgs paramabgs) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a.startActivity(paramView);
-    }
+    ARMapActivity.a(this.a.a, null);
   }
 }
 

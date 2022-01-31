@@ -1,12 +1,12 @@
 package com.tencent.open.agent;
 
-import alcf;
-import alcg;
-import alch;
-import alci;
-import alcj;
-import alck;
-import alcl;
+import aljx;
+import aljy;
+import aljz;
+import alka;
+import alkb;
+import alkc;
+import alkd;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -103,10 +103,10 @@ public class QuickLoginAuthorityActivity
   
   public QuickLoginAuthorityActivity()
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new alcf(this);
-    this.jdField_a_of_type_MqqObserverWtloginObserver = new alcg(this);
-    this.jdField_a_of_type_AndroidOsHandler = new alci(this, ThreadManager.getSubThreadLooper());
-    this.jdField_b_of_type_AndroidOsHandler = new alcj(this, Looper.getMainLooper());
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new aljx(this);
+    this.jdField_a_of_type_MqqObserverWtloginObserver = new aljy(this);
+    this.jdField_a_of_type_AndroidOsHandler = new alka(this, ThreadManager.getSubThreadLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new alkb(this, Looper.getMainLooper());
   }
   
   private int a()
@@ -262,7 +262,7 @@ public class QuickLoginAuthorityActivity
     {
       QLog.d("Q.quicklogin.", 2, bool);
       if (paramString.equals(this.jdField_a_of_type_JavaLangString)) {
-        runOnUiThread(new alcl(this, paramBitmap));
+        runOnUiThread(new alkd(this, paramBitmap));
       }
       return;
     }
@@ -627,7 +627,7 @@ public class QuickLoginAuthorityActivity
         bool = this.jdField_a_of_type_MqqManagerWtloginManager.IsUserHaveA1(this.jdField_a_of_type_JavaLangString, 16L);
       }
       d();
-      QQToast.a(BaseApplicationImpl.getContext(), 2131435614, 0).b(getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplicationImpl.getContext(), 2131435630, 0).b(getResources().getDimensionPixelSize(2131558448));
       return;
     }
     d();
@@ -689,7 +689,7 @@ public class QuickLoginAuthorityActivity
           if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount())) && (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount()))) {
             ReportCenter.a().a(this.jdField_a_of_type_JavaLangString, "", "", "1", "10", "0", true);
           }
-          new alck(this).start();
+          new alkc(this).start();
           if (QLog.isColorLevel()) {
             QLog.d("Q.quicklogin.", 2, "setPtloginSdkResult:");
           }
@@ -724,7 +724,7 @@ public class QuickLoginAuthorityActivity
   
   protected void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131435611));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(super.getString(2131435627));
     if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
@@ -855,7 +855,7 @@ public class QuickLoginAuthorityActivity
       if (!NetworkUtil.g(this))
       {
         g();
-        this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this, getResources().getString(2131435603));
+        this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this, getResources().getString(2131435619));
         return;
       }
       boolean bool;
@@ -876,7 +876,7 @@ public class QuickLoginAuthorityActivity
         bool = this.jdField_a_of_type_MqqManagerWtloginManager.IsUserHaveA1(this.jdField_a_of_type_JavaLangString, 16L);
       }
       d();
-      QQToast.a(BaseApplicationImpl.getContext(), 2131435614, 0).b(super.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplicationImpl.getContext(), 2131435630, 0).b(super.getResources().getDimensionPixelSize(2131558448));
       return;
     }
     switch (paramView.getId())
@@ -900,29 +900,29 @@ public class QuickLoginAuthorityActivity
     {
       return;
       this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("authority_start_qq_login", false);
-      super.setContentView(2130969254);
-      this.leftView.setText(2131435601);
-      super.setTitle(2131435596);
+      super.setContentView(2130969252);
+      this.leftView.setText(2131435617);
+      super.setTitle(2131435612);
       this.leftView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131362840);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131365767);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365768));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131362845);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131365772);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365773));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365769));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365774));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365763));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365768));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       if (AppSetting.jdField_b_of_type_Boolean) {
         this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + "按钮");
       }
       this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)super.findViewById(2131363769));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)super.findViewById(2131363793));
       this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setVerticalScrollBarEnabled(false);
-      this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131365757));
+      this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131365762));
       if (this.jdField_b_of_type_Boolean)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, 0, 2130970579, 17);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, 0, 2130970592, 17);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(-1);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
         AccountManage.a().a();
@@ -959,7 +959,7 @@ public class QuickLoginAuthorityActivity
         }
       }
       a();
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new alch(this));
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new aljz(this));
     } while (!this.jdField_b_of_type_Boolean);
     this.jdField_a_of_type_ComTencentOpenAgentCardContainer.a();
     h();

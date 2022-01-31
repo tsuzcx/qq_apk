@@ -1,22 +1,37 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyVideoUtils;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class aenf
-  implements NearbyCustomDialog.OnClickListener
+public class aenf
+  implements Runnable
 {
-  public aenf(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public aenf(CUOpenCardGuideMng.CUOpenCardClickableSpan paramCUOpenCardClickableSpan) {}
   
-  public void a(View paramView)
+  public void run()
   {
-    NearbyVideoUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+    String str;
+    if (this.a.a == 1) {
+      str = "0X8008124";
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(str)) {
+        ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      }
+      return;
+      if (this.a.a == 2) {
+        str = "0X8008126";
+      } else if ((this.a.a == 3) || (this.a.a == 4)) {
+        str = "0X800813E";
+      } else {
+        str = null;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenf
  * JD-Core Version:    0.7.0.1
  */

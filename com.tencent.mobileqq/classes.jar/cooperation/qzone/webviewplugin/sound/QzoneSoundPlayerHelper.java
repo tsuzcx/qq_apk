@@ -126,11 +126,11 @@ public class QzoneSoundPlayerHelper
     //   22: aconst_null
     //   23: astore 7
     //   25: aconst_null
-    //   26: astore 5
+    //   26: astore 6
     //   28: aconst_null
     //   29: astore 8
     //   31: aconst_null
-    //   32: astore 6
+    //   32: astore 5
     //   34: aload 8
     //   36: astore 4
     //   38: aload_0
@@ -223,51 +223,51 @@ public class QzoneSoundPlayerHelper
     //   193: iload_3
     //   194: istore_2
     //   195: goto -109 -> 86
-    //   198: astore 5
-    //   200: aload 6
+    //   198: astore 4
+    //   200: aload 5
     //   202: astore_1
-    //   203: aload_1
-    //   204: astore 4
-    //   206: aload 5
-    //   208: invokevirtual 82	java/io/IOException:printStackTrace	()V
-    //   211: iload_3
-    //   212: istore_2
-    //   213: aload_1
-    //   214: ifnull -128 -> 86
+    //   203: aload 4
+    //   205: astore 5
+    //   207: aload_1
+    //   208: astore 4
+    //   210: aload 5
+    //   212: invokevirtual 82	java/io/IOException:printStackTrace	()V
+    //   215: iload_3
+    //   216: istore_2
     //   217: aload_1
-    //   218: invokevirtual 81	java/io/FileInputStream:close	()V
-    //   221: iload_3
-    //   222: istore_2
-    //   223: goto -137 -> 86
-    //   226: astore_1
-    //   227: iload_3
-    //   228: istore_2
-    //   229: goto -143 -> 86
-    //   232: astore 5
-    //   234: aload 7
-    //   236: astore_1
-    //   237: aload_1
-    //   238: astore 4
-    //   240: aload 5
-    //   242: invokevirtual 83	java/lang/IllegalArgumentException:printStackTrace	()V
-    //   245: iload_3
-    //   246: istore_2
-    //   247: aload_1
-    //   248: ifnull -162 -> 86
+    //   218: ifnull -132 -> 86
+    //   221: aload_1
+    //   222: invokevirtual 81	java/io/FileInputStream:close	()V
+    //   225: iload_3
+    //   226: istore_2
+    //   227: goto -141 -> 86
+    //   230: astore_1
+    //   231: iload_3
+    //   232: istore_2
+    //   233: goto -147 -> 86
+    //   236: astore 5
+    //   238: aload 7
+    //   240: astore_1
+    //   241: aload_1
+    //   242: astore 4
+    //   244: aload 5
+    //   246: invokevirtual 83	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   249: iload_3
+    //   250: istore_2
     //   251: aload_1
-    //   252: invokevirtual 81	java/io/FileInputStream:close	()V
-    //   255: iload_3
-    //   256: istore_2
-    //   257: goto -171 -> 86
-    //   260: astore_1
-    //   261: iload_3
-    //   262: istore_2
-    //   263: goto -177 -> 86
-    //   266: astore 4
-    //   268: aload 5
-    //   270: astore_1
-    //   271: aload 4
-    //   273: astore 5
+    //   252: ifnull -166 -> 86
+    //   255: aload_1
+    //   256: invokevirtual 81	java/io/FileInputStream:close	()V
+    //   259: iload_3
+    //   260: istore_2
+    //   261: goto -175 -> 86
+    //   264: astore_1
+    //   265: iload_3
+    //   266: istore_2
+    //   267: goto -181 -> 86
+    //   270: astore 5
+    //   272: aload 6
+    //   274: astore_1
     //   275: aload_1
     //   276: astore 4
     //   278: aload 5
@@ -305,9 +305,9 @@ public class QzoneSoundPlayerHelper
     //   336: astore 5
     //   338: goto -63 -> 275
     //   341: astore 5
-    //   343: goto -106 -> 237
+    //   343: goto -102 -> 241
     //   346: astore 5
-    //   348: goto -145 -> 203
+    //   348: goto -141 -> 207
     //   351: astore 5
     //   353: goto -184 -> 169
     // Local variable table:
@@ -316,21 +316,21 @@ public class QzoneSoundPlayerHelper
     //   0	356	1	paramString	java.lang.String
     //   67	253	2	bool1	boolean
     //   1	318	3	bool2	boolean
-    //   36	203	4	localObject1	Object
-    //   266	6	4	localSecurityException1	java.lang.SecurityException
-    //   276	35	4	str	java.lang.String
-    //   327	1	4	localIOException1	java.io.IOException
-    //   26	1	5	localObject2	Object
-    //   165	8	5	localIllegalStateException1	java.lang.IllegalStateException
-    //   198	9	5	localIOException2	java.io.IOException
-    //   232	37	5	localIllegalArgumentException1	java.lang.IllegalArgumentException
-    //   273	6	5	localObject3	Object
+    //   36	135	4	localObject1	Object
+    //   198	6	4	localIOException1	java.io.IOException
+    //   208	103	4	str	java.lang.String
+    //   327	1	4	localIOException2	java.io.IOException
+    //   32	1	5	localObject2	Object
+    //   165	36	5	localIllegalStateException1	java.lang.IllegalStateException
+    //   205	6	5	localObject3	Object
+    //   236	9	5	localIllegalArgumentException1	java.lang.IllegalArgumentException
+    //   270	9	5	localSecurityException1	java.lang.SecurityException
     //   336	1	5	localSecurityException2	java.lang.SecurityException
     //   341	1	5	localIllegalArgumentException2	java.lang.IllegalArgumentException
     //   346	1	5	localIOException3	java.io.IOException
     //   351	1	5	localIllegalStateException2	java.lang.IllegalStateException
-    //   32	169	6	localObject4	Object
-    //   23	212	7	localObject5	Object
+    //   26	247	6	localObject4	Object
+    //   23	216	7	localObject5	Object
     //   29	77	8	localObject6	Object
     // Exception table:
     //   from	to	target	type
@@ -339,8 +339,8 @@ public class QzoneSoundPlayerHelper
     //   90	97	100	finally
     //   156	160	100	finally
     //   183	187	100	finally
-    //   217	221	100	finally
-    //   251	255	100	finally
+    //   221	225	100	finally
+    //   255	259	100	finally
     //   289	293	100	finally
     //   310	315	100	finally
     //   315	317	100	finally
@@ -353,23 +353,23 @@ public class QzoneSoundPlayerHelper
     //   50	59	198	java/io/IOException
     //   63	68	198	java/io/IOException
     //   109	121	198	java/io/IOException
-    //   217	221	226	java/io/IOException
-    //   38	46	232	java/lang/IllegalArgumentException
-    //   50	59	232	java/lang/IllegalArgumentException
-    //   63	68	232	java/lang/IllegalArgumentException
-    //   109	121	232	java/lang/IllegalArgumentException
-    //   251	255	260	java/io/IOException
-    //   38	46	266	java/lang/SecurityException
-    //   50	59	266	java/lang/SecurityException
-    //   63	68	266	java/lang/SecurityException
-    //   109	121	266	java/lang/SecurityException
+    //   221	225	230	java/io/IOException
+    //   38	46	236	java/lang/IllegalArgumentException
+    //   50	59	236	java/lang/IllegalArgumentException
+    //   63	68	236	java/lang/IllegalArgumentException
+    //   109	121	236	java/lang/IllegalArgumentException
+    //   255	259	264	java/io/IOException
+    //   38	46	270	java/lang/SecurityException
+    //   50	59	270	java/lang/SecurityException
+    //   63	68	270	java/lang/SecurityException
+    //   109	121	270	java/lang/SecurityException
     //   289	293	298	java/io/IOException
     //   38	46	304	finally
     //   50	59	304	finally
     //   63	68	304	finally
     //   109	121	304	finally
-    //   206	211	304	finally
-    //   240	245	304	finally
+    //   210	215	304	finally
+    //   244	249	304	finally
     //   278	283	304	finally
     //   78	86	317	java/io/IOException
     //   156	160	323	java/io/IOException

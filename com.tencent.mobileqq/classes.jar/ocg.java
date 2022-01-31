@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
+import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
 
-class ocg
-  implements View.OnClickListener
+public class ocg
+  extends LoadingMoreHelper.OnLoadMoreSimpleListener
 {
-  ocg(ocf paramocf, TagAdapter.OnItemClickListener paramOnItemClickListener, TagItem.TagInfoBase paramTagInfoBase) {}
+  public ocg(MemoriesVideoListSegment paramMemoriesVideoListSegment) {}
   
-  public void onClick(View paramView)
+  public boolean a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
-    }
+    this.a.b();
+    return true;
   }
 }
 

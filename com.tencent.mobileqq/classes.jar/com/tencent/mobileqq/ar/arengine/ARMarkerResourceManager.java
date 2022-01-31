@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aahq;
+import aaoh;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
@@ -245,7 +245,7 @@ public class ARMarkerResourceManager
           if (localArrayList.size() <= 0) {
             break;
           }
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a(localArrayList, new aahq(this, paramARMarkerResourceCallback, paramArCloudConfigInfo, paramARCloudMarkerRecogResult));
+          this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a(localArrayList, new aaoh(this, paramARMarkerResourceCallback, paramArCloudConfigInfo, paramARCloudMarkerRecogResult));
           return;
         }
         catch (Exception paramARCloudMarkerRecogResult)
@@ -956,12 +956,12 @@ public class ARMarkerResourceManager
     //   1409: aload_0
     //   1410: getfield 52	com/tencent/mobileqq/ar/arengine/ARMarkerResourceManager:jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools	Lcom/tencent/mobileqq/ar/arengine/ARResourceManagerTools;
     //   1413: aload 6
-    //   1415: new 373	aahr
+    //   1415: new 373	aaoi
     //   1418: dup
     //   1419: aload_0
     //   1420: aload_1
     //   1421: aload_2
-    //   1422: invokespecial 376	aahr:<init>	(Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager;Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager$ARMarkerResourceCallback;Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;)V
+    //   1422: invokespecial 376	aaoi:<init>	(Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager;Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager$ARMarkerResourceCallback;Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;)V
     //   1425: invokevirtual 326	com/tencent/mobileqq/ar/arengine/ARResourceManagerTools:a	(Ljava/util/ArrayList;Lcom/tencent/mobileqq/ar/arengine/ARResourceManagerTools$ARResourceCallback;)V
     //   1428: return
     //   1429: aload_1
@@ -1766,12 +1766,12 @@ public class ARMarkerResourceManager
     //   1414: aload_0
     //   1415: getfield 52	com/tencent/mobileqq/ar/arengine/ARMarkerResourceManager:jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools	Lcom/tencent/mobileqq/ar/arengine/ARResourceManagerTools;
     //   1418: aload 6
-    //   1420: new 437	aahs
+    //   1420: new 437	aaoj
     //   1423: dup
     //   1424: aload_0
     //   1425: aload_1
     //   1426: aload_2
-    //   1427: invokespecial 438	aahs:<init>	(Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager;Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager$ARMarkerResourceCallback;Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;)V
+    //   1427: invokespecial 438	aaoj:<init>	(Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager;Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager$ARMarkerResourceCallback;Lcom/tencent/mobileqq/ar/aidl/ArCloudConfigInfo;)V
     //   1430: invokevirtual 326	com/tencent/mobileqq/ar/arengine/ARResourceManagerTools:a	(Ljava/util/ArrayList;Lcom/tencent/mobileqq/ar/arengine/ARResourceManagerTools$ARResourceCallback;)V
     //   1433: return
     //   1434: aload_1
@@ -2101,10 +2101,10 @@ public class ARMarkerResourceManager
     //   351: getfield 547	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:jdField_c_of_type_Int	I
     //   354: ifne +18 -> 372
     //   357: invokestatic 553	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   360: new 555	aaho
+    //   360: new 555	aaof
     //   363: dup
     //   364: aload_0
-    //   365: invokespecial 558	aaho:<init>	(Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager;)V
+    //   365: invokespecial 558	aaof:<init>	(Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager;)V
     //   368: invokevirtual 564	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   371: pop
     //   372: aload 4
@@ -2297,10 +2297,10 @@ public class ARMarkerResourceManager
     //   229: getfield 547	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:jdField_c_of_type_Int	I
     //   232: ifne +18 -> 250
     //   235: invokestatic 553	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   238: new 587	aahp
+    //   238: new 587	aaog
     //   241: dup
     //   242: aload_0
-    //   243: invokespecial 588	aahp:<init>	(Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager;)V
+    //   243: invokespecial 588	aaog:<init>	(Lcom/tencent/mobileqq/ar/arengine/ARMarkerResourceManager;)V
     //   246: invokevirtual 564	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   249: pop
     //   250: aload 4

@@ -52,11 +52,11 @@ public class QfavMicroPhoneDialog
     this.jdField_a_of_type_CooperationQqfavWidgetQfavMicroPhoneDialog$Listener = paramListener;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = paramInt;
-    super.setContentView(2130968860);
-    super.setNegativeButton(2131433015, this);
-    super.setPositiveButton(2131431563, this);
-    super.setTitle(2131431603);
-    ((TextView)super.findViewById(2131364034)).setGravity(3);
+    super.setContentView(2130968864);
+    super.setNegativeButton(2131433029, this);
+    super.setPositiveButton(2131431574, this);
+    super.setTitle(2131431614);
+    ((TextView)super.findViewById(2131364059)).setGravity(3);
     paramInt = ViewUtils.a(6.0F);
     int i = ViewUtils.a(16.0F);
     int j = ViewUtils.a(40.0F);
@@ -69,28 +69,28 @@ public class QfavMicroPhoneDialog
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     paramContext.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramAppRuntime);
     this.jdField_a_of_type_AndroidWidgetButton = new Button(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetButton.setId(2131363785);
+    this.jdField_a_of_type_AndroidWidgetButton.setId(2131363809);
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130841549);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130841576);
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2131034306));
-    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130841554, 0, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130841581, 0, 0, 0);
     this.jdField_a_of_type_AndroidWidgetButton.setHeight(k);
     paramContext.addView(this.jdField_a_of_type_AndroidWidgetButton);
-    super.findViewById(2131362776).setVisibility(8);
-    paramAppRuntime = (RelativeLayout)super.findViewById(2131364032);
+    super.findViewById(2131362781).setVisibility(8);
+    paramAppRuntime = (RelativeLayout)super.findViewById(2131364057);
     paramListener = new RelativeLayout.LayoutParams(0, -2);
-    paramListener.addRule(3, 2131364034);
-    paramListener.addRule(5, 2131364034);
-    paramListener.addRule(7, 2131364034);
+    paramListener.addRule(3, 2131364059);
+    paramListener.addRule(5, 2131364059);
+    paramListener.addRule(7, 2131364059);
     paramListener.bottomMargin = i;
     paramListener.topMargin = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131363497));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131431645);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.findViewById(2131363516));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(2131431656);
     Object localObject = new InputFilter.LengthFilter(60);
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { localObject });
     localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetEditText.getLayoutParams();
-    paramContext.setId(2131364118);
-    ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364118);
+    paramContext.setId(2131364143);
+    ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131364143);
     paramAppRuntime.addView(paramContext, paramListener);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     super.setOnDismissListener(this);
@@ -98,7 +98,7 @@ public class QfavMicroPhoneDialog
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130841554, 0, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130841581, 0, 0, 0);
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
   }
   
@@ -163,7 +163,7 @@ public class QfavMicroPhoneDialog
     if ((this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a() == 2))
     {
       this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.e();
-      this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130841554, 0, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetButton.setCompoundDrawablesWithIntrinsicBounds(2130841581, 0, 0, 0);
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
       return;
     }

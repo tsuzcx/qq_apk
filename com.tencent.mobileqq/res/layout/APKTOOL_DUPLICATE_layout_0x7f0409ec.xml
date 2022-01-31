@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2cc6" android:layout_width="40.0dip" android:layout_height="40.0dip" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff282828" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2cc7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textSize="17.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="相册" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="智能整理本地照片，仅自己可见" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5e" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="10.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="123相册" />
+            <TextView android:textSize="10.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c60" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="144照片" />
+            <TextView android:textSize="10.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c61" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="1223视频" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

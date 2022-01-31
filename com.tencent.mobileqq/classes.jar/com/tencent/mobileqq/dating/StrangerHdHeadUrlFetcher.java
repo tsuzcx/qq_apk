@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dating;
 
-import abxv;
-import abxw;
+import acfv;
+import acfw;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
@@ -32,7 +32,7 @@ public class StrangerHdHeadUrlFetcher
   
   public StrangerHdHeadUrlFetcher(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new abxw(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new acfw(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
@@ -109,7 +109,7 @@ public class StrangerHdHeadUrlFetcher
       synchronized (this.jdField_a_of_type_JavaUtilSet)
       {
         this.jdField_a_of_type_JavaUtilSet.remove(str2);
-        ThreadManager.post(new abxv(this, paramString, paramInt, paramBoolean, str2), 8, null, false);
+        ThreadManager.post(new acfv(this, paramString, paramInt, paramBoolean, str2), 8, null, false);
         return str1;
       }
     }

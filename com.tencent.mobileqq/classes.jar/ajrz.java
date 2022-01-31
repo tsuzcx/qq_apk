@@ -1,21 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
 
-class ajrz
+public class ajrz
   implements Runnable
 {
-  ajrz(ajry paramajry) {}
+  public ajrz(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView, TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
   
   public void run()
   {
-    Bitmap localBitmap = this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.a;
-    if ((localBitmap != null) && (!localBitmap.isRecycled()))
-    {
-      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(localBitmap);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
   }
 }
 

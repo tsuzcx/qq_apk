@@ -1,33 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoRecommendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class mfk
-  implements Runnable
+public final class mfk
+  implements URLDrawable.URLDrawableListener
 {
-  public mfk(VideoRecommendManager paramVideoRecommendManager) {}
+  public mfk(int paramInt) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
-    VideoRecommendManager.a(this.a, ReadInJoyHelper.G(localQQAppInterface));
-    VideoRecommendManager.b(this.a, ReadInJoyHelper.H(localQQAppInterface));
-    VideoRecommendManager.a(this.a, ReadInJoyHelper.b(localQQAppInterface));
-    VideoRecommendManager.c(this.a, ReadInJoyHelper.I(localQQAppInterface));
-    if ((VideoRecommendManager.a(this.a) < 0.0F) || (VideoRecommendManager.a(this.a) > 1.0D)) {
-      VideoRecommendManager.a(this.a, 0.8F);
-    }
-    if (VideoRecommendManager.a(this.a) < 1000) {
-      VideoRecommendManager.b(this.a, 40000);
-    }
-    if (VideoRecommendManager.b(this.a) == 1) {
-      VideoRecommendManager.a(this.a, true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "init() 开关配置，mIsOpened = " + VideoRecommendManager.a(this.a) + ", mStrategyID = " + VideoRecommendManager.b(this.a) + ", mStrategyDurationLimit = " + VideoRecommendManager.a(this.a) + ", mStrategyDurationPercent = " + VideoRecommendManager.a(this.a) + ", mOperator = " + VideoRecommendManager.c(this.a));
-    }
+    paramURLDrawable.getCurrDrawable().mutate().setAlpha(this.a);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    paramURLDrawable.getCurrDrawable().mutate().setAlpha(this.a);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    paramURLDrawable.getCurrDrawable().mutate().setAlpha(this.a);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable.getCurrDrawable().mutate().setAlpha(this.a);
   }
 }
 

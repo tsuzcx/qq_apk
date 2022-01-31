@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.nearby.now.protocol;
 
-import aetv;
+import afbh;
 import android.text.TextUtils;
 import com.tencent.biz.ProtoUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -37,7 +36,7 @@ public class CsTask
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("7.6.3");
+      paramReqBody.version.set("7.6.8");
       paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
@@ -64,14 +63,6 @@ public class CsTask
     return this;
   }
   
-  public CsTask a(MessageMicro paramMessageMicro)
-  {
-    if (paramMessageMicro != null) {
-      a(paramMessageMicro.toByteArray());
-    }
-    return this;
-  }
-  
   public CsTask a(byte[] paramArrayOfByte)
   {
     oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
@@ -80,7 +71,7 @@ public class CsTask
       localReqBody.cmd.set(this.jdField_a_of_type_Int);
       localReqBody.subcmd.set(this.b);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new aetv(this), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new afbh(this), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
     return this;
   }

@@ -1,13 +1,13 @@
 package cooperation.comic;
 
-import amjm;
+import amqy;
 import android.content.Intent;
 
 public class VipComicJumpActivity$ComicParam
 {
   public int a;
   public long a;
-  amjm jdField_a_of_type_Amjm = null;
+  amqy jdField_a_of_type_Amqy = null;
   Intent jdField_a_of_type_AndroidContentIntent = new Intent();
   String jdField_a_of_type_JavaLangString = null;
   boolean jdField_a_of_type_Boolean = false;

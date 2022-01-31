@@ -20,10 +20,12 @@ import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emosm.EmosmUtils;
 import com.tencent.mobileqq.emoticon.EmojiManager;
 import com.tencent.mobileqq.emoticonview.EmoticonUtils;
 import com.tencent.mobileqq.emoticonview.VoiceGifFactory;
+import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
@@ -178,7 +180,7 @@ public class PicEmotionDownloader
         QLog.d("PicEmotionDownloader", 2, "download small emoji, ret:" + i);
       }
     }
-    return new File(AppConstants.aJ);
+    return new File(AppConstants.aK);
     label527:
     paramOutputStream = paramDownloadParams.getHeader("emo_type");
     boolean bool2 = EmoticonUtils.a();
@@ -215,10 +217,10 @@ public class PicEmotionDownloader
     }
     for (;;)
     {
-      paramDownloadParams = paramDownloadParams.getHeader("2g_use_gif");
+      Header localHeader = paramDownloadParams.getHeader("2g_use_gif");
       bool1 = false;
-      if (paramDownloadParams != null) {
-        bool1 = paramDownloadParams.getValue().equals("true");
+      if (localHeader != null) {
+        bool1 = localHeader.getValue().equals("true");
       }
       if (bool1)
       {
@@ -226,14 +228,21 @@ public class PicEmotionDownloader
         if (localEmoticon.jobType == 3)
         {
           i = 6;
-          label738:
+          label741:
+          if (!paramDownloadParams.useApngImage)
+          {
+            paramOutputStream = ((EmoticonManager)paramURLDrawableHandler.getManager(13)).a(localEmoticon.epId);
+            if ((paramOutputStream != null) && (paramOutputStream.isAPNG == 2)) {
+              paramDownloadParams.useApngImage = true;
+            }
+          }
           paramOutputStream = (EmojiManager)paramURLDrawableHandler.getManager(42);
           if (paramOutputStream.b(localEmoticon, i)) {
-            break label1011;
+            break label1056;
           }
         }
       }
-      label1011:
+      label1056:
       for (bool1 = true;; bool1 = false)
       {
         if (QLog.isColorLevel()) {
@@ -252,7 +261,7 @@ public class PicEmotionDownloader
         QLog.e("PicEmotionDownloader", 1, "emotion down fail : epid = " + localEmoticon.epId + ";eid = " + localEmoticon.eId);
         throw new FileDownloadFailedException(9301, 0L, "downloadImage fail", false, false);
         if ((!paramOutputStream.equals("fromAIO")) || (!bool1)) {
-          break label1024;
+          break label1069;
         }
         if (localEmoticon.jobType == 3) {
           i = 2;
@@ -263,7 +272,7 @@ public class PicEmotionDownloader
         for (;;)
         {
           if (!localEmoticon.isSound) {
-            break label1017;
+            break label1062;
           }
           paramOutputStream = "big_sound";
           i = 12;
@@ -271,14 +280,14 @@ public class PicEmotionDownloader
           i |= 0x4;
         }
         i = 4;
-        break label738;
+        break label741;
         localBundle.putString("display_type", paramOutputStream);
-        break label738;
+        break label741;
       }
-      label1017:
+      label1062:
       paramOutputStream = "big_img";
       continue;
-      label1024:
+      label1069:
       paramOutputStream = "aio_preview";
     }
   }
@@ -510,7 +519,7 @@ public class PicEmotionDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.PicEmotionDownloader
  * JD-Core Version:    0.7.0.1
  */

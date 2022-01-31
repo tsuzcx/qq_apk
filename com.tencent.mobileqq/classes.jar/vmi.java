@@ -1,20 +1,27 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.BezierEvaluator;
 
 public class vmi
-  implements TroopMemberApiClient.Callback
 {
-  public vmi(AIOGalleryAdapter paramAIOGalleryAdapter, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, AIOImageData paramAIOImageData) {}
+  public float a;
+  public int a;
+  public ValueAnimator a;
+  public SixCombolEffectView.BezierEvaluator a;
+  public boolean a;
+  public float b;
+  public int b;
+  public ValueAnimator b;
+  public boolean b;
+  public int c;
+  public ValueAnimator c;
+  public int d;
+  public ValueAnimator d;
+  public int e;
+  public int f;
+  public int g;
   
-  public void a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getString("ThumbnailFile_Large");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a.runOnUiThread(new vmj(this, paramBundle));
-  }
+  public vmi(SixCombolEffectView paramSixCombolEffectView) {}
 }
 
 

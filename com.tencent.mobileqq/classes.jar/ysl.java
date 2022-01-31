@@ -1,14 +1,38 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.ITriggerRenderCallback;
+import com.tencent.util.WeakReferenceHandler;
+import java.lang.ref.WeakReference;
 
-public final class ysl
+public class ysl
   implements Runnable
 {
+  private WeakReference a;
+  
+  public ysl(ApolloRenderDriver paramApolloRenderDriver)
+  {
+    this.a = new WeakReference(paramApolloRenderDriver);
+  }
+  
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131438224), 1).a();
+    ApolloRenderDriver localApolloRenderDriver;
+    if ((this.a != null) && (this.a.get() != null))
+    {
+      localApolloRenderDriver = (ApolloRenderDriver)this.a.get();
+      if ((localApolloRenderDriver != null) && (localApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null) && (localApolloRenderDriver.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null))
+      {
+        localApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
+        if (((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int <= 0) {
+          break label101;
+        }
+      }
+    }
+    label101:
+    for (int i = 1000 / ((ApolloRenderDriver)this.a.get()).jdField_a_of_type_Int;; i = 50)
+    {
+      localApolloRenderDriver.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this, i);
+      return;
+    }
   }
 }
 

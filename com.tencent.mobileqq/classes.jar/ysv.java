@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 public class ysv
   implements Runnable
 {
-  public ysv(ApolloGameActivity paramApolloGameActivity) {}
+  public ysv(ApolloSurfaceView paramApolloSurfaceView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
   
   public void run()
   {
-    ApolloGameUtil.a(this.a, ApolloGameActivity.a(this.a).game.gameId, null, ApolloGameActivity.a(this.a).mGameType, ApolloGameActivity.a(this.a));
+    ApolloSurfaceView.access$800(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
   }
 }
 

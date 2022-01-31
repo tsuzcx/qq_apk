@@ -1,41 +1,22 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
-import com.tencent.mobileqq.filemanager.data.FileCategoryEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
+import java.util.Comparator;
 
 public class acmb
-  extends AsyncTask
+  implements Comparator
 {
-  public acmb(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public acmb(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public int a(EmosmPb.SmallYellowItem paramSmallYellowItem1, EmosmPb.SmallYellowItem paramSmallYellowItem2)
   {
-    return Integer.valueOf(FileCategoryUtil.d(this.a));
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    this.a.stopTitleProgress();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileCategoryEntity localFileCategoryEntity = (FileCategoryEntity)localIterator.next();
-      if (localFileCategoryEntity.e == 4)
-      {
-        localFileCategoryEntity.d = paramInteger.intValue();
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
-      }
+    if (paramSmallYellowItem2.ts.get() > paramSmallYellowItem1.ts.get()) {
+      return 1;
     }
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.a.startTitleProgress();
+    if (paramSmallYellowItem2.ts.get() == paramSmallYellowItem1.ts.get()) {
+      return 0;
+    }
+    return -1;
   }
 }
 

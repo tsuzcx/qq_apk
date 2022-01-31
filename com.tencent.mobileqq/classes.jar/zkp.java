@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioUtil;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class zkp
   implements Runnable
 {
-  public zkp(QQAppInterface paramQQAppInterface) {}
+  public zkp(FrameHelperActivity paramFrameHelperActivity) {}
   
   public void run()
   {
-    AudioUtil.a(2131230757, false);
+    if ((this.a.getActivity() == null) || (this.a.getActivity().app == null)) {}
+    do
+    {
+      return;
+      this.a.l();
+    } while (this.a.a == null);
+    this.a.a.sendEmptyMessage(9);
   }
 }
 

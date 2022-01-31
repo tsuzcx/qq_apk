@@ -1,53 +1,67 @@
-import com.tencent.mobileqq.activity.C2CCallToGroupCall;
-import com.tencent.mobileqq.app.DiscussionHandler;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.common.util.Util;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class ruo
-  extends Thread
+  implements DialogInterface.OnClickListener
 {
-  public ruo(C2CCallToGroupCall paramC2CCallToGroupCall) {}
+  public ruo(BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    localObject3 = ContactUtils.j(this.a.a, this.a.a.getCurrentAccountUin());
-    Object localObject1 = localObject3;
-    for (;;)
+    switch (paramInt)
     {
-      try
-      {
-        if (((String)localObject3).getBytes("utf-8").length > 48)
-        {
-          int j = ((String)localObject3).length();
-          i = 1;
-          localObject1 = localObject3;
-          if (i <= j)
-          {
-            if (((String)localObject3).substring(0, i).getBytes("utf-8").length <= 48) {
-              continue;
-            }
-            localObject1 = ((String)localObject3).substring(0, i - 1);
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        int i;
-        localException.printStackTrace();
-        Object localObject2 = localObject3;
-        continue;
-      }
-      localObject3 = (DiscussionHandler)this.a.a.a(6);
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CCallToGroupCall", 2, "create discussion: " + (String)localObject1 + " member count: " + localArrayList.size());
-      }
-      ((DiscussionHandler)localObject3).a((String)localObject1, localArrayList, 1003);
-      return;
-      i += 1;
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.aio.BaseChatPie", 2, "qbShowShareResultDialog back");
+          }
+          if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+          {
+            Util.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "choose", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID, "back");
+            ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid), "1000", "51", "0", false);
+          }
+          Util.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 0, "", "");
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
+        } while (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getBooleanExtra("show_share_result_dialog_return_thirdapp", true));
+        try
+        {
+          paramDialogInterface = (PendingIntent)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getIntent().getParcelableExtra("activity_finish_run_pendingIntent");
+          if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getIntent().getBooleanExtra("share_from_aio", false)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.aio.BaseChatPie", 2, "-->finish--send callback using PendingIntent");
+            }
+            paramDialogInterface.send();
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().moveTaskToBack(true);
+          return;
+        }
+        catch (Throwable paramDialogInterface) {}
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.aio.BaseChatPie", 2, "qbShowShareResultDialog ", paramDialogInterface);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.aio.BaseChatPie", 2, "-->qbShowShareResultDialog--stay");
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null);
+    Util.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "choose", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID, "stay");
+    ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAppid), "1000", "52", "0", false);
   }
 }
 

@@ -99,8 +99,9 @@ public class c
   {
     super(paramc);
     this.a = new g(paramc, e());
-    new HandlerThread("image-upload-service").start();
-    this.i = new Handler();
+    paramc = new HandlerThread("image-upload-service");
+    paramc.start();
+    this.i = new Handler(paramc.getLooper());
   }
   
   private final boolean a(int paramInt, String paramString1, String paramString2, IUploadConfig.UploadImageSize paramUploadImageSize, boolean paramBoolean1, boolean paramBoolean2)
@@ -196,12 +197,12 @@ public class c
     //   3: istore_3
     //   4: aload_0
     //   5: monitorenter
-    //   6: ldc 95
-    //   8: ldc_w 294
-    //   11: invokestatic 135	com/tencent/upload/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   6: ldc 101
+    //   8: ldc_w 300
+    //   11: invokestatic 141	com/tencent/upload/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   14: aload_0
     //   15: getfield 68	com/tencent/upload/b/c:h	Ljava/util/List;
-    //   18: invokeinterface 297 1 0
+    //   18: invokeinterface 303 1 0
     //   23: istore_2
     //   24: iload_2
     //   25: ifgt +7 -> 32
@@ -210,30 +211,30 @@ public class c
     //   30: iload_3
     //   31: ireturn
     //   32: aload_0
-    //   33: invokevirtual 299	com/tencent/upload/b/c:f	()I
+    //   33: invokevirtual 305	com/tencent/upload/b/c:f	()I
     //   36: istore_2
-    //   37: ldc 95
-    //   39: new 97	java/lang/StringBuilder
+    //   37: ldc 101
+    //   39: new 103	java/lang/StringBuilder
     //   42: dup
-    //   43: invokespecial 98	java/lang/StringBuilder:<init>	()V
-    //   46: ldc_w 301
-    //   49: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   46: ldc_w 307
+    //   49: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   52: aload_0
     //   53: getfield 68	com/tencent/upload/b/c:h	Ljava/util/List;
-    //   56: invokeinterface 297 1 0
-    //   61: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   64: ldc_w 303
-    //   67: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokeinterface 303 1 0
+    //   61: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   64: ldc_w 309
+    //   67: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   70: aload_0
     //   71: getfield 63	com/tencent/upload/b/c:g	Landroid/util/SparseArray;
-    //   74: invokevirtual 304	android/util/SparseArray:size	()I
-    //   77: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   80: ldc_w 306
-    //   83: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: invokevirtual 310	android/util/SparseArray:size	()I
+    //   77: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   80: ldc_w 312
+    //   83: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: iload_2
-    //   87: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   90: invokevirtual 129	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   93: invokestatic 135	com/tencent/upload/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   87: invokevirtual 113	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: invokestatic 141	com/tencent/upload/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   96: new 65	java/util/ArrayList
     //   99: dup
     //   100: invokespecial 66	java/util/ArrayList:<init>	()V
@@ -245,7 +246,7 @@ public class c
     //   113: monitorenter
     //   114: aload_0
     //   115: getfield 68	com/tencent/upload/b/c:h	Ljava/util/List;
-    //   118: invokeinterface 297 1 0
+    //   118: invokeinterface 303 1 0
     //   123: iload_2
     //   124: if_icmplt +33 -> 157
     //   127: iload_1
@@ -255,8 +256,8 @@ public class c
     //   134: aload_0
     //   135: getfield 68	com/tencent/upload/b/c:h	Ljava/util/List;
     //   138: iload_1
-    //   139: invokeinterface 310 2 0
-    //   144: invokeinterface 171 2 0
+    //   139: invokeinterface 316 2 0
+    //   144: invokeinterface 177 2 0
     //   149: pop
     //   150: iload_1
     //   151: iconst_1
@@ -266,29 +267,29 @@ public class c
     //   157: aload 4
     //   159: aload_0
     //   160: getfield 68	com/tencent/upload/b/c:h	Ljava/util/List;
-    //   163: invokeinterface 314 2 0
+    //   163: invokeinterface 320 2 0
     //   168: pop
     //   169: aload_0
     //   170: getfield 68	com/tencent/upload/b/c:h	Ljava/util/List;
     //   173: aload 4
-    //   175: invokeinterface 317 2 0
+    //   175: invokeinterface 323 2 0
     //   180: pop
     //   181: aload 5
     //   183: monitorexit
     //   184: getstatic 34	com/tencent/upload/b/c:f	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   187: invokevirtual 320	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
+    //   187: invokevirtual 326	java/util/concurrent/atomic/AtomicInteger:incrementAndGet	()I
     //   190: istore_1
     //   191: aload 4
-    //   193: invokeinterface 324 1 0
+    //   193: invokeinterface 330 1 0
     //   198: astore 5
     //   200: aload 5
-    //   202: invokeinterface 329 1 0
+    //   202: invokeinterface 335 1 0
     //   207: ifeq +35 -> 242
     //   210: aload 5
-    //   212: invokeinterface 333 1 0
-    //   217: checkcast 157	com/tencent/upload/uinterface/AbstractUploadTask
+    //   212: invokeinterface 339 1 0
+    //   217: checkcast 163	com/tencent/upload/uinterface/AbstractUploadTask
     //   220: iload_1
-    //   221: invokevirtual 336	com/tencent/upload/uinterface/AbstractUploadTask:setBatchId	(I)V
+    //   221: invokevirtual 342	com/tencent/upload/uinterface/AbstractUploadTask:setBatchId	(I)V
     //   224: goto -24 -> 200
     //   227: astore 4
     //   229: aload_0
@@ -300,24 +301,24 @@ public class c
     //   238: monitorexit
     //   239: aload 4
     //   241: athrow
-    //   242: new 338	com/tencent/upload/uinterface/data/BatchControlTask
+    //   242: new 344	com/tencent/upload/uinterface/data/BatchControlTask
     //   245: dup
     //   246: aload 4
     //   248: aload_0
     //   249: getfield 57	com/tencent/upload/b/c:a	Lcom/tencent/upload/b/g;
-    //   252: invokespecial 341	com/tencent/upload/uinterface/data/BatchControlTask:<init>	(Ljava/util/List;Lcom/tencent/upload/b/g;)V
+    //   252: invokespecial 347	com/tencent/upload/uinterface/data/BatchControlTask:<init>	(Ljava/util/List;Lcom/tencent/upload/b/g;)V
     //   255: astore 4
     //   257: aload 4
     //   259: iload_1
-    //   260: invokevirtual 342	com/tencent/upload/uinterface/data/BatchControlTask:setBatchId	(I)V
+    //   260: invokevirtual 348	com/tencent/upload/uinterface/data/BatchControlTask:setBatchId	(I)V
     //   263: aload_0
     //   264: getfield 57	com/tencent/upload/b/c:a	Lcom/tencent/upload/b/g;
     //   267: aload 4
-    //   269: invokevirtual 190	com/tencent/upload/b/g:a	(Lcom/tencent/upload/uinterface/AbstractUploadTask;)Z
+    //   269: invokevirtual 196	com/tencent/upload/b/g:a	(Lcom/tencent/upload/uinterface/AbstractUploadTask;)Z
     //   272: pop
-    //   273: ldc 95
-    //   275: ldc_w 344
-    //   278: invokestatic 135	com/tencent/upload/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   273: ldc 101
+    //   275: ldc_w 350
+    //   278: invokestatic 141	com/tencent/upload/common/b:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   281: iconst_1
     //   282: istore_3
     //   283: goto -255 -> 28

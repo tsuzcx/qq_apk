@@ -1,19 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.MediaScanner;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
 
 public class wwr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wwr(PeakService paramPeakService) {}
+  public wwr(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakService", 2, "peak service start MediaScanner.doScan()");
-    }
-    MediaScanner.a(BaseApplicationImpl.getContext()).a();
+    this.a.a.setText("");
   }
 }
 

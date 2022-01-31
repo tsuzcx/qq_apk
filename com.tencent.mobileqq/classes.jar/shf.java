@@ -1,67 +1,59 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
-import com.tencent.mobileqq.utils.StartupTracker;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.widget.ActionMenuItem;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class shf
-  implements Runnable
+public class shf
+  implements ActionSheet.OnButtonClickListener
 {
-  shf(she paramshe, boolean paramBoolean) {}
+  public shf(ChatSettingForTroop paramChatSettingForTroop, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_She.a.d(true);
-    if (this.jdField_a_of_type_She.a.i)
+    switch (this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt).c)
     {
-      Conversation.a(this.jdField_a_of_type_She.a, 800L);
-      Object localObject;
-      label102:
-      ConversationPullDownActiveBase localConversationPullDownActiveBase;
-      if (this.jdField_a_of_type_She.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
-      {
-        localObject = this.jdField_a_of_type_She.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          i = 0;
-          ((PullRefreshHeader)localObject).a(i);
-        }
-      }
-      else
-      {
-        if (this.jdField_a_of_type_She.a.jdField_a_of_type_JavaUtilArrayList == null) {
-          break label152;
-        }
-        localObject = this.jdField_a_of_type_She.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localConversationPullDownActiveBase = (ConversationPullDownActiveBase)((Iterator)localObject).next();
-        } while (localConversationPullDownActiveBase == null);
-        if (!this.jdField_a_of_type_Boolean) {
-          break label147;
-        }
-      }
-      label147:
-      for (int i = 0;; i = 2)
-      {
-        localConversationPullDownActiveBase.b(i);
-        break label102;
-        i = 2;
-        break;
-      }
-      label152:
-      if (Conversation.a(this.jdField_a_of_type_She.a) != null) {
-        Conversation.a(this.jdField_a_of_type_She.a).a(this.jdField_a_of_type_Boolean);
-      }
     }
-    if (this.jdField_a_of_type_She.a.b > 0L) {
-      StartupTracker.a("Conversation_PullToRefresh_cbSwitchToUI", SystemClock.uptimeMillis() - this.jdField_a_of_type_She.a.b);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      ChatSettingForTroop.e(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.d == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
+      {
+        TroopReportor.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
+        continue;
+        if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app != null)) {
+          if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.d == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
+          {
+            TroopReportor.a("Grp_set_new", "grpData_admin", "clk_report", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
+            ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, null, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getAccount(), 10022, null);
+          }
+          else
+          {
+            String str = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin;
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember) {}
+            for (paramView = "1";; paramView = "0")
+            {
+              TroopReportor.a("Grp_set_new", "grpData_visitor", "clk_report", 0, 0, new String[] { str, paramView });
+              break;
+            }
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility == null) {
+              this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility = new TroopShareUtility(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, new shg(this));
+            }
+            this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+            this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a("Grp_Admin_data", "Clk_share", "");
+            if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.d == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember)) {
+              TroopReportor.a("Grp_set_new", "grpData_admin", "clk_share", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
+            }
+          }
+        }
+      }
     }
   }
 }

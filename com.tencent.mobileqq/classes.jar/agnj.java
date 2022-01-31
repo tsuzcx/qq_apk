@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import android.os.Handler;
+import com.tencent.mobileqq.armap.FrameBmpCache.EndListener;
+import com.tencent.mobileqq.armap.SdCardImageAnimView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public final class agnj
-  implements Parcelable.Creator
+public class agnj
+  implements FrameBmpCache.EndListener
 {
-  public PersonalityLabel a(Parcel paramParcel)
-  {
-    return new PersonalityLabel(paramParcel);
-  }
+  public agnj(ScanTorchActivity paramScanTorchActivity) {}
   
-  public PersonalityLabel[] a(int paramInt)
+  public void a(SdCardImageAnimView paramSdCardImageAnimView)
   {
-    return new PersonalityLabel[paramInt];
+    paramSdCardImageAnimView.a();
+    this.a.a.post(new agnk(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agnj
  * JD-Core Version:    0.7.0.1
  */

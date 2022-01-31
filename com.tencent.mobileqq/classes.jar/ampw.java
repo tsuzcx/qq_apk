@@ -1,18 +1,18 @@
-import cooperation.qqindividuality.QQIndividualityBaseBridgeActivity;
+import common.config.service.QzoneConfig;
 
 public class ampw
   implements Runnable
 {
-  public ampw(QQIndividualityBaseBridgeActivity paramQQIndividualityBaseBridgeActivity) {}
+  public ampw(QzoneConfig paramQzoneConfig) {}
   
   public void run()
   {
-    this.a.a();
+    this.a.loadAllConfigs();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ampw
  * JD-Core Version:    0.7.0.1
  */

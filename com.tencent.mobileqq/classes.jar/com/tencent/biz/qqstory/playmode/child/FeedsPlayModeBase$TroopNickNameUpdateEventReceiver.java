@@ -16,7 +16,7 @@ public class FeedsPlayModeBase$TroopNickNameUpdateEventReceiver
   
   public void a(@NonNull FeedsPlayModeBase paramFeedsPlayModeBase, @NonNull TroopNickNameManager.TroopNickNameUpdateEvent paramTroopNickNameUpdateEvent)
   {
-    if (paramTroopNickNameUpdateEvent.a.isSuccess())
+    if (paramTroopNickNameUpdateEvent.errorInfo.isSuccess())
     {
       if (QLog.isDevelopLevel()) {
         QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");

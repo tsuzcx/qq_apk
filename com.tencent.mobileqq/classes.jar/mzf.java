@@ -1,41 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionRecommendViewWrapper;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.RecommendItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 
 public class mzf
-  implements AdapterView.OnItemClickListener
+  implements TroopMemberApiClient.Callback
 {
-  public mzf(PublicAccountImageCollectionRecommendViewWrapper paramPublicAccountImageCollectionRecommendViewWrapper) {}
+  public mzf(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "onItemClick!");
+    if (this.a.a != null) {
+      this.a.k();
     }
-    paramAdapterView = (PublicAccountImageCollectionUtils.RecommendItemInfo)PublicAccountImageCollectionRecommendViewWrapper.a.get(paramInt);
-    paramView = new Intent(paramView.getContext(), PublicAccountImageCollectionMainActivity.class);
-    paramView.putExtra("recommend_source", paramAdapterView.c);
-    paramView.putExtra("recommend_position", paramInt + 1);
-    paramView.putExtra("click_source", 2);
-    paramView.putExtra("source_for_report", 15);
-    PublicAccountImageCollectionUtils.a(PublicAccountImageCollectionRecommendViewWrapper.a(this.a), paramView, String.valueOf(paramAdapterView.d));
-    if ((PublicAccountImageCollectionRecommendViewWrapper.a(this.a) instanceof PublicAccountImageCollectionMainActivity))
-    {
-      paramView = (PublicAccountImageCollectionMainActivity)PublicAccountImageCollectionRecommendViewWrapper.a(this.a);
-      paramInt += 1;
-      paramView.a(2, paramInt, paramAdapterView.c);
-      PublicAccountReportUtils.a(null, paramView.a, "0X8007B94", "0X8007B94", 0, 0, paramView.b, paramView.c, paramAdapterView.d, "" + paramInt, false);
-    }
-    ImageManager.a().a();
   }
 }
 

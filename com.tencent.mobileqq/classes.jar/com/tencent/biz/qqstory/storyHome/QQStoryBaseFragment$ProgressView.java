@@ -21,9 +21,9 @@ class QQStoryBaseFragment$ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2130970906, this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363005));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363632));
+    LayoutInflater.from(paramContext).inflate(2130970924, this);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363010));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363651));
   }
 }
 

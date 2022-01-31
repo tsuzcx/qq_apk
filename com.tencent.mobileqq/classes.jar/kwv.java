@@ -1,16 +1,38 @@
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class kwv
   implements Runnable
 {
-  public kwv(AdModuleBase paramAdModuleBase, DownloadInfo paramDownloadInfo) {}
+  public kwv(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleBase.a != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleBase.a.setProgress(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g);
+    synchronized (AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager))
+    {
+      AdvertisementVideoPreloadManager.c("loadLocalConfigTask uin:" + this.jdField_a_of_type_JavaLangString);
+      Object localObject2 = AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager);
+      if (localObject2 != null)
+      {
+        localObject2 = ((PublicAccountEntityHelper)localObject2).a(PAAdPreloadTask.class, true, "mUserUin = ?", new String[] { this.jdField_a_of_type_JavaLangString }, null, null, "mExpireTime asc", null);
+        if (localObject2 != null)
+        {
+          AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager).clear();
+          AdvertisementVideoPreloadManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementVideoPreloadManager).addAll((Collection)localObject2);
+          AdvertisementVideoPreloadManager.c("loadLocalConfigTask taskSize:" + ((List)localObject2).size());
+          ThreadManager.executeOnNetWorkThread(new kww(this));
+        }
+      }
+      else
+      {
+        return;
+      }
+      AdvertisementVideoPreloadManager.c("loadLocalConfigTask tasklist null");
     }
   }
 }

@@ -1,23 +1,13 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import java.util.List;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 class sxi
   implements Runnable
 {
-  sxi(sxh paramsxh, List paramList) {}
+  sxi(sxh paramsxh) {}
   
   public void run()
   {
-    if (Leba.a(this.jdField_a_of_type_Sxh.a) != null)
-    {
-      Leba.a(this.jdField_a_of_type_Sxh.a).clear();
-      Leba.a(this.jdField_a_of_type_Sxh.a).addAll(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Sxh.a.a != null) {
-        this.jdField_a_of_type_Sxh.a.a.notifyDataSetChanged();
-      }
-      Leba.c(this.jdField_a_of_type_Sxh.a);
-    }
+    this.a.a.a(2131437545, 1);
   }
 }
 

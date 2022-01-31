@@ -31,9 +31,9 @@ import com.tencent.widget.ListView;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import lso;
-import lsq;
-import lsr;
+import lvs;
+import lvu;
+import lvv;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.FriendRecommendInfo;
@@ -146,7 +146,7 @@ public class ReadInJoyHeaderPresenter
       }
       i += 1;
     }
-    paramReadInJoyView = new lsr(this, paramReadInJoyView, localArrayList2, paramArrayList, paramInt, paramObject);
+    paramReadInJoyView = new lvv(this, paramReadInJoyView, localArrayList2, paramArrayList, paramInt, paramObject);
     paramInt = 0;
     if (paramInt < localArrayList1.size())
     {
@@ -307,7 +307,7 @@ public class ReadInJoyHeaderPresenter
       for (;;)
       {
         String str = String.valueOf(paramIReadInJoyModel.get(i));
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[i].setOnClickListener(new lsq(this, str, paramReadInJoyView));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[i].setOnClickListener(new lvu(this, str, paramReadInJoyView));
         i += 1;
         break;
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[i].setImageBitmap(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a(((Long)paramIReadInJoyModel.get(i)).longValue()));
@@ -359,7 +359,7 @@ public class ReadInJoyHeaderPresenter
     switch (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel.c())
     {
     default: 
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.d.setOnClickListener(new lso(this, paramIReadInJoyModel, paramReadInJoyView));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.d.setOnClickListener(new lvs(this, paramIReadInJoyModel, paramReadInJoyView));
       return;
     case 1: 
       this.jdField_a_of_type_Boolean = false;

@@ -19,9 +19,9 @@ import com.tencent.open.downloadnew.DownloadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
 import cooperation.qzone.util.NetworkState;
-import mwy;
-import mwz;
-import mxa;
+import nas;
+import nat;
+import nau;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,7 +33,7 @@ public class VideoFeedsWeiShiUtils
   {
     WeShiGuideDialog localWeShiGuideDialog = new WeShiGuideDialog(paramActivity, 2131624517);
     localWeShiGuideDialog.getWindow().getDecorView().setSystemUiVisibility(2);
-    localWeShiGuideDialog.getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new mwy(localWeShiGuideDialog, paramActivity));
+    localWeShiGuideDialog.getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new nas(localWeShiGuideDialog, paramActivity));
     localWeShiGuideDialog.a("https://pub.idqqimg.com/pc/misc/files/20180423/4c3ece054ae044eb85797d31fa487ce7.jpg").b(paramString);
     localWeShiGuideDialog.show();
     int i = paramActivity.getIntent().getIntExtra("REPORT_VIDEO_FEEDS_JUMP_FROM", 0);
@@ -161,7 +161,7 @@ public class VideoFeedsWeiShiUtils
       paramContext = DialogUtil.a(paramContext, 230);
       paramContext.setTitle(null);
       paramContext.setMessage("当前为非WiFi网络，确定要下载吗？");
-      paramContext.setNegativeButton("取消", new mxa()).setPositiveButton("下载", new mwz());
+      paramContext.setNegativeButton("取消", new nau()).setPositiveButton("下载", new nat());
       paramContext.show();
       return;
     }

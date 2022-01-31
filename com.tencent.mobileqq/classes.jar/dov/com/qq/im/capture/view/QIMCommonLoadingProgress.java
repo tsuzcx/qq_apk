@@ -3,7 +3,7 @@ package dov.com.qq.im.capture.view;
 import android.os.SystemClock;
 import android.util.SparseArray;
 import android.view.animation.AccelerateInterpolator;
-import anpp;
+import anyc;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import dov.com.qq.im.capture.data.ComboSet;
 import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
@@ -151,26 +151,26 @@ public class QIMCommonLoadingProgress
     int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
     if (i >= 0)
     {
-      anpp localanpp = (anpp)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
-      if (localanpp == null) {
+      anyc localanyc = (anyc)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
+      if (localanyc == null) {
         this.jdField_a_of_type_JavaUtilArrayList.remove(i);
       }
       for (;;)
       {
         i -= 1;
         break;
-        localanpp.a();
+        localanyc.a();
       }
     }
   }
   
-  public void a(anpp paramanpp)
+  public void a(anyc paramanyc)
   {
     int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
     while (i >= 0)
     {
-      anpp localanpp = (anpp)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
-      if ((localanpp == null) || (localanpp == paramanpp)) {
+      anyc localanyc = (anyc)((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get();
+      if ((localanyc == null) || (localanyc == paramanyc)) {
         this.jdField_a_of_type_JavaUtilArrayList.remove(i);
       }
       i -= 1;
@@ -182,9 +182,9 @@ public class QIMCommonLoadingProgress
     this.jdField_a_of_type_Byte = 1;
   }
   
-  public void b(anpp paramanpp)
+  public void b(anyc paramanyc)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramanpp));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramanyc));
   }
   
   public void c()

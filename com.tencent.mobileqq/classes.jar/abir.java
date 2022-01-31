@@ -1,20 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView.ARMapSplashEntryListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abir
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public abir(ARMapSplashEntryView paramARMapSplashEntryView) {}
+  public abir(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (ARMapSplashEntryView.a(this.a) != null) {
-      ARMapSplashEntryView.a(this.a).a();
-    }
-    ARMapSplashEntryView.b(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

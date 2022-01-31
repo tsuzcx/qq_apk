@@ -1,34 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.view.CommentsAdapter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class aeww
-  implements View.OnClickListener
+  implements WerewolvesHandler.Callback
 {
-  public aeww(CommentsAdapter paramCommentsAdapter, long paramLong) {}
+  public aeww(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    Object localObject = paramView.getContext();
-    if ((localObject instanceof BaseActivity))
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      localObject = (BaseActivity)localObject;
-      if ((((BaseActivity)localObject).app == null) || (this.jdField_a_of_type_Long != Long.parseLong(((BaseActivity)localObject).app.getCurrentAccountUin()))) {}
+      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomInviteActivity.a = this.a.b;
     }
-    for (int i = 2;; i = 3)
+    for (;;)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("&from=3");
-      ((StringBuilder)localObject).append("&mode=" + i);
-      localObject = "mqq://card/show_pslcard/?uin=" + this.jdField_a_of_type_Long + "&card_type=nearby" + ((StringBuilder)localObject).toString();
-      paramView.getContext().startActivity(new Intent(paramView.getContext(), JumpActivity.class).setData(Uri.parse((String)localObject)));
+      this.a.a(true);
       return;
+      paramRspBody = this.a;
+      GameRoomInviteActivity.a = null;
+      paramRspBody.b = null;
     }
   }
 }

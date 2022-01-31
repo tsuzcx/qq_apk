@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.fragment;
 
-import adms;
-import admt;
+import adva;
+import advb;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -36,7 +36,7 @@ public class HotChatFragment
   extends NearbyBaseFragment
   implements Handler.Callback
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adms(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adva(this);
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   public RefreshView a;
   public NearbyActivity a;
@@ -49,7 +49,7 @@ public class HotChatFragment
   public HotChatFragment()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new admt(this);
+    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new advb(this);
     this.jdField_a_of_type_Int = 2;
     if (QLog.isColorLevel()) {
       NearbyUtils.a("HotChatFragment", new Object[] { "HotChatFragment" });
@@ -59,7 +59,7 @@ public class HotChatFragment
   private void e()
   {
     if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a(getString(2131438297)).a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a(getString(2131438317)).a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     }
     for (;;)
     {
@@ -206,11 +206,11 @@ public class HotChatFragment
       super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
       if (this.jdField_a_of_type_AndroidViewView == null)
       {
-        this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969111, null);
-        this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365229));
-        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365230);
+        this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969114, null);
+        this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365256));
+        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365257);
       }
-      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(getString(2131435075)).a(false);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(getString(2131435091)).a(false);
       e();
       if ((this.e) && (!this.f)) {
         d();

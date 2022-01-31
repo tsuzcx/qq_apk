@@ -48,7 +48,7 @@ public class TroopRobotNextTipsView
     {
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setId(2131361879);
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839641);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839656);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 13.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
@@ -62,7 +62,7 @@ public class TroopRobotNextTipsView
     {
       this.b = new TextView(getContext());
       this.b.setId(2131361880);
-      this.b.setBackgroundResource(2130840547);
+      this.b.setBackgroundResource(2130840562);
       this.b.setTextSize(2, 14.0F);
       this.b.setTextColor(jdField_a_of_type_Int);
       this.b.setGravity(17);
@@ -140,7 +140,7 @@ public class TroopRobotNextTipsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopRobotNextTipsView
  * JD-Core Version:    0.7.0.1
  */

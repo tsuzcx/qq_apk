@@ -1,56 +1,230 @@
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
+import com.tencent.mobileqq.intervideo.IVPluginEvtListener;
+import com.tencent.mobileqq.intervideo.SevenZip;
+import com.tencent.mobileqq.intervideo.now.NowDataReporter;
+import com.tencent.mobileqq.intervideo.now.NowPlugin;
+import com.tencent.mobileqq.intervideo.now.NowUtil;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import com.tencent.mobileqq.intervideo.od.ODDownloader;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.txproxy.HostEventListener;
+import com.tencent.txproxy.XEventListener;
+import com.tencent.txproxy.XPlugin;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class aedm
-  implements Runnable
+  implements XEventListener
 {
-  public aedm(PngFrameManager paramPngFrameManager, PngFrameManager.RandomDrawableParam paramRandomDrawableParam) {}
+  public aedm(NowPlugin paramNowPlugin) {}
   
-  public void run()
+  public void onDataReport(String paramString, Bundle paramBundle)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a(paramBundle);
+  }
+  
+  public void onDownload(int paramInt, String paramString1, String paramString2, HostEventListener paramHostEventListener)
+  {
+    if (paramInt == 3)
+    {
+      NowPlugin.a(this.a, paramString1, paramString2, paramHostEventListener);
+      return;
+    }
+    new ODDownloader(NowPlugin.a(this.a)).a(paramString1, paramString2, paramHostEventListener);
+  }
+  
+  public void onError(String paramString1, int paramInt, String paramString2)
+  {
+    paramString1 = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramString1.hasNext())
+    {
+      IVPluginEvtListener localIVPluginEvtListener = (IVPluginEvtListener)paramString1.next();
+      if (localIVPluginEvtListener != null) {
+        localIVPluginEvtListener.a("Live", paramInt, paramString2);
+      }
+    }
+  }
+  
+  public void onGetPluginActivity(Activity paramActivity)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func showPngFrame, zip NOT exist, download from Server.");
+      QLog.i("XProxy|NowProxy", 2, "onGetPluginActivity activity  = " + paramActivity);
     }
-    Object localObject3 = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-    Object localObject2 = ((EmoticonManager)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      localObject1 = new EmoticonPackage();
-      ((EmoticonPackage)localObject1).epId = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString;
-      ((EmoticonPackage)localObject1).aio = true;
+      IVPluginEvtListener localIVPluginEvtListener = (IVPluginEvtListener)localIterator.next();
+      if (localIVPluginEvtListener != null) {
+        localIVPluginEvtListener.a(paramActivity);
+      }
     }
-    ((EmoticonPackage)localObject1).rscType = 1;
-    ((EmoticonManager)localObject3).a((EmoticonPackage)localObject1);
-    String str = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.eId;
-    localObject2 = EmoticonUtils.f.replace("[eIdSub]", str.substring(0, 2)).replace("[eId]", str);
-    localObject1 = EmoticonUtils.s.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString).replace("[eId]", str);
-    localObject3 = EmoticonUtils.j.replace("[eIdSub]", str.substring(0, 2)).replace("[eId]", str).replace("[width]", "200").replace("[height]", "200");
-    str = EmoticonUtils.q.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString).replace("[eId]", str);
-    ArrayList localArrayList = new ArrayList();
-    HashMap localHashMap = new HashMap();
-    localArrayList.add(localObject2);
-    localHashMap.put(localObject2, new File((String)localObject1));
-    localArrayList.add(localObject3);
-    localHashMap.put(localObject3, new File(str));
-    localObject2 = new DownloadTask(localArrayList, localHashMap, "random_magicface_" + this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString);
-    ((DownloadTask)localObject2).l = true;
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject2, new aedn(this, (String)localObject1), null);
+  }
+  
+  public void onLog(String paramString1, String paramString2, int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    case 1: 
+      QLog.d(paramString1, 2, paramString2);
+      return;
+    case 2: 
+      QLog.i(paramString1, 1, paramString2);
+      return;
+    }
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void onPluginInstalled(String paramString)
+  {
+    paramString = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramString.hasNext())
+    {
+      IVPluginEvtListener localIVPluginEvtListener = (IVPluginEvtListener)paramString.next();
+      if (localIVPluginEvtListener != null) {
+        localIVPluginEvtListener.d("Live");
+      }
+    }
+  }
+  
+  public void onPluginLoaded(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("XProxy|NowProxy", 2, "Now插件加载完成，当前RequestCode = " + this.a.jdField_a_of_type_Int);
+    }
+    if (((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int != 2)) || ((this.a.jdField_a_of_type_Int == 3) && (NowPlugin.a(this.a) != null)))
+    {
+      paramString = new Intent("qq.launch.login");
+      paramString.putExtras(NowPlugin.a(this.a));
+      paramString.putExtra("withlogin", true);
+      paramString.putExtra("pluginflag", true);
+      paramString.putExtra("pluginid", "Live");
+      paramString.putExtra("hosttype", String.valueOf(2));
+      if (this.a.jdField_a_of_type_AndroidOsBundle != null) {
+        paramString.putExtras(this.a.jdField_a_of_type_AndroidOsBundle);
+      }
+      BaseApplicationImpl.getContext().sendBroadcast(paramString);
+    }
+    paramString = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramString.hasNext())
+    {
+      IVPluginEvtListener localIVPluginEvtListener = (IVPluginEvtListener)paramString.next();
+      if (localIVPluginEvtListener != null) {
+        localIVPluginEvtListener.b("Live");
+      }
+    }
+  }
+  
+  public void onPluginRun(String paramString)
+  {
+    paramString = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramString.hasNext())
+    {
+      IVPluginEvtListener localIVPluginEvtListener = (IVPluginEvtListener)paramString.next();
+      if (localIVPluginEvtListener != null) {
+        localIVPluginEvtListener.a("Live");
+      }
+    }
+  }
+  
+  public void onProgress(String paramString, int paramInt)
+  {
+    paramString = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramString.hasNext())
+    {
+      IVPluginEvtListener localIVPluginEvtListener = (IVPluginEvtListener)paramString.next();
+      if (localIVPluginEvtListener != null) {
+        localIVPluginEvtListener.a("Live", paramInt);
+      }
+    }
+  }
+  
+  public void onReceivePluginMsg(String paramString1, String paramString2, Bundle paramBundle)
+  {
+    if (paramString2.equals("login.qq.kickout")) {
+      if (QLog.isColorLevel()) {
+        QLog.i("XProxy|NowProxy", 2, "收到Now被踢下线的广播");
+      }
+    }
+    for (;;)
+    {
+      Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        IVPluginEvtListener localIVPluginEvtListener = (IVPluginEvtListener)((Iterator)localObject).next();
+        if (localIVPluginEvtListener != null) {
+          localIVPluginEvtListener.a(paramString1, paramString2, paramBundle);
+        }
+      }
+      if (paramString2.equals("com.tencent.now.sharetoqq"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("XProxy|NowProxy", 2, "收到分享到ＱＱ的广播");
+        }
+        localObject = new Intent(BaseApplicationImpl.getContext(), ShareToQQActivity.class);
+        ((Intent)localObject).addFlags(268435456);
+        if (paramBundle != null) {
+          ((Intent)localObject).putExtras(paramBundle);
+        }
+        ((Intent)localObject).putExtra("uin", NowPlugin.a(this.a).c());
+        if (this.a.jdField_a_of_type_AndroidOsBundle != null) {
+          ((Intent)localObject).putExtras(this.a.jdField_a_of_type_AndroidOsBundle);
+        }
+        BaseApplicationImpl.getContext().startActivity((Intent)localObject);
+      }
+      else if (paramString2.equals("now.room.destroy"))
+      {
+        QLog.i("XProxy|NowProxy", 1, "收到Now Destroy的消息");
+        this.a.b();
+      }
+      else if (paramString2.equals("action.now.showloading"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("XProxy|NowProxy", 2, "收到进入now房间的广播");
+        }
+        NowUtil.a(BaseApplicationImpl.getContext());
+        this.a.b(paramBundle);
+      }
+      else if (paramString2.equals("action.now.roomactivity.create"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("XProxy|NowProxy", 2, "收到进入now Activity的广播");
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a(this.a.jdField_a_of_type_JavaLangString);
+      }
+      else if (paramString2.equals("action.now.datareport"))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a(paramBundle);
+      }
+      else if (paramString2.equals("action.now.updateplugin"))
+      {
+        boolean bool = this.a.jdField_a_of_type_ComTencentTxproxyXPlugin.isSilentUpdateComplete();
+        this.a.c();
+        this.a.jdField_a_of_type_ComTencentTxproxyXPlugin = XPlugin.getPlugin("Live");
+        this.a.jdField_a_of_type_ComTencentTxproxyXPlugin.setHostInterface(this.a.jdField_a_of_type_ComTencentTxproxyHostInterface);
+        this.a.jdField_a_of_type_Boolean = false;
+        NowPlugin.a(this.a);
+        NowPlugin.a(this.a, null, 0L, null, true, bool);
+      }
+    }
+  }
+  
+  public int onUnZipSo(String paramString1, String paramString2)
+  {
+    int i = 1;
+    QLog.i("XProxy|NowProxy", 1, "onUnZipSo soPath  = " + paramString2);
+    if (SevenZip.a(BaseApplicationImpl.getContext(), paramString1, paramString2)) {
+      i = 0;
+    }
+    return i;
   }
 }
 

@@ -1,24 +1,52 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule.BussinessData;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.widget.XListView;
 
 public class ung
-  implements Runnable
+  implements IIconListener
 {
-  public ung(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, AioAnimationRule paramAioAnimationRule) {}
+  public ung(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a.jdField_a_of_type_Int)
+    int i = 0;
+    if ((paramBitmap != null) && (paramInt2 == 200)) {
+      if (this.a.h == 0) {
+        paramBitmap = this.a.a;
+      }
+    }
+    for (;;)
     {
-      localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(j), Integer.valueOf(i) });
-      return;
+      if (paramBitmap != null) {
+        paramInt2 = paramBitmap.getChildCount();
+      }
+      for (;;)
+      {
+        if (i < paramInt2)
+        {
+          Object localObject = paramBitmap.getChildAt(i).getTag();
+          if ((localObject != null) && ((localObject instanceof unh)))
+          {
+            localObject = (unh)localObject;
+            if ((((unh)localObject).a == paramInt1) && (((unh)localObject).e != null)) {
+              VisitorsActivity.a(this.a, ((unh)localObject).e, paramInt1);
+            }
+          }
+          i += 1;
+          continue;
+          if (this.a.h != 1) {
+            break label145;
+          }
+          paramBitmap = this.a.b;
+          break;
+        }
+        return;
+        paramInt2 = 0;
+      }
+      label145:
+      paramBitmap = null;
     }
   }
 }

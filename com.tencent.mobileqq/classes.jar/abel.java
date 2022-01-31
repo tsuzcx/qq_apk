@@ -1,14 +1,32 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.statistics.ArkAppReportController;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class abel
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public abel(ShopScanActivity paramShopScanActivity) {}
+  public abel(ArkRecommendController paramArkRecommendController, QQCustomDialog paramQQCustomDialog, QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQToast.a(this.a.getApplicationContext(), "当前网络不可用，请检查你的网络设置。", 1).b(this.a.getTitleBarHeight());
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
+    {
+      ArkRecommendController.a(ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ArkAppReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "__global__", "ArkAlertDialogNotConfirm", 0L, 0L, 0L, 0L, 0L, "", "");
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      ArkRecommendController.a(this.jdField_a_of_type_AndroidContentContext, "close", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      ArkAppCenter.b("ArkDialog", String.format("NegativeButton click failed, err=%s", new Object[] { paramDialogInterface.getMessage() }));
+    }
   }
 }
 

@@ -1,20 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.CardContainer;
+import android.view.View;
+import com.tencent.mobileqq.werewolves.ReflectUtils;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.lang.reflect.Method;
 
-class akzx
-  implements Runnable
+public class akzx
+  implements ActionSheet.OnButtonClickListener
 {
-  akzx(akzw paramakzw, Bitmap paramBitmap) {}
+  public akzx(WerewolvesHostInterface paramWerewolvesHostInterface, Object paramObject, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Akzw.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_Akzw.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Akzw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, false);
+    paramView = ReflectUtils.a(this.jdField_a_of_type_JavaLangObject.getClass(), "onClick", new Class[] { Integer.TYPE });
+    try
+    {
+      paramView.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akzx
  * JD-Core Version:    0.7.0.1
  */

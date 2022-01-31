@@ -1,14 +1,32 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class uvk
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public uvk(CommonHobbyForAIOShowItemBuilder paramCommonHobbyForAIOShowItemBuilder, ImageView paramImageView) {}
+  public uvk(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842745);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationEnd is called,time is:" + System.currentTimeMillis());
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationRepeat is called,time is:" + System.currentTimeMillis());
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "startStartRecordAnim(),onAnimationStart is called,time is:" + System.currentTimeMillis());
+    }
   }
 }
 

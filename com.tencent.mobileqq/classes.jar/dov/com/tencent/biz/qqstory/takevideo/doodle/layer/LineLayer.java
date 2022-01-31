@@ -265,12 +265,7 @@ public class LineLayer
       b(4);
       return;
     }
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.h())
-    {
-      b(6);
-      return;
-    }
-    b(3);
+    b(6);
   }
   
   public void e()

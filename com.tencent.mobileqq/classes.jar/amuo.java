@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.GpsInfo4LocalImage;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import cooperation.qlink.QQProxyForQlink;
 
-public final class amuo
-  implements Parcelable.Creator
+public class amuo
+  extends BroadcastReceiver
 {
-  public GpsInfo4LocalImage a(Parcel paramParcel)
-  {
-    return new GpsInfo4LocalImage(paramParcel.readFloat(), paramParcel.readFloat());
-  }
+  public amuo(QQProxyForQlink paramQQProxyForQlink) {}
   
-  public GpsInfo4LocalImage[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return null;
+    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (QQProxyForQlink.a(this.a) != null))
+    {
+      QQProxyForQlink.a(this.a).dismiss();
+      QQProxyForQlink.a(this.a, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amuo
  * JD-Core Version:    0.7.0.1
  */

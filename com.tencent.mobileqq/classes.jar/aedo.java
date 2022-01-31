@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.txproxy.HostEventListener;
 
-public class aedo
+class aedo
   implements Runnable
 {
-  public aedo(PngFrameManager paramPngFrameManager, long paramLong) {}
+  aedo(aedn paramaedn) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.put(Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(true));
+    QLog.i("XProxy|NowProxy", 4, "onDownloadComplete------sub thread run");
+    if (this.a.a != null) {
+      this.a.a.onDownloadResult(0, 0, "Helly Download Success");
+    }
   }
 }
 

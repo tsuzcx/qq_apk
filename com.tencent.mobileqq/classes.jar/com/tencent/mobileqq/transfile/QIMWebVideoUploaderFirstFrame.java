@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aiqq;
+import aivt;
 import android.os.SystemClock;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
@@ -85,8 +85,8 @@ public class QIMWebVideoUploaderFirstFrame
     if (QLog.isColorLevel()) {
       QLog.d("QIMWebVideoUploaderFirstFrame", 2, "doUpload|mVideoFileMd5= " + HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
     }
-    aiqq localaiqq = new aiqq(this);
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_b_of_type_JavaLangString, 53, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, localaiqq, (byte[])localObject, false);
+    aivt localaivt = new aivt(this);
+    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_b_of_type_JavaLangString, 53, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, localaivt, (byte[])localObject, false);
     int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
     if (QLog.isColorLevel()) {
       QLog.d("QIMWebVideoUploaderFirstFrame", 2, "<BDH_LOG>sendFileByBDH Transaction submit RetCode:" + i + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " MD5:" + HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte) + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + 53);
@@ -103,7 +103,7 @@ public class QIMWebVideoUploaderFirstFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.QIMWebVideoUploaderFirstFrame
  * JD-Core Version:    0.7.0.1
  */

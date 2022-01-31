@@ -1,24 +1,15 @@
-import android.app.Activity;
-import com.tencent.biz.common.util.Util;
-import com.tencent.mobileqq.jsp.DataApiPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class adwa
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  adwa(advz paramadvz, Activity paramActivity, String paramString, int paramInt) {}
+  adwa(advy paramadvy, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
-    {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_Advz.a.callJs(this.jdField_a_of_type_Advz.c, new String[] { "null", Integer.toString(this.jdField_a_of_type_Int) });
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Advz.a.callJs(this.jdField_a_of_type_Advz.c, new String[] { Util.a(this.jdField_a_of_type_JavaLangString), Integer.toString(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

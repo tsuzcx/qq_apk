@@ -1,13 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
 public class lxd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lxd(ReadInJoySkinManager paramReadInJoySkinManager, int paramInt, String paramString) {}
+  public lxd(FeedItemCellTypeGalleryBiu paramFeedItemCellTypeGalleryBiu) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoySkinManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoySkinManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (paramView != null) {
+      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

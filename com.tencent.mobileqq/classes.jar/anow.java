@@ -1,33 +1,45 @@
-import android.util.SparseArray;
+import com.tencent.open.wadl.WLog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.ComboProviderPagerAdapter;
-import dov.com.qq.im.capture.view.ComboProviderView;
+import cooperation.wadl.ipc.WadlProxyServiceManager;
+import cooperation.wadl.ipc.WadlProxyServiceMonitor;
 
 public class anow
-  implements Runnable
+  extends Thread
 {
-  public anow(ComboProviderView paramComboProviderView, int paramInt) {}
+  public volatile boolean a;
+  
+  private anow(WadlProxyServiceMonitor paramWadlProxyServiceMonitor)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
   
   public void run()
   {
-    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewComboProviderView.a.a.get(this.jdField_a_of_type_DovComQqImCaptureViewComboProviderView.b());
-    if (localGridView != null)
+    try
     {
-      localGridView.setSelection(this.jdField_a_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.d("ComboProviderView", 2, "positon= " + this.jdField_a_of_type_Int);
+      while (this.jdField_a_of_type_Boolean)
+      {
+        Thread.sleep(WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor));
+        long l = System.currentTimeMillis();
+        if ((WadlProxyServiceMonitor.b(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) != 0L) && (l - WadlProxyServiceMonitor.b(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) > 30000L) && (WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor)) && (WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) != null))
+        {
+          if (QLog.isColorLevel()) {
+            WLog.b(WadlProxyServiceMonitor.a(), "##@<<<MonitorWorkingThread: check ipc service status...");
+          }
+          WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor).a();
+        }
       }
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("ComboProviderView", 2, "gridView is null");
+    catch (InterruptedException localInterruptedException)
+    {
+      localInterruptedException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anow
  * JD-Core Version:    0.7.0.1
  */

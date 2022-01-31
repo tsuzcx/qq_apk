@@ -15,7 +15,7 @@ import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xgo;
+import xmi;
 
 public class QWRedConfig
   implements Serializable
@@ -225,7 +225,7 @@ public class QWRedConfig
   
   public void saveConfig()
   {
-    ThreadManager.getFileThreadHandler().post(new xgo(this));
+    ThreadManager.getFileThreadHandler().post(new xmi(this));
   }
   
   public String toString()

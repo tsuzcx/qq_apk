@@ -1,6 +1,16 @@
-public abstract interface uti
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
+
+class uti
+  implements Runnable
 {
-  public abstract void a();
+  uti(utg paramutg) {}
+  
+  public void run()
+  {
+    this.a.a.a(true, this.a.a.b.b);
+    this.a.a.d();
+  }
 }
 
 

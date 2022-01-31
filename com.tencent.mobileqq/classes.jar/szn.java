@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class szn
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public szn(LikeSettingActivity paramLikeSettingActivity) {}
+  public szn(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void run()
-  {
-    boolean bool = this.a.app.p();
-    this.a.runOnUiThread(new szo(this, bool));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

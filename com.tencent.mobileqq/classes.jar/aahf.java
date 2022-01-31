@@ -1,35 +1,48 @@
-import android.content.Context;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
-import com.tencent.mobileqq.ar.arengine.ARFacePreviewResample;
-import com.tencent.mobileqq.ar.arengine.ARLocalControl;
-import com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog;
+import android.graphics.SurfaceTexture;
+import android.opengl.Matrix;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
 import com.tencent.qphone.base.util.QLog;
 
 public class aahf
   implements Runnable
 {
-  public aahf(ARLocalControl paramARLocalControl, int paramInt1, int paramInt2, Context paramContext, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo, long paramLong) {}
+  public aahf(GreetingCardRender paramGreetingCardRender) {}
   
   public void run()
   {
-    if ((ARLocalControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl) & 0x4) != 0L)
+    try
     {
-      ??? = new ARFacePreviewResample();
-      ((ARFacePreviewResample)???).a(this.jdField_a_of_type_Int, this.b, 17);
-      int i = ((ARFacePreviewResample)???).a();
-      int j = ((ARFacePreviewResample)???).b();
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a = new ARLocalFaceRecog();
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a.a((ARFacePreviewResample)???);
-      if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a.a(this.jdField_a_of_type_AndroidContentContext, i, j, this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo, this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl)) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a = null;
+      if (GreetingCardRender.a(this.a) != null)
+      {
+        GreetingCardRender.a(this.a).updateTexImage();
+        GreetingCardRender.a(this.a).getTransformMatrix(GreetingCardRender.a(this.a));
+        GreetingCardRender.a(this.a);
+        if (GreetingCardRender.a(this.a) == null) {
+          GreetingCardRender.a(this.a, new RenderBuffer(540, 960, 33984));
+        }
+        if (GreetingCardRender.a(this.a) == null) {
+          GreetingCardRender.a(this.a, new TextureRender());
+        }
+        GreetingCardRender.a(this.a).b();
+        Matrix.setIdentityM(GreetingCardRender.b(this.a), 0);
+        Matrix.rotateM(GreetingCardRender.b(this.a), 0, 180.0F, 1.0F, 0.0F, 0.0F);
+        GreetingCardRender.a(this.a).a(36197, GreetingCardRender.a(this.a), GreetingCardRender.a(this.a), GreetingCardRender.b(this.a));
+        GreetingCardRender.a(this.a).c();
+        if ((!GreetingCardRender.a(this.a)) && (GreetingCardRender.a(this.a) != null) && (GreetingCardRender.b(this.a) > 2L))
+        {
+          GreetingCardRender.a(this.a, GreetingCardRender.a(this.a).a());
+          GreetingCardRender.a(this.a, true);
+          GreetingCardRender.b(this.a, true);
+          QLog.d("GreetingCardRender", 2, "drawFrame hard decode frame update");
+        }
       }
-    }
-    synchronized (ARLocalControl.a())
-    {
-      ARLocalControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl, true);
-      ARLocalControl.a().notifyAll();
-      QLog.i("AREngine_ARLocalControl", 1, String.format("initFaceRecogAsync end. time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
       return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("GreetingCardRender", 1, "mUpdateHardTextureRunnable fail.", localException);
     }
   }
 }

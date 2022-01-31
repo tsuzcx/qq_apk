@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import aenk;
-import aenl;
+import aevv;
+import aevw;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
@@ -33,7 +33,7 @@ public class GameQuickWordsPanel
   
   public void a()
   {
-    ((aenl)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).notifyDataSetChanged();
+    ((aevw)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).notifyDataSetChanged();
   }
   
   public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, GameRoomChatPie paramGameRoomChatPie)
@@ -54,9 +54,9 @@ public class GameQuickWordsPanel
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131362987));
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new aenk(this));
-      paramQQAppInterface = new aenl(this);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131362992));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new aevv(this));
+      paramQQAppInterface = new aevw(this);
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(paramQQAppInterface);
       paramQQAppInterface.notifyDataSetChanged();
       return;

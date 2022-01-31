@@ -1,38 +1,29 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import mqq.os.MqqHandler;
 
 public class sgs
   implements Runnable
 {
-  public sgs(Conversation paramConversation) {}
+  public sgs(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
   
   public void run()
   {
-    boolean bool;
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.a.i)
+    Message localMessage = null;
+    Object localObject = localMessage;
+    if (this.jdField_a_of_type_JavaLangStringBuilder != null)
     {
-      Conversation.a(this.a, 800L);
-      bool = NetworkUtil.d(BaseApplication.getContext());
-      if (this.a.a != null)
-      {
-        localPullRefreshHeader = this.a.a;
-        if (!bool) {
-          break label78;
-        }
+      localObject = localMessage;
+      if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
+        localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
       }
     }
-    label78:
-    for (int i = 0;; i = 2)
+    if (ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, ChatSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), this.jdField_a_of_type_JavaLangStringBuilder) > 0)
     {
-      localPullRefreshHeader.a(i);
-      if (Conversation.a(this.a) != null) {
-        Conversation.a(this.a).a(bool);
-      }
-      return;
+      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.a.obtainMessage();
+      localMessage.what = 18;
+      localMessage.obj = localObject;
+      localMessage.sendToTarget();
     }
   }
 }

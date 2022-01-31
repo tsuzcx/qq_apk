@@ -40,6 +40,9 @@ public class QQPtBeautyFilter
     {
       a();
       this.jdField_a_of_type_ComTencentTtpicFilterPTSmoothBeauty.ApplyGLSLFilter(true, paramInt1, paramInt2);
+      if (!Boolean.valueOf(this.jdField_a_of_type_ComTencentTtpicFilterPTSmoothBeauty.checkApplyGLSLFilterResult()).booleanValue()) {
+        SLog.a(this.jdField_a_of_type_JavaLangString, "ApplyGLSLFilter failed!");
+      }
       this.jdField_a_of_type_ComTencentTtpicFilterPTSmoothBeauty.setBeautyLevel(this.e);
       GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
       this.jdField_b_of_type_Boolean = true;
@@ -88,6 +91,11 @@ public class QQPtBeautyFilter
     }
   }
   
+  public boolean f_()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
   public void h()
   {
     this.f = a().f();
@@ -110,11 +118,6 @@ public class QQPtBeautyFilter
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
     QQFilterLogManager.a("QQPtBeautyFilter", false);
     this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean i_()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

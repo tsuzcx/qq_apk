@@ -93,8 +93,8 @@ import tencent.im.msg.im_msg_body.MsgBody;
 import tencent.im.msg.im_msg_body.Ptt;
 import tencent.im.msg.im_msg_body.PubGroup;
 import tencent.im.msg.im_msg_body.RichText;
-import zso;
-import zsp;
+import zyz;
+import zza;
 
 public class BaseMessageProcessorForTroopAndDisc
   extends BaseMessageProcessor
@@ -104,7 +104,7 @@ public class BaseMessageProcessorForTroopAndDisc
   public BaseMessageProcessorForTroopAndDisc(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
     super(paramQQAppInterface, paramMessageHandler);
-    this.jdField_a_of_type_JavaUtilComparator = new zsp(this);
+    this.jdField_a_of_type_JavaUtilComparator = new zza(this);
   }
   
   private boolean a(MessageRecord paramMessageRecord)
@@ -188,7 +188,7 @@ public class BaseMessageProcessorForTroopAndDisc
       {
         l7 = System.currentTimeMillis();
         if ((paramPBDecodeContext == null) || (paramMsg == null) || (paramArrayList == null)) {
-          break label6734;
+          break label6774;
         }
         localObject7 = (msg_comm.MsgHead)paramMsg.msg_head.get();
         l8 = ((msg_comm.MsgHead)localObject7).from_uin.get();
@@ -203,7 +203,7 @@ public class BaseMessageProcessorForTroopAndDisc
           l2 = Utils.a(((msg_comm.MsgHead)localObject7).msg_time.get());
         }
         if (!paramMsg.content_head.has()) {
-          break label6722;
+          break label6762;
         }
         localObject2 = (msg_comm.ContentHead)paramMsg.content_head.get();
         m = ((msg_comm.ContentHead)localObject2).div_seq.get();
@@ -213,7 +213,7 @@ public class BaseMessageProcessorForTroopAndDisc
         if (((Long)((Pair)localObject2).first).longValue() != 4294967295L)
         {
           l1 = ((Long)((Pair)localObject2).first).longValue();
-          break label6736;
+          break label6776;
           localObject3 = new ArrayList();
           localMessageInfo = new MessageInfo();
           if (paramMsg.appshare_info.has())
@@ -235,7 +235,7 @@ public class BaseMessageProcessorForTroopAndDisc
             Iterator localIterator = ((List)localObject3).iterator();
             localObject3 = null;
             if (!localIterator.hasNext()) {
-              break label3933;
+              break label3970;
             }
             localMessageRecord = (MessageRecord)localIterator.next();
             localMessageRecord.time = l2;
@@ -311,7 +311,7 @@ public class BaseMessageProcessorForTroopAndDisc
               {
                 localObject6 = (MessageRecord)((MessageForMixedMsg)localObject4).msgElemList.get(i);
                 if (!(localObject6 instanceof MessageForReplyText)) {
-                  break label6754;
+                  break label6794;
                 }
                 localObject4 = (MessageForReplyText)localObject6;
                 if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((MessageForReplyText)localObject4).mSourceMsgInfo.mSourceMsgSenderUin + ""))) {
@@ -374,7 +374,7 @@ public class BaseMessageProcessorForTroopAndDisc
                 localObject6 = ((BaseMessageManager.AddMessageContext)localObject8).jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
                 localObject8 = ((BaseMessageManager.AddMessageContext)localObject8).jdField_a_of_type_JavaUtilMap;
                 localObject6 = ((RecentUserProxy)localObject6).a((String)localObject4, 1);
-                TroopManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord.frienduin, StructMsgForGeneralShare.eventId, localMessageRecord.shmsgseq, new zso(this, false, localMessageInfo, l3, l5, (RecentUser)localObject6, (String)localObject4, localMessageRecord, (Map)localObject8));
+                TroopManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord.frienduin, StructMsgForGeneralShare.eventId, localMessageRecord.shmsgseq, new zyz(this, false, localMessageInfo, l3, l5, (RecentUser)localObject6, (String)localObject4, localMessageRecord, (Map)localObject8));
               }
             }
             if ((localMessageRecord instanceof MessageForTroopFile)) {
@@ -443,7 +443,7 @@ public class BaseMessageProcessorForTroopAndDisc
                 }
                 localObject4 = String.valueOf(((MessageForApollo)localObject6).mApolloMessage.id);
                 if (localMessageRecord.istroop != 1) {
-                  break label6763;
+                  break label6803;
                 }
                 i = 1;
                 localObject8 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(false);
@@ -482,27 +482,27 @@ public class BaseMessageProcessorForTroopAndDisc
               break;
             }
             if (!((im_msg_body.Elem)((Iterator)localObject4).next()).anon_group_msg.has()) {
-              break label6697;
+              break label6737;
             }
             i = 1;
-            break label6751;
+            break label6791;
           }
         }
         else
         {
           l1 = ((Long)((Pair)localObject2).second).longValue();
-          break label6736;
+          break label6776;
         }
         if (!paramMsg.msg_body.has()) {
-          break label6706;
+          break label6746;
         }
         localObject2 = (im_msg_body.MsgBody)paramMsg.msg_body.get();
         if (!((im_msg_body.MsgBody)localObject2).rich_text.has()) {
-          break label6706;
+          break label6746;
         }
         localObject4 = (im_msg_body.RichText)((im_msg_body.MsgBody)localObject2).rich_text.get();
         if (!((im_msg_body.RichText)localObject4).attr.has()) {
-          break label6700;
+          break label6740;
         }
         l1 = MessageUtils.a(((im_msg_body.Attr)((im_msg_body.RichText)localObject4).attr.get()).random.get());
         label2792:
@@ -588,16 +588,15 @@ public class BaseMessageProcessorForTroopAndDisc
     label3521:
     Object localObject5;
     label3603:
-    label3933:
     boolean bool1;
+    label3970:
     boolean bool2;
     double d1;
-    label3997:
+    label4034:
     boolean bool3;
-    label4112:
+    label4152:
     boolean bool4;
-    label4172:
-    label4199:
+    label4212:
     double d2;
     if (paramPBDecodeContext.c != 1)
     {
@@ -614,7 +613,7 @@ public class BaseMessageProcessorForTroopAndDisc
         {
           localObject4 = localObject3;
           if (!((Iterator)localObject6).hasNext()) {
-            break label6690;
+            break label6730;
           }
           localObject8 = (im_msg_body.Elem)((Iterator)localObject6).next();
           if (((im_msg_body.Elem)localObject8).anon_group_msg.has())
@@ -627,7 +626,7 @@ public class BaseMessageProcessorForTroopAndDisc
             i1 = ((im_msg_body.AnonymousGroupMsg)localObject8).uint32_expire_time.get();
             localObject8 = ((im_msg_body.AnonymousGroupMsg)localObject8).str_rank_color.get().toStringUtf8();
             if (localObject4 == null) {
-              break label6769;
+              break label6809;
             }
             for (;;)
             {
@@ -641,7 +640,7 @@ public class BaseMessageProcessorForTroopAndDisc
                   localMessageRecord.extLong |= 0x3;
                   localObject4 = localObject3;
                   if (!QLog.isColorLevel()) {
-                    break label6690;
+                    break label6730;
                   }
                   QLog.d("anonymous_decode", 2, "anonymous_flags = " + i);
                   paramArrayList.add(localMessageRecord);
@@ -651,7 +650,7 @@ public class BaseMessageProcessorForTroopAndDisc
               catch (UnsupportedEncodingException localUnsupportedEncodingException)
               {
                 localUnsupportedEncodingException.printStackTrace();
-                break label6769;
+                break label6809;
               }
               localObject6 = new String((byte[])localObject6);
             }
@@ -686,6 +685,11 @@ public class BaseMessageProcessorForTroopAndDisc
         for (localObject3 = "";; localObject3 = localMessageRecord.frienduin)
         {
           ReportController.b((QQAppInterface)localObject9, "P_CliOper", "Grp_AIO", "", "five_m", "revice_msg", 0, 0, (String)localObject3, localMessageRecord.msgtype + "", ((TroopBusinessUtil.TroopBusinessMessage)localObject8).c, "");
+          localObject3 = localObject5;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("Q.msg.BaseMessageProcessorForTroopAndDisc", 2, "decode group_business_msg:" + localObject8);
           localObject3 = localObject5;
           break;
         }
@@ -733,21 +737,22 @@ public class BaseMessageProcessorForTroopAndDisc
                       if (paramMessageInfo.general_flags.uint32_glamour_level.has())
                       {
                         j = paramMessageInfo.general_flags.uint32_glamour_level.get();
+                        label4239:
                         m = i;
                         if (paramMessageInfo.general_flags.bytes_pb_reserve.has())
                         {
                           localObject7 = new generalflags.ResvAttr();
                           ((generalflags.ResvAttr)localObject7).mergeFrom(paramMessageInfo.general_flags.bytes_pb_reserve.get().toByteArray());
                           if (!((generalflags.ResvAttr)localObject7).uint32_nearby_charm_level.has()) {
-                            break label6845;
+                            break label6885;
                           }
                           m = ((generalflags.ResvAttr)localObject7).uint32_nearby_charm_level.get();
-                          label4267:
+                          label4307:
                           if (!((generalflags.ResvAttr)localObject7).uint32_global_group_level.has()) {
-                            break label6852;
+                            break label6892;
                           }
                           i1 = ((generalflags.ResvAttr)localObject7).uint32_global_group_level.get();
-                          label4288:
+                          label4328:
                           n = i;
                           if (((generalflags.ResvAttr)localObject7).uint32_title_id.has())
                           {
@@ -807,90 +812,90 @@ public class BaseMessageProcessorForTroopAndDisc
                         {
                           localObject6 = String.valueOf(l1);
                           if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.c())) {
-                            break label6859;
+                            break label6899;
                           }
                           bool3 = true;
-                          label4677:
+                          label4717:
                           if (bool3)
                           {
                             localObject7 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a((String)localObject6);
                             if (localObject7 == null) {
-                              break label6787;
+                              break label6827;
                             }
                             l5 = paramMessageInfo.general_flags.uint64_group_rank_seq.get();
                             if (QLog.isColorLevel()) {
                               QLog.d("Q.getTroopMemberLevelInfo", 2, "onNewMsg: troopUin=" + (String)localObject6 + ", serverRankSeq=" + l5 + ", localRankSeq=" + ((TroopInfo)localObject7).dwGroupLevelSeq + ", isSyncMsgFinish=" + bool3);
                             }
                             if (l5 <= ((TroopInfo)localObject7).dwGroupLevelSeq) {
-                              break label6787;
+                              break label6827;
                             }
                             ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).c((String)localObject6, false);
-                            break label6787;
+                            break label6827;
                             if (!paramMessageInfo.general_flags.uint32_to_uin_flag.has()) {
-                              break label6776;
+                              break label6816;
                             }
                             if (paramMessageInfo.general_flags.uint32_to_uin_flag.get() != 2) {
-                              break label6829;
+                              break label6869;
                             }
                             bool2 = true;
-                            break label6818;
+                            break label6858;
                           }
                           if (!QLog.isColorLevel()) {
-                            break label6787;
+                            break label6827;
                           }
                           QLog.d("Q.getTroopMemberLevelInfo", 2, "onNewMsg: troopUin=" + (String)localObject6 + ", isSyncMsgFinish=" + bool3);
-                          break label6787;
+                          break label6827;
                           if ((paramMessageInfo.extra_info.has()) && (paramMessageInfo.extra_info.uint32_flags.has()))
                           {
                             d2 = d1;
                             if (!bool1) {
-                              break label6880;
+                              break label6920;
                             }
                             m = paramMessageInfo.extra_info.uint32_flags.get();
                             if (QLog.isColorLevel()) {
                               QLog.d("Q.msg.BaseMessageProcessorForTroopAndDisc", 2, "elem.extra_info.uint32_flags:" + m + "|groupCode:" + l1 + "fromUin:" + l8);
                             }
                             if ((m & 0x10) != 16) {
-                              break label6865;
+                              break label6905;
                             }
                             paramMessageInfo = ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59)).a(l1 + "");
                             localObject6 = l8 + "";
                             if ((paramMessageInfo == null) || (paramMessageInfo.adminUins.contains(localObject6))) {
-                              break label6865;
+                              break label6905;
                             }
                             paramMessageInfo.adminUins.add(localObject6);
-                            break label6865;
+                            break label6905;
                           }
                           if (paramMessageInfo.pub_group.has())
                           {
                             if (!QLog.isColorLevel()) {
-                              break label6627;
+                              break label6667;
                             }
                             if (((im_msg_body.PubGroup)paramMessageInfo.pub_group.get()).bytes_nickname.has())
                             {
                               paramMessageInfo = ((im_msg_body.PubGroup)paramMessageInfo.pub_group.get()).bytes_nickname.get().toStringUtf8();
-                              label5170:
+                              label5210:
                               QLog.d("Q.msg.BaseMessageProcessorForTroopAndDisc", 2, "decodeSinglePbMsg_GroupDis,receive  pub_group,bytes_nickname = " + paramMessageInfo);
                               bool3 = bool1;
                               k = 1;
                               bool1 = bool2;
                               bool2 = bool3;
-                              break label6803;
+                              break label6843;
                             }
                           }
                           else
                           {
                             d2 = d1;
                             if (!paramMessageInfo.elem_flags2.has()) {
-                              break label6880;
+                              break label6920;
                             }
                             d2 = d1;
                             if (!((im_msg_body.ElemFlags2)paramMessageInfo.elem_flags2.get()).uint32_longtitude.has()) {
-                              break label6880;
+                              break label6920;
                             }
                             d2 = d1;
                             if (!((im_msg_body.ElemFlags2)paramMessageInfo.elem_flags2.get()).uint32_latitude.has()) {
-                              break label6880;
+                              break label6920;
                             }
                             if (l9 == l8) {
                               continue;
@@ -942,12 +947,12 @@ public class BaseMessageProcessorForTroopAndDisc
                             }
                             d2 = d1;
                             if (!QLog.isColorLevel()) {
-                              break label6880;
+                              break label6920;
                             }
                             QLog.d("Q.troopMemberDistance", 2, "decodeSinglePbMsg_GroupDis: troopUin=" + l1 + ", memberUin=" + l8 + ", memberLoction=[" + m + "," + n + "], selfLocation=[" + l6 + "," + l5 + "], dis=" + d1);
                             d2 = d1;
-                            break label6880;
-                            label5603:
+                            break label6920;
+                            label5643:
                             localObject2 = String.valueOf(l1);
                             localObject6 = String.valueOf(l8);
                             paramPBDecodeContext = ((msg_comm.GroupInfo)localObject5).group_card.get().toByteArray();
@@ -960,7 +965,7 @@ public class BaseMessageProcessorForTroopAndDisc
                                 ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59)).b(l1);
                               }
                               if (!bool2) {
-                                break label6902;
+                                break label6942;
                               }
                               paramMessageInfo = paramArrayList.iterator();
                               while (paramMessageInfo.hasNext()) {
@@ -976,19 +981,19 @@ public class BaseMessageProcessorForTroopAndDisc
                               }
                               paramMessageInfo = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
                               if (paramMessageInfo == null) {
-                                break label6902;
+                                break label6942;
                               }
                             }
                             if (paramMessageInfo.f((String)localObject2)) {
-                              break label6902;
+                              break label6942;
                             }
                             paramMessageInfo = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
                             if (paramMessageInfo == null) {
-                              break label6902;
+                              break label6942;
                             }
                             paramMessageInfo.f((String)localObject2, false);
-                            break label6902;
-                            label5790:
+                            break label6942;
+                            label5830:
                             if (j != -100)
                             {
                               paramMessageInfo = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
@@ -1006,35 +1011,35 @@ public class BaseMessageProcessorForTroopAndDisc
                             case 2: 
                               for (;;)
                               {
-                                label5872:
+                                label5912:
                                 paramMessageInfo.a((String)localObject2, (String)localObject6, (String)localObject3);
                                 paramPBDecodeContext = null;
-                                label5911:
+                                label5951:
                                 if ((localObject6 == null) || (((String)localObject6).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-                                  break label6943;
+                                  break label6983;
                                 }
                                 paramMessageInfo = (TroopBindPublicAccountMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(131);
                                 if (paramMessageInfo.a((String)localObject2)) {
-                                  break label6943;
+                                  break label6983;
                                 }
                                 if (!paramMessageInfo.b((String)localObject2)) {
-                                  break label6340;
+                                  break label6380;
                                 }
                                 j = paramArrayList.size();
                                 i = 0;
                                 k = j - 1;
                                 if (k < 0) {
-                                  break label6340;
+                                  break label6380;
                                 }
                                 localObject3 = (MessageRecord)paramArrayList.get(k);
                                 j = i;
                                 if (!TroopBindPublicAccountMgr.a((MessageRecord)localObject3)) {
-                                  break label6936;
+                                  break label6976;
                                 }
                                 if ((!TextUtils.isEmpty(((MessageRecord)localObject3).msg)) || (((MessageRecord)localObject3).msgData != null)) {
                                   break;
                                 }
-                                break label6918;
+                                break label6958;
                                 paramMessageInfo.a((String)localObject2, (String)localObject6, paramPBDecodeContext, i, null, null, 0, 1, 100, l3, b2, 0L, d1);
                                 continue;
                                 paramMessageInfo.a((String)localObject2, (String)localObject6, "", i, paramPBDecodeContext, null, 0, 1, 100, l3, b2, 0L, d1);
@@ -1049,7 +1054,7 @@ public class BaseMessageProcessorForTroopAndDisc
                               case 2: 
                                 for (;;)
                                 {
-                                  label6136:
+                                  label6176:
                                   paramMessageInfo.level = i;
                                   paramMessageInfo.realLevel = m;
                                   paramMessageInfo.sex = 1;
@@ -1057,10 +1062,10 @@ public class BaseMessageProcessorForTroopAndDisc
                                   paramMessageInfo.distance = 100;
                                   paramMessageInfo.msgseq = l3;
                                   if (b2 != 1) {
-                                    break label6930;
+                                    break label6970;
                                   }
                                   paramBoolean = true;
-                                  label6191:
+                                  label6231:
                                   paramMessageInfo.isTroopFollowed = paramBoolean;
                                   paramMessageInfo.distanceToSelf = d1;
                                   paramMessageInfo.distanceToSelfUpdateTimeStamp = System.currentTimeMillis();
@@ -1081,16 +1086,16 @@ public class BaseMessageProcessorForTroopAndDisc
                                   QLog.d("TroopBindPublicAccountMgr.redDot", 2, "decodePBAccountMSg:" + (String)localObject2 + "," + ((MessageRecord)localObject3).uniseq + "," + ((MessageRecord)localObject3).shmsgseq);
                                 }
                                 paramMessageInfo.c((String)localObject2);
-                                break label6936;
-                                label6340:
+                                break label6976;
+                                label6380:
                                 if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject2) != 3) {
-                                  break label6943;
+                                  break label6983;
                                 }
                                 if (QLog.isColorLevel()) {
                                   QLog.d(".troop.closeRcvMsgTmp", 2, "Shield troop recv msg:" + (String)localObject2);
                                 }
                                 ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a((String)localObject2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0, 0);
-                                break label6943;
+                                break label6983;
                               }
                               break;
                             }
@@ -1107,10 +1112,10 @@ public class BaseMessageProcessorForTroopAndDisc
         }
       }
     }
-    label6416:
-    label6803:
-    label6936:
-    label6943:
+    label6456:
+    label6843:
+    label6976:
+    label6983:
     for (;;)
     {
       i = MessageProtoCodec.a(paramMsg);
@@ -1146,38 +1151,42 @@ public class BaseMessageProcessorForTroopAndDisc
       }
       MsgAutoMonitorUtil.a().g(System.currentTimeMillis() - l7);
       return paramPBDecodeContext;
-      label6627:
-      label6763:
-      label6769:
+      label6730:
+      label6737:
+      label6740:
+      label6746:
+      label6762:
+      label6774:
       label6776:
+      label6905:
       do
       {
         paramPBDecodeContext = null;
-        break label5911;
+        break label5951;
         paramMessageInfo = null;
-        break label5170;
+        break label5210;
         bool3 = bool1;
         k = 1;
         bool1 = bool2;
         bool2 = bool3;
-        break label6803;
+        break label6843;
         i = m;
         bool3 = bool1;
         bool1 = bool2;
         bool2 = bool3;
-        break label6803;
-        break label4199;
-        break label4172;
+        break label6843;
+        break label4239;
+        break label4212;
         k = 0;
         bool2 = false;
-        break label5603;
+        break label5643;
         l1 = 0L;
-        break label3997;
+        break label4034;
         paramPBDecodeContext = null;
-        break label6416;
+        break label6456;
         localObject3 = localObject5;
         break label3603;
-        break label6751;
+        break label6791;
         l1 = 0L;
         break label2792;
         localObject2 = null;
@@ -1204,7 +1213,7 @@ public class BaseMessageProcessorForTroopAndDisc
         break label3521;
         bool3 = bool2;
         bool4 = bool1;
-        break label4112;
+        break label4152;
         i = m;
         bool3 = bool2;
         bool2 = bool1;
@@ -1224,13 +1233,13 @@ public class BaseMessageProcessorForTroopAndDisc
           }
           bool4 = true;
           bool3 = bool2;
-          break label4112;
+          break label4152;
           m = -100;
-          break label4267;
+          break label4307;
           i1 = -100;
-          break label4288;
+          break label4328;
           bool3 = false;
-          break label4677;
+          break label4717;
           bool3 = bool1;
           bool1 = bool2;
           bool2 = bool3;
@@ -1240,37 +1249,25 @@ public class BaseMessageProcessorForTroopAndDisc
           bool1 = bool2;
           bool2 = bool3;
         }
-        break label5603;
+        break label5643;
         if (k == 0) {
-          break label5790;
+          break label5830;
         }
       } while (!bool1);
-      label6690:
-      label6697:
-      label6700:
-      label6706:
-      label6722:
-      label6734:
-      label6736:
-      label6751:
-      label6754:
-      label6902:
-      break label5790;
-      label6818:
-      label6829:
-      label6845:
-      label6852:
-      label6859:
-      label6865:
-      label6880:
-      break label5872;
+      label6858:
+      label6869:
+      label6885:
+      label6892:
+      label6899:
+      break label5830;
+      break label5912;
       for (;;)
       {
         k -= 1;
         break;
-        break label6136;
+        break label6176;
         paramBoolean = false;
-        break label6191;
+        break label6231;
         i = j;
       }
     }

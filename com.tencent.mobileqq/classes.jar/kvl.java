@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.media.AudioManager;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class kvl
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public kvl(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
+  public kvl(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    if (QLog.isColorLevel()) {
+      QLog.d("volumeTrace", 2, ",music system is thread " + PublicAccountAdvertisementActivity.a(this.a).a);
+    }
+    PublicAccountAdvertisementActivity.a(this.a).setStreamVolume(3, PublicAccountAdvertisementActivity.a(this.a).a, 0);
   }
 }
 

@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import java.util.List;
 
-public class ugp
-  implements View.OnClickListener
+class ugp
+  implements Runnable
 {
-  public ugp(VerifyCodeActivity paramVerifyCodeActivity) {}
+  ugp(ugj paramugj, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b();
+    if (this.jdField_a_of_type_Ugj.a.isFinishing()) {}
+    while (this.jdField_a_of_type_Ugj.a.a == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ugj.a.a.c = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Ugj.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ugp
  * JD-Core Version:    0.7.0.1
  */

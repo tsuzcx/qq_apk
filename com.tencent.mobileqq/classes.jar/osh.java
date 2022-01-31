@@ -1,20 +1,23 @@
-import com.tencent.biz.qrcode.CodeMaskManager;
-import com.tencent.biz.qrcode.CodeMaskManager.Callback;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.biz.qqstory.utils.DateUtils;
 
 public class osh
-  implements Runnable
 {
-  public osh(CodeMaskManager paramCodeMaskManager, osi paramosi, CodeMaskManager.Callback paramCallback) {}
+  public TextView a;
+  public TextView b;
   
-  public void run()
+  public osh(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a) {}
-    while (!this.jdField_a_of_type_Osi.a.compareAndSet(false, true)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager));
-    CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364228));
+    this.b = ((TextView)paramView.findViewById(2131372067));
+  }
+  
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(DateUtils.b(paramTroopStoryItemInfo.publishTime));
   }
 }
 

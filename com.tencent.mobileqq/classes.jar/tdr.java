@@ -1,34 +1,98 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.LikeRankingListManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.LikeRankingInfo;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class tdr
-  implements View.OnClickListener
+  extends CardObserver
 {
-  public tdr(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tdr(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    paramView = new Intent(this.a, SpecailCareListActivity.class);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80050E3", "0X80050E3", 0, 0, "1", "", "", "");
-    ReportController.b(this.a.app, "CliOper", "", "", "Special_remind", "Clk_special_remind", 80, 0, "", "", "", "");
-    if (this.a.app != null)
-    {
-      this.a.app.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 0).edit().putBoolean("spcial_care_qq_setting", false).commit();
-      NotifyPushSettingActivity.a(this.a).setRightIcon(null);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LikeRankingListActivity", 2, "onCardDownload isSuccess=" + paramBoolean);
     }
-    QLog.d("IphoneTitleBarActivity", 1, "App is null, can't display 'new' flag for SpecialCare(onClick)");
+    if ((paramBoolean) && ((paramObject instanceof Card)))
+    {
+      paramObject = (Card)paramObject;
+      if (paramObject.uin.equals(this.a.b)) {
+        this.a.app.a(new tds(this, paramObject));
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, List paramList, int paramInt, boolean paramBoolean2)
+  {
+    int i;
+    if (QLog.isColorLevel())
+    {
+      String str = "onReqLikeRankingListResult success:" + paramBoolean1;
+      paramString = new StringBuilder().append(", uin:").append(paramString).append(", size:");
+      if (paramList == null)
+      {
+        i = 0;
+        QLog.d("LikeRankingListActivity", 2, new Object[] { str, i + ", nextIndex: " + paramInt + ", isComplete:" + paramBoolean2 });
+      }
+    }
+    else
+    {
+      if (!paramBoolean1) {
+        break label333;
+      }
+      if ((paramList == null) || ((paramList.size() <= 0) && (!paramBoolean2))) {
+        break label276;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppLikeRankingListManager.a(paramList, paramInt, paramBoolean2);
+      if ((!paramBoolean2) || (paramList.size() != 0)) {
+        break label250;
+      }
+      this.a.e.setVisibility(0);
+      label165:
+      this.a.jdField_a_of_type_Tdz.a(paramList, true);
+      if (this.a.jdField_a_of_type_Int == 0)
+      {
+        if (paramList.size() <= 0) {
+          break label265;
+        }
+        this.a.a(String.valueOf(((LikeRankingInfo)paramList.get(0)).uin));
+      }
+    }
+    for (;;)
+    {
+      paramString = this.a;
+      if (paramBoolean2) {
+        paramInt = -1;
+      }
+      paramString.jdField_a_of_type_Int = paramInt;
+      return;
+      i = paramList.size();
+      break;
+      label250:
+      this.a.e.setVisibility(8);
+      break label165;
+      label265:
+      this.a.a(null);
+      continue;
+      label276:
+      this.a.a(null);
+      this.a.jdField_a_of_type_Tdz.a = false;
+      this.a.jdField_a_of_type_Tdz.notifyDataSetChanged();
+      if (this.a.jdField_a_of_type_Tdz.getCount() <= 1) {
+        this.a.e.setVisibility(0);
+      }
+    }
+    label333:
+    this.a.jdField_a_of_type_Tdz.a = false;
+    this.a.jdField_a_of_type_Tdz.notifyDataSetChanged();
+    QQToast.a(BaseApplication.getContext(), 1, "获取排行榜失败", 0).a();
   }
 }
 

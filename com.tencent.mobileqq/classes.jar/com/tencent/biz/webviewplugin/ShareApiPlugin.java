@@ -13,7 +13,7 @@ import com.tencent.open.agent.report.ReportCenter;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
 import org.json.JSONObject;
-import pdj;
+import pib;
 
 public class ShareApiPlugin
   extends VasWebviewJsPlugin
@@ -99,7 +99,7 @@ public class ShareApiPlugin
             QLog.d("ShareApiPlugin", 2, "is not need load share js");
           }
         }
-        else if ((!TextUtils.isEmpty(paramString2.l)) && ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.b)) || (TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.a)) || (this.c.startsWith("http://")) || (this.c.startsWith("https://"))))
+        else if ((!TextUtils.isEmpty(paramString2.n)) && ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.b)) || (TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.a)) || (this.c.startsWith("http://")) || (this.c.startsWith("https://"))))
         {
           if (QLog.isColorLevel()) {
             QLog.d("ShareApiPlugin", 2, "Share info imperfect, request from svr");
@@ -108,7 +108,7 @@ public class ShareApiPlugin
           paramString1.putExtra("extra_cmd", "SQQzoneSvc.getUrlInfo");
           paramString1.putExtra("extra_current_uin", this.mRuntime.a().getAccount());
           paramString1.putExtra("extra_url", paramString2.a());
-          paramString1.setObserver(new pdj(this, paramJsBridgeListener));
+          paramString1.setObserver(new pib(this, paramJsBridgeListener));
           this.mRuntime.a().startServlet(paramString1);
         }
       }

@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
-import cooperation.comic.VipComicNavConfigHelper;
-import cooperation.comic.VipComicSoHelper;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
 
-class zri
+public class zri
   implements Runnable
 {
-  zri(zrh paramzrh) {}
+  public zri(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    VipComicNavConfigHelper.a(QQComicStep.b(this.a.a).b);
-    VipComicSoHelper.a(QQComicStep.c(this.a.a).b);
+    QQAppInterface.H();
+    QQAppInterface.a(this.a);
+    IntentFilter localIntentFilter = new IntentFilter("com.tencent.qzone.cleanunreadcount");
+    localIntentFilter.addAction("com.tecent.qzone.clearAlbumRedTouch");
+    QQAppInterface.c(this.a).registerReceiver(QQAppInterface.a(this.a), localIntentFilter);
+    VideoBroadcastReceiver.a(this.a);
+    if (this.a.e()) {
+      PtvTemplateManager.a(this.a);
+    }
   }
 }
 

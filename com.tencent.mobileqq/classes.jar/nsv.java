@@ -1,26 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 public class nsv
-  implements DialogInterface.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public nsv(StoryPickerFragment paramStoryPickerFragment) {}
+  public nsv(StoryPlayVideoActivity paramStoryPlayVideoActivity, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
-    this.a.getActivity().setResult(-1, paramDialogInterface);
-    this.a.getActivity().finish();
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setVisibility(4);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayVideoActivity.finish();
   }
 }
 

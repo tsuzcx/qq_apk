@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class xla
+public final class xla
   implements Runnable
 {
-  public xla(RecentOptPopBar paramRecentOptPopBar) {}
+  public xla(MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    ShortVideoUtils.a(this.a.a.app);
+    QQAppInterface localQQAppInterface = QWalletTools.a();
+    if ((localQQAppInterface != null) && (this.a != null)) {
+      localQQAppInterface.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
+    }
   }
 }
 

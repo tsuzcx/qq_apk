@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1184" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1187" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1185" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1186" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_centerInParent="true">
-            <TextView android:textSize="11.519989dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1187" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a21" android:layout_width="70.0dip" android:layout_height="24.0dip" android:layout_alignParentLeft="true" />
-            <com.tencent.av.widget.BidirectionSeekBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1188" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="14.399994dip" android:layout_marginRight="14.399994dip" android:adjustViewBounds="true" android:maxHeight="4.0dip" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a18" android:minHeight="4.0dip" android:thumb="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a20" android:thumbOffset="0.0dip" />
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a118e" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0681">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip">
+            <com.tencent.mobileqq.widget.RedDotTextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04b9" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1190" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingRight="10.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="跨屏互动" />
+            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1191" android:background="#ff12b7f5" android:layout_width="65.0dip" android:layout_height="3.0dip" />
         </LinearLayout>
-    </RelativeLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="26.0dip">
+            <com.tencent.mobileqq.widget.RedDotTextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04b9" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1192" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingRight="10.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="双人挂件" />
+            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1193" android:background="#ff12b7f5" android:layout_width="65.0dip" android:layout_height="3.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:background="#19ffffff" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="16.0dip" android:layout_marginTop="-1.0px" android:layout_marginRight="16.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a118e" />
+    <com.tencent.widget.HorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1188" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0681" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" />
 </RelativeLayout>

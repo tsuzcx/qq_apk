@@ -17,7 +17,7 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import khb;
+import kjh;
 
 public class SparkDot
   extends LinearLayout
@@ -49,7 +49,7 @@ public class SparkDot
     this.jdField_a_of_type_Int = 400;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_JavaLangRunnable = new khb(this);
+    this.jdField_a_of_type_JavaLangRunnable = new kjh(this);
     setOrientation(0);
   }
   
@@ -157,7 +157,7 @@ public class SparkDot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.SparkDot
  * JD-Core Version:    0.7.0.1
  */

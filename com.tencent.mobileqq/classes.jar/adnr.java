@@ -1,39 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnVideoDataEventListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
 
-class adnr
-  implements DialogInterface.OnClickListener
+public class adnr
+  implements FileBrowserModelBase.OnVideoDataEventListener
 {
-  adnr(adnq paramadnq) {}
+  public adnr(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
-    if (paramDialogInterface.getInt("state", 0) == 1) {
-      try
-      {
-        UniformDownloadUtil.a(paramDialogInterface.getString("filePath", ""));
-        return;
-      }
-      catch (Exception paramDialogInterface)
-      {
-        QLog.e("NearbyHybridFragment", 1, paramDialogInterface, new Object[0]);
-        this.a.a.f();
-        return;
-      }
-    }
-    this.a.a.f();
+    this.a.a.runOnUiThread(new adns(this));
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.a.a(paramInt, paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.a.a.runOnUiThread(new adnt(this, paramString1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adnr
  * JD-Core Version:    0.7.0.1
  */

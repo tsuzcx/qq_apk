@@ -43,7 +43,7 @@ public class ApolloRecorderView
     this.jdField_a_of_type_ComTencentMobileqqApolloAiApolloRecorderView$OnRecordViewTouchListener = paramOnRecordViewTouchListener;
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
     setState(0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130838015);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = super.getResources().getDrawable(2130838014);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
     this.g = ViewConfiguration.getLongPressTimeout();
   }
@@ -205,7 +205,7 @@ public class ApolloRecorderView
       continue;
       super.setImageDrawable(null);
       continue;
-      Drawable localDrawable = super.getResources().getDrawable(2130837976);
+      Drawable localDrawable = super.getResources().getDrawable(2130837975);
       super.setImageDrawable(localDrawable);
       if ((localDrawable instanceof Animatable)) {
         ((Animatable)localDrawable).start();

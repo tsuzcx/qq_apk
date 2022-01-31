@@ -1,16 +1,54 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
 
 public class xrd
-  implements Runnable
+  implements PopupMenuDialog.OnClickActionListener
 {
-  public xrd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xrd(RecentOptPopBar paramRecentOptPopBar) {}
   
-  public void run()
+  public void a(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    if ((this.a.a != null) && (!this.a.a.isEnabled())) {
-      this.a.a.setEnabled(true);
+    switch (paramMenuItem.a)
+    {
+    case 2131436262: 
+    default: 
+      return;
+    case 2131438761: 
+      this.a.m();
+      return;
+    case 2131439219: 
+      this.a.n();
+      return;
+    case 2131436251: 
+      this.a.j();
+      return;
+    case 2131436248: 
+      this.a.i();
+      return;
+    case 2131436255: 
+      this.a.o();
+      return;
+    case 2131436252: 
+      this.a.r();
+      return;
+    case 2131436261: 
+      RecentOptPopBar.a(this.a);
+      return;
+    case 2131436256: 
+      this.a.a(8);
+      ReportController.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
+      return;
+    case 2131436246: 
+      this.a.q();
+      return;
+    case 2131438763: 
+      this.a.k();
+      return;
     }
+    this.a.p();
   }
 }
 

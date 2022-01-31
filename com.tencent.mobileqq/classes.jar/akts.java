@@ -1,40 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
+import android.net.Uri;
+import com.tencent.mobileqq.webview.AbsWebView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
 public class akts
-  implements View.OnTouchListener
+  extends aktw
 {
-  public akts(CustomedTabWidget paramCustomedTabWidget) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public akts(AbsWebView paramAbsWebView)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      i = 0;
-      if (i < this.a.getChildCount())
-      {
-        if (this.a.getChildAt(i) != paramView) {
-          break label57;
-        }
-        this.a.jdField_a_of_type_Int = i;
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.invalidate();
-      }
+    super(paramAbsWebView, null);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
     }
-    label57:
-    while (paramMotionEvent.getAction() != 1) {
-      for (;;)
-      {
-        int i;
-        return false;
-        i += 1;
-      }
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.invalidate();
-    return false;
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
 }
 

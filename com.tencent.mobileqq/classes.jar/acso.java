@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class acso
-  implements Runnable
+class acso
+  implements DialogInterface.OnClickListener
 {
-  public acso(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  acso(acsm paramacsm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.f()) && (this.a.jdField_a_of_type_JavaUtilLinkedHashMap != null) && (this.a.jdField_a_of_type_JavaUtilLinkedHashMap.size() > 0))
-    {
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        localObject = ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject)).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          if (((FileManagerEntity)((Iterator)localObject).next()).sendCloudUnsuccessful()) {
-            ((Iterator)localObject).remove();
-          }
-        }
-      }
-    }
-    this.a.e();
+    this.a.a.a = false;
+    this.a.a.doOnBackPressed();
   }
 }
 

@@ -1,13 +1,34 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.HotchatSCHelper;
+import com.tencent.mobileqq.app.HotchatSCHelper.OnShowNoteListener;
+import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
+import com.tencent.qphone.base.util.QLog;
 
-class vzx
-  implements Runnable
+public class vzx
+  implements HotchatSCHelper.OnShowNoteListener
 {
-  vzx(vzv paramvzv) {}
+  public vzx(HotChatPie paramHotChatPie) {}
   
-  public void run()
+  public boolean a(HotchatSCMng.HotchatNote paramHotchatNote)
   {
-    this.a.a.a.ar();
+    if (QLog.isDevelopLevel()) {
+      NearbyUtils.a("Q.aio.BaseTroopChatPie", "onShowHotchatNote", new Object[] { paramHotchatNote });
+    }
+    if (paramHotchatNote == null)
+    {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.b) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
+      }
+      return false;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic == null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic = new TroopFeedsCenterLogic(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, HotChatPie.a(this.a), HotChatPie.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips, this.a.Q, null);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramHotchatNote.a, paramHotchatNote.b);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.b = true;
+    return true;
   }
 }
 

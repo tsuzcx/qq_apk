@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper;
+import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.OnGetAppInfo;
 
 public class rjb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rjb(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public rjb(DefaultDoraemonAppInfoHelper paramDefaultDoraemonAppInfoHelper, DefaultDoraemonAppInfoHelper.OnGetAppInfo paramOnGetAppInfo, rje paramrje) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    AddFriendVerifyActivity.c(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper$OnGetAppInfo.a(this.jdField_a_of_type_Rje.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rjb
  * JD-Core Version:    0.7.0.1
  */

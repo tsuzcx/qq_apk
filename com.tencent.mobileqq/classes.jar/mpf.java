@@ -1,30 +1,63 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
+import android.view.ViewPropertyAnimator;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DropDownAppInPushNotification;
 
 public class mpf
-  extends Handler
+  implements View.OnTouchListener
 {
-  public mpf(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private float jdField_a_of_type_Float;
+  private final int jdField_a_of_type_Int = ViewConfiguration.getTapTimeout();
+  private long jdField_a_of_type_Long;
+  private float jdField_b_of_type_Float;
+  private final int jdField_b_of_type_Int = ViewConfiguration.getTouchSlop();
+  private float c;
+  private float d;
   
-  public void handleMessage(Message paramMessage)
+  public mpf(DropDownAppInPushNotification paramDropDownAppInPushNotification) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    switch (paramMotionEvent.getAction())
     {
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        return true;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushDropDownAppInPushNotification.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushDropDownAppInPushNotification.jdField_a_of_type_JavaLangRunnable);
+        this.jdField_a_of_type_Float = paramMotionEvent.getY();
+        this.jdField_b_of_type_Float = paramMotionEvent.getX();
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        return true;
+        f1 = paramMotionEvent.getY() - this.jdField_a_of_type_Float;
+      } while (DropDownAppInPushNotification.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushDropDownAppInPushNotification).getY() + f1 >= 0.0F);
+      DropDownAppInPushNotification.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushDropDownAppInPushNotification).animate().yBy(f1).setDuration(0L).start();
+      return true;
     }
-    do
+    this.c = paramMotionEvent.getX();
+    this.d = paramMotionEvent.getY();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    float f1 = this.d - this.jdField_a_of_type_Float;
+    float f2 = this.c - this.jdField_b_of_type_Float;
+    if ((f1 * f1 + f2 * f2 <= this.jdField_b_of_type_Int * this.jdField_b_of_type_Int) && (l1 - l2 <= this.jdField_a_of_type_Int))
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + FastWebVideoFeedsPlayManager.b(this.a));
-      }
-    } while (!FastWebVideoFeedsPlayManager.b(this.a));
-    this.a.a(1);
+      paramView.performClick();
+      return true;
+    }
+    if (-DropDownAppInPushNotification.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushDropDownAppInPushNotification).getY() < DropDownAppInPushNotification.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushDropDownAppInPushNotification).getHeight() / 2)
+    {
+      DropDownAppInPushNotification.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushDropDownAppInPushNotification).animate().y(0.0F).setDuration(200L).start();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushDropDownAppInPushNotification.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushDropDownAppInPushNotification.jdField_a_of_type_JavaLangRunnable, 3000L);
+      return true;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushDropDownAppInPushNotification.a(true, true);
+    return true;
   }
 }
 

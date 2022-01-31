@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import mqq.os.MqqHandler;
 
 public class afds
-  implements NearbyLikeLimitManager.onDoVoteListener
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public afds(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public afds(VideoViewTVKImpl paramVideoViewTVKImpl) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    this.a.c(paramBoolean);
-    this.a.t = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoViewTVKImpl", 2, "onInfo what=" + paramInt + "  ex:" + paramObject);
+    }
+    ThreadManager.getUIHandler().post(new afdt(this, paramInt, paramObject));
+    return false;
   }
 }
 

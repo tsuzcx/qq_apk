@@ -1,14 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.BubbleAppInPushNotification;
 
-public class mpa
+class mpa
   implements Runnable
 {
-  public mpa(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  mpa(moz parammoz) {}
   
   public void run()
   {
-    QQToast.a(FastWebVideoFeedsPlayManager.a(this.a), 1, "无网络连接,请检测网络配置!", 0).a();
+    this.a.a.a.a();
   }
 }
 

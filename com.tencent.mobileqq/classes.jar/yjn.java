@@ -1,30 +1,40 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.RemoteVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-class yjn
-  extends AVVideoCtrl.RemoteVideoPreviewCallback
+public class yjn
+  implements TVK_SDKMgr.InstallListener
 {
-  yjn(yjk paramyjk) {}
+  public yjn(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    Object localObject = CmGameUtil.a(AVCameraCaptureModel.a(this.a.a));
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ((CmGameLauncher)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new yjo(this, paramVideoFrame, (ApolloSurfaceView)localObject));
+    ShortVideoPlayActivity.a(this.a, false);
+    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
+    this.a.a("腾讯视频插件加载失败");
+    ShortVideoPlayActivity.c(this.a, 3000);
+    ShortVideoPlayActivity.d(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    ShortVideoPlayActivity.a(this.a, true);
+    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
+    if (this.a.a.get() != null) {
+      ((MqqHandler)this.a.a.get()).post(new yjo(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yjn
  * JD-Core Version:    0.7.0.1
  */

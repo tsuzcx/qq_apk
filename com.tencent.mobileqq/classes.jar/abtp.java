@@ -1,16 +1,13 @@
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.provider.ContactsContract.RawContacts;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordMatcher;
 
-public class abtp
+class abtp
+  implements Runnable
 {
-  public static final String[] a = { "_id", "sourceid", "contact_id" };
-  public static final String[] b = { "sync1", "sync2", "sync3" };
+  abtp(abto paramabto) {}
   
-  public static final Uri a(String paramString)
+  public void run()
   {
-    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", ContactSyncManager.b()).build();
+    this.a.a.dispatchNextTask();
   }
 }
 

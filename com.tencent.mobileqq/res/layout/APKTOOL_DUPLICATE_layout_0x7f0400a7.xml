@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/chat_item_content_layout" android:focusable="false" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/icon"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06c9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02018f" android:paddingLeft="12.0dip" android:paddingTop="11.0dip" android:paddingRight="12.0dip" android:paddingBottom="11.0dip" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="37.0dip" android:layout_marginRight="37.0dip" android:layout_centerHorizontal="true">
-        <com.tencent.mobileqq.widget.AnyScaleTypeImageView android:layout_gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06ca" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="10.0dip" android:src="@null" android:scaleType="fitStart" android:contentDescription="@null" />
-        <LinearLayout android:orientation="vertical" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
-            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06cb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b187f" android:singleLine="true" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c001c" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06cc" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="38.0dip">
+            <cooperation.dingdong.DingdongMsgItemTitleImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06d4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06d5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="审批" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06d6" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202a0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06d7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="14.0dip" android:maxLines="1" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffff8444" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06d8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="14.0dip" />
+            <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06d9" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c01c4" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="14.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03ad" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06da" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="14.0dip" android:layout_marginBottom="14.0dip" android:maxLines="3" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

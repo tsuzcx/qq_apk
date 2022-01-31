@@ -31,7 +31,7 @@ import java.util.Set;
 import mqq.manager.Manager;
 import oicq.wlogin_sdk.tools.MD5;
 import org.xmlpull.v1.XmlPullParser;
-import zfo;
+import zmp;
 
 public class HotchatSCMng
   implements Manager
@@ -203,7 +203,7 @@ public class HotchatSCMng
           if (localHotchatNotice.jdField_a_of_type_Int < 0)
           {
             if (this.jdField_a_of_type_JavaUtilComparator == null) {
-              this.jdField_a_of_type_JavaUtilComparator = new zfo(this);
+              this.jdField_a_of_type_JavaUtilComparator = new zmp(this);
             }
             Collections.sort(localHotchatNotice.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilComparator);
             if (QLog.isDevelopLevel()) {

@@ -1,60 +1,14 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView.PicInfo;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
 
 public class ltd
-  extends BaseAdapter
+  implements Runnable
 {
-  List jdField_a_of_type_JavaUtilList = new ArrayList();
-  List b = new ArrayList();
+  public ltd(ArticleInfoModule paramArticleInfoModule) {}
   
-  public ltd(NativeGridImageView paramNativeGridImageView) {}
-  
-  public List a()
+  public void run()
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(lte paramlte)
-  {
-    this.b = paramlte.a();
-    this.jdField_a_of_type_JavaUtilList = paramlte.b();
-  }
-  
-  public int getCount()
-  {
-    return this.b.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.b.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramViewGroup.getContext();
-    if (paramView == null)
-    {
-      paramView = new SquareCornerTextImageView(paramViewGroup);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    }
-    for (;;)
-    {
-      ((SquareCornerTextImageView)paramView).a((SquareCornerTextImageView.PicInfo)this.b.get(paramInt));
-      return paramView;
-    }
+    ReadInJoyLogicEngineEventDispatcher.a().b();
   }
 }
 

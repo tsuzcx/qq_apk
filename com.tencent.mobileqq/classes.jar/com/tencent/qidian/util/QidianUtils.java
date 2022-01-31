@@ -87,7 +87,7 @@ public class QidianUtils
     int i;
     if (!TextUtils.isEmpty(paramString4))
     {
-      i = paramString4.indexOf(paramQQAppInterface.getApp().getString(2131438727));
+      i = paramString4.indexOf(paramQQAppInterface.getApp().getString(2131438750));
       if (i != -1) {}
     }
     else
@@ -108,12 +108,13 @@ public class QidianUtils
     UniteGrayTipUtil.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3)
   {
     long l = MessageCache.a();
     paramString1 = new UniteGrayTipParam(paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, paramInt, -5020, 1245187, l);
     paramString1.f = false;
     paramString1.a = l;
+    paramString1.d = paramString3;
     paramString2 = new MessageForUniteGrayTip();
     paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
     UniteGrayTipUtil.a(paramQQAppInterface, paramString2);

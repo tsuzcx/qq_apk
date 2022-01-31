@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendsManager;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
 
 public class szc
-  implements Runnable
+  extends FriendListObserver
 {
-  public szc(LikeRankingListActivity paramLikeRankingListActivity, String paramString) {}
+  public szc(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    Card localCard = this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString);
-    if (localCard != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a(localCard);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
+    while (this.a.a == null) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListActivity", 2, "update cover card = null");
-    }
-    byte b = (byte)SharedPreUtils.al(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.getApplication(), this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.app.getCurrentAccountUin());
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1, 0L, (byte)1, 0L, 0L, null, "", 0L | 1L | 0x20 | 0x2000, 3022, null, b);
+    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
+    this.a.a.setImageBitmap(paramString);
   }
 }
 

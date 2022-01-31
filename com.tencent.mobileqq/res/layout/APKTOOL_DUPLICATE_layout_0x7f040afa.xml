@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e61" android:layout_width="159.0dip" android:layout_height="55.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31b0" android:layout_width="55.0dip" android:layout_height="55.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip">
-        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d003d" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31b1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="虫儿飞的个人主页" android:lines="1" android:scrollHorizontally="true" />
-        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d003d" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31b2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="粉丝XXX 访客XXX" android:lines="1" android:scrollHorizontally="true" />
-    </LinearLayout>
-</LinearLayout>
+<com.qzone.widget.swipestack.SwipeStack android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3174" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a3175" app:stack_size="2" app:stack_rotation="5"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

@@ -1,44 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import dov.com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
 
 public class aoin
-  implements aoip
+  implements Runnable
 {
-  public aoin(EncodeVideoTask paramEncodeVideoTask) {}
+  public aoin(DoodleTextureView paramDoodleTextureView) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (EncodeVideoTask.a(this.a) != null) {
-      EncodeVideoTask.a(this.a).a(paramInt);
+    if (this.a.a != null)
+    {
+      this.a.a.g();
+      PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.a.a(102);
+      if (localPersonalityOperator != null) {
+        localPersonalityOperator.b();
+      }
+      this.a.a = null;
     }
-  }
-  
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
     if (QLog.isColorLevel()) {
-      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
+      QLog.d("DoodleTextureView", 2, "onDestroy end");
     }
-    if (EncodeVideoTask.a(this.a))
-    {
-      b(paramPublishVideoEntry, paramString);
-      return;
-    }
-    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (FileUtils.b(paramPublishVideoEntry.doodlePath)))
-    {
-      EncodeVideoTask.a(paramString, paramPublishVideoEntry, EncodeVideoTask.a(this.a));
-      return;
-    }
-    b(paramPublishVideoEntry, paramString);
-  }
-  
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    ThreadManager.postImmediately(new aoio(this, paramPublishVideoEntry, paramString), null, true);
   }
 }
 

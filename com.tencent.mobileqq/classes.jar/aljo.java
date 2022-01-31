@@ -1,30 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.open.wadl.WLog;
-import com.tencent.open.wadl.WadlJsBridge;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import android.widget.HorizontalScrollView;
+import com.tencent.open.agent.FriendChooser;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
 
 public class aljo
-  implements Runnable
+  extends Handler
 {
-  public aljo(WadlJsBridge paramWadlJsBridge, String paramString) {}
+  public aljo(FriendChooser paramFriendChooser) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      if ((this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.getWebview() != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-      {
-        if (QLog.isColorLevel()) {
-          WLog.b("WadlJsBridge", "##@WadlJavaScript:" + this.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.getWebview().loadUrl(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      WLog.a("WadlJsBridge", "webview loadUrl jsCallBack()>>> ", localException);
+      super.handleMessage(paramMessage);
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+      if (QLog.isColorLevel()) {
+        QLog.e("qqBaseActivity", 2, "" + this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width);
+      }
     }
   }
 }

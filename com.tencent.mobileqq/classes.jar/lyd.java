@@ -1,34 +1,35 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicMulti;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendFeedsTitle;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lyd
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public lyd(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public lyd(FeedItemCellTypeTopicMulti paramFeedItemCellTypeTopicMulti, ArticleInfo paramArticleInfo, TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
+    ReadInJoyUtils.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCellTypeTopicMulti.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.b.b);
+    try
+    {
+      paramView = new JSONObject();
+      paramView.put("folder_status", ReadInJoyUtils.d);
+      paramView.put("kandian_mode", "" + ReadInJoyUtils.e());
+      paramView.put("tab_source", "" + ReadInJoyUtils.d());
+      PublicAccountReportUtils.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", paramView.toString(), false);
       return;
     }
-    ReadInJoyDeliverUGCActivity.a(this.a, true);
-    ReadInJoyDeliverUGCActivity.b(this.a, ReadInJoyDeliverUGCActivity.b(this.a));
-    switch (paramInt)
+    catch (JSONException paramView)
     {
-    }
-    for (;;)
-    {
-      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
-      return;
-      ReadInJoyDeliverUGCActivity.a(this.a);
-      PublicAccountReportUtils.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
-      continue;
-      ReadInJoyDeliverUGCActivity.b(this.a);
-      PublicAccountReportUtils.a(null, "", "0X800823A", "0X800823A", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
+      paramView.printStackTrace();
     }
   }
 }

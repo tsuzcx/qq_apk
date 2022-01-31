@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d9a" android:background="#fff8f7f9" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:divider="@null" android:dividerHeight="0.0dip" android:overScrollMode="never" />
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d9b" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d9c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" />
-        <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d9d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="快来发表第一条动态" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dad" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207c0" android:layout_width="168.0dip" android:layout_height="15.0dip" />
+                <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06fd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207c1" android:layout_width="50.0dip" android:layout_height="15.0dip" />
+            </FrameLayout>
+            <TextView android:textSize="18.0dip" android:textColor="@android:color/white" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0701" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="0%" />
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03ad" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:text="正在加载资源,请稍候..." />
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

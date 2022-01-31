@@ -1,25 +1,13 @@
-import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
 
-public class aisj
-  implements Comparator
+class aisj
+  implements Runnable
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  aisj(aisi paramaisi) {}
+  
+  public void run()
   {
-    paramObject1 = (PreDownloadItem)paramObject1;
-    paramObject2 = (PreDownloadItem)paramObject2;
-    if (paramObject1.c > paramObject2.c) {}
-    do
-    {
-      return -1;
-      if (paramObject1.c < paramObject2.c) {
-        return 1;
-      }
-    } while (paramObject1.d > paramObject2.d);
-    if (paramObject1.d < paramObject2.d) {
-      return 1;
-    }
-    return 0;
+    ConfigSetting.a(this.a.a);
   }
 }
 

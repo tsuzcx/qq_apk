@@ -3,7 +3,7 @@ package com.tencent.av.app;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import com.tencent.qphone.base.util.QLog;
-import jel;
+import jgn;
 import mqq.app.MobileQQ;
 
 public class GAudioExitMonitor
@@ -15,7 +15,7 @@ public class GAudioExitMonitor
   public GAudioExitMonitor(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new jel(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new jgn(this);
   }
   
   public void a()
@@ -41,7 +41,7 @@ public class GAudioExitMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.GAudioExitMonitor
  * JD-Core Version:    0.7.0.1
  */

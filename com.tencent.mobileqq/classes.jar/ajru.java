@@ -1,38 +1,35 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import java.lang.ref.WeakReference;
 
-public class ajru
-  implements ActionSheet.OnButtonClickListener
+class ajru
+  implements Runnable
 {
-  public ajru(AvatarWallAdapter paramAvatarWallAdapter, Activity paramActivity, ActionSheet paramActionSheet) {}
+  ajru(ajrt paramajrt, VideoInfo paramVideoInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ArrayOfInt.length)) {
-      return;
-    }
-    switch (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ArrayOfInt[paramInt])
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a).e = 95;
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a).g = -2147483648;
+    XMediaEditor localXMediaEditor = (XMediaEditor)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a).get();
+    if (localXMediaEditor != null)
     {
-    }
-    for (;;)
-    {
-      try
+      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a).c);
+      if ((localObject instanceof VideoItem.VideoViewHolder))
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
+        localObject = (VideoItem.VideoViewHolder)localObject;
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject).a.getTag())) {
+          ((VideoItem)((XMediaEditorAdapter)localXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a), 0);
+        }
       }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-        return;
-      }
-      AvatarWallAdapter.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this.jdField_a_of_type_AndroidAppActivity, 13);
-      continue;
-      AvatarWallAdapter.a(this.jdField_a_of_type_AndroidAppActivity, 8 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b);
     }
   }
 }

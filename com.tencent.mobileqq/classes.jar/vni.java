@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.ActionSheet;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-public class vni
+class vni
   implements Runnable
 {
-  public vni(AIOGalleryScene paramAIOGalleryScene, File paramFile, ActionSheet paramActionSheet) {}
+  vni(vnh paramvnh) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h.equals(this.jdField_a_of_type_JavaIoFile.getPath())) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(this.jdField_a_of_type_JavaIoFile).booleanValue()) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
-      ThreadManager.getUIHandler().post(new vnj(this));
+    ChatFragment localChatFragment = ((FragmentActivity)this.a.a.a).getChatFragment();
+    if (localChatFragment != null) {
+      localChatFragment.a().R();
     }
   }
 }

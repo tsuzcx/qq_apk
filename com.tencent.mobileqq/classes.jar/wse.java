@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class wse
-  implements DialogInterface.OnClickListener
+public abstract interface wse
 {
-  public wse(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
-  }
+  public abstract void a();
 }
 
 

@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
 
 public class aiwp
-  implements DialogInterface.OnClickListener
+  implements ITransCallbackForReport
 {
-  public aiwp(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public aiwp(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onFailed(int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(false, this.a.j, paramString1, paramString2);
+  }
 }
 
 

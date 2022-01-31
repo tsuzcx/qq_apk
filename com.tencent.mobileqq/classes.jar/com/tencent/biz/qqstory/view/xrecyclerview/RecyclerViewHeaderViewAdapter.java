@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import java.util.ArrayList;
 import java.util.List;
-import orn;
-import oro;
-import orp;
+import owc;
+import owd;
+import owe;
 
 public class RecyclerViewHeaderViewAdapter
   extends RecyclerView.Adapter
@@ -24,7 +24,7 @@ public class RecyclerViewHeaderViewAdapter
   public RecyclerViewHeaderViewAdapter(RecyclerView.Adapter paramAdapter)
   {
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(new orn(this));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(new owc(this));
   }
   
   private boolean a(int paramInt)
@@ -110,12 +110,12 @@ public class RecyclerViewHeaderViewAdapter
     if (a(paramInt))
     {
       paramInt = Math.abs(paramInt + 1000);
-      return new oro(this, (View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      return new owd(this, (View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
     }
     if (b(paramInt))
     {
       paramInt = Math.abs(paramInt + 2000);
-      return new orp(this, (View)this.b.get(paramInt));
+      return new owe(this, (View)this.b.get(paramInt));
     }
     return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }

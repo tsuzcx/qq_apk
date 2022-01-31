@@ -1,16 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.ar.ARScanFragment;
+import com.tencent.mobileqq.ar.ARTarget;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArWebInfo;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agjv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public agjv(ScanIconAnimateView paramScanIconAnimateView) {}
+  public agjv(ScanTorchActivity paramScanTorchActivity, ARTarget paramARTarget) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    ScanTorchActivity.l(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, true);
+    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.a.e(true);
+    ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
+    ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
+    ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false);
+    if ((this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.l) && (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.s))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.k();
+      return;
+    }
+    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.a.a);
+    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.m = true;
   }
 }
 

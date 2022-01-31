@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.os.Looper;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,7 +17,7 @@ import mqq.util.MqqConnRateReport.EventType;
 
 public class ServletContainer
 {
-  private final Map<String, Set<String>> actionMap = new HashMap();
+  private final ConcurrentHashMap<String, Set<String>> actionMap = new ConcurrentHashMap();
   private AppRuntime app;
   private ExecutorService mService = Executors.newSingleThreadExecutor();
   final ConcurrentHashMap<String, Servlet> managedServlet = new ConcurrentHashMap();

@@ -1,25 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoStatusListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class mhk
   implements Runnable
 {
-  mhk(mhf parammhf) {}
+  mhk(mhi parammhi) {}
   
   public void run()
   {
-    this.a.a.notifyDataSetChanged();
-    if (this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a())
+    if (VideoFeedsPlayManager.a(this.a.a) != null)
     {
-      this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.e(true);
-      this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a().g();
+      Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
+      while (localIterator.hasNext()) {
+        ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).a(VideoFeedsPlayManager.a(this.a.a));
+      }
     }
-    while ((this.a.a.jdField_a_of_type_Boolean) || (!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c())) {
-      return;
-    }
-    this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.d(true);
-    this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a().g();
+    this.a.a.b(0);
   }
 }
 

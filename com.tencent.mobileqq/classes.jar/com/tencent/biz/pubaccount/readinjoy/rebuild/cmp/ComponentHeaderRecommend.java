@@ -30,9 +30,10 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.Base64Util;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.text.DecimalFormat;
-import lvu;
-import lvv;
+import lzh;
+import lzi;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -120,7 +121,7 @@ public class ComponentHeaderRecommend
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setOnClickListener(this);
       if ((((ArticleInfo)localObject).mSocialFeedInfo != null) && (ReadInJoyBaseAdapter.e((ArticleInfo)localObject)) && (((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.a == 1))
       {
-        localObject = getResources().getDrawable(2130842406);
+        localObject = getResources().getDrawable(2130842441);
         ((Drawable)localObject).setBounds(0, 0, AIOUtils.a(16.0F, getResources()), AIOUtils.a(16.0F, getResources()));
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setCompoundDrawables(null, null, (Drawable)localObject, null);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setCompoundDrawablePadding(AIOUtils.a(4.0F, getResources()));
@@ -135,7 +136,7 @@ public class ComponentHeaderRecommend
       ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText("更多");
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new lvu(this));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new lzh(this));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(localArticleInfo.mSummary);
       g();
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -208,23 +209,29 @@ public class ComponentHeaderRecommend
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
-      PublicAccountUtil.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), getContext(), Long.toString(a()), new lvv(this));
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a() != null))
+      {
+        ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
+        ReadInJoyHelper.d(localQQAppInterface, getContext(), localArticleInfo);
+      }
+      PublicAccountUtil.a(localQQAppInterface, getContext(), Long.toString(a()), new lzi(this));
       c();
     }
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969579, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969575, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)findViewById(2131367037));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)findViewById(2131362894));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364193));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365659));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)findViewById(2131362899));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364218));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365664));
     this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131367027));
     this.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
   }
@@ -253,8 +260,8 @@ public class ComponentHeaderRecommend
     {
     default: 
       return;
-    case 2131362894: 
-    case 2131366704: 
+    case 2131362899: 
+    case 2131366702: 
     case 2131367037: 
       h();
       return;

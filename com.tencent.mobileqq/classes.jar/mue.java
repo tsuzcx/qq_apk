@@ -1,23 +1,11 @@
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.biz.widgets.ElasticHorScrView;
+import java.util.Comparator;
 
-public class mue
-  implements Runnable
+public final class mue
+  implements Comparator
 {
-  public mue(GalleryShareHelper paramGalleryShareHelper, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
-  
-  public void run()
+  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-    }
-    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
-    {
-      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-      return;
-      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
-    }
-    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    return paramArrayOfByte1.length - paramArrayOfByte2.length;
   }
 }
 

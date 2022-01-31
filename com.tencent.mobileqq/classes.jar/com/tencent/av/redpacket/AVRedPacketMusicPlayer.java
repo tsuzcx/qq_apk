@@ -13,7 +13,7 @@ import com.tencent.av.ui.redbag.RedBagUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import jlg;
+import jnj;
 
 public class AVRedPacketMusicPlayer
   implements SdkAudioFrameCallback
@@ -311,7 +311,7 @@ public class AVRedPacketMusicPlayer
       this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper$OnLoadFinishListener.a();
       return;
     } while (this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper == null);
-    this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper.a(new jlg(this));
+    this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper.a(new jnj(this));
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -323,7 +323,7 @@ public class AVRedPacketMusicPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.redpacket.AVRedPacketMusicPlayer
  * JD-Core Version:    0.7.0.1
  */

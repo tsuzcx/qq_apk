@@ -1,26 +1,12 @@
-import android.view.View;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.widget.ListView;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-class nfe
-  implements Runnable
+public final class nfe
+  implements InvocationHandler
 {
-  nfe(nfd paramnfd) {}
-  
-  public void run()
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    int i = this.a.a.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition();
-    if (i < this.a.a.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount())
-    {
-      View localView = this.a.a.jdField_a_of_type_ComTencentWidgetListView.getChildAt(0);
-      if (localView == this.a.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView)
-      {
-        int j = localView.getTop();
-        if ((j < 0) && (j > -localView.getHeight())) {
-          this.a.a.jdField_a_of_type_ComTencentWidgetListView.setSelection(i + 1);
-        }
-      }
-    }
+    return null;
   }
 }
 

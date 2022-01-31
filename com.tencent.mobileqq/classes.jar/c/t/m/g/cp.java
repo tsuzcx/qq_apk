@@ -1,18 +1,41 @@
 package c.t.m.g;
 
-import java.io.File;
-
 public final class cp
 {
-  String a = "";
-  String b = "";
-  public boolean c = false;
+  private static cy.a a = null;
   
-  public cp(String paramString1, String paramString2)
+  public static void a(cy.a parama)
   {
-    this.a = paramString1;
-    this.c = false;
-    this.b = paramString2;
+    if (parama == null) {
+      a("FC_Log", "set log callback null!");
+    }
+    a = parama;
+  }
+  
+  public static final void a(String paramString1, String paramString2)
+  {
+    if (a()) {
+      a.onLog(3, paramString1, paramString2);
+    }
+  }
+  
+  public static final void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (a()) {
+      a.onLog(6, paramString1, paramString2, paramThrowable);
+    }
+  }
+  
+  private static boolean a()
+  {
+    return a != null;
+  }
+  
+  public static final void b(String paramString1, String paramString2)
+  {
+    if (a()) {
+      a.onLog(6, paramString1, paramString2);
+    }
   }
 }
 

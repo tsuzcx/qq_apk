@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
 
 public class aogu
   implements Runnable
 {
-  public aogu(VideoFilterViewPager paramVideoFilterViewPager, View paramView) {}
+  public aogu(EditTextDialog paramEditTextDialog) {}
   
   public void run()
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(300L);
-    localAlphaAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
-    localAlphaAnimation.setAnimationListener(new aogv(this));
+    this.a.a.a();
   }
 }
 

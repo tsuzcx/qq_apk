@@ -1,37 +1,34 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.core.VcSystemInfo;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.av.ui.CallbackWaitingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class jta
-  implements Runnable
+class jta
+  implements DialogInterface.OnClickListener
 {
-  public jta(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  jta(jsz paramjsz) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvUiQavPanel == null)) {}
-    for (;;)
-    {
-      return;
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController.c()) && (VcSystemInfo.b()))
-      {
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365399, true);
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365399, true);
-      }
-      while ((this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) && (this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365391)) && (this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (!this.a.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365391)))
-      {
-        this.a.D();
-        return;
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131365399, false);
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131365399, false);
-      }
-    }
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setPackage(CallbackWaitingActivity.a(this.a.a).getApp().getPackageName());
+    paramDialogInterface.setAction("tencent.av.v2q.CancelCallBack");
+    paramDialogInterface.putExtra("fromPhone", this.a.a.c);
+    paramDialogInterface.putExtra("toPhone", this.a.a.jdField_b_of_type_JavaLangString);
+    paramDialogInterface.putExtra("fromUin", this.a.a.e);
+    paramDialogInterface.putExtra("uinType", this.a.a.jdField_b_of_type_Int);
+    paramDialogInterface.putExtra("toUin", this.a.a.e);
+    paramDialogInterface.putExtra("callBackId", this.a.a.a);
+    CallbackWaitingActivity.a(this.a.a).getApp().sendBroadcast(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jta
  * JD-Core Version:    0.7.0.1
  */

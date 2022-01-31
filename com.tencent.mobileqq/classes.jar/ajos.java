@@ -1,17 +1,25 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
 
-class ajos
-  implements FilenameFilter
+public class ajos
+  implements View.OnFocusChangeListener
 {
-  ajos(ajor paramajor) {}
+  public ajos(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramString == null) {
-      return false;
+    paramView = this.a;
+    if (!paramBoolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublishHomeWorkFragment.b(paramView, bool);
+      if (paramBoolean) {
+        PublishHomeWorkFragment.a(this.a, PublishHomeWorkFragment.a(this.a).a());
+      }
+      return;
     }
-    return paramString.startsWith("[Thumb]");
   }
 }
 

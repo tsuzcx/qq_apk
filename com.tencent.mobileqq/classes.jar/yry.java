@@ -1,24 +1,15 @@
+import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public class yry
+class yry
   implements Runnable
 {
-  public yry(SpriteBackgroundManager paramSpriteBackgroundManager) {}
+  yry(yrx paramyrx) {}
   
   public void run()
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)SpriteBackgroundManager.a(this.a).get();
-    if ((localApolloTextureView != null) && (localApolloTextureView.getRender() != null) && (localApolloTextureView.getRender().mApolloTicker != null)) {
-      ApolloRender.tickerResume(localApolloTextureView.getRender().mApolloTicker.ticker);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "mResumeTickerTask");
-    }
+    ((ApolloSurfaceView)this.a.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(this.a.jdField_a_of_type_Long, 5);
   }
 }
 

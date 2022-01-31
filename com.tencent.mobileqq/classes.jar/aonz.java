@@ -1,37 +1,15 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView;
+import dov.com.tencent.mfsdk.collector.DropFrameMonitor;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
 public class aonz
-  implements Runnable
+  implements AbstractUnifiedMonitor.ThreadMonitorCallback
 {
-  public aonz(VideoFilterPlayView paramVideoFilterPlayView) {}
+  public aonz(DropFrameMonitor paramDropFrameMonitor) {}
   
-  public void run()
+  public void onThreadMonitorEnd(int paramInt)
   {
-    if (VideoFilterPlayView.b(this.a) != null)
-    {
-      VideoFilterPlayView.b(this.a).c();
-      VideoFilterPlayView.a(this.a, null);
-    }
-    if (VideoFilterPlayView.a(this.a) != null)
-    {
-      VideoFilterPlayView.a(this.a).c();
-      VideoFilterPlayView.b(this.a, null);
-    }
-    if (VideoFilterPlayView.a(this.a) != null)
-    {
-      VideoFilterPlayView.a(this.a).c();
-      VideoFilterPlayView.a(this.a, null);
-    }
-    if (VideoFilterPlayView.a(this.a) != null)
-    {
-      VideoFilterPlayView.a(this.a).o();
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterPlayView", 2, "VideoPlay, surfaceDestroy success=");
-      }
+    if (paramInt == 10) {
+      this.a.a();
     }
   }
 }

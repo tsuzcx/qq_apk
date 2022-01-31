@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tribe.videoupload;
 
-import aitc;
+import aiyf;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.base.ErrorMessage;
@@ -27,7 +27,7 @@ public class TribeVideoFileObject
   private void c()
   {
     TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new aitc(this);
+    localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new aiyf(this);
     localTransferRequest.i = this.jdField_a_of_type_JavaLangString;
     localTransferRequest.jdField_a_of_type_Boolean = true;
     localTransferRequest.jdField_b_of_type_Int = 327681;
@@ -52,7 +52,7 @@ public class TribeVideoFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.videoupload.TribeVideoFileObject
  * JD-Core Version:    0.7.0.1
  */

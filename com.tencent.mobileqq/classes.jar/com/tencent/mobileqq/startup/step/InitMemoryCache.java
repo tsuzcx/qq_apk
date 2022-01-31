@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aiey;
+import aijs;
 import android.support.v4.util.LruCache;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.cache.MemoryClearManagerNew;
@@ -34,7 +34,7 @@ public class InitMemoryCache
       if (BaseApplicationImpl.sProcessId == 1)
       {
         l = MemoryManager.a() * 3L / 16L;
-        BaseApplicationImpl.sImageCache = new aiey(Integer.valueOf((int)l));
+        BaseApplicationImpl.sImageCache = new aijs(Integer.valueOf((int)l));
         BaseApplicationImpl.sImageCacheSize = (int)l;
       }
       while ((BaseApplicationImpl.sProcessId == 2) || (BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 9) || (BaseApplicationImpl.sProcessId == 10))
@@ -45,7 +45,7 @@ public class InitMemoryCache
         if (BaseApplicationImpl.sProcessId == 5)
         {
           l = MemoryManager.a() * 3L / 16L;
-          BaseApplicationImpl.sImageCache = new aiey(Integer.valueOf((int)l));
+          BaseApplicationImpl.sImageCache = new aijs(Integer.valueOf((int)l));
           BaseApplicationImpl.sImageCacheSize = (int)l;
         }
         else
@@ -59,7 +59,7 @@ public class InitMemoryCache
             if (j > 4194304) {
               i = j;
             }
-            BaseApplicationImpl.sImageCache = new aiey(Integer.valueOf(i));
+            BaseApplicationImpl.sImageCache = new aijs(Integer.valueOf(i));
             BaseApplicationImpl.sImageCacheSize = j;
             if (QLog.isColorLevel()) {
               QLog.d("MemoryCache", 2, "memory size:" + j);
@@ -68,7 +68,7 @@ public class InitMemoryCache
           else if ((BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 2))
           {
             l = MemoryManager.a() * 3L / 16L;
-            BaseApplicationImpl.sImageCache = new aiey(Integer.valueOf((int)l));
+            BaseApplicationImpl.sImageCache = new aijs(Integer.valueOf((int)l));
             BaseApplicationImpl.sImageCacheSize = (int)l;
           }
           else if (BaseApplicationImpl.processName.endsWith(":video"))
@@ -78,7 +78,7 @@ public class InitMemoryCache
             if (j > 4194304) {
               i = j;
             }
-            BaseApplicationImpl.sImageCache = new aiey(Integer.valueOf(i));
+            BaseApplicationImpl.sImageCache = new aijs(Integer.valueOf(i));
             BaseApplicationImpl.sImageCacheSize = j;
           }
         }

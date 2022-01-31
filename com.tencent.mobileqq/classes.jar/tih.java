@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class tih
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public tih(QQBrowserActivity paramQQBrowserActivity) {}
+  public tih(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_QQBrowserActivity", 2, "start request: " + WebAccelerateHelper.isWebViewCache);
-    }
-    WebProcessManager.a(true);
-    SwiftWebViewUtils.a();
-    SwiftWebViewUtils.b();
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.a.finish();
   }
 }
 

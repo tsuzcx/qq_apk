@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class ajbj
-  extends FriendListObserver
+  implements Runnable
 {
-  public ajbj(NewTroopContactView paramNewTroopContactView) {}
+  public ajbj(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void run()
   {
-    if (paramBoolean1) {
-      this.a.a.notifyDataSetChanged();
-    }
+    this.a.l = false;
   }
 }
 

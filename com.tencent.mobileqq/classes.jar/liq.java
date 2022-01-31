@@ -1,38 +1,75 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONObject;
+import cooperation.readinjoy.ReadInJoyHelper;
+import java.util.HashMap;
 
 public class liq
-  implements NativeCommentServlet.CommentObserver
+  implements Runnable
 {
-  public liq(ArticleCommentModule paramArticleCommentModule) {}
+  public liq(ReadInJoyArkViewController paramReadInJoyArkViewController, String paramString1, String paramString2, String paramString3, int paramInt) {}
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  public void run()
   {
-    if (ArticleCommentModule.access$000(this.a) != null) {
-      ArticleCommentModule.access$000(this.a).a(paramArticleInfo, paramInt, paramString);
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, JSONObject paramJSONObject, String paramString)
-  {
-    if (this.a.dealwithRawComment(paramJSONObject)) {
-      if (ArticleCommentModule.access$000(this.a) != null)
+    try
+    {
+      Object localObject = new HashMap();
+      ((HashMap)localObject).put("action", this.jdField_a_of_type_JavaLangString);
+      if (this.b == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TRACE_COMMENT_LIST", 2, "element size=" + ArticleCommentModule.access$100(this.a).size());
+        str = "";
+        ((HashMap)localObject).put("appname", str);
+        if (this.c != null) {
+          break label240;
         }
-        ArticleCommentModule.access$000(this.a).a(paramArticleInfo);
+        str = "";
+        label47:
+        ((HashMap)localObject).put("appver", str);
+        if (this.jdField_a_of_type_JavaLangString.equals("download")) {
+          ((HashMap)localObject).put("result", "" + this.jdField_a_of_type_Int);
+        }
+        StatisticCollector.a(BaseApplication.getContext()).a(null, "actionReadInJoyArkConfig", TextUtils.equals(this.jdField_a_of_type_JavaLangString, "show"), 0L, 0L, (HashMap)localObject, null);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder().append("report actionReadInJoyArkConfig name:");
+          if (this.b != null) {
+            break label248;
+          }
+          str = "";
+          label150:
+          localObject = ((StringBuilder)localObject).append(str).append(", ver:");
+          if (this.c != null) {
+            break label256;
+          }
+        }
       }
-    }
-    while (ArticleCommentModule.access$000(this.a) == null) {
+      label256:
+      for (String str = "";; str = this.c)
+      {
+        QLog.d("ReadInJoyArkViewController", 2, str + ", action:" + this.jdField_a_of_type_JavaLangString);
+        if ((TextUtils.equals(this.jdField_a_of_type_JavaLangString, "except")) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "download"))) {
+          return;
+        }
+        ReadInJoyHelper.b(ReadInJoyUtils.a(), this.c);
+        return;
+        str = this.b;
+        break;
+        label240:
+        str = this.c;
+        break label47;
+        label248:
+        str = this.b;
+        break label150;
+      }
       return;
     }
-    ArticleCommentModule.access$000(this.a).a(paramArticleInfo, -1, " json formate error");
+    catch (Exception localException)
+    {
+      QLog.d("ReadInJoyArkViewController", 1, "report ark error", localException);
+    }
   }
 }
 

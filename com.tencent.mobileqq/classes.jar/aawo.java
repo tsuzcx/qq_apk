@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aawo
-  implements ArkAppLocationManager.ArkGetLocationCallback
+public class aawo
+  implements Runnable
 {
-  public aawo(String paramString, Object paramObject, ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler paramIAnalyzeArkBabyQReplyByServerHandler) {}
+  public aawo(ArkAppModuleReg.ModuleQQ paramModuleQQ, String paramString) {}
   
-  public void a(String paramString, double paramDouble1, double paramDouble2)
+  public void run()
   {
-    aawy localaawy = new aawy(null);
-    localaawy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localaawy.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
-    localaawy.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler;
-    ThreadManager.post(new aawp(this, localaawy, paramString, paramDouble1, paramDouble2), 5, null, true);
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if ((localBaseActivity instanceof FragmentActivity))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("forward_text", this.jdField_a_of_type_JavaLangString);
+      Intent localIntent = new Intent();
+      localIntent.putExtras(localBundle);
+      localIntent.putExtra("direct_send_if_dataline_forward", true);
+      ForwardBaseOption.a(localBaseActivity, localIntent, 21);
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkApp", 1, "QQ.SendMessage text success.");
+      }
+    }
   }
 }
 

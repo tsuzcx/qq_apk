@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abpv;
-import abpw;
+import abww;
+import abwx;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -74,18 +74,18 @@ public class CampusCircleReplyActivity
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837571);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130837570);
     switch (paramInt)
     {
     default: 
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(0);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845268);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845342);
       return;
     }
     InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130844546);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130844610);
   }
   
   public void a()
@@ -219,21 +219,21 @@ public class CampusCircleReplyActivity
   
   protected void d()
   {
-    setContentView(2130970274);
-    Object localObject = findViewById(2131363244);
+    setContentView(2130970289);
+    Object localObject = findViewById(2131363261);
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout = ((InputMethodRelativeLayout)findViewById(2131365636));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131366638));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366618));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365527));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131366607));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131369920));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369921));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout = ((InputMethodRelativeLayout)findViewById(2131365641));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131366636));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366616));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365532));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131366605));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131369930));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369931));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = TroopBarPublishUtils.a(this, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_AndroidWidgetEditText, this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.setOnSizeChangedListenner(this);
-    findViewById(2131366608).setOnClickListener(this);
+    findViewById(2131366606).setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setSelected(true);
     this.jdField_a_of_type_AndroidWidgetButton.setPressed(false);
@@ -251,7 +251,7 @@ public class CampusCircleReplyActivity
       }
       this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new abpv(this));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new abww(this));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       if (!this.jdField_c_of_type_JavaLangString.equalsIgnoreCase("comment")) {
         break label444;
@@ -304,7 +304,7 @@ public class CampusCircleReplyActivity
       if (QLog.isColorLevel()) {
         QLog.d("CampusCircleReplyActivity", 2, "bundle is null");
       }
-      QQToast.a(this, 1, getString(2131430309, new Object[] { Integer.valueOf(990) }), 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, getString(2131430312, new Object[] { Integer.valueOf(990) }), 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -321,7 +321,7 @@ public class CampusCircleReplyActivity
     }
     catch (Exception paramBundle)
     {
-      QQToast.a(this, 1, getString(2131430309, new Object[] { Integer.valueOf(999) }), 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, getString(2131430312, new Object[] { Integer.valueOf(999) }), 0).b(getTitleBarHeight());
       if (QLog.isColorLevel()) {
         QLog.e("CampusCircleReplyActivity", 2, paramBundle, new Object[] { "onCreate parse json failed" });
       }
@@ -367,8 +367,8 @@ public class CampusCircleReplyActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131366608: 
-    case 2131366638: 
+    case 2131366606: 
+    case 2131366636: 
       do
       {
         return;
@@ -386,7 +386,7 @@ public class CampusCircleReplyActivity
         return;
       }
       InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new abpw(this), 200L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new abwx(this), 200L);
       return;
     }
     a();

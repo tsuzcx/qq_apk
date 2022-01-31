@@ -1,47 +1,77 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.weather.WeatherManager.WeatherUpdaterListener;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class tre
-  extends BaseAdapter
+  implements WeatherManager.WeatherUpdaterListener
 {
-  private tre(SearchFriendListActivity paramSearchFriendListActivity) {}
+  public tre(QQSettingMe paramQQSettingMe) {}
   
-  public int getCount()
+  public void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return SearchFriendListActivity.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return SearchFriendListActivity.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
+    if (this.a.c)
     {
-      localView = this.a.getLayoutInflater().inflate(2130971521, paramViewGroup, false);
-      paramView = new trf();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362869));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362870));
-      paramView.b = ((TextView)localView.findViewById(2131375009));
-      localView.setTag(paramView);
-      localView.setOnClickListener(this.a);
+      if (!paramBoolean) {
+        break label343;
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (ApolloManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "drawer", null) <= 0) || (!ApolloManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Boolean.valueOf(false)))) {
+        break label72;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "weatherUpdateResult update but show cmShow");
+      }
     }
-    this.a.a(localView, paramInt);
-    return localView;
+    label72:
+    label343:
+    int i;
+    do
+    {
+      String str1;
+      String str2;
+      do
+      {
+        do
+        {
+          return;
+          paramInt = paramBundle.getInt("show_flag");
+          if (QLog.isColorLevel()) {
+            QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult show_flag:" + paramInt);
+          }
+          if (paramInt == 0)
+          {
+            this.a.b.setVisibility(8);
+            this.a.b.setClickable(false);
+            this.a.h.setVisibility(4);
+            return;
+          }
+        } while (paramInt != 1);
+        str1 = paramBundle.getString("KEY_TEMPER");
+        str2 = paramBundle.getString("o_wea_code");
+        paramBundle = paramBundle.getString("area_name");
+        if (QLog.isColorLevel()) {
+          QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult temp:" + str1 + " o_wea_code:" + str2 + " area_name:" + paramBundle);
+        }
+      } while ((str1 == null) || (str1.equals("")) || (paramBundle == null) || (paramBundle.equals("")));
+      this.a.b.setVisibility(0);
+      this.a.h.setVisibility(0);
+      this.a.b.setClickable(true);
+      this.a.e.setText(str1);
+      this.a.h.setText(paramBundle);
+      this.a.g.setText("o");
+      QQSettingMe.b(this.a, str1);
+      QQSettingMe.c(this.a, str2);
+      return;
+      i = paramBundle.getInt("uint32_result");
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "onWeatherUpdateResult resultCode:" + i);
+      }
+    } while ((paramInt != 6666) || (i != 191005));
+    SosoInterface.a(new trf(this, 0, true, true, 60000L, true, false, "QQSettingRedesign"));
   }
 }
 

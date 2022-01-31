@@ -59,10 +59,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observer;
 import java.util.Vector;
-import jej;
-import jem;
-import jez;
-import jfa;
+import jgl;
+import jgo;
+import jhb;
+import jhc;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 
@@ -92,10 +92,10 @@ public class VideoAppInterface
   protected BusinessMessageCenter a;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new jez(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new jhb(this);
   protected List a;
-  jej jdField_a_of_type_Jej;
-  jem jdField_a_of_type_Jem;
+  jgl jdField_a_of_type_Jgl;
+  jgo jdField_a_of_type_Jgo;
   protected boolean a;
   public boolean b;
   public boolean c;
@@ -120,8 +120,8 @@ public class VideoAppInterface
   
   private void d()
   {
-    this.jdField_a_of_type_Jej.b();
-    this.jdField_a_of_type_Jem.b();
+    this.jdField_a_of_type_Jgl.b();
+    this.jdField_a_of_type_Jgo.b();
     this.jdField_a_of_type_ComTencentAvAppGKillProcessMonitor.a();
     this.jdField_a_of_type_ComTencentAvAppGVipFunCallMonitor.a();
     this.jdField_a_of_type_ComTencentAvAppGAudioExitMonitor.a();
@@ -388,7 +388,9 @@ public class VideoAppInterface
     if (paramObserver != null)
     {
       a().addObserver(paramObserver);
-      paramObserver.update(a(), new Object[] { Integer.valueOf(10) });
+      if ((this.jdField_a_of_type_ComTencentAvAppQQServiceProxy != null) && (this.jdField_a_of_type_ComTencentAvAppQQServiceProxy.a != null)) {
+        paramObserver.update(a(), new Object[] { Integer.valueOf(10) });
+      }
     }
   }
   
@@ -513,7 +515,7 @@ public class VideoAppInterface
       this.b = false;
       SmallScreenUtils.a(getApplication());
       AVLog.d(jdField_a_of_type_JavaLangString, "exit video process clearNotification");
-      new QNotificationManager(getApplication().getApplicationContext()).cancel(jdField_a_of_type_JavaLangString, 2130840353);
+      new QNotificationManager(getApplication().getApplicationContext()).cancel(jdField_a_of_type_JavaLangString, 2130840368);
       Object localObject = (AudioManager)getApplication().getApplicationContext().getSystemService("audio");
       if (localObject != null)
       {
@@ -753,8 +755,8 @@ public class VideoAppInterface
     AudioHelper.a(this.app, getLongAccountUin());
     AudioHelper.a(this.app.getApplicationContext());
     this.jdField_a_of_type_ComTencentAvAppDeviceCapabilityExamination = new DeviceCapabilityExamination(this);
-    this.jdField_a_of_type_Jem = new jem(this);
-    this.jdField_a_of_type_Jej = new jej(this);
+    this.jdField_a_of_type_Jgo = new jgo(this);
+    this.jdField_a_of_type_Jgl = new jgl(this);
     this.jdField_a_of_type_ComTencentAvAppGKillProcessMonitor = new GKillProcessMonitor(this);
     this.jdField_a_of_type_ComTencentAvAppGVipFunCallMonitor = new GVipFunCallMonitor(this);
     this.jdField_a_of_type_ComTencentAvAppGAudioExitMonitor = new GAudioExitMonitor(this);
@@ -769,7 +771,7 @@ public class VideoAppInterface
     this.jdField_a_of_type_ComTencentAvAppAVServiceProxy.a();
     AVReport.a().a();
     c();
-    ThreadManager.post(new jfa(this), 5, null, true);
+    ThreadManager.post(new jhc(this), 5, null, true);
     this.jdField_a_of_type_JavaUtilList = new Vector();
     g();
     this.jdField_a_of_type_ComTencentAvBusinessMsfServletProxy = new MsfServletProxy(this);
@@ -801,8 +803,8 @@ public class VideoAppInterface
       AVRedPacketManager.b();
       this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor.b();
       this.jdField_a_of_type_ComTencentAvAppGMemoryMonitor.a();
-      this.jdField_a_of_type_Jem.a();
-      this.jdField_a_of_type_Jej.a();
+      this.jdField_a_of_type_Jgo.a();
+      this.jdField_a_of_type_Jgl.a();
       this.jdField_a_of_type_ComTencentAvAppGKillProcessMonitor.b();
       this.jdField_a_of_type_ComTencentAvAppGVipFunCallMonitor.b();
       this.jdField_a_of_type_ComTencentAvAppGAudioExitMonitor.b();
@@ -834,7 +836,7 @@ public class VideoAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.VideoAppInterface
  * JD-Core Version:    0.7.0.1
  */

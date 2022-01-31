@@ -1,6 +1,6 @@
 package com.tencent.open.base.http;
 
-import alfm;
+import alne;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -49,7 +49,7 @@ public class AvatarUpdateService
     String str2 = "https://openmobile.qq.com/getface?appid=716027609&imgtype=3&encrytype=0&devtype=0&keytype=0&uin=" + paramString1;
     for (String str1 = paramString1; str1.length() < 10; str1 = "0" + str1) {}
     str1 = "o" + str1;
-    ThreadManager.post(new alfm(this, str2, "uin=" + str1 + "; skey=" + paramString2, paramString1, paramString3, paramContext, paramTaskCompleteCallback), 5, null, true);
+    ThreadManager.post(new alne(this, str2, "uin=" + str1 + "; skey=" + paramString2, paramString1, paramString3, paramContext, paramTaskCompleteCallback), 5, null, true);
   }
   
   protected void a(Bitmap paramBitmap, String paramString)

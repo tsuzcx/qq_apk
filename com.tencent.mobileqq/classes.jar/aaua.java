@@ -1,23 +1,19 @@
-import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
 
-public final class aaua
-  implements ArkEnvironmentManager.LibraryLoader
+class aaua
+  implements Runnable
 {
-  public boolean Load()
-  {
-    ArkAppCenter.e();
-    return ArkAppCenter.b;
-  }
+  aaua(aatz paramaatz) {}
   
-  public boolean isLibraryLoad()
+  public void run()
   {
-    return ArkAppCenter.b;
+    ARVideoPreviewActivity.a(this.a.a.a);
+    ARVideoPreviewActivity.b(this.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaua
  * JD-Core Version:    0.7.0.1
  */

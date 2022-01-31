@@ -1,29 +1,60 @@
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-public class akfz
-  implements Runnable
+public final class akfz
+  implements DownloadParams.DecodeHandler
 {
-  public akfz(SendMessageHandler paramSendMessageHandler, long paramLong, String paramString) {}
-  
-  public void run()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler) >= SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).size()) {
-      return;
+    if ((paramBitmap == null) || (paramDownloadParams == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.hotchat", 2, "FLASH_PIC_MOSAIC_DECODE, bitmap is null");
+      }
+      return null;
     }
-    int i = SendMessageHandler.b(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler);
-    SendMessageHandler.SendMessageRunnable localSendMessageRunnable = (SendMessageHandler.SendMessageRunnable)SendMessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSendMessageHandler).get(i);
-    localSendMessageRunnable.b = i;
-    localSendMessageRunnable.g = System.currentTimeMillis();
-    localSendMessageRunnable.c = this.jdField_a_of_type_Long;
-    localSendMessageRunnable.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localSendMessageRunnable.run();
+    float f1 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
+    int j = (int)(paramDownloadParams.reqWidth / f1 + 0.5F);
+    int i = (int)(paramDownloadParams.reqHeight / f1 + 0.5F);
+    int k = paramBitmap.getWidth();
+    int m = paramBitmap.getHeight();
+    if ("chatthumb".equals(paramDownloadParams.url.getProtocol()))
+    {
+      j = 130;
+      i = 102;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat", 2, "downloadParams.reqWidth:" + paramDownloadParams.reqWidth + ",downloadParams.reqHeight:" + paramDownloadParams.reqHeight + ",reqWidth:" + j + ",reqHeight:" + i + ",isMutable:" + paramBitmap.isMutable());
+    }
+    f1 = j / k;
+    float f2 = i / m;
+    paramDownloadParams = new Matrix();
+    paramDownloadParams.postScale(f1, f2);
+    paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, paramDownloadParams, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.hotchat", 2, "scaleW:" + f1 + "scaleH:" + f2 + ",resizeBmp w:" + paramDownloadParams.getWidth() + ",h:" + paramDownloadParams.getHeight());
+    }
+    j = paramDownloadParams.getWidth() / 8;
+    i = j;
+    if (j == 0) {
+      i = 16;
+    }
+    paramDownloadParams = URLDrawableDecodeHandler.a(paramDownloadParams, i);
+    paramBitmap.recycle();
+    return paramDownloadParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfz
  * JD-Core Version:    0.7.0.1
  */

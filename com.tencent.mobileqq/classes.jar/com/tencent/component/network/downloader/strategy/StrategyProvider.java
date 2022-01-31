@@ -9,14 +9,14 @@ import com.tencent.component.network.utils.http.HttpUtil.ClientOptions;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.client.HttpClient;
-import pkb;
+import pot;
 
 public class StrategyProvider
 {
   public static IPConfigStrategy a;
   public static PortConfigStrategy a;
   private static HttpUtil.ClientOptions jdField_a_of_type_ComTencentComponentNetworkUtilsHttpHttpUtil$ClientOptions = new HttpUtil.ClientOptions(true);
-  private static final ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new pkb();
+  private static final ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new pot();
   private static HttpClient jdField_a_of_type_OrgApacheHttpClientHttpClient = null;
   public static IPConfigStrategy b;
   

@@ -1,45 +1,25 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.IQQPlayerCallback.Stub;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerHandler;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeku
-  extends IQQPlayerCallback.Stub
+  extends PublicAccountObserver
 {
-  public aeku(MusicPlayerActivity paramMusicPlayerActivity) {}
+  public aeku(LoginWelcomeManager paramLoginWelcomeManager, Bundle paramBundle) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    Message.obtain(MusicPlayerActivity.a(this.a), 50, paramInt, 0).sendToTarget();
-  }
-  
-  public void a(SongInfo paramSongInfo)
-  {
-    if (paramSongInfo != null)
-    {
-      localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
-      if (!MusicPlayerActivity.b().containsKey(localObject)) {
-        break label64;
-      }
-      localObject = (aekz)MusicPlayerActivity.b().get(localObject);
-      paramSongInfo = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, ((aekz)localObject).a);
-      MusicPlayerActivity.a(this.a, (aekz)localObject, paramSongInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginWelcomeManager", 2, "onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    label64:
-    while (MusicPlayerActivity.a().containsKey(localObject)) {
-      return;
-    }
-    Object localObject = MusicPlayerActivity.a(this.a);
-    if (localObject != null) {}
-    for (int i = ((IQQPlayerService)localObject).c();; i = 0)
+    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      localObject = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, -1L);
-      MusicPlayerActivity.a(this.a, paramSongInfo.b, paramSongInfo.g, paramSongInfo.d, (String)localObject, false, false);
-      MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.b, paramSongInfo.g, paramSongInfo.f, String.valueOf(paramSongInfo.a), paramSongInfo.c, i);
+      localBundle.putInt("result", i);
+      this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager.b();
       return;
     }
   }

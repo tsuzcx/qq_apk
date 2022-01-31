@@ -1,46 +1,53 @@
-import android.util.Log;
-import java.io.Writer;
+import android.annotation.TargetApi;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
+import dov.com.qq.im.capture.adapter.TransitionProviderGridAdapter;
+import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-public class aoah
-  extends Writer
+class aoah
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private StringBuilder a = new StringBuilder();
+  aoah(aoag paramaoag) {}
   
-  private void a()
+  @TargetApi(16)
+  public void onGlobalLayout()
   {
-    if (this.a.length() > 0)
+    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi == null) || (EditProviderPart.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart) == null))
     {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
+      if (QLog.isColorLevel()) {
+        QLog.d("EditProviderPart", 2, "initTransitionRecommendView onGlobalLayout null");
+      }
+      return;
     }
-  }
-  
-  public void close()
-  {
-    a();
-  }
-  
-  public void flush()
-  {
-    a();
-  }
-  
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
+    Object localObject = EditProviderPart.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).getViewTreeObserver();
+    if (((ViewTreeObserver)localObject).isAlive()) {
+      ((ViewTreeObserver)localObject).removeOnGlobalLayoutListener(this);
+    }
+    localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a();
+    if (localObject != null)
     {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.a.append(c);
-      }
+      int i = ((View)localObject).getLeft();
+      int j = ((View)localObject).getWidth() / 2;
+      int k = EditProviderPart.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).getWidth() / 2;
+      EditProviderPart.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).setX(j + i - k);
     }
+    localObject = (GridView)this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart.a(2131364502);
+    ((GridView)localObject).setNumColumns(3);
+    ((GridView)localObject).setSelector(new ColorDrawable(0));
+    ((GridView)localObject).setClipToPadding(false);
+    ((GridView)localObject).setVerticalScrollBarEnabled(false);
+    ((GridView)localObject).setHorizontalScrollBarEnabled(false);
+    ((GridView)localObject).setOverScrollMode(2);
+    TransitionProviderGridAdapter localTransitionProviderGridAdapter = new TransitionProviderGridAdapter(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart.a(), this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart.b());
+    localTransitionProviderGridAdapter.a = true;
+    localTransitionProviderGridAdapter.a(this.a.jdField_a_of_type_JavaUtilList);
+    ((GridView)localObject).setAdapter(localTransitionProviderGridAdapter);
+    ((GridView)localObject).setOnItemClickListener(new aoai(this, localTransitionProviderGridAdapter));
   }
 }
 

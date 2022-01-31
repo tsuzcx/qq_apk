@@ -16,6 +16,7 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoClipSpec;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext.VFrameData;
@@ -25,8 +26,9 @@ import java.nio.IntBuffer;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import xxm;
-import xxn;
+import mqq.os.MqqHandler;
+import ydv;
+import ydw;
 
 public class CameraGLSurfaceView
   extends GLSurfaceView
@@ -211,7 +213,7 @@ public class CameraGLSurfaceView
         a("handleMessage:[RenderModeCheck-Recorder][May Lost Frame] mode=" + j);
       }
     }
-    label339:
+    label341:
     do
     {
       do
@@ -230,13 +232,13 @@ public class CameraGLSurfaceView
             this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.addUserBufferRecycle(arrayOfByte);
           }
           if (j != 0) {
-            break label339;
+            break label341;
           }
           requestRender();
           long l = SystemClock.elapsedRealtime();
           a("handleMessage:requestRender  renderTime=" + l);
           if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame)) {
-            post(new xxn(this));
+            ThreadManager.getUIHandler().post(new ydw(this));
           }
           if (paramMessage.arg1 != 1) {
             break;
@@ -331,7 +333,7 @@ public class CameraGLSurfaceView
   
   public void setCaptureListener(CameraGLSurfaceView.CaptureListener paramCaptureListener)
   {
-    queueEvent(new xxm(this, paramCaptureListener));
+    queueEvent(new ydv(this, paramCaptureListener));
   }
   
   public void setPreviewSize(int paramInt1, int paramInt2, RMVideoClipSpec paramRMVideoClipSpec)

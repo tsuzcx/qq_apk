@@ -1,7 +1,7 @@
 package com.tencent.component.media.image;
 
 import com.tencent.component.media.utils.ImageManagerLog;
-import phh;
+import plz;
 
 public class CancelStreamDecodeGifTask
   extends StreamDecodeGifTask
@@ -22,9 +22,9 @@ public class CancelStreamDecodeGifTask
     super(paramImageKey);
   }
   
-  private CancelStreamDecodeGifTask(phh paramphh)
+  private CancelStreamDecodeGifTask(plz paramplz)
   {
-    super(paramphh);
+    super(paramplz);
   }
   
   public static void clearAndInitSize()
@@ -63,7 +63,7 @@ public class CancelStreamDecodeGifTask
     }
   }
   
-  public static CancelStreamDecodeGifTask obtain(phh paramphh)
+  public static CancelStreamDecodeGifTask obtain(plz paramplz)
   {
     if (needRecycle) {}
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -74,10 +74,10 @@ public class CancelStreamDecodeGifTask
         jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask = jdField_a_of_type_ComTencentComponentMediaImageCancelStreamDecodeGifTask.b;
         localCancelStreamDecodeGifTask.b = null;
         jdField_a_of_type_Int -= 1;
-        localCancelStreamDecodeGifTask.setImageTask(paramphh);
+        localCancelStreamDecodeGifTask.setImageTask(paramplz);
         return localCancelStreamDecodeGifTask;
       }
-      return new CancelStreamDecodeGifTask(paramphh);
+      return new CancelStreamDecodeGifTask(paramplz);
     }
   }
   

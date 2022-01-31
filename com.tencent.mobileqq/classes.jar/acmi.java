@@ -1,30 +1,81 @@
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import android.content.Context;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class acmi
+class acmi
   implements Runnable
 {
-  public acmi(FilePreviewActivity paramFilePreviewActivity, int paramInt) {}
+  acmi(acmh paramacmh, EmoticonPackage paramEmoticonPackage, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c = new FilePreviewAnimQueue(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a);
+    Object localObject = this.jdField_a_of_type_Acmh.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter;
+    if (localObject != null) {
+      ((EmotionPanelViewPagerAdapter)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.jdField_a_of_type_Int;
-    localFilePreviewAnim.b = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.a(localFilePreviewAnim);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FilePreviewActivity", 2, "hideGetMore(" + this.jdField_a_of_type_Int + ")");
+    if (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x2) > 0) && (this.jdField_a_of_type_Int == 0))
+    {
+      this.jdField_a_of_type_Acmh.a.j = false;
+      this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags &= 0xFFFFFFFD;
+      this.jdField_a_of_type_Acmh.a.c(EmoticonMainPanel.c);
+    }
+    label86:
+    do
+    {
+      do
+      {
+        break label86;
+        do
+        {
+          return;
+        } while ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType == 3) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType == 5));
+        if (this.jdField_a_of_type_Int != 0) {
+          break;
+        }
+        if (this.jdField_a_of_type_Acmh.a.b.contains(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage))
+        {
+          this.jdField_a_of_type_Acmh.a.b.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
+          return;
+        }
+        this.jdField_a_of_type_Acmh.a.jdField_g_of_type_Boolean = false;
+        this.jdField_a_of_type_Acmh.a.j = false;
+        this.jdField_a_of_type_Acmh.a.i = false;
+      } while ((this.jdField_a_of_type_Acmh.a.getVisibility() != 0) || (this.jdField_a_of_type_Acmh.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonMainPanel", 2, "Emoticon pkg downloaded in panel, refresh");
+      }
+      localObject = this.jdField_a_of_type_Acmh.a.jdField_a_of_type_JavaUtilList;
+    } while (localObject == null);
+    int i = 0;
+    label249:
+    if (i < ((List)localObject).size())
+    {
+      EmoticonPackage localEmoticonPackage = ((EmotionPanelInfo)((List)localObject).get(i)).jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+      if ((localEmoticonPackage == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(localEmoticonPackage.epId))) {}
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Acmh.a.c(i);
+      this.jdField_a_of_type_Acmh.a.h = false;
+      return;
+      i += 1;
+      break label249;
+      if (this.jdField_a_of_type_Int == 11000)
+      {
+        QQToast.a(this.jdField_a_of_type_Acmh.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acmh.a.jdField_a_of_type_AndroidContentContext.getString(2131436324), 1).b(this.jdField_a_of_type_Acmh.a.jdField_g_of_type_Int);
+        return;
+      }
+      if (this.jdField_a_of_type_Int != 11001) {
+        break;
+      }
+      QQToast.a(this.jdField_a_of_type_Acmh.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acmh.a.jdField_a_of_type_AndroidContentContext.getString(2131436323), 1).b(this.jdField_a_of_type_Acmh.a.jdField_g_of_type_Int);
+      return;
+      i = 0;
     }
   }
 }

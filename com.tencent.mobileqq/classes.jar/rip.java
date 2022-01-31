@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mfsdk.collector.ResultObject;
+import com.tencent.mfsdk.persist.DBHandler;
 
 public class rip
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public rip(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  private ResultObject a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public rip(ResultObject paramResultObject)
   {
-    this.a.a = null;
+    this.a = paramResultObject;
+  }
+  
+  public void run()
+  {
+    if (MagnifierSDK.a != null) {
+      MagnifierSDK.a.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rip
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 
 public class vzm
-  extends CardObserver
+  implements View.OnTouchListener
 {
-  public vzm(StrangerChatPie paramStrangerChatPie) {}
+  public vzm(GameRoomChatPie paramGameRoomChatPie) {}
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = null;
-    String str1;
-    if ((paramBoolean) && ((paramObject instanceof Card)))
+    boolean bool = false;
+    int i = paramMotionEvent.getAction();
+    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
+    if (i == 0)
     {
-      paramObject = (Card)paramObject;
-      str1 = paramObject.uin;
-      localObject = paramObject.strCampusName;
-      paramObject = paramObject.tempChatSig;
-    }
-    for (;;)
-    {
-      Locale localLocale;
-      String str3;
-      String str4;
-      if (QLog.isColorLevel())
-      {
-        localLocale = Locale.getDefault();
-        str3 = Utils.b(str1);
-        str4 = Utils.b((String)localObject);
-        if (paramObject != null) {
-          break label201;
-        }
+      this.a.k.setText("正在发言");
+      this.a.k.setTextColor(this.a.n);
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.b();
+      if (paramView != null) {
+        paramView.a(true);
       }
-      label201:
-      for (String str2 = "sig is null";; str2 = "sig is not null")
-      {
-        QLog.d("StrangerChatPie", 2, String.format(localLocale, "onGetCampusInfo [%s, %s, %s]", new Object[] { str3, str4, str2 }));
-        if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1029) && (Utils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str1)) && (!TextUtils.isEmpty((CharSequence)localObject)))
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = ((String)localObject);
-          if (paramObject != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().l(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramObject);
-          }
-          this.a.a().runOnUiThread(new vzn(this));
-        }
-        return;
-      }
-      str2 = null;
-      str1 = null;
-      paramObject = localObject;
-      localObject = str2;
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
+      bool = true;
     }
+    while ((i != 3) && (i != 1)) {
+      return bool;
+    }
+    this.a.k.setText("按住私密发言");
+    this.a.k.setTextColor(this.a.m);
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.c();
+    if (paramView != null) {
+      paramView.a(false);
+    }
+    return true;
   }
 }
 

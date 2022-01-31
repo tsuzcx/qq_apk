@@ -1,21 +1,20 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
 
-public class vvc
-  implements DialogInterface.OnClickListener
+class vvc
+  implements Animation.AnimationListener
 {
-  public vvc(HotChatPie paramHotChatPie) {}
+  vvc(vva paramvva, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface = new Intent(this.a.a(), QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", "https://qun.qq.com/qqweb/m/nearby/charm_level/index.html?_wv=1027&_bid=2747");
-    this.a.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_Vva.a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

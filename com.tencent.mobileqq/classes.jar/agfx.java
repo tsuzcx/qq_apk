@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.hardware.Camera;
+import android.hardware.Camera.PictureCallback;
+import com.tencent.mobileqq.ocr.OcrCamera;
 
 public class agfx
-  implements Runnable
+  implements Camera.PictureCallback
 {
-  public agfx(ScanTorchActivity paramScanTorchActivity) {}
+  public agfx(OcrCamera paramOcrCamera) {}
   
-  public void run()
+  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    ScanTorchActivity.a(this.a, "onAREnableModelRender.2", false);
+    this.a.a(paramArrayOfByte, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agfx
  * JD-Core Version:    0.7.0.1
  */

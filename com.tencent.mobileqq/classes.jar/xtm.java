@@ -1,17 +1,31 @@
-import com.tencent.biz.qqstory.base.download.DownloadProgressListener;
-import com.tencent.biz.qqstory.base.download.DownloaderImp;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class xtm
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public xtm(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity, DownloadProgressListener paramDownloadProgressListener, String paramString1, String paramString2) {}
+  public xtm(EditLocalVideoActivity paramEditLocalVideoActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity, new DownloaderImp());
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadProgressListener);
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQzDynamicVideoPreviewActivity).a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.a("608", "4", "2", true);
+      EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, 0);
+      EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, 0);
+      EditLocalVideoActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity));
+      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).postDelayed(new xtn(this), 300L);
+      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, false);
+      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, false);
+    }
   }
 }
 

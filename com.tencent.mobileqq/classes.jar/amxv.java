@@ -1,19 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.MTAReportController;
-import cooperation.qzone.plugin.QZonePluginManager;
-import java.util.Properties;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqpim.QQPimBridgeActivity;
 
 public class amxv
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public amxv(QZonePluginManager paramQZonePluginManager, String paramString, int paramInt) {}
+  public amxv(QQPimBridgeActivity paramQQPimBridgeActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Properties localProperties = new Properties();
-    localProperties.put("plugin_id", this.jdField_a_of_type_JavaLangString);
-    localProperties.put("refer", String.valueOf(this.jdField_a_of_type_Int));
-    MTAReportController.a(BaseApplicationImpl.getContext()).reportKVEvent("QzonePluginDownloadRefer", localProperties);
+    this.a.finish();
   }
 }
 

@@ -1,17 +1,58 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.share.FilterComboSharePlugin;
 
 public class anyu
-  implements Runnable
+  extends Client.onRemoteRespObserver
 {
-  public anyu(DoodleLayout paramDoodleLayout, LineLayer paramLineLayer, int paramInt, int[] paramArrayOfInt) {}
+  public anyu(FilterComboSharePlugin paramFilterComboSharePlugin) {}
   
-  public void run()
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    ((PersonalityOperator)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerLineLayer.a.a(102)).b(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ArrayOfInt[0] = 1;
+    boolean bool1;
+    boolean bool2;
+    if (paramBundle != null)
+    {
+      paramBundle.getInt("respkey", 0);
+      String str = paramBundle.getString("cmd");
+      if (QLog.isColorLevel()) {
+        QLog.i("FilterComboShare", 2, "onresp cmd" + str);
+      }
+      if ((str != null) && ("ipc_f_c_s".equals(str)))
+      {
+        if ((FilterComboSharePlugin.a(this.a) != null) && (FilterComboSharePlugin.a(this.a).isShowing())) {
+          FilterComboSharePlugin.a(this.a).dismiss();
+        }
+        bool1 = paramBundle.getBoolean("k_r");
+        paramBundle = paramBundle.getString("k_s_p_c");
+        bool2 = FileUtils.a(paramBundle);
+        if (QLog.isColorLevel()) {
+          QLog.i("FilterComboShare", 2, "onresp result" + bool1 + " path " + paramBundle + " exist " + bool2);
+        }
+        if (this.a.a != -1) {
+          break label190;
+        }
+        QLog.i("FilterComboShare", 1, "skip -1 resp");
+      }
+    }
+    label190:
+    int i;
+    do
+    {
+      return;
+      i = this.a.a;
+      this.a.a = -1;
+    } while ((!bool1) || (!bool2));
+    this.a.a(i, paramBundle);
   }
 }
 

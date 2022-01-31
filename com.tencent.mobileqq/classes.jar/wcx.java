@@ -1,14 +1,41 @@
-import com.tencent.mobileqq.activity.aio.tips.HomeworkTroopSurveyBar;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountMenuEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
 
-class wcx
+public class wcx
   implements Runnable
 {
-  wcx(wcw paramwcw, TroopMemberInfo paramTroopMemberInfo) {}
+  public wcx(PublicAccountChatPie paramPublicAccountChatPie, SharedPreferences paramSharedPreferences, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wcw.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar.a(this.jdField_a_of_type_Wcw.jdField_a_of_type_ComTencentMobileqqAppTroopManager, this.jdField_a_of_type_Wcw.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+    try
+    {
+      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localEntityManager.a(PublicAccountMenuEntity.class, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      if (localPublicAccountMenuEntity != null) {
+        localEntityManager.b(localPublicAccountMenuEntity);
+      }
+      if (localEntityManager != null) {
+        localEntityManager.a();
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("Q.aio.BaseChatPie", 4, localException.getMessage());
+        }
+      }
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
   }
 }
 

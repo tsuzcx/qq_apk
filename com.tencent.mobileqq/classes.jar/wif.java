@@ -1,10 +1,15 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.tips.HomeworkTroopSurveyBar;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
-public class wif
+class wif
+  implements Runnable
 {
-  public ProgressBar a;
-  public TextView a;
+  wif(wie paramwie, TroopMemberInfo paramTroopMemberInfo) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_Wie.jdField_a_of_type_ComTencentMobileqqActivityAioTipsHomeworkTroopSurveyBar.a(this.jdField_a_of_type_Wie.jdField_a_of_type_ComTencentMobileqqAppTroopManager, this.jdField_a_of_type_Wie.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+  }
 }
 
 

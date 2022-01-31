@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ar.ARLBSPOIDialog;
 
 public class aady
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aady(ScanEntranceReport paramScanEntranceReport, long paramLong, int paramInt) {}
+  public aady(ARLBSPOIDialog paramARLBSPOIDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("select_image_avg_time", String.valueOf(this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_upload_count", true, this.jdField_a_of_type_Int, 0L, localHashMap, "");
+    this.a.b();
   }
 }
 

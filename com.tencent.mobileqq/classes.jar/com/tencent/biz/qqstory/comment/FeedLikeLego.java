@@ -25,9 +25,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import ncb;
-import ncc;
-import nce;
+import nfw;
+import nfx;
+import nfz;
 
 public class FeedLikeLego
   extends LegoBase
@@ -68,12 +68,12 @@ public class FeedLikeLego
   
   public LegoEvenHandler a()
   {
-    return new ncb(this);
+    return new nfw(this);
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371704));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371702));
     this.jdField_a_of_type_ComTencentBizQqstoryModelLikeManager = ((LikeManager)SuperManager.a(15));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager = ((FeedManager)SuperManager.a(11));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
@@ -168,12 +168,12 @@ public class FeedLikeLego
         ((LikeEntry)localObject).uin = QQStoryContext.a().c();
         ((LikeEntry)localObject).unionId = str;
         ((LikeEntry)localObject).feedId = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId;
-        ThreadManager.post(new ncc(this, (UserManager)SuperManager.a(2), str, (LikeEntry)localObject), 5, null, true);
+        ThreadManager.post(new nfx(this, (UserManager)SuperManager.a(2), str, (LikeEntry)localObject), 5, null, true);
         return;
       }
     }
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike = 0;
-    ThreadManager.post(new nce(this, str), 5, null, true);
+    ThreadManager.post(new nfz(this, str), 5, null, true);
   }
   
   public void b() {}

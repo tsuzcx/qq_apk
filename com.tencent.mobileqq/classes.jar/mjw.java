@@ -1,37 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySocialMsgTips;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class mjw
-  implements View.OnClickListener
+  extends Handler
 {
-  public mjw(ReadinjoySocialMsgTips paramReadinjoySocialMsgTips) {}
+  public mjw(BaseTabbar paramBaseTabbar) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (ReadinjoySocialMsgTips.a(this.a) != null) {
-      ReadinjoySocialMsgTips.a(this.a).onClick(paramView);
-    }
-    KandianMergeManager localKandianMergeManager = (KandianMergeManager)ReadInJoyUtils.a().getManager(161);
-    int i = localKandianMergeManager.e() - localKandianMergeManager.b();
-    if (localKandianMergeManager.b() > 0) {}
-    for (paramView = ReadInJoyConstants.g + i;; paramView = ReadInJoyConstants.c + i)
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadinjoySocialMsgTips", 2, "person message box url: " + paramView);
+    default: 
+    case 0: 
+      int i;
+      do
+      {
+        return;
+        BaseTabbar.a(this.a, 0.0F);
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        i = paramMessage.arg1;
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+      } while (i == 1);
+      BaseTabbar.a(this.a, BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+      return;
+    case 1: 
+      if (BaseTabbar.a(this.a) < 1.0F)
+      {
+        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
+        this.a.invalidate();
+        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
+        return;
       }
-      localKandianMergeManager.b();
-      localKandianMergeManager.k();
-      ReadInJoyUtils.a(ReadinjoySocialMsgTips.a(this.a), paramView);
-      PublicAccountReportUtils.a(null, "", "0X800824B", "0X800824B", 0, 0, "", "", "", ReadInJoyUtils.d(), false);
+      sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(2), 10L);
       return;
     }
+    BaseTabbar.a(this.a);
+    this.a.a(BaseTabbar.a(this.a), BaseTabbar.b(this.a));
+    BaseTabbar.a(this.a, 1.0F);
+    BaseTabbar.a(this.a, BaseTabbar.b(this.a));
+    this.a.invalidate();
+    BaseTabbar.a(this.a).set(false);
   }
 }
 

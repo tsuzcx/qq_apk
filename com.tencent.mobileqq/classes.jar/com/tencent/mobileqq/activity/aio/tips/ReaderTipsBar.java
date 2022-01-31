@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import wdg;
+import wio;
 
 public class ReaderTipsBar
   implements TipsBarTask
@@ -37,8 +37,8 @@ public class ReaderTipsBar
   public View a(Object... paramVarArgs)
   {
     paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968668, null);
-    paramVarArgs.setOnClickListener(new wdg(this));
-    ((TextView)paramVarArgs.findViewById(2131363103)).setText(this.jdField_a_of_type_JavaLangString);
+    paramVarArgs.setOnClickListener(new wio(this));
+    ((TextView)paramVarArgs.findViewById(2131363107)).setText(this.jdField_a_of_type_JavaLangString);
     return paramVarArgs;
   }
   

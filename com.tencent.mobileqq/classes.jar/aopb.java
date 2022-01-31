@@ -1,12 +1,17 @@
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import android.app.Activity;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowSendTask;
 
 public class aopb
+  implements Runnable
 {
-  public long a;
-  public boolean a;
-  public long b;
+  public aopb(FlowSendTask paramFlowSendTask) {}
   
-  public aopb(QIMPtvTemplateManager paramQIMPtvTemplateManager) {}
+  public void run()
+  {
+    this.a.a.setResult(1001);
+    this.a.a.finish();
+    this.a.a = null;
+  }
 }
 
 

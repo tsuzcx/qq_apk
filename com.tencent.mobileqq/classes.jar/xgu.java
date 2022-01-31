@@ -1,28 +1,54 @@
-import Wallet.GetSkinListRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class xgu
-  implements BusinessObserver
+  implements Runnable
 {
-  public xgu(RedPacketManager paramRedPacketManager, QQAppInterface paramQQAppInterface) {}
+  public xgu(RedPacketRecordFragment paramRedPacketRecordFragment, boolean paramBoolean, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    GetSkinListRsp localGetSkinListRsp = (GetSkinListRsp)paramBundle.getSerializable("rsp");
-    paramBundle.putBoolean("isCache", false);
-    if (RedPacketManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager) == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.a()) {
       return;
-      RedPacketManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketManager).onReceive(paramInt, paramBoolean, paramBundle);
-      ThreadManager.post(new xgv(this, localGetSkinListRsp), 5, null, false);
-    } while (!QLog.isColorLevel());
-    QLog.d("RedPacketManager", 2, "requestRedPacketSkinList onReceive isSuccess:" + paramBoolean);
+    }
+    label48:
+    QQAppInterface localQQAppInterface;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.c.setText("识别成功");
+      RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.f();
+      if (RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment))
+      {
+        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.getActivity().app;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label230;
+        }
+      }
+    }
+    label230:
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "162", "sound.grap.result", 0, i, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title.length() + "", this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.getActivity().app.getCurrentAccountUin(), DeviceInfoUtil.f() + "|" + DeviceInfoUtil.j(), "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView.c();
+      if (RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment) == null) {
+        break;
+      }
+      RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment).removeCallbacksAndMessages(null);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.c.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.getResources().getString(2131432352));
+      break label48;
+    }
   }
 }
 

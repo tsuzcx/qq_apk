@@ -1,28 +1,19 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.leba.view.LebaTopBarView;
 
 public class aejz
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aejz(QQPlayerService paramQQPlayerService) {}
+  public aejz(LebaTopBarView paramLebaTopBarView, float paramFloat, boolean paramBoolean, View paramView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QQPlayerService.h() == 5) {}
-    for (boolean bool = true;; bool = false)
+    if ((((Float)paramValueAnimator.getAnimatedValue()).floatValue() == this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Boolean))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQPlayerService", 2, "===========> timeout retry to check playState:" + QQPlayerService.b(QQPlayerService.h()) + ",needRetryPlay:" + bool);
-      }
-      int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "QmusicHlsMaxRetryTimes", 3);
-      if ((bool) && (QQPlayerService.b() != null) && (QQPlayerService.i() < i))
-      {
-        QQPlayerService.j();
-        QQPlayerService.a(this.a, QQPlayerService.b().a);
-      }
-      return;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      LebaTopBarView.a(this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopBarView, false);
     }
   }
 }

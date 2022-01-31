@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.now.download.js;
 
-import aley;
+import almq;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -242,7 +242,7 @@ public class DownloadWebInterface
   
   protected void jsCallBack(String paramString)
   {
-    this.mHandler.post(new aley(this, paramString));
+    this.mHandler.post(new almq(this, paramString));
   }
   
   public void registerDownloadCallBackListener(String paramString)

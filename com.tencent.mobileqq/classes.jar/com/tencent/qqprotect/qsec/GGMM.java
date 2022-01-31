@@ -1,8 +1,8 @@
 package com.tencent.qqprotect.qsec;
 
-import alxf;
-import alxg;
-import alxh;
+import ameo;
+import amep;
+import ameq;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
@@ -29,7 +29,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Random;
 import java.util.Set;
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
@@ -40,7 +39,7 @@ public class GGMM
 {
   private static final Set jdField_a_of_type_JavaUtilSet;
   private static final byte[] jdField_a_of_type_ArrayOfByte;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "mc", "md", "mg", "wfm", "sno", "fg", "brd", "hw", "dv", "tm", "ts", "rs", "rc" };
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "mc", "md", "mg", "wfm", "sno", "fg", "brd", "hw", "dv", "tm", "ts", "rs", "rc", "rc2" };
   
   static
   {
@@ -87,18 +86,91 @@ public class GGMM
     return str1;
   }
   
+  /* Error */
   private static String a(int paramInt)
   {
-    Random localRandom = new Random();
-    localRandom.setSeed(System.currentTimeMillis());
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramInt)
-    {
-      localStringBuilder.append((char)(localRandom.nextInt(25) + 65));
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_2
+    //   2: new 139	java/lang/StringBuilder
+    //   5: dup
+    //   6: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   9: astore 4
+    //   11: new 157	java/security/SecureRandom
+    //   14: dup
+    //   15: invokespecial 158	java/security/SecureRandom:<init>	()V
+    //   18: astore 5
+    //   20: iconst_0
+    //   21: istore_1
+    //   22: aload 4
+    //   24: astore_3
+    //   25: iload_1
+    //   26: iload_0
+    //   27: if_icmpge +88 -> 115
+    //   30: aload 4
+    //   32: aload 5
+    //   34: bipush 25
+    //   36: invokevirtual 162	java/security/SecureRandom:nextInt	(I)I
+    //   39: bipush 65
+    //   41: iadd
+    //   42: i2c
+    //   43: invokevirtual 165	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   46: pop
+    //   47: iload_1
+    //   48: iconst_1
+    //   49: iadd
+    //   50: istore_1
+    //   51: goto -29 -> 22
+    //   54: astore_3
+    //   55: new 139	java/lang/StringBuilder
+    //   58: dup
+    //   59: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   62: astore 4
+    //   64: new 167	java/util/Random
+    //   67: dup
+    //   68: invokespecial 168	java/util/Random:<init>	()V
+    //   71: astore 5
+    //   73: aload 5
+    //   75: invokestatic 173	java/lang/System:currentTimeMillis	()J
+    //   78: invokevirtual 177	java/util/Random:setSeed	(J)V
+    //   81: iload_2
+    //   82: istore_1
+    //   83: aload 4
+    //   85: astore_3
+    //   86: iload_1
+    //   87: iload_0
+    //   88: if_icmpge +27 -> 115
+    //   91: aload 4
+    //   93: aload 5
+    //   95: bipush 25
+    //   97: invokevirtual 178	java/util/Random:nextInt	(I)I
+    //   100: bipush 65
+    //   102: iadd
+    //   103: i2c
+    //   104: invokevirtual 165	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   107: pop
+    //   108: iload_1
+    //   109: iconst_1
+    //   110: iadd
+    //   111: istore_1
+    //   112: goto -29 -> 83
+    //   115: aload_3
+    //   116: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   119: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	120	0	paramInt	int
+    //   21	91	1	i	int
+    //   1	81	2	j	int
+    //   24	1	3	localStringBuilder1	StringBuilder
+    //   54	1	3	localException	Exception
+    //   85	31	3	localStringBuilder2	StringBuilder
+    //   9	83	4	localStringBuilder3	StringBuilder
+    //   18	76	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   11	20	54	java/lang/Exception
+    //   30	47	54	java/lang/Exception
   }
   
   private static String a(String paramString)
@@ -127,7 +199,7 @@ public class GGMM
   {
     try
     {
-      Map localMap = a(new FileInputStream("/proc/cpuinfo"), new alxf());
+      Map localMap = a(new FileInputStream("/proc/cpuinfo"), new ameo());
       return localMap;
     }
     catch (IOException localIOException)
@@ -138,26 +210,26 @@ public class GGMM
   }
   
   /* Error */
-  private static Map a(InputStream paramInputStream, alxi paramalxi)
+  private static Map a(InputStream paramInputStream, amer paramamer)
   {
     // Byte code:
-    //   0: new 208	java/util/HashMap
+    //   0: new 214	java/util/HashMap
     //   3: dup
-    //   4: invokespecial 209	java/util/HashMap:<init>	()V
+    //   4: invokespecial 215	java/util/HashMap:<init>	()V
     //   7: astore_3
-    //   8: new 211	java/io/BufferedReader
+    //   8: new 217	java/io/BufferedReader
     //   11: dup
-    //   12: new 213	java/io/InputStreamReader
+    //   12: new 219	java/io/InputStreamReader
     //   15: dup
     //   16: aload_0
-    //   17: ldc 215
-    //   19: invokespecial 218	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   22: invokespecial 221	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   17: ldc 221
+    //   19: invokespecial 224	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   22: invokespecial 227	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   25: astore_2
     //   26: aload_2
     //   27: astore_0
     //   28: aload_2
-    //   29: invokevirtual 224	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   29: invokevirtual 230	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   32: astore 4
     //   34: aload 4
     //   36: ifnull +61 -> 97
@@ -165,7 +237,7 @@ public class GGMM
     //   40: astore_0
     //   41: aload_1
     //   42: aload 4
-    //   44: invokeinterface 229 2 0
+    //   44: invokeinterface 235 2 0
     //   49: astore 4
     //   51: aload 4
     //   53: ifnull -27 -> 26
@@ -173,10 +245,10 @@ public class GGMM
     //   57: astore_0
     //   58: aload_3
     //   59: aload 4
-    //   61: getfield 235	android/util/Pair:first	Ljava/lang/Object;
+    //   61: getfield 241	android/util/Pair:first	Ljava/lang/Object;
     //   64: aload 4
-    //   66: getfield 238	android/util/Pair:second	Ljava/lang/Object;
-    //   69: invokevirtual 242	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   66: getfield 244	android/util/Pair:second	Ljava/lang/Object;
+    //   69: invokevirtual 248	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   72: pop
     //   73: goto -47 -> 26
     //   76: astore_0
@@ -187,27 +259,27 @@ public class GGMM
     //   81: aload_1
     //   82: astore_0
     //   83: aload_2
-    //   84: invokevirtual 126	java/lang/Exception:printStackTrace	()V
+    //   84: invokevirtual 128	java/lang/Exception:printStackTrace	()V
     //   87: aload_1
     //   88: ifnull +7 -> 95
     //   91: aload_1
-    //   92: invokevirtual 245	java/io/BufferedReader:close	()V
+    //   92: invokevirtual 251	java/io/BufferedReader:close	()V
     //   95: aload_3
     //   96: areturn
     //   97: aload_2
     //   98: ifnull -3 -> 95
     //   101: aload_2
-    //   102: invokevirtual 245	java/io/BufferedReader:close	()V
+    //   102: invokevirtual 251	java/io/BufferedReader:close	()V
     //   105: aload_3
     //   106: areturn
     //   107: astore_0
     //   108: aload_0
-    //   109: invokevirtual 126	java/lang/Exception:printStackTrace	()V
+    //   109: invokevirtual 128	java/lang/Exception:printStackTrace	()V
     //   112: aload_3
     //   113: areturn
     //   114: astore_0
     //   115: aload_0
-    //   116: invokevirtual 126	java/lang/Exception:printStackTrace	()V
+    //   116: invokevirtual 128	java/lang/Exception:printStackTrace	()V
     //   119: aload_3
     //   120: areturn
     //   121: astore_1
@@ -216,12 +288,12 @@ public class GGMM
     //   124: aload_0
     //   125: ifnull +7 -> 132
     //   128: aload_0
-    //   129: invokevirtual 245	java/io/BufferedReader:close	()V
+    //   129: invokevirtual 251	java/io/BufferedReader:close	()V
     //   132: aload_1
     //   133: athrow
     //   134: astore_0
     //   135: aload_0
-    //   136: invokevirtual 126	java/lang/Exception:printStackTrace	()V
+    //   136: invokevirtual 128	java/lang/Exception:printStackTrace	()V
     //   139: goto -7 -> 132
     //   142: astore_1
     //   143: goto -19 -> 124
@@ -232,7 +304,7 @@ public class GGMM
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	152	0	paramInputStream	InputStream
-    //   0	152	1	paramalxi	alxi
+    //   0	152	1	paramamer	amer
     //   25	77	2	localObject1	Object
     //   146	1	2	localException	Exception
     //   7	113	3	localHashMap	HashMap
@@ -376,7 +448,7 @@ public class GGMM
       if (QLog.isColorLevel()) {
         QLog.d("GGMM", 2, "rpt after: " + l1);
       }
-      QSecFramework.a().postDelayed(new alxh(), l1);
+      QSecFramework.a().postDelayed(new ameq(), l1);
       return;
       l1 = 604800000L - l3 + l2;
     }
@@ -405,89 +477,89 @@ public class GGMM
   private static void a(Set paramSet, Map paramMap)
   {
     // Byte code:
-    //   0: invokestatic 73	com/tencent/mobileqq/util/SystemUtil:a	()Z
+    //   0: invokestatic 75	com/tencent/mobileqq/util/SystemUtil:a	()Z
     //   3: ifne +4 -> 7
     //   6: return
     //   7: aconst_null
     //   8: astore_3
-    //   9: ldc 93
-    //   11: invokestatic 99	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   9: ldc 95
+    //   11: invokestatic 101	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
     //   14: astore_2
     //   15: aload_2
     //   16: iconst_1
-    //   17: new 101	javax/crypto/spec/SecretKeySpec
+    //   17: new 103	javax/crypto/spec/SecretKeySpec
     //   20: dup
-    //   21: getstatic 57	com/tencent/qqprotect/qsec/GGMM:jdField_a_of_type_ArrayOfByte	[B
-    //   24: ldc 93
-    //   26: invokespecial 104	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
-    //   29: invokevirtual 108	javax/crypto/Cipher:init	(ILjava/security/Key;)V
-    //   32: new 394	javax/crypto/CipherOutputStream
+    //   21: getstatic 59	com/tencent/qqprotect/qsec/GGMM:jdField_a_of_type_ArrayOfByte	[B
+    //   24: ldc 95
+    //   26: invokespecial 106	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   29: invokevirtual 110	javax/crypto/Cipher:init	(ILjava/security/Key;)V
+    //   32: new 400	javax/crypto/CipherOutputStream
     //   35: dup
-    //   36: new 396	java/io/FileOutputStream
+    //   36: new 402	java/io/FileOutputStream
     //   39: dup
-    //   40: invokestatic 79	com/tencent/qqprotect/qsec/GGMM:d	()Ljava/lang/String;
-    //   43: invokespecial 397	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   40: invokestatic 81	com/tencent/qqprotect/qsec/GGMM:d	()Ljava/lang/String;
+    //   43: invokespecial 403	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   46: aload_2
-    //   47: invokespecial 400	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
+    //   47: invokespecial 406	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
     //   50: astore_2
     //   51: aload_1
-    //   52: invokeinterface 369 1 0
-    //   57: invokeinterface 373 1 0
+    //   52: invokeinterface 375 1 0
+    //   57: invokeinterface 379 1 0
     //   62: astore_1
     //   63: aload_1
-    //   64: invokeinterface 378 1 0
+    //   64: invokeinterface 384 1 0
     //   69: ifeq +116 -> 185
     //   72: aload_1
-    //   73: invokeinterface 382 1 0
-    //   78: checkcast 384	java/util/Map$Entry
+    //   73: invokeinterface 388 1 0
+    //   78: checkcast 390	java/util/Map$Entry
     //   81: astore_3
     //   82: aload_0
     //   83: aload_3
-    //   84: invokeinterface 387 1 0
-    //   89: invokeinterface 252 2 0
+    //   84: invokeinterface 393 1 0
+    //   89: invokeinterface 258 2 0
     //   94: ifne -31 -> 63
     //   97: aload_2
-    //   98: new 137	java/lang/StringBuilder
+    //   98: new 139	java/lang/StringBuilder
     //   101: dup
-    //   102: invokespecial 138	java/lang/StringBuilder:<init>	()V
+    //   102: invokespecial 140	java/lang/StringBuilder:<init>	()V
     //   105: aload_3
-    //   106: invokeinterface 387 1 0
+    //   106: invokeinterface 393 1 0
     //   111: checkcast 12	java/lang/String
-    //   114: invokevirtual 177	java/lang/String:getBytes	()[B
+    //   114: invokevirtual 183	java/lang/String:getBytes	()[B
     //   117: iconst_2
-    //   118: invokestatic 404	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   121: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: ldc_w 406
-    //   127: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: invokestatic 410	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   121: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: ldc_w 412
+    //   127: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   130: aload_3
-    //   131: invokeinterface 392 1 0
+    //   131: invokeinterface 398 1 0
     //   136: checkcast 12	java/lang/String
-    //   139: invokevirtual 177	java/lang/String:getBytes	()[B
+    //   139: invokevirtual 183	java/lang/String:getBytes	()[B
     //   142: iconst_2
-    //   143: invokestatic 404	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   146: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: ldc_w 408
-    //   152: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   155: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   158: invokevirtual 177	java/lang/String:getBytes	()[B
-    //   161: invokevirtual 413	java/io/OutputStream:write	([B)V
+    //   143: invokestatic 410	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   146: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: ldc_w 414
+    //   152: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   158: invokevirtual 183	java/lang/String:getBytes	()[B
+    //   161: invokevirtual 419	java/io/OutputStream:write	([B)V
     //   164: goto -101 -> 63
     //   167: astore_1
     //   168: aload_2
     //   169: astore_0
     //   170: aload_1
-    //   171: invokevirtual 126	java/lang/Exception:printStackTrace	()V
+    //   171: invokevirtual 128	java/lang/Exception:printStackTrace	()V
     //   174: aload_0
     //   175: ifnull -169 -> 6
     //   178: aload_0
-    //   179: invokevirtual 414	java/io/OutputStream:close	()V
+    //   179: invokevirtual 420	java/io/OutputStream:close	()V
     //   182: return
     //   183: astore_0
     //   184: return
     //   185: aload_2
     //   186: ifnull -180 -> 6
     //   189: aload_2
-    //   190: invokevirtual 414	java/io/OutputStream:close	()V
+    //   190: invokevirtual 420	java/io/OutputStream:close	()V
     //   193: return
     //   194: astore_0
     //   195: return
@@ -497,7 +569,7 @@ public class GGMM
     //   199: aload_1
     //   200: ifnull +7 -> 207
     //   203: aload_1
-    //   204: invokevirtual 414	java/io/OutputStream:close	()V
+    //   204: invokevirtual 420	java/io/OutputStream:close	()V
     //   207: aload_0
     //   208: athrow
     //   209: astore_1
@@ -609,10 +681,14 @@ public class GGMM
       {
         paramMap = Build.DEVICE;
       }
+      else if (paramString.equals("rc"))
+      {
+        paramMap = a(16);
+      }
       else
       {
         paramMap = localObject;
-        if (paramString.equals("rc")) {
+        if (paramString.equals("rc2")) {
           paramMap = a(16);
         }
       }
@@ -627,7 +703,7 @@ public class GGMM
     do
     {
       return localHashMap;
-      a(a(localInputStream, new alxg()), localHashMap);
+      a(a(localInputStream, new amep()), localHashMap);
     } while (localInputStream == null);
     try
     {

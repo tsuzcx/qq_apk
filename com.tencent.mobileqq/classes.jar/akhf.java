@@ -1,40 +1,59 @@
-import android.content.res.Resources;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.GroupIconHelper;
+import com.tencent.mobileqq.util.FaceDecoderImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
 public class akhf
-  implements MediaPlayer.OnCompletionListener
+  extends DiscussionObserver
 {
-  public akhf(ColorRingPlayer paramColorRingPlayer, AudioManager paramAudioManager) {}
+  private akhf(FaceDecoderImpl paramFaceDecoderImpl) {}
   
-  public void onCompletion(MediaPlayer arg1)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_JavaLangObject)
-    {
-      ???.release();
-      this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.c.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843933));
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_Akho)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_Akho.jdField_a_of_type_Int = 6;
+    if (FaceDecoderImpl.a(this.a) == null) {
       return;
-      ??? = finally;
-      throw ???;
+    }
+    String str;
+    int i;
+    if (this.a.jdField_a_of_type_Akhd != null)
+    {
+      if (!GroupIconHelper.a(paramString)) {
+        break label223;
+      }
+      str = GroupIconHelper.b(paramString);
+      i = 1001;
+    }
+    for (;;)
+    {
+      paramString = this.a.a(i, paramString, 0, (byte)1);
+      if ((paramBoolean1) && (paramString != null)) {
+        if (i != 1001) {
+          break label185;
+        }
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqhead.FaceDecoderImpl", 2, "====faceDecoderImpl onUpdateDiscussionFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + str + ",type: " + i + ",style: " + -1);
+        }
+        if ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) || (this.a.b >= this.a.jdField_a_of_type_Int)) {
+          break;
+        }
+        this.a.e();
+        return;
+        label185:
+        this.a.jdField_a_of_type_Akhd.onDecodeTaskCompleted(this.a.b + this.a.jdField_a_of_type_JavaUtilLinkedList.size(), i, str, paramString);
+      }
+      label223:
+      i = 101;
+      str = paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akhf
  * JD-Core Version:    0.7.0.1
  */

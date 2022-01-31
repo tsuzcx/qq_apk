@@ -1,363 +1,197 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.maxvideo.common.MessageStruct;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable;
-import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.video.QzoneVideoBeaconReport;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoState;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
-import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
-import dov.com.tencent.mobileqq.shortvideo.common.TCTimer;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import java.io.File;
-import java.util.Arrays;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.InteractPasterLayer.InteractItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer.LayerListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import java.util.List;
+import java.util.Map;
 
 public class aohe
-  extends RMVideoState
+  implements TextFaceEditLayer.LayerListener
 {
-  final Runnable jdField_a_of_type_JavaLangRunnable = new aohh(this);
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = false;
-  boolean d = false;
-  boolean e = true;
-  public boolean f = true;
-  public volatile boolean g;
+  public aohe(DoodleEditView paramDoodleEditView) {}
   
-  public void a()
+  public void a(GestureHelper.ZoomItem paramZoomItem)
   {
-    this.d = false;
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr != null)
+    if ((paramZoomItem instanceof InteractPasterLayer.InteractItem))
     {
-      ThreadManager.post(new aohf(this, localRMVideoStateMgr), 8, null, false);
-      if (localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMViewSTInterface != null) {
-        localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMViewSTInterface.n();
-      }
-      if (!localRMVideoStateMgr.d) {
-        this.c = false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RMVideoInitState", 2, "[@] initState " + this.c);
-      }
-      try
-      {
-        if ((!this.c) && (!this.g))
-        {
-          this.g = true;
-          d();
-        }
-        for (;;)
-        {
-          return;
-          localRMVideoStateMgr.l();
-          c();
-        }
-        return;
-      }
-      finally {}
+      this.a.b(true);
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a((InteractPasterLayer.InteractItem)paramZoomItem);
     }
-  }
-  
-  public void a(AVCodec.AVCodecCallback paramAVCodecCallback, MessageStruct paramMessageStruct)
-  {
-    paramAVCodecCallback = RMVideoStateMgr.a();
-    switch (paramMessageStruct.mId)
-    {
-    default: 
-      return;
-    }
-    paramAVCodecCallback.jdField_a_of_type_JavaLangString = ((String)paramMessageStruct.mObj0);
-    this.jdField_a_of_type_Boolean = true;
-    paramAVCodecCallback.jdField_a_of_type_Aohb = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] onAVCodecEvent[RMFileEventNotify] path=" + paramAVCodecCallback.jdField_a_of_type_JavaLangString + ",files : " + Arrays.toString(new File(paramAVCodecCallback.jdField_a_of_type_JavaLangString).list()));
-    }
-    paramAVCodecCallback.jdField_a_of_type_AndroidOsHandler.post(new aohj(this));
-    e();
-  }
-  
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
-  {
-    if ((paramObject instanceof CameraProxy.CameraPreviewObservable)) {
-      switch (paramInt)
-      {
-      }
-    }
-    Object localObject;
     for (;;)
     {
-      super.a(paramObject, paramInt, paramVarArgs);
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.setTrackerState(paramZoomItem, 0);
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.n();
       return;
-      if (paramVarArgs != null) {
-        if ((paramVarArgs[0] instanceof Boolean))
+      if ((paramZoomItem instanceof VoteLayer.VoteItem))
+      {
+        this.a.b(true);
+        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a((VoteLayer.VoteItem)paramZoomItem);
+      }
+      else
+      {
+        if ((paramZoomItem instanceof FaceLayer.FaceItem))
         {
-          this.b = true;
-          e();
-          if (QLog.isColorLevel()) {
-            QLog.d("RMVideoInitState", 2, "[@] EVENT_CREATE_CAMERA[success] obj= " + paramVarArgs[0]);
-          }
-          localObject = BaseApplicationImpl.sApplication.getProcessName();
-          if ((localObject != null) && (((String)localObject).endsWith(":story"))) {
-            StoryReportor.b("take_video", "camera_initial", 0, 0, new String[0]);
-          }
-          ThreadManager.post(new aohk(this), 8, null, true);
-        }
-        else if ((paramVarArgs[0] instanceof String))
-        {
-          if (!this.d)
+          FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)paramZoomItem;
+          if (localFaceItem.b)
           {
-            this.d = true;
-            RMVideoStateMgr.a().a(2002, "抱歉，初始化摄像头失败", false);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RMVideoInitState", 2, "[@] EVENT_CREATE_CAMERA, error = " + paramVarArgs[0]);
-          }
-          if (1 == FlowCameraMqqAction.a) {
-            QzoneVideoBeaconReport.a(GloableValue.a + "", "qzone_video_record", "2", null);
-          }
-          localObject = BaseApplicationImpl.sApplication.getProcessName();
-          if ((localObject != null) && (((String)localObject).endsWith(":story")))
-          {
-            StoryReportor.b("take_video", "camera_initial", 0, -1, new String[0]);
-            continue;
-            if ((paramVarArgs != null) && ((paramVarArgs[0] instanceof String)))
+            if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b())) {}
+            for (localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();; localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a())
             {
-              if (!this.d)
-              {
-                this.d = true;
-                RMVideoStateMgr.a().a(2003, "抱歉，初始化摄像头参数失败，请重试", false);
-              }
-              if (QLog.isColorLevel())
-              {
-                QLog.d("RMVideoInitState", 2, "[@] EVENT_SET_CAMERA_PARAM error, error = " + paramVarArgs[0]);
-                continue;
-                if (!this.d)
-                {
-                  this.d = true;
-                  RMVideoStateMgr.a().a(2002, "抱歉，摄像头被禁止了", false);
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d("RMVideoInitState", 2, "[@] EVENT_CAMERA_DISABLED error");
-                }
-                if (1 == FlowCameraMqqAction.a)
-                {
-                  QzoneVideoBeaconReport.a(GloableValue.a + "", "qzone_video_record", "4", null);
-                  continue;
-                  if ((paramObject instanceof AudioCapture))
-                  {
-                    localObject = RMVideoStateMgr.a();
-                    switch (paramInt)
-                    {
-                    case 4: 
-                    default: 
-                      break;
-                    case 3: 
-                      if ((paramVarArgs != null) && ((paramVarArgs[0] instanceof Boolean)) && (((Boolean)paramVarArgs[0]).booleanValue()))
-                      {
-                        if (QLog.isColorLevel()) {
-                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [OK]");
-                        }
-                      }
-                      else
-                      {
-                        if (QLog.isColorLevel())
-                        {
-                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [error]麦克风初始化参数失败...");
-                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [error]mAudioSampleRate=" + CodecParam.q + " mAudioChannel=" + CodecParam.o + " mAudioFormat=" + CodecParam.p);
-                        }
-                        ((RMVideoStateMgr)localObject).jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-                        ((RMVideoStateMgr)localObject).e = false;
-                        ((RMVideoStateMgr)localObject).c(false);
-                        if (((RMVideoStateMgr)localObject).jdField_a_of_type_AndroidOsHandler != null) {
-                          ((RMVideoStateMgr)localObject).jdField_a_of_type_AndroidOsHandler.post(new aohl(this));
-                        }
-                        while (1 == FlowCameraMqqAction.a)
-                        {
-                          QzoneVideoBeaconReport.a(GloableValue.a + "", "qzone_video_record", "5", null);
-                          break;
-                          if (QLog.isColorLevel()) {
-                            QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [Error]麦克风参数初始化失败 ,rmStateMgr.mHandler = null");
-                          }
-                        }
-                      }
-                      break;
-                    case 5: 
-                      if (QLog.isColorLevel()) {
-                        QLog.d("RMVideoInitState", 2, "[@] EVENT_OPEN_MIC [error]麦克风打开失败...");
-                      }
-                      ((RMVideoStateMgr)localObject).jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-                      ((RMVideoStateMgr)localObject).e = false;
-                      if (RMVideoStateMgr.c)
-                      {
-                        ((RMVideoStateMgr)localObject).c(true);
-                        e();
-                      }
-                      for (;;)
-                      {
-                        if (!((RMVideoStateMgr)localObject).h)
-                        {
-                          RMVideoStateMgr.a().b(0, "麦克风被禁用", false);
-                          ((RMVideoStateMgr)localObject).h = true;
-                        }
-                        if (1 != FlowCameraMqqAction.a) {
-                          break;
-                        }
-                        QzoneVideoBeaconReport.a(GloableValue.a + "", "qzone_video_record", "6", null);
-                        break;
-                        ((RMVideoStateMgr)localObject).c(false);
-                      }
-                    case 6: 
-                      if ((paramVarArgs == null) || (!(paramVarArgs[0] instanceof Boolean)) || (!((Boolean)paramVarArgs[0]).booleanValue())) {
-                        break label881;
-                      }
-                      if (QLog.isColorLevel()) {
-                        QLog.d("RMVideoInitState", 2, "[@] EVENT_START_MIC [OK]");
-                      }
-                      ((RMVideoStateMgr)localObject).c(true);
-                      e();
-                      ((RMVideoStateMgr)localObject).e = true;
-                    }
-                  }
-                }
-              }
+              ((FaceLayer)localObject).b.remove(localFaceItem);
+              this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.b();
+              break;
             }
           }
+          if ((localFaceItem.h == 1) && ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b()))) {}
+          for (Object localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();; localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a())
+          {
+            localObject = (List)((FaceLayer)localObject).a.get(localFaceItem.d);
+            if (localObject == null) {
+              break;
+            }
+            ((List)localObject).remove(localFaceItem.e);
+            break;
+          }
         }
+        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.b();
       }
     }
-    label881:
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] EVENT_START_MIC [error]麦克风启动录制失败...");
-    }
-    ((RMVideoStateMgr)localObject).jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-    ((RMVideoStateMgr)localObject).e = false;
-    if (RMVideoStateMgr.c)
+  }
+  
+  public void a(GestureHelper.ZoomItem paramZoomItem, int paramInt1, int paramInt2)
+  {
+    if (paramZoomItem == null) {}
+    do
     {
-      ((RMVideoStateMgr)localObject).c(true);
-      e();
-    }
-    for (;;)
-    {
-      if (!((RMVideoStateMgr)localObject).h)
+      do
       {
-        RMVideoStateMgr.a().b(0, "麦克风被禁用", false);
-        ((RMVideoStateMgr)localObject).h = true;
-      }
-      if (1 != FlowCameraMqqAction.a) {
-        break;
-      }
-      QzoneVideoBeaconReport.a(GloableValue.a + "", "qzone_video_record", "7", null);
-      break;
-      ((RMVideoStateMgr)localObject).c(false);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.e = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    RMVideoStateMgr.a().a("RMVideoInitState");
-    return false;
-  }
-  
-  public void b()
-  {
-    if (b()) {
-      RMVideoStateMgr.a().a(3);
-    }
-  }
-  
-  boolean b()
-  {
-    return (RMVideoStateMgr.a().d) && (this.jdField_a_of_type_Boolean) && (this.b);
-  }
-  
-  void c()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] retake called");
-    }
-    if (localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
-      localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.a();
-    }
-    for (;;)
-    {
-      try
-      {
-        localRMVideoStateMgr.j();
-        if (!this.e) {
-          continue;
+        do
+        {
+          return;
+        } while (paramZoomItem.k);
+        if (!paramZoomItem.a()) {
+          this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.setTrackerState(paramZoomItem, 0);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoInitState", 2, "[@] retake call AVCodec.get().retake()");
+        if (this.a.a()) {
+          break;
         }
-        AVCodec.get().retake();
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        continue;
-      }
-      if (localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext != null) {
-        localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext.reset();
-      }
-      RecordManager.a().a().a(0);
+        if ((paramZoomItem instanceof TextLayer.TextItem))
+        {
+          a(paramZoomItem, paramInt1, paramInt2, 0.0F, 0.0F);
+          return;
+        }
+      } while (((!(paramZoomItem instanceof FaceLayer.FaceItem)) && (!(paramZoomItem instanceof FaceLayer.FaceAndTextItem))) || (DoodleEditView.a(this.a) == null));
+      DoodleEditView.a(this.a).a(paramZoomItem);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RMVideoInitState", 2, "[@] retake call AVCodec.get().init()");
-      }
-      AVCodec.get().init();
-      this.e = true;
-    }
+    } while (((!(paramZoomItem instanceof FaceLayer.FaceItem)) && (!(paramZoomItem instanceof FaceLayer.FaceAndTextItem)) && (!(paramZoomItem instanceof TextLayer.TextItem))) || (DoodleEditView.a(this.a) == null));
+    DoodleEditView.a(this.a).a(paramZoomItem);
   }
   
-  void d()
+  public void a(GestureHelper.ZoomItem paramZoomItem, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] delayInit called");
-    }
-    localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.postDelayed(new aohg(this), 50L);
-  }
-  
-  void e()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (b())
+    boolean bool1 = false;
+    boolean bool2 = true;
+    if ((paramZoomItem instanceof TextLayer.TextItem))
     {
-      localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.post(new aohi(this));
+      paramZoomItem = ((TextLayer.TextItem)paramZoomItem).a;
+      if (paramZoomItem != null)
+      {
+        int i = paramInt2;
+        if (!paramZoomItem.a())
+        {
+          i = paramInt2;
+          if (paramInt2 == 0) {
+            i = 3;
+          }
+        }
+        switch (i)
+        {
+        }
+      }
     }
+    do
+    {
+      Object localObject;
+      do
+      {
+        return;
+        paramZoomItem.a();
+        paramZoomItem.a(-1, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a, false, 3000, 500, null);
+        return;
+        paramZoomItem.a(paramInt1, true);
+        paramInt2 = paramInt1;
+        if (paramInt1 == -1) {
+          paramInt2 = 0;
+        }
+        localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout;
+        if (DoodleEditView.a(this.a) == 1) {
+          bool1 = true;
+        }
+        ((DoodleLayout)localObject).a(paramZoomItem, paramInt2, 1, bool1);
+        return;
+        paramInt2 = paramInt1;
+        if (paramInt1 == -1) {
+          paramInt2 = 0;
+        }
+        paramZoomItem.a(paramInt2, true);
+        localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout;
+        if (DoodleEditView.a(this.a) == 1) {}
+        for (bool1 = bool2;; bool1 = false)
+        {
+          ((DoodleLayout)localObject).a(paramZoomItem, paramInt2, 2, bool1);
+          return;
+        }
+        if (!(paramZoomItem instanceof FaceLayer.FaceItem)) {
+          break;
+        }
+        localObject = (FaceLayer.FaceItem)paramZoomItem;
+      } while (!((FaceLayer.FaceItem)localObject).b);
+      SLog.b("DoodleEditView", "click the item:" + paramZoomItem);
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a((FaceLayer.FaceItem)localObject);
+      return;
+      if ((paramZoomItem instanceof InteractPasterLayer.InteractItem))
+      {
+        this.a.b(true);
+        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a((InteractPasterLayer.InteractItem)paramZoomItem, paramFloat1, paramFloat2);
+        return;
+      }
+    } while (!(paramZoomItem instanceof VoteLayer.VoteItem));
+    this.a.b(true);
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a((VoteLayer.VoteItem)paramZoomItem, paramFloat1, paramFloat2);
   }
   
-  public void f()
+  public void b(GestureHelper.ZoomItem paramZoomItem, int paramInt1, int paramInt2)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    localRMVideoStateMgr.m();
-    localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.c = false;
-  }
-  
-  public void g()
-  {
-    RMVideoStateMgr.a().m();
-    this.c = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
+    SLog.b("DoodleEditView", "onClickBottomLeftBtn click the item:" + paramZoomItem);
+    if (paramZoomItem != null)
+    {
+      if (DoodleEditView.a(this.a) != null) {
+        DoodleEditView.a(this.a).a();
+      }
+      if (paramZoomItem.a())
+      {
+        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.setTrackerState(paramZoomItem, 1);
+        if (paramZoomItem.f)
+        {
+          this.a.a(paramZoomItem);
+          this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(paramZoomItem);
+        }
+      }
+      if (!paramZoomItem.f) {
+        this.a.b(paramZoomItem);
+      }
+    }
   }
 }
 

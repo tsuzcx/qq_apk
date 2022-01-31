@@ -1,24 +1,23 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class adlm
-  extends Handler
+  implements INetEventHandler
 {
-  public adlm(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public adlm(MPcFileModel paramMPcFileModel) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, "网络异常", 0).a();
+    if (AppNetConnInfo.isWifiConn())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "网络切换到Wifi网络");
+      }
+      QQToast.a(this.a.a, 2131427641, 0).a();
     }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
   }
 }
 

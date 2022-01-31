@@ -1,29 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.ApolloTicker;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ytk
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ytk(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  private final long jdField_a_of_type_Long;
+  public final ApolloTextureView a;
+  private final long b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  ytk(ApolloTicker paramApolloTicker, ApolloTextureView paramApolloTextureView, long paramLong1, long paramLong2)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = paramApolloTextureView;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.b = paramLong1;
+  }
+  
+  public void run()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mIsDestroy == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mIsDestroy.get())) {
+      return;
     }
-    for (;;)
+    long l = System.currentTimeMillis();
+    try
     {
-      return true;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.a.jdField_a_of_type_AndroidWidgetButton.performClick();
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker.nativeCallbackTicker(this.b, l, 0.01666666666666667D * this.jdField_a_of_type_Long);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloTicker", 1, "[onDrawFrame]");
     }
   }
 }

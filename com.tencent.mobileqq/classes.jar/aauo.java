@@ -1,23 +1,39 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class aauo
-  implements Runnable
+  implements aaup
 {
-  public aauo(ArkLocalAppMgr paramArkLocalAppMgr) {}
+  private aauo(ArkAppDeviceModule paramArkAppDeviceModule) {}
   
-  public void run()
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    try
-    {
-      ArkAppCenter.a(true);
-      ArkLocalAppMgr.a(this.a);
-      return;
+    if (!ArkAppModuleReg.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, "permission.CONNECTION_TYPE")) {
+      return false;
     }
-    catch (NoClassDefFoundError localNoClassDefFoundError)
+    if (!AppNetConnInfo.isNetSupport()) {
+      paramVariantWrapper.SetString("none");
+    }
+    for (;;)
     {
-      QLog.e("ArkApp.ArkLocalAppMgr", 1, localNoClassDefFoundError.toString());
+      return true;
+      if (AppNetConnInfo.isWifiConn())
+      {
+        paramVariantWrapper.SetString("wifi");
+      }
+      else if (AppNetConnInfo.isMobileConn())
+      {
+        int i = AppNetConnInfo.getMobileInfo();
+        if (i == 0) {
+          paramVariantWrapper.SetString("none");
+        } else if (-1 == i) {
+          paramVariantWrapper.SetString("other");
+        } else {
+          paramVariantWrapper.SetString("cellular");
+        }
+      }
     }
   }
 }

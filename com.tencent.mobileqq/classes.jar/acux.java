@@ -1,34 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
 
 public class acux
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acux(FileManagerDataCenter paramFileManagerDataCenter, Bundle paramBundle) {}
+  public acux(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidOsBundle == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "INTENT_ACTION_RENAME_FILENAME extra is null!!!");
-      }
-      return;
-    }
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("peerUin");
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("peerType");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("sourceStr");
-    String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("filePath");
-    long l = this.jdField_a_of_type_AndroidOsBundle.getLong("dataLength");
-    int j = this.jdField_a_of_type_AndroidOsBundle.getInt("fileSourceId");
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle.getBundle("otherData");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerDataCenter.a(str1, i, str3, l, j, str2, localBundle);
+    ReportController.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
+    FilePreviewActivity.a(this.a, TeamWorkConvertUtils.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131439167), false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acux
  * JD-Core Version:    0.7.0.1
  */

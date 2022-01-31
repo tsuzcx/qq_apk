@@ -1,34 +1,32 @@
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.binhai.BinHaiMsgDialog;
+import com.tencent.mobileqq.binhai.BinHaiMsgDialog.Listener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agmi
-  implements Runnable
+  implements BinHaiMsgDialog.Listener
 {
-  public agmi(FormalView paramFormalView, List paramList) {}
+  public agmi(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
+  public void a(BinHaiMsgDialog paramBinHaiMsgDialog)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      PortalManager.ComboNumber localComboNumber = (PortalManager.ComboNumber)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localComboNumber != null)
-      {
-        PortalManager.a(localComboNumber.numberImageMD5, "hb_icon_path");
-        if (QLog.isColorLevel()) {
-          QLog.d("FormalView", 2, "setComboNumberList, preload p=" + localComboNumber);
-        }
-      }
-      i += 1;
-    }
+    paramBinHaiMsgDialog.dismiss();
+    ScanTorchActivity.n(this.a);
+  }
+  
+  public void b(BinHaiMsgDialog paramBinHaiMsgDialog)
+  {
+    paramBinHaiMsgDialog.dismiss();
+    ScanTorchActivity.n(this.a);
+  }
+  
+  public void c(BinHaiMsgDialog paramBinHaiMsgDialog)
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmi
  * JD-Core Version:    0.7.0.1
  */

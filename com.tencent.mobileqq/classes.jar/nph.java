@@ -1,62 +1,20 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
 
-public class nph
-  implements Runnable
+class nph
+  extends Job
 {
-  public nph(TrimTextureVideoView paramTrimTextureVideoView) {}
+  nph(npg paramnpg, DeleteStoryVideoEvent paramDeleteStoryVideoEvent) {}
   
-  @TargetApi(14)
-  public void run()
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    if (!this.a.jdField_i_of_type_Boolean)
-    {
-      SLog.a(this.a.jdField_a_of_type_JavaLangString, "[%d]not attach! not schedule!", Integer.valueOf(this.a.jdField_i_of_type_Int));
-      return;
-    }
-    int i = this.a.getCurrentPosition();
-    SLog.a(this.a.jdField_a_of_type_JavaLangString, "[%d]mRestartRunnable check enter! isPlaying = %b, mEndTime = %d, pos = %d", Integer.valueOf(this.a.jdField_i_of_type_Int), Boolean.valueOf(this.a.isPlaying()), Integer.valueOf(this.a.l), Integer.valueOf(i));
-    TrimTextureVideoView localTrimTextureVideoView;
-    if (this.a.l != 0)
-    {
-      if (!this.a.isPlaying()) {
-        break label216;
-      }
-      if (i == this.a.p)
-      {
-        localTrimTextureVideoView = this.a;
-        localTrimTextureVideoView.q += 1;
-        this.a.p = i;
-      }
-    }
-    else
-    {
-      if ((!this.a.isPlaying()) || (this.a.l <= 0) || (i < this.a.l)) {
-        break label264;
-      }
-      this.a.a(true);
-    }
-    for (;;)
-    {
-      SLog.b(this.a.jdField_a_of_type_JavaLangString, "schedule next!");
-      this.a.postDelayed(this, 200L);
-      return;
-      this.a.q = 0;
-      break;
-      label216:
-      if (i == this.a.n) {}
-      for (this.a.o = 0;; localTrimTextureVideoView.o += 1)
-      {
-        this.a.n = i;
-        break;
-        localTrimTextureVideoView = this.a;
-      }
-      label264:
-      if (this.a.jdField_a_of_type_Int == 5) {
-        this.a.a(true);
-      }
-    }
+    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryModelDeleteStoryVideoEvent);
+    return null;
   }
 }
 

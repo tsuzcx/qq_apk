@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.shortvideo.ml.decisiontree.ID3.ImpurityFunction;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aico
-  extends ID3.ImpurityFunction
+class aico
+  implements Runnable
 {
-  public double a(int paramInt1, int paramInt2)
+  aico(aicn paramaicn) {}
+  
+  public void run()
   {
-    if (paramInt1 > paramInt2) {
-      return paramInt2 / (paramInt1 + paramInt2);
+    long l = QZoneManagerImp.a(this.a.a);
+    QZoneManagerImp.a(this.a.a);
+    QZoneManagerImp.a(this.a.a, QZoneManagerImp.b(this.a.a));
+    this.a.a.a(l | QZoneManagerImp.a(this.a.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("UndealCount.QZoneManagerImp.", 2, "onChange notifyQQTab type:" + Long.toBinaryString(QZoneManagerImp.a(this.a.a)));
     }
-    return paramInt1 / (paramInt1 + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aico
  * JD-Core Version:    0.7.0.1
  */

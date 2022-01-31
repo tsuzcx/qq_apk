@@ -1,13 +1,14 @@
-import java.nio.ByteBuffer;
+import com.tencent.biz.qqstory.playmode.child.TroopStorySinglePlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
-class nqh
+public class nqh
+  implements Runnable
 {
-  protected long a;
-  protected ByteBuffer a;
+  public nqh(TroopStorySinglePlayMode paramTroopStorySinglePlayMode) {}
   
-  nqh(int paramInt)
+  public void run()
   {
-    this.a = ByteBuffer.allocate(paramInt);
+    this.a.a.setCurrentItem(0, false);
   }
 }
 

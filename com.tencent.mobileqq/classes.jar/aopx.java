@@ -1,9 +1,34 @@
-class aopx
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoState;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+
+public class aopx
+  extends RMVideoState
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  public void a()
+  {
+    RMVideoStateMgr.a().a.p();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] initState end");
+    }
+  }
   
-  aopx(aopu paramaopu) {}
+  public boolean a()
+  {
+    RMVideoStateMgr.a().a("RMVideoIdleState");
+    return true;
+  }
+  
+  public void b()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
+    }
+    localRMVideoStateMgr.a.a(100);
+    localRMVideoStateMgr.a(3);
+  }
 }
 
 

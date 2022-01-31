@@ -11,9 +11,9 @@ import com.tencent.mobileqq.utils.HexUtil;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mzt;
-import mzu;
-import mzv;
+import ndo;
+import ndp;
+import ndq;
 
 public class VideoServerInfoManager
   extends BaseManger
@@ -33,7 +33,7 @@ public class VideoServerInfoManager
     this.jdField_b_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new mzv(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new ndq(this, null);
   }
   
   private boolean a()
@@ -53,7 +53,7 @@ public class VideoServerInfoManager
     }
     SLog.a("Q.qqstory.publish:VideoServerInfoManager", "start get server info", this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo);
     RefreshVideoFileKeyRequest localRefreshVideoFileKeyRequest = new RefreshVideoFileKeyRequest();
-    CmdTaskManger.a().a(localRefreshVideoFileKeyRequest, new mzu(this));
+    CmdTaskManger.a().a(localRefreshVideoFileKeyRequest, new ndp(this));
   }
   
   public String a()
@@ -69,7 +69,7 @@ public class VideoServerInfoManager
   {
     super.a();
     AppNetConnInfo.registerNetChangeReceiver(QQStoryContext.a().a(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
-    Bosses.get().postJob(new mzt(this));
+    Bosses.get().postJob(new ndo(this));
   }
   
   public byte[] a()

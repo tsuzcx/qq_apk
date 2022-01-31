@@ -1,34 +1,43 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import java.util.List;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 public class akzr
-  extends BroadcastReceiver
+  implements WerewolvesHandler.Callback
 {
-  public akzr(AgentActivity paramAgentActivity) {}
+  public akzr(WerewolvesHandler paramWerewolvesHandler, WerewolvesHandler.Callback paramCallback1, HotChatInfo paramHotChatInfo, long paramLong, int paramInt1, int paramInt2, WerewolvesHandler.Callback paramCallback2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    if ((QLog.isColorLevel()) && (this.a.getAppInterface() != null)) {
-      QLog.d("AgentActivity", 2, "-->onReceive, intent.getAction(): " + paramIntent.getAction());
+    if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback.a(paramInt, paramRspBody);
     }
-    if (("action_login_sucess".equals(paramIntent.getAction())) && (AgentActivity.a(this.a) != null))
-    {
-      paramContext = paramIntent.getStringExtra("login_success_uin");
-      if (!TextUtils.isEmpty(paramContext)) {
-        AgentActivity.a(this.a).putExtra("login_success_uin", paramContext);
-      }
-      this.a.startActivityForResult(AgentActivity.a(this.a), 0);
+    paramRspBody = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.b.getManager(59);
+    List localList = paramRspBody.a();
+    if (localList != null) {
+      localList.remove(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
     }
-    this.a.unregisterReceiver(this);
+    paramRspBody.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
+    GameRoomAVController.a().a(this.jdField_a_of_type_Long);
+    NearbySPUtil.a(this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.b.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.a()));
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals("0"))) {
+      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.b.a().a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin, 1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.b(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akzr
  * JD-Core Version:    0.7.0.1
  */

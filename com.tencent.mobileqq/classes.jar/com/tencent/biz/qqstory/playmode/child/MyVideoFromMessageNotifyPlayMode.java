@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import nka;
+import nok;
 
 public class MyVideoFromMessageNotifyPlayMode
   extends NewFriendsPlayMode
@@ -71,7 +71,7 @@ public class MyVideoFromMessageNotifyPlayMode
         GetFeedFeatureHandler.a(Collections.singletonList(this.g));
       }
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-      this.jdField_a_of_type_AndroidOsHandler.post(new nka(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new nok(this));
     }
   }
 }

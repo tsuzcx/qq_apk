@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
+import cooperation.qwallet.plugin.QWalletPrivacyUtils;
 
 public class xgi
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xgi(QWalletIPCModule paramQWalletIPCModule, AppRuntime paramAppRuntime) {}
+  public xgi(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((QWalletConfigManager)((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getManager(244)).a(1L, new xgj(this), null);
+    QWalletPrivacyUtils.setHasClickAgree(this.a.getActivity().app);
+    this.a.a();
   }
 }
 

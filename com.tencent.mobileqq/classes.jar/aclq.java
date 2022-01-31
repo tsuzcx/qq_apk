@@ -1,15 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.VasEmojiManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import java.io.File;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aclq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aclq(Face2FaceFriendDetailView paramFace2FaceFriendDetailView) {}
+  public aclq(VasEmojiManager paramVasEmojiManager, String paramString, EmoticonPackage paramEmoticonPackage) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.d();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonVasEmojiManager.a();
+    if ((!new File(VasEmojiManager.b(this.jdField_a_of_type_JavaLangString)).exists()) || (!((EmojiManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, true, false)))
+    {
+      localObject = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqEmoticonVasEmojiManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(183);
+      if (localObject != null)
+      {
+        EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
+        ((VasQuickUpdateManager)localObject).a(1004L, this.jdField_a_of_type_JavaLangString, "VasEmojiManager");
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonVasEmojiManager.a();
+        ((EmojiManager)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
+        ((EmojiManager)localObject).a((Bundle)this.jdField_a_of_type_ComTencentMobileqqEmoticonVasEmojiManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), null, false, 0, "nomatch", 0L, 0);
+      }
+      return;
+    }
   }
 }
 

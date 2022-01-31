@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
-public class tti
-  implements DialogInterface.OnKeyListener
+class tti
+  implements Runnable
 {
-  public tti(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  tti(ttg paramttg) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    RegisterActivity.d(this.a.a);
+    RegisterActivity.a(this.a.a, "请重新发送短信");
   }
 }
 

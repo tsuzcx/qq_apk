@@ -1,37 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.assistant.PubAccountTipsManager;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
 
 public class kzp
-  implements URLDrawableDownListener
+  implements Runnable
 {
-  public kzp(PubAccountTipsManager paramPubAccountTipsManager) {}
+  public kzp(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountTipsManager", 2, "img Load Failed.");
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountTipsManager", 2, "img Load Interrupted.");
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (PubAccountTipsManager.a(this.a) != null) {
-      PubAccountTipsManager.a(this.a).setVisibility(0);
-    }
+    ReadInJoyNativeAdAppVideoView.a(this.a);
   }
 }
 

@@ -1,14 +1,33 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import com.tencent.biz.common.util.Util;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebAccelerator;
+import java.util.HashMap;
+import java.util.Map;
 
 public class aktg
   implements Runnable
 {
-  public aktg(ContainerView paramContainerView, int paramInt) {}
+  public aktg(WebAccelerateHelper paramWebAccelerateHelper, boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
   
   public void run()
   {
-    ContainerView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView).smoothScrollTo(0, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localHashMap = new HashMap();
+      localHashMap.put("User-Agent", SwiftWebViewUtils.a(SwiftWebViewUtils.b("x5prefetch_1.0"), "", false));
+      WebAccelerator.prefetchResource(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, localHashMap, true);
+      QLog.i("WebAccelerateHelper", 1, "now prefetchResource " + Util.c(this.jdField_a_of_type_JavaLangString, new String[0]));
+    }
+    while (!this.b)
+    {
+      HashMap localHashMap;
+      return;
+    }
+    WebAccelerator.preConnect(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 1, true);
+    QLog.i("WebAccelerateHelper", 1, "now preconnect " + Util.c(this.jdField_a_of_type_JavaLangString, new String[0]));
   }
 }
 

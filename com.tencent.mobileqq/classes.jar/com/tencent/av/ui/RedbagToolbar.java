@@ -16,7 +16,7 @@ import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import kab;
+import kcf;
 
 public class RedbagToolbar
   extends BaseToolbar
@@ -220,11 +220,11 @@ public class RedbagToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 7;
-      this.mUIInfo.g = 2130969363;
+      this.mUIInfo.g = 2130969361;
       this.mUIInfo.e = 103418;
-      this.mUIInfo.f = 2130840344;
+      this.mUIInfo.f = 2130840359;
       this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428747);
-      this.mUIInfo.c = 2130840345;
+      this.mUIInfo.c = 2130840360;
       this.mUIInfo.jdField_a_of_type_Int = 0;
     }
     return this.mUIInfo;
@@ -309,7 +309,7 @@ public class RedbagToolbar
         if (GuideTip2.a(this.mApp))
         {
           localAVRedBagMgr.a(true);
-          new GuideTip2(localAVRedBagMgr).a(new kab(this, localAVRedBagMgr));
+          new GuideTip2(localAVRedBagMgr).a(new kcf(this, localAVRedBagMgr));
           return;
         }
         startActivity_SendRedBag(false);
@@ -356,7 +356,7 @@ public class RedbagToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.RedbagToolbar
  * JD-Core Version:    0.7.0.1
  */

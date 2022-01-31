@@ -1,20 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import com.tencent.mobileqq.emosm.favroaming.SyncListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class achu
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public achu(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  public achu(FavroamingManager paramFavroamingManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    int i = 0;
+    while (i < this.a.a.size())
+    {
+      if (this.a.a.get(i) != null)
+      {
+        SyncListener localSyncListener = (SyncListener)((WeakReference)this.a.a.get(i)).get();
+        if (localSyncListener != null)
+        {
+          localSyncListener.a(null, FavroamingManager.a(), FavroamingManager.a().get());
+          if (QLog.isColorLevel()) {
+            QLog.i("FavroamingManager", 2, "now notify listener on file done!");
+          }
+        }
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     achu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import java.util.concurrent.TimeUnit;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
 
-public class akdf
-  implements Runnable
+class akdf
+  implements Action.OnActionEndListener
 {
-  public akdf(NewUpgradeDialog paramNewUpgradeDialog) {}
+  akdf(akde paramakde) {}
   
-  public void run()
+  public void a()
   {
-    int i = 10;
-    long l = 1500L / 10;
-    for (;;)
-    {
-      if (i > 0)
-      {
-        ThreadManager.getUIHandler().post(new akdg(this, (10 - i) * 10));
-        try
-        {
-          TimeUnit.MILLISECONDS.sleep(l);
-          i -= 1;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
-      }
-    }
-    if (!NewUpgradeDialog.a(this.a)) {
-      NewUpgradeDialog.b(this.a);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,15 @@
-import android.database.DataSetObserver;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
 
-public class lzd
-  extends DataSetObserver
+class lzd
+  implements Runnable
 {
-  public lzd(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  lzd(lzc paramlzc, int paramInt) {}
   
-  public void onChanged()
+  public void run()
   {
-    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
-    {
-      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
-      return;
-    }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
+    ReadInJoyLogicEngine.a().b((int)this.jdField_a_of_type_Lzc.a.mPolymericInfo.f, this.jdField_a_of_type_Int - 1);
   }
 }
 

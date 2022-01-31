@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import akby;
+import akjl;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -809,7 +809,7 @@ public class BusinessCommonConfig
   
   boolean a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new akby(this, paramQQAppInterface);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new akjl(this, paramQQAppInterface);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.businessnotify.subprocess.to.qq");
     return paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null;

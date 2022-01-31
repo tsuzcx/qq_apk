@@ -1,16 +1,11 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-
-public class kvc
-  extends AnimatorListenerAdapter
+class kvc
+  implements Runnable
 {
-  public kvc(VideoCoverView paramVideoCoverView) {}
+  kvc(kvb paramkvb) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    super.onAnimationEnd(paramAnimator);
-    VideoCoverView.a(this.a, true);
+    this.a.a.i = false;
   }
 }
 

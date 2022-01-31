@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.View;
+import com.tencent.mobileqq.bubble.BubbleNewAIOAnim;
 
 public class absv
-  implements ConfigSimplifier.ConfigDownloadCallback
+  extends AnimatorListenerAdapter
 {
-  public absv(ConfigServlet paramConfigServlet, QIMPtvTemplateManager paramQIMPtvTemplateManager) {}
+  public absv(BubbleNewAIOAnim paramBubbleNewAIOAnim, ObjectAnimator paramObjectAnimator) {}
   
-  public void a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(paramString, 1);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c != null) {
+      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleNewAIOAnim.c.setVisibility(0);
+    }
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     absv
  * JD-Core Version:    0.7.0.1
  */

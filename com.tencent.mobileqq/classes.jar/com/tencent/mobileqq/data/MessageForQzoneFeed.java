@@ -34,7 +34,7 @@ public class MessageForQzoneFeed
   public String coverImageUrl;
   public JSONObject feedMsg;
   public long feedTime;
-  public int fromUin;
+  public long fromUin;
   public boolean hasExposed;
   public int imageCount;
   public boolean isOldStructMsg;
@@ -91,7 +91,7 @@ public class MessageForQzoneFeed
       }
       this.feedMsg = new JSONObject(this.msg);
       this.appId = this.feedMsg.optInt("appid");
-      this.fromUin = this.feedMsg.optInt("fromuin");
+      this.fromUin = this.feedMsg.optLong("fromuin");
       this.feedTime = this.feedMsg.optLong("time");
       this.lbsInfo = this.feedMsg.optString("lbsinfo");
       this.summery = this.feedMsg.optString("summery");

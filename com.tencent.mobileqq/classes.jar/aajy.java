@@ -1,18 +1,21 @@
-import android.view.View;
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aajy
-  implements PopupWindow.OnDismissListener
+  implements Runnable
 {
-  public aajy(SplashPopupWin paramSplashPopupWin, BaseActivity paramBaseActivity, View paramView) {}
+  public aajy(ObjectSurfaceView paramObjectSurfaceView, String paramString1, String paramString2) {}
   
-  public void onDismiss()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a(8);
-    SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidViewView, false);
-    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.b();
+    if (ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).size() > 0)
+    {
+      ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).add(this.jdField_a_of_type_JavaLangString);
+      ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.b);
+      return;
+    }
+    QLog.d("ObjectSurfaceView", 1, "the dataList is null, cancel the jump action.");
   }
 }
 

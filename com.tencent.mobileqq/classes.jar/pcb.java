@@ -1,30 +1,21 @@
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import java.util.HashMap;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class pcb
-  implements Runnable
+class pcb
+  extends pcg
 {
-  public pcb(OfflinePlugin paramOfflinePlugin) {}
-  
-  public void run()
+  pcb(pbw parampbw, long paramLong, VideoCombineHelper.Callback paramCallback, File paramFile)
   {
-    if (OfflinePlugin.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
-      if ((localOfflineUpdateStatus != null) && (localOfflineUpdateStatus.b() == 1))
-      {
-        if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-        if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-          this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        }
-        localOfflineUpdateStatus.b(2);
-      }
+    super(parampbw.a);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
+    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
   }
 }
 

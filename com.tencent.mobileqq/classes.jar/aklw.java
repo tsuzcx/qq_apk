@@ -1,86 +1,81 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vas.ClubContentJsonTask;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.InetAddress;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
-public final class aklw
-  implements Runnable
+public class aklw
+  extends BaseAdapter
 {
-  public aklw(List paramList) {}
+  public aklw(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns) {}
   
-  public void run()
+  public int getCount()
   {
-    try
-    {
-      if (WebProcessManager.a() == -1)
-      {
-        Object localObject = new File(BaseApplicationImpl.getContext().getFilesDir(), ClubContentJsonTask.e.a);
-        if ((localObject == null) || (!((File)localObject).exists()))
-        {
-          WebProcessManager.a(-1);
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.i("WebProcessManager", 2, "null == file || !file.exists() = true,return!");
-          return;
-        }
-        localObject = FileUtils.a((File)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          WebProcessManager.a(-1);
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.i("WebProcessManager", 2, "TextUtils.isEmpty(JsonStr) = true,return!");
-          return;
-        }
-      }
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
     }
-    catch (Exception localException)
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    }
+    paramViewGroup = paramView;
+    if (paramView == null)
     {
-      if (QLog.isColorLevel())
-      {
-        QLog.e("WebProcessManager", 2, "UnKnownHost Exception!", localException);
-        return;
-        if (new JSONObject(localException).getBoolean("use_dns")) {}
-        for (int i = 1;; i = 0)
-        {
-          WebProcessManager.a(i);
-          if (QLog.isColorLevel()) {
-            QLog.i("WebProcessManager", 2, "isNeedPreparseDns :" + WebProcessManager.a());
-          }
-          if (WebProcessManager.a() != 1) {
-            break;
-          }
-          Iterator localIterator = this.a.iterator();
-          while (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            long l = System.currentTimeMillis();
-            InetAddress.getByName(str);
-            l = System.currentTimeMillis() - l;
-            if (QLog.isColorLevel()) {
-              QLog.i("WebStatusReport", 2, "time used:" + l);
-            }
-            WebProcessManager.d(str, l);
-          }
-        }
+      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968850, null);
+      paramView = new akmb(this.a, null);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131364080));
+      paramViewGroup.setTag(paramView);
+    }
+    paramView = (akmb)paramViewGroup.getTag();
+    int i;
+    int j;
+    int k;
+    int m;
+    if (paramView.a != null)
+    {
+      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      paramView.a.setOnClickListener(new akma(this.a, paramInt));
+      i = paramView.a.getPaddingTop();
+      j = paramView.a.getPaddingLeft();
+      k = paramView.a.getPaddingRight();
+      m = paramView.a.getPaddingBottom();
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
+        break label207;
+      }
+      paramView.a.setBackgroundResource(2130838716);
+    }
+    for (;;)
+    {
+      paramView.a.setPadding(j, i, k, m);
+      return paramViewGroup;
+      label207:
+      if (paramInt == 0) {
+        paramView.a.setBackgroundResource(2130838717);
+      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
+        paramView.a.setBackgroundResource(2130838715);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aklw
  * JD-Core Version:    0.7.0.1
  */

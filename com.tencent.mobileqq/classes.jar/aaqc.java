@@ -1,18 +1,40 @@
-import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ar.config.MainEntryAni;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class aaqc
-  implements ArkAppCenter.OnGetAppIcon
+public class aaqc
+  implements OnCompositionLoadedListener
 {
-  aaqc(aaqb paramaaqb, QQCustomDialog paramQQCustomDialog) {}
+  public aaqc(MainEntryAni paramMainEntryAni, aaqf paramaaqf, aaqg paramaaqg, String paramString) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364041)).setImageBitmap(paramBitmap);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_Aaqf.d.get();
+    Object localObject = new StringBuilder().append("onCompositionLoaded, rollView[");
+    if (localImageView != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.w("WorldCupMgr", 1, bool + "]");
+      if (localImageView != null) {
+        break;
+      }
+      MainEntryAni.a(this.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni, this.jdField_a_of_type_Aaqf);
+      return;
     }
+    localObject = new LottieDrawable();
+    ((LottieDrawable)localObject).setImageAssetDelegate(new aaqd(this));
+    ((LottieDrawable)localObject).addAnimatorListener(new aaqe(this));
+    ((LottieDrawable)localObject).setImagesAssetsFolder(this.jdField_a_of_type_JavaLangString);
+    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+    ((LottieDrawable)localObject).loop(false);
+    ((LottieDrawable)localObject).playAnimation();
+    localImageView.setImageDrawable((Drawable)localObject);
   }
 }
 

@@ -47,11 +47,11 @@ import com.tencent.widget.XSimpleListAdapter;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import java.util.List;
 import mqq.os.MqqHandler;
-import swg;
-import swh;
-import swi;
-import swj;
-import swk;
+import tbb;
+import tbc;
+import tbd;
+import tbe;
+import tbf;
 
 public class KPLProfileCardActivity
   extends BaseActivity
@@ -62,7 +62,7 @@ public class KPLProfileCardActivity
   Button jdField_a_of_type_AndroidWidgetButton;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new swk(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new tbf(this);
   DynamicAvatarView jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView;
   public KplCard a;
   KplRoleInfo.WZRYUIinfo jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo;
@@ -93,9 +93,9 @@ public class KPLProfileCardActivity
         localObject = localView;
         if (!TextUtils.isEmpty(paramString))
         {
-          localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970542, null);
-          localView = ((ViewGroup)localObject).findViewById(2131362719);
-          TextView localTextView = (TextView)((ViewGroup)localObject).findViewById(2131364119);
+          localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970555, null);
+          localView = ((ViewGroup)localObject).findViewById(2131362724);
+          TextView localTextView = (TextView)((ViewGroup)localObject).findViewById(2131364144);
           localView.setBackgroundResource(paramInt);
           localTextView.setText(paramString.trim());
           paramViewGroup.addView((View)localObject);
@@ -107,34 +107,34 @@ public class KPLProfileCardActivity
   
   private void a()
   {
-    setContentView(2130970371);
+    setContentView(2130970386);
     this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)getSystemService("layout_inflater"));
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130970370, null);
+    this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130970385, null);
     this.jdField_a_of_type_Boolean = false;
     Object localObject = (FrameLayout)findViewById(16908290);
     if (localObject != null) {
-      ((FrameLayout)localObject).setBackgroundResource(2130843039);
+      ((FrameLayout)localObject).setBackgroundResource(2130843071);
     }
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370252));
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView = ((DynamicAvatarView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369100));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370257));
-    this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView = ((PullToZoomHeaderListView)findViewById(2131363733));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370261));
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView = ((DynamicAvatarView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369101));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370266));
+    this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView = ((PullToZoomHeaderListView)findViewById(2131363757));
     this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.setHeaderImage(this.jdField_a_of_type_ComTencentImageURLImageView);
-    this.b = ((TextView)findViewById(2131363245));
-    this.b.setText(getString(2131433698));
-    this.b.setBackgroundResource(2130845274);
-    this.b.setTextColor(getResources().getColor(2131494188));
+    this.b = ((TextView)findViewById(2131363262));
+    this.b.setText(getString(2131433712));
+    this.b.setBackgroundResource(2130845349);
+    this.b.setTextColor(getResources().getColor(2131494194));
     this.b.setOnClickListener(this);
-    localObject = (LinearLayout)findViewById(2131364148);
-    View localView = View.inflate(this, 2130970529, null);
+    localObject = (LinearLayout)findViewById(2131364173);
+    View localView = View.inflate(this, 2130970542, null);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131365251));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131365278));
     this.jdField_a_of_type_AndroidWidgetButton.setText(2131427368);
     this.jdField_a_of_type_AndroidWidgetButton.setTag("addFriend");
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     ((LinearLayout)localObject).addView(localView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131363379));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131363398));
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(4);
     this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.setAdapter(new XSimpleListAdapter(this.jdField_a_of_type_AndroidViewView));
   }
@@ -179,11 +179,11 @@ public class KPLProfileCardActivity
       i = i * 146 / 640;
       break;
       label126:
-      View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970536, null);
-      ImageView localImageView = (ImageView)localView.findViewById(2131362960);
+      View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970549, null);
+      ImageView localImageView = (ImageView)localView.findViewById(2131362965);
       Object localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject2 = getResources().getDrawable(2130843058);
+        localObject2 = getResources().getDrawable(2130843090);
       }
       Object localObject4 = ((KplRoleInfo)localObject3).roleUrl;
       localObject1 = ((KplRoleInfo)localObject3).roleName;
@@ -199,8 +199,8 @@ public class KPLProfileCardActivity
         ((URLDrawable)localObject4).setTag(URLDrawableDecodeHandler.a(m, m, (int)(16.0F * DeviceInfoUtil.a())));
         ((URLDrawable)localObject4).setDecodeHandler(URLDrawableDecodeHandler.g);
         localImageView.setImageDrawable((Drawable)localObject4);
-        ((TextView)localView.findViewById(2131369792)).setText((CharSequence)localObject1);
-        ((TextView)localView.findViewById(2131367500)).setText((CharSequence)localObject3);
+        ((TextView)localView.findViewById(2131369802)).setText((CharSequence)localObject1);
+        ((TextView)localView.findViewById(2131367507)).setText((CharSequence)localObject3);
         localView.setContentDescription((String)localObject1 + (String)localObject3);
         paramHorizontalScrollLayout.addView(localView, new LinearLayout.LayoutParams(i, -2));
         localObject1 = localObject2;
@@ -217,7 +217,7 @@ public class KPLProfileCardActivity
   
   private void b()
   {
-    ThreadManager.postImmediately(new swg(this), null, true);
+    ThreadManager.postImmediately(new tbb(this), null, true);
   }
   
   private void b(KplCard paramKplCard)
@@ -227,7 +227,7 @@ public class KPLProfileCardActivity
     }
     try
     {
-      localDrawable = getResources().getDrawable(2130843018);
+      localDrawable = getResources().getDrawable(2130843050);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -273,11 +273,11 @@ public class KPLProfileCardActivity
       if (NetworkUtil.g(this)) {
         break label85;
       }
-      ThreadManager.getUIHandler().post(new swh(this));
+      ThreadManager.getUIHandler().post(new tbc(this));
     }
     for (;;)
     {
-      ThreadManager.getUIHandler().post(new swi(this));
+      ThreadManager.getUIHandler().post(new tbd(this));
       return;
       label85:
       localCardHandler.d(this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin);
@@ -292,9 +292,9 @@ public class KPLProfileCardActivity
     Object localObject1 = KplRoleInfo.WZRYUIinfo.buildNickName(paramKplCard.qqNick, paramKplCard.gameNick);
     this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131370258);
+    localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131370267);
     ((View)localObject1).setVisibility(0);
-    Object localObject2 = (LinearLayout)((View)localObject1).findViewById(2131370259);
+    Object localObject2 = (LinearLayout)((View)localObject1).findViewById(2131370268);
     ((LinearLayout)localObject2).removeAllViews();
     localObject1 = "";
     if (paramKplCard.gender == 0) {
@@ -302,9 +302,9 @@ public class KPLProfileCardActivity
     }
     for (;;)
     {
-      a((ViewGroup)localObject2, 2130843047, (String)localObject1 + paramKplCard.gameLevel);
-      a((ViewGroup)localObject2, 2130842646, paramKplCard.commonInfo);
-      localObject1 = (ProfileCardFavorShowView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370260);
+      a((ViewGroup)localObject2, 2130843079, (String)localObject1 + paramKplCard.gameLevel);
+      a((ViewGroup)localObject2, 2130842681, paramKplCard.commonInfo);
+      localObject1 = (ProfileCardFavorShowView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370269);
       ((ProfileCardFavorShowView)localObject1).setVisibility(0);
       ((ProfileCardFavorShowView)localObject1).setTitle("王者荣耀");
       ((ProfileCardFavorShowView)localObject1).removeAllViews();
@@ -323,9 +323,9 @@ public class KPLProfileCardActivity
       localObject2 = new ProfileCardFavorItemView(this);
       ((ProfileCardFavorItemView)localObject2).setTitle("常用英雄");
       ((ProfileCardFavorItemView)localObject2).setArrowVisiale(false);
-      localObject3 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970553, null);
-      HorizontalScrollLayout localHorizontalScrollLayout = (HorizontalScrollLayout)((View)localObject3).findViewById(2131364073);
-      localHorizontalScrollLayout.setOnTouchListener(new swj(this));
+      localObject3 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970566, null);
+      HorizontalScrollLayout localHorizontalScrollLayout = (HorizontalScrollLayout)((View)localObject3).findViewById(2131364098);
+      localHorizontalScrollLayout.setOnTouchListener(new tbe(this));
       a(localHorizontalScrollLayout, paramKplCard);
       ((ProfileCardFavorItemView)localObject2).addView((View)localObject3);
       ((ProfileCardFavorItemView)localObject2).b.setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131492969)));
@@ -342,7 +342,7 @@ public class KPLProfileCardActivity
     if (!NetworkUtil.g(this)) {}
     do
     {
-      QQToast.a(this, getResources().getString(2131437758), 0).b(getTitleBarHeight());
+      QQToast.a(this, getResources().getString(2131437778), 0).b(getTitleBarHeight());
       do
       {
         return;
@@ -363,7 +363,7 @@ public class KPLProfileCardActivity
     label237:
     for (int j = 2;; j = this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.subSourceId)
     {
-      localObject = AddFriendLogicActivity.a(this, 1, this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin, null, i, j, (String)localObject, null, null, getString(2131435226), null);
+      localObject = AddFriendLogicActivity.a(this, 1, this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.uin, null, i, j, (String)localObject, null, null, getString(2131435242), null);
       ((Intent)localObject).putExtra("param_wzry_data", this.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo);
       startActivityForResult((Intent)localObject, 228);
       ReportController.b(this.app, "CliOper", "", "", "0X80085C5", "0X80085C5", 0, 0, String.valueOf(j), "", "", "");
@@ -400,7 +400,7 @@ public class KPLProfileCardActivity
         d();
         ReportController.b(this.app, "dc00898", "", "", "0X8008436", "0X8008436", 0, 0, "", "", "", "");
       }
-    case 2131363428: 
+    case 2131363447: 
       return;
     }
     finish();

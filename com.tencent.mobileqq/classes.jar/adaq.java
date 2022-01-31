@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
-public class adaq
+class adaq
+  implements Runnable
 {
-  public long a;
-  public String a;
-  public long b;
+  adaq(adap paramadap) {}
   
-  public adaq(FileManagerProxy paramFileManagerProxy) {}
+  public void run()
+  {
+    this.a.a.e();
+  }
 }
 
 

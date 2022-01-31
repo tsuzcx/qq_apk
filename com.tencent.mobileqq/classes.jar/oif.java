@@ -1,18 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
+import com.tencent.biz.qqstory.takevideo.EditPicSave;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class oif
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ProgressPieDrawable.OnProgressListener
 {
-  public oif(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
+  public oif(EditPicSave paramEditPicSave) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(ProgressPieDrawable paramProgressPieDrawable)
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.g();
+    if (QLog.isColorLevel()) {
+      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    }
   }
+  
+  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

@@ -1,32 +1,34 @@
-import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView.StatusListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DancePlayFilter;
+import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
+import java.util.List;
 
 public class aiaq
-  implements GLRecognizeRegionView.StatusListener
+  implements Runnable
 {
-  public aiaq(DancePlayFilter paramDancePlayFilter) {}
+  public aiaq(MessageSearchEngine paramMessageSearchEngine, ISearchListener paramISearchListener, SearchRequest paramSearchRequest) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (paramInt == 2)
+    aiar localaiar = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null)
     {
-      DancePlayFilter.a(this.a, DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a), 75, 1));
-      DancePlayFilter.a(this.a).e();
-      DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a));
+      localaiar = new aiar(this);
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.addObserver(localaiar);
     }
-    if (paramInt == 3)
-    {
-      DancePlayFilter.b(this.a, DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a), 75, 2));
-      DancePlayFilter.a(this.a).e();
-      DancePlayFilter.a(this.a).a(DancePlayFilter.b(this.a));
+    List localList = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
+    if (localaiar != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.deleteObserver(localaiar);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiaq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.os.Handler;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
 
 public class adzx
   implements Runnable
 {
-  public adzx(LebaWithFeeds paramLebaWithFeeds) {}
+  public adzx(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
   public void run()
   {
-    LebaWithFeeds.a(this.a, true);
+    if (this.a.b())
+    {
+      this.a.e();
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 100L);
+    }
   }
 }
 

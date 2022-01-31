@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.ar.config.WorldCup;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
 
 public class tbi
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tbi(MainFragment paramMainFragment) {}
+  public tbi(LbsBaseActivity paramLbsBaseActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = MainFragment.a(this.a);
-    WorldCup.a(MainFragment.a(this.a), this.a.getActivity(), this.a.getView(), str);
+    NearbySPUtil.a(this.a.getAppInterface().getAccount(), true);
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
+    }
   }
 }
 

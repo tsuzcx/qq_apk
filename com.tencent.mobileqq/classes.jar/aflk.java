@@ -1,37 +1,47 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import java.util.Calendar;
 
-class aflk
-  implements Runnable
+public class aflk
+  implements IphonePickerView.PickerViewAdapter
 {
-  aflk(aflj paramaflj, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  public aflk(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void run()
+  public int getColumnCount()
   {
-    List localList = NearbyMomentManager.a(this.jdField_a_of_type_Aflj.a, this.jdField_a_of_type_JavaUtilList);
-    Object localObject;
-    if (localList == null)
+    return 3;
+  }
+  
+  public int getRowCount(int paramInt)
+  {
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyMomentManager", 2, "momentFeedInfoList is null");
-      }
-      localObject = new ArrayList();
+    default: 
+      return 0;
+    case 0: 
+      return this.a.b - 1896 + 1;
+    case 1: 
+      return 12;
     }
-    for (;;)
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, this.a.e + 1896);
+    localCalendar.set(2, this.a.f);
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String getText(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      ThreadManager.getUIHandler().post(new afll(this, (List)localObject));
-      return;
-      localObject = localList;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("NearbyMomentManager", 2, "momentFeedInfoList, size=" + this.jdField_a_of_type_JavaUtilList.size());
-        localObject = localList;
-      }
+    default: 
+      return "";
+    case 0: 
+      return paramInt2 + 1896 + "年";
+    case 1: 
+      return paramInt2 + 1 + "月";
     }
+    return paramInt2 + 1 + "日";
   }
 }
 

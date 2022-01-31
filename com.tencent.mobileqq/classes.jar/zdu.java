@@ -1,29 +1,22 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
+import com.tencent.mobileqq.apollo.view.ApolloDrawerInfoViewListener;
+import java.lang.ref.WeakReference;
 
 public class zdu
-  extends MqqHandler
+  implements Runnable
 {
-  public zdu(FriendListHandler paramFriendListHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public zdu(ApolloDrawerInfoViewListener paramApolloDrawerInfoViewListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (ApolloDrawerInfoViewListener.a(this.a).get() != null) {
+      ((SpriteDrawerInfoManager)ApolloDrawerInfoViewListener.a(this.a).get()).a(ApolloDrawerInfoViewListener.a(this.a));
     }
-    FriendListHandler.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zdu
  * JD-Core Version:    0.7.0.1
  */

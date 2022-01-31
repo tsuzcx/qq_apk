@@ -1,28 +1,29 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoLayerUI;
-import com.tencent.av.ui.VideoLayerUI.TouchListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.RedbagToolbar;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.GuideTip2.OnGuideTipListener;
 
 public class kcf
-  implements Runnable
+  implements GuideTip2.OnGuideTipListener
 {
-  public kcf(VideoLayerUI.TouchListener paramTouchListener) {}
+  public kcf(RedbagToolbar paramRedbagToolbar, AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    if (paramBoolean) {}
+    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
     {
-      VideoLayerUI.TouchListener.a(this.a, true);
-      this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(1), Float.valueOf(VideoLayerUI.TouchListener.a(this.a)), Float.valueOf(VideoLayerUI.TouchListener.b(this.a)) });
-      if (QLog.isColorLevel()) {
-        QLog.e(this.a.a.jdField_a_of_type_JavaLangString, 2, "[childLock] trigger animation");
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a(false);
+        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcf
  * JD-Core Version:    0.7.0.1
  */

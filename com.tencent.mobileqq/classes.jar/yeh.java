@@ -1,30 +1,70 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import java.util.ArrayList;
 
 public class yeh
-  implements DialogInterface.OnClickListener
 {
-  public yeh(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public int a;
+  public long a;
+  public ArrayList a;
+  public yeh a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private yeh()
   {
-    Object localObject = ShortVideoPreviewActivity.a(this.a);
-    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
-    Intent localIntent = new Intent();
-    localIntent.setClassName((String)localObject, paramDialogInterface);
-    localIntent.addFlags(603979776);
-    localIntent.putExtra("file_send_path", this.a.c);
-    localIntent.putExtra("file_send_size", this.a.a);
-    localIntent.putExtra("file_send_duration", this.a.jdField_b_of_type_Long);
-    localIntent.putExtra("file_source", this.a.jdField_b_of_type_JavaLangString);
-    this.a.startActivity(localIntent);
-    ShortVideoPreviewActivity.a(this.a);
-    localObject = new Intent("key_video_select_confirm_ok_click");
-    ((Intent)localObject).putExtra("className", paramDialogInterface);
-    this.a.sendBroadcast((Intent)localObject);
+    this.jdField_a_of_type_Yeh = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public static yeh a()
+  {
+    yeh localyeh = new yeh();
+    localyeh.a();
+    return localyeh;
+  }
+  
+  public String a()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return "LBS_REQ_OK";
+    case 1: 
+      return "LBS_REQ_PENDING";
+    }
+    return "LBS_REQ_PERM_OK";
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_Yeh == null) {
+      this.jdField_a_of_type_Yeh = new yeh();
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    LbsFilterStatusManager.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
+    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Yeh.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Yeh.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Yeh.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Yeh.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Yeh.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
   }
 }
 

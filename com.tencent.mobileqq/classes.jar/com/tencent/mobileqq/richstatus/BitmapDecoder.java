@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus;
 
-import ahph;
+import ahtz;
 import android.graphics.Bitmap;
 import android.support.v4.util.MQLruCache;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -30,7 +30,7 @@ public class BitmapDecoder
   public static File a()
   {
     if (SystemUtil.a()) {
-      return new File(AppConstants.aJ + "status_ic");
+      return new File(AppConstants.aK + "status_ic");
     }
     return null;
   }
@@ -76,7 +76,7 @@ public class BitmapDecoder
           QLog.d("Q.richstatus.img", 2, "decodeBitmap " + paramString1 + ", " + paramString2 + ", " + paramString3);
         }
         this.jdField_a_of_type_JavaUtilHashSet.add(paramString1);
-        new ahph(this, paramString1, paramString2, paramString3).execute((Void[])null);
+        new ahtz(this, paramString1, paramString2, paramString3).execute((Void[])null);
       }
     }
     return localBitmap;

@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.now.send.uploader.WordsCheck.OnResultListener;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class aevl
-  implements WordsCheck.OnResultListener
+  implements Runnable
 {
-  public aevl(ImageFeedsUploader paramImageFeedsUploader) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public long c;
+  public long d;
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (paramInt == 0)
+    try
     {
-      this.a.a();
+      this.d = System.currentTimeMillis();
+      ThreadManager.post(new aevm(this), 5, null, false);
       return;
     }
-    b(paramInt);
-  }
-  
-  public void b(int paramInt)
-  {
-    VideoFeedsUploader.UploadResult localUploadResult = new VideoFeedsUploader.UploadResult();
-    localUploadResult.i = "文字包含敏感词！";
-    localUploadResult.a = paramInt;
-    ImageFeedsUploader.a(this.a, localUploadResult);
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

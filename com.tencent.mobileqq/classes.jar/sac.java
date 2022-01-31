@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class sac
-  implements FMDialogUtil.FMDialogInterface
+public final class sac
+  implements Runnable
 {
-  public sac(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
+  public sac(String paramString, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void run()
   {
-    FileManagerUtil.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    try
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      StatisticConstants.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
+      return;
+    }
+    catch (Exception localException) {}
   }
-  
-  public void b() {}
 }
 
 

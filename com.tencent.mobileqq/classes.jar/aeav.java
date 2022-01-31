@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.QZoneEntryController;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
-class aeav
-  implements Runnable
+public class aeav
+  implements TVK_IMediaPlayer.OnNetVideoInfoListener
 {
-  aeav(aeau paramaeau, QZoneManagerImp paramQZoneManagerImp) {}
+  public aeav(VideoBaseItem paramVideoBaseItem) {}
   
-  public void run()
+  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp.c(53);
-    Map localMap = QZoneUnreadServletLogic.a(Long.valueOf(this.jdField_a_of_type_Aeau.a.a.getLongAccountUin()));
-    Object localObject = localMap;
-    if (localMap == null) {
-      localObject = new HashMap();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
     }
-    ((Map)localObject).put(Long.valueOf(53L), Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    QZoneUnreadServletLogic.a((Map)localObject, Long.valueOf(this.jdField_a_of_type_Aeau.a.a.getLongAccountUin()));
   }
 }
 

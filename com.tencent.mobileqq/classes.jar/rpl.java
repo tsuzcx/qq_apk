@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XPanelContainer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 
 public class rpl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rpl(BaseChatPie paramBaseChatPie) {}
+  public rpl(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a(1);
+    if (ArkFullScreenAppActivity.a(this.a) != null) {
+      ArkAppDataReport.c(this.a.app, ArkFullScreenAppActivity.a(this.a).a, ArkAppDataReport.c);
+    }
+    this.a.a();
   }
 }
 

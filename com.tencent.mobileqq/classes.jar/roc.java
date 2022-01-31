@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class roc
-  implements Runnable
+class roc
+  implements DialogInterface.OnClickListener
 {
-  public roc(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  roc(rob paramrob) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    if (paramInt == 1)
     {
-      if ((AuthDevRenameActivity.a(this.a) != null) && (AuthDevRenameActivity.a(this.a).isShowing()))
-      {
-        AuthDevRenameActivity.a(this.a).dismiss();
-        AuthDevRenameActivity.a(this.a).cancel();
-      }
-      AuthDevRenameActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      this.a.a.a.cancel();
+      this.a.a.finish();
     }
   }
 }

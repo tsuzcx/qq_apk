@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class tkk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  tkk(tkj paramtkj) {}
+  tkk(tkf paramtkf) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(this.a.a.app, "dc00898", "", "", "0X8007914", "0X8007914", 0, 0, this.a.a.app.getCurrentAccountUin(), "", "", "");
-    HttpDownloadUtil.a("http://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean", this.a.a);
+    paramDialogInterface.dismiss();
   }
 }
 

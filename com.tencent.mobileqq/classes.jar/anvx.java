@@ -1,15 +1,13 @@
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import dov.com.qq.im.capture.poi.FacePoiUI;
 
 public class anvx
   implements Runnable
 {
-  public anvx(HWEditImportVideoPlayer paramHWEditImportVideoPlayer, int paramInt) {}
+  public anvx(FacePoiUI paramFacePoiUI, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditImportVideoPlayer.a.a(Message.obtain(null, 8, 1, this.jdField_a_of_type_Int));
+    FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

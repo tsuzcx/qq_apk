@@ -1,34 +1,24 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XEditTextEx;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
 
 public class rsm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rsm(BaseChatPie paramBaseChatPie) {}
+  public rsm(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length();
-    if ((BaseChatPie.c(this.a) == i) && (BaseChatPie.d(this.a) != 1)) {
-      BaseChatPie.e(this.a);
-    }
-    while (BaseChatPie.f(this.a) <= BaseChatPie.g(this.a))
+    paramView = (ImageView)paramView.findViewById(2131362772);
+    if (paramView != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendMsgSignal();
-      BaseChatPie.h(this.a);
-      ThreadManager.getSubThreadHandler().postDelayed(BaseChatPie.a(this.a), 2000L);
-      return;
-      BaseChatPie.c(this.a, i);
-      BaseChatPie.d(this.a, 0);
+      int i = 0;
+      if (paramView.getVisibility() == 0) {
+        i = 4;
+      }
+      paramView.setVisibility(i);
     }
-    BaseChatPie.c(this.a, false);
-    BaseChatPie.e(this.a, 50);
-    BaseChatPie.d(this.a, 0);
-    BaseChatPie.f(this.a, 0);
   }
 }
 

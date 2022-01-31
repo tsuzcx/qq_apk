@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.vipcomic.VipComicMqqManager;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import java.util.Iterator;
+import java.util.List;
 
-public class acei
+class acei
   implements Runnable
 {
-  public acei(EmoticonMainPanel paramEmoticonMainPanel) {}
+  acei(aceg paramaceg, boolean paramBoolean, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (this.a.a != null)
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aceg.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (this.jdField_a_of_type_Aceg.a.jdField_a_of_type_JavaUtilList != null))
     {
-      ((VipComicMqqManager)this.a.a.getManager(140)).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "vipComicMqqManager.uploadInitComicEmoStructMsgInfo");
+      Iterator localIterator = this.jdField_a_of_type_Aceg.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
+        if (localRecentBaseData.a().equals(this.jdField_a_of_type_JavaLangString))
+        {
+          localRecentBaseData.b = this.b;
+          this.jdField_a_of_type_Aceg.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aceg.a.jdField_a_of_type_Int);
+        }
       }
     }
   }

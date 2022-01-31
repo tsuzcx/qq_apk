@@ -1,13 +1,14 @@
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView;
+import android.widget.ImageButton;
+import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
 
 public class ord
   implements Runnable
 {
-  public ord(QQStoryPullToRefreshListView paramQQStoryPullToRefreshListView) {}
+  public ord(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
   public void run()
   {
-    QQStoryPullToRefreshListView.a(this.a);
+    StoryLocalPublishPart.a(this.a).setVisibility(0);
   }
 }
 

@@ -1,26 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import java.net.URL;
 
 public class aiug
-  implements AdapterView.OnItemLongClickListener
+  implements BitmapDecoder
 {
-  public aiug(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public aiuf a;
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public aiug(DataLineDownloader paramDataLineDownloader) {}
+  
+  public Bitmap a(URL paramURL)
   {
-    if (this.a.a != null)
-    {
-      paramAdapterView = this.a.a.a(paramInt);
-      if ((paramAdapterView == null) || (paramAdapterView.a != 1)) {
-        return false;
-      }
-    }
-    MediaPreviewActivity.a(this.a);
-    return true;
+    this.jdField_a_of_type_Aiuf = this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader.a(paramURL);
+    return DataLineDownloader.a(this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader, this.jdField_a_of_type_Aiuf);
   }
 }
 

@@ -1,54 +1,68 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class aidk
-  extends AsyncTask
+  implements Runnable
 {
-  public aidk(RedBagVideoManager paramRedBagVideoManager) {}
+  public aidk(PtvTemplateManager paramPtvTemplateManager, AppInterface paramAppInterface, File paramFile) {}
   
-  protected Boolean a(String... paramVarArgs)
+  public void run()
   {
-    paramVarArgs = paramVarArgs[0];
-    if (paramVarArgs == null) {
-      paramVarArgs = Boolean.valueOf(false);
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+      {
+        bool = true;
+        QLog.i("PtvTemplateManager", 2, String.format("initBlessSpecialPendantConfigInfo, app[%s], isUpdateedByServer[%s], cur_runnable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_Boolean), Integer.valueOf(hashCode()) }));
+      }
     }
-    Object localObject;
+    else {
+      if (!this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_Boolean) {
+        break label76;
+      }
+    }
+    label76:
+    Object localObject1;
     do
     {
       do
       {
-        return paramVarArgs;
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("VALUE_MSG_VIDEO_ID", paramVarArgs);
-        paramVarArgs = VideoPlayIPCClient.a().a("CMD_QUERY_VIDEO_REDBAG_STAT", (Bundle)localObject);
-        if (paramVarArgs == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RedBagVideoManager", 2, "QueryRewardedTask VideoPlayIPCClient.callServer value=null");
-          }
-          return Boolean.valueOf(false);
-        }
-        localObject = Boolean.valueOf(paramVarArgs.getBoolean("VALUE_MSG_REDBAG_STAT"));
-        paramVarArgs = (String[])localObject;
-      } while (!((Boolean)localObject).booleanValue());
-      paramVarArgs = (String[])localObject;
-    } while (RedBagVideoManager.b(this.a) == null);
-    RedBagVideoManager.b(this.a).g = 1;
-    return localObject;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    if (paramBoolean.booleanValue()) {
-      RedBagVideoManager.c(this.a);
+        return;
+        bool = false;
+        break;
+        localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_JavaIoFile);
+      } while (TextUtils.isEmpty((CharSequence)localObject1));
+      localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager, (String)localObject1);
+    } while ((localObject1 == null) || (((List)localObject1).isEmpty()));
+    ??? = ((List)localObject1).iterator();
+    while (((Iterator)???).hasNext())
+    {
+      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)???).next();
+      if (localPtvTemplateInfo != null)
+      {
+        localPtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(localPtvTemplateInfo);
+        localPtvTemplateInfo.businessID = 1;
+      }
     }
-    while (RedBagVideoManager.a(this.a)) {
-      return;
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_JavaUtilArrayList)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_Boolean) {
+        return;
+      }
     }
-    RedBagVideoManager.d(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_e_of_type_JavaUtilArrayList.addAll(localCollection);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.f = true;
+    PtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager);
   }
 }
 

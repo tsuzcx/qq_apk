@@ -1,59 +1,29 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
 public class mco
-  extends OrientationEventListener
+  implements View.OnTouchListener
 {
-  public mco(VideoFeedsListView paramVideoFeedsListView, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public mco(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void onOrientationChanged(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (VideoFeedsListView.a(this.a)) {}
-    label10:
-    do
+    paramView = ReadInJoyVideoSearchTagFragment.a(this.a).getCompoundDrawables()[2];
+    if ((paramMotionEvent.getAction() == 0) && (paramView != null))
     {
-      do
+      float f = ReadInJoyVideoSearchTagFragment.a(this.a).getRight() - paramView.getBounds().width();
+      if (paramMotionEvent.getRawX() >= f)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                break label10;
-                break label10;
-                break label10;
-                break label10;
-                do
-                {
-                  return;
-                } while ((!VideoFeedsListView.b(this.a)) || (!VideoFeedsListView.c(this.a)) || (VideoFeedsListView.a(this.a) == 1) || (!VideoFeedsListView.a(this.a, paramInt)) || (!VideoFeedsListView.d(this.a)));
-                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
-                  break;
-                }
-              } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 0));
-              VideoFeedsListView.a(this.a, -1);
-            } while (VideoFeedsListView.c(this.a) == 0);
-            this.a.c(true);
-            return;
-            if ((paramInt < 70) || (paramInt > 110)) {
-              break;
-            }
-          } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 2));
-          VideoFeedsListView.a(this.a, -1);
-        } while (VideoFeedsListView.c(this.a) == 2);
-        VideoFeedsListView.a(this.a, 2, true);
-        return;
-      } while ((paramInt < 250) || (paramInt > 290) || ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 1)));
-      VideoFeedsListView.a(this.a, -1);
-    } while (VideoFeedsListView.c(this.a) == 1);
-    VideoFeedsListView.a(this.a, 1, true);
+        ReadInJoyVideoSearchTagFragment.a(this.a);
+        return true;
+      }
+    }
+    return false;
   }
 }
 

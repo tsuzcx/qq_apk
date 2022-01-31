@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.utils.TroopAppMgr;
+import com.tencent.mobileqq.troop.utils.TroopAppMgr.ClickReportObserver;
 
-class ajvs
-  implements Action.OnActionEndListener
+public class ajvs
+  extends TroopAppMgr.ClickReportObserver
 {
-  ajvs(ajvr paramajvr) {}
+  public ajvs(TroopAppMgr paramTroopAppMgr) {}
   
-  public void a()
+  protected void a(boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (paramBoolean) {}
+    synchronized (this.a.a)
+    {
+      this.a.a.clear();
+      this.a.b();
+      TroopAppMgr.a(this.a);
+      return;
     }
   }
 }

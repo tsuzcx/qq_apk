@@ -42,7 +42,7 @@ import com.tencent.widget.TraceUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nvs;
+import oah;
 
 @TargetApi(11)
 public class FeedItemThumbAdapter
@@ -107,7 +107,7 @@ public class FeedItemThumbAdapter
       return;
       localStoryHomeHorizontalListView.scrollTo(300, 0);
       localAnimatorSet.play(localObjectAnimator).with(paramView);
-      localObjectAnimator.addUpdateListener(new nvs(this, localStoryHomeHorizontalListView));
+      localObjectAnimator.addUpdateListener(new oah(this, localStoryHomeHorizontalListView));
     }
   }
   
@@ -120,9 +120,9 @@ public class FeedItemThumbAdapter
       return paramBaseViewHolder.a();
     }
     StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    QQStoryAutoPlayView localQQStoryAutoPlayView = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131371751);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371752);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371753);
+    QQStoryAutoPlayView localQQStoryAutoPlayView = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131371750);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371751);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371752);
     if ((this.c != 0) && (this.c != localQQStoryAutoPlayView.getLayoutParams().width) && (this.d != 0) && (this.d != localQQStoryAutoPlayView.getLayoutParams().height))
     {
       localQQStoryAutoPlayView.getLayoutParams().width = this.c;
@@ -142,12 +142,12 @@ public class FeedItemThumbAdapter
     FeedSegment.a(localStoryVideoItem, localQQStoryAutoPlayView, "QQStory_feed_min", this.c, this.d);
     if (localStoryVideoItem.mHadRead == 1)
     {
-      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494277));
+      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494283));
       if (!localStoryVideoItem.isUploadFail()) {
         break label526;
       }
       localTextView1.setText("上传失败");
-      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494277));
+      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494283));
       localTextView2.setVisibility(8);
     }
     for (;;)
@@ -168,7 +168,7 @@ public class FeedItemThumbAdapter
         StoryReportor.c("video_exp", "exp_topicrecommend", 0, 0, new String[] { "", "", "", localStoryVideoItem.mVid });
       }
       return paramBaseViewHolder.a();
-      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494214));
+      localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494220));
       break;
       label526:
       String str;
@@ -206,7 +206,7 @@ public class FeedItemThumbAdapter
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970734, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970750, paramViewGroup, false));
   }
   
   public void a(int paramInt)

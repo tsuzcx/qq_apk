@@ -1,27 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class wur
-  implements Animation.AnimationListener
+  implements URLDrawable.URLDrawableListener
 {
-  public wur(NewStyleCountryActivity paramNewStyleCountryActivity) {}
+  public wur(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_Wuy.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      NewStyleCountryActivity.a(this.a).setVisibility(8);
-    }
+    EmoticonGroupStoreFragment.a(this.a).invalidate();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.utils;
 
-import akda;
-import akdb;
-import akdc;
-import akdd;
-import akde;
-import akdf;
-import akdh;
-import akdi;
+import akko;
+import akkp;
+import akkq;
+import akkr;
+import akks;
+import akkt;
+import akkv;
+import akkw;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
@@ -77,17 +77,17 @@ public class NewUpgradeDialog
   public NewUpgradeDialog(Activity paramActivity)
   {
     super(paramActivity);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new akdd(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new akkr(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
     requestWindowFeature(1);
     paramActivity = new ColorDrawable();
     paramActivity.setAlpha(0);
     getWindow().setBackgroundDrawable(paramActivity);
-    setContentView(2130969138);
+    setContentView(2130969136);
     this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new NewUpgradeDialog.YYBDownloadListener(this);
     this.jdField_b_of_type_Boolean = ControlPolicyUtil.b();
     DownloadManager.a();
-    setOnKeyListener(new akda(this));
+    setOnKeyListener(new akko(this));
     a();
     LogUtility.b("NewUpgradeDialog", STUtils.a(10010, jdField_b_of_type_Int, 1, 100));
     LogUtility.b("NewUpgradeDialog", STUtils.a(10010, jdField_b_of_type_Int, 2, 100));
@@ -233,7 +233,7 @@ public class NewUpgradeDialog
       }
     }
     if ((ControlPolicyUtil.h()) || (MyAppApi.a().g())) {
-      ThreadManager.getSubThreadHandler().post(new akdh(paramActivity, localBundle));
+      ThreadManager.getSubThreadHandler().post(new akkv(paramActivity, localBundle));
     }
     for (;;)
     {
@@ -258,7 +258,7 @@ public class NewUpgradeDialog
   
   private void f()
   {
-    ThreadManager.getUIHandler().post(new akde(this));
+    ThreadManager.getUIHandler().post(new akks(this));
     i();
     e();
   }
@@ -321,7 +321,7 @@ public class NewUpgradeDialog
     {
       DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
       return;
-      ThreadManager.post(new akdf(this), 5, null, false);
+      ThreadManager.post(new akkt(this), 5, null, false);
     }
   }
   
@@ -396,7 +396,7 @@ public class NewUpgradeDialog
     localBundle.putString("packageName", "com.tencent.mobileqq");
     localBundle.putInt("downloadType", 1);
     localBundle.putBoolean("autoDownload", true);
-    ThreadManager.getSubThreadHandler().post(new akdi(this, localBundle));
+    ThreadManager.getSubThreadHandler().post(new akkw(this, localBundle));
   }
   
   public NewUpgradeDialog a(long paramLong)
@@ -411,7 +411,7 @@ public class NewUpgradeDialog
   public NewUpgradeDialog a(DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
   {
     this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(new akdc(this, paramOnClickListener, paramBoolean));
+    this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(new akkq(this, paramOnClickListener, paramBoolean));
     return this;
   }
   
@@ -526,19 +526,19 @@ public class NewUpgradeDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364034));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363803));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362776));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365329));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364037));
-    this.f = ((TextView)findViewById(2131364038));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364059));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363827));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362781));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365334));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364062));
+    this.f = ((TextView)findViewById(2131364063));
     this.f.setVisibility(0);
     this.f.getPaint().setFakeBoldText(true);
     this.f.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363005));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363010));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365332));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new akdb(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365337));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new akkp(this));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import acry;
-import acsa;
+import adaf;
+import adah;
 import android.content.Context;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
@@ -48,7 +48,7 @@ public class QfileLocalFileOtherTabView
   protected void a()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this);
-    this.jdField_a_of_type_JavaLangRunnable = new acry(this);
+    this.jdField_a_of_type_JavaLangRunnable = new adaf(this);
     ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -57,7 +57,7 @@ public class QfileLocalFileOtherTabView
     if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramFileInfo)) {
       this.jdField_a_of_type_JavaUtilArrayList.add(paramFileInfo);
     }
-    a(new acsa(this, paramFileInfo));
+    a(new adah(this, paramFileInfo));
   }
   
   protected boolean b(FileInfo paramFileInfo)

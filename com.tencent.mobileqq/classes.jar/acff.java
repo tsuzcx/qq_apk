@@ -1,18 +1,26 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxProtocol.ReqNowStateObserver;
+import java.util.Iterator;
+import java.util.List;
 
 public class acff
-  extends RadioButton
+  extends MsgBoxProtocol.ReqNowStateObserver
 {
-  public acff(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public acff(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
   
-  public boolean performClick()
+  public void a(boolean paramBoolean, List paramList, Bundle paramBundle)
   {
-    return true;
+    if (paramBoolean)
+    {
+      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramBundle.hasNext())
+      {
+        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
+        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
+      }
+    }
   }
 }
 

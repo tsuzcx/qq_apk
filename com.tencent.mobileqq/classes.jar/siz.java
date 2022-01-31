@@ -1,23 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.managers.LoadingStateManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class siz
-  implements Handler.Callback
+class siz
+  implements DialogInterface.OnClickListener
 {
-  public siz(Conversation paramConversation) {}
+  siz(siy paramsiy) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LoadingStateManager.a().a(paramMessage.what);
-    if (paramMessage.what == 4)
-    {
-      this.a.a(1134013, 0L, false);
-      return true;
-    }
-    this.a.d(true);
-    return true;
+    paramDialogInterface.dismiss();
   }
 }
 

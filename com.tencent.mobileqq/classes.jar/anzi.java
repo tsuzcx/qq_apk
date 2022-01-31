@@ -1,17 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.base.DoodleStrategy;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.poi.PoiInfo;
 
-public class anzi
-  implements DoodleStrategy
+public final class anzi
+  implements Parcelable.Creator
 {
-  public anzi(DoodleLayout paramDoodleLayout) {}
-  
-  public void a(List paramList, DoodleView paramDoodleView)
+  public PoiInfo a(Parcel paramParcel)
   {
-    paramList.add(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer);
-    paramList.add(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerInteractPasterLayer);
+    return new PoiInfo(paramParcel, null);
+  }
+  
+  public PoiInfo[] a(int paramInt)
+  {
+    return new PoiInfo[paramInt];
   }
 }
 

@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.mobileqq.widget.MessageProgressView.AnimRunnableListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.ScrollView;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.ILayoutSizeHandler;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
 
-public class ajkm
-  implements MessageProgressView.AnimRunnableListener
+class ajkm
+  implements SceneBuilder.ILayoutSizeHandler
 {
-  public ajkm(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView) {}
+  ajkm(ajkj paramajkj) {}
   
-  public void a(String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.a.setVisibility(8);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.a.getLayoutParams();
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = paramInt2;
+    this.a.a.a.setLayoutParams(localLayoutParams);
   }
 }
 

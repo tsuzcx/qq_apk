@@ -1,31 +1,24 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnInfoListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
+import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
+import com.tencent.biz.qqstory.playvideo.ProgressControler;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import java.util.ArrayList;
 
 class nps
   implements Runnable
 {
-  nps(npr paramnpr, int paramInt, Object paramObject) {}
+  nps(npr paramnpr) {}
   
   public void run()
   {
-    int i;
-    if (this.jdField_a_of_type_Npr.a.a != null)
+    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.a.a.a.b, false);
+    if ((this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a != null) && (this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() > 0))
     {
-      i = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Int != 21) {
-        break label58;
-      }
-      i = 2;
+      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a);
+      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(this.a.a.a.b());
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Npr.a.a.a(this.jdField_a_of_type_Npr.a, i, this.jdField_a_of_type_JavaLangObject);
-      return;
-      label58:
-      if (this.jdField_a_of_type_Int == 22) {
-        i = 3;
-      }
-    }
+    this.a.a.a.jdField_a_of_type_Boolean = true;
   }
 }
 

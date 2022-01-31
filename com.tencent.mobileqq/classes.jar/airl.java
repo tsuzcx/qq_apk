@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.teamwork.TeamWorkSaveDialog;
 
-class airl
-  implements Runnable
+public class airl
+  implements View.OnClickListener
 {
-  airl(airj paramairj, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public airl(TeamWorkSaveDialog paramTeamWorkSaveDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Airj.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog, 0);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkSaveDialog.dismiss();
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

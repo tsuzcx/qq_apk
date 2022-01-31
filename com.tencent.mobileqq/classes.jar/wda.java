@@ -1,23 +1,52 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.List;
 
 public class wda
   implements Runnable
 {
-  public wda(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
+  public wda(PublicAccountChatPie paramPublicAccountChatPie, String paramString, int paramInt, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    Object localObject = LightalkBlueTipsBar.a(this.a).getPreferences();
-    int i = ((SharedPreferences)localObject).getInt("LT_tip_show_times" + LightalkBlueTipsBar.a(this.a).getCurrentAccountUin(), 0);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + LightalkBlueTipsBar.a(this.a).getCurrentAccountUin(), i + 1);
-    ((SharedPreferences.Editor)localObject).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : commit =====> tipsum = " + (i + 1));
+    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    int i;
+    if (localList != null)
+    {
+      bool1 = bool2;
+      if (!localList.isEmpty()) {
+        i = localList.size() - 1;
+      }
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i >= 0)
+      {
+        if ((((MessageRecord)localList.get(i)).msgUid == this.jdField_a_of_type_Long) && (((MessageRecord)localList.get(i)).shmsgseq == this.b)) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.getCurrentAccountUin(), "show_msg_result", bool1, 0L, 0L, new HashMap(), "");
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.BaseChatPie", 2, "reportShowMsgResult uin = " + this.jdField_a_of_type_JavaLangString + " , type = " + this.jdField_a_of_type_Int + " , msguid = " + this.jdField_a_of_type_Long + " , result = " + bool1);
+        }
+        if ((!bool1) && (QLog.isColorLevel())) {
+          QLog.d("Q.aio.BaseChatPie", 2, "lost msg uin = " + this.jdField_a_of_type_JavaLangString + " , type = " + this.jdField_a_of_type_Int + " , msguid = " + this.jdField_a_of_type_Long + " , msgseq = " + this.b);
+        }
+        return;
+      }
+      i -= 1;
     }
   }
 }

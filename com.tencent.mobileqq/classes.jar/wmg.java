@@ -1,22 +1,48 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import java.util.ArrayList;
+import android.os.Message;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class wmg
   implements Runnable
 {
-  public wmg(ContactsTroopAdapter paramContactsTroopAdapter, TroopManager paramTroopManager, RecentUserProxy paramRecentUserProxy) {}
+  private int jdField_a_of_type_Int;
+  
+  private wmg(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
   public void run()
   {
-    ArrayList localArrayList1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a();
-    ArrayList localArrayList2 = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a.getManager(52)).a();
-    ThreadManager.getUIHandler().post(new wmh(this, localArrayList1, localArrayList2));
+    long l1;
+    Message localMessage;
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.isDetached())
+    {
+      l1 = System.currentTimeMillis();
+      List localList = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a();
+      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(0, localList);
+      localMessage.arg1 = this.jdField_a_of_type_Int;
+      if ((localList != null) && (!localList.isEmpty())) {
+        break label83;
+      }
+      localMessage.arg2 = 11;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+      return;
+      label83:
+      localMessage.arg2 = 10;
+      if (QLog.isColorLevel())
+      {
+        long l2 = System.currentTimeMillis();
+        QLog.d(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "More messages loaded. Costs " + (l2 - l1) + " ms.");
+      }
+    }
   }
 }
 

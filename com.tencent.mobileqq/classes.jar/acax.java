@@ -1,22 +1,32 @@
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerRecallListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
 public class acax
-  implements EmojiStickerManager.StickerRecallListener
+  extends Handler
 {
-  public acax(MessengerService paramMessengerService) {}
-  
-  public void a(boolean paramBoolean)
+  public acax(ContactSyncManager paramContactSyncManager, Looper paramLooper)
   {
-    if (this.a.a != null) {
-      EmojiStickerManager.a().a(this.a.a, paramBoolean);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      ContactSyncManager.a(this.a);
+      return;
     }
+    ContactSyncManager.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acax
  * JD-Core Version:    0.7.0.1
  */

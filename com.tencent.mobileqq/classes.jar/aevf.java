@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
 
 public class aevf
   implements Runnable
 {
-  public aevf(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  public aevf(NearbyProxy paramNearbyProxy, NearbyProxyObserver paramNearbyProxyObserver, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.a.d();
+    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProxyObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

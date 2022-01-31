@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.mobileqq.armap.ShopScanDragView;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class abdw
-  implements Runnable
+public final class abdw
+  implements View.OnClickListener
 {
-  public abdw(ShopScanActivity paramShopScanActivity) {}
+  public abdw(boolean paramBoolean, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    paramView = new Intent();
+    paramView.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserDelegationActivity");
+    paramView.putExtra("param_force_internal_browser", this.jdField_a_of_type_Boolean);
+    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("injectrecommend", false);
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity != null) {
+      localBaseActivity.startActivity(paramView);
     }
   }
 }

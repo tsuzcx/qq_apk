@@ -1,18 +1,16 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.TextInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
+import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr;
+import java.util.HashSet;
 
 public class ajlj
   implements Runnable
 {
-  public ajlj(TextItem paramTextItem, TextItem.TextViewHolder paramTextViewHolder, TextInfo paramTextInfo) {}
+  public ajlj(TroopFileDownloadMgr paramTroopFileDownloadMgr) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.requestFocus();
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.findFocus();
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.a);
+    HashSet localHashSet = new HashSet();
+    this.a.a(1, localHashSet);
+    TroopFileDownloadMgr.a(this.a, 1, new Object[] { localHashSet });
   }
 }
 

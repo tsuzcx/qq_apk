@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
-import akbf;
-import akbg;
-import akbh;
-import akbj;
-import akbk;
+import akis;
+import akit;
+import akiu;
+import akiw;
+import akix;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -30,12 +30,12 @@ public class AntiFraudConfigFileUtil
 {
   private int jdField_a_of_type_Int = -1;
   private Bundle jdField_a_of_type_AndroidOsBundle = new Bundle();
-  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new akbh(this);
+  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new akiu(this);
   private Bundle b = new Bundle();
   
   public static AntiFraudConfigFileUtil a()
   {
-    return akbk.a;
+    return akix.a;
   }
   
   private void a(Bundle paramBundle, String paramString, Element paramElement)
@@ -467,7 +467,7 @@ public class AntiFraudConfigFileUtil
   
   public Object a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    ThreadManager.getFileThreadHandler().post(new akbg(this, paramString1));
+    ThreadManager.getFileThreadHandler().post(new akit(this, paramString1));
     Bundle localBundle1 = null;
     Bundle localBundle2 = this.jdField_a_of_type_AndroidOsBundle.getBundle(paramString1);
     paramString1 = localBundle1;
@@ -512,7 +512,7 @@ public class AntiFraudConfigFileUtil
         localObject = "SensMsgTipsCfg";
       }
     }
-    ThreadManager.getFileThreadHandler().post(new akbf(this, (String)localObject));
+    ThreadManager.getFileThreadHandler().post(new akis(this, (String)localObject));
     paramString1 = null;
     localObject = this.jdField_a_of_type_AndroidOsBundle.getBundle((String)localObject);
     if (localObject != null) {
@@ -829,7 +829,7 @@ public class AntiFraudConfigFileUtil
     try
     {
       this.b.putInt(paramString2, 1);
-      ThreadManager.post(new akbj(this, paramString1, paramString3, paramString2), 5, null, false);
+      ThreadManager.post(new akiw(this, paramString1, paramString3, paramString2), 5, null, false);
       return;
     }
     catch (Throwable localThrowable)

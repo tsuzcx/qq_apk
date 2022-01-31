@@ -470,13 +470,13 @@
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010171" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010172" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010173">
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02d9" value="0x00000000" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02da" value="0x00000001" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02db" value="0x00000002" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02dc" value="0x00000003" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02dd" value="0x00000004" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02de" value="0x00000001" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02df" value="0x00000002" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02de" value="0x00000000" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02df" value="0x00000001" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e0" value="0x00000002" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e1" value="0x00000003" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e2" value="0x00000004" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e3" value="0x00000001" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e4" value="0x00000002" />
     </attr>
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010174" format="reference|boolean" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010175" format="reference" />
@@ -487,7 +487,7 @@
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01017a" format="reference" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01017b">
         <flag name="APKTOOL_DUPLICATE_id_0x7f0a0023" value="0x00000000" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e0" value="0x00000001" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e5" value="0x00000001" />
     </attr>
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01017c" format="reference|boolean" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01017d" format="reference|boolean" />
@@ -497,10 +497,10 @@
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010181" format="reference" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010182" format="reference" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010183">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02e1" value="0" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02e2" value="1" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02e3" value="2" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02e4" value="3" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02e6" value="0" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02e7" value="1" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02e8" value="2" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02e9" value="3" />
     </attr>
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010184" format="integer" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010185" format="color" />
@@ -517,10 +517,10 @@
         <flag name="APKTOOL_DUPLICATE_id_0x7f0a0008" value="0x00000011" />
     </attr>
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01018a" format="dimension">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02f1" value="-1" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02f6" value="-1" />
     </attr>
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01018b" format="dimension">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02f1" value="-1" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02f6" value="-1" />
     </attr>
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01018c" format="dimension" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01018d" format="dimension" />
@@ -557,29 +557,29 @@
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101ac" format="integer" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101ad" format="integer" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101ae" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101af" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b0" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b1" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101af" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b0" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b1" format="color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b2" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b3" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b4" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b5" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b6" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b7" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b8" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b9" format="color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101ba" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101bb" format="color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101bc" format="color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101bd" format="integer" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101be" format="integer" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101bf">
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b3" format="color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b4" format="color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b5" format="integer" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b6" format="integer" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b7">
         <enum name="APKTOOL_DUPLICATE_id_0x7f0a0023" value="1" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02f2" value="0" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02f7" value="0" />
     </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101c0" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101c1" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101c2" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b8" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101b9" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101ba" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101bb" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101bc" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101bd" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101be" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101bf" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101c0" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101c1" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101c2" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101c3" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101c4" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101c5" format="reference|color" />
@@ -629,29 +629,29 @@
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f1" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f2" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f3" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f4" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f5" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f6" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f7" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f8" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f9" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f4" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f5" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f6" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f7" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f8" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101f9" format="reference" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101fa" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101fb" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101fc" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101fd" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0101fd" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101fe" format="reference" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0101ff" format="reference" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010200" format="reference" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010201" format="reference" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010202" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010203" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010204" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010204" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010205" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010206" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010207" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010208" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010209" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01020a" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010206" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010207" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010208" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010209" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01020a" format="reference" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01020b" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01020c" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01020d" format="reference|color" />
@@ -659,7 +659,7 @@
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01020f" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010210" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010211" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010212" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010212" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010213" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010214" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010215" format="reference|color" />
@@ -708,179 +708,171 @@
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010240" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010241" format="reference|color" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010242" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010243" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010244" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010245" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010246" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010247" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010248" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010249" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024a" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024b" format="integer" min="0" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024c" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024d" format="float" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010243" format="integer" min="0" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010244" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010245" format="float" />
     <attr name="icon" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024f" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010250" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010251" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010252" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010253" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010254" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010255" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010256" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010257" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010258" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010259" format="reference|string" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025a" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025b" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025c" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025d" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025e" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025f" format="integer" min="0" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010260" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010261" format="integer" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010262" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010263" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010264" format="integer" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010265" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010266" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010267" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010268" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010269">
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02d9" value="0x00000000" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02dc" value="0x00000003" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02de" value="0x00000001" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02df" value="0x00000002" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010247" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010248" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010249" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024a" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024b" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024c" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024d" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024e" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01024f" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010250" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010251" format="reference|string" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010252" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010253" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010254" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010255" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010256" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010257" format="integer" min="0" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010258" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010259" format="integer" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025a" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025b" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025c" format="integer" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025d" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025e" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01025f" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010260" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010261">
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02de" value="0x00000000" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e1" value="0x00000003" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e3" value="0x00000001" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e4" value="0x00000002" />
     </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026a" format="reference|boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026b" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026c" format="reference|boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026d" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026e" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026f" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010270" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010271" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010272" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010273" format="color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010274">
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02dc" value="0x00000003" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02de" value="0x00000001" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02df" value="0x00000002" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010262" format="reference|boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010263" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010264" format="reference|boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010265" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010266" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010267" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010268" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010269" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026a" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026b" format="color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026c">
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e1" value="0x00000003" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e3" value="0x00000001" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02e4" value="0x00000002" />
     </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010275" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010276" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010277" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010278" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010279" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027a" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027b" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027c" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027d" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027e" format="reference|dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027f" format="integer">
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026d" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026e" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01026f" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010270" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010271" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010272" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010273" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010274" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010275" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010276" format="reference|dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010277" format="integer">
         <flag name="APKTOOL_DUPLICATE_id_0x7f0a0008" value="0x00000001" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02f3" value="0x00000002" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02f4" value="0x00000003" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02f5" value="0x00000004" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02f6" value="0x00000005" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02f8" value="0x00000002" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02f9" value="0x00000003" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02fa" value="0x00000004" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02fb" value="0x00000005" />
     </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010280" format="integer">
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010278" format="integer">
         <flag name="APKTOOL_DUPLICATE_id_0x7f0a0008" value="0x00000001" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02f7" value="0x00000002" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02f8" value="0x00000003" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02f9" value="0x00000004" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02fa" value="0x00000005" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02fb" value="0x00000006" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02fc" value="0x00000007" />
-        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02fd" value="0x00000008" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02fc" value="0x00000002" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02fd" value="0x00000003" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02fe" value="0x00000004" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a02ff" value="0x00000005" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a0300" value="0x00000006" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a0301" value="0x00000007" />
+        <flag name="APKTOOL_DUPLICATE_id_0x7f0a0302" value="0x00000008" />
     </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010281" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010282" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010283" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010284" format="reference|color" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010285" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010279" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027a" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027b" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027c" format="reference|color" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027d" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027e" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01027f" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010280" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010281" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010282" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010283" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010284" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010285">
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0303" value="0" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0304" value="1" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0305" value="2" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0306" value="3" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0307" value="4" />
+    </attr>
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010286" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010287" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010287" format="integer" min="0">
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0308" value="-1" />
+    </attr>
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010288" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010289" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01028a" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010289" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01028a">
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02f6" value="1" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0309" value="0" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a030a" value="2" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a030b" value="3" />
+    </attr>
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01028b" format="dimension" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01028c" format="dimension" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01028d">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02fe" value="0" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02ff" value="1" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0300" value="2" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0301" value="3" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0302" value="4" />
-    </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01028e" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01028f" format="integer" min="0">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0303" value="-1" />
-    </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010290" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010291" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010292">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02f1" value="1" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0304" value="0" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0303" value="0" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0304" value="1" />
         <enum name="APKTOOL_DUPLICATE_id_0x7f0a0305" value="2" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0306" value="3" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a030c" value="3" />
     </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010293" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01028e">
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0303" value="0" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0304" value="1" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a030c" value="3" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a030d" value="4" />
+    </attr>
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01028f" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010290" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010291" format="integer" min="0">
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0308" value="-1" />
+    </attr>
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010292" format="integer" min="0">
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0308" value="-1" />
+    </attr>
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010293" format="boolean" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f010294" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010295">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02fe" value="0" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02ff" value="1" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0300" value="2" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0307" value="3" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010295" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010296" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010297" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010298" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f010299" format="reference|string" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01029a" format="integer">
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02e1" value="0" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a030e" value="1" />
+        <enum name="APKTOOL_DUPLICATE_id_0x7f0a030f" value="2" />
     </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010296">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02fe" value="0" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02ff" value="1" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0307" value="3" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0308" value="4" />
-    </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010297" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010298" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f010299" format="integer" min="0">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0303" value="-1" />
-    </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01029a" format="integer" min="0">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0303" value="-1" />
-    </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01029b" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01029c" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01029b" format="integer" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01029c" format="integer" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f01029d" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01029e" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f01029f" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a0" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a1" format="reference|string" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a2" format="integer">
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a02dc" value="0" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a0309" value="1" />
-        <enum name="APKTOOL_DUPLICATE_id_0x7f0a030a" value="2" />
-    </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a3" format="integer" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01029e" format="integer" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f01029f" format="float" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a0" format="float" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a1" format="float" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a2" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a3" format="boolean" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a4" format="integer" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a5" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a6" format="integer" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a7" format="float" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a8" format="float" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a9" format="float" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102aa" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102ab" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a5" format="boolean" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a6" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a7" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a8" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102a9" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102aa" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102ab" format="dimension" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0102ac" format="integer" />
     <attr name="APKTOOL_DUPLICATE_attr_0x7f0102ad" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102ae" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102af" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b0" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b1" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b2" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b3" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b4" format="integer" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b5" format="boolean" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b6" format="float" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b7" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b8">
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102ae" format="float" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102af" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b0">
         <flag name="name" value="0x00000030" />
         <flag name="APKTOOL_DUPLICATE_id_0x7f0a0001" value="0x00000050" />
         <flag name="APKTOOL_DUPLICATE_id_0x7f0a0002" value="0x00000003" />
@@ -894,8 +886,8 @@
         <flag name="APKTOOL_DUPLICATE_id_0x7f0a000a" value="0x00000080" />
         <flag name="APKTOOL_DUPLICATE_id_0x7f0a000b" value="0x00000008" />
     </attr>
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b9" format="reference" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102ba" format="integer" min="0" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102bb" format="dimension" />
-    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102bc" format="float" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b1" format="reference" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b2" format="integer" min="0" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b3" format="dimension" />
+    <attr name="APKTOOL_DUPLICATE_attr_0x7f0102b4" format="float" />
 </resources>

@@ -1,66 +1,19 @@
-import com.tencent.mobileqq.pic.PicDownloadInfo;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.PicReq;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class agld
+class agld
   implements Runnable
 {
-  public agld(PicPreDownloader paramPicPreDownloader, int paramInt) {}
+  agld(aglc paramaglc) {}
   
   public void run()
   {
-    int k = 0;
-    for (;;)
-    {
-      int j;
-      int i;
-      PicReq localPicReq;
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.jdField_a_of_type_JavaUtilList)
-      {
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.jdField_a_of_type_JavaUtilList.iterator();
-        j = 0;
-        i = 0;
-        if (!localIterator.hasNext()) {
-          break label310;
-        }
-        localPicReq = (PicReq)localIterator.next();
-        switch (localPicReq.e)
-        {
-        case 4: 
-          k += 1;
-          localPicReq.d = localPicReq.e;
-          this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.jdField_a_of_type_JavaUtilMap.put(localPicReq.a.g, Integer.valueOf(localPicReq.d));
-          this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.d.add(0, localPicReq);
-          localPicReq.d = localPicReq.e;
-          this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.jdField_a_of_type_JavaUtilMap.put(localPicReq.a.g, Integer.valueOf(localPicReq.d));
-        }
-      }
-      i += 1;
-      localPicReq.d = localPicReq.e;
-      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.jdField_a_of_type_JavaUtilMap.put(localPicReq.a.g, Integer.valueOf(localPicReq.d));
-      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.b.add(0, localPicReq);
-      continue;
-      j += 1;
-      localPicReq.d = localPicReq.e;
-      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.jdField_a_of_type_JavaUtilMap.put(localPicReq.a.g, Integer.valueOf(localPicReq.d));
-      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.c.add(0, localPicReq);
-      continue;
-      label310:
-      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.jdField_a_of_type_JavaUtilList.clear();
-      if (QLog.isColorLevel()) {
-        QLog.d("PIC_TAG_PRELOAD", 2, "clearAIORequests(): totalCount=" + this.jdField_a_of_type_Int + " countOfC2C=" + i + " countOfDiscussion=" + j + " countOfGroup=" + k);
-      }
-      return;
-    }
+    QQToast.a(this.a.a.getApplicationContext(), "定位超时，请检查你的定位服务是否开启。", 1).b(this.a.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agld
  * JD-Core Version:    0.7.0.1
  */

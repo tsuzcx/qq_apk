@@ -1,28 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class aock
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aock(VideoFrameLoader paramVideoFrameLoader, int paramInt, Bitmap paramBitmap) {}
+  public aock(EditVideoGuide paramEditVideoGuide) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.jdField_a_of_type_Int != VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).size()) && (QLog.isColorLevel())) {
-      QLog.d("VideoFrameLoader", 2, "onloadframe index error!");
-    }
-    VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).add(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = null;
-    if (VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader) != null) {
-      localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).get();
-    }
-    if (localVideoFrameLoaderListener != null) {
-      localVideoFrameLoaderListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    this.a.jdField_a_of_type_Int = 2;
+    this.a.b = 2;
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(5);
   }
 }
 

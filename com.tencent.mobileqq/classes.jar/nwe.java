@@ -1,20 +1,48 @@
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.storyHome.discover.view.QQStoryDiscoverFragment;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+import android.support.annotation.NonNull;
+import java.lang.ref.WeakReference;
 
-public class nwe
-  implements LoadingMoreHelper.OnLoadMoreListener
+class nwe
+  implements nwd
 {
-  public nwe(QQStoryDiscoverFragment paramQQStoryDiscoverFragment) {}
+  private final int jdField_a_of_type_Int;
+  @NonNull
+  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a() {}
-  
-  public boolean a(boolean paramBoolean)
+  public nwe(@NonNull nwd paramnwd)
   {
-    QQStoryDiscoverFragment.a(this.a).c();
-    StoryReportor.a("content_flow", "load_more", 0, 0, new String[0]);
-    return true;
+    this.jdField_a_of_type_Int = System.identityHashCode(paramnwd);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramnwd);
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
+  }
+  
+  public void a(@NonNull nwb paramnwb)
+  {
+    nwd localnwd = (nwd)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localnwd != null) {
+      localnwd.a(paramnwb);
+    }
+  }
+  
+  public void b(@NonNull nwb paramnwb)
+  {
+    nwd localnwd = (nwd)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localnwd != null) {
+      localnwd.b(paramnwb);
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof nwe)) && (((nwe)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

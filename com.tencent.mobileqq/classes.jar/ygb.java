@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import mqq.os.MqqHandler;
 
 public class ygb
-  implements Runnable
+  extends MqqHandler
 {
-  public ygb(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public ygb(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a(2)) {
-      this.a.runOnUiThread(new ygc(this));
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
     }
-    this.a.a(2, true);
+    this.a.d();
   }
 }
 

@@ -1,89 +1,21 @@
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
-import dov.com.tencent.mobileqq.activity.richmedia.PtvTemplateItemView;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
 
-class ankz
-  implements Runnable
+public class ankz
+  implements DialogInterface.OnClickListener
 {
-  ankz(anky paramanky, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean) {}
+  public ankz(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin, String[] paramArrayOfString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = this.jdField_a_of_type_Anky.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
-    int k = this.jdField_a_of_type_Anky.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
-    int i = j;
-    if (i <= k)
-    {
-      if (i < 0) {}
-      do
-      {
-        i += 1;
-        break;
-        localObject1 = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Anky.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-      } while ((localObject1 == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject1).id.equals(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
-      ((PtvTemplateManager.PtvTemplateInfo)localObject1).downloading = false;
-      ((PtvTemplateManager.PtvTemplateInfo)localObject1).usable = this.jdField_a_of_type_Boolean;
-      Object localObject2 = this.jdField_a_of_type_Anky.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
-      if ((localObject2 instanceof PtvTemplateItemView))
-      {
-        localObject2 = (PtvTemplateItemView)localObject2;
-        if (!this.jdField_a_of_type_Boolean) {
-          break label214;
-        }
-        i = 1000;
-        ((PtvTemplateItemView)localObject2).a(i);
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        ((QIMPtvTemplateManager)QIMManager.a(3)).a(112, localObject1);
-      }
-    }
-    if ((QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a) < 0) || (QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a) >= this.jdField_a_of_type_Anky.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    label214:
-    while ((!((PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Anky.a.jdField_a_of_type_JavaUtilArrayList.get(QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a))).id.equals(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) || (!this.jdField_a_of_type_Boolean) || (QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a) == null))
-    {
-      return;
-      i = -1;
-      break;
-    }
-    Object localObject1 = QIMPtvTemplateManager.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name;
-    QIMPtvTemplateAdapter.jdField_a_of_type_JavaLangString = (String)localObject1;
-    QIMPtvTemplateAdapter.jdField_b_of_type_Int = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.categoryId;
-    QIMPtvTemplateAdapter.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id;
-    if (this.jdField_a_of_type_Anky.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.kind == 3)
-    {
-      QIMPtvTemplateAdapter.jdField_a_of_type_JavaLangString = "";
-      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).a((String)localObject1);
-      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).a("", false, false);
-    }
-    for (;;)
-    {
-      i = AdvancedProviderView.b();
-      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).c(i);
-      i = AdvancedProviderView.c();
-      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).b(i, false);
-      localObject1 = (QIMPtvTemplateManager)QIMManager.a(3);
-      ((QIMPtvTemplateManager)localObject1).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, 111);
-      ((QIMPtvTemplateManager)localObject1).a(3, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.categoryId, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id);
-      ((QIMPtvTemplateManager)localObject1).a(113, null);
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.templateStyle != 0) {
-        break;
-      }
-      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).a(101, new Object[0]);
-      return;
-      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).a((String)localObject1, false, false);
-      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Anky.a).a(null);
-    }
+    paramDialogInterface.dismiss();
+    QzoneQunFeedJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneQunFeedJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankz
  * JD-Core Version:    0.7.0.1
  */

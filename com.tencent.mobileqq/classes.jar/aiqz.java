@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiqz
-  implements Runnable
+public final class aiqz
+  implements DialogInterface.OnClickListener
 {
-  public aiqz(ShortVideoForwardProcessor paramShortVideoForwardProcessor) {}
+  public aiqz(QQAppInterface paramQQAppInterface, Context paramContext, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.q();
+    try
+    {
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_convert_teamwork_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).getString("tim_convert_teamwork_download_url", "https://eim.connect.qq.com/guide/install.html?install=1");
+      FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext, paramDialogInterface);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
+    }
   }
 }
 

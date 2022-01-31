@@ -83,14 +83,14 @@ public class TroopEffectPicItemBuilder
     TroopEffectPicItemBuilder.TroopEffectPicMsgHolder localTroopEffectPicMsgHolder = (TroopEffectPicItemBuilder.TroopEffectPicMsgHolder)paramViewHolder;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971663, null);
+      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971692, null);
       localTroopEffectPicMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewHolder);
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramViewHolder.findViewById(2131375290));
+      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramViewHolder.findViewById(2131375350));
       localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setRadius(12.0F);
       localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.d(false);
-      localTroopEffectPicMsgHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131375293));
-      localTroopEffectPicMsgHolder.b = ((TextView)paramViewHolder.findViewById(2131375292));
-      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewHolder.findViewById(2131375291));
+      localTroopEffectPicMsgHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131375353));
+      localTroopEffectPicMsgHolder.b = ((TextView)paramViewHolder.findViewById(2131375352));
+      localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewHolder.findViewById(2131375351));
       localTroopEffectPicMsgHolder.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnClickListener(this);
       localTroopEffectPicMsgHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setOnTouchListener(paramOnLongClickAndTouchListener);
@@ -223,12 +223,12 @@ public class TroopEffectPicItemBuilder
   {
     switch (paramView.getId())
     {
-    case 2131375291: 
-    case 2131375292: 
+    case 2131375351: 
+    case 2131375352: 
     default: 
       super.onClick(paramView);
       return;
-    case 2131375290: 
+    case 2131375350: 
       Object localObject = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
       if (localObject != null)
       {
@@ -262,14 +262,14 @@ public class TroopEffectPicItemBuilder
         }
       }
     }
-    if (SharedPreUtils.s(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+    if (SharedPreUtils.v(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
       TroopPicEffectsEditActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
     }
     for (;;)
     {
       TroopPicEffectsController.a("obj_msg", "clk_tail    ");
       return;
-      SharedPreUtils.E(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      SharedPreUtils.C(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, TroopPicEffectGuidePicActivity.class);
       paramView.putExtra("friendUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       paramView.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);

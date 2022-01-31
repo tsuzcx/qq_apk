@@ -132,18 +132,18 @@ public class MemoriesFeedSegment
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
     if (a(paramInt) == 4) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970771, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970787, paramViewGroup, false));
     }
     return super.a(paramInt, paramViewGroup);
   }
   
   protected void a(int paramInt, BaseViewHolder paramBaseViewHolder, VideoListHomeFeed paramVideoListHomeFeed, QQUserUIItem paramQQUserUIItem)
   {
-    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131371741);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371742);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371743);
-    paramQQUserUIItem = (TextView)paramBaseViewHolder.a(2131371744);
-    paramBaseViewHolder = (Button)paramBaseViewHolder.a(2131371726);
+    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131371740);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371741);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371742);
+    paramQQUserUIItem = (TextView)paramBaseViewHolder.a(2131371743);
+    paramBaseViewHolder = (Button)paramBaseViewHolder.a(2131371725);
     ((RelativeLayout)localObject).setVisibility(0);
     localRelativeLayout.setVisibility(0);
     localTextView.setText(a(((StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt)).a().date));
@@ -174,13 +174,13 @@ public class MemoriesFeedSegment
         int i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
         paramBaseViewHolder.setText("关注");
         paramBaseViewHolder.setVisibility(0);
-        paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494214));
-        paramBaseViewHolder.setBackgroundResource(2130843489);
+        paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494220));
+        paramBaseViewHolder.setBackgroundResource(2130843523);
         paramBaseViewHolder.setPadding(paramInt, i, paramInt, i);
       }
     }
     paramBaseViewHolder.setVisibility(8);
-    paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493774));
+    paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493779));
     paramBaseViewHolder.setBackgroundDrawable(null);
     paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
     UIUtils.a(paramBaseViewHolder, paramInt, paramInt, paramInt, paramInt);
@@ -188,9 +188,9 @@ public class MemoriesFeedSegment
   
   protected void a(int paramInt, BaseViewHolder paramBaseViewHolder, boolean paramBoolean)
   {
-    Object localObject1 = (RelativeLayout)paramBaseViewHolder.a(2131371652);
-    Object localObject2 = (TextView)paramBaseViewHolder.a(2131371739);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371740);
+    Object localObject1 = (RelativeLayout)paramBaseViewHolder.a(2131371653);
+    Object localObject2 = (TextView)paramBaseViewHolder.a(2131371738);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131371739);
     localTextView.setVisibility(8);
     List localList = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a();
     String str = ((StoryHomeFeed)localList.get(paramInt)).a().date;
@@ -234,8 +234,8 @@ public class MemoriesFeedSegment
   
   protected BaseViewHolder b(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970726, paramViewGroup, false));
-    paramViewGroup.a(2131371726).setOnClickListener(paramViewGroup);
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970742, paramViewGroup, false));
+    paramViewGroup.a(2131371725).setOnClickListener(paramViewGroup);
     a(paramViewGroup);
     return paramViewGroup;
   }
@@ -251,9 +251,9 @@ public class MemoriesFeedSegment
     return super.d_() + 1;
   }
   
-  public void f_(boolean paramBoolean)
+  public void e_(boolean paramBoolean)
   {
-    super.f_(paramBoolean);
+    super.e_(paramBoolean);
     if (paramBoolean) {
       h();
     }

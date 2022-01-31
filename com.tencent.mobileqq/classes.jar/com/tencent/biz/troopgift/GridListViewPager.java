@@ -11,7 +11,7 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
-import oyw;
+import pdo;
 
 public class GridListViewPager
   extends absMultiViewPager
@@ -53,23 +53,23 @@ public class GridListViewPager
   
   public View a(int paramInt, ArrayList paramArrayList)
   {
-    oyw localoyw = new oyw(this, getContext());
-    localoyw.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    localoyw.setVerticalSpacing(0);
-    localoyw.setHorizontalSpacing(10);
-    localoyw.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
-    localoyw.setNumColumns(this.b);
+    pdo localpdo = new pdo(this, getContext());
+    localpdo.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    localpdo.setVerticalSpacing(0);
+    localpdo.setHorizontalSpacing(10);
+    localpdo.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
+    localpdo.setNumColumns(this.b);
     Object localObject = getContext().getResources();
-    localoyw.setPadding(AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(1.0F, (Resources)localObject), AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(1.0F, (Resources)localObject));
-    localoyw.setGravity(1);
-    localoyw.setSelector(new ColorDrawable(0));
+    localpdo.setPadding(AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(1.0F, (Resources)localObject), AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(1.0F, (Resources)localObject));
+    localpdo.setGravity(1);
+    localpdo.setSelector(new ColorDrawable(0));
     localObject = new GridListAdapter(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
     ((GridListAdapter)localObject).a(paramArrayList);
     ((GridListAdapter)localObject).a(this.jdField_a_of_type_JavaLangString);
-    localoyw.setAdapter((ListAdapter)localObject);
-    localoyw.setOnItemClickListener(this);
+    localpdo.setAdapter((ListAdapter)localObject);
+    localpdo.setOnItemClickListener(this);
     ((GridListAdapter)localObject).notifyDataSetChanged();
-    return localoyw;
+    return localpdo;
   }
   
   public ArrayList a(int paramInt)

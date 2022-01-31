@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.playmode.util.StoryTagUtil;
 import com.tencent.biz.qqstory.view.PressDarkImageButton;
 import com.tencent.biz.qqstory.view.WeShiGuideDialog;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -21,22 +22,163 @@ import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
 import cooperation.qzone.util.NetworkState;
 import dov.com.qq.im.capture.data.FilterCategory;
 import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
 import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import oos;
-import oot;
 import org.json.JSONException;
 import org.json.JSONObject;
+import oth;
+import oti;
 
 public class WeishiGuideUtils
 {
+  public static WeishiGuideUtils.JumpObject a(Object paramObject)
+  {
+    int j = 1;
+    String str1 = "1";
+    String str2 = "";
+    String str3 = "5";
+    Object localObject;
+    label59:
+    WeishiGuideUtils.JumpObject localJumpObject;
+    if (paramObject != null) {
+      if ((paramObject instanceof FilterCategory))
+      {
+        paramObject = (FilterCategory)paramObject;
+        str1 = "10";
+        str2 = paramObject.jdField_a_of_type_JavaLangString;
+        paramObject = null;
+        localObject = "";
+        i = 1;
+        if (!StringUtil.a(paramObject)) {
+          break label316;
+        }
+        paramObject = "weishi://camera?logsour=3006";
+        i = j;
+        localJumpObject = new WeishiGuideUtils.JumpObject();
+        localJumpObject.jdField_a_of_type_JavaLangString = str1;
+        localJumpObject.b = str2;
+        localJumpObject.jdField_c_of_type_JavaLangString = str3;
+        localJumpObject.jdField_a_of_type_Int = i;
+        localJumpObject.jdField_e_of_type_JavaLangString = ((String)localObject);
+        localJumpObject.f = paramObject;
+        if (i == 2)
+        {
+          localJumpObject.jdField_d_of_type_JavaLangString = "DOV";
+          return localJumpObject;
+        }
+      }
+      else if ((paramObject instanceof QIMFilterCategoryItem))
+      {
+        localObject = (QIMFilterCategoryItem)paramObject;
+        str2 = ((QIMFilterCategoryItem)localObject).b;
+        paramObject = ((QIMFilterCategoryItem)localObject).g;
+        if (!((QIMFilterCategoryItem)localObject).a()) {
+          break label334;
+        }
+      }
+    }
+    label316:
+    label329:
+    label334:
+    for (int i = 2;; i = 1)
+    {
+      localObject = "1";
+      str3 = "7";
+      str1 = "2";
+      break;
+      if ((paramObject instanceof MusicItemInfo))
+      {
+        paramObject = (MusicItemInfo)paramObject;
+        str2 = paramObject.jdField_a_of_type_JavaLangString;
+        paramObject = paramObject.f;
+        localObject = "2";
+        str1 = "4";
+        str3 = "9";
+        i = 1;
+        break;
+      }
+      if ((paramObject instanceof PtvTemplateManager.PtvTemplateInfo))
+      {
+        localObject = (PtvTemplateManager.PtvTemplateInfo)paramObject;
+        str2 = ((PtvTemplateManager.PtvTemplateInfo)localObject).name;
+        paramObject = ((PtvTemplateManager.PtvTemplateInfo)localObject).jump_app;
+        if (!((PtvTemplateManager.PtvTemplateInfo)localObject).isDovItem()) {
+          break label329;
+        }
+      }
+      for (i = 2;; i = 1)
+      {
+        localObject = "3";
+        str3 = "8";
+        str1 = "3";
+        break;
+        if ((paramObject instanceof PressDarkImageButton))
+        {
+          str1 = "5";
+          paramObject = null;
+          localObject = "";
+          i = 1;
+          break;
+        }
+        if ((paramObject instanceof String))
+        {
+          paramObject = (String)paramObject;
+          str1 = "1";
+          str2 = "";
+          str3 = "6";
+          localObject = "";
+          i = 1;
+          break;
+          localJumpObject.jdField_d_of_type_JavaLangString = "微视";
+          return localJumpObject;
+          break label59;
+        }
+        paramObject = null;
+        localObject = "";
+        i = 1;
+        break;
+      }
+    }
+  }
+  
   public static WeShiGuideDialog a(Context paramContext, Object paramObject)
   {
-    String[] arrayOfString = a(paramObject);
-    paramObject = arrayOfString[0];
-    String str1 = arrayOfString[1];
-    String str2 = arrayOfString[2];
+    WeishiGuideUtils.JumpObject localJumpObject = a(paramObject);
+    if (localJumpObject == null) {
+      return null;
+    }
+    paramObject = localJumpObject.jdField_a_of_type_JavaLangString;
+    String str1 = localJumpObject.b;
+    String str2 = localJumpObject.f;
+    int j = localJumpObject.jdField_a_of_type_Int;
+    String str3 = localJumpObject.jdField_e_of_type_JavaLangString;
+    int i;
+    if (((paramContext instanceof EditPicActivity)) || ((paramContext instanceof EditVideoActivity)))
+    {
+      i = 1;
+      if (j != 2) {
+        break label146;
+      }
+      if (!PackageUtil.a(paramContext, "com.tencent.qim")) {
+        break label115;
+      }
+      ReportController.b(null, "dc00899", "grp_story", "", "app_share", "clk_entry", i, 1, str3, "dov", "", "");
+      PackageUtil.a(paramContext, "com.tencent.qim", null);
+    }
+    for (;;)
+    {
+      return null;
+      i = 0;
+      break;
+      label115:
+      ReportController.b(null, "dc00899", "grp_story", "", "app_share", "clk_entry", i, 0, str3, "dov", "", "");
+      StoryTagUtil.a(paramContext);
+    }
+    label146:
     if (a(paramContext))
     {
+      ReportController.b(null, "dc00899", "grp_story", "", "app_share", "clk_entry", i, 1, str3, "weishi", "", "");
       ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "clk_ws", 0, 1, paramObject, str1, "", "");
       if (paramContext != null)
       {
@@ -47,7 +189,8 @@ public class WeishiGuideUtils
       }
       return null;
     }
-    str2 = arrayOfString[3];
+    ReportController.b(null, "dc00899", "grp_story", "", "app_share", "clk_entry", i, 0, str3, "weishi", "", "");
+    str2 = localJumpObject.jdField_c_of_type_JavaLangString;
     ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "clk_ws", 0, 2, paramObject, str1, "", "");
     paramContext = new WeShiGuideDialog(paramContext, 2131624517);
     paramContext.a("https://pub.idqqimg.com/pc/misc/files/20180423/4c3ece054ae044eb85797d31fa487ce7.jpg");
@@ -121,7 +264,7 @@ public class WeishiGuideUtils
       paramContext = DialogUtil.a(paramContext, 230);
       paramContext.setTitle(null);
       paramContext.setMessage("当前为非WiFi网络，确定要下载吗？");
-      paramContext.setNegativeButton("取消", new oot()).setPositiveButton("下载", new oos((DownloadInfo)localObject));
+      paramContext.setNegativeButton("取消", new oti()).setPositiveButton("下载", new oth((DownloadInfo)localObject));
       paramContext.show();
       return;
     }
@@ -151,81 +294,11 @@ public class WeishiGuideUtils
     paramContext.startActivity(paramString);
   }
   
-  public static void a(Object paramObject)
-  {
-    paramObject = a(paramObject);
-    ReportController.b(null, "dc00899", "grp_story", "", "weishi_share", "exp_ws", 0, 0, paramObject[0], paramObject[1], "", "");
-  }
+  public static void a(Object paramObject) {}
   
   public static boolean a(Context paramContext)
   {
     return PackageUtil.a(paramContext, "com.tencent.weishi");
-  }
-  
-  public static String[] a(Object paramObject)
-  {
-    String str3 = "5";
-    String str1;
-    String str2;
-    if (paramObject != null) {
-      if ((paramObject instanceof FilterCategory))
-      {
-        str1 = ((FilterCategory)paramObject).a;
-        paramObject = null;
-        str2 = "10";
-      }
-    }
-    for (;;)
-    {
-      Object localObject = paramObject;
-      if (StringUtil.a(paramObject)) {
-        localObject = "weishi://camera?logsour=3006";
-      }
-      return new String[] { str2, str1, localObject, str3 };
-      if ((paramObject instanceof QIMFilterCategoryItem))
-      {
-        paramObject = (QIMFilterCategoryItem)paramObject;
-        str2 = "2";
-        str1 = paramObject.b;
-        paramObject = paramObject.g;
-        str3 = "7";
-      }
-      else if ((paramObject instanceof MusicItemInfo))
-      {
-        paramObject = (MusicItemInfo)paramObject;
-        str2 = "4";
-        str1 = paramObject.a;
-        paramObject = paramObject.f;
-        str3 = "9";
-      }
-      else if ((paramObject instanceof PtvTemplateManager.PtvTemplateInfo))
-      {
-        paramObject = (PtvTemplateManager.PtvTemplateInfo)paramObject;
-        str2 = "3";
-        str1 = paramObject.name;
-        paramObject = paramObject.jump_ws;
-        str3 = "8";
-      }
-      else if ((paramObject instanceof PressDarkImageButton))
-      {
-        paramObject = null;
-        str1 = "";
-        str2 = "5";
-      }
-      else if ((paramObject instanceof String))
-      {
-        str2 = "1";
-        str1 = "";
-        paramObject = (String)paramObject;
-        str3 = "6";
-      }
-      else
-      {
-        paramObject = null;
-        str1 = "";
-        str2 = "1";
-      }
-    }
   }
   
   private static void b(DownloadInfo paramDownloadInfo)

@@ -1,52 +1,51 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.contact.OnlineStatusIconHelper;
+import java.util.HashMap;
+import org.xml.sax.Attributes;
+import org.xml.sax.Locator;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class wmj
-  implements ActionSheet.OnButtonClickListener
+  extends DefaultHandler
 {
-  public wmj(ContactsTroopAdapter paramContactsTroopAdapter, DiscussionHandler paramDiscussionHandler, DiscussionInfo paramDiscussionInfo, boolean paramBoolean, ActionSheet paramActionSheet) {}
+  public wmj(OnlineStatusIconHelper paramOnlineStatusIconHelper) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
+  
+  public void endDocument() {}
+  
+  public void endElement(String paramString1, String paramString2, String paramString3) {}
+  
+  public void endPrefixMapping(String paramString) {}
+  
+  public void ignorableWhitespace(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
+  
+  public void processingInstruction(String paramString1, String paramString2) {}
+  
+  public void setDocumentLocator(Locator paramLocator) {}
+  
+  public void skippedEntity(String paramString) {}
+  
+  public void startDocument() {}
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo;
-    boolean bool;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      bool = true;
-      paramView.a((DiscussionInfo)localObject, bool);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label154;
-      }
-      paramInt = 1;
-      label43:
-      paramView = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.uin;
-      ((BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a.a(22)).a(18, true, new Object[] { paramView, Integer.valueOf(paramInt), Integer.valueOf(0), null });
-      localObject = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a).a("dc00899").b("Grp_Dis_set").c("Grp_contactlist");
-      if (!this.jdField_a_of_type_Boolean) {
-        break label159;
-      }
+    if (paramString3.equals("config")) {
+      this.a.a.clear();
     }
-    label154:
-    label159:
-    for (paramView = "Clk_unstick";; paramView = "Clk_stick")
-    {
-      ((ReportTask)localObject).d(paramView).a();
+    while (!paramString3.equals("value")) {
       return;
-      bool = false;
-      break;
-      paramInt = 0;
-      break label43;
     }
+    int i = Integer.parseInt(paramAttributes.getValue("termType"));
+    try
+    {
+      int j = Integer.parseInt(paramAttributes.getValue("icon"));
+      this.a.a.put(Integer.valueOf(i), Integer.valueOf(j));
+      return;
+    }
+    catch (Exception paramString1) {}
   }
+  
+  public void startPrefixMapping(String paramString1, String paramString2) {}
 }
 
 

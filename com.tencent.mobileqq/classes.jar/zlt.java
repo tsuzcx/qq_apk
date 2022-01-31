@@ -1,19 +1,15 @@
-import java.util.concurrent.atomic.AtomicBoolean;
-import msf.msgcomm.msg_comm.Msg;
+import com.tencent.mobileqq.app.HotChatCenterManager;
+import com.tencent.mobileqq.data.HotChatItemData;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class zlt
+  implements Runnable
 {
-  public long a;
-  public AtomicBoolean a;
-  public msg_comm.Msg a;
-  public long b;
+  public zlt(HotChatCenterManager paramHotChatCenterManager, EntityManager paramEntityManager, HotChatItemData paramHotChatItemData) {}
   
-  public zlt(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
+  public void run()
   {
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
   }
 }
 

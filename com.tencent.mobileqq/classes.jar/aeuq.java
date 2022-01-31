@@ -1,23 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
-class aeuq
-  implements DialogInterface.OnDismissListener
+public class aeuq
+  implements Runnable
 {
-  aeuq(aeup paramaeup) {}
+  public aeuq(NearbyJsInterface paramNearbyJsInterface, BaseActivity paramBaseActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    int i = 1;
-    paramDialogInterface = new NowVideoReporter().h("video_public").i("clk_cancel").e("1").d(SmallVideoSendFragment.a(this.a.a));
-    if (SmallVideoSendFragment.a(this.a.a).l == 1) {
-      i = 2;
-    }
-    paramDialogInterface.a(i).b(this.a.a.getActivity().app);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
   }
 }
 

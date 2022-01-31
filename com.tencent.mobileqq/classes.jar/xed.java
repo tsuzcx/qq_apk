@@ -1,24 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.ProGallery;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class xed
-  extends Handler
+  implements View.OnClickListener
 {
-  public xed(ThemeHbFragment paramThemeHbFragment) {}
+  public xed(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    this.a.jdField_b_of_type_AndroidWidgetButton.setClickable(false);
+    if (this.a.getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
     {
+      paramView = this.a.jdField_b_of_type_JavaUtilArrayList.iterator();
+      for (long l = 0L; paramView.hasNext(); l = FileUtils.a((String)paramView.next()) + l) {}
+      if (this.a.jdField_b_of_type_JavaUtilArrayList.size() == 0)
+      {
+        int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.getFirstVisiblePosition();
+        if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+          FileUtils.a((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(i));
+        }
+      }
+      if (FileManagerUtil.a()) {
+        FMDialogUtil.a(this.a, 2131428241, 2131428237, new xee(this));
+      }
     }
-    do
+    for (;;)
     {
+      LpReportInfo_pf00064.allReport(603, 1);
       return;
-    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
-    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
+      this.a.i();
+      continue;
+      this.a.i();
+    }
   }
 }
 

@@ -16,7 +16,7 @@ public class CampusCirclePicBrowserGalleryScene
   
   protected RelativeLayout a()
   {
-    return (RelativeLayout)LayoutInflater.from(this.a).inflate(2130970271, null);
+    return (RelativeLayout)LayoutInflater.from(this.a).inflate(2130970286, null);
   }
 }
 

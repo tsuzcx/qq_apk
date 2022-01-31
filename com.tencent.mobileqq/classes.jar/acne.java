@@ -1,37 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class acne
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public acne(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public acne(EmoticonMainPanel paramEmoticonMainPanel, EmoticonPackage paramEmoticonPackage) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
-    if (paramAdapterView.a()) {
-      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
+    if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b.contains(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage)) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b.add(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
     }
-    while (!this.a.f()) {
-      return;
-    }
-    if (FMDataCache.a(paramAdapterView)) {
-      FMDataCache.b(paramAdapterView);
-    }
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.g = true;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.j = false;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getVisibility() == 0)
     {
-      this.a.k();
-      LocalFileBrowserActivity.a(this.a);
-      return;
-      if (this.a.e) {
-        FMDataCache.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonMainPanel", 2, "refresh magic emoji.");
       }
-      FMDataCache.a(paramAdapterView);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.c(0);
     }
   }
 }

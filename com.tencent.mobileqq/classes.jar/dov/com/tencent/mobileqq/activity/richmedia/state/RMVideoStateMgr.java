@@ -7,13 +7,13 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import aohb;
-import aohd;
-import aohe;
-import aohp;
-import aohq;
-import aohr;
-import aohs;
+import aopv;
+import aopx;
+import aopy;
+import aoqj;
+import aoqk;
+import aoql;
+import aoqm;
 import com.tencent.av.core.VcSystemInfo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.maxvideo.common.MessageStruct;
@@ -63,9 +63,9 @@ public class RMVideoStateMgr
   public long a;
   public Context a;
   public Handler a;
-  public aohb a;
-  final aohd jdField_a_of_type_Aohd = new aohd();
-  final aohe jdField_a_of_type_Aohe = new aohe();
+  public aopv a;
+  final aopx jdField_a_of_type_Aopx = new aopx();
+  final aopy jdField_a_of_type_Aopy = new aopy();
   private HWVideoRecorder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder;
   public CameraProxy a;
   public RMVideoClipSpec a;
@@ -412,7 +412,7 @@ public class RMVideoStateMgr
     if (QLog.isColorLevel()) {
       QLog.i("RMVideoStateMgr", 2, "clearVideoDataFile:" + paramString);
     }
-    ThreadManager.post(new aohs(paramString), 5, null, true);
+    ThreadManager.post(new aoqm(paramString), 5, null, true);
   }
   
   private static void b(String paramString1, String paramString2, boolean paramBoolean)
@@ -536,13 +536,13 @@ public class RMVideoStateMgr
   public RMVideoState a()
   {
     int i1 = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    aohe localaohe = this.jdField_a_of_type_Aohe;
+    aopy localaopy = this.jdField_a_of_type_Aopy;
     switch (i1)
     {
     default: 
-      return localaohe;
+      return localaopy;
     case 2: 
-      return this.jdField_a_of_type_Aohd;
+      return this.jdField_a_of_type_Aopx;
     case 3: 
       return this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoRecordState;
     }
@@ -1083,13 +1083,13 @@ public class RMVideoStateMgr
       if (QLog.isColorLevel()) {
         QLog.i("RMVideoStateMgr", 2, "rmStateMgr onDestroy viewST:" + this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMViewSTInterface + "\n videoStateMgr:" + jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr);
       }
-      this.jdField_a_of_type_Aohe.f();
-      this.jdField_a_of_type_Aohe.g();
-      this.jdField_a_of_type_Aohd.f();
-      this.jdField_a_of_type_Aohd.g();
+      this.jdField_a_of_type_Aopy.f();
+      this.jdField_a_of_type_Aopy.g();
+      this.jdField_a_of_type_Aopx.f();
+      this.jdField_a_of_type_Aopx.g();
       this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
       j();
-      this.jdField_a_of_type_Aohb = null;
+      this.jdField_a_of_type_Aopv = null;
       this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a = null;
       this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture$OnAudioRecordListener = null;
       g();
@@ -1293,7 +1293,7 @@ public class RMVideoStateMgr
   
   public void b(int paramInt, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new aohp(this, paramString));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aoqj(this, paramString));
   }
   
   public void b(boolean paramBoolean)
@@ -1486,15 +1486,15 @@ public class RMVideoStateMgr
   
   public void i()
   {
-    if ((this.jdField_a_of_type_Aohb != null) && (this.jdField_a_of_type_Double > 0.0D)) {
-      this.jdField_a_of_type_Aohb.startWatching();
+    if ((this.jdField_a_of_type_Aopv != null) && (this.jdField_a_of_type_Double > 0.0D)) {
+      this.jdField_a_of_type_Aopv.startWatching();
     }
   }
   
   public void j()
   {
-    if (this.jdField_a_of_type_Aohb != null) {
-      this.jdField_a_of_type_Aohb.stopWatching();
+    if (this.jdField_a_of_type_Aopv != null) {
+      this.jdField_a_of_type_Aopv.stopWatching();
     }
   }
   
@@ -1516,7 +1516,7 @@ public class RMVideoStateMgr
   
   public void l()
   {
-    ThreadManager.post(new aohq(this), 10, null, false);
+    ThreadManager.post(new aoqk(this), 10, null, false);
   }
   
   public void m()
@@ -1524,7 +1524,7 @@ public class RMVideoStateMgr
     if (QLog.isColorLevel()) {
       QLog.d("RMVideoStateMgr", 2, "[@][closeAudioRecord]mIsAudioReady=" + this.jdField_d_of_type_Boolean + " mAI=" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture);
     }
-    ThreadManager.post(new aohr(this), 10, null, false);
+    ThreadManager.post(new aoql(this), 10, null, false);
   }
   
   public void onAVCodecEvent(AVCodec.AVCodecCallback arg1, MessageStruct paramMessageStruct)

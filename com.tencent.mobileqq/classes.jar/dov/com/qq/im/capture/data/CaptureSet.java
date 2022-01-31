@@ -2,7 +2,7 @@ package dov.com.qq.im.capture.data;
 
 import android.app.Activity;
 import android.os.Bundle;
-import anll;
+import anty;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraAbility;
@@ -215,7 +215,7 @@ public class CaptureSet
       VideoFilterTools.a().b((QIMFilterCategoryItem)localObject2, paramActivity, paramInt);
       CaptureComboFilter.a(paramActivity, (List)localObject1, this, paramInt);
       paramActivity = this.jdField_a_of_type_JavaLangObject;
-    } while ((!(this.jdField_a_of_type_JavaLangObject instanceof QIMFilterCategoryItem)) || (!((QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject).b()) || (paramInt == 1) || (paramInt == 3));
+    } while ((!(this.jdField_a_of_type_JavaLangObject instanceof QIMFilterCategoryItem)) || (!((QIMFilterCategoryItem)this.jdField_a_of_type_JavaLangObject).c()) || (paramInt == 1) || (paramInt == 3));
     ((QimMusicPlayer)QIMManager.a().c(8)).a(paramInt);
     return 0;
   }
@@ -277,7 +277,7 @@ public class CaptureSet
       a(3);
       return 2;
     }
-    ThreadManager.getSubThreadHandler().post(new anll(this));
+    ThreadManager.getSubThreadHandler().post(new anty(this));
     return 1;
   }
   

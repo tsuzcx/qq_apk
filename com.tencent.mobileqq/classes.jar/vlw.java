@@ -1,19 +1,15 @@
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.widget.ListView;
-import com.tencent.widget.XPanelContainer;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class vlw
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vlw(PEPanel paramPEPanel) {}
+  public vlw(SixCombolEffectView paramSixCombolEffectView, vmi paramvmi) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    PEPanel.a(this.a).setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
-    localTranslateAnimation.setDuration(200L);
-    PEPanel.a(this.a).startAnimation(localTranslateAnimation);
+    this.jdField_a_of_type_Vmi.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 

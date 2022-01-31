@@ -5,13 +5,13 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import anvt;
-import anvv;
-import anvx;
-import anvy;
-import anvz;
-import anwa;
-import anwb;
+import aoej;
+import aoel;
+import aoen;
+import aoeo;
+import aoep;
+import aoeq;
+import aoer;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.UIUtils;
@@ -26,6 +26,7 @@ import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
 import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QQFilterRenderManagerHolder;
 import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
@@ -45,7 +46,7 @@ public class HWEditImportVideoPlayer
 {
   protected int a;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private FFmpegUtils.ExtractAudioListener jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegUtils$ExtractAudioListener = new anwb(this);
+  private FFmpegUtils.ExtractAudioListener jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegUtils$ExtractAudioListener = new aoer(this);
   public LocalMediaInfo a;
   protected VideoFilterPlayView a;
   private String jdField_a_of_type_JavaLangString;
@@ -132,7 +133,7 @@ public class HWEditImportVideoPlayer
           {
             ((GPUBaseFilter)localObject1).a();
             localObject3 = localGPUBitmapImageRender.a((Bitmap)localObject2, (GPUBaseFilter)localObject1);
-            ((GPUBaseFilter)localObject1).c();
+            ((GPUBaseFilter)localObject1).d();
             SLog.a("Q.qqstory.record.HWEditImportVideoPlayer", "updateFragmentThumbBitmapIfNeeded, filterThumbBitmap = %s", localObject3);
             if (localObject3 != null) {
               localObject1 = localObject3;
@@ -157,7 +158,7 @@ public class HWEditImportVideoPlayer
             if (localObject2 != null) {
               localObject1 = localObject2;
             }
-            localGPUImagePixelationFilter.c();
+            localGPUImagePixelationFilter.d();
             localObject2 = localObject1;
           }
         }
@@ -331,7 +332,7 @@ public class HWEditImportVideoPlayer
     for (boolean bool1 = true;; bool1 = false)
     {
       this.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView = ((VideoFilterPlayView)a(2131364408));
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView = ((VideoFilterPlayView)a(2131364433));
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.setVisibility(0);
       this.d = this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.setFilePath(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
@@ -341,9 +342,9 @@ public class HWEditImportVideoPlayer
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.setPlayViewListener(this);
       this.e = 0;
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.a(1);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.setTrackerCallback(new anvt(this));
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.setTrackerCallback(new aoej(this));
       a(EditVideoPlayerExport.class, this);
-      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new anvv(this), 200L);
+      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new aoel(this), 200L);
       return;
       throw new IllegalArgumentException("HWEditLocalVideoPlayer only support EditLocalVideoSource now");
     }
@@ -498,7 +499,7 @@ public class HWEditImportVideoPlayer
   public void a(long paramLong1, long paramLong2)
   {
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(paramLong2);
-    a(new anvz(this, paramLong2), 0L);
+    a(new aoep(this, paramLong2), 0L);
   }
   
   public void a(long paramLong, boolean paramBoolean)
@@ -528,6 +529,13 @@ public class HWEditImportVideoPlayer
       HWEditImportVideoPlayer.Mp4VideoFragmentInfo.a(localMp4VideoFragmentInfo, paramBoolean);
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.setMosaicFilterType(paramBitmap);
       return;
+    }
+  }
+  
+  public void a(TransferData paramTransferData)
+  {
+    if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView != null) {
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.setTransferData(paramTransferData);
     }
   }
   
@@ -565,7 +573,7 @@ public class HWEditImportVideoPlayer
         this.e = 1;
         localEditMusicExport = (EditMusicExport)a(EditMusicExport.class);
         if (localEditMusicExport != null) {
-          localEditMusicExport.at_();
+          localEditMusicExport.av_();
         }
       }
     }
@@ -632,9 +640,9 @@ public class HWEditImportVideoPlayer
     }
   }
   
-  public void aB_()
+  public void aC_()
   {
-    super.aB_();
+    super.aC_();
     if (this.jdField_b_of_type_Boolean)
     {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.z();
@@ -642,9 +650,9 @@ public class HWEditImportVideoPlayer
     }
   }
   
-  public void aE_()
+  public void aF_()
   {
-    super.aE_();
+    super.aF_();
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.onResume();
     if (this.e != 2)
     {
@@ -654,9 +662,9 @@ public class HWEditImportVideoPlayer
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.h();
   }
   
-  public void aF_()
+  public void aG_()
   {
-    super.aF_();
+    super.aG_();
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.h();
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView.onPause();
   }
@@ -678,9 +686,9 @@ public class HWEditImportVideoPlayer
     this.e = 2;
   }
   
-  public void ax_()
+  public void az_()
   {
-    super.ax_();
+    super.az_();
   }
   
   public void b(int paramInt)
@@ -707,7 +715,7 @@ public class HWEditImportVideoPlayer
   
   public void d()
   {
-    a(new anvy(this), 200L);
+    a(new aoeo(this), 200L);
   }
   
   public void e() {}
@@ -716,7 +724,7 @@ public class HWEditImportVideoPlayer
   
   public void g()
   {
-    a(new anwa(this), 0L);
+    a(new aoeq(this), 0L);
   }
   
   public void h()
@@ -739,7 +747,7 @@ public class HWEditImportVideoPlayer
         paramMessage = paramMessage.a(localBitmap);
         this.jdField_a_of_type_JavaUtilList.set(i, paramMessage);
         SLog.b("Q.qqstory.record.HWEditImportVideoPlayer", "update fragment bitmap : %s", paramMessage);
-        a(new anvx(this, i), 0L);
+        a(new aoen(this, i), 0L);
       }
     }
     return true;

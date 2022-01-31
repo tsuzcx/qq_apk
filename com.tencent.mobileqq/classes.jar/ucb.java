@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import java.util.ArrayList;
 
-public class ucb
-  implements View.OnClickListener
+class ucb
+  implements Runnable
 {
-  public ucb(TroopMemberListActivity paramTroopMemberListActivity) {}
+  ucb(uca paramuca, Handler paramHandler) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
-    if (this.a.d == 11) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
-    }
+    ArrayList localArrayList = ((TroopGagMgr)this.jdField_a_of_type_Uca.a.app.getManager(47)).a(this.jdField_a_of_type_Uca.a.a, false);
+    this.jdField_a_of_type_AndroidOsHandler.post(new ucc(this, localArrayList));
   }
 }
 

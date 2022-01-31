@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.webview.swift;
 
-import akmu;
-import akmv;
-import akmw;
-import akmx;
-import akmy;
-import akmz;
-import akna;
-import aknb;
+import akul;
+import akum;
+import akun;
+import akuo;
+import akup;
+import akuq;
+import akur;
+import akus;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -81,8 +81,8 @@ public class SwiftIphoneTitleBarUI
   public ImageView a;
   public RelativeLayout a;
   public TextView a;
-  TouchWebView.OnScrollChangedListener jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener = new akmv(this);
-  ValueAnimation.AnimationUpdateListener jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation$AnimationUpdateListener = new akmu(this);
+  TouchWebView.OnScrollChangedListener jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener = new akum(this);
+  ValueAnimation.AnimationUpdateListener jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation$AnimationUpdateListener = new akul(this);
   public JsBridgeListener a;
   public SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle a;
   public SwiftBrowserUIStyleHandler a;
@@ -383,7 +383,7 @@ public class SwiftIphoneTitleBarUI
             {
               str1 = str2;
               if (str2.contains("消息")) {
-                str1 = BaseApplicationImpl.getApplication().getString(2131433698);
+                str1 = BaseApplicationImpl.getApplication().getString(2131433712);
               }
             }
           }
@@ -391,7 +391,7 @@ public class SwiftIphoneTitleBarUI
         boolean bool = paramIntent.getBooleanExtra("hide_left_button", false);
         paramIntent = str1;
         if (str1 == null) {
-          paramIntent = BaseApplicationImpl.getApplication().getString(2131433698);
+          paramIntent = BaseApplicationImpl.getApplication().getString(2131433712);
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramIntent);
         if (bool) {
@@ -401,8 +401,8 @@ public class SwiftIphoneTitleBarUI
         {
           str1 = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
           paramIntent = str1;
-          if (!str1.contains(BaseApplicationImpl.getApplication().getString(2131433698))) {
-            paramIntent = BaseApplicationImpl.getApplication().getString(2131433698) + str1;
+          if (!str1.contains(BaseApplicationImpl.getApplication().getString(2131433712))) {
+            paramIntent = BaseApplicationImpl.getApplication().getString(2131433712) + str1;
           }
           this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramIntent);
           return;
@@ -419,10 +419,10 @@ public class SwiftIphoneTitleBarUI
   
   public final void a(Intent paramIntent, View.OnClickListener paramOnClickListener)
   {
-    LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup.getContext()).inflate(2130968732, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363244));
+    LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup.getContext()).inflate(2130968735, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363261));
     a(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363245));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363262));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
     a(this.jdField_a_of_type_AndroidWidgetTextView);
     if (AppSetting.jdField_b_of_type_Boolean) {
@@ -432,18 +432,18 @@ public class SwiftIphoneTitleBarUI
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
     }
     a(paramIntent);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363381));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363468));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363428));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363474));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363400));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363487));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363447));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363493));
     a(this.jdField_c_of_type_AndroidWidgetTextView);
     a(this.jdField_a_of_type_AndroidWidgetImageView);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363476));
-    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130846345);
-    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new akmw(this));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363495));
+    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130846427);
+    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new akun(this));
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363380));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363399));
     d();
     b(this.jdField_d_of_type_JavaLangString);
   }
@@ -456,7 +456,7 @@ public class SwiftIphoneTitleBarUI
       return;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Long & 0x4) == 0L) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(BaseApplicationImpl.getApplication().getResources().getString(2131433698));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(BaseApplicationImpl.getApplication().getResources().getString(2131433712));
     }
     if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("youxi.vip.qq.com/imoj"))) {
       paramIntent.putExtra("isScreenOrientationPortrait", true);
@@ -474,17 +474,17 @@ public class SwiftIphoneTitleBarUI
     if ((str != null) && (str.length() > 0))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131435682));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131435698));
       if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_d_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramString = this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130839151);
+        paramString = this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130839166);
         if ((!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.k) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyle != null)) {
           break label575;
         }
         paramString = ImageUtil.a(paramString, -1);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
-        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434737));
+        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434753));
       }
       if (b())
       {
@@ -500,7 +500,7 @@ public class SwiftIphoneTitleBarUI
       {
         label374:
         c(i);
-        this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434746));
+        this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434762));
         if (bool) {
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
         }
@@ -592,7 +592,7 @@ public class SwiftIphoneTitleBarUI
       paramView.getBackground().mutate().setAlpha(paramInt2);
       return;
     }
-    ValueAnimation localValueAnimation = new ValueAnimation(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), new akmx(this, paramView, paramInt2));
+    ValueAnimation localValueAnimation = new ValueAnimation(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), new akuo(this, paramView, paramInt2));
     localValueAnimation.setDuration(paramInt3);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.s = true;
     paramView.startAnimation(localValueAnimation);
@@ -606,11 +606,11 @@ public class SwiftIphoneTitleBarUI
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.r = true;
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.o = true;
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.q = true;
-      localViewGroup.setBackgroundResource(2130846385);
+      localViewGroup.setBackgroundResource(2130846467);
       if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
         this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
       }
-      paramTouchWebView.setOnScrollChangedListener(new akmy(this));
+      paramTouchWebView.setOnScrollChangedListener(new akup(this));
     }
   }
   
@@ -668,8 +668,8 @@ public class SwiftIphoneTitleBarUI
       this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView = new WebViewTopTabView(BaseApplicationImpl.getContext());
       this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonNum(paramSubTabParam.jdField_b_of_type_Int, paramSubTabParam.jdField_a_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonText(paramSubTabParam.jdField_a_of_type_ArrayOfJavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(2130846352, 2130846356, 2130846360);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(2131494321);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(2130846434, 2130846438, 2130846442);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(2131494327);
       this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setLeftAndRightPaddingByDp(10);
       a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.q);
     }
@@ -677,7 +677,7 @@ public class SwiftIphoneTitleBarUI
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView, new RelativeLayout.LayoutParams(-2, -1));
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setOnCheckedChangeListener(new aknb(this));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setOnCheckedChangeListener(new akus(this));
       if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper != null) {
         this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper.a(paramSubTabParam.jdField_b_of_type_JavaLangString, true);
       }
@@ -806,13 +806,13 @@ public class SwiftIphoneTitleBarUI
     do
     {
       return;
-      localObject = (RelativeLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363380);
+      localObject = (RelativeLayout)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363399);
     } while (localObject == null);
-    paramWebView = (TextView)((RelativeLayout)localObject).findViewById(2131363470);
-    Object localObject = (TextView)((RelativeLayout)localObject).findViewById(2131363471);
+    paramWebView = (TextView)((RelativeLayout)localObject).findViewById(2131363489);
+    Object localObject = (TextView)((RelativeLayout)localObject).findViewById(2131363490);
     if (paramBoolean)
     {
-      new Handler(Looper.getMainLooper()).postDelayed(new akna(this, (TextView)localObject, paramWebView, paramString), 50L);
+      new Handler(Looper.getMainLooper()).postDelayed(new akur(this, (TextView)localObject, paramWebView, paramString), 50L);
       return;
     }
     if (!TextUtils.isEmpty(((TextView)localObject).getText().toString()))
@@ -844,7 +844,7 @@ public class SwiftIphoneTitleBarUI
       }
       return;
       label70:
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131434937);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131434953);
     }
   }
   
@@ -899,7 +899,7 @@ public class SwiftIphoneTitleBarUI
     Object localObject;
     if (b())
     {
-      localObject = new akmz(this);
+      localObject = new akuq(this);
       this.jdField_a_of_type_AndroidViewView$OnClickListener = ((View.OnClickListener)localObject);
       a((View.OnClickListener)localObject);
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -907,14 +907,14 @@ public class SwiftIphoneTitleBarUI
       {
         this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(BaseApplicationImpl.getApplication());
         localObject = new RelativeLayout.LayoutParams(-2, -2);
-        ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131363476);
-        ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131363476);
+        ((RelativeLayout.LayoutParams)localObject).addRule(7, 2131363495);
+        ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131363495);
         ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, 0);
         this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         if ((this.jdField_d_of_type_AndroidWidgetImageView.getParent() instanceof RelativeLayout))
         {
           ((RelativeLayout)this.jdField_d_of_type_AndroidWidgetImageView.getParent()).addView(this.jdField_c_of_type_AndroidWidgetImageView);
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130846051);
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130846133);
           this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
         }
       }
@@ -1020,10 +1020,10 @@ public class SwiftIphoneTitleBarUI
           if (this.jdField_b_of_type_AndroidWidgetImageView == null)
           {
             this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(BaseApplicationImpl.getApplication());
-            paramString3 = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362695);
+            paramString3 = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362700);
             paramString3 = new RelativeLayout.LayoutParams(-2, -2);
-            paramString3.addRule(7, 2131363474);
-            paramString3.addRule(6, 2131363474);
+            paramString3.addRule(7, 2131363493);
+            paramString3.addRule(6, 2131363493);
             paramString3.setMargins(0, 0, 0, 0);
             this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams(paramString3);
             if ((this.jdField_a_of_type_AndroidWidgetImageView.getParent() instanceof RelativeLayout)) {
@@ -1055,40 +1055,40 @@ public class SwiftIphoneTitleBarUI
       break;
       paramBoolean = false;
       break label567;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130841458, 2130841457);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434742));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130841485, 2130841484);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434758));
       break label689;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130841456, 2130841456);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434739));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130841483, 2130841483);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434755));
       break label689;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130839151, 2130839151);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434735));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130839166, 2130839166);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434751));
       break label689;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130838570, 2130838570);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434737));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130838576, 2130838576);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434753));
       break label689;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841491);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434740));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841518);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434756));
       ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
       break label689;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130840567, 2130840570);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434741));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130840582, 2130840585);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434757));
       break label689;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130845896, 2130845900);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434741));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130845976, 2130845980);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434757));
       break label689;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130838289, 2130838289);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434738));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130838294, 2130838294);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434754));
       break label689;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130845963, 2130845963);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434738));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130846045, 2130846045);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(BaseApplicationImpl.getApplication().getResources().getString(2131434754));
       break label689;
       paramString3 = URLDrawable.getDrawable(QzoneConfig.getInstance().getConfig("QZoneSetting", "sweetIconRUL", "http://qzonestyle.gtimg.cn/aoi/sola/20170905110724_aew14oIQKq.png"), null);
       if (paramString3 == null) {
         break label689;
       }
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramString3);
-      paramString3 = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362695);
+      paramString3 = (RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362700);
       if (paramString3 == null) {
         break label689;
       }
@@ -1096,9 +1096,9 @@ public class SwiftIphoneTitleBarUI
       ((RelativeLayout.LayoutParams)localObject).rightMargin = ViewUtils.b(10.0F);
       paramString3.setLayoutParams((ViewGroup.LayoutParams)localObject);
       break label689;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841285);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130841311);
       break label877;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846051);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846133);
       break label877;
       if (this.jdField_b_of_type_AndroidWidgetImageView == null) {
         break label877;
@@ -1269,7 +1269,7 @@ public class SwiftIphoneTitleBarUI
   {
     if ((!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.k) && (this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup != null) && (Build.VERSION.SDK_INT >= 17))
     {
-      Object localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366767);
+      Object localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366765);
       if (localObject1 != null)
       {
         localObject2 = (LinearLayout.LayoutParams)((TextView)localObject1).getLayoutParams();
@@ -1279,7 +1279,7 @@ public class SwiftIphoneTitleBarUI
           ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         }
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366769);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366767);
       Object localObject2 = (FrameLayout.LayoutParams)((View)localObject1).getLayoutParams();
       if (localObject2 != null)
       {
@@ -1322,8 +1322,8 @@ public class SwiftIphoneTitleBarUI
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetTextView, true, 2130845881, 2130846264);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130839151, 2130839147);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetTextView, true, 2130845961, 2130846346);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidWidgetImageView, false, 2130839166, 2130839162);
     }
   }
   
@@ -1446,7 +1446,7 @@ public class SwiftIphoneTitleBarUI
       }
     }
     label40:
-    for (Drawable localDrawable = this.jdField_d_of_type_AndroidWidgetImageView.getDrawable();; localDrawable = this.jdField_d_of_type_AndroidWidgetImageView.getResources().getDrawable(2130846345))
+    for (Drawable localDrawable = this.jdField_d_of_type_AndroidWidgetImageView.getDrawable();; localDrawable = this.jdField_d_of_type_AndroidWidgetImageView.getResources().getDrawable(2130846427))
     {
       localDrawable = ImageUtil.a(localDrawable, paramInt);
       this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
@@ -1505,9 +1505,9 @@ public class SwiftIphoneTitleBarUI
   
   public void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(BaseApplicationImpl.getApplication().getResources().getColorStateList(2131494210));
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(BaseApplicationImpl.getApplication().getResources().getColorStateList(2131494210));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(BaseApplicationImpl.getApplication().getResources().getColor(2131494212));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(BaseApplicationImpl.getApplication().getResources().getColorStateList(2131494216));
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(BaseApplicationImpl.getApplication().getResources().getColorStateList(2131494216));
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(BaseApplicationImpl.getApplication().getResources().getColor(2131494218));
     Drawable localDrawable;
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
@@ -1574,14 +1574,14 @@ public class SwiftIphoneTitleBarUI
       {
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.p = false;
         this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.p = true;
-        this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130846385);
+        this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130846467);
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
         return;
       }
     } while ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.q) || (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.p));
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.p = false;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.p = true;
-    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(BaseApplicationImpl.getApplication().getResources().getColor(2131494254));
+    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(BaseApplicationImpl.getApplication().getResources().getColor(2131494260));
     e();
   }
   
@@ -1608,7 +1608,7 @@ public class SwiftIphoneTitleBarUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaTopBarView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
 
-public class aebp
-  implements ValueAnimator.AnimatorUpdateListener
+public final class aebp
+  implements Parcelable.Creator
 {
-  public aebp(LebaTopBarView paramLebaTopBarView, float paramFloat, boolean paramBoolean, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public IVPluginInfo a(Parcel paramParcel)
   {
-    if ((((Float)paramValueAnimator.getAnimatedValue()).floatValue() == this.jdField_a_of_type_Float) && (this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      LebaTopBarView.a(this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopBarView, false);
-    }
+    return new IVPluginInfo(paramParcel);
+  }
+  
+  public IVPluginInfo[] a(int paramInt)
+  {
+    return new IVPluginInfo[paramInt];
   }
 }
 

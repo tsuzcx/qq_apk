@@ -1,29 +1,19 @@
-import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailInteractSegment;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class nvr
-  extends OnSimpleShareListener
+  extends QQStoryObserver
 {
-  public nvr(DetailInteractSegment paramDetailInteractSegment) {}
+  public nvr(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate) {}
   
-  public void a()
+  public void c(boolean paramBoolean)
   {
-    super.a();
-    DetailInteractSegment.a(this.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    StoryReportor.a("home_page", "suc_share", 2, paramInt, new String[] { StoryReportor.b(DetailInteractSegment.a(this.a).a) + "", StoryReportor.a(DetailInteractSegment.a(this.a).a) + "", DetailInteractSegment.a(this.a).a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    StoryReportor.a("home_page", "share_chanel", 2, paramInt, new String[] { StoryReportor.b(DetailInteractSegment.a(this.a).a) + "", StoryReportor.a(DetailInteractSegment.a(this.a).a) + "", DetailInteractSegment.a(this.a).a.feedId });
+    QQStoryManager localQQStoryManager = (QQStoryManager)this.a.a.app.getManager(180);
+    this.a.a(2, localQQStoryManager.a());
+    this.a.a(3, localQQStoryManager.b());
   }
 }
 

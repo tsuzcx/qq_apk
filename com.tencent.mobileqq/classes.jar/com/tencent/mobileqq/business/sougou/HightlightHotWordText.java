@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.business.sougou;
 
-import abmf;
+import abtg;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
@@ -68,9 +68,9 @@ public class HightlightHotWordText
   private void a(Context paramContext)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
-    localActionSheet.a(2131429895, 5);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new abmf(this, paramContext, localActionSheet));
+    localActionSheet.a(2131429896, 5);
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new abtg(this, paramContext, localActionSheet));
     if (!localActionSheet.isShowing()) {
       localActionSheet.show();
     }

@@ -1,70 +1,37 @@
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.FunnyPicHelper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.provider.Settings.System;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.recent.TimeManager;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import mqq.os.MqqHandler;
 
 public class smy
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public smy(FavEmosmManageActivity paramFavEmosmManageActivity, List paramList) {}
+  public smy(Conversation paramConversation) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject1 = (FavroamingDBManager)this.jdField_a_of_type_ComTencentMobileqqActivityFavEmosmManageActivity.app.getManager(148);
-    if (QLog.isColorLevel()) {
-      QLog.i("FavEmosmManageActivity", 2, "Call getFavEmoticonList-1 from doDelete.");
-    }
-    Object localObject2 = ((FavroamingDBManager)localObject1).a();
-    if (localObject2 != null)
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext)))
     {
-      int i = 1;
-      int k = 0;
-      for (;;)
-      {
-        j = i;
-        if (k >= ((List)localObject2).size()) {
-          break;
-        }
-        int m = ((CustomEmotionData)((List)localObject2).get(k)).emoId;
-        j = i;
-        if (i < m) {
-          j = m;
-        }
-        k += 1;
-        i = j;
+      paramContext = Settings.System.getString(this.a.a().getContentResolver(), "date_format");
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (TimeManager.a().a(paramContext)) && (this.a.i)) {
+        this.a.a(1014, 0L, false);
       }
-    }
-    int j = 1;
-    localObject2 = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityFavEmosmManageActivity.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FavoriteEmoticonInfo localFavoriteEmoticonInfo = (FavoriteEmoticonInfo)localIterator.next();
-      if (!this.jdField_a_of_type_JavaUtilList.contains(localFavoriteEmoticonInfo))
+      SubAccountControll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        CustomEmotionData localCustomEmotionData = new CustomEmotionData();
-        localCustomEmotionData.uin = this.jdField_a_of_type_ComTencentMobileqqActivityFavEmosmManageActivity.app.getCurrentAccountUin();
-        localCustomEmotionData.url = localFavoriteEmoticonInfo.d;
-        localCustomEmotionData.eId = localFavoriteEmoticonInfo.c;
-        localCustomEmotionData.md5 = localFavoriteEmoticonInfo.a;
-        j += 1;
-        localCustomEmotionData.emoId = j;
-        localCustomEmotionData.emoPath = (AppConstants.aU + FunnyPicHelper.a(localFavoriteEmoticonInfo.d));
-        ((FavroamingDBManager)localObject1).c(localCustomEmotionData);
-        ((List)localObject2).add(localCustomEmotionData);
+        paramContext = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(TroopAssistantActivity.class);
+        if (paramContext != null) {
+          paramContext.sendEmptyMessage(2);
+        }
       }
-    }
-    localObject1 = (FavroamingManager)this.jdField_a_of_type_ComTencentMobileqqActivityFavEmosmManageActivity.app.getManager(102);
-    if ((localObject1 != null) && (!((List)localObject2).isEmpty())) {
-      ((FavroamingManager)localObject1).a((List)localObject2);
     }
   }
 }

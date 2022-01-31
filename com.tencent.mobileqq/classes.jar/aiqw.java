@@ -1,28 +1,4 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.ScribblePicUploadProcessor;
-
-public class aiqw
-  extends MessageObserver
-{
-  public aiqw(ScribblePicUploadProcessor paramScribblePicUploadProcessor) {}
-  
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
-  {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramStatictisInfo != null) {
-      this.a.u = paramStatictisInfo.d;
-    }
-    this.a.a(-1, "MessageForScribble SEND FAIL", "", this.a.b);
-    this.a.d();
-  }
-}
+public class aiqw {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

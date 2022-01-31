@@ -1,28 +1,57 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class zrr
-  extends DiscussionObserver
+  extends Handler
 {
-  private zrr(UpdateDiscuss paramUpdateDiscuss) {}
-  
-  protected void a(boolean paramBoolean)
+  public zrr(QQAppInterface paramQQAppInterface, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
-    }
-    if (!paramBoolean)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      this.a.a(6);
-      return;
     }
-    UpdateDiscuss.a(this.a).a.edit().putBoolean("isDiscussionlistok", true).commit();
-    UpdateDiscuss.b(this.a).a(3, true, Integer.valueOf(3));
-    this.a.a(7);
+    do
+    {
+      return;
+      paramMessage = (QQAppInterface)((WeakReference)paramMessage.obj).get();
+      if (paramMessage != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QQAppInterface", 2, "getOnlineFriend app is null");
+    return;
+    long l1 = QQAppInterface.e;
+    long l3 = SystemClock.uptimeMillis();
+    long l2 = Math.abs(l3 - this.a.c);
+    if ((!"0".equals(paramMessage.getCurrentAccountUin())) && (l2 >= QQAppInterface.e))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAppInterface", 2, "getOnlineFriend");
+      }
+      this.a.c = l3;
+      FriendListHandler localFriendListHandler = (FriendListHandler)paramMessage.a(1);
+      if (localFriendListHandler != null) {
+        localFriendListHandler.d(paramMessage.getCurrentAccountUin(), (byte)0);
+      }
+    }
+    if (l2 < QQAppInterface.e) {
+      l1 = QQAppInterface.e - l2;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface", 2, "getOnlineFriend send next msg " + l1);
+    }
+    paramMessage = this.a.a.obtainMessage(0, new WeakReference(paramMessage));
+    this.a.a.sendMessageDelayed(paramMessage, l1);
   }
 }
 

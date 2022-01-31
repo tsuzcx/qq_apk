@@ -1,12 +1,24 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public final class angx
-  implements INetEventHandler
+public class angx
+  implements Runnable
 {
-  public void onNetChangeEvent(boolean paramBoolean)
+  public angx(QZoneShareActivity paramQZoneShareActivity) {}
+  
+  public void run()
   {
-    WeiyunTransmissionStatus.getInstance().onReceiveNetChanged(paramBoolean);
+    if ((QZoneShareActivity.a(this.a) != null) && (QZoneShareActivity.a(this.a).isShowing())) {}
+    try
+    {
+      QZoneShareActivity.a(this.a).dismiss();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QZoneShare", 1, localException.getMessage());
+    }
   }
 }
 

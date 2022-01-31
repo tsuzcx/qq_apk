@@ -1,14 +1,13 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
 public class uvo
   implements Runnable
 {
-  public uvo(CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable) {}
+  public uvo(PressToSpeakPanel paramPressToSpeakPanel) {}
   
   public void run()
   {
-    HapticManager.a().a();
+    this.a.f();
   }
 }
 

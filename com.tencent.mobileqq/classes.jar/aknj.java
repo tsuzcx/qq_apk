@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.webso.WebSoService;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aknj
-  implements Runnable
+public final class aknj
+  implements View.OnClickListener
 {
-  public aknj(WebViewFragment paramWebViewFragment, String paramString) {}
+  public aknj(Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    WebSoService.a().a(this.jdField_a_of_type_JavaLangString, null);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aknj
  * JD-Core Version:    0.7.0.1
  */

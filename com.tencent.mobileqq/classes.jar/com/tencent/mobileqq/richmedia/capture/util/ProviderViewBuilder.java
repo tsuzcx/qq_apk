@@ -27,10 +27,10 @@ public class ProviderViewBuilder
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 101, 2130843167 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 102, 2130843170 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 103, 2130843166 };
-    jdField_d_of_type_ArrayOfInt = new int[] { 104, 2130843173 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 101, 2130843199 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 102, 2130843202 };
+    jdField_c_of_type_ArrayOfInt = new int[] { 103, 2130843198 };
+    jdField_d_of_type_ArrayOfInt = new int[] { 104, 2130843205 };
   }
   
   public ProviderViewBuilder(int paramInt)
@@ -80,7 +80,7 @@ public class ProviderViewBuilder
       }
       return paramContext;
       paramContext = new FilterProviderView(paramContext, this.jdField_a_of_type_Int);
-      paramContext.setId(2131362418);
+      paramContext.setId(2131362421);
       continue;
       paramContext = new PtvTemplateProviderView(paramContext);
       continue;

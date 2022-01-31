@@ -1,38 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.biz.qqstory.view.widget.RateWidget;
 
 public class ovt
-  implements BusinessObserver
+  implements Runnable
 {
-  public ovt(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  public ovt(RateWidget paramRateWidget) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
-    }
-    if (!paramBoolean)
+    RateWidget localRateWidget = this.a;
+    if (!RateWidget.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      EditUniqueTitleActivity.a(this.a, -1);
+      RateWidget.a(localRateWidget, bool);
+      this.a.c(RateWidget.a(this.a));
       return;
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      localOIDBSSOPkg.mergeFrom(paramBundle);
-      paramInt = localOIDBSSOPkg.uint32_result.get();
-      EditUniqueTitleActivity.a(this.a, paramInt);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      EditUniqueTitleActivity.a(this.a, -1);
     }
   }
 }

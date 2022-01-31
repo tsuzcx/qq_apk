@@ -1,23 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.freshnews.QQInputView;
-import com.tencent.util.InputMethodUtil;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class adok
-  implements Runnable
+  implements FMDialogUtil.FMDialogInterface
 {
-  public adok(QQInputView paramQQInputView) {}
+  public adok(FileModel paramFileModel, Activity paramActivity) {}
   
-  public void run()
+  public void a()
   {
-    QQInputView.a(this.a).setVisibility(8);
-    QQInputView.a(this.a).setImageResource(2130844545);
-    if (AppSetting.b) {
-      QQInputView.a(this.a).setContentDescription("键盘");
-    }
-    InputMethodUtil.a(QQInputView.a(this.a));
+    FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel, this.jdField_a_of_type_AndroidAppActivity);
   }
+  
+  public void b() {}
 }
 
 

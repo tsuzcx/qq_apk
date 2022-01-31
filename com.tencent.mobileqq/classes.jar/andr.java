@@ -1,17 +1,17 @@
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import cooperation.qzone.cache.FileCacheService;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
-public final class andr
-  implements ThreadPool.Job
+public class andr
+  implements DialogInterface.OnClickListener
 {
-  public andr(String paramString1, String paramString2) {}
+  public andr(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$000(this.a, this.b)), true);
-    return null;
+    paramDialogInterface.dismiss();
+    this.a.isFlowWarningVisible = false;
+    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
   }
 }
 

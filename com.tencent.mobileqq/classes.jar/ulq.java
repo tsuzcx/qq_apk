@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class ulq
   implements Runnable
 {
-  public ulq(MediaPlayerManager paramMediaPlayerManager, boolean paramBoolean) {}
+  public ulq(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
   public void run()
   {
-    if (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager, this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.d();
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+      this.a.a.dismiss();
     }
+    this.a.a = null;
   }
 }
 

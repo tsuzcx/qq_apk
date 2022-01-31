@@ -1,20 +1,25 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
+import android.os.SystemClock;
+import com.tencent.mobileqq.webview.AbsWebView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aktq
-  implements AnyScaleTypeImageView.DisplayRuleDef
+public class aktq
+  implements Runnable
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public aktq(AbsWebView paramAbsWebView) {}
+  
+  public void run()
   {
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
+    long l1 = SystemClock.uptimeMillis();
+    if (this.a.a == null)
+    {
+      this.a.z();
+      if (QLog.isColorLevel())
+      {
+        long l2 = SystemClock.uptimeMillis();
+        QLog.d("AbsWebView", 2, "initPluginEngine cost= " + (l2 - l1));
+      }
     }
-    paramInt2 = paramDrawable.getIntrinsicWidth();
-    float f = paramInt1 / paramInt2;
-    localMatrix.setScale(f, f);
-    return localMatrix;
+    Thread.yield();
   }
 }
 

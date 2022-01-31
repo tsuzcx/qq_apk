@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import aian;
+import aiff;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -26,7 +26,7 @@ public abstract class GlView
   public static boolean h;
   protected float a;
   private int jdField_a_of_type_Int = 1;
-  protected aian a;
+  protected aiff a;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
@@ -72,7 +72,7 @@ public abstract class GlView
     this.jdField_c_of_type_ArrayOfFloat = new float[2];
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext = paramGLViewContext;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aian = GLShaderManager.a(paramString);
+    this.jdField_a_of_type_Aiff = GLShaderManager.a(paramString);
     this.k = false;
     this.l = false;
     this.jdField_a_of_type_Boolean = false;
@@ -252,24 +252,24 @@ public abstract class GlView
     return bool1;
   }
   
-  protected void al_()
+  protected void an_()
   {
-    int i1 = ((Integer)this.jdField_a_of_type_Aian.jdField_a_of_type_JavaUtilHashMap.get("a_position")).intValue();
+    int i1 = ((Integer)this.jdField_a_of_type_Aiff.jdField_a_of_type_JavaUtilHashMap.get("a_position")).intValue();
     GLES20.glVertexAttribPointer(i1, 3, 5126, false, 0, 0);
     GLES20.glEnableVertexAttribArray(i1);
-    i1 = ((Integer)this.jdField_a_of_type_Aian.jdField_a_of_type_JavaUtilHashMap.get("a_texCoord")).intValue();
-    GLES20.glVertexAttribPointer(i1, 2, 5126, false, 0, this.jdField_a_of_type_Aian.b() * this.jdField_i_of_type_Int * 4);
+    i1 = ((Integer)this.jdField_a_of_type_Aiff.jdField_a_of_type_JavaUtilHashMap.get("a_texCoord")).intValue();
+    GLES20.glVertexAttribPointer(i1, 2, 5126, false, 0, this.jdField_a_of_type_Aiff.b() * this.jdField_i_of_type_Int * 4);
     GLES20.glEnableVertexAttribArray(i1);
-    i1 = ((Integer)this.jdField_a_of_type_Aian.jdField_a_of_type_JavaUtilHashMap.get("a_color")).intValue();
-    GLES20.glVertexAttribPointer(i1, 4, 5126, false, 0, this.jdField_a_of_type_Aian.c() * this.jdField_i_of_type_Int * 4);
+    i1 = ((Integer)this.jdField_a_of_type_Aiff.jdField_a_of_type_JavaUtilHashMap.get("a_color")).intValue();
+    GLES20.glVertexAttribPointer(i1, 4, 5126, false, 0, this.jdField_a_of_type_Aiff.c() * this.jdField_i_of_type_Int * 4);
     GLES20.glEnableVertexAttribArray(i1);
-    i1 = ((Integer)this.jdField_a_of_type_Aian.b.get("u_texture")).intValue();
+    i1 = ((Integer)this.jdField_a_of_type_Aiff.b.get("u_texture")).intValue();
     GLES20.glActiveTexture(33984);
     GLES20.glBindTexture(3553, this.f);
     GLES20.glUniform1i(i1, 0);
   }
   
-  protected void am_()
+  protected void ao_()
   {
     k();
     n();
@@ -354,14 +354,14 @@ public abstract class GlView
   public void f(int paramInt)
   {
     int i1 = 0;
-    if (this.jdField_a_of_type_Aian == null) {
+    if (this.jdField_a_of_type_Aiff == null) {
       DanceLog.a("GlView", "GlView: initView mProgramObject=null");
     }
     for (;;)
     {
       return;
       this.jdField_i_of_type_Int = paramInt;
-      a(this.jdField_a_of_type_Aian.a() * this.jdField_i_of_type_Int);
+      a(this.jdField_a_of_type_Aiff.a() * this.jdField_i_of_type_Int);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[this.jdField_i_of_type_Int];
       GLES20.glGenBuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
       paramInt = i1;
@@ -373,14 +373,14 @@ public abstract class GlView
     }
   }
   
+  public void f_(boolean paramBoolean)
+  {
+    this.j = paramBoolean;
+  }
+  
   public final void g(int paramInt)
   {
     this.jdField_a_of_type_Int = (paramInt & 0x7);
-  }
-  
-  public void h_(boolean paramBoolean)
-  {
-    this.j = paramBoolean;
   }
   
   final void k()
@@ -507,24 +507,24 @@ public abstract class GlView
   
   public final void r()
   {
-    if (this.jdField_a_of_type_Aian == null)
+    if (this.jdField_a_of_type_Aiff == null)
     {
       DanceLog.a("GlView", "GlView: drawInternal mProgramObject=null");
       return;
     }
     f();
     GLES20.glViewport(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a().left, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a().top, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a().width(), this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a().height());
-    GLES20.glUseProgram(this.jdField_a_of_type_Aian.jdField_a_of_type_Int);
-    GLES20.glUniformMatrix4fv(((Integer)this.jdField_a_of_type_Aian.b.get("u_projectionMatrix")).intValue(), 1, false, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a(), 0);
+    GLES20.glUseProgram(this.jdField_a_of_type_Aiff.jdField_a_of_type_Int);
+    GLES20.glUniformMatrix4fv(((Integer)this.jdField_a_of_type_Aiff.b.get("u_projectionMatrix")).intValue(), 1, false, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a(), 0);
     GLES20.glBindBuffer(34962, this.jdField_a_of_type_ArrayOfInt[0]);
     GlUtil.a("glBindBuffer");
     if (a())
     {
-      am_();
+      ao_();
       this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
       GLES20.glBufferData(34962, this.jdField_a_of_type_JavaNioFloatBuffer.capacity() * 4, this.jdField_a_of_type_JavaNioFloatBuffer, 35044);
     }
-    al_();
+    an_();
     i();
     GLES20.glBindBuffer(34962, 0);
     g();

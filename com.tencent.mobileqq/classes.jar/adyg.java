@@ -1,51 +1,64 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.jsp.WebRecordApiPlugin;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.mobileqq.utils.QQRecorder;
+import android.util.SparseArray;
+import com.tencent.mobileqq.hotpic.HotPicManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-class adyg
-  extends Handler
+public class adyg
+  implements Runnable
 {
-  adyg(adyf paramadyf, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adyg(HotPicManager paramHotPicManager, int paramInt1, int paramInt2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.a();
+    switch (this.jdField_a_of_type_Int)
     {
     default: 
+    case 10001: 
+      do
+      {
+        return;
+        if ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b())) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("HotPicManager", 2, "cancel request");
       return;
-    case 16711687: 
-      this.a.b(0);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.a(this.b);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager;
+      int j = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b();
+      int k = this.b;
+      if (bool) {}
+      for (i = 10003;; i = 10002)
+      {
+        ((HotPicManager)localObject).a(0, 15, j, k, true, i);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("HotPicManager", 2, "request REQ_CHECK_UPDATE getLoaclVersion is " + this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b());
+        return;
       }
-      adyf.a(this.a).c();
-      AudioUtil.b(2131230743, false);
-      AudioUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
-    case 1: 
-      this.a.b(1);
-      return;
-    case 16711689: 
-      localObject = (JSONObject)paramMessage.obj;
-      paramMessage = ((JSONObject)localObject).optString("msg", "");
-      localObject = ((JSONObject)localObject).optString("path", "");
-      this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':0,'recordID':'" + (String)localObject + "','result':" + paramMessage + "}" });
+    case 10002: 
+      localArrayList = (ArrayList)HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).get(this.b);
+      localObject = localArrayList;
+      if (localArrayList == null)
+      {
+        localObject = new ArrayList();
+        HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).put(this.b, localObject);
+      }
+      i = ((ArrayList)localObject).size();
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.a(i, 16 + i - 1, this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b(), this.b, false, this.jdField_a_of_type_Int);
       return;
     }
-    Object localObject = (JSONObject)paramMessage.obj;
-    paramMessage = ((JSONObject)localObject).optString("msg", "");
-    localObject = ((JSONObject)localObject).optString("path", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.a.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':1,'recordID':'" + (String)localObject + "','msg':'" + paramMessage + "'}" });
+    ArrayList localArrayList = (ArrayList)HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).get(this.b);
+    Object localObject = localArrayList;
+    if (localArrayList == null)
+    {
+      localObject = new ArrayList();
+      HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).put(this.b, localObject);
+    }
+    int i = ((ArrayList)localObject).size();
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.a(i, 8 + i - 1, this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b(), this.b, false, this.jdField_a_of_type_Int);
   }
 }
 

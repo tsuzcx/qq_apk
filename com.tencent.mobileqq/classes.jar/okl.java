@@ -1,24 +1,36 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager.PageChangedObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class okl
-  implements ViewPager.OnPageChangeListener
+  extends SimpleObserver
 {
-  public okl(FaceViewPager paramFaceViewPager) {}
+  public okl(EditVideoPlayer paramEditVideoPlayer) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a(Bitmap paramBitmap)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((FaceViewPager.PageChangedObserver)localIterator.next()).b(paramInt);
+    super.onNext(paramBitmap);
+    if (paramBitmap != null)
+    {
+      if (this.a.b)
+      {
+        this.a.a.setImageBitmap(paramBitmap);
+        SLog.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
+      }
     }
+    else {
+      return;
+    }
+    SLog.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    SLog.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
   }
 }
 

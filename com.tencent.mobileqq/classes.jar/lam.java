@@ -1,20 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import java.io.File;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONObject;
 
 public class lam
   implements Runnable
 {
-  public lam(KanDianViewController paramKanDianViewController) {}
+  public lam(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    String str = CommonSkinRes.e();
-    if ((str != null) && (new File(str).exists()))
-    {
-      KanDianViewController.a(this.a).removeMessages(2);
-      KanDianViewController.a(this.a).sendEmptyMessage(3);
-    }
+    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

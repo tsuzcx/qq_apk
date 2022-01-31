@@ -1,37 +1,27 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.util.QZLog;
 
 public class xco
-  extends RecyclerView.ItemDecoration
+  implements EncodeVideoTask.ResultListener
 {
-  private int a;
-  private int b;
+  public xco(PhotoListActivity paramPhotoListActivity) {}
   
-  private xco(int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    localMessage.obj = Integer.valueOf(paramInt);
+    this.a.a.sendMessage(localMessage);
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
   {
-    int i = paramRecyclerView.getChildPosition(paramView);
-    if (i == 0)
-    {
-      paramRect.left = this.a;
-      return;
-    }
-    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
-    {
-      paramRect.left = this.b;
-      paramRect.right = this.a;
-      return;
-    }
-    paramRect.left = this.b;
+    QZLog.d("PhotoListActivity", 2, new Object[] { "encode video cost time = ", Long.valueOf(System.currentTimeMillis() - this.a.g) });
+    ThreadManager.postImmediately(new xcp(this, paramString1, paramString2, paramInt3), null, true);
   }
 }
 

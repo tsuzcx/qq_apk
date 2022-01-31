@@ -1,99 +1,89 @@
-import android.os.AsyncTask;
-import cooperation.dingdong.DingdongPluginManager;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class amkv
-  extends AsyncTask
 {
-  public amkv(DingdongPluginManager paramDingdongPluginManager, int paramInt, amkw paramamkw) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int b;
+  private int c;
+  private int d;
   
-  /* Error */
-  protected java.lang.Void a(com.tencent.mobileqq.app.utils.DingdongPluginBizObserver.ScheduleMoreSummaryData... paramVarArgs)
+  public amkv(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 12	amkv:jdField_a_of_type_CooperationDingdongDingdongPluginManager	Lcooperation/dingdong/DingdongPluginManager;
-    //   4: invokestatic 26	cooperation/dingdong/DingdongPluginManager:a	(Lcooperation/dingdong/DingdongPluginManager;)Ljava/util/HashMap;
-    //   7: astore 4
-    //   9: aload 4
-    //   11: monitorenter
-    //   12: aload_1
-    //   13: iconst_0
-    //   14: aaload
-    //   15: astore_1
-    //   16: aload_0
-    //   17: getfield 12	amkv:jdField_a_of_type_CooperationDingdongDingdongPluginManager	Lcooperation/dingdong/DingdongPluginManager;
-    //   20: invokestatic 29	cooperation/dingdong/DingdongPluginManager:a	(Lcooperation/dingdong/DingdongPluginManager;)Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   23: invokevirtual 35	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   26: new 37	java/lang/StringBuilder
-    //   29: dup
-    //   30: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   33: aload_0
-    //   34: getfield 12	amkv:jdField_a_of_type_CooperationDingdongDingdongPluginManager	Lcooperation/dingdong/DingdongPluginManager;
-    //   37: invokestatic 29	cooperation/dingdong/DingdongPluginManager:a	(Lcooperation/dingdong/DingdongPluginManager;)Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   40: invokevirtual 42	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   43: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: ldc 48
-    //   48: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   54: iconst_0
-    //   55: invokevirtual 57	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   58: aload_1
-    //   59: getfield 62	com/tencent/mobileqq/app/utils/DingdongPluginBizObserver$ScheduleMoreSummaryData:a	Lcooperation/dingdong/DingdongPluginDataFactory$ScheduleSummaryData;
-    //   62: getfield 68	cooperation/dingdong/DingdongPluginDataFactory$ScheduleSummaryData:id	Ljava/lang/String;
-    //   65: lconst_0
-    //   66: invokeinterface 74 4 0
-    //   71: lstore_2
-    //   72: lload_2
-    //   73: lconst_0
-    //   74: lcmp
-    //   75: ifne +16 -> 91
-    //   78: aload_0
-    //   79: getfield 14	amkv:jdField_a_of_type_Int	I
-    //   82: aload_1
-    //   83: invokestatic 80	cooperation/dingdong/DingdongCalendarSyncUtil:b	(ILcom/tencent/mobileqq/app/utils/DingdongPluginBizObserver$ScheduleMoreSummaryData;)V
-    //   86: aload 4
-    //   88: monitorexit
-    //   89: aconst_null
-    //   90: areturn
-    //   91: lload_2
-    //   92: lconst_0
-    //   93: lcmp
-    //   94: ifle +15 -> 109
-    //   97: lload_2
-    //   98: aload_0
-    //   99: getfield 16	amkv:jdField_a_of_type_Amkw	Lamkw;
-    //   102: getfield 85	amkw:b	J
-    //   105: lcmp
-    //   106: ifgt -20 -> 86
-    //   109: aload_0
-    //   110: getfield 14	amkv:jdField_a_of_type_Int	I
-    //   113: aload_1
-    //   114: invokestatic 80	cooperation/dingdong/DingdongCalendarSyncUtil:b	(ILcom/tencent/mobileqq/app/utils/DingdongPluginBizObserver$ScheduleMoreSummaryData;)V
-    //   117: goto -31 -> 86
-    //   120: astore_1
-    //   121: aload 4
-    //   123: monitorexit
-    //   124: aload_1
-    //   125: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	126	0	this	amkv
-    //   0	126	1	paramVarArgs	com.tencent.mobileqq.app.utils.DingdongPluginBizObserver.ScheduleMoreSummaryData[]
-    //   71	27	2	l	long
-    //   7	115	4	localHashMap	java.util.HashMap
-    // Exception table:
-    //   from	to	target	type
-    //   16	72	120	finally
-    //   78	86	120	finally
-    //   86	89	120	finally
-    //   97	109	120	finally
-    //   109	117	120	finally
-    //   121	124	120	finally
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.jdField_a_of_type_Int = paramInt4;
+    this.jdField_a_of_type_JavaUtilArrayList = a(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public int a()
+  {
+    return (int)((this.c - this.b) / (this.jdField_a_of_type_Int - 1.0F));
+  }
+  
+  public ArrayList a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public ArrayList a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    ArrayList localArrayList = new ArrayList(paramInt4);
+    int j = (int)((paramInt2 - paramInt1) / (paramInt4 - 1.0F));
+    int i = 0;
+    paramInt2 = paramInt1;
+    paramInt1 = i;
+    if (paramInt1 < paramInt4)
+    {
+      if (paramInt1 == 0) {}
+      for (i = 0;; i = j)
+      {
+        Point localPoint = new Point(i + paramInt2, paramInt3);
+        localArrayList.add(localPoint);
+        paramInt2 = localPoint.x;
+        paramInt1 += 1;
+        break;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint, amkr paramamkr)
+  {
+    int i = paramPaint.getColor();
+    float f1 = paramPaint.getStrokeWidth();
+    paramPaint.setColor(paramamkr.b);
+    paramPaint.setStrokeWidth(paramamkr.e);
+    paramCanvas.drawLine(this.b, this.d, this.c, this.d, paramPaint);
+    paramamkr = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramamkr.hasNext())
+    {
+      Point localPoint = (Point)paramamkr.next();
+      float f2 = localPoint.x;
+      float f3 = localPoint.y;
+      float f4 = this.jdField_a_of_type_Float / 2.0F;
+      float f5 = localPoint.x;
+      float f6 = localPoint.y;
+      paramCanvas.drawLine(f2, f3 - f4, f5, this.jdField_a_of_type_Float / 2.0F + f6, paramPaint);
+    }
+    paramPaint.setColor(i);
+    paramPaint.setStrokeWidth(f1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkv
  * JD-Core Version:    0.7.0.1
  */

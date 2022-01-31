@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.Iterator;
-import vij;
+import vnl;
 
 public class StructingMsgItemBuilder$ViewCache
 {
@@ -12,12 +12,12 @@ public class StructingMsgItemBuilder$ViewCache
   private StructingMsgItemBuilder.CacheMap jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap = new StructingMsgItemBuilder.CacheMap(null);
   private StructingMsgItemBuilder.CacheMap b = new StructingMsgItemBuilder.CacheMap(null);
   
-  private vij a(String paramString, ViewGroup paramViewGroup)
+  private vnl a(String paramString, ViewGroup paramViewGroup)
   {
     Iterator localIterator = this.b.get(paramString).iterator();
     while (localIterator.hasNext())
     {
-      paramString = (vij)localIterator.next();
+      paramString = (vnl)localIterator.next();
       if (paramString != null) {
         paramString.a(paramViewGroup);
       }
@@ -49,24 +49,24 @@ public class StructingMsgItemBuilder$ViewCache
   
   public void a(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new vij(paramString, paramView, paramViewGroup));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new vnl(paramString, paramView, paramViewGroup));
   }
   
   public void a(String paramString, ViewGroup paramViewGroup)
   {
     if (paramViewGroup == null) {}
-    vij localvij;
+    vnl localvnl;
     do
     {
       return;
       while (!paramString.hasNext()) {
         paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(paramString).iterator();
       }
-      localvij = (vij)paramString.next();
-    } while ((localvij == null) || (localvij.a() == null) || (localvij.a() != paramViewGroup));
-    localvij.a().removeAllViews();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localvij);
-    this.b.add(localvij);
+      localvnl = (vnl)paramString.next();
+    } while ((localvnl == null) || (localvnl.a() == null) || (localvnl.a() != paramViewGroup));
+    localvnl.a().removeAllViews();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localvnl);
+    this.b.add(localvnl);
   }
 }
 

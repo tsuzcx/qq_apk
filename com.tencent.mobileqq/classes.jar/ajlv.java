@@ -1,13 +1,32 @@
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
+import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloader;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ajlv
   implements Runnable
 {
-  public ajlv(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
+  public ajlv(TroopFileDownloader paramTroopFileDownloader) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(this.jdField_a_of_type_JavaLangString);
+    if (this.a.a) {
+      TroopFileTransferUtil.Log.b("TroopFileDownloader", TroopFileTransferUtil.Log.a, "[" + this.a.b + "] download. had stoped");
+    }
+    while (this.a.a()) {
+      return;
+    }
+    if (!this.a.b())
+    {
+      this.a.a(true, -5001, "file open exception", "");
+      return;
+    }
+    if (!NetworkUtil.d(BaseApplication.getContext()))
+    {
+      this.a.a(true, 9004, "no network", "");
+      return;
+    }
+    this.a.d();
   }
 }
 

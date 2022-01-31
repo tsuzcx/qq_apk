@@ -1,88 +1,76 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import java.io.UnsupportedEncodingException;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.mfsdk.reporter.ReporterMachine;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Queue;
 
 public class rir
-  implements TextWatcher
+  implements Runnable
 {
-  public rir(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  String jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath();
+  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(6);
+  String b = "/Tencent";
+  String c = "/tencent";
+  String d = "/MobileQQ/log/";
+  String e = "/Magnifier/dumpfile/";
+  String f = "/SNGAPM/battery/";
   
-  public void afterTextChanged(Editable paramEditable)
+  public rir()
   {
-    if (AddFriendVerifyActivity.a(this.a) != 4)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      int i = paramEditable.length();
-      if (i > 30)
-      {
-        paramEditable = paramEditable.toString();
-        if (i > 30)
-        {
-          i = paramEditable.length();
-          if ((i >= 2) && (Character.isHighSurrogate(paramEditable.charAt(i - 2)))) {}
-          for (paramEditable = paramEditable.substring(0, i - 2);; paramEditable = paramEditable.substring(0, i - 1))
-          {
-            i = paramEditable.length();
-            break;
-          }
-        }
-        this.a.a.setText(paramEditable);
-        this.a.a.setSelection(paramEditable.length());
+      if (!this.jdField_a_of_type_JavaLangString.endsWith("/")) {
+        this.jdField_a_of_type_JavaLangString += "/";
       }
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString + this.b + this.d);
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString + this.b + this.e);
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString + this.b + this.f);
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString + this.c + this.d);
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString + this.c + this.e);
+      this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaLangString + this.c + this.f);
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    if (AddFriendVerifyActivity.a(this.a) != 4) {}
-    for (;;)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject;
+    int i;
+    while (localIterator.hasNext())
     {
-      return;
-      try
+      localObject = new File((String)localIterator.next());
+      if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).isDirectory()))
       {
-        paramInt3 = paramCharSequence.toString().getBytes("utf-8").length;
-        paramInt1 = 90 - paramInt3;
-        paramCharSequence = paramCharSequence.toString();
-        paramInt2 = paramInt1;
-        if (paramInt3 > 90)
-        {
-          paramInt2 = paramInt3;
-          if (paramInt2 > 90)
-          {
-            paramInt1 = paramCharSequence.length();
-            if ((paramInt1 >= 2) && (Character.isHighSurrogate(paramCharSequence.charAt(paramInt1 - 2)))) {}
-            for (paramCharSequence = paramCharSequence.substring(0, paramInt1 - 2);; paramCharSequence = paramCharSequence.substring(0, paramInt1 - 1))
-            {
-              paramInt2 = paramCharSequence.getBytes("utf-8").length;
-              paramInt1 = 90 - paramInt2;
-              break;
-            }
-          }
-          AddFriendVerifyActivity.a(this.a).setText(paramCharSequence);
-          AddFriendVerifyActivity.a(this.a).setSelection(paramCharSequence.length());
-          paramInt2 = paramInt1;
-        }
-        if (AddFriendVerifyActivity.c(this.a).getVisibility() == 0)
-        {
-          paramCharSequence = paramInt2 + "";
-          AddFriendVerifyActivity.c(this.a).setText(paramCharSequence);
-          return;
+        localObject = ((File)localObject).listFiles();
+        if (localObject != null) {
+          i = 0;
         }
       }
-      catch (UnsupportedEncodingException paramCharSequence)
+    }
+    while (i < localObject.length)
+    {
+      String str = localObject[i].getPath();
+      if ((str.contains(".txt")) || (str.contains(".zip"))) {}
+      try
       {
-        paramCharSequence.printStackTrace();
+        ReporterMachine.a().add(str);
+        label108:
+        i += 1;
+        continue;
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label108;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rir
  * JD-Core Version:    0.7.0.1
  */

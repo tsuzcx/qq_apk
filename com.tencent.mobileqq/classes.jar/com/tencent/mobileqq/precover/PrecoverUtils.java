@@ -320,7 +320,7 @@ public class PrecoverUtils
   public static String a()
   {
     if (SystemUtil.a()) {
-      return AppConstants.aJ + "pddata/prd/" + "res_precover";
+      return AppConstants.aK + "pddata/prd/" + "res_precover";
     }
     return BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/" + "res_precover";
   }

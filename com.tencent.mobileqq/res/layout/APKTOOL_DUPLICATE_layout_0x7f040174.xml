@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<ScrollView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:addStatesFromChildren="false" android:layout_width="fill_parent" android:layout_height="50.0dip">
-        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a08" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a09" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="7.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bfc" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a0e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="hello" />
+        <Button android:id="@id/login" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="login" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getSkey" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a11" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getUserInfo" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getAppFriends" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getLocation" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a14" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="getCity" />
+        <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a15" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="200.0dip" android:minHeight="100.0dip" />
     </LinearLayout>
-    <View android:background="#4dffffff" android:layout_width="fill_parent" android:layout_height="0.5px" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+</ScrollView>

@@ -1,21 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class sxm
-  extends FriendListObserver
+  implements DialogInterface.OnDismissListener
 {
-  public sxm(Leba paramLeba) {}
+  public sxm(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    while ((QZoneManagerImp)this.a.a.getManager(9) == null) {
-      return;
-    }
-    Leba.c(this.a);
+    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
   }
 }
 

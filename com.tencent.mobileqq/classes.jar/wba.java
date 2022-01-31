@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
 
-public class wba
-  implements TroopRobotManager.Callback
+class wba
+  implements Runnable
 {
-  public wba(TroopChatPie paramTroopChatPie) {}
+  wba(way paramway, MultiForwardChatPie paramMultiForwardChatPie) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void run()
   {
-    if (paramInt == 0) {
-      return;
-    }
-    QQToast.a(this.a.a, 1, "操作失败" + "", 0).a();
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(2131433435);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.d.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.g);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.y();
   }
 }
 

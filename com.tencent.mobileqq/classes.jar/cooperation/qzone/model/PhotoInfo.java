@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amus;
+import ancd;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
@@ -17,7 +17,7 @@ public class PhotoInfo
   extends GalleryImage
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amus();
+  public static final Parcelable.Creator CREATOR = new ancd();
   public static int l;
   public static int m;
   public static int n;

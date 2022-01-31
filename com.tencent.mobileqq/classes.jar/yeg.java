@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
 
-public class yeg
-  implements DialogInterface.OnClickListener
+class yeg
+  implements Runnable
 {
-  public yeg(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  yeg(yef paramyef) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    LbsFilterStatusManager.a(this.a.a);
+  }
 }
 
 

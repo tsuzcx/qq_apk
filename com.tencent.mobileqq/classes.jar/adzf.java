@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.leba.LebaGridManager;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
 
 public class adzf
   implements Runnable
 {
-  public adzf(LebaGridManager paramLebaGridManager) {}
+  public adzf(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, Drawable paramDrawable) {}
   
   public void run()
   {
-    this.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.b.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

@@ -1,18 +1,30 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
 
 public class uav
-  implements Runnable
+  implements View.OnClickListener
 {
-  public uav(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public uav(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.d == 1) || (this.a.d == 11) || (this.a.d == 16))
-    {
-      Object[] arrayOfObject = this.a.a(this.a.b);
-      this.a.a.sendMessage(this.a.a.obtainMessage(1, arrayOfObject));
+    if (this.a.isFinishing()) {
+      return;
     }
+    this.a.c = false;
+    if (this.a.a != null)
+    {
+      this.a.a.a(4);
+      this.a.d();
+      this.a.c();
+    }
+    if (TroopAssistantManager.a().c()) {
+      TroopAssistantManager.a().f(this.a.app);
+    }
+    TroopAssistantActivity.b(this.a);
   }
 }
 

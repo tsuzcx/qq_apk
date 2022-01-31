@@ -44,11 +44,6 @@ public class CommonRecyclerView
     return null;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
   public void setAdapter(RecyclerView.Adapter paramAdapter)
   {
     if (paramAdapter == null) {

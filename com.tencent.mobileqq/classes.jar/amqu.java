@@ -1,32 +1,51 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.DcReportUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqreader.QRBridgeActivity;
+import mqq.app.MobileQQ;
 
-public class amqu
-  extends OnPluginInstallListener.Stub
+class amqu
+  implements AsyncBack
 {
-  public amqu(QRBridgeActivity paramQRBridgeActivity) {}
+  amqu(amqt paramamqt) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
+    int j = 0;
     if (QLog.isColorLevel()) {
-      QLog.d("QRBridgeActivity", 2, "installPlugin onInstallError, pluginId = " + paramString + ", errorCode = " + paramInt);
+      QLog.d("ComicHelper", 2, "Finish update offline pkg. code = " + paramInt + ", entry = " + this.a.jdField_a_of_type_Int);
     }
-    ReportController.b(this.a.app, "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 1, paramInt, "", "", "", "");
+    switch (paramInt)
+    {
+    }
+    for (int i = 0;; i = 1)
+    {
+      paramString = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_comic_file", 4);
+      int k = paramString.getInt("totalOfflinePkgDownloadCount", 0);
+      if (i != 0) {
+        j = k + 1;
+      }
+      if (j != k) {
+        paramString.edit().putInt("totalOfflinePkgDownloadCount", j).apply();
+      }
+      if (i != 0)
+      {
+        long l = NetConnInfoCenter.getServerTime();
+        paramString = new StringBuilder();
+        paramString.append(paramInt + "|");
+        paramString.append(j + "|");
+        paramString.append(l + "|");
+        paramString.append("|||||");
+        DcReportUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sendtdbank|b_sng_qqvip_qqcomic|offlinePkgDownload", paramString.toString(), true);
+      }
+      return;
+    }
   }
   
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRBridgeActivity", 2, "installPlugin onInstallFinish, pluginId = " + paramString);
-    }
-    ReportController.b(this.a.app, "P_CliOper", "VIP_QQREADER", "", "0X800604D", "0X800604D", 1, 0, "", "", "", "");
-  }
+  public void progress(int paramInt) {}
 }
 
 

@@ -1,36 +1,29 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailBaseInfoModel;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ktf
-  implements ViewPager.OnPageChangeListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public ktf(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public ktf(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo, ActionSheet paramActionSheet) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+    int i = 1;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.e) {
       return;
     }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt2 != 0) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.e = true;
+    if (paramInt + 1 == 1) {}
+    for (paramInt = i;; paramInt = 3)
     {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      AccountDetailBaseInfoModel.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, paramInt);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
     }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    PublicAccountAdvertisementActivity.a(this.a, paramInt);
   }
 }
 

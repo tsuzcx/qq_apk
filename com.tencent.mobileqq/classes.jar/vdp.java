@@ -1,13 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import cooperation.smartdevice.SmartDevicePluginLoader;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
 public class vdp
-  implements DialogInterface.OnClickListener
+  implements FileManagerUtil.TipsClickedInterface
 {
-  public vdp(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  public vdp(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(View paramView)
+  {
+    paramView = new Intent();
+    paramView.putExtra("device_info", ((SmartDeviceProxyMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+    SmartDevicePluginLoader.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceUnBindActivity", -1, null, SmartDevicePluginProxyActivity.class);
+  }
 }
 
 

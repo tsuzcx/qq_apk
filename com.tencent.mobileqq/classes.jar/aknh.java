@@ -1,26 +1,32 @@
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aknh
+public final class aknh
   implements Runnable
 {
-  public aknh(WebViewFragment paramWebViewFragment, int paramInt) {}
+  public aknh(boolean paramBoolean, QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "banner scroll to " + this.jdField_a_of_type_Int + " !");
+    String str1 = null;
+    if (this.jdField_a_of_type_Boolean) {
+      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435282);
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.a) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.getView().scrollTo(0, this.jdField_a_of_type_Int);
+    for (String str2 = "0";; str2 = "1")
+    {
+      if (str1 != null) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, str1, 0).b(this.jdField_a_of_type_Int);
+      }
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Fast_launch", "Fast_launch_creat", 0, 0, this.jdField_a_of_type_JavaLangString, str2, "", "");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aknh
  * JD-Core Version:    0.7.0.1
  */

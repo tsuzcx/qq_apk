@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.mobileqq.R.styleable;
-import woq;
-import wor;
-import wos;
-import wot;
+import wub;
+import wuc;
+import wud;
+import wue;
 
 public class CommonRefreshLayout
   extends ViewGroup
@@ -25,7 +25,7 @@ public class CommonRefreshLayout
   private View jdField_a_of_type_AndroidViewView;
   private AutoScroller jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller;
   private OnRefreshListener jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshOnRefreshListener;
-  wos jdField_a_of_type_Wos = new wor(this);
+  wud jdField_a_of_type_Wud = new wuc(this);
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 200;
@@ -185,8 +185,8 @@ public class CommonRefreshLayout
         f1 = this.jdField_c_of_type_Float - this.i;
       }
     }
-    if (wot.c(this.k)) {
-      this.jdField_a_of_type_Wos.a(this.i, false, false);
+    if (wue.c(this.k)) {
+      this.jdField_a_of_type_Wud.a(this.i, false, false);
     }
     c(f1);
   }
@@ -230,7 +230,7 @@ public class CommonRefreshLayout
       return;
     }
     this.i = ((int)(this.i + paramFloat));
-    if (wot.c(this.k)) {
+    if (wue.c(this.k)) {
       this.h = this.i;
     }
     d();
@@ -262,7 +262,7 @@ public class CommonRefreshLayout
   
   private void e()
   {
-    if (wot.b(this.k))
+    if (wue.b(this.k))
     {
       this.i = ((int)(this.jdField_b_of_type_Float + 0.5F));
       this.h = this.i;
@@ -270,7 +270,7 @@ public class CommonRefreshLayout
       requestLayout();
       invalidate();
     }
-    while (!wot.a(this.k)) {
+    while (!wue.a(this.k)) {
       return;
     }
     this.i = 0;
@@ -282,19 +282,19 @@ public class CommonRefreshLayout
   
   private void f()
   {
-    if (wot.d(this.k)) {
+    if (wue.d(this.k)) {
       h();
     }
     do
     {
       return;
-      if (wot.e(this.k))
+      if (wue.e(this.k))
       {
-        this.jdField_a_of_type_Wos.b();
+        this.jdField_a_of_type_Wud.b();
         i();
         return;
       }
-    } while (!wot.b(this.k));
+    } while (!wue.b(this.k));
     b();
   }
   
@@ -321,53 +321,53 @@ public class CommonRefreshLayout
   
   public void a()
   {
-    if (wot.e(this.k))
+    if (wue.e(this.k))
     {
       a(-3);
       e();
-      this.jdField_a_of_type_Wos.c();
+      this.jdField_a_of_type_Wud.c();
     }
     do
     {
       return;
-      if (wot.b(this.k))
+      if (wue.b(this.k))
       {
         a(0);
         e();
-        this.jdField_a_of_type_Wos.d();
+        this.jdField_a_of_type_Wud.d();
         return;
       }
-      if (wot.d(this.k))
+      if (wue.d(this.k))
       {
         if (this.jdField_b_of_type_Boolean)
         {
           this.jdField_b_of_type_Boolean = false;
           a(-3);
           e();
-          this.jdField_a_of_type_Wos.c();
+          this.jdField_a_of_type_Wud.c();
           return;
         }
         a(0);
         e();
-        this.jdField_a_of_type_Wos.d();
+        this.jdField_a_of_type_Wud.d();
         return;
       }
-    } while (!wot.a(this.k));
+    } while (!wue.a(this.k));
   }
   
   public void a(float paramFloat)
   {
-    if (wot.d(this.k)) {
-      this.jdField_a_of_type_Wos.a(this.i, false, true);
+    if (wue.d(this.k)) {
+      this.jdField_a_of_type_Wud.a(this.i, false, true);
     }
     for (;;)
     {
       c(paramFloat);
       return;
-      if (wot.e(this.k)) {
-        this.jdField_a_of_type_Wos.a(this.i, false, true);
-      } else if (wot.b(this.k)) {
-        this.jdField_a_of_type_Wos.a(this.i, true, true);
+      if (wue.e(this.k)) {
+        this.jdField_a_of_type_Wud.a(this.i, false, true);
+      } else if (wue.b(this.k)) {
+        this.jdField_a_of_type_Wud.a(this.i, true, true);
       }
     }
   }
@@ -422,8 +422,8 @@ public class CommonRefreshLayout
       if ((m <= 0) || (m >= 4)) {
         break;
       }
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131362382);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131362381);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131362385);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131362384);
     } while ((this.jdField_b_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewView == null) || (!(this.jdField_a_of_type_AndroidViewView instanceof SwipeTrigger)));
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     return;
@@ -452,11 +452,11 @@ public class CommonRefreshLayout
         f1 = a(paramMotionEvent, this.jdField_f_of_type_Int);
         this.jdField_e_of_type_Float = f1;
         this.jdField_g_of_type_Float = f1;
-        if ((wot.d(this.k)) || (wot.e(this.k))) {
+        if ((wue.d(this.k)) || (wue.e(this.k))) {
           this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewPullrefreshAutoScroller.a();
         }
-      } while (wot.d(this.k));
-      if (wot.e(this.k))
+      } while (wue.d(this.k));
+      if (wue.e(this.k))
       {
         return true;
         if (this.jdField_f_of_type_Int == -1) {
@@ -485,7 +485,7 @@ public class CommonRefreshLayout
           if (n != 0) {
             break label47;
           }
-          if (!wot.b(this.k)) {
+          if (!wue.b(this.k)) {
             break;
           }
           return true;
@@ -550,13 +550,13 @@ public class CommonRefreshLayout
         if ((Math.abs(f3) >= Math.abs(f4)) && (Math.abs(f3) > this.j)) {
           return false;
         }
-        if ((wot.a(this.k)) && (f4 > 0.0F) && (b()))
+        if ((wue.a(this.k)) && (f4 > 0.0F) && (b()))
         {
-          this.jdField_a_of_type_Wos.a();
+          this.jdField_a_of_type_Wud.a();
           a(-1);
         }
-      } while (!wot.c(this.k));
-      if ((wot.d(this.k)) || (wot.e(this.k)))
+      } while (!wue.c(this.k));
+      if ((wue.d(this.k)) || (wue.e(this.k)))
       {
         if (this.i < this.jdField_b_of_type_Float) {
           break label238;
@@ -615,13 +615,13 @@ public class CommonRefreshLayout
         if (!paramBoolean) {
           break;
         }
-      } while (!wot.a(this.k));
+      } while (!wue.a(this.k));
       a(-1);
       g();
       return;
-    } while (!wot.b(this.k));
-    this.jdField_a_of_type_Wos.d();
-    postDelayed(new woq(this), this.jdField_c_of_type_Int);
+    } while (!wue.b(this.k));
+    this.jdField_a_of_type_Wud.d();
+    postDelayed(new wub(this), this.jdField_c_of_type_Int);
   }
 }
 

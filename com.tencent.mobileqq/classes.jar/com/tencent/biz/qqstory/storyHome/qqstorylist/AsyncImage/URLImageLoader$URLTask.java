@@ -97,7 +97,7 @@ public class URLImageLoader$URLTask
       }
       paramURLDrawable = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (paramURLDrawable != null) {
-        paramURLDrawable.setTag(2131362364, localBitmap);
+        paramURLDrawable.setTag(2131362367, localBitmap);
       }
       super.a(new BitmapDrawable(localBitmap));
       return;

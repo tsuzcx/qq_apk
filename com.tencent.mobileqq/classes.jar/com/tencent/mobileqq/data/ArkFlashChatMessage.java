@@ -85,7 +85,7 @@ public class ArkFlashChatMessage
     if (!TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return MobileQQ.sMobileQQ.getString(2131438243);
+    return MobileQQ.sMobileQQ.getString(2131438263);
   }
   
   public void reset()

@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
+import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
 
 public class ogu
-  implements DialogInterface.OnDismissListener
 {
-  public ogu(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide) {}
+  public TextView a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ogu(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "showSyncStoryGuide ->onDismiss-------");
+    this.a = ((TextView)paramView.findViewById(2131367250));
+  }
+  
+  public void a(TagItem.TagInfoBase paramTagInfoBase, TagAdapter.OnItemClickListener paramOnItemClickListener)
+  {
+    if (TextUtils.isEmpty(paramTagInfoBase.a))
+    {
+      this.a.setVisibility(8);
+      return;
     }
-    SharedPreUtils.b(this.a.a.a());
+    this.a.setVisibility(0);
+    this.a.setText(TagAdapter.a(paramTagInfoBase));
+    TagAdapter.a(this.a);
+    this.a.setOnClickListener(new ogv(this, paramOnItemClickListener, paramTagInfoBase));
   }
 }
 

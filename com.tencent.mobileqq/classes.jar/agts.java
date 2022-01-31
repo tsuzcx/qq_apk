@@ -1,24 +1,28 @@
-import com.tencent.mobileqq.ptt.preop.PreDownloadParams.Params;
+import android.graphics.Point;
+import android.graphics.Rect;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
+import java.util.Comparator;
 
-class agts
+public class agts
+  implements Comparator
 {
-  public int a;
-  public final PreDownloadParams.Params a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  Point jdField_a_of_type_AndroidGraphicsPoint;
   
-  public agts(int paramInt)
+  public agts(TagCloudView paramTagCloudView, Point paramPoint)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params = new PreDownloadParams.Params();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPttPreopPreDownloadParams$Params.jdField_a_of_type_Int = -2147483648;
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+  }
+  
+  public int a(Rect paramRect1, Rect paramRect2)
+  {
+    paramRect1 = new Point((int)(paramRect1.width() * 0.5F + paramRect1.left), (int)(paramRect1.height() * 0.5F + paramRect1.top));
+    paramRect2 = new Point((int)(paramRect2.width() * 0.5F + paramRect2.left), (int)(paramRect2.height() * 0.5F + paramRect2.top));
+    return TagCloudView.a(paramRect1, this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramRect2, this.jdField_a_of_type_AndroidGraphicsPoint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agts
  * JD-Core Version:    0.7.0.1
  */

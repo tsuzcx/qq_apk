@@ -1,21 +1,34 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.FaceDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class sjj
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public sjj(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public sjj(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.app == null) {
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent(this.a, LoginActivity.class);
+      paramDialogInterface.putExtra("is_change_account", true);
+      paramDialogInterface.putExtra("if_check_account_same", true);
+      paramDialogInterface.putExtras(this.a.getIntent().getExtras());
+      paramDialogInterface.putExtra("key_action", ChatSettingForTroop.class.getSimpleName());
+      paramDialogInterface.addFlags(268435456);
+      paramDialogInterface.addFlags(67108864);
+      this.a.a.cancel();
+      this.a.startActivity(paramDialogInterface);
+      this.a.finish();
+    }
+    while (paramInt != 0) {
       return;
     }
-    Object localObject = this.a.app.getCurrentAccountUin();
-    localObject = FaceDrawable.a(this.a.app, 3, (String)localObject);
-    this.a.runOnUiThread(new sjk(this, (Drawable)localObject));
+    this.a.finish();
   }
 }
 

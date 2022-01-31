@@ -16,7 +16,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForMyEnterTroop;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import vcc;
+import vhe;
 
 public class MyEnterTroopChatItemBuilder
   extends AbstractChatItemBuilder
@@ -28,12 +28,12 @@ public class MyEnterTroopChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramLinearLayout = (vcc)paramViewHolder;
+    paramLinearLayout = (vhe)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.a).inflate(2130968785, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131363789));
+      paramViewHolder = LayoutInflater.from(this.a).inflate(2130968789, null);
+      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131363813));
     }
     paramLinearLayout.b.setMovementMethod(null);
     paramLinearLayout.b.setGravity(17);
@@ -53,7 +53,7 @@ public class MyEnterTroopChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new vcc(this);
+    return new vhe(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

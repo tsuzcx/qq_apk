@@ -1,44 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.locks.Lock;
 
 public class acay
-  extends TeamWorkFileImportObserver
+  implements Runnable
 {
-  public acay(MessengerService paramMessengerService) {}
+  public acay(ContactSyncManager paramContactSyncManager, Account[] paramArrayOfAccount) {}
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void run()
   {
-    if (this.a.a != null)
+    ContactSyncManager.a(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager).lock();
+    int i = 1;
+    try
     {
-      paramTeamWorkFileImportInfo = new Bundle();
-      paramTeamWorkFileImportInfo.putString("url", null);
-      this.a.a.putBundle("response", paramTeamWorkFileImportInfo);
-      this.a.a(this.a.a);
-      this.a.a = null;
+      while (i < this.jdField_a_of_type_ArrayOfAndroidAccountsAccount.length)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ContactSync.Manager", 2, "initSyncAccount | delAccount = " + this.jdField_a_of_type_ArrayOfAndroidAccountsAccount[i]);
+        }
+        ContactSyncManager.a(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager).removeAccount(this.jdField_a_of_type_ArrayOfAndroidAccountsAccount[i], null, null);
+        i += 1;
+      }
+      return;
     }
-  }
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
-    }
-    if (this.a.a != null)
+    catch (Throwable localThrowable) {}finally
     {
-      paramTeamWorkFileImportInfo = new Bundle();
-      paramTeamWorkFileImportInfo.putString("url", paramString);
-      this.a.a.putBundle("response", paramTeamWorkFileImportInfo);
-      this.a.a(this.a.a);
-      this.a.a = null;
+      ContactSyncManager.a(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager).unlock();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acay
  * JD-Core Version:    0.7.0.1
  */

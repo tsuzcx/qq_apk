@@ -1,84 +1,36 @@
-import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
-import com.tencent.mobileqq.util.HbThemeConfigManager;
-import java.io.File;
-import java.io.FileInputStream;
-import org.json.JSONObject;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer;
+import com.tencent.qphone.base.util.QLog;
 
 public class xdv
-  implements Runnable
+  implements SurfaceHolder.Callback
 {
-  public xdv(QzoneHbFragment paramQzoneHbFragment, String paramString) {}
+  public xdv(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void run()
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    Object localObject1 = HbThemeConfigManager.a().a();
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "surfaceCreated ");
+    }
+    if ((this.a.q == 1) && (this.a.p > 0))
     {
-      try
-      {
-        localObject1 = new JSONObject(new String(Base64.decode(((String)localObject1).toString(), 0)));
-        if (localObject1 != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.a((JSONObject)localObject1);
-          return;
-        }
-      }
-      catch (Exception localException1)
-      {
-        HbThemeConfigManager.a().a("");
-        localException1.printStackTrace();
-      }
-      Object localObject2 = new File(this.jdField_a_of_type_JavaLangString);
-      if (!((File)localObject2).exists()) {
-        continue;
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject4 = new byte[1024];
-          StringBuilder localStringBuilder = new StringBuilder();
-          localObject2 = new FileInputStream((File)localObject2);
-          try
-          {
-            int i = ((FileInputStream)localObject2).read((byte[])localObject4);
-            if (i > 0)
-            {
-              localStringBuilder.append(new String((byte[])localObject4, 0, i));
-              continue;
-              if (localObject2 == null) {}
-            }
-          }
-          catch (Exception localException2) {}
-        }
-        catch (Exception localException3)
-        {
-          Object localObject4;
-          Object localObject3 = null;
-          continue;
-        }
-        try
-        {
-          ((FileInputStream)localObject2).close();
-          localException2.printStackTrace();
-          return;
-          ((FileInputStream)localObject2).close();
-          localObject4 = new JSONObject(new String(Base64.decode(localException2.toString(), 0)));
-          if (localObject4 == null) {
-            break;
-          }
-          HbThemeConfigManager.a().a(localException2.toString());
-          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentQzoneHbFragment.a((JSONObject)localObject4);
-          return;
-        }
-        catch (Exception localException4)
-        {
-          localException4.printStackTrace();
-        }
-      }
+      this.a.a(this.a.p);
+      this.a.p = 0;
+      this.a.q = 0;
+    }
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "surfaceDestroyed ");
+    }
+    if (this.a.a != null) {
+      this.a.a.c();
     }
   }
 }

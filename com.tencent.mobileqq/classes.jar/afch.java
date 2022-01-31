@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afch
   implements Runnable
 {
-  public afch(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, BounceScrollView paramBounceScrollView, int paramInt) {}
+  public afch(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.scrollBy(0, this.jdField_a_of_type_Int);
+    ShortVideoCommentsView.a(this.a, ShortVideoCommentsView.a(this.a));
   }
 }
 

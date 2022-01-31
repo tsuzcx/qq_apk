@@ -1,15 +1,15 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class amvk
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public amvk(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public amvk(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    RemoteHandleManager.a().a().a();
+    this.a.finish();
   }
 }
 

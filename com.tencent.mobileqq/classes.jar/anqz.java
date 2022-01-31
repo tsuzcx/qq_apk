@@ -1,24 +1,16 @@
-import com.tencent.image.URLImageView;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.app.Activity;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
 public class anqz
   implements Runnable
 {
-  public anqz(EditGifImage paramEditGifImage) {}
+  public anqz(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
   public void run()
   {
-    FastAnimationDrawable localFastAnimationDrawable = this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable;
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = this.a.b;
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
-    this.a.b = localFastAnimationDrawable;
-    this.a.d = true;
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true, true);
+    QIMCameraCaptureUnit.a(this.a, false);
+    this.a.a.a().runOnUiThread(new anra(this));
   }
 }
 

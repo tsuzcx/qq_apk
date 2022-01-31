@@ -21,10 +21,10 @@ import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.widget.QzoneGuideBubbleHelper;
 import mqq.app.AppRuntime;
-import odg;
-import odh;
-import odi;
-import odj;
+import ohv;
+import ohw;
+import ohx;
+import ohy;
 
 public class EditPicQzonePublishActivity
   extends EditPicActivity
@@ -58,16 +58,16 @@ public class EditPicQzonePublishActivity
     long l = a();
     if (QzoneSyncQQStoryTool.a(l, 1))
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131365535);
-      View localView1 = LayoutInflater.from(this).inflate(2130971168, localRelativeLayout, false);
+      RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131365540);
+      View localView1 = LayoutInflater.from(this).inflate(2130971191, localRelativeLayout, false);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.topMargin = ViewUtils.a(12.0F);
       localLayoutParams.addRule(10);
-      localLayoutParams.addRule(0, 2131365536);
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView1.findViewById(2131373540));
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new odh(this, l));
+      localLayoutParams.addRule(0, 2131365541);
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView1.findViewById(2131373567));
+      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new ohw(this, l));
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-      View localView2 = localView1.findViewById(2131373541);
+      View localView2 = localView1.findViewById(2131373568);
       localView2.setVisibility(0);
       localRelativeLayout.addView(localView1, localLayoutParams);
       if (QzoneSyncQQStoryTool.b(l))
@@ -83,18 +83,22 @@ public class EditPicQzonePublishActivity
   
   private void a(Intent paramIntent)
   {
-    paramIntent = (RelativeLayout)findViewById(2131365535);
-    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131365536));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373535));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new odg(this));
+    paramIntent = (RelativeLayout)findViewById(2131365540);
+    this.jdField_a_of_type_AndroidViewView = ((LinearLayout)findViewById(2131365541));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131373562));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ohv(this));
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2130971166, paramIntent, false));
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)AIOUtils.a(2, 50, getResources()));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131493776));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)getLayoutInflater().inflate(2130971189, paramIntent, false));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.a(50.0F, getResources()));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(getResources().getColor(2131493781));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     localLayoutParams.addRule(12);
     localLayoutParams.bottomMargin = AIOUtils.a(50.0F, getResources());
-    View localView = new View(this);
+    View localView = paramIntent.findViewById(2131372092);
+    if (localView != null) {
+      localView.getLayoutParams().height = AIOUtils.a(50.0F, getResources());
+    }
+    localView = new View(this);
     localView.setBackgroundColor(Color.argb(128, 0, 0, 0));
     localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
     localView.setVisibility(8);
@@ -106,7 +110,7 @@ public class EditPicQzonePublishActivity
   
   private void b()
   {
-    DialogUtil.a(this, 230).setMessage(2131432459).setPositiveButton(2131432415, new odj(this)).setNegativeButton(2131432417, new odi(this)).show();
+    DialogUtil.a(this, 230).setMessage(2131432470).setPositiveButton(2131432426, new ohy(this)).setNegativeButton(2131432428, new ohx(this)).show();
   }
   
   public Intent a(GenerateContext paramGenerateContext)

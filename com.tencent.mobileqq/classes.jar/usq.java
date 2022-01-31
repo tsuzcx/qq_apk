@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleParam;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
 
-public abstract interface usq
+public class usq
+  implements Runnable
 {
-  public abstract void a(String paramString, int paramInt, DoodleParam paramDoodleParam, List paramList, Map paramMap);
+  public usq(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable) {}
   
-  public abstract boolean a(String paramString);
+  public void run()
+  {
+    this.a.b();
+  }
 }
 
 

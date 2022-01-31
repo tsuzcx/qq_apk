@@ -38,10 +38,10 @@ import cooperation.qwallet.plugin.QWalletPayBridge;
 import java.util.HashSet;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tep;
-import teq;
-import ter;
-import tes;
+import tjj;
+import tjk;
+import tjl;
+import tjm;
 
 public class PayBridgeActivity
   extends BaseActivity
@@ -117,22 +117,22 @@ public class PayBridgeActivity
   private Dialog a(String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
   {
     Dialog localDialog = new Dialog(this, 2131624516);
-    localDialog.setContentView(2130968842);
-    TextView localTextView = (TextView)localDialog.findViewById(2131364034);
+    localDialog.setContentView(2130968846);
+    TextView localTextView = (TextView)localDialog.findViewById(2131364059);
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131362776);
+    paramString1 = (TextView)localDialog.findViewById(2131362781);
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131364037);
+    paramString1 = (TextView)localDialog.findViewById(2131364062);
     if (paramString1 != null) {
       paramString1.setText(17039360);
     }
-    paramString1 = (TextView)localDialog.findViewById(2131364038);
+    paramString1 = (TextView)localDialog.findViewById(2131364063);
     if (paramString1 != null) {
-      paramString1.setText(2131432235);
+      paramString1.setText(2131432246);
     }
     localDialog.setOnDismissListener(paramOnDismissListener);
     return localDialog;
@@ -1330,10 +1330,10 @@ public class PayBridgeActivity
     localQQCustomDialog.setTitle((String)localObject1);
     localQQCustomDialog.setMessage((CharSequence)localObject2);
     localQQCustomDialog.setCancelable(false);
-    localObject2 = new ter(this, str2);
+    localObject2 = new tjl(this, str2);
     localObject1 = str1;
     if (TextUtils.isEmpty(str1)) {
-      localObject1 = getResources().getString(2131433016);
+      localObject1 = getResources().getString(2131433030);
     }
     localQQCustomDialog.setPositiveButton((String)localObject1, (DialogInterface.OnClickListener)localObject2);
     localQQCustomDialog.show();
@@ -1568,7 +1568,7 @@ public class PayBridgeActivity
     localBundle.putString("pf", paramEmojiPayReqData.h);
     localBundle.putString("pfKey", paramEmojiPayReqData.i);
     localBundle.putString("tokenUrl", paramEmojiPayReqData.j);
-    localBundle.putInt("resId", 2130838905);
+    localBundle.putInt("resId", 2130838914);
     localBundle.putString("discountId", paramEmojiPayReqData.k);
     localBundle.putString("other", paramEmojiPayReqData.l);
     localBundle.putString("payload", paramEmojiPayReqData.m);
@@ -1795,7 +1795,7 @@ public class PayBridgeActivity
   
   private void b()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 231, null, getResources().getString(2131432275), getResources().getString(2131432274), null, null, new tes(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 231, null, getResources().getString(2131432286), getResources().getString(2131432285), null, null, new tjm(this));
     localQQCustomDialog.setCancelable(false);
     localQQCustomDialog.show();
   }
@@ -1830,7 +1830,7 @@ public class PayBridgeActivity
     paramBundle.putString("pf", str3);
     paramBundle.putString("pfKey", "pfKey");
     paramBundle.putString("acctType", "common");
-    paramBundle.putInt("resId", 2130843853);
+    paramBundle.putInt("resId", 2130843919);
     paramBundle.putString("discountId", str4);
     paramBundle.putString("other", str5);
     paramBundle.putString("payload", str6);
@@ -2036,7 +2036,7 @@ public class PayBridgeActivity
     localBundle.putString("pfKey", "pfKey");
     localBundle.putString("serviceCode", "QQYFSC");
     localBundle.putString("serviceName", "腾讯文学包月VIP");
-    localBundle.putInt("resId", 2130843853);
+    localBundle.putInt("resId", 2130843919);
     localBundle.putString("saveValue", "3");
     localBundle.putBoolean("isCanChange", true);
     localBundle.putString("remark", "");
@@ -2526,7 +2526,7 @@ public class PayBridgeActivity
           paramBundle = localJSONObject.getString("appInfo");
           ((Intent)localObject1).putExtra("app_info", paramBundle);
           if (!localJSONObject.has("extra_data")) {
-            break label1313;
+            break label1282;
           }
           paramBundle = localJSONObject.getString("extra_data");
           ((Intent)localObject1).putExtra("extra_data", paramBundle);
@@ -2574,7 +2574,7 @@ public class PayBridgeActivity
         paramBundle = localJSONObject.getString("appInfo");
         ((Intent)localObject1).putExtra("app_info", paramBundle);
         if (!localJSONObject.has("extra_data")) {
-          break label1325;
+          break label1294;
         }
         paramBundle = localJSONObject.getString("extra_data");
         ((Intent)localObject1).putExtra("extra_data", paramBundle);
@@ -2589,19 +2589,19 @@ public class PayBridgeActivity
         localObject1 = new Intent(this, TenpayJumpActivity.class);
         ((Intent)localObject1).putExtra("callbackSn", str2);
         if (!localJSONObject.has("comeForm")) {
-          break label1331;
+          break label1300;
         }
         i = localJSONObject.getInt("comeForm");
         label674:
         ((Intent)localObject1).putExtra("come_from", i);
         if (!localJSONObject.has("appInfo")) {
-          break label1336;
+          break label1305;
         }
         paramBundle = localJSONObject.getString("appInfo");
         label703:
         ((Intent)localObject1).putExtra("app_info", paramBundle);
         if (!localJSONObject.has("extra_data")) {
-          break label1342;
+          break label1311;
         }
         paramBundle = localJSONObject.getString("extra_data");
         ((Intent)localObject1).putExtra("extra_data", paramBundle);
@@ -2641,40 +2641,33 @@ public class PayBridgeActivity
       }
       ((Bundle)localObject3).putInt("come_from", i);
       if (!localJSONObject.has("appInfo")) {
-        break label1348;
+        break label1317;
       }
       localObject2 = localJSONObject.getString("appInfo");
       label935:
       ((Bundle)localObject3).putString("app_info", (String)localObject2);
       if (!localJSONObject.has("extra_data")) {
-        break label1355;
+        break label1324;
       }
       localObject2 = localJSONObject.getString("extra_data");
       label966:
       ((Bundle)localObject3).putString("extra_data", (String)localObject2);
       if (!localJSONObject.has("senderuin")) {
-        break label1362;
-      }
-      localObject2 = localJSONObject.getString("senderuin");
-      label997:
-      ((Bundle)localObject3).putString("senderuin", (String)localObject2);
-      if (!localJSONObject.has("sendernickname")) {
-        break label1369;
+        break label1331;
       }
     }
-    label1313:
-    label1325:
-    label1331:
-    label1336:
-    label1342:
-    label1348:
+    label1282:
+    label1294:
+    label1300:
+    label1305:
+    label1311:
+    label1317:
     String str1;
-    label1355:
-    label1362:
-    label1369:
-    for (Object localObject2 = localJSONObject.getString("sendernickname");; str1 = "")
+    label1324:
+    label1331:
+    for (Object localObject2 = localJSONObject.getString("senderuin");; str1 = "")
     {
-      ((Bundle)localObject3).putString("sendernickname", (String)localObject2);
+      ((Bundle)localObject3).putString("senderuin", (String)localObject2);
       this.h = str3;
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("callbackSn", str2);
@@ -2723,8 +2716,6 @@ public class PayBridgeActivity
       break label935;
       str1 = "";
       break label966;
-      str1 = "";
-      break label997;
     }
   }
   
@@ -3621,13 +3612,13 @@ public class PayBridgeActivity
     Object localObject = new Intent(this, PayBridgeActivity.class);
     ((Intent)localObject).addFlags(536870912);
     startActivity((Intent)localObject);
-    localObject = String.format(getString(2131432236), new Object[] { Integer.valueOf(i) });
-    localObject = a(getString(2131436781), (String)localObject, null);
+    localObject = String.format(getString(2131432247), new Object[] { Integer.valueOf(i) });
+    localObject = a(getString(2131436801), (String)localObject, null);
     ((Dialog)localObject).setCancelable(false);
-    tep localtep = new tep(this, (Dialog)localObject);
-    ((Dialog)localObject).findViewById(2131364038).setOnClickListener(localtep);
-    ((Dialog)localObject).findViewById(2131364037).setOnClickListener(localtep);
-    ((Dialog)localObject).setOnDismissListener(new teq(this));
+    tjj localtjj = new tjj(this, (Dialog)localObject);
+    ((Dialog)localObject).findViewById(2131364063).setOnClickListener(localtjj);
+    ((Dialog)localObject).findViewById(2131364062).setOnClickListener(localtjj);
+    ((Dialog)localObject).setOnDismissListener(new tjk(this));
     ((Dialog)localObject).show();
   }
   

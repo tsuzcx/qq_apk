@@ -1,35 +1,23 @@
-import com.tencent.biz.qrcode.QRCodeEncodeCallback;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.video.decode.ShortVideoSoLoad;
 
-class otv
-  implements QRCodeEncodeCallback
+public class otv
 {
-  otv(ott paramott, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public static String a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onReceive qrcode url: " + paramBoolean);
+    if (Build.VERSION.SDK_INT >= 16) {}
+    for (String str = "trim_process_pie";; str = "trim_process_pic") {
+      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
     }
-    if ((this.jdField_a_of_type_Ott.a.b) || (this.jdField_a_of_type_Ott.a.isFinishing())) {
-      return;
-    }
-    if (!paramBoolean)
-    {
-      this.jdField_a_of_type_Ott.a.g();
-      return;
-    }
-    this.jdField_a_of_type_Ott.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
-    paramString = QRUtils.a(paramString, -1);
-    if (paramString != null)
-    {
-      this.jdField_a_of_type_Ott.a.a = paramString;
-      this.jdField_a_of_type_Ott.a.f();
-      return;
-    }
-    this.jdField_a_of_type_Ott.a.g();
+  }
+  
+  public static String b(Context paramContext)
+  {
+    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
+    String str = VideoEnvironment.a();
+    return paramContext + str;
   }
 }
 

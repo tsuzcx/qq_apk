@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerInitialler;
 import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -173,8 +174,8 @@ public class NativeMonitorConfigHelper
   public static void a(QQAppInterface paramQQAppInterface, int paramInt, ConfigurationService.Config paramConfig)
   {
     int j = paramConfig.version.get();
-    int i = SharedPreUtils.aW(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
-    int k = SharedPreUtils.aX(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    int i = SharedPreUtils.aV(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    int k = SharedPreUtils.aW(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
     int m = AppSetting.a;
     if (QLog.isColorLevel()) {
       QLog.d("NativeMonitorConfig", 1, String.format("received nativeMonitorConfig remote version: %d, localVersion: %d ,originalAppId:%d, currentAppId:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m) }));
@@ -272,6 +273,11 @@ public class NativeMonitorConfigHelper
         return;
       }
       localNativeMonitorConfig = a(BaseApplicationImpl.getApplication().getRuntime());
+      if (localNativeMonitorConfig != null)
+      {
+        BaseApplicationImpl.sNativeMonitorEscapedMsg = "open: " + localNativeMonitorConfig.getNativeMonitorOpened() + ", flag: " + localNativeMonitorConfig.getSwitchFlag();
+        ThreadManagerInitialler.a(jdField_a_of_type_ComTencentMobileqqDataNativemonitorNativeMonitorConfig.getTmChance());
+      }
     } while ((localNativeMonitorConfig == null) || (localNativeMonitorConfig.getNativeMonitorOpened() != 1));
     Object localObject = localNativeMonitorConfig.getAndroidVersionBlackList();
     long l2 = localNativeMonitorConfig.getSwitchFlag();
@@ -286,7 +292,7 @@ public class NativeMonitorConfigHelper
         for (;;)
         {
           if (i >= j) {
-            break label208;
+            break label263;
           }
           if (str.equals(localObject[i])) {
             break;
@@ -295,7 +301,7 @@ public class NativeMonitorConfigHelper
         }
       }
     }
-    label208:
+    label263:
     if (a(localNativeMonitorConfig))
     {
       QLog.i("NativeMonitorConfig", 1, "process id:" + BaseApplicationImpl.sProcessId + "  is in black list");
@@ -312,10 +318,11 @@ public class NativeMonitorConfigHelper
       localObject = str.trim();
     }
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    for (localObject = null;; localObject = ((String)localObject).split("\\|"))
+    for (;;)
     {
-      a(BaseApplicationImpl.getContext(), l1, (String[])localObject, localNativeMonitorConfig.getTimeLimited(), localNativeMonitorConfig.getCountLimted(), localNativeMonitorConfig.getMemoryLimited());
+      a(BaseApplicationImpl.getContext(), l1 & 0xFFFFFFFF & 0x7FFFFFFF & 0xFFFFFFFD, null, localNativeMonitorConfig.getTimeLimited(), localNativeMonitorConfig.getCountLimted(), localNativeMonitorConfig.getMemoryLimited());
       return;
+      ((String)localObject).split("\\|");
     }
   }
   

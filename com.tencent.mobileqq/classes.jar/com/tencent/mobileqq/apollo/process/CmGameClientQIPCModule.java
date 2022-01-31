@@ -5,7 +5,7 @@ import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import eipc.EIPCResult;
-import ypz;
+import ywh;
 
 public class CmGameClientQIPCModule
   extends QIPCModule
@@ -19,7 +19,7 @@ public class CmGameClientQIPCModule
   
   public static CmGameClientQIPCModule a()
   {
-    return ypz.a();
+    return ywh.a();
   }
   
   public static void a()

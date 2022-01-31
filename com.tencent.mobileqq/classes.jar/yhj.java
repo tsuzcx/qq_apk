@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.adapter.HotChatPostListAdapter;
-import java.util.Comparator;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class yhj
-  implements Comparator
+  implements View.OnClickListener
 {
-  public yhj(HotChatPostListAdapter paramHotChatPostListAdapter) {}
+  public yhj(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  public void onClick(View paramView)
   {
-    return Long.valueOf(paramJSONObject2.optLong("time")).compareTo(Long.valueOf(paramJSONObject1.optLong("time")));
+    this.a.b(true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yhj
  * JD-Core Version:    0.7.0.1
  */

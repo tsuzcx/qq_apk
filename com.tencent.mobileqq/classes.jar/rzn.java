@@ -1,22 +1,26 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.activity.ChatHistory.Holder;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.MsgUtils;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
+import java.util.List;
 
-public class rzn
+public final class rzn
   implements Runnable
 {
-  public rzn(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt, String paramString, ChatHistory.Holder paramHolder, TextView paramTextView) {}
+  public rzn(Context paramContext, List paramList, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    String str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a, MsgUtils.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$Holder.b.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$Holder.jdField_a_of_type_JavaLangString = str;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.runOnUiThread(new rzo(this, str));
+    ChatActivityFacade.b = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
+    ChatActivityFacade.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430178);
+    ChatActivityFacade.b.a(str);
+    ChatActivityFacade.b.a(2131434057, 3);
+    ChatActivityFacade.b.c(2131433029);
+    ChatActivityFacade.b.a(new rzo(this));
+    ChatActivityFacade.b.show();
   }
 }
 

@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class aiyx
   implements Runnable
 {
-  public aiyx(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public aiyx(AbsPublishActivity paramAbsPublishActivity) {}
   
   public void run()
   {
-    InputMethodUtil.b(this.a.a);
+    this.a.c(true);
   }
 }
 

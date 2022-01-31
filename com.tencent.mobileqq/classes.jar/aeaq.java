@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.leba.QZoneEntryController;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
 
-public class aeaq
-  extends QZoneObserver
+class aeaq
+  implements Runnable
 {
-  public aeaq(QZoneEntryController paramQZoneEntryController) {}
+  aeaq(aeap paramaeap) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.QZoneObserver", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (QLog.isColorLevel())
-    {
-      if ((paramLong >>> 17 & 1L) != 0L) {
-        QLog.d("UndealCount.QZoneObserver", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
-      }
-      QLog.d("UndealCount.QZoneObserver", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
-    }
-    if (paramBoolean1)
-    {
-      this.a.a();
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
+    this.a.a.c = 4;
+    if (VideoBaseItem.a(this.a.a) != null) {
+      VideoBaseItem.a(this.a.a).d(VideoBaseItem.a(this.a.a));
     }
   }
 }

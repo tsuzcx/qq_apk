@@ -1,28 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
 
 public class mox
-  implements View.OnClickListener
+  implements Runnable
 {
-  public mox(FastWebVideoFeedsPlayActivity paramFastWebVideoFeedsPlayActivity) {}
+  public mox(AppInPushNotification paramAppInPushNotification) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (paramView.getId() == 2131367141)
-    {
-      paramView = FastWebVideoVolumeControl.a();
-      if (FastWebVideoVolumeControl.a().b()) {
-        break label33;
-      }
-    }
-    label33:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.a(bool, "user_click", 2);
-      return;
-    }
+    AppInPushNotification.a(6);
+    this.a.a(true, true);
   }
 }
 

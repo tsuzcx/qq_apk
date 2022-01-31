@@ -1,24 +1,19 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class tbp
-  implements View.OnTouchListener
+  implements AdapterView.OnItemClickListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public tbp(Leba paramLeba) {}
+  
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMotionEvent.getActionMasked())
-    {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      FrameHelperActivity.b(false);
-      return false;
+    if (this.a.c()) {
+      ThreadManager.post(new tbq(this, paramView, paramInt), 8, null, true);
     }
-    FrameHelperActivity.b(true);
-    return false;
   }
 }
 

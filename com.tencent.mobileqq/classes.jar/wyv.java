@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-class wyv
+public class wyv
   implements Runnable
 {
-  wyv(wyu paramwyu, boolean paramBoolean, String[] paramArrayOfString, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public wyv(BindNumberActivity paramBindNumberActivity) {}
   
   public void run()
   {
-    
-    if (this.jdField_a_of_type_Boolean) {
-      StatisticConstants.e();
-    }
-    try
+    if (!this.a.isFinishing())
     {
-      StatisticConstants.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Int, false, false, -1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
+      long l = SystemClock.uptimeMillis();
+      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
+      this.a.a.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
+      this.a.a.dispatchTouchEvent(localMotionEvent);
+      localMotionEvent.recycle();
+      this.a.a.setSelection(this.a.a.getText().toString().length());
     }
-    catch (Exception localException) {}
   }
 }
 

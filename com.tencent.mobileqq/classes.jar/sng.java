@@ -1,33 +1,34 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.util.Pair;
 import java.util.ArrayList;
 
-public class sng
-  extends PagerAdapter
+class sng
+  implements Runnable
 {
-  public sng(FontSettingActivity paramFontSettingActivity) {}
+  sng(snf paramsnf) {}
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject)
+  public void run()
   {
-    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public Object instantiateItem(View paramView, int paramInt)
-  {
-    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
-    return this.a.a.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    if (this.a.a.k) {}
+    for (;;)
+    {
+      return;
+      SubAccountControll localSubAccountControll = (SubAccountControll)this.a.a.a.getManager(61);
+      if (localSubAccountControll != null)
+      {
+        ArrayList localArrayList = localSubAccountControll.a("sub.uin.all");
+        int j = localArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          Pair localPair = (Pair)localArrayList.get(i);
+          localSubAccountControll.a(this.a.a.a, this.a.a.a(), localPair, new snh(this, localSubAccountControll, localPair));
+          i += 1;
+        }
+      }
+    }
   }
 }
 

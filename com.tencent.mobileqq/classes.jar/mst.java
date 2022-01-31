@@ -1,18 +1,23 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import android.app.Dialog;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class mst
   implements Runnable
 {
-  public mst(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mst(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
   
   public void run()
   {
-    SubscriptFeedsActivity.a(this.a, SubscriptRecommendController.b(this.a.app));
-    if (PublicAccountUtil.a(this.a.app)) {
-      SubscriptFeedsActivity.a(this.a, true);
+    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).isShowing()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "showMobileNetHint() mNetworkDialog.isShowing()=true, RETURN");
+      }
+      return;
     }
+    FastWebVideoFeedsPlayManager.a(this.a, ReadInJoyUtils.a(FastWebVideoFeedsPlayManager.a(this.a), new msu(this), new msv(this)));
   }
 }
 

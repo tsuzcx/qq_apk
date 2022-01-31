@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class tby
   implements Runnable
 {
-  public tby(NearbyActivity paramNearbyActivity) {}
+  public tby(Leba paramLeba, LebaViewItem paramLebaViewItem) {}
   
   public void run()
   {
-    this.a.a.c();
-    NearbyHandler localNearbyHandler = (NearbyHandler)this.a.a.a(3);
-    localNearbyHandler.a(this.a.a.getCurrentAccountUin());
-    localNearbyHandler.a(2);
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getEntityManagerFactory().createEntityManager();
+    ResourcePluginInfo.persistOrReplace(localEntityManager, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a);
+    localEntityManager.a();
   }
 }
 

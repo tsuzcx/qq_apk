@@ -1,16 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.armap.POIInfo;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
 
 public class abnk
   implements View.OnClickListener
 {
-  public abnk(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abnk(ARGridMapViewDialog paramARGridMapViewDialog, POIInfo paramPOIInfo, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    paramView = (abnn)paramView.getTag();
-    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
+    ARGridMapViewDialog.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog, this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo, this.jdField_a_of_type_Int);
   }
 }
 

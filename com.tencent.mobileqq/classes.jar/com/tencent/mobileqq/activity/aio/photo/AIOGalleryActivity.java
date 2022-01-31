@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -20,8 +21,8 @@ import com.tencent.mobileqq.richmedia.dc.DCAIOPreview;
 import com.tencent.mobileqq.richmedia.dc.DCAIOPreviewProgressive;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import vma;
-import vmf;
+import vrc;
+import vrh;
 
 public class AIOGalleryActivity
   extends PeakActivity
@@ -29,7 +30,7 @@ public class AIOGalleryActivity
   int jdField_a_of_type_Int;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
   private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
-  GalleryManager jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new vma(this);
+  GalleryManager jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new vrc(this);
   public IAIOImageProvider a;
   DCAIOPreview jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreview;
   DCAIOPreviewProgressive jdField_a_of_type_ComTencentMobileqqRichmediaDcDCAIOPreviewProgressive;
@@ -85,7 +86,7 @@ public class AIOGalleryActivity
   
   protected void onCreate(Bundle paramBundle)
   {
-    this.V = false;
+    this.X = false;
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
@@ -181,7 +182,7 @@ public class AIOGalleryActivity
     QQLiveImage.resumeAll();
     if (Build.MODEL.equals("Coolpad 5930"))
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new vmf(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new vrh(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
@@ -189,6 +190,12 @@ public class AIOGalleryActivity
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
     this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.c();
+  }
+  
+  protected void onStop()
+  {
+    super.onStop();
+    ((AudioManager)getSystemService("audio")).abandonAudioFocus(null);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

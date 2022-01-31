@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.mobileqq.antiphing.UinFraudInfo;
 
 public class ypo
-  implements Runnable
 {
-  public ypo(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  public int a;
+  public long a;
   
-  public void run()
-  {
-    this.a.a(0);
-  }
+  public ypo(UinFraudInfo paramUinFraudInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ypo
  * JD-Core Version:    0.7.0.1
  */

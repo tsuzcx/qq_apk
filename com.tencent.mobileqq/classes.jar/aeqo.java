@@ -1,102 +1,44 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagAdapter;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.data.EmoticonKeywords;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeqo
-  implements TextWatcher
+  implements Runnable
 {
-  public aeqo(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public aeqo(EmoticonManager paramEmoticonManager, EmoticonKeywords paramEmoticonKeywords) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    ChooseInterestTagActivity.a(this.a).removeMessages(4097);
-    ChooseInterestTagActivity.b(this.a, 0);
-    String str;
-    if (ChooseInterestTagActivity.a(this.a).getText() == null)
+    long l = System.currentTimeMillis();
+    localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a();
+    try
     {
-      paramEditable = "";
-      str = NearbyUtils.a(paramEditable);
-      if (ChooseInterestTagActivity.a(this.a).getText() != null) {
-        break label163;
-      }
-      paramEditable = "";
-      label59:
-      if (!TextUtils.isEmpty(paramEditable)) {
-        break label185;
-      }
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 8) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(8);
-      }
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-      paramEditable = this.a;
-      if (ChooseInterestTagActivity.b(this.a) == -1) {
-        break label180;
+      localEntityTransaction.a();
+      EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonKeywords);
+      localEntityTransaction.c();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("EmoticonManager", 1, "saveKeywordReqTimeToDB e = " + localException.getMessage());
+        localEntityTransaction.b();
       }
     }
-    label163:
-    label180:
-    for (boolean bool = true;; bool = false)
+    finally
     {
-      ChooseInterestTagActivity.a(paramEditable, false, bool);
-      ChooseInterestTagActivity.a(this.a, "");
-      return;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break label59;
+      localEntityTransaction.b();
     }
-    label185:
-    if (TextUtils.isEmpty(str))
-    {
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(0);
-      }
-      ChooseInterestTagActivity.b(this.a).setText("无结果");
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, "");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManager", 2, "saveKeywordReqTimeToDB cost : " + (System.currentTimeMillis() - l));
     }
-    if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-      ChooseInterestTagActivity.b(this.a).setVisibility(0);
-    }
-    if (NetworkUtil.d(this.a))
-    {
-      ChooseInterestTagActivity.b(this.a).setText("正在加载...");
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, str);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4097, 400L);
-      return;
-    }
-    if (!ChooseInterestTagActivity.c(this.a))
-    {
-      ChooseInterestTagActivity.a(this.a, "当前网络不可用，请检查网络设置。");
-      ChooseInterestTagActivity.a(this.a, true);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4100, 3000L);
-    }
-    ChooseInterestTagActivity.b(this.a).setText("");
-    ChooseInterestTagActivity.b(this.a).setOnClickListener(null);
-    ChooseInterestTagActivity.c(this.a).setVisibility(8);
-    ChooseInterestTagActivity.a(this.a, "");
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    ChooseInterestTagActivity.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqo
  * JD-Core Version:    0.7.0.1
  */

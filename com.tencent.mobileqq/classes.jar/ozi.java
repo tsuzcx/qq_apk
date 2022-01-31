@@ -1,30 +1,14 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog;
+import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
+import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
 
-public class ozi
-  implements ActionMode.Callback
+public final class ozi
+  extends ScannerActivity.QQDialogCancelListener
 {
-  public ozi(TroopGiftPanel.GiftNumInputDialog paramGiftNumInputDialog, TroopGiftPanel paramTroopGiftPanel) {}
+  public ozi(QrHandleResultCallBack paramQrHandleResultCallBack) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a()
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    this.a.a();
   }
 }
 

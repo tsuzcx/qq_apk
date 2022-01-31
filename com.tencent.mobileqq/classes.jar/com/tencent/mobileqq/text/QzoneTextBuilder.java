@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.text;
 
-import aint;
-import ainu;
+import aisw;
+import aisx;
 import android.text.Editable.Factory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class QzoneTextBuilder
   extends QQTextBuilder
 {
-  public static Editable.Factory b = new aint();
+  public static Editable.Factory b = new aisw();
   
   public QzoneTextBuilder(CharSequence paramCharSequence, int paramInt)
   {
@@ -29,7 +29,7 @@ public class QzoneTextBuilder
     getChars(0, m, arrayOfChar, 0);
     StringBuilder localStringBuilder = new StringBuilder(m);
     QQText.EmoticonSpan[] arrayOfEmoticonSpan = (QQText.EmoticonSpan[])getSpans(0, m, QQText.EmoticonSpan.class);
-    Arrays.sort(arrayOfEmoticonSpan, new ainu(this));
+    Arrays.sort(arrayOfEmoticonSpan, new aisx(this));
     int n = arrayOfEmoticonSpan.length;
     int j = 0;
     QQText.EmoticonSpan localEmoticonSpan;
@@ -88,7 +88,7 @@ public class QzoneTextBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.text.QzoneTextBuilder
  * JD-Core Version:    0.7.0.1
  */

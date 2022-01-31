@@ -44,7 +44,7 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import mqq.app.MobileQQ;
-import nxq;
+import ocf;
 
 public class MemoriesProfileSegment
   extends SegmentView
@@ -73,7 +73,7 @@ public class MemoriesProfileSegment
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a.fansCountExtra != 0)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a.fansCountExtra = 0;
-      ThreadManager.post(new nxq(this), 5, null, false);
+      ThreadManager.post(new ocf(this), 5, null, false);
       c(true);
     }
     Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
@@ -147,21 +147,21 @@ public class MemoriesProfileSegment
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a == null) {
       return paramBaseViewHolder.a();
     }
-    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371884);
-    Object localObject1 = (ImageView)paramBaseViewHolder.a(2131371886);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371887);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371888);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131371890);
-    View localView2 = paramBaseViewHolder.a(2131370761);
-    View localView3 = paramBaseViewHolder.a(2131371897);
-    View localView4 = paramBaseViewHolder.a(2131371892);
-    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131370763);
-    TextView localTextView5 = (TextView)paramBaseViewHolder.a(2131370766);
-    TextView localTextView6 = (TextView)paramBaseViewHolder.a(2131371894);
-    Object localObject3 = (TextView)paramBaseViewHolder.a(2131371695);
-    View localView1 = paramBaseViewHolder.a(2131371883);
+    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131371883);
+    Object localObject1 = (ImageView)paramBaseViewHolder.a(2131371885);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371886);
+    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371887);
+    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131371889);
+    View localView2 = paramBaseViewHolder.a(2131370751);
+    View localView3 = paramBaseViewHolder.a(2131371896);
+    View localView4 = paramBaseViewHolder.a(2131371891);
+    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131370753);
+    TextView localTextView5 = (TextView)paramBaseViewHolder.a(2131370756);
+    TextView localTextView6 = (TextView)paramBaseViewHolder.a(2131371893);
+    Object localObject3 = (TextView)paramBaseViewHolder.a(2131371693);
+    View localView1 = paramBaseViewHolder.a(2131371882);
     Object localObject2 = (RedTouch)paramBaseViewHolder.a("redTouch");
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371889);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371888);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a.backgroundUrl)) {
       UIUtils.a(paramViewGroup, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a.backgroundUrl, 0, 0, null);
     }
@@ -290,9 +290,9 @@ public class MemoriesProfileSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970772, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970788, paramViewGroup, false);
     paramViewGroup = new BaseViewHolder(this.jdField_a_of_type_AndroidViewView);
-    View localView = paramViewGroup.a(2131371896);
+    View localView = paramViewGroup.a(2131371895);
     paramViewGroup.a("redTouch", new RedTouch(this.jdField_a_of_type_AndroidViewView.getContext(), localView).a(21).c(3).b(5).a());
     paramViewGroup.a("hasExposure", new Boolean(false));
     return paramViewGroup;
@@ -389,16 +389,16 @@ public class MemoriesProfileSegment
     {
     default: 
       return;
-    case 2131370761: 
+    case 2131370751: 
       h();
       return;
-    case 2131371897: 
+    case 2131371896: 
       i();
       return;
-    case 2131371889: 
+    case 2131371888: 
       j();
       return;
-    case 2131371892: 
+    case 2131371891: 
       l();
       return;
     }

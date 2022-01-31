@@ -1,30 +1,21 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import org.json.JSONObject;
+import com.tencent.mobileqq.apollo.ApolloPushManager;
+import com.tencent.mobileqq.apollo.ApolloPushManager.OnActionPushListener;
+import com.tencent.mobileqq.data.ApolloActionPush;
+import mqq.util.WeakReference;
 
-class yra
-  extends AVVideoCtrl.SwitchCameraCompleteCallback
+public class yra
+  implements Runnable
 {
-  yra(yqz paramyqz) {}
+  public yra(ApolloPushManager paramApolloPushManager, int paramInt, ApolloActionPush paramApolloActionPush) {}
   
-  public void onComplete(int paramInt1, int paramInt2)
+  public void run()
   {
-    int i = 0;
-    if (paramInt2 == 0) {}
-    for (;;)
+    if (ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager) != null)
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("ret", i);
-        localJSONObject.put("cameraPos", paramInt1);
-        localJSONObject.put("errCode", paramInt2);
-        CmGameUtil.a().callbackFromRequest(this.a.a, 0, "cs.audioRoom_camera_switch.local", localJSONObject.toString());
-        return;
+      ApolloPushManager.OnActionPushListener localOnActionPushListener = (ApolloPushManager.OnActionPushListener)ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager).get();
+      if (localOnActionPushListener != null) {
+        localOnActionPushListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush);
       }
-      catch (Exception localException) {}
-      i = -1;
     }
   }
 }

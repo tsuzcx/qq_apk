@@ -76,19 +76,19 @@ import com.tencent.widget.ActionSheet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import jiu;
-import jiv;
-import jiw;
-import jix;
-import jiy;
-import jiz;
-import jja;
-import jjb;
-import jjf;
-import jjg;
-import jjh;
-import jji;
-import jjj;
+import jkx;
+import jky;
+import jkz;
+import jla;
+import jlb;
+import jlc;
+import jld;
+import jle;
+import jli;
+import jlj;
+import jlk;
+import jll;
+import jlm;
 import mqq.app.BaseActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -100,15 +100,15 @@ public class GuildMultiActivity
 {
   public static String a;
   long jdField_a_of_type_Long = 0L;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jix(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jla(this);
   View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new UITools.MyViewAlphaOnTouchListener();
   Button jdField_a_of_type_AndroidWidgetButton = null;
   ImageButton jdField_a_of_type_AndroidWidgetImageButton = null;
   public TextView a;
   public VideoController a;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jjf(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jli(this);
   public VideoAppInterface a;
-  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new jjb(this);
+  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new jle(this);
   public GameHeroesUi a;
   private SmallScreenActivityPlugin jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin;
   public AvAddFriendHelper a;
@@ -130,7 +130,7 @@ public class GuildMultiActivity
   public boolean b;
   Button jdField_c_of_type_AndroidWidgetButton = null;
   TextView jdField_c_of_type_AndroidWidgetTextView = null;
-  Runnable jdField_c_of_type_JavaLangRunnable = new jja(this);
+  Runnable jdField_c_of_type_JavaLangRunnable = new jld(this);
   public String c;
   public boolean c;
   public Runnable d;
@@ -157,8 +157,8 @@ public class GuildMultiActivity
     this.jdField_a_of_type_JavaLangRunnable = null;
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_ComTencentAvGuildGameHeroesUi = null;
-    this.jdField_b_of_type_JavaLangRunnable = new jiu(this);
-    this.jdField_d_of_type_JavaLangRunnable = new jiw(this);
+    this.jdField_b_of_type_JavaLangRunnable = new jkx(this);
+    this.jdField_d_of_type_JavaLangRunnable = new jkz(this);
   }
   
   private void a(String paramString1, String paramString2, Bitmap paramBitmap, boolean paramBoolean)
@@ -256,21 +256,21 @@ public class GuildMultiActivity
       String str2 = String.valueOf(((VideoController.GAudioFriends)localObject3).jdField_a_of_type_Long);
       if (!str2.equals(this.jdField_c_of_type_JavaLangString))
       {
-        localObject1 = (jjj)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(((VideoController.GAudioFriends)localObject3).jdField_a_of_type_Long));
+        localObject1 = (jlm)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(((VideoController.GAudioFriends)localObject3).jdField_a_of_type_Long));
         label328:
         String str3;
         if (localObject1 == null)
         {
-          localObject1 = new jjj(this);
-          ((jjj)localObject1).jdField_a_of_type_Long = ((VideoController.GAudioFriends)localObject3).jdField_a_of_type_Long;
-          ((jjj)localObject1).jdField_a_of_type_Int = 1;
+          localObject1 = new jlm(this);
+          ((jlm)localObject1).jdField_a_of_type_Long = ((VideoController.GAudioFriends)localObject3).jdField_a_of_type_Long;
+          ((jlm)localObject1).jdField_a_of_type_Int = 1;
           this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((VideoController.GAudioFriends)localObject3).jdField_a_of_type_Long), localObject1);
           localObject3 = this.jdField_a_of_type_ComTencentAvVideoController.a(str2, String.valueOf(SessionMgr.a().a(this.e).jdField_f_of_type_Long), i, false, true);
           str3 = this.jdField_a_of_type_ComTencentAvVideoController.a(str2, str1, i);
           if (str3.equals(str2))
           {
             this.jdField_c_of_type_Boolean = true;
-            ((jjj)localObject1).jdField_a_of_type_Boolean = false;
+            ((jlm)localObject1).jdField_a_of_type_Boolean = false;
             if (QLog.isColorLevel()) {
               QLog.d(jdField_a_of_type_JavaLangString, 2, "updateMemInStage uin : " + str2 + ", name is not ready");
             }
@@ -287,14 +287,14 @@ public class GuildMultiActivity
         for (;;)
         {
           if ((!str3.equals(str2)) && (localObject3 != null)) {
-            ((jjj)localObject1).jdField_a_of_type_Boolean = true;
+            ((jlm)localObject1).jdField_a_of_type_Boolean = true;
           }
           if (!QLog.isColorLevel()) {
             break;
           }
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "updateMemInStage peerUin : " + str2 + ", refreshCount = " + ((jjj)localObject1).jdField_a_of_type_Int + ", hasGetInfo = " + ((jjj)localObject1).jdField_a_of_type_Boolean);
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "updateMemInStage peerUin : " + str2 + ", refreshCount = " + ((jlm)localObject1).jdField_a_of_type_Int + ", hasGetInfo = " + ((jlm)localObject1).jdField_a_of_type_Boolean);
           break;
-          if ((((jjj)localObject1).jdField_a_of_type_Int > 5) || (((jjj)localObject1).jdField_a_of_type_Boolean))
+          if ((((jlm)localObject1).jdField_a_of_type_Int > 5) || (((jlm)localObject1).jdField_a_of_type_Boolean))
           {
             if (!QLog.isColorLevel()) {
               break;
@@ -302,7 +302,7 @@ public class GuildMultiActivity
             QLog.d(jdField_a_of_type_JavaLangString, 2, "updateMemInStage this uin (" + str2 + ") has got infos or there's too much refresh!");
             break;
           }
-          ((jjj)localObject1).jdField_a_of_type_Int += 1;
+          ((jlm)localObject1).jdField_a_of_type_Int += 1;
           break label328;
           label614:
           this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView.a(str2, new BitmapDrawable((Bitmap)localObject3), false);
@@ -313,7 +313,7 @@ public class GuildMultiActivity
             continue;
             label695:
             this.jdField_c_of_type_Boolean = true;
-            ((jjj)localObject1).jdField_a_of_type_Boolean = false;
+            ((jlm)localObject1).jdField_a_of_type_Boolean = false;
             if (!this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView.a(str2)) {
               a(str2, str3, ImageUtil.a(), paramBoolean);
             }
@@ -360,8 +360,8 @@ public class GuildMultiActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131366053: 
-    case 2131366044: 
+    case 2131366058: 
+    case 2131366049: 
       do
       {
         return;
@@ -390,7 +390,7 @@ public class GuildMultiActivity
       } while (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin == null);
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin.a();
       return;
-    case 2131366045: 
+    case 2131366050: 
       if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null) {
         this.jdField_a_of_type_ComTencentWidgetActionSheet = new ShareActionSheetBuilder(this).a(this);
       }
@@ -449,7 +449,7 @@ public class GuildMultiActivity
         }
         else
         {
-          paramView = PopupDialog.b(this, 230, null, getString(2131429394), 2131429395, 2131429396, new jji(this), new jiv(this));
+          paramView = PopupDialog.b(this, 230, null, getString(2131429394), 2131429395, 2131429396, new jll(this), new jky(this));
           if (paramView != null) {
             paramView.show();
           }
@@ -542,7 +542,7 @@ public class GuildMultiActivity
   {
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("https://vp.qq.com/cgi-bin/report?r=reportData/doReport&tbName=dc00472&sq_ver=");
-    localStringBuffer.append("7.6.3");
+    localStringBuffer.append("7.6.8");
     localStringBuffer.append("&net_type=");
     localStringBuffer.append(com.tencent.mobileqq.app.AppConstants.c[com.tencent.mobileqq.utils.NetworkUtil.a(this)]);
     localStringBuffer.append("&resolution=");
@@ -634,11 +634,11 @@ public class GuildMultiActivity
     {
       this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView.a(paramString, (Drawable)localObject1);
       return;
-      localObject1 = getResources().getDrawable(2130840065);
+      localObject1 = getResources().getDrawable(2130840080);
       continue;
-      localObject1 = getResources().getDrawable(2130840069);
+      localObject1 = getResources().getDrawable(2130840084);
       continue;
-      localObject1 = getResources().getDrawable(2130840067);
+      localObject1 = getResources().getDrawable(2130840082);
     }
   }
   
@@ -655,7 +655,7 @@ public class GuildMultiActivity
     if (paramBoolean) {}
     for (String str1 = localContext.getString(2131429391);; str1 = localContext.getString(2131429390))
     {
-      PopupDialog.b(localContext, 230, str2, str1, 0, 2131429057, new jjg(this), null);
+      PopupDialog.b(localContext, 230, str2, str1, 0, 2131429057, new jlj(this), null);
       return;
     }
   }
@@ -765,7 +765,7 @@ public class GuildMultiActivity
             localSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$GuildInfo.k = ChatActivityUtils.a(((Intent)localObject1).getStringExtra("desc"));
             localSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$GuildInfo.l = ChatActivityUtils.a(((Intent)localObject1).getStringExtra("share_url"));
             if (localSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$GuildInfo.i != null) {
-              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new jiy(this, localSessionInfo), 0L);
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new jlb(this, localSessionInfo), 0L);
             }
             if (QLog.isColorLevel()) {
               QLog.d(jdField_a_of_type_JavaLangString, 2, "[guild_share] open_game:" + localSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$GuildInfo.jdField_c_of_type_Int + ", share_icon_url: " + localSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$GuildInfo.i + ", share_title: " + localSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$GuildInfo.j + ", share_desc: " + localSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$GuildInfo.k + ", share_url: " + localSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$GuildInfo.l);
@@ -883,42 +883,42 @@ public class GuildMultiActivity
   @TargetApi(11)
   protected void e()
   {
-    super.setContentView(2130969300);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366053));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131366055));
-    Object localObject1 = (BitmapDrawable)getResources().getDrawable(2130840140);
-    Object localObject2 = TintStateDrawable.a(getResources(), 2130840140, 2131494067);
+    super.setContentView(2130969298);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366058));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131366060));
+    Object localObject1 = (BitmapDrawable)getResources().getDrawable(2130840155);
+    Object localObject2 = TintStateDrawable.a(getResources(), 2130840155, 2131494073);
     ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
     this.jdField_b_of_type_AndroidWidgetButton.setCompoundDrawables(null, (Drawable)localObject2, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366050));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366046));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366047));
-    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView = ((StageEffectView)findViewById(2131366049));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366055));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366051));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366052));
+    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView = ((StageEffectView)findViewById(2131366054));
     this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView.setOnIconClickListener(this);
-    this.jdField_a_of_type_ComTencentAvUtilsSparkDot = ((SparkDot)findViewById(2131366051));
+    this.jdField_a_of_type_ComTencentAvUtilsSparkDot = ((SparkDot)findViewById(2131366056));
     this.jdField_a_of_type_ComTencentAvUtilsSparkDot.setDotCount(6);
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131366056));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131366061));
     this.jdField_c_of_type_AndroidWidgetButton.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131366045));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131366050));
     if (Build.VERSION.SDK_INT >= 11) {
       this.jdField_c_of_type_AndroidWidgetTextView.setAlpha(0.5F);
     }
     localObject1 = String.format(getResources().getString(2131429392), new Object[] { Integer.valueOf(0) });
     this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_JavaLangRunnable = new jiz(this);
+    this.jdField_a_of_type_JavaLangRunnable = new jlc(this);
     if (this.jdField_a_of_type_ComTencentAvUtilsTipsManager == null)
     {
-      localObject1 = (LinearLayout)super.findViewById(2131364244);
+      localObject1 = (LinearLayout)super.findViewById(2131364269);
       this.jdField_a_of_type_ComTencentAvUtilsTipsManager = new TipsManager(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, (LinearLayout)localObject1);
     }
     try
     {
       if (ImageResUtil.a("random_talk_bg_2.png")) {
-        findViewById(2131366043).setBackgroundDrawable(new BitmapDrawable(getResources(), ImageResUtil.b() + "random_talk_bg_2.png"));
+        findViewById(2131366048).setBackgroundDrawable(new BitmapDrawable(getResources(), ImageResUtil.b() + "random_talk_bg_2.png"));
       }
       int k = UITools.b(getApplicationContext());
-      localObject1 = (RelativeLayout)findViewById(2131366048);
+      localObject1 = (RelativeLayout)findViewById(2131366053);
       localObject2 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject1).getLayoutParams();
       int j = k / 6;
       int i = j;
@@ -969,7 +969,7 @@ public class GuildMultiActivity
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "setMatchingStatus : " + j);
     }
-    SparkDot localSparkDot = (SparkDot)findViewById(2131366051);
+    SparkDot localSparkDot = (SparkDot)findViewById(2131366056);
     localSparkDot.setDotCount(6);
     switch (j)
     {
@@ -1074,7 +1074,7 @@ public class GuildMultiActivity
         return;
       }
       e();
-      this.jdField_a_of_type_ComTencentAvGuildGameHeroesUi = new GameHeroesUi(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this, (RelativeLayout)findViewById(2131366057), (RelativeLayout)findViewById(2131366058));
+      this.jdField_a_of_type_ComTencentAvGuildGameHeroesUi = new GameHeroesUi(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this, (RelativeLayout)findViewById(2131366062), (RelativeLayout)findViewById(2131366063));
       this.jdField_a_of_type_ComTencentAvUtilsTraeHelper = TraeHelper.a();
       this.jdField_a_of_type_ComTencentAvUtilsTraeHelper.a(this.jdField_a_of_type_AndroidWidgetButton);
       this.jdField_a_of_type_ComTencentAvUtilsTraeHelper.c();
@@ -1261,7 +1261,7 @@ public class GuildMultiActivity
         if (WXShareHelper.a().a()) {
           break label238;
         }
-        i = 2131435319;
+        i = 2131435335;
       }
       for (;;)
       {
@@ -1274,13 +1274,13 @@ public class GuildMultiActivity
         break label154;
         label238:
         if (!WXShareHelper.a().b()) {
-          i = 2131435320;
+          i = 2131435336;
         }
       }
       label255:
       if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new jjh(this);
+        this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new jlk(this);
         WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
       }
       this.jdField_b_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
@@ -1370,7 +1370,7 @@ public class GuildMultiActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.guild.GuildMultiActivity
  * JD-Core Version:    0.7.0.1
  */

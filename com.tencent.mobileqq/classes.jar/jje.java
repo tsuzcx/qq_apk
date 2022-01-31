@@ -1,18 +1,19 @@
-import com.tencent.av.guild.GuildMultiActivity;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQToast;
 
-class jje
+public final class jje
   implements Runnable
 {
-  jje(jjb paramjjb) {}
+  public jje(Context paramContext) {}
   
   public void run()
   {
-    GuildMultiActivity.a(this.a.a, true);
+    QQToast.a(this.a, this.a.getString(2131429501), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jje
  * JD-Core Version:    0.7.0.1
  */

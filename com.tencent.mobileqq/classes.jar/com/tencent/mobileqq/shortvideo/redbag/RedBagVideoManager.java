@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
-import aicv;
-import aicw;
-import aicx;
-import aicy;
-import aida;
-import aidb;
-import aidd;
-import aide;
-import aidf;
-import aidg;
-import aidh;
-import aidi;
-import aidj;
-import aidk;
+import aihp;
+import aihq;
+import aihr;
+import aihs;
+import aihu;
+import aihv;
+import aihx;
+import aihy;
+import aihz;
+import aiia;
+import aiib;
+import aiic;
+import aiid;
+import aiie;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -103,7 +103,7 @@ public class RedBagVideoManager
   private static boolean h;
   private long jdField_a_of_type_Long;
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aicv(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aihp(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -123,7 +123,7 @@ public class RedBagVideoManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "VideoRedbagRes" + File.separator;
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "VideoRedbagRes" + File.separator;
     jdField_b_of_type_Int = 1;
     jdField_b_of_type_JavaLangString = "TemplateTips";
     jdField_c_of_type_JavaLangString = "OutRedIconVer";
@@ -367,7 +367,7 @@ public class RedBagVideoManager
             paramView.findViewById(2131362283).setVisibility(0);
             paramHolder = (ImageView)paramView.findViewById(2131362282);
             if (j == 1) {
-              paramHolder.setImageResource(2130845565);
+              paramHolder.setImageResource(2130845646);
             }
             for (;;)
             {
@@ -384,9 +384,9 @@ public class RedBagVideoManager
               j = 3;
               break;
               if (j == 2) {
-                paramHolder.setImageResource(2130845566);
+                paramHolder.setImageResource(2130845647);
               } else if (j == 3) {
-                paramHolder.setImageResource(2130845564);
+                paramHolder.setImageResource(2130845645);
               }
             }
             paramView.rightMargin = 0;
@@ -394,12 +394,12 @@ public class RedBagVideoManager
             return;
           }
           paramHolder = new ImageView(paramContext);
-          paramHolder.setBackgroundDrawable(paramContext.getResources().getDrawable(2130845563));
+          paramHolder.setBackgroundDrawable(paramContext.getResources().getDrawable(2130845644));
           paramHolder.setId(2131362283);
           paramHolder.setVisibility(0);
           RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, AIOUtils.a(70.0F, paramContext.getResources()));
-          localLayoutParams.addRule(7, 2131366640);
-          localLayoutParams.addRule(8, 2131366640);
+          localLayoutParams.addRule(7, 2131366638);
+          localLayoutParams.addRule(8, 2131366638);
           if (paramChatMessage.isSend())
           {
             localLayoutParams.rightMargin = AIOUtils.a(6.0F, paramContext.getResources());
@@ -409,14 +409,14 @@ public class RedBagVideoManager
             if (j != 1) {
               break label441;
             }
-            paramHolder.setImageResource(2130845565);
+            paramHolder.setImageResource(2130845646);
           }
           for (;;)
           {
             paramHolder.setId(2131362282);
             paramHolder.setVisibility(0);
             paramChatMessage = new RelativeLayout.LayoutParams(-2, -2);
-            paramChatMessage.addRule(8, 2131366640);
+            paramChatMessage.addRule(8, 2131366638);
             paramChatMessage.addRule(14);
             ((RelativeLayout)paramView).addView(paramHolder, paramChatMessage);
             return;
@@ -424,9 +424,9 @@ public class RedBagVideoManager
             localLayoutParams.leftMargin = AIOUtils.a(6.0F, paramContext.getResources());
             break;
             if (j == 2) {
-              paramHolder.setImageResource(2130845566);
+              paramHolder.setImageResource(2130845647);
             } else if (j == 3) {
-              paramHolder.setImageResource(2130845564);
+              paramHolder.setImageResource(2130845645);
             }
           }
         }
@@ -454,7 +454,7 @@ public class RedBagVideoManager
       return;
     }
     jdField_b_of_type_Boolean = true;
-    ThreadManager.post(new aidb(paramQQAppInterface), 5, null, true);
+    ThreadManager.post(new aihv(paramQQAppInterface), 5, null, true);
   }
   
   public static void a(String paramString)
@@ -624,7 +624,7 @@ public class RedBagVideoManager
     if (paramAIOShortVideoData.g == 0)
     {
       this.jdField_b_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData = paramAIOShortVideoData;
-      new aidk(this).execute(new String[] { paramAIOShortVideoData.jdField_c_of_type_JavaLangString });
+      new aiie(this).execute(new String[] { paramAIOShortVideoData.jdField_c_of_type_JavaLangString });
     }
     for (;;)
     {
@@ -777,7 +777,7 @@ public class RedBagVideoManager
     this.jdField_d_of_type_Boolean = true;
     if (this.jdField_c_of_type_AndroidWidgetImageView != null)
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130845567);
+      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130845648);
       this.jdField_c_of_type_AndroidWidgetImageView.getBackground().setAlpha(255);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
     }
@@ -785,7 +785,7 @@ public class RedBagVideoManager
     {
       if (this.jdField_a_of_type_AndroidWidgetImageView != null)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845577);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845658);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       }
       if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
@@ -814,10 +814,10 @@ public class RedBagVideoManager
       if (this.jdField_a_of_type_AndroidOsHandler == null) {
         this.jdField_a_of_type_AndroidOsHandler = new Handler();
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aidh(this), 120L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiib(this), 120L);
       break;
       label207:
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845578);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845659);
       c();
     }
   }
@@ -916,9 +916,9 @@ public class RedBagVideoManager
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("查看详情");
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131494201));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131494207));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130845568, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130845649, 0);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(5);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.bringToFront();
@@ -948,7 +948,7 @@ public class RedBagVideoManager
     }
     if (this.jdField_c_of_type_AndroidWidgetImageView != null)
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130845567);
+      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130845648);
       this.jdField_c_of_type_AndroidWidgetImageView.getBackground().setAlpha(255);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
       ObjectAnimator.ofFloat(this.jdField_c_of_type_AndroidWidgetImageView.getBackground(), "alpha", new float[] { 0.53F, 1.0F }).setDuration(180L).start();
@@ -962,21 +962,21 @@ public class RedBagVideoManager
         this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(a(localCustomFrameAnimationDrawable));
       }
       localCustomFrameAnimationDrawable.c();
-      localCustomFrameAnimationDrawable.a(new aidi(this));
+      localCustomFrameAnimationDrawable.a(new aiic(this));
       if (this.jdField_a_of_type_AndroidOsHandler == null) {
         this.jdField_a_of_type_AndroidOsHandler = new Handler();
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aidj(this), 880L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiid(this), 880L);
     }
     for (;;)
     {
       if (this.jdField_a_of_type_AndroidOsHandler == null) {
         this.jdField_a_of_type_AndroidOsHandler = new Handler();
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aicw(this), 1120L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aihq(this), 1120L);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845571);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845652);
       k();
       c();
     }
@@ -985,7 +985,7 @@ public class RedBagVideoManager
   private void j()
   {
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845571);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845652);
     k();
     m();
   }
@@ -997,10 +997,10 @@ public class RedBagVideoManager
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText("赏他红包");
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131494202));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131494208));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(16.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setPadding(AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130845573);
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130845654);
     this.jdField_a_of_type_AndroidWidgetTextView.bringToFront();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetTextView, "alpha", new float[] { 0.0F, 1.0F }).setDuration(180L).start();
@@ -1021,10 +1021,10 @@ public class RedBagVideoManager
       }
       localCustomFrameAnimationDrawable.c();
       this.jdField_c_of_type_Int = 0;
-      localCustomFrameAnimationDrawable.a(new aicx(this, localCustomFrameAnimationDrawable));
+      localCustomFrameAnimationDrawable.a(new aihr(this, localCustomFrameAnimationDrawable));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845571);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845652);
     c();
   }
   
@@ -1054,7 +1054,7 @@ public class RedBagVideoManager
     }
     if (this.jdField_c_of_type_AndroidWidgetImageView != null)
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130845567);
+      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130845648);
       this.jdField_c_of_type_AndroidWidgetImageView.getBackground().setAlpha(255);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
     }
@@ -1075,7 +1075,7 @@ public class RedBagVideoManager
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       h();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845576);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845657);
       c();
     }
   }
@@ -1100,7 +1100,7 @@ public class RedBagVideoManager
     ((RelativeLayout.LayoutParams)localObject).addRule(14);
     paramViewGroup.addView(paramString, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = paramString;
-    paramString.setOnTouchListener(new aidd(this));
+    paramString.setOnTouchListener(new aihx(this));
     localObject = new ImageView(paramActivity);
     ((ImageView)localObject).setId(2131362278);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -1117,14 +1117,14 @@ public class RedBagVideoManager
     paramViewGroup.addView((View)localObject, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
     ((TextView)localObject).bringToFront();
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aide(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aihy(this));
     e();
     return paramString;
   }
   
   public void a()
   {
-    ThreadManager.post(new aidf(this), 5, null, true);
+    ThreadManager.post(new aihz(this), 5, null, true);
   }
   
   public void a(int paramInt)
@@ -1149,15 +1149,15 @@ public class RedBagVideoManager
         this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(a(localCustomFrameAnimationDrawable));
       }
       localCustomFrameAnimationDrawable.c();
-      localCustomFrameAnimationDrawable.a(new aicy(this));
+      localCustomFrameAnimationDrawable.a(new aihs(this));
     }
     for (;;)
     {
-      ThreadManager.post(new aida(this), 5, null, true);
+      ThreadManager.post(new aihu(this), 5, null, true);
       return;
       label131:
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845576);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845657);
       }
       this.jdField_f_of_type_Boolean = false;
       c();
@@ -1393,7 +1393,7 @@ public class RedBagVideoManager
           if (this.jdField_a_of_type_AndroidOsHandler == null) {
             this.jdField_a_of_type_AndroidOsHandler = new Handler();
           }
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aidg(this, paramAIORichMediaData), localAIOShortVideoData.a * 1000);
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiia(this, paramAIORichMediaData), localAIOShortVideoData.a * 1000);
           return;
           b(localAIOShortVideoData);
         }

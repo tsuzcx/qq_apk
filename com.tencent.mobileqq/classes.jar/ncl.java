@@ -1,42 +1,18 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class ncl
-  implements EmoticonCallback
+  implements Runnable
 {
-  public ncl(StoryInputBarView paramStoryInputBarView) {}
+  public ncl(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void a(EmoticonInfo paramEmoticonInfo)
+  public void run()
   {
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
-      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
+    if (PublicAccountImageCollectionMainActivity.a(this.a) != null)
+    {
+      PublicAccountImageCollectionMainActivity.a(this.a).a(PublicAccountImageCollectionMainActivity.a(this.a));
+      PublicAccountImageCollectionMainActivity.a(this.a).notifyDataSetChanged();
     }
   }
-  
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
-      TextUtils.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-    }
-  }
-  
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void c() {}
-  
-  public void setting() {}
 }
 
 

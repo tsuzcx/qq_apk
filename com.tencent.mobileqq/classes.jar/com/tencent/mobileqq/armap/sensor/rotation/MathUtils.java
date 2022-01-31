@@ -8,12 +8,12 @@ public class MathUtils
   
   public static final float a(float paramFloat)
   {
-    return abhn.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+    return aboo.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
   }
   
   public static final float b(float paramFloat)
   {
-    return abhm.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+    return abon.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
   }
 }
 

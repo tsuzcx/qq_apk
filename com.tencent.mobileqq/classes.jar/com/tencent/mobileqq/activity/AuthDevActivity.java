@@ -47,39 +47,39 @@ import mqq.manager.WtloginManager;
 import mqq.observer.WtloginObserver;
 import mqq.os.MqqHandler;
 import oicq.wlogin_sdk.request.Ticket;
-import rni;
-import rnj;
-import rnk;
-import rnl;
-import rnm;
-import rnn;
-import rno;
-import rnp;
-import rnq;
-import rnr;
-import rns;
-import rnt;
+import rsa;
+import rsb;
+import rsc;
+import rsd;
+import rse;
+import rsf;
+import rsg;
+import rsh;
+import rsi;
+import rsj;
+import rsk;
+import rsl;
 
 public class AuthDevActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
   private Dialog jdField_a_of_type_AndroidAppDialog;
-  private Handler jdField_a_of_type_AndroidOsHandler = new rni(this);
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new rnm(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new rsa(this);
+  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new rse(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new rnr(this);
-  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new rnt(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new rsj(this);
+  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new rsl(this);
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
   private String jdField_a_of_type_JavaLangString = "";
   private List jdField_a_of_type_JavaUtilList;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new rns(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new rsk(this);
   private boolean jdField_a_of_type_Boolean;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private FormSimpleItem jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem;
@@ -94,10 +94,10 @@ public class AuthDevActivity
   private void a(String paramString1, ArrayList paramArrayList, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
     this.jdField_b_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131436616), 5);
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131434041), 3);
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131433015);
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new rnp(this, paramString2, paramLong, paramString1, paramInt, paramArrayList, paramBoolean1, paramBoolean2));
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131436636), 5);
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131434057), 3);
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131433029);
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new rsh(this, paramString2, paramLong, paramString1, paramInt, paramArrayList, paramBoolean1, paramBoolean2));
     this.jdField_b_of_type_ComTencentWidgetActionSheet.show();
   }
   
@@ -122,31 +122,31 @@ public class AuthDevActivity
       }
       else
       {
-        View localView = getLayoutInflater().inflate(2130970316, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131362749);
+        View localView = getLayoutInflater().inflate(2130970331, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131362754);
         if (j == 1) {
-          localRelativeLayout.setBackgroundResource(2130838623);
+          localRelativeLayout.setBackgroundResource(2130838629);
         }
         for (;;)
         {
-          TextView localTextView2 = (TextView)localView.findViewById(2131362754);
-          TextView localTextView1 = (TextView)localView.findViewById(2131364119);
+          TextView localTextView2 = (TextView)localView.findViewById(2131362759);
+          TextView localTextView1 = (TextView)localView.findViewById(2131364144);
           String str = localSvcDevLoginInfo.strDeviceName;
           Object localObject = str;
           if (TextUtils.isEmpty(str)) {
-            localObject = getResources().getString(2131436507);
+            localObject = getResources().getString(2131436527);
           }
           str = null;
           if (Arrays.equals(NetConnInfoCenter.GUID, localSvcDevLoginInfo.vecGuid)) {
-            str = "（" + getResources().getString(2131436503) + "）";
+            str = "（" + getResources().getString(2131436523) + "）";
           }
           SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder((CharSequence)localObject);
           if (!TextUtils.isEmpty(str))
           {
             localSpannableStringBuilder.append(str);
-            rnn localrnn = new rnn(this);
+            rsf localrsf = new rsf(this);
             int k = ((String)localObject).length();
-            localSpannableStringBuilder.setSpan(localrnn, k, str.length() + k, 33);
+            localSpannableStringBuilder.setSpan(localrsf, k, str.length() + k, 33);
           }
           localTextView2.setText(localSpannableStringBuilder);
           localObject = new StringBuffer();
@@ -165,15 +165,15 @@ public class AuthDevActivity
           }
           localRelativeLayout.setClickable(true);
           localRelativeLayout.setTag(localSvcDevLoginInfo);
-          localRelativeLayout.setOnClickListener(new rno(this, localRelativeLayout, i));
+          localRelativeLayout.setOnClickListener(new rsg(this, localRelativeLayout, i));
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
           break;
           if (i == 0) {
-            localRelativeLayout.setBackgroundResource(2130838635);
+            localRelativeLayout.setBackgroundResource(2130838641);
           } else if (i == j - 1) {
-            localRelativeLayout.setBackgroundResource(2130838630);
+            localRelativeLayout.setBackgroundResource(2130838636);
           } else {
-            localRelativeLayout.setBackgroundResource(2130838633);
+            localRelativeLayout.setBackgroundResource(2130838639);
           }
         }
       }
@@ -191,16 +191,16 @@ public class AuthDevActivity
   {
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = getResources().getString(2131436507);
+      str = getResources().getString(2131436527);
     }
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
     if (paramBoolean1) {}
-    for (paramString1 = getString(2131436567, new Object[] { str });; paramString1 = getString(2131436566, new Object[] { str }))
+    for (paramString1 = getString(2131436587, new Object[] { str });; paramString1 = getString(2131436586, new Object[] { str }))
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramString1);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131436568), 3, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new rnq(this, paramString2, paramArrayList, paramInt, paramBoolean2, paramLong));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(getResources().getString(2131436588), 3, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new rsi(this, paramString2, paramArrayList, paramInt, paramBoolean2, paramLong));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       return;
     }
@@ -223,18 +223,18 @@ public class AuthDevActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new rnk(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new rsc(this));
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new rnl(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new rsd(this));
   }
   
   private void f()
   {
     if (!NetworkUtil.d(this)) {
-      QQToast.a(this, getString(2131433009), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131433023), 0).b(getTitleBarHeight());
     }
     int i;
     do
@@ -273,7 +273,7 @@ public class AuthDevActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.devlock.AuthDevActivity", 2, "onClick.CheckDevLockSms fail ret=" + i);
     }
-    QQToast.a(getApplicationContext(), getString(2131436581), 0).b(getTitleBarHeight());
+    QQToast.a(getApplicationContext(), getString(2131436601), 0).b(getTitleBarHeight());
   }
   
   void a()
@@ -281,12 +281,12 @@ public class AuthDevActivity
     int j = 0;
     b();
     Dialog localDialog = new Dialog(this, 2131624516);
-    localDialog.setContentView(2130968842);
-    Object localObject = (TextView)localDialog.findViewById(2131364034);
+    localDialog.setContentView(2130968846);
+    Object localObject = (TextView)localDialog.findViewById(2131364059);
     if (localObject != null) {
-      ((TextView)localObject).setText(getString(2131436569));
+      ((TextView)localObject).setText(getString(2131436589));
     }
-    TextView localTextView = (TextView)localDialog.findViewById(2131362776);
+    TextView localTextView = (TextView)localDialog.findViewById(2131362781);
     int i;
     if (localTextView != null)
     {
@@ -309,18 +309,18 @@ public class AuthDevActivity
     }
     label223:
     label228:
-    for (localObject = getString(2131436571);; localObject = getString(2131436570))
+    for (localObject = getString(2131436591);; localObject = getString(2131436590))
     {
       localTextView.setText((CharSequence)localObject);
-      localObject = (TextView)localDialog.findViewById(2131364037);
+      localObject = (TextView)localDialog.findViewById(2131364062);
       if (localObject != null) {
-        ((TextView)localObject).setText(2131434937);
+        ((TextView)localObject).setText(2131434953);
       }
-      localTextView = (TextView)localDialog.findViewById(2131364038);
+      localTextView = (TextView)localDialog.findViewById(2131364063);
       if (localTextView != null) {
-        localTextView.setText(2131433015);
+        localTextView.setText(2131433029);
       }
-      localDialog.setOnDismissListener(new rnj(this));
+      localDialog.setOnDismissListener(new rsb(this));
       if (localObject != null) {
         ((TextView)localObject).setOnClickListener(this);
       }
@@ -390,7 +390,7 @@ public class AuthDevActivity
         if (paramInt2 != 4) {
           break label204;
         }
-        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(super.getString(2131436621));
+        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(super.getString(2131436641));
         DevlockPhoneStatus.a().a(paramIntent);
         return;
         if (paramInt1 != 3) {
@@ -402,7 +402,7 @@ public class AuthDevActivity
         if (paramInt1 != 3) {
           break label92;
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(super.getString(2131436629));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(super.getString(2131436649));
         break label92;
         if (paramInt2 != 1) {
           DevlockPhoneStatus.a().b(DevlockPhoneStatus.h);
@@ -503,33 +503,33 @@ public class AuthDevActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.devlock.AuthDevActivity", 2, "onClick.CloseDevLock fail ret =" + i);
     }
-    QQToast.a(getApplicationContext(), getString(2131436580), 0).b(getTitleBarHeight());
+    QQToast.a(getApplicationContext(), getString(2131436600), 0).b(getTitleBarHeight());
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130970315);
-    super.setTitle(2131436552);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)super.findViewById(2131370040));
+    super.setContentView(2130970330);
+    super.setTitle(2131436572);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)super.findViewById(2131370049));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131370047));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131363466));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)super.findViewById(2131370041));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131370056));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131363485));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)super.findViewById(2131370050));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131370042));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131370038));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370046));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131370051));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131370047));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370055));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131370044));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131370053));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370045));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370054));
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131433516);
+    this.rightViewText.setText(2131433530);
     if (AppSetting.jdField_b_of_type_Boolean) {
-      this.rightViewText.setContentDescription(getString(2131436562));
+      this.rightViewText.setContentDescription(getString(2131436582));
     }
     this.rightViewText.setOnClickListener(this);
     paramBundle = super.getIntent();
@@ -538,7 +538,7 @@ public class AuthDevActivity
     this.d = paramBundle.getExtras().getBoolean("allow_set");
     this.e = paramBundle.getExtras().getBoolean("enable_open_allowset_dev");
     if (TextUtils.equals(paramBundle.getExtras().getString("devlock_open_source"), "PhoneUnity")) {
-      this.leftView.setText(2131436794);
+      this.leftView.setText(2131436814);
     }
     if (DevlockPhoneStatus.a().b() != DevlockPhoneStatus.g)
     {
@@ -570,7 +570,7 @@ public class AuthDevActivity
     for (;;)
     {
       if (AppSetting.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131436552));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131436572));
       }
       try
       {
@@ -582,7 +582,7 @@ public class AuthDevActivity
         addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
         if (DevlockPhoneStatus.a().a() == DevlockPhoneStatus.c)
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(super.getString(2131436629));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(super.getString(2131436649));
           if (!this.jdField_a_of_type_Boolean) {
             break label665;
           }

@@ -1,22 +1,23 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.ContactUtils.OnGetTroopMemberNameCallback;
 
-public class akjm
+public final class akjm
   implements Runnable
 {
-  public akjm(HealthStepCounterPlugin paramHealthStepCounterPlugin) {}
+  public akjm(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ContactUtils.OnGetTroopMemberNameCallback paramOnGetTroopMemberNameCallback) {}
   
   public void run()
   {
-    QQToast localQQToast = new QQToast(this.a.mRuntime.a().getContext());
-    QQToast.a(this.a.mRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).b((int)(localQQToast.b() * 2.5D));
+    String str = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsContactUtils$OnGetTroopMemberNameCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsContactUtils$OnGetTroopMemberNameCallback.a(str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akjm
  * JD-Core Version:    0.7.0.1
  */

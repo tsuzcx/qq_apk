@@ -1,31 +1,25 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.Projection;
-import com.tencent.tencentmap.mapsdk.map.TencentMap;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapLoadedListener;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.OcrClickListener;
 
 public class agjf
-  implements TencentMap.OnMapLoadedListener
 {
-  public agjf(ScanTorchActivity paramScanTorchActivity) {}
+  public int a;
+  public ARTipsManager.BaikeClickListener a;
+  public ARTipsManager.ButtonClickListener a;
+  public ARTipsManager.OcrClickListener a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b = true;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onMapLoaded()
-  {
-    this.a.t = true;
-    if (ScanTorchActivity.a(this.a) != null)
-    {
-      Projection localProjection = ScanTorchActivity.a(this.a).getProjection();
-      TencentMap localTencentMap = ScanTorchActivity.a(this.a).getMap();
-      if ((localProjection != null) && (localTencentMap != null))
-      {
-        Point localPoint = localProjection.toScreenLocation(localTencentMap.getMapCenter());
-        localPoint.offset(0, AIOUtils.a(60.0F, this.a.getResources()) * -1);
-        localTencentMap.setCenter(localProjection.fromScreenLocation(localPoint));
-      }
-    }
-  }
+  private agjf(ARTipsManager paramARTipsManager) {}
 }
 
 

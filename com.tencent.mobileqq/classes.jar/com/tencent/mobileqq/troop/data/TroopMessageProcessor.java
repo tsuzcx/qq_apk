@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.data;
 
 import PushNotifyPack.GroupMsgReadedNotify;
-import ajfc;
+import ajke;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
@@ -66,7 +66,7 @@ import msf.msgsvc.msg_svc.PbGetGroupMsgResp;
 public class TroopMessageProcessor
   extends BaseMessageProcessorForTroopAndDisc
 {
-  public Comparator b = new ajfc(this);
+  public Comparator b = new ajke(this);
   
   public TroopMessageProcessor(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
   {
@@ -1545,7 +1545,7 @@ public class TroopMessageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

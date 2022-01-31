@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArModelResource;
 
-public class aarq
-  implements ArkAppView.Callback
+public final class aarq
+  implements Parcelable.Creator
 {
-  public aarq(ArkAiAppPanel paramArkAiAppPanel) {}
-  
-  public void a()
+  public ArModelResource a(Parcel paramParcel)
   {
-    boolean bool = ((ArkAioContainerWrapper)ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a))).checkShare();
-    if (bool != ArkAiAppPanel.a(this.a))
-    {
-      ArkAiAppPanel.a(this.a, bool);
-      ArkAiAppPanel.a(this.a, ArkAiAppPanel.a(this.a));
-    }
+    return new ArModelResource(paramParcel);
+  }
+  
+  public ArModelResource[] a(int paramInt)
+  {
+    return new ArModelResource[paramInt];
   }
 }
 

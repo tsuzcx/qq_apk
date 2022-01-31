@@ -21,16 +21,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ltc;
-import ltd;
-import lte;
+import lwg;
+import lwh;
+import lwi;
 
 public class NativeGridImageView
   extends GridView
   implements IView
 {
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private ltd jdField_a_of_type_Ltd;
+  private lwh jdField_a_of_type_Lwh;
   
   public NativeGridImageView(Context paramContext)
   {
@@ -112,7 +112,7 @@ public class NativeGridImageView
   
   public void a()
   {
-    setOnItemClickListener(new ltc(this));
+    setOnItemClickListener(new lwg(this));
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -137,8 +137,8 @@ public class NativeGridImageView
   
   public void a(GridImageView paramGridImageView)
   {
-    if (this.jdField_a_of_type_Ltd != null) {
-      this.jdField_a_of_type_Ltd.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Lwh != null) {
+      this.jdField_a_of_type_Lwh.notifyDataSetChanged();
     }
     b(paramGridImageView);
   }
@@ -147,19 +147,19 @@ public class NativeGridImageView
   {
     if (paramArticleInfo != null)
     {
-      if (this.jdField_a_of_type_Ltd != null) {
+      if (this.jdField_a_of_type_Lwh != null) {
         break label53;
       }
-      this.jdField_a_of_type_Ltd = new ltd(this);
-      this.jdField_a_of_type_Ltd.a(new lte(this, paramArticleInfo));
-      setAdapter(this.jdField_a_of_type_Ltd);
+      this.jdField_a_of_type_Lwh = new lwh(this);
+      this.jdField_a_of_type_Lwh.a(new lwi(this, paramArticleInfo));
+      setAdapter(this.jdField_a_of_type_Lwh);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
       return;
       label53:
-      this.jdField_a_of_type_Ltd.a(new lte(this, paramArticleInfo));
+      this.jdField_a_of_type_Lwh.a(new lwi(this, paramArticleInfo));
     }
   }
   

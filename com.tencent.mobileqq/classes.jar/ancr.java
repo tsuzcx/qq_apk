@@ -1,14 +1,21 @@
-import cooperation.qzone.cache.FileCacheService;
-import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiUserInfo;
 
 public final class ancr
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public ancr(String paramString) {}
-  
-  public void run()
+  public WeishiUserInfo a(Parcel paramParcel)
   {
-    QzoneOfflineCacheHelper.access$000().a(this.a, true);
+    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
+    localWeishiUserInfo.uin = paramParcel.readLong();
+    localWeishiUserInfo.nickName = paramParcel.readString();
+    return localWeishiUserInfo;
+  }
+  
+  public WeishiUserInfo[] a(int paramInt)
+  {
+    return new WeishiUserInfo[paramInt];
   }
 }
 

@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
 
 public class aimy
-  implements DialogInterface.OnClickListener
+  extends URLDrawableDownListener.Adapter
 {
-  public aimy(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  public aimy(StructMsgForHypertext paramStructMsgForHypertext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(null);
+  }
 }
 
 

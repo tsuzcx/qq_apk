@@ -1,6 +1,7 @@
 package com.tencent.biz.qqstory.playvideo;
 
 import android.content.Context;
+import android.os.Build.VERSION;
 import android.os.SystemClock;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,6 +13,10 @@ import android.view.MotionEvent;
 import android.view.ViewParent;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.BetterGestureDetector;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 public class CustomViewPager
   extends ViewPager
@@ -36,6 +41,53 @@ public class CustomViewPager
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentBizQqstoryUtilsBetterGestureDetector = new BetterGestureDetector(paramContext, this);
     this.jdField_a_of_type_ComTencentBizQqstoryUtilsBetterGestureDetector.a(this);
+  }
+  
+  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
+  {
+    if (Build.VERSION.SDK_INT >= 24) {}
+    try
+    {
+      Object localObject = ViewPager.class.getDeclaredField("mDrawingOrderedChildren");
+      ((Field)localObject).setAccessible(true);
+      localObject = (ArrayList)((Field)localObject).get(this);
+      if ((localObject == null) || (((ArrayList)localObject).size() != getChildCount()))
+      {
+        SLog.d("Q.qqstory.player.ViewPager", "getChildDrawingOrder invoke sortChildDrawingOrder() by ourselves !");
+        localObject = ViewPager.class.getDeclaredMethod("sortChildDrawingOrder", new Class[0]);
+        ((Method)localObject).setAccessible(true);
+        ((Method)localObject).invoke(this, new Object[0]);
+      }
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      for (;;)
+      {
+        SLog.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchMethodException);
+      }
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      for (;;)
+      {
+        SLog.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localIllegalAccessException);
+      }
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      for (;;)
+      {
+        SLog.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localInvocationTargetException);
+      }
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      for (;;)
+      {
+        SLog.c("Q.qqstory.player.ViewPager", "getChildDrawingOrder", localNoSuchFieldException);
+      }
+    }
+    return super.getChildDrawingOrder(paramInt1, paramInt2);
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)

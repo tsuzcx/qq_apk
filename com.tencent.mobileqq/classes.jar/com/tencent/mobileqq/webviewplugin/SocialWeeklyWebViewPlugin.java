@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import akrp;
+import akzg;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -44,7 +44,7 @@ public class SocialWeeklyWebViewPlugin
     //   26: ifeq +165 -> 191
     //   29: new 44	java/io/File
     //   32: dup
-    //   33: getstatic 49	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
+    //   33: getstatic 49	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
     //   36: invokespecial 52	java/io/File:<init>	(Ljava/lang/String;)V
     //   39: astore_2
     //   40: new 44	java/io/File
@@ -257,7 +257,7 @@ public class SocialWeeklyWebViewPlugin
           {
             int i = paramJsBridgeListener.indexOf(',');
             if (i > 0) {
-              postPluginAsyncTask(new akrp(this, paramJsBridgeListener.substring(i)));
+              postPluginAsyncTask(new akzg(this, paramJsBridgeListener.substring(i)));
             }
           }
         }
@@ -294,7 +294,7 @@ public class SocialWeeklyWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.SocialWeeklyWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

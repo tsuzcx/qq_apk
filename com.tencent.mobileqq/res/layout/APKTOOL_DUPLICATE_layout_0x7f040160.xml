@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:minWidth="66.0dip" android:minHeight="66.0dip"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.dingdong.widget.DingdongHeadImageView android:id="@id/icon" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginBottom="7.0dip" android:layout_centerHorizontal="true" />
-    <com.tencent.widget.SingleLineTextView android:textSize="13.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0220" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/icon" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <com.tencent.widget.SingleLineTextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a087a" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="22.0dip" android:singleLine="true" />
+    <com.dingdong.widget.DingdongSlidableFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043c" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e3" android:layout_width="fill_parent" android:layout_height="52.0dip">
+            <FrameLayout android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e4" android:layout_width="40.0dip" android:layout_height="fill_parent">
+                <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e5" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021fa0" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b16cd" />
+            </FrameLayout>
+            <com.dingdong.widget.DingdongHeadImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e6" android:clickable="false" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+            <com.tencent.widget.SingleLineTextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054c" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0575" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e7" android:background="#ffff3b2f" android:layout_width="70.0dip" android:layout_height="52.0dip" android:layout_marginBottom="1.0px" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1a49" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1a49" />
+    </com.dingdong.widget.DingdongSlidableFrameLayout>
+</FrameLayout>

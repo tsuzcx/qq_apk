@@ -1,26 +1,32 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
-import cooperation.qqpim.QQPimTipsInfo;
-import cooperation.qqpim.QQPimTipsInfoHelper;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
 public class wtz
-  implements QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public wtz(ContactListView paramContactListView) {}
+  public wtz(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public void a(QQPimTipsInfo paramQQPimTipsInfo)
+  @SuppressLint({"NewApi"})
+  public void onGlobalLayout()
   {
-    if (paramQQPimTipsInfo == null) {
-      return;
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
-    QQPimTipsInfoHelper.b(this.a.getContext(), paramQQPimTipsInfo);
-    Message localMessage = new Message();
-    localMessage.what = 6;
-    localMessage.obj = paramQQPimTipsInfo;
-    this.a.a.sendMessage(localMessage);
+    for (;;)
+    {
+      SimpleSlidingIndicator.a(this.a, SimpleSlidingIndicator.a(this.a));
+      SimpleSlidingIndicator.b(this.a, SimpleSlidingIndicator.a(this.a));
+      View localView = SimpleSlidingIndicator.a(this.a).getChildAt(SimpleSlidingIndicator.a(this.a));
+      SimpleSlidingIndicator.a(this.a, localView.getLeft());
+      this.a.invalidate();
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
   }
 }
 

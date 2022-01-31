@@ -1,46 +1,34 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class sdl
-  implements Runnable
+public class sdl
+  implements DialogInterface.OnClickListener
 {
-  sdl(sdk paramsdk) {}
+  public sdl(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    TroopMemberInfo localTroopMemberInfo;
-    if (this.a.a.app != null)
+    if (NetworkUtil.d(BaseApplication.getContext()))
     {
-      localObject1 = localObject2;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null)
-      {
-        localObject1 = DBUtils.a().a(this.a.a.app, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.a.app.getCurrentAccountUin());
-        if (localObject1 != null) {
-          break label171;
-        }
-        localTroopMemberInfo = DBUtils.a().a(this.a.a.app, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.a.app.getCurrentAccountUin());
-        localObject1 = localObject2;
-        if (localTroopMemberInfo == null) {}
-      }
-    }
-    label171:
-    for (localObject1 = localTroopMemberInfo.troopnick;; localObject1 = ((TroopMemberCardInfo)localObject1).name)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = ((String)localObject1);
-        this.a.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-      }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      this.a.h();
+      ReportController.b(this.a.app, "CliOper", "", "", "AIO", "AIO_chatlog_lately", 0, 0, "", "", "", "");
       return;
     }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_c_of_type_AndroidAppDialog.dismiss();
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
+    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131433023));
   }
 }
 

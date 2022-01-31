@@ -1,19 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.ui.RefreshView.OnRefreshListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-public final class aefm
-  implements Runnable
+public class aefm
+  implements RefreshView.OnRefreshListener
 {
-  public aefm(int paramInt) {}
+  public aefm(UiApiPlugin paramUiApiPlugin) {}
   
-  public void run()
+  public void a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    ReportController.b(localQQAppInterface, "dc00898", "", "", "0X80088EA", "0X80088EA", this.a, 0, "", "", "", "");
+    this.a.dispatchJsEvent("qbrowserPullDown", null, null);
+    this.a.h = true;
   }
 }
 

@@ -1,34 +1,24 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
 
 public class aewa
-  extends SosoInterface.OnLocationListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aewa(VideoFeedsManager paramVideoFeedsManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, VideoFeedsUploader.UploadInfo paramUploadInfo)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aewa(GameRoomFloatView paramGameRoomFloatView, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramSosoLbsInfo == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.b)
     {
-      paramSosoLbsInfo = new VideoFeedsUploader.UploadResult();
-      paramSosoLbsInfo.i = "定位失败！";
-      paramSosoLbsInfo.a = -108;
-      VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager).a(new VideoFeedsUploader.UploadInfo(), paramSosoLbsInfo);
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
       return;
     }
-    LocationInfo localLocationInfo = new LocationInfo();
-    localLocationInfo.init("" + paramSosoLbsInfo.a.jdField_b_of_type_Double, "" + paramSosoLbsInfo.a.jdField_a_of_type_Double, paramSosoLbsInfo.a.e, paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString);
-    localLocationInfo.setAddress(paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString);
-    VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo, localLocationInfo);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 

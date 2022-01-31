@@ -1,48 +1,17 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.model.MemoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem.FakeVideoUIItem;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 public class nsw
-  extends SimpleJob
+  extends AnimatorListenerAdapter
 {
-  public nsw(StoryPickerFragment paramStoryPickerFragment, String paramString, int paramInt, View paramView, VideoCollectionItem.FakeVideoUIItem paramFakeVideoUIItem) {}
+  public nsw(StoryPlayVideoActivity paramStoryPlayVideoActivity, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, Void... paramVarArgs)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    boolean bool = true;
-    paramJobContext = QQStoryContext.a().b();
-    Object localObject = (MemoryManager)SuperManager.a(19);
-    paramVarArgs = new ArrayList();
-    ArrayList localArrayList1 = ((MemoryManager)localObject).a(paramJobContext, paramVarArgs);
-    if ((localArrayList1 == null) || (localArrayList1.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList2 = new ArrayList();
-    localArrayList2.add(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.a != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.a.b(localArrayList2, true);
-    }
-    int i = localArrayList1.indexOf(this.jdField_a_of_type_JavaLangString);
-    localObject = ((MemoryManager)localObject).a(paramJobContext);
-    if ((localObject != null) && (((MemoryInfoEntry)localObject).isEnd == 1)) {}
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new nsx(this, paramJobContext, localArrayList1, i, paramVarArgs, bool));
-      return null;
-      bool = false;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setVisibility(4);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayVideoActivity.finish();
   }
 }
 

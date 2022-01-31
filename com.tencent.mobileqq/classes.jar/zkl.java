@@ -1,25 +1,39 @@
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.widget.RandomCoverView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.DrawerCoverUtil;
 
 public class zkl
   implements Runnable
 {
-  public zkl(QQAppInterface paramQQAppInterface) {}
+  public zkl(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    QQAppInterface.H();
-    QQAppInterface.a(this.a);
-    IntentFilter localIntentFilter = new IntentFilter("com.tencent.qzone.cleanunreadcount");
-    localIntentFilter.addAction("com.tecent.qzone.clearAlbumRedTouch");
-    QQAppInterface.c(this.a).registerReceiver(QQAppInterface.a(this.a), localIntentFilter);
-    VideoBroadcastReceiver.a(this.a);
-    if (this.a.e()) {
-      PtvTemplateManager.a(this.a);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_AndroidViewViewGroup == null) {
+      return;
     }
+    RandomCoverView localRandomCoverView = (RandomCoverView)this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371360);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localObject = ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
+    String str = (String)localObject.getCoverData(0)[0];
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.", 2, "[getCoverData] getCovertUrl from cache,url:" + str);
+    }
+    if ((!TextUtils.isEmpty(str)) && (!DrawerCoverUtil.b()))
+    {
+      DrawerCoverUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Card)localObject, localRandomCoverView, str, FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity), this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.a());
+      return;
+    }
+    if (DrawerCoverUtil.b()) {}
+    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new zkm(this, (Card)localObject), 3000L);
   }
 }
 

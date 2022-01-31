@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
-import com.tencent.util.ProfilePerformanceReport;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class sqo
-  implements OnDrawCompleteListener
+class sqo
+  implements Runnable
 {
-  public sqo(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  sqo(sqn paramsqn) {}
   
-  public void a()
+  public void run()
   {
-    ProfilePerformanceReport localProfilePerformanceReport = ProfilePerformanceReport.a;
-    if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a()))
+    this.a.a.a.setText(this.a.a.c);
+    this.a.a.a.setTextColor(Color.rgb(119, 119, 119));
+    if (this.a.a.e)
     {
-      if (!localProfilePerformanceReport.a(1)) {
-        localProfilePerformanceReport.b(1);
-      }
-      if ((!localProfilePerformanceReport.a(8)) && (localProfilePerformanceReport.a(5)) && (localProfilePerformanceReport.a(7))) {
-        localProfilePerformanceReport.b(8);
-      }
-      if ((!localProfilePerformanceReport.a(9)) && (localProfilePerformanceReport.a(6)) && (localProfilePerformanceReport.a(7))) {
-        localProfilePerformanceReport.b(9);
-      }
+      this.a.a.rightViewText.setEnabled(true);
+      return;
     }
+    this.a.a.rightViewText.setEnabled(false);
   }
 }
 

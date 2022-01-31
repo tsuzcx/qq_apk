@@ -12,8 +12,8 @@ import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfo
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import nxm;
-import nxo;
+import ocb;
+import ocd;
 
 public class StoryQQ2UidConverter
   implements GetUserInfoHandler.OnGetUserInfoCallback
@@ -27,7 +27,7 @@ public class StoryQQ2UidConverter
   
   public void a(long paramLong)
   {
-    ThreadManager.post(new nxm(this, paramLong), 5, null, false);
+    ThreadManager.post(new ocb(this, paramLong), 5, null, false);
   }
   
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
@@ -35,12 +35,12 @@ public class StoryQQ2UidConverter
     if (!TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_JavaLangString, String.valueOf(hashCode()))) {
       return;
     }
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)) {
+    if ((paramUpdateUserInfoEvent.errorInfo.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)) {
       SLog.a("Q.qqstory.memories.StoryQQ2UidConverter", "get uid by qq from net. uid = %s.", paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid);
     }
     for (paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;; paramUpdateUserInfoEvent = null)
     {
-      ThreadManager.getUIHandler().post(new nxo(this, paramUpdateUserInfoEvent));
+      ThreadManager.getUIHandler().post(new ocd(this, paramUpdateUserInfoEvent));
       return;
     }
   }

@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
+import java.util.UUID;
 
-class ajmw
+public class ajmw
   implements Runnable
 {
-  ajmw(ajmv paramajmv) {}
+  public ajmw(TroopFileUploadMgr paramTroopFileUploadMgr, UUID paramUUID, Bundle paramBundle) {}
   
   public void run()
   {
-    this.a.a.a(AIOAnimationControlManager.a(this.a.a));
+    TroopFileUploadMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadMgr, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

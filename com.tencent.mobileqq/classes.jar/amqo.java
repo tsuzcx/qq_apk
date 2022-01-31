@@ -1,33 +1,29 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.buscard.BuscardPluginRemoteCommand;
 
 public class amqo
-  implements Runnable
+  extends SosoInterface.OnLocationListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public amqo(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString1, String paramString2)
+  public amqo(BuscardPluginRemoteCommand paramBuscardPluginRemoteCommand, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void run()
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    try
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString(QQPimDefineList.l, this.jdField_a_of_type_JavaLangString);
-      localBundle.putString(QQPimDefineList.m, this.b);
-      QIPCServerHelper.getInstance().callClient(QQPimDefineList.b, QQPimDefineList.c, QQPimDefineList.d, localBundle, new amqp(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+      String str = paramSosoLbsInfo.a.d;
+      paramSosoLbsInfo = paramSosoLbsInfo.a.e;
+      this.jdField_a_of_type_AndroidOsBundle.putString("province", str);
+      this.jdField_a_of_type_AndroidOsBundle.putString("city", paramSosoLbsInfo);
+      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
+      }
     }
   }
 }

@@ -1,33 +1,15 @@
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
-import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem;
+import android.widget.ImageView;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
-public class aofg
+class aofg
   implements Runnable
 {
-  public aofg(VoteDashItem paramVoteDashItem, VoteLayer.VoteItem paramVoteItem, boolean paramBoolean, View paramView, Runnable paramRunnable) {}
+  aofg(aoff paramaoff) {}
   
   public void run()
   {
-    VoteLayer.VoteItem localVoteItem;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem.jdField_a_of_type_Boolean != this.jdField_a_of_type_Boolean)
-    {
-      localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem;
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem.jdField_a_of_type_Boolean) {
-        break label69;
-      }
-    }
-    label69:
-    for (boolean bool = true;; bool = false)
-    {
-      localVoteItem.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
-      VoteDashItem.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDashItem, false);
-      return;
-    }
+    LocalVideoSelectActivity.a(this.a.a, true);
+    LocalVideoSelectActivity.a(this.a.a).setVisibility(8);
   }
 }
 

@@ -24,7 +24,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.usq.u;
 import mqq.app.MobileQQ;
-import pme;
+import pqw;
 
 public class m
   implements INetTransportProvider.INetTransportEventListener
@@ -229,7 +229,7 @@ public class m
       return;
     }
     jdField_a_of_type_Boolean = true;
-    new pme(this).start();
+    new pqw(this).start();
     jdField_a_of_type_Boolean = false;
   }
   

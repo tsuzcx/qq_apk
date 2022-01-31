@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable;
+import com.qq.jce.wup.UniAttribute;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.service.qzone.QZoneFeedCountPackeger;
 
-public class aici
+public final class aici
   implements Runnable
 {
-  public aici(CameraProxy.CameraPreviewObservable paramCameraPreviewObservable, int paramInt, Object[] paramArrayOfObject) {}
+  public aici(UniAttribute paramUniAttribute, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    CameraProxy.CameraPreviewObservable.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy$CameraPreviewObservable, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    QZoneFeedCountPackeger.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aici
  * JD-Core Version:    0.7.0.1
  */

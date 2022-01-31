@@ -1,24 +1,21 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.paster.QIMPasterConfigManager;
+import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
 
-class acaj
-  extends DataSetObserver
+public class acaj
+  implements ConfigSimplifier.ConfigDownloadCallback
 {
-  acaj(acai paramacai, DragSortListView paramDragSortListView) {}
+  public acaj(ConfigServlet paramConfigServlet) {}
   
-  public void onChanged()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Acai.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    this.jdField_a_of_type_Acai.notifyDataSetInvalidated();
+    ((QIMPasterConfigManager)QIMManager.a(1)).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acaj
  * JD-Core Version:    0.7.0.1
  */

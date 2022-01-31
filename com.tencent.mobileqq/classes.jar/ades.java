@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
 
-class ades
+public class ades
   implements Runnable
 {
-  ades(ader paramader) {}
+  public ades(FileVideoManager.VideoControl paramVideoControl, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.a.a.c();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.a == null)
+    {
+      FileVideoManager.VideoControl.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.a();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
+    }
+    FileVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
   }
 }
 

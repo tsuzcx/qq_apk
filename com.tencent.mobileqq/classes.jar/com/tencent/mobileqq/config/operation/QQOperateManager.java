@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config.operation;
 
-import absq;
+import acac;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
@@ -474,7 +474,7 @@ public class QQOperateManager
   
   public void a()
   {
-    ThreadManager.post(new absq(this, this.jdField_a_of_type_Int), 8, null, true);
+    ThreadManager.post(new acac(this, this.jdField_a_of_type_Int), 8, null, true);
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)

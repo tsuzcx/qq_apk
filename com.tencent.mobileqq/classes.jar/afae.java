@@ -1,22 +1,20 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorAdapter.ChildItemHolder;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
+import com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper;
 
 public class afae
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public afae(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public afae(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370584).setAlpha(0.5F);
-    }
-    for (;;)
+    if ((paramView.getTag() instanceof NearbyVisitorAdapter.ChildItemHolder))
     {
-      return false;
-      this.a.a.findViewById(2131370584).setAlpha(1.0F);
+      paramView = (NearbyVisitorAdapter.ChildItemHolder)paramView.getTag();
+      NearbyMineHelper.a(this.a.a, this.a, paramView.a);
     }
   }
 }

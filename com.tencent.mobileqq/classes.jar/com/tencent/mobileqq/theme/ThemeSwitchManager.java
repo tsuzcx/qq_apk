@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.theme;
 
-import aiod;
-import aioe;
-import aiof;
-import aiog;
-import aioh;
-import aioi;
-import aioj;
+import aitg;
+import aith;
+import aiti;
+import aitj;
+import aitk;
+import aitl;
+import aitm;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -61,7 +61,7 @@ public class ThemeSwitchManager
   View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   public AppInterface a;
-  ThemeDownloader.ThemeDownloadListener jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeDownloadListener = new aiog(this);
+  ThemeDownloader.ThemeDownloadListener jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeDownloadListener = new aitj(this);
   public ThemeDownloader.ThemeUnzipListener a;
   ThemeDownloader jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader;
   public ThemeUtil.ThemeInfo a;
@@ -76,7 +76,7 @@ public class ThemeSwitchManager
   public JSONArray a;
   boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int;
-  ThemeDiyStyleLogic.StyleCallBack jdField_b_of_type_ComTencentMobileqqThemeDiyThemeDiyStyleLogic$StyleCallBack = new aiod(this);
+  ThemeDiyStyleLogic.StyleCallBack jdField_b_of_type_ComTencentMobileqqThemeDiyThemeDiyStyleLogic$StyleCallBack = new aitg(this);
   public String b;
   public WeakReference b;
   ArrayList jdField_b_of_type_JavaUtilArrayList;
@@ -89,9 +89,9 @@ public class ThemeSwitchManager
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_AndroidOsHandler = new aiof(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aiti(this, Looper.getMainLooper());
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener = new aioh(this);
+    this.jdField_a_of_type_ComTencentMobileqqThemeThemeDownloader$ThemeUnzipListener = new aitk(this);
     if ((paramAppRuntime instanceof AppInterface)) {
       this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)paramAppRuntime);
     }
@@ -384,7 +384,7 @@ public class ThemeSwitchManager
             ThemeUtil.setCurrentThemeIdVersion(paramAppInterface, paramString1, paramString2);
             if ((paramBundle != null) && (paramAppInterface != null) && ((paramAppInterface instanceof QQAppInterface)) && (((QQAppInterface)paramAppInterface).isAppOnForeground(localMobileQQ)) && (paramBundle.getInt("themeType") == 1))
             {
-              ThreadManager.getUIHandler().post(new aioi(this, localMobileQQ, paramString1));
+              ThreadManager.getUIHandler().post(new aitl(this, localMobileQQ, paramString1));
               if (bool3) {
                 VasQuickUpdateManager.a(paramAppInterface, 3L, ThemeUtil.getThemeConfigID(paramString1), ThemeUtil.getThemeDownloadFilePath(localMobileQQ, paramString1, "20000000") + "_no", true, null);
               }
@@ -431,7 +431,7 @@ public class ThemeSwitchManager
                   if (QLog.isColorLevel()) {
                     QLog.d("ThemeSwitchManager", 2, "setSkinTheme go to download theme, id:" + paramString1 + ",version:" + paramString2 + ", netType:" + i + ", isZipExist=" + bool2 + ", canDown=" + bool1);
                   }
-                  ThreadManager.post(new aioj(this, paramBundle), 8, null, true);
+                  ThreadManager.post(new aitm(this, paramBundle), 8, null, true);
                 }
                 for (i = 0;; i = 1)
                 {
@@ -891,7 +891,7 @@ public class ThemeSwitchManager
         localAlphaAnimation.setInterpolator(new LinearInterpolator());
         localAlphaAnimation.setFillAfter(true);
         this.jdField_a_of_type_AndroidWidgetImageView.setAnimation(localAlphaAnimation);
-        this.jdField_a_of_type_AndroidViewView.postDelayed(new aioe(this), 601L);
+        this.jdField_a_of_type_AndroidViewView.postDelayed(new aith(this), 601L);
       }
     }
     for (;;)
@@ -920,7 +920,7 @@ public class ThemeSwitchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeSwitchManager
  * JD-Core Version:    0.7.0.1
  */

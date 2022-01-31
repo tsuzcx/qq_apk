@@ -1,35 +1,17 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool;
-import java.util.LinkedList;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager.OnGuideBtnClickListener;
 
 public class ajpl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ajpl(TroopFileTransferManager.TaskPool paramTaskPool) {}
+  public ajpl(ComplexGuidViewPager paramComplexGuidViewPager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
-    {
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
-        {
-          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-          return;
-        }
-        TroopFileTransferManager.Task localTask = (TroopFileTransferManager.Task)this.a.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-        localTask.run();
-        if (localTask.a != 0) {
-          continue;
-        }
-        try
-        {
-          Thread.sleep(200L);
-        }
-        catch (InterruptedException localInterruptedException) {}
-      }
+    if (this.a.a != null) {
+      this.a.a.b();
     }
   }
 }

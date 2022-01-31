@@ -31,7 +31,7 @@ public class LocationDetailActivity$LocationActions
   {
     LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
     if (localLocationDetailActivity == null) {}
-    while (localLocationDetailActivity.getString(2131431628).compareTo(paramString) != 0) {
+    while (localLocationDetailActivity.getString(2131431639).compareTo(paramString) != 0) {
       return;
     }
   }
@@ -45,11 +45,11 @@ public class LocationDetailActivity$LocationActions
     if ((localLocationDetailActivity.r != null) && (localLocationDetailActivity.s != null))
     {
       Intent localIntent = LocationDetailActivity.a(localLocationDetailActivity);
-      localIntent.putExtra("forward_type", -2).putExtra("forward_latitude", localIntent.getStringExtra("latitude")).putExtra("forward_longitude", localIntent.getStringExtra("longitude")).putExtra("forward_location", localLocationDetailActivity.m).putExtra("forward_location_string", localLocationDetailActivity.m).putExtra("forward_thumb", AppConstants.bE + localLocationDetailActivity.r + "_" + localLocationDetailActivity.s + ".png").putExtra("isFromFavorites", true).putExtra("title", localLocationDetailActivity.l).putExtra("summary", localLocationDetailActivity.m);
+      localIntent.putExtra("forward_type", -2).putExtra("forward_latitude", localIntent.getStringExtra("latitude")).putExtra("forward_longitude", localIntent.getStringExtra("longitude")).putExtra("forward_location", localLocationDetailActivity.m).putExtra("forward_location_string", localLocationDetailActivity.m).putExtra("forward_thumb", AppConstants.bF + localLocationDetailActivity.r + "_" + localLocationDetailActivity.s + ".png").putExtra("isFromFavorites", true).putExtra("title", localLocationDetailActivity.l).putExtra("summary", localLocationDetailActivity.m);
       ForwardBaseOption.a(localLocationDetailActivity, localIntent, 103);
       return;
     }
-    QQToast.a(localLocationDetailActivity, 2131431585, 1, 2000).b(5);
+    QQToast.a(localLocationDetailActivity, 2131431596, 1, 2000).b(5);
   }
 }
 

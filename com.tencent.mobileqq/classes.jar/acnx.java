@@ -1,22 +1,27 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.emoticonview.BaseEmotionAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import java.util.List;
 
-public class acnx
-  implements View.OnClickListener
+class acnx
+  implements Runnable
 {
-  public acnx(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
+  acnx(acnw paramacnw, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent();
-    paramView.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, paramView);
-    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
+    int i = 1;
+    QLog.d("EmotionPanelViewPagerAdapter", 1, "instantiateItem get data callback, panelType = " + this.jdField_a_of_type_Acnw.jdField_a_of_type_Int + ", panelInfo = " + this.jdField_a_of_type_Acnw.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelInfo);
+    this.jdField_a_of_type_Acnw.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(new acny(this));
+    if (this.jdField_a_of_type_Acnw.jdField_a_of_type_Int == 5) {}
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > i)) {
+        this.jdField_a_of_type_Acnw.jdField_a_of_type_ComTencentMobileqqEmoticonviewBaseEmotionAdapter.a(this.jdField_a_of_type_JavaUtilList);
+      }
+      return;
+      i = 0;
+    }
   }
 }
 

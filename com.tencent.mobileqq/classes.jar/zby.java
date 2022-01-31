@@ -1,30 +1,29 @@
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigHelper;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import protocol.KQQConfig.GetResourceRespInfo;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqavopensdk.AVEngineEventHandler;
+import com.tencent.qqavopensdk.PBuffer.SSOTunnelEvent.CsCmdCallback;
+import mqq.os.MqqHandler;
 
 public class zby
-  implements Runnable
+  implements SSOTunnelEvent.CsCmdCallback
 {
-  public zby(ConfigHandler paramConfigHandler, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public zby(AVEngineWalper paramAVEngineWalper, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    if (!ConfigHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.strPkgName, 10000L)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("eggs", 2, "handleUpdateEggsActions dpc aio_eggs is false");
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.a.b(1, "ctrl Params download failed!!!!");
     }
-    while (AioAnimationConfigHelper.a().a() != null) {
-      return;
-    }
-    AioAnimationConfigHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b.getApplication());
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    ThreadManager.getUIHandler().post(new zbz(this, paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zby
  * JD-Core Version:    0.7.0.1
  */

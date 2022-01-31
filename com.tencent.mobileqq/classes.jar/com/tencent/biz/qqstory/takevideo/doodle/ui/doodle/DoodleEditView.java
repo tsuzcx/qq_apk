@@ -13,18 +13,18 @@ import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
 import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 import java.util.List;
-import ojg;
-import ojh;
-import ojw;
+import onv;
+import onw;
+import ool;
 
 public class DoodleEditView
   extends DoodleView
-  implements ojw
+  implements ool
 {
   private float jdField_a_of_type_Float;
   public TextFaceEditLayer a;
   private DoodleEditView.DoodleEditViewListener jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView$DoodleEditViewListener;
-  Runnable jdField_a_of_type_JavaLangRunnable = new ojh(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new onw(this);
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
   
@@ -158,8 +158,8 @@ public class DoodleEditView
   
   public void setOnLayerTouchListener()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Ojx);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.a(new ojg(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Oom);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.a(new onv(this));
   }
 }
 

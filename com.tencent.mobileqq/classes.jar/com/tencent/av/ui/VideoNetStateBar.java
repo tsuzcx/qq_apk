@@ -21,8 +21,8 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import kck;
-import kcl;
+import keo;
+import kep;
 
 public class VideoNetStateBar
 {
@@ -32,7 +32,7 @@ public class VideoNetStateBar
   ImageView jdField_a_of_type_AndroidWidgetImageView = null;
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   public VideoController a;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new kck(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new keo(this);
   public VideoAppInterface a;
   public Runnable a;
   String jdField_a_of_type_JavaLangString = null;
@@ -214,11 +214,11 @@ public class VideoNetStateBar
   {
     if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365366));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365378));
-      this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365371);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365372));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365373));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365371));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365383));
+      this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365376);
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365377));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365378));
     }
   }
   
@@ -333,7 +333,7 @@ public class VideoNetStateBar
             break label177;
           }
         }
-        for (localView = null;; localView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365938))
+        for (localView = null;; localView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365943))
         {
           if (localView == null) {
             break label195;
@@ -412,7 +412,7 @@ public class VideoNetStateBar
       {
         this.f = paramBoolean;
         return;
-        localView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365938);
+        localView = ((ViewGroup)this.jdField_b_of_type_JavaLangRefWeakReference.get()).findViewById(2131365943);
         break;
       }
     }
@@ -470,7 +470,7 @@ public class VideoNetStateBar
     {
       return;
       if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        this.jdField_a_of_type_JavaLangRunnable = new kcl(this);
+        this.jdField_a_of_type_JavaLangRunnable = new kep(this);
       }
     } while ((this.jdField_a_of_type_JavaLangRunnable == null) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null));
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
@@ -519,9 +519,9 @@ public class VideoNetStateBar
             break label452;
           }
           str = this.jdField_a_of_type_AndroidContentResResources.getString(2131429436);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840291);
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840291);
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840292);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840306);
+          this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840306);
+          this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840307);
           this.jdField_b_of_type_JavaLangString = null;
           if ((!this.jdField_d_of_type_Boolean) && (i != 1)) {
             break label612;
@@ -591,24 +591,24 @@ public class VideoNetStateBar
             switch (i)
             {
             default: 
-              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840287);
-              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840287);
-              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840288);
+              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840302);
+              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840302);
+              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840303);
               break;
             case 1: 
-              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840285);
-              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840285);
-              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840286);
+              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840300);
+              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840300);
+              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840301);
               break;
             case 2: 
-              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840289);
-              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840289);
-              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840290);
+              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840304);
+              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840304);
+              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840305);
               break;
             case 3: 
-              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840287);
-              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840287);
-              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840288);
+              this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840302);
+              this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840302);
+              this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840303);
               break;
               if ((this.jdField_c_of_type_JavaLangRefWeakReference != null) && (this.jdField_c_of_type_JavaLangRefWeakReference.get() != null))
               {
@@ -652,7 +652,7 @@ public class VideoNetStateBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.VideoNetStateBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.portal;
 
-import agmx;
+import agrm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -238,7 +238,7 @@ public class RedPacketServlet
             paramIntent.putExtra("k_retry", n + 1);
             if (m == 7)
             {
-              ThreadManager.getSubThreadHandler().postDelayed(new agmx(this, paramIntent), 60000L);
+              ThreadManager.getSubThreadHandler().postDelayed(new agrm(this, paramIntent), 60000L);
               label182:
               return;
             }

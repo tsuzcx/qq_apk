@@ -1,52 +1,54 @@
-import QQWalletPay.RespCheckChangePwdAuth;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QWalletAuthObserver;
-import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
 import com.tencent.qphone.base.util.QLog;
 
 public class akcx
-  extends Handler
+  implements FrameSprite.OnFrameEndListener
 {
-  private akcx(JumpAction paramJumpAction) {}
+  public int a;
+  public long a;
+  public long b;
+  public long c;
   
-  public void handleMessage(Message paramMessage)
+  public akcx(TroopGiftAnimationController paramTroopGiftAnimationController)
   {
-    if (paramMessage.what != 1) {
-      return;
-    }
-    if (JumpAction.a(this.a) != null)
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    this.c = NetConnInfoCenter.getServerTimeMillis();
+    switch (this.jdField_a_of_type_Int)
     {
-      JumpAction.a(this.a).a();
-      JumpAction.a(this.a).removeObserver(JumpAction.a(this.a));
     }
-    if (paramMessage.arg1 != 1)
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "msf return error ");
+        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
       }
-      JumpAction.a(this.a, 1);
       return;
-    }
-    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
-    {
-      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
-      if (paramMessage.retCode == 0)
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
+      continue;
+      long l = this.c - this.b;
+      if (l >= 2000L)
       {
-        JumpAction.b(this.a);
-        return;
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(0L);
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(2000L - l);
+        continue;
+        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(3000L);
       }
     }
-    JumpAction.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcx
  * JD-Core Version:    0.7.0.1
  */

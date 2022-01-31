@@ -1,15 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.app.SecSvcObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class rsr
-  implements Runnable
+  extends SecSvcObserver
 {
-  public rsr(BaseChatPie paramBaseChatPie, Intent paramIntent) {}
+  public rsr(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentIntent);
+    AuthDevRenameActivity.a(this.a);
+    if (!paramBoolean)
+    {
+      QQToast.a(this.a, this.a.getString(2131436639), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    this.a.finish();
   }
 }
 

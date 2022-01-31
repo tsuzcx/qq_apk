@@ -1,15 +1,23 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class thz
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends BroadcastReceiver
 {
-  public TextView a;
-  public thx a;
+  public thz(NotificationActivity paramNotificationActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent.getAction().equals("com.tencent.mobileqq.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
+      this.a.finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     thz
  * JD-Core Version:    0.7.0.1
  */

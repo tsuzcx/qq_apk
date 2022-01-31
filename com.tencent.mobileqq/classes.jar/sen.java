@@ -1,86 +1,30 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.troop.activity.troopactivity.ActSSORsp;
-import tencent.im.troop.activity.troopactivity.GroupInfoCardResp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
 public class sen
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public sen(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sen(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, PicEmoticonInfo paramPicEmoticonInfo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (this.a.f)
+    if ((paramView != null) && ((paramView instanceof ImageView)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver->onReceive, isDestroyed, return");
+      View localView = (View)paramView.getParent();
+      paramView = paramView.getTag();
+      String str = EmoticonUtils.o.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.eId);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a);
       }
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.a(1, localView, paramView, str);
     }
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver: !isSuccess || mTroopInfoData == null");
-      }
-      ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troopInfoCard", "getTroopActivity", 0, -1, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, Boolean.toString(paramBoolean), "", "");
-      return;
-    }
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver: data == null");
-        }
-        ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troopInfoCard", "getTroopActivity", 0, -2, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver: InvalidProtocolBufferMicroException:" + paramBundle.getMessage());
-      }
-      ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troopInfoCard", "getTroopActivity", 0, -5, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
-      return;
-    }
-    Object localObject = new troopactivity.ActSSORsp();
-    ((troopactivity.ActSSORsp)localObject).mergeFrom(paramBundle);
-    if (((troopactivity.ActSSORsp)localObject).err_code.get() != 10000)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver: errorcode:" + ((troopactivity.ActSSORsp)localObject).err_code.get() + ", msg:" + ((troopactivity.ActSSORsp)localObject).err_msg.get());
-      }
-      ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troopInfoCard", "getTroopActivity", 0, -3, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "" + ((troopactivity.ActSSORsp)localObject).err_code.get(), "", "");
-      return;
-    }
-    localObject = ((troopactivity.ActSSORsp)localObject).body.get().toByteArray();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.chatopttroop", 2, "mGetTroopActivityObserver: respdata == null");
-      }
-      ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troopInfoCard", "getTroopActivity", 0, -4, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
-      return;
-    }
-    paramBundle = new troopactivity.GroupInfoCardResp();
-    paramBundle.mergeFrom((byte[])localObject);
-    localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    ((Message)localObject).what = 15;
-    ((Message)localObject).obj = paramBundle;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
   }
 }
 

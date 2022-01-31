@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.util.LruCache;
+import com.tencent.mobileqq.apollo.game.ApolloGameResManager;
+import com.tencent.mobileqq.apollo.game.ApolloGameResManager.ApolloGameRes;
 
 public class yvq
-  implements Comparator
+  extends LruCache
 {
-  public yvq(ApolloDaoManager paramApolloDaoManager) {}
-  
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public yvq(ApolloGameResManager paramApolloGameResManager, int paramInt)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+    super(paramInt);
+  }
+  
+  protected int a(String paramString, ApolloGameResManager.ApolloGameRes paramApolloGameRes)
+  {
+    if ((paramApolloGameRes == null) || (paramApolloGameRes.a == null)) {
       return 0;
     }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
+    return paramApolloGameRes.a.length;
   }
 }
 

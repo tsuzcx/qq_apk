@@ -1,14 +1,22 @@
-import com.tencent.biz.qqstory.newshare.model.Job;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor;
+import com.tencent.biz.qqstory.model.WeatherDataProvider;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nhm
-  implements Runnable
+  implements LbsManager.LbsUpdateListener
 {
-  public nhm(JobExecutor paramJobExecutor, Job paramJob) {}
+  public nhm(WeatherDataProvider paramWeatherDataProvider) {}
   
-  public void run()
+  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    JobExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a);
+    SLog.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramBasicLocation != null))
+    {
+      this.a.a(paramBasicLocation.b, paramBasicLocation.a);
+      return;
+    }
+    this.a.a(false, null);
   }
 }
 

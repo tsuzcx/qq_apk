@@ -1,45 +1,21 @@
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr.WriteCommentCallback;
 import org.json.JSONObject;
 
-public class pbg
-  implements TroopMemberApiClient.Callback
+class pbg
+  implements TroopTopicMgr.WriteCommentCallback
 {
-  public pbg(HotchatPlugin paramHotchatPlugin, String paramString) {}
+  pbg(paz parampaz, int paramInt1, int paramInt2) {}
   
-  public void a(Bundle paramBundle)
+  public void a(int paramInt, JSONObject paramJSONObject)
   {
-    Object localObject = null;
-    String str;
-    if (paramBundle != null)
-    {
-      str = paramBundle.getString("content");
-      paramBundle = paramBundle.getString("url");
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("content", str);
-      localJSONObject.put("url", paramBundle);
-      paramBundle = localJSONObject.toString();
-      this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        paramBundle = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("HotchatPlugin", 2, localJSONException.getMessage());
-          paramBundle = localObject;
-        }
-      }
-    }
+    if (paramInt == 0) {}
+    paramJSONObject = new Bundle();
+    paramJSONObject.putInt("reqType", this.jdField_a_of_type_Int);
+    paramJSONObject.putInt("seq", this.b);
+    paramJSONObject.putInt("errorCode", paramInt);
+    this.jdField_a_of_type_Paz.a.a(60, paramJSONObject);
   }
 }
 

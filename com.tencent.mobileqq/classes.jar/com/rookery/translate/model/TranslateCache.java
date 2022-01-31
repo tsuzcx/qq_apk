@@ -2,7 +2,7 @@ package com.rookery.translate.model;
 
 import android.content.Context;
 import com.tencent.mobileqq.app.ThreadManager;
-import jco;
+import jeq;
 
 public class TranslateCache
 {
@@ -106,7 +106,7 @@ public class TranslateCache
   public static TransDiskCache b(Context paramContext)
   {
     if (jdField_a_of_type_ComRookeryTranslateModelTransDiskCache == null) {
-      ThreadManager.post(new jco(paramContext), 5, null, true);
+      ThreadManager.post(new jeq(paramContext), 5, null, true);
     }
     return jdField_a_of_type_ComRookeryTranslateModelTransDiskCache;
   }

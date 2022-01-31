@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.util.InputMethodUtil;
 
 public class ajcx
   implements Runnable
 {
-  public ajcx(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar) {}
+  public ajcx(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
   public void run()
   {
-    TroopAioMsgNavigateBar.a(this.a);
+    this.a.d.requestFocus();
+    InputMethodUtil.a(this.a.d);
   }
 }
 

@@ -1,25 +1,34 @@
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.av.VideoController.GAudioFriends;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
 
-public class kah
+class kah
   implements Runnable
 {
-  public kah(VideoControlUI paramVideoControlUI) {}
+  kah(kag paramkag, kaj paramkaj, VideoController.GAudioFriends paramGAudioFriends) {}
   
   public void run()
   {
-    if (this.a.i)
+    if ((this.jdField_a_of_type_Kaj.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_Long) && (this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_AndroidGraphicsBitmap == null))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.a.c, 1, "HideToolbarRunnable");
+      this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Kag.a(String.valueOf(this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_Long));
+      if (this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+        break label104;
       }
-      this.a.i(0);
+      if (this.jdField_a_of_type_Kag.a.a != null) {
+        this.jdField_a_of_type_Kag.a.a.a().postDelayed(new kai(this), 1000L);
+      }
     }
+    return;
+    label104:
+    this.jdField_a_of_type_Kaj.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kah
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,8 @@ import android.text.Layout.Alignment;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
-import anxa;
-import anxb;
+import aofs;
+import aoft;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.mobileqq.troop.data.TroopBarPOI;
@@ -67,8 +67,8 @@ public final class FaceLayer$FaceAndTextItem
     localValueAnimator.setDuration(1000L);
     localValueAnimator.setRepeatCount(2);
     localValueAnimator.setRepeatMode(2);
-    localValueAnimator.addUpdateListener(new anxa(this));
-    localValueAnimator.addListener(new anxb(this));
+    localValueAnimator.addUpdateListener(new aofs(this));
+    localValueAnimator.addListener(new aoft(this));
     localValueAnimator.start();
   }
   
@@ -125,14 +125,14 @@ public final class FaceLayer$FaceAndTextItem
       if (this.jdField_k_of_type_Int != 0) {
         break label483;
       }
-      i = 2130842009;
+      i = 2130842040;
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.a()) {
         break label515;
       }
       if (this.jdField_k_of_type_Int != 0) {
         break label491;
       }
-      i = 2130842017;
+      i = 2130842048;
     }
     label515:
     for (;;)
@@ -141,7 +141,7 @@ public final class FaceLayer$FaceAndTextItem
       int j;
       if (this.jdField_k_of_type_Int == 1)
       {
-        j = 2130842007;
+        j = 2130842038;
         label419:
         if (this.jdField_k_of_type_Int != 2) {
           break label507;
@@ -150,19 +150,19 @@ public final class FaceLayer$FaceAndTextItem
       label483:
       label491:
       label507:
-      for (int k = 2130842014;; k = 2130842013)
+      for (int k = 2130842045;; k = 2130842044)
       {
         DisplayUtil.a(paramCanvas, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerFaceLayer.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, i, j, k);
         paramCanvas.restore();
         if (this.jdField_c_of_type_Boolean) {
-          DisplayUtil.b(paramCanvas, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerFaceLayer.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, 2130842020, 2130842020, 2130842019);
+          DisplayUtil.b(paramCanvas, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerFaceLayer.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, 2130842051, 2130842051, 2130842050);
         }
         return;
-        i = 2130842008;
+        i = 2130842039;
         break;
-        i = 2130842015;
+        i = 2130842046;
         break label406;
-        j = 2130842006;
+        j = 2130842037;
         break label419;
       }
     }

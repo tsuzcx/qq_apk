@@ -14,8 +14,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import mnt;
-import mnu;
+import mrl;
+import mrm;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.Article;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleCommonInfo;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleExtInfo;
@@ -25,7 +25,7 @@ import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.RspBody;
 public class FastWebArticleInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new mnt();
+  public static final Parcelable.Creator CREATOR = new mrl();
   public int a;
   public long a;
   public String a;
@@ -75,7 +75,7 @@ public class FastWebArticleInfo
   
   public void a(ArticleInfo paramArticleInfo)
   {
-    ThreadManager.executeOnNetWorkThread(new mnu(this, paramArticleInfo));
+    ThreadManager.executeOnNetWorkThread(new mrm(this, paramArticleInfo));
   }
   
   public void a(boolean paramBoolean)

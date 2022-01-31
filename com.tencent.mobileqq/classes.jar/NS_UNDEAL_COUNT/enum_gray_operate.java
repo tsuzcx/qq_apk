@@ -7,6 +7,7 @@ public final class enum_gray_operate
 {
   public static final int _ENUM_FEED_UI_OPER = 1;
   public static final int _ENUM_PIC_SHOW_UI_OPER = 2;
+  public static final int _ENUM_VIDEO_PRELOAD_OPER = 4;
 }
 
 

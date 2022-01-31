@@ -1,16 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import android.widget.TextView;
 
 public class toj
-  implements View.OnClickListener
 {
-  public toj(RecommendFriendActivity paramRecommendFriendActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-  }
+  public TextView a;
 }
 
 

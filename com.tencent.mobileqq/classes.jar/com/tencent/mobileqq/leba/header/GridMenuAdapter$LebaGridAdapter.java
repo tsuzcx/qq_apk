@@ -21,10 +21,15 @@ public class GridMenuAdapter$LebaGridAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > (this.jdField_a_of_type_Int + 1) * this.b) {
-      return this.b;
+    int j = this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_Int * this.b;
+    int i = j;
+    if (j < 0) {
+      i = 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_Int * this.b;
+    if (this.jdField_a_of_type_JavaUtilList.size() > (this.jdField_a_of_type_Int + 1) * this.b) {
+      i = this.b;
+    }
+    return i;
   }
   
   public Object getItem(int paramInt)

@@ -1,32 +1,26 @@
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import mqq.app.MobileQQ;
 
 public class tpu
-  extends MqqHandler
+  implements Runnable
 {
-  public tpu(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public tpu(QQSettingMe paramQQSettingMe) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if (this.a.a != null)
     {
-    }
-    do
-    {
-      return;
-      this.a.finish();
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterPhoneNumActivity.a(this.a, paramMessage);
-        return;
+      String str = this.a.a.getCurrentAccountUin();
+      if (!TextUtils.isEmpty(str)) {
+        WebProcessManager.a(str, "key_individuation_click_time");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
+      this.a.a.getApplication().getSharedPreferences("emoticon_panel_" + this.a.a.getCurrentAccountUin(), 0).edit().putLong("sp_key_market_open_time", System.currentTimeMillis()).commit();
+    }
   }
 }
 

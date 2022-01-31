@@ -1,21 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class aome
-  implements Animation.AnimationListener
+public final class aome
+  implements Parcelable.Creator
 {
-  public aome(BeautyBar paramBeautyBar) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public PublishParam a(Parcel paramParcel)
   {
-    FlowCameraMqqAction.a("", "0X8007C05", BeautyBar.a(this.a) + "", "", "", "");
+    return new PublishParam(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public PublishParam[] a(int paramInt)
+  {
+    return new PublishParam[paramInt];
+  }
 }
 
 

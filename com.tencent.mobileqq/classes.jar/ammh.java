@@ -1,20 +1,36 @@
-import cooperation.plugin.PluginInstaller;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ChildDrawingOrderCallback;
+import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
 
 public class ammh
-  implements FilenameFilter
+  implements RecyclerView.ChildDrawingOrderCallback
 {
-  public ammh(PluginInstaller paramPluginInstaller, String paramString) {}
+  public ammh(ItemTouchHelper paramItemTouchHelper) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public int onGetChildDrawingOrder(int paramInt1, int paramInt2)
   {
-    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_AndroidViewView == null) {}
+    int i;
+    do
+    {
+      return paramInt2;
+      int j = this.a.d;
+      i = j;
+      if (j == -1)
+      {
+        i = this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.indexOfChild(this.a.jdField_a_of_type_AndroidViewView);
+        this.a.d = i;
+      }
+      if (paramInt2 == paramInt1 - 1) {
+        return i;
+      }
+    } while (paramInt2 < i);
+    return paramInt2 + 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ammh
  * JD-Core Version:    0.7.0.1
  */

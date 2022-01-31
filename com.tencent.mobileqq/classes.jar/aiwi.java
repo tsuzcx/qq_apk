@@ -1,32 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.ShortVideoUploadABTest;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aiwi
-  implements View.OnClickListener
+public final class aiwi
+  implements Runnable
 {
-  public aiwi(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public aiwi(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, StringBuilder paramStringBuilder) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131362740: 
-      paramView = (ActionSheet)ActionSheetHelper.a(this.a, null);
-      paramView.a(2131435885, 3);
-      paramView.c(2131433015);
-      paramView.a(new aiwj(this, paramView));
-      paramView.show();
-      return;
-    case 2131364798: 
-      TroopAvatarWallPreviewActivity.c(this.a);
-      return;
-    }
-    TroopAvatarWallPreviewActivity.h(this.a);
+    ShortVideoUploadABTest.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangStringBuilder.toString());
   }
 }
 

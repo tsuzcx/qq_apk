@@ -1,14 +1,22 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.emoticonview.IPSiteListGoodsAdapter;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class acog
-  implements Runnable
+public class acog
+  implements View.OnClickListener
 {
-  acog(acod paramacod) {}
+  public acog(IPSiteListGoodsAdapter paramIPSiteListGoodsAdapter, IPSiteModel.Goods paramGoods) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(4);
+    paramView = new Intent(IPSiteListGoodsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPSiteListGoodsAdapter), QQBrowserActivity.class);
+    paramView.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(IPSiteListGoodsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPSiteListGoodsAdapter), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.url, -1L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(IPSiteListGoodsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPSiteListGoodsAdapter), "IP", "aio_productclk", "", 0, 0, 0, IPSiteListGoodsAdapter.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPSiteListGoodsAdapter), IPSiteListGoodsAdapter.c(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPSiteListGoodsAdapter), "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

@@ -1,17 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import com.tencent.mobileqq.ark.ArkActionAppMgr.IUpdateActionAppCallback;
 
 public class aaxw
-  implements ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler
+  implements ArkActionAppMgr.IUpdateActionAppCallback
 {
-  public aaxw(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  public aaxw(ArkActionAppMgr paramArkActionAppMgr) {}
   
-  public void a(String paramString, Object paramObject, ArrayList paramArrayList)
+  public void a(boolean paramBoolean, Object paramObject, String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    ArkRecommendLogic.a().post(new aaxx(this, paramArrayList));
+    paramObject = (aaya)paramObject;
+    ArkActionAppMgr.a(this.a, paramObject);
   }
 }
 

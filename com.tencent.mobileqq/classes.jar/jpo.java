@@ -1,32 +1,49 @@
-import android.content.IntentFilter;
-import com.tencent.av.ui.AVActivity;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.av.service.IQQServiceCallback;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
 import com.tencent.qphone.base.util.QLog;
 
-public class jpo
-  implements Runnable
+class jpo
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public jpo(AVActivity paramAVActivity) {}
+  jpo(jpn paramjpn, String paramString, int paramInt) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
   {
-    try
-    {
-      this.a.a = new jpy(this.a);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.a.registerReceiver(this.a.a, localIntentFilter);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
     }
-    catch (Exception localException)
+    synchronized (this.jdField_a_of_type_Jpn.a.a)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(this.a.b, 2, "Exception", localException);
+      int j = this.jdField_a_of_type_Jpn.a.a.beginBroadcast();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            ((IQQServiceCallback)this.jdField_a_of_type_Jpn.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
+            i += 1;
+          }
+          catch (RemoteException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_Jpn.a.a.finishBroadcast();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpo
  * JD-Core Version:    0.7.0.1
  */

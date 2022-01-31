@@ -39,7 +39,7 @@ import com.tencent.mobileqq.widget.BubbleImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import vku;
+import vpx;
 
 public class TroopStoryItemBuilder
   extends QQStoryItemBuilder
@@ -57,10 +57,10 @@ public class TroopStoryItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131375567: 
+    case 2131375633: 
       ChatActivityFacade.a(this.jdField_b_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
-    case 2131363517: 
+    case 2131363536: 
       if (QLog.isColorLevel()) {
         QLog.w("Q.qqstory.troopstory.share", 2, "start forward from aio");
       }
@@ -84,9 +84,9 @@ public class TroopStoryItemBuilder
       return;
     }
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_b_of_type_AndroidContentContext, null);
-    localActionSheet.a(2131433635, 5);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new vku(this, paramView, localActionSheet));
+    localActionSheet.a(2131433649, 5);
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new vpx(this, paramView, localActionSheet));
     localActionSheet.show();
   }
   
@@ -194,7 +194,7 @@ public class TroopStoryItemBuilder
     if (!TextUtils.isEmpty(paramView.storyId))
     {
       if (bool) {
-        localQQCustomMenu.a(2131363517, this.jdField_b_of_type_AndroidContentContext.getString(2131435083), 2130838313);
+        localQQCustomMenu.a(2131363536, this.jdField_b_of_type_AndroidContentContext.getString(2131435099), 2130838318);
       }
       if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView)) {
         a(localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramView);

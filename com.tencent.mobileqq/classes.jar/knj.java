@@ -1,23 +1,35 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.biz.common.offline.BidDownloader;
 
-public class knj
-  implements View.OnTouchListener
+class knj
+  extends Thread
 {
-  int jdField_a_of_type_Int = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new knk(this);
+  knj(kni paramkni) {}
   
-  public knj(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
+    if (this.a.a.b == 1) {}
+    for (;;)
+    {
+      try
+      {
+        Thread.sleep(5000L);
+        this.a.a.b();
+        return;
+      }
+      catch (InterruptedException localInterruptedException1)
+      {
+        localInterruptedException1.printStackTrace();
+        continue;
+      }
+      try
+      {
+        Thread.sleep(10000L);
+      }
+      catch (InterruptedException localInterruptedException2)
+      {
+        localInterruptedException2.printStackTrace();
+      }
     }
-    return false;
   }
 }
 

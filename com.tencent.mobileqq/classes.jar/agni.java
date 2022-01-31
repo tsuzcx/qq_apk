@@ -1,21 +1,36 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PLUploadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
-import com.tencent.mobileqq.transfile.TransferRequest;
+import android.widget.ImageView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView.PopUpListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class agni
+  implements ScanIconAnimateView.PopUpListener
 {
-  public int a;
-  public long a;
-  public PersonalityLabelPhoto a;
-  public TransferRequest a;
-  public int b = 0;
-  public int c = 0;
+  public agni(ScanTorchActivity paramScanTorchActivity) {}
   
-  public agni(PLUploadManager paramPLUploadManager) {}
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanTorchActivity", 2, "PopUp onStart ");
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanTorchActivity", 2, "PopUp onEnd  needReportRedDot = " + this.a.n);
+    }
+    if (this.a.n)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a();
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agni
  * JD-Core Version:    0.7.0.1
  */

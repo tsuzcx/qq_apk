@@ -1,35 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.helper.TroopInfoActivityHelper.ISetSameCityCheckTypeInfo;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class uck
-  extends Handler
+  implements TroopInfoActivityHelper.ISetSameCityCheckTypeInfo
 {
-  public uck(TroopRequestActivity paramTroopRequestActivity) {}
+  public uck(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.i();
-      QQToast.a(this.a, this.a.getString(2131434462), 0).b(this.a.getTitleBarHeight());
-      this.a.finish();
-      return;
-    case 1: 
-      this.a.a(true);
-      this.a.i();
-      QQToast.a(this.a, this.a.getString(2131434464), 0).b(this.a.getTitleBarHeight());
-      return;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 4;
     }
-    paramMessage = (String)paramMessage.obj;
-    this.a.p.setText(paramMessage + "");
-    this.a.p.setContentDescription(paramMessage + "");
-    this.a.p.setVisibility(0);
+    ReportController.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.j();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
   }
 }
 

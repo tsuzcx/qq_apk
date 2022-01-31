@@ -1,49 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.trooponline.TroopOnlineMemberBar;
-import com.tencent.mobileqq.trooponline.TroopOnlineMemberNewGuideDialog;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.util.BitmapUtil;
+import com.tencent.mobileqq.troop.utils.TroopFileError.SimpleErrorInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
-public class ajwr
-  implements Animator.AnimatorListener
+class ajwr
+  implements Runnable
 {
-  public ajwr(TroopOnlineMemberBar paramTroopOnlineMemberBar) {}
+  ajwr(ajwq paramajwq, TroopFileTransferManager.Item paramItem) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    Bitmap localBitmap;
-    if ((!SharedPreUtils.t(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (TroopOnlineMemberBar.a(this.a) == 0))
-    {
-      SharedPreUtils.F(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      localBitmap = BitmapUtil.a((View)this.a.b.findViewById(2131363998).getParent());
-      paramAnimator = null;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildCount() <= 1) {
-        break label123;
-      }
-      paramAnimator = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(1);
-    }
-    for (;;)
-    {
-      new TroopOnlineMemberNewGuideDialog(this.a.jdField_a_of_type_AndroidContentContext, localBitmap, paramAnimator).show();
-      return;
-      label123:
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildCount() > 0) {
-        paramAnimator = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getChildAt(0);
-      }
-    }
+    TroopFileError.SimpleErrorInfo localSimpleErrorInfo = new TroopFileError.SimpleErrorInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Ajwq.a.e, 3, 210);
+    this.jdField_a_of_type_Ajwq.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localSimpleErrorInfo);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -49,7 +49,7 @@ public class PItemElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.plato.sdk.element.PItemElement
  * JD-Core Version:    0.7.0.1
  */

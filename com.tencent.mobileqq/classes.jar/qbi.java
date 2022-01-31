@@ -1,18 +1,31 @@
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.datadef.ProductInfo;
 
-public class qbi
-  implements Runnable
+public final class qbi
+  implements Parcelable.Creator
 {
-  public qbi(DeviceMsgHandle paramDeviceMsgHandle, MessageRecord paramMessageRecord) {}
-  
-  public void run()
+  public ProductInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceMsgHandle.b.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceMsgHandle.b.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    ProductInfo localProductInfo = new ProductInfo();
+    localProductInfo.productId = paramParcel.readInt();
+    localProductInfo.deviceType = paramParcel.readInt();
+    localProductInfo.bindType = paramParcel.readInt();
+    localProductInfo.supportMainMsgType = paramParcel.readInt();
+    localProductInfo.supportFuncMsgType = paramParcel.readInt();
+    localProductInfo.deviceName = paramParcel.readString();
+    localProductInfo.uConnectType = paramParcel.readInt();
+    localProductInfo.deviceOSType = paramParcel.readInt();
+    localProductInfo.regType = paramParcel.readInt();
+    localProductInfo.linkStateDesc = paramParcel.readString();
+    localProductInfo.linkStepDesc = paramParcel.readString();
+    localProductInfo.linkDescImg = paramParcel.readString();
+    return localProductInfo;
+  }
+  
+  public ProductInfo[] a(int paramInt)
+  {
+    return new ProductInfo[paramInt];
   }
 }
 

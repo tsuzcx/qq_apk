@@ -1,13 +1,20 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
 
 public class lgj
-  extends CharacterStyle
+  implements Runnable
 {
-  public lgj(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public lgj(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, GuideData paramGuideData) {}
   
-  public void updateDrawState(TextPaint paramTextPaint) {}
+  public void run()
+  {
+    if ("operation_guide".equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.business))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a(270, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.business, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a(260, "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
+  }
 }
 
 

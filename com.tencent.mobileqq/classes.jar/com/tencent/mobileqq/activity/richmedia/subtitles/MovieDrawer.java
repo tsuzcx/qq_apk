@@ -10,8 +10,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import xvx;
-import xvy;
+import ycg;
+import ych;
 
 public class MovieDrawer
   extends BaseAnimDrawer
@@ -30,9 +30,9 @@ public class MovieDrawer
   private int j = 3;
   private int k = 3000;
   
-  private void a(xvx paramxvx)
+  private void a(ycg paramycg)
   {
-    if (paramxvx == null) {}
+    if (paramycg == null) {}
     label60:
     for (;;)
     {
@@ -43,13 +43,13 @@ public class MovieDrawer
         if (!localIterator.hasNext()) {
           break label60;
         }
-        xvx localxvx = (xvx)localIterator.next();
-        if (localxvx == paramxvx) {
+        ycg localycg = (ycg)localIterator.next();
+        if (localycg == paramycg) {
           break;
         }
         localIterator.remove();
-        localxvx.jdField_a_of_type_Xvy.g();
-        localxvx.jdField_b_of_type_Xvy.g();
+        localycg.jdField_a_of_type_Ych.g();
+        localycg.jdField_b_of_type_Ych.g();
       }
     }
   }
@@ -64,11 +64,11 @@ public class MovieDrawer
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      xvx localxvx = (xvx)localIterator.next();
-      if (localxvx != null)
+      ycg localycg = (ycg)localIterator.next();
+      if (localycg != null)
       {
-        localxvx.jdField_a_of_type_Xvy.g();
-        localxvx.jdField_b_of_type_Xvy.g();
+        localycg.jdField_a_of_type_Ych.g();
+        localycg.jdField_b_of_type_Ych.g();
       }
     }
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -103,46 +103,46 @@ public class MovieDrawer
         QLog.d("BaseAnimDrawer", 2, "setText ：" + paramWordingItem.jdField_a_of_type_JavaLangString + " ID:" + paramWordingItem.jdField_a_of_type_Long + " baseIndex:" + a(paramWordingItem.jdField_b_of_type_Long) + " time:" + paramWordingItem.jdField_b_of_type_Long + "-" + paramWordingItem.c);
       }
       l = paramWordingItem.jdField_a_of_type_Long;
-    } while ((this.jdField_a_of_type_JavaUtilList.size() > 0) && (((xvx)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Long > l));
+    } while ((this.jdField_a_of_type_JavaUtilList.size() > 0) && (((ycg)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Long > l));
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    xvx localxvx;
+    ycg localycg;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localxvx = (xvx)localIterator.next();
-    } while (localxvx.jdField_a_of_type_Long != paramWordingItem.jdField_a_of_type_Long);
+      localycg = (ycg)localIterator.next();
+    } while (localycg.jdField_a_of_type_Long != paramWordingItem.jdField_a_of_type_Long);
     for (;;)
     {
-      if (localxvx != null)
+      if (localycg != null)
       {
-        if (localxvx.jdField_a_of_type_Xvy != null)
+        if (localycg.jdField_a_of_type_Ych != null)
         {
-          localxvx.jdField_a_of_type_Xvy.a(paramWordingItem.jdField_a_of_type_JavaLangString);
-          if (localxvx.jdField_b_of_type_Xvy == null) {
+          localycg.jdField_a_of_type_Ych.a(paramWordingItem.jdField_a_of_type_JavaLangString);
+          if (localycg.jdField_b_of_type_Ych == null) {
             break label314;
           }
-          localxvx.jdField_b_of_type_Xvy.a(paramWordingItem.jdField_b_of_type_JavaLangString);
+          localycg.jdField_b_of_type_Ych.a(paramWordingItem.jdField_b_of_type_JavaLangString);
         }
         for (;;)
         {
-          localxvx.jdField_b_of_type_Long = (paramWordingItem.c - paramWordingItem.jdField_b_of_type_Long);
+          localycg.jdField_b_of_type_Long = (paramWordingItem.c - paramWordingItem.jdField_b_of_type_Long);
           return;
-          localxvx.jdField_a_of_type_Xvy = new xvy(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_a_of_type_JavaLangString, this.e, this.g, this.i, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
+          localycg.jdField_a_of_type_Ych = new ych(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_a_of_type_JavaLangString, this.e, this.g, this.i, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
           break;
           label314:
-          localxvx.jdField_b_of_type_Xvy = new xvy(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_b_of_type_JavaLangString, this.f, this.h, this.j, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
+          localycg.jdField_b_of_type_Ych = new ych(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_b_of_type_JavaLangString, this.f, this.h, this.j, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
         }
       }
-      localxvx = new xvx();
-      localxvx.jdField_a_of_type_Long = paramWordingItem.jdField_a_of_type_Long;
-      localxvx.jdField_a_of_type_Xvy = new xvy(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_a_of_type_JavaLangString, this.e, this.g, this.i, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
-      localxvx.jdField_b_of_type_Xvy = new xvy(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_b_of_type_JavaLangString, this.f, this.h, this.j, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
-      localxvx.jdField_b_of_type_Long = (paramWordingItem.c - paramWordingItem.jdField_b_of_type_Long);
-      this.jdField_a_of_type_JavaUtilList.add(localxvx);
+      localycg = new ycg();
+      localycg.jdField_a_of_type_Long = paramWordingItem.jdField_a_of_type_Long;
+      localycg.jdField_a_of_type_Ych = new ych(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_a_of_type_JavaLangString, this.e, this.g, this.i, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
+      localycg.jdField_b_of_type_Ych = new ych(l, a(paramWordingItem.jdField_b_of_type_Long), d(), paramWordingItem.jdField_b_of_type_JavaLangString, this.f, this.h, this.j, this.d, this.c, a(true) - this.d - this.d, -1.0F, this.jdField_a_of_type_AndroidGraphicsTypeface);
+      localycg.jdField_b_of_type_Long = (paramWordingItem.c - paramWordingItem.jdField_b_of_type_Long);
+      this.jdField_a_of_type_JavaUtilList.add(localycg);
       return;
-      localxvx = null;
+      localycg = null;
     }
   }
   
@@ -151,12 +151,12 @@ public class MovieDrawer
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      xvx localxvx = (xvx)localIterator.next();
-      if (localxvx.jdField_b_of_type_Xvy != null) {
-        localxvx.jdField_b_of_type_Xvy.d();
+      ycg localycg = (ycg)localIterator.next();
+      if (localycg.jdField_b_of_type_Ych != null) {
+        localycg.jdField_b_of_type_Ych.d();
       }
-      if (localxvx.jdField_a_of_type_Xvy != null) {
-        localxvx.jdField_a_of_type_Xvy.d();
+      if (localycg.jdField_a_of_type_Ych != null) {
+        localycg.jdField_a_of_type_Ych.d();
       }
     }
     return true;
@@ -169,15 +169,15 @@ public class MovieDrawer
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject = null;
-    xvx localxvx;
+    ycg localycg;
     long l;
     if (localIterator.hasNext())
     {
-      localxvx = (xvx)localIterator.next();
-      l = localxvx.jdField_a_of_type_Xvy.a(2);
-      if ((!QLog.isColorLevel()) || ((l <= paramLong1) && ((paramLong1 - l) * paramLong2 < this.k + localxvx.jdField_b_of_type_Long)))
+      localycg = (ycg)localIterator.next();
+      l = localycg.jdField_a_of_type_Ych.a(2);
+      if ((!QLog.isColorLevel()) || ((l <= paramLong1) && ((paramLong1 - l) * paramLong2 < this.k + localycg.jdField_b_of_type_Long)))
       {
-        localObject = localxvx;
+        localObject = localycg;
         if (!QLog.isColorLevel()) {}
       }
     }
@@ -187,8 +187,8 @@ public class MovieDrawer
       if (l <= paramLong1)
       {
         localIterator.remove();
-        localxvx.jdField_a_of_type_Xvy.g();
-        localxvx.jdField_b_of_type_Xvy.g();
+        localycg.jdField_a_of_type_Ych.g();
+        localycg.jdField_b_of_type_Ych.g();
         if (QLog.isColorLevel()) {
           QLog.d("BaseAnimDrawer", 2, "removed");
         }
@@ -199,33 +199,33 @@ public class MovieDrawer
         a(localObject);
         if (localObject != null)
         {
-          float f1 = localObject.jdField_a_of_type_Xvy.a(4);
-          float f2 = localObject.jdField_b_of_type_Xvy.a(4);
+          float f1 = localObject.jdField_a_of_type_Ych.a(4);
+          float f2 = localObject.jdField_b_of_type_Ych.a(4);
           if ((b() == 1) || (b() == 0))
           {
-            localObject.jdField_a_of_type_Xvy.a(7, b(true) - (f1 + f2 + this.jdField_a_of_type_Int));
-            localObject.jdField_b_of_type_Xvy.a(7, b(true) - (f2 + this.jdField_a_of_type_Int));
+            localObject.jdField_a_of_type_Ych.a(7, b(true) - (f1 + f2 + this.jdField_a_of_type_Int));
+            localObject.jdField_b_of_type_Ych.a(7, b(true) - (f2 + this.jdField_a_of_type_Int));
             if (paramCanvas == null) {
               break label401;
             }
-            localObject.jdField_a_of_type_Xvy.a(paramCanvas);
-            localObject.jdField_b_of_type_Xvy.a(paramCanvas);
+            localObject.jdField_a_of_type_Ych.a(paramCanvas);
+            localObject.jdField_b_of_type_Ych.a(paramCanvas);
           }
           for (;;)
           {
             return true;
             if (b() == 2)
             {
-              localObject.jdField_a_of_type_Xvy.a(7, b(true) - (f1 + f2 + this.b));
-              localObject.jdField_b_of_type_Xvy.a(7, b(true) - (f2 + this.b));
+              localObject.jdField_a_of_type_Ych.a(7, b(true) - (f1 + f2 + this.b));
+              localObject.jdField_b_of_type_Ych.a(7, b(true) - (f2 + this.b));
               break;
             }
-            localObject.jdField_a_of_type_Xvy.a(7, b(true) - (f1 + f2 + this.c));
-            localObject.jdField_b_of_type_Xvy.a(7, b(true) - (f2 + this.c));
+            localObject.jdField_a_of_type_Ych.a(7, b(true) - (f1 + f2 + this.c));
+            localObject.jdField_b_of_type_Ych.a(7, b(true) - (f2 + this.c));
             break;
             label401:
-            localObject.jdField_a_of_type_Xvy.a(paramRenderBuffer);
-            localObject.jdField_b_of_type_Xvy.a(paramRenderBuffer);
+            localObject.jdField_a_of_type_Ych.a(paramRenderBuffer);
+            localObject.jdField_b_of_type_Ych.a(paramRenderBuffer);
           }
         }
         return false;

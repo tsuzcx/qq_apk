@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aaet;
+import aalk;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -25,7 +25,7 @@ public abstract class IArRemoteCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IArRemoteCallback))) {
       return (IArRemoteCallback)localIInterface;
     }
-    return new aaet(paramIBinder);
+    return new aalk(paramIBinder);
   }
   
   public IBinder asBinder()

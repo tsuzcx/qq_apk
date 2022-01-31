@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-public final class agop
-  implements Parcelable.Creator
+public class agop
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public PersonalityLabelInfo a(Parcel paramParcel)
-  {
-    return new PersonalityLabelInfo(paramParcel);
-  }
+  public agop(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public PersonalityLabelInfo[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new PersonalityLabelInfo[paramInt];
+    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agop
  * JD-Core Version:    0.7.0.1
  */

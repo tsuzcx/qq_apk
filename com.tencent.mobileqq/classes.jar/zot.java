@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager.GreetWording;
 
-class zot
+public class zot
   implements Runnable
 {
-  zot(zos paramzos) {}
+  public zot(NearbyGrayTipsManager.GreetWording paramGreetWording1, NearbyGrayTipsManager.GreetWording paramGreetWording2) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    String str = NearbyGrayTipsManager.GreetWording.getPath(this.a.id);
+    NearbyGrayTipsManager.a(this.a, str);
   }
 }
 

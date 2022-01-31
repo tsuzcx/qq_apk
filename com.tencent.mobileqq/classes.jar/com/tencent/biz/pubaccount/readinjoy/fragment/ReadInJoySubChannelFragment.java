@@ -91,7 +91,7 @@ public class ReadInJoySubChannelFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969624, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969620, paramViewGroup, false);
     paramLayoutInflater = getArguments();
     this.jdField_a_of_type_Int = paramLayoutInflater.getInt("channel_id");
     this.jdField_b_of_type_Int = paramLayoutInflater.getInt("channel_type");

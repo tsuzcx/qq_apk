@@ -10,12 +10,12 @@ import android.widget.ImageView;
 import com.tencent.component.media.image.ImageKey;
 import com.tencent.component.media.image.ImageLoader;
 import com.tencent.component.media.image.ImageLoader.Options;
-import pij;
-import pik;
-import pil;
-import pim;
-import pin;
-import pio;
+import pnb;
+import pnc;
+import pnd;
+import pne;
+import pnf;
+import png;
 
 public class AsyncImageable$AsyncImageableImpl
   implements AsyncImageable
@@ -27,12 +27,12 @@ public class AsyncImageable$AsyncImageableImpl
   private ImageLoader.Options jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options = new ImageLoader.Options();
   private final ImageLoader jdField_a_of_type_ComTencentComponentMediaImageImageLoader;
   private AsyncImageable.AsyncImageListener jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
-  private AsyncImageable.AsyncOptions jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions = new pij(this);
+  private AsyncImageable.AsyncOptions jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions = new pnb(this);
   private final AsyncImageable jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable;
   private String jdField_a_of_type_JavaLangString = null;
   private final Thread jdField_a_of_type_JavaLangThread = Looper.getMainLooper().getThread();
-  private final pin jdField_a_of_type_Pin;
-  private final pio jdField_a_of_type_Pio;
+  private final pnf jdField_a_of_type_Pnf;
+  private final png jdField_a_of_type_Png;
   private AsyncImageable.AsyncImageListener jdField_b_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageListener;
   private String jdField_b_of_type_JavaLangString = null;
   
@@ -40,8 +40,8 @@ public class AsyncImageable$AsyncImageableImpl
   {
     this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
     this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader = ImageLoader.getInstance(paramImageView.getContext());
-    this.jdField_a_of_type_Pin = new pin(this);
-    this.jdField_a_of_type_Pio = new pio(this);
+    this.jdField_a_of_type_Pnf = new pnf(this);
+    this.jdField_a_of_type_Png = new png(this);
     this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable = paramAsyncImageable;
     this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.useMainThread = true;
   }
@@ -99,7 +99,7 @@ public class AsyncImageable$AsyncImageableImpl
         Animation localAnimation2 = this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions.jdField_b_of_type_AndroidViewAnimationAnimation;
         if (localAnimation2 != null)
         {
-          b(this.jdField_a_of_type_AndroidWidgetImageView, localAnimation2, new pil(this, paramDrawable, localAnimation1));
+          b(this.jdField_a_of_type_AndroidWidgetImageView, localAnimation2, new pnd(this, paramDrawable, localAnimation1));
         }
         else if (localAnimation1 != null)
         {
@@ -134,7 +134,7 @@ public class AsyncImageable$AsyncImageableImpl
     if ((paramString == null) && (paramVarArgs != null))
     {
       this.jdField_a_of_type_JavaLangString = null;
-      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.cancel(paramVarArgs, this.jdField_a_of_type_Pin, localOptions);
+      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.cancel(paramVarArgs, this.jdField_a_of_type_Pnf, localOptions);
       b();
       return;
     }
@@ -154,7 +154,7 @@ public class AsyncImageable$AsyncImageableImpl
     }
     d();
     if (this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncOptions.g) {}
-    for (paramString = this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.loadImageSync(paramString, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options); paramString != null; paramString = this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.loadImage(paramString, this.jdField_a_of_type_Pin, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options))
+    for (paramString = this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.loadImageSync(paramString, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options); paramString != null; paramString = this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.loadImage(paramString, this.jdField_a_of_type_Pnf, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options))
     {
       a(paramString, false);
       e();
@@ -206,7 +206,7 @@ public class AsyncImageable$AsyncImageableImpl
       return;
     }
     paramView.clearAnimation();
-    paramAnimation.setAnimationListener(new pim(paramRunnable));
+    paramAnimation.setAnimationListener(new pne(paramRunnable));
     paramView.startAnimation(paramAnimation);
   }
   
@@ -326,7 +326,7 @@ public class AsyncImageable$AsyncImageableImpl
   {
     try
     {
-      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.cancel(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Pin, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
+      this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader.cancel(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Pnf, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
       return;
     }
     finally
@@ -354,7 +354,7 @@ public class AsyncImageable$AsyncImageableImpl
   {
     if (Thread.currentThread() != this.jdField_a_of_type_JavaLangThread)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new pik(this, paramString, paramVarArgs));
+      this.jdField_a_of_type_AndroidOsHandler.post(new pnc(this, paramString, paramVarArgs));
       return;
     }
     a(paramString, paramVarArgs);

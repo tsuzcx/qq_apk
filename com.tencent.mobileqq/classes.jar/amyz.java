@@ -1,21 +1,37 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper.StartActivity;
+import java.util.Iterator;
+import java.util.List;
 
-public class amyz
+public final class amyz
   implements Runnable
 {
-  public amyz(QZoneShareActivity paramQZoneShareActivity) {}
+  public amyz(QZoneHelper.StartActivity paramStartActivity) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845271);
-    this.a.d = true;
-    this.a.e = false;
-    QZoneShareActivity.a(this.a, this.a.d);
+    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+    if ((localObject == null) || (((List)localObject).size() <= 0))
+    {
+      this.a.a(true, false);
+      return;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if ("com.tencent.mobileqq:qzone".equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QZoneHelper", 2, "QzoneProcess is exist");
+        }
+        this.a.a(true, true);
+        return;
+      }
+    }
+    this.a.a(true, false);
   }
 }
 

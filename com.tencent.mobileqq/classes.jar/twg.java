@@ -1,17 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class twg
-  implements Runnable
+public class twg
+  implements DialogInterface.OnClickListener
 {
-  twg(twf paramtwf, int paramInt, String paramString) {}
+  public twg(SendMultiPictureHelper paramSendMultiPictureHelper) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Int <= 0) && (this.jdField_a_of_type_Twf.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.e)) {
-      this.jdField_a_of_type_Twf.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    }
-    this.jdField_a_of_type_Twf.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.a.a.show();
+    this.a.b = false;
+    SendMultiPictureHelper.c(this.a);
   }
 }
 

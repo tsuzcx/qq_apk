@@ -1,15 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper.GenerateManifestCallback;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class xxz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements QQStoryTakeVideoHelper.GenerateManifestCallback
 {
-  public xxz(RotationSeekBar paramRotationSeekBar) {}
+  public xxz(NewFlowCameraActivity paramNewFlowCameraActivity, long paramLong, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    SLog.c("PTV.NewFlowCameraActivity", "generate manifest file success. cost = " + (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.post(new xya(this));
+  }
+  
+  public void b()
+  {
+    SLog.e("PTV.NewFlowCameraActivity", "generate manifest file failed. cost = " + (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
   }
 }
 

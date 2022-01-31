@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public final class aael
-  implements Parcelable.Creator
+public class aael
+  implements Runnable
 {
-  public ARScanStarFaceActInfo a(Parcel paramParcel)
-  {
-    return new ARScanStarFaceActInfo(paramParcel);
-  }
+  public aael(ARRecordReport paramARRecordReport, int paramInt, long paramLong) {}
   
-  public ARScanStarFaceActInfo[] a(int paramInt)
+  public void run()
   {
-    return new ARScanStarFaceActInfo[paramInt];
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "ar_record_record_success", true, 0L, this.jdField_a_of_type_Long, localHashMap, "");
   }
 }
 

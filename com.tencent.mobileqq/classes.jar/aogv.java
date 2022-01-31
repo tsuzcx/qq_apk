@@ -1,20 +1,38 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import mqq.os.MqqHandler;
 
-class aogv
-  implements Animation.AnimationListener
+public class aogv
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aogv(aogu paramaogu) {}
+  private aogv(EditTextDialog paramEditTextDialog) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onGlobalLayout()
   {
-    this.a.a.setVisibility(8);
+    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
+    if (this.a.b < 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EditTextDialog", 2, "onGlobalLayout first bottom:" + i);
+      }
+      this.a.b = i;
+      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new aogw(this));
+    }
+    while (this.a.b - i <= this.a.jdField_a_of_type_Int) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("EditTextDialog", 2, "onGlobalLayout second bottom:" + i);
+    }
+    this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.b = i;
+    this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
+    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new aogx(this));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

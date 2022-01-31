@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.richmedia.conn.ConnManager;
-import com.tencent.mobileqq.richmedia.server.ChannelStateManager;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
 
 public class ahnc
   implements Runnable
 {
-  public ahnc(ConnManager paramConnManager, long paramLong) {}
+  public ahnc(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite) {}
   
   public void run()
   {
-    ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).b(10);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager.a(ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager), this.jdField_a_of_type_Long);
+    this.a.a();
   }
 }
 

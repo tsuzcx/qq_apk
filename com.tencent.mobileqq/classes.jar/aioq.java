@@ -1,48 +1,44 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class aioq
-  implements INetEngine.IBreakDownFix
+public class aioq
+  implements View.OnClickListener
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public aioq(StructMsgItemVideo paramStructMsgItemVideo) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    label8:
-    do
+    Context localContext = paramView.getContext();
+    if (NetworkUtil.a(localContext) == 1)
     {
-      do
+      StructMsgItemVideo.a(this.a, localContext, paramView);
+      if ((localContext instanceof BaseActivity)) {
+        ReportController.b(((BaseActivity)localContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+      }
+    }
+    for (;;)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+      return;
+      if (!NetworkUtil.g(localContext))
       {
-        do
-        {
-          break label8;
-          do
-          {
-            return;
-          } while (!(paramNetReq instanceof HttpNetReq));
-          paramNetReq = (HttpNetReq)paramNetReq;
-          paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
-          if (0L != paramNetReq.b) {
-            break;
-          }
-          paramNetResp.c = 0L;
-          paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
-          paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-          paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
-        } while (!paramNetResp.contains("range="));
-        paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + paramNetReq.jdField_a_of_type_Long);
-        return;
-      } while ((paramNetReq.jdField_a_of_type_Long <= 0L) || (paramNetReq.b <= 0L) || (paramNetReq.jdField_a_of_type_Long >= paramNetReq.b));
-      paramNetResp.c = 0L;
-      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-" + paramNetReq.b;
-      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
-    } while (!paramNetResp.contains("range="));
-    paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-    paramNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + paramNetReq.jdField_a_of_type_Long + "-" + paramNetReq.b);
+        QQToast.a(localContext, 2131433023, 0).a();
+      }
+      else
+      {
+        Resources localResources = localContext.getResources();
+        DialogUtil.a(localContext, 232, "", "当前是非wifi网络，是否使用移动网络播放视频？", localResources.getString(2131433029), localResources.getString(2131433030), new aior(this, localContext, paramView), new aios(this)).show();
+      }
+    }
   }
 }
 

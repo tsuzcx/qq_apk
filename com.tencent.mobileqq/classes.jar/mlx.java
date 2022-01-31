@@ -1,16 +1,20 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
 public class mlx
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
-  public mlx(FastWebActivity paramFastWebActivity) {}
+  public mlx(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    this.a.a(FastWebActivity.a(this.a));
-    FastWebActivity.c(this.a);
-    return false;
+    KandianOx210MsgInfo localKandianOx210MsgInfo = ((KandianMergeManager)ReadInJoyUtils.a().getManager(161)).f();
+    ThreadManager.getUIHandler().post(new mly(this, localKandianOx210MsgInfo));
   }
 }
 

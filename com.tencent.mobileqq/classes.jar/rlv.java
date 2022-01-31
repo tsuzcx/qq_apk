@@ -1,34 +1,41 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class rlv
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public rlv(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rlv(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    if (AppSetting.b) {
-      this.a.a.setContentDescription("摇动手机截屏");
-    }
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (this.a.app.a().a().b(AppConstants.w, 7000) != null)
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433581), "qqsetting_screenshot_key", paramBoolean);
-      if (!paramBoolean) {
-        break;
+      i = DBUtils.a().a(this.a.app.getCurrentAccountUin());
+      if (i >= 3) {
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountManageActivity", 2, "refreshSubAccount() set stick2top fail." + this.a.app.getCurrentAccountUin() + " count=" + i + " >=max_stick2top_count , return.");
+        }
       }
-      this.a.turnOnShake();
-      return;
     }
-    this.a.turnOffShake();
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountManageActivity", 2, "refreshSubAccount() RecentList has default subAccount RU. go 2 stick2Top, current count=" + i);
+      }
+      SubAccountControll.a(this.a.app, AppConstants.w, true);
+      DBUtils.a().a(this.a.app.getCurrentAccountUin(), i);
+      return;
+      DBUtils.a().a(this.a.app.getCurrentAccountUin(), 3);
+    } while (!QLog.isColorLevel());
+    QLog.d("SUB_ACCOUNT", 2, "recent list does not exist ruDefault.");
   }
 }
 

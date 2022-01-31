@@ -1,43 +1,48 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class aazr
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public aazr(ARMapActivity paramARMapActivity) {}
+  public aazr(ArkAppCGI paramArkAppCGI, abad paramabad) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (ARMapActivity.g(this.a)) {
-      return;
-    }
-    if (paramInt == 0) {
-      this.a.g();
-    }
-    for (;;)
+    try
     {
-      ARMapActivity.f(this.a, true);
-      ARMapActivity.a(this.a).dismiss();
+      Object localObject = (QQAppInterface)ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI).get();
+      if (localObject == null)
+      {
+        ArkAppCenter.b("ArkApp.ArkAppCGI", "runTask_retry, app is null, return");
+        return;
+      }
+      localObject = ((DownloaderFactory)((QQAppInterface)localObject).getManager(46)).a(1);
+      File localFile = new File(ArkAppCGI.a());
+      this.jdField_a_of_type_Abad.jdField_a_of_type_JavaIoFile = localFile;
+      DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_Abad.jdField_a_of_type_JavaLangString, localFile);
+      localDownloadTask.l = true;
+      localDownloadTask.n = true;
+      if (this.jdField_a_of_type_Abad.b != null) {
+        localDownloadTask.a("Cookie", this.jdField_a_of_type_Abad.b);
+      }
+      if (this.jdField_a_of_type_Abad.c != null) {
+        localDownloadTask.a("Referer", this.jdField_a_of_type_Abad.c);
+      }
+      Bundle localBundle = new Bundle();
+      ((DownloaderInterface)localObject).a(localDownloadTask, new aazs(this, localFile), localBundle);
       return;
-      if (paramInt == 1)
-      {
-        paramView = new Intent(this.a, QQBrowserActivity.class);
-        paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
-        paramView.putExtra("url", "https://wa.qq.com/help/rule.html");
-        this.a.startActivity(paramView);
-      }
-      else if (paramInt == 2)
-      {
-        paramView = new Intent(this.a, QQBrowserActivity.class);
-        paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
-        paramView.putExtra("url", "https://mma.qq.com/poi_feedback/index.html?_wv=1&poiid=10001");
-        this.a.startActivity(paramView);
-      }
+    }
+    catch (Exception localException)
+    {
+      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("runTask fail, url=%s, msg=%s", new Object[] { this.jdField_a_of_type_Abad.jdField_a_of_type_JavaLangString, localException.getMessage() }));
+      ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI, this.jdField_a_of_type_Abad, false, null);
     }
   }
 }

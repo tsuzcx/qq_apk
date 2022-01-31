@@ -1,61 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class kao
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public kao(VideoControlUI paramVideoControlUI) {}
+  public kao(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
-      return;
-    }
-    paramContext = paramIntent.getStringExtra("camera_id");
-    int i = paramIntent.getIntExtra("availability", 1);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.c, 2, "update camera availability status cameraId:" + paramContext + ", value:" + i);
-    }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
-    if (i == 0)
-    {
-      VideoControlUI.b(this.a, false);
-      return;
-    }
-    paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    if ((paramContext != null) && (paramContext.size() > 0))
-    {
-      paramContext = paramContext.entrySet().iterator();
-      do
-      {
-        if (!paramContext.hasNext()) {
-          break;
-        }
-      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
-    }
-    for (i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        VideoControlUI.b(this.a, false);
-        return;
-      }
-      VideoControlUI.b(this.a, true);
-      return;
-    }
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.a.app, this.a, 2, 12);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 5, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kao
  * JD-Core Version:    0.7.0.1
  */

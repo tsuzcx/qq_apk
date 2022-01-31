@@ -17,7 +17,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.Html;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.RemoteViews;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import com.tencent.tmassistantbase.util.k;
@@ -225,6 +224,10 @@ public class d
         return;
         localObject = new RemoteViews(this.d.getPackageName(), this.c.c("qapp_center_notification"));
         a.a().a((RemoteViews)localObject);
+        ((RemoteViews)localObject).setInt(this.c.d("notification_root"), "setBackgroundColor", -1);
+        ((RemoteViews)localObject).setInt(this.c.d("notification_title"), "setTextColor", -16777216);
+        ((RemoteViews)localObject).setInt(this.c.d("notification_progress"), "setTextColor", -12303292);
+        ((RemoteViews)localObject).setInt(this.c.d("notification_content"), "setTextColor", -12303292);
         this.b.contentView = ((RemoteViews)localObject);
       }
     }
@@ -232,8 +235,9 @@ public class d
     {
       for (;;)
       {
-        r.c("NotificationHandler", "init Notification " + localException);
+        r.c("SDK_NotificationHandler", "init Notification " + localException);
       }
+      r.c("SDK_NotificationHandler", "<handleMessage> msg.what = " + paramMessage.what);
       switch (paramMessage.what)
       {
       }
@@ -241,7 +245,7 @@ public class d
     for (;;)
     {
       int i = a.a().a(this.a.nKey, this.a.url);
-      Log.d("NotificationHandler", "notification id = " + i);
+      r.c("SDK_NotificationHandler", "notification id = " + i);
       this.b.when = a.a().b(this.a.nKey, this.a.url);
       a.a().a(i, this.b);
       return;
@@ -285,7 +289,7 @@ public class d
         break;
         this.b.contentView.setViewVisibility(this.c.d("notification_content"), 8);
       }
-      r.c("NotificationHandler", ">>pause:" + this.a.url);
+      r.c("SDK_NotificationHandler", ">>pause:" + this.a.url);
       this.b.tickerText = a(this.c.a("notification_content_download_pause"));
       this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
       this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 8);
@@ -300,7 +304,7 @@ public class d
       paramMessage.flags &= 0xFFFFFFFD;
       a.a().c(this.a.nKey);
       continue;
-      r.c("NotificationHandler", ">>complete:" + this.a.url);
+      r.c("SDK_NotificationHandler", ">>complete:" + this.a.url);
       this.b = a.a().a(this.a);
       if (this.b == null) {
         break;
@@ -324,10 +328,10 @@ public class d
         paramMessage.flags &= 0xFFFFFFFD;
         a.a().c(this.a.nKey);
         break;
-        r.c("NotificationHandler", ">>download icon fail,so we use default notification icon");
+        r.c("SDK_NotificationHandler", ">>download icon fail,so we use default notification icon");
         this.b.contentView.setImageViewResource(this.c.d("notification_icon"), this.c.b("qfile_file_ufdownload"));
       }
-      r.c("NotificationHandler", ">>error:" + this.a.url);
+      r.c("SDK_NotificationHandler", ">>error:" + this.a.url);
       this.b.contentView.setViewVisibility(this.c.d("notification_content"), 0);
       this.b.contentView.setViewVisibility(this.c.d("notif_pro_bar_layout"), 8);
       this.b.contentView.setViewVisibility(this.c.d("notification_progress"), 8);

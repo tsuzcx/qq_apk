@@ -179,7 +179,16 @@ public class EditAioSyncToStoryPart
     return false;
   }
   
-  private void e()
+  public static void e()
+  {
+    SLog.d("Q.qqstory.sync.EditAioSyncToStoryPart", "---clearConfig----");
+    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
+    localStoryConfigManager.b("integer_aio_sync_to_story_config_c2c", Integer.valueOf(0));
+    localStoryConfigManager.b("integer_aio_sync_to_story_config_group", Integer.valueOf(0));
+    localStoryConfigManager.b("integer_aio_sync_to_story_config_discuss", Integer.valueOf(0));
+  }
+  
+  private void h()
   {
     if (((Integer)this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("integer_aio_sync_to_story_switcher_guide", Integer.valueOf(0))).intValue() == 0)
     {
@@ -219,9 +228,9 @@ public class EditAioSyncToStoryPart
     super.a();
     a(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131372078));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131372079));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131372080));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131372086));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131372087));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131372088));
     if (!b())
     {
       this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
@@ -233,7 +242,7 @@ public class EditAioSyncToStoryPart
     String str1;
     if (this.e)
     {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845226);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845300);
       if (this.jdField_a_of_type_Int != 1) {
         break label184;
       }
@@ -248,9 +257,9 @@ public class EditAioSyncToStoryPart
     for (String str2 = "1";; str2 = "2")
     {
       StoryReportor.a("aio_shoot", "exp_sync", 0, 0, new String[] { str1, "", str2 });
-      e();
+      h();
       return;
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845227);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845301);
       break;
       if (this.jdField_a_of_type_Int == 3000)
       {
@@ -358,7 +367,7 @@ public class EditAioSyncToStoryPart
       if (this.e)
       {
         this.e = false;
-        this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845227);
+        this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845301);
         a(this.e);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -388,7 +397,7 @@ public class EditAioSyncToStoryPart
         String str2;
         return;
         this.e = true;
-        this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845226);
+        this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130845300);
         continue;
         if (this.jdField_a_of_type_Int == 3000)
         {

@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import java.io.IOException;
-import jby;
+import jea;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -20,7 +20,7 @@ public class AsyncHttpResponseHandler
   public AsyncHttpResponseHandler()
   {
     if (Looper.myLooper() != null) {
-      this.a = new jby(this);
+      this.a = new jea(this);
     }
   }
   

@@ -1,35 +1,27 @@
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Container;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.arengine.QRRecognizerController;
 
 public class aapm
-  implements Runnable
+  extends Handler
 {
-  public aapm(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
-  
-  public void run()
+  public aapm(QRRecognizerController paramQRRecognizerController, Looper paramLooper)
   {
-    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
-    if (localObject == null) {}
-    ArkFullScreenAppActivity localArkFullScreenAppActivity;
-    do
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
-        localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
-        localObject = ArkAppContainer.a((ark.Container)localObject);
-      } while (localObject == null);
-      localObject = (ArkAppContainer)((WeakReference)localObject).get();
-    } while (localObject == null);
-    localArkFullScreenAppActivity.a((ArkAppContainer)localObject, true);
+    default: 
+      return;
+    case 100: 
+      QRRecognizerController.a(this.a);
+      return;
+    }
+    QRRecognizerController.b(this.a);
   }
 }
 

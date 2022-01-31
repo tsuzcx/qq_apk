@@ -1,6 +1,5 @@
 package cooperation.qzone.webviewplugin;
 
-import anbl;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anjl;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -456,7 +456,7 @@ public class QZoneFeedActionJsPlugin
   private void b()
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new anbl(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new anjl(this);
     }
     if (!this.c)
     {

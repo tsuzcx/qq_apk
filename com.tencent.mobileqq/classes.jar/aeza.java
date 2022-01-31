@@ -1,45 +1,65 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.util.URLUtil;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import mqq.os.MqqHandler;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagAdapter;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView.IInterestTagItemViewCallback;
+import com.tencent.util.InputMethodUtil;
+import java.util.ArrayList;
 
 public class aeza
-  extends SimpleJob
+  implements InterestTagItemView.IInterestTagItemViewCallback
 {
-  public aeza(VideoViewTVKImpl paramVideoViewTVKImpl, String paramString, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  public aeza(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(InterestTagInfo paramInterestTagInfo)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
-    if (this.jdField_a_of_type_JavaLangString.contains("qqstocdnd"))
+    ChooseInterestTagActivity.a(this.a, 0);
+    InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
+    boolean bool;
+    if (!TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
     {
-      paramJobContext = ((VideoServerInfoManager)SuperManager.a(4)).a();
-      SLog.a("VideoViewTVKImpl", "get url key:%s", paramJobContext);
-      if (TextUtils.isEmpty(paramJobContext)) {
-        break label111;
+      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
+      ChooseInterestTagActivity localChooseInterestTagActivity = this.a;
+      if (ChooseInterestTagActivity.b(this.a) != -1)
+      {
+        bool = true;
+        ChooseInterestTagActivity.a(localChooseInterestTagActivity, false, bool);
+        ChooseInterestTagActivity.a(this.a).setText("");
+        ChooseInterestTagActivity.a(this.a, "");
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.c = URLUtil.a(this.jdField_a_of_type_JavaLangString, "authkey", paramJobContext);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.c = InnerDns.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.c.replace("https://", "http://"), 1012);
-      ThreadManager.getUIHandler().post(new aezc(this));
-      return null;
-      label111:
-      ThreadManager.getUIHandler().post(new aezb(this));
+      if (!ChooseInterestTagActivity.a(this.a, paramInterestTagInfo)) {
+        break label132;
+      }
+      ChooseInterestTagActivity.a(this.a).remove(paramInterestTagInfo);
+      ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
     }
+    label132:
+    do
+    {
+      return;
+      bool = false;
+      break;
+      if (ChooseInterestTagActivity.a(this.a).size() < 8) {
+        break label198;
+      }
+    } while (ChooseInterestTagActivity.d(this.a));
+    ChooseInterestTagActivity.a(this.a, "最多只能添加8个标签哦");
+    ChooseInterestTagActivity.b(this.a, true);
+    ChooseInterestTagActivity.a(this.a).postDelayed(new aezb(this), 2800L);
+    return;
+    label198:
+    ChooseInterestTagActivity.a(this.a).add(paramInterestTagInfo);
+    ChooseInterestTagActivity.c(this.a, paramInterestTagInfo);
+  }
+  
+  public boolean a(InterestTagInfo paramInterestTagInfo)
+  {
+    return ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
   }
 }
 

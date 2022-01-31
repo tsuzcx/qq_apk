@@ -1,24 +1,18 @@
-import com.tencent.av.business.manager.pendant.EffectPendantTools;
-import com.tencent.av.ui.EffectToolbar;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.ControlUIObserver;
 
 public class jub
   implements Runnable
 {
-  public jub(EffectToolbar paramEffectToolbar, String paramString) {}
+  public jub(ControlUIObserver paramControlUIObserver, Object paramObject) {}
   
   public void run()
   {
-    if (EffectToolbar.access$200(this.jdField_a_of_type_ComTencentAvUiEffectToolbar) != null)
-    {
-      QLog.w("EffectToolbar", 1, "postSetCurrentItemById, id[" + this.jdField_a_of_type_JavaLangString + "]");
-      EffectToolbar.access$200(this.jdField_a_of_type_ComTencentAvUiEffectToolbar).b(this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_ComTencentAvUiControlUIObserver.d(this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jub
  * JD-Core Version:    0.7.0.1
  */

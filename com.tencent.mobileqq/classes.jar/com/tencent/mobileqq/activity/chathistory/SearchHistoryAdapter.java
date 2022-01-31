@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import wgp;
+import wlz;
 
 public class SearchHistoryAdapter
   extends BaseAdapter
@@ -34,9 +34,9 @@ public class SearchHistoryAdapter
   {
     String str = a(paramInt);
     if (paramView == null) {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969071, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969074, paramViewGroup, false);
     }
-    for (paramViewGroup = new wgp(paramView);; paramViewGroup = (wgp)paramView.getTag())
+    for (paramViewGroup = new wlz(paramView);; paramViewGroup = (wlz)paramView.getTag())
     {
       paramViewGroup.a.setText(str);
       return paramView;

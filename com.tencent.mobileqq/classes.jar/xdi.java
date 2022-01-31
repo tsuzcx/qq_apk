@@ -1,48 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
+import java.util.ArrayList;
 
-public class xdi
-  implements IRedPacket.OnGetSkinListener
+class xdi
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public xdi(CommonHbFragment paramCommonHbFragment) {}
+  xdi(xde paramxde, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    HbSkinInfo localHbSkinInfo = HbSkinInfo.a(CommonHbFragment.a(this.a), paramRedPacketInfoBase.skinId);
-    List localList;
-    if (localHbSkinInfo != null)
+    this.jdField_a_of_type_Xde.a.d();
+    if (QQStoryFlowCallback.a(this.jdField_a_of_type_Xde.a, paramLocalMediaInfo))
     {
-      localList = CommonHbFragment.a(this.a).getList();
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonHbFragment", 2, "redl iscache = " + HbSkinInfo.jdField_a_of_type_Boolean + " info.iscache = " + paramRedPacketInfoBase.isCache);
-      }
-      if ((HbSkinInfo.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localHbSkinInfo))) {
-        break label110;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonHbFragment", 2, "no add in list...");
-      }
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a(this.jdField_a_of_type_Xde.a, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
     }
-    label110:
-    while ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
-      paramRedPacketInfoBase.title = CommonHbFragment.e(this.a);
-    }
-    localHbSkinInfo.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = paramRedPacketInfoBase;
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonHbFragment", 2, "redl add to list show!");
-    }
-    localList.add(localHbSkinInfo);
-    HbSkinInfo.a(localList);
-    CommonHbFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

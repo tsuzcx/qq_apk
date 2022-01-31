@@ -1,22 +1,32 @@
-import java.util.TimerTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderInterface;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-public abstract class xgc
-  extends TimerTask
+public class xgc
+  implements ThreadExcutor.IThreadListener
 {
-  private boolean a;
+  public xgc(PreloadImgManager paramPreloadImgManager, List paramList, Map paramMap, Bundle paramBundle) {}
   
-  public abstract void a();
+  public void onAdded() {}
   
-  public boolean a()
+  public void onPostRun()
   {
-    return this.a;
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
+      localDownloadTask.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager.a.a(localDownloadTask, PreloadImgManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager), null);
+      }
+    }
   }
   
-  public void run()
-  {
-    a();
-    this.a = true;
-  }
+  public void onPreRun() {}
 }
 
 

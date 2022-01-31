@@ -7,7 +7,7 @@ import android.graphics.Paint.FontMetricsInt;
 import android.graphics.drawable.Drawable;
 import android.text.style.ReplacementSpan;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.earlydownload.handler.ApngHandler;
+import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -18,7 +18,7 @@ public class QQText$EmoticonSpan
   public float a;
   public int a;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  protected boolean a;
+  protected volatile boolean a;
   public float b;
   int b;
   public float c;
@@ -47,7 +47,7 @@ public class QQText$EmoticonSpan
       if ((localObject1 instanceof URLDrawable))
       {
         localObject2 = (URLDrawable)localObject1;
-        if ((this.jdField_a_of_type_Boolean) && (ApngHandler.b.get()) && (!((URLDrawable)localObject2).mUseApngImage))
+        if ((this.jdField_a_of_type_Boolean) && (VasApngUtil.b.get()) && (!((URLDrawable)localObject2).mUseApngImage))
         {
           if (QLog.isColorLevel()) {
             QLog.d("QQText", 2, "getDrawable: change to apng");
@@ -82,9 +82,9 @@ public class QQText$EmoticonSpan
   {
     Drawable localDrawable2;
     Drawable localDrawable1;
-    if (this.jdField_c_of_type_Int == 3)
+    if (this.jdField_c_of_type_Int == 0)
     {
-      localDrawable2 = TextUtils.b(this.jdField_a_of_type_Int, false);
+      localDrawable2 = TextUtils.a(this.jdField_a_of_type_Int);
       localDrawable1 = localDrawable2;
       if (localDrawable2 != null)
       {
@@ -99,17 +99,7 @@ public class QQText$EmoticonSpan
       {
         do
         {
-          do
-          {
-            return localDrawable1;
-            if (this.jdField_c_of_type_Int != 0) {
-              break;
-            }
-            localDrawable2 = TextUtils.a(this.jdField_a_of_type_Int);
-            localDrawable1 = localDrawable2;
-          } while (localDrawable2 == null);
-          localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
-          return localDrawable2;
+          return localDrawable1;
           if ((0x80000000 & this.jdField_a_of_type_Int) != 0) {
             break;
           }
@@ -174,7 +164,7 @@ public class QQText$EmoticonSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQText.EmoticonSpan
  * JD-Core Version:    0.7.0.1
  */

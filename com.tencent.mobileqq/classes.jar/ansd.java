@@ -1,24 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditSyncQzonePart;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class ansd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ansd(EditSyncQzonePart paramEditSyncQzonePart) {}
+  public ansd(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.a;
-    if (!EditSyncQzonePart.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      EditSyncQzonePart.a(paramView, bool);
-      EditSyncQzonePart.a(this.a, EditSyncQzonePart.a(this.a));
-      StoryConfigManager.c(EditSyncQzonePart.a(this.a));
+    QIMEffectCameraCaptureUnit.g(this.a, false);
+    if (QIMEffectCameraCaptureUnit.a(this.a) == null) {
       return;
     }
+    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView).removeView(QIMEffectCameraCaptureUnit.a(this.a));
+    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(0);
+    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(true);
+    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.a(null);
   }
 }
 

@@ -1,35 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
 
 public class afki
-  implements AbsListView.OnScrollListener
+  implements NearbyLikeLimitManager.onDoVoteListener
 {
-  public afki(NearbyMomentFragment paramNearbyMomentFragment) {}
+  public afki(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(String paramString, boolean paramBoolean)
   {
-    int i = 0;
-    if (paramInt == 0)
-    {
-      paramInt = i;
-      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
-      {
-        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
-        paramInt = i;
-        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
-          paramInt = 1;
-        }
-      }
-      if (paramInt != 0) {
-        NearbyMomentFragment.a(this.a);
-      }
-    }
+    this.a.c(paramBoolean);
+    this.a.u = paramBoolean;
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

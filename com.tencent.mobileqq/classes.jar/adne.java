@@ -1,30 +1,37 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class adne
-  implements View.OnClickListener
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public adne(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public adne(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void onClick(View paramView)
+  public void onAudioFocusChange(int paramInt)
   {
-    paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", "http://nearby.qq.com/nearby-index/mine.html?_bid=3027&_wv=16777218");
-    this.a.getActivity().startActivity(paramView);
-    NearbyUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "my_click", 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(42);
+    if (paramInt == -2) {
+      if ((this.a.a != null) && (this.a.a.isPlaying())) {
+        VideoFilePresenter.a(this.a);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt != 1) {
+          break;
+        }
+      } while ((this.a.a == null) || (this.a.a.isPlaying()));
+      VideoFilePresenter.b(this.a);
+      return;
+    } while ((paramInt != -1) || (this.a.a == null) || (!this.a.a.isPlaying()));
+    VideoFilePresenter.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adne
  * JD-Core Version:    0.7.0.1
  */

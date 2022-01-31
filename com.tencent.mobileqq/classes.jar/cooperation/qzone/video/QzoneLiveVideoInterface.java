@@ -1,9 +1,5 @@
 package cooperation.qzone.video;
 
-import anbd;
-import anbe;
-import anbf;
-import anbg;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Notification;
@@ -31,6 +27,10 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
+import anjc;
+import anjd;
+import anje;
+import anjf;
 import com.google.zxing.common.BitMatrix;
 import com.tencent.av.camera.QavCameraUsage;
 import com.tencent.biz.common.util.HttpUtil;
@@ -122,7 +122,7 @@ public class QzoneLiveVideoInterface
   {
     paramIntent = paramIntent.getExtras();
     RemoteHandleManager.a().a("cmd.uploadCommentVideo", paramIntent, true);
-    paramIntent = new anbe(paramHandler);
+    paramIntent = new anjd(paramHandler);
     RemoteHandleManager.a().a(paramIntent);
   }
   
@@ -210,7 +210,7 @@ public class QzoneLiveVideoInterface
     localIntent.putExtras(paramBundle);
     QzonePluginProxyActivity.a(localIntent, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
     localIntent.addFlags(805306368);
-    QZoneHelper.b(paramActivity, paramString, localIntent, paramInt);
+    QZoneHelper.c(paramActivity, paramString, localIntent, paramInt);
   }
   
   public static void forwardToMoodSelectLocation(Activity paramActivity, String paramString, int paramInt, Bundle paramBundle)
@@ -333,9 +333,9 @@ public class QzoneLiveVideoInterface
   public static Notification generationNotification(PendingIntent paramPendingIntent, Context paramContext, Bitmap paramBitmap, String paramString1, String paramString2)
   {
     if ("oppo".equalsIgnoreCase(DeviceInfoUtil.l())) {
-      return QZoneNotificationAdapter.a().b(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130844840);
+      return QZoneNotificationAdapter.a().b(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130844915);
     }
-    return QZoneNotificationAdapter.a().c(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130844840);
+    return QZoneNotificationAdapter.a().c(paramPendingIntent, paramContext, paramBitmap, paramString1, paramString2, 2130844915);
   }
   
   public static int getAppId()
@@ -355,7 +355,7 @@ public class QzoneLiveVideoInterface
   
   public static String getBuildNumber()
   {
-    return "3565";
+    return "3615";
   }
   
   public static String getBuilderNumber()
@@ -435,7 +435,7 @@ public class QzoneLiveVideoInterface
       Class localClass = ((ClassLoader)localObject2).loadClass("com.qzone.module.vipcomponent.ui.QzoneHuangzuanVipIconShow");
       localObject2 = ((ClassLoader)localObject2).loadClass("com.qzone.proxy.vipcomponent.adapter.VipResourcesListener");
       ClassLoader localClassLoader = localClass.getClassLoader();
-      paramLiveVideoFeedVipIconListner = new anbg(paramLiveVideoFeedVipIconListner);
+      paramLiveVideoFeedVipIconListner = new anjf(paramLiveVideoFeedVipIconListner);
       paramLiveVideoFeedVipIconListner = Proxy.newProxyInstance(localClassLoader, new Class[] { localObject2 }, paramLiveVideoFeedVipIconListner);
       if (localClass == null)
       {
@@ -798,12 +798,12 @@ public class QzoneLiveVideoInterface
   {
     String str = QZonePluginUtils.a();
     if (!str.equals("qzone_live_video_plugin.apk")) {
-      QZonePluginMangerHelper.a(getContext(), new anbd(str));
+      QZonePluginMangerHelper.a(getContext(), new anjc(str));
     }
     for (;;)
     {
       return version;
-      version = "2013 7.6.3";
+      version = "2013 7.6.8";
     }
   }
   
@@ -1020,7 +1020,7 @@ public class QzoneLiveVideoInterface
   
   public static void preInitWebview(IWebviewOnClassLoaded paramIWebviewOnClassLoaded)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new anbf(paramIWebviewOnClassLoaded));
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new anje(paramIWebviewOnClassLoaded));
   }
   
   public static void preloadWebProcess()

@@ -3,12 +3,12 @@ package dov.com.tencent.mobileqq.shortvideo;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import aooa;
-import aoob;
-import aooc;
-import aood;
-import aoof;
-import aopd;
+import aows;
+import aowt;
+import aowu;
+import aowv;
+import aowx;
+import aoxp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -28,7 +28,7 @@ import mqq.os.MqqHandler;
 import tencent.im.msg.im_msg_body.RichText;
 
 public abstract class BaseShortVideoOprerator
-  implements aopd, DownCallBack, UpCallBack, InfoBuilder
+  implements aoxp, DownCallBack, UpCallBack, InfoBuilder
 {
   public static int a;
   protected Handler a;
@@ -50,13 +50,13 @@ public abstract class BaseShortVideoOprerator
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new aooa(this, Looper.getMainLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new aows(this, Looper.getMainLooper());
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, ShortVideoReq paramShortVideoReq)
   {
-    ThreadManager.post(new aoob(), 8, null, false);
+    ThreadManager.post(new aowt(), 8, null, false);
   }
   
   public MessageRecord a(im_msg_body.RichText paramRichText)
@@ -216,7 +216,7 @@ public abstract class BaseShortVideoOprerator
   {
     Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "forwardShortVideo", "start " + Thread.currentThread().getId());
     if (a(paramShortVideoForwardInfo)) {
-      ThreadManager.getSubThreadHandler().post(new aooc(this, paramShortVideoForwardInfo));
+      ThreadManager.getSubThreadHandler().post(new aowu(this, paramShortVideoForwardInfo));
     }
     while (paramShortVideoForwardInfo == null) {
       return;
@@ -228,7 +228,7 @@ public abstract class BaseShortVideoOprerator
   {
     Logger.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "sendShortVideo", "start " + Thread.currentThread().getId());
     if (a(paramShortVideoUploadInfo)) {
-      ThreadManager.getSubThreadHandler().post(new aoof(this, paramShortVideoUploadInfo));
+      ThreadManager.getSubThreadHandler().post(new aowx(this, paramShortVideoUploadInfo));
     }
     while (paramShortVideoUploadInfo == null) {
       return;
@@ -254,7 +254,7 @@ public abstract class BaseShortVideoOprerator
       a(3, -1, null);
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new aood(this, paramArrayList));
+    ThreadManager.getSubThreadHandler().post(new aowv(this, paramArrayList));
   }
   
   boolean a(ShortVideoDownloadInfo paramShortVideoDownloadInfo)

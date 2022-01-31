@@ -1,20 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeBigSocial;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.List;
 
 public class ltn
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ltn(FeedItemCellTypeBigSocial paramFeedItemCellTypeBigSocial, LinearLayout paramLinearLayout) {}
+  public ltn(ArticleReadInfoModule paramArticleReadInfoModule) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    List localList = this.a.a.a(ArticleReadInfo.class, true, null, null, null, null, null, null);
+    ArticleReadInfoModule.a(this.a, localList);
   }
 }
 

@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ryy
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  ryy(ryx paramryx) {}
+  ryy(ryw paramryw) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MessageRecord localMessageRecord = new MessageRecord();
-    localMessageRecord.shmsgseq = this.a.a.jdField_a_of_type_Long;
-    int i = this.a.a.app.a().a(this.a.a.b, this.a.a.jdField_a_of_type_Int, localMessageRecord);
-    this.a.a.runOnUiThread(new ryz(this, i));
+    paramDialogInterface.dismiss();
   }
 }
 

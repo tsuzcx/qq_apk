@@ -1,22 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySocialMsgTips;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
 
-class mnn
-  implements Runnable
+public class mnn
+  implements View.OnClickListener
 {
-  mnn(mnm parammnm) {}
+  public mnn(ReadinjoySocialMsgTips paramReadinjoySocialMsgTips) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PublicAccountDataManager localPublicAccountDataManager = (PublicAccountDataManager)BaseApplicationImpl.getApplication().getRuntime().getManager(55);
-    mnm.a(this.a, localPublicAccountDataManager.a(Long.valueOf(mnm.a(this.a))));
-    if ((!mnm.a(this.a)) && (mnm.b(this.a))) {
-      mnm.b(this.a, true);
+    if (ReadinjoySocialMsgTips.a(this.a) != null) {
+      ReadinjoySocialMsgTips.a(this.a).onClick(paramView);
     }
-    ThreadManager.getUIHandler().post(new mno(this));
+    KandianMergeManager localKandianMergeManager = (KandianMergeManager)ReadInJoyUtils.a().getManager(161);
+    int i = localKandianMergeManager.f() - localKandianMergeManager.c();
+    if (localKandianMergeManager.c() > 0) {}
+    for (paramView = ReadInJoyConstants.g + i;; paramView = ReadInJoyConstants.c + i)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadinjoySocialMsgTips", 2, "person message box url: " + paramView);
+      }
+      localKandianMergeManager.b();
+      localKandianMergeManager.l();
+      ReadInJoyUtils.a(ReadinjoySocialMsgTips.a(this.a), paramView);
+      PublicAccountReportUtils.a(null, "", "0X800824B", "0X800824B", 0, 0, "", "", "", ReadInJoyUtils.d(), false);
+      return;
+    }
   }
 }
 

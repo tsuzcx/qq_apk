@@ -1,66 +1,43 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.qphone.base.util.QLog;
 
 public class ybn
-  implements Comparator
+  implements Runnable
 {
-  public int a(ybl paramybl)
+  public ybn(RMVideoRecordState paramRMVideoRecordState) {}
+  
+  public void run()
   {
-    if (paramybl.jdField_a_of_type_Int != -1) {
-      return paramybl.jdField_a_of_type_Int;
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风读取数据错误...");
     }
-    Friends localFriends = paramybl.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = ContactUtils.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
+    localRMVideoStateMgr.h = true;
+    localRMVideoStateMgr.e = false;
+    if (localRMVideoStateMgr.a != null)
     {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
+      if (localRMVideoStateMgr.a.i != -1) {
+        break label92;
       }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
+      localRMVideoStateMgr.b(0, "麦克风被禁用", false);
     }
     for (;;)
     {
-      paramybl.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风被禁用,音频录制失败 errorcode=" + localRMVideoStateMgr.a.i);
       }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
+      return;
+      label92:
+      if (localRMVideoStateMgr.a.i == -2) {
+        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
+      } else if (localRMVideoStateMgr.a.i == -3) {
+        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
+      } else {
+        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
       }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
     }
-  }
-  
-  public int a(ybl paramybl1, ybl paramybl2)
-  {
-    return a(paramybl1) - a(paramybl2);
   }
 }
 

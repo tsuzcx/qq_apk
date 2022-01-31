@@ -1,29 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelBoard;
 
 public class agsa
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public agsa(ProfileTagView paramProfileTagView, boolean paramBoolean, VipTagView paramVipTagView) {}
+  public agsa(PersonalityLabelBoard paramPersonalityLabelBoard) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131362046) != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131362046).equals(Boolean.valueOf(true))))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTag(2131362046, Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, ((Long)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131362047)).longValue());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setShakingState(true);
+    PersonalityLabelBoard.a(this.a, this.a.a, false);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,15 +1,19 @@
-import android.app.Dialog;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public class nth
+public final class nth
   implements Runnable
 {
-  public nth(QQStoryBaseActivity paramQQStoryBaseActivity) {}
+  public nth(TVKPreloader.PreloadItem paramPreloadItem) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
+    Iterator localIterator = TVKPreloader.a().iterator();
+    while (localIterator.hasNext()) {
+      ((TVKPreloader.PreloadListener)localIterator.next()).a(this.a);
     }
   }
 }

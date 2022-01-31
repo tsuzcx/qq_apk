@@ -1,23 +1,36 @@
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.searchengine.ContactSearchEngine;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResCallback;
+import java.lang.ref.WeakReference;
 
-public final class ahvc
-  implements Comparator
+public class ahvc
 {
-  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
+  int jdField_a_of_type_Int;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  int b;
+  public WeakReference b;
+  
+  public ahvc(ScribbleResMgr paramScribbleResMgr, int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback)
   {
-    int j = Long.signum(paramIContactSearchModel2.b() - paramIContactSearchModel1.b());
-    int i = j;
-    if (j == 0) {
-      i = ContactSearchEngine.a(paramIContactSearchModel1, paramIContactSearchModel2);
-    }
-    return i;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramResCallback);
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public ScribbleResMgr.ResCallback a()
+  {
+    return (ScribbleResMgr.ResCallback)this.jdField_b_of_type_JavaLangRefWeakReference.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvc
  * JD-Core Version:    0.7.0.1
  */

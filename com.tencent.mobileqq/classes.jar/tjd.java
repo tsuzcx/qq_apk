@@ -1,18 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.mobileqq.activity.Now;
 
 public class tjd
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public tjd(QQLSActivity paramQQLSActivity) {}
+  public tjd(Now paramNow) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    QQLSActivity.a(this.a).setCursorVisible(true);
-    return false;
+    ((UserManager)SuperManager.a(2)).c();
   }
 }
 

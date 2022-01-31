@@ -1,19 +1,11 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-
 class acmz
   implements Runnable
 {
-  acmz(acmv paramacmv) {}
+  acmz(acmy paramacmy) {}
   
   public void run()
   {
-    if (this.a.a.a.getVisibility() == 0)
-    {
-      this.a.a.c();
-      return;
-    }
-    this.a.a.d();
+    this.a.a.a();
   }
 }
 

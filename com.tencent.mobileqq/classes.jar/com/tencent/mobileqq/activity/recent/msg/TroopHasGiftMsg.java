@@ -10,7 +10,7 @@ public class TroopHasGiftMsg
 {
   public TroopHasGiftMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131430192);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131430195);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   

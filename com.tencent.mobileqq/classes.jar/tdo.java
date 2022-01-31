@@ -1,20 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.CardHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class tdo
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public tdo(NotifyPCActiveActivity paramNotifyPCActiveActivity, CardHandler paramCardHandler) {}
+  public tdo(LebaQZoneFacePlayHelper paramLebaQZoneFacePlayHelper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b(true);
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
+    if ((LebaQZoneFacePlayHelper.a(this.a) != null) && (LebaQZoneFacePlayHelper.a(this.a).size() >= 2)) {
+      LebaQZoneFacePlayHelper.a(this.a).sendEmptyMessageDelayed(1688002, 1000L);
+    }
+    if (LebaQZoneFacePlayHelper.a(this.a) != null)
+    {
+      LebaQZoneFacePlayHelper.a(this.a).a();
+      LebaQZoneFacePlayHelper.a(this.a, null);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

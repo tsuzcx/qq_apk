@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager.OnTalkingChangeListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
 
 public class ajqj
   implements Runnable
 {
-  public ajqj(TroopRobotManager paramTroopRobotManager) {}
+  public ajqj(ReciteRecordLayout paramReciteRecordLayout, String paramString, double paramDouble) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager$OnTalkingChangeListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager$OnTalkingChangeListener.a(this.a.jdField_a_of_type_Boolean);
+    if (ReciteRecordLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout) != null) {
+      ReciteRecordLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Double);
     }
   }
 }

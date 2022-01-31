@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.leba.LebaGridManager;
-import com.tencent.mobileqq.leba.model.PluginInfo;
-import java.util.Comparator;
+import android.widget.TextView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
 
 public class adzg
-  implements Comparator
+  implements Runnable
 {
-  public adzg(LebaGridManager paramLebaGridManager) {}
+  public adzg(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, String paramString) {}
   
-  public int a(PluginInfo paramPluginInfo1, PluginInfo paramPluginInfo2)
+  public void run()
   {
-    if (paramPluginInfo1.type < paramPluginInfo2.type) {}
-    do
-    {
-      return 1;
-      if (paramPluginInfo1.type > paramPluginInfo2.type) {
-        return -1;
-      }
-    } while (paramPluginInfo1.weight < paramPluginInfo2.weight);
-    if (paramPluginInfo1.weight > paramPluginInfo2.weight) {
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.c.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

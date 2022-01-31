@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aijq;
-import aijr;
+import aiol;
+import aiom;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -39,8 +39,8 @@ public class StructMsgItemPAVideo
   
   public StructMsgItemPAVideo()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aijq(this);
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new aijr(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiol(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new aiom(this);
     this.jdField_a_of_type_JavaLangString = "pavideo";
   }
   
@@ -56,7 +56,7 @@ public class StructMsgItemPAVideo
       paramView.setTag(this);
       try
       {
-        paramBundle = paramBundle.getDrawable(2130839736);
+        paramBundle = paramBundle.getDrawable(2130839751);
         if (TextUtils.isEmpty(this.u))
         {
           paramView.setBackgroundDrawable(paramBundle);
@@ -69,10 +69,10 @@ public class StructMsgItemPAVideo
           return paramView;
           paramView = new PAHighLightImageView(paramContext);
           paramView.setId(2131361925);
-          paramView.setContentDescription(paramBundle.getString(2131433075));
+          paramView.setContentDescription(paramBundle.getString(2131433089));
           paramView.setDisplayRuleDef(CustomScaleType.a);
           paramView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-          paramView.setContentDescription(paramBundle.getText(2131437015));
+          paramView.setContentDescription(paramBundle.getText(2131437035));
         }
       }
       catch (OutOfMemoryError paramBundle)

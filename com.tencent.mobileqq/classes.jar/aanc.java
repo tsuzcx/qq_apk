@@ -1,60 +1,40 @@
-import com.tencent.mobileqq.arcard.ARCardUtils;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipReqInfo;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
-import java.io.File;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.arengine.AREngine;
 
 public class aanc
   implements Runnable
 {
-  public aanc(ARVideoPreviewActivity paramARVideoPreviewActivity) {}
+  public aanc(AREngine paramAREngine) {}
   
   public void run()
   {
-    Object localObject1 = "";
-    if (this.a.jdField_a_of_type_Int == 1)
+    if ((AREngine.a(this.a) != null) && (!AREngine.a(this.a).d()))
     {
-      localObject1 = new File(ARCardUtils.jdField_b_of_type_JavaLangString);
-      if (!((File)localObject1).exists()) {
-        ((File)localObject1).mkdir();
+      if (AREngine.a(this.a).j()) {
+        AREngine.d(this.a);
       }
-      localObject1 = ARCardUtils.jdField_b_of_type_JavaLangString + System.currentTimeMillis() + ".jpg";
-      ARCardUtils.a(ARVideoPreviewActivity.a(this.a), (String)localObject1);
+      if (AREngine.a(this.a) != 1L) {
+        break label78;
+      }
+      this.a.b(1L);
+      AREngine.c(this.a);
     }
     for (;;)
     {
-      Object localObject2 = new File((String)localObject1);
-      if (((File)localObject2).exists()) {
-        this.a.jdField_b_of_type_Long = ((File)localObject2).length();
-      }
-      localObject2 = new File(ARVideoPreviewActivity.a(this.a));
-      if (((File)localObject2).exists()) {
-        this.a.d = ((File)localObject2).length();
-      }
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_Long = 0L;
-      this.a.c = 0L;
-      localObject2 = new ARRelationShipFileUpload.ARRelationShipReqInfo();
-      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_a_of_type_Int = 2;
-      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_b_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a();
-      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_a_of_type_JavaLangString = ARVideoPreviewActivity.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2, new aand(this));
-      localObject2 = new ARRelationShipFileUpload.ARRelationShipReqInfo();
-      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_a_of_type_Int = 1;
-      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_b_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a();
-      ((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
-      this.a.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload.a((ARRelationShipFileUpload.ARRelationShipReqInfo)localObject2, new aanf(this));
+      this.a.j();
       return;
-      if (this.a.jdField_a_of_type_Int == 2) {
-        localObject1 = ARVideoPreviewActivity.b(this.a);
+      label78:
+      if (AREngine.a(this.a) == 2L) {
+        this.a.l();
+      } else if (AREngine.a(this.a) == 2048L) {
+        this.a.n();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aanc
  * JD-Core Version:    0.7.0.1
  */

@@ -79,11 +79,7 @@ public class ReadInJoySwipeView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "dispatchTouchEvent()  action=" + i);
-    }
-    if (i == 0)
+    if (paramMotionEvent.getAction() == 0)
     {
       float f = paramMotionEvent.getRawX();
       this.c = f;
@@ -99,14 +95,12 @@ public class ReadInJoySwipeView
     boolean bool1 = bool2;
     if (paramMotionEvent.getAction() == 2)
     {
-      float f1 = paramMotionEvent.getRawX() - this.jdField_a_of_type_Float;
-      float f2 = paramMotionEvent.getRawY();
+      float f1 = paramMotionEvent.getRawX();
+      float f2 = this.jdField_a_of_type_Float;
+      paramMotionEvent.getRawY();
       float f3 = this.jdField_b_of_type_Float;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onInterceptTouchEvent()  distanceX=" + f1 + "  distanceY=" + (f2 - f3) + "  mTouchSlop=" + this.jdField_a_of_type_Int);
-      }
       bool1 = bool2;
-      if (Math.abs(f1) > this.jdField_a_of_type_Int) {
+      if (Math.abs(f1 - f2) > this.jdField_a_of_type_Int) {
         bool1 = true;
       }
     }

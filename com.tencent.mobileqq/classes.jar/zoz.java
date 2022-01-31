@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.NewFriendManager;
 
 public class zoz
   implements Runnable
 {
-  public zoz(TroopManager paramTroopManager, String paramString1, String paramString2, String paramString3) {}
+  public zoz(NewFriendManager paramNewFriendManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, -100, null, null, -100, -100, -100, -100L, -100L);
+    this.a.a(true);
+    NewFriendManager.a(this.a);
   }
 }
 

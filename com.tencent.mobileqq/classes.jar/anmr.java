@@ -1,40 +1,49 @@
-import com.tencent.open.base.ToastUtil;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.IBinder;
+import com.tencent.device.utils.SmartDeviceReport;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.humrecognition.humming.IRecognizer;
-import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
-import java.io.File;
+import cooperation.smartdevice.ipc.ISmartDeviceService.Stub;
+import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
+import mqq.app.MobileQQ;
 
 public class anmr
-  implements Runnable
+  implements ServiceConnection
 {
-  public anmr(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
+  public anmr(SmartDeviceIPCHost paramSmartDeviceIPCHost) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (BgmRecognitionProviderView.a(this.a) == null)
+    SmartDeviceIPCHost.a(this.a).removeMessages(1);
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = ISmartDeviceService.Stub.a(paramIBinder);
+    this.a.b();
+    QLog.d("SmartDeviceIPCHost", 1, "plugin service connected");
+    SmartDeviceReport.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Host", 0, 1, 0);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("BgmRecognitionProviderView", 2, "run: invoked. info: mRecognitionPart = " + BgmRecognitionProviderView.a(this.a));
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(this.a.jdField_a_of_type_AndroidContentServiceConnection);
+      label20:
+      this.a.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = null;
+      this.a.jdField_a_of_type_Boolean = false;
+      QLog.d("SmartDeviceIPCHost", 1, "plugin service disconnected");
       return;
     }
-    File localFile = BgmRecognitionProviderView.a(this.a).a();
-    if ((localFile != null) && (localFile.exists()))
+    catch (Exception paramComponentName)
     {
-      BgmRecognitionProviderView.a(this.a).a(localFile);
-      BgmRecognitionProviderView.a(this.a).a();
-      return;
+      break label20;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("BgmRecognitionProviderView", 2, "run: invoked. info: Failed to get audioFile. audioFile = " + localFile);
-    }
-    ToastUtil.a().a(2131439253);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmr
  * JD-Core Version:    0.7.0.1
  */

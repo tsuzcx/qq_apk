@@ -1,16 +1,16 @@
-import com.tencent.biz.qqstory.base.download.DownloaderImp;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class xum
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xum(P2VEditMusicDialog paramP2VEditMusicDialog, String paramString1, String paramString2) {}
+  public xum(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog.a = new DownloaderImp();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog.a.a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
+    EditLocalVideoActivity.a(this.a).dismiss();
   }
 }
 

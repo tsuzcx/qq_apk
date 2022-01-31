@@ -1,25 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.addContactTroopView.TroopCardSameCity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.im.troop_search_searchtab.searchtab.Card;
-import tencent.im.troop_search_searchtab.searchtab.TitleBar;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.Rotate3dAnimation;
 
-public class kkq
-  implements View.OnClickListener
+class kkq
+  implements Runnable
 {
-  public kkq(TroopCardSameCity paramTroopCardSameCity) {}
+  kkq(kkp paramkkp) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a(this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.str_transfer_url.get());
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_more", 0, 0, "", this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.title_bar.str_desc.get(), "", "");
+    Rotate3dAnimation localRotate3dAnimation = new Rotate3dAnimation(-90.0F, 0.0F, this.a.jdField_a_of_type_Float, this.a.b, 200.0F, false);
+    localRotate3dAnimation.setDuration(500L);
+    localRotate3dAnimation.setInterpolator(new DecelerateInterpolator());
+    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localRotate3dAnimation);
+    localRotate3dAnimation.setAnimationListener(new kkr(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kkq
  * JD-Core Version:    0.7.0.1
  */

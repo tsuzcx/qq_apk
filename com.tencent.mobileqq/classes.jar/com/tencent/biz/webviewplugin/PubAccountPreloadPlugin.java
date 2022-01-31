@@ -321,7 +321,7 @@ public class PubAccountPreloadPlugin
     //   200: ifnull +307 -> 507
     //   203: new 318	java/io/File
     //   206: dup
-    //   207: getstatic 323	com/tencent/mobileqq/app/AppConstants:co	Ljava/lang/String;
+    //   207: getstatic 323	com/tencent/mobileqq/app/AppConstants:cp	Ljava/lang/String;
     //   210: invokespecial 324	java/io/File:<init>	(Ljava/lang/String;)V
     //   213: invokevirtual 327	java/io/File:mkdirs	()Z
     //   216: pop
@@ -330,7 +330,7 @@ public class PubAccountPreloadPlugin
     //   221: new 67	java/lang/StringBuilder
     //   224: dup
     //   225: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   228: getstatic 323	com/tencent/mobileqq/app/AppConstants:co	Ljava/lang/String;
+    //   228: getstatic 323	com/tencent/mobileqq/app/AppConstants:cp	Ljava/lang/String;
     //   231: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   234: aload 10
     //   236: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;

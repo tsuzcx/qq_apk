@@ -1,37 +1,28 @@
-import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
 
 public class wrm
-  implements AdapterView.OnItemLongClickListener
+  implements View.OnTouchListener
 {
-  public wrm(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
+  public wrm(ContactsTroopAdapter paramContactsTroopAdapter, TextView paramTextView) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    switch (paramMotionEvent.getAction())
     {
-      return true;
-      paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem = paramAdapterView;
-    paramView.setSelected(true);
-    paramAdapterView = new QQCustomMenu();
-    paramAdapterView.a(2131375573, "复制", 2130838305);
-    paramAdapterView.a(2131363517, this.a.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, paramAdapterView, C2CMessageSearchDialog.a(this.a), new wrn(this, paramView));
-    return true;
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+    }
   }
 }
 

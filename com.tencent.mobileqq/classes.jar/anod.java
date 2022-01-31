@@ -1,25 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.JourneyTextItem;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
 
 public class anod
-  implements annx
+  implements Runnable
 {
-  public anod(JourneyTextItem paramJourneyTextItem) {}
+  public anod(TroopHWJsPlugin.UploadMediaEntry paramUploadMediaEntry) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void run()
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = TroopFileUtils.b(paramString);
-    }
-    return str;
+    this.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anod
  * JD-Core Version:    0.7.0.1
  */

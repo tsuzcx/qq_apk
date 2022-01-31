@@ -19,7 +19,7 @@ import com.tencent.av.utils.TraeHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import jot;
+import jqw;
 
 public class SmallScreenVideoControlUI
   implements Animation.AnimationListener
@@ -245,11 +245,11 @@ public class SmallScreenVideoControlUI
   
   protected void k()
   {
-    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131365379);
+    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131365384);
     this.jdField_b_of_type_AndroidWidgetTextView = localTextView;
     this.jdField_a_of_type_AndroidWidgetTextView = localTextView;
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b.findViewById(2131365383);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131365383);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b.findViewById(2131365388);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131365388);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
@@ -309,7 +309,7 @@ public class SmallScreenVideoControlUI
     }
     this.jdField_b_of_type_Boolean = true;
     if (this.jdField_e_of_type_JavaLangRunnable == null) {
-      this.jdField_e_of_type_JavaLangRunnable = new jot(this);
+      this.jdField_e_of_type_JavaLangRunnable = new jqw(this);
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_e_of_type_JavaLangRunnable, 0L);
   }
@@ -359,7 +359,7 @@ public class SmallScreenVideoControlUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoControlUI
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,8 @@ import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import cooperation.readinjoy.ReadInJoyHelper;
 import java.net.MalformedURLException;
 import java.net.URL;
-import lwr;
-import lws;
+import mae;
+import maf;
 
 public class ComponentTopicItemMulti
   extends RelativeLayout
@@ -58,7 +58,7 @@ public class ComponentTopicItemMulti
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969592, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969588, this, true);
   }
   
   public void a() {}
@@ -70,9 +70,9 @@ public class ComponentTopicItemMulti
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364477));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363378));
-    this.b = ((TextView)findViewById(2131363579));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364504));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363397));
+    this.b = ((TextView)findViewById(2131363598));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener) {}
@@ -89,11 +89,11 @@ public class ComponentTopicItemMulti
       paramObject = new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.d);
       ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramObject, getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.c + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.a);
-      paramObject = String.format(getResources().getString(2131438930), new Object[] { ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.jdField_b_of_type_Int) });
+      paramObject = String.format(getResources().getString(2131438954), new Object[] { ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.jdField_b_of_type_Int) });
       this.b.setText(paramObject);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.jdField_b_of_type_JavaLangString))
       {
-        setOnClickListener(new lwr(this));
+        setOnClickListener(new mae(this));
         return;
       }
     }
@@ -104,7 +104,7 @@ public class ComponentTopicItemMulti
         ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
         paramObject.printStackTrace();
       }
-      setOnClickListener(new lws(this));
+      setOnClickListener(new maf(this));
     }
   }
   

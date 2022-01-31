@@ -1,38 +1,25 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelAppTabView;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-class acqi
-  implements Runnable
+public class acqi
+  extends RecyclerView.ViewHolder
 {
-  acqi(acqh paramacqh) {}
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void run()
+  public acqi(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
   {
-    if (QfileLocalFileDelAppTabView.a(this.a.a) != null)
-    {
-      Iterator localIterator = QfileLocalFileDelAppTabView.b(this.a.a).keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (((List)QfileLocalFileDelAppTabView.c(this.a.a).get(str)).size() == 0) {
-          localIterator.remove();
-        }
-      }
-    }
-    QfileLocalFileDelAppTabView.d(this.a.a).clear();
-    QfileLocalFileDelAppTabView.f(this.a.a).putAll(QfileLocalFileDelAppTabView.e(this.a.a));
-    this.a.a.i();
-    this.a.a.setSelect(0);
-    QfileLocalFileDelAppTabView.g(this.a.a).clear();
-    this.a.a.a(true);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362724));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqi
  * JD-Core Version:    0.7.0.1
  */

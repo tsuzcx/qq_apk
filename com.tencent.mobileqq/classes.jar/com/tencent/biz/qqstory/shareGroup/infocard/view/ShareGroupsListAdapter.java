@@ -114,7 +114,7 @@ public class ShareGroupsListAdapter
     View localView = null;
     if (paramInt == 1)
     {
-      localView = localLayoutInflater.inflate(2130970833, paramViewGroup, false);
+      localView = localLayoutInflater.inflate(2130970850, paramViewGroup, false);
       localView.setTag(new ShareGroupsListAdapter.DayCollectionViewHolder(localView, this));
     }
     do
@@ -122,18 +122,18 @@ public class ShareGroupsListAdapter
       return localView;
       if (paramInt == 0)
       {
-        paramViewGroup = localLayoutInflater.inflate(2130970776, paramViewGroup, false);
+        paramViewGroup = localLayoutInflater.inflate(2130970792, paramViewGroup, false);
         paramViewGroup.setTag(new ShareGroupsListAdapter.YearCollectionViewHolder(paramViewGroup, this));
         return paramViewGroup;
       }
       if (paramInt == 2)
       {
-        paramViewGroup = localLayoutInflater.inflate(2130970832, paramViewGroup, false);
+        paramViewGroup = localLayoutInflater.inflate(2130970849, paramViewGroup, false);
         paramViewGroup.setTag(new ShareGroupsListAdapter.ProfilePlaceholderViewHolder(paramViewGroup, this));
         return paramViewGroup;
       }
     } while (paramInt != 7);
-    paramViewGroup = localLayoutInflater.inflate(2130970829, paramViewGroup, false);
+    paramViewGroup = localLayoutInflater.inflate(2130970846, paramViewGroup, false);
     paramViewGroup.setTag(new ShareGroupsListAdapter.HotSortCollectionViewHolder(paramViewGroup, this));
     return paramViewGroup;
   }

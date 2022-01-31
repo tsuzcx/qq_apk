@@ -1,24 +1,26 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public class yjx
-  implements Runnable
+class yjx
+  implements DialogInterface.OnClickListener
 {
-  public yjx(ApolloGameNormalStartHandler paramApolloGameNormalStartHandler, int paramInt1, int paramInt2, int paramInt3, QQAppInterface paramQQAppInterface, String paramString1, int paramInt4, String paramString2, Activity paramActivity) {}
+  yjx(yjw paramyjw) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CmGameStartChecker.StartCheckParam localStartCheckParam = new CmGameStartChecker.StartCheckParam(this.jdField_a_of_type_Int, true, "normalStart", 0L, 7, this.jdField_b_of_type_Int, this.c, ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_JavaLangString, this.d);
-    localStartCheckParam.extendJson = this.jdField_b_of_type_JavaLangString;
-    ApolloGameUtil.a(this.jdField_a_of_type_AndroidAppActivity, localStartCheckParam);
+    if (this.a.a.a.get() != null) {
+      ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.b, (MqqHandler)this.a.a.a.get(), this.a.a.g + ".mp4", true));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yjx
  * JD-Core Version:    0.7.0.1
  */

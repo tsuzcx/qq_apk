@@ -1,15 +1,19 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
+import com.tencent.mobileqq.emoticonview.MagicFaceAdapter;
+import java.util.List;
 
-class acoj
-  implements Runnable
+public class acoj
+  implements EmotionPanelDataBuilder.EmotionPanelDataCallback
 {
-  acoj(acoi paramacoi) {}
+  public acoj(MagicFaceAdapter paramMagicFaceAdapter) {}
   
-  public void run()
+  public void a(List paramList)
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(4);
-    this.a.a.finish();
+    if (paramList != null)
+    {
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 

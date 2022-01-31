@@ -1,20 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
 public class spy
-  implements TroopManager.callbackInMainThread
+  implements Comparator
 {
-  public spy(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
+  private spy(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void a(Object paramObject)
+  public int a(spw paramspw1, spw paramspw2)
   {
-    if ((paramObject instanceof String))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-    }
+    return paramspw1.c.compareToIgnoreCase(paramspw2.c);
   }
 }
 

@@ -1,51 +1,48 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.av.VideoController;
 
 public class jfq
-  extends Handler
+  extends OrientationEventListener
 {
-  public jfq(MagicFaceDataEntity paramMagicFaceDataEntity, Looper paramLooper)
+  private long jdField_a_of_type_Long;
+  
+  public jfq(VideoController paramVideoController, Context paramContext, int paramInt)
   {
-    super(paramLooper);
+    super(paramContext, paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onOrientationChanged(int paramInt)
   {
-    AVLog.c("MagicFaceDataEntity", "MagicFaceDataEntity handleMessage A: " + this.a.a + "|" + paramMessage.what);
-    switch (paramMessage.what)
-    {
-    }
+    if (paramInt == -1) {}
+    long l;
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (this.a.a != 1);
-          MagicFaceDataEntity.a(this.a, (Object[])paramMessage.obj);
-          return;
-        } while (this.a.a != 0);
-        this.a.a = 1;
-        this.a.c();
-        return;
-      } while (this.a.a != 1);
-      this.a.a = 0;
-      this.a.d();
       return;
-    } while (this.a.a != 1);
-    paramMessage = (Integer)paramMessage.obj;
-    this.a.a(paramMessage.intValue());
+      l = System.currentTimeMillis();
+    } while (l - this.jdField_a_of_type_Long < 50L);
+    this.jdField_a_of_type_Long = l;
+    if ((paramInt > 315) || (paramInt <= 45))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 1);
+      return;
+    }
+    if ((paramInt > 45) && (paramInt <= 135))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 2);
+      return;
+    }
+    if ((paramInt > 135) && (paramInt <= 225))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 3);
+      return;
+    }
+    VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jfq
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ import com.tencent.mobileqq.text.QQText;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lvo;
+import lyy;
 
 public class ComponentHeaderNewSocial
   extends ComponentHeaderFriendRecommend
@@ -87,7 +87,7 @@ public class ComponentHeaderNewSocial
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("你的其他").append(localList.size()).append("个好友也Biu了");
     this.jdField_c_of_type_AndroidWidgetTextView.setText(localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new lvo(this, paramIReadInJoyModel));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new lyy(this, paramIReadInJoyModel));
   }
   
   private void c(IReadInJoyModel paramIReadInJoyModel)
@@ -187,14 +187,14 @@ public class ComponentHeaderNewSocial
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969578, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969574, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
     this.jdField_a_of_type_AndroidViewView = findViewById(2131367029);
-    ApiCompatibilityUtils.a(this.jdField_a_of_type_AndroidViewView, getResources().getDrawable(2130839723));
+    ApiCompatibilityUtils.a(this.jdField_a_of_type_AndroidViewView, getResources().getDrawable(2130839738));
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367031));
     this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367030));
     this.b = findViewById(2131367034);

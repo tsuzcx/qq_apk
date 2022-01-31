@@ -20,7 +20,7 @@ public class CheckJoinShareGroupJobSegment
   
   public void a(GetShareGroupInfoHandler.GetShareGroupInfoEvent paramGetShareGroupInfoEvent)
   {
-    if ((paramGetShareGroupInfoEvent == null) || (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null))
+    if ((paramGetShareGroupInfoEvent == null) || (paramGetShareGroupInfoEvent.errorInfo.isFail()) || (paramGetShareGroupInfoEvent.a == null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.msgList.jobCheck", 2, "request failed, pass as default");
@@ -28,7 +28,7 @@ public class CheckJoinShareGroupJobSegment
       notifyResult(this.a);
       return;
     }
-    if (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isInvalid())
+    if (paramGetShareGroupInfoEvent.a.isInvalid())
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.msgList.jobCheck", 2, "invalid");
@@ -36,7 +36,7 @@ public class CheckJoinShareGroupJobSegment
       notifyError(new ErrorMessage(-2, ""));
       return;
     }
-    if (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic())
+    if (paramGetShareGroupInfoEvent.a.isPublic())
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.msgList.jobCheck", 2, "public group from remote");
@@ -44,7 +44,7 @@ public class CheckJoinShareGroupJobSegment
       notifyResult(this.a);
       return;
     }
-    if (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isSubscribe())
+    if (paramGetShareGroupInfoEvent.a.isSubscribe())
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.msgList.jobCheck", 2, "member");

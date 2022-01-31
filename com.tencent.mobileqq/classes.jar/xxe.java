@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-class xxe
-  implements Runnable
+public class xxe
+  implements DialogInterface.OnClickListener
 {
-  xxe(xxc paramxxc) {}
+  public xxe(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoCaptureController.a(2);
+    StoryReportor.a("video_shoot", "cancel_now", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
   }
 }
 

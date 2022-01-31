@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg;
 
-import aiif;
+import aina;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -57,7 +57,7 @@ public class StructMsgForImageShare
   extends AbsShareMsg
 {
   public static final int SHARE_IMAGE_FREVIEW_MAX_SZIE = 288;
-  private static View.OnClickListener a = new aiif();
+  private static View.OnClickListener a = new aina();
   public String bigUrl;
   public int mImageBizType;
   public int mIsSend = 1;
@@ -475,9 +475,9 @@ public class StructMsgForImageShare
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     paramView.setMinimumHeight(i * 120);
     if (ChatActivityConstants.N) {
-      paramView.setContentDescription(paramContext.getString(2131432758));
+      paramView.setContentDescription(paramContext.getString(2131432772));
     }
-    paramContext = ((Resources)localObject1).getDrawable(2130846093);
+    paramContext = ((Resources)localObject1).getDrawable(2130846175);
     localObject1 = getFirstImageElement();
     if ((localObject1 != null) && (((StructMsgItemImage)localObject1).u != null))
     {

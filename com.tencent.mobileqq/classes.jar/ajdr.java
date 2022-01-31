@@ -1,18 +1,25 @@
-import java.util.Comparator;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public final class ajdr
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public int a(String paramString1, String paramString2)
+  public ajdr(Activity paramActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      int i = paramString1.getBytes("utf-8").length;
-      int j = paramString2.getBytes("utf-8").length;
-      return i - j;
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface.dismiss();
+      return;
     }
-    catch (Exception localException) {}
-    return paramString1.getBytes().length - paramString2.getBytes().length;
+    TroopBarPublishUtils.b(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

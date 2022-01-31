@@ -12,10 +12,10 @@ public class GPUBaseFilter
   public static float[] a;
   private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer = GlUtil.a(jdField_b_of_type_ArrayOfFloat);
   public static final float[] b;
-  protected int a;
+  public int a;
   private final String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  protected int b;
+  public int b;
   private final String jdField_b_of_type_JavaLangString;
   public int c = 3553;
   public int d = 101;
@@ -102,7 +102,7 @@ public class GPUBaseFilter
       SLog.a("GPUBaseFilter", new RuntimeException("failed creating program " + getClass().getSimpleName()));
     }
     this.jdField_a_of_type_Boolean = true;
-    b();
+    c();
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -149,7 +149,7 @@ public class GPUBaseFilter
     GLES20.glUniformMatrix4fv(m, 1, false, arrayOfFloat, 0);
     GLES20.glActiveTexture(33984);
     GLES20.glBindTexture(this.c, paramInt);
-    e();
+    f();
     GLES20.glDrawArrays(5, 0, 4);
     a("glDrawArrays");
     GLES20.glActiveTexture(33984);
@@ -166,20 +166,26 @@ public class GPUBaseFilter
     return this.d;
   }
   
-  public void b() {}
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    a();
+  }
   
-  public void c()
+  public void c() {}
+  
+  public void d()
   {
     SLog.d("GPUBaseFilter", "destroy");
     this.jdField_a_of_type_Boolean = false;
     GLES20.glDeleteProgram(this.e);
     this.e = 0;
-    d();
+    e();
   }
   
-  public void d() {}
-  
   public void e() {}
+  
+  public void f() {}
 }
 
 

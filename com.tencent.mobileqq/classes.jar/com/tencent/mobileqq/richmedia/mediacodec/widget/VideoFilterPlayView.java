@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.mediacodec.widget;
 
-import ahoy;
-import ahoz;
+import ahtq;
+import ahtr;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
@@ -20,7 +20,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class VideoFilterPlayView
   extends HWVideoPlayView
 {
-  public static int f;
+  public static int h;
   private GPUBaseFilter jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;
   private GpuImagePartsFilterGroup jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup;
   private RenderBuffer jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
@@ -28,7 +28,7 @@ public class VideoFilterPlayView
   private GPUBaseFilter jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;
   private RenderBuffer jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
   private GPUBaseFilter c;
-  public int g;
+  public int i;
   
   public VideoFilterPlayView(Context paramContext)
   {
@@ -40,9 +40,9 @@ public class VideoFilterPlayView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
     n();
-    int i = f + 1;
-    f = i;
-    this.g = i;
+    int j = h + 1;
+    h = j;
+    this.i = j;
   }
   
   private void n()
@@ -51,21 +51,21 @@ public class VideoFilterPlayView
     GPUBaseFilter localGPUBaseFilter = FilterFactory.a(101);
     this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = localGPUBaseFilter;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = localGPUBaseFilter;
-    a(new ahoy(this));
+    a(new ahtq(this));
   }
   
   public void a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.f();
-    int i = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.g();
+    int j = paramInt;
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.b())
     {
       this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.a(paramInt, null, null);
       this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
-      i = this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
+      j = this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.a(i, paramArrayOfFloat1, paramArrayOfFloat2);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.a(j, paramArrayOfFloat1, paramArrayOfFloat2);
   }
   
   public void a(long paramLong)
@@ -158,7 +158,7 @@ public class VideoFilterPlayView
     if (this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter == null)
     {
       this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = FilterFactory.a(106);
-      a(new ahoz(this));
+      a(new ahtr(this));
     }
     ((GPUImagePixelationFilter)this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter).a(paramBitmap, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_b_of_type_Int);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;

@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.statistics.storage.StorageItem;
-import java.util.Comparator;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import java.io.File;
 
 public class aihe
-  implements Comparator
 {
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    paramObject1 = (StorageItem)paramObject1;
-    paramObject2 = (StorageItem)paramObject2;
-    if (paramObject1.a > paramObject2.a) {
-      return -1;
-    }
-    if (paramObject1.a < paramObject2.a) {
-      return 1;
-    }
-    return 0;
-  }
+  public int a;
+  public Rect a;
+  public CameraCover.PictureCallback a;
+  public File a;
+  public boolean a;
+  public int b;
+  
+  private aihe(CameraProxy paramCameraProxy) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aihe
  * JD-Core Version:    0.7.0.1
  */

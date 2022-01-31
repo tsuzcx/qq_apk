@@ -47,10 +47,10 @@ import java.util.Iterator;
 import mqq.manager.TicketManager;
 import oicq.wlogin_sdk.request.Ticket;
 import org.json.JSONObject;
-import xhw;
-import xhx;
-import xia;
-import xib;
+import xnt;
+import xnu;
+import xnx;
+import xny;
 
 public class VoiceRedPacketHelper
   implements QQRecorder.OnQQRecorderListener, QQRecorder.RecorderProcessorListener
@@ -160,6 +160,15 @@ public class VoiceRedPacketHelper
     return null;
   }
   
+  public static String a(MessageRecord paramMessageRecord)
+  {
+    String str = "";
+    if (paramMessageRecord != null) {
+      str = paramMessageRecord.getExtInfoFromExtStr("voice_score_id");
+    }
+    return str;
+  }
+  
   private void a(int paramInt1, long paramLong, int paramInt2, MessageForQQWalletMsg paramMessageForQQWalletMsg)
   {
     a(paramInt1, paramLong, paramInt2, paramMessageForQQWalletMsg, 0.0F);
@@ -198,7 +207,7 @@ public class VoiceRedPacketHelper
   private void a(int paramInt, String paramString)
   {
     VoiceRedPacketHelper.OnVoiceRedPacketListener localOnVoiceRedPacketListener = (VoiceRedPacketHelper.OnVoiceRedPacketListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localOnVoiceRedPacketListener != null) && (!localOnVoiceRedPacketListener.e())) {
+    if ((localOnVoiceRedPacketListener != null) && (!localOnVoiceRedPacketListener.a())) {
       localOnVoiceRedPacketListener.a(paramInt, paramString);
     }
     if (QLog.isColorLevel()) {
@@ -437,7 +446,7 @@ public class VoiceRedPacketHelper
       localBaseApplication = BaseApplication.getContext();
       if (!FileUtils.a())
       {
-        b(2131433437);
+        b(2131433451);
         b("no sdcard");
         return;
       }
@@ -450,19 +459,19 @@ public class VoiceRedPacketHelper
     }
     if (!QQRecorder.d())
     {
-      b(2131433438);
+      b(2131433452);
       b("sdcard full");
       return;
     }
     if (!QQRecorder.a(localRecorderParam.jdField_c_of_type_Int))
     {
-      b(2131433441);
+      b(2131433455);
       b("internal storage full");
       return;
     }
     if (localQQAppInterface.c())
     {
-      b(2131433788);
+      b(2131433804);
       b("ppt play error on video chatting");
       return;
     }
@@ -488,7 +497,7 @@ public class VoiceRedPacketHelper
       QLog.d("VoiceRedPacketHelper", 2, "startRecord() is checkInPhone:" + paramBoolean + ",isInitSuccess:" + this.jdField_c_of_type_Boolean + ",isServerAvailable:" + bool1);
     }
     if ((!this.jdField_c_of_type_Boolean) && (!bool1)) {
-      a(2, QWalletSetting.a(localQQAppInterface.getCurrentAccountUin(), "voice_recognieze_in_phone_tips", BaseApplicationImpl.getContext().getResources().getString(2131432341)));
+      a(2, QWalletSetting.a(localQQAppInterface.getCurrentAccountUin(), "voice_recognieze_in_phone_tips", BaseApplicationImpl.getContext().getResources().getString(2131432352)));
     }
     if (paramBoolean)
     {
@@ -558,24 +567,25 @@ public class VoiceRedPacketHelper
       if (localObject != null) {
         i = localObject.hashCode();
       }
-      if ((localQQAppInterface == null) || (paramMessageRecord == null) || (!(paramMessageRecord instanceof MessageForPtt)) || (this.jdField_a_of_type_JavaUtilHashMap == null) || (localObject == null) || (((VoiceRedPacketHelper.OnVoiceRedPacketListener)localObject).e()) || (this.jdField_b_of_type_Boolean) || (i != this.jdField_a_of_type_Int)) {
+      if ((localQQAppInterface == null) || (paramMessageRecord == null) || (!(paramMessageRecord instanceof MessageForPtt)) || (this.jdField_a_of_type_JavaUtilHashMap == null) || (localObject == null) || (((VoiceRedPacketHelper.OnVoiceRedPacketListener)localObject).a()) || (this.jdField_b_of_type_Boolean) || (i != this.jdField_a_of_type_Int)) {
         return;
       }
       paramMessageRecord = (MessageForPtt)paramMessageRecord;
       i = paramMessageRecord.voiceRedPacketFlag;
+      localObject = (MessageForQQWalletMsg)this.jdField_a_of_type_JavaUtilHashMap.get(paramMessageRecord);
       if (i == 1)
       {
         paramArrayOfByte = (VoiceRedPacketHelper.OnVoiceRedPacketListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if ((paramArrayOfByte != null) && (!paramArrayOfByte.e())) {
+        if ((paramArrayOfByte != null) && (!paramArrayOfByte.a())) {
           paramArrayOfByte.a(true, paramMessageRecord.getExtInfoFromExtStr("voice_score_id"));
         }
+        a(a(paramMessageRecord), (MessageRecord)localObject);
         localQQAppInterface.a().a(paramMessageRecord, paramMessageObserver);
         return;
       }
       if (i != 2) {
         return;
       }
-      localObject = (MessageForQQWalletMsg)this.jdField_a_of_type_JavaUtilHashMap.get(paramMessageRecord);
       if ((localObject == null) || (((MessageForQQWalletMsg)localObject).mQQWalletRedPacketMsg == null))
       {
         b("MessageForQQWalletMsg is null");
@@ -594,7 +604,7 @@ public class VoiceRedPacketHelper
     }
     for (;;)
     {
-      a(new xhx(this, localQQAppInterface, (MessageForQQWalletMsg)localObject, i, paramLong, paramArrayOfByte, paramString, paramMessageRecord, paramBaseUploadProcessor, paramMessageObserver));
+      a(new xnu(this, localQQAppInterface, (MessageForQQWalletMsg)localObject, i, paramLong, paramArrayOfByte, paramString, paramMessageRecord, paramBaseUploadProcessor, paramMessageObserver));
       return;
       int j = ((MessageForQQWalletMsg)localObject).istroop;
       if (j == 3000) {
@@ -617,7 +627,7 @@ public class VoiceRedPacketHelper
     if (QLog.isColorLevel()) {
       QLog.d("VoiceRedPacketHelper", 2, "onRecorderPrepare() is called");
     }
-    AudioUtil.b(2131230744, false);
+    AudioUtil.b(2131230745, false);
     paramRecorderParam = RecordParams.a(paramRecorderParam.jdField_c_of_type_Int, paramRecorderParam.jdField_a_of_type_Int);
     PttBuffer.a(paramString);
     PttBuffer.a(paramString, paramRecorderParam, paramRecorderParam.length);
@@ -641,7 +651,7 @@ public class VoiceRedPacketHelper
       PttBuffer.b(paramString);
       if (paramDouble < 500.0D)
       {
-        b(2131433786);
+        b(2131433800);
         b("record time too short");
         return;
       }
@@ -678,7 +688,7 @@ public class VoiceRedPacketHelper
           a(((VoiceRedPacketHelper.RecogResult)localObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
         }
         localObject = (VoiceRedPacketHelper.OnVoiceRedPacketListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if ((localObject == null) || (((VoiceRedPacketHelper.OnVoiceRedPacketListener)localObject).e()) || (bool)) {
+        if ((localObject == null) || (((VoiceRedPacketHelper.OnVoiceRedPacketListener)localObject).a()) || (bool)) {
           break label453;
         }
         ((VoiceRedPacketHelper.OnVoiceRedPacketListener)localObject).a(false, "");
@@ -728,21 +738,21 @@ public class VoiceRedPacketHelper
   {
     PttBuffer.a(paramString, paramArrayOfByte, paramInt1);
     paramString = (VoiceRedPacketHelper.OnVoiceRedPacketListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramString != null) && (!paramString.e())) {
+    if ((paramString != null) && (!paramString.a())) {
       paramString.a(AudioPanel.a(paramInt2));
     }
   }
   
-  public void a(xib paramxib)
+  public void a(xny paramxny)
   {
     Object localObject = QWalletTools.a();
-    if ((localObject == null) || (paramxib == null)) {}
+    if ((localObject == null) || (paramxny == null)) {}
     do
     {
       return;
-      localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).GetSkey(((QQAppInterface)localObject).getCurrentAccountUin(), 16L, new xia(this, paramxib));
+      localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).GetSkey(((QQAppInterface)localObject).getCurrentAccountUin(), 16L, new xnx(this, paramxny));
     } while ((localObject == null) || (((Ticket)localObject)._sig == null) || (((Ticket)localObject)._sig.length == 0));
-    paramxib.a(new String(((Ticket)localObject)._sig));
+    paramxny.a(new String(((Ticket)localObject)._sig));
   }
   
   public void b()
@@ -762,7 +772,7 @@ public class VoiceRedPacketHelper
       return;
     }
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    localQQAppInterface.runOnUiThread(new xhw(this, localBaseApplication, paramInt, localBaseApplication.getResources().getDimensionPixelSize(2131558448)));
+    localQQAppInterface.runOnUiThread(new xnt(this, localBaseApplication, paramInt, localBaseApplication.getResources().getDimensionPixelSize(2131558448)));
   }
   
   public void b(IPttProcessor paramIPttProcessor, IPttProcessor.ProcessData paramProcessData)

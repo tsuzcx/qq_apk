@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amcq;
+import amka;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -53,21 +53,21 @@ public class MovingView
   public MovingView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new amcq(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new amka(this, Looper.getMainLooper());
     c();
   }
   
   public MovingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new amcq(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new amka(this, Looper.getMainLooper());
     c();
   }
   
   public MovingView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidOsHandler = new amcq(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new amka(this, Looper.getMainLooper());
     c();
   }
   

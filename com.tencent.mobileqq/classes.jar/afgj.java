@@ -1,21 +1,40 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.app.Activity;
+import com.tencent.common.galleryactivity.AbstractAnimationManager;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.AbstractImageListModel;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserGalleryScene;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
 
 public class afgj
-  implements TextWatcher
+  extends GalleryManager
 {
-  public afgj(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public afgj(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
-    NearbyUtils.a(this.a.e, 40);
+    return super.a(paramActivity, paramAbstractImageListModel);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    return new NearbyProfilePicBrowserGalleryScene((PicBrowserActivity)paramActivity, paramAbstractImageListModel);
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public AbstractImageListModel a(Activity paramActivity)
+  {
+    paramActivity = new PicBrowserModel(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
+  }
+  
+  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    return null;
+  }
 }
 
 

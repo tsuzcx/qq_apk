@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.util.DanceGameReporter;
-import com.tencent.mobileqq.shortvideo.dancegame.DanceGameVideoManager;
+import android.view.View;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class ahiy
-  implements Runnable
+class ahiy
+  implements ActionSheet.OnButtonClickListener
 {
-  public ahiy(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, long paramLong) {}
+  ahiy(ahix paramahix, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    DanceGameVideoManager.a().a();
-    DanceGameReporter.a().a(this.jdField_a_of_type_Long);
+    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiy
  * JD-Core Version:    0.7.0.1
  */

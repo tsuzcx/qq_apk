@@ -27,8 +27,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import ntk;
-import ntl;
+import nya;
+import nyb;
 
 public abstract class QQStoryBaseFragment
   extends IphoneTitleBarFragment
@@ -49,10 +49,30 @@ public abstract class QQStoryBaseFragment
   
   public View a(int paramInt)
   {
-    return this.jdField_e_of_type_AndroidViewView.findViewById(paramInt);
+    return this.mContentView.findViewById(paramInt);
   }
   
-  public void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.rightViewText.setVisibility(0);
+    this.rightViewText.setText(paramString);
+    this.rightViewText.setEnabled(true);
+    if (paramOnClickListener != null) {
+      this.rightViewText.setOnClickListener(paramOnClickListener);
+    }
+    if (AppSetting.b) {
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + "按钮");
+    }
+  }
+  
+  public void a(@NonNull Map paramMap) {}
+  
+  public boolean a()
+  {
+    return (getActivity() != null) && (getActivity().isFinishing());
+  }
+  
+  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     QQStoryContext.a();
     Object localObject1 = new HashMap();
@@ -67,50 +87,30 @@ public abstract class QQStoryBaseFragment
       localObject2 = (String)((Map.Entry)localObject2).getValue();
       Dispatchers.get().registerSubscriber((String)localObject2, localSubscriber);
     }
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.c = true;
     QQStoryContext.a();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-    Bosses.get().postLightWeightJob(new ntk(this), 10);
+    Bosses.get().postLightWeightJob(new nya(this), 10);
   }
   
-  public void a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_e_of_type_AndroidWidgetTextView.setEnabled(true);
-    if (paramOnClickListener != null) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-    }
-    if (AppSetting.b) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_e_of_type_AndroidWidgetTextView.getText() + "按钮");
-    }
-  }
-  
-  public void a(@NonNull Map paramMap) {}
-  
-  public boolean e()
-  {
-    return (getActivity() != null) && (getActivity().isFinishing());
-  }
-  
-  public void f()
+  public void e()
   {
     if (this.jdField_a_of_type_AndroidAppDialog != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new ntl(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new nyb(this));
     }
   }
   
   public boolean isValidate()
   {
-    return (this.c) && (!e());
+    return (this.c) && (!a());
   }
   
   public void onDestroyView()
   {
-    f();
+    e();
     this.c = false;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
     while (localIterator.hasNext())

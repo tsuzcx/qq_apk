@@ -1,33 +1,14 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.activity.messagesearch.SearchHistoryAdapter;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
 
-public class wro
-  implements TextWatcher
+class wro
+  implements Runnable
 {
-  public wro(MessageSearchDialog paramMessageSearchDialog) {}
+  wro(wrn paramwrn) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (this.a.b) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter.a(paramEditable);
-    }
-    this.a.b = true;
-    if (paramEditable.length() == 0)
-    {
-      this.a.findViewById(2131368323).setVisibility(8);
-      return;
-    }
-    this.a.findViewById(2131368323).setVisibility(0);
+    this.a.a.notifyDataSetChanged();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

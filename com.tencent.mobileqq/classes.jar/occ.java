@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
+import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter;
+import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter.StoryQQ2UidCallback;
 
-public class occ
-  implements View.OnClickListener
+class occ
+  implements Runnable
 {
-  public occ(TagAdapter paramTagAdapter) {}
+  occ(ocb paramocb, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    TagAdapter.a(this.a, false);
-    this.a.notifyDataSetChanged();
-    if (TagAdapter.a(this.a) != null) {
-      TagAdapter.a(this.a).f();
+    if (StoryQQ2UidConverter.a(this.jdField_a_of_type_Ocb.a) != null) {
+      StoryQQ2UidConverter.a(this.jdField_a_of_type_Ocb.a).a(this.jdField_a_of_type_JavaLangString, false);
     }
   }
 }

@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-public class adiy
-  implements FMDialogUtil.FMDialogInterface
+public final class adiy
+  implements Parcelable.Creator
 {
-  public adiy(QfileEditBottomBar paramQfileEditBottomBar) {}
-  
-  public void a()
+  public ForwardFileInfo a(Parcel paramParcel)
   {
-    QfileEditBottomBar.a(this.a);
+    return new ForwardFileInfo(paramParcel, null);
   }
   
-  public void b() {}
+  public ForwardFileInfo[] a(int paramInt)
+  {
+    return new ForwardFileInfo[paramInt];
+  }
 }
 
 

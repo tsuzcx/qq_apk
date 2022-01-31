@@ -1,30 +1,25 @@
-import android.text.Editable;
-import android.widget.EditText;
-import cooperation.qzone.share.QZoneShareActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper;
 
-public class amzc
+public final class amzc
   implements Runnable
 {
-  public amzc(QZoneShareActivity paramQZoneShareActivity) {}
+  public amzc(long paramLong) {}
   
   public void run()
   {
-    Editable localEditable;
-    if (this.a.a != null)
+    try
     {
-      localEditable = this.a.a.getText();
-      if (localEditable == null) {
-        break label71;
-      }
-    }
-    label71:
-    for (int i = localEditable.length();; i = 0)
-    {
-      this.a.a.setSelection(i);
-      if ((!this.a.isFinishing()) && (!this.a.d)) {
-        this.a.h();
-      }
+      QLog.i("QZoneHelper", 2, "QQ清空缓存数据时的回调 onQQClearLocalCache,uin=" + this.a);
+      LocalMultiProcConfig.putBool("qzone_force_refresh", true);
+      LocalMultiProcConfig.putBool("qzone_first_in", true);
+      QzoneOfflineCacheHelper.updataSmallGameLastCacheFinishTime(this.a, 0L);
       return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QZoneHelper", 1, "QQ清空缓存数据时的回调 error.", localException);
     }
   }
 }

@@ -1,24 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.widget.AntiphingToast;
 
-class alag
-  implements DialogInterface.OnClickListener
+public class alag
+  extends Handler
 {
-  alag(alae paramalae, SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse, JSONObject paramJSONObject) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public alag(AntiphingToast paramAntiphingToast, Looper paramLooper)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_Alae.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$GetAuthApiListResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      this.a.a(0.0F, 0 - AntiphingToast.a(this.a).getHeight(), true);
+    }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alag
  * JD-Core Version:    0.7.0.1
  */

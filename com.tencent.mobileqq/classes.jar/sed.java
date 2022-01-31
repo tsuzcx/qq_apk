@@ -1,34 +1,32 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
+import mqq.os.MqqHandler;
 
 public class sed
   implements Runnable
 {
-  public sed(ChatSettingForTroop paramChatSettingForTroop, Intent paramIntent) {}
+  public sed(ChatHistory paramChatHistory, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    try
-    {
-      ArrayList localArrayList = this.jdField_a_of_type_AndroidContentIntent.getExtras().getStringArrayList("param_admins");
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.coverAdministrators(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, localArrayList);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.post(new see(this));
-      return;
+    StringBuilder localStringBuilder = null;
+    if (this.jdField_a_of_type_Boolean) {
+      localStringBuilder = new StringBuilder();
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.chatopttroop", 2, localException, new Object[0]);
-        }
-      }
+    int i = 0;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
+      i = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(MessageRecord.getTableName(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_Int));
     }
+    int j = ChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_Int, localStringBuilder);
+    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(this.jdField_a_of_type_Int);
+    if ((localStringBuilder != null) && (localStringBuilder.length() > 0)) {
+      localMessage.obj = localStringBuilder.toString();
+    }
+    localMessage.arg1 = j;
+    localMessage.arg2 = i;
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
   }
 }
 

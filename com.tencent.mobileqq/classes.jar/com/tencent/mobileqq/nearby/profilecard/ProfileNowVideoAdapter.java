@@ -138,16 +138,16 @@ public class ProfileNowVideoAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970470, paramViewGroup, false);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970483, paramViewGroup, false);
       paramView = new ProfileNowVideoAdapter.ViewHolder();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366704));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370808));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364477));
-      paramView.c = ((TextView)localView.findViewById(2131370806));
-      paramView.d = ((TextView)localView.findViewById(2131370807));
-      paramView.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131370805));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131370663);
-      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131370670);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366702));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370798));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364504));
+      paramView.c = ((TextView)localView.findViewById(2131370796));
+      paramView.d = ((TextView)localView.findViewById(2131370797));
+      paramView.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131370795));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131370654);
+      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131370661);
       if (paramInt == 0)
       {
         if (this.jdField_a_of_type_AndroidViewView != null) {

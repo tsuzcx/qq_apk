@@ -1,127 +1,143 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
+import android.app.Notification;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.RemoteViews;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class adif
-  implements UniformDownloader.IUniformDownloaderListener
 {
-  public adif(UniformDownloader paramUniformDownloader) {}
+  float jdField_a_of_type_Float = 14.0F;
+  int jdField_a_of_type_Int = 0;
+  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
+  Integer jdField_a_of_type_JavaLangInteger = null;
+  final String jdField_a_of_type_JavaLangString = "SearchForText";
+  float jdField_b_of_type_Float = 16.0F;
+  Integer jdField_b_of_type_JavaLangInteger = null;
+  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
   
-  public void a(int paramInt, Bundle paramBundle)
+  public adif(UniformDownloadNfn paramUniformDownloadNfn, Context paramContext)
   {
-    boolean bool = this.a.c();
-    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadStart. start:" + bool + "progress:" + paramInt);
-    if (bool) {}
-    for (;;)
+    if (paramContext != null)
     {
-      return;
-      this.a.a(true);
-      Object localObject = UniformDownloader.a(this.a);
-      if (paramBundle != null) {
-        paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+      a(paramContext, false);
+    }
+  }
+  
+  private boolean a(ViewGroup paramViewGroup)
+  {
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
       {
-        UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)((Iterator)localObject).next();
-        if (localIUniformDownloaderListener != null) {
-          localIUniformDownloaderListener.a(paramInt, paramBundle);
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForTitle".equals(localTextView.getText().toString()))
+        {
+          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_b_of_type_Float = localTextView.getTextSize();
+          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
         }
       }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
     }
+    return false;
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  private boolean b(ViewGroup paramViewGroup)
   {
-    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errcode:" + paramInt + "errStr:" + paramString);
-    if ((UniformDownloader.b(this.a) < 1) && (1 == UniformDownloader.a(this.a)))
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
     {
-      QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errorRetry");
-      UniformDownloader.c(this.a);
-      UniformDownloader.a(this.a, paramInt, paramString, paramBundle);
-    }
-    for (;;)
-    {
-      return;
-      if (paramBundle != null) {
-        paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
-      }
-      Iterator localIterator = UniformDownloader.a(this.a).iterator();
-      while (localIterator.hasNext())
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
       {
-        UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-        if (localIUniformDownloaderListener != null) {
-          localIUniformDownloaderListener.a(paramInt, paramString, paramBundle);
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForText".equals(localTextView.getText().toString()))
+        {
+          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_a_of_type_Float = localTextView.getTextSize();
+          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
         }
       }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public Integer a()
+  {
+    return this.jdField_a_of_type_JavaLangInteger;
+  }
+  
+  public void a(Context paramContext, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+    }
+    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {}
+    while (this.jdField_a_of_type_Int > 3) {
+      return;
+    }
+    this.jdField_a_of_type_Int += 1;
+    try
+    {
+      Notification localNotification = new Notification();
+      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
+      LinearLayout localLinearLayout = new LinearLayout(paramContext);
+      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, localLinearLayout);
+      if (!a(paramContext)) {
+        QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. recurseTitleGroup failed");
+      }
+      if (!b(paramContext)) {
+        QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. recurseTextGroup, failed");
+      }
+      localLinearLayout.removeAllViews();
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. extractColors, exception");
+      paramContext.printStackTrace();
+      return;
+    }
+    catch (NoSuchFieldError paramContext)
+    {
+      paramContext.printStackTrace();
     }
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public float b()
   {
-    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadSucess. filePath:" + paramString);
-    paramBundle = new Bundle();
-    paramBundle.putInt("_CB_SID", UniformDownloader.a(this.a));
-    paramBundle.putString("_CB_URL", UniformDownloader.a(this.a));
-    paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
-    Iterator localIterator = UniformDownloader.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-      if (localIUniformDownloaderListener != null) {
-        localIUniformDownloaderListener.a(paramString, paramLong, paramBundle);
-      }
-    }
+    return this.jdField_b_of_type_Float;
   }
   
-  public void b(int paramInt, Bundle paramBundle)
+  public Integer b()
   {
-    if (paramBundle != null) {
-      paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
-    }
-    Iterator localIterator = UniformDownloader.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-      if (localIUniformDownloaderListener != null) {
-        localIUniformDownloaderListener.b(paramInt, paramBundle);
-      }
-    }
-  }
-  
-  public void c(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadPause. progress:" + paramInt);
-    if (paramBundle != null) {
-      paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
-    }
-    Iterator localIterator = UniformDownloader.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-      if (localIUniformDownloaderListener != null) {
-        localIUniformDownloaderListener.c(paramInt, paramBundle);
-      }
-    }
-  }
-  
-  public void d(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(UniformDownloader.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadResume. progress:" + paramInt);
-    if (paramBundle != null) {
-      paramBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.a));
-    }
-    Iterator localIterator = UniformDownloader.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-      if (localIUniformDownloaderListener != null) {
-        localIUniformDownloaderListener.d(paramInt, paramBundle);
-      }
-    }
+    return this.jdField_b_of_type_JavaLangInteger;
   }
 }
 

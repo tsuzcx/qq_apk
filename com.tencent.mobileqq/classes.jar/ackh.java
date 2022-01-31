@@ -1,16 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.floatscr.ColorScreenConfig;
+import com.tencent.mobileqq.vas.VasManager.CompleteListener;
+import com.tencent.mobileqq.vas.VasMonitorHandler;
 
 class ackh
-  implements DialogInterface.OnClickListener
+  implements VasManager.CompleteListener
 {
-  ackh(ackf paramackf) {}
+  ackh(acjg paramacjg, int paramInt, SVIPHandler paramSVIPHandler, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ColorScreenConfig paramColorScreenConfig, Object paramObject)
   {
-    this.a.a.a = false;
-    this.a.a.doOnBackPressed();
+    paramObject = new Bundle();
+    paramObject.putInt("id", this.jdField_a_of_type_Int);
+    if ((paramColorScreenConfig != null) || (this.jdField_a_of_type_Int == 0))
+    {
+      paramObject.putInt("result", 0);
+      this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      VasMonitorHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(this.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      paramObject.putInt("result", 1);
+    }
   }
 }
 

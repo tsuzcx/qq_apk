@@ -1,14 +1,12 @@
-import com.tencent.biz.qqstory.model.TrimmableManager;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.widget.GridView;
 
 public class ndb
-  implements Runnable
 {
-  public ndb(TrimmableManager paramTrimmableManager, int paramInt) {}
-  
-  public void run()
-  {
-    TrimmableManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelTrimmableManager, this.jdField_a_of_type_Int);
-  }
+  public TextView a;
+  public VideoFeedsAlphaMaskView a;
+  public GridView a;
 }
 
 

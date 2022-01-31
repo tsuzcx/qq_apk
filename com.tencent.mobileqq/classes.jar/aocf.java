@@ -1,17 +1,31 @@
-import android.graphics.Bitmap;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoFragment;
 
-public abstract interface aocf
+public class aocf
+  extends AnimatorListenerAdapter
 {
-  public abstract void a();
+  public aocf(EditVideoFragment paramEditVideoFragment, View paramView) {}
   
-  public abstract void a(int paramInt);
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    SLog.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
   
-  public abstract void a(int paramInt, long paramLong, Bitmap paramBitmap);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    SLog.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
   
-  public abstract void a(List paramList);
-  
-  public abstract void a(boolean paramBoolean);
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SLog.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
+  }
 }
 
 

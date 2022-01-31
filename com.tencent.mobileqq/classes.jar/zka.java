@@ -1,14 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.FaceDownloader;
+import com.tencent.qphone.base.util.QLog;
 
 public class zka
   implements Runnable
 {
-  public zka(PublicAccountHandler paramPublicAccountHandler, long paramLong, boolean paramBoolean) {}
+  public zka(FaceDownloader paramFaceDownloader) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    Object localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1|999|4|1|0_2|1");
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.FaceDownloader", 2, "initDPCFlag headWapConn:" + (String)localObject);
+    }
+    localObject = ((String)localObject).split("\\|");
+    if (localObject.length > 7) {}
+    try
+    {
+      FaceDownloader.a(Integer.parseInt(localObject[7]));
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.FaceDownloader", 2, "initDPCFlag DPC_WAP_DIRECT_CONNECT=" + FaceDownloader.b());
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.qqhead.FaceDownloader", 2, "initDPCFlag error :", localException);
+    }
   }
 }
 

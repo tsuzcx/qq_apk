@@ -1,37 +1,32 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.PeakService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajpa
+public final class ajpa
   implements Runnable
 {
-  public ajpa(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
+  public ajpa(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item == null) {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubmitHomeWorkFragment", 2, "start preload peak process");
+    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, PeakService.class);
+    if (VideoEnvironment.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      localIntent.putExtra("ServiceAction", 2);
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidAppActivity.startService(localIntent);
       return;
     }
-    switch (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Status)
+    catch (Exception localException)
     {
-    default: 
-      return;
-    case 9: 
-    case 10: 
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile != null) {
-        new File(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile).delete();
-      }
-      break;
-    }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new ajpb(this));
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile != null) {
-        new File(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).delete();
-      }
+      QLog.e("SubmitHomeWorkFragment", 1, "onShow_otherThings startService ", localException);
     }
   }
 }

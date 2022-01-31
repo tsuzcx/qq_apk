@@ -1,55 +1,39 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.util.FaceDecoderImpl;
 
 public class akhg
-  implements AudioManager.OnAudioFocusChangeListener
+  extends FriendListObserver
 {
-  public akhg(ColorRingPlayer paramColorRingPlayer) {}
+  private akhg(FaceDecoderImpl paramFaceDecoderImpl) {}
   
-  public void onAudioFocusChange(int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (paramInt == -2)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
-      }
-      synchronized (this.a.a)
-      {
-        if (this.a.a.a == 4) {
-          this.a.a();
-        }
-        return;
-      }
-    }
-    if (paramInt == 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "gained focus");
-      }
-      if (this.a.b)
-      {
-        this.a.c();
-        this.a.b = false;
-      }
-    }
-    else if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
-      }
-      this.a.b();
-      synchronized (this.a.a)
-      {
-        this.a.a.a = 6;
-        return;
-      }
-    }
+    this.a.a(paramBoolean, 1, paramString, 0);
+  }
+  
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  {
+    this.a.a(paramBoolean, 11, paramString, 0);
+  }
+  
+  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    this.a.a(paramBoolean1, 16, paramString, paramInt);
+  }
+  
+  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
+  {
+    this.a.a(paramBoolean1, 32, paramString, paramInt);
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    this.a.a(paramBoolean, 4, paramString, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akhg
  * JD-Core Version:    0.7.0.1
  */

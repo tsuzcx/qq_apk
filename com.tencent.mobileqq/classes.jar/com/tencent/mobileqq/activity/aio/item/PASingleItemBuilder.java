@@ -48,8 +48,8 @@ import com.tencent.open.business.base.AppUtil;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import vcf;
-import vcg;
+import vhh;
+import vhi;
 
 public class PASingleItemBuilder
   extends AbstractChatItemBuilder
@@ -59,7 +59,7 @@ public class PASingleItemBuilder
   public PASingleItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vcf(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vhh(this);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong)
@@ -78,7 +78,7 @@ public class PASingleItemBuilder
     paramString1 = new Intent(paramContext, PublicAccountBrowser.class);
     paramString1.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
     paramString1.putExtra("url", paramString3);
-    paramString1.putExtra("assignBackText", paramContext.getResources().getString(2131433698));
+    paramString1.putExtra("assignBackText", paramContext.getResources().getString(2131433712));
     paramString1.putExtra("puin", paramString4);
     if (paramLong >= 0L) {
       paramString1.putExtra("msg_id", String.valueOf(paramLong));
@@ -124,21 +124,21 @@ public class PASingleItemBuilder
     paramLinearLayout.setPadding(0, AIOUtils.a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, 0);
     paramLinearLayout = paramView;
     if (paramView == null) {
-      paramLinearLayout = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968755, null);
+      paramLinearLayout = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968758, null);
     }
     Object localObject4 = (MessageForPubAccount)paramMessageRecord;
-    paramViewHolder = (vcg)paramViewHolder;
-    paramView = paramLinearLayout.findViewById(2131363583);
-    Object localObject5 = (TextView)paramLinearLayout.findViewById(2131363582);
-    Object localObject2 = (TextView)paramLinearLayout.findViewById(2131363584);
-    Object localObject3 = (TextView)paramLinearLayout.findViewById(2131363585);
-    Object localObject1 = (ImageView)paramLinearLayout.findViewById(2131363586);
-    Object localObject7 = (TextView)paramLinearLayout.findViewById(2131363587);
-    Object localObject8 = (TextView)paramLinearLayout.findViewById(2131363588);
-    TextView localTextView1 = (TextView)paramLinearLayout.findViewById(2131363589);
-    TextView localTextView2 = (TextView)paramLinearLayout.findViewById(2131363590);
-    TextView localTextView3 = (TextView)paramLinearLayout.findViewById(2131363591);
-    Object localObject6 = (TextView)paramLinearLayout.findViewById(2131363593);
+    paramViewHolder = (vhi)paramViewHolder;
+    paramView = paramLinearLayout.findViewById(2131363602);
+    Object localObject5 = (TextView)paramLinearLayout.findViewById(2131363601);
+    Object localObject2 = (TextView)paramLinearLayout.findViewById(2131363603);
+    Object localObject3 = (TextView)paramLinearLayout.findViewById(2131363604);
+    Object localObject1 = (ImageView)paramLinearLayout.findViewById(2131363605);
+    Object localObject7 = (TextView)paramLinearLayout.findViewById(2131363606);
+    Object localObject8 = (TextView)paramLinearLayout.findViewById(2131363607);
+    TextView localTextView1 = (TextView)paramLinearLayout.findViewById(2131363608);
+    TextView localTextView2 = (TextView)paramLinearLayout.findViewById(2131363609);
+    TextView localTextView3 = (TextView)paramLinearLayout.findViewById(2131363610);
+    Object localObject6 = (TextView)paramLinearLayout.findViewById(2131363612);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localObject7);
     localArrayList.add(localObject8);
@@ -173,7 +173,7 @@ public class PASingleItemBuilder
       ((TextView)localObject2).setText((CharSequence)localObject4);
       if (((PAMessage.Item)localObject5).mVideoFlag == 1)
       {
-        localObject6 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840681);
+        localObject6 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840697);
         i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
         ((Drawable)localObject6).setBounds(i, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 17.0F) + i, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 20.0F));
         localObject8 = new SpannableString((String)localObject4 + "1");
@@ -227,7 +227,7 @@ public class PASingleItemBuilder
               ((TextView)localObject5).setVisibility(8);
               break;
               label819:
-              ((TextView)localObject6).setText(2131436123);
+              ((TextView)localObject6).setText(2131436141);
               break label394;
               label830:
               l = ((PAMessage)localObject7).sendTime;
@@ -241,7 +241,7 @@ public class PASingleItemBuilder
       }
       catch (Exception paramMessageRecord)
       {
-        ((ImageView)localObject1).setImageResource(2130837618);
+        ((ImageView)localObject1).setImageResource(2130837617);
         continue;
         ((TextView)localObject1).setVisibility(8);
         continue;
@@ -257,7 +257,7 @@ public class PASingleItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new vcg(this);
+    return new vhi(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
@@ -289,7 +289,7 @@ public class PASingleItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     paramView = new QQCustomMenu();
-    paramView.a(2131375567, this.jdField_a_of_type_AndroidContentContext.getString(2131433638), 2130838309);
+    paramView.a(2131375633, this.jdField_a_of_type_AndroidContentContext.getString(2131433652), 2130838314);
     return paramView.a();
   }
 }

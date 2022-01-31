@@ -1,16 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
 
-class maj
+public class maj
   implements Runnable
 {
-  maj(mai parammai) {}
+  public maj(ReadInJoyRefreshManager paramReadInJoyRefreshManager, int paramInt, String paramString) {}
   
   public void run()
   {
-    if ((TopicShareHelper.a(this.a.a) != null) && (TopicShareHelper.a(this.a.a).isShowing())) {
-      TopicShareHelper.a(this.a.a).dismiss();
-    }
+    ReadInJoyRefreshManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

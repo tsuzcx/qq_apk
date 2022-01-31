@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0095"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037a" android:id="@id/txt" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0382" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01df" />
-</LinearLayout>
+    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2490" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02fd" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02fd" android:scaleType="centerCrop" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2491" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0076" android:visibility="gone" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02fd" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02fd" />
+    <View android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2492" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021eb8" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerInside" />
+    <View android:layout_gravity="bottom|center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2493" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021eb6" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="12.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="4.0dip" android:scaleType="centerInside" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0092" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0575" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2494" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</FrameLayout>

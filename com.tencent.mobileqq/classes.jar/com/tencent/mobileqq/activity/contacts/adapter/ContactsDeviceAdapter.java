@@ -41,8 +41,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import wlv;
-import wlw;
+import wrf;
+import wrg;
 
 public class ContactsDeviceAdapter
   extends FacePreloadBaseAdapter
@@ -576,7 +576,7 @@ public class ContactsDeviceAdapter
           }
           for (;;)
           {
-            paramView.postDelayed(new wlv(this), 1000L);
+            paramView.postDelayed(new wrf(this), 1000L);
             if (!AppConstants.y.equals(localFriends.uin)) {
               break label674;
             }
@@ -662,7 +662,7 @@ public class ContactsDeviceAdapter
             localObject2 = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
             localObject3 = ((SmartDeviceProxyMgr)localObject2).a(localFriends.signature, localFriends.iTermType);
             ((SmartDeviceProxyMgr)localObject2).a((Activity)this.jdField_a_of_type_AndroidContentContext, (DeviceInfo)localObject3, false);
-            paramView.postDelayed(new wlw(this), 1000L);
+            paramView.postDelayed(new wrg(this), 1000L);
             if (localObject3 == null)
             {
               l = ((DeviceInfo)localObject3).din;

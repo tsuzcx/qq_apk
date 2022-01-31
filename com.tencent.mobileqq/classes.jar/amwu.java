@@ -1,26 +1,16 @@
-import android.app.Activity;
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqfav.globalsearch.FavoriteSearchResultGroupPresenter;
+import cooperation.qqfav.globalsearch.GroupSearchModelFavorite;
 
-public final class amwu
-  implements IQZonePluginManager.OnPluginReadyListener
+public class amwu
+  implements View.OnClickListener
 {
-  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
+  public amwu(FavoriteSearchResultGroupPresenter paramFavoriteSearchResultGroupPresenter, GroupSearchModelFavorite paramGroupSearchModelFavorite) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      IQZonePluginManager.b((Activity)paramContext, paramPluginParams);
-      return;
-    }
-    Toast.makeText(BaseApplicationImpl.getContext(), "加载失败", 0).show();
+    this.jdField_a_of_type_CooperationQqfavGlobalsearchGroupSearchModelFavorite.a(paramView);
   }
 }
 

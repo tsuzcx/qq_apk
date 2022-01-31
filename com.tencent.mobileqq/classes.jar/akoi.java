@@ -1,20 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.utils.VoicePlayer;
 
-public final class akoi
+public class akoi
   implements Runnable
 {
-  public akoi(AppRuntime paramAppRuntime, Intent paramIntent) {}
+  public akoi(VoicePlayer paramVoicePlayer) {}
   
   public void run()
   {
-    SwiftBrowserCookieMonster.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentIntent);
+    VoicePlayer.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akoi
  * JD-Core Version:    0.7.0.1
  */

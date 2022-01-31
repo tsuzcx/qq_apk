@@ -1,49 +1,70 @@
-import android.graphics.Bitmap;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajgc
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+  implements View.OnClickListener
 {
-  private ajgc(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
+  public ajgc(ContactListAdapter paramContactListAdapter) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onClick(View paramView)
   {
-    BaseScaleAndMoveBitmapView.a(this.a, false);
-    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
-    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
-    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
+    QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick");
+    ajgk localajgk = (ajgk)paramView.getTag();
+    String str;
+    boolean bool;
+    if ((localajgk != null) && (localajgk.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localajgk.jdField_a_of_type_JavaLangObject != null))
     {
-      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
-      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
-        break label323;
+      str = "";
+      if (!(localajgk.jdField_a_of_type_JavaLangObject instanceof Friends)) {
+        break label231;
       }
-      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
+      str = ((Friends)localajgk.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
+      if (localajgk.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      {
+        if (!localajgk.jdField_a_of_type_JavaLangString.startsWith("+")) {
+          break label257;
+        }
+        bool = this.a.a.a(localajgk.jdField_a_of_type_JavaLangString, str, 4, "-1");
+        label108:
+        if (QLog.isDevelopLevel()) {
+          QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick = " + bool);
+        }
+        localajgk.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        if (AppSetting.b)
+        {
+          if (!localajgk.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+            break label280;
+          }
+          paramView.setContentDescription(localajgk.d.getText().toString() + "已选中");
+        }
+      }
     }
     for (;;)
     {
-      SLog.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
-      this.a.invalidate();
-      return true;
-      if (this.a.b(0.0F) >= 0.0F)
-      {
-        this.a.b = 0.0F;
+      this.a.a();
+      if (AppSetting.b) {
+        paramView.postDelayed(new ajgd(this, paramView), 2000L);
+      }
+      return;
+      label231:
+      if (!(localajgk.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
         break;
       }
-      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
-        break;
-      }
-      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      str = ((PhoneContact)localajgk.jdField_a_of_type_JavaLangObject).name;
       break;
-      label323:
-      if (this.a.a(0.0F) >= 0.0F) {
-        this.a.jdField_a_of_type_Float = 0.0F;
-      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
-        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
-      }
+      label257:
+      bool = this.a.a.a(localajgk.jdField_a_of_type_JavaLangString, str, 0, "-1");
+      break label108;
+      label280:
+      paramView.setContentDescription(localajgk.d.getText().toString() + "未选中");
     }
   }
 }

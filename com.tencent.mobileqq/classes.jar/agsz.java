@@ -1,24 +1,21 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agsz
-  extends LSRecordAnimations.LSRecordAnimationCallback
+class agsz
+  implements DialogInterface.OnClickListener
 {
-  public agsz(LSRecordPanel paramLSRecordPanel) {}
+  agsz(agsu paramagsu) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startRecordingBarAnimation onAnimationEnd");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    this.a.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agsz
  * JD-Core Version:    0.7.0.1
  */

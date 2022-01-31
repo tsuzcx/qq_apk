@@ -1,16 +1,34 @@
-import android.graphics.Xfermode;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.DrawableContainer.ContainerState;
-import com.tencent.mobileqq.widget.XfermodeDrawable;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class akxn
-  extends DrawableContainer.ContainerState
+  implements TroopMemberApiClient.Callback
 {
-  public Xfermode a;
+  public akxn(SwiftBrowserShareMenuHandler paramSwiftBrowserShareMenuHandler) {}
   
-  public Drawable newDrawable()
+  public void a(Bundle paramBundle)
   {
-    return new XfermodeDrawable(this, null, null);
+    boolean bool;
+    if (paramBundle.getInt("type") == 73)
+    {
+      bool = paramBundle.getBoolean("isSuccess");
+      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.h)) {}
+    }
+    else
+    {
+      return;
+    }
+    if (Boolean.valueOf(bool).booleanValue())
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131433202, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131433203, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
   }
 }
 

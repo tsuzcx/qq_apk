@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DialogAppInPushNotification;
 
-class mpd
-  implements DialogInterface.OnClickListener
+public class mpd
+  implements View.OnClickListener
 {
-  mpd(mpb parammpb) {}
+  public mpd(DialogAppInPushNotification paramDialogAppInPushNotification) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    AppInPushNotification.a(1);
+    this.a.a(true, false);
   }
 }
 

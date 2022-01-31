@@ -1,37 +1,51 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.wealthgod.SplashBitmapUtils;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.armap.ARMapManager;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-public final class abiy
-  implements Runnable
+public class abiy
+  extends BroadcastReceiver
 {
-  public abiy(String paramString, Context paramContext, ImageView paramImageView) {}
+  private abiy(ARMapManager paramARMapManager) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ??? = (String)SplashBitmapUtils.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);
-    ??? = String.format("%s/%s%s", new Object[] { SplashBitmapUtils.a(), ???, ".png" });
-    Object localObject2 = SplashBitmapUtils.a(this.jdField_a_of_type_AndroidContentContext, (String)???, 0);
-    if (localObject2 != null)
-    {
-      ThreadManager.getUIHandler().post(new abiz(this, (Drawable)localObject2));
-      synchronized (SplashBitmapUtils.jdField_a_of_type_JavaLangObject)
-      {
-        localObject2 = new WeakReference(localObject2);
-        SplashBitmapUtils.c.remove(this.jdField_a_of_type_JavaLangString);
-        SplashBitmapUtils.c.put(this.jdField_a_of_type_JavaLangString, localObject2);
-        if (QLog.isColorLevel()) {
-          QLog.d("SplashBitmapUtils", 2, String.format("loadDrawableByKeyAsync add to cache. key=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
-        }
-        return;
-      }
+    int i = paramIntent.getIntExtra("portal_type_key", -1);
+    paramIntent.getIntExtra("bc_seq", -1);
+    paramContext = paramIntent.getStringExtra("portal_agrs");
+    if (QLog.isColorLevel()) {
+      QLog.i("ARMapManager", 2, "JSBroadcastReceiver, " + paramIntent.getExtras());
     }
+    switch (i)
+    {
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          if (!TextUtils.isEmpty(paramContext))
+          {
+            paramContext = new JSONObject(paramContext).getString("stid");
+            if (!TextUtils.isEmpty(paramContext))
+            {
+              new String(Base64Util.decode(paramContext, 0));
+              paramContext = BaseActivity.sTopActivity;
+              return;
+            }
+          }
+        }
+        catch (Exception paramContext) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ARMapManager", 2, "", paramContext);
   }
 }
 

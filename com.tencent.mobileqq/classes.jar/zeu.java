@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.app.HotChatCenterManager;
-import com.tencent.mobileqq.data.HotChatItemData;
-import java.util.Comparator;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class zeu
-  implements Comparator
+  extends DownloadListener
 {
-  public zeu(HotChatCenterManager paramHotChatCenterManager) {}
+  public zeu(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, String paramString3) {}
   
-  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    long l1 = Math.max(paramHotChatItemData1.mLatestMsgSec, paramHotChatItemData1.mDraftSec);
-    long l2 = Math.max(paramHotChatItemData2.mLatestMsgSec, paramHotChatItemData2.mDraftSec);
-    if (l1 < l2) {
-      return 1;
+    super.onDone(paramDownloadTask);
+    if (3 == paramDownloadTask.a()) {
+      ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim, true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
     }
-    if (l1 == l2) {
-      return 0;
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + paramDownloadTask.a());
+      }
+      return;
+      ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim, 2);
+      ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim, false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
     }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zeu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="ring" android:useLevel="false" android:innerRadius="19.5dip" android:thickness="2.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220d4" />
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220d4" />
-    <item android:state_selected="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220d4" />
-    <item android:drawable="@drawable/skin_header_tab_right_normal" />
-</selector>
+    <gradient android:startColor="#ffff32b6" android:endColor="#ffffb62b" android:type="linear" />
+    <size android:height="44.0dip" android:width="44.0dip" />
+</shape>

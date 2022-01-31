@@ -47,11 +47,11 @@ public class UploadImageSegment
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 4
     //   3: aconst_null
     //   4: astore 6
     //   6: aconst_null
-    //   7: astore 4
+    //   7: astore 5
     //   9: aload 6
     //   11: astore_3
     //   12: new 62	java/io/File
@@ -172,7 +172,7 @@ public class UploadImageSegment
     //   241: invokevirtual 108	java/io/IOException:printStackTrace	()V
     //   244: goto -31 -> 213
     //   247: astore_2
-    //   248: aload 4
+    //   248: aload 5
     //   250: astore_1
     //   251: aload_1
     //   252: astore_3
@@ -212,7 +212,7 @@ public class UploadImageSegment
     //   322: iconst_0
     //   323: ireturn
     //   324: astore_2
-    //   325: aload 5
+    //   325: aload 4
     //   327: astore_1
     //   328: aload_1
     //   329: astore_3
@@ -251,29 +251,29 @@ public class UploadImageSegment
     //   400: goto -187 -> 213
     //   403: astore_1
     //   404: aload_3
-    //   405: ifnull +7 -> 412
-    //   408: aload_3
-    //   409: invokevirtual 136	java/io/BufferedOutputStream:close	()V
-    //   412: aload_1
-    //   413: athrow
-    //   414: astore_2
-    //   415: ldc 78
-    //   417: new 91	java/lang/StringBuilder
-    //   420: dup
-    //   421: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   424: ldc 94
-    //   426: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   429: aload_2
-    //   430: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   433: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   436: invokestatic 86	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   439: aload_2
-    //   440: invokevirtual 108	java/io/IOException:printStackTrace	()V
-    //   443: goto -31 -> 412
-    //   446: astore_1
-    //   447: aload_2
-    //   448: astore_3
-    //   449: goto -45 -> 404
+    //   405: astore_2
+    //   406: aload_2
+    //   407: ifnull +7 -> 414
+    //   410: aload_2
+    //   411: invokevirtual 136	java/io/BufferedOutputStream:close	()V
+    //   414: aload_1
+    //   415: athrow
+    //   416: astore_2
+    //   417: ldc 78
+    //   419: new 91	java/lang/StringBuilder
+    //   422: dup
+    //   423: invokespecial 92	java/lang/StringBuilder:<init>	()V
+    //   426: ldc 94
+    //   428: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   431: aload_2
+    //   432: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   435: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   438: invokestatic 86	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   441: aload_2
+    //   442: invokevirtual 108	java/io/IOException:printStackTrace	()V
+    //   445: goto -31 -> 414
+    //   448: astore_1
+    //   449: goto -43 -> 406
     //   452: astore_3
     //   453: aload_2
     //   454: astore_1
@@ -291,11 +291,11 @@ public class UploadImageSegment
     //   0	468	0	this	UploadImageSegment
     //   0	468	1	paramBitmap	Bitmap
     //   0	468	2	paramString	String
-    //   11	438	3	localObject1	java.lang.Object
+    //   11	394	3	localObject1	java.lang.Object
     //   452	4	3	localIOException	java.io.IOException
     //   460	4	3	localFileNotFoundException	java.io.FileNotFoundException
-    //   7	242	4	localObject2	java.lang.Object
-    //   1	325	5	localObject3	java.lang.Object
+    //   1	325	4	localObject2	java.lang.Object
+    //   7	242	5	localObject3	java.lang.Object
     //   4	172	6	localObject4	java.lang.Object
     // Exception table:
     //   from	to	target	type
@@ -332,8 +332,8 @@ public class UploadImageSegment
     //   259	283	403	finally
     //   330	334	403	finally
     //   336	360	403	finally
-    //   408	412	414	java/io/IOException
-    //   194	205	446	finally
+    //   410	414	416	java/io/IOException
+    //   194	205	448	finally
     //   194	205	452	java/io/IOException
     //   194	205	460	java/io/FileNotFoundException
   }
@@ -377,7 +377,7 @@ public class UploadImageSegment
         ArithResult.Item localItem;
         try
         {
-          localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130843353);
+          localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130843386);
           int i = 0;
           if (i >= this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticDataArithResult.a()) {
             break;
@@ -431,7 +431,7 @@ public class UploadImageSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.stream.UploadImageSegment
  * JD-Core Version:    0.7.0.1
  */

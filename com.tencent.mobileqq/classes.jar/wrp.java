@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
 
 public class wrp
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wrp(MessageSearchDialog paramMessageSearchDialog) {}
+  public wrp(ContactsTroopAdapter paramContactsTroopAdapter) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.setText("");
+    ContactsTroopAdapter.a(this.a);
   }
 }
 

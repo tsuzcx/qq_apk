@@ -1,20 +1,42 @@
-import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class sxd
   implements Runnable
 {
-  public sxd(Leba paramLeba) {}
+  public sxd(FriendProfileImageAvatar paramFriendProfileImageAvatar, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo) {}
   
   public void run()
   {
-    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.a.getManager(159);
-    if (localLocalRedTouchManager.a(localLocalRedTouchManager.a(10013))) {
-      localLocalRedTouchManager.a(10013);
+    localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.getEntityManagerFactory().createEntityManager();
+    if (localEntityManager != null) {}
+    try
+    {
+      Setting localSetting = (Setting)localEntityManager.a(Setting.class, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.d);
+      if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
+      {
+        localSetting.headImgTimestamp = 0L;
+        localSetting.updateTimestamp = 0L;
+        localEntityManager.a(localSetting);
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.a(localSetting);
+      }
     }
-    ReportController.b(this.a.a, "dc00898", "", "", "0X8008823", "0X8008823", 0, 0, "", "", "", "");
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localEntityManager.a();
+      }
+    }
+    finally
+    {
+      localEntityManager.a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b);
   }
 }
 

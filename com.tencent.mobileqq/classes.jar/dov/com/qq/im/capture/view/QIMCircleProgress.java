@@ -11,10 +11,10 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-import anpl;
-import anpm;
-import anpn;
-import anpo;
+import anxy;
+import anxz;
+import anya;
+import anyb;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -119,8 +119,8 @@ public class QIMCircleProgress
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(150L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(3);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anpl(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new anpm(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anxy(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new anxz(this));
     }
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
     {
@@ -128,8 +128,8 @@ public class QIMCircleProgress
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(400L);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anpn(this));
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new anpo(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anya(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new anyb(this));
     }
   }
   

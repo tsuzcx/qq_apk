@@ -1,79 +1,88 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.preload.DownloadTask;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader.CurrentVid;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader.OnVideoDownloadListener;
-import com.tencent.biz.qqstory.base.preload.SimplePreloadListener;
-import java.io.File;
-import java.util.Map;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nae
-  extends SimplePreloadListener
+public final class nae
+  implements BusinessObserver
 {
-  public nae(PlayingListPreloader paramPlayingListPreloader)
-  {
-    super("Q.qqstory.download.preload.PlayingListPreloader");
-  }
+  public nae(PublicAccountObserver paramPublicAccountObserver, String paramString, Context paramContext, AppInterface paramAppInterface) {}
   
-  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, DownloadTask paramDownloadTask)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramDownloadTask);
-    a(paramString, paramInt1, paramErrorMessage, paramDownloadTask);
-  }
-  
-  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, DownloadTask paramDownloadTask)
-  {
-    PlayingListPreloader.CurrentVid localCurrentVid = this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$CurrentVid;
-    if (localCurrentVid == null) {}
-    label14:
-    label169:
-    do
-    {
-      break label14;
-      do
-      {
-        return;
-      } while (!TextUtils.equals(paramString, localCurrentVid.jdField_a_of_type_JavaLangString));
-      if (paramErrorMessage.isFail()) {
-        if (!TextUtils.isEmpty(localCurrentVid.b)) {
-          break label136;
-        }
-      }
-      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
-      {
-        localCurrentVid.b = paramErrorMessage;
-        localCurrentVid.jdField_a_of_type_Int = (paramInt + 1000);
-        if ((!paramDownloadTask.a.containsKey("handleCallback")) || (localCurrentVid.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        localCurrentVid.jdField_a_of_type_Boolean = true;
-        if (!this.a.a(paramString)) {
-          break label169;
-        }
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener == null) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, paramInt);
-        return;
-      }
-    } while (this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener == null);
-    label136:
-    this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, localCurrentVid.a(), paramInt);
-  }
-  
-  public void b(String paramString, int paramInt, DownloadTask paramDownloadTask)
-  {
-    super.b(paramString, paramInt, paramDownloadTask);
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener != null) && ((paramInt == 0) || (paramInt == 1))) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.b(paramString, paramDownloadTask.d, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
     }
-  }
-  
-  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, DownloadTask paramDownloadTask)
-  {
-    super.b(paramString, paramInt1, paramFile, paramInt2, paramDownloadTask);
-    a(paramString, paramInt1, new ErrorMessage(), paramDownloadTask);
+    if (!paramBoolean)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+      }
+      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
+      return;
+    }
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle == null) {
+        break label360;
+      }
+      mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+      localFollowResponse.mergeFrom(paramBundle);
+      paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountUtil", 2, "followUin2, retCode=" + paramInt + ", uin=" + this.jdField_a_of_type_JavaLangString + ", errInfo=" + ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).err_info.get());
+      }
+      if (paramInt == 0)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
+          this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+        }
+        PublicAccountUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+      }
+      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
+      return;
+    }
+    if (paramInt == 58)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+      }
+      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430043);
+      return;
+    }
+    if (paramInt == 65)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+      }
+      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430044);
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
+    return;
+    label360:
+    if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
   }
 }
 

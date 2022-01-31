@@ -1,32 +1,23 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView.GridViewAdapter;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class ajbm
-  implements View.OnKeyListener
+class ajbm
+  implements ActionSheet.OnButtonClickListener
 {
-  public ajbm(NewTroopContactView paramNewTroopContactView) {}
+  ajbm(ajbl paramajbl, ActionSheet paramActionSheet) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt == 67)
+    switch (paramInt)
     {
-      if (paramKeyEvent.getAction() != 0) {
-        break label35;
-      }
-      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
     }
     for (;;)
     {
-      return false;
-      label35:
-      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView$GridViewAdapter.a();
-      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_Ajbl.a.a(this.jdField_a_of_type_Ajbl.a.a);
     }
   }
 }

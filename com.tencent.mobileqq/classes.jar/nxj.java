@@ -1,22 +1,21 @@
-import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedData;
-import java.util.List;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerListAdapter;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
 
 public class nxj
-  implements Runnable
+  implements LoadingMoreHelper.OnLoadMoreListener
 {
-  public nxj(ProfileFeedPresenter paramProfileFeedPresenter, HomeFeedData paramHomeFeedData) {}
+  public nxj(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void run()
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.d)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
-      return;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a());
     }
-    ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
-    ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter).remove(ProfileFeedPresenter.a());
-    ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter);
+    return true;
   }
 }
 

@@ -1,14 +1,12 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.widget.PopupMenuDialog.OnDismissListener;
 
-class vmv
-  implements Runnable
+public class vmv
+  implements PopupMenuDialog.OnDismissListener
 {
-  vmv(vmu paramvmu, View paramView) {}
+  public vmv(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-  }
+  public void a() {}
 }
 
 

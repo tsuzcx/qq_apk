@@ -1,15 +1,15 @@
-import android.content.Context;
-import com.tencent.component.network.utils.FileUtils;
-import com.tencent.component.network.utils.FileUtils.AssetFileComparator;
-import java.io.File;
+import android.graphics.drawable.Drawable;
+import com.tencent.component.media.image.ImageKey;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
 
-public final class pkz
-  implements FileUtils.AssetFileComparator
+class pkz
+  implements Runnable
 {
-  public boolean a(Context paramContext, String paramString, File paramFile)
+  pkz(pkx parampkx, Drawable paramDrawable) {}
+  
+  public void run()
   {
-    long l = FileUtils.getAssetLength(paramContext, paramString);
-    return (l != -1L) && (l == paramFile.length());
+    this.jdField_a_of_type_Pkx.a.listener.onImageLoaded(this.jdField_a_of_type_Pkx.a.url, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Pkx.a.options);
   }
 }
 

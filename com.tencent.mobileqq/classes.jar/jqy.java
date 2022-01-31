@@ -1,30 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.AVLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.smallscreen.SmallScreenVideoController;
+import com.tencent.qphone.base.util.QLog;
 
-public class jqy
-  extends Handler
+class jqy
+  implements Runnable
 {
-  public jqy(CallbackWaitingActivityExt paramCallbackWaitingActivityExt, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  jqy(jqx paramjqx, long paramLong1, long paramLong2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_Jqx.a.jdField_a_of_type_ComTencentAvVideoController == null)
     {
-    default: 
+      AVLog.e("SmallScreenVideoController", "mVideoController is null");
       return;
     }
-    this.a.finish();
+    SessionInfo localSessionInfo = this.jdField_a_of_type_Jqx.a.jdField_a_of_type_ComTencentAvVideoController.a();
+    if (localSessionInfo != null)
+    {
+      QLog.d("SmallScreenVideoController", 1, "AsyncReadDoubleGlassConfig Timer lCurrent=" + this.jdField_a_of_type_Long + ", lLastTick=" + this.b + ", mCurrentVideoGlassWaitTime=" + localSessionInfo.Q + ", mCurrentDefaultTimeOutRule=" + localSessionInfo.R + ", mCurrentVideoGlassSwitch=" + this.jdField_a_of_type_Jqx.a.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Jqx.a.b(localSessionInfo.R);
+      return;
+    }
+    AVLog.e("SmallScreenVideoController", "AsyncReadDoubleGlassConfig Timer lCurrent=" + this.jdField_a_of_type_Long + ", lLastTick=" + this.b + ", sessionInfo is null, mCurrentVideoGlassSwitch=" + this.jdField_a_of_type_Jqx.a.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqy
  * JD-Core Version:    0.7.0.1
  */

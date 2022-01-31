@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.confess;
 
-import abrq;
+import abys;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
@@ -27,10 +27,10 @@ public class ConfessItemBuilder
     if (paramView == null)
     {
       paramRecentFaceDecoder = null;
-      if ((paramView == null) || (!(paramView.getTag() instanceof abrq))) {
+      if ((paramView == null) || (!(paramView.getTag() instanceof abys))) {
         break label179;
       }
-      paramRecentFaceDecoder = (abrq)paramRecentFaceDecoder;
+      paramRecentFaceDecoder = (abys)paramRecentFaceDecoder;
       label35:
       paramInt = paramViewGroup.getMeasuredHeight() - this.a;
       if (paramInt >= 0) {
@@ -54,11 +54,11 @@ public class ConfessItemBuilder
           if (paramInt != 16) {
             break label294;
           }
-          paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838600);
+          paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838606);
           if ((paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
             ((Animatable)paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
           }
-          paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131439182);
+          paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131439212);
         }
       }
       while (paramInt != 17)
@@ -66,11 +66,11 @@ public class ConfessItemBuilder
         return paramView;
         paramRecentFaceDecoder = paramView.getTag();
         break;
-        paramView = LayoutInflater.from(paramContext).inflate(2130970288, null);
-        paramRecentFaceDecoder = new abrq();
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363401));
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365251));
+        paramView = LayoutInflater.from(paramContext).inflate(2130970303, null);
+        paramRecentFaceDecoder = new abys();
+        paramRecentFaceDecoder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363420));
+        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362724));
+        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365278));
         paramView.setTag(paramRecentFaceDecoder);
         this.a = (paramOnClickListener.getDimensionPixelSize(2131559468) + paramOnClickListener.getDimensionPixelSize(2131559470) + paramOnClickListener.getDimensionPixelSize(2131559469) * 2);
         break label35;
@@ -81,7 +81,7 @@ public class ConfessItemBuilder
         ((Animatable)paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
       }
       paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131439183);
+      paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131439213);
       return paramView;
     }
   }

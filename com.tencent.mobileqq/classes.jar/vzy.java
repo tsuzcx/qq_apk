@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class vzy
+public class vzy
   implements Runnable
 {
-  vzy(vzs paramvzs) {}
+  public vzy(HotChatPie paramHotChatPie) {}
   
   public void run()
   {
-    if (this.a.a.a != null)
+    TroopHandler localTroopHandler = (TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if (localTroopHandler != null)
     {
-      this.a.a.a.a().a(true);
-      this.a.a.a.a().a(0L);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_red_point", 2, "send_oidb_0x8c9_2");
+      }
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(1105933138L));
+      localTroopHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localArrayList, true);
     }
   }
 }

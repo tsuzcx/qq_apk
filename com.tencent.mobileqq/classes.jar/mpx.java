@@ -1,28 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.HeaderListAdapter;
-import com.tencent.widget.ListView;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
 public class mpx
-  extends ReadInJoyObserver
+  implements ReadInJoyCommentUtils.CreateCommentInterface
 {
-  public mpx(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  public mpx(FastWebActivity paramFastWebActivity, String paramString) {}
   
-  public void c(boolean paramBoolean, List paramList)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if ((!paramBoolean) || (paramList == null) || (paramList.size() == 0))
-    {
-      ReadInJoyDiandianHeaderController.a(this.a).removeHeaderView(ReadInJoyDiandianHeaderController.a(this.a));
-      return;
-    }
-    if (ReadInJoyDiandianHeaderController.a(this.a).findHeaderViewPosition(ReadInJoyDiandianHeaderController.a(this.a)) < 0) {
-      ReadInJoyDiandianHeaderController.a(this.a).addHeaderView(ReadInJoyDiandianHeaderController.a(this.a));
-    }
-    ReadInJoyDiandianHeaderController.a(this.a, false);
-    ReadInJoyDiandianHeaderController.a(this.a).clear();
-    ReadInJoyDiandianHeaderController.a(this.a).addAll(paramList);
-    ReadInJoyDiandianHeaderController.a(this.a).notifyDataSetChanged();
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.getString(2131438902), 0).a();
+  }
+  
+  public void a(String paramString, CommentInfo paramCommentInfo)
+  {
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.getString(2131438901), 0).a();
+    ReadInJoyCommentUtils.a(FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity), this.jdField_a_of_type_JavaLangString);
+    paramString = FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity);
+    paramString.b += 1L;
+    ThreadManager.getUIHandler().post(new mpy(this));
   }
 }
 

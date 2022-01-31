@@ -1,26 +1,34 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.app.PstnSessionInfo;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rwu
-  implements DialogInterface.OnClickListener
+public class rwu
+  implements Runnable
 {
-  public rwu(QQAppInterface paramQQAppInterface, Context paramContext, PstnSessionInfo paramPstnSessionInfo, int paramInt) {}
+  public rwu(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.d, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.b, true, null, true, true, null, "from_internal");
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 5) {}
-    for (paramInt = 2;; paramInt = 3)
+    ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+    BaseChatPie.b(this.a);
+    try
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FC", "0X80063FC", paramInt, 0, "", "", "", "");
+      this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844025);
+      this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844026);
+      this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837579);
       return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.aio.BaseChatPie", 2, "emo qvip_emoji_aio_face_new_default_fail, e=" + localException.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("Q.aio.BaseChatPie", 1, "emo qvip_emoji_aio_face oom, e= " + localOutOfMemoryError);
     }
   }
 }

@@ -1,16 +1,20 @@
-import android.app.Dialog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.PLNewsItemBuilder;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-class vhm
-  implements Runnable
+public class vhm
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  vhm(vhl paramvhl, Dialog paramDialog) {}
+  public long a;
+  public CornerImageView a;
+  public String a;
+  public View b;
+  public TextView b;
+  public TextView c;
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-  }
+  public vhm(PLNewsItemBuilder paramPLNewsItemBuilder) {}
 }
 
 

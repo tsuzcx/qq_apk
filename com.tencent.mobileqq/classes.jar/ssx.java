@@ -1,37 +1,29 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
-import com.tencent.mobileqq.data.Card;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
 public class ssx
-  implements sto
+  implements View.OnClickListener
 {
-  public ssx(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public ssx(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    String str;
-    do
-    {
-      return;
-      str = FriendProfileMoreInfoActivity.b(this.a).getText().toString();
-    } while ((paramString == null) || (paramString.equals(str)));
-    this.a.k = true;
-    this.a.e(paramString);
-    if (CampusCircleHelper.b(this.a.a.lCampusSchoolID) == 4)
-    {
-      this.a.a("0X80081EA", 0);
-      return;
-    }
-    this.a.a("0X80081EC", 1);
+    paramView = this.a.getIntent().getExtras();
+    paramView.putString("uin", AppConstants.az);
+    paramView.putInt("uintype", -1);
+    paramView.putString("uinname", "QQ空间");
+    this.a.a.a(ForwardAbility.ForwardAbilityType.e.intValue(), paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ssx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package cooperation.qzone.plugin;
 
-import amxu;
-import amyc;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.text.TextUtils;
+import anfi;
+import anfq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -346,7 +346,7 @@ public class QZonePluginUtils
     }
   }
   
-  public static void a(Context paramContext, Map paramMap, amxu paramamxu)
+  public static void a(Context paramContext, Map paramMap, anfi paramanfi)
   {
     paramContext = a(paramContext.getDir("qzone_installed_plugin", 0));
     if (paramContext != null)
@@ -362,8 +362,8 @@ public class QZonePluginUtils
           if (localPluginRecord != null)
           {
             boolean bool = true;
-            if (paramamxu != null) {
-              bool = paramamxu.a(localPluginRecord, localFile);
+            if (paramanfi != null) {
+              bool = paramanfi.a(localPluginRecord, localFile);
             }
             if (!bool) {
               break label98;
@@ -592,7 +592,7 @@ public class QZonePluginUtils
   
   public static File[] a(File paramFile)
   {
-    return paramFile.listFiles(new amyc());
+    return paramFile.listFiles(new anfq());
   }
   
   public static File b(Context paramContext, String paramString)

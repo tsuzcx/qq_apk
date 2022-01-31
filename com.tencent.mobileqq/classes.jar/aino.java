@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.text.AppleEmojiManager;
-import java.io.File;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13.ViewHolder;
+import com.tencent.mobileqq.utils.ContactUtils;
 
-public final class aino
+public class aino
   implements Runnable
 {
-  public aino(File paramFile1, File paramFile2, File paramFile3) {}
+  public aino(StructMsgItemLayout13 paramStructMsgItemLayout13, StructMsgForGeneralShare paramStructMsgForGeneralShare, Resources paramResources, StructMsgItemLayout13.ViewHolder paramViewHolder) {}
   
   public void run()
   {
-    if (this.a.exists()) {
-      this.a.delete();
-    }
-    if (this.b.exists()) {
-      this.b.delete();
-    }
-    AppleEmojiManager.a(this.c);
+    String str = ContactUtils.g(StructMsgItemLayout13.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13), this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.frienduin, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.author);
+    new Handler(Looper.getMainLooper()).post(new ainp(this, str));
   }
 }
 

@@ -1,22 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class wmp
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+  implements ConditionSearchManager.IConfigListener
 {
-  public wmp(CardViewController paramCardViewController) {}
+  public wmp(AddContactsView paramAddContactsView) {}
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    paramSharedPreferences = "contact_recommend_config_json_" + CardViewController.a(this.a).getCurrentAccountUin();
     if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "mConfigChangelistener CONTACT_RECOMMEND_CONFIG_JSON ");
+      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
     }
-    if (paramSharedPreferences.equals(paramString)) {
-      CardViewController.a(this.a, true, true);
+    if ((paramInt == 2) && (paramBoolean))
+    {
+      this.a.b = true;
+      this.a.e();
     }
   }
 }

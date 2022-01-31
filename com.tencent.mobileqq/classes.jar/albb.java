@@ -1,25 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.BindGroupActivity;
+import android.content.Context;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ContextMenuTextView;
 
-class albb
-  implements DialogInterface.OnClickListener
+public class albb
+  implements View.OnClickListener
 {
-  albb(alba paramalba) {}
+  public albb(ContextMenuTextView paramContextMenuTextView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    if (paramView.getId() == 2131375639)
     {
-      this.a.a.a.a.cancel();
-      this.a.a.a.finish();
+      paramView = ContextMenuTextView.a(this.a);
+      ContextMenuTextView.a(this.a);
+      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     albb
  * JD-Core Version:    0.7.0.1
  */

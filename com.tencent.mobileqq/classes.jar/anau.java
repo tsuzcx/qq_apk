@@ -1,35 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.MTAReportController;
+import java.util.Properties;
 
 public final class anau
-  implements FilenameFilter
+  implements Runnable
 {
-  public anau(long paramLong1, long paramLong2) {}
+  public anau(String paramString1, String paramString2, String paramString3, int paramInt) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void run()
   {
-    if (!paramString.endsWith(".trace")) {}
-    long l;
-    do
-    {
-      File localFile;
-      do
-      {
-        return false;
-        localFile = new File(paramFile + File.separator + paramString);
-      } while ((localFile == null) || (!localFile.exists()));
-      l = localFile.lastModified();
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
-      }
-    } while ((l < this.a) || (l > this.b));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
-    }
-    return true;
+    Properties localProperties = new Properties();
+    localProperties.put(this.jdField_a_of_type_JavaLangString, this.b);
+    MTAReportController.a(BaseApplicationImpl.getContext()).reportTimeKVEvent(this.c, localProperties, this.jdField_a_of_type_Int);
   }
 }
 

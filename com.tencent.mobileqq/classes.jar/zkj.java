@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QIMNewFriendManager.IQIMNotifyNewFriendListener;
 
 public class zkj
-  implements Runnable
+  implements QIMNewFriendManager.IQIMNotifyNewFriendListener
 {
-  public zkj(QIMNewFriendManager paramQIMNewFriendManager, QQAppInterface paramQQAppInterface) {}
+  public zkj(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void run()
+  public void a()
   {
-    ((FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(216)).c();
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
+    }
+    this.a.a.sendEmptyMessage(17);
   }
 }
 

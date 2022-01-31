@@ -1,38 +1,21 @@
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedIdVidListEvent;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedVidListObserver;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
 public class nsq
-  extends ShareGroupManager.GetFeedVidListObserver
+  implements Runnable
 {
-  public nsq(ShareGroupManager paramShareGroupManager, int paramInt1, String paramString, int paramInt2) {}
+  public nsq(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
   
-  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
+  public void run()
   {
-    if (this.jdField_a_of_type_Int == paramVideoCollectionItem.videoVidList.size())
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      boolean bool = true;
-      paramBoolean = bool;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("Q.qqstory.discover.ShareGroupManager", 2, "currentVidListSize == videoCollectionItem.videoVidList.size():" + paramVideoCollectionItem.toString());
-        paramBoolean = bool;
-      }
-    }
-    if (paramBoolean)
-    {
-      ShareGroupManager.GetFeedIdVidListEvent localGetFeedIdVidListEvent = new ShareGroupManager.GetFeedIdVidListEvent();
-      localGetFeedIdVidListEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localGetFeedIdVidListEvent.jdField_a_of_type_JavaUtilArrayList = paramVideoCollectionItem.videoVidList;
-      Dispatchers.get().dispatch(localGetFeedIdVidListEvent);
+      this.a.a.setBackground(new ColorDrawable(0));
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupManager.a(this.jdField_a_of_type_JavaLangString, this.b);
+    this.a.a.setBackgroundDrawable(new ColorDrawable(0));
   }
 }
 

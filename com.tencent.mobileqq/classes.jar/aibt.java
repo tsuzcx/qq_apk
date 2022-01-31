@@ -1,119 +1,67 @@
-import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
-import com.tencent.sveffects.SLog;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.compatible.ActionListener;
+import com.tencent.mobileqq.service.MobileQQServiceBase;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class aibt
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  
-  public aibt(GestureMgrRecognize paramGestureMgrRecognize, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public aibt(MobileQQServiceBase paramMobileQQServiceBase, ToServiceMsg paramToServiceMsg, ActionListener paramActionListener, Class paramClass) {}
   
   public void run()
   {
-    Thread localThread = Thread.currentThread();
-    Object localObject2;
-    aibs localaibs;
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg == null) {}
+    for (Object localObject = "";; localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd())
     {
-      HashMap localHashMap;
-      aibs[] arrayOfaibs;
+      if (QLog.isColorLevel()) {
+        QLog.d("MobileQQServiceBase", 2, "req cmd: " + (String)localObject);
+      }
+      if ((this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null) && ("MessageSvc.PbSendMsg".equalsIgnoreCase((String)localObject)))
+      {
+        long l1 = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getLong("msg_send_time", 0L);
+        if (l1 != 0L)
+        {
+          long l2 = System.currentTimeMillis();
+          this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putLong("msg_request_time", l2);
+          this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putLong("msg_send_to_request_cost", l2 - l1);
+        }
+      }
       try
       {
-        long[] arrayOfLong1 = new long[15];
-        localHashMap = new HashMap();
-        arrayOfaibs = new aibs[5];
-        i = 0;
-        if (i < 5)
-        {
-          arrayOfaibs[i] = new aibs(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize);
-          i += 1;
-          continue;
-        }
-        SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable, ThreadId[%s], token[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int) }));
-        j = 0;
-        i = 0;
-        if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.a()) {
-          continue;
-        }
-        SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable load so fail, ThreadId[%s], token[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int) }));
-        GestureMgrRecognize.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize, localHashMap);
-        GestureMgrRecognize.a(arrayOfLong1, i);
+        this.jdField_a_of_type_ComTencentMobileqqServiceMobileQQServiceBase.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentMobileqqCompatibleActionListener, this.jdField_a_of_type_JavaLangClass);
+        return;
       }
-      catch (Exception localException1)
+      catch (Exception localException)
       {
-        SLog.a("GestureMgrRecognize", String.format("RecognizeRunnable occured exception[%s]", new Object[] { localException1.getClass().getName() }), localException1);
-        continue;
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aibr;
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aibr = null;
-        if (localObject2 == null) {
-          break label557;
+        localException.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          break;
         }
+        QLog.e("MobileQQServiceBase", 2, "handleRequest Exception. cmd = " + (String)localObject, localException);
+        localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getUin(), (String)localObject);
+        ((FromServiceMsg)localObject).setMsgFail();
+        this.jdField_a_of_type_ComTencentMobileqqServiceMobileQQServiceBase.a(false, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject, localException);
+        return;
       }
-      SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable, finaly exit, ThreadId[%s], token[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int) }));
-      return;
-      if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c)
+      catch (OutOfMemoryError localOutOfMemoryError)
       {
-        SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable exit1, ThreadId[%s], token[%s], curToken[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c) }));
-      }
-      else
-      {
-        localaibs = arrayOfaibs[j];
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aibs.a(localaibs);
-        synchronized (GestureMgrRecognize.jdField_a_of_type_JavaLangObject)
-        {
-          localObject2 = GestureMgrRecognize.a(this.jdField_a_of_type_Int, (aibr)localObject2, localaibs.a, localException1, i);
-          if (!localHashMap.containsKey(((GestureKeyInfo)localObject2).a)) {
-            break label552;
-          }
-          k = ((Integer)localHashMap.get(((GestureKeyInfo)localObject2).a)).intValue();
-          label388:
-          localHashMap.put(((GestureKeyInfo)localObject2).a, Integer.valueOf(k + 1));
-          if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c) {
-            SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable exit2, ThreadId[%s], token[%s], curToken[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c) }));
-          }
+        if (!QLog.isColorLevel()) {
+          break label259;
         }
+        QLog.d("MobileQQServiceBase", 2, "handleRequest OutOfMemoryError. cmd = " + (String)localObject);
+        localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getUin(), (String)localObject);
+        ((FromServiceMsg)localObject).setMsgFail();
+        this.jdField_a_of_type_ComTencentMobileqqServiceMobileQQServiceBase.a(false, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject, null);
       }
     }
-    GestureMgrRecognize.a(this.jdField_a_of_type_Int, localaibs, (GestureKeyInfo)localObject2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aibs = localaibs;
-    int k = (j + 1) % 5;
-    i += 1;
-    if (i == 15) {
-      GestureMgrRecognize.a(arrayOfLong2, i);
-    }
-    int j = i % 15;
-    int i = k;
-    for (;;)
-    {
-      try
-      {
-        Thread.sleep(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Long);
-        k = j;
-        j = i;
-        i = k;
-      }
-      catch (Exception localException2)
-      {
-        continue;
-      }
-      label552:
-      k = 0;
-      break label388;
-      label557:
-      k = i;
-      i = j;
-      j = k;
-    }
+    label259:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aibt
  * JD-Core Version:    0.7.0.1
  */

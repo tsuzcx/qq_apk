@@ -1,38 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DraftTextInfo;
-import com.tencent.mobileqq.managers.DraftTextManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tencent.mobileqq.jsp.QQApiPlugin;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class aeey
+class aeey
   implements Runnable
 {
-  public aeey(DraftTextManager paramDraftTextManager, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
+  aeey(aeex paramaeex) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    localEntityTransaction = localEntityManager.a();
-    try
-    {
-      localEntityTransaction.a();
-      localEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
-      localEntityTransaction.c();
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing())) {
+      this.a.a.a.dismiss();
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        localEntityTransaction.b();
-      }
-    }
-    finally
-    {
-      localEntityTransaction.b();
-    }
-    localEntityManager.a();
   }
 }
 

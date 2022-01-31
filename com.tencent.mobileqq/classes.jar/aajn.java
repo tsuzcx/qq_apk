@@ -1,33 +1,15 @@
-import android.animation.Animator;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.AnimatorAdapter;
-import com.tencent.mobileqq.ar.config.MainEntryAni;
-import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
-import com.tencent.mobileqq.ar.config.WorldCupReport;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.ArResourceManager;
 
-class aajn
-  extends AnimatorAdapter
+public class aajn
+  implements Runnable
 {
-  aajn(aajl paramaajl) {}
+  public aajn(ArResourceManager paramArResourceManager) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    QLog.w("WorldCupMgr", 1, "loadRollAnimation动画结束");
-    this.a.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni.a(this.a.jdField_a_of_type_Aajo, this.a.jdField_a_of_type_Aajp);
-    MainEntryAni.a(this.a.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni, this.a.jdField_a_of_type_Aajo);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    QLog.w("WorldCupMgr", 1, "loadRollAnimation动画开始");
-    WorldCupConfigInfo.a(this.a.jdField_a_of_type_Aajo.a.l, WorldCupConfigInfo.a());
-    WorldCupReport.a();
-    paramAnimator = (ImageView)this.a.jdField_a_of_type_Aajo.e.get();
-    if (paramAnimator != null) {
-      paramAnimator.setVisibility(4);
-    }
+    this.a.a();
+    this.a.a();
+    this.a.c();
   }
 }
 

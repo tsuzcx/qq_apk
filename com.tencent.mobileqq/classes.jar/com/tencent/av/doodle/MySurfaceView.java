@@ -9,14 +9,14 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import jhq;
+import jjt;
 
 public abstract class MySurfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback
 {
   public long a;
-  private jhq a;
+  private jjt a;
   
   public MySurfaceView(Context paramContext)
   {
@@ -53,8 +53,8 @@ public abstract class MySurfaceView
   public boolean a()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Jhq != null) {
-      bool = jhq.a(this.jdField_a_of_type_Jhq);
+    if (this.jdField_a_of_type_Jjt != null) {
+      bool = jjt.a(this.jdField_a_of_type_Jjt);
     }
     return bool;
   }
@@ -66,11 +66,11 @@ public abstract class MySurfaceView
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder().append("WL_DEBUG setRunning running = ").append(paramBoolean).append(", mThread == null ? ");
-      if (this.jdField_a_of_type_Jhq == null)
+      if (this.jdField_a_of_type_Jjt == null)
       {
         bool = true;
         localStringBuilder = localStringBuilder.append(bool).append(", mThread.mRunning ? ");
-        if ((this.jdField_a_of_type_Jhq == null) || (!jhq.a(this.jdField_a_of_type_Jhq))) {
+        if ((this.jdField_a_of_type_Jjt == null) || (!jjt.a(this.jdField_a_of_type_Jjt))) {
           break label141;
         }
         bool = true;
@@ -83,16 +83,16 @@ public abstract class MySurfaceView
       if (!paramBoolean) {
         break label146;
       }
-      if ((this.jdField_a_of_type_Jhq == null) || (!jhq.a(this.jdField_a_of_type_Jhq)))
+      if ((this.jdField_a_of_type_Jjt == null) || (!jjt.a(this.jdField_a_of_type_Jjt)))
       {
-        this.jdField_a_of_type_Jhq = new jhq(this);
-        this.jdField_a_of_type_Jhq.a(true);
-        this.jdField_a_of_type_Jhq.start();
+        this.jdField_a_of_type_Jjt = new jjt(this);
+        this.jdField_a_of_type_Jjt.a(true);
+        this.jdField_a_of_type_Jjt.start();
       }
     }
     label141:
     label146:
-    while ((this.jdField_a_of_type_Jhq == null) || (!jhq.a(this.jdField_a_of_type_Jhq)))
+    while ((this.jdField_a_of_type_Jjt == null) || (!jjt.a(this.jdField_a_of_type_Jjt)))
     {
       return;
       bool = false;
@@ -100,18 +100,18 @@ public abstract class MySurfaceView
       bool = false;
       break label72;
     }
-    this.jdField_a_of_type_Jhq.a(false);
-    if (this.jdField_a_of_type_Jhq != Thread.currentThread()) {}
+    this.jdField_a_of_type_Jjt.a(false);
+    if (this.jdField_a_of_type_Jjt != Thread.currentThread()) {}
     for (;;)
     {
       if (i != 0) {}
       try
       {
-        this.jdField_a_of_type_Jhq.join();
+        this.jdField_a_of_type_Jjt.join();
         i = 0;
       }
       catch (InterruptedException localInterruptedException) {}
-      this.jdField_a_of_type_Jhq = null;
+      this.jdField_a_of_type_Jjt = null;
       return;
     }
   }
@@ -162,7 +162,7 @@ public abstract class MySurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.doodle.MySurfaceView
  * JD-Core Version:    0.7.0.1
  */

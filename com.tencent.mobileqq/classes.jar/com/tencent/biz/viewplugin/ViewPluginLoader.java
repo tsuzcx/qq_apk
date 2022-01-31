@@ -23,15 +23,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
 import org.json.JSONObject;
-import pae;
-import paf;
-import pag;
-import pah;
+import pew;
+import pex;
+import pey;
+import pez;
 
 public class ViewPluginLoader
 {
   public static final HashMap a;
-  public static final String e = Environment.getExternalStorageDirectory().getPath() + "/tencent/plugins/";
   int jdField_a_of_type_Int = 0;
   public SharedPreferences a;
   OfflineDownloader jdField_a_of_type_ComTencentBizCommonOfflineUtilOfflineDownloader = new OfflineDownloader();
@@ -44,7 +43,8 @@ public class ViewPluginLoader
   public boolean b;
   public String c = null;
   public String d;
-  public String f;
+  public String e;
+  private String f;
   
   static
   {
@@ -59,6 +59,7 @@ public class ViewPluginLoader
     this.c = (BaseApplicationImpl.getContext().getFilesDir() + "/pluginopt/" + paramString2 + "/opt");
     this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("viewplugin_sp", 0);
     jdField_a_of_type_JavaUtilHashMap.put(paramString2, this);
+    this.f = (Environment.getExternalStorageDirectory().getPath() + "/tencent/plugins/");
   }
   
   public DownloaderInterface a()
@@ -80,7 +81,7 @@ public class ViewPluginLoader
       String str = "http://" + this.jdField_b_of_type_JavaLangString + "?_bid=" + this.jdField_a_of_type_JavaLangString;
       BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
       long l = System.currentTimeMillis();
-      if ((!HtmlOffline.a(BaseApplicationImpl.getContext(), str, new pae(this, l, localWerewolvesHandler, localBaseApplication))) && (QLog.isColorLevel()))
+      if ((!HtmlOffline.a(BaseApplicationImpl.getContext(), str, new pew(this, l, localWerewolvesHandler, localBaseApplication))) && (QLog.isColorLevel()))
       {
         QLog.i("ViewPluginLoader", 2, "plugin:" + this.jdField_b_of_type_JavaLangString + " transToLocalUrl: return false");
         return;
@@ -96,7 +97,7 @@ public class ViewPluginLoader
       this.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext = new ViewPluginContext(paramBaseActivity, 0, this.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext = new ViewPluginContext(paramBaseActivity, 0, this.f, this.jdField_a_of_type_JavaLangClassLoader);
+    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext = new ViewPluginContext(paramBaseActivity, 0, this.e, this.jdField_a_of_type_JavaLangClassLoader);
   }
   
   public void a(JSONObject paramJSONObject, QQAppInterface paramQQAppInterface)
@@ -114,7 +115,7 @@ public class ViewPluginLoader
     }
     for (;;)
     {
-      ThreadManager.post(new pah(this, paramJSONObject, paramQQAppInterface, new pag(this, paramQQAppInterface, bool2, bool1)), 8, null, false);
+      ThreadManager.post(new pez(this, paramJSONObject, paramQQAppInterface, new pey(this, paramQQAppInterface, bool2, bool1)), 8, null, false);
       return;
       if ((i == 3) || (i == 2))
       {
@@ -273,7 +274,7 @@ public class ViewPluginLoader
       }
       return;
     }
-    HtmlOffline.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new paf(this, localQQAppInterface), false);
+    HtmlOffline.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new pex(this, localQQAppInterface), false);
   }
   
   public void c()

@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class xrz
-  implements CameraCover.PictureCallback
+  implements Runnable
 {
-  public xrz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xrz(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface) {}
   
-  public void a_(String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "onPictureToken path " + paramString);
-    }
-    this.a.a.b();
-    NewFlowCameraActivity.a(this.a, paramString, true);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X80085A3");
   }
 }
 

@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
+import com.tencent.mobileqq.app.QIMNewFriendManager;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import java.util.Comparator;
 
 public class zrh
-  implements Runnable
+  implements Comparator
 {
-  public zrh(QQComicStep paramQQComicStep) {}
+  public zrh(QIMNewFriendManager paramQIMNewFriendManager) {}
   
-  public void run()
+  public int a(QIMNotifyAddFriend paramQIMNotifyAddFriend1, QIMNotifyAddFriend paramQIMNotifyAddFriend2)
   {
-    ThreadManager.executeOnNetWorkThread(new zri(this));
+    return (int)(paramQIMNotifyAddFriend2.pushTime - paramQIMNotifyAddFriend1.pushTime);
   }
 }
 

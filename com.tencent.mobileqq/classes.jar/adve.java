@@ -1,39 +1,14 @@
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.IDownloadListener;
-import com.tencent.mobileqq.intervideo.now.DownloadEngine.NowDownloadManager;
-import com.tencent.mobileqq.intervideo.now.NowPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.txproxy.HostEventListener;
+import com.tencent.mobileqq.fragment.MineFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
-public class adve
-  implements IDownloadListener
+public final class adve
+  implements Runnable
 {
-  public adve(NowPlugin paramNowPlugin, HostEventListener paramHostEventListener, String paramString) {}
+  public adve(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public void a()
+  public void run()
   {
-    QLog.i("XProxy|NowProxy", 4, "onDownloadComplete------");
-    if (this.jdField_a_of_type_ComTencentTxproxyHostEventListener != null) {
-      this.jdField_a_of_type_ComTencentTxproxyHostEventListener.onDownloadResult(0, 0, "Helly Download Success");
-    }
-    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a(this.jdField_a_of_type_JavaLangString);
-    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a();
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.i("XProxy|NowProxy", 4, "onDownloadFailed------");
-    if (this.jdField_a_of_type_ComTencentTxproxyHostEventListener != null) {
-      this.jdField_a_of_type_ComTencentTxproxyHostEventListener.onDownloadResult(paramInt1, paramInt2, "Helly Download Failed");
-    }
-    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a(this.jdField_a_of_type_JavaLangString);
-    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a();
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentTxproxyHostEventListener != null) {
-      this.jdField_a_of_type_ComTencentTxproxyHostEventListener.onDownloadProgress(paramLong1, paramLong2);
-    }
+    MineFragment.b(this.a);
   }
 }
 

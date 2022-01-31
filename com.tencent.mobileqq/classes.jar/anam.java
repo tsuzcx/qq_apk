@@ -1,60 +1,59 @@
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.util.AlbumLibDownloaderUtil;
-import java.io.File;
+import cooperation.qzone.QzonePreDownloadManager;
+import java.util.Vector;
 
 public class anam
   implements Downloader.DownloadListener
 {
-  public anam(AlbumLibDownloaderUtil paramAlbumLibDownloaderUtil, String paramString1, Downloader.DownloadListener paramDownloadListener, String paramString2) {}
+  public anam(QzonePreDownloadManager paramQzonePreDownloadManager, anan paramanan) {}
   
   public void onDownloadCanceled(String paramString)
   {
-    File localFile = new File(AlbumLibDownloaderUtil.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, false);
+    if (QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).size() > 0)
+    {
+      anan localanan = (anan)QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).get(0);
+      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).remove(0);
+      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, localanan);
     }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(paramString);
-    }
-    if (AlbumLibDownloaderUtil.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil.jdField_a_of_type_ArrayOfBoolean[AlbumLibDownloaderUtil.a(this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil)] = false;
+    if (this.jdField_a_of_type_Anan.a != null) {
+      this.jdField_a_of_type_Anan.a.onDownloadCanceled(paramString);
     }
   }
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    File localFile = new File(AlbumLibDownloaderUtil.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, false);
+    if (QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).size() > 0)
+    {
+      anan localanan = (anan)QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).get(0);
+      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).remove(0);
+      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, localanan);
     }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(paramString, paramDownloadResult);
-    }
-    if (AlbumLibDownloaderUtil.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil.jdField_a_of_type_ArrayOfBoolean[AlbumLibDownloaderUtil.a(this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil)] = false;
+    if (this.jdField_a_of_type_Anan.a != null) {
+      this.jdField_a_of_type_Anan.a.onDownloadFailed(paramString, paramDownloadResult);
     }
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    if (this.jdField_a_of_type_Anan.a != null) {
+      this.jdField_a_of_type_Anan.a.onDownloadProgress(paramString, paramLong, paramFloat);
+    }
+  }
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    File localFile = new File(AlbumLibDownloaderUtil.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, false);
+    if (QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).size() > 0)
+    {
+      anan localanan = (anan)QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).get(0);
+      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager).remove(0);
+      QzonePreDownloadManager.a(this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager, localanan);
     }
-    localFile = new File(AlbumLibDownloaderUtil.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.renameTo(new File(AlbumLibDownloaderUtil.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString));
-    }
-    LocalMultiProcConfig.putBool(this.b, true);
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(paramString, paramDownloadResult);
-    }
-    if (AlbumLibDownloaderUtil.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil.jdField_a_of_type_ArrayOfBoolean[AlbumLibDownloaderUtil.a(this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil)] = false;
+    if (this.jdField_a_of_type_Anan.a != null) {
+      this.jdField_a_of_type_Anan.a.onDownloadSucceed(paramString, paramDownloadResult);
     }
   }
 }

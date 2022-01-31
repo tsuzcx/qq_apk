@@ -10,7 +10,7 @@ public class bc
   
   public boolean a(int paramInt)
   {
-    String str = String.format(this.a.getResources().getString(2131432972), new Object[] { Integer.valueOf(paramInt) });
+    String str = String.format(this.a.getResources().getString(2131432986), new Object[] { Integer.valueOf(paramInt) });
     QQToast.a(this.a, str, 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
     return true;
   }

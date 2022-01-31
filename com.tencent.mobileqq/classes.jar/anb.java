@@ -1,29 +1,26 @@
-import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.animation.Animation.AnimationListener;
 import com.qq.im.poi.LbsPackListAdapter;
-import com.tencent.mobileqq.businessCard.helpers.ViewHelper;
+import com.qq.im.poi.LbsPackListAdapter.LbsPackItemCallback;
+import java.util.List;
 
 public class anb
-  extends Animation
+  implements Animation.AnimationListener
 {
-  public anb(LbsPackListAdapter paramLbsPackListAdapter, View paramView, int paramInt) {}
+  public anb(LbsPackListAdapter paramLbsPackListAdapter, int paramInt) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramFloat == 1.0F)
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
+    this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter.a.remove(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter.notifyDataSetChanged();
+    if (LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter) != null) {
+      LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter).a(this.jdField_a_of_type_Int);
     }
-    float f = this.jdField_a_of_type_Int;
-    ViewHelper.g(this.jdField_a_of_type_AndroidViewView, -1.0F * f * paramFloat);
   }
   
-  public boolean willChangeBounds()
-  {
-    return true;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

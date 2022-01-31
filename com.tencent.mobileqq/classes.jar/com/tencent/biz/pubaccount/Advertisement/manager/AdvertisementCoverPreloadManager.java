@@ -7,13 +7,13 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import kub;
+import kwi;
 
 public class AdvertisementCoverPreloadManager
 {
   private static AdvertisementCoverPreloadManager jdField_a_of_type_ComTencentBizPubaccountAdvertisementManagerAdvertisementCoverPreloadManager;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new kub(this);
+  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new kwi(this);
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private ArrayList b = new ArrayList();

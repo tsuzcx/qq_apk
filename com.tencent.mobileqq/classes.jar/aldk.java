@@ -1,44 +1,40 @@
 import android.text.TextUtils;
-import com.tencent.open.appcommon.Common;
-import com.tencent.open.base.FileUtils;
-import com.tencent.open.base.LogUtility;
-import java.io.File;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
+import cooperation.qzone.util.QZLog;
 
-public final class aldk
+public class aldk
   implements Runnable
 {
+  public aldk(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
+  
   public void run()
   {
-    File localFile1 = new File(Common.c());
-    if (localFile1.exists())
+    try
     {
-      File[] arrayOfFile = localFile1.listFiles();
-      int j = arrayOfFile.length;
-      int i = 0;
-      if (i < j)
+      if (!TextUtils.isEmpty(this.a.a.a.a))
       {
-        File localFile2 = arrayOfFile[i];
-        if ((localFile2.getName().startsWith("system_old_")) || ((localFile2.isDirectory()) && (!localFile2.getName().equals("tmp")) && (!TextUtils.isEmpty(Common.q())) && (!localFile2.getName().equals(Common.q()))))
-        {
-          if (!FileUtils.a(new File(localFile1 + File.separator + localFile2.getName()))) {
-            break label179;
-          }
-          LogUtility.b("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> successful");
+        Object localObject = this.a.a.a.a;
+        if (this.a.a.a.a.startsWith("+")) {
+          localObject = this.a.a.a.a.substring(1);
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label179:
-          LogUtility.c("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> failed");
-        }
+        localObject = new LpReportInfo_pf00064(699, 2, Long.valueOf((String)localObject).longValue());
+        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QZLog.e("QzoneReport", "makeOrRefreshQZone", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aldk
  * JD-Core Version:    0.7.0.1
  */

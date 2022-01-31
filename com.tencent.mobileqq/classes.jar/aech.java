@@ -1,86 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.log.VipWebViewReportLog;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
+import java.util.List;
 
-public class aech
+class aech
   implements Runnable
 {
+  aech(aecg paramaecg, List paramList) {}
+  
   public void run()
   {
-    long l = System.currentTimeMillis();
-    QLog.d("WebCoreDump", 1, "-->start load config at " + l);
-    Object localObject1;
-    if (VipWebViewReportLog.a() == null)
+    GroupVideoManager.CheckListener localCheckListener = this.jdField_a_of_type_Aecg.a;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject1 = "";
-      localObject1 = new File(VipWebViewReportLog.jdField_b_of_type_JavaLangString + (String)localObject1 + "config.json");
-      if (!((File)localObject1).exists()) {
-        break label391;
-      }
-      QLog.d("WebCoreDump", 1, "-->config file exist");
-      VipWebViewReportLog.jdField_a_of_type_Int = 0;
-      VipWebViewReportLog.a(VipWebViewReportLog.a());
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject1 = FileUtils.a((File)localObject1);
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          localObject1 = new JSONObject((String)localObject1);
-          VipWebViewReportLog.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("js_report", true);
-          VipWebViewReportLog.jdField_b_of_type_Boolean = ((JSONObject)localObject1).optBoolean("url_check", true);
-          if (!((JSONObject)localObject1).has("url_list")) {
-            continue;
-          }
-          JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("url_list");
-          int j = localJSONArray.length();
-          int i = 0;
-          if (i < j)
-          {
-            VipWebViewReportLog.jdField_a_of_type_JavaUtilSet.add(localJSONArray.getString(i));
-            i += 1;
-            continue;
-            localObject1 = VipWebViewReportLog.a().getAccount();
-            break;
-          }
-          QLog.d("WebCoreDump", 1, "-->url white list:" + VipWebViewReportLog.jdField_a_of_type_JavaUtilSet);
-          if ((VipWebViewReportLog.jdField_b_of_type_Boolean) && (!((JSONObject)localObject1).has("url_list"))) {
-            continue;
-          }
-          VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-        }
-      }
-      catch (Exception localException)
-      {
-        VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        QLog.d("WebCoreDump", 1, "-->read config file err:" + localException.toString());
-        VipWebViewReportLog.b();
-        continue;
-        VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        continue;
-      }
-      finally
-      {
-        VipWebViewReportLog.b();
-      }
-      QLog.d("WebCoreDump", 1, "parse config cost=" + (System.currentTimeMillis() - l));
+      localCheckListener.a(bool);
       return;
-      QLog.d("WebCoreDump", 1, "-->No url white list in config!" + ((JSONObject)localObject1).toString());
-      continue;
-      label391:
-      VipWebViewReportLog.a(VipWebViewReportLog.a());
-      VipWebViewReportLog.b();
-      QLog.d("WebCoreDump", 1, "-->config file not exist: " + localObject2.getPath());
-      VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
     }
   }
 }

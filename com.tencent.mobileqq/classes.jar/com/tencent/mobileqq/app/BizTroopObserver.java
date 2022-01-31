@@ -55,7 +55,7 @@ public class BizTroopObserver
   
   protected void c(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void d(boolean paramBoolean, Object paramObject) {}
+  public void d(boolean paramBoolean, Object paramObject) {}
   
   protected void e(boolean paramBoolean, Object paramObject) {}
   
@@ -65,11 +65,13 @@ public class BizTroopObserver
   
   protected void h(boolean paramBoolean, Object paramObject) {}
   
-  public void i(boolean paramBoolean, Object paramObject) {}
+  protected void i(boolean paramBoolean, Object paramObject) {}
   
-  protected void j(boolean paramBoolean, Object paramObject) {}
+  public void j(boolean paramBoolean, Object paramObject) {}
   
-  public void k(boolean paramBoolean, Object paramObject) {}
+  protected void k(boolean paramBoolean, Object paramObject) {}
+  
+  public void l(boolean paramBoolean, Object paramObject) {}
   
   public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -80,9 +82,9 @@ public class BizTroopObserver
       switch (paramInt)
       {
       }
-      label541:
-      label576:
-      label581:
+      label545:
+      label580:
+      label585:
       do
       {
         do
@@ -102,11 +104,11 @@ public class BizTroopObserver
                       do
                       {
                         return;
-                        d(paramBoolean, paramObject);
+                        e(paramBoolean, paramObject);
                         return;
                         a(paramObject);
                         return;
-                        g(paramBoolean, paramObject);
+                        h(paramBoolean, paramObject);
                         return;
                       } while (localObject == null);
                       if (paramBoolean)
@@ -116,9 +118,9 @@ public class BizTroopObserver
                       }
                       a(paramBoolean, (String)localObject[0], ((Boolean)localObject[1]).booleanValue(), null);
                       return;
-                      e(paramBoolean, paramObject);
-                      return;
                       f(paramBoolean, paramObject);
+                      return;
+                      g(paramBoolean, paramObject);
                       return;
                       a(paramBoolean, (List)paramObject);
                       return;
@@ -150,11 +152,11 @@ public class BizTroopObserver
                     i = ((Integer)localObject[1]).intValue();
                   }
                   if (!(localObject[2] instanceof Map)) {
-                    break label576;
+                    break label580;
                   }
                   paramObject = (Map)localObject[2];
                   if (!(localObject[3] instanceof String)) {
-                    break label581;
+                    break label585;
                   }
                 }
                 for (localObject = (String)localObject[3];; localObject = null)
@@ -164,11 +166,11 @@ public class BizTroopObserver
                   paramInt = -1;
                   break;
                   paramObject = null;
-                  break label541;
+                  break label545;
                 }
-                h(paramBoolean, paramObject);
-                return;
                 i(paramBoolean, paramObject);
+                return;
+                j(paramBoolean, paramObject);
                 return;
                 if ((localObject == null) || (localObject.length == 0))
                 {
@@ -177,7 +179,7 @@ public class BizTroopObserver
                 }
                 a(paramBoolean, ((Long)localObject[0]).longValue(), (String)localObject[1]);
                 return;
-                b(paramBoolean, paramObject);
+                c(paramBoolean, paramObject);
                 return;
                 if (QLog.isDevelopLevel()) {
                   QLog.d("BizTroopObserver", 4, "TroopHandler.TYPE_TROOP_GAG_STATUS");
@@ -188,7 +190,7 @@ public class BizTroopObserver
                 return;
                 c(paramBoolean, ((Boolean)paramObject).booleanValue());
                 return;
-                c(paramBoolean, paramObject);
+                d(paramBoolean, paramObject);
                 return;
               } while (localObject == null);
               a(paramBoolean, ((Long)localObject[0]).longValue(), ((Long)localObject[1]).longValue());
@@ -201,6 +203,8 @@ public class BizTroopObserver
           return;
           a(paramBoolean, paramObject);
           return;
+          b(paramBoolean, paramObject);
+          return;
           if ((paramBoolean) && (localObject != null))
           {
             a(((Long)localObject[0]).longValue(), ((Long)localObject[1]).longValue(), ((Long)localObject[2]).longValue(), (String)localObject[3]);
@@ -208,15 +212,15 @@ public class BizTroopObserver
           }
           a(-1L, -1L, -1L, "");
           return;
-          j(paramBoolean, paramObject);
+          k(paramBoolean, paramObject);
           return;
         } while ((localObject == null) || (localObject.length != 2));
         a((String)localObject[0], (String)localObject[1]);
         return;
-        k(paramBoolean, paramObject);
+        l(paramBoolean, paramObject);
         return;
         if ((localObject != null) && (localObject.length >= 1)) {}
-        for (paramInt = ((Integer)localObject[0]).intValue(); (paramBoolean) && (localObject != null) && (localObject.length >= 4); paramInt = 2131429863)
+        for (paramInt = ((Integer)localObject[0]).intValue(); (paramBoolean) && (localObject != null) && (localObject.length >= 4); paramInt = 2131429864)
         {
           a(paramBoolean, paramInt, (String)localObject[1], (String)localObject[2], (Boolean)localObject[3]);
           return;

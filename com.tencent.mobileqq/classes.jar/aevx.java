@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
+import android.widget.TextView;
 
 class aevx
-  implements Runnable
 {
-  aevx(aevw paramaevw) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void run()
-  {
-    if ((this.a.a.a != null) && (this.a.a.a.a() != null)) {
-      this.a.a.a.a(0, null, 0, 0);
-    }
-  }
+  aevx(aevw paramaevw) {}
 }
 
 

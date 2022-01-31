@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
-import com.tencent.mobileqq.util.AccessibilityUtil;
-import java.util.ArrayList;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
+import com.tencent.mobileqq.data.Card;
 
-class sxr
-  implements Runnable
+public class sxr
+  implements syj
 {
-  sxr(sxq paramsxq, ArrayList paramArrayList) {}
+  public sxr(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    if ((Leba.a(this.jdField_a_of_type_Sxq.a) != null) && (Leba.a(this.jdField_a_of_type_Sxq.a) != null)) {
-      Leba.a(this.jdField_a_of_type_Sxq.a).a(this.jdField_a_of_type_JavaUtilArrayList);
+    switch (paramInt)
+    {
     }
-    if (Leba.a(this.jdField_a_of_type_Sxq.a) != null) {
-      AccessibilityUtil.a(Leba.a(this.jdField_a_of_type_Sxq.a), "好友动态 有更新");
+    String str;
+    do
+    {
+      return;
+      str = FriendProfileMoreInfoActivity.a(this.a).getText().toString();
+    } while ((paramString == null) || (paramString.equals(str)));
+    this.a.j = true;
+    this.a.d(paramString);
+    if (CampusCircleHelper.b(this.a.a.lCampusSchoolID) == 4)
+    {
+      this.a.a("0X80081E9", 0);
+      return;
     }
+    this.a.a("0X80081EB", 1);
   }
 }
 

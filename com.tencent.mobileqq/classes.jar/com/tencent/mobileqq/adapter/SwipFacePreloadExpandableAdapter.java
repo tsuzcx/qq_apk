@@ -52,22 +52,22 @@ public abstract class SwipFacePreloadExpandableAdapter
     }
     if (AppConstants.y.equals(paramViewHolder.jdField_a_of_type_JavaLangString))
     {
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841588);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841615);
       return;
     }
     if (AppConstants.z.equals(paramViewHolder.jdField_a_of_type_JavaLangString))
     {
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841586);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841613);
       return;
     }
     if (AppConstants.A.equals(paramViewHolder.jdField_a_of_type_JavaLangString))
     {
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841591);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841618);
       return;
     }
     if (AppConstants.x.equals(paramViewHolder.jdField_a_of_type_JavaLangString))
     {
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838732);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838741);
       return;
     }
     Bitmap localBitmap;

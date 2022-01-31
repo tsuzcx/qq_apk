@@ -1,14 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
 
-public final class mcg
-  implements Animation.AnimationListener
+public class mcg
+  implements Runnable
 {
-  public void onAnimationEnd(Animation paramAnimation) {}
+  public mcg(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void run()
+  {
+    ReadInJoyDeliverVideoActivity.d(this.a);
+  }
 }
 
 

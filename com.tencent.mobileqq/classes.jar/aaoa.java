@@ -1,18 +1,13 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
+import com.tencent.sveffects.Reporter;
+import com.tencent.sveffects.SdkContext;
 
-class aaoa
-  implements ArkAppCenter.OnGetAppIcon
+public final class aaoa
+  implements AVGestureWrapper.AVUploadReport
 {
-  aaoa(aanz paramaanz, QQCustomDialog paramQQCustomDialog) {}
-  
-  public void a(String paramString, Bitmap paramBitmap)
+  public void avGestureUploadReport(String paramString1, String paramString2)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364041)).setImageBitmap(paramBitmap);
-    }
+    SdkContext.a().a().a("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
   }
 }
 

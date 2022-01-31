@@ -1,73 +1,77 @@
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatActivityConstants;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.controller.QidianBusinessObserver;
-import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.List;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class vzl
-  extends QidianBusinessObserver
+  implements WerewolvesHandler.Callback
 {
-  public vzl(StrangerChatPie paramStrangerChatPie) {}
+  public vzl(GameRoomChatPie paramGameRoomChatPie) {}
   
-  protected void c(boolean paramBoolean, HashMap paramHashMap)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131438728), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131438729), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-  }
-  
-  protected void d(boolean paramBoolean, HashMap paramHashMap)
-  {
-    if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1025) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024)) && (paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
-    {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1025;
-        }
-        paramHashMap = this.a.jdField_a_of_type_ComTencentQidianQidianManager.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if (paramHashMap != null)
-        {
-          StrangerChatPie.a(this.a, true);
-          StrangerChatPie.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-          StrangerChatPie.a(this.a).setOnClickListener(null);
-          StrangerChatPie.b(this.a).setText(paramHashMap);
-          if (ChatActivityConstants.N) {
-            StrangerChatPie.c(this.a).setContentDescription(paramHashMap);
-          }
-          StrangerChatPie.a(this.a, true);
-          this.a.k();
-        }
+    if (paramRspBody == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.werewolf.GameRoomChatPie", 2, "startAnotherRound failed! errorCode = " + paramInt);
       }
     }
-    while (!QLog.isColorLevel())
+    do
     {
-      do
-      {
-        for (;;)
-        {
-          return;
-          StrangerChatPie.b(this.a, false);
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("StrangerChatPie", 2, "onGetQidianUserDetailInfo not current curFriendUin");
+      QQToast.a(this.a.a(), 1, "加入游戏失败", 1).a();
       return;
-    }
-    QLog.d("StrangerChatPie", 2, "onGetQidianUserDetailInfo fail");
+      while ((!paramRspBody.getBooleanExtra("finishAIO", false)) || (!(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof ChatActivity)))
+      {
+        Common.WifiPOIInfo localWifiPOIInfo = paramRspBody.poi_info;
+        HotChatInfo localHotChatInfo = HotChatInfo.createHotChat(localWifiPOIInfo, false, 0);
+        localHotChatInfo.isGameRoom = true;
+        paramRspBody = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(true);
+        Object localObject = paramRspBody.a();
+        if ((localObject != null) && (!((List)localObject).contains(localHotChatInfo))) {
+          ((List)localObject).add(localHotChatInfo);
+        }
+        paramRspBody.a(localHotChatInfo, 4);
+        localObject = this.a.a().getIntent();
+        paramRspBody = (oidb_0x8e4.RspBody)localObject;
+        if (localObject == null) {
+          paramRspBody = new Intent();
+        }
+        localObject = localWifiPOIInfo.bytes_uid.get().toStringUtf8();
+        paramRspBody.putExtra("uin", localHotChatInfo.troopUin + "");
+        paramRspBody.putExtra("uintype", 1);
+        paramRspBody.putExtra("troop_uin", localHotChatInfo.troopUin + "");
+        paramRspBody.putExtra("uinname", localHotChatInfo.name);
+        paramRspBody.putExtra("hotnamecode", (String)localObject);
+        paramRspBody.putExtra("isNeedShowLoading", false);
+        paramRspBody.putExtra("leftViewText", this.a.a().getString(2131432425));
+        NearbySPUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.a()));
+        paramInt = AIOUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramRspBody);
+        if (paramInt != 0) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.werewolf.GameRoomChatPie", 2, "openAIO by start SplashAct");
+        }
+        this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramRspBody);
+      }
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+      return;
+    } while (paramInt != 2);
+    QLog.e("Q.werewolf.GameRoomChatPie", 1, "openAIO rediectToAIOWithMt 2");
   }
 }
 

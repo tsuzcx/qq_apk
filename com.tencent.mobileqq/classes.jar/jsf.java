@@ -1,25 +1,27 @@
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.QavPanel;
 
-public class jsf
-  implements QavInOutAnimation.QavOutAnimationListener
+class jsf
+  implements Runnable
 {
-  public jsf(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  jsf(jsc paramjsc, DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void a()
+  public void run()
   {
-    this.a.l = true;
-    this.a.ah();
-  }
-  
-  public void b()
-  {
-    this.a.l = false;
+    QavPanel localQavPanel = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a;
+    if (this.jdField_a_of_type_Jsc.a.a.t) {}
+    for (int i = 2;; i = 0)
+    {
+      localQavPanel.a(true, i, false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jsf
  * JD-Core Version:    0.7.0.1
  */

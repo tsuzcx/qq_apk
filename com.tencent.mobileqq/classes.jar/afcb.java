@@ -1,25 +1,15 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afcb
-  extends NearbyCardObserver
+  implements DialogInterface.OnClickListener
 {
-  public afcb(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  public afcb(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyAuthVideoPlayerFragment", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
-    }
-    ((NearbyCardManager)this.a.getActivity().app.getManager(105)).d.put(this.a.getActivity().app.getCurrentAccountUin(), Integer.valueOf(1));
-    if (paramBoolean) {
-      this.a.getActivity().finish();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

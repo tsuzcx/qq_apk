@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ConditionSearchManager.IFirstLocationReqCancelListener;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
 
-public class whg
-  implements ConditionSearchManager.IFirstLocationReqCancelListener
+class whg
+  implements Runnable
 {
-  public whg(AddContactsView paramAddContactsView) {}
+  whg(whf paramwhf) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a = false;
+    this.a.a.a(StickerBubbleAnimationViewHolder.a(this.a.a));
   }
 }
 

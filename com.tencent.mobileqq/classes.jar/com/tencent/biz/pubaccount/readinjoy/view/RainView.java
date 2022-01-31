@@ -19,8 +19,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
-import mgp;
-import mgq;
+import mkc;
+import mkd;
 
 public class RainView
   extends SpriteGLView
@@ -174,12 +174,12 @@ public class RainView
       localSprite.a(i2, n);
       Object localObject = new MoveToAction(jdField_a_of_type_Int, i2, n, a(i2), i1);
       localSprite.a(new Action[] { localObject });
-      ((MoveToAction)localObject).a(new mgp(this, localSprite));
+      ((MoveToAction)localObject).a(new mkc(this, localSprite));
       if (m == 0)
       {
         localObject = new DelayAction(jdField_b_of_type_Int);
         localSprite.a(new Action[] { localObject });
-        ((DelayAction)localObject).a(new mgq(this));
+        ((DelayAction)localObject).a(new mkd(this));
       }
       a(localSprite);
       m += 1;

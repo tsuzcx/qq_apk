@@ -1,21 +1,17 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.tips.PubAccountTips;
+import com.tencent.mobileqq.activity.aio.tips.PubAccountTips.PubAccountTipsMsg;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.RecentUser;
 
 public class xry
-  implements Camera.AutoFocusCallback
+  implements Runnable
 {
-  public xry(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xry(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface, PubAccountTips.PubAccountTipsMsg paramPubAccountTipsMsg) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean);
-    }
-    NewFlowCameraReporter.a(paramBoolean);
-    NewFlowCameraActivity.b(this.a);
+    PubAccountTips.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a.uin, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsPubAccountTips$PubAccountTipsMsg, null);
   }
 }
 

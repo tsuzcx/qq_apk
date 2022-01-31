@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public final class ncp
-  implements Parcelable.Creator
+public class ncp
+  implements Runnable
 {
-  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
-  {
-    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
-  }
+  public ncp(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
+  public void run()
   {
-    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
+    TranslateAnimation localTranslateAnimation = PublicAccountImageCollectionMainActivity.b(this.a);
+    if (localTranslateAnimation != null)
+    {
+      this.a.a.setVisibility(0);
+      this.a.a.findViewById(2131365659).setVisibility(0);
+      this.a.a.findViewById(2131365593).setVisibility(0);
+      this.a.a.findViewById(2131365594).setVisibility(0);
+      this.a.a.bringToFront();
+      this.a.a.startAnimation(localTranslateAnimation);
+    }
   }
 }
 

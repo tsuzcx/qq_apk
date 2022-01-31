@@ -1,21 +1,15 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
 public class lid
-  implements VideoCompositeHelper.VideoCompositeCallBack
+  implements Runnable
 {
-  public lid(ReadInJoyVideoCompositeManager paramReadInJoyVideoCompositeManager, PublishVideoEntry paramPublishVideoEntry, Context paramContext) {}
+  public lid(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, lii paramlii, Bitmap paramBitmap) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void run()
   {
-    if (paramInt != 0)
-    {
-      ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramInt, paramString1);
-      return;
-    }
-    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_AndroidContentContext, paramString2);
+    lii.a(this.jdField_a_of_type_Lii).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

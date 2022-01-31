@@ -1,26 +1,40 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.newshare.StoryShare;
+import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
+import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
+import com.tencent.biz.qqstory.newshare.model.ShareData;
 
 public class nkg
-  extends OnPlayModeShareListener
+  implements StoryShareCallback
 {
-  public nkg(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode, VideoPlayModeBase paramVideoPlayModeBase, boolean paramBoolean, VideoListFeedItem paramVideoListFeedItem, String paramString, StoryVideoItem paramStoryVideoItem)
+  public nkg(StoryShare paramStoryShare) {}
+  
+  public void a(ShareData paramShareData)
   {
-    super(paramVideoPlayModeBase);
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).a(paramShareData.a);
+    }
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).a();
+    }
   }
   
-  public void a(int paramInt)
+  public void b(ShareData paramShareData)
   {
-    super.a(paramInt);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 2)
-    {
-      StoryReportor.a("play_video", "guest_share_suc", i, paramInt, new String[] { "", String.valueOf(StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      return;
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).c(paramShareData.a);
+    }
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).a();
+    }
+  }
+  
+  public void c(ShareData paramShareData)
+  {
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).d(paramShareData.a);
+    }
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).a();
     }
   }
 }

@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.DeleteCommentCallback;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.CommentsView;
+import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
 
 public class afeg
-  implements View.OnClickListener
+  implements CommentsDataSource.DeleteCommentCallback
 {
-  public afeg(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public afeg(CommentsPresenterImpl paramCommentsPresenterImpl) {}
   
-  public void onClick(View paramView)
+  public void a(Comments.Comment paramComment, int paramInt)
   {
-    if (!this.a.a.onBackEvent())
+    if (CommentsPresenterImpl.a(this.a) != null)
     {
-      this.a.a.finish();
-      this.a.a.b(false);
+      if (paramInt == 0)
+      {
+        CommentsPresenterImpl.a(this.a).b(paramComment);
+        CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430838));
+      }
     }
+    else {
+      return;
+    }
+    CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430839));
   }
 }
 

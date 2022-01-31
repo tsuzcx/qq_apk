@@ -1,10 +1,15 @@
-import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper;
 
-public abstract interface amxs
+public class amxs
+  implements Runnable
 {
-  public abstract void a(boolean paramBoolean, PluginRecord paramPluginRecord);
+  public amxs(QQIndividualityRemoteProxy paramQQIndividualityRemoteProxy, QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper paramQQIndividualityRemoteProxyCallWrapper) {}
   
-  public abstract void d(PluginRecord paramPluginRecord);
+  public void run()
+  {
+    this.jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy.a(this.jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy$QQIndividualityRemoteProxyCallWrapper);
+  }
 }
 
 

@@ -1,36 +1,28 @@
 import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler.GetSimpleInfoListEvent;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class nwv
   extends QQUIEventReceiver
 {
-  public nwv(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter)
+  public nwv(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    super(paramMemoriesProfilePresenter);
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
   {
-    if (paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramGetCollectionListEvent.jdField_a_of_type_Int));
-      MemoriesProfilePresenter.a(paramMemoriesProfilePresenter, paramGetCollectionListEvent.jdField_a_of_type_Int);
-      if (paramMemoriesProfilePresenter.a != null)
-      {
-        paramMemoriesProfilePresenter.a.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
-        ThreadManager.post(new nww(this, paramMemoriesProfilePresenter), 5, null, false);
-      }
+    if (paramGetSimpleInfoListEvent.errorInfo.isSuccess()) {
+      paramQQStoryShareGroupProfileActivity.a.a(paramGetSimpleInfoListEvent);
     }
   }
   
   public Class acceptEventClass()
   {
-    return DateCollectionListPageLoader.GetCollectionListEvent.class;
+    return VidToSimpleInfoHandler.GetSimpleInfoListEvent.class;
   }
 }
 

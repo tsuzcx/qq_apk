@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.precover;
 
-import agne;
+import agrt;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PrecoverResource;
@@ -35,7 +35,7 @@ public class PrecoverResDownloader
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new agne();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new agrt();
   }
   
   public PrecoverResDownloader(QQAppInterface paramQQAppInterface, PrecoverManager paramPrecoverManager)

@@ -1,35 +1,48 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterModule;
+import com.tencent.biz.qqstory.takevideo.artfilter.FilterUploadInfo;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.transfile.ArtFilterUploadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aitp
-  extends BroadcastReceiver
+  implements ITransactionCallback
 {
-  public aitp(AbsPublishActivity paramAbsPublishActivity) {}
+  public aitp(ArtFilterUploadProcessor paramArtFilterUploadProcessor) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap paramHashMap)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
-    {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      this.a.a(i, 9);
+    this.a.d = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms");
     }
-    do
-    {
-      return;
-      if ("key_audio_delete_action".equals(paramContext))
-      {
-        this.a.a(0);
-        this.a.a = null;
-        TroopBarUtils.a(this.a.p, this.a.q, "del_record", this.a.r, this.a.c, "", "");
-        return;
-      }
-    } while (!"key_audio_play_action".equals(paramContext));
-    TroopBarUtils.a(this.a.p, this.a.q, "preview_record", this.a.r, this.a.c, "", "");
+    this.a.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.a = paramArrayOfByte;
+    if (this.a.b != -1) {
+      this.a.a(paramInt, "uploadImgError");
+    }
   }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap paramHashMap)
+  {
+    this.a.d = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms ,fileSize:" + this.a.q);
+    }
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.b.equals(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterFilterUploadInfo.a))
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.a = this.a.d;
+      if (this.a.b != -1) {
+        this.a.aq_();
+      }
+    }
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

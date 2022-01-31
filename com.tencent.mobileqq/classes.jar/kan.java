@@ -1,45 +1,32 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class kan
-  implements GestureDetector.OnGestureListener
+  implements ChatActivityUtils.StartVideoListener
 {
-  public kan(VideoControlUI paramVideoControlUI) {}
+  public kan(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a()
   {
-    return false;
+    this.a.a.a().a().b = -1;
+    PSTNC2CActivity.a(this.a);
+    this.a.finish();
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void b() {}
+  
+  public void c()
   {
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if ((this.a.k != null) && (this.a.k.isShown()))
-    {
-      this.a.k.setVisibility(8);
-      com.tencent.mobileqq.utils.AudioHelper.b = false;
-    }
-    return false;
+    this.a.a.a().a().b = -1;
+    PSTNC2CActivity.a(this.a);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kan
  * JD-Core Version:    0.7.0.1
  */

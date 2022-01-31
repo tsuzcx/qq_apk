@@ -1,15 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class lrv
   implements Runnable
 {
-  public lrv(SubscriptionInfoModule paramSubscriptionInfoModule, List paramList) {}
+  public lrv(AdvertisementInfoModule paramAdvertisementInfoModule, AdvertisementInfo paramAdvertisementInfo) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
   }
 }
 

@@ -1,14 +1,26 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
+import java.util.List;
 
-public class kpw
+public final class kpw
+  extends Handler
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  public kpw(Looper paramLooper, SearchProtocol.SearchObserver paramSearchObserver)
+  {
+    super(paramLooper);
+  }
   
-  public kpw(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.arg1 == 0)
+    {
+      this.a.a(paramMessage.arg1, (List)paramMessage.obj);
+      return;
+    }
+    this.a.a(paramMessage.arg1, null);
+  }
 }
 
 

@@ -1,24 +1,16 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-public class tqk
+class tqk
   implements Runnable
 {
-  public tqk(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  tqk(tqi paramtqi) {}
   
   public void run()
   {
-    if (RegisterVerifyCodeActivity.a(this.a) == 1)
-    {
-      RegisterVerifyCodeActivity.a(this.a).setText(2131434277);
-      RegisterVerifyCodeActivity.a(this.a).setEnabled(true);
-      RegisterVerifyCodeActivity.a(this.a).setClickable(true);
-      return;
+    if (QQSettingMe.a(this.a.a) != null) {
+      QQSettingMe.a(this.a.a).a(this.a.a.a);
     }
-    RegisterVerifyCodeActivity.b(this.a);
-    RegisterVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434277) + "(" + RegisterVerifyCodeActivity.a(this.a) + "s)");
-    this.a.a.postDelayed(this, 1000L);
   }
 }
 

@@ -21,9 +21,9 @@ public class DayAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.b = paramContext.getColor(2131494273);
+    this.b = paramContext.getColor(2131494279);
     this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, paramContext.getDisplayMetrics()));
-    this.c = paramContext.getColor(2131494255);
+    this.c = paramContext.getColor(2131494261);
   }
   
   public View a(int paramInt)

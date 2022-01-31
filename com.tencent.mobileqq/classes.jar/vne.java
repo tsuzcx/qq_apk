@@ -1,60 +1,45 @@
-import android.media.ExifInterface;
-import android.os.AsyncTask;
-import com.tencent.image.JpegExifReader;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
 
 public class vne
-  extends AsyncTask
+  implements Runnable
 {
-  public vne(AIOGalleryScene paramAIOGalleryScene, File paramFile, int paramInt) {}
+  public vne(StructingMsgItemBuilder paramStructingMsgItemBuilder, StructingMsgItemBuilder.StructingMsgViewHolder paramStructingMsgViewHolder) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void run()
   {
-    if (JpegExifReader.isCrashJpeg(this.jdField_a_of_type_JavaIoFile.getAbsolutePath())) {
-      return null;
+    int i = 1;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PortalManager", 4, "qiang hong bao lala ......struct msg getView report.........");
+    }
+    String str2 = "";
+    String str1;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+      {
+        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+        str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
+      }
     }
     for (;;)
     {
-      try
+      PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.getManager(78);
+      if (localPortalManager != null) {}
+      for (int j = localPortalManager.a();; j = -1)
       {
-        paramVarArgs = new ExifInterface(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          paramVarArgs.setAttribute("Orientation", String.valueOf(1));
-          paramVarArgs.saveAttributes();
-          paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene;
-          paramVarArgs.k += 1;
-          return null;
-        }
-      }
-      catch (IOException paramVarArgs)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("AIOGalleryScene", 2, "save exif error", paramVarArgs);
-        return null;
-        if (this.jdField_a_of_type_Int != 1) {
-          break label126;
-        }
-        paramVarArgs.setAttribute("Orientation", String.valueOf(6));
-        continue;
-      }
-      catch (UnsupportedOperationException paramVarArgs) {}
-      if (!QLog.isColorLevel()) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, "CliOper", "", "", "0X8004FF9", "0X8004FF9", 0, 0, "" + j, "" + i, "" + str1, str2);
+        return;
+        i = 2;
         break;
       }
-      QLog.e("AIOGalleryScene", 2, "save exif error", paramVarArgs);
-      return null;
-      label126:
-      if (this.jdField_a_of_type_Int == 2) {
-        paramVarArgs.setAttribute("Orientation", String.valueOf(3));
-      } else if (this.jdField_a_of_type_Int == 3) {
-        paramVarArgs.setAttribute("Orientation", String.valueOf(8));
-      }
+      str1 = "";
+      i = 0;
     }
   }
 }

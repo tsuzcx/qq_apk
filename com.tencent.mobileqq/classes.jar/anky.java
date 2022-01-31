@@ -1,42 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.qq.im.capture.view.QIMCommonLoadingProgress;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
 
 public class anky
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+  implements DialogInterface.OnClickListener
 {
-  public anky(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
+  public anky(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new anlb(this, paramPtvTemplateInfo, paramInt));
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    if (paramPtvTemplateInfo.usable) {
-      QIMCommonLoadingProgress.a(paramPtvTemplateInfo).b();
-    }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new ankz(this, paramPtvTemplateInfo, paramBoolean));
-      if (!paramBoolean)
-      {
-        FlowCameraMqqAction.a("", "0X80075BB", "", "", "", "");
-        ThreadManager.getUIHandler().post(new anla(this));
-      }
-      return;
-      QIMCommonLoadingProgress.a(paramPtvTemplateInfo).c();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anky
  * JD-Core Version:    0.7.0.1
  */

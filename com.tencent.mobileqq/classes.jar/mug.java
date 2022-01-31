@@ -1,16 +1,40 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import java.util.Map;
+import android.content.IntentFilter;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class mug
+public class mug
   implements Runnable
 {
-  mug(muf parammuf) {}
+  public mug(ReadInJoyGlobalReporter paramReadInJoyGlobalReporter) {}
   
   public void run()
   {
-    Bitmap localBitmap = (Bitmap)this.a.jdField_a_of_type_JavaUtilMap.remove("image");
-    this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper.a(GalleryShareHelper.b(this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper), GalleryShareHelper.c(this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper), GalleryShareHelper.d(this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper), localBitmap, this.a.jdField_a_of_type_Int);
+    try
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
+      if (ReadInJoyGlobalReporter.b(this.a) == 0)
+      {
+        BaseApplicationImpl.getContext().registerReceiver(this.a.a, localIntentFilter);
+        ReadInJoyGlobalReporter.a(this.a, 1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyGlobalReporter", 2, "registerScreenListener");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.e("ReadInJoyGlobalReporter", 2, "registerScreenListener:" + localException.toString());
+    }
   }
 }
 

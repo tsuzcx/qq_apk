@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ServerCheckCallback;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
-public class aaxy
-  implements ArkMessageServerLogic.ServerCheckCallback
+class aaxy
+  extends SQLiteOpenHelper
 {
-  public aaxy(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference) {}
-  
-  public void a(ArrayList paramArrayList)
+  public aaxy(Context paramContext, String paramString)
   {
-    if (paramArrayList != null) {
-      ArkRecommendLogic.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendLogic, paramArrayList, null, this.jdField_a_of_type_JavaLangRefWeakReference, 4);
-    }
+    super(paramContext, paramString, null, 2);
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS action_app_name(`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `context` char(128) NOT NULL, `action` char(32) NOT NULL, `app_id` BIGINT NOT NULL, `app_name` char(128) NOT NULL, `time` BIGINT NOT NULL, `update_interval` INTEGER DEFAULT 0 NOT NULL, UNIQUE (context, action, app_id, app_name))");
+  }
+  
+  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS action_app_name");
+    onCreate(paramSQLiteDatabase);
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS action_app_name");
+    onCreate(paramSQLiteDatabase);
   }
 }
 

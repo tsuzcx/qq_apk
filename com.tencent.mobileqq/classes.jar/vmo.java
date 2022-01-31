@@ -1,24 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import android.app.Dialog;
 
-public class vmo
-  implements VideoDrawable.OnPlayRepeatListener
+class vmo
+  implements Runnable
 {
-  AIOGalleryAdapter a;
+  vmo(vmn paramvmn, Dialog paramDialog) {}
   
-  public vmo(AIOGalleryAdapter paramAIOGalleryAdapter)
+  public void run()
   {
-    this.a = paramAIOGalleryAdapter;
-  }
-  
-  public void onPlayRepeat(int paramInt)
-  {
-    if (paramInt != 1) {
-      return;
+    if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    new Handler(Looper.getMainLooper()).post(new vmp(this));
   }
 }
 

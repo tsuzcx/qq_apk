@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import android.view.Choreographer.FrameCallback;
+import com.tencent.mobileqq.util.FPSCalculator;
 
 public class akgx
-  implements Runnable
+  implements Choreographer.FrameCallback
 {
-  public akgx(HttpCommunicator paramHttpCommunicator, HttpMsg paramHttpMsg, akha paramakha) {}
+  public akgx(FPSCalculator paramFPSCalculator) {}
   
-  public void run()
+  public void doFrame(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_Akha);
+    FPSCalculator.a(this.a, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgx
  * JD-Core Version:    0.7.0.1
  */

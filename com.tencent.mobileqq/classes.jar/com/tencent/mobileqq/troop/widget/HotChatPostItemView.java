@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajsi;
+import ajzv;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -306,7 +306,7 @@ public class HotChatPostItemView
         localURLDrawable = URLDrawable.getDrawable(paramString);
       }
       paramImageView.setImageDrawable(a(localURLDrawable, paramFloat));
-      localURLDrawable.setURLDrawableListener(new ajsi(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
+      localURLDrawable.setURLDrawableListener(new ajzv(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
       return;
     }
     catch (OutOfMemoryError paramImageView)
@@ -345,19 +345,19 @@ public class HotChatPostItemView
   
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969490, null);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969486, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362870));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363378));
-    this.d = ((TextView)localView.findViewById(2131363057));
-    this.e = ((TextView)localView.findViewById(2131366691));
-    this.f = ((TextView)localView.findViewById(2131366688));
-    this.c = ((TextView)localView.findViewById(2131366687));
-    this.g = ((TextView)localView.findViewById(2131366692));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366112));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366373));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362875));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363397));
+    this.d = ((TextView)localView.findViewById(2131363062));
+    this.e = ((TextView)localView.findViewById(2131366689));
+    this.f = ((TextView)localView.findViewById(2131366686));
+    this.c = ((TextView)localView.findViewById(2131366685));
+    this.g = ((TextView)localView.findViewById(2131366690));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366117));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366378));
     this.jdField_a_of_type_AndroidViewView = localView;
-    setBackgroundResource(2130840370);
+    setBackgroundResource(2130840385);
     return this;
   }
   
@@ -639,7 +639,7 @@ public class HotChatPostItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.HotChatPostItemView
  * JD-Core Version:    0.7.0.1
  */

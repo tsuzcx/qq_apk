@@ -1,30 +1,68 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tencent.mobileqq.leba.LebaFeedsAdapter;
+import com.tencent.mobileqq.leba.LebaFeedsObserver;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class aeiq
-  implements Runnable
+  extends LebaFeedsObserver
 {
-  public aeiq(EmoticonManager paramEmoticonManager, List paramList) {}
+  public aeiq(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a();
-    localEntityTransaction.a();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba_with_feeds", 2, "onLoadLocalData" + paramBoolean);
+    }
+    if (LebaWithFeeds.a(this.a) == null)
     {
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)localIterator.next();
-      if ((localEmoticonPackage != null) && (!EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localEmoticonPackage))) {
-        QLog.e("EmoticonManager", 1, "saveEmoticonPackages fail epId = " + localEmoticonPackage.epId);
+      QLog.e("Q.lebatab.leba_with_feeds", 1, "onLoadLocalData, mFeedsAdapter is null");
+      return;
+    }
+    LebaWithFeeds.a(this.a).a(false);
+    LebaWithFeeds.a(this.a, true, 1);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba_with_feeds", 2, "onGetDynamicFeeds isSuccess=" + paramBoolean + ", eventType=" + paramInt1 + ", dataState=" + paramInt2);
+    }
+    if (LebaWithFeeds.a(this.a) == null)
+    {
+      QLog.e("Q.lebatab.leba_with_feeds", 1, "onGetDynamicFeeds, mFeedsAdapter is null");
+      return;
+    }
+    if (paramInt1 == 1)
+    {
+      LebaWithFeeds.b(this.a, false);
+      if (!paramBoolean) {
+        break label150;
+      }
+      LebaWithFeeds.a(this.a).e();
+      if (paramInt2 != 1) {
+        break label145;
       }
     }
-    localEntityTransaction.c();
-    localEntityTransaction.b();
+    label145:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      LebaWithFeeds.a(this.a).a(paramBoolean);
+      LebaWithFeeds.a(this.a, false, 2);
+      return;
+      if (paramInt1 != 2) {
+        break;
+      }
+      LebaWithFeeds.c(this.a, false);
+      break;
+    }
+    label150:
+    if (paramInt1 == 2)
+    {
+      LebaWithFeeds.a(this.a).d();
+      return;
+    }
+    LebaWithFeeds.a(this.a).e();
   }
 }
 

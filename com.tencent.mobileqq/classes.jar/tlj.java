@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 
-class tlj
-  implements Runnable
+public class tlj
+  extends MessageObserver
 {
-  tlj(tli paramtli, RichStatus paramRichStatus) {}
+  public tlj(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Tli.a.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, false);
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
+      this.a.a(paramBoolean, true);
+    }
   }
 }
 

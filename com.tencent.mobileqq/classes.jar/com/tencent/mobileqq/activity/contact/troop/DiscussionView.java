@@ -42,7 +42,7 @@ import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 import com.tencent.widget.OverScrollViewListener;
-import wkh;
+import wpr;
 
 public class DiscussionView
   extends BaseTroopView
@@ -53,7 +53,7 @@ public class DiscussionView
   public DiscussionListAdapter2 a;
   private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
   public SlideDetectListView a;
-  private wkh jdField_a_of_type_Wkh = new wkh(this, null);
+  private wpr jdField_a_of_type_Wpr = new wpr(this, null);
   int b;
   public boolean c = false;
   View e;
@@ -99,7 +99,7 @@ public class DiscussionView
     {
       if (i == 0)
       {
-        i = 2131435947;
+        i = 2131435965;
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(i);
         if (!(this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.getItem(paramInt) instanceof Integer)) {
@@ -126,10 +126,10 @@ public class DiscussionView
         return;
         if (paramInt <= i + 1)
         {
-          i = 2131435946;
+          i = 2131435964;
           break;
         }
-        i = 2131435947;
+        i = 2131435965;
         break;
       }
       label214:
@@ -149,25 +149,25 @@ public class DiscussionView
   
   private void k()
   {
-    this.e = findViewById(2131366489);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.e.findViewById(2131366491));
+    this.e = findViewById(2131366487);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.e.findViewById(2131366489));
     this.e.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366492));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366490));
     this.b = getResources().getDimensionPixelSize(2131558938);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131362391));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131362394));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setNeedCheckSpringback(true);
     LayoutInflater localLayoutInflater = LayoutInflater.from(a());
-    View localView = localLayoutInflater.inflate(2130971517, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false);
-    localView.findViewById(2131368321).setVisibility(8);
-    EditText localEditText = (EditText)localView.findViewById(2131368322);
+    View localView = localLayoutInflater.inflate(2130971543, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false);
+    localView.findViewById(2131368323).setVisibility(8);
+    EditText localEditText = (EditText)localView.findViewById(2131368324);
     localEditText.setFocusableInTouchMode(false);
     localEditText.setOnClickListener(this);
     localEditText.setCursorVisible(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.addHeaderView(localView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setContentBackground(2130838214);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setContentBackground(2130838219);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setEmptyView(this.e);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)localLayoutInflater.inflate(2130969239, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)localLayoutInflater.inflate(2130969237, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, false));
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOverScrollListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollGroupFloatingListener(this);
@@ -217,7 +217,7 @@ public class DiscussionView
   protected void a(Intent paramIntent, BaseTroopView.ITroopContext paramITroopContext)
   {
     super.a(paramIntent, paramITroopContext);
-    a(2130969438);
+    a(2130969434);
     k();
     j();
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a())
@@ -283,14 +283,14 @@ public class DiscussionView
       do
       {
         return;
-        paramView = (ShaderAnimLayout)paramView.findViewById(2131364338);
+        paramView = (ShaderAnimLayout)paramView.findViewById(2131364363);
       } while (paramView == null);
-      localButton = (Button)paramView.findViewById(2131364339);
+      localButton = (Button)paramView.findViewById(2131364364);
     } while (localButton == null);
     paramSlideDetectListView.setDeleteAreaWidth(paramView.getLayoutParams().width);
     paramSlideDetectListView = a();
     if (!localDiscussionInfo.hasCollect) {}
-    for (paramInt = 2131429836;; paramInt = 2131429837)
+    for (paramInt = 2131429837;; paramInt = 2131429838)
     {
       paramSlideDetectListView = paramSlideDetectListView.getString(paramInt);
       localButton.setText(paramSlideDetectListView);
@@ -333,7 +333,7 @@ public class DiscussionView
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
       continue;
       this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-      b(2131434349);
+      b(2131434365);
     }
   }
   
@@ -350,10 +350,10 @@ public class DiscussionView
       do
       {
         return;
-        paramSlideDetectListView = (ShaderAnimLayout)paramView.findViewById(2131364338);
+        paramSlideDetectListView = (ShaderAnimLayout)paramView.findViewById(2131364363);
       } while (paramSlideDetectListView == null);
       paramSlideDetectListView.e();
-      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131364339);
+      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131364364);
     } while (paramSlideDetectListView == null);
     paramSlideDetectListView.setTag(null);
   }
@@ -391,7 +391,7 @@ public class DiscussionView
   protected void g()
   {
     super.g();
-    b(this.jdField_a_of_type_Wkh);
+    b(this.jdField_a_of_type_Wpr);
     if (this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2 != null) {
       this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.a();
     }
@@ -412,7 +412,7 @@ public class DiscussionView
   {
     this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2 = new DiscussionListAdapter2(a(), this, this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2);
-    a(this.jdField_a_of_type_Wkh);
+    a(this.jdField_a_of_type_Wpr);
   }
   
   public void onClick(View paramView)
@@ -421,11 +421,11 @@ public class DiscussionView
     {
     default: 
       return;
-    case 2131368322: 
+    case 2131368324: 
       h();
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006665", "0X8006665", 0, 0, "", "", "", "");
       return;
-    case 2131366491: 
+    case 2131366489: 
       l();
       return;
     }

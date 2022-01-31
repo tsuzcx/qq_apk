@@ -1,27 +1,28 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import java.util.List;
 
 public class aodx
-  extends Property
+  implements AbsListView.OnScrollListener
 {
-  public aodx(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
+  int jdField_a_of_type_Int = 0;
+  
+  public aodx(EditVideoTag paramEditVideoTag) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    super(paramClass, paramString);
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag)).a().size()) && (!EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag)).a()))
+    {
+      paramAbsListView = EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag);
+      EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag)).b(paramAbsListView);
+    }
   }
   
-  public Integer a(GroundDrawable paramGroundDrawable)
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.c(paramGroundDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.c(paramGroundDrawable, paramInteger.intValue());
-    }
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
   }
 }
 

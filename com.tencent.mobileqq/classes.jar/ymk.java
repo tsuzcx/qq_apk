@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.ApolloResponseManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-class ymk
+public class ymk
   implements Runnable
 {
-  ymk(ymj paramymj, ApolloActionData paramApolloActionData) {}
+  public ymk(SpecailCareListActivity paramSpecailCareListActivity) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ymj.a.a == null) {
-      return;
+    if (this.a.a(2)) {
+      this.a.runOnUiThread(new yml(this));
     }
-    ((ApolloManager)this.jdField_a_of_type_Ymj.a.a.getManager(152)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
+    this.a.a(2, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ymk
  * JD-Core Version:    0.7.0.1
  */

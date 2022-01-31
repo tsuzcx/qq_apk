@@ -1,30 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer.OnTipClickListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.plugin.PluginBaseActivity;
 
-public class mjf
-  extends Handler
+class mjf
+  implements Runnable
 {
-  public mjf(ReadInJoySearchTipsContainer paramReadInJoySearchTipsContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  mjf(mje parammje) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    super.handleMessage(paramMessage);
-    if (this.a.a != null)
+    VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    if ((VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper) instanceof BaseActivity)) {
+      QQToast.a(VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper), -1, VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).getString(2131428476), 0).b(((BaseActivity)VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper)).getTitleBarHeight());
+    }
+    for (;;)
     {
-      if (paramMessage.obj != null) {
-        this.a.a.a((String)paramMessage.obj);
+      VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).a(VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper), this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
+      return;
+      if ((VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper) instanceof PluginBaseActivity)) {
+        QQToast.a(VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper), -1, VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper).getString(2131428476), 0).b(((PluginBaseActivity)VideoShareHelper.a(this.a.jdField_a_of_type_Mjd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoShareHelper)).g());
       }
     }
-    else {
-      return;
-    }
-    this.a.a.a(null);
   }
 }
 

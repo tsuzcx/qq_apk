@@ -1,33 +1,26 @@
-import com.tencent.mobileqq.business.sougou.WordMatchManager;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.MatcherCallback;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.armap.config.ARMapConfigManager;
 
-class abmj
-  implements Runnable
+public class abmj
+  extends SosoInterface.OnLocationListener
 {
-  abmj(abmi paramabmi) {}
-  
-  public void run()
+  public abmj(ARMapConfigManager paramARMapConfigManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.b = this.a.jdField_a_of_type_Boolean;
-    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.c = this.a.jdField_a_of_type_Boolean;
-    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.d = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.e = false;
-    Iterator localIterator = this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      WordMatchManager.MatcherCallback localMatcherCallback = (WordMatchManager.MatcherCallback)localIterator.next();
-      if (localMatcherCallback != null) {
-        localMatcherCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$WordMatcher);
-      }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
+      ARMapConfigManager.a(this.a, paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.b);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_JavaUtilArrayList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abmj
  * JD-Core Version:    0.7.0.1
  */

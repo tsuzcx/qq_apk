@@ -1,37 +1,33 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.GetProfileFeedIdListRequest;
-import com.tencent.biz.qqstory.network.request.GetProfileFeedIdListRequest.GetProfileFeedIdListResponse;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class nwt
-  implements CmdTaskManger.CommandCallback
+public class nwt
+  extends QQUIEventReceiver
 {
-  nwt(nws paramnws, JobContext paramJobContext, Integer paramInteger) {}
-  
-  public void a(@NonNull GetProfileFeedIdListRequest paramGetProfileFeedIdListRequest, @Nullable GetProfileFeedIdListRequest.GetProfileFeedIdListResponse paramGetProfileFeedIdListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public nwt(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
+  {
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) {}
+    while ((paramGetCollectionListEvent.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramGetProfileFeedIdListResponse == null))
-    {
-      SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-      nws.a(this.jdField_a_of_type_Nws, paramErrorMessage);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramGetCollectionListEvent.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramGetCollectionListEvent.toString());
     }
-    nws.a(this.jdField_a_of_type_Nws).a(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetProfileFeedIdListResponse.jdField_a_of_type_Boolean);
-    ((FeedManager)SuperManager.a(11)).a(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList);
-    paramGetProfileFeedIdListRequest = nws.a(this.jdField_a_of_type_Nws).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    nws.a(this.jdField_a_of_type_Nws, paramGetProfileFeedIdListRequest);
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetCollectionListEvent);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DateCollectionListPageLoader.GetCollectionListEvent.class;
   }
 }
 

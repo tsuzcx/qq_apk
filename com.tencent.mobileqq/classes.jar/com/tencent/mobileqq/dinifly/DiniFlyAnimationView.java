@@ -384,8 +384,11 @@ public class DiniFlyAnimationView
     cancelLoaderTask();
     this.compositionLoader = LottieComposition.Factory.fromAssetFileName(getContext(), paramString, new OnCompositionLoadedListener()
     {
-      public void onCompositionLoaded(LottieComposition paramAnonymousLottieComposition)
+      public void onCompositionLoaded(@Nullable LottieComposition paramAnonymousLottieComposition)
       {
+        if (paramAnonymousLottieComposition == null) {
+          return;
+        }
         if (paramInt == 2) {
           DiniFlyAnimationView.STRONG_REF_CACHE.put(paramString, paramAnonymousLottieComposition);
         }

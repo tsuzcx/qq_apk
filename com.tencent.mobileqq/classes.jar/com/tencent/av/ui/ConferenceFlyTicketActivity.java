@@ -37,12 +37,12 @@ import com.tencent.qphone.base.util.QLog;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
-import jrq;
-import jrr;
-import jrs;
-import jrt;
-import jru;
-import jrv;
+import jtu;
+import jtv;
+import jtw;
+import jtx;
+import jty;
+import jtz;
 import mqq.manager.TicketManager;
 
 public class ConferenceFlyTicketActivity
@@ -52,10 +52,10 @@ public class ConferenceFlyTicketActivity
   Handler jdField_a_of_type_AndroidOsHandler = null;
   public DiscussionHandler a;
   public final String a;
-  jrs jdField_a_of_type_Jrs;
-  public jrt a;
-  jru jdField_a_of_type_Jru;
-  jrv jdField_a_of_type_Jrv;
+  jtw jdField_a_of_type_Jtw;
+  public jtx a;
+  jty jdField_a_of_type_Jty;
+  jtz jdField_a_of_type_Jtz;
   boolean jdField_a_of_type_Boolean = false;
   public String b;
   boolean b;
@@ -81,7 +81,7 @@ public class ConferenceFlyTicketActivity
     ArrayList localArrayList = new ArrayList();
     MessageRecord localMessageRecord = MessageRecordFactory.a(-7003);
     if (QAVHrMeeting.a(this.jdField_a_of_type_Int)) {}
-    for (String str = this.app.getApp().getString(2131434023);; str = this.app.getApp().getString(2131434022))
+    for (String str = this.app.getApp().getString(2131434039);; str = this.app.getApp().getString(2131434038))
     {
       localMessageRecord.init(paramString2, paramString1, paramString3, str, l, -7003, 3000, l);
       localMessageRecord.isread = true;
@@ -114,7 +114,7 @@ public class ConferenceFlyTicketActivity
     if ((localObject == null) || (((String)localObject).isEmpty())) {
       return false;
     }
-    this.jdField_a_of_type_Jrv = new jrv(this);
+    this.jdField_a_of_type_Jtz = new jtz(this);
     ArrayList localArrayList = new ArrayList();
     DownloadParams localDownloadParams = new DownloadParams();
     String str = this.app.getCurrentAccountUin();
@@ -122,7 +122,7 @@ public class ConferenceFlyTicketActivity
     localDownloadParams.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     localDownloadParams.jdField_a_of_type_JavaUtilHashMap.put("Cookie", "uin=o" + str + ";skey=" + (String)localObject);
     localArrayList.add(localDownloadParams);
-    this.jdField_a_of_type_Jrv.execute(new ArrayList[] { localArrayList });
+    this.jdField_a_of_type_Jtz.execute(new ArrayList[] { localArrayList });
     return true;
   }
   
@@ -168,7 +168,7 @@ public class ConferenceFlyTicketActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new jrq(this, str));
+      this.jdField_a_of_type_AndroidOsHandler.post(new jtu(this, str));
       return;
       str = "多人聊天不存在";
       continue;
@@ -193,7 +193,7 @@ public class ConferenceFlyTicketActivity
   @TargetApi(9)
   void a(String paramString)
   {
-    this.jdField_a_of_type_Jru = new jru(this, paramString);
+    this.jdField_a_of_type_Jty = new jty(this, paramString);
     paramString = new ArrayList();
     DownloadParams localDownloadParams = new DownloadParams();
     String str1 = this.app.getCurrentAccountUin();
@@ -205,7 +205,7 @@ public class ConferenceFlyTicketActivity
     }
     localDownloadParams.jdField_a_of_type_JavaUtilHashMap.put("Cookie", "uin=o" + str1 + ";skey=" + str2);
     paramString.add(localDownloadParams);
-    this.jdField_a_of_type_Jru.execute(new ArrayList[] { paramString });
+    this.jdField_a_of_type_Jty.execute(new ArrayList[] { paramString });
   }
   
   public void a(String paramString1, String paramString2)
@@ -303,7 +303,7 @@ public class ConferenceFlyTicketActivity
   void b(String paramString)
   {
     AudioHelper.b("加入讨论组_delay_获取讨论组签名");
-    ThreadManager.post(new jrr(this, paramString), 5, null, false);
+    ThreadManager.post(new jtv(this, paramString), 5, null, false);
   }
   
   public void c()
@@ -340,8 +340,8 @@ public class ConferenceFlyTicketActivity
     boolean bool = super.doOnCreate(paramBundle);
     a();
     this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler = ((DiscussionHandler)this.app.a(6));
-    this.jdField_a_of_type_Jrs = new jrs(this);
-    addObserver(this.jdField_a_of_type_Jrs);
+    this.jdField_a_of_type_Jtw = new jtw(this);
+    addObserver(this.jdField_a_of_type_Jtw);
     if (this.i.equals("video_hr"))
     {
       if (!a()) {
@@ -358,7 +358,7 @@ public class ConferenceFlyTicketActivity
   
   protected void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Jrs);
+    removeObserver(this.jdField_a_of_type_Jtw);
     this.jdField_a_of_type_AndroidOsHandler = null;
     super.doOnDestroy();
   }
@@ -370,7 +370,7 @@ public class ConferenceFlyTicketActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.ConferenceFlyTicketActivity
  * JD-Core Version:    0.7.0.1
  */

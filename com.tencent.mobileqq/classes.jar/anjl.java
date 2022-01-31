@@ -1,42 +1,21 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qzone.webviewplugin.QZoneFeedActionJsPlugin;
 
 public class anjl
-  implements Animation.AnimationListener
+  extends BroadcastReceiver
 {
-  public anjl(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anjl(QZoneFeedActionJsPlugin paramQZoneFeedActionJsPlugin) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEffectCameraCaptureUnit", 2, "clearAnimation end!");
-    }
-    if (QIMEffectCameraCaptureUnit.d(this.a) == null) {
-      return;
-    }
-    this.a.i = true;
-    QIMEffectCameraCaptureUnit.d(this.a).setText(2131439102);
-    QIMEffectCameraCaptureUnit.d(this.a).startAnimation(this.a.b);
-    this.a.a.setStartOffset(3000L);
-    this.a.a.setAnimationListener(QIMEffectCameraCaptureUnit.b(this.a));
-    QIMEffectCameraCaptureUnit.d(this.a).setAnimation(this.a.a);
-    this.a.a.startNow();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.i = true;
+    QZoneFeedActionJsPlugin.a(this.a, paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,17 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-public final class yld
-  implements Runnable
+public class yld
+  implements DialogInterface.OnClickListener
 {
-  public yld(ApolloRender paramApolloRender) {}
+  public yld(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
-  {
-    if (this.a.mShowEditWindow)
-    {
-      this.a.mEditWindow.dismiss();
-      this.a.mShowEditWindow = false;
-      ApolloRender.sIsKeyBoardDissmiss = true;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yld
  * JD-Core Version:    0.7.0.1
  */

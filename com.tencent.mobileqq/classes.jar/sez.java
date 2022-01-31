@@ -1,24 +1,63 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView.OnTextLineChangeListener;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class sez
-  implements FollowImageTextView.OnTextLineChangeListener
+  extends TroopObserver
 {
-  public sez(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sez(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (this.a.f) {}
-    do
+    int i = 1;
+    this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
     {
-      do
+      HashMap localHashMap = new HashMap();
+      if ((!paramBoolean) && ((paramObject instanceof Integer))) {
+        i = ((Integer)paramObject).intValue();
+      }
+      for (;;)
       {
+        localHashMap.put("result", i + "");
+        localHashMap.put("netType", NetworkUtil.a(BaseApplication.getContext()) + "");
+        StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "multiMsgNickTimeoutR", false, 30000L, 0L, localHashMap, "");
         return;
-      } while ((paramInt <= 0) || (ChatSettingForTroop.b(this.a) == paramInt));
-      ChatSettingForTroop.a(this.a, paramInt);
-    } while (this.a.a.hasSetNewTroopHead);
-    ChatSettingForTroop.b(this.a);
+        if (paramBoolean) {
+          i = 0;
+        }
+      }
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+    MultiMsgManager.a().b.clear();
+    if ((paramBoolean) && (paramObject != null))
+    {
+      MultiMsgManager.a().b.putAll((Map)paramObject);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg", 4, "onBatchTroopCardDefaultNick = " + paramObject);
+      }
+    }
+    while (MultiMsgManager.a().b.size() == 0)
+    {
+      QQToast.a(this.a, 2131433438, 0).b(this.a.getTitleBarHeight());
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg", 4, "onBatchTroopCardDefaultNick failed");
+      }
+    }
+    this.a.a((Map)paramObject, MultiMsgManager.a().a);
   }
 }
 

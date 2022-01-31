@@ -25,7 +25,7 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import svl;
+import tag;
 
 public class JDHongbaoActivity
   extends BaseActivity
@@ -57,17 +57,17 @@ public class JDHongbaoActivity
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363214));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363218));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363215));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131363218));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363216));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363219));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363220));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363221));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363222));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363223));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363217));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363219));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131363222));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363220));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363223));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363224));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363225));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363226));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363227));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363221));
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
@@ -75,7 +75,7 @@ public class JDHongbaoActivity
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 2, -1.0F, 2, 0.0F);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new JDHongbaoActivity.MyOvershotInterpolator(this));
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(800L);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363213);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363217);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 0.7F);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(350L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
@@ -129,7 +129,7 @@ public class JDHongbaoActivity
     for (;;)
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getApplicationContext().getResources().getDrawable(2130842324);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getApplicationContext().getResources().getDrawable(2130842359);
       localObject = URLDrawable.getDrawable(this.jdField_f_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
       if ((this.jdField_a_of_type_ComTencentImageURLImageView != null) && (localObject != null)) {
         this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
@@ -144,7 +144,7 @@ public class JDHongbaoActivity
   
   private void c()
   {
-    ThreadManager.getUIHandler().postDelayed(new svl(this), 500L);
+    ThreadManager.getUIHandler().postDelayed(new tag(this), 500L);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)

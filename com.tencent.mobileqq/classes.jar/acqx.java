@@ -1,23 +1,29 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.pb.extendfriend.ExtendFriendSquareInfo.RspBody;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acqx
-  implements FMDialogUtil.FMDialogInterface
+public class acqx
+  extends ExtendFriendObserver
 {
-  public acqx(Activity paramActivity, FileManagerEntity paramFileManagerEntity) {}
+  public acqx(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, ExtendFriendSquareInfo.RspBody paramRspBody)
   {
-    FileManagerUtil.c(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+    try
+    {
+      ExtendFriendSquareFragment.a(this.a, paramBoolean, paramRspBody);
+      return;
+    }
+    catch (Exception paramRspBody)
+    {
+      QLog.e("ExtendFriendSquareFragment", 1, "onGetSquareStrangerList exception", paramRspBody);
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqx
  * JD-Core Version:    0.7.0.1
  */

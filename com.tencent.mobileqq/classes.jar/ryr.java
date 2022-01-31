@@ -1,37 +1,15 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class ryr
-  implements Runnable
+  implements View.OnTouchListener
 {
   ryr(ryq paramryq) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      this.a.a.b(this.a.a.b, this.a.a.a);
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatHistory", 2, "onExportMessageRecord Exception", localException);
-      }
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatHistory", 2, "onExportMessageRecord OOM", localOutOfMemoryError);
-      }
-      return;
-    }
-    finally
-    {
-      this.a.a.c.dismiss();
-    }
+    return true;
   }
 }
 

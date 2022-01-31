@@ -1,15 +1,16 @@
 package c.t.m.g;
 
 public abstract class ax
-  implements bc
 {
-  public abstract String a();
+  public Object a;
+  public a b;
   
-  public void a(String paramString1, String paramString2) {}
+  public abstract boolean a(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean, Object paramObject, a parama);
   
-  public void a(String paramString1, byte[] paramArrayOfByte, String paramString2) {}
-  
-  public void a_() {}
+  public static abstract interface a
+  {
+    public abstract void a(boolean paramBoolean, Object paramObject);
+  }
 }
 
 

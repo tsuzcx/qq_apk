@@ -29,47 +29,39 @@ import com.tencent.mapsdk.raster.model.Polygon;
 import com.tencent.mapsdk.raster.model.PolygonOptions;
 import com.tencent.mapsdk.raster.model.Polyline;
 import com.tencent.mapsdk.raster.model.PolylineOptions;
+import com.tencent.mapsdk.raster.model.TencentMapOptions;
 import com.tencent.mapsdk.rastercore.d.a;
-import com.tencent.mapsdk.rastercore.d.e;
+import com.tencent.mapsdk.rastercore.d.c;
 import com.tencent.mapsdk.rastercore.d.f;
+import com.tencent.mapsdk.rastercore.d.g;
 
 public class MapView
   extends FrameLayout
 {
-  private boolean config = false;
   @Deprecated
   private MapController controller;
-  private f eventHandler;
-  private e mapContext;
+  private g eventHandler;
+  private f mapContext;
   private Projection projection;
-  private int scene = 0;
   private TencentMap tencentMap;
   private UiSettings uiSettings;
   
   public MapView(Context paramContext)
   {
     super(paramContext);
-    init();
-  }
-  
-  public MapView(Context paramContext, int paramInt)
-  {
-    super(paramContext);
-    this.scene = paramInt;
-    init();
+    init(null);
   }
   
   public MapView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    init();
+    init(null);
   }
   
-  public MapView(Context paramContext, boolean paramBoolean)
+  public MapView(Context paramContext, TencentMapOptions paramTencentMapOptions)
   {
     super(paramContext);
-    this.config = paramBoolean;
-    init();
+    init(paramTencentMapOptions);
   }
   
   private void doLayout(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
@@ -140,44 +132,24 @@ public class MapView
     paramArrayOfInt[1] = paramInt2;
   }
   
-  private void init()
+  private void init(TencentMapOptions paramTencentMapOptions)
   {
     initForBugly();
-    try
-    {
-      localObject = getTag();
-      setTag(null);
-      localObject = (Integer)localObject;
-      if (localObject != null) {
-        this.scene = ((Integer)localObject).intValue();
-      }
+    Context localContext = getContext();
+    this.mapContext = new f(this);
+    this.eventHandler = this.mapContext.h();
+    setOnKeyListener(this.eventHandler);
+    this.projection = new Projection(this.mapContext);
+    this.uiSettings = new UiSettings(this.mapContext.f());
+    this.tencentMap = new TencentMap(this.mapContext);
+    this.controller = new MapController(this);
+    if (paramTencentMapOptions != null) {
+      this.mapContext.g(paramTencentMapOptions.isHandDrawMapEnable());
     }
-    catch (Exception localException)
-    {
-      Object localObject;
-      label31:
-      int i;
-      boolean bool;
-      break label31;
+    if ((localContext instanceof MapActivity)) {
+      ((MapActivity)localContext).setMapView(this);
     }
-    localObject = getContext();
-    i = this.scene;
-    if (this.scene != 0) {}
-    for (bool = true;; bool = false)
-    {
-      this.mapContext = new e(this, i, bool, this.config);
-      this.eventHandler = this.mapContext.h();
-      setOnKeyListener(this.eventHandler);
-      this.projection = new Projection(this.mapContext);
-      this.uiSettings = new UiSettings(this.mapContext.f());
-      this.tencentMap = new TencentMap(this.mapContext);
-      this.controller = new MapController(this);
-      if ((localObject instanceof MapActivity)) {
-        ((MapActivity)localObject).setMapView(this);
-      }
-      setBackgroundColor(-657936);
-      return;
-    }
+    setBackgroundColor(-657936);
   }
   
   private void initForBugly()
@@ -225,11 +197,6 @@ public class MapView
     int[] arrayOfInt = new int[2];
     doMeasure(paramView, paramLayoutParams.width, paramLayoutParams.height, arrayOfInt);
     doLayout(paramView, arrayOfInt[0], arrayOfInt[1], paramLayoutParams.x, paramLayoutParams.y, paramLayoutParams.alignment);
-  }
-  
-  protected static void setIsChinese(boolean paramBoolean)
-  {
-    com.tencent.mapsdk.rastercore.c.a(paramBoolean);
   }
   
   public Circle addCircle(CircleOptions paramCircleOptions)
@@ -320,7 +287,7 @@ public class MapView
     return this.tencentMap.getMapCenter();
   }
   
-  protected e getMapContext()
+  protected f getMapContext()
   {
     return this.mapContext;
   }
@@ -429,8 +396,8 @@ public class MapView
   
   public void onPause()
   {
-    e locale = this.mapContext;
-    e.n();
+    f localf = this.mapContext;
+    f.n();
   }
   
   public void onRestart() {}
@@ -452,11 +419,6 @@ public class MapView
   public final void removeOverlay(IOverlay paramIOverlay)
   {
     this.tencentMap.removeOverlay(paramIOverlay);
-  }
-  
-  protected void setLocation(double paramDouble1, double paramDouble2)
-  {
-    com.tencent.mapsdk.rastercore.c.b(paramDouble1, paramDouble2);
   }
   
   public void setLogoPosition(int paramInt)

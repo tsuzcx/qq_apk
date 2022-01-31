@@ -1,65 +1,32 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper.SendingFileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import java.util.ArrayList;
 
-public class twi
+class twi
   implements Runnable
 {
-  public twi(TroopAssistantActivity paramTroopAssistantActivity) {}
+  twi(twh paramtwh) {}
   
   public void run()
   {
-    try
-    {
-      List localList = this.a.a();
-      StringBuilder localStringBuilder = new StringBuilder().append("refreshTroopList -- data.size():");
-      int i;
-      if (localList == null) {
-        i = 0;
-      }
-      for (;;)
-      {
-        QLog.e("TroopAssistantActivity", 2, i);
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder().append("data|size");
-          if (localList != null) {
-            break label118;
-          }
-          i = 0;
-          QLog.i("TroopAssistantActivity", 2, i);
-        }
-        try
-        {
-          Collections.sort(localList, this.a.a);
-          this.a.runOnUiThread(new twj(this, localList));
-          return;
-          i = localList.size();
-          continue;
-          label118:
-          i = localList.size();
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("TroopAssistantActivity", 2, "Collections.sort error ..., msg: " + localException2.getMessage());
-            }
-          }
-        }
-      }
+    if (NetworkUtil.d(this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
       return;
     }
-    catch (Exception localException1)
+    this.a.a.jdField_d_of_type_Boolean = true;
+    SendMultiPictureHelper.a(this.a.a);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    int i = 1;
+    while (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troop_assistant", "load_data_failed", 0, 0, localException1.toString(), "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopAssistantActivity", 2, "refreshTroopList exception:" + localException1.toString());
-      }
+      this.a.a.a((SendMultiPictureHelper.SendingFileInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i), this.a.a.c, this.a.a.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_JavaLangString);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.a.jdField_a_of_type_Int + i), Integer.valueOf(this.a.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
+      i += 1;
     }
+    this.a.a.c();
   }
 }
 

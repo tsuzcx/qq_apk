@@ -1,18 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
 
 public class amwb
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public amwb(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public amwb(DatalineRemoteManager paramDatalineRemoteManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.stopPlay();
-    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
-    paramDialogInterface.dismiss();
-    QzoneWebMusicJsPlugin.access$902(this.a, false);
+    if (!this.a.b) {
+      DatalineRemoteManager.a(this.a, 1);
+    }
+    this.a.b = false;
+    this.a.a = null;
   }
 }
 

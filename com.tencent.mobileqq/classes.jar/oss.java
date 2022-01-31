@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-public class oss
-  implements DialogInterface.OnDismissListener
+public final class oss
+  extends ThreadLocal
 {
-  public oss(QRCardActivity paramQRCardActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected DateFormat a()
   {
-    this.a.c = false;
+    return new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
   }
 }
 

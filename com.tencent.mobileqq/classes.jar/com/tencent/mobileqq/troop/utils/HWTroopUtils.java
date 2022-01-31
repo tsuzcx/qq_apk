@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajno;
-import ajnp;
-import ajnq;
+import ajva;
+import ajvb;
+import ajvc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -156,8 +156,8 @@ public class HWTroopUtils
     MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)MessageRecordFactory.a(-1013);
     localMessageForGrayTips.frienduin = paramString;
     Object localObject = BaseApplicationImpl.getApplication().getResources();
-    String str = ((Resources)localObject).getString(2131430718);
-    localObject = ((Resources)localObject).getString(2131430719);
+    String str = ((Resources)localObject).getString(2131430721);
+    localObject = ((Resources)localObject).getString(2131430722);
     localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, str, NetConnInfoCenter.getServerTime(), -1013, 1, paramInt);
     paramString = new Bundle();
     paramString.putInt("key_action", 10);
@@ -219,7 +219,7 @@ public class HWTroopUtils
         return;
       }
     }
-    ((TroopManager)paramQQAppInterface.getManager(51)).a(paramString1, paramString2, new ajno(paramString1, paramString2, paramBoolean, paramQQAppInterface, paramOnHomeworkTroopIdentityCheckListener));
+    ((TroopManager)paramQQAppInterface.getManager(51)).a(paramString1, paramString2, new ajva(paramString1, paramString2, paramBoolean, paramQQAppInterface, paramOnHomeworkTroopIdentityCheckListener));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
@@ -319,7 +319,7 @@ public class HWTroopUtils
       return;
     }
     paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "_" + "file_homework_troop_aio_has_unread", 0).edit().putInt(paramString, paramInt).commit();
-    ThreadManager.post(new ajnq(paramQQAppInterface, paramString), 8, null, true);
+    ThreadManager.post(new ajvc(paramQQAppInterface, paramString), 8, null, true);
   }
   
   private static void b(HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener, int paramInt)
@@ -332,7 +332,7 @@ public class HWTroopUtils
       paramOnHomeworkTroopIdentityCheckListener.a(paramInt);
       return;
     }
-    ThreadManager.getUIHandler().post(new ajnp(paramOnHomeworkTroopIdentityCheckListener, paramInt));
+    ThreadManager.getUIHandler().post(new ajvb(paramOnHomeworkTroopIdentityCheckListener, paramInt));
   }
   
   public static boolean b(int paramInt)
@@ -342,7 +342,7 @@ public class HWTroopUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.HWTroopUtils
  * JD-Core Version:    0.7.0.1
  */

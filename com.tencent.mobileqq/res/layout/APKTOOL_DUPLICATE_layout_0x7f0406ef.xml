@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="34.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0173" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20c2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:drawablePadding="10.0dip" />
+    <com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2076" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent" ptf:ptfHeaderBackground="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" ptf:ptfHeaderTextColor="#ffffffff" ptf:ptfHeaderSubTextColor="#ffffffff" ptf:ptfMode="APKTOOL_DUPLICATE_id_0x7f0a02df" ptf:ptfDrawableStart="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020461" ptf:ptfAnimationStyle="APKTOOL_DUPLICATE_id_0x7f0a02e5" xmlns:ptf="http://schemas.android.com/apk/res-auto" />
 </FrameLayout>

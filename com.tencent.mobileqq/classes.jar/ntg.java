@@ -1,42 +1,31 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity.ProgressView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.util.URLUtil;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class ntg
-  implements Runnable
+public final class ntg
+  extends SimpleJob
 {
-  public ntg(QQStoryBaseActivity paramQQStoryBaseActivity, Context paramContext, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean, CharSequence paramCharSequence) {}
+  public ntg(VideoServerInfoManager paramVideoServerInfoManager, String[] paramArrayOfString, int paramInt, TVKPreloader.PreloadItem paramPreloadItem, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.isFinishing())
-    {
-      SLog.d("Q.qqstory.QQStoryBaseActivity", "Activity has been destroy.");
-      return;
+    paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager.a();
+    SLog.a("Q.qqstory.player.TVKPreloader", "get url key:%s", paramJobContext);
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.jdField_a_of_type_ArrayOfJavaLangString[0] = URLUtil.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog == null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity$ProgressView = new QQStoryBaseActivity.ProgressView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setContentView(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity$ProgressView);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.setCancelable(this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity$ProgressView.a(this.jdField_a_of_type_JavaLangCharSequence);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.show();
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryBaseActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    SLog.d("Q.qqstory.player.TVKPreloader", "preloadVideo 1 TVK start pre-load video, preload duration : %d, item : %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem });
+    TVKPreloader.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem);
+    return null;
   }
 }
 

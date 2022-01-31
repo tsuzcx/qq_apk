@@ -1,28 +1,43 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.FirstCommentEvent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
 
-class mfh
-  implements Runnable
+public class mfh
+  implements ReadInJoyCommentUtils.FirstCommentEvent
 {
-  mfh(mfg parammfg, String paramString1, String paramString2, int paramInt) {}
+  public mfh(VideoFeedsCommentManager paramVideoFeedsCommentManager) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(VideoPreDownloadMgr.a(this.jdField_a_of_type_Mfg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr)))
+    VideoFeedsCommentManager.a(this.a).e += paramInt;
+    VideoFeedsCommentManager.a(this.a).b(VideoFeedsCommentManager.a(this.a).g);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(paramBoolean, false);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      if (this.jdField_a_of_type_Mfg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(this.b, this.jdField_a_of_type_JavaLangString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(VideoPreDownloadMgr.a(), 2, "innerDoPreDownload() 缓冲已存在，跳过, vid=" + this.jdField_a_of_type_JavaLangString);
-        }
-        VideoPreDownloadMgr.a(this.jdField_a_of_type_Mfg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr, null);
-        VideoPreDownloadMgr.a(this.jdField_a_of_type_Mfg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr);
-      }
-    }
-    else {
+    default: 
       return;
     }
-    VideoPreDownloadMgr.a(this.jdField_a_of_type_Mfg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Mfg.jdField_a_of_type_Int);
+    if (VideoFeedsCommentManager.a(this.a) != null)
+    {
+      if (VideoFeedsCommentManager.a(this.a).a(VideoFeedsCommentManager.a(this.a)))
+      {
+        this.a.a(false, true);
+        return;
+      }
+      this.a.a(false, false);
+      return;
+    }
+    this.a.a(false, false);
   }
 }
 

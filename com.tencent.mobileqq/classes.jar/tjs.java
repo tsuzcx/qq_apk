@@ -1,4 +1,7 @@
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.contacts.base.CardConfigManager.CardConfigs;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 class tjs
   implements Runnable
@@ -7,8 +10,16 @@ class tjs
   
   public void run()
   {
-    this.a.a.m = true;
-    this.a.a.w();
+    FormSwitchItem localFormSwitchItem = this.a.a.d;
+    if (PermisionPrivacyActivity.a(this.a.a).a) {}
+    for (int i = 0;; i = 8)
+    {
+      localFormSwitchItem.setVisibility(i);
+      if (this.a.a.d.getVisibility() == 0) {
+        PermisionPrivacyActivity.a(this.a.a, this.a.a.d.a(), this.a.a.app.o());
+      }
+      return;
+    }
   }
 }
 

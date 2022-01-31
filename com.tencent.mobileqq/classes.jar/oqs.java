@@ -1,16 +1,11 @@
-import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
+import android.widget.ImageView;
 
-public class oqs
-  implements Runnable
+class oqs
 {
-  public oqs(AbsEmptyView paramAbsEmptyView) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
   
-  public void run()
-  {
-    if (AbsEmptyView.a(this.a) == 0) {
-      AbsEmptyView.a(this.a, 3, true);
-    }
-  }
+  oqs(oqr paramoqr) {}
 }
 
 

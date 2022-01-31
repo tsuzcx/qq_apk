@@ -1,72 +1,52 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.mobileqq.activity.Contacts.OverScrollViewTag;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
-import dov.com.qq.im.capture.poi.FacePoiManager;
-import dov.com.qq.im.capture.poi.FacePoiUI;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop.TroopPluginManager;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class annl
-  implements OverScrollViewListener
+class annl
+  extends OnPluginInstallListener.Stub
 {
-  public annl(FacePoiUI paramFacePoiUI) {}
+  annl(annj paramannj) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onInstallBegin(String paramString)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.a == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.a)
-    {
-      paramView.c(l);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallBegin...  pluginId = " + this.a.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
   {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.a == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!NetworkUtil.g(this.a.e.getContext())) {
-        break label114;
-      }
-      FacePoiUI.a(this.a).d();
-      FacePoiUI.a(this.a).a();
-      new Handler(Looper.getMainLooper()).postDelayed(new annm(this), 300L);
-    }
-    for (;;)
-    {
-      ((Contacts.OverScrollViewTag)paramView.getTag()).a = true;
-      return true;
-      l = this.a.a;
-      break;
-      label114:
-      new Handler(Looper.getMainLooper()).postDelayed(new annn(this), 300L);
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallDownloadProgress... pluginId = " + this.a.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
+  public void onInstallError(String paramString, int paramInt)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.a == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.a)
-    {
-      paramView.b(l);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallError... = " + this.a.jdField_a_of_type_JavaLangString);
     }
+    this.a.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1002);
+    ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_plugin", "install_plugin", 0, 1, null, null, null, null);
   }
   
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopPluginManager.jdField_a_of_type_JavaLangString, 2, "Troop plugin onInstallFinish...   pluginId = " + this.a.jdField_a_of_type_JavaLangString);
+    }
+    this.a.jdField_a_of_type_CooperationTroopTroopPluginManager.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramString);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_plugin", "install_plugin", 0, 0, null, null, null, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annl
  * JD-Core Version:    0.7.0.1
  */

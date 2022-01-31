@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import java.util.List;
 
 public class ajhw
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ajhw(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public ajhw(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, String paramString1, String paramString2, Integer paramInteger) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    String str = TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangInteger);
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b)
     {
-    default: 
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b.contains(str)) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b.add(str);
+      }
+      TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.a, str);
       return;
     }
-    SubmitHomeWorkFragment.a(this.a);
   }
 }
 

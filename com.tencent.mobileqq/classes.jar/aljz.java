@@ -1,57 +1,30 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
-import com.tencent.plato.PlatoAppManager;
-import com.tencent.plato.PlatoLoadEvent;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
 
-public final class aljz
-  implements AsyncBack
+public class aljz
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aljz(boolean paramBoolean, String paramString, long paramLong) {}
+  public aljz(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public void a(int paramInt)
+  public void onGlobalLayout()
   {
-    QLog.d(PlatoAppManager.a(), 2, "progress:" + paramInt);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(PlatoAppManager.a(), 2, "loadPlatoAppByBid loaded, code:" + paramInt + ", param :" + paramString);
-    }
-    if (paramInt == 0)
+    int i = this.a.jdField_a_of_type_AndroidViewView.getHeight();
+    int j = this.a.b.getHeight();
+    if ((j != 0) && (i != 0))
     {
-      if (paramString == null)
-      {
-        if ((PlatoAppManager.b == 0) || (this.jdField_a_of_type_Boolean)) {
-          PlatoAppManager.a(this.jdField_a_of_type_JavaLangString);
-        }
-        PlatoAppManager.a = 1;
-        TroopTechReportUtils.a("plato_v1", "bundler_download", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "1", "", "");
-        return;
-      }
-      if (paramString.contains("url"))
-      {
-        TroopTechReportUtils.a("plato_v1", "bundler_download", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "1-1", "", "");
-        return;
-      }
-      if ((PlatoAppManager.b == 0) || (this.jdField_a_of_type_Boolean)) {
-        PlatoAppManager.a(this.jdField_a_of_type_JavaLangString);
-      }
-      PlatoAppManager.a = 0;
-      TroopTechReportUtils.a("plato_v1", "bundler_download", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "0", "", "");
-      return;
+      QLog.d("Q.quicklogin.", 2, "height_root=" + i + " height_bt=" + j);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setMaxHeight(i - j);
+      this.a.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-    paramString = PlatoLoadEvent.a(1, this.jdField_a_of_type_JavaLangString, PlatoAppManager.a(this.jdField_a_of_type_JavaLangString, "bundler.js"));
-    Dispatchers.get().dispatch(paramString);
-    TroopTechReportUtils.a("plato_v1", "bundler_download", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "-1", String.valueOf(paramInt), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljz
  * JD-Core Version:    0.7.0.1
  */

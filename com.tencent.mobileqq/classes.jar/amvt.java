@@ -1,13 +1,15 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqdataline.DatalineBridgeActivity;
 
 public class amvt
-  implements amwl
+  implements DialogInterface.OnDismissListener
 {
-  public amvt(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  public amvt(DatalineBridgeActivity paramDatalineBridgeActivity) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusicList(this.jdField_a_of_type_JavaLangString);
+    this.a.finish();
   }
 }
 

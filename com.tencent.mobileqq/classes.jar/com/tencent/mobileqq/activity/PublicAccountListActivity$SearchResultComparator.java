@@ -2,17 +2,17 @@ package com.tencent.mobileqq.activity;
 
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import java.util.Comparator;
-import thx;
+import tmr;
 
 public class PublicAccountListActivity$SearchResultComparator
   implements Comparator
 {
   public PublicAccountListActivity$SearchResultComparator(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public int a(thx paramthx1, thx paramthx2)
+  public int a(tmr paramtmr1, tmr paramtmr2)
   {
-    long l = paramthx1.a.certifiedGrade;
-    return (int)(paramthx2.a.certifiedGrade - l);
+    long l = paramtmr1.a.certifiedGrade;
+    return (int)(paramtmr2.a.certifiedGrade - l);
   }
 }
 

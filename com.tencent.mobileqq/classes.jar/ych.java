@@ -1,82 +1,98 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Typeface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.richmedia.subtitles.ItemBase;
+import com.tencent.mobileqq.activity.richmedia.subtitles.TextItem;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 
 public class ych
-  extends Handler
+  extends ItemBase
 {
-  public ych(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  int jdField_a_of_type_Int = -1;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  TextItem jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem = null;
+  TextItem b = null;
   
-  public void handleMessage(Message paramMessage)
+  public ych(long paramLong1, long paramLong2, boolean paramBoolean, String paramString, float paramFloat1, int paramInt, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, Typeface paramTypeface)
   {
-    switch (paramMessage.what)
-    {
+    super(paramLong1, paramLong2, paramBoolean);
+    a(6, paramFloat3);
+    a(7, paramFloat4);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem = new TextItem(paramString, paramFloat1, paramInt, paramFloat5, paramFloat6, 2, -1.0F, paramTypeface);
+    this.b = new TextItem(paramString, paramFloat1, -16777216, paramFloat5, paramFloat6, 2, paramFloat2, paramTypeface);
+    a(3, this.b.jdField_a_of_type_Float);
+    paramInt = this.b.a();
+    paramFloat1 = this.b.b * 2.0F / paramInt;
+    if (paramInt == 1) {
+      paramFloat1 = this.b.b;
     }
-    label359:
+    a(4, paramFloat1);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.b.jdField_a_of_type_Float, paramFloat1);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.b.a(paramString, 0.0F, paramFloat1 - this.b.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramString, 0.0F, paramFloat1 - this.b.b);
+    }
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      this.b.a(paramCanvas, a(6), a(7) + a(4) - this.b.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramCanvas, a(6), a(7) + a(4) - this.b.b);
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, a(6), a(7), null);
+  }
+  
+  public void a(RenderBuffer paramRenderBuffer)
+  {
+    if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+      this.jdField_a_of_type_Int = GlUtil.a(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    if (this.jdField_a_of_type_Int >= 0) {
+      a(paramRenderBuffer, this.jdField_a_of_type_Int, a(3), a(4), null, a(6), a(7));
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (a()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    float f;
     do
     {
-      Object[] arrayOfObject;
-      String str;
       do
       {
-        do
-        {
-          return;
-          TroopMemberListInnerFrame.a(this.a, paramMessage);
-          return;
-          paramMessage = this.a;
-          paramMessage.jdField_a_of_type_Double += TroopMemberListInnerFrame.jdField_b_of_type_Double;
-        } while ((this.a.jdField_a_of_type_Double >= 90.0D) || (this.a.jdField_a_of_type_Int <= 0));
-        if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 8) {
-          this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)this.a.jdField_a_of_type_Double);
-        this.a.d.setText(String.format("加载中...(%d/%d)", new Object[] { Integer.valueOf(Math.min((int)(this.a.jdField_a_of_type_Int * this.a.jdField_a_of_type_Double / 100.0D), this.a.jdField_a_of_type_Int)), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4), 800L);
         return;
-        TroopMemberListInnerFrame.a(this.a, paramMessage.arg1);
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-        if (!(paramMessage.obj instanceof Object[])) {
-          break label359;
-        }
-        arrayOfObject = (Object[])paramMessage.obj;
-        if (arrayOfObject.length <= 0) {
-          break label359;
-        }
-        str = (String)arrayOfObject[1];
-        if (str.equals(this.a.jdField_b_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, troopUin != mTroopUin, break:" + str + "," + this.a.jdField_b_of_type_JavaLangString);
-      return;
-      this.a.jdField_a_of_type_JavaUtilMap = ((Map)arrayOfObject[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, mIndexedFriends.size=" + this.a.jdField_a_of_type_JavaUtilMap.size());
+      } while (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramString);
+      this.b.a(paramString);
+      int i = this.b.a();
+      f = this.b.b * 2.0F / i;
+      if (i == 1) {
+        f = this.b.b;
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getIntent().getIntExtra("param_subtype", -1) == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getIntent().getIntExtra("param_subtype", -1) == 0)) {
-        TroopMemberListInnerFrame.a(this.a, this.a.jdField_a_of_type_JavaUtilMap);
+      a(4, f);
+      a(3, this.b.jdField_a_of_type_Float);
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
-      paramMessage.obj = TroopMemberListInnerFrame.a(this.a);
-      TroopMemberListInnerFrame.a(this.a, paramMessage);
-    } while ((this.a.jdField_a_of_type_Boolean) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.t));
-    this.a.jdField_a_of_type_Boolean = true;
-    paramMessage = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramMessage.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-      return;
-    }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.b.jdField_a_of_type_Float, f);
+    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
+    paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.b.a(paramString, 0.0F, f - this.b.b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesTextItem.a(paramString, 0.0F, f - this.b.b);
   }
 }
 

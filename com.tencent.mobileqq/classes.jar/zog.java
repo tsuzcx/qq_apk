@@ -1,45 +1,90 @@
-import android.os.Bundle;
+import android.database.SQLException;
+import android.os.Message;
+import android.os.SystemClock;
+import android.util.Pair;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.trooponline.data.TroopOnlineMemberManager;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.MessageRecordEntityManager;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xa2a.oidb_0xa2a.ReqBody;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class zog
   implements Runnable
 {
-  public zog(TroopHandler paramTroopHandler, String paramString) {}
+  public zog(MessageRoamManager paramMessageRoamManager, String paramString1, String paramString2, String paramString3, Pair paramPair, long paramLong) {}
   
   public void run()
   {
-    Object localObject = (TroopOnlineMemberManager)this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b.getManager(233);
-    if (NetConnInfoCenter.getServerTime() < ((TroopOnlineMemberManager)localObject).c(this.jdField_a_of_type_JavaLangString))
+    if (QLog.isColorLevel()) {}
+    for (long l1 = SystemClock.uptimeMillis();; l1 = 0L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopHandler", 2, "getAllOnlineMemberList, too frequency");
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a.a().d();
+      MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a.getHandler(ChatHistoryForC2C.class);
+      ArrayList localArrayList;
+      try
+      {
+        List localList1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, ((Long)this.jdField_a_of_type_AndroidUtilPair.first).longValue(), this.jdField_a_of_type_Long);
+        if (localList1 == null) {
+          break label313;
+        }
+        localObject2 = localMqqHandler.obtainMessage(23);
+        localArrayList = new ArrayList(localList1.size());
+        Iterator localIterator = localList1.iterator();
+        while (localIterator.hasNext()) {
+          localArrayList.add((ChatMessage)localIterator.next());
+        }
       }
-      localObject = ((TroopOnlineMemberManager)localObject).b(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(98, true, new Object[] { this.jdField_a_of_type_JavaLangString, localObject });
-      return;
-    }
-    try
-    {
-      localObject = new oidb_0xa2a.ReqBody();
-      ((oidb_0xa2a.ReqBody)localObject).group_id.set(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
-      ((oidb_0xa2a.ReqBody)localObject).is_private.set(TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b, this.jdField_a_of_type_JavaLangString));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a("OidbSvc.0xa2a_1", 2602, 1, ((oidb_0xa2a.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).extraData.putString("troopUin", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b((ToServiceMsg)localObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.i("TroopHandler", 1, "getAllOnlineMemberList, e=" + localException.toString());
+      catch (SQLException localSQLException)
+      {
+        for (;;)
+        {
+          List localList2 = ((MessageRecordEntityManager)this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a.getEntityManagerFactory().createMessageRecordEntityManager()).a(MessageRecord.class, this.jdField_a_of_type_JavaLangString, false, this.c, null, null, null, null, null);
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel())
+          {
+            localException.printStackTrace();
+            QLog.d("Q.roammsg.MessageRoamManager", 2, "getMessageByDay: ", localException);
+          }
+          Object localObject1 = null;
+        }
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.roammsg.MessageRoamManager", 2, "handlePBGetRoamMsg OutOfMemoryError ! ", localOutOfMemoryError);
+        }
+      }
+      do
+      {
+        return;
+        ((Message)localObject2).obj = localArrayList;
+        localMqqHandler.sendMessage((Message)localObject2);
+      } while (!QLog.isColorLevel());
+      long l2 = SystemClock.uptimeMillis();
+      Object localObject2 = new StringBuilder().append("queryMessageByDayFromDB: costTime: ").append(l2 - l1).append(",records num: ");
+      if (localOutOfMemoryError == null) {}
+      for (int i = 0;; i = localOutOfMemoryError.size())
+      {
+        QLog.d("Q.roammsg.MessageRoamManager", 2, i);
+        return;
+        label313:
+        localObject2 = localMqqHandler.obtainMessage(22);
+        ((Message)localObject2).obj = null;
+        break;
+      }
     }
   }
 }

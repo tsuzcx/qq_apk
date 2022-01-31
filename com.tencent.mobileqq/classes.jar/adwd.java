@@ -1,29 +1,52 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.jsp.EventApiPlugin;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.smtt.sdk.CookieSyncManager;
+import java.util.Map;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adwd
-  extends BroadcastReceiver
+  implements WtTicketPromise
 {
-  public adwd(EventApiPlugin paramEventApiPlugin) {}
+  public adwd(NowLiveFragment paramNowLiveFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void Done(Ticket paramTicket)
   {
-    if ((EventApiPlugin.a != null) && (EventApiPlugin.a.size() > 0))
+    if (paramTicket != null)
     {
-      Iterator localIterator = EventApiPlugin.a.iterator();
-      while (localIterator.hasNext())
-      {
-        EventApiPlugin localEventApiPlugin = (EventApiPlugin)((WeakReference)localIterator.next()).get();
-        if (localEventApiPlugin != null) {
-          localEventApiPlugin.a(paramContext, paramIntent);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService : Done");
       }
+      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
+      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
+      CookieSyncManager.getInstance().sync();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
+      NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
     }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new adwe(this));
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new adwf(this));
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NowLiveFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new adwg(this));
   }
 }
 

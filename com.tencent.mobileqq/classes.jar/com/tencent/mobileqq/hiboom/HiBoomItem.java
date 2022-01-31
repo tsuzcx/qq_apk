@@ -1,25 +1,15 @@
 package com.tencent.mobileqq.hiboom;
 
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.flashchat.FlashChatItem;
-
 public class HiBoomItem
-  extends FlashChatItem
 {
-  public Drawable a;
-  public Drawable b;
-  public int d = -1;
-  public String g;
-  public String h;
-  
-  public HiBoomItem()
-  {
-    this.b = 1;
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
   public String toString()
   {
-    return "HiBoomItem: id = " + this.a + " bgUrl = " + this.g + " cornerUrl = " + this.h + " progress = " + this.d;
+    return "HiBoomItem: id = " + this.jdField_a_of_type_Int + " name = " + this.jdField_a_of_type_JavaLangString + " engine = " + this.b;
   }
 }
 

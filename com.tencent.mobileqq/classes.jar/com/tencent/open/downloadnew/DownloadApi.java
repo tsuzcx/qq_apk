@@ -1,19 +1,19 @@
 package com.tencent.open.downloadnew;
 
-import alga;
-import algb;
-import algc;
-import algd;
-import alge;
-import algf;
-import algg;
-import algh;
-import algi;
-import algj;
-import algk;
-import algl;
-import algm;
-import algn;
+import alns;
+import alnt;
+import alnu;
+import alnv;
+import alnw;
+import alnx;
+import alny;
+import alnz;
+import aloa;
+import alob;
+import aloc;
+import alod;
+import aloe;
+import alof;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -44,7 +44,7 @@ public class DownloadApi
     jdField_a_of_type_JavaLangString = DownloadApi.class.getName();
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_ComTencentTmdatasourcesdkITMAssistantExchangeURLListenner = new algg();
+    jdField_a_of_type_ComTencentTmdatasourcesdkITMAssistantExchangeURLListenner = new alny();
   }
   
   public static int a()
@@ -163,7 +163,7 @@ public class DownloadApi
     if ((paramBundle == null) || (paramActivity == null)) {
       return;
     }
-    ThreadManager.executeOnSubThread(new algh(paramActivity, paramBundle));
+    ThreadManager.executeOnSubThread(new alnz(paramActivity, paramBundle));
   }
   
   public static void a(Activity paramActivity, Bundle paramBundle, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2)
@@ -174,7 +174,7 @@ public class DownloadApi
     if (paramInt1 == 1) {
       StaticAnalyz.a("100", "ANDROIDQQ.SELFUPDATE.FOLLOW.FOR.DEBUG", "100686848", paramBundle.getString(DownloadConstants.H));
     }
-    ThreadManager.getSubThreadHandler().post(new alga(paramBundle, paramInt1, paramInt2, paramActivity, paramApkUpdateDetail));
+    ThreadManager.getSubThreadHandler().post(new alns(paramBundle, paramInt1, paramInt2, paramActivity, paramApkUpdateDetail));
   }
   
   public static void a(Bundle paramBundle)
@@ -182,17 +182,17 @@ public class DownloadApi
     if (paramBundle == null) {
       return;
     }
-    ThreadManager.executeOnSubThread(new algi(paramBundle));
+    ThreadManager.executeOnSubThread(new aloa(paramBundle));
   }
   
   public static void a(DownloadListener paramDownloadListener)
   {
-    ThreadManager.getSubThreadHandler().post(new algc(paramDownloadListener));
+    ThreadManager.getSubThreadHandler().post(new alnu(paramDownloadListener));
   }
   
   public static void a(String paramString)
   {
-    ThreadManager.getSubThreadHandler().post(new algb(paramString));
+    ThreadManager.getSubThreadHandler().post(new alnt(paramString));
   }
   
   public static void a(String paramString, DownloadQueryListener paramDownloadQueryListener)
@@ -205,12 +205,12 @@ public class DownloadApi
     if (paramDownloadQueryListener == null) {
       LogUtility.a(jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia listener == null");
     }
-    ThreadManager.getSubThreadHandler().post(new algl(paramString, paramDownloadQueryListener));
+    ThreadManager.getSubThreadHandler().post(new alod(paramString, paramDownloadQueryListener));
   }
   
   public static void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    ThreadManager.getSubThreadHandler().post(new algm(paramString1, paramString2, paramBoolean));
+    ThreadManager.getSubThreadHandler().post(new aloe(paramString1, paramString2, paramBoolean));
   }
   
   public static void a(List paramList, DownloadQueryListener paramDownloadQueryListener)
@@ -223,7 +223,7 @@ public class DownloadApi
     if (paramDownloadQueryListener == null) {
       LogUtility.a(jdField_a_of_type_JavaLangString, "getQueryDownloadAction listener == null");
     }
-    ThreadManager.getSubThreadHandler().post(new algk(paramList, paramDownloadQueryListener));
+    ThreadManager.getSubThreadHandler().post(new aloc(paramList, paramDownloadQueryListener));
   }
   
   public static boolean a(Bundle paramBundle)
@@ -340,11 +340,11 @@ public class DownloadApi
       if (paramInt2 == 1)
       {
         paramBundle.putInt("source", paramInt1);
-        MyAppApi.a().a(paramActivity, paramBundle, new alge(paramBundle, paramInt1, paramApkUpdateDetail));
+        MyAppApi.a().a(paramActivity, paramBundle, new alnw(paramBundle, paramInt1, paramApkUpdateDetail));
         return;
       }
     } while ((paramInt2 != 2) && (paramInt2 != 0));
-    MyAppApi.a().b(paramActivity, paramBundle, new algf(paramBundle, paramInt1, paramApkUpdateDetail));
+    MyAppApi.a().b(paramActivity, paramBundle, new alnx(paramBundle, paramInt1, paramApkUpdateDetail));
   }
   
   public static void b(Bundle paramBundle)
@@ -352,17 +352,17 @@ public class DownloadApi
     if (paramBundle == null) {
       return;
     }
-    ThreadManager.executeOnSubThread(new algj(paramBundle));
+    ThreadManager.executeOnSubThread(new alob(paramBundle));
   }
   
   public static void b(DownloadListener paramDownloadListener)
   {
-    ThreadManager.getSubThreadHandler().post(new algd(paramDownloadListener));
+    ThreadManager.getSubThreadHandler().post(new alnv(paramDownloadListener));
   }
   
   public static void b(String paramString1, String paramString2, boolean paramBoolean)
   {
-    ThreadManager.getSubThreadHandler().post(new algn(paramString1, paramString2, paramBoolean));
+    ThreadManager.getSubThreadHandler().post(new alof(paramString1, paramString2, paramBoolean));
   }
   
   public static boolean b(ApkWriteCodeListener paramApkWriteCodeListener)

@@ -1,32 +1,55 @@
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.richmedia.capture.util.DanceGameReporter;
-import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
-import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport.BoyItem;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.remind.TimeHelper;
+import com.tencent.mobileqq.remind.widget.IosTimepicker.FormatDataListener;
+import com.tencent.mobileqq.remind.widget.WheelView;
 
 public final class ahkr
-  implements Runnable
+  implements IosTimepicker.FormatDataListener
 {
-  public ahkr(BoyDataReport paramBoyDataReport) {}
-  
-  public void run()
+  public long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt)
   {
-    CaptureReportUtil.a(this.a.b, this.a.jdField_a_of_type_Long);
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    Object localObject2 = null;
+    if ((paramArrayOfInt.length != 3) || (paramArrayOfWheelView.length != 3)) {
+      return -1L;
+    }
+    String str2;
+    if (AppSetting.b)
     {
-      BoyDataReport.BoyItem localBoyItem = (BoyDataReport.BoyItem)localIterator.next();
-      if (localBoyItem.jdField_a_of_type_Boolean) {
-        CaptureReportUtil.a(localBoyItem.jdField_a_of_type_JavaLangString, "" + localBoyItem.jdField_a_of_type_Int, CaptureReportUtil.a(localBoyItem.b));
+      str2 = TimeHelper.a(paramArrayOfInt[0]);
+      if ((paramArrayOfInt[1] < 0) || (paramArrayOfInt[1] >= TimeHelper.a.length)) {
+        break label197;
       }
     }
-    DanceGameReporter.a().a(this.a);
+    label197:
+    for (String str1 = TimeHelper.a[paramArrayOfInt[1]];; str1 = null)
+    {
+      Object localObject1 = localObject2;
+      if (paramArrayOfInt[2] >= 0)
+      {
+        localObject1 = localObject2;
+        if (paramArrayOfInt[2] < TimeHelper.b.length) {
+          localObject1 = TimeHelper.b[paramArrayOfInt[2]];
+        }
+      }
+      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      {
+        str1 = "当前选中时间" + str2 + str1 + "时" + (String)localObject1 + "分";
+        int j = paramArrayOfWheelView.length;
+        int i = 0;
+        while (i < j)
+        {
+          paramArrayOfWheelView[i].setContentDescription(str1);
+          i += 1;
+        }
+      }
+      return TimeHelper.a(paramArrayOfInt[0], paramArrayOfInt[1], paramArrayOfInt[2]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkr
  * JD-Core Version:    0.7.0.1
  */

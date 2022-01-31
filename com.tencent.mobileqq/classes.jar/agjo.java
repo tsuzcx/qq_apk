@@ -1,17 +1,14 @@
+import android.widget.TextView;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
 
-public class agjo
+class agjo
   implements Runnable
 {
-  public agjo(ScanTorchActivity paramScanTorchActivity) {}
+  agjo(agjn paramagjn) {}
   
   public void run()
   {
-    QLog.i("ScanTorchActivity", 1, "WorldCupMainFlow. downloadArRes.");
-    ScanTorchActivity.a(this.a);
-    ScanTorchActivity.c(this.a);
-    ScanTorchActivity.b(this.a);
+    ScanTorchActivity.a(this.a.a).setVisibility(8);
   }
 }
 

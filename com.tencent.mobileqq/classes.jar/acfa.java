@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.dating.CarrierHelper;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
 
-public class acfa
+class acfa
   implements Runnable
 {
-  public acfa(EmoticonMainPanel paramEmoticonMainPanel) {}
+  acfa(acex paramacex) {}
   
   public void run()
   {
-    EmoticonMainPanel.b(this.a);
+    if (MsgBoxListActivity.a(this.a.a) != null)
+    {
+      MsgBoxListActivity.a(this.a.a).a(2, null);
+      MsgBoxListActivity.a(this.a.a);
+      MsgBoxListActivity.b(this.a.a);
+    }
   }
 }
 

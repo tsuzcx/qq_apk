@@ -1,30 +1,37 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class aara
-  implements Runnable
+public class aara
+  extends BroadcastReceiver
 {
-  aara(aaqz paramaaqz, Object paramObject, boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public aara(WorldCupMgr paramWorldCupMgr) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aarh localaarh = (aarh)this.jdField_a_of_type_JavaLangObject;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      long l1 = ArkActionAppMgr.a(this.jdField_a_of_type_Aaqz.a, 2, this.jdField_a_of_type_JavaUtilArrayList);
-      long l2 = ArkActionAppMgr.a(this.jdField_a_of_type_Aaqz.a, 1, this.b);
-      if ((l1 < 0L) || (l2 < 0L))
-      {
-        ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionAppList, fail, gray-app-id=%d, app-id=%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) }));
-        ArkActionAppMgr.a(this.jdField_a_of_type_Aaqz.a, localaarh, false);
-        return;
-      }
-      ArkActionAppMgr.a(this.jdField_a_of_type_Aaqz.a, localaarh, true);
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2)) {
       return;
     }
-    ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionAppList, fail, success is false.", new Object[0]));
-    ArkActionAppMgr.a(this.jdField_a_of_type_Aaqz.a, localaarh, false);
+    switch (paramIntent.getIntExtra("event", 0))
+    {
+    default: 
+      return;
+    case 1: 
+      int i = paramIntent.getIntExtra("download_Index", 0);
+      int j = paramIntent.getIntExtra("download_Progress", 0);
+      if (AudioHelper.e()) {
+        QLog.w(this.a.a, 1, "receive notify, index[" + i + "], progress[" + j + "]");
+      }
+      this.a.a(i, j);
+      return;
+    }
+    paramContext = paramIntent.getStringExtra("config_Content");
+    this.a.b(paramContext);
+    this.a.a();
   }
 }
 

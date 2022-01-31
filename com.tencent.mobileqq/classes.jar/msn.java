@@ -1,14 +1,14 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
 
 class msn
   implements Runnable
 {
-  msn(msi parammsi) {}
+  msn(msl parammsl) {}
   
   public void run()
   {
-    SubscriptFeedsActivity.a(this.a.a).g = 0;
-    SubscriptFeedsActivity.a(this.a.a, true, false, false);
+    FastWebVideoFeedsPlayActivity.a(this.a.a).a(true);
   }
 }
 

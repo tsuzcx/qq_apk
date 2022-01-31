@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
+import com.tencent.widget.XListView;
 
-public class acyw
+class acyw
   implements Runnable
 {
-  public acyw(QfavFilePreviewController paramQfavFilePreviewController) {}
+  acyw(acyv paramacyv) {}
   
   public void run()
   {
-    if (3 != QfavFilePreviewController.b(this.a))
-    {
-      this.a.a.a(false, QfavFilePreviewController.a(this.a), String.valueOf(QfavFilePreviewController.a(this.a)), QfavFilePreviewController.a(this.a), null, QfavFilePreviewController.b(this.a), null, QfavFilePreviewController.c(this.a));
-      QfavFilePreviewController.b(this.a, 3);
-      if (QLog.isColorLevel()) {
-        QLog.i("QfavFilePreviewController", 2, "QfavFilePreviewController.run:wait for remote command timeout(5min).");
-      }
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.a(2130970041, 2130842701, 4, this.a.jdField_a_of_type_JavaLangString, 0, false, 0, "other", 1, false, false);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.a(2130970041, 2130842701, 4, this.a.jdField_a_of_type_JavaLangString, 0, true, 21, "other", 1, false, false);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollToPosition(0);
   }
 }
 

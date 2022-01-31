@@ -1,42 +1,21 @@
-import android.graphics.Color;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.Builder;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.DrawableBuilder;
-import java.lang.ref.WeakReference;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class yxs
-  implements Runnable
+public final class yxs
+  implements EIPCResultCallback
 {
-  yxs(yxr paramyxr, ImageView paramImageView) {}
+  public yxs(long paramLong) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((yxr.a(this.jdField_a_of_type_Yxr) == null) && (yxr.a(this.jdField_a_of_type_Yxr) != null) && (yxr.a(this.jdField_a_of_type_Yxr).get() != null))
-    {
-      Object localObject = (ApolloGameViewBinder)yxr.a(this.jdField_a_of_type_Yxr).get();
-      if ((ApolloGameViewBinder.a((ApolloGameViewBinder)localObject) != null) && (ApolloGameViewBinder.a((ApolloGameViewBinder)localObject).a != null))
-      {
-        localObject = CalloutPopupWindow.a(ApolloGameViewBinder.a((ApolloGameViewBinder)yxr.a(this.jdField_a_of_type_Yxr).get()).a).b(8).a(ApolloConstant.am).a(16.0F).a(-1);
-        ((CalloutPopupWindow.Builder)localObject).c(50);
-        localObject = new CalloutPopupWindow.DrawableBuilder((CalloutPopupWindow.Builder)localObject).b(Color.argb(255, 0, 0, 0)).a(5).a();
-        if (localObject != null) {
-          yxr.a(this.jdField_a_of_type_Yxr, ((CalloutPopupWindow.Builder)localObject).a());
-        }
-      }
-    }
-    if (yxr.a(this.jdField_a_of_type_Yxr) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameListAdapter", 2, "show guide window inner " + this.jdField_a_of_type_AndroidWidgetImageView.getX() + " " + this.jdField_a_of_type_AndroidWidgetImageView.getY());
-      }
-      yxr.a(this.jdField_a_of_type_Yxr).a(83);
-      yxr.a(this.jdField_a_of_type_Yxr).c(2);
-      yxr.a(this.jdField_a_of_type_Yxr).b(this.jdField_a_of_type_AndroidWidgetImageView, 0, 0);
+    paramEIPCResult = paramEIPCResult.data.getString("resData");
+    CmGameUtil.a().callbackFromRequest(this.a, 0, "sc.script_notify_action_ready.local", paramEIPCResult);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_ACTION_DATA onCallback resJson:" + paramEIPCResult);
     }
   }
 }

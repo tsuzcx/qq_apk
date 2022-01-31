@@ -1,29 +1,24 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.VideoViewInfo;
+import com.tencent.av.ui.AVActivity;
+import java.util.Comparator;
 
 public class jrz
-  implements Runnable
+  implements Comparator
 {
-  public jrz(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jrz(AVActivity paramAVActivity) {}
   
-  public void run()
+  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-    {
-      QLog.d(this.a.c, 1, "init  double video Control not first time");
-      String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-      int i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().P;
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(42), str, Integer.valueOf(i) });
-      DoubleVideoCtrlUI.a(this.a);
+    if (paramVideoViewInfo1.a) {}
+    while (paramVideoViewInfo2.a) {
+      return 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jrz
  * JD-Core Version:    0.7.0.1
  */

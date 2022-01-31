@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import aicg;
-import aicj;
-import aick;
+import aiha;
+import aihd;
+import aihe;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Rect;
@@ -34,7 +34,7 @@ public class CameraProxy
 {
   public static HandlerThread a;
   public volatile int a;
-  public final aicg a;
+  public final aiha a;
   private Camera.FaceDetectionListener jdField_a_of_type_AndroidHardwareCamera$FaceDetectionListener;
   public CameraExceptionHandler a;
   public final CameraProxy.CameraPreviewObservable a;
@@ -76,7 +76,7 @@ public class CameraProxy
       jdField_a_of_type_AndroidOsHandlerThread.start();
     }
     this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy$CameraPreviewObservable = new CameraProxy.CameraPreviewObservable(paramHandler);
-    this.jdField_a_of_type_Aicg = new aicg(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_Aiha = new aiha(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
   }
   
   private String a(Camera.Parameters paramParameters)
@@ -301,9 +301,9 @@ public class CameraProxy
     CameraControl.a().a.setParameters(localParameters);
   }
   
-  public aicg a()
+  public aiha a()
   {
-    return this.jdField_a_of_type_Aicg;
+    return this.jdField_a_of_type_Aiha;
   }
   
   public void a()
@@ -315,7 +315,7 @@ public class CameraProxy
   {
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(1, new Object[] { Integer.valueOf(paramInt) }).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(1, new Object[] { Integer.valueOf(paramInt) }).sendToTarget();
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -330,7 +330,7 @@ public class CameraProxy
   {
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(6, paramInt2, paramInt3, Integer.valueOf(paramInt1)).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(6, paramInt2, paramInt3, Integer.valueOf(paramInt1)).sendToTarget();
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -347,7 +347,7 @@ public class CameraProxy
     try
     {
       CameraProxy.WaitDoneBundle localWaitDoneBundle = new CameraProxy.WaitDoneBundle();
-      this.jdField_a_of_type_Aicg.post(localWaitDoneBundle.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_Aiha.post(localWaitDoneBundle.jdField_a_of_type_JavaLangRunnable);
       return;
     }
     catch (InterruptedException localInterruptedException)
@@ -371,11 +371,11 @@ public class CameraProxy
   {
     try
     {
-      aicj localaicj = new aicj(this, null);
-      localaicj.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback = paramAutoFocusCallback;
-      localaicj.jdField_a_of_type_AndroidGraphicsRect = paramRect1;
-      localaicj.b = paramRect2;
-      this.jdField_a_of_type_Aicg.obtainMessage(103, localaicj).sendToTarget();
+      aihd localaihd = new aihd(this, null);
+      localaihd.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback = paramAutoFocusCallback;
+      localaihd.jdField_a_of_type_AndroidGraphicsRect = paramRect1;
+      localaihd.b = paramRect2;
+      this.jdField_a_of_type_Aiha.obtainMessage(103, localaihd).sendToTarget();
       return;
     }
     catch (RuntimeException paramRect1)
@@ -389,7 +389,7 @@ public class CameraProxy
   {
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(201, paramSurfaceTexture).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(201, paramSurfaceTexture).sendToTarget();
       return;
     }
     catch (RuntimeException paramSurfaceTexture)
@@ -409,7 +409,7 @@ public class CameraProxy
     }
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(204).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(204).sendToTarget();
       return;
     }
     catch (RuntimeException paramSurfaceTexture)
@@ -439,11 +439,11 @@ public class CameraProxy
     int i = 0;
     try
     {
-      aicg localaicg = this.jdField_a_of_type_Aicg;
+      aiha localaiha = this.jdField_a_of_type_Aiha;
       if (paramBoolean) {
         i = 1;
       }
-      localaicg.obtainMessage(203, i, 0, paramPreviewCallback).sendToTarget();
+      localaiha.obtainMessage(203, i, 0, paramPreviewCallback).sendToTarget();
       return;
     }
     catch (RuntimeException paramPreviewCallback)
@@ -457,7 +457,7 @@ public class CameraProxy
   {
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(202, paramSurfaceHolder).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(202, paramSurfaceHolder).sendToTarget();
       return;
     }
     catch (RuntimeException paramSurfaceHolder)
@@ -473,7 +473,7 @@ public class CameraProxy
     a(paramPreviewCallback, paramBoolean);
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(204).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(204).sendToTarget();
       return;
     }
     catch (RuntimeException paramSurfaceHolder)
@@ -488,11 +488,11 @@ public class CameraProxy
     this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraProxy$CameraPreviewObservable.a(paramObserver, new int[] { 1, 2, 3, 4, 6, 7, 10, 11, 12 });
   }
   
-  public void a(CameraControl.CustomSize paramCustomSize1, CameraControl.CustomSize paramCustomSize2, int paramInt1, int paramInt2)
+  public void a(CameraControl.CustomSize paramCustomSize1, CameraControl.CustomSize paramCustomSize2, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(7, new Object[] { paramCustomSize1, paramCustomSize2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(7, new Object[] { paramCustomSize1, paramCustomSize2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) }).sendToTarget();
       return;
     }
     catch (RuntimeException paramCustomSize1)
@@ -509,14 +509,14 @@ public class CameraProxy
   
   public void a(File paramFile, Rect paramRect, CameraCover.PictureCallback paramPictureCallback, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    aick localaick = new aick(this, null);
-    localaick.jdField_a_of_type_JavaIoFile = paramFile;
-    localaick.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    localaick.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback = paramPictureCallback;
-    localaick.jdField_a_of_type_Int = paramInt1;
-    localaick.jdField_a_of_type_Boolean = paramBoolean;
-    localaick.b = paramInt2;
-    this.jdField_a_of_type_Aicg.obtainMessage(301, localaick).sendToTarget();
+    aihe localaihe = new aihe(this, null);
+    localaihe.jdField_a_of_type_JavaIoFile = paramFile;
+    localaihe.jdField_a_of_type_AndroidGraphicsRect = paramRect;
+    localaihe.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback = paramPictureCallback;
+    localaihe.jdField_a_of_type_Int = paramInt1;
+    localaihe.jdField_a_of_type_Boolean = paramBoolean;
+    localaihe.b = paramInt2;
+    this.jdField_a_of_type_Aiha.obtainMessage(301, localaihe).sendToTarget();
     if (QLog.isColorLevel()) {
       QLog.d("CameraProxy", 2, "takePicture : file = " + paramFile + " ; orientation = " + paramInt1);
     }
@@ -526,7 +526,7 @@ public class CameraProxy
   {
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(701, new Object[] { paramString }).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(701, new Object[] { paramString }).sendToTarget();
       return;
     }
     catch (RuntimeException paramString)
@@ -541,7 +541,7 @@ public class CameraProxy
     if (!paramBoolean) {}
     try
     {
-      this.jdField_a_of_type_Aicg.sendEmptyMessage(205);
+      this.jdField_a_of_type_Aiha.sendEmptyMessage(205);
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -551,7 +551,7 @@ public class CameraProxy
       }
       this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraExceptionHandler.a(localRuntimeException);
     }
-    this.jdField_a_of_type_Aicg.obtainMessage(205).sendToTarget();
+    this.jdField_a_of_type_Aiha.obtainMessage(205).sendToTarget();
     a(3500L, "stop preview");
     return;
   }
@@ -565,7 +565,7 @@ public class CameraProxy
   {
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(601, new Object[] { Integer.valueOf(paramInt) }).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(601, new Object[] { Integer.valueOf(paramInt) }).sendToTarget();
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -585,7 +585,7 @@ public class CameraProxy
     if (!paramBoolean) {}
     try
     {
-      this.jdField_a_of_type_Aicg.sendEmptyMessage(2);
+      this.jdField_a_of_type_Aiha.sendEmptyMessage(2);
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -595,7 +595,7 @@ public class CameraProxy
       }
       this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraExceptionHandler.a(localRuntimeException);
     }
-    this.jdField_a_of_type_Aicg.obtainMessage(2).sendToTarget();
+    this.jdField_a_of_type_Aiha.obtainMessage(2).sendToTarget();
     a(3500L, "release camera");
     return;
   }
@@ -604,7 +604,7 @@ public class CameraProxy
   {
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(204).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(204).sendToTarget();
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -621,27 +621,27 @@ public class CameraProxy
   
   public void c(boolean paramBoolean)
   {
-    aicg localaicg = this.jdField_a_of_type_Aicg;
+    aiha localaiha = this.jdField_a_of_type_Aiha;
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
-      localaicg.obtainMessage(401, i, 0).sendToTarget();
+      localaiha.obtainMessage(401, i, 0).sendToTarget();
       return;
     }
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Aicg.obtainMessage(502, 2, 0).sendToTarget();
+    this.jdField_a_of_type_Aiha.obtainMessage(502, 2, 0).sendToTarget();
   }
   
   public void d(boolean paramBoolean)
   {
-    aicg localaicg = this.jdField_a_of_type_Aicg;
+    aiha localaiha = this.jdField_a_of_type_Aiha;
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
-      localaicg.obtainMessage(402, i, 0).sendToTarget();
+      localaiha.obtainMessage(402, i, 0).sendToTarget();
       return;
     }
   }
@@ -650,7 +650,7 @@ public class CameraProxy
   {
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(102).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(102).sendToTarget();
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -664,7 +664,7 @@ public class CameraProxy
   {
     try
     {
-      this.jdField_a_of_type_Aicg.obtainMessage(101).sendToTarget();
+      this.jdField_a_of_type_Aiha.obtainMessage(101).sendToTarget();
       return;
     }
     catch (RuntimeException localRuntimeException)

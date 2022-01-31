@@ -1,13 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
 
 public class yek
-  implements DialogInterface.OnClickListener
+  implements SensorEventListener
 {
-  public yek(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public yek(SensorFrameImageView paramSensorFrameImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    switch (paramSensorEvent.sensor.getType())
+    {
+    }
+    for (;;)
+    {
+      SensorFrameImageView.a(this.a);
+      SensorFrameImageView.b(this.a);
+      return;
+      SensorFrameImageView.a(this.a, paramSensorEvent.values);
+      continue;
+      SensorFrameImageView.b(this.a, paramSensorEvent.values);
+      continue;
+      SensorFrameImageView.c(this.a, paramSensorEvent.values);
+    }
+  }
 }
 
 

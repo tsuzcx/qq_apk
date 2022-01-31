@@ -22,7 +22,7 @@ public class GoldMsgEntryDialog
   {
     super.onCreate(paramBundle);
     this.a = new ImageView(getContext());
-    this.a.setImageResource(2130844100);
+    this.a.setImageResource(2130844166);
     paramBundle = getWindow();
     paramBundle.setContentView(this.a);
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();

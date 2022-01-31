@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.armap;
 
-import abdc;
+import abkc;
 import android.text.TextUtils;
+import com.tencent.av.redpacket.AVRedPacketDataCollector;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.Utils;
@@ -29,7 +30,7 @@ import mqq.manager.Manager;
 public class ResDownloadManager
   implements INetEngine.INetEngineListener, Manager
 {
-  static INetEngine.IBreakDownFix jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new abdc();
+  static INetEngine.IBreakDownFix jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new abkc();
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   ResDownloadHandler jdField_a_of_type_ComTencentMobileqqArmapResDownloadHandler;
   private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
@@ -367,7 +368,7 @@ public class ResDownloadManager
         }
         localObject1 = a(paramDownloadParam);
         if (new File((String)localObject1).exists()) {
-          break label590;
+          break label640;
         }
       }
     }
@@ -429,6 +430,12 @@ public class ResDownloadManager
           localException.printStackTrace();
           continue;
         }
+        if (QLog.isColorLevel()) {
+          QLog.i("ResDownloadManager", 2, "download send request ,url = " + paramDownloadParam.jdField_a_of_type_JavaLangString);
+        }
+        if (paramDownloadParam.jdField_a_of_type_Int == 4) {
+          AVRedPacketDataCollector.a(paramDownloadParam.jdField_b_of_type_JavaLangString);
+        }
         localObject1 = new HttpNetReq();
         ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
         ((HttpNetReq)localObject1).jdField_a_of_type_JavaLangString = paramDownloadParam.jdField_a_of_type_JavaLangString;
@@ -441,7 +448,7 @@ public class ResDownloadManager
         return true;
         localObject1 = ((PrecoverManager)localObject1).a();
       }
-      label590:
+      label640:
       i = 0;
     }
   }

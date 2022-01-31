@@ -11,11 +11,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import ypk;
-import ypl;
-import ypm;
-import ypn;
-import ypo;
+import yvr;
+import yvs;
+import yvt;
+import yvu;
+import yvv;
 
 public class ApolloGameStateMachine
   extends Observable
@@ -25,8 +25,8 @@ public class ApolloGameStateMachine
   public static final HashMap a;
   public static AtomicBoolean a;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ypk(this);
-  private Observer jdField_a_of_type_JavaUtilObserver = new ypl(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new yvr(this);
+  private Observer jdField_a_of_type_JavaUtilObserver = new yvs(this);
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
@@ -41,19 +41,27 @@ public class ApolloGameStateMachine
   public static ApolloGameStateMachine a()
   {
     if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null) {}
-    try
+    for (;;)
     {
-      if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null)
+      try {}catch (Throwable localThrowable)
       {
-        jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine = new ApolloGameStateMachine();
-        jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.b();
-        if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver != null) {
-          jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.addObserver(jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver);
-        }
+        QLog.e("ApolloGameStateMachine", 1, localThrowable, new Object[0]);
+        continue;
       }
-      return jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null)
+        {
+          jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine = new ApolloGameStateMachine();
+          jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.b();
+          if ((jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine != null) && (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver != null)) {
+            jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.addObserver(jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver);
+          }
+        }
+        return jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
+      }
+      finally {}
     }
-    finally {}
   }
   
   public static void d()
@@ -151,9 +159,9 @@ public class ApolloGameStateMachine
   
   protected void b()
   {
-    a(1, new ypm(this));
-    a(5, new ypn(this));
-    a(6, new ypo(this));
+    a(1, new yvt(this));
+    a(5, new yvu(this));
+    a(6, new yvv(this));
   }
   
   public void c()
@@ -162,7 +170,7 @@ public class ApolloGameStateMachine
     {
       if (this.jdField_a_of_type_JavaLangRunnable != null)
       {
-        ThreadManager.remove(this.jdField_a_of_type_JavaLangRunnable);
+        ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_JavaLangRunnable, 16);
         this.jdField_a_of_type_JavaLangRunnable = null;
       }
       if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {

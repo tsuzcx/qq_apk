@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.doodle;
 
 import android.graphics.Rect;
 import java.util.List;
-import usu;
+import uxu;
 
 public class MyParcel
 {
@@ -128,14 +128,14 @@ public class MyParcel
     return paramCreator.a(this);
   }
   
-  public usu a()
+  public uxu a()
   {
-    usu localusu = new usu(this);
-    localusu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localusu.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    uxu localuxu = new uxu(this);
+    localuxu.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localuxu.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
     this.jdField_a_of_type_ArrayOfByte = null;
     this.jdField_a_of_type_Int = -1;
-    return localusu;
+    return localuxu;
   }
   
   public final void a(float paramFloat)

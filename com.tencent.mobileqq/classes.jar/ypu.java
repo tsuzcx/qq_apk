@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import com.tencent.TMG.utils.QLog;
 
-public class ypu
-  implements DialogInterface.OnClickListener
+class ypu
+  extends AVVideoCtrl.EnableCameraCompleteCallback
 {
-  public ypu(ApolloWebGameActivity paramApolloWebGameActivity) {}
+  ypu(ypp paramypp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onComplete(boolean paramBoolean, int paramInt)
   {
-    ApolloWebGameActivity.a(this.a).dismiss();
-    ApolloWebGameActivity.b(this.a);
+    QLog.d("AVCameraCaptureModel", 0, "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
   }
 }
 

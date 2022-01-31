@@ -1,45 +1,141 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class wdj
-  implements Animation.AnimationListener
+  implements BusinessObserver
 {
-  public wdj(TipsManager paramTipsManager) {}
+  public wdj(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    int k = 1;
+    paramInt = 1;
+    int j;
+    if (!paramBoolean)
     {
-      if ((this.a.jdField_b_of_type_AndroidViewAnimationAnimation != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAnimation))
-      {
-        paramAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2131034353);
-        paramAnimation.setInterpolator(new LinearInterpolator());
-        this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363229));
-        this.a.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363230));
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
-        return;
+      this.a.w(2131430035);
+      j = paramInt;
+    }
+    for (;;)
+    {
+      if (j != 0) {
+        this.a.aY();
       }
-      if ((paramAnimation == this.a.c) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout) != -1))
+      return;
+      j = paramInt;
+      if (!paramBoolean) {
+        continue;
+      }
+      int i = k;
+      try
       {
-        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-        return;
+        paramBundle = paramBundle.getByteArray("data");
+        j = paramInt;
+        if (paramBundle == null) {
+          continue;
+        }
+        i = k;
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        i = k;
+        localFollowResponse.mergeFrom(paramBundle);
+        i = k;
+        j = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (j == 0)
+        {
+          i = k;
+          PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0x8005750", "0x8005750", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "", false);
+          i = k;
+          paramBundle = (PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
+          if (paramBundle != null)
+          {
+            i = k;
+            paramBundle = paramBundle.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+            if (paramBundle != null)
+            {
+              i = k;
+              if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null)
+              {
+                i = k;
+                this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
+              }
+              i = k;
+              this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(paramBundle);
+              paramInt = 1;
+              break label483;
+            }
+          }
+        }
+        label483:
+        for (;;)
+        {
+          i = paramInt;
+          this.a.O = true;
+          i = paramInt;
+          this.a.T = true;
+          i = paramInt;
+          this.a.aZ();
+          j = paramInt;
+          i = paramInt;
+          if (!this.a.ai) {
+            break;
+          }
+          j = paramInt;
+          i = paramInt;
+          if (PublicAccountChatPie.a(this.a) == null) {
+            break;
+          }
+          i = paramInt;
+          PublicAccountChatPie.b(this.a).b();
+          j = paramInt;
+          break;
+          i = k;
+          this.a.x();
+          paramInt = 0;
+          break label483;
+          i = k;
+          this.a.x();
+          paramInt = 0;
+          continue;
+          if (j == 58)
+          {
+            i = k;
+            this.a.w(2131430043);
+            j = paramInt;
+            break;
+          }
+          if (j == 65)
+          {
+            i = k;
+            this.a.w(2131430044);
+            j = paramInt;
+            break;
+          }
+          i = k;
+          this.a.w(2131430035);
+          j = paramInt;
+          break;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        j = i;
       }
     }
-    catch (Throwable paramAnimation) {}
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

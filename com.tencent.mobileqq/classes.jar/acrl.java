@@ -1,18 +1,50 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.ArrayList;
+import java.util.List;
 
-class acrl
-  implements Runnable
+public class acrl
 {
-  acrl(acrk paramacrk) {}
+  private List jdField_a_of_type_JavaUtilList = new ArrayList(20);
   
-  public void run()
+  private acrl(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  
+  public void a()
   {
-    this.a.a.d();
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+      b();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
+      b();
+    }
+  }
+  
+  void b()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      if (i != 0) {
+        localStringBuffer.append("|");
+      }
+      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
+      i += 1;
+    }
+    if (ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment) != null) {
+      ReportController.b(ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment), "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrl
  * JD-Core Version:    0.7.0.1
  */

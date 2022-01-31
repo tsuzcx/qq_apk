@@ -1,17 +1,33 @@
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.IPtvTemplateItemCallback;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import java.util.ArrayList;
 
 public class xze
-  extends FriendListObserver
+  implements PtvTemplateAdapter.IPtvTemplateItemCallback
 {
-  public xze(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  public xze(PtvTemplateAdapter paramPtvTemplateAdapter) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt)
   {
-    if (paramBoolean1) {
-      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
     }
+    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    do
+    {
+      do
+      {
+        return;
+        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      } while (localPtvTemplateInfo == null);
+      this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.b(paramInt, (int)(-this.a.jdField_a_of_type_Int * (0.75F + this.a.c - 1.0F)), 400);
+    } while (localPtvTemplateInfo.usable);
+    FlowCameraMqqAction.b("", "0X8006A1A");
   }
 }
 

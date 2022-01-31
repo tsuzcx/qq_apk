@@ -1,41 +1,35 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.mobileqq.nearby.now.utils.CommentsUtil;
-import com.tencent.mobileqq.nearby.now.utils.IOUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class aewe
-  implements Runnable
+  implements WerewolvesHandler.Callback
 {
-  public aewe(VideoFeedsUploader paramVideoFeedsUploader, String paramString) {}
+  public aewe(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void run()
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    str3 = "";
-    try
+    if (paramInt == 0)
     {
-      byte[] arrayOfByte = IOUtils.a(new File(this.jdField_a_of_type_JavaLangString));
-      str1 = str3;
-      if (arrayOfByte != null)
-      {
-        str1 = str3;
-        if (arrayOfByte.length > 0) {
-          str1 = CommentsUtil.a(arrayOfByte);
-        }
+      GameRoomInviteActivity localGameRoomInviteActivity = this.a;
+      String str = paramRspBody.string_invite_id.get().toStringUtf8();
+      localGameRoomInviteActivity.jdField_b_of_type_JavaLangString = str;
+      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
+      this.a.jdField_b_of_type_Long = paramRspBody.uint64_leader_uin.get();
+      this.a.e();
+      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), true, System.currentTimeMillis());
+      if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_b_of_type_Boolean)) {
+        GameRoomInviteActivity.a(this.a, "" + this.a.jdField_a_of_type_Long, 1);
       }
+      return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        String str1;
-        QLog.e("VideoFeedsUploader", 1, localException, new Object[0]);
-        String str2 = str3;
-      }
-    }
-    ThreadManager.getUIHandler().post(new aewf(this, str1));
+    this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
   }
 }
 

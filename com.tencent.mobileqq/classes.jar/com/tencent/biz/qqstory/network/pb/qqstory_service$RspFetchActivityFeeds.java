@@ -13,6 +13,7 @@ public final class qqstory_service$RspFetchActivityFeeds
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatMessageField feed_list = PBField.initRepeatMessage(qqstory_struct.ActivityFeedNode.class);
+  public final PBBytesField feeds_seq = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field fetch_time = PBField.initUInt32(0);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,8 +21,9 @@ public final class qqstory_service$RspFetchActivityFeeds
   
   static
   {
-    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42 }, new String[] { "result", "next_cookie", "is_end", "fetch_time", "feed_list" }, new Object[] { null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null }, RspFetchActivityFeeds.class);
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50 }, new String[] { "result", "next_cookie", "is_end", "fetch_time", "feed_list", "feeds_seq" }, new Object[] { null, localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro2 }, RspFetchActivityFeeds.class);
   }
 }
 

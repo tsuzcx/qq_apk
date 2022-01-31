@@ -16,7 +16,7 @@ public class TroopPublishFragment
   
   public void a(String paramString) {}
   
-  public void aq_() {}
+  public void as_() {}
   
   public String b()
   {
@@ -29,7 +29,7 @@ public class TroopPublishFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopPublishFragment
  * JD-Core Version:    0.7.0.1
  */

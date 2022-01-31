@@ -2,11 +2,11 @@ package c.t.m.g;
 
 public abstract interface bc
 {
-  public abstract void a(String paramString1, String paramString2);
+  public abstract void a();
   
-  public abstract void a(String paramString1, byte[] paramArrayOfByte, String paramString2);
+  public abstract void a(int paramInt);
   
-  public abstract void a_();
+  public abstract void b();
 }
 
 

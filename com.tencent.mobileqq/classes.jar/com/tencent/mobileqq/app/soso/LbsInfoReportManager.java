@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.soso;
 
+import aacm;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -35,7 +36,6 @@ import mqq.manager.Manager;
 import mqq.observer.BusinessObserver;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zwb;
 
 public class LbsInfoReportManager
   implements Manager, BusinessObserver
@@ -267,7 +267,7 @@ public class LbsInfoReportManager
     } while (!QLog.isColorLevel());
     QLog.i("LBSReport", 2, "onReceiveLbsInfo distance is: " + d4 + " collectGap: " + d5);
     return;
-    ThreadManager.executeOnSubThread(new zwb(this, d1, d2, d3, f, str1, str2, str3, str4, paramIntent));
+    ThreadManager.executeOnSubThread(new aacm(this, d1, d2, d3, f, str1, str2, str3, str4, paramIntent));
   }
   
   public void a(ArrayList paramArrayList, int paramInt)

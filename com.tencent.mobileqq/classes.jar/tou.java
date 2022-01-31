@@ -1,21 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class tou
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public tou(RegisterActivity paramRegisterActivity) {}
+  public tou(QQMapActivity paramQQMapActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+    if (this.a.l)
     {
-      RegisterActivity.b(this.a);
-      return true;
+      this.a.w();
+      return;
     }
-    return false;
+    if ("group_activity".equals(this.a.o))
+    {
+      this.a.k();
+      return;
+    }
+    this.a.setResult(-1, this.a.a());
+    this.a.finish();
+    this.a.d();
   }
 }
 

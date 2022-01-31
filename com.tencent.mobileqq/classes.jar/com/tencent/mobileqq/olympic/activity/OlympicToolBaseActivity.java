@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.olympic.activity;
 
-import agev;
-import agew;
+import agjh;
+import agji;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,8 +30,8 @@ public class OlympicToolBaseActivity
   public static boolean g = true;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new agew(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new agev(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new agji(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new agjh(this);
   public QQAppInterface a;
   public ARScanAR a;
   public OcrConfig a;

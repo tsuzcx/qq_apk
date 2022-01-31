@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajqr;
+import ajye;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.SparseIntArray;
 import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDbManager;
 import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager;
 import com.tencent.mobileqq.apollo.ApolloGameManager;
@@ -15,6 +16,7 @@ import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.app.message.C2CMessageProcessor.Parse0x2dcContext;
+import com.tencent.mobileqq.app.message.MsgProxy;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForGrayTips;
 import com.tencent.mobileqq.data.MessageForQQWalletTips;
@@ -94,6 +96,7 @@ public class TroopTipsMsgMgr
     for (;;)
     {
       int i;
+      String str;
       Bundle localBundle;
       try
       {
@@ -106,20 +109,20 @@ public class TroopTipsMsgMgr
         int k = localJSONObject.getInt("startIndex");
         int m = localJSONObject.optInt("endIndex");
         if (m <= 0) {
-          break label378;
+          break label375;
         }
         if (!localJSONObject.has("cmd")) {
-          break label373;
+          break label370;
         }
         j = localJSONObject.getInt("cmd");
-        if (!localJSONObject.has("data")) {
-          break label368;
+        paramString = "";
+        if (localJSONObject.has("data")) {
+          paramString = localJSONObject.getString("data");
         }
-        paramString = localJSONObject.getString("data");
-        if (!localJSONObject.has("data_a")) {
-          break label362;
+        str = null;
+        if (localJSONObject.has("data_a")) {
+          str = localJSONObject.getString("data_a");
         }
-        str = localJSONObject.getString("data_a");
         if (localJSONObject.has("url")) {
           paramString = localJSONObject.getString("url");
         }
@@ -151,16 +154,10 @@ public class TroopTipsMsgMgr
       localBundle.putString("troop_mem_uin", paramString);
       localBundle.putBoolean("need_update_nick", true);
       continue;
-      label362:
-      String str = null;
-      continue;
-      label368:
-      paramString = null;
-      continue;
-      label373:
+      label370:
       int j = -1;
       continue;
-      label378:
+      label375:
       i += 1;
     }
   }
@@ -240,7 +237,6 @@ public class TroopTipsMsgMgr
     if (paramArrayOfByte == null)
     {
       paramQQAppInterface = null;
-      label6:
       return paramQQAppInterface;
     }
     Object localObject1 = new TroopTips0x857.NotifyMsgBody();
@@ -261,7 +257,7 @@ public class TroopTipsMsgMgr
             QLog.d("TroopTipsMsgMgr", 2, "handle0x2dcSubType0x10 ==> msgSeq:" + paramInt);
           }
           i = ((TroopTips0x857.NotifyMsgBody)localObject2).opt_enum_type.get();
-          int j = ((TroopTips0x857.NotifyMsgBody)localObject2).uint32_service_type.get();
+          j = ((TroopTips0x857.NotifyMsgBody)localObject2).uint32_service_type.get();
           l2 = ((TroopTips0x857.NotifyMsgBody)localObject2).opt_uint64_group_code.get();
           if (a(l2 + "", paramInt)) {
             return null;
@@ -293,7 +289,7 @@ public class TroopTipsMsgMgr
               paramArrayOfByte = (TroopTips0x857.RedGrayTipsInfo)((TroopTips0x857.NotifyMsgBody)localObject2).opt_msg_redtips.get();
               if (paramQQAppInterface.a.b())
               {
-                a(new ajqr(this, ((TroopTipsEntity)localObject1).troopUin, paramArrayOfByte));
+                a(new ajye(this, ((TroopTipsEntity)localObject1).troopUin, paramArrayOfByte));
                 return null;
               }
               ((TroopTipsEntity)localObject1).currentUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
@@ -331,6 +327,7 @@ public class TroopTipsMsgMgr
                 return null;
               }
               ((TroopTipsEntity)localObject1).optShowLatest = ((TroopTips0x857.NotifyMsgBody)localObject2).opt_msg_graytips.opt_uint32_show_lastest.get();
+              ((TroopTipsEntity)localObject1).serviceType = j;
               a((TroopTipsEntity)localObject1);
               if (j == 3)
               {
@@ -348,17 +345,19 @@ public class TroopTipsMsgMgr
                   TroopRankConfig.a().a(String.valueOf(l2), paramQQAppInterface.getCurrentAccountUin(), true);
                   ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(l2, paramLong);
                 }
+                paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((TroopTipsEntity)localObject1).troopUin, (TroopTipsEntity)localObject1);
+                if ((!paramBoolean1) && (MessageHandlerUtils.a(paramQQAppInterface, paramArrayOfByte, false))) {
+                  return null;
+                }
               }
-              paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((TroopTipsEntity)localObject1).troopUin, (TroopTipsEntity)localObject1);
-              if ((!paramBoolean1) && (MessageHandlerUtils.a(paramQQAppInterface, paramArrayOfByte, false))) {
-                return null;
+              else
+              {
+                if (j != 11) {
+                  continue;
+                }
+                ((TroopTipsEntity)localObject1).repeatInterval = 10;
+                continue;
               }
-              paramQQAppInterface = paramArrayOfByte;
-              if (paramArrayOfByte == null) {
-                break label6;
-              }
-              paramArrayOfByte.saveExtInfoToExtStr("gray_tips_serviceType", j + "");
-              return paramArrayOfByte;
             }
             break;
           }
@@ -368,12 +367,19 @@ public class TroopTipsMsgMgr
       {
         Object localObject2;
         int i;
+        int j;
         long l2;
         paramQQAppInterface.printStackTrace();
         if (QLog.isColorLevel())
         {
           QLog.e("TroopTipsMsgMgr", 2, "handle0x2dcSubType0x10 Exception " + paramQQAppInterface.getStackTrace());
           continue;
+          paramQQAppInterface = paramArrayOfByte;
+          if (paramArrayOfByte == null) {
+            break;
+          }
+          paramArrayOfByte.saveExtInfoToExtStr("gray_tips_serviceType", j + "");
+          return paramArrayOfByte;
           if (((TroopTips0x857.NotifyMsgBody)localObject2).opt_msg_group_notify.has())
           {
             paramQQAppInterface = (TroopTips0x857.GroupNotifyInfo)((TroopTips0x857.NotifyMsgBody)localObject2).opt_msg_group_notify.get();
@@ -414,10 +420,10 @@ public class TroopTipsMsgMgr
                   catch (Exception paramQQAppInterface)
                   {
                     if (!QLog.isColorLevel()) {
-                      break label2026;
+                      break label2041;
                     }
                   }
-                  break label2026;
+                  break label2041;
                   paramArrayOfByte = new ArrayList();
                   paramParse0x2dcContext = ((ArrayList)paramParse0x2dcContext.uint32_recalled_msg_list.get()).iterator();
                   if (paramParse0x2dcContext.hasNext())
@@ -530,7 +536,7 @@ public class TroopTipsMsgMgr
       }
       paramBoolean2 = false;
     }
-    label2026:
+    label2041:
     return null;
   }
   
@@ -569,12 +575,12 @@ public class TroopTipsMsgMgr
     return localArrayList1;
   }
   
-  public void a(ajqr paramajqr)
+  public void a(ajye paramajye)
   {
     if (QLog.isColorLevel()) {
       QLog.d("TroopTipsMsgMgr", 2, "addWalletTipsCache");
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramajqr);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramajye);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -588,8 +594,8 @@ public class TroopTipsMsgMgr
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      ajqr localajqr = (ajqr)localIterator.next();
-      TroopTips0x857.RedGrayTipsInfo localRedGrayTipsInfo = localajqr.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo;
+      ajye localajye = (ajye)localIterator.next();
+      TroopTips0x857.RedGrayTipsInfo localRedGrayTipsInfo = localajye.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo;
       String str = paramQQAppInterface.getCurrentAccountUin();
       MessageForQQWalletTips localMessageForQQWalletTips = (MessageForQQWalletTips)MessageRecordFactory.a(-2029);
       localMessageForQQWalletTips.senderUin = (localRedGrayTipsInfo.uint64_sender_uin.get() + "");
@@ -597,7 +603,7 @@ public class TroopTipsMsgMgr
       localMessageForQQWalletTips.senderContent = localRedGrayTipsInfo.bytes_sender_rich_content.get().toStringUtf8();
       localMessageForQQWalletTips.reciverContent = localRedGrayTipsInfo.bytes_receiver_rich_content.get().toStringUtf8();
       localMessageForQQWalletTips.authKey = localRedGrayTipsInfo.bytes_authkey.get().toStringUtf8();
-      localMessageForQQWalletTips.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localajqr.jdField_a_of_type_JavaLangString, "", "[QQWallet Tips]", MessageCache.a(), -2029, 1, MessageCache.a());
+      localMessageForQQWalletTips.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localajye.jdField_a_of_type_JavaLangString, "", "[QQWallet Tips]", MessageCache.a(), -2029, 1, MessageCache.a());
       localMessageForQQWalletTips.isread = true;
       localMessageForQQWalletTips.getBytes();
       localMessageForQQWalletTips.onReceiveGrapTips();
@@ -628,10 +634,78 @@ public class TroopTipsMsgMgr
     for (;;)
     {
       return;
-      paramQQAppInterface = a(paramString);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.size() != 0))
+      List localList = a(paramString);
+      if ((localList != null) && (localList.size() != 0))
       {
-        paramQQAppInterface = paramQQAppInterface.iterator();
+        Object localObject = new SparseIntArray();
+        int i = localList.size() - 1;
+        if (i >= 0)
+        {
+          TroopTipsEntity localTroopTipsEntity = (TroopTipsEntity)localList.get(i);
+          if ((localTroopTipsEntity.repeatInterval > 0) && (((SparseIntArray)localObject).get(localTroopTipsEntity.serviceType, 0) > 0))
+          {
+            b(localTroopTipsEntity.troopUin, localTroopTipsEntity.msgSeq + "");
+            localList.remove(localTroopTipsEntity);
+          }
+          for (;;)
+          {
+            i -= 1;
+            break;
+            ((SparseIntArray)localObject).put(localTroopTipsEntity.serviceType, ((SparseIntArray)localObject).get(localTroopTipsEntity.serviceType, 0) + 1);
+          }
+        }
+        if (localList.size() > 0)
+        {
+          paramQQAppInterface = paramQQAppInterface.a(1).b(paramString, 1);
+          int j;
+          label202:
+          int k;
+          label245:
+          int m;
+          if (paramQQAppInterface == null)
+          {
+            i = 0;
+            j = localList.size() - 1;
+            if ((j < 0) || (i <= 0)) {
+              break label426;
+            }
+            paramString = (TroopTipsEntity)localList.get(j);
+            if (paramString.repeatInterval > 0)
+            {
+              if (paramString.repeatInterval >= i) {
+                break label406;
+              }
+              k = paramString.repeatInterval;
+              m = 0;
+            }
+          }
+          for (;;)
+          {
+            if (m < k)
+            {
+              localObject = (MessageRecord)paramQQAppInterface.get(i - k + m);
+              if ((((MessageRecord)localObject).msgtype != 2024) || (!String.valueOf(paramString.serviceType).equals(((MessageRecord)localObject).getExtInfoFromExtStr("gray_tips_serviceType")))) {
+                break label417;
+              }
+              b(paramString.troopUin, paramString.msgSeq + "");
+              localList.remove(j);
+              if (QLog.isColorLevel()) {
+                QLog.i("TroopTipsMsgMgr", 2, String.format("addGrayTipsIntoMessageListIfNeeded discard seq:%s interval:%d", new Object[] { Long.valueOf(paramString.msgSeq), Integer.valueOf(paramString.repeatInterval) }));
+              }
+            }
+            j -= 1;
+            break label202;
+            i = paramQQAppInterface.size();
+            break;
+            label406:
+            k = paramQQAppInterface.size();
+            break label245;
+            label417:
+            m += 1;
+          }
+        }
+        label426:
+        paramQQAppInterface = localList.iterator();
         while (paramQQAppInterface.hasNext()) {
           a((TroopTipsEntity)paramQQAppInterface.next());
         }
@@ -648,7 +722,7 @@ public class TroopTipsMsgMgr
       }
     }
     JSONArray localJSONArray;
-    label1155:
+    label1154:
     do
     {
       return;
@@ -661,7 +735,7 @@ public class TroopTipsMsgMgr
       for (;;)
       {
         if (!localMatcher.find()) {
-          break label1155;
+          break label1154;
         }
         j += 1;
         paramTroopTipsEntity.highlightNum = j;
@@ -916,6 +990,7 @@ public class TroopTipsMsgMgr
         localMessageForGrayTips.shmsgseq = 0L;
       }
       localMessageForGrayTips.isread = true;
+      localMessageForGrayTips.saveExtInfoToExtStr("gray_tips_serviceType", String.valueOf(paramTroopTipsEntity.serviceType));
       return localMessageForGrayTips;
     }
   }
@@ -985,7 +1060,7 @@ public class TroopTipsMsgMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr
  * JD-Core Version:    0.7.0.1
  */

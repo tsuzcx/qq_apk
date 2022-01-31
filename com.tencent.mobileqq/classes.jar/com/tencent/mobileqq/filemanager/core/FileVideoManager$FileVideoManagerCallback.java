@@ -6,9 +6,9 @@ public abstract interface FileVideoManager$FileVideoManagerCallback
   
   public abstract void a(String paramString1, String paramString2);
   
-  public abstract void ae_();
+  public abstract void ag_();
   
-  public abstract void af_();
+  public abstract void ah_();
 }
 
 

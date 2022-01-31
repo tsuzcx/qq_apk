@@ -1,44 +1,18 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.ApolloManager.IDrawerGameBoxStatus;
+import com.tencent.mobileqq.apollo.script.SpriteActionScript;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
 
 public class trb
-  extends RecyclerView.Adapter
+  implements ApolloManager.IDrawerGameBoxStatus
 {
-  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
+  public trb(QQSettingMe paramQQSettingMe) {}
   
-  public trb(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public trc a(ViewGroup paramViewGroup, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    return new trc(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2130969351, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener);
-  }
-  
-  public void a(ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
-  }
-  
-  public void a(trc paramtrc, int paramInt)
-  {
-    paramtrc.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
-    {
-      paramtrc.a.setSelected(true);
-      return;
+    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).a() != null)) {
+      QQSettingMe.a(this.a).a().a(paramBoolean);
     }
-    paramtrc.a.setSelected(false);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

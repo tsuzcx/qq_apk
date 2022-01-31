@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
 
-public class abnn
+class abnn
+  implements Runnable
 {
-  public String a;
-  public boolean a;
-  public String b;
+  abnn(abnm paramabnm, Bitmap paramBitmap) {}
   
-  public abnn(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public void run()
+  {
+    ((ImageView)this.jdField_a_of_type_Abnm.a.b.findViewById(2131369596)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+  }
 }
 
 

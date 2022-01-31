@@ -1,23 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneStartupMonitor;
+import com.tencent.mobileqq.app.FriendListObserver;
+import cooperation.dingdong.DingdongPluginManager;
 
-class amsg
-  implements Runnable
+public class amsg
+  extends FriendListObserver
 {
-  amsg(amsf paramamsf, int paramInt) {}
+  public amsg(DingdongPluginManager paramDingdongPluginManager) {}
   
-  public void run()
-  {
-    QZoneStartupMonitor.a(this.jdField_a_of_type_Amsf.a);
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "atuoRecoveryQzoneCount", 1) > this.jdField_a_of_type_Int)
-    {
-      QLog.i("QZoneStartupMonitor", 1, "oat 不合法，并且wns配置要自动修复，重新安装qzone=");
-      QZoneStartupMonitor.b(this.jdField_a_of_type_Amsf.a);
-      LocalMultiProcConfig.putInt("key_recovery_count", this.jdField_a_of_type_Int + 1);
-    }
-  }
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean) {}
 }
 
 

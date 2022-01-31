@@ -1,30 +1,20 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidRateDataResultReceiver;
+import com.tencent.biz.qqstory.channel.CmdTaskManger;
+import com.tencent.biz.qqstory.network.request.GetFeedCommentRequest;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
+import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
 public class nyz
-  implements Runnable
+  extends ParallelJobSegment
 {
-  public nyz(HomeFeedPresenter.SendVidRateDataResultReceiver paramSendVidRateDataResultReceiver, CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry) {}
+  public nyz(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
   
-  public void run()
+  protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
   {
-    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.type = 3;
-      localCommentManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    }
-    for (;;)
-    {
-      ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      return;
-      localCommentManager.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    }
+    GetFeedCommentRequest localGetFeedCommentRequest = new GetFeedCommentRequest();
+    localGetFeedCommentRequest.a = paramFeedCommentSync;
+    CmdTaskManger.a().a(localGetFeedCommentRequest, new nza(this, paramJobContext, paramFeedCommentSync));
   }
 }
 

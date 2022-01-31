@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import java.util.List;
 
 class tlu
   implements Runnable
 {
-  tlu(tlt paramtlt) {}
+  tlu(tlt paramtlt, List paramList) {}
   
   public void run()
   {
-    this.a.a.p();
+    ProfileLabelEditorActivity.a(this.jdField_a_of_type_Tlt.a, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

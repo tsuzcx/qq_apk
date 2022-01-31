@@ -1,39 +1,15 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
-import com.tencent.mobileqq.armap.ipc.IPCConstants;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-public class abfz
-  implements EIPCOnGetConnectionListener
+class abfz
+  implements Runnable
 {
-  public abfz(ArMapIPCProxy paramArMapIPCProxy) {}
+  abfz(abfw paramabfw, double paramDouble1, double paramDouble2) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void run()
   {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    if (paramEIPCConnection.equals(IPCConstants.a))
-    {
-      this.a.a = true;
-      this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPCProxy", 2, "onConnectBind " + paramEIPCConnection);
-    }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    if (paramEIPCConnection.equals(IPCConstants.a))
-    {
-      this.a.a = false;
-      this.a.a(IPCConstants.c, EIPCResult.createResult(-102, null));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPCProxy", 2, "onConnectUnbind " + paramEIPCConnection);
-    }
+    ARMapEngine localARMapEngine = this.jdField_a_of_type_Abfw.a.a;
+    ARMapEngine.rotateToLngLat(this.jdField_a_of_type_Double, this.b);
   }
 }
 

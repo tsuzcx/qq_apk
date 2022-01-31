@@ -1,25 +1,26 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.JumpAction;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import com.tencent.mobileqq.util.FaceDrawable.OnLoadingStateChangeListener;
 
-public class akcr
-  implements View.OnClickListener
+class akcr
+  implements FaceDrawable.OnLoadingStateChangeListener
 {
-  public akcr(JumpAction paramJumpAction) {}
+  akcr(akcq paramakcq) {}
   
-  public void onClick(View paramView)
+  public void onLoadingStateChanged(int paramInt1, int paramInt2)
   {
-    if ((JumpAction.a(this.a) != null) && (JumpAction.a(this.a).isShowing())) {
-      JumpAction.a(this.a).dismiss();
+    Bitmap localBitmap = TroopUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a(String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.senderUin), null));
+    if ((paramInt1 == 0) && (paramInt2 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController.a.b(new akcs(this, localBitmap));
     }
-    ((BaseActivity)this.a.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcr
  * JD-Core Version:    0.7.0.1
  */

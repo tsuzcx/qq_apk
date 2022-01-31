@@ -1,20 +1,53 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder;
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem;
+import com.tencent.mobileqq.dating.FansEntity;
+import com.tencent.mobileqq.dating.SayHelloMsgListActivity;
+import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import mqq.os.MqqHandler;
 
 public class acft
-  implements Runnable
+  extends NearbyRelevantObserver
 {
-  public acft(EmotionPanelDataBuilder paramEmotionPanelDataBuilder, QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, EmotionPanelDataBuilder.EmotionPanelDataCallback paramEmotionPanelDataCallback) {}
+  public acft(SayHelloMsgListActivity paramSayHelloMsgListActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, List paramList)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelDataBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.b, this.c, this.jdField_a_of_type_Boolean);
-    ThreadManager.getUIHandler().post(new acfu(this, localList));
+    int i = 0;
+    if (paramBoolean)
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        FansEntity localFansEntity = (FansEntity)localIterator.next();
+        RecentBaseData localRecentBaseData = (RecentBaseData)this.a.jdField_a_of_type_JavaUtilMap.get(String.valueOf(localFansEntity.uin));
+        if ((localRecentBaseData != null) && ((localRecentBaseData instanceof RecentSayHelloListItem))) {
+          ((RecentSayHelloListItem)localRecentBaseData).a(localFansEntity);
+        }
+      }
+      ReportController.b(this.a.app, "dc00899", "grp_lbs", "", "c2c_tmp", "exp_hi_list", 0, 0, "", "", "", "");
+    }
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null)
+    {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(0);
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(0);
+    }
+    if (QLog.isDevelopLevel()) {
+      if (paramList != null) {
+        break label187;
+      }
+    }
+    for (;;)
+    {
+      QLog.d("Q.msg_box", 4, "get tags, size is " + i);
+      return;
+      label187:
+      i = paramList.size();
+    }
   }
 }
 

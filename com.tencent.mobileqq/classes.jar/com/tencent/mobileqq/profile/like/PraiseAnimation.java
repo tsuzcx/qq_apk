@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.like;
 
-import agqg;
+import agut;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -54,7 +54,7 @@ public class PraiseAnimation
     localAlphaAnimation.setAnimationListener(paramAnimationListener);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.setInterpolator(new agqg());
+    localAnimationSet.setInterpolator(new agut());
     return localAnimationSet;
   }
   
@@ -70,16 +70,16 @@ public class PraiseAnimation
     if (paramOnPraiseLoadListener != null) {
       if ((paramInt2 == 2) && (paramOnPraiseLoadListener.c != null)) {
         if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilderFactory != null) {
-          paramHeartLayout.a(paramOnPraiseLoadListener.c, paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilderFactory.a(paramInt2, paramHeartLayout.a), paramFloat1 - DisplayUtil.a(paramHeartLayout.getContext(), 20.0F), paramFloat2 - DisplayUtil.a(paramHeartLayout.getContext(), 120.0F), DisplayUtil.a(paramHeartLayout.getContext(), 75.0F), DisplayUtil.a(paramHeartLayout.getContext(), 65.0F));
+          paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.c, paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilderFactory.a(paramInt2, paramHeartLayout.a), paramFloat1 - DisplayUtil.a(paramHeartLayout.getContext(), 20.0F), paramFloat2 - DisplayUtil.a(paramHeartLayout.getContext(), 120.0F), DisplayUtil.a(paramHeartLayout.getContext(), 75.0F), DisplayUtil.a(paramHeartLayout.getContext(), 65.0F));
         }
       }
     }
     while (paramBoolean)
     {
       return;
-      paramHeartLayout.a(paramOnPraiseLoadListener.c, paramFloat1, paramFloat2);
+      paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.c, paramFloat1, paramFloat2);
       return;
-      paramHeartLayout.a(paramOnPraiseLoadListener.b, paramFloat1, paramFloat2);
+      paramHeartLayout.a(paramOnPraiseLoadListener, paramOnPraiseLoadListener.b, paramFloat1, paramFloat2);
       return;
     }
     paramHeartLayout.a(paramBitmap, paramFloat1, paramFloat2);

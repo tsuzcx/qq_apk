@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.hiboom;
 
-import adoz;
-import adpa;
-import adpb;
+import adxh;
+import adxi;
+import adxj;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapShader;
@@ -41,6 +41,7 @@ public class HiBoomFontDrawer
   public AtomicBoolean a;
   public int b;
   public AtomicBoolean b;
+  public AtomicBoolean c = new AtomicBoolean(false);
   
   HiBoomFontDrawer(int paramInt, @Nonnull HiBoomFont.HiBoomFontDownloader paramHiBoomFontDownloader)
   {
@@ -58,35 +59,35 @@ public class HiBoomFontDrawer
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 51	java/io/BufferedInputStream
+    //   2: new 54	java/io/BufferedInputStream
     //   5: dup
-    //   6: new 53	java/io/FileInputStream
+    //   6: new 56	java/io/FileInputStream
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 56	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   14: invokespecial 59	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   11: invokespecial 59	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 62	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   17: astore_1
     //   18: aload_1
     //   19: astore_0
     //   20: aload_1
-    //   21: invokestatic 65	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   21: invokestatic 68	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   24: astore_2
     //   25: aload_2
     //   26: astore_0
     //   27: aload_1
     //   28: ifnull +9 -> 37
     //   31: aload_1
-    //   32: invokevirtual 68	java/io/BufferedInputStream:close	()V
+    //   32: invokevirtual 71	java/io/BufferedInputStream:close	()V
     //   35: aload_2
     //   36: astore_0
     //   37: aload_0
     //   38: areturn
     //   39: astore_0
-    //   40: ldc 70
+    //   40: ldc 73
     //   42: iconst_1
-    //   43: ldc 72
+    //   43: ldc 75
     //   45: aload_0
-    //   46: invokestatic 78	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   46: invokestatic 81	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   49: aload_2
     //   50: areturn
     //   51: astore_2
@@ -94,25 +95,25 @@ public class HiBoomFontDrawer
     //   53: astore_1
     //   54: aload_1
     //   55: astore_0
-    //   56: ldc 70
+    //   56: ldc 73
     //   58: iconst_1
-    //   59: ldc 72
+    //   59: ldc 75
     //   61: aload_2
-    //   62: invokestatic 78	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   62: invokestatic 81	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   65: aload_3
     //   66: astore_0
     //   67: aload_1
     //   68: ifnull -31 -> 37
     //   71: aload_1
-    //   72: invokevirtual 68	java/io/BufferedInputStream:close	()V
+    //   72: invokevirtual 71	java/io/BufferedInputStream:close	()V
     //   75: aconst_null
     //   76: areturn
     //   77: astore_0
-    //   78: ldc 70
+    //   78: ldc 73
     //   80: iconst_1
-    //   81: ldc 72
+    //   81: ldc 75
     //   83: aload_0
-    //   84: invokestatic 78	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   84: invokestatic 81	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   87: aconst_null
     //   88: areturn
     //   89: astore_2
@@ -120,25 +121,25 @@ public class HiBoomFontDrawer
     //   91: astore_1
     //   92: aload_1
     //   93: astore_0
-    //   94: ldc 70
+    //   94: ldc 73
     //   96: iconst_1
-    //   97: ldc 72
+    //   97: ldc 75
     //   99: aload_2
-    //   100: invokestatic 78	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   100: invokestatic 81	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   103: aload_3
     //   104: astore_0
     //   105: aload_1
     //   106: ifnull -69 -> 37
     //   109: aload_1
-    //   110: invokevirtual 68	java/io/BufferedInputStream:close	()V
+    //   110: invokevirtual 71	java/io/BufferedInputStream:close	()V
     //   113: aconst_null
     //   114: areturn
     //   115: astore_0
-    //   116: ldc 70
+    //   116: ldc 73
     //   118: iconst_1
-    //   119: ldc 72
+    //   119: ldc 75
     //   121: aload_0
-    //   122: invokestatic 78	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   122: invokestatic 81	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   125: aconst_null
     //   126: areturn
     //   127: astore_1
@@ -147,15 +148,15 @@ public class HiBoomFontDrawer
     //   130: aload_0
     //   131: ifnull +7 -> 138
     //   134: aload_0
-    //   135: invokevirtual 68	java/io/BufferedInputStream:close	()V
+    //   135: invokevirtual 71	java/io/BufferedInputStream:close	()V
     //   138: aload_1
     //   139: athrow
     //   140: astore_0
-    //   141: ldc 70
+    //   141: ldc 73
     //   143: iconst_1
-    //   144: ldc 72
+    //   144: ldc 75
     //   146: aload_0
-    //   147: invokestatic 78	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   147: invokestatic 81	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   150: goto -12 -> 138
     //   153: astore_1
     //   154: goto -24 -> 130
@@ -189,11 +190,6 @@ public class HiBoomFontDrawer
     //   94	103	153	finally
     //   20	25	157	java/lang/OutOfMemoryError
     //   20	25	161	java/lang/Exception
-  }
-  
-  private void a()
-  {
-    ThreadManager.getUIHandler().post(new adpb(this));
   }
   
   private void a(Canvas paramCanvas, String paramString, int paramInt1, int paramInt2, HiBoomInfo.HiBoomInfoStyle paramHiBoomInfoStyle, HiBoomInfo.HiBoomInfoStyleWord paramHiBoomInfoStyleWord, float paramFloat)
@@ -382,7 +378,7 @@ public class HiBoomFontDrawer
   
   private void a(List paramList)
   {
-    ThreadManager.post(new adpa(this, paramList), 8, null, true);
+    ThreadManager.post(new adxi(this, paramList), 8, null, true);
   }
   
   private boolean a(String paramString)
@@ -408,6 +404,11 @@ public class HiBoomFontDrawer
       break;
     }
     return true;
+  }
+  
+  private void b()
+  {
+    ThreadManager.getUIHandler().post(new adxj(this));
   }
   
   private void b(Canvas paramCanvas, String paramString, int paramInt1, int paramInt2, HiBoomInfo.HiBoomInfoStyle paramHiBoomInfoStyle, HiBoomInfo.HiBoomInfoStyleWord paramHiBoomInfoStyleWord, float paramFloat)
@@ -464,7 +465,7 @@ public class HiBoomFontDrawer
     }
   }
   
-  public int a()
+  public int a(boolean paramBoolean)
   {
     Object localObject = new File(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int);
     if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
@@ -485,8 +486,18 @@ public class HiBoomFontDrawer
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a(this.jdField_b_of_type_Int);
+    if (paramBoolean)
+    {
+      this.c.set(false);
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a(this.jdField_b_of_type_Int);
+    }
     return -1;
+  }
+  
+  public void a()
+  {
+    this.c.set(true);
+    b();
   }
   
   public void a(HiBoomTextView paramHiBoomTextView)
@@ -612,7 +623,7 @@ public class HiBoomFontDrawer
       return;
     }
     this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    ThreadManager.getFileThreadHandler().post(new adoz(this, paramBoolean));
+    ThreadManager.getFileThreadHandler().post(new adxh(this, paramBoolean));
   }
   
   boolean a(int paramInt)

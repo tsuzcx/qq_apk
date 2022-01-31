@@ -1,40 +1,17 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class ocp
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ocp(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
+  public ocp(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      i = DanceMachineUploadVideoFragment.a(this.a, DanceMachineUploadVideoFragment.a(this.a));
-      if (i != 0)
-      {
-        DanceMachineUploadVideoFragment.a(this.a, -1L);
-        this.a.a.setResult(2);
-        this.a.a.finish();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-          int i = -1;
-        }
-        DanceMachineUploadVideoFragment.a(this.a, SystemClock.elapsedRealtime());
-      } while (DanceMachineUploadVideoFragment.a() == null);
-      DanceMachineUploadVideoFragment.a().sendEmptyMessage(-2);
-      DanceMachineUploadVideoFragment.a().sendEmptyMessageDelayed(-1, 120000L);
-    }
+    paramDialogInterface.dismiss();
+    StoryReportor.a(this.a.a(), "clk_sure", 0, 0, new String[] { "1", "", "", "" });
   }
 }
 

@@ -1,22 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
-import java.io.File;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONObject;
 
 public class lap
   implements Runnable
 {
-  public lap(KanDianViewController.PullRefreshCompleteListener paramPullRefreshCompleteListener) {}
+  public lap(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject, String paramString3) {}
   
   public void run()
   {
-    String str = RefreshRes.e();
-    if ((str != null) && (new File(str).exists()))
-    {
-      KanDianViewController.a(this.a.a, str);
-      KanDianViewController.a(this.a.a).removeMessages(3);
-      KanDianViewController.a(this.a.a).sendEmptyMessage(2);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject, this.c);
   }
 }
 

@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
-public class syq
-  extends GameCenterObserver
+class syq
+  implements Runnable
 {
-  public syq(LebaListMgrActivity paramLebaListMgrActivity) {}
+  syq(syp paramsyp) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
-    }
-    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
-    {
-      List localList = LebaGridShowManager.a().c(this.a.app);
-      this.a.runOnUiThread(new syr(this, localList));
-    }
+    this.a.a.a.a();
   }
 }
 

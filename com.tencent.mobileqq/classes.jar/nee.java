@@ -1,17 +1,27 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep;
+import java.io.File;
 
-class nee
-  implements Runnable
+public class nee
+  implements Comparable
 {
-  nee(ned paramned) {}
+  public final long a;
+  public final File a;
   
-  public void run()
+  public nee(CapacityCleanStep paramCapacityCleanStep, File paramFile)
   {
-    boolean bool = this.a.a.a(true, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.nodeList", 2, "refresh msg node, change=" + bool);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Long = paramFile.lastModified();
+  }
+  
+  public int a(nee paramnee)
+  {
+    if (this.jdField_a_of_type_Long < paramnee.jdField_a_of_type_Long) {
+      return -1;
     }
+    if (this.jdField_a_of_type_Long == paramnee.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return 1;
   }
 }
 

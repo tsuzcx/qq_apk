@@ -1,41 +1,12 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.FoldMsgGrayTipsItemBuilder;
-import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleParam;
+import java.util.List;
+import java.util.Map;
 
-public class uxq
-  implements View.OnClickListener
+public abstract interface uxq
 {
-  public uxq(FoldMsgGrayTipsItemBuilder paramFoldMsgGrayTipsItemBuilder) {}
+  public abstract void a(String paramString, int paramInt, DoodleParam paramDoodleParam, List paramList, Map paramMap);
   
-  public void onClick(View paramView)
-  {
-    Object localObject = AIOUtils.a(paramView);
-    if ((localObject instanceof MessageForFoldMsgGrayTips))
-    {
-      ((MessageForFoldMsgGrayTips)localObject).isOpen = true;
-      paramView = (uxr)AIOUtils.a(paramView);
-      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((MessageForFoldMsgGrayTips)localObject).getShowMsgContent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext));
-      localObject = paramView.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-      if ((localObject instanceof ViewGroup.MarginLayoutParams))
-      {
-        localObject = (ViewGroup.MarginLayoutParams)localObject;
-        if (((ViewGroup.MarginLayoutParams)localObject).rightMargin != AIOUtils.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources())) {
-          ((ViewGroup.MarginLayoutParams)localObject).rightMargin = AIOUtils.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources());
-        }
-      }
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramView.a.requestLayout();
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BD", "0X80064BD", 0, 0, "", "", "", "");
-    }
-  }
+  public abstract boolean a(String paramString);
 }
 
 

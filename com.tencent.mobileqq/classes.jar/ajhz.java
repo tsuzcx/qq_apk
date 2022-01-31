@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager.OnGuideBtnClickListener;
+import java.util.Comparator;
 
-public class ajhz
-  implements View.OnClickListener
+class ajhz
+  implements Comparator
 {
-  public ajhz(ComplexGuidViewPager paramComplexGuidViewPager) {}
+  ajhz(ajhy paramajhy) {}
   
-  public void onClick(View paramView)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    if (this.a.a != null) {
-      this.a.a.c();
+    int i = 0;
+    if (paramLong1.longValue() - paramLong2.longValue() > 0L) {
+      i = 1;
     }
+    while (paramLong1.longValue() - paramLong2.longValue() >= 0L) {
+      return i;
+    }
+    return -1;
   }
 }
 

@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.OnCustomizeListener;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
 public class xmr
-  implements DialogInterface.OnClickListener
+  implements CustomizeStrategyFactory.OnCustomizeListener
 {
-  public xmr(LoginView paramLoginView, String paramString1, String paramString2, String paramString3) {}
+  public xmr(RedPacketManager paramRedPacketManager, RedPacketInfoBase paramRedPacketInfoBase, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a, "dc00898", "", "", "0X8006796", "0X8006796", 0, 0, "", "", "", "");
-    ThreadManager.postImmediately(new xms(this), null, false);
+    paramRedPacketInfo.isCache = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.isCache;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
   }
 }
 

@@ -1,34 +1,20 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoManager;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListHomeFeed;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class nyv
-  implements Runnable
 {
-  public nyv(HomeFeedPresenter paramHomeFeedPresenter, ArrayList paramArrayList) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  List jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public void run()
+  public nyv(boolean paramBoolean1, List paramList, int paramInt, boolean paramBoolean2, String paramString)
   {
-    FeedVideoManager localFeedVideoManager = (FeedVideoManager)SuperManager.a(12);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (StoryHomeFeed)localIterator.next();
-      if ((localObject instanceof VideoListHomeFeed))
-      {
-        localObject = (VideoListHomeFeed)localObject;
-        FeedVideoInfo localFeedVideoInfo = ((VideoListHomeFeed)localObject).a().getVideoInfo();
-        localFeedVideoInfo.mVideoItemList.addAll(((VideoListHomeFeed)localObject).a());
-        localFeedVideoManager.a(0, localFeedVideoInfo.feedId, localFeedVideoInfo.mVideoSeq, localFeedVideoInfo.mVideoItemList, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mIsVideoEnd, localFeedVideoInfo.mVideoPullType, true);
-      }
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

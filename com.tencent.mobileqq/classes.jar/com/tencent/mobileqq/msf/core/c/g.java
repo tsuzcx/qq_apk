@@ -142,6 +142,7 @@ public class g
   public static final String cE = "msf_monitor_invalidSocket";
   public static final String cF = "msf_sendMsgToApp_processIsNull";
   public static final String cG = "msf_core_EvtMsfThreadHeldKillMSF";
+  public static final String cH = "EvtDozeWhiteList";
   public static final int ca = 13;
   public static final int cb = 14;
   public static final int cc = 21;

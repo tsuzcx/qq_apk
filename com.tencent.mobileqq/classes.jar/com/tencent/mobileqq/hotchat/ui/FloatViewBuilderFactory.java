@@ -21,17 +21,17 @@ public class FloatViewBuilderFactory
     {
     default: 
       if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder == null) {
-        this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder = new FloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130843131, paramHeartAnimator);
+        this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder = new FloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130843163, paramHeartAnimator);
       }
       return this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder;
     case 2: 
       if (this.c == null) {
-        this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130840631, paramHeartAnimator);
+        this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130840646, paramHeartAnimator);
       }
       return this.c;
     }
     if (this.b == null) {
-      this.b = new FloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130843134, paramHeartAnimator);
+      this.b = new FloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130843166, paramHeartAnimator);
     }
     return this.b;
   }

@@ -1,16 +1,37 @@
-import com.tencent.biz.webviewplugin.PubAccountWebViewHttpBridge;
+import android.graphics.Rect;
+import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotify;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotifyAd;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.mobileqq.widget.BounceScrollView.OnScrollChangedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class pcm
-  implements Runnable
+  implements BounceScrollView.OnScrollChangedListener
 {
-  public pcm(PubAccountWebViewHttpBridge paramPubAccountWebViewHttpBridge) {}
+  public pcm(TroopNewGuidePopWindow paramTroopNewGuidePopWindow) {}
   
-  public void run()
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    long l = System.currentTimeMillis();
-    PubAccountWebViewHttpBridge.a(this.a);
-    this.a.a = (System.currentTimeMillis() - l);
-    PubAccountWebViewHttpBridge.b(this.a);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd != null) && (this.a.d))
+    {
+      Rect localRect = new Rect();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getHitRect(localRect);
+      if (this.a.jdField_a_of_type_ComTencentImageURLImageView.getLocalVisibleRect(localRect))
+      {
+        this.a.d = false;
+        TroopBarUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd.a, 0, null, null);
+        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "exp_ad", 0, 0, this.a.b, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.a), "8020205751015455", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopTipsPopWindow", 2, "onScrollChanged 广告图片可见-------------------------");
+        }
+      }
+    }
   }
 }
 

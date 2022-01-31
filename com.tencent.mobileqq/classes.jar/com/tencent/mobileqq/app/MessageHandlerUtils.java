@@ -98,6 +98,7 @@ import tencent.im.msg.im_msg_body.NearByMessageType;
 import tencent.im.msg.im_msg_body.PubGroup;
 import tencent.im.msg.im_msg_body.RichText;
 import tencent.im.msg.im_msg_body.Text;
+import tencent.im.qzone.album.UploadParam;
 
 public class MessageHandlerUtils
 {
@@ -193,7 +194,7 @@ public class MessageHandlerUtils
         else
         {
           if (!(paramMessageRecord instanceof MessageForPic)) {
-            break label2331;
+            break label2399;
           }
           localObject1 = MessageProtoCodec.a((MessageForPic)paramMessageRecord);
           i = ((MessageForPic)paramMessageRecord).msgVia;
@@ -282,7 +283,7 @@ public class MessageHandlerUtils
       else
       {
         if (paramMessageRecord.msgtype != -5017) {
-          break label2331;
+          break label2399;
         }
         localObject1 = MessageProtoCodec.c((MessageForArkApp)paramMessageRecord);
         i = 0;
@@ -397,7 +398,7 @@ public class MessageHandlerUtils
       }
       return localObject1;
       if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 1026)) {
-        break label2196;
+        break label2264;
       }
       localObject4 = (FriendsManager)paramQQAppInterface.getManager(50);
       long l2 = 1L;
@@ -425,6 +426,16 @@ public class MessageHandlerUtils
         localObject5 = new im_msg_body.Elem();
         ((im_msg_body.Elem)localObject5).elem_flags2.set((MessageMicro)localObject3);
         ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject5);
+      }
+      if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("ext_key_group_chat_confess_info")))
+      {
+        localObject3 = ConfessMsgUtil.b(paramMessageRecord);
+        if (localObject3 != null) {
+          ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject3);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.confess", 2, "bindGroupFirstMsgConfessInfoElem elem:" + localObject3);
+        }
       }
       localObject2 = ((HotChatManager)localObject2).a(paramMessageRecord.frienduin);
       localObject3 = (TroopManager)paramQQAppInterface.getManager(51);
@@ -481,7 +492,7 @@ public class MessageHandlerUtils
         j = 0;
         break label1638;
         if (((Friends)localObject5).gender != 1) {
-          break label2339;
+          break label2407;
         }
         k = 0;
         continue;
@@ -500,7 +511,7 @@ public class MessageHandlerUtils
         continue;
       }
       break label1010;
-      label2196:
+      label2264:
       if ((paramMessageRecord.istroop == 1033) || (paramMessageRecord.istroop == 1034))
       {
         localElem = new im_msg_body.Elem();
@@ -524,11 +535,11 @@ public class MessageHandlerUtils
       }
       QLog.i("Q.confess", 2, "bindC2CFirstMsgConfessInfoElem elem:" + localElem);
       break label1010;
-      label2331:
+      label2399:
       i = 0;
       localObject1 = null;
       break;
-      label2339:
+      label2407:
       k = 2;
     }
   }
@@ -750,7 +761,11 @@ public class MessageHandlerUtils
     generalflags.ResvAttr localResvAttr = new generalflags.ResvAttr();
     Object localObject1 = paramMessageRecord.getExtInfoFromExtStr(MessageConstants.jdField_c_of_type_JavaLangString);
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    label1539:
+    label1053:
+    label1191:
+    label2883:
+    label3272:
+    label3277:
     for (;;)
     {
       try
@@ -857,18 +872,17 @@ public class MessageHandlerUtils
         k = ((SVIPHandler)localObject2).g();
         m = ((SVIPHandler)localObject2).b();
         if (m <= 0) {
-          break label3039;
+          break label3297;
         }
         localObject1 = ((BubbleManager)localObject1).a(m, false);
         if ((localObject1 != null) && ((localObject1 == null) || (((BubbleConfig)localObject1).a == null) || (((BubbleConfig)localObject1).a.size() <= 0))) {
           break label2008;
         }
       }
-      label1053:
-      label1191:
       label2008:
       label2014:
-      label3039:
+      label2784:
+      label3297:
       for (boolean bool = true;; bool = false)
       {
         if (QLog.isColorLevel()) {
@@ -887,7 +901,13 @@ public class MessageHandlerUtils
             }
           }
         }
+        label2019:
+        label2025:
+        label2030:
+        label2676:
         for (j = k;; j = 0) {
+          label1785:
+          label3193:
           for (;;)
           {
             if (paramMessageRecord.vipSubBubbleId != 0)
@@ -1040,10 +1060,10 @@ public class MessageHandlerUtils
               }
               localObject1 = paramMessageRecord.getExtInfoFromExtStr("robot_news_class_id");
             }
+            label2939:
             try
             {
               localResvAttr.uint32_bot_message_class_id.set(Integer.parseInt((String)localObject1));
-              label1785:
               if (((TroopRobotManager)paramQQAppInterface.getManager(202)).a(paramMessageRecord))
               {
                 localResvAttr.uint32_robot_msg_flag.set(1, true);
@@ -1121,9 +1141,6 @@ public class MessageHandlerUtils
                   }
                 }
               }
-              label2019:
-              label2025:
-              label2030:
               if (DoutuManager.a(paramMessageRecord))
               {
                 k = 1;
@@ -1206,12 +1223,121 @@ public class MessageHandlerUtils
                   localObject2 = localObject1;
                 }
               }
-              catch (Exception localException1)
+              catch (Exception paramQQAppInterface)
               {
-                for (;;)
+                try
                 {
-                  localException1.printStackTrace();
-                  localObject2 = paramPbSendMsgReq;
+                  paramPbSendMsgReq = KplRoleInfo.getGameNickByUin(paramQQAppInterface, paramMessageRecord.selfuin);
+                  paramQQAppInterface = KplRoleInfo.getGameNickByUin(paramQQAppInterface, paramMessageRecord.frienduin);
+                  localObject1 = new JSONObject();
+                  ((JSONObject)localObject1).put(paramMessageRecord.selfuin, paramPbSendMsgReq);
+                  ((JSONObject)localObject1).put(paramMessageRecord.frienduin, paramQQAppInterface);
+                  paramQQAppInterface = ((JSONObject)localObject1).toString();
+                  if (!QLog.isColorLevel()) {
+                    break label2676;
+                  }
+                  QLog.d("KplMessage", 2, "general kpl flag=" + paramQQAppInterface);
+                  paramQQAppInterface = paramQQAppInterface.getBytes("utf-8");
+                  i = k;
+                  if (paramQQAppInterface == null) {
+                    break label2705;
+                  }
+                  i = 1;
+                  localResvAttr.bytes_kpl_info.set(ByteStringMicro.copyFrom(paramQQAppInterface));
+                  k = i;
+                  if (!(paramMessageRecord instanceof MessageForShortVideo)) {
+                    break label2822;
+                  }
+                  paramQQAppInterface = (MessageForShortVideo)paramMessageRecord;
+                  if (paramQQAppInterface.redBagType != LocalMediaInfo.REDBAG_TYPE_GET) {
+                    break label2768;
+                  }
+                  i = 1;
+                  localResvAttr.uint32_red_envelope_type.set(paramQQAppInterface.redBagType);
+                  localResvAttr.bytes_shortVideoId.set(ByteStringMicro.copyFromUtf8(paramQQAppInterface.shortVideoId));
+                  QLog.d("Q.msg.MessageHandlerUtils", 1, "VideoRedbag, generalflag take redbag flag");
+                  paramPbSendMsgReq = localResvAttr.uint32_aio_sync_to_story_flag;
+                  if (!paramQQAppInterface.syncToStory) {
+                    break label3266;
+                  }
+                  k = 1;
+                  paramPbSendMsgReq.set(k);
+                  QLog.d("Q.msg.MessageHandlerUtils", 1, "EditAioSyncToStoryPart Video sync to story is " + paramQQAppInterface.syncToStory);
+                  k = i;
+                  if (!(paramMessageRecord instanceof MessageForPic)) {
+                    break label2883;
+                  }
+                  paramQQAppInterface = (MessageForPic)paramMessageRecord;
+                  paramPbSendMsgReq = localResvAttr.uint32_aio_sync_to_story_flag;
+                  if (!paramQQAppInterface.sync2Story) {
+                    break label3272;
+                  }
+                  i = 1;
+                  paramPbSendMsgReq.set(i);
+                  QLog.d("Q.msg.MessageHandlerUtils", 1, "EditAioSyncToStoryPart pic sync to story is " + paramQQAppInterface.sync2Story);
+                  if (!LoveLanguageManager.a(paramMessageRecord)) {
+                    break label2939;
+                  }
+                  i = 1;
+                  localResvAttr.uint32_love_language_flag.set(1);
+                  k = i;
+                  if (!QLog.isColorLevel()) {
+                    break label2939;
+                  }
+                  QLog.d("Q.msg.MessageHandlerUtils", 2, new Object[] { "love language send msg uint32_love_language_flag = 1,msg.uid=", Long.valueOf(paramMessageRecord.uniseq) });
+                  k = i;
+                  if ((!(paramMessageRecord instanceof MessageForPic)) || (!paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_is_sync_qzone").equals("1"))) {
+                    break label3193;
+                  }
+                  localResvAttr.uint32_upload_image_to_qzone_flag.set(1);
+                }
+                catch (Exception paramQQAppInterface)
+                {
+                  try
+                  {
+                    paramQQAppInterface = new UploadParam();
+                    paramQQAppInterface.bytes_qzone_albumid.set(ByteStringMicro.copyFromUtf8(paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_qzone_album_id")));
+                    paramQQAppInterface.uint64_batchid.set(Long.valueOf(paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_qzone_batch_id")).longValue());
+                    paramQQAppInterface.uint32_full_image.set(Integer.valueOf(paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_qzone_is_raw")).intValue());
+                    paramQQAppInterface.uint64_image_number.set(Long.valueOf(paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_qzone_batch_count")).longValue());
+                    paramQQAppInterface.uint64_image_number_index.set(Long.valueOf(paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_qzone_photo_index")).longValue());
+                    localResvAttr.bytes_upload_image_to_qzone_param.set(ByteStringMicro.copyFrom(paramQQAppInterface.toByteArray()));
+                    if (!QLog.isColorLevel()) {
+                      break label3193;
+                    }
+                    QLog.d("Q.msg.MessageHandlerUtils", 2, "general syncQzoneAlbum : albumid = " + paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_qzone_album_id") + ", batchid = " + paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_qzone_batch_id") + ", isRaw = " + paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_qzone_is_raw") + ", imgCount = " + paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_qzone_batch_count") + ", imgIndex = " + paramMessageRecord.getExtInfoFromExtStr("msg_extra_key_qzone_photo_index"));
+                    if (k == 0) {
+                      break label3217;
+                    }
+                    j = 1;
+                    localGeneralFlags.bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
+                    if (j == 0) {
+                      break label3277;
+                    }
+                    for (paramQQAppInterface = localGeneralFlags;; paramQQAppInterface = null)
+                    {
+                      return paramQQAppInterface;
+                      localException1 = localException1;
+                      localException1.printStackTrace();
+                      localObject2 = paramPbSendMsgReq;
+                      break;
+                      paramQQAppInterface = paramQQAppInterface;
+                      if (QLog.isColorLevel()) {
+                        QLog.d("KplMessage", 2, "some error at MessageHandlerUtils::getGeneralFlagElemFromMsg()");
+                      }
+                      paramQQAppInterface.printStackTrace();
+                      paramQQAppInterface = null;
+                      break label2684;
+                      k = 0;
+                      break label2784;
+                      i = 0;
+                      break label2849;
+                    }
+                  }
+                  catch (Exception paramQQAppInterface)
+                  {
+                    break label3193;
+                  }
                 }
               }
               k = i;
@@ -1227,108 +1353,16 @@ public class MessageHandlerUtils
                 i = k;
                 if (TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("msg_ext_key"))) {}
               }
-              try
-              {
-                paramPbSendMsgReq = KplRoleInfo.getGameNickByUin(paramQQAppInterface, paramMessageRecord.selfuin);
-                paramQQAppInterface = KplRoleInfo.getGameNickByUin(paramQQAppInterface, paramMessageRecord.frienduin);
-                localObject1 = new JSONObject();
-                ((JSONObject)localObject1).put(paramMessageRecord.selfuin, paramPbSendMsgReq);
-                ((JSONObject)localObject1).put(paramMessageRecord.frienduin, paramQQAppInterface);
-                paramQQAppInterface = ((JSONObject)localObject1).toString();
-                if (QLog.isColorLevel()) {
-                  QLog.d("KplMessage", 2, "general kpl flag=" + paramQQAppInterface);
-                }
-                paramQQAppInterface = paramQQAppInterface.getBytes("utf-8");
-              }
-              catch (Exception paramQQAppInterface)
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("KplMessage", 2, "some error at MessageHandlerUtils::getGeneralFlagElemFromMsg()");
-                  }
-                  paramQQAppInterface.printStackTrace();
-                  paramQQAppInterface = null;
-                  continue;
-                  k = 0;
-                  continue;
-                  i = 0;
-                  continue;
-                  paramQQAppInterface = null;
-                }
-              }
-              i = k;
-              if (paramQQAppInterface != null)
-              {
-                i = 1;
-                localResvAttr.bytes_kpl_info.set(ByteStringMicro.copyFrom(paramQQAppInterface));
-              }
-              k = i;
-              if ((paramMessageRecord instanceof MessageForShortVideo))
-              {
-                paramQQAppInterface = (MessageForShortVideo)paramMessageRecord;
-                if (paramQQAppInterface.redBagType == LocalMediaInfo.REDBAG_TYPE_GET)
-                {
-                  i = 1;
-                  localResvAttr.uint32_red_envelope_type.set(paramQQAppInterface.redBagType);
-                  localResvAttr.bytes_shortVideoId.set(ByteStringMicro.copyFromUtf8(paramQQAppInterface.shortVideoId));
-                  QLog.d("Q.msg.MessageHandlerUtils", 1, "VideoRedbag, generalflag take redbag flag");
-                }
-                paramPbSendMsgReq = localResvAttr.uint32_aio_sync_to_story_flag;
-                if (paramQQAppInterface.syncToStory)
-                {
-                  k = 1;
-                  paramPbSendMsgReq.set(k);
-                  QLog.d("Q.msg.MessageHandlerUtils", 1, "EditAioSyncToStoryPart Video sync to story is " + paramQQAppInterface.syncToStory);
-                  k = i;
-                }
-              }
-              else
-              {
-                if ((paramMessageRecord instanceof MessageForPic))
-                {
-                  paramQQAppInterface = (MessageForPic)paramMessageRecord;
-                  paramPbSendMsgReq = localResvAttr.uint32_aio_sync_to_story_flag;
-                  if (!paramQQAppInterface.sync2Story) {
-                    break label3018;
-                  }
-                  i = 1;
-                  paramPbSendMsgReq.set(i);
-                  QLog.d("Q.msg.MessageHandlerUtils", 1, "EditAioSyncToStoryPart pic sync to story is " + paramQQAppInterface.sync2Story);
-                }
-                if (LoveLanguageManager.a(paramMessageRecord))
-                {
-                  i = 1;
-                  localResvAttr.uint32_love_language_flag.set(1);
-                  k = i;
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.d("Q.msg.MessageHandlerUtils", 2, new Object[] { "love language send msg uint32_love_language_flag = 1,msg.uid=", Long.valueOf(paramMessageRecord.uniseq) });
-                    k = i;
-                  }
-                }
-                if (k != 0)
-                {
-                  j = 1;
-                  localGeneralFlags.bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
-                }
-                if (j == 0) {
-                  break label3023;
-                }
-                paramQQAppInterface = localGeneralFlags;
-                return paramQQAppInterface;
-              }
             }
             catch (Exception localException2)
             {
+              label2684:
               break label1785;
             }
           }
         }
       }
-      label1417:
-      label3018:
-      label3023:
+      label2768:
       int i = 0;
     }
   }

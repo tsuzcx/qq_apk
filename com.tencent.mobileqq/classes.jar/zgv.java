@@ -1,25 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbSendMsgReq;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class zgv
-  extends SendMessageHandler.SendMessageRunnable
+  extends BroadcastReceiver
 {
-  public zgv(MessageHandler paramMessageHandler, msg_svc.PbSendMsgReq paramPbSendMsgReq, int paramInt, long paramLong) {}
+  public zgv(BabyQFriendStatusWebViewPlugin paramBabyQFriendStatusWebViewPlugin) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.PbReceiptRead", null);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
-    localToServiceMsg.extraData.putLong("msgSeq", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putInt("msgtype", 2);
-    localToServiceMsg.extraData.putString("uin", Long.toString(this.jdField_a_of_type_Long));
-    localToServiceMsg.extraData.putLong("timeOut", this.c);
-    localToServiceMsg.extraData.putInt("retryIndex", this.b);
-    localToServiceMsg.setTimeout(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
+    if (!TextUtils.isEmpty(BabyQFriendStatusWebViewPlugin.a(this.a)))
+    {
+      int i = paramIntent.getIntExtra("result", -1);
+      paramContext = "{ \"ret\": " + i + " }";
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
+      }
+      if (i != 0) {
+        break label176;
+      }
+      if (BabyQFriendStatusWebViewPlugin.a(this.a) != null)
+      {
+        paramContext = new Intent(BabyQFriendStatusWebViewPlugin.a(this.a), ChatActivity.class);
+        paramContext.putExtra("uin", AppConstants.av);
+        paramContext.putExtra("uintype", 0);
+        paramContext.putExtra("uinname", "babyQ");
+        paramContext.putExtra("selfSet_leftViewText", BabyQFriendStatusWebViewPlugin.a(this.a).getString(2131433712));
+        BabyQFriendStatusWebViewPlugin.a(this.a).startActivity(paramContext);
+        BabyQFriendStatusWebViewPlugin.a(this.a).finish();
+      }
+    }
+    return;
+    label176:
+    this.a.callJs(BabyQFriendStatusWebViewPlugin.a(this.a) + "(" + paramContext + ");");
   }
 }
 

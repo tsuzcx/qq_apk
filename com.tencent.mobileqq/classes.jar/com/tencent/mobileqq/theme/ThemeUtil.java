@@ -562,7 +562,7 @@ public class ThemeUtil
     if (android.text.TextUtils.isEmpty(paramString1)) {
       paramString2 = "20000000";
     }
-    paramContext = AppConstants.bT;
+    paramContext = AppConstants.bU;
     return paramContext + paramString1 + "_" + paramString2 + ".zip";
   }
   
@@ -723,7 +723,7 @@ public class ThemeUtil
       try
       {
         if (Utils.b()) {
-          paramContext = AppConstants.bN + "using_theme_res";
+          paramContext = AppConstants.bO + "using_theme_res";
         }
       }
       catch (Exception paramString1)
@@ -944,7 +944,7 @@ public class ThemeUtil
       Collections.sort((List)localObject3);
       localObject4 = (String)((List)localObject3).get(((List)localObject3).size() - 1);
       localObject3 = ((SharedPreferences)localObject2).getString("currentThemeVersion", "0");
-      if (IndividuationConfigInfo.a("6.0", "7.6.3"))
+      if (IndividuationConfigInfo.a("6.0", "7.6.8"))
       {
         localObject2 = (String)((Map)localObject1).get(localObject4);
         localObject1 = localObject2;
@@ -1687,7 +1687,7 @@ public class ThemeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeUtil
  * JD-Core Version:    0.7.0.1
  */

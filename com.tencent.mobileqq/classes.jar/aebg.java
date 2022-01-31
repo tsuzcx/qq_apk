@@ -1,33 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView;
+import com.tencent.mobileqq.imaxad.ImaxAdUtil;
+import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class aebg
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public aebg(LebaFeedsDislikeMaskView paramLebaFeedsDislikeMaskView) {}
+  public aebg(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    LebaFeedsDislikeMaskView.a(this.a, (int)(LebaFeedsDislikeMaskView.a(this.a) * f));
-    if (f <= 0.58F)
-    {
-      f /= 0.58F;
-      LebaFeedsDislikeMaskView.a(this.a).setAlpha(1.0F * f);
-      f *= 1.2F;
-      LebaFeedsDislikeMaskView.a(this.a).setScaleX(f);
-      LebaFeedsDislikeMaskView.a(this.a).setScaleY(f);
-    }
-    for (;;)
-    {
-      this.a.invalidate();
-      return;
-      f = 1.2F - (f - 0.58F) / 0.42F * 0.2F;
-      LebaFeedsDislikeMaskView.a(this.a).setScaleX(f);
-      LebaFeedsDislikeMaskView.a(this.a).setScaleY(f);
-    }
+    ImaxAdUtil.b("installSDK onInstalledFailed arg0=" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    ImaxAdUtil.b("installSDK onInstalledSuccessed");
+    ImaxAdVideoPreloadManager.a(this.a);
   }
 }
 

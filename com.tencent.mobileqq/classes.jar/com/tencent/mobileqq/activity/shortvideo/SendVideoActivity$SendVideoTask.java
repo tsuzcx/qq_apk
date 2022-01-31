@@ -17,7 +17,7 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import yda;
+import yjj;
 
 public class SendVideoActivity$SendVideoTask
   extends AsyncTask
@@ -68,7 +68,7 @@ public class SendVideoActivity$SendVideoTask
   
   public static void a(BaseActivity paramBaseActivity, int paramInt, boolean paramBoolean)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(paramBaseActivity, 232, null, paramBaseActivity.getString(paramInt), new yda(paramBoolean, paramBaseActivity), null);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(paramBaseActivity, 232, null, paramBaseActivity.getString(paramInt), new yjj(paramBoolean, paramBaseActivity), null);
     if (!paramBaseActivity.isFinishing()) {
       localQQCustomDialog.show();
     }
@@ -217,7 +217,7 @@ public class SendVideoActivity$SendVideoTask
     //   282: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   285: ldc_w 260
     //   288: invokestatic 261	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   291: astore 12
+    //   291: astore 11
     //   293: new 110	java/lang/StringBuilder
     //   296: dup
     //   297: invokespecial 111	java/lang/StringBuilder:<init>	()V
@@ -229,12 +229,12 @@ public class SendVideoActivity$SendVideoTask
     //   315: invokestatic 270	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;)V
     //   318: new 272	java/io/File
     //   321: dup
-    //   322: aload 12
+    //   322: aload 11
     //   324: invokespecial 274	java/io/File:<init>	(Ljava/lang/String;)V
-    //   327: astore 11
+    //   327: astore 12
     //   329: new 272	java/io/File
     //   332: dup
-    //   333: aload 11
+    //   333: aload 12
     //   335: invokevirtual 277	java/io/File:getParent	()Ljava/lang/String;
     //   338: invokespecial 274	java/io/File:<init>	(Ljava/lang/String;)V
     //   341: astore 7
@@ -247,20 +247,20 @@ public class SendVideoActivity$SendVideoTask
     //   359: aload 7
     //   361: invokevirtual 286	java/io/File:mkdirs	()Z
     //   364: pop
-    //   365: aload 11
+    //   365: aload 12
     //   367: invokevirtual 280	java/io/File:exists	()Z
     //   370: ifeq +11 -> 381
-    //   373: aload 11
+    //   373: aload 12
     //   375: invokevirtual 289	java/io/File:isFile	()Z
     //   378: ifne +9 -> 387
-    //   381: aload 11
+    //   381: aload 12
     //   383: invokevirtual 292	java/io/File:createNewFile	()Z
     //   386: pop
     //   387: new 294	java/io/BufferedOutputStream
     //   390: dup
     //   391: new 296	java/io/FileOutputStream
     //   394: dup
-    //   395: aload 11
+    //   395: aload 12
     //   397: invokespecial 299	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   400: invokespecial 302	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   403: astore 7
@@ -274,23 +274,23 @@ public class SendVideoActivity$SendVideoTask
     //   420: invokevirtual 315	java/io/BufferedOutputStream:flush	()V
     //   423: new 317	java/io/FileInputStream
     //   426: dup
-    //   427: aload 11
+    //   427: aload 12
     //   429: invokespecial 318	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   432: astore 8
     //   434: aload 7
     //   436: astore 10
     //   438: aload 8
     //   440: astore 9
-    //   442: aload 11
+    //   442: aload 12
     //   444: invokevirtual 320	java/io/File:length	()J
-    //   447: lstore 4
+    //   447: lstore 5
     //   449: aload 7
     //   451: astore 10
     //   453: aload 8
     //   455: astore 9
     //   457: aload_0
     //   458: aload 8
-    //   460: lload 4
+    //   460: lload 5
     //   462: invokestatic 326	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   465: invokestatic 332	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   468: putfield 334	com/tencent/mobileqq/activity/shortvideo/SendVideoActivity$SendVideoTask:g	Ljava/lang/String;
@@ -359,12 +359,12 @@ public class SendVideoActivity$SendVideoTask
     //   603: astore 10
     //   605: aload 8
     //   607: astore 9
-    //   609: aload 12
+    //   609: aload 11
     //   611: aload_0
     //   612: getfield 348	com/tencent/mobileqq/activity/shortvideo/SendVideoActivity$SendVideoTask:f	Ljava/lang/String;
     //   615: invokestatic 351	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   618: istore 6
-    //   620: iload 6
+    //   618: istore 4
+    //   620: iload 4
     //   622: ifne +42 -> 664
     //   625: iconst_0
     //   626: ifeq +11 -> 637
@@ -392,7 +392,7 @@ public class SendVideoActivity$SendVideoTask
     //   668: aload 8
     //   670: astore 9
     //   672: aload_1
-    //   673: lload 4
+    //   673: lload 5
     //   675: invokestatic 357	android/text/format/Formatter:formatFileSize	(Landroid/content/Context;J)Ljava/lang/String;
     //   678: astore_1
     //   679: aload 7
@@ -672,8 +672,8 @@ public class SendVideoActivity$SendVideoTask
     //   0	1215	1	paramContext	Context
     //   7	970	2	i	int
     //   1	921	3	j	int
-    //   447	227	4	l	long
-    //   618	3	6	bool	boolean
+    //   618	3	4	bool	boolean
+    //   447	227	5	l	long
     //   24	64	7	localObject1	Object
     //   203	14	7	localNumberFormatException	java.lang.NumberFormatException
     //   341	698	7	localObject2	Object
@@ -693,8 +693,8 @@ public class SendVideoActivity$SendVideoTask
     //   440	727	9	localObject9	Object
     //   1192	6	9	localException3	Exception
     //   436	721	10	localObject10	Object
-    //   327	116	11	localFile	java.io.File
-    //   291	319	12	str	String
+    //   291	319	11	str	String
+    //   327	116	12	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
     //   61	72	203	java/lang/NumberFormatException
@@ -897,8 +897,8 @@ public class SendVideoActivity$SendVideoTask
       this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969178);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363418));
     }
   }
   
@@ -961,22 +961,22 @@ public class SendVideoActivity$SendVideoTask
       }
     case 2: 
     case 6: 
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437366, this.jdField_a_of_type_Boolean);
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437386, this.jdField_a_of_type_Boolean);
       return;
     case 3: 
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437373, this.jdField_a_of_type_Boolean);
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437393, this.jdField_a_of_type_Boolean);
       return;
     case 4: 
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437371, this.jdField_a_of_type_Boolean);
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437391, this.jdField_a_of_type_Boolean);
       return;
     }
-    a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437374, this.jdField_a_of_type_Boolean);
+    a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437394, this.jdField_a_of_type_Boolean);
   }
   
   protected void onPreExecute()
   {
     super.onPreExecute();
-    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436145);
+    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436163);
   }
 }
 

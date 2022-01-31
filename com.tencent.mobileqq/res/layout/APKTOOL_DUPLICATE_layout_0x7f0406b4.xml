@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020476" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip"
+<com.tencent.mobileqq.widget.BounceScrollView android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="7.5dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b28d7" android:singleLine="true" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02131d" android:drawablePadding="10.0dip" android:layout_weight="1.0" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b28d7" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0051" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02046e" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/content" android:paddingLeft="12.0dip" android:paddingTop="20.0dip" android:paddingRight="12.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0202" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fd0" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="推荐版块" />
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fd1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.tencent.widget.HorizontalLabelLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fd2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0202" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fd3" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="20.0dip" android:text="更多版块" />
+        <com.tencent.widget.HorizontalLabelLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1fd4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

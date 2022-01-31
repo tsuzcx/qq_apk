@@ -1,17 +1,28 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class anuu
-  implements Runnable
+public final class anuu
+  implements FFmpegExecuteResponseCallback
 {
-  public anuu(EditVideoPlayer paramEditVideoPlayer, int paramInt, byte[] paramArrayOfByte) {}
+  public void a() {}
   
-  public void run()
+  public void a(String paramString)
   {
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "setMosaic %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    VideoSourceHelper.nativeSetMosaic(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onSuccess: invoked. Message: message: showFFmpegFormats ok. " + paramString);
+    }
   }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed showFFmpegFormats. message = " + paramString);
+    }
+  }
+  
+  public void c(String paramString) {}
 }
 
 

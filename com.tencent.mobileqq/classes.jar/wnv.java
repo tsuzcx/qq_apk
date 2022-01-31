@@ -1,22 +1,41 @@
-import android.os.Handler.Callback;
+import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 
 public class wnv
-  implements Handler.Callback
+  extends Handler
 {
-  public wnv(PublicAccountFragment paramPublicAccountFragment) {}
+  private WeakReference a;
   
-  public boolean handleMessage(Message paramMessage)
+  public wnv(PublicView paramPublicView)
   {
+    this.a = new WeakReference(paramPublicView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    PublicView localPublicView = (PublicView)this.a.get();
+    if (localPublicView == null) {
+      return;
+    }
     switch (paramMessage.what)
     {
+    default: 
+      return;
+    case 1: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      return;
+    case 2: 
+      PublicView.a(localPublicView).springBackOverScrollHeaderView();
+      PublicView.a(localPublicView, 1, 2131434365);
+      return;
+    case 3: 
+      PublicView.a(localPublicView, true);
+      return;
     }
-    for (;;)
-    {
-      return true;
-      this.a.i();
-    }
+    PublicView.b(localPublicView);
   }
 }
 

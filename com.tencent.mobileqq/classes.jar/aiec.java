@@ -1,50 +1,16 @@
-import android.annotation.TargetApi;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.Processor;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.VideoConverterImpl;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
+import com.tencent.mobileqq.shortvideo.ShortVideoReq;
 
-@TargetApi(18)
 public class aiec
-  implements VideoConverter.VideoConverterImpl
+  implements Runnable
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  public aiec(ShortVideoPreDownloader paramShortVideoPreDownloader, ShortVideoReq paramShortVideoReq) {}
   
-  public boolean a()
+  public void run()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      Thread localThread = (Thread)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localThread != null) {
-        localThread.interrupt();
-      }
-    }
-    return true;
-  }
-  
-  public boolean a(File paramFile, VideoConverter.Processor paramProcessor, boolean paramBoolean)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      paramFile = new Thread(new aied(this, paramFile, paramProcessor), "VideoConvert");
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFile);
-      paramFile.start();
-      if (paramBoolean) {}
-      try
-      {
-        paramFile.join();
-        return true;
-      }
-      catch (InterruptedException paramFile)
-      {
-        paramFile.printStackTrace();
-        return true;
-      }
-    }
-    return false;
+    ShortVideoPreDownloader.a("consumeShortVideo", "start pre download short video type=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.b + " uniseq=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_Long + ", uuid=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloader.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq);
   }
 }
 

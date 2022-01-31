@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.VideoProcessListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
 public class xqd
-  implements NewFlowCameraActivity.VideoProcessListener
+  implements BubblePopupWindow.OnDismissListener
 {
-  public xqd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xqd(RecentAdapter paramRecentAdapter, View paramView) {}
   
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  public void a()
   {
-    if (this.a.r == 10011)
-    {
-      NewFlowCameraActivity.a(this.a, paramString1);
-      return;
-    }
-    if (paramBoolean)
-    {
-      NewFlowCameraActivity.b(this.a, paramString1);
-      return;
-    }
-    this.a.i(true);
-    QQToast.a(this.a, "对不起，GIF处理异常...", 0).a();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

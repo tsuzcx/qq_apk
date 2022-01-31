@@ -1,49 +1,22 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import mqq.os.MqqHandler;
 
 public class aekl
-  extends Handler
+  implements Runnable
 {
-  public aekl(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aekl(LightReplyMenuManager paramLightReplyMenuManager, String paramString1, String paramString2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    Object localObject = paramMessage.getData();
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
+    synchronized ()
     {
-      paramMessage = (Bitmap)paramMessage.obj;
-      if ((paramMessage != null) && (localObject != null))
-      {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
+      boolean bool = FileUtils.a(this.jdField_a_of_type_JavaLangString, this.b);
+      if (!bool) {
+        ThreadManager.getUIHandler().post(new aekm(this));
       }
-      try
-      {
-        localObject = new FileOutputStream((File)localObject);
-        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
-        ((FileOutputStream)localObject).flush();
-        ((FileOutputStream)localObject).close();
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
-      }
+      return;
     }
   }
 }

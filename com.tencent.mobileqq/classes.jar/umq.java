@@ -1,23 +1,54 @@
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.activity.aio.PokePanelAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import java.util.List;
 
-class umq
-  implements Runnable
+public class umq
+  extends AnimatorListenerAdapter
 {
-  umq(ump paramump) {}
+  int jdField_a_of_type_Int = 0;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void run()
+  public umq(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]update UI start");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      int j = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a.size();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j)
+        {
+          this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % j);
+          paramAnimator = (Drawable)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a.get(this.jdField_a_of_type_Int);
+          if (paramAnimator == null) {
+            break label112;
+          }
+          if (!(paramAnimator instanceof URLDrawable)) {
+            break label98;
+          }
+          if (((URLDrawable)paramAnimator).getStatus() != 1) {
+            break label112;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.setImageDrawable(paramAnimator);
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          return;
+          label98:
+          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.setImageDrawable(paramAnimator);
+        }
+        label112:
+        i += 1;
+      }
     }
-    ArrayList localArrayList = this.a.jdField_a_of_type_JavaUtilArrayList;
-    PokePanel.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel).a(localArrayList);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]update UI end");
-    }
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

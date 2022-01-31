@@ -1,27 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import cooperation.qzone.QzoneGiftFullScreenActionManager;
-import cooperation.qzone.QzoneGiftFullScreenActionManager.MagicfaceActionListener;
-import cooperation.qzone.QzoneGiftFullScreenViewController;
-import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
+import cooperation.dingdong.DingdongPluginDataFactory.ScheduleSummaryData;
+import cooperation.dingdong.data.ScheduleReminderMgr.onScheduleTipsListener;
+import cooperation.dingdong.data.ScheduleTipsDialog;
 
 public class amsr
-  implements QzoneGiftFullScreenActionManager.MagicfaceActionListener
+  implements ScheduleReminderMgr.onScheduleTipsListener
 {
-  public amsr(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController, long paramLong, QzoneGiftFullScreenViewController.GiftFullScreenPlayListener paramGiftFullScreenPlayListener) {}
+  public amsr(ScheduleTipsDialog paramScheduleTipsDialog) {}
   
-  public void a(ActionGlobalData paramActionGlobalData)
+  public void a(DingdongPluginDataFactory.ScheduleSummaryData paramScheduleSummaryData)
   {
-    System.currentTimeMillis();
-    long l = this.jdField_a_of_type_Long;
-    boolean bool = this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.b();
-    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a(bool);
-    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.jdField_a_of_type_AndroidOsHandler.post(new amss(this, paramActionGlobalData));
+    ScheduleTipsDialog.a(this.a, paramScheduleSummaryData);
   }
   
-  public void b(ActionGlobalData paramActionGlobalData)
+  public boolean a()
   {
-    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.jdField_a_of_type_AndroidOsHandler.post(new amst(this));
+    if (this.a.isFinishing()) {
+      return false;
+    }
+    return ScheduleTipsDialog.a(this.a);
   }
 }
 

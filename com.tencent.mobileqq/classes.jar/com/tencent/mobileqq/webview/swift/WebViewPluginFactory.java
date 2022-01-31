@@ -55,6 +55,7 @@ import com.tencent.mobileqq.jsp.DeviceApiPlugin;
 import com.tencent.mobileqq.jsp.DocxApiPlugin;
 import com.tencent.mobileqq.jsp.MedalApiPlugin;
 import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.jsp.MixSearchApiPlugin;
 import com.tencent.mobileqq.jsp.PlatoApiPlugin;
 import com.tencent.mobileqq.jsp.QQApiPlugin;
 import com.tencent.mobileqq.jsp.QQStoryApiPlugin;
@@ -318,6 +319,7 @@ public class WebViewPluginFactory
     a.put("qidian", Integer.valueOf(155));
     a.put("allpeoplevote", Integer.valueOf(158));
     a.put("ftssearch", Integer.valueOf(160));
+    a.put("MixSearchWeb", Integer.valueOf(169));
     a.put("qlbq", Integer.valueOf(161));
     a.put("sayHonest", Integer.valueOf(162));
     a.put("readInJoyWebRender", Integer.valueOf(163));
@@ -633,6 +635,8 @@ public class WebViewPluginFactory
       return new WholePeoplePlugin();
     case 160: 
       return new UniteSearchApiPlugin();
+    case 169: 
+      return new MixSearchApiPlugin();
     case 161: 
       return new QLBQJsPlugin();
     case 162: 
@@ -657,7 +661,7 @@ public class WebViewPluginFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewPluginFactory
  * JD-Core Version:    0.7.0.1
  */

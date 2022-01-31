@@ -1,39 +1,39 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public final class akbq
-  implements MediaPlayer.OnCompletionListener
+public class akbq
+  implements Runnable
 {
-  public akbq(MediaPlayer.OnCompletionListener paramOnCompletionListener, Handler paramHandler) {}
+  private final WeakReference a;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public akbq(TroopMoreDetailView paramTroopMoreDetailView)
   {
-    if (AudioUtil.b() == 0)
+    this.a = new WeakReference(paramTroopMoreDetailView);
+  }
+  
+  public void run()
+  {
+    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
+    if (localTroopMoreDetailView == null) {}
+    ArrayList localArrayList;
+    do
     {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener != null)
+      do
       {
-        if ((this.jdField_a_of_type_AndroidOsHandler == null) || (this.jdField_a_of_type_AndroidOsHandler.getLooper() == Looper.myLooper()))
-        {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener.onCompletion(AudioUtil.a);
-          return;
-        }
-        AudioUtil.a();
-        this.jdField_a_of_type_AndroidOsHandler.post(new akbr(this));
         return;
-      }
-      AudioUtil.a();
-      return;
-    }
-    AudioUtil.c();
-    AudioUtil.a.start();
+      } while (localTroopMoreDetailView.getContext() == null);
+      localArrayList = TroopInfoActivity.a(localTroopMoreDetailView.getContext(), localTroopMoreDetailView.a);
+    } while (localArrayList == null);
+    ThreadManager.getUIHandler().post(new akbr(this, localTroopMoreDetailView, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbq
  * JD-Core Version:    0.7.0.1
  */

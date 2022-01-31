@@ -24,14 +24,14 @@ import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import java.io.File;
 import java.util.HashMap;
-import npm;
-import npn;
-import npp;
-import npr;
-import npt;
-import npv;
-import npw;
-import npx;
+import nub;
+import nuc;
+import nue;
+import nug;
+import nui;
+import nuk;
+import num;
+import nun;
 
 public class VideoViewTVKImpl
   implements IVideoView
@@ -52,7 +52,7 @@ public class VideoViewTVKImpl
   
   static
   {
-    jdField_a_of_type_AndroidUtilSparseArray = new npm();
+    jdField_a_of_type_AndroidUtilSparseArray = new nub();
   }
   
   public VideoViewTVKImpl(Context paramContext)
@@ -175,12 +175,12 @@ public class VideoViewTVKImpl
       {
         this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = TVK_SDKMgr.getProxyFactory().createMediaPlayer(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase);
         this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(1);
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new npn(this));
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new npp(this));
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new npr(this));
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new npt(this));
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(new npv(this, paramString1));
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoOutputFrameListener(new npw(this));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new nuc(this));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new nue(this));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new nug(this));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new nui(this));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(new nuk(this, paramString1));
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoOutputFrameListener(new num(this));
       }
       paramString2 = PlayModeUtils.a(paramInt);
       paramString3 = a((String)localObject, this.b);
@@ -222,7 +222,7 @@ public class VideoViewTVKImpl
       }
     }
     label462:
-    Bosses.get().postJob(new npx(this, (VideoServerInfoManager)localObject, paramString2, paramString1, localDownloadUrlManager, paramString3));
+    Bosses.get().postJob(new nun(this, (VideoServerInfoManager)localObject, paramString2, paramString1, localDownloadUrlManager, paramString3));
     return;
     label487:
     paramString2.f = SystemClock.uptimeMillis();

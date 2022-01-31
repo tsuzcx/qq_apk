@@ -1,78 +1,66 @@
-import android.util.Pair;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.Button;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.activity.TroopBarCommentWindow;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class ajcg
-  implements Runnable
+  implements BusinessObserver
 {
-  public ajcg(TroopAioKeywordTipBar paramTroopAioKeywordTipBar) {}
+  public ajcg(TroopBarCommentWindow paramTroopBarCommentWindow) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    TroopAioKeywordTipBar.b(this.a, false);
-    if (!TroopAioKeywordTipBar.c(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopAioKeywordTipBar", 2, "checkMsgForShow, mIsCanCheck = false");
-      }
-    }
-    TroopAioKeywordTipManager localTroopAioKeywordTipManager;
-    ArrayList localArrayList1;
-    do
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430311);
+    if (paramBoolean) {}
+    for (;;)
     {
-      ArrayList localArrayList2;
-      do
+      try
       {
-        int i;
-        int j;
-        do
-        {
-          return;
-          i = this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition() - this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-          j = this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() - this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-          localTroopAioKeywordTipManager = (TroopAioKeywordTipManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(224);
-        } while ((i < 0) || (j < 0));
-        localArrayList1 = new ArrayList(10);
-        localArrayList2 = new ArrayList(10);
-        if (i <= j)
-        {
-          localObject = (MessageRecord)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getItem(i);
-          if (localObject == null) {}
-          for (;;)
-          {
-            i += 1;
-            break;
-            if (!((MessageRecord)localObject).isSend()) {
-              localArrayList1.add(localObject);
-            } else if (((MessageRecord)localObject).time > NetConnInfoCenter.getServerTime() - 5L) {
-              localArrayList2.add(0, localObject);
-            }
-          }
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
         }
-        if (localArrayList2.size() <= 0) {
-          break;
+        Object localObject = new WebSsoBody.WebSsoResponseBody();
+        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+        if (paramInt == 0) {
+          continue;
         }
-      } while ((TroopAioKeywordTipBar.b(this.a) != null) && (TroopAioKeywordTipBar.b(this.a) == localArrayList2.get(0)));
-      Object localObject = localTroopAioKeywordTipManager.a(localArrayList2, TroopAioKeywordTipBar.a(this.a), 1);
-      if ((TroopAioKeywordTipBar.a(this.a)) && ((((Pair)localObject).second == null) || ((TroopAioKeywordTipBar.a(this.a) != null) && (TroopAioKeywordTipBar.a(this.a).ruleId != ((Integer)((Pair)localObject).second).intValue())))) {
-        TroopAioKeywordTipBar.a(this.a, false);
+        localObject = paramBundle.optString("msg");
+        paramBundle = (Bundle)localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430312, new Object[] { Integer.valueOf(paramInt) });
+        }
       }
-      for (;;)
+      catch (Exception paramBundle)
       {
-        localTroopAioKeywordTipManager.a(localArrayList2, TroopAioKeywordTipBar.a(this.a), 1, new ajch(this, localArrayList1, localTroopAioKeywordTipManager));
-        return;
-        TroopAioKeywordTipBar.b(this.a, (MessageRecord)localArrayList2.get(0));
+        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430312, new Object[] { Integer.valueOf(9992) });
+        continue;
+        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430312, new Object[] { Integer.valueOf(9991) });
+        continue;
       }
-    } while ((localArrayList1.size() <= 0) || (TroopAioKeywordTipBar.a(this.a)));
-    localTroopAioKeywordTipManager.a(localArrayList1, null, 2, new ajcj(this));
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, paramBundle, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      TroopBarUtils.a("two_comment", "fail", this.a.d, "4", "", "");
+      this.a.jdField_c_of_type_Boolean = false;
+      return;
+      paramBundle = paramBundle.getJSONObject("result");
+      TroopBarUtils.a("two_comment", "suc", this.a.d, this.a.h, "", "");
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.a(this.a.jdField_c_of_type_JavaLangString, paramBundle.toString(), true);
+      this.a.dismiss();
+      return;
+      paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430312, new Object[] { Integer.valueOf(9992) });
+    }
   }
 }
 

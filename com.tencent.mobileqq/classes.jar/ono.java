@@ -1,60 +1,31 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.view.widget.StorySwipeTextViewMenuBuilder;
-import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import android.support.annotation.NonNull;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnStrokeSelectedListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class ono
-  extends StorySwipeTextViewMenuBuilder
+  implements HorizontalSelectColorLayout.OnStrokeSelectedListener
 {
-  public View a(Context paramContext, View paramView, SwipRightMenuBuilder.SwipItemBaseHolder paramSwipItemBaseHolder, int paramInt)
-  {
-    paramSwipItemBaseHolder.a = new SwipRightMenuBuilder.SwipRightMenuItem[this.b];
-    paramInt = 0;
-    while (paramInt < this.b)
-    {
-      paramSwipItemBaseHolder.a[paramInt] = new SwipRightMenuBuilder.SwipRightMenuItem();
-      paramSwipItemBaseHolder.a[paramInt].jdField_a_of_type_Int = -1;
-      paramSwipItemBaseHolder.a[paramInt].c = 0;
-      paramSwipItemBaseHolder.a[paramInt].jdField_a_of_type_AndroidViewView = null;
-      paramInt += 1;
-    }
-    paramSwipItemBaseHolder.f = paramView.findViewById(2131363401);
-    return paramView;
-  }
+  public ono(EditTextDialog paramEditTextDialog) {}
   
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  public void a(@NonNull HorizontalStroke paramHorizontalStroke)
   {
-    paramArrayOfSwipRightMenuItem[0].jdField_a_of_type_Int = 0;
-    paramArrayOfSwipRightMenuItem[0].b = 0;
-    paramArrayOfSwipRightMenuItem[1].jdField_a_of_type_Int = -1;
-    paramArrayOfSwipRightMenuItem[1].b = -1;
-    String str = QQStoryContext.a().a();
-    if ((this.a.a) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
+    switch (paramHorizontalStroke.a)
     {
-      paramArrayOfSwipRightMenuItem[1].jdField_a_of_type_Int = 1;
-      paramArrayOfSwipRightMenuItem[1].b = 1;
     }
-  }
-  
-  protected void a(ViewGroup paramViewGroup, View paramView, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, int paramInt)
-  {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    if (localLayoutParams == null) {
-      paramView.setLayoutParams(new LinearLayout.LayoutParams(paramSwipRightMenuItem.c, paramSwipRightMenuItem.d));
-    }
-    for (;;)
+    do
     {
-      paramViewGroup.addView(paramView, paramInt);
       return;
-      localLayoutParams.width = paramSwipRightMenuItem.c;
-      localLayoutParams.height = paramSwipRightMenuItem.d;
-    }
+      int i = paramHorizontalStroke.b;
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.a = i;
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(i);
+      VideoEditReport.b("0X80075D8");
+    } while ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams == null) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a != 3));
+    LpReportInfo_pf00064.allReport(615, 3, 2);
   }
 }
 

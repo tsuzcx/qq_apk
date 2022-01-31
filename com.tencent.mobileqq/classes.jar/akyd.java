@@ -1,38 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.arcard.ARCardLoadingProgressView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
+import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils.OfflineData;
+import com.tencent.smtt.sdk.QbSdk;
 
-class akyd
+public class akyd
   implements Runnable
 {
-  akyd(akyc paramakyc, boolean paramBoolean, int paramInt) {}
+  public akyd(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler, String paramString) {}
   
   public void run()
   {
-    if (((ARCardLoadingProgressView)this.jdField_a_of_type_Akyc.a.getView().findViewById(2131375511)).getVisibility() == 0)
+    if (QbSdk.getTbsVersion(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity) >= 43810)
     {
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0))
+      Object localObject2 = null;
+      Object localObject1 = localObject2;
+      if (SwiftOfflineDataUtils.a(this.jdField_a_of_type_JavaLangString))
       {
-        WorldCupShareFragment.a(this.jdField_a_of_type_Akyc.a);
-        WorldCupShareFragment.b(this.jdField_a_of_type_Akyc.a);
+        SwiftOfflineDataUtils.OfflineData localOfflineData = SwiftOfflineDataUtils.a(this.jdField_a_of_type_JavaLangString);
+        localObject1 = localObject2;
+        if (localOfflineData != null) {
+          localObject1 = localOfflineData.b;
+        }
       }
-    }
-    else {
-      return;
-    }
-    int i;
-    if (this.jdField_a_of_type_Int == 12)
-    {
-      i = 2131439380;
-      WorldCupShareFragment.a("0X8009319", 2);
-    }
-    for (;;)
-    {
-      QQToast.a(BaseApplication.getContext(), 1, i, 0).a();
-      break;
-      i = 2131439375;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        SwiftBrowserTBSHandler.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a, this.jdField_a_of_type_JavaLangString, (String)localObject1);
+      }
     }
   }
 }

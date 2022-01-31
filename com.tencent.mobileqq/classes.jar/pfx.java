@@ -1,30 +1,30 @@
-import com.tencent.component.media.gif.InvalidationHandler;
-import com.tencent.component.media.gif.NewGifDecoder;
-import com.tencent.component.media.gif.NewGifDrawable;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.webviewplugin.HotchatPlugin;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 public class pfx
-  extends pgd
+  implements View.OnClickListener
 {
-  public pfx(NewGifDrawable paramNewGifDrawable1, NewGifDrawable paramNewGifDrawable2, int paramInt)
-  {
-    super(paramNewGifDrawable2);
-  }
+  public pfx(HotchatPlugin paramHotchatPlugin, String paramString, Activity paramActivity) {}
   
-  public void doWork()
+  public void onClick(View paramView)
   {
-    synchronized (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mLock4Bmp)
+    this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
     {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mBuffer = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.seekToFrame(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mBuffer);
-      if (!this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.hasMessages(0)) {
-        this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+      paramView = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
+      if ((paramView instanceof NearbyAppInterface)) {
+        ((NearbyAppInterface)paramView).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pfx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
+import com.tencent.qphone.base.util.QLog;
 
-public class aagi
+class aagi
   implements Runnable
 {
-  public aagi(AREngine paramAREngine) {}
+  aagi(aagh paramaagh) {}
   
   public void run()
   {
-    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null)) {
-      AREngine.a(this.a).a(0, 4);
+    if ((ARWorldCupGlobalSceneRenderable.a(this.a.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a.a).a()))
+    {
+      ARWorldCupGlobalSceneRenderable.a(this.a.a).a();
+      QLog.d("ARWorldCupGlobalSceneRenderable", 2, "mRepeatCheckRunnable run ");
     }
   }
 }

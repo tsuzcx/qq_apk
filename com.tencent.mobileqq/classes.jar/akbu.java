@@ -1,31 +1,61 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.troop.widget.TroopPickerViewHelper;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout.WheelPickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.Calendar;
 
-public final class akbu
-  implements MediaPlayer.OnCompletionListener
+public class akbu
+  implements WheelPickerLayout.WheelPickListener
 {
-  public akbu(MediaPlayer.OnCompletionListener paramOnCompletionListener) {}
+  public akbu(TroopPickerViewHelper paramTroopPickerViewHelper) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (AudioUtil.b() == 0)
+    if (TroopPickerViewHelper.a(this.a) != null)
     {
-      if (this.a != null)
-      {
-        this.a.onCompletion(AudioUtil.a);
-        return;
+      if (paramInt1 != 0) {
+        break label212;
       }
-      AudioUtil.a();
-      return;
+      if (TroopPickerViewHelper.a(this.a) == null) {
+        break label288;
+      }
+      paramInt1 = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), paramInt2);
+      int i = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), paramInt2, paramInt1);
+      paramInt2 = paramInt1;
+      paramInt1 = i;
     }
-    AudioUtil.c();
-    AudioUtil.a.start();
+    for (;;)
+    {
+      TroopPickerViewHelper.a(this.a).setSelection(1, paramInt2);
+      TroopPickerViewHelper.a(this.a).a(1);
+      TroopPickerViewHelper.a(this.a).setSelection(2, paramInt1);
+      TroopPickerViewHelper.a(this.a).a(2);
+      label212:
+      do
+      {
+        TroopPickerViewHelper.a(this.a, TroopPickerViewHelper.a(this.a).a(new int[] { TroopPickerViewHelper.a(this.a).a(0), TroopPickerViewHelper.a(this.a).a(1), TroopPickerViewHelper.a(this.a).a(2) }));
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopPickerViewHelper", 2, Arrays.toString(TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a).getTimeInMillis())));
+        }
+        return;
+      } while (paramInt1 != 1);
+      if (TroopPickerViewHelper.a(this.a) != null) {}
+      for (paramInt1 = TroopPickerViewHelper.a(this.a).a(TroopPickerViewHelper.a(this.a), TroopPickerViewHelper.a(this.a).a(0), paramInt2);; paramInt1 = 0)
+      {
+        TroopPickerViewHelper.a(this.a).setSelection(2, paramInt1);
+        TroopPickerViewHelper.a(this.a).a(2);
+        break;
+      }
+      label288:
+      paramInt1 = 0;
+      paramInt2 = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbu
  * JD-Core Version:    0.7.0.1
  */

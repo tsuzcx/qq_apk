@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter.WeiyunCallback;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class anhj
-  implements WeiYunLogicCenter.WeiyunCallback
+  implements View.OnTouchListener
 {
-  public MqqHandler a;
+  public anhj(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public anhj(MqqHandler paramMqqHandler)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramMqqHandler;
-  }
-  
-  public void a()
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessageDelayed(100, 1500L);
+    this.a.a();
+    if ((!this.a.c) && (this.a.a != null))
+    {
+      this.a.a.setHint("");
+      this.a.c = true;
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (this.a != null) {
-      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
-    }
+    return false;
   }
 }
 

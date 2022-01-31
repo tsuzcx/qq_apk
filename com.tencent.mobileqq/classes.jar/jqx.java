@@ -1,37 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.telephony.TelephonyManager;
-import com.tencent.av.ui.CallbackWaitingActivity;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenVideoController;
+import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class jqx
-  extends BroadcastReceiver
+  extends TimerTask
 {
-  public jqx(CallbackWaitingActivity paramCallbackWaitingActivity) {}
+  public jqx(SmallScreenVideoController paramSmallScreenVideoController) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL")) {
-      return;
-    }
-    switch (((TelephonyManager)paramContext.getSystemService("phone")).getCallState())
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {}
+    long l1;
+    long l2;
+    do
     {
-    default: 
+      do
+      {
+        SessionInfo localSessionInfo;
+        do
+        {
+          return;
+          localSessionInfo = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+        } while (localSessionInfo == null);
+        if (localSessionInfo.Q > 0) {
+          break;
+        }
+      } while (this.a.jdField_a_of_type_JavaUtilTimer == null);
+      this.a.jdField_a_of_type_JavaUtilTimer.cancel();
+      this.a.jdField_a_of_type_JavaUtilTimer = null;
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(CallbackWaitingActivity.a(), 2, "state is TelephonyManager.CALL_STATE_RINGING");
-    }
-    AudioUtil.a();
-    CallbackWaitingActivity.a(this.a).sendEmptyMessageDelayed(10, 2000L);
+      l1 = this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c);
+      l2 = System.currentTimeMillis();
+    } while ((l1 == 0L) || (l2 - l1 <= this.a.jdField_a_of_type_ComTencentAvVideoController.a().Q * 1000));
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new jqy(this, l2, l1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqx
  * JD-Core Version:    0.7.0.1
  */

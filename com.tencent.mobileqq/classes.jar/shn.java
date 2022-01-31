@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import android.widget.ImageView;
+import com.tencent.mobileqq.util.FaceDrawable;
 
-public class shn
-  extends FMObserver
+class shn
+  implements Runnable
 {
-  public shn(Conversation paramConversation) {}
+  shn(shm paramshm, ImageView paramImageView, FaceDrawable paramFaceDrawable) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void run()
   {
-    this.a.a(8, paramString, -2147483648);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a(8, paramString1, -2147483648);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDrawable);
   }
 }
 

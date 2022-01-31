@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajsc;
+import ajzp;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -14,7 +14,7 @@ public class EllipsizingTextView
   extends TextView
 {
   private int jdField_a_of_type_Int = 1;
-  private ajsc jdField_a_of_type_Ajsc;
+  private ajzp jdField_a_of_type_Ajzp;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -49,12 +49,12 @@ public class EllipsizingTextView
     }
   }
   
-  private ajsc a()
+  private ajzp a()
   {
-    if (this.jdField_a_of_type_Ajsc == null) {
-      this.jdField_a_of_type_Ajsc = new ajsc(this);
+    if (this.jdField_a_of_type_Ajzp == null) {
+      this.jdField_a_of_type_Ajzp = new ajzp(this);
     }
-    return this.jdField_a_of_type_Ajsc;
+    return this.jdField_a_of_type_Ajzp;
   }
   
   public void a()
@@ -73,15 +73,15 @@ public class EllipsizingTextView
     ((TextPaint)localObject).setColor(getCurrentTextColor());
     ((TextPaint)localObject).drawableState = getDrawableState();
     localObject = a();
-    ((ajsc)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
+    ((ajzp)localObject).a(getText(), this, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean);
     if (getEllipsize() == TextUtils.TruncateAt.END)
     {
-      ((ajsc)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
+      ((ajzp)localObject).a(paramCanvas, TextUtils.TruncateAt.END);
       return;
     }
     if (getEllipsize() == TextUtils.TruncateAt.MIDDLE)
     {
-      ((ajsc)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
+      ((ajzp)localObject).a(paramCanvas, TextUtils.TruncateAt.MIDDLE);
       return;
     }
     super.onDraw(paramCanvas);
@@ -100,7 +100,7 @@ public class EllipsizingTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.EllipsizingTextView
  * JD-Core Version:    0.7.0.1
  */

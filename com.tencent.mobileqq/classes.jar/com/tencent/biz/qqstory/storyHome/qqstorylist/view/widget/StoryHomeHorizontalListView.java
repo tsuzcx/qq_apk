@@ -14,7 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import com.tencent.widget.HorizontalListView.OnItemScrollEventListener;
 import com.tencent.widget.TraceUtils;
-import obw;
+import ogl;
 
 public class StoryHomeHorizontalListView
   extends HorizontalListView
@@ -51,7 +51,7 @@ public class StoryHomeHorizontalListView
   {
     this.jdField_b_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
     this.c = DisplayUtil.a(paramContext, 147.0F);
-    super.setOnItemScollEventListener(new obw(this));
+    super.setOnItemScollEventListener(new ogl(this));
     setOverScrollMode(1);
   }
   

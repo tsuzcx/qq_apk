@@ -33,7 +33,7 @@ public class GetJoinedShareGroupFriListHandler
   public void a(@NonNull GetJoinedShareGroupFriListRequest paramGetJoinedShareGroupFriListRequest, @Nullable GetJoinedShareGroupFriListResponse paramGetJoinedShareGroupFriListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     paramGetJoinedShareGroupFriListRequest = new GetJoinedShareGroupFriListHandler.GetJoinedShareGroupFriListEvent();
-    paramGetJoinedShareGroupFriListRequest.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    paramGetJoinedShareGroupFriListRequest.errorInfo = paramErrorMessage;
     paramGetJoinedShareGroupFriListRequest.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
     paramGetJoinedShareGroupFriListRequest.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
     paramGetJoinedShareGroupFriListRequest.b = this.b;

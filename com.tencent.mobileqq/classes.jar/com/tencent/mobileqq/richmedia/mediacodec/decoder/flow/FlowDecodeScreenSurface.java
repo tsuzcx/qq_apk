@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import ahod;
+import ahsv;
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.opengl.Matrix;
@@ -46,7 +46,7 @@ public class FlowDecodeScreenSurface
     super.a();
   }
   
-  public void a(@NonNull ahod paramahod, boolean paramBoolean)
+  public void a(@NonNull ahsv paramahsv, boolean paramBoolean)
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
@@ -61,9 +61,9 @@ public class FlowDecodeScreenSurface
               throw new RuntimeException("frame wait timed out");
             }
           }
-          catch (InterruptedException paramahod)
+          catch (InterruptedException paramahsv)
           {
-            throw new RuntimeException(paramahod);
+            throw new RuntimeException(paramahsv);
           }
         }
       }
@@ -71,8 +71,8 @@ public class FlowDecodeScreenSurface
     GlUtil.a("before updateTexImage");
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-    paramahod.jdField_a_of_type_ArrayOfFloat = ((float[])this.jdField_a_of_type_ArrayOfFloat.clone());
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFrameBuffer.a(paramahod.a());
+    paramahsv.jdField_a_of_type_ArrayOfFloat = ((float[])this.jdField_a_of_type_ArrayOfFloat.clone());
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFrameBuffer.a(paramahsv.a());
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(36197, this.c, null, null);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFrameBuffer.a();
     this.jdField_a_of_type_Boolean = false;

@@ -57,21 +57,21 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XEditTextEx;
 import java.util.Observable;
 import mqq.app.MobileQQ;
-import vvy;
-import vvz;
-import vwa;
-import vwb;
-import vwd;
-import vwe;
-import vwf;
-import vwg;
-import vwh;
-import vwi;
-import vwk;
-import vwl;
-import vwm;
-import vwn;
-import vwo;
+import wbe;
+import wbf;
+import wbg;
+import wbh;
+import wbj;
+import wbk;
+import wbl;
+import wbm;
+import wbn;
+import wbo;
+import wbq;
+import wbr;
+import wbs;
+import wbt;
+import wbu;
 
 public class NearbyChatPie
   extends BaseChatPie
@@ -83,11 +83,11 @@ public class NearbyChatPie
   boolean S = false;
   boolean T = false;
   public boolean U = true;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new vwo(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wbu(this);
   protected MessageObserver a;
-  ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new vvz(this);
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new vwb(this);
-  NearbyRelevantObserver jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver = new vwd(this);
+  ShieldListObserver jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new wbf(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new wbh(this);
+  NearbyRelevantObserver jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver = new wbj(this);
   public NearbyGiftPanelDialog a;
   protected TroopGiftPanelForNearby a;
   byte[] jdField_a_of_type_ArrayOfByte = null;
@@ -101,7 +101,7 @@ public class NearbyChatPie
   public NearbyChatPie(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, FragmentActivity paramFragmentActivity, Context paramContext)
   {
     super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new vwa(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wbg(this);
     this.jdField_h_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("from_where_to_aio");
   }
   
@@ -147,7 +147,7 @@ public class NearbyChatPie
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1001) {
         break label159;
       }
-      j = 2131435857;
+      j = 2131435873;
       localObject = ((Context)localObject).getString(j);
       b(true);
       this.e.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
@@ -168,7 +168,7 @@ public class NearbyChatPie
       }
       return;
       label159:
-      j = 2131437423;
+      j = 2131437443;
       break;
       label165:
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().m(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) == null)) {
@@ -182,7 +182,7 @@ public class NearbyChatPie
   protected void X()
   {
     super.X();
-    ThreadManager.post(new vwe(this), 8, null, true);
+    ThreadManager.post(new wbk(this), 8, null, true);
   }
   
   protected void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -210,11 +210,11 @@ public class NearbyChatPie
     {
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       localObject2 = a();
-      vwf localvwf = new vwf(this);
+      wbl localwbl = new wbl(this);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002)
       {
         bool = true;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGiftTroopGiftPanelForNearby = new TroopGiftPanelForNearby((QQAppInterface)localObject1, (Context)localObject2, localvwf, true, false, bool, this);
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGiftTroopGiftPanelForNearby = new TroopGiftPanelForNearby((QQAppInterface)localObject1, (Context)localObject2, localwbl, true, false, bool, this);
         this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog = new NearbyGiftPanelDialog(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqNearbyGiftTroopGiftPanelForNearby, this.jdField_c_of_type_AndroidViewViewGroup, false, true);
       }
     }
@@ -275,11 +275,11 @@ public class NearbyChatPie
     {
       super.ak();
       if ((this.g != null) && (this.g.length() > 0) && (this.g.equals(str))) {
-        ThreadManager.post(new vwm(this, str), 5, null, false);
+        ThreadManager.post(new wbs(this, str), 5, null, false);
       }
       this.g = null;
       if ((this.jdField_h_of_type_JavaLangString != null) && (this.jdField_h_of_type_JavaLangString.equals("nearby_recommend_people")) && (this.O)) {
-        ThreadManager.post(new vwn(this), 1, null, false);
+        ThreadManager.post(new wbt(this), 1, null, false);
       }
       this.S = true;
       return;
@@ -302,7 +302,7 @@ public class NearbyChatPie
       paramIntent = ContactUtils.q(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_d_of_type_JavaLangString = paramIntent;
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new vwh(this));
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new wbn(this));
     if (QLog.isDevelopLevel()) {
       DatingUtil.a(this.f, new Object[] { "updateSession_updateTitle", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_d_of_type_JavaLangString });
     }
@@ -332,7 +332,7 @@ public class NearbyChatPie
     {
       this.r = this.Q;
       if (-1 == this.n) {
-        ThreadManager.post(new vwg(this), 8, null, false);
+        ThreadManager.post(new wbm(this), 8, null, false);
       }
       StartupTracker.a("AIO_updateSession_business", null);
       return;
@@ -349,7 +349,7 @@ public class NearbyChatPie
         if (2 == paramIntent.getExtras().getInt("cSpecialFlag")) {
           ChatActivityFacade.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
         } else {
-          ThreadManager.post(new vvy(this), 5, null, false);
+          ThreadManager.post(new wbe(this), 5, null, false);
         }
       }
       else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1010)
@@ -420,16 +420,16 @@ public class NearbyChatPie
     RelativeLayout.LayoutParams localLayoutParams;
     if (this.jdField_c_of_type_AndroidWidgetLinearLayout == null)
     {
-      localObject2 = new vwi(this);
-      this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969498, null));
+      localObject2 = new wbo(this);
+      this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969494, null));
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setId(2131361976);
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getDimension(2131558670));
-      localLayoutParams.addRule(3, 2131363244);
+      localLayoutParams.addRule(3, 2131363261);
       if (this.E)
       {
         localLayoutParams.topMargin -= AIOUtils.a(3.0F, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources());
-        this.i = ((TextView)this.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131366715));
+        this.i = ((TextView)this.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131366713));
         TextView localTextView = this.i;
         if (!this.U) {
           break label581;
@@ -442,7 +442,7 @@ public class NearbyChatPie
         this.i.setGravity(17);
         this.i.setOnClickListener((View.OnClickListener)localObject2);
         this.i.setTag(Integer.valueOf(1));
-        this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131366716));
+        this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131366714));
         this.jdField_h_of_type_AndroidWidgetTextView.setText("屏蔽");
         this.jdField_h_of_type_AndroidWidgetTextView.setTag(Integer.valueOf(2));
         if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1006) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f.equals("")))) {
@@ -461,7 +461,7 @@ public class NearbyChatPie
     else
     {
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131363508);
+      localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131363527);
       if (localObject1 != null)
       {
         localObject2 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
@@ -507,11 +507,11 @@ public class NearbyChatPie
       super.p();
       return;
     }
-    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new vwk(this));
+    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new wbq(this));
     if (AIOTopRightButtonConfig.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
     {
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131433381));
+      this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131433395));
       return;
     }
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -537,7 +537,7 @@ public class NearbyChatPie
       if ((paramObservable.istroop == 0) && (!this.T))
       {
         this.T = true;
-        a().runOnUiThread(new vwl(this));
+        a().runOnUiThread(new wbr(this));
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1010) && ((this.m == 2) || (this.m == 3)) && (paramObservable.isSendFromLocal()) && (Utils.a(paramObservable.senderuin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
       {

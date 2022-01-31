@@ -1,47 +1,34 @@
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
-class spn
-  implements View.OnClickListener
+public class spn
+  implements Animation.AnimationListener
 {
-  spn(spl paramspl) {}
+  public spn(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag == null) {}
-    for (;;)
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
     {
-      return;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a instanceof String)) {
-        paramView = (String)this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a;
-      }
-      while (paramView != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b(paramView);
-        ThreadManager.post(new spo(this), 5, null, true);
-        return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a instanceof ProfileActivity.CardContactInfo))
-        {
-          paramView = (ProfileActivity.CardContactInfo)this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a;
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a.a == 33)) {
-            paramView = paramView.c;
-          } else {
-            paramView = paramView.a + " " + paramView.c;
-          }
-        }
-        else
-        {
-          paramView = null;
-        }
-      }
+      this.jdField_a_of_type_AndroidAppDialog.show();
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+      DiscussionMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(8);
     }
+    while (paramAnimation != this.b) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

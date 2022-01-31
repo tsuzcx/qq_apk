@@ -421,7 +421,7 @@ public class GdtAdHandler
       localQQAdReport.msg_floor.set(paramReportInfo.jdField_f_of_type_Int);
       localQQAdReport.puin.set(paramReportInfo.jdField_a_of_type_Long);
       localQQAdReport.ad_puin.set(paramReportInfo.jdField_b_of_type_Long);
-      localQQAdReport.version.set("7.6.3");
+      localQQAdReport.version.set("7.6.8");
       localObject2 = localQQAdReport.ad_id;
       if (paramReportInfo.k != null) {
         break label713;
@@ -569,7 +569,7 @@ public class GdtAdHandler
       str = "";
       label146:
       localPBStringField.set(str);
-      localPhone.qq_ver.set("7.6.3");
+      localPhone.qq_ver.set("7.6.8");
       localPhone.os_type.set(2);
       localQQAdGet.net_info.set(localPhone);
       if (paramList1 != null) {

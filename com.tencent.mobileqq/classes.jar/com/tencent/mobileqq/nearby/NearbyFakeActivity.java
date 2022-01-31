@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import aelv;
+import aeuf;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +27,7 @@ public class NearbyFakeActivity
   private final int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private Intent jdField_a_of_type_AndroidContentIntent;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aelv(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new aeuf(this);
   NearbyResultReceiver jdField_a_of_type_ComTencentMobileqqNearbyNearbyResultReceiver;
   Object jdField_a_of_type_JavaLangObject = new Object();
   private boolean jdField_a_of_type_Boolean;
@@ -125,10 +125,10 @@ public class NearbyFakeActivity
     setTitle("附近");
     this.rightViewText.setVisibility(8);
     this.rightViewImg.setVisibility(0);
-    this.rightViewImg.setImageResource(2130839147);
+    this.rightViewImg.setImageResource(2130839162);
     this.rightViewImg.setEnabled(false);
-    Drawable localDrawable = getResources().getDrawable(2130838598);
-    TextView localTextView = (TextView)findViewById(2131363632);
+    Drawable localDrawable = getResources().getDrawable(2130838604);
+    TextView localTextView = (TextView)findViewById(2131363651);
     this.centerView.setCompoundDrawablePadding(10);
     this.centerView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
     ((Animatable)localDrawable).start();
@@ -143,7 +143,7 @@ public class NearbyFakeActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130969114);
+    setContentView(2130969117);
     b();
     this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyResultReceiver = new NearbyResultReceiver(null);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyResultReceiver.a(this);

@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vashealth.SportManager;
+import mqq.observer.BusinessObserver;
 
 public class akru
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public akru(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
+  public akru(SportManager paramSportManager) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    if (paramBoolean) {
+      ThreadManager.post(new akrv(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
+    }
   }
 }
 

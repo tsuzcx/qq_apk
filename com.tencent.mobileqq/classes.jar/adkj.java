@@ -1,31 +1,71 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.dataline.core.DirectForwarder;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserManager.IModelCreater;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewerParamParser;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import java.util.ArrayList;
+import java.util.List;
 
-class adkj
-  implements FMDialogUtil.FMDialogInterface
+public class adkj
+  implements FileBrowserManager.IModelCreater
 {
-  adkj(adki paramadki) {}
+  public adkj(FileViewerParamParser paramFileViewerParamParser, BaseActivity paramBaseActivity) {}
   
-  public void a()
+  public FileBrowserModelBase a()
   {
-    DirectForwarder.b(this.a.a.jdField_a_of_type_AndroidAppActivity, 0);
-    this.a.a.jdField_a_of_type_AndroidContentIntent.putExtra("NOCANCEL4DATALIN", true);
-    this.a.a.jdField_a_of_type_AndroidAppActivity.setResult(0, this.a.a.jdField_a_of_type_AndroidContentIntent);
-    this.a.a.jdField_a_of_type_AndroidAppActivity.finish();
-  }
-  
-  public void b()
-  {
-    this.a.a.jdField_a_of_type_AndroidAppActivity.setResult(0, this.a.a.jdField_a_of_type_AndroidContentIntent);
-    this.a.a.jdField_a_of_type_AndroidAppActivity.finish();
+    Object localObject3 = null;
+    int i = 0;
+    Object localObject1;
+    switch (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.a())
+    {
+    default: 
+      localObject1 = null;
+    }
+    int k;
+    for (;;)
+    {
+      Object localObject2 = localObject3;
+      if (localObject1 != null)
+      {
+        localObject2 = localObject3;
+        if (((List)localObject1).size() > 0)
+        {
+          localObject2 = (IFileViewerAdapter)((List)localObject1).get(i);
+          int j = ((IFileViewerAdapter)localObject2).c();
+          k = ((IFileViewerAdapter)localObject2).b();
+          if (j != 7) {
+            break;
+          }
+          localObject2 = new MPcFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+        }
+      }
+      return localObject2;
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.a();
+      i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.b();
+      continue;
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.a();
+      i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.b();
+      continue;
+      localObject1 = new ArrayList(1);
+      ((List)localObject1).add(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewerParamParser.a());
+    }
+    switch (k)
+    {
+    default: 
+      return new C2CFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    case 6000: 
+      return new DatalineFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    }
+    return new DeviceFileModel(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adkj
  * JD-Core Version:    0.7.0.1
  */

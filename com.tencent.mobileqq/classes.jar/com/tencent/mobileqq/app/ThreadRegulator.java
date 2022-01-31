@@ -5,8 +5,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.pool.RecyclablePool;
 import mqq.os.MqqHandler;
 import mqq.os.MqqRegulatorCallback;
-import znx;
-import zny;
+import zuk;
+import zul;
 
 public class ThreadRegulator
   implements MqqRegulatorCallback
@@ -14,8 +14,8 @@ public class ThreadRegulator
   private static ThreadRegulator jdField_a_of_type_ComTencentMobileqqAppThreadRegulator;
   private final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(ThreadRegulator.CpuBusyness.class, 2);
   private volatile ThreadRegulator.CpuBusyness jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness;
-  Runnable jdField_a_of_type_JavaLangRunnable = new zny(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new znx(this, ThreadManager.getSubThreadLooper());
+  Runnable jdField_a_of_type_JavaLangRunnable = new zul(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new zuk(this, ThreadManager.getSubThreadLooper());
   
   public static ThreadRegulator a()
   {
@@ -45,7 +45,7 @@ public class ThreadRegulator
     this.jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness = ((ThreadRegulator.CpuBusyness)this.jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(ThreadRegulator.CpuBusyness.class));
     this.jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentMobileqqAppThreadRegulator$CpuBusyness.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    ThreadExcutor.a().a(true);
+    ThreadExcutor.getInstance().shrinkMaxPoolSize(true);
   }
   
   public void a(int paramInt, long paramLong)

@@ -1,55 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountHandler.IWeatherInfoListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.SpannableString;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
+import com.tencent.widget.XEditTextEx;
+import com.tencent.widget.XPanelContainer;
 
 public class vxs
-  implements PublicAccountHandler.IWeatherInfoListener
+  implements Runnable
 {
-  public vxs(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vxs(DiscussChatPie paramDiscussChatPie, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    int j = 0;
-    String str = "";
-    Object localObject = str;
-    label106:
+    int i = 0;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      j = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().delete(j - 1, j);
+    }
+    SpannableString localSpannableString = AtTroopMemberSpan.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx, false);
+    if ((localSpannableString == null) || (localSpannableString.length() == 0)) {
+      return;
+    }
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
+    if (j < 0) {}
     for (;;)
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        localObject = str;
-        paramString = localJSONObject.getString("area");
-        localObject = paramString;
-        int i = localJSONObject.getInt("area_id");
-        int k;
-        localJSONException1.printStackTrace();
-      }
-      catch (JSONException localJSONException1)
-      {
-        try
-        {
-          k = localJSONObject.getInt("switch");
-          j = k;
-          localObject = Message.obtain();
-          ((Message)localObject).what = 6;
-          ((Message)localObject).arg1 = i;
-          ((Message)localObject).arg2 = j;
-          ((Message)localObject).obj = paramString;
-          this.a.a.sendMessage((Message)localObject);
-          return;
-        }
-        catch (JSONException localJSONException2)
-        {
-          break label106;
-        }
-        localJSONException1 = localJSONException1;
-        i = 0;
-        paramString = (String)localObject;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().insert(i, localSpannableString);
+      DiscussChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildDiscussChatPie).a(1);
+      return;
+      i = j;
     }
   }
 }

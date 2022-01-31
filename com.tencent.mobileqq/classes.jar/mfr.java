@@ -1,22 +1,15 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 
-class mfr
-  implements Animation.AnimationListener
+public final class mfr
+  implements Runnable
 {
-  mfr(mfq parammfq, ArrayList paramArrayList) {}
+  public mfr(View paramView, int paramInt1, int paramInt2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    VideoShareHelper.a(this.jdField_a_of_type_Mfq.a).post(new mfs(this));
+    VideoFeedsHelper.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

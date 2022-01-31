@@ -1,34 +1,27 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
 
 public class xme
-  implements TextWatcher
+  implements ConditionSearchManager.IConfigListener
 {
-  public xme(LoginView paramLoginView) {}
+  public xme(QWalletIPCModule paramQWalletIPCModule, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, ConditionSearchManager paramConditionSearchManager) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.b != null) {
-        this.a.b.setVisibility(0);
-      }
+    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
+    if (paramBoolean) {
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
     }
-    while (paramCharSequence.length() > 4)
+    for (;;)
     {
-      this.a.b(paramCharSequence.toString());
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.d(this);
       return;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
-      }
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
     }
-    this.a.a.a(false, null);
   }
 }
 

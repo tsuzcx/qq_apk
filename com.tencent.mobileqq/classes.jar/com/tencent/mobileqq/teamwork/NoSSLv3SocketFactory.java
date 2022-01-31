@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork;
 
-import aimc;
+import aiqx;
 import java.net.InetAddress;
 import java.net.Socket;
 import javax.net.ssl.HttpsURLConnection;
@@ -26,8 +26,8 @@ public class NoSSLv3SocketFactory
   {
     if ((paramSocket instanceof SSLSocket))
     {
-      paramSocket = new aimc(this, (SSLSocket)paramSocket, null);
-      ((aimc)paramSocket).setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
+      paramSocket = new aiqx(this, (SSLSocket)paramSocket, null);
+      ((aiqx)paramSocket).setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
       return paramSocket;
     }
     return paramSocket;
@@ -70,7 +70,7 @@ public class NoSSLv3SocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory
  * JD-Core Version:    0.7.0.1
  */

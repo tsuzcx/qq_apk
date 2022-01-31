@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.qqstory.model.events.ReadStoryVideoEvent;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver;
 
 public class nkc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public nkc(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
+  public nkc(RecentTabHaloPresenter.ReadStoryVideoEventReceiver paramReadStoryVideoEventReceiver, RecentTabHaloPresenter paramRecentTabHaloPresenter, ReadStoryVideoEvent paramReadStoryVideoEvent) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ThreadManager.post(new nkd(this), 8, null, true);
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    RecentTabHaloPresenter.ReadStoryVideoEventReceiver.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$ReadStoryVideoEventReceiver, this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter, this.jdField_a_of_type_ComTencentBizQqstoryModelEventsReadStoryVideoEvent);
   }
 }
 

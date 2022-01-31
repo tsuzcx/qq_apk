@@ -1,30 +1,26 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import java.util.TimerTask;
 
 class adfm
-  implements Runnable
+  extends TimerTask
 {
-  adfm(adfk paramadfk, String paramString) {}
+  adfm(adfl paramadfl) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Adfk.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+    if (adfl.a(this.a) == null) {
       return;
     }
-    this.jdField_a_of_type_Adfk.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-    VideoFilePresenter.a(this.jdField_a_of_type_Adfk.a, this.jdField_a_of_type_JavaLangString);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", "bus_type_filevideo_online_play");
-    this.jdField_a_of_type_Adfk.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    this.jdField_a_of_type_Adfk.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_Adfk.a.jdField_a_of_type_AndroidAppActivity, VideoFilePresenter.a(this.jdField_a_of_type_Adfk.a), 0L, 0L, this.jdField_a_of_type_Adfk.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
+    Message localMessage = new Message();
+    localMessage.what = 1;
+    this.a.a.a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adfm
  * JD-Core Version:    0.7.0.1
  */

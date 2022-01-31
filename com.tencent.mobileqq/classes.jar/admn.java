@@ -1,24 +1,15 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.forward.ForwardVoiceCallOption;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
 
 public class admn
-  implements ChatActivityUtils.StartVideoListener
+  implements Runnable
 {
-  public admn(ForwardVoiceCallOption paramForwardVoiceCallOption) {}
+  public admn(MusicFilePresenter paramMusicFilePresenter, String paramString, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterMusicFilePresenter.a.b(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterMusicFilePresenter.a.c(this.jdField_a_of_type_Int);
   }
 }
 

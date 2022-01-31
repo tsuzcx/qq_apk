@@ -4,7 +4,7 @@ public abstract interface CameraCaptureButtonLayout$CaptureButtonListener
 {
   public abstract void a();
   
-  public abstract void d();
+  public abstract void g();
   
   public abstract void h();
 }

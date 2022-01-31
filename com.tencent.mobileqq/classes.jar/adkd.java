@@ -1,28 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.LocalTbsViewManagerCallback;
 
-public class adkd
-  implements DialogInterface.OnClickListener
+class adkd
+  implements Runnable
 {
-  public adkd(ForwardBaseOption paramForwardBaseOption) {}
+  adkd(adjz paramadjz, Integer paramInteger) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    switch (this.jdField_a_of_type_JavaLangInteger.intValue())
     {
+    case 12: 
+    case 19: 
     default: 
       return;
-    case -2: 
-      this.a.k();
+    case 5001: 
+      this.jdField_a_of_type_Adjz.a.a(true);
       return;
     }
-    this.a.l();
+    this.jdField_a_of_type_Adjz.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adkd
  * JD-Core Version:    0.7.0.1
  */

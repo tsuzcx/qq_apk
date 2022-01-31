@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.ar.ARRecord.worldcup;
 
+import aafj;
+import aafk;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Handler;
@@ -8,6 +10,7 @@ import android.os.HandlerThread;
 import android.os.Message;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.ARRecord.ARWorldCupRecordDpc;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderUtils;
 import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
 import com.tencent.mobileqq.ar.ARRecord.VideoRecordController.RecordListener;
 import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManagerImpl;
@@ -21,8 +24,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import zyv;
-import zyw;
 
 public class ARWorldCupRecordController
   implements ARWorldCupStateListener
@@ -33,10 +34,10 @@ public class ARWorldCupRecordController
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new zyw(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aafk(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private VideoRecordController.RecordListener jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener = new zyv(this);
+  private VideoRecordController.RecordListener jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController$RecordListener = new aafj(this);
   private VideoRecordController jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController;
   private VideoProcessor jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupVideoProcessor;
   private Object jdField_a_of_type_JavaLangObject = new Object();
@@ -238,9 +239,13 @@ public class ARWorldCupRecordController
   
   public void a()
   {
-    boolean bool = ARWorldCupRecordDpc.a().jdField_a_of_type_Boolean;
-    if (bool)
+    boolean bool;
+    if ((ARWorldCupRecordDpc.a().jdField_a_of_type_Boolean) && (VideoEncoderUtils.a()))
     {
+      bool = true;
+      if (!bool) {
+        break label131;
+      }
       jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupVideoProcessor.a();
       this.jdField_b_of_type_Int = 0;
       this.jdField_a_of_type_JavaUtilArrayList.clear();
@@ -249,7 +254,7 @@ public class ARWorldCupRecordController
       jdField_a_of_type_Boolean = false;
       a(0);
       if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.b(2130838183);
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.b(2130838188);
       }
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
@@ -259,6 +264,9 @@ public class ARWorldCupRecordController
         QLog.d("Q.worldcup.record", 2, String.format("enable, isSupportRecord: %s, mSegmentRecord: %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.jdField_c_of_type_Boolean) }));
       }
       return;
+      bool = false;
+      break;
+      label131:
       jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupVideoProcessor.a();
       jdField_b_of_type_JavaLangString = VideoProcessor.a(0);
       jdField_a_of_type_Boolean = true;

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import mni;
+import mra;
 
 public class WebFastLinkViewCreator
   implements ItemCreator
@@ -16,7 +16,7 @@ public class WebFastLinkViewCreator
   
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new mni(LayoutInflater.from(paramContext).inflate(2130969617, null), paramBaseData);
+    return new mra(LayoutInflater.from(paramContext).inflate(2130969613, null), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

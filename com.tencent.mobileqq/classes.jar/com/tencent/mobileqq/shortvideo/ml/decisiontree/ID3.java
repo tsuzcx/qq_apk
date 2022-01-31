@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.ml.decisiontree;
 
-import aicn;
-import aico;
+import aihh;
+import aihi;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,8 +19,8 @@ public class ID3
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqShortvideoMlDecisiontreeID3$ImpurityFunction = new aicn();
-    jdField_b_of_type_ComTencentMobileqqShortvideoMlDecisiontreeID3$ImpurityFunction = new aico();
+    jdField_a_of_type_ComTencentMobileqqShortvideoMlDecisiontreeID3$ImpurityFunction = new aihh();
+    jdField_b_of_type_ComTencentMobileqqShortvideoMlDecisiontreeID3$ImpurityFunction = new aihi();
     jdField_a_of_type_ComTencentMobileqqShortvideoMlDecisiontreeID3$ChiSquareTest = new ID3.ChiSquareTest(16.27D);
     jdField_b_of_type_ComTencentMobileqqShortvideoMlDecisiontreeID3$ChiSquareTest = new ID3.ChiSquareTest(11.34D);
   }

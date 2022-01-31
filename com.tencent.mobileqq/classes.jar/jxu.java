@@ -1,42 +1,34 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoObserver;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class jxu
-  implements Runnable
+  extends VideoObserver
 {
-  public jxu(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public jxu(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void run()
+  protected void a(int paramInt, String paramString)
   {
-    Object localObject = "QQ电话";
-    if (this.a.jdField_c_of_type_Int == 2) {
-      localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(3000, String.valueOf(this.a.jdField_a_of_type_Long), null);
-    }
-    for (;;)
+    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "]");
+    if (TextUtils.equals(this.a.c, paramString))
     {
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      localObject = this.a;
-      ((MultiVideoEnterPageActivity)localObject).g += 1;
-      if (this.a.jdField_c_of_type_JavaLangRunnable != null)
-      {
-        if (this.a.g >= 3) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
-      }
-      return;
-      if (this.a.jdField_c_of_type_Int == 1) {
-        localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(1, String.valueOf(this.a.jdField_a_of_type_Long), null);
-      }
+      this.a.b("VideoObserver_onClose");
+      this.a.b(paramInt);
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.jdField_c_of_type_JavaLangRunnable);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
+    if (TextUtils.equals(this.a.c, paramString)) {
+      this.a.b("VideoObserver_onDestroyUI");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jxu
  * JD-Core Version:    0.7.0.1
  */

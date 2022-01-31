@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akjv
+public final class akjv
   implements Runnable
 {
-  public akjv(PathTraceManager paramPathTraceManager, ArrayList paramArrayList) {}
+  public akjv(String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    PathTraceManager.a(this.jdField_a_of_type_JavaUtilArrayList);
+    try
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      int i = this.jdField_a_of_type_Int;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      StatisticConstants.a(new String[] { str }, i, false, true, -1, localQQAppInterface);
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akjv
  * JD-Core Version:    0.7.0.1
  */

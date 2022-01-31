@@ -3,6 +3,7 @@ package com.tencent.mobileqq.qmcf.processor;
 import com.tencent.mobileqq.qmcf.QMCF;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.mobileqq.qmcf.QmcfModelItem;
+import com.tencent.sveffects.SLog;
 
 public class ArtFilterProcessor
   extends BaseQmcfProcessor
@@ -48,7 +49,11 @@ public class ArtFilterProcessor
     }
     for (;;)
     {
-      return "success".equals(this.b);
+      boolean bool = "success".equals(this.b);
+      if ((!bool) && (SLog.a())) {
+        SLog.d(this.jdField_a_of_type_JavaLangString, "modelSwitch error:" + this.b);
+      }
+      return bool;
       synchronized (jdField_a_of_type_JavaLangObject)
       {
         String str = a(paramQmcfModelItem.jdField_a_of_type_JavaLangString, a(), b());

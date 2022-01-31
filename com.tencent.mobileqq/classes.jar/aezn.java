@@ -1,15 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView.IInterestTagItemViewCallback;
 
 public class aezn
   implements View.OnClickListener
 {
-  public aezn(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aezn(InterestTagItemView paramInterestTagItemView) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(paramView);
+    if ((paramView == InterestTagItemView.a(this.a)) || (paramView == this.a))
+    {
+      InterestTagItemView.a(this.a).a(InterestTagItemView.a(this.a));
+      this.a.a();
+    }
   }
 }
 

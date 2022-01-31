@@ -1,82 +1,70 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
-import com.tencent.open.wadl.WLog;
-import cooperation.wadl.ipc.IWadlProxyServiceMonitor;
-import cooperation.wadl.ipc.IWadlService;
-import cooperation.wadl.ipc.IWadlService.Stub;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
 
-public class angm
-  implements ServiceConnection
+public final class angm
+  implements EmoticonCallback
 {
-  public angm(WadlProxyServiceManager paramWadlProxyServiceManager) {}
+  public angm(EditText paramEditText) {}
   
-  public void a()
+  public void a(EmoticonInfo paramEmoticonInfo)
   {
-    if ((WadlProxyServiceManager.a(this.a) != null) && (!WadlProxyServiceManager.a(this.a).b())) {
-      WadlProxyServiceManager.a(this.a).b();
-    }
+    if ((paramEmoticonInfo == null) || (this.a == null)) {}
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramEmoticonInfo instanceof SystemEmoticonInfo));
+      i = this.a.getSelectionStart();
+      j = this.a.getSelectionEnd();
+    } while ((i < 0) || (j < 0) || (j < i) || (this.a == null) || (this.a.getEditableText() == null));
+    this.a.getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.c(((SystemEmoticonInfo)paramEmoticonInfo).a));
   }
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public boolean a(EmoticonInfo paramEmoticonInfo)
   {
-    WLog.b("WadlProxyServiceManager", "onServiceConnected success");
-    this.a.a = false;
-    WadlProxyServiceManager.a(this.a, IWadlService.Stub.a(paramIBinder));
-    try
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a == null) {}
+    for (;;)
     {
-      WadlProxyServiceManager.a(this.a).a(WadlProxyServiceManager.a(this.a));
-      WadlProxyServiceManager.a(this.a);
-      a();
-    }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
-      {
+      return;
+      if (this.a.getSelectionStart() != 0) {
         try
         {
-          WadlProxyServiceManager.a(this.a).asBinder().linkToDeath(WadlProxyServiceManager.a(this.a), 0);
-          return;
+          Editable localEditable = this.a.getText();
+          int i = this.a.getSelectionStart();
+          int j = android.text.TextUtils.getOffsetBefore(this.a.getText(), i);
+          if (i != j)
+          {
+            localEditable.delete(Math.min(i, j), Math.max(i, j));
+            return;
+          }
         }
-        catch (RemoteException paramComponentName)
+        catch (Exception localException)
         {
-          paramComponentName.printStackTrace();
+          localException.printStackTrace();
         }
-        paramComponentName = paramComponentName;
-        paramComponentName.printStackTrace();
       }
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    WLog.b("WadlProxyServiceManager", "onServiceDisconnected");
-    try
-    {
-      WadlProxyServiceManager.a(this.a).getApplication().unbindService(WadlProxyServiceManager.a(this.a));
-      if (WadlProxyServiceManager.a(this.a) != null) {
-        WadlProxyServiceManager.a(this.a).a();
-      }
-      if (WadlProxyServiceManager.a(this.a) != null) {
-        WadlProxyServiceManager.a(this.a).b(WadlProxyServiceManager.a(this.a));
-      }
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      paramComponentName.printStackTrace();
-      return;
-    }
-    finally
-    {
-      WadlProxyServiceManager.a(this.a, null);
-      this.a.a = false;
-    }
-  }
+  public void b(EmoticonInfo paramEmoticonInfo) {}
+  
+  public void c() {}
+  
+  public void setting() {}
 }
 
 

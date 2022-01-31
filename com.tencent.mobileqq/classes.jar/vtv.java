@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class vtv
-  implements Runnable
+public final class vtv
+  implements Parcelable.Creator
 {
-  public vtv(GameRoomChatPie paramGameRoomChatPie) {}
-  
-  public void run()
+  public AIORichMediaData a(Parcel paramParcel)
   {
-    synchronized (this.a)
+    Object localObject = paramParcel.readString();
+    try
     {
-      this.a.a.a(this.a.a(), this.a);
-      GameRoomChatPie.a(this.a).post(new vtw(this));
-      return;
+      localObject = AIORichMediaData.a((String)localObject);
+      ((AIORichMediaData)localObject).a(paramParcel);
+      return localObject;
     }
+    catch (ClassNotFoundException paramParcel)
+    {
+      throw new RuntimeException(paramParcel);
+    }
+  }
+  
+  public AIORichMediaData[] a(int paramInt)
+  {
+    return new AIORichMediaData[paramInt];
   }
 }
 

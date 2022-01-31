@@ -180,7 +180,7 @@ public class NumRedPointManager
     a("onReport : appid == " + paramInt1 + ",msgIs == " + paramList + ",data == " + paramString);
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.3.3565");
+    localReportReqBody.clientver.set("7.6.8.3615");
     localReportReqBody.platid.set(109);
     ArrayList localArrayList = new ArrayList();
     localReportReqBody.missionid.set(localArrayList);
@@ -639,8 +639,8 @@ public class NumRedPointManager
     if ((str == null) && (paramNumRedBusiInfo == null)) {
       return false;
     }
-    int i = a(str, "7.6.3");
-    int j = a("7.6.3", paramNumRedBusiInfo);
+    int i = a(str, "7.6.8");
+    int j = a("7.6.8", paramNumRedBusiInfo);
     if ((i == -1) || (i == 0))
     {
       i = 1;

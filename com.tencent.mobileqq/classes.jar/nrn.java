@@ -1,10 +1,16 @@
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper;
 
-public abstract interface nrn
+public class nrn
+  implements Runnable
 {
-  public abstract void a(@NonNull nrl paramnrl);
+  public nrn(SendVideoToFriendHelper paramSendVideoToFriendHelper, StoryVideoItem paramStoryVideoItem) {}
   
-  public abstract void b(@NonNull nrl paramnrl);
+  public void run()
+  {
+    PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType, "SendVideoToFriendHelper");
+  }
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.utils;
 
-import akfs;
-import akft;
-import akfu;
-import akfv;
+import akng;
+import aknh;
+import akni;
+import aknj;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.KeyguardManager;
@@ -54,15 +54,15 @@ public class QQUtils
   public static Dialog a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
     paramActivity = new Dialog(paramActivity, 2131624516);
-    paramActivity.setContentView(2130970422);
-    TextView localTextView3 = (TextView)paramActivity.findViewById(2131370478);
-    TextView localTextView4 = (TextView)paramActivity.findViewById(2131370480);
-    TextView localTextView1 = (TextView)paramActivity.findViewById(2131370475);
-    TextView localTextView2 = (TextView)paramActivity.findViewById(2131370476);
+    paramActivity.setContentView(2130970437);
+    TextView localTextView3 = (TextView)paramActivity.findViewById(2131370487);
+    TextView localTextView4 = (TextView)paramActivity.findViewById(2131370489);
+    TextView localTextView1 = (TextView)paramActivity.findViewById(2131370484);
+    TextView localTextView2 = (TextView)paramActivity.findViewById(2131370485);
     localTextView3.setText(paramString1);
     localTextView4.setText(new SpannableString(paramString2));
-    paramString1 = (ImageView)paramActivity.findViewById(2131370479);
-    ((ImageButton)paramActivity.findViewById(2131367152)).setOnClickListener(new akfv(paramActivity));
+    paramString1 = (ImageView)paramActivity.findViewById(2131370488);
+    ((ImageButton)paramActivity.findViewById(2131367152)).setOnClickListener(new aknj(paramActivity));
     if (paramInt >= 0)
     {
       paramString1.setVisibility(0);
@@ -468,7 +468,7 @@ public class QQUtils
   public static String a(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(AppConstants.bu);
+    localStringBuilder.append(AppConstants.bv);
     String str = MD5.toMD5(paramString);
     str = MD5.toMD5(str + paramString);
     localStringBuilder.append(MD5.toMD5(str + paramString));
@@ -544,7 +544,7 @@ public class QQUtils
   {
     if (a(paramQQAppInterface.getApp(), new String[] { paramString2 }))
     {
-      paramString1 = paramQQAppInterface.getApp().getString(2131435265);
+      paramString1 = paramQQAppInterface.getApp().getString(2131435281);
       if (paramString1 != null) {
         QQToast.a(paramQQAppInterface.getApp(), paramString1, 0).b(paramInt2);
       }
@@ -558,7 +558,7 @@ public class QQUtils
     KapalaiAdapterUtil.a().a((Intent)localObject);
     localIntent.putExtra("android.intent.extra.shortcut.INTENT", (Parcelable)localObject);
     localIntent.putExtra("android.intent.extra.shortcut.NAME", paramString2);
-    if (2130841586 == paramInt1)
+    if (2130841613 == paramInt1)
     {
       ((Intent)localObject).putExtra("targetUin", AppConstants.z);
       ((Intent)localObject).putExtra("device_type", 1);
@@ -583,7 +583,7 @@ public class QQUtils
           localIntent.putExtra("duplicate", false);
           localIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
           paramQQAppInterface.getApp().sendOrderedBroadcast(localIntent, null);
-          paramHandler.postDelayed(new akfu(a(paramQQAppInterface.getApp(), new String[] { paramString2 }), paramQQAppInterface, paramInt2), paramInt3);
+          paramHandler.postDelayed(new akni(a(paramQQAppInterface.getApp(), new String[] { paramString2 }), paramQQAppInterface, paramInt2), paramInt3);
           return;
         }
       }
@@ -759,9 +759,9 @@ public class QQUtils
     }
     if (a(paramQQAppInterface.getApp(), new String[] { paramString2 }))
     {
-      paramString1 = paramQQAppInterface.getApp().getString(2131435265);
+      paramString1 = paramQQAppInterface.getApp().getString(2131435281);
       if (paramString1 != null) {
-        paramMqqHandler.post(new akfs(paramQQAppInterface, paramString1, paramInt1));
+        paramMqqHandler.post(new akng(paramQQAppInterface, paramString1, paramInt1));
       }
       return;
     }
@@ -769,7 +769,7 @@ public class QQUtils
       QLog.d(a, 2, "createShortcutWhihTips.no shortcut.");
     }
     a(paramQQAppInterface, paramString1, paramString2, paramInt3);
-    paramMqqHandler.postDelayed(new akft(a(paramQQAppInterface.getApp(), new String[] { paramString2 }), paramQQAppInterface, paramInt1, paramString3), paramInt2);
+    paramMqqHandler.postDelayed(new aknh(a(paramQQAppInterface.getApp(), new String[] { paramString2 }), paramQQAppInterface, paramInt1, paramString3), paramInt2);
   }
   
   public static void a(String paramString1, int paramInt, String paramString2, ArrayList paramArrayList)

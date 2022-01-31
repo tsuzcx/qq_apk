@@ -1,20 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import java.util.List;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
 public class ycn
-  extends TroopObserver
+  implements Runnable
 {
-  public ycn(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public ycn(RDBaseDataManager paramRDBaseDataManager, ycf paramycf, int paramInt, NetResp paramNetResp) {}
   
-  protected void a(String paramString, boolean paramBoolean, List paramList, int paramInt, long paramLong)
+  public void run()
   {
-    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
-      return;
-    }
-    ThreadManager.post(new yco(this, paramList), 5, null, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesRDBaseDataManager.a(this.jdField_a_of_type_Ycf.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.a.c, this.jdField_a_of_type_Ycf.b);
   }
 }
 

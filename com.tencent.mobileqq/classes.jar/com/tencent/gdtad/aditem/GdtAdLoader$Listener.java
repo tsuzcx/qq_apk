@@ -2,7 +2,7 @@ package com.tencent.gdtad.aditem;
 
 public abstract interface GdtAdLoader$Listener
 {
-  public abstract void a(GdtAdLoader.Session paramSession);
+  public abstract void a(GdtAdLoader paramGdtAdLoader);
 }
 
 

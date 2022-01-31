@@ -1,23 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.PublicAccountArticleObserver;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class mgz
-  implements AbsListView.OnScrollListener
+  extends PublicAccountArticleObserver
 {
-  public mgz(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mgz(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
     }
-    ReadInJoyBaseAdapter.b(this.a, paramAbsListView);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onQueryArticleLikeCount isSuccess=" + paramBoolean + ", articleID=" + paramString + ", likeCount=" + paramInt);
+    }
+    if ((paramBoolean) && (paramString != null))
+    {
+      Iterator localIterator = VideoFeedsPlayActivity.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
+        String str = localVideoInfo.a();
+        if ((str != null) && (str.equals(paramString))) {
+          localVideoInfo.m = paramInt;
+        }
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
 }
 
 

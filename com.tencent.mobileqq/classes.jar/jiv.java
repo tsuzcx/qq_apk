@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.guild.GuildMultiActivity;
+import com.tencent.av.camera.CameraObserver;
 
 public class jiv
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public jiv(GuildMultiActivity paramGuildMultiActivity) {}
+  public jiv(CameraObserver paramCameraObserver, Object paramObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    CameraObserver.a(this.jdField_a_of_type_ComTencentAvCameraCameraObserver, this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jiv
  * JD-Core Version:    0.7.0.1
  */

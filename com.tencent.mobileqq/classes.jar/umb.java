@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity.OnMeasuredListener;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
 public class umb
-  extends DialogUtil.DialogOnClickAdapter
+  implements VipProfileCardDiyActivity.OnMeasuredListener
 {
-  public umb(PlusPanel paramPlusPanel) {}
+  public umb(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramDialogInterface.dismiss();
+    this.a.a.setActualViewSize(paramInt1, paramInt2);
+    this.a.a.invalidate();
   }
 }
 

@@ -1,24 +1,85 @@
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.List;
-import java.util.Map;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import com.tencent.mobileqq.transfile.TransferRequest.AppInfo;
+import com.tencent.open.agent.report.ReportCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aiva
-  implements Runnable
+  extends aiuo
 {
-  public aiva(TroopAdminList paramTroopAdminList) {}
+  private AtomicInteger a;
+  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
   
-  public void run()
+  public aiva(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
   {
-    int j = this.a.a.size();
-    int i = 0;
-    while (i < j)
+    super(paramForwardSdkShareProcessor);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_JavaLangString = "UrlExchangeStep";
+  }
+  
+  protected boolean a()
+  {
+    return (ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get()) || (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -1) || (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 2);
+  }
+  
+  protected void d()
+  {
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      String str = (String)((Map)this.a.a.get(i)).get("uin");
-      ((Map)this.a.a.get(i)).put("nick", ContactUtils.l(this.a.app, str));
-      i += 1;
+      f();
+      return;
     }
-    this.a.runOnUiThread(new aivb(this));
+    if ((!TextUtils.isEmpty(ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))) && (ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).length() > 150)) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("targetUrl", ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+    }
+    if (!TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).c)) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("sourceUrl", ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).c);
+    }
+    if (!TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).d)) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("sourceIcon", ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).d);
+    }
+    if ((ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) == 2) && (HttpUtil.a(ForwardSdkShareProcessor.h(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)))) {
+      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("audioUrl", ForwardSdkShareProcessor.h(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+    }
+    Bundle localBundle;
+    if (TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)))
+    {
+      ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor, ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).e);
+      ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).set(false);
+      QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|use app icon:" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+      localBundle = new Bundle();
+      localBundle.putString("report_type", "102");
+      localBundle.putString("act_type", "18");
+      if (!TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))) {
+        break label464;
+      }
+    }
+    label464:
+    for (String str = "1";; str = "0")
+    {
+      localBundle.putString("intext_1", str);
+      ReportCenter.a().a(localBundle, "" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor), this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.c(), false);
+      if ((!ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get()) && (HttpUtil.a(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)))) {
+        ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("imageUrl", ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|process|url=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).toString());
+      }
+      if (!ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).isEmpty()) {
+        break;
+      }
+      ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).set(true);
+      b();
+      return;
+    }
+    ThreadManager.post(new aivb(this), 8, null, true);
   }
 }
 

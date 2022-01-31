@@ -1,39 +1,26 @@
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.adapter.HotChatPostListAdapter;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ynt
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  public ynt(HotChatCenterFragment paramHotChatCenterFragment) {}
+  public ynt(HotChatPostListAdapter paramHotChatPostListAdapter, String paramString1, String paramString2) {}
   
-  void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (!paramString.equals(HotChatCenterFragment.a(this.a).getAccount())) {}
-  }
-  
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    while ((HotChatCenterFragment.a(this.a).getCurrentAccountUin() == null) || (!HotChatCenterFragment.a(this.a).getCurrentAccountUin().equals(paramString))) {
-      return;
-    }
-    ThreadManager.post(new ynu(this, paramString), 8, null, true);
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString) {}
-  
-  protected void onUpdateRecentList()
-  {
-    this.a.c();
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a, QQBrowserActivity.class).putExtra("url", String.format("https://buluo.qq.com/mobile/detail.html?bid=%s&pid=%s&_wv=1027&webview=1&from=reliao", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a.startActivity(paramView);
+    ReportController.b(null, "dc00899", "grp_lbs", "", "hot_room", "clk_tribe_post", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ynt
  * JD-Core Version:    0.7.0.1
  */

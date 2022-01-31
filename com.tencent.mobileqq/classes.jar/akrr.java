@@ -1,18 +1,13 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
+import com.tencent.mobileqq.vashealth.SSOHttpUtils;
 
-public class akrr
+class akrr
   implements Runnable
 {
-  public akrr(WebViewJumpPlugin paramWebViewJumpPlugin) {}
+  akrr(akrq paramakrq, int paramInt, String paramString) {}
   
   public void run()
   {
-    Activity localActivity = this.a.mRuntime.a();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      localActivity.finish();
-    }
+    SSOHttpUtils.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

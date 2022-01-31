@@ -10,7 +10,7 @@ import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
-import vkj;
+import vpm;
 
 public class TroopGiftMsgItemBuilder$TroopGiftMsgItemRecieverBuilder
   extends TroopGiftMsgItemBuilder
@@ -22,12 +22,12 @@ public class TroopGiftMsgItemBuilder$TroopGiftMsgItemRecieverBuilder
   
   public View a(BaseChatItemLayout paramBaseChatItemLayout)
   {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971664, paramBaseChatItemLayout, false);
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971693, paramBaseChatItemLayout, false);
   }
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new vkj(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new vpm(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

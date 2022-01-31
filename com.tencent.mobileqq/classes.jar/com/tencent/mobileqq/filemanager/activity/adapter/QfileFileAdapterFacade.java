@@ -22,20 +22,20 @@ public class QfileFileAdapterFacade
   public static View a(Context paramContext, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener)
   {
     QfileFileItemHolder localQfileFileItemHolder = new QfileFileItemHolder();
-    paramContext = LayoutInflater.from(paramContext).inflate(2130970020, paramViewGroup, false);
-    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramContext.findViewById(2131368798));
+    paramContext = LayoutInflater.from(paramContext).inflate(2130970031, paramViewGroup, false);
+    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramContext.findViewById(2131368801));
     localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(paramOnClickListener);
     localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(paramOnLongClickListener);
     localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localQfileFileItemHolder);
-    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramContext.findViewById(2131368767));
-    localQfileFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramContext.findViewById(2131368769));
-    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368799));
-    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368729));
-    localQfileFileItemHolder.b = ((TextView)paramContext.findViewById(2131368801));
-    localQfileFileItemHolder.c = ((TextView)paramContext.findViewById(2131368773));
-    localQfileFileItemHolder.d = ((TextView)paramContext.findViewById(2131363201));
-    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131363005));
-    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramContext.findViewById(2131368771));
+    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramContext.findViewById(2131368770));
+    localQfileFileItemHolder.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramContext.findViewById(2131368772));
+    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368802));
+    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368732));
+    localQfileFileItemHolder.b = ((TextView)paramContext.findViewById(2131368804));
+    localQfileFileItemHolder.c = ((TextView)paramContext.findViewById(2131368776));
+    localQfileFileItemHolder.d = ((TextView)paramContext.findViewById(2131363205));
+    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramContext.findViewById(2131363010));
+    localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramContext.findViewById(2131368774));
     localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
     localQfileFileItemHolder.jdField_a_of_type_AndroidWidgetButton.setTag(localQfileFileItemHolder);
     paramContext.setTag(localQfileFileItemHolder);
@@ -49,11 +49,11 @@ public class QfileFileAdapterFacade
       return a(paramContext, paramViewGroup, paramOnClickListener, paramOnLongClickListener);
     }
     paramContext = new QfileFileItemHolder();
-    paramFileInfo = localLayoutInflater.inflate(2130970017, paramViewGroup, false);
+    paramFileInfo = localLayoutInflater.inflate(2130970028, paramViewGroup, false);
     paramFileInfo.setOnClickListener(paramOnClickListener);
-    paramContext.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131368791));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131365686));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramFileInfo.findViewById(2131368792));
+    paramContext.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131368794));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131365691));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramFileInfo.findViewById(2131368795));
     paramFileInfo.setTag(paramContext);
     return paramFileInfo;
   }

@@ -1,37 +1,69 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmotionJsonDownloadListener;
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.emoticon.SogouEmojiTaskController;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
+import com.tencent.mobileqq.data.IPSiteModel.Comic;
+import com.tencent.mobileqq.data.IPSiteModel.Game;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
+import com.tencent.mobileqq.data.IPSiteModel.Video;
+import com.tencent.mobileqq.data.VipIPSiteInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class acdh
-  extends EmotionJsonDownloadListener
+public final class acdh
+  implements Parcelable.Creator
 {
-  public acdh(SogouEmoji paramSogouEmoji) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
+  public VipIPSiteInfo a(Parcel paramParcel)
   {
-    super.a(paramEmoticonPackage, paramInt, paramBundle);
-    if ((paramEmoticonPackage != null) && (paramInt == 0))
-    {
-      paramBundle = paramBundle.getBundle("jsonReqParams");
-      if (paramBundle != null)
-      {
-        paramInt = paramBundle.getInt(SogouEmoji.jdField_a_of_type_JavaLangString);
-        paramBundle = paramBundle.getString(SogouEmoji.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
-        }
-        boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmojiTaskController.a(paramInt);
-        if (bool) {
-          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
-        }
-      }
+    VipIPSiteInfo localVipIPSiteInfo = new VipIPSiteInfo();
+    localVipIPSiteInfo.ipID = paramParcel.readInt();
+    localVipIPSiteInfo.ipName = paramParcel.readString();
+    localVipIPSiteInfo.ipDesc = paramParcel.readString();
+    localVipIPSiteInfo.ipUrl = paramParcel.readString();
+    localVipIPSiteInfo.itemSize = paramParcel.readInt();
+    localVipIPSiteInfo.strType = paramParcel.readString();
+    localVipIPSiteInfo.extId = paramParcel.readInt();
+    localVipIPSiteInfo.extStr = paramParcel.readString();
+    localVipIPSiteInfo.ipLogo = paramParcel.readString();
+    localVipIPSiteInfo.ipContent = paramParcel.readString();
+    if (localVipIPSiteInfo.ipList == null) {
+      localVipIPSiteInfo.ipList = new ArrayList();
     }
+    localVipIPSiteInfo.ipList.clear();
+    if ("gxzb".equals(localVipIPSiteInfo.strType)) {
+      paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Gxzb.class.getClassLoader());
+    }
+    do
+    {
+      return localVipIPSiteInfo;
+      if ("game".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Game.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+      if ("goods".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Goods.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+      if ("video".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Video.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+      if ("book".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Book.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+    } while (!"comic".equals(localVipIPSiteInfo.strType));
+    paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Comic.class.getClassLoader());
+    return localVipIPSiteInfo;
+  }
+  
+  public VipIPSiteInfo[] a(int paramInt)
+  {
+    return new VipIPSiteInfo[paramInt];
   }
 }
 

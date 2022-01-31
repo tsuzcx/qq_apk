@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class rpn
   implements Runnable
 {
-  public rpn(BaseChatPie paramBaseChatPie, AIOAnimationControlManager paramAIOAnimationControlManager, boolean paramBoolean) {}
+  public rpn(ArkFullScreenAppActivity paramArkFullScreenAppActivity, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_Boolean);
+    ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

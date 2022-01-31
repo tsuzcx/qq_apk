@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 
-public class akqi
+class akqi
   implements Runnable
 {
-  public akqi(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
+  akqi(akqh paramakqh, SeekBar paramSeekBar, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3, TextView paramTextView3) {}
   
   public void run()
   {
-    this.a.a(MsfSdkUtils.insertMtype("Web", this.a.jdField_a_of_type_JavaLangString), 0);
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    if (!this.jdField_a_of_type_Akqh.a.a.c)
     {
-      this.a.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+      this.jdField_a_of_type_Akqh.a.a.f = false;
+      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }
 }

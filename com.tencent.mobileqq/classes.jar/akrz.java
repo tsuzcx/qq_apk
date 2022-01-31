@@ -1,22 +1,45 @@
-import com.tencent.mobileqq.werewolves.WerewolvesHandler;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.VideoCallBack;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 public class akrz
-  implements WerewolvesHandler.Callback
+  extends Handler
 {
-  public akrz(WerewolvesHandler paramWerewolvesHandler, WerewolvesHandler.Callback paramCallback) {}
+  public akrz(VideoCallBack paramVideoCallBack, QQProgressDialog paramQQProgressDialog, String paramString, Activity paramActivity) {}
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 0) {
+    switch (paramMessage.what)
+    {
+    }
+    int i;
+    do
+    {
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WerewolvesHandler", 2, "startAnotherRound, quitFailed: errorCode :" + paramInt);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback.a(-1, null);
+      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      }
+      i = paramMessage.arg1;
+      if (i != 0) {
+        break;
+      }
+      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("video_dir", paramMessage);
+      localIntent.putExtra("thumb_dir", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(1, localIntent);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    } while (!QLog.isColorLevel());
+    QLog.i("VideoCallBack", 2, "encode success: " + paramMessage);
+    return;
+    this.jdField_a_of_type_AndroidAppActivity.setResult(2);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    QLog.e("VideoCallBack", 1, "error! ret = " + i);
   }
 }
 

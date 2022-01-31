@@ -1,20 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeSmallSocial;
+import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class lup
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public lup(FeedItemCellTypeSmallSocial paramFeedItemCellTypeSmallSocial, LinearLayout paramLinearLayout) {}
+  public lup(InterestLabelInfoModule paramInterestLabelInfoModule, List paramList) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
+        InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).put(Integer.valueOf(localInterestLabelInfo.mInterestLabelID), localInterestLabelInfo);
+      }
     }
-    return false;
   }
 }
 

@@ -1,16 +1,16 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.BaseResponse;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
 
 public class nfg
-  implements ActionSheet.OnDismissListener
+  implements Runnable
 {
-  public nfg(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager, MsgTabNodeInfo paramMsgTabNodeInfo) {}
+  public nfg(CmdTaskManger.UIThreadCallback paramUIThreadCallback, NetworkRequest paramNetworkRequest, BaseResponse paramBaseResponse, ErrorMessage paramErrorMessage) {}
   
-  public void onDismiss()
+  public void run()
   {
-    StoryReportor.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString });
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$UIThreadCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest, this.jdField_a_of_type_ComTencentBizQqstoryChannelBaseResponse, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
   }
 }
 

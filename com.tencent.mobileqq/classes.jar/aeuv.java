@@ -1,13 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
 
 public class aeuv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aeuv(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  public aeuv(NearbyLikeLimitManager paramNearbyLikeLimitManager) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

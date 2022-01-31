@@ -68,7 +68,7 @@ class ThemeDIYActivity$14
         }
         paramMessage = (ResData)paramMessage.obj;
       } while (paramMessage == null);
-      Object localObject = this.this$0.mContext.getResources().getDrawable(2130844231);
+      Object localObject = this.this$0.mContext.getResources().getDrawable(2130844297);
       try
       {
         URL localURL = new URL("themediydownloader", paramMessage.path, paramMessage.url);
@@ -175,7 +175,7 @@ class ThemeDIYActivity$14
       this.this$0.mHandler.removeMessages(24);
       this.this$0.mIsSaving.set(false);
       this.this$0.setProgessDialog(false, 0);
-      QQToast.a(this.this$0.mContext, 2131434120, 3000).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(this.this$0.mContext, 2131434136, 3000).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131558448));
       return;
       if (paramMessage.obj == null)
       {
@@ -211,7 +211,7 @@ class ThemeDIYActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity.14
  * JD-Core Version:    0.7.0.1
  */

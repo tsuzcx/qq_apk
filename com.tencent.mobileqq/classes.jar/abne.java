@@ -1,35 +1,15 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
+import com.tencent.mobileqq.armap.ipc.IAsyncObserver;
+import eipc.EIPCResult;
 
 public class abne
-  extends FriendListObserver
+  implements Runnable
 {
-  public abne(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abne(ArMapIPCProxy paramArMapIPCProxy, IAsyncObserver paramIAsyncObserver, String paramString, EIPCResult paramEIPCResult) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void run()
   {
-    if ((paramBoolean) && (paramString != null))
-    {
-      String str = ContactUtils.c(this.a.app, paramString, false);
-      int i = 0;
-      while (i < this.a.d.getChildCount())
-      {
-        Object localObject = this.a.d.getChildAt(i);
-        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof abnn)) && (paramString.equals(((abnn)((View)localObject).getTag()).a)))
-        {
-          localObject = (TextView)((View)localObject).findViewById(2131369188);
-          if (localObject != null) {
-            ((TextView)localObject).setText(str);
-          }
-        }
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArmapIpcIAsyncObserver.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
   }
 }
 

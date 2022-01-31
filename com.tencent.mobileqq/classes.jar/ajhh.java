@@ -1,19 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor.IFocusChangeListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
 
 public class ajhh
-  implements XMediaEditor.IFocusChangeListener
+  implements Animation.AnimationListener
 {
-  public ajhh(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public ajhh(TroopAioKeywordTipBar paramTroopAioKeywordTipBar) {}
   
-  public void a(View paramView, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean) {
-      PublishHomeWorkFragment.a(this.a, PublishHomeWorkFragment.a(this.a).a());
+    if (TroopAioKeywordTipBar.a(this.a) != null) {
+      TroopAioKeywordTipBar.a(this.a).a.clearAnimation();
+    }
+    TroopAioKeywordTipBar.a(this.a);
+    if ((TroopAioKeywordTipBar.a(this.a) != null) && (!TroopAioKeywordTipBar.a(this.a).isSend())) {
+      ((TroopAioKeywordTipManager)this.a.a.getManager(224)).a(this.a.a.getCurrentAccountUin(), TroopAioKeywordTipBar.a(this.a).getExtInfoFromExtStr("key_aio_keyword"), Integer.valueOf(TroopAioKeywordTipBar.a(this.a).ruleId));
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,31 +1,26 @@
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.ImageTaskTracer;
-import com.tencent.component.media.image.image.Image;
-import com.tencent.component.media.utils.LruCache;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
+import com.tencent.image.URLImageView;
 
 public class phd
-  extends LruCache
+  implements Animation.AnimationListener
 {
-  public phd(ImageManager paramImageManager, int paramInt)
+  public phd(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramInt);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
   
-  protected int a(Integer paramInteger, Image paramImage)
-  {
-    return paramImage.size();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void a(boolean paramBoolean, Integer paramInteger, Image paramImage1, Image paramImage2)
-  {
-    if (paramInteger != null) {
-      ImageTaskTracer.addImageLruCacheEvictedRecord(paramInteger.intValue());
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     phd
  * JD-Core Version:    0.7.0.1
  */

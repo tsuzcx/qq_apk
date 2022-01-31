@@ -1,11 +1,16 @@
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel.IRequestHandler;
+import java.util.Comparator;
 
 public class yuu
+  implements Comparator
 {
-  public BufferedInputStream a;
-  public ByteArrayOutputStream a;
-  public boolean a;
+  public yuu(ApolloCmdChannel paramApolloCmdChannel) {}
+  
+  public int a(ApolloCmdChannel.IRequestHandler paramIRequestHandler1, ApolloCmdChannel.IRequestHandler paramIRequestHandler2)
+  {
+    return paramIRequestHandler1.a() - paramIRequestHandler2.a();
+  }
 }
 
 

@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class xcq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xcq(QWalletConfigManager paramQWalletConfigManager, WeakReference paramWeakReference) {}
+  public xcq(PhotoListActivity paramPhotoListActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QWalletConfigManager localQWalletConfigManager = (QWalletConfigManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQWalletConfigManager != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletConfigManager", 2, "getAllConfigAgain");
-      }
-      localQWalletConfigManager.a(QWalletConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager));
-    }
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
   }
 }
 

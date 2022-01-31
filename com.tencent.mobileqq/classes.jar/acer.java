@@ -1,58 +1,20 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import com.tencent.mobileqq.utils.DESUtil;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class acer
   implements Runnable
 {
-  public acer(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public acer(HotChatFlashPicActivity paramHotChatFlashPicActivity, String paramString) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "preloadWebProcess");
+    DESUtil.b(this.jdField_a_of_type_JavaLangString, HotChatFlashPicActivity.c(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity));
+    HotChatFlashPicActivity.b(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity, true);
+    if (!HotChatFlashPicActivity.a(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity).get()) {
+      HotChatFlashPicActivity.b(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity, this.jdField_a_of_type_JavaLangString);
     }
-    try
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        return;
-      }
-      WebProcessManager localWebProcessManager = (WebProcessManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
-      if (localWebProcessManager != null)
-      {
-        SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("emoticon_panel_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-        long l = localSharedPreferences.getLong("sp_key_market_open_time", 0L);
-        if (System.currentTimeMillis() - l < 2592000000L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, startWebProcess for market open strategy");
-          }
-          localWebProcessManager.a(-1, new aces(this));
-          return;
-        }
-        l = localSharedPreferences.getLong("sp_key_send_h5_magic_face_time", 0L);
-        if (System.currentTimeMillis() - l >= 2592000000L) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, startWebProcess for h5 magic send strategy");
-        }
-        localWebProcessManager.a(-1, new acet(this));
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("EmoticonMainPanel", 1, "preloadWebProcess, exception=" + MsfSdkUtils.getStackTraceString(localException));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "preloadWebProcess, web process alive already");
-    }
+    HotChatFlashPicActivity.a(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

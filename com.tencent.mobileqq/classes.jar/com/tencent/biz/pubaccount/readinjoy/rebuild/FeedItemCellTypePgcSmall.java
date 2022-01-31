@@ -13,7 +13,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.AbsListView.LayoutParams;
-import luk;
+import lxu;
 
 public class FeedItemCellTypePgcSmall
   extends FeedItemCell
@@ -45,7 +45,7 @@ public class FeedItemCellTypePgcSmall
       RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
       localRelativeLayout1.setPadding(AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
       RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout2.setBackgroundResource(2130840780);
+      localRelativeLayout2.setBackgroundResource(2130840798);
       localRelativeLayout2.setLayoutParams(new RelativeLayout.LayoutParams(-1, AIOUtils.a(79.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(104.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1);
       localLayoutParams.addRule(11);
@@ -60,7 +60,7 @@ public class FeedItemCellTypePgcSmall
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
       localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
       localRelativeLayout1.addView(localRelativeLayout2);
-      localRelativeLayout2.setOnClickListener(new luk(this));
+      localRelativeLayout2.setOnClickListener(new lxu(this));
       localLinearLayout.addView(localRelativeLayout1);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {

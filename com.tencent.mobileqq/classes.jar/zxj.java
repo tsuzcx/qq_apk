@@ -1,21 +1,34 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.ar.ARLBSPOIDialog;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetNearbyRecommender;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class zxj
-  implements Runnable
+  extends CardObserver
 {
-  public zxj(ARLBSPOIDialog paramARLBSPOIDialog) {}
+  public zxj(GetNearbyRecommender paramGetNearbyRecommender) {}
   
-  public void run()
+  protected void c(boolean paramBoolean, String paramString, Card paramCard)
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "GetNearbyRecommender onGetDetailInfo|uin=" + paramString);
     }
+    if (!GetNearbyRecommender.a(this.a).b.getCurrentAccountUin().equals(paramString)) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxj
  * JD-Core Version:    0.7.0.1
  */

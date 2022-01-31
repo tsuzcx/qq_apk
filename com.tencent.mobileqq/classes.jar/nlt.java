@@ -1,15 +1,14 @@
-import com.tencent.biz.qqstory.playmode.child.TroopStoryForAIOPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.newshare.model.Job;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor;
 
 public class nlt
   implements Runnable
 {
-  public nlt(TroopStoryForAIOPlayMode paramTroopStoryForAIOPlayMode) {}
+  public nlt(JobExecutor paramJobExecutor, Job paramJob) {}
   
   public void run()
   {
-    this.a.h = false;
-    this.a.a.setCurrentItem(this.a.b, false);
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a();
   }
 }
 

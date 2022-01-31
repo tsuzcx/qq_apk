@@ -1,12 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 class abgw
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  abgw(abgu paramabgu) {}
+  abgw(abgs paramabgs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    ARMapActivity.a(this.a.a, null);
+  }
 }
 
 

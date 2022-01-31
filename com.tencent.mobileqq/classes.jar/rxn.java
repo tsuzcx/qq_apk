@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
 
 class rxn
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  rxn(rxm paramrxm) {}
+  rxn(rxl paramrxl, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString, true, true, this.a.jdField_a_of_type_JavaUtilMap);
+    if ((this.jdField_a_of_type_Rxl.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar != null) && (this.jdField_a_of_type_Long == Long.parseLong(this.jdField_a_of_type_Rxl.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
+      this.jdField_a_of_type_Rxl.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsFraudTipsBar.a();
+    }
   }
 }
 

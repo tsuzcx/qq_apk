@@ -1,57 +1,20 @@
-import com.tencent.component.network.downloader.impl.DownloaderImpl;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
 
 public class pjs
+  implements View.OnClickListener
 {
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
+  public pjs(AbstractImageListScene paramAbstractImageListScene) {}
   
-  private pjs(DownloaderImpl paramDownloaderImpl) {}
-  
-  public Object a(String paramString)
+  public void onClick(View paramView)
   {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
-        {
-          paramString = this.jdField_a_of_type_JavaUtilMap.get(paramString);
-          return paramString;
-        }
-        if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-        {
-          localObject1 = this.jdField_a_of_type_JavaUtilList.remove(0);
-          this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject1);
-          return localObject1;
-        }
-      }
-      Object localObject1 = new Object();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-        return;
-      }
-      paramString = this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      if ((paramString != null) && (!this.jdField_a_of_type_JavaUtilList.contains(paramString))) {
-        this.jdField_a_of_type_JavaUtilList.add(paramString);
-      }
-      return;
-    }
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pjs
  * JD-Core Version:    0.7.0.1
  */

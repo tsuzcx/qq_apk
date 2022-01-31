@@ -1,17 +1,19 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Filter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
+import com.tencent.biz.qqstory.takevideo.TakeVideoButtonMainPart.OnTakeVideoButtonClickListener;
 
 public class oaw
-  implements LocalVideoPusher.Filter
+  implements TakeVideoButtonMainPart.OnTakeVideoButtonClickListener
 {
-  public oaw(LocalVideoPushSegment paramLocalVideoPushSegment) {}
+  public oaw(StoryDiscoverActivity paramStoryDiscoverActivity) {}
   
-  public boolean a(LocalMediaInfo paramLocalMediaInfo)
+  public void a()
   {
-    paramLocalMediaInfo = paramLocalMediaInfo.path;
-    return (paramLocalMediaInfo.startsWith(AppConstants.aV)) && (paramLocalMediaInfo.contains("QQStoryMoment"));
+    if (this.a.a())
+    {
+      this.a.a();
+      return;
+    }
+    this.a.a(false, true, null);
   }
 }
 

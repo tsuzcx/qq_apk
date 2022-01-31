@@ -1,18 +1,39 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.common.galleryactivity.AbstractAnimationManager;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.AbstractImageListModel;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
+import com.tencent.mobileqq.profile.FriendProfileCardPicScene;
 
 public class syn
-  implements Runnable
+  extends GalleryManager
 {
-  public syn(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public syn(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
   
-  public void run()
+  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
-    LebaShowListManager.a().a(this.a, this.a.app);
-    List localList = LebaGridShowManager.a().c(this.a.app);
-    this.a.runOnUiThread(new syo(this, localList));
+    return super.a(paramActivity, paramAbstractImageListModel);
+  }
+  
+  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    this.a.a = new FriendProfileCardPicScene((FriendProfilePicBrowserActivity)paramActivity, paramAbstractImageListModel);
+    return this.a.a;
+  }
+  
+  public AbstractImageListModel a(Activity paramActivity)
+  {
+    paramActivity = new PicBrowserModel(this.a, FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
+    return paramActivity;
+  }
+  
+  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    return null;
   }
 }
 

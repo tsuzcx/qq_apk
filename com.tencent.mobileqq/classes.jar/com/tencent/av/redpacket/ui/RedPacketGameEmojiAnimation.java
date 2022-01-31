@@ -13,7 +13,7 @@ import com.tencent.av.redpacket.AVRedPacketManager.LocalHitInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import jlm;
+import jnn;
 
 public class RedPacketGameEmojiAnimation
 {
@@ -216,7 +216,7 @@ public class RedPacketGameEmojiAnimation
       int i = this.jdField_a_of_type_Int % 3;
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.b(i);
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji$OnShowListener = new jlm(this);
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji$OnShowListener = new jnn(this);
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameSprite = this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite[localLocalEmojiInfo.emojiType];
       if (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager != null) {
         this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(localLocalEmojiInfo.emojiId, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.jdField_a_of_type_Long, 1, i, localLocalEmojiInfo.emojiType, localLocalEmojiInfo.isBigEmoji, 0L);
@@ -546,7 +546,7 @@ public class RedPacketGameEmojiAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketGameEmojiAnimation
  * JD-Core Version:    0.7.0.1
  */

@@ -1392,7 +1392,7 @@ public class TcpConnection
     }
   }
   
-  public void connect()
+  public boolean connect()
   {
     BdhLogUtil.LogEvent("C", "Connect : About to send conn request.");
     this.mConnThread.start();
@@ -1401,6 +1401,7 @@ public class TcpConnection
     this.connInfo.connStartTime = SystemClock.uptimeMillis();
     this.connInfo.serverIp = this.mEp.host;
     this.connInfo.port = this.mEp.port;
+    return true;
   }
   
   public void disConnect()

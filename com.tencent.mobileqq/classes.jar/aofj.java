@@ -1,15 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import dov.com.tencent.mobileqq.activity.richmedia.EditVideoQzComment;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
-public class aofj
-  implements CompoundButton.OnCheckedChangeListener
+class aofj
+  implements Runnable
 {
-  public aofj(EditVideoQzComment paramEditVideoQzComment) {}
+  aofj(aofi paramaofi, Bitmap paramBitmap) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    EditVideoQzComment.a(this.a).f = paramBoolean;
+    SLog.a("Q.qqstory.publish.edit.LocalVideoSelectActivity", "load cover completed and havePlaying=%s", Boolean.valueOf(LocalVideoSelectActivity.a(this.jdField_a_of_type_Aofi.a)));
+    if (!LocalVideoSelectActivity.a(this.jdField_a_of_type_Aofi.a))
+    {
+      LocalVideoSelectActivity.a(this.jdField_a_of_type_Aofi.a).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      LocalVideoSelectActivity.a(this.jdField_a_of_type_Aofi.a).setVisibility(0);
+    }
   }
 }
 

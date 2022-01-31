@@ -1,14 +1,31 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.ViewAnimation;
 
-public final class vcz
-  implements Runnable
+public class vcz
+  extends AnimatorListenerAdapter
 {
-  public vcz(int paramInt) {}
+  public vcz(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
   
-  public void run()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    HapticManager.a().a(String.valueOf(this.a), PokeItemHelper.e + this.a + "/" + this.a + ".hapt");
+    super.onAnimationStart(paramAnimator);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.mImageLayer = null;
+      paramAnimator = ((ViewGroup)((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363510);
+      if (paramAnimator != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setDuration(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getDuration());
+        paramAnimator.startAnimation(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation);
+      }
+    }
   }
 }
 

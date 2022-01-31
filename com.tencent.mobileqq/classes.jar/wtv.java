@@ -1,19 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.MyTroopObserver;
 
 public class wtv
-  extends FriendListObserver
+  implements Runnable
 {
-  public wtv(ContactListView paramContactListView) {}
+  public wtv(TroopFragment.MyTroopObserver paramMyTroopObserver) {}
   
-  protected void onAddFriend(String paramString) {}
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void run()
   {
-    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
-      this.a.j();
-    }
+    this.a.a.h();
   }
 }
 

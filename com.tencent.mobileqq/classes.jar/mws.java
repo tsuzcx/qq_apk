@@ -1,22 +1,24 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
-public final class mws
-  implements DialogInterface.OnCancelListener
+class mws
+  implements Runnable
 {
-  public mws(Activity paramActivity, ProfileParams paramProfileParams) {}
+  mws(mwr parammwr, int paramInt) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    if (this.jdField_a_of_type_Int <= 0)
     {
-      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.jdField_a_of_type_Mwr.a.leftView.setText(2131433311);
+      return;
     }
+    if (this.jdField_a_of_type_Int > 99)
+    {
+      this.jdField_a_of_type_Mwr.a.leftView.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_Mwr.a.getString(2131433311), Integer.valueOf(99) }));
+      return;
+    }
+    this.jdField_a_of_type_Mwr.a.leftView.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_Mwr.a.getString(2131433311), Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
 }
 

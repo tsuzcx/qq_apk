@@ -13,7 +13,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jzo;
+import kbs;
 
 public class QavPanelSoundWaveView
   extends View
@@ -32,7 +32,7 @@ public class QavPanelSoundWaveView
     super(paramContext);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = new jzo(this);
+    this.jdField_a_of_type_JavaLangRunnable = new kbs(this);
     a();
   }
   
@@ -41,7 +41,7 @@ public class QavPanelSoundWaveView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = new jzo(this);
+    this.jdField_a_of_type_JavaLangRunnable = new kbs(this);
     a();
   }
   
@@ -50,7 +50,7 @@ public class QavPanelSoundWaveView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = new jzo(this);
+    this.jdField_a_of_type_JavaLangRunnable = new kbs(this);
     a();
   }
   
@@ -206,7 +206,7 @@ public class QavPanelSoundWaveView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.QavPanelSoundWaveView
  * JD-Core Version:    0.7.0.1
  */

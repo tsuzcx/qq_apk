@@ -1,15 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-class wfl
-  implements Runnable
+public class wfl
+  implements DialogInterface.OnClickListener
 {
-  wfl(wfk paramwfk) {}
+  public wfl(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).b(this.a.a.getResources().getDimensionPixelSize(2131558448));
+    this.a.A();
   }
 }
 

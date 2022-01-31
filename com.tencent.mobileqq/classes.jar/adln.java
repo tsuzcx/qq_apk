@@ -1,24 +1,14 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.structmsg.CGILoader;
+import com.tencent.mobileqq.filemanager.activity.MPFileFailedView.MPFileFailedEvent;
+import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
 
 public class adln
-  implements Runnable
+  implements MPFileFailedView.MPFileFailedEvent
 {
-  public adln(ForwardSdkBaseOption paramForwardSdkBaseOption, String paramString) {}
+  public adln(MPcFileModel paramMPcFileModel) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    String str = CGILoader.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(str))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidOsBundle.putString("video_url", str);
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption.jdField_a_of_type_AndroidOsBundle.putBoolean("video_url_load", true);
-    }
-    ForwardSdkBaseOption.c(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkBaseOption);
+    MPcFileModel.b(this.a, paramLong);
   }
 }
 

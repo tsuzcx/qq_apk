@@ -1,37 +1,39 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
+import com.tencent.mobileqq.intervideo.groupvideo.PluginLoadListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeca
-  implements Animator.AnimatorListener
+  implements PluginLoadListener
 {
-  public aeca(LightReplyMenuManager paramLightReplyMenuManager) {}
+  public aeca(GroupVideoManager paramGroupVideoManager) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    this.a.b = false;
-    this.a.c = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.a.a != null)
+    switch (paramInt)
     {
-      this.a.a.setVisibility(8);
-      LightReplyMenuManager.a(this.a, null);
-      this.a.a = null;
-      LightReplyMenuManager.a(this.a, false);
+    case 6: 
+    case 8: 
+    default: 
+    case 5: 
+    case 7: 
+    case 10: 
+      do
+      {
+        return;
+        GroupVideoManager.a(this.a);
+        if (GroupVideoManager.a(this.a) != null) {
+          QQToast.a(GroupVideoManager.a(this.a).getApplication(), "加载失败，请重试", 1).b(GroupVideoManager.a(this.a).getApp().getResources().getDimensionPixelSize(2131558448));
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("GroupVideoManager", 2, "GroupVideoPlugin loadFailed state:" + paramInt);
+      return;
     }
-    this.a.b = false;
-    this.a.c = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b = true;
+    GroupVideoManager.a(this.a);
   }
 }
 

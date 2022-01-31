@@ -27,10 +27,10 @@ import java.util.Random;
 import java.util.Timer;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import xfz;
-import xga;
-import xgb;
-import xgc;
+import xlt;
+import xlu;
+import xlv;
+import xlw;
 
 public class PreloadResource
   implements Serializable
@@ -60,7 +60,7 @@ public class PreloadResource
   public boolean mIsNeedUnzip;
   public boolean mIsTemp;
   public boolean mIsUnzipInside;
-  private xgc mReqTask;
+  private xlw mReqTask;
   public String mResId;
   public int mRetryTime;
   public String mUnzipPrefix;
@@ -559,7 +559,7 @@ public class PreloadResource
   
   public DownloadListener getFlowControlDownloadListener(long paramLong, DownloadListener paramDownloadListener, PreloadManager paramPreloadManager, int paramInt)
   {
-    return new xga(this, paramInt, new WeakReference(paramPreloadManager), paramDownloadListener, paramLong);
+    return new xlu(this, paramInt, new WeakReference(paramPreloadManager), paramDownloadListener, paramLong);
   }
   
   public String getFolderPath(String paramString1, String paramString2)
@@ -708,7 +708,7 @@ public class PreloadResource
             {
               if ((this.mReqTask == null) || (this.mReqTask.a()))
               {
-                this.mReqTask = new xfz(this, new WeakReference(paramPreloadManager), paramPreloadModule);
+                this.mReqTask = new xlt(this, new WeakReference(paramPreloadManager), paramPreloadModule);
                 ThreadManager.getTimer().schedule(this.mReqTask, l3);
               }
               paramPreloadManager.d();
@@ -1122,7 +1122,7 @@ public class PreloadResource
   
   public void startFlowControlReq(JudgeDownloadReq paramJudgeDownloadReq, PreloadManager paramPreloadManager, PreloadModule paramPreloadModule, DownloadListener paramDownloadListener)
   {
-    QWalletCommonServlet.a(paramJudgeDownloadReq, new xgb(this, new WeakReference(paramPreloadManager), paramDownloadListener, paramPreloadModule), 1);
+    QWalletCommonServlet.a(paramJudgeDownloadReq, new xlv(this, new WeakReference(paramPreloadManager), paramDownloadListener, paramPreloadModule), 1);
   }
   
   public String toString()

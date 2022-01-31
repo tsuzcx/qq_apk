@@ -1,27 +1,45 @@
-import com.tencent.mobileqq.ar.arengine.ARWorldCupBaseResDownload;
-import com.tencent.mobileqq.ar.arengine.ARWorldCupBaseResDownload.DownloadListener;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class aaiu
-  implements Runnable
+  implements ARPreSoResourceDownload.ARResourceDownloadCallback
 {
-  public aaiu(ARWorldCupBaseResDownload paramARWorldCupBaseResDownload) {}
+  public aaiu(ArConfigService paramArConfigService) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(long paramLong1, long paramLong2)
   {
-    QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes. download timeout.");
-    if ((ARWorldCupBaseResDownload.a(this.a)[0] >= 0) && (ARWorldCupBaseResDownload.a(this.a)[0] <= 99)) {
-      WorldCupMgr.a(ARWorldCupBaseResDownload.a(this.a)).b(this.a.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr$DownloadListener);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
     }
-    if ((ARWorldCupBaseResDownload.a(this.a)[1] >= 0) && (ARWorldCupBaseResDownload.a(this.a)[1] <= 99)) {
-      GestureMgr.a().a(false, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr$GestureStatusListener);
+    ArConfigService.b(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a)) / 3;
+    if (!ArConfigService.d(this.a)) {
+      ArConfigService.a(this.a).post(new aaiv(this, i));
     }
-    ARWorldCupBaseResDownload.a(this.a, false);
-    if (ARWorldCupBaseResDownload.a(this.a) != null) {
-      ARWorldCupBaseResDownload.a(this.a).a(1, -1);
+  }
+  
+  public void a(boolean paramBoolean, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
+    if (paramBoolean)
+    {
+      ArConfigService.c(this.a, true);
+      if ((ArConfigService.e(this.a)) && (ArConfigService.f(this.a)) && (ArConfigService.g(this.a))) {
+        ArConfigService.a(this.a).post(new aaiw(this));
+      }
+    }
+    while (ArConfigService.d(this.a)) {
+      return;
+    }
+    ArConfigService.a(this.a).post(new aaix(this));
+    ArConfigService.a(this.a, true);
   }
 }
 

@@ -10,9 +10,9 @@ import android.view.ViewStub;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anvg;
-import anvh;
-import anvi;
+import aodw;
+import aodx;
+import aody;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
@@ -157,23 +157,23 @@ public class EditVideoTag
     {
       this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371643));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363245));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364638));
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363116);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131370826);
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363262));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364662));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363120);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371644);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362951);
+      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362956);
       this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131371639);
       this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131371640);
       this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371641));
       this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371642));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoTagQQStoryTagAdapter = new QQStoryTagAdapter(a());
-      j();
+      i();
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoTagQQStoryTagAdapter);
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnItemClickListener(this);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new anvg(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnScrollListener(new anvh(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new aodw(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnScrollListener(new aodx(this));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     }
@@ -186,7 +186,7 @@ public class EditVideoTag
     }
   }
   
-  private void j()
+  private void i()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.b.setHeaderBgColor(0);
     int i = Color.parseColor("#7d7d7d");
@@ -275,9 +275,9 @@ public class EditVideoTag
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364354));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131364422));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364447));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364379));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131364447));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364472));
     String str1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a("video_tag_info");
     if (str1 != null) {}
     try
@@ -522,11 +522,11 @@ public class EditVideoTag
     {
     default: 
       return;
-    case 2131363245: 
+    case 2131363262: 
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoTagQQStoryTagAdapter.a(null);
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
       return;
-    case 2131364638: 
+    case 2131364662: 
       paramView = a(EditVideoPermissionExport.class);
       if (paramView != null)
       {
@@ -534,7 +534,7 @@ public class EditVideoTag
         if ((!this.jdField_a_of_type_Boolean) && (paramView.a() != 10000) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoTagQQStoryTagAdapter.a() != null))
         {
           this.jdField_a_of_type_Boolean = true;
-          DialogUtil.a(a(), 230).setMessage("添加标签后，该视频所有人都可查看").setPositiveButton("我知道了", new anvi(this)).show();
+          DialogUtil.a(a(), 230).setMessage("添加标签后，该视频所有人都可查看").setPositiveButton("我知道了", new aody(this)).show();
           return;
         }
         o();
@@ -542,7 +542,7 @@ public class EditVideoTag
       }
       o();
       return;
-    case 2131370826: 
+    case 2131371644: 
       m();
       paramView = a();
       a(this.jdField_a_of_type_Int).a(paramView);

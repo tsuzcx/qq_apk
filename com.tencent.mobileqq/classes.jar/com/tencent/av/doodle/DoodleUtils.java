@@ -55,14 +55,14 @@ public class DoodleUtils
   
   public static DoodleSurfaceView a(ViewGroup paramViewGroup)
   {
-    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131362535);
+    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131362540);
     Object localObject1 = localObject2;
     View localView;
     if (localObject2 == null)
     {
       localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
       localObject2 = new ViewGroup.LayoutParams(-1, -1);
-      localView = paramViewGroup.findViewById(2131362537);
+      localView = paramViewGroup.findViewById(2131362542);
       if (localView == null) {
         break label67;
       }
@@ -77,7 +77,7 @@ public class DoodleUtils
   
   public static void a(ViewGroup paramViewGroup)
   {
-    View localView = paramViewGroup.findViewById(2131362535);
+    View localView = paramViewGroup.findViewById(2131362540);
     if (localView != null) {
       paramViewGroup.removeView(localView);
     }
@@ -125,7 +125,7 @@ public class DoodleUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleUtils
  * JD-Core Version:    0.7.0.1
  */

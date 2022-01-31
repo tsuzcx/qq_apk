@@ -1,28 +1,31 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.NearbyRelevantHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.Map;
 
-class sax
-  extends AccountObserver
+public final class sax
+  implements DialogInterface.OnClickListener
 {
-  sax(saw paramsaw) {}
+  public sax(QQAppInterface paramQQAppInterface, boolean paramBoolean1, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean2, boolean paramBoolean3, ChatActivityUtils.StartVideoListener paramStartVideoListener, String paramString5, Map paramMap, boolean paramBoolean4, boolean paramBoolean5) {}
   
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 != null) {
-        break label70;
-      }
+    NearbyRelevantHandler localNearbyRelevantHandler = (NearbyRelevantHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(66);
+    if (localNearbyRelevantHandler != null) {
+      localNearbyRelevantHandler.a((byte)0);
     }
-    label70:
-    for (int i = 0;; i = paramString2.length())
-    {
-      QLog.e("ChatHistoryForC2C", 2, i);
-      this.a.a.runOnUiThread(new say(this, paramBoolean));
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true);
+    if (this.jdField_a_of_type_Boolean) {
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
     }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilMap, this.jdField_d_of_type_Boolean, this.jdField_e_of_type_Boolean, false);
+    paramDialogInterface.dismiss();
   }
 }
 

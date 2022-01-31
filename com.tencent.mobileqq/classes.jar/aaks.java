@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArAwardInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
 
-public final class aaks
-  implements Parcelable.Creator
+public class aaks
+  implements View.OnTouchListener
 {
-  public ArAwardInfo a(Parcel paramParcel)
-  {
-    return new ArAwardInfo(paramParcel);
-  }
+  public aaks(ScanningSurfaceView paramScanningSurfaceView) {}
   
-  public ArAwardInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new ArAwardInfo[paramInt];
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      ScanningSurfaceView.a(this.a, paramMotionEvent);
+    }
   }
 }
 

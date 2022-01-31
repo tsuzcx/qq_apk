@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.util.FaceDrawable;
 
-public class rrv
+class rrv
   implements Runnable
 {
-  public rrv(BaseChatPie paramBaseChatPie) {}
+  rrv(rru paramrru, String paramString, View paramView) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.getApp(), 2131433786, 1).b(this.a.a());
+    try
+    {
+      FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Rru.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362724);
+      if (localImageView != null) {
+        localImageView.setImageDrawable(localFaceDrawable);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

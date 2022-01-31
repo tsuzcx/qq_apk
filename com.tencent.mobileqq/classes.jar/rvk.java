@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class rvk
+public class rvk
   implements Runnable
 {
-  public rvk(String paramString, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
+  public rvk(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    try
-    {
-      String str = this.jdField_a_of_type_JavaLangString;
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      StatisticConstants.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
+    if ((this.a.e != null) && (this.a.e.isShowing())) {
+      this.a.e.dismiss();
+    }
+    while ((this.a.f == null) || (!this.a.f.isShowing())) {
       return;
     }
-    catch (Exception localException) {}
+    this.a.f.dismiss();
   }
 }
 

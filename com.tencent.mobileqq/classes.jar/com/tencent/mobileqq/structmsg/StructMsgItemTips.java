@@ -19,7 +19,7 @@ public class StructMsgItemTips
   public TextView a(Context paramContext)
   {
     paramContext = super.a(paramContext);
-    paramContext.setBackgroundResource(2130842181);
+    paramContext.setBackgroundResource(2130842213);
     paramContext.setPadding(20, 5, 20, 5);
     paramContext.setGravity(17);
     return paramContext;

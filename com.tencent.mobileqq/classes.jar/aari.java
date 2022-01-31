@@ -1,34 +1,62 @@
-import android.annotation.TargetApi;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
-import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.av.ui.redbag.RedBagUtil;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
 
 public class aari
-  implements ArkViewImplement.LoadCallback
+  extends aark
 {
-  public aari(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt) {}
+  public String a;
+  HashMap a;
+  String b;
   
-  @TargetApi(14)
-  public void onLoadFinish(int paramInt)
+  public aari(String paramString)
   {
-    if (paramInt == 1)
+    super(paramString);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  boolean a(Resources paramResources)
+  {
+    String str1 = this.jdField_a_of_type_JavaLangString + "menuicon_moving/";
+    int i = 0;
+    while (i < 4)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(0);
-      ArkAdapterItemForTextMsg.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg);
+      String str2 = "img_" + i + ".png";
+      Bitmap localBitmap = RedBagUtil.a(str1 + "images/" + str2, paramResources.getDisplayMetrics().densityDpi, paramResources.getDisplayMetrics().densityDpi);
+      if (localBitmap == null) {
+        return false;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(str2, localBitmap);
+      i += 1;
     }
-    for (;;)
+    paramResources = new File(str1, "down.json");
+    if (!paramResources.exists())
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
+      QLog.i(this.c, 1, "ResInfoForDownAni, json文件不存在");
+      return false;
     }
+    if (!new File(str1, "images").exists())
+    {
+      QLog.i(this.c, 1, "ResInfoForDownAni, image不存在");
+      return false;
+    }
+    paramResources = WorldCupMgr.a(paramResources.getAbsolutePath());
+    if (TextUtils.isEmpty(paramResources)) {
+      QLog.i(this.c, 1, "ResInfoForDownAni, json读取失败");
+    }
+    this.b = paramResources;
+    return true;
   }
 }
 

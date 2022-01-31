@@ -9,6 +9,8 @@ public class NetSearchTemplateBaseItem$ImageInfo
   public int b;
   public CharSequence b;
   public String b;
+  public CharSequence c;
+  public String c;
   
   public NetSearchTemplateBaseItem$ImageInfo(NetSearchTemplateBaseItem paramNetSearchTemplateBaseItem) {}
 }

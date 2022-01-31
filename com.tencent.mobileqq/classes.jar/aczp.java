@@ -1,53 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
 public class aczp
-  implements UniformDownloader.IUniformDownloaderListener
+  implements View.OnClickListener
 {
-  public aczp(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public aczp(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    UniformDownloadMgr.a(this.a);
-  }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    ReportController.b(null, "P_CliOper", "webview", "", "webview_apk_download", "download_success", 0, 1, 0, "", "", "", "");
-    paramBundle.getInt("_CB_SID");
-    String str = paramBundle.getString("_CB_URL");
-    paramBundle = paramBundle.getBundle("_CB_USERDATA");
-    UniformDownloadMgr.a(this.a, str);
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>insertFM and install. PH:" + paramString + " SZ:" + paramLong);
-    if (this.a.a != null) {
-      this.a.a.a().a(null, -1, paramString, paramLong, 16, null, paramBundle);
+    Object localObject2 = paramView.getTag();
+    Object localObject1 = null;
+    if ((localObject2 instanceof QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)) {
+      localObject1 = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)paramView.getTag()).jdField_a_of_type_JavaLangObject;
     }
     for (;;)
     {
-      UniformDownloadUtil.a(paramString);
-      UniformDownloadMgr.a(this.a);
-      if ("http://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean".equals(str)) {
-        ReportController.b(null, "P_CliOper", "Safe_SpaceClean", "", "SpaceClean_", "download secure apk sucess", 0, 0, "", "", "", "");
+      if (localObject1 != null) {
+        this.a.c((FileInfo)localObject1);
       }
       return;
-      FileManagerUtil.c(paramString);
+      if ((localObject2 instanceof ImageHolder))
+      {
+        localObject2 = (ImageHolder)paramView.getTag();
+        paramView = (FileInfo)((ImageHolder)localObject2).jdField_a_of_type_JavaLangObject;
+        if (!this.a.a.g())
+        {
+          localObject1 = paramView;
+          if (!this.a.a.h()) {}
+        }
+        else
+        {
+          localObject1 = this.a.a.getSharedPreferences("LAST_CHOOSE_", 0).edit();
+          ((SharedPreferences.Editor)localObject1).putInt("GROUP", ((ImageHolder)localObject2).b);
+          ((SharedPreferences.Editor)localObject1).putInt("CHILD", (((ImageHolder)localObject2).jdField_a_of_type_Int + 1) / 4);
+          ((SharedPreferences.Editor)localObject1).commit();
+          localObject1 = paramView;
+        }
+      }
     }
   }
-  
-  public void b(int paramInt, Bundle paramBundle) {}
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

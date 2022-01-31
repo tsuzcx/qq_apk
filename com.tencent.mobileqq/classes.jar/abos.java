@@ -1,13 +1,17 @@
-import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.armap.test.ARWebTestActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class abos
+public class abos
   implements Runnable
 {
-  public abos(URLDrawable paramURLDrawable) {}
+  public abos(ARWebTestActivity paramARWebTestActivity, String paramString) {}
   
   public void run()
   {
-    this.a.downloadImediatly();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ARWebTestActivity", 4, "call from onPageFinished delay");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqArmapTestARWebTestActivity.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

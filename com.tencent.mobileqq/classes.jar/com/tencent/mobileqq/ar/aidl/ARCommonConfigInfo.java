@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aaej;
+import aala;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -25,7 +25,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARCommonConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new aaej();
+  public static final Parcelable.Creator CREATOR = new aala();
   public static final long DEFAULT_AR_CLOUD_UPLOAD_CHECK_TIMEOUT = 5000L;
   public static final long DEFAULT_AR_CLOUD_UPLOAD_DELAY = 2000L;
   public static final long DEFAULT_AR_LOCAL_START_DELAY = 0L;

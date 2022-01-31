@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import com.tencent.mobileqq.troop.filemanager.TroopFileDataBaseProxy;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
+import java.util.UUID;
 
 public class ajky
-  implements Runnable
+  implements ProxyListener
 {
-  public ajky(ImageItem paramImageItem, EditItemInfoBase paramEditItemInfoBase) {}
+  public ajky(TroopFileDataBaseProxy paramTroopFileDataBaseProxy, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    ImageItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiImageItem, (ImageInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase, true);
+    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", TroopFileTransferUtil.Log.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
   }
 }
 

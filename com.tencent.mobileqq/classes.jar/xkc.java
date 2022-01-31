@@ -1,35 +1,27 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.recent.HotChatCenterItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.FormEditItem;
 
 public class xkc
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xkc(HotChatCenterItemBuilder paramHotChatCenterItemBuilder, int paramInt) {}
+  public xkc(GoldMsgAioState paramGoldMsgAioState, Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ??? = ((QQAppInterface)HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get()).getEntityManagerFactory().createEntityManager();
-    HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder, ApolloGameUtil.a((EntityManager)???));
-    if ((HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder) != null) && (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).size() > 0))
+    QQCustomDialog localQQCustomDialog = (QQCustomDialog)paramDialogInterface;
+    FormEditItem localFormEditItem1 = (FormEditItem)localQQCustomDialog.findViewById(2131364108);
+    FormEditItem localFormEditItem2 = (FormEditItem)localQQCustomDialog.findViewById(2131364110);
+    if (GoldMsgChatHelper.a().a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localFormEditItem1.a(), localFormEditItem2.a()))
     {
-      SparseArray localSparseArray = (SparseArray)HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get(this.jdField_a_of_type_Int);
-      if ((localSparseArray != null) && (localSparseArray.size() > 0))
-      {
-        if ((HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder) != null) && (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get() != null)) {
-          ApolloGameUtil.a((EntityManager)???, ApolloUtil.a(localSparseArray));
-        }
-        synchronized (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder))
-        {
-          localSparseArray.remove(1000);
-          return;
-        }
-      }
+      GoldMsgAioState.a(localQQCustomDialog.getWindow(), this.jdField_a_of_type_AndroidContentContext, null);
+      paramDialogInterface.dismiss();
     }
   }
 }

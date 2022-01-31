@@ -1,13 +1,32 @@
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.leba.header.LebaGridShowManager;
+import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeim
-  implements Runnable
+  extends GameCenterObserver
 {
-  public aeim(EmoticonManager paramEmoticonManager) {}
+  public aeim(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    EmoticonManager.a(this.a);
+    if ((!paramBoolean1) || (paramInt == 2)) {}
+    for (;;)
+    {
+      return;
+      if (LebaWithFeeds.b(this.a))
+      {
+        LebaGridShowManager.a().b(this.a.a);
+        this.a.a(new aein(this));
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.lebatab.leba_with_feeds", 2, "onGameCenterMsgReceive, " + LebaWithFeeds.c(this.a));
+        return;
+        LebaShowListManager.a |= 0x2;
+      }
+    }
   }
 }
 

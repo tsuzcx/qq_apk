@@ -1,32 +1,53 @@
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.EPRecommendTask;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.util.WeakReference;
+import org.json.JSONObject;
 
-class ackv
-  implements Animation.AnimationListener
+public class ackv
+  implements Runnable
 {
-  ackv(acku paramacku) {}
+  public ackv(EPRecommendTask paramEPRecommendTask) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.removeView(this.a.jdField_a_of_type_AndroidViewView);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getWindow().setBackgroundDrawable(null);
-    Face2FaceAddFriendActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.n = true;
-    if (Face2FaceAddFriendConstants.a >= Face2FaceAddFriendConstants.b)
+    long l1 = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("EPRecommendTask", 2, "url:" + this.a.jdField_a_of_type_JavaLangString + ",type:" + this.a.b);
+    }
+    try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(Face2FaceAddFriendConstants.a, Face2FaceAddFriendConstants.b);
+      Object localObject = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (localObject == null) {
+        return;
+      }
+      localObject = VasQuickUpdateManager.a((AppRuntime)localObject, "emoji_app_vip_emoji_aio_android_config.json", true, this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+      this.a.a((JSONObject)localObject);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        long l2;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.emoji.EmoDown", 2, localException.getMessage());
+        }
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label103:
+      break label103;
+    }
+    l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
+    {
+      QLog.d("EPRecommendTask", 2, "costTime:" + (l2 - l1) + ",type:" + this.a.b);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(Face2FaceAddFriendConstants.a, 0L);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

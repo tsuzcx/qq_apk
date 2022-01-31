@@ -14,8 +14,8 @@ import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Confi
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import mqq.app.AppRuntime;
-import ncu;
-import ncv;
+import ngp;
+import ngq;
 
 public class StoryConfigManager
   extends ConfigManager
@@ -210,7 +210,7 @@ public class StoryConfigManager
     {
       SLog.b("StoryConfigManager", "need update story publish config from server.");
       PublishConfigRequest localPublishConfigRequest = new PublishConfigRequest();
-      CmdTaskManger.a().a(localPublishConfigRequest, new ncu(this));
+      CmdTaskManger.a().a(localPublishConfigRequest, new ngp(this));
     }
   }
   
@@ -224,7 +224,7 @@ public class StoryConfigManager
     {
       GetBlackStatusRequest localGetBlackStatusRequest = new GetBlackStatusRequest();
       localGetBlackStatusRequest.b = QQStoryContext.a().b();
-      CmdTaskManger.a().a(localGetBlackStatusRequest, new ncv(this, l));
+      CmdTaskManger.a().a(localGetBlackStatusRequest, new ngq(this, l));
     }
   }
 }

@@ -1,39 +1,44 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.net.GdtAdHandler;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
 import com.tencent.qphone.base.util.QLog;
 
 public class aihz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aihz(StructMsgForGeneralShare paramStructMsgForGeneralShare, PopupWindow paramPopupWindow, Context paramContext) {}
+  public aihz(RedBagVideoManager paramRedBagVideoManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    QLog.d(StructMsgForGeneralShare.access$000(), 1, "delete_ad");
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    String str1 = null;
+    if (RedBagVideoManager.a(this.a) == null) {}
+    while (RedBagVideoManager.a(this.a).jdField_e_of_type_Int != LocalMediaInfo.REDBAG_TYPE_GET) {
+      return;
     }
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().b((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    ((GdtAdHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110)).a(8, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131432424), 1).a();
+    String str2 = RedBagVideoManager.a(this.a).d;
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("VALUE_USER_UIN_TO_GET_NICK_NAME", str2);
+    localObject = VideoPlayIPCClient.a().a("CMD_GET_NICK_NAME_BY_UIN", (Bundle)localObject);
+    if ((localObject == null) && (QLog.isColorLevel())) {
+      QLog.d("RedBagVideoManager", 2, "getNickName VideoPlayIPCClient.callServer value=null");
+    }
+    if (localObject != null) {}
+    for (localObject = ((Bundle)localObject).getString("VALUE_USER_NICK_NAME");; localObject = "")
+    {
+      Bundle localBundle = VideoPlayIPCClient.a().a("CMD_GET_CURRENT_NICK_NAME", null);
+      if (localBundle != null) {
+        str1 = localBundle.getString("VALUE_GET_CURRENT_NICK_NAME");
+      }
+      this.a.a(RedBagVideoManager.a(this.a), str2, (String)localObject, str1, RedBagVideoManager.a(this.a).c, RedBagVideoManager.a(this.a).h, RedBagVideoManager.a(this.a).jdField_e_of_type_JavaLangString);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aihz
  * JD-Core Version:    0.7.0.1
  */

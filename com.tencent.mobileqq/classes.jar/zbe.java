@@ -1,17 +1,19 @@
-public class zbe
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+
+public final class zbe
+  implements Runnable
 {
-  public long a;
-  public String a;
+  public zbe(DownloadTask paramDownloadTask) {}
   
-  public zbe(String paramString, long paramLong)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    DownloaderFactory.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zbe
  * JD-Core Version:    0.7.0.1
  */

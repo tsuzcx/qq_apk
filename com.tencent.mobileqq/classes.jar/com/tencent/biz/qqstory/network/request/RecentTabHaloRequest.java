@@ -68,6 +68,11 @@ public class RecentTabHaloRequest
     }
   }
   
+  public int b()
+  {
+    return this.c;
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("RecentTabHaloRequest{");

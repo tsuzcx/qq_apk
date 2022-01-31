@@ -63,16 +63,16 @@ import mqq.observer.BusinessObserver;
 import oicq.wlogin_sdk.request.WFastLoginInfo;
 import oicq.wlogin_sdk.request.WUserSigInfo;
 import oicq.wlogin_sdk.request.WtloginHelper;
-import ovz;
-import owa;
-import owb;
-import owc;
-import owd;
-import owe;
-import owf;
-import owg;
-import owh;
-import owi;
+import paq;
+import par;
+import pas;
+import pat;
+import pau;
+import pav;
+import paw;
+import pax;
+import pay;
+import paz;
 import tencent.im.group.nearbybanner.nearbybanner.ClientInfo;
 import tencent.im.group.nearbybanner.nearbybanner.ReqBody;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
@@ -81,22 +81,22 @@ public class TroopMemberApiService
   extends AppService
 {
   public int a;
-  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new owi(this));
+  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new paz(this));
   QQMusicService jdField_a_of_type_ComTencentBizApiproxyQQMusicService;
   public ReadInJoySkinHelper a;
   public PAH5Manager a;
   public DoraemonBridge a;
   public BizTroopHandler a;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new owb(this);
+  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new pas(this);
   public FriendListObserver a;
-  HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new ovz(this);
+  HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new paq(this);
   public HotchatSCHelper a;
   public LBSHandler a;
   public LBSObserver a;
   public QQMapActivityProxy a;
   public TroopHandler a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new owa(this);
-  private IVPluginEvtListener jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginEvtListener = new owe(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new par(this);
+  private IVPluginEvtListener jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginEvtListener = new pav(this);
   public NearbyCardObserver a;
   public TransProcessorHandler a;
   public String a;
@@ -124,10 +124,10 @@ public class TroopMemberApiService
     this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonBridge = null;
     this.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper = null;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoySkinHelper = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new owc(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new owd(this);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new owf(this);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new owg(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new pat(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new pau(this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new paw(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new pax(this);
   }
   
   private void a(QQAppInterface paramQQAppInterface, long paramLong, HWTroopFileStatusInfo paramHWTroopFileStatusInfo, Bundle paramBundle)
@@ -219,7 +219,7 @@ public class TroopMemberApiService
       localObject = new nearbybanner.ClientInfo();
       ((nearbybanner.ClientInfo)localObject).uint32_lcd_height.set(j);
       ((nearbybanner.ClientInfo)localObject).uint32_lcd_width.set(i);
-      ((nearbybanner.ClientInfo)localObject).bytes_client_version.set(ByteStringMicro.copyFromUtf8("7.6.3.3565"));
+      ((nearbybanner.ClientInfo)localObject).bytes_client_version.set(ByteStringMicro.copyFromUtf8("7.6.8.3615"));
       ((nearbybanner.ClientInfo)localObject).uint32_os.set(0);
       localReqBody.msg_client_info.set((MessageMicro)localObject);
       localObject = new NewIntent(paramAppRuntime.getApplication(), ProtoServlet.class);
@@ -317,7 +317,7 @@ public class TroopMemberApiService
   public void a(String paramString1, String paramString2)
   {
     WtloginHelper localWtloginHelper = new WtloginHelper(this.app.getApplication().getApplicationContext());
-    localWtloginHelper.SetListener(new owh(this, localWtloginHelper));
+    localWtloginHelper.SetListener(new pay(this, localWtloginHelper));
     String str = this.app.getAccount();
     paramString1 = paramString1.getBytes();
     long l = Long.valueOf(paramString2).longValue();

@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import nak;
+import nef;
 
 public class MyVideoCleanStep
   extends AbsCleanStep
@@ -45,7 +45,7 @@ public class MyVideoCleanStep
       int j = 0;
       while (j < k)
       {
-        localArrayList.add(new nak(this, arrayOfFile[j]));
+        localArrayList.add(new nef(this, arrayOfFile[j]));
         j += 1;
       }
       Collections.sort(localArrayList);
@@ -68,7 +68,7 @@ public class MyVideoCleanStep
           {
             localInterruptedException.printStackTrace();
           }
-          a(((nak)localArrayList.get(j)).a);
+          a(((nef)localArrayList.get(j)).a);
           k += 1;
           j += 1;
         }

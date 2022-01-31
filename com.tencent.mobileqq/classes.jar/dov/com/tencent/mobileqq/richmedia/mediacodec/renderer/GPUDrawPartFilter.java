@@ -8,7 +8,7 @@ import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 public class GPUDrawPartFilter
   extends GPUBaseFilter
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.a(BaseApplicationImpl.getContext(), 2131230754);
+  private static String jdField_a_of_type_JavaLangString = GlUtil.a(BaseApplicationImpl.getContext(), 2131230755);
   private float jdField_a_of_type_Float = 0.0F;
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b = false;
@@ -53,14 +53,14 @@ public class GPUDrawPartFilter
     }
   }
   
-  protected void b()
+  protected void c()
   {
     this.e = GLES20.glGetUniformLocation(a(), "percent");
     this.f = GLES20.glGetUniformLocation(a(), "drawPart");
     this.g = GLES20.glGetUniformLocation(a(), "cutX");
   }
   
-  protected void e()
+  protected void f()
   {
     float f2 = 1.0F;
     int i = this.f;

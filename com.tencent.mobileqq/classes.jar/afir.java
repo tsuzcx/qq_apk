@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
 
 public class afir
-  implements ActionSheet.OnDismissListener
+  implements NearbyLikeLimitManager.onDoVoteListener
 {
-  public afir(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afir(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void onDismiss()
+  public void a(String paramString, boolean paramBoolean)
   {
-    NearbyProfileEditTribePanel.a(this.a, this.a.h, false);
+    this.a.c(paramBoolean);
+    this.a.t = paramBoolean;
   }
 }
 

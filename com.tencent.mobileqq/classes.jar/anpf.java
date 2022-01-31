@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgReq;
+import cooperation.weiyun.sdk.api.WeiyunApi;
+import cooperation.weiyun.utils.PreferenceUtils;
+import mqq.app.AppRuntime;
 
-public class anpf
-  implements DialogInterface.OnClickListener
+public final class anpf
+  implements Runnable
 {
-  public anpf(MusicProviderView paramMusicProviderView) {}
+  public anpf(int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    WeiyunPB.WeiyunTrialCouponUseMsgReq localWeiyunTrialCouponUseMsgReq = new WeiyunPB.WeiyunTrialCouponUseMsgReq();
+    localWeiyunTrialCouponUseMsgReq.business_id.set("upload_speed_up");
+    WeiyunApi.a(localWeiyunTrialCouponUseMsgReq, null);
+    if (this.a > 0)
+    {
+      int i = this.a;
+      PreferenceUtils.a(BaseApplicationImpl.getApplication(), String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "upload_coupon_count", String.valueOf(i - 1));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpf
  * JD-Core Version:    0.7.0.1
  */

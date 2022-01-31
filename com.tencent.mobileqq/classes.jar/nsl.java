@@ -1,21 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView.OnRefreshListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
+import com.tencent.biz.qqstory.model.QQStoryActivityManager;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class nsl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public nsl(MyMemoriesListView paramMyMemoriesListView) {}
+  public nsl(StoryPlayVideoActivity paramStoryPlayVideoActivity, QQStoryActivityManager paramQQStoryActivityManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.player.StoryPlayVideoActivity", 2, "player activity stack full, size=10, start clear!");
+    }
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager.a.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnRefreshListener != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnRefreshListener.c();
+      Object localObject = (String)localIterator.next();
+      localObject = (QQStoryBaseActivity)((WeakReference)this.jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager.a.get(localObject)).get();
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayVideoActivity != localObject) && (!((QQStoryBaseActivity)localObject).isFinishing())) {
+        ((QQStoryBaseActivity)localObject).finish();
       }
     }
   }

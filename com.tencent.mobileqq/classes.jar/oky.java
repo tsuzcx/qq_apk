@@ -1,60 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.util.InputMethodUtil;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.ArrayList;
 
 public class oky
-  extends BroadcastReceiver
+  implements AbsListView.OnScrollListener
 {
-  public oky(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public oky(EditVideoPoiSearch paramEditVideoPoiSearch) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      paramIntent = paramIntent.getStringExtra("event");
-      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic"))) {}
+    if (paramInt == 1) {
+      InputMethodUtil.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a().a());
     }
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "onReceive:" + paramContext);
-        }
-      } while (TextUtils.isEmpty(paramContext));
-      paramContext = new QQStoryMusicInfo(paramContext);
-      this.a.b();
-      if (!TextUtils.isEmpty(paramContext.d))
-      {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.b);
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(paramContext);
-      this.a.a(paramContext.d);
-      VideoEditReport.a("0X80076D6");
+    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a.size())) {
       return;
-      if ("action_music_start".equals(paramContext))
-      {
-        this.a.f();
-        this.a.d();
-        return;
-      }
-    } while (!"action_music_refresh_list".equals(paramContext));
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    }
+    EditVideoPoiSearch.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
   }
 }
 

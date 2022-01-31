@@ -4,7 +4,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
-import jmr;
+import jou;
 
 public abstract class IAVServiceCallback$Stub
   extends Binder
@@ -24,7 +24,7 @@ public abstract class IAVServiceCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IAVServiceCallback))) {
       return (IAVServiceCallback)localIInterface;
     }
-    return new jmr(paramIBinder);
+    return new jou(paramIBinder);
   }
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
@@ -44,7 +44,7 @@ public abstract class IAVServiceCallback$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.service.IAVServiceCallback.Stub
  * JD-Core Version:    0.7.0.1
  */

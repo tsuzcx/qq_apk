@@ -11,7 +11,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import orc;
+import ovr;
 
 public class QQStoryLoadingView
   extends TextView
@@ -22,7 +22,7 @@ public class QQStoryLoadingView
   public QQStoryLoadingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidOsHandler = new orc(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new ovr(this, Looper.getMainLooper());
     super.setGravity(17);
     if (super.getVisibility() == 0) {
       setVisibility(0);
@@ -34,14 +34,14 @@ public class QQStoryLoadingView
     int i = 0;
     while (i < 29)
     {
-      paramContext.getResources().getDrawable(2130843517 + i);
+      paramContext.getResources().getDrawable(2130843550 + i);
       i += 1;
     }
   }
   
   public void a()
   {
-    super.setCompoundDrawablesWithIntrinsicBounds(null, super.getResources().getDrawable(2130843517), null, null);
+    super.setCompoundDrawablesWithIntrinsicBounds(null, super.getResources().getDrawable(2130843550), null, null);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable != null)
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
@@ -61,19 +61,28 @@ public class QQStoryLoadingView
   
   public void b()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames() != 29))
+    int i = 0;
+    try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = new AnimationDrawable();
-      int i = 0;
-      while (i < 29)
+      if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames() != 29))
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.addFrame(super.getResources().getDrawable(2130843517 + i), 50);
-        i += 1;
+        this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = new AnimationDrawable();
+        while (i < 29)
+        {
+          this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.addFrame(super.getResources().getDrawable(2130843550 + i), 50);
+          i += 1;
+        }
+        this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setOneShot(false);
+        super.setCompoundDrawablesWithIntrinsicBounds(null, this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable, null, null);
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.setOneShot(false);
-      super.setCompoundDrawablesWithIntrinsicBounds(null, this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable, null, null);
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
+      return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
+      SLog.e("Q.qqstory.QQStoryLoadingView", "start animation error:" + localOutOfMemoryError);
+    }
   }
   
   public void setVisibility(int paramInt)

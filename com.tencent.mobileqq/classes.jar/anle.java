@@ -1,24 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import cooperation.qzone.webviewplugin.QzoneUiJsPlugin;
 
 public class anle
   implements Runnable
 {
-  public anle(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
+  public anle(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMPtvTemplateManager", 2, "start download template runnable");
-    }
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(), this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, QIMPtvTemplateAdapter.a(this.a));
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.downloading = true;
+    RemoteHandleManager.a().a().h(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anle
  * JD-Core Version:    0.7.0.1
  */

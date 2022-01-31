@@ -1,15 +1,15 @@
-import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import java.util.TimerTask;
 
-class ojy
-  implements Runnable
+public class ojy
+  extends TimerTask
 {
-  ojy(ojx paramojx) {}
+  private ojy(EditVideoMusic paramEditVideoMusic) {}
   
   public void run()
   {
-    TakeVideoUtils.b(this.a.a.b, false);
-    this.a.a.d(4);
+    this.a.a.sendEmptyMessage(1001);
   }
 }
 

@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.nearby.now.utils;
 
-public class NowSmallVideoRepotor
-{
-  public static void a(String paramString, int paramInt, String... paramVarArgs) {}
-}
+public class NowSmallVideoRepotor {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

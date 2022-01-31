@@ -1,63 +1,45 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import com.tencent.component.media.image.drawable.DrawableContainer;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract class phv
-  extends Drawable.ConstantState
+public class phv
+  implements Runnable
 {
-  public int a;
-  public Drawable a;
-  private boolean a;
-  private boolean b;
+  public phv(Share paramShare, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo) {}
   
-  phv(Drawable paramDrawable, DrawableContainer paramDrawableContainer)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(paramDrawableContainer);
-  }
-  
-  phv(phv paramphv, DrawableContainer paramDrawableContainer, Resources paramResources)
-  {
-    if ((paramphv != null) && (paramphv.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (paramphv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() != null)) {
-      if (paramResources == null) {
-        break label63;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
     }
-    label63:
-    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramphv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable(paramResources);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramphv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable())
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(paramDrawableContainer);
-      this.b = true;
-      this.jdField_a_of_type_Boolean = true;
-      return;
+    String str = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    if (QLog.isColorLevel()) {
+      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina path:" + str);
     }
-  }
-  
-  public boolean a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState() == null) {
-        break label34;
-      }
+    Intent localIntent = new Intent("android.intent.action.SEND");
+    localIntent.setFlags(268435456);
+    localIntent.setType("image/*");
+    localIntent.putExtra("android.intent.extra.TEXT", this.b + this.c);
+    if (!TextUtils.isEmpty(str)) {
+      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(str)));
     }
-    label34:
-    for (boolean bool = true;; bool = false)
-    {
-      this.b = bool;
-      this.jdField_a_of_type_Boolean = true;
-      return this.b;
+    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
+    this.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d(Share.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start weibo!");
     }
-  }
-  
-  public int getChangingConfigurations()
-  {
-    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     phv
  * JD-Core Version:    0.7.0.1
  */

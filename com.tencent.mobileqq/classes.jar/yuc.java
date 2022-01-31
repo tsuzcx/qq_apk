@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.apollo.store.ApolloViewController;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
 public class yuc
-  implements Runnable
+  extends TransProcessorHandler
 {
-  public yuc(ApolloViewController paramApolloViewController, int paramInt, boolean paramBoolean, ApolloWebAvatarParam paramApolloWebAvatarParam) {}
+  public yuc(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloWebAvatarParam);
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.b();
+    }
   }
 }
 

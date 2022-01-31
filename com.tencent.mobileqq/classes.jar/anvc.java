@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import com.tencent.mobileqq.data.FlowMusic;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager.GetSingleMusicInfoCallback;
+import dov.com.qq.im.capture.music.humrecognition.recognize.RecognitionManager;
 
 public class anvc
-  implements ProgressPieDrawable.OnProgressListener
+  implements QIMMusicConfigManager.GetSingleMusicInfoCallback
 {
-  public anvc(EditVideoSave paramEditVideoSave) {}
+  public anvc(RecognitionManager paramRecognitionManager, String paramString) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
-    }
+    if (paramObject == null) {}
+    do
+    {
+      return;
+      paramObject = (FlowMusic)paramObject;
+      RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager, RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager, paramObject, this.jdField_a_of_type_JavaLangString));
+    } while (!RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager).equals(RecognitionManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager).getClass()));
+    this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.d();
   }
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

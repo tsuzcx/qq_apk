@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.ftsentity;
 
-import ahtt;
+import ahyk;
 import android.os.Bundle;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
@@ -24,7 +24,7 @@ public class FTSEntitySearchFragment
   
   protected BaseMvpAdapter a()
   {
-    return new ahtt(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new ahyk(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
   }
   
   protected ISearchEngine a()

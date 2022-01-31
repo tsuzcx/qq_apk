@@ -1,23 +1,40 @@
-import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.widget.Switch;
 
 public class ktq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ktq(VideoCoverAdapter paramVideoCoverAdapter) {}
+  public ktq(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo, boolean paramBoolean, Switch paramSwitch) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((VideoCoverAdapter.a(this.a) == null) || (VideoCoverAdapter.a(this.a).size() == 0)) {}
-    VideoCoverItem localVideoCoverItem;
-    do
-    {
-      return;
-      localVideoCoverItem = (VideoCoverItem)VideoCoverAdapter.a(this.a).get(0);
-    } while ((localVideoCoverItem == null) || (localVideoCoverItem.a == null));
-    localVideoCoverItem.a.a(VideoCoverAdapter.a(this.a));
+    boolean bool = true;
+    if (paramInt == 0) {
+      if ((3 == this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.e) && (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d == 0))
+      {
+        paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer;
+        localPaConfigInfo = this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo;
+        if (!this.jdField_a_of_type_Boolean) {
+          paramDialogInterface.a(localPaConfigInfo, bool);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+      }
+    }
+    while (paramInt != 1) {
+      for (;;)
+      {
+        PaConfigAttr.PaConfigInfo localPaConfigInfo;
+        return;
+        bool = false;
+      }
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_Boolean);
   }
 }
 

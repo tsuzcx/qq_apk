@@ -1,23 +1,20 @@
-import com.tencent.av.widget.stageview.StageEffectView;
+import android.content.Context;
+import com.tencent.av.utils.PhoneStatusMonitor;
+import com.tencent.av.utils.PhoneStatusTools;
 
 public class kih
   implements Runnable
 {
-  public kih(StageEffectView paramStageEffectView, String[] paramArrayOfString) {}
+  public kih(PhoneStatusMonitor paramPhoneStatusMonitor, Context paramContext) {}
   
   public void run()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView.a(new String[] { this.jdField_a_of_type_ArrayOfJavaLangString[i] });
-      i += 1;
-    }
+    PhoneStatusTools.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor.a, 32);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     kih
  * JD-Core Version:    0.7.0.1
  */

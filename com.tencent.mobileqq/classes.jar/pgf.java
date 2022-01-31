@@ -1,131 +1,87 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.component.media.image.BitmapReference;
-import com.tencent.component.media.image.DecodeImageTask;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.ImageProcessor;
-import com.tencent.component.media.image.ImageTracer;
-import com.tencent.component.media.image.ProgressTracer;
-import com.tencent.component.media.image.drawable.BitmapImageDrawable;
-import com.tencent.component.media.image.drawable.SpecifiedBitmapDrawable;
-import com.tencent.component.media.image.image.BitmapImage;
-import com.tencent.component.media.image.image.FeedsBitmapImage;
-import com.tencent.component.media.utils.BaseHandler;
-import com.tencent.component.media.utils.ImageManagerLog;
-import com.tencent.component.media.utils.RapidNetUtils;
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.av.camera.QavCameraUsage;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.MX3DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.io.File;
 
 public class pgf
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public pgf(DecodeImageTask paramDecodeImageTask, ImageKey paramImageKey, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3) {}
+  public pgf(NewerGuidePlugin paramNewerGuidePlugin, Activity paramActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ImageTracer.startSuperResolution(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-    ProgressTracer.print(8, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.urlKey);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    switch (paramInt)
     {
-      ImageManagerLog.w(DecodeImageTask.a(), "super resolution. bitmap == null before process");
-      return;
     }
-    int i = RapidNetUtils.getModelIdFromUrl(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-    if (i < 0)
-    {
-      ImageManagerLog.e(DecodeImageTask.a(), "super resolution. invalid modelId. url=" + this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-      return;
-    }
-    Object localObject1 = Runtime.getRuntime();
-    long l = ((Runtime)localObject1).maxMemory() - ((Runtime)localObject1).totalMemory() + ((Runtime)localObject1).freeMemory();
-    ImageManagerLog.w(DecodeImageTask.a(), "super resolution. freeMemory=" + l);
-    if (l / 1024L / 1024L < ImageManagerEnv.g().getSuperResolutionMemoryThreshold())
-    {
-      ImageManagerLog.w(DecodeImageTask.a(), "super resolution. Low memory, ignore super resolution.");
-      return;
-    }
-    ImageManagerLog.w(DecodeImageTask.a(), "super resolution. using model modelId=" + i + " url=" + this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-    l = System.currentTimeMillis();
-    localObject1 = RapidNetUtils.superResolution(this.jdField_a_of_type_AndroidGraphicsBitmap, i);
-    l = System.currentTimeMillis() - l;
-    if (RapidNetUtils.isHighScaleUrl(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url))
-    {
-      ImageManagerLog.w(DecodeImageTask.a(), "high scale super resolution. Total function cost=" + l);
-      ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "super_resolution_total_procedure_high_scale", (int)l);
-    }
-    Object localObject2;
     for (;;)
     {
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("PhoneType", Build.MODEL);
-      ((HashMap)localObject2).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-      ((HashMap)localObject2).put("modelId", String.valueOf(i));
-      ((HashMap)localObject2).put("timeCost", String.valueOf(l));
-      ((HashMap)localObject2).put("isHighScale", String.valueOf(RapidNetUtils.isHighScaleUrl(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url)));
-      ImageManagerEnv.g().statisticCollectorReport("qzone_super_resolution", (HashMap)localObject2);
-      if (localObject1 != null) {
-        break;
-      }
-      ImageManagerLog.w(DecodeImageTask.a(), "super resolution. superResolutionBitmap == null after process. url=" + this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-      return;
-      ImageManagerLog.w(DecodeImageTask.a(), "super resolution. Total function cost=" + l);
-      ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "super_resolution_total_procedure", (int)l);
-    }
-    l = System.currentTimeMillis();
-    ImageManager.getInstance().saveSuperResImage((Bitmap)localObject1, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey);
-    BitmapImage localBitmapImage = new BitmapImage(BitmapReference.getBitmapReference((Bitmap)localObject1));
-    if ((this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options != null) && (this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.extraProcessor != null))
-    {
-      localObject2 = new BitmapImageDrawable(localBitmapImage, this.jdField_a_of_type_Int, this.b);
-      ImageManagerLog.w(DecodeImageTask.a(), "super resolution. check high scale after sr. url=" + this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-      localObject1 = localObject2;
-      if (DecodeImageTask.a((Drawable)localObject2)) {
-        localObject1 = DecodeImageTask.a((Drawable)localObject2);
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.extraProcessor.doProcess((Drawable)localObject1);
-      if ((localObject1 instanceof SpecifiedBitmapDrawable))
+      try
       {
-        localObject2 = ((SpecifiedBitmapDrawable)localObject1).getBitmapRef();
-        ImageManager.getInstance().a(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.urlKey, this.c, new FeedsBitmapImage((BitmapReference)localObject2), (Drawable)localObject1, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
-        if (this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener != null) {
-          DecodeImageTask.a().post(new pgg(this, (Drawable)localObject1));
-        }
-        label661:
-        l = System.currentTimeMillis() - l;
-        if (!RapidNetUtils.isHighScaleUrl(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url)) {
-          break label843;
-        }
-        ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "post_process_after_super_resolution_high_scale", (int)l);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        return;
       }
-    }
-    for (;;)
-    {
-      ImageTracer.reportDownloadTime(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url, true);
-      ImageTracer.reportDecodeTime(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url, true);
-      ImageTracer.endSuperResolution(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-      ProgressTracer.print(9, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.urlKey);
-      return;
-      ImageManager.getInstance().a(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.urlKey, this.c, localBitmapImage, (Drawable)localObject1, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
-      break;
-      localObject1 = new SpecifiedBitmapDrawable(localBitmapImage.getBitmap());
-      ImageManager.getInstance().a(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.urlKey, this.c, localBitmapImage, (Drawable)localObject1, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
-      if (this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener == null) {
-        break label661;
+      catch (Exception paramView) {}
+      paramView = DynamicAvatarRecordActivity.class;
+      if (CameraCompatibleList.d(CameraCompatibleList.c)) {
+        paramView = MX3DynamicAvatarRecordActivity.class;
       }
-      DecodeImageTask.a().post(new pgh(this, (Drawable)localObject1));
-      break label661;
-      label843:
-      ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "post_process_after_super_resolution", (int)l);
+      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, paramView);
+      paramView.putExtra("param_source", 1);
+      paramView.putExtra("param_from_newer_guide", true);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.startActivityForResult(paramView, (byte)100);
+      continue;
+      paramView = ProfileCardUtil.a();
+      paramInt = ProfileCardUtil.b(this.jdField_a_of_type_AndroidAppActivity);
+      Intent localIntent = new Intent();
+      localIntent.setClass(this.jdField_a_of_type_AndroidAppActivity, PhotoListActivity.class);
+      localIntent.putExtra("PhotoConst.DEST_BROADCAST_ACTION_NAME", "ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT");
+      localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+      localIntent.putExtra("Business_Origin", 100);
+      localIntent.putExtra("BUSINESS_ORIGIN_NEW", 100);
+      localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
+      localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
+      localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", true);
+      localIntent.putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
+      localIntent.putExtra("PhotoConst.TARGET_PATH", paramView);
+      localIntent.putExtra("PhotoConst.CLIP_WIDTH", paramInt);
+      localIntent.putExtra("PhotoConst.CLIP_HEIGHT", paramInt);
+      localIntent.putExtra("PhotoConst.TARGET_WIDTH", 640);
+      localIntent.putExtra("PhotoConst.TARGET_HEIGHT", 640);
+      localIntent.putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", true);
+      localIntent.putExtra("PhotoConst.32_Bit_Config", true);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      continue;
+      if (!QavCameraUsage.b(BaseApplicationImpl.getContext()))
+      {
+        paramView = new File(AppConstants.aK + "photo/");
+        if (!paramView.exists()) {
+          paramView.mkdirs();
+        }
+        paramView = new File(AppConstants.aK + "photo/" + System.currentTimeMillis() + ".jpg");
+        NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, Uri.fromFile(paramView));
+        paramView = new Intent("android.media.action.IMAGE_CAPTURE");
+        paramView.putExtra("output", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
+        paramView.putExtra("android.intent.extra.videoQuality", 100);
+        this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.startActivityForResult(paramView, (byte)101);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pgf
  * JD-Core Version:    0.7.0.1
  */

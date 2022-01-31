@@ -1,56 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import java.util.Comparator;
 
-public class abzs
-  implements Runnable
+public final class abzs
+  implements Comparator
 {
-  public abzs(FavroamingDBManager paramFavroamingDBManager, int paramInt, CustomEmotionData paramCustomEmotionData) {}
-  
-  public void run()
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingDBManager.a.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager == null) {
-      return;
-    }
-    boolean bool2 = false;
-    boolean bool1;
-    switch (this.jdField_a_of_type_Int)
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
+    do
     {
-    case 3: 
-    default: 
-      bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("FavroamingDBManager", 2, "can not save fav emoticon data, type:" + this.jdField_a_of_type_Int);
-        bool1 = bool2;
+      return -1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
+        return 1;
       }
-      break;
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return 1;
     }
-    for (;;)
-    {
-      localEntityManager.a();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("FavroamingDBManager", 2, "updateFavEmotionDataListInDB type:" + this.jdField_a_of_type_Int + "save result: " + bool1);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.setStatus(1000);
-      localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      bool1 = bool2;
-      continue;
-      bool1 = localEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      continue;
-      bool1 = localEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzs
  * JD-Core Version:    0.7.0.1
  */

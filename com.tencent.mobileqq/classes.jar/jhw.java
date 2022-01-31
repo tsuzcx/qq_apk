@@ -1,45 +1,23 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
+import java.lang.ref.WeakReference;
 
 public class jhw
   implements Runnable
 {
-  public jhw(AVNotifyCenter paramAVNotifyCenter) {}
+  public jhw(MagicfaceBaseDecoder paramMagicfaceBaseDecoder, String paramString) {}
   
   public void run()
   {
-    if (this.a.a == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.a.a.keySet().iterator();
-      long l;
-      while (localIterator.hasNext())
-      {
-        l = ((Long)localIterator.next()).longValue();
-        this.a.a(l, 2, this.a.b(l), false);
-        this.a.a(1, 2, l, null, 0L);
-        this.a.a(21, 2, l, 0L);
-        localIterator.remove();
-      }
-      localIterator = this.a.b.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        l = ((Long)localIterator.next()).longValue();
-        this.a.a(l, 1, this.a.b(l), false);
-        this.a.a(1, l, 10, 21, 0);
-        this.a.a(2, 1, l, null, 0L);
-        this.a.a(21, 1, l, 0L);
-        localIterator.remove();
-      }
+    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a.get();
+    if (localMagicPlayListener != null) {
+      localMagicPlayListener.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhw
  * JD-Core Version:    0.7.0.1
  */

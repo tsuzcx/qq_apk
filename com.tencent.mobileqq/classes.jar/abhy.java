@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.test.MapTestHelper.ToolEnableChangedListener;
 
-public class abhy
-  implements DialogInterface.OnClickListener
+class abhy
+  implements MapTestHelper.ToolEnableChangedListener
 {
-  public abhy(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  abhy(abhx paramabhx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(boolean paramBoolean)
+  {
+    this.a.a.b(paramBoolean);
+  }
 }
 
 

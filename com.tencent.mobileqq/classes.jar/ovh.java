@@ -1,26 +1,15 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
 
 public class ovh
   implements Runnable
 {
-  private WeakReference a;
-  
-  public ovh(TribeVideoPlugin paramTribeVideoPlugin)
-  {
-    this.a = new WeakReference(paramTribeVideoPlugin);
-  }
+  public ovh(AbsEmptyView paramAbsEmptyView) {}
   
   public void run()
   {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
-    if (localTribeVideoPlugin == null) {
-      return;
+    if (AbsEmptyView.a(this.a) == 0) {
+      AbsEmptyView.a(this.a, 3, true);
     }
-    TVK_SDKMgr.installPlugin(localTribeVideoPlugin.mRuntime.a().getApplication(), new ovi(this));
   }
 }
 

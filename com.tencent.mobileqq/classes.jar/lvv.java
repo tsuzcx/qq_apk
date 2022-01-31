@@ -1,37 +1,23 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyView;
+import java.util.ArrayList;
 
 public class lvv
-  extends PublicAccountObserver
+  implements Animation.AnimationListener
 {
-  public lvv(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
+  public lvv(ReadInJoyHeaderPresenter paramReadInJoyHeaderPresenter, ReadInJoyView paramReadInJoyView, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ComponentHeaderRecommend.a(this.a).setText("已关注");
-    ComponentHeaderRecommend.a(this.a).setTextColor(Color.parseColor("#BBBBBB"));
-    ComponentHeaderRecommend.a(this.a).setEnabled(false);
-    ComponentHeaderRecommend.a(this.a).getPaint().setFakeBoldText(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderRecommend", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    if ((this.a.a.a != null) && (this.a.a.a.a() != null))
-    {
-      paramString = this.a.a.a.a();
-      String str = ReadInJoyUtils.a(paramString.mAlgorithmID, ReadInJoyUtils.a(paramString), this.a.a.a.e(), 0, 0, NetworkUtil.h(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, paramString.innerUniqueID, null, paramString);
-      PublicAccountReportUtils.a(null, ComponentHeaderRecommend.a(this.a) + "", "0X80080EC", "0X80080EC", 0, 0, String.valueOf(paramString.mFeedId), String.valueOf(paramString.mArticleID), Integer.toString(paramString.mStrategyId), str, false);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.a().post(new lvw(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

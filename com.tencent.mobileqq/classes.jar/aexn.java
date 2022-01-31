@@ -1,17 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public class aexn
-  implements Runnable
+public final class aexn
+  implements DialogInterface.OnClickListener
 {
-  public aexn(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aexn(Context paramContext, String paramString, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoCommentsView.c(this.a, false);
-    ShortVideoCommentsView.a(this.a);
-    ShortVideoCommentsView.a(this.a).setVisibility(8);
-    ShortVideoCommentsView.a(this.a, 2);
+    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomInviteActivity.class);
+    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

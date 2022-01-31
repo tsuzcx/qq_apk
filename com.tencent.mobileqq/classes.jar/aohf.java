@@ -1,16 +1,17 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.util.AudioDataCache;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 
-class aohf
-  implements Runnable
+public class aohf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aohf(aohe paramaohe, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public aohf(DoodleEditView paramDoodleEditView, GestureHelper.ZoomItem paramZoomItem) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr);
-    }
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem.n = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.invalidate();
   }
 }
 

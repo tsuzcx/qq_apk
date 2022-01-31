@@ -1,35 +1,45 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class tis
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public tis(QQLSActivity paramQQLSActivity) {}
+  public tis(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
     {
-      if (QQLSActivity.a(this.a) == 1)
-      {
-        BaseApplicationImpl.getContext().unregisterReceiver(this.a.a);
-        QQLSActivity.a(this.a, 0);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "unRegisterScreenListener");
-      }
-      return;
+      paramContext = paramIntent.getStringExtra("uin");
+      NotifyPushSettingActivity.a(this.a, paramContext);
     }
-    catch (Exception localException)
+    do
     {
+      boolean bool;
       do
       {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("QQLSActivity", 2, "unRegisterScreenListener:" + localException.toString());
-    }
+        return;
+        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
+          break;
+        }
+        paramContext = paramIntent.getStringExtra("uin");
+        bool = paramIntent.getBooleanExtra("configPCActive", false);
+      } while (!this.a.app.getAccount().equals(paramContext));
+      if (true == bool)
+      {
+        NotifyPushSettingActivity.g(this.a).setVisibility(0);
+        return;
+      }
+      NotifyPushSettingActivity.g(this.a).setVisibility(8);
+      return;
+    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
+    paramContext = paramIntent.getStringExtra("uin");
+    NotifyPushSettingActivity.b(this.a, paramContext);
   }
 }
 

@@ -1,21 +1,42 @@
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.annotation.TargetApi;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity;
 
 public class abwo
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abwo(BaseMsgBoxActivity paramBaseMsgBoxActivity, boolean paramBoolean) {}
+  public abwo(CampusCirclePublishActivity paramCampusCirclePublishActivity) {}
   
-  public void run()
+  @TargetApi(14)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity.a.a() == -1) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity.a();
+    ViewGroup.LayoutParams localLayoutParams = this.a.a.getLayoutParams();
+    localLayoutParams.width = -1;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f < 1.0F)
+    {
+      this.a.b.setAlpha(1.0F - f);
+      this.a.c.setAlpha(0.0F);
+    }
+    for (int i = this.a.f;; i = (int)(this.a.f - (f - 1.0F) * this.a.e))
+    {
+      if (localLayoutParams.height != i)
+      {
+        localLayoutParams.height = i;
+        this.a.a.setLayoutParams(localLayoutParams);
+      }
+      return;
+      this.a.b.setAlpha(0.0F);
+      this.a.c.setAlpha(f - 1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwo
  * JD-Core Version:    0.7.0.1
  */

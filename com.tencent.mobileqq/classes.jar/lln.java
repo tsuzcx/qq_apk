@@ -1,14 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.graphics.Rect;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 
 public class lln
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public lln(KandianMergeManager paramKandianMergeManager) {}
+  public lln(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    ReadInJoyHelper.l(KandianMergeManager.a(this.a), true);
+    Rect localRect = new Rect();
+    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.getWindowVisibleDisplayFrame(localRect);
+    int j = localRect.bottom;
+    int i = j;
+    if (!this.a.d) {
+      i = j - this.a.g;
+    }
+    if (i != this.a.f)
+    {
+      this.a.f = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = this.a.f;
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+    }
   }
 }
 

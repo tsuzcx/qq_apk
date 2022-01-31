@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.qcall;
 
-import agub;
+import agyo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +11,7 @@ public class PstnCardInfo
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new agub();
+  public static final Parcelable.Creator CREATOR = new agyo();
   public int pstn_c2c_call_time;
   public int pstn_c2c_last_guide_recharge_time;
   public int pstn_c2c_try_status;

@@ -1,18 +1,60 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView.PicInfo;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class lwh
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public lwh(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
+  List jdField_a_of_type_JavaUtilList = new ArrayList();
+  List b = new ArrayList();
   
-  public void onClick(View paramView)
+  public lwh(NativeGridImageView paramNativeGridImageView) {}
+  
+  public List a()
   {
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(lwi paramlwi)
+  {
+    this.b = paramlwi.a();
+    this.jdField_a_of_type_JavaUtilList = paramlwi.b();
+  }
+  
+  public int getCount()
+  {
+    return this.b.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.b.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramViewGroup.getContext();
+    if (paramView == null)
+    {
+      paramView = new SquareCornerTextImageView(paramViewGroup);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    }
+    for (;;)
+    {
+      ((SquareCornerTextImageView)paramView).a((SquareCornerTextImageView.PicInfo)this.b.get(paramInt));
+      return paramView;
+    }
   }
 }
 

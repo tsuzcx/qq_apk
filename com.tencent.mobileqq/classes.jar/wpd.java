@@ -1,25 +1,17 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.newfriend.QIMFollowMessage;
 
 public class wpd
   implements Runnable
 {
-  public wpd(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public wpd(QIMFollowerAddBuilder paramQIMFollowerAddBuilder) {}
   
   public void run()
   {
-    if (!EmoticonGroupStoreFragment.c(this.a).isEmpty())
-    {
-      ArrayList localArrayList = new ArrayList(EmoticonGroupStoreFragment.c(this.a));
-      Map localMap = EmoticonGroupStoreFragment.a(this.a).a(localArrayList);
-      if (localMap != null) {
-        EmoticonGroupStoreFragment.a(this.a).a(localMap, localArrayList);
-      }
-    }
+    ((NewFriendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33)).a(((QIMFollowMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wpe(this));
   }
 }
 

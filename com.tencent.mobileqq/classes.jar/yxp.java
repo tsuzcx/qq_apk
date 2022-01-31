@@ -1,39 +1,18 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class yxp
-  implements View.OnClickListener
+public final class yxp
+  implements EIPCResultCallback
 {
-  yxp(yxn paramyxn) {}
+  public yxp(long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((!TextUtils.isEmpty(yxn.a(this.a))) && (!yxn.a(this.a).equals("0")))
-    {
-      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-      int i = this.a.a.jdField_a_of_type_Int;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null) {}
-      for (paramView = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);; paramView = "")
-      {
-        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { paramView });
-        paramView = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
-        paramView.putExtra("uin", yxn.a(this.a));
-        paramView.putExtra("uintype", 1008);
-        this.a.a.getActivity().startActivity(paramView);
-        return;
-      }
-    }
-    QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
+    paramEIPCResult = paramEIPCResult.data.getString("respData");
+    CmGameUtil.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
   }
 }
 

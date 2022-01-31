@@ -1,109 +1,35 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
-import com.tencent.mobileqq.app.AppConstants;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.ArkHighLightClickCallback;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.statistics.ArkAppReportController;
+import com.tencent.mobileqq.text.QQText.ArkHighlightSpan;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class vnw
-  extends AsyncTask
+public class vnw
+  implements DialogInterface.OnClickListener
 {
-  public vnw(Context paramContext, int paramInt, URLDrawable paramURLDrawable, QQAppInterface paramQQAppInterface, StructMsgForImageShare paramStructMsgForImageShare, PicMessageExtraData paramPicMessageExtraData) {}
+  public vnw(TextItemBuilder paramTextItemBuilder, QQCustomDialog paramQQCustomDialog, View paramView, TextItemBuilder.ArkHighLightClickCallback paramArkHighLightClickCallback, QQAppInterface paramQQAppInterface) {}
   
-  protected Integer a(Void... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly(false);
-    }
-    URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = ((MessageForPic)this.jdField_a_of_type_ComTencentImageURLDrawable.getTag()).path;
-    paramVarArgs = AIOGalleryUtils.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs);
-    if (paramVarArgs != null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      AIOGalleryUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, paramVarArgs);
-      return Integer.valueOf(2);
-    }
-    paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
-    if (!AbsDownloader.a(paramVarArgs)) {
-      return Integer.valueOf(1);
-    }
-    paramVarArgs = AbsDownloader.a(paramVarArgs);
-    if (paramVarArgs != null) {}
-    label299:
-    label310:
-    for (paramVarArgs = SecUtil.getFileMd5(paramVarArgs.getAbsolutePath());; paramVarArgs = null)
-    {
-      if ((paramVarArgs == null) || ("".equals(paramVarArgs))) {
-        return Integer.valueOf(1);
-      }
-      FileUtils.c(AppConstants.aU + ".nomedia");
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      int i;
-      StringBuilder localStringBuilder;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null) && (this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.isDiyDouTu()))
-      {
-        i = 1;
-        if (i == 0) {
-          break label310;
-        }
-        localStringBuilder = new StringBuilder().append("_diydoutu@");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId)) {
-          break label299;
-        }
-        str1 = "0";
-      }
-      label220:
-      for (String str1 = str1;; str1 = "")
-      {
-        paramVarArgs = AppConstants.aU + str2 + paramVarArgs + str1 + ".jpg";
-        try
-        {
-          this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(paramVarArgs);
-          return Integer.valueOf(AIOGalleryUtils.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare, this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData));
-        }
-        catch (IOException paramVarArgs)
-        {
-          paramVarArgs.printStackTrace();
-          QLog.d("AIOGalleryUtils", 1, paramVarArgs, new Object[0]);
-          return Integer.valueOf(1);
-        }
-        i = 0;
-        break;
-        str1 = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId;
-        break label220;
-      }
-    }
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    if (paramInteger.intValue() == 0) {}
-    do
-    {
+      QQText.ArkHighlightSpan.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$ArkHighLightClickCallback);
+      ArkAppReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "__global__", "ArkAlertDialogConfirm", 0L, 0L, 0L, 0L, 0L, "", "");
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      ArkRecommendController.a(this.jdField_a_of_type_AndroidViewView.getContext(), "open", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
-      if (paramInteger.intValue() == 1)
-      {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131434584, 0).b(this.jdField_a_of_type_Int);
-        return;
-      }
-      if (paramInteger.intValue() == 2)
-      {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, 2131434501, 0).b(this.jdField_a_of_type_Int);
-        return;
-      }
-    } while (paramInteger.intValue() != 3);
+    }
+    catch (Exception paramDialogInterface)
+    {
+      ArkAppCenter.b("ArkDialog", String.format("PositiveButton click failed, err=%s", new Object[] { paramDialogInterface.getMessage() }));
+    }
   }
 }
 

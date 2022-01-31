@@ -1,17 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.statistics.ReportTask;
+import android.os.Handler;
+import android.os.Message;
+import com.etrump.mixlayout.FontManager;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class uae
-  implements View.OnClickListener
+  extends DownloadListener
 {
-  public uae(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  public uae(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
   {
-    this.a.g();
-    new ReportTask(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.b }).a();
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(DownloadTask paramDownloadTask)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + paramDownloadTask);
+    }
+    super.onCancel(paramDownloadTask);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    super.onDone(paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + paramDownloadTask);
+    }
+    if (paramDownloadTask.b()) {}
+    do
+    {
+      return;
+      if (paramDownloadTask.a() == -1)
+      {
+        paramDownloadTask = new Message();
+        paramDownloadTask.what = 17;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramDownloadTask);
+        return;
+      }
+      paramDownloadTask = this.a.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.a.d);
+    } while (paramDownloadTask == null);
+    Message localMessage = new Message();
+    localMessage.what = 18;
+    localMessage.obj = paramDownloadTask;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + paramDownloadTask);
+    }
+    return super.onStart(paramDownloadTask);
   }
 }
 

@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqpim.QQPimBridgeActivity;
+import cooperation.buscard.BuscardPluginInstallActivity;
 
-public class amqk
-  implements DialogInterface.OnDismissListener
+class amqk
+  implements Runnable
 {
-  public amqk(QQPimBridgeActivity paramQQPimBridgeActivity) {}
+  amqk(amqj paramamqj) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    BuscardPluginInstallActivity.a(this.a.a, "initPluginManager");
   }
 }
 

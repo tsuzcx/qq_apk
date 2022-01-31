@@ -1,23 +1,16 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
 public class aoho
   implements Runnable
 {
-  public aoho(RMVideoRecordState paramRMVideoRecordState) {}
+  public aoho(DoodleLayout paramDoodleLayout) {}
   
   public void run()
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.a())
-    {
-      SLog.c("RMRecordState", "run record finish, but state is not right");
-      return;
+    if (this.a.a != null) {
+      this.a.a.invalidate();
     }
-    this.a.b();
-    localRMVideoStateMgr.a.z();
   }
 }
 

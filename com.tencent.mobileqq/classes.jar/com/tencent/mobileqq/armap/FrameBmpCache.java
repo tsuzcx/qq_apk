@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import abcw;
+import abjw;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -22,7 +22,7 @@ public class FrameBmpCache
 {
   public int a;
   private long jdField_a_of_type_Long = 1000 / this.jdField_a_of_type_Int;
-  volatile abcw jdField_a_of_type_Abcw;
+  volatile abjw jdField_a_of_type_Abjw;
   Resources jdField_a_of_type_AndroidContentResResources;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public MQLruCache a;
@@ -99,7 +99,7 @@ public class FrameBmpCache
           if (localLinkedList.size() > 0)
           {
             this.jdField_a_of_type_JavaUtilLinkedList.addAll(0, localLinkedList);
-            if (this.jdField_a_of_type_Abcw == null) {
+            if (this.jdField_a_of_type_Abjw == null) {
               d();
             }
           }
@@ -113,12 +113,12 @@ public class FrameBmpCache
         if (j >= this.jdField_a_of_type_JavaUtilLinkedList.size()) {
           break label211;
         }
-        if (a(((abcw)this.jdField_a_of_type_JavaUtilLinkedList.get(j)).jdField_a_of_type_Int) == a(i))
+        if (a(((abjw)this.jdField_a_of_type_JavaUtilLinkedList.get(j)).jdField_a_of_type_Int) == a(i))
         {
-          localObject1 = (abcw)this.jdField_a_of_type_JavaUtilLinkedList.remove(j);
+          localObject1 = (abjw)this.jdField_a_of_type_JavaUtilLinkedList.remove(j);
           Object localObject4 = localObject1;
           if (localObject1 == null) {
-            localObject4 = new abcw(this, i);
+            localObject4 = new abjw(this, i);
           }
           localLinkedList.add(localObject4);
         }
@@ -138,13 +138,13 @@ public class FrameBmpCache
   
   private void d()
   {
-    this.jdField_a_of_type_Abcw = ((abcw)this.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (this.jdField_a_of_type_Abcw != null)
+    this.jdField_a_of_type_Abjw = ((abjw)this.jdField_a_of_type_JavaUtilLinkedList.poll());
+    if (this.jdField_a_of_type_Abjw != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FrameBmpCache", 2, "keepRunning " + this.jdField_a_of_type_Abcw);
+        QLog.i("FrameBmpCache", 2, "keepRunning " + this.jdField_a_of_type_Abjw);
       }
-      ThreadManager.postImmediately(this.jdField_a_of_type_Abcw, null, true);
+      ThreadManager.postImmediately(this.jdField_a_of_type_Abjw, null, true);
     }
   }
   
@@ -177,10 +177,10 @@ public class FrameBmpCache
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      if (this.jdField_a_of_type_Abcw != null)
+      if (this.jdField_a_of_type_Abjw != null)
       {
-        this.jdField_a_of_type_Abcw.a();
-        this.jdField_a_of_type_Abcw = null;
+        this.jdField_a_of_type_Abjw.a();
+        this.jdField_a_of_type_Abjw = null;
       }
       return;
     }
@@ -283,11 +283,11 @@ public class FrameBmpCache
     {
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        abcw localabcw = new abcw(this, i);
-        this.jdField_a_of_type_JavaUtilLinkedList.add(localabcw);
+        abjw localabjw = new abjw(this, i);
+        this.jdField_a_of_type_JavaUtilLinkedList.add(localabjw);
         i += 1;
       }
-      if (this.jdField_a_of_type_Abcw == null) {
+      if (this.jdField_a_of_type_Abjw == null) {
         d();
       }
       return;

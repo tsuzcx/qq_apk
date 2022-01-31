@@ -1,19 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.remote.SendMsg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public final class amyl
-  implements Parcelable.Creator
+class amyl
+  implements AsyncBack
 {
-  public SendMsg a(Parcel paramParcel)
+  amyl(amyk paramamyk) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    return new SendMsg(paramParcel);
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.e("QReaderHelper", 2, "Load offline package finish, code = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    }
+    for (int i = 0;; i = 1)
+    {
+      paramString = this.a.a.getApplication().getSharedPreferences("qr_offline_fail", 0);
+      int k = paramString.getInt("offlinePkgDownloadFailCount", 0);
+      if (i != 0) {
+        j = k + 1;
+      }
+      if (j != k) {
+        paramString.edit().putInt("offlinePkgDownloadFailCount", j).commit();
+      }
+      if ((i != 0) && (QLog.isColorLevel())) {
+        QLog.e("QReaderHelper", 2, "offline package update failed:" + paramInt);
+      }
+      return;
+    }
   }
   
-  public SendMsg[] a(int paramInt)
-  {
-    return new SendMsg[paramInt];
-  }
+  public void progress(int paramInt) {}
 }
 
 

@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
 
 public class acng
-  implements Runnable
+  extends RadioButton
 {
-  public acng(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt) {}
-  
-  public void run()
+  public acng(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelection(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 

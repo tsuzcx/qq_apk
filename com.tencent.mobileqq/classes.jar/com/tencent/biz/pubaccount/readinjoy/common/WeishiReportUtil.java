@@ -2,6 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ForeBackGround;
 import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager;
 import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -14,10 +15,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import lld;
-import lle;
-import llf;
-import llg;
+import lns;
+import lnt;
+import lnu;
+import lnv;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class WeishiReportUtil
@@ -76,12 +77,21 @@ public class WeishiReportUtil
   
   public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    ThreadManager.executeOnSubThread(new lld(paramInt, paramString1, paramString2, paramString3, paramString4));
+    ReadinjoySPEventReport.ForeBackGround.a(25);
+    ThreadManager.executeOnSubThread(new lns(paramInt, paramString1, paramString2, paramString3, paramString4));
   }
   
   public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5)
   {
-    ThreadManager.executeOnSubThread(new lle(paramInt, paramString1, paramLong, paramString2, paramString3, paramString4));
+    a(paramInt, paramString1, paramString2, paramString3, paramString4, paramLong, paramString5, true);
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5, boolean paramBoolean)
+  {
+    ThreadManager.executeOnSubThread(new lnt(paramInt, paramString1, paramLong, paramString2, paramString3, paramString4));
+    if (paramBoolean) {
+      ReadinjoySPEventReport.ForeBackGround.a();
+    }
   }
   
   public static void a(RecentBaseData paramRecentBaseData)
@@ -92,13 +102,13 @@ public class WeishiReportUtil
     {
       localMessageForStructing.extLong = 0;
       jdField_a_of_type_Long = System.currentTimeMillis();
-      ThreadManager.post(new llf(paramRecentBaseData, localQQAppInterface, localMessageForStructing), 5, null, false);
+      ThreadManager.post(new lnu(paramRecentBaseData, localQQAppInterface, localMessageForStructing), 5, null, false);
     }
   }
   
   public static void a(RecentBaseData paramRecentBaseData, int paramInt)
   {
-    ThreadManager.post(new llg(((WeishiManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(274)).a(), paramRecentBaseData, b(paramInt)), 5, null, false);
+    ThreadManager.post(new lnv(((WeishiManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(274)).a(), paramRecentBaseData, b(paramInt)), 5, null, false);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4)

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
-import qla;
+import qpr;
 
 public class GdtHttp
 {
@@ -192,7 +192,7 @@ public class GdtHttp
     if ((paramParams == null) || (!paramParams.a())) {
       return;
     }
-    ThreadManager.post(new qla(paramParams, paramWeakReference), 5, null, true);
+    ThreadManager.post(new qpr(paramParams, paramWeakReference), 5, null, true);
   }
   
   private static byte[] a(InputStream paramInputStream)

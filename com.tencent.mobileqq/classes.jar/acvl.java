@@ -1,47 +1,37 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.OutputStream;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
 
 public class acvl
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public acvl(FileManagerRSWorker paramFileManagerRSWorker) {}
+  public acvl(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.b == 0)
-    {
-      if (this.a.f != null)
-      {
-        this.a.a(this.a.f, 0L);
-        return;
-      }
-      this.a.b();
+    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
+    if (paramAdapterView.a()) {
+      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
+    }
+    while (!this.a.f()) {
       return;
     }
-    if (this.a.f.equalsIgnoreCase(""))
-    {
-      this.a.a();
-      return;
+    if (FMDataCache.a(paramAdapterView)) {
+      FMDataCache.b(paramAdapterView);
     }
-    try
+    for (;;)
     {
-      if (this.a.jdField_a_of_type_JavaIoOutputStream != null) {
-        this.a.jdField_a_of_type_JavaIoOutputStream.flush();
-      }
-      this.a.jdField_a_of_type_Long = FileManagerUtil.a(this.a.d);
-      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.a.c + "]retry request Httpmsg,rd[" + String.valueOf(this.a.jdField_a_of_type_Long) + "]");
-      FileManagerRSWorker.a(this.a, this.a.jdField_a_of_type_Long, this.a.h);
+      this.a.k();
+      LocalFileBrowserActivity.a(this.a);
       return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        QLog.e("FileManagerRSWorker<FileAssistant>", 1, localIOException.getMessage());
+      if (this.a.e) {
+        FMDataCache.b();
       }
+      FMDataCache.a(paramAdapterView);
     }
   }
 }

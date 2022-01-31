@@ -1,23 +1,26 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.biz.widgets.ElasticHorScrView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
 public class mxx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mxx(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity, int paramInt1, int paramInt2) {}
+  public mxx(GalleryShareHelper paramGalleryShareHelper) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.a.getWidth() < this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.a.setMove(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryShareHelper", 2, "mShareActionSheet cancle button OnClick");
     }
-    while (this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.b.getWidth() < this.b)
-    {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.b.setMove(true);
-      return;
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.a.setMove(false);
+    PublicAccountReportUtils.a(null, "", "0X8008E35", "0X8008E35", 0, 0, "", "", "", GalleryReportedUtils.a(GalleryShareHelper.a(this.a), GalleryShareHelper.a(this.a).getCurrentAccountUin(), GalleryShareHelper.a(this.a), GalleryShareHelper.a(this.a), GalleryShareHelper.a(this.a)), false);
+    if (GalleryShareHelper.a(this.a).isShowing()) {
+      GalleryShareHelper.a(this.a).dismiss();
     }
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionMainActivity.b.setMove(false);
   }
 }
 

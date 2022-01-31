@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qzonestatus;
 
 import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import ahdu;
+import ahil;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -138,7 +138,7 @@ public class QzoneContactsFeedManager
     while (!NetworkUtil.g(BaseApplication.getContext())) {
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new ahdu(this));
+    ThreadManager.getSubThreadHandler().post(new ahil(this));
   }
   
   public void a(long paramLong)

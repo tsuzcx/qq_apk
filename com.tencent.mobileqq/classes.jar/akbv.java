@@ -1,40 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.TroopPickerViewHelper;
+import com.tencent.mobileqq.troop.widget.TroopPickerViewHelper.OnConfirmListener;
+import com.tencent.widget.ActionSheet;
+import java.util.Calendar;
 
-public final class akbv
-  implements Runnable
+public class akbv
+  implements View.OnClickListener
 {
-  public akbv(QQAppInterface paramQQAppInterface) {}
+  public akbv(TroopPickerViewHelper paramTroopPickerViewHelper, TroopPickerViewHelper.OnConfirmListener paramOnConfirmListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    AvatarPendantUtil.jdField_a_of_type_Boolean = false;
-    do
-    {
-      synchronized (AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList)
-      {
-        String[] arrayOfString1 = new String[AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.size()];
-        AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.toArray(arrayOfString1);
-        AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.clear();
-        if (arrayOfString1.length == 0) {
-          return;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("AvatarPendantUtil", 2, "bulkGetStrangerPendantId, getStrangerInfo, size=" + arrayOfString2.length);
-      }
-      ??? = (VasExtensionHandler)this.a.a(71);
-    } while (??? == null);
-    ((VasExtensionHandler)???).a(arrayOfString2, new int[] { 40530, 27025, 27201, 27235, 27238, 27254 });
-    AvatarPendantUtil.a(System.currentTimeMillis());
+    if ((TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper) != null) && (TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).isShowing())) {
+      TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).dismiss();
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper$OnConfirmListener != null) && (TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper) != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper$OnConfirmListener.a(TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).getTimeInMillis());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbv
  * JD-Core Version:    0.7.0.1
  */

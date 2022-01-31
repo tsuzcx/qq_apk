@@ -1,26 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment.ShortVideoDownload;
 
-class aiex
+public final class aiex
   implements Runnable
 {
-  aiex(aiev paramaiev, String paramString1, boolean paramBoolean, String paramString2) {}
+  public aiex(VideoEnvironment.ShortVideoDownload paramShortVideoDownload, int paramInt) {}
   
   public void run()
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "成功，文件路径为" + this.b;; str = "失败")
-    {
-      QQToast.a(localBaseApplicationImpl, str, 2000).a();
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload.a(this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiex
  * JD-Core Version:    0.7.0.1
  */

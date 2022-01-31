@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public abstract interface adza
+class adza
+  implements Runnable
 {
-  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer);
+  adza(adyz paramadyz, RecyclerView.ViewHolder paramViewHolder) {}
   
-  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer, int paramInt1, int paramInt2);
-  
-  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
-  
-  public abstract void b(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer);
+  public void run()
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131363012).setVisibility(0);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131363011).setVisibility(8);
+  }
 }
 
 

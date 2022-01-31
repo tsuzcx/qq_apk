@@ -27,8 +27,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import ndj;
-import ndk;
+import nhe;
+import nhf;
 
 public class UserManager
   implements IManager
@@ -177,7 +177,7 @@ public class UserManager
       ((ConvertUinAndUnionIdRequest)localObject).c = paramInt;
       ((ConvertUinAndUnionIdRequest)localObject).jdField_a_of_type_JavaUtilList.add(paramUserID);
       boolean bool = paramUserID.a();
-      CmdTaskManger.a().a((NetworkRequest)localObject, new ndk(this, paramUserID, bool, l));
+      CmdTaskManger.a().a((NetworkRequest)localObject, new nhf(this, paramUserID, bool, l));
       return;
     }
   }
@@ -289,7 +289,7 @@ public class UserManager
       if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
-        new Handler().postDelayed(new ndj(this), 600L);
+        new Handler().postDelayed(new nhe(this), 600L);
       }
     }
     return localQQUserUIItem;

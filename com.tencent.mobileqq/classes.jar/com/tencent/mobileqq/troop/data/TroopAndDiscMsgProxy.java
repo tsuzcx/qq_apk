@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import ajde;
+import ajih;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Looper;
@@ -23,6 +23,7 @@ import com.tencent.mobileqq.app.proxy.FTSDBManager;
 import com.tencent.mobileqq.app.proxy.ProxyListener;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.data.MessageForConfessNews;
 import com.tencent.mobileqq.data.MessageForFoldMsg;
 import com.tencent.mobileqq.data.MessageForTroopReward;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -501,9 +502,10 @@ public class TroopAndDiscMsgProxy
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.TroopMsgProxy", 2, "insertToList " + paramMessageRecord.getBaseInfoString());
     }
-    label642:
-    label674:
-    label680:
+    label564:
+    label572:
+    label719:
+    label725:
     for (;;)
     {
       Object localObject1;
@@ -512,10 +514,10 @@ public class TroopAndDiscMsgProxy
       {
         Object localObject3 = d(paramString, paramInt);
         localObject1 = a(paramString, paramInt);
-        if ((paramMessageRecord.isSendFromLocal()) || ((MsgProxyUtils.a(paramMessageRecord)) && (paramMessageRecord.msgtype != -4012) && (paramMessageRecord.msgtype != -4009) && (paramMessageRecord.msgtype != -5001)))
+        if ((paramMessageRecord.isSendFromLocal()) || ((MsgProxyUtils.a(paramMessageRecord)) && (paramMessageRecord.msgtype != -4012) && (paramMessageRecord.msgtype != -4009) && (paramMessageRecord.msgtype != -5001) && (paramMessageRecord.msgtype != -5021)))
         {
           if ((localObject3 == null) || (((List)localObject3).isEmpty()) || (((MessageRecord)((List)localObject3).get(((List)localObject3).size() - 1)).shmsgseq <= 0L)) {
-            break label554;
+            break label564;
           }
           if ((!MsgProxyUtils.i(paramMessageRecord.msgtype)) || (paramMessageRecord.shmsgseq <= 0L)) {}
         }
@@ -534,15 +536,15 @@ public class TroopAndDiscMsgProxy
           {
             localObject1 = (List)MsgPool.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).b().get(localObject1);
             if (localObject1 != null) {
-              break label562;
+              break label572;
             }
             localObject1 = new ArrayList();
             if ((!(paramMessageRecord instanceof MessageForUniteGrayTip)) || (((MessageForUniteGrayTip)paramMessageRecord).tipParam.jdField_b_of_type_Int != 3211265)) {
-              break label674;
+              break label719;
             }
             i = 1;
             if ((paramMessageRecord.msgtype != -4009) && (paramMessageRecord.msgtype != -4012) && (i == 0)) {
-              break label642;
+              break label652;
             }
             MsgProxyUtils.a((List)localObject1, paramMessageRecord, true);
             if ((paramMessageRecord.msgtype == -2006) && (PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, paramString)) && ((paramMessageRecord instanceof MessageForFoldMsg)) && (!paramMessageRecord.isSend()))
@@ -563,10 +565,8 @@ public class TroopAndDiscMsgProxy
         }
         QLog.d("Q.msg.TroopMsgProxy", 2, "insertToList change seq " + paramMessageRecord.getBaseInfoString());
       }
-      label554:
       paramMessageRecord.shmsgseq = 0L;
       continue;
-      label562:
       if ((((List)localObject1).size() > 200) && (paramMessageRecord.istroop == 1)) {
         if (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager == null)
         {
@@ -576,10 +576,14 @@ public class TroopAndDiscMsgProxy
         {
           QLog.d("yellowye", 2, "list.remove(0)");
           ((List)localObject1).remove(0);
-          break label680;
+          break label725;
           if (paramMessageRecord.msgtype == -4021)
           {
             MsgProxyUtils.b((List)localObject1, paramMessageRecord, true);
+          }
+          else if (((paramMessageRecord instanceof MessageForConfessNews)) && (paramMessageRecord.msgtype == -2065) && (paramMessageRecord.istroop == 1))
+          {
+            MsgProxyUtils.a((List)localObject1, paramMessageRecord, false);
           }
           else
           {
@@ -610,7 +614,7 @@ public class TroopAndDiscMsgProxy
   
   protected void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    ThreadManager.post(new Thread(new ajde(this, paramBoolean), "report_troop_aio_break"), 5, null, true);
+    ThreadManager.post(new Thread(new ajih(this, paramBoolean), "report_troop_aio_break"), 5, null, true);
   }
   
   public MessageRecord b(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3)
@@ -859,7 +863,7 @@ public class TroopAndDiscMsgProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAndDiscMsgProxy
  * JD-Core Version:    0.7.0.1
  */

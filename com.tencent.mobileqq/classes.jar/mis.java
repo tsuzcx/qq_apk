@@ -1,89 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
 public class mis
-  implements Runnable
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public mis(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public mis(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
   
-  public void run()
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    int k = 2;
-    boolean bool;
-    String str;
-    label90:
-    int i;
-    int j;
-    if (!ReadInJoyListViewGroup.a(this.a)) {
-      if ((this.a.a() instanceof BaseActivity))
-      {
-        bool = SharedPreUtils.v(this.a.getContext(), ((BaseActivity)this.a.a()).getCurrentAccountUin());
-        if ((this.a.getContext() instanceof BaseActivity))
-        {
-          str = ((ReadInJoySkinManager)((BaseActivity)this.a.getContext()).app.getManager(260)).a();
-          if ((TextUtils.isEmpty(str)) || (str.equals("0")))
-          {
-            i = 0;
-            str = "0";
-            j = 0;
-            if (!(this.a.getContext() instanceof BaseActivity)) {
-              break label380;
-            }
-            ReadInJoyRefreshManager localReadInJoyRefreshManager = (ReadInJoyRefreshManager)((BaseActivity)this.a.getContext()).app.getManager(269);
-            if ((localReadInJoyRefreshManager.a() != 1) || (!localReadInJoyRefreshManager.a())) {
-              break label380;
-            }
-            str = localReadInJoyRefreshManager.a();
-            j = 0;
-            i = k;
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " ERROR code: " + paramInt);
     }
-    for (;;)
-    {
-      if (this.a.a == 40677)
-      {
-        PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8009294", "0X8009294", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(this.a.a, str, j, i), false);
-        PublicAccountReportUtils.a("0X8009294", "", "", "", "", ReadInJoyUtils.a(this.a.a));
-      }
-      for (;;)
-      {
-        if (this.a.a == 56) {
-          PublicAccountReportUtils.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", VideoReporter.a(this.a.a, null), false);
-        }
-        return;
-        if (bool)
-        {
-          i = 1;
-          j = 1;
-          break;
-        }
-        i = 1;
-        j = 2;
-        break;
-        PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F8", "0X80066F8", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(this.a.a, str, j, i), false);
-        PublicAccountReportUtils.a("0X80066F8", "", "", "", "", ReadInJoyUtils.a(this.a.a));
-      }
-      label380:
-      continue;
-      str = "0";
-      break label90;
-      bool = false;
-      break;
-      i = 0;
-      str = "0";
-      j = 0;
+    ThreadManager.post(new miv(this.a, false), 5, null, true);
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
     }
+    ThreadManager.post(new miv(this.a, true), 5, null, true);
   }
 }
 

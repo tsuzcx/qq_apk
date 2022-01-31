@@ -40,11 +40,7 @@ public class OfflineUpdateStatus
   
   public void a(int paramInt)
   {
-    this.c = paramInt;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadedBack2)localIterator.next()).a(paramInt);
-    }
+    this.b = paramInt;
   }
   
   public void a(LoadedBack2 paramLoadedBack2)
@@ -54,22 +50,9 @@ public class OfflineUpdateStatus
     }
   }
   
-  public void a(String paramString, int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadedBack2)localIterator.next()).a(paramString, paramInt);
-    }
-  }
-  
   public int b()
   {
     return this.b;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.b = paramInt;
   }
   
   public void b(LoadedBack2 paramLoadedBack2)
@@ -80,6 +63,23 @@ public class OfflineUpdateStatus
   public int c()
   {
     return this.c;
+  }
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadedBack2)localIterator.next()).loaded(paramString, paramInt);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    this.c = paramInt;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadedBack2)localIterator.next()).progress(paramInt);
+    }
   }
 }
 

@@ -1,22 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.network.request.GetFeedFeatureRequest;
+import com.tencent.biz.qqstory.network.response.GetFeedFeatureResponse;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.GetFeedIdListResult;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedAllInfoPullSegment;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.JobContext;
+import java.util.Vector;
 
 public class odg
-  implements View.OnClickListener
+  implements CmdTaskManger.CommandCallback
 {
-  public odg(EditPicQzonePublishActivity paramEditPicQzonePublishActivity) {}
+  public odg(HomeFeedAllInfoPullSegment paramHomeFeedAllInfoPullSegment, JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull GetFeedFeatureRequest paramGetFeedFeatureRequest, @Nullable GetFeedFeatureResponse paramGetFeedFeatureResponse, @NonNull ErrorMessage arg3)
   {
-    if (!EditPicQzonePublishActivity.a(this.a))
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      EditPicQzonePublishActivity.a(this.a);
+      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "segment cancel on net respond");
       return;
     }
-    EditPicQzonePublishActivity.a(this.a, false);
-    EditPicQzonePublishActivity.a(this.a).setSelected(false);
+    if ((paramGetFeedFeatureResponse == null) || (???.isFail())) {
+      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feature request, %s", new Object[] { ???.toString() });
+    }
+    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
+    {
+      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, paramGetFeedFeatureResponse);
+      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramGetFeedFeatureRequest);
+      HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
+      return;
+    }
   }
 }
 

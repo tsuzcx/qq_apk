@@ -1,9 +1,9 @@
 package cooperation.qqindividuality.ipc;
 
-import amqd;
-import amqe;
-import amqf;
-import amqg;
+import amxo;
+import amxp;
+import amxq;
+import amxr;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ClubContentUpdateHandler;
@@ -38,13 +38,13 @@ public class IndividualityRemoteCommandHandler
           ClubContentUpdateHandler.a((QQAppInterface)localObject);
           return true;
           paramBundle = (UniPayHandler)((QQAppInterface)localObject).a(44);
-          paramBundle.a(new amqd(this));
+          paramBundle.a(new amxo(this));
           paramBundle.a("");
           return true;
           paramBundle = (ConfigHandler)((QQAppInterface)localObject).a(4);
           paramBundle.a(null, new GetResourceReqInfo[] { paramBundle.d() });
           return true;
-          ((QQAppInterface)localObject).addObserver(new amqe(this));
+          ((QQAppInterface)localObject).addObserver(new amxp(this));
           return true;
           boolean bool = paramBundle.getBoolean("visible");
           ((LBSHandler)((QQAppInterface)localObject).a(3)).a(bool);
@@ -80,9 +80,9 @@ public class IndividualityRemoteCommandHandler
         } while (paramBundle == null);
         paramBundle.a(str1, str2, 255, paramInt);
         return true;
-        ((QQAppInterface)localObject).addObserver(new amqf(this));
+        ((QQAppInterface)localObject).addObserver(new amxq(this));
         return true;
-        ((QQAppInterface)localObject).registObserver(new amqg(this, null));
+        ((QQAppInterface)localObject).registObserver(new amxr(this, null));
         return true;
         paramBundle = (SignatureHandler)((QQAppInterface)localObject).a(41);
       } while (paramBundle == null);

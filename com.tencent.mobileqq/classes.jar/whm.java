@@ -1,18 +1,19 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleReceiverAnimationRunnable;
 
 public class whm
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
-  public whm(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public whm(StickerBubbleReceiverAnimationRunnable paramStickerBubbleReceiverAnimationRunnable) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    if (StickerBubbleReceiverAnimationRunnable.a(this.a))
+    {
+      StickerBubbleAnimationHelper.a(this.a, StickerBubbleReceiverAnimationRunnable.a(this.a));
+      StickerBubbleReceiverAnimationRunnable.a(this.a, false);
+      StickerBubbleReceiverAnimationRunnable.b(this.a, false);
+    }
   }
 }
 

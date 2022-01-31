@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mqp.app.sec.ScConfigManager;
+import android.net.Uri;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
 public class akze
   implements Runnable
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public akze(ScConfigManager paramScConfigManager, QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public akze(WebSoService paramWebSoService, String paramString1, String paramString2, String paramString3, Uri paramUri, WebSoService.WebSoState paramWebSoState, boolean paramBoolean, WebSoService.CallBack paramCallBack) {}
   
   public void run()
   {
-    ScConfigManager.a(this.jdField_a_of_type_ComTencentMqpAppSecScConfigManager, this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMqpAppSecScConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    String str = this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState, this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack == null) {
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a(str);
   }
 }
 

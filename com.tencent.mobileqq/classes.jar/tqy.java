@@ -1,29 +1,31 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
-import java.util.ArrayList;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class tqy
-  implements ScoreQAVFragment.OnItemClickListener
+  implements Runnable
 {
-  public tqy(ScoreQAVFragment paramScoreQAVFragment) {}
+  public tqy(QQSettingMe paramQQSettingMe) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    paramView = (Button)paramView.findViewById(2131366251);
-    if (paramView.isSelected())
+    QQSettingMe.a(this.a).setVisibility(8);
+    QQSettingMe.b(this.a).setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "drawer", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1);
+    if (QQSettingMe.a(this.a) == null)
     {
-      paramView.setSelected(false);
-      this.a.a(paramInt);
-      if (this.a.a.size() != 0) {}
+      PropertyValuesHolder localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat("alpha", new float[] { 1.0F, 0.0F });
+      PropertyValuesHolder localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, 0.0F });
+      PropertyValuesHolder localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, 0.0F });
+      QQSettingMe.a(this.a, ObjectAnimator.ofPropertyValuesHolder(QQSettingMe.a(this.a), new PropertyValuesHolder[] { localPropertyValuesHolder1, localPropertyValuesHolder2, localPropertyValuesHolder3 }));
+      QQSettingMe.a(this.a).setDuration(200L);
+      QQSettingMe.a(this.a).addListener(new tqz(this));
     }
-    do
-    {
-      return;
-      paramView.setSelected(true);
-      this.a.a.add(Integer.valueOf(paramInt));
-    } while (this.a.a.size() <= 0);
+    QQSettingMe.b(this.a, true);
+    QQSettingMe.a(this.a).start();
   }
 }
 

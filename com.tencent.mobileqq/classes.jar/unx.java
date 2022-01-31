@@ -1,12 +1,20 @@
-import com.tencent.mobileqq.activity.aio.anim.VipPendantDrawable;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.GridCallBack;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
 public class unx
+  implements ActivateFriendGrid.GridCallBack
 {
-  public String a;
+  public unx(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  public unx(VipPendantDrawable paramVipPendantDrawable, String paramString)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramInt > 0)
+    {
+      this.a.a.setEnabled(true);
+      return;
+    }
+    this.a.a.setEnabled(false);
   }
 }
 

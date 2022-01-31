@@ -1,19 +1,17 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuTextBuilder;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import java.util.ArrayList;
 
 public class ljc
-  extends Editable.Factory
+  extends PublicAccountObserver
 {
-  public ljc(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public ljc(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void a(boolean paramBoolean, ArrayList paramArrayList)
   {
-    if ((paramCharSequence instanceof BiuTextBuilder)) {
-      return (Editable)paramCharSequence;
+    if (paramBoolean) {
+      ReadInJoyDeliverBiuActivity.a(this.a, paramArrayList);
     }
-    return new BiuTextBuilder(paramCharSequence, 3, 20);
   }
 }
 

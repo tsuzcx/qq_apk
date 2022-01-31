@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import abyr;
+import acgr;
 import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -435,7 +435,7 @@ public class ComboUIManager
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    new Handler(Looper.getMainLooper()).post(new abyr(this));
+    new Handler(Looper.getMainLooper()).post(new acgr(this));
   }
 }
 

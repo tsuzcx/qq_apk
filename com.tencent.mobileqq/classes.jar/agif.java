@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.olympic.OlyimpicConfig;
 
-class agif
-  implements Runnable
+public final class agif
+  implements Parcelable.Creator
 {
-  agif(aghx paramaghx, String paramString, boolean paramBoolean, int paramInt) {}
-  
-  public void run()
+  public OlyimpicConfig a(Parcel paramParcel)
   {
-    ScanTorchActivity.a(this.jdField_a_of_type_Aghx.a, false, 0);
-    ScanTorchActivity.a(this.jdField_a_of_type_Aghx.a, this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    return new OlyimpicConfig(paramParcel);
+  }
+  
+  public OlyimpicConfig[] a(int paramInt)
+  {
+    return new OlyimpicConfig[paramInt];
   }
 }
 

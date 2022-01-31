@@ -59,27 +59,27 @@ public class VoteEventMgr
     Object localObject1;
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Stop) || (bool))
     {
-      Object localObject2 = BitmapManager.a(localBaseApplication.getResources(), 2130842669);
+      Object localObject2 = BitmapManager.a(localBaseApplication.getResources(), 2130842704);
       localObject1 = new NotificationCompat.Builder(localBaseApplication).setContentTitle(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.jdField_b_of_type_JavaLangString).setAutoCancel(true).setSmallIcon(BaseApplicationImpl.appnewmsgicon).setTicker(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.jdField_b_of_type_JavaLangString).setWhen(System.currentTimeMillis());
       if (localObject2 != null) {
         ((NotificationCompat.Builder)localObject1).setLargeIcon((Bitmap)localObject2);
       }
       if (Build.VERSION.SDK_INT < 11) {
-        ((NotificationCompat.Builder)localObject1).setSmallIcon(2130842669);
+        ((NotificationCompat.Builder)localObject1).setSmallIcon(2130842704);
       }
       if (Build.VERSION.SDK_INT >= 16)
       {
-        localObject2 = new RemoteViews(localBaseApplication.getPackageName(), 2130970311);
+        localObject2 = new RemoteViews(localBaseApplication.getPackageName(), 2130970326);
         ((NotificationCompat.Builder)localObject1).setContent((RemoteViews)localObject2);
-        ((RemoteViews)localObject2).setCharSequence(2131363378, "setText", this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.jdField_b_of_type_JavaLangString);
-        ((RemoteViews)localObject2).setCharSequence(2131366704, "setText", TimeFormatterUtils.a(System.currentTimeMillis(), true, "yyyy-MM-dd"));
+        ((RemoteViews)localObject2).setCharSequence(2131363397, "setText", this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemVoteData.jdField_b_of_type_JavaLangString);
+        ((RemoteViews)localObject2).setCharSequence(2131366702, "setText", TimeFormatterUtils.a(System.currentTimeMillis(), true, "yyyy-MM-dd"));
       }
       ((NotificationCompat.Builder)localObject1).setContentIntent(PendingIntent.getActivity(localBaseApplication, 0, a(localBaseApplication), 134217728));
       localObject1 = ((NotificationCompat.Builder)localObject1).build();
       ((Notification)localObject1).flags |= 0x10;
       ((Notification)localObject1).defaults |= 0x1;
       ((Notification)localObject1).defaults |= 0x4;
-      ((Notification)localObject1).icon = 2130842669;
+      ((Notification)localObject1).icon = 2130842704;
       localObject2 = new QNotificationManager(localBaseApplication);
       if (localObject2 != null)
       {
@@ -91,7 +91,7 @@ public class VoteEventMgr
     if (bool)
     {
       localObject1 = (QQLSRecentManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(71);
-      if (SettingCloneUtil.readValue(localBaseApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localBaseApplication.getString(2131435404), "qqsetting_lock_screen_whenexit_key", true))
+      if (SettingCloneUtil.readValue(localBaseApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localBaseApplication.getString(2131435420), "qqsetting_lock_screen_whenexit_key", true))
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQLSActivity", 2, "videochatting start lsActivity from appinterface VoteEventMgr.notifyVoteEvent");

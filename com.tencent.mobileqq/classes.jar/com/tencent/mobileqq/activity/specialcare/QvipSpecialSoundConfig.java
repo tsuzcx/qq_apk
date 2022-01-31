@@ -5,7 +5,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yfj;
+import yls;
 
 public class QvipSpecialSoundConfig
 {
@@ -39,7 +39,7 @@ public class QvipSpecialSoundConfig
           if (i >= j) {
             break;
           }
-          paramJSONObject = yfj.a(localJSONArray.getJSONObject(i));
+          paramJSONObject = yls.a(localJSONArray.getJSONObject(i));
           localQvipSpecialSoundConfig.a.add(paramJSONObject);
           i += 1;
         }

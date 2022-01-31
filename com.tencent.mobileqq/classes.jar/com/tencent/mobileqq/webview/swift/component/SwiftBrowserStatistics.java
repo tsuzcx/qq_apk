@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import akpy;
-import akpz;
-import akqa;
-import akqb;
-import akqc;
+import akxp;
+import akxq;
+import akxr;
+import akxs;
+import akxt;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -256,7 +256,7 @@ public class SwiftBrowserStatistics
       ReportController.b(null, "dc00899", "grp_lbs", "", this.jdField_a_of_type_JavaLangString, "visit_time", 0, 1, 0, "" + localSharedPreferences.getInt("charm_level", 0), "" + localSharedPreferences.getInt("gender", 0), "" + (l1 - l2), "");
     }
     if ((this.jdField_c_of_type_Boolean) && (!this.jdField_g_of_type_Boolean) && (!PushReportController.jdField_a_of_type_Boolean)) {
-      ThreadManager.getFileThreadHandler().postDelayed(new akpz(this, localAppRuntime), 1000L);
+      ThreadManager.getFileThreadHandler().postDelayed(new akxq(this, localAppRuntime), 1000L);
     }
   }
   
@@ -395,7 +395,7 @@ public class SwiftBrowserStatistics
         String str2 = "UNKNOWN";
       }
     }
-    ThreadManager.post(new akqb(this, paramString, paramContext, System.currentTimeMillis(), str1), 5, null, false);
+    ThreadManager.post(new akxs(this, paramString, paramContext, System.currentTimeMillis(), str1), 5, null, false);
   }
   
   public void a(Intent paramIntent)
@@ -654,7 +654,7 @@ public class SwiftBrowserStatistics
   
   public void a(TouchWebView paramTouchWebView, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String... paramVarArgs)
   {
-    ThreadManager.post(new akqc(this, paramTouchWebView, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramVarArgs), 5, null, false);
+    ThreadManager.post(new akxt(this, paramTouchWebView, paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramVarArgs), 5, null, false);
   }
   
   public void a(String paramString)
@@ -708,7 +708,7 @@ public class SwiftBrowserStatistics
       }
       if ((this.l) && (this.jdField_a_of_type_JavaLangRunnable == null))
       {
-        this.jdField_a_of_type_JavaLangRunnable = new akpy(this);
+        this.jdField_a_of_type_JavaLangRunnable = new akxp(this);
         ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
       }
       this.jdField_e_of_type_Long = System.currentTimeMillis();
@@ -726,7 +726,7 @@ public class SwiftBrowserStatistics
     while ((!this.jdField_e_of_type_Boolean) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    ThreadManager.post(new akqa(this, paramString, paramInt), 5, null, false);
+    ThreadManager.post(new akxr(this, paramString, paramInt), 5, null, false);
   }
   
   public void b()
@@ -781,7 +781,7 @@ public class SwiftBrowserStatistics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics
  * JD-Core Version:    0.7.0.1
  */

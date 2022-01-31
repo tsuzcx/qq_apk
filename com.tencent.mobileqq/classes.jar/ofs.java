@@ -1,16 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.SimpleStepResultCallback;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
 
 public class ofs
-  implements Runnable
+  implements SimpleStep.SimpleStepResultCallback
 {
-  public ofs(EditVideoPartManager paramEditVideoPartManager) {}
+  public ofs(NewMyStorySegment paramNewMyStorySegment, String paramString) {}
   
-  public void run()
+  public void a(GetMyStoryVideoListStep.Result paramResult)
   {
-    Bitmap localBitmap = this.a.a();
-    this.a.a.a(localBitmap);
+    if ((paramResult.a != null) && (TextUtils.equals(paramResult.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    {
+      NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).a = paramResult.a;
+      NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).sendMessage(NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).obtainMessage(0, NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment)));
+    }
   }
 }
 

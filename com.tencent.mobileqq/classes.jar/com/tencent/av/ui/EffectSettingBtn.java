@@ -16,20 +16,20 @@ import com.tencent.av.utils.UITools;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import jti;
-import jtj;
-import jtk;
-import jtl;
-import jtm;
+import jvm;
+import jvn;
+import jvo;
+import jvp;
+import jvq;
 
 public class EffectSettingBtn
 {
-  final int jdField_a_of_type_Int = 2131365945;
+  final int jdField_a_of_type_Int = 2131365950;
   public View a;
   public PopupWindow a;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public VideoAppInterface a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new jtj(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new jvn(this);
   WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
   boolean jdField_a_of_type_Boolean = false;
   private Runnable b;
@@ -39,18 +39,18 @@ public class EffectSettingBtn
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangRunnable = new jtk(this);
+    this.jdField_b_of_type_JavaLangRunnable = new jvo(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAVActivity);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
     QLog.d("qav_face_guide", 1, "EffectSettingBtn, mParent[" + this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new jti(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new jvm(this));
   }
   
   private void a(TextView paramTextView)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365945) != null)
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365950) != null)
     {
       paramTextView.setVisibility(0);
       return;
@@ -120,7 +120,7 @@ public class EffectSettingBtn
     }
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365945);
+      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365950);
       if (localTextView != null)
       {
         localTextView.setVisibility(8);
@@ -155,18 +155,18 @@ public class EffectSettingBtn
     } while (localObject3 == null);
     Object localObject1 = null;
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      localObject1 = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365945);
+      localObject1 = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365950);
     }
     Object localObject2 = localObject1;
     if (localObject1 == null)
     {
       localObject2 = new TextView(this.jdField_a_of_type_AndroidViewView.getContext());
-      ((TextView)localObject2).setBackgroundResource(2130840201);
+      ((TextView)localObject2).setBackgroundResource(2130840216);
       ((TextView)localObject2).setText("左右分屏，互动更有趣。");
       ((TextView)localObject2).setTextColor(-1);
       ((TextView)localObject2).setTextSize(1, 15.0F);
       ((TextView)localObject2).setPadding(0, 0, 0, 0);
-      ((TextView)localObject2).setId(2131365945);
+      ((TextView)localObject2).setId(2131365950);
       ((TextView)localObject2).setPadding(AIOUtils.a(9.25F, this.jdField_a_of_type_AndroidViewView.getResources()), AIOUtils.a(6.5F, this.jdField_a_of_type_AndroidViewView.getResources()), AIOUtils.a(1.0F, this.jdField_a_of_type_AndroidViewView.getResources()), AIOUtils.a(14.5F, this.jdField_a_of_type_AndroidViewView.getResources()));
     }
     ((TextView)localObject2).measure(0, 0);
@@ -185,14 +185,14 @@ public class EffectSettingBtn
     localLayoutParams.setMargins(0, 0, (int)f1, (int)f2);
     ((TextView)localObject2).setLayoutParams(localLayoutParams);
     QLog.d("qav_face_guide", 1, "qav_face_guide, location_Host[" + localObject1[0] + ", " + localObject1[1] + "], location_Host_RB[" + localObject3[0] + ", " + localObject3[1] + "], offsetDP_right[" + 0.0F + "], offsetDP_bottom[" + 11.0F + "], pos_right[" + f1 + "], pos_bottom[" + f2 + "], hostID[" + this.jdField_a_of_type_AndroidViewView.getId() + "], Width[" + this.jdField_a_of_type_AndroidViewView.getWidth() + "], Height[" + this.jdField_a_of_type_AndroidViewView.getHeight() + "]");
-    ((TextView)localObject2).getViewTreeObserver().addOnPreDrawListener(new jtl(this, (TextView)localObject2));
+    ((TextView)localObject2).getViewTreeObserver().addOnPreDrawListener(new jvp(this, (TextView)localObject2));
     e();
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
       b((TextView)localObject2);
     }
     for (;;)
     {
-      ((TextView)localObject2).setOnClickListener(new jtm(this));
+      ((TextView)localObject2).setOnClickListener(new jvq(this));
       return;
       a((TextView)localObject2);
     }
@@ -226,7 +226,7 @@ public class EffectSettingBtn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingBtn
  * JD-Core Version:    0.7.0.1
  */

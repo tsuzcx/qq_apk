@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import anv;
+import anx;
 import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -117,28 +117,28 @@ public class LbsPackShareOption
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430108);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430110);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838341;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.c = 2;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430114);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838337;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430116);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838342;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.c = 3;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430126);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838340;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430128);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838345;
     localActionSheetItem.c = 9;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430127);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838334;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430129);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838339;
     localActionSheetItem.c = 10;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
@@ -150,7 +150,7 @@ public class LbsPackShareOption
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(paramActivity);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(paramActivity.getString(2131433100));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(paramActivity.getString(2131433114));
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(a(paramActivity));
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this);
     }
@@ -194,7 +194,7 @@ public class LbsPackShareOption
       return;
     case 2: 
       localObject1 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(1).a(paramAdapterView).c((String)localObject1).a();
-      ((AbsShareMsg)localObject1).mSourceName = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131438773);
+      ((AbsShareMsg)localObject1).mSourceName = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131438796);
       localObject2 = StructMsgElementFactory.a(2);
       ((AbsStructMsgItem)localObject2).a("http://hb.url.cn/myapp/qq_desk/LBShongbaotest/share_icon01.png", paramAdapterView, paramView);
       ((AbsShareMsg)localObject1).addItem((AbsStructMsgElement)localObject2);
@@ -218,25 +218,25 @@ public class LbsPackShareOption
     }
     int i = -1;
     if (!WXShareHelper.a().a()) {
-      i = 2131435319;
+      i = 2131435335;
     }
     while (i != -1)
     {
       QRUtils.a(1, i);
       return;
       if (!WXShareHelper.a().b()) {
-        i = 2131435320;
+        i = 2131435336;
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new anv(this, j);
+      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new anx(this, j);
       WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
     }
     this.jdField_a_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
     try
     {
-      paramAdapterView = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130842660);
+      paramAdapterView = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), 2130842695);
       localObject3 = WXShareHelper.a();
       String str = this.jdField_a_of_type_JavaLangString;
       localObject2 = ((LbsPackManager)localObject2).a(true);

@@ -1,26 +1,12 @@
-import android.animation.TypeEvaluator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class ose
-  implements TypeEvaluator
+class ose
+  implements View.OnClickListener
 {
-  private osd a;
+  ose(osd paramosd) {}
   
-  public osd a(float paramFloat, osd paramosd1, osd paramosd2)
-  {
-    float f1 = paramosd1.a + (paramosd2.a - paramosd1.a) * paramFloat;
-    float f2 = paramosd1.b + (paramosd2.b - paramosd1.b) * paramFloat;
-    paramFloat = paramosd1.c + (paramosd2.c - paramosd1.c) * paramFloat;
-    if (this.a == null) {
-      this.a = new osd(f1, f2, paramFloat);
-    }
-    for (;;)
-    {
-      return this.a;
-      this.a.a = f1;
-      this.a.b = f2;
-      this.a.c = paramFloat;
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

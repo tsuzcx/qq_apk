@@ -1,21 +1,13 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
 
-class nlh
+public class nlh
   implements Runnable
 {
-  nlh(nlg paramnlg, ArrayList paramArrayList) {}
+  public nlh(ShareModeBase paramShareModeBase) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nlg.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.setVisibility(8);
-    this.jdField_a_of_type_Nlg.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Nlg.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_Nlg.a.jdField_a_of_type_AndroidOsHandler.post(new nli(this));
+    ShareModeBase.a(this.a, ShareModeBase.a(this.a));
   }
 }
 

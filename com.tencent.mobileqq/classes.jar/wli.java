@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.book.ResizeLayout;
+import com.tencent.mobileqq.activity.book.ResizeLayout.OnResizeListener;
 
 public class wli
   implements Runnable
 {
-  public wli(TroopActivity paramTroopActivity) {}
+  public wli(ResizeLayout paramResizeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    ResizeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout).a(this.jdField_a_of_type_Int, this.b, this.c, this.d);
   }
 }
 

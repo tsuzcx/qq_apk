@@ -1,35 +1,28 @@
-import android.util.Log;
-import com.tencent.mobileqq.apollo.GLTextureView.EGLWindowSurfaceFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
+import com.tencent.mobileqq.adapter.DiscussionListAdapter2.DiscussionListListener;
 
 public class ynn
-  implements GLTextureView.EGLWindowSurfaceFactory
+  implements View.OnClickListener
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
-  {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
-    }
-    catch (Throwable paramEGL10)
-    {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
-    }
-    return null;
-  }
+  public ynn(DiscussionListAdapter2 paramDiscussionListAdapter2) {}
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  public void onClick(View paramView)
   {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
+    paramView = paramView.getTag();
+    if (!(paramView instanceof ynp)) {}
+    do
+    {
+      return;
+      paramView = (ynp)paramView;
+    } while ((paramView.a == null) || (this.a.a == null));
+    this.a.a.a(paramView.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ynn
  * JD-Core Version:    0.7.0.1
  */

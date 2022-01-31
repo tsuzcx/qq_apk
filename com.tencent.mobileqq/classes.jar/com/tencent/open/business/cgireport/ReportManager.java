@@ -1,6 +1,6 @@
 package com.tencent.open.business.cgireport;
 
-import alfv;
+import alnn;
 import android.os.Bundle;
 import android.os.SystemClock;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -602,7 +602,7 @@ public class ReportManager
   
   protected void a(String paramString1, String paramString2, Bundle paramBundle)
   {
-    ThreadManager.executeOnNetWorkThread(new alfv(this, paramString1, paramBundle));
+    ThreadManager.executeOnNetWorkThread(new alnn(this, paramString1, paramBundle));
   }
   
   protected boolean a()

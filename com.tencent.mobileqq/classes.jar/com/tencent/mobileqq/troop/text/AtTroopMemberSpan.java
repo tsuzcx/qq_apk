@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.text;
 
-import ajmk;
+import ajtw;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -177,7 +177,7 @@ public class AtTroopMemberSpan
       return localStringBuffer.toString();
     }
     if (arrayOfAtTroopMemberSpan.length > 1) {
-      Arrays.sort(arrayOfAtTroopMemberSpan, new ajmk(paramSpannable));
+      Arrays.sort(arrayOfAtTroopMemberSpan, new ajtw(paramSpannable));
     }
     int i = 0;
     int n;
@@ -476,7 +476,7 @@ public class AtTroopMemberSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.text.AtTroopMemberSpan
  * JD-Core Version:    0.7.0.1
  */

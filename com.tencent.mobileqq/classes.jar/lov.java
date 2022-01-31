@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
 
 public class lov
   implements Runnable
 {
-  public lov(AdvertisementInfoModule paramAdvertisementInfoModule, AdvertisementInfo paramAdvertisementInfo) {}
+  public lov(ReadinjoySPEventReport paramReadinjoySPEventReport) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+    this.a.b();
   }
 }
 

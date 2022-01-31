@@ -1,33 +1,37 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class anjk
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public anjk(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anjk(QZoneDNSAnalyzeJsPlugin paramQZoneDNSAnalyzeJsPlugin, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (QIMEffectCameraCaptureUnit.d(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.d(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.d(this.a).setVisibility(8);
+    int i = HttpUtil.a();
+    if ((i != 0) && (i != -1)) {
+      try
+      {
+        String str = InetAddress.getByName("h5.qzone.qq.com").getHostAddress();
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.jdField_a_of_type_Int + ", Analyze h5.qzone.qq.com ip address : " + str);
+        return;
+      }
+      catch (UnknownHostException localUnknownHostException)
+      {
+        localUnknownHostException.printStackTrace();
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.jdField_a_of_type_Int + ", UnknownHostException:Analyze  h5.qzone.qq.com  ip address failed");
+        return;
+      }
     }
-    this.a.i = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.i = true;
+    QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.jdField_a_of_type_Int + ", No ActiveNetwork, Analyze  h5.qzone.qq.com  ip address failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjk
  * JD-Core Version:    0.7.0.1
  */

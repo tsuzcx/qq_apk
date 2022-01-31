@@ -1,17 +1,26 @@
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadConfig;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.qphone.base.util.QLog;
 
-public final class xlf
+public class xlf
   implements Runnable
 {
-  public xlf(QQAppInterface paramQQAppInterface, int paramInt) {}
+  public xlf(PreloadConfig paramPreloadConfig) {}
   
   public void run()
   {
-    int i = TroopBarAssistantManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).size();
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "0", "0X80064CB", "0X80064CB", 0, 0, "" + this.jdField_a_of_type_Int, "" + i, "", "");
+    synchronized (this.a.mSaveLock)
+    {
+      if (this.a.isModulesChange(this.a.mLastModules))
+      {
+        QWalletTools.a(this.a, this.a.mSavePath);
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadManager", 2, "really save:" + this.a);
+        }
+        this.a.mLastModules = this.a.getCloneModules();
+      }
+      return;
+    }
   }
 }
 

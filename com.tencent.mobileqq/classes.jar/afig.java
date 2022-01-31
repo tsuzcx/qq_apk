@@ -1,43 +1,23 @@
-import android.os.Message;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
 
 public class afig
-  extends TransProcessorHandler
+  implements Runnable
 {
-  public afig(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afig(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    switch (paramMessage.what)
+    Object localObject = (FriendsManager)this.a.a.app.getManager(50);
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((FriendsManager)localObject).a(this.a.a.getCurrentAccountUin()))
     {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-        } while (localFileMsg.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + NearbyPeoplePhotoUploadProcessor.a);
-        }
-      } while (NearbyProfileEditTribePanel.a(this.a) == null);
-      NearbyProfileEditTribePanel.a(this.a).a = NearbyPeoplePhotoUploadProcessor.a;
-      NearbyProfileEditTribePanel.c(this.a);
+      this.a.a.runOnUiThread(new afih(this, (Card)localObject));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
-    }
-    this.a.a.a();
-    this.a.a.b("上传失败");
   }
 }
 

@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
 public class amzf
-  implements Runnable
+  implements URLDrawable.URLDrawableListener
 {
-  public amzf(QZoneShareActivity paramQZoneShareActivity) {}
+  public amzf(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QQToast.a(this.a, this.a.a.msg.get(), 0).a();
+    QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onLoadFialed");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QZoneLiveVideoBaseDownLoadActivty.a(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 

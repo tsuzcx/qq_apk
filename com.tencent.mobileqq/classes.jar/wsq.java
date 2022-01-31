@@ -1,15 +1,28 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.UniPayHandler.UniPayUpdateListener;
+import com.tencent.device.devicemgr.SmartDeviceObserver;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import java.util.ArrayList;
 
 public class wsq
-  extends UniPayHandler.UniPayUpdateListener
+  extends SmartDeviceObserver
 {
-  public wsq(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public wsq(DeviceFragment paramDeviceFragment) {}
   
-  public void a()
+  protected void a(ArrayList paramArrayList)
   {
-    this.a.runOnUiThread(new wsr(this));
+    if (this.a.e)
+    {
+      this.a.e = false;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener.a(2, true, null);
+      }
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.a = ((ArrayList)paramArrayList.clone());
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.notifyDataSetChanged();
   }
 }
 

@@ -112,7 +112,7 @@ public class AnimatableGradientColorValue
       int j = 0;
       int k = 0;
       if (paramObject.length() != this.colorPoints * 4) {
-        Log.w("LOTTIE", "Unexpected gradient length: " + paramObject.length() + ". Expected " + this.colorPoints * 4 + ". This may affect the appearance of the gradient. Make sure to save your After Effects file before exporting an animation with gradients.");
+        Log.w("LOTTIE", "Unexpected gradient length: " + paramObject.length() + ". Expected " + this.colorPoints * 4 + ". This may affect the appearance of the gradient. " + "Make sure to save your After Effects file before exporting an animation with " + "gradients.");
       }
       int i = 0;
       if (i < this.colorPoints * 4)

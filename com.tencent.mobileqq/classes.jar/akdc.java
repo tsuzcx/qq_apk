@@ -1,44 +1,28 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.appcircle.st.STUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.DelayAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.Label;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.Options;
 
 public class akdc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akdc(NewUpgradeDialog paramNewUpgradeDialog, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
+  public akdc(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 2, 200));
-    AppCircleReportManager.a().a(17, STUtils.a(10010, NewUpgradeDialog.a(), 2, 200));
-    if (NewUpgradeDialog.a() == 2) {
-      ReportController.b(null, "dc00898", "", "", "0X8008F80", "0X8008F80", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog, 0);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        DownloadManager.a().b(NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog));
-        this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog.dismiss();
-      }
-      NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog, true);
-      return;
-      ReportController.b(null, "dc00898", "", "", "0X8008F83", "0X8008F83", 0, 0, "", "", "", "");
-    }
+    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView, new Label(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
+    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).a(TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).jdField_a_of_type_Int / 2, TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).b * TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).f / 100);
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView.a(TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView));
+    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).b = 0;
+    DelayAction localDelayAction = new DelayAction(500);
+    localDelayAction.a(new akdd(this));
+    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).a(new Action[] { localDelayAction });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdc
  * JD-Core Version:    0.7.0.1
  */

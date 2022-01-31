@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
 public class ancy
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ancy(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
+  public ancy(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    RemoteHandleManager.a().a().a();
   }
 }
 

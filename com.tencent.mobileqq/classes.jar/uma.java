@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.activity.aio.PanelAdapter;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory.Options;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.util.WeakReferenceHandler;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class uma
   implements Runnable
 {
-  public uma(PlusPanel paramPlusPanel) {}
+  public uma(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
   public void run()
   {
-    int i = 0;
-    while (i < this.a.a.getCount())
+    File localFile1 = new File(EmojiStickerManager.a(), "qvip_profile_diy_card_guide.png");
+    File localFile2 = new File(EmojiStickerManager.a(), "qvip_profile_diy_card_guide_demo.png");
+    if ((localFile1.exists()) && (localFile2.exists()))
     {
-      this.a.a.a(i);
-      i += 1;
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inDensity = 320;
+      localOptions.inTargetDensity = this.a.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi;
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = BitmapManager.a(localFile1.getAbsolutePath(), localOptions);
+      this.a.b = BitmapManager.a(localFile2.getAbsolutePath(), localOptions);
+      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(9);
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      return;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager.a(1004L, "emojiStickerGuideZip_v2", "VipProfileCardDiy");
   }
 }
 

@@ -1,36 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic;
 
 public class ajit
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public ajit(ReciteFragment paramReciteFragment) {}
+  public ajit(TroopCreateLogic paramTroopCreateLogic) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ReciteFragment.a(this.a, false);
-    ReciteFragment.d(this.a);
-    paramDialogInterface = ReciteFragment.a(this.a);
-    String str1;
-    String str2;
-    if (paramDialogInterface != null)
-    {
-      str1 = ReciteFragment.a(this.a).f;
-      str2 = TroopReportor.a(paramDialogInterface, ReciteFragment.a(this.a).f, paramDialogInterface.getCurrentAccountUin());
-      if (ReciteFragment.a(this.a) == null) {
-        break label108;
-      }
-    }
-    label108:
-    for (paramDialogInterface = ReciteFragment.a(this.a).title;; paramDialogInterface = "")
-    {
-      TroopReportor.a("Grp_edu", "Grp_recite", "Out_Recite_Clk", 0, 0, new String[] { str1, str2, paramDialogInterface });
-      return;
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

@@ -8,13 +8,13 @@ import android.widget.FrameLayout;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.views.GdtViewStatus.Listener;
 import com.tencent.mobileqq.utils.ViewUtils;
-import qmq;
+import qrh;
 
 public class GdtFreeFlipView
   extends FrameLayout
 {
   protected int a;
-  private GdtViewStatus.Listener jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus$Listener = new qmq(this);
+  private GdtViewStatus.Listener jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus$Listener = new qrh(this);
   private GdtFreeFlipContentView jdField_a_of_type_ComTencentGdtadViewsFreeflipGdtFreeFlipContentView;
   private boolean jdField_a_of_type_Boolean;
   protected int b;

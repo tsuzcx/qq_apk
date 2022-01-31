@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
 
 public class lqt
   implements Runnable
 {
-  public lqt(ChannelInfoModule paramChannelInfoModule, List paramList) {}
+  public lqt(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, KandianOx210MsgInfo.Biu0x210Msg paramBiu0x210Msg) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(true, this.jdField_a_of_type_JavaUtilList);
+    if (ReadInJoySubscribeFragement.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement) != null) {
+      ReadInJoySubscribeFragement.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement).a(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo$Biu0x210Msg.b), true);
+    }
   }
 }
 

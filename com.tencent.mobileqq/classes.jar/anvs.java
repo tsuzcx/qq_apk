@@ -1,61 +1,30 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPart;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayerExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.util.InputMethodUtil;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import java.util.ArrayList;
 
 public class anvs
-  extends SimpleObserver
+  implements AbsListView.OnScrollListener
 {
-  public anvs(EditWebVideoPartManager paramEditWebVideoPartManager) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void a(GenerateContext paramGenerateContext)
+  public anvs(FacePoiSearchUI paramFacePoiSearchUI) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    super.onNext(paramGenerateContext);
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.f();
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().overridePendingTransition(0, 0);
-    this.a.o();
-    this.a.jdField_b_of_type_Boolean = false;
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((EditVideoPart)localIterator.next()).b(paramGenerateContext);
+    if (paramInt == 1) {
+      InputMethodUtil.b(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.h);
     }
-    this.a.jdField_b_of_type_Boolean = false;
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.f();
-    paramGenerateContext = (EditVideoPlayerExport)this.a.a(EditVideoPlayerExport.class);
-    if (paramGenerateContext != null) {
-      paramGenerateContext.m();
-    }
-    if (this.a.jdField_b_of_type_JavaUtilList.isEmpty())
-    {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
+    while ((paramInt != 0) || (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a.size())) {
       return;
     }
-    QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), "对不起，视频发送失败...", 0).a();
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().finish();
+    FacePoiSearchUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI);
   }
   
-  public void onCancel()
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.onCancel();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    this.a.jdField_b_of_type_JavaUtilList.add(paramError);
-    if (QLog.isColorLevel()) {
-      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
-    }
-    QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), "对不起，视频处理失败...", 0).a();
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().finish();
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
   }
 }
 

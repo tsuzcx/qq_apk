@@ -1,24 +1,20 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyBaseViewController;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import java.io.File;
 
 public class lcv
-  extends GestureDetector.SimpleOnGestureListener
+  implements Runnable
 {
-  private WeakReference a;
+  public lcv(KanDianViewController paramKanDianViewController) {}
   
-  public lcv(ReadInJoyBaseViewController paramReadInJoyBaseViewController)
+  public void run()
   {
-    this.a = new WeakReference(paramReadInJoyBaseViewController);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ReadInJoyBaseViewController)this.a.get()).a(true);
+    String str = CommonSkinRes.e();
+    if ((str != null) && (new File(str).exists()))
+    {
+      KanDianViewController.a(this.a).removeMessages(2);
+      KanDianViewController.a(this.a).sendEmptyMessage(3);
     }
-    return false;
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import akos;
-import akot;
-import akou;
-import akpa;
-import akpb;
+import akwj;
+import akwk;
+import akwl;
+import akwr;
+import akws;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,13 +47,13 @@ public class SwiftBrowserLongClickHandler
   private void a()
   {
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.c(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435871);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435877);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435875);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435887);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435893);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435891);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
     d(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new akpa(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new akpb(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new akwr(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new akws(this));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setCanceledOnTouchOutside(true);
     try
     {
@@ -71,7 +71,7 @@ public class SwiftBrowserLongClickHandler
     if (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
       return;
     }
-    ThreadManager.executeOnFileThread(new akou(this, paramString));
+    ThreadManager.executeOnFileThread(new akwl(this, paramString));
   }
   
   /* Error */
@@ -401,14 +401,14 @@ public class SwiftBrowserLongClickHandler
     //   96: astore 5
     //   98: new 129	java/io/File
     //   101: dup
-    //   102: getstatic 280	com/tencent/mobileqq/app/AppConstants:aP	Ljava/lang/String;
+    //   102: getstatic 280	com/tencent/mobileqq/app/AppConstants:aQ	Ljava/lang/String;
     //   105: invokespecial 254	java/io/File:<init>	(Ljava/lang/String;)V
     //   108: invokevirtual 283	java/io/File:mkdirs	()Z
     //   111: pop
     //   112: new 120	java/lang/StringBuilder
     //   115: dup
     //   116: invokespecial 121	java/lang/StringBuilder:<init>	()V
-    //   119: getstatic 280	com/tencent/mobileqq/app/AppConstants:aP	Ljava/lang/String;
+    //   119: getstatic 280	com/tencent/mobileqq/app/AppConstants:aQ	Ljava/lang/String;
     //   122: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: aload 5
     //   127: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -432,7 +432,7 @@ public class SwiftBrowserLongClickHandler
     //   167: new 120	java/lang/StringBuilder
     //   170: dup
     //   171: invokespecial 121	java/lang/StringBuilder:<init>	()V
-    //   174: getstatic 280	com/tencent/mobileqq/app/AppConstants:aP	Ljava/lang/String;
+    //   174: getstatic 280	com/tencent/mobileqq/app/AppConstants:aQ	Ljava/lang/String;
     //   177: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: aload 5
     //   182: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -515,19 +515,19 @@ public class SwiftBrowserLongClickHandler
     //   343: ifeq +21 -> 364
     //   346: aload_0
     //   347: getfield 23	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   350: new 317	akoy
+    //   350: new 317	akwp
     //   353: dup
     //   354: aload_0
     //   355: aload 7
-    //   357: invokespecial 318	akoy:<init>	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler;Ljava/lang/String;)V
+    //   357: invokespecial 318	akwp:<init>	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler;Ljava/lang/String;)V
     //   360: invokevirtual 321	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
     //   363: return
     //   364: aload_0
     //   365: getfield 23	com/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   368: new 323	akoz
+    //   368: new 323	akwq
     //   371: dup
     //   372: aload_0
-    //   373: invokespecial 324	akoz:<init>	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler;)V
+    //   373: invokespecial 324	akwq:<init>	(Lcom/tencent/mobileqq/webview/swift/component/SwiftBrowserLongClickHandler;)V
     //   376: invokevirtual 321	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
     //   379: return
     //   380: astore 5
@@ -661,12 +661,12 @@ public class SwiftBrowserLongClickHandler
           return true;
         }
         this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.c(this.jdField_a_of_type_AndroidAppActivity);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435586);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435688);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435602);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131435704);
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
         d(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new akos(this));
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new akot(this));
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new akwj(this));
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new akwk(this));
         this.jdField_a_of_type_ComTencentWidgetActionSheet.setCanceledOnTouchOutside(true);
         try
         {
@@ -712,7 +712,7 @@ public class SwiftBrowserLongClickHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler
  * JD-Core Version:    0.7.0.1
  */

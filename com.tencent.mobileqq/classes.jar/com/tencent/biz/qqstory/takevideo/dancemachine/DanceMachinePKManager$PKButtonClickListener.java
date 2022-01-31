@@ -2,9 +2,9 @@ package com.tencent.biz.qqstory.takevideo.dancemachine;
 
 public abstract interface DanceMachinePKManager$PKButtonClickListener
 {
-  public abstract void a(String paramString1, String paramString2);
+  public abstract void L_();
   
-  public abstract void f();
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

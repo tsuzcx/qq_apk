@@ -5,12 +5,12 @@ import android.os.Handler;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
-import ood;
-import ooe;
+import osp;
+import osq;
 
 public final class BetterGestureDetector
 {
-  private final ood a;
+  private final osp a;
   
   public BetterGestureDetector(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
@@ -19,12 +19,12 @@ public final class BetterGestureDetector
   
   public BetterGestureDetector(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
   {
-    this.a = new ooe(paramContext, paramOnGestureListener, paramHandler);
+    this.a = new osq(paramContext, paramOnGestureListener, paramHandler);
   }
   
   public void a(int paramInt)
   {
-    ooe.a(paramInt);
+    osq.a(paramInt);
   }
   
   public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)

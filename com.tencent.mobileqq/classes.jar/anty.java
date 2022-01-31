@@ -1,18 +1,13 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import java.util.concurrent.atomic.AtomicBoolean;
+import dov.com.qq.im.capture.data.CaptureSet;
 
 public class anty
   implements Runnable
 {
-  private anty(EditVideoGuide paramEditVideoGuide) {}
+  public anty(CaptureSet paramCaptureSet) {}
   
   public void run()
   {
-    if (this.a.a.compareAndSet(true, false))
-    {
-      this.a.a(false);
-      this.a.c();
-    }
+    this.a.c();
   }
 }
 

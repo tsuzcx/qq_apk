@@ -1,42 +1,47 @@
-import com.tencent.biz.pubaccount.PublicAccountArticleObserver;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
 
-public class mdm
-  extends PublicAccountArticleObserver
+public final class mdm
+  implements Runnable
 {
-  public mdm(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mdm(AppRuntime paramAppRuntime, String paramString) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onSendArticleLikeReq isSuccess=" + paramBoolean + ", articleID=" + paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onQueryArticleLikeCount isSuccess=" + paramBoolean + ", articleID=" + paramString + ", likeCount=" + paramInt);
-    }
-    if ((paramBoolean) && (paramString != null))
+    try
     {
-      Iterator localIterator = VideoFeedsPlayActivity.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
-        String str = localVideoInfo.a();
-        if ((str != null) && (str.equals(paramString))) {
-          localVideoInfo.l = paramInt;
-        }
+      Object localObject1 = new Bundle();
+      Object localObject2 = (TicketManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(2);
+      Object localObject3 = this.jdField_a_of_type_MqqAppAppRuntime.getAccount();
+      localObject2 = ((TicketManager)localObject2).getSkey(this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
+      ((Bundle)localObject1).putString("Cookie", "uin=o" + (String)localObject3 + "; skey=" + (String)localObject2);
+      ((Bundle)localObject1).putString("User-Agent", ReadInJoyWebDataManager.d());
+      ((Bundle)localObject1).putString("qq", this.jdField_a_of_type_MqqAppAppRuntime.getAccount());
+      ((Bundle)localObject1).putString("bid", "2");
+      ((Bundle)localObject1).putString("logArray", this.jdField_a_of_type_JavaLangString);
+      localObject3 = new HashMap();
+      ((HashMap)localObject3).put("BUNDLE", localObject1);
+      ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
+      if (QLog.isColorLevel()) {
+        QLog.w("ReadInJoyWebDataManager", 2, "sendLog :content :" + this.jdField_a_of_type_JavaLangString);
       }
+      localObject1 = new mdn(this);
+      new HttpWebCgiAsyncTask2("http://node.kandian.qq.com/cgi/stats/multy?g_tk=" + ReadInJoyWebDataManager.a((String)localObject2), "POST", (HttpWebCgiAsyncTask.Callback)localObject1, 0, null).execute(new HashMap[] { localObject3 });
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("ReadInJoyWebDataManager", 2, "sendLog:request err " + localException);
     }
   }
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
 }
 
 

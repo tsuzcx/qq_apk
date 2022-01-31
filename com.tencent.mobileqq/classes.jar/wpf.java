@@ -1,16 +1,17 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.activity.contact.newfriend.QIMNotifyAddFriendBuilder;
+import com.tencent.mobileqq.app.QIMNewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.newfriend.QIMNotifyAddFriendMsg;
 
 public class wpf
   implements Runnable
 {
-  public wpf(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public wpf(QIMNotifyAddFriendBuilder paramQIMNotifyAddFriendBuilder) {}
   
   public void run()
   {
-    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
-    EmoticonGroupStoreFragment.c(this.a).setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQIMNewFriendManager.b(((QIMNotifyAddFriendMsg)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wpg(this));
   }
 }
 

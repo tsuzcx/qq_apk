@@ -1,25 +1,60 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.av.ui.BeautyToolbar;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.widget.BidirectionSeekBar;
 
-class jsw
-  implements Runnable
+public class jsw
+  implements SeekBar.OnSeekBarChangeListener
 {
-  jsw(jsv paramjsv, long paramLong1, long paramLong2) {}
+  public jsw(BeautyToolbar paramBeautyToolbar) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Jsv.a.a != null) && (this.jdField_a_of_type_Jsv.a.a.a() != null))
+    if (this.a.mBeautyValue != paramInt)
     {
-      QLog.d(this.jdField_a_of_type_Jsv.a.c, 1, "AsyncReadDoubleGlassConfig Timer lCurrent=" + this.jdField_a_of_type_Long + ", lLastTick=" + this.b + ", mCurrentVideoGlassWaitTime=" + this.jdField_a_of_type_Jsv.a.a.a().Q + ", mCurrentDefaultTimeOutRule=" + this.jdField_a_of_type_Jsv.a.a.a().R + ", mCurrentVideoGlassSwitch=" + this.jdField_a_of_type_Jsv.a.a.a().P);
-      this.jdField_a_of_type_Jsv.a.k(this.jdField_a_of_type_Jsv.a.a.a().R);
+      this.a.applyBeautyValue(paramInt);
+      this.a.updateTip(paramInt);
+      if ((paramInt != 0) || (this.a.mBeautyValue <= 0)) {
+        break label142;
+      }
+      this.a.mSeek.setThumb(this.a.mThumb_0);
     }
+    for (;;)
+    {
+      if (paramBoolean) {
+        this.a.mSeek.setContentDescription(this.a.mContext.getResources().getString(2131429260) + paramInt + "%");
+      }
+      this.a.mBeautyValue = paramInt;
+      this.a.applyBeautyValue(this.a.mBeautyValue);
+      EffectSettingUi.a(this.a.mApp);
+      return;
+      label142:
+      if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
+        this.a.mSeek.setThumb(this.a.mThumb_30);
+      } else if ((paramInt > 30) && (paramInt <= 60) && ((this.a.mBeautyValue <= 30) || (this.a.mBeautyValue > 60))) {
+        this.a.mSeek.setThumb(this.a.mThumb_60);
+      } else if ((paramInt > 60) && (paramInt <= 100) && ((this.a.mBeautyValue <= 60) || (this.a.mBeautyValue > 100))) {
+        this.a.mSeek.setThumb(this.a.mThumb_100);
+      }
+    }
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    EffectSettingUi.a(this.a.mApp);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    EffectSettingUi.a(this.a.mApp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jsw
  * JD-Core Version:    0.7.0.1
  */

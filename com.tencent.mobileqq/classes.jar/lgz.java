@@ -1,14 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lgz
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public lgz(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lgz(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ReadInJoyCameraCaptureActivity.b(this.a, ReadInJoyCameraCaptureActivity.c(this.a));
-    ReadInJoyCameraCaptureActivity.a(this.a);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.b(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.d(this.a, false);
+      ReadInJoySettingActivity.c(this.a, ReadInJoySettingActivity.c(this.a));
+    }
   }
 }
 

@@ -1,13 +1,42 @@
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
-class ygc
-  implements Runnable
+public class ygc
+  extends ContactBindObserver
 {
-  ygc(ygb paramygb) {}
+  public ygc(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.e();
+    this.a.a.unRegistObserver(this);
+    switch (PhoneContactTabView.a(this.a).c())
+    {
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      PhoneContactTabView.b(this.a);
+      return;
+    case 9: 
+      this.a.d();
+      return;
+    case 0: 
+    case 1: 
+    case 5: 
+    case 7: 
+      PhoneContactTabView.a(this.a);
+      return;
+    }
+    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
+    {
+      this.a.d();
+      return;
+    }
+    PhoneContactTabView.a(this.a);
   }
 }
 

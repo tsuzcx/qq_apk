@@ -25,18 +25,18 @@ public class BinHaiMsgDialog
   public BinHaiMsgDialog(Context paramContext)
   {
     super(paramContext, a());
-    setContentView(2130970194);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363632));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366788));
+    setContentView(2130970209);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363651));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366786));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    findViewById(2131369493).setOnClickListener(this);
+    findViewById(2131369502).setOnClickListener(this);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
-      findViewById(2131369491).setPadding(0, ImmersiveUtils.a(paramContext), 0, 0);
+      findViewById(2131369500).setPadding(0, ImmersiveUtils.a(paramContext), 0, 0);
     }
     if (a())
     {
-      findViewById(2131362840).setBackgroundColor(0);
-      findViewById(2131369491).setVisibility(8);
+      findViewById(2131362845).setBackgroundColor(0);
+      findViewById(2131369500).setVisibility(8);
     }
   }
   
@@ -66,7 +66,7 @@ public class BinHaiMsgDialog
   
   public void a(String paramString, Bitmap paramBitmap)
   {
-    ((ImageView)findViewById(2131362745)).setImageBitmap(paramBitmap);
+    ((ImageView)findViewById(2131362750)).setImageBitmap(paramBitmap);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
@@ -82,7 +82,7 @@ public class BinHaiMsgDialog
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369493) {
+    if (paramView.getId() == 2131369502) {
       if (this.jdField_a_of_type_ComTencentMobileqqBinhaiBinHaiMsgDialog$Listener != null) {
         this.jdField_a_of_type_ComTencentMobileqqBinhaiBinHaiMsgDialog$Listener.c(this);
       }

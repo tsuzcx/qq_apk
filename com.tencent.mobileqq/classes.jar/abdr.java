@@ -1,30 +1,43 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppSSO;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IRequestArkAppListHandler;
 
-public class abdr
-  implements TVK_SDKMgr.InstallListener
+public final class abdr
+  implements Runnable
 {
-  public abdr(ShopScanActivity paramShopScanActivity) {}
+  public abdr(ArkMessageServerLogic.IRequestArkAppListHandler paramIRequestArkAppListHandler) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 1, "onInstallProgress progress: " + paramFloat);
+    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (localObject == null) {
+      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, qq app is null");
     }
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 1, "onInstalledFailed");
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 2, "onInstalledSuccessed");
+    for (;;)
+    {
+      if (this.a != null) {
+        this.a.b(null);
+      }
+      do
+      {
+        return;
+        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(120);
+        if (localObject == null)
+        {
+          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark center is null");
+          break;
+        }
+        ((ArkAppCenter)localObject).a();
+        localObject = ((ArkAppCenter)localObject).a();
+        if (localObject == null)
+        {
+          ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark sso is null");
+          break;
+        }
+      } while (((ArkAppSSO)localObject).a("ArkAppPanel.List", 10000, 0, new abds(this)));
+      ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, fail send sso request");
     }
   }
 }

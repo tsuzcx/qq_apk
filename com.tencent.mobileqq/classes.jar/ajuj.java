@@ -1,200 +1,89 @@
-import com.tencent.mobileqq.troop.widget.TroopPickerViewHelper;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout.PickerViewAdapter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import tencent.im.oidb.cmd0x962.oidb_0x962.FinishInfo;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
 public class ajuj
-  implements WheelPickerLayout.PickerViewAdapter
+  extends TroopGiftCallback
 {
-  private WheelPickerLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout;
-  private final DateFormat jdField_a_of_type_JavaTextDateFormat = new SimpleDateFormat("M月d日");
-  private Date jdField_a_of_type_JavaUtilDate;
-  private boolean jdField_a_of_type_Boolean = true;
+  public ajuj(AIOAnimationControlManager paramAIOAnimationControlManager, MessageForDeliverGiftTips paramMessageForDeliverGiftTips, boolean paramBoolean) {}
   
-  public ajuj(TroopPickerViewHelper paramTroopPickerViewHelper, WheelPickerLayout paramWheelPickerLayout)
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout = paramWheelPickerLayout;
-    this.jdField_a_of_type_JavaUtilDate = new Date();
-    paramWheelPickerLayout = Calendar.getInstance();
-    paramWheelPickerLayout.setTime(this.jdField_a_of_type_JavaUtilDate);
-    paramWheelPickerLayout.set(13, 0);
-    paramWheelPickerLayout.set(14, 0);
-    int i = paramWheelPickerLayout.get(11);
-    if (i >= TroopPickerViewHelper.a(paramTroopPickerViewHelper))
+    if (paramInt == 0)
     {
-      paramWheelPickerLayout.add(5, 1);
-      paramWheelPickerLayout.set(11, TroopPickerViewHelper.b(paramTroopPickerViewHelper));
-      paramWheelPickerLayout.set(12, 0);
-      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOAnimationControlManager", 2, "checkInteract interactId: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId + ", interactState: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 2) && (paramRspBody.msg_finish_info.has()))
+      {
+        paramRspBody = (oidb_0x962.FinishInfo)paramRspBody.msg_finish_info.get();
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactText = paramRspBody.bytes_text.get().toStringUtf8();
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.participateNum = paramRspBody.uint32_participate_num.get();
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstUin = paramRspBody.uint64_first_uin.get();
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilDate = paramWheelPickerLayout.getTime();
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_AndroidOsHandler.post(new ajuk(this));
       return;
-      if (i < TroopPickerViewHelper.b(paramTroopPickerViewHelper))
+      List localList = (List)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.c.get(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin);
+      paramRspBody = localList;
+      if (localList == null)
       {
-        paramWheelPickerLayout.set(11, TroopPickerViewHelper.b(paramTroopPickerViewHelper));
-        paramWheelPickerLayout.set(12, 0);
+        paramRspBody = new ArrayList();
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.c.put(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, paramRspBody);
       }
-      else
+      try
       {
-        i = paramWheelPickerLayout.get(12);
-        paramWheelPickerLayout.add(12, TroopPickerViewHelper.c(paramTroopPickerViewHelper) - i % TroopPickerViewHelper.c(paramTroopPickerViewHelper));
+        if (!paramRspBody.contains(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips))
+        {
+          paramRspBody.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
+          if (paramRspBody.size() > 5) {
+            paramRspBody.remove(0);
+          }
+        }
+        paramRspBody = (List)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.b.get(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin);
+        if (paramRspBody == null) {}
+      }
+      finally
+      {
+        try
+        {
+          paramRspBody.remove(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
+          if (!this.jdField_a_of_type_Boolean) {
+            break;
+          }
+          AIOAnimationControlManager.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager);
+          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.notifyObservers(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
+          break;
+        }
+        finally {}
+        localObject1 = finally;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("AIOAnimationControlManager", 2, "checkInteract errorCode: " + paramInt);
       }
     }
-  }
-  
-  private String a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(this.jdField_a_of_type_JavaUtilDate);
-    if (paramInt > 0) {
-      localCalendar.add(5, paramInt);
-    }
-    long l1 = this.jdField_a_of_type_JavaUtilDate.getTime();
-    long l2 = localCalendar.getTimeInMillis();
-    int i = (int)((l2 - l1) / 86400000L);
-    paramInt = i;
-    if (!this.jdField_a_of_type_Boolean) {
-      paramInt = i + 1;
-    }
-    if (paramInt != 0) {
-      localStringBuilder.append(this.jdField_a_of_type_JavaTextDateFormat.format(Long.valueOf(l2))).append(" ");
-    }
-    switch (paramInt)
-    {
-    default: 
-      localStringBuilder.append(b(localCalendar.get(7)));
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append("今天");
-      continue;
-      localStringBuilder.append("明天");
-      continue;
-      localStringBuilder.append("后天");
-    }
-  }
-  
-  private String b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return "星期天";
-    case 2: 
-      return "星期一";
-    case 3: 
-      return "星期二";
-    case 4: 
-      return "星期三";
-    case 5: 
-      return "星期四";
-    case 6: 
-      return "星期五";
-    }
-    return "星期六";
-  }
-  
-  public int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return TroopPickerViewHelper.d(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper);
-    case 1: 
-      paramInt = a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0) }).get(11);
-      return TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper) - paramInt + 1;
-    }
-    return (60 - a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(1) }).get(12)) / TroopPickerViewHelper.c(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper);
-  }
-  
-  public int a(Calendar paramCalendar, int paramInt)
-  {
-    paramInt = a(new int[] { paramInt }).get(11);
-    paramInt = paramCalendar.get(11) - paramInt;
-    if (paramInt > 0) {
-      return paramInt;
-    }
-    return 0;
-  }
-  
-  public int a(Calendar paramCalendar, int paramInt1, int paramInt2)
-  {
-    long l = a(new int[] { paramInt1, paramInt2 }).get(12);
-    paramInt1 = (int)((paramCalendar.get(12) - l) / TroopPickerViewHelper.c(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper));
-    if (paramInt1 > 0) {
-      return paramInt1;
-    }
-    return 0;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return a(paramInt2);
-    case 1: 
-      return String.format("%d点", new Object[] { Integer.valueOf(a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), paramInt2 }).get(11)) });
-    }
-    return String.format("%d分", new Object[] { Integer.valueOf(a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(1), paramInt2 }).get(12)) });
-  }
-  
-  public Calendar a(int... paramVarArgs)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(this.jdField_a_of_type_JavaUtilDate);
-    if (paramVarArgs[0] > 0)
-    {
-      localCalendar.add(5, paramVarArgs[0]);
-      localCalendar.set(11, TroopPickerViewHelper.b(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper));
-      localCalendar.set(12, 0);
-    }
-    if ((paramVarArgs.length > 1) && (paramVarArgs[1] > 0))
-    {
-      localCalendar.add(11, paramVarArgs[1]);
-      localCalendar.set(12, 0);
-    }
-    if (paramVarArgs.length > 2) {
-      localCalendar.add(12, paramVarArgs[2] * TroopPickerViewHelper.c(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper));
-    }
-    return localCalendar;
-  }
-  
-  public int[] a(long paramLong)
-  {
-    int[] arrayOfInt = new int[3];
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTime(this.jdField_a_of_type_JavaUtilDate);
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(paramLong);
-    localCalendar2.set(11, 0);
-    localCalendar2.set(12, 0);
-    localCalendar2.set(13, 0);
-    localCalendar2.set(14, 0);
-    localCalendar1.set(11, 0);
-    localCalendar1.set(12, 0);
-    localCalendar1.set(13, 0);
-    localCalendar1.set(14, 0);
-    arrayOfInt[0] = ((int)((localCalendar1.getTimeInMillis() - localCalendar2.getTimeInMillis()) / 86400000L));
-    localCalendar2 = a(new int[] { arrayOfInt[0] });
-    localCalendar1.setTimeInMillis(paramLong);
-    arrayOfInt[1] = (localCalendar1.get(11) - localCalendar2.get(11));
-    localCalendar2 = a(new int[] { arrayOfInt[0], arrayOfInt[1] });
-    arrayOfInt[2] = ((localCalendar1.get(12) - localCalendar2.get(12)) / TroopPickerViewHelper.c(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper));
-    return arrayOfInt;
   }
 }
 

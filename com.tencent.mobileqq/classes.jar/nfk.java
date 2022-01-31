@@ -1,14 +1,22 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
+import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
-public final class nfk
-  implements Runnable
+class nfk
+  extends Job
 {
-  public nfk(MsgTabNodeInfo paramMsgTabNodeInfo) {}
+  nfk(nfj paramnfj, QQStoryCmdHandler.IllegalUinException paramIllegalUinException) {}
   
-  public void run()
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    MsgTabStoryManager.c(this.a);
+    SLog.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
+    this.jdField_a_of_type_Nfj.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
+    return null;
   }
 }
 

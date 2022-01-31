@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
 
 public class akyh
   implements Runnable
 {
-  public akyh(WorldCupShareFragment paramWorldCupShareFragment) {}
+  public akyh(SwiftWebAccelerator paramSwiftWebAccelerator, Bundle paramBundle) {}
   
   public void run()
   {
-    QLog.i("WorldCupShareFragment", 2, "WL_DEBUG mResDownloadTimeoutRunnable.run");
-    WorldCupMgr.a(WorldCupShareFragment.a(this.a)).b(WorldCupShareFragment.a(this.a));
-    WorldCupShareFragment.b(this.a, true);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

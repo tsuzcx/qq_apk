@@ -1,24 +1,18 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.webviewplugin.WebSoPlugin;
+import android.content.Context;
+import android.widget.GridView;
+import com.tencent.biz.troopgift.GridListViewPager;
 
 public class pdo
-  extends Handler
+  extends GridView
 {
-  public pdo(WebSoPlugin paramWebSoPlugin, Looper paramLooper)
+  public pdo(GridListViewPager paramGridListViewPager, Context paramContext)
   {
-    super(paramLooper);
+    super(paramContext);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void setOverScrollMode(int paramInt)
   {
-    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
-    {
-      paramMessage = (Bundle)paramMessage.obj;
-      WebSoPlugin.a(this.a, paramMessage);
-    }
+    super.setOverScrollMode(2);
   }
 }
 

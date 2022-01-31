@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import admm;
+import aduu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewTreeObserver;
@@ -342,7 +342,7 @@ public class ForwardTribeShortVideoMsgOption
   public void onGlobalLayout()
   {
     if (this.jdField_a_of_type_AndroidWidgetScrollView != null) {
-      this.jdField_a_of_type_AndroidWidgetScrollView.post(new admm(this));
+      this.jdField_a_of_type_AndroidWidgetScrollView.post(new aduu(this));
     }
   }
   

@@ -1,20 +1,25 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class tug
-  extends MqqHandler
+  implements Runnable
 {
-  public tug(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public tug(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    try
     {
-    default: 
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = null;
       return;
     }
-    this.a.finish();
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

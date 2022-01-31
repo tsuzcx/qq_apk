@@ -1,14 +1,15 @@
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
+import android.os.Bundle;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
 public class anga
   implements Runnable
 {
-  public anga(TroopHWJsPlugin.UploadMediaEntry paramUploadMediaEntry) {}
+  public anga(RemoteRequestSender paramRemoteRequestSender, Bundle paramBundle) {}
   
   public void run()
   {
-    this.a.a.b();
+    RemoteRequestSender.a(this.jdField_a_of_type_CooperationQzoneRemoteLogicRemoteRequestSender).a("cmd.gdtreport.webview", this.jdField_a_of_type_AndroidOsBundle, false);
   }
 }
 

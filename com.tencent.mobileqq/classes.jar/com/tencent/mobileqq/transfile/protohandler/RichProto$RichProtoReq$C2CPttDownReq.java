@@ -27,7 +27,7 @@ public class RichProto$RichProtoReq$C2CPttDownReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.C2CPttDownReq
  * JD-Core Version:    0.7.0.1
  */

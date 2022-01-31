@@ -1,47 +1,51 @@
-import com.tencent.mobileqq.qmcf.QmcfManager;
-import com.tencent.sveffects.SLog;
-import java.util.ArrayList;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.profile.DataTag;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class agvp
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public agvp(QmcfManager paramQmcfManager) {}
+  public agvp(ProfileHeaderView paramProfileHeaderView, View paramView1, View paramView2, ProfileCardInfo paramProfileCardInfo) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    String str;
-    synchronized (QmcfManager.a(this.a))
-    {
-      if (QmcfManager.a(this.a).size() > 0)
-      {
-        str = (String)QmcfManager.a(this.a).get(QmcfManager.a(this.a).size() - 1);
-        QmcfManager.a(this.a).clear();
-      }
+    int i = this.jdField_a_of_type_AndroidViewView.getWidth() - AIOUtils.a(45.0F, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.getResources());
+    int j = this.b.getWidth();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "updateJueban widthLike = " + i + ", widthJueban = " + j);
     }
-    try
+    if ((i != 0) && (j != 0))
     {
-      QmcfManager.a(this.a, str);
-      this.a.a();
+      localObject = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).rightMargin -= (j - i) / 2;
+      this.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    Object localObject = new DataTag(34, null);
+    this.b.setTag(localObject);
+    this.b.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a(true);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(ProfileHeaderView.f, ProfileHeaderView.b);
+    if (Build.VERSION.SDK_INT < 16)
+    {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
       return;
-      if (SLog.a()) {
-        SLog.d("QMCF_MGR", "ignore the old switch!");
-      }
-      return;
-      localObject = finally;
-      throw localObject;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        SLog.c("QMCF_MGR", "switchModel excep!");
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agvp
  * JD-Core Version:    0.7.0.1
  */

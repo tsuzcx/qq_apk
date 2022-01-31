@@ -1,16 +1,14 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
+import java.util.List;
 
 class acnv
   implements Runnable
 {
-  acnv(acnu paramacnu) {}
+  acnv(acnu paramacnu, List paramList) {}
   
   public void run()
   {
-    MPFileVerifyPwdView.b(this.a.a.a).setEnabled(true);
-    MPFileVerifyPwdView.b(this.a.a.a).setTextColor(Color.parseColor("#00a5e0"));
+    this.jdField_a_of_type_Acnu.a.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

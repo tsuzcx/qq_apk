@@ -1,6 +1,6 @@
 package cooperation.qzone.music;
 
-import amve;
+import ancs;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class BroadcastAudio
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amve();
+  public static final Parcelable.Creator CREATOR = new ancs();
   public BroadcastUrl masterUrl;
   public ArrayList slaveUrl;
   

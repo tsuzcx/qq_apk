@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import java.util.Comparator;
+import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public class adou
-  implements Comparator
+class adou
+  implements Runnable
 {
-  public adou(MessageForUniteGrayTip paramMessageForUniteGrayTip) {}
+  adou(ados paramados) {}
   
-  public int a(MessageForGrayTips.HightlightItem paramHightlightItem1, MessageForGrayTips.HightlightItem paramHightlightItem2)
+  public void run()
   {
-    return paramHightlightItem1.start - paramHightlightItem2.start;
+    FMSettings.a(4, "-------onMoveFail-------");
+    FMSettings.a(4, FileManagerUtil.a());
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettingInterface$MoveFileCallback.a();
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adou
  * JD-Core Version:    0.7.0.1
  */

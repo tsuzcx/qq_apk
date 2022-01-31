@@ -2,6 +2,7 @@ package com.tencent.mobileqq.utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
 import com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload;
@@ -37,9 +38,16 @@ public class BusinessCommonConfig$GestureConfigHandler
   public void a(String paramString, int paramInt)
   {
     SharedPreferences localSharedPreferences = a();
-    localSharedPreferences.edit().putString("config", paramString);
-    localSharedPreferences.edit().putInt("ver", paramInt);
-    localSharedPreferences.edit().commit();
+    if (TextUtils.isEmpty(paramString)) {
+      localSharedPreferences.edit().remove("config");
+    }
+    for (;;)
+    {
+      localSharedPreferences.edit().putInt("ver", paramInt);
+      localSharedPreferences.edit().commit();
+      return;
+      localSharedPreferences.edit().putString("config", paramString);
+    }
   }
 }
 

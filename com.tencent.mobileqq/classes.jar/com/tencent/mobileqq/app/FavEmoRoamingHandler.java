@@ -1,11 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
 import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
 import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
 import com.tencent.mobileqq.emosm.favroaming.ResidParser;
@@ -17,10 +14,8 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -32,6 +27,7 @@ import tencent.im.cs.faceroam_sso.faceroam_sso.ReqUserInfo;
 import tencent.im.cs.faceroam_sso.faceroam_sso.RspBody;
 import tencent.im.cs.faceroam_sso.faceroam_sso.RspDeleteItem;
 import tencent.im.cs.faceroam_sso.faceroam_sso.RspUserInfo;
+import zkd;
 
 public class FavEmoRoamingHandler
   extends BusinessHandler
@@ -144,75 +140,30 @@ public class FavEmoRoamingHandler
   
   public void a(Object paramObject)
   {
-    Object localObject = new faceroam_sso.RspBody();
+    faceroam_sso.RspBody localRspBody = new faceroam_sso.RspBody();
+    long l;
     try
     {
-      ((faceroam_sso.RspBody)localObject).mergeFrom((byte[])paramObject);
-      paramObject = (faceroam_sso.RspUserInfo)((faceroam_sso.RspBody)localObject).rspcmd_0x01.get();
-      localLong = Long.valueOf(((faceroam_sso.RspBody)localObject).ret.get());
-      if (localLong.longValue() != 0L)
+      localRspBody.mergeFrom((byte[])paramObject);
+      paramObject = (faceroam_sso.RspUserInfo)localRspBody.rspcmd_0x01.get();
+      l = localRspBody.ret.get();
+      if (l != 0L)
       {
-        QLog.e("FavEmoRoamingHandler", 1, "handleUserInfoGet ret = " + localLong);
+        QLog.e("FavEmoRoamingHandler", 1, "handleUserInfoGet ret = " + l);
         return;
-      }
-      FileUtils.c(AppConstants.aU + ".nomedia");
-      localList1 = paramObject.filename.get();
-      localList2 = paramObject.delete_file.get();
-      localList3 = paramObject.uint32_emoji_type.get();
-      localObject = paramObject.bid.get();
-      j = paramObject.max_roam_size.get();
-      FavEmoConstant.a = j;
-      paramObject = this.b.getCurrentAccountUin();
-      if (!TextUtils.isEmpty(paramObject)) {
-        BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putInt("fav_roaming_max" + paramObject, j).apply();
-      }
-      if (localList1 == null) {
-        break label530;
-      }
-      i = localList1.size();
-      if (i <= FavEmoConstant.a) {
-        break label523;
       }
     }
     catch (InvalidProtocolBufferMicroException paramObject)
     {
-      Long localLong;
-      List localList1;
-      List localList2;
-      List localList3;
-      int j;
-      int i;
-      while (QLog.isColorLevel())
-      {
-        QLog.d("FavEmoRoamingHandler", 2, "func handleUserInfoGet ends, errInfo:" + paramObject.getMessage());
-        return;
-        i = FavEmoConstant.a;
-        continue;
-        FavEmoConstant.b = FavEmoConstant.a;
-      }
+      QLog.e("FavEmoRoamingHandler", 1, "func handleUserInfoGet ends, errInfo:" + paramObject.getMessage());
+      return;
     }
-    FavEmoConstant.b = i;
-    if (QLog.isColorLevel()) {
-      QLog.d("FavEmoRoamingHandler", 2, "local max size:" + FavEmoConstant.a + ",server max size:" + FavEmoConstant.b + ",delListSize=" + localList2.size() + ",fileListSize=" + localList1.size());
+    catch (OutOfMemoryError paramObject)
+    {
+      QLog.e("FavEmoRoamingHandler", 1, "handleUserInfoGet oom");
+      return;
     }
-    if ((QLog.isColorLevel()) && (localList1 != null) && (localList2 != null)) {
-      QLog.d("FavEmoRoamingHandler", 2, "ret = " + localLong.toString() + " userlist= " + localList1.toString() + " delList=" + localList2.toString() + " bid=" + (String)localObject + " local_max =" + j);
-    }
-    paramObject = localObject;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramObject = "qq_expression";
-    }
-    a(localList2, localList1);
-    localObject = ((FavroamingDBManager)this.b.getManager(148)).a(localList2, localList1, paramObject, localList3);
-    paramObject = localObject;
-    if (localObject == null) {
-      paramObject = new ArrayList();
-    }
-    super.a(1, true, paramObject);
-    return;
-    label523:
-    label530:
-    return;
+    ThreadManagerV2.excute(new zkd(this, paramObject, l), 32, null, true);
   }
   
   public void a(Object paramObject, boolean paramBoolean)
@@ -296,7 +247,7 @@ public class FavEmoRoamingHandler
     ((faceroam_sso.ReqDeleteItem)localObject).filename.set(paramList);
     faceroam_sso.PlatInfo localPlatInfo = new faceroam_sso.PlatInfo();
     localPlatInfo.implat.set(109L);
-    localPlatInfo.mqqver.set("7.6.3");
+    localPlatInfo.mqqver.set("7.6.8");
     localPlatInfo.osver.set(Build.VERSION.RELEASE);
     paramList = new faceroam_sso.ReqBody();
     paramList.uint32_sub_cmd.set(2);
@@ -315,7 +266,7 @@ public class FavEmoRoamingHandler
     Object localObject = new faceroam_sso.ReqUserInfo();
     faceroam_sso.PlatInfo localPlatInfo = new faceroam_sso.PlatInfo();
     localPlatInfo.implat.set(109L);
-    localPlatInfo.mqqver.set("7.6.3");
+    localPlatInfo.mqqver.set("7.6.8");
     localPlatInfo.osver.set(Build.VERSION.RELEASE);
     faceroam_sso.ReqBody localReqBody = new faceroam_sso.ReqBody();
     localReqBody.uint32_sub_cmd.set(1);

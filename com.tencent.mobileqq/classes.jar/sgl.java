@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.ChatHistoryViewBase;
 
 public class sgl
   implements Runnable
 {
-  public sgl(Conversation paramConversation) {}
+  public sgl(ChatHistoryViewBase paramChatHistoryViewBase) {}
   
   public void run()
   {
-    PublicAccountManager.a().a(this.a.a);
+    this.a.f = true;
   }
 }
 

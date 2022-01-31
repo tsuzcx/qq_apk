@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-public class ucx
-  implements View.OnClickListener
+class ucx
+  implements Runnable
 {
-  public ucx(TroopRequestActivity paramTroopRequestActivity) {}
+  ucx(ucv paramucv) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.a.d;
-    TroopNoticeJsHandler.a(this.a, paramView);
+    TroopInfoActivity.g(this.a.a);
   }
 }
 

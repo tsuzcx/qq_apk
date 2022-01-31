@@ -1,53 +1,48 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleDownloadManager;
-import java.util.Map;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavHelper;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class amwm
-  implements Downloader.DownloadListener
+class amwm
+  extends OnPluginInstallListener.Stub
 {
-  public amwm(QzoneModuleDownloadManager paramQzoneModuleDownloadManager) {}
+  amwm(amwl paramamwl) {}
   
-  public void onDownloadCanceled(String paramString)
-  {
-    Message localMessage = Message.obtain(QzoneModuleDownloadManager.a(this.a));
-    localMessage.what = 5;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
+  public void onInstallBegin(String paramString) {}
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramDownloadResult = Message.obtain(QzoneModuleDownloadManager.a(this.a));
-    paramDownloadResult.what = 3;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
-  }
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public void onInstallError(String paramString, int paramInt)
   {
-    paramString = (amwn)QzoneModuleDownloadManager.a(this.a).get(paramString);
-    if (paramString != null) {
-      paramString.a = Float.valueOf(paramFloat);
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
     }
-    Message localMessage = Message.obtain(QzoneModuleDownloadManager.a(this.a));
-    localMessage.what = 6;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
+    try
+    {
+      ThreadManager.post(this.a.a, 5, null, false);
+      return;
+    }
+    catch (Exception paramString) {}
   }
   
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public void onInstallFinish(String paramString)
   {
-    paramDownloadResult = Message.obtain(QzoneModuleDownloadManager.a(this.a));
-    paramDownloadResult.what = 2;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
+    }
+    QfavHelper.a().set(true);
+    try
+    {
+      ThreadManager.post(this.a.a, 5, null, false);
+      return;
+    }
+    catch (Exception paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwm
  * JD-Core Version:    0.7.0.1
  */

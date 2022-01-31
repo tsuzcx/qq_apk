@@ -162,7 +162,7 @@ public class BaseQmcfProcessor
           jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager.b(0);
           continue;
         }
-        QmcfManager.a().a(false);
+        QmcfManager.a().b(false);
         continue;
       }
       try
@@ -172,7 +172,7 @@ public class BaseQmcfProcessor
           continue;
         }
         jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager.a(true, true, i);
-        jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager.a(true);
+        jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager.b(true);
         if (l1 > 3000L)
         {
           localObject1 = new HashMap();

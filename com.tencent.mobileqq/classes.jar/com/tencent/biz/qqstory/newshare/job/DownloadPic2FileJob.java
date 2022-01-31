@@ -6,7 +6,7 @@ import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager.UrlBitmapDo
 import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader;
 import java.io.File;
 import java.util.Map;
-import ngb;
+import nkl;
 
 public class DownloadPic2FileJob
   extends Job
@@ -58,7 +58,7 @@ public class DownloadPic2FileJob
       break label45;
     }
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader = new ShareGroupIconManager.UrlBitmapDownloaderImp();
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(paramString, 0, 0, new ngb(this, paramString));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(paramString, 0, 0, new nkl(this, paramString));
   }
   
   protected void a(Map paramMap)

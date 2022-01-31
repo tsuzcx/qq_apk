@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
 
-public final class adam
-  implements Parcelable.Creator
+public class adam
+  implements Runnable
 {
-  public FileInfo a(Parcel paramParcel)
-  {
-    return new FileInfo(paramParcel, null);
-  }
+  public adam(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
   
-  public FileInfo[] a(int paramInt)
+  public void run()
   {
-    return new FileInfo[paramInt];
+    QfileLocalFilePicTabView.a(this.a);
+    this.a.d();
   }
 }
 

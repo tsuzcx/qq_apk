@@ -1,15 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.WebViewTitleStyleHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class tij
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public tij(QQBrowserActivity paramQQBrowserActivity) {}
+  public tij(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    WebViewTitleStyleHelper.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
+    this.a.finish();
   }
 }
 

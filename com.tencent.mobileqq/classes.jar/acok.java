@@ -1,16 +1,18 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.model.QueryCallback;
 
-class acok
-  implements Runnable
+public class acok
+  implements QueryCallback
 {
-  acok(acoi paramacoi) {}
+  public acok(PicEmoticonInfo paramPicEmoticonInfo, String paramString) {}
   
-  public void run()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(0);
-    UniformDownloadActivity.a(this.a.a).setVisibility(4);
+    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
+      URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

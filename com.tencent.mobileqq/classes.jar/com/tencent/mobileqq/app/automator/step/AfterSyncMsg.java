@@ -60,11 +60,13 @@ import com.tencent.mobileqq.app.proxy.FTSDBManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.app.proxy.fts.FTSTroopOperator;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.utils.ClassicHeadActivityManager;
 import com.tencent.mobileqq.ar.ArResourceManager;
 import com.tencent.mobileqq.ar.online_video.AROnlineVideoUtil;
 import com.tencent.mobileqq.armap.config.ARMapConfigManager;
 import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import com.tencent.mobileqq.data.FeedsManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.Setting;
@@ -90,6 +92,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.dingdong.DingdongPluginManager;
 import cooperation.photoplus.PhotoPlusManager;
 import cooperation.qwallet.plugin.QWalletHelper;
+import cooperation.qzone.QZoneHelper;
 import java.io.File;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -97,8 +100,8 @@ import java.util.List;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
-import zpw;
-import zpx;
+import zwh;
+import zwi;
 
 public class AfterSyncMsg
   extends AsyncStep
@@ -214,7 +217,7 @@ public class AfterSyncMsg
     }
     e();
     ((EqqDetailDataManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(68)).a();
-    ThreadManager.getSubThreadHandler().post(new zpw(this));
+    ThreadManager.getSubThreadHandler().post(new zwh(this));
     ((PublicAccountDataManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55)).a();
     PublicAccountSearchRecommendManager.a().a(this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
     this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236);
@@ -316,7 +319,7 @@ public class AfterSyncMsg
       i += 1;
     }
     ((FlashChatManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(216)).d();
-    DeviceProfileManager.a(new zpx());
+    DeviceProfileManager.a(new zwi());
     localObject1 = (QWalletConfigManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(244);
     if (localObject1 != null) {
       ((QWalletConfigManager)localObject1).a(1);
@@ -328,6 +331,7 @@ public class AfterSyncMsg
     ((CardHandler)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).t();
     ReadInJoyArkUtil.a();
     OfflineUtils.c();
+    SosoInterface.b();
   }
   
   private void e()
@@ -347,7 +351,7 @@ public class AfterSyncMsg
     {
       bool1 = true;
       if (this.a.c) {
-        break label162;
+        break label178;
       }
     }
     for (;;)
@@ -355,20 +359,26 @@ public class AfterSyncMsg
       ((MessageHandler)localObject).a(bool1, bool2);
       this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().n();
       this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().m();
+      if (!QZoneHelper.k()) {
+        break label183;
+      }
+      QLog.i("QQInitHandler", 2, "updateQzoneFeeds 下发配置隐藏新动态");
       return;
       bool1 = false;
       break;
-      label162:
+      label178:
       bool2 = false;
     }
+    label183:
+    ((FeedsManager)this.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(275)).updateQzoneFeeds();
   }
   
   private void f()
   {
     if (SystemUtil.a())
     {
-      com.tencent.mobileqq.utils.FileUtils.c(AppConstants.aJ + "head/" + ".nomedia");
-      com.tencent.mobileqq.utils.FileUtils.c(AppConstants.bm + ".nomedia");
+      com.tencent.mobileqq.utils.FileUtils.c(AppConstants.aK + "head/" + ".nomedia");
+      com.tencent.mobileqq.utils.FileUtils.c(AppConstants.bn + ".nomedia");
     }
     if (this.a.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isConvertOldQQHeadOK", false)) {
       return;
@@ -441,7 +451,7 @@ public class AfterSyncMsg
       }
     }
     localEntityManager.a();
-    Object localObject1 = new File(AppConstants.aJ + "head/" + "_thd/");
+    Object localObject1 = new File(AppConstants.aK + "head/" + "_thd/");
     if (((File)localObject1).exists()) {
       com.tencent.open.base.FileUtils.a((File)localObject1);
     }

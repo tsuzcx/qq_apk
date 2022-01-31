@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import android.text.Spanned;
+import java.util.Comparator;
 
-class ajvu
-  implements Action.OnActionEndListener
+public final class ajvu
+  implements Comparator
 {
-  ajvu(ajvt paramajvt) {}
+  public ajvu(Spanned paramSpanned) {}
   
-  public void a()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 

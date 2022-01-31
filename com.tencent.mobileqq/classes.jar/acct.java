@@ -1,16 +1,14 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageForInteractAndFollow;
+import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
 
 public class acct
+  implements Runnable
 {
-  public int a;
-  public Bundle a;
-  public Runnable a;
+  public acct(MsgBoxInterFollowManager paramMsgBoxInterFollowManager, MessageForInteractAndFollow paramMessageForInteractAndFollow) {}
   
-  public acct(int paramInt, Bundle paramBundle)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    paramBundle.putInt("seq", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    MsgBoxInterFollowManager.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMsgBoxInterFollowManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForInteractAndFollow);
   }
 }
 

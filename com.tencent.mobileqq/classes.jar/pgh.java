@@ -1,20 +1,47 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import org.json.JSONObject;
 
-class pgh
-  implements Runnable
+public class pgh
+  implements IphonePickerView.IphonePickListener
 {
-  pgh(pgf parampgf, Drawable paramDrawable) {}
+  public pgh(NewerGuidePlugin paramNewerGuidePlugin, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void onConfirmBtClicked()
   {
-    this.jdField_a_of_type_Pgf.a.listener.onImageLoaded(this.jdField_a_of_type_Pgf.a.url, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Pgf.a.options);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
+    }
+    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("result", 1);
+      localJSONObject.put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
+      }
+    }
+  }
+  
+  public void onItemSelected(int paramInt1, int paramInt2)
+  {
+    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pgh
  * JD-Core Version:    0.7.0.1
  */

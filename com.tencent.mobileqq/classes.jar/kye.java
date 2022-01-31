@@ -1,14 +1,17 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qphone.base.util.QLog;
 
 public class kye
   implements Runnable
 {
-  public kye(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  public kye(CustomWebView paramCustomWebView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomWebView", 2, "webview real destroy now");
+    }
+    this.a.b();
   }
 }
 

@@ -78,17 +78,17 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import ynt;
-import ynv;
-import ynw;
-import ynx;
-import yny;
-import ynz;
-import yob;
-import yod;
-import yoe;
-import yof;
-import yog;
+import ytz;
+import yub;
+import yuc;
+import yud;
+import yue;
+import yuf;
+import yuh;
+import yuj;
+import yuk;
+import yul;
+import yum;
 
 public class HotChatCenterFragment
   extends IphoneTitleBarFragment
@@ -97,9 +97,9 @@ public class HotChatCenterFragment
   private Handler jdField_a_of_type_AndroidOsHandler;
   private RecentAdapter jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
   private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ynt(this);
-  private HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new ynx(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new yny(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ytz(this);
+  private HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new yud(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new yue(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   protected TransProcessorHandler a;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
@@ -110,7 +110,7 @@ public class HotChatCenterFragment
   
   public HotChatCenterFragment()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ynw(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new yuc(this);
   }
   
   public static AioPushData a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -164,7 +164,7 @@ public class HotChatCenterFragment
     do
     {
       return;
-      ThreadManager.post(new yof(paramAioPushData, paramQQAppInterface), 8, null, true);
+      ThreadManager.post(new yul(paramAioPushData, paramQQAppInterface), 8, null, true);
       paramQQAppInterface = paramAioPushData.url;
       if (TextUtils.isEmpty(paramQQAppInterface)) {
         break;
@@ -194,7 +194,7 @@ public class HotChatCenterFragment
     QLog.e("HotchatActivity", 1, "[removePushItem] app or item null");
   }
   
-  private void d()
+  private void c()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
@@ -203,15 +203,15 @@ public class HotChatCenterFragment
     }
   }
   
-  private void e()
+  private void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.e.findViewById(2131364784));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = new yog(this, getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, this, 10);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131364811));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = new yum(this, getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, this, 10);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
   }
   
-  private void f()
+  private void e()
   {
     if (isAdded())
     {
@@ -222,19 +222,19 @@ public class HotChatCenterFragment
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
-      d();
+      c();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
   }
   
-  private void g()
+  private void f()
   {
     this.jdField_a_of_type_JavaUtilList = a();
   }
   
-  private void h()
+  private void g()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null))
     {
@@ -255,9 +255,32 @@ public class HotChatCenterFragment
     }
   }
   
-  protected int a()
+  public void a()
   {
-    return 2130969026;
+    if ((this.leftView == null) || (this.mLeftBackText == null) || (this.mLeftBackText == null)) {
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (localObject != null) {}
+    for (int i = ((QQMessageFacade)localObject).b();; i = 0)
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.leftView.setVisibility(8);
+        this.mLeftBackIcon.setVisibility(0);
+        this.mLeftBackIcon.setContentDescription("返回");
+        this.mLeftBackText.setVisibility(0);
+      }
+      for (localObject = this.mLeftBackText; localObject != null; localObject = this.leftView)
+      {
+        ThreadManager.post(new yuf(this, i, (TextView)localObject), 8, null, true);
+        return;
+        this.leftView.setVisibility(0);
+        this.mLeftBackIcon.setVisibility(8);
+        this.mLeftBackText.setVisibility(8);
+      }
+      break;
+    }
   }
   
   protected void a(int paramInt, RecentBaseData paramRecentBaseData, boolean paramBoolean)
@@ -330,7 +353,7 @@ public class HotChatCenterFragment
               if (QLog.isColorLevel()) {
                 QLog.d("HotchatActivity", 2, "[onReceivePush] read");
               }
-              c();
+              b();
             }
           }
         }
@@ -347,44 +370,6 @@ public class HotChatCenterFragment
     paramString2.extendJson = String.format("{\"actId\":\"%s\"}", new Object[] { paramString3 });
     paramString2.mFriendUin = paramString1;
     ApolloGameUtil.a(getActivity(), paramString2);
-  }
-  
-  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    if (isAdded())
-    {
-      paramLayoutInflater = getActivity().getWindow();
-      if (paramLayoutInflater != null)
-      {
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramLayoutInflater.setFlags(16777216, 16777216);
-        }
-        paramLayoutInflater.setBackgroundDrawable(null);
-      }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((HotChatCenterManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(254));
-      if (isAdded())
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout == null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(getActivity());
-          this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
-        }
-        this.jdField_a_of_type_Boolean = ThemeUtil.isDefaultOrDIYTheme(false);
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(getActivity().getMainLooper(), this);
-        paramLayoutInflater = (ApolloPushManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(226);
-        if (paramLayoutInflater != null) {
-          paramLayoutInflater.a(this);
-        }
-      }
-      a("热聊房间");
-      e();
-      c();
-      f();
-    }
   }
   
   public void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean)
@@ -406,7 +391,7 @@ public class HotChatCenterFragment
       {
       default: 
         QLog.e("HotchatActivity", 1, "[onRecentBaseDataClick]");
-      case 2131363200: 
+      case 2131363204: 
         for (;;)
         {
           localObject1 = paramRecentBaseData.a();
@@ -549,7 +534,7 @@ public class HotChatCenterFragment
       if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1)) {
         this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, paramView);
       }
-      ThreadManager.postImmediately(new yod(this, paramView, i), null, true);
+      ThreadManager.postImmediately(new yuj(this, paramView, i), null, true);
       QLog.e("HotchatActivity", 1, String.format("[onRecentBaseDataClick] info is null and re join code:%s id:%s", new Object[] { paramView, Integer.valueOf(i) }));
       return;
       label1001:
@@ -635,7 +620,7 @@ public class HotChatCenterFragment
   
   public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    if ((e()) && (this.jdField_a_of_type_AndroidOsHandler != null))
+    if ((a()) && (this.jdField_a_of_type_AndroidOsHandler != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("HotchatActivity", 2, "[onChange] end of drag");
@@ -644,32 +629,14 @@ public class HotChatCenterFragment
     }
   }
   
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1);
+  }
+  
   public void b()
   {
-    if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.f == null) || (this.f == null)) {
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localObject != null) {}
-    for (int i = ((QQMessageFacade)localObject).b();; i = 0)
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription("返回");
-        this.f.setVisibility(0);
-      }
-      for (localObject = this.f; localObject != null; localObject = this.jdField_b_of_type_AndroidWidgetTextView)
-      {
-        ThreadManager.post(new ynz(this, i, (TextView)localObject), 8, null, true);
-        return;
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.f.setVisibility(8);
-      }
-      break;
-    }
+    ThreadManager.post(new yuh(this), 8, null, true);
   }
   
   public void b(String paramString1, RecentBaseData paramRecentBaseData, String paramString2)
@@ -681,13 +648,13 @@ public class HotChatCenterFragment
       if (localObject == null) {
         break label63;
       }
-      HotChatHelper.a((HotChatInfo)localObject, new yoe(this, (HotChatInfo)localObject, paramString1, paramRecentBaseData, paramString2));
+      HotChatHelper.a((HotChatInfo)localObject, new yuk(this, (HotChatInfo)localObject, paramString1, paramRecentBaseData, paramString2));
     }
     label63:
     do
     {
       return;
-      ((yog)this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter).b(paramRecentBaseData, paramString2);
+      ((yum)this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter).b(paramRecentBaseData, paramString2);
       QLog.e("HotchatActivity", 1, "[exitHotChat] uin null");
     } while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null);
     if (QLog.isColorLevel()) {
@@ -696,20 +663,47 @@ public class HotChatCenterFragment
     ((HotChatCenterManager)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b(paramString1);
   }
   
-  public void c()
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    ThreadManager.post(new yob(this), 8, null, true);
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    if (isAdded())
+    {
+      paramLayoutInflater = getActivity().getWindow();
+      if (paramLayoutInflater != null)
+      {
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramLayoutInflater.setFlags(16777216, 16777216);
+        }
+        paramLayoutInflater.setBackgroundDrawable(null);
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((HotChatCenterManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(254));
+      if (isAdded())
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout == null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(getActivity());
+          this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
+        }
+        this.jdField_a_of_type_Boolean = ThemeUtil.isDefaultOrDIYTheme(false);
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(getActivity().getMainLooper(), this);
+        paramLayoutInflater = (ApolloPushManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(226);
+        if (paramLayoutInflater != null) {
+          paramLayoutInflater.a(this);
+        }
+      }
+      setTitle("热聊房间");
+      d();
+      b();
+      e();
+    }
   }
   
-  public boolean d()
+  protected int getContentLayoutId()
   {
-    StatisticTroopAssist.e(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    return super.d();
-  }
-  
-  public boolean e()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1);
+    return 2130969029;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -724,7 +718,7 @@ public class HotChatCenterFragment
       do
       {
         return true;
-        c();
+        b();
         return true;
         if ((paramMessage.obj == null) || (!(paramMessage.obj instanceof Object[]))) {
           break label337;
@@ -766,6 +760,12 @@ public class HotChatCenterFragment
     }
     QLog.e("HotchatActivity", 1, "[handleMessage] toast without wording");
     return true;
+  }
+  
+  public boolean onBackEvent()
+  {
+    StatisticTroopAssist.e(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    return super.onBackEvent();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -831,13 +831,13 @@ public class HotChatCenterFragment
   public void onPause()
   {
     super.onPause();
-    h();
+    g();
   }
   
   public void onResume()
   {
     super.onResume();
-    c();
+    b();
   }
   
   public void update(Observable paramObservable, Object paramObject)
@@ -846,13 +846,13 @@ public class HotChatCenterFragment
     {
       paramObservable = (MessageRecord)paramObject;
       if ((!paramObservable.isSendFromLocal()) && (isAdded())) {
-        getActivity().runOnUiThread(new ynv(this));
+        getActivity().runOnUiThread(new yub(this));
       }
       if ((paramObservable.isSendFromLocal()) && (paramObservable.msgtype == -2002)) {
         return;
       }
     }
-    c();
+    b();
   }
 }
 

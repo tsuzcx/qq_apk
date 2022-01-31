@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic;
 
-import agee;
+import agiq;
 import android.os.Handler;
 import android.support.v4.util.SparseArrayCompat;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -115,7 +115,7 @@ public class OlympicManager$ShuayishuaReport
     for (long l = OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager);; l = OlympicManager.b(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager))
     {
       j = (int)l;
-      OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager).postDelayed(new agee(this, k, localArrayList1, localArrayList2, localArrayList3, localArrayList4), j);
+      OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager).postDelayed(new agiq(this, k, localArrayList1, localArrayList2, localArrayList3, localArrayList4), j);
       break;
     }
   }

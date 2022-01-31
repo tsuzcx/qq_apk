@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
 public class anda
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public anda(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin, String paramString) {}
+  public anda(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    QzoneQunFeedJsPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneQunFeedJsPlugin, this.jdField_a_of_type_JavaLangString);
+    RemoteHandleManager.a().a().c();
   }
 }
 

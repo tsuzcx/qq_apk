@@ -1,15 +1,21 @@
-import android.app.Activity;
-import android.view.View;
-import cooperation.qzone.widget.QzoneGuideBubbleHelper;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class xty
+public class xty
   implements Runnable
 {
-  public xty(Activity paramActivity, View paramView) {}
+  public xty(EditLocalVideoActivity paramEditLocalVideoActivity, float paramFloat) {}
   
   public void run()
   {
-    QzoneGuideBubbleHelper.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, "同步到日迹，与更多好友分享", 1, 14.0F, 5.0D, 10.0D, 5000L, -15550475, false, true, 0, null, 0);
+    if (EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EditLocalVideoActivity", 2, "onCurrentRangeTimeChanged, time=" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.b((int)this.jdField_a_of_type_Float));
+      }
+      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.b((int)this.jdField_a_of_type_Float));
+    }
   }
 }
 

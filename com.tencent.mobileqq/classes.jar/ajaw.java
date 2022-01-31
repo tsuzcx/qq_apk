@@ -1,24 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.ViewHolder;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import com.tencent.mobileqq.troop.createNewTroop.TroopCateListProvider.TroopCateInfo;
+import com.tencent.widget.ActionSheet;
 
-public class ajaw
-  implements View.OnClickListener
+class ajaw
+  implements Runnable
 {
-  public ajaw(CateListAdapter.ViewHolder paramViewHolder) {}
+  ajaw(ajav paramajav) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (TroopCateListProvider.TroopCateInfo)paramView.getTag();
-    if (paramView.b == 1)
-    {
-      this.a.a.a.a(paramView.a, null);
-      return;
-    }
-    this.a.a.a.a(paramView.d, paramView.a);
+    this.a.a.b(2131435890);
+    this.a.a.b();
   }
 }
 

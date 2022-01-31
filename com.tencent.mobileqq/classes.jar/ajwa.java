@@ -1,28 +1,42 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.biz.troop.file.TroopFileProtocol.DeleteFileObserver;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ajwa
-  implements FrameSprite.OnFrameEndListener
+public class ajwa
+  extends TroopFileProtocol.DeleteFileObserver
 {
-  ajwa(ajvz paramajvz) {}
+  public ajwa(TroopFileManager paramTroopFileManager) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2)
   {
-    if (this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a == null) {}
-    do
-    {
+    if (paramBundle == null) {
       return;
-      if (this.a.jdField_a_of_type_Int > this.a.jdField_b_of_type_Int + this.a.c)
-      {
-        String str = this.a.jdField_a_of_type_JavaLangString + this.a.jdField_b_of_type_OrgJsonJSONObject.optString("videoPath", "3.mp4");
-        this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a.a(str, new ajwb(this));
-        return;
-      }
-      this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
-    } while (this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener == null);
-    this.a.jdField_a_of_type_Ajvw.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    }
+    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448);
+    paramBundle = paramBundle.getString("fileId");
+    TroopFileTransferUtil.Log.c("TroopFileManager", TroopFileTransferUtil.Log.a, "delete onActionResult: fileId:" + paramBundle + " isSuccess:" + paramBoolean + " errorCode:" + paramInt);
+    if (paramBoolean)
+    {
+      this.a.a(paramBundle);
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      QQToast.a(BaseApplicationImpl.getApplication(), "操作失败,请重试", 0).b(i);
+      return;
+    case -302: 
+    case -301: 
+    case -103: 
+      QQToast.a(BaseApplicationImpl.getApplication(), "删除失败,目标文件不存在", 0).b(i);
+      this.a.a(paramBundle);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), "仅群主管理员和文件所有者可以删除该文件", 0).b(i);
   }
 }
 

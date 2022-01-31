@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraProgressView;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
 
 public class lho
   implements Runnable
 {
-  public lho(ReadInJoyCameraProgressView paramReadInJoyCameraProgressView) {}
+  public lho(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
   public void run()
   {
-    this.a.invalidate();
+    PublicAccountReportUtils.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.b(this.a), null), false);
   }
 }
 

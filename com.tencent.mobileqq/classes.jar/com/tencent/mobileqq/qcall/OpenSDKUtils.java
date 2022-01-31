@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qcall;
 
-import agtx;
-import agty;
+import agyk;
+import agyl;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -198,28 +198,28 @@ public class OpenSDKUtils
     tmp53_49[1] = 1;
     tmp53_49;
     ActionSheet localActionSheet = ActionSheet.a(paramContext);
-    localActionSheet.a(2131438345);
+    localActionSheet.a(2131438365);
     switch (paramInt1)
     {
     case 3: 
     case 4: 
     default: 
       arrayOfInt[0] = 1;
-      localActionSheet.b(2131438043);
+      localActionSheet.b(2131438062);
     }
     for (;;)
     {
-      localActionSheet.c(2131433015);
-      localActionSheet.a(new agtx());
-      localActionSheet.a(new agty(localActionSheet, arrayOfInt, paramInt1, paramQQAppInterface, paramContext, paramPstnSessionInfo, paramInt2, paramString));
+      localActionSheet.c(2131433029);
+      localActionSheet.a(new agyk());
+      localActionSheet.a(new agyl(localActionSheet, arrayOfInt, paramInt1, paramQQAppInterface, paramContext, paramPstnSessionInfo, paramInt2, paramString));
       localActionSheet.show();
       return;
-      localActionSheet.a(paramContext.getResources().getString(2131438343), paramContext.getResources().getDrawable(2130840359), 0);
+      localActionSheet.a(paramContext.getResources().getString(2131438363), paramContext.getResources().getDrawable(2130840374), 0);
       continue;
-      localActionSheet.a(paramContext.getResources().getString(2131438343), paramContext.getResources().getDrawable(2130840358), 0);
+      localActionSheet.a(paramContext.getResources().getString(2131438363), paramContext.getResources().getDrawable(2130840373), 0);
       continue;
-      localActionSheet.a(paramContext.getResources().getString(2131438343), paramContext.getResources().getDrawable(2130840357), 0);
-      localActionSheet.b(2131438043);
+      localActionSheet.a(paramContext.getResources().getString(2131438363), paramContext.getResources().getDrawable(2130840372), 0);
+      localActionSheet.b(2131438062);
     }
   }
   

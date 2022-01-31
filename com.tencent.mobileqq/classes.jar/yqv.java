@@ -1,18 +1,37 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class yqv
   implements Runnable
 {
-  public yqv(CmGameAvHandler paramCmGameAvHandler, boolean paramBoolean) {}
+  public yqv(ApolloManager paramApolloManager, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
-    CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler, this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Boolean) {
-      AVEngineWalper.a().c();
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a != null)) {
+        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "C2CAIO");
+      }
+      for (;;)
+      {
+        ApolloMsgPlayController.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+        return;
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a != null)) {
+          ((ApolloManager)this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a.getManager(152)).f();
+        }
+      }
+      return;
     }
-    AVEngineWalper.a().a(this.jdField_a_of_type_Boolean);
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ApolloManager", 2, "doAfterOpenAIO error", localException);
+      }
+    }
   }
 }
 

@@ -1,22 +1,53 @@
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class sry
-  implements Runnable
+  extends BaseAdapter
 {
-  public sry(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public sry(FontSettingActivity paramFontSettingActivity) {}
   
-  public void run()
+  public int getCount()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.a.app.getManager(50)).a(this.a.a.b);
-    if (localExtensionInfo != null) {
-      ThreadManager.getUIHandler().post(new srz(this, localExtensionInfo));
+    return this.a.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = this.a.jdField_a_of_type_Ssb.a(paramInt, getCount(), (ChatMessage)this.a.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, paramViewGroup, null);
+    paramViewGroup = (TextItemBuilder.Holder)paramView.getTag();
+    paramViewGroup.e.setOnClickListener(null);
+    if ((paramViewGroup.e instanceof AnimationTextView)) {
+      ((AnimationTextView)paramViewGroup.e).a = null;
     }
+    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.a();
+    }
+    if ((this.a.c) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    {
+      this.a.c = false;
+      FontSettingActivity.a(this.a).postDelayed(new srz(this), 100L);
+    }
+    return paramView;
   }
 }
 

@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-
 public class ajox
-  implements Runnable
 {
-  public ajox(TroopFileTransferManager paramTroopFileTransferManager) {}
+  public int a;
+  public Object a;
   
-  public void run()
+  public ajox(int paramInt, Object paramObject)
   {
-    if (this.a.c()) {
-      this.a.d();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 

@@ -1,46 +1,57 @@
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.model.SpecialChannelFilter;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.readinjoy.ReadInJoyHelper;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class lqv
-  implements Runnable
+class lqv
+  implements View.OnClickListener
 {
-  public lqv(ChannelInfoModule paramChannelInfoModule, boolean paramBoolean1, boolean paramBoolean2, List paramList1, List paramList2) {}
+  lqv(lqu paramlqu) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (lqu.a(this.a) != null)
     {
-      ReadInJoyLogicEngineEventDispatcher.a().c(false, null);
-      return;
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      ReadInJoyLogicEngineEventDispatcher.a().c(true, this.jdField_a_of_type_JavaUtilList);
-      return;
-    }
-    ChannelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a(this.jdField_a_of_type_JavaUtilList, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.c(this.jdField_b_of_type_JavaUtilList);
-    if (!ReadInJoyUtils.a())
-    {
-      List localList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a(this.jdField_a_of_type_JavaUtilList);
-      SpecialChannelFilter.a().a(this.jdField_b_of_type_JavaUtilList);
-      SpecialChannelFilter.a().b(localList);
-      localList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.c();
-      if (!this.jdField_b_of_type_JavaUtilList.equals(localList)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.c());
+      paramView = (Context)lqu.a(this.a).get();
+      if (paramView != null)
+      {
+        this.a.b();
+        ReadInJoyUtils.a(paramView, ReadInJoyHelper.g(ReadInJoySubscribeFragement.a(this.a.a)));
+        paramView = (KandianMergeManager)ReadInJoySubscribeFragement.a(this.a.a).getManager(161);
       }
     }
-    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a());
-    if (!ReadInJoyUtils.a())
+    for (;;)
     {
-      ReadInJoyLogicEngineEventDispatcher.a().c(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.b());
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("folder_status", ReadInJoyUtils.d);
+        KandianOx210MsgInfo.Biu0x210Msg localBiu0x210Msg = paramView.a();
+        if (localBiu0x210Msg == null) {
+          continue;
+        }
+        l = localBiu0x210Msg.b;
+        localJSONObject.put("reddot_source", l);
+        localJSONObject.toString();
+      }
+      catch (JSONException localJSONException)
+      {
+        long l;
+        localJSONException.printStackTrace();
+        continue;
+      }
+      paramView.g();
       return;
+      l = 0L;
     }
-    ReadInJoyLogicEngineEventDispatcher.a().c(true, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

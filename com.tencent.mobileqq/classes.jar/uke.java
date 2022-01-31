@@ -1,90 +1,17 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.io.UnsupportedEncodingException;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class uke
-  implements Runnable
+  extends ContactBindObserver
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  BaseChatItemLayout jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public uke(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public uke(QQAppInterface paramQQAppInterface, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, String paramString1, String paramString2, int paramInt, View.OnLongClickListener paramOnLongClickListener)
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-  }
-  
-  public void run()
-  {
-    String str1 = null;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout == null) || (this.jdField_a_of_type_AndroidViewView$OnLongClickListener == null)) {}
-    for (;;)
+    if (paramBoolean)
     {
-      return;
-      label55:
-      Object localObject;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        str1 = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
-        localObject = str1;
-        if (str1 != null)
-        {
-          localObject = str1;
-          if (str1.getBytes().length > 3)
-          {
-            byte[] arrayOfByte = str1.getBytes();
-            localObject = str1;
-            if (arrayOfByte[0] == -17)
-            {
-              localObject = str1;
-              if (arrayOfByte[1] == -69)
-              {
-                localObject = str1;
-                if (arrayOfByte[2] == -65)
-                {
-                  localObject = new byte[arrayOfByte.length - 3];
-                  System.arraycopy(arrayOfByte, 3, localObject, 0, localObject.length);
-                }
-              }
-            }
-          }
-        }
-      }
-      try
-      {
-        localObject = new String((byte[])localObject, "UTF-8");
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          continue;
-        }
-        ((Activity)this.jdField_a_of_type_AndroidContentContext).runOnUiThread(new ukf(this, (String)localObject));
-        return;
-        if (this.jdField_a_of_type_Int != 3000) {
-          break label55;
-        }
-        str1 = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        for (;;)
-        {
-          localUnsupportedEncodingException.printStackTrace();
-          String str2 = str1;
-        }
-      }
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import com.tencent.mobileqq.shortvideo.util.TextureDataPipe.OnFrameAvailableListener;
 
 public class ydk
-  implements DialogInterface.OnClickListener
+  implements TextureDataPipe.OnFrameAvailableListener
 {
-  public ydk(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ydk(CameraFilterGLView paramCameraFilterGLView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.finish();
+    CameraFilterGLView.b(this.a);
   }
 }
 

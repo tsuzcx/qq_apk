@@ -1,18 +1,15 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 class lde
-  implements AsyncBack
+  extends AnimateUtils.AnimationAdapter
 {
-  lde(ldc paramldc) {}
+  lde(ldd paramldd) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
-    }
+    ReadInJoyNaviController.a(this.a.a.a, true);
   }
 }
 

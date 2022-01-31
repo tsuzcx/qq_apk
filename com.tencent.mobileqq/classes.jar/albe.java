@@ -1,31 +1,42 @@
-import android.graphics.Bitmap;
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
+import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
 
-class albe
+public class albe
   implements Runnable
 {
-  albe(albd paramalbd, GetAppInfoProto.MsgIconsurl paramMsgIconsurl) {}
+  public albe(CustomHorizontalScrollView paramCustomHorizontalScrollView) {}
   
   public void run()
   {
-    Bitmap localBitmap = AuthorityActivity.a(this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$MsgIconsurl.url.get());
-    if (localBitmap != null)
+    int i = this.a.getScrollX();
+    if (i == this.a.jdField_a_of_type_Int)
     {
-      Message localMessage = new Message();
-      localMessage.obj = localBitmap;
-      localMessage.what = 4;
-      this.jdField_a_of_type_Albd.a.a.sendMessage(localMessage);
+      int j = i % (this.a.b + this.a.c);
+      if (this.a.e + i >= this.a.d) {
+        return;
+      }
+      if (j < this.a.b / 2) {
+        this.a.smoothScrollBy(-j, 0);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Int = i;
+        return;
+        if (j >= this.a.b / 2)
+        {
+          int k = this.a.b;
+          int m = this.a.c;
+          this.a.smoothScrollBy(k + m - j, 0);
+        }
+      }
     }
+    this.a.jdField_a_of_type_Int = i;
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 5L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     albe
  * JD-Core Version:    0.7.0.1
  */

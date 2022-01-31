@@ -1,19 +1,26 @@
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.data.EqqDetail;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.game.SensorAPIJavaScript;
 import com.tencent.qphone.base.util.QLog;
 
 public class kpa
-  implements Runnable
+  implements AsyncBack
 {
-  public kpa(EqqAccountDetailActivity paramEqqAccountDetailActivity, EqqDetail paramEqqDetail) {}
+  public kpa(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "saveEqqDetailInSubThread");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+    if (QLog.isColorLevel()) {
+      QLog.d("forceUpdate", 2, "loaded code:" + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.notifyCacheReady(paramInt);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

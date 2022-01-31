@@ -1,19 +1,13 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-class kss
-  implements Runnable
+public class kss
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  kss(ksr paramksr) {}
+  public kss(AccountDetailVideoManager paramAccountDetailVideoManager) {}
   
-  public void run()
-  {
-    this.a.a.k();
-    if (!this.a.a.n) {
-      this.a.a.a(this.a.a.d, this.a.a.b, this.a.a.a.name, ChatActivity.class, true);
-    }
-  }
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 

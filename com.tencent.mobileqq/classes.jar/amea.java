@@ -1,17 +1,29 @@
-import com.tencent.widget.UpSideDownDrawable;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.qqprotect.qsec.ICSProcessor.ICSProcessorListener;
 
 public class amea
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  protected ICSProcessor.ICSProcessorListener a;
+  protected byte[] a;
   
-  public amea(UpSideDownDrawable paramUpSideDownDrawable) {}
+  public amea(byte[] paramArrayOfByte, ICSProcessor.ICSProcessorListener paramICSProcessorListener)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener = paramICSProcessorListener;
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener != null) {
+      this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amea
  * JD-Core Version:    0.7.0.1
  */

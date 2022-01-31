@@ -10,9 +10,9 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import aoic;
-import aoid;
-import aoie;
+import aoqw;
+import aoqx;
+import aoqy;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
@@ -20,7 +20,7 @@ public class ExtendEditText
   extends EditText
 {
   public static final ExtendEditText.LengthConvertor a;
-  private static final ExtendEditText.LengthConvertor jdField_c_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new aoic();
+  private static final ExtendEditText.LengthConvertor jdField_c_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new aoqw();
   protected int a;
   private ExtendEditText.LimitListener jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText$LimitListener;
   private boolean jdField_a_of_type_Boolean;
@@ -30,7 +30,7 @@ public class ExtendEditText
   
   static
   {
-    jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new aoid();
+    jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewExtendEditText$LengthConvertor = new aoqx();
   }
   
   public ExtendEditText(Context paramContext)
@@ -58,7 +58,7 @@ public class ExtendEditText
   private void d()
   {
     if (this.jdField_b_of_type_Int >= 0) {
-      setFilters(new InputFilter[] { new aoie(this, this.jdField_b_of_type_Int) });
+      setFilters(new InputFilter[] { new aoqy(this, this.jdField_b_of_type_Int) });
     }
   }
   

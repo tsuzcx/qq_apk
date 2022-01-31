@@ -63,11 +63,11 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.app.MobileQQ;
 import org.json.JSONArray;
-import vet;
-import veu;
-import vev;
-import vew;
-import vex;
+import vjv;
+import vjw;
+import vjx;
+import vjy;
+import vjz;
 
 public class RichStatItemBuilder
   extends AbstractChatItemBuilder
@@ -78,12 +78,12 @@ public class RichStatItemBuilder
   int jdField_a_of_type_Int;
   protected Handler a;
   DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new vev(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new vjx(this);
   AIOAnimationConatiner jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = null;
   SignatureManager jdField_a_of_type_ComTencentMobileqqAppSignatureManager;
   MessageForRichState jdField_a_of_type_ComTencentMobileqqDataMessageForRichState = null;
   public StatusManager a;
-  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new vex(this);
+  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new vjz(this);
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
   public HashMap a;
   private boolean jdField_a_of_type_Boolean = true;
@@ -192,7 +192,7 @@ public class RichStatItemBuilder
     for (;;)
     {
       paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.invalidate();
-      ThreadManager.post(new veu(this, paramMessageForRichState), 8, null, true);
+      ThreadManager.post(new vjw(this, paramMessageForRichState), 8, null, true);
       return;
       this.jdField_a_of_type_Boolean = false;
       paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.jdField_b_of_type_JavaLangString = String.valueOf(paramMessageForRichState.count);
@@ -227,7 +227,7 @@ public class RichStatItemBuilder
           paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.jdField_c_of_type_Int = Color.parseColor(paramHolder.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo.p);
         }
       }
-      ((URLDrawable)localObject2).setURLDrawableListener(new vew(this, paramHolder));
+      ((URLDrawable)localObject2).setURLDrawableListener(new vjy(this, paramHolder));
       label258:
       paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject1);
       if ((SignatureManager.e == null) || (SignatureManager.a == null)) {
@@ -342,7 +342,7 @@ public class RichStatItemBuilder
       paramLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.jdField_a_of_type_Boolean = false;
       label265:
       paramLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.setOnTouchListener(new vet(this, paramLinearLayout));
+      paramLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.setOnTouchListener(new vjv(this, paramLinearLayout));
       paramLinearLayout.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForRichState.uniseq;
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground.a != null) {
         paramLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioItemSignatureView.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground.a.getDefaultColor();
@@ -517,7 +517,7 @@ public class RichStatItemBuilder
     while (localIterator.hasNext())
     {
       RichStatus.StickerInfo localStickerInfo = (RichStatus.StickerInfo)localIterator.next();
-      paramArrayList = AppConstants.by + localStickerInfo.jdField_a_of_type_Int + ".png";
+      paramArrayList = AppConstants.bz + localStickerInfo.jdField_a_of_type_Int + ".png";
       Object localObject = new Bundle();
       int i = (int)(this.jdField_a_of_type_Int * localStickerInfo.c);
       int j = (int)(this.jdField_b_of_type_Int * localStickerInfo.d);
@@ -576,7 +576,7 @@ public class RichStatItemBuilder
     {
       localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
       if (!NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext)) {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, ((Resources)localObject).getString(2131433009), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, ((Resources)localObject).getString(2131433023), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
       }
     }
     else
@@ -585,7 +585,7 @@ public class RichStatItemBuilder
     }
     if (Math.abs(System.currentTimeMillis() - 0L) < 200L)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, ((Resources)localObject).getString(2131437883), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, ((Resources)localObject).getString(2131437903), 0).b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
       return;
     }
     try

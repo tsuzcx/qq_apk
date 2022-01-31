@@ -3,7 +3,7 @@ package com.tencent.av.gameplay;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import jhr;
+import jju;
 import mqq.os.MqqHandler;
 
 public class GPNativeSoLoader
@@ -68,13 +68,13 @@ public class GPNativeSoLoader
       }
     } while (a("qavgameplayengine") == 0);
     return false;
-    ThreadManager.getUIHandler().post(new jhr());
+    ThreadManager.getUIHandler().post(new jju());
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.gameplay.GPNativeSoLoader
  * JD-Core Version:    0.7.0.1
  */

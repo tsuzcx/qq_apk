@@ -1,15 +1,39 @@
-import android.view.View;
-import android.view.Window;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class anxz
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public anxz(EditTextDialog paramEditTextDialog) {}
+  public anxz(QIMCircleProgress paramQIMCircleProgress) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.getWindow().getDecorView().setSystemUiVisibility(4);
+    this.a.a = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+    if ((this.a.c) && (this.a.b != null)) {
+      this.a.b.start();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
+    }
   }
 }
 

@@ -57,7 +57,7 @@ public class KandianMergeManager$KandianSetTopInfo
   public void trySetTopKandianMsg(QQAppInterface paramQQAppInterface)
   {
     a();
-    MessageRecord localMessageRecord = paramQQAppInterface.a().b(AppConstants.as, 7220);
+    MessageRecord localMessageRecord = paramQQAppInterface.a().b(AppConstants.at, 7220);
     long l;
     RecentUserProxy localRecentUserProxy;
     RecentUser localRecentUser;
@@ -68,7 +68,7 @@ public class KandianMergeManager$KandianSetTopInfo
       }
       l = System.currentTimeMillis() / 1000L;
       localRecentUserProxy = paramQQAppInterface.a().a();
-      localRecentUser = localRecentUserProxy.b(AppConstants.as, 7220);
+      localRecentUser = localRecentUserProxy.b(AppConstants.at, 7220);
       if (localRecentUser != null) {}
     }
     else
@@ -76,7 +76,7 @@ public class KandianMergeManager$KandianSetTopInfo
       return;
     }
     localRecentUser.lastmsgtime = l;
-    paramQQAppInterface.a().a(AppConstants.as, 7220, localMessageRecord.uniseq, "time", Long.valueOf(l));
+    paramQQAppInterface.a().a(AppConstants.at, 7220, localMessageRecord.uniseq, "time", Long.valueOf(l));
     localRecentUserProxy.a(localRecentUser);
     paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
     if (paramQQAppInterface != null) {

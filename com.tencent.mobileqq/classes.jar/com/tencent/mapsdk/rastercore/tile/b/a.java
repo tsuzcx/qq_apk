@@ -5,6 +5,8 @@ import com.tencent.mapsdk.raster.model.UrlTileProvider;
 public abstract class a
   extends UrlTileProvider
 {
+  public a(int paramInt) {}
+  
   protected static int a(int paramInt1, int paramInt2)
   {
     int i = paramInt1 % paramInt2;

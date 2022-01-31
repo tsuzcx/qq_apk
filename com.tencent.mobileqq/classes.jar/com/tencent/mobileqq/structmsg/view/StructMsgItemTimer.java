@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aijt;
-import aiju;
+import aioo;
+import aiop;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -84,7 +84,7 @@ public class StructMsgItemTimer
     if ((paramView != null) && ((paramView instanceof CountdownTextView)))
     {
       paramContext = (CountdownTextView)paramView;
-      paramContext.a(a(), new aijt(this, paramContext));
+      paramContext.a(a(), new aioo(this, paramContext));
       paramContext.setTag(this);
       return paramContext;
     }
@@ -98,7 +98,7 @@ public class StructMsgItemTimer
     if (this.A != null) {
       paramContext.setText(a(l));
     }
-    paramContext.a(l, new aiju(this, paramContext));
+    paramContext.a(l, new aiop(this, paramContext));
     return paramContext;
   }
   

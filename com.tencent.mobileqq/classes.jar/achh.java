@@ -1,39 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
 
 public class achh
-  extends WtloginObserver
+  implements Runnable
 {
-  public achh(EquipLockWebImpl paramEquipLockWebImpl) {}
+  public achh(EmoticonFromGroupManager paramEmoticonFromGroupManager) {}
   
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
-    }
-    if (paramInt == 0)
-    {
-      EquipLockWebImpl.c(this.a, true);
-      if (EquipLockWebImpl.a(this.a) != null)
-      {
-        paramWUserSigInfo = (QQAppInterface)EquipLockWebImpl.a(this.a).get();
-        if ((paramWUserSigInfo != null) && (EquipmentLockImpl.a().a(paramWUserSigInfo))) {}
-      }
-      else
-      {
-        EquipLockWebImpl.a(this.a, false);
-        EquipLockWebImpl.b(this.a, false);
-      }
-      return;
-    }
-    EquipLockWebImpl.a(this.a, false);
-    EquipLockWebImpl.c(this.a, false);
+    EmoticonFromGroupManager.a(this.a).b = (FavEmoConstant.a - this.a.b());
   }
 }
 

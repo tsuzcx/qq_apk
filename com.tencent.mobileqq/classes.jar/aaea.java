@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.ar.ARLBSPOIDialog;
 
 public class aaea
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aaea(ScanEntranceReport paramScanEntranceReport) {}
+  public aaea(ARLBSPOIDialog paramARLBSPOIDialog) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    HashMap localHashMap = new HashMap();
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_zoom_camera", true, 0L, 0L, localHashMap, "");
+    this.a.a.setVisibility(8);
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

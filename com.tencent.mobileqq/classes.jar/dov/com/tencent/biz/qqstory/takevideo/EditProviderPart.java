@@ -9,11 +9,12 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import anrs;
-import anrt;
-import anru;
-import anrv;
-import anrw;
+import aoaf;
+import aoag;
+import aoak;
+import aoal;
+import aoam;
+import aoan;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
@@ -35,6 +36,7 @@ import dov.com.qq.im.capture.view.MusicProviderView;
 import dov.com.qq.im.capture.view.ProviderView;
 import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
 import dov.com.qq.im.capture.view.QIMFilterProviderView;
+import dov.com.qq.im.capture.view.TransitionProviderView;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage.Item;
@@ -48,12 +50,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
 public class EditProviderPart
   extends EditVideoPart
-  implements ProviderView.ProviderViewListener, DoodleLayout.DoodleEventListener
+  implements ProviderView.ProviderViewListener, EditProviderExport, DoodleLayout.DoodleEventListener
 {
   public static String a;
   public float a;
@@ -62,18 +65,19 @@ public class EditProviderPart
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private QimMusicPlayer jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer = (QimMusicPlayer)QIMManager.a().c(8);
-  private FacePoiSearchUI.FacePoiSearchUIListener jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI$FacePoiSearchUIListener = new anrw(this);
+  private FacePoiSearchUI.FacePoiSearchUIListener jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI$FacePoiSearchUIListener = new aoan(this);
   private FacePoiSearchUI jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI;
-  private FacePoiUI.FacePoiUIListener jdField_a_of_type_DovComQqImCapturePoiFacePoiUI$FacePoiUIListener = new anrv(this);
+  private FacePoiUI.FacePoiUIListener jdField_a_of_type_DovComQqImCapturePoiFacePoiUI$FacePoiUIListener = new aoam(this);
   private FacePoiUI jdField_a_of_type_DovComQqImCapturePoiFacePoiUI;
   private QIMProviderViewBuilder jdField_a_of_type_DovComQqImCaptureUtilQIMProviderViewBuilder;
   private ProviderView jdField_a_of_type_DovComQqImCaptureViewProviderView;
-  private EditVideoPoiPickerCallback jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPoiPickerCallback = new anru(this);
+  private EditVideoPoiPickerCallback jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPoiPickerCallback = new aoal(this);
   private DoodleLayout jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout;
   private VideoFilterViewPager jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   public float b;
   private View b;
+  private View c;
   
   static
   {
@@ -121,6 +125,11 @@ public class EditProviderPart
   
   private void c(int paramInt, Object paramObject)
   {
+    if ((this.c != null) && (this.c.getVisibility() == 0))
+    {
+      this.c.setVisibility(8);
+      this.c = null;
+    }
     if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView != null)
     {
       this.jdField_a_of_type_DovComQqImCaptureViewProviderView.b();
@@ -138,10 +147,14 @@ public class EditProviderPart
       }
       return;
       ProviderView localProviderView = this.jdField_a_of_type_DovComQqImCaptureUtilQIMProviderViewBuilder.a(a(), paramInt);
-      localObject = localProviderView;
-      if (localProviderView != null)
-      {
+      if (localProviderView != null) {
         this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localProviderView);
+      }
+      localObject = localProviderView;
+      if ((localProviderView instanceof TransitionProviderView))
+      {
+        int i = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("extra_transiton_src_from", -1);
+        ((TransitionProviderView)localProviderView).jdField_a_of_type_Int = i;
         localObject = localProviderView;
       }
     }
@@ -154,13 +167,45 @@ public class EditProviderPart
       ((ProviderView)localObject).a(a());
     }
     this.jdField_a_of_type_DovComQqImCaptureViewProviderView = ((ProviderView)localObject);
-    if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView.getId() != 2131362418) {
+    if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView.getId() != 2131362421) {
       d(false);
     }
     this.jdField_a_of_type_DovComQqImCaptureViewProviderView.setVisibility(0);
     this.jdField_a_of_type_DovComQqImCaptureViewProviderView.a();
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  private void s()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager != null)
+    {
+      localObject = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager;
+      if (EditVideoPartManager.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b, -2147483648))
+      {
+        localObject = ((CaptureComboManager)QIMManager.a(5)).jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$ComboFilterData;
+        if (localObject != null) {
+          break label63;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QCombo", 2, "comboFilterData null");
+        }
+      }
+    }
+    label63:
+    do
+    {
+      return;
+      localObject = ((VideoFilterTools.ComboFilterData)localObject).b();
+      if ((localObject == null) || (((List)localObject).size() >= 3)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QCombo", 2, "recommend trans less than 3");
+    return;
+    this.c = a(2131364501);
+    this.c.postDelayed(new aoag(this, (List)localObject), 1000L);
   }
   
   public int a()
@@ -184,11 +229,12 @@ public class EditProviderPart
   public void a()
   {
     super.a();
+    a(EditProviderExport.class, this);
     int i = b();
     this.jdField_a_of_type_Int = i;
     VideoFilterTools.a().a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)a(2131364450));
-    this.jdField_a_of_type_AndroidViewView = a(2131364449);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)a(2131364475));
+    this.jdField_a_of_type_AndroidViewView = a(2131364474);
     this.jdField_a_of_type_DovComQqImCaptureUtilQIMProviderViewBuilder = new QIMProviderViewBuilder(i);
     this.jdField_a_of_type_DovComQqImCaptureUtilQIMProviderViewBuilder.a();
     this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI = new FacePoiUI();
@@ -198,7 +244,7 @@ public class EditProviderPart
     this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI$FacePoiSearchUIListener);
     this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a());
     Object localObject = (CaptureComboManager)QIMManager.a(5);
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager = ((VideoFilterViewPager)a(2131364358));
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager = ((VideoFilterViewPager)a(2131364383));
     this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.setReadyToApply(false);
     this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.setCaptureScene(this.jdField_a_of_type_Int);
     localObject = ((CaptureComboManager)localObject).jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$ComboFilterData;
@@ -210,12 +256,12 @@ public class EditProviderPart
     }
     for (;;)
     {
-      this.b = a(2131364350);
-      this.b.setOnTouchListener(new anrs(this));
+      this.b = a(2131364375);
+      this.b.setOnTouchListener(new aoaf(this));
       if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi instanceof EditVideoActivity)) {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364423));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364448));
       }
-      c();
+      d();
       return;
       if (QLog.isColorLevel()) {
         QLog.d("EditProviderPart", 2, "comboFilterData is null");
@@ -283,9 +329,19 @@ public class EditProviderPart
   
   public void a(byte[] paramArrayOfByte) {}
   
-  public void aE_()
+  public void aA_()
   {
-    super.aE_();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a());
+  }
+  
+  public void aB_()
+  {
+    s();
+  }
+  
+  public void aF_()
+  {
+    super.aF_();
     VideoFilterTools.a().a(this.jdField_a_of_type_Int);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
     while (localIterator.hasNext()) {
@@ -294,9 +350,9 @@ public class EditProviderPart
     ((CaptureComboManager)QIMManager.a(5)).jdField_a_of_type_ArrayOfDovComQqImCaptureDataCaptureComboManager$CaptureRecord[this.jdField_a_of_type_Int].a((Activity)this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());
   }
   
-  public void aF_()
+  public void aG_()
   {
-    super.aF_();
+    super.aG_();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
     while (localIterator.hasNext()) {
       ((ProviderView)localIterator.next()).f();
@@ -309,7 +365,7 @@ public class EditProviderPart
     switch (paramInt)
     {
     default: 
-      d();
+      i();
       return;
     case 6: 
       a(103);
@@ -326,18 +382,16 @@ public class EditProviderPart
     case 29: 
       a(101);
       return;
+    case 30: 
+      a(108);
+      return;
     }
-    a(108);
+    a(112);
   }
   
-  public void ax_()
+  public void az_()
   {
-    super.ax_();
-  }
-  
-  public void ay_()
-  {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a());
+    super.az_();
   }
   
   public int b()
@@ -358,7 +412,7 @@ public class EditProviderPart
   public void b(int paramInt, Object paramObject)
   {
     if (paramInt == 7) {
-      d();
+      i();
     }
   }
   
@@ -382,7 +436,18 @@ public class EditProviderPart
     return false;
   }
   
-  void c()
+  public void c()
+  {
+    if ((this.c != null) && (this.c.getVisibility() == 0)) {
+      this.c.setVisibility(8);
+    }
+  }
+  
+  public void c(int paramInt) {}
+  
+  public void c(boolean paramBoolean) {}
+  
+  void d()
   {
     if (QLog.isColorLevel()) {
       QLog.d("EditProviderPart", 2, "preloadProviderView count" + this.jdField_a_of_type_DovComQqImCaptureUtilQIMProviderViewBuilder.a());
@@ -401,6 +466,11 @@ public class EditProviderPart
         localProviderView.b(localBundle);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localProviderView);
         localProviderView.setVisibility(8);
+        if ((localProviderView instanceof TransitionProviderView))
+        {
+          j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a("extra_transiton_src_from", -1);
+          ((TransitionProviderView)localProviderView).jdField_a_of_type_Int = j;
+        }
       }
       while (!QLog.isColorLevel())
       {
@@ -409,22 +479,6 @@ public class EditProviderPart
       }
       QLog.e("EditProviderPart", 2, "preloadProviderView failed " + i);
     }
-  }
-  
-  public void c(int paramInt) {}
-  
-  public void c(boolean paramBoolean) {}
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView != null)
-    {
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView.b();
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView.setVisibility(8);
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView = null;
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
   public void d(int paramInt)
@@ -444,10 +498,15 @@ public class EditProviderPart
       if ((paramBoolean) && (localMusicProviderView != null) && ((localMusicItemInfo == null) || (!localMusicItemInfo.b())) && (localMusicProviderView.b())) {}
       for (paramBoolean = true; (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi != null) && ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi instanceof EditVideoActivity)) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null); paramBoolean = false)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().runOnUiThread(new anrt(this, paramBoolean));
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity().runOnUiThread(new aoak(this, paramBoolean));
         return;
       }
     }
+  }
+  
+  public void e(int paramInt)
+  {
+    ((EditTransferExport)a(EditTransferExport.class)).a(paramInt);
   }
   
   public void e(boolean paramBoolean)
@@ -474,7 +533,24 @@ public class EditProviderPart
   
   public void i()
   {
-    super.i();
+    if ((this.c != null) && (this.c.getVisibility() == 0))
+    {
+      this.c.setVisibility(8);
+      this.c = null;
+    }
+    if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView != null)
+    {
+      this.jdField_a_of_type_DovComQqImCaptureViewProviderView.b();
+      this.jdField_a_of_type_DovComQqImCaptureViewProviderView.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImCaptureViewProviderView = null;
+    }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void j()
+  {
+    super.j();
     ((CaptureComboManager)QIMManager.a(5)).jdField_a_of_type_ArrayOfDovComQqImCaptureDataCaptureComboManager$CaptureRecord[this.jdField_a_of_type_Int].c((Activity)this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());
   }
   

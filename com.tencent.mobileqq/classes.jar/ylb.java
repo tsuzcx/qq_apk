@@ -1,20 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public final class ylb
-  implements Runnable
+public class ylb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ylb(ApolloRender paramApolloRender, View paramView) {}
+  public ylb(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mShowEditWindow = true;
-    ApolloRender.setVisiblePopEidtor(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender);
+    ThreadManager.post(this.a, 8, null, false);
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ylb
  * JD-Core Version:    0.7.0.1
  */

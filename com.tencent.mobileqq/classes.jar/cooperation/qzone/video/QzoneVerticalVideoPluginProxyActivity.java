@@ -1,10 +1,10 @@
 package cooperation.qzone.video;
 
-import anbi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anjh;
 import com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.IPluginManager;
@@ -22,12 +22,12 @@ public class QzoneVerticalVideoPluginProxyActivity
   
   public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
   {
-    Class localClass = anbi.a("com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity");
-    paramIntent.putExtra("userQqResources", -1);
+    Class localClass = anjh.a("com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity");
+    paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", false);
     paramIntent.putExtra("param_plugin_gesturelock", false);
     Object localObject;
-    if (QzoneVerticalVideoDownloadActivity.a())
+    if (QzoneVerticalVideoDownloadActivity.a("qzone_vertical_video_plugin.apk"))
     {
       localObject = new IPluginManager.PluginParams(0);
       ((IPluginManager.PluginParams)localObject).jdField_a_of_type_JavaLangString = paramString;
@@ -101,12 +101,12 @@ public class QzoneVerticalVideoPluginProxyActivity
   
   protected int getPluginResType()
   {
-    return -1;
+    return 2;
   }
   
   protected Class getProxyActivity(String paramString)
   {
-    return anbi.a(paramString);
+    return anjh.a(paramString);
   }
   
   protected int getThemeResId()

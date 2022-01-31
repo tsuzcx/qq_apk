@@ -1,30 +1,24 @@
-import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
-import com.tencent.av.service.AVRedPacketConfig;
-import com.tencent.mobileqq.armap.ResDownloadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.guild.GuildMultiActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class jlj
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public jlj(AVRedPacketConfigManager paramAVRedPacketConfigManager) {}
+  public jlj(GuildMultiActivity paramGuildMultiActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketConfigManger", 2, "musicPreDownloadTask called");
+      QLog.d(GuildMultiActivity.a, 2, "showEnterRoomFailDialog: exitMultiRoom");
     }
-    if (this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null)
-    {
-      QLog.d("AVRedPacketConfigManger", 1, "musicPreDownloadTask, redPacketConfig is null");
-      return;
-    }
-    this.a.c = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResMd5, ".zip", true, 4, Integer.valueOf(2));
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jlj
  * JD-Core Version:    0.7.0.1
  */

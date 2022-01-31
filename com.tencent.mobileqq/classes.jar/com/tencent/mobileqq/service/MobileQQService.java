@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.service;
 
-import ahxb;
+import aibs;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -68,7 +68,7 @@ public class MobileQQService
   extends MobileQQServiceBase
 {
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ActionListener jdField_a_of_type_ComTencentMobileqqCompatibleActionListener = new ahxb(this);
+  private ActionListener jdField_a_of_type_ComTencentMobileqqCompatibleActionListener = new aibs(this);
   private QQNotificationManager jdField_a_of_type_ComTencentUtilNotificationQQNotificationManager;
   private Random jdField_a_of_type_JavaUtilRandom = new Random();
   public boolean a;
@@ -89,14 +89,14 @@ public class MobileQQService
     int i;
     if (!MobileIssueSettings.e)
     {
-      localNotification = KapalaiAdapterUtil.a().a(BaseApplication.getContext(), 2130839537);
+      localNotification = KapalaiAdapterUtil.a().a(BaseApplication.getContext(), 2130839552);
       paramIntent = localNotification;
       if (QLog.isColorLevel())
       {
         QLog.i("MobileQQService", 2, "buildIdleNotification by newNotificationForMeizu. nf=" + localNotification);
         paramIntent = localNotification;
       }
-      paramIntent.icon = 2130839537;
+      paramIntent.icon = 2130839552;
       if (!this.c) {
         break label193;
       }
@@ -115,7 +115,7 @@ public class MobileQQService
       do
       {
         return paramIntent;
-        localNotification = NotificationFactory.a("CHANNEL_ID_HIDE_BADGE", 2130839537, null, System.currentTimeMillis());
+        localNotification = NotificationFactory.a("CHANNEL_ID_HIDE_BADGE", 2130839552, null, System.currentTimeMillis());
         localNotification.contentView = null;
         paramIntent = localNotification;
         if (!QLog.isColorLevel()) {
@@ -139,7 +139,7 @@ public class MobileQQService
     if (QLog.isColorLevel()) {
       QLog.i("MobileQQService", 2, "buildNotification by getActivity. contentIntent=" + localPendingIntent2);
     }
-    int j = 2130839538;
+    int j = 2130839553;
     int i;
     PendingIntent localPendingIntent1;
     Bitmap localBitmap;
@@ -165,19 +165,19 @@ public class MobileQQService
         {
           j = i;
           if (paramIntent.getIntExtra("uintype", -1) == 1010) {
-            j = 2130842764;
+            j = 2130842799;
           }
         }
         if ((!bool2) || ((paramIntent.getIntExtra("uintype", -1) != 1001) && (paramIntent.getIntExtra("uintype", -1) != 10002))) {
-          break label538;
+          break label537;
         }
         i = 1;
         label190:
         if (i != 0) {
-          j = 2130839202;
+          j = 2130839221;
         }
         if (paramIntent.getBooleanExtra("qav_notify_flag", false)) {
-          j = 2130840222;
+          j = 2130840237;
         }
         paramIntent = NotificationFactory.a("").setSmallIcon(j).setAutoCancel(true).setWhen(System.currentTimeMillis()).setTicker(paramString1);
         if (bool1) {
@@ -189,7 +189,7 @@ public class MobileQQService
           paramIntent.setLights(-16711936, 2000, 2000);
         }
         if (!this.c) {
-          break label544;
+          break label543;
         }
         if (localBitmap != null) {
           paramIntent.setLargeIcon(localBitmap);
@@ -211,7 +211,7 @@ public class MobileQQService
         paramIntent.setPriority(1).setVibrate(new long[0]);
       }
       return paramIntent.build();
-      i = 2130839751;
+      i = 2130839766;
       localPendingIntent1 = localPendingIntent2;
       localBitmap = paramBitmap;
       break;
@@ -223,14 +223,14 @@ public class MobileQQService
       }
       j = paramIntent.getIntExtra("campus_notice_id", 100);
       paramBitmap = BaseApplication.getContext();
-      i = 2130839537;
-      localBitmap = BitmapManager.a(paramBitmap.getResources(), 2130839193);
-      localPendingIntent1 = PendingIntent.getActivity(BaseApplication.getContext(), j, paramIntent, 1073741824);
+      i = 2130839552;
+      localBitmap = BitmapManager.a(paramBitmap.getResources(), 2130839210);
+      localPendingIntent1 = PendingIntent.getActivity(BaseApplication.getContext(), j, paramIntent, 268435456);
       break;
-      label538:
+      label537:
       i = 0;
       break label190;
-      label544:
+      label543:
       paramIntent.setContentTitle(paramString2).setContentText(paramString3).setContentIntent(localPendingIntent1);
       if (localBitmap != null) {
         paramIntent.setLargeIcon(localBitmap);
@@ -273,7 +273,7 @@ public class MobileQQService
       paramToServiceMsg = KapalaiAdapterUtil.a().a(localIntent, localBitmap, arrayOfString[0], arrayOfString[1], arrayOfString[2], this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       paramToServiceMsg.deleteIntent = a();
       b();
-      if (!SettingCloneUtil.readValue(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), BaseApplication.getContext().getString(2131434202), "qqsetting_notify_showcontent_key", true)) {
+      if (!SettingCloneUtil.readValue(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), BaseApplication.getContext().getString(2131434218), "qqsetting_notify_showcontent_key", true)) {
         break label842;
       }
       if (localIntent.getIntExtra("uintype", -1) != 1008) {

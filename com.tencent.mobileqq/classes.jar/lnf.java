@@ -1,19 +1,9 @@
-import android.view.View;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 
-public class lnf
-  implements ValueAnimator.AnimatorUpdateListener
+public final class lnf
+  implements Runnable
 {
-  public lnf(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
-  }
+  public void run() {}
 }
 
 

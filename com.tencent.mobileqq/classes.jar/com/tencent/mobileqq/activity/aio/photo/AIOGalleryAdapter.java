@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -40,7 +41,6 @@ import com.tencent.mobileqq.richmedia.dc.DCAIOPreviewProgressive;
 import com.tencent.mobileqq.richmedia.dc.DCShortVideo;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -53,9 +53,9 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import org.json.JSONObject;
-import vmg;
-import vmh;
-import vmn;
+import vri;
+import vrj;
+import vrp;
 
 public class AIOGalleryAdapter
   extends AbstractImageAdapter
@@ -71,7 +71,7 @@ public class AIOGalleryAdapter
   AIOImageListModel jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel;
   IAIOImageProvider jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private vmn jdField_a_of_type_Vmn;
+  private vrp jdField_a_of_type_Vrp;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int;
   long jdField_b_of_type_Long = -1L;
@@ -522,9 +522,7 @@ public class AIOGalleryAdapter
       return;
       paramView = ((AIOGalleryAdapter.GalleryImageStruct)paramView).a();
     } while (!URLDrawable.class.isInstance(paramView));
-    paramView = (URLDrawable)paramView;
-    StatisticCollector.a(BaseApplicationImpl.sApplication).a(null, "regionDecode", true, 0L, 0L, null, null);
-    paramView.updateRegionBitmap(paramRegionDrawableData);
+    ((URLDrawable)paramView).updateRegionBitmap(paramRegionDrawableData);
   }
   
   public void a(int paramInt, View paramView, boolean paramBoolean)
@@ -613,7 +611,7 @@ public class AIOGalleryAdapter
     {
       if ((paramString1 == null) || (paramString2 == null) || ((!"PART".equals(paramString2)) && (!"DISPLAY".equals(paramString2))))
       {
-        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837618));
+        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837617));
         a(paramInt, false);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().d();
       }
@@ -687,7 +685,7 @@ public class AIOGalleryAdapter
               if (paramString2.jdField_b_of_type_Int != 0) {
                 if (paramString2.jdField_b_of_type_Boolean)
                 {
-                  paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837618));
+                  paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837617));
                   a(paramInt, false);
                   if (QLog.isColorLevel()) {
                     QLog.i("AIOGalleryAdapter", 2, "AIOGalleryAdapter.updateView(): IMAGE_FILE_ERROR, position=" + paramInt);
@@ -762,7 +760,7 @@ public class AIOGalleryAdapter
         if ((paramString2 != null) && (paramString1 != null) && (("PART".equals(paramString1)) || ("DISPLAY".equals(paramString1)))) {
           break label222;
         }
-        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837618));
+        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837617));
         a(paramInt, false);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.a().d();
         if (((AIOFilePicData)localAIORichMediaInfo.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_a_of_type_Long < FMConfig.c()) {
@@ -828,7 +826,7 @@ public class AIOGalleryAdapter
             paramView.setDecodingDrawble(paramString1);
           }
         }
-        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837618));
+        paramView.setImageDrawable(BaseApplicationImpl.getApplication().getResources().getDrawable(2130837617));
         a(paramInt, true);
         break label222;
         break;
@@ -874,6 +872,7 @@ public class AIOGalleryAdapter
   {
     Object localObject1 = a(paramInt);
     Object localObject2;
+    label298:
     int i;
     if ((paramView != null) && (AIOGalleryAdapter.GalleryImageStruct.class.isInstance(paramView)))
     {
@@ -890,7 +889,11 @@ public class AIOGalleryAdapter
         }
       }
       if ((localObject1 == null) || (!AIOShortVideoData.class.isInstance(((AIORichMediaInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))) {
-        break label645;
+        break label502;
+      }
+      ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getSystemService("audio")).requestAudioFocus(null, 3, 2);
+      if ((localObject1 == null) || (!AIOShortVideoData.class.isInstance(((AIORichMediaInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))) {
+        break label705;
       }
       localObject1 = (AIOShortVideoData)((AIORichMediaInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
       if (this.d == -1)
@@ -902,26 +905,26 @@ public class AIOGalleryAdapter
       {
         localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getIntent();
         if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getIntent().getBooleanExtra("extra.FROM_AIO", false)) {
-          break label463;
+          break label523;
         }
         paramAdapterView = "1";
         i = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getIntent().getIntExtra("forward_source_uin_type", -1);
         localObject2 = ((Intent)localObject2).getStringExtra("leftViewText");
         if (localObject2 == null) {
-          break label749;
+          break label809;
         }
         if (!((String)localObject2).equals("聊天记录")) {
-          break label470;
+          break label530;
         }
         paramAdapterView = "2";
       }
     }
-    label304:
-    label463:
-    label470:
-    label749:
+    label523:
+    label530:
+    label809:
     for (;;)
     {
+      label343:
       ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getIntent().getStringExtra("uin"), String.valueOf(((AIOShortVideoData)localObject1).jdField_a_of_type_Int * 1000), i, "2", paramAdapterView);
       paramAdapterView = (AIOGalleryAdapter.GalleryImageStruct)paramView;
       paramView = ((AIOShortVideoData)localObject1).a(1);
@@ -937,11 +940,15 @@ public class AIOGalleryAdapter
             a(paramInt, paramAdapterView, (AIOShortVideoData)localObject1, paramView);
           }
         }
-        else if (QLog.isColorLevel())
+        else
         {
-          QLog.i("AIOGalleryAdapter", 2, "AIOGalleryAdapter.onItemSelected(): video file " + paramView);
+          label469:
+          if (QLog.isColorLevel()) {
+            QLog.i("AIOGalleryAdapter", 2, "AIOGalleryAdapter.onItemSelected(): video file " + paramView);
+          }
         }
       }
+      label502:
       do
       {
         do
@@ -951,18 +958,20 @@ public class AIOGalleryAdapter
             do
             {
               return;
-              paramAdapterView = "3";
+              ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.getSystemService("audio")).abandonAudioFocus(null);
               break;
+              paramAdapterView = "3";
+              break label298;
               if ((i != 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a == null)) {
-                break label749;
+                break label809;
               }
               paramAdapterView = "3";
-              break label304;
+              break label343;
               if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a() == null) || (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a() instanceof AIOGalleryScene)) || (!((AIOGalleryScene)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a()).jdField_f_of_type_Boolean) || (localObject2 == null)) {
-                break label430;
+                break label469;
               }
               a(paramInt, paramAdapterView, (AIOShortVideoData)localObject1, paramView);
-              break label430;
+              break label469;
               paramAdapterView = ((AIOShortVideoData)localObject1).a(0);
             } while (paramAdapterView == null);
             this.d = -1;
@@ -972,7 +981,7 @@ public class AIOGalleryAdapter
           QLog.i("AIOGalleryAdapter", 2, "AIOGalleryAdapter.onItemSelected(): thumb file " + paramAdapterView);
           return;
           if ((localObject1 == null) || (!AIOImageData.class.isInstance(((AIORichMediaInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))) {
-            break label723;
+            break label783;
           }
           paramAdapterView = (AIOImageData)((AIORichMediaInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
         } while ((paramAdapterView.jdField_c_of_type_Int != 3) || (paramAdapterView.a(1) != null) || (paramAdapterView.a(2) != null) || (paramAdapterView.a(4) != null) || (paramAdapterView.i >= FMConfig.c()));
@@ -981,14 +990,15 @@ public class AIOGalleryAdapter
         this.d = -1;
         this.jdField_b_of_type_ComTencentImageURLDrawable = null;
       } while (!QLog.isColorLevel());
+      label705:
       QLog.i("AIOGalleryAdapter", 2, "AIOGalleryAdapter.onItemSelected(): Data is image");
       return;
     }
   }
   
-  public void a(vmn paramvmn)
+  public void a(vrp paramvrp)
   {
-    this.jdField_a_of_type_Vmn = paramvmn;
+    this.jdField_a_of_type_Vrp = paramvrp;
   }
   
   public void a(boolean paramBoolean)
@@ -1135,7 +1145,7 @@ public class AIOGalleryAdapter
     //   15: new 145	java/lang/StringBuilder
     //   18: dup
     //   19: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   22: ldc_w 845
+    //   22: ldc_w 847
     //   25: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: iload_1
     //   29: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1146,11 +1156,11 @@ public class AIOGalleryAdapter
     //   42: aload_0
     //   43: aload_0
     //   44: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   47: invokespecial 848	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;Landroid/content/Context;)V
+    //   47: invokespecial 850	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;Landroid/content/Context;)V
     //   50: astore 8
     //   52: aload 8
     //   54: iconst_1
-    //   55: invokevirtual 851	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setAdjustViewBounds	(Z)V
+    //   55: invokevirtual 853	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setAdjustViewBounds	(Z)V
     //   58: aload_0
     //   59: iload_1
     //   60: invokevirtual 412	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(I)Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;
@@ -1170,17 +1180,17 @@ public class AIOGalleryAdapter
     //   95: astore 10
     //   97: aload 8
     //   99: iload_1
-    //   100: invokevirtual 854	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setPosition	(I)V
+    //   100: invokevirtual 856	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setPosition	(I)V
     //   103: aload 8
     //   105: aload 9
-    //   107: invokevirtual 858	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageInfo	(Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;)V
+    //   107: invokevirtual 860	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageInfo	(Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;)V
     //   110: aload 8
     //   112: iconst_0
-    //   113: invokevirtual 829	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setIgnoreLayout	(Z)V
+    //   113: invokevirtual 831	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setIgnoreLayout	(Z)V
     //   116: aload 8
     //   118: aload 10
-    //   120: getfield 861	com/tencent/mobileqq/activity/aio/photo/AIOImageData:k	Ljava/lang/String;
-    //   123: invokevirtual 863	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	(Ljava/lang/String;)V
+    //   120: getfield 863	com/tencent/mobileqq/activity/aio/photo/AIOImageData:k	Ljava/lang/String;
+    //   123: invokevirtual 865	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	(Ljava/lang/String;)V
     //   126: iconst_0
     //   127: istore 4
     //   129: aconst_null
@@ -1205,48 +1215,48 @@ public class AIOGalleryAdapter
     //   164: invokevirtual 443	com/tencent/mobileqq/activity/aio/photo/AIOImageData:a	(I)Ljava/lang/String;
     //   167: astore_2
     //   168: aload_3
-    //   169: invokevirtual 608	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
+    //   169: invokevirtual 592	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
     //   172: invokevirtual 368	java/net/URL:toString	()Ljava/lang/String;
     //   175: astore 7
     //   177: aload 7
     //   179: aload_2
-    //   180: invokevirtual 614	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   180: invokevirtual 598	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   183: ifeq +9 -> 192
     //   186: aload 8
     //   188: iconst_1
-    //   189: invokevirtual 866	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setOriginalImage	(Z)V
+    //   189: invokevirtual 868	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setOriginalImage	(Z)V
     //   192: aload 9
-    //   194: getfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   194: getfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
     //   197: bipush 254
     //   199: if_icmpne +18 -> 217
     //   202: aload 9
     //   204: aload_3
-    //   205: invokevirtual 608	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
-    //   208: invokevirtual 870	java/net/URL:getFile	()Ljava/lang/String;
-    //   211: invokestatic 876	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
-    //   214: putfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   205: invokevirtual 592	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
+    //   208: invokevirtual 872	java/net/URL:getFile	()Ljava/lang/String;
+    //   211: invokestatic 878	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
+    //   214: putfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
     //   217: aload 8
     //   219: aload_3
     //   220: aload 9
-    //   222: getfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
-    //   225: invokestatic 879	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(Landroid/view/View;Lcom/tencent/image/URLDrawable;I)V
+    //   222: getfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   225: invokestatic 881	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(Landroid/view/View;Lcom/tencent/image/URLDrawable;I)V
     //   228: aload 8
-    //   230: invokevirtual 881	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()Z
+    //   230: invokevirtual 883	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()Z
     //   233: ifeq +336 -> 569
     //   236: aload 10
-    //   238: getfield 882	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   238: getfield 884	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   241: astore_2
     //   242: aload_2
-    //   243: invokestatic 648	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   243: invokestatic 634	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/lang/String;
     //   246: astore_2
-    //   247: ldc_w 650
+    //   247: ldc_w 636
     //   250: aload_2
-    //   251: invokevirtual 614	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   251: invokevirtual 598	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   254: ifeq +13 -> 267
     //   257: aload 8
     //   259: bipush 102
     //   261: invokestatic 453	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   264: invokevirtual 651	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(Ljava/lang/Object;)V
+    //   264: invokevirtual 637	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(Ljava/lang/Object;)V
     //   267: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   270: ifeq +61 -> 331
     //   273: ldc 143
@@ -1254,19 +1264,19 @@ public class AIOGalleryAdapter
     //   276: new 145	java/lang/StringBuilder
     //   279: dup
     //   280: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   283: ldc_w 884
+    //   283: ldc_w 886
     //   286: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   289: aload 7
     //   291: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   294: ldc_w 886
+    //   294: ldc_w 888
     //   297: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   300: aload 10
     //   302: aload_3
-    //   303: invokevirtual 608	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
-    //   306: invokevirtual 870	java/net/URL:getFile	()Ljava/lang/String;
-    //   309: invokevirtual 888	com/tencent/mobileqq/activity/aio/photo/AIOImageData:a	(Ljava/lang/String;)I
+    //   303: invokevirtual 592	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
+    //   306: invokevirtual 872	java/net/URL:getFile	()Ljava/lang/String;
+    //   309: invokevirtual 890	com/tencent/mobileqq/activity/aio/photo/AIOImageData:a	(Ljava/lang/String;)I
     //   312: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   315: ldc_w 890
+    //   315: ldc_w 892
     //   318: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   321: aload_2
     //   322: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1284,9 +1294,9 @@ public class AIOGalleryAdapter
     //   353: iconst_2
     //   354: invokeinterface 489 5 0
     //   359: aload 8
-    //   361: invokevirtual 881	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()Z
+    //   361: invokevirtual 883	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()Z
     //   364: ifeq +214 -> 578
-    //   367: ldc_w 892
+    //   367: ldc_w 894
     //   370: astore_2
     //   371: iconst_1
     //   372: istore 4
@@ -1300,50 +1310,50 @@ public class AIOGalleryAdapter
     //   386: aload_0
     //   387: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   390: iload_1
-    //   391: putfield 893	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Int	I
+    //   391: putfield 895	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Int	I
     //   394: aload_0
     //   395: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   398: invokevirtual 539	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:a	()Lcom/tencent/mobileqq/richmedia/dc/DCAIOPreview;
     //   401: astore_3
     //   402: aload_3
     //   403: iload_1
-    //   404: invokevirtual 894	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:a	(I)V
+    //   404: invokevirtual 896	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:a	(I)V
     //   407: aload_3
     //   408: iload_1
     //   409: aload 10
-    //   411: getfield 895	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_a_of_type_Long	J
+    //   411: getfield 897	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_a_of_type_Long	J
     //   414: aload 10
-    //   416: getfield 896	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_b_of_type_Long	J
-    //   419: invokevirtual 899	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:a	(IJJ)V
+    //   416: getfield 898	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_b_of_type_Long	J
+    //   419: invokevirtual 901	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:a	(IJJ)V
     //   422: aload_3
     //   423: iload_1
     //   424: aload 10
     //   426: getfield 475	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_a_of_type_Int	I
     //   429: invokestatic 480	cooperation/peak/PeakUtils:a	(I)Z
-    //   432: invokevirtual 901	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:b	(IZ)V
+    //   432: invokevirtual 903	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:b	(IZ)V
     //   435: aload 10
-    //   437: getfield 903	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_e_of_type_Boolean	Z
+    //   437: getfield 905	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_e_of_type_Boolean	Z
     //   440: ifeq +8 -> 448
     //   443: aload_3
     //   444: iload_1
-    //   445: invokevirtual 905	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:d	(I)V
+    //   445: invokevirtual 907	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:d	(I)V
     //   448: aload_2
     //   449: ifnull +16 -> 465
     //   452: aload_3
     //   453: iload_1
     //   454: aload_2
-    //   455: invokevirtual 908	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:a	(ILjava/lang/String;)V
+    //   455: invokevirtual 910	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:a	(ILjava/lang/String;)V
     //   458: aload_3
     //   459: iload_1
     //   460: iload 4
-    //   462: invokevirtual 909	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:a	(IZ)V
+    //   462: invokevirtual 911	com/tencent/mobileqq/richmedia/dc/DCAIOPreview:a	(IZ)V
     //   465: new 145	java/lang/StringBuilder
     //   468: dup
     //   469: invokespecial 146	java/lang/StringBuilder:<init>	()V
     //   472: aload 10
     //   474: getfield 483	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_g_of_type_Long	J
     //   477: invokevirtual 256	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   480: ldc_w 911
+    //   480: ldc_w 913
     //   483: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   486: aload 10
     //   488: getfield 484	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_f_of_type_Int	I
@@ -1355,7 +1365,7 @@ public class AIOGalleryAdapter
     //   501: aload_0
     //   502: getfield 47	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   505: aload_3
-    //   506: invokevirtual 914	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   506: invokevirtual 916	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
     //   509: ifne -505 -> 4
     //   512: aload_0
     //   513: getfield 61	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider	Lcom/tencent/mobileqq/activity/aio/photo/IAIOImageProvider;
@@ -1363,11 +1373,11 @@ public class AIOGalleryAdapter
     //   518: getfield 483	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_g_of_type_Long	J
     //   521: aload 10
     //   523: getfield 484	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_f_of_type_Int	I
-    //   526: invokeinterface 917 4 0
+    //   526: invokeinterface 919 4 0
     //   531: aload_0
     //   532: getfield 47	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   535: aload_3
-    //   536: invokevirtual 920	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   536: invokevirtual 922	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   539: pop
     //   540: aload 8
     //   542: areturn
@@ -1376,18 +1386,18 @@ public class AIOGalleryAdapter
     //   547: ifeq +13 -> 560
     //   550: ldc 143
     //   552: iconst_2
-    //   553: ldc_w 922
+    //   553: ldc_w 924
     //   556: aload_2
     //   557: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   560: aload 9
     //   562: iconst_1
-    //   563: putfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   563: putfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
     //   566: goto -349 -> 217
     //   569: aload 10
-    //   571: getfield 602	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   571: getfield 586	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   574: astore_2
     //   575: goto -333 -> 242
-    //   578: ldc_w 924
+    //   578: ldc_w 926
     //   581: astore_2
     //   582: goto -211 -> 371
     //   585: aload 10
@@ -1411,11 +1421,11 @@ public class AIOGalleryAdapter
     //   622: aload 7
     //   624: aload_0
     //   625: getfield 80	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_e_of_type_Int	I
-    //   628: putfield 927	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestWidth	I
+    //   628: putfield 929	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestWidth	I
     //   631: aload 7
     //   633: aload_0
     //   634: getfield 85	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_f_of_type_Int	I
-    //   637: putfield 930	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestHeight	I
+    //   637: putfield 932	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestHeight	I
     //   640: aload 7
     //   642: getstatic 424	com/tencent/mobileqq/transfile/URLDrawableHelper:a	Landroid/graphics/drawable/Drawable;
     //   645: putfield 377	com/tencent/image/URLDrawable$URLDrawableOptions:mLoadingDrawable	Landroid/graphics/drawable/Drawable;
@@ -1440,19 +1450,19 @@ public class AIOGalleryAdapter
     //   683: putfield 438	com/tencent/image/URLDrawable$URLDrawableOptions:mUseAutoScaleParams	Z
     //   686: aload_0
     //   687: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   690: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   690: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   693: ifeq +27 -> 720
     //   696: aload_0
-    //   697: getfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   697: getfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   700: ifnull +364 -> 1064
     //   703: aload 7
     //   705: aload_0
-    //   706: getfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   706: getfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   709: invokevirtual 536	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()Landroid/graphics/drawable/Drawable;
     //   712: putfield 377	com/tencent/image/URLDrawable$URLDrawableOptions:mLoadingDrawable	Landroid/graphics/drawable/Drawable;
     //   715: aload_0
     //   716: aconst_null
-    //   717: putfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   717: putfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   720: iload 5
     //   722: ifne +393 -> 1115
     //   725: aload 10
@@ -1483,19 +1493,19 @@ public class AIOGalleryAdapter
     //   785: aload 7
     //   787: invokevirtual 460	android/util/SparseArray:put	(ILjava/lang/Object;)V
     //   790: aload 7
-    //   792: invokevirtual 935	com/tencent/image/URLDrawable:isDownloadStarted	()Z
+    //   792: invokevirtual 937	com/tencent/image/URLDrawable:isDownloadStarted	()Z
     //   795: ifeq +32 -> 827
-    //   798: getstatic 939	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   798: getstatic 941	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   801: aload 7
-    //   803: invokevirtual 608	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
+    //   803: invokevirtual 592	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
     //   806: invokevirtual 368	java/net/URL:toString	()Ljava/lang/String;
-    //   809: invokevirtual 944	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   809: invokevirtual 946	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   812: ifnull +336 -> 1148
     //   815: iconst_1
     //   816: istore 4
     //   818: iload 5
     //   820: ifeq +334 -> 1154
-    //   823: ldc_w 892
+    //   823: ldc_w 894
     //   826: astore_2
     //   827: aload 7
     //   829: invokevirtual 132	com/tencent/image/URLDrawable:getStatus	()I
@@ -1505,29 +1515,29 @@ public class AIOGalleryAdapter
     //   864: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   867: aload 8
     //   869: iload 5
-    //   871: invokevirtual 866	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setOriginalImage	(Z)V
+    //   871: invokevirtual 868	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setOriginalImage	(Z)V
     //   874: aload_0
     //   875: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   878: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   878: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   881: ifne +8 -> 889
     //   884: aload 7
-    //   886: invokevirtual 696	com/tencent/image/URLDrawable:downloadImediatly	()V
+    //   886: invokevirtual 682	com/tencent/image/URLDrawable:downloadImediatly	()V
     //   889: iload 5
     //   891: ifeq +366 -> 1257
     //   894: aload 10
-    //   896: getfield 882	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   896: getfield 884	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   899: astore_3
     //   900: aload_3
-    //   901: invokestatic 648	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   901: invokestatic 634	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/lang/String;
     //   904: astore_3
-    //   905: ldc_w 650
+    //   905: ldc_w 636
     //   908: aload_3
-    //   909: invokevirtual 614	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   909: invokevirtual 598	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   912: ifeq +13 -> 925
     //   915: aload 8
     //   917: bipush 102
     //   919: invokestatic 453	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   922: invokevirtual 651	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(Ljava/lang/Object;)V
+    //   922: invokevirtual 637	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(Ljava/lang/Object;)V
     //   925: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   928: ifeq +68 -> 996
     //   931: ldc 143
@@ -1535,21 +1545,21 @@ public class AIOGalleryAdapter
     //   934: new 145	java/lang/StringBuilder
     //   937: dup
     //   938: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   941: ldc_w 946
+    //   941: ldc_w 948
     //   944: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   947: aload 7
-    //   949: invokevirtual 608	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
+    //   949: invokevirtual 592	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
     //   952: invokevirtual 368	java/net/URL:toString	()Ljava/lang/String;
     //   955: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   958: ldc_w 948
+    //   958: ldc_w 950
     //   961: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   964: aload 10
     //   966: aload 7
-    //   968: invokevirtual 608	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
+    //   968: invokevirtual 592	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
     //   971: invokevirtual 368	java/net/URL:toString	()Ljava/lang/String;
-    //   974: invokevirtual 888	com/tencent/mobileqq/activity/aio/photo/AIOImageData:a	(Ljava/lang/String;)I
+    //   974: invokevirtual 890	com/tencent/mobileqq/activity/aio/photo/AIOImageData:a	(Ljava/lang/String;)I
     //   977: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   980: ldc_w 657
+    //   980: ldc_w 643
     //   983: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   986: aload_3
     //   987: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1573,11 +1583,11 @@ public class AIOGalleryAdapter
     //   1032: invokeinterface 489 5 0
     //   1037: aload_0
     //   1038: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   1041: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   1041: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   1044: ifne +9 -> 1053
     //   1047: aload_0
     //   1048: aload 8
-    //   1050: putfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   1050: putfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   1053: iconst_1
     //   1054: istore_1
     //   1055: goto -679 -> 376
@@ -1588,11 +1598,11 @@ public class AIOGalleryAdapter
     //   1066: iconst_1
     //   1067: invokevirtual 443	com/tencent/mobileqq/activity/aio/photo/AIOImageData:a	(I)Ljava/lang/String;
     //   1070: ifnull -350 -> 720
-    //   1073: getstatic 939	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   1073: getstatic 941	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   1076: aload 10
     //   1078: iconst_1
     //   1079: invokevirtual 443	com/tencent/mobileqq/activity/aio/photo/AIOImageData:a	(I)Ljava/lang/String;
-    //   1082: invokevirtual 944	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1082: invokevirtual 946	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   1085: ifnull -365 -> 720
     //   1088: aload 10
     //   1090: iconst_1
@@ -1618,30 +1628,30 @@ public class AIOGalleryAdapter
     //   1133: ifeq -1129 -> 4
     //   1136: ldc 143
     //   1138: iconst_2
-    //   1139: ldc_w 950
-    //   1142: invokestatic 952	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1139: ldc_w 952
+    //   1142: invokestatic 954	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1145: aload 8
     //   1147: areturn
     //   1148: iconst_0
     //   1149: istore 4
     //   1151: goto -333 -> 818
-    //   1154: ldc_w 924
+    //   1154: ldc_w 926
     //   1157: astore_2
     //   1158: goto -331 -> 827
     //   1161: aload 9
-    //   1163: getfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   1163: getfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
     //   1166: bipush 254
     //   1168: if_icmpne +15 -> 1183
     //   1171: aload 9
     //   1173: aload_3
     //   1174: invokevirtual 325	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   1177: invokestatic 876	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
-    //   1180: putfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   1177: invokestatic 878	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
+    //   1180: putfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
     //   1183: aload 8
     //   1185: aload 7
     //   1187: aload 9
-    //   1189: getfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
-    //   1192: invokestatic 879	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(Landroid/view/View;Lcom/tencent/image/URLDrawable;I)V
+    //   1189: getfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   1192: invokestatic 881	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(Landroid/view/View;Lcom/tencent/image/URLDrawable;I)V
     //   1195: aload 7
     //   1197: invokevirtual 132	com/tencent/image/URLDrawable:getStatus	()I
     //   1200: iconst_1
@@ -1658,27 +1668,27 @@ public class AIOGalleryAdapter
     //   1221: ifeq +13 -> 1234
     //   1224: ldc 143
     //   1226: iconst_2
-    //   1227: ldc_w 922
+    //   1227: ldc_w 924
     //   1230: aload_3
     //   1231: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1234: aload 9
     //   1236: iconst_1
-    //   1237: putfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   1237: putfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
     //   1240: goto -57 -> 1183
     //   1243: iconst_0
     //   1244: istore 6
     //   1246: goto -39 -> 1207
     //   1249: astore_3
     //   1250: aload_3
-    //   1251: invokevirtual 955	java/lang/Exception:printStackTrace	()V
+    //   1251: invokevirtual 957	java/lang/Exception:printStackTrace	()V
     //   1254: goto -365 -> 889
     //   1257: aload 10
-    //   1259: getfield 602	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1259: getfield 586	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   1262: astore_3
     //   1263: goto -363 -> 900
     //   1266: aload_0
     //   1267: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   1270: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   1270: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   1273: ifne -220 -> 1053
     //   1276: aload_0
     //   1277: getfield 33	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Boolean	Z
@@ -1687,11 +1697,11 @@ public class AIOGalleryAdapter
     //   1284: getfield 61	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider	Lcom/tencent/mobileqq/activity/aio/photo/IAIOImageProvider;
     //   1287: aload_0
     //   1288: getfield 87	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Int	I
-    //   1291: invokeinterface 642 2 0
+    //   1291: invokeinterface 628 2 0
     //   1296: aload_0
     //   1297: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   1300: iconst_1
-    //   1301: putfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   1301: putfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   1304: goto -251 -> 1053
     //   1307: aload 10
     //   1309: bipush 8
@@ -1731,10 +1741,10 @@ public class AIOGalleryAdapter
     //   1381: aload_0
     //   1382: iload_1
     //   1383: aload 9
-    //   1385: getfield 956	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
+    //   1385: getfield 958	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
     //   1388: bipush 100
     //   1390: idiv
-    //   1391: invokevirtual 799	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
+    //   1391: invokevirtual 801	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
     //   1394: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1397: ifeq +46 -> 1443
     //   1400: ldc 143
@@ -1742,13 +1752,13 @@ public class AIOGalleryAdapter
     //   1403: new 145	java/lang/StringBuilder
     //   1406: dup
     //   1407: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   1410: ldc_w 946
+    //   1410: ldc_w 948
     //   1413: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1416: aload 10
     //   1418: bipush 8
     //   1420: invokevirtual 443	com/tencent/mobileqq/activity/aio/photo/AIOImageData:a	(I)Ljava/lang/String;
     //   1423: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1426: ldc_w 948
+    //   1426: ldc_w 950
     //   1429: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1432: bipush 8
     //   1434: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1767,27 +1777,27 @@ public class AIOGalleryAdapter
     //   1466: invokeinterface 489 5 0
     //   1471: aload_0
     //   1472: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   1475: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   1475: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   1478: ifne +20 -> 1498
     //   1481: aload_0
     //   1482: aload 8
-    //   1484: putfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   1484: putfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   1487: aload_0
     //   1488: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   1491: invokevirtual 552	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:a	()Lcom/tencent/mobileqq/richmedia/dc/DCAIOPreviewProgressive;
     //   1494: iconst_1
-    //   1495: invokevirtual 958	com/tencent/mobileqq/richmedia/dc/DCAIOPreviewProgressive:a	(Z)V
+    //   1495: invokevirtual 960	com/tencent/mobileqq/richmedia/dc/DCAIOPreviewProgressive:a	(Z)V
     //   1498: invokestatic 492	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1501: ifeq +29 -> 1530
     //   1504: aload 10
     //   1506: getfield 440	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_d_of_type_Boolean	Z
     //   1509: ifeq +21 -> 1530
     //   1512: aload 8
-    //   1514: invokevirtual 629	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:getContext	()Landroid/content/Context;
-    //   1517: ldc_w 960
+    //   1514: invokevirtual 615	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:getContext	()Landroid/content/Context;
+    //   1517: ldc_w 962
     //   1520: sipush 2000
-    //   1523: invokestatic 636	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   1526: invokevirtual 639	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   1523: invokestatic 622	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   1526: invokevirtual 625	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
     //   1529: pop
     //   1530: iconst_1
     //   1531: istore_1
@@ -1798,7 +1808,7 @@ public class AIOGalleryAdapter
     //   1537: goto -1161 -> 376
     //   1540: aload_0
     //   1541: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   1544: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   1544: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   1547: ifne -76 -> 1471
     //   1550: aload_0
     //   1551: getfield 33	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Boolean	Z
@@ -1807,11 +1817,11 @@ public class AIOGalleryAdapter
     //   1558: getfield 61	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider	Lcom/tencent/mobileqq/activity/aio/photo/IAIOImageProvider;
     //   1561: aload_0
     //   1562: getfield 87	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Int	I
-    //   1565: invokeinterface 642 2 0
+    //   1565: invokeinterface 628 2 0
     //   1570: aload_0
     //   1571: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   1574: iconst_1
-    //   1575: putfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   1575: putfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   1578: goto -107 -> 1471
     //   1581: aload 10
     //   1583: getfield 465	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_c_of_type_Boolean	Z
@@ -1824,13 +1834,13 @@ public class AIOGalleryAdapter
     //   1602: ifeq +111 -> 1713
     //   1605: aload_0
     //   1606: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   1609: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   1609: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   1612: ifeq +75 -> 1687
     //   1615: aload_0
-    //   1616: getfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   1616: getfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   1619: ifnull +68 -> 1687
     //   1622: aload_0
-    //   1623: getfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   1623: getfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   1626: invokevirtual 536	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()Landroid/graphics/drawable/Drawable;
     //   1629: astore_2
     //   1630: aload 8
@@ -1848,12 +1858,12 @@ public class AIOGalleryAdapter
     //   1654: invokevirtual 460	android/util/SparseArray:put	(ILjava/lang/Object;)V
     //   1657: aload_0
     //   1658: aconst_null
-    //   1659: putfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   1659: putfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   1662: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1665: ifeq +376 -> 2041
     //   1668: ldc 143
     //   1670: iconst_2
-    //   1671: ldc_w 962
+    //   1671: ldc_w 964
     //   1674: invokestatic 292	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1677: aconst_null
     //   1678: astore_2
@@ -1863,10 +1873,10 @@ public class AIOGalleryAdapter
     //   1683: istore_1
     //   1684: goto -1308 -> 376
     //   1687: aload 8
-    //   1689: invokestatic 617	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   1692: invokevirtual 618	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   1695: ldc_w 619
-    //   1698: invokevirtual 622	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   1689: invokestatic 603	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   1692: invokevirtual 604	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   1695: ldc_w 605
+    //   1698: invokevirtual 608	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
     //   1701: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   1704: aload_0
     //   1705: iload_1
@@ -1908,17 +1918,17 @@ public class AIOGalleryAdapter
     //   1775: aload_2
     //   1776: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   1779: aload 10
-    //   1781: getfield 964	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_g_of_type_Boolean	Z
+    //   1781: getfield 966	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_g_of_type_Boolean	Z
     //   1784: ifne +128 -> 1912
     //   1787: aload_2
-    //   1788: invokevirtual 696	com/tencent/image/URLDrawable:downloadImediatly	()V
+    //   1788: invokevirtual 682	com/tencent/image/URLDrawable:downloadImediatly	()V
     //   1791: aload_0
     //   1792: iload_1
     //   1793: aload 9
-    //   1795: getfield 956	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
+    //   1795: getfield 958	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
     //   1798: bipush 100
     //   1800: idiv
-    //   1801: invokevirtual 799	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
+    //   1801: invokevirtual 801	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
     //   1804: aload_0
     //   1805: getfield 61	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider	Lcom/tencent/mobileqq/activity/aio/photo/IAIOImageProvider;
     //   1808: aload 10
@@ -1934,13 +1944,13 @@ public class AIOGalleryAdapter
     //   1833: new 145	java/lang/StringBuilder
     //   1836: dup
     //   1837: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   1840: ldc_w 946
+    //   1840: ldc_w 948
     //   1843: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1846: aload 10
     //   1848: iconst_1
     //   1849: invokevirtual 443	com/tencent/mobileqq/activity/aio/photo/AIOImageData:a	(I)Ljava/lang/String;
     //   1852: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1855: ldc_w 948
+    //   1855: ldc_w 950
     //   1858: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1861: iconst_1
     //   1862: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1948,17 +1958,17 @@ public class AIOGalleryAdapter
     //   1868: invokestatic 292	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1871: aload_0
     //   1872: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   1875: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   1875: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   1878: ifne +24 -> 1902
     //   1881: aload_0
     //   1882: aload 8
-    //   1884: putfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   1884: putfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   1887: aload_0
     //   1888: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   1891: invokevirtual 552	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:a	()Lcom/tencent/mobileqq/richmedia/dc/DCAIOPreviewProgressive;
     //   1894: aload 10
-    //   1896: getfield 965	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_f_of_type_Boolean	Z
-    //   1899: invokevirtual 958	com/tencent/mobileqq/richmedia/dc/DCAIOPreviewProgressive:a	(Z)V
+    //   1896: getfield 967	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_f_of_type_Boolean	Z
+    //   1899: invokevirtual 960	com/tencent/mobileqq/richmedia/dc/DCAIOPreviewProgressive:a	(Z)V
     //   1902: iconst_1
     //   1903: istore_1
     //   1904: aconst_null
@@ -1966,35 +1976,35 @@ public class AIOGalleryAdapter
     //   1906: iconst_0
     //   1907: istore 4
     //   1909: goto -1533 -> 376
-    //   1912: invokestatic 970	com/tencent/biz/troop/TroopMemberApiClient:a	()Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   1912: invokestatic 972	com/tencent/biz/troop/TroopMemberApiClient:a	()Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   1915: astore_2
     //   1916: aload_2
-    //   1917: invokevirtual 971	com/tencent/biz/troop/TroopMemberApiClient:a	()V
+    //   1917: invokevirtual 973	com/tencent/biz/troop/TroopMemberApiClient:a	()V
     //   1920: aload_2
     //   1921: aload_0
     //   1922: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   1925: getfield 972	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1925: getfield 974	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1928: aload 10
     //   1930: sipush 640
-    //   1933: new 974	vmi
+    //   1933: new 976	vrk
     //   1936: dup
     //   1937: aload_0
     //   1938: iload_1
     //   1939: aload 8
     //   1941: aload 10
-    //   1943: invokespecial 977	vmi:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;ILcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;)V
-    //   1946: invokevirtual 980	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;ILcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
+    //   1943: invokespecial 979	vrk:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;ILcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;)V
+    //   1946: invokevirtual 982	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;ILcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   1949: goto -47 -> 1902
     //   1952: aload 10
-    //   1954: getfield 964	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_g_of_type_Boolean	Z
+    //   1954: getfield 966	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_g_of_type_Boolean	Z
     //   1957: ifne +94 -> 2051
     //   1960: aload_0
     //   1961: iload_1
     //   1962: aload 9
-    //   1964: getfield 956	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
+    //   1964: getfield 958	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
     //   1967: bipush 100
     //   1969: idiv
-    //   1970: invokevirtual 799	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
+    //   1970: invokevirtual 801	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
     //   1973: aload 8
     //   1975: getstatic 424	com/tencent/mobileqq/transfile/URLDrawableHelper:a	Landroid/graphics/drawable/Drawable;
     //   1978: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
@@ -2010,18 +2020,18 @@ public class AIOGalleryAdapter
     //   2004: ifeq +12 -> 2016
     //   2007: ldc 143
     //   2009: iconst_2
-    //   2010: ldc_w 982
+    //   2010: ldc_w 984
     //   2013: invokestatic 292	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   2016: aload_0
     //   2017: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   2020: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   2020: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   2023: ifne +18 -> 2041
     //   2026: aload_0
     //   2027: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   2030: invokevirtual 552	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:a	()Lcom/tencent/mobileqq/richmedia/dc/DCAIOPreviewProgressive;
     //   2033: aload 10
-    //   2035: getfield 965	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_f_of_type_Boolean	Z
-    //   2038: invokevirtual 958	com/tencent/mobileqq/richmedia/dc/DCAIOPreviewProgressive:a	(Z)V
+    //   2035: getfield 967	com/tencent/mobileqq/activity/aio/photo/AIOImageData:jdField_f_of_type_Boolean	Z
+    //   2038: invokevirtual 960	com/tencent/mobileqq/richmedia/dc/DCAIOPreviewProgressive:a	(Z)V
     //   2041: aconst_null
     //   2042: astore_2
     //   2043: iconst_0
@@ -2030,57 +2040,57 @@ public class AIOGalleryAdapter
     //   2047: istore_1
     //   2048: goto -1672 -> 376
     //   2051: aload 10
-    //   2053: getfield 796	com/tencent/mobileqq/activity/aio/photo/AIOImageData:i	J
+    //   2053: getfield 798	com/tencent/mobileqq/activity/aio/photo/AIOImageData:i	J
     //   2056: invokestatic 516	com/tencent/mobileqq/filemanager/data/FMConfig:c	()J
     //   2059: lcmp
     //   2060: ifgt +94 -> 2154
     //   2063: aload_0
     //   2064: iload_1
     //   2065: aload 9
-    //   2067: getfield 956	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
+    //   2067: getfield 958	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
     //   2070: bipush 100
     //   2072: idiv
-    //   2073: invokevirtual 799	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
+    //   2073: invokevirtual 801	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
     //   2076: aload 8
     //   2078: getstatic 424	com/tencent/mobileqq/transfile/URLDrawableHelper:a	Landroid/graphics/drawable/Drawable;
     //   2081: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   2084: invokestatic 970	com/tencent/biz/troop/TroopMemberApiClient:a	()Lcom/tencent/biz/troop/TroopMemberApiClient;
+    //   2084: invokestatic 972	com/tencent/biz/troop/TroopMemberApiClient:a	()Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   2087: astore_2
     //   2088: aload_2
-    //   2089: invokevirtual 971	com/tencent/biz/troop/TroopMemberApiClient:a	()V
+    //   2089: invokevirtual 973	com/tencent/biz/troop/TroopMemberApiClient:a	()V
     //   2092: aload_2
     //   2093: aload_0
     //   2094: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   2097: getfield 972	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2097: getfield 974	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   2100: aload 10
     //   2102: sipush 383
-    //   2105: new 984	vmk
+    //   2105: new 986	vrm
     //   2108: dup
     //   2109: aload_0
-    //   2110: invokespecial 987	vmk:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;)V
-    //   2113: invokevirtual 980	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;ILcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
+    //   2110: invokespecial 989	vrm:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;)V
+    //   2113: invokevirtual 982	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;ILcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   2116: aload_0
     //   2117: iload_1
     //   2118: iconst_0
-    //   2119: invokevirtual 799	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
+    //   2119: invokevirtual 801	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
     //   2122: aload_2
     //   2123: aload_0
     //   2124: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   2127: getfield 972	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   2127: getfield 974	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   2130: aload 10
     //   2132: sipush 640
-    //   2135: new 989	vml
+    //   2135: new 991	vrn
     //   2138: dup
     //   2139: aload_0
     //   2140: iload_1
     //   2141: aload 8
     //   2143: aload 10
-    //   2145: invokespecial 990	vml:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;ILcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;)V
-    //   2148: invokevirtual 980	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;ILcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
+    //   2145: invokespecial 992	vrn:<init>	(Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter;ILcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;)V
+    //   2148: invokevirtual 982	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/photo/AIOImageData;ILcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   2151: goto -135 -> 2016
     //   2154: aload_0
     //   2155: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   2158: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   2158: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   2161: ifne +18 -> 2179
     //   2164: aload_0
     //   2165: getfield 33	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Boolean	Z
@@ -2088,20 +2098,20 @@ public class AIOGalleryAdapter
     //   2171: aload_0
     //   2172: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   2175: iconst_1
-    //   2176: putfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   2176: putfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   2179: aload 8
-    //   2181: invokestatic 617	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   2184: invokevirtual 618	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   2187: ldc_w 619
-    //   2190: invokevirtual 622	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   2181: invokestatic 603	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   2184: invokevirtual 604	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   2187: ldc_w 605
+    //   2190: invokevirtual 608	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
     //   2193: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   2196: aload 8
-    //   2198: invokevirtual 697	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()V
+    //   2198: invokevirtual 683	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()V
     //   2201: aload 8
-    //   2203: ldc_w 991
-    //   2206: ldc_w 992
-    //   2209: invokestatic 997	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   2212: invokevirtual 999	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(ILjava/lang/Object;)V
+    //   2203: ldc_w 993
+    //   2206: ldc_w 994
+    //   2209: invokestatic 999	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   2212: invokevirtual 1001	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(ILjava/lang/Object;)V
     //   2215: goto -199 -> 2016
     //   2218: ldc_w 309
     //   2221: aload 9
@@ -2120,10 +2130,10 @@ public class AIOGalleryAdapter
     //   2252: astore_3
     //   2253: aload 8
     //   2255: iload_1
-    //   2256: invokevirtual 854	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setPosition	(I)V
+    //   2256: invokevirtual 856	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setPosition	(I)V
     //   2259: aload 8
     //   2261: aload 9
-    //   2263: invokevirtual 858	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageInfo	(Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;)V
+    //   2263: invokevirtual 860	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageInfo	(Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;)V
     //   2266: aload_3
     //   2267: ifnull +99 -> 2366
     //   2270: aload_3
@@ -2140,18 +2150,18 @@ public class AIOGalleryAdapter
     //   2293: new 145	java/lang/StringBuilder
     //   2296: dup
     //   2297: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   2300: ldc_w 1001
+    //   2300: ldc_w 1003
     //   2303: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2306: aload_3
-    //   2307: invokevirtual 608	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
-    //   2310: invokevirtual 775	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2307: invokevirtual 592	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
+    //   2310: invokevirtual 773	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   2313: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2316: invokestatic 292	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   2319: aload 8
     //   2321: astore_2
     //   2322: aload_0
     //   2323: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   2326: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   2326: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   2329: ifne -2325 -> 4
     //   2332: aload 8
     //   2334: astore_2
@@ -2162,11 +2172,11 @@ public class AIOGalleryAdapter
     //   2343: getfield 61	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider	Lcom/tencent/mobileqq/activity/aio/photo/IAIOImageProvider;
     //   2346: aload_0
     //   2347: getfield 87	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Int	I
-    //   2350: invokeinterface 642 2 0
+    //   2350: invokeinterface 628 2 0
     //   2355: aload_0
     //   2356: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   2359: iconst_1
-    //   2360: putfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   2360: putfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   2363: aload 8
     //   2365: areturn
     //   2366: aload_2
@@ -2191,7 +2201,7 @@ public class AIOGalleryAdapter
     //   2407: new 145	java/lang/StringBuilder
     //   2410: dup
     //   2411: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   2414: ldc_w 1003
+    //   2414: ldc_w 1005
     //   2417: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2420: iload_1
     //   2421: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -2209,7 +2219,7 @@ public class AIOGalleryAdapter
     //   2445: aload 8
     //   2447: aload_2
     //   2448: aload_3
-    //   2449: invokespecial 770	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(ILcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;Lcom/tencent/mobileqq/activity/aio/photo/AIOShortVideoData;Ljava/io/File;)V
+    //   2449: invokespecial 768	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(ILcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;Lcom/tencent/mobileqq/activity/aio/photo/AIOShortVideoData;Ljava/io/File;)V
     //   2452: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2455: ifeq -136 -> 2319
     //   2458: ldc 143
@@ -2217,7 +2227,7 @@ public class AIOGalleryAdapter
     //   2461: new 145	java/lang/StringBuilder
     //   2464: dup
     //   2465: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   2468: ldc_w 1005
+    //   2468: ldc_w 1007
     //   2471: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2474: iload_1
     //   2475: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -2225,16 +2235,16 @@ public class AIOGalleryAdapter
     //   2481: invokestatic 292	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   2484: goto -165 -> 2319
     //   2487: aload_2
-    //   2488: getfield 1006	com/tencent/mobileqq/activity/aio/photo/AIOShortVideoData:jdField_a_of_type_Boolean	Z
+    //   2488: getfield 1008	com/tencent/mobileqq/activity/aio/photo/AIOShortVideoData:jdField_a_of_type_Boolean	Z
     //   2491: ifne +10 -> 2501
     //   2494: aload_2
     //   2495: getfield 499	com/tencent/mobileqq/activity/aio/photo/AIOShortVideoData:jdField_b_of_type_Boolean	Z
     //   2498: ifeq +44 -> 2542
     //   2501: aload 8
-    //   2503: invokestatic 617	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   2506: invokevirtual 618	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   2509: ldc_w 619
-    //   2512: invokevirtual 622	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   2503: invokestatic 603	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   2506: invokevirtual 604	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   2509: ldc_w 605
+    //   2512: invokevirtual 608	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
     //   2515: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   2518: aload_0
     //   2519: iload_1
@@ -2244,16 +2254,16 @@ public class AIOGalleryAdapter
     //   2527: ifeq -208 -> 2319
     //   2530: ldc 143
     //   2532: iconst_2
-    //   2533: ldc_w 1008
+    //   2533: ldc_w 1010
     //   2536: invokestatic 292	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   2539: goto -220 -> 2319
     //   2542: aload_0
     //   2543: iload_1
     //   2544: aload 9
-    //   2546: getfield 956	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
+    //   2546: getfield 958	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
     //   2549: bipush 100
     //   2551: idiv
-    //   2552: invokevirtual 799	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
+    //   2552: invokevirtual 801	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
     //   2555: aload 8
     //   2557: getstatic 424	com/tencent/mobileqq/transfile/URLDrawableHelper:a	Landroid/graphics/drawable/Drawable;
     //   2560: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
@@ -2272,7 +2282,7 @@ public class AIOGalleryAdapter
     //   2590: new 145	java/lang/StringBuilder
     //   2593: dup
     //   2594: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   2597: ldc_w 1010
+    //   2597: ldc_w 1012
     //   2600: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2603: iload_1
     //   2604: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -2292,13 +2302,13 @@ public class AIOGalleryAdapter
     //   2641: astore 10
     //   2643: aload 8
     //   2645: iload_1
-    //   2646: invokevirtual 854	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setPosition	(I)V
+    //   2646: invokevirtual 856	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setPosition	(I)V
     //   2649: aload 8
     //   2651: aload 9
-    //   2653: invokevirtual 858	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageInfo	(Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;)V
+    //   2653: invokevirtual 860	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageInfo	(Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo;)V
     //   2656: aload 8
     //   2658: iconst_0
-    //   2659: invokevirtual 829	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setIgnoreLayout	(Z)V
+    //   2659: invokevirtual 831	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setIgnoreLayout	(Z)V
     //   2662: aload_0
     //   2663: getfield 38	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
     //   2666: iload_1
@@ -2316,10 +2326,10 @@ public class AIOGalleryAdapter
     //   2689: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   2692: aload 10
     //   2694: bipush 20
-    //   2696: invokevirtual 698	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:a	(I)Ljava/lang/String;
+    //   2696: invokevirtual 684	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:a	(I)Ljava/lang/String;
     //   2699: astore_2
     //   2700: aload_3
-    //   2701: invokevirtual 608	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
+    //   2701: invokevirtual 592	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
     //   2704: invokevirtual 368	java/net/URL:toString	()Ljava/lang/String;
     //   2707: astore 7
     //   2709: aload_0
@@ -2328,43 +2338,43 @@ public class AIOGalleryAdapter
     //   2712: invokevirtual 398	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(IZ)V
     //   2715: aload 7
     //   2717: aload_2
-    //   2718: invokevirtual 614	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2718: invokevirtual 598	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2721: ifeq +9 -> 2730
     //   2724: aload 8
     //   2726: iconst_1
-    //   2727: invokevirtual 866	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setOriginalImage	(Z)V
+    //   2727: invokevirtual 868	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setOriginalImage	(Z)V
     //   2730: aload 9
-    //   2732: getfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   2732: getfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
     //   2735: bipush 254
     //   2737: if_icmpne +18 -> 2755
     //   2740: aload 9
     //   2742: aload_3
-    //   2743: invokevirtual 608	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
-    //   2746: invokevirtual 870	java/net/URL:getFile	()Ljava/lang/String;
-    //   2749: invokestatic 876	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
-    //   2752: putfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   2743: invokevirtual 592	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
+    //   2746: invokevirtual 872	java/net/URL:getFile	()Ljava/lang/String;
+    //   2749: invokestatic 878	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
+    //   2752: putfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
     //   2755: aload 8
     //   2757: aload_3
     //   2758: aload 9
-    //   2760: getfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
-    //   2763: invokestatic 879	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(Landroid/view/View;Lcom/tencent/image/URLDrawable;I)V
+    //   2760: getfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   2763: invokestatic 881	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(Landroid/view/View;Lcom/tencent/image/URLDrawable;I)V
     //   2766: aload 8
-    //   2768: invokevirtual 881	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()Z
+    //   2768: invokevirtual 883	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()Z
     //   2771: ifeq +107 -> 2878
     //   2774: aload 10
-    //   2776: getfield 1012	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   2776: getfield 1014	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   2779: astore_2
     //   2780: aload_2
-    //   2781: invokestatic 648	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   2781: invokestatic 634	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/lang/String;
     //   2784: astore 9
-    //   2786: ldc_w 650
+    //   2786: ldc_w 636
     //   2789: aload 9
-    //   2791: invokevirtual 614	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   2791: invokevirtual 598	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2794: ifeq +13 -> 2807
     //   2797: aload 8
     //   2799: bipush 102
     //   2801: invokestatic 453	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2804: invokevirtual 651	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(Ljava/lang/Object;)V
+    //   2804: invokevirtual 637	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(Ljava/lang/Object;)V
     //   2807: aload 8
     //   2809: astore_2
     //   2810: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -2374,19 +2384,19 @@ public class AIOGalleryAdapter
     //   2819: new 145	java/lang/StringBuilder
     //   2822: dup
     //   2823: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   2826: ldc_w 884
+    //   2826: ldc_w 886
     //   2829: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2832: aload 7
     //   2834: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2837: ldc_w 886
+    //   2837: ldc_w 888
     //   2840: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2843: aload 10
     //   2845: aload_3
-    //   2846: invokevirtual 608	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
-    //   2849: invokevirtual 870	java/net/URL:getFile	()Ljava/lang/String;
-    //   2852: invokevirtual 1013	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:a	(Ljava/lang/String;)I
+    //   2846: invokevirtual 592	com/tencent/image/URLDrawable:getURL	()Ljava/net/URL;
+    //   2849: invokevirtual 872	java/net/URL:getFile	()Ljava/lang/String;
+    //   2852: invokevirtual 1015	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:a	(Ljava/lang/String;)I
     //   2855: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2858: ldc_w 890
+    //   2858: ldc_w 892
     //   2861: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2864: aload 9
     //   2866: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -2395,7 +2405,7 @@ public class AIOGalleryAdapter
     //   2875: aload 8
     //   2877: areturn
     //   2878: aload 10
-    //   2880: getfield 700	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   2880: getfield 686	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   2883: astore_2
     //   2884: goto -104 -> 2780
     //   2887: aload 10
@@ -2419,11 +2429,11 @@ public class AIOGalleryAdapter
     //   2923: aload 11
     //   2925: aload_0
     //   2926: getfield 80	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_e_of_type_Int	I
-    //   2929: putfield 927	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestWidth	I
+    //   2929: putfield 929	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestWidth	I
     //   2932: aload 11
     //   2934: aload_0
     //   2935: getfield 85	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_f_of_type_Int	I
-    //   2938: putfield 930	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestHeight	I
+    //   2938: putfield 932	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestHeight	I
     //   2941: aload 11
     //   2943: getstatic 424	com/tencent/mobileqq/transfile/URLDrawableHelper:a	Landroid/graphics/drawable/Drawable;
     //   2946: putfield 377	com/tencent/image/URLDrawable$URLDrawableOptions:mLoadingDrawable	Landroid/graphics/drawable/Drawable;
@@ -2438,7 +2448,7 @@ public class AIOGalleryAdapter
     //   2964: if_icmpne +49 -> 3013
     //   2967: aload 8
     //   2969: iconst_1
-    //   2970: invokevirtual 866	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setOriginalImage	(Z)V
+    //   2970: invokevirtual 868	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setOriginalImage	(Z)V
     //   2973: aload 10
     //   2975: bipush 18
     //   2977: invokevirtual 511	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:a	(I)Ljava/io/File;
@@ -2460,29 +2470,29 @@ public class AIOGalleryAdapter
     //   3010: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   3013: aload_0
     //   3014: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   3017: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3017: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3020: ifeq +27 -> 3047
     //   3023: aload_0
-    //   3024: getfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   3024: getfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   3027: ifnull +20 -> 3047
     //   3030: aload 11
     //   3032: aload_0
-    //   3033: getfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   3033: getfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   3036: invokevirtual 536	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()Landroid/graphics/drawable/Drawable;
     //   3039: putfield 377	com/tencent/image/URLDrawable$URLDrawableOptions:mLoadingDrawable	Landroid/graphics/drawable/Drawable;
     //   3042: aload_0
     //   3043: aconst_null
-    //   3044: putfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   3044: putfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   3047: invokestatic 360	com/tencent/image/URLDrawable$URLDrawableOptions:obtain	()Lcom/tencent/image/URLDrawable$URLDrawableOptions;
     //   3050: astore_3
     //   3051: aload_3
     //   3052: aload_0
     //   3053: getfield 80	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_e_of_type_Int	I
-    //   3056: putfield 927	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestWidth	I
+    //   3056: putfield 929	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestWidth	I
     //   3059: aload_3
     //   3060: aload_0
     //   3061: getfield 85	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_f_of_type_Int	I
-    //   3064: putfield 930	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestHeight	I
+    //   3064: putfield 932	com/tencent/image/URLDrawable$URLDrawableOptions:mRequestHeight	I
     //   3067: aload_3
     //   3068: getstatic 424	com/tencent/mobileqq/transfile/URLDrawableHelper:a	Landroid/graphics/drawable/Drawable;
     //   3071: putfield 377	com/tencent/image/URLDrawable$URLDrawableOptions:mLoadingDrawable	Landroid/graphics/drawable/Drawable;
@@ -2508,7 +2518,7 @@ public class AIOGalleryAdapter
     //   3107: aload_0
     //   3108: iload_1
     //   3109: iconst_m1
-    //   3110: invokevirtual 799	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
+    //   3110: invokevirtual 801	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
     //   3113: aload_3
     //   3114: invokevirtual 132	com/tencent/image/URLDrawable:getStatus	()I
     //   3117: tableswitch	default:+27 -> 3144, 1:+139->3256, 2:+205->3322, 3:+205->3322
@@ -2517,31 +2527,31 @@ public class AIOGalleryAdapter
     //   3147: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   3150: aload 8
     //   3152: iload 4
-    //   3154: invokevirtual 866	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setOriginalImage	(Z)V
+    //   3154: invokevirtual 868	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setOriginalImage	(Z)V
     //   3157: aload 9
     //   3159: getfield 419	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData	Lcom/tencent/mobileqq/activity/aio/photo/AIORichMediaData;
     //   3162: checkcast 510	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData
     //   3165: iconst_1
-    //   3166: putfield 1014	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_f_of_type_Boolean	Z
+    //   3166: putfield 1016	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_f_of_type_Boolean	Z
     //   3169: iload 4
     //   3171: ifeq +178 -> 3349
     //   3174: aload 10
-    //   3176: getfield 1012	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   3176: getfield 1014	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   3179: astore_2
-    //   3180: ldc_w 650
+    //   3180: ldc_w 636
     //   3183: aload_2
-    //   3184: invokestatic 648	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   3187: invokevirtual 614	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   3184: invokestatic 634	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   3187: invokevirtual 598	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   3190: ifeq +13 -> 3203
     //   3193: aload 8
     //   3195: bipush 102
     //   3197: invokestatic 453	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   3200: invokevirtual 651	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(Ljava/lang/Object;)V
+    //   3200: invokevirtual 637	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(Ljava/lang/Object;)V
     //   3203: aload 8
     //   3205: astore_2
     //   3206: aload_0
     //   3207: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   3210: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3210: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3213: ifne -3209 -> 4
     //   3216: aload 8
     //   3218: astore_2
@@ -2552,33 +2562,33 @@ public class AIOGalleryAdapter
     //   3227: getfield 61	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider	Lcom/tencent/mobileqq/activity/aio/photo/IAIOImageProvider;
     //   3230: aload_0
     //   3231: getfield 87	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Int	I
-    //   3234: invokeinterface 642 2 0
+    //   3234: invokeinterface 628 2 0
     //   3239: aload_0
     //   3240: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   3243: iconst_1
-    //   3244: putfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3244: putfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3247: aload 8
     //   3249: areturn
     //   3250: iconst_0
     //   3251: istore 4
     //   3253: goto -335 -> 2918
     //   3256: aload 9
-    //   3258: getfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   3258: getfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
     //   3261: bipush 254
     //   3263: if_icmpne +15 -> 3278
     //   3266: aload 9
     //   3268: aload_2
     //   3269: invokevirtual 325	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   3272: invokestatic 876	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
-    //   3275: putfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   3272: invokestatic 878	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
+    //   3275: putfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
     //   3278: aload 8
     //   3280: aload_3
     //   3281: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   3284: aload 8
     //   3286: aload_3
     //   3287: aload 9
-    //   3289: getfield 867	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
-    //   3292: invokestatic 879	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(Landroid/view/View;Lcom/tencent/image/URLDrawable;I)V
+    //   3289: getfield 869	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_b_of_type_Int	I
+    //   3292: invokestatic 881	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(Landroid/view/View;Lcom/tencent/image/URLDrawable;I)V
     //   3295: aload_3
     //   3296: invokevirtual 132	com/tencent/image/URLDrawable:getStatus	()I
     //   3299: iconst_1
@@ -2608,7 +2618,7 @@ public class AIOGalleryAdapter
     //   3344: istore 5
     //   3346: goto -13 -> 3333
     //   3349: aload 10
-    //   3351: getfield 700	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   3351: getfield 686	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   3354: astore_2
     //   3355: goto -175 -> 3180
     //   3358: aload 10
@@ -2633,7 +2643,7 @@ public class AIOGalleryAdapter
     //   3396: aload_2
     //   3397: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   3400: aload 10
-    //   3402: getfield 1015	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_d_of_type_Boolean	Z
+    //   3402: getfield 1017	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_d_of_type_Boolean	Z
     //   3405: ifne +165 -> 3570
     //   3408: aload 10
     //   3410: getfield 512	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_a_of_type_Long	J
@@ -2641,14 +2651,14 @@ public class AIOGalleryAdapter
     //   3416: lcmp
     //   3417: ifgt +112 -> 3529
     //   3420: aload_2
-    //   3421: invokevirtual 696	com/tencent/image/URLDrawable:downloadImediatly	()V
+    //   3421: invokevirtual 682	com/tencent/image/URLDrawable:downloadImediatly	()V
     //   3424: aload_0
     //   3425: iload_1
     //   3426: aload 9
-    //   3428: getfield 956	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
+    //   3428: getfield 958	com/tencent/mobileqq/activity/aio/photo/AIORichMediaInfo:jdField_a_of_type_Int	I
     //   3431: bipush 100
     //   3433: idiv
-    //   3434: invokevirtual 799	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
+    //   3434: invokevirtual 801	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:a	(II)V
     //   3437: aload_0
     //   3438: getfield 61	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider	Lcom/tencent/mobileqq/activity/aio/photo/IAIOImageProvider;
     //   3441: aload 10
@@ -2664,13 +2674,13 @@ public class AIOGalleryAdapter
     //   3467: new 145	java/lang/StringBuilder
     //   3470: dup
     //   3471: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   3474: ldc_w 946
+    //   3474: ldc_w 948
     //   3477: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3480: aload 10
     //   3482: bipush 16
-    //   3484: invokevirtual 698	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:a	(I)Ljava/lang/String;
+    //   3484: invokevirtual 684	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:a	(I)Ljava/lang/String;
     //   3487: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   3490: ldc_w 948
+    //   3490: ldc_w 950
     //   3493: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   3496: bipush 16
     //   3498: invokevirtual 173	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -2680,16 +2690,16 @@ public class AIOGalleryAdapter
     //   3509: astore_2
     //   3510: aload_0
     //   3511: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   3514: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3514: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3517: ifne -3513 -> 4
     //   3520: aload_0
     //   3521: aload 8
-    //   3523: putfield 932	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
+    //   3523: putfield 934	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct;
     //   3526: aload 8
     //   3528: areturn
     //   3529: aload_0
     //   3530: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   3533: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3533: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3536: ifne -78 -> 3458
     //   3539: aload_0
     //   3540: getfield 33	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Boolean	Z
@@ -2698,15 +2708,15 @@ public class AIOGalleryAdapter
     //   3547: getfield 61	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider	Lcom/tencent/mobileqq/activity/aio/photo/IAIOImageProvider;
     //   3550: aload_0
     //   3551: getfield 87	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Int	I
-    //   3554: invokeinterface 642 2 0
+    //   3554: invokeinterface 628 2 0
     //   3559: aload_0
     //   3560: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   3563: iconst_1
-    //   3564: putfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3564: putfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3567: goto -109 -> 3458
     //   3570: aload_0
     //   3571: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   3574: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3574: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3577: ifne -119 -> 3458
     //   3580: aload_0
     //   3581: getfield 33	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Boolean	Z
@@ -2715,11 +2725,11 @@ public class AIOGalleryAdapter
     //   3588: getfield 61	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider	Lcom/tencent/mobileqq/activity/aio/photo/IAIOImageProvider;
     //   3591: aload_0
     //   3592: getfield 87	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Int	I
-    //   3595: invokeinterface 642 2 0
+    //   3595: invokeinterface 628 2 0
     //   3600: aload_0
     //   3601: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   3604: iconst_1
-    //   3605: putfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3605: putfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3608: goto -150 -> 3458
     //   3611: aload 10
     //   3613: getfield 512	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_a_of_type_Long	J
@@ -2727,25 +2737,25 @@ public class AIOGalleryAdapter
     //   3619: lcmp
     //   3620: ifgt +91 -> 3711
     //   3623: aload 10
-    //   3625: getfield 684	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_a_of_type_Boolean	Z
+    //   3625: getfield 670	com/tencent/mobileqq/activity/aio/photo/AIOFilePicData:jdField_a_of_type_Boolean	Z
     //   3628: ifeq +51 -> 3679
     //   3631: aload 8
-    //   3633: invokestatic 617	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   3636: invokevirtual 618	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   3639: ldc_w 619
-    //   3642: invokevirtual 622	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   3633: invokestatic 603	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   3636: invokevirtual 604	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   3639: ldc_w 605
+    //   3642: invokevirtual 608	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
     //   3645: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   3648: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3651: ifeq +12 -> 3663
     //   3654: ldc 143
     //   3656: iconst_2
-    //   3657: ldc_w 982
+    //   3657: ldc_w 984
     //   3660: invokestatic 292	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   3663: aload 8
     //   3665: astore_2
     //   3666: aload_0
     //   3667: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   3670: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3670: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3673: ifne -3669 -> 4
     //   3676: aload 8
     //   3678: areturn
@@ -2763,7 +2773,7 @@ public class AIOGalleryAdapter
     //   3708: goto -60 -> 3648
     //   3711: aload_0
     //   3712: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
-    //   3715: getfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3715: getfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3718: ifne +31 -> 3749
     //   3721: aload_0
     //   3722: getfield 33	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Boolean	Z
@@ -2772,24 +2782,24 @@ public class AIOGalleryAdapter
     //   3729: getfield 61	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider	Lcom/tencent/mobileqq/activity/aio/photo/IAIOImageProvider;
     //   3732: aload_0
     //   3733: getfield 87	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_Int	I
-    //   3736: invokeinterface 642 2 0
+    //   3736: invokeinterface 628 2 0
     //   3741: aload_0
     //   3742: getfield 59	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter:jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity	Lcom/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity;
     //   3745: iconst_1
-    //   3746: putfield 640	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
+    //   3746: putfield 626	com/tencent/mobileqq/activity/aio/photo/AIOGalleryActivity:jdField_a_of_type_Boolean	Z
     //   3749: aload 8
-    //   3751: invokestatic 617	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   3754: invokevirtual 618	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   3757: ldc_w 619
-    //   3760: invokevirtual 622	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   3751: invokestatic 603	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   3754: invokevirtual 604	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   3757: ldc_w 605
+    //   3760: invokevirtual 608	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
     //   3763: invokevirtual 395	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   3766: aload 8
-    //   3768: invokevirtual 697	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()V
+    //   3768: invokevirtual 683	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:a	()V
     //   3771: aload 8
-    //   3773: ldc_w 991
-    //   3776: ldc_w 992
-    //   3779: invokestatic 997	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   3782: invokevirtual 999	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(ILjava/lang/Object;)V
+    //   3773: ldc_w 993
+    //   3776: ldc_w 994
+    //   3779: invokestatic 999	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   3782: invokevirtual 1001	com/tencent/mobileqq/activity/aio/photo/AIOGalleryAdapter$GalleryImageStruct:setTag	(ILjava/lang/Object;)V
     //   3785: aload 8
     //   3787: areturn
     //   3788: aload_3
@@ -2827,12 +2837,12 @@ public class AIOGalleryAdapter
       QLog.d("AIOGalleryAdapter", 2, "onStateChange => " + QQLiveImage.getStateStr(paramInt) + ", msgUniseq=" + paramQQLiveDrawableParams.msgUniseq + ", extra = " + paramObject);
     }
     if (paramInt == 6) {
-      new Handler(Looper.getMainLooper()).post(new vmg(this));
+      new Handler(Looper.getMainLooper()).post(new vri(this));
     }
     while (paramInt != 2) {
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new vmh(this));
+    new Handler(Looper.getMainLooper()).post(new vrj(this));
   }
 }
 

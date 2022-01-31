@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig.StarInfo;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import java.lang.ref.WeakReference;
 
-public final class abew
-  implements Parcelable.Creator
+public class abew
+  implements ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler
 {
-  public ARMapConfig.StarInfo a(Parcel paramParcel)
-  {
-    return new ARMapConfig.StarInfo(paramParcel);
-  }
+  public abew(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference1, WeakReference paramWeakReference2, SessionInfo paramSessionInfo) {}
   
-  public ARMapConfig.StarInfo[] a(int paramInt)
+  public void a(String paramString, Object paramObject, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, boolean paramBoolean)
   {
-    return new ARMapConfig.StarInfo[paramInt];
+    ArkAppCenter.a().postDelayed(new abex(this, paramSearchArkBabyQInfo, paramBoolean), 200L);
   }
 }
 

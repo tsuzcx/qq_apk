@@ -36,27 +36,29 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import njf;
-import njg;
-import njh;
+import nnp;
+import nnq;
+import nnr;
 
 public class CommentPlayMode
   extends NewFriendsPlayMode
 {
   private QQUserUIItem jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-  njh jdField_a_of_type_Njh = new njh(this);
+  nnr jdField_a_of_type_Nnr = new nnr(this);
   private boolean g;
   protected int j;
+  protected int k;
   
   public CommentPlayMode(int paramInt, StoryVideoPlayer paramStoryVideoPlayer, VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, Bundle paramBundle)
   {
     super(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
     b(1);
     this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.b);
-    a(this.jdField_a_of_type_Njh);
+    a(this.jdField_a_of_type_Nnr);
     if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
       this.j = paramBundle.getInt("extra_identify", 1);
     }
+    this.k = paramBundle.getInt("extra_shared_video_list_order", 0);
   }
   
   private void a(QQUserUIItem paramQQUserUIItem)
@@ -107,7 +109,7 @@ public class CommentPlayMode
       localObject = null;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(paramBundle);
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-      this.jdField_a_of_type_AndroidOsHandler.post(new njf(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new nnp(this));
       paramBundle = (Bundle)localObject;
       if (this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a != null)
       {
@@ -178,7 +180,7 @@ public class CommentPlayMode
       }
       PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_AndroidAppActivity, paramVideoViewHolder, a(paramVideoViewHolder.jdField_c_of_type_Int), paramStoryVideoItem);
       LinearLayout localLinearLayout = paramVideoViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout;
-      if (!PlayModeUtils.a(this.k)) {
+      if (!PlayModeUtils.a(this.l)) {
         break label207;
       }
       i = 0;
@@ -222,9 +224,9 @@ public class CommentPlayMode
   protected void a(ActionSheet paramActionSheet, StoryVideoItem paramStoryVideoItem)
   {
     boolean bool = PlayModeUtils.a(paramStoryVideoItem);
-    paramActionSheet.b(2131434737);
+    paramActionSheet.b(2131434753);
     if (!bool) {
-      paramActionSheet.b(2131435116);
+      paramActionSheet.b(2131435132);
     }
   }
   
@@ -234,7 +236,7 @@ public class CommentPlayMode
     {
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_Int = 2;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setTipsText(StoryApi.a(2131432097));
+      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setTipsText(StoryApi.a(2131432108));
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
       if (QLog.isColorLevel()) {
@@ -252,7 +254,7 @@ public class CommentPlayMode
         this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoProgressControler.a(paramPlayerVideoListEvent.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a);
         this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-        this.jdField_a_of_type_AndroidOsHandler.post(new njg(this));
+        this.jdField_a_of_type_AndroidOsHandler.post(new nnq(this));
       }
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
       if ((this.jdField_a_of_type_Int == 15) || (this.jdField_a_of_type_Int == 33)) {

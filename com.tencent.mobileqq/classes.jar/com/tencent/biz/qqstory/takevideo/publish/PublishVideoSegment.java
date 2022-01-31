@@ -123,7 +123,7 @@ public class PublishVideoSegment
         break label2177;
       }
       localObject1 = new File(paramJobContext);
-      localObject1 = AppConstants.aS + localPublishVideoEntry.fakeVid + File.separator + ((File)localObject1).getName();
+      localObject1 = AppConstants.aT + localPublishVideoEntry.fakeVid + File.separator + ((File)localObject1).getName();
       if (!com.tencent.mobileqq.utils.FileUtils.d(paramJobContext, (String)localObject1)) {
         break label2177;
       }

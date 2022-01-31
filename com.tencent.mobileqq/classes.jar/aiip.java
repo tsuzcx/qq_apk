@@ -1,108 +1,64 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
-import com.tencent.mobileqq.widget.PAHighLightImageView;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.HashMap;
+import java.io.File;
 
-public class aiip
-  extends URLDrawableDownListener.Adapter
+public final class aiip
+  implements INetEngine.INetEngineListener
 {
-  public aiip(StructMsgItemCover paramStructMsgItemCover) {}
+  public aiip(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
     if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadCancelled");
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onUpdateProgeress: totalLen=" + paramLong2 + " curOffset=" + paramLong1);
     }
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(NetResp paramNetResp)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null))
+    if (paramNetResp.jdField_a_of_type_Int == 0)
     {
-      paramThrowable = paramURLDrawable.getURL().toString();
-      if (paramThrowable.startsWith("http://url.cn"))
+      paramNetResp = paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
+      if (new File(paramNetResp.c).exists())
       {
-        paramThrowable = paramThrowable.replace("http://", "https://");
-        try
+        str = RecentDanceConfigMgr.a(paramNetResp.c);
+        if ((str == null) || ("".equals(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5)))
         {
-          paramThrowable = URLDrawable.getDrawable(new URL(paramThrowable), (URLDrawable.URLDrawableOptions)paramURLDrawable.getTag());
-          paramThrowable.setAutoDownload(true);
-          ((PAHighLightImageView)paramView).setImageDrawable(paramThrowable);
-          return;
-        }
-        catch (Exception paramThrowable)
-        {
-          paramThrowable.printStackTrace();
+          FileUtils.d(paramNetResp.c);
+          FileUtils.d(this.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel()) {
+            QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: item.icon_md5" + this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5 + " md5=" + str);
+          }
         }
       }
-    }
-    try
-    {
-      paramThrowable = new HashMap();
-      paramThrowable.put("param_Url", paramURLDrawable.getURL().toString());
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", false, 0L, 0L, paramThrowable, null);
-      label152:
-      this.a.a(paramView, 0, 1001);
+      while (!QLog.isColorLevel())
+      {
+        String str;
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: check success");
+        }
+        FileUtils.c(paramNetResp.c, this.jdField_a_of_type_JavaLangString);
+        RecentDanceConfigMgr.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp[not exists]: mOutPath" + paramNetResp.c);
       return;
     }
-    catch (Exception paramURLDrawable)
-    {
-      break label152;
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
     if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadInterrupted");
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: resp.mResult=" + paramNetResp.jdField_a_of_type_Int);
     }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {
-      return;
-    }
-    paramView.setBackgroundDrawable(null);
-    if ((paramView instanceof ImageView)) {
-      ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-    }
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_Url", paramURLDrawable.getURL().toString());
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", true, 0L, 0L, localHashMap, null);
-      label66:
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsgItemCover", 2, "onLoadSuccessed");
-      }
-      this.a.a(paramView, 1, 1001);
-      return;
-    }
-    catch (Exception paramURLDrawable)
-    {
-      break label66;
-    }
+    FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiip
  * JD-Core Version:    0.7.0.1
  */

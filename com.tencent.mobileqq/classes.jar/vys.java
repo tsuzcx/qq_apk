@@ -1,18 +1,30 @@
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.widget.XListView.DrawFinishedListener;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.jumplightalk.AIOJumpLightalkConfig;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import mqq.os.MqqHandler;
 
 public class vys
-  implements XListView.DrawFinishedListener
+  implements Runnable
 {
-  public vys(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vys(FriendChatPie paramFriendChatPie) {}
   
-  public void a()
+  public void run()
   {
-    if ((!this.a.ag) && (this.a.ah))
+    FriendChatPie.a(this.a, AIOJumpLightalkConfig.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    if ((FriendChatPie.a(this.a) != null) && (!Utils.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
     {
-      this.a.ag = true;
-      PublicTracker.a("SUBSCRIPT_AIO_COST", null);
+      FriendChatPie.a(this.a, SharedPreUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).getBoolean("aio_jump_lightalk_red_dot", false));
+      Message localMessage = FriendChatPie.e(this.a).obtainMessage(42);
+      Bundle localBundle = new Bundle();
+      localBundle.putBoolean("showRedDot", FriendChatPie.a(this.a));
+      localMessage.setData(localBundle);
+      FriendChatPie.f(this.a).sendMessage(localMessage);
     }
   }
 }

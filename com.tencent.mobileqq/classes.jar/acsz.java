@@ -1,33 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter.RecentItemHolder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class acsz
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public acsz(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public acsz(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = paramView.getTag();
-    FileManagerEntity localFileManagerEntity = null;
-    if ((localObject instanceof QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)) {
-      localFileManagerEntity = (FileManagerEntity)((QfileRecentFileBaseExpandableListAdapter.RecentItemHolder)paramView.getTag()).a;
-    }
-    for (;;)
-    {
-      if (localFileManagerEntity != null) {
-        this.a.c(localFileManagerEntity);
-      }
-      return;
-      if ((localObject instanceof ImageHolder)) {
-        localFileManagerEntity = (FileManagerEntity)((ImageHolder)paramView.getTag()).a;
-      }
-    }
+    this.a.a.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

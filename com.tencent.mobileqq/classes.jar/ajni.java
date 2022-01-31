@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
+import com.tencent.mobileqq.troop.widget.ExpandableTextView.OnExpandStateListener;
 
-class ajni
-  implements Runnable
+public class ajni
+  implements ExpandableTextView.OnExpandStateListener
 {
-  ajni(ajng paramajng) {}
+  public ajni(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
   
-  public void run()
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.jdField_a_of_type_Boolean);
+    paramView.setVisibility(8);
   }
 }
 

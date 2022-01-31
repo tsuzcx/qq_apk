@@ -1,26 +1,31 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.PublicAccountItem;
+import android.app.Activity;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import com.tencent.open.base.LogUtility;
 
-public class almn
-  implements View.OnLongClickListener
+public final class almn
+  implements Runnable
 {
-  public almn(QidianProfileCardActivity paramQidianProfileCardActivity, Drawable paramDrawable, PublicAccountItem paramPublicAccountItem) {}
+  public almn(Bundle paramBundle, Activity paramActivity, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) {
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.b);
+    Object localObject = new almo(this);
+    almp localalmp = new almp(this);
+    LogUtility.b("DownloadJSApi", "dialog create and show");
+    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131428555)).setPositiveButton(2131428552, localalmp).setNegativeButton(2131428553, (DialogInterface.OnClickListener)localObject).create();
+    ((Dialog)localObject).setCanceledOnTouchOutside(false);
+    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      ((Dialog)localObject).show();
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     almn
  * JD-Core Version:    0.7.0.1
  */

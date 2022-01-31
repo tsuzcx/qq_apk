@@ -1,26 +1,42 @@
-import com.tencent.biz.helper.TroopInfoActivityHelper.ISetSameCityCheckTypeInfo;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.io.File;
 
 public class txr
-  implements TroopInfoActivityHelper.ISetSameCityCheckTypeInfo
+  implements View.OnClickListener
 {
-  public txr(TroopInfoActivity paramTroopInfoActivity) {}
+  public txr(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 4;
+    this.a.a(3);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
+    if (this.a.a().booleanValue())
+    {
+      this.a.b();
+      paramView = ThemeUtil.getThemeVoiceRootPath();
+      if (paramView != null)
+      {
+        paramView = new File(paramView + File.separatorChar + "message.mp3");
+        if (paramView.exists())
+        {
+          this.a.b();
+          this.a.a(Uri.fromFile(paramView));
+        }
+      }
     }
-    ReportController.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.j();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+    else
+    {
+      return;
+    }
+    this.a.b();
+    this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
   }
 }
 

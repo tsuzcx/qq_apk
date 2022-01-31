@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import zrd;
+import zxo;
 
 public class GetTroopAssisMsg
   extends AsyncStep
@@ -23,7 +23,7 @@ public class GetTroopAssisMsg
     super.a();
     if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new zrd(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new zxo(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
     }
   }

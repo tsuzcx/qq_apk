@@ -1,35 +1,40 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Intent;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity.sendPhotoTask;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
-import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.pic.PicUploadInfo;
+import cooperation.smartdevice.SmartDevicePluginLoader;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import java.util.ArrayList;
 
-public final class xen
+public class xen
   implements Runnable
 {
-  public xen(MessageRecord paramMessageRecord, String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle) {}
+  public xen(SendPhotoActivity.sendPhotoTask paramsendPhotoTask, SmartDeviceProxyMgr paramSmartDeviceProxyMgr, PicReq paramPicReq, BaseActivity paramBaseActivity) {}
   
   public void run()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    try
     {
-      if (localObject == null) {
-        return;
-      }
-      UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, ((QQAppInterface)localObject).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_Int, 3145729, MessageCache.a());
-      if ((this.b >= 0) && (this.c > this.b) && (this.jdField_a_of_type_AndroidOsBundle != null)) {
-        localUniteGrayTipParam.a(this.b, this.c, this.jdField_a_of_type_AndroidOsBundle);
-      }
-      MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-      localMessageForUniteGrayTip.initGrayTipMsg((QQAppInterface)localObject, localUniteGrayTipParam);
-      UniteGrayTipUtil.a((QQAppInterface)localObject, localMessageForUniteGrayTip);
+      this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.a.c), "", "", "", 0, null);
+      DeviceInfo localDeviceInfo = this.jdField_a_of_type_ComTencentDeviceDevicemgrSmartDeviceProxyMgr.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.a.c));
+      Object localObject = new FileInfo(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.a.g);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localObject);
+      localObject = new Intent();
+      ((Intent)localObject).putParcelableArrayListExtra("sFilesSelected", localArrayList);
+      ((Intent)localObject).putExtra("sIsCloudPrinter", true);
+      ((Intent)localObject).putExtra("device_info", localDeviceInfo);
+      ((Intent)localObject).putExtra("url", "http://qzs.qq.com/open/mobile/iot_print/html/printOpt.html");
+      ((Intent)localObject).putExtra("filetype", "pic");
+      SmartDevicePluginLoader.a().a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
       return;
     }
+    catch (Exception localException) {}
   }
 }
 

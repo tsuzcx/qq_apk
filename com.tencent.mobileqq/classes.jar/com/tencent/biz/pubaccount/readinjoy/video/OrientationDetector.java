@@ -9,10 +9,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
-import lzq;
-import lzr;
-import lzs;
-import lzt;
+import mdd;
+import mde;
+import mdf;
+import mdg;
 
 public class OrientationDetector
 {
@@ -22,7 +22,7 @@ public class OrientationDetector
   private volatile OrientationEventListener jdField_a_of_type_AndroidViewOrientationEventListener;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private lzt jdField_a_of_type_Lzt;
+  private mdg jdField_a_of_type_Mdg;
   private boolean jdField_a_of_type_Boolean;
   
   static
@@ -33,13 +33,13 @@ public class OrientationDetector
   public OrientationDetector(Activity paramActivity, OrientationDetector.OnOrientationChangedListener paramOnOrientationChangedListener)
   {
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    ThreadManager.executeOnSubThread(new lzq(this, paramActivity));
+    ThreadManager.executeOnSubThread(new mdd(this, paramActivity));
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener = new lzr(this, paramActivity, paramOnOrientationChangedListener);
-      this.jdField_a_of_type_Lzt = new lzt(this, new Handler());
-      this.jdField_a_of_type_Lzt.a();
+      this.jdField_a_of_type_AndroidViewOrientationEventListener = new mde(this, paramActivity, paramOnOrientationChangedListener);
+      this.jdField_a_of_type_Mdg = new mdg(this, new Handler());
+      this.jdField_a_of_type_Mdg.a();
       this.jdField_a_of_type_Boolean = VideoFeedsHelper.a(this.jdField_a_of_type_AndroidAppActivity);
       a(this.jdField_a_of_type_Boolean);
       return;
@@ -48,7 +48,7 @@ public class OrientationDetector
   
   private void a(boolean paramBoolean)
   {
-    ThreadManager.executeOnSubThread(new lzs(this, paramBoolean));
+    ThreadManager.executeOnSubThread(new mdf(this, paramBoolean));
   }
   
   private boolean a(int paramInt)
@@ -85,8 +85,8 @@ public class OrientationDetector
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       this.jdField_a_of_type_AndroidViewOrientationEventListener = null;
-      this.jdField_a_of_type_Lzt.b();
-      this.jdField_a_of_type_Lzt = null;
+      this.jdField_a_of_type_Mdg.b();
+      this.jdField_a_of_type_Mdg = null;
       return;
     }
   }

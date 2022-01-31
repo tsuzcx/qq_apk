@@ -50,15 +50,15 @@ import java.io.InputStream;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import zfp;
-import zfq;
-import zfr;
-import zfs;
+import zmq;
+import zmr;
+import zms;
+import zmt;
 
 public class IndividualRedPacketManager
   implements Manager
@@ -83,7 +83,7 @@ public class IndividualRedPacketManager
   Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   public Comparator a;
   public LinkedList a;
-  public Map a;
+  public ConcurrentHashMap a;
   public AtomicBoolean a;
   float jdField_b_of_type_Float;
   public int b;
@@ -104,7 +104,7 @@ public class IndividualRedPacketManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "RedPacket/";
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "RedPacket/";
     jdField_a_of_type_Int = 10029;
     jdField_c_of_type_JavaLangString = "0";
   }
@@ -114,7 +114,7 @@ public class IndividualRedPacketManager
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
     this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaUtilComparator = new zfr(this);
+    this.jdField_a_of_type_JavaUtilComparator = new zms(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     SharedPreferences localSharedPreferences = a();
     a(localSharedPreferences.getInt("sp_vip_info_can_use_packet", 0), localSharedPreferences.getInt("sp_vip_info_red_packet_disable", 0), false);
@@ -133,8 +133,8 @@ public class IndividualRedPacketManager
     this.g = ((int)(this.jdField_b_of_type_Float * 104.0F + 0.5D));
     this.f = ((int)(320.0F * this.jdField_b_of_type_Float + 0.5D));
     this.jdField_a_of_type_Float = ((int)(this.jdField_b_of_type_Float * 104.0F + 0.5D));
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    ThreadManager.post(new zfp(this), 8, null, true);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    ThreadManager.post(new zmq(this), 8, null, true);
   }
   
   private Bitmap a(IndividualRedPacketManager.FontBitmap paramFontBitmap, String paramString1, String paramString2, int paramInt)
@@ -278,17 +278,17 @@ public class IndividualRedPacketManager
     //   8: astore_3
     //   9: aload 6
     //   11: astore 4
-    //   13: getstatic 455	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   13: getstatic 458	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   16: aload_0
-    //   17: invokevirtual 461	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   17: invokevirtual 464	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   20: ifnull +375 -> 395
     //   23: aload 5
     //   25: astore_3
     //   26: aload 6
     //   28: astore 4
-    //   30: getstatic 455	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
+    //   30: getstatic 458	com/tencent/common/app/BaseApplicationImpl:sImageCache	Landroid/support/v4/util/MQLruCache;
     //   33: aload_0
-    //   34: invokevirtual 461	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   34: invokevirtual 464	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   37: checkcast 311	android/graphics/Bitmap
     //   40: astore 5
     //   42: aload 5
@@ -305,31 +305,31 @@ public class IndividualRedPacketManager
     //   60: astore 4
     //   62: aload_3
     //   63: astore 5
-    //   65: new 463	android/graphics/BitmapFactory$Options
+    //   65: new 466	android/graphics/BitmapFactory$Options
     //   68: dup
-    //   69: invokespecial 464	android/graphics/BitmapFactory$Options:<init>	()V
+    //   69: invokespecial 467	android/graphics/BitmapFactory$Options:<init>	()V
     //   72: astore 6
     //   74: aload_3
     //   75: astore 4
     //   77: aload_3
     //   78: astore 5
     //   80: aload 6
-    //   82: getstatic 467	android/graphics/Bitmap$Config:ARGB_4444	Landroid/graphics/Bitmap$Config;
-    //   85: putfield 470	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   82: getstatic 470	android/graphics/Bitmap$Config:ARGB_4444	Landroid/graphics/Bitmap$Config;
+    //   85: putfield 473	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   88: aload_3
     //   89: astore 4
     //   91: aload_3
     //   92: astore 5
     //   94: aload_0
     //   95: aload 6
-    //   97: invokestatic 475	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lcom/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult;
+    //   97: invokestatic 478	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lcom/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult;
     //   100: astore 7
     //   102: aload_3
     //   103: astore 4
     //   105: aload_3
     //   106: astore 5
     //   108: aload 7
-    //   110: getfield 478	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   110: getfield 481	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   113: astore_1
     //   114: aload_1
     //   115: astore 4
@@ -346,15 +346,15 @@ public class IndividualRedPacketManager
     //   136: new 44	java/lang/StringBuilder
     //   139: dup
     //   140: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   143: ldc_w 480
+    //   143: ldc_w 483
     //   146: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: aload_0
     //   150: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: ldc_w 482
+    //   153: ldc_w 485
     //   156: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: aload 7
-    //   161: getfield 483	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
-    //   164: invokevirtual 486	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   161: getfield 486	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   164: invokevirtual 489	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   167: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   170: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   173: aload_1
@@ -362,7 +362,7 @@ public class IndividualRedPacketManager
     //   176: aload_1
     //   177: astore 5
     //   179: aload 7
-    //   181: getfield 483	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   181: getfield 486	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
     //   184: istore_2
     //   185: aload_1
     //   186: astore 4
@@ -382,28 +382,28 @@ public class IndividualRedPacketManager
     //   206: astore 4
     //   208: aload 6
     //   210: iload_2
-    //   211: putfield 489	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   211: putfield 492	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   214: aload_1
     //   215: astore_3
     //   216: aload_1
     //   217: astore 4
     //   219: aload_0
     //   220: aload 6
-    //   222: invokestatic 475	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lcom/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult;
+    //   222: invokestatic 478	com/tencent/mobileqq/util/BitmapManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Lcom/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult;
     //   225: astore 5
     //   227: aload_1
     //   228: astore_3
     //   229: aload_1
     //   230: astore 4
     //   232: aload 5
-    //   234: getfield 478	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   234: getfield 481	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   237: astore_1
     //   238: aload_1
     //   239: astore_3
     //   240: aload_1
     //   241: astore 4
     //   243: aload 5
-    //   245: getfield 483	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
+    //   245: getfield 486	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
     //   248: iconst_1
     //   249: if_icmpeq +151 -> 400
     //   252: aload_1
@@ -418,63 +418,63 @@ public class IndividualRedPacketManager
     //   266: astore 4
     //   268: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   271: iconst_2
-    //   272: ldc_w 491
+    //   272: ldc_w 494
     //   275: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   278: aload_1
     //   279: astore_3
-    //   280: new 213	java/util/HashMap
+    //   280: new 324	java/util/HashMap
     //   283: dup
-    //   284: invokespecial 214	java/util/HashMap:<init>	()V
+    //   284: invokespecial 325	java/util/HashMap:<init>	()V
     //   287: astore 4
     //   289: aload_1
     //   290: astore_3
-    //   291: getstatic 336	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   294: invokevirtual 337	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
-    //   297: invokestatic 342	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   300: getstatic 336	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   303: invokevirtual 346	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   291: getstatic 339	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   294: invokevirtual 340	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   297: invokestatic 345	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   300: getstatic 339	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   303: invokevirtual 349	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   306: checkcast 175	com/tencent/mobileqq/app/QQAppInterface
-    //   309: invokevirtual 349	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   312: ldc_w 493
+    //   309: invokevirtual 352	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   312: ldc_w 496
     //   315: iconst_0
     //   316: lconst_1
     //   317: lconst_0
     //   318: aload 4
     //   320: ldc_w 262
     //   323: iconst_0
-    //   324: invokevirtual 354	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   324: invokevirtual 357	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   327: aload_1
     //   328: astore 4
     //   330: aload 4
     //   332: astore_3
-    //   333: new 213	java/util/HashMap
+    //   333: new 324	java/util/HashMap
     //   336: dup
-    //   337: invokespecial 214	java/util/HashMap:<init>	()V
+    //   337: invokespecial 325	java/util/HashMap:<init>	()V
     //   340: astore_1
     //   341: aload 4
     //   343: astore_3
     //   344: aload_1
-    //   345: ldc_w 324
+    //   345: ldc_w 327
     //   348: ldc 68
-    //   350: invokevirtual 330	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   350: invokevirtual 333	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   353: pop
     //   354: aload 4
     //   356: astore_3
-    //   357: getstatic 336	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   360: invokevirtual 337	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
-    //   363: invokestatic 342	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   366: getstatic 336	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   369: invokevirtual 346	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   357: getstatic 339	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   360: invokevirtual 340	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   363: invokestatic 345	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   366: getstatic 339	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   369: invokevirtual 349	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   372: checkcast 175	com/tencent/mobileqq/app/QQAppInterface
-    //   375: invokevirtual 349	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   378: ldc_w 495
+    //   375: invokevirtual 352	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   378: ldc_w 498
     //   381: iconst_0
     //   382: lconst_1
     //   383: lconst_0
     //   384: aload_1
     //   385: ldc_w 262
     //   388: iconst_0
-    //   389: invokevirtual 354	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   389: invokevirtual 357	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   392: aload 4
     //   394: areturn
     //   395: aconst_null
@@ -496,41 +496,41 @@ public class IndividualRedPacketManager
     //   422: new 44	java/lang/StringBuilder
     //   425: dup
     //   426: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   429: ldc_w 480
+    //   429: ldc_w 483
     //   432: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   435: aload_0
     //   436: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   439: ldc_w 497
+    //   439: ldc_w 500
     //   442: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   445: aload_1
     //   446: invokevirtual 320	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   449: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   452: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   455: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   458: new 213	java/util/HashMap
+    //   458: new 324	java/util/HashMap
     //   461: dup
-    //   462: invokespecial 214	java/util/HashMap:<init>	()V
+    //   462: invokespecial 325	java/util/HashMap:<init>	()V
     //   465: astore_0
     //   466: aload_0
-    //   467: ldc_w 324
-    //   470: ldc_w 499
-    //   473: invokevirtual 330	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   467: ldc_w 327
+    //   470: ldc_w 502
+    //   473: invokevirtual 333	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   476: pop
-    //   477: getstatic 336	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   480: invokevirtual 337	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
-    //   483: invokestatic 342	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   486: getstatic 336	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   489: invokevirtual 346	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   477: getstatic 339	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   480: invokevirtual 340	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   483: invokestatic 345	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   486: getstatic 339	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   489: invokevirtual 349	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   492: checkcast 175	com/tencent/mobileqq/app/QQAppInterface
-    //   495: invokevirtual 349	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   498: ldc_w 495
+    //   495: invokevirtual 352	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   498: ldc_w 498
     //   501: iconst_0
     //   502: lconst_1
     //   503: lconst_0
     //   504: aload_0
     //   505: ldc_w 262
     //   508: iconst_0
-    //   509: invokevirtual 354	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   509: invokevirtual 357	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   512: aload_3
     //   513: areturn
     //   514: astore_1
@@ -541,41 +541,41 @@ public class IndividualRedPacketManager
     //   525: new 44	java/lang/StringBuilder
     //   528: dup
     //   529: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   532: ldc_w 480
+    //   532: ldc_w 483
     //   535: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   538: aload_0
     //   539: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   542: ldc_w 501
+    //   542: ldc_w 504
     //   545: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   548: aload_1
-    //   549: invokevirtual 357	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   549: invokevirtual 360	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   552: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   555: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   558: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   561: new 213	java/util/HashMap
+    //   561: new 324	java/util/HashMap
     //   564: dup
-    //   565: invokespecial 214	java/util/HashMap:<init>	()V
+    //   565: invokespecial 325	java/util/HashMap:<init>	()V
     //   568: astore_0
     //   569: aload_0
-    //   570: ldc_w 324
-    //   573: ldc_w 499
-    //   576: invokevirtual 330	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   570: ldc_w 327
+    //   573: ldc_w 502
+    //   576: invokevirtual 333	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   579: pop
-    //   580: getstatic 336	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   583: invokevirtual 337	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
-    //   586: invokestatic 342	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   589: getstatic 336	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   592: invokevirtual 346	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   580: getstatic 339	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   583: invokevirtual 340	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   586: invokestatic 345	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   589: getstatic 339	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   592: invokevirtual 349	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   595: checkcast 175	com/tencent/mobileqq/app/QQAppInterface
-    //   598: invokevirtual 349	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   601: ldc_w 503
+    //   598: invokevirtual 352	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   601: ldc_w 506
     //   604: iconst_0
     //   605: lconst_1
     //   606: lconst_0
     //   607: aload_0
     //   608: ldc_w 262
     //   611: iconst_0
-    //   612: invokevirtual 354	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   612: invokevirtual 357	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   615: aload 4
     //   617: areturn
     //   618: astore_0
@@ -659,11 +659,11 @@ public class IndividualRedPacketManager
     default: 
       return str;
     case 1: 
-      return AppConstants.aJ + "pddata/vas/RedPacket/packets/";
+      return AppConstants.aK + "pddata/vas/RedPacket/packets/";
     case 2: 
-      return AppConstants.aJ + "pddata/vas/RedPacket/specialFont/";
+      return AppConstants.aK + "pddata/vas/RedPacket/specialFont/";
     case 3: 
-      return AppConstants.aJ + "pddata/vas/RedPacket/font/";
+      return AppConstants.aK + "pddata/vas/RedPacket/font/";
     case 4: 
       return str + "fontimgprecreate/";
     case 5: 
@@ -945,10 +945,10 @@ public class IndividualRedPacketManager
     //   21: monitorexit
     //   22: return
     //   23: aload_2
-    //   24: getfield 653	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:templateId	Ljava/lang/String;
+    //   24: getfield 656	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:templateId	Ljava/lang/String;
     //   27: astore 10
     //   29: aload_2
-    //   30: getfield 654	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   30: getfield 657	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   33: astore 11
     //   35: aload_1
     //   36: invokevirtual 233	com/tencent/mobileqq/app/IndividualRedPacketManager:a	()Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader;
@@ -968,7 +968,7 @@ public class IndividualRedPacketManager
     //   69: ifnull +11 -> 80
     //   72: aload 12
     //   74: getfield 247	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo;
-    //   77: ifnonnull +293 -> 370
+    //   77: ifnonnull +224 -> 301
     //   80: invokestatic 253	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   83: ifeq +61 -> 144
     //   86: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
@@ -976,615 +976,555 @@ public class IndividualRedPacketManager
     //   90: new 44	java/lang/StringBuilder
     //   93: dup
     //   94: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   97: ldc_w 656
+    //   97: ldc_w 659
     //   100: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: aload 10
     //   105: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: ldc_w 658
+    //   108: ldc_w 661
     //   111: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   114: aload 11
     //   116: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: ldc_w 660
+    //   119: ldc_w 663
     //   122: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: aload 5
-    //   127: getfield 662	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
-    //   130: invokeinterface 667 1 0
-    //   135: invokevirtual 486	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   127: getfield 666	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:jdField_b_of_type_JavaUtilMap	Ljava/util/Map;
+    //   130: invokeinterface 671 1 0
+    //   135: invokevirtual 489	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   138: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   141: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   144: aload_1
-    //   145: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   148: astore_0
-    //   149: aload_0
-    //   150: monitorenter
-    //   151: aload_1
-    //   152: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   155: aload_2
-    //   156: getfield 669	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   159: invokeinterface 673 2 0
-    //   164: ifne +18 -> 182
-    //   167: aload_1
-    //   168: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   171: aload_2
-    //   172: getfield 669	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   175: aload_2
-    //   176: invokeinterface 674 3 0
-    //   181: pop
-    //   182: aload_1
-    //   183: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   186: new 44	java/lang/StringBuilder
-    //   189: dup
-    //   190: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   193: aload_2
-    //   194: getfield 669	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   197: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   200: ldc_w 676
-    //   203: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   209: invokeinterface 673 2 0
-    //   214: ifne +37 -> 251
-    //   217: aload_1
-    //   218: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   221: new 44	java/lang/StringBuilder
-    //   224: dup
-    //   225: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   228: aload_2
-    //   229: getfield 669	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   232: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   235: ldc_w 676
-    //   238: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   244: aload_2
-    //   245: invokeinterface 674 3 0
-    //   250: pop
-    //   251: aload_0
-    //   252: monitorexit
-    //   253: aload 5
-    //   255: getfield 678	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:c	Ljava/util/Map;
-    //   258: astore_0
-    //   259: aload_0
-    //   260: monitorenter
-    //   261: aload 5
-    //   263: getfield 678	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:c	Ljava/util/Map;
-    //   266: aload 10
-    //   268: invokeinterface 673 2 0
-    //   273: ifne +64 -> 337
-    //   276: new 680	java/util/ArrayList
-    //   279: dup
-    //   280: invokespecial 681	java/util/ArrayList:<init>	()V
-    //   283: astore_1
-    //   284: aload_1
-    //   285: aload_2
-    //   286: getfield 669	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   289: invokevirtual 684	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   145: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   148: aload_2
+    //   149: getfield 673	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   152: aload_2
+    //   153: invokevirtual 676	java/util/concurrent/ConcurrentHashMap:putIfAbsent	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   156: pop
+    //   157: aload_1
+    //   158: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   161: new 44	java/lang/StringBuilder
+    //   164: dup
+    //   165: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   168: aload_2
+    //   169: getfield 673	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   172: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: ldc_w 678
+    //   178: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: aload_2
+    //   185: invokevirtual 676	java/util/concurrent/ConcurrentHashMap:putIfAbsent	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   188: pop
+    //   189: aload 5
+    //   191: getfield 680	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:c	Ljava/util/Map;
+    //   194: astore_0
+    //   195: aload_0
+    //   196: monitorenter
+    //   197: aload 5
+    //   199: getfield 680	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:c	Ljava/util/Map;
+    //   202: aload 10
+    //   204: invokeinterface 684 2 0
+    //   209: ifne +59 -> 268
+    //   212: new 686	java/util/ArrayList
+    //   215: dup
+    //   216: invokespecial 687	java/util/ArrayList:<init>	()V
+    //   219: astore_1
+    //   220: aload_1
+    //   221: aload_2
+    //   222: getfield 673	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   225: invokevirtual 690	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   228: pop
+    //   229: aload 5
+    //   231: getfield 680	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:c	Ljava/util/Map;
+    //   234: aload 10
+    //   236: aload_1
+    //   237: invokeinterface 691 3 0
+    //   242: pop
+    //   243: aload_0
+    //   244: monitorexit
+    //   245: aload 5
+    //   247: ldc2_w 692
+    //   250: aload 10
+    //   252: aload_2
+    //   253: getfield 673	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   256: invokevirtual 696	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:a	(JLjava/lang/String;Ljava/lang/String;)V
+    //   259: goto -240 -> 19
+    //   262: astore_0
+    //   263: ldc 2
+    //   265: monitorexit
+    //   266: aload_0
+    //   267: athrow
+    //   268: aload 5
+    //   270: getfield 680	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:c	Ljava/util/Map;
+    //   273: aload 10
+    //   275: invokeinterface 697 2 0
+    //   280: checkcast 699	java/util/List
+    //   283: aload_2
+    //   284: getfield 673	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   287: invokeinterface 700 2 0
     //   292: pop
-    //   293: aload 5
-    //   295: getfield 678	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:c	Ljava/util/Map;
-    //   298: aload 10
-    //   300: aload_1
-    //   301: invokeinterface 674 3 0
-    //   306: pop
-    //   307: aload_0
-    //   308: monitorexit
+    //   293: goto -50 -> 243
+    //   296: astore_1
+    //   297: aload_0
+    //   298: monitorexit
+    //   299: aload_1
+    //   300: athrow
+    //   301: aload 11
+    //   303: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   306: ifne +850 -> 1156
     //   309: aload 5
-    //   311: ldc2_w 685
-    //   314: aload 10
-    //   316: aload_2
-    //   317: getfield 669	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   320: invokevirtual 689	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:a	(JLjava/lang/String;Ljava/lang/String;)V
-    //   323: goto -304 -> 19
-    //   326: astore_0
-    //   327: ldc 2
-    //   329: monitorexit
-    //   330: aload_0
-    //   331: athrow
-    //   332: astore_1
-    //   333: aload_0
-    //   334: monitorexit
-    //   335: aload_1
-    //   336: athrow
-    //   337: aload 5
-    //   339: getfield 678	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:c	Ljava/util/Map;
-    //   342: aload 10
-    //   344: invokeinterface 690 2 0
-    //   349: checkcast 692	java/util/List
-    //   352: aload_2
-    //   353: getfield 669	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   356: invokeinterface 693 2 0
-    //   361: pop
-    //   362: goto -55 -> 307
-    //   365: astore_1
-    //   366: aload_0
-    //   367: monitorexit
-    //   368: aload_1
-    //   369: athrow
-    //   370: aload 11
-    //   372: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   375: ifne +882 -> 1257
-    //   378: aload 5
-    //   380: getfield 696	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$Char300Info;
-    //   383: invokevirtual 700	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$Char300Info:a	()Ljava/lang/String;
-    //   386: aload 11
-    //   388: invokevirtual 703	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   391: ifeq +866 -> 1257
-    //   394: iconst_1
-    //   395: istore_3
-    //   396: aload 12
-    //   398: getfield 264	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_a_of_type_Int	I
-    //   401: getstatic 635	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_b_of_type_Int	I
-    //   404: if_icmpne +424 -> 828
-    //   407: iload_3
-    //   408: ifeq +844 -> 1252
-    //   411: aload_1
-    //   412: aload 10
-    //   414: aload 11
-    //   416: bipush 12
-    //   418: invokevirtual 706	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
-    //   421: astore_0
-    //   422: aload_0
-    //   423: astore 5
-    //   425: aload_0
-    //   426: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   429: ifeq +43 -> 472
-    //   432: aload 11
-    //   434: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   437: ifne +23 -> 460
-    //   440: aload_0
-    //   441: astore 5
-    //   443: aload_1
-    //   444: ldc_w 262
-    //   447: aload 11
-    //   449: bipush 9
-    //   451: invokevirtual 706	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
-    //   454: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   457: ifeq +15 -> 472
-    //   460: aload_1
-    //   461: aload 10
-    //   463: aload 11
-    //   465: bipush 6
-    //   467: invokevirtual 706	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
-    //   470: astore 5
-    //   472: aload 5
-    //   474: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   477: ifeq +691 -> 1168
-    //   480: aload 12
-    //   482: getfield 707	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_e_of_type_Int	I
-    //   485: iconst_1
-    //   486: if_icmpeq +666 -> 1152
+    //   311: getfield 703	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$Char300Info;
+    //   314: invokevirtual 707	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$Char300Info:a	()Ljava/lang/String;
+    //   317: aload 11
+    //   319: invokevirtual 710	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   322: ifeq +834 -> 1156
+    //   325: iconst_1
+    //   326: istore_3
+    //   327: aload 12
+    //   329: getfield 264	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_a_of_type_Int	I
+    //   332: getstatic 638	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_b_of_type_Int	I
+    //   335: if_icmpne +424 -> 759
+    //   338: iload_3
+    //   339: ifeq +812 -> 1151
+    //   342: aload_1
+    //   343: aload 10
+    //   345: aload 11
+    //   347: bipush 12
+    //   349: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    //   352: astore_0
+    //   353: aload_0
+    //   354: astore 5
+    //   356: aload_0
+    //   357: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   360: ifeq +43 -> 403
+    //   363: aload 11
+    //   365: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   368: ifne +23 -> 391
+    //   371: aload_0
+    //   372: astore 5
+    //   374: aload_1
+    //   375: ldc_w 262
+    //   378: aload 11
+    //   380: bipush 9
+    //   382: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    //   385: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   388: ifeq +15 -> 403
+    //   391: aload_1
+    //   392: aload 10
+    //   394: aload 11
+    //   396: bipush 6
+    //   398: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    //   401: astore 5
+    //   403: aload 5
+    //   405: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   408: ifeq +659 -> 1067
+    //   411: aload 12
+    //   413: getfield 714	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_e_of_type_Int	I
+    //   416: iconst_1
+    //   417: if_icmpeq +634 -> 1051
+    //   420: aload_1
+    //   421: aload 11
+    //   423: bipush 6
+    //   425: invokevirtual 717	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;
+    //   428: astore_0
+    //   429: aload_1
+    //   430: aload_0
+    //   431: aload_2
+    //   432: bipush 6
+    //   434: invokevirtual 720	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;I)Landroid/graphics/Bitmap;
+    //   437: astore 6
+    //   439: aload_0
+    //   440: astore 7
+    //   442: aload 12
+    //   444: getfield 264	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_a_of_type_Int	I
+    //   447: getstatic 638	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_b_of_type_Int	I
+    //   450: if_icmpne +690 -> 1140
+    //   453: iload_3
+    //   454: ifeq +686 -> 1140
+    //   457: aload_1
+    //   458: aload 10
+    //   460: aload 11
+    //   462: bipush 13
+    //   464: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    //   467: astore_0
+    //   468: aload_0
+    //   469: astore 5
+    //   471: aload_0
+    //   472: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   475: ifeq +43 -> 518
+    //   478: aload 11
+    //   480: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   483: ifne +23 -> 506
+    //   486: aload_0
+    //   487: astore 5
     //   489: aload_1
-    //   490: aload 11
-    //   492: bipush 6
-    //   494: invokevirtual 710	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;
-    //   497: astore_0
-    //   498: aload_1
-    //   499: aload_0
-    //   500: aload_2
-    //   501: bipush 6
-    //   503: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;I)Landroid/graphics/Bitmap;
-    //   506: astore 6
-    //   508: aload_0
-    //   509: astore 7
-    //   511: aload 12
-    //   513: getfield 264	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_a_of_type_Int	I
-    //   516: getstatic 635	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_b_of_type_Int	I
-    //   519: if_icmpne +722 -> 1241
-    //   522: iload_3
-    //   523: ifeq +718 -> 1241
-    //   526: aload_1
-    //   527: aload 10
-    //   529: aload 11
-    //   531: bipush 13
-    //   533: invokevirtual 706	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
-    //   536: astore_0
-    //   537: aload_0
-    //   538: astore 5
-    //   540: aload_0
-    //   541: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   544: ifeq +43 -> 587
-    //   547: aload 11
-    //   549: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   552: ifne +23 -> 575
-    //   555: aload_0
-    //   556: astore 5
-    //   558: aload_1
-    //   559: ldc_w 262
-    //   562: aload 11
-    //   564: bipush 10
-    //   566: invokevirtual 706	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
-    //   569: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   490: ldc_w 262
+    //   493: aload 11
+    //   495: bipush 10
+    //   497: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    //   500: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   503: ifeq +15 -> 518
+    //   506: aload_1
+    //   507: aload 10
+    //   509: aload 11
+    //   511: bipush 7
+    //   513: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    //   516: astore 5
+    //   518: aload 5
+    //   520: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   523: ifeq +30 -> 553
+    //   526: aload 12
+    //   528: getfield 714	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_e_of_type_Int	I
+    //   531: iconst_1
+    //   532: if_icmpeq +561 -> 1093
+    //   535: aload_1
+    //   536: aload 11
+    //   538: bipush 7
+    //   540: invokevirtual 717	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;
+    //   543: astore_0
+    //   544: aload_1
+    //   545: aload_0
+    //   546: aload_2
+    //   547: bipush 7
+    //   549: invokevirtual 720	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;I)Landroid/graphics/Bitmap;
+    //   552: pop
+    //   553: aload 9
+    //   555: astore_0
+    //   556: aload 12
+    //   558: getfield 264	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_a_of_type_Int	I
+    //   561: getstatic 638	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_b_of_type_Int	I
+    //   564: if_icmpne +73 -> 637
+    //   567: aload 8
+    //   569: astore 5
+    //   571: iload_3
     //   572: ifeq +15 -> 587
     //   575: aload_1
     //   576: aload 10
     //   578: aload 11
-    //   580: bipush 7
-    //   582: invokevirtual 706	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    //   580: bipush 18
+    //   582: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
     //   585: astore 5
     //   587: aload 5
-    //   589: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   592: ifeq +30 -> 622
-    //   595: aload 12
-    //   597: getfield 707	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_e_of_type_Int	I
-    //   600: iconst_1
-    //   601: if_icmpeq +593 -> 1194
-    //   604: aload_1
-    //   605: aload 11
-    //   607: bipush 7
-    //   609: invokevirtual 710	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;
-    //   612: astore_0
-    //   613: aload_1
-    //   614: aload_0
-    //   615: aload_2
-    //   616: bipush 7
-    //   618: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;I)Landroid/graphics/Bitmap;
-    //   621: pop
-    //   622: aload 9
-    //   624: astore_0
-    //   625: aload 12
-    //   627: getfield 264	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_a_of_type_Int	I
-    //   630: getstatic 635	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_b_of_type_Int	I
-    //   633: if_icmpne +73 -> 706
-    //   636: aload 8
-    //   638: astore 5
-    //   640: iload_3
-    //   641: ifeq +15 -> 656
-    //   644: aload_1
-    //   645: aload 10
-    //   647: aload 11
-    //   649: bipush 18
-    //   651: invokevirtual 706	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
-    //   654: astore 5
-    //   656: aload 5
-    //   658: astore_0
-    //   659: aload 5
-    //   661: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   664: ifeq +42 -> 706
-    //   667: aload 11
-    //   669: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   672: ifne +23 -> 695
-    //   675: aload 5
-    //   677: astore_0
-    //   678: aload_1
-    //   679: ldc_w 262
-    //   682: aload 11
-    //   684: bipush 16
-    //   686: invokevirtual 706	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
-    //   689: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   692: ifeq +14 -> 706
-    //   695: aload_1
-    //   696: aload 10
-    //   698: aload 11
-    //   700: bipush 15
-    //   702: invokevirtual 706	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
-    //   705: astore_0
-    //   706: aload_0
-    //   707: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   710: ifeq +30 -> 740
-    //   713: aload 12
-    //   715: getfield 707	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_e_of_type_Int	I
-    //   718: iconst_1
-    //   719: if_icmpeq +491 -> 1210
-    //   722: aload_1
-    //   723: aload 11
-    //   725: bipush 15
-    //   727: invokevirtual 710	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;
-    //   730: astore_0
-    //   731: aload_1
-    //   732: aload_0
-    //   733: aload_2
-    //   734: bipush 15
-    //   736: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;I)Landroid/graphics/Bitmap;
-    //   739: pop
-    //   740: aload 7
-    //   742: ifnull +42 -> 784
-    //   745: aload 7
-    //   747: getfield 299	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   750: ifnull +34 -> 784
-    //   753: aload 7
-    //   755: getfield 398	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:jdField_a_of_type_Boolean	Z
-    //   758: ifne +26 -> 784
-    //   761: aload 7
-    //   763: getfield 715	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:c	Z
-    //   766: ifne +18 -> 784
-    //   769: aload_1
-    //   770: aload 7
-    //   772: getfield 299	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   775: ldc_w 262
-    //   778: aload 11
-    //   780: iconst_5
-    //   781: invokevirtual 718	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)V
-    //   784: aload 6
-    //   786: ifnull -767 -> 19
-    //   789: aload 7
-    //   791: getfield 299	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   794: ifnonnull +11 -> 805
-    //   797: aload 7
-    //   799: getfield 715	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:c	Z
-    //   802: ifeq -783 -> 19
-    //   805: aload 7
-    //   807: getfield 719	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:jdField_b_of_type_Boolean	Z
-    //   810: ifeq +416 -> 1226
-    //   813: aload_1
-    //   814: aload 6
-    //   816: aload 10
-    //   818: aload 11
-    //   820: bipush 12
-    //   822: invokevirtual 718	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)V
-    //   825: goto -806 -> 19
-    //   828: aload 12
-    //   830: getfield 243	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo;
-    //   833: astore 6
-    //   835: aload 6
-    //   837: ifnull +415 -> 1252
-    //   840: aload 6
-    //   842: getfield 722	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo:jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$AnimConfig;
-    //   845: ifnull +407 -> 1252
-    //   848: aload_2
-    //   849: getfield 723	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$AnimConfig;
-    //   852: ifnull +26 -> 878
-    //   855: aload_2
-    //   856: getfield 723	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$AnimConfig;
-    //   859: getfield 726	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$AnimConfig:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   862: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   865: ifne +13 -> 878
-    //   868: invokestatic 731	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory:a	()Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory;
-    //   871: aload_2
-    //   872: invokevirtual 734	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory:a	(Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;)V
-    //   875: goto -856 -> 19
-    //   878: aload 6
-    //   880: getfield 735	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   883: aconst_null
-    //   884: aload 6
-    //   886: getfield 736	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo:f	I
-    //   889: aload 6
-    //   891: getfield 737	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo:jdField_d_of_type_Int	I
-    //   894: iconst_0
-    //   895: invokestatic 267	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
-    //   898: astore 7
-    //   900: aload 7
-    //   902: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   905: ifne +13 -> 918
-    //   908: new 620	java/io/File
-    //   911: dup
-    //   912: aload 7
-    //   914: invokespecial 740	java/io/File:<init>	(Ljava/lang/String;)V
-    //   917: astore_0
-    //   918: aload_0
-    //   919: ifnonnull +34 -> 953
-    //   922: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   925: iconst_2
-    //   926: new 44	java/lang/StringBuilder
-    //   929: dup
-    //   930: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   933: ldc_w 742
-    //   936: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   939: aload 7
-    //   941: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   944: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   947: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   950: goto -931 -> 19
-    //   953: aload_0
-    //   954: invokevirtual 745	java/io/File:exists	()Z
-    //   957: ifeq +289 -> 1246
-    //   960: aload_0
-    //   961: invokevirtual 748	java/io/File:isFile	()Z
-    //   964: ifeq +282 -> 1246
-    //   967: aload 12
-    //   969: aload_2
-    //   970: aload 7
-    //   972: iconst_0
-    //   973: invokestatic 751	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo;Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;Ljava/lang/String;Z)Z
-    //   976: istore 4
-    //   978: invokestatic 253	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   981: ifne +8 -> 989
-    //   984: iload 4
-    //   986: ifne +276 -> 1262
-    //   989: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   992: iconst_2
-    //   993: new 44	java/lang/StringBuilder
-    //   996: dup
-    //   997: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   1000: ldc_w 753
-    //   1003: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1006: iload 4
-    //   1008: invokevirtual 756	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1011: ldc_w 758
-    //   1014: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1017: aload 7
-    //   1019: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1022: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1025: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1028: goto +234 -> 1262
-    //   1031: aload_1
-    //   1032: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   1035: astore_0
-    //   1036: aload_0
-    //   1037: monitorenter
-    //   1038: aload_1
-    //   1039: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   1042: aload_2
-    //   1043: getfield 669	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1046: invokeinterface 673 2 0
-    //   1051: ifne +18 -> 1069
-    //   1054: aload_1
-    //   1055: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   1058: aload_2
-    //   1059: getfield 669	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1062: aload_2
-    //   1063: invokeinterface 674 3 0
-    //   1068: pop
-    //   1069: aload_0
-    //   1070: monitorexit
-    //   1071: invokestatic 253	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1074: ifeq +56 -> 1130
-    //   1077: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   1080: iconst_2
-    //   1081: new 44	java/lang/StringBuilder
-    //   1084: dup
-    //   1085: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   1088: ldc_w 760
-    //   1091: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1094: aload 10
-    //   1096: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1099: ldc_w 762
-    //   1102: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1105: iload 4
-    //   1107: invokevirtual 756	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1110: ldc_w 764
-    //   1113: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1116: aload 6
-    //   1118: getfield 765	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   1121: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1124: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1127: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1130: aload 5
-    //   1132: ldc2_w 685
-    //   1135: aload 10
-    //   1137: aload_2
-    //   1138: getfield 669	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1141: invokevirtual 689	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:a	(JLjava/lang/String;Ljava/lang/String;)V
-    //   1144: goto -1125 -> 19
-    //   1147: astore_1
-    //   1148: aload_0
-    //   1149: monitorexit
-    //   1150: aload_1
-    //   1151: athrow
-    //   1152: new 296	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap
-    //   1155: dup
-    //   1156: invokespecial 766	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:<init>	()V
-    //   1159: astore_0
-    //   1160: aload_0
-    //   1161: iconst_1
-    //   1162: putfield 715	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:c	Z
-    //   1165: goto -667 -> 498
-    //   1168: aload_2
-    //   1169: aload 5
-    //   1171: aconst_null
-    //   1172: invokestatic 294	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   1175: putfield 767	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   1178: invokestatic 731	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory:a	()Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory;
-    //   1181: aload_2
-    //   1182: invokevirtual 734	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory:a	(Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;)V
-    //   1185: aconst_null
-    //   1186: astore 6
-    //   1188: aconst_null
-    //   1189: astore 7
-    //   1191: goto -680 -> 511
-    //   1194: new 296	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap
-    //   1197: dup
-    //   1198: invokespecial 766	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:<init>	()V
-    //   1201: astore_0
-    //   1202: aload_0
-    //   1203: iconst_1
-    //   1204: putfield 715	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:c	Z
-    //   1207: goto -594 -> 613
-    //   1210: new 296	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap
-    //   1213: dup
-    //   1214: invokespecial 766	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:<init>	()V
-    //   1217: astore_0
-    //   1218: aload_0
-    //   1219: iconst_1
-    //   1220: putfield 715	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:c	Z
-    //   1223: goto -492 -> 731
-    //   1226: aload_1
-    //   1227: aload 6
-    //   1229: aload 10
-    //   1231: aload 11
-    //   1233: bipush 6
-    //   1235: invokevirtual 718	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)V
-    //   1238: goto -1219 -> 19
-    //   1241: aconst_null
-    //   1242: astore_0
-    //   1243: goto -706 -> 537
-    //   1246: iconst_0
-    //   1247: istore 4
-    //   1249: goto -218 -> 1031
-    //   1252: aconst_null
-    //   1253: astore_0
-    //   1254: goto -832 -> 422
-    //   1257: iconst_0
-    //   1258: istore_3
-    //   1259: goto -863 -> 396
-    //   1262: iload 4
-    //   1264: ifne -1245 -> 19
-    //   1267: iconst_1
-    //   1268: istore 4
-    //   1270: goto -239 -> 1031
+    //   589: astore_0
+    //   590: aload 5
+    //   592: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   595: ifeq +42 -> 637
+    //   598: aload 11
+    //   600: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   603: ifne +23 -> 626
+    //   606: aload 5
+    //   608: astore_0
+    //   609: aload_1
+    //   610: ldc_w 262
+    //   613: aload 11
+    //   615: bipush 16
+    //   617: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    //   620: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   623: ifeq +14 -> 637
+    //   626: aload_1
+    //   627: aload 10
+    //   629: aload 11
+    //   631: bipush 15
+    //   633: invokevirtual 713	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    //   636: astore_0
+    //   637: aload_0
+    //   638: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   641: ifeq +30 -> 671
+    //   644: aload 12
+    //   646: getfield 714	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_e_of_type_Int	I
+    //   649: iconst_1
+    //   650: if_icmpeq +459 -> 1109
+    //   653: aload_1
+    //   654: aload 11
+    //   656: bipush 15
+    //   658: invokevirtual 717	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;I)Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;
+    //   661: astore_0
+    //   662: aload_1
+    //   663: aload_0
+    //   664: aload_2
+    //   665: bipush 15
+    //   667: invokevirtual 720	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Lcom/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap;Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;I)Landroid/graphics/Bitmap;
+    //   670: pop
+    //   671: aload 7
+    //   673: ifnull +42 -> 715
+    //   676: aload 7
+    //   678: getfield 299	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   681: ifnull +34 -> 715
+    //   684: aload 7
+    //   686: getfield 401	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:jdField_a_of_type_Boolean	Z
+    //   689: ifne +26 -> 715
+    //   692: aload 7
+    //   694: getfield 722	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:c	Z
+    //   697: ifne +18 -> 715
+    //   700: aload_1
+    //   701: aload 7
+    //   703: getfield 299	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   706: ldc_w 262
+    //   709: aload 11
+    //   711: iconst_5
+    //   712: invokevirtual 725	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)V
+    //   715: aload 6
+    //   717: ifnull -698 -> 19
+    //   720: aload 7
+    //   722: getfield 299	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   725: ifnonnull +11 -> 736
+    //   728: aload 7
+    //   730: getfield 722	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:c	Z
+    //   733: ifeq -714 -> 19
+    //   736: aload 7
+    //   738: getfield 726	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:jdField_b_of_type_Boolean	Z
+    //   741: ifeq +384 -> 1125
+    //   744: aload_1
+    //   745: aload 6
+    //   747: aload 10
+    //   749: aload 11
+    //   751: bipush 12
+    //   753: invokevirtual 725	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)V
+    //   756: goto -737 -> 19
+    //   759: aload 12
+    //   761: getfield 243	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo:jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo;
+    //   764: astore 6
+    //   766: aload 6
+    //   768: ifnull +383 -> 1151
+    //   771: aload 6
+    //   773: getfield 729	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo:jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$AnimConfig;
+    //   776: ifnull +375 -> 1151
+    //   779: aload_2
+    //   780: getfield 730	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$AnimConfig;
+    //   783: ifnull +26 -> 809
+    //   786: aload_2
+    //   787: getfield 730	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig	Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$AnimConfig;
+    //   790: getfield 733	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$AnimConfig:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   793: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   796: ifne +13 -> 809
+    //   799: invokestatic 738	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory:a	()Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory;
+    //   802: aload_2
+    //   803: invokevirtual 741	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory:a	(Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;)V
+    //   806: goto -787 -> 19
+    //   809: aload 6
+    //   811: getfield 742	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   814: aconst_null
+    //   815: aload 6
+    //   817: getfield 743	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo:f	I
+    //   820: aload 6
+    //   822: getfield 744	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo:jdField_d_of_type_Int	I
+    //   825: iconst_0
+    //   826: invokestatic 267	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   829: astore 7
+    //   831: aload 7
+    //   833: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   836: ifne +13 -> 849
+    //   839: new 623	java/io/File
+    //   842: dup
+    //   843: aload 7
+    //   845: invokespecial 747	java/io/File:<init>	(Ljava/lang/String;)V
+    //   848: astore_0
+    //   849: aload_0
+    //   850: ifnonnull +34 -> 884
+    //   853: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   856: iconst_2
+    //   857: new 44	java/lang/StringBuilder
+    //   860: dup
+    //   861: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   864: ldc_w 749
+    //   867: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   870: aload 7
+    //   872: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   875: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   878: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   881: goto -862 -> 19
+    //   884: aload_0
+    //   885: invokevirtual 752	java/io/File:exists	()Z
+    //   888: ifeq +257 -> 1145
+    //   891: aload_0
+    //   892: invokevirtual 755	java/io/File:isFile	()Z
+    //   895: ifeq +250 -> 1145
+    //   898: aload 12
+    //   900: aload_2
+    //   901: aload 7
+    //   903: iconst_0
+    //   904: invokestatic 758	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketTemplateInfo;Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;Ljava/lang/String;Z)Z
+    //   907: istore 4
+    //   909: invokestatic 253	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   912: ifne +8 -> 920
+    //   915: iload 4
+    //   917: ifne +244 -> 1161
+    //   920: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   923: iconst_2
+    //   924: new 44	java/lang/StringBuilder
+    //   927: dup
+    //   928: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   931: ldc_w 760
+    //   934: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   937: iload 4
+    //   939: invokevirtual 763	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   942: ldc_w 765
+    //   945: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   948: aload 7
+    //   950: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   953: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   956: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   959: goto +202 -> 1161
+    //   962: aload_1
+    //   963: getfield 216	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   966: aload_2
+    //   967: getfield 673	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   970: aload_2
+    //   971: invokevirtual 676	java/util/concurrent/ConcurrentHashMap:putIfAbsent	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   974: pop
+    //   975: invokestatic 253	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   978: ifeq +56 -> 1034
+    //   981: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   984: iconst_2
+    //   985: new 44	java/lang/StringBuilder
+    //   988: dup
+    //   989: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   992: ldc_w 767
+    //   995: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   998: aload 10
+    //   1000: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1003: ldc_w 769
+    //   1006: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1009: iload 4
+    //   1011: invokevirtual 763	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1014: ldc_w 771
+    //   1017: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1020: aload 6
+    //   1022: getfield 772	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$DecorateInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   1025: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1028: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1031: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1034: aload 5
+    //   1036: ldc2_w 692
+    //   1039: aload 10
+    //   1041: aload_2
+    //   1042: getfield 673	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1045: invokevirtual 696	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:a	(JLjava/lang/String;Ljava/lang/String;)V
+    //   1048: goto -1029 -> 19
+    //   1051: new 296	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap
+    //   1054: dup
+    //   1055: invokespecial 773	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:<init>	()V
+    //   1058: astore_0
+    //   1059: aload_0
+    //   1060: iconst_1
+    //   1061: putfield 722	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:c	Z
+    //   1064: goto -635 -> 429
+    //   1067: aload_2
+    //   1068: aload 5
+    //   1070: aconst_null
+    //   1071: invokestatic 294	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   1074: putfield 774	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   1077: invokestatic 738	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory:a	()Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory;
+    //   1080: aload_2
+    //   1081: invokevirtual 741	com/tencent/mobileqq/activity/aio/CustomizeStrategyFactory:a	(Lcom/tencent/mobileqq/activity/aio/CustomizeStrategyFactory$RedPacketInfo;)V
+    //   1084: aconst_null
+    //   1085: astore 6
+    //   1087: aconst_null
+    //   1088: astore 7
+    //   1090: goto -648 -> 442
+    //   1093: new 296	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap
+    //   1096: dup
+    //   1097: invokespecial 773	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:<init>	()V
+    //   1100: astore_0
+    //   1101: aload_0
+    //   1102: iconst_1
+    //   1103: putfield 722	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:c	Z
+    //   1106: goto -562 -> 544
+    //   1109: new 296	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap
+    //   1112: dup
+    //   1113: invokespecial 773	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:<init>	()V
+    //   1116: astore_0
+    //   1117: aload_0
+    //   1118: iconst_1
+    //   1119: putfield 722	com/tencent/mobileqq/app/IndividualRedPacketManager$FontBitmap:c	Z
+    //   1122: goto -460 -> 662
+    //   1125: aload_1
+    //   1126: aload 6
+    //   1128: aload 10
+    //   1130: aload 11
+    //   1132: bipush 6
+    //   1134: invokevirtual 725	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;I)V
+    //   1137: goto -1118 -> 19
+    //   1140: aconst_null
+    //   1141: astore_0
+    //   1142: goto -674 -> 468
+    //   1145: iconst_0
+    //   1146: istore 4
+    //   1148: goto -186 -> 962
+    //   1151: aconst_null
+    //   1152: astore_0
+    //   1153: goto -800 -> 353
+    //   1156: iconst_0
+    //   1157: istore_3
+    //   1158: goto -831 -> 327
+    //   1161: iload 4
+    //   1163: ifne -1144 -> 19
+    //   1166: iconst_1
+    //   1167: istore 4
+    //   1169: goto -207 -> 962
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1273	1	paramIndividualRedPacketManager	IndividualRedPacketManager
-    //   0	1273	2	paramRedPacketInfo	CustomizeStrategyFactory.RedPacketInfo
-    //   395	864	3	i1	int
-    //   976	293	4	bool	boolean
-    //   39	1131	5	localObject1	Object
-    //   506	722	6	localObject2	Object
-    //   509	681	7	localObject3	Object
-    //   6	631	8	localObject4	Object
-    //   1	622	9	localObject5	Object
-    //   27	1203	10	str1	String
-    //   33	1199	11	str2	String
-    //   49	919	12	localRedPacketTemplateInfo	IndividualRedPacketResDownloader.RedPacketTemplateInfo
+    //   0	1172	1	paramIndividualRedPacketManager	IndividualRedPacketManager
+    //   0	1172	2	paramRedPacketInfo	CustomizeStrategyFactory.RedPacketInfo
+    //   326	832	3	i1	int
+    //   907	261	4	bool	boolean
+    //   39	1030	5	localObject1	Object
+    //   437	690	6	localObject2	Object
+    //   440	649	7	localObject3	Object
+    //   6	562	8	localObject4	Object
+    //   1	553	9	localObject5	Object
+    //   27	1102	10	str1	String
+    //   33	1098	11	str2	String
+    //   49	850	12	localRedPacketTemplateInfo	IndividualRedPacketResDownloader.RedPacketTemplateInfo
     // Exception table:
     //   from	to	target	type
-    //   23	51	326	finally
-    //   56	80	326	finally
-    //   80	144	326	finally
-    //   144	151	326	finally
-    //   253	261	326	finally
-    //   309	323	326	finally
-    //   335	337	326	finally
-    //   368	370	326	finally
-    //   370	394	326	finally
-    //   396	407	326	finally
-    //   411	422	326	finally
-    //   425	440	326	finally
-    //   443	460	326	finally
-    //   460	472	326	finally
-    //   472	498	326	finally
-    //   498	508	326	finally
-    //   511	522	326	finally
-    //   526	537	326	finally
-    //   540	555	326	finally
-    //   558	575	326	finally
-    //   575	587	326	finally
-    //   587	613	326	finally
-    //   613	622	326	finally
-    //   625	636	326	finally
-    //   644	656	326	finally
-    //   659	675	326	finally
-    //   678	695	326	finally
-    //   695	706	326	finally
-    //   706	731	326	finally
-    //   731	740	326	finally
-    //   745	784	326	finally
-    //   789	805	326	finally
-    //   805	825	326	finally
-    //   828	835	326	finally
-    //   840	875	326	finally
-    //   878	900	326	finally
-    //   900	918	326	finally
-    //   922	950	326	finally
-    //   953	984	326	finally
-    //   989	1028	326	finally
-    //   1031	1038	326	finally
-    //   1071	1130	326	finally
-    //   1130	1144	326	finally
-    //   1150	1152	326	finally
-    //   1152	1165	326	finally
-    //   1168	1185	326	finally
-    //   1194	1207	326	finally
-    //   1210	1223	326	finally
-    //   1226	1238	326	finally
-    //   151	182	332	finally
-    //   182	251	332	finally
-    //   251	253	332	finally
-    //   333	335	332	finally
-    //   261	307	365	finally
-    //   307	309	365	finally
-    //   337	362	365	finally
-    //   366	368	365	finally
-    //   1038	1069	1147	finally
-    //   1069	1071	1147	finally
-    //   1148	1150	1147	finally
+    //   23	51	262	finally
+    //   56	80	262	finally
+    //   80	144	262	finally
+    //   144	197	262	finally
+    //   245	259	262	finally
+    //   299	301	262	finally
+    //   301	325	262	finally
+    //   327	338	262	finally
+    //   342	353	262	finally
+    //   356	371	262	finally
+    //   374	391	262	finally
+    //   391	403	262	finally
+    //   403	429	262	finally
+    //   429	439	262	finally
+    //   442	453	262	finally
+    //   457	468	262	finally
+    //   471	486	262	finally
+    //   489	506	262	finally
+    //   506	518	262	finally
+    //   518	544	262	finally
+    //   544	553	262	finally
+    //   556	567	262	finally
+    //   575	587	262	finally
+    //   590	606	262	finally
+    //   609	626	262	finally
+    //   626	637	262	finally
+    //   637	662	262	finally
+    //   662	671	262	finally
+    //   676	715	262	finally
+    //   720	736	262	finally
+    //   736	756	262	finally
+    //   759	766	262	finally
+    //   771	806	262	finally
+    //   809	831	262	finally
+    //   831	849	262	finally
+    //   853	881	262	finally
+    //   884	915	262	finally
+    //   920	959	262	finally
+    //   962	1034	262	finally
+    //   1034	1048	262	finally
+    //   1051	1064	262	finally
+    //   1067	1084	262	finally
+    //   1093	1106	262	finally
+    //   1109	1122	262	finally
+    //   1125	1137	262	finally
+    //   197	243	296	finally
+    //   243	245	296	finally
+    //   268	293	296	finally
+    //   297	299	296	finally
   }
   
   static boolean a(IndividualRedPacketResDownloader.RedPacketTemplateInfo paramRedPacketTemplateInfo, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, String paramString, boolean paramBoolean)
@@ -1723,6 +1663,7 @@ public class IndividualRedPacketManager
     }
     String str3;
     long l1;
+    IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo;
     for (;;)
     {
       str3 = "0";
@@ -1730,8 +1671,8 @@ public class IndividualRedPacketManager
         str3 = "1";
       }
       l1 = System.currentTimeMillis();
-      ??? = a().a(paramRedPacketInfo.templateId, true);
-      if (??? != null) {
+      localRedPacketTemplateInfo = a().a(paramRedPacketInfo.templateId, true);
+      if (localRedPacketTemplateInfo != null) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -1751,11 +1692,11 @@ public class IndividualRedPacketManager
         str2 = "";
       }
     }
-    Object localObject1;
+    Object localObject;
     if (6 == paramInt) {
-      localObject1 = ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)???).jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
+      localObject = localRedPacketTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
     }
-    while (localObject1 == null)
+    while (localObject == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e(jdField_d_of_type_JavaLangString, 2, "createRedPacketImg decorateInfo = null");
@@ -1763,90 +1704,85 @@ public class IndividualRedPacketManager
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", str1, str1, 0, 0, str3, "0", "", str2);
       return null;
       if (7 == paramInt) {
-        localObject1 = ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)???).jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
+        localObject = localRedPacketTemplateInfo.jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
       } else {
-        localObject1 = ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)???).jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
+        localObject = localRedPacketTemplateInfo.jdField_c_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
       }
     }
-    if (!IndividualRedPacketResDownloader.a((IndividualRedPacketResDownloader.RedPacketResInfo)localObject1))
+    if (!IndividualRedPacketResDownloader.a((IndividualRedPacketResDownloader.RedPacketResInfo)localObject))
     {
-      if (((IndividualRedPacketResDownloader.DecorateInfo)localObject1).f == 2) {
+      if (((IndividualRedPacketResDownloader.DecorateInfo)localObject).f == 2) {
         paramFontBitmap = paramRedPacketInfo.jdField_b_of_type_JavaLangString;
       }
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      for (;;)
       {
-        for (;;)
-        {
-          if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramFontBitmap)) {
-            this.jdField_a_of_type_JavaUtilMap.put(paramFontBitmap, paramRedPacketInfo);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_d_of_type_JavaLangString, 2, "createRedPacketImg id = " + paramRedPacketInfo.templateId + " content = " + paramRedPacketInfo.jdField_a_of_type_JavaLangString + " not exists!");
-          }
-          a().a(16L, ((IndividualRedPacketResDownloader.DecorateInfo)localObject1).jdField_d_of_type_JavaLangString, paramRedPacketInfo.jdField_b_of_type_JavaLangString);
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_d_of_type_JavaLangString, 2, "createRedPacketImg BG not found,start download url : " + ((IndividualRedPacketResDownloader.DecorateInfo)localObject1).f + ", id=" + ((IndividualRedPacketResDownloader.DecorateInfo)localObject1).jdField_d_of_type_JavaLangString);
-          }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", str1, str1, 0, 0, str3, "0", "", str2);
-          return null;
-          if (((IndividualRedPacketResDownloader.DecorateInfo)localObject1).f != 3) {
-            break;
-          }
-          paramFontBitmap = paramRedPacketInfo.jdField_b_of_type_JavaLangString + "_tp";
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramFontBitmap, paramRedPacketInfo);
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_d_of_type_JavaLangString, 2, "createRedPacketImg id = " + paramRedPacketInfo.templateId + " content = " + paramRedPacketInfo.jdField_a_of_type_JavaLangString + " not exists!");
         }
-        paramFontBitmap = paramRedPacketInfo.jdField_b_of_type_JavaLangString + "_send";
+        a().a(16L, ((IndividualRedPacketResDownloader.DecorateInfo)localObject).jdField_d_of_type_JavaLangString, paramRedPacketInfo.jdField_b_of_type_JavaLangString);
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_d_of_type_JavaLangString, 2, "createRedPacketImg BG not found,start download url : " + ((IndividualRedPacketResDownloader.DecorateInfo)localObject).f + ", id=" + ((IndividualRedPacketResDownloader.DecorateInfo)localObject).jdField_d_of_type_JavaLangString);
+        }
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", str1, str1, 0, 0, str3, "0", "", str2);
+        return null;
+        if (((IndividualRedPacketResDownloader.DecorateInfo)localObject).f == 3) {
+          paramFontBitmap = paramRedPacketInfo.jdField_b_of_type_JavaLangString + "_tp";
+        } else {
+          paramFontBitmap = paramRedPacketInfo.jdField_b_of_type_JavaLangString + "_send";
+        }
       }
     }
-    label546:
+    label513:
     long l2;
-    if (((IndividualRedPacketResDownloader.RedPacketTemplateInfo)???).jdField_a_of_type_Int == IndividualRedPacketResDownloader.RedPacketTemplateInfo.jdField_b_of_type_Int)
+    if (localRedPacketTemplateInfo.jdField_a_of_type_Int == IndividualRedPacketResDownloader.RedPacketTemplateInfo.jdField_b_of_type_Int)
     {
-      localObject1 = a(paramFontBitmap, paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, paramInt);
+      localObject = a(paramFontBitmap, paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, paramInt);
       l2 = System.currentTimeMillis();
-      if (localObject1 == null) {
-        break label757;
+      if (localObject == null) {
+        break label724;
       }
       if (paramInt != 6) {
-        break label655;
+        break label622;
       }
-      paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
-      label568:
+      paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
+      label535:
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", str1, str1, 0, 0, str3, "1", String.valueOf(l2 - l1), str2);
     }
     for (;;)
     {
-      paramFontBitmap = (IndividualRedPacketManager.FontBitmap)localObject1;
+      paramFontBitmap = (IndividualRedPacketManager.FontBitmap)localObject;
       if (paramInt != 6) {
         break;
       }
       CustomizeStrategyFactory.a().a(paramRedPacketInfo);
-      return localObject1;
-      localObject1 = a(a(paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, paramInt, ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)???).jdField_d_of_type_Int, ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)???).jdField_a_of_type_Int), null);
-      break label546;
-      label655:
+      return localObject;
+      localObject = a(a(paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, paramInt, localRedPacketTemplateInfo.jdField_d_of_type_Int, localRedPacketTemplateInfo.jdField_a_of_type_Int), null);
+      break label513;
+      label622:
       if (paramInt == 7)
       {
         if (paramFontBitmap.jdField_b_of_type_Boolean)
         {
-          a((Bitmap)localObject1, paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, 13);
-          break label568;
+          a((Bitmap)localObject, paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, 13);
+          break label535;
         }
-        a((Bitmap)localObject1, paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, 7);
-        break label568;
+        a((Bitmap)localObject, paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, 7);
+        break label535;
       }
       if (paramInt != 15) {
-        break label568;
+        break label535;
       }
       if (paramFontBitmap.jdField_b_of_type_Boolean)
       {
-        a((Bitmap)localObject1, paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, 18);
-        break label568;
+        a((Bitmap)localObject, paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, 18);
+        break label535;
       }
-      a((Bitmap)localObject1, paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, 15);
-      break label568;
-      label757:
+      a((Bitmap)localObject, paramRedPacketInfo.templateId, paramRedPacketInfo.jdField_a_of_type_JavaLangString, 15);
+      break label535;
+      label724:
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_d_of_type_JavaLangString, 2, "createRedPacketImg BG combine == null, templateinfo.type = " + ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)???).jdField_a_of_type_Int);
+        QLog.d(jdField_d_of_type_JavaLangString, 2, "createRedPacketImg BG combine == null, templateinfo.type = " + localRedPacketTemplateInfo.jdField_a_of_type_Int);
       }
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", str1, str1, 0, 0, str3, "0", String.valueOf(l2 - l1), str2);
     }
@@ -1869,24 +1805,24 @@ public class IndividualRedPacketManager
     //   16: monitorenter
     //   17: aload_0
     //   18: getfield 168	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   21: invokevirtual 882	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   21: invokevirtual 889	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   24: ifne +118 -> 142
     //   27: aload_0
     //   28: getfield 168	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   31: iconst_1
     //   32: invokevirtual 166	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   35: invokestatic 853	java/lang/System:currentTimeMillis	()J
+    //   35: invokestatic 860	java/lang/System:currentTimeMillis	()J
     //   38: lstore_3
     //   39: aload_0
     //   40: getfield 160	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
     //   43: iconst_1
-    //   44: ldc_w 883
-    //   47: invokevirtual 887	com/etrump/mixlayout/ETEngine:initEngine	(II)Z
+    //   44: ldc_w 890
+    //   47: invokevirtual 894	com/etrump/mixlayout/ETEngine:initEngine	(II)Z
     //   50: ifeq +161 -> 211
     //   53: aload_0
     //   54: invokevirtual 233	com/tencent/mobileqq/app/IndividualRedPacketManager:a	()Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader;
-    //   57: getfield 890	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketResInfo;
-    //   60: invokestatic 862	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:a	(Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketResInfo;)Z
+    //   57: getfield 897	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketResInfo;
+    //   60: invokestatic 869	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:a	(Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketResInfo;)Z
     //   63: ifeq +24 -> 87
     //   66: aload_0
     //   67: getfield 160	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
@@ -1898,13 +1834,13 @@ public class IndividualRedPacketManager
     //   76: invokestatic 267	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   79: getstatic 66	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_Int	I
     //   82: iconst_1
-    //   83: invokevirtual 894	com/etrump/mixlayout/ETEngine:native_loadFont	(Ljava/lang/String;IZ)Z
+    //   83: invokevirtual 901	com/etrump/mixlayout/ETEngine:native_loadFont	(Ljava/lang/String;IZ)Z
     //   86: pop
     //   87: aload_0
     //   88: getfield 163	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   91: iconst_1
     //   92: invokevirtual 166	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   95: invokestatic 853	java/lang/System:currentTimeMillis	()J
+    //   95: invokestatic 860	java/lang/System:currentTimeMillis	()J
     //   98: lstore 5
     //   100: invokestatic 253	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   103: ifeq +39 -> 142
@@ -1913,35 +1849,35 @@ public class IndividualRedPacketManager
     //   110: new 44	java/lang/StringBuilder
     //   113: dup
     //   114: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   117: ldc_w 896
+    //   117: ldc_w 903
     //   120: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   123: lload 5
     //   125: lload_3
     //   126: lsub
-    //   127: invokevirtual 899	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   130: ldc_w 901
+    //   127: invokevirtual 906	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   130: ldc_w 908
     //   133: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   136: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   139: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   142: aload_0
     //   143: getfield 163	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   146: invokevirtual 882	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   146: invokevirtual 889	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   149: ifeq +10 -> 159
     //   152: aload_1
-    //   153: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   153: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   156: ifeq +150 -> 306
     //   159: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   162: iconst_1
     //   163: new 44	java/lang/StringBuilder
     //   166: dup
     //   167: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   170: ldc_w 903
+    //   170: ldc_w 910
     //   173: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: aload_0
     //   177: getfield 163	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   180: invokevirtual 882	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   183: invokevirtual 756	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   186: ldc_w 905
+    //   180: invokevirtual 889	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   183: invokevirtual 763	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   186: ldc_w 912
     //   189: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   192: aload_1
     //   193: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1957,12 +1893,12 @@ public class IndividualRedPacketManager
     //   210: areturn
     //   211: aload_0
     //   212: getfield 160	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   215: getfield 908	com/etrump/mixlayout/ETEngine:isEngineInited	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   215: getfield 915	com/etrump/mixlayout/ETEngine:isEngineInited	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   218: iconst_0
     //   219: iconst_1
-    //   220: invokevirtual 912	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   220: invokevirtual 919	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
     //   223: ifeq +7 -> 230
-    //   226: invokestatic 916	com/etrump/mixlayout/FontSoLoader:c	()Z
+    //   226: invokestatic 923	com/etrump/mixlayout/FontSoLoader:c	()Z
     //   229: pop
     //   230: aload_0
     //   231: getfield 163	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
@@ -1970,7 +1906,7 @@ public class IndividualRedPacketManager
     //   235: invokevirtual 166	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   238: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   241: iconst_1
-    //   242: ldc_w 918
+    //   242: ldc_w 925
     //   245: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   248: goto -106 -> 142
     //   251: astore 7
@@ -1983,10 +1919,10 @@ public class IndividualRedPacketManager
     //   265: new 44	java/lang/StringBuilder
     //   268: dup
     //   269: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   272: ldc_w 920
+    //   272: ldc_w 927
     //   275: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   278: aload 7
-    //   280: invokevirtual 921	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   280: invokevirtual 928	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   283: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   286: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   289: invokestatic 258	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
@@ -2003,12 +1939,12 @@ public class IndividualRedPacketManager
     //   305: athrow
     //   306: aload_0
     //   307: invokevirtual 233	com/tencent/mobileqq/app/IndividualRedPacketManager:a	()Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader;
-    //   310: getfield 890	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketResInfo;
-    //   313: invokestatic 862	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:a	(Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketResInfo;)Z
+    //   310: getfield 897	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$RedPacketResInfo	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketResInfo;
+    //   313: invokestatic 869	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:a	(Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$RedPacketResInfo;)Z
     //   316: ifne +21 -> 337
     //   319: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   322: iconst_1
-    //   323: ldc_w 923
+    //   323: ldc_w 930
     //   326: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   329: aload 11
     //   331: monitorexit
@@ -2016,10 +1952,10 @@ public class IndividualRedPacketManager
     //   333: astore_1
     //   334: goto -127 -> 207
     //   337: aload_0
-    //   338: getfield 925	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETFont	Lcom/etrump/mixlayout/ETFont;
+    //   338: getfield 932	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETFont	Lcom/etrump/mixlayout/ETFont;
     //   341: ifnonnull +32 -> 373
     //   344: aload_0
-    //   345: new 927	com/etrump/mixlayout/ETFont
+    //   345: new 934	com/etrump/mixlayout/ETFont
     //   348: dup
     //   349: getstatic 66	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_Int	I
     //   352: aconst_null
@@ -2030,13 +1966,13 @@ public class IndividualRedPacketManager
     //   360: invokestatic 267	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   363: aload_0
     //   364: getfield 79	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_Float	F
-    //   367: invokespecial 930	com/etrump/mixlayout/ETFont:<init>	(ILjava/lang/String;F)V
-    //   370: putfield 925	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETFont	Lcom/etrump/mixlayout/ETFont;
+    //   367: invokespecial 937	com/etrump/mixlayout/ETFont:<init>	(ILjava/lang/String;F)V
+    //   370: putfield 932	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETFont	Lcom/etrump/mixlayout/ETFont;
     //   373: aload_0
-    //   374: getfield 925	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETFont	Lcom/etrump/mixlayout/ETFont;
-    //   377: ldc_w 932
-    //   380: invokestatic 419	android/graphics/Color:parseColor	(Ljava/lang/String;)I
-    //   383: invokevirtual 933	com/etrump/mixlayout/ETFont:setColor	(I)V
+    //   374: getfield 932	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETFont	Lcom/etrump/mixlayout/ETFont;
+    //   377: ldc_w 939
+    //   380: invokestatic 422	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   383: invokevirtual 940	com/etrump/mixlayout/ETFont:setColor	(I)V
     //   386: iload_2
     //   387: ifeq +41 -> 428
     //   390: ldc_w 262
@@ -2047,11 +1983,11 @@ public class IndividualRedPacketManager
     //   397: invokestatic 267	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   400: astore 7
     //   402: aload 7
-    //   404: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   404: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   407: ifeq +36 -> 443
     //   410: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   413: iconst_1
-    //   414: ldc_w 935
+    //   414: ldc_w 942
     //   417: invokestatic 258	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   420: aload 11
     //   422: monitorexit
@@ -2066,10 +2002,10 @@ public class IndividualRedPacketManager
     //   435: invokestatic 267	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   438: astore 7
     //   440: goto -38 -> 402
-    //   443: new 620	java/io/File
+    //   443: new 623	java/io/File
     //   446: dup
     //   447: aload 7
-    //   449: invokespecial 740	java/io/File:<init>	(Ljava/lang/String;)V
+    //   449: invokespecial 747	java/io/File:<init>	(Ljava/lang/String;)V
     //   452: astore 7
     //   454: aload_0
     //   455: getfield 79	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_Float	F
@@ -2084,10 +2020,10 @@ public class IndividualRedPacketManager
     //   473: getfield 160	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
     //   476: aload_1
     //   477: iconst_0
-    //   478: invokevirtual 607	java/lang/String:charAt	(I)C
+    //   478: invokevirtual 610	java/lang/String:charAt	(I)C
     //   481: aload_0
-    //   482: getfield 925	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETFont	Lcom/etrump/mixlayout/ETFont;
-    //   485: invokevirtual 939	com/etrump/mixlayout/ETEngine:native_isPaintableChar	(CLcom/etrump/mixlayout/ETFont;)Z
+    //   482: getfield 932	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETFont	Lcom/etrump/mixlayout/ETFont;
+    //   485: invokevirtual 946	com/etrump/mixlayout/ETEngine:native_isPaintableChar	(CLcom/etrump/mixlayout/ETFont;)Z
     //   488: ifeq +22 -> 510
     //   491: aload_0
     //   492: getfield 160	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
@@ -2096,20 +2032,20 @@ public class IndividualRedPacketManager
     //   498: iconst_0
     //   499: iconst_0
     //   500: aload_0
-    //   501: getfield 925	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETFont	Lcom/etrump/mixlayout/ETFont;
-    //   504: invokevirtual 943	com/etrump/mixlayout/ETEngine:native_drawText	(Ljava/lang/String;Landroid/graphics/Bitmap;IILcom/etrump/mixlayout/ETFont;)Z
+    //   501: getfield 932	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_ComEtrumpMixlayoutETFont	Lcom/etrump/mixlayout/ETFont;
+    //   504: invokevirtual 950	com/etrump/mixlayout/ETEngine:native_drawText	(Ljava/lang/String;Landroid/graphics/Bitmap;IILcom/etrump/mixlayout/ETFont;)Z
     //   507: ifne +135 -> 642
     //   510: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   513: iconst_1
     //   514: new 44	java/lang/StringBuilder
     //   517: dup
     //   518: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   521: ldc_w 945
+    //   521: ldc_w 952
     //   524: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   527: aload_1
     //   528: iconst_0
-    //   529: invokevirtual 607	java/lang/String:charAt	(I)C
-    //   532: invokevirtual 948	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   529: invokevirtual 610	java/lang/String:charAt	(I)C
+    //   532: invokevirtual 955	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   535: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   538: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   541: aload 11
@@ -2123,37 +2059,37 @@ public class IndividualRedPacketManager
     //   554: new 44	java/lang/StringBuilder
     //   557: dup
     //   558: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   561: ldc_w 950
+    //   561: ldc_w 957
     //   564: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   567: aload_1
     //   568: invokevirtual 320	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   571: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   574: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   577: invokestatic 322	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   580: new 213	java/util/HashMap
+    //   580: new 324	java/util/HashMap
     //   583: dup
-    //   584: invokespecial 214	java/util/HashMap:<init>	()V
+    //   584: invokespecial 325	java/util/HashMap:<init>	()V
     //   587: astore_1
     //   588: aload_1
-    //   589: ldc_w 324
-    //   592: ldc_w 952
-    //   595: invokevirtual 330	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   589: ldc_w 327
+    //   592: ldc_w 959
+    //   595: invokevirtual 333	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   598: pop
-    //   599: getstatic 336	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   602: invokevirtual 337	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
-    //   605: invokestatic 342	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   608: getstatic 336	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   611: invokevirtual 346	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   599: getstatic 339	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   602: invokevirtual 340	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
+    //   605: invokestatic 345	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   608: getstatic 339	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   611: invokevirtual 349	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   614: checkcast 175	com/tencent/mobileqq/app/QQAppInterface
-    //   617: invokevirtual 349	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   620: ldc_w 351
+    //   617: invokevirtual 352	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   620: ldc_w 354
     //   623: iconst_0
     //   624: lconst_1
     //   625: lconst_0
     //   626: aload_1
     //   627: ldc_w 262
     //   630: iconst_0
-    //   631: invokevirtual 354	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   631: invokevirtual 357	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   634: aload 11
     //   636: monitorexit
     //   637: aconst_null
@@ -2165,26 +2101,26 @@ public class IndividualRedPacketManager
     //   648: ifnull +52 -> 700
     //   651: aload 10
     //   653: astore_1
-    //   654: new 954	java/io/BufferedOutputStream
+    //   654: new 961	java/io/BufferedOutputStream
     //   657: dup
-    //   658: new 956	java/io/FileOutputStream
+    //   658: new 963	java/io/FileOutputStream
     //   661: dup
     //   662: aload 7
-    //   664: invokespecial 959	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   667: invokespecial 962	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   664: invokespecial 966	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   667: invokespecial 969	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   670: astore 7
     //   672: aload 8
-    //   674: getstatic 968	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   674: getstatic 975	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   677: bipush 90
     //   679: aload 7
-    //   681: invokevirtual 972	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   681: invokevirtual 979	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   684: pop
     //   685: aload 7
-    //   687: invokevirtual 975	java/io/BufferedOutputStream:flush	()V
+    //   687: invokevirtual 982	java/io/BufferedOutputStream:flush	()V
     //   690: aload 7
     //   692: ifnull +8 -> 700
     //   695: aload 7
-    //   697: invokevirtual 978	java/io/BufferedOutputStream:close	()V
+    //   697: invokevirtual 985	java/io/BufferedOutputStream:close	()V
     //   700: aload 11
     //   702: monitorexit
     //   703: aload 8
@@ -2193,9 +2129,9 @@ public class IndividualRedPacketManager
     //   709: astore_1
     //   710: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   713: iconst_1
-    //   714: ldc_w 980
+    //   714: ldc_w 987
     //   717: aload_1
-    //   718: invokestatic 983	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   718: invokestatic 990	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   721: goto -21 -> 700
     //   724: astore_1
     //   725: aload 9
@@ -2213,24 +2149,24 @@ public class IndividualRedPacketManager
     //   748: new 44	java/lang/StringBuilder
     //   751: dup
     //   752: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   755: ldc_w 985
+    //   755: ldc_w 992
     //   758: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   761: aload 9
-    //   763: invokevirtual 357	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   763: invokevirtual 360	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   766: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   769: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   772: invokestatic 258	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   775: aload 7
     //   777: ifnull -77 -> 700
     //   780: aload 7
-    //   782: invokevirtual 978	java/io/BufferedOutputStream:close	()V
+    //   782: invokevirtual 985	java/io/BufferedOutputStream:close	()V
     //   785: goto -85 -> 700
     //   788: astore_1
     //   789: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   792: iconst_1
-    //   793: ldc_w 980
+    //   793: ldc_w 987
     //   796: aload_1
-    //   797: invokestatic 983	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   797: invokestatic 990	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   800: goto -100 -> 700
     //   803: astore 8
     //   805: aload_1
@@ -2240,15 +2176,15 @@ public class IndividualRedPacketManager
     //   811: aload 7
     //   813: ifnull +8 -> 821
     //   816: aload 7
-    //   818: invokevirtual 978	java/io/BufferedOutputStream:close	()V
+    //   818: invokevirtual 985	java/io/BufferedOutputStream:close	()V
     //   821: aload_1
     //   822: athrow
     //   823: astore 7
     //   825: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   828: iconst_1
-    //   829: ldc_w 980
+    //   829: ldc_w 987
     //   832: aload 7
-    //   834: invokestatic 983	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   834: invokestatic 990	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   837: goto -16 -> 821
     //   840: astore_1
     //   841: goto -30 -> 811
@@ -2652,7 +2588,7 @@ public class IndividualRedPacketManager
   
   public void a()
   {
-    ThreadManager.post(new zfq(this), 2, null, true);
+    ThreadManager.post(new zmr(this), 2, null, true);
   }
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
@@ -2715,11 +2651,11 @@ public class IndividualRedPacketManager
     //   10: ifeq +13 -> 23
     //   13: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   16: iconst_2
-    //   17: ldc_w 1156
+    //   17: ldc_w 1163
     //   20: invokestatic 258	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   23: return
     //   24: aload_2
-    //   25: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   25: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   28: ifne +445 -> 473
     //   31: aload_0
     //   32: invokevirtual 233	com/tencent/mobileqq/app/IndividualRedPacketManager:a	()Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader;
@@ -2739,14 +2675,14 @@ public class IndividualRedPacketManager
     //   63: iconst_5
     //   64: if_icmpne +27 -> 91
     //   67: aload_3
-    //   68: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   68: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   71: ifne +20 -> 91
     //   74: aload_0
     //   75: invokevirtual 233	com/tencent/mobileqq/app/IndividualRedPacketManager:a	()Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader;
-    //   78: getfield 696	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$Char300Info;
-    //   81: invokevirtual 700	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$Char300Info:a	()Ljava/lang/String;
+    //   78: getfield 703	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader:jdField_b_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info	Lcom/tencent/mobileqq/vas/IndividualRedPacketResDownloader$Char300Info;
+    //   81: invokevirtual 707	com/tencent/mobileqq/vas/IndividualRedPacketResDownloader$Char300Info:a	()Ljava/lang/String;
     //   84: aload_3
-    //   85: invokevirtual 703	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   85: invokevirtual 710	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   88: ifne -65 -> 23
     //   91: aload_2
     //   92: aload_3
@@ -2756,21 +2692,21 @@ public class IndividualRedPacketManager
     //   99: invokestatic 267	com/tencent/mobileqq/app/IndividualRedPacketManager:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   102: astore 8
     //   104: aload 8
-    //   106: invokestatic 536	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   106: invokestatic 539	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   109: ifeq +19 -> 128
     //   112: invokestatic 253	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   115: ifeq +13 -> 128
     //   118: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   121: iconst_2
-    //   122: ldc_w 1158
+    //   122: ldc_w 1165
     //   125: invokestatic 258	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   128: new 620	java/io/File
+    //   128: new 623	java/io/File
     //   131: dup
     //   132: aload 8
-    //   134: invokespecial 740	java/io/File:<init>	(Ljava/lang/String;)V
+    //   134: invokespecial 747	java/io/File:<init>	(Ljava/lang/String;)V
     //   137: astore_2
     //   138: aload_2
-    //   139: invokevirtual 745	java/io/File:exists	()Z
+    //   139: invokevirtual 752	java/io/File:exists	()Z
     //   142: ifeq +38 -> 180
     //   145: invokestatic 253	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   148: ifeq -125 -> 23
@@ -2779,7 +2715,7 @@ public class IndividualRedPacketManager
     //   155: new 44	java/lang/StringBuilder
     //   158: dup
     //   159: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   162: ldc_w 1160
+    //   162: ldc_w 1167
     //   165: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   168: aload 8
     //   170: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -2794,7 +2730,7 @@ public class IndividualRedPacketManager
     //   187: aload_0
     //   188: getfield 173	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
     //   191: aload 8
-    //   193: invokevirtual 1161	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   193: invokevirtual 1168	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   196: pop
     //   197: aload_3
     //   198: monitorexit
@@ -2802,30 +2738,30 @@ public class IndividualRedPacketManager
     //   200: astore_3
     //   201: aconst_null
     //   202: astore 7
-    //   204: new 954	java/io/BufferedOutputStream
+    //   204: new 961	java/io/BufferedOutputStream
     //   207: dup
-    //   208: new 956	java/io/FileOutputStream
+    //   208: new 963	java/io/FileOutputStream
     //   211: dup
     //   212: aload_2
-    //   213: invokespecial 959	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   216: invokespecial 962	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   213: invokespecial 966	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   216: invokespecial 969	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   219: astore_2
     //   220: aload_2
     //   221: astore_3
     //   222: aload_1
-    //   223: getstatic 968	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   223: getstatic 975	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   226: bipush 90
     //   228: aload_2
-    //   229: invokevirtual 972	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   229: invokevirtual 979	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   232: pop
     //   233: aload_2
     //   234: astore_3
     //   235: aload_2
-    //   236: invokevirtual 975	java/io/BufferedOutputStream:flush	()V
+    //   236: invokevirtual 982	java/io/BufferedOutputStream:flush	()V
     //   239: aload_2
     //   240: ifnull +7 -> 247
     //   243: aload_2
-    //   244: invokevirtual 978	java/io/BufferedOutputStream:close	()V
+    //   244: invokevirtual 985	java/io/BufferedOutputStream:close	()V
     //   247: aload_0
     //   248: getfield 173	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
     //   251: astore_1
@@ -2834,7 +2770,7 @@ public class IndividualRedPacketManager
     //   254: aload_0
     //   255: getfield 173	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
     //   258: aload 8
-    //   260: invokevirtual 1164	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
+    //   260: invokevirtual 1171	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
     //   263: pop
     //   264: aload_1
     //   265: monitorexit
@@ -2852,9 +2788,9 @@ public class IndividualRedPacketManager
     //   277: astore_1
     //   278: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   281: iconst_1
-    //   282: ldc_w 1166
+    //   282: ldc_w 1173
     //   285: aload_1
-    //   286: invokestatic 983	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   286: invokestatic 990	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   289: goto -42 -> 247
     //   292: astore_1
     //   293: aconst_null
@@ -2870,24 +2806,24 @@ public class IndividualRedPacketManager
     //   309: new 44	java/lang/StringBuilder
     //   312: dup
     //   313: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   316: ldc_w 1168
+    //   316: ldc_w 1175
     //   319: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   322: aload_1
-    //   323: invokevirtual 1169	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   323: invokevirtual 1176	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
     //   326: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   329: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   332: invokestatic 258	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   335: aload_2
     //   336: ifnull -89 -> 247
     //   339: aload_2
-    //   340: invokevirtual 978	java/io/BufferedOutputStream:close	()V
+    //   340: invokevirtual 985	java/io/BufferedOutputStream:close	()V
     //   343: goto -96 -> 247
     //   346: astore_1
     //   347: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   350: iconst_1
-    //   351: ldc_w 1166
+    //   351: ldc_w 1173
     //   354: aload_1
-    //   355: invokestatic 983	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   355: invokestatic 990	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   358: goto -111 -> 247
     //   361: astore_2
     //   362: aload 7
@@ -2903,38 +2839,38 @@ public class IndividualRedPacketManager
     //   379: new 44	java/lang/StringBuilder
     //   382: dup
     //   383: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   386: ldc_w 1168
+    //   386: ldc_w 1175
     //   389: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   392: aload_2
-    //   393: invokevirtual 1049	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   393: invokevirtual 1056	java/io/IOException:getMessage	()Ljava/lang/String;
     //   396: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   399: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   402: invokestatic 258	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   405: aload_1
     //   406: ifnull -159 -> 247
     //   409: aload_1
-    //   410: invokevirtual 978	java/io/BufferedOutputStream:close	()V
+    //   410: invokevirtual 985	java/io/BufferedOutputStream:close	()V
     //   413: goto -166 -> 247
     //   416: astore_1
     //   417: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   420: iconst_1
-    //   421: ldc_w 1166
+    //   421: ldc_w 1173
     //   424: aload_1
-    //   425: invokestatic 983	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   425: invokestatic 990	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   428: goto -181 -> 247
     //   431: astore_1
     //   432: aload_3
     //   433: ifnull +7 -> 440
     //   436: aload_3
-    //   437: invokevirtual 978	java/io/BufferedOutputStream:close	()V
+    //   437: invokevirtual 985	java/io/BufferedOutputStream:close	()V
     //   440: aload_1
     //   441: athrow
     //   442: astore_2
     //   443: getstatic 42	com/tencent/mobileqq/app/IndividualRedPacketManager:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   446: iconst_1
-    //   447: ldc_w 1166
+    //   447: ldc_w 1173
     //   450: aload_2
-    //   451: invokestatic 983	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   451: invokestatic 990	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   454: goto -14 -> 440
     //   457: astore_1
     //   458: goto -26 -> 432
@@ -3064,11 +3000,11 @@ public class IndividualRedPacketManager
         if (QLog.isColorLevel()) {
           QLog.d(jdField_d_of_type_JavaLangString, 2, "onDoneDownloadBG id = " + paramString + ", resType:" + paramInt);
         }
-        localRedPacketInfo = (CustomizeStrategyFactory.RedPacketInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        localRedPacketInfo = (CustomizeStrategyFactory.RedPacketInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
       } while (localRedPacketInfo == null);
       localObject1 = a().a(localRedPacketInfo.templateId, true);
     } while (localObject1 == null);
-    label113:
+    label111:
     Object localObject2;
     if (((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject1).jdField_a_of_type_Int == IndividualRedPacketResDownloader.RedPacketTemplateInfo.jdField_b_of_type_Int)
     {
@@ -3094,7 +3030,7 @@ public class IndividualRedPacketManager
             if (localObject2 != null)
             {
               if (((IndividualRedPacketManager.FontBitmap)localObject1).jdField_b_of_type_Boolean) {
-                break label309;
+                break label305;
               }
               a((Bitmap)localObject2, localRedPacketInfo.templateId, localRedPacketInfo.jdField_a_of_type_JavaLangString, 6);
             }
@@ -3103,7 +3039,7 @@ public class IndividualRedPacketManager
       }
       for (paramInt = i2;; paramInt = i2)
       {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
         if (paramInt == 0) {
           break;
         }
@@ -3112,15 +3048,15 @@ public class IndividualRedPacketManager
         if (paramInt == 3)
         {
           i1 = 7;
-          break label113;
+          break label111;
         }
         i1 = paramInt;
         if (paramInt != 14) {
-          break label113;
+          break label111;
         }
         i1 = 15;
-        break label113;
-        label309:
+        break label111;
+        label305:
         a((Bitmap)localObject2, localRedPacketInfo.templateId, localRedPacketInfo.jdField_a_of_type_JavaLangString, 12);
       }
     }
@@ -3128,7 +3064,7 @@ public class IndividualRedPacketManager
     {
       localObject2 = ((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject1).jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$DecorateInfo;
       if ((localObject2 == null) || (((IndividualRedPacketResDownloader.DecorateInfo)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig == null)) {
-        break label470;
+        break label466;
       }
       localObject2 = a(((IndividualRedPacketResDownloader.DecorateInfo)localObject2).jdField_d_of_type_JavaLangString, null, ((IndividualRedPacketResDownloader.DecorateInfo)localObject2).f, ((IndividualRedPacketResDownloader.DecorateInfo)localObject2).jdField_d_of_type_Int, 0);
       File localFile = new File((String)localObject2);
@@ -3136,10 +3072,10 @@ public class IndividualRedPacketManager
         a((IndividualRedPacketResDownloader.RedPacketTemplateInfo)localObject1, localRedPacketInfo, (String)localObject2, false);
       }
       if (localRedPacketInfo.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig == null) {
-        break label470;
+        break label466;
       }
     }
-    label470:
+    label466:
     for (paramInt = 1;; paramInt = 0)
     {
       break;
@@ -3185,7 +3121,7 @@ public class IndividualRedPacketManager
   
   public void a(String paramString1, String paramString2, Bundle paramBundle, MessengerService paramMessengerService)
   {
-    ThreadManager.post(new zfs(this, paramString1, paramString2, paramBundle, paramMessengerService), 8, null, true);
+    ThreadManager.post(new zmt(this, paramString1, paramString2, paramBundle, paramMessengerService), 8, null, true);
   }
   
   public void a(boolean paramBoolean)

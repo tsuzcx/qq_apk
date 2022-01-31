@@ -1,25 +1,28 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class thy
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements DialogInterface.OnClickListener
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public thx a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public thy(NotificationActivity paramNotificationActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface = new Intent("qqplayer_exit_action");
+    this.a.sendBroadcast(paramDialogInterface);
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putString("password", null);
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     thy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
 
 public class ajhv
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ajhv(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, ActionSheet paramActionSheet) {}
+  public ajhv(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, TroopAioKeywordTipManager.Callback paramCallback, MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipInfo);
   }
 }
 

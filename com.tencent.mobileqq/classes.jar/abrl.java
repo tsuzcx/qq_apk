@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.widget.VerticalGallery;
-import com.tencent.widget.VerticalGallery.OnEndMovementListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicUtils;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import java.io.File;
 
-public class abrl
-  implements VerticalGallery.OnEndMovementListener
+class abrl
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
+  abrl(abrj paramabrj, SelectCoverActivity paramSelectCoverActivity, QQAppInterface paramQQAppInterface) {}
   
-  public abrl(IphonePickerView paramIphonePickerView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(VerticalGallery paramVerticalGallery)
-  {
-    int i = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView) != null) {
-      IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).onItemSelected(this.jdField_a_of_type_Int, i);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a.b;
+    File localFile = new File(str);
+    if ((localFile != null) && (localFile.exists()))
+    {
+      DynamicUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, 38, this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.e, 100);
+      ProfileCardUtil.a(str);
+      return;
     }
+    SelectCoverActivity.a(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity, 2, "上传失败，请重试", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrl
  * JD-Core Version:    0.7.0.1
  */

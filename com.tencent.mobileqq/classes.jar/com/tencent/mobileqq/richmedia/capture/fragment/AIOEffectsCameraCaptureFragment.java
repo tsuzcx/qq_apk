@@ -29,11 +29,11 @@ public class AIOEffectsCameraCaptureFragment
   extends EffectsCameraCaptureFragment
 {
   protected int a;
-  private AIOEffectsCameraCaptureFragment.Session jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentAIOEffectsCameraCaptureFragment$Session;
+  private AIOEffectsCameraCaptureFragment.Session a;
   protected CameraCaptureView.VideoCaptureResult a;
-  private String jdField_a_of_type_JavaLangString;
   private int jdField_c_of_type_Int;
   private long jdField_c_of_type_Long;
+  private String e;
   private String f;
   private boolean i;
   private boolean j;
@@ -87,7 +87,7 @@ public class AIOEffectsCameraCaptureFragment
   public void a(CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult)
   {
     i();
-    JumpUtil.a(this, paramPhotoCaptureResult, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentAIOEffectsCameraCaptureFragment$Session, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a(), this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Long);
+    JumpUtil.a(this, paramPhotoCaptureResult, 2, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentAIOEffectsCameraCaptureFragment$Session, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a(), this.e, this.jdField_c_of_type_Long);
   }
   
   protected void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
@@ -97,9 +97,9 @@ public class AIOEffectsCameraCaptureFragment
     DanceMachineVideoParam localDanceMachineVideoParam = new DanceMachineVideoParam();
     localDanceMachineVideoParam.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
     localDanceMachineVideoParam.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-    localDanceMachineVideoParam.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    localDanceMachineVideoParam.g = this.e;
-    localDanceMachineVideoParam.f = this.jdField_d_of_type_JavaLangString;
+    localDanceMachineVideoParam.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localDanceMachineVideoParam.g = this.jdField_d_of_type_JavaLangString;
+    localDanceMachineVideoParam.f = this.jdField_c_of_type_JavaLangString;
     PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = CapturePtvTemplateManager.a().a();
     if (localPtvTemplateInfo != null)
     {
@@ -185,9 +185,9 @@ public class AIOEffectsCameraCaptureFragment
     }
   }
   
-  protected void e()
+  protected void d()
   {
-    super.e();
+    super.d();
     if ((a() == 10000) && (this.j))
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.jdField_c_of_type_Int, this.f);
@@ -262,7 +262,7 @@ public class AIOEffectsCameraCaptureFragment
     Bundle localBundle = getArguments();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentAIOEffectsCameraCaptureFragment$Session = ((AIOEffectsCameraCaptureFragment.Session)localBundle.getSerializable("ARG_SESSION_INFO"));
     this.jdField_a_of_type_Int = localBundle.getInt("ARG_EDIT_VIDEO_TYPE", 10000);
-    this.jdField_a_of_type_JavaLangString = localBundle.getString("ARG_AIO_CLASS");
+    this.e = localBundle.getString("ARG_AIO_CLASS");
     this.jdField_c_of_type_Long = localBundle.getLong("ARG_BABYQ_ABILITY", 0L);
     this.i = localBundle.getBoolean("ARG_SHOW_GUIDE_VIEW", false);
     this.j = localBundle.getBoolean("ARG_UNFOLD_DD", false);

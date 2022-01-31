@@ -23,6 +23,8 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.HiBoomMessage;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.PicMessageExtraData;
 import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
@@ -56,9 +58,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import ulk;
-import ull;
-import ulm;
+import uqh;
+import uqi;
+import uqj;
+import uqk;
 
 public class ForwardUtils
 {
@@ -207,7 +210,7 @@ public class ForwardUtils
     SessionInfo localSessionInfo = a(paramIntent);
     if ((localSessionInfo.jdField_a_of_type_Int == 1) && (((TroopGagMgr)paramQQAppInterface.getManager(47)).a(localSessionInfo.jdField_a_of_type_JavaLangString, true).a))
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131430273, 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(paramQQAppInterface.getApp(), 2131430276, 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
       return false;
     }
     int i = paramIntent.getIntExtra("forward_type", 2147483647);
@@ -221,19 +224,44 @@ public class ForwardUtils
     Object localObject1 = paramIntent.getStringExtra("forward_filepath");
     boolean bool1;
     boolean bool2;
-    label480:
+    label520:
+    label563:
     Object localObject2;
-    label523:
     String str;
     Object localObject3;
     Object localObject4;
     long l1;
     switch (i)
     {
+    case -4: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    case 11: 
+    case 12: 
+    case 13: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    case 22: 
+    case 25: 
+    case 26: 
+    case 27: 
+    case 30: 
+    case 31: 
+    case 33: 
+    case 34: 
+    case 35: 
     default: 
     case -1: 
     case 0: 
-      label930:
+      label970:
       do
       {
         for (;;)
@@ -256,7 +284,7 @@ public class ForwardUtils
                 i = 1;
                 SettingCloneUtil.writeValue(paramActivity, localSessionInfo.jdField_a_of_type_JavaLangString, null, "devicemsg_openchat_firsttrue", true);
                 if ((!bool1) || (i == 0)) {
-                  break label523;
+                  break label563;
                 }
               }
               for (bool1 = true;; bool1 = false)
@@ -264,10 +292,10 @@ public class ForwardUtils
                 paramMqqHandler.a(paramQQAppInterface, localSessionInfo, paramContext, bool1);
                 break;
                 if ((!bool2) && (!bool1)) {
-                  break label2309;
+                  break label2402;
                 }
                 i = 1;
-                break label480;
+                break label520;
               }
             }
           }
@@ -308,13 +336,13 @@ public class ForwardUtils
                       if (!FileManagerUtil.a()) {
                         break;
                       }
-                      FMDialogUtil.a(paramActivity, 2131428241, 2131428237, new ulk((ArrayList)localObject3, paramContext, i, paramQQAppInterface, (String)localObject2, str));
+                      FMDialogUtil.a(paramActivity, 2131428241, 2131428237, new uqh((ArrayList)localObject3, paramContext, i, paramQQAppInterface, (String)localObject2, str));
                     }
                   }
                   catch (Exception paramContext) {}
                 }
                 if (bool1) {
-                  break label930;
+                  break label970;
                 }
                 ChatActivityFacade.a(paramQQAppInterface, paramActivity, localSessionInfo, paramIntent, (String)localObject1, paramMqqHandler, false);
               }
@@ -342,8 +370,8 @@ public class ForwardUtils
       } while ((paramContext == null) || (paramContext.size() <= 0));
       paramMqqHandler = paramContext.iterator();
     }
-    label2309:
-    label2315:
+    label2402:
+    label2408:
     for (;;)
     {
       if (paramMqqHandler.hasNext())
@@ -352,7 +380,7 @@ public class ForwardUtils
         if (((ForwardFileInfo)localObject1).d() == 3)
         {
           l1 = ((ForwardFileInfo)localObject1).d() + l1;
-          break label2315;
+          break label2408;
         }
       }
       else
@@ -393,7 +421,7 @@ public class ForwardUtils
           if (QLog.isColorLevel()) {
             QLog.d("ForwardUtils", 2, "[@]call sendPic start!");
           }
-          ThreadManager.post(new ull(paramQQAppInterface, paramActivity, localSessionInfo, (String)localObject1, str, (String)localObject2, l1, i, paramContext, paramMqqHandler), 8, null, false);
+          ThreadManager.post(new uqi(paramQQAppInterface, paramActivity, localSessionInfo, (String)localObject1, str, (String)localObject2, l1, i, paramContext, paramMqqHandler), 8, null, false);
           if (!QLog.isColorLevel()) {
             break;
           }
@@ -417,7 +445,7 @@ public class ForwardUtils
           l1 = paramIntent.getLongExtra("forward_image_width", 0L);
           long l2 = paramIntent.getLongExtra("forward_image_height", 0L);
           int k = paramIntent.getIntExtra("forward_image_type", 0);
-          ThreadManager.executeOnFileThread(new ulm(AppConstants.aT + "#" + l1 + "#" + l2 + "#" + k, localSessionInfo, j, paramQQAppInterface));
+          ThreadManager.executeOnFileThread(new uqj(AppConstants.aU + "#" + l1 + "#" + l2 + "#" + k, localSessionInfo, j, paramQQAppInterface));
         }
         paramContext = PicBusiManager.a(i, paramIntent);
         paramActivity = PicBusiManager.a(3, i);
@@ -439,7 +467,7 @@ public class ForwardUtils
           paramContext.imageBizType = 2;
           paramActivity.a = paramContext;
         }
-        PicBusiManager.a(paramActivity, paramQQAppInterface);
+        ThreadManagerV2.executeOnSubThread(new uqk(paramActivity, paramQQAppInterface));
         break;
         if (localSessionInfo.jdField_a_of_type_Int == 9501) {
           return true;
@@ -542,10 +570,17 @@ public class ForwardUtils
         }
         paramQQAppInterface.f();
         break;
+        paramActivity = paramIntent.getStringExtra("forward_text");
+        i = paramIntent.getIntExtra("key_hiboom_id", 0);
+        paramContext = new HiBoomMessage();
+        paramContext.id = i;
+        paramContext.text = paramActivity;
+        ChatActivityFacade.a(paramQQAppInterface, localSessionInfo, paramContext, null);
+        break;
       }
-      break label2315;
+      break label2408;
       i = 0;
-      break label480;
+      break label520;
     }
   }
 }

@@ -1,13 +1,17 @@
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver;
 
-class amsa
+public class amsa
   implements Runnable
 {
-  amsa(amry paramamry) {}
+  public amsa(QQComicRedTouchManager.PluginRedTouchObserver paramPluginRedTouchObserver) {}
   
   public void run()
   {
-    this.a.a.e();
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginRedTouchManager", 2, "onReceiveNewRedTouch()");
+    }
+    this.a.a();
   }
 }
 

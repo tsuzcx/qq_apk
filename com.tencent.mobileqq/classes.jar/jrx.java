@@ -1,18 +1,19 @@
-import com.tencent.av.ui.ControlUIObserver;
+import com.tencent.av.ui.AVActivity;
 
-public class jrx
+class jrx
   implements Runnable
 {
-  public jrx(ControlUIObserver paramControlUIObserver, Object paramObject) {}
+  jrx(jrv paramjrv) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUiControlUIObserver.d(this.jdField_a_of_type_JavaLangObject);
+    this.a.a.b(false);
+    this.a.a.d(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jrx
  * JD-Core Version:    0.7.0.1
  */

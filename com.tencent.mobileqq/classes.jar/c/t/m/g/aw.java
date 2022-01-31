@@ -1,12 +1,14 @@
 package c.t.m.g;
 
-public abstract interface aw
+final class aw
+  implements Runnable
 {
-  public abstract void a();
+  aw(aq paramaq) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public final void run()
+  {
+    aq.a(this.a, false, true);
+  }
 }
 
 

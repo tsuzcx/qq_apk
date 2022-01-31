@@ -26,17 +26,17 @@ public abstract class LebaFeedsNativeViewBase
   public LebaFeedsNativeViewBase(Context paramContext)
   {
     super(paramContext);
-    LayoutInflater.from(paramContext).inflate(2130969494, this, true);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362840));
-    this.e = ((RelativeLayout)super.findViewById(2131363109));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366697));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366698));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366699));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131366703);
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363057));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363378));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363538));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131366706));
+    LayoutInflater.from(paramContext).inflate(2130969490, this, true);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362845));
+    this.e = ((RelativeLayout)super.findViewById(2131363113));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366695));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366696));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366697));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131366701);
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363062));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363397));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363557));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)super.findViewById(2131366704));
     this.jdField_d_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);

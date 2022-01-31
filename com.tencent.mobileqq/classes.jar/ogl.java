@@ -1,31 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.widget.HorizontalListView.OnItemScrollEventListener;
 
 public class ogl
-  implements TextWatcher
+  implements HorizontalListView.OnItemScrollEventListener
 {
-  public ogl(EditVideoPoiSearch paramEditVideoPoiSearch) {}
+  public ogl(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    EditVideoPartManager localEditVideoPartManager = this.a.a;
-    if (this.a.a.a()) {}
-    for (paramEditable = "2";; paramEditable = "1")
-    {
-      localEditVideoPartManager.a("search_poi", 0, 0, new String[] { paramEditable });
-      VideoEditReport.a("0X80076D1");
-      VideoEditReport.b("0X80075E6");
-      EditVideoPoiSearch.a(this.a);
-      return;
+    if (StoryHomeHorizontalListView.a(this.a) != null) {
+      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
     }
+    SLog.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
+    this.a.a();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -219,7 +219,7 @@ public class EmotionDownloadOrUpdateAdapter
   
   public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    if ((paramInt == 0) || (paramEmoticonPackage == null)) {
+    if ((paramInt != 0) || (paramEmoticonPackage == null)) {
       return;
     }
     Message localMessage = Message.obtain();
@@ -258,8 +258,8 @@ public class EmotionDownloadOrUpdateAdapter
     {
       try
       {
-        localDrawable1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130837572);
-        localDrawable2 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841350);
+        localDrawable1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130837571);
+        localDrawable2 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841377);
         if (!FileUtils.a((String)localObject)) {
           continue;
         }
@@ -274,12 +274,12 @@ public class EmotionDownloadOrUpdateAdapter
         Drawable localDrawable1;
         Drawable localDrawable2;
         float f1;
-        paramEmotionDownloadOrUpdateViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130841350);
+        paramEmotionDownloadOrUpdateViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130841377);
         continue;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        paramEmotionDownloadOrUpdateViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130841350);
+        paramEmotionDownloadOrUpdateViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130841377);
         continue;
         str = "下载";
         if (!this.b) {
@@ -308,7 +308,7 @@ public class EmotionDownloadOrUpdateAdapter
         {
           localObject = EmosmUtils.b(2, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId);
           continue;
-          paramEmotionDownloadOrUpdateViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130841350);
+          paramEmotionDownloadOrUpdateViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130841377);
         }
       }
       else
@@ -447,7 +447,7 @@ public class EmotionDownloadOrUpdateAdapter
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() != 2131364483) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) {}
+    if ((paramView.getId() != 2131364510) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) {}
     do
     {
       return;

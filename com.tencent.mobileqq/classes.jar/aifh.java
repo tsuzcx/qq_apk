@@ -1,23 +1,24 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLFrameImage;
+import com.tencent.mobileqq.shortvideo.dancemachine.TrAsyncTextureLoad;
+import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
 
 public class aifh
-  extends SQLiteOpenHelper
+  implements Runnable
 {
-  public aifh(MigrateSubscribeDB paramMigrateSubscribeDB, Context paramContext, String paramString, int paramInt)
+  public aifh(TrAsyncTextureLoad paramTrAsyncTextureLoad) {}
+  
+  public void run()
   {
-    super(paramContext, paramString, null, paramInt);
+    long l1 = System.currentTimeMillis();
+    DanceLog.b("GLFrameImage", "asyncLoadBoyTexture start loading");
+    GLFrameImage.h();
+    long l2 = System.currentTimeMillis();
+    DanceLog.b("GLFrameImage", "asyncLoadBoyTexture end loading timeCost=" + (l2 - l1));
   }
-  
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aifh
  * JD-Core Version:    0.7.0.1
  */

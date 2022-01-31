@@ -1,126 +1,38 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 public class zhd
-  extends Handler
+  implements Runnable
 {
-  private HashSet jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  public zhd(BaseActivity paramBaseActivity) {}
   
-  public zhd(MessageHandler paramMessageHandler, Looper paramLooper)
+  public void run()
   {
-    super(paramLooper);
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    int i = 0;
+    if (!SettingCloneUtil.readValue(this.a, null, this.a.getString(2131433595), "qqsetting_screenshot_key", false)) {}
+    for (;;)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label69;
+      if (i != 0) {
+        this.a.turnOnShake();
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        sendMessage((Message)localIterator.next());
-      }
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    label69:
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "updateUnreadWorker doC2CUpdateNow");
-    }
-  }
-  
-  public void a(Message paramMessage)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      paramMessage = paramMessage.getData();
-      if ((paramMessage != null) && (paramMessage.containsKey("update_unread_uin")) && (paramMessage.containsKey("update_unread_time")))
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      BaseActivity.access$102(new zhk(null));
+      try
       {
-        String str = paramMessage.getString("update_unread_uin");
-        int i = paramMessage.getInt("update_unread_type", 0);
-        long l = paramMessage.getLong("update_unread_time");
-        this.jdField_a_of_type_JavaUtilHashSet.add(MsgProxyUtils.a(str, i) + "&" + l);
-      }
-      return;
-    }
-  }
-  
-  void a(String paramString, int paramInt, long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      if (this.jdField_a_of_type_JavaUtilHashSet.contains(MsgProxyUtils.a(paramString, paramInt) + "&" + paramLong)) {
-        this.jdField_a_of_type_JavaUtilHashSet.remove(MsgProxyUtils.a(paramString, paramInt) + "&" + paramLong);
-      }
-      return;
-    }
-  }
-  
-  public boolean a(Message paramMessage)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
-    {
-      paramMessage = paramMessage.getData();
-      if ((paramMessage != null) && (paramMessage.containsKey("update_unread_uin")) && (paramMessage.containsKey("update_unread_time")))
-      {
-        String str = paramMessage.getString("update_unread_uin");
-        int i = paramMessage.getInt("update_unread_type", 0);
-        long l = paramMessage.getLong("update_unread_time");
-        boolean bool = this.jdField_a_of_type_JavaUtilHashSet.contains(MsgProxyUtils.a(str, i) + "&" + l);
-        return bool;
-      }
-      return false;
-    }
-  }
-  
-  public void b(Message paramMessage)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramMessage);
-      return;
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-      do
-      {
+        this.a.getApplicationContext().registerReceiver(BaseActivity.access$100(), localIntentFilter);
         return;
-        paramMessage = paramMessage.getData();
-      } while ((paramMessage == null) || (!paramMessage.containsKey("update_unread_uin")) || (!paramMessage.containsKey("update_unread_time")));
-      String str = paramMessage.getString("update_unread_uin");
-      int i = paramMessage.getInt("update_unread_type", 0);
-      long l = paramMessage.getLong("update_unread_time");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "msg update_c2c_unread-->uin:" + str + ", uinType:" + i + ", lastReadTime:" + l);
       }
-      a(str, i, l);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a().a(str, i, l);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(2002, true, null);
-      return;
+      catch (Exception localException)
+      {
+        QLog.e("qqBaseActivity", 1, "", localException);
+      }
+      i = 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "updateUnreadWorker C2CWorkerTimeout");
-    }
-    a();
   }
 }
 

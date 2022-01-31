@@ -1,8 +1,8 @@
 package com.tencent.open.wadl;
 
-import aljn;
-import aljo;
-import aljp;
+import alrf;
+import alrg;
+import alrh;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -84,7 +84,7 @@ public class WadlJsBridge
     if (!b)
     {
       b = true;
-      ThreadManager.executeOnSubThread(new aljn(this));
+      ThreadManager.executeOnSubThread(new alrf(this));
     }
   }
   
@@ -151,7 +151,7 @@ public class WadlJsBridge
       }
       if (this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener == null)
       {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener = new aljp(this, paramString1);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener = new alrh(this, paramString1);
         UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener);
       }
       UpdateManager.a().a(paramString2);
@@ -446,7 +446,7 @@ public class WadlJsBridge
   public void jsCallBack(String paramString)
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new aljo(this, paramString));
+      this.jdField_a_of_type_AndroidOsHandler.post(new alrg(this, paramString));
     }
   }
   

@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo.ml.decisiontree;
 
-import aoqb;
-import aoqc;
+import aoyn;
+import aoyo;
 
 public class ID3
 {
@@ -14,8 +14,8 @@ public class ID3
   
   static
   {
-    jdField_a_of_type_DovComTencentMobileqqShortvideoMlDecisiontreeID3$ImpurityFunction = new aoqb();
-    jdField_b_of_type_DovComTencentMobileqqShortvideoMlDecisiontreeID3$ImpurityFunction = new aoqc();
+    jdField_a_of_type_DovComTencentMobileqqShortvideoMlDecisiontreeID3$ImpurityFunction = new aoyn();
+    jdField_b_of_type_DovComTencentMobileqqShortvideoMlDecisiontreeID3$ImpurityFunction = new aoyo();
     jdField_a_of_type_DovComTencentMobileqqShortvideoMlDecisiontreeID3$ChiSquareTest = new ID3.ChiSquareTest(16.27D);
     jdField_b_of_type_DovComTencentMobileqqShortvideoMlDecisiontreeID3$ChiSquareTest = new ID3.ChiSquareTest(11.34D);
   }

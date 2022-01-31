@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.armap.sensor.SimpleSensorChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.C2CMessageManager;
 
 public class zzb
-  extends SimpleSensorChangeListener
+  implements Runnable
 {
-  public zzb(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public zzb(C2CMessageManager paramC2CMessageManager) {}
   
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
+  public void run()
   {
-    ARWorldCupGlobalSceneRenderable.a(this.a).a(new zzc(this, paramArrayOfFloat));
+    this.a.a.x();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zzb
  * JD-Core Version:    0.7.0.1
  */

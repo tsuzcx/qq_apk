@@ -1,30 +1,24 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
 public class aklz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aklz(AbsWebView paramAbsWebView) {}
+  public aklz(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l1 = SystemClock.uptimeMillis();
-    if (this.a.a == null)
-    {
-      this.a.z();
-      if (QLog.isColorLevel())
-      {
-        long l2 = SystemClock.uptimeMillis();
-        QLog.d("AbsWebView", 2, "initPluginEngine cost= " + (l2 - l1));
-      }
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
     }
-    Thread.yield();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aklz
  * JD-Core Version:    0.7.0.1
  */

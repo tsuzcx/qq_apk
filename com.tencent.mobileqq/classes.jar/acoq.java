@@ -1,23 +1,41 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.model.EmoticonManager;
+import java.io.Serializable;
+import java.util.List;
 
-public class acoq
-  implements URLDrawable.URLDrawableListener
+public final class acoq
+  implements Runnable
 {
-  public acoq(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
+  public acoq(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, H5MagicPlayerActivity.class);
+      localIntent.putExtra("clickTime", System.currentTimeMillis());
+      localIntent.putExtra("autoPlay", "1");
+      localIntent.putExtra("senderUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localIntent.putExtra("selfUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localIntent.putExtra("sessionInfo", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      localIntent.putExtra("emoticon", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+      Object localObject = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
+      EmoticonPackage localEmoticonPackage = ((EmoticonManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+      if (localEmoticonPackage != null)
+      {
+        localObject = ((EmoticonManager)localObject).a(localEmoticonPackage.childEpId);
+        if ((localObject != null) && (((List)localObject).size() > 0)) {
+          localIntent.putExtra("childEmoticon", (Serializable)((List)localObject).get(0));
+        }
+      }
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    }
   }
 }
 

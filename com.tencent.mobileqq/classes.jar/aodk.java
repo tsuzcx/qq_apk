@@ -1,17 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.RMWLog;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.RMWProto;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.RMWService;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
 
 public class aodk
-  extends Handler
+  implements Runnable
 {
-  public aodk(RMWService paramRMWService) {}
+  public aodk(EditVideoPlayer paramEditVideoPlayer, int paramInt, byte[] paramArrayOfByte) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    RMWLog.a("RMWService", "service.handle : " + RMWProto.a(paramMessage));
+    SLog.a("Q.qqstory.record.EditVideoPlayer", "setMosaic %d", Integer.valueOf(this.jdField_a_of_type_Int));
+    VideoSourceHelper.nativeSetMosaic(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 

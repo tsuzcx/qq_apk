@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.test;
 
-import abho;
+import abop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -38,14 +38,14 @@ public class ARMainActivity
     }
     for (;;)
     {
-      setContentView(2130970215);
-      findViewById(2131369645).setOnClickListener(this);
-      findViewById(2131362573).setOnClickListener(this);
-      findViewById(2131369646).setOnClickListener(this);
-      findViewById(2131369647).setOnClickListener(this);
-      findViewById(2131369649).setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369648));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnLongClickListener(new abho(this));
+      setContentView(2130970230);
+      findViewById(2131369655).setOnClickListener(this);
+      findViewById(2131362578).setOnClickListener(this);
+      findViewById(2131369656).setOnClickListener(this);
+      findViewById(2131369657).setOnClickListener(this);
+      findViewById(2131369659).setOnClickListener(this);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369658));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnLongClickListener(new abop(this));
       return true;
       if (!ARNativeBridge.loadNativeLibrary())
       {
@@ -62,19 +62,19 @@ public class ARMainActivity
     {
     default: 
       return;
-    case 2131369645: 
+    case 2131369655: 
       paramView = new Intent(getActivity(), ARMapActivity.class);
       paramView.putExtra("load_armap", false);
       startActivity(paramView);
       return;
-    case 2131362573: 
+    case 2131362578: 
       paramView = new Intent(getActivity(), ARWebTestActivity.class);
       paramView.putExtra("url", "http://mma.qq.com/dev-tmp/qqar-map/map.html");
       startActivity(paramView);
-    case 2131369646: 
+    case 2131369656: 
       startActivity(new Intent(this, ArmapJumpActivity.class));
       return;
-    case 2131369647: 
+    case 2131369657: 
       paramView = new Intent(this, OpenBoxActivity.class);
       paramView.putExtra("task_id", 1891095575279602L);
       paramView.putExtra("task_type", 7);

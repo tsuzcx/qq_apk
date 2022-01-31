@@ -1,41 +1,41 @@
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.app.asyncdb.DBDelayManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Messenger;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
 
 public class zvo
-  implements Runnable
+  implements ServiceConnection
 {
-  public zvo(ProxyManager paramProxyManager) {}
+  public zvo(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    ProxyManager.a(this.a, System.currentTimeMillis());
-    while (!this.a.jdField_a_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaLangObject)
-      {
-        try
-        {
-          this.a.c();
-          this.a.jdField_a_of_type_JavaLangObject.wait(ProxyManager.a());
-          ThreadRegulator.a().b();
-          if (((!ProxyManager.a(this.a).isEmpty()) || (ProxyManager.a(this.a).a().size() > 0)) && (ProxyManager.a(this.a)))
-          {
-            this.a.d();
-            ProxyManager.a(this.a).c();
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("Q.msg.MsgProxy", 2, "writeRunable Exception:", localException);
-            }
-          }
-        }
-      }
+    TroopQZoneUploadAlbumHandler.a(this.a, 2);
+    TroopQZoneUploadAlbumHandler.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
+    }
+    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
+    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
+    TroopQZoneUploadAlbumHandler.b(this.a);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
+    }
+    this.a.jdField_a_of_type_AndroidOsMessenger = null;
+    TroopQZoneUploadAlbumHandler.a(this.a, 4);
+    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.a.b = null;
+    TroopQZoneUploadAlbumHandler.a(this.a, true);
+    if (TroopQZoneUploadAlbumHandler.a(this.a) != null) {
+      TroopQZoneUploadAlbumHandler.a(this.a).interrupt();
     }
   }
 }

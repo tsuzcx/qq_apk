@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.GetListDataCallback;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
 
-public class vvb
-  implements TroopAIORobotPanel.GetListDataCallback
+class vvb
+  implements View.OnTouchListener
 {
-  public vvb(HotChatPie paramHotChatPie) {}
+  vvb(vva paramvva, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramBoolean) && (this.a.f.equals(paramString)))
-    {
-      this.a.a.setChildVisible(27, 0);
-      this.a.S = true;
-      return;
+    paramView = paramView.getParent();
+    if (paramView != null) {
+      paramView.requestDisallowInterceptTouchEvent(true);
     }
-    this.a.a.setChildVisible(27, 8);
-    this.a.S = false;
+    return false;
   }
 }
 

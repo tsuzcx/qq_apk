@@ -27,8 +27,8 @@ public class ShareGroupUtil
     int i = UIUtils.a(paramContext, paramInt1);
     if ((paramInt2 != 1) || (!paramBoolean))
     {
-      localObject1 = ((LayoutInflater)localObject1).inflate(2130970830, null);
-      localObject2 = (CircleImageView)((View)localObject1).findViewById(2131371886);
+      localObject1 = ((LayoutInflater)localObject1).inflate(2130970847, null);
+      localObject2 = (CircleImageView)((View)localObject1).findViewById(2131371885);
       localObject3 = ((CircleImageView)localObject2).getLayoutParams();
       ((ViewGroup.LayoutParams)localObject3).height = i;
       ((ViewGroup.LayoutParams)localObject3).width = i;
@@ -43,14 +43,14 @@ public class ShareGroupUtil
       paramLinearLayout.addView((View)localObject1, paramQQUserUIItem);
       return;
     }
-    Object localObject2 = ((LayoutInflater)localObject1).inflate(2130970831, null);
-    Object localObject3 = (TextView)((View)localObject2).findViewById(2131371992);
+    Object localObject2 = ((LayoutInflater)localObject1).inflate(2130970848, null);
+    Object localObject3 = (TextView)((View)localObject2).findViewById(2131372000);
     if (paramInt3 > 99) {}
     for (localObject1 = "99+";; localObject1 = paramInt3 + "")
     {
       ((TextView)localObject3).setText((CharSequence)localObject1);
       ((TextView)localObject3).setVisibility(0);
-      localObject1 = ((View)localObject2).findViewById(2131371991);
+      localObject1 = ((View)localObject2).findViewById(2131371999);
       localObject3 = ((View)localObject1).getLayoutParams();
       paramInt1 = UIUtils.a(paramContext, paramInt1 - 2);
       ((ViewGroup.LayoutParams)localObject3).height = paramInt1;

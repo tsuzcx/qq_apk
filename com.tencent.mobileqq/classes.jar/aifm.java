@@ -1,40 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.ProcessInfoUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLViewContext;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.StartResource;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
 
-public final class aifm
-  implements Runnable
+public class aifm
+  implements Animation.AnimationListener
 {
-  public aifm(String paramString) {}
+  public aifm(DanceReadyFilter paramDanceReadyFilter) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SharedPreferences localSharedPreferences = ProcessInfoUtil.a();
-    int i;
-    if (localSharedPreferences != null)
-    {
-      i = ProcessInfoUtil.a(BaseApplicationImpl.getContext(), this.a);
-      if (i != -1) {
-        break label27;
-      }
-    }
-    label27:
-    long l;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      localSharedPreferences.edit().putInt("pid" + this.a, i);
-      localSharedPreferences.edit().putLong("start_time" + this.a, l).apply();
-    } while (!QLog.isColorLevel());
-    QLog.d("ProcessUtils", 2, "recordProcessStart - " + this.a + ":" + i + "|" + l);
+    this.a.a.a().a(DanceReadyFilter.a(this.a).a.b);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aifm
  * JD-Core Version:    0.7.0.1
  */

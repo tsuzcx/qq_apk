@@ -1,32 +1,25 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
-import java.util.Iterator;
-import java.util.concurrent.PriorityBlockingQueue;
+import android.widget.ImageView;
+import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
 
 public class ahzm
   implements Runnable
 {
-  public ahzm(ShortVideoPreDownloader paramShortVideoPreDownloader) {}
+  public ahzm(SearchTemplatePresenter paramSearchTemplatePresenter, ImageView paramImageView, boolean paramBoolean) {}
   
   public void run()
   {
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    if (this.jdField_a_of_type_Boolean)
     {
-      ShortVideoReq localShortVideoReq = (ShortVideoReq)localIterator.next();
-      ShortVideoBusiManager.a(localShortVideoReq, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localShortVideoReq.a != null) {
-        ShortVideoPreDownloader.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localShortVideoReq.a.a);
-      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845573);
+      return;
     }
-    this.a.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845572);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahzm
  * JD-Core Version:    0.7.0.1
  */

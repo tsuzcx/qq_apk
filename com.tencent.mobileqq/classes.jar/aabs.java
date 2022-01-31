@@ -1,49 +1,18 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
 
-class aabs
+public class aabs
   implements Runnable
 {
-  aabs(aabq paramaabq) {}
+  public aabs(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
   
-  @TargetApi(11)
   public void run()
   {
-    try
-    {
-      aabq.a(this.a).updateTexImage();
-      aabq.a(this.a).getTransformMatrix(aabq.a(this.a));
-      if (ScanTorchActivity.i)
-      {
-        aabq localaabq = this.a;
-        localaabq.b += 1L;
-        if (this.a.b >= 30L)
-        {
-          this.a.b = 0L;
-          long l = System.currentTimeMillis();
-          float f = 30000.0F / (float)(l - this.a.a);
-          this.a.a = l;
-          QLog.d("render", 2, "video fetch=" + f);
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localThrowable.printStackTrace();
-        }
-      }
-    }
+    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aabs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,27 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureFragment;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
 
 public class oml
-  implements View.OnKeyListener
+  implements Animation.AnimationListener
 {
-  private oml(StoryEffectsCameraCaptureFragment paramStoryEffectsCameraCaptureFragment) {}
+  public oml(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SLog.d("story.publish.CaptureFragment", "onBackPressed");
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if (localFragmentActivity != null)
-    {
-      this.a.getActivity().finish();
-      localFragmentActivity.overridePendingTransition(2131034165, 2131034328);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
     }
   }
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-      switch (paramKeyEvent.getAction())
-      {
-      case 0: 
-      default: 
-        break;
-      case 1: 
-        bool1 = bool2;
-      }
-    } while (paramKeyEvent.isCanceled());
-    a();
-    return true;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

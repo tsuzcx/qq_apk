@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
-import anpj;
-import anpk;
+import anxw;
+import anxx;
 import com.tencent.qphone.base.util.QLog;
 
 public final class PressScaleAnimDelegate
@@ -15,12 +15,12 @@ public final class PressScaleAnimDelegate
   private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private final View jdField_a_of_type_AndroidViewView;
-  private final anpk jdField_a_of_type_Anpk;
+  private final anxx jdField_a_of_type_Anxx;
   
   PressScaleAnimDelegate(View paramView)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Anpk = new anpk(paramView);
+    this.jdField_a_of_type_Anxx = new anxx(paramView);
   }
   
   public static void a(View paramView, long paramLong, View.OnClickListener paramOnClickListener)
@@ -29,7 +29,7 @@ public final class PressScaleAnimDelegate
       return;
     }
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
-    paramView = new anpj(paramView, paramOnClickListener);
+    paramView = new anxw(paramView, paramOnClickListener);
     localValueAnimator.setDuration(paramLong);
     localValueAnimator.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
     localValueAnimator.addUpdateListener(paramView);
@@ -42,12 +42,12 @@ public final class PressScaleAnimDelegate
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Anpk);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this.jdField_a_of_type_Anxx);
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.75F, 0.5F, 0.75F, 1.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(jdField_a_of_type_AndroidViewAnimationInterpolator);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Anpk);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_Anxx);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -61,15 +61,15 @@ public final class PressScaleAnimDelegate
     int i2 = this.jdField_a_of_type_AndroidViewView.getPaddingBottom();
     int k = (i + j) / 2;
     m = (m + (n - i1 - i2)) / 2;
-    paramCanvas.scale(this.jdField_a_of_type_Anpk.a, this.jdField_a_of_type_Anpk.a, k, m);
+    paramCanvas.scale(this.jdField_a_of_type_Anxx.a, this.jdField_a_of_type_Anxx.a, k, m);
     if (QLog.isColorLevel()) {
-      QLog.d("PressScaleAnimDelegate ", 2, "draw, left=" + i + ",right=" + j + ",centerX=" + k + ",centerY=" + m + ",scale=" + this.jdField_a_of_type_Anpk.a);
+      QLog.d("PressScaleAnimDelegate ", 2, "draw, left=" + i + ",right=" + j + ",centerX=" + k + ",centerY=" + m + ",scale=" + this.jdField_a_of_type_Anxx.a);
     }
   }
   
   boolean a()
   {
-    return this.jdField_a_of_type_Anpk.a != 1.0F;
+    return this.jdField_a_of_type_Anxx.a != 1.0F;
   }
 }
 

@@ -1,14 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class mkl
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public mkl(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public mkl(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    ReadinjoyTabFrame.a(this.a);
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    this.a.f();
+    ReadInJoyBaseAdapter.e(this.a);
+    this.a.g();
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

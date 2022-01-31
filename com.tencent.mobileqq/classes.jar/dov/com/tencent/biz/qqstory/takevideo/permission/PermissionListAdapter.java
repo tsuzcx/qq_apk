@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import aocx;
+import aols;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
@@ -34,7 +34,7 @@ public class PermissionListAdapter
   }
   
   @NonNull
-  private aocx a(int paramInt)
+  private aols a(int paramInt)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int j;
@@ -43,7 +43,7 @@ public class PermissionListAdapter
       PermissionPart localPermissionPart = (PermissionPart)localIterator.next();
       j = localPermissionPart.a() + i;
       if (paramInt <= j - 1) {
-        return new aocx(localPermissionPart, paramInt - i);
+        return new aols(localPermissionPart, paramInt - i);
       }
     }
     throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
@@ -116,15 +116,15 @@ public class PermissionListAdapter
   
   public int getItemViewType(int paramInt)
   {
-    aocx localaocx = a(paramInt);
-    return localaocx.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionPermissionPart.a(localaocx.jdField_a_of_type_Int);
+    aols localaols = a(paramInt);
+    return localaols.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionPermissionPart.a(localaols.jdField_a_of_type_Int);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject = a(paramInt);
-    PermissionPart localPermissionPart = ((aocx)localObject).jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionPermissionPart;
-    paramInt = ((aocx)localObject).jdField_a_of_type_Int;
+    PermissionPart localPermissionPart = ((aols)localObject).jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionPermissionPart;
+    paramInt = ((aols)localObject).jdField_a_of_type_Int;
     localObject = paramView;
     if (paramView == null) {
       localObject = localPermissionPart.a(paramInt, paramViewGroup);

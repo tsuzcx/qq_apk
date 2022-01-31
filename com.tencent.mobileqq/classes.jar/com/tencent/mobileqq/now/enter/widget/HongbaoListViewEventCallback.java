@@ -10,15 +10,13 @@ public abstract interface HongbaoListViewEventCallback
   
   public abstract void b(HongBao2018ListView paramHongBao2018ListView);
   
-  public abstract void c(boolean paramBoolean);
+  public abstract void b(boolean paramBoolean);
   
-  public abstract void d(boolean paramBoolean);
+  public abstract void c(boolean paramBoolean);
   
   public abstract void e();
   
-  public abstract void f();
-  
-  public abstract void h();
+  public abstract void g();
 }
 
 

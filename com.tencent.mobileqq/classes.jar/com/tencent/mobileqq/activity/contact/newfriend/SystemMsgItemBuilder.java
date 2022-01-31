@@ -236,7 +236,7 @@ public class SystemMsgItemBuilder
     paramSystemMsgItemHolder.h.setText((CharSequence)localObject2);
     if ((!TextUtils.isEmpty(str)) && (Utils.b(str)))
     {
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839751);
+      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839766);
       ((Drawable)localObject1).setBounds(0, 0, AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       paramSystemMsgItemHolder.h.setCompoundDrawables(null, null, (Drawable)localObject1, null);
       paramSystemMsgItemHolder.h.setCompoundDrawablePadding(AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
@@ -285,11 +285,11 @@ public class SystemMsgItemBuilder
       {
         paramSystemMsgItemHolder.jdField_a_of_type_AndroidWidgetButton.setTag(paramSystemMsgItemHolder);
         paramSystemMsgItemHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
-        paramOnClickListener = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494237);
+        paramOnClickListener = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494243);
         if (paramOnClickListener != null) {
           paramSystemMsgItemHolder.jdField_a_of_type_AndroidWidgetButton.setTextColor(paramOnClickListener);
         }
-        paramSystemMsgItemHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838509);
+        paramSystemMsgItemHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838515);
         return;
         paramSystemMsgItemHolder.h.setCompoundDrawables(null, null, null, null);
         break;
@@ -440,7 +440,7 @@ public class SystemMsgItemBuilder
     switch (i)
     {
     default: 
-      paramSystemMsgItemHolder.l.setBackgroundResource(2130843120);
+      paramSystemMsgItemHolder.l.setBackgroundResource(2130843152);
       j = 0;
       i = 0;
       k = i;
@@ -462,12 +462,12 @@ public class SystemMsgItemBuilder
       paramSystemMsgItemHolder.l.setVisibility(0);
       paramSystemMsgItemHolder.l.setPadding(8, 4, 8, 4);
       return;
-      j = 2130843119;
-      paramSystemMsgItemHolder.l.setBackgroundResource(2130843120);
+      j = 2130843151;
+      paramSystemMsgItemHolder.l.setBackgroundResource(2130843152);
       i = 1;
       break;
-      j = 2130843117;
-      paramSystemMsgItemHolder.l.setBackgroundResource(2130843118);
+      j = 2130843149;
+      paramSystemMsgItemHolder.l.setBackgroundResource(2130843150);
       i = 1;
       break;
       label207:
@@ -488,14 +488,14 @@ public class SystemMsgItemBuilder
     if ((paramView == null) || (!(paramView.getTag() instanceof SystemMsgItemBuilder.SystemMsgItemHolder)))
     {
       localSystemMsgItemHolder = new SystemMsgItemBuilder.SystemMsgItemHolder();
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2130970637, localSystemMsgItemHolder);
-      localSystemMsgItemHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366545));
-      localSystemMsgItemHolder.h = ((TextView)paramView.findViewById(2131362894));
-      localSystemMsgItemHolder.i = ((TextView)paramView.findViewById(2131369982));
-      localSystemMsgItemHolder.l = ((TextView)paramView.findViewById(2131371532));
-      localSystemMsgItemHolder.j = ((TextView)paramView.findViewById(2131369984));
-      localSystemMsgItemHolder.k = ((TextView)paramView.findViewById(2131368974));
-      localSystemMsgItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368973));
+      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2130970650, localSystemMsgItemHolder);
+      localSystemMsgItemHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366543));
+      localSystemMsgItemHolder.h = ((TextView)paramView.findViewById(2131362899));
+      localSystemMsgItemHolder.i = ((TextView)paramView.findViewById(2131369991));
+      localSystemMsgItemHolder.l = ((TextView)paramView.findViewById(2131371530));
+      localSystemMsgItemHolder.j = ((TextView)paramView.findViewById(2131369993));
+      localSystemMsgItemHolder.k = ((TextView)paramView.findViewById(2131368975));
+      localSystemMsgItemHolder.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368974));
       paramView.setTag(localSystemMsgItemHolder);
       localSystemMsgItemHolder.jdField_f_of_type_AndroidViewView.setTag(localSystemMsgItemHolder);
       localSystemMsgItemHolder.jdField_f_of_type_AndroidViewView.setOnClickListener(this);
@@ -503,7 +503,7 @@ public class SystemMsgItemBuilder
       if (this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage.a()) {
         break label259;
       }
-      localSystemMsgItemHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838589);
+      localSystemMsgItemHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838595);
       if (Utils.b(String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get()))) {
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800826D", "0X800826D", 0, 0, "", "", "", "");
       }
@@ -515,7 +515,7 @@ public class SystemMsgItemBuilder
       localSystemMsgItemHolder = (SystemMsgItemBuilder.SystemMsgItemHolder)paramView.getTag();
       break;
       label259:
-      localSystemMsgItemHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838585);
+      localSystemMsgItemHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838591);
     }
   }
   
@@ -574,7 +574,7 @@ public class SystemMsgItemBuilder
       } while ((paramView == null) || (!(paramView instanceof SystemMsgItemBuilder.SystemMsgItemHolder)));
       if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433009), 0).b(b());
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433023), 0).b(b());
         return;
       }
       paramView = (SystemMsgItemBuilder.SystemMsgItemHolder)paramView;

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.lightReply;
 
-import aebq;
+import aeka;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -92,7 +92,7 @@ public class FacePicDectect
       if (QLog.isColorLevel()) {
         QLog.d("FacePicDetect", 2, "drawable convert time is" + (l2 - l1));
       }
-      ThreadManager.post(new aebq(this, paramFaceDetectFinishedListener), 5, null, true);
+      ThreadManager.post(new aeka(this, paramFaceDetectFinishedListener), 5, null, true);
       return;
     }
     catch (Exception paramDrawable)

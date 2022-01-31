@@ -1,31 +1,27 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.TroopInfoManager;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
-import mqq.os.MqqHandler;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.qphone.base.util.QLog;
 
 public class wap
-  implements Runnable
+  implements AsyncBack
 {
-  public wap(TroopChatPie paramTroopChatPie) {}
+  public wap(HotChatPie paramHotChatPie) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    if (TroopChatPie.e(this.a)) {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
+    }
+    paramString = this.a;
+    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      HotChatPie.b(paramString, bool);
       return;
     }
-    Object localObject = (TroopInfoManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36);
-    if (localObject != null) {
-      ((TroopInfoManager)localObject).a(Long.valueOf(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)), true).a();
-    }
-    TroopNotificationHelper.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    localObject = TroopChatPie.k(this.a).obtainMessage(29);
-    ((Message)localObject).arg1 = 1;
-    TroopChatPie.l(this.a).sendMessage((Message)localObject);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

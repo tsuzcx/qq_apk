@@ -1,31 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-class aaor
-  extends BroadcastReceiver
+public class aaor
+  implements Runnable
 {
-  aaor(aaoq paramaaoq, long paramLong) {}
+  public aaor(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getStringExtra("com.tencent.ark.scanResultData");
-    paramIntent = paramIntent.getStringExtra("com.tencent.ark.scanResultType");
-    ArkAppCenter.a().post(new aaos(this, paramContext, paramIntent));
-    try
-    {
-      BaseApplicationImpl.getApplication().unregisterReceiver(ArkAppDeviceModule.a(this.jdField_a_of_type_Aaoq.a));
-      label46:
-      ArkAppDeviceModule.a(this.jdField_a_of_type_Aaoq.a, null);
-      return;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
+    if (this.jdField_a_of_type_Boolean) {
+      localHashMap.put("result", "0");
     }
-    catch (Exception paramContext)
+    for (;;)
     {
-      break label46;
+      StatisticCollector.a(BaseApplication.getContext()).a("", "ARNativeBridgeSo", true, 0L, 0L, localHashMap, "");
+      return;
+      localHashMap.put("result", "1");
     }
   }
 }

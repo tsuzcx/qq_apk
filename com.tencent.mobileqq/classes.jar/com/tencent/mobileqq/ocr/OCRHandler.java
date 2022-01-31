@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr;
 
-import agau;
+import agey;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -464,7 +464,7 @@ public class OCRHandler
         localObject5 = ((ByteArrayOutputStream)localObject1).toByteArray();
         localObject1 = new HttpNetReq();
         ((HttpNetReq)localObject1).jdField_a_of_type_ArrayOfByte = ((byte[])localObject5);
-        ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new agau(this, paramIntent, (byte[])localObject2, (String)localObject3);
+        ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new agey(this, paramIntent, (byte[])localObject2, (String)localObject3);
         ((HttpNetReq)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject4);
         ((HttpNetReq)localObject1).jdField_a_of_type_Int = 1;
         ((HttpNetReq)localObject1).f = 57;
@@ -574,21 +574,6 @@ public class OCRHandler
     b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.ocr.OCRHandler", 2, "translate, text = " + paramString);
-    }
-    oidb_0x990.ReqBody localReqBody = new oidb_0x990.ReqBody();
-    oidb_0x990.TranslateReq localTranslateReq = new oidb_0x990.TranslateReq();
-    localTranslateReq.bytes_text.set(ByteStringMicro.copyFromUtf8(paramString));
-    localTranslateReq.int32_type.set(0);
-    localReqBody.msg_translate_req.set(localTranslateReq);
-    paramString = a("OidbSvc.0x990", 2448, 1, localReqBody.toByteArray());
-    paramString.extraData.putLong("param_starttime", SystemClock.elapsedRealtime());
-    b(paramString);
-  }
-  
   public void a(String paramString1, String paramString2, long paramLong)
   {
     if (QLog.isColorLevel()) {
@@ -618,6 +603,26 @@ public class OCRHandler
     paramString2.putExtra("param_sougou_sessionid", paramString1);
     paramString2.putExtra("param_starttime", paramLong);
     a(paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.ocr.OCRHandler", 2, "translate, text = " + paramString1);
+    }
+    oidb_0x990.ReqBody localReqBody = new oidb_0x990.ReqBody();
+    oidb_0x990.TranslateReq localTranslateReq = new oidb_0x990.TranslateReq();
+    localTranslateReq.bytes_text.set(ByteStringMicro.copyFromUtf8(paramString1));
+    localTranslateReq.int32_type.set(0);
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      localTranslateReq.str_src_language.set(paramString2);
+      localTranslateReq.str_dst_language.set(paramString3);
+    }
+    localReqBody.msg_translate_req.set(localTranslateReq);
+    paramString1 = a("OidbSvc.0x990", 2448, 1, localReqBody.toByteArray());
+    paramString1.extraData.putLong("param_starttime", SystemClock.elapsedRealtime());
+    b(paramString1);
   }
   
   protected boolean a(String paramString)

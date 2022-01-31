@@ -41,8 +41,9 @@ public abstract class QQStoryConfigServletHandler
     SLog.a("QQStoryConfigServletHandler", "handledAIOSyncToStory config=%s", paramList);
     if (TextUtils.isEmpty(paramList))
     {
-      SLog.e("QQStoryConfigServletHandler", "handledAIOSyncToStory content is null!!");
-      return false;
+      SLog.d("QQStoryConfigServletHandler", "handledAIOSyncToStory content is null!!");
+      EditAioSyncToStoryPart.e();
+      return true;
     }
     try
     {
@@ -134,7 +135,7 @@ public abstract class QQStoryConfigServletHandler
         try
         {
           if (Integer.valueOf(str11).intValue() != 1) {
-            break label1075;
+            break label1076;
           }
           bool = true;
           paramList.b("boolean_need_high_profile", Boolean.valueOf(bool));
@@ -288,6 +289,13 @@ public abstract class QQStoryConfigServletHandler
     }
     SLog.a("QQStoryConfigServletHandler", "handleStorySync2QzoneConfig config=%s", paramList);
     paramList = (String)paramList.get(0);
+    if (TextUtils.isEmpty(paramList))
+    {
+      SLog.d("QQStoryConfigServletHandler", "handleStorySync2QzoneConfig clear config");
+      StoryConfigManager.b(false);
+      StoryConfigManager.d(false);
+      return true;
+    }
     try
     {
       paramList = new JSONObject(paramList);
@@ -299,10 +307,10 @@ public abstract class QQStoryConfigServletHandler
         bool = true;
         StoryConfigManager.b(bool);
         if (j != 1) {
-          break label121;
+          break label146;
         }
       }
-      label121:
+      label146:
       for (boolean bool = true;; bool = false)
       {
         StoryConfigManager.d(bool);

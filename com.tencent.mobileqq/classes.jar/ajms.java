@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
 
 public class ajms
   implements Runnable
 {
-  public ajms(AIOAnimationControlManager paramAIOAnimationControlManager) {}
+  public ajms(TroopFileUploadMgr paramTroopFileUploadMgr) {}
   
   public void run()
   {
-    AIOAnimationControlManager.a(this.a);
-    this.a.a();
+    if (this.a.a) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
+    if (localQQAppInterface != null)
+    {
+      AppNetConnInfo.registerConnectionChangeReceiver(localQQAppInterface.getApplication(), this.a);
+      this.a.a = true;
+      return;
+    }
+    TroopFileTransferUtil.Log.a("TroopFileUploadMgr", TroopFileTransferUtil.Log.a, "init registerConnectionChangeReceiver fail");
   }
 }
 

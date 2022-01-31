@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class uci
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public uci(TroopRequestActivity paramTroopRequestActivity, FriendsManager paramFriendsManager) {}
+  public uci(TroopInfoActivity paramTroopInfoActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Card localCard = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.b);
-    ThreadManager.getUIHandler().post(new ucj(this, localCard));
+    TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    }
   }
 }
 

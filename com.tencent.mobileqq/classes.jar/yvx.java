@@ -1,21 +1,37 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.game.ApolloFragmentManager;
+import com.tencent.mobileqq.apollo.game.ApolloGameView;
+import com.tencent.mobileqq.apollo.game.ApolloGameView.Director;
+import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
 
 public class yvx
-  implements Comparator
+  implements Runnable
 {
-  public yvx(ApolloDaoManager paramApolloDaoManager) {}
+  public yvx(ApolloGameView paramApolloGameView, Intent paramIntent) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void run()
   {
-    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
-      return 0;
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    {
+      ApolloGameView.Director localDirector = new ApolloGameView.Director();
+      String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.TITLE);
+      if (!TextUtils.isEmpty(str)) {
+        localDirector.title = str;
+      }
+      str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.FOREGROUND_COLOR);
+      if (!TextUtils.isEmpty(str)) {
+        localDirector.frontColor = str;
+      }
+      str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(ApolloGameView.Director.BACKGROUND_COLOR);
+      if (!TextUtils.isEmpty(str)) {
+        localDirector.bgColor = str;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a = localDirector;
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameView.a();
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("Director", localDirector);
     }
-    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
-      return 1;
-    }
-    return -1;
+    ApolloFragmentManager.a().a(this.jdField_a_of_type_AndroidContentIntent, ApolloWebViewFragment.class);
   }
 }
 

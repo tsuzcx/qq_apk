@@ -1,11 +1,25 @@
-class amxm
-  implements Runnable
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import cooperation.qqindividuality.widget.SignatureLoadingDialog;
+
+public class amxm
+  extends SignatureLoadingDialog
 {
-  amxm(amxl paramamxl) {}
-  
-  public void run()
+  public amxm(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
   {
-    amxl.a(this.a);
+    super(paramContext);
+  }
+  
+  public void onBackPressed()
+  {
+    if (this.a.a) {
+      super.onBackPressed();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

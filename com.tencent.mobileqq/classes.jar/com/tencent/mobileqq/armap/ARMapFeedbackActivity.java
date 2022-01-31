@@ -38,29 +38,29 @@ public class ARMapFeedbackActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970211);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131369609));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369610));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131369611));
-    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369612));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131369613));
-    this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369614));
-    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131369611));
-    this.jdField_d_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369612));
-    this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131369617));
-    this.jdField_e_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369618));
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131369598));
+    setContentView(2130970226);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131369619));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369620));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131369621));
+    this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369622));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131369623));
+    this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369624));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131369621));
+    this.jdField_d_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369622));
+    this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131369627));
+    this.jdField_e_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369628));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131369608));
     this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this);
-    this.jdField_b_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131369603));
+    this.jdField_b_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131369613));
     this.jdField_b_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this);
-    this.jdField_c_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131369606));
+    this.jdField_c_of_type_AndroidWidgetRadioGroup = ((RadioGroup)findViewById(2131369616));
     this.jdField_c_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo = ((POIInfo)getIntent().getParcelableExtra("poiinfo"));
     if (this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo == null) {
       finish();
     }
-    setLeftViewName(2131432414);
-    setRightButton(2131435535, this);
+    setLeftViewName(2131432425);
+    setRightButton(2131435551, this);
     setTitle(this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo.jdField_a_of_type_JavaLangString);
     return true;
   }
@@ -76,33 +76,33 @@ public class ARMapFeedbackActivity
         QLog.d("ARMapFeedbackActivity", 2, "onCheckChanged,currentNetType= " + this.jdField_a_of_type_JavaLangString + ",currentLocationType=" + this.jdField_b_of_type_JavaLangString + ",currentGPSStatus=" + this.jdField_c_of_type_JavaLangString);
       }
       return;
-      if (paramInt == 2131369599)
+      if (paramInt == 2131369609)
       {
         this.jdField_a_of_type_JavaLangString = "2G";
       }
-      else if (paramInt == 2131369600)
+      else if (paramInt == 2131369610)
       {
         this.jdField_a_of_type_JavaLangString = "3G";
       }
-      else if (paramInt == 2131369601)
+      else if (paramInt == 2131369611)
       {
         this.jdField_a_of_type_JavaLangString = "4G";
       }
-      else if (paramInt == 2131369602)
+      else if (paramInt == 2131369612)
       {
         this.jdField_a_of_type_JavaLangString = "Wifi";
         continue;
-        if (paramInt == 2131369604)
+        if (paramInt == 2131369614)
         {
           this.jdField_b_of_type_JavaLangString = "Indoor";
         }
-        else if (paramInt == 2131369605)
+        else if (paramInt == 2131369615)
         {
           this.jdField_b_of_type_JavaLangString = "Outdoor";
           continue;
-          if (paramInt == 2131369607) {
+          if (paramInt == 2131369617) {
             this.jdField_c_of_type_JavaLangString = "GPS_ON";
-          } else if (paramInt == 2131369608) {
+          } else if (paramInt == 2131369618) {
             this.jdField_c_of_type_JavaLangString = "GPS_OFF";
           }
         }

@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.worldcup.TouchSliceView;
-import java.util.Deque;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import mqq.os.MqqHandler;
 
 public class akyb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akyb(TouchSliceView paramTouchSliceView) {}
+  public akyb(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TouchSliceView.a(this.a).clear();
-    this.a.postInvalidate();
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102));
   }
 }
 

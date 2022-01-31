@@ -1,39 +1,16 @@
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
 public class lad
-  extends MessageObserver
+  implements DialogInterface.OnClickListener
 {
-  public lad(EcshopReportHandler paramEcshopReportHandler) {}
+  public lad(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, String paramString) {}
   
-  public void a(List paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramList);
-    EcshopReportHandler localEcshopReportHandler = (EcshopReportHandler)this.a.a.getBusinessHandler(88);
-    paramList = paramList.iterator();
-    label131:
-    while (paramList.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if (("2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) || (ServiceAccountFolderManager.d(this.a.b, localMessageRecord.senderuin))) {}
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) && ((EcShopAssistantManager.b == null) || (!EcShopAssistantManager.b.contains(localMessageRecord.senderuin)))) {
-          break label131;
-        }
-        if (i != 0) {
-          localEcshopReportHandler.a(localMessageRecord);
-        }
-        localEcshopReportHandler.b(localMessageRecord);
-        break;
-      }
-    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

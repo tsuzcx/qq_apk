@@ -56,7 +56,7 @@ public class DonotGiveUpHealing
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inScaled = true;
     localOptions.inDensity = 320;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130842031, localOptions);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130842062, localOptions);
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
     this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
     this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);

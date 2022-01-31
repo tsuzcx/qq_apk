@@ -1,35 +1,16 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView.JustLogPlayProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
 
 public class ohc
-  extends NeoVideoFilterPlayView.JustLogPlayProgressListener
+  implements View.OnClickListener
 {
-  public ohc(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public ohc(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    super.a();
-    this.a.l();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
-    }
-    super.a(paramLong);
-    try
-    {
-      this.a.a(1000L * paramLong);
-      return;
-    }
-    catch (InterruptedException localInterruptedException) {}
+    this.a.getActivity().finish();
   }
 }
 

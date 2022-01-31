@@ -1,32 +1,48 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import java.lang.ref.WeakReference;
+import mqq.app.MobileQQ;
 
 public class tez
   implements Runnable
 {
-  public tez(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  private WeakReference a;
+  private WeakReference b;
+  
+  public tez(Activity paramActivity, FormSimpleItem paramFormSimpleItem)
+  {
+    this.a = new WeakReference(paramFormSimpleItem);
+    this.b = new WeakReference(paramActivity);
+  }
   
   public void run()
   {
-    int i = ((FriendsManager)this.a.app.getManager(50)).c();
-    Object localObject = (PhoneContactManagerImp)this.a.app.getManager(10);
-    int j = ((PhoneContactManagerImp)localObject).c();
-    if ((((PhoneContactManagerImp)localObject).c()) || (j == 8)) {
-      i = ((PhoneContactManagerImp)localObject).a(false).size() + i;
-    }
-    for (;;)
+    boolean bool1 = JumpQqPimSecureUtil.a(MobileQQ.sMobileQQ);
+    boolean bool2 = JumpQqPimSecureUtil.b(MobileQQ.sMobileQQ);
+    if (!bool1)
     {
-      if (i > 0) {}
-      for (localObject = i + "人";; localObject = "暂无")
-      {
-        ThreadManager.getUIHandler().post(new tfa(this, (String)localObject));
-        return;
+      i = LoginInfoActivity.a();
+      if (i == LoginInfoActivity.c()) {
+        break label85;
       }
+    }
+    label85:
+    for (int i = 2131436666;; i = 2131436667)
+    {
+      Activity localActivity = (Activity)this.b.get();
+      if (localActivity != null) {
+        localActivity.runOnUiThread(new tfb(i, this.a));
+      }
+      return;
+      if (!bool2)
+      {
+        i = LoginInfoActivity.b();
+        break;
+      }
+      i = LoginInfoActivity.c();
+      break;
     }
   }
 }

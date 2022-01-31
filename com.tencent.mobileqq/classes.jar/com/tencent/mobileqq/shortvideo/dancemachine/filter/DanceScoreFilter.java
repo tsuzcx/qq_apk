@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo.dancemachine.filter;
 
-import aiba;
-import aibb;
-import aibc;
+import aifs;
+import aift;
+import aifu;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -66,7 +66,7 @@ public class DanceScoreFilter
     ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(300L);
     localAnimationSet.addAnimation(localScaleAnimation);
-    localAnimationSet.setAnimationListener(new aiba(this));
+    localAnimationSet.setAnimationListener(new aifs(this));
     return localAnimationSet;
   }
   
@@ -78,7 +78,7 @@ public class DanceScoreFilter
     localTranslateAnimation.setDuration(1000L);
     localTranslateAnimation.setInterpolator(new BounceInterpolator());
     localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.setAnimationListener(new aibb(this));
+    localAnimationSet.setAnimationListener(new aift(this));
     localAnimationSet.setStartOffset(300L);
     return localAnimationSet;
   }
@@ -114,7 +114,7 @@ public class DanceScoreFilter
     localObject = new AlphaAnimation(0.0F, 1.0F);
     ((Animation)localObject).setDuration(600L);
     localAnimationSet.addAnimation((Animation)localObject);
-    localAnimationSet.setAnimationListener(new aibc(this));
+    localAnimationSet.setAnimationListener(new aifu(this));
     return localAnimationSet;
   }
   
@@ -133,7 +133,7 @@ public class DanceScoreFilter
       if (!this.jdField_b_of_type_Boolean)
       {
         this.jdField_b_of_type_Boolean = true;
-        this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(true);
+        this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(true);
         this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(this.jdField_c_of_type_AndroidViewAnimationAnimation);
         paramInt1 = ResourceManager.a().a().size();
         float f5 = paramInt2 * 1.0F / (paramInt1 * 50);
@@ -166,7 +166,7 @@ public class DanceScoreFilter
         this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a("" + f1 + "%", 4, -18322);
         this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.a("的用户", 3, -1);
         a();
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.h_(true);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.f_(true);
         this.jdField_a_of_type_JavaLangString = (f1 + "");
         this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.d(paramInt2);
         for (;;)
@@ -247,11 +247,11 @@ public class DanceScoreFilter
     this.jdField_a_of_type_AndroidViewAnimationAnimation = a();
     this.jdField_c_of_type_AndroidViewAnimationAnimation = b();
     this.jdField_b_of_type_AndroidViewAnimationAnimation = a(this.e, this.f);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(true);
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(false);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.h_(true);
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(false);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.h_(false);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(true);
+    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(false);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLScoreBoard.f_(true);
+    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(false);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLTextView.f_(false);
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(this.jdField_a_of_type_AndroidViewAnimationAnimation);
     this.jdField_b_of_type_JavaLangString = "";
     this.jdField_c_of_type_Boolean = false;

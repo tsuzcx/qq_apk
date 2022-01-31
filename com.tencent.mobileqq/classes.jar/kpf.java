@@ -1,36 +1,69 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.biz.helper.TroopCardAppInfoHelper;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class kpf
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public kpf(EqqAccountDetailActivity paramEqqAccountDetailActivity, PaConfigAttr.PaConfigInfo paramPaConfigInfo, String paramString) {}
+  public kpf(TroopCardAppInfoHelper paramTroopCardAppInfoHelper, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.g)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.f)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.jdField_a_of_type_JavaLangString, 2, "buildMapItemForEqq no lat or lng");
-      }
+    if (this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper.jdField_a_of_type_Boolean) {
       return;
     }
-    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, QQMapActivity.class);
-    paramView.putExtra("lat", this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.g);
-    paramView.putExtra("lon", this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.f);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      paramView.putExtra("loc", this.jdField_a_of_type_JavaLangString);
+    if ((!paramBoolean) || (paramBundle == null))
+    {
+      TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper);
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
-    ReportController.b(EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "CliOper", "", "", "Biz_card", "Biz_card_map", 0, 0, EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "", "", "");
-    EqqAccountDetailActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.jdField_a_of_type_JavaLangString);
+    paramBundle = paramBundle.getByteArray("data");
+    Object localObject = new oidb_sso.OIDBSSOPkg();
+    try
+    {
+      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
+      if ((localObject == null) || (!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() != 0) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
+      {
+        TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopCardAppInfoHandler", 2, "handleGetTroopAppBriefList error " + QLog.getStackTraceString(paramBundle));
+      }
+      TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper);
+      return;
+    }
+    localObject = TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper, (oidb_sso.OIDBSSOPkg)localObject);
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper, (List)localObject);
+        return;
+      }
+      paramBundle = new ArrayList();
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Long localLong = (Long)((Iterator)localObject).next();
+        new TroopAppInfo().appId = localLong.longValue();
+      }
+      TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper, paramBundle);
+      return;
+    }
+    TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper);
   }
 }
 

@@ -1,22 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import java.io.File;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 
 public class xfk
   implements Runnable
 {
-  public xfk(PreloadComDownloader paramPreloadComDownloader, String paramString1, String paramString2, DownloadListener paramDownloadListener, Bundle paramBundle) {}
+  public xfk(PasswdRedBagManager paramPasswdRedBagManager) {}
   
   public void run()
   {
-    DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_JavaLangString, new File(this.b));
-    localDownloadTask.f = "QwalletPreload";
-    if (PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader) != null) {
-      PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader).a(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_AndroidOsBundle);
-    }
+    PasswdRedBagManager.a(this.a).b();
   }
 }
 

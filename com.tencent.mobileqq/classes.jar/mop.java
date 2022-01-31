@@ -1,14 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
 public class mop
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mop(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, int paramInt) {}
+  public mop(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FastWebVideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.smoothScrollBy(this.jdField_a_of_type_Int, 0);
+    if (this.a.a() != null)
+    {
+      this.a.a().c();
+      PublicAccountReportUtils.a(this.a.a, "CliOper", "", "", "0X8009160", "0X8009160", 0, 1, null, null, null, null, false);
+    }
   }
 }
 

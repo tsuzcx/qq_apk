@@ -75,12 +75,12 @@ public class EmotionCompleteInvalidAdapter
     localTextView.setGravity(1);
     localLinearLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
     localObject = new Button(this.jdField_a_of_type_AndroidContentContext);
-    ((Button)localObject).setId(2131364483);
+    ((Button)localObject).setId(2131364510);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, (int)(25.0F * this.jdField_a_of_type_Float));
     ((Button)localObject).setGravity(17);
     localLayoutParams.topMargin = ((int)(10.0F * this.jdField_a_of_type_Float));
     localLayoutParams.gravity = 1;
-    ((Button)localObject).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838520));
+    ((Button)localObject).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838526));
     ((Button)localObject).setTextColor(-14894864);
     ((Button)localObject).setPadding((int)(this.jdField_a_of_type_Float * 30.0F), 0, (int)(this.jdField_a_of_type_Float * 30.0F), 0);
     localLinearLayout.addView((View)localObject, localLayoutParams);
@@ -311,7 +311,7 @@ public class EmotionCompleteInvalidAdapter
   public void onClick(View paramView)
   {
     boolean bool = true;
-    if (paramView.getId() == 2131364483)
+    if (paramView.getId() == 2131364510)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
         break label28;

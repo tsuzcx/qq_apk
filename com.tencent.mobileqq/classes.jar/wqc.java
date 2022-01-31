@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.util.MqqWeakReferenceHandler;
+import java.util.List;
 
-class wqc
-  implements Runnable
+public class wqc
+  extends TroopObserver
 {
-  wqc(wqb paramwqb, int paramInt) {}
+  public wqc(RecommendTroopView paramRecommendTroopView) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, List paramList)
   {
-    this.jdField_a_of_type_Wqb.a.a(36, 16, Integer.valueOf(this.jdField_a_of_type_Int));
+    if ((paramBoolean) && (paramList != null))
+    {
+      this.a.a.a().sendEmptyMessage(105);
+      this.a.j();
+    }
   }
 }
 

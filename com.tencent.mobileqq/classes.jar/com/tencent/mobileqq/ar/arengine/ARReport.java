@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aahx;
-import aahy;
-import aahz;
-import aaia;
-import aaib;
-import aaic;
-import aaid;
-import aaie;
-import aaif;
-import aaig;
-import aaih;
-import aaii;
-import aaij;
-import aaik;
-import aail;
-import aaim;
-import aain;
+import aaoo;
+import aaop;
+import aaoq;
+import aaor;
+import aaos;
+import aaot;
+import aaou;
+import aaov;
+import aaow;
+import aaox;
+import aaoy;
+import aaoz;
+import aapa;
+import aapb;
+import aapc;
+import aapd;
+import aape;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -28,7 +28,7 @@ import java.io.FileFilter;
 public class ARReport
 {
   private static ARReport jdField_a_of_type_ComTencentMobileqqArArengineARReport;
-  private static final FileFilter jdField_a_of_type_JavaIoFileFilter = new aaif();
+  private static final FileFilter jdField_a_of_type_JavaIoFileFilter = new aaow();
   
   public static int a()
   {
@@ -77,7 +77,7 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aaij(this, paramLong), 5, null, false);
+    ThreadManager.post(new aapa(this, paramLong), 5, null, false);
   }
   
   public void a(long paramLong, int paramInt)
@@ -86,13 +86,13 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aaid(this, paramInt, paramLong), 5, null, false);
+    ThreadManager.post(new aaou(this, paramInt, paramLong), 5, null, false);
   }
   
   public void a(long paramLong1, long paramLong2)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report ARTotal  mDataReportFirstRenderModelTimeLen=:  %s mDataReportFirstCloudRecogAndRenderModelTimeLen=:  %s buildmodel=:  %s ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Build.MODEL }));
-    ThreadManager.post(new aahx(this, paramLong2, paramLong1), 5, null, false);
+    ThreadManager.post(new aaoo(this, paramLong2, paramLong1), 5, null, false);
   }
   
   public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, String paramString, int paramInt2, long paramLong4, long paramLong5, long paramLong6, int paramInt3)
@@ -101,13 +101,13 @@ public class ARReport
     if (paramInt1 < 1) {
       return;
     }
-    ThreadManager.post(new aaih(this, paramLong1, paramLong2, paramLong3, paramInt1, paramString, paramInt2, paramLong4, paramLong5, paramLong6, paramInt3), 5, null, false);
+    ThreadManager.post(new aaoy(this, paramLong1, paramLong2, paramLong3, paramInt1, paramString, paramInt2, paramLong4, paramLong5, paramLong6, paramInt3), 5, null, false);
   }
   
   public void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report Local mDataReportLoadedFeatureTimeLen=:  %s  mDataReportLoadedFeatureCnt=:  %s mDataReportFirstRecogSuccessTimeLen=:  %s  mDataReportFirstRecogSuccessFrameCnt=:  %s  mDataReportRecogQuality=:  %s mDataReportFirstRecogSuccessFeatureId=:  %s  ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5), paramString }));
-    ThreadManager.post(new aaii(this, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString), 5, null, false);
+    ThreadManager.post(new aaoz(this, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString), 5, null, false);
   }
   
   public void a(long paramLong, boolean paramBoolean)
@@ -116,13 +116,13 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aail(this, paramLong, paramBoolean), 5, null, false);
+    ThreadManager.post(new aapc(this, paramLong, paramBoolean), 5, null, false);
   }
   
   public void a(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, long paramLong4, int paramInt2, long paramLong5, int paramInt3, long paramLong6, long paramLong7, int paramInt4)
   {
     QLog.d("AREngine_ARReport", 2, String.format("report  CloudDownload   mImageId=:  %s mFeatureSize=:  %s mFeatureTime=:  %s mFeatureCode=:  %s  mModedSize=:  %s  mModelTime=:  %s mModelCode=:  %s mUnzipeTime=:  %s mType=:  %s totalTime=:  %s  mNetSize=:  %s mResult=:  %s", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt1), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Integer.valueOf(paramInt2), Long.valueOf(paramLong5), Integer.valueOf(paramInt3), Long.valueOf(paramLong6), Long.valueOf(paramLong7), Integer.valueOf(paramInt4) }));
-    ThreadManager.post(new aaig(this, paramString, paramLong1, paramLong2, paramInt1, paramLong3, paramLong4, paramInt2, paramLong5, paramInt3, paramLong6, paramLong7, paramInt4), 5, null, false);
+    ThreadManager.post(new aaox(this, paramString, paramLong1, paramLong2, paramInt1, paramLong3, paramLong4, paramInt2, paramLong5, paramInt3, paramLong6, paramLong7, paramInt4), 5, null, false);
   }
   
   public void b(long paramLong)
@@ -131,7 +131,7 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aaik(this, paramLong), 5, null, false);
+    ThreadManager.post(new aapb(this, paramLong), 5, null, false);
   }
   
   public void b(long paramLong, int paramInt)
@@ -140,7 +140,7 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aaie(this, paramLong, paramInt), 5, null, false);
+    ThreadManager.post(new aaov(this, paramLong, paramInt), 5, null, false);
   }
   
   public void b(long paramLong, boolean paramBoolean)
@@ -149,7 +149,7 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aaim(this, paramLong, paramBoolean), 5, null, false);
+    ThreadManager.post(new aapd(this, paramLong, paramBoolean), 5, null, false);
   }
   
   public void c(long paramLong)
@@ -158,7 +158,7 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aaic(this, paramLong), 5, null, false);
+    ThreadManager.post(new aaot(this, paramLong), 5, null, false);
   }
   
   public void c(long paramLong, boolean paramBoolean)
@@ -167,7 +167,7 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aain(this, paramLong, paramBoolean), 5, null, false);
+    ThreadManager.post(new aape(this, paramLong, paramBoolean), 5, null, false);
   }
   
   public void d(long paramLong, boolean paramBoolean)
@@ -176,7 +176,7 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aahy(this, paramLong, paramBoolean), 5, null, false);
+    ThreadManager.post(new aaop(this, paramLong, paramBoolean), 5, null, false);
   }
   
   public void e(long paramLong, boolean paramBoolean)
@@ -185,7 +185,7 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aahz(this, paramLong, paramBoolean), 5, null, false);
+    ThreadManager.post(new aaoq(this, paramLong, paramBoolean), 5, null, false);
   }
   
   public void f(long paramLong, boolean paramBoolean)
@@ -194,7 +194,7 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aaia(this, paramLong, paramBoolean), 5, null, false);
+    ThreadManager.post(new aaor(this, paramLong, paramBoolean), 5, null, false);
   }
   
   public void g(long paramLong, boolean paramBoolean)
@@ -203,7 +203,7 @@ public class ARReport
     if (!a(paramLong)) {
       return;
     }
-    ThreadManager.post(new aaib(this, paramLong, paramBoolean), 5, null, false);
+    ThreadManager.post(new aaos(this, paramLong, paramBoolean), 5, null, false);
   }
 }
 

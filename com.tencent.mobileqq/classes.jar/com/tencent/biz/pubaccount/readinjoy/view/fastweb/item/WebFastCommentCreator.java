@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.mobileqq.util.FaceDecoder;
-import mnf;
+import mqx;
 
 public class WebFastCommentCreator
   implements ItemCreator
@@ -24,7 +24,7 @@ public class WebFastCommentCreator
   
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new mnf(LayoutInflater.from(paramContext).inflate(2130969610, paramViewGroup, false), paramBaseData, this.a);
+    return new mqx(LayoutInflater.from(paramContext).inflate(2130969606, paramViewGroup, false), paramBaseData, this.a);
   }
   
   public boolean a(BaseData paramBaseData)

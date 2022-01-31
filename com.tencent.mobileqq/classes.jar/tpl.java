@@ -1,26 +1,37 @@
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.ApolloManager.CheckApolloInfoResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class tpl
   extends Handler
 {
-  public tpl(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  public tpl(QQSettingMe paramQQSettingMe, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
   public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    default: 
+    }
+    do
+    {
       return;
-    }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131434841);
-    }
-    this.a.a(paramMessage, 1);
+      this.a.n();
+      return;
+      QQSettingMe.a(this.a);
+      return;
+      if (QQSettingMe.a(this.a))
+      {
+        QLog.i("QQSettingRedesign", 1, "MSG_CODE_REFRESH_APOLLO on DrawerClosed!");
+        return;
+      }
+    } while (!(paramMessage.obj instanceof ApolloManager.CheckApolloInfoResult));
+    QQSettingMe.a(this.a, (ApolloManager.CheckApolloInfoResult)paramMessage.obj);
   }
 }
 

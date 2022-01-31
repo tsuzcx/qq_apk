@@ -1,54 +1,49 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.util.VideoPlayDianZanObserver;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class mdl
-  extends VideoPlayDianZanObserver
+class mdl
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public mdl(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  mdl(mdk parammdk) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "onGetDianZanState isSuccess: " + paramBoolean);
-    }
-    if (!paramBoolean) {}
-    label35:
-    String str;
-    int i;
-    VideoInfo localVideoInfo;
-    do
+    if (paramJSONObject != null)
     {
-      do
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager.a(this.a.b, Integer.toString(ReadInJoyWebDataManager.b));
+      try
       {
-        do
+        if ((this.a.jdField_a_of_type_Mdp != null) && ((this.a.jdField_a_of_type_Mdp instanceof mdp))) {
+          this.a.jdField_a_of_type_Mdp.a(paramJSONObject);
+        }
+        paramBundle = paramJSONObject.toString();
+        ReadInJoyWebDataManager.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager, this.a.b, paramBundle);
+        this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
+        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
+      }
+      catch (JSONException paramBundle)
+      {
+        for (;;)
         {
-          return;
-          break label35;
-          while (paramBundle == null) {}
-          str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
-          i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
-        } while (str == null);
-        paramBundle = VideoFeedsPlayActivity.a(this.a).iterator();
-      } while (!paramBundle.hasNext());
-      localVideoInfo = (VideoInfo)paramBundle.next();
-    } while ((localVideoInfo.g == null) || (!localVideoInfo.g.equals(str)));
-    if (i == 1) {
-      localVideoInfo.h = true;
-    }
-    for (;;)
-    {
-      VideoFeedsPlayActivity.a(this.a).a(localVideoInfo.g, Boolean.valueOf(false));
-      return;
-      if (i == 0) {
-        localVideoInfo.h = false;
+          if (QLog.isColorLevel()) {
+            QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:storeParams putData JSONException :" + paramBundle);
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result :" + paramJSONObject);
       }
     }
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager.a(this.a.b, Integer.toString(ReadInJoyWebDataManager.a));
+    } while (!QLog.isColorLevel());
+    QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result null");
   }
 }
 

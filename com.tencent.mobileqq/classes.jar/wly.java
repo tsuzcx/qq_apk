@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.TroopAIOImageGeter.LoadMediaDataCallBack;
+import com.tencent.qphone.base.util.QLog;
 
 public class wly
-  implements Comparator
+  implements TroopAIOImageGeter.LoadMediaDataCallBack
 {
-  public wly(ContactsDisAdapter paramContactsDisAdapter, HashMap paramHashMap) {}
+  public wly(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
+    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
+    {
+      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
+      if (QLog.isColorLevel()) {
+        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
+      }
     }
-    if (l1 > l2) {
-      return 1;
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    return 0;
+    QLog.i("chatHistory.troop.portal", 2, "no media data found");
   }
 }
 

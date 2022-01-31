@@ -1,31 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ajkv
-  implements TroopHomeworkHelper.UploadCallback
+  implements Runnable
 {
-  AudioInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo;
+  public ajkv(TroopEnterEffectManager paramTroopEnterEffectManager, String paramString) {}
   
-  public ajkv(AudioItem paramAudioItem, AudioInfo paramAudioInfo)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo = paramAudioInfo;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.g = 3;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.c(paramString);
-    ((Activity)AudioItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem)).runOnUiThread(new ajkw(this));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.g = 2;
-    ((Activity)AudioItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem)).runOnUiThread(new ajkx(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig = this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectConfig.a.get()) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.jdField_a_of_type_AndroidOsHandler.post(new ajkw(this));
+    }
   }
 }
 

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import protocol.KQQConfig.GetResourceRespInfo;
-import zbp;
+import zip;
 
 public class ConditionSearchManager$DownloadTask
   extends AbsPreDownloadTask
@@ -27,7 +27,7 @@ public class ConditionSearchManager$DownloadTask
     String str = this.d;
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     GetResourceRespInfo localGetResourceRespInfo = this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo;
-    localQQAppInterface.a(new zbp(this, str, this.jdField_a_of_type_JavaIoFile, localQQAppInterface, localGetResourceRespInfo));
+    localQQAppInterface.a(new zip(this, str, this.jdField_a_of_type_JavaIoFile, localQQAppInterface, localGetResourceRespInfo));
   }
   
   public String toString()

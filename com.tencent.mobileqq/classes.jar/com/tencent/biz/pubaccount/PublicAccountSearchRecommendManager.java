@@ -14,9 +14,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import kzc;
-import kzd;
-import kze;
+import lbj;
+import lbk;
+import lbl;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import org.json.JSONArray;
@@ -184,7 +184,7 @@ public class PublicAccountSearchRecommendManager
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "sendGetPublicAccountSearchRecommendRequset->versionInfo:" + localGetRecommendPubAccountRequest.version.get() + ", cuin:" + localGetRecommendPubAccountRequest.cuin.get() + ", count:" + localGetRecommendPubAccountRequest.count.get());
     }
     localNewIntent.putExtra("data", localGetRecommendPubAccountRequest.toByteArray());
-    localNewIntent.setObserver(new kze(this, localNewIntent, paramQQAppInterface, paramGetRecommendListListener));
+    localNewIntent.setObserver(new lbl(this, localNewIntent, paramQQAppInterface, paramGetRecommendListListener));
     this.jdField_e_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
     paramQQAppInterface.startServlet(localNewIntent);
     if (QLog.isColorLevel()) {
@@ -216,7 +216,7 @@ public class PublicAccountSearchRecommendManager
   
   private void c(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.executeOnFileThread(new kzc(this, paramQQAppInterface));
+    ThreadManager.executeOnFileThread(new lbj(this, paramQQAppInterface));
   }
   
   private void d(QQAppInterface paramQQAppInterface)
@@ -261,7 +261,7 @@ public class PublicAccountSearchRecommendManager
   
   private void e(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.executeOnFileThread(new kzd(this, paramQQAppInterface));
+    ThreadManager.executeOnFileThread(new lbk(this, paramQQAppInterface));
   }
   
   public void a()

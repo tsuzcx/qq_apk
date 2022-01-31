@@ -1,14 +1,16 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PttTipSwitchView;
 
 public class uvl
   implements Runnable
 {
-  public uvl(CommonHobbyForAIOShowItemBuilder paramCommonHobbyForAIOShowItemBuilder, ImageView paramImageView) {}
+  public uvl(PressToSpeakPanel paramPressToSpeakPanel) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842744);
+    if (PressToSpeakPanel.a(this.a) != null) {
+      PressToSpeakPanel.a(this.a).a();
+    }
   }
 }
 

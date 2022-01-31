@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import oqq;
+import ovf;
 
 public class SegmentManager
   extends BaseAdapter
@@ -40,7 +40,7 @@ public class SegmentManager
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    super.registerDataSetObserver(new oqq(this));
+    super.registerDataSetObserver(new ovf(this));
   }
   
   private int a(int paramInt)

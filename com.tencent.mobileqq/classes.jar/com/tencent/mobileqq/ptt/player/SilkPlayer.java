@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ptt.player;
 
-import agtq;
+import agyd;
 import android.app.Application;
 import android.os.Handler.Callback;
 import android.os.Looper;
@@ -14,7 +14,7 @@ public final class SilkPlayer
 {
   private byte jdField_a_of_type_Byte = -1;
   private int jdField_a_of_type_Int = 3;
-  private agtq jdField_a_of_type_Agtq;
+  private agyd jdField_a_of_type_Agyd;
   private Application jdField_a_of_type_AndroidAppApplication = BaseApplicationImpl.sApplication;
   private IPttPlayerListener jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
@@ -31,13 +31,13 @@ public final class SilkPlayer
   
   public void a()
   {
-    if (this.jdField_a_of_type_Agtq == null)
+    if (this.jdField_a_of_type_Agyd == null)
     {
-      this.jdField_a_of_type_Agtq = new agtq(this, this.jdField_a_of_type_AndroidAppApplication);
+      this.jdField_a_of_type_Agyd = new agyd(this, this.jdField_a_of_type_AndroidAppApplication);
       if ((this.c == -1) && (this.e > 0)) {
         b(a());
       }
-      this.jdField_a_of_type_Agtq.start();
+      this.jdField_a_of_type_Agyd.start();
     }
   }
   
@@ -64,7 +64,7 @@ public final class SilkPlayer
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Agtq != null) && (agtq.a(this.jdField_a_of_type_Agtq));
+    return (this.jdField_a_of_type_Agyd != null) && (agyd.a(this.jdField_a_of_type_Agyd));
   }
   
   public int b()
@@ -74,7 +74,7 @@ public final class SilkPlayer
   
   public void b()
   {
-    this.jdField_a_of_type_Agtq = null;
+    this.jdField_a_of_type_Agyd = null;
     if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener != null) {
       this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
     }
@@ -90,10 +90,10 @@ public final class SilkPlayer
   
   public void c()
   {
-    if ((this.jdField_a_of_type_Agtq != null) && (this.jdField_a_of_type_Agtq.isAlive()))
+    if ((this.jdField_a_of_type_Agyd != null) && (this.jdField_a_of_type_Agyd.isAlive()))
     {
-      agtq.a(this.jdField_a_of_type_Agtq, false);
-      this.jdField_a_of_type_Agtq = null;
+      agyd.a(this.jdField_a_of_type_Agyd, false);
+      this.jdField_a_of_type_Agyd = null;
     }
     this.b = -1;
     this.jdField_a_of_type_Byte = -1;
@@ -107,10 +107,10 @@ public final class SilkPlayer
   
   public void f()
   {
-    if ((this.jdField_a_of_type_Agtq != null) && (this.jdField_a_of_type_Agtq.isAlive()))
+    if ((this.jdField_a_of_type_Agyd != null) && (this.jdField_a_of_type_Agyd.isAlive()))
     {
-      agtq.a(this.jdField_a_of_type_Agtq, false);
-      this.jdField_a_of_type_Agtq = null;
+      agyd.a(this.jdField_a_of_type_Agyd, false);
+      this.jdField_a_of_type_Agyd = null;
     }
   }
   
@@ -252,7 +252,7 @@ public final class SilkPlayer
   
   public void h()
   {
-    this.jdField_a_of_type_Agtq = null;
+    this.jdField_a_of_type_Agyd = null;
     if (this.jdField_a_of_type_ComTencentMobileqqPttPlayerIPttPlayerListener != null) {
       this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
     }

@@ -1,80 +1,51 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.ShortVideoExceptionReporter;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
 
-public class aofc
-  extends BaseAdapter
+class aofc
+  implements HWEncodeListener
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  aofc(aofb paramaofb, HWEditLocalVideoPlayer.Mp4VideoFragmentInfo paramMp4VideoFragmentInfo) {}
   
-  public aofc(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = paramString;
+    SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "onEncodeFinish  iframe file filePath = " + paramString);
+    this.jdField_a_of_type_Aofb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a(new aofd(this), 0L);
   }
   
-  public void a(int paramInt)
+  public void a_(int paramInt, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    HorizontalStroke localHorizontalStroke = (HorizontalStroke)getItem(paramInt);
-    View localView;
-    if (paramView == null)
+    SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "encode error errorCode = " + paramInt + " Exception = " + paramThrowable);
+    if (this.jdField_a_of_type_Aofb.b == 0)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968952, paramViewGroup, false);
-      paramView = new aofd(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364378));
-      paramView.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localView.findViewById(2131364377));
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
+      this.jdField_a_of_type_Aofb.b = 1;
+      this.jdField_a_of_type_Aofb.jdField_a_of_type_Int = 3;
+      SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Reencode i frame video by mIFrameInterval = " + this.jdField_a_of_type_Aofb.b + " mFrameRate = " + this.jdField_a_of_type_Aofb.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aofb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a(this.jdField_a_of_type_Aofb, 1000L);
+      return;
     }
-    for (;;)
+    SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Reencode i frame video failed");
+    try
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localHorizontalStroke.a);
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break;
+      ShortVideoExceptionReporter.a(paramThrowable);
+      this.jdField_a_of_type_Aofb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a(new aofe(this), 0L);
+      return;
+    }
+    catch (Throwable paramThrowable)
+    {
+      for (;;)
+      {
+        paramThrowable.printStackTrace();
       }
-      paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.getResources().getDrawable(2130842472));
-      return localView;
-      paramViewGroup = (aofd)paramView.getTag();
-      localView = paramView;
     }
-    paramViewGroup.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(null);
-    return localView;
   }
+  
+  public void b() {}
 }
 
 

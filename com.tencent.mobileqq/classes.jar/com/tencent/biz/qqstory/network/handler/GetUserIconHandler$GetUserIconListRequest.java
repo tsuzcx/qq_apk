@@ -16,11 +16,11 @@ import java.util.Iterator;
 public class GetUserIconHandler$GetUserIconListRequest
   extends LegoRequestBase
 {
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList a;
   
-  public GetUserIconHandler$GetUserIconListRequest(GetUserIconHandler paramGetUserIconHandler, ArrayList paramArrayList)
+  public GetUserIconHandler$GetUserIconListRequest(ArrayList paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.a = paramArrayList;
   }
   
   public LegoResponseBase a(byte[] paramArrayOfByte)
@@ -29,7 +29,7 @@ public class GetUserIconHandler$GetUserIconListRequest
     try
     {
       localRspIconPostfix.mergeFrom(paramArrayOfByte);
-      return new GetUserIconHandler.GetUserIconListResponse(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetUserIconHandler, localRspIconPostfix);
+      return new GetUserIconHandler.GetUserIconListResponse(localRspIconPostfix);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
@@ -46,7 +46,7 @@ public class GetUserIconHandler$GetUserIconListRequest
   protected byte[] a()
   {
     qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();

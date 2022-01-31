@@ -1,32 +1,40 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.data.BmqqAccountType;
+import android.os.Bundle;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
+import cooperation.qappcenter.remote.RemoteServiceProxy;
+import cooperation.qappcenter.remote.SendMsg;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class allq
   implements Runnable
 {
-  public allq(QidianManager paramQidianManager, BmqqAccountType paramBmqqAccountType) {}
+  public allq(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentQidianQidianManager.a.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null) {}
     try
     {
-      localEntityManager.b(this.jdField_a_of_type_ComTencentQidianDataBmqqAccountType);
+      if (BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack) != null)
+      {
+        JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+        SendMsg localSendMsg = new SendMsg("setActionButton");
+        localSendMsg.a.putString("iconType", localJSONObject.optString("iconType"));
+        localSendMsg.a.putString("visible", localJSONObject.optString("visible"));
+        localSendMsg.a.putString("callBackKey", localJSONObject.optString("callBackKey"));
+        localSendMsg.a.putString("rightText", localJSONObject.optString("text"));
+        BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack).b(localSendMsg);
+      }
       return;
     }
-    finally
+    catch (JSONException localJSONException)
     {
-      localEntityManager.a();
+      localJSONException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     allq
  * JD-Core Version:    0.7.0.1
  */

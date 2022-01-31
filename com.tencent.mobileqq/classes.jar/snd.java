@@ -1,21 +1,14 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class snd
-  extends MqqHandler
+class snd
+  implements DialogInterface.OnClickListener
 {
-  public snd(FontSettingActivity paramFontSettingActivity) {}
+  snd(snb paramsnb) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (16711697 == paramMessage.what)
-    {
-      FontSettingManager.a(this.a, FontSettingActivity.a(this.a), false);
-      this.a.c = true;
-      this.a.a.notifyDataSetChanged();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

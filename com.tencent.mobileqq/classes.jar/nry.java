@@ -1,26 +1,17 @@
-import com.tencent.biz.qqstory.model.QQStoryActivityManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
 
 public class nry
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public nry(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
+  public nry(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QQStoryActivityManager localQQStoryActivityManager = (QQStoryActivityManager)SuperManager.a(18);
-    ArrayList localArrayList = localQQStoryActivityManager.a(this.a);
-    int i = localArrayList.size();
-    if (i >= 4)
-    {
-      localQQStoryActivityManager.a(((Integer)localArrayList.get(0)).intValue() + 1, ((Integer)localArrayList.get(i - 1)).intValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "QQStoryShareGroupProfileActivity activity stack full, size = " + i + ", start clear!");
-      }
-    }
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

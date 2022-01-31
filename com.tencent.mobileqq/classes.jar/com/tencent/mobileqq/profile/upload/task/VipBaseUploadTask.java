@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.upload.task;
 
-import agqj;
+import aguw;
 import android.text.TextUtils;
 import com.tencent.mobileqq.profile.upload.VipUploadUtils;
 import com.tencent.upload.uinterface.AbstractUploadTask;
@@ -43,7 +43,7 @@ public abstract class VipBaseUploadTask
     this.jdField_c_of_type_Int = 0;
     this.jdField_e_of_type_JavaLangString = "mqq";
     this.jdField_e_of_type_Int = -1;
-    this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback = new agqj(this);
+    this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback = new aguw(this);
   }
   
   public VipBaseUploadTask(long paramLong, String paramString, byte[] paramArrayOfByte)
@@ -53,7 +53,7 @@ public abstract class VipBaseUploadTask
     this.jdField_c_of_type_Int = 0;
     this.jdField_e_of_type_JavaLangString = "mqq";
     this.jdField_e_of_type_Int = -1;
-    this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback = new agqj(this);
+    this.jdField_b_of_type_ComTencentUploadUinterfaceIUploadTaskCallback = new aguw(this);
     this.jdField_a_of_type_Long = paramLong;
     this.g = paramString;
     this.h = VipUploadUtils.a(paramString);

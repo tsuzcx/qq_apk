@@ -8,12 +8,12 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.List;
-import kfz;
+import kif;
 
 public class NearbyPeopleProfileHelper
 {
   private static volatile NearbyPeopleProfileHelper jdField_a_of_type_ComTencentAvUtilsNearbyPeopleProfileHelper;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kfz(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kif(this);
   Context jdField_a_of_type_AndroidContentContext = null;
   public VideoController a;
   public VideoAppInterface a;
@@ -134,7 +134,7 @@ public class NearbyPeopleProfileHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.NearbyPeopleProfileHelper
  * JD-Core Version:    0.7.0.1
  */

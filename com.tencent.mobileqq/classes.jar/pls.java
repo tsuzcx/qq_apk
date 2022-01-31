@@ -1,19 +1,21 @@
-class pls
-  implements Runnable
+import com.tencent.component.media.image.ImageDefaultConfig;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.image.PoolParams;
+import com.tencent.component.media.image.PoolParams.BucketParams;
+
+public class pls
+  implements PoolParams
 {
-  pls(plr paramplr, Runnable paramRunnable) {}
+  public pls(ImageManager paramImageManager) {}
   
-  public void run()
+  public PoolParams.BucketParams getBucketParams(int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_Plr.a();
-    }
+    return ImageDefaultConfig.getArtBitmapBucketParams(ImageManager.a(this.a), paramInt);
+  }
+  
+  public int getBucketPoolSize()
+  {
+    return ImageDefaultConfig.getArtBitmapPoolSize(ImageManager.a(this.a));
   }
 }
 

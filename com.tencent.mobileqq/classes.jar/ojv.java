@@ -1,25 +1,41 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleBtnOperationHelper;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.EditVideoTagExport;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.takevideo.tag.TagItem;
+import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
 
-class ojv
-  implements Animation.AnimationListener
+public class ojv
+  implements Runnable
 {
-  ojv(ojt paramojt) {}
+  public ojv(EditVideoMusic paramEditVideoMusic) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper != null) {
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper.a(null);
+    if ((!this.a.d) && (this.a.e))
+    {
+      this.a.d = true;
+      localObject = this.a.a(EditVideoTagExport.class);
+      if (localObject == null) {
+        break label145;
+      }
+    }
+    label145:
+    for (Object localObject = ((EditVideoTagExport)localObject).a(this.a.a.a());; localObject = null)
+    {
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (((TagItem)localObject).a.a == 1) {
+          bool1 = true;
+        }
+      }
+      new EditVideoMusicDialog(this.a.a(), this.a, this.a.c, (int)this.a.a.a(this.a.a.a()), this.a.a.a, true, bool1);
+      return;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

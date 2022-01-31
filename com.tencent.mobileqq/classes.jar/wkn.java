@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wkn
-  implements Runnable
+class wkn
+  implements DialogInterface.OnClickListener
 {
-  public wkn(NotificationView paramNotificationView) {}
+  wkn(wkl paramwkl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a().a().c();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

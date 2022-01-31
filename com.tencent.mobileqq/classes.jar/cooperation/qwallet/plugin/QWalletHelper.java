@@ -1046,7 +1046,7 @@ public class QWalletHelper
     //   35	28	1	bool	boolean
     //   113	24	2	l	long
     //   77	135	4	localObject	Object
-    //   256	9	4	localThrowable	java.lang.Throwable
+    //   256	9	4	localThrowable	Throwable
     //   275	1	4	str1	String
     //   159	43	5	str2	String
     //   168	74	6	localBundle	Bundle
@@ -1488,18 +1488,29 @@ public class QWalletHelper
   
   public static boolean isQWalletProcessExist(Context paramContext)
   {
-    paramContext = (ActivityManager)paramContext.getSystemService("activity");
-    if (paramContext == null) {
-      return false;
+    try
+    {
+      paramContext = (ActivityManager)paramContext.getSystemService("activity");
+      if (paramContext == null) {
+        return false;
+      }
+      paramContext = paramContext.getRunningAppProcesses();
+      if (paramContext == null) {
+        return false;
+      }
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        int i = "com.tencent.mobileqq:tool".compareTo(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName);
+        if (i == 0) {
+          return true;
+        }
+      }
     }
-    paramContext = paramContext.getRunningAppProcesses();
-    if (paramContext == null) {
-      return false;
-    }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext()) {
-      if ("com.tencent.mobileqq:tool".compareTo(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName) == 0) {
-        return true;
+    catch (Throwable paramContext)
+    {
+      if (QLog.isDevelopLevel()) {
+        paramContext.printStackTrace();
       }
     }
     return false;
@@ -1515,7 +1526,7 @@ public class QWalletHelper
   {
     // Byte code:
     //   0: aload_0
-    //   1: ldc_w 1337
+    //   1: ldc_w 1338
     //   4: invokevirtual 660	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   7: iconst_1
     //   8: iadd
@@ -1528,7 +1539,7 @@ public class QWalletHelper
     //   15: invokevirtual 763	java/lang/String:substring	(II)Ljava/lang/String;
     //   18: astore 6
     //   20: aload_0
-    //   21: ldc_w 1339
+    //   21: ldc_w 1340
     //   24: invokevirtual 660	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   27: iconst_1
     //   28: iadd
@@ -1548,29 +1559,29 @@ public class QWalletHelper
     //   45: invokevirtual 532	java/lang/String:length	()I
     //   48: invokevirtual 763	java/lang/String:substring	(II)Ljava/lang/String;
     //   51: astore_0
-    //   52: new 1341	java/lang/StringBuffer
+    //   52: new 1342	java/lang/StringBuffer
     //   55: dup
-    //   56: invokespecial 1342	java/lang/StringBuffer:<init>	()V
+    //   56: invokespecial 1343	java/lang/StringBuffer:<init>	()V
     //   59: astore 7
     //   61: aload 7
     //   63: aload 6
-    //   65: invokevirtual 1345	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   65: invokevirtual 1346	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   68: pop
     //   69: aload 7
-    //   71: ldc_w 1339
-    //   74: invokevirtual 1345	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   71: ldc_w 1340
+    //   74: invokevirtual 1346	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   77: pop
     //   78: aload 7
     //   80: aload_0
-    //   81: invokevirtual 1345	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   81: invokevirtual 1346	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   84: pop
     //   85: aload 7
-    //   87: ldc_w 1347
-    //   90: invokevirtual 1345	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   87: ldc_w 1348
+    //   90: invokevirtual 1346	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   93: pop
     //   94: aload 7
-    //   96: invokevirtual 1348	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   99: invokestatic 1350	cooperation/qwallet/plugin/QWalletHelper:hexdigest	(Ljava/lang/String;)Ljava/lang/String;
+    //   96: invokevirtual 1349	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   99: invokestatic 1351	cooperation/qwallet/plugin/QWalletHelper:hexdigest	(Ljava/lang/String;)Ljava/lang/String;
     //   102: iconst_0
     //   103: iconst_4
     //   104: invokevirtual 763	java/lang/String:substring	(II)Ljava/lang/String;
@@ -1585,7 +1596,7 @@ public class QWalletHelper
     //   119: ifne +11 -> 130
     //   122: aload_0
     //   123: aload 5
-    //   125: invokestatic 1352	cooperation/qwallet/plugin/QWalletHelper:compare	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   125: invokestatic 1353	cooperation/qwallet/plugin/QWalletHelper:compare	(Ljava/lang/String;Ljava/lang/String;)Z
     //   128: istore 4
     //   130: iload 4
     //   132: ireturn

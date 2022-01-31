@@ -1,24 +1,22 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController.OnAnimationEndListener;
 
 public class akej
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akej(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  public akej(TroopPicEffectsController paramTroopPicEffectsController, TroopPicEffectsController.OnAnimationEndListener paramOnAnimationEndListener) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController$OnAnimationEndListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController$OnAnimationEndListener.a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akej
  * JD-Core Version:    0.7.0.1
  */

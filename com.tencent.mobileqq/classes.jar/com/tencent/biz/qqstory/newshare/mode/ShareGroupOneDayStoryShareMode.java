@@ -21,7 +21,7 @@ public class ShareGroupOneDayStoryShareMode
   
   static
   {
-    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + StoryApi.a(2131432086);
+    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + StoryApi.a(2131432097);
   }
   
   public ShareGroupOneDayStoryShareMode(ShareGroupItem paramShareGroupItem, StoryVideoItem paramStoryVideoItem, String paramString, long paramLong, int paramInt1, int paramInt2)
@@ -36,11 +36,11 @@ public class ShareGroupOneDayStoryShareMode
     this.c = StringUtil.a(paramShareGroupItem.name, 0, 16, "...");
     this.g = paramStoryVideoItem.mDoodleText;
     this.jdField_d_of_type_JavaLangString = a();
-    this.k = ("分享" + this.c + "的" + "日迹");
+    this.k = ("分享" + this.c + "的" + "小视频");
     this.l = (this.c + "\n" + paramInt2 + "个小视频");
     new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
     this.i = b();
-    this.j = ("#日迹# " + a() + "（" + this.i + "）");
+    this.j = ("#小视频# " + a() + "（" + this.i + "）");
     this.jdField_d_of_type_Int = 11;
     this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 97, 98, 99, 100, 101 };
   }

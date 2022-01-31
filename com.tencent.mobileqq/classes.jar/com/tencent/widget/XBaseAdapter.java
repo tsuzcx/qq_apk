@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import ameg;
+import amlq;
 import android.database.DataSetObserver;
 import android.widget.BaseAdapter;
 
@@ -8,7 +8,7 @@ public abstract class XBaseAdapter
   extends BaseAdapter
   implements XListAdapter
 {
-  private final ameg a = new ameg(this);
+  private final amlq a = new amlq(this);
   
   public void a(int paramInt1, int paramInt2)
   {

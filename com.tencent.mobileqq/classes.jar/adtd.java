@@ -1,73 +1,28 @@
-import com.tencent.mobileqq.imaxad.ImaxAdUtil;
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
+import com.tencent.mobileqq.utils.ImageUtil;
 
-public class adtd
-  implements INetInfoHandler
+class adtd
+  implements URLDrawable.URLDrawableListener
 {
-  ImaxAdVideoPreloadManager a;
+  adtd(adtc paramadtc) {}
   
-  public adtd(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager1, ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager2)
-  {
-    this.a = paramImaxAdVideoPreloadManager2;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a()
-  {
-    this.a = null;
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public void onNetMobile2None()
-  {
-    ImaxAdUtil.b("onNetMobile2None");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onNetMobile2Wifi(String paramString)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    ImaxAdUtil.b("onNetMobile2Wifi");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    ImaxAdUtil.b("onNetNone2Mobile");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ImaxAdUtil.b("onNetNone2Wifi");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ImaxAdUtil.b("onNetWifi2Mobile");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    ImaxAdUtil.b("onNetWifi2None");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.b(this.a);
-    }
+    paramURLDrawable.setBounds(ImageUtil.a(paramURLDrawable, 36, 100, this.a.a.a));
+    this.a.a.a(paramURLDrawable, false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adtd
  * JD-Core Version:    0.7.0.1
  */

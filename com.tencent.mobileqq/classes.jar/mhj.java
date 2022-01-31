@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
 class mhj
   implements Runnable
 {
-  mhj(mhf parammhf) {}
+  mhj(mhi parammhi) {}
   
   public void run()
   {
-    this.a.a.notifyDataSetChanged();
+    VideoFeedsPlayManager.a(this.a.a);
   }
 }
 

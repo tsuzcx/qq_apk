@@ -1,28 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.OnProviderContainerTriggerLisener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 
-public class ahml
-  implements Animator.AnimatorListener
+public final class ahml
+  implements Parcelable.Creator
 {
-  public ahml(ProviderContainerView paramProviderContainerView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public MusicItemInfo a(Parcel paramParcel)
   {
-    this.a.c.setVisibility(0);
+    return new MusicItemInfo(paramParcel);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public MusicItemInfo[] a(int paramInt)
   {
-    if (ProviderContainerView.a(this.a) != null) {
-      ProviderContainerView.a(this.a).a();
-    }
+    return new MusicItemInfo[0];
   }
 }
 

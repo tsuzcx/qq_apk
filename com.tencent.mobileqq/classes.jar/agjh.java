@@ -1,36 +1,29 @@
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.config.WorldCupReport;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
 
 public class agjh
   implements View.OnClickListener
 {
-  public agjh(ScanTorchActivity paramScanTorchActivity) {}
+  public agjh(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
   public void onClick(View paramView)
   {
-    ScanTorchActivity.y(this.a, true);
-    ScanTorchActivity.a(this.a, "operateBtnOnClick", false);
-    ScanTorchActivity.A(this.a);
-    if (!ScanTorchActivity.j(this.a)) {
-      ScanTorchActivity.h(this.a);
-    }
-    do
+    switch (paramView.getId())
     {
+    default: 
       return;
-      WorldCupReport.b();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a().a() == 0))
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(324);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(324);
-        return;
-      }
-    } while (((this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a().a() == 1)) || (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment == null) || (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a() == null) || (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a().a() != 2));
-    ScanTorchActivity.a(this.a, "operateBtn");
+    case 2131371244: 
+      this.a.b();
+      return;
+    case 2131371247: 
+      this.a.d();
+      return;
+    case 2131371250: 
+      this.a.e();
+      return;
+    }
+    this.a.doOnBackPressed();
   }
 }
 

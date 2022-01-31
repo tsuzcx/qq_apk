@@ -85,6 +85,14 @@ public class AssertUtils
     }
     SLog.e("Q.qqstory.AssertUtils", paramString);
   }
+  
+  public static void a(boolean paramBoolean, @NonNull String paramString, Object... paramVarArgs)
+  {
+    if (paramBoolean) {
+      return;
+    }
+    SLog.e("Q.qqstory.AssertUtils", String.format(null, paramString, paramVarArgs));
+  }
 }
 
 

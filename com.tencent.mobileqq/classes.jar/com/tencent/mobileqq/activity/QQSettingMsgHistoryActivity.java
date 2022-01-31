@@ -59,17 +59,17 @@ import java.io.File;
 import java.util.Vector;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import tmt;
-import tmu;
-import tmw;
-import tmx;
-import tmy;
-import tmz;
-import tna;
-import tnb;
-import tnc;
-import tne;
-import tng;
+import trl;
+import trm;
+import tro;
+import trp;
+import trq;
+import trr;
+import trs;
+import trt;
+import tru;
+import trw;
+import try;
 
 public class QQSettingMsgHistoryActivity
   extends IphoneTitleBarActivity
@@ -80,7 +80,7 @@ public class QQSettingMsgHistoryActivity
   public Handler a;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tmw(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tro(this);
   public RedTouch a;
   public DownloadListener a;
   public FormSimpleItem a;
@@ -102,8 +102,8 @@ public class QQSettingMsgHistoryActivity
   
   public QQSettingMsgHistoryActivity()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new tna(this);
-    this.jdField_a_of_type_AndroidOsHandler = new tnc(this);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new trs(this);
+    this.jdField_a_of_type_AndroidOsHandler = new tru(this);
   }
   
   /* Error */
@@ -249,7 +249,7 @@ public class QQSettingMsgHistoryActivity
     //   318: pop
     //   319: new 49	java/io/File
     //   322: dup
-    //   323: getstatic 241	com/tencent/mobileqq/app/AppConstants:cc	Ljava/lang/String;
+    //   323: getstatic 241	com/tencent/mobileqq/app/AppConstants:cd	Ljava/lang/String;
     //   326: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   329: invokestatic 184	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
     //   332: invokestatic 246	com/tencent/smtt/sdk/CacheManager:getCacheFileBaseDir	()Ljava/io/File;
@@ -261,7 +261,7 @@ public class QQSettingMsgHistoryActivity
     //   344: invokestatic 249	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	()V
     //   347: new 49	java/io/File
     //   350: dup
-    //   351: getstatic 252	com/tencent/mobileqq/app/AppConstants:cf	Ljava/lang/String;
+    //   351: getstatic 252	com/tencent/mobileqq/app/AppConstants:cg	Ljava/lang/String;
     //   354: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   357: astore_0
     //   358: aload_0
@@ -277,7 +277,7 @@ public class QQSettingMsgHistoryActivity
     //   380: pop
     //   381: new 49	java/io/File
     //   384: dup
-    //   385: getstatic 261	com/tencent/mobileqq/app/AppConstants:bf	Ljava/lang/String;
+    //   385: getstatic 261	com/tencent/mobileqq/app/AppConstants:bg	Ljava/lang/String;
     //   388: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   391: astore_0
     //   392: aload_0
@@ -287,7 +287,7 @@ public class QQSettingMsgHistoryActivity
     //   400: invokestatic 184	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
     //   403: new 49	java/io/File
     //   406: dup
-    //   407: getstatic 264	com/tencent/mobileqq/app/AppConstants:bg	Ljava/lang/String;
+    //   407: getstatic 264	com/tencent/mobileqq/app/AppConstants:bh	Ljava/lang/String;
     //   410: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   413: astore_0
     //   414: aload_0
@@ -297,7 +297,7 @@ public class QQSettingMsgHistoryActivity
     //   422: invokestatic 184	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
     //   425: new 49	java/io/File
     //   428: dup
-    //   429: getstatic 267	com/tencent/mobileqq/app/AppConstants:cn	Ljava/lang/String;
+    //   429: getstatic 267	com/tencent/mobileqq/app/AppConstants:co	Ljava/lang/String;
     //   432: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   435: astore_0
     //   436: aload_0
@@ -307,7 +307,7 @@ public class QQSettingMsgHistoryActivity
     //   444: invokestatic 184	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
     //   447: new 49	java/io/File
     //   450: dup
-    //   451: getstatic 270	com/tencent/mobileqq/app/AppConstants:ck	Ljava/lang/String;
+    //   451: getstatic 270	com/tencent/mobileqq/app/AppConstants:cl	Ljava/lang/String;
     //   454: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   457: astore_0
     //   458: aload_0
@@ -320,7 +320,7 @@ public class QQSettingMsgHistoryActivity
     //   473: new 30	java/lang/StringBuilder
     //   476: dup
     //   477: invokespecial 33	java/lang/StringBuilder:<init>	()V
-    //   480: getstatic 273	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
+    //   480: getstatic 273	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
     //   483: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   486: ldc_w 275
     //   489: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -334,7 +334,7 @@ public class QQSettingMsgHistoryActivity
     //   507: invokestatic 184	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
     //   510: new 49	java/io/File
     //   513: dup
-    //   514: getstatic 278	com/tencent/mobileqq/app/AppConstants:bh	Ljava/lang/String;
+    //   514: getstatic 278	com/tencent/mobileqq/app/AppConstants:bi	Ljava/lang/String;
     //   517: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   520: astore_0
     //   521: aload_0
@@ -344,7 +344,7 @@ public class QQSettingMsgHistoryActivity
     //   529: invokestatic 184	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
     //   532: new 49	java/io/File
     //   535: dup
-    //   536: getstatic 281	com/tencent/mobileqq/app/AppConstants:bi	Ljava/lang/String;
+    //   536: getstatic 281	com/tencent/mobileqq/app/AppConstants:bj	Ljava/lang/String;
     //   539: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   542: astore_0
     //   543: aload_0
@@ -354,7 +354,7 @@ public class QQSettingMsgHistoryActivity
     //   551: invokestatic 184	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
     //   554: new 49	java/io/File
     //   557: dup
-    //   558: getstatic 284	com/tencent/mobileqq/app/AppConstants:bj	Ljava/lang/String;
+    //   558: getstatic 284	com/tencent/mobileqq/app/AppConstants:bk	Ljava/lang/String;
     //   561: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   564: astore_0
     //   565: aload_0
@@ -364,7 +364,7 @@ public class QQSettingMsgHistoryActivity
     //   573: invokestatic 184	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
     //   576: new 49	java/io/File
     //   579: dup
-    //   580: getstatic 287	com/tencent/mobileqq/app/AppConstants:bk	Ljava/lang/String;
+    //   580: getstatic 287	com/tencent/mobileqq/app/AppConstants:bl	Ljava/lang/String;
     //   583: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   586: astore_0
     //   587: aload_0
@@ -374,7 +374,7 @@ public class QQSettingMsgHistoryActivity
     //   595: invokestatic 184	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
     //   598: new 49	java/io/File
     //   601: dup
-    //   602: getstatic 290	com/tencent/mobileqq/app/AppConstants:bl	Ljava/lang/String;
+    //   602: getstatic 290	com/tencent/mobileqq/app/AppConstants:bm	Ljava/lang/String;
     //   605: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   608: astore_0
     //   609: aload_0
@@ -384,7 +384,7 @@ public class QQSettingMsgHistoryActivity
     //   617: invokestatic 184	com/dataline/util/file/FileUtil:a	(Ljava/io/File;)V
     //   620: new 49	java/io/File
     //   623: dup
-    //   624: getstatic 293	com/tencent/mobileqq/app/AppConstants:cx	Ljava/lang/String;
+    //   624: getstatic 293	com/tencent/mobileqq/app/AppConstants:cy	Ljava/lang/String;
     //   627: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;)V
     //   630: astore_0
     //   631: aload_0
@@ -463,7 +463,7 @@ public class QQSettingMsgHistoryActivity
     {
       this.app.getPreferences().edit().putLong("chatHistoryEventJsonLastModified", paramDownloadTask.i).commit();
       if ((200 == paramDownloadTask.e) || (304 == paramDownloadTask.e)) {
-        ThreadManager.getFileThreadHandler().post(new tnb(this));
+        ThreadManager.getFileThreadHandler().post(new trt(this));
       }
     }
     if (QLog.isColorLevel())
@@ -480,7 +480,7 @@ public class QQSettingMsgHistoryActivity
   public static void a(String paramString, boolean paramBoolean)
   {
     if (paramBoolean) {
-      c(AppConstants.aJ + paramString + "/" + "photo/");
+      c(AppConstants.aK + paramString + "/" + "photo/");
     }
     int i = 0;
     while (i < CardHandler.jdField_a_of_type_JavaUtilVector.size())
@@ -489,13 +489,13 @@ public class QQSettingMsgHistoryActivity
       i += 1;
     }
     c(CardHandler.jdField_a_of_type_JavaLangString + "background" + "/");
-    c(AppConstants.aJ + "temp" + "/");
+    c(AppConstants.aK + "temp" + "/");
     c(CardHandler.jdField_a_of_type_JavaLangString + "temp" + "/");
     c(CardHandler.jdField_a_of_type_JavaLangString + "HDAvatar" + "/");
-    c(AppConstants.bV);
+    c(AppConstants.bW);
     c(CardHandler.jdField_a_of_type_JavaLangString + "voice" + "/");
     c(GCCommon.a() + "/");
-    c(AppConstants.ch);
+    c(AppConstants.ci);
     c(HotPicDownLoader.jdField_a_of_type_JavaLangString);
     c(HotVideoPreviewDownloader.jdField_a_of_type_JavaLangString);
     c(ScribbleMsgUtils.jdField_a_of_type_JavaLangString);
@@ -520,7 +520,7 @@ public class QQSettingMsgHistoryActivity
   
   static void c()
   {
-    c(AppConstants.aJ + "photo/");
+    c(AppConstants.aK + "photo/");
   }
   
   private static void c(QQAppInterface paramQQAppInterface)
@@ -553,9 +553,9 @@ public class QQSettingMsgHistoryActivity
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371369));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371367));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
-    ThreadManager.getSubThreadHandler().post(new tmz(this));
+    ThreadManager.getSubThreadHandler().post(new trr(this));
   }
   
   private void g()
@@ -573,13 +573,13 @@ public class QQSettingMsgHistoryActivity
     while (!QLog.isColorLevel())
     {
       return;
-      localObject = getResources().getString(2131433869);
+      localObject = getResources().getString(2131433885);
       break;
-      localObject = getResources().getString(2131433868);
+      localObject = getResources().getString(2131433884);
       break;
-      localObject = getResources().getString(2131433867);
+      localObject = getResources().getString(2131433883);
       break;
-      localObject = getResources().getString(2131433866);
+      localObject = getResources().getString(2131433882);
       break;
     }
     QLog.d("QQSettingMsgHistoryActivity", 2, "messge roam flag is error ,is : " + i);
@@ -587,7 +587,7 @@ public class QQSettingMsgHistoryActivity
   
   private void h()
   {
-    c(AppConstants.aJ + this.d + "/" + "ptt/");
+    c(AppConstants.aK + this.d + "/" + "ptt/");
   }
   
   private void i()
@@ -634,13 +634,13 @@ public class QQSettingMsgHistoryActivity
         this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
         this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        setTitle(2131435420);
+        setTitle(2131435436);
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTitle(2131436823);
+      setTitle(2131436843);
       return;
     }
   }
@@ -664,13 +664,13 @@ public class QQSettingMsgHistoryActivity
   {
     if (this.app.getPreferences().getBoolean("chatHistoryEventEntryFirstShow", true))
     {
-      ThreadManager.getSubThreadHandler().post(new tmt(this));
+      ThreadManager.getSubThreadHandler().post(new trl(this));
       GuideViewBuilder localGuideViewBuilder = new GuideViewBuilder(this);
       localGuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, 0);
-      localGuideViewBuilder.a(0, new tmx(this));
+      localGuideViewBuilder.a(0, new trp(this));
       DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
       View localView = new View(this);
-      localView.setBackgroundResource(2130842869);
+      localView.setBackgroundResource(2130842899);
       GuideViewBuilder.GuideLayoutParams localGuideLayoutParams1 = new GuideViewBuilder.GuideLayoutParams((int)(17.0F * localDisplayMetrics.density), (int)(31.0F * localDisplayMetrics.density), 48);
       localGuideLayoutParams1.a = 100;
       localGuideLayoutParams1.b = (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.getMeasuredHeight() + 18);
@@ -685,7 +685,7 @@ public class QQSettingMsgHistoryActivity
       localGuideLayoutParams2.b = (localGuideLayoutParams1.b + localGuideLayoutParams1.height + 18);
       localGuideViewBuilder.a(0, localView, localGuideLayoutParams1);
       localGuideViewBuilder.a(0, localTextView, localGuideLayoutParams2);
-      localGuideViewBuilder.a(new tmy(this));
+      localGuideViewBuilder.a(new trq(this));
     }
   }
   
@@ -721,25 +721,25 @@ public class QQSettingMsgHistoryActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970613);
+    super.setContentView(2130970626);
     this.d = this.app.getCurrentAccountUin();
     setVolumeControlStream(3);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371370));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371368));
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
     boolean bool;
     if (this.app.e() == 1)
     {
       bool = true;
       paramBundle.setChecked(bool);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131371374);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131371375);
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131371376);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371371));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371372));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131371372);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131371373);
+      this.jdField_c_of_type_AndroidViewView = findViewById(2131371374);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131371369));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371370));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      findViewById(2131371373).setOnClickListener(this);
+      findViewById(2131371371).setOnClickListener(this);
       this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
       this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
@@ -750,9 +750,9 @@ public class QQSettingMsgHistoryActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(getString(2131435405));
-      this.jdField_b_of_type_AndroidViewView.setContentDescription(getString(2131435407));
-      this.jdField_c_of_type_AndroidViewView.setContentDescription(getString(2131435408));
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(getString(2131435421));
+      this.jdField_b_of_type_AndroidViewView.setContentDescription(getString(2131435423));
+      this.jdField_c_of_type_AndroidViewView.setContentDescription(getString(2131435424));
       k();
       return true;
       bool = false;
@@ -815,7 +815,7 @@ public class QQSettingMsgHistoryActivity
     int j = 1;
     if (!NetworkUtil.d(this.app.getApplication().getApplicationContext()))
     {
-      QQToast.a(getApplicationContext(), 2131434811, 1).a();
+      QQToast.a(getApplicationContext(), 2131434827, 1).a();
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
       paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
       paramBoolean = bool;
@@ -831,7 +831,7 @@ public class QQSettingMsgHistoryActivity
     {
       i = 1;
       ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Latest_chatlog_syn", 0, i, "0", "0", "", "");
-      b(getApplication().getResources().getString(2131436225));
+      b(getApplication().getResources().getString(2131436244));
       if (!paramBoolean) {
         break label158;
       }
@@ -850,7 +850,7 @@ public class QQSettingMsgHistoryActivity
   {
     Intent localIntent = null;
     int j = 0;
-    if (paramView.getId() == 2131371371)
+    if (paramView.getId() == 2131371369)
     {
       localIntent = new Intent(this, QQBrowserActivity.class);
       paramView = IndividuationUrlHelper.a("vipRoamChatCell");
@@ -871,12 +871,12 @@ public class QQSettingMsgHistoryActivity
         VipUtils.a(this.app, "chat_history", "ChatHistory", "Clk_RoamMsgSetting", 2, 0, new String[] { "0", "0", "msgRoam" });
         return;
       }
-      if (paramView.getId() == 2131371369)
+      if (paramView.getId() == 2131371367)
       {
         d();
         return;
       }
-      if (paramView.getId() == 2131371373)
+      if (paramView.getId() == 2131371371)
       {
         paramView = new Intent(getApplicationContext(), FMActivity.class);
         paramView.putExtra("selectMode", true);
@@ -904,22 +904,22 @@ public class QQSettingMsgHistoryActivity
     for (;;)
     {
       localActionSheet.a(i, 3);
-      localActionSheet.d(getString(2131433015));
+      localActionSheet.d(getString(2131433029));
       localActionSheet.a(paramView);
       localActionSheet.a(j);
       localActionSheet.show();
       return;
-      i = 2131435405;
-      j = 2131435436;
-      paramView = new tne(this, localActionSheet);
+      i = 2131435421;
+      j = 2131435452;
+      paramView = new trw(this, localActionSheet);
       continue;
-      i = 2131435407;
-      j = 2131435435;
-      paramView = new tng(this, localActionSheet);
+      i = 2131435423;
+      j = 2131435451;
+      paramView = new try(this, localActionSheet);
       continue;
-      i = 2131435406;
-      j = 2131436825;
-      paramView = new tmu(this, localActionSheet);
+      i = 2131435422;
+      j = 2131436845;
+      paramView = new trm(this, localActionSheet);
     }
   }
   
@@ -932,7 +932,7 @@ public class QQSettingMsgHistoryActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131434045));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131434061));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
@@ -950,7 +950,7 @@ public class QQSettingMsgHistoryActivity
   
   protected String setLastActivityName()
   {
-    return getString(2131433649);
+    return getString(2131433663);
   }
 }
 

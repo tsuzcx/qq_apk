@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
-import aobe;
+import aojz;
 import com.tencent.mobileqq.flashchat.OnHolderItemClickListener;
 import dov.com.qq.im.capture.QIMManager;
 import dov.com.qq.im.capture.text.DynamicTextConfigManager;
@@ -27,16 +27,16 @@ public class EditTextEffectView$EditTextAdapter
     this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager = ((DynamicTextConfigManager)QIMManager.a(7));
   }
   
-  public aobe a(ViewGroup paramViewGroup, int paramInt)
+  public aojz a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new aobe(LayoutInflater.from(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView.getContext()).inflate(2130970715, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener);
+    return new aojz(LayoutInflater.from(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView.getContext()).inflate(2130970731, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener);
   }
   
-  public void a(aobe paramaobe, int paramInt)
+  public void a(aojz paramaojz, int paramInt)
   {
     DynamicTextConfigManager.DynamicTextConfigBean localDynamicTextConfigBean = (DynamicTextConfigManager.DynamicTextConfigBean)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramaobe.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = localDynamicTextConfigBean;
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramaobe.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramaojz.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean = localDynamicTextConfigBean;
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramaojz.jdField_a_of_type_AndroidViewView.getLayoutParams();
     if (paramInt % 3 == 0)
     {
       localMarginLayoutParams.leftMargin = 0;
@@ -47,22 +47,22 @@ public class EditTextEffectView$EditTextAdapter
       localMarginLayoutParams.topMargin = 0;
       localMarginLayoutParams.bottomMargin = (EditTextEffectView.e / 2);
       label75:
-      paramaobe.b.setVisibility(8);
+      paramaojz.b.setVisibility(8);
       if (localDynamicTextConfigBean.text_id != this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextEffectView.jdField_a_of_type_Int) {
         break label257;
       }
-      paramaobe.c.setVisibility(0);
+      paramaojz.c.setVisibility(0);
       label106:
-      paramaobe.jdField_a_of_type_AndroidWidgetImageView.setImageResource(localDynamicTextConfigBean.iconDrawableId);
+      paramaojz.jdField_a_of_type_AndroidWidgetImageView.setImageResource(localDynamicTextConfigBean.iconDrawableId);
       if (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(localDynamicTextConfigBean)) {
         break label269;
       }
-      paramaobe.d.setVisibility(8);
+      paramaojz.d.setVisibility(8);
     }
     for (;;)
     {
-      paramaobe.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(8);
-      paramaobe.jdField_a_of_type_Int = paramInt;
+      paramaojz.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(8);
+      paramaojz.jdField_a_of_type_Int = paramInt;
       return;
       if (paramInt % 3 == 2)
       {
@@ -84,10 +84,10 @@ public class EditTextEffectView$EditTextAdapter
       localMarginLayoutParams.bottomMargin = (EditTextEffectView.e / 2);
       break label75;
       label257:
-      paramaobe.c.setVisibility(8);
+      paramaojz.c.setVisibility(8);
       break label106;
       label269:
-      paramaobe.d.setVisibility(0);
+      paramaojz.d.setVisibility(0);
     }
   }
   

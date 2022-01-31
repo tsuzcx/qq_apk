@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.freshnews;
 
-import adoh;
-import adoi;
+import adwp;
+import adwq;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.text.Editable;
@@ -40,9 +40,9 @@ public class BlockableEditTextView
   {
     setEditableFactory(TroopBarPublishUtils.a);
     if (Build.VERSION.SDK_INT >= 11) {
-      setCustomSelectionActionModeCallback(new adoh(this));
+      setCustomSelectionActionModeCallback(new adwp(this));
     }
-    addTextChangedListener(new adoi(this));
+    addTextChangedListener(new adwq(this));
   }
   
   private boolean a()

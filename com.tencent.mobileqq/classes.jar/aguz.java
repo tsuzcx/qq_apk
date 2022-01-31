@@ -1,24 +1,22 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.PhoneContactHelper;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
 public class aguz
-  implements AdapterView.OnItemClickListener
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public aguz(QCallDetailActivity paramQCallDetailActivity) {}
+  public aguz(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    paramAdapterView = PhoneContactHelper.a(((TextView)paramView.findViewById(2131369901)).getText().toString());
-    this.a.a(this.a.getActivity(), paramAdapterView);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aguz
  * JD-Core Version:    0.7.0.1
  */

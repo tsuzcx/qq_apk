@@ -1,21 +1,21 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-import java.lang.ref.WeakReference;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-class xhs
+public class xhs
   implements Runnable
 {
-  xhs(xhr paramxhr) {}
+  public xhs(TransactionActivity paramTransactionActivity) {}
   
   public void run()
   {
-    RedDotImageView localRedDotImageView = (RedDotImageView)this.a.b.get();
-    if (localRedDotImageView != null)
-    {
-      localRedDotImageView.setReddotXOffsetDp(15);
-      localRedDotImageView.setRedDotDrawable(localRedDotImageView.getResources().getDrawable(2130846052));
-      localRedDotImageView.a(true);
-    }
+    MotionEvent localMotionEvent1 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 0, 0.0F, 0.0F, 0);
+    TransactionActivity.a(this.a).dispatchTouchEvent(localMotionEvent1);
+    MotionEvent localMotionEvent2 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 1, 0.0F, 0.0F, 0);
+    TransactionActivity.a(this.a).dispatchTouchEvent(localMotionEvent2);
+    localMotionEvent1.recycle();
+    localMotionEvent2.recycle();
   }
 }
 

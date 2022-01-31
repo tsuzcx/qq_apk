@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMNotifyAddFriendBuilder;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
-class wjw
-  implements Runnable
+public class wjw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  wjw(wjv paramwjv) {}
+  public wjw(BlessActivity paramBlessActivity, RelativeLayout paramRelativeLayout) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    this.a.a.a.c();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight());
+    BlessActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth());
+    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity);
   }
 }
 

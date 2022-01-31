@@ -1,8 +1,13 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
 
 public class acpb
+  implements DialogInterface.OnClickListener
 {
-  public View[] a = new View[12];
+  public acpb(StickerGestureDetector paramStickerGestureDetector) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

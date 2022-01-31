@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import mqq.os.MqqHandler;
 
 class vyq
-  implements WebProcessManager.WebProcessStartListener
+  implements Runnable
 {
   vyq(vyp paramvyp) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {
-      this.a.a.a.a();
-    }
+    Message localMessage = FriendChatPie.a(this.a.a).obtainMessage(42);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("showRedDot", false);
+    localMessage.setData(localBundle);
+    FriendChatPie.b(this.a.a).sendMessage(localMessage);
+    SharedPreUtils.b(this.a.a.a.getCurrentAccountUin()).edit().putBoolean("aio_jump_lightalk_red_dot", false).commit();
   }
 }
 

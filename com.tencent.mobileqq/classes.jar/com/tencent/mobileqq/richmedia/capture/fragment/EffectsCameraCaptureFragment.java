@@ -1,38 +1,38 @@
 package com.tencent.mobileqq.richmedia.capture.fragment;
 
-import ahir;
-import ahis;
-import ahit;
-import ahiu;
-import ahiv;
-import ahiw;
-import ahix;
-import ahiy;
-import ahiz;
-import ahja;
-import ahjb;
-import ahjc;
-import ahjd;
-import ahje;
-import ahjf;
-import ahjg;
-import ahjh;
-import ahji;
-import ahjj;
-import ahjk;
-import ahjl;
-import ahjm;
-import ahjn;
-import ahjo;
-import ahjp;
-import ahjs;
-import ahjw;
-import ahjy;
-import ahjz;
-import ahka;
-import ahkb;
-import ahkc;
-import ahkd;
+import ahni;
+import ahnj;
+import ahnk;
+import ahnl;
+import ahnm;
+import ahnn;
+import ahno;
+import ahnp;
+import ahnq;
+import ahnr;
+import ahns;
+import ahnt;
+import ahnu;
+import ahnv;
+import ahnw;
+import ahnx;
+import ahny;
+import ahnz;
+import ahoa;
+import ahob;
+import ahoc;
+import ahod;
+import ahoe;
+import ahof;
+import ahog;
+import ahoj;
+import ahon;
+import ahop;
+import ahoq;
+import ahor;
+import ahos;
+import ahot;
+import ahou;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -123,16 +123,17 @@ public abstract class EffectsCameraCaptureFragment
 {
   private static boolean i = true;
   private int jdField_a_of_type_Int = -1;
-  private final ahkd jdField_a_of_type_Ahkd = new ahkd(this, null);
+  private final ahou jdField_a_of_type_Ahou = new ahou(this, null);
   private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public Handler a;
+  View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   public AlphaAnimation a;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new ahiu(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new ahnl(this);
   public ImageView a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private SubtitleLayout jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout;
   private EffectsCameraCaptureFragment.DanceGLGestureListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment$DanceGLGestureListener = new EffectsCameraCaptureFragment.DanceGLGestureListener();
@@ -145,31 +146,30 @@ public abstract class EffectsCameraCaptureFragment
   private ProviderContainerView.ContainerViewListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView$ContainerViewListener;
   public ProviderContainerView a;
   public PtvTemplateManager.PtvTemplateInfo a;
+  String jdField_a_of_type_JavaLangString = "";
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   public int b;
   private ObjectAnimator jdField_b_of_type_AndroidAnimationObjectAnimator;
+  public View b;
   public AlphaAnimation b;
-  private Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new ahiw(this);
+  private Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new ahnn(this);
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   private ProviderContainerView.ContainerViewListener jdField_b_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView$ContainerViewListener;
-  String jdField_b_of_type_JavaLangString = "";
+  public String b;
   private Map jdField_b_of_type_JavaUtilMap = new HashMap();
   public boolean b;
   private int jdField_c_of_type_Int = 0;
   private ObjectAnimator jdField_c_of_type_AndroidAnimationObjectAnimator;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
   public String c;
   protected boolean c;
   private int jdField_d_of_type_Int;
   private ObjectAnimator jdField_d_of_type_AndroidAnimationObjectAnimator;
-  public View d;
   private TextView jdField_d_of_type_AndroidWidgetTextView;
-  public String d;
+  protected String d;
   public boolean d;
   private TextView e;
-  protected String e;
   public boolean e;
   private TextView f;
   public boolean f;
@@ -199,7 +199,7 @@ public abstract class EffectsCameraCaptureFragment
     this.jdField_g_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     this.jdField_b_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    this.jdField_a_of_type_AndroidOsHandler = new ahit(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new ahnk(this, Looper.getMainLooper());
   }
   
   private void b(int paramInt)
@@ -243,12 +243,12 @@ public abstract class EffectsCameraCaptureFragment
     {
       if (i1 == 0)
       {
-        this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         if ((paramBoolean1) && (!paramBoolean2))
         {
           if (i2 != 0)
           {
-            this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+            this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
             this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
             this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
             return;
@@ -266,16 +266,16 @@ public abstract class EffectsCameraCaptureFragment
             i1 = 2;
             continue;
           }
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
           this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_d_of_type_AndroidWidgetTextView.setText(2131438168);
+          this.jdField_d_of_type_AndroidWidgetTextView.setText(2131438188);
           this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
           return;
         }
         if ((paramBoolean1) && (paramBoolean2))
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
           this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
           this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
           String str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.b();
@@ -287,33 +287,33 @@ public abstract class EffectsCameraCaptureFragment
           g(false);
           return;
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
         return;
       }
       if (i1 == 1)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
         if ((paramBoolean3) && (!paramBoolean4))
         {
           if (i2 != 0)
           {
-            this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+            this.jdField_b_of_type_AndroidViewView.setVisibility(8);
             return;
           }
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = GestureRecognitionUtils.a(getActivity(), GestureFilterManager.a);
-          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          this.jdField_c_of_type_AndroidWidgetTextView.setText(GestureFilterManager.jdField_b_of_type_JavaLangString);
-          this.jdField_d_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = GestureRecognitionUtils.a(getActivity(), GestureFilterManager.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          this.jdField_b_of_type_AndroidWidgetTextView.setText(GestureFilterManager.b);
+          this.jdField_b_of_type_AndroidViewView.setVisibility(0);
           return;
         }
         if ((!paramBoolean3) || (!paramBoolean4)) {
           break;
         }
-        this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         return;
       }
       if (i1 != 2) {
@@ -321,8 +321,8 @@ public abstract class EffectsCameraCaptureFragment
       }
       if (paramBoolean4)
       {
-        this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
         return;
@@ -330,18 +330,18 @@ public abstract class EffectsCameraCaptureFragment
       if ((!paramBoolean4) && (paramBoolean2))
       {
         if (i2 != 0) {
-          this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+          this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         }
         for (;;)
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
           this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
           this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
           return;
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = GestureRecognitionUtils.a(getActivity(), GestureFilterManager.a);
-          this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          this.jdField_c_of_type_AndroidWidgetTextView.setText(GestureFilterManager.jdField_b_of_type_JavaLangString);
-          this.jdField_d_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = GestureRecognitionUtils.a(getActivity(), GestureFilterManager.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          this.jdField_b_of_type_AndroidWidgetTextView.setText(GestureFilterManager.b);
+          this.jdField_b_of_type_AndroidViewView.setVisibility(0);
         }
       }
       if ((paramBoolean4) || (paramBoolean2)) {
@@ -349,15 +349,15 @@ public abstract class EffectsCameraCaptureFragment
       }
       if (i2 != 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         return;
       }
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131438168);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131438188);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       return;
@@ -442,9 +442,9 @@ public abstract class EffectsCameraCaptureFragment
     if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.a()) && (this.p)) {}
     for (int i1 = 1;; i1 = 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       if (i1 == 0) {
         break;
       }
@@ -458,7 +458,7 @@ public abstract class EffectsCameraCaptureFragment
   {
     this.r = true;
     this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131439128);
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131439155);
     g(true);
   }
   
@@ -471,7 +471,7 @@ public abstract class EffectsCameraCaptureFragment
         k();
         this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect("");
         this.t = false;
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Ahkd);
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Ahou);
         this.jdField_h_of_type_AndroidWidgetTextView.setVisibility(8);
       }
       return;
@@ -490,9 +490,9 @@ public abstract class EffectsCameraCaptureFragment
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView = new GuideVideoView(getActivity());
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView.setOnCloseListener(new ahjd(this));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView.setOnCompleteListener(new ahje(this));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView.setOnErrorListener(new ahjf(this));
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView.setOnCloseListener(new ahnu(this));
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView.setOnCompleteListener(new ahnv(this));
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView.setOnErrorListener(new ahnw(this));
     }
     this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewGuideVideoView);
@@ -506,13 +506,13 @@ public abstract class EffectsCameraCaptureFragment
   
   private void r()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahjg(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahnx(this));
   }
   
   private void s()
   {
     this.s = false;
-    d();
+    h();
   }
   
   private void t()
@@ -525,8 +525,8 @@ public abstract class EffectsCameraCaptureFragment
     localLayoutParams.addRule(11, -1);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843244);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new ahjh(this));
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130843277);
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new ahny(this));
     this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
   }
   
@@ -549,15 +549,15 @@ public abstract class EffectsCameraCaptureFragment
   {
     if (this.jdField_a_of_type_AndroidViewViewGroup != null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370029));
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370030));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370031));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370038));
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370039));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370040));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
       this.jdField_b_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 1.0F, 0.0F });
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new ahji(this));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ahjj(this));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.setTriggerLisener(new ahjk(this));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new ahnz(this));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ahoa(this));
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.setTriggerLisener(new ahob(this));
     }
   }
   
@@ -578,7 +578,7 @@ public abstract class EffectsCameraCaptureFragment
     if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (!this.jdField_c_of_type_Boolean)) {
       return;
     }
-    ThreadManager.getUIHandler().post(new ahjp(this));
+    ThreadManager.getUIHandler().post(new ahog(this));
   }
   
   private void y()
@@ -593,7 +593,7 @@ public abstract class EffectsCameraCaptureFragment
       } while ((!RecentDanceConfigMgr.b()) || (!RecentDanceConfigMgr.a(this.jdField_a_of_type_AndroidViewViewGroup.getContext())));
       localDItemInfo = RecentDanceConfigMgr.b();
     } while (localDItemInfo == null);
-    ThreadManager.getUIHandler().post(new ahjs(this, localDItemInfo));
+    ThreadManager.getUIHandler().post(new ahoj(this, localDItemInfo));
   }
   
   private void z()
@@ -622,7 +622,7 @@ public abstract class EffectsCameraCaptureFragment
   
   public void a(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahja(this, paramString1, paramInt, paramString2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahnr(this, paramString1, paramInt, paramString2));
     DanceGameVideoManager.a().a(paramInt);
   }
   
@@ -670,17 +670,17 @@ public abstract class EffectsCameraCaptureFragment
     super.a(paramVideoCaptureResult);
     if (paramVideoCaptureResult.videoFrameCount < this.jdField_b_of_type_Long)
     {
-      ThreadManager.getUIHandler().post(new ahkc(this));
+      ThreadManager.getUIHandler().post(new ahot(this));
       AudioTranslator.a().b();
       return;
     }
-    ThreadManager.getUIHandler().post(new ahis(this));
+    ThreadManager.getUIHandler().post(new ahnj(this));
   }
   
   public void a(BoyDataReport paramBoyDataReport)
   {
     DanceLog.a("EffectsFragment", "playSceneEndEvent...");
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahiz(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahnq(this));
     CaptureReportUtil.a(paramBoyDataReport);
   }
   
@@ -697,7 +697,7 @@ public abstract class EffectsCameraCaptureFragment
       if (((this.jdField_h_of_type_Boolean) && (bool1)) || ((!this.jdField_h_of_type_Boolean) && (!bool1))) {
         break;
       }
-      ThreadManager.getUIHandler().post(new ahka(this, bool1, bool2));
+      ThreadManager.getUIHandler().post(new ahor(this, bool1, bool2));
       return;
     }
   }
@@ -733,7 +733,7 @@ public abstract class EffectsCameraCaptureFragment
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    ThreadManager.getUIHandler().post(new ahjy(this, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4));
+    ThreadManager.getUIHandler().post(new ahop(this, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4));
   }
   
   public boolean a(boolean paramBoolean, String paramString)
@@ -748,10 +748,10 @@ public abstract class EffectsCameraCaptureFragment
       if (paramBoolean)
       {
         this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(true);
-        f();
+        e();
         this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout.setVisibility(8);
-        if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() == 0) {
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
         }
         if (this.jdField_d_of_type_AndroidWidgetTextView.getVisibility() == 0) {
           this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -759,11 +759,11 @@ public abstract class EffectsCameraCaptureFragment
         if (this.jdField_e_of_type_AndroidWidgetTextView.getVisibility() == 0) {
           this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
         }
-        if (this.jdField_d_of_type_AndroidViewView.getVisibility() == 0) {
-          this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+        if (this.jdField_b_of_type_AndroidViewView.getVisibility() == 0) {
+          this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         }
         if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a() == 2)) {
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.i();
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.h();
         }
         if (!paramBoolean) {
           break label358;
@@ -787,9 +787,9 @@ public abstract class EffectsCameraCaptureFragment
       if ((!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilMap.get(paramString)))) {
         break label369;
       }
-      this.jdField_e_of_type_JavaLangString = ((String)this.jdField_a_of_type_JavaUtilMap.get(paramString));
+      this.jdField_d_of_type_JavaLangString = ((String)this.jdField_a_of_type_JavaUtilMap.get(paramString));
       if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureFragment", 2, "has parsed shareWebUrl : " + this.jdField_e_of_type_JavaLangString);
+        QLog.d("CameraCaptureFragment", 2, "has parsed shareWebUrl : " + this.jdField_d_of_type_JavaLangString);
       }
       label258:
       if (!this.u) {
@@ -829,14 +829,14 @@ public abstract class EffectsCameraCaptureFragment
         {
           label369:
           localObject1 = new JSONObject(ResourceManager.a(paramString + "params.json")).getJSONObject("postureParam");
-          this.jdField_e_of_type_JavaLangString = ((JSONObject)localObject1).getString("shareWebUrl");
+          this.jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).getString("shareWebUrl");
           localObject1 = ((JSONObject)localObject1).getString("guideVideoUrl");
-          this.jdField_a_of_type_JavaUtilMap.put(paramString, this.jdField_e_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaUtilMap.put(paramString, this.jdField_d_of_type_JavaLangString);
           this.jdField_b_of_type_JavaUtilMap.put(paramString, localObject1);
           if (!QLog.isColorLevel()) {
             break label258;
           }
-          QLog.d("CameraCaptureFragment", 2, "has not parsed shareWebUrl, now parse  ; " + this.jdField_e_of_type_JavaLangString);
+          QLog.d("CameraCaptureFragment", 2, "has not parsed shareWebUrl, now parse  ; " + this.jdField_d_of_type_JavaLangString);
         }
         catch (Exception localException)
         {
@@ -938,22 +938,22 @@ public abstract class EffectsCameraCaptureFragment
     }
   }
   
-  public void aj_()
+  public void al_()
   {
-    super.aj_();
-    ThreadManager.getUIHandler().post(new ahkb(this));
+    super.al_();
+    ThreadManager.getUIHandler().post(new ahos(this));
   }
   
   public int b()
   {
-    return 2130970314;
+    return 2130970329;
   }
   
   public void c(long paramLong)
   {
     DanceLog.a("EffectsFragment", "readySceneBegin...");
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahix(this));
-    ThreadManager.post(new ahiy(this, paramLong), 8, null, false);
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahno(this));
+    ThreadManager.post(new ahnp(this, paramLong), 8, null, false);
   }
   
   public void c(boolean paramBoolean)
@@ -969,19 +969,7 @@ public abstract class EffectsCameraCaptureFragment
     return true;
   }
   
-  public void d(boolean paramBoolean) {}
-  
-  public boolean d()
-  {
-    return this.t;
-  }
-  
-  public void d_(boolean paramBoolean)
-  {
-    ThreadManager.getUIHandler().post(new ahjw(this));
-  }
-  
-  public void e()
+  public void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.d();
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
@@ -1000,9 +988,30 @@ public abstract class EffectsCameraCaptureFragment
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setBeauty(EffectsListenerController.a[0]);
   }
   
+  public void d(boolean paramBoolean) {}
+  
+  public boolean d()
+  {
+    return this.t;
+  }
+  
+  public void d_(boolean paramBoolean)
+  {
+    ThreadManager.getUIHandler().post(new ahon(this));
+  }
+  
+  protected void e()
+  {
+    super.e();
+    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.setVisibility(8);
+    h(false);
+  }
+  
   public void e(boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new ahjz(this, paramBoolean));
+    ThreadManager.getUIHandler().post(new ahoq(this, paramBoolean));
   }
   
   public boolean e()
@@ -1011,7 +1020,7 @@ public abstract class EffectsCameraCaptureFragment
     {
       if (this.t)
       {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.x();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.w();
         return true;
       }
     }
@@ -1023,34 +1032,25 @@ public abstract class EffectsCameraCaptureFragment
     return false;
   }
   
-  protected void f()
-  {
-    super.f();
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.setVisibility(8);
-    h(false);
-  }
-  
   public void f(boolean paramBoolean)
   {
     DanceLog.a("EffectsFragment", "closeEvent");
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahjb(this, paramBoolean));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahns(this, paramBoolean));
   }
   
-  public void h()
+  public void g()
   {
-    super.h();
+    super.g();
     if (this.q)
     {
       this.q = false;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.v();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.u();
     }
   }
   
   public void i()
   {
-    ThreadManager.getUIHandler().post(new ahiv(this));
+    ThreadManager.getUIHandler().post(new ahnm(this));
   }
   
   public void j()
@@ -1080,8 +1080,8 @@ public abstract class EffectsCameraCaptureFragment
     }
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "translationY", new float[] { UIUtils.a(getActivity(), 80.0F), 0.0F });
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
-    localObjectAnimator1.addListener(new ahjl(this));
-    localObjectAnimator2.addListener(new ahjm(this));
+    localObjectAnimator1.addListener(new ahoc(this));
+    localObjectAnimator2.addListener(new ahod(this));
     localObjectAnimator1.setDuration(60L);
     localObjectAnimator2.setDuration(200L);
     AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -1103,7 +1103,7 @@ public abstract class EffectsCameraCaptureFragment
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 1.0F, 0.0F });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
-    localAnimatorSet.addListener(new ahjo(this));
+    localAnimatorSet.addListener(new ahof(this));
     localAnimatorSet.setDuration(300L).start();
   }
   
@@ -1136,7 +1136,7 @@ public abstract class EffectsCameraCaptureFragment
     super.onCreate(paramBundle);
     LbsFilterStatusManager.a = getActivity().getAppInterface();
     LbsFilterStatusManager.a(getActivity().getAppInterface());
-    ThreadManager.postImmediately(new ahir(this), null, true);
+    ThreadManager.postImmediately(new ahni(this), null, true);
     CapturePtvTemplateManager.a();
     CapturePtvTemplateManager.jdField_a_of_type_Int = a();
     CaptureReportUtil.m();
@@ -1150,14 +1150,14 @@ public abstract class EffectsCameraCaptureFragment
   {
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle));
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilEffectsListenerController = new EffectsListenerController(((PeakFragmentActivity)getActivity()).getAppInterface(), this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager = ((CaptureVideoFilterViewPager)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368994));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager = ((CaptureVideoFilterViewPager)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368995));
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.a(this);
     this.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(this);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView = ((EffectsCameraCaptureView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffectListener(this);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setDanceFilterEventHandler(this);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView = ((ProviderContainerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368982));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView = ((ProviderContainerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368983));
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.setListenerController(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilEffectsListenerController);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.setNeedAdvertisement(c());
     int i1;
@@ -1224,19 +1224,19 @@ public abstract class EffectsCameraCaptureFragment
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setEnableBadCaseReport(true);
       label404:
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.b();
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370033));
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368985));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370042));
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368986));
       this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370032));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370041));
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370034);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370035);
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370036));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370037));
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368986));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370043);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370044);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370045));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370046));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368987));
       this.jdField_g_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370028));
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370037));
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.a(0);
       }
@@ -1244,7 +1244,7 @@ public abstract class EffectsCameraCaptureFragment
         break label818;
       }
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView$ContainerViewListener == null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView$ContainerViewListener = new ahjc(this);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView$ContainerViewListener = new ahnt(this);
       }
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView$ContainerViewListener);
     }
@@ -1259,7 +1259,7 @@ public abstract class EffectsCameraCaptureFragment
       t();
       u();
       v();
-      ThreadManager.post(new ahjn(this), 5, null, true);
+      ThreadManager.post(new ahoe(this), 5, null, true);
       return this.jdField_a_of_type_AndroidViewViewGroup;
       i1 = 0;
       break;

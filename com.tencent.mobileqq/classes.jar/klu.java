@@ -1,14 +1,19 @@
-import com.tencent.biz.common.util.FileChooserHelper;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import com.tencent.biz.PoiMapActivity;
 
-public class klu
-  implements ActionSheet.OnDismissListener
+class klu
+  implements Runnable
 {
-  public klu(FileChooserHelper paramFileChooserHelper) {}
+  klu(klt paramklt) {}
   
-  public void onDismiss()
+  public void run()
   {
-    FileChooserHelper.a(this.a);
+    this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.b = false;
+    this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.getWindow().peekDecorView().getWindowToken(), 0);
   }
 }
 

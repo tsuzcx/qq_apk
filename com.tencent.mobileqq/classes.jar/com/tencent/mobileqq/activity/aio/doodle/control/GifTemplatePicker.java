@@ -48,7 +48,7 @@ public class GifTemplatePicker
   
   private void b(boolean paramBoolean)
   {
-    a(new GifTemplatePicker.GifTemplatePickerData(2130837567, 0), false);
+    a(new GifTemplatePicker.GifTemplatePickerData(2130837566, 0), false);
     Object localObject = DoodleResHelper.a().a(1);
     if (localObject == null) {}
     for (;;)

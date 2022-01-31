@@ -1,44 +1,86 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.VideoInviteFloatBarUICtr;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavInOutAnimation;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class kbk
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
-  public kbk(VideoInviteFloatBarUICtr paramVideoInviteFloatBarUICtr) {}
+  public kbk(QavInOutAnimation paramQavInOutAnimation) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      if (!paramContext.equals("tencent.video.invite.accept")) {
-        break label26;
-      }
-      this.a.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationEnd");
     }
-    label26:
-    do
+    try
     {
+      if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
+      {
+        this.a.jdField_a_of_type_ComTencentAvVideoController.a().au = false;
+        this.a.jdField_a_of_type_ComTencentAvVideoController.a().av = false;
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(4);
+      }
+      if (this.a.jdField_a_of_type_AndroidViewView != null) {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
+      if (this.a.b != null) {
+        this.a.b.setVisibility(4);
+      }
+      if (this.a.c != null) {
+        this.a.c.setVisibility(4);
+      }
+      if (this.a.d != null) {
+        this.a.d.setVisibility(4);
+      }
+      if (this.a.e != null) {
+        this.a.e.setVisibility(4);
+      }
+      if (this.a.g != null) {
+        this.a.g.setVisibility(4);
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener.b();
+      }
       return;
-      if (paramContext.equals("tencent.video.invite.refuse"))
-      {
-        this.a.g();
-        return;
+    }
+    catch (Exception paramAnimation)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationEnd Exception :" + paramAnimation);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationStart");
+    }
+    try
+    {
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener.a();
       }
-      if (paramContext.equals("tencent.video.invite.gaaccept"))
-      {
-        this.a.i();
-        return;
-      }
-    } while (!paramContext.equals("tencent.video.invite.gaignore"));
-    this.a.h();
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationStart Exception :" + paramAnimation);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kbk
  * JD-Core Version:    0.7.0.1
  */

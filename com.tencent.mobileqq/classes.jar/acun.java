@@ -1,44 +1,31 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.app.UniformDownload;
+import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
 
-class acun
+public class acun
   implements Runnable
 {
-  acun(acum paramacum, String paramString, long paramLong) {}
+  public acun(FilePreviewActivity paramFilePreviewActivity) {}
   
   public void run()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Acum.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a, UniformDownloadActivity.class);
-    String str1 = this.jdField_a_of_type_Acum.jdField_a_of_type_AndroidOsBundle.getString("param_content_memo");
-    String str2 = this.jdField_a_of_type_Acum.jdField_a_of_type_AndroidOsBundle.getString("param_icon_path");
-    String str3 = this.jdField_a_of_type_Acum.jdField_a_of_type_AndroidOsBundle.getString("param_mime_type");
-    if (str1 != null) {
-      localIntent.putExtra(UniformDownloadActivity.h, str1);
-    }
-    if (str2 != null) {
-      localIntent.putExtra(UniformDownloadActivity.g, str2);
-    }
-    boolean bool = this.jdField_a_of_type_Acum.jdField_a_of_type_AndroidOsBundle.getBoolean("param_isqbdownload", false);
-    localIntent.putExtra(UniformDownloadActivity.i, bool);
-    localIntent.putExtra(UniformDownloadActivity.b, this.jdField_a_of_type_Acum.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra(UniformDownloadActivity.d, this.jdField_a_of_type_JavaLangString);
-    localIntent.setFlags(536870912);
-    if (this.jdField_a_of_type_Acum.jdField_a_of_type_Long != 0L) {}
-    for (long l = this.jdField_a_of_type_Acum.jdField_a_of_type_Long;; l = this.jdField_a_of_type_Long)
-    {
-      localIntent.putExtra(UniformDownloadActivity.e, l);
-      localIntent.putExtra(UniformDownloadActivity.j, str3);
-      if (this.jdField_a_of_type_Acum.b == 1L) {
-        localIntent.putExtra(UniformDownloadActivity.c, this.jdField_a_of_type_Acum.b);
-      }
-      localIntent.putExtra("fromArkAppDownload", this.jdField_a_of_type_Acum.jdField_a_of_type_AndroidOsBundle.getBoolean("fromArkAppDownload", false));
-      this.jdField_a_of_type_Acum.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.startActivity(localIntent);
-      this.jdField_a_of_type_Acum.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.overridePendingTransition(0, 0);
+    if (!this.a.d) {
       return;
     }
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0 - this.a.jdField_a_of_type_AndroidViewViewGroup.getHeight(), 0.0F);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.a.jdField_a_of_type_AndroidViewViewGroup);
+    }
+    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
+    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
+    localFilePreviewAnim.jdField_a_of_type_Boolean = true;
+    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.b;
+    localFilePreviewAnim.b = 250;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
+    this.a.d = false;
   }
 }
 

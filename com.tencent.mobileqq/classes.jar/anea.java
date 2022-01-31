@@ -1,24 +1,48 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
-import cooperation.qzone.webviewwrapper.QzoneWebViewBaseBuilder.WebviewStatusListener;
-import cooperation.qzone.webviewwrapper.WebviewWrapper;
+import android.os.Message;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.networkedmodule.QzoneModuleDownloadManager;
+import java.util.Map;
 
 public class anea
-  implements QzoneWebViewBaseBuilder.WebviewStatusListener
+  implements Downloader.DownloadListener
 {
-  public anea(WebviewWrapper paramWebviewWrapper, IWebviewListener paramIWebviewListener) {}
+  public anea(QzoneModuleDownloadManager paramQzoneModuleDownloadManager) {}
   
-  public void a()
+  public void onDownloadCanceled(String paramString)
   {
-    if (WebviewWrapper.a(this.jdField_a_of_type_CooperationQzoneWebviewwrapperWebviewWrapper) == null) {}
-    do
-    {
-      return;
-      if (WebviewWrapper.a(this.jdField_a_of_type_CooperationQzoneWebviewwrapperWebviewWrapper).getVisibility() != 0) {
-        WebviewWrapper.a(this.jdField_a_of_type_CooperationQzoneWebviewwrapperWebviewWrapper).setVisibility(0);
-      }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
+    Message localMessage = Message.obtain(QzoneModuleDownloadManager.a(this.a));
+    localMessage.what = 5;
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramDownloadResult = Message.obtain(QzoneModuleDownloadManager.a(this.a));
+    paramDownloadResult.what = 3;
+    paramDownloadResult.obj = paramString;
+    paramDownloadResult.sendToTarget();
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    paramString = (aneb)QzoneModuleDownloadManager.a(this.a).get(paramString);
+    if (paramString != null) {
+      paramString.a = Float.valueOf(paramFloat);
+    }
+    Message localMessage = Message.obtain(QzoneModuleDownloadManager.a(this.a));
+    localMessage.what = 6;
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramDownloadResult = Message.obtain(QzoneModuleDownloadManager.a(this.a));
+    paramDownloadResult.what = 2;
+    paramDownloadResult.obj = paramString;
+    paramDownloadResult.sendToTarget();
   }
 }
 

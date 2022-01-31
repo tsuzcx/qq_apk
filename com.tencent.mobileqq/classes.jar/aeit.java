@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.model.QueryTask;
-import com.tencent.mobileqq.model.QueryTask.Query;
-import mqq.os.MqqHandler;
+import android.view.ViewStub;
+import com.tencent.mobileqq.activity.main.CommonLoadingView;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
 
 public class aeit
   implements Runnable
 {
-  public aeit(QueryTask paramQueryTask, Object paramObject) {}
+  public aeit(LebaWithFeeds paramLebaWithFeeds) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqModelQueryTask.a.a(this.jdField_a_of_type_JavaLangObject);
-    ThreadManager.getUIHandler().post(new aeiu(this, localObject));
+    ViewStub localViewStub = (ViewStub)this.a.a(2131364899);
+    ((CommonLoadingView)this.a.a(2131363833)).setVisibility(8);
+    localViewStub.setVisibility(0);
   }
 }
 

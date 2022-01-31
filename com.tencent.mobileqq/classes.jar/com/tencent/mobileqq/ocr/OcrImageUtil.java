@@ -23,7 +23,7 @@ public class OcrImageUtil
   static
   {
     jdField_a_of_type_Boolean = true;
-    File localFile = new File(AppConstants.aJ, "ocr");
+    File localFile = new File(AppConstants.aK, "ocr");
     jdField_a_of_type_JavaLangString = localFile.getAbsolutePath();
     if ((!localFile.exists()) && (!localFile.mkdir()))
     {

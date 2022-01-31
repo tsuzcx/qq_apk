@@ -1,31 +1,15 @@
-import android.app.Activity;
-import com.tencent.biz.addContactTroopView.AddContactTroopHandler.IGetPopClassAndSearchCB;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
 
 public class wji
-  implements AddContactTroopHandler.IGetPopClassAndSearchCB
+  implements Runnable
 {
-  public wji(TroopView paramTroopView) {}
+  public wji(ZhituManager paramZhituManager, String paramString1, int paramInt1, ZhituResponse paramZhituResponse, ZhituImgResponse paramZhituImgResponse, int paramInt2, String paramString2) {}
   
-  public void a()
+  public void run()
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
-    }
-    TroopView.d(this.a, true);
-    TroopView.e(this.a, true);
-    TroopView.a(this.a).sendEmptyMessage(4);
-  }
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
-    }
-    TroopView.d(this.a, true);
-    TroopView.e(this.a, false);
-    TroopView.a(this.a).sendEmptyMessage(5);
+    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituImgResponse, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
   }
 }
 

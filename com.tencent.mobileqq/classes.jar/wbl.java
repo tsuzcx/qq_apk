@@ -1,35 +1,26 @@
+import com.tencent.biz.troopgift.TroopGiftPanel.OnShowOrHideListerner;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
 
 public class wbl
-  implements Runnable
+  implements TroopGiftPanel.OnShowOrHideListerner
 {
-  public wbl(TroopChatPie paramTroopChatPie, boolean paramBoolean) {}
+  public wbl(NearbyChatPie paramNearbyChatPie) {}
   
-  public void run()
+  public void a()
   {
-    try
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.a();
+  }
+  
+  public void b()
+  {
+    NearbyGiftPanelDialog localNearbyGiftPanelDialog = this.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
+    for (int i = 8;; i = 6)
     {
-      Thread.sleep(700L);
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.aa) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar.a())))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.aa = true;
-        TroopChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie).post(new wbm(this));
-      }
+      localNearbyGiftPanelDialog.a(false, true, i);
       return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, QLog.getStackTraceString(localInterruptedException));
-        }
-      }
     }
   }
 }

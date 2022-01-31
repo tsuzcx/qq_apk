@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
 import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.confess.TroopConfessUtil;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
@@ -183,6 +184,7 @@ public class MessageRecord
   public static final int MSG_TYPE_TIM_DOUFU_GUIDE = -3015;
   public static final int MSG_TYPE_TIM_GUIDE = -3014;
   public static final int MSG_TYPE_TRIBE_SHORT_VIDEO = -7002;
+  public static final int MSG_TYPE_TROOP_CONFESS = -2067;
   public static final int MSG_TYPE_TROOP_DELIVER_GIFT = -2035;
   public static final int MSG_TYPE_TROOP_DELIVER_GIFT_OBJ = -2038;
   public static final int MSG_TYPE_TROOP_EFFECT_PIC = -5015;
@@ -620,7 +622,8 @@ public class MessageRecord
   
   public boolean isSend()
   {
-    if ((AnonymousChatHelper.a(this)) && (AnonymousChatHelper.b(this))) {
+    if ((AnonymousChatHelper.a(this)) && (AnonymousChatHelper.b(this))) {}
+    while ((TroopConfessUtil.a(this)) && (TroopConfessUtil.b(this))) {
       return true;
     }
     return MsgUtils.a(this.issend);

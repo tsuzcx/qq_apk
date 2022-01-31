@@ -28,7 +28,6 @@ public class BaseMomentItemBuilder$MomentViewHolder
   public TextView f;
   public TextView g;
   public TextView h;
-  public TextView i;
   
   public BaseMomentItemBuilder$MomentViewHolder(BaseMomentItemBuilder paramBaseMomentItemBuilder) {}
 }

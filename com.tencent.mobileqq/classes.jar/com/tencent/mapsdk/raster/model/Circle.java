@@ -1,21 +1,21 @@
 package com.tencent.mapsdk.raster.model;
 
 import android.graphics.DashPathEffect;
-import com.tencent.mapsdk.rastercore.tile.a.b;
+import com.tencent.mapsdk.rastercore.e.a;
 
 public final class Circle
   implements IOverlay
 {
-  private final b iCircleDel$6689bbe;
+  private final a iCircleDel;
   
-  public Circle(b paramb)
+  public Circle(a parama)
   {
-    this.iCircleDel$6689bbe = paramb;
+    this.iCircleDel = parama;
   }
   
   public final boolean contains(LatLng paramLatLng)
   {
-    return this.iCircleDel$6689bbe.b(paramLatLng);
+    return this.iCircleDel.b(paramLatLng);
   }
   
   public final boolean equals(Object paramObject)
@@ -23,112 +23,112 @@ public final class Circle
     if (!(paramObject instanceof Circle)) {
       return false;
     }
-    return this.iCircleDel$6689bbe.equalsRemote(((Circle)paramObject).iCircleDel$6689bbe);
+    return this.iCircleDel.equalsRemote(((Circle)paramObject).iCircleDel);
   }
   
   public final LatLng getCenter()
   {
-    return this.iCircleDel$6689bbe.a();
+    return this.iCircleDel.a();
   }
   
   public final int getFillColor()
   {
-    return this.iCircleDel$6689bbe.e();
+    return this.iCircleDel.e();
   }
   
   public final String getId()
   {
-    return this.iCircleDel$6689bbe.getId();
+    return this.iCircleDel.getId();
   }
   
   public final double getRadius()
   {
-    return this.iCircleDel$6689bbe.b();
+    return this.iCircleDel.b();
   }
   
   public final int getStrokeColor()
   {
-    return this.iCircleDel$6689bbe.d();
+    return this.iCircleDel.d();
   }
   
   public final boolean getStrokeDash()
   {
-    return this.iCircleDel$6689bbe.f();
+    return this.iCircleDel.f();
   }
   
   public final DashPathEffect getStrokeDashPathEffect()
   {
-    return this.iCircleDel$6689bbe.g();
+    return this.iCircleDel.g();
   }
   
   public final float getStrokeWidth()
   {
-    return this.iCircleDel$6689bbe.c();
+    return this.iCircleDel.c();
   }
   
   public final float getZIndex()
   {
-    return this.iCircleDel$6689bbe.getZIndex();
+    return this.iCircleDel.getZIndex();
   }
   
   public final int hashCode()
   {
-    return this.iCircleDel$6689bbe.hashCodeRemote();
+    return this.iCircleDel.hashCodeRemote();
   }
   
   public final boolean isVisible()
   {
-    return this.iCircleDel$6689bbe.isVisible();
+    return this.iCircleDel.isVisible();
   }
   
   public final void remove()
   {
-    this.iCircleDel$6689bbe.remove();
+    this.iCircleDel.remove();
   }
   
   public final void setCenter(LatLng paramLatLng)
   {
-    this.iCircleDel$6689bbe.a(paramLatLng);
+    this.iCircleDel.a(paramLatLng);
   }
   
   public final void setFillColor(int paramInt)
   {
-    this.iCircleDel$6689bbe.b(paramInt);
+    this.iCircleDel.b(paramInt);
   }
   
   public final void setRadius(double paramDouble)
   {
-    this.iCircleDel$6689bbe.a(paramDouble);
+    this.iCircleDel.a(paramDouble);
   }
   
   public final void setStrokeColor(int paramInt)
   {
-    this.iCircleDel$6689bbe.a(paramInt);
+    this.iCircleDel.a(paramInt);
   }
   
   public final void setStrokeDash(boolean paramBoolean)
   {
-    this.iCircleDel$6689bbe.a(paramBoolean);
+    this.iCircleDel.a(paramBoolean);
   }
   
   public final void setStrokeWidth(float paramFloat)
   {
-    this.iCircleDel$6689bbe.a(paramFloat);
+    this.iCircleDel.a(paramFloat);
   }
   
   public final void setVisible(boolean paramBoolean)
   {
-    this.iCircleDel$6689bbe.setVisible(paramBoolean);
+    this.iCircleDel.setVisible(paramBoolean);
   }
   
   public final void setZIndex(float paramFloat)
   {
-    this.iCircleDel$6689bbe.setZIndex(paramFloat);
+    this.iCircleDel.setZIndex(paramFloat);
   }
   
   public final void strokeDashPathEffect(DashPathEffect paramDashPathEffect)
   {
-    this.iCircleDel$6689bbe.a(paramDashPathEffect);
+    this.iCircleDel.a(paramDashPathEffect);
   }
 }
 

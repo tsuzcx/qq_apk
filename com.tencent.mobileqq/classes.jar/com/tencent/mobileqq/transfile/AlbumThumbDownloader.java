@@ -73,12 +73,12 @@ public class AlbumThumbDownloader
   
   public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return new File(AppConstants.aI);
+    return new File(AppConstants.aJ);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AlbumThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

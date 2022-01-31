@@ -1,32 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import java.lang.ref.WeakReference;
 
 public class zew
-  implements WerewolvesHandler.Callback
+  implements Runnable
 {
-  public zew(HotChatHandler paramHotChatHandler) {}
+  public zew(ApolloLottieAnim paramApolloLottieAnim) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void run()
   {
-    if (paramInt == 0)
-    {
-      paramRspBody = paramRspBody.string_invite_id.get().toStringUtf8();
-      if (!TextUtils.isEmpty(paramRspBody))
-      {
-        com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = paramRspBody;
-        GameRoomAVController.a().a(0, paramRspBody, 0L, null);
-      }
+    if ((ApolloLottieAnim.a(this.a) != null) && (ApolloLottieAnim.a(this.a).get() != null)) {
+      ((DiniFlyAnimationView)ApolloLottieAnim.a(this.a).get()).endAnimation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zew
  * JD-Core Version:    0.7.0.1
  */

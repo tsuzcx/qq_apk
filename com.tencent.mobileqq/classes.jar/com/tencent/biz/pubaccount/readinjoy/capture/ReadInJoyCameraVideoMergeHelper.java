@@ -140,10 +140,10 @@ public class ReadInJoyCameraVideoMergeHelper
     //   271: invokestatic 117	com/tencent/biz/pubaccount/readinjoy/capture/ReadInJoyCameraVideoMergeHelper:b	()Ljava/lang/String;
     //   274: invokeinterface 105 2 0
     //   279: pop
-    //   280: new 119	lhz
+    //   280: new 119	lkn
     //   283: dup
     //   284: aconst_null
-    //   285: invokespecial 122	lhz:<init>	(Llhy;)V
+    //   285: invokespecial 122	lkn:<init>	(Llkm;)V
     //   288: astore_0
     //   289: new 124	java/lang/ProcessBuilder
     //   292: dup
@@ -166,13 +166,13 @@ public class ReadInJoyCameraVideoMergeHelper
     //   322: astore_1
     //   323: aload_0
     //   324: aload_1
-    //   325: putfield 144	lhz:a	Ljava/lang/Process;
+    //   325: putfield 144	lkn:a	Ljava/lang/Process;
     //   328: aload_0
-    //   329: invokevirtual 146	lhz:a	()V
+    //   329: invokevirtual 146	lkn:a	()V
     //   332: ldc 148
     //   334: invokestatic 96	com/tencent/biz/pubaccount/readinjoy/capture/ReadInJoyCameraVideoMergeHelper:b	(Ljava/lang/String;)V
     //   337: aload_0
-    //   338: invokevirtual 150	lhz:b	()V
+    //   338: invokevirtual 150	lkn:b	()V
     //   341: aload_1
     //   342: invokevirtual 155	java/lang/Process:waitFor	()I
     //   345: pop
@@ -350,10 +350,10 @@ public class ReadInJoyCameraVideoMergeHelper
     //   181: invokestatic 117	com/tencent/biz/pubaccount/readinjoy/capture/ReadInJoyCameraVideoMergeHelper:b	()Ljava/lang/String;
     //   184: invokeinterface 105 2 0
     //   189: pop
-    //   190: new 119	lhz
+    //   190: new 119	lkn
     //   193: dup
     //   194: aconst_null
-    //   195: invokespecial 122	lhz:<init>	(Llhy;)V
+    //   195: invokespecial 122	lkn:<init>	(Llkm;)V
     //   198: astore_1
     //   199: new 124	java/lang/ProcessBuilder
     //   202: dup
@@ -376,13 +376,13 @@ public class ReadInJoyCameraVideoMergeHelper
     //   232: astore_0
     //   233: aload_1
     //   234: aload_0
-    //   235: putfield 144	lhz:a	Ljava/lang/Process;
+    //   235: putfield 144	lkn:a	Ljava/lang/Process;
     //   238: aload_1
-    //   239: invokevirtual 146	lhz:a	()V
+    //   239: invokevirtual 146	lkn:a	()V
     //   242: ldc 148
     //   244: invokestatic 96	com/tencent/biz/pubaccount/readinjoy/capture/ReadInJoyCameraVideoMergeHelper:b	(Ljava/lang/String;)V
     //   247: aload_1
-    //   248: invokevirtual 150	lhz:b	()V
+    //   248: invokevirtual 150	lkn:b	()V
     //   251: aload_0
     //   252: invokevirtual 155	java/lang/Process:waitFor	()I
     //   255: pop

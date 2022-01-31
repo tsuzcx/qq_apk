@@ -1,16 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
 
 public class tsu
-  implements View.OnClickListener
+  extends Handler
 {
-  public tsu(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    SoundAndVibrateActivity.a(this.a);
-  }
+  public tsu(RecentLoginDevActivity paramRecentLoginDevActivity) {}
 }
 
 

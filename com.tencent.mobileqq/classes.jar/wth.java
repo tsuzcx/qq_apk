@@ -1,26 +1,13 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class wth
   implements Runnable
 {
-  public wth(BindNumberActivity paramBindNumberActivity) {}
+  public wth(PublicAccountFragment paramPublicAccountFragment) {}
   
   public void run()
   {
-    if (!this.a.isFinishing())
-    {
-      long l = SystemClock.uptimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 0, 0.0F, 0.0F, 0);
-      this.a.a.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      localMotionEvent = MotionEvent.obtain(l, l, 1, 0.0F, 0.0F, 0);
-      this.a.a.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      this.a.a.setSelection(this.a.a.getText().toString().length());
-    }
+    this.a.i();
   }
 }
 

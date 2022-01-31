@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.data.TroopAssistantData;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class aens
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aens(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aens(TroopAssistantManager paramTroopAssistantManager, TroopAssistantData paramTroopAssistantData, EntityManager paramEntityManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData.getStatus() == 1000)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aens
  * JD-Core Version:    0.7.0.1
  */

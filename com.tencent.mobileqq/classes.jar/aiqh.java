@@ -1,31 +1,13 @@
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.http.HttpResponse;
-import org.apache.http.impl.client.DefaultRedirectHandler;
-import org.apache.http.protocol.HttpContext;
+import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
 
-public final class aiqh
-  extends DefaultRedirectHandler
+public class aiqh
+  implements Runnable
 {
-  public URI getLocationURI(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
+  public aiqh(Texture paramTexture) {}
+  
+  public void run()
   {
-    URI localURI = super.getLocationURI(paramHttpResponse, paramHttpContext);
-    paramHttpResponse = paramHttpContext.getAttribute("mobileqq_report_flag");
-    if ((paramHttpResponse != null) && ((paramHttpResponse instanceof Integer)) && (((Integer)paramHttpResponse).intValue() > 0))
-    {
-      Object localObject = paramHttpContext.getAttribute("mobileqq_direct_uri");
-      paramHttpResponse = localObject;
-      if (localObject == null)
-      {
-        paramHttpResponse = new ArrayList();
-        paramHttpContext.setAttribute("mobileqq_direct_uri", paramHttpResponse);
-      }
-      if ((paramHttpResponse != null) && ((paramHttpResponse instanceof List))) {
-        ((List)paramHttpResponse).add(localURI);
-      }
-    }
-    return localURI;
+    this.a.b();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.open.business.viareport;
 
-import alfw;
-import alfx;
+import alno;
+import alnp;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -115,7 +115,7 @@ public class ReportManager
   {
     String str = String.valueOf(CommonDataAdapter.a().a());
     if (a(str)) {
-      ThreadManager.executeOnNetWorkThread(new alfx(this, str));
+      ThreadManager.executeOnNetWorkThread(new alnp(this, str));
     }
   }
   
@@ -169,7 +169,7 @@ public class ReportManager
   
   public void a(String paramString, BatchReportInfo paramBatchReportInfo, Bundle paramBundle, boolean paramBoolean)
   {
-    ThreadManager.executeOnNetWorkThread(new alfw(this, paramBoolean, paramBatchReportInfo, paramBundle, paramString));
+    ThreadManager.executeOnNetWorkThread(new alno(this, paramBoolean, paramBatchReportInfo, paramBundle, paramString));
   }
   
   /* Error */

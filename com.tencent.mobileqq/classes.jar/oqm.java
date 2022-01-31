@@ -1,15 +1,13 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.biz.qqstory.view.segment.SegmentManager;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
 
-public class oqm
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
+class oqm
+  implements Runnable
 {
-  public oqm(SegmentList paramSegmentList) {}
+  oqm(oql paramoql) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.a(false);
+    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
   }
 }
 

@@ -2,7 +2,7 @@ package cooperation.qwallet.plugin;
 
 public class Config
 {
-  public static final int INTERNAL_VERSION = 42;
+  public static final int INTERNAL_VERSION = 43;
 }
 
 

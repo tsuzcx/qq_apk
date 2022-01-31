@@ -93,7 +93,7 @@ public class XListView
           }
           return bool1;
         }
-        catch (Exception paramMotionEvent)
+        catch (RuntimeException paramMotionEvent)
         {
           for (;;)
           {

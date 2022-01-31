@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.hotpic.HotPicManager;
-import com.tencent.mobileqq.hotpic.HotPicSendData;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.dataline.core.DirectForwarder;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class adpw
-  implements Runnable
+class adpw
+  implements FMDialogUtil.FMDialogInterface
 {
-  public adpw(HotPicManager paramHotPicManager, HotPicSendData paramHotPicSendData1, HotPicSendData paramHotPicSendData2) {}
+  adpw(adpv paramadpv) {}
   
-  public void run()
+  public void a()
   {
-    HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).b(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicSendData);
-    if (this.b != null) {
-      HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).b(this.b);
-    }
+    DirectForwarder.b(this.a.a, 0);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adpw
  * JD-Core Version:    0.7.0.1
  */

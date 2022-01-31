@@ -16,12 +16,12 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import mnx;
-import mny;
-import mnz;
-import moa;
-import mob;
 import mqq.os.MqqHandler;
+import mrp;
+import mrq;
+import mrr;
+import mrs;
+import mrt;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -97,7 +97,9 @@ public class FastWebRequestUtil
       paramString = new Bundle();
       paramString.putString("articleId", String.valueOf(l));
       QLog.d("Q.readinjoy.fast_web", 2, "" + "http://c.mp.qq.com/review/img-txt-comment/list?source=1" + "  articleId " + l);
-      paramString = new String(HttpUtil.a(BaseApplicationImpl.getContext(), "http://c.mp.qq.com/review/img-txt-comment/list?source=1", "POST", paramString, null));
+      Bundle localBundle = new Bundle();
+      HttpUtil.a(localBundle);
+      paramString = new String(HttpUtil.a(BaseApplicationImpl.getContext(), "http://c.mp.qq.com/review/img-txt-comment/list?source=1", "POST", paramString, localBundle));
     }
     catch (Exception paramString)
     {
@@ -115,7 +117,7 @@ public class FastWebRequestUtil
       if (i > paramFastWebArticleInfo.jdField_a_of_type_Long)
       {
         paramFastWebArticleInfo.jdField_a_of_type_Long = i;
-        ThreadManager.getUIHandler().post(new mob());
+        ThreadManager.getUIHandler().post(new mrt());
         return;
       }
     }
@@ -131,13 +133,13 @@ public class FastWebRequestUtil
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, FastWebRequestUtil.RecommendAndAdCallback paramRecommendAndAdCallback)
   {
     paramRecommendAndAdCallback = new FastWebRequestUtil.RecommendAndAd(paramString1, paramRecommendAndAdCallback);
-    a(paramString1, paramString2, paramString3, paramBoolean, new mnx(paramRecommendAndAdCallback));
-    b(paramString1, paramString3, paramString4, paramBoolean, new mny(paramRecommendAndAdCallback));
+    a(paramString1, paramString2, paramString3, paramBoolean, new mrp(paramRecommendAndAdCallback));
+    b(paramString1, paramString3, paramString4, paramBoolean, new mrq(paramRecommendAndAdCallback));
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, FastWebRequestUtil.ResponseCallback paramResponseCallback)
   {
-    ThreadManager.executeOnNetWorkThread(new mnz(paramString3, paramString1, paramString2, paramResponseCallback));
+    ThreadManager.executeOnNetWorkThread(new mrr(paramString3, paramString1, paramString2, paramResponseCallback));
   }
   
   private static boolean a(String paramString)
@@ -291,7 +293,7 @@ public class FastWebRequestUtil
   
   public static void b(String paramString1, String paramString2, String paramString3, boolean paramBoolean, FastWebRequestUtil.ResponseCallback paramResponseCallback)
   {
-    ThreadManager.executeOnNetWorkThread(new moa(paramBoolean, paramString2, paramString1, paramString3, paramResponseCallback));
+    ThreadManager.executeOnNetWorkThread(new mrs(paramBoolean, paramString2, paramString1, paramString3, paramResponseCallback));
   }
   
   private static boolean b(int paramInt)

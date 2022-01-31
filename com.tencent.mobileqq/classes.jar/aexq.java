@@ -1,13 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomUtils;
 
-public class aexq
-  implements View.OnClickListener
+public final class aexq
+  implements DialogInterface.OnClickListener
 {
-  public aexq(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aexq(Activity paramActivity) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    GameRoomUtils.a(this.a, 10);
+  }
 }
 
 

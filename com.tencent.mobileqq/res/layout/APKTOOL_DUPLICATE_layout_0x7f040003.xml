@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0391" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0392" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0a96" />
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0393" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="11.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0396" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0397" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0a98" />
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0398" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="11.0dip" />
     </LinearLayout>
 </LinearLayout>

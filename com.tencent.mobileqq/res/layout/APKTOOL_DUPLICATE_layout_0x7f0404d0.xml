@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f04" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c031a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f09" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c031c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ScrollView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040491" />
+            <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040490" />
             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
-                <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c031c" android:gravity="bottom" android:id="@id/input_note_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f9c" android:singleLine="true" />
-                <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c031c" android:gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06d2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f7c" android:singleLine="true" />
-                <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a088a" android:background="@null" android:paddingLeft="3.0dip" android:paddingTop="7.0dip" android:paddingRight="7.0dip" android:paddingBottom="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020dc1" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c031e" android:gravity="bottom" android:id="@id/input_note_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0fa8" android:singleLine="true" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c031e" android:gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06e5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f88" android:singleLine="true" />
+                <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a08a3" android:background="@null" android:paddingLeft="3.0dip" android:paddingTop="7.0dip" android:paddingRight="7.0dip" android:paddingBottom="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020dd5" />
             </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1713" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-                <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020dc2" android:layout_width="fill_parent" android:layout_height="44.0dip">
-                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a170a" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                        <com.tenpay.sdk.i.aj android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a170b" android:visibility="gone" android:imeOptions="actionDone" android:imeActionLabel="@string/APKTOOL_DUPLICATE_string_0x7f0b0e64" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
-                        <com.tenpay.sdk.i.a android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1715" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b0e10" android:inputType="textPassword" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
+            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a171a" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020dd6" android:layout_width="fill_parent" android:layout_height="44.0dip">
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1711" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                        <com.tenpay.sdk.i.aj android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1712" android:visibility="gone" android:imeOptions="actionDone" android:imeActionLabel="@string/APKTOOL_DUPLICATE_string_0x7f0b0e68" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
+                        <com.tenpay.sdk.i.a android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a171c" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b0e14" android:inputType="textPassword" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
                     </LinearLayout>
                 </LinearLayout>
                 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
-                    <Button android:textSize="15.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16d1" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ebe" android:layout_alignParentRight="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00eb" />
+                    <Button android:textSize="15.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16d8" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ec3" android:layout_alignParentRight="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00eb" />
                 </RelativeLayout>
                 <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="8.0dip">
-                    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1716" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ebf" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ef" />
+                    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a171d" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ec4" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ef" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <com.tenpay.api.MyKeyboardWindow android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16bf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16c6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

@@ -1,30 +1,27 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class acre
-  implements View.OnLongClickListener
+class acre
+  implements Runnable
 {
-  public acre(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  acre(acrd paramacrd) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
-      return false;
+    try
+    {
+      ExtendFriendSquareFragment.a(this.a.a).a(0, true);
+      return;
     }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131362740, paramView.getContext().getString(2131434041));
-    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new acrf(this, paramView), new acrh(this, paramView));
-    return true;
+    catch (Exception localException)
+    {
+      QLog.e("ExtendFriendSquareFragment", 1, "onScrolled fail.", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acre
  * JD-Core Version:    0.7.0.1
  */

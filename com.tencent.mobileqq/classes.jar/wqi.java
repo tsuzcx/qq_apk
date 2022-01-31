@@ -1,34 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.StackBlur;
 
 public class wqi
   implements Runnable
 {
-  public wqi(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
+  public wqi(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
   public void run()
   {
+    Bitmap localBitmap = this.a.a(this.a.app.a(this.a.a, (byte)1, true));
+    if (localBitmap != null) {}
     try
     {
-      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(35)).c();
-      if (localRedTypeInfo != null) {
-        localRedTypeInfo.red_type.set(0);
-      }
-      Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.obtainMessage(4);
-      localMessage.obj = localRedTypeInfo;
-      this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.sendMessage(localMessage);
+      StackBlur.a(localBitmap, 10);
+      this.a.runOnUiThread(new wqj(this, localBitmap));
       return;
     }
-    catch (Exception localException)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MainAssistObserver", 2, "WL_DEBUG updateTabCallNotify.run error : " + localException);
+      for (;;)
+      {
+        localOutOfMemoryError.printStackTrace();
+      }
     }
   }
 }

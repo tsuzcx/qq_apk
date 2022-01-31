@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import aiot;
-import aiou;
-import aiov;
-import aioy;
-import aioz;
-import aipa;
+import aitw;
+import aitx;
+import aity;
+import aiub;
+import aiuc;
+import aiud;
 import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
 import android.os.Looper;
@@ -85,7 +85,7 @@ public class C2CPicUploadProcessor
   extends BasePicUploadProcessor
 {
   private int jdField_a_of_type_Int;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aipa(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aiud(this);
   public QQAppInterface a;
   private CSDataHighwayHead.LoginSigHead jdField_a_of_type_ComTencentMobileqqHighwayProtocolCSDataHighwayHead$LoginSigHead;
   protected TransFileController a;
@@ -486,7 +486,7 @@ public class C2CPicUploadProcessor
   
   private void u()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new aiou(this));
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new aitx(this));
   }
   
   private void v()
@@ -838,7 +838,7 @@ public class C2CPicUploadProcessor
             this.jdField_f_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
             break;
           }
-          an_();
+          ap_();
           break;
         }
         d("<BDH_LOG> onBusiProtoResp() select HTTP channel");
@@ -994,7 +994,7 @@ public class C2CPicUploadProcessor
     }
   }
   
-  public void an_()
+  public void ap_()
   {
     if (QLog.isColorLevel()) {
       QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> Transaction submit:sendFile:" + this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction + "  this:" + this);
@@ -1008,11 +1008,11 @@ public class C2CPicUploadProcessor
       this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
     }
     Object localObject = HexUtil.a(this.jdField_l_of_type_JavaLangString);
-    aiov localaiov = new aiov(this, SystemClock.uptimeMillis());
+    aity localaity = new aity(this, SystemClock.uptimeMillis());
     if (this.jdField_a_of_type_Boolean) {}
-    for (this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_i_of_type_JavaLangString, (int)this.jdField_r_of_type_Long, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte, localaiov, this.jdField_a_of_type_Int, this.jdField_c_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqHighwayProtocolCSDataHighwayHead$LoginSigHead);; this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_i_of_type_JavaLangString, (int)this.jdField_r_of_type_Long, (byte[])localObject, this.jdField_a_of_type_ArrayOfByte, localaiov))
+    for (this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_i_of_type_JavaLangString, (int)this.jdField_r_of_type_Long, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte, localaity, this.jdField_a_of_type_Int, this.jdField_c_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqHighwayProtocolCSDataHighwayHead$LoginSigHead);; this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_i_of_type_JavaLangString, (int)this.jdField_r_of_type_Long, (byte[])localObject, this.jdField_a_of_type_ArrayOfByte, localaity))
     {
-      localObject = new aioy(this);
+      localObject = new aiub(this);
       this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.cbForReport = ((ITransCallbackForReport)localObject);
       int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().submitTransactionTask(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction);
       if (QLog.isColorLevel()) {
@@ -1027,9 +1027,9 @@ public class C2CPicUploadProcessor
     }
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     d(1000);
     this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b();
     d(1001);
@@ -1107,7 +1107,7 @@ public class C2CPicUploadProcessor
           QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> mOpenUpTicket: " + this.jdField_b_of_type_ArrayOfByte + " mLoginSigHead:" + this.jdField_a_of_type_ComTencentMobileqqHighwayProtocolCSDataHighwayHead$LoginSigHead);
         }
         q();
-        an_();
+        ap_();
         return;
       }
       if (QLog.isColorLevel()) {
@@ -1141,7 +1141,7 @@ public class C2CPicUploadProcessor
       this.jdField_j_of_type_JavaLangString = "";
       this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
       v();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new aioz(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a.post(new aiuc(this));
     }
     return 0;
   }
@@ -1193,7 +1193,7 @@ public class C2CPicUploadProcessor
       {
         a(9072, (String)localObject, c((String)localObject), null);
         d();
-        new Handler(Looper.getMainLooper()).post(new aiot(this));
+        new Handler(Looper.getMainLooper()).post(new aitw(this));
         return -1;
       }
       this.jdField_e_of_type_JavaLangString = ((String)localObject);
@@ -1596,12 +1596,12 @@ public class C2CPicUploadProcessor
       u();
       return;
     }
-    ap_();
+    ar_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPicUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

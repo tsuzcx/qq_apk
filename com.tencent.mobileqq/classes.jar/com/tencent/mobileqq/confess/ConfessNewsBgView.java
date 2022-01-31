@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.Path.Direction;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
@@ -13,15 +15,17 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
+import com.tencent.util.VersionUtils;
 
 public class ConfessNewsBgView
   extends View
 {
-  float jdField_a_of_type_Float = 16.0F;
   int jdField_a_of_type_Int = -6807359;
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private Path jdField_a_of_type_AndroidGraphicsPath;
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private boolean jdField_a_of_type_Boolean;
+  private float[] jdField_a_of_type_ArrayOfFloat = { 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F, 16.0F };
   ConfessShareHelper.BgElement[] jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement = null;
   int b = 0;
   private int c;
@@ -86,7 +90,7 @@ public class ConfessNewsBgView
     {
       localObject1 = ConfessShareHelper.a[0];
       if ((this.b < 0) || (this.b >= ConfessShareHelper.a.length)) {
-        break label297;
+        break label309;
       }
       localObject1 = ConfessShareHelper.a[this.b];
       this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement = ConfessShareHelper.a(0, this.b);
@@ -98,8 +102,11 @@ public class ConfessNewsBgView
         this.jdField_a_of_type_Int = Color.parseColor((String)localObject1);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+        if (!VersionUtils.h()) {
+          setLayerType(1, null);
+        }
         return;
-        label297:
+        label309:
         this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement = ConfessShareHelper.a(0, 0);
       }
     }
@@ -134,48 +141,60 @@ public class ConfessNewsBgView
     int i = getMeasuredWidth();
     int j = getMeasuredHeight();
     this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    ConfessShareHelper.BgElement[] arrayOfBgElement;
-    if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement != null) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement.length > 0))
-    {
-      arrayOfBgElement = this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement;
-      j = arrayOfBgElement.length;
-      i = 0;
+    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
+      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     }
-    for (;;)
+    j = paramCanvas.save();
+    try
     {
-      if (i < j)
+      Object localObject1 = this.jdField_a_of_type_AndroidGraphicsPath;
+      ((Path)localObject1).reset();
+      ((Path)localObject1).addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
+      paramCanvas.clipPath((Path)localObject1);
+      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement != null) && (this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement.length > 0))
       {
-        ConfessShareHelper.BgElement localBgElement = arrayOfBgElement[i];
-        try
+        localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqConfessConfessShareHelper$BgElement;
+        int k = localObject1.length;
+        i = 0;
+        if (i < k)
         {
-          Drawable localDrawable = getResources().getDrawable(localBgElement.jdField_a_of_type_Int);
-          if (localBgElement.jdField_a_of_type_Int == 2130842389) {
-            break label291;
-          }
-          int i1 = localDrawable.getIntrinsicWidth();
-          int k = localDrawable.getIntrinsicHeight();
-          int m = (int)(localBgElement.b * 1.8F - i1 * localBgElement.jdField_a_of_type_Float * 1.0F / 2.0F);
-          int n = (int)(localBgElement.c * 1.6F - k * localBgElement.jdField_a_of_type_Float * 1.0F / 2.0F);
-          float f = localBgElement.b;
-          i1 = (int)(i1 * localBgElement.jdField_a_of_type_Float * 1.0F / 2.0F + f * 1.8F);
-          f = localBgElement.c;
-          localDrawable.setBounds(m, n, i1, (int)(k * localBgElement.jdField_a_of_type_Float * 1.0F / 2.0F + f * 1.6F));
-          if (localBgElement.jdField_a_of_type_Boolean)
+          Object localObject2 = localObject1[i];
+          try
           {
-            localDrawable.setAlpha(128);
-            localDrawable.setColorFilter(this.jdField_a_of_type_Int, PorterDuff.Mode.MULTIPLY);
+            Drawable localDrawable = getResources().getDrawable(localObject2.jdField_a_of_type_Int);
+            if (localObject2.jdField_a_of_type_Int == 2130842424) {
+              break label352;
+            }
+            int i2 = localDrawable.getIntrinsicWidth();
+            int m = localDrawable.getIntrinsicHeight();
+            int n = (int)(localObject2.b * 1.8F - i2 * localObject2.jdField_a_of_type_Float * 1.0F / 2.0F);
+            int i1 = (int)(localObject2.c * 1.6F - m * localObject2.jdField_a_of_type_Float * 1.0F / 2.0F);
+            float f = localObject2.b;
+            i2 = (int)(i2 * localObject2.jdField_a_of_type_Float * 1.0F / 2.0F + f * 1.8F);
+            f = localObject2.c;
+            localDrawable.setBounds(n, i1, i2, (int)(m * localObject2.jdField_a_of_type_Float * 1.0F / 2.0F + f * 1.6F));
+            if (localObject2.jdField_a_of_type_Boolean)
+            {
+              localDrawable.setAlpha(128);
+              localDrawable.setColorFilter(this.jdField_a_of_type_Int, PorterDuff.Mode.MULTIPLY);
+            }
+            localDrawable.draw(paramCanvas);
           }
-          localDrawable.draw(paramCanvas);
+          catch (Exception localException) {}
         }
-        catch (Exception localException) {}
       }
-      else
+      paramCanvas.restoreToCount(j);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      for (;;)
       {
-        return;
+        continue;
+        label352:
+        i += 1;
       }
-      label291:
-      i += 1;
     }
   }
   

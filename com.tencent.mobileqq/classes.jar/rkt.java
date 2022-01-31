@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import java.util.HashMap;
 
-public class rkt
-  implements View.OnClickListener
+class rkt
+  implements Runnable
 {
-  public rkt(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  rkt(rks paramrks, boolean paramBoolean, String paramString, Bitmap paramBitmap, Drawable paramDrawable) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      ArkAppDataReport.c(this.a.app, ArkFullScreenAppActivity.a(this.a).a, ArkAppDataReport.c);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Rks.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      AccountManageActivity.b(this.jdField_a_of_type_Rks.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).put(this.jdField_a_of_type_Rks.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
     }
-    this.a.a();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_Rks.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      return;
+    }
+    this.jdField_a_of_type_Rks.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

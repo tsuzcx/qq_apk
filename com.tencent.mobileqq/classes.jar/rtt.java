@@ -1,23 +1,24 @@
+import android.provider.Settings.System;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class rtt
   implements Runnable
 {
-  public rtt(BaseChatPie paramBaseChatPie, List paramList) {}
+  public rtt(BaseChatPie paramBaseChatPie, int paramInt) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    while (i >= 0)
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a((ChatMessage)this.jdField_a_of_type_JavaUtilList.get(i));
-      i -= 1;
+      Settings.System.putInt(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getApp().getContentResolver(), "listview_oversroll", this.jdField_a_of_type_Int);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(17, 300L);
+    catch (SecurityException localSecurityException)
+    {
+      localSecurityException.printStackTrace();
+    }
   }
 }
 

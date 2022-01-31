@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import ntc;
+import nxs;
 
 @TargetApi(9)
 public class StoryPickerHorizontalListView
@@ -39,7 +39,7 @@ public class StoryPickerHorizontalListView
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter = new StoryPickerHorizontalListAdapter(getContext());
     super.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter);
     super.setOnItemClickListener(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter);
-    super.setOnScrollStateChangedListener(new ntc(this));
+    super.setOnScrollStateChangedListener(new nxs(this));
     setOverScrollMode(1);
   }
   

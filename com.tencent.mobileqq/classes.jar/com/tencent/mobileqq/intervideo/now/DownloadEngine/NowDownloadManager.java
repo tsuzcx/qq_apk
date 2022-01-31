@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.now.DownloadEngine;
 
-import adup;
+import aecy;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.beacon.event.UserAction;
@@ -20,7 +20,7 @@ public class NowDownloadManager
   private int jdField_a_of_type_Int;
   private Downloader jdField_a_of_type_ComTencentHlyybDownloaderDownloader;
   private DownloadTaskListenerBridge jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineDownloadTaskListenerBridge;
-  private IHellyEventListener jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineIHellyEventListener = new adup(this);
+  private IHellyEventListener jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineIHellyEventListener = new aecy(this);
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private boolean jdField_a_of_type_Boolean;
   

@@ -114,6 +114,25 @@ public class RedPacketProxy
   
   public void onActiveAccount() {}
   
+  public boolean onGetThemeConfig(int paramInt)
+  {
+    QWalletIPCConnector.a().a();
+    boolean bool2 = false;
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("key_func", 6);
+    ((Bundle)localObject).putInt("theme_id", paramInt);
+    localObject = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "red_packet", (Bundle)localObject);
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((EIPCResult)localObject).isSuccess()) {
+        bool1 = ((EIPCResult)localObject).data.getBoolean("key_theme_exist");
+      }
+    }
+    return bool1;
+  }
+  
   public void onUpdate(int paramInt) {}
   
   public void registRedPacketSkinListObserver(BusinessObserver paramBusinessObserver) {}

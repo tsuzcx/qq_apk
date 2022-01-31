@@ -1,24 +1,35 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
+import friendlist.EAddFriendSourceID;
+import java.util.ArrayList;
 
 public class wpk
-  implements ViewPager.OnPageChangeListener
+  extends FriendListObserver
 {
-  public wpk(PicSelectAdapter paramPicSelectAdapter) {}
+  public wpk(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList paramArrayList)
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = PicSelectAdapter.a(this.a).a(paramInt);
-    if (localEmoticonFromGroupEntity != null)
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if (paramBoolean1)
     {
-      PicSelectAdapter.a(this.a, localEmoticonFromGroupEntity);
-      PicSelectAdapter.b(this.a, localEmoticonFromGroupEntity);
+      paramString = paramBundle.getString("uin");
+      int i = paramBundle.getInt("source_id");
+      paramBundle = paramBundle.getString("extra");
+      if (((i == 3006) || (i == 3075)) && ("ContactMatchBuilder".equals(paramBundle))) {
+        this.a.a(paramString);
+      }
+      if (EAddFriendSourceID.a(i)) {
+        SystemMsgListView.a(this.a).c();
+      }
     }
   }
 }

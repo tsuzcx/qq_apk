@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.OnAdapterNotify;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class vmh
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public vmh(AIOGalleryAdapter paramAIOGalleryAdapter) {}
+  public vmh(SixCombolEffectView paramSixCombolEffectView, vmi paramvmi) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a != null) {
-      this.a.a.a(2);
+    if (!SixCombolEffectView.a) {
+      return;
     }
+    this.jdField_a_of_type_Vmi.b.start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

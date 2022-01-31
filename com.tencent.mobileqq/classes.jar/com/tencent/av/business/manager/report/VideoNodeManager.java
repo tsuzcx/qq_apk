@@ -14,7 +14,6 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.av.AVLog;
 import com.tencent.av.SessionMgr;
-import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.smallscreen.SmallScreenUtils;
@@ -26,12 +25,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import jgh;
+import jik;
 
 public class VideoNodeManager
 {
   public static int a;
-  private static Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new jgh();
+  private static Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new jik();
   private static Handler jdField_a_of_type_AndroidOsHandler;
   private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private static VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
@@ -89,7 +88,7 @@ public class VideoNodeManager
     {
       localStringBuilder.append("Android").append('|');
       localStringBuilder.append(String.valueOf(Build.VERSION.SDK_INT)).append('|');
-      localStringBuilder.append("7.6.3").append('|');
+      localStringBuilder.append("7.6.8").append('|');
       localStringBuilder.append(Build.MANUFACTURER).append('|');
       localStringBuilder.append(Build.MODEL).append('|');
       localStringBuilder.append(a("9", "0", paramMap)).append('|');
@@ -234,15 +233,15 @@ public class VideoNodeManager
     {
       try
       {
-        if ((jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null))
+        if (jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)
         {
           QLog.e("VideoNodeManager", 1, "reportToHandler param is null  !!!!!!!!!-------------------");
           return;
         }
         if (!jdField_a_of_type_ComTencentAvAppVideoAppInterface.e) {
-          break label114;
+          break label93;
         }
-        break label114;
+        break label93;
         if ((b()) && (b(paramInt)))
         {
           c(paramLong1, paramInt, paramLong2, paramBoolean);
@@ -256,7 +255,7 @@ public class VideoNodeManager
       finally {}
       c(paramLong1, paramInt, paramLong2, paramBoolean);
       continue;
-      label114:
+      label93:
       if ((paramLong1 == 0L) || (paramLong1 != -1L)) {}
     }
   }
@@ -553,7 +552,7 @@ public class VideoNodeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.report.VideoNodeManager
  * JD-Core Version:    0.7.0.1
  */

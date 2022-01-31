@@ -1,20 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.mobileqq.richstatus.IIconListener;
 
 public class wsy
-  implements Runnable
+  implements IIconListener
 {
-  public wsy(AvatarPendantActivity.AnimationScrollListener paramAnimationScrollListener) {}
+  private wsy(FriendFragment paramFriendFragment) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (this.a.b.r == 0)
-    {
-      URLDrawable.resume();
-      this.a.b.a.a = false;
-      this.a.b.a.notifyDataSetChanged();
+    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      FriendFragment.a(this.a, 1400L, false);
     }
   }
 }

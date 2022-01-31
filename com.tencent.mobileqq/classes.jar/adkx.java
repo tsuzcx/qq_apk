@@ -1,23 +1,21 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
 
-class adkx
-  implements URLDrawable.URLDrawableListener
+public class adkx
+  implements IDownloadController
 {
-  adkx(adkw paramadkw) {}
+  public adkx(DatalineFileModel paramDatalineFileModel) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a()
   {
-    paramURLDrawable.setBounds(ImageUtil.a(paramURLDrawable, 36, 100, this.a.a.a));
-    this.a.a.a(paramURLDrawable, false, 0);
+    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new adky(this));
+  }
+  
+  public void b()
+  {
+    DatalineFileModel.b(this.a);
   }
 }
 

@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQNoResultBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView;
+import com.tencent.qphone.base.util.QLog;
 
 public class uue
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public uue(ArkAppBabyQNoResultBuilder paramArkAppBabyQNoResultBuilder, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
+  public uue(GoldMsgQueueView paramGoldMsgQueueView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ArkAppBabyQNoResultBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
+    this.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("GoldMsgQueueView", 2, "tryDoInsert onAnimationUpdate");
+    }
   }
 }
 

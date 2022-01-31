@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profile;
 
-import agpw;
-import agpx;
-import agpy;
-import agpz;
-import agqd;
-import agqe;
-import agqf;
+import aguj;
+import aguk;
+import agul;
+import agum;
+import aguq;
+import agur;
+import agus;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -127,7 +127,7 @@ public class VipProfileCardPreviewActivity
     this.jdField_d_of_type_JavaLangString = null;
     this.jdField_e_of_type_JavaLangString = "is_binding_shop";
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_ComTencentMobileqqAppCardObserver = new agqf(this);
+    this.jdField_b_of_type_ComTencentMobileqqAppCardObserver = new agus(this);
   }
   
   public int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
@@ -611,7 +611,7 @@ public class VipProfileCardPreviewActivity
   
   public void a(int paramInt, String paramString)
   {
-    ThreadManager.post(new agpz(this, paramInt, paramString), 5, null, true);
+    ThreadManager.post(new agum(this, paramInt, paramString), 5, null, true);
   }
   
   public void a(int paramInt, List paramList)
@@ -948,12 +948,12 @@ public class VipProfileCardPreviewActivity
     //   691: return
     //   692: aload 7
     //   694: astore_2
-    //   695: new 521	agqb
+    //   695: new 521	aguo
     //   698: dup
     //   699: aload_0
     //   700: aload 8
     //   702: iload_3
-    //   703: invokespecial 524	agqb:<init>	(Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;Ljava/lang/String;I)V
+    //   703: invokespecial 524	aguo:<init>	(Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;Ljava/lang/String;I)V
     //   706: bipush 8
     //   708: aconst_null
     //   709: iconst_1
@@ -1063,13 +1063,13 @@ public class VipProfileCardPreviewActivity
     //   934: iload_3
     //   935: invokevirtual 517	com/tencent/mobileqq/profile/VipProfileCardPreviewActivity:b	(I)V
     //   938: return
-    //   939: new 540	agqc
+    //   939: new 540	agup
     //   942: dup
     //   943: aload_0
     //   944: aload 7
     //   946: aload_2
     //   947: iload_3
-    //   948: invokespecial 543	agqc:<init>	(Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;Ljava/util/List;Ljava/lang/String;I)V
+    //   948: invokespecial 543	agup:<init>	(Lcom/tencent/mobileqq/profile/VipProfileCardPreviewActivity;Ljava/util/List;Ljava/lang/String;I)V
     //   951: bipush 8
     //   953: aconst_null
     //   954: iconst_1
@@ -1178,7 +1178,7 @@ public class VipProfileCardPreviewActivity
   
   void a(String paramString1, String paramString2)
   {
-    ThreadManager.post(new agqd(this, paramString1, paramString2), 8, null, true);
+    ThreadManager.post(new aguq(this, paramString1, paramString2), 8, null, true);
   }
   
   void a(long[] paramArrayOfLong)
@@ -1362,7 +1362,7 @@ public class VipProfileCardPreviewActivity
     label344:
     if (paramMessage.what == 3)
     {
-      Toast.makeText(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131436756, 0).show();
+      Toast.makeText(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131436776, 0).show();
       return true;
     }
     if (paramMessage.what == 20)
@@ -1372,7 +1372,7 @@ public class VipProfileCardPreviewActivity
     }
     if (paramMessage.what == 5)
     {
-      Toast.makeText(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131436754, 0).show();
+      Toast.makeText(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2131436774, 0).show();
       if ((this.jdField_f_of_type_Int == 1) || (this.jdField_f_of_type_Int == 2)) {
         if (this.B == 1) {
           BaseApplicationImpl.getContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.closeWeb"), "com.tencent.msg.permission.pushnotify");
@@ -1406,7 +1406,7 @@ public class VipProfileCardPreviewActivity
       if (paramMessage.what == 25) {
         b();
       }
-      Toast.makeText(getApplicationContext(), getResources().getString(2131436774), 1).show();
+      Toast.makeText(getApplicationContext(), getResources().getString(2131436794), 1).show();
       return true;
     }
     return false;
@@ -1494,20 +1494,20 @@ public class VipProfileCardPreviewActivity
     Object localObject = (TransitionDrawable)localObject;
     ((TransitionDrawable)localObject).setCrossFadeEnabled(true);
     ((TransitionDrawable)localObject).startTransition(1500);
-    this.jdField_b_of_type_JavaLangRunnable = new agpy(this, (TransitionDrawable)localObject);
+    this.jdField_b_of_type_JavaLangRunnable = new agul(this, (TransitionDrawable)localObject);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 2000L);
   }
   
   void b(String paramString)
   {
-    agqe localagqe = new agqe(this, Long.parseLong(this.app.getCurrentAccountUin()), paramString, VipUploadUtils.a(this.app), "qqprofile", paramString);
-    localagqe.b = VipUploadUtils.a(this.app);
-    localagqe.i = VipUploadUtils.a(this.app, paramString);
+    agur localagur = new agur(this, Long.parseLong(this.app.getCurrentAccountUin()), paramString, VipUploadUtils.a(this.app), "qqprofile", paramString);
+    localagur.b = VipUploadUtils.a(this.app);
+    localagur.i = VipUploadUtils.a(this.app, paramString);
     m();
     paramString = (VipImageUploadManager)this.app.getManager(89);
     paramString.a(this.app, null);
-    localagqe.a();
-    paramString.a(this.app, localagqe, null);
+    localagur.a();
+    paramString.a(this.app, localagur, null);
   }
   
   void b(String paramString1, String paramString2)
@@ -1545,24 +1545,24 @@ public class VipProfileCardPreviewActivity
     ProfileCardTemplateInfo localProfileCardTemplateInfo = (ProfileCardTemplateInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (localProfileCardTemplateInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate.l == ProfileCardTemplate.jdField_k_of_type_Long)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436767);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436787);
       this.jdField_c_of_type_JavaLangString = "3";
       return;
     }
     a(localProfileCardTemplateInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardBackground, false);
     if (this.jdField_b_of_type_Int == 4)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436766);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436786);
       this.jdField_c_of_type_JavaLangString = "2";
       return;
     }
     if (this.jdField_b_of_type_Int == 2)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436765);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131436785);
       this.jdField_c_of_type_JavaLangString = "1";
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131436761);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131436781);
     this.jdField_c_of_type_JavaLangString = "0";
   }
   
@@ -1571,10 +1571,10 @@ public class VipProfileCardPreviewActivity
   {
     super.doOnCreate(paramBundle);
     this.g = false;
-    setContentView(2130971016);
+    setContentView(2130971034);
     getWindow().setBackgroundDrawable(null);
     this.jdField_a_of_type_AndroidContentContext = this;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371209);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131371207);
     float f1;
     label420:
     QQAppInterface localQQAppInterface;
@@ -1586,9 +1586,9 @@ public class VipProfileCardPreviewActivity
       if (this.app != null) {
         this.jdField_e_of_type_JavaLangString += this.app.getCurrentAccountUin();
       }
-      this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)findViewById(2131370312));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372571));
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager = ((VipScaledViewPager)findViewById(2131362804));
+      this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator = ((CirclePageIndicator)findViewById(2131370321));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372582));
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager = ((VipScaledViewPager)findViewById(2131362809));
       this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity$StylePagerAdapter = new VipProfileCardPreviewActivity.StylePagerAdapter(this, this.jdField_a_of_type_AndroidContentContext);
       if (Build.MODEL.equals("HUAWEI C8812E")) {
         this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setLayerType(1, null);
@@ -1630,13 +1630,13 @@ public class VipProfileCardPreviewActivity
       this.z = Math.round(this.y / 1.78F);
       this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setStrokeWidth(0.0F);
       addObserver(this.jdField_b_of_type_ComTencentMobileqqAppCardObserver);
-      ThreadManager.post(new agpw(this), 8, null, true);
+      ThreadManager.post(new aguj(this), 8, null, true);
       i();
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (this.app != null) {
         this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver, true);
       }
-      this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setOnPageChangeListener(new agpx(this));
+      this.jdField_a_of_type_ComTencentWidgetCirclePageIndicator.setOnPageChangeListener(new aguk(this));
       if (this.app != null)
       {
         localQQAppInterface = this.app;
@@ -1701,8 +1701,8 @@ public class VipProfileCardPreviewActivity
   
   public void i()
   {
-    setLeftViewName(2131433698);
-    setTitle(2131436762);
+    setLeftViewName(2131433712);
+    setTitle(2131436782);
   }
   
   protected boolean isWrapContent()
@@ -1729,7 +1729,7 @@ public class VipProfileCardPreviewActivity
       ((ProfileCardTemplate)localObject1).jdField_k_of_type_JavaLangString = "http://imgcache.gtimg.cn/club/mobile/profile/template/default_v_53.jpg";
       ((ProfileCardTemplate)localObject1).g = "http://imgcache.gtimg.cn/club/mobile/profile/template/default_v_53.jpg";
       ((ProfileCardTemplate)localObject1).jdField_c_of_type_JavaLangString = "0";
-      ((ProfileCardTemplate)localObject1).jdField_a_of_type_JavaLangString = getString(2131436721);
+      ((ProfileCardTemplate)localObject1).jdField_a_of_type_JavaLangString = getString(2131436741);
       localArrayList.add(localObject1);
     }
     Object localObject1 = localObject2;
@@ -2003,7 +2003,7 @@ public class VipProfileCardPreviewActivity
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131436775);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131436795);
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();

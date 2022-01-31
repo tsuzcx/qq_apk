@@ -1,78 +1,82 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow;
+import com.tencent.mobileqq.data.RecentEmotion;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.List;
 
 public class aeqm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aeqm(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public aeqm(EmoticonManager paramEmoticonManager, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
+    long l = System.currentTimeMillis();
+    EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a();
+    for (;;)
     {
-      paramView = (InterestTagInfo)paramView.getTag();
-      if (paramView != null)
+      int i;
+      try
       {
-        ChooseInterestTagActivity.a(this.a).remove(paramView);
-        ChooseInterestTagActivity.a(this.a, paramView);
-        ChooseInterestTagActivity.b(this.a, paramView);
-      }
-    }
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
+        localEntityTransaction.a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveRecentEmotionToDB:");
+        i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+        if (i >= 0)
         {
-          int[] arrayOfInt = new int[2];
-          paramView.getLocationInWindow(arrayOfInt);
-          if (arrayOfInt[0] > 0)
-          {
-            InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
-            if (localInterestTagInfo != null)
-            {
-              Paint localPaint = new Paint();
-              localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
-              localPaint.setColor(this.a.getResources().getColor(2131494255));
-              localPaint.setFakeBoldText(false);
-              localPaint.setAntiAlias(true);
-              Object localObject2 = localInterestTagInfo.tagName;
-              Object localObject1 = localObject2;
-              if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                localObject1 = " ";
-              }
-              localObject2 = localObject1;
-              if (((String)localObject1).length() > 8) {
-                localObject2 = ((String)localObject1).substring(0, 8) + "...";
-              }
-              float f = localPaint.measureText((String)localObject2);
-              int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
-              localObject1 = new ShowTagNamePopupWindow(this.a, arrayOfInt[0], i);
-              ((ShowTagNamePopupWindow)localObject1).a(ChooseInterestTagActivity.a(this.a));
-              ((ShowTagNamePopupWindow)localObject1).a(localInterestTagInfo);
-              ((ShowTagNamePopupWindow)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
-              return;
-            }
+          RecentEmotion localRecentEmotion1 = (RecentEmotion)this.jdField_a_of_type_JavaUtilList.get(i);
+          if (localRecentEmotion1 == null) {
+            break label364;
           }
+          String str1 = localRecentEmotion1.epId;
+          String str2 = localRecentEmotion1.eId;
+          String str3 = localRecentEmotion1.keyword;
+          localStringBuilder.append("emotion=").append(localRecentEmotion1);
+          if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3))) {
+            break label364;
+          }
+          RecentEmotion localRecentEmotion2 = (RecentEmotion)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a(RecentEmotion.class, "epId=? and eId=? and keyword=?", new String[] { str1, str2, str3 });
+          RecentEmotion localRecentEmotion3 = new RecentEmotion();
+          localRecentEmotion3.epId = str1;
+          localRecentEmotion3.eId = str2;
+          localRecentEmotion3.keyword = str3;
+          localRecentEmotion3.exposeNum = localRecentEmotion1.exposeNum;
+          localRecentEmotion3.setStatus(1000);
+          if (localRecentEmotion2 != null) {
+            this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.b(localRecentEmotion2);
+          }
+          EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localRecentEmotion3);
         }
-        catch (Exception paramView) {}
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("choose_interest_tag", 4, paramView.getMessage());
+      catch (Exception localException)
+      {
+        QLog.e("EmoticonManager", 2, "saveRecentEmotionToDB e = " + localException.getMessage());
+        localEntityTransaction.b();
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonManager", 2, "saveRecentEmotionToDB_Time: " + (System.currentTimeMillis() - l));
+        }
+        return;
+        localEntityTransaction.c();
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonManager", 2, localException.toString());
+        }
+        localEntityTransaction.b();
+        continue;
+      }
+      finally
+      {
+        localEntityTransaction.b();
+      }
+      label364:
+      i -= 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqm
  * JD-Core Version:    0.7.0.1
  */

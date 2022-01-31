@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amdh;
+import amkr;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -28,14 +28,14 @@ public class RangeButtonView$Title
     return (int)RangeButtonView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
   }
   
-  public void a(Canvas paramCanvas, Paint paramPaint, amdh paramamdh)
+  public void a(Canvas paramCanvas, Paint paramPaint, amkr paramamkr)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPoint == null) {
       return;
     }
     paramPaint.setTextSize(this.jdField_a_of_type_Float);
     int i = paramPaint.getColor();
-    paramPaint.setColor(paramamdh.a);
+    paramPaint.setColor(paramamkr.a);
     paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, paramPaint);
     paramPaint.setColor(i);
   }

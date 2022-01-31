@@ -1,26 +1,47 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiUserInfo;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.IQlinkService.Stub;
+import cooperation.qlink.QlinkServiceProxy;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public final class amvd
-  implements Parcelable.Creator
+public class amvd
+  implements ServiceConnection
 {
-  public WeishiUserInfo a(Parcel paramParcel)
+  public amvd(QlinkServiceProxy paramQlinkServiceProxy) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    WeishiUserInfo localWeishiUserInfo = new WeishiUserInfo();
-    localWeishiUserInfo.uin = paramParcel.readLong();
-    localWeishiUserInfo.nickName = paramParcel.readString();
-    return localWeishiUserInfo;
+    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
+    QlinkServiceProxy.a(this.a, IQlinkService.Stub.a(paramIBinder));
+    QlinkServiceProxy.a(this.a, false);
+    QlinkServiceProxy.a(this.a);
   }
   
-  public WeishiUserInfo[] a(int paramInt)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    return new WeishiUserInfo[paramInt];
+    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
+    try
+    {
+      QlinkServiceProxy.a(this.a).getApplication().unbindService(QlinkServiceProxy.a(this.a));
+      QlinkServiceProxy.a(this.a, null);
+      QlinkServiceProxy.a(this.a, false);
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        paramComponentName.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvd
  * JD-Core Version:    0.7.0.1
  */

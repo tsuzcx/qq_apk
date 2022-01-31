@@ -1,22 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdateEvent;
+import dov.com.qq.im.capture.QIMManager;
 
 public class anth
-  extends QQUIEventReceiver
 {
-  public anth(@NonNull EditVideoDoodle paramEditVideoDoodle)
-  {
-    super(paramEditVideoDoodle);
-  }
-  
-  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiUpdateEvent paramDoodleEmojiUpdateEvent) {}
-  
-  public Class acceptEventClass()
-  {
-    return DoodleEmojiManager.DoodleEmojiUpdateEvent.class;
-  }
+  public static final QIMManager a = new QIMManager(null);
 }
 
 

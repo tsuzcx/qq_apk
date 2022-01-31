@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.profile.like.PraiseConfigHelper;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
 
-public final class umo
-  extends TroopObserver
+public class umo
+  implements Runnable
 {
-  public umo(SessionInfo paramSessionInfo) {}
+  public umo(VisitorsActivity paramVisitorsActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  public void run()
   {
-    if (paramBoolean)
+    if (this.a.isFinishing())
     {
-      QWalletHelper.saveLastUpdateToopMemberNumTime(this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PlusPanelUtils", 2, "onOIDB0X88D_0_Ret 群uin：" + this.a.a + " 群成员个数：" + paramTroopInfo.wMemberNum);
-      }
+      QLog.d("VisitorsActivity", 1, "doPraiseMallEntryAnim run isFinishing return");
+      return;
     }
+    PraiseConfigHelper.a(this.a.app);
+    Message localMessage = this.a.a.obtainMessage(13, 0, 0);
+    this.a.a.sendMessageDelayed(localMessage, 100L);
   }
 }
 

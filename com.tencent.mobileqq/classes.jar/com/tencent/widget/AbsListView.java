@@ -1,18 +1,18 @@
 package com.tencent.widget;
 
-import alzn;
-import alzo;
-import alzp;
-import alzq;
-import alzr;
-import alzs;
-import alzt;
-import alzu;
-import alzw;
-import alzx;
-import alzy;
-import alzz;
-import amaa;
+import amgx;
+import amgy;
+import amgz;
+import amha;
+import amhb;
+import amhc;
+import amhd;
+import amhe;
+import amhg;
+import amhh;
+import amhi;
+import amhj;
+import amhk;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -122,7 +122,7 @@ public abstract class AbsListView
   private int mActivePointerId = -1;
   public ListAdapter mAdapter;
   public int mBottomOverflingDistance;
-  private alzw mBottomScroller;
+  private amhg mBottomScroller;
   int mCacheColorHint;
   public boolean mCachingActive;
   public boolean mCachingStarted;
@@ -134,7 +134,7 @@ public abstract class AbsListView
   int mChoiceMode = 0;
   private Runnable mClearScrollingCache;
   private ContextMenu.ContextMenuInfo mContextMenuInfo;
-  alzq mDataSetObserver;
+  amha mDataSetObserver;
   private InputConnection mDefInputConnection;
   private boolean mDeferNotifyDataSetChanged;
   private float mDensityScale;
@@ -143,15 +143,17 @@ public abstract class AbsListView
   private boolean mEdgeEffectEnabled;
   public EdgeEffect mEdgeGlowBottom;
   public EdgeEffect mEdgeGlowTop;
+  public boolean mEnableStory;
   boolean mFastScrollEnabled;
   public FastScroller mFastScroller;
   private boolean mFiltered;
   private int mFirstPositionDistanceGuess;
   private boolean mFlingProfilingStarted;
-  private alzu mFlingRunnable;
+  private amhe mFlingRunnable;
   private Object mFlingStrictSpan;
   public boolean mForContacts;
   public boolean mForHongBao;
+  public boolean mForStory;
   private boolean mForceTranscriptScroll;
   private boolean mGlobalLayoutListenerAddedFilter;
   private int mGlowPaddingLeft;
@@ -176,7 +178,7 @@ public abstract class AbsListView
   public int mMotionViewOriginalTop;
   int mMotionX;
   int mMotionY;
-  alzx mMultiChoiceModeCallback;
+  amhh mMultiChoiceModeCallback;
   private boolean mNeedCheckSpringback;
   private AbsListView.OnScrollButtomListener mOnScrollButtomListener;
   private AbsListView.OnScrollListener mOnScrollListener;
@@ -184,15 +186,15 @@ public abstract class AbsListView
   private int mOverScrollTouchMode = 0;
   public int mOverscrollDistance;
   int mOverscrollMax;
-  private alzr mPendingCheckForKeyLongPress;
-  private alzs mPendingCheckForLongPress;
+  private amhb mPendingCheckForKeyLongPress;
+  private amhc mPendingCheckForLongPress;
   private Runnable mPendingCheckForTap;
-  private alzy mPerformClick;
+  private amhi mPerformClick;
   PopupWindow mPopup;
   private boolean mPopupHidden;
-  public alzz mPositionScroller;
+  public amhj mPositionScroller;
   private InputConnectionWrapper mPublicInputConnection;
-  public final amaa mRecycler = new amaa(this);
+  public final amhk mRecycler = new amhk(this);
   int mResurrectToPosition = -1;
   View mScrollDown;
   private boolean mScrollProfilingStarted;
@@ -307,7 +309,7 @@ public abstract class AbsListView
   private void clearScrollingCache()
   {
     if (this.mClearScrollingCache == null) {
-      this.mClearScrollingCache = new alzo(this);
+      this.mClearScrollingCache = new amgy(this);
     }
     post(this.mClearScrollingCache);
   }
@@ -343,7 +345,7 @@ public abstract class AbsListView
     {
       Context localContext = getContext();
       PopupWindow localPopupWindow = new PopupWindow(localContext);
-      this.mTextFilter = ((EditText)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2130971696, null));
+      this.mTextFilter = ((EditText)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2130971725, null));
       this.mTextFilter.setRawInputType(177);
       this.mTextFilter.setImeOptions(268435456);
       this.mTextFilter.addTextChangedListener(this);
@@ -1107,10 +1109,10 @@ public abstract class AbsListView
         return bool;
       } while ((this.mTouchMode != -1) || (Math.abs(this.mScrollY) <= this.mTouchSlop));
       if (this.mFlingRunnable == null) {
-        this.mFlingRunnable = new alzu(this);
+        this.mFlingRunnable = new amhe(this);
       }
       i = 0;
-      if (this.mForHongBao) {
+      if ((this.mForHongBao) || (this.mForStory)) {
         i = getSpringbackOffset();
       }
       this.mFlingRunnable.b(i);
@@ -1122,7 +1124,7 @@ public abstract class AbsListView
   protected void doSpringBack(int paramInt)
   {
     if (this.mFlingRunnable == null) {
-      this.mFlingRunnable = new alzu(this);
+      this.mFlingRunnable = new amhe(this);
     }
     this.mFlingRunnable.b(paramInt);
   }
@@ -1246,7 +1248,7 @@ public abstract class AbsListView
           break;
         }
         if (this.mFlingRunnable == null) {
-          this.mFlingRunnable = new alzu(this);
+          this.mFlingRunnable = new amhe(this);
         }
         reportScrollStateChange(2);
         this.mFlingRunnable.a(-i1);
@@ -1369,8 +1371,8 @@ public abstract class AbsListView
   
   public float getFlingVelocity()
   {
-    if ((this.mFlingRunnable != null) && (alzu.a(this.mFlingRunnable) != null)) {
-      return alzu.a(this.mFlingRunnable).a();
+    if ((this.mFlingRunnable != null) && (amhe.a(this.mFlingRunnable) != null)) {
+      return amhe.a(this.mFlingRunnable).a();
     }
     return -1.0F;
   }
@@ -1773,7 +1775,7 @@ public abstract class AbsListView
           while ((bool) && (!this.mDataChanged))
           {
             if (this.mPendingCheckForKeyLongPress == null) {
-              this.mPendingCheckForKeyLongPress = new alzr(this, null);
+              this.mPendingCheckForKeyLongPress = new amhb(this, null);
             }
             this.mPendingCheckForKeyLongPress.a();
             postDelayed(this.mPendingCheckForKeyLongPress, ViewConfiguration.getLongPressTimeout());
@@ -1788,9 +1790,9 @@ public abstract class AbsListView
   
   public void layoutChildren() {}
   
-  protected alzq newObserver()
+  protected amha newObserver()
   {
-    return new alzq(this);
+    return new amha(this);
   }
   
   View obtainView(int paramInt, boolean[] paramArrayOfBoolean)
@@ -1866,7 +1868,7 @@ public abstract class AbsListView
       if (paramInt == 0) {
         break label121;
       }
-      localObject = amaa.a(this.mRecycler);
+      localObject = amhk.a(this.mRecycler);
       i = localObject.length;
       paramInt = 0;
       while (paramInt < i)
@@ -1877,10 +1879,10 @@ public abstract class AbsListView
         paramInt += 1;
       }
     }
-    if (!checkScrap(amaa.a(this.mRecycler))) {
+    if (!checkScrap(amhk.a(this.mRecycler))) {
       bool1 = false;
     }
-    Object localObject = amaa.a(this.mRecycler);
+    Object localObject = amhk.a(this.mRecycler);
     int i = localObject.length;
     paramInt = 0;
     for (;;)
@@ -1935,7 +1937,7 @@ public abstract class AbsListView
       if (this.mPublicInputConnection == null)
       {
         this.mDefInputConnection = new BaseInputConnection(this, false);
-        this.mPublicInputConnection = new alzp(this, this.mTextFilter.onCreateInputConnection(paramEditorInfo), true);
+        this.mPublicInputConnection = new amgz(this, this.mTextFilter.onCreateInputConnection(paramEditorInfo), true);
       }
       paramEditorInfo.inputType = 177;
       paramEditorInfo.imeOptions = 6;
@@ -2248,7 +2250,7 @@ public abstract class AbsListView
       if (this.mScrollToBottom)
       {
         if (this.mBottomScroller == null) {
-          this.mBottomScroller = new alzw(this);
+          this.mBottomScroller = new amhg(this);
         }
         this.mBottomScroller.a();
       }
@@ -2589,7 +2591,7 @@ public abstract class AbsListView
           {
             this.mTouchMode = 0;
             if (this.mPendingCheckForTap == null) {
-              this.mPendingCheckForTap = new alzt(this);
+              this.mPendingCheckForTap = new amhd(this);
             }
             postDelayed(this.mPendingCheckForTap, ViewConfiguration.getTapTimeout());
           }
@@ -2699,17 +2701,17 @@ public abstract class AbsListView
               j = this.mMotionPosition;
               localObject = getChildAt(j - this.mFirstPosition);
               f = paramMotionEvent.getX();
-              alzy localalzy;
+              amhi localamhi;
               Handler localHandler;
               if ((f > this.mListPadding.left) && (f < getWidth() - this.mListPadding.right))
               {
                 i = 1;
                 if (this.mPerformClick == null) {
-                  this.mPerformClick = new alzy(this, null);
+                  this.mPerformClick = new amhi(this, null);
                 }
-                localalzy = this.mPerformClick;
-                localalzy.jdField_a_of_type_Int = j;
-                localalzy.a();
+                localamhi = this.mPerformClick;
+                localamhi.jdField_a_of_type_Int = j;
+                localamhi.a();
                 if ((localObject == null) || (((View)localObject).hasFocusable()) || (i == 0)) {
                   break label1098;
                 }
@@ -2751,7 +2753,7 @@ public abstract class AbsListView
                 if (this.mTouchModeReset != null) {
                   removeCallbacks(this.mTouchModeReset);
                 }
-                this.mTouchModeReset = new alzn(this, (View)localObject, localalzy);
+                this.mTouchModeReset = new amgx(this, (View)localObject, localamhi);
                 postDelayed(this.mTouchModeReset, ViewConfiguration.getPressedStateDuration());
                 return true;
                 i = 0;
@@ -2763,7 +2765,7 @@ public abstract class AbsListView
               return true;
               label1060:
               if ((!this.mDataChanged) && (this.mAdapter.isEnabled(j))) {
-                localalzy.run();
+                localamhi.run();
               }
               for (;;)
               {
@@ -2771,7 +2773,7 @@ public abstract class AbsListView
                 updateSelectorState();
                 break;
                 label1098:
-                localalzy.run();
+                localamhi.run();
               }
               i = getChildCount();
               if (i > 0)
@@ -2797,7 +2799,7 @@ public abstract class AbsListView
                       break label1354;
                     }
                     if (this.mFlingRunnable == null) {
-                      this.mFlingRunnable = new alzu(this);
+                      this.mFlingRunnable = new amhe(this);
                     }
                     reportScrollStateChange(2);
                     this.mFlingRunnable.a(-i1);
@@ -2825,7 +2827,7 @@ public abstract class AbsListView
             }
           }
           if (this.mFlingRunnable == null) {
-            this.mFlingRunnable = new alzu(this);
+            this.mFlingRunnable = new amhe(this);
           }
           reportScrollStateChange(2);
           this.mFlingRunnable.b(getSpringbackOffset());
@@ -2855,7 +2857,7 @@ public abstract class AbsListView
             this.mActivePointerId = -1;
             return true;
             if (this.mFlingRunnable == null) {
-              this.mFlingRunnable = new alzu(this);
+              this.mFlingRunnable = new amhe(this);
             }
             this.mFlingRunnable.b(0);
             continue;
@@ -2957,9 +2959,9 @@ public abstract class AbsListView
     {
       i = 0;
       if (paramBoolean) {
-        break label113;
+        break label120;
       }
-      if (!this.mForHongBao)
+      if ((!this.mForHongBao) && (!this.mForStory))
       {
         setChildrenDrawingCacheEnabled(false);
         if (this.mFlingRunnable != null)
@@ -2986,7 +2988,7 @@ public abstract class AbsListView
       return;
       i = 1;
       break;
-      label113:
+      label120:
       if ((this.mFiltered) && (!this.mPopupHidden)) {
         showPopup();
       }
@@ -3316,7 +3318,7 @@ public abstract class AbsListView
   public void reclaimViews(List paramList)
   {
     int j = getChildCount();
-    AbsListView.RecyclerListener localRecyclerListener = amaa.a(this.mRecycler);
+    AbsListView.RecyclerListener localRecyclerListener = amhk.a(this.mRecycler);
     int i = 0;
     while (i < j)
     {
@@ -3914,9 +3916,9 @@ public abstract class AbsListView
   public void setFriction(float paramFloat)
   {
     if (this.mFlingRunnable == null) {
-      this.mFlingRunnable = new alzu(this);
+      this.mFlingRunnable = new amhe(this);
     }
-    alzu.a(this.mFlingRunnable).a(paramFloat);
+    amhe.a(this.mFlingRunnable).a(paramFloat);
   }
   
   @TargetApi(11)
@@ -3998,6 +4000,11 @@ public abstract class AbsListView
     }
   }
   
+  public void setMaxOverScrollTopDistance(int paramInt)
+  {
+    this.mBottomOverflingDistance = ((int)(getResources().getDisplayMetrics().density * paramInt + 0.5F));
+  }
+  
   public void setMaximumVelocity(int paramInt)
   {
     this.mMaximumVelocity = paramInt;
@@ -4006,7 +4013,7 @@ public abstract class AbsListView
   public void setMultiChoiceModeListener(AbsListView.MultiChoiceModeListener paramMultiChoiceModeListener)
   {
     if (this.mMultiChoiceModeCallback == null) {
-      this.mMultiChoiceModeCallback = new alzx(this);
+      this.mMultiChoiceModeCallback = new amhh(this);
     }
     this.mMultiChoiceModeCallback.a(paramMultiChoiceModeListener);
   }
@@ -4036,9 +4043,9 @@ public abstract class AbsListView
   public void setOverScrollFlingMode(int paramInt)
   {
     if (this.mFlingRunnable == null) {
-      this.mFlingRunnable = new alzu(this);
+      this.mFlingRunnable = new amhe(this);
     }
-    alzu.a(this.mFlingRunnable).a(paramInt);
+    amhe.a(this.mFlingRunnable).a(paramInt);
   }
   
   public void setOverScrollMode(int paramInt)
@@ -4081,7 +4088,7 @@ public abstract class AbsListView
   
   public void setRecyclerListener(AbsListView.RecyclerListener paramRecyclerListener)
   {
-    amaa.a(this.mRecycler, paramRecyclerListener);
+    amhk.a(this.mRecycler, paramRecyclerListener);
   }
   
   public void setScrollIndicators(View paramView1, View paramView2)
@@ -4212,7 +4219,7 @@ public abstract class AbsListView
   public void smoothScrollBy(int paramInt1, int paramInt2)
   {
     if (this.mFlingRunnable == null) {
-      this.mFlingRunnable = new alzu(this);
+      this.mFlingRunnable = new amhe(this);
     }
     int i = this.mFirstPosition;
     int j = getChildCount();
@@ -4291,7 +4298,7 @@ public abstract class AbsListView
   public void smoothScrollToPosition(int paramInt)
   {
     if (this.mPositionScroller == null) {
-      this.mPositionScroller = new alzz(this);
+      this.mPositionScroller = new amhj(this);
     }
     this.mPositionScroller.a(paramInt);
   }
@@ -4299,7 +4306,7 @@ public abstract class AbsListView
   public void smoothScrollToPosition(int paramInt1, int paramInt2)
   {
     if (this.mPositionScroller == null) {
-      this.mPositionScroller = new alzz(this);
+      this.mPositionScroller = new amhj(this);
     }
     this.mPositionScroller.a(paramInt1, paramInt2);
   }
@@ -4307,7 +4314,7 @@ public abstract class AbsListView
   public void smoothScrollToPositionFromTop(int paramInt1, int paramInt2)
   {
     if (this.mPositionScroller == null) {
-      this.mPositionScroller = new alzz(this);
+      this.mPositionScroller = new amhj(this);
     }
     this.mPositionScroller.b(paramInt1, paramInt2);
   }
@@ -4315,7 +4322,7 @@ public abstract class AbsListView
   public void smoothScrollToPositionFromTop(int paramInt1, int paramInt2, int paramInt3)
   {
     if (this.mPositionScroller == null) {
-      this.mPositionScroller = new alzz(this);
+      this.mPositionScroller = new amhj(this);
     }
     this.mPositionScroller.a(paramInt1, paramInt2, paramInt3);
   }
@@ -4323,7 +4330,7 @@ public abstract class AbsListView
   public void springBackTo(int paramInt)
   {
     if (this.mFlingRunnable == null) {
-      this.mFlingRunnable = new alzu(this);
+      this.mFlingRunnable = new amhe(this);
     }
     this.mFlingRunnable.b(paramInt);
   }
@@ -4336,7 +4343,7 @@ public abstract class AbsListView
     if (this.mScrollY != 0) {
       i = 1;
     }
-    while (((i != 0) && (!this.mForHongBao)) || (k > this.mTouchSlop))
+    while (((i != 0) && (!this.mForHongBao) && (!this.mForStory)) || (k > this.mTouchSlop))
     {
       createScrollingCache();
       if (i != 0)

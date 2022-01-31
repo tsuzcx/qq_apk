@@ -1,11 +1,11 @@
 package dov.com.tencent.mobileqq.shortvideo.gesture;
 
-import aops;
+import aoye;
 import com.tencent.qphone.base.util.QLog;
 
 public class GestureMgrAppDownload
 {
-  aops jdField_a_of_type_Aops = null;
+  aoye jdField_a_of_type_Aoye = null;
   DownloadInfo jdField_a_of_type_DovComTencentMobileqqShortvideoGestureDownloadInfo = null;
   boolean jdField_a_of_type_Boolean = false;
   
@@ -14,7 +14,7 @@ public class GestureMgrAppDownload
     if (QLog.isDevelopLevel()) {
       QLog.d("QavGesture", 4, "GestureMgrAppDownload in QQAppInterface");
     }
-    this.jdField_a_of_type_Aops = new aops();
+    this.jdField_a_of_type_Aoye = new aoye();
   }
 }
 

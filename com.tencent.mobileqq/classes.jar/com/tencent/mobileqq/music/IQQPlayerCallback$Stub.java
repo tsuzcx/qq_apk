@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.music;
 
-import aejp;
+import aerz;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -25,7 +25,7 @@ public abstract class IQQPlayerCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQQPlayerCallback))) {
       return (IQQPlayerCallback)localIInterface;
     }
-    return new aejp(paramIBinder);
+    return new aerz(paramIBinder);
   }
   
   public IBinder asBinder()

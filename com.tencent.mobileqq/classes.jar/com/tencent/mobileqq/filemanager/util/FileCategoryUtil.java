@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import adhd;
-import adhe;
-import adhf;
+import adpk;
+import adpl;
+import adpm;
 import android.annotation.TargetApi;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -46,7 +46,7 @@ import java.util.concurrent.Executor;
 
 public class FileCategoryUtil
 {
-  private static Comparator a = new adhd();
+  private static Comparator a = new adpk();
   
   public static int a(Context paramContext)
   {
@@ -407,7 +407,7 @@ public class FileCategoryUtil
     while ((paramFileManagerEntity.nFileType != 5) || (paramFileManagerEntity.getCloudType() != 3)) {
       return;
     }
-    ThreadManager.post(new adhe(paramFileManagerEntity), 8, null, false);
+    ThreadManager.post(new adpl(paramFileManagerEntity), 8, null, false);
   }
   
   public static void a(Map paramMap)
@@ -519,7 +519,7 @@ public class FileCategoryUtil
     if (paramString == null) {
       return false;
     }
-    FileManagerUtil.FileExecutor.a().execute(new adhf(paramString, paramGetApkPackageInfoCallback));
+    FileManagerUtil.FileExecutor.a().execute(new adpm(paramString, paramGetApkPackageInfoCallback));
     return true;
   }
   

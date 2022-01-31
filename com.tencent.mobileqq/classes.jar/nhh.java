@@ -1,19 +1,44 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class nhh
-  extends EncryptUrlJob
+  extends SimpleJob
 {
-  public nhh(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareQZoneData paramShareQZoneData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public nhh(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
   
-  public boolean b()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.e = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    paramJobContext = ((StoryManager)SuperManager.a(5)).e(QQStoryContext.a().b());
+    if (paramJobContext != null)
+    {
+      paramVarArgs = paramJobContext.iterator();
+      while (paramVarArgs.hasNext())
+      {
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramVarArgs.next();
+        if ((!localStoryVideoItem.isUploadFail()) && (!localStoryVideoItem.isUploadSuc())) {
+          paramVarArgs.remove();
+        }
+      }
+    }
+    Collections.sort(paramJobContext, new nhi(this));
+    paramVarArgs = new ArrayList();
+    paramJobContext = paramJobContext.iterator();
+    while (paramJobContext.hasNext()) {
+      paramVarArgs.add(((StoryVideoItem)paramJobContext.next()).mVid);
+    }
+    this.a.a(paramVarArgs);
+    return null;
   }
 }
 

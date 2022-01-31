@@ -1,23 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
+import com.tencent.open.appcommon.now.download.local.DownloadCallbackNativeImpl;
+import com.tencent.open.appcommon.now.download.local.DownloadNativeApi;
 
-public class almt
-  implements View.OnClickListener
+class almt
+  implements DialogInterface.OnClickListener
 {
-  public almt(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  almt(alms paramalms) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ProfileCardUtil.a(this.a, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+    DownloadCenterImpl.a().a(this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    DownloadNativeApi.a(this.a.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadNativeApi).a(this.a.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadTaskInfo);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     almt
  * JD-Core Version:    0.7.0.1
  */

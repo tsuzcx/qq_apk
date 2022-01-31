@@ -1,19 +1,16 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopFeedViewFactory.ViewHolder;
+import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import com.tencent.smtt.sdk.WebView;
 
-class ajti
-  extends TroopFeedViewFactory.ViewHolder
+public class ajti
+  implements Runnable
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
+  public ajti(TroopNoticeJsHandler paramTroopNoticeJsHandler, WebView paramWebView, String paramString1, String paramString2) {}
   
-  ajti(ajth paramajth)
+  public void run()
   {
-    super(paramajth.a);
+    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + this.b + ")");
+    }
   }
 }
 

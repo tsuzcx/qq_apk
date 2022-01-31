@@ -1,42 +1,39 @@
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
+import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerBaseDownloader;
+import com.tencent.biz.qqstory.base.preload.DownloadTask;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.HashMap;
 
 public class ndw
-  extends SosoInterface.OnLocationListener
+  implements INetEngine.IBreakDownFix
 {
-  public ndw(LbsManager paramLbsManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public ndw(AsyncFileDownloader.InnerBaseDownloader paramInnerBaseDownloader) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(NetReq paramNetReq, NetResp paramNetResp)
   {
-    SLog.b("LbsManager", "onLocationFinish.");
-    boolean bool;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      bool = true;
-      if (!bool) {
-        break label114;
-      }
-      this.a.b = BasicLocation.a(paramSosoLbsInfo.a);
-      SLog.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
-    }
-    for (;;)
-    {
-      if (!LbsManager.a(this.a)) {
-        this.a.a(bool, this.a.b);
-      }
-      this.a.a = false;
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    while (!(paramNetReq instanceof HttpNetReq)) {
       return;
-      bool = false;
-      break;
-      label114:
-      SLog.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
     }
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
+    localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
+    paramNetResp.c = 0L;
+    paramNetResp = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
+    localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
+    String str1 = localHttpNetReq.jdField_a_of_type_JavaLangString;
+    if (str1.contains("range="))
+    {
+      String str2 = str1.substring(0, str1.lastIndexOf("range="));
+      localHttpNetReq.jdField_a_of_type_JavaLangString = (str2 + "range=" + localHttpNetReq.jdField_a_of_type_Long);
+    }
+    paramNetReq = paramNetReq.a();
+    if ((paramNetReq != null) && ((paramNetReq instanceof DownloadTask))) {
+      ((DownloadTask)paramNetReq).b = true;
+    }
+    SLog.b("AsyncFileDownloader", String.format("breakDown , range = %s , url = %s", new Object[] { paramNetResp, str1 }));
   }
 }
 

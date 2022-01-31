@@ -263,7 +263,7 @@ public class DirectForwarder
   public static void a(Context paramContext, int paramInt)
   {
     QQToast localQQToast = new QQToast(paramContext);
-    localQQToast.a(2130838714);
+    localQQToast.a(2130838723);
     localQQToast.d(2000);
     localQQToast.c(paramInt);
     localQQToast.b(paramContext.getResources().getDimensionPixelSize(2131558448) - (int)DisplayUtils.a(paramContext, 5.0F));
@@ -422,10 +422,10 @@ public class DirectForwarder
       a("发送失败", 1);
       return;
     case 0: 
-      a(2131435089, 2);
+      a(2131435105, 2);
       return;
     }
-    a(2131434613, 0);
+    a(2131434629, 0);
   }
   
   private int c(String paramString, int paramInt, boolean paramBoolean, DirectForwarder.CallBack paramCallBack)

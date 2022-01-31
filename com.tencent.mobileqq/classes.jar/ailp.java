@@ -1,32 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import java.util.HashSet;
 
-public class ailp
-  implements MediaPlayer.OnCompletionListener
+class ailp
 {
-  public ailp(VideoSprite paramVideoSprite) {}
+  public int a;
+  public String a;
+  public HashSet a;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  private ailp(ailo paramailo)
   {
-    if (this.a.j) {
-      this.a.b.b(new ailq(this));
-    }
-    do
-    {
-      return;
-      this.a.g = false;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ailp
  * JD-Core Version:    0.7.0.1
  */

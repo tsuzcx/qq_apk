@@ -1,38 +1,25 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import protocol.KQQConfig.GetResourceRespInfo;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
+import com.tencent.mobileqq.apollo.tmg_opensdk.TMG_Downloader.TMG_Downloader_DownloadEvent;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class zbv
-  implements Runnable
+  extends TMG_Downloader.TMG_Downloader_DownloadEvent
 {
-  public zbv(ConfigHandler paramConfigHandler, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public zbv(AVEngineWalper paramAVEngineWalper) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    File localFile = new File(AppConstants.bG);
-    try
-    {
-      if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b, new URL(this.jdField_a_of_type_JavaLangString), localFile))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, true, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
-      return;
-    }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.a(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new zbw(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zbv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="31.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="人脸检测失败" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="视频中没有出现完整的脸\n无法通过真实认证哦" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2026" android:layout_width="220.0dip" android:layout_height="40.0dip" android:layout_marginTop="38.0dip" android:text="重拍" android:contentDescription="重拍" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21bd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021475" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_centerVertical="true">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21d2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="45.0dip" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21bf" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="飞翔的秋秋" android:singleLine="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a00ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="19.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a21d0" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a21bf">
+                <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbd" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21cf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="昵称:" android:maxLines="10" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a21ce" android:layout_centerVertical="true" />
+                <com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a00d2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02086e" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginTop="7.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a21cf">
+                    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a00d0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02147f" android:layout_centerVertical="true" />
+                    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/qq_aio_ptt_time_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" android:includeFontPadding="false" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a00d0" android:layout_centerVertical="true" />
+                </com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:textSize="11.0sp" android:textColor="#ffbebfbf" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21c0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:text="下午 10:10" android:layout_alignParentRight="true" />
+            <com.tencent.mobileqq.activity.recent.cur.DragTextView android:textSize="10.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21c3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a21c0" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a21c0" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

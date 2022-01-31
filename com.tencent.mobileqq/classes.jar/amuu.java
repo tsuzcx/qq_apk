@@ -1,31 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.PictureUrl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
+import cooperation.qlink.QQProxyForQlink;
 
-public final class amuu
-  implements Parcelable.Creator
+public class amuu
+  implements DialogInterface.OnClickListener
 {
-  public PictureUrl a(Parcel paramParcel)
-  {
-    PictureUrl localPictureUrl = new PictureUrl();
-    localPictureUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localPictureUrl.jdField_a_of_type_Int = paramParcel.readInt();
-    localPictureUrl.jdField_b_of_type_Int = paramParcel.readInt();
-    localPictureUrl.c = paramParcel.readInt();
-    localPictureUrl.jdField_a_of_type_Float = paramParcel.readFloat();
-    localPictureUrl.jdField_b_of_type_Float = paramParcel.readFloat();
-    localPictureUrl.d = paramParcel.readInt();
-    return localPictureUrl;
-  }
+  public amuu(QQProxyForQlink paramQQProxyForQlink, QrHandleResultCallBack paramQrHandleResultCallBack) {}
   
-  public PictureUrl[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new PictureUrl[paramInt];
+    this.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.a();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amuu
  * JD-Core Version:    0.7.0.1
  */

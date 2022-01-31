@@ -1,51 +1,38 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.SogouEmoji;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class acln
-  implements Animation.AnimationListener
+  implements QueryCallback
 {
-  public acln(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  public acln(SogouEmoji paramSogouEmoji, PicEmoticonInfo paramPicEmoticonInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (Face2FaceFriendBubbleView.a(this.a) == 1)
+    boolean bool;
+    if (paramEmoticonPackage != null)
     {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f = paramEmoticonPackage.type;
+      PicEmoticonInfo localPicEmoticonInfo = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo;
+      if (paramEmoticonPackage.isAPNG == 2)
+      {
+        bool = true;
+        localPicEmoticonInfo.b = bool;
+      }
     }
     for (;;)
     {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
+      SogouEmoji.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func sendEmoji ends, type:" + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f);
+      }
       return;
-      if (Face2FaceFriendBubbleView.a(this.a) == 2)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839059);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839060);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839061);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-      }
+      bool = false;
+      break;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f = 3;
     }
   }
 }

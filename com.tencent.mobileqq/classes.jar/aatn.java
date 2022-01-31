@@ -1,24 +1,19 @@
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
 
 public class aatn
-  extends aati
+  implements Runnable
 {
-  public boolean a;
-  public long b;
-  public long c;
-  public final ArrayList c = new ArrayList();
-  public String d;
-  public final ArrayList d = new ArrayList();
-  public String e;
+  public aatn(ARGreetingCardListManager paramARGreetingCardListManager) {}
   
-  private aatn()
+  public void run()
   {
-    super(null);
+    ARGreetingCardListManager.a(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aatn
  * JD-Core Version:    0.7.0.1
  */

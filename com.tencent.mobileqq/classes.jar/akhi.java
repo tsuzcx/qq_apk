@@ -1,35 +1,14 @@
-import android.media.MediaPlayer;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import com.tencent.mobileqq.util.FaceDrawableImpl;
+import com.tencent.mobileqq.util.IdleUpdater;
 
-class akhi
-  implements Runnable
+public class akhi
+  extends IdleUpdater
 {
-  akhi(akhh paramakhh, int paramInt1, int paramInt2) {}
+  public akhi(FaceDrawableImpl paramFaceDrawableImpl) {}
   
-  public void run()
+  public void a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    try
-    {
-      if (this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-        bool1 = this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
-      }
-      if ((this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (bool1)) {
-        this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(this.jdField_a_of_type_Int * 100 / this.b);
-      }
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-        this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-        bool1 = bool2;
-      }
-    }
+    this.a.a();
   }
 }
 

@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.music;
 
-import anlu;
+import anuh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
@@ -119,7 +119,7 @@ public class MusicPlayerScene
   
   protected void a(String paramString, int paramInt)
   {
-    ThreadManager.postImmediately(new anlu(this, paramString, paramInt), null, true);
+    ThreadManager.postImmediately(new anuh(this, paramString, paramInt), null, true);
     this.jdField_a_of_type_Long = 0L;
   }
   
@@ -130,7 +130,21 @@ public class MusicPlayerScene
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a());
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)
+      {
+        boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a();
+        if (bool) {
+          return true;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
   }
   
   public void b()

@@ -28,8 +28,8 @@ import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nrh;
-import nri;
+import nvx;
+import nvy;
 
 public class QQStoryShieldListActivity
   extends IphoneTitleBarActivity
@@ -41,11 +41,11 @@ public class QQStoryShieldListActivity
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public QQStoryHandler a;
   public QQStoryManager a;
-  QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nrh(this);
+  QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nvx(this);
   FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   public QQProgressNotifier a;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
-  nri jdField_a_of_type_Nri;
+  nvy jdField_a_of_type_Nvy;
   int jdField_b_of_type_Int;
   View jdField_b_of_type_AndroidViewView;
   
@@ -54,7 +54,7 @@ public class QQStoryShieldListActivity
     Intent localIntent = new Intent(paramActivity, SelectMemberActivity.class);
     localIntent.putExtra("param_entrance", 24);
     localIntent.putExtra("param_only_friends", true);
-    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131434534));
+    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131434550));
     localIntent.putExtra("param_uins_selected_default", paramArrayList);
     localIntent.putExtra("param_donot_need_contacts", true);
     localIntent.putExtra("param_donot_need_discussion", true);
@@ -76,7 +76,7 @@ public class QQStoryShieldListActivity
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_Nri.a(paramList);
+    this.jdField_a_of_type_Nvy.a(paramList);
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -100,7 +100,7 @@ public class QQStoryShieldListActivity
     for (boolean bool = true;; bool = false)
     {
       ((QQStoryHandler)localObject).a(paramIntent, bool, true);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433007, 0);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433021, 0);
       return;
     }
   }
@@ -114,17 +114,17 @@ public class QQStoryShieldListActivity
     boolean bool1;
     if (this.jdField_a_of_type_Int == 2)
     {
-      paramBundle = "不让他看我的日迹";
-      super.setContentView(2130970835);
+      paramBundle = "不让他看我的小视频";
+      super.setContentView(2130970852);
       super.setTitle(paramBundle);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362728));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362733));
       if (this.jdField_a_of_type_Int != 2) {
         break label373;
       }
-      paramBundle = "把好友添加到这里后，发日迹他将无法看到。";
+      paramBundle = "把好友添加到这里后，发小视频他将无法看到。";
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBundle);
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131371996));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2130970578);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131372004));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2130970591);
       this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager = ((QQStoryManager)this.app.getManager(180));
       this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler = ((QQStoryHandler)this.app.a(98));
       paramBundle = this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
@@ -134,10 +134,10 @@ public class QQStoryShieldListActivity
       bool1 = true;
       label151:
       paramBundle = paramBundle.a(bool1);
-      this.jdField_a_of_type_Nri = new nri(this, paramBundle);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Nri);
-      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370346);
-      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131371997);
+      this.jdField_a_of_type_Nvy = new nvy(this, paramBundle);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Nvy);
+      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370355);
+      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131372005);
       if ((paramBundle != null) && (paramBundle.size() != 0)) {
         break label385;
       }
@@ -147,9 +147,9 @@ public class QQStoryShieldListActivity
       if (this.jdField_a_of_type_Int != 2) {
         break label405;
       }
-      paramBundle = "把好友添加到这里后\r\n该好友将不会看到我的日迹";
+      paramBundle = "把好友添加到这里后\r\n该好友将不会看到我的小视频";
       label242:
-      ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366711)).setText(paramBundle);
+      ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366709)).setText(paramBundle);
       this.jdField_b_of_type_Int = ((int)DisplayUtils.a(this, 20.0F));
       this.rightViewText.setOnClickListener(this);
       this.rightViewText.setText("添加");
@@ -166,10 +166,10 @@ public class QQStoryShieldListActivity
     {
       this.jdField_a_of_type_AndroidUtilDisplayMetrics = getResources().getDisplayMetrics();
       return true;
-      paramBundle = "不看他的日迹";
+      paramBundle = "不看他的小视频";
       break;
       label373:
-      paramBundle = "把好友添加到这里后，他更新的故事将不会在日迹列表出现";
+      paramBundle = "把好友添加到这里后，他更新的视频将不会在小视频列表出现";
       break label68;
       label380:
       bool1 = false;
@@ -179,7 +179,7 @@ public class QQStoryShieldListActivity
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       break label231;
       label405:
-      paramBundle = "把好友添加到这里后\r\n将不会看到该好友的日迹";
+      paramBundle = "把好友添加到这里后\r\n将不会看到该好友的小视频";
       break label242;
       label412:
       paramBundle = this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler;
@@ -236,7 +236,7 @@ public class QQStoryShieldListActivity
       for (bool = true;; bool = false)
       {
         ((QQStoryHandler)localObject2).a((ArrayList)localObject1, bool, false);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433007, 0);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433021, 0);
         if (this.jdField_a_of_type_Int != 2) {
           break label199;
         }
@@ -276,7 +276,7 @@ public class QQStoryShieldListActivity
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Nri.notifyDataSetChanged();
+    this.jdField_a_of_type_Nvy.notifyDataSetChanged();
   }
 }
 

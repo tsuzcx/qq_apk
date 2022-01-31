@@ -1,24 +1,16 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class olb
-  implements DataProvider.DataUpdateListener
+  implements Runnable
 {
-  public olb(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public olb(EditVideoSave paramEditVideoSave) {}
   
-  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
+  public void run()
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
-    if ((paramBoolean) && (paramAddressInfo != null))
-    {
-      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
-      this.a.a.post(new olc(this, paramAddressInfo));
-      return;
-    }
-    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
+    this.a.h();
+    QQToast.a(this.a.a.a(), 2, "已保存到系统相册", 0).a();
   }
 }
 

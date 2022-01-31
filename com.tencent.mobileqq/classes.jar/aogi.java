@@ -1,13 +1,12 @@
-import dov.com.tencent.mobileqq.activity.richmedia.FlowSendTask;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class aogi
-  implements Runnable
+public final class aogi
+  implements FilenameFilter
 {
-  public aogi(FlowSendTask paramFlowSendTask) {}
-  
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    this.a.a(this.a.a, 2131436145);
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
   }
 }
 

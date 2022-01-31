@@ -1,24 +1,26 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.activity.aio.stickerbubble.ItemStatus.Acceleration;
-import com.tencent.mobileqq.activity.aio.stickerbubble.ItemStatus.Velocity;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class wbu
+  extends FriendListObserver
 {
-  private int jdField_a_of_type_Int;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private ItemStatus.Acceleration jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Acceleration;
-  private ItemStatus.Velocity jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  public wbu(NearbyChatPie paramNearbyChatPie) {}
   
-  public wbu(Point paramPoint, String paramString, boolean paramBoolean, ItemStatus.Velocity paramVelocity, ItemStatus.Acceleration paramAcceleration, int paramInt)
+  protected void onAddFriend(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity = paramVelocity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Acceleration = paramAcceleration;
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramString))
+    {
+      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+      localIntent.putExtra("uintype", 0);
+      NearbyChatPie.b(this.a, localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.f + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
+      }
+    }
   }
 }
 

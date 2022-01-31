@@ -108,7 +108,7 @@ public class Predictor
     //   4: astore 5
     //   6: new 10	java/lang/StringBuilder
     //   9: dup
-    //   10: getstatic 77	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
+    //   10: getstatic 77	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
     //   13: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   16: astore_2
     //   17: aload_2
@@ -328,7 +328,7 @@ public class Predictor
     //   0: invokestatic 157	com/tencent/mobileqq/shortvideo/ml/Predictor:a	()V
     //   3: new 10	java/lang/StringBuilder
     //   6: dup
-    //   7: getstatic 77	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
+    //   7: getstatic 77	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
     //   10: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   13: astore_2
     //   14: aload_2
@@ -499,7 +499,7 @@ public class Predictor
     //   15: astore 7
     //   17: new 10	java/lang/StringBuilder
     //   20: dup
-    //   21: getstatic 77	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
+    //   21: getstatic 77	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
     //   24: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   27: astore 4
     //   29: aload 4
@@ -697,7 +697,7 @@ public class Predictor
     //   417: new 10	java/lang/StringBuilder
     //   420: dup
     //   421: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   424: getstatic 77	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
+    //   424: getstatic 77	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
     //   427: invokevirtual 19	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   430: getstatic 32	com/tencent/mobileqq/shortvideo/ml/Predictor:a	Ljava/lang/String;
     //   433: invokevirtual 19	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;

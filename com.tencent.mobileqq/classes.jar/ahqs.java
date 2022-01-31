@@ -1,38 +1,32 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.search.ContentRecommendModel.ContentRecommendListAdapter;
-import com.tencent.mobileqq.search.model.ContentRecommendDataModel.ContentRecommendItem;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 
 public class ahqs
+  implements Runnable
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public URLImageView a;
-  public ContentRecommendDataModel.ContentRecommendItem a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public URLImageView b;
-  public View c;
-  public ImageView c;
-  public TextView c;
-  public URLImageView c;
-  public View d;
-  public TextView d;
-  public View e;
-  public TextView e;
-  public View f;
-  public TextView f;
-  public TextView g;
+  public ahqs(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
   
-  public ahqs(ContentRecommendModel.ContentRecommendListAdapter paramContentRecommendListAdapter) {}
+  public void run()
+  {
+    if (!this.a.i)
+    {
+      this.a.a.a(EffectsCameraCaptureView.a(this.a));
+      this.a.a.b(this.a.n, this.a.o, this.a.getWidth(), this.a.getHeight());
+      this.a.a.c(this.a.n, this.a.o, this.a.getWidth(), this.a.getHeight());
+      this.a.a.c(EffectsCameraCaptureView.b(this.a));
+      this.a.i = true;
+      if (EffectsCameraCaptureView.a(this.a) != null) {
+        this.a.setFaceEffect(EffectsCameraCaptureView.a(this.a));
+      }
+      if (EffectsCameraCaptureView.a(this.a) != 0) {
+        this.a.setBeauty(EffectsCameraCaptureView.a(this.a));
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahqs
  * JD-Core Version:    0.7.0.1
  */

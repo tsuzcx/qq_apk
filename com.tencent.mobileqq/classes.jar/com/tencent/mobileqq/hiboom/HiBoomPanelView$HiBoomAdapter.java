@@ -1,143 +1,33 @@
 package com.tencent.mobileqq.hiboom;
 
-import adpi;
+import adxq;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
-import com.tencent.mobileqq.flashchat.OnHolderItemClickListener;
+import com.tencent.widget.XEditTextEx;
 import java.util.List;
 
 public class HiBoomPanelView$HiBoomAdapter
   extends RecyclerView.Adapter
 {
-  public OnHolderItemClickListener a;
   List jdField_a_of_type_JavaUtilList;
   
-  public HiBoomPanelView$HiBoomAdapter(HiBoomPanelView paramHiBoomPanelView, OnHolderItemClickListener paramOnHolderItemClickListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
-  }
+  public HiBoomPanelView$HiBoomAdapter(HiBoomPanelView paramHiBoomPanelView) {}
   
-  public adpi a(ViewGroup paramViewGroup, int paramInt)
+  public int a(int paramInt)
   {
-    return new adpi(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2130971719, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        HiBoomItem localHiBoomItem = (HiBoomItem)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (localHiBoomItem.jdField_a_of_type_Int == paramInt1)
-        {
-          localHiBoomItem.d = paramInt2;
-          notifyDataSetChanged();
-          return;
-        }
-        i += 1;
-      }
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
+      return ((HiBoomItem)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
     }
-  }
-  
-  public void a(adpi paramadpi, int paramInt)
-  {
-    HiBoomItem localHiBoomItem = (HiBoomItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = (ViewGroup.MarginLayoutParams)paramadpi.itemView.getLayoutParams();
-    ((ViewGroup.MarginLayoutParams)localObject).height = FlashChatPanel.f;
-    ((ViewGroup.MarginLayoutParams)localObject).width = FlashChatPanel.e;
-    if (paramInt % 3 == 0)
-    {
-      ((ViewGroup.MarginLayoutParams)localObject).leftMargin = 0;
-      ((ViewGroup.MarginLayoutParams)localObject).rightMargin = FlashChatPanel.g;
-      if (paramInt / 3 != 0) {
-        break label327;
-      }
-      ((ViewGroup.MarginLayoutParams)localObject).topMargin = 0;
-      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = FlashChatPanel.g;
-      label82:
-      localObject = (HiBoomManager)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.b.a.getManager(218);
-      URLDrawable localURLDrawable;
-      if (!TextUtils.isEmpty(localHiBoomItem.g))
-      {
-        paramadpi.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localHiBoomItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        if ((localHiBoomItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable))
-        {
-          localURLDrawable = (URLDrawable)localHiBoomItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-          if (localURLDrawable.getStatus() == 2) {
-            localURLDrawable.restartDownload();
-          }
-        }
-      }
-      if (TextUtils.isEmpty(localHiBoomItem.h)) {
-        break label375;
-      }
-      paramadpi.b.setVisibility(0);
-      paramadpi.b.setImageDrawable(localHiBoomItem.b);
-      if ((localHiBoomItem.b instanceof URLDrawable))
-      {
-        localURLDrawable = (URLDrawable)localHiBoomItem.b;
-        if (localURLDrawable.getStatus() == 2) {
-          localURLDrawable.restartDownload();
-        }
-        if (localURLDrawable.getStatus() != 1) {
-          paramadpi.b.setVisibility(8);
-        }
-      }
-      label237:
-      if (localHiBoomItem.jdField_a_of_type_Int != ((HiBoomManager)localObject).jdField_a_of_type_Int) {
-        break label387;
-      }
-      paramadpi.c.setVisibility(0);
-    }
-    for (;;)
-    {
-      if ((localHiBoomItem.d != 100) && (localHiBoomItem.d != -1)) {
-        break label399;
-      }
-      paramadpi.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-      if (paramInt % 3 == 2)
-      {
-        ((ViewGroup.MarginLayoutParams)localObject).leftMargin = FlashChatPanel.g;
-        ((ViewGroup.MarginLayoutParams)localObject).rightMargin = 0;
-        break;
-      }
-      ((ViewGroup.MarginLayoutParams)localObject).leftMargin = FlashChatPanel.g;
-      ((ViewGroup.MarginLayoutParams)localObject).rightMargin = FlashChatPanel.g;
-      break;
-      label327:
-      if (paramInt / 3 == getItemCount() / 3)
-      {
-        ((ViewGroup.MarginLayoutParams)localObject).topMargin = FlashChatPanel.g;
-        ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = 0;
-        break label82;
-      }
-      ((ViewGroup.MarginLayoutParams)localObject).topMargin = FlashChatPanel.g;
-      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = FlashChatPanel.g;
-      break label82;
-      label375:
-      paramadpi.b.setVisibility(8);
-      break label237;
-      label387:
-      paramadpi.c.setVisibility(8);
-    }
-    label399:
-    paramadpi.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    paramInt = paramadpi.jdField_a_of_type_AndroidWidgetImageView.getHeight();
-    paramadpi.jdField_a_of_type_AndroidViewView.getLayoutParams().height = ((100 - localHiBoomItem.d) * paramInt / 100);
+    return -1;
   }
   
   public void a(List paramList)
@@ -150,7 +40,79 @@ public class HiBoomPanelView$HiBoomAdapter
     if (this.jdField_a_of_type_JavaUtilList == null) {
       return 0;
     }
+    if (((HiBoomManager)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(218)).b()) {
+      return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    }
     return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    while (paramInt != this.jdField_a_of_type_JavaUtilList.size()) {
+      return 1;
+    }
+    return 2;
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    ((GridLayoutManager)paramRecyclerView.getLayoutManager()).setSpanSizeLookup(new adxq(this));
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    Object localObject;
+    if ((paramViewHolder instanceof HiBoomPanelView.HiBoomViewHolder))
+    {
+      localObject = (HiBoomPanelView.HiBoomViewHolder)paramViewHolder;
+      HiBoomItem localHiBoomItem = (HiBoomItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramViewHolder = ((HiBoomPanelView.HiBoomViewHolder)localObject).itemView.getLayoutParams();
+      paramViewHolder.height = HiBoomPanelView.jdField_a_of_type_Int;
+      paramViewHolder.width = HiBoomPanelView.b;
+      ((HiBoomPanelView.HiBoomViewHolder)localObject).itemView.setPadding(0, 0, HiBoomPanelView.c, HiBoomPanelView.c);
+      ((HiBoomPanelView.HiBoomViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setHiBoom(localHiBoomItem.jdField_a_of_type_Int, 1, HiBoomManager.a);
+      paramViewHolder = HiBoomManager.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+      if (!TextUtils.isEmpty(paramViewHolder)) {
+        break label213;
+      }
+      paramViewHolder = localHiBoomItem.jdField_a_of_type_JavaLangString;
+    }
+    label213:
+    for (;;)
+    {
+      ((HiBoomPanelView.HiBoomViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setText(paramViewHolder);
+      ((HiBoomPanelView.HiBoomViewHolder)localObject).jdField_a_of_type_Int = paramInt;
+      do
+      {
+        return;
+      } while (!(paramViewHolder instanceof HiBoomPanelView.HiBoomAuthorityTimeViewHolder));
+      paramViewHolder = (HiBoomPanelView.HiBoomAuthorityTimeViewHolder)paramViewHolder;
+      localObject = ((HiBoomManager)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(218)).a();
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramViewHolder.a.setVisibility(8);
+        paramViewHolder.b.setVisibility(8);
+        return;
+      }
+      paramViewHolder.a.setVisibility(0);
+      paramViewHolder.b.setVisibility(0);
+      paramViewHolder.a.setText((CharSequence)localObject);
+      return;
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 1: 
+      return new HiBoomPanelView.HiBoomViewHolder(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2130971749, paramViewGroup, false));
+    }
+    return new HiBoomPanelView.HiBoomAuthorityTimeViewHolder(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2130971748, paramViewGroup, false));
   }
 }
 

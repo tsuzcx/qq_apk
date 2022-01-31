@@ -1,33 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xb7e.RspBody;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.OnTabRedNumsChangeListenner;
+import java.util.Iterator;
+import java.util.List;
 
-class loe
+public class loe
   implements Runnable
 {
-  loe(lod paramlod, byte[] paramArrayOfByte) {}
+  public loe(KandianMergeManager paramKandianMergeManager) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null)
+    if (KandianMergeManager.a(this.a) != null)
     {
-      ReadInJoyLogicEngineEventDispatcher.a().a(false, null);
-      return;
-    }
-    oidb_0xb7e.RspBody localRspBody = new oidb_0xb7e.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(this.jdField_a_of_type_ArrayOfByte);
-      DiandianTopConfigManager.a(this.jdField_a_of_type_Lod.a, localRspBody);
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(DiandianTopConfigManager.a, 2, "loadDiandianTopConfig, e = " + localException);
+      Iterator localIterator = KandianMergeManager.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((KandianMergeManager.OnTabRedNumsChangeListenner)localIterator.next()).b();
       }
-      ReadInJoyLogicEngineEventDispatcher.a().a(false, null);
     }
   }
 }

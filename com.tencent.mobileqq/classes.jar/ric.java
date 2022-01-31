@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
+import android.content.res.Resources;
+import com.tencent.litetransfersdk.ProtocolHelper;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ric
-  implements QQProgressDialog.Callback
+  implements Runnable
 {
-  public ric(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public ric(ProtocolHelper paramProtocolHelper, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    this.a.onBackPressed();
-    AddFriendLogicActivity.a(this.a).a(null);
+    FMToastUtil.a("'" + this.jdField_a_of_type_JavaLangString + "'" + BaseApplication.getContext().getResources().getString(2131427516));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ric
  * JD-Core Version:    0.7.0.1
  */

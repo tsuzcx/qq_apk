@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.shortvideo.ShortVideoForwardInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
 
-public final class aidw
-  implements Runnable
+public abstract interface aidw
 {
-  public void run()
-  {
-    RecentDanceConfigMgr.a(RecentDanceConfigMgr.c());
-    RecentDanceConfigMgr.b(false);
-  }
+  public abstract MessageRecord a(ShortVideoForwardInfo paramShortVideoForwardInfo);
+  
+  public abstract MessageRecord a(ShortVideoUploadInfo paramShortVideoUploadInfo);
 }
 
 

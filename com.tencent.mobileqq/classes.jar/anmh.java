@@ -1,32 +1,18 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
 public final class anmh
-  implements FFmpegExecuteResponseCallback
+  implements Runnable
 {
-  public void a() {}
+  public anmh(ArkLocalAppMgr paramArkLocalAppMgr, String paramString1, String paramString2, String paramString3) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onSuccess: invoked. Message: message: showFFmpegFormats ok. " + paramString);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a(this.jdField_a_of_type_JavaLangString, this.b, new Object(), new anmi(this));
   }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HumUtils", 2, "onFailure: invoked. info: Failed showFFmpegFormats. message = " + paramString);
-    }
-  }
-  
-  public void c(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmh
  * JD-Core Version:    0.7.0.1
  */

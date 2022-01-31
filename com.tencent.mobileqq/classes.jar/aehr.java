@@ -1,47 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.leba.LebaTitleBar;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
 
 public class aehr
-  extends Handler
+  implements View.OnFocusChangeListener
 {
-  public aehr() {}
+  public aehr(LebaTitleBar paramLebaTitleBar) {}
   
-  public aehr(Looper paramLooper)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
-    if (i == 1)
+    if (paramBoolean)
     {
-      if (ChatBackgroundManager.c < 3)
-      {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, StatisticCollector.a(BaseApplication.getContext()));
-        ChatBackgroundManager.c += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
-        }
-        Message localMessage = ChatBackgroundManager.a.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
-      }
+      paramView.clearFocus();
+      UniteSearchActivity.a(LebaTitleBar.a(this.a), null, 21, 0L, (HotWordSearchEntryDataModel.HotSearchItem)LebaTitleBar.a(this.a).getTag(), 3);
     }
-    else {
-      return;
-    }
-    ChatBackgroundManager.c = 0;
   }
 }
 

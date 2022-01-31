@@ -1,28 +1,25 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import com.tencent.open.adapter.OpenAppClient;
 import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
 
-public class alhi
-  implements ITMAssistantDownloadClientListener
+public final class alhi
+  implements Runnable
 {
-  public alhi(DownloadManager paramDownloadManager) {}
+  public alhi(Context paramContext, HashMap paramHashMap) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public void run()
   {
-    ThreadManager.getSubThreadHandler().post(new alhk(this, paramLong1, paramLong2, paramString));
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    ThreadManager.getSubThreadHandler().post(new alhj(this, paramTMAssistantDownloadClient, paramInt1, paramString1, paramInt2, paramString2));
-  }
-  
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
-  {
-    LogUtility.e(DownloadManager.a, "OnDwonloadSDKServiceInvalid");
+    try
+    {
+      OpenAppClient.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
+      return;
+    }
+    catch (Exception localException)
+    {
+      String str = "onPushMsg exception: " + this.jdField_a_of_type_JavaUtilHashMap;
+      LogUtility.c(OpenAppClient.a, str, localException);
+    }
   }
 }
 

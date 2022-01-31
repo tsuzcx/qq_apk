@@ -1,23 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.troop.model.VidToGroupInfoPuller;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
 
 public class ooc
-  implements BatchHandlerListPuller.IPullResultCallback
+  implements DoodleOpController.DoodleOpListener
 {
-  public ooc(VidToGroupInfoPuller paramVidToGroupInfoPuller) {}
+  public ooc(DoodleLayout paramDoodleLayout) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("StoryId list to group info list finish !");
-    if (paramBoolean) {}
-    for (String str = "Every task success";; str = "Some task error")
-    {
-      SLog.d("Q.qqstory.net:VidToGroupInfoPuller", str);
-      this.a.a(this.a.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
-      this.a.jdField_a_of_type_Int = 2;
-      return;
+    if (this.a.a != null) {
+      this.a.a.e();
     }
   }
 }

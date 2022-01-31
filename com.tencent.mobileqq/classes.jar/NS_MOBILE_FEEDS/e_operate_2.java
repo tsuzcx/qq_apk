@@ -12,6 +12,7 @@ public final class e_operate_2
   public static final int _Operate2ApplicationApproved = 13;
   public static final int _Operate2CloseThisFeed = 0;
   public static final int _Operate2CommentBoxCmtpicEnable = 1;
+  public static final int _Operate2CommentLike = 19;
   public static final int _Operate2DisableCustomPraise = 8;
   public static final int _Operate2GetCardDecoration = 5;
   public static final int _Operate2GifComment = 16;
@@ -23,6 +24,7 @@ public final class e_operate_2
   public static final int _Operate2QuickForward = 3;
   public static final int _Operate2SetCardDecoration = 4;
   public static final int _Operate2ShowCustomEmotionTab = 17;
+  public static final int _Operate2SpecialUnConcern = 20;
   public static final int _OperateLifeMoment = 15;
 }
 

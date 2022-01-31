@@ -1,23 +1,21 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter;
+import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter.OnActionListener;
 
 public class ahyx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahyx(PtvTemplateManager paramPtvTemplateManager, AppInterface paramAppInterface, ArrayList paramArrayList) {}
+  public ahyx(ContactSearchResultPresenter paramContactSearchResultPresenter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (PtvFilterSoLoad.b()) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaUtilArrayList);
-    }
+    ContactSearchResultPresenter.a(this.a).a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahyx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,23 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import java.util.ArrayList;
 
 public class kvx
   implements Runnable
 {
-  public kvx(CustomWebView paramCustomWebView) {}
+  public kvx(VideoCoverAdapter paramVideoCoverAdapter) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomWebView", 2, "webview real destroy now");
-    }
-    this.a.b();
+    if ((VideoCoverAdapter.a(this.a) == null) || (VideoCoverAdapter.a(this.a).size() == 0)) {}
+    VideoCoverItem localVideoCoverItem;
+    do
+    {
+      return;
+      localVideoCoverItem = (VideoCoverItem)VideoCoverAdapter.a(this.a).get(0);
+    } while ((localVideoCoverItem == null) || (localVideoCoverItem.a == null));
+    localVideoCoverItem.a.a(VideoCoverAdapter.a(this.a));
   }
 }
 

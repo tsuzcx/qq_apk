@@ -538,7 +538,7 @@ public class p
           localProperties.setProperty("count", String.valueOf(i));
           localProperties.setProperty("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
           com.tencent.mobileqq.msf.core.c.a.a(BaseApplication.getContext()).reportKVEvent("msf.core.SocketReaderMultiThreadException", localProperties);
-          com.tencent.mobileqq.msf.sdk.report.a.a(new com.tencent.mobileqq.msf.sdk.report.b("SocketReaderMultiThreadException"), "SocketReaderMultiThreadException", "SocketReader5多线程异常");
+          com.tencent.mobileqq.msf.sdk.report.a.a(new com.tencent.mobileqq.msf.sdk.report.b("SocketReaderMultiThreadCatchedException"), "SocketReaderMultiThreadCatchedException", "SocketReader5多线程异常");
         }
         while (QLog.isColorLevel())
         {
@@ -552,7 +552,7 @@ public class p
             localProperties.setProperty("count", String.valueOf(i));
             localProperties.setProperty("uin", String.valueOf(MsfCore.sCore.getAccountCenter().i()));
             com.tencent.mobileqq.msf.core.c.a.a(BaseApplication.getContext()).reportKVEvent("msf.core.SocketReaderMultiThreadException", localProperties);
-            com.tencent.mobileqq.msf.sdk.report.a.a(new com.tencent.mobileqq.msf.sdk.report.b("SocketReaderMultiThreadException"), "SocketReaderMultiThreadException", "SocketReader3多线程异常");
+            com.tencent.mobileqq.msf.sdk.report.a.a(new com.tencent.mobileqq.msf.sdk.report.b("SocketReaderMultiThreadCatchedException"), "SocketReaderMultiThreadCatchedException", "SocketReader3多线程异常");
           }
         }
         return;
@@ -664,12 +664,12 @@ public class p
             if (MsfService.getCore().getStatReporter() != null) {
               MsfService.getCore().getStatReporter().a("msf_core_EvtMsfThreadHeldKillMSF", true, 0L, 0L, localHashMap, false, false);
             }
-            if (Math.random() > 0.1000000014901161D) {
+            if (Math.random() > 0.001000000047497451D) {
               continue;
             }
             j = 1;
             if (j != 0) {
-              com.tencent.mobileqq.msf.sdk.report.a.a(new com.tencent.mobileqq.msf.sdk.report.b((String)localObject1 + " QueueHeld"), (String)localObject1 + "HeldException:" + str, str);
+              com.tencent.mobileqq.msf.sdk.report.a.a(new com.tencent.mobileqq.msf.sdk.report.b((String)localObject1 + " QueueHeld"), (String)localObject1 + "HeldCatchedException:" + str, str);
             }
             Thread.sleep(10000L);
             Process.killProcess(Process.myPid());

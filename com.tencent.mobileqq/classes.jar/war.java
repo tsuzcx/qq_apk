@@ -1,19 +1,19 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.HotChatShare;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class war
-  implements Runnable
+public class war
+  implements View.OnClickListener
 {
-  war(waq paramwaq, String paramString) {}
+  public war(HotChatPie paramHotChatPie, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TroopChatPie.c(this.jdField_a_of_type_Waq.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-    TroopChatPie.d(this.jdField_a_of_type_Waq.a).setText(this.jdField_a_of_type_Waq.a.a.getResources().getString(2131430452) + this.jdField_a_of_type_JavaLangString);
-    TroopChatPie.a(this.jdField_a_of_type_Waq.a).setOnClickListener(null);
+    paramView = ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(59)).a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppHotChatShare.a(paramView);
   }
 }
 

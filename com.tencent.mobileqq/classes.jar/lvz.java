@@ -1,12 +1,12 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lvz
   implements ActionSheet.OnButtonClickListener
 {
-  public lvz(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  public lvz(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -15,9 +15,9 @@ public class lvz
     }
     for (;;)
     {
-      ComponentHeaderTopicRecommend.a(this.a).dismiss();
+      OnTopicRecommendHeaderFollowClickListener.a(this.a).dismiss();
       return;
-      ComponentHeaderTopicRecommend.a(this.a, false);
+      OnTopicRecommendHeaderFollowClickListener.a(this.a, false);
     }
   }
 }

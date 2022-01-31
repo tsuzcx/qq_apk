@@ -1,33 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
 
-public class aden
-  extends TeamWorkFileImportObserver
+class aden
+  implements Runnable
 {
-  public aden(SimpleFilePresenter paramSimpleFilePresenter) {}
+  aden(adem paramadem) {}
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void run()
   {
-    super.a(paramTeamWorkFileImportInfo);
-    if (this.a.a != null) {
-      this.a.a.d();
-    }
-    if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d)) {
-      QQToast.a(((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getApp(), 1, 2131439134, 0).a();
-    }
-  }
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    super.a(paramString, paramTeamWorkFileImportInfo);
-    if (this.a.a != null) {
-      this.a.a.d();
-    }
+    this.a.a.a(this.a.a.a, true);
   }
 }
 

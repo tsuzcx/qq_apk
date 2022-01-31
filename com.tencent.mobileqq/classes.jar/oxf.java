@@ -1,40 +1,29 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
-class oxf
-  implements VideoCombineHelper.Callback
+public class oxf
+  extends Handler
 {
-  oxf(oxe paramoxe, VideoCombineHelper.CombineParams paramCombineParams) {}
+  public oxf(QRCardActivity paramQRCardActivity) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
-    }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
+    switch (paramMessage.what)
     {
-      if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a)
-      {
-        this.jdField_a_of_type_Oxe.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_Oxe);
-        return;
-      }
-      if (this.jdField_a_of_type_Oxe.jdField_a_of_type_JavaLangString != null)
-      {
-        l = System.currentTimeMillis();
-        this.jdField_a_of_type_Oxe.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a(paramString1, this.jdField_a_of_type_Oxe.jdField_a_of_type_JavaLangString, new oxg(this, l));
-        return;
-      }
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Oxe.a(localFile, this.jdField_a_of_type_Oxe.b, new oxi(this, l));
-      return;
     }
-    this.jdField_a_of_type_Oxe.d = paramString2;
-    this.jdField_a_of_type_Oxe.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Oxe);
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_Boolean) || (!(paramMessage.obj instanceof Bitmap)));
+      paramMessage = (Bitmap)paramMessage.obj;
+    } while (paramMessage == null);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
   }
 }
 

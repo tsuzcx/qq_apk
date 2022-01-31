@@ -1,48 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class tkl
-  implements Runnable
+  extends ContactBindObserver
 {
-  public tkl(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  public tkl(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    try
-    {
-      Object localObject = new HttpGet("http://qqwx.qq.com/s?aid=index&p=5&c=102120&vt=2&pf=0");
-      localObject = new DefaultHttpClient().execute((HttpUriRequest)localObject);
-      if (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200)
-      {
-        localObject = EntityUtils.toString(((HttpResponse)localObject).getEntity());
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          long l = new JSONObject(((String)localObject).substring(6, ((String)localObject).length() - 2)).getLong("size");
-          if (l > 0L)
-          {
-            this.a.a = l;
-            this.a.runOnUiThread(new tkp(this.a, 0));
-          }
-        }
-      }
-      return;
+    if (paramBoolean) {
+      PhoneUnityBindInfoActivity.a(this.a, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, 1, 2);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      localException.printStackTrace();
+      this.a.app.unRegistObserver(this);
+      this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
       return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
+      PhoneUnityBindInfoActivity.a(this.a, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout, 3, 1);
     }
   }
 }

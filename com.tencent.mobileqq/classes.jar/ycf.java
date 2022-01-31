@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.activity.selectmember.TroopListAdapter;
-
-class ycf
-  implements Runnable
+public class ycf
 {
-  ycf(yce paramyce) {}
-  
-  public void run()
-  {
-    this.a.a.a.notifyDataSetChanged();
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 

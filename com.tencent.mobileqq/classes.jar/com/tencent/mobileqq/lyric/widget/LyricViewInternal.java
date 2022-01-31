@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import aedc;
-import aedd;
+import aelm;
+import aeln;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -105,7 +105,7 @@ public class LyricViewInternal
     this.jdField_j_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new aedc(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aelm(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     paramAttributeSet = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
     if (Build.VERSION.SDK_INT < 13) {}
@@ -115,8 +115,8 @@ public class LyricViewInternal
       localObject = new DisplayMetrics();
       paramAttributeSet.getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
       this.jdField_a_of_type_Float = ((DisplayMetrics)localObject).density;
-      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131438309);
-      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438310);
+      this.jdField_a_of_type_JavaLangString = paramContext.getString(2131438329);
+      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438330);
       this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new AccelerateDecelerateInterpolator());
       return;
       localObject = new Point();
@@ -483,7 +483,7 @@ public class LyricViewInternal
   public void b()
   {
     this.jdField_c_of_type_Boolean = false;
-    post(new aedd(this));
+    post(new aeln(this));
   }
   
   public void c()

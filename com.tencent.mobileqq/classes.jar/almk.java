@@ -1,56 +1,40 @@
-import com.tencent.biz.bmqq.app.BmqqBusinessObserver;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
+import com.tencent.open.appcommon.now.download.IDownloadCallback;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class almk
-  extends BmqqBusinessObserver
+  implements Runnable
 {
-  public almk(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public almk(DownloadCenterImpl paramDownloadCenterImpl, ArrayList paramArrayList) {}
   
-  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo)
+  public void run()
   {
-    this.a.a();
-    if ((paramBoolean) && (paramBmqqUserSimpleInfo != null)) {
-      if (paramBmqqUserSimpleInfo.mBmqqUin.equals(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a)) {
-        if (!paramBmqqUserSimpleInfo.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo))
-        {
-          i = 1;
-          if (i == 0) {
-            break label80;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo = paramBmqqUserSimpleInfo;
-          this.a.c(0);
-        }
-      }
-    }
-    label80:
-    while (!QLog.isColorLevel())
+    LogUtility.a("DownloadCenterImpl", "getQueryDownloadAction enter");
+    ArrayList localArrayList = new ArrayList();
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
     {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return;
-            int i = 0;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not change");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not current uin");
-      return;
+      localObject = (DownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (DownloadManager.a().a((DownloadInfo)localObject)) {
+        localArrayList.add(localObject);
+      }
+      i += 1;
     }
-    QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver fail");
+    Object localObject = DownloadCenterImpl.a(this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadDownloadCenterImpl).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((IDownloadCallback)((Iterator)localObject).next()).a(localArrayList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     almk
  * JD-Core Version:    0.7.0.1
  */

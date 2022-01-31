@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.util.QLog;
-import zrt;
+import zye;
 
 public class UpdateFriend
   extends AsyncStep
@@ -20,7 +20,7 @@ public class UpdateFriend
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zrt(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zye(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     }
     ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(1)).a(0);
@@ -30,7 +30,7 @@ public class UpdateFriend
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zrt(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zye(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     }
     ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(1)).a(true);

@@ -1,21 +1,52 @@
-import com.tencent.mobileqq.vashealth.VideoCallBack;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import QQWalletPay.RespCheckChangePwdAuth;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QWalletAuthObserver;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.qphone.base.util.QLog;
 
 public class akkl
-  implements Runnable
+  extends Handler
 {
-  public akkl(VideoCallBack paramVideoCallBack, QQProgressDialog paramQQProgressDialog) {}
+  private akkl(JumpAction paramJumpAction) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在处理");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    if (paramMessage.what != 1) {
+      return;
+    }
+    if (JumpAction.a(this.a) != null)
+    {
+      JumpAction.a(this.a).a();
+      JumpAction.a(this.a).removeObserver(JumpAction.a(this.a));
+    }
+    if (paramMessage.arg1 != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("JumpAction", 2, "msf return error ");
+      }
+      JumpAction.a(this.a, 1);
+      return;
+    }
+    if ((paramMessage.obj instanceof RespCheckChangePwdAuth))
+    {
+      paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
+      if (paramMessage.retCode == 0)
+      {
+        JumpAction.b(this.a);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("JumpAction", 2, "server return error, errorCode: " + paramMessage.retCode + " errorMsg: " + paramMessage.retMsg);
+      }
+    }
+    JumpAction.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akkl
  * JD-Core Version:    0.7.0.1
  */

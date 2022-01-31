@@ -37,14 +37,14 @@ public class ARMapOpenKaquanDialog
   public ARMapOpenKaquanDialog(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, 2131624516);
-    setContentView(2130970220);
+    setContentView(2130970235);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363218));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369688));
-    this.b = ((TextView)findViewById(2131369689));
-    findViewById(2131363215).setOnClickListener(this);
-    findViewById(2131369572).setOnClickListener(this);
-    findViewById(2131369690).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363222));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369698));
+    this.b = ((TextView)findViewById(2131369699));
+    findViewById(2131363219).setOnClickListener(this);
+    findViewById(2131369582).setOnClickListener(this);
+    findViewById(2131369700).setOnClickListener(this);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
@@ -65,7 +65,7 @@ public class ARMapOpenKaquanDialog
     this.b.setText(paramString3);
     paramString1 = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
     if (this.b.getLineCount() == 1) {}
-    for (paramString1.topMargin = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560194));; paramString1.topMargin = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560195)))
+    for (paramString1.topMargin = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560195));; paramString1.topMargin = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560196)))
     {
       this.b.setLayoutParams(paramString1);
       return;

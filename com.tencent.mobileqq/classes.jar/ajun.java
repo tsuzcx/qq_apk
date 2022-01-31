@@ -1,15 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
-public class ajun
-  implements VerticalGallery.OnSelectViewDataUpdateListener
+class ajun
+  implements Runnable
 {
-  public ajun(WheelPickerLayout paramWheelPickerLayout) {}
+  ajun(ajum paramajum) {}
   
-  public void a(View paramView, int paramInt)
+  public void run()
   {
-    WheelPickerLayout.a(this.a, paramView, 1);
+    if (this.a.a.a == 3) {
+      this.a.a.a = 1;
+    }
+    this.a.a.g();
   }
 }
 

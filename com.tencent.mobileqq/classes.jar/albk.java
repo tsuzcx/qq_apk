@@ -1,90 +1,47 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import com.tencent.biz.widgets.ShareAioResultDialog;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
+import java.lang.ref.WeakReference;
 
 public class albk
-  implements HttpWebCgiAsyncTask.Callback
+  extends Handler
 {
-  public albk(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  private WeakReference a;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public albk(CustomedTabWidget paramCustomedTabWidget)
   {
-    switch (paramInt)
-    {
+    this.a = new WeakReference(paramCustomedTabWidget);
+  }
+  
+  public void handleMessage(Message arg1)
+  {
+    CustomedTabWidget localCustomedTabWidget = (CustomedTabWidget)this.a.get();
+    if (localCustomedTabWidget == null) {
+      return;
     }
-    do
+    if (localCustomedTabWidget.jdField_a_of_type_Float < 0.0F) {
+      localCustomedTabWidget.invalidate((int)(localCustomedTabWidget.b.left + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.top, localCustomedTabWidget.b.right, localCustomedTabWidget.b.bottom);
+    }
+    synchronized (localCustomedTabWidget.jdField_a_of_type_Albk)
     {
-      for (;;)
+      Rect localRect = localCustomedTabWidget.b;
+      localRect.left = ((int)(localRect.left + localCustomedTabWidget.jdField_a_of_type_Float));
+      localRect = localCustomedTabWidget.b;
+      localRect.right = ((int)(localRect.right + localCustomedTabWidget.jdField_a_of_type_Float));
+      if ((localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.left - localCustomedTabWidget.b.left) / localCustomedTabWidget.jdField_a_of_type_Float >= 1.0F)
       {
+        sendEmptyMessage(0);
         return;
-        if (paramJSONObject != null) {
-          try
-          {
-            paramJSONObject = (JSONObject)paramJSONObject.get("data");
-            if (paramJSONObject != null)
-            {
-              paramJSONObject = (JSONObject)paramJSONObject.get("key");
-              if (paramJSONObject != null)
-              {
-                paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
-                paramBundle = (String)paramJSONObject.get("retMsg");
-                if (paramInt != 0) {
-                  break label336;
-                }
-                if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog == null)
-                {
-                  this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this.a);
-                  this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131428667));
-                  this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131428668, new Object[] { this.a.d }), this.a);
-                  this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a);
-                }
-                if (!this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.isShowing()) {
-                  this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
-                }
-                ReportController.b(this.a.app, "CliOper", "", "", "0x80084B1", "0x80084B1", 0, 0, "", "", "", "");
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("BindGroupConfirmActivity", 2, "bindGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
-                  return;
-                }
-              }
-            }
-          }
-          catch (Exception paramJSONObject)
-          {
-            BindGroupConfirmActivity.a(this.a, this.a.getActivity().getResources().getString(2131433688));
-          }
-        }
+        localCustomedTabWidget.invalidate(localCustomedTabWidget.b.left, localCustomedTabWidget.b.top, (int)(localCustomedTabWidget.b.right + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.bottom);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupConfirmActivity", 2, "bindGroup onResult " + paramJSONObject.toString());
-    return;
-    label336:
-    paramJSONObject = this.a.getActivity().getResources().getString(2131433688);
-    switch (paramInt)
-    {
     }
-    for (;;)
-    {
-      BindGroupConfirmActivity.a(this.a, paramJSONObject);
-      break;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131433691);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131433692);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131433694);
-    }
+    localObject.b.set(localObject.jdField_a_of_type_AndroidGraphicsRect.left, localObject.jdField_a_of_type_AndroidGraphicsRect.top, localObject.jdField_a_of_type_AndroidGraphicsRect.right, localObject.jdField_a_of_type_AndroidGraphicsRect.bottom);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     albk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-class abgh
-  implements DialogInterface.OnClickListener
+public class abgh
+  implements Runnable
 {
-  abgh(abgg paramabgg) {}
+  public abgh(ARMapActivity paramARMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = String.format("https://mma.qq.com/poi_feedback/index.html?_wv=1&poiid=%s", new Object[] { String.valueOf(this.a.jdField_a_of_type_Long) });
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramDialogInterface);
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a.startActivity(localIntent);
+    this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine.updateLocationNative(this.a.jdField_a_of_type_Double, this.a.b, "", 0.0D, 1, "", 0, "");
+    ARMapEngine localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
+    ARMapEngine.nativeRequestPOIList();
+    localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
+    ARMapEngine.nativeRequestLbsPOIListByPid("");
+    ARMapActivity.b(this.a);
   }
 }
 

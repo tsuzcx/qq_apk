@@ -1,24 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.LangTextItem;
-
-public class anoe
-  implements annx
+public abstract interface anoe
 {
-  public anoe(LangTextItem paramLangTextItem) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    if (paramInt == 0) {
-      return TroopFileUtils.b(paramString);
-    }
-    return "";
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anoe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,49 @@
-import android.database.Cursor;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.qphone.base.util.QLog;
 
-public class rzy
+public final class rzy
   implements Runnable
 {
-  public rzy(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, int paramInt1, int paramInt2, String paramString) {}
+  public rzy(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
-    Object localObject1;
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      localObject1 = "ORDER BY time asc , longMsgIndex asc";
+    long l2 = 0L;
+    Object localObject = (MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249);
+    if ((localObject == null) || (((MedalWallMng)localObject).a())) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatActivityFacade", 2, "insertFriendMedalNewsIfNeeded strongRemindOff");
+      }
     }
+    label119:
+    label126:
     for (;;)
     {
-      int i = this.b;
-      label68:
-      Object localObject3;
-      String str;
-      if (this.b < this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.l)
+      return;
+      localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      long l1;
+      if (localObject == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.d = true;
-        localObject1 = "( msgtype " + MsgProxyUtils.b() + " and isValid=1 ) " + (String)localObject1 + " limit " + i + "," + String.valueOf(8);
-        localObject3 = MessageRecord.getTableName(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        str = MessageRecord.getOldTableName(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      }
-      try
-      {
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.d) {}
-        for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a((String)localObject3, str, (String)localObject1);; localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a((String)localObject3, (String)localObject1))
-        {
-          localObject3 = localObject1;
-          if (localObject1 != null)
-          {
-            ((Cursor)localObject1).getCount();
-            localObject3 = localObject1;
-          }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(8);
-          ((Message)localObject1).obj = localObject3;
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject1);
-          return;
-          localObject1 = "ORDER BY shmsgseq";
-          break;
-          localObject1 = "ORDER BY shmsgseq";
-          break;
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.d = false;
-          i = this.b - this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.l;
-          break label68;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager == null) {
-            break label306;
-          }
+        l1 = 0L;
+        if (localObject != null) {
+          break label119;
         }
       }
-      catch (Exception localException)
+      for (;;)
       {
-        for (;;)
-        {
-          localObject3 = null;
-          continue;
-          label306:
-          Object localObject2 = null;
+        if (l1 <= l2) {
+          break label126;
         }
+        ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l2);
+        return;
+        l1 = ((ExtensionInfo)localObject).medalUpdateTimestamp;
+        break;
+        l2 = ((ExtensionInfo)localObject).lastMedalTimestamp;
       }
     }
   }

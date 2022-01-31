@@ -1,16 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.biz.game.MSFToWebViewConnector;
 
 public class koq
-  implements DialogInterface.OnDismissListener
 {
-  public koq(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public int a;
+  public long a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.d = false;
-  }
+  private koq(MSFToWebViewConnector paramMSFToWebViewConnector) {}
 }
 
 

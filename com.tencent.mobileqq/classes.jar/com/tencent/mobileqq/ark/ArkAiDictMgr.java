@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark;
 
-import aarz;
-import aasb;
+import aayt;
+import aayv;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -60,7 +60,7 @@ public class ArkAiDictMgr
       ArkAppCenter.b("ArkApp.Dict", "reloadWordData, sIsSoLoaded is false");
       return;
     }
-    ArkRecommendLogic.a().post(new aasb(paramQQAppInterface));
+    ArkRecommendLogic.a().post(new aayv(paramQQAppInterface));
   }
   
   private static boolean b(QQAppInterface paramQQAppInterface)
@@ -144,7 +144,7 @@ public class ArkAiDictMgr
     } while (!QLog.isColorLevel());
     QLog.i("ark.ai", 2, "initWordData, loadWordSegmentSo failed.");
     return;
-    ArkRecommendLogic.a().post(new aarz(this));
+    ArkRecommendLogic.a().post(new aayt(this));
   }
   
   public void d()

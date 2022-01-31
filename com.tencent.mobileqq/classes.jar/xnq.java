@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView.CircleHolder;
+import java.util.Iterator;
+import java.util.List;
 
 public class xnq
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xnq(EditLocalVideoActivity paramEditLocalVideoActivity, int paramInt1, int paramInt2) {}
+  public xnq(RecordMicView paramRecordMicView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    try
+    float f = paramValueAnimator.getAnimatedFraction();
+    paramValueAnimator = RecordMicView.a(this.a).iterator();
+    while (paramValueAnimator.hasNext())
     {
-      if ((EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).isPlaying()) && (EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity))) {
-        EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).pause();
-      }
-      if (EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity) == 0) {
-        EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).setPlayDuration(this.jdField_a_of_type_Int, this.b - this.jdField_a_of_type_Int);
-      }
-      return;
+      RecordMicView.CircleHolder localCircleHolder = (RecordMicView.CircleHolder)paramValueAnimator.next();
+      localCircleHolder.jdField_c_of_type_Float = (localCircleHolder.f + (localCircleHolder.g - localCircleHolder.f) * f);
+      localCircleHolder.d = (localCircleHolder.h + (localCircleHolder.i - localCircleHolder.h) * f);
+      localCircleHolder.e = (localCircleHolder.j + (localCircleHolder.k - localCircleHolder.j) * f);
+      localCircleHolder.a = (localCircleHolder.b + (int)((localCircleHolder.jdField_c_of_type_Int - localCircleHolder.b) * f));
     }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      QLog.w("EditLocalVideoActivity", 2, "Illegal state: onFramesClipChanged");
-    }
+    this.a.invalidate();
   }
 }
 

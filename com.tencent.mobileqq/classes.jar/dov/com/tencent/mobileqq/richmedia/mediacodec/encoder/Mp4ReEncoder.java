@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.opengl.Matrix;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
 import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
@@ -17,6 +18,7 @@ import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodeConfig;
 import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
 import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWVideoDecoder;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImageFilterGroup;
 import java.util.ArrayList;
@@ -37,6 +39,7 @@ public class Mp4ReEncoder
   private DecodeConfig jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig;
   private HWVideoDecoder jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWVideoDecoder = new HWVideoDecoder();
   private QQFilterRenderManager jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager;
+  private TransferData jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData;
   private Mp4ReEncoder.EncodeFilterRender jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecEncoderMp4ReEncoder$EncodeFilterRender;
   private GpuImageFilterGroup jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup;
   private Object jdField_a_of_type_JavaLangObject = new Object();
@@ -60,14 +63,14 @@ public class Mp4ReEncoder
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESBaseFilter.c();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESBaseFilter.d();
     if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup.c();
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup.d();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter.c();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter.d();
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.c();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.d();
   }
   
   /* Error */
@@ -75,181 +78,181 @@ public class Mp4ReEncoder
   {
     // Byte code:
     //   0: aload_0
-    //   1: ldc 96
-    //   3: invokestatic 101	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:a	(I)I
-    //   6: putfield 103	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_c_of_type_Int	I
+    //   1: ldc 97
+    //   3: invokestatic 102	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:a	(I)I
+    //   6: putfield 104	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_c_of_type_Int	I
     //   9: aload_0
-    //   10: new 105	com/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer
+    //   10: new 106	com/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer
     //   13: dup
     //   14: aload_0
-    //   15: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   18: getfield 111	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
+    //   15: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   18: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
     //   21: aload_0
-    //   22: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   25: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
-    //   28: ldc 113
-    //   30: invokespecial 116	com/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer:<init>	(III)V
-    //   33: putfield 118	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer;
+    //   22: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   25: getfield 113	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
+    //   28: ldc 114
+    //   30: invokespecial 117	com/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer:<init>	(III)V
+    //   33: putfield 119	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer;
     //   36: aload_0
-    //   37: new 105	com/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer
+    //   37: new 106	com/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer
     //   40: dup
     //   41: aload_0
-    //   42: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   45: getfield 111	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
+    //   42: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   45: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
     //   48: aload_0
-    //   49: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   52: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
-    //   55: ldc 113
-    //   57: invokespecial 116	com/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer:<init>	(III)V
-    //   60: putfield 120	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer;
+    //   49: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   52: getfield 113	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
+    //   55: ldc 114
+    //   57: invokespecial 117	com/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer:<init>	(III)V
+    //   60: putfield 121	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/RenderBuffer;
     //   63: aload_0
     //   64: bipush 102
-    //   66: invokestatic 125	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
-    //   69: checkcast 74	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter
-    //   72: putfield 72	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter;
+    //   66: invokestatic 126	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
+    //   69: checkcast 75	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter
+    //   72: putfield 73	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter;
     //   75: aload_0
-    //   76: getfield 72	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter;
+    //   76: getfield 73	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter;
     //   79: aload_0
-    //   80: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   83: getfield 111	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
+    //   80: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   83: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
     //   86: aload_0
-    //   87: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   90: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
-    //   93: invokevirtual 128	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter:a	(II)V
+    //   87: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   90: getfield 113	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
+    //   93: invokevirtual 129	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter:a	(II)V
     //   96: aload_0
-    //   97: getfield 72	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter;
-    //   100: invokevirtual 130	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter:a	()V
+    //   97: getfield 73	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter;
+    //   100: invokevirtual 131	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUOESBaseFilter:a	()V
     //   103: aload_0
-    //   104: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   107: getfield 132	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:f	I
-    //   110: invokestatic 135	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Z
+    //   104: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   107: getfield 133	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:f	I
+    //   110: invokestatic 136	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Z
     //   113: ifne +13 -> 126
     //   116: aload_0
-    //   117: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   120: getfield 138	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:c	Ljava/lang/String;
+    //   117: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   120: getfield 139	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:c	Ljava/lang/String;
     //   123: ifnull +110 -> 233
     //   126: aload_0
-    //   127: new 80	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup
+    //   127: new 81	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup
     //   130: dup
-    //   131: invokespecial 139	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup:<init>	()V
-    //   134: putfield 78	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup	Ldov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup;
+    //   131: invokespecial 140	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup:<init>	()V
+    //   134: putfield 79	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup	Ldov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup;
     //   137: aload_0
-    //   138: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   141: getfield 132	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:f	I
-    //   144: invokestatic 135	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Z
+    //   138: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   141: getfield 133	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:f	I
+    //   144: invokestatic 136	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Z
     //   147: ifeq +20 -> 167
     //   150: aload_0
-    //   151: getfield 78	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup	Ldov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup;
+    //   151: getfield 79	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup	Ldov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup;
     //   154: aload_0
-    //   155: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   158: getfield 132	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:f	I
-    //   161: invokestatic 125	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
-    //   164: invokevirtual 142	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup:a	(Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;)V
+    //   155: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   158: getfield 133	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:f	I
+    //   161: invokestatic 126	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
+    //   164: invokevirtual 143	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup:a	(Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;)V
     //   167: aload_0
-    //   168: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   171: getfield 138	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:c	Ljava/lang/String;
+    //   168: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   171: getfield 139	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:c	Ljava/lang/String;
     //   174: ifnull +31 -> 205
     //   177: bipush 106
-    //   179: invokestatic 125	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
+    //   179: invokestatic 126	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
     //   182: astore_1
     //   183: aload_1
-    //   184: checkcast 144	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUImagePixelationFilter
+    //   184: checkcast 145	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUImagePixelationFilter
     //   187: aload_0
-    //   188: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   191: getfield 138	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:c	Ljava/lang/String;
-    //   194: invokevirtual 147	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUImagePixelationFilter:b	(Ljava/lang/String;)V
+    //   188: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   191: getfield 139	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:c	Ljava/lang/String;
+    //   194: invokevirtual 148	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUImagePixelationFilter:b	(Ljava/lang/String;)V
     //   197: aload_0
-    //   198: getfield 78	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup	Ldov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup;
+    //   198: getfield 79	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup	Ldov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup;
     //   201: aload_1
-    //   202: invokevirtual 142	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup:a	(Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;)V
+    //   202: invokevirtual 143	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup:a	(Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;)V
     //   205: aload_0
-    //   206: getfield 78	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup	Ldov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup;
+    //   206: getfield 79	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup	Ldov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup;
     //   209: aload_0
-    //   210: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   213: getfield 111	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
+    //   210: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   213: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
     //   216: aload_0
-    //   217: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   220: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
-    //   223: invokevirtual 148	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup:a	(II)V
+    //   217: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   220: getfield 113	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
+    //   223: invokevirtual 149	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup:a	(II)V
     //   226: aload_0
-    //   227: getfield 78	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup	Ldov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup;
-    //   230: invokevirtual 149	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup:a	()V
+    //   227: getfield 79	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup	Ldov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup;
+    //   230: invokevirtual 150	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/GpuImageFilterGroup:a	()V
     //   233: aload_0
-    //   234: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   237: getfield 151	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   234: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   237: getfield 152	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   240: astore_1
     //   241: aload_1
     //   242: ifnull +114 -> 356
     //   245: aload_0
-    //   246: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   249: getfield 151	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   252: invokestatic 157	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   246: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   249: getfield 152	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   252: invokestatic 158	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   255: astore_2
     //   256: aload_0
-    //   257: getfield 159	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;
-    //   260: getfield 163	com/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig:jdField_c_of_type_Boolean	Z
-    //   263: ifeq +283 -> 546
+    //   257: getfield 160	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;
+    //   260: getfield 164	com/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig:jdField_c_of_type_Boolean	Z
+    //   263: ifeq +399 -> 662
     //   266: aload_2
     //   267: astore_1
     //   268: aload_2
-    //   269: invokevirtual 169	android/graphics/Bitmap:getWidth	()I
+    //   269: invokevirtual 170	android/graphics/Bitmap:getWidth	()I
     //   272: aload_2
-    //   273: invokevirtual 172	android/graphics/Bitmap:getHeight	()I
+    //   273: invokevirtual 173	android/graphics/Bitmap:getHeight	()I
     //   276: if_icmple +10 -> 286
     //   279: aload_2
-    //   280: ldc 173
-    //   282: invokestatic 178	com/tencent/biz/qqstory/utils/UIUtils:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
+    //   280: ldc 174
+    //   282: invokestatic 179	com/tencent/biz/qqstory/utils/UIUtils:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
     //   285: astore_1
     //   286: aload_0
     //   287: sipush 3553
     //   290: aload_1
-    //   291: invokestatic 181	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:a	(ILandroid/graphics/Bitmap;)I
-    //   294: putfield 58	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_d_of_type_Int	I
+    //   291: invokestatic 182	com/tencent/mobileqq/richmedia/mediacodec/utils/GlUtil:a	(ILandroid/graphics/Bitmap;)I
+    //   294: putfield 59	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_d_of_type_Int	I
     //   297: aload_0
     //   298: aload_1
-    //   299: invokevirtual 169	android/graphics/Bitmap:getWidth	()I
-    //   302: putfield 183	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_e_of_type_Int	I
+    //   299: invokevirtual 170	android/graphics/Bitmap:getWidth	()I
+    //   302: putfield 184	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_e_of_type_Int	I
     //   305: aload_0
     //   306: aload_1
-    //   307: invokevirtual 172	android/graphics/Bitmap:getHeight	()I
-    //   310: putfield 184	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:f	I
+    //   307: invokevirtual 173	android/graphics/Bitmap:getHeight	()I
+    //   310: putfield 185	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:f	I
     //   313: aload_1
-    //   314: invokevirtual 187	android/graphics/Bitmap:recycle	()V
+    //   314: invokevirtual 188	android/graphics/Bitmap:recycle	()V
     //   317: aload_0
-    //   318: new 85	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter
+    //   318: new 86	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter
     //   321: dup
-    //   322: invokespecial 188	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter:<init>	()V
-    //   325: putfield 83	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter;
+    //   322: invokespecial 189	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter:<init>	()V
+    //   325: putfield 84	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter;
     //   328: aload_0
-    //   329: getfield 83	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter;
+    //   329: getfield 84	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter;
     //   332: aload_0
-    //   333: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   336: getfield 111	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
+    //   333: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   336: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
     //   339: aload_0
-    //   340: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   343: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
-    //   346: invokevirtual 189	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter:a	(II)V
+    //   340: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   343: getfield 113	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
+    //   346: invokevirtual 190	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter:a	(II)V
     //   349: aload_0
-    //   350: getfield 83	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter;
-    //   353: invokevirtual 190	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter:a	()V
+    //   350: getfield 84	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter;
+    //   353: invokevirtual 191	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUAlphaBlendFilter:a	()V
     //   356: aload_0
     //   357: bipush 101
-    //   359: invokestatic 125	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
-    //   362: putfield 88	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
+    //   359: invokestatic 126	dov/com/tencent/mobileqq/richmedia/mediacodec/renderer/FilterFactory:a	(I)Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
+    //   362: putfield 89	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
     //   365: aload_0
-    //   366: getfield 88	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
+    //   366: getfield 89	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
     //   369: aload_0
-    //   370: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   373: getfield 111	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
+    //   370: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   373: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
     //   376: aload_0
-    //   377: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   380: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
-    //   383: invokevirtual 191	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter:a	(II)V
+    //   377: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   380: getfield 113	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
+    //   383: invokevirtual 192	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter:a	(II)V
     //   386: aload_0
-    //   387: getfield 88	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
-    //   390: invokevirtual 192	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter:a	()V
+    //   387: getfield 89	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter	Lcom/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter;
+    //   390: invokevirtual 193	com/tencent/mobileqq/richmedia/mediacodec/renderer/GPUBaseFilter:a	()V
     //   393: aload_0
-    //   394: new 194	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager
+    //   394: new 195	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager
     //   397: dup
     //   398: iconst_2
     //   399: newarray int
@@ -261,142 +264,205 @@ public class Mp4ReEncoder
     //   407: iconst_1
     //   408: bipush 110
     //   410: iastore
-    //   411: invokespecial 197	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:<init>	([I)V
-    //   414: putfield 199	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
+    //   411: invokespecial 198	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:<init>	([I)V
+    //   414: putfield 200	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
     //   417: aload_0
-    //   418: getfield 201	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   418: getfield 202	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   421: ifnull +24 -> 445
     //   424: aload_0
-    //   425: getfield 201	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   428: invokevirtual 206	java/util/ArrayList:size	()I
+    //   425: getfield 202	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   428: invokevirtual 207	java/util/ArrayList:size	()I
     //   431: ifle +14 -> 445
     //   434: aload_0
-    //   435: getfield 199	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
+    //   435: getfield 200	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
     //   438: aload_0
-    //   439: getfield 201	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   442: invokevirtual 209	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:b	(Ljava/util/List;)V
+    //   439: getfield 202	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   442: invokevirtual 210	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:b	(Ljava/util/List;)V
     //   445: aload_0
-    //   446: getfield 211	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   446: getfield 212	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   449: ifnull +14 -> 463
     //   452: aload_0
-    //   453: getfield 199	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
+    //   453: getfield 200	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
     //   456: aload_0
-    //   457: getfield 211	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   460: invokevirtual 214	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:a	(Ljava/util/ArrayList;)V
+    //   457: getfield 212	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   460: invokevirtual 215	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:a	(Ljava/util/ArrayList;)V
     //   463: aload_0
-    //   464: getfield 199	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
+    //   464: getfield 200	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
     //   467: aload_0
-    //   468: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   471: getfield 111	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
+    //   468: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   471: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
     //   474: aload_0
-    //   475: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   478: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
+    //   475: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   478: getfield 113	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
     //   481: aload_0
-    //   482: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   485: getfield 111	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
+    //   482: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   485: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_a_of_type_Int	I
     //   488: aload_0
-    //   489: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   492: getfield 112	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
-    //   495: invokevirtual 217	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:b	(IIII)V
+    //   489: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   492: getfield 113	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_Int	I
+    //   495: invokevirtual 218	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:b	(IIII)V
     //   498: aload_0
-    //   499: getfield 199	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
+    //   499: getfield 200	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
     //   502: aload_0
-    //   503: getfield 159	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;
-    //   506: getfield 218	com/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig:jdField_a_of_type_Long	J
-    //   509: invokevirtual 221	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:a	(J)V
+    //   503: getfield 160	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;
+    //   506: getfield 219	com/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig:jdField_a_of_type_Long	J
+    //   509: invokevirtual 222	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:a	(J)V
     //   512: aload_0
-    //   513: getfield 68	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWVideoDecoder	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWVideoDecoder;
-    //   516: aload_0
-    //   517: getfield 159	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;
-    //   520: aload_0
-    //   521: getfield 103	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_c_of_type_Int	I
-    //   524: aload_0
-    //   525: aload_0
-    //   526: invokevirtual 224	com/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWVideoDecoder:a	(Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;ILandroid/graphics/SurfaceTexture$OnFrameAvailableListener;Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWDecodeListener;)V
-    //   529: aload_0
-    //   530: getfield 226	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeListener	Lcom/tencent/mobileqq/richmedia/mediacodec/recorder/HWEncodeListener;
-    //   533: ifnull +12 -> 545
-    //   536: aload_0
-    //   537: getfield 226	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeListener	Lcom/tencent/mobileqq/richmedia/mediacodec/recorder/HWEncodeListener;
-    //   540: invokeinterface 227 1 0
-    //   545: return
-    //   546: aload_2
-    //   547: sipush 360
-    //   550: aload_0
-    //   551: getfield 159	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;
-    //   554: getfield 228	com/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig:jdField_c_of_type_Int	I
-    //   557: isub
-    //   558: i2f
-    //   559: invokestatic 178	com/tencent/biz/qqstory/utils/UIUtils:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
-    //   562: astore_1
-    //   563: goto -277 -> 286
-    //   566: astore_1
-    //   567: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   570: ifeq +35 -> 605
-    //   573: ldc 236
-    //   575: iconst_2
-    //   576: new 238	java/lang/StringBuilder
-    //   579: dup
-    //   580: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   583: ldc 241
-    //   585: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   588: aload_0
-    //   589: getfield 107	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
-    //   592: getfield 151	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   595: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   598: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   601: aload_1
-    //   602: invokestatic 252	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   605: aload_0
-    //   606: iconst_1
-    //   607: aload_1
-    //   608: invokevirtual 256	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:a_	(ILjava/lang/Throwable;)V
-    //   611: return
-    //   612: astore_1
-    //   613: aload_0
-    //   614: iconst_4
-    //   615: aload_1
-    //   616: invokevirtual 256	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:a_	(ILjava/lang/Throwable;)V
-    //   619: ldc 236
-    //   621: iconst_1
-    //   622: new 238	java/lang/StringBuilder
-    //   625: dup
-    //   626: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   629: ldc_w 258
-    //   632: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   635: aload_1
-    //   636: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   639: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   642: invokestatic 264	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   645: return
+    //   513: getfield 224	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData	Lcom/tencent/mobileqq/shortvideo/videotransfer/TransferData;
+    //   516: ifnull +112 -> 628
+    //   519: aconst_null
+    //   520: astore_1
+    //   521: aload_0
+    //   522: getfield 200	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
+    //   525: sipush 160
+    //   528: invokevirtual 226	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:b	(I)Z
+    //   531: ifne +11 -> 542
+    //   534: aload_0
+    //   535: getfield 200	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
+    //   538: invokevirtual 229	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:a	()Lcom/tencent/mobileqq/shortvideo/filter/QQTransferFilter;
+    //   541: astore_1
+    //   542: aload_1
+    //   543: astore_2
+    //   544: aload_1
+    //   545: ifnonnull +57 -> 602
+    //   548: aload_0
+    //   549: getfield 200	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager	Lcom/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager;
+    //   552: sipush 160
+    //   555: invokevirtual 232	com/tencent/mobileqq/shortvideo/filter/QQFilterRenderManager:a	(I)Ljava/util/List;
+    //   558: astore_3
+    //   559: aload_1
+    //   560: astore_2
+    //   561: aload_3
+    //   562: ifnull +40 -> 602
+    //   565: aload_1
+    //   566: astore_2
+    //   567: aload_3
+    //   568: invokeinterface 235 1 0
+    //   573: ifle +29 -> 602
+    //   576: aload_1
+    //   577: astore_2
+    //   578: aload_3
+    //   579: iconst_0
+    //   580: invokeinterface 239 2 0
+    //   585: instanceof 241
+    //   588: ifeq +14 -> 602
+    //   591: aload_3
+    //   592: iconst_0
+    //   593: invokeinterface 239 2 0
+    //   598: checkcast 241	com/tencent/mobileqq/shortvideo/filter/QQTransferFilter
+    //   601: astore_2
+    //   602: aload_2
+    //   603: ifnull +25 -> 628
+    //   606: aload_2
+    //   607: aload_0
+    //   608: getfield 224	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData	Lcom/tencent/mobileqq/shortvideo/videotransfer/TransferData;
+    //   611: invokevirtual 244	com/tencent/mobileqq/shortvideo/filter/QQTransferFilter:a	(Lcom/tencent/mobileqq/shortvideo/videotransfer/TransferData;)V
+    //   614: aload_2
+    //   615: aload_0
+    //   616: getfield 160	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;
+    //   619: getfield 245	com/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig:jdField_a_of_type_Int	I
+    //   622: invokestatic 248	com/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWVideoDecoder:a	(I)F
+    //   625: invokevirtual 251	com/tencent/mobileqq/shortvideo/filter/QQTransferFilter:a	(F)V
+    //   628: aload_0
+    //   629: getfield 69	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWVideoDecoder	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWVideoDecoder;
+    //   632: aload_0
+    //   633: getfield 160	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;
+    //   636: aload_0
+    //   637: getfield 104	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_c_of_type_Int	I
+    //   640: aload_0
+    //   641: aload_0
+    //   642: invokevirtual 254	com/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWVideoDecoder:a	(Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;ILandroid/graphics/SurfaceTexture$OnFrameAvailableListener;Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/HWDecodeListener;)V
+    //   645: aload_0
+    //   646: getfield 256	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeListener	Lcom/tencent/mobileqq/richmedia/mediacodec/recorder/HWEncodeListener;
+    //   649: ifnull +12 -> 661
+    //   652: aload_0
+    //   653: getfield 256	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeListener	Lcom/tencent/mobileqq/richmedia/mediacodec/recorder/HWEncodeListener;
+    //   656: invokeinterface 257 1 0
+    //   661: return
+    //   662: aload_2
+    //   663: sipush 360
+    //   666: aload_0
+    //   667: getfield 160	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig;
+    //   670: getfield 258	com/tencent/mobileqq/richmedia/mediacodec/videodecoder/DecodeConfig:jdField_c_of_type_Int	I
+    //   673: isub
+    //   674: i2f
+    //   675: invokestatic 179	com/tencent/biz/qqstory/utils/UIUtils:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
+    //   678: astore_1
+    //   679: goto -393 -> 286
+    //   682: astore_1
+    //   683: invokestatic 264	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   686: ifeq +37 -> 723
+    //   689: ldc_w 266
+    //   692: iconst_2
+    //   693: new 268	java/lang/StringBuilder
+    //   696: dup
+    //   697: invokespecial 269	java/lang/StringBuilder:<init>	()V
+    //   700: ldc_w 271
+    //   703: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   706: aload_0
+    //   707: getfield 108	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig	Lcom/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig;
+    //   710: getfield 152	com/tencent/mobileqq/richmedia/mediacodec/encoder/EncodeConfig:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   713: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   716: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   719: aload_1
+    //   720: invokestatic 282	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   723: aload_0
+    //   724: iconst_1
+    //   725: aload_1
+    //   726: invokevirtual 286	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:a_	(ILjava/lang/Throwable;)V
+    //   729: return
+    //   730: astore_1
+    //   731: aload_0
+    //   732: iconst_4
+    //   733: aload_1
+    //   734: invokevirtual 286	dov/com/tencent/mobileqq/richmedia/mediacodec/encoder/Mp4ReEncoder:a_	(ILjava/lang/Throwable;)V
+    //   737: ldc_w 266
+    //   740: iconst_1
+    //   741: new 268	java/lang/StringBuilder
+    //   744: dup
+    //   745: invokespecial 269	java/lang/StringBuilder:<init>	()V
+    //   748: ldc_w 288
+    //   751: invokevirtual 275	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   754: aload_1
+    //   755: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   758: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   761: invokestatic 294	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   764: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	646	0	this	Mp4ReEncoder
-    //   182	381	1	localObject	Object
-    //   566	42	1	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   612	24	1	localException	Exception
-    //   255	292	2	localBitmap	android.graphics.Bitmap
+    //   0	765	0	this	Mp4ReEncoder
+    //   182	497	1	localObject1	Object
+    //   682	44	1	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   730	25	1	localException	Exception
+    //   255	408	2	localObject2	Object
+    //   558	34	3	localList	java.util.List
     // Exception table:
     //   from	to	target	type
-    //   245	266	566	java/lang/OutOfMemoryError
-    //   268	286	566	java/lang/OutOfMemoryError
-    //   286	317	566	java/lang/OutOfMemoryError
-    //   546	563	566	java/lang/OutOfMemoryError
-    //   0	126	612	java/lang/Exception
-    //   126	167	612	java/lang/Exception
-    //   167	205	612	java/lang/Exception
-    //   205	233	612	java/lang/Exception
-    //   233	241	612	java/lang/Exception
-    //   245	266	612	java/lang/Exception
-    //   268	286	612	java/lang/Exception
-    //   286	317	612	java/lang/Exception
-    //   317	356	612	java/lang/Exception
-    //   356	445	612	java/lang/Exception
-    //   445	463	612	java/lang/Exception
-    //   463	545	612	java/lang/Exception
-    //   546	563	612	java/lang/Exception
-    //   567	605	612	java/lang/Exception
-    //   605	611	612	java/lang/Exception
+    //   245	266	682	java/lang/OutOfMemoryError
+    //   268	286	682	java/lang/OutOfMemoryError
+    //   286	317	682	java/lang/OutOfMemoryError
+    //   662	679	682	java/lang/OutOfMemoryError
+    //   0	126	730	java/lang/Exception
+    //   126	167	730	java/lang/Exception
+    //   167	205	730	java/lang/Exception
+    //   205	233	730	java/lang/Exception
+    //   233	241	730	java/lang/Exception
+    //   245	266	730	java/lang/Exception
+    //   268	286	730	java/lang/Exception
+    //   286	317	730	java/lang/Exception
+    //   317	356	730	java/lang/Exception
+    //   356	445	730	java/lang/Exception
+    //   445	463	730	java/lang/Exception
+    //   463	519	730	java/lang/Exception
+    //   521	542	730	java/lang/Exception
+    //   548	559	730	java/lang/Exception
+    //   567	576	730	java/lang/Exception
+    //   578	602	730	java/lang/Exception
+    //   606	628	730	java/lang/Exception
+    //   628	661	730	java/lang/Exception
+    //   662	679	730	java/lang/Exception
+    //   683	723	730	java/lang/Exception
+    //   723	729	730	java/lang/Exception
   }
   
   public void a(int paramInt, Throwable paramThrowable)
@@ -448,7 +514,7 @@ public class Mp4ReEncoder
       GlUtil.a(this.jdField_d_of_type_Int);
       this.jdField_d_of_type_Int = -1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.o();
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.q();
     if (this.jdField_c_of_type_Int != -1)
     {
       GlUtil.a(this.jdField_c_of_type_Int);
@@ -478,6 +544,15 @@ public class Mp4ReEncoder
   {
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeListener.b();
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData = new TransferData();
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.a(paramString);
     }
   }
   
@@ -548,7 +623,7 @@ public class Mp4ReEncoder
     if (QLog.isColorLevel()) {
       QLog.d("Mp4ReEncoder", 2, "onFrameAvailable wait");
     }
-    label833:
+    label844:
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaLangObject)
@@ -594,7 +669,7 @@ public class Mp4ReEncoder
             paramSurfaceTexture.b();
           }
           if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup == null) {
-            break label833;
+            break label844;
           }
           paramSurfaceTexture.c();
           this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImageFilterGroup.a(paramSurfaceTexture.a(), null, null);
@@ -644,6 +719,7 @@ public class Mp4ReEncoder
           return;
         }
       }
+      paramSurfaceTexture.a();
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_JavaLangObject.notifyAll();
       if (QLog.isColorLevel()) {

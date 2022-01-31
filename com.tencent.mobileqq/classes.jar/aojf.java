@@ -1,14 +1,16 @@
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
+import java.io.File;
+import java.io.FileFilter;
 
 public class aojf
-  implements Runnable
+  implements FileFilter
 {
-  public aojf(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public aojf(NormalFacePackage paramNormalFacePackage) {}
   
-  public void run()
+  public boolean accept(File paramFile)
   {
-    this.a.b.setText(this.a.i);
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
   }
 }
 

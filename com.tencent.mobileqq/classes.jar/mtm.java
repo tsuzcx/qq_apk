@@ -1,24 +1,26 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.telephony.PhoneStateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
+import com.tencent.qphone.base.util.QLog;
 
 public class mtm
-  extends PublicAccountObserver
+  extends PhoneStateListener
 {
-  public mtm(SubscriptRecommendController paramSubscriptRecommendController) {}
+  public mtm(FastWebVideoVolumeControl paramFastWebVideoVolumeControl) {}
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    if (paramInt == 0) {
-      this.a.h();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.FastWebVideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
     }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.h();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.b(true);
+      return;
     }
+    this.a.b(true);
   }
 }
 

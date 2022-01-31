@@ -1,14 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class lqo
   implements Runnable
 {
-  public lqo(ChannelCoverInfoModule paramChannelCoverInfoModule, ChannelCoverInfo paramChannelCoverInfo) {}
+  public lqo(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo);
+    ReadInJoySelfFragment.a(this.a);
+    ReadInJoySelfFragment.b(this.a);
   }
 }
 

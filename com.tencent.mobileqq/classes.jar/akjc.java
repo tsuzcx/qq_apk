@@ -1,21 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class akjc
-  implements Runnable
+public final class akjc
+  implements MediaPlayer.OnCompletionListener
 {
-  public akjc(HealthBusinessPlugin paramHealthBusinessPlugin) {}
-  
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    TVK_SDKMgr.installPlugin(this.a.mRuntime.a().getApplication(), new akjd(this));
+    paramMediaPlayer.release();
+    com.tencent.mobileqq.utils.AudioUtil.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akjc
  * JD-Core Version:    0.7.0.1
  */

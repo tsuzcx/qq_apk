@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.qmcf;
 
-import agvp;
+import ahac;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -93,7 +93,7 @@ public class QmcfManager
     if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
       localObject2 = null;
     }
-    label473:
+    label465:
     do
     {
       return localObject2;
@@ -131,7 +131,6 @@ public class QmcfManager
       }
       catch (Exception localException1)
       {
-        boolean bool1;
         for (;;)
         {
           Object localObject6;
@@ -143,13 +142,12 @@ public class QmcfManager
           localException1.printStackTrace();
           localObject4 = localObject1;
           localObject3 = localObject2;
-          continue;
-          bool1 = false;
         }
+        boolean bool1;
         if (SLog.a())
         {
           if (TextUtils.isEmpty((CharSequence)localObject7)) {
-            break label580;
+            break label566;
           }
           bool1 = true;
           SLog.d("QMCF_MGR", String.format("getQmcfModelItem modelValid[%s]", new Object[] { Boolean.valueOf(bool1) }));
@@ -159,7 +157,7 @@ public class QmcfManager
           localObject1 = null;
           break;
           bool1 = false;
-          break label552;
+          break label538;
           ((File)localObject7).delete();
         }
       }
@@ -169,7 +167,7 @@ public class QmcfManager
         i = j;
         localObject5 = localObject1;
         if (this.jdField_a_of_type_JavaUtilHashMap.get(str) != null) {
-          break label616;
+          break label602;
         }
         l = System.currentTimeMillis();
         localObject2 = this.jdField_d_of_type_JavaLangString + str;
@@ -178,21 +176,17 @@ public class QmcfManager
         bool2 = new File((String)localObject2).exists();
         bool3 = new File((String)localObject1).exists();
         if ((!bool2) || (!bool3)) {
-          break label586;
+          break label572;
         }
         localObject7 = a((String)localObject1);
         if (TextUtils.isEmpty((CharSequence)localObject7)) {
-          break label535;
+          break label521;
         }
         localObject1 = new QmcfModelItem();
         ((QmcfModelItem)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject7);
         ((QmcfModelItem)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
         ((QmcfModelItem)localObject1).jdField_c_of_type_JavaLangString = ((String)localObject6);
-        if (i == 0) {
-          break label529;
-        }
-        bool1 = true;
-        ((QmcfModelItem)localObject1).jdField_a_of_type_Boolean = bool1;
+        ((QmcfModelItem)localObject1).jdField_a_of_type_Int = i;
         this.jdField_a_of_type_JavaUtilHashMap.put(str, localObject1);
         localObject2 = localObject1;
         if (SLog.a())
@@ -209,7 +203,7 @@ public class QmcfManager
         localObject3 = localException2;
         break;
         localObject2 = null;
-        break label473;
+        break label465;
       }
     } while (this.jdField_a_of_type_JavaUtilHashMap.get(str) == null);
     localObject1 = (QmcfModelItem)this.jdField_a_of_type_JavaUtilHashMap.get(str);
@@ -394,7 +388,7 @@ public class QmcfManager
           }
           this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
         }
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new agvp(this));
+        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ahac(this));
         return;
       }
       this.jdField_c_of_type_Boolean = true;
@@ -427,7 +421,7 @@ public class QmcfManager
   
   public void a(boolean paramBoolean)
   {
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.a(paramBoolean);
+    e = paramBoolean;
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
@@ -452,42 +446,33 @@ public class QmcfManager
   
   public boolean a(int paramInt, boolean paramBoolean)
   {
-    boolean bool1 = true;
-    if (Build.VERSION.SDK_INT < 21) {
-      bool1 = false;
-    }
-    boolean bool4;
-    boolean bool3;
-    do
+    if (Build.VERSION.SDK_INT < 21) {}
+    for (;;)
     {
-      do
+      return false;
+      boolean bool3 = c(paramInt);
+      boolean bool2 = SoLoader.b();
+      boolean bool1 = bool2;
+      if (bool3)
       {
-        return bool1;
-        bool4 = c(paramInt);
-        bool3 = SoLoader.a();
-        if (!paramBoolean) {
-          break;
-        }
-        boolean bool2 = SoLoader.b();
-        paramBoolean = bool2;
-        if (bool4)
+        bool1 = bool2;
+        if (!bool2)
         {
-          paramBoolean = bool2;
-          if (!bool2)
-          {
-            bool2 = SoLoader.a(SdkContext.a().a());
-            paramBoolean = bool2;
-            if (SLog.a())
-            {
-              SLog.d("QMCF_MGR", "reloadso :" + bool2);
-              paramBoolean = bool2;
-            }
+          if (!paramBoolean) {
+            break label98;
+          }
+          paramBoolean = SoLoader.a(SdkContext.a().a());
+          bool1 = paramBoolean;
+          if (SLog.a()) {
+            SLog.d("QMCF_MGR", "reloadso :" + paramBoolean);
           }
         }
-      } while ((bool4) && (bool3) && (paramBoolean));
-      return false;
-    } while ((bool4) && (bool3));
-    return false;
+      }
+      label98:
+      for (bool1 = paramBoolean; (bool3) && (bool1); bool1 = SoLoader.a()) {
+        return true;
+      }
+    }
   }
   
   public byte[] a(byte[] paramArrayOfByte)
@@ -507,11 +492,6 @@ public class QmcfManager
     return this.jdField_c_of_type_Int;
   }
   
-  public void b()
-  {
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.b(true);
-  }
-  
   public void b(int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
@@ -520,6 +500,11 @@ public class QmcfManager
   public void b(long paramLong)
   {
     jdField_a_of_type_ComTencentMobileqqQmcfQmcfReporter.b(paramLong);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.a(paramBoolean);
   }
   
   public boolean b()

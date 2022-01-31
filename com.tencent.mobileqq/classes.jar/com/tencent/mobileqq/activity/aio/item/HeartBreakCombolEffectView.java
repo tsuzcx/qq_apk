@@ -16,7 +16,7 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
-import vab;
+import vfc;
 
 public class HeartBreakCombolEffectView
   extends View
@@ -53,7 +53,7 @@ public class HeartBreakCombolEffectView
   
   private void d()
   {
-    setOnTouchListener(new vab(this));
+    setOnTouchListener(new vfc(this));
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     e();
     HandlerThread localHandlerThread = new HandlerThread("decode");

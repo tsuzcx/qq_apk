@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAiBubbleView;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
 
-class aayp
-  implements DialogInterface.OnDismissListener
+public class aayp
+  implements ArkAppCenter.OnGetAppIcon
 {
-  aayp(aayo paramaayo, ActionSheet paramActionSheet) {}
+  public aayp(ArkAiBubbleView paramArkAiBubbleView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    ArkAppCenter.b("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar == null)
+    {
+      ArkAppCenter.a(paramString);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

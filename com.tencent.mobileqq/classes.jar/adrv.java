@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-class adrv
-  implements Runnable
+public class adrv
+  implements FMDialogUtil.FMDialogInterface
 {
-  adrv(adru paramadru) {}
+  public adrv(SendBottomBar paramSendBottomBar) {}
   
-  public void run()
+  public void a()
   {
-    PresenceInterfaceImpl.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-    PresenceInterfaceImpl.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl, true);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a(0, this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a);
-    QLog.d("PresenceInterfaceImpl", 2, "saveUserPermission true");
+    SendBottomBar.c(this.a);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adrv
  * JD-Core Version:    0.7.0.1
  */

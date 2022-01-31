@@ -1,17 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter.LebaGridItemViewHolder;
-import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
 
-class aeay
-  implements Runnable
+public class aeay
+  implements Cloneable
 {
-  aeay(aeax paramaeax, Bitmap paramBitmap) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b = "";
   
-  public void run()
+  public aeay(VideoBaseItem paramVideoBaseItem, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Aeax.jdField_a_of_type_ComTencentMobileqqLebaModelPluginactionsPluginAction != null) {
-      this.jdField_a_of_type_Aeax.jdField_a_of_type_ComTencentMobileqqLebaModelPluginactionsPluginAction.a(this.jdField_a_of_type_Aeax.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridMenuAdapter$LebaGridItemViewHolder.a, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  protected aeay a()
+  {
+    return (aeay)super.clone();
   }
 }
 

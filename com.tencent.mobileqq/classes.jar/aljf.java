@@ -1,26 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.common.PackageInstallReceiver;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.open.agent.BragActivity;
+import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
 
 public class aljf
-  implements Runnable
+  implements ImageLoader.ImageLoadListener
 {
-  public aljf(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
+  public aljf(BragActivity paramBragActivity) {}
   
-  public void run()
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_REMOVED >> " + this.jdField_a_of_type_JavaLangString);
-    if ((!TextUtils.isEmpty(this.b)) && (this.b.equals(DownloadConstants.p)))
-    {
-      DownloadManager.a().a(true);
-      MyAppApi.a().f();
-    }
-    DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    DownloadManager.a().a(9, localDownloadInfo);
+    this.a.a.setImageBitmap(paramBitmap);
   }
 }
 

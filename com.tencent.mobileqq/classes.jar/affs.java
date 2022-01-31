@@ -1,16 +1,75 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import mqq.os.MqqHandler;
 
 public class affs
   implements Runnable
 {
-  public affs(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel, int paramInt) {}
+  public affs(ImageDisplayView paramImageDisplayView, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app, "CliOper", "", "", NearbyProfileDisplayTribePanel.b[(this.jdField_a_of_type_Int - 1)], NearbyProfileDisplayTribePanel.b[(this.jdField_a_of_type_Int - 1)], 0, 0, "", "", "", "");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
+    Object localObject1 = null;
+    try
+    {
+      localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString);
+      localObject1 = localBitmap;
+      int i = new ExifInterface(this.jdField_a_of_type_JavaLangString).getAttributeInt("Orientation", 0);
+      localObject1 = localBitmap;
+      localObject2 = new Matrix();
+      switch (i)
+      {
+      }
+    }
+    catch (Exception localException)
+    {
+      Bitmap localBitmap;
+      Object localObject2;
+      while (localObject1 != null)
+      {
+        ThreadManager.getUIHandler().post(new affv(this, localObject1));
+        return;
+        localObject1 = localException;
+        ((Matrix)localObject2).postRotate(180.0F);
+        continue;
+        localObject1 = localException;
+        ((Matrix)localObject2).postRotate(180.0F);
+        localObject1 = localException;
+        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
+        continue;
+        localObject1 = localException;
+        ((Matrix)localObject2).postRotate(90.0F);
+        localObject1 = localException;
+        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
+        continue;
+        localObject1 = localException;
+        ((Matrix)localObject2).postRotate(90.0F);
+        continue;
+        localObject1 = localException;
+        ((Matrix)localObject2).postRotate(270.0F);
+        localObject1 = localException;
+        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
+        continue;
+        localObject1 = localException;
+        ((Matrix)localObject2).postRotate(270.0F);
+      }
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError) {}
+    localObject1 = localBitmap;
+    ThreadManager.getUIHandler().post(new afft(this, localBitmap));
+    return;
+    localObject1 = localBitmap;
+    ((Matrix)localObject2).postScale(-1.0F, 1.0F);
+    localObject1 = localBitmap;
+    localObject2 = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), (Matrix)localObject2, true);
+    localObject1 = localBitmap;
+    ThreadManager.getUIHandler().post(new affu(this, (Bitmap)localObject2));
+    return;
   }
 }
 

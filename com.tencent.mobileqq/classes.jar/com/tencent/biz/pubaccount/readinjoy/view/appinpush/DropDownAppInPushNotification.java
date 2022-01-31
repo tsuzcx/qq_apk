@@ -23,13 +23,13 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
-import mln;
-import mlo;
+import mpf;
+import mpg;
 
 public class DropDownAppInPushNotification
   extends AppInPushNotification
 {
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new mln(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new mpf(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
@@ -68,15 +68,15 @@ public class DropDownAppInPushNotification
     ReadInJoyNickNameTextView localReadInJoyNickNameTextView;
     if (TextUtils.isEmpty(this.c))
     {
-      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969604, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131363828);
+      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969600, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131363852);
       this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), this.jdField_a_of_type_AndroidViewView.getPaddingTop() + ViewUtils.a(this.jdField_a_of_type_AndroidContentContext), this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
       this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow((View)localObject, -1, -2);
-      localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366938);
+      localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366934);
       localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367090);
-      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366940);
-      localReadInJoyHeadImageView = (ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366935);
-      localReadInJoyNickNameTextView = (ReadInJoyNickNameTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366936);
+      localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366936);
+      localReadInJoyHeadImageView = (ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366939);
+      localReadInJoyNickNameTextView = (ReadInJoyNickNameTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366932);
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break label288;
       }
@@ -91,9 +91,9 @@ public class DropDownAppInPushNotification
       localReadInJoyHeadImageView.setHeadImgByUin(this.f);
       localReadInJoyNickNameTextView.setText(this.e);
       this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new mlo(this));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new mpg(this));
       return;
-      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969603, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969599, this.jdField_a_of_type_AndroidViewViewGroup, false);
       break;
       label288:
       localImageView.setVisibility(0);

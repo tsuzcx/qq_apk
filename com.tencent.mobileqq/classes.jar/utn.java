@@ -1,17 +1,14 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.ActivityChatItemBuilder;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
 
 public class utn
-  extends AbstractChatItemBuilder.ViewHolder
+  implements Runnable
 {
-  public ImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public utn(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public utn(ActivityChatItemBuilder paramActivityChatItemBuilder) {}
+  public void run()
+  {
+    this.a.c();
+  }
 }
 
 

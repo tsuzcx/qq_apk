@@ -1,25 +1,72 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.io.UnsupportedEncodingException;
+import org.json.JSONObject;
 
 public class kum
-  implements Runnable
+  extends Handler
 {
-  public kum(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kum(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    PublicAccountEntityHelper localPublicAccountEntityHelper = AdvertisementVideoPreloadManager.a(this.a);
-    if (localPublicAccountEntityHelper != null)
+    switch (paramMessage.what)
     {
-      localPublicAccountEntityHelper.a(PAAdPreloadTask.class.getSimpleName());
-      Iterator localIterator = AdvertisementVideoPreloadManager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        localPublicAccountEntityHelper.a((PAAdPreloadTask)localIterator.next());
+    default: 
+      return;
+    case 3: 
+      this.a.O();
+      return;
+    case 1: 
+      if (this.a.e)
+      {
+        this.a.j();
+        this.a.K();
+      }
+      for (;;)
+      {
+        this.a.c(this.a.getIntent());
+        return;
+        this.a.j();
+      }
+    case 2: 
+      paramMessage = new Intent();
+      paramMessage.putExtra("isNeedFinish", true);
+      this.a.setResult(-1, paramMessage);
+      this.a.finish();
+      return;
+    case 4: 
+      paramMessage = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+      paramMessage.putExtra("BSafeReportPost", true);
+      try
+      {
+        if (this.a.a != null) {
+          paramMessage.putExtra("SafeReportData", this.a.a.toString().getBytes("utf-8"));
+        }
+        paramMessage.putExtra("hide_more_buttonbutton", true);
+        paramMessage.putExtra("ishiderefresh", true);
+        paramMessage.putExtra("ishidebackforward", true);
+        this.a.startActivity(paramMessage.putExtra("url", "http://jubao.mp.qq.com/mobile/reportAccount"));
+        return;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        for (;;)
+        {
+          localUnsupportedEncodingException.printStackTrace();
+        }
       }
     }
+    paramMessage = new AlphaAnimation(1.0F, 0.0F);
+    paramMessage.setDuration(500L);
+    this.a.c.startAnimation(paramMessage);
+    this.a.c.setVisibility(8);
   }
 }
 

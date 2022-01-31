@@ -1,34 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
 
 public class afeh
-  implements UniformDownloader.IUniformDownloaderListener
+  implements View.OnTouchListener
 {
-  public afeh(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public afeh(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.i("NearbyProfileDisplayPanel", 1, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
-    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
-    paramBundle.edit().putInt("state", 1);
-    paramBundle.edit().putString("filePath", paramString);
+    this.a.c();
+    PlayOperationViewModel.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
-  
-  public void b(int paramInt, Bundle paramBundle) {}
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

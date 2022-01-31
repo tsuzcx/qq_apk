@@ -1,32 +1,36 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.gesture.GLGestureProxy;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.widget.ActionSheet;
+import java.lang.ref.WeakReference;
 
 public class ahix
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public ahix(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  private WeakReference a;
   
-  public void run()
+  private ahix(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    DanceLog.a("EffectsFragment", "readySceneBegin begin exe...");
-    this.a.a = false;
-    this.a.h();
-    EffectsCameraCaptureFragment.g(this.a, true);
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(0);
-    EffectsCameraCaptureFragment.a(this.a).setEnabled(true);
-    DanceLog.a("EffectsFragment", "readySceneBegin end exe...");
-    boolean bool = GLGestureProxy.a().a(EffectsCameraCaptureFragment.a(this.a));
-    DanceLog.a("EffectsFragment", "readySceneBegin end hasDanceListener=" + bool);
-    if (!bool) {
-      GLGestureProxy.a().a(EffectsCameraCaptureFragment.a(this.a));
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    paramView = (ReceiptMessageDetailFragment)this.a.get();
+    if ((paramView == null) || (!paramView.isAdded())) {
+      return false;
     }
+    ActionSheet localActionSheet = ActionSheet.a(paramView.getActivity());
+    localActionSheet.b(2131435098);
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new ahiy(this, paramView, localActionSheet));
+    localActionSheet.show();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahix
  * JD-Core Version:    0.7.0.1
  */

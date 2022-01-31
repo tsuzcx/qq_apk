@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.app.Frame;
 
 public class tfv
-  implements ActionSheet.OnDismissListener
+  extends tgi
 {
-  public tfv(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
-  
-  public void onDismiss()
+  public tfv(MainFragment paramMainFragment)
   {
-    if (this.a.b) {
-      this.a.finish();
+    super(null);
+  }
+  
+  public void onClick(View paramView)
+  {
+    Frame localFrame = MainFragment.a(this.a);
+    if ((localFrame instanceof ReadinjoyTabFrame)) {
+      ((ReadinjoyTabFrame)localFrame).l();
     }
+    ReadInJoyLogicEngine.a().a(0);
+    super.onClick(paramView);
   }
 }
 

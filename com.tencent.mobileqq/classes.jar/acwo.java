@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-public class acwo
+class acwo
   implements Runnable
 {
-  public acwo(FileVideoManager.VideoControl paramVideoControl) {}
+  acwo(acwk paramacwk) {}
   
   public void run()
   {
-    FileVideoManager.VideoControl.d(this.a);
+    UniformDownloadActivity.b(this.a.a).setVisibility(4);
   }
 }
 

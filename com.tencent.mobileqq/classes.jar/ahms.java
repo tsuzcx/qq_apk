@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
 
-public class ahms
-  implements View.OnClickListener
+class ahms
+  implements DialogInterface.OnClickListener
 {
-  public ahms(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
+  ahms(ahmr paramahmr, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    CameraCaptureFragment.b(this.jdField_a_of_type_Ahmr.a, false);
   }
 }
 

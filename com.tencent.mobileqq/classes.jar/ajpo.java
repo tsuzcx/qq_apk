@@ -1,17 +1,14 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import com.dataline.core.DirectForwarder;
-import com.dataline.core.DirectForwarder.CallBack;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.GuideViewPager;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class ajpo
-  extends DirectForwarder.CallBack
+public class ajpo
+  implements Runnable
 {
-  public ajpo(Context paramContext) {}
+  public ajpo(GuideViewPager paramGuideViewPager) {}
   
-  protected void a(AsyncTask paramAsyncTask, int paramInt)
+  public void run()
   {
-    super.a(paramAsyncTask, paramInt);
-    DirectForwarder.a(this.a, paramAsyncTask, paramInt, new ajpp(this));
+    QQToast.a(this.a.getContext(), "playOnce", 0).a();
   }
 }
 

@@ -1,31 +1,121 @@
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.support.v4.util.LruCache;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter.CacheRefMap;
+import com.tencent.biz.qqstory.takevideo.artfilter.FilterTemplate;
+import com.tencent.mobileqq.util.BitmapManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aoba
-  implements URLDrawable.URLDrawableListener
+  extends BaseAdapter
 {
-  public aoba(NormalFaceAdapter paramNormalFaceAdapter, String paramString1, NormalFacePackage paramNormalFacePackage, ImageView paramImageView, String paramString2) {}
+  int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  LruCache jdField_a_of_type_AndroidSupportV4UtilLruCache;
+  List jdField_a_of_type_JavaUtilList;
+  int b;
+  public int c = -1;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public aoba(EditVideoArtFilter paramEditVideoArtFilter, Context paramContext)
   {
-    SLog.b("NormalFaceAdapter", "applyNormalPaster onLoadFialed path:" + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 120.0F);
+    this.b = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 90.0F);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public FilterTemplate a(int paramInt)
   {
-    SLog.b("NormalFaceAdapter", "applyNormalPaster onLoadSuccessed path:" + this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    NormalFaceAdapter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter).a(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
-    NormalFaceAdapter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage, paramURLDrawable, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, this.b, 1);
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return (FilterTemplate)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(List paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    FilterTemplate localFilterTemplate = new FilterTemplate();
+    this.jdField_a_of_type_JavaUtilList.add(localFilterTemplate);
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.c = 0;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView1;
+    if (paramView == null)
+    {
+      paramViewGroup = new aobb(this);
+      localView1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969058, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131364905));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = localView1.findViewById(2131364904);
+      localView1.setTag(paramViewGroup);
+    }
+    FilterTemplate localFilterTemplate;
+    for (;;)
+    {
+      localFilterTemplate = a(paramInt);
+      if (localFilterTemplate != null) {
+        break;
+      }
+      return localView1;
+      paramViewGroup = (aobb)paramView.getTag();
+      localView1 = paramView;
+    }
+    paramView = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(localFilterTemplate.jdField_a_of_type_Int + localFilterTemplate.b);
+    View localView2 = paramView;
+    if (paramView == null)
+    {
+      if (paramInt != 0) {
+        break label246;
+      }
+      paramView = BitmapManager.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_AndroidContentContext.getResources(), 2130839575, this.b, this.jdField_a_of_type_Int);
+      localView2 = paramView;
+      if (paramView != null)
+      {
+        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(localFilterTemplate.jdField_a_of_type_Int + localFilterTemplate.b, paramView);
+        localView2 = paramView;
+      }
+    }
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localView2);
+    if (paramInt == 0) {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("无滤镜");
+    }
+    for (;;)
+    {
+      if (paramInt != this.c) {
+        break label299;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      return localView1;
+      label246:
+      paramView = BitmapManager.a(localFilterTemplate.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
+      break;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("滤镜" + localFilterTemplate.c);
+    }
+    label299:
+    paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    return localView1;
   }
 }
 

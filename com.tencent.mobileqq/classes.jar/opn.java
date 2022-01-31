@@ -1,28 +1,60 @@
-import android.view.MotionEvent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.CustomViewPager;
-import com.tencent.biz.qqstory.utils.BetterGestureDetector;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer.GestureListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class opn
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public opn(StoryVideoPlayer paramStoryVideoPlayer) {}
+  public opn(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMotionEvent.getAction())
+    paramContext = paramIntent.getAction();
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext))
     {
+      paramContext = paramIntent.getStringExtra("data");
+      paramIntent = paramIntent.getStringExtra("event");
+      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic"))) {}
     }
-    for (;;)
+    do
     {
-      return false;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager.a.a()) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer$GestureListener.l();
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, "onReceive:" + paramContext);
+        }
+      } while (TextUtils.isEmpty(paramContext));
+      paramContext = new QQStoryMusicInfo(paramContext);
+      this.a.b();
+      if (!TextUtils.isEmpty(paramContext.d))
+      {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.b);
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
       }
-    }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(paramContext);
+      this.a.a(paramContext.d);
+      VideoEditReport.a("0X80076D6");
+      return;
+      if ("action_music_start".equals(paramContext))
+      {
+        this.a.f();
+        this.a.d();
+        return;
+      }
+    } while (!"action_music_refresh_list".equals(paramContext));
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
 }
 

@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
 
 public class affj
-  implements NearbyLikeLimitManager.onDoVoteListener
+  implements View.OnClickListener
 {
-  public affj(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public affj(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.c(paramBoolean);
-    this.a.u = paramBoolean;
+    this.a.d(paramView);
   }
 }
 

@@ -1,23 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoStatusListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.BubbleAppInPushNotification;
 
-class moz
-  implements Runnable
+public class moz
+  implements View.OnClickListener
 {
-  moz(moy parammoy) {}
+  public moz(BubbleAppInPushNotification paramBubbleAppInPushNotification) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (FastWebVideoFeedsPlayManager.a(this.a.a) != null)
-    {
-      Iterator localIterator = FastWebVideoFeedsPlayManager.a(this.a.a).iterator();
-      while (localIterator.hasNext()) {
-        ((FastWebVideoFeedsPlayManager.VideoStatusListener)localIterator.next()).a(FastWebVideoFeedsPlayManager.a(this.a.a));
-      }
-    }
-    this.a.a.a(0);
+    AppInPushNotification.a(8);
+    this.a.a.postDelayed(new mpa(this), 200L);
+    this.a.a(true, false);
   }
 }
 

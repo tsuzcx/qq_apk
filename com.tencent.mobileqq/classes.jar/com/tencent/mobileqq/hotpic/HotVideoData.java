@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adrg;
+import adzp;
 import com.tencent.image.URLDrawable.DownloadListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
@@ -48,7 +48,7 @@ public class HotVideoData
             break label92;
           }
           str2 = this.md5;
-          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new adrg(this, localHotVideoGetUrlResult, paramHotVideoGetUrlCallBack));
+          requestUrlByUuid(paramQQAppInterface, str1, str2, paramInt1, paramInt2, paramString, new adzp(this, localHotVideoGetUrlResult, paramHotVideoGetUrlCallBack));
           break;
         }
       }

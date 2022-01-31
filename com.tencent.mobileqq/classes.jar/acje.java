@@ -1,50 +1,72 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.richstatus.IStatusListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.TipsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class acje
+  implements IStatusListener
 {
-  private List jdField_a_of_type_JavaUtilList = new ArrayList(20);
+  public acje(MessengerService paramMessengerService) {}
   
-  private acje(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  public void a()
+  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      b();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
-      b();
-    }
-  }
-  
-  void b()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    if (this.a.b != null)
     {
-      if (i != 0) {
-        localStringBuffer.append("|");
+      this.a.b.putString("cmd", "ipc_signature_setordelete");
+      paramRichStatus = new Bundle();
+      paramRichStatus.putInt("result", paramInt);
+      paramRichStatus.putBoolean("hasTipsInfo", false);
+      if ((paramObject instanceof TipsInfo))
+      {
+        paramObject = (TipsInfo)paramObject;
+        if (paramObject.jdField_b_of_type_Int > 0)
+        {
+          paramRichStatus.putInt("result", paramObject.jdField_a_of_type_Int);
+          paramRichStatus.putBoolean("hasTipsInfo", true);
+          paramRichStatus.putInt("tips_type", paramObject.jdField_b_of_type_Int);
+          paramRichStatus.putString("tips_titleWording", paramObject.jdField_a_of_type_JavaLangString);
+          paramRichStatus.putString("tips_wording", paramObject.jdField_b_of_type_JavaLangString);
+          paramRichStatus.putString("tips_rightBtnWording", paramObject.jdField_c_of_type_JavaLangString);
+          paramRichStatus.putString("tips_leftBtnWording", paramObject.d);
+          paramRichStatus.putString("tips_vipType", paramObject.e);
+          paramRichStatus.putInt("tips_vipMonth", paramObject.jdField_c_of_type_Int);
+          paramRichStatus.putString("tips_url", paramObject.f);
+        }
       }
-      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      i += 1;
+      this.a.b.putBundle("response", paramRichStatus);
+      this.a.a(this.a.b);
+      this.a.b = null;
     }
-    if (ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment) != null) {
-      ReportController.b(ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment), "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
   }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == -1) {
+      if (this.a.a != null) {
+        this.a.a.post(new acjf(this));
+      }
+    }
+    while (this.a.c == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SigImg2Zone", 4, "isSync: " + paramBoolean);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSync", paramBoolean);
+    this.a.c.putBundle("response", localBundle);
+    this.a.a(this.a.c);
+    this.a.c = null;
+  }
+  
+  public void b(int paramInt, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acje
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
 
-public class amzl
-  implements View.OnClickListener
+class amzl
+  implements Runnable
 {
-  public amzl(QZoneShareActivity paramQZoneShareActivity) {}
+  amzl(amzj paramamzj) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.j();
+    this.a.a.e();
   }
 }
 

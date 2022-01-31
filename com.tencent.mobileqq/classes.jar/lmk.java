@@ -1,45 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class lmk
-  implements Runnable
+public class lmk
+  implements ArticleCommentModule.FetchCommentObserver
 {
-  public lmk(int paramInt, boolean paramBoolean) {}
+  public lmk(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo)
   {
-    oidb_cmd0x80a.AttributeList localAttributeList1;
-    oidb_cmd0x80a.AttributeList localAttributeList2;
-    PBStringField localPBStringField;
-    if (ReadinjoySPEventReport.b(7))
-    {
-      localAttributeList1 = new oidb_cmd0x80a.AttributeList();
-      localAttributeList1.att_id.set(1);
-      localAttributeList1.att_name.set("tab");
-      localAttributeList1.att_value.set(String.valueOf(this.jdField_a_of_type_Int));
-      localAttributeList2 = new oidb_cmd0x80a.AttributeList();
-      localAttributeList2.att_id.set(4);
-      localAttributeList2.att_name.set("redStatus");
-      localPBStringField = localAttributeList2.att_value;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label127;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentListView", 2, "second comment bottom refresh success");
     }
-    label127:
-    for (Object localObject = "1";; localObject = "0")
-    {
-      localPBStringField.set((String)localObject);
-      localObject = new ArrayList();
-      ((List)localObject).add(localAttributeList1);
-      ((List)localObject).add(localAttributeList2);
-      PublicAccountUtil.a(7, "ClickTab", (List)localObject);
-      return;
+    ReadInJoySecondCommentListAdapter.a(this.a).a(true);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentListView", 2, "second comment bottom refresh failed,err code =" + paramInt + " errMsg =" + paramString);
     }
+    ReadInJoySecondCommentListAdapter.a(this.a).a();
   }
 }
 

@@ -1,34 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.pic.PreDownloadStrategyBeta;
 
 public class wgs
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public wgs(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  public wgs(TroopChatPie paramTroopChatPie) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_Wgy != null)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
     {
-      paramAdapterView = this.a.getActivity();
-      if (paramAdapterView != null) {
-        break label23;
-      }
+      String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a.b(str);
     }
-    label23:
-    do
-    {
-      return;
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
-      paramView = ((wgx)this.a.jdField_a_of_type_Wgy.getItem(paramInt)).a;
-      ChatHistoryBubbleListForTroopFragment.a(paramAdapterView, this.a.b, paramView, 100, 1);
-    } while (!QLog.isColorLevel());
-    QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + paramView);
   }
 }
 

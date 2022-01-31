@@ -145,7 +145,7 @@ public class NearbyRecommenderUtils
     }
     MessageForNearbyRecommenderTips localMessageForNearbyRecommenderTips = (MessageForNearbyRecommenderTips)MessageRecordFactory.a(-4011);
     long l = MessageCache.a();
-    localMessageForNearbyRecommenderTips.init(paramQQAppInterface.getCurrentAccountUin(), AppConstants.ak, AppConstants.ak, "", l, -4011, 1001, l);
+    localMessageForNearbyRecommenderTips.init(paramQQAppInterface.getCurrentAccountUin(), AppConstants.al, AppConstants.al, "", l, -4011, 1001, l);
     localMessageForNearbyRecommenderTips.isread = true;
     MsgProxyUtils.a(localMessageForNearbyRecommenderTips, false);
     localMessageForNearbyRecommenderTips.readFlag = false;

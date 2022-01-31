@@ -9,31 +9,17 @@ import com.tencent.component.media.ImageManagerEnv;
 
 public class ImageDefaultConfig
 {
-  public static final int[][] BYTE_ARRAY;
-  public static final int[][] BYTE_ARRAY_LOCAL;
-  private static int jdField_a_of_type_Int;
+  public static final int[][] BYTE_ARRAY = { { 6, 25000 }, { 6, 200000 } };
+  public static final int[][] BYTE_ARRAY_LOCAL = { { 6, 25000 }, { 6, 200000 }, { 6, 1000000 }, { 8, 6000000 } };
+  private static int jdField_a_of_type_Int = -1;
   private static String jdField_a_of_type_JavaLangString;
-  private static boolean jdField_a_of_type_Boolean;
-  static int[] jdField_a_of_type_ArrayOfInt;
+  private static boolean jdField_a_of_type_Boolean = false;
+  static int[] jdField_a_of_type_ArrayOfInt = { 2, 1, 1 };
   private static int jdField_b_of_type_Int = -1;
-  static final int[] jdField_b_of_type_ArrayOfInt;
-  static int[] c;
-  static int[] d;
-  static int[] e;
-  
-  static
-  {
-    int[] arrayOfInt = { 6, 200000 };
-    BYTE_ARRAY = new int[][] { { 6, 25000 }, arrayOfInt };
-    BYTE_ARRAY_LOCAL = new int[][] { { 6, 25000 }, { 6, 200000 }, { 6, 1000000 }, { 8, 6000000 } };
-    jdField_a_of_type_Int = -1;
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_ArrayOfInt = new int[] { 2, 1, 1 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 1, 2, 2 };
-    c = new int[] { 1000, 16000, 32000 };
-    d = new int[] { 40, 2 };
-    e = new int[] { 30000, 30000 };
-  }
+  static final int[] jdField_b_of_type_ArrayOfInt = { 1, 2, 2 };
+  static int[] c = { 1000, 16000, 32000 };
+  static int[] d = { 40, 2 };
+  static int[] e = { 30000, 30000 };
   
   /* Error */
   private static String a(Context paramContext)

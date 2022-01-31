@@ -23,9 +23,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import upf;
-import upg;
-import uph;
+import uue;
+import uuf;
+import uug;
 
 public class GoldMsgQueueView
   extends View
@@ -90,7 +90,7 @@ public class GoldMsgQueueView
     Object localObject1;
     GoldMsgQueueView.DrawItem localDrawItem1;
     LinkedList localLinkedList;
-    upf localupf;
+    uue localuue;
     int j;
     int m;
     int k;
@@ -118,10 +118,10 @@ public class GoldMsgQueueView
       this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
       localLinkedList = new LinkedList();
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
-      localupf = new upf(this);
+      localuue = new uue(this);
       localObject1 = ObjectAnimator.ofFloat(localDrawItem1, "scale", new float[] { 0.0F, 1.0F });
       ((ObjectAnimator)localObject1).setDuration(250L);
-      ((ObjectAnimator)localObject1).addUpdateListener(localupf);
+      ((ObjectAnimator)localObject1).addUpdateListener(localuue);
       localLinkedList.add(localObject1);
       if (this.jdField_b_of_type_JavaUtilList.size() >= this.d)
       {
@@ -165,11 +165,11 @@ public class GoldMsgQueueView
       }
       for (;;)
       {
-        ((ObjectAnimator)localObject1).addListener(new upg(this, bool2, localDrawItem2, bool1));
+        ((ObjectAnimator)localObject1).addListener(new uuf(this, bool2, localDrawItem2, bool1));
         ((ObjectAnimator)localObject1).setDuration(250L);
         m += 83;
         ((ObjectAnimator)localObject1).setStartDelay(m);
-        ((ObjectAnimator)localObject1).addUpdateListener(localupf);
+        ((ObjectAnimator)localObject1).addUpdateListener(localuue);
         localLinkedList.add(localObject1);
         k += 1;
         break label227;
@@ -201,7 +201,7 @@ public class GoldMsgQueueView
         localDrawItem1.drawable.setCallback(this);
       }
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(localLinkedList);
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new uph(this));
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new uug(this));
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
       if (QLog.isColorLevel()) {
         QLog.d("GoldMsgQueueView", 2, "tryDoInsert play");

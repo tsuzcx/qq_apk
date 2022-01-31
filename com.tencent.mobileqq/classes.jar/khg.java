@@ -1,25 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.redbag.GuideTip2;
 
 public class khg
-  implements DialogInterface.OnShowListener
+  implements View.OnClickListener
 {
-  public khg(TraeHelper paramTraeHelper) {}
+  public khg(GuideTip2 paramGuideTip2) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Trae_DRP 0X8008D1E at: " + System.currentTimeMillis());
-    }
-    ReportController.b(null, "CliOper", "", "", "0X8008D1E", "0X8008D1E", 0, 0, "", "", "", "");
+    this.a.a(false, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     khg
  * JD-Core Version:    0.7.0.1
  */

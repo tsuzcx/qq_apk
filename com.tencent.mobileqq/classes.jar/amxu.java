@@ -1,9 +1,22 @@
-import cooperation.qzone.plugin.PluginRecord;
-import java.io.File;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public abstract interface amxu
+class amxu
+  extends Thread
 {
-  public abstract boolean a(PluginRecord paramPluginRecord, File paramFile);
+  amxu(amxt paramamxt) {}
+  
+  public void run()
+  {
+    while (!this.a.a.a.isEmpty())
+    {
+      QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper localQQIndividualityRemoteProxyCallWrapper = (QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper)this.a.a.a.poll();
+      if (localQQIndividualityRemoteProxyCallWrapper != null) {
+        this.a.a.a(localQQIndividualityRemoteProxyCallWrapper);
+      }
+    }
+  }
 }
 
 

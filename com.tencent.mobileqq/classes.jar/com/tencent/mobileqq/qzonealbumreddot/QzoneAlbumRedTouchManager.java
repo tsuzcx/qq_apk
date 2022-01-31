@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.qzonealbumreddot;
 
 import NS_MOBILE_PHOTO.operation_red_touch_req;
-import agvq;
-import agvr;
+import ahad;
+import ahae;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -88,7 +88,7 @@ public class QzoneAlbumRedTouchManager
       return;
     }
     QZoneClickReport.startReportImediately(this.a.getCurrentAccountUin(), "443", "1");
-    ThreadManager.getSubThreadHandler().post(new agvr(this));
+    ThreadManager.getSubThreadHandler().post(new ahae(this));
   }
   
   public boolean a()
@@ -124,7 +124,7 @@ public class QzoneAlbumRedTouchManager
     if (QLog.isColorLevel()) {
       QLog.d("QzoneAlbumRedTouchManager", 2, "clearRedTouch");
     }
-    ThreadManager.getSubThreadHandler().post(new agvq(this));
+    ThreadManager.getSubThreadHandler().post(new ahad(this));
   }
   
   public boolean b()

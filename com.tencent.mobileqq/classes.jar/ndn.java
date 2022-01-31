@@ -1,20 +1,15 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import android.app.Activity;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
 
 class ndn
-  implements Comparator
+  implements Runnable
 {
-  ndn(ndm paramndm) {}
+  ndn(ndm paramndm, Activity paramActivity) {}
   
-  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
+  public void run()
   {
-    if (paramStoryVideoItem1.mCreateTime > paramStoryVideoItem2.mCreateTime) {
-      return 1;
-    }
-    if (paramStoryVideoItem1.mCreateTime < paramStoryVideoItem2.mCreateTime) {
-      return -1;
-    }
-    return 0;
+    StoryPlayVideoActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Ndm.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Ndm.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a(), "", true);
   }
 }
 

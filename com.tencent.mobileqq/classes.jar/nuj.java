@@ -1,20 +1,16 @@
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.network.request.GetFeedCommentRequest;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnPreparedListener;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
 
-public class nuj
-  extends ParallelJobSegment
+class nuj
+  implements Runnable
 {
-  public nuj(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
+  nuj(nui paramnui) {}
   
-  protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
+  public void run()
   {
-    GetFeedCommentRequest localGetFeedCommentRequest = new GetFeedCommentRequest();
-    localGetFeedCommentRequest.a = paramFeedCommentSync;
-    CmdTaskManger.a().a(localGetFeedCommentRequest, new nuk(this, paramJobContext, paramFeedCommentSync));
+    if (this.a.a.a != null) {
+      this.a.a.a.a(this.a.a);
+    }
   }
 }
 

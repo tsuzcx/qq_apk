@@ -1,36 +1,16 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.os.Handler;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 public class aeap
-  implements AbsListView.OnScrollListener
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public aeap(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeap(VideoBaseItem paramVideoBaseItem) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (LebaWithFeeds.a(this.a) != null) {
-      LebaWithFeeds.a(this.a).a(paramAbsListView, paramInt);
-    }
-    if (LebaWithFeeds.b(this.a) != null) {
-      LebaWithFeeds.b(this.a).a(paramAbsListView, paramInt);
-    }
-    if (LebaWithFeeds.c(this.a) != null) {
-      LebaWithFeeds.c(this.a).a(paramAbsListView, paramInt);
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (LebaWithFeeds.a(this.a) != null) {
-      LebaWithFeeds.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-    if (LebaWithFeeds.b(this.a) != null) {
-      LebaWithFeeds.b(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-    if (LebaWithFeeds.c(this.a) != null) {
-      LebaWithFeeds.c(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
+    VideoBaseItem.a(this.a).post(new aeaq(this));
   }
 }
 

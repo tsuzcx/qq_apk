@@ -1,35 +1,24 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
-import java.util.List;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-public class moj
-  implements Runnable
+class moj
+  implements View.OnClickListener
 {
-  public moj(FastWebVideoFeedsAdapter paramFastWebVideoFeedsAdapter) {}
+  moj(moi parammoi, FrameLayout paramFrameLayout) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FastWebVideoInfo localFastWebVideoInfo = (FastWebVideoInfo)FastWebVideoFeedsAdapter.a(this.a).get(0);
-    Object localObject;
-    if (FastWebVideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
-    {
-      localObject = FastWebVideoFeedsAdapter.a(this.a).getChildAt(FastWebVideoFeedsAdapter.a(this.a).getHeaderViewsCount());
-      if ((localObject != null) && ((((View)localObject).getTag() instanceof FastWebVideoFeedsAdapter.VideoItemHolder)))
-      {
-        localObject = (FastWebVideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
-        if (!localFastWebVideoInfo.a(FastWebVideoFeedsAdapter.a(this.a), FastWebVideoFeedsAdapter.a(this.a))) {
-          break label106;
-        }
-        ((FastWebVideoFeedsAdapter.VideoItemHolder)localObject).k.setText(localFastWebVideoInfo.j);
-      }
+    ReadinjoyTabFrame.a(this.jdField_a_of_type_Moi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame).a();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(ReadinjoyTabFrame.a(this.jdField_a_of_type_Moi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame));
+    ReadinjoyTabFrame.a(this.jdField_a_of_type_Moi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, null);
+    if (260 == this.jdField_a_of_type_Moi.jdField_a_of_type_Int) {
+      SharedPreUtils.u(this.jdField_a_of_type_Moi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_Moi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getCurrentAccountUin(), null);
     }
-    return;
-    label106:
-    ((FastWebVideoFeedsAdapter.VideoItemHolder)localObject).a.setText(localFastWebVideoInfo.j);
   }
 }
 

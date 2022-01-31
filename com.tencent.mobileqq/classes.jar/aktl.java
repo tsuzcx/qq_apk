@@ -1,24 +1,31 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BabyQHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(16)
 public class aktl
-  implements BubblePopupWindow.OnDismissListener
+  extends BroadcastReceiver
 {
-  aktl(ContextMenuTextView paramContextMenuTextView) {}
+  public aktl(WebProcessManager paramWebProcessManager) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      ContextMenuTextView.a(this.a, null);
-    }
-    for (;;)
+    int i = paramIntent.getIntExtra("user_type", 0);
+    int j = paramIntent.getIntExtra("from_type", 0);
+    paramContext = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramContext instanceof QQAppInterface))
     {
-      this.a.a = null;
-      return;
-      ContextMenuTextView.b(this.a, null);
+      paramContext = (BabyQHandler)((QQAppInterface)paramContext).a(53);
+      if (paramContext != null) {
+        paramContext.a(i, j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
+      }
     }
   }
 }

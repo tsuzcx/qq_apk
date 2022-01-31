@@ -1,36 +1,36 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.QZoneCover;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
 
 public class svi
-  implements TextWatcher
+  implements Runnable
 {
-  public svi(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  public svi(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    paramEditable = paramEditable.toString();
-    int i = 0;
-    if (!TextUtils.isEmpty(paramEditable)) {
-      i = paramEditable.getBytes().length / 3;
-    }
-    if (i <= 40) {
-      this.a.a.setTextColor(this.a.getResources().getColor(2131494264));
+    Object localObject = ((FriendsManager)this.a.app.getManager(50)).a(this.a.app.getCurrentAccountUin());
+    if (localObject == null) {
+      this.a.j = "-1";
     }
     for (;;)
     {
-      this.a.a.setText("" + (40 - i));
+      this.a.j = "-1";
       return;
-      this.a.a.setTextColor(-65536);
+      if (((Card)localObject).lCurrentStyleId == ProfileCardTemplate.a)
+      {
+        localObject = (QZoneCover)this.a.app.getEntityManagerFactory().createEntityManager().a(QZoneCover.class, this.a.app.getCurrentAccountUin());
+        if (localObject != null) {
+          this.a.j = ((QZoneCover)localObject).type;
+        }
+      }
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

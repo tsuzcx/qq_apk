@@ -1,46 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.troop.utils.NonMainAppListViewFaceLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
 
 public class ajnr
-  extends BroadcastReceiver
+  implements ViewPager.OnPageChangeListener
 {
-  public ajnr(NonMainAppListViewFaceLoader paramNonMainAppListViewFaceLoader) {}
+  public ajnr(DotStyleNavBar paramDotStyleNavBar) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetListView == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_b_of_type_Int));
-        paramContext = paramIntent.getStringArrayListExtra("uinList");
-        paramIntent = paramIntent.getStringArrayListExtra("headPathList");
-      } while ((paramContext == null) || (paramIntent == null));
-      int j = paramContext.size();
-      if (QLog.isColorLevel()) {
-        QLog.d("NonMainAppListViewFaceLoader", 2, "onReceive, uinList:" + paramContext.toString() + " reqList:" + this.a.jdField_a_of_type_JavaUtilArrayList + ", headPathList = " + paramIntent.toString());
-      }
-      int i = 0;
-      while (i < j)
-      {
-        String str = (String)paramContext.get(i);
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.contains(str)) {
-          this.a.jdField_a_of_type_JavaUtilArrayList.remove(str);
-        }
-        this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, paramIntent.get(i));
-        i += 1;
-      }
-    } while (this.a.jdField_a_of_type_Int != 0);
-    this.a.a(false);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.a.setCurrent(paramInt);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
+    }
   }
 }
 

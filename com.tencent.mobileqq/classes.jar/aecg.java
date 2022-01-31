@@ -1,24 +1,28 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.hydevteam.pluginframework.pluginmanager.UpgradeablePluginManager;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
+import java.util.List;
 
-public class aecg
+public final class aecg
   implements Runnable
 {
-  public aecg(ReportLog paramReportLog, MobileQQ paramMobileQQ) {}
+  public aecg(String paramString, GroupVideoManager.CheckListener paramCheckListener) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_MqqAppMobileQQ instanceof BaseApplicationImpl))
+    try
     {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject != null) && ((localObject instanceof QQAppInterface)))
+      List localList = GroupVideoManager.a().getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString);
+      new Handler(Looper.getMainLooper()).post(new aech(this, localList));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
-        localObject = (QQAppInterface)localObject;
-        QLog.d("ReportLog", 1, "uncaughtException QQAppInterface exit.");
-        ((QQAppInterface)localObject).b(false);
+        Object localObject = null;
       }
     }
   }

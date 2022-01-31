@@ -1,46 +1,25 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+
 public class wuv
+  implements ViewPager.OnPageChangeListener
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  public wuv(PicSelectAdapter paramPicSelectAdapter) {}
   
-  public wuv(String paramString)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    String[] arrayOfString = paramString.split(" ");
-    if (arrayOfString.length == 1)
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = PicSelectAdapter.a(this.a).a(paramInt);
+    if (localEmoticonFromGroupEntity != null)
     {
-      this.jdField_a_of_type_JavaLangString = arrayOfString[0];
-      this.jdField_a_of_type_Boolean = true;
-      return;
+      PicSelectAdapter.a(this.a, localEmoticonFromGroupEntity);
+      PicSelectAdapter.b(this.a, localEmoticonFromGroupEntity);
     }
-    if (arrayOfString.length == 4)
-    {
-      this.b = arrayOfString[0];
-      this.c = arrayOfString[1];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = arrayOfString[3];
-      return;
-    }
-    if (arrayOfString.length > 4)
-    {
-      int j = arrayOfString.length;
-      paramString = "";
-      int i = 0;
-      while (i < j - 4)
-      {
-        paramString = paramString + arrayOfString[i] + " ";
-        i += 1;
-      }
-      this.d = paramString;
-      this.b = arrayOfString[(j - 4)];
-      this.c = arrayOfString[(j - 3)];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = arrayOfString[(j - 1)];
-      return;
-    }
-    throw new RuntimeException("format error!");
   }
 }
 

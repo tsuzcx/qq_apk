@@ -1,37 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest;
-import com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class onx
-  implements CmdTaskManger.CommandCallback
+public class onx
+  implements HorizontalSelectColorLayout.OnUndoViewClickListener
 {
-  onx(onw paramonw, JobContext paramJobContext, Integer paramInteger) {}
+  public onx(DoodleLayout paramDoodleLayout) {}
   
-  public void a(@NonNull GetTroopAssistantFeedIdListRequest paramGetTroopAssistantFeedIdListRequest, @Nullable GetTroopAssistantFeedIdListRequest.GetTroopAssistantFeedIdListResponse paramGetTroopAssistantFeedIdListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
-      return;
+    this.a.c();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 3);
     }
-    if ((paramErrorMessage.isFail()) || (paramGetTroopAssistantFeedIdListResponse == null))
-    {
-      SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-      onw.a(this.jdField_a_of_type_Onw, paramErrorMessage);
-      return;
-    }
-    onw.a(this.jdField_a_of_type_Onw).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_Boolean);
-    ((FeedManager)SuperManager.a(11)).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList);
-    paramGetTroopAssistantFeedIdListRequest = onw.a(this.jdField_a_of_type_Onw).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    onw.a(this.jdField_a_of_type_Onw, paramGetTroopAssistantFeedIdListRequest);
   }
 }
 

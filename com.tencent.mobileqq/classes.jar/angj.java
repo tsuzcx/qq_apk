@@ -1,20 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlParams;
+import cooperation.qzone.report.lp.LpReport_PicInfo_dc02153;
+import cooperation.qzone.report.lp.MachinelearningReport;
 
-public final class angj
-  implements Parcelable.Creator
+public class angj
+  implements Runnable
 {
-  public WadlParams a(Parcel paramParcel)
-  {
-    WadlParams localWadlParams = new WadlParams("");
-    localWadlParams.a(paramParcel);
-    return localWadlParams;
-  }
+  public angj(MachinelearningReport paramMachinelearningReport, LpReport_PicInfo_dc02153 paramLpReport_PicInfo_dc02153) {}
   
-  public WadlParams[] a(int paramInt)
+  public void run()
   {
-    return new WadlParams[paramInt];
+    if (this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153 != null)
+    {
+      this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153.recheckIfNeed();
+      MachinelearningReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachinelearningReport, 16, this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153);
+    }
   }
 }
 

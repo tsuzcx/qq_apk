@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.leba.header;
 
 import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class LebaPluginInfoObserver
   implements BusinessObserver
 {
+  public void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
+  
   public void a(boolean paramBoolean, Object paramObject) {}
   
   public void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void c(boolean paramBoolean, Object paramObject) {}
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
@@ -21,10 +22,19 @@ public class LebaPluginInfoObserver
       a(paramBoolean, paramObject);
       return;
     case 1: 
-      b(paramBoolean, paramObject);
-      return;
+      try
+      {
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Boolean)paramObject[1]).booleanValue());
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        QLog.e("LebaPluginInfoObserver", 1, "error of  TYPE_RED_TOUCH_PUSHED :", paramObject);
+        return;
+      }
     }
-    c(paramBoolean, paramObject);
+    b(paramBoolean, paramObject);
   }
 }
 

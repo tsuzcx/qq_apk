@@ -1,21 +1,16 @@
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.data.ApolloGameData;
 
-class yzm
+public class yzm
   implements Runnable
 {
-  yzm(yzl paramyzl) {}
+  public yzm(ApolloGameActivity paramApolloGameActivity) {}
   
   public void run()
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setRepeatCount(1);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new yzn(this));
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(localTranslateAnimation);
+    ApolloGameUtil.a(this.a, ApolloGameActivity.a(this.a).game.gameId, null, ApolloGameActivity.a(this.a).mGameType, ApolloGameActivity.a(this.a));
   }
 }
 

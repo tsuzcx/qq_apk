@@ -1,35 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.model.QueryTask.Query;
 
 public class aeqh
-  implements Runnable
+  implements QueryTask.Query
 {
-  public aeqh(NearbyGuideActivity paramNearbyGuideActivity, ArrayList paramArrayList, NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle) {}
+  public aeqh(EmoticonManager paramEmoticonManager) {}
   
-  public void run()
+  public EmoticonPackage a(Pair paramPair)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        PicInfo localPicInfo = new PicInfo();
-        localPicInfo.a = localInteger.intValue();
-        localArrayList.add(localPicInfo);
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true);
+    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqh
  * JD-Core Version:    0.7.0.1
  */

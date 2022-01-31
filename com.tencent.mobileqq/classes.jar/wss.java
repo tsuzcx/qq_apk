@@ -1,63 +1,117 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
+import com.tencent.mobileqq.activity.contacts.fragment.DiscussionFragment;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.util.ArrayList;
 
 public class wss
-  implements Runnable
+  extends DiscussionObserver
 {
-  public wss(AvatarPendantActivity paramAvatarPendantActivity) {}
+  private wss(DiscussionFragment paramDiscussionFragment) {}
   
-  public void run()
+  protected void a()
   {
-    Bitmap localBitmap2 = null;
-    localObject1 = null;
-    if (ProfileCardUtil.a()) {
-      localBitmap1 = localBitmap2;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
     }
-    try
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (this.a.c)
     {
-      localObject1 = ProfileCardUtil.b();
-      localBitmap1 = localBitmap2;
-      Object localObject2 = new File((String)localObject1);
-      localBitmap1 = localBitmap2;
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localBitmap1 = localBitmap2;
-      localObject2 = new BufferedInputStream(new FileInputStream((File)localObject2));
-      localBitmap1 = localBitmap2;
-      localOptions.inSampleSize = ((int)ImageUtil.a((InputStream)localObject2, 120, 120));
-      localBitmap1 = localBitmap2;
-      ((BufferedInputStream)localObject2).close();
-      localBitmap1 = localBitmap2;
-      localBitmap2 = BitmapManager.a((String)localObject1, localOptions);
-      localObject1 = localBitmap2;
-      if (localBitmap2 != null)
-      {
-        localBitmap1 = localBitmap2;
-        localObject1 = this.a.app.a(localBitmap2, localBitmap2.getWidth(), localBitmap2.getHeight());
+      this.a.c = false;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener.a(9999, paramBoolean, null);
       }
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localObject1 = localBitmap1;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("AvatarPendantActivity", 2, localException.toString());
-          localObject1 = localBitmap1;
-        }
-      }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
     }
-    this.a.runOnUiThread(new wst(this, (Bitmap)localObject1));
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.DiscussionFragment", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
+    }
+    if ((paramBoolean) && (this.a.isResumed())) {
+      QQToast.a(this.a.getActivity(), 2, "成功设为常用群聊", 0).a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.DiscussionFragment", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
+    }
+    if ((paramBoolean) && (this.a.isResumed())) {
+      QQToast.a(this.a.getActivity(), 2, "成功取消常用群聊", 0).a();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter.notifyDataSetChanged();
+    }
   }
 }
 

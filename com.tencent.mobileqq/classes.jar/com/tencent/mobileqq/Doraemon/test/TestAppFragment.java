@@ -20,23 +20,23 @@ public class TestAppFragment
   EditText jdField_a_of_type_AndroidWidgetEditText;
   DoraemonAPIManager jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
   
-  protected int a()
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return 2130968946;
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    this.mContentView.findViewById(2131364366).setOnClickListener(this);
+    this.mContentView.findViewById(2131364367).setOnClickListener(this);
+    this.mContentView.findViewById(2131364368).setOnClickListener(this);
+    this.mContentView.findViewById(2131364371).setOnClickListener(this);
+    this.mContentView.findViewById(2131364372).setOnClickListener(this);
+    this.mContentView.findViewById(2131364369).setOnClickListener(this);
+    this.mContentView.findViewById(2131364370).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364373));
+    DoraemonOpenAPI.a();
   }
   
-  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected int getContentLayoutId()
   {
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.e.findViewById(2131364341).setOnClickListener(this);
-    this.e.findViewById(2131364342).setOnClickListener(this);
-    this.e.findViewById(2131364343).setOnClickListener(this);
-    this.e.findViewById(2131364346).setOnClickListener(this);
-    this.e.findViewById(2131364347).setOnClickListener(this);
-    this.e.findViewById(2131364344).setOnClickListener(this);
-    this.e.findViewById(2131364345).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.e.findViewById(2131364348));
-    DoraemonOpenAPI.a();
+    return 2130968948;
   }
   
   public void onClick(View paramView)
@@ -54,22 +54,22 @@ public class TestAppFragment
     {
     default: 
       return;
-    case 2131364341: 
+    case 2131364366: 
       this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("hello", null, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131364342: 
+    case 2131364367: 
       this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("login", null, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131364343: 
+    case 2131364368: 
       this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getSkey", new APIParam(), new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131364344: 
+    case 2131364369: 
       this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getUserInfo", new APIParam(), new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131364345: 
+    case 2131364370: 
       this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getAppFriends", new APIParam(), new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
-    case 2131364346: 
+    case 2131364371: 
       this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("getLocation", null, new TestAppFragment.MyAPICallback(this.jdField_a_of_type_AndroidWidgetEditText));
       return;
     }

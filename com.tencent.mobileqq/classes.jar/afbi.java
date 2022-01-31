@@ -1,10 +1,19 @@
-import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
 
-public final class afbi
+public class afbi
+  extends ProtoUtils.TroopGiftProtocolObserver
 {
-  String jdField_a_of_type_JavaLangString;
+  public afbi(NowShortVideoProtoManager paramNowShortVideoProtoManager, NowShortVideoProtoManager.Callback paramCallback) {}
   
-  private afbi(TopicLabelListView paramTopicLabelListView) {}
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback.a(paramInt, paramArrayOfByte, paramBundle);
+    }
+  }
 }
 
 

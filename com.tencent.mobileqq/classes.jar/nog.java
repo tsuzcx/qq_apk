@@ -1,17 +1,31 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode;
+import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode.StoryVideoPublishStatusReceiver;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class nog
-  extends AnimatorListenerAdapter
+  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public nog(StoryPlayVideoActivity paramStoryPlayVideoActivity, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
+  public nog(MsgTabPlayMode.StoryVideoPublishStatusReceiver paramStoryVideoPublishStatusReceiver, MsgTabPlayMode paramMsgTabPlayMode, StoryVideoItem paramStoryVideoItem) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setVisibility(4);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayVideoActivity.finish();
+    if (QLog.isColorLevel()) {
+      QLog.e(MsgTabPlayMode.StoryVideoPublishStatusReceiver.b(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode$StoryVideoPublishStatusReceiver), 2, new Object[] { "get self publish success video info failed. vid=", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    }
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(MsgTabPlayMode.StoryVideoPublishStatusReceiver.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode$StoryVideoPublishStatusReceiver), 2, new Object[] { "get self publish success video info finish. size=", Integer.valueOf(paramArrayList.size()) });
+    }
+    if (!paramArrayList.isEmpty()) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.a.post(new noh(this, paramArrayList));
+    }
   }
 }
 

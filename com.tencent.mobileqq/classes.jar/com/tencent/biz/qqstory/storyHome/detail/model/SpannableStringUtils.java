@@ -28,7 +28,7 @@ import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.mobileqq.text.QQTextBuilder;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.List;
-import nuu;
+import nzj;
 
 public class SpannableStringUtils
 {
@@ -236,7 +236,7 @@ public class SpannableStringUtils
   
   public static void a(SpannableStringBuilder paramSpannableStringBuilder, int paramInt1, int paramInt2, SpannableStringUtils.ClickNickCallback paramClickNickCallback, String paramString, int paramInt3)
   {
-    paramSpannableStringBuilder.setSpan(new nuu(paramClickNickCallback, paramString, paramInt3), paramInt1, paramInt2, 33);
+    paramSpannableStringBuilder.setSpan(new nzj(paramClickNickCallback, paramString, paramInt3), paramInt1, paramInt2, 33);
   }
   
   private static void a(SpannableStringBuilder paramSpannableStringBuilder, String paramString, int paramInt1, int paramInt2)
@@ -334,7 +334,7 @@ public class SpannableStringUtils
           i = paramClickNickCallback.length();
           j = "[icon]  ".length();
           paramClickNickCallback.append("[icon]  ");
-          a(paramClickNickCallback, i, j + i, 2130845026);
+          a(paramClickNickCallback, i, j + i, 2130845101);
         }
         return paramClickNickCallback;
         i = 0;
@@ -495,15 +495,15 @@ public class SpannableStringUtils
         break label52;
       }
     }
-    a(localSpannableStringBuilder, j, k, 2130841963, 37, 16);
+    a(localSpannableStringBuilder, j, k, 2130841994, 37, 16);
     return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130841965, 37, 16);
+    a(localSpannableStringBuilder, j, k, 2130841996, 37, 16);
     return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130841964, 37, 16);
+    a(localSpannableStringBuilder, j, k, 2130841995, 37, 16);
     return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130841962, 37, 16);
+    a(localSpannableStringBuilder, j, k, 2130841993, 37, 16);
     return localSpannableStringBuilder;
-    a(localSpannableStringBuilder, j, k, 2130841961, 37, 16);
+    a(localSpannableStringBuilder, j, k, 2130841992, 37, 16);
     return localSpannableStringBuilder;
   }
 }

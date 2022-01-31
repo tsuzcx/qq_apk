@@ -1,35 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.plugin.IPluginManager;
-import cooperation.troop.TroopPluginManager;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
-import java.lang.ref.WeakReference;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class anfg
-  implements Runnable
+public abstract interface anfg
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new anfh(this, Looper.getMainLooper());
-  TroopPluginManager.TroopPluginCallback jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback;
-  String jdField_a_of_type_JavaLangString;
+  public abstract void a(boolean paramBoolean, PluginRecord paramPluginRecord);
   
-  public anfg(TroopPluginManager paramTroopPluginManager, TroopPluginManager.TroopPluginCallback paramTroopPluginCallback, String paramString)
-  {
-    this.jdField_a_of_type_CooperationTroopTroopPluginManager$TroopPluginCallback = paramTroopPluginCallback;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void run()
-  {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_CooperationTroopTroopPluginManager.a.get();
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = (IPluginManager)((QQAppInterface)localObject).getManager(26);
-    } while (localObject == null);
-    ((IPluginManager)localObject).a(this.jdField_a_of_type_JavaLangString, false, new anfi(this));
-  }
+  public abstract void d(PluginRecord paramPluginRecord);
 }
 
 

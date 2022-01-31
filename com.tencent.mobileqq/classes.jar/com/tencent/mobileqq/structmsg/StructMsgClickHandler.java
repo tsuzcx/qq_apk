@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.structmsg;
 
-import aihj;
+import aimc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -63,11 +62,11 @@ public class StructMsgClickHandler
     if ((jdField_a_of_type_ComTencentWidgetActionSheet == null) || (!jdField_a_of_type_ComTencentWidgetActionSheet.getContext().equals(paramContext)))
     {
       jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(paramContext);
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131435092, 1);
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131435093, 1);
-      jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(String.format(paramContext.getString(2131435113), new Object[] { paramString }));
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(new aihj(paramString, paramContext));
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131435108, 1);
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131435109, 1);
+      jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(String.format(paramContext.getString(2131435129), new Object[] { paramString }));
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(new aimc(paramString, paramContext));
     }
     if (!jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
       jdField_a_of_type_ComTencentWidgetActionSheet.show();
@@ -255,7 +254,7 @@ public class StructMsgClickHandler
             return false;
           }
         }
-        catch (PackageManager.NameNotFoundException paramString2)
+        catch (Exception paramString2)
         {
           if (QLog.isColorLevel()) {
             QLog.d("StructMsg", 2, paramString2.getMessage());

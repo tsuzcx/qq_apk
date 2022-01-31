@@ -1,64 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.extendfriend.utils.ExtendFriendResourceUtil;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import java.io.File;
 
 public class acrk
-  extends FMObserver
+  extends RecyclerView.ViewHolder
 {
-  public acrk(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public acrk(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView)
   {
-    super.a(paramInt, paramLong, paramString);
-    FileManagerUtil.a(paramLong, paramInt, paramString);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362724));
   }
   
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  public void a(acrk paramacrk, acrq paramacrq)
   {
-    super.a(paramLong, paramString1, paramInt, paramString2);
-    FileManagerUtil.a(paramLong);
-  }
-  
-  protected void a(ThumbnailInfo paramThumbnailInfo)
-  {
-    if (paramThumbnailInfo == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
+    paramacrk.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment).getHeight();
+    paramacrq = URLDrawable.URLDrawableOptions.obtain();
+    paramacrq.mLoadingDrawable = URLDrawableHelper.a;
+    paramacrq.mFailedDrawable = URLDrawableHelper.a;
+    paramacrq = ExtendFriendResourceUtil.a("expand_square_blank.png");
+    if (new File(paramacrq).exists())
     {
-      do
-      {
-        return;
-      } while (!(paramThumbnailInfo.a instanceof FileManagerEntity));
-      localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
-    } while ((paramThumbnailInfo.b == null) || (paramThumbnailInfo.b.length() <= 0));
-    localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
-    QfileBaseLocalFileTabView.a(this.a).a().c(localFileManagerEntity);
-    this.a.i();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QfileBaseLocalFileTabView.a(this.a, new acrl(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    QfileBaseLocalFileTabView.b(this.a, new acrm(this, paramLong2, paramBoolean, paramInt2, paramString2));
-  }
-  
-  protected void b()
-  {
-    super.b();
-    QfileBaseLocalFileTabView.c(this.a, new acrn(this));
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+      paramacrq = ExtendFriendResourceUtil.a(paramacrq, localOptions);
+      paramacrk.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new BitmapDrawable(paramacrq));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.automator.step.CheckAuthCode;
 
-public final class zwk
-  implements Runnable
+public class zwk
+  extends ConfigObserver
 {
-  public void run()
+  private zwk(CheckAuthCode paramCheckAuthCode) {}
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (SosoInterface.a().size() == 0) {
-      SosoInterface.c();
-    }
+    this.a.a(7);
   }
 }
 

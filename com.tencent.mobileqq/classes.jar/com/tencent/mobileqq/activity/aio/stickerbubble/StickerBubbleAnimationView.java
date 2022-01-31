@@ -28,10 +28,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import wbr;
-import wbs;
-import wbt;
-import wbu;
+import wgz;
+import wha;
+import whb;
+import whc;
 
 public class StickerBubbleAnimationView
   extends View
@@ -101,13 +101,13 @@ public class StickerBubbleAnimationView
     return paramArrayOfBitmapDrawable[0];
   }
   
-  private StickerBubbleAnimationItem a(wbu paramwbu, long paramLong)
+  private StickerBubbleAnimationItem a(whc paramwhc, long paramLong)
   {
-    ItemStatus.Velocity localVelocity = new ItemStatus.Velocity(wbu.a(paramwbu));
-    ItemStatus.Acceleration localAcceleration = new ItemStatus.Acceleration(wbu.a(paramwbu));
-    paramwbu = new StickerBubbleAnimationItem(((BitmapDrawable[])this.c.get(wbu.a(paramwbu)))[0], wbu.a(paramwbu), localVelocity, localAcceleration, 1.0D, paramLong, wbu.a(paramwbu), wbu.a(paramwbu));
-    paramwbu.a(this);
-    return paramwbu;
+    ItemStatus.Velocity localVelocity = new ItemStatus.Velocity(whc.a(paramwhc));
+    ItemStatus.Acceleration localAcceleration = new ItemStatus.Acceleration(whc.a(paramwhc));
+    paramwhc = new StickerBubbleAnimationItem(((BitmapDrawable[])this.c.get(whc.a(paramwhc)))[0], whc.a(paramwhc), localVelocity, localAcceleration, 1.0D, paramLong, whc.a(paramwhc), whc.a(paramwhc));
+    paramwhc.a(this);
+    return paramwhc;
   }
   
   private void a(Canvas paramCanvas, long paramLong)
@@ -180,12 +180,12 @@ public class StickerBubbleAnimationView
   
   private void a(ManualDecodeGifImage paramManualDecodeGifImage, BitmapDrawable[] paramArrayOfBitmapDrawable, String paramString, int paramInt)
   {
-    ThreadManager.post(new wbs(this, paramArrayOfBitmapDrawable, paramManualDecodeGifImage, paramString, paramInt), 8, null, true);
+    ThreadManager.post(new wha(this, paramArrayOfBitmapDrawable, paramManualDecodeGifImage, paramString, paramInt), 8, null, true);
   }
   
   private void a(String paramString)
   {
-    ThreadManager.postImmediately(new wbt(this, paramString), null, true);
+    ThreadManager.postImmediately(new whb(this, paramString), null, true);
   }
   
   private void a(Set paramSet)
@@ -291,47 +291,47 @@ public class StickerBubbleAnimationView
     }
   }
   
-  private void a(wbu paramwbu, long paramLong)
+  private void a(whc paramwhc, long paramLong)
   {
     List localList;
     Object localObject;
-    if (wbu.a(paramwbu))
+    if (whc.a(paramwhc))
     {
-      localList = (List)this.jdField_b_of_type_JavaUtilMap.get(wbu.a(paramwbu));
+      localList = (List)this.jdField_b_of_type_JavaUtilMap.get(whc.a(paramwhc));
       localObject = localList;
       if (localList == null)
       {
         localObject = new LinkedList();
-        if (!wbu.a(paramwbu)) {
+        if (!whc.a(paramwhc)) {
           break label111;
         }
-        this.jdField_b_of_type_JavaUtilMap.put(wbu.a(paramwbu), localObject);
+        this.jdField_b_of_type_JavaUtilMap.put(whc.a(paramwhc), localObject);
       }
       label66:
-      if (!wbu.a(paramwbu)) {
+      if (!whc.a(paramwhc)) {
         break label130;
       }
     }
     label130:
-    for (paramwbu = b(paramwbu, paramLong);; paramwbu = a(paramwbu, paramLong))
+    for (paramwhc = b(paramwhc, paramLong);; paramwhc = a(paramwhc, paramLong))
     {
-      ((List)localObject).add(paramwbu);
+      ((List)localObject).add(paramwhc);
       return;
-      localList = (List)this.jdField_a_of_type_JavaUtilMap.get(wbu.a(paramwbu));
+      localList = (List)this.jdField_a_of_type_JavaUtilMap.get(whc.a(paramwhc));
       break;
       label111:
-      this.jdField_a_of_type_JavaUtilMap.put(wbu.a(paramwbu), localObject);
+      this.jdField_a_of_type_JavaUtilMap.put(whc.a(paramwhc), localObject);
       break label66;
     }
   }
   
-  private StickerBubbleAnimationItem b(wbu paramwbu, long paramLong)
+  private StickerBubbleAnimationItem b(whc paramwhc, long paramLong)
   {
-    ItemStatus.Velocity localVelocity = new ItemStatus.Velocity(wbu.a(paramwbu));
-    ItemStatus.Acceleration localAcceleration = new ItemStatus.Acceleration(wbu.a(paramwbu));
-    paramwbu = new StickerBubbleAnimationItem(((BitmapDrawable[])this.c.get(wbu.a(paramwbu)))[0], wbu.a(paramwbu), localVelocity, localAcceleration, paramLong, 1.7D, true, wbu.a(paramwbu), wbu.a(paramwbu));
-    paramwbu.a(this);
-    return paramwbu;
+    ItemStatus.Velocity localVelocity = new ItemStatus.Velocity(whc.a(paramwhc));
+    ItemStatus.Acceleration localAcceleration = new ItemStatus.Acceleration(whc.a(paramwhc));
+    paramwhc = new StickerBubbleAnimationItem(((BitmapDrawable[])this.c.get(whc.a(paramwhc)))[0], whc.a(paramwhc), localVelocity, localAcceleration, paramLong, 1.7D, true, whc.a(paramwhc), whc.a(paramwhc));
+    paramwhc.a(this);
+    return paramwhc;
   }
   
   private void b()
@@ -411,25 +411,25 @@ public class StickerBubbleAnimationView
   
   public void a(StickerBubbleAnimationItem paramStickerBubbleAnimationItem)
   {
-    post(new wbr(this, paramStickerBubbleAnimationItem));
+    post(new wgz(this, paramStickerBubbleAnimationItem));
   }
   
-  public void a(wbu paramwbu)
+  public void a(whc paramwhc)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(wbu.a(paramwbu)))
+    if (!this.jdField_a_of_type_JavaLangString.equals(whc.a(paramwhc)))
     {
       this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_JavaLangString = wbu.a(paramwbu);
+      this.jdField_a_of_type_JavaLangString = whc.a(paramwhc);
     }
     this.jdField_a_of_type_Int += 1;
-    List localList = (List)this.e.get(wbu.a(paramwbu));
+    List localList = (List)this.e.get(whc.a(paramwhc));
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.e.put(wbu.a(paramwbu), localObject);
+      this.e.put(whc.a(paramwhc), localObject);
     }
-    ((List)localObject).add(paramwbu);
+    ((List)localObject).add(paramwhc);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -452,7 +452,7 @@ public class StickerBubbleAnimationView
         }
         Iterator localIterator2 = ((List)localObject).iterator();
         while (localIterator2.hasNext()) {
-          a((wbu)localIterator2.next(), l);
+          a((whc)localIterator2.next(), l);
         }
         ((List)localObject).clear();
       }

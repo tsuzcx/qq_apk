@@ -8,7 +8,7 @@ import android.view.GestureDetector;
 import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import mzj;
+import ndd;
 
 public class PublicAccountImageView
   extends URLImageView
@@ -33,7 +33,7 @@ public class PublicAccountImageView
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     paramContext = new PublicAccountImageView.MatrixTouchListener(this);
     setOnTouchListener(paramContext);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new mzj(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new ndd(this, paramContext));
     setBackgroundColor(-16777216);
     if (paramInt1 == 1) {
       setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -57,7 +57,7 @@ public class PublicAccountImageView
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     paramContext = new PublicAccountImageView.MatrixTouchListener(this);
     setOnTouchListener(paramContext);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new mzj(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new ndd(this, paramContext));
     setBackgroundColor(-16777216);
     setScaleType(ImageView.ScaleType.MATRIX);
     a();

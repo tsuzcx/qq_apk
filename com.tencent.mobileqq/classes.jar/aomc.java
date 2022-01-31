@@ -1,28 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import dov.com.tencent.biz.qqstory.takevideo.poilist.SearchPoiListLayout;
 
 public class aomc
-  extends Handler
+  implements TextWatcher
 {
-  public aomc(BeautyBar paramBeautyBar) {}
+  public aomc(SearchPoiListLayout paramSearchPoiListLayout) {}
   
-  public void handleMessage(Message paramMessage)
+  public void afterTextChanged(Editable paramEditable)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (BeautyBar.a(this.a) != null) {
-        BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
-      }
-    } while (BeautyBar.a(this.a) == null);
-    BeautyBar.a(this.a).startAnimation(BeautyBar.a(this.a));
+    SearchPoiListLayout.a(this.a);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

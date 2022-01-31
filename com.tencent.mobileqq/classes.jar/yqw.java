@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class yqw
-  implements Runnable
+  implements Observer
 {
-  public yqw(CmGameAvHandler paramCmGameAvHandler, boolean paramBoolean) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
   
-  public void run()
+  public yqw(QQAppInterface paramQQAppInterface)
   {
-    CmGameAvHandler.b(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler, this.jdField_a_of_type_Boolean);
-    AVEngineWalper.a().b(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
+  
+  public void update(Observable paramObservable, Object paramObject) {}
 }
 
 

@@ -1,14 +1,10 @@
 package c.t.m.g;
 
-final class w
-  implements Runnable
+import java.util.List;
+
+public abstract interface w
 {
-  w(v paramv) {}
-  
-  public final void run()
-  {
-    this.a.a();
-  }
+  public abstract List<v> a();
 }
 
 

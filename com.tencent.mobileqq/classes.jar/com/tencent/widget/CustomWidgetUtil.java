@@ -88,11 +88,11 @@ public class CustomWidgetUtil
           break;
         }
         paramString = "";
-        paramInt1 = 2130846051;
+        paramInt1 = 2130846133;
         paramInt2 = 0;
         break;
         if (paramInt3 > 0) {}
-        for (paramInt2 = paramInt3;; paramInt2 = 2130846055)
+        for (paramInt2 = paramInt3;; paramInt2 = 2130846137)
         {
           paramString = "NEW";
           paramInt1 = 0;
@@ -106,7 +106,7 @@ public class CustomWidgetUtil
           break;
         }
         paramString = "";
-        paramInt1 = 2130846054;
+        paramInt1 = 2130846136;
         paramInt2 = 0;
         break;
         if (paramInt3 > 0) {}
@@ -119,7 +119,7 @@ public class CustomWidgetUtil
           paramInt1 = 0;
           paramInt2 = paramInt3;
           break;
-          paramInt3 = 2130846055;
+          paramInt3 = 2130846137;
         }
         label207:
         paramString = String.valueOf(paramInt2);
@@ -136,7 +136,7 @@ public class CustomWidgetUtil
           paramInt1 = 0;
           paramInt2 = paramInt3;
           break;
-          paramInt3 = 2130846055;
+          paramInt3 = 2130846137;
         }
         label247:
         paramString = String.valueOf(paramInt2);
@@ -144,7 +144,7 @@ public class CustomWidgetUtil
         paramInt2 = paramInt3;
         break;
         if (paramInt3 > 0) {}
-        for (paramInt2 = paramInt3;; paramInt2 = 2130846055)
+        for (paramInt2 = paramInt3;; paramInt2 = 2130846137)
         {
           if (!TextUtils.isEmpty(paramString)) {
             break label289;
@@ -157,7 +157,7 @@ public class CustomWidgetUtil
         paramInt1 = 0;
         break;
       }
-      Object localObject = paramTextView.getTag(2131363207);
+      Object localObject = paramTextView.getTag(2131363211);
       if (((localObject == null) && (paramInt1 == 0)) || (((localObject instanceof Integer)) && (((Integer)localObject).intValue() == paramInt1))) {}
       for (;;)
       {
@@ -170,7 +170,7 @@ public class CustomWidgetUtil
         paramTextView.setVisibility(0);
         return;
         paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt1, 0, 0, 0);
-        paramTextView.setTag(2131363207, Integer.valueOf(paramInt1));
+        paramTextView.setTag(2131363211, Integer.valueOf(paramInt1));
         paramTextView.setText(paramString);
         paramTextView.setPadding(0, 0, 0, 0);
       }

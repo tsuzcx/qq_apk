@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.FileInfo;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetFileInfoCallBack;
 
-class adqi
-  implements DialogInterface.OnClickListener
+public final class adqi
+  implements Runnable
 {
-  adqi(adqh paramadqh) {}
+  public adqi(String paramString, UniformDownloadUtil.GetFileInfoCallBack paramGetFileInfoCallBack) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a == 1) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(0);
+    UniformDownloadUtil.FileInfo localFileInfo = UniformDownloadUtil.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadUtil$GetFileInfoCallBack != null) && (localFileInfo != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadUtil$GetFileInfoCallBack.a(localFileInfo.jdField_a_of_type_JavaLangString, localFileInfo.jdField_a_of_type_Long);
     }
-    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adqi
  * JD-Core Version:    0.7.0.1
  */

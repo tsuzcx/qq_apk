@@ -7,7 +7,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import jhs;
+import jjv;
 
 public class QavGPDownloadObserver
 {
@@ -43,7 +43,7 @@ public class QavGPDownloadObserver
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.video.qavgameplaysomgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new jhs(this), localIntentFilter) != null;
+    return paramBaseApplicationImpl.registerReceiver(new jjv(this), localIntentFilter) != null;
   }
   
   public boolean b()
@@ -77,7 +77,7 @@ public class QavGPDownloadObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.gameplay.QavGPDownloadObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,19 @@
-import com.tencent.av.business.manager.EffectOperateManager;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 
 public class jfi
-  extends jfk
+  implements Runnable
 {
-  public jfi(EffectOperateManager paramEffectOperateManager)
-  {
-    super(paramEffectOperateManager);
-  }
+  public jfi(VideoController paramVideoController) {}
   
   public void run()
   {
-    EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.a.get();
-    if (localEffectOperateManager != null) {
-      localEffectOperateManager.c();
-    }
+    this.a.b(this.a.a().c, 12);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jfi
  * JD-Core Version:    0.7.0.1
  */

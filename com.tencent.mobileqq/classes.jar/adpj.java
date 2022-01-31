@@ -1,26 +1,20 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import com.tencent.mobileqq.hiboom.HiBoomTextView.OnDoubleClick;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class adpj
-  extends GestureDetector.SimpleOnGestureListener
+public final class adpj
+  implements Runnable
 {
-  public adpj(HiBoomTextView paramHiBoomTextView) {}
+  public adpj(int paramInt1, String paramString, int paramInt2) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.a(this.a);
-      return true;
-    }
-    return super.onDoubleTap(paramMotionEvent);
+    QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b).b(FMToastUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adpj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloGameArkHandler;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQHeadDownloadHandler;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
 public class yjr
   implements Runnable
 {
-  public yjr(ApolloGameArkHandler paramApolloGameArkHandler, String paramString) {}
+  public yjr(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
   public void run()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    Object localObject;
-    do
-    {
-      Setting localSetting;
-      do
-      {
-        do
-        {
-          return;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler.a();
-        } while (localObject == null);
-        localSetting = ((QQAppInterface)localObject).c(this.jdField_a_of_type_JavaLangString);
-      } while ((localSetting == null) || (TextUtils.isEmpty(localSetting.url)));
-      localObject = MsfSdkUtils.insertMtype("QQHeadIcon", ((FriendListHandler)((QQAppInterface)localObject).a(1)).a().a(localSetting.url, localSetting.bFaceFlags, localSetting.bUsrType, 0));
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler.a(this.jdField_a_of_type_JavaLangString, (String)localObject);
+    this.a.a.serial();
+    this.a.app.a().a(this.a.a.frienduin, this.a.a.istroop, this.a.a.uniseq, this.a.a.msgData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yjr
  * JD-Core Version:    0.7.0.1
  */

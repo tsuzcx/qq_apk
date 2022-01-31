@@ -1,20 +1,29 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
 
-class pgg
-  implements Runnable
+public class pgg
+  implements IphonePickerView.PickerViewAdapter
 {
-  pgg(pgf parampgf, Drawable paramDrawable) {}
+  public pgg(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
   
-  public void run()
+  public int getColumnCount()
   {
-    this.jdField_a_of_type_Pgf.a.listener.onImageLoaded(this.jdField_a_of_type_Pgf.a.url, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Pgf.a.options);
+    return 1;
+  }
+  
+  public int getRowCount(int paramInt)
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+  }
+  
+  public String getText(int paramInt1, int paramInt2)
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pgg
  * JD-Core Version:    0.7.0.1
  */

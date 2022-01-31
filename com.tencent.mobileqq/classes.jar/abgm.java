@@ -1,16 +1,18 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.qq.im.poi.LbsPackSendActivity;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class abgm
-  implements Runnable
+public class abgm
+  implements DialogInterface.OnClickListener
 {
-  abgm(abgl paramabgl, Bitmap paramBitmap) {}
+  public abgm(ARMapActivity paramARMapActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((ImageView)this.jdField_a_of_type_Abgl.a.b.findViewById(2131369586)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    LbsPackSendActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 105);
   }
 }
 

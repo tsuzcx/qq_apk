@@ -1,69 +1,74 @@
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.utils.SignalStrengthReport;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class kcu
-  extends PagerAdapter
+  implements Runnable
 {
-  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter;
+  public kcu(VideoControlUI paramVideoControlUI) {}
   
-  public kcu(EffectCycleViewPager paramEffectCycleViewPager, PagerAdapter paramPagerAdapter)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = paramPagerAdapter;
-    paramPagerAdapter.registerDataSetObserver(new kcv(this, paramEffectCycleViewPager));
-  }
-  
-  int a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1;
+    String str;
+    Object localObject;
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+    {
+      str = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+      if (str == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(this.a.c, 2, "can not get shape info");
+        }
+        return;
+      }
+      if (this.a.k != null)
+      {
+        if (!AudioHelper.b) {
+          break label230;
+        }
+        localObject = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if ((localObject == null) || (((AVActivity)localObject).a == null)) {
+          break label230;
+        }
+        localObject = ((AVActivity)localObject).a.a();
+        str = str + "\r\n" + (String)localObject;
+      }
     }
-    if (paramInt == this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() + 1) {
-      return 0;
+    label196:
+    label230:
+    for (;;)
+    {
+      localObject = str;
+      try
+      {
+        str = str + "\r\n";
+        localObject = str;
+        str = str + SignalStrengthReport.a(VideoController.a().a()).a();
+        localObject = str;
+        str = str + "\r\n";
+        localObject = str;
+      }
+      catch (Exception localException)
+      {
+        break label196;
+      }
+      this.a.k.setText((CharSequence)localObject);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
+      return;
     }
-    return paramInt - 1;
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    int i = a(paramInt);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.remove(paramInt);
-    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(paramViewGroup, i, paramObject);
-  }
-  
-  public int getCount()
-  {
-    int i = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount();
-    if (i > 0) {
-      return i + 2;
-    }
-    return 0;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    int i = a(paramInt);
-    paramViewGroup = (View)this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.instantiateItem(paramViewGroup, i);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.put(paramInt, paramViewGroup);
-    return paramViewGroup;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.isViewFromObject(paramView, paramObject);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1);
-    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcu
  * JD-Core Version:    0.7.0.1
  */

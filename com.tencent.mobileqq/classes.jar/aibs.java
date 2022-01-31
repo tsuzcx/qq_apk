@@ -1,26 +1,43 @@
-import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
+import com.tencent.common.app.BaseProtocolCoder;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.compatible.ActionListener;
+import com.tencent.mobileqq.service.MobileQQService;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class aibs
-  extends GestureKeyInfo
+  extends ActionListener
 {
-  public String b;
-  public int e = 0;
-  public int f = 0;
+  public aibs(MobileQQService paramMobileQQService) {}
   
-  public aibs(GestureMgrRecognize paramGestureMgrRecognize) {}
-  
-  public void a(aibs paramaibs)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    super.a(paramaibs);
-    paramaibs.e = this.e;
-    paramaibs.f = this.f;
-    paramaibs.b = this.b;
+    if ((paramFromServiceMsg != null) && ("VideoSvc.Send".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
+    {
+      localObject = this.a.a("VideoSvc.Send");
+      if (localObject != null)
+      {
+        localObject = ((BaseProtocolCoder)localObject).a(paramToServiceMsg, paramFromServiceMsg);
+        localMessageHandler = MobileQQService.a(this.a).a();
+        if ((localMessageHandler != null) && (localObject != null)) {
+          localMessageHandler.a(paramToServiceMsg, paramFromServiceMsg, localObject);
+        }
+      }
+    }
+    while (paramFromServiceMsg == null)
+    {
+      Object localObject;
+      MessageHandler localMessageHandler;
+      return;
+    }
+    this.a.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aibs
  * JD-Core Version:    0.7.0.1
  */

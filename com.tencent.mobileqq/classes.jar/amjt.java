@@ -1,22 +1,21 @@
-import android.text.TextUtils;
-import cooperation.comic.jsp.QQComicJsCallback;
-import cooperation.comic.jsp.QQComicJsPlugin;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.widget.KandianPopupWindow;
 
 public class amjt
-  implements QQComicJsCallback
+  implements PopupWindow.OnDismissListener
 {
-  public amjt(QQComicJsPlugin paramQQComicJsPlugin) {}
+  public amjt(KandianPopupWindow paramKandianPopupWindow) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onDismiss()
   {
-    if (!TextUtils.isEmpty(paramString1)) {
-      QQComicJsPlugin.a(this.a, paramString1, new String[] { paramString2 });
-    }
+    this.a.a = null;
+    KandianPopupWindow.a(this.a, 1.0F);
+    com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjt
  * JD-Core Version:    0.7.0.1
  */

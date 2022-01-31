@@ -14,7 +14,7 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ExecutorService;
-import lrm;
+import luq;
 import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.ReqBody;
 import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.RspBody;
 import tencent.im.oidb.cmd0xa70.oidb_cmd0xa70.VideoReqInfo;
@@ -85,7 +85,7 @@ public class KingShareReadInjoyModule
     paramFromServiceMsg.jdField_e_of_type_Int = paramFromServiceMsg.jdField_c_of_type_Int;
     paramFromServiceMsg.jdField_d_of_type_Int = paramFromServiceMsg.jdField_b_of_type_Int;
     paramFromServiceMsg.jdField_a_of_type_Long = ((oidb_cmd0xa70.VideoRspInfo)paramToServiceMsg.msg_video_rsp_info.get()).uint64_duration.get();
-    this.a.post(new lrm(this, i, paramFromServiceMsg));
+    this.a.post(new luq(this, i, paramFromServiceMsg));
   }
 }
 

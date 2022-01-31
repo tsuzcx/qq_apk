@@ -26,13 +26,13 @@ import java.util.HashMap;
 import java.util.List;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import xgf;
-import xgg;
-import xgi;
-import xgk;
-import xgl;
-import xgm;
-import xgn;
+import xlz;
+import xma;
+import xmc;
+import xme;
+import xmf;
+import xmg;
+import xmh;
 
 public class QWalletIPCModule
   extends QIPCModule
@@ -169,14 +169,14 @@ public class QWalletIPCModule
       String str = paramBundle.getString("md5");
       long l = paramBundle.getLong("md5_time");
       boolean bool = paramBundle.getBoolean("is_force_unzip");
-      ((PreloadManager)paramQQAppInterface.getManager(150)).a((String)localObject, str, l, new xgm(this, paramInt), bool);
+      ((PreloadManager)paramQQAppInterface.getManager(150)).a((String)localObject, str, l, new xmg(this, paramInt), bool);
       return null;
     }
     Object localObject = paramBundle.getStringArray("url");
     if (localObject == null) {}
     for (localObject = null;; localObject = Arrays.asList((Object[])localObject))
     {
-      paramBundle = new xgl(this, (ResultReceiver)paramBundle.getParcelable("receiver"));
+      paramBundle = new xmf(this, (ResultReceiver)paramBundle.getParcelable("receiver"));
       ((PreloadManager)paramQQAppInterface.getManager(150)).a((List)localObject, paramBundle);
       return null;
     }
@@ -222,7 +222,7 @@ public class QWalletIPCModule
       {
         return null;
         paramBundle = (RedPacketInfoBase)paramBundle.getParcelable("key_red_packet_info");
-        localObject = new xgn(this, (Bundle)localObject, localResultReceiver);
+        localObject = new xmh(this, (Bundle)localObject, localResultReceiver);
         if (paramInt == 1) {
           localIRedPacket.getSkin(paramBundle, (IRedPacket.OnGetSkinListener)localObject);
         }
@@ -237,6 +237,10 @@ public class QWalletIPCModule
         return EIPCResult.createSuccessResult((Bundle)localObject);
         localIRedPacket.requestRedPacketSkinList();
       }
+    case 6: 
+      paramInt = paramBundle.getInt("theme_id");
+      ((Bundle)localObject).putBoolean("key_theme_exist", ((RedPacketManager)RedPacketManager.getInstance()).onGetThemeConfig(paramInt));
+      return EIPCResult.createSuccessResult((Bundle)localObject);
     }
     paramBundle = localIRedPacket.getPopAd(paramBundle.getInt("key_skin_id", 0), paramBundle.getInt("key_channel", 0));
     if (paramBundle != null)
@@ -263,7 +267,7 @@ public class QWalletIPCModule
       if (QLog.isColorLevel()) {
         QLog.d("QWalletIPCModule", 2, "onCall getFilePathByResID");
       }
-      ThreadManager.post(new xgf(this, paramBundle, paramInt, (AppRuntime)localObject), 5, null, true);
+      ThreadManager.post(new xlz(this, paramBundle, paramInt, (AppRuntime)localObject), 5, null, true);
     }
     do
     {
@@ -275,7 +279,7 @@ public class QWalletIPCModule
           if (QLog.isColorLevel()) {
             QLog.d("QWalletIPCModule", 2, "onCall downloadModule:" + System.currentTimeMillis());
           }
-          ThreadManager.post(new xgg(this, paramBundle, (AppRuntime)localObject, paramString), 5, null, true);
+          ThreadManager.post(new xma(this, paramBundle, (AppRuntime)localObject, paramString), 5, null, true);
           callbackResult(paramInt, null);
         }
         else
@@ -293,7 +297,7 @@ public class QWalletIPCModule
           }
           if ("request_gold_msg_entry".equals(paramString))
           {
-            ThreadManager.post(new xgi(this, (AppRuntime)localObject), 5, null, true);
+            ThreadManager.post(new xmc(this, (AppRuntime)localObject), 5, null, true);
           }
           else
           {
@@ -350,7 +354,7 @@ public class QWalletIPCModule
                   }
                   localObject = new Bundle();
                   if (paramInt == 0) {
-                    paramBundle.c(new xgk(this, (Bundle)localObject, paramInt, paramString, paramBundle));
+                    paramBundle.c(new xme(this, (Bundle)localObject, paramInt, paramString, paramBundle));
                   }
                   ((Bundle)localObject).putInt("isUpdateSuccess", 0);
                   ((Bundle)localObject).putInt("updateResult", paramInt);

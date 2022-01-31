@@ -1,31 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-public final class wci
-  implements Runnable
+class wci
+  implements PublicAccountManager.InitDoneObserver
 {
-  public wci(LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton) {}
+  wci(wch paramwch) {}
   
-  public void run()
+  public void a()
   {
-    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845635);
-    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845636);
-    Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845677);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845778);
-    localStateListDrawable.addState(new int[] { -16842910 }, localDrawable4);
-    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845781);
-    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable4);
-    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845782);
-    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable4);
-    ThreadManager.getUIHandler().post(new wcj(this, localDrawable1, localDrawable2, localDrawable3, localStateListDrawable));
+    PublicAccountChatPie.b(this.a.a, false);
+    this.a.a.a.sendEmptyMessage(1);
   }
 }
 

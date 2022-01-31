@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1190" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0695" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0696"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1197" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1191" android:background="@drawable/common_alert_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.av.ui.funchat.filter.EffectFilterTextPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1199" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a119a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0687" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a94" android:scaleType="center" android:layout_centerHorizontal="true" android:contentDescription="@null" />
 </RelativeLayout>

@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import khc;
-import khd;
+import kji;
+import kjj;
 
 public class TipsManager
 {
@@ -44,7 +44,7 @@ public class TipsManager
   public int b;
   ImageView jdField_b_of_type_AndroidWidgetImageView = null;
   public TextView b;
-  Runnable jdField_b_of_type_JavaLangRunnable = new khd(this);
+  Runnable jdField_b_of_type_JavaLangRunnable = new kjj(this);
   public boolean b;
   int jdField_c_of_type_Int = 0;
   TextView jdField_c_of_type_AndroidWidgetTextView = null;
@@ -65,15 +65,15 @@ public class TipsManager
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = null;
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131364246));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131364271));
     this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131364245));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131365830));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131365828));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131365829));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131364270));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131365835));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131365833));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131365834));
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_JavaLangRunnable = new khc(this);
+    this.jdField_a_of_type_JavaLangRunnable = new kji(this);
   }
   
   private void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2, String paramString, boolean paramBoolean3, boolean paramBoolean4)
@@ -666,7 +666,7 @@ public class TipsManager
         bool1 = true;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131434006);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131434022);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
@@ -1130,11 +1130,11 @@ public class TipsManager
     {
       if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getResources().getColor(2131493511));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getResources().getColor(2131493513));
         this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(3.0F, 1.0F, 1.0F, 1342177280);
       }
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840338);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840353);
       }
       if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
         this.jdField_a_of_type_AndroidWidgetProgressBar.getIndeterminateDrawable().setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
@@ -1149,7 +1149,7 @@ public class TipsManager
         this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 5663613);
       }
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840339);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840354);
       }
     } while (this.jdField_a_of_type_AndroidWidgetProgressBar == null);
     this.jdField_a_of_type_AndroidWidgetProgressBar.getIndeterminateDrawable().setColorFilter(-11113603, PorterDuff.Mode.MULTIPLY);
@@ -1481,7 +1481,7 @@ public class TipsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.TipsManager
  * JD-Core Version:    0.7.0.1
  */

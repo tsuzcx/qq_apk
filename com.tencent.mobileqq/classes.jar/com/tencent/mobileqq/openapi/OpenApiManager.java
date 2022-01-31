@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.openapi;
 
-import agke;
-import agkf;
-import agkg;
-import agkh;
+import agos;
+import agot;
+import agou;
+import agov;
 import android.content.ContentProvider;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -85,7 +85,7 @@ public class OpenApiManager
   private String mLastGetPayCodePermission;
   private String mLastGetPayCodePkgName;
   private QQAppInterface mLoginSucApp;
-  private MessageObserver mMsgObserver = new agkg(this);
+  private MessageObserver mMsgObserver = new agou(this);
   private final Queue mPayMsgRspQueue = new LinkedList();
   private View mPttHolderView;
   private FileTransferManager.Callback mPttTransferCallback;
@@ -192,7 +192,7 @@ public class OpenApiManager
   
   private void onRuntimeDisactive(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    ThreadManager.getSubThreadHandler().post(new agkf(this, paramQQAppInterface, paramBoolean));
+    ThreadManager.getSubThreadHandler().post(new agot(this, paramQQAppInterface, paramBoolean));
   }
   
   private void resetFilters()
@@ -220,7 +220,7 @@ public class OpenApiManager
       return;
     }
     this.mPttHolderView = new View(BaseApplicationImpl.sApplication);
-    this.mPttTransferCallback = new agkh(this);
+    this.mPttTransferCallback = new agov(this);
     FileTransferManager.a(this.mLoginSucApp).a(this.mPttHolderView, this.mPttTransferCallback);
   }
   
@@ -332,11 +332,11 @@ public class OpenApiManager
     //   207: iconst_1
     //   208: if_icmpne +598 -> 806
     //   211: aload 6
-    //   213: getstatic 379	com/tencent/mobileqq/app/AppConstants:aI	Ljava/lang/String;
+    //   213: getstatic 379	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
     //   216: invokevirtual 383	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   219: ifne +31 -> 250
     //   222: aload 7
-    //   224: getstatic 379	com/tencent/mobileqq/app/AppConstants:aI	Ljava/lang/String;
+    //   224: getstatic 379	com/tencent/mobileqq/app/AppConstants:aJ	Ljava/lang/String;
     //   227: invokevirtual 383	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   230: ifne +20 -> 250
     //   233: new 330	android/util/Pair
@@ -1389,7 +1389,7 @@ public class OpenApiManager
   
   public void onRuntimeActive(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new agke(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new agos(this, paramQQAppInterface));
   }
   
   public void onRuntimeDestroy(QQAppInterface paramQQAppInterface)

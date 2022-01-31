@@ -1,35 +1,59 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
-import com.tencent.mobileqq.widget.CircleProgress;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.readinjoy.ReadInJoyHelper;
 
-class lhf
-  implements Runnable
+public class lhf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  lhf(lhe paramlhe, boolean paramBoolean, String paramString) {}
+  public lhf(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean)
+    ReadInJoySettingActivity.c(this.a, paramBoolean);
+    int i;
+    label92:
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
     {
-      if (ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a) == 5) {
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a, 2);
+      i = 1;
+      ReadInJoyHelper.a("local_kd_tab_switch", Integer.valueOf(i));
+      ReadInJoyHelper.a(this.a.a, "local_kd_tab_switch", Boolean.valueOf(paramBoolean));
+      ReadInJoyHelper.a(this.a.a, "local_kd_tab_has_set", Boolean.valueOf(true));
+      if (!paramBoolean) {
+        break label147;
       }
-      for (;;)
-      {
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a, this.jdField_a_of_type_JavaLangString);
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setSourceVideoPath(this.jdField_a_of_type_JavaLangString);
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setVisibility(8);
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setVisibility(8);
-        return;
-        ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_Lhe.a, 2);
-        ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a);
+      QQToast.a(this.a.getBaseContext(), 2, 2131439123, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131433568);
+      localQQAppInterface = this.a.a;
+      if (!paramBoolean) {
+        break label182;
+      }
+      paramCompoundButton = "0X8008236";
+      label108:
+      if (!paramBoolean) {
+        break label188;
       }
     }
-    QQToast.a(BaseApplication.getContext(), 1, 2131428454, 0).a(this.jdField_a_of_type_Lhe.a.e()).show();
+    label147:
+    label182:
+    label188:
+    for (String str = "0X8008236";; str = "0X8008235")
+    {
+      PublicAccountReportUtils.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
+      return;
+      i = 0;
+      break;
+      QQToast.a(this.a.getBaseContext(), 2, 2131439124, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131433567);
+      break label92;
+      paramCompoundButton = "0X8008235";
+      break label108;
+    }
   }
 }
 

@@ -1,61 +1,23 @@
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import pb.unite.search.DynamicAssociationWord.SuggestUrlItem;
+import android.graphics.SurfaceTexture;
+import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
 
 public class ahrs
-  extends UniteSearchObserver
+  implements Runnable
 {
-  public ahrs(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public ahrs(SplitEffectsCameraCaptureView paramSplitEffectsCameraCaptureView, SurfaceTexture paramSurfaceTexture) {}
   
-  public void a(String paramString, int paramInt, List paramList1, List paramList2, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleSuggestUrlResult keyword=" + paramString + " activity keyword=" + this.a.jdField_a_of_type_JavaLangString + " size=" + paramList2.size());
-    }
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.jdField_a_of_type_AndroidGraphicsSurfaceTexture)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
-      }
-      paramString = new ArrayList();
-      paramList2 = new AssociateSearchWordsFragment.AssociateItem();
-      paramList2.jdField_a_of_type_Int = 1;
-      if ((paramList1 != null) && (paramList1.size() > 0))
-      {
-        paramInt = 0;
-        while (paramInt < paramList1.size())
-        {
-          paramSuggestUrlItem = ((AssociateSearchWordsFragment.AssociateItem)paramList1.get(paramInt)).jdField_a_of_type_JavaLangString;
-          AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
-          localAssociateItem.jdField_a_of_type_JavaLangString = paramSuggestUrlItem;
-          localAssociateItem.jdField_a_of_type_Int = 3;
-          localAssociateItem.d = (paramInt + 1);
-          paramString.add(localAssociateItem);
-          if (paramInt != paramList1.size() - 1) {
-            paramString.add(paramList2);
-          }
-          paramInt += 1;
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
-    }
-  }
-  
-  public void a(String paramString1, Integer paramInteger, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.requestRender();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahrs
  * JD-Core Version:    0.7.0.1
  */

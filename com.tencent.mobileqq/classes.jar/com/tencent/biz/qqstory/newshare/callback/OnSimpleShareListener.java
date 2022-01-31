@@ -12,7 +12,7 @@ public class OnSimpleShareListener
   public void a(int paramInt)
   {
     if (paramInt == 6) {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131438798, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2131438821, 0).a();
     }
   }
   

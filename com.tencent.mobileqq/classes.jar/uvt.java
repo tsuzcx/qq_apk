@@ -1,25 +1,29 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class uvt
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public uvt(DeviceFileItemBuilder paramDeviceFileItemBuilder, MessageForDeviceFile paramMessageForDeviceFile, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public uvt(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
   {
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    default: 
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
     }
+    this.a.a.f(1);
+    this.a.b();
+    QQToast.a(this.a.a.a(), this.a.a.a().getString(2131433399), 1).a();
   }
 }
 

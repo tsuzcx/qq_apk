@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vru
-  implements View.OnClickListener
+class vru
+  implements DialogInterface.OnClickListener
 {
-  public vru(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  vru(vrt paramvrt) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFilePicData.g);
+    QQToast.a(AIOGalleryScene.ak(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene), AIOGalleryScene.al(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).getString(2131428195), 0).a();
   }
 }
 

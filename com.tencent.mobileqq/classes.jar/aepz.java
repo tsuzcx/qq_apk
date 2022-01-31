@@ -1,30 +1,75 @@
+import android.graphics.Bitmap;
+import android.support.v4.util.LruCache;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.model.ChatBackgroundManager.BgThemeColorExtractListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Vector;
 
 public class aepz
-  extends NearbyCardObserver
+  implements Runnable
 {
-  public aepz(NearbyGuideActivity paramNearbyGuideActivity) {}
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private ChatBackgroundManager.BgThemeColorExtractListener jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2, String paramString)
+  public aepz(ChatBackgroundManager paramChatBackgroundManager, String paramString, Bitmap paramBitmap, boolean paramBoolean, ChatBackgroundManager.BgThemeColorExtractListener paramBgThemeColorExtractListener)
   {
-    if (paramBoolean1)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener = paramBgThemeColorExtractListener;
+  }
+  
+  public void run()
+  {
+    Vector localVector;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      this.a.app.a(this.a.app.getCurrentAccountUin(), 200);
-      long l = ((Long)NearbySPUtil.a(this.a.app.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
-      if (l != 0L) {
-        this.a.app.a(String.valueOf(l), 202);
+      localVector = this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      if ((localVector != null) && (!localVector.isEmpty())) {
+        if (this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString) != null)
+        {
+          ((Vector)this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString)).addAll(localVector);
+          if (QLog.isDevelopLevel()) {
+            QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable success.");
+          }
+          label97:
+          if (this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener != null)
+          {
+            localVector = (Vector)this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString);
+            if ((localVector == null) || (localVector.isEmpty())) {
+              break label225;
+            }
+          }
+        }
       }
     }
-    this.a.runOnUiThread(new aeqa(this, paramBoolean1));
+    label225:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new aeqa(this, bool, localVector));
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.jdField_a_of_type_JavaLangString, localVector);
+      break;
+      this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(this.jdField_a_of_type_JavaLangString);
+      break;
+      this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(this.jdField_a_of_type_JavaLangString);
+      if (!QLog.isDevelopLevel()) {
+        break label97;
+      }
+      QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable failed.");
+      break label97;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepz
  * JD-Core Version:    0.7.0.1
  */

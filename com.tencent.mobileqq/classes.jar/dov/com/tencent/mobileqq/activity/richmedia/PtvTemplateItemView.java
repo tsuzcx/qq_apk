@@ -69,7 +69,7 @@ public class PtvTemplateItemView
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentImageURLImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842029);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842060);
     this.jdField_a_of_type_AndroidWidgetImageView.setMinimumWidth(i);
     this.jdField_a_of_type_AndroidWidgetImageView.setMinimumHeight(i);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -110,7 +110,7 @@ public class PtvTemplateItemView
     }
     if (paramInt < 0)
     {
-      this.b.setImageResource(2130843189);
+      this.b.setImageResource(2130843222);
       this.b.setVisibility(0);
       return;
     }
@@ -165,22 +165,26 @@ public class PtvTemplateItemView
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         if (!((QIMPtvTemplateManager)QIMManager.a(3)).a(3, paramPtvTemplateInfo.categoryId, paramPtvTemplateInfo.id)) {
-          break label453;
+          break label460;
         }
-        this.b.setImageResource(2130843190);
+        this.b.setImageResource(2130843223);
         this.b.setVisibility(0);
+        label329:
+        if (!paramPtvTemplateInfo.downloading) {}
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
+        if (!paramPtvTemplateInfo.isWsBanner()) {
+          break label532;
+        }
+        this.b.setVisibility(8);
+        this.c.setVisibility(0);
+        if (!paramPtvTemplateInfo.isDovItem()) {
+          break label519;
+        }
+        this.c.setImageResource(2130843214);
       }
     }
     for (;;)
     {
-      if (!paramPtvTemplateInfo.downloading) {}
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-      if (!paramPtvTemplateInfo.isWsBanner()) {
-        break label512;
-      }
-      this.b.setVisibility(8);
-      this.c.setVisibility(0);
-      this.c.setImageResource(2130843196);
       WeishiGuideUtils.a(paramPtvTemplateInfo);
       return;
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
@@ -191,23 +195,28 @@ public class PtvTemplateItemView
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       if (paramPtvTemplateInfo.id.equals(paramString))
       {
-        this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130843191);
+        this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130843224);
         break;
       }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130843192);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130843225);
       break;
-      label453:
+      label460:
       if ((paramPtvTemplateInfo.usable) || (paramPtvTemplateInfo.id.equals("0")))
       {
         this.b.setVisibility(8);
+        break label329;
       }
-      else if (!paramPtvTemplateInfo.downloading)
-      {
-        this.b.setImageResource(2130843189);
-        this.b.setVisibility(0);
+      if (paramPtvTemplateInfo.downloading) {
+        break label329;
       }
+      this.b.setImageResource(2130843222);
+      this.b.setVisibility(0);
+      break label329;
+      label519:
+      this.c.setImageResource(2130843229);
     }
-    label512:
+    label532:
+    this.c.setVisibility(8);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.a(QIMCommonLoadingProgress.a(paramPtvTemplateInfo));
   }
   

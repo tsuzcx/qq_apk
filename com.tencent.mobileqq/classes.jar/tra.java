@@ -1,129 +1,73 @@
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import com.tencent.av.VideoConstants;
-import com.tencent.av.utils.ScoreManager;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
+import com.tencent.mobileqq.apollo.drawer.ApolloWeatherInfo;
+import com.tencent.mobileqq.apollo.drawer.WeatherDrawerStatus;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasExtensionObserver;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import mqq.app.MobileQQ;
+import java.util.Calendar;
+import org.json.JSONObject;
 
 public class tra
-  extends AsyncTask
+  extends VasExtensionObserver
 {
-  public tra(ScoreQAVFragment paramScoreQAVFragment) {}
+  public tra(QQSettingMe paramQQSettingMe) {}
   
-  protected HashMap a(String... paramVarArgs)
+  protected void c(boolean paramBoolean, Object paramObject)
   {
-    int i = 0;
-    if ((this.a.jdField_d_of_type_JavaLangString == null) || (this.a.jdField_d_of_type_JavaLangString.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mSelfUin is null!");
-      }
-      return null;
-    }
-    paramVarArgs = SharedPreUtils.f(this.a.jdField_d_of_type_JavaLangString);
-    this.a.b = paramVarArgs.getString(VideoConstants.h, "");
-    paramVarArgs = ScoreManager.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), 270, this.a.jdField_d_of_type_JavaLangString);
-    this.a.b(paramVarArgs);
-    paramVarArgs = ScoreManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), 270, this.a.jdField_d_of_type_JavaLangString);
-    this.a.a(paramVarArgs);
-    if (this.a.e.isEmpty())
-    {
-      this.a.e = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131429663);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Video config data is invalid, use default!");
-      }
-    }
-    if (this.a.f.isEmpty())
-    {
-      this.a.f = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131429664);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Audio config data is invalid, use default!");
-      }
-    }
-    if (this.a.g.isEmpty())
-    {
-      this.a.g = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131429665);
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mProblem_Net config data is invalid, use default!");
-      }
-    }
-    if (this.a.jdField_d_of_type_Long == 0L) {
-      paramVarArgs = this.a.e + "/" + this.a.f + "/" + this.a.g;
-    }
-    try
-    {
-      this.a.jdField_a_of_type_JavaUtilList = Arrays.asList(paramVarArgs.split("/"));
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        i = 0;
-        if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-          break label794;
-        }
-      }
-    }
-    catch (Exception paramVarArgs)
-    {
+    if (paramBoolean) {
       try
       {
-        do
+        paramObject = (String)paramObject;
+        Object localObject1 = new JSONObject(paramObject);
+        int j = ((JSONObject)localObject1).optInt("actId");
+        int k = ((JSONObject)localObject1).optInt("priority", 99);
+        int i = ((JSONObject)localObject1).optInt("expts");
+        Object localObject2 = ((JSONObject)localObject1).optString("wording");
+        Object localObject3 = ((JSONObject)localObject1).optString("url");
+        String str = ((JSONObject)localObject1).optString("subDesc");
+        localObject1 = new ApolloWeatherInfo();
+        ((ApolloWeatherInfo)localObject1).jdField_a_of_type_Int = j;
+        ((ApolloWeatherInfo)localObject1).jdField_c_of_type_Int = k;
+        ((ApolloWeatherInfo)localObject1).jdField_b_of_type_Int = i;
+        ((ApolloWeatherInfo)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
+        ((ApolloWeatherInfo)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
+        ((ApolloWeatherInfo)localObject1).jdField_c_of_type_JavaLangString = str;
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext != null))
         {
-          for (;;)
+          localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSharedPreferences("apollo_sp", 0);
+          localObject3 = Calendar.getInstance();
+          j = ((Calendar)localObject3).get(6);
+          k = ((Calendar)localObject3).get(11);
+          if (((SharedPreferences)localObject2).getInt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "sp_key_apollo_weather_flag", 0) == i)
           {
-            paramVarArgs = ((String)this.a.jdField_a_of_type_JavaUtilList.get(i)).split(",");
-            this.a.jdField_a_of_type_JavaUtilList.set(i, paramVarArgs[1]);
-            int j = Integer.parseInt(paramVarArgs[0]);
-            this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(j));
-            i += 1;
-            continue;
-            paramVarArgs = this.a.f + "/" + this.a.g;
+            if (QLog.isColorLevel()) {
+              QLog.d("QQSettingRedesign", 2, "pull weatherInfo recycle expts=" + i);
+            }
           }
-          paramVarArgs = paramVarArgs;
-          paramVarArgs.printStackTrace();
-        } while (!QLog.isColorLevel());
-        QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
-        {
-          paramVarArgs.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("ScoreActivity", 2, "parse exception : " + paramVarArgs.getMessage());
+          else
+          {
+            ((SharedPreferences)localObject2).edit().putString("sp_key_apollo_weather_show", "").commit();
+            ((SharedPreferences)localObject2).edit().putInt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "sp_key_apollo_weather_flag", i).commit();
+            ((SharedPreferences)localObject2).edit().putString(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "sp_key_apollo_weather_data", paramObject).commit();
+            paramObject = new WeatherDrawerStatus(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ApolloWeatherInfo)localObject1);
+            this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(paramObject);
+            i = (int)(System.currentTimeMillis() / 1000L);
+            VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "ask_weather", i, 0, new String[0]);
+            if (QLog.isColorLevel())
+            {
+              QLog.d("QQSettingRedesign", 2, "getWeaterInfo day=" + j + ",hour=" + k + ",info=" + ((ApolloWeatherInfo)localObject1).toString());
+              return;
+            }
           }
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "processDataTask mDatas is invalid, use default!");
-      }
-      this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.a.jdField_a_of_type_JavaUtilList.add("通话卡帧");
-      this.a.jdField_a_of_type_JavaUtilList.add("通话有杂音");
-      this.a.jdField_a_of_type_JavaUtilList.add("听到自己的回声");
-      this.a.jdField_a_of_type_JavaUtilList.add("声音太小");
-      this.a.jdField_a_of_type_JavaUtilList.add("视频画面模糊");
-      this.a.jdField_a_of_type_JavaUtilList.add("视频画面卡帧");
-      this.a.jdField_a_of_type_JavaUtilList.add("音频和视频不同步");
-      this.a.jdField_a_of_type_JavaUtilList.add("画面花屏");
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        this.a.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(i));
-        i += 1;
-      }
+      catch (Exception paramObject) {}
     }
-    label794:
-    return this.a.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  protected void a(HashMap paramHashMap)
-  {
-    super.onPostExecute(paramHashMap);
   }
 }
 

@@ -26,8 +26,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import zjy;
-import zjz;
+import zqv;
+import zqw;
 
 public class PublicAccountDataManager
   implements Manager
@@ -48,7 +48,7 @@ public class PublicAccountDataManager
   {
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    ThreadManager.getSubThreadHandler().postDelayed(new zjy(this), 10L);
+    ThreadManager.getSubThreadHandler().postDelayed(new zqv(this), 10L);
   }
   
   public AccountDetail a(String paramString)
@@ -504,7 +504,7 @@ public class PublicAccountDataManager
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     }
-    ThreadManager.executeOnSubThread(new zjz(this, paramPublicAccountInfo));
+    ThreadManager.executeOnSubThread(new zqw(this, paramPublicAccountInfo));
     if (paramPublicAccountInfo.isNeedShow()) {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramPublicAccountInfo.getUin(), paramPublicAccountInfo);
     }
@@ -923,7 +923,7 @@ public class PublicAccountDataManager
         PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((Iterator)localObject2).next();
         if (localPublicAccountInfo.isNeedShow())
         {
-          if ((!PublicAccountUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (!TextUtils.equals(localPublicAccountInfo.getUin(), AppConstants.aq))) {
+          if ((!PublicAccountUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (!TextUtils.equals(localPublicAccountInfo.getUin(), AppConstants.ar))) {
             this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localPublicAccountInfo.getUin(), localPublicAccountInfo);
           }
         }

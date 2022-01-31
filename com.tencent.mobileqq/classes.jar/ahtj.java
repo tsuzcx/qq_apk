@@ -1,33 +1,23 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer.OnTipClickListener;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWVideoRecorder;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.ThumbnailUtil.ThumbnailCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahtj
-  implements ReadInJoySearchTipsContainer.OnTipClickListener
+  implements ThumbnailUtil.ThumbnailCallback
 {
-  public ahtj(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  public ahtj(HWVideoRecorder paramHWVideoRecorder) {}
   
-  public void a(String paramString)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      FragmentActivity localFragmentActivity = this.a.getActivity();
-      if ((localFragmentActivity instanceof ActiveEntitySearchActivity))
-      {
-        ((ActiveEntitySearchActivity)localFragmentActivity).a(paramString);
-        if (this.a.a != null) {
-          SearchUtils.a("sub_result", "clk_hot", new String[] { paramString, SearchUtils.a(this.a.a) });
-        }
-      }
+    HWVideoRecorder.a(this.a, true);
+    if ((QLog.isColorLevel()) && (QLog.isColorLevel())) {
+      QLog.d("HWVideoRecorder", 2, "Generate thumbnail result. success = " + paramBoolean + " ; file path = " + paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahtj
  * JD-Core Version:    0.7.0.1
  */

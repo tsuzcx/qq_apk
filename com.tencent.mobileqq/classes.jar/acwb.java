@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import java.util.TimerTask;
 
-public class acwb
-  implements DialogInterface.OnClickListener
+class acwb
+  extends TimerTask
 {
-  public acwb(FileVideoManager paramFileVideoManager, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
+  acwb(acwa paramacwa) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback.a();
+    MPFileVerifyPwdView.a(this.a.a).runOnUiThread(new acwc(this));
   }
 }
 

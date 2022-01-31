@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class rpo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rpo(BaseChatPie paramBaseChatPie) {}
+  public rpo(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SpriteCommFunc.a(this.a.a, "receipt_msg", false);
+    this.a.finish();
+    this.a.overridePendingTransition(2131034134, 2131034135);
   }
 }
 

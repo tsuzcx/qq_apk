@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.secspy;
 
-import ahwy;
-import ahwz;
+import aibp;
+import aibq;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Environment;
@@ -49,7 +49,7 @@ public class SecSpyFileManager
   {
     this.jdField_a_of_type_JavaLangString = "http://logic.content.qq.com/public/file_upload2?";
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangRunnable = new ahwy(this);
+    this.jdField_a_of_type_JavaLangRunnable = new aibp(this);
     if (paramQQAppInterface.getApplication().getSharedPreferences("x5_proxy_setting", 4).getBoolean("is_in_proxy", false)) {
       ThreadManager.getFileThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
     }
@@ -777,7 +777,7 @@ public class SecSpyFileManager
     if (this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter == null) {
       this.jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugReporter = new UnifiedDebugReporter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahwz(this, paramMsgBody, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aibq(this, paramMsgBody, paramInt));
   }
   
   /* Error */
@@ -1002,36 +1002,36 @@ public class SecSpyFileManager
     //   417: astore 6
     //   419: goto -293 -> 126
     //   422: astore 7
-    //   424: aload 6
-    //   426: astore 8
-    //   428: iload_3
-    //   429: istore 4
-    //   431: aload_1
-    //   432: astore 6
-    //   434: aload 8
-    //   436: astore_1
+    //   424: aload_1
+    //   425: astore 8
+    //   427: aload 6
+    //   429: astore_1
+    //   430: iload_3
+    //   431: istore 4
+    //   433: aload 8
+    //   435: astore 6
     //   437: goto -311 -> 126
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	440	0	this	SecSpyFileManager
     //   0	440	1	paramFile	File
     //   252	14	2	i	int
-    //   7	422	3	bool1	boolean
-    //   12	418	4	bool2	boolean
+    //   7	424	3	bool1	boolean
+    //   12	420	4	bool2	boolean
     //   9	250	5	bool3	boolean
     //   22	314	6	localObject1	Object
     //   352	46	6	localException	Exception
-    //   403	30	6	localObject2	Object
-    //   1	1	7	localObject3	Object
+    //   403	33	6	localFile1	File
+    //   1	1	7	localObject2	Object
     //   114	25	7	localIOException1	java.io.IOException
-    //   236	146	7	localObject4	Object
-    //   389	6	7	localObject5	Object
-    //   399	1	7	localObject6	Object
+    //   236	146	7	localObject3	Object
+    //   389	6	7	localObject4	Object
+    //   399	1	7	localObject5	Object
     //   408	1	7	localIOException2	java.io.IOException
     //   422	1	7	localIOException3	java.io.IOException
-    //   4	116	8	localObject7	Object
-    //   378	6	8	localObject8	Object
-    //   392	43	8	localObject9	Object
+    //   4	116	8	localObject6	Object
+    //   378	6	8	localObject7	Object
+    //   392	42	8	localFile2	File
     // Exception table:
     //   from	to	target	type
     //   62	67	94	java/lang/Exception
@@ -1181,10 +1181,10 @@ public class SecSpyFileManager
     //   222: iconst_1
     //   223: if_icmpne +186 -> 409
     //   226: ldc2_w 586
-    //   229: lstore 8
+    //   229: lstore 9
     //   231: aload 16
     //   233: invokevirtual 108	java/io/File:length	()J
-    //   236: lload 8
+    //   236: lload 9
     //   238: lcmp
     //   239: ifle +178 -> 417
     //   242: aload_0
@@ -1270,7 +1270,7 @@ public class SecSpyFileManager
     //   407: iconst_0
     //   408: ireturn
     //   409: ldc2_w 592
-    //   412: lstore 8
+    //   412: lstore 9
     //   414: goto -183 -> 231
     //   417: aload_1
     //   418: aload_1
@@ -1281,9 +1281,9 @@ public class SecSpyFileManager
     //   426: invokevirtual 308	java/lang/String:substring	(I)Ljava/lang/String;
     //   429: astore 17
     //   431: aload 17
-    //   433: astore 13
+    //   433: astore 12
     //   435: aload 16
-    //   437: astore 12
+    //   437: astore 13
     //   439: iload 5
     //   441: ifeq +356 -> 797
     //   444: new 145	java/lang/StringBuilder
@@ -1294,7 +1294,7 @@ public class SecSpyFileManager
     //   456: ldc_w 599
     //   459: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   462: invokevirtual 158	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   465: astore 13
+    //   465: astore 12
     //   467: aload_0
     //   468: aload 16
     //   470: invokevirtual 601	com/tencent/mobileqq/secspy/SecSpyFileManager:a	(Ljava/io/File;)Z
@@ -1317,7 +1317,7 @@ public class SecSpyFileManager
     //   510: invokevirtual 101	java/io/File:exists	()Z
     //   513: ifeq +15 -> 528
     //   516: aload 16
-    //   518: astore 12
+    //   518: astore 13
     //   520: aload 16
     //   522: invokevirtual 104	java/io/File:isFile	()Z
     //   525: ifne +272 -> 797
@@ -1470,12 +1470,12 @@ public class SecSpyFileManager
     //   830: pop
     //   831: aload 16
     //   833: ldc_w 613
-    //   836: aload 13
+    //   836: aload 12
     //   838: invokevirtual 607	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   841: pop
     //   842: aload 16
     //   844: ldc_w 615
-    //   847: aload 12
+    //   847: aload 13
     //   849: invokevirtual 108	java/io/File:length	()J
     //   852: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   855: invokevirtual 607	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -1637,7 +1637,7 @@ public class SecSpyFileManager
     //   1243: invokespecial 146	java/lang/StringBuilder:<init>	()V
     //   1246: ldc_w 669
     //   1249: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1252: aload 13
+    //   1252: aload 12
     //   1254: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1257: ldc_w 671
     //   1260: invokevirtual 152	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1650,7 +1650,7 @@ public class SecSpyFileManager
     //   1280: invokevirtual 667	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
     //   1283: new 258	java/io/FileInputStream
     //   1286: dup
-    //   1287: aload 12
+    //   1287: aload 13
     //   1289: invokespecial 261	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   1292: astore 12
     //   1294: aload 12
@@ -1671,12 +1671,12 @@ public class SecSpyFileManager
     //   1326: aload_0
     //   1327: getfield 87	com/tencent/mobileqq/secspy/SecSpyFileManager:jdField_a_of_type_ComTencentMobileqqUnifiedebugUnifiedDebugManager	Lcom/tencent/mobileqq/unifiedebug/UnifiedDebugManager;
     //   1330: invokevirtual 687	com/tencent/mobileqq/unifiedebug/UnifiedDebugManager:a	()Landroid/os/Handler;
-    //   1333: new 689	ahxa
+    //   1333: new 689	aibr
     //   1336: dup
     //   1337: aload_0
     //   1338: aload 18
     //   1340: lload_2
-    //   1341: invokespecial 692	ahxa:<init>	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager;Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;J)V
+    //   1341: invokespecial 692	aibr:<init>	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager;Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;J)V
     //   1344: ldc2_w 693
     //   1347: invokevirtual 698	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   1350: pop
@@ -1763,7 +1763,7 @@ public class SecSpyFileManager
     //   1542: sipush 200
     //   1545: if_icmpne +535 -> 2080
     //   1548: iconst_1
-    //   1549: istore 10
+    //   1549: istore 8
     //   1551: aload 11
     //   1553: ifnull +8 -> 1561
     //   1556: aload 11
@@ -1804,7 +1804,7 @@ public class SecSpyFileManager
     //   1632: iconst_1
     //   1633: invokestatic 579	com/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo:a	(Lcom/tencent/mobileqq/secspy/SecSpyFileManager$UploadProgressInfo;Z)Z
     //   1636: pop
-    //   1637: iload 10
+    //   1637: iload 8
     //   1639: ireturn
     //   1640: astore_1
     //   1641: invokestatic 338	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1816,7 +1816,7 @@ public class SecSpyFileManager
     //   1654: invokestatic 238	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1657: aload_1
     //   1658: invokevirtual 341	java/lang/Exception:printStackTrace	()V
-    //   1661: iload 10
+    //   1661: iload 8
     //   1663: ireturn
     //   1664: astore 13
     //   1666: aconst_null
@@ -2020,7 +2020,7 @@ public class SecSpyFileManager
     //   2075: astore 12
     //   2077: goto -402 -> 1675
     //   2080: iconst_0
-    //   2081: istore 10
+    //   2081: istore 8
     //   2083: goto -532 -> 1551
     //   2086: goto -1084 -> 1002
     // Local variable table:
@@ -2032,13 +2032,13 @@ public class SecSpyFileManager
     //   0	2089	5	paramBoolean	boolean
     //   1299	247	6	i	int
     //   1309	103	7	j	int
-    //   229	184	8	l	long
-    //   1549	533	10	bool	boolean
+    //   1549	533	8	bool	boolean
+    //   229	184	9	l	long
     //   10	2029	11	localObject1	Object
-    //   437	1398	12	localObject2	Object
+    //   433	1402	12	localObject2	Object
     //   1940	7	12	localObject3	Object
     //   1956	120	12	localObject4	Object
-    //   433	1082	13	localObject5	Object
+    //   437	1078	13	localObject5	Object
     //   1664	38	13	localException1	Exception
     //   1827	126	13	localObject6	Object
     //   1961	11	13	localObject7	Object

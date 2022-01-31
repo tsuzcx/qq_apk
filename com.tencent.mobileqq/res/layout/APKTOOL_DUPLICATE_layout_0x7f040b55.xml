@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a331e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02207c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32a2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="53.5dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.CommonLine android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220a1" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08d3" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" />
-    <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d9d" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a331f" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="40.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:scrollingCache="false" android:cacheColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:divider="@null" />
-</RelativeLayout>
+    <TableLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:shrinkColumns="0,2" android:layout_centerVertical="true">
+        <TableRow android:gravity="center_vertical">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32a3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021bf5" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32a4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="上次看到这里" android:singleLine="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32a5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021bf6" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </TableRow>
+    </TableLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021bd8" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginTop="6.0dip">
+        <com.qzone.module.feedcomponent.ui.VisitAndPraiseAvatarsView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32a6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-8.0dip" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff000000" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32a7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="最近错过的动态" android:singleLine="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a32a8" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021bd9" android:scaleType="center" android:layout_centerVertical="true" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amrl;
+import amyw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class LbsDataV2$WifiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amrl();
+  public static final Parcelable.Creator CREATOR = new amyw();
   public String mac = "";
   public int rssi;
   

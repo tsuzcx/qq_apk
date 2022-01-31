@@ -1,37 +1,25 @@
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.animation.Transformation;
 import com.qq.im.poi.LbsPackListAdapter;
-import com.qq.im.poi.LbsPackListAdapter.LbsPackItemCallback;
-import java.util.List;
+import com.tencent.mobileqq.businessCard.helpers.ViewHelper;
 
 public class ana
-  implements Animation.AnimationListener
+  extends Animation
 {
-  public ana(LbsPackListAdapter paramLbsPackListAdapter, View paramView1, int paramInt, View paramView2) {}
+  public ana(LbsPackListAdapter paramLbsPackListAdapter, int paramInt1, int paramInt2, View paramView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter.a(this.jdField_a_of_type_AndroidViewView, -1, this.jdField_a_of_type_Int);
-    }
-    do
-    {
-      return;
-      if (this.b != null)
-      {
-        this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter.a(this.b, 1, this.jdField_a_of_type_Int);
-        return;
-      }
-      this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter.a.remove(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter.notifyDataSetChanged();
-    } while (LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter) == null);
-    LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter).a(this.jdField_a_of_type_Int);
+    float f1 = this.jdField_a_of_type_Int;
+    float f2 = this.b;
+    ViewHelper.f(this.jdField_a_of_type_AndroidViewView, f1 * f2 * paramFloat);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean willChangeBounds()
+  {
+    return true;
+  }
 }
 
 

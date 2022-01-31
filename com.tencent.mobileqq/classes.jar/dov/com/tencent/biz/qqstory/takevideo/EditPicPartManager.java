@@ -10,8 +10,8 @@ import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anrj;
-import anrk;
+import anzw;
+import anzx;
 import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.VideoEditReport;
@@ -118,7 +118,7 @@ public class EditPicPartManager
           ImageUtil.a(paramString2, "Orientation", String.valueOf(6));
         }
         paramString1 = PlayModeUtils.a("", true);
-        ThreadManager.executeOnSubThread(new PhotoUtils.WatermarkPicTask(paramString2, paramString1, new anrk(paramString2, paramString1)));
+        ThreadManager.executeOnSubThread(new PhotoUtils.WatermarkPicTask(paramString2, paramString1, new anzx(paramString2, paramString1)));
         if (QLog.isColorLevel()) {
           QLog.d("EditPicActivity.EditPicPartManager", 2, "save from " + paramString2 + " to " + paramString1);
         }
@@ -163,7 +163,7 @@ public class EditPicPartManager
   
   private void d(int paramInt)
   {
-    Object localObject = PlusPanelUtils.a(AppConstants.aV);
+    Object localObject = PlusPanelUtils.a(AppConstants.aW);
     Activity localActivity = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
     localActivity.getIntent().putExtra("image_path", (String)localObject);
     if (QLog.isColorLevel()) {
@@ -201,7 +201,7 @@ public class EditPicPartManager
   
   protected SimpleObserver a()
   {
-    return new anrj(this);
+    return new anzw(this);
   }
   
   public void a()

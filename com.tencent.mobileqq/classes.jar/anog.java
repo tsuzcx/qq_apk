@@ -1,54 +1,29 @@
-import dov.com.qq.im.capture.text.MidNightTextItem;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import cooperation.troop_homework.TroopHomeworkHelper;
+import cooperation.troop_homework.jsp.TroopHWVoiceController;
 
 public class anog
+  implements Runnable
 {
-  public int a;
-  public String a;
-  public int b = 0;
+  public anog(TroopHWVoiceController paramTroopHWVoiceController) {}
   
-  private anog(MidNightTextItem paramMidNightTextItem)
+  public void run()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    String str = TroopHomeworkHelper.a(TroopHWVoiceController.a(this.a));
+    if (!TextUtils.isEmpty(str))
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (anog)paramObject;
-      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
-        break;
-      }
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break label74;
-      }
-    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
-    label74:
-    while (paramObject.jdField_a_of_type_JavaLangString != null) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    int j = this.jdField_a_of_type_Int;
-    int k = this.b;
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
+      Message localMessage = TroopHWVoiceController.a(this.a).obtainMessage();
+      localMessage.what = 0;
+      localMessage.obj = str;
+      localMessage.sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anog
  * JD-Core Version:    0.7.0.1
  */

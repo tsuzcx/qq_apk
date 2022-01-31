@@ -61,7 +61,7 @@ public class FixSizeImageView
     Object localObject = "";
     if (paramLong == 1L)
     {
-      i = 2130846080;
+      i = 2130846162;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
       if (i >= 0) {
         break label58;
@@ -75,7 +75,7 @@ public class FixSizeImageView
       if (paramLong != 2L) {
         break;
       }
-      i = 2130846082;
+      i = 2130846164;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
       break;
       if (BaseApplicationImpl.sImageCache != null) {

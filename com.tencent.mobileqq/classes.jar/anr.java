@@ -1,33 +1,38 @@
-import com.qq.im.poi.PoiInfo;
+import android.os.Bundle;
+import com.qq.im.poi.LbsPackManager;
+import com.qq.im.poi.LbsPackObserver;
+import com.qq.im.poi.LbsPackPoiListActivity;
+import com.qq.im.poi.LbsPackPoiListAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class anr
+  extends LbsPackObserver
 {
-  public PoiInfo a;
-  public String a;
-  public String b = "";
+  public anr(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
   
-  public anr(PoiInfo paramPoiInfo)
+  public void onGetSendPOIList(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComQqImPoiPoiInfo = paramPoiInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    if (QLog.isColorLevel()) {
+      QLog.i("LbsPack", 2, "isSuccess:" + paramBoolean);
     }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    if (paramBoolean)
+    {
+      paramBundle = LbsPackPoiListActivity.a(this.a).a();
+      if (paramBundle != null)
+      {
+        LbsPackPoiListActivity.a(this.a).clear();
+        LbsPackPoiListActivity.a(this.a).addAll(paramBundle);
+      }
+      if (LbsPackPoiListActivity.a(this.a) != null)
+      {
+        LbsPackPoiListActivity.a(this.a).a(LbsPackPoiListActivity.a(this.a));
+        this.a.a.sendEmptyMessageDelayed(101, 200L);
+      }
+      return;
     }
-    this.b = str;
+    this.a.a.sendEmptyMessage(101);
   }
 }
 

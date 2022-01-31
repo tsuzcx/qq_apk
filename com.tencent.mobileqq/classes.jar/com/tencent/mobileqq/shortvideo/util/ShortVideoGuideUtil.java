@@ -101,8 +101,8 @@ public class ShortVideoGuideUtil
       bool1 = bool2;
       if (bool2)
       {
-        c = PlusPanelUtils.a(AppConstants.aV);
-        paramString1 = new File(AppConstants.aV);
+        c = PlusPanelUtils.a(AppConstants.aW);
+        paramString1 = new File(AppConstants.aW);
         if (!paramString1.exists()) {
           paramString1.mkdirs();
         }

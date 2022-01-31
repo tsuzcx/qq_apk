@@ -248,7 +248,7 @@ public final class UEC
         }
       }
       localUECItem.f = paramString3;
-      localUECItem.e = "7.6.3";
+      localUECItem.e = "7.6.8";
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString1, localUECItem);
     }
     for (paramString1 = localUECItem;; paramString1 = localUECItem)

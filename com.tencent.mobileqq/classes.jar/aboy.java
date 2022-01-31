@@ -1,15 +1,44 @@
-import com.tencent.mobileqq.businessCard.views.BusinessCardViewScroller;
-import com.tencent.mobileqq.businessCard.views.BusinessCardViewScroller.DeckViewScrollerCallbacks;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity.LoadingTimeStamp;
+import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aboy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aboy(BusinessCardViewScroller paramBusinessCardViewScroller, int paramInt) {}
+  public aboy(ARMapLoadingActivity paramARMapLoadingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    float f = this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a(), this.jdField_a_of_type_Int, true);
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a(), f + this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller.a(), null, BusinessCardViewScroller.d);
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMapLoadingActivity", 2, "onClick to retry...");
+    }
+    ARMapLoadingActivity.a(this.a).a();
+    ARMapLoadingActivity.a(this.a).a = System.currentTimeMillis();
+    ARMapLoadingActivity.a(this.a).setWealthGodInfo(ARMapLoadingActivity.a(this.a), ARMapLoadingActivity.d(this.a));
+    ARMapLoadingActivity.a(this.a).setLoadStatus(0);
+    ARMapLoadingActivity.b(this.a, ARMapLoadingActivity.a(this.a).a());
+    if (ARMapLoadingActivity.a(this.a) == null)
+    {
+      ARMapLoadingActivity.a(this.a).removeMessages(100);
+      ARMapLoadingActivity.a(this.a).sendEmptyMessageDelayed(100, 200L);
+    }
+    for (;;)
+    {
+      ARMapLoadingActivity.c(this.a);
+      ARMapLoadingActivity.d(this.a);
+      ARMapLoadingActivity.c(this.a, false);
+      ARMapLoadingActivity.d(this.a, false);
+      return;
+      if (ARMapLoadingActivity.b(this.a) == 5) {
+        ARMapLoadingActivity.a(this.a).c();
+      }
+      ARMapLoadingActivity.a(this.a).removeMessages(102);
+      ARMapLoadingActivity.a(this.a).sendEmptyMessageDelayed(102, 200L);
+    }
   }
 }
 

@@ -1,82 +1,71 @@
+import android.os.Bundle;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
+import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.List;
+import tencent.im.oidb.gallery.gallery.GalleryInfo;
 
 public class lqd
-  implements Runnable
+  implements ViewPager.OnPageChangeListener
 {
-  public lqd(ArticleInfoModule paramArticleInfoModule, long paramLong1, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, List paramList1, boolean paramBoolean2, long paramLong2, List paramList2, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  public lqd(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
   
-  public void run()
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    boolean bool3 = false;
-    boolean bool1;
-    StringBuilder localStringBuilder;
-    int i;
-    if (this.jdField_a_of_type_Long == -1L)
+    ReadInJoyAtlasFragment.a(this.a).a(2, null);
+    if (paramInt == 0)
     {
-      bool1 = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ArrayOfByte);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label479;
-      }
-      localStringBuilder = new StringBuilder("\n");
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        break label337;
-      }
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      i = 0;
-      label72:
-      if (!((Iterator)localObject).hasNext()) {
-        break label337;
-      }
-      ArticleInfo localArticleInfo = (ArticleInfo)((Iterator)localObject).next();
-      localStringBuilder.append("article【" + i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + ReadInJoyUtils.d(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " feeedCookie : " + localArticleInfo.mFeedCookie + ", mFeedID : " + localArticleInfo.mFeedId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName);
-      if (!QLog.isColorLevel()) {
-        break label326;
-      }
-      if (localArticleInfo.mSocialFeedInfo == null) {
-        break label315;
-      }
-      localStringBuilder.append(" " + localArticleInfo.mSocialFeedInfo);
-      localStringBuilder.append("\n");
+      this.a.b(1);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setVisibility(0);
     }
     for (;;)
     {
-      i += 1;
-      break label72;
-      bool1 = false;
-      break;
-      label315:
-      localStringBuilder.append("\n");
-      continue;
-      label326:
-      localStringBuilder.append("\n");
-    }
-    label337:
-    Object localObject = new StringBuilder().append("handleRefreshChannel success=").append(this.jdField_a_of_type_Boolean).append(" channelId=").append(this.jdField_a_of_type_Int).append(" noMoreData=").append(this.jdField_b_of_type_Boolean).append(" beginRecommendSeq=").append(this.jdField_a_of_type_Long).append(" endRecommendSeq=").append(this.jdField_b_of_type_Long).append(" isInMsgTab : ");
-    boolean bool2 = bool3;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a != null)
-    {
-      bool2 = bool3;
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a instanceof QQAppInterface)) {
-        bool2 = true;
+      return;
+      if (paramInt == 1)
+      {
+        this.a.b(2);
+        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.a();
+        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setVisibility(4);
+        Object localObject = new Bundle();
+        ((Bundle)localObject).putInt("exitType", 4);
+        ((Bundle)localObject).putSerializable("lastShowImageModel", this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.b());
+        ReadInJoyAtlasFragment.a(this.a).a(-2, (Bundle)localObject);
+        localObject = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.a();
+        List localList1 = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.b();
+        List localList2 = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.c();
+        long l1 = System.currentTimeMillis();
+        if ((localObject == null) || (((List)localObject).size() <= 0) || (localList1.size() <= 0) || (localList2.size() <= 0)) {
+          break;
+        }
+        paramInt = 0;
+        while ((paramInt < ((List)localObject).size()) && (paramInt < localList1.size()) && (paramInt < localList2.size()))
+        {
+          String str1 = GalleryReportedUtils.a((String)((List)localObject).get(paramInt), System.currentTimeMillis());
+          gallery.GalleryInfo localGalleryInfo = (gallery.GalleryInfo)localList2.get(paramInt);
+          int i = ((Integer)localList1.get(paramInt)).intValue();
+          long l2 = localGalleryInfo.uint64_article_id.get();
+          String str2 = localGalleryInfo.bytes_row_key.get().toStringUtf8();
+          String str3 = localGalleryInfo.bytes_report_exdata.get().toStringUtf8();
+          int j = localGalleryInfo.int32_reason.get();
+          PublicAccountReportUtils.a(null, "", "0X8008E2E", "0X8008E2E", 0, 0, "", l2 + "", j + "", str1, false);
+          GalleryReportedUtils.a(7, ReadInJoyUtils.a(), j, 2, l1, i, str2, str3);
+          paramInt += 1;
+        }
       }
     }
-    QLog.i("ArticleInfoModule", 1, bool2 + " isRefresh : " + bool1 + ", " + localStringBuilder.toString());
-    label479:
-    if (bool1)
-    {
-      ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
-      return;
-    }
-    ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
   }
 }
 

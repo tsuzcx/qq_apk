@@ -1,26 +1,42 @@
-import android.content.BroadcastReceiver;
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public final class ahmr
-  extends BroadcastReceiver
+public class ahmr
+  implements Runnable
 {
-  private ahmr(PtvTemplateProviderView paramPtvTemplateProviderView) {}
+  public ahmr(CameraCaptureFragment paramCameraCaptureFragment, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ("action_brocassreceiver_for_ptv".equals(paramIntent.getAction()))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.getActivity();
+    if (localObject == null) {}
+    do
     {
-      CapturePtvTemplateManager.a().b(false);
-      PtvTemplateProviderView.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PtvTemplateProviderView", 2, "PtvTemplateProviderView PtvBroadcastReceiver size=" + this.a.a.size());
+      for (;;)
+      {
+        return;
+        QLog.e("CameraCaptureFragment", 2, "onCameraStarted error = " + this.jdField_a_of_type_JavaLangString);
+        String str = ((Activity)localObject).getString(2131428347);
+        localObject = DialogUtil.a((Context)localObject, 230).setMessage(str).setPositiveButton(((Activity)localObject).getString(2131428346), new ahms(this, (Activity)localObject));
+        try
+        {
+          ((QQCustomDialog)localObject).setCancelable(false);
+          if (!CameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment))
+          {
+            ((QQCustomDialog)localObject).show();
+            CameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment, true);
+            return;
+          }
+        }
+        catch (WindowManager.BadTokenException localBadTokenException) {}
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("CameraCaptureFragment", 2, "", localBadTokenException);
   }
 }
 

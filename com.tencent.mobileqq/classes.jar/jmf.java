@@ -1,40 +1,32 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class jmf
-  implements Runnable
+public class jmf
+  implements DialogInterface.OnClickListener
 {
-  jmf(jme paramjme, boolean paramBoolean, String paramString) {}
+  public jmf(RandomController paramRandomController) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Jme.a.getActivity() == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_Jme.a.getActivity().sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_Jme.a.getString(2131430001, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_Jme.a.getActivity().getTitleBarHeight());
+    if (RandomController.a(this.a) == 1) {
+      ReportController.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Jme.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Jme.a.b = true;
+      this.a.c();
+      RandomController.d(this.a, false);
       return;
-      QRUtils.a(1, 2131430002);
+      if (RandomController.a(this.a) == 2) {
+        ReportController.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jmf
  * JD-Core Version:    0.7.0.1
  */

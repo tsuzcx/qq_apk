@@ -1,23 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.portal.PortalManager;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class sgp
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public sgp(Conversation paramConversation) {}
+  public sgp(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Conversation.a(this.a).removeView(Conversation.a(this.a));
-    paramView = (PortalManager)this.a.a.getManager(78);
-    if (paramView != null) {
-      paramView.a(this.a.a(), false);
+    this.a.finish();
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
+      ChatSettingActivity.a(this.a).dismiss();
     }
-    Conversation.a(this.a, null);
   }
 }
 

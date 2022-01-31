@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.MyAdapter;
+import java.util.List;
 
 public class vuq
   implements Runnable
 {
-  public vuq(HotChatPie paramHotChatPie) {}
+  public vuq(PhotoListPanel.MyAdapter paramMyAdapter, List paramList) {}
   
   public void run()
   {
-    ConfigServlet.a(this.a.a, this.a.a.getAccount(), -1);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$MyAdapter.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

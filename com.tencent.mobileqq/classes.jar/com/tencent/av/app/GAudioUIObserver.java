@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import jeo;
+import jgq;
 
 public class GAudioUIObserver
   implements Observer
@@ -365,7 +365,7 @@ public class GAudioUIObserver
       if (this.a == null) {
         this.a = new Handler(paramObservable);
       }
-      this.a.post(new jeo(this, paramObject));
+      this.a.post(new jgq(this, paramObject));
       return;
     }
     a(paramObject);
@@ -373,7 +373,7 @@ public class GAudioUIObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.GAudioUIObserver
  * JD-Core Version:    0.7.0.1
  */

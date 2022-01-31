@@ -1,45 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugReporter;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
 
-public class ajyi
-  implements BusinessObserver
+class ajyi
+  implements Runnable
 {
-  public ajyi(UnifiedDebugReporter paramUnifiedDebugReporter) {}
+  ajyi(ajyh paramajyh, TroopTopicDetailInfo paramTroopTopicDetailInfo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("extra_data");
-      if (paramBundle == null) {}
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
-        localRemoteLogRsp.mergeFrom(paramBundle);
-        if (localRemoteLogRsp.i32_ret.has())
-        {
-          paramInt = localRemoteLogRsp.i32_ret.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
-          }
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
-        return;
-      }
-    }
-    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
+    this.jdField_a_of_type_Ajyh.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
   }
 }
 

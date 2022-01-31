@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aiik;
-import aiil;
-import aiim;
+import ainf;
+import aing;
+import ainh;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -38,7 +38,7 @@ public class StructMsgItemButton
   {
     this.jdField_e_of_type_Int = 999;
     this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiim(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ainh(this);
     this.jdField_a_of_type_JavaLangString = "button";
   }
   
@@ -83,11 +83,11 @@ public class StructMsgItemButton
     int i = paramBundle.getInt("Layout3ButtonCount", 0);
     int j = paramBundle.getInt("Layout3ButtonIndex", -1);
     paramContext = (TextView)super.a(paramContext, paramView, paramBundle);
-    paramContext.setBackgroundResource(2130837917);
+    paramContext.setBackgroundResource(2130837916);
     if (i > 1) {
       if (j == 0)
       {
-        paramContext.setBackgroundResource(2130837910);
+        paramContext.setBackgroundResource(2130837909);
         i = 0;
       }
     }
@@ -101,17 +101,17 @@ public class StructMsgItemButton
       {
         paramContext.setClickable(true);
         paramContext.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramContext.setOnLongClickListener(new aiik(this));
-        paramContext.setOnTouchListener(new aiil(this));
+        paramContext.setOnLongClickListener(new ainf(this));
+        paramContext.setOnTouchListener(new aing(this));
         return paramContext;
         if (j == i - 1)
         {
-          paramContext.setBackgroundResource(2130837914);
+          paramContext.setBackgroundResource(2130837913);
           i = 2;
         }
         else
         {
-          paramContext.setBackgroundResource(2130837912);
+          paramContext.setBackgroundResource(2130837911);
           i = 1;
         }
       }

@@ -1,61 +1,88 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import ConfigPush.FileStoragePushFSSvcList;
+import ConfigPush.FileStorageServerListInfo;
+import com.tencent.mobileqq.transfile.SosoSrvAddrProvider;
+import com.tencent.mobileqq.transfile.SosoSrvAddrProvider.SosoSrvAddrType;
+import java.util.ArrayList;
 
 public class aiwx
-  extends AsyncTask
 {
-  public aiwx(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  private int[] jdField_a_of_type_ArrayOfInt;
   
-  protected Bundle a(Void... paramVarArgs)
+  public aiwx(SosoSrvAddrProvider paramSosoSrvAddrProvider) {}
+  
+  private int a(int[] paramArrayOfInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    paramVarArgs = new File(AppConstants.bz);
-    if (!paramVarArgs.exists()) {
-      paramVarArgs.mkdirs();
-    }
-    String str = AppConstants.bz + this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = str;
-    if (!new File(str).exists()) {}
-    try
+    if (paramArrayOfInt != null)
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      localBundle.putBoolean("forward_urldrawable", true);
-      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
-      localBundle.putString("forward_filepath", paramVarArgs);
-      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-      localBundle.putString("forward_extra", paramVarArgs);
-      return localBundle;
+      ArrayList localArrayList = new ArrayList();
+      int j = 5;
+      int i = 0;
+      if (i < paramArrayOfInt.length)
+      {
+        int k;
+        if (paramArrayOfInt[i] < j)
+        {
+          k = paramArrayOfInt[i];
+          localArrayList.clear();
+          localArrayList.add(Integer.valueOf(i));
+        }
+        for (;;)
+        {
+          i += 1;
+          j = k;
+          break;
+          k = j;
+          if (paramArrayOfInt[i] == j)
+          {
+            localArrayList.add(Integer.valueOf(i));
+            k = j;
+          }
+        }
+      }
+      if (localArrayList.size() > 0) {
+        return ((Integer)localArrayList.get(0)).intValue();
+      }
     }
-    catch (IOException paramVarArgs)
-    {
-      QLog.e("foward", 2, "IOException", paramVarArgs);
-    }
-    return null;
+    return -1;
   }
   
-  protected void a(Bundle paramBundle)
+  public FileStorageServerListInfo a(SosoSrvAddrProvider.SosoSrvAddrType paramSosoSrvAddrType)
   {
-    if (paramBundle == null)
+    Object localObject2 = null;
+    ArrayList localArrayList = SosoSrvAddrProvider.a(this.jdField_a_of_type_ComTencentMobileqqTransfileSosoSrvAddrProvider, paramSosoSrvAddrType);
+    Object localObject1 = localObject2;
+    if (localArrayList != null)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, "保存图片失败", 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
-      return;
+      localObject1 = localObject2;
+      if (localArrayList.size() > 0)
+      {
+        int i = a(a(paramSosoSrvAddrType));
+        localObject1 = localObject2;
+        if (i > -1)
+        {
+          localObject1 = localObject2;
+          if (i < localArrayList.size()) {
+            localObject1 = (FileStorageServerListInfo)localArrayList.get(i);
+          }
+        }
+      }
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramBundle);
-    ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, localIntent, 21);
-    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, "0X8006A81", "0X8006A95");
+    return localObject1;
+  }
+  
+  public void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
+  {
+    if ((paramFileStoragePushFSSvcList != null) && (paramFileStoragePushFSSvcList.vUrlEncodeServiceList != null) && (paramFileStoragePushFSSvcList.vUrlEncodeServiceList.size() > 0)) {
+      this.jdField_a_of_type_ArrayOfInt = new int[paramFileStoragePushFSSvcList.vUrlEncodeServiceList.size()];
+    }
+  }
+  
+  int[] a(SosoSrvAddrProvider.SosoSrvAddrType paramSosoSrvAddrType)
+  {
+    if (paramSosoSrvAddrType == SosoSrvAddrProvider.SosoSrvAddrType.URL_ENCODE_SRV) {
+      return this.jdField_a_of_type_ArrayOfInt;
+    }
+    return null;
   }
 }
 

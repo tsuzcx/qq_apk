@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.search.model.SearchEntryDataModel;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.List;
@@ -14,8 +13,6 @@ public class UniteSearchObserver
   public void a(int paramInt1, String paramString, int paramInt2) {}
   
   public void a(int paramInt, List paramList) {}
-  
-  public void a(SearchEntryDataModel paramSearchEntryDataModel) {}
   
   public void a(String paramString, int paramInt, List paramList1, List paramList2, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem) {}
   
@@ -32,8 +29,6 @@ public class UniteSearchObserver
   public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List paramList1, long[] paramArrayOfLong, String paramString3, List paramList2, boolean paramBoolean3) {}
   
   public void a(List paramList, int paramInt) {}
-  
-  public void b(int paramInt, String paramString) {}
   
   public void b(int paramInt1, String paramString, int paramInt2) {}
   
@@ -53,6 +48,7 @@ public class UniteSearchObserver
     {
     case 1001: 
     case 1003: 
+    case 1008: 
     default: 
     case 1005: 
     case 1006: 
@@ -173,22 +169,6 @@ public class UniteSearchObserver
         }
       }
       b(-1, null, -1);
-      return;
-    case 1008: 
-      if (paramObject != null)
-      {
-        if (paramBoolean)
-        {
-          a((SearchEntryDataModel)((Object[])(Object[])paramObject)[0]);
-          return;
-        }
-        localObject1 = (Object[])paramObject;
-        paramObject = (Integer)localObject1[0];
-        localObject1 = (String)localObject1[1];
-        b(paramObject.intValue(), (String)localObject1);
-        return;
-      }
-      b(-1, "");
       return;
     }
     if (paramObject != null)

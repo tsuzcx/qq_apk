@@ -1,46 +1,18 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporter.OnFrequenceDataUpdateListener;
 
-public class rjz
-  extends CardObserver
+class rjz
+  implements Runnable
 {
-  public rjz(AddRequestActivity paramAddRequestActivity) {}
+  rjz(rjy paramrjy, DoraemonAPIReporter.OnFrequenceDataUpdateListener paramOnFrequenceDataUpdateListener, String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (!this.a.a.equals(paramString)) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.a(2130838750, this.a.getString(2131433470));
-      return;
-    }
-    this.a.a(2130838739, this.a.getString(2131433469));
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if ((ProfileActivity.e(AddRequestActivity.a(this.a))) && (paramBoolean) && ((paramObject instanceof Card)))
-    {
-      paramObject = (Card)paramObject;
-      if (Utils.a(paramObject.uin, this.a.a)) {
-        this.a.a(paramObject.strCampusName);
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.systemmsg.AddRequestActivity", 4, String.format(Locale.getDefault(), "onGetCampusInfo [%s, %s]", new Object[] { Utils.b(paramObject.uin), Utils.b(paramObject.strCampusName) }));
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter$OnFrequenceDataUpdateListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rjz
  * JD-Core Version:    0.7.0.1
  */

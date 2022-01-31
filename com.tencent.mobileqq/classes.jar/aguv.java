@@ -1,67 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.mobileqq.profile.like.PraiseInfo;
+import com.tencent.mobileqq.profile.like.PraiseManager;
+import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseLoadListener;
 
 public class aguv
-  implements Runnable
+  implements PraiseManager.OnPraiseLoadListener
 {
-  public aguv(QCallDetailActivity paramQCallDetailActivity) {}
+  public int a;
+  public PraiseManager.OnPraiseLoadListener a;
+  public int b;
   
-  public void run()
+  public aguv(PraiseManager paramPraiseManager) {}
+  
+  public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
   {
-    int k = 0;
-    if (this.a.app == null) {
-      break label12;
-    }
-    label12:
-    label142:
-    label159:
-    for (;;)
+    paramInt1 = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = paramInt1;
+    if (paramInt1 == this.b)
     {
-      return;
-      if (QCallDetailActivity.a(this.a, QCallDetailActivity.a(this.a)))
-      {
-        Object localObject = MsgProxyUtils.q;
-        int m = localObject.length;
-        int i = 0;
-        int j = k;
-        if (i < m)
-        {
-          j = localObject[i];
-          if (QCallDetailActivity.a(this.a) == j) {
-            j = 1;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            break;
-          }
-          localObject = (PhoneContactManager)this.a.app.getManager(10);
-          if (localObject != null) {
-            break label142;
-          }
-        }
-        for (localObject = null;; localObject = ((PhoneContactManager)localObject).c(QCallDetailActivity.a(this.a)))
-        {
-          if (localObject == null) {
-            break label159;
-          }
-          QCallDetailActivity.a(this.a).a(((PhoneContact)localObject).mobileCode, 1006, QCallDetailActivity.a(this.a), QCallDetailActivity.a(this.a));
-          return;
-          i += 1;
-          break;
-        }
+      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
+      if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener.a(0, null, 0, "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aguv
  * JD-Core Version:    0.7.0.1
  */

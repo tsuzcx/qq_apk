@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-public final class ansg
-  implements Parcelable.Creator
+public class ansg
+  implements Runnable
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
-  {
-    return new EditTakeVideoSource(paramParcel);
-  }
+  public ansg(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public EditTakeVideoSource[] a(int paramInt)
+  public void run()
   {
-    return new EditTakeVideoSource[paramInt];
+    QIMEffectCameraCaptureUnit.a(this.a);
   }
 }
 

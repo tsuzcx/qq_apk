@@ -1,7 +1,7 @@
 package com.tencent.mapsdk.rastercore.c;
 
 import com.tencent.mapsdk.rastercore.d.b;
-import com.tencent.mapsdk.rastercore.d.e;
+import com.tencent.mapsdk.rastercore.d.f;
 
 public final class d
   extends a
@@ -14,15 +14,15 @@ public final class d
     this.d = paramFloat;
   }
   
-  public final void a(e parame)
+  public final void a(f paramf)
   {
-    parame = parame.c();
+    paramf = paramf.c();
     if (this.a)
     {
-      parame.a((int)-this.d, (int)-this.e, this.b, this.c);
+      paramf.a((int)-this.d, (int)-this.e, this.b, this.c);
       return;
     }
-    parame.scrollBy((int)-this.d, (int)-this.e);
+    paramf.scrollBy((int)-this.d, (int)-this.e);
   }
   
   public final void b(float paramFloat)

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now.view;
 
-import aeww;
-import aewx;
+import afbr;
+import afbs;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -89,15 +89,15 @@ public class CommentsAdapter
       if ((paramView == null) || (!(paramView.getTag() instanceof CommentsViewHolder)))
       {
         paramView = new CommentsViewHolder();
-        localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970458, paramViewGroup, false);
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131370634));
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363549));
+        localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970471, paramViewGroup, false);
+        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131370625));
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363568));
         paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131361932));
-        paramView.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131370637));
-        paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131370570));
-        paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131370571));
-        paramView.d = ((ImageView)((View)localObject).findViewById(2131370638));
-        ((View)localObject).setTag(2131362449, paramView);
+        paramView.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131370628));
+        paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131370579));
+        paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131370580));
+        paramView.d = ((ImageView)((View)localObject).findViewById(2131370629));
+        ((View)localObject).setTag(2131362452, paramView);
         paramViewGroup = paramView;
         paramView = (View)localObject;
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((Comments.Comment)this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments.a.get(paramInt)).jdField_b_of_type_JavaLangString);
@@ -113,17 +113,17 @@ public class CommentsAdapter
         if (((str1 != null) && (!str1.isEmpty())) || (!str2.equals(((QQAppInterface)localObject).getCurrentAccountUin()))) {
           break label621;
         }
-        localObject = FaceDrawable.a((AppInterface)localObject, 32, str2, 3, paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130842765), paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130842765));
+        localObject = FaceDrawable.a((AppInterface)localObject, 32, str2, 3, paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130842800), paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130842800));
         paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         label445:
         paramViewGroup.a(((Comments.Comment)this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments.a.get(paramInt)).jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfo, this.c, this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_b_of_type_Boolean);
         long l = ((Comments.Comment)this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments.a.get(paramInt)).jdField_c_of_type_Long;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aeww(this, l));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new afbr(this, l));
         if (((Comments.Comment)this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments.a.get(paramInt)).jdField_a_of_type_Int == 2) {
           paramViewGroup.d.setVisibility(0);
         }
-        paramView.setTag(2131362450, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments.a.get(paramInt));
-        paramView.setTag(2131362451, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments);
+        paramView.setTag(2131362453, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments.a.get(paramInt));
+        paramView.setTag(2131362454, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments);
         localObject = paramView;
       }
     }
@@ -136,7 +136,7 @@ public class CommentsAdapter
       break;
       paramViewGroup.a(((Comments.Comment)this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments.a.get(paramInt)).jdField_a_of_type_JavaLangString);
       break label294;
-      ImageLoader.a().a(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, ((Comments.Comment)this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments.a.get(paramInt)).jdField_c_of_type_JavaLangString, paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130842765), paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130842765), null, true);
+      ImageLoader.a().a(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, ((Comments.Comment)this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments.a.get(paramInt)).jdField_c_of_type_JavaLangString, paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130842800), paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130842800), null, true);
       break label445;
       if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a())
       {
@@ -150,10 +150,10 @@ public class CommentsAdapter
         for (;;)
         {
           paramView.setBackgroundColor(Color.parseColor("#ffffff"));
-          paramView.findViewById(2131370567).setOnClickListener(new aewx(this));
+          paramView.findViewById(2131370576).setOnClickListener(new afbs(this));
           paramView.setTag("badnet");
           return paramView;
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970447, paramViewGroup, false);
+          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970462, paramViewGroup, false);
         }
       }
       if ((paramView == null) || (!(paramView.getTag() instanceof String))) {
@@ -162,7 +162,7 @@ public class CommentsAdapter
       localObject = paramView;
     } while ("empty".equals((String)paramView.getTag()));
     label839:
-    paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970448, paramViewGroup, false);
+    paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970463, paramViewGroup, false);
     paramView.setTag("empty");
     return paramView;
   }

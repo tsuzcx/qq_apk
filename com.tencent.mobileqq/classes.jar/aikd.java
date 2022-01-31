@@ -1,29 +1,9 @@
-import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
+import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
 
-public class aikd
-  extends CountDownTimer.CountDownTimerListener
+public final class aikd
+  extends PluginRecoverReceiver
 {
-  public aikd(CountdownTextView paramCountdownTextView, long paramLong, CountdownTextView.TimerCallback paramTimerCallback)
-  {
-    super(paramLong);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a(paramLong);
-    }
-  }
+  protected void onRecver(String paramString) {}
 }
 
 

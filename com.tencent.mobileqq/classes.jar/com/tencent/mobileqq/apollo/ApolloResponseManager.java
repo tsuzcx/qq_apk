@@ -36,9 +36,9 @@ import java.util.List;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import ymj;
-import yml;
-import ymn;
+import ysn;
+import ysp;
+import ysr;
 
 public class ApolloResponseManager
   implements ISpriteTaskStatusCallback, Manager
@@ -52,13 +52,13 @@ public class ApolloResponseManager
   ListView jdField_a_of_type_ComTencentWidgetListView;
   public String a;
   public Comparator a;
-  ymn jdField_a_of_type_Ymn;
+  ysr jdField_a_of_type_Ysr;
   
   public ApolloResponseManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ymj(this);
-    this.jdField_a_of_type_JavaUtilComparator = new yml(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ysn(this);
+    this.jdField_a_of_type_JavaUtilComparator = new ysp(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
@@ -87,7 +87,7 @@ public class ApolloResponseManager
       }
       this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
       this.jdField_a_of_type_ComTencentWidgetListView = null;
-      this.jdField_a_of_type_Ymn = null;
+      this.jdField_a_of_type_Ysr = null;
     }
     this.jdField_a_of_type_AndroidWidgetFrameLayout = null;
   }
@@ -108,14 +108,14 @@ public class ApolloResponseManager
       this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
     }
     BaseActivity localBaseActivity = paramBaseChatPie.a();
-    paramBaseChatPie = (RelativeLayout)paramBaseChatPie.a().findViewById(2131363492);
+    paramBaseChatPie = (RelativeLayout)paramBaseChatPie.a().findViewById(2131363511);
     int i;
     if (this.jdField_a_of_type_ComTencentWidgetListView == null)
     {
       this.jdField_a_of_type_ComTencentWidgetListView = new ListView(localBaseActivity);
       this.jdField_a_of_type_ComTencentWidgetListView.setDivider(null);
       this.jdField_a_of_type_ComTencentWidgetListView.setVerticalScrollBarEnabled(false);
-      this.jdField_a_of_type_ComTencentWidgetListView.setSelector(localBaseActivity.getResources().getDrawable(2130846407));
+      this.jdField_a_of_type_ComTencentWidgetListView.setSelector(localBaseActivity.getResources().getDrawable(2130846489));
       this.jdField_a_of_type_ComTencentWidgetListView.setCacheColorHint(2131492880);
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(localBaseActivity);
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(localBaseActivity);
@@ -125,16 +125,16 @@ public class ApolloResponseManager
       this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
       i = AIOUtils.a(9.0F, localBaseActivity.getResources());
       this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, i);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localBaseActivity.getResources().getColor(2131494219));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localBaseActivity.getResources().getColor(2131494225));
       Object localObject = new FrameLayout.LayoutParams(-2, -2);
       ((FrameLayout.LayoutParams)localObject).gravity = 1;
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_ComTencentWidgetListView.addHeaderView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-      this.jdField_a_of_type_Ymn = new ymn(this, localBaseActivity);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ymn);
+      this.jdField_a_of_type_Ysr = new ysr(this, localBaseActivity);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ysr);
       localObject = new RelativeLayout.LayoutParams(AIOUtils.a(99.0F, localBaseActivity.getResources()), -2);
       ((RelativeLayout.LayoutParams)localObject).addRule(11);
-      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131363494);
+      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131363513);
       ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.a(10.0F, localBaseActivity.getResources());
       paramBaseChatPie.addView(this.jdField_a_of_type_ComTencentWidgetListView, (ViewGroup.LayoutParams)localObject);
     }
@@ -162,7 +162,7 @@ public class ApolloResponseManager
         {
           paramBaseChatPie.edit().putBoolean("first_show_resp", false).commit();
           this.jdField_a_of_type_AndroidWidgetTextView.setText("快速回应");
-          this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838014, 0);
+          this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838013, 0);
         }
         else
         {
@@ -173,7 +173,7 @@ public class ApolloResponseManager
           this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         }
       }
-      this.jdField_a_of_type_Ymn.a(paramBaseChatPie, paramInt);
+      this.jdField_a_of_type_Ysr.a(paramBaseChatPie, paramInt);
       return;
     }
     catch (Exception paramBaseChatPie)
@@ -214,7 +214,7 @@ public class ApolloResponseManager
   public void onDestroy()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = null;
-    this.jdField_a_of_type_Ymn = null;
+    this.jdField_a_of_type_Ysr = null;
     this.jdField_a_of_type_ComTencentWidgetListView = null;
     this.jdField_a_of_type_AndroidWidgetFrameLayout = null;
     this.jdField_a_of_type_AndroidWidgetTextView = null;

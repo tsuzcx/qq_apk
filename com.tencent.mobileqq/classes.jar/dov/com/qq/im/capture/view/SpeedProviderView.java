@@ -23,23 +23,23 @@ public class SpeedProviderView
   
   protected int a()
   {
-    return 2130970145;
+    return 2130970158;
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970145, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970158, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131369212);
+    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131369216);
     this.c.setOnClickListener(this);
-    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131369214);
+    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131369218);
     this.d.setOnClickListener(this);
-    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131369218);
+    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131369222);
     this.e.setOnClickListener(this);
-    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131369216);
+    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131369220);
     this.f.setOnClickListener(this);
   }
   

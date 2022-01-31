@@ -1,16 +1,14 @@
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
 
 public class wav
   implements Runnable
 {
-  public wav(TroopChatPie paramTroopChatPie) {}
+  public wav(MultiForwardChatPie paramMultiForwardChatPie) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
+    MultiForwardChatPie.a(this.a).notifyDataSetChanged();
   }
 }
 

@@ -254,7 +254,7 @@ public abstract class ReadInJoyEngineModule
   {
     List localList = null;
     if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.d(ArticleInfo.class.getSimpleName())) {
-      localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(ArticleInfo.class, true, "mFeedType = ? AND businessId = ?", new String[] { String.valueOf(0), String.valueOf(paramInt) }, null, null, null, null);
+      localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(ArticleInfo.class, true, "(mFeedType = ? OR mFeedType = ?) AND businessId = ?", new String[] { String.valueOf(0), String.valueOf(4), String.valueOf(paramInt) }, null, null, null, null);
     }
     return localList;
   }

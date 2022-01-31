@@ -1,97 +1,136 @@
 package c.t.m.g;
 
-import android.util.Base64;
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
+import android.content.Context;
+import android.util.Log;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.security.GeneralSecurityException;
+import javax.net.ssl.SSLException;
 
 public final class cv
 {
-  private static final byte[] a = { 84, 101, 110, 99, 101, 110, 116, 76, 111, 99, 97, 116, 105, 111, 110, 49 };
-  private static final byte[] b = new byte[0];
+  public Context a;
+  public String b;
+  public String c;
+  String d;
   
-  public static String a(String paramString1, String paramString2)
+  public cv(String paramString1, String paramString2, String paramString3)
   {
-    return a(paramString1, paramString2, 1);
+    this.b = paramString2;
+    this.c = paramString1;
+    this.d = paramString3;
   }
   
-  private static String a(String paramString1, String paramString2, int paramInt)
+  public static String a(String paramString)
   {
-    Object localObject = null;
-    if ((paramInt != 1) && (paramInt != 2)) {
-      throw new IllegalArgumentException("wrong mode.");
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    if ((paramString1 == null) || (paramString1.length() == 0))
-    {
-      paramString1 = "";
-      return paramString1;
-    }
-    if (paramInt == 1) {}
+    return str;
+  }
+  
+  static void a(String paramString, byte[] paramArrayOfByte, a parama, int paramInt)
+  {
     for (;;)
     {
       try
       {
-        paramString1 = paramString1.getBytes();
-        if (paramString1 == null) {
-          break label122;
-        }
-        if (paramString1.length == 0)
+        HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(paramString).openConnection();
+        localHttpURLConnection.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
+        localHttpURLConnection.setRequestMethod("POST");
+        localHttpURLConnection.setConnectTimeout(10000);
+        localHttpURLConnection.setDoOutput(true);
+        localHttpURLConnection.setFixedLengthStreamingMode(paramArrayOfByte.length);
+        Object localObject = localHttpURLConnection.getOutputStream();
+        ((OutputStream)localObject).write(paramArrayOfByte);
+        ((OutputStream)localObject).flush();
+        ((OutputStream)localObject).close();
+        int i = localHttpURLConnection.getResponseCode();
+        switch (i)
         {
-          break label122;
-          if (paramInt == 2) {
-            paramString1 = Base64.decode(paramString1.getBytes(), 2);
-          }
+        case 200: 
+          parama.a("net sdk error: ".concat(String.valueOf(i)));
+          localHttpURLConnection.disconnect();
+          return;
+          localObject = b(localHttpURLConnection.getHeaderField("content-type"));
+          new String(a(localHttpURLConnection.getInputStream()), (String)localObject);
+          parama.a();
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        if ((paramInt <= 0) && (((localThrowable instanceof GeneralSecurityException)) || ((localThrowable instanceof SSLException))))
+        {
+          paramString = paramString.replaceAll("https:", "http:");
+          paramInt += 1;
         }
         else
         {
-          paramString2 = a(paramString1, paramString2, paramInt);
-          if (paramInt == 1) {
-            return Base64.encodeToString(paramString2, 2);
-          }
-          paramString1 = localObject;
-          if (paramInt != 2) {
-            break;
-          }
-          paramString1 = new String(paramString2);
-          return paramString1;
+          parama.a(paramInt + "," + paramString + "," + Log.getStackTraceString(localThrowable));
+          return;
         }
       }
-      catch (Throwable paramString1)
-      {
-        return "";
-      }
-      paramString1 = null;
     }
-    label122:
-    return "";
   }
   
-  private static byte[] a(byte[] paramArrayOfByte, String paramString, int paramInt)
+  private static byte[] a(InputStream paramInputStream)
+    throws IOException
   {
-    if ((paramInt != 1) && (paramInt != 2)) {
-      throw new IllegalArgumentException("wrong mode.");
-    }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return b;
-    }
-    try
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(256);
+    byte[] arrayOfByte = new byte[256];
+    for (;;)
     {
-      paramString = new SecretKeySpec(paramString.getBytes("UTF-8"), "AES");
-      Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-      localCipher.init(paramInt, paramString, new IvParameterSpec(a));
-      if (localCipher == null) {
-        return b;
+      int i = paramInputStream.read(arrayOfByte);
+      if (i == -1) {
+        break;
       }
-      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
-      return paramArrayOfByte;
+      localByteArrayOutputStream.write(arrayOfByte, 0, i);
     }
-    catch (Throwable paramArrayOfByte) {}
-    return b;
+    paramInputStream.close();
+    return localByteArrayOutputStream.toByteArray();
   }
   
-  public static String b(String paramString1, String paramString2)
+  private static String b(String paramString)
   {
-    return a(paramString1, paramString2, 2);
+    String str2 = "GBK";
+    String str1 = str2;
+    int j;
+    int i;
+    if (paramString != null)
+    {
+      paramString = paramString.split(";");
+      j = paramString.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      str1 = str2;
+      if (i < j)
+      {
+        str1 = paramString[i].trim();
+        int k = str1.indexOf("charset=");
+        if (-1 != k) {
+          str1 = str1.substring(k + 8, str1.length());
+        }
+      }
+      else
+      {
+        return str1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a();
+    
+    public abstract void a(String paramString);
   }
 }
 

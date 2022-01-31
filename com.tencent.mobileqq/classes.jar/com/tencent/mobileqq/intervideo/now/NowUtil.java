@@ -36,6 +36,11 @@ public class NowUtil
     }
   }
   
+  public static boolean a()
+  {
+    return new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/now/h5testEnv").exists();
+  }
+  
   public static boolean a(String paramString)
   {
     if ((paramString == null) || ("".equalsIgnoreCase(paramString))) {
@@ -67,25 +72,25 @@ public class NowUtil
     //   9: istore 5
     //   11: ldc 32
     //   13: aload_2
-    //   14: invokevirtual 101	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   14: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   17: ifne +5 -> 22
     //   20: iconst_0
     //   21: ireturn
     //   22: aload_0
-    //   23: invokestatic 106	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
+    //   23: invokestatic 116	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
     //   26: ifeq -6 -> 20
-    //   29: invokestatic 104	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
-    //   32: invokestatic 106	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
+    //   29: invokestatic 114	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
+    //   32: invokestatic 116	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
     //   35: ifeq +5 -> 40
     //   38: iconst_1
     //   39: ireturn
-    //   40: invokestatic 113	com/tencent/mobileqq/intervideo/now/NowUtil:a	()Ljava/lang/String;
+    //   40: invokestatic 123	com/tencent/mobileqq/intervideo/now/NowUtil:a	()Ljava/lang/String;
     //   43: astore 8
     //   45: aload 8
-    //   47: invokestatic 106	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
+    //   47: invokestatic 116	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
     //   50: ifeq +9 -> 59
     //   53: aload 8
-    //   55: invokestatic 115	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
+    //   55: invokestatic 125	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
     //   58: pop
     //   59: new 67	java/io/File
     //   62: dup
@@ -98,24 +103,24 @@ public class NowUtil
     //   74: invokespecial 69	java/io/File:<init>	(Ljava/lang/String;)V
     //   77: astore_2
     //   78: aload_2
-    //   79: invokevirtual 118	java/io/File:createNewFile	()Z
+    //   79: invokevirtual 128	java/io/File:createNewFile	()Z
     //   82: pop
-    //   83: new 120	java/io/FileInputStream
+    //   83: new 130	java/io/FileInputStream
     //   86: dup
     //   87: aload_0
-    //   88: invokespecial 123	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   88: invokespecial 133	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   91: astore_0
-    //   92: new 125	java/io/FileOutputStream
+    //   92: new 135	java/io/FileOutputStream
     //   95: dup
     //   96: aload_2
-    //   97: invokespecial 126	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   97: invokespecial 136	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   100: astore_1
     //   101: sipush 1024
     //   104: newarray byte
     //   106: astore_2
     //   107: aload_0
     //   108: aload_2
-    //   109: invokevirtual 132	java/io/InputStream:read	([B)I
+    //   109: invokevirtual 142	java/io/InputStream:read	([B)I
     //   112: istore_3
     //   113: iload_3
     //   114: iconst_m1
@@ -124,7 +129,7 @@ public class NowUtil
     //   119: aload_2
     //   120: iconst_0
     //   121: iload_3
-    //   122: invokevirtual 138	java/io/OutputStream:write	([BII)V
+    //   122: invokevirtual 148	java/io/OutputStream:write	([BII)V
     //   125: goto -18 -> 107
     //   128: astore_2
     //   129: aload_1
@@ -136,42 +141,42 @@ public class NowUtil
     //   135: aload_0
     //   136: ifnull +7 -> 143
     //   139: aload_0
-    //   140: invokevirtual 141	java/io/OutputStream:close	()V
+    //   140: invokevirtual 151	java/io/OutputStream:close	()V
     //   143: iload 5
     //   145: istore 4
     //   147: aload_1
     //   148: ifnull +11 -> 159
     //   151: aload_1
-    //   152: invokevirtual 142	java/io/InputStream:close	()V
+    //   152: invokevirtual 152	java/io/InputStream:close	()V
     //   155: iload 5
     //   157: istore 4
     //   159: iload 4
     //   161: ifne +134 -> 295
     //   164: aload 8
-    //   166: invokestatic 115	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
+    //   166: invokestatic 125	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
     //   169: pop
     //   170: iload 4
     //   172: ireturn
     //   173: aload_1
     //   174: ifnull +7 -> 181
     //   177: aload_1
-    //   178: invokevirtual 141	java/io/OutputStream:close	()V
+    //   178: invokevirtual 151	java/io/OutputStream:close	()V
     //   181: aload_0
     //   182: ifnull +7 -> 189
     //   185: aload_0
-    //   186: invokevirtual 142	java/io/InputStream:close	()V
+    //   186: invokevirtual 152	java/io/InputStream:close	()V
     //   189: iconst_1
     //   190: istore 4
     //   192: goto -33 -> 159
     //   195: astore_0
     //   196: aload_0
-    //   197: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   197: invokevirtual 155	java/io/IOException:printStackTrace	()V
     //   200: iconst_1
     //   201: istore 4
     //   203: goto -44 -> 159
     //   206: astore_0
     //   207: aload_0
-    //   208: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   208: invokevirtual 155	java/io/IOException:printStackTrace	()V
     //   211: iload 5
     //   213: istore 4
     //   215: goto -56 -> 159
@@ -183,19 +188,19 @@ public class NowUtil
     //   224: aload_1
     //   225: ifnull +7 -> 232
     //   228: aload_1
-    //   229: invokevirtual 141	java/io/OutputStream:close	()V
+    //   229: invokevirtual 151	java/io/OutputStream:close	()V
     //   232: iload 5
     //   234: istore 4
     //   236: aload_0
     //   237: ifnull -78 -> 159
     //   240: aload_0
-    //   241: invokevirtual 142	java/io/InputStream:close	()V
+    //   241: invokevirtual 152	java/io/InputStream:close	()V
     //   244: iload 5
     //   246: istore 4
     //   248: goto -89 -> 159
     //   251: astore_0
     //   252: aload_0
-    //   253: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   253: invokevirtual 155	java/io/IOException:printStackTrace	()V
     //   256: iload 5
     //   258: istore 4
     //   260: goto -101 -> 159
@@ -207,20 +212,20 @@ public class NowUtil
     //   269: aload_2
     //   270: ifnull +7 -> 277
     //   273: aload_2
-    //   274: invokevirtual 141	java/io/OutputStream:close	()V
+    //   274: invokevirtual 151	java/io/OutputStream:close	()V
     //   277: aload_0
     //   278: ifnull +7 -> 285
     //   281: aload_0
-    //   282: invokevirtual 142	java/io/InputStream:close	()V
+    //   282: invokevirtual 152	java/io/InputStream:close	()V
     //   285: aload_1
     //   286: athrow
     //   287: astore_0
     //   288: aload_0
-    //   289: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   289: invokevirtual 155	java/io/IOException:printStackTrace	()V
     //   292: goto -7 -> 285
     //   295: aload 8
-    //   297: invokestatic 104	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
-    //   300: invokestatic 147	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   297: invokestatic 114	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
+    //   300: invokestatic 157	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;Ljava/lang/String;)Z
     //   303: pop
     //   304: iload 4
     //   306: ireturn

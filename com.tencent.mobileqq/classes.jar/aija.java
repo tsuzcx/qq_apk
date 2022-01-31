@@ -1,25 +1,21 @@
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout20;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
+import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
 
 public class aija
   implements Runnable
 {
-  public aija(StructMsgItemLayout20 paramStructMsgItemLayout20, int paramInt, aijb paramaijb) {}
+  public aija(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Aijb.jdField_a_of_type_AndroidWidgetTextView.getWidth();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Aijb.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
-    localLayoutParams.rightMargin = (j + i);
-    this.jdField_a_of_type_Aijb.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams(localLayoutParams);
+    if (this.a.a != null) {
+      this.a.a.M_();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aija
  * JD-Core Version:    0.7.0.1
  */

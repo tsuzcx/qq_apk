@@ -1,33 +1,31 @@
 import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.ImgDownloadListener;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.util.Log;
+import com.tencent.mobileqq.lyric.data.Lyric;
+import com.tencent.mobileqq.lyric.widget.LyricViewController;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
 
 public class aelk
   implements Runnable
 {
-  public aelk(ImgDownloadListener paramImgDownloadListener, int paramInt) {}
+  public aelk(LyricViewController paramLyricViewController, int paramInt) {}
   
   public void run()
   {
-    long l = SystemClock.elapsedRealtime() - ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener);
-    Object localObject2 = NetworkUtil.a(ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener));
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = "wifi";
+    if (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null) {
+      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.b();
     }
-    localObject2 = new HashMap();
-    ((HashMap)localObject2).put("errorCode", String.valueOf(this.jdField_a_of_type_Int));
-    ((HashMap)localObject2).put("costTime", String.valueOf(l));
-    ((HashMap)localObject2).put("apn", localObject1);
-    ((HashMap)localObject2).put("param_NetType", NetworkUtil.a(null) + "");
-    StatisticCollector.a(ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener)).a("", ImgDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyImgDownloadListener), false, l, 0L, (HashMap)localObject2, "", true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ImgDownloadListener", 2, "onFileDownloadFailed, errorCode=" + this.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a()))
+    {
+      Log.w("ModuleController", "seek before set lyric");
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.b) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_Int > 0))
+    {
+      LyricViewController localLyricViewController = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController;
+      localLyricViewController.jdField_a_of_type_Long -= this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_Int;
+    }
+    LyricViewController.a(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController);
   }
 }
 

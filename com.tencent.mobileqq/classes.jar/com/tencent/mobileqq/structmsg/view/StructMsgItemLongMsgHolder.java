@@ -39,8 +39,8 @@ public class StructMsgItemLongMsgHolder
       if (i == 0) {
         break label249;
       }
-      ((ImageView)localObject).setImageResource(2130839711);
-      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131430105));
+      ((ImageView)localObject).setImageResource(2130839726);
+      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131430107));
     }
     for (;;)
     {
@@ -60,8 +60,8 @@ public class StructMsgItemLongMsgHolder
       paramView = new RelativeLayout(paramContext);
       break label37;
       label249:
-      ((ImageView)localObject).setImageResource(2130839710);
-      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131430106));
+      ((ImageView)localObject).setImageResource(2130839725);
+      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131430108));
     }
   }
 }

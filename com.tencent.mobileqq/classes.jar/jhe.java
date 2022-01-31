@@ -1,29 +1,30 @@
-import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
+import com.tencent.av.business.manager.BusinessMessageCenter;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class jhe
+  implements Observer
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = 0;
-  public int d = 0;
-  public int e = 0;
-  public int f = 0;
-  public int g = 0;
-  public int h = 0;
+  private WeakReference a;
   
-  public jhe(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
+  public jhe(BusinessMessageCenter paramBusinessMessageCenter)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    this.a = new WeakReference(paramBusinessMessageCenter);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    BusinessMessageCenter localBusinessMessageCenter = (BusinessMessageCenter)this.a.get();
+    if (localBusinessMessageCenter == null) {
+      return;
+    }
+    BusinessMessageCenter.a(localBusinessMessageCenter, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhe
  * JD-Core Version:    0.7.0.1
  */

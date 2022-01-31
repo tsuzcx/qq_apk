@@ -1,17 +1,24 @@
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.util.IOfflineDownloader;
-import java.util.HashMap;
+import com.tencent.biz.JoinGroupHandler.IJoinGroupCB;
+import com.tencent.biz.JoinGroupTransitActivity;
 
 public class kld
-  implements Runnable
+  implements JoinGroupHandler.IJoinGroupCB
 {
-  public kld(BidDownloader paramBidDownloader) {}
+  public kld(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
   
-  public void run()
+  public void a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("Accept-Encoding", "gzip");
-    BidDownloader.jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.a.c, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_b_of_type_ComTencentBizCommonOfflineAsyncBack, localHashMap);
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void b()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void c()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
   }
 }
 

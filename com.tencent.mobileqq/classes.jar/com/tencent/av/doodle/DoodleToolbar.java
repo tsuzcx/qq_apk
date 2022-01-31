@@ -27,7 +27,7 @@ public class DoodleToolbar
   
   private ColorPickerView addColorPickerView(ViewGroup paramViewGroup)
   {
-    Object localObject2 = (ColorPickerView)paramViewGroup.findViewById(2131362534);
+    Object localObject2 = (ColorPickerView)paramViewGroup.findViewById(2131362539);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -46,7 +46,7 @@ public class DoodleToolbar
   
   private void removeColorPickerView(ViewGroup paramViewGroup)
   {
-    View localView = paramViewGroup.findViewById(2131362534);
+    View localView = paramViewGroup.findViewById(2131362539);
     if (localView != null) {
       paramViewGroup.removeView(localView);
     }
@@ -58,9 +58,9 @@ public class DoodleToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 3;
-      this.mUIInfo.g = 2130969359;
+      this.mUIInfo.g = 2130969357;
       this.mUIInfo.e = 103413;
-      this.mUIInfo.f = 2130840144;
+      this.mUIInfo.f = 2130840159;
       this.mUIInfo.a = this.mApp.getApp().getResources().getString(2131428743);
     }
     return this.mUIInfo;
@@ -102,10 +102,10 @@ public class DoodleToolbar
       AVActivity localAVActivity = (AVActivity)this.mActivity.get();
       if (localAVActivity != null)
       {
-        ViewGroup localViewGroup = (ViewGroup)localAVActivity.findViewById(2131365825);
+        ViewGroup localViewGroup = (ViewGroup)localAVActivity.findViewById(2131365830);
         if (localViewGroup != null)
         {
-          Object localObject = (DoodleSurfaceView)localViewGroup.findViewById(2131362535);
+          Object localObject = (DoodleSurfaceView)localViewGroup.findViewById(2131362540);
           if (localObject != null)
           {
             ((DoodleSurfaceView)localObject).setClickable(false);
@@ -113,7 +113,7 @@ public class DoodleToolbar
               DoodleUtils.a(localViewGroup);
             }
           }
-          localObject = (ColorPickerView)localViewGroup.findViewById(2131362534);
+          localObject = (ColorPickerView)localViewGroup.findViewById(2131362539);
           if (localObject != null)
           {
             ((ColorPickerView)localObject).clearAnimation();
@@ -132,7 +132,7 @@ public class DoodleToolbar
     if (this.mActivity.get() != null)
     {
       AVActivity localAVActivity = (AVActivity)this.mActivity.get();
-      Object localObject = (ViewGroup)localAVActivity.findViewById(2131365825);
+      Object localObject = (ViewGroup)localAVActivity.findViewById(2131365830);
       if (localObject != null)
       {
         DoodleSurfaceView localDoodleSurfaceView = DoodleUtils.a((ViewGroup)localObject);
@@ -153,7 +153,7 @@ public class DoodleToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleToolbar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.search.ftsmsg;
 
-import ahtu;
-import ahtv;
-import ahtw;
-import ahtx;
-import ahty;
-import ahtz;
+import ahyl;
+import ahym;
+import ahyn;
+import ahyo;
+import ahyp;
+import ahyq;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
@@ -58,11 +58,11 @@ public class FTSMessageSearchEngine
   private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private static ConcurrentHashMap b = new ConcurrentHashMap();
   private static ConcurrentHashMap c = new ConcurrentHashMap();
-  private GlobalSearchObserver jdField_a_of_type_ComTencentMobileqqAppGlobalSearchObserver = new ahtz(this);
+  private GlobalSearchObserver jdField_a_of_type_ComTencentMobileqqAppGlobalSearchObserver = new ahyq(this);
   private RecentUserProxy jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new ahtx(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new ahyo(this);
   private ConcurrentHashMap d = new ConcurrentHashMap();
   private ConcurrentHashMap e = new ConcurrentHashMap();
   
@@ -177,7 +177,7 @@ public class FTSMessageSearchEngine
     while (((Iterator)localObject1).hasNext()) {
       paramArrayList.add(((Map.Entry)((Iterator)localObject1).next()).getValue());
     }
-    Collections.sort(paramArrayList, new ahty(this));
+    Collections.sort(paramArrayList, new ahyp(this));
     return paramArrayList;
   }
   
@@ -239,7 +239,7 @@ public class FTSMessageSearchEngine
     while (((Iterator)localObject1).hasNext()) {
       paramArrayList.add(((Map.Entry)((Iterator)localObject1).next()).getValue());
     }
-    Collections.sort(paramArrayList, new ahtw(this));
+    Collections.sort(paramArrayList, new ahyn(this));
     localObject1 = SQLiteFTSUtils.a(paramString2);
     Object localObject2 = new ArrayList();
     if (paramArrayList != null)
@@ -933,7 +933,7 @@ public class FTSMessageSearchEngine
   {
     com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.e = System.nanoTime();
     com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.f = 0L;
-    ThreadManager.post(new ahtu(this, paramSearchRequest, paramISearchListener), 8, null, true);
+    ThreadManager.post(new ahyl(this, paramSearchRequest, paramISearchListener), 8, null, true);
   }
   
   public void a(String paramString, List paramList)
@@ -1393,7 +1393,7 @@ public class FTSMessageSearchEngine
   
   public void b(SearchRequest paramSearchRequest, ISearchListener paramISearchListener)
   {
-    ThreadManager.post(new ahtv(this, paramSearchRequest, paramISearchListener), 8, null, true);
+    ThreadManager.post(new ahym(this, paramSearchRequest, paramISearchListener), 8, null, true);
   }
   
   public void f()

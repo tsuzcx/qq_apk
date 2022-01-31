@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.TextParcelData;
+import com.tencent.open.wadl.WLog;
+import cooperation.wadl.ipc.WadlProxyServiceManager;
 
-public final class anon
-  implements Parcelable.Creator
+public class anon
+  implements Runnable
 {
-  public TextParcelData a(Parcel paramParcel)
-  {
-    return new TextParcelData(paramParcel);
-  }
+  public anon(WadlProxyServiceManager paramWadlProxyServiceManager) {}
   
-  public TextParcelData[] a(int paramInt)
+  public void run()
   {
-    return new TextParcelData[paramInt];
+    WLog.b("WadlProxyServiceManager", "##@failed to lauch servie: reset mServiceConnecting status.");
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anon
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,16 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase.EglHelper;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
-class ahof
-  implements GLSurfaceView.EGLContextFactory
+public class ahof
+  extends AnimatorListenerAdapter
 {
-  private int jdField_a_of_type_Int = 12440;
+  public ahof(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  ahof(ahoe paramahoe) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Ahoe.a);
-    arrayOfInt[2] = 12344;
-    SLog.d("FlowEdit_FlowDecodeScreenSurfaceBase", "createContext, display=%s, config=%s, shaContext=%s", new Object[] { paramEGLDisplay, paramEGLConfig, FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Ahoe.a) });
-    EGLContext localEGLContext = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Ahoe.a);
-    if (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Ahoe.a) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
-    }
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
-    {
-      SLog.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      SLog.c("DefaultContextFactory", "tid=" + Thread.currentThread().getId());
-      FlowDecodeScreenSurfaceBase.EglHelper.a("eglDestroyContex", paramEGL10.eglGetError());
-    }
+    EffectsCameraCaptureFragment.a(this.a).setVisibility(8);
   }
 }
 

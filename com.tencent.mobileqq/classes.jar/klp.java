@@ -1,21 +1,34 @@
-import com.tencent.biz.common.offline.OfflineExpire.OfflineExpireCheckUpdate;
-import com.tencent.biz.webviewplugin.OfflineWebResManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
 public class klp
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public klp(OfflineExpire.OfflineExpireCheckUpdate paramOfflineExpireCheckUpdate) {}
+  public klp(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof AppInterface)) {
-      new OfflineWebResManager((AppInterface)localAppRuntime).a();
+    paramAnimation = PoiMapActivity.m(this.a).getLayoutParams();
+    paramAnimation.height = (this.a.o + this.a.p);
+    PoiMapActivity.n(this.a).setLayoutParams(paramAnimation);
+    paramAnimation = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+    paramAnimation.bottomMargin = (-this.a.p);
+    this.a.b.setLayoutParams(paramAnimation);
+    this.a.a((this.a.o + this.a.p - PoiMapActivity.h(this.a) - this.a.s) / 2, false);
+    if (this.a.e != null) {
+      this.a.e.setVisibility(0);
     }
+    PoiMapActivity.d(this.a).clearAnimation();
+    this.a.a = false;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

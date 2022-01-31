@@ -1,30 +1,34 @@
-import android.widget.ImageView;
-import com.tencent.av.ui.AIOTopRightButtonConfig;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopObserver;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class vyn
-  extends EcShopObserver
+  implements Runnable
 {
-  public vyn(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vyn(FriendChatPie paramFriendChatPie) {}
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if ((paramBoolean) && (PublicAccountChatPie.a(this.a).getVisibility() != 0))
+    AVNotifyCenter localAVNotifyCenter = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {}
+    for (;;)
     {
-      if (AIOTopRightButtonConfig.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-      {
-        PublicAccountChatPie.b(this.a).setVisibility(0);
-        PublicAccountChatPie.c(this.a).setOnClickListener(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130843935, 2130843936);
+      return;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null)) {
+        try
+        {
+          long l = Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+          if (localAVNotifyCenter.a(l))
+          {
+            this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, localAVNotifyCenter.a(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue()));
+            localAVNotifyCenter.a(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue(), false, -1);
+            return;
+          }
+        }
+        catch (NumberFormatException localNumberFormatException) {}
       }
     }
-    else {
-      return;
-    }
-    PublicAccountChatPie.d(this.a).setVisibility(8);
   }
 }
 

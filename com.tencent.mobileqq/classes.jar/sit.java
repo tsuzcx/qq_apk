@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import java.util.ArrayList;
 
 public class sit
   implements Runnable
 {
-  public sit(Conversation paramConversation) {}
+  public sit(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.f(false);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
+      return;
     }
+    ArrayList localArrayList = TroopInfoActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new siu(this, localArrayList));
   }
 }
 

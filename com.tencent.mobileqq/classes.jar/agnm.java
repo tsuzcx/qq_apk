@@ -1,38 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelBoard;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelBoard.IScroll;
-import mqq.util.WeakReference;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agnm
-  implements Runnable
+  implements OnCompositionLoadedListener
 {
-  public agnm(PersonalityLabelBoard paramPersonalityLabelBoard) {}
+  public agnm(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel.isCloseByUser == 0)) {
-      if (this.a.jdField_a_of_type_MqqUtilWeakReference != null) {
-        break label62;
-      }
-    }
-    label62:
-    for (PersonalityLabelBoard.IScroll localIScroll = null;; localIScroll = (PersonalityLabelBoard.IScroll)this.a.jdField_a_of_type_MqqUtilWeakReference.get())
-    {
-      if (localIScroll != null)
-      {
-        int i = this.a.jdField_a_of_type_AndroidViewView.getTop();
-        if (i >= 0) {
-          localIScroll.d(i);
-        }
-      }
-      return;
-    }
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    ScanTorchActivity.l(this.a).setImageDrawable(localLottieDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agnm
  * JD-Core Version:    0.7.0.1
  */

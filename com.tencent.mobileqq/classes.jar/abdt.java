@@ -1,23 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
 
-class abdt
-  implements View.OnClickListener
+public class abdt
 {
-  abdt(abds paramabds) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
-    }
-    ShopScanActivity.d(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    ShopScanActivity.c(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.c.setOnClickListener(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-  }
+  ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler;
+  ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler;
+  ArkMessageServerLogic.IPassiveSearchIntentByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler;
+  public Object a;
+  public String a;
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abpk;
+import abwl;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -38,9 +38,9 @@ public class CampusCirclePicBrowserActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     getWindow().setFlags(1024, 1024);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new abpk(this);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new abwl(this);
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369908));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369918));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;

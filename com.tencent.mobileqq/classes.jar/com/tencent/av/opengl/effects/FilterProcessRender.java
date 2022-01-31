@@ -52,9 +52,9 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.util.List;
-import jjq;
-import jjr;
-import jjs;
+import jlt;
+import jlu;
+import jlv;
 
 @TargetApi(17)
 public class FilterProcessRender
@@ -70,7 +70,7 @@ public class FilterProcessRender
   ByteBuffer jdField_a_of_type_JavaNioByteBuffer = null;
   private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
   List jdField_a_of_type_JavaUtilList;
-  private jjs jdField_a_of_type_Jjs = new jjs();
+  private jlv jdField_a_of_type_Jlv = new jlv();
   public boolean a;
   byte[] jdField_a_of_type_ArrayOfByte;
   float[] jdField_a_of_type_ArrayOfFloat;
@@ -101,7 +101,7 @@ public class FilterProcessRender
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager = ((AVRedPacketManager)paramVideoAppInterface.a(6));
     VideoModule.init(paramContext);
-    this.jdField_a_of_type_Jjs.a = paramEffectPendantTips;
+    this.jdField_a_of_type_Jlv.a = paramEffectPendantTips;
     this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.setFaceDetectMode(FaceDetector.FACE_DETECT_MODE.SINGLE);
     VideoPrefsUtil.setMaterialMute(true);
     VideoMaterialUtil.SCALE_FACE_DETECT = 0.25D;
@@ -110,17 +110,21 @@ public class FilterProcessRender
   
   private int a(byte[] paramArrayOfByte, int paramInt)
   {
-    int j = this.g * this.h / 4 / 4;
-    if ((this.jdField_c_of_type_ArrayOfByte == null) || (this.jdField_c_of_type_ArrayOfByte.length < j))
+    int j = this.g * this.h;
+    if (paramArrayOfByte.length < j) {
+      return 0;
+    }
+    int k = j / 4 / 4;
+    if ((this.jdField_c_of_type_ArrayOfByte == null) || (this.jdField_c_of_type_ArrayOfByte.length < k))
     {
-      this.jdField_c_of_type_ArrayOfByte = new byte[j];
-      this.jdField_d_of_type_ArrayOfByte = new byte[j];
-      this.jdField_e_of_type_ArrayOfByte = new byte[j << 2];
+      this.jdField_c_of_type_ArrayOfByte = new byte[k];
+      this.jdField_d_of_type_ArrayOfByte = new byte[k];
+      this.jdField_e_of_type_ArrayOfByte = new byte[k << 2];
     }
-    if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length != this.h * this.g)) {
-      this.jdField_b_of_type_ArrayOfByte = new byte[this.h * this.g];
+    if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length != j)) {
+      this.jdField_b_of_type_ArrayOfByte = new byte[j];
     }
-    System.arraycopy(paramArrayOfByte, 0, this.jdField_b_of_type_ArrayOfByte, 0, this.g * this.h);
+    System.arraycopy(paramArrayOfByte, 0, this.jdField_b_of_type_ArrayOfByte, 0, j);
     GraphicRenderMgr.getInstance().nativeScalePlane(this.jdField_b_of_type_ArrayOfByte, this.jdField_c_of_type_ArrayOfByte, this.h, this.g, this.h / 4, this.g / 4);
     GraphicRenderMgr.getInstance().nativeRotatePlane(this.jdField_c_of_type_ArrayOfByte, this.jdField_d_of_type_ArrayOfByte, this.h / 4, this.g / 4, paramInt * 90);
     paramInt = 0;
@@ -145,7 +149,7 @@ public class FilterProcessRender
       boolean bool = this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.needDetectFace();
       if (bool)
       {
-        this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.postJob(new jjq(this, paramInt, j));
+        this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.postJob(new jlt(this, paramInt, j));
         this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.getAllPoints(0);
         this.jdField_a_of_type_ArrayOfFloat = this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.getFaceAngles(0);
         this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector.getFaceCount();
@@ -154,7 +158,7 @@ public class FilterProcessRender
           long l = System.currentTimeMillis();
           StringBuilder localStringBuilder = new StringBuilder().append("faceDetect, faceCount[").append(this.jdField_c_of_type_Int).append("], needDetectFace[").append(bool).append("], Detect[").append(paramInt).append(" x ").append(j).append("], s_doFaceTime[").append(this.jdField_a_of_type_Long).append("][");
           if (l <= this.jdField_a_of_type_Long) {
-            break label530;
+            break label521;
           }
           paramArrayOfByte = Long.valueOf(l - this.jdField_a_of_type_Long);
           QLog.w("FilterProcessRender", 1, paramArrayOfByte + "]");
@@ -172,7 +176,7 @@ public class FilterProcessRender
           continue;
           this.jdField_c_of_type_Int = 0;
           continue;
-          label530:
+          label521:
           paramArrayOfByte = "small";
         }
       }
@@ -420,20 +424,20 @@ public class FilterProcessRender
       paramTempTime.b = AudioHelper.b();
     }
     a(paramCameraFrame);
-    jjr localjjr = a(this.jdField_a_of_type_Int, this.jdField_c_of_type_ArrayOfInt[0]);
-    localjjr = a(localjjr.jdField_a_of_type_Int, localjjr.jdField_b_of_type_Int, paramCameraFrame.jdField_a_of_type_Boolean);
+    jlu localjlu = a(this.jdField_a_of_type_Int, this.jdField_c_of_type_ArrayOfInt[0]);
+    localjlu = a(localjlu.jdField_a_of_type_Int, localjlu.jdField_b_of_type_Int, paramCameraFrame.jdField_a_of_type_Boolean);
     GraphicRenderMgr.getInstance().setLowlightAndVideoDenoiseInfo(this.jdField_a_of_type_ArrayOfInt);
     if (paramTempTime.jdField_a_of_type_Boolean) {
       paramTempTime.c = AudioHelper.b();
     }
-    localjjr = a(localjjr.jdField_a_of_type_Int, localjjr.jdField_b_of_type_Int, paramFilterRender);
+    localjlu = a(localjlu.jdField_a_of_type_Int, localjlu.jdField_b_of_type_Int, paramFilterRender);
     if (paramTempTime.jdField_a_of_type_Boolean) {
       paramTempTime.d = AudioHelper.b();
     }
     int m;
     if (paramBoolean1)
     {
-      paramPendantItem = a(paramVideoFilterList, arrayOfByte, i3, localjjr.jdField_a_of_type_Int, localjjr.jdField_b_of_type_Int, paramPendantItem, paramInt);
+      paramPendantItem = a(paramVideoFilterList, arrayOfByte, i3, localjlu.jdField_a_of_type_Int, localjlu.jdField_b_of_type_Int, paramPendantItem, paramInt);
       paramFilterRender = a(paramFilterRender, paramPendantItem.jdField_a_of_type_Int, paramPendantItem.jdField_b_of_type_Int);
       m = paramFilterRender.jdField_b_of_type_Int;
     }
@@ -453,7 +457,7 @@ public class FilterProcessRender
         if (paramBoolean2)
         {
           j = a(arrayOfByte, i3);
-          this.jdField_a_of_type_Jjs.a(paramInt, j, this.jdField_c_of_type_Boolean, paramBoolean2, null, null);
+          this.jdField_a_of_type_Jlv.a(paramInt, j, this.jdField_c_of_type_Boolean, paramBoolean2, null, null);
           n = 1;
         }
       }
@@ -478,7 +482,7 @@ public class FilterProcessRender
         paramTempTime.f = AudioHelper.b();
       }
       return a(paramCameraFrame, m, k, paramFilterRender, paramVideoFilterList);
-      paramFilterRender = a(paramFilterRender, localjjr.jdField_a_of_type_Int, localjjr.jdField_b_of_type_Int);
+      paramFilterRender = a(paramFilterRender, localjlu.jdField_a_of_type_Int, localjlu.jdField_b_of_type_Int);
       paramFilterRender = a(paramVideoFilterList, arrayOfByte, i3, paramFilterRender.jdField_a_of_type_Int, paramFilterRender.jdField_b_of_type_Int, paramPendantItem, paramInt);
       m = paramFilterRender.jdField_b_of_type_Int;
     }
@@ -539,17 +543,17 @@ public class FilterProcessRender
     return this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender;
   }
   
-  jjr a(int paramInt1, int paramInt2)
+  jlu a(int paramInt1, int paramInt2)
   {
     if (!LowlightAndDenoiseTools.b())
     {
       this.jdField_a_of_type_ArrayOfInt[3] = 0;
-      return new jjr(this, paramInt1, paramInt2);
+      return new jlu(this, paramInt1, paramInt2);
     }
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ArrayOfInt[3] = 0;
-      return new jjr(this, paramInt1, paramInt2);
+      return new jlu(this, paramInt1, paramInt2);
     }
     Object localObject = a();
     int k = paramInt1;
@@ -563,16 +567,16 @@ public class FilterProcessRender
       localObject = this.jdField_a_of_type_ArrayOfInt;
       localObject[5] += 1;
     }
-    return new jjr(this, k, j);
+    return new jlu(this, k, j);
   }
   
-  jjr a(int paramInt1, int paramInt2, FilterRender paramFilterRender)
+  jlu a(int paramInt1, int paramInt2, FilterRender paramFilterRender)
   {
     if (!EffectBeautyTools.a()) {
-      return new jjr(this, paramInt1, paramInt2);
+      return new jlu(this, paramInt1, paramInt2);
     }
     if ((paramFilterRender != null) && (paramFilterRender.getFilterType() == 3)) {
-      return new jjr(this, paramInt1, paramInt2);
+      return new jlu(this, paramInt1, paramInt2);
     }
     BeautyRender localBeautyRender = a();
     int k = paramInt1;
@@ -589,23 +593,23 @@ public class FilterProcessRender
       paramFilterRender = localBeautyRender.process(paramInt2, paramInt1, this.g, this.h);
       j = paramFilterRender.getTextureId();
       k = paramFilterRender.getFbo();
-      return new jjr(this, k, j);
+      return new jlu(this, k, j);
       label124:
       localBeautyRender.setNeedSkinColor(true);
     }
   }
   
-  jjr a(int paramInt1, int paramInt2, boolean paramBoolean)
+  jlu a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (!LowlightAndDenoiseTools.a())
     {
       this.jdField_a_of_type_ArrayOfInt[0] = 0;
-      return new jjr(this, paramInt1, paramInt2);
+      return new jlu(this, paramInt1, paramInt2);
     }
     if ((!this.jdField_a_of_type_Boolean) || (paramBoolean))
     {
       this.jdField_a_of_type_ArrayOfInt[0] = 0;
-      return new jjr(this, paramInt1, paramInt2);
+      return new jlu(this, paramInt1, paramInt2);
     }
     Object localObject = a();
     int k = paramInt1;
@@ -619,31 +623,31 @@ public class FilterProcessRender
       localObject = this.jdField_a_of_type_ArrayOfInt;
       localObject[2] += 1;
     }
-    return new jjr(this, k, j);
+    return new jlu(this, k, j);
   }
   
-  jjr a(FilterRender paramFilterRender, int paramInt1, int paramInt2)
+  jlu a(FilterRender paramFilterRender, int paramInt1, int paramInt2)
   {
     if (paramFilterRender != null)
     {
       paramFilterRender = paramFilterRender.process(paramInt2, paramInt1, this.g, this.h);
-      return new jjr(this, paramFilterRender.getFbo(), paramFilterRender.getTextureId());
+      return new jlu(this, paramFilterRender.getFbo(), paramFilterRender.getTextureId());
     }
-    return new jjr(this, paramInt1, paramInt2);
+    return new jlu(this, paramInt1, paramInt2);
   }
   
-  jjr a(VideoFilterList paramVideoFilterList, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, PendantItem paramPendantItem, int paramInt4)
+  jlu a(VideoFilterList paramVideoFilterList, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, PendantItem paramPendantItem, int paramInt4)
   {
     if (this.h * this.g * 3 / 2 != paramArrayOfByte.length)
     {
       AVLog.d("FilterProcessRender", "renderPendant (mHeight * mWidth * 3 / 2) != yuvData.length error");
-      return new jjr(this, paramInt2, paramInt3);
+      return new jlu(this, paramInt2, paramInt3);
     }
     if (!GraphicRenderMgr.soloadedPTV) {
-      return new jjr(this, paramInt2, paramInt3);
+      return new jlu(this, paramInt2, paramInt3);
     }
     if (paramVideoFilterList == null) {
-      return new jjr(this, paramInt2, paramInt3);
+      return new jlu(this, paramInt2, paramInt3);
     }
     boolean bool1 = false;
     boolean bool2 = false;
@@ -658,10 +662,10 @@ public class FilterProcessRender
     }
     a(paramInt3, paramPendantItem, bool1);
     paramInt1 = a(paramArrayOfByte, paramInt1);
-    this.jdField_a_of_type_Jjs.a(paramInt4, paramInt1, this.jdField_c_of_type_Boolean, bool2, str1, str2);
+    this.jdField_a_of_type_Jlv.a(paramInt4, paramInt1, this.jdField_c_of_type_Boolean, bool2, str1, str2);
     paramVideoFilterList.b(this.g, this.h, 0.25D);
     paramVideoFilterList = paramVideoFilterList.a(paramInt2, paramInt3, this.g, this.h, VideoMaterialUtil.SCALE_FACE_DETECT, this.jdField_a_of_type_ComTencentTtpicUtilYoutuVideoPreviewFaceOutlineDetector, System.currentTimeMillis());
-    return new jjr(this, paramVideoFilterList.getFBO(), paramVideoFilterList.getTextureId());
+    return new jlu(this, paramVideoFilterList.getFBO(), paramVideoFilterList.getTextureId());
   }
   
   public void a()
@@ -742,7 +746,7 @@ public class FilterProcessRender
       }
       GestureFilterManager.jdField_a_of_type_JavaLangString = paramPendantItem.getGestureType();
       a(paramInt);
-      this.jdField_a_of_type_Jjs.a(paramPendantItem.getGestureType());
+      this.jdField_a_of_type_Jlv.a(paramPendantItem.getGestureType());
       return;
     }
     if (this.jdField_c_of_type_Boolean)
@@ -846,7 +850,7 @@ public class FilterProcessRender
   
   void b()
   {
-    this.jdField_a_of_type_Jjs.a();
+    this.jdField_a_of_type_Jlv.a();
     if (this.jdField_c_of_type_Boolean)
     {
       GestureMgrRecognize.a().b();
@@ -959,12 +963,12 @@ public class FilterProcessRender
     this.jdField_c_of_type_Boolean = false;
     GestureFilterManager.jdField_d_of_type_Int = GestureFilterManager.jdField_a_of_type_Int;
     GestureFilterManager.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Jjs.a();
+    this.jdField_a_of_type_Jlv.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.opengl.effects.FilterProcessRender
  * JD-Core Version:    0.7.0.1
  */

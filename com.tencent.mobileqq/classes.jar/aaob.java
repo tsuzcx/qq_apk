@@ -1,38 +1,116 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecog;
+import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecog.ARLocalGestureCircleRecogCallback;
+import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult;
+import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult.ARGestureResult;
+import com.tencent.qphone.base.util.QLog;
 
-class aaob
-  implements DialogInterface.OnClickListener
+public class aaob
+  extends Thread
 {
-  aaob(aanz paramaanz, QQCustomDialog paramQQCustomDialog) {}
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  byte[] jdField_a_of_type_ArrayOfByte = new byte[ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog) * ARLocalGestureCircleRecog.b(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog) * 3 / 2];
+  private boolean b = true;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aaob(ARLocalGestureCircleRecog paramARLocalGestureCircleRecog)
   {
-    ArkAppCenter.a().post(new aaoc(this));
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label38:
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aanz.a, "ark_authority_api_location", this.jdField_a_of_type_Aanz.c, 2);
-      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438819), 2131435269, 2131435269, new DialogUtil.DialogOnClickAdapter(), null);
+    setDaemon(true);
+    start();
+  }
+  
+  public void a()
+  {
+    this.b = false;
+    if (getState() == Thread.State.WAITING) {
       try
       {
-        paramDialogInterface.show();
+        notify();
         return;
       }
-      catch (Exception paramDialogInterface) {}
+      finally {}
     }
-    catch (Exception paramDialogInterface)
+  }
+  
+  public void a(long paramLong, byte[] paramArrayOfByte)
+  {
+    if (getState() == Thread.State.WAITING)
     {
-      break label38;
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
+      this.jdField_a_of_type_Long = paramLong;
+      this.jdField_a_of_type_Boolean = true;
+      try
+      {
+        notify();
+        return;
+      }
+      finally {}
+    }
+  }
+  
+  public void run()
+  {
+    for (;;)
+    {
+      boolean bool;
+      try
+      {
+        setName("ARLocalGestureCircleRecogProcessWorker");
+        if (!this.b) {
+          break label60;
+        }
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          bool = this.b;
+          if (bool)
+          {
+            try
+            {
+              wait();
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              localInterruptedException.printStackTrace();
+            }
+            continue;
+          }
+        }
+        bool = this.b;
+      }
+      finally {}
+      if (!bool) {
+        label60:
+        return;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      synchronized (ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog))
+      {
+        ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog, true);
+        try
+        {
+          ARLocalGestureCircleRecogResult localARLocalGestureCircleRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a(this.jdField_a_of_type_ArrayOfByte, ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog), ARLocalGestureCircleRecog.b(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog), 17);
+          QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecog. recogResult = " + localARLocalGestureCircleRecogResult);
+          if ((ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog)) && (!ARLocalGestureCircleRecog.b(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog)) && (ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog) != null) && (ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog).a.d == 0)) {
+            ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog).a(localARLocalGestureCircleRecogResult);
+          }
+          ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog, false);
+          yield();
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            if (QLog.isColorLevel()) {
+              QLog.d("AREngine_ARLocalGestureCircleRecog", 2, "Exception", localException);
+            }
+            ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog, false);
+          }
+        }
+        finally
+        {
+          ARLocalGestureCircleRecog.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog, false);
+        }
+      }
     }
   }
 }

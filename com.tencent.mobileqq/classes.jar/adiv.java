@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.content.ContentValues;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 
-class adiv
+public class adiv
   implements Runnable
 {
-  adiv(adiu paramadiu) {}
+  public adiv(FileManagerProxy paramFileManagerProxy, ContentValues paramContentValues, long paramLong) {}
   
   public void run()
   {
-    QfileEditBottomBar.a(this.a.a.a).h();
-    QfileEditBottomBar.a(this.a.a.a).b(FMDataCache.c());
-    QfileEditBottomBar.a(this.a.a.a).c(FMDataCache.b());
-    QfileEditBottomBar.a(this.a.a.a).d(FMDataCache.e());
-    FMDataCache.b();
-    QfileEditBottomBar.a(this.a.a.a).e(false);
-    QfileEditBottomBar.a(this.a.a.a).b();
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(FileManagerEntity.tableName(), this.jdField_a_of_type_AndroidContentContentValues, "nSessionId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) }, null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

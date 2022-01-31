@@ -28,8 +28,8 @@ import com.tencent.av.switchface.SwitchFaceTexture;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import jut;
-import juu;
+import jwx;
+import jwy;
 
 public class GLVideoView
   extends GLView
@@ -90,13 +90,13 @@ public class GLVideoView
     this.jdField_c_of_type_Int = 2147483647;
     this.jdField_d_of_type_Int = 0;
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangRunnable = new juu(this);
+    this.jdField_a_of_type_JavaLangRunnable = new jwy(this);
     this.jdField_e_of_type_Int = 0;
     this.jdField_c_of_type_JavaLangString = ("GLVideoView_" + paramString);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLPaint = new GLPaint();
     this.jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture = new YuvFboTexture(this.jdField_a_of_type_AndroidContentContext, this, paramString);
-    this.jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture.a(new jut(this, paramVideoAppInterface));
+    this.jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture.a(new jwx(this, paramVideoAppInterface));
     this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.CENTER_INSIDE;
     this.jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
     this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
@@ -1488,7 +1488,7 @@ public class GLVideoView
         break label108;
       }
       if (this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture == null) {
-        this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture = new ResourceTexture(this.jdField_a_of_type_AndroidContentContext, 2130840351);
+        this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture = new ResourceTexture(this.jdField_a_of_type_AndroidContentContext, 2130840366);
       }
       localGLRootView = a();
       if (localGLRootView != null) {
@@ -1558,7 +1558,7 @@ public class GLVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.GLVideoView
  * JD-Core Version:    0.7.0.1
  */

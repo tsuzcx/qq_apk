@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07e5" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07e6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff1e1e1e" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07e7" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="7.5dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b168c" />
-        <com.tencent.biz.widgets.ElasticHorScrView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07e9" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip">
-            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <GridView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07ea" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@null" android:horizontalSpacing="0.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="60.0dip" android:numColumns="1" />
-            </LinearLayout>
-        </com.tencent.biz.widgets.ElasticHorScrView>
-    </LinearLayout>
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a344c" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-    <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c000f" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07ed" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020018" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038b" android:textColor="#ff868686" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a87" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038f" android:paddingRight="15.0dip" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

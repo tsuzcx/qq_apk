@@ -1,38 +1,33 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.av.utils.TipsManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.utils.PSTNNotification;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class jth
   implements Runnable
 {
-  public jth(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
+  public jth(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null)
+    this.a.c.setText(this.a.getResources().getString(2131429562));
+    this.a.a.a(1);
+    this.a.a(this.a.b, false, 2130840140);
+    this.a.b.setClickable(true);
+    if (CallbackWaitingActivityExt.a(this.a) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.c, 2, "RequestVideoTimeoutRunnale-->VideoControl is null");
-      }
-      return;
+      CallbackWaitingActivityExt.a(this.a).a().a().b = 2;
+      CallbackWaitingActivityExt.a(this.a).a().e(true);
+      CallbackWaitingActivityExt.a(this.a).a().c(true);
     }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.f();
-    this.a.h(true);
-    if (this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager != null)
-    {
-      TipsManager.c(103);
-      TipsManager.c(106);
-      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(106);
-      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(106);
-    }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(this.a.b, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jth
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,50 @@
-import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class vjn
   implements Runnable
 {
-  vjn(vjm paramvjm, BizTroopHandler paramBizTroopHandler) {}
+  vjn(vjm paramvjm, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.a(this.jdField_a_of_type_Vjm.a);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+    {
+      Object localObject;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Vjm.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Vjm.jdField_a_of_type_Vjt, this.jdField_a_of_type_Vjm.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, (MessageRecord)localObject);
+        return;
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForMixedMsg))
+        {
+          localMessageRecord = (MessageRecord)((MessageForMixedMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgElemList.get(this.jdField_a_of_type_Vjm.jdField_a_of_type_Int);
+          localObject = localMessageRecord;
+          if ((localMessageRecord instanceof MessageForPic)) {}
+        }
+        else
+        {
+          while (!(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForTroopFile))
+          {
+            MessageRecord localMessageRecord;
+            localObject = null;
+            break;
+          }
+          localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("ChatItemBuilder", 2, "renderingPicCommentUI:source msg has been deleted.");
+    }
+    this.jdField_a_of_type_Vjm.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Vjm.jdField_a_of_type_Vjt, this.jdField_a_of_type_Vjm.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, null);
   }
 }
 

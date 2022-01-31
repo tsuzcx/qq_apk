@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.DataReport;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rwy
-  implements DialogInterface.OnClickListener
+public class rwy
+  implements Runnable
 {
-  public rwy(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public rwy(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a != null) {
-      this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie", 2, "checkAllSourceDowned onShow First");
     }
-    paramDialogInterface.dismiss();
-    DataReport.b();
+    PokePanel.a(this.a.a);
   }
 }
 

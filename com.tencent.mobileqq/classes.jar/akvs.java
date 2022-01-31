@@ -1,22 +1,33 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentContext;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderContext;
+import com.tencent.smtt.sdk.WebView;
 
 public class akvs
-  implements URLDrawable.URLDrawableListener
+  implements SwiftBrowserComponentsProvider.SwiftBrowserComponentContext
 {
-  public akvs(ProfileCardMoreInfoView paramProfileCardMoreInfoView, TextView paramTextView) {}
+  public akvs(SwiftBrowserComponentsProvider paramSwiftBrowserComponentsProvider) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Activity a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.postInvalidate();
+    return this.a.a.a();
+  }
+  
+  public WebViewFragment a()
+  {
+    return this.a.a.a();
+  }
+  
+  public SwiftBrowserComponentsProvider a()
+  {
+    return this.a;
+  }
+  
+  public WebView a()
+  {
+    return this.a.a.a();
   }
 }
 

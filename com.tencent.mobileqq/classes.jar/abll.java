@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.utils.StartupTracker;
+import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class abll
   implements Runnable
 {
-  public abll(BubbleManager paramBubbleManager, int paramInt) {}
+  public abll(ShopScanActivity paramShopScanActivity) {}
   
   public void run()
   {
-    StartupTracker.a(null, "AIO_bubble_craete_bubble_info");
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int, true);
-    StartupTracker.a("AIO_bubble_craete_bubble_info", null);
+    QQToast.a(this.a.getApplicationContext(), "当前网络不可用，请检查你的网络设置。", 1).b(this.a.getTitleBarHeight());
   }
 }
 

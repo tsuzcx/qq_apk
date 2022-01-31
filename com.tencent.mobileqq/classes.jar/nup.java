@@ -1,48 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
-import com.tencent.biz.qqstory.network.request.GetFeedFeatureRequest;
-import com.tencent.biz.qqstory.network.response.GetFeedFeatureResponse;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 class nup
-  implements CmdTaskManger.CommandCallback
+  implements Runnable
 {
-  nup(nuo paramnuo, JobContext paramJobContext, String paramString) {}
+  nup(nun paramnun) {}
   
-  public void a(@NonNull GetFeedFeatureRequest paramGetFeedFeatureRequest, @Nullable GetFeedFeatureResponse paramGetFeedFeatureResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c)))
     {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
-      return;
-    }
-    if ((paramGetFeedFeatureResponse == null) || (paramErrorMessage.isFail()))
-    {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
-      nuo.a(this.jdField_a_of_type_Nuo, paramErrorMessage);
-      return;
-    }
-    if (paramGetFeedFeatureResponse.a != null)
-    {
-      paramGetFeedFeatureRequest = paramGetFeedFeatureResponse.a.iterator();
-      do
-      {
-        if (!paramGetFeedFeatureRequest.hasNext()) {
-          break;
-        }
-        paramGetFeedFeatureResponse = (FeedFeatureItem)paramGetFeedFeatureRequest.next();
-      } while (!paramGetFeedFeatureResponse.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
-    }
-    for (int i = paramGetFeedFeatureResponse.c;; i = 0)
-    {
-      nuo.a(this.jdField_a_of_type_Nuo, Integer.valueOf(i));
-      return;
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$DebugInfo.f = SystemClock.uptimeMillis();
+      SLog.d("VideoViewTVKImpl", "TVK_IMediaPlayer.openMediaPlayerByUrl, 1, vid=%s", new Object[] { this.a.jdField_a_of_type_JavaLangString });
+      TVKPreloader.a();
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c.replace("https://", "http://")), 0L, 0L, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, null);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.jdField_a_of_type_Int = 1;
     }
   }
 }

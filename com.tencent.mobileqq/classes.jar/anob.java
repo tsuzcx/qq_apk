@@ -1,24 +1,40 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.FoodAloneTextItem;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
+import org.json.JSONObject;
 
-public class anob
-  implements annx
+class anob
+  implements anoe
 {
-  public anob(FoodAloneTextItem paramFoodAloneTextItem) {}
+  anob(anoa paramanoa) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (paramInt == 0) {
-      return TroopFileUtils.b(paramString);
+    if (paramBoolean)
+    {
+      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_Annz.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
+      try
+      {
+        localJSONObject.put("result", 0);
+        localJSONObject.put("progress", 1.0D);
+        localJSONObject.put("coverurl", paramString);
+        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
+        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_Annz.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("TroopHWJsPlugin", 2, "upload thumb exception:", paramString);
+        return;
+      }
     }
-    return "";
+    QLog.e("TroopHWJsPlugin", 1, "upload thumb failed!");
+    this.a.b(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,17 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel;
+import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
 
-public class ajtc
+class ajtc
+  implements Runnable
 {
-  public View a;
-  public TextView a;
-  public URLImageView a;
+  ajtc(ajta paramajta) {}
   
-  private ajtc(TroopAIORobotPanel paramTroopAIORobotPanel) {}
+  public void run()
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.getAdapter().notifyItemChanged(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c);
+  }
 }
 
 

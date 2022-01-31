@@ -1,18 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnVideoDataEventListener;
 
 public class adlf
-  implements DialogInterface.OnClickListener
+  implements FileVideoManager.FileVideoManagerCallback
 {
-  public adlf(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public adlf(DefaultFileModel paramDefaultFileModel, FileBrowserModelBase.OnVideoDataEventListener paramOnVideoDataEventListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    this.a.a(false);
-    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
-    this.a.a.finish();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a(paramInt, paramString);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a(paramString1, paramString2);
+    }
+  }
+  
+  public void ag_() {}
+  
+  public void ah_()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a();
+    }
   }
 }
 

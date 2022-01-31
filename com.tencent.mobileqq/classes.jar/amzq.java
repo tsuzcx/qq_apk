@@ -1,48 +1,71 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Pair;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.QZoneShareManager;
-import cooperation.qzone.share.QZoneShareActivity;
-import cooperation.qzone.share.QzoneShareServlet;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.manager.TicketManager;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneStartupMonitor;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.util.QZoneExceptionReport;
+import cooperation.qzone.util.exception.QZoneStartupFailException;
 
-class amzq
-  implements Runnable
+public class amzq
+  extends Handler
 {
-  amzq(amzp paramamzp, ArrayList paramArrayList, String paramString) {}
-  
-  public void run()
+  public amzq(QZoneStartupMonitor paramQZoneStartupMonitor, Looper paramLooper)
   {
-    Object localObject = this.jdField_a_of_type_Amzp.a.a.app.getAccount();
-    String str = ((TicketManager)this.jdField_a_of_type_Amzp.a.a.app.getManager(2)).getSkey((String)localObject);
-    if (new ArrayList(this.jdField_a_of_type_JavaUtilArrayList).equals(QZoneShareManager.a(this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, str, "1"))) {
-      QLog.e("QZoneShare", 1, "imageChangeError!");
-    }
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int j = 1;
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      l1 = Long.parseLong(QZoneShareActivity.a(this.jdField_a_of_type_Amzp.a.a).f);
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = this.jdField_a_of_type_Amzp.a.a.app.getLongAccountUin();
-      }
-      localObject = new NewIntent(this.jdField_a_of_type_Amzp.a.a, QzoneShareServlet.class);
-      ((NewIntent)localObject).putExtra("reason", this.jdField_a_of_type_JavaLangString);
-      ((NewIntent)localObject).putExtra("uin", l2);
-      ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.a(this.jdField_a_of_type_Amzp.a.a));
-      BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
-      QLog.e("QZoneShare", 1, "startShare()");
+    default: 
+      break;
+    }
+    do
+    {
+      return;
+    } while (QZoneStartupMonitor.a(this.a));
+    if (QzonePluginProxyActivity.a())
+    {
+      QLog.i("QZoneStartupMonitor", 1, "超时，但是qzone 进程存在");
       return;
     }
-    catch (Exception localException)
+    QLog.e("QZoneStartupMonitor", 1, "启动超时认为启动失败，校验odex，并上报");
+    paramMessage = QZoneStartupMonitor.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
+    int i;
+    if (paramMessage != null)
     {
+      i = ((Integer)paramMessage.first).intValue();
+      paramMessage = (Throwable)paramMessage.second;
+    }
+    for (;;)
+    {
+      int k = LocalMultiProcConfig.getInt("key_recovery_count", 0);
+      QZoneStartupMonitor.a(this.a, i, QZoneStartupMonitor.a(this.a), k);
+      StringBuilder localStringBuilder = new StringBuilder("qzone进程启动失败,elf valid errorcode: ").append(i).append(",recoveryCount:").append(k);
+      if (QzoneConfig.getInstance().getConfig("QZoneSetting", "exception_report_rdm", 0) == 1) {}
       for (;;)
       {
-        long l1 = 0L;
+        if (j != 0) {
+          QZoneExceptionReport.a(new QZoneStartupFailException(paramMessage), localStringBuilder.toString());
+        }
+        if (i == 0) {
+          break;
+        }
+        ThreadManager.postImmediately(new amzr(this, k), null, false);
+        return;
+        j = 0;
       }
+      paramMessage = null;
+      i = 0;
     }
   }
 }

@@ -15,7 +15,7 @@ import com.tencent.gdtad.views.video.GdtVideoCommonView.LoadListener;
 import com.tencent.gdtad.views.video.GdtVideoCommonView.VideoFullScreenListener;
 import com.tencent.gdtad.views.video.GdtVideoData;
 import java.lang.ref.WeakReference;
-import qmd;
+import qqu;
 
 public class GdtCanvasVideoComponentView
   extends GdtCanvasComponentView
@@ -162,7 +162,7 @@ public class GdtCanvasVideoComponentView
   {
     k();
     this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setisFullScreen(false, 8);
-    post(new qmd(this));
+    post(new qqu(this));
   }
   
   public void i()

@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import java.util.List;
 
-class agik
+public class agik
   implements Runnable
 {
-  agik(agij paramagij) {}
+  public agik(OlympicManager paramOlympicManager, List paramList1, List paramList2) {}
   
   public void run()
   {
-    ScanTorchActivity.a(this.a.a);
-    ScanTorchActivity.c(this.a.a);
-    ScanTorchActivity.b(this.a.a);
+    OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager, "olympic_predown_act", this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

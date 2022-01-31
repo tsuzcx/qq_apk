@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.mobileqq.campuscircle.CampusCircleManager;
+import com.tencent.mobileqq.campuscircle.CampusCircleManager.CampusTopicPublisher;
+import com.tencent.mobileqq.campuscircle.CampusCircleManager.CampusTopicReq;
+import com.tencent.mobileqq.campuscircle.CampusCircleManager.TopicPublishSession;
 
-class abwi
+public class abwi
   implements Runnable
 {
-  abwi(abwh paramabwh) {}
+  public abwi(CampusCircleManager paramCampusCircleManager, CampusCircleManager.CampusTopicReq paramCampusTopicReq) {}
   
   public void run()
   {
-    if (BaseActivity.sTopActivity != null) {
-      this.a.a.a(BaseActivity.sTopActivity, false);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager.a.a.a(this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager$CampusTopicReq);
   }
 }
 

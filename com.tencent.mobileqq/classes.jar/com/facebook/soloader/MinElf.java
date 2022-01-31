@@ -358,7 +358,7 @@ public final class MinElf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.facebook.soloader.MinElf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,67 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class aevw
-  implements VideoFeedsUploader.UploadListener
+  extends BaseAdapter
 {
-  public aevw(VideoFeedsManager paramVideoFeedsManager) {}
+  protected int a;
   
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo)
+  public aevw(GameQuickWordsPanel paramGameQuickWordsPanel)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a("上传中", true);
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoFeedsManager:UploadVideo", 2, "onStart:" + paramUploadInfo);
-    }
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, int paramInt)
+  public int getCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoFeedsManager:UploadVideo", 2, "onProcessing:" + paramInt);
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
+  public Object getItem(int paramInt)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (paramUploadInfo == null) {
-      QLog.i("VideoFeedsManager", 1, "onResult UploadInfo == null");
-    }
-    do
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramUploadResult.a, VideoFeedsManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramUploadInfo, paramUploadResult));
-      ThreadManager.getUIHandler().post(new aevy(this, paramUploadInfo, paramUploadResult));
-    } while (paramUploadInfo != null);
-    QLog.i("VideoFeedsManager:UploadVideo", 1, "onResult:" + paramUploadInfo);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getContext()).inflate(2130968639, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.a(46.0F, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getResources())));
+      paramViewGroup = new aevx(this);
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131362993));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      String str = (String)getItem(paramInt);
+      paramViewGroup.a.setText(str);
+      paramViewGroup.a.setTextColor(this.jdField_a_of_type_Int);
+      return paramView;
+      paramViewGroup = (aevx)paramView.getTag();
+    }
   }
   
-  public void b(VideoFeedsUploader.UploadInfo paramUploadInfo)
+  public void notifyDataSetChanged()
   {
-    ThreadManager.getUIHandler().post(new aevx(this));
+    HashMap localHashMap = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a();
+    if (localHashMap.containsKey("quickWordColor")) {
+      this.jdField_a_of_type_Int = ((Integer)localHashMap.get("quickWordColor")).intValue();
+    }
+    super.notifyDataSetChanged();
   }
 }
 

@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 
-public class zgn
-  implements Runnable
+class zgn
+  implements Animation.AnimationListener
 {
-  public zgn(MessageHandler paramMessageHandler) {}
+  zgn(zgm paramzgm) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FileUtils.a(AIOShareActionSheet.a, true);
+    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.a = null;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zgn
  * JD-Core Version:    0.7.0.1
  */

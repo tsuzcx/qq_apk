@@ -1,14 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview.NaviMaskTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
 public class mon
-  implements Runnable
+  implements ReadInJoyNavigationGridview.NaviMaskTouchListener
 {
-  public mon(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, int paramInt) {}
+  public mon(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void run()
+  public void a()
   {
-    FastWebVideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.smoothScrollBy(-this.jdField_a_of_type_Int, 0);
+    if (ReadinjoyTabFrame.a(this.a) != null) {
+      ReadinjoyTabFrame.a(this.a).a(null);
+    }
   }
 }
 

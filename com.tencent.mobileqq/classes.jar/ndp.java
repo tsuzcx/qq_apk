@@ -1,50 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller.StoryVidListReceiver;
-import com.tencent.biz.qqstory.network.handler.UidToVidHandler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager.ServerInfo;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.network.request.RefreshVideoFileKeyRequest;
+import com.tencent.biz.qqstory.network.response.RefreshVideoFileKeyResponse;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ndp
-  extends SimpleJob
+  implements CmdTaskManger.CommandCallback
 {
-  public ndp(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
+  public ndp(VideoServerInfoManager paramVideoServerInfoManager) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(RefreshVideoFileKeyRequest arg1, RefreshVideoFileKeyResponse paramRefreshVideoFileKeyResponse, ErrorMessage paramErrorMessage)
   {
-    paramJobContext = (StoryManager)SuperManager.a(5);
-    if (!this.a.jdField_a_of_type_Boolean) {}
-    for (paramJobContext = paramJobContext.d(this.a.jdField_b_of_type_JavaLangString);; paramJobContext = null)
+    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (paramErrorMessage.isSuccess()) {}
+    for (;;)
     {
-      paramVarArgs = paramJobContext;
-      if (paramJobContext == null) {
-        paramVarArgs = new ArrayList();
-      }
-      if (paramVarArgs.size() > 0)
+      synchronized (this.a.jdField_b_of_type_JavaLangObject)
       {
-        this.a.a(paramVarArgs);
-        SLog.d("Q.qqstory.net:VidToVideoInfoPuller", String.format("Found %s vid list from local , pullType is %d , %s", new Object[] { this.a.jdField_b_of_type_JavaLangString, Integer.valueOf(this.a.jdField_b_of_type_Int), paramVarArgs }));
-        return null;
+        this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo = paramRefreshVideoFileKeyResponse.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo;
+        this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo.a();
+        SLog.b("Q.qqstory.publish:VideoServerInfoManager", "get server inf %s", this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo);
+        this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       }
-      SLog.d("Q.qqstory.net:VidToVideoInfoPuller", String.format("Cannot found %s vid list from local , pullType is %d , request from net", new Object[] { this.a.jdField_b_of_type_JavaLangString, Integer.valueOf(this.a.jdField_b_of_type_Int) }));
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver == null)
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
       {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver = new VidToVideoInfoPuller.StoryVidListReceiver(this.a);
-        Dispatchers.get().registerSubscriber(this.a.jdField_a_of_type_ComTencentBizQqstoryModelVidToVideoInfoPuller$StoryVidListReceiver);
+        this.a.jdField_a_of_type_JavaLangObject.notifyAll();
+        return;
+        paramRefreshVideoFileKeyResponse = finally;
+        throw paramRefreshVideoFileKeyResponse;
+        SLog.b("Q.qqstory.publish:VideoServerInfoManager", "get server info:%s", paramErrorMessage);
       }
-      paramJobContext = new ArrayList();
-      paramJobContext.add(this.a.jdField_b_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerUidToVidHandler = new UidToVidHandler(paramJobContext, this.a.jdField_b_of_type_Int);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerUidToVidHandler.a();
-      return null;
     }
   }
 }

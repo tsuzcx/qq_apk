@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amuu;
+import ancf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class PictureUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amuu();
+  public static final Parcelable.Creator CREATOR = new ancf();
   public float a;
   public int a;
   public String a;
@@ -16,6 +16,15 @@ public class PictureUrl
   public int b;
   public int c;
   public int d;
+  
+  public PictureUrl() {}
+  
+  public PictureUrl(String paramString, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
   
   public int describeContents()
   {

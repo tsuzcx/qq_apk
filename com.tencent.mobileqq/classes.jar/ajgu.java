@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
 public class ajgu
-  implements DialogInterface.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public ajgu(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public ajgu(NewTroopCreateActivity paramNewTroopCreateActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
+    }
+  }
 }
 
 

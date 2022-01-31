@@ -1,42 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class afgx
+class afgx
   implements Runnable
 {
-  public afgx(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  afgx(afgw paramafgw, boolean paramBoolean) {}
   
   public void run()
   {
-    NearbyProfileEditPanel.a(this.a, (PicInfo)this.a.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (NearbyProfileEditPanel.a(this.a) == null) {
-      return;
-    }
-    CompressInfo localCompressInfo = new CompressInfo(NearbyProfileEditPanel.a(this.a).c, 0);
-    localCompressInfo.f = 0;
-    CompressOperator.a(localCompressInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..uploadPhoto(), img_path = " + localCompressInfo.e);
-    }
-    if (!StringUtil.a(localCompressInfo.e))
+    if (this.jdField_a_of_type_Boolean)
     {
-      TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.a = true;
-      localTransferRequest.i = localCompressInfo.e;
-      localTransferRequest.b = 8;
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localTransferRequest);
+      NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Afgw.a, NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Afgw.a), false, false);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.runOnUiThread(new afgy(this));
+    QQToast.a(this.jdField_a_of_type_Afgw.a.getActivity(), 1, "播放失败", 0).b(this.jdField_a_of_type_Afgw.a.getActivity().getTitleBarHeight());
+    NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Afgw.a).setVisibility(0);
+    NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Afgw.a).setVisibility(0);
+    NearbyAuthVideoPlayerFragment.b(this.jdField_a_of_type_Afgw.a).setVisibility(8);
   }
 }
 

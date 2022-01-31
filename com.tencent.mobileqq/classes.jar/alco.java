@@ -1,21 +1,20 @@
-import android.text.Editable;
-import com.tencent.open.agent.SendStoryActivity.CustomLengthInputFilter;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.MusicPendantView;
 
 public class alco
-  implements Comparator
+  implements View.OnClickListener
 {
-  public alco(SendStoryActivity.CustomLengthInputFilter paramCustomLengthInputFilter, Editable paramEditable) {}
+  public alco(MusicPendantView paramMusicPendantView) {}
   
-  public int a(Friend paramFriend1, Friend paramFriend2)
+  public void onClick(View paramView)
   {
-    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alco
  * JD-Core Version:    0.7.0.1
  */

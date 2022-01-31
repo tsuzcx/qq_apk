@@ -9,18 +9,18 @@ import com.tencent.component.media.gif.NewGifDrawable;
 import com.tencent.component.media.gif.NewGifDrawable.GifPlayListener;
 import com.tencent.component.media.image.ImageLoader;
 import com.tencent.component.media.image.ImageLoader.Options;
-import pht;
-import phu;
+import pml;
+import pmm;
 
 public class AutoGifDrawable
 {
   private static String jdField_a_of_type_JavaLangString = "AutoGifDrawable";
   Context jdField_a_of_type_AndroidContentContext;
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new pht(this);
+  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new pml(this);
   public NewGifDrawable a;
   public AutoGifDrawable.AutoGifCallback a;
   public AutoGifDrawable.GifDownloadCallBackListener a;
-  phu jdField_a_of_type_Phu = new phu(this, null);
+  pmm jdField_a_of_type_Pmm = new pmm(this, null);
   
   public static AutoGifDrawable newAutoGifDrawable()
   {
@@ -85,7 +85,7 @@ public class AutoGifDrawable
         this.jdField_a_of_type_AndroidContentContext = paramContext;
         this.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$AutoGifCallback = paramAutoGifCallback;
         this.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener = paramGifDownloadCallBackListener;
-        paramContext = ImageLoader.getInstance(paramContext).loadImage(paramString, this.jdField_a_of_type_Phu, localOptions);
+        paramContext = ImageLoader.getInstance(paramContext).loadImage(paramString, this.jdField_a_of_type_Pmm, localOptions);
       } while (!(paramContext instanceof NewGifDrawable));
       this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable = ((NewGifDrawable)paramContext);
       this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);

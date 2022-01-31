@@ -1,16 +1,16 @@
 package com.tencent.mapsdk.raster.model;
 
 import android.os.RemoteException;
-import com.tencent.mapsdk.rastercore.e.a;
+import com.tencent.mapsdk.rastercore.e.b;
 
 public final class GroundOverlay
   implements IOverlay
 {
-  private a iGroundOverlayDelegate;
+  private b iGroundOverlayDelegate;
   
-  public GroundOverlay(a parama)
+  public GroundOverlay(b paramb)
   {
-    this.iGroundOverlayDelegate = parama;
+    this.iGroundOverlayDelegate = paramb;
   }
   
   public final boolean equals(Object paramObject)

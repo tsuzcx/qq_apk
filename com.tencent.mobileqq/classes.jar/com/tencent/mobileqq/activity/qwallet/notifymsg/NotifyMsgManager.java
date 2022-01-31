@@ -17,10 +17,10 @@ import java.util.Iterator;
 import java.util.List;
 import tencent.im.oidb.cmd0x857.TroopTips0x857.GoldMsgTipsElem;
 import tencent.im.oidb.cmd0x858.oidb_0x858.GoldMsgTipsElem;
-import xfe;
-import xff;
-import xfg;
-import xfh;
+import xky;
+import xkz;
+import xla;
+import xlb;
 
 public class NotifyMsgManager
 {
@@ -348,7 +348,7 @@ public class NotifyMsgManager
   
   public static void a(ArrayList paramArrayList, boolean paramBoolean)
   {
-    ThreadManager.post(new xfh(paramBoolean, paramArrayList), 5, null, false);
+    ThreadManager.post(new xlb(paramBoolean, paramArrayList), 5, null, false);
   }
   
   public static void a(List paramList)
@@ -368,7 +368,7 @@ public class NotifyMsgManager
         }
       }
     } while (localArrayList.size() <= 0);
-    ThreadManager.post(new xff(localArrayList), 5, null, false);
+    ThreadManager.post(new xkz(localArrayList), 5, null, false);
   }
   
   protected static boolean a(int paramInt)
@@ -428,7 +428,7 @@ public class NotifyMsgManager
         paramMessageRecord.saveExtInfoToExtStr("qqpay_state", String.valueOf(i));
         bool = true;
         if ((bool) && (paramBoolean)) {
-          ThreadManager.post(new xfg(paramMessageRecord), 5, null, false);
+          ThreadManager.post(new xla(paramMessageRecord), 5, null, false);
         }
         return bool;
       }
@@ -468,7 +468,7 @@ public class NotifyMsgManager
   protected static void b()
   {
     jdField_a_of_type_Int = 1;
-    ThreadManager.post(new xfe(), 10, null, false);
+    ThreadManager.post(new xky(), 10, null, false);
   }
   
   public static void c()

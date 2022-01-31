@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.view.View;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-public class acvv
-  implements TVK_SDKMgr.InstallListener
+class acvv
+  implements BubblePopupWindow.OnDismissListener
 {
-  public acvv(FileVideoManager paramFileVideoManager, long paramLong, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
+  acvv(acvt paramacvt, View paramView) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void a()
   {
-    System.currentTimeMillis();
-    long l = this.jdField_a_of_type_Long;
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    System.currentTimeMillis();
-    long l = this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback.b();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

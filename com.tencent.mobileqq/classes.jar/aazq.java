@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.RedPackRainCloudView;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class aazq
-  implements Runnable
+public class aazq
+  implements BusinessObserver
 {
-  aazq(aazo paramaazo) {}
+  public aazq(ArkAppCGI paramArkAppCGI, ArkAppCGI.ArkAppCGICallback paramArkAppCGICallback, Object paramObject) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((!this.a.a.isFinishing()) && (this.a.a.a.getVisibility() == 0))
+    if (!paramBoolean)
     {
-      this.a.a.a.setVisibility(8);
-      ARMapActivity.d(this.a.a, false);
-      ARMapActivity.c(this.a.a);
+      ArkAppCenter.b("ArkApp.ArkAppCGI", "queryAppInfoByAppNameBatch, sso request failed");
+      paramObject = null;
+    }
+    for (;;)
+    {
+      paramObject = ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI, (String)paramObject);
+      if (this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$ArkAppCGICallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$ArkAppCGICallback.a(paramObject, this.jdField_a_of_type_JavaLangObject);
+      }
+      return;
     }
   }
 }

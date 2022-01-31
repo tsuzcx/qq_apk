@@ -1,44 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
 import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
 
 public class ycs
-  implements ycu
+  implements Runnable
 {
-  public ycs(EncodeVideoTask paramEncodeVideoTask) {}
+  public ycs(SubtitleDataManager paramSubtitleDataManager, String paramString) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (EncodeVideoTask.a(this.a) != null) {
-      EncodeVideoTask.a(this.a).a(paramInt);
-    }
-  }
-  
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
-    }
-    if (EncodeVideoTask.a(this.a))
-    {
-      b(paramPublishVideoEntry, paramString);
-      return;
-    }
-    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (FileUtils.b(paramPublishVideoEntry.doodlePath)))
-    {
-      EncodeVideoTask.a(paramString, paramPublishVideoEntry, EncodeVideoTask.a(this.a));
-      return;
-    }
-    b(paramPublishVideoEntry, paramString);
-  }
-  
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    ThreadManager.postImmediately(new yct(this, paramPublishVideoEntry, paramString), null, true);
+    FileUtils.d(this.jdField_a_of_type_JavaLangString);
   }
 }
 

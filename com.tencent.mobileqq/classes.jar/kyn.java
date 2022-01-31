@@ -1,33 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
+import java.net.URL;
 
 public class kyn
-  extends BroadcastReceiver
+  implements PublicAccountImageDownListener
 {
-  public kyn(PublicAccountManager paramPublicAccountManager) {}
+  public kyn(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
   {
-    if (this.a.a == 2)
-    {
-      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
-      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
-      this.a.a(null, 0, 14, i, paramIntent);
-    }
-    try
-    {
-      paramContext.unregisterReceiver(this.a.b);
-      label50:
-      this.a.b = null;
-      this.a.a = 0;
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      break label50;
-    }
+    ReadInJoyNativeAdFragment.b(this.a, 2);
+    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
+    ReadInJoyNativeAdFragment.a(this.a, null);
+  }
+  
+  public void a(URL paramURL, Throwable paramThrowable)
+  {
+    ReadInJoyNativeAdFragment.b(this.a, 3);
   }
 }
 

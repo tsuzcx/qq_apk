@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity.aio;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import uln;
+import uql;
 
 public class ForwardUtils$SectionBase
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new uln();
+  public static final Parcelable.Creator CREATOR = new uql();
   public int a;
   
   protected ForwardUtils$SectionBase() {}

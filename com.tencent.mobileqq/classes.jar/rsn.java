@@ -1,31 +1,35 @@
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.ImageCountChangedListener;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.AuthDevForRoamMsgActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class rsn
-  implements PhotoListPanel.ImageCountChangedListener
+  implements Handler.Callback
 {
-  public rsn(BaseChatPie paramBaseChatPie) {}
+  public rsn(AuthDevForRoamMsgActivity paramAuthDevForRoamMsgActivity) {}
   
-  public boolean a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    PanelIconLinearLayout localPanelIconLinearLayout;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!this.a.G))
+    switch (paramMessage.what)
     {
-      boolean bool = AnonymousChatHelper.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      localPanelIconLinearLayout = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
-      if (!bool) {
-        break label63;
-      }
-    }
-    label63:
-    for (int[] arrayOfInt = AIOPanelUtiles.h;; arrayOfInt = AIOPanelUtiles.g)
-    {
-      localPanelIconLinearLayout.a(arrayOfInt, paramInt);
+    default: 
       return false;
+    }
+    this.a.findViewById(2131372258).setEnabled(true);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    if (paramMessage.arg1 == 0) {
+      QQToast.a(this.a.getApplicationContext(), 2, "开启保护成功", 0).b(this.a.getTitleBarHeight());
+    }
+    for (;;)
+    {
+      this.a.setResult(1);
+      this.a.finish();
+      return false;
+      QQToast.a(this.a.getApplicationContext(), 2, "开启保护失败", 0).b(this.a.getTitleBarHeight());
     }
   }
 }

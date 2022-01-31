@@ -1,15 +1,34 @@
-import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameEventConsumer.MotionEventData;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.redtouch.RedTouchWebviewHandler;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
-public class ahkm
+class ahkm
   implements Runnable
 {
-  public ahkm(GL3DGesture paramGL3DGesture, GameEventConsumer.MotionEventData paramMotionEventData) {}
+  ahkm(ahkl paramahkl, String paramString1, JSONObject paramJSONObject, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureGL3DGesture.a.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialGameEventConsumer$MotionEventData);
+    this.jdField_a_of_type_Ahkl.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+    Object localObject = "";
+    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null) {
+      localObject = RedTouchWebviewHandler.access$100(this.jdField_a_of_type_Ahkl.a, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.buffer.get());
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("ret", String.valueOf(this.jdField_a_of_type_Int));
+    localBundle.putString("buffer", (String)localObject);
+    localBundle.putString("red", String.valueOf(this.jdField_b_of_type_Int));
+    localBundle.putStringArrayList("missions", this.jdField_a_of_type_JavaUtilArrayList);
+    localBundle.putString("path", this.jdField_b_of_type_JavaLangString);
+    localBundle.putString("serial", this.c);
+    localBundle.putString("callback", this.jdField_a_of_type_JavaLangString);
+    localObject = DataFactory.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahkl.a.mOnRemoteResp.key, localBundle);
+    this.jdField_a_of_type_Ahkl.a.sendRemoteReq((Bundle)localObject, false, true);
   }
 }
 

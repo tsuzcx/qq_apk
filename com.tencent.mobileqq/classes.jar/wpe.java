@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
 
-public class wpe
+class wpe
   implements Runnable
 {
-  public wpe(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  wpe(wpd paramwpd) {}
   
   public void run()
   {
-    EmoticonGroupStoreFragment.c(this.a, EmoticonGroupStoreFragment.c(this.a));
+    this.a.a.a.c();
   }
 }
 

@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import cooperation.jtcode.JtcodePluginInstallActivity;
 
 class amsz
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
   amsz(amsy paramamsy) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.onDismiss(paramDialogInterface);
-    }
+    JtcodePluginInstallActivity.a(this.a.a, "initPluginManager");
   }
 }
 

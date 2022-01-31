@@ -13,8 +13,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import kkm;
-import kkn;
+import kmt;
+import kmu;
 import tencent.im.troop_search_searchtab.searchtab.Card;
 import tencent.im.troop_search_searchtab.searchtab.Item1;
 import tencent.im.troop_search_searchtab.searchtab.TitleBar;
@@ -63,13 +63,13 @@ public class TroopCardGroup
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366416));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366413));
-    this.b = ((TextView)findViewById(2131366414));
-    this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview = ((ListViewForListview)findViewById(2131366415));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366414));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366411));
+    this.b = ((TextView)findViewById(2131366412));
+    this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview = ((ListViewForListview)findViewById(2131366413));
     this.jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardGroup$CMyAdapter = new TroopCardGroup.CMyAdapter(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview);
     this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview.setAdapter(this.jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardGroup$CMyAdapter);
-    this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview.setOnItemClickListener(new kkm(this));
+    this.jdField_a_of_type_ComTencentBizWidgetsListViewForListview.setOnItemClickListener(new kmt(this));
   }
   
   private void g()
@@ -81,12 +81,12 @@ public class TroopCardGroup
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.str_transfer_desc.get());
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new kkn(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new kmu(this));
   }
   
   public void a()
   {
-    setContentView(2130969414);
+    setContentView(2130969410);
     f();
   }
   
@@ -106,7 +106,7 @@ public class TroopCardGroup
       if (!TextUtils.isEmpty(((searchtab.TitleBar)this.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.title_bar.get()).str_icon_url.get())) {
         break label196;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846324);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846406);
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.str_transfer_desc.get())) && (!TextUtils.isEmpty(this.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.str_transfer_url.get()))) {
         break label229;
       }
@@ -127,7 +127,7 @@ public class TroopCardGroup
   public void e()
   {
     if (this.jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardGroup$CMyAdapter != null) {
-      this.jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardGroup$CMyAdapter.X_();
+      this.jdField_a_of_type_ComTencentBizAddContactTroopViewTroopCardGroup$CMyAdapter.Z_();
     }
     super.e();
   }

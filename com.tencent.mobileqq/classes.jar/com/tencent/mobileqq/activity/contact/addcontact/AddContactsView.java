@@ -53,21 +53,21 @@ import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import whf;
-import whg;
-import whh;
-import whj;
-import whk;
+import wmp;
+import wmq;
+import wmr;
+import wmt;
+import wmu;
 
 public class AddContactsView
   extends ContactBaseView
   implements View.OnClickListener
 {
   private MayKnowAdapter jdField_a_of_type_ComTencentMobileqqAdapterMayKnowAdapter;
-  ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener = new whf(this);
-  ConditionSearchManager.IFirstLocationReqCancelListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IFirstLocationReqCancelListener = new whg(this);
+  ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener = new wmp(this);
+  ConditionSearchManager.IFirstLocationReqCancelListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IFirstLocationReqCancelListener = new wmq(this);
   public ConditionSearchManager a;
-  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new whj(this);
+  LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new wmt(this);
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   public FormMutiItem a;
   FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
@@ -648,9 +648,9 @@ public class AddContactsView
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131362866));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131362871));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setPadding(getResources().getDimensionPixelSize(2131558912), 0, 0, 0);
-    Object localObject = getResources().getDrawable(2130845992);
+    Object localObject = getResources().getDrawable(2130846074);
     ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setCompoundDrawables((Drawable)localObject, null, null, null);
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFocusable(false);
@@ -661,16 +661,16 @@ public class AddContactsView
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130842374));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(this.jdField_a_of_type_AndroidAppActivity.getString(2131435491));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130842409));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(this.jdField_a_of_type_AndroidAppActivity.getString(2131435507));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setSecondLineText("");
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.a(true);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setOnClickListener(this);
     }
     if (this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem != null)
     {
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130842143));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(getResources().getString(2131435511));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130842175));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(getResources().getString(2131435527));
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setSecondLineText("");
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.a(true);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setOnClickListener(this);
@@ -680,7 +680,7 @@ public class AddContactsView
     }
     if (this.c != null)
     {
-      this.c.setLeftIcon(getResources().getDrawable(2130842142));
+      this.c.setLeftIcon(getResources().getDrawable(2130842174));
       this.c.setFirstLineText("查看附近的人");
       this.c.setSecondLineVisible(false);
       this.c.a(true);
@@ -689,32 +689,32 @@ public class AddContactsView
         this.c.setContentDescription("查看附近的人");
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131362877));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131362882));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131362878));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131362883));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterMayKnowAdapter);
     if (this.d != null)
     {
-      this.d.setLeftIcon(getResources().getDrawable(2130837548));
-      this.d.setFirstLineText(getResources().getString(2131435498));
-      this.d.setSecondLineText(getResources().getString(2131435500));
+      this.d.setLeftIcon(getResources().getDrawable(2130837547));
+      this.d.setFirstLineText(getResources().getString(2131435514));
+      this.d.setSecondLineText(getResources().getString(2131435516));
       this.d.a(true);
       this.d.setOnClickListener(this);
       if (AppSetting.jdField_b_of_type_Boolean) {
-        this.d.setContentDescription(getResources().getString(2131435500));
+        this.d.setContentDescription(getResources().getString(2131435516));
       }
     }
     if (this.e != null)
     {
-      this.e.setLeftIcon(getResources().getDrawable(2130837547));
-      this.e.setFirstLineText(getResources().getString(2131435492));
+      this.e.setLeftIcon(getResources().getDrawable(2130837546));
+      this.e.setFirstLineText(getResources().getString(2131435508));
       this.e.setSecondLineVisible(false);
       this.e.a(true);
       this.e.setOnClickListener(this);
     }
     if (this.f != null)
     {
-      this.f.setLeftIcon(getResources().getDrawable(2130842504));
+      this.f.setLeftIcon(getResources().getDrawable(2130842539));
       this.f.a(true);
       this.f.setOnClickListener(this);
       localObject = ((ExtendFriendManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a();
@@ -728,7 +728,7 @@ public class AddContactsView
     {
       return;
     }
-    this.f.setFirstLineText(2131439332);
+    this.f.setFirstLineText(2131439364);
     this.f.setSecondLineVisible(false);
   }
   
@@ -766,7 +766,7 @@ public class AddContactsView
       if (!localPhoneContactManager.c()) {
         break label154;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new whk(this, (String)localObject, localSharedPreferences));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new wmu(this, (String)localObject, localSharedPreferences));
     }
     label154:
     do
@@ -782,7 +782,7 @@ public class AddContactsView
   
   private void l()
   {
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131362865);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131362870);
     if ((this.jdField_b_of_type_ArrayOfJavaLangString != null) && (this.jdField_b_of_type_ArrayOfJavaLangString.length > 0))
     {
       int i = 0;
@@ -961,7 +961,7 @@ public class AddContactsView
     for (Object localObject = this.jdField_a_of_type_ArrayOfJavaLangString[0];; localObject = Integer.valueOf(-1000))
     {
       QLog.d("AddContactsView", 2, localObject);
-      ThreadManager.postImmediately(new whh(this, new StringBuilder("条件：")), null, true);
+      ThreadManager.postImmediately(new wmr(this, new StringBuilder("条件：")), null, true);
       return;
     }
   }
@@ -976,7 +976,7 @@ public class AddContactsView
     {
     default: 
       return;
-    case 2131362866: 
+    case 2131362871: 
       this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a();
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 1, 0, "", "", "", "");
       return;
@@ -1033,7 +1033,7 @@ public class AddContactsView
         paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, NearbyActivity.class);
         paramView.putExtra("ENTER_TIME", System.currentTimeMillis());
         paramView.putExtra("FROM_WHERE", 1004);
-        paramView.putExtra("leftViewText", this.jdField_a_of_type_AndroidAppActivity.getResources().getText(2131434478));
+        paramView.putExtra("leftViewText", this.jdField_a_of_type_AndroidAppActivity.getResources().getText(2131434494));
         NearbyFakeActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramView);
       }
       for (;;)
@@ -1042,7 +1042,7 @@ public class AddContactsView
         return;
         paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, NearbyGuideActivity.class);
         paramView.putExtra("FROM_WHERE", 1004);
-        paramView.putExtra("leftViewText", this.jdField_a_of_type_AndroidAppActivity.getResources().getText(2131434478));
+        paramView.putExtra("leftViewText", this.jdField_a_of_type_AndroidAppActivity.getResources().getText(2131434494));
         this.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
       }
     case 1004: 
@@ -1055,7 +1055,7 @@ public class AddContactsView
       PublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), ExtendFriendFragment.class);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092C5", "0X80092C5", 0, 0, "", "", "", "");
       return;
-    case 2131362877: 
+    case 2131362882: 
       i = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a().getIntent().getIntExtra("EntranceId", 0);
       switch (i)
       {

@@ -1,16 +1,14 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class zut
   implements Runnable
 {
-  zut(zus paramzus, AnimationDrawable paramAnimationDrawable) {}
+  zut(zus paramzus, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Zus.a.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
+    this.jdField_a_of_type_Zus.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_Zus.jdField_a_of_type_Int, this.jdField_a_of_type_Zus.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
   }
 }
 

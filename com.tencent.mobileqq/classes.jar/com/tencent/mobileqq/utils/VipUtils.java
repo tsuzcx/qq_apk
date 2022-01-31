@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
 import QQService.EVIPSPEC;
-import akgt;
+import akog;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -190,9 +190,9 @@ public class VipUtils
     return 0;
   }
   
-  public static void a(Activity paramActivity, akgt paramakgt)
+  public static void a(Activity paramActivity, akog paramakog)
   {
-    if ((paramakgt == null) || (paramActivity == null) || (TextUtils.isEmpty(paramakgt.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramakgt.d)) || (TextUtils.isEmpty(paramakgt.e)) || (TextUtils.isEmpty(paramakgt.b)) || (TextUtils.isEmpty(paramakgt.c)) || (paramakgt.jdField_a_of_type_Int < 1)) {
+    if ((paramakog == null) || (paramActivity == null) || (TextUtils.isEmpty(paramakog.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramakog.d)) || (TextUtils.isEmpty(paramakog.e)) || (TextUtils.isEmpty(paramakog.b)) || (TextUtils.isEmpty(paramakog.c)) || (paramakog.jdField_a_of_type_Int < 1)) {
       return;
     }
     Object localObject = new JSONObject();
@@ -200,21 +200,21 @@ public class VipUtils
     {
       try
       {
-        ((JSONObject)localObject).put("serviceCode", paramakgt.b);
-        ((JSONObject)localObject).put("aid", paramakgt.d);
-        ((JSONObject)localObject).put("openMonth", String.valueOf(paramakgt.jdField_a_of_type_Int));
-        ((JSONObject)localObject).put("offerId", paramakgt.e);
-        ((JSONObject)localObject).put("serviceName", paramakgt.c);
-        ((JSONObject)localObject).put("userId", paramakgt.jdField_a_of_type_JavaLangString);
-        if (!paramakgt.jdField_a_of_type_Boolean) {
+        ((JSONObject)localObject).put("serviceCode", paramakog.b);
+        ((JSONObject)localObject).put("aid", paramakog.d);
+        ((JSONObject)localObject).put("openMonth", String.valueOf(paramakog.jdField_a_of_type_Int));
+        ((JSONObject)localObject).put("offerId", paramakog.e);
+        ((JSONObject)localObject).put("serviceName", paramakog.c);
+        ((JSONObject)localObject).put("userId", paramakog.jdField_a_of_type_JavaLangString);
+        if (!paramakog.jdField_a_of_type_Boolean) {
           ((JSONObject)localObject).put("isCanChange", false);
         }
         localObject = ((JSONObject)localObject).toString();
-        if (paramakgt.f == null) {
+        if (paramakog.f == null) {
           break label225;
         }
-        paramakgt = paramakgt.f;
-        PayBridgeActivity.tenpay(paramActivity, (String)localObject, 4, paramakgt);
+        paramakog = paramakog.f;
+        PayBridgeActivity.tenpay(paramActivity, (String)localObject, 4, paramakog);
         return;
       }
       catch (Exception paramActivity)
@@ -227,7 +227,7 @@ public class VipUtils
       QLog.e("VipUtils", 2, "openRechargeDialog exception : " + paramActivity.getMessage());
       return;
       label225:
-      paramakgt = "";
+      paramakog = "";
     }
   }
   
@@ -339,43 +339,43 @@ public class VipUtils
   {
     if ((paramBaseActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      akgt localakgt = new akgt();
-      localakgt.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
-      localakgt.d = paramString;
-      localakgt.e = "1450000515";
-      localakgt.b = "LTMCLUB";
-      localakgt.c = paramBaseActivity.getString(2131436740);
-      localakgt.jdField_a_of_type_Int = paramInt;
-      localakgt.f = "vip";
-      a(paramBaseActivity, localakgt);
+      akog localakog = new akog();
+      localakog.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
+      localakog.d = paramString;
+      localakog.e = "1450000515";
+      localakog.b = "LTMCLUB";
+      localakog.c = paramBaseActivity.getString(2131436760);
+      localakog.jdField_a_of_type_Int = paramInt;
+      localakog.f = "vip";
+      a(paramBaseActivity, localakog);
     }
   }
   
   public static void a(BaseActivity paramBaseActivity, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
   {
-    akgt localakgt;
+    akog localakog;
     if ((paramBaseActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      localakgt = new akgt();
-      localakgt.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
-      localakgt.d = paramString;
-      localakgt.jdField_a_of_type_Int = paramInt;
-      localakgt.jdField_a_of_type_Boolean = paramBoolean2;
+      localakog = new akog();
+      localakog.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
+      localakog.d = paramString;
+      localakog.jdField_a_of_type_Int = paramInt;
+      localakog.jdField_a_of_type_Boolean = paramBoolean2;
       if (!paramBoolean1) {
         break label99;
       }
-      localakgt.e = "1450000516";
-      localakgt.b = "CJCLUBT";
-      localakgt.c = paramBaseActivity.getString(2131436943);
+      localakog.e = "1450000516";
+      localakog.b = "CJCLUBT";
+      localakog.c = paramBaseActivity.getString(2131436963);
     }
-    for (localakgt.f = "svip";; localakgt.f = "vip")
+    for (localakog.f = "svip";; localakog.f = "vip")
     {
-      a(paramBaseActivity, localakgt);
+      a(paramBaseActivity, localakog);
       return;
       label99:
-      localakgt.e = "1450000515";
-      localakgt.b = "LTMCLUB";
-      localakgt.c = paramBaseActivity.getString(2131436740);
+      localakog.e = "1450000515";
+      localakog.b = "LTMCLUB";
+      localakog.c = paramBaseActivity.getString(2131436760);
     }
   }
   
@@ -388,15 +388,15 @@ public class VipUtils
   {
     if ((paramBaseActivity != null) && (!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      akgt localakgt = new akgt();
-      localakgt.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
-      localakgt.d = paramString;
-      localakgt.e = "1450000516";
-      localakgt.b = "CJCLUBT";
-      localakgt.c = paramBaseActivity.getString(2131436943);
-      localakgt.jdField_a_of_type_Int = paramInt;
-      localakgt.f = "svip";
-      a(paramBaseActivity, localakgt);
+      akog localakog = new akog();
+      localakog.jdField_a_of_type_JavaLangString = paramBaseActivity.app.getCurrentAccountUin();
+      localakog.d = paramString;
+      localakog.e = "1450000516";
+      localakog.b = "CJCLUBT";
+      localakog.c = paramBaseActivity.getString(2131436963);
+      localakog.jdField_a_of_type_Int = paramInt;
+      localakog.f = "svip";
+      a(paramBaseActivity, localakog);
     }
   }
   

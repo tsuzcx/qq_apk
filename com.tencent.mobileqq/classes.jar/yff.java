@@ -1,39 +1,13 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
 public class yff
-  implements QvipSpecialSoundManager.CallBack
+  extends TroopMemberListActivity.ViewHolder
 {
-  public yff(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  public CheckBox a;
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QQSpecialFriendSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig fail.");
-      }
-    }
-  }
+  private yff(FriendListInnerFrame paramFriendListInnerFrame) {}
 }
 
 

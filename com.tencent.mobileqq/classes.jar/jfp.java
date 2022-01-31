@@ -1,28 +1,20 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.EffectConfigBase.IEffectConfigCallback;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.av.VideoController;
+import com.tencent.av.utils.PhoneStatusMonitor;
 
 public class jfp
-  implements EffectConfigBase.IEffectConfigCallback
+  implements Runnable
 {
-  public jfp(MagicFaceDataEntity paramMagicFaceDataEntity) {}
+  public jfp(VideoController paramVideoController) {}
   
-  public void a(PendantItem paramPendantItem) {}
-  
-  public void a(PendantItem paramPendantItem, int paramInt) {}
-  
-  public void a(PendantItem paramPendantItem, boolean paramBoolean)
+  public void run()
   {
-    AVLog.c("MagicFaceDataEntity", "onDownloadFinish: " + paramPendantItem.toString() + "|" + paramBoolean);
-    if (paramBoolean) {
-      MagicFaceDataEntity.a(this.a, paramPendantItem);
-    }
+    this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener = new jga(this.a);
+    this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor = new PhoneStatusMonitor(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jfp
  * JD-Core Version:    0.7.0.1
  */

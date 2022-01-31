@@ -1,9 +1,15 @@
-import com.tencent.mobileqq.data.ResourcePluginInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.Leba;
 
-public class tbq
+class tbq
+  implements Runnable
 {
-  public ResourcePluginInfo a;
-  public String a;
+  tbq(tbp paramtbp, View paramView, int paramInt) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_Tbp.a.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, null);
+  }
 }
 
 

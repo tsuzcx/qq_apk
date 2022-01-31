@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class ajjt
-  implements View.OnClickListener
+  implements Runnable
 {
-  public int a;
-  public TextView a;
+  public ajjt(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  private ajjt(SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter paramFlowLayoutKeywordsListAdapter) {}
-  
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c();
   }
 }
 

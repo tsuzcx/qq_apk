@@ -6,13 +6,13 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 import com.tencent.mapsdk.rastercore.d.b;
-import com.tencent.mapsdk.rastercore.d.e;
 import com.tencent.mapsdk.rastercore.d.f;
+import com.tencent.mapsdk.rastercore.d.g;
 import com.tencent.tencentmap.mapsdk.map.CancelableCallback;
 
 public abstract class a
 {
-  protected e a;
+  protected f a;
   protected b b;
   protected CancelableCallback c;
   private a d = a.c;
@@ -21,17 +21,22 @@ public abstract class a
   private long g;
   private float h = 0.0F;
   private boolean i = false;
-  private Runnable j = new Runnable()
+  private double j = 0.0D;
+  private Runnable k = new Runnable()
   {
     public final void run()
     {
       if (a.a(a.this).computeScrollOffset())
       {
-        float f = a.a(a.this).getCurrX() * 1.0F / 10000.0F;
-        a.this.a(f - a.b(a.this));
-        a.a(a.this, f);
-        if (a.c(a.this)) {
-          a.e(a.this).postDelayed(a.d(a.this), 5L);
+        float f1 = a.a(a.this).getCurrX() * 1.0F / 10000.0F;
+        float f2 = f1 - a.b(a.this);
+        a.a(a.this, a.c(a.this) + f2);
+        if (a.c(a.this) < 1.0D) {
+          a.this.a(f2);
+        }
+        a.a(a.this, f1);
+        if (a.d(a.this)) {
+          a.f(a.this).postDelayed(a.e(a.this), 5L);
         }
         a.this.a.h().a(false);
         return;
@@ -45,10 +50,10 @@ public abstract class a
     }
   };
   
-  public a(e parame, long paramLong, CancelableCallback paramCancelableCallback)
+  public a(f paramf, long paramLong, CancelableCallback paramCancelableCallback)
   {
-    this.a = parame;
-    this.b = parame.c();
+    this.a = paramf;
+    this.b = paramf.c();
     this.g = paramLong;
     this.c = paramCancelableCallback;
   }
@@ -58,21 +63,21 @@ public abstract class a
     switch (2.a[this.d.ordinal()])
     {
     default: 
-      this.f = new Scroller(e.a());
+      this.f = new Scroller(f.a());
     }
     for (;;)
     {
       c();
       this.i = true;
       this.f.startScroll(0, 0, 10000, 0, (int)this.g);
-      this.e.postDelayed(this.j, 5L);
+      this.e.postDelayed(this.k, 5L);
       this.a.a(false, false);
       return;
-      this.f = new Scroller(e.a(), new AccelerateInterpolator());
+      this.f = new Scroller(f.a(), new AccelerateInterpolator());
       continue;
-      this.f = new Scroller(e.a(), new DecelerateInterpolator());
+      this.f = new Scroller(f.a(), new DecelerateInterpolator());
       continue;
-      this.f = new Scroller(e.a(), new AccelerateDecelerateInterpolator());
+      this.f = new Scroller(f.a(), new AccelerateDecelerateInterpolator());
     }
   }
   

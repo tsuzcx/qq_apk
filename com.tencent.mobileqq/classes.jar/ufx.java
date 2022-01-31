@@ -1,33 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.appcircle.st.STUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.ToastUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class ufx
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public ufx(UpgradeActivity paramUpgradeActivity) {}
+  public ufx(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    LogUtility.b("qqBaseActivity", STUtils.a(10010, 1, 3, 200));
-    AppCircleReportManager.a().a(17, STUtils.a(10010, 1, 3, 200));
-    if (!MyAppApi.a().b()) {
-      ToastUtil.a().a("应用宝未安装，请重新安装应用宝");
-    }
-    for (;;)
-    {
-      ThreadManager.getSubThreadHandler().postDelayed(new ufy(this), 500L);
-      return;
-      NewUpgradeDialog.a(this.a);
-    }
+    this.a.a.postDelayed(new uha(this.a), 150L);
   }
 }
 

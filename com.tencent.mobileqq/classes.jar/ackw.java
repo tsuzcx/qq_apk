@@ -1,25 +1,25 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.EPRecommendTask;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import mqq.util.WeakReference;
 
 public class ackw
-  implements Animation.AnimationListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public ackw(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView) {}
+  public ackw(EPRecommendTask paramEPRecommendTask) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    paramAnimation = new AlphaAnimation(0.2F, 0.0F);
-    paramAnimation.setDuration(500L);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    paramString2 = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (paramString2 == null) {}
+    while (!"emoji_app_vip_emoji_aio_android_config.json".equals(paramString1)) {
+      return;
+    }
+    ((VasQuickUpdateManager)paramString2.getManager(183)).b(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+    paramString1 = VasQuickUpdateManager.a(paramString2, "emoji_app_vip_emoji_aio_android_config.json", false, null);
+    this.a.a(paramString1);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
-import java.util.TimerTask;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
 public class mge
-  extends TimerTask
+  implements Runnable
 {
-  public mge(VideoVolumeControl paramVideoVolumeControl) {}
+  public mge(VideoFeedsListView paramVideoFeedsListView, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    VideoVolumeControl.a(this.a, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView.smoothScrollBy(this.jdField_a_of_type_Int, this.b);
   }
 }
 

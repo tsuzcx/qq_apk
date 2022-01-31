@@ -1,15 +1,24 @@
 import android.content.Context;
-import com.tencent.mobileqq.activity.qwallet.voice.VoiceRedPacketHelper;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class xhw
-  implements Runnable
+  extends FriendListObserver
 {
-  public xhw(VoiceRedPacketHelper paramVoiceRedPacketHelper, Context paramContext, int paramInt1, int paramInt2) {}
+  public xhw(TransactionActivity paramTransactionActivity) {}
   
-  public void run()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, 0).b(this.b);
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
+    }
+    TransactionActivity.b(this.a, ContactUtils.c(this.a.app, TransactionActivity.c(this.a), false));
+    paramString = QWalletTools.a(TransactionActivity.a(this.a), TransactionActivity.d(this.a), AIOUtils.a(TransactionActivity.c(this.a), TransactionActivity.a(this.a).getResources()), TransactionActivity.a(this.a).getPaint());
+    TransactionActivity.a(this.a).setText(paramString + "(" + TransactionActivity.c(this.a) + ")");
   }
 }
 

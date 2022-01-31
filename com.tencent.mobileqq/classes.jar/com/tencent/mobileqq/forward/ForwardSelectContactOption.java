@@ -59,7 +59,7 @@ public class ForwardSelectContactOption
     }
     if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("openAIOForPtt", 0) != 1)
     {
-      a(2131435070);
+      a(2131435086);
       long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("appid", -1L);
       localObject = this.jdField_a_of_type_AndroidAppActivity;
       QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;

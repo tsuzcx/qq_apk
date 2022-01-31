@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ryx
-  implements Runnable
+class ryx
+  implements DialogInterface.OnClickListener
 {
-  public ryx(ChatHistory paramChatHistory) {}
+  ryx(ryw paramryw) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.isFinishing()) {
-      ThreadManager.post(new ryy(this), 8, null, true);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

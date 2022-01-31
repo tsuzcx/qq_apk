@@ -1,22 +1,29 @@
-import android.content.Context;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
-import java.util.HashMap;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
 
-public final class acvz
-  implements Runnable
+public class acvz
+  implements ActionMode.Callback
 {
-  public acvz(Context paramContext, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
+  public acvz(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public void run()
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (FileVideoManager.a == null) {
-      FileVideoManager.a = new FileVideoManager(null);
-    }
-    if (FileVideoManager.a(FileVideoManager.a) == null) {
-      FileVideoManager.a(FileVideoManager.a, new HashMap());
-    }
-    FileVideoManager.a(FileVideoManager.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback);
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

@@ -1,72 +1,36 @@
-import com.tencent.mobileqq.richmedia.dc.DataAdapter;
-import com.tencent.mobileqq.richmedia.dc.DataCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 
 public class ahnk
-  extends DataAdapter
+  extends Handler
 {
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long c;
-  
-  public HashMap a(String paramString)
+  public ahnk(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, Looper paramLooper)
   {
-    paramString = null;
-    if ((this.jdField_a_of_type_Long == 0L) || (this.c == 0L)) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      paramString = new StringBuilder();
-    }
-    HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_Boolean)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      localHashMap.put("is_progressive", "progressive");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localHashMap.put("failure", "1");
-        if (QLog.isColorLevel())
-        {
-          paramString.append("progressive:\n");
-          paramString.append("refresh_dp:" + String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) + "\n");
-          paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-          QLog.i(DataCollector.a, 2, paramString.toString());
-        }
-      }
     }
-    label391:
     for (;;)
     {
-      return localHashMap;
-      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
-        localHashMap.put("to_dp", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
-      }
-      if ((this.c <= this.jdField_a_of_type_Long) || (this.c <= this.jdField_b_of_type_Long)) {
-        break;
-      }
-      localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
-      break;
-      localHashMap.put("is_progressive", "baseline");
-      localHashMap.put("view_count", "1");
-      if (this.jdField_b_of_type_Boolean) {
-        localHashMap.put("failure", "1");
-      }
-      for (;;)
+      super.handleMessage(paramMessage);
+      return;
+      if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue()))
       {
-        if (!QLog.isColorLevel()) {
-          break label391;
-        }
-        paramString.append("baseline:\n");
-        paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
-        QLog.i(DataCollector.a, 2, paramString.toString());
-        break;
-        if (this.c > this.jdField_a_of_type_Long) {
-          localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
-        }
+        EffectsCameraCaptureFragment.f(this.a, false);
+        EffectsCameraCaptureFragment.c(this.a).setVisibility(8);
+        this.a.a.u();
+      }
+      else
+      {
+        EffectsCameraCaptureFragment.c(this.a).setVisibility(8);
       }
     }
   }

@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-
 public class aikx
-  implements Runnable
 {
-  public aikx(SubAccountManager paramSubAccountManager, SubAccountInfo paramSubAccountInfo) {}
+  public int a;
+  public boolean a;
+  public int b = 86400;
+  public int c = 5;
   
-  public void run()
+  public aikx()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 1;
+    this.b = 86400;
+    this.c = 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aikx
  * JD-Core Version:    0.7.0.1
  */

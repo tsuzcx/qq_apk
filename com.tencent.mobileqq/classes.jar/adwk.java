@@ -1,66 +1,48 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.intervideo.now.NowProxy;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
 
 public class adwk
-  extends Thread
+  implements PopupMenuDialog.OnClickActionListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public adwk(NowLiveFragment paramNowLiveFragment) {}
   
-  public adwk(MediaApiPlugin paramMediaApiPlugin, String paramString1, int paramInt, String paramString2)
+  public void a(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-  }
-  
-  public void run()
-  {
-    try
+    switch (paramMenuItem.a)
     {
-      JSONObject localJSONObject = MediaApiPlugin.a(this.b, this.jdField_a_of_type_Int);
-      if (isInterrupted()) {
-        throw new InterruptedException();
+    default: 
+      return;
+    case 0: 
+      paramMenuItem = new NowProxy();
+      if (paramMenuItem.a())
+      {
+        paramMenuItem.a(null);
+        return;
       }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      System.gc();
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "3", "[]" });
+      paramMenuItem = "" + this.a.c;
+      localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+      localIntent.putExtra("url", paramMenuItem);
+      localIntent.putExtra("reqType", 1);
+      this.a.startActivity(localIntent);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", localOutOfMemoryError.toString() });
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "[]" });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "[]" });
+    case 1: 
+      paramMenuItem = "" + this.a.d;
+      localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+      localIntent.putExtra("url", paramMenuItem);
+      localIntent.putExtra("reqType", 1);
+      this.a.startActivity(localIntent);
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.mRuntime.a();
-      if ((localActivity != null) && (!localActivity.isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "1", "[]" });
-      }
-      return;
-    }
-    finally
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
-      }
-    }
+    paramMenuItem = "" + this.a.e;
+    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramMenuItem);
+    localIntent.putExtra("reqType", 1);
+    localIntent.putExtra("title", "帮助");
+    this.a.startActivity(localIntent);
   }
 }
 

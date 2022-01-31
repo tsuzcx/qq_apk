@@ -1,34 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFailedFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.PublishableMomentInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
 
 public class afkg
-  implements NearbyMomentManager.GetLocalUnPiblishListCallback
+  implements DialogInterface.OnClickListener
 {
-  public afkg(NearbyMomentFailedFragment paramNearbyMomentFailedFragment) {}
+  public afkg(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void a(List paramList)
-  {
-    if (NearbyMomentFailedFragment.a(this.a).isFinishing()) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      PublishableMomentInfo localPublishableMomentInfo = (PublishableMomentInfo)paramList.next();
-      if ((localPublishableMomentInfo.a != null) && (localPublishableMomentInfo.a.publishState == 2)) {
-        localArrayList.add(localPublishableMomentInfo);
-      }
-    }
-    NearbyMomentFailedFragment.a(this.a).a(localArrayList);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

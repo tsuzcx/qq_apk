@@ -1,18 +1,45 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import java.util.List;
 
 public class acmo
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acmo(FilePreviewActivity paramFilePreviewActivity) {}
+  public acmo(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.setResult(0, new Intent());
-    this.a.finish();
-    this.a.overridePendingTransition(2131034121, 2131034122);
+    EmotionPanelInfo localEmotionPanelInfo;
+    int i;
+    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    {
+      localEmotionPanelInfo = null;
+      i = 0;
+      int j = this.a.jdField_a_of_type_JavaUtilList.size();
+      if (i >= j) {
+        break label104;
+      }
+      localEmotionPanelInfo = (EmotionPanelInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
+      if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.a != 9)) {
+        break label68;
+      }
+    }
+    for (;;)
+    {
+      if (i == -1) {}
+      label68:
+      while ((EmoticonMainPanel.c != i) || (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter == null))
+      {
+        return;
+        i += 1;
+        break;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localEmotionPanelInfo);
+      return;
+      label104:
+      i = -1;
+    }
   }
 }
 

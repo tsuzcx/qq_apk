@@ -1,16 +1,16 @@
 package com.tencent.mapsdk.raster.model;
 
-import com.tencent.mapsdk.rastercore.e.d;
+import com.tencent.mapsdk.rastercore.e.e;
 import java.util.List;
 
 public class Polyline
   implements IOverlay
 {
-  private final d polylineDelegate;
+  private final e polylineDelegate;
   
-  public Polyline(d paramd)
+  public Polyline(e parame)
   {
-    this.polylineDelegate = paramd;
+    this.polylineDelegate = parame;
   }
   
   public final boolean equals(Object paramObject)

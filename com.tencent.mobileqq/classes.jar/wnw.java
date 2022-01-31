@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
 
 public class wnw
-  implements Runnable
+  extends FacePreloadBaseAdapter.ViewHolder
 {
-  public wnw(PublicAccountFragment paramPublicAccountFragment) {}
-  
-  public void run()
-  {
-    this.a.i();
-  }
+  public TextView a;
+  public PublicRecommendAccountInfo a;
+  public TextView b;
 }
 
 

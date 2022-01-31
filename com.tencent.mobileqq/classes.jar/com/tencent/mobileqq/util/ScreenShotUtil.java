@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import akbb;
+import akip;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -278,7 +278,7 @@ public final class ScreenShotUtil
               try
               {
                 if (jdField_a_of_type_JavaLangReflectMethod != null) {
-                  jdField_a_of_type_JavaLangReflectMethod.invoke(paramWebView.getX5WebViewExtension(), new Object[] { localBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new akbb(paramScreenshotCallback, localBitmap) });
+                  jdField_a_of_type_JavaLangReflectMethod.invoke(paramWebView.getX5WebViewExtension(), new Object[] { localBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new akip(paramScreenshotCallback, localBitmap) });
                 }
                 i = 1;
               }
@@ -322,7 +322,7 @@ public final class ScreenShotUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.ScreenShotUtil
  * JD-Core Version:    0.7.0.1
  */

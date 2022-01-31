@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.script.SpriteBridge;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public class ysb
-  implements Runnable
+public final class ysb
+  implements TextWatcher
 {
-  public ysb(SpriteBridge paramSpriteBridge) {}
+  public ysb(ApolloSurfaceView paramApolloSurfaceView, ApolloRender paramApolloRender) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((SpriteBridge.a(this.a) != null) && (SpriteBridge.a(this.a).a() != null)) {
-      SpriteBridge.a(this.a).a().f();
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.queueEvent(new ysc(this, paramEditable));
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

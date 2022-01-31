@@ -7,25 +7,25 @@ import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import aogt;
-import com.tencent.av.AVNetEngine;
+import aopn;
 import com.tencent.av.utils.UITools;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QQFilterRenderManagerHolder;
 import dov.com.qq.im.capture.QIMManager;
 import dov.com.qq.im.capture.data.CaptureComboManager;
-import dov.com.qq.im.capture.data.ComboLockManager;
 import dov.com.qq.im.capture.data.ComboSet;
 import dov.com.qq.im.capture.data.FilterCategory;
 import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 import dov.com.qq.im.capture.data.QIMRedDotConfig;
-import dov.com.qq.im.capture.data.QIMRedDotConfig.RedDotItemConfig;
+import dov.com.qq.im.capture.data.TransitionCategoryItem;
 import dov.com.qq.im.capture.util.QIMFileUtils;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
@@ -37,7 +37,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,17 +50,17 @@ public class VideoFilterTools
   public static HashMap a;
   public static String b;
   public static String c;
-  private static int d;
-  private static int e = 1;
+  private static int jdField_d_of_type_Int;
+  private static final String jdField_d_of_type_JavaLangString;
+  private static int e;
   private static int f = -1;
-  private long jdField_a_of_type_Long;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  aopn jdField_a_of_type_Aopn = new aopn(this);
   public FilterDesc a;
   public QIMRedDotConfig a;
+  private TransitionCategoryItem jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem;
   private EditVideoPartManager jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  public boolean a;
   private int[] jdField_a_of_type_ArrayOfInt = { -1 };
   public ComboSet[] a;
   public QIMFilterCategoryItem[] a;
@@ -72,12 +71,14 @@ public class VideoFilterTools
   static
   {
     jdField_a_of_type_JavaLangString = CaptureVideoFilterManager.jdField_a_of_type_JavaLangString + "artfilter" + File.separator;
+    jdField_d_of_type_JavaLangString = AppConstants.aK + "dov_capture_qsvf" + File.separator;
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_a_of_type_Int = 1300000;
     jdField_b_of_type_JavaLangString = CaptureVideoFilterManager.jdField_a_of_type_JavaLangString + "lowlight";
     jdField_c_of_type_JavaLangString = jdField_b_of_type_JavaLangString + File.separator + "LowLight.png";
     jdField_d_of_type_Int = 2;
+    jdField_e_of_type_Int = 1;
   }
   
   private VideoFilterTools()
@@ -127,7 +128,7 @@ public class VideoFilterTools
       {
         localQIMFilterCategoryItem = (QIMFilterCategoryItem)localIterator.next();
         localObject1 = paramCopyOnWriteArrayList;
-        if (localQIMFilterCategoryItem.b())
+        if (localQIMFilterCategoryItem.c())
         {
           localObject1 = paramCopyOnWriteArrayList;
           if (paramCopyOnWriteArrayList == null) {
@@ -138,7 +139,7 @@ public class VideoFilterTools
         if (paramBoolean2)
         {
           paramCopyOnWriteArrayList = (CopyOnWriteArrayList)localObject1;
-          if (!localQIMFilterCategoryItem.a()) {}
+          if (!localQIMFilterCategoryItem.b()) {}
         }
         else
         {
@@ -161,7 +162,7 @@ public class VideoFilterTools
       {
         localQIMFilterCategoryItem = (QIMFilterCategoryItem)localIterator.next();
         localObject2 = localObject1;
-        if (localQIMFilterCategoryItem.b())
+        if (localQIMFilterCategoryItem.c())
         {
           localObject2 = localObject1;
           if (localObject1 == null) {
@@ -172,15 +173,15 @@ public class VideoFilterTools
         if (paramBoolean2)
         {
           localObject1 = localObject2;
-          if (!localQIMFilterCategoryItem.a()) {}
+          if (!localQIMFilterCategoryItem.b()) {}
         }
         else
         {
           if (QLog.isColorLevel()) {
-            QLog.d("VideoFilterTools", 2, "buildDataSet needPredownload " + localQIMFilterCategoryItem.e());
+            QLog.d("VideoFilterTools", 2, " buildDataSet needPredownload " + localQIMFilterCategoryItem.jdField_b_of_type_JavaLangString + localQIMFilterCategoryItem.f());
           }
           localObject1 = localObject2;
-          if (!localQIMFilterCategoryItem.e())
+          if (!localQIMFilterCategoryItem.f())
           {
             localFilterCategory.jdField_a_of_type_JavaUtilList.add(localQIMFilterCategoryItem);
             localArrayList1.add(localQIMFilterCategoryItem);
@@ -262,9 +263,8 @@ public class VideoFilterTools
       i = 1;
       paramCopyOnWriteArrayList = paramCopyOnWriteArrayList.iterator();
     }
-    label485:
-    label502:
-    label508:
+    label518:
+    label524:
     for (;;)
     {
       Object localObject;
@@ -283,7 +283,7 @@ public class VideoFilterTools
             if (((Iterator)localObject).hasNext())
             {
               localQIMFilterCategoryItem = (QIMFilterCategoryItem)((Iterator)localObject).next();
-              if ((i != 0) || (!QIMFilterCategoryItem.a(localQIMFilterCategoryItem)))
+              if (((i != 0) || (!QIMFilterCategoryItem.a(localQIMFilterCategoryItem))) && (!QIMFilterCategoryItem.b(localQIMFilterCategoryItem)))
               {
                 localFilterCategory.jdField_a_of_type_JavaUtilList.add(localQIMFilterCategoryItem);
                 continue;
@@ -301,13 +301,13 @@ public class VideoFilterTools
             if (!((Iterator)localObject).hasNext()) {
               break;
             }
-          } while (((QIMFilterCategoryItem)((Iterator)localObject).next()).b());
+          } while (((QIMFilterCategoryItem)((Iterator)localObject).next()).c());
         }
       }
       for (int j = 0;; j = 1)
       {
         if (j != 0) {
-          break label508;
+          break label524;
         }
         localArrayList.add(localFilterCategory);
         break;
@@ -320,7 +320,7 @@ public class VideoFilterTools
         while (((Iterator)localObject).hasNext())
         {
           localQIMFilterCategoryItem = (QIMFilterCategoryItem)((Iterator)localObject).next();
-          if ((i != 0) || (!QIMFilterCategoryItem.a(localQIMFilterCategoryItem))) {
+          if (((i != 0) || (!QIMFilterCategoryItem.a(localQIMFilterCategoryItem))) && (!QIMFilterCategoryItem.b(localQIMFilterCategoryItem))) {
             localFilterCategory.jdField_a_of_type_JavaUtilList.add(localQIMFilterCategoryItem);
           }
         }
@@ -333,11 +333,11 @@ public class VideoFilterTools
           if (!((Iterator)localObject).hasNext()) {
             break;
           }
-        } while (((QIMFilterCategoryItem)((Iterator)localObject).next()).b());
+        } while (((QIMFilterCategoryItem)((Iterator)localObject).next()).c());
         for (j = 0;; j = 1)
         {
           if (j != 0) {
-            break label502;
+            break label518;
           }
           localArrayList.add(localFilterCategory);
           break;
@@ -346,7 +346,7 @@ public class VideoFilterTools
             paramCopyOnWriteArrayList = new StringBuilder(20);
             paramCopyOnWriteArrayList.append("getFilterCategory categoryType:").append(paramInt).append(" filter:");
             if (localArrayList != null) {
-              break label485;
+              break label501;
             }
             paramCopyOnWriteArrayList.append("null ");
           }
@@ -354,11 +354,39 @@ public class VideoFilterTools
           {
             QLog.d("VideoFilterTools", 2, paramCopyOnWriteArrayList.toString());
             return localArrayList;
+            label501:
             paramCopyOnWriteArrayList.append(localArrayList.size());
           }
         }
         break;
       }
+    }
+  }
+  
+  public static JSONArray a(List paramList)
+  {
+    localJSONArray = new JSONArray();
+    try
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        FilterDesc localFilterDesc = (FilterDesc)paramList.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("filterid", localFilterDesc.jdField_b_of_type_Int + "");
+        localJSONObject.put("type", localFilterDesc.jdField_a_of_type_Int + "");
+        localJSONObject.put("name", localFilterDesc.jdField_e_of_type_JavaLangString);
+        localJSONObject.put("respicname", localFilterDesc.g);
+        localJSONObject.put("version", localFilterDesc.jdField_e_of_type_Int);
+        localJSONObject.put("md5", localFilterDesc.jdField_b_of_type_JavaLangString);
+        localJSONArray.put(localJSONObject);
+      }
+      return localJSONArray;
+    }
+    catch (Exception paramList)
+    {
+      QLog.w("VideoFilterTools", 2, "convertFilterDesc" + paramList.toString());
+      QLog.w("VideoFilterTools", 2, "convertFilterDesc json" + localJSONArray.toString());
     }
   }
   
@@ -385,9 +413,7 @@ public class VideoFilterTools
       return;
     }
     a(paramContext, paramString, a(paramContext));
-    if (a().a(paramString)) {
-      FileUtils.a(CaptureVideoFilterManager.jdField_a_of_type_JavaLangString, "filter_config_new.xml", paramString);
-    }
+    FileUtils.a(CaptureVideoFilterManager.jdField_a_of_type_JavaLangString, "filter_config_new.xml", paramString);
     a(paramContext, paramInt);
   }
   
@@ -424,15 +450,15 @@ public class VideoFilterTools
             while (localIterator.hasNext())
             {
               FilterDesc localFilterDesc = (FilterDesc)localIterator.next();
-              if ((localFilterDesc.e != null) && (localFilterDesc.e.equals(paramString2.e)))
+              if ((localFilterDesc.jdField_e_of_type_JavaLangString != null) && (localFilterDesc.jdField_e_of_type_JavaLangString.equals(paramString2.jdField_e_of_type_JavaLangString)))
               {
-                UITools.a("VideoFilterTools", "compareContent res:" + localFilterDesc.e + "|" + localFilterDesc.jdField_b_of_type_JavaLangString + "|" + paramString2.jdField_b_of_type_JavaLangString);
+                UITools.a("VideoFilterTools", "compareContent res:" + localFilterDesc.jdField_e_of_type_JavaLangString + "|" + localFilterDesc.jdField_b_of_type_JavaLangString + "|" + paramString2.jdField_b_of_type_JavaLangString);
                 if ((!TextUtils.isEmpty(localFilterDesc.jdField_b_of_type_JavaLangString)) && (!localFilterDesc.jdField_b_of_type_JavaLangString.equals(paramString2.jdField_b_of_type_JavaLangString)))
                 {
                   UITools.a("VideoFilterTools", "compareContentDelete res:" + paramString2.b(CaptureVideoFilterManager.jdField_b_of_type_JavaLangString));
                   FileUtils.a(paramString2.b(CaptureVideoFilterManager.jdField_b_of_type_JavaLangString));
                 }
-                UITools.a("VideoFilterTools", "compareContent iconMD5:" + localFilterDesc.e + "|" + localFilterDesc.jdField_d_of_type_JavaLangString + "|" + paramString2.jdField_d_of_type_JavaLangString);
+                UITools.a("VideoFilterTools", "compareContent iconMD5:" + localFilterDesc.jdField_e_of_type_JavaLangString + "|" + localFilterDesc.jdField_d_of_type_JavaLangString + "|" + paramString2.jdField_d_of_type_JavaLangString);
                 if ((!TextUtils.isEmpty(localFilterDesc.jdField_d_of_type_JavaLangString)) && (!localFilterDesc.jdField_d_of_type_JavaLangString.equals(paramString2.jdField_d_of_type_JavaLangString)))
                 {
                   UITools.a("VideoFilterTools", "compareContentDelete iconMD5:" + paramString2.a(CaptureVideoFilterManager.jdField_b_of_type_JavaLangString));
@@ -446,11 +472,29 @@ public class VideoFilterTools
     }
   }
   
-  private static boolean b(Context paramContext)
+  private static void b(Context paramContext)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt("dov_video_filter_first_change_path", 1);
+    paramContext.commit();
+  }
+  
+  private static boolean c(Context paramContext)
   {
     boolean bool = false;
     int i = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("dov_video_filter_config_first_launch", 0);
     UITools.a("VideoFilterTools", "getIsFirstLauncher:" + i);
+    if (i == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private static boolean d(Context paramContext)
+  {
+    boolean bool = false;
+    int i = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("dov_video_filter_first_change_path", 0);
+    UITools.a("VideoFilterTools", "getIsfisrtChangePath:" + i);
     if (i == 0) {
       bool = true;
     }
@@ -475,7 +519,7 @@ public class VideoFilterTools
   
   public Bitmap a()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
       Bitmap localBitmap = null;
       if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager != null) {
@@ -496,6 +540,11 @@ public class VideoFilterTools
   public QIMFilterCategoryItem a(int paramInt)
   {
     return this.jdField_a_of_type_ArrayOfDovComQqImCaptureDataQIMFilterCategoryItem[paramInt];
+  }
+  
+  public TransitionCategoryItem a()
+  {
+    return this.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem;
   }
   
   public EditVideoPartManager a()
@@ -562,11 +611,18 @@ public class VideoFilterTools
   
   public void a(Context paramContext, VideoFilterTools.OnResourceDownloadListener paramOnResourceDownloadListener)
   {
-    if (b(BaseApplicationImpl.getContext()))
+    if (c(BaseApplicationImpl.getContext()))
     {
       a(BaseApplicationImpl.getContext());
       if (new File(CaptureVideoFilterManager.jdField_b_of_type_JavaLangString).exists()) {
         FileUtils.a(CaptureVideoFilterManager.jdField_b_of_type_JavaLangString);
+      }
+    }
+    if (d(BaseApplicationImpl.getContext()))
+    {
+      b(BaseApplicationImpl.getContext());
+      if (new File(jdField_d_of_type_JavaLangString).exists()) {
+        FileUtils.a(jdField_d_of_type_JavaLangString);
       }
     }
     for (;;)
@@ -574,14 +630,12 @@ public class VideoFilterTools
       try
       {
         paramContext = (CaptureComboManager)QIMManager.a(5);
-        VideoFilterTools.ComboFilterData localComboFilterData = paramContext.a;
-        if (localComboFilterData != null)
+        if (paramContext.a != null)
         {
           UITools.a("VideoFilterTools", "already inited");
           if (paramOnResourceDownloadListener != null) {
-            paramOnResourceDownloadListener.i(false);
+            paramOnResourceDownloadListener.j(false);
           }
-          localComboFilterData.a();
           return;
         }
         UITools.a("VideoFilterTools", "initCaptureComboManager");
@@ -596,7 +650,7 @@ public class VideoFilterTools
         {
           paramContext = paramContext.a;
           if (paramOnResourceDownloadListener != null) {
-            paramOnResourceDownloadListener.i(false);
+            paramOnResourceDownloadListener.j(false);
           }
           UITools.a("VideoFilterTools", "filter list size:" + paramContext.size());
           return;
@@ -629,6 +683,28 @@ public class VideoFilterTools
     {
       while (!QLog.isColorLevel()) {}
       QLog.e("VideoFilterTools", 2, new Object[] { "setRawBitmap error!", paramBitmap.toString() });
+    }
+  }
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry)
+  {
+    QLog.w("VideoFilterTools", 2, "saveRenderManagerData begin");
+    if (paramPublishVideoEntry != null)
+    {
+      Object localObject = QQFilterRenderManagerHolder.a(QQFilterRenderManagerHolder.jdField_c_of_type_Int);
+      if (localObject != null)
+      {
+        List localList = ((QQFilterRenderManager)localObject).a();
+        if ((localList != null) && (localList.size() > 0))
+        {
+          paramPublishVideoEntry.putExtra("hasAVFilter", Boolean.valueOf(true));
+          paramPublishVideoEntry.putExtra("jsonAVFilterData", a(localList));
+          localObject = ((QQFilterRenderManager)localObject).a();
+          if (localObject != null) {
+            paramPublishVideoEntry.putExtra("jsonMusicData", ((MusicItemInfo)localObject).a());
+          }
+        }
+      }
     }
   }
   
@@ -693,7 +769,7 @@ public class VideoFilterTools
         QLog.i("QCombo", 2, "setSelectedCombo last:" + localQIMFilterCategoryItem + " new:" + paramActivity + ", " + paramInt);
       }
       this.jdField_a_of_type_ArrayOfDovComQqImCaptureDataQIMFilterCategoryItem[paramInt] = paramActivity;
-      if ((paramActivity == null) || (paramActivity.b())) {
+      if ((paramActivity == null) || (paramActivity.c())) {
         break;
       }
       a(3, paramActivity.jdField_a_of_type_Int, paramActivity.jdField_a_of_type_JavaLangString);
@@ -706,6 +782,11 @@ public class VideoFilterTools
     }
   }
   
+  public void a(TransitionCategoryItem paramTransitionCategoryItem)
+  {
+    this.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem = paramTransitionCategoryItem;
+  }
+  
   public void a(EditVideoPartManager paramEditVideoPartManager)
   {
     if (paramEditVideoPartManager == null) {}
@@ -714,58 +795,39 @@ public class VideoFilterTools
   
   void a(CopyOnWriteArrayList paramCopyOnWriteArrayList)
   {
-    if ((paramCopyOnWriteArrayList == null) || (paramCopyOnWriteArrayList.size() == 0))
-    {
+    if ((paramCopyOnWriteArrayList == null) || (paramCopyOnWriteArrayList.size() == 0)) {
       UITools.a("VideoFilterTools", "preDownloadResource list is empty!");
+    }
+    ArrayList localArrayList;
+    do
+    {
       return;
-    }
-    HashMap localHashMap;
-    while (!paramCopyOnWriteArrayList.hasNext())
-    {
-      long l = System.currentTimeMillis();
-      if (l - this.jdField_a_of_type_Long < 30000L)
-      {
-        UITools.a("VideoFilterTools", "preDownloadResource check too frequently. return!");
-        return;
-      }
-      this.jdField_a_of_type_Long = l;
-      UITools.a("VideoFilterTools", "preDownloadResource list size: " + paramCopyOnWriteArrayList.size());
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-      localHashMap = new HashMap(30);
+      UITools.a("VideoFilterTools", " preDownloadResource Categorylist size: " + paramCopyOnWriteArrayList.size());
+      localArrayList = new ArrayList();
       paramCopyOnWriteArrayList = paramCopyOnWriteArrayList.iterator();
-    }
-    Iterator localIterator1 = ((FilterCategory)paramCopyOnWriteArrayList.next()).jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator1.hasNext())
-    {
-      Iterator localIterator2 = ((QIMFilterCategoryItem)localIterator1.next()).jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator2.hasNext())
+      while (paramCopyOnWriteArrayList.hasNext())
       {
-        Object localObject = (String)localIterator2.next();
-        FilterDesc localFilterDesc = a((String)localObject);
-        if ((localFilterDesc != null) && (localFilterDesc.jdField_d_of_type_Int == 1) && (!localHashMap.containsKey(localObject)))
+        Object localObject = (FilterCategory)paramCopyOnWriteArrayList.next();
+        if (!((FilterCategory)localObject).jdField_a_of_type_Boolean)
         {
-          localHashMap.put(localObject, Boolean.valueOf(true));
-          localObject = localFilterDesc.b(CaptureVideoFilterManager.jdField_b_of_type_JavaLangString);
-          if ((!TextUtils.isEmpty(localFilterDesc.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+          localObject = ((FilterCategory)localObject).jdField_a_of_type_JavaUtilList.iterator();
+          while (((Iterator)localObject).hasNext())
           {
-            UITools.a("VideoFilterTools", "preDownloadResource predownload: " + localFilterDesc.jdField_d_of_type_Int + ", iconurl: " + localFilterDesc.jdField_c_of_type_JavaLangString + ", resurl:" + localFilterDesc.jdField_a_of_type_JavaLangString);
-            File localFile = new File((String)localObject + "params.json");
-            UITools.a("VideoFilterTools", "preDownloadResource " + (String)localObject + "params.json" + " exist: " + localFile.exists());
-            if (!localFile.exists())
+            Iterator localIterator = ((QIMFilterCategoryItem)((Iterator)localObject).next()).jdField_a_of_type_JavaUtilArrayList.iterator();
+            while (localIterator.hasNext())
             {
-              localObject = new HttpNetReq();
-              ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aogt(this);
-              ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = localFilterDesc.jdField_a_of_type_JavaLangString;
-              ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
-              ((HttpNetReq)localObject).jdField_c_of_type_JavaLangString = (CaptureVideoFilterManager.jdField_b_of_type_JavaLangString + localFilterDesc.e + ".zip");
-              ((HttpNetReq)localObject).a(localFilterDesc);
-              AVNetEngine.a().a((NetReq)localObject);
-              this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+              FilterDesc localFilterDesc = a((String)localIterator.next());
+              if ((localFilterDesc != null) && (localFilterDesc.jdField_d_of_type_Int == 1) && (!TextUtils.isEmpty(localFilterDesc.jdField_a_of_type_JavaLangString)) && (VideoFilterListDownloader.a(localFilterDesc)))
+              {
+                localArrayList.add(localFilterDesc);
+                UITools.a("VideoFilterTools", "VideoFilterListDownloader needDownLoad: " + localFilterDesc.jdField_e_of_type_JavaLangString);
+              }
             }
           }
         }
       }
-    }
+    } while (localArrayList.size() <= 0);
+    VideoFilterListDownloader.a().a(localArrayList, this.jdField_a_of_type_Aopn);
   }
   
   public void a(boolean paramBoolean)
@@ -894,144 +956,35 @@ public class VideoFilterTools
   
   public boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMRedDotConfig_Filter", 2, "updateRedDotConfigFromServer content " + paramString);
-    }
-    label959:
+    boolean bool1 = false;
     for (;;)
     {
       try
       {
-        VideoFilterTools.ComboFilterData localComboFilterData = new VideoFilterTools.ComboFilterData(paramString);
-        CaptureComboManager localCaptureComboManager = (CaptureComboManager)QIMManager.a(5);
-        int i;
-        if (!localComboFilterData.a.isEmpty()) {
-          synchronized (jdField_a_of_type_JavaLangObject)
-          {
-            try
-            {
-              paramString = new JSONObject(paramString);
-              if (this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig == null)
-              {
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig = new QIMRedDotConfig(1);
-                if (QLog.isColorLevel()) {
-                  QLog.d("QIMRedDotConfig_Filter", 2, "updateFromServer config is null");
-                }
-              }
-              i = paramString.optInt("iconRedDotVersion");
-              boolean bool = paramString.optBoolean("needRedDot");
-              if (QLog.isColorLevel()) {
-                QLog.d("QIMRedDotConfig_Filter", 2, "updateFromServer oldVer=" + this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.iconVersion + ",ver=" + i + ",showRed " + bool);
-              }
-              if (this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.iconVersion != i)
-              {
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.iconVersion = i;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.showRedDot = bool;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.hasShow = false;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.firstShowTime = 0L;
-              }
-              i = paramString.optInt("combo_iconRedDotVersion");
-              bool = paramString.optBoolean("combo_needRedDot");
-              if (QLog.isColorLevel()) {
-                QLog.d("QIMRedDotConfig_Filter", 2, "updateFromServer combo oldVer=" + this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboIconVersion + ",ver=" + i + ",showRed " + bool);
-              }
-              if (this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboIconVersion != i)
-              {
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboIconVersion = i;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboShowRedDot = bool;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboHasShow = false;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboFirstShowTime = 0L;
-              }
-              i = paramString.optInt("combo_defaultCategoryVersion");
-              int j = paramString.optInt("combo_defaultCategoryId", -1);
-              if (QLog.isColorLevel()) {
-                QLog.d("QIMRedDotConfig_Filter", 2, "updateFromServer oldVer=" + this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboDefaultCategoryVer + ",ver=" + i + ",comboDefaultCategoryId " + j);
-              }
-              if (this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboDefaultCategoryVer != i)
-              {
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboDefaultCategoryVer = i;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboDefaultCategoryId = j;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.comboHasChoose = false;
-              }
-              i = paramString.optInt("defaultCategoryVersion");
-              j = paramString.optInt("defaultCategoryId", -1);
-              if (QLog.isColorLevel()) {
-                QLog.d("QIMRedDotConfig_Filter", 2, "updateFromServer oldVer=" + this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.defaultCategoryVer + ",ver=" + i + ",defaultCategoryId " + j);
-              }
-              if (this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.defaultCategoryVer != i)
-              {
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.defaultCategoryVer = i;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.defaultCategoryId = j;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.hasChoose = false;
-              }
-              i = paramString.optInt("defaultUseVersion");
-              Object localObject2 = paramString.optString("defaultUseId");
-              if (QLog.isColorLevel()) {
-                QLog.d("QIMRedDotConfig_Filter", 2, "updateFromServer oldVer=" + this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.defaultUseVer + ",ver=" + i + ",defaultUseId " + (String)localObject2);
-              }
-              if (this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.defaultUseVer != i)
-              {
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.defaultUseVer = i;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.defaultUseId = ((String)localObject2);
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.hasUse = false;
-              }
-              i = paramString.optInt("itemRedDotVersion");
-              if (this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.redDotVersion != i)
-              {
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.redDotVersion = i;
-                this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.redDotItems.clear();
-                if (paramString.has("itemNeedRedDot"))
-                {
-                  paramString = paramString.getJSONArray("itemNeedRedDot");
-                  localObject2 = new StringBuilder();
-                  ((StringBuilder)localObject2).append("updateFromServer redDotList: ");
-                  i = 0;
-                  if (i < paramString.length())
-                  {
-                    String str = paramString.optString(i);
-                    if (TextUtils.isEmpty(str)) {
-                      break label959;
-                    }
-                    QIMRedDotConfig.RedDotItemConfig localRedDotItemConfig = new QIMRedDotConfig.RedDotItemConfig();
-                    localRedDotItemConfig.filterId = str;
-                    ((StringBuilder)localObject2).append(str).append(",");
-                    this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig.redDotItems.put(str, localRedDotItemConfig);
-                    break label959;
-                  }
-                  if (QLog.isColorLevel()) {
-                    QLog.d("QIMRedDotConfig_Filter", 2, ((StringBuilder)localObject2).toString());
-                  }
-                }
-              }
-              this.jdField_a_of_type_Boolean = true;
-              a(false);
-              localCaptureComboManager.a().a(localComboFilterData);
-              localComboFilterData.b();
-              localCaptureComboManager.a(localComboFilterData);
-            }
-            catch (JSONException paramString)
-            {
-              paramString.printStackTrace();
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("QCombo", 2, "updateComboConfig accept");
-            }
-            return true;
-          }
+        if (TextUtils.isEmpty(paramString)) {
+          break label70;
         }
-        i += 1;
+        paramString = new VideoFilterTools.ComboFilterData(paramString, true);
+        ((CaptureComboManager)QIMManager.a(5)).a(paramString);
+        boolean bool2 = paramString.a.isEmpty();
+        if (bool2) {
+          continue;
+        }
+        bool1 = true;
       }
       catch (Exception paramString)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QIMRedDotConfig_Filter", 2, "updateRedDotConfigFromServer null", paramString);
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("QCombo", 2, "updateComboConfig refuse");
-        }
+        QLog.i("VideoFilterTools", 2, "initFromCache", paramString);
         return false;
       }
+      return bool1;
+      bool1 = false;
+      continue;
+      label70:
+      bool1 = false;
     }
   }
   
@@ -1082,8 +1035,21 @@ public class VideoFilterTools
         QLog.i("QCombo", 2, "setSelectedFilter last:" + paramActivity + " new:" + paramQIMFilterCategoryItem);
       }
       this.jdField_b_of_type_ArrayOfDovComQqImCaptureDataQIMFilterCategoryItem[paramInt] = paramQIMFilterCategoryItem;
-    } while ((paramQIMFilterCategoryItem == null) || (paramQIMFilterCategoryItem.b()));
+    } while ((paramQIMFilterCategoryItem == null) || (paramQIMFilterCategoryItem.c()));
     a(3, paramQIMFilterCategoryItem.jdField_a_of_type_Int, paramQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean b(Context paramContext)
+  {
+    boolean bool2 = a(a(paramContext));
+    QLog.i("VideoFilterTools", 2, "ReloadContext FromCache " + bool2);
+    boolean bool1 = bool2;
+    if (!bool2)
+    {
+      bool1 = a(QIMFileUtils.a("filter_template.cfg"));
+      QLog.i("VideoFilterTools", 2, "ReloadContext  FromAssets" + bool1);
+    }
+    return bool1;
   }
   
   public int c()

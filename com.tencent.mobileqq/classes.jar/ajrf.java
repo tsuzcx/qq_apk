@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener;
 
-class ajrf
-  implements Runnable
+public class ajrf
+  implements View.OnClickListener
 {
-  ajrf(ajre paramajre, TroopTopicDetailInfo paramTroopTopicDetailInfo) {}
+  public int a;
+  public TextView a;
   
-  public void run()
+  private ajrf(SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter paramFlowLayoutKeywordsListAdapter) {}
+  
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Ajre.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
-    this.jdField_a_of_type_Ajre.a.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    }
   }
 }
 

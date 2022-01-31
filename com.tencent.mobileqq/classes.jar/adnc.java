@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
 
 class adnc
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  adnc(adna paramadna) {}
+  adnc(adnb paramadnb) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.j();
+    this.a.a.ag_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adnc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import android.content.Context;
+import com.tencent.mobileqq.vas.URLInterceptManager;
 
 public class akpk
   implements Runnable
 {
-  public akpk(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
+  public akpk(URLInterceptManager paramURLInterceptManager, Context paramContext) {}
   
   public void run()
   {
-    this.a.g();
+    this.jdField_a_of_type_ComTencentMobileqqVasURLInterceptManager.a(this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

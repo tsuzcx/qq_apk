@@ -1,31 +1,39 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.armap.config.ShopScanCheckHandler.Info;
+import com.tencent.mobileqq.armap.config.ShopScanCheckHandler.OnResCheckResultListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
 
-public class abgx
-  extends ArMapObserver
+class abgx
+  implements ShopScanCheckHandler.OnResCheckResultListener
 {
-  public abgx(ARMapPOIStarDialog paramARMapPOIStarDialog) {}
+  abgx(abgs paramabgs) {}
   
-  public void onOpenPOI(boolean paramBoolean1, int paramInt1, ItemInfo paramItemInfo, boolean paramBoolean2, int paramInt2, int paramInt3, boolean paramBoolean3)
+  public void a(boolean paramBoolean, ShopScanCheckHandler.Info paramInfo, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ARMapPOIStarDialog", 2, "onOpenPOI : isSuc:" + paramBoolean1 + " itemInfo:" + paramItemInfo + "\nholder:" + paramBoolean2 + "\nbussiType:" + paramInt2 + "\bmode:" + paramInt3 + ", isServerSuccess:" + paramBoolean3);
+      QLog.d("ARMapActivity", 2, new Object[] { "onClickPoi, success = ", Boolean.valueOf(paramBoolean), ", taskType: ", Integer.valueOf(this.a.jdField_a_of_type_Int), ", taskId: ", Long.valueOf(this.a.jdField_a_of_type_Long), ", poiId: ", Long.valueOf(this.a.b), ", info = ", paramInfo });
     }
-    ThreadManager.getUIHandler().post(new abgy(this, paramItemInfo, paramInt1));
-  }
-  
-  public void onQueryPOI(boolean paramBoolean, POIInfo paramPOIInfo, List paramList, int paramInt1, int paramInt2, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapPOIStarDialog", 2, "onQueryPOI : isSuc:" + paramBoolean + " poiInfo:[" + paramPOIInfo + "] itemInfos:" + paramList + " taskStatus:" + paramInt1 + " loadMapFlag:" + paramInt2);
+    this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a.obtainMessage(9).sendToTarget();
+    if (paramBoolean)
+    {
+      Intent localIntent = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, ShopScanActivity.class);
+      localIntent.putExtra("taskType", paramInfo.jdField_a_of_type_Int);
+      localIntent.putExtra("taskId", paramInfo.b);
+      localIntent.putExtra("poiId", paramInfo.jdField_a_of_type_Long);
+      localIntent.putExtra("tips", paramInfo.i);
+      localIntent.putExtra("logoUrl", paramInfo.f);
+      localIntent.putExtra("imageUrl", paramInfo.c);
+      localIntent.putExtra("logoPath", paramInfo.h);
+      localIntent.putExtra("imagePath", paramInfo.e);
+      localIntent.putExtra("shopName", paramInfo.j);
+      localIntent.putExtra("shopLocation", paramInfo.k);
+      localIntent.putExtra("xmlContent", paramInfo.l);
+      this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.startActivityForResult(localIntent, 106);
     }
-    ThreadManager.getUIHandler().post(new abgz(this, paramPOIInfo, paramList, paramInt1));
   }
 }
 

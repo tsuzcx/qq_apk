@@ -1,29 +1,54 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.GamePartyPlugin;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
+import tencent.im.group.nearbybanner.nearbybanner.Banners;
+import tencent.im.group.nearbybanner.nearbybanner.RspBody;
 
-public class pba
-  extends Client.onRemoteRespObserver
+class pba
+  implements BusinessObserver
 {
-  public pba(GamePartyPlugin paramGamePartyPlugin) {}
+  pba(paz parampaz, Bundle paramBundle) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey") == GamePartyPlugin.a(this.a).key) && ("batchGetUserInfo".equals(paramBundle.getString("cmd"))))
+    this.jdField_a_of_type_AndroidOsBundle.remove("data");
+    if (!paramBoolean)
     {
-      String str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response").getString("result");
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle))) {
-        this.a.callJs(str, new String[] { paramBundle });
+      this.jdField_a_of_type_Paz.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    paramBundle = paramBundle.getByteArray("data");
+    nearbybanner.RspBody localRspBody = new nearbybanner.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramBundle);
+      if ((localRspBody.uint32_result.get() != 0) && (!localRspBody.msg_banners.has()))
+      {
+        this.jdField_a_of_type_Paz.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        return;
       }
     }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      this.jdField_a_of_type_Paz.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
+      if (!paramBundle.rpt_banner_info.has())
+      {
+        this.jdField_a_of_type_Paz.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        return;
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      this.jdField_a_of_type_Paz.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
+    this.jdField_a_of_type_Paz.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

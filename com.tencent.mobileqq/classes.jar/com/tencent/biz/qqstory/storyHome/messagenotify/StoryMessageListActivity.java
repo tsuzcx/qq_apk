@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.storyHome.messagenotify;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -63,16 +64,16 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import nxu;
-import nxv;
-import nxw;
-import nxz;
-import nya;
-import nyb;
-import nyc;
-import nyd;
-import nyf;
-import nyg;
+import ocj;
+import ock;
+import ocl;
+import oco;
+import ocp;
+import ocq;
+import ocr;
+import ocs;
+import ocu;
+import ocv;
 
 public class StoryMessageListActivity
   extends QQStoryBaseActivity
@@ -107,9 +108,18 @@ public class StoryMessageListActivity
     this.jdField_a_of_type_Long = -1L;
     this.jdField_c_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new nxu(this);
-    this.jdField_b_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new nxv(this);
-    this.jdField_c_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new nxw(this);
+    this.jdField_a_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new ocj(this);
+    this.jdField_b_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new ock(this);
+    this.jdField_c_of_type_ComTencentBizProtoUtils$StoryProtocolObserver = new ocl(this);
+  }
+  
+  @NonNull
+  public static Intent a(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext = new Intent(paramContext, StoryMessageListActivity.class);
+    paramContext.putExtra("qqstory_message_list_source", paramInt);
+    paramContext.putExtra("qqstory_jump_source", paramString);
+    return paramContext;
   }
   
   protected CharSequence a(MessageData paramMessageData)
@@ -126,7 +136,7 @@ public class StoryMessageListActivity
       localObject = new SpannableStringBuilder("回复");
       int i = ((SpannableStringBuilder)localObject).length();
       ((SpannableStringBuilder)localObject).append(PlayModeUtils.a(paramMessageData.jdField_d_of_type_JavaLangString));
-      ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(this.app.getApp().getResources().getColor(2131494214)), i, ((SpannableStringBuilder)localObject).length(), 33);
+      ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(this.app.getApp().getResources().getColor(2131494220)), i, ((SpannableStringBuilder)localObject).length(), 33);
       ((SpannableStringBuilder)localObject).append(':').append(paramMessageData.jdField_e_of_type_JavaLangString);
     }
   }
@@ -184,8 +194,8 @@ public class StoryMessageListActivity
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity$StoryMessageListAdapter.notifyDataSetChanged();
     } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity$StoryMessageListAdapter.getCount() != 0);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434680);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130839525, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434696);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130839540, 0, 0);
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -505,8 +515,8 @@ public class StoryMessageListActivity
         break;
       }
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434680);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130839525, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434696);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130839540, 0, 0);
       this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -535,8 +545,8 @@ public class StoryMessageListActivity
   protected void a(@NonNull Map paramMap)
   {
     super.a(paramMap);
-    paramMap.put(new nyg(this), "");
-    paramMap.put(new nyf(this), "");
+    paramMap.put(new ocv(this), "");
+    paramMap.put(new ocu(this), "");
   }
   
   public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -550,9 +560,9 @@ public class StoryMessageListActivity
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = new QQCustomMenu();
-        this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131375620, "删除");
+        this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131375686, "删除");
       }
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu, new nyb(this, paramInt), new nyc(this, paramView));
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu, new ocq(this, paramInt), new ocr(this, paramView));
       return true;
     }
     return false;
@@ -563,7 +573,7 @@ public class StoryMessageListActivity
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder("发起了投票：");
     int i = localSpannableStringBuilder.length();
     localSpannableStringBuilder.append(paramMessageData.n);
-    localSpannableStringBuilder.setSpan(new ForegroundColorSpan(this.app.getApp().getResources().getColor(2131494214)), i, localSpannableStringBuilder.length(), 33);
+    localSpannableStringBuilder.setSpan(new ForegroundColorSpan(this.app.getApp().getResources().getColor(2131494220)), i, localSpannableStringBuilder.length(), 33);
     SLog.b("Q.qqstory.msgList", "get vote publish string : %s, voteQuestion : %s.", localSpannableStringBuilder, paramMessageData.n);
     paramMessageData = localSpannableStringBuilder;
     if (com.tencent.mobileqq.text.TextUtils.a(localSpannableStringBuilder.toString())) {
@@ -582,7 +592,7 @@ public class StoryMessageListActivity
     {
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setText("加载失败，点击重试");
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130843566, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130843599, 0, 0);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -699,8 +709,8 @@ public class StoryMessageListActivity
     this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity$StoryMessageListAdapter.notifyDataSetChanged();
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434680);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130839525, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434696);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130839540, 0, 0);
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -710,18 +720,18 @@ public class StoryMessageListActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970777);
-    super.findViewById(2131362841).setBackgroundColor(getResources().getColor(2131494255));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131371901);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131371902);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370558));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)super.findViewById(2131364184));
+    super.setContentView(2130970793);
+    super.findViewById(2131362846).setBackgroundColor(getResources().getColor(2131494261));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131371900);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131371901);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370567));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)super.findViewById(2131364209));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity$StoryMessageListAdapter = new StoryMessageListActivity.StoryMessageListAdapter(this);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity$StoryMessageListAdapter);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnItemLongClickListener(this);
-    setRightButton(2131433257, this);
+    setRightButton(2131433271, this);
     setRightViewTextDisable(0);
     paramBundle = getAppInterface();
     int i;
@@ -736,13 +746,13 @@ public class StoryMessageListActivity
       label174:
       this.jdField_c_of_type_Int = i;
       if (paramBundle != null) {
-        break label253;
+        break label252;
       }
       paramBundle = "0";
       label187:
       this.jdField_a_of_type_JavaLangString = paramBundle;
       if (this.jdField_c_of_type_Int != 2) {
-        break label264;
+        break label262;
       }
       super.setTitle("互动通知");
     }
@@ -758,10 +768,10 @@ public class StoryMessageListActivity
       label241:
       i = paramBundle.getIntExtra("qqstory_message_list_source", 0);
       break label174;
-      label253:
+      label252:
       paramBundle = paramBundle.getStringExtra("qqstory_jump_source");
       break label187;
-      label264:
+      label262:
       super.setTitle("消息");
     }
   }
@@ -790,21 +800,21 @@ public class StoryMessageListActivity
         localObject = paramMessageData.q;
       }
     }
-    SpannableStringUtils.a((SpannableStringBuilder)localObject, 0, i, 2130841963, 50, 22, 1);
+    SpannableStringUtils.a((SpannableStringBuilder)localObject, 0, i, 2130841994, 50, 22, 1);
     return localObject;
-    SpannableStringUtils.a((SpannableStringBuilder)localObject, 0, i, 2130841965, 50, 22, 1);
+    SpannableStringUtils.a((SpannableStringBuilder)localObject, 0, i, 2130841996, 50, 22, 1);
     return localObject;
-    SpannableStringUtils.a((SpannableStringBuilder)localObject, 0, i, 2130841964, 50, 22, 1);
+    SpannableStringUtils.a((SpannableStringBuilder)localObject, 0, i, 2130841995, 50, 22, 1);
     return localObject;
-    SpannableStringUtils.a((SpannableStringBuilder)localObject, 0, i, 2130841962, 50, 22, 1);
+    SpannableStringUtils.a((SpannableStringBuilder)localObject, 0, i, 2130841993, 50, 22, 1);
     return localObject;
-    SpannableStringUtils.a((SpannableStringBuilder)localObject, 0, i, 2130841961, 50, 22, 1);
+    SpannableStringUtils.a((SpannableStringBuilder)localObject, 0, i, 2130841992, 50, 22, 1);
     return localObject;
   }
   
   public void e()
   {
-    runOnUiThread(new nyd(this));
+    runOnUiThread(new ocs(this));
   }
   
   public void finish()
@@ -818,7 +828,7 @@ public class StoryMessageListActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131370558: 
+    case 2131370567: 
       do
       {
         return;
@@ -836,7 +846,7 @@ public class StoryMessageListActivity
     if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setMessage("确定要清空所有消息记录？").setNegativeButton(2131433015, new nya(this)).setPositiveButton(2131433257, new nxz(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setMessage("确定要清空所有消息记录？").setNegativeButton(2131433029, new ocp(this)).setPositiveButton(2131433271, new oco(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
     StoryReportor.a(a(), "exp_sure", 0, 0, new String[] { "", "", "", "" });

@@ -1,31 +1,10 @@
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class toh
-  implements Runnable
 {
-  public toh(RecentLoginDevActivity paramRecentLoginDevActivity) {}
-  
-  public void run()
-  {
-    try
-    {
-      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
-      {
-        RecentLoginDevActivity.a(this.a).dismiss();
-        RecentLoginDevActivity.a(this.a).cancel();
-      }
-      RecentLoginDevActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
 }
 
 

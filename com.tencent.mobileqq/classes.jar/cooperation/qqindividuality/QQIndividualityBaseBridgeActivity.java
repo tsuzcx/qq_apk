@@ -1,6 +1,6 @@
 package cooperation.qqindividuality;
 
-import ampw;
+import amxh;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
@@ -63,7 +63,7 @@ public abstract class QQIndividualityBaseBridgeActivity
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
     this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(26));
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new ampw(this), 300L);
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new amxh(this), 300L);
     return true;
   }
   

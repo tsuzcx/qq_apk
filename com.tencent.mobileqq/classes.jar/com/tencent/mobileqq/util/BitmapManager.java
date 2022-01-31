@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import ajzh;
+import akgv;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -69,7 +69,7 @@ public class BitmapManager
       {
         localBitmapDecodeResult.jdField_a_of_type_Int = 0;
         paramResources = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-        localObject = new ajzh(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
+        localObject = new akgv(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
         jdField_a_of_type_JavaUtilMap.put(paramResources, localObject);
       }
       return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
@@ -89,8 +89,8 @@ public class BitmapManager
     if (paramResources != null)
     {
       localObject = String.valueOf(paramResources.hashCode());
-      ajzh localajzh = new ajzh((String)localObject, paramResources, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localajzh);
+      akgv localakgv = new akgv((String)localObject, paramResources, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(localObject, localakgv);
     }
     return paramResources;
   }
@@ -112,8 +112,8 @@ public class BitmapManager
     if (paramString != null)
     {
       localObject = String.valueOf(paramString.hashCode());
-      ajzh localajzh = new ajzh((String)localObject, paramString, jdField_a_of_type_JavaLangRefReferenceQueue);
-      jdField_a_of_type_JavaUtilMap.put(localObject, localajzh);
+      akgv localakgv = new akgv((String)localObject, paramString, jdField_a_of_type_JavaLangRefReferenceQueue);
+      jdField_a_of_type_JavaUtilMap.put(localObject, localakgv);
     }
     return paramString;
   }
@@ -156,7 +156,7 @@ public class BitmapManager
       {
         localBitmapDecodeResult.jdField_a_of_type_Int = 0;
         paramArrayOfByte = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-        localObject = new ajzh(paramArrayOfByte, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
+        localObject = new akgv(paramArrayOfByte, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
         jdField_a_of_type_JavaUtilMap.put(paramArrayOfByte, localObject);
       }
       return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
@@ -206,11 +206,11 @@ public class BitmapManager
   {
     for (;;)
     {
-      ajzh localajzh = (ajzh)jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-      if (localajzh == null) {
+      akgv localakgv = (akgv)jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+      if (localakgv == null) {
         break;
       }
-      jdField_a_of_type_JavaUtilMap.remove(ajzh.a(localajzh));
+      jdField_a_of_type_JavaUtilMap.remove(akgv.a(localakgv));
     }
   }
   
@@ -355,13 +355,13 @@ public class BitmapManager
     //   275: aload_2
     //   276: iconst_0
     //   277: putfield 106	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_Int	I
-    //   280: new 116	ajzh
+    //   280: new 116	akgv
     //   283: dup
     //   284: aload_0
     //   285: aload_2
     //   286: getfield 104	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   289: getstatic 27	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaLangRefReferenceQueue	Ljava/lang/ref/ReferenceQueue;
-    //   292: invokespecial 119	ajzh:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    //   292: invokespecial 119	akgv:<init>	(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
     //   295: astore_1
     //   296: getstatic 22	com/tencent/mobileqq/util/BitmapManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   299: aload_0
@@ -552,8 +552,8 @@ public class BitmapManager
       {
         localBitmapDecodeResult.jdField_a_of_type_Int = 0;
         paramResources = String.valueOf(localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap.hashCode());
-        ajzh localajzh = new ajzh(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
-        jdField_a_of_type_JavaUtilMap.put(paramResources, localajzh);
+        akgv localakgv = new akgv(paramResources, localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap, jdField_a_of_type_JavaLangRefReferenceQueue);
+        jdField_a_of_type_JavaUtilMap.put(paramResources, localakgv);
       }
       return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
     }

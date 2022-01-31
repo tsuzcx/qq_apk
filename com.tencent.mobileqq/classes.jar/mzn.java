@@ -1,18 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient.Observer;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
+import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
 
 public class mzn
-  extends SimpleJob
+  implements QQProgressDialog.Callback
 {
-  public mzn(QQStoryManager paramQQStoryManager, boolean paramBoolean) {}
+  public mzn(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, VideoFeedsIPCClient.Observer paramObserver) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b(this.jdField_a_of_type_Boolean);
-    return null;
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient$Observer);
   }
 }
 

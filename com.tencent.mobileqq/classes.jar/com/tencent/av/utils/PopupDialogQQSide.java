@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import kgk;
-import kgl;
-import kgm;
+import kiq;
+import kir;
+import kis;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
@@ -37,8 +37,8 @@ public class PopupDialogQQSide
     int j = ((Bundle)localObject).getInt("rightBtnText", 0);
     localObject = (ResultReceiver)((Bundle)localObject).getParcelable("resultReceiver");
     a();
-    localObject = new kgk(this, null);
-    kgl localkgl = new kgl(this, null);
+    localObject = new kiq(this, null);
+    kir localkir = new kir(this, null);
     int i = k;
     if (k == 0) {
       i = 2131428674;
@@ -52,8 +52,8 @@ public class PopupDialogQQSide
       localQQCustomDialog.setMessage(str2);
       localQQCustomDialog.setTitle(str1);
       localQQCustomDialog.setNegativeButton(i, (DialogInterface.OnClickListener)localObject);
-      localQQCustomDialog.setPositiveButton(j, localkgl);
-      localQQCustomDialog.setOnDismissListener(new kgm(this));
+      localQQCustomDialog.setPositiveButton(j, localkir);
+      localQQCustomDialog.setOnDismissListener(new kis(this));
       localQQCustomDialog.setCancelable(true);
       localQQCustomDialog.show();
       this.a = localQQCustomDialog;
@@ -80,7 +80,7 @@ public class PopupDialogQQSide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.PopupDialogQQSide
  * JD-Core Version:    0.7.0.1
  */

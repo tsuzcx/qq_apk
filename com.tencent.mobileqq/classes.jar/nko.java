@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob;
+import com.tencent.biz.qqstory.shareGroup.icon.RestrictedBitmap;
 
 public class nko
-  implements View.OnClickListener
+  implements Runnable
 {
-  public nko(NewFriendsPlayMode paramNewFriendsPlayMode) {}
+  public nko(ShareGroupAvatarSaveFileJob paramShareGroupAvatarSaveFileJob, RestrictedBitmap paramRestrictedBitmap) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader.c();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    ShareGroupAvatarSaveFileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobShareGroupAvatarSaveFileJob, ShareGroupAvatarSaveFileJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareJobShareGroupAvatarSaveFileJob, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconRestrictedBitmap));
   }
 }
 

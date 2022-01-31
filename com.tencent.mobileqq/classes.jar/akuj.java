@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.webview.swift.SwiftFloatViewUI;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class akuj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akuj(GridListView paramGridListView) {}
+  public akuj(SwiftFloatViewUI paramSwiftFloatViewUI) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = ((Integer)paramView.getTag(2131369178)).intValue();
-    this.a.a.a(this.a, paramView, i, 0L);
+    if ((this.a.a != null) && (this.a.a.a != null)) {
+      this.a.a.a.x();
+    }
   }
 }
 

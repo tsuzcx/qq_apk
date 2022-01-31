@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import afbw;
+import afgt;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
@@ -45,8 +45,8 @@ public class AnchorDisplayCtrl
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370821);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131370822));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370811);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131370812));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));
     this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardAnchorDisplayAdapter = new AnchorDisplayAdapter(paramBoolean, paramQQAppInterface);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardAnchorDisplayAdapter);
@@ -99,16 +99,16 @@ public class AnchorDisplayCtrl
   
   public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject = (afbw)paramView.getTag();
+    Object localObject = (afgt)paramView.getTag();
     if (localObject != null)
     {
-      paramView = ((afbw)localObject).jdField_a_of_type_TencentImOidbCmd0xac5Cmd0xac5$NowFollowAnchor;
+      paramView = ((afgt)localObject).jdField_a_of_type_TencentImOidbCmd0xac5Cmd0xac5$NowFollowAnchor;
       paramAdapterView = (NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(105);
     }
-    switch (((afbw)localObject).jdField_a_of_type_Int)
+    switch (((afgt)localObject).jdField_a_of_type_Int)
     {
     default: 
-      QLog.i("AnchorDisplayCtrl", 1, "unknowed jumpType = " + ((afbw)localObject).jdField_a_of_type_Int);
+      QLog.i("AnchorDisplayCtrl", 1, "unknowed jumpType = " + ((afgt)localObject).jdField_a_of_type_Int);
       return;
     case 1: 
       if (paramView != null)

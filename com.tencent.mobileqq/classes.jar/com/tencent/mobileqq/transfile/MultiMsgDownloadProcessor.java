@@ -724,7 +724,7 @@ public class MultiMsgDownloadProcessor
     }
   }
   
-  public void ap_()
+  public void ar_()
   {
     d(1000);
     d(2001);
@@ -810,7 +810,7 @@ public class MultiMsgDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.MultiMsgDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

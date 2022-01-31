@@ -1,18 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class rlm
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public rlm(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rlm(AccountManageActivity paramAccountManageActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Card localCard = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
-    this.a.a.sendMessage(this.a.a.obtainMessage(2, Boolean.valueOf(localCard.medalSwitchDisable)));
+    if (paramDialogInterface == this.a.c) {
+      this.a.c = null;
+    }
   }
 }
 

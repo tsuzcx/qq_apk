@@ -1,23 +1,15 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 
 public class uvv
-  extends BaseBubbleBuilder.ViewHolder
+  implements Runnable
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
+  public uvv(RecordSoundPanel paramRecordSoundPanel, String paramString) {}
   
-  public uvv(DeviceFileItemBuilder paramDeviceFileItemBuilder) {}
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.c();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
 }
 
 

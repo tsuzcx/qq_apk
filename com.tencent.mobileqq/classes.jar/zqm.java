@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.PrinterHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class zqm
-  implements Comparator
+  extends TimerTask
 {
-  public zqm(CleanCache paramCleanCache) {}
+  public zqm(PrinterHandler paramPrinterHandler, long paramLong, Timer paramTimer) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void run()
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(this.jdField_a_of_type_Long)))
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004021", "0X8004021", (int)this.jdField_a_of_type_Long, -1, "", "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a(Long.valueOf(this.jdField_a_of_type_Long), false);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("dataline.Printer", 4, "printID=" + this.jdField_a_of_type_Long + ", 超时到了");
+      }
     }
-    return 0;
+    this.jdField_a_of_type_JavaUtilTimer.cancel();
   }
 }
 

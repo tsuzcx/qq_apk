@@ -1,18 +1,14 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
 public class uvn
-  extends AbstractChatItemBuilder.ViewHolder
+  implements Runnable
 {
-  public long a;
-  public ConfessNewsBgView a;
-  public String a;
-  public View b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public uvn(PressToSpeakPanel paramPressToSpeakPanel) {}
+  
+  public void run()
+  {
+    this.a.c();
+  }
 }
 
 

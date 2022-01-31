@@ -11,7 +11,7 @@ import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import org.json.JSONObject;
-import xty;
+import yah;
 
 public class QzoneSyncQQStoryTool
 {
@@ -48,7 +48,7 @@ public class QzoneSyncQQStoryTool
     if ((paramActivity == null) || (paramView == null)) {
       return;
     }
-    new Handler().postDelayed(new xty(paramActivity, paramView), 500L);
+    new Handler().postDelayed(new yah(paramActivity, paramView), 500L);
     LocalConfig.a(paramLong).edit().putBoolean("isShowSyncQQStoryTip", true).apply();
   }
   

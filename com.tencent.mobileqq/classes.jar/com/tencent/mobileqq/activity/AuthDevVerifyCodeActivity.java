@@ -23,14 +23,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 import mqq.observer.WtloginObserver;
-import roe;
-import rof;
-import rog;
-import roh;
-import roi;
-import roj;
-import rok;
-import rol;
+import rsw;
+import rsx;
+import rsy;
+import rsz;
+import rta;
+import rtb;
+import rtc;
+import rtd;
 
 public class AuthDevVerifyCodeActivity
   extends RegisterBaseActivity
@@ -45,10 +45,10 @@ public class AuthDevVerifyCodeActivity
   SmsContent jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new roe(this);
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new roh(this);
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new rog(this);
-  private rol jdField_a_of_type_Rol;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new rsw(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new rsz(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new rsy(this);
+  private rtd jdField_a_of_type_Rtd;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private WeakReference jdField_b_of_type_JavaLangRefWeakReference;
   private boolean jdField_b_of_type_Boolean;
@@ -63,14 +63,14 @@ public class AuthDevVerifyCodeActivity
   public AuthDevVerifyCodeActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new rof(this);
+    this.jdField_a_of_type_AndroidOsHandler = new rsx(this);
   }
   
   private void a()
   {
     if (!NetworkUtil.d(this))
     {
-      QQToast.a(this, getString(2131433009), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131433023), 0).b(getTitleBarHeight());
       return;
     }
     Object localObject1 = "";
@@ -95,10 +95,10 @@ public class AuthDevVerifyCodeActivity
         if (QLog.isColorLevel()) {
           QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "commitSmsCode.begin to submitSms smsCode=" + (String)localObject1);
         }
-        if (this.jdField_a_of_type_Rol == null) {
-          this.jdField_a_of_type_Rol = new rol(this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
+        if (this.jdField_a_of_type_Rtd == null) {
+          this.jdField_a_of_type_Rtd = new rtd(this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
         }
-        i = EquipmentLockImpl.a().a(localAppInterface, this.jdField_a_of_type_Rol, (String)localObject1);
+        i = EquipmentLockImpl.a().a(localAppInterface, this.jdField_a_of_type_Rtd, (String)localObject1);
         if (i == 0)
         {
           d();
@@ -107,7 +107,7 @@ public class AuthDevVerifyCodeActivity
         if (QLog.isColorLevel()) {
           QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "commitSmsCode.submitSms failed ret=" + i);
         }
-        a(2131434250, 1);
+        a(2131434266, 1);
         return;
       }
       if (QLog.isColorLevel()) {
@@ -122,16 +122,16 @@ public class AuthDevVerifyCodeActivity
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "commitSmsCode.CheckDevLockSms failed ret=" + i);
       }
-      a(2131434250, 1);
+      a(2131434266, 1);
       return;
     }
-    a(2131434275, 0);
+    a(2131434291, 0);
   }
   
   private void b()
   {
     if (!NetworkUtil.d(this)) {
-      QQToast.a(this, getString(2131433009), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131433023), 0).b(getTitleBarHeight());
     }
     int i;
     do
@@ -155,13 +155,13 @@ public class AuthDevVerifyCodeActivity
         if (QLog.isColorLevel()) {
           QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "startGetVerifyCode.begin to refreshDevLockSms");
         }
-        if (this.jdField_a_of_type_Rol == null) {
-          this.jdField_a_of_type_Rol = new rol(this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
+        if (this.jdField_a_of_type_Rtd == null) {
+          this.jdField_a_of_type_Rtd = new rtd(this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
         }
-        i = EquipmentLockImpl.a().a(localAppInterface, this.jdField_a_of_type_Rol);
+        i = EquipmentLockImpl.a().a(localAppInterface, this.jdField_a_of_type_Rtd);
         if (i == 0)
         {
-          a(2131434231);
+          a(2131434247);
           return;
         }
       } while (!QLog.isColorLevel());
@@ -173,7 +173,7 @@ public class AuthDevVerifyCodeActivity
       i = EquipmentLockImpl.a().a(localAppInterface, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
       if (i == 0)
       {
-        a(2131434231);
+        a(2131434247);
         return;
       }
     } while (!QLog.isColorLevel());
@@ -185,18 +185,18 @@ public class AuthDevVerifyCodeActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
     jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131434277) + "(" + jdField_b_of_type_Int + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131434293) + "(" + jdField_b_of_type_Int + ")");
     this.jdField_b_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new roi(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new rta(this));
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new roj(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new rtb(this));
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -213,7 +213,7 @@ public class AuthDevVerifyCodeActivity
   
   public void handleMessage(String paramString1, String paramString2)
   {
-    runOnUiThread(new rok(this, paramString1, paramString2));
+    runOnUiThread(new rtc(this, paramString1, paramString2));
   }
   
   public void onClick(View paramView)
@@ -233,8 +233,8 @@ public class AuthDevVerifyCodeActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130970325);
-    super.setTitle(2131434274);
+    super.setContentView(2130970340);
+    super.setTitle(2131434290);
     QQAppInterface localQQAppInterface = this.app;
     paramBundle = localQQAppInterface;
     if (localQQAppInterface == null) {
@@ -256,19 +256,19 @@ public class AuthDevVerifyCodeActivity
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onCreate mIsFromLogin = " + this.jdField_b_of_type_Boolean + " mVerifySeq=" + this.c + " phoneNum=" + this.jdField_a_of_type_JavaLangString);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370069));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131365431));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370078));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131365436));
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131367754));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131367764));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131434276, new Object[] { this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370071));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131434292, new Object[] { this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370080));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131434277));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131434293));
       if (AppSetting.jdField_b_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131433016));
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131434277));
+        this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131433030));
+        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131434293));
       }
       this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver.setSeq(this.c);
       this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent = new SmsContent(null);
@@ -292,10 +292,10 @@ public class AuthDevVerifyCodeActivity
       this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent = null;
     }
     jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_Rol != null)
+    if (this.jdField_a_of_type_Rtd != null)
     {
-      this.jdField_a_of_type_Rol.a();
-      this.jdField_a_of_type_Rol = null;
+      this.jdField_a_of_type_Rtd.a();
+      this.jdField_a_of_type_Rtd = null;
     }
     c();
     e();

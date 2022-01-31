@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.mapsdk.raster.model.TencentMapOptions;
 
 public class QSupportMapFragment
   extends Fragment
@@ -41,7 +42,7 @@ public class QSupportMapFragment
     }
     if (this.mapView == null)
     {
-      this.mapView = new MapView(paramLayoutInflater.getContext());
+      this.mapView = new MapView(paramLayoutInflater.getContext(), new TencentMapOptions().enableHandDrawMap(false));
       this.mapView.onCreate(paramViewGroup);
     }
     return this.mapView;

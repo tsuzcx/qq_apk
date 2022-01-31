@@ -1,34 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f04" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c031a" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18fa" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e44" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040491" />
-            <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a192b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="54.0dip" />
-            <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
-                <TextView android:textSize="30.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c030d" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1766" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="¥" android:singleLine="true" android:includeFontPadding="false" />
-                <TextView android:textSize="45.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c030d" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1767" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.5dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1766" />
-            </RelativeLayout>
-            <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
-                <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c030d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a192c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1057" />
-                <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c030d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a192d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a192c" />
-            </RelativeLayout>
-            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c031c" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a192e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0fe4" android:singleLine="true" />
-            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1713" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
-                <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020dc2" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="58.0dip" android:layout_marginRight="58.0dip">
-                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a170a" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                        <com.tenpay.sdk.i.aj android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a170b" android:visibility="gone" android:imeOptions="actionDone" android:imeActionLabel="@string/APKTOOL_DUPLICATE_string_0x7f0b0e64" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
-                        <com.tenpay.sdk.i.a android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1715" android:visibility="visible" android:hint="@string/APKTOOL_DUPLICATE_string_0x7f0b0e10" android:inputType="textPassword" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
-                    </LinearLayout>
-                </LinearLayout>
-                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
-                    <TextView android:textSize="14.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16d1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ebe" android:layout_centerInParent="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00eb" />
-                </RelativeLayout>
-                <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="8.0dip">
-                    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1716" android:visibility="gone" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ebf" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ef" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-    <com.tenpay.api.MyKeyboardWindow android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16bf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1809" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404b6" />
+    <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e43" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a18fb" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1809">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18fc" android:layout_width="208.0dip" android:layout_height="198.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e46" android:layout_centerInParent="true" />
+        <TextView android:textSize="16.0sp" android:textColor="#fffbd49d" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:text="出示红包二维码\n小伙伴可扫一扫红包" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a18fc" />
+    </RelativeLayout>
+    <Button android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04d6" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18fb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020dc3" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="15.0dip" android:text="发红包" android:layout_alignParentBottom="true" />
+</RelativeLayout>

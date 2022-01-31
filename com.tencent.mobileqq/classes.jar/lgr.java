@@ -1,29 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.widget.HorizontalListView;
 
 public class lgr
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public lgr(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public lgr(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = this.a.app.getCurrentAccountUin();
-    localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + (String)localObject, 4);
-    if (localObject != null)
-    {
-      int i = ((SharedPreferences)localObject).getInt("readinjoy_deliver_biu_numbers", 0);
-      if (i <= 6)
-      {
-        ((SharedPreferences)localObject).edit().putInt("readinjoy_deliver_biu_numbers", i + 1);
-        ((SharedPreferences)localObject).edit().commit();
-      }
-    }
+    ReadInJoySelfActivity.a(this.a).setVisibility(8);
+    ReadInJoySelfActivity.a(this.a).setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

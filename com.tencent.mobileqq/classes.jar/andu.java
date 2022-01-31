@@ -1,16 +1,13 @@
-import android.app.Activity;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.QZoneVideoCommonUtils.onForwardVideoActivityFailedListener;
-import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class andu
-  implements QZoneVideoCommonUtils.onForwardVideoActivityFailedListener
+  implements andz
 {
-  public andu(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin, int paramInt) {}
+  public andu(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public void onFail(Activity paramActivity, String paramString)
+  public void a()
   {
-    QQToast.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
+    QzoneWebMusicJsPlugin.access$100(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString);
   }
 }
 

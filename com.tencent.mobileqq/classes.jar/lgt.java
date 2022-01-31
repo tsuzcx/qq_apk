@@ -1,31 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
 import com.tencent.qphone.base.util.QLog;
 
 public class lgt
-  implements Runnable
+  extends ReadInJoyObserver
 {
-  public lgt(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lgt(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    Object localObject = this.a;
-    String str = ((Activity)localObject).getString(2131428347);
-    localObject = DialogUtil.a((Context)localObject, 230).setMessage(str).setPositiveButton(((Activity)localObject).getString(2131428346), new lgu(this));
-    try
-    {
-      ((QQCustomDialog)localObject).setCancelable(false);
-      ((QQCustomDialog)localObject).show();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.self.ReadInJoySelfActivity", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden = " + paramBoolean);
     }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "", localBadTokenException);
+    if (paramInt1 == 0) {
+      ReadInJoySelfActivity.b(this.a);
     }
   }
 }

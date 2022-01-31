@@ -1,105 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.util.PADetailReportUtil;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity.JumpSrcConstants;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import cooperation.qzone.widget.QzoneSearchResultView;
-import java.util.Map;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
 
 public class wjc
-  implements View.OnClickListener
+  implements Runnable
 {
-  wjc(SearchContactsFragment paramSearchContactsFragment) {}
+  public wjc(ZhituManager paramZhituManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = paramView.getTag();
-    wjd localwjd;
-    int i;
-    if ((paramView != null) && ((paramView instanceof wjd)))
-    {
-      localwjd = (wjd)paramView;
-      if ((localwjd.b != 80000003) || (SearchContactsFragment.c(this.a) == null)) {
-        break label287;
-      }
-      this.a.a(SearchContactsFragment.c(this.a), SearchContactsFragment.a(this.a), SearchContactsFragment.b(this.a));
-      Integer localInteger = (Integer)SearchContactsFragment.a(this.a).get(Integer.valueOf(localwjd.b));
-      Object localObject = null;
-      paramView = (View)localObject;
-      if (localwjd.a != null)
-      {
-        paramView = (View)localObject;
-        if (localwjd.a.uin != null) {
-          paramView = String.valueOf(localwjd.a.uin.get());
-        }
-      }
-      int j = localwjd.b;
-      if (localInteger == null) {
-        break label354;
-      }
-      i = localInteger.intValue();
-      label155:
-      SearchUtils.a(j, i, 0, true, paramView, this.a.jdField_a_of_type_JavaLangString, SearchContactsFragment.c());
-      if (localwjd.b != 80000002) {
-        break label405;
-      }
-      localObject = this.a.getActivity();
-      if ((localObject != null) && ((localObject instanceof SearchBaseActivity)))
-      {
-        i = ((SearchBaseActivity)localObject).a();
-        if (SearchContactsFragment.c() != 12) {
-          break label359;
-        }
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006571", "0X8006571", 0, 1, 0, "0", SearchBaseActivity.JumpSrcConstants.a(i), paramView, this.a.jdField_a_of_type_JavaLangString);
-        localObject = PADetailReportUtil.a();
-        if (localInteger == null) {
-          break label400;
-        }
-        i = localInteger.intValue();
-        ((PADetailReportUtil)localObject).a(2, paramView, i, SearchContactsFragment.c());
-      }
-    }
-    label287:
-    label354:
-    label359:
-    while (localwjd.b != 80000003) {
-      for (;;)
-      {
-        return;
-        if (localwjd.b == 80000004)
-        {
-          QzoneSearchResultView.a(this.a.getActivity(), localwjd.jdField_c_of_type_JavaLangString);
-          break;
-        }
-        paramView = this.a;
-        i = localwjd.b;
-        if (localwjd.jdField_c_of_type_Int == 2) {}
-        for (boolean bool = true;; bool = false)
-        {
-          paramView.a(i, bool);
-          break;
-        }
-        i = 0;
-        break label155;
-        PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D20", "0X8005D20", 0, 0, "0", SearchBaseActivity.JumpSrcConstants.a(i), this.a.jdField_a_of_type_JavaLangString, "", false);
-        continue;
-        i = 0;
-      }
-    }
-    label400:
-    label405:
-    if (SearchContactsFragment.c() == 12)
-    {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800658A", "0X800658A", 0, 0, "0", "", this.a.jdField_a_of_type_JavaLangString, "0");
-      return;
-    }
-    PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D95", "0X8005D95", 0, 0, "0", "", this.a.jdField_a_of_type_JavaLangString, "0", false);
+    ZhituManager.a(this.a);
   }
 }
 

@@ -1,47 +1,39 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.ImageShakeAnimView;
 
 public class agqv
-  implements ViewPager.OnPageChangeListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  public agqv(FormalView paramFormalView) {}
   
-  public agqv(PhotoViewForShopping paramPhotoViewForShopping) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
-      this.jdField_a_of_type_Boolean = true;
+    if (paramValueAnimator.getAnimatedValue() == null) {
+      return;
     }
-    if (paramInt == 2) {
-      this.b = true;
-    }
-    if (paramInt == 0)
-    {
-      if (this.b)
-      {
-        this.b = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
+    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+    int i = -(int)(FormalView.a(this.a) * f);
+    int j = -(int)((1.0F - f) * FormalView.b(this.a));
+    ((RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams()).topMargin = j;
+    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
+    paramValueAnimator.leftMargin = i;
+    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
+    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.b(this.a).getLayoutParams();
+    paramValueAnimator.rightMargin = i;
+    FormalView.b(this.a).setLayoutParams(paramValueAnimator);
+    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
+    paramValueAnimator.topMargin = ((int)((1.0F - f) * FormalView.c(this.a)));
+    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
   }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqv
  * JD-Core Version:    0.7.0.1
  */

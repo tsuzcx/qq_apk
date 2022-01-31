@@ -1,47 +1,47 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.biz.ProtoUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.Doraemon.AppInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import tencent.im.oidb.oidb_0xb61.GetAppinfoReq;
+import tencent.im.oidb.oidb_0xb61.ReqBody;
 
 public class rjh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends JobSegment
 {
-  public rjh(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
-  
-  public void onGlobalLayout()
+  protected void a(JobContext paramJobContext, rje paramrje)
   {
-    Object localObject = new Rect();
-    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
-    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    paramJobContext = BaseApplicationImpl.getApplication().getRuntime();
+    if (paramJobContext == null)
     {
-      i = 1;
-      localObject = this.a.getCurrentFocus();
-      if (i != 0) {
-        break label101;
-      }
-      if ((localObject != null) && ((localObject instanceof EditText))) {
-        ((EditText)localObject).setCursorVisible(false);
-      }
-    }
-    label101:
-    while ((localObject == null) || (!(localObject instanceof EditText)))
-    {
+      notifyError(new ErrorMessage(-1, "DoraemonOpenAPI.permissionHelper.jobAppInfo|app is null"));
       return;
-      i = 0;
-      break;
     }
-    ((EditText)localObject).setCursorVisible(true);
+    try
+    {
+      int i = Integer.parseInt(paramrje.a.jdField_a_of_type_JavaLangString);
+      oidb_0xb61.ReqBody localReqBody = new oidb_0xb61.ReqBody();
+      localReqBody.get_appinfo_req.setHasFlag(true);
+      localReqBody.get_appinfo_req.appid.set(i);
+      localReqBody.get_appinfo_req.app_type.set(paramrje.a.jdField_a_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobAppInfo", 2, "send type=" + paramrje.a.jdField_a_of_type_Int + ", appid=" + paramrje.a.jdField_a_of_type_JavaLangString);
+      }
+      ProtoUtils.a(paramJobContext, new rji(this, paramrje), localReqBody.toByteArray(), "OidbSvc.0xb61_1", 2913, 1, null, 0L);
+      return;
+    }
+    catch (NumberFormatException paramJobContext)
+    {
+      notifyError(new ErrorMessage(-1, "DoraemonOpenAPI.permissionHelper.jobAppInfo|parse appid error"));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rjh
  * JD-Core Version:    0.7.0.1
  */

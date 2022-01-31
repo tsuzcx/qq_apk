@@ -1,30 +1,22 @@
-import com.tencent.av.ui.EffectToolbar;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class juc
-  implements Observer
+  implements Runnable
 {
-  private WeakReference a;
+  public juc(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public juc(EffectToolbar paramEffectToolbar)
+  public void run()
   {
-    this.a = new WeakReference(paramEffectToolbar);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
-    if (localEffectToolbar == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.c, 2, "2s has past, startTimer now!");
     }
-    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
+    this.a.Z();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     juc
  * JD-Core Version:    0.7.0.1
  */

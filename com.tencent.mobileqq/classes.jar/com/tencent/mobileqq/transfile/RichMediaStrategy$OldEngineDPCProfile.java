@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aiqr;
+import aivu;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ public class RichMediaStrategy$OldEngineDPCProfile
   
   private void a()
   {
-    DeviceProfileManager.a(new aiqr(this));
+    DeviceProfileManager.a(new aivu(this));
   }
   
   public RichMediaStrategy.OldEngineDPCProfile.TimeoutParam a()
@@ -57,7 +57,7 @@ public class RichMediaStrategy$OldEngineDPCProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.RichMediaStrategy.OldEngineDPCProfile
  * JD-Core Version:    0.7.0.1
  */

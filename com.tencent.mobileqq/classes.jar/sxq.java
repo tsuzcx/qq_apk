@@ -1,73 +1,27 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class sxq
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public sxq(Leba paramLeba) {}
+  public sxq(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.a.a.getManager(9);
-    int j;
-    ArrayList localArrayList;
-    label40:
-    int i;
-    if (localQZoneManagerImp != null)
+    switch (paramInt)
     {
-      j = localQZoneManagerImp.a(1);
-      if (localQZoneManagerImp == null) {
-        break label132;
-      }
-      localArrayList = localQZoneManagerImp.a();
-      if (j > 0) {
-        break label207;
-      }
-      if (localQZoneManagerImp == null) {
-        break label137;
-      }
-      i = localQZoneManagerImp.a(2);
-      label56:
-      if ((i <= 0) || (localArrayList == null) || (localArrayList.size() <= 0)) {
-        break label142;
-      }
-      if ((!QLog.isColorLevel()) || (QLog.isColorLevel())) {
-        QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_ACTIVE_FEED updateQZoneFlag.mQzoneFeedSubIcon setImageDrawable");
-      }
-      this.a.a(new sxr(this, localArrayList));
-      i = 1;
     }
     for (;;)
     {
-      this.a.a(new sxu(this, i, j));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      j = 0;
-      break;
-      label132:
-      localArrayList = null;
-      break label40;
-      label137:
-      i = 0;
-      break label56;
-      label142:
-      if (QLog.isColorLevel()) {
-        QLog.d("UndealCount.Q.lebatab.leba", 2, "updateQZoneFlag.noflag count=" + i);
-      }
-      this.a.a(new sxs(this));
-      if (QLog.isColorLevel()) {
-        QLog.d("UndealCount.ZebraAlbum.Q.lebatab.leba", 2, "freshEntryItemUI set style NOTETXT_STYLE_DEFAULT and mQzoneFeedSubIcon GONE");
-      }
-      i = 0;
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a("0X80081E5", 2);
       continue;
-      label207:
-      if (QLog.isColorLevel()) {
-        QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_PASSIVE_FEED freshEntryItemUI num=" + j);
-      }
-      i = 3;
-      this.a.a(new sxt(this));
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a("0X80081E5", 3);
     }
   }
 }

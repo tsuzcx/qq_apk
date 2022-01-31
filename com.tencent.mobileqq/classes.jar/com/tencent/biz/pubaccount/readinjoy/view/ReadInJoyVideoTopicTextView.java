@@ -54,7 +54,7 @@ public class ReadInJoyVideoTopicTextView
       setClickable(true);
       setFocusable(true);
       setTextSize(2, 12.0F);
-      setBackgroundResource(2130840883);
+      setBackgroundResource(2130840901);
       setSingleLine(true);
       getPaint().setFakeBoldText(true);
       setHeight(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 21.0F));

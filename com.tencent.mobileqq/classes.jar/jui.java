@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.utils.TipsManager;
 
-public class jui
-  implements View.OnClickListener
+class jui
+  implements Runnable
 {
-  public jui(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  jui(juh paramjuh) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
+    if (this.a.a.a != null) {
+      this.a.a.a.b(25, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jui
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qidian.util.QidianUtils;
+import com.tencent.mobileqq.app.RecommendTroopManagerImp;
+import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.RspBody;
 
 public class zsw
   implements Runnable
 {
-  public zsw(C2CMessageProcessor paramC2CMessageProcessor, MessageRecord paramMessageRecord) {}
+  public zsw(RecommendTroopManagerImp paramRecommendTroopManagerImp, long paramLong, oidb_0x9fb.RspBody paramRspBody) {}
   
   public void run()
   {
-    QidianUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageC2CMessageProcessor.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mQidianMasterUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mQidianTaskId), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mQidianTipText, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
+    RecommendTroopManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppRecommendTroopManagerImp, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x9fbOidb_0x9fb$RspBody);
   }
 }
 

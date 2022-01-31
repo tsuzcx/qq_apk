@@ -1,33 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.FriendInfo;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class rko
-  implements Runnable
+public class rko
+  implements View.OnClickListener
 {
-  rko(rkn paramrkn, Card paramCard) {}
+  public rko(AccountManageActivity paramAccountManageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Rkn.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_Rkn.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null) && (this.jdField_a_of_type_Rkn.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.has()) && (this.jdField_a_of_type_Rkn.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.has() == true))
-    {
-      AddRequestActivity.a(this.jdField_a_of_type_Rkn.a.a).setText(this.jdField_a_of_type_Rkn.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.get());
-      AddRequestActivity.a(this.jdField_a_of_type_Rkn.a.a).setVisibility(0);
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.AddRequestActivity", 2, "Card find Uin :" + this.jdField_a_of_type_Rkn.a.a.jdField_a_of_type_JavaLangString + "age:" + this.jdField_a_of_type_ComTencentMobileqqDataCard.age + "gender:" + this.jdField_a_of_type_ComTencentMobileqqDataCard.shGender);
-      }
-      return;
-      AddRequestActivity.a(this.jdField_a_of_type_Rkn.a.a).setVisibility(8);
-      this.jdField_a_of_type_Rkn.a.a.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
-    }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
   }
 }
 

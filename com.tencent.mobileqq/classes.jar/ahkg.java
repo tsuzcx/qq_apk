@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.QzoneEffectsCameraCaptureFragment;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import java.util.List;
 
 public class ahkg
   implements Runnable
 {
-  public ahkg(QzoneEffectsCameraCaptureFragment paramQzoneEffectsCameraCaptureFragment) {}
+  public ahkg(RedTouchManager paramRedTouchManager, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
-    QzoneEffectsCameraCaptureFragment.a(this.a, "正在合成gif...");
+    RedTouchManager.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

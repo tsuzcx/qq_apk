@@ -1,25 +1,27 @@
-import android.graphics.Bitmap;
 import android.os.Handler;
-import android.text.TextUtils;
-import com.qq.im.poi.LbsPackInfo;
+import android.os.Looper;
+import android.os.Message;
 import com.qq.im.poi.LbsStrangerPoiDialog;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
-import com.tencent.qphone.base.util.QLog;
 
 public class aoa
-  implements NonMainAppHeadLoader.FaceObserver
+  extends Handler
 {
-  public aoa(LbsStrangerPoiDialog paramLbsStrangerPoiDialog) {}
-  
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public aoa(LbsStrangerPoiDialog paramLbsStrangerPoiDialog, Looper paramLooper)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramBitmap != null) && (this.a.jdField_a_of_type_ComQqImPoiLbsPackInfo != null) && (paramString1.equals(Long.valueOf(this.a.jdField_a_of_type_ComQqImPoiLbsPackInfo.a))))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LbsPack", 2, "LbsStrangerPoiDialog onFaceUpdate uin:" + paramString1);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(101);
+    default: 
+      return;
+    case 100: 
+      this.a.a(this.a.a, this.a.d);
+      return;
     }
+    this.a.a(this.a.a, this.a.d);
   }
 }
 

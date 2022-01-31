@@ -1,56 +1,66 @@
-import com.tencent.biz.apiproxy.QQMusicService;
-import com.tencent.mobileqq.jsp.EventApiPlugin;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.biz.AuthorizeConfig;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-public class kkx
-  implements QQPlayerService.QQPlayerCallback
+class kkx
+  implements BusinessObserver
 {
-  public kkx(QQMusicService paramQQMusicService) {}
+  kkx(kkw paramkkw) {}
   
-  public String getToken()
-  {
-    return QQPlayerService.a(5, "" + this.a.a);
-  }
-  
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QQMusicService", 2, "onPlaySongChanged:" + paramSongInfo.b);
+      QLog.d("AuthorizeConfig", 2, "onReceive whitelist:" + paramBoolean);
     }
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicService", 2, "onPlayStateChanged:" + paramInt);
-    }
-    Object localObject = QQPlayerService.a();
-    localObject = QQMusicService.a(this.a, (SongInfo)localObject);
-    if (localObject != null) {}
-    try
+    if (paramBoolean)
     {
-      ((JSONObject)localObject).put("state", paramInt);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add("*.qq.com");
-      EventApiPlugin.a("qbrowserMusicStateChange", (JSONObject)localObject, localArrayList, null);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMusicService", 2, "onPlayStateChanged:" + localJSONException.getStackTrace());
+        mobileqq_mp.WebviewWhiteListResponse localWebviewWhiteListResponse = new mobileqq_mp.WebviewWhiteListResponse();
+        try
+        {
+          localWebviewWhiteListResponse.mergeFrom(paramBundle);
+          paramInt = localWebviewWhiteListResponse.ret_info.ret_code.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("AuthorizeConfig", 2, "sso status code: " + String.valueOf(paramInt));
+          }
+          if (paramInt == 0)
+          {
+            ThreadManager.getSubThreadHandler().post(new kky(this, localWebviewWhiteListResponse));
+            ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
+            return;
+          }
+          if (paramInt == 304)
+          {
+            this.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+            this.a.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
+            this.a.a.g();
+            ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 0, 1, 0, "", "", "", "");
+            return;
+          }
         }
-        localJSONException.printStackTrace();
+        catch (Exception paramBundle)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AuthorizeConfig", 2, "update error: " + paramBundle);
+          }
+        }
       }
     }
+    this.a.a.g();
+    this.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
   }
 }
 

@@ -1,37 +1,30 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.remote.IServiceHandler.Stub;
-import cooperation.qzone.remote.RemoteServiceProxy;
-import cooperation.qzone.remote.SendMsg;
+import android.os.Handler.Callback;
+import android.os.Message;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class amyi
-  implements ServiceConnection
+public final class amyi
+  extends WtloginObserver
 {
-  public amyi(RemoteServiceProxy paramRemoteServiceProxy) {}
+  public amyi(Handler.Callback paramCallback) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void OnException(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+    paramString = Message.obtain();
+    paramString.what = 1001;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
     }
-    this.a.serviceHandler = IServiceHandler.Stub.asInterface(paramIBinder);
-    if (RemoteServiceProxy.access$000(this.a) != null)
-    {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.actionListener = RemoteServiceProxy.access$000(this.a);
-      this.a.sendMsg(paramComponentName);
-    }
-    this.a.onBaseServiceConnected();
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+    paramString = Message.obtain();
+    paramString.what = 1000;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
     }
-    this.a.serviceHandler = null;
   }
 }
 

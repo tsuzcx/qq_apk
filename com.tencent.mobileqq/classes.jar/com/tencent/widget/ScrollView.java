@@ -1593,7 +1593,7 @@ public class ScrollView
       return;
     }
     this.mContentBackgroundDrawable = paramDrawable;
-    this.mOverScrollHeaderShadow = getResources().getDrawable(2130839293);
+    this.mOverScrollHeaderShadow = getResources().getDrawable(2130839312);
   }
   
   public void setEdgeEffectEnabled(boolean paramBoolean)

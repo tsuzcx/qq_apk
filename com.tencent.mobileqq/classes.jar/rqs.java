@@ -1,20 +1,24 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rqs
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rqs(BaseChatPie paramBaseChatPie) {}
+  public rqs(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.a.e != null) && (this.a.e.isShowing())) {
-      this.a.e.dismiss();
-    }
-    while ((this.a.f == null) || (!this.a.f.isShowing())) {
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433640), "qqsetting_enter_sendmsg_key", paramBoolean);
       return;
     }
-    this.a.f.dismiss();
   }
 }
 

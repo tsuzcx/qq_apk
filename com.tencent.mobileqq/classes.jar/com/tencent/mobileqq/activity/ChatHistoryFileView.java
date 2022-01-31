@@ -30,9 +30,9 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
-import saj;
-import sak;
-import san;
+import sfb;
+import sfc;
+import sff;
 
 public class ChatHistoryFileView
   extends ChatHistoryViewBase
@@ -57,7 +57,7 @@ public class ChatHistoryFileView
     if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
       return;
     }
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new saj(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new sfb(this);
   }
   
   private void g()
@@ -65,7 +65,7 @@ public class ChatHistoryFileView
     if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new sak(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new sfc(this);
   }
   
   public View a()
@@ -156,9 +156,9 @@ public class ChatHistoryFileView
     this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("uin");
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryFileAdapter = new ChatHistoryFileAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnClickListener, this);
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130970021, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367466));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368802));
+    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130970032, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367471));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368805));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryFileAdapter);
@@ -245,7 +245,7 @@ public class ChatHistoryFileView
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new san(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new sff(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
   

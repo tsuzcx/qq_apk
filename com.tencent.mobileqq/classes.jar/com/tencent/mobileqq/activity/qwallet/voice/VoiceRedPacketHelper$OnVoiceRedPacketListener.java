@@ -10,7 +10,7 @@ public abstract interface VoiceRedPacketHelper$OnVoiceRedPacketListener
   
   public abstract void a(boolean paramBoolean, String paramString);
   
-  public abstract boolean e();
+  public abstract boolean a();
 }
 
 

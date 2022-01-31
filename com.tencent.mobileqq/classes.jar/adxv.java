@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.view.ViewGroup;
 
-public class adxv
-  implements DialogInterface.OnCancelListener
+class adxv
+  implements Runnable
 {
-  public adxv(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  adxv(adxu paramadxu) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
+    this.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adxv
  * JD-Core Version:    0.7.0.1
  */

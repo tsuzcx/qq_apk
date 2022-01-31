@@ -1,38 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.av.smallscreen.SmallScreenService;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public class jon
-  extends BroadcastReceiver
+public final class jon
+  implements Parcelable.Creator
 {
-  public jon(SmallScreenService paramSmallScreenService) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public AVRedPacketConfig a(Parcel paramParcel)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenService", 2, "onReceive action = " + paramContext);
-    }
-    if (paramContext.equals("android.intent.action.NEW_OUTGOING_CALL"))
-    {
-      paramContext = paramIntent.getStringExtra("android.intent.extra.PHONE_NUMBER");
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenService", 2, "onReceive NEW_OUTGOING_CALL phoneNumber = " + paramContext);
-      }
-    }
-    while (!paramContext.equals("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED")) {
-      return;
-    }
-    this.a.a().removeCallbacks(this.a.d);
-    this.a.a().postDelayed(this.a.d, 200L);
+    return new AVRedPacketConfig(paramParcel);
+  }
+  
+  public AVRedPacketConfig[] a(int paramInt)
+  {
+    return new AVRedPacketConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jon
  * JD-Core Version:    0.7.0.1
  */

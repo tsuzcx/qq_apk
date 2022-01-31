@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import akfo;
-import akfp;
+import aknc;
+import aknd;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEventListener;
@@ -17,14 +17,14 @@ public class QQLSSensor
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
   public SensorEventListener a;
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new akfp(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new aknd(this, Looper.getMainLooper());
   private QQLSSensor.ProximitySensorChangeListener jdField_a_of_type_ComTencentMobileqqUtilsQQLSSensor$ProximitySensorChangeListener;
   public boolean a;
   private boolean b;
   
   public QQLSSensor(Context paramContext, QQLSSensor.ProximitySensorChangeListener paramProximitySensorChangeListener)
   {
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new akfo(this);
+    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new aknc(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQLSSensor$ProximitySensorChangeListener = paramProximitySensorChangeListener;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }

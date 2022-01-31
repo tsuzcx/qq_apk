@@ -1,51 +1,21 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.FileEntitySearchResultModel;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailFragment;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchResultPresenter;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.SearchResultView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class adaw
-  extends BaseMvpFaceAdapter
+  implements Runnable
 {
-  public adaw(FileSearchDetailFragment paramFileSearchDetailFragment, ListView paramListView, FaceDecoder paramFaceDecoder, ISearchResultModel paramISearchResultModel, String paramString, QQAppInterface paramQQAppInterface)
+  public adaw(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView, int paramInt) {}
+  
+  public void run()
   {
-    super(paramListView, paramFaceDecoder);
-    paramFileSearchDetailFragment = (FileEntitySearchResultModel)paramISearchResultModel;
-    if (paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.size() > 1)
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView);
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null) && (QfileBaseRecentFileTabView.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView)))
     {
-      paramListView = new ArrayList();
-      paramFaceDecoder = paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramFaceDecoder.hasNext())
-      {
-        paramISearchResultModel = (FileManagerEntity)paramFaceDecoder.next();
-        paramString = new FileEntitySearchResultModel();
-        paramString.jdField_a_of_type_JavaLangString = paramFileSearchDetailFragment.jdField_a_of_type_JavaLangString;
-        paramString.jdField_a_of_type_JavaUtilList.add(paramISearchResultModel);
-        paramListView.add(paramString);
-      }
-      a(paramListView);
+      QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 1, "setSelect[" + this.jdField_a_of_type_Int + "] success mFileListView");
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.jdField_a_of_type_Int);
     }
-  }
-  
-  protected IPresenter a(int paramInt)
-  {
-    return new FileSearchResultPresenter(this.a.a);
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new SearchResultView(paramViewGroup, 2130971541);
   }
 }
 

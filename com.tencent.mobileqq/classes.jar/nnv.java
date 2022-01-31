@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
+import android.graphics.drawable.AnimationDrawable;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
 
 public class nnv
-  implements View.OnClickListener
+  implements Runnable
 {
-  public nnv(QQStoryWarningActivity paramQQStoryWarningActivity) {}
+  public nnv(FeedsPlayModeBase paramFeedsPlayModeBase, AnimationDrawable paramAnimationDrawable, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.superFinish();
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
+    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c.setVisibility(8);
   }
 }
 

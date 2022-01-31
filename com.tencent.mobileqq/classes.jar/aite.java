@@ -1,29 +1,54 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.view.TribeEditVideoButton;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.theme.NightModeLogic;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class aite
-  implements View.OnClickListener
+  extends Handler
 {
-  public aite(TribeEditVideoButton paramTribeEditVideoButton) {}
-  
-  public void onClick(View paramView)
+  public aite(NightModeLogic paramNightModeLogic, Looper paramLooper)
   {
-    if (TribeEditVideoButton.a(this.a) == -1) {
-      if (!"barindex".equals(TribeEditVideoButton.a(this.a))) {
-        break label76;
-      }
-    }
-    label76:
-    for (int i = 1;; i = 2)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "video_edit", "Clk_add_topic", i, 0, "", "", "", "");
-      TroopBarPublishUtils.a((Activity)this.a.a(), 1001, TribeEditVideoButton.a(this.a));
-      return;
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            boolean bool;
+            do
+            {
+              return;
+              this.a.a();
+              return;
+              bool = this.a.c();
+            } while (!QLog.isColorLevel());
+            QLog.i("NightModeLogic", 2, "startNightMode result=" + bool);
+            return;
+          } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof Bundle)));
+          this.a.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+          return;
+        } while (this.a.a == null);
+        QQToast.a(this.a.a.getApplication(), "主题文件异常，切换回默认主题", 4000).a();
+        return;
+      } while (this.a.a == null);
+      QQToast.a(this.a.a.getApplication(), "夜间主题配置加载失败" + paramMessage.arg1 + "_" + paramMessage.arg2, 4000).a();
+      return;
+    } while (this.a.a == null);
+    QQToast.a(this.a.a.getApplication(), "网络环境异常，夜间主题下载失败" + paramMessage.arg1 + "_" + paramMessage.arg2, 4000).a();
   }
 }
 

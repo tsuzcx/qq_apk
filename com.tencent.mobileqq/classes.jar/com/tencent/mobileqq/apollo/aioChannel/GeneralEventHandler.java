@@ -98,7 +98,7 @@ public class GeneralEventHandler
     {
       if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
       {
-        ApolloGameBasicEventUtil.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        ApolloGameBasicEventUtil.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
         return new HandleResult();
       }
     }
@@ -106,7 +106,7 @@ public class GeneralEventHandler
     {
       if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
       {
-        ApolloGameBasicEventUtil.c((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        ApolloGameBasicEventUtil.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
         return new HandleResult();
       }
     }
@@ -140,9 +140,6 @@ public class GeneralEventHandler
       {
         ApolloGameUtil.a(paramLong, localQQAppInterface, paramString2);
         return null;
-      }
-      if ("cs.openWebViewWithoutUrl.local".equals(paramString1)) {
-        ApolloGameBasicEventUtil.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
       }
     }
     return null;

@@ -1,20 +1,17 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.av.utils.GVideoGrayConfig.Record;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
+import com.tencent.mobileqq.app.GroupIconHelper;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class zll
-  implements GVideoGrayConfig.GVideoGrayConfigListener
+  implements Runnable
 {
-  public zll(QQGAudioMsgHandler paramQQGAudioMsgHandler, long paramLong, int paramInt) {}
+  public zll(GroupIconHelper paramGroupIconHelper) {}
   
-  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
+  public void run()
   {
-    if (paramInt1 == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(7, this.jdField_a_of_type_Long, 2, 21, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
+    long l = DeviceInfoUtil.a();
+    int i = DeviceInfoUtil.b();
+    if ((l != 0L) && (l < 1024L) && (i <= 1)) {
+      GroupIconHelper.a(true);
     }
   }
 }

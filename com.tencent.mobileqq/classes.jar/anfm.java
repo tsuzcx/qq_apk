@@ -1,13 +1,66 @@
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.QZonePluginMangerHelper;
+import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
+import cooperation.qzone.plugin.QZoneRemotePluginManager.Stub;
+import java.lang.ref.WeakReference;
 
-public class anfm
-  implements Runnable
+public final class anfm
+  implements ServiceConnection
 {
-  public anfm(TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
-  
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceConnected");
+    }
+    if (QZonePluginMangerHelper.a() == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return WeakReference<OnPluginInterfaceReadyListener> is null");
+      }
+      QZonePluginMangerHelper.a();
+      return;
+    }
+    paramComponentName = (QZonePluginMangerHelper.OnQzonePluginClientReadyListner)QZonePluginMangerHelper.a().get();
+    if (paramComponentName == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return OnPluginManagerLoadedListener is null");
+      }
+      QZonePluginMangerHelper.a();
+      return;
+    }
+    if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder alive");
+      }
+      QZonePluginMangerHelper.a = new aneu(QZoneRemotePluginManager.Stub.a(paramIBinder));
+      paramComponentName.a(QZonePluginMangerHelper.a);
+    }
+    for (;;)
+    {
+      QZonePluginMangerHelper.a();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder not alive");
+      }
+      paramComponentName.a(null);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("plugin_tag", 2, "onServiceDisconnected");
+    }
+    if (QZonePluginMangerHelper.a != null)
+    {
+      QZonePluginMangerHelper.a.b();
+      QZonePluginMangerHelper.a = null;
+    }
   }
 }
 

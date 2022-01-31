@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import ahhm;
+import ahmd;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -249,7 +249,7 @@ public class CaptureRedDotConfig
     if (QLog.isColorLevel()) {
       QLog.d("QIMRedDotConfig" + paramString2, 2, "saveRedDotConfig|config= " + paramCaptureRedDotConfig);
     }
-    ThreadManager.getFileThreadHandler().post(new ahhm(paramString1, paramCaptureRedDotConfig, paramString2));
+    ThreadManager.getFileThreadHandler().post(new ahmd(paramString1, paramCaptureRedDotConfig, paramString2));
   }
   
   public boolean needShowRedDot(int paramInt1, int paramInt2, String paramString)

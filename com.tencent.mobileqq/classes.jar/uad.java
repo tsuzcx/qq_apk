@@ -1,34 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
+import com.etrump.mixlayout.FontManager;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 
 public class uad
-  implements View.OnClickListener
+  implements Runnable
 {
-  public uad(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public uad(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
+    Drawable localDrawable = this.a.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.a.d);
+    if (localDrawable == null)
     {
-      paramView = new Intent();
-      paramView.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
-      this.a.setResult(-1, paramView);
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label159;
-      }
-    }
-    label159:
-    for (int i = 0;; i = 1)
-    {
-      ReportController.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
-      this.a.finish();
+      this.a.b(this.a.d);
       return;
     }
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(18);
+    localMessage.obj = localDrawable;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
 }
 

@@ -1,34 +1,36 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.square.SquarePresenter;
-import com.tencent.biz.qqstory.storyHome.square.SquarePresenter.ISquareView;
-import com.tencent.biz.qqstory.storyHome.square.model.SquareFeedData;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class oca
-  implements Runnable
+  extends QQUIEventReceiver
 {
-  public oca(SquarePresenter paramSquarePresenter, SquareFeedData paramSquareFeedData) {}
-  
-  public void run()
+  public oca(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter)
   {
-    if (SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter) == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.a.isSuccess())
+    super(paramQQStoryMemoriesPresenter);
+  }
+  
+  public void a(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  {
+    if ((paramUpdateUserInfoEvent.errorInfo.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramQQStoryMemoriesPresenter.jdField_a_of_type_JavaLangString)))
     {
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.jdField_c_of_type_Boolean) {
-        break label81;
-      }
-      SquarePresenter.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.jdField_c_of_type_JavaUtilList);
-      SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.b);
+      SLog.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramUpdateUserInfoEvent);
+      paramQQStoryMemoriesPresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).d();
+      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).b();
+      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).c();
     }
-    for (;;)
-    {
-      SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData);
-      return;
-      label81:
-      SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter).addAll(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.b);
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return GetUserInfoHandler.UpdateUserInfoEvent.class;
   }
 }
 

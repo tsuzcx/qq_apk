@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abtu;
+import acbh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -16,7 +16,7 @@ public class DynamicAvatar
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abtu();
+  public static final Parcelable.Creator CREATOR = new acbh();
   public String basicBigUrl = "";
   public String basicMiddleUrl = "";
   public int basicOverdueTimeStamp;

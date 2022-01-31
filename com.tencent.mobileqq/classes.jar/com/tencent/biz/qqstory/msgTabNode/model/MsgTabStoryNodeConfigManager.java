@@ -10,6 +10,7 @@ import com.tencent.biz.qqstory.channel.NetworkRequest;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.msgTabNode.network.MsgTabCheckActiveRequest;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -21,17 +22,17 @@ import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.Manager;
-import nen;
-import neo;
-import nep;
+import nik;
+import nil;
+import nim;
 
 public class MsgTabStoryNodeConfigManager
   implements Manager
 {
   public byte a;
   public int a;
-  private final QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new neo(this);
-  DeviceProfileManager.DPCObserver jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$DPCObserver = new nep(this);
+  private final QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nil(this);
+  DeviceProfileManager.DPCObserver jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$DPCObserver = new nim(this);
   public QQAppInterface a;
   public boolean a;
   public boolean b;
@@ -58,27 +59,30 @@ public class MsgTabStoryNodeConfigManager
   {
     if ((this.b) && (this.c) && (this.jdField_a_of_type_Byte == 0) && (!this.h))
     {
+      SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request!");
       this.h = true;
       localObject = SosoInterface.b();
       if ((localObject == null) || (((SosoInterface.SosoLbsInfo)localObject).a == null)) {
-        break label140;
+        break label148;
       }
     }
-    label140:
+    long l1;
+    long l2;
+    label148:
     for (Object localObject = new MsgTabCheckActiveRequest(((SosoInterface.SosoLbsInfo)localObject).a.f);; localObject = new MsgTabCheckActiveRequest(null))
     {
       QQStoryManager localQQStoryManager = (QQStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(180);
-      nen localnen = new nen(this, (QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(98), localQQStoryManager);
-      long l = localQQStoryManager.a();
-      if (NetConnInfoCenter.getServerTime() > l)
-      {
-        CmdTaskManger.a().a((NetworkRequest)localObject, localnen);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active request sent");
-        }
+      nik localnik = new nik(this, (QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(98), localQQStoryManager);
+      l1 = localQQStoryManager.a();
+      l2 = NetConnInfoCenter.getServerTime();
+      if (l2 <= l1) {
+        break;
       }
+      CmdTaskManger.a().a((NetworkRequest)localObject, localnik);
+      SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request sent");
       return;
     }
+    SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", "startCheckActivity request not send, check next time! %d, %d", Long.valueOf(l2), Long.valueOf(l1));
   }
   
   private void b()

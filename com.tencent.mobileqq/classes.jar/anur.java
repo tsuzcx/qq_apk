@@ -1,36 +1,19 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
+import dov.com.qq.im.capture.music.QQMusicPlayerScene;
+import java.util.TimerTask;
 
 public class anur
-  extends SimpleObserver
+  extends TimerTask
 {
-  public anur(EditVideoPlayer paramEditVideoPlayer) {}
+  private anur(QQMusicPlayerScene paramQQMusicPlayerScene) {}
   
-  public void a(Bitmap paramBitmap)
+  public void run()
   {
-    super.onNext(paramBitmap);
-    if (paramBitmap != null)
-    {
-      if (this.a.b)
-      {
-        this.a.a.setImageBitmap(paramBitmap);
-        SLog.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
-      }
+    this.a.a.sendEmptyMessage(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMusicPlayerScene", 2, "MyMusicTimerTask MSG_MUSIC_REPLAY");
     }
-    else {
-      return;
-    }
-    SLog.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
   }
 }
 

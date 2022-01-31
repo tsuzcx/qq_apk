@@ -1,24 +1,53 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.StrikethroughSpan;
+import android.util.SparseArray;
+import android.widget.Button;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.troop.utils.TroopGiftManager.ShowPicPrice;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
 
 public class akek
-  implements View.OnClickListener
+  extends TroopGiftCallback
 {
-  public akek(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
+  public akek(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
   
-  public void onClick(View paramView)
+  public void a(SparseArray paramSparseArray)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    int j = 0;
+    this.a.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
+    Object localObject = (TroopGiftManager.ShowPicPrice)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
+    if (localObject != null)
+    {
+      paramSparseArray = ((TroopGiftManager.ShowPicPrice)localObject).a;
+      if (localObject == null) {
+        break label120;
+      }
+      localObject = ((TroopGiftManager.ShowPicPrice)localObject).b;
+      label55:
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label126;
+      }
+      j = paramSparseArray.indexOf((String)localObject);
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
+    label120:
+    label126:
+    for (int i = ((String)localObject).length() + j;; i = 0)
+    {
+      paramSparseArray = new SpannableString(paramSparseArray);
+      paramSparseArray.setSpan(new StrikethroughSpan(), j, i, 18);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(paramSparseArray);
+      return;
+      paramSparseArray = "30金豆秀一下";
+      break;
+      localObject = null;
+      break label55;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akek
  * JD-Core Version:    0.7.0.1
  */

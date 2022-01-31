@@ -1,20 +1,25 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
 
-public class ocm
-  implements View.OnSystemUiVisibilityChangeListener
+class ocm
+  implements Runnable
 {
-  public ocm(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
+  ocm(ocl paramocl, ArrayList paramArrayList, qqstory_710_message.RspStoryMessageList paramRspStoryMessageList) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void run()
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 4870;; paramInt = 775)
+    boolean bool2 = false;
+    StoryMessageListActivity localStoryMessageListActivity = this.jdField_a_of_type_Ocl.a;
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.is_end.get() != 0)) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
+      if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.has_read_msg.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_710_message$RspStoryMessageList.has_read_msg.get() != 0)) {
+        bool2 = true;
+      }
+      localStoryMessageListActivity.a(localArrayList, bool1, bool2);
       return;
     }
   }

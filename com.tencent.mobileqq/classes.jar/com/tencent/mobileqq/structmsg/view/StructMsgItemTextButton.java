@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aijs;
+import aion;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
 import com.tencent.mobileqq.structmsg.StructMsgNode;
+import com.tencent.qphone.base.util.QLog;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import org.xmlpull.v1.XmlSerializer;
@@ -49,7 +50,7 @@ public class StructMsgItemTextButton
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
     if (paramView != null) {
-      paramContext = (aijs)paramView.getTag();
+      paramContext = (aion)paramView.getTag();
     }
     for (;;)
     {
@@ -61,17 +62,29 @@ public class StructMsgItemTextButton
       if (!TextUtils.isEmpty(this.u)) {
         paramContext.jdField_a_of_type_AndroidWidgetTextView.setText(this.u);
       }
-      if (!TextUtils.isEmpty(this.v))
+      try
       {
-        paramBundle = URLDrawable.getDrawable(this.v, this.e, this.e, null, null);
-        paramBundle.setAutoDownload(true);
-        paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+        if (!TextUtils.isEmpty(this.v))
+        {
+          paramBundle = URLDrawable.getDrawable(this.v, this.e, this.e, null, null);
+          paramBundle.setAutoDownload(true);
+          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+        }
+        if (!TextUtils.isEmpty(this.w))
+        {
+          paramBundle = URLDrawable.getDrawable(this.w, this.f, this.f, null, null);
+          paramBundle.setAutoDownload(true);
+          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+        }
       }
-      if (!TextUtils.isEmpty(this.w))
+      catch (Exception paramContext)
       {
-        paramBundle = URLDrawable.getDrawable(this.w, this.f, this.f, null, null);
-        paramBundle.setAutoDownload(true);
-        paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, " URLDrawable.exception illegal url : " + paramContext.getMessage());
+          }
+        }
       }
       if ((this.c != null) && (!this.c.equals("")))
       {
@@ -79,7 +92,7 @@ public class StructMsgItemTextButton
         paramView.setOnClickListener(this);
       }
       return paramView;
-      paramView = new aijs(this);
+      paramView = new aion(this);
       paramView.jdField_a_of_type_AndroidWidgetLinearLayout = a(paramContext);
       paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
       paramView.b = new ImageView(paramContext);

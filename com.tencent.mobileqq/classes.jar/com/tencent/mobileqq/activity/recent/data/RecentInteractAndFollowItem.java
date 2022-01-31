@@ -38,13 +38,13 @@ public class RecentInteractAndFollowItem
       ((MessageForInteractAndFollow)localObject1).parse();
       if (((MessageForInteractAndFollow)localObject1).type == 1)
       {
-        this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438800);
+        this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438823);
         label84:
         this.jdField_b_of_type_Int = 3;
         this.jdField_a_of_type_Long = ((MessageForInteractAndFollow)localObject1).timeStamp;
         Object localObject2 = paramQQAppInterface.a();
         if (localObject2 == null) {
-          break label300;
+          break label321;
         }
         this.jdField_c_of_type_Int = ((ConversationFacade)localObject2).a(((MessageForInteractAndFollow)localObject1).frienduin, ((MessageForInteractAndFollow)localObject1).istroop);
         label125:
@@ -57,7 +57,7 @@ public class RecentInteractAndFollowItem
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.jdField_b_of_type_JavaLangString);
         if (this.jdField_c_of_type_Int != 0) {
-          break label308;
+          break label329;
         }
       }
       for (;;)
@@ -70,7 +70,12 @@ public class RecentInteractAndFollowItem
         return;
         if (((MessageForInteractAndFollow)localObject1).type == 2)
         {
-          this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438801);
+          this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438825);
+          break label84;
+        }
+        if (((MessageForInteractAndFollow)localObject1).type == 3)
+        {
+          this.jdField_b_of_type_JavaLangString = paramContext.getString(2131438824);
           break label84;
         }
         if (!QLog.isColorLevel()) {
@@ -78,10 +83,10 @@ public class RecentInteractAndFollowItem
         }
         QLog.i("Q.msg_box.RecentInteractAndFollowItem", 2, "RecentInteractAndFollowItem, type  =" + ((MessageForInteractAndFollow)localObject1).type);
         return;
-        label300:
+        label321:
         this.jdField_c_of_type_Int = 0;
         break label125;
-        label308:
+        label329:
         if (this.jdField_c_of_type_Int == 1) {
           paramQQAppInterface.append("有一条未读");
         } else if (this.jdField_c_of_type_Int == 2) {

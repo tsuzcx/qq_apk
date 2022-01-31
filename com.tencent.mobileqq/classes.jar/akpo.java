@@ -1,31 +1,16 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.vas.VasManager.CompleteListener;
 
 public class akpo
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public akpo(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler, View paramView) {}
+  public VasManager.CompleteListener a;
+  public Object a;
+  public String a;
   
-  public void onGlobalLayout()
+  public akpo(VasManager.CompleteListener paramCompleteListener, Object paramObject, String paramString)
   {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.height();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "heightDiff:" + i);
-    }
-    if (i > 150)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.c = true;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.a(false, 0);
-    }
-    while (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.c) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.c = false;
+    this.jdField_a_of_type_ComTencentMobileqqVasVasManager$CompleteListener = paramCompleteListener;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

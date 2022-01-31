@@ -19,55 +19,60 @@ class TbsLinuxToolsJni
   
   private void init(Context paramContext)
   {
-    for (;;)
+    label37:
+    label167:
+    try
     {
-      try
-      {
-        if (mbIsInited) {
-          return;
-        }
-        mbIsInited = true;
+      if (mbIsInited) {
+        return;
       }
-      finally {}
-      try
+      mbIsInited = true;
+    }
+    finally {}
+    try
+    {
+      if (TbsShareManager.isThirdPartyApp(paramContext))
       {
-        if (!TbsShareManager.isThirdPartyApp(paramContext)) {
-          break label167;
+        localObject1 = TbsShareManager.getAvailableCorePath();
+        if (localObject1 != null) {
+          break label200;
         }
-        localFile1 = new File(TbsShareManager.getAvailableTbsCorePath(paramContext));
-        if (localFile1 != null)
+        localObject1 = TbsShareManager.getAvailableTbsCorePath(paramContext);
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      paramContext.printStackTrace();
+      gJniloaded = false;
+      break label167;
+      break label37;
+    }
+    for (Object localObject1 = new File((String)localObject1);; localObject1 = TbsInstaller.getInstance().getTbsCoreShareDir(paramContext))
+    {
+      if (localObject1 != null)
+      {
+        File localFile = new File(((File)localObject1).getAbsolutePath() + File.separator + "liblinuxtoolsfortbssdk_jni.so");
+        Object localObject2;
+        if (localFile != null)
         {
-          File localFile3 = new File(localFile1.getAbsolutePath() + File.separator + "liblinuxtoolsfortbssdk_jni.so");
-          File localFile2;
-          if (localFile3 != null)
-          {
-            localFile2 = localFile1;
-            if (localFile3.exists()) {}
-          }
-          else
-          {
-            localFile2 = localFile1;
-            if (!TbsShareManager.isThirdPartyApp(paramContext)) {
-              localFile2 = TbsInstaller.getInstance().getCoreShareDecoupleDir(paramContext);
-            }
-          }
-          if (localFile2 != null)
-          {
-            System.load(localFile2.getAbsolutePath() + File.separator + "liblinuxtoolsfortbssdk_jni.so");
-            gJniloaded = true;
+          localObject2 = localObject1;
+          if (localFile.exists()) {}
+        }
+        else
+        {
+          localObject2 = localObject1;
+          if (!TbsShareManager.isThirdPartyApp(paramContext)) {
+            localObject2 = TbsInstaller.getInstance().getCoreShareDecoupleDir(paramContext);
           }
         }
-        ChmodInner("/checkChmodeExists", "700");
+        if (localObject2 != null)
+        {
+          System.load(((File)localObject2).getAbsolutePath() + File.separator + "liblinuxtoolsfortbssdk_jni.so");
+          gJniloaded = true;
+        }
       }
-      catch (Throwable paramContext)
-      {
-        label167:
-        paramContext.printStackTrace();
-        gJniloaded = false;
-        continue;
-      }
+      ChmodInner("/checkChmodeExists", "700");
       return;
-      File localFile1 = TbsInstaller.getInstance().getTbsCoreShareDir(paramContext);
     }
   }
   

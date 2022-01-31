@@ -1,28 +1,18 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
-public class sou
-  extends ContactBindObserver
+class sou
+  implements DialogInterface.OnClickListener
 {
-  public sou(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  sou(sot paramsot) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.G();
-    if (paramBoolean) {
-      return;
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
+      this.a.a.a.dismiss();
     }
-    QQToast.a(this.a, 1, "当前网络不可用", 1000).a();
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    super.a(paramBoolean, paramInt);
-    if ((this.a.k) && (paramBoolean)) {
-      this.a.a(0L, null, null, false);
-    }
-    this.a.k = false;
   }
 }
 

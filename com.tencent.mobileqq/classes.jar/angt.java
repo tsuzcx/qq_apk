@@ -1,40 +1,24 @@
-import com.tencent.open.wadl.WLog;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
-import cooperation.wadl.ipc.WadlProxyServiceMonitor;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class angt
-  extends Thread
+  implements DialogInterface.OnClickListener
 {
-  public volatile boolean a;
+  public angt(QZoneShareActivity paramQZoneShareActivity, Activity paramActivity, QZoneShareData paramQZoneShareData) {}
   
-  private angt(WadlProxyServiceMonitor paramWadlProxyServiceMonitor)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void run()
-  {
-    try
+    switch (paramInt)
     {
-      while (this.jdField_a_of_type_Boolean)
-      {
-        Thread.sleep(WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor));
-        long l = System.currentTimeMillis();
-        if ((WadlProxyServiceMonitor.b(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) != 0L) && (l - WadlProxyServiceMonitor.b(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) > 30000L) && (WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor)) && (WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor) != null))
-        {
-          if (QLog.isColorLevel()) {
-            WLog.b(WadlProxyServiceMonitor.a(), "##@<<<MonitorWorkingThread: check ipc service status...");
-          }
-          WadlProxyServiceMonitor.a(this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceMonitor).a();
-        }
-      }
+    default: 
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      localInterruptedException.printStackTrace();
-    }
+    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData, false);
+    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

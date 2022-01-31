@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.selectmember.TroopListAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
 
-class yip
-  implements Runnable
+public class yip
+  extends TroopObserver
 {
-  yip(yio paramyio, List paramList) {}
+  public yip(TroopListAdapter paramTroopListAdapter) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_Yio.a.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Yio.a.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    TroopListAdapter2.a(this.jdField_a_of_type_Yio.a);
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      TroopListAdapter.a(this.a, paramString, localBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yip
  * JD-Core Version:    0.7.0.1
  */

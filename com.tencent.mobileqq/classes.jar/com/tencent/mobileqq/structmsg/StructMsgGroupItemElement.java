@@ -52,10 +52,10 @@ public class StructMsgGroupItemElement
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      paramImageView.setBackgroundResource(2130841725);
+      paramImageView.setBackgroundResource(2130841752);
       return;
     }
-    paramImageView.setBackgroundResource(2130841724);
+    paramImageView.setBackgroundResource(2130841751);
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
@@ -83,14 +83,14 @@ public class StructMsgGroupItemElement
         break label334;
       }
       paramView = new LinearLayout(paramContext);
-      paramView.setId(2131362367);
+      paramView.setId(2131362370);
       paramView.setOrientation(0);
       localObject2 = new LinearLayout.LayoutParams(-1, AIOUtils.a(46.0F, localResources));
       ((LinearLayout.LayoutParams)localObject2).leftMargin = AIOUtils.a(12.0F, localResources);
       ((LinearLayout.LayoutParams)localObject2).rightMargin = AIOUtils.a(12.0F, localResources);
       ((LinearLayout.LayoutParams)localObject2).topMargin = 0;
       ((LinearLayout.LayoutParams)localObject2).bottomMargin = 0;
-      localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362365);
+      localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362368);
       if (localLinearLayout != null) {
         break label323;
       }
@@ -102,7 +102,7 @@ public class StructMsgGroupItemElement
       ((LinearLayout.LayoutParams)localObject2).gravity = 16;
       paramView.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
       localObject1 = new ImageView(paramContext);
-      ((ImageView)localObject1).setId(2131362366);
+      ((ImageView)localObject1).setId(2131362369);
       a(localResources, (ImageView)localObject1);
       localObject2 = new LinearLayout.LayoutParams(-2, -2);
       ((LinearLayout.LayoutParams)localObject2).gravity = 16;
@@ -130,7 +130,7 @@ public class StructMsgGroupItemElement
         ((LinearLayout.LayoutParams)localObject1).rightMargin = 0;
         ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
         ((LinearLayout.LayoutParams)localObject1).bottomMargin = 0;
-        localObject2 = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362365);
+        localObject2 = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362368);
         if (localObject2 == null) {
           this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, (ViewGroup.LayoutParams)localObject1);
         } else {
@@ -139,12 +139,12 @@ public class StructMsgGroupItemElement
       }
     } while (!"item".equals(paramView));
     label430:
-    paramView = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362365);
+    paramView = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362368);
     if (paramView == null)
     {
       paramView = new LinearLayout(paramContext);
       paramView.setOrientation(1);
-      paramView.setId(2131362365);
+      paramView.setId(2131362368);
       if (this.jdField_a_of_type_Boolean)
       {
         paramView.setVisibility(0);
@@ -192,11 +192,11 @@ public class StructMsgGroupItemElement
     do
     {
       return;
-      localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362365);
+      localLinearLayout = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362368);
     } while (localLinearLayout == null);
     localLinearLayout.setVisibility(8);
     this.jdField_a_of_type_Boolean = false;
-    a(this.jdField_a_of_type_AndroidContentContext.getResources(), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362366));
+    a(this.jdField_a_of_type_AndroidContentContext.getResources(), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362369));
   }
   
   void a(AbsStructMsgElement paramAbsStructMsgElement)
@@ -461,7 +461,7 @@ public class StructMsgGroupItemElement
     do
     {
       return;
-      localObject1 = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362365);
+      localObject1 = (LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362368);
     } while (localObject1 == null);
     Object localObject2;
     if (this.jdField_a_of_type_Boolean)
@@ -476,7 +476,7 @@ public class StructMsgGroupItemElement
       for (;;)
       {
         this.jdField_a_of_type_Boolean = false;
-        a(this.jdField_a_of_type_AndroidContentContext.getResources(), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362366));
+        a(this.jdField_a_of_type_AndroidContentContext.getResources(), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362369));
         if (!(this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {
           break;
         }

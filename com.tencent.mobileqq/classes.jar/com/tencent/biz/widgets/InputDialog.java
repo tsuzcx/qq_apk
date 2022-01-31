@@ -11,8 +11,8 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import pds;
-import pdt;
+import pik;
+import pil;
 
 public class InputDialog
   extends QQCustomDialog
@@ -27,7 +27,7 @@ public class InputDialog
   public static InputDialog a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
     InputDialog localInputDialog = new InputDialog(paramContext, 2131624516);
-    localInputDialog.setContentView(2130968851);
+    localInputDialog.setContentView(2130968855);
     localInputDialog.setTitle(paramString1);
     localInputDialog.setMessage(paramString2);
     localInputDialog.a(paramInt1, paramOnClickListener2);
@@ -36,7 +36,7 @@ public class InputDialog
     paramString1 = new EditText(paramContext);
     paramString1.setSingleLine();
     paramString1.setFilters(new InputFilter[] { new InputFilter.LengthFilter(120) });
-    paramString1.setBackgroundResource(2130841324);
+    paramString1.setBackgroundResource(2130841351);
     paramString1.setPadding(20, 0, 20, 0);
     paramString1.setHeight(AIOUtils.a(37.0F, paramContext.getResources()));
     paramString1.setTextSize(1, 14.0F);
@@ -57,7 +57,7 @@ public class InputDialog
     this.lBtn.setText(paramInt);
     this.lBtn.setContentDescription(getContext().getString(paramInt));
     this.lBtn.setVisibility(0);
-    this.lBtn.setOnClickListener(new pds(this, paramOnClickListener));
+    this.lBtn.setOnClickListener(new pik(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }
@@ -102,7 +102,7 @@ public class InputDialog
     this.rBtn.setText(paramInt);
     this.rBtn.setContentDescription(getContext().getString(paramInt));
     this.rBtn.setVisibility(0);
-    this.rBtn.setOnClickListener(new pdt(this, paramOnClickListener));
+    this.rBtn.setOnClickListener(new pil(this, paramOnClickListener));
     setSeperatorState();
     return this;
   }

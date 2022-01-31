@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView.HiBoomAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-class adpg
+public final class adpg
   implements Runnable
 {
-  adpg(adpf paramadpf, int paramInt1, int paramInt2) {}
+  public adpg(String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      this.jdField_a_of_type_Adpf.a.a.a(this.b, 100);
-      return;
-    }
-    this.jdField_a_of_type_Adpf.a.a.a(this.b, -1);
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 1).b(FMToastUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adpg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,14 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class wew
-  implements MediaPlayer.OnErrorListener
+class wew
+  implements Runnable
 {
-  public wew(BlessActivity paramBlessActivity) {}
+  wew(wev paramwev) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
-    }
-    BlessActivity.a(this.a, true);
-    return true;
+    this.a.a.a.setStackFromBottomWithoutRequestLayoutIfNecessary(true);
   }
 }
 

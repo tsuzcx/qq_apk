@@ -159,7 +159,12 @@ public class QQTrackerStickersFilter
   public void e()
   {
     super.e();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter.c();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUAlphaBlendFilter.d();
+  }
+  
+  public boolean f_()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
   
   @TargetApi(17)
@@ -226,11 +231,6 @@ public class QQTrackerStickersFilter
         i += 1;
       }
     }
-  }
-  
-  public boolean i_()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

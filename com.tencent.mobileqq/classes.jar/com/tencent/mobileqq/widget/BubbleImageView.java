@@ -91,7 +91,7 @@ public class BubbleImageView
     this.jdField_e_of_type_Float = 5.0F;
     this.jdField_f_of_type_Float = 4.0F;
     this.jdField_a_of_type_Float = Math.abs(this.jdField_d_of_type_Float - this.jdField_h_of_type_Float);
-    a();
+    b();
   }
   
   public BubbleImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -100,7 +100,7 @@ public class BubbleImageView
     this.jdField_e_of_type_Float = 5.0F;
     this.jdField_f_of_type_Float = 4.0F;
     this.jdField_a_of_type_Float = Math.abs(this.jdField_d_of_type_Float - this.jdField_h_of_type_Float);
-    a();
+    b();
   }
   
   public BubbleImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -109,50 +109,12 @@ public class BubbleImageView
     this.jdField_e_of_type_Float = 5.0F;
     this.jdField_f_of_type_Float = 4.0F;
     this.jdField_a_of_type_Float = Math.abs(this.jdField_d_of_type_Float - this.jdField_h_of_type_Float);
-    a();
+    b();
   }
   
   public static int a(float paramFloat, Resources paramResources)
   {
     return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
-  }
-  
-  private void a()
-  {
-    this.jdField_e_of_type_Boolean = jdField_i_of_type_Boolean;
-    if (VersionUtils.e())
-    {
-      this.jdField_a_of_type_Int = 1;
-      String str = Build.MODEL.toUpperCase();
-      if (((Build.VERSION.SDK_INT == 27) && (str.contains("PIXEL 2"))) || (str.contains("M821"))) {
-        this.jdField_a_of_type_Int = 2;
-      }
-      this.jdField_a_of_type_AndroidContentResResources = getResources();
-      if (this.jdField_a_of_type_Int != 1) {
-        break label175;
-      }
-      this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-16777216);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-      this.jdField_c_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-      this.jdField_b_of_type_ArrayOfFloat = new float[8];
-    }
-    label175:
-    while (this.jdField_a_of_type_Int != 2)
-    {
-      return;
-      this.jdField_a_of_type_Int = 2;
-      break;
-    }
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   }
   
   private void a(Canvas paramCanvas)
@@ -177,6 +139,41 @@ public class BubbleImageView
       paramCanvas.drawPath(this.jdField_d_of_type_AndroidGraphicsPath, this.jdField_d_of_type_AndroidGraphicsPaint);
     }
     paramCanvas.restoreToCount(m);
+  }
+  
+  private void b()
+  {
+    this.jdField_e_of_type_Boolean = jdField_i_of_type_Boolean;
+    if (VersionUtils.e())
+    {
+      this.jdField_a_of_type_Int = 1;
+      a();
+      this.jdField_a_of_type_AndroidContentResResources = getResources();
+      if (this.jdField_a_of_type_Int != 1) {
+        break label141;
+      }
+      this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+      this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-16777216);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+      this.jdField_c_of_type_AndroidGraphicsPath = new Path();
+      this.jdField_c_of_type_AndroidGraphicsRectF = new RectF();
+      this.jdField_b_of_type_ArrayOfFloat = new float[8];
+    }
+    label141:
+    while (this.jdField_a_of_type_Int != 2)
+    {
+      return;
+      this.jdField_a_of_type_Int = 2;
+      break;
+    }
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   }
   
   private void b(Canvas paramCanvas)
@@ -334,6 +331,8 @@ public class BubbleImageView
   {
     return null;
   }
+  
+  public void a() {}
   
   public void a(float paramFloat1, float paramFloat2)
   {
@@ -632,7 +631,7 @@ public class BubbleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BubbleImageView
  * JD-Core Version:    0.7.0.1
  */

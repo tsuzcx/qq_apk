@@ -739,7 +739,7 @@ public class Utils
   
   public static boolean a(String paramString)
   {
-    return (paramString == null) || (paramString.equals(AppConstants.D)) || (paramString.equals(String.valueOf(AppConstants.E))) || (paramString.equals(String.valueOf(AppConstants.F))) || (paramString.equals(String.valueOf(AppConstants.G))) || (paramString.equals(String.valueOf(AppConstants.H))) || (paramString.equals(String.valueOf(AppConstants.C))) || (paramString.equals(String.valueOf(AppConstants.B))) || (paramString.equals(String.valueOf(AppConstants.Q))) || (paramString.equals(String.valueOf(AppConstants.Y))) || (paramString.equals(String.valueOf(AppConstants.at))) || (paramString.equals(String.valueOf(AppConstants.y))) || (paramString.equals(String.valueOf(AppConstants.z))) || (paramString.equals(String.valueOf(AppConstants.A))) || (paramString.equals(String.valueOf(AppConstants.W))) || (paramString.equals(String.valueOf(AppConstants.w))) || (paramString.equals(String.valueOf(AppConstants.v))) || (paramString.equals(String.valueOf(AppConstants.X))) || (paramString.equals(String.valueOf(AppConstants.S))) || (paramString.equals(String.valueOf(AppConstants.V))) || (paramString.equals(String.valueOf(AppConstants.T))) || (paramString.equals(String.valueOf(AppConstants.Z))) || (paramString.equals(String.valueOf(AppConstants.aa))) || (paramString.equals(String.valueOf(AppConstants.aj))) || (paramString.equals(String.valueOf(AppConstants.al))) || (paramString.equals(String.valueOf(AppConstants.am))) || (paramString.equals(String.valueOf(AppConstants.as))) || (paramString.equals(String.valueOf(66600000L))) || (paramString.equals(String.valueOf(AppConstants.av))) || (paramString.equals(String.valueOf(9946L))) || (paramString.equals(String.valueOf(AppConstants.aE)));
+    return (paramString == null) || (paramString.equals(AppConstants.D)) || (paramString.equals(String.valueOf(AppConstants.E))) || (paramString.equals(String.valueOf(AppConstants.F))) || (paramString.equals(String.valueOf(AppConstants.G))) || (paramString.equals(String.valueOf(AppConstants.H))) || (paramString.equals(String.valueOf(AppConstants.C))) || (paramString.equals(String.valueOf(AppConstants.B))) || (paramString.equals(String.valueOf(AppConstants.Q))) || (paramString.equals(String.valueOf(AppConstants.Y))) || (paramString.equals(String.valueOf(AppConstants.au))) || (paramString.equals(String.valueOf(AppConstants.y))) || (paramString.equals(String.valueOf(AppConstants.z))) || (paramString.equals(String.valueOf(AppConstants.A))) || (paramString.equals(String.valueOf(AppConstants.W))) || (paramString.equals(String.valueOf(AppConstants.w))) || (paramString.equals(String.valueOf(AppConstants.v))) || (paramString.equals(String.valueOf(AppConstants.X))) || (paramString.equals(String.valueOf(AppConstants.S))) || (paramString.equals(String.valueOf(AppConstants.V))) || (paramString.equals(String.valueOf(AppConstants.T))) || (paramString.equals(String.valueOf(AppConstants.Z))) || (paramString.equals(String.valueOf(AppConstants.aa))) || (paramString.equals(String.valueOf(AppConstants.ak))) || (paramString.equals(String.valueOf(AppConstants.am))) || (paramString.equals(String.valueOf(AppConstants.an))) || (paramString.equals(String.valueOf(AppConstants.at))) || (paramString.equals(String.valueOf(66600000L))) || (paramString.equals(String.valueOf(AppConstants.aw))) || (paramString.equals(String.valueOf(9946L))) || (paramString.equals(String.valueOf(AppConstants.aF)));
   }
   
   public static byte[] a(String paramString)
@@ -860,7 +860,7 @@ public class Utils
   
   public static boolean b(String paramString)
   {
-    return AppConstants.au.equals(paramString);
+    return AppConstants.av.equals(paramString);
   }
   
   public static String c(String paramString)
@@ -931,7 +931,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.Utils
  * JD-Core Version:    0.7.0.1
  */

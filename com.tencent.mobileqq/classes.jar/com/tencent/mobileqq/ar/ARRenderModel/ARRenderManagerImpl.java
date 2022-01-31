@@ -1,13 +1,18 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
+import aafm;
+import aafn;
+import aafo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
+import android.opengl.EGL14;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.SystemClock;
 import android.util.Log;
 import com.tencent.mobileqq.ar.ARDeviceController;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderUtils;
 import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
 import com.tencent.mobileqq.ar.ARRecord.worldcup.ARWorldCupRecordController;
 import com.tencent.mobileqq.ar.FramePerformanceMonitor;
@@ -15,6 +20,7 @@ import com.tencent.mobileqq.ar.ReportUtil;
 import com.tencent.mobileqq.ar.ScanEntranceReport;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglCore;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
@@ -26,9 +32,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import zyy;
-import zyz;
-import zza;
 
 public class ARRenderManagerImpl
   implements ARRenderManager, ARRenderMangerInnerCallback
@@ -46,10 +49,10 @@ public class ARRenderManagerImpl
   public ARRenerArumentManager a;
   private CameraRendererable jdField_a_of_type_ComTencentMobileqqArARRenderModelCameraRendererable = new CameraRendererable(this);
   FramePerformanceMonitor jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor = new FramePerformanceMonitor();
+  private EglCore jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore;
   private RenderBuffer jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
   private TextureRender jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender;
   public Map a;
-  private EGLConfig jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
   private Map jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
@@ -152,6 +155,19 @@ public class ARRenderManagerImpl
     this.jdField_b_of_type_JavaUtilMap.clear();
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a();
     this.jdField_c_of_type_Boolean = false;
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore.a();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore = null;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("AREngine_ARRenderManagerImpl", 1, "stop, mEglCore release: " + localException.getMessage());
+    }
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -285,7 +301,7 @@ public class ARRenderManagerImpl
       }
       paramARRenderResourceInfo = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
       this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = null;
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new zyy(this, paramARRenderResourceInfo));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aafm(this, paramARRenderResourceInfo));
       return false;
     }
     if ((localObject1 instanceof ARWorldCupGlobalSceneRenderable))
@@ -302,7 +318,7 @@ public class ARRenderManagerImpl
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new zyz(this, (ARBaseRender)localObject1, paramARRenderResourceInfo));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aafn(this, (ARBaseRender)localObject1, paramARRenderResourceInfo));
       return true;
       if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender instanceof ARWorldCupGlobalSceneRenderable))
       {
@@ -356,7 +372,7 @@ public class ARRenderManagerImpl
   public void d()
   {
     QLog.i("AREngine_ARRenderManagerImpl", 1, "stopModelRender.");
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new zza(this));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aafo(this));
     if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.a())) {
       this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.b();
     }
@@ -377,12 +393,11 @@ public class ARRenderManagerImpl
   public void onDrawFrame(GL10 paramGL10)
   {
     int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.b()))
-    {
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.b())) {
       i = 1;
-      if (i == 0) {
-        break label311;
-      }
+    }
+    while (i != 0)
+    {
       if (!this.jdField_a_of_type_Boolean)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer == null) {
@@ -405,36 +420,41 @@ public class ARRenderManagerImpl
             j = 960;
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, i, j);
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore, i, j);
         this.jdField_a_of_type_Boolean = true;
       }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
-      a(paramGL10);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
-      if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController == null) || (!this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.a())) {
-        break label286;
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer == null)
+      {
+        a(paramGL10);
+        QLog.d("AREngine_ARRenderManagerImpl", 1, "onDrawFrame, mRecordFBO == null");
+        return;
+        i = 0;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.a(3553, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), null, null, SystemClock.elapsedRealtimeNanos());
-    }
-    for (;;)
-    {
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glViewport(0, 0, jdField_a_of_type_Int, jdField_b_of_type_Int);
-      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-      GLES20.glDisable(2929);
-      GLES20.glDisable(3042);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(3553, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), null, null);
-      if (this.jdField_a_of_type_Long == 0L) {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
+        a(paramGL10);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
+        if ((this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.a())) {
+          this.jdField_a_of_type_ComTencentMobileqqArARRecordWorldcupARWorldCupRecordController.a(3553, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), null, null, SystemClock.elapsedRealtimeNanos());
+        }
+        for (;;)
+        {
+          GLES20.glBindFramebuffer(36160, 0);
+          GLES20.glViewport(0, 0, jdField_a_of_type_Int, jdField_b_of_type_Int);
+          GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+          GLES20.glDisable(2929);
+          GLES20.glDisable(3042);
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(3553, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), null, null);
+          if (this.jdField_a_of_type_Long == 0L) {
+            this.jdField_a_of_type_Long = System.currentTimeMillis();
+          }
+          this.jdField_b_of_type_Long += 1L;
+          return;
+          this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(3553, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), null, null, SystemClock.elapsedRealtimeNanos());
+        }
       }
-      this.jdField_b_of_type_Long += 1L;
-      return;
-      i = 0;
-      break;
-      label286:
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(3553, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a(), null, null, SystemClock.elapsedRealtimeNanos());
     }
-    label311:
     if (this.jdField_a_of_type_Boolean)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer != null)
@@ -503,7 +523,9 @@ public class ARRenderManagerImpl
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = paramEGLConfig;
+    if (VideoEncoderUtils.a()) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore = new EglCore(EGL14.eglGetCurrentContext(), 1);
+    }
     ARDeviceController.a().a(paramGL10.glGetString(7937));
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelCameraRendererable.onSurfaceCreated(paramGL10, paramEGLConfig);
     paramGL10.glClearColor(0.0F, 0.0F, 0.0F, 0.5F);

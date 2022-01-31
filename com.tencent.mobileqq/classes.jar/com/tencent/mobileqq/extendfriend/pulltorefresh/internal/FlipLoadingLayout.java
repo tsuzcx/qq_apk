@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.pulltorefresh.internal;
 
-import acjs;
+import acrz;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -17,7 +17,7 @@ import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orienta
 
 @SuppressLint({"ViewConstructor"})
 public class FlipLoadingLayout
-  extends acjs
+  extends acrz
 {
   private final Animation a;
   private final Animation b;
@@ -42,7 +42,7 @@ public class FlipLoadingLayout
   
   private float a()
   {
-    switch (acjr.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
+    switch (acry.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
     {
     }
     do
@@ -77,7 +77,7 @@ public class FlipLoadingLayout
   
   protected int b()
   {
-    return 2130838619;
+    return 2130838625;
   }
   
   protected void b(float paramFloat) {}

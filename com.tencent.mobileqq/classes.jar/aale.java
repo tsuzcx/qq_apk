@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ARBlessWordFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class aale
-  implements DialogInterface.OnClickListener
+public final class aale
+  implements Parcelable.Creator
 {
-  public aale(ARBlessWordFragment paramARBlessWordFragment) {}
+  public ArCloudConfigInfo a(Parcel paramParcel)
+  {
+    return new ArCloudConfigInfo(paramParcel);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ArCloudConfigInfo[] a(int paramInt)
+  {
+    return new ArCloudConfigInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aale
  * JD-Core Version:    0.7.0.1
  */

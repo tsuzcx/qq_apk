@@ -31,7 +31,7 @@ public class NearPeopleFilters
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "不限", "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "不限", "爱旅游", "爱美食", "爱时尚", "爱运动", "爱电影", "爱音乐", "爱游戏" };
     jdField_c_of_type_ArrayOfJavaLangString = new String[] { "不限", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 2130842893, 2130842889, 2130842888, 2130842894, 2130842891, 2130842892, 2130842890 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 0, 2130842923, 2130842919, 2130842918, 2130842924, 2130842921, 2130842922, 2130842920 };
     jdField_b_of_type_ArrayOfInt = new int[] { 0, 1, 2, 3 };
   }
   

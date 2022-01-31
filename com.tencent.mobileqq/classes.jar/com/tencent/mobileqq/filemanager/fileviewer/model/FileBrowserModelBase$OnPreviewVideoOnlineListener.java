@@ -4,9 +4,9 @@ public abstract interface FileBrowserModelBase$OnPreviewVideoOnlineListener
 {
   public abstract void a(String paramString1, String paramString2);
   
-  public abstract void ac_();
+  public abstract void ae_();
   
-  public abstract void ad_();
+  public abstract void af_();
   
   public abstract void c();
 }

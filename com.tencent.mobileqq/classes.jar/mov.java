@@ -1,14 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar.TabHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar.Tab;
 
-class mov
+public class mov
   implements Runnable
 {
-  mov(mot parammot) {}
+  public mov(ReadinjoyTabbar paramReadinjoyTabbar, int paramInt, ReadinjoyTabbar.Tab paramTab) {}
   
   public void run()
   {
-    FastWebVideoFeedsPlayActivity.a(this.a.a).a(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabbar.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabbar$Tab.a.a);
   }
 }
 

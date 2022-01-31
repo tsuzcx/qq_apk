@@ -1,17 +1,21 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.VideoUrl;
 
-public class ancj
-  implements Runnable
+public final class ancj
+  implements Parcelable.Creator
 {
-  public ancj(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
-  
-  public void run()
+  public VideoUrl a(Parcel paramParcel)
   {
-    QzoneDynamicAlbumPlugin.a(QzoneDynamicAlbumPlugin.a());
-    RemoteHandleManager.a().a().a("0");
-    RemoteHandleManager.a().a().c("0");
+    VideoUrl localVideoUrl = new VideoUrl();
+    localVideoUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoUrl.jdField_a_of_type_Int = paramParcel.readInt();
+    return localVideoUrl;
+  }
+  
+  public VideoUrl[] a(int paramInt)
+  {
+    return new VideoUrl[paramInt];
   }
 }
 

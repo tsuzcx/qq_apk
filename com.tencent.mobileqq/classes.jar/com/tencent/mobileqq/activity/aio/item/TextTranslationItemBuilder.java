@@ -47,9 +47,9 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qqfav.QfavBuilder;
 import cooperation.qqfav.QfavReport;
 import java.util.HashMap;
-import viw;
-import vix;
-import viy;
+import vny;
+import vnz;
+import voa;
 
 public class TextTranslationItemBuilder
   extends TextItemBuilder
@@ -114,8 +114,8 @@ public class TextTranslationItemBuilder
   private void a(BaseChatItemLayout paramBaseChatItemLayout, TextTranslationItemBuilder.Holder paramHolder)
   {
     paramHolder.jdField_b_of_type_AndroidViewView = paramHolder.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131361966);
-    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetRotateableView = ((RotateableView)paramHolder.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372247));
-    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetRotateableView.setBackgroundResource(2130843894);
+    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetRotateableView = ((RotateableView)paramHolder.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131372257));
+    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetRotateableView.setBackgroundResource(2130843960);
   }
   
   private void a(TextTranslationItemBuilder.Holder paramHolder)
@@ -177,7 +177,7 @@ public class TextTranslationItemBuilder
           i = 1;
         }
         paramBaseChatItemLayout.setHearIconPosition(i);
-        paramBaseChatItemLayout.a.setText(2131436475);
+        paramBaseChatItemLayout.a.setText(2131436495);
         SharedPreUtils.d(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
         this.jdField_c_of_type_Long = paramHolder.jdField_b_of_type_Long;
         StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "Translate_external", "Newbie_guide__external", 0, 1, 0);
@@ -191,7 +191,7 @@ public class TextTranslationItemBuilder
         i = 1;
       }
       paramBaseChatItemLayout.setHearIconPosition(i);
-      paramBaseChatItemLayout.a.setText(2131436475);
+      paramBaseChatItemLayout.a.setText(2131436495);
       return;
       a(paramHolder);
       break label140;
@@ -264,7 +264,7 @@ public class TextTranslationItemBuilder
       k = paramHolder.jdField_e_of_type_AndroidWidgetTextView.getMeasuredHeight();
       paramHolder.jdField_e_of_type_AndroidWidgetTextView.setText(paramMessageForText);
       paramMessageForText = new BubbleResizeAnimation(paramHolder.jdField_a_of_type_AndroidViewViewGroup, 300, i, k - j);
-      paramMessageForText.setAnimationListener(new vix(this, paramHolder, (CharSequence)localObject1));
+      paramMessageForText.setAnimationListener(new vnz(this, paramHolder, (CharSequence)localObject1));
       paramHolder.jdField_a_of_type_AndroidViewViewGroup.startAnimation(paramMessageForText);
       return;
     }
@@ -289,9 +289,9 @@ public class TextTranslationItemBuilder
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = (LinearLayout)((Activity)localContext).getLayoutInflater().inflate(2130970930, null);
+      paramViewHolder = (LinearLayout)((Activity)localContext).getLayoutInflater().inflate(2130970948, null);
       paramBaseChatItemLayout.jdField_a_of_type_AndroidViewViewGroup = paramViewHolder;
-      paramBaseChatItemLayout.jdField_e_of_type_AndroidWidgetTextView = ((AnimationTextView)paramViewHolder.findViewById(2131363575));
+      paramBaseChatItemLayout.jdField_e_of_type_AndroidWidgetTextView = ((AnimationTextView)paramViewHolder.findViewById(2131363594));
       paramBaseChatItemLayout.jdField_e_of_type_AndroidWidgetTextView.setMaxWidth(BaseChatItemLayout.d);
       paramBaseChatItemLayout.jdField_e_of_type_AndroidWidgetTextView.setMovementMethod(new LinkMovementMethod());
     }
@@ -309,7 +309,7 @@ public class TextTranslationItemBuilder
     paramBaseChatItemLayout.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     paramBaseChatItemLayout.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
     if ((paramBaseChatItemLayout.jdField_e_of_type_AndroidWidgetTextView instanceof AnimationTextView)) {
-      ((AnimationTextView)paramBaseChatItemLayout.jdField_e_of_type_AndroidWidgetTextView).a = new viw(this);
+      ((AnimationTextView)paramBaseChatItemLayout.jdField_e_of_type_AndroidWidgetTextView).a = new vny(this);
     }
     return paramViewHolder;
   }
@@ -396,20 +396,20 @@ public class TextTranslationItemBuilder
       }
     }
     label332:
-    a(2131436452);
+    a(2131436472);
     return;
     label340:
     jdField_c_of_type_Int += 1;
     paramHolder.jdField_c_of_type_Long = SystemClock.uptimeMillis();
-    if (!AITranslator.a().a(localContext, paramHolder, paramHolder.jdField_b_of_type_JavaLangString, Language.fromString(str), new viy(this, paramHolder, localContext, str)).booleanValue())
+    if (!AITranslator.a().a(localContext, paramHolder, paramHolder.jdField_b_of_type_JavaLangString, Language.fromString(str), new voa(this, paramHolder, localContext, str)).booleanValue())
     {
       b(paramHolder);
       if (AITranslator.a().a(this.jdField_a_of_type_AndroidContentContext).booleanValue())
       {
-        a(2131436452);
+        a(2131436472);
         return;
       }
-      a(2131436455);
+      a(2131436475);
       return;
     }
     a(paramHolder);
@@ -443,7 +443,7 @@ public class TextTranslationItemBuilder
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131361877) || (paramView.getId() == 2131363575))
+    if ((paramView.getId() == 2131361877) || (paramView.getId() == 2131363594))
     {
       MessageForText localMessageForText = (MessageForText)AIOUtils.a(paramView);
       a((TextTranslationItemBuilder.Holder)AIOUtils.a(paramView), localMessageForText);

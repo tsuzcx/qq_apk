@@ -1,26 +1,27 @@
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
 public class adbc
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public adbc(FileBrowserActivity paramFileBrowserActivity, String paramString) {}
+  public adbc(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    int i = FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity).getMeasuredWidth();
-    String str2 = (String)TextUtils.ellipsize(this.jdField_a_of_type_JavaLangString, FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity).getPaint(), i - 15, TextUtils.TruncateAt.END);
-    String str1 = str2;
-    if (str2.length() > 2)
-    {
-      str1 = str2;
-      if (str2.substring(str2.length() - 1).equals(FileBrowserActivity.a())) {
-        str1 = str2.substring(0, str2.length() - 1) + FileBrowserActivity.b();
-      }
+    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
+      return false;
     }
-    FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity).setText(str1);
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131362745, paramView.getContext().getString(2131434057));
+    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localQQCustomMenu);
+    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new adbd(this, paramView), new adbf(this, paramView));
+    return true;
   }
 }
 

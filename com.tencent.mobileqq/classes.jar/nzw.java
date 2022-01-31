@@ -1,13 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
 
 public class nzw
-  implements Runnable
+  extends LoadingMoreHelper.OnLoadMoreSimpleListener
 {
-  public nzw(MystoryListView paramMystoryListView) {}
+  public nzw(StoryDetailFragment paramStoryDetailFragment) {}
   
-  public void run()
+  public boolean a(boolean paramBoolean)
   {
-    this.a.i();
+    this.a.d();
+    return true;
   }
 }
 

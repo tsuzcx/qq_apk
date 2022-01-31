@@ -1,39 +1,26 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.DingdongScheduleItemBuilder;
+import cooperation.dingdong.DingdongMsgItemTitleImageView;
 
-public final class vbg
-  implements DialogInterface.OnClickListener
+public class vbg
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public vbg(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
+  public LinearLayout a;
+  public TextView a;
+  public DingdongMsgItemTitleImageView a;
+  public View b;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
-    {
-      bool = true;
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
-      if (7 != this.jdField_a_of_type_Int) {
-        break label74;
-      }
-      MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
-    }
-    label74:
-    while (6 != this.jdField_a_of_type_Int)
-    {
-      return;
-      bool = false;
-      break;
-    }
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, MarketFaceItemBuilder.a.frienduin, "ep_mall", "Clk_collect_more", 0);
-  }
+  public vbg(DingdongScheduleItemBuilder paramDingdongScheduleItemBuilder) {}
 }
 
 

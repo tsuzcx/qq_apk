@@ -98,40 +98,49 @@ public class WorldCup
     if (WorldCupStaticInstance.a().b == -1L)
     {
       str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
-      if (!TextUtils.isEmpty(str))
-      {
-        localObject = new String[13];
-        i = DeviceProfileManager.a(str, (Object[])localObject, new DeviceProfileManager.SimpleStringParser());
-        localCharSequence = null;
-        if (localObject.length <= 12) {
-          break label188;
-        }
-        localCharSequence = localObject[12];
-        if (TextUtils.equals(localCharSequence, "1")) {
-          break label176;
-        }
-        bool = true;
+      if (TextUtils.isEmpty(str)) {
+        break label186;
       }
+      localObject = new String[13];
+      i = DeviceProfileManager.a(str, (Object[])localObject, new DeviceProfileManager.SimpleStringParser());
+      localCharSequence = null;
+      if (localObject.length <= 12) {
+        break label199;
+      }
+      localCharSequence = localObject[12];
+      if (TextUtils.equals(localCharSequence, "1")) {
+        break label176;
+      }
+      bool = true;
     }
     for (;;)
     {
       localObject = WorldCupStaticInstance.a();
-      if (bool) {}
-      for (long l = 1L;; l = 0L)
+      long l;
+      if (bool)
       {
+        l = 1L;
+        label98:
         ((WorldCupStaticInstance)localObject).b = l;
         QLog.w("WorldCupMgr", 1, "isEnableInDPC, isEnable[" + bool + "], arCfg[" + str + "], size[" + i + "], params[" + localCharSequence + "]");
+      }
+      for (;;)
+      {
         if (WorldCupStaticInstance.a().b != 1L) {
-          break label186;
+          break label197;
         }
         return true;
         label176:
         bool = false;
         break;
+        l = 0L;
+        break label98;
+        label186:
+        QLog.w("WorldCupMgr", 1, "isEnableInDPC, 没拉到dpc配置");
       }
-      label186:
+      label197:
       return false;
-      label188:
+      label199:
       bool = true;
     }
   }

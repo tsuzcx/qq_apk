@@ -5,6 +5,16 @@ import NearbyGroup.Cell;
 import NearbyGroup.GPS;
 import NearbyGroup.LBSInfo;
 import NearbyGroup.Wifi;
+import aacn;
+import aaco;
+import aacp;
+import aacq;
+import aacr;
+import aacu;
+import aacv;
+import aacw;
+import aacx;
+import aacy;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -16,9 +26,11 @@ import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;
 import com.tencent.map.geolocation.internal.TencentLog;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
 import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.statistics.battery.BatteryStatsImpl;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -35,14 +47,6 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zwc;
-import zwd;
-import zwe;
-import zwh;
-import zwi;
-import zwj;
-import zwk;
-import zwl;
 
 public class SosoInterface
 {
@@ -60,9 +64,8 @@ public class SosoInterface
   private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   private static boolean jdField_a_of_type_Boolean;
   private static long[] jdField_a_of_type_ArrayOfLong;
-  private static int jdField_b_of_type_Int;
+  private static int b;
   public static long b;
-  private static boolean jdField_b_of_type_Boolean;
   private static int c;
   public static long c;
   private static int jdField_d_of_type_Int;
@@ -73,7 +76,7 @@ public class SosoInterface
     jdField_a_of_type_Int = 2000;
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new zwc());
+    jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new aacn());
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
     jdField_a_of_type_ArrayOfLong = new long[] { 0L, 0L, 0L, 0L, 0L };
     jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sosoCache", 4);
@@ -84,13 +87,12 @@ public class SosoInterface
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-    zwd localzwd = new zwd();
+    aacq localaacq = new aacq();
     try
     {
-      BaseApplicationImpl.getContext().registerReceiver(localzwd, localIntentFilter);
-      jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new zwe();
-      jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new zwh(0, false, false, 0L, false, false, "reqRawData");
-      jdField_b_of_type_Boolean = true;
+      BaseApplicationImpl.getContext().registerReceiver(localaacq, localIntentFilter);
+      jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new aacr();
+      jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new aacu(0, false, false, 0L, false, false, "reqRawData");
       return;
     }
     catch (Exception localException)
@@ -106,7 +108,6 @@ public class SosoInterface
   
   public static LBSInfo a()
   {
-    a(true);
     return a(false, a());
   }
   
@@ -173,6 +174,11 @@ public class SosoInterface
     }
   }
   
+  private static SharedPreferences a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("sosoConfig", 4);
+  }
+  
   public static SosoInterface.SosoLbsInfo a()
   {
     if (jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo == null) {
@@ -199,13 +205,21 @@ public class SosoInterface
     localSosoLbsInfo.jdField_a_of_type_Long = jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_Long;
     localSosoLbsInfo.jdField_a_of_type_JavaLangString = jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_JavaLangString;
     localSosoLbsInfo.jdField_b_of_type_JavaLangString = jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_b_of_type_JavaLangString;
-    a(true);
     return localSosoLbsInfo;
+  }
+  
+  public static String a()
+  {
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = b();
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation != null) && (!TextUtils.isEmpty(localSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.jdField_e_of_type_JavaLangString))) {
+      return localSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.jdField_e_of_type_JavaLangString;
+    }
+    return a().getString("city", "");
   }
   
   public static void a()
   {
-    ThreadManager.getSubThreadHandler().post(new zwl());
+    ThreadManager.getSubThreadHandler().post(new aacy());
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       jdField_a_of_type_JavaUtilArrayList.clear();
@@ -213,34 +227,39 @@ public class SosoInterface
     }
   }
   
+  public static void a(long paramLong)
+  {
+    a().edit().putLong("normal_enter_conversation_time", paramLong).commit();
+  }
+  
   /* Error */
   @java.lang.Deprecated
   public static void a(long paramLong, String paramString)
   {
     // Byte code:
-    //   0: invokestatic 309	com/tencent/mobileqq/app/ThreadManager:getSubThread	()Ljava/lang/Thread;
-    //   3: invokestatic 314	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   0: invokestatic 337	com/tencent/mobileqq/app/ThreadManager:getSubThread	()Ljava/lang/Thread;
+    //   3: invokestatic 342	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   6: if_acmpeq +15 -> 21
-    //   9: invokestatic 314	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   12: invokestatic 319	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   15: invokevirtual 322	android/os/Looper:getThread	()Ljava/lang/Thread;
+    //   9: invokestatic 342	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   12: invokestatic 347	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   15: invokevirtual 350	android/os/Looper:getThread	()Ljava/lang/Thread;
     //   18: if_acmpne +31 -> 49
-    //   21: new 324	android/util/AndroidRuntimeException
+    //   21: new 352	android/util/AndroidRuntimeException
     //   24: dup
-    //   25: new 326	java/lang/StringBuilder
+    //   25: new 354	java/lang/StringBuilder
     //   28: dup
-    //   29: invokespecial 327	java/lang/StringBuilder:<init>	()V
-    //   32: ldc_w 329
-    //   35: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokespecial 355	java/lang/StringBuilder:<init>	()V
+    //   32: ldc_w 357
+    //   35: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: aload_2
-    //   39: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 337	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokespecial 339	android/util/AndroidRuntimeException:<init>	(Ljava/lang/String;)V
+    //   39: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 364	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokespecial 366	android/util/AndroidRuntimeException:<init>	(Ljava/lang/String;)V
     //   48: athrow
-    //   49: invokestatic 314	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   52: invokevirtual 343	java/lang/Thread:getStackTrace	()[Ljava/lang/StackTraceElement;
+    //   49: invokestatic 342	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   52: invokevirtual 370	java/lang/Thread:getStackTrace	()[Ljava/lang/StackTraceElement;
     //   55: astore 12
-    //   57: ldc_w 345
+    //   57: ldc_w 296
     //   60: astore 11
     //   62: aload 11
     //   64: astore 10
@@ -256,124 +275,124 @@ public class SosoInterface
     //   84: iconst_3
     //   85: aaload
     //   86: astore 10
-    //   88: new 326	java/lang/StringBuilder
+    //   88: new 354	java/lang/StringBuilder
     //   91: dup
-    //   92: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   92: invokespecial 355	java/lang/StringBuilder:<init>	()V
     //   95: aload 10
-    //   97: invokevirtual 350	java/lang/StackTraceElement:getClassName	()Ljava/lang/String;
-    //   100: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   103: ldc_w 352
-    //   106: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: invokevirtual 375	java/lang/StackTraceElement:getClassName	()Ljava/lang/String;
+    //   100: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc_w 377
+    //   106: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: aload 10
-    //   111: invokevirtual 355	java/lang/StackTraceElement:getMethodName	()Ljava/lang/String;
-    //   114: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: invokevirtual 337	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   111: invokevirtual 380	java/lang/StackTraceElement:getMethodName	()Ljava/lang/String;
+    //   114: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 364	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   120: astore 11
     //   122: aload 11
     //   124: astore 10
-    //   126: invokestatic 358	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   126: invokestatic 383	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   129: ifeq +35 -> 164
-    //   132: ldc_w 360
+    //   132: ldc_w 385
     //   135: iconst_2
-    //   136: new 326	java/lang/StringBuilder
+    //   136: new 354	java/lang/StringBuilder
     //   139: dup
-    //   140: invokespecial 327	java/lang/StringBuilder:<init>	()V
-    //   143: ldc_w 362
-    //   146: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: invokespecial 355	java/lang/StringBuilder:<init>	()V
+    //   143: ldc_w 387
+    //   146: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: aload 11
-    //   151: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   154: invokevirtual 337	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   157: invokestatic 366	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   151: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: invokevirtual 364	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   157: invokestatic 391	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   160: aload 11
     //   162: astore 10
     //   164: lload_0
     //   165: lconst_0
     //   166: lcmp
     //   167: ifle +141 -> 308
-    //   170: invokestatic 371	android/os/SystemClock:elapsedRealtime	()J
-    //   173: getstatic 372	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_Long	J
+    //   170: invokestatic 396	android/os/SystemClock:elapsedRealtime	()J
+    //   173: getstatic 397	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_Long	J
     //   176: lload_0
     //   177: ladd
     //   178: lcmp
     //   179: ifge +129 -> 308
-    //   182: invokestatic 358	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   182: invokestatic 383	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   185: ifeq +30 -> 215
-    //   188: ldc_w 360
+    //   188: ldc_w 385
     //   191: iconst_2
-    //   192: new 326	java/lang/StringBuilder
+    //   192: new 354	java/lang/StringBuilder
     //   195: dup
-    //   196: invokespecial 327	java/lang/StringBuilder:<init>	()V
-    //   199: ldc_w 374
-    //   202: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: invokespecial 355	java/lang/StringBuilder:<init>	()V
+    //   199: ldc_w 399
+    //   202: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   205: aload_2
-    //   206: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: invokevirtual 337	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   212: invokestatic 376	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   215: new 378	java/util/HashMap
+    //   206: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: invokevirtual 364	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   212: invokestatic 401	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   215: new 403	java/util/HashMap
     //   218: dup
-    //   219: invokespecial 379	java/util/HashMap:<init>	()V
+    //   219: invokespecial 404	java/util/HashMap:<init>	()V
     //   222: astore 11
     //   224: aload_2
     //   225: ifnull +20 -> 245
     //   228: aload_2
-    //   229: invokevirtual 384	java/lang/String:length	()I
+    //   229: invokevirtual 409	java/lang/String:length	()I
     //   232: ifle +13 -> 245
     //   235: aload 11
-    //   237: ldc_w 386
+    //   237: ldc_w 411
     //   240: aload_2
-    //   241: invokevirtual 390	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   241: invokevirtual 415	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   244: pop
     //   245: aload 10
-    //   247: invokestatic 396	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   247: invokestatic 290	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   250: ifne +14 -> 264
     //   253: aload 11
-    //   255: ldc_w 398
+    //   255: ldc_w 417
     //   258: aload 10
-    //   260: invokevirtual 390	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   260: invokevirtual 415	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   263: pop
     //   264: aload 11
-    //   266: ldc_w 400
-    //   269: getstatic 406	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   272: invokevirtual 409	java/lang/Boolean:booleanValue	()Z
-    //   275: invokestatic 412	java/lang/Boolean:toString	(Z)Ljava/lang/String;
-    //   278: invokevirtual 390	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   266: ldc_w 419
+    //   269: getstatic 425	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   272: invokevirtual 428	java/lang/Boolean:booleanValue	()Z
+    //   275: invokestatic 431	java/lang/Boolean:toString	(Z)Ljava/lang/String;
+    //   278: invokevirtual 415	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   281: pop
-    //   282: invokestatic 416	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	()Ljava/lang/String;
+    //   282: invokestatic 435	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	()Ljava/lang/String;
     //   285: astore_2
     //   286: invokestatic 115	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   289: invokestatic 421	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   289: invokestatic 440	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   292: aload_2
-    //   293: ldc_w 423
+    //   293: ldc_w 442
     //   296: iconst_1
     //   297: lconst_0
     //   298: lconst_0
     //   299: aload 11
-    //   301: ldc_w 345
-    //   304: invokevirtual 426	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   301: ldc_w 296
+    //   304: invokevirtual 445	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   307: return
-    //   308: invokestatic 358	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   308: invokestatic 383	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   311: ifeq +40 -> 351
-    //   314: ldc_w 360
+    //   314: ldc_w 385
     //   317: iconst_2
-    //   318: new 326	java/lang/StringBuilder
+    //   318: new 354	java/lang/StringBuilder
     //   321: dup
-    //   322: invokespecial 327	java/lang/StringBuilder:<init>	()V
-    //   325: ldc_w 428
-    //   328: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: invokespecial 355	java/lang/StringBuilder:<init>	()V
+    //   325: ldc_w 447
+    //   328: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   331: aload_2
-    //   332: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   335: ldc_w 430
-    //   338: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   335: ldc_w 449
+    //   338: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   341: lload_0
-    //   342: invokevirtual 433	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   345: invokevirtual 337	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   348: invokestatic 376	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   342: invokevirtual 452	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   345: invokevirtual 364	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   348: invokestatic 401	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   351: getstatic 135	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener	Lcom/tencent/mobileqq/app/soso/SosoInterface$OnLocationListener;
     //   354: aload_2
-    //   355: putfield 436	com/tencent/mobileqq/app/soso/SosoInterface$OnLocationListener:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   355: putfield 455	com/tencent/mobileqq/app/soso/SosoInterface$OnLocationListener:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   358: getstatic 135	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener	Lcom/tencent/mobileqq/app/soso/SosoInterface$OnLocationListener;
-    //   361: invokestatic 439	com/tencent/mobileqq/app/soso/SosoInterface:a	(Lcom/tencent/mobileqq/app/soso/SosoInterface$OnLocationListener;)V
-    //   364: invokestatic 371	android/os/SystemClock:elapsedRealtime	()J
+    //   361: invokestatic 458	com/tencent/mobileqq/app/soso/SosoInterface:a	(Lcom/tencent/mobileqq/app/soso/SosoInterface$OnLocationListener;)V
+    //   364: invokestatic 396	android/os/SystemClock:elapsedRealtime	()J
     //   367: lstore_0
     //   368: iconst_0
     //   369: istore 9
@@ -389,15 +408,15 @@ public class SosoInterface
     //   389: monitorenter
     //   390: iload 9
     //   392: istore 8
-    //   394: invokestatic 371	android/os/SystemClock:elapsedRealtime	()J
+    //   394: invokestatic 396	android/os/SystemClock:elapsedRealtime	()J
     //   397: lstore_3
     //   398: iload 9
     //   400: istore 8
-    //   402: getstatic 372	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_Long	J
+    //   402: getstatic 397	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_Long	J
     //   405: lstore 5
     //   407: lload_3
     //   408: lload 5
-    //   410: ldc2_w 440
+    //   410: ldc2_w 459
     //   413: ladd
     //   414: lcmp
     //   415: ifge +80 -> 495
@@ -405,39 +424,39 @@ public class SosoInterface
     //   419: istore 7
     //   421: aload 11
     //   423: monitorexit
-    //   424: invokestatic 358	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   424: invokestatic 383	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   427: ifeq -120 -> 307
-    //   430: ldc_w 360
+    //   430: ldc_w 385
     //   433: iconst_2
-    //   434: new 326	java/lang/StringBuilder
+    //   434: new 354	java/lang/StringBuilder
     //   437: dup
-    //   438: invokespecial 327	java/lang/StringBuilder:<init>	()V
-    //   441: ldc_w 443
-    //   444: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   447: getstatic 446	com/tencent/mobileqq/app/NearbyHandler:jdField_a_of_type_Int	I
-    //   450: invokevirtual 449	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   453: ldc_w 451
-    //   456: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   438: invokespecial 355	java/lang/StringBuilder:<init>	()V
+    //   441: ldc_w 462
+    //   444: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   447: getstatic 465	com/tencent/mobileqq/app/NearbyHandler:jdField_a_of_type_Int	I
+    //   450: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   453: ldc_w 470
+    //   456: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   459: aload_2
-    //   460: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   463: ldc_w 453
-    //   466: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   460: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   463: ldc_w 472
+    //   466: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   469: iload 7
-    //   471: invokevirtual 456	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   474: ldc_w 458
-    //   477: invokevirtual 333	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: invokestatic 371	android/os/SystemClock:elapsedRealtime	()J
+    //   471: invokevirtual 475	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   474: ldc_w 477
+    //   477: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   480: invokestatic 396	android/os/SystemClock:elapsedRealtime	()J
     //   483: lload_0
     //   484: lsub
-    //   485: invokevirtual 433	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   488: invokevirtual 337	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   491: invokestatic 376	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   485: invokevirtual 452	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   488: invokevirtual 364	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   491: invokestatic 401	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   494: return
     //   495: iload 9
     //   497: istore 8
     //   499: getstatic 33	com/tencent/mobileqq/app/soso/SosoInterface:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   502: ldc2_w 459
-    //   505: invokevirtual 464	java/lang/Object:wait	(J)V
+    //   502: ldc2_w 478
+    //   505: invokevirtual 482	java/lang/Object:wait	(J)V
     //   508: iconst_0
     //   509: istore 7
     //   511: goto -90 -> 421
@@ -449,7 +468,7 @@ public class SosoInterface
     //   523: athrow
     //   524: astore 10
     //   526: bipush 245
-    //   528: putstatic 446	com/tencent/mobileqq/app/NearbyHandler:jdField_a_of_type_Int	I
+    //   528: putstatic 465	com/tencent/mobileqq/app/NearbyHandler:jdField_a_of_type_Int	I
     //   531: goto -107 -> 424
     //   534: astore 10
     //   536: goto -22 -> 514
@@ -649,7 +668,7 @@ public class SosoInterface
       {
         paramOnLocationListener.a(0, localSosoLbsInfo);
         break label707;
-        ThreadManager.getSubThreadHandler().post(new zwj(paramOnLocationListener));
+        ThreadManager.getSubThreadHandler().post(new aacw(paramOnLocationListener));
         break;
         i = 1;
         break label434;
@@ -676,25 +695,26 @@ public class SosoInterface
     BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
   }
   
-  private static void a(boolean paramBoolean)
+  public static boolean a()
   {
-    Object localObject = Thread.currentThread().getStackTrace();
-    if ((localObject != null) && (4 < localObject.length))
-    {
-      localObject = localObject[4];
-      String str = ((StackTraceElement)localObject).getClassName();
-      if ((!TextUtils.isEmpty(str)) && (!str.startsWith(SosoInterface.class.getPackage().getName())))
-      {
-        str = str.substring(str.lastIndexOf(".") + 1) + "." + ((StackTraceElement)localObject).getMethodName();
-        if (QLog.isColorLevel()) {
-          QLog.i("SOSO.LBS", 2, "uploadDirectUseCacheRelevantInfo caller route is: " + str);
-        }
-        localObject = new HashMap();
-        ((HashMap)localObject).put("caller", str);
-        str = EarlyDownloadManager.a();
-        StatisticCollector.a(BaseApplicationImpl.getContext()).a(str, "directUseCache", true, 0L, 0L, (HashMap)localObject, "");
-      }
+    return a().getInt("last_location_err_code", -1) == 0;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SOSO.LBS", 2, "saveSosoInterfaceConfig: " + paramString);
     }
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    a().edit().putString("config", paramString).commit();
+    return true;
+  }
+  
+  private static long b()
+  {
+    return a().getLong("normal_enter_conversation_time", 0L);
   }
   
   public static SosoInterface.SosoLbsInfo b()
@@ -704,8 +724,45 @@ public class SosoInterface
     }
     SosoInterface.SosoLbsInfo localSosoLbsInfo = new SosoInterface.SosoLbsInfo();
     localSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation = jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.a();
-    a(false);
     return localSosoLbsInfo;
+  }
+  
+  public static void b()
+  {
+    SharedPreferences localSharedPreferences = a();
+    Object localObject = localSharedPreferences.getString("config", "");
+    long l = localSharedPreferences.getLong("lastLocationTime", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.i("SOSO.LBS", 2, "startOfficialLocation. config is: " + (String)localObject + " lastLocationTime: " + l);
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          int i = ((JSONObject)localObject).getInt("isLoginLBSOpen");
+          int j = ((JSONObject)localObject).getInt("loginLBSInterval");
+          if ((i == 1) && (NetConnInfoCenter.getServerTime() - l >= j))
+          {
+            a(new aaco(0, true, false, 0L, false, false, "official"));
+            a(new aacp(0, false, false, 0L, false, false, "official"));
+            localSharedPreferences.edit().putLong("lastLocationTime", NetConnInfoCenter.getServerTime()).commit();
+            return;
+          }
+        }
+        catch (JSONException localJSONException) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    localJSONException.printStackTrace();
+  }
+  
+  private static void b(int paramInt)
+  {
+    a().edit().putInt("last_location_err_code", paramInt).commit();
   }
   
   private static void b(int paramInt, TencentLocation paramTencentLocation, String paramString)
@@ -759,6 +816,7 @@ public class SosoInterface
       jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.k = paramTencentLocation.getStreetNo();
       jdField_a_of_type_ArrayOfLong[3] = SystemClock.elapsedRealtime();
       jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("time_key_3", SystemClock.elapsedRealtime());
+      a().edit().putString("city", jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.jdField_e_of_type_JavaLangString).commit();
       if (paramInt == 1)
       {
         jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.jdField_a_of_type_JavaLangString = paramTencentLocation.getName();
@@ -785,7 +843,7 @@ public class SosoInterface
       }
       if (jdField_a_of_type_JavaUtilArrayList.size() == 0)
       {
-        ThreadManager.getSubThreadHandler().post(new zwk());
+        ThreadManager.getSubThreadHandler().post(new aacx());
         if (QLog.isColorLevel()) {
           QLog.d("SOSO.LBS", 2, "removeOnLocationListener() listener is empty. remveUpdate and stop LBS");
         }
@@ -799,7 +857,7 @@ public class SosoInterface
     if (paramOnLocationListener == null) {
       return;
     }
-    ThreadManager.getUIHandler().post(new zwi(paramOnLocationListener, paramInt, paramSosoLbsInfo));
+    ThreadManager.getUIHandler().post(new aacv(paramOnLocationListener, paramInt, paramSosoLbsInfo));
   }
   
   private static void b(String paramString, byte[] paramArrayOfByte)
@@ -932,71 +990,83 @@ public class SosoInterface
   
   private static void b(boolean paramBoolean1, boolean paramBoolean2, long paramLong1, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, boolean paramBoolean3, int paramInt3, boolean paramBoolean4, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
   {
-    if ((String.valueOf(paramString2).equals("ERROR_NETWORK")) && ((paramInt2 == -4) || (paramInt2 == -17))) {}
-    while (((paramBoolean1) || (!HwNetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))) && (!paramBoolean1)) {
-      return;
+    if ((String.valueOf(paramString2).equals("ERROR_NETWORK")) && ((paramInt2 == -4) || (paramInt2 == -17))) {
+      break label28;
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", Integer.toString(paramInt1));
-    if ((paramString1 != null) && (paramString1.length() > 0)) {
-      localHashMap.put("param_caller", paramString1);
-    }
-    if ((paramString2 != null) && (paramString2.length() > 0)) {
-      localHashMap.put("param_reason", paramString2);
-    }
-    if (!TextUtils.isEmpty(paramString3)) {
-      localHashMap.put("param_caller_route", paramString3);
-    }
-    localHashMap.put("param_detail", Integer.toString(paramInt2));
-    localHashMap.put("param_useCache", Boolean.toString(paramBoolean4));
-    localHashMap.put("param_askGps", Boolean.toString(paramBoolean3));
-    localHashMap.put("param_costTime", Long.toString(paramLong1));
-    localHashMap.put("param_level", String.valueOf(paramInt3));
-    localHashMap.put("param_reuseInterval", Long.toString(paramLong2));
-    localHashMap.put("param_curInterval", Long.toString(paramLong3));
-    localHashMap.put("param_geoInterval", Long.toString(paramLong4));
-    localHashMap.put("param_globalInterval", Long.toString(paramLong5));
-    paramString3 = EarlyDownloadManager.a();
-    if (paramBoolean4) {
-      if (paramBoolean2)
-      {
-        paramString2 = "actSosoLocationCache";
-        StatisticCollector.a(BaseApplicationImpl.getContext()).a(paramString3, paramString2, paramBoolean1, paramLong1, 0L, localHashMap, "");
-        paramString2 = BatteryStatsImpl.a();
-        if (!paramBoolean2) {
-          break label406;
-        }
-      }
-    }
+    label280:
+    label539:
     for (;;)
     {
-      paramString2.a("requestSoso", new Object[] { Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean3), paramString1, Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5) });
+      label28:
       return;
-      paramString2 = "actSosoRawDataCache";
-      break;
-      if (paramBoolean2)
+      if (((!paramBoolean1) && (HwNetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))) || (paramBoolean1))
       {
-        paramString2 = "actSosoLocation";
-        break;
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("param_FailCode", Integer.toString(paramInt1));
+        if ((paramString1 != null) && (paramString1.length() > 0)) {
+          localHashMap.put("param_caller", paramString1);
+        }
+        if ((paramString2 != null) && (paramString2.length() > 0)) {
+          localHashMap.put("param_reason", paramString2);
+        }
+        if (!TextUtils.isEmpty(paramString3)) {
+          localHashMap.put("param_caller_route", paramString3);
+        }
+        localHashMap.put("param_detail", Integer.toString(paramInt2));
+        localHashMap.put("param_useCache", Boolean.toString(paramBoolean4));
+        localHashMap.put("param_askGps", Boolean.toString(paramBoolean3));
+        localHashMap.put("param_costTime", Long.toString(paramLong1));
+        localHashMap.put("param_level", String.valueOf(paramInt3));
+        localHashMap.put("param_reuseInterval", Long.toString(paramLong2));
+        localHashMap.put("param_curInterval", Long.toString(paramLong3));
+        localHashMap.put("param_geoInterval", Long.toString(paramLong4));
+        localHashMap.put("param_globalInterval", Long.toString(paramLong5));
+        paramString3 = EarlyDownloadManager.a();
+        if (paramBoolean4) {
+          if (paramBoolean2)
+          {
+            paramString2 = "actSosoLocationCache";
+            StatisticCollector.a(BaseApplicationImpl.getContext()).a(paramString3, paramString2, paramBoolean1, paramLong1, 0L, localHashMap, "");
+            paramString2 = BatteryStatsImpl.a();
+            if (!paramBoolean2) {
+              break label527;
+            }
+            label310:
+            paramString2.a("requestSoso", new Object[] { Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean3), paramString1, Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5) });
+            if (BaseApplicationImpl.sProcessId != 1) {
+              break label533;
+            }
+          }
+        }
+        for (paramLong2 = Conversation.jdField_b_of_type_Long;; paramLong2 = b())
+        {
+          if ((paramLong2 <= 0L) || (SystemClock.elapsedRealtime() - paramLong2 >= 60000L)) {
+            break label539;
+          }
+          paramString2 = new HashMap();
+          if ((paramString1 == null) || (paramString1.length() <= 0)) {
+            break;
+          }
+          paramString2.put("param_caller", paramString1);
+          StatisticCollector.a(BaseApplicationImpl.getContext()).a(paramString3, "actLocationEarly", paramBoolean1, paramLong1, 0L, paramString2, "");
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.e("SOSO.LBS", 2, "location too early: " + paramString1);
+          return;
+          paramString2 = "actSosoRawDataCache";
+          break label280;
+          if (paramBoolean2)
+          {
+            paramString2 = "actSosoLocation";
+            break label280;
+          }
+          paramString2 = "actSosoRawData";
+          break label280;
+          paramInt3 = -1;
+          break label310;
+        }
       }
-      paramString2 = "actSosoRawData";
-      break;
-      label406:
-      paramInt3 = -1;
-    }
-  }
-  
-  private static void d()
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    if ((jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener != null) && (jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager != null))
-    {
-      jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.removeUpdates(jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
-      jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager = null;
-    }
-    jdField_b_of_type_Int = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("SOSO.LBS", 2, "stopLocation() stop LBS");
     }
   }
   
@@ -1015,6 +1085,20 @@ public class SosoInterface
   }
   
   private static void e()
+  {
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    if ((jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener != null) && (jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager != null))
+    {
+      jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.removeUpdates(jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
+      jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager = null;
+    }
+    jdField_b_of_type_Int = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("SOSO.LBS", 2, "stopLocation() stop LBS");
+    }
+  }
+  
+  private static void f()
   {
     for (;;)
     {

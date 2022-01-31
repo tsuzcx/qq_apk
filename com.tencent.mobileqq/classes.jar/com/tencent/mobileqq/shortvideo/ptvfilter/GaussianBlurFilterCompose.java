@@ -95,6 +95,29 @@ public class GaussianBlurFilterCompose
     return this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
   }
   
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilter != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilter.a();
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilter = null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer != null)
+    {
+      GlUtil.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a());
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.d();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer = null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = null;
+    }
+    if (this.jdField_a_of_type_Int > 0) {
+      GlUtil.a(this.jdField_a_of_type_Int);
+    }
+  }
+  
   public void a(int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilter == null) {}

@@ -14,12 +14,12 @@ import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import nzb;
+import odq;
 
 public abstract class VideoListHomeFeed
   extends CommentLikeHomeFeed
 {
-  public static nzb a;
+  public static odq a;
   private boolean a;
   protected HashSet c;
   protected List c;
@@ -28,7 +28,7 @@ public abstract class VideoListHomeFeed
   
   static
   {
-    jdField_a_of_type_Nzb = new nzb(null);
+    jdField_a_of_type_Odq = new odq(null);
   }
   
   public VideoListHomeFeed(@NonNull VideoListFeedItem paramVideoListFeedItem)

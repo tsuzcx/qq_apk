@@ -32,14 +32,14 @@ import java.io.InputStream;
 import java.nio.channels.FileChannel;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import pgf;
-import pgi;
-import pgj;
-import phh;
-import phi;
+import pkx;
+import pla;
+import plb;
+import plz;
+import pma;
 
 public class DecodeImageTask
-  extends phh
+  extends plz
 {
   private static int jdField_a_of_type_Int = 0;
   private static DecodeImageTask jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask;
@@ -63,9 +63,9 @@ public class DecodeImageTask
     super(paramImageKey);
   }
   
-  protected DecodeImageTask(phh paramphh)
+  protected DecodeImageTask(plz paramplz)
   {
-    super(paramphh);
+    super(paramplz);
   }
   
   private BitmapReference a(IDecoder paramIDecoder, FileInputStream paramFileInputStream, BitmapFactory.Options paramOptions, boolean paramBoolean)
@@ -191,7 +191,7 @@ public class DecodeImageTask
         paramBitmapReference = localBitmapImage.getBitmap().getBitmap();
         ImageTracer.requestSuperResolution(paramImageKey.url);
         ProgressTracer.print(7, paramImageKey.urlKey);
-        ImageManager.getSuperResolutionHandler().postAtFrontOfQueue(new pgf(this, paramImageKey, paramBitmapReference, j, k, paramInt));
+        ImageManager.getSuperResolutionHandler().postAtFrontOfQueue(new pkx(this, paramImageKey, paramBitmapReference, j, k, paramInt));
         i = 1;
         break;
         localObject = localBitmapImage.getBitmap();
@@ -337,15 +337,15 @@ public class DecodeImageTask
     //   238: aload_1
     //   239: getfield 142	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
     //   242: invokevirtual 429	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   245: checkcast 431	pgj
+    //   245: checkcast 431	plb
     //   248: astore 15
     //   250: invokestatic 435	com/tencent/component/media/utils/BitmapUtils:getOptions	()Landroid/graphics/BitmapFactory$Options;
     //   253: astore 16
     //   255: aload 15
     //   257: ifnonnull +802 -> 1059
-    //   260: new 431	pgj
+    //   260: new 431	plb
     //   263: dup
-    //   264: invokespecial 436	pgj:<init>	()V
+    //   264: invokespecial 436	plb:<init>	()V
     //   267: astore 15
     //   269: new 438	java/io/FileInputStream
     //   272: dup
@@ -369,7 +369,7 @@ public class DecodeImageTask
     //   306: invokespecial 444	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   309: aload 15
     //   311: aload 16
-    //   313: invokespecial 447	com/tencent/component/media/image/DecodeImageTask:a	(Lcom/tencent/component/media/image/ImageKey;Ljava/io/InputStream;Lpgj;Landroid/graphics/BitmapFactory$Options;)V
+    //   313: invokespecial 447	com/tencent/component/media/image/DecodeImageTask:a	(Lcom/tencent/component/media/image/ImageKey;Ljava/io/InputStream;Lplb;Landroid/graphics/BitmapFactory$Options;)V
     //   316: aload 10
     //   318: astore 11
     //   320: aload 10
@@ -381,7 +381,7 @@ public class DecodeImageTask
     //   332: aload_0
     //   333: aload_1
     //   334: aload 15
-    //   336: invokespecial 450	com/tencent/component/media/image/DecodeImageTask:a	(Lcom/tencent/component/media/image/ImageKey;Lpgj;)Z
+    //   336: invokespecial 450	com/tencent/component/media/image/DecodeImageTask:a	(Lcom/tencent/component/media/image/ImageKey;Lplb;)Z
     //   339: ifne +302 -> 641
     //   342: aload 10
     //   344: ifnonnull +146 -> 490
@@ -407,12 +407,12 @@ public class DecodeImageTask
     //   384: aload 15
     //   386: aload 10
     //   388: aload 16
-    //   390: invokespecial 458	com/tencent/component/media/image/DecodeImageTask:a	(Lcom/tencent/component/media/image/ImageKey;Lpgj;Ljava/io/FileInputStream;Landroid/graphics/BitmapFactory$Options;)Z
+    //   390: invokespecial 458	com/tencent/component/media/image/DecodeImageTask:a	(Lcom/tencent/component/media/image/ImageKey;Lplb;Ljava/io/FileInputStream;Landroid/graphics/BitmapFactory$Options;)Z
     //   393: istore 9
     //   395: aload 10
     //   397: astore 11
     //   399: aload 15
-    //   401: getfield 459	pgj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   401: getfield 459	plb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   404: astore 13
     //   406: aload 10
     //   408: astore 11
@@ -753,7 +753,7 @@ public class DecodeImageTask
     //   1054	1	12	localException5	java.lang.Exception
     //   292	758	13	localObject5	Object
     //   296	689	14	localObject6	Object
-    //   248	152	15	localpgj	pgj
+    //   248	152	15	localplb	plb
     //   253	136	16	localOptions	BitmapFactory.Options
     // Exception table:
     //   from	to	target	type
@@ -834,17 +834,17 @@ public class DecodeImageTask
     //   470	477	1054	java/lang/Exception
   }
   
-  private void a(ImageKey paramImageKey, InputStream paramInputStream, pgj parampgj, BitmapFactory.Options paramOptions)
+  private void a(ImageKey paramImageKey, InputStream paramInputStream, plb paramplb, BitmapFactory.Options paramOptions)
   {
     paramOptions.inJustDecodeBounds = true;
     BitmapFactory.decodeStream(paramInputStream, null, paramOptions);
     if (paramOptions.outMimeType != null) {}
     for (paramInputStream = paramOptions.outMimeType;; paramInputStream = "unknown")
     {
-      parampgj.jdField_a_of_type_JavaLangString = paramInputStream;
-      parampgj.b = paramOptions.outHeight;
-      parampgj.jdField_a_of_type_Int = paramOptions.outWidth;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramImageKey.filePath, parampgj);
+      paramplb.jdField_a_of_type_JavaLangString = paramInputStream;
+      paramplb.b = paramOptions.outHeight;
+      paramplb.jdField_a_of_type_Int = paramOptions.outWidth;
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramImageKey.filePath, paramplb);
       return;
     }
   }
@@ -866,24 +866,24 @@ public class DecodeImageTask
       ImageManagerLog.w(jdField_a_of_type_JavaLangString, "parseHeader error,status=" + i + "," + paramImageKey.url + ",hashCode=" + paramImageKey.hashCodeEx() + ",filePath=" + paramImageKey.filePath + ", try again");
       return false;
     }
-    pgj localpgj = (pgj)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramImageKey.filePath);
+    plb localplb = (plb)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramImageKey.filePath);
     Object localObject2 = localSharpPDecoderHelper.a();
     Object localObject1;
-    if ((localpgj == null) || (localpgj.jdField_a_of_type_JavaLangString.equals("unknown")))
+    if ((localplb == null) || (localplb.jdField_a_of_type_JavaLangString.equals("unknown")))
     {
-      localpgj = new pgj();
-      localpgj.b = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject2).b();
-      localpgj.jdField_a_of_type_Int = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject2).a();
+      localplb = new plb();
+      localplb.b = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject2).b();
+      localplb.jdField_a_of_type_Int = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject2).a();
       localObject1 = localSharpPDecoderHelper.a();
       if (localObject1 != null)
       {
-        localpgj.jdField_a_of_type_JavaLangString = ((String)localObject1);
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramImageKey.filePath, localpgj);
+        localplb.jdField_a_of_type_JavaLangString = ((String)localObject1);
+        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramImageKey.filePath, localplb);
       }
     }
     label267:
-    label547:
-    label836:
+    label553:
+    label842:
     for (;;)
     {
       localObject1 = (Integer)c.get(Integer.valueOf(j));
@@ -893,26 +893,26 @@ public class DecodeImageTask
       {
         i = ImageOptionSampleSize.computeSampleSize(paramImageKey.options, m, k);
         c.put(Integer.valueOf(j), Integer.valueOf(i));
-        if ((!b(localpgj.jdField_a_of_type_JavaLangString)) || (paramImageKey.options == null) || (!paramImageKey.options.needShowGifAnimation)) {
-          break label547;
+        if ((!b(localplb.jdField_a_of_type_JavaLangString)) || (paramImageKey.options == null) || (!paramImageKey.options.needShowGifAnimation)) {
+          break label553;
         }
-        ImageManagerLog.d(jdField_a_of_type_JavaLangString, "handlerSharpPDecodeMessage -- url: " + paramImageKey.url + " --is sharp gif：" + localpgj.jdField_a_of_type_JavaLangString);
+        ImageManagerLog.d(jdField_a_of_type_JavaLangString, "handlerSharpPDecodeMessage -- url: " + paramImageKey.url + " --" + "is sharp gif：" + localplb.jdField_a_of_type_JavaLangString);
         localObject2 = new NewGifImage(paramImageKey.filePath, m, k, i, paramImageKey.url);
         if (localObject2 == null) {
-          break label870;
+          break label876;
         }
       }
-      label711:
-      label852:
-      label867:
-      label870:
+      label717:
+      label858:
+      label873:
+      label876:
       for (localObject1 = ((NewGifImage)localObject2).getDrawable();; localObject1 = null)
       {
         ImageManagerEnv.g().reportImageDecodingResMTA("gif_collect", "sharp/gif");
         if (localObject1 != null)
         {
           if ((paramImageKey.options.extraProcessor == null) || (!(paramImageKey.options.extraProcessor instanceof NewGifDrawableSpecifiedRegionProcessor))) {
-            break label867;
+            break label873;
           }
           localObject1 = paramImageKey.options.extraProcessor.doProcess((Drawable)localObject1);
         }
@@ -966,27 +966,27 @@ public class DecodeImageTask
               else
               {
                 if (paramImageKey.options.imageConfig == null) {
-                  break label799;
+                  break label805;
                 }
                 localObject1 = paramImageKey.options.imageConfig;
               }
             }
             m /= i;
             i = k / i;
-            if (!SharpPUtils.b(localpgj.jdField_a_of_type_JavaLangString)) {
-              break label836;
+            if (!SharpPUtils.b(localplb.jdField_a_of_type_JavaLangString)) {
+              break label842;
             }
           }
           for (localObject1 = localSharpPDecoderHelper.c(m, i, (Bitmap.Config)localObject1);; localObject1 = localSharpPDecoderHelper.b(m, i, Bitmap.Config.ARGB_8888))
           {
             if (localObject1 != null) {
-              break label852;
+              break label858;
             }
             if (paramImageKey.options != null) {
               paramImageKey.options.errCode = ImageManager.getErrorString(paramImageKey, 104);
             }
             return false;
-            if (SharpPUtils.b(localpgj.jdField_a_of_type_JavaLangString))
+            if (SharpPUtils.b(localplb.jdField_a_of_type_JavaLangString))
             {
               localObject1 = Bitmap.Config.RGB_565;
               break;
@@ -996,10 +996,10 @@ public class DecodeImageTask
             if ((m != 0) && (k != 0) && (m / k == 2.0F))
             {
               localObject1 = Bitmap.Config.RGB_565;
-              break label711;
+              break label717;
             }
             localObject1 = Bitmap.Config.ARGB_8888;
-            break label711;
+            break label717;
           }
           a(BitmapReference.getBitmapReference((Bitmap)localObject1), paramImageKey, j, true);
           return true;
@@ -1008,11 +1008,11 @@ public class DecodeImageTask
     }
   }
   
-  private boolean a(ImageKey paramImageKey, pgj parampgj)
+  private boolean a(ImageKey paramImageKey, plb paramplb)
   {
     int i;
     NewGifImage localNewGifImage;
-    if ((b(parampgj.jdField_a_of_type_JavaLangString)) && (paramImageKey.options != null) && (paramImageKey.options.needShowGifAnimation))
+    if ((b(paramplb.jdField_a_of_type_JavaLangString)) && (paramImageKey.options != null) && (paramImageKey.options.needShowGifAnimation))
     {
       int j = paramImageKey.options.clipWidth;
       int k = paramImageKey.options.clipHeight;
@@ -1033,21 +1033,21 @@ public class DecodeImageTask
     }
     label363:
     label366:
-    for (parampgj = localNewGifImage.getDrawable();; parampgj = null)
+    for (paramplb = localNewGifImage.getDrawable();; paramplb = null)
     {
       ImageManagerEnv.g().reportImageDecodingResMTA("gif_collect", "normal/gif");
-      if (parampgj != null)
+      if (paramplb != null)
       {
         if ((paramImageKey.options == null) || (!(paramImageKey.options.extraProcessor instanceof NewGifDrawableSpecifiedRegionProcessor))) {
           break label363;
         }
-        parampgj = paramImageKey.options.extraProcessor.doProcess(parampgj);
+        paramplb = paramImageKey.options.extraProcessor.doProcess(paramplb);
       }
       for (;;)
       {
         i = paramImageKey.hashCodeEx();
-        ImageManager.getInstance().a(paramImageKey.urlKey, i, localNewGifImage, parampgj, paramImageKey.options);
-        setResult(8, new Object[] { parampgj, null, paramImageKey.urlKey, Integer.valueOf(i), localNewGifImage, parampgj });
+        ImageManager.getInstance().a(paramImageKey.urlKey, i, localNewGifImage, paramplb, paramImageKey.options);
+        setResult(8, new Object[] { paramplb, null, paramImageKey.urlKey, Integer.valueOf(i), localNewGifImage, paramplb });
         ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
         for (;;)
         {
@@ -1077,14 +1077,14 @@ public class DecodeImageTask
     }
   }
   
-  private boolean a(ImageKey paramImageKey, pgj parampgj, FileInputStream paramFileInputStream, BitmapFactory.Options paramOptions)
+  private boolean a(ImageKey paramImageKey, plb paramplb, FileInputStream paramFileInputStream, BitmapFactory.Options paramOptions)
   {
     int j = paramImageKey.hashCodeEx();
     Integer localInteger = (Integer)c.get(Integer.valueOf(j));
     int i;
     if (localInteger == null)
     {
-      i = ImageOptionSampleSize.computeSampleSize(paramImageKey.options, parampgj.jdField_a_of_type_Int, parampgj.b);
+      i = ImageOptionSampleSize.computeSampleSize(paramImageKey.options, paramplb.jdField_a_of_type_Int, paramplb.b);
       c.put(Integer.valueOf(j), Integer.valueOf(i));
       if ((paramImageKey.options == null) || (paramImageKey.options.imageConfig == null)) {
         break label434;
@@ -1093,8 +1093,8 @@ public class DecodeImageTask
       label90:
       if ((i == 1) && (paramOptions.inPreferredConfig == Bitmap.Config.ARGB_8888))
       {
-        float f = parampgj.b / parampgj.jdField_a_of_type_Int;
-        if (((f > 2.0F) || (f < 0.5F)) && (parampgj.b * parampgj.jdField_a_of_type_Int > ImageManagerEnv.g().getScreenHeight() * ImageManagerEnv.g().getScreenWidth())) {
+        float f = paramplb.b / paramplb.jdField_a_of_type_Int;
+        if (((f > 2.0F) || (f < 0.5F)) && (paramplb.b * paramplb.jdField_a_of_type_Int > ImageManagerEnv.g().getScreenHeight() * ImageManagerEnv.g().getScreenWidth())) {
           paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
         }
       }
@@ -1111,14 +1111,14 @@ public class DecodeImageTask
     }
     for (;;)
     {
-      paramOptions.outWidth = parampgj.jdField_a_of_type_Int;
-      paramOptions.outHeight = parampgj.b;
+      paramOptions.outWidth = paramplb.jdField_a_of_type_Int;
+      paramOptions.outHeight = paramplb.b;
       paramOptions.inPurgeable = true;
       paramOptions.inInputShareable = true;
       paramOptions.inSampleSize = i;
-      paramOptions.outMimeType = parampgj.jdField_a_of_type_JavaLangString;
-      parampgj = a(ImageManager.getInstance().getDecoder(), paramFileInputStream, paramOptions, false);
-      if ((parampgj != null) || (TextUtils.isEmpty(paramImageKey.filePath)) || (!SharpPUtils.a(new File(paramImageKey.filePath)))) {
+      paramOptions.outMimeType = paramplb.jdField_a_of_type_JavaLangString;
+      paramplb = a(ImageManager.getInstance().getDecoder(), paramFileInputStream, paramOptions, false);
+      if ((paramplb != null) || (TextUtils.isEmpty(paramImageKey.filePath)) || (!SharpPUtils.a(new File(paramImageKey.filePath)))) {
         break label517;
       }
       ImageManagerLog.e(jdField_a_of_type_JavaLangString, "decodeNormalImage --url=" + paramImageKey.url + "  is not normal picture,try sharpP decode");
@@ -1132,7 +1132,7 @@ public class DecodeImageTask
       i = localInteger.intValue();
       break;
       label434:
-      if (c(parampgj.jdField_a_of_type_JavaLangString))
+      if (c(paramplb.jdField_a_of_type_JavaLangString))
       {
         paramOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
         break label90;
@@ -1140,15 +1140,15 @@ public class DecodeImageTask
       paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
       break label90;
       label466:
-      if ((parampgj.jdField_a_of_type_Int != 0) && (parampgj.b != 0) && (parampgj.jdField_a_of_type_Int / parampgj.b == 2.0F)) {
+      if ((paramplb.jdField_a_of_type_Int != 0) && (paramplb.b != 0) && (paramplb.jdField_a_of_type_Int / paramplb.b == 2.0F)) {
         paramOptions.inPreferredConfig = Bitmap.Config.RGB_565;
       } else {
         paramOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
       }
     }
     label517:
-    a(parampgj, paramImageKey, j, true);
-    return parampgj != null;
+    a(paramplb, paramImageKey, j, true);
+    return paramplb != null;
   }
   
   private static boolean a(String paramString)
@@ -1227,16 +1227,16 @@ public class DecodeImageTask
       bool1 = bool2;
       if (paramImageKey.filePath != null)
       {
-        ImageManagerLog.d(jdField_a_of_type_JavaLangString, "decodeSharpP -- url: " + paramImageKey.url + " --is SharpP");
+        ImageManagerLog.d(jdField_a_of_type_JavaLangString, "decodeSharpP -- url: " + paramImageKey.url + " --" + "is SharpP");
         bool1 = a(paramImageKey);
         if ((!bool1) && (!SharpPUtils.a(new File(paramImageKey.filePath)))) {
-          break label206;
+          break label218;
         }
         if (!bool1)
         {
           ImageManager.getInstance().a(paramImageKey);
           setResult(9, new Object[0]);
-          ImageManagerLog.e(jdField_a_of_type_JavaLangString, "decodeSharpP -- url: " + paramImageKey.url + " --  decode sharpp failed.");
+          ImageManagerLog.e(jdField_a_of_type_JavaLangString, "decodeSharpP -- url: " + paramImageKey.url + " --" + "  decode sharpp failed.");
           ImageTaskTracer.addImageDecodeFailedRecord(paramImageKey.hashCodeEx());
           ImageTaskTracer.removeImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx());
           ImageTracer.decodeFail(paramImageKey.url);
@@ -1247,8 +1247,8 @@ public class DecodeImageTask
       }
     }
     return bool1;
-    label206:
-    ImageManagerLog.w(jdField_a_of_type_JavaLangString, "decodeSharpP -- url: " + paramImageKey.url + " --is not really SharpP,so try normal decode");
+    label218:
+    ImageManagerLog.w(jdField_a_of_type_JavaLangString, "decodeSharpP -- url: " + paramImageKey.url + " --" + "is not really SharpP,so try normal decode");
     return false;
   }
   
@@ -1324,7 +1324,7 @@ public class DecodeImageTask
     }
   }
   
-  public static DecodeImageTask obtain(phh paramphh)
+  public static DecodeImageTask obtain(plz paramplz)
   {
     if (needRecycle) {}
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -1335,10 +1335,10 @@ public class DecodeImageTask
         jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask = jdField_a_of_type_ComTencentComponentMediaImageDecodeImageTask.jdField_b_of_type_ComTencentComponentMediaImageDecodeImageTask;
         localDecodeImageTask.jdField_b_of_type_ComTencentComponentMediaImageDecodeImageTask = null;
         jdField_a_of_type_Int -= 1;
-        localDecodeImageTask.setImageTask(paramphh);
+        localDecodeImageTask.setImageTask(paramplz);
         return localDecodeImageTask;
       }
-      return new DecodeImageTask(paramphh);
+      return new DecodeImageTask(paramplz);
     }
   }
   
@@ -1363,7 +1363,7 @@ public class DecodeImageTask
       ImageManager.getInstance().traceImageFile(true);
       if (!ImageManagerEnv.g().getCurrentLoadingImgStatus())
       {
-        phi.a().a(this);
+        pma.a().a(this);
         return;
       }
       startDecodeTask();
@@ -1409,7 +1409,7 @@ public class DecodeImageTask
       {
         if (!ImageManagerEnv.g().getCurrentLoadingImgStatus())
         {
-          phi.a().a(this);
+          pma.a().a(this);
           return;
         }
         startDecodeTask();
@@ -1447,11 +1447,11 @@ public class DecodeImageTask
     if (this.mImageKey != null) {
       ImageTaskTracer.addImageDecodeThreadPendingRecord(this.mImageKey.hashCodeEx());
     }
-    pgi localpgi = new pgi(this, this.mImageKey);
+    pla localpla = new pla(this, this.mImageKey);
     if ((this.mImageKey != null) && (this.mImageKey.options != null) && (this.mImageKey.options.priority)) {}
     for (boolean bool = true;; bool = false)
     {
-      ImageManager.post(localpgi, bool);
+      ImageManager.post(localpla, bool);
       return;
     }
   }

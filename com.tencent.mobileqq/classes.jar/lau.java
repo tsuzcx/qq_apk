@@ -1,26 +1,33 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.PublicAccountManager;
 
-class lau
-  extends AnimateUtils.AnimationAdapter
+public class lau
+  extends BroadcastReceiver
 {
-  lau(lat paramlat, View paramView) {}
+  public lau(PublicAccountManager paramPublicAccountManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_Lat.a.e, 0.0F);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setAnimationListener(new lav(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    ReadInJoyNaviController.a(this.jdField_a_of_type_Lat.a).setAlpha(1.0F);
+    if (this.a.a == 2)
+    {
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 14, i, paramIntent);
+    }
+    try
+    {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
+    }
   }
 }
 

@@ -1,16 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.TimeUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.XListView.DrawFinishedListener;
+import java.util.ArrayList;
 import java.util.List;
 
 public class mqa
-  extends ReadInJoyObserver
+  implements XListView.DrawFinishedListener
 {
-  public mqa(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController) {}
+  public mqa(FastWebActivity paramFastWebActivity) {}
   
-  public void a(boolean paramBoolean, List paramList)
+  public void a()
   {
-    if (paramBoolean) {
-      ReadInJoyFeedsHeaderViewController.a(this.a, ReadInJoyFeedsHeaderViewController.a(this.a, paramList));
+    if (FastWebActivity.f(this.a))
+    {
+      FastWebActivity.c(this.a, false);
+      FastWebActivity.e(this.a);
+      long l = TimeUtil.a("FastWebActivity.show");
+      TimeUtil.b("fast_web_show_light_house_draw_finish");
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(FastWebActivity.a(this.a));
+      ThreadManager.post(new mqb(this, l, localArrayList), 5, null, false);
     }
   }
 }

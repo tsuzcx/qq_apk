@@ -1,23 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
+import com.tencent.mobileqq.troop.data.TroopAioTips;
 
-public class wfe
+class wfe
   implements Runnable
 {
-  public wfe(BlessResultActivity paramBlessResultActivity) {}
+  wfe(wey paramwey) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "VideoRedbag, BlessResultActivity doOnResume, sendRealNameCheckReq");
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      RedBagVideoManager.a((QQAppInterface)localAppRuntime);
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.a().a(true);
+      this.a.a.a.a().a(0L);
     }
   }
 }

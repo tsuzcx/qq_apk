@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aahf;
+import aanw;
 import android.content.Context;
 import android.graphics.PointF;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -28,7 +28,7 @@ public class ARLocalControl
   private void a(Context paramContext, int paramInt1, int paramInt2, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo)
   {
     QLog.i("AREngine_ARLocalControl", 1, "initFaceRecogAsync start.");
-    ThreadManager.postImmediately(new aahf(this, paramInt1, paramInt2, paramContext, paramARScanStarFaceConfigInfo, System.currentTimeMillis()), null, true);
+    ThreadManager.postImmediately(new aanw(this, paramInt1, paramInt2, paramContext, paramARScanStarFaceConfigInfo, System.currentTimeMillis()), null, true);
   }
   
   public void a()

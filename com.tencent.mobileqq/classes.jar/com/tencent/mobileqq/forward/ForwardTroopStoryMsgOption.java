@@ -50,7 +50,7 @@ public class ForwardTroopStoryMsgOption
     ((RelativeLayout)localObject3).addView(localURLImageView, new RelativeLayout.LayoutParams(-1, -1));
     Object localObject5 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
     ((ImageView)localObject5).setScaleType(ImageView.ScaleType.FIT_XY);
-    ((ImageView)localObject5).setImageResource(2130838749);
+    ((ImageView)localObject5).setImageResource(2130838758);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     int m = DisplayUtil.a(this.jdField_a_of_type_AndroidAppActivity, 8.0F);
     localLayoutParams.setMargins(0, m, m, 0);

@@ -7,7 +7,7 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.av.service.IAVServiceCallback.Stub;
-import jjk;
+import jln;
 
 public abstract class IGVServiceForQQ$Stub
   extends Binder
@@ -27,7 +27,7 @@ public abstract class IGVServiceForQQ$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IGVServiceForQQ))) {
       return (IGVServiceForQQ)localIInterface;
     }
-    return new jjk(paramIBinder);
+    return new jln(paramIBinder);
   }
   
   public IBinder asBinder()
@@ -85,7 +85,7 @@ public abstract class IGVServiceForQQ$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.gvideo.IGVServiceForQQ.Stub
  * JD-Core Version:    0.7.0.1
  */

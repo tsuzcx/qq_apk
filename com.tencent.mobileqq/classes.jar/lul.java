@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeRecommendBig;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.List;
 
 public class lul
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lul(FeedItemCellTypeRecommendBig paramFeedItemCellTypeRecommendBig) {}
+  public lul(InterestLabelInfoModule paramInterestLabelInfoModule) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (paramView != null) {
-      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
+    List localList = this.a.a.a(InterestLabelInfo.class, true, null, null, null, null, null, null);
+    this.a.c(localList);
   }
 }
 

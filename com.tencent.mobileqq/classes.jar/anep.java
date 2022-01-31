@@ -1,16 +1,18 @@
-import android.os.Bundle;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class anep
-  implements Runnable
+public final class anep
+  implements Parcelable.Creator
 {
-  public anep(SmartDeviceIPCHost paramSmartDeviceIPCHost, Bundle paramBundle) {}
-  
-  public void run()
+  public PluginRecord a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a.add(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.b();
+    return new PluginRecord(paramParcel);
+  }
+  
+  public PluginRecord[] a(int paramInt)
+  {
+    return new PluginRecord[paramInt];
   }
 }
 

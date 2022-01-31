@@ -1,18 +1,43 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-import dov.com.qq.im.cropvideo.RenderFilter;
+import android.app.Activity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.qq.im.QIMCameraCaptureUnit;
+import dov.com.qq.im.setting.ICameraEntrance;
+import dov.com.qq.im.setting.IQIMCameraContainer;
 
 public class anqn
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+  implements Runnable
 {
-  public anqn(CropVideoActivity paramCropVideoActivity) {}
+  public anqn(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, int paramInt) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void run()
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    CropVideoActivity.a(this.a).b(f, f, 1.0F);
-    return true;
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
+          Activity localActivity = this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a();
+          if ((localActivity != null) && (!localActivity.isFinishing())) {
+            this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.jdField_a_of_type_DovComQqImSettingICameraEntrance.a(2);
+          }
+        } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.b);
+        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.y();
+        return;
+        QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
+        this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.e();
+      } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.b);
+      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.x();
+      return;
+      QQToast.a(BaseApplicationImpl.getContext(), "拍照出现异常，请重试", 0).a();
+    } while (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.b);
+    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.x();
   }
 }
 

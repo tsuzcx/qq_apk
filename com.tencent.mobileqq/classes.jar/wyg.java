@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.app.UniPayHandler.UniPayUpdateListener;
 
 public class wyg
-  implements DialogInterface.OnClickListener
+  extends UniPayHandler.UniPayUpdateListener
 {
-  public wyg(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wyg(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    this.a.runOnUiThread(new wyh(this));
+  }
 }
 
 

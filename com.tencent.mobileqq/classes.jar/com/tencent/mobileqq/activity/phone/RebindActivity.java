@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import wvi;
+import xaw;
 
 public class RebindActivity
   extends DialogBaseActivity
@@ -43,7 +43,7 @@ public class RebindActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130969169);
+    setContentView(2130969167);
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("cmd_param_is_from_uni", false);
     this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("cmd_param_is_from_change_bind", false);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
@@ -51,15 +51,15 @@ public class RebindActivity
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("k_number");
     this.jdField_b_of_type_Int = getIntent().getIntExtra("kBindType", 0);
     setTitle("验证手机号码");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365486));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365491));
     paramBundle = this.jdField_b_of_type_JavaLangString + " " + this.jdField_a_of_type_JavaLangString;
     ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-31676);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(getResources().getString(2131428424, new Object[] { paramBundle, getIntent().getStringExtra("k_uin"), this.app.getCurrentAccountUin() }));
     localSpannableStringBuilder.setSpan(localForegroundColorSpan, 4, paramBundle.length() + 4, 33);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365487));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365492));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131365488));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131365493));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     return true;
   }
@@ -78,7 +78,7 @@ public class RebindActivity
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton) {
       if (!NetworkUtil.d(this)) {
-        b(2131434613);
+        b(2131434629);
       }
     }
     while (paramView != this.jdField_b_of_type_AndroidWidgetButton)
@@ -86,11 +86,11 @@ public class RebindActivity
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wvi(this);
+        this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new xaw(this);
         this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
-      a(2131434453, 1000L, true);
+      a(2131434469, 1000L, true);
       return;
     }
     finish();

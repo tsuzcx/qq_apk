@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler;
-import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.apollo.ApolloRender;
 
-public class yrd
+public final class yrd
   implements Runnable
 {
-  public yrd(CmGameSubProcessHandler paramCmGameSubProcessHandler, String paramString) {}
+  public yrd(ApolloRender paramApolloRender, View paramView, int paramInt) {}
   
   public void run()
   {
-    if (CmGameSubProcessHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameSubProcessHandler) != null) {
-      CmGameSubProcessHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameSubProcessHandler).a(this.jdField_a_of_type_JavaLangString, CmGameSubProcessHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameSubProcessHandler));
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
   }
 }
 

@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class wxe
-  implements AbsListView.OnScrollListener
+  implements View.OnTouchListener
 {
-  public wxe(PhotoListActivity paramPhotoListActivity) {}
+  public wxe(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView != null) && (this.a.jdField_a_of_type_Wxw != null) && (this.a.c != null)) {
-      PhotoListActivity.a(this.a);
-    }
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

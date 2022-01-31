@@ -1,38 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.base.download.Downloader;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Output;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.music.BlessVoiceChangeManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aoco
-  extends FileDownloadTask
+  implements Runnable
 {
-  public aoco(BlessVoiceChangeManager paramBlessVoiceChangeManager, Downloader paramDownloader, long paramLong)
-  {
-    super(paramDownloader);
-  }
+  private aoco(EditVideoGuide paramEditVideoGuide) {}
   
-  protected void a(FileDownloadTask.Output paramOutput)
+  public void run()
   {
-    if (paramOutput.jdField_a_of_type_Int == 0)
+    if (this.a.a.compareAndSet(true, false))
     {
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
-      }
-      BlessVoiceChangeManager.a().sendMessage(Message.obtain(BlessVoiceChangeManager.a(), 1, null));
-    }
-    for (;;)
-    {
-      BlessVoiceChangeManager.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicBlessVoiceChangeManager);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramOutput.jdField_a_of_type_Int + ", errMsg:" + paramOutput.jdField_a_of_type_JavaLangString);
-      }
+      this.a.a(false);
+      this.a.c();
     }
   }
 }

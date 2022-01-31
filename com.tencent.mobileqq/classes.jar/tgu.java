@@ -1,44 +1,20 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import java.util.List;
 
 public class tgu
-  extends CardObserver
+  implements View.OnClickListener
 {
-  public tgu(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public tgu(NearbyActivity paramNearbyActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (!this.a.a.a.equals(paramString)) {
-      return;
-    }
-    this.a.e();
-    if (paramBoolean)
+    int i = 0;
+    while (i < this.a.a.size())
     {
-      this.a.a(2131433470, 2);
-      return;
-    }
-    this.a.a(2131433469, 1);
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.c.a()))
-    {
-      this.a.c.setOnCheckedChangeListener(null);
-      this.a.c.setChecked(paramBoolean2);
-      this.a.c.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.c.a()))
-    {
-      this.a.c.setOnCheckedChangeListener(null);
-      this.a.c.setChecked(paramBoolean2);
-      this.a.c.setOnCheckedChangeListener(this.a);
+      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
+      i += 1;
     }
   }
 }

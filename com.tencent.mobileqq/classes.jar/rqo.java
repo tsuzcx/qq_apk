@@ -1,23 +1,21 @@
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
 public class rqo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rqo(BaseChatPie paramBaseChatPie) {}
+  public rqo(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.d.setText(this.a.a.d);
-    if (AppSetting.b)
-    {
-      String str = this.a.d.getText().toString();
-      this.a.d.setContentDescription(str);
-      this.a.a().setTitle(this.a.d.getText());
-    }
+    paramView = QZoneHelper.UserInfo.a();
+    paramView.a = this.a.app.getCurrentAccountUin();
+    paramView.b = this.a.app.getCurrentNickname();
+    QZoneHelper.a(this.a, paramView);
   }
 }
 

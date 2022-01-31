@@ -1,36 +1,21 @@
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import java.util.Set;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import mqq.os.MqqHandler;
 
-public class meg
-  implements Runnable
+class meg
+  implements DialogInterface.OnClickListener
 {
-  public meg(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  meg(mef parammef, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((VideoFeedsPlayManager.a(this.a) != null) && (VideoFeedsPlayManager.a(this.a).c() == 2))
-    {
-      this.a.b(4);
-      VideoFeedsPlayManager.a(this.a, 8);
-      VideoFeedsPlayManager.a(this.a).d();
-      if (VideoFeedsPlayManager.f(this.a))
-      {
-        String str = VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.h;
-        if (VideoFeedsPlayManager.a(this.a).contains(str)) {
-          break label125;
-        }
-        VideoFeedsPlayManager.a(this.a).add(str);
-        VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.a;
-      }
-    }
-    return;
-    label125:
-    VideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.c;
+    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Mef.a.a, VideoFeedsAdapter.a(this.jdField_a_of_type_Mef.a).getIntent().getExtras().getString("thumbfile_md5") + ".mp4", true));
   }
 }
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar;
 
-import aadc;
+import aajt;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class FramePerformanceMonitor
 {
   private int jdField_a_of_type_Int = 1000;
-  private aadc jdField_a_of_type_Aadc;
+  private aajt jdField_a_of_type_Aajt;
   private FramePerformanceMonitor.FrameRefreshListener jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$FrameRefreshListener;
   private GapDataCollector jdField_a_of_type_ComTencentMobileqqArGapDataCollector = new GapDataCollector(100);
   
@@ -16,9 +16,9 @@ public class FramePerformanceMonitor
     if (this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$FrameRefreshListener == null) {
       return;
     }
-    this.jdField_a_of_type_Aadc = new aadc(this, null);
-    aadc.a(this.jdField_a_of_type_Aadc, true);
-    ThreadManager.post(this.jdField_a_of_type_Aadc, 8, null, true);
+    this.jdField_a_of_type_Aajt = new aajt(this, null);
+    aajt.a(this.jdField_a_of_type_Aajt, true);
+    ThreadManager.post(this.jdField_a_of_type_Aajt, 8, null, true);
   }
   
   public void a(int paramInt)
@@ -38,10 +38,10 @@ public class FramePerformanceMonitor
   
   public void b()
   {
-    if (this.jdField_a_of_type_Aadc != null)
+    if (this.jdField_a_of_type_Aajt != null)
     {
-      aadc.a(this.jdField_a_of_type_Aadc, false);
-      this.jdField_a_of_type_Aadc = null;
+      aajt.a(this.jdField_a_of_type_Aajt, false);
+      this.jdField_a_of_type_Aajt = null;
     }
   }
 }

@@ -178,7 +178,7 @@ public class TroopUtils
   
   public static Drawable a(Resources paramResources, int paramInt)
   {
-    return a(paramResources, paramInt, paramResources.getDrawable(2130845541));
+    return a(paramResources, paramInt, paramResources.getDrawable(2130845622));
   }
   
   public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable)
@@ -443,7 +443,7 @@ public class TroopUtils
     case 9: 
     case 10: 
     default: 
-      localQQToastNotifier.a(2131434466, i, 0, 1);
+      localQQToastNotifier.a(2131434482, i, 0, 1);
       return;
     case 2: 
       localQQToastNotifier.a("该群群主拒绝添加任何成员", i, 0, 1);
@@ -458,7 +458,7 @@ public class TroopUtils
       localQQToastNotifier.a("该群不存在或者被删除", i, 0, 1);
       return;
     }
-    localQQToastNotifier.a(2131434432, i, 0, 1);
+    localQQToastNotifier.a(2131434448, i, 0, 1);
   }
   
   public static void a(Context paramContext, Bundle paramBundle, int paramInt)
@@ -689,7 +689,7 @@ public class TroopUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopUtils
  * JD-Core Version:    0.7.0.1
  */

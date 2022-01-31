@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.util;
 
-import ahwv;
+import aibm;
 import android.content.Context;
 import android.os.SystemClock;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -130,7 +130,7 @@ public class VADHelper
     QLog.i(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
     if ((jdField_b_of_type_Boolean) && (!c))
     {
-      DialogUtil.a(paramContext, 230, "耗时统计", localStringBuilder.toString(), "", "ok", new ahwv(), null).show();
+      DialogUtil.a(paramContext, 230, "耗时统计", localStringBuilder.toString(), "", "ok", new aibm(), null).show();
       c = true;
     }
     b();

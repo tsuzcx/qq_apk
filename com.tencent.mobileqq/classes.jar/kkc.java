@@ -1,28 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import com.tencent.av.videoeffect.FilterProcess;
 
-public final class kkc
-  implements Runnable
+public class kkc
 {
-  public kkc(QQAppInterface paramQQAppInterface, long paramLong) {}
+  public int a;
+  int b;
   
-  public void run()
+  public kkc(FilterProcess paramFilterProcess, int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "RedTouchExManager_GetTime", 0);
-    if (localObject != null)
-    {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("last_get_time", System.currentTimeMillis() / 1000L);
-      ((SharedPreferences.Editor)localObject).putLong("interval_time", this.jdField_a_of_type_Long);
-      ((SharedPreferences.Editor)localObject).commit();
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kkc
  * JD-Core Version:    0.7.0.1
  */

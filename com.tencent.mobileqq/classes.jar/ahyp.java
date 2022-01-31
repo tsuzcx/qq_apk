@@ -1,24 +1,35 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.FTSSearchResultItem;
+import java.util.Comparator;
 
 public class ahyp
-  implements Runnable
+  implements Comparator
 {
-  public ahyp(PtvTemplateManager paramPtvTemplateManager, String paramString) {}
+  public ahyp(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
   
-  public void run()
+  public int a(FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem1, FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem2)
   {
-    FileUtils.a(PtvTemplateManager.b.getPath() + File.separator, "doodle_template_new.cfg", this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "save Config to file finish.");
+    int j = Long.signum(paramFTSSearchResultItem1.jdField_a_of_type_Int - paramFTSSearchResultItem2.jdField_a_of_type_Int);
+    int i = j;
+    if (j == 0)
+    {
+      j = Long.signum(paramFTSSearchResultItem1.b - paramFTSSearchResultItem2.b);
+      i = j;
+      if (j == 0)
+      {
+        j = Long.signum(paramFTSSearchResultItem1.c - paramFTSSearchResultItem2.c);
+        i = j;
+        if (j == 0) {
+          i = Long.signum(-paramFTSSearchResultItem1.jdField_a_of_type_Long + paramFTSSearchResultItem2.jdField_a_of_type_Long);
+        }
+      }
     }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahyp
  * JD-Core Version:    0.7.0.1
  */

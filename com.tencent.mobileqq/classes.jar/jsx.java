@@ -1,65 +1,24 @@
-import android.content.SharedPreferences;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.av.ui.BeautyToolbar;
+import com.tencent.av.widget.BidirectionSeekBar;
 
 public class jsx
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public jsx(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jsx(BeautyToolbar paramBeautyToolbar) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
-    for (;;)
+    if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
     {
-      return;
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
-      {
-        Object localObject = SharedPreUtils.d(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).getString("AvWeakNet_video_ConfigContent", "");
-        if (((String)localObject).length() == 0)
-        {
-          QLog.d(this.a.c, 1, "cannot Read AvWeaknetConfig");
-          return;
-        }
-        try
-        {
-          localObject = new JSONObject((String)localObject);
-          if (((JSONObject)localObject).has("ground_glass_switch_android"))
-          {
-            if (((JSONObject)localObject).getInt("ground_glass_switch_android") == 1) {
-              this.a.jdField_a_of_type_ComTencentAvVideoController.a().aA = true;
-            }
-            if (((JSONObject)localObject).has("ground_glass_default_interval")) {
-              this.a.jdField_a_of_type_ComTencentAvVideoController.a().Q = ((JSONObject)localObject).getInt("ground_glass_default_interval");
-            }
-            if (((JSONObject)localObject).has("ground_glass_default_timeout_rule")) {
-              this.a.jdField_a_of_type_ComTencentAvVideoController.a().R = ((JSONObject)localObject).getInt("ground_glass_default_timeout_rule");
-            }
-            QLog.d(this.a.c, 1, "AsyncReadDoubleGlassConfig mIsGlassCanUse=" + this.a.jdField_a_of_type_ComTencentAvVideoController.a().aA + ", mCurrentVideoGlassWaitTime=" + this.a.jdField_a_of_type_ComTencentAvVideoController.a().Q + ", mCurrentDefaultTimeOutRule=" + this.a.jdField_a_of_type_ComTencentAvVideoController.a().R);
-            if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().aA) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().Q > 0))
-            {
-              DoubleVideoCtrlUI.a(this.a);
-              return;
-            }
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+      this.a.mIs1stShow = false;
+      this.a.updateTip(this.a.mSeek.getProgress());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jsx
  * JD-Core Version:    0.7.0.1
  */

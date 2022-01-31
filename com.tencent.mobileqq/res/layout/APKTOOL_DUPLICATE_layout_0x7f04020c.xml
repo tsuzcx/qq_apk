@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020778" android:layout_width="fill_parent" android:layout_height="42.0dip"
+<LinearLayout android:orientation="vertical" android:paddingTop="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020750" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="返回" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="标题标题" android:layout_centerInParent="true" />
-    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2e" android:layout_centerInParent="true">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020752" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d36" android:text="天天酷跑钻石 × 200" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0088" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d37" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:textSize="25.0sp" android:textStyle="bold" android:textColor="#ff333333" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d38" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="￥" />
+            <TextView android:textSize="50.0sp" android:textStyle="bold" android:textColor="#ff333333" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d39" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="19.50" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d38" />
+            <TextView android:textSize="16.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d3a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="Q币" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d39" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a0d39" />
+        </RelativeLayout>
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d3b" android:text="溢价" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d37" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008a" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d3c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="￥10.00" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d37" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0d3b" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008b" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d3d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0sp" android:textColor="#ffff8444" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d3e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ钱包立减优惠5.00元" android:textAlignment="center" />
+        <ImageView android:layout_gravity="center_vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020740" android:layout_width="7.0dip" android:layout_height="13.0dip" android:layout_marginLeft="4.0dip" />
     </LinearLayout>
-    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d30" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="关闭" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d3f" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a8" />
+    </LinearLayout>
+</LinearLayout>

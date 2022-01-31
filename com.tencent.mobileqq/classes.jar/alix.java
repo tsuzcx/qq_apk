@@ -1,20 +1,46 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.downloadnew.MyAppDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class alix
-  implements View.OnClickListener
+  implements Runnable
 {
-  public alix(MyAppDialog paramMyAppDialog, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  public alix(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog, this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
+    if (this.a.a == null) {}
+    for (;;)
+    {
+      return;
+      Object localObject2 = null;
+      try
+      {
+        Bitmap localBitmap = BitmapFactory.decodeResource(this.a.a, 2130840658);
+        if (localBitmap == null) {
+          continue;
+        }
+        localBitmap = AuthorityUtil.a(this.a, localBitmap, 50, 50);
+        if (localBitmap == null) {
+          continue;
+        }
+        this.a.runOnUiThread(new aliy(this, localBitmap));
+        return;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        for (;;)
+        {
+          Object localObject1 = localObject2;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("BindGroupConfirmActivity", 2, "initUI decodeResource has OutOfMemoryError!");
+            localObject1 = localObject2;
+          }
+        }
+      }
     }
   }
 }

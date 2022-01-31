@@ -1,15 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.RainView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppJumpManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class mgq
-  implements Action.OnActionEndListener
+  implements AbsListView.OnScrollListener
 {
-  public mgq(RainView paramRainView) {}
+  public mgq(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void a()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.b(this.a);
+    if ((VideoFeedsPlayActivity.j(this.a)) && (paramInt == 1)) {
+      VideoFeedsPlayActivity.b(this.a);
+    }
+    if ((VideoFeedsPlayActivity.a(this.a) != null) && (paramInt == 1)) {
+      VideoFeedsPlayActivity.a(this.a).a(1);
+    }
+    if (paramInt == 1) {
+      VideoFeedsPlayActivity.g(this.a, true);
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    VideoFeedsPlayActivity.g(this.a, false);
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,29 +1,42 @@
-import com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
 public class ngg
-  implements URLDrawable.URLDrawableListener
+  implements EmoticonCallback
 {
-  public ngg(UrlDrawableDownloadJob paramUrlDrawableDownloadJob) {}
+  public ngg(StoryInputBarView paramStoryInputBarView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(EmoticonInfo paramEmoticonInfo)
   {
-    UrlDrawableDownloadJob.c(this.a, false);
+    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
+    }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public boolean a(EmoticonInfo paramEmoticonInfo)
   {
-    UrlDrawableDownloadJob.b(this.a, false);
+    return false;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void b()
   {
-    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
-    UrlDrawableDownloadJob.a(this.a, true);
+    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      TextUtils.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    }
   }
+  
+  public void b(EmoticonInfo paramEmoticonInfo) {}
+  
+  public void c() {}
+  
+  public void setting() {}
 }
 
 

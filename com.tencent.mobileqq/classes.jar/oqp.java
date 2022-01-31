@@ -1,14 +1,19 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
 public class oqp
-  implements Runnable
+  implements AdapterView.OnItemSelectedListener
 {
-  public oqp(SegmentList paramSegmentList) {}
+  public oqp(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public void run()
+  public void onItemSelected(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.springBackOverScrollHeaderView();
+    HorizontalSelectColorLayout.a(this.a, paramInt);
   }
+  
+  public void onNothingSelected(AdapterView paramAdapterView) {}
 }
 
 

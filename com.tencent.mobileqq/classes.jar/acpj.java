@@ -1,14 +1,28 @@
-import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class acpj
-  implements BubblePopupWindow.OnDismissListener
+public class acpj
+  extends FriendListObserver
 {
-  acpj(acph paramacph, View paramView) {}
+  public acpj(EquipLockWebImpl paramEquipLockWebImpl) {}
   
-  public void a()
+  protected void onGetRecommendDeviceList(boolean paramBoolean, ArrayList paramArrayList)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if (paramBoolean) {
+      EquipmentLockImpl.a().a(paramArrayList);
+    }
+    for (;;)
+    {
+      EquipLockWebImpl.a(this.a, false);
+      EquipLockWebImpl.b(this.a, false);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
+      }
+    }
   }
 }
 

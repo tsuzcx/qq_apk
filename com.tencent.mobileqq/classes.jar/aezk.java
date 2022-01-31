@@ -1,19 +1,15 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV.IOnSizeChangeCallback;
 
 public class aezk
-  implements View.OnTouchListener
+  implements MonitorSizeChangeHSV.IOnSizeChangeCallback
 {
-  public aezk(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aezk(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.a.c();
-    PlayOperationViewModel.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    ChooseInterestTagActivity.a(this.a).post(new aezl(this, paramInt1));
   }
 }
 

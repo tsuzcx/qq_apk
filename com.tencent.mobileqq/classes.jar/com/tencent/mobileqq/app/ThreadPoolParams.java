@@ -5,19 +5,13 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class ThreadPoolParams
 {
-  public int a;
-  public String a;
-  public BlockingQueue a;
-  public int b = 5;
-  public int c = 20;
-  public int d = 1;
-  
-  public ThreadPoolParams()
-  {
-    this.jdField_a_of_type_JavaLangString = "default_name";
-    this.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue(128);
-  }
+  public static final String DEFAULT_THREAD_NAME = "default_name";
+  public int corePoolsize = 3;
+  public int keepAliveTime = 1;
+  public int maxPooolSize = 5;
+  public String poolThreadName = "default_name";
+  public int priority = 5;
+  public BlockingQueue<Runnable> queue = new LinkedBlockingQueue(128);
 }
 
 

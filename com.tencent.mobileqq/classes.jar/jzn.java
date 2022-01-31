@@ -1,35 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.QavPanelSoundWaveView;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
 public class jzn
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public jzn(QavPanel paramQavPanel) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public jzn(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
-          break;
-        }
-      } while ((this.a.a == null) || (!this.a.c));
-      this.a.a.f();
-      return;
-    } while ((!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) || (this.a.a == null));
-    this.a.a.g();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jzn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,14 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.util.SurfaceViewUtil;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.mobileqq.video.IMediaPlayer.OnPreparedListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 
 public class yev
-  implements IMediaPlayer.OnPreparedListener
+  implements Runnable
 {
-  public yev(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public yev(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity, int paramInt) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
-    }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
-      FMToastUtil.a(2131437402);
-    }
-    do
-    {
-      do
-      {
-        return;
-        SurfaceViewUtil.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.d(), this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.e());
-      } while (this.a.j != 10);
-      paramIMediaPlayer.a(localSurfaceHolder);
-      this.a.jdField_a_of_type_Int = paramIMediaPlayer.c();
-    } while (this.a.jdField_a_of_type_Int <= 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
-    }
-    this.a.d.setText(ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
-    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
+    SosoInterface.a(new yew(this, 0, false, true, 60000L, false, false, "CreateFaceToFaceDiscussionActivity"));
   }
 }
 

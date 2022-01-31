@@ -300,7 +300,7 @@ public class SearchHistoryManager
     //   679: goto +351 -> 1030
     //   682: aload 11
     //   684: getfield 175	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   687: getstatic 251	com/tencent/mobileqq/app/AppConstants:ar	Ljava/lang/String;
+    //   687: getstatic 251	com/tencent/mobileqq/app/AppConstants:as	Ljava/lang/String;
     //   690: invokestatic 255	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   693: ifeq +347 -> 1040
     //   696: aload_0
@@ -735,7 +735,7 @@ public class SearchHistoryManager
     //   505: goto -311 -> 194
     //   508: aload_1
     //   509: getfield 175	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   512: getstatic 251	com/tencent/mobileqq/app/AppConstants:ar	Ljava/lang/String;
+    //   512: getstatic 251	com/tencent/mobileqq/app/AppConstants:as	Ljava/lang/String;
     //   515: invokestatic 255	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   518: ifeq -324 -> 194
     //   521: aload_1

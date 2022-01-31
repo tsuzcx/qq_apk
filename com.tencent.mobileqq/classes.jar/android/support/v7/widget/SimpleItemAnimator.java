@@ -40,29 +40,44 @@ public abstract class SimpleItemAnimator
   
   public boolean animateDisappearance(@NonNull RecyclerView.ViewHolder paramViewHolder, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo1, @Nullable RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo2)
   {
-    int k = paramItemHolderInfo1.left;
-    int m = paramItemHolderInfo1.top;
-    paramItemHolderInfo1 = paramViewHolder.itemView;
+    int j = 0;
     int i;
-    if (paramItemHolderInfo2 == null)
+    label14:
+    int k;
+    if (paramItemHolderInfo1 == null)
     {
-      i = paramItemHolderInfo1.getLeft();
+      i = 0;
+      if (paramItemHolderInfo1 != null) {
+        break label105;
+      }
+      paramItemHolderInfo1 = paramViewHolder.itemView;
       if (paramItemHolderInfo2 != null) {
-        break label103;
+        break label114;
+      }
+      k = paramItemHolderInfo1.getLeft();
+      label29:
+      if (paramItemHolderInfo2 != null) {
+        break label123;
       }
     }
-    label103:
-    for (int j = paramItemHolderInfo1.getTop();; j = paramItemHolderInfo2.top)
+    label105:
+    label114:
+    label123:
+    for (int m = paramItemHolderInfo1.getTop();; m = paramItemHolderInfo2.top)
     {
-      if ((paramViewHolder.isRemoved()) || ((k == i) && (m == j))) {
-        break label112;
+      if ((paramViewHolder.isRemoved()) || ((i == k) && (j == m))) {
+        break label132;
       }
-      paramItemHolderInfo1.layout(i, j, paramItemHolderInfo1.getWidth() + i, paramItemHolderInfo1.getHeight() + j);
-      return animateMove(paramViewHolder, k, m, i, j);
-      i = paramItemHolderInfo2.left;
+      paramItemHolderInfo1.layout(k, m, paramItemHolderInfo1.getWidth() + k, paramItemHolderInfo1.getHeight() + m);
+      return animateMove(paramViewHolder, i, j, k, m);
+      i = paramItemHolderInfo1.left;
       break;
+      j = paramItemHolderInfo1.top;
+      break label14;
+      k = paramItemHolderInfo2.left;
+      break label29;
     }
-    label112:
+    label132:
     return animateRemove(paramViewHolder);
   }
   

@@ -1,44 +1,52 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.meta.StoryVideoFileObject;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nba
-  implements UpCallBack
+class nba
+  implements BusinessObserver
 {
-  public nba(StoryVideoFileObject paramStoryVideoFileObject) {}
+  nba(naw paramnaw) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
-  {
-    if (paramSendResult.jdField_b_of_type_Int == 0)
+    if (paramBoolean) {}
+    try
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadUploadResult.c = paramSendResult.jdField_b_of_type_JavaLangString;
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadUploadResult.a = paramSendResult.c;
-      this.a.b();
-      StoryVideoFileObject.a(this.a, new ErrorMessage());
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
+          }
+          this.a.a = true;
+          naw.a(this.a);
+          return;
+        }
+        if (paramInt == 58)
+        {
+          naw.a(this.a, 2131430043);
+          return;
+        }
+        if (paramInt == 65)
+        {
+          naw.a(this.a, 2131430044);
+          return;
+        }
+        naw.a(this.a, 2131430035);
+        return;
+        naw.a(this.a, 2131430035);
+      }
       return;
     }
-    if ((paramSendResult.jdField_b_of_type_Int == StoryUploadProcessor.a(940010)) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
-    {
-      StoryVideoFileObject.a(this.a);
-      SLog.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "retry load file");
-      return;
-    }
-    this.a.b();
-    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
-    StoryVideoFileObject.a(this.a, paramSendResult);
+    catch (Exception paramBundle) {}
   }
 }
 

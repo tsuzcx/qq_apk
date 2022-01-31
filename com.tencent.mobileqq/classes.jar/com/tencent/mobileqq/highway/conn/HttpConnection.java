@@ -937,16 +937,26 @@ public class HttpConnection
     }
   }
   
-  public void connect()
+  public boolean connect()
   {
-    this.mExecutor.start();
-    this.mHandler = new Handler(this.mExecutor.getLooper());
-    if (this.mConnListener != null)
+    try
     {
-      QLog.d("BDH_LOG", 1, "C. On Http ConnectionConnected : ID:" + this.mConnId);
-      this.mConnListener.onConnect(true, this.mConnId, this, this.mCurrentPoint, 0, new ConnReportInfo());
+      this.mExecutor.start();
+      this.mHandler = new Handler(this.mExecutor.getLooper());
+      if (this.mConnListener != null)
+      {
+        QLog.d("BDH_LOG", 1, "C. On Http ConnectionConnected : ID:" + this.mConnId);
+        this.mConnListener.onConnect(true, this.mConnId, this, this.mCurrentPoint, 0, new ConnReportInfo());
+      }
+      wakeupChannel();
+      return true;
     }
-    wakeupChannel();
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
+      disConnect();
+    }
+    return false;
   }
   
   public void disConnect()

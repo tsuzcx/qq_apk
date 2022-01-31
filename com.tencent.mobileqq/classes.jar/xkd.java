@@ -1,27 +1,18 @@
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.activity.recent.LocalSearchBar;
-import mqq.os.MqqHandler;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public final class xkd
-  extends MqqHandler
+public class xkd
+  implements View.OnFocusChangeListener
 {
-  public xkd(Looper paramLooper, View paramView)
-  {
-    super(paramLooper);
-  }
+  public xkd(GoldMsgAioState paramGoldMsgAioState, QQCustomDialog paramQQCustomDialog, Context paramContext) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      LocalSearchBar.a(this.a);
+    if (!paramBoolean) {
+      GoldMsgAioState.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getWindow(), this.jdField_a_of_type_AndroidContentContext, paramView);
     }
   }
 }

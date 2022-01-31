@@ -1,24 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
 
 public class aogf
-  implements Runnable
+  extends aogj
 {
-  private SVHwEncoder jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder;
-  
-  public aogf(FlowCameraActivity2 paramFlowCameraActivity2, SVHwEncoder paramSVHwEncoder)
+  public aogf(DoodleEmojiManager paramDoodleEmojiManager, DoodleEmojiItem paramDoodleEmojiItem)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder = paramSVHwEncoder;
+    super(paramDoodleEmojiItem);
   }
   
-  public void run()
+  protected void a(@Nullable DoodleEmojiItem arg1)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "handleQQVideo(): onSendVideoClick mEncoderCache=" + this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder);
-    }
-    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder.b();
+    super.onResult(???);
+    SLog.b("DoodleEmojiManager", "startDownload again");
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
+      this.a.c();
+      return;
     }
   }
 }

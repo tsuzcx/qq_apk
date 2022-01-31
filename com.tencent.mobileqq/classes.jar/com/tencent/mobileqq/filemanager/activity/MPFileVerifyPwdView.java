@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import acnr;
-import acns;
-import acnt;
-import acnw;
+import acvy;
+import acvz;
+import acwa;
+import acwd;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -51,7 +51,7 @@ public class MPFileVerifyPwdView
   public View a(ViewGroup paramViewGroup, MPFileVerifyPwdView.MPFileVerifyPswEvent paramMPFileVerifyPswEvent)
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView$MPFileVerifyPswEvent = paramMPFileVerifyPswEvent;
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130970055, null).findViewById(2131368893);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130970066, null).findViewById(2131368896);
     return this.jdField_a_of_type_AndroidViewView;
   }
   
@@ -68,23 +68,23 @@ public class MPFileVerifyPwdView
   @TargetApi(11)
   public void b()
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368894);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368896));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131368897);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368899));
     this.jdField_a_of_type_AndroidWidgetTextView.setLongClickable(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(new acnr(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.addTextChangedListener(new acvy(this));
     if (Build.VERSION.SDK_INT >= 11)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextIsSelectable(false);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCustomSelectionActionModeCallback(new acns(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setCustomSelectionActionModeCallback(new acvz(this));
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131368898));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131368901));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368902));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368905));
     this.jdField_b_of_type_AndroidWidgetTextView.setText(2131427657);
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#00a5e0"));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new acnt(this));
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new acwa(this));
     if (!NetworkUtil.d(BaseApplicationImpl.getContext())) {
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131433213));
+      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131433227));
     }
   }
   
@@ -98,7 +98,7 @@ public class MPFileVerifyPwdView
   
   public void d()
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new acnw(this));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new acwd(this));
   }
   
   public void onClick(View paramView)
@@ -119,7 +119,7 @@ public class MPFileVerifyPwdView
       }
       if (!NetworkUtil.d(BaseApplicationImpl.getContext()))
       {
-        FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131433213));
+        FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131433227));
         return;
       }
       DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);

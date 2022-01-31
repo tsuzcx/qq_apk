@@ -1,34 +1,21 @@
-import android.view.View;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
 public class oya
-  implements URLDrawableDownListener
+  implements DialogInterface.OnCancelListener
 {
-  public oya(TroopNewGuidePopWindow paramTroopNewGuidePopWindow) {}
+  public oya(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a(false, "onLoadCancelled");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.a.a(false, "onLoadFailed");
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    this.a.a(false, "onLoadInterrupted");
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.a(true, "onLoadSuccessed");
-    this.a.b = true;
+    if (this.a.e) {
+      return;
+    }
+    this.a.h = -1;
+    this.a.e = true;
+    QRDisplayActivity.a(this.a).b();
   }
 }
 

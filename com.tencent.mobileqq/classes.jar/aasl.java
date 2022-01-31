@@ -1,55 +1,55 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.open.base.BspatchUtil;
-import java.io.File;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class aasl
-  implements aasq
+public class aasl
+  extends AnimatorListenerAdapter
 {
-  aasl(aasc paramaasc, aasp paramaasp1, aasp paramaasp2, String paramString, aasr paramaasr) {}
+  public aasl(ARCardCamereButtonLayout paramARCardCamereButtonLayout) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp.b }));
+    if (QLog.isColorLevel()) {
+      QLog.i("ARCardCamereButtonLayout", 2, "scaleAnimator cancel!");
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ARCardCamereButtonLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
+    }
+    if (!this.a.b.get())
+    {
+      this.a.a.set(true);
+      ARCardCamereButtonLayout.a(this.a).sendEmptyMessage(2);
+      ARCardCamereButtonLayout.a(this.a, System.currentTimeMillis());
+      ARCardCamereButtonLayout.a(this.a).sendEmptyMessage(5);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aasr.a(false);
+      this.a.b.set(false);
       return;
-      if (!aasc.b(paramArrayOfByte, this.jdField_a_of_type_Aasp.f))
-      {
-        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, md5 mismatch, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp.b, this.jdField_a_of_type_Aasp.f }));
-      }
-      else
-      {
-        String str1 = aasc.a(this.b.jdField_a_of_type_JavaLangString);
-        if (!new File(str1).isFile())
-        {
-          ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, src path not exist, name=%s, path=s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, str1 }));
-        }
-        else
-        {
-          String str2 = String.format("%s/diff-%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp.d });
-          if (!aasc.a(paramArrayOfByte, str2))
-          {
-            ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, write diff to file fail, name=%s, path=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, str2 }));
-          }
-          else
-          {
-            if (BspatchUtil.a(str1, str2, String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString }))) {
-              break;
-            }
-            ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, patch fail, name=%s, diff-md5=%s", new Object[] { this.jdField_a_of_type_Aasp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aasp.f }));
-          }
-        }
-      }
+      ARCardCamereButtonLayout.a(this.a).setVisibility(8);
+      ARCardCamereButtonLayout.a(this.a);
+      ARCardCamereButtonLayout.a(this.a, 1.0F);
     }
-    this.jdField_a_of_type_Aasr.a(true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ARCardCamereButtonLayout", 2, "scaleAnimator start!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasl
  * JD-Core Version:    0.7.0.1
  */

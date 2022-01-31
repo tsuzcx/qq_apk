@@ -1,31 +1,40 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qqprotect.qsec.CloudAVEngineImpl;
 
 public class amej
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Handler
 {
-  public amej(XPanelContainer paramXPanelContainer, int paramInt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public amej(CloudAVEngineImpl paramCloudAVEngineImpl, Looper paramLooper)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "openAnim resetPosition");
-      }
-      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
+    default: 
+      return;
+    case 1: 
+      CloudAVEngineImpl.a(this.a, CloudAVEngineImpl.a(this.a, paramMessage.obj));
+      return;
+    case 2: 
+      CloudAVEngineImpl.a(this.a, true);
+      CloudAVEngineImpl.a(this.a);
+      CloudAVEngineImpl.a(this.a, false);
+      return;
+    case 3: 
+      CloudAVEngineImpl.a(this.a, paramMessage.obj);
       return;
     }
-    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
+    CloudAVEngineImpl.b(this.a, paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amej
  * JD-Core Version:    0.7.0.1
  */

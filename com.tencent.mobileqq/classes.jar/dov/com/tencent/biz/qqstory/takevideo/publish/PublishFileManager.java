@@ -24,7 +24,7 @@ public class PublishFileManager
     {
       a(str);
       return str;
-      str = AppConstants.aZ + "edit_video/business_" + paramInt + "/" + b(paramInt) + "/";
+      str = AppConstants.ba + "edit_video/business_" + paramInt + "/" + b(paramInt) + "/";
       FileUtils.c(str + ".nomedia");
     }
   }

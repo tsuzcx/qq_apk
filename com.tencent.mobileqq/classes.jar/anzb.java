@@ -1,17 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnStrokeSelectedListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
 public class anzb
-  implements HorizontalSelectColorLayout.OnStrokeSelectedListener
+  implements View.OnTouchListener
 {
-  public anzb(DoodleLayout paramDoodleLayout) {}
+  public anzb(CropVideoActivity paramCropVideoActivity) {}
   
-  public void a(@NonNull HorizontalStroke paramHorizontalStroke)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    VideoEditReport.b("0X80075CD");
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    CropVideoActivity.a(this.a).a(paramMotionEvent);
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

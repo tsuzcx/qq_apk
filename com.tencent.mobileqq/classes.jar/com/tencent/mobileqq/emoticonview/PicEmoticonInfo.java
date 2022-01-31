@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acgj;
-import acgl;
-import acgn;
-import acgo;
+import acok;
+import acol;
+import acon;
+import acop;
+import acoq;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -15,6 +16,7 @@ import android.support.v4.app.FragmentActivity;
 import android.widget.EditText;
 import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngDrawable;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -30,8 +32,6 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
-import com.tencent.mobileqq.earlydownload.handler.ApngHandler;
 import com.tencent.mobileqq.emoticon.EmojiManager;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
@@ -40,6 +40,7 @@ import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
 import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.mobileqq.vas.VasReportUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -72,8 +73,8 @@ public class PicEmoticonInfo
     try
     {
       paramString = BaseApplication.getContext().getResources();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130837572);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130841350);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130837571);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130841377);
       return;
     }
     catch (Exception paramString)
@@ -103,8 +104,8 @@ public class PicEmoticonInfo
     try
     {
       Resources localResources = BaseApplication.getContext().getResources();
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(2130843959);
-      this.d = localResources.getDrawable(2130843960);
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(2130844025);
+      this.d = localResources.getDrawable(2130844026);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.d;
       return;
@@ -187,9 +188,22 @@ public class PicEmoticonInfo
     c(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
   }
   
+  private void a(QQAppInterface paramQQAppInterface, URL paramURL, EmoticonPackage paramEmoticonPackage, boolean paramBoolean, URLDrawable paramURLDrawable)
+  {
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = (EmoticonManager)paramQQAppInterface.getManager(13);
+      if ((paramEmoticonPackage == null) && (!paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) && (!(paramURLDrawable.getCurrDrawable() instanceof ApngDrawable)))
+      {
+        paramURL = paramURL.toString();
+        paramQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, new acok(this, paramURL));
+      }
+    }
+  }
+  
   private static void b(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Emoticon paramEmoticon)
   {
-    ThreadManager.post(new acgo(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon), 5, null, true);
+    ThreadManager.post(new acoq(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon), 5, null, true);
   }
   
   public static void b(URLDrawable paramURLDrawable)
@@ -241,7 +255,7 @@ public class PicEmoticonInfo
   {
     EmojiManager localEmojiManager = (EmojiManager)paramQQAppInterface.getManager(42);
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "MbFasong", "MbIDDianji", 0, 0, paramEmoticon.epId, "", "", "");
-    ((EmoticonManager)paramQQAppInterface.getManager(13)).a(paramEmoticon.epId, -1, new acgl(paramContext, paramQQAppInterface, paramEmoticon, localEmojiManager, paramSessionInfo, paramStickerInfo));
+    ((EmoticonManager)paramQQAppInterface.getManager(13)).a(paramEmoticon.epId, -1, new acon(paramContext, paramQQAppInterface, paramEmoticon, localEmojiManager, paramSessionInfo, paramStickerInfo));
   }
   
   private static void e(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, EmojiStickerManager.StickerInfo paramStickerInfo)
@@ -252,7 +266,7 @@ public class PicEmoticonInfo
     }
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, paramEmoticon.epId, "", "", "");
     localObject = (EmojiManager)paramQQAppInterface.getManager(42);
-    ((EmoticonManager)paramQQAppInterface.getManager(13)).a(paramEmoticon.epId, 0, new acgn(paramContext, paramQQAppInterface, paramEmoticon, (EmojiManager)localObject, paramSessionInfo));
+    ((EmoticonManager)paramQQAppInterface.getManager(13)).a(paramEmoticon.epId, 0, new acop(paramContext, paramQQAppInterface, paramEmoticon, (EmojiManager)localObject, paramSessionInfo));
     c(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
   }
   
@@ -367,12 +381,10 @@ public class PicEmoticonInfo
   
   public URLDrawable a(String paramString, boolean paramBoolean1, boolean paramBoolean2, MarketFaceItemBuilder.Holder paramHolder)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
     if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null) {}
     for (;;)
     {
-      return localObject1;
+      return null;
       try
       {
         paramString = new URL("emotion_pic", paramString, a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon));
@@ -384,61 +396,51 @@ public class PicEmoticonInfo
         localObject1 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
         if (paramHolder != null)
         {
-          paramHolder = paramHolder.e.getDrawable();
-          localObject1 = BaseApplicationImpl.getApplication().waitAppRuntime(null);
-          if ((localObject1 instanceof QQAppInterface))
+          localObject1 = paramHolder.e.getDrawable();
+          paramHolder = BaseApplicationImpl.getApplication().waitAppRuntime(null);
+          if ((paramHolder instanceof QQAppInterface))
           {
-            localObject1 = (QQAppInterface)localObject1;
-            URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-            localURLDrawableOptions.mFailedDrawable = paramHolder;
-            localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-            localURLDrawableOptions.mPlayGifImage = true;
-            paramHolder = localObject2;
-            if (localObject1 != null)
+            paramHolder = (QQAppInterface)paramHolder;
+            localObject2 = URLDrawable.URLDrawableOptions.obtain();
+            ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
+            ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
+            if (paramHolder != null)
             {
-              EmoticonManager localEmoticonManager = (EmoticonManager)((QQAppInterface)localObject1).getManager(13);
-              paramHolder = localObject2;
-              if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) {
-                paramHolder = localEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
-              }
-            }
-            if (((paramHolder != null) && (paramHolder.isAPNG == 2)) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG))
-            {
-              if (ApngHandler.b.get())
+              localObject1 = (EmoticonManager)paramHolder.getManager(13);
+              if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null)
               {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PicEmoticonInfo", 2, "getBigDrawable: APNG so loaded use apng image");
-                }
-                localURLDrawableOptions.mUseApngImage = true;
-                localURLDrawableOptions.mPlayGifImage = false;
-                localURLDrawableOptions.mMemoryCacheKeySuffix = "useAPNG";
-              }
-            }
-            else
-            {
-              localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionWidth;
-              localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionHeight;
-              paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-              localObject1 = paramString;
-              if (paramString.getStatus() == 1) {
-                continue;
-              }
-              paramString.setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-              paramString.addHeader("my_uin", this.jdField_c_of_type_JavaLangString);
-              paramString.addHeader("emo_type", String.valueOf(this.f));
-              if (!paramBoolean2) {
-                break label440;
-              }
-              paramString.addHeader("2g_use_gif", "true");
-              if (paramString.getStatus() != 2)
-              {
-                localObject1 = paramString;
-                if (paramString.getStatus() != 3) {
-                  continue;
+                localObject1 = ((EmoticonManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, 0);
+                if (((localObject1 != null) && (((EmoticonPackage)localObject1).isAPNG == 2)) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG)) {
+                  if (VasApngUtil.b.get())
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.d("PicEmoticonInfo", 2, "getBigDrawable: APNG so loaded use apng image");
+                    }
+                    ((URLDrawable.URLDrawableOptions)localObject2).mUseApngImage = true;
+                    ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = false;
+                    ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "useAPNG";
+                    paramBoolean1 = true;
+                    ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionWidth;
+                    ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionHeight;
+                    localObject2 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject2);
+                    if (((URLDrawable)localObject2).getStatus() == 1) {
+                      break label425;
+                    }
+                    ((URLDrawable)localObject2).setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+                    ((URLDrawable)localObject2).addHeader("my_uin", this.jdField_c_of_type_JavaLangString);
+                    ((URLDrawable)localObject2).addHeader("emo_type", String.valueOf(this.f));
+                    if (!paramBoolean2) {
+                      break label411;
+                    }
+                    ((URLDrawable)localObject2).addHeader("2g_use_gif", "true");
+                    if ((((URLDrawable)localObject2).getStatus() == 2) || (((URLDrawable)localObject2).getStatus() == 3)) {
+                      ((URLDrawable)localObject2).restartDownload();
+                    }
+                    return localObject2;
+                  }
                 }
               }
-              paramString.restartDownload();
-              return paramString;
             }
           }
         }
@@ -447,33 +449,35 @@ public class PicEmoticonInfo
       {
         for (;;)
         {
+          Object localObject2;
           QLog.e("PicEmoticonInfo", 1, "market face getLoadingDrawable", paramString);
           paramString = null;
           continue;
-          if (!ApngHandler.c())
+          if (!VasApngUtil.b())
           {
-            if (localObject1 != null)
+            if (paramHolder != null)
             {
               if (QLog.isColorLevel()) {
                 QLog.d("PicEmoticonInfo", 2, "getBigDrawable: restartDownload so");
               }
-              paramHolder = (ApngHandler)((EarlyDownloadManager)((QQAppInterface)localObject1).getManager(76)).a("qq.android.native.apng_v700");
-              if (paramHolder != null) {
-                paramHolder.a(true);
-              }
+              VasApngUtil.a(paramHolder, "PicEmoticonInfo");
+              paramBoolean1 = false;
             }
           }
-          else
-          {
-            ApngHandler.d_();
-            continue;
-            label440:
-            paramString.addHeader("2g_use_gif", "false");
-            continue;
-            localObject1 = null;
-            continue;
-            paramHolder = (MarketFaceItemBuilder.Holder)localObject1;
+          else {
+            VasApngUtil.a();
           }
+          paramBoolean1 = false;
+          continue;
+          label411:
+          ((URLDrawable)localObject2).addHeader("2g_use_gif", "false");
+          continue;
+          label425:
+          a(paramHolder, paramString, (EmoticonPackage)localObject1, paramBoolean1, (URLDrawable)localObject2);
+          continue;
+          Object localObject1 = null;
+          continue;
+          paramHolder = null;
         }
       }
     }
@@ -481,12 +485,10 @@ public class PicEmoticonInfo
   
   public URLDrawable a(String paramString, boolean paramBoolean1, boolean paramBoolean2, MarketFaceItemBuilder.Holder paramHolder, int paramInt1, int paramInt2)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
     if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null) {}
     for (;;)
     {
-      return localObject1;
+      return null;
       try
       {
         paramString = new URL("emotion_pic", paramString, a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon));
@@ -498,61 +500,51 @@ public class PicEmoticonInfo
         localObject1 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
         if (paramHolder != null)
         {
-          paramHolder = paramHolder.e.getDrawable();
-          localObject1 = BaseApplicationImpl.getApplication().waitAppRuntime(null);
-          if ((localObject1 instanceof QQAppInterface))
+          localObject1 = paramHolder.e.getDrawable();
+          paramHolder = BaseApplicationImpl.getApplication().waitAppRuntime(null);
+          if ((paramHolder instanceof QQAppInterface))
           {
-            localObject1 = (QQAppInterface)localObject1;
-            URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-            localURLDrawableOptions.mFailedDrawable = paramHolder;
-            localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-            localURLDrawableOptions.mPlayGifImage = true;
-            paramHolder = localObject2;
-            if (localObject1 != null)
+            paramHolder = (QQAppInterface)paramHolder;
+            localObject2 = URLDrawable.URLDrawableOptions.obtain();
+            ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
+            ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
+            if (paramHolder != null)
             {
-              EmoticonManager localEmoticonManager = (EmoticonManager)((QQAppInterface)localObject1).getManager(13);
-              paramHolder = localObject2;
-              if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) {
-                paramHolder = localEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
-              }
-            }
-            if (((paramHolder != null) && (paramHolder.isAPNG == 2)) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG))
-            {
-              if (ApngHandler.b.get())
+              localObject1 = (EmoticonManager)paramHolder.getManager(13);
+              if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null)
               {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PicEmoticonInfo", 2, "getBigDrawable: APNG so loaded use apng image");
-                }
-                localURLDrawableOptions.mUseApngImage = true;
-                localURLDrawableOptions.mPlayGifImage = false;
-                localURLDrawableOptions.mMemoryCacheKeySuffix = "useAPNG";
-              }
-            }
-            else
-            {
-              localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
-              localURLDrawableOptions.mRequestHeight = this.jdField_b_of_type_Int;
-              paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-              localObject1 = paramString;
-              if (paramString.getStatus() == 1) {
-                continue;
-              }
-              paramString.setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-              paramString.addHeader("my_uin", this.jdField_c_of_type_JavaLangString);
-              paramString.addHeader("emo_type", String.valueOf(this.f));
-              if (!paramBoolean2) {
-                break label429;
-              }
-              paramString.addHeader("2g_use_gif", "true");
-              if (paramString.getStatus() != 2)
-              {
-                localObject1 = paramString;
-                if (paramString.getStatus() != 3) {
-                  continue;
+                localObject1 = ((EmoticonManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, 0);
+                if (((localObject1 != null) && (((EmoticonPackage)localObject1).isAPNG == 2)) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG)) {
+                  if (VasApngUtil.b.get())
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.d("PicEmoticonInfo", 2, "getBigDrawable: APNG so loaded use apng image");
+                    }
+                    ((URLDrawable.URLDrawableOptions)localObject2).mUseApngImage = true;
+                    ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = false;
+                    ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "useAPNG";
+                    paramBoolean1 = true;
+                    ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_a_of_type_Int;
+                    ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_b_of_type_Int;
+                    localObject2 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject2);
+                    if (((URLDrawable)localObject2).getStatus() == 1) {
+                      break label414;
+                    }
+                    ((URLDrawable)localObject2).setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+                    ((URLDrawable)localObject2).addHeader("my_uin", this.jdField_c_of_type_JavaLangString);
+                    ((URLDrawable)localObject2).addHeader("emo_type", String.valueOf(this.f));
+                    if (!paramBoolean2) {
+                      break label400;
+                    }
+                    ((URLDrawable)localObject2).addHeader("2g_use_gif", "true");
+                    if ((((URLDrawable)localObject2).getStatus() == 2) || (((URLDrawable)localObject2).getStatus() == 3)) {
+                      ((URLDrawable)localObject2).restartDownload();
+                    }
+                    return localObject2;
+                  }
                 }
               }
-              paramString.restartDownload();
-              return paramString;
             }
           }
         }
@@ -561,29 +553,33 @@ public class PicEmoticonInfo
       {
         for (;;)
         {
+          Object localObject1;
+          Object localObject2;
           QLog.e("PicEmoticonInfo", 1, "market face getLoadingDrawable", paramString);
           paramString = null;
           continue;
-          if (!ApngHandler.c())
+          if (!VasApngUtil.b())
           {
             if (QLog.isColorLevel()) {
               QLog.d("PicEmoticonInfo", 2, "getBigDrawable: restartDownload so");
             }
-            paramHolder = (ApngHandler)((EarlyDownloadManager)((QQAppInterface)localObject1).getManager(76)).a("qq.android.native.apng_v700");
-            if (paramHolder != null) {
-              paramHolder.a(true);
-            }
+            VasApngUtil.a(paramHolder, "PicEmoticonInfo");
+            paramBoolean1 = false;
           }
           else
           {
-            ApngHandler.d_();
+            VasApngUtil.a();
+            paramBoolean1 = false;
             continue;
-            label429:
-            paramString.addHeader("2g_use_gif", "false");
+            label400:
+            ((URLDrawable)localObject2).addHeader("2g_use_gif", "false");
+            continue;
+            label414:
+            a(paramHolder, paramString, (EmoticonPackage)localObject1, paramBoolean1, (URLDrawable)localObject2);
             continue;
             localObject1 = null;
             continue;
-            paramHolder = (MarketFaceItemBuilder.Holder)localObject1;
+            paramHolder = null;
           }
         }
       }
@@ -603,8 +599,8 @@ public class PicEmoticonInfo
       QLog.e("PicEmoticonInfo", 1, "send isFroward emotion = null");
     }
     label226:
-    label359:
-    label377:
+    label360:
+    label378:
     do
     {
       do
@@ -617,7 +613,7 @@ public class PicEmoticonInfo
         if (paramEditText.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, Boolean.valueOf(false))) {
           break;
         }
-        ChatActivityUtils.a(paramContext, 2131436307, 0);
+        ChatActivityUtils.a(paramContext, 2131436327, 0);
         paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
       } while (paramQQAppInterface == null);
       paramQQAppInterface.obtainMessage(10).sendToTarget();
@@ -628,7 +624,7 @@ public class PicEmoticonInfo
         QLog.d("PicEmoticonInfo", 2, "forward,【maxInt:】" + i);
       }
       i = PngFrameUtil.a(i);
-      ((EmoticonManager)paramQQAppInterface.getManager(13)).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, new acgj(this, paramQQAppInterface, i, paramContext, paramSessionInfo));
+      ((EmoticonManager)paramQQAppInterface.getManager(13)).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, new acol(this, paramQQAppInterface, i, paramContext, paramSessionInfo));
       return;
       if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4) && (paramBoolean) && (((paramContext instanceof SplashActivity)) || ((paramContext instanceof ChatActivity))))
       {
@@ -637,10 +633,10 @@ public class PicEmoticonInfo
           localSharedPreferences.edit().putLong("sp_key_send_h5_magic_face_time", System.currentTimeMillis()).apply();
         }
         if (!paramEditText.b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, true, true)) {
-          break label377;
+          break label378;
         }
         if (!paramEditText.b()) {
-          break label359;
+          break label360;
         }
         b(paramContext, paramQQAppInterface, paramSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
       }
@@ -652,7 +648,7 @@ public class PicEmoticonInfo
           QLog.d("PicEmoticonInfo", 2, "forward not support h5magic");
         }
       }
-      ChatActivityUtils.a(paramContext, 2131436307, 0);
+      ChatActivityUtils.a(paramContext, 2131436327, 0);
       paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
     } while (paramQQAppInterface == null);
     paramQQAppInterface.obtainMessage(10).sendToTarget();

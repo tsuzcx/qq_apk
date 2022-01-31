@@ -1,39 +1,52 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.FaceDownloader;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.apollo.utils.ApolloGameRscVerify;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class zda
   implements Runnable
 {
-  public zda(FaceDownloader paramFaceDownloader) {}
+  public zda(ApolloGameRscVerify paramApolloGameRscVerify) {}
   
   public void run()
   {
-    Object localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1|999|4|1|0_2|1");
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.FaceDownloader", 2, "initDPCFlag headWapConn:" + (String)localObject);
-    }
-    localObject = ((String)localObject).split("\\|");
-    if (localObject.length > 7) {}
     try
     {
-      FaceDownloader.a(Integer.parseInt(localObject[7]));
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDownloader", 2, "initDPCFlag DPC_WAP_DIRECT_CONNECT=" + FaceDownloader.b());
+      long l = System.currentTimeMillis();
+      if (!ApolloGameRscVerify.a(this.a)) {
+        return;
       }
-      return;
+      if (ApolloGameRscVerify.a(this.a) != null)
+      {
+        Iterator localIterator = ApolloGameRscVerify.a(this.a).keys();
+        StringBuilder localStringBuilder = new StringBuilder(200);
+        Object localObject;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject = this.a;
+          ((ApolloGameRscVerify)localObject).jdField_a_of_type_Int += 1;
+          localObject = (String)localIterator.next();
+          localStringBuilder.delete(0, localStringBuilder.length());
+          localStringBuilder.append(ApolloConstant.a);
+          localStringBuilder.append("/game/").append(ApolloGameRscVerify.a(this.a)).append("/").append((String)localObject);
+        } while (this.a.a(localStringBuilder.toString(), (String)localObject));
+        this.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+        return;
+      }
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.qqhead.FaceDownloader", 2, "initDPCFlag error :", localException);
+      QLog.e("cmgame_process.ApolloGameRscVerify", 1, localThrowable, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zda
  * JD-Core Version:    0.7.0.1
  */

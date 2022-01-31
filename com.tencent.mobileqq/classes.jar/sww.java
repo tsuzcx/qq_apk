@@ -1,14 +1,24 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
-class sww
-  implements Runnable
+public class sww
+  implements AdapterView.OnItemSelectedListener
 {
-  sww(swv paramswv, View paramView, int paramInt) {}
+  public sww(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView) {}
+  
+  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Swv.a.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, null);
+    if (paramView == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidViewView = paramView;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(paramInt);
+    this.a.a(paramAdapterView, paramInt);
   }
 }
 

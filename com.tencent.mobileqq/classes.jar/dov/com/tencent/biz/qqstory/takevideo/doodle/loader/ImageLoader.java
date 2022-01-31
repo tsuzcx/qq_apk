@@ -30,7 +30,7 @@ public class ImageLoader
     return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
   }
   
-  public void a(ImageView paramImageView, String paramString, int paramInt1, int paramInt2)
+  public void a(ImageView paramImageView, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
     {
@@ -38,7 +38,14 @@ public class ImageLoader
       return;
     }
     SLog.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
-    paramImageView.setImageDrawable(a(paramString, paramInt1, paramInt2));
+    paramString = a(paramString, paramInt1, paramInt2);
+    if (paramBoolean) {}
+    for (;;)
+    {
+      paramImageView.setImageDrawable(paramString);
+      return;
+      paramString = null;
+    }
   }
 }
 

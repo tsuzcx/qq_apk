@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.BusinessCardManager;
+import com.tencent.mobileqq.businessCard.BusinessCardObserver;
 
 public class sxz
-  implements Runnable
+  extends BusinessCardObserver
 {
-  public sxz(Leba paramLeba, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  public sxz(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(new sya(this));
+    if (paramBoolean)
+    {
+      BusinessCardManager localBusinessCardManager = (BusinessCardManager)this.a.app.getManager(111);
+      this.a.a = localBusinessCardManager.a(paramString);
+    }
   }
 }
 

@@ -33,12 +33,12 @@ public class VipComicSoHelper
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (!new File(a() + "libqgplayer-lib.so").exists())
+    if (!new File(a() + "libqgplayer_765.so").exists())
     {
       if (QLog.isColorLevel()) {
         QLog.d("VipComicSoHelper", 2, "initComicPlayerSo start download");
       }
-      ((VasQuickUpdateManager)paramQQAppInterface.getManager(183)).a(1004L, "libqgplayer_760", "comic");
+      ((VasQuickUpdateManager)paramQQAppInterface.getManager(183)).a(1004L, "libqgplayer_765", "comic");
     }
     while (!QLog.isColorLevel()) {
       try
@@ -61,7 +61,7 @@ public class VipComicSoHelper
     if (QLog.isColorLevel()) {
       QLog.d("VipComicSoHelper", 2, "onSoDownloadCompleted");
     }
-    if (VasUtils.a(a() + "libQGamePlayer.zip", a(), "libqgplayer-lib.so")) {
+    if (VasUtils.a(a() + "libQGamePlayer.zip", a(), "libqgplayer_765.so")) {
       if (QLog.isColorLevel()) {
         QLog.d("VipComicSoHelper", 2, "comic player unCompressSo success");
       }

@@ -1,23 +1,16 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import com.tencent.mobileqq.activity.MakeVideoActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import mqq.os.MqqHandler;
 
 public class tbt
-  implements MediaRecorder.OnInfoListener
+  implements Runnable
 {
-  public tbt(MakeVideoActivity paramMakeVideoActivity) {}
+  public tbt(Leba paramLeba) {}
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void run()
   {
-    switch (paramInt1)
-    {
-    default: 
-      QLog.i(this.a.a, 4, "start|onInfo|what=" + paramInt1 + ",extra=" + paramInt2);
-      return;
-    }
-    QLog.i(this.a.a, 4, "start|onInfo|max file size reached.extra=" + paramInt2);
-    this.a.b();
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.notifyDataSetChanged();
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(11340005);
   }
 }
 

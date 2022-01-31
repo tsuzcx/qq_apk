@@ -1,27 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
 
 public class akxo
-  extends Handler
+  implements TroopMemberApiClient.Callback
 {
-  public akxo(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
+  public akxo(SwiftBrowserShareMenuHandler paramSwiftBrowserShareMenuHandler) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Bundle paramBundle)
   {
-    switch (paramMessage.what)
+    int i = paramBundle.getInt("fontSize", 1);
+    if (i != this.a.b)
     {
+      this.a.b = i;
+      this.a.b(this.a.b);
     }
-    do
-    {
-      return;
-    } while (this.a.jdField_a_of_type_Float < 0.0F);
-    QLog.i(ARWorldCupGameLogicManager.jdField_a_of_type_JavaLangString, 1, "OnLoopPlayTick handleMessage begin." + this.a.jdField_a_of_type_Float);
-    paramMessage = this.a;
-    paramMessage.jdField_a_of_type_Float += 0.1F;
-    ARWorldCupGameLogicManager.a(this.a, this.a.jdField_a_of_type_Float);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 100L);
   }
 }
 

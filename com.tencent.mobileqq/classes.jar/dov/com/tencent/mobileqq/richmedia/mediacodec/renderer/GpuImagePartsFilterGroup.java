@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
 import android.support.annotation.NonNull;
-import aoni;
-import aonj;
+import aovy;
+import aovz;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
 import java.util.LinkedList;
@@ -61,7 +61,7 @@ public class GpuImagePartsFilterGroup
   
   public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
   {
-    a(new aonj(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
+    a(new aovz(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -69,7 +69,7 @@ public class GpuImagePartsFilterGroup
     if (!FilterFactory.a(paramInt1)) {
       throw new IllegalArgumentException("filterType " + paramInt1 + " is invalid color filter type");
     }
-    a(new aoni(this, paramInt1, paramInt2, paramInt3));
+    a(new aovy(this, paramInt1, paramInt2, paramInt3));
   }
   
   public void a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
@@ -90,17 +90,17 @@ public class GpuImagePartsFilterGroup
     return (this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGPUDrawPartFilter != null) || (this.b != null);
   }
   
-  public void c()
+  public void d()
   {
     if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGPUDrawPartFilter != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGPUDrawPartFilter.c();
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGPUDrawPartFilter.d();
     }
     if (this.b != null) {
-      this.b.c();
+      this.b.d();
     }
   }
   
-  public void f()
+  public void g()
   {
     a(this.jdField_a_of_type_JavaUtilLinkedList);
   }

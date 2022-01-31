@@ -5,7 +5,7 @@ import android.text.InputFilter;
 import android.util.AttributeSet;
 import android.widget.EditText;
 import java.io.UnsupportedEncodingException;
-import wfx;
+import wlh;
 
 public class BookEditText
   extends EditText
@@ -13,7 +13,7 @@ public class BookEditText
   private int jdField_a_of_type_Int = 80;
   private BookEditText.BookEditTextInputListener jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText$BookEditTextInputListener;
   private boolean jdField_a_of_type_Boolean;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new wfx(this) };
+  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new wlh(this) };
   
   public BookEditText(Context paramContext)
   {

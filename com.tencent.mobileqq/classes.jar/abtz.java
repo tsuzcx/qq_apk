@@ -1,26 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.GameRich;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.BusinessCardServlet;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-public final class abtz
-  implements Parcelable.Creator
+public class abtz
+  implements View.OnClickListener
 {
-  public IPSiteModel.GameRich a(Parcel paramParcel)
-  {
-    IPSiteModel.GameRich localGameRich = new IPSiteModel.GameRich();
-    localGameRich.anchorFaceUrl = paramParcel.readString();
-    localGameRich.anchorId = paramParcel.readString();
-    localGameRich.anchorName = paramParcel.readString();
-    localGameRich.coverUrl = paramParcel.readString();
-    localGameRich.online = paramParcel.readString();
-    localGameRich.title = paramParcel.readString();
-    localGameRich.richJumpUrl = paramParcel.readString();
-    return localGameRich;
-  }
+  public abtz(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString) {}
   
-  public IPSiteModel.GameRich[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPSiteModel.GameRich[paramInt];
+    if ((this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a.isShowing()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a = null;
+    }
+    BusinessCardServlet.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.b("删除名片...");
   }
 }
 

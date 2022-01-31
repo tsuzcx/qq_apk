@@ -23,9 +23,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
-import uix;
-import uiy;
-import uiz;
+import unt;
+import unu;
+import unv;
 
 public class ActivateFriendGrid
   extends FrameLayout
@@ -34,12 +34,12 @@ public class ActivateFriendGrid
   private static int jdField_a_of_type_Int = 15;
   private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private static int jdField_b_of_type_Int = 14;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new uix(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new unt(this);
   private ActivateFriendGrid.GridCallBack jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid$GridCallBack;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new uiy(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new unu(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public ActivateFriendsManager a;
-  ActivateFriendsObserver jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsObserver = new uiz(this);
+  ActivateFriendsObserver jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsObserver = new unv(this);
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Hashtable jdField_a_of_type_JavaUtilHashtable = new Hashtable();
@@ -327,11 +327,11 @@ public class ActivateFriendGrid
         }
         if (this.jdField_a_of_type_Boolean)
         {
-          if ((!getResources().getString(2131437258).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).birthdayDesc)) && (!this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).type))) {
+          if ((!getResources().getString(2131437278).equals(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).birthdayDesc)) && (!this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.c(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).type))) {
             break label396;
           }
           paramQQAppInterface.setChecked(false);
-          paramQQAppInterface.setBirthday(getResources().getString(2131437258));
+          paramQQAppInterface.setBirthday(getResources().getString(2131437278));
         }
       }
       for (;;)
@@ -345,7 +345,7 @@ public class ActivateFriendGrid
         if ((this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.a(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).type)) || (this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsActivateFriendsManager.b(((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).uin, ((ActivateFriendItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).type)))
         {
           paramQQAppInterface.setChecked(false);
-          paramQQAppInterface.setBirthday(getResources().getString(2131437259));
+          paramQQAppInterface.setBirthday(getResources().getString(2131437279));
         }
         else
         {

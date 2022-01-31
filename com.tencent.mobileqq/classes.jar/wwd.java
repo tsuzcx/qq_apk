@@ -1,15 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.readinjoy.ReadInJoyTabObserver;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class wwd
-  implements DialogInterface.OnClickListener
+  extends ReadInJoyTabObserver
 {
-  public wwd(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public wwd(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a = null;
+    if (ReadInJoyHelper.g()) {
+      this.a.a(39, null);
+    }
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    super.a(paramInt, paramObject);
+    if (!ReadInJoyHelper.f()) {}
+    while (this.a.a == null) {
+      return;
+    }
+    this.a.a.runOnUiThread(new wwf(this, paramInt, paramObject));
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    a(1, paramView);
+  }
+  
+  public void d()
+  {
+    if (!ReadInJoyHelper.f()) {}
+    while (this.a.a == null) {
+      return;
+    }
+    this.a.a.runOnUiThread(new wwe(this));
   }
 }
 

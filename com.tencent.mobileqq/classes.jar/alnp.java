@@ -1,32 +1,25 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qidian.plugin.QidianWpaWebviewPlugin;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.viareport.ReportManager;
 
 public class alnp
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public alnp(QidianWpaWebviewPlugin paramQidianWpaWebviewPlugin) {}
+  public alnp(ReportManager paramReportManager, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.qidian.openactionsheet")) && (this.a.mRuntime.a() != null))
-    {
-      paramContext = (ActionSheet)ActionSheetHelper.a((Activity)paramContext, null);
-      paramContext.b(2131438730);
-      paramContext.c(2131433015);
-      paramContext.a(new alnq(this, paramIntent, paramContext));
-      paramContext.show();
+    if (this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a) {
+      LogUtility.b("viareport", "isUploading ---return");
     }
+    while (!this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentOpenBusinessViareportReportManager.a(this.jdField_a_of_type_JavaLangString, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alnp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,26 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer.Mp4VideoFragmentInfo;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import dov.com.qq.im.capture.poi.FacePoiManager;
+import dov.com.qq.im.capture.poi.FacePoiUI;
+import java.util.ArrayList;
 
-class anvw
-  implements Runnable
+public class anvw
+  implements AbsListView.OnScrollListener
 {
-  anvw(anvv paramanvv) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void run()
+  public anvw(FacePoiUI paramFacePoiUI) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      HWEditImportVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditImportVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
-      HWEditImportVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
+    if ((paramInt == 0) && (FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI).a() != null) && (this.jdField_a_of_type_Int == FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI).a().size() - 1)) {
+      FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI).a();
     }
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
-      HWEditImportVideoPlayer.a(this.a.a).set(true);
-      return;
-      SLog.e("Q.qqstory.record.HWEditImportVideoPlayer", "mFragmentInfos is empty");
-    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
 }
 

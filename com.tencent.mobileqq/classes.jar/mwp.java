@@ -1,18 +1,17 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class mwp
-  implements BusinessObserver
+public class mwp
+  implements Runnable
 {
-  public mwp(Activity paramActivity, QQAppInterface paramQQAppInterface, ProfileParams paramProfileParams) {}
+  public mwp(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (paramBoolean) {
-      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mwq(this, paramObject));
-    }
+    ((PublicAccountDataManager)this.a.app.getManager(55)).a();
+    TroopBarAssistantManager.a().c(this.a.app);
   }
 }
 

@@ -1,16 +1,23 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode.StoryVideoPublishStatusReceiver;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.VideoLocalCacheFilter;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.CacheContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class njv
-  implements BatchGetVideoInfo.VideoLocalCacheFilter
+  extends SimpleJob
 {
-  public njv(MsgTabPlayMode.StoryVideoPublishStatusReceiver paramStoryVideoPublishStatusReceiver) {}
+  public njv(DateCollectionListPageLoader paramDateCollectionListPageLoader) {}
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return paramStoryVideoItem.mVideoIndex <= 0L;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext == null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerDateCollectionListPageLoader$CacheContext = new DateCollectionListPageLoader.CacheContext(this.a, this.a.d);
+    }
+    this.a.jdField_a_of_type_JavaLangString = "";
+    DateCollectionListPageLoader.a(this.a);
+    return null;
   }
 }
 

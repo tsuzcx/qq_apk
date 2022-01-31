@@ -19,7 +19,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.os.MqqHandler;
-import wcy;
+import wig;
 
 public class HongbaoKeywordGrayTips
   implements GrayTipsTask
@@ -218,7 +218,7 @@ public class HongbaoKeywordGrayTips
         }
         if (paramInt != 0)
         {
-          ThreadManager.getSubThreadHandler().post(new wcy(this));
+          ThreadManager.getSubThreadHandler().post(new wig(this));
           return;
         }
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) {

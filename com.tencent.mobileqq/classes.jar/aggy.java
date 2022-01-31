@@ -1,21 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
 class aggy
   implements Runnable
 {
-  aggy(aggv paramaggv) {}
+  aggy(aggx paramaggx) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a();
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    ScanOcrActivity.a(this.a.jdField_a_of_type_Aggr.a, this.a.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aggy
  * JD-Core Version:    0.7.0.1
  */

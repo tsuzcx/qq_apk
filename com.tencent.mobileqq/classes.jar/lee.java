@@ -1,32 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class lee
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lee(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  public lee(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoySelfActivity.a(this.a);
-    ReadInJoyWebDataManager localReadInJoyWebDataManager;
-    String str;
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null)
-    {
-      localReadInJoyWebDataManager = ReadInJoyWebDataManager.a();
-      str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.b() > 0) {
-        break label54;
-      }
-    }
-    label54:
-    for (int i = 0;; i = 1)
-    {
-      localReadInJoyWebDataManager.a(str, i);
-      return;
-    }
+    this.a.k = true;
+    ReadInJoyBaseDeliverActivity.a(this.a);
+    this.a.a();
   }
 }
 

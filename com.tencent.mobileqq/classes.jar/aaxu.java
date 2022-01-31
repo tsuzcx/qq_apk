@@ -1,45 +1,30 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.ark.ArkRecommendController.AttachAppHolder;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import java.util.ArrayList;
 
-public final class aaxu
-  implements ArkAppCenter.OnGetAppIcon
+class aaxu
+  implements Runnable
 {
-  private ArkRecommendController.AttachAppHolder a;
+  aaxu(aaxt paramaaxt, Object paramObject, boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public aaxu(ArkRecommendController.AttachAppHolder paramAttachAppHolder)
+  public void run()
   {
-    this.a = paramAttachAppHolder;
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (!paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-      ArkAppCenter.a(paramString);
-    }
-    do
+    aayb localaayb = (aayb)this.jdField_a_of_type_JavaLangObject;
+    if (this.jdField_a_of_type_Boolean)
     {
-      return;
-      switch (this.a.jdField_a_of_type_Int)
+      long l1 = ArkActionAppMgr.a(this.jdField_a_of_type_Aaxt.a, 2, this.jdField_a_of_type_JavaUtilArrayList);
+      long l2 = ArkActionAppMgr.a(this.jdField_a_of_type_Aaxt.a, 1, this.b);
+      if ((l1 < 0L) || (l2 < 0L))
       {
+        ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionAppList, fail, gray-app-id=%d, app-id=%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) }));
+        ArkActionAppMgr.a(this.jdField_a_of_type_Aaxt.a, localaayb, false);
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("ArkRecommendController", 2, String.format(Locale.CHINA, "invalid load state: %d", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-    return;
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130838201));
-    ArkAppCenter.a(paramString);
-    this.a.jdField_a_of_type_Int = 0;
-    this.a.jdField_a_of_type_JavaLangString = null;
-    return;
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new BitmapDrawable(paramBitmap));
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.jdField_a_of_type_JavaLangString = paramString;
+      ArkActionAppMgr.a(this.jdField_a_of_type_Aaxt.a, localaayb, true);
+      return;
+    }
+    ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionAppList, fail, success is false.", new Object[0]));
+    ArkActionAppMgr.a(this.jdField_a_of_type_Aaxt.a, localaayb, false);
   }
 }
 

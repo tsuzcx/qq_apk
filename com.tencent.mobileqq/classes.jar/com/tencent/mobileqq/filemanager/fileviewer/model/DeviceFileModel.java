@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import adcz;
-import addb;
-import addd;
+import adlg;
+import adli;
+import adlk;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.device.file.DeviceFileObserver;
@@ -127,14 +127,14 @@ public class DeviceFileModel
   public IDownloadController a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController = new addb(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController = new adli(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController;
   }
   
   public IThumbController a()
   {
-    return new addd(this);
+    return new adlk(this);
   }
   
   public IUploadController a()
@@ -160,7 +160,7 @@ public class DeviceFileModel
     if (this.jdField_a_of_type_ComTencentDeviceFileDeviceFileObserver != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentDeviceFileDeviceFileObserver = new adcz(this);
+    this.jdField_a_of_type_ComTencentDeviceFileDeviceFileObserver = new adlg(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentDeviceFileDeviceFileObserver);
   }
   

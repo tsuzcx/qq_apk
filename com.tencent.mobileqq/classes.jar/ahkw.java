@@ -1,44 +1,20 @@
-import com.tencent.mobileqq.richmedia.capture.util.ReportBadCase;
-import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
 
-public final class ahkw
-  implements Runnable
+public class ahkw
+  implements VerticalGallery.OnSelectViewDataUpdateListener
 {
-  public void run()
+  public ahkw(IosTimepicker paramIosTimepicker) {}
+  
+  public void a(View paramView, int paramInt)
   {
-    for (;;)
-    {
-      int i;
-      synchronized ()
-      {
-        int j = ReportBadCase.a().size();
-        if (j > 0)
-        {
-          i = 0;
-          if (i < j)
-          {
-            BadcaseReportUtils.BadDataFrame localBadDataFrame = (BadcaseReportUtils.BadDataFrame)ReportBadCase.a().get(i);
-            if ((!localBadDataFrame.b) || (localBadDataFrame.d == null) || ("".equals(localBadDataFrame.d))) {
-              break label96;
-            }
-            FileUtils.d(localBadDataFrame.d);
-            break label96;
-          }
-        }
-        ReportBadCase.a().clear();
-        ReportBadCase.b();
-        return;
-      }
-      label96:
-      i += 1;
-    }
+    IosTimepicker.a(this.a, paramView, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkw
  * JD-Core Version:    0.7.0.1
  */

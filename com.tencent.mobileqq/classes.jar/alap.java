@@ -1,39 +1,47 @@
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityLoginView;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.ClearableEditText.OnTextClearedListener;
 
 public class alap
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public alap(AuthorityLoginView paramAuthorityLoginView, String paramString) {}
+  public alap(ClearableEditText paramClearableEditText) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) instanceof AuthorityActivity)) {
-      ((AuthorityActivity)AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).a(this.jdField_a_of_type_JavaLangString, true);
-    }
+    int i = 1;
+    if (this.a.getCompoundDrawables()[2] == null) {}
+    label107:
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.b);
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_AndroidViewView.findViewById(2131365727);
-      if (paramView != null) {
-        paramView.setVisibility(0);
-      }
-      return;
-      if ((AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).a(this.jdField_a_of_type_JavaLangString, true);
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {}
+        for (;;)
+        {
+          if (i == 0) {
+            break label107;
+          }
+          this.a.setText("");
+          this.a.setClearButtonVisible(false);
+          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener == null) {
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$OnTextClearedListener.a();
+          return false;
+          i = 0;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alap
  * JD-Core Version:    0.7.0.1
  */

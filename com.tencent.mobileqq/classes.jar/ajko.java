@@ -1,51 +1,24 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ArithmeticInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ArithmeticInfo.ArithmeticImageInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadCallback;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.mobileqq.util.FaceDrawable.OnLoadingStateChangeListener;
 
-public class ajko
-  implements TroopHomeworkHelper.UploadCallback
+class ajko
+  implements FaceDrawable.OnLoadingStateChangeListener
 {
-  private ArithmeticInfo.ArithmeticImageInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo;
+  ajko(ajkn paramajkn, Sprite paramSprite) {}
   
-  public ajko(ArithmeticViewHolder paramArithmeticViewHolder, ArithmeticInfo.ArithmeticImageInfo paramArithmeticImageInfo)
+  public void onLoadingStateChanged(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo = paramArithmeticImageInfo;
-  }
-  
-  private void a(ArithmeticInfo.ArithmeticImageInfo paramArithmeticImageInfo)
-  {
-    ThreadManager.getUIHandler().post(new ajkp(this, paramArithmeticImageInfo));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo.jdField_a_of_type_Int = paramInt;
-    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo);
-    a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo.jdField_a_of_type_Int = 100;
-    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo);
-    a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("ArithmeticViewHolder", 2, "update success , url = " + paramString);
+    if ((paramInt1 == 0) && (paramInt2 == 1) && (this.jdField_a_of_type_Ajkn.jdField_a_of_type_Ajkj.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a != null))
+    {
+      Bitmap localBitmap = Bitmap.createScaledBitmap(TroopUtils.a(FaceDrawable.a(this.jdField_a_of_type_Ajkn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_Ajkn.jdField_a_of_type_Ajkj.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$TroopEnterEffectData.a)), this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c(), this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d(), true);
+      this.jdField_a_of_type_Ajkn.jdField_a_of_type_Ajkj.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a.b(new ajkp(this, localBitmap));
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo.jdField_b_of_type_Int = 2;
-    a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo);
-    QLog.w("ArithmeticViewHolder", 2, "upload error , code = " + paramInt + " ;local path = " + this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo.jdField_b_of_type_JavaLangString);
   }
 }
 

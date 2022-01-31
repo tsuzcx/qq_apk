@@ -1,13 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraProgressView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
 
 public class lhp
-  implements Runnable
+  extends VideoShareListener
 {
-  public lhp(ReadInJoyCameraProgressView paramReadInJoyCameraProgressView) {}
+  public lhp(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    this.a.invalidate();
+    if (!paramBoolean1) {
+      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    }
+    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
+      return;
+    }
+    ReadInJoyVideoSubChannelActivity.a(this.a).b();
+    ReadInJoyVideoSubChannelActivity.a(this.a, false);
   }
 }
 

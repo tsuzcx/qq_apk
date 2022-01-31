@@ -1,44 +1,49 @@
-import android.animation.ObjectAnimator;
-import android.text.TextUtils;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment;
+import java.util.ArrayList;
+import javax.annotation.Nonnull;
 
 public class ahjp
-  implements Runnable
+  extends FragmentPagerAdapter
 {
-  public ahjp(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  private ArrayList jdField_a_of_type_JavaUtilArrayList;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private ArrayList b;
   
-  public void run()
+  private ahjp(FragmentManager paramFragmentManager)
   {
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = CapturePtvTemplateManager.a().a();
-    if (((this.a.a == null) && (localPtvTemplateInfo == null)) || ((this.a.a != null) && (localPtvTemplateInfo != null) && (this.a.a.md5.equals(localPtvTemplateInfo.md5)))) {}
-    do
+    super(paramFragmentManager);
+  }
+  
+  public void a(@Nonnull ArrayList paramArrayList1, @Nonnull ArrayList paramArrayList2, @Nonnull String[] paramArrayOfString)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
+    this.b = paramArrayList2;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+  }
+  
+  public int getCount()
+  {
+    return 2;
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        this.a.a = localPtvTemplateInfo;
-      } while (!this.a.b);
-      if ((localPtvTemplateInfo != null) && (localPtvTemplateInfo.isAdvertise) && (!TextUtils.isEmpty(localPtvTemplateInfo.advertiseStr)) && (!TextUtils.isEmpty(localPtvTemplateInfo.advertiseIconUrl)) && (!TextUtils.isEmpty(localPtvTemplateInfo.advertiseWebUrl)))
-      {
-        EffectsCameraCaptureFragment.d(this.a);
-        EffectsCameraCaptureFragment.a(this.a).addListener(new ahjq(this, localPtvTemplateInfo));
-        EffectsCameraCaptureFragment.a(this.a).setDuration(200L).start();
-        EffectsCameraCaptureFragment.i(this.a, true);
-        return;
-      }
-      EffectsCameraCaptureFragment.i(this.a, false);
-    } while (EffectsCameraCaptureFragment.a(this.a).getVisibility() != 0);
-    EffectsCameraCaptureFragment.d(this.a);
-    EffectsCameraCaptureFragment.b(this.a).addListener(new ahjr(this));
-    EffectsCameraCaptureFragment.b(this.a).setDuration(200L).start();
+    default: 
+      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
+    case 0: 
+      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    }
+    return ReceiptMessageReadMemberListFragment.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,19 @@
-import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
-import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.authorize.FlatBuffersConfig;
+import java.io.File;
 
 public class knf
   implements Runnable
 {
-  public knf(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
+  public knf(FlatBuffersConfig paramFlatBuffersConfig) {}
   
   public void run()
   {
-    this.a.b(this.a.jdField_a_of_type_AndroidWidgetFrameLayout).loadUrl(this.a.jdField_a_of_type_JavaLangString);
+    if (this.a.a().exists())
+    {
+      this.a.a();
+      return;
+    }
+    this.a.c();
   }
 }
 

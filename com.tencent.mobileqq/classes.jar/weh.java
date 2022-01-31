@@ -1,14 +1,19 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class weh
+  implements Runnable
 {
-  public ProgressBar a;
-  public RelativeLayout a;
-  public BubbleImageView a;
-  public WeakReference a;
+  public weh(PublicAccountChatPie paramPublicAccountChatPie) {}
+  
+  public void run()
+  {
+    boolean bool = false;
+    PublicAccountChatPie localPublicAccountChatPie = this.a;
+    if ((this.a.b(true)) || (this.a.b(false))) {
+      bool = true;
+    }
+    localPublicAccountChatPie.an = bool;
+  }
 }
 
 

@@ -1,24 +1,33 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.av.ui.BaseCallbackUI;
-import com.tencent.av.ui.CallbackWaitingActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class jqv
-  implements Runnable
+public final class jqv
+  implements Animation.AnimationListener
 {
-  public jqv(CallbackWaitingActivity paramCallbackWaitingActivity) {}
+  public jqv(View paramView, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.a.removeCallbacksAndMessages(null);
-    DialogUtil.b(this.a, 230, this.a.getResources().getString(2131429577), this.a.getResources().getString(2131429578), 2131428676, 2131428676, null, new jqw(this)).show();
+    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramAnimation.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqv
  * JD-Core Version:    0.7.0.1
  */

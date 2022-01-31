@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
-import com.tencent.mobileqq.pic.Logger;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.activity.aio.item.TroopWantGiftItemBuilder;
 
-class vqa
-  implements Runnable
+public class vqa
+  implements View.OnTouchListener
 {
-  vqa(vpw paramvpw, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
+  public vqa(TroopWantGiftItemBuilder paramTroopWantGiftItemBuilder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Vpw.b.a.a = false;
-    Logger.a("PhotoListPanel", "enableGuestrue", "mPanel.mDisableGuestrueSend = " + this.jdField_a_of_type_Vpw.b.a.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

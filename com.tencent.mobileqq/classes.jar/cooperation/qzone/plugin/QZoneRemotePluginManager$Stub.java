@@ -1,10 +1,10 @@
 package cooperation.qzone.plugin;
 
-import amye;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
+import anfr;
 
 public abstract class QZoneRemotePluginManager$Stub
   extends Binder
@@ -24,7 +24,7 @@ public abstract class QZoneRemotePluginManager$Stub
     if ((localIInterface != null) && ((localIInterface instanceof QZoneRemotePluginManager))) {
       return (QZoneRemotePluginManager)localIInterface;
     }
-    return new amye(paramIBinder);
+    return new anfr(paramIBinder);
   }
   
   public IBinder asBinder()

@@ -1,18 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class tkg
-  implements DialogInterface.OnDismissListener
+class tkg
+  implements DialogInterface.OnClickListener
 {
-  public tkg(QQMapActivity paramQQMapActivity) {}
+  tkg(tkf paramtkf) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
-      this.a.finish();
-    }
-    this.a.m = false;
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 

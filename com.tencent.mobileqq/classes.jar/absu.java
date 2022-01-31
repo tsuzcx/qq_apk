@@ -1,25 +1,21 @@
-import com.qq.im.poi.LbsPackConfig;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.bubble.BubbleNewAIOAnim;
 
 public class absu
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public absu(ConfigServlet paramConfigServlet, LbsPackConfig paramLbsPackConfig, String paramString) {}
+  public absu(BubbleNewAIOAnim paramBubbleNewAIOAnim, ObjectAnimator paramObjectAnimator) {}
   
-  public void run()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SPLASH_ConfigServlet", 2, "handleLbsPackConfig ,excute runnable");
-    }
-    if (this.jdField_a_of_type_ComQqImPoiLbsPackConfig != null) {
-      this.jdField_a_of_type_ComQqImPoiLbsPackConfig.saveToFile(this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     absu
  * JD-Core Version:    0.7.0.1
  */

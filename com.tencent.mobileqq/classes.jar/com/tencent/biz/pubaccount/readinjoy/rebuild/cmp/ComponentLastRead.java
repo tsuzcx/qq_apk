@@ -9,8 +9,8 @@ import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
 import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.mobileqq.app.ThreadManager;
-import lwj;
-import lwk;
+import lzw;
+import lzx;
 
 public class ComponentLastRead
   extends LinearLayout
@@ -47,8 +47,8 @@ public class ComponentLastRead
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2130969586, this, true);
-    setBackgroundResource(2131493470);
+    LayoutInflater.from(paramContext).inflate(2130969582, this, true);
+    setBackgroundResource(2131493472);
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
@@ -65,7 +65,7 @@ public class ComponentLastRead
       if (this.a.a.g())
       {
         setVisibility(0);
-        setOnClickListener(new lwj(this));
+        setOnClickListener(new lzw(this));
       }
     }
     else
@@ -80,7 +80,7 @@ public class ComponentLastRead
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    ThreadManager.executeOnSubThread(new lwk(this));
+    ThreadManager.executeOnSubThread(new lzx(this));
   }
 }
 

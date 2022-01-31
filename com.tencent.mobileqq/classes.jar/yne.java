@@ -1,42 +1,35 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
+import com.tencent.mobileqq.fpsreport.FPSPinnedHeaderExpandableListView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
 
-public class yne
+class yne
   implements Runnable
 {
-  private final long jdField_a_of_type_Long;
-  public final ApolloTextureView a;
-  private final long b;
-  
-  yne(ApolloTicker paramApolloTicker, ApolloTextureView paramApolloTextureView, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = paramApolloTextureView;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.b = paramLong1;
-  }
+  yne(ynd paramynd, ArrayList paramArrayList, SparseArray paramSparseArray, SparseIntArray paramSparseIntArray) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mIsDestroy == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mIsDestroy.get())) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("BuddyListAdapter", 2, "notifyDataSetChanged out ThreadManager");
     }
-    long l = System.currentTimeMillis();
-    try
+    BuddyListAdapter.a(this.jdField_a_of_type_Ynd.a, this.jdField_a_of_type_JavaUtilArrayList);
+    BuddyListAdapter.a(this.jdField_a_of_type_Ynd.a, this.jdField_a_of_type_AndroidUtilSparseArray);
+    BuddyListAdapter.a(this.jdField_a_of_type_Ynd.a, this.jdField_a_of_type_AndroidUtilSparseIntArray);
+    ((FPSPinnedHeaderExpandableListView)this.jdField_a_of_type_Ynd.a.a).b();
+    BuddyListAdapter.a(this.jdField_a_of_type_Ynd.a);
+    if (BuddyListAdapter.a(this.jdField_a_of_type_Ynd.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker.nativeCallbackTicker(this.b, l, 0.01666666666666667D * this.jdField_a_of_type_Long);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloTicker", 1, "[onDrawFrame]");
+      BuddyListAdapter.a(this.jdField_a_of_type_Ynd.a, false);
+      BuddyListAdapter.b(this.jdField_a_of_type_Ynd.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yne
  * JD-Core Version:    0.7.0.1
  */

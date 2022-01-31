@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.lyric.util;
 
-import aecu;
+import aele;
 import android.util.Log;
 import com.tencent.mobileqq.lyric.data.Character;
 import com.tencent.mobileqq.lyric.data.Sentence;
@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class ParsingQrc
 {
-  private static final aecu jdField_a_of_type_Aecu = new aecu(null);
+  private static final aele jdField_a_of_type_Aele = new aele(null);
   private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(?<=\\[).*?(?=\\])");
   private static final Pattern b = Pattern.compile("(?<=\\()-?[0-9]*,-?[0-9]*(?=\\))");
   private int jdField_a_of_type_Int;
@@ -395,7 +395,7 @@ public class ParsingQrc
     //   271: astore_2
     //   272: aload_0
     //   273: getfield 44	com/tencent/mobileqq/lyric/util/ParsingQrc:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   276: getstatic 35	com/tencent/mobileqq/lyric/util/ParsingQrc:jdField_a_of_type_Aecu	Laecu;
+    //   276: getstatic 35	com/tencent/mobileqq/lyric/util/ParsingQrc:jdField_a_of_type_Aele	Laele;
     //   279: invokestatic 249	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   282: aload_3
     //   283: astore_2

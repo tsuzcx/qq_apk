@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.IPluginManager;
-import knc;
+import kpj;
 
 public class HuanjiPluginProxy
 {
@@ -17,7 +17,7 @@ public class HuanjiPluginProxy
   public int a;
   public HuanjiPluginStartListener a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new knc(this);
+  OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new kpj(this);
   private IPluginManager jdField_a_of_type_CooperationPluginIPluginManager;
   public String a;
   

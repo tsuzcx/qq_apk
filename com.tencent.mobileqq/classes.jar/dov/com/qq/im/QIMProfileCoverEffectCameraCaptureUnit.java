@@ -34,13 +34,13 @@ public class QIMProfileCoverEffectCameraCaptureUnit
   
   protected int a()
   {
-    return 2130970090;
+    return 2130970102;
   }
   
   public View a()
   {
     View localView = super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363993));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364018));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     return localView;
   }
@@ -80,16 +80,16 @@ public class QIMProfileCoverEffectCameraCaptureUnit
   protected void e()
   {
     super.e();
-    if (!this.b) {
+    if (!this.c) {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     this.e.setVisibility(8);
     this.d.setVisibility(8);
   }
   
-  protected void f()
+  protected void g()
   {
-    super.f();
+    super.g();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.e.setVisibility(8);
     this.d.setVisibility(8);

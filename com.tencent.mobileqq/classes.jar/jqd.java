@@ -1,19 +1,24 @@
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.smallscreen.SmallScreenDialogActivity;
+import com.tencent.av.smallscreen.SmallScreenUtils;
 
-class jqd
-  implements Runnable
+public class jqd
+  extends BroadcastReceiver
 {
-  jqd(jpz paramjpz, DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jqd(SmallScreenDialogActivity paramSmallScreenDialogActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.setViewEnable(2131365399, false);
+    if ((paramIntent.getAction().equals("tencent.video.v2q.SmallScreenState")) && (SmallScreenUtils.c(paramContext))) {
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqd
  * JD-Core Version:    0.7.0.1
  */

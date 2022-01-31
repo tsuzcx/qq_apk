@@ -1,45 +1,71 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.PhoneUnityBannerData;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import com.tencent.mobileqq.activity.qwallet.widget.RollNumberView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class xjq
-  implements View.OnClickListener
+  extends Handler
 {
-  public xjq(BannerManager paramBannerManager, PhoneUnityBannerData paramPhoneUnityBannerData) {}
+  WeakReference a;
   
-  public void onClick(View paramView)
+  public xjq(QzoneHbFragment paramQzoneHbFragment)
   {
-    ReportController.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
-    paramView = BaseActivity.sTopActivity;
-    Intent localIntent;
-    if (paramView != null)
+    this.a = new WeakReference(paramQzoneHbFragment);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    QzoneHbFragment localQzoneHbFragment = (QzoneHbFragment)this.a.get();
+    if (localQzoneHbFragment == null) {}
+    do
     {
-      if (!URLUtil.isValidUrl(this.jdField_a_of_type_ComTencentMobileqqAppPhoneUnityBannerData.a)) {
-        break label110;
-      }
-      localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqAppPhoneUnityBannerData.a);
-      localIntent.putExtra("hideRightButton", true);
-      paramView.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(5, 0);
-      return;
-      label110:
-      localIntent = new Intent(paramView, PhoneUnityBindInfoActivity.class);
-      localIntent.putExtra("kSrouce", 0);
-      paramView.startActivity(localIntent);
-    }
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          case 102: 
+          default: 
+            return;
+          case 100: 
+            if (QLog.isColorLevel()) {
+              QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----1");
+            }
+            break;
+          }
+        } while ((QzoneHbFragment.a(localQzoneHbFragment) == null) || (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment))));
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----in mModifyAmountBtn.setEnabled(false)");
+          }
+          double d = Double.parseDouble(QzoneHbFragment.a(localQzoneHbFragment));
+          QzoneHbFragment.a(localQzoneHbFragment).reset(d);
+          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
+          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
+          QzoneHbFragment.a(localQzoneHbFragment).roll();
+          QzoneHbFragment.b(localQzoneHbFragment).setEnabled(false);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          paramMessage.printStackTrace();
+          return;
+        }
+      } while (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment)));
+      QzoneHbFragment.a(localQzoneHbFragment).setText(QzoneHbFragment.a(localQzoneHbFragment));
+      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
+      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
+      QzoneHbFragment.b(localQzoneHbFragment).setEnabled(true);
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneHbFragment", 2, "MSG_ROLL_STOP AmountBtn.setEnabled(true)---");
   }
 }
 

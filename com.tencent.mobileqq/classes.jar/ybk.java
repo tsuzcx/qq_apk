@@ -1,19 +1,31 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
 
-public class ybk
-  implements View.OnClickListener
+class ybk
+  implements Runnable
 {
-  public ybk(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter) {}
+  ybk(ybf paramybf) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    GroupManagerActivity.a((Activity)SelectMemberBuddyListAdapter.a(this.a));
-    ReportController.b(SelectMemberBuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+    boolean bool1 = localSharedPreferences.getBoolean("sv_has_reported_front_camera_compatibility", false);
+    boolean bool2 = localSharedPreferences.getBoolean("sv_has_reported_back_camera_compatibility", false);
+    CameraControl localCameraControl = CameraControl.a();
+    if ((!bool1) && (FlowCameraConstant.a == 1))
+    {
+      NewFlowCameraReporter.a(localCameraControl.a(), "front");
+      localSharedPreferences.edit().putBoolean("sv_has_reported_front_camera_compatibility", true).commit();
+    }
+    while ((bool2) || (FlowCameraConstant.a != 2)) {
+      return;
+    }
+    NewFlowCameraReporter.a(localCameraControl.a(), "back");
+    localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
   }
 }
 

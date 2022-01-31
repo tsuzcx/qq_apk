@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.earlydownload.handler;
 
-import abyu;
-import abyv;
+import acgu;
+import acgv;
 import android.os.Looper;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -57,13 +57,13 @@ public class ChirpSoHandler
     if (QLog.isColorLevel()) {
       QLog.d("ChirpSoHandler", 2, "onDownload success " + paramString);
     }
-    paramString = new abyu(this, paramString);
+    paramString = new acgu(this, paramString);
     if (Looper.getMainLooper() == Looper.myLooper()) {
       ThreadManager.getSubThreadHandler().post(paramString);
     }
     for (;;)
     {
-      BaseApplicationImpl.sUiHandler.post(new abyv(this));
+      BaseApplicationImpl.sUiHandler.post(new acgv(this));
       return;
       paramString.run();
     }

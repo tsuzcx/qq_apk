@@ -1,30 +1,13 @@
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+
 public class uta
+  implements Runnable
 {
-  public float a;
-  public long a;
-  public float b = 0.0F;
-  public float c = 0.0F;
+  public uta(XBubbleAnimation paramXBubbleAnimation) {}
   
-  uta()
+  public void run()
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  void a(uta paramuta)
-  {
-    this.jdField_a_of_type_Float = paramuta.jdField_a_of_type_Float;
-    this.b = paramuta.b;
-    this.c = paramuta.c;
-    this.jdField_a_of_type_Long = paramuta.jdField_a_of_type_Long;
+    this.a.d();
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.fragment;
 
-import admo;
-import admp;
-import admq;
-import admr;
+import aduw;
+import adux;
+import aduy;
+import aduz;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,7 +41,7 @@ public class CommonTabFragment
   extends NearbyBaseFragment
   implements Handler.Callback
 {
-  public admr a;
+  public aduz a;
   View.OnClickListener a;
   public RefreshView a;
   public NearbyActivity a;
@@ -56,7 +56,7 @@ public class CommonTabFragment
   private void e()
   {
     if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a(getString(2131438297)).a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a(getString(2131438317)).a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     }
     for (;;)
     {
@@ -71,14 +71,14 @@ public class CommonTabFragment
     try
     {
       if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("CommonTabFragment", "createWebView", new Object[] { this.jdField_a_of_type_Admr, paramActivity, paramNearbyAppInterface });
+        NearbyUtils.a("CommonTabFragment", "createWebView", new Object[] { this.jdField_a_of_type_Aduz, paramActivity, paramNearbyAppInterface });
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity == null) && ((paramActivity instanceof NearbyActivity))) {
         this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity = ((NearbyActivity)paramActivity);
       }
-      if ((this.jdField_a_of_type_Admr == null) && (paramActivity != null) && (paramNearbyAppInterface != null))
+      if ((this.jdField_a_of_type_Aduz == null) && (paramActivity != null) && (paramNearbyAppInterface != null))
       {
-        this.jdField_a_of_type_Admr = new admr(this, paramActivity.getBaseContext(), paramActivity, paramNearbyAppInterface);
+        this.jdField_a_of_type_Aduz = new aduz(this, paramActivity.getBaseContext(), paramActivity, paramNearbyAppInterface);
         if (!WebAccelerateHelper.isWebViewCache)
         {
           Intent localIntent = new Intent();
@@ -102,12 +102,12 @@ public class CommonTabFragment
   public boolean a(long paramLong, Map paramMap, int paramInt1, int paramInt2, Intent paramIntent)
   {
     CustomWebView localCustomWebView;
-    if (this.jdField_a_of_type_Admr != null) {
-      localCustomWebView = this.jdField_a_of_type_Admr.a();
+    if (this.jdField_a_of_type_Aduz != null) {
+      localCustomWebView = this.jdField_a_of_type_Aduz.a();
     }
     while (localCustomWebView != null)
     {
-      this.jdField_a_of_type_Admr.b();
+      this.jdField_a_of_type_Aduz.b();
       WebViewPluginEngine localWebViewPluginEngine = localCustomWebView.a();
       if ((localWebViewPluginEngine != null) && (localWebViewPluginEngine.a(localCustomWebView.getUrl(), paramLong, paramMap)))
       {
@@ -140,9 +140,9 @@ public class CommonTabFragment
     return false;
   }
   
-  public void ar_()
+  public void at_()
   {
-    super.ar_();
+    super.at_();
   }
   
   public void d()
@@ -156,18 +156,18 @@ public class CommonTabFragment
         l = System.currentTimeMillis();
       }
       this.f = true;
-      if (!this.jdField_a_of_type_Admr.jdField_a_of_type_Boolean)
+      if (!this.jdField_a_of_type_Aduz.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-        this.jdField_a_of_type_Admr.a();
+        this.jdField_a_of_type_Aduz.a();
       }
       if (this.jdField_a_of_type_ComTencentBizUiRefreshView != null)
       {
         this.jdField_a_of_type_ComTencentBizUiRefreshView.setDelayBeforeScrollBack(800L);
-        this.jdField_a_of_type_Admr.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnOverScrollHandler(this.jdField_a_of_type_ComTencentBizUiRefreshView);
-        this.jdField_a_of_type_ComTencentBizUiRefreshView.addView(this.jdField_a_of_type_Admr.jdField_a_of_type_ComTencentBizUiTouchWebView, 0, new ViewGroup.LayoutParams(-1, -1));
+        this.jdField_a_of_type_Aduz.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnOverScrollHandler(this.jdField_a_of_type_ComTencentBizUiRefreshView);
+        this.jdField_a_of_type_ComTencentBizUiRefreshView.addView(this.jdField_a_of_type_Aduz.jdField_a_of_type_ComTencentBizUiTouchWebView, 0, new ViewGroup.LayoutParams(-1, -1));
       }
-      if ((this.jdField_a_of_type_Admr.b) && (this.b != null)) {
+      if ((this.jdField_a_of_type_Aduz.b) && (this.b != null)) {
         this.b.setVisibility(8);
       }
       if (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null)
@@ -177,9 +177,9 @@ public class CommonTabFragment
           NearbyUtils.a("WebSpeedTrace", "mInitTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.l) });
         }
       }
-    } while ((!(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity instanceof NearbyActivity)) || (this.jdField_a_of_type_Admr == null));
+    } while ((!(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity instanceof NearbyActivity)) || (this.jdField_a_of_type_Aduz == null));
     this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.centerView.setClickable(true);
-    ((NearbyActivity)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity).a(new admp(this));
+    ((NearbyActivity)this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity).a(new adux(this));
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -194,7 +194,7 @@ public class CommonTabFragment
       if (QLog.isColorLevel()) {
         QLog.d("CommonTabFragment", 2, "startLocation start" + System.currentTimeMillis());
       }
-      SosoInterface.a(new admq(this, 0, true, false, 300000L, true, false, "NearbyNowliveTab"));
+      SosoInterface.a(new aduy(this, 0, true, false, 300000L, true, false, "NearbyNowliveTab"));
       return false;
     }
     d();
@@ -217,8 +217,8 @@ public class CommonTabFragment
       }
     }
     super.onCreate(paramBundle);
-    if (this.jdField_a_of_type_Admr != null) {
-      this.jdField_a_of_type_Admr.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getIntent());
+    if (this.jdField_a_of_type_Aduz != null) {
+      this.jdField_a_of_type_Aduz.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getIntent());
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.i == 0L))
     {
@@ -240,15 +240,15 @@ public class CommonTabFragment
       super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
       if (this.jdField_a_of_type_AndroidViewView == null)
       {
-        this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969111, null);
-        this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365229));
-        this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131365230);
+        this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969114, null);
+        this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365256));
+        this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131365257);
       }
-      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(getString(2131435075)).a(false);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(getString(2131435091)).a(false);
       e();
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.d == 1)) {
         if ((this.e) && (!this.f)) {
-          SosoInterface.a(new admo(this, 0, true, false, 30000L, true, false, "NearbyNowliveTab"));
+          SosoInterface.a(new aduw(this, 0, true, false, 30000L, true, false, "NearbyNowliveTab"));
         }
       }
       for (;;)
@@ -272,7 +272,7 @@ public class CommonTabFragment
     if (!this.f) {
       return;
     }
-    this.jdField_a_of_type_Admr.d();
+    this.jdField_a_of_type_Aduz.d();
   }
   
   public void onPause()
@@ -281,7 +281,7 @@ public class CommonTabFragment
     if (!this.f) {
       return;
     }
-    this.jdField_a_of_type_Admr.c();
+    this.jdField_a_of_type_Aduz.c();
   }
   
   public void onResume()
@@ -291,7 +291,7 @@ public class CommonTabFragment
     do
     {
       return;
-      this.jdField_a_of_type_Admr.b();
+      this.jdField_a_of_type_Aduz.b();
     } while (NetworkUtil.g(getActivity()));
     QQToast.a(getActivity(), 1, "当前网络不可用，请检查网络设置", 0).b(getActivity().getTitleBarHeight());
   }

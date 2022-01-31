@@ -1,18 +1,31 @@
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout.CaptureButtonListenerInterceptor;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.ViewHolder;
+import com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo;
+import java.util.List;
 
 public class aeug
-  implements CameraCaptureButtonLayout.CaptureButtonListenerInterceptor
+  implements Runnable
 {
-  public aeug(SmallVideoCameraCaptureFragment paramSmallVideoCameraCaptureFragment) {}
+  public aeug(NearbyFragmentEnterAdapter paramNearbyFragmentEnterAdapter) {}
   
-  public boolean a()
+  public void run()
   {
-    if (!SmallVideoCameraCaptureFragment.a(this.a)) {
-      QQToast.a(this.a.getActivity(), 1, SmallVideoCameraCaptureFragment.a(this.a), 0).a();
+    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    {
+      NearbyFragmentEnterAdapter.ViewHolder localViewHolder = this.a.a();
+      if (localViewHolder != null)
+      {
+        Object localObject = this.a;
+        ((NearbyFragmentEnterAdapter)localObject).b += 1;
+        if (this.a.b >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+          this.a.b = 0;
+        }
+        localObject = (ilive_feeds_near_anchor.NearAnchorInfo)this.a.jdField_a_of_type_JavaUtilList.get(this.a.b);
+        this.a.a(localViewHolder, (ilive_feeds_near_anchor.NearAnchorInfo)localObject);
+      }
     }
-    return SmallVideoCameraCaptureFragment.a(this.a);
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1500L);
   }
 }
 

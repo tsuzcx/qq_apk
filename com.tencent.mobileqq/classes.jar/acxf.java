@@ -1,26 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import java.util.TimerTask;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
-class acxf
-  extends TimerTask
+public class acxf
+  extends FMObserver
 {
-  acxf(acxe paramacxe) {}
+  public acxf(VerifyPwdView paramVerifyPwdView) {}
   
-  public void run()
+  protected void a(int paramInt, String paramString)
   {
-    if (acxe.a(this.a) == null) {
+    FMToastUtil.a(paramString);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      VerifyPwdView.a(this.a);
       return;
     }
-    Message localMessage = new Message();
-    localMessage.what = 1;
-    this.a.a.a.sendMessage(localMessage);
+    VerifyPwdView.b(this.a);
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    FMToastUtil.a(paramString);
+    VerifyPwdView.c(this.a);
+  }
+  
+  protected void e()
+  {
+    VerifyPwdView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acxf
  * JD-Core Version:    0.7.0.1
  */

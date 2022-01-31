@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.hotpic;
 
-import adpw;
-import adpx;
-import adpy;
-import adpz;
+import adyf;
+import adyg;
+import adyh;
+import adyi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -136,14 +136,14 @@ public class HotPicManager
   private void a(List paramList, int paramInt)
   {
     HotPicTagInfo localHotPicTagInfo = new HotPicTagInfo();
-    localHotPicTagInfo.tagName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438807);
+    localHotPicTagInfo.tagName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438831);
     localHotPicTagInfo.version = paramInt;
     localHotPicTagInfo.tagId = 2;
     localHotPicTagInfo.tagType = 1;
     localHotPicTagInfo.position = 0;
     paramList.add(localHotPicTagInfo);
     localHotPicTagInfo = new HotPicTagInfo();
-    localHotPicTagInfo.tagName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438808);
+    localHotPicTagInfo.tagName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438832);
     localHotPicTagInfo.version = paramInt;
     localHotPicTagInfo.tagId = -20;
     localHotPicTagInfo.tagType = 255;
@@ -311,10 +311,10 @@ public class HotPicManager
     //   57: sipush 500
     //   60: if_icmple -49 -> 11
     //   63: aload_3
-    //   64: new 283	adqa
+    //   64: new 283	adyj
     //   67: dup
     //   68: aload_0
-    //   69: invokespecial 286	adqa:<init>	(Lcom/tencent/mobileqq/hotpic/HotPicManager;)V
+    //   69: invokespecial 286	adyj:<init>	(Lcom/tencent/mobileqq/hotpic/HotPicManager;)V
     //   72: invokestatic 292	java/util/Arrays:sort	([Ljava/lang/Object;Ljava/util/Comparator;)V
     //   75: new 38	java/util/HashSet
     //   78: dup
@@ -618,7 +618,7 @@ public class HotPicManager
   
   public void a(int paramInt1, int paramInt2)
   {
-    ThreadManager.post(new adpx(this, paramInt1, paramInt2), 8, null, false);
+    ThreadManager.post(new adyg(this, paramInt1, paramInt2), 8, null, false);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
@@ -643,7 +643,7 @@ public class HotPicManager
           ((HotPicMsg.GetVideoInfoReq)localObject3).uint32_end_video_index.set(paramInt2);
           ((HotPicMsg.GetVideoInfoReq)localObject3).uint32_build_ver.set(paramInt3);
           ((HotPicMsg.GetVideoInfoReq)localObject3).uint32_tag_id.set(paramInt4);
-          ((HotPicMsg.GetVideoInfoReq)localObject3).bytes_client_ver.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+          ((HotPicMsg.GetVideoInfoReq)localObject3).bytes_client_ver.set(ByteStringMicro.copyFromUtf8("7.6.8"));
           localObject4 = ((HotPicMsg.GetVideoInfoReq)localObject3).uint32_need_update;
           if (paramBoolean)
           {
@@ -683,7 +683,7 @@ public class HotPicManager
         ((HotPicMsg.GetImgInfoReq)localObject3).uint32_end_pic_index.set(paramInt2);
         ((HotPicMsg.GetImgInfoReq)localObject3).uint32_build_ver.set(paramInt3);
         ((HotPicMsg.GetImgInfoReq)localObject3).uint32_pic_tag.set(paramInt4);
-        ((HotPicMsg.GetImgInfoReq)localObject3).bytes_client_ver.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+        ((HotPicMsg.GetImgInfoReq)localObject3).bytes_client_ver.set(ByteStringMicro.copyFromUtf8("7.6.8"));
         Object localObject4 = ((HotPicMsg.GetImgInfoReq)localObject3).uint32_need_update;
         if (paramBoolean)
         {
@@ -1215,7 +1215,7 @@ public class HotPicManager
         QLog.d("HotPicManager", 1, "wrong begin index " + ((HotPicData)paramIntent.get(0)).picIndex + ", local " + paramFromServiceMsg.size() + ",tag " + i1);
         break label2203;
       }
-      ThreadManager.getUIHandler().post(new adpy(this));
+      ThreadManager.getUIHandler().post(new adyh(this));
       break label2203;
       break;
       paramIntent = paramFromServiceMsg;
@@ -1256,7 +1256,7 @@ public class HotPicManager
         if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager$HotPicListener != null) {
           this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager$HotPicListener.b(8, -20, 0);
         }
-        ThreadManager.post(new adpw(this, localHotPicSendData1, localHotPicSendData2), 5, null, false);
+        ThreadManager.post(new adyf(this, localHotPicSendData1, localHotPicSendData2), 5, null, false);
         if (this.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountGifListener != null) {
           this.jdField_a_of_type_ComTencentMobileqqHotpicPublicAccountGifListener.a(paramHotPicData);
         }
@@ -1286,7 +1286,7 @@ public class HotPicManager
       }
     }
     this.jdField_a_of_type_Int = i;
-    ThreadManager.post(new adpz(this, i), 5, null, false);
+    ThreadManager.post(new adyi(this, i), 5, null, false);
   }
   
   public void a(PublicAccountGifListener paramPublicAccountGifListener)

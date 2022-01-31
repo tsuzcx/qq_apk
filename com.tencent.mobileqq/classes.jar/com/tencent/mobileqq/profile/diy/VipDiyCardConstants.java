@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.AppConstants;
 
 public class VipDiyCardConstants
 {
-  public static final String a = AppConstants.aJ + ".profilecard/diyCardFonts/";
+  public static final String a = AppConstants.aK + ".profilecard/diyCardFonts/";
 }
 
 

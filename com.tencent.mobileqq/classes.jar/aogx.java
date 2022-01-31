@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
 
 class aogx
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  aogx(aogw paramaogw) {}
+  aogx(aogv paramaogv) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.setVisibility(8);
+    this.a.a.a.a(this.a.a.a(), this.a.a.b());
+    this.a.a.a.a(true);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

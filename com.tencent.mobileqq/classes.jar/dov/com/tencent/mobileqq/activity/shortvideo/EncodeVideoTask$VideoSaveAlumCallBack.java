@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.activity.shortvideo;
 
-import aoip;
+import aori;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -11,15 +11,15 @@ public class EncodeVideoTask$VideoSaveAlumCallBack
   implements FFmpegExecuteResponseCallback
 {
   long jdField_a_of_type_Long;
-  aoip jdField_a_of_type_Aoip;
+  aori jdField_a_of_type_Aori;
   PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
   String jdField_a_of_type_JavaLangString;
   String b;
   
-  public EncodeVideoTask$VideoSaveAlumCallBack(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, aoip paramaoip)
+  public EncodeVideoTask$VideoSaveAlumCallBack(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, aori paramaori)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = paramPublishVideoEntry;
-    this.jdField_a_of_type_Aoip = paramaoip;
+    this.jdField_a_of_type_Aori = paramaori;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -40,13 +40,13 @@ public class EncodeVideoTask$VideoSaveAlumCallBack
       QLog.d("EncodeVideoTask", 2, "generate files|third step cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D + ", isSuccess:" + paramBoolean);
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_Aoip.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
+      this.jdField_a_of_type_Aori.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
     }
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_Aoip.a(-12);
+    this.jdField_a_of_type_Aori.a(-12);
     if (QLog.isColorLevel()) {
       QLog.d("EncodeVideoTask", 2, "generate files|third step fail:" + paramString);
     }

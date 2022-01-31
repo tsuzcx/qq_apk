@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqpim.QQPimTipsInfo;
+import android.os.Bundle;
+import cooperation.comic.VipComicConfigHelper;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public final class amqs
-  implements Parcelable.Creator
+  implements EIPCResultCallback
 {
-  public QQPimTipsInfo a(Parcel paramParcel)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return new QQPimTipsInfo(paramParcel, null);
-  }
-  
-  public QQPimTipsInfo[] a(int paramInt)
-  {
-    return new QQPimTipsInfo[paramInt];
+    if (paramEIPCResult.isSuccess()) {
+      VipComicConfigHelper.a(paramEIPCResult.data.getString("config_json"));
+    }
   }
 }
 

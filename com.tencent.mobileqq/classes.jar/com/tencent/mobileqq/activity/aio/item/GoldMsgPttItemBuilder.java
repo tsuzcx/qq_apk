@@ -51,16 +51,16 @@ public class GoldMsgPttItemBuilder
     {
       paramViewHolder = super.a(paramChatMessage, paramViewHolder, paramView, paramBaseChatItemLayout, paramOnLongClickAndTouchListener);
       paramView = new LinearLayout((Context)localObject);
-      paramView.setId(2131362399);
+      paramView.setId(2131362402);
       paramView.setOrientation(1);
       paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
       paramBaseChatItemLayout = new LinearLayout((Context)localObject);
       paramBaseChatItemLayout.setOrientation(0);
       paramBaseChatItemLayout.setGravity(16);
-      paramBaseChatItemLayout.setId(2131362398);
+      paramBaseChatItemLayout.setId(2131362401);
       paramBaseChatItemLayout.setOnClickListener(this);
       TextView localTextView = new TextView((Context)localObject);
-      localTextView.setId(2131362397);
+      localTextView.setId(2131362400);
       localTextView.setSingleLine();
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       localTextView.setTextSize(2, 14.0F);
@@ -69,9 +69,9 @@ public class GoldMsgPttItemBuilder
       localTextView.setTextColor(GoldMsgChatHelper.i);
       localTextView.setCompoundDrawablePadding(GoldMsgChatHelper.b);
       GoldMsgQueueView localGoldMsgQueueView = new GoldMsgQueueView((Context)localObject);
-      localGoldMsgQueueView.setId(2131362401);
+      localGoldMsgQueueView.setId(2131362404);
       localObject = new TextView((Context)localObject);
-      ((TextView)localObject).setId(2131362402);
+      ((TextView)localObject).setId(2131362405);
       ((TextView)localObject).setSingleLine();
       ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
       ((TextView)localObject).setTextSize(2, 14.0F);
@@ -160,10 +160,10 @@ public class GoldMsgPttItemBuilder
     paramContext = (GoldMsgPttItemBuilder.GoldMsgPttHolder)paramViewHolder;
     if (paramChatMessage.isSend())
     {
-      paramContext.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130844112);
+      paramContext.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130844178);
       return;
     }
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130844111);
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130844177);
   }
   
   protected void a(MessageForPtt paramMessageForPtt, boolean paramBoolean, PttItemBuilder.Holder paramHolder)
@@ -172,7 +172,7 @@ public class GoldMsgPttItemBuilder
     {
       paramMessageForPtt = paramHolder.a;
       if (paramBoolean) {}
-      for (i = 2130845771;; i = 2130843907)
+      for (i = 2130845852;; i = 2130843973)
       {
         paramMessageForPtt.setImageResource(i);
         return;
@@ -180,7 +180,7 @@ public class GoldMsgPttItemBuilder
     }
     paramMessageForPtt = paramHolder.a;
     if (paramBoolean) {}
-    for (int i = 2130843904;; i = 2130843903)
+    for (int i = 2130843970;; i = 2130843969)
     {
       paramMessageForPtt.setImageResource(i);
       return;

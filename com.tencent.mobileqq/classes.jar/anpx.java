@@ -1,43 +1,44 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import dov.com.qq.im.capture.util.QIMProviderViewBuilder;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import cooperation.weiyun.sdk.download.WyDownloader;
 
-class anpx
-  implements Runnable
+public class anpx
+  implements INetInfoHandler
 {
-  anpx(anpw paramanpw, int paramInt, Drawable[] paramArrayOfDrawable) {}
+  public anpx(WyDownloader paramWyDownloader) {}
   
-  public void run()
+  public void onNetMobile2None()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
-    {
-      if (QIMProviderContainerView.a(this.jdField_a_of_type_Anpw.a).a(i))
-      {
-        Object localObject = (ImageView)this.jdField_a_of_type_Anpw.a.a.getChildAt(i);
-        ((Integer)((ImageView)localObject).getTag()).intValue();
-        if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i] != null)
-        {
-          ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i]);
-          if ((((ImageView)localObject).getDrawable() instanceof AnimationDrawable))
-          {
-            localObject = (AnimationDrawable)((ImageView)localObject).getDrawable();
-            ((AnimationDrawable)localObject).stop();
-            ((AnimationDrawable)localObject).setOneShot(true);
-            ((AnimationDrawable)localObject).start();
-          }
-        }
-      }
-      i += 1;
-    }
+    this.a.a(false, false);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    this.a.a(true, true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.a(true, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.a(false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpx
  * JD-Core Version:    0.7.0.1
  */

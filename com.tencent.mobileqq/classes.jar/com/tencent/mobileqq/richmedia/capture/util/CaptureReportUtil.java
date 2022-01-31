@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
-import ahkr;
+import ahpi;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
@@ -159,7 +159,7 @@ public class CaptureReportUtil
   public static void a(BoyDataReport paramBoyDataReport)
   {
     if (paramBoyDataReport != null) {
-      ThreadManager.post(new ahkr(paramBoyDataReport), 5, null, false);
+      ThreadManager.post(new ahpi(paramBoyDataReport), 5, null, false);
     }
   }
   

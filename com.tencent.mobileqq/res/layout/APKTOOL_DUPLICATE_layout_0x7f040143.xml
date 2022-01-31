@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d001b" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d001c" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d001b" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d001c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <GridView android:gravity="fill" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a030c" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:horizontalSpacing="2.0dip" android:verticalSpacing="2.0dip" android:stretchMode="columnWidth" android:numColumns="3" />
+    <com.dataline.util.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0978" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b98" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00bf" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00bf" android:scaleType="centerCrop" android:adjustViewBounds="false" android:layout_alignParentLeft="true" />
+    <TableLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:shrinkColumns="0" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0979" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0978" android:layout_centerVertical="true">
+        <TableRow>
+            <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054c" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:singleLine="true" />
+            <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0583" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a097a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </TableRow>
+    </TableLayout>
+    <view android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0979" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" class="com.tencent.widget.Switch" />
 </RelativeLayout>

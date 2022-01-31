@@ -1,29 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.ar.config.WorldCup;
-import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
-import com.tencent.mobileqq.ar.config.WorldCupShareInfo;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import mqq.os.MqqHandler;
 
 public class akyc
-  extends ArMapObserver
+  implements URLDrawable.URLDrawableListener
 {
-  public akyc(WorldCupShareFragment paramWorldCupShareFragment) {}
+  public akyc(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
   
-  public void onSetWorldCupInfo(boolean paramBoolean, String paramString, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WorldCupShareFragment", 2, "WL_DEBUG onSetWorldCupInfo isSuccess = " + paramBoolean + ", shareId = " + paramString);
-    }
-    if ((paramBoolean) && (paramInt == 0))
-    {
-      WorldCupShareInfo localWorldCupShareInfo = WorldCup.a(WorldCupShareFragment.a(this.a)).a();
-      WorldCupShareFragment.a(this.a, localWorldCupShareInfo.AIOMsgJumpUrl + "?_wv=16777217&shareid=" + paramString);
-    }
-    if (this.a.getActivity() != null) {
-      this.a.getActivity().runOnUiThread(new akyd(this, paramBoolean, paramInt));
-    }
+    this.a.a.sendMessage(this.a.a.obtainMessage(103, paramURLDrawable));
   }
 }
 

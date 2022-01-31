@@ -1,28 +1,14 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.RequestPublicAccountObserver;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
 public class sdt
-  extends TroopBindPubAccountProtocol.RequestPublicAccountObserver
+  extends ProxyObserver
 {
-  public sdt(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sdt(ChatHistory paramChatHistory) {}
   
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 17;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("uinname", paramAccountDetail.name);
-      localBundle.putString("extra_type", paramAccountDetail.summary);
-      localBundle.putLong("uin", paramLong);
-      localMessage.setData(localBundle);
-      this.a.a.sendMessage(localMessage);
-    }
+    this.a.a(11, false);
   }
 }
 

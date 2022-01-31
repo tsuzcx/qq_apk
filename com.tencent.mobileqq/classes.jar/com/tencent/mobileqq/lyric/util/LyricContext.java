@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.lyric.util;
 
-import aecp;
-import aecq;
+import aekz;
+import aela;
 import android.os.Handler;
 import com.tencent.mobileqq.lyric.common.TimerTaskManager;
 
 public class LyricContext
 {
-  private static final Singleton a = new aecp();
-  private static Singleton b = new aecq();
+  private static final Singleton a = new aekz();
+  private static Singleton b = new aela();
   
   public static Handler a()
   {

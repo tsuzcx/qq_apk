@@ -31,8 +31,8 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.troop.utils.TroopGiftManager.GiveGift;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import oyu;
-import oyv;
+import pdm;
+import pdn;
 
 public class GridListAdapter
   extends BaseAdapter
@@ -51,7 +51,7 @@ public class GridListAdapter
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845367);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845447);
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = AIOUtils.a(9.0F, paramContext.getResources());
     this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel = paramTroopGiftPanel;
@@ -139,7 +139,7 @@ public class GridListAdapter
       if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b() != 20) {
         break label632;
       }
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969500, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969496, null);
       if (getCount() < 5) {
         break label1309;
       }
@@ -155,17 +155,17 @@ public class GridListAdapter
     label1309:
     for (;;)
     {
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366737));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366731));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366732));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366734));
-      paramViewGroup.g = ((TextView)paramView.findViewById(2131366735));
-      paramViewGroup.f = ((TextView)paramView.findViewById(2131366736));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131366730));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131366727));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131366733));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366729);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366728));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366735));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366729));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366730));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366732));
+      paramViewGroup.g = ((TextView)paramView.findViewById(2131366733));
+      paramViewGroup.f = ((TextView)paramView.findViewById(2131366734));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131366728));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131366725));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131366731));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366727);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366726));
       paramView.setTag(paramViewGroup);
       paramViewGroup = paramView;
       localObject = (GridListAdapter.Holder)paramViewGroup.getTag();
@@ -198,7 +198,7 @@ public class GridListAdapter
         }
         ((GridListAdapter.Holder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(4);
         ((GridListAdapter.Holder)localObject).c.setVisibility(4);
-        ((GridListAdapter.Holder)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.post(new oyu(this, (GridListAdapter.Holder)localObject));
+        ((GridListAdapter.Holder)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.post(new pdm(this, (GridListAdapter.Holder)localObject));
         paramView.mPlayGifImage = true;
         paramView.mLoadingDrawable = URLDrawableHelper.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         paramView = URLDrawable.getDrawable(localTroopGiftAioItemData.jdField_b_of_type_JavaLangString, paramView);
@@ -226,7 +226,7 @@ public class GridListAdapter
         ((GridListAdapter.Holder)localObject).f.setText(localTroopGiftAioItemData.jdField_d_of_type_JavaLangString);
         return paramViewGroup;
         label632:
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969895, null);
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969906, null);
         break;
         ((GridListAdapter.Holder)localObject).jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         break label313;
@@ -294,7 +294,7 @@ public class GridListAdapter
         label1065:
         if (localTroopGiftAioItemData.jdField_d_of_type_Int < 0)
         {
-          paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493609);
+          paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493611);
           ((GridListAdapter.Holder)localObject).c.setText(localTroopGiftAioItemData.jdField_d_of_type_JavaLangString);
           ((GridListAdapter.Holder)localObject).c.setTextColor(paramInt);
         }
@@ -302,9 +302,9 @@ public class GridListAdapter
         {
           ((GridListAdapter.Holder)localObject).c.setVisibility(0);
           ((GridListAdapter.Holder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
-          ((GridListAdapter.Holder)localObject).jdField_a_of_type_AndroidViewView.post(new oyv(this, (GridListAdapter.Holder)localObject, localTroopGiftAioItemData, paramInt));
+          ((GridListAdapter.Holder)localObject).jdField_a_of_type_AndroidViewView.post(new pdn(this, (GridListAdapter.Holder)localObject, localTroopGiftAioItemData, paramInt));
           break;
-          paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493610);
+          paramInt = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493612);
           ((GridListAdapter.Holder)localObject).c.setText(localTroopGiftAioItemData.jdField_d_of_type_JavaLangString);
           ((GridListAdapter.Holder)localObject).c.setTextColor(paramInt);
         }

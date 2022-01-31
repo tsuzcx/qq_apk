@@ -9,7 +9,7 @@ import com.tencent.av.AVLog;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.TraeHelper;
 import com.tencent.qphone.base.util.QLog;
-import jmn;
+import joq;
 import mqq.app.AppService;
 
 public class AVServiceForQQ
@@ -20,7 +20,7 @@ public class AVServiceForQQ
   public VideoAppInterface a;
   private TraeHelper jdField_a_of_type_ComTencentAvUtilsTraeHelper;
   public String a;
-  private jmn jdField_a_of_type_Jmn;
+  private joq jdField_a_of_type_Joq;
   private boolean jdField_a_of_type_Boolean;
   private int b = 13;
   public String b;
@@ -42,11 +42,11 @@ public class AVServiceForQQ
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      if (this.jdField_a_of_type_Jmn != null) {
+      if (this.jdField_a_of_type_Joq != null) {
         bool2 = true;
       }
       AVLog.d(paramIntent, String.format("onBind, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      return this.jdField_a_of_type_Jmn;
+      return this.jdField_a_of_type_Joq;
     }
   }
   
@@ -56,8 +56,8 @@ public class AVServiceForQQ
     try
     {
       super.onCreate();
-      if (this.jdField_a_of_type_Jmn == null) {
-        this.jdField_a_of_type_Jmn = new jmn(this, null);
+      if (this.jdField_a_of_type_Joq == null) {
+        this.jdField_a_of_type_Joq = new joq(this, null);
       }
     }
     catch (Exception localException1)
@@ -72,7 +72,7 @@ public class AVServiceForQQ
         if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
         for (boolean bool1 = true;; bool1 = false)
         {
-          if (this.jdField_a_of_type_Jmn != null) {
+          if (this.jdField_a_of_type_Joq != null) {
             bool2 = true;
           }
           AVLog.d(str1, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
@@ -114,7 +114,7 @@ public class AVServiceForQQ
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
     for (bool1 = true;; bool1 = false)
     {
-      if (this.jdField_a_of_type_Jmn != null) {
+      if (this.jdField_a_of_type_Joq != null) {
         bool2 = true;
       }
       AVLog.d(str, String.format("onDestroy, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
@@ -138,7 +138,7 @@ public class AVServiceForQQ
     label101:
     for (boolean bool1 = true;; bool1 = false)
     {
-      if (this.jdField_a_of_type_Jmn != null) {
+      if (this.jdField_a_of_type_Joq != null) {
         bool2 = true;
       }
       QLog.d(paramIntent, 4, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b], flags[%d], startId[%d]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
@@ -148,7 +148,7 @@ public class AVServiceForQQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.service.AVServiceForQQ
  * JD-Core Version:    0.7.0.1
  */

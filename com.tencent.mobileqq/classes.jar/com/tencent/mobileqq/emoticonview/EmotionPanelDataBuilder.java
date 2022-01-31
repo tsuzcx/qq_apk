@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acft;
+import acnu;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -75,7 +75,7 @@ public class EmotionPanelDataBuilder
         localArrayList.addAll(((EmoticonManager)localObject1).b(0));
         localArrayList.add(paramQQAppInterface);
         return localArrayList;
-        localArrayList.addAll(((EmoticonManager)localObject1).a(true, paramInt3, paramBoolean));
+        localArrayList.addAll(((EmoticonManager)localObject1).a(false, paramInt3, paramBoolean));
         return localArrayList;
         if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {
           return null;
@@ -125,7 +125,7 @@ public class EmotionPanelDataBuilder
     if (paramEmotionPanelDataCallback == null) {
       return;
     }
-    ThreadManager.post(new acft(this, paramQQAppInterface, paramInt1, paramEmoticonPackage, paramInt2, paramInt3, paramBoolean, paramEmotionPanelDataCallback), 5, null, true);
+    ThreadManager.post(new acnu(this, paramQQAppInterface, paramInt1, paramEmoticonPackage, paramInt2, paramInt3, paramBoolean, paramEmotionPanelDataCallback), 5, null, true);
   }
 }
 

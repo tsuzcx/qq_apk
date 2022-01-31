@@ -1,16 +1,19 @@
+import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+
 public class aato
-  extends aati
+  implements Runnable
 {
-  public String d;
+  public aato(ARGreetingCardListManager paramARGreetingCardListManager) {}
   
-  private aato()
+  public void run()
   {
-    super(null);
+    ARGreetingCardListManager.c(this.a);
+    ARGreetingCardListManager.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aato
  * JD-Core Version:    0.7.0.1
  */

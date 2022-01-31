@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import aktr;
-import akts;
-import aktt;
+import albi;
+import albj;
+import albk;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -23,7 +23,7 @@ public class CustomedTabWidget
 {
   public float a;
   public int a;
-  public aktt a;
+  public albk a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   public Rect a;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -42,12 +42,12 @@ public class CustomedTabWidget
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)inflate(paramContext, 2130971577, null));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)inflate(paramContext, 2130971603, null));
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getBackground();
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130846027);
-    this.c = paramContext.getResources().getDrawable(2130846026);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130846109);
+    this.c = paramContext.getResources().getDrawable(2130846108);
     this.jdField_b_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Aktt = new aktt(this);
+    this.jdField_a_of_type_Albk = new albk(this);
   }
   
   private void a(int paramInt)
@@ -65,13 +65,13 @@ public class CustomedTabWidget
       getChildAt(this.jdField_b_of_type_Int).getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
     } while ((this.jdField_a_of_type_AndroidGraphicsRect.left == this.jdField_b_of_type_AndroidGraphicsRect.left) && (this.jdField_a_of_type_AndroidGraphicsRect.right == this.jdField_b_of_type_AndroidGraphicsRect.right));
     this.jdField_a_of_type_Float = ((this.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_b_of_type_AndroidGraphicsRect.left) / 4);
-    this.jdField_a_of_type_Aktt.sendEmptyMessage(0);
+    this.jdField_a_of_type_Albk.sendEmptyMessage(0);
   }
   
   private void a(View paramView)
   {
-    paramView.setOnClickListener(new aktr(this));
-    paramView.setOnTouchListener(new akts(this));
+    paramView.setOnClickListener(new albi(this));
+    paramView.setOnTouchListener(new albj(this));
     if (getChildCount() == 1) {
       paramView.setSelected(true);
     }
@@ -135,13 +135,13 @@ public class CustomedTabWidget
   
   public void setOnSwitchTabListener(CustomedTabWidget.OnSwitchTabListener paramOnSwitchTabListener)
   {
-    this.jdField_a_of_type_Aktt.removeMessages(0);
+    this.jdField_a_of_type_Albk.removeMessages(0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$OnSwitchTabListener = paramOnSwitchTabListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomedTabWidget
  * JD-Core Version:    0.7.0.1
  */

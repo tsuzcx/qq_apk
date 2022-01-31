@@ -1,35 +1,28 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.ViewHolder;
 
 public class aeuh
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public aeuh(SmallVideoCameraCaptureFragment paramSmallVideoCameraCaptureFragment) {}
+  public aeuh(NearbyFragmentEnterAdapter paramNearbyFragmentEnterAdapter, NearbyFragmentEnterAdapter.ViewHolder paramViewHolder, URLDrawable paramURLDrawable) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramView = new NowProxy();
-    if (paramView.a())
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter.a() != null)
     {
-      paramView.a(null);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter$ViewHolder.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter$ViewHolder.b, "alpha", new float[] { 0.2F, 1.0F });
+      paramAnimator.setInterpolator(new DecelerateInterpolator());
+      paramAnimator.setDuration(300L).start();
       return;
     }
-    Object localObject = this.a.getActivity().getSharedPreferences("NearbyActivity.nearByTabUrl", 4).getString("menuCell_startLive", "");
-    paramView = (View)localObject;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramView = "https://now.qq.com/qq/nearby/live.html?_wv=16777219&_bid=2452&from=50036";
-    }
-    localObject = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramView);
-    ((Intent)localObject).putExtra("reqType", 1);
-    this.a.startActivity((Intent)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter$ViewHolder.b.setAlpha(1.0F);
   }
 }
 

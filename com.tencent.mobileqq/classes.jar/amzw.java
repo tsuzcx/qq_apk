@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.WXShareFromQZHelper;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader.P2VEffectDownloadListener;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import cooperation.qzone.QZoneVideoDownloadActivity;
 
-public class amzw
-  implements Runnable
+class amzw
+  implements P2VEffectLoader.P2VEffectDownloadListener
 {
-  public amzw(WXShareFromQZHelper paramWXShareFromQZHelper) {}
+  amzw(amzv paramamzv) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    QQToast.a(BaseApplication.getContext(), 2131432726, 0).a();
+    VideoEnvironment.a("QZoneVideoDownloadActivity", "P2VEffectLoader - downLoadP2VJarModule - loadState:" + paramBoolean, null);
+    if (paramBoolean)
+    {
+      P2VEffectLoader.a(this.a.a.getApplicationContext());
+      Intent localIntent = this.a.a.getIntent();
+      localIntent.setClass(this.a.a.getApplicationContext(), QzDynamicVideoPreviewActivity.class);
+      this.a.a.startActivity(localIntent);
+      this.a.a.overridePendingTransition(2131034134, 2131034135);
+      this.a.a.finish();
+      return;
+    }
+    VideoEnvironment.a("QZoneVideoDownloadActivity", "P2VEffectLoader - downLoadP2VJarModule - loadFailed", null);
   }
 }
 

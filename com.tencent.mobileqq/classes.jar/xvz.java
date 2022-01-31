@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.richmedia.subtitles.PacmanParcelItem;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public final class xvz
-  implements Parcelable.Creator
+class xvz
+  implements Runnable
 {
-  public PacmanParcelItem a(Parcel paramParcel)
-  {
-    return new PacmanParcelItem(paramParcel);
-  }
+  xvz(xvy paramxvy) {}
   
-  public PacmanParcelItem[] a(int paramInt)
+  public void run()
   {
-    return new PacmanParcelItem[paramInt];
+    this.a.a.e.setVisibility(4);
+    this.a.a.e.setAlpha(255);
   }
 }
 

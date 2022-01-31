@@ -1,26 +1,18 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 
 public class aixi
-  implements TextWatcher
+  extends BroadcastReceiver
 {
-  public aixi(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aixi(InnerDns paramInnerDns) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((!TextUtils.isEmpty(this.a.a.b)) && (paramInt1 > 0) && (paramInt1 < this.a.a.b.length() + this.a.a.c.length() + this.a.a.a.length() + this.a.K.length()) && (paramInt2 > paramInt3))
-    {
-      this.a.e(false);
-      return;
+    if ("com.tencent.innerdns.domainAddressDataUpdateAction".equals(paramIntent.getAction())) {
+      InnerDns.a(this.a);
     }
-    TroopBarPublishActivity.b(this.a);
   }
 }
 

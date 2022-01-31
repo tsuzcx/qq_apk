@@ -1,24 +1,28 @@
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import com.tencent.mobileqq.webview.swift.SwitchFragmentTitleBarUI;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
 
 public class akuu
+  implements RadioGroup.OnCheckedChangeListener
 {
-  private Stack jdField_a_of_type_JavaUtilStack = new Stack();
+  public akuu(SwitchFragmentTitleBarUI paramSwitchFragmentTitleBarUI) {}
   
-  public akuu(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
-  
-  public ChatThumbView a()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
+    paramInt = this.a.a(paramRadioGroup);
+    if (((QQBrowserActivity)this.a.a.a).b != paramInt)
+    {
+      paramRadioGroup = QQBrowserActivity.a(paramInt, (QQBrowserActivity)this.a.a.a);
+      ((QQBrowserActivity)this.a.a.a).b = paramInt;
+      if ((paramRadioGroup.a != null) && (paramRadioGroup.a.a != null)) {
+        paramRadioGroup.a.a.setSelectedTab(paramInt);
+      }
     }
-    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(ChatThumbView paramChatThumbView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
   }
 }
 

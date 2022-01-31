@@ -1,19 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.portal.PortalManager;
 
 public class slj
   implements View.OnClickListener
 {
-  public slj(EditActivity paramEditActivity) {}
+  public slj(Conversation paramConversation, PortalManager paramPortalManager) {}
   
   public void onClick(View paramView)
   {
-    EditActivity.a(this.a).setVisibility(4);
-    EditActivity.a(this.a).setImageResource(2130844545);
-    EditActivity.a(this.a, false);
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).removeView(Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation));
+    if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), true);
+    }
+    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
   }
 }
 

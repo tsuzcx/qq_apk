@@ -1,32 +1,30 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.ConditionSearchManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.conditionsearch.data.AddressHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class zij
   implements Runnable
 {
-  public zij(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zij(ConditionSearchManager paramConditionSearchManager, File paramFile) {}
   
   public void run()
   {
-    synchronized (PhoneContactManagerImp.a(this.a))
+    long l = System.currentTimeMillis();
+    try
     {
-      PhoneContactManagerImp.a(this.a).getPreferences();
-      try
-      {
-        Iterator localIterator = PhoneContactManagerImp.a(this.a).iterator();
-        while (localIterator.hasNext()) {
-          ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.a.a);
-        }
-        localObject = finally;
+      ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager, AddressHelper.a(ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager), this.jdField_a_of_type_JavaIoFile));
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearch.Manager", 2, "updateLocal | doParse cost " + (float)(System.currentTimeMillis() - l) / 1000.0F + " seconds");
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
+      ConditionSearchManager.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager).runOnUiThread(new zik(this));
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ConditionSearch.Manager", 2, "", localOutOfMemoryError);
     }
   }
 }

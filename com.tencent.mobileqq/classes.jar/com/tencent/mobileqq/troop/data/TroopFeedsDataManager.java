@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.data;
 
-import ajdy;
-import ajea;
+import ajjb;
+import ajjd;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -78,8 +78,8 @@ public class TroopFeedsDataManager
   public TroopFeedsDataManager(QQAppInterface paramQQAppInterface, Long paramLong)
   {
     this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-    this.jdField_a_of_type_AndroidOsHandler = new ajdy(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new ajea(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ajjb(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new ajjd(this);
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangLong = paramLong;
@@ -377,7 +377,7 @@ public class TroopFeedsDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager
  * JD-Core Version:    0.7.0.1
  */

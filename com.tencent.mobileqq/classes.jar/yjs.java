@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class yjs
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yjs(ApolloGameManager paramApolloGameManager) {}
+  public yjs(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
-  {
-    if (ApolloGameManager.a(this.a) == null) {}
-    while ((ApolloContentUpdateHandler)ApolloGameManager.a(this.a).a(115) == null) {
-      return;
-    }
-    ApolloContentUpdateHandler.a(ApolloGameManager.a(this.a), 2);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yjs
  * JD-Core Version:    0.7.0.1
  */

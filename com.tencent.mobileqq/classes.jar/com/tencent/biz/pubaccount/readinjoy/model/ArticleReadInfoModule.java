@@ -12,10 +12,10 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
-import lqj;
-import lqk;
-import lql;
-import lqm;
+import ltn;
+import lto;
+import ltp;
+import ltq;
 
 public class ArticleReadInfoModule
   extends ReadInJoyEngineModule
@@ -33,12 +33,12 @@ public class ArticleReadInfoModule
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lqk(this, paramList));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lto(this, paramList));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqj(this));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ltn(this));
   }
   
   public void a(long paramLong)
@@ -47,7 +47,7 @@ public class ArticleReadInfoModule
     if (localArticleReadInfo != null)
     {
       this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lqm(this, localArticleReadInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ltq(this, localArticleReadInfo));
     }
     QLog.d("ArticleInfo", 2, "DeleteArticle ReadInfo , articleID : " + paramLong);
   }
@@ -64,7 +64,7 @@ public class ArticleReadInfoModule
     for (localArticleReadInfo.mIsRead = true;; localArticleReadInfo.mIsRead = true)
     {
       a(localArticleReadInfo);
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lql(this, localArticleReadInfo));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ltp(this, localArticleReadInfo));
       return;
       localArticleReadInfo.mLastReadTime = paramLong2;
     }

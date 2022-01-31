@@ -1,36 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
+import com.tencent.gdtad.net.GdtAdHandler;
+import com.tencent.gdtad.net.GdtAdHandler.ReportInfo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
 public class wdl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wdl(TroopAssistTipsBar paramTroopAssistTipsBar) {}
+  public wdl(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    QQAppInterface localQQAppInterface;
-    String str;
-    if (this.a.a())
+    if (this.a.Y) {}
+    EcshopReportHandler localEcshopReportHandler;
+    do
     {
-      TroopAssistantManager.a().a(TroopAssistTipsBar.a(this.a), TroopAssistTipsBar.a(this.a).a);
-      TroopAssistTipsBar.a(this.a).a();
-      localQQAppInterface = TroopAssistTipsBar.a(this.a);
-      str = TroopAssistTipsBar.a(this.a).a;
-      if (TroopAssistTipsBar.a(this.a).b(TroopAssistTipsBar.a(this.a).a) != 3) {
-        break label112;
-      }
-    }
-    label112:
-    for (paramView = "1";; paramView = "0")
-    {
-      ReportController.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str, paramView, "", "");
       return;
+      this.a.Y = true;
+      localEcshopReportHandler = (EcshopReportHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88);
+      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    } while ((localObject1 == null) || (((List)localObject1).isEmpty()) || (localEcshopReportHandler == null));
+    Object localObject1 = (ChatMessage)((List)localObject1).get(((List)localObject1).size() - 1);
+    Object localObject2 = ((ChatMessage)localObject1).getExtInfoFromExtStr("public_account_msg_id");
+    if ("1".equals(((ChatMessage)localObject1).getExtInfoFromExtStr("is_AdArrive_Msg")))
+    {
+      localObject2 = new GdtAdHandler.ReportInfo();
+      ((GdtAdHandler.ReportInfo)localObject2).jdField_a_of_type_Int = 2;
+      localObject1 = GdtAdHandler.a((GdtAdHandler.ReportInfo)localObject2, (MessageRecord)localObject1);
+      ((GdtAdHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(110)).a((GdtAdHandler.ReportInfo)localObject1, null);
+    }
+    for (;;)
+    {
+      int i = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("jump_from", 4);
+      if (i != 2) {
+        break;
+      }
+      localEcshopReportHandler.a(134243865, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null, null, null, i, false);
+      return;
+      if ((localObject1 instanceof MessageForArkApp)) {
+        localEcshopReportHandler.a(134243863, ((ChatMessage)localObject1).senderuin, (String)localObject2, null, null, 0L, false);
+      } else {
+        localEcshopReportHandler.a(134243857, ((ChatMessage)localObject1).senderuin, (String)localObject2, null, null, 0L, false);
+      }
     }
   }
 }

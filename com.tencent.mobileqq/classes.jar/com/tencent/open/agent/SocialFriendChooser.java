@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import alcp;
+import alkh;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -65,12 +65,12 @@ public class SocialFriendChooser
   
   public SocialFriendChooser()
   {
-    this.jdField_b_of_type_AndroidOsHandler = new alcp(this);
+    this.jdField_b_of_type_AndroidOsHandler = new alkh(this);
   }
   
   protected int a()
   {
-    return 2130969260;
+    return 2130969258;
   }
   
   public String a()
@@ -560,7 +560,7 @@ public class SocialFriendChooser
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a(0);
-    paramBundle = findViewById(2131365790);
+    paramBundle = findViewById(2131365795);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       ImmersiveUtils.a(paramBundle, true);
     }

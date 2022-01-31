@@ -9,10 +9,10 @@ import android.graphics.RectF;
 import android.support.annotation.NonNull;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import anxg;
-import anxh;
-import anxi;
-import anxj;
+import aofy;
+import aofz;
+import aoga;
+import aogb;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
@@ -80,7 +80,7 @@ public class TextLayer$TextItem
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     localValueAnimator.setDuration(TextLayer.e);
-    localValueAnimator.addUpdateListener(new anxg(this));
+    localValueAnimator.addUpdateListener(new aofy(this));
     localValueAnimator.start();
   }
   
@@ -89,7 +89,7 @@ public class TextLayer$TextItem
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     localValueAnimator.setDuration(TextLayer.e);
-    localValueAnimator.addUpdateListener(new anxh(this));
+    localValueAnimator.addUpdateListener(new aofz(this));
     localValueAnimator.start();
   }
   
@@ -157,22 +157,22 @@ public class TextLayer$TextItem
     int m;
     if (this.jdField_k_of_type_Int == 0)
     {
-      j = 2130842011;
+      j = 2130842042;
       if (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.a())
       {
         if (this.jdField_k_of_type_Int != 0) {
           break label454;
         }
-        j = 2130842017;
+        j = 2130842048;
       }
       if (this.jdField_k_of_type_Int != 1) {
         break label462;
       }
-      k = 2130842007;
+      k = 2130842038;
       if (this.jdField_k_of_type_Int != 2) {
         break label470;
       }
-      m = 2130842014;
+      m = 2130842045;
       label385:
       if (!this.jdField_k_of_type_Boolean) {
         break label478;
@@ -190,15 +190,15 @@ public class TextLayer$TextItem
       if (!this.jdField_c_of_type_Boolean) {
         break;
       }
-      DisplayUtil.b(paramCanvas, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, 2130842020, 2130842020, 2130842019);
+      DisplayUtil.b(paramCanvas, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper, this, 2130842051, 2130842051, 2130842050);
       return;
-      j = 2130842010;
+      j = 2130842041;
       break label337;
-      j = 2130842015;
+      j = 2130842046;
       break label359;
-      k = 2130842006;
+      k = 2130842037;
       break label372;
-      m = 2130842013;
+      m = 2130842044;
       break label385;
     }
   }
@@ -210,8 +210,8 @@ public class TextLayer$TextItem
       this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.85F, 1.0F });
       this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(200L);
       this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new anxi(this));
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new anxj(this));
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aoga(this));
+      this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new aogb(this));
     }
     if (!this.jdField_i_of_type_Boolean) {
       this.jdField_c_of_type_AndroidAnimationValueAnimator.start();

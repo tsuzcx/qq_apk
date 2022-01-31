@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.mobileqq.app.qim.QIMUndecideNotifyDialog;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
 public class zvu
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public zvu(QIMUndecideNotifyDialog paramQIMUndecideNotifyDialog, String paramString) {}
+  public zvu(VideoBroadcastReceiver paramVideoBroadcastReceiver) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(this.jdField_a_of_type_JavaLangString);
-    StoryPlayVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.a, paramView, localArrayList, null, 0, 120, 1);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,23 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.mobileqq.widget.BounceScrollView.DrawFinishedListener;
 
 public class lqk
-  implements Runnable
+  implements BounceScrollView.DrawFinishedListener
 {
-  public lqk(ArticleReadInfoModule paramArticleReadInfoModule, List paramList) {}
+  public lqk(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void run()
+  public void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    if (ReadInJoySelfFragment.a(this.a))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ArticleReadInfo localArticleReadInfo = (ArticleReadInfo)localIterator.next();
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleReadInfoModule.a(localArticleReadInfo);
-      }
+      ReadInJoySelfFragment.a(this.a, false);
+      PublicTracker.a("self_tab_cost", null);
+      PublicTracker.a = 4;
+      PublicTracker.a("KANDIAN_FEEDS_COST", null);
     }
   }
 }

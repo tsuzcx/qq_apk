@@ -1,18 +1,26 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.util.FaceDrawable;
 
-public class rli
-  implements View.OnClickListener
+class rli
+  implements Runnable
 {
-  public rli(AssistantSettingActivity paramAssistantSettingActivity) {}
+  rli(rlh paramrlh, String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, FontSettingActivity.class);
-    this.a.startActivity(paramView);
+    try
+    {
+      FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Rlh.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
+      ((ImageView)this.jdField_a_of_type_Rlh.a.a.getChildAt(this.jdField_a_of_type_Int).findViewById(2131362724)).setImageDrawable(localFaceDrawable);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

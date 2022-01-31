@@ -1,42 +1,38 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.FlowSendTask;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.Config;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Locale;
+import mqq.os.MqqHandler;
 
 public class xpk
   implements Runnable
 {
-  public xpk(FlowSendTask paramFlowSendTask) {}
+  public xpk(BannerManager paramBannerManager) {}
   
   public void run()
   {
     try
     {
+      Object localObject = BannerManager.a(this.a).app;
+      Config localConfig = ((QQAppInterface)localObject).a(((QQAppInterface)localObject).getCurrentAccountUin(), true);
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_k_of_type_JavaLangString, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
+        QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "initConfig config: %s", new Object[] { localConfig }));
       }
-      RecordManager.a().a().recordSubmit();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
+      if (localConfig != null)
       {
-        localUnsatisfiedLinkError.printStackTrace();
-        this.a.jdField_k_of_type_Int = -6;
-        synchronized (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.set(true);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(this.a.jdField_k_of_type_JavaLangString, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
+        localObject = ((QQAppInterface)localObject).getHandler(Conversation.class);
+        if (localObject != null) {
+          ((MqqHandler)localObject).sendEmptyMessage(1010);
         }
       }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }

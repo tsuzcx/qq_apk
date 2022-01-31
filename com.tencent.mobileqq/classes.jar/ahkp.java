@@ -1,27 +1,16 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import mqq.os.MqqHandler;
 
 public final class ahkp
-  implements ValueAnimation.AnimationUpdateListener
+  implements Runnable
 {
-  public ahkp(View paramView) {}
+  public ahkp(RedTouchManager paramRedTouchManager, SharedPreferences paramSharedPreferences, Conversation paramConversation, MqqHandler paramMqqHandler) {}
   
-  @TargetApi(11)
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
-    }
-    paramFloat = paramFloat1.floatValue();
-    if (this.a != null)
-    {
-      this.a.setAlpha(paramFloat);
-      this.a.invalidate();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.a(new ahkq(this));
   }
 }
 

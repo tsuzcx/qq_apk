@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.litetransfersdk.FTNInfo;
+import com.tencent.litetransfersdk.NFCInfo;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.DataLineHandler;
 
 public class zjd
-  implements Comparator
+  implements Runnable
 {
-  public zjd(PhoneContactManagerImp paramPhoneContactManagerImp, FriendsManager paramFriendsManager) {}
+  public zjd(DataLineHandler paramDataLineHandler, Session paramSession, NFCInfo paramNFCInfo, FTNInfo paramFTNInfo) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void run()
   {
-    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramPhoneContact1.unifiedCode, true);
-    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramPhoneContact2.unifiedCode, true);
-    if ((bool1) && (bool2)) {}
-    while (paramPhoneContact2.samFriend > paramPhoneContact1.samFriend)
-    {
-      do
-      {
-        return 1;
-      } while (bool1);
-      if (bool2) {
-        return -1;
-      }
-    }
-    if (paramPhoneContact2.samFriend < paramPhoneContact1.samFriend) {
-      return -1;
-    }
-    return PhoneContactManagerImp.a(paramPhoneContact1, paramPhoneContact2);
+    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_ComTencentLitetransfersdkSession, this.jdField_a_of_type_ComTencentLitetransfersdkNFCInfo, this.jdField_a_of_type_ComTencentLitetransfersdkFTNInfo, false);
   }
 }
 

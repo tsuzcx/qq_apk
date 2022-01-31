@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
-public class acyt
+class acyt
+  implements Runnable
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public boolean c = false;
+  acyt(acys paramacys, HashMap paramHashMap) {}
   
-  public acyt(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  public void run()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    QfileLocalFileDelPicTabView.a(this.jdField_a_of_type_Acys.a).clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+      if (localList.size() != 0) {
+        QfileLocalFileDelPicTabView.b(this.jdField_a_of_type_Acys.a).put(str, localList);
+      }
+    }
+    this.jdField_a_of_type_Acys.a.i();
+    this.jdField_a_of_type_Acys.a.setSelect(0);
   }
 }
 

@@ -6,7 +6,7 @@ import mqq.app.AppRuntime;
 
 public class DIYThemeUtils
 {
-  public static final String SOURCE_DIR = AppConstants.aJ + "custom_background/";
+  public static final String SOURCE_DIR = AppConstants.aK + "custom_background/";
   private static final String TAG = "DIYThemeUtils";
   public static String httpHeader = "http://gxh.vip.qq.com/xydata/";
   
@@ -272,13 +272,13 @@ public class DIYThemeUtils
       localResData.path = ChatBackgroundManager.a(true, paramResSuitData.id);
       return localResData;
     case 116: 
-      localResData.path = (AppConstants.bK + "deal/" + paramResSuitData.id);
+      localResData.path = (AppConstants.bL + "deal/" + paramResSuitData.id);
       return localResData;
     case 110: 
-      localResData.path = (AppConstants.bF + "preview/" + paramResSuitData.id);
+      localResData.path = (AppConstants.bG + "preview/" + paramResSuitData.id);
       return localResData;
     case 117: 
-      localResData.path = (AppConstants.bJ + paramResSuitData.id);
+      localResData.path = (AppConstants.bK + paramResSuitData.id);
       return localResData;
     case 120: 
     case 121: 
@@ -286,7 +286,7 @@ public class DIYThemeUtils
       {
         paramAppRuntime = "0";
         paramAppRuntime = paramAppRuntime + "/";
-        paramAppRuntime = new StringBuilder().append(AppConstants.aJ).append("custom_background/").append(paramAppRuntime);
+        paramAppRuntime = new StringBuilder().append(AppConstants.aK).append("custom_background/").append(paramAppRuntime);
         if (120 != paramInt) {
           break label370;
         }
@@ -301,10 +301,10 @@ public class DIYThemeUtils
       }
     case 201: 
       label370:
-      localResData.path = (AppConstants.aJ + "custom_background/" + "styleShot/" + paramString);
+      localResData.path = (AppConstants.aK + "custom_background/" + "styleShot/" + paramString);
       return localResData;
     }
-    localResData.path = (AppConstants.aJ + "custom_background/" + "styleThum/" + paramString);
+    localResData.path = (AppConstants.aK + "custom_background/" + "styleThum/" + paramString);
     return localResData;
   }
   
@@ -315,7 +315,7 @@ public class DIYThemeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.DIYThemeUtils
  * JD-Core Version:    0.7.0.1
  */

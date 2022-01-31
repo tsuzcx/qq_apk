@@ -1,25 +1,25 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.CodeMaskManager;
+import com.tencent.biz.qrcode.CodeMaskManager.Callback;
 
-public class owz
-  extends oxo
+class owz
+  implements Runnable
 {
-  public owz(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, String paramString)
-  {
-    super(paramVideoCombineHelper);
-  }
+  owz(owy paramowy, Bundle paramBundle) {}
   
-  public void b(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a));
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Owy.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a) {
+      return;
     }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      this.jdField_a_of_type_Owy.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.jdField_a_of_type_Owy.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager));
+    }
+    for (;;)
+    {
+      CodeMaskManager.a(this.jdField_a_of_type_Owy.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager);
+      return;
+      this.jdField_a_of_type_Owy.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a((Bundle)this.jdField_a_of_type_AndroidOsBundle.clone());
     }
   }
 }

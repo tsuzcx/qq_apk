@@ -16,7 +16,7 @@ import com.tencent.TMG.sdk.AVRoomMulti.EnterParam;
 import com.tencent.TMG.sdk.AVRoomMulti.EnterParam.Builder;
 import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
 import com.tencent.qphone.base.util.QLog;
-import yvl;
+import zce;
 
 public class AVManager
 {
@@ -24,7 +24,7 @@ public class AVManager
   private static String b = "LimixiuAVManager";
   private Context jdField_a_of_type_AndroidContentContext;
   public AVContext a;
-  private AVRoomMulti.EventListener jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener = new yvl(this);
+  private AVRoomMulti.EventListener jdField_a_of_type_ComTencentTMGSdkAVRoomMulti$EventListener = new zce(this);
   AVManager.AppInfo jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVManager$AppInfo = null;
   public AVManager.EnterRoomCallback a;
   public AVManager.RoomInfoListener a;

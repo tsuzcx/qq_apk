@@ -1,16 +1,21 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController.OnMagicPlayEnd;
+import com.tencent.qphone.base.util.QLog;
 
 class acom
-  implements Runnable
+  implements MagicfaceViewController.OnMagicPlayEnd
 {
-  acom(acoi paramacoi, int paramInt) {}
+  acom(acol paramacol, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    UniformDownloadActivity.b(this.jdField_a_of_type_Acoi.a).setVisibility(0);
-    UniformDownloadActivity.b(this.jdField_a_of_type_Acoi.a).setText(this.jdField_a_of_type_Acoi.a.getString(2131428582, new Object[] { this.jdField_a_of_type_Int + "%" }));
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "forward, [play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Acol.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.magicValue);
+    }
+    this.jdField_a_of_type_Acol.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.magicValue = this.jdField_a_of_type_JavaLangString;
+    ChatActivityFacade.a(this.jdField_a_of_type_Acol.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Acol.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acol.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Acol.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a);
   }
 }
 

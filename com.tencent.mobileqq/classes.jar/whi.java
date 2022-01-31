@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.widget.FormMutiItem;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
 
-class whi
-  implements Runnable
+public class whi
+  implements whl
 {
-  whi(whh paramwhh) {}
+  public whi(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    String str2 = this.a.jdField_a_of_type_JavaLangStringBuilder.toString();
-    String str1 = str2;
-    if (str2.endsWith("、")) {
-      str1 = str2.substring(0, str2.length() - 1);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a != null)
+    if ((paramView.getTag() instanceof Integer))
     {
-      if (!str1.equals("条件："))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a.setSecondLineVisible(true);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a.setSecondLineText(str1);
-      }
+      paramView = (Integer)paramView.getTag();
+      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView.a.setSecondLineVisible(false);
   }
 }
 

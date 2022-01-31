@@ -1,21 +1,17 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.text.TextUtils;
-import com.tencent.mobileqq.text.TextUtils.LoadSysEmojiCallback;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout20;
+import com.tencent.widget.SingleLineTextView;
 
-public final class ainw
-  implements Runnable
+public class ainw
 {
-  public ainw(int paramInt, TextUtils.LoadSysEmojiCallback paramLoadSysEmojiCallback) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public SingleLineTextView a;
   
-  public void run()
-  {
-    Drawable localDrawable = TextUtils.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
-    if ((localDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback.a(localDrawable);
-    }
-  }
+  public ainw(StructMsgItemLayout20 paramStructMsgItemLayout20) {}
 }
 
 

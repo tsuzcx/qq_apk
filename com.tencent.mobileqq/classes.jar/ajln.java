@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class ajln
   implements Runnable
 {
-  public ajln(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo) {}
+  public ajln(TroopFileDownloadMgr paramTroopFileDownloadMgr, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.a.b();
+    TroopFileDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadTroopFileDownloadMgr, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

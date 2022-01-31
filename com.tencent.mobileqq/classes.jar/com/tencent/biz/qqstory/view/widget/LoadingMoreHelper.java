@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.view.widget;
 
 import android.content.Context;
-import oqz;
+import ovo;
 
 public class LoadingMoreHelper
 {
@@ -36,7 +36,7 @@ public class LoadingMoreHelper
       a(true);
       a(true, false);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadMoreLayout.setOnClickListener(new oqz(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadMoreLayout.setOnClickListener(new ovo(this));
   }
   
   public void a(boolean paramBoolean)

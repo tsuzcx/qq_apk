@@ -1,24 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.app.Dialog;
 import android.view.View;
-import android.view.Window;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.RelativeLayout;
+import android.view.View.OnClickListener;
 import com.qq.im.poi.LbsPackPoiListActivity;
 
 public class anl
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public anl(LbsPackPoiListActivity paramLbsPackPoiListActivity, int paramInt, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
+  public anl(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    LbsPackPoiListActivity.a(this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity, false);
-    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.a.setVisibility(0);
-    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    LbsPackPoiListActivity.a(this.a).dismiss();
   }
 }
 

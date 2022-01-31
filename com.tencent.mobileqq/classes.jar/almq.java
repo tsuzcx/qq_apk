@@ -1,21 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.text.TextUtils;
+import com.tencent.open.appcommon.now.download.js.DownloadWebInterface;
+import com.tencent.open.base.LogUtility;
+import com.tencent.smtt.sdk.WebView;
 
 public class almq
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public almq(QidianProfileCardActivity paramQidianProfileCardActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public almq(DownloadWebInterface paramDownloadWebInterface, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsDownloadWebInterface.webview != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsDownloadWebInterface.webview.loadUrl(this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.a(this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsDownloadWebInterface.TAG, "webview loadUrl>>> ", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     almq
  * JD-Core Version:    0.7.0.1
  */

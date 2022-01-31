@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.lang.ref.WeakReference;
-import kjw;
+import kmd;
 import mqq.observer.BusinessObserver;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
@@ -74,7 +74,7 @@ public abstract class ProtoUtils$TroopProtocolObserver
       a(paramInt, paramBoolean, paramBundle);
       return;
     }
-    ThreadManager.post(new kjw(this, paramInt, paramBoolean, paramBundle), 5, null, false);
+    ThreadManager.post(new kmd(this, paramInt, paramBoolean, paramBundle), 5, null, false);
   }
 }
 

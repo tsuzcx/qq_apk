@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter;
+import android.os.Message;
+import com.tencent.mobileqq.dating.NewVoteAnimHelper;
+import com.tencent.mobileqq.profile.like.PraiseInfo;
+import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseLoadListener;
+import mqq.os.MqqHandler;
 
 public class acfs
-  extends EmoticonPackageDownloadListener
+  implements PraiseManager.OnPraiseLoadListener
 {
-  public acfs(EmotionNeedDownloadAdapter paramEmotionNeedDownloadAdapter) {}
+  public acfs(NewVoteAnimHelper paramNewVoteAnimHelper, int paramInt) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
   {
-    this.a.b(paramEmoticonPackage);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
-  {
-    this.a.a(paramEmoticonPackage, paramInt);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage);
-  }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.hasMessages(0))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.removeMessages(0);
+      this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
+    }
   }
 }
 

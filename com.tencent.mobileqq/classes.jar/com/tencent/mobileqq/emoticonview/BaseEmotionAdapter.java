@@ -253,7 +253,7 @@ public abstract class BaseEmotionAdapter
         break;
       }
       paramView.setVisibility(0);
-      paramView.setImageResource(2130846068);
+      paramView.setImageResource(2130846150);
       return;
       label269:
       ((TextView)localObject1).setText((CharSequence)localObject2);

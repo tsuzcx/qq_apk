@@ -18,8 +18,8 @@ import java.lang.ref.WeakReference;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
-import ltf;
-import ltg;
+import lwj;
+import lwk;
 import mqq.app.AppRuntime;
 
 public class ReadInJoyMSFService
@@ -61,7 +61,7 @@ public class ReadInJoyMSFService
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    paramToServiceMsg = new ltg(this, paramToServiceMsg);
+    paramToServiceMsg = new lwk(this, paramToServiceMsg);
     ReadInJoyUtils.a().post(paramToServiceMsg);
   }
   
@@ -72,7 +72,7 @@ public class ReadInJoyMSFService
     }
     paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
     paramReadInJoyEngineModule = new WeakReference(paramReadInJoyEngineModule);
-    ReadInJoyUtils.a().post(new ltf(this, paramToServiceMsg, paramReadInJoyEngineModule));
+    ReadInJoyUtils.a().post(new lwj(this, paramToServiceMsg, paramReadInJoyEngineModule));
     a(paramToServiceMsg);
   }
   

@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="146.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07f4" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_gravity="center_horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020893" android:padding="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a141c" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a141c" android:layout_centerVertical="true">
-                <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a141a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_marginBottom="4.0dip" android:maxLines="2" android:includeFontPadding="false" />
-                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1417" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="3.0dip" />
-                    <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView android:textSize="12.0sp" android:textColor="#ff9d9d9d" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1418" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ看点" android:maxLines="1" android:includeFontPadding="false" />
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
+    <FrameLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02063b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="30.0dip" android:layout_marginBottom="30.0dip">
+        <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14bf" android:layout_width="85.0dip" android:layout_height="72.0dip" android:layout_marginLeft="7.0dip" android:scaleType="centerCrop" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="105.0dip" android:layout_marginTop="12.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0086" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="XXX" android:maxLines="1" android:maxLength="6" android:lineSpacingExtra="7.0dip" />
+            <TextView android:textSize="11.0sp" android:textColor="#fffa8726" android:ellipsize="end" android:gravity="center" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02063c" android:layout_width="30.0dip" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="游戏" />
+        </LinearLayout>
+        <TextView android:textSize="12.0sp" android:textColor="#ff999999" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14c0" android:layout_width="170.0dip" android:layout_height="wrap_content" android:layout_marginLeft="105.0dip" android:layout_marginBottom="12.0dip" android:text="XXX" android:maxLines="2" android:lineSpacingExtra="7.0dip" />
+        <TextView android:textSize="13.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14c1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02063a" android:padding="3.0dip" android:layout_width="57.0dip" android:layout_height="28.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="12.0dip" android:text="玩一把" />
     </FrameLayout>
 </FrameLayout>

@@ -1,16 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-public class mnu
-  implements Runnable
+class mnu
+  extends AnimateUtils.AnimationAdapter
 {
-  public mnu(FastWebArticleInfo paramFastWebArticleInfo, ArticleInfo paramArticleInfo) {}
+  mnu(mnt parammnt) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyLogicEngine.a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, 2, new mnv(this));
+    paramAnimation = new ScaleAnimation(0.95F, 1.0F, 0.95F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(60L);
+    paramAnimation.setAnimationListener(new mnv(this));
+    this.a.a.a.a.startAnimation(paramAnimation);
   }
 }
 

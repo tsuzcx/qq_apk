@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-
-public class uas
-  implements View.OnClickListener
+class uas
+  implements Runnable
 {
-  public uas(TroopMemberListActivity paramTroopMemberListActivity) {}
+  uas(uaq paramuaq, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.setText("");
+    this.jdField_a_of_type_Uaq.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

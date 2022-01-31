@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.richmedia.conn.ConnManager;
-import com.tencent.mobileqq.richmedia.conn.HostInfo;
-import com.tencent.mobileqq.richmedia.server.ChannelStateManager;
-import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahnb
   implements Runnable
 {
-  public ahnb(ConnManager paramConnManager, PeakAudioTransHandler paramPeakAudioTransHandler, long paramLong, HostInfo paramHostInfo) {}
+  public ahnb(CaptureSoDownloadFragment paramCaptureSoDownloadFragment, String paramString) {}
   
   public void run()
   {
-    ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).b(12);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakAudioTransHandler.a(1, true, new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.d), Integer.valueOf(2000), this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo });
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakAudioTransHandler.a(this.jdField_a_of_type_Long, true);
+    CaptureSoDownloadFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragment).setText(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureSoDownloadFragment", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

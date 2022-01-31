@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class mdo
-  implements Runnable
+  implements mdp
 {
-  public mdo(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mdo(ReadInJoyWebDataManager paramReadInJoyWebDataManager) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject)
   {
-    VideoFeedsPlayActivity.a(this.a).a(300, new mdu(null));
+    ReadInJoyWebDataManager.a(this.a, paramJSONObject.toString());
+    if (QLog.isColorLevel()) {
+      QLog.w("ReadInJoyWebDataManager", 2, "preLoadMsgBox HttpFetchBizCallback jsonRetData result" + ReadInJoyWebDataManager.a(this.a));
+    }
   }
 }
 

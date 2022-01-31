@@ -20,6 +20,8 @@ import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsIn
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -57,7 +59,7 @@ public class ComponentContentBig
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969565, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969561, this, true);
   }
   
   public URL a(IReadInJoyModel paramIReadInJoyModel)
@@ -67,7 +69,16 @@ public class ComponentContentBig
       return ReadInJoyUtils.a(((SocializeFeedsInfo.UGCVideoInfo)paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b.get(0)).d, true, true);
     }
     if ((paramIReadInJoyModel.mSocialFeedInfo != null) && (paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo != null) && (paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.b.size() > 0)) {
-      return ReadInJoyUtils.a(((SocializeFeedsInfo.PGCVideoInfo)paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.b.get(0)).d, true, true);
+      try
+      {
+        paramIReadInJoyModel = new URL(ReadInJoyUtils.a(((SocializeFeedsInfo.PGCVideoInfo)paramIReadInJoyModel.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.b.get(0)).d, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getWidth(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getHeight()));
+        return paramIReadInJoyModel;
+      }
+      catch (MalformedURLException paramIReadInJoyModel)
+      {
+        QLog.d("ComponentContentBig", 2, paramIReadInJoyModel, new Object[0]);
+        return null;
+      }
     }
     return paramIReadInJoyModel.mSinglePicture;
   }
@@ -81,7 +92,7 @@ public class ComponentContentBig
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131366971));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131366969));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)

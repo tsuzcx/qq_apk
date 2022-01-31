@@ -1,20 +1,22 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
 
 public class agji
-  implements MessageQueue.IdleHandler
+  implements Handler.Callback
 {
-  public agji(ScanTorchActivity paramScanTorchActivity) {}
+  public agji(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
-  public boolean queueIdle()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "queueIdle called ");
+    switch (paramMessage.what)
+    {
     }
-    this.a.a.c();
-    return false;
+    for (;;)
+    {
+      return true;
+      this.a.g();
+    }
   }
 }
 

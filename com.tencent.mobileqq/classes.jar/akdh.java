@@ -1,20 +1,21 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
 
-public final class akdh
-  implements Runnable
+class akdh
+  implements Action.OnActionEndListener
 {
-  public akdh(Activity paramActivity, Bundle paramBundle) {}
+  akdh(akdg paramakdg) {}
   
-  public void run()
+  public void a()
   {
-    MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, true, true);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdh
  * JD-Core Version:    0.7.0.1
  */

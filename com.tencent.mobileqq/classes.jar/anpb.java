@@ -1,47 +1,55 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.MusicDownloadListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileBatchDownloadMsgReq;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskSimpleFileItem;
+import cooperation.weiyun.sdk.api.WeiyunApi;
+import cooperation.weiyun.sdk.download.DownloadFile;
+import cooperation.weiyun.sdk.download.DownloadType;
+import cooperation.weiyun.sdk.download.WyDownloader.DownloadServerInfoCallback;
+import cooperation.weiyun.sdk.download.WyDownloader.IFetchListener;
+import cooperation.weiyun.utils.StringUtils;
+import java.util.ArrayList;
+import java.util.List;
 
-public class anpb
-  extends MusicDownloadListener
+public final class anpb
+  implements WyDownloader.IFetchListener
 {
-  public anpb(MusicProviderView paramMusicProviderView) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt)
+  public void a(DownloadFile paramDownloadFile, DownloadType paramDownloadType, WyDownloader.DownloadServerInfoCallback paramDownloadServerInfoCallback)
   {
-    long l = SystemClock.uptimeMillis();
-    if ((this.a.jdField_a_of_type_Long == 0L) || (l - this.a.jdField_a_of_type_Long > 16L))
+    boolean bool = true;
+    Object localObject2 = new WeiyunPB.DiskSimpleFileItem();
+    ((WeiyunPB.DiskSimpleFileItem)localObject2).file_id.set(paramDownloadFile.a);
+    if (paramDownloadFile.e != null) {
+      ((WeiyunPB.DiskSimpleFileItem)localObject2).pdir_key.set(StringUtils.a(paramDownloadFile.e));
+    }
+    ((WeiyunPB.DiskSimpleFileItem)localObject2).filename.set(paramDownloadFile.b);
+    Object localObject1 = new ArrayList(1);
+    ((List)localObject1).add(localObject2);
+    localObject2 = new WeiyunPB.DiskFileBatchDownloadMsgReq();
+    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_list.set((List)localObject1);
+    ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).download_type.set(paramDownloadType.ordinal());
+    localObject1 = ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).need_thumb;
+    if (paramDownloadType == DownloadType.FILE_THUMB) {}
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
-      this.a.jdField_a_of_type_Long = l;
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a().equals(paramString))) {
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
-    }
-    if ((!paramBoolean) && (paramInt == -104)) {
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(5);
+      ((PBBoolField)localObject1).set(bool);
+      if ((!TextUtils.isEmpty(paramDownloadFile.d)) && (TextUtils.isDigitsOnly(paramDownloadFile.d))) {
+        ((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2).file_owner.set(Long.parseLong(paramDownloadFile.d));
+      }
+      WeiyunApi.a((WeiyunPB.DiskFileBatchDownloadMsgReq)localObject2, new anpc(this, paramDownloadFile, paramDownloadServerInfoCallback, paramDownloadType));
+      return;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.nearby.now.view.widget.StoryNewGuideDialog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class afbg
-  implements Animation.AnimationListener
+public final class afbg
+  implements Parcelable.Creator
 {
-  public afbg(StoryNewGuideDialog paramStoryNewGuideDialog) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public VideoData a(Parcel paramParcel)
   {
-    this.a.dismiss();
+    return new VideoData(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public VideoData[] a(int paramInt)
+  {
+    return new VideoData[paramInt];
+  }
 }
 
 

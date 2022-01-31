@@ -22,7 +22,7 @@ public class VoiceRedPkgViewHolder
     if (a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
     for (this.i = 0;; this.i = paramQQWalletTransferMsgElem.effectsId)
     {
-      this.j = 2130844049;
+      this.j = 2130844115;
       return;
     }
   }

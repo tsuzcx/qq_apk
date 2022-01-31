@@ -1,4 +1,4 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 class kup
   implements Runnable
@@ -7,7 +7,7 @@ class kup
   
   public void run()
   {
-    this.a.a.a(1);
+    this.a.a.f();
   }
 }
 

@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
 
 public class akzl
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public akzl(MSFIntChkStrike paramMSFIntChkStrike, int paramInt) {}
+  public akzl(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike, paramDialogInterface, paramInt, this.jdField_a_of_type_Int);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

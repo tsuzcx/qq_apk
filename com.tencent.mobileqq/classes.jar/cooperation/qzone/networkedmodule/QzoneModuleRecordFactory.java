@@ -1,6 +1,6 @@
 package cooperation.qzone.networkedmodule;
 
-import amwr;
+import anef;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneAlphaConfig;
 import common.config.service.QzoneConfig;
@@ -45,10 +45,10 @@ public class QzoneModuleRecordFactory
       {
         localObject.setAccessible(true);
         String str = ((QzoneModuleId)localObject.getAnnotation(QzoneModuleId.class)).a();
-        amwr localamwr = new amwr(null);
-        localamwr.jdField_a_of_type_JavaLangObject = paramObject;
-        localamwr.jdField_a_of_type_JavaLangReflectMethod = localObject;
-        localHashMap.put(str, localamwr);
+        anef localanef = new anef(null);
+        localanef.jdField_a_of_type_JavaLangObject = paramObject;
+        localanef.jdField_a_of_type_JavaLangReflectMethod = localObject;
+        localHashMap.put(str, localanef);
       }
       i += 1;
     }
@@ -67,7 +67,7 @@ public class QzoneModuleRecordFactory
   
   public QzoneModuleConfigManager.QzoneModuleRecord createRecord(String paramString)
   {
-    paramString = (amwr)this.mMethodMap.get(paramString);
+    paramString = (anef)this.mMethodMap.get(paramString);
     if (paramString != null) {
       try
       {
@@ -80,6 +80,17 @@ public class QzoneModuleRecordFactory
       }
     }
     return null;
+  }
+  
+  @QzoneModuleId(a="libandroidndkbeauty.so")
+  public QzoneModuleConfigManager.QzoneModuleRecord createRecordForAntiBeautyDMSo()
+  {
+    String str1 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateBeautySo", "https://d3g.qq.com/sngapp/app/update/20180518104407_5319/libandroidndkbeauty.so");
+    String str2 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateBeautySoMD5", "1047ac302378fe17735c98f67d470496");
+    int i = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateBeautySoLength", 4741347);
+    QzoneModuleConfigManager.QzoneModuleRecordBuilder localQzoneModuleRecordBuilder = new QzoneModuleConfigManager.QzoneModuleRecordBuilder();
+    localQzoneModuleRecordBuilder.a("libandroidndkbeauty.so").d(str1).e(str2).a(i);
+    return localQzoneModuleRecordBuilder.a();
   }
   
   @QzoneModuleId(a="pictureMarkerSo.so")
@@ -245,8 +256,8 @@ public class QzoneModuleRecordFactory
   @QzoneModuleId(a="p2v_effect.jar")
   public QzoneModuleConfigManager.QzoneModuleRecord createRecrodForP2VEffectJar()
   {
-    String str1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "p2vEffectUrl", "http://d3g.qq.com/sngapp/app/update/20180319162123_1828/p2v_effect.jar");
-    String str2 = QzoneConfig.getInstance().getConfig("QZoneSetting", "p2vEffectJarMD5", "f46b795a00826a0ae12250591da7b9d9");
+    String str1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "p2vEffectUrl", "https://d3g.qq.com/sngapp/app/update/20180523193621_6462/p2v_effect.jar");
+    String str2 = QzoneConfig.getInstance().getConfig("QZoneSetting", "p2vEffectJarMD5", "a224ca83ac93e70cb401a5062a3c142b");
     QzoneModuleConfigManager.QzoneModuleRecordBuilder localQzoneModuleRecordBuilder = new QzoneModuleConfigManager.QzoneModuleRecordBuilder();
     localQzoneModuleRecordBuilder.a("p2v_effect.jar").d(str1).f("com.tencent.mobileqq.activity.richmedia.p2veffect.P2VEffectsController").e(str2);
     return localQzoneModuleRecordBuilder.a();

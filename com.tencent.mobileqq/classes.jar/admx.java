@@ -1,46 +1,34 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FMConfig;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public final class admx
-  implements Runnable
+public class admx
+  implements View.OnClickListener
 {
-  public void run()
+  public admx(SimpleFilePresenter paramSimpleFilePresenter) {}
+  
+  public void onClick(View paramView)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject = localAppRuntime;
-    if (localAppRuntime != null) {
-      localObject = localAppRuntime.getAppRuntime("module_nearby");
-    }
-    if ((localObject instanceof NearbyAppInterface))
+    switch (paramView.getId())
     {
-      localObject = (NearbyProcManager)((NearbyAppInterface)localObject).getManager(213);
-      if (localObject != null)
-      {
-        com.tencent.mobileqq.fragment.NearbyHybridFragment.l = true;
-        ((NearbyProcManager)localObject).c();
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyHybridFragment", 2, "pre load now plugin!");
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("NearbyHybridFragment", 2, "pre load now plugin! err npb null;");
+    default: 
+      return;
+    case 2131368830: 
+      paramView = FMConfig.b();
+      FileManagerUtil.a(this.a.jdField_a_of_type_AndroidAppActivity, paramView);
+      FileManagerReporter.a("0X8008469");
       return;
     }
-    QLog.d("NearbyHybridFragment", 2, "pre load now plugin! err runtime null or wrong! app = " + localObject);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     admx
  * JD-Core Version:    0.7.0.1
  */

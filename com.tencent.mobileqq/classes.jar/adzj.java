@@ -1,16 +1,38 @@
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.hotpic.HotPicTab;
 
-class adzj
-  implements Runnable
+public class adzj
+  extends Handler
 {
-  adzj(adzi paramadzi) {}
+  public adzj(HotPicTab paramHotPicTab) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqLebaLebaTitleBar.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      HotPicTab.a(this.a, 0.0F);
+      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
+      if (HotPicTab.a(this.a) < 1.0F)
+      {
+        this.a.invalidate();
+        sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(2), 10L);
+      return;
     }
+    HotPicTab.a(this.a, 1.0F);
+    HotPicTab.a(this.a, HotPicTab.a(this.a));
+    this.a.invalidate();
   }
 }
 

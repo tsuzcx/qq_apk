@@ -1,41 +1,33 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import android.os.MessageQueue.IdleHandler;
+import android.widget.Button;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
 
 public class aoor
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  public aoor(PtvTemplateManager paramPtvTemplateManager, AppInterface paramAppInterface, File paramFile) {}
+  public aoor(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PtvTemplateManager", 4, String.format("rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
+    if (CameraCompatibleList.d(CameraCompatibleList.b)) {
+      this.a.b(true);
     }
-    List localList = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaIoFile, null);
-    if (localList != null) {}
-    synchronized (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_b_of_type_JavaLangObject)
+    for (;;)
     {
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_b_of_type_Boolean) {
-        return;
+      if ((this.a.g) && (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
+        this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
       }
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a.clear();
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a.addAll(localList);
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.d = true;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (PtvFilterSoLoad.b())) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a);
+      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      this.a.c.setEnabled(false);
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
       }
-      PtvTemplateManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager);
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("PtvTemplateManager", 4, String.format("rebuildTemplateInfos, [%s] finished", new Object[] { Integer.valueOf(hashCode()) }));
-        return;
-      }
+      return false;
+      this.a.g();
     }
   }
 }

@@ -10,11 +10,11 @@ import android.text.TextUtils;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anrx;
-import anry;
-import anrz;
-import ansa;
-import ansb;
+import aoao;
+import aoap;
+import aoaq;
+import aoar;
+import aoas;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -40,11 +40,11 @@ public class EditRecognitionPart
   extends EditVideoPart
   implements Handler.Callback, HumObserver
 {
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new anrz(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aoaq(this);
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private MusicDownloadListener jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener = new anry(this);
+  private MusicDownloadListener jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener = new aoap(this);
   private QimMusicPlayer jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer = (QimMusicPlayer)QIMManager.a().c(8);
   private BubbleTextView jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionBubbleTextView;
   private OriginalBgmRecognizer jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionHummingOriginalBgmRecognizer;
@@ -66,7 +66,7 @@ public class EditRecognitionPart
     ((QIMMusicConfigManager)QIMManager.a().c(2)).a(paramMusicItemInfo, true);
   }
   
-  private void j()
+  private void i()
   {
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 3, 1, 0));
   }
@@ -82,7 +82,7 @@ public class EditRecognitionPart
     this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionBubbleTextView.measure(0, 0);
     int i = this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionBubbleTextView.getMeasuredWidth() / 2;
     localObject = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131364459);
+    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131364484);
     ((RelativeLayout.LayoutParams)localObject).setMargins(372 - i, 0, 0, 4);
     try
     {
@@ -117,7 +117,7 @@ public class EditRecognitionPart
   {
     if (this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo))
     {
-      j();
+      i();
       this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.c());
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.c();
     }
@@ -175,7 +175,7 @@ public class EditRecognitionPart
     if (QLog.isColorLevel()) {
       QLog.i("EditRecognitionPart", 2, "onCreate: ");
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131363408));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131363427));
     this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionBubbleTextView = new BubbleTextView(a());
     this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionBubbleTextView.setPadding(UIUtils.a(a(), 10.0F), UIUtils.a(a(), 10.0F), UIUtils.a(a(), 10.0F), UIUtils.a(a(), 10.0F));
     this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionRecognizeRecognitionManager.a(this);
@@ -216,23 +216,23 @@ public class EditRecognitionPart
     ToastUtil.a().a("识别结束。结果：" + paramMusicItemInfo);
   }
   
-  public void aE_()
-  {
-    super.aE_();
-  }
-  
   public void aF_()
   {
     super.aF_();
+  }
+  
+  public void aG_()
+  {
+    super.aG_();
     if (QLog.isColorLevel()) {
       QLog.i("EditRecognitionPart", 2, "onPause: ");
     }
     this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.d();
   }
   
-  public void ax_()
+  public void az_()
   {
-    super.ax_();
+    super.az_();
     if (QLog.isColorLevel()) {
       QLog.i("EditRecognitionPart", 2, "onStop: mIsFinishRecognition = " + this.jdField_b_of_type_Boolean);
     }
@@ -241,9 +241,9 @@ public class EditRecognitionPart
   
   public void c()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a((Activity)a(), 2131439208);
-    localQQCustomDialog.setNegativeButton(2131433015, new ansa(this));
-    localQQCustomDialog.setPositiveButton(2131433016, new ansb(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a((Activity)a(), 2131439240);
+    localQQCustomDialog.setNegativeButton(2131433029, new aoar(this));
+    localQQCustomDialog.setPositiveButton(2131433030, new aoas(this));
     localQQCustomDialog.show();
   }
   
@@ -274,12 +274,12 @@ public class EditRecognitionPart
           QLog.i("EditRecognitionPart", 2, "handleMessage: invoked. info: no match. mHumMusicItemInfo = " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
         }
       } while ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.d == 7));
-      this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionBubbleTextView.setOnClickListener(new anrx(this));
+      this.jdField_a_of_type_DovComQqImCaptureMusicHumrecognitionBubbleTextView.setOnClickListener(new aoao(this));
       k();
       this.jdField_b_of_type_Boolean = true;
       return false;
     }
-    j();
+    i();
     this.jdField_a_of_type_DovComQqImCaptureMusicQimMusicPlayer.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoButton.c();
     return false;

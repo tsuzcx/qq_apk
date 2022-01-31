@@ -1,16 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class vtz
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public vtz(GameRoomChatPie paramGameRoomChatPie) {}
+  public vtz(PhotoListPanel paramPhotoListPanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return true;
+    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoListPanel", 2, "ACTION_SCREEN_OFF == >>");
+      }
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+    }
   }
 }
 

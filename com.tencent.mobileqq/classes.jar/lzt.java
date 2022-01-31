@@ -1,49 +1,34 @@
-import android.app.Activity;
-import android.content.ContentResolver;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lzt
-  extends ContentObserver
+  implements View.OnClickListener
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  public lzt(ComponentJump paramComponentJump, ArticleInfo paramArticleInfo) {}
   
-  public lzt(OrientationDetector paramOrientationDetector, Handler paramHandler)
+  public void onClick(View paramView)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = OrientationDetector.a(paramOrientationDetector).getContentResolver();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    int i = Settings.System.getInt(OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).getContentResolver(), "accelerometer_rotation", -1);
-    if (i == 1)
-    {
-      OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector.a(true);
+    int i = 0;
+    ReadInJoyActivityHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
     }
-    for (;;)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(OrientationDetector.a, 2, "RotationObserver.onChange() : rotateState=" + i);
-      }
+      paramView = new JSONObject();
+      paramView.put("feeds_channel_entrance", i);
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
       return;
-      OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector.a(false);
+    }
+    catch (JSONException paramView)
+    {
+      paramView.printStackTrace();
     }
   }
 }

@@ -31,7 +31,7 @@ public class RedTouchPicDownloader
     if ((paramDownloadParams != null) && (paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
     {
       paramOutputStream = (String)paramDownloadParams.tag;
-      paramDownloadParams = new File(AppConstants.aP);
+      paramDownloadParams = new File(AppConstants.aQ);
       paramDownloadParams.mkdirs();
       paramDownloadParams = new File(paramDownloadParams, Utils.Crc64String(paramOutputStream));
       if (paramDownloadParams.exists()) {

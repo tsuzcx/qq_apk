@@ -1,89 +1,68 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
+import android.graphics.BitmapFactory;
+import com.tencent.mobileqq.portal.HongbaoCaidanRainView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.List;
 
 public class agra
-  implements Handler.Callback
+  implements Runnable
 {
-  public agra(ProfileHeaderView paramProfileHeaderView) {}
+  public agra(HongbaoCaidanRainView paramHongbaoCaidanRainView, String[] paramArrayOfString) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(ProfileHeaderView.jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "mUICallback [%d]", new Object[] { Integer.valueOf(paramMessage.what) }));
-    }
-    if (ProfileHeaderView.d == paramMessage.what)
+    HongbaoCaidanRainView.a(this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoCaidanRainView).clear();
+    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView handleMessage msg what is check tips time=" + this.a.c);
+      if (i >= j) {
+        break label156;
       }
-      if ((this.a.b.get()) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
-        this.a.k(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-      }
-    }
-    Object localObject;
-    do
-    {
-      do
+      Object localObject = arrayOfString[i];
+      try
       {
-        do
-        {
-          return true;
-          if (ProfileHeaderView.f == paramMessage.what)
-          {
-            this.a.a(false);
-            return true;
-          }
-          if (ProfileHeaderView.g != paramMessage.what) {
-            break;
-          }
-          localObject = (View)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_avatar_pendant");
-        } while (!(localObject instanceof ImageView));
-        localObject = (ImageView)localObject;
-        paramMessage = (ExtensionInfo)paramMessage.obj;
-        if ((paramMessage != null) && (paramMessage.isPendantValid()))
-        {
-          this.a.jdField_a_of_type_Long = paramMessage.pendantId;
-          AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(45);
-          ((ImageView)localObject).setVisibility(0);
-          if (AvatarPendantUtil.a(this.a.jdField_a_of_type_Long))
-          {
-            localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 2, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
-            return true;
-          }
-          localAvatarPendantManager.a(this.a.jdField_a_of_type_Long).a((View)localObject, 1, PendantInfo.c, paramMessage.uin, paramMessage.pendantDiyId);
-          return true;
+        localObject = BitmapFactory.decodeFile((String)localObject);
+        if (localObject != null) {
+          HongbaoCaidanRainView.a(this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoCaidanRainView).add(localObject);
         }
-        ((ImageView)localObject).setVisibility(4);
-        this.a.jdField_a_of_type_Long = 0L;
-        return true;
-        if (paramMessage.what == 1004)
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        for (;;)
         {
-          this.a.d(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-          return true;
+          QLog.d("HongbaoCaidanRainView", 1, "start, OutOfMemoryError oom=" + localOutOfMemoryError.getMessage());
+          if (QLog.isColorLevel()) {
+            localOutOfMemoryError.printStackTrace();
+          }
         }
-      } while (paramMessage.what != 1005);
-      localObject = (TextView)this.a.jdField_a_of_type_JavaUtilHashMap.get("map_key_medal_num");
-    } while (localObject == null);
-    ((TextView)localObject).setText((String)paramMessage.obj);
-    return true;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          QLog.d("HongbaoCaidanRainView", 1, "start, throwable t=" + localThrowable.getMessage());
+          if (QLog.isColorLevel()) {
+            localThrowable.printStackTrace();
+          }
+        }
+      }
+      i += 1;
+    }
+    label156:
+    if (HongbaoCaidanRainView.a(this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoCaidanRainView).size() > 0)
+    {
+      HongbaoCaidanRainView.a(this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoCaidanRainView, System.currentTimeMillis());
+      HongbaoCaidanRainView.b(this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoCaidanRainView, HongbaoCaidanRainView.a(this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoCaidanRainView));
+      HongbaoCaidanRainView.a(this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoCaidanRainView, true);
+      HongbaoCaidanRainView.b(this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoCaidanRainView, false);
+      this.jdField_a_of_type_ComTencentMobileqqPortalHongbaoCaidanRainView.postInvalidate();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agra
  * JD-Core Version:    0.7.0.1
  */

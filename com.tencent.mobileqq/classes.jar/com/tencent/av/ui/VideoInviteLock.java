@@ -32,9 +32,9 @@ import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import kbs;
-import kbt;
-import kbu;
+import kdw;
+import kdx;
+import kdy;
 
 public class VideoInviteLock
   extends VideoInviteActivity
@@ -43,7 +43,7 @@ public class VideoInviteLock
   LinearLayout a;
   public ProgressBar a;
   BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = null;
-  Runnable jdField_b_of_type_JavaLangRunnable = new kbt(this);
+  Runnable jdField_b_of_type_JavaLangRunnable = new kdx(this);
   public TextView c;
   TextView d;
   int l;
@@ -65,7 +65,7 @@ public class VideoInviteLock
     {
     default: 
       return;
-    case 2131364247: 
+    case 2131364272: 
       this.jdField_d_of_type_Boolean = false;
       super.a(true);
       if (bool)
@@ -80,12 +80,12 @@ public class VideoInviteLock
       }
       ReportController.b(null, "CliOper", "", "", "0X8004206", "0X8004206", 0, 0, Integer.toString(this.jdField_c_of_type_Int), Integer.toString(this.h), Integer.toString(this.i), "");
       return;
-    case 2131365414: 
+    case 2131365419: 
       this.jdField_d_of_type_Boolean = true;
       AVReport.a().T = SystemClock.elapsedRealtime();
       super.e();
       return;
-    case 2131365413: 
+    case 2131365418: 
       this.jdField_a_of_type_Boolean = true;
       this.jdField_d_of_type_Boolean = true;
       super.e();
@@ -134,33 +134,33 @@ public class VideoInviteLock
   
   protected void b()
   {
-    this.jdField_a_of_type_ComTencentAvUiQavPanel = ((QavPanel)super.findViewById(2131365935));
+    this.jdField_a_of_type_ComTencentAvUiQavPanel = ((QavPanel)super.findViewById(2131365940));
     this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2);
     this.jdField_a_of_type_ComTencentAvUiQavPanel.setWaveVisibility(8);
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(new kbs(this));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364238));
-    Drawable localDrawable = BitmapTools.a(super.getApplicationContext(), 2130840209);
+    this.jdField_a_of_type_ComTencentAvUiQavPanel.a(new kdw(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131364263));
+    Drawable localDrawable = BitmapTools.a(super.getApplicationContext(), 2130840224);
     if (localDrawable != null)
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(localDrawable);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364241));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364242));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364239));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131364244));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364246));
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364245));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364243));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131364266));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364267));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364264));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131364269));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364271));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131364270));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364268));
       super.a();
       if (!VideoUtils.a(this.jdField_a_of_type_ComTencentAvAppSessionInfo.i, this.jdField_a_of_type_ComTencentAvAppSessionInfo.A)) {
         break label395;
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setText(2131429229);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131365413, 8);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131364249, 8);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364252, 2130840103);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131364247, 9, 0);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364247, 1, 0);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131364247, 14);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131365418, 8);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131364274, 8);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364277, 2130840118);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131364272, 9, 0);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364272, 1, 0);
+      this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131364272, 14);
     }
     for (;;)
     {
@@ -171,21 +171,21 @@ public class VideoInviteLock
         QLog.d(g, 2, "video invite Lock onCreate OK");
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130840209);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130840224);
       break;
       label395:
       if (this.jdField_a_of_type_ComTencentAvAppSessionInfo.i == 9500)
       {
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131365413, 8);
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131364249, 8);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131365418, 8);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131364274, 8);
       }
       else if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_b_of_type_AndroidWidgetTextView.setText(2131429064);
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131365413, 8);
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131364249, 11);
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364249, 2, super.getResources().getDimensionPixelSize(2131559846));
-        this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364252, 2130840103);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.setViewVisibility(2131365418, 8);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.b(2131364274, 11);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364274, 2, super.getResources().getDimensionPixelSize(2131559846));
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364277, 2130840118);
         UITools.a(this.jdField_b_of_type_AndroidWidgetTextView, super.getResources().getString(2131429064));
       }
       else
@@ -203,19 +203,19 @@ public class VideoInviteLock
     if (paramBoolean)
     {
       if (this.jdField_c_of_type_AndroidWidgetTextView != null) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(super.getResources().getColor(2131493511));
+        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(super.getResources().getColor(2131493513));
       }
       if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
         this.jdField_a_of_type_AndroidWidgetProgressBar.getIndeterminateDrawable().setColorFilter(-1291845633, PorterDuff.Mode.MULTIPLY);
       }
       if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
-        this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(super.getResources().getColor(2131493511));
+        this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(super.getResources().getColor(2131493513));
       }
       if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(super.getResources().getColor(2131493511));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(super.getResources().getColor(2131493513));
       }
       if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(super.getResources().getColor(2131493511));
+        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(super.getResources().getColor(2131493513));
       }
     }
     do
@@ -239,7 +239,7 @@ public class VideoInviteLock
   
   void k()
   {
-    ImageView localImageView = (ImageView)super.findViewById(2131364241);
+    ImageView localImageView = (ImageView)super.findViewById(2131364266);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
     int i = UITools.a(this);
     if (i <= 320)
@@ -274,14 +274,14 @@ public class VideoInviteLock
     super.onCreate(paramBundle);
     int i = UITools.a(super.getApplicationContext());
     this.l = UITools.b(super.getApplicationContext());
-    super.setContentView(2130969370);
+    super.setContentView(2130969368);
     super.getWindow().addFlags(524288);
     super.getWindow().addFlags(128);
     super.getWindow().addFlags(1024);
     if (!this.jdField_c_of_type_Boolean) {
       super.getWindow().addFlags(2097152);
     }
-    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new kbu(this);
+    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new kdy(this);
     paramBundle = new IntentFilter();
     paramBundle.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
     paramBundle.addAction("tencent.notify.cancel.videorequest");
@@ -323,11 +323,11 @@ public class VideoInviteLock
         }
         if ((FontSettingManager.a() == 20.0F) && (!this.jdField_b_of_type_Boolean))
         {
-          this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364247, 1, super.getResources().getDimensionPixelSize(2131559894));
-          this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365413, 2, super.getResources().getDimensionPixelSize(2131559894));
+          this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364272, 1, super.getResources().getDimensionPixelSize(2131559894));
+          this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131365418, 2, super.getResources().getDimensionPixelSize(2131559894));
         }
         if ((this.l <= 800) || ((e()) && (this.l <= 1280))) {
-          this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364248, 4, 0);
+          this.jdField_a_of_type_ComTencentAvUiQavPanel.a(2131364273, 4, 0);
         }
       }
       if ((NetworkUtil.h(super.getApplicationContext())) || (NetworkUtil.f(super.getApplicationContext()))) {
@@ -440,7 +440,7 @@ public class VideoInviteLock
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteLock
  * JD-Core Version:    0.7.0.1
  */

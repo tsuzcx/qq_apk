@@ -27,23 +27,23 @@ public class GuideBindPhoneActivity
     if (paramBundle != null) {}
     for (boolean bool = paramBundle.getBooleanExtra("req_write", false);; bool = false)
     {
-      setContentView(2130969023);
-      setTitle("手机通讯录", getString(2131435648));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364768));
+      setContentView(2130969025);
+      setTitle("手机通讯录", getString(2131435664));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364792));
       this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFlags(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
       float f = FontSettingManager.a();
       if (f > 17.0F)
       {
-        paramBundle = (ImageView)findViewById(2131364765);
+        paramBundle = (ImageView)findViewById(2131364789);
         RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramBundle.getLayoutParams();
         localLayoutParams.topMargin /= (int)(f - 16.0F);
         paramBundle.setLayoutParams(localLayoutParams);
       }
       if (bool)
       {
-        setTitle("保存到通讯录", getString(2131435648));
-        ((TextView)findViewById(2131364766)).setText(2131435649);
+        setTitle("保存到通讯录", getString(2131435664));
+        ((TextView)findViewById(2131364790)).setText(2131435665);
       }
       ReportController.b(this.app, "CliOper", "", "", "0X8006EFB", "0X8006EFB", 0, 0, "", "", "", "");
       return true;

@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
-public class mkw
-  implements View.OnClickListener
+class mkw
+  implements Runnable
 {
-  public mkw(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  mkw(mks parammks) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a() != null)
-    {
-      this.a.a().c();
-      PublicAccountReportUtils.a(this.a.a, "CliOper", "", "", "0X8009160", "0X8009160", 0, 1, null, null, null, null, false);
-    }
+    this.a.a.notifyDataSetChanged();
   }
 }
 

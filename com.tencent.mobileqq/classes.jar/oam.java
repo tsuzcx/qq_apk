@@ -1,21 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.biz.qqstory.model.DiscoverManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
 
 public class oam
-  extends ChildViewClickListener
+  implements Runnable
 {
-  public oam(FeedSegment paramFeedSegment) {}
+  public oam(DiscoverPresenter paramDiscoverPresenter) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public void run()
   {
-    switch (paramView.getId())
+    byte[] arrayOfByte = ((DiscoverManager)SuperManager.a(22)).a(DiscoverPresenter.a(this.a));
+    if (arrayOfByte != null)
     {
-    default: 
-      return;
+      DiscoverPresenter.a(this.a, arrayOfByte);
+      DiscoverPresenter.a(this.a).a();
     }
-    this.a.l();
   }
 }
 

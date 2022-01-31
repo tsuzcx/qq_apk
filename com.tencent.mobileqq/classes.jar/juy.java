@@ -1,19 +1,26 @@
-import com.tencent.av.gameplay.ARNativeBridge;
-import com.tencent.av.ui.GamePlayView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class juy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public juy(GamePlayView paramGamePlayView, boolean paramBoolean) {}
+  public juy(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView).native_setDrawParticle(this.jdField_a_of_type_Boolean);
+    QLog.d(this.a.c, 1, "quit double screen from reset clicker");
+    if ((this.a.a != null) && (this.a.a.get() != null) && ((this.a.a.get() instanceof AVActivity))) {
+      ((AVActivity)this.a.a.get()).BtnOnClick(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     juy
  * JD-Core Version:    0.7.0.1
  */

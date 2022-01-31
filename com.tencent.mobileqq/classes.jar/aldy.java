@@ -1,40 +1,24 @@
-import android.os.Bundle;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class aldy
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  public aldy(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
+  public aldy(QQProgressDialog paramQQProgressDialog, boolean paramBoolean) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    try
-    {
-      if (BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack) != null)
-      {
-        JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-        SendMsg localSendMsg = new SendMsg("setActionButton");
-        localSendMsg.a.putString("iconType", localJSONObject.optString("iconType"));
-        localSendMsg.a.putString("visible", localJSONObject.optString("visible"));
-        localSendMsg.a.putString("callBackKey", localJSONObject.optString("callBackKey"));
-        localSendMsg.a.putString("rightText", localJSONObject.optString("text"));
-        BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack).b(localSendMsg);
-      }
-      return;
+    if ((paramInt == 84) || (paramInt == 4)) {
+      return this.jdField_a_of_type_Boolean;
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aldy
  * JD-Core Version:    0.7.0.1
  */

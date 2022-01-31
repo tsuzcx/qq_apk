@@ -1,74 +1,30 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.newfriend.FriendSystemMessage;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class zhw
-  extends FriendListObserver
+  implements Runnable
 {
-  public zhw(NewFriendManager paramNewFriendManager) {}
+  public zhw(BrowserAppInterface paramBrowserAppInterface) {}
   
-  protected void onAddFriend(String paramString)
+  public void run()
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if ((this.a.isBackground_Stop) && (BaseActivity.sTopActivity == null))
     {
-      return;
-      localObject = this.a.b();
-    } while (((ArrayList)localObject).isEmpty());
-    Object localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      NewFriendMessage localNewFriendMessage = (NewFriendMessage)((Iterator)localObject).next();
-      if ((localNewFriendMessage instanceof FriendSystemMessage))
-      {
-        int i = ((FriendSystemMessage)localNewFriendMessage).a.structMsg.msg.sub_type.get();
-        String str = ((FriendSystemMessage)localNewFriendMessage).a.senderuin;
-        if ((i == 13) && (paramString.equals(str)))
-        {
-          ((Iterator)localObject).remove();
-          NewFriendManager.a(this.a).a().b(AppConstants.K, 0, ((FriendSystemMessage)localNewFriendMessage).a.uniseq, false);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("BrowserAppInterface", 2, "no activity running, reboot for tbs now");
       }
+      localIntent = new Intent();
+      localIntent.putExtra("qq_mode_foreground", true);
+      BrowserAppInterface.a(this.a, localIntent);
     }
-    NewFriendManager.a(this.a).sendEmptyMessage(2);
-  }
-  
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
-      NewFriendManager.a(this.a).sendEmptyMessage(2);
+    while (!QLog.isColorLevel())
+    {
+      Intent localIntent;
+      return;
     }
-  }
-  
-  protected void onGetPushRecommend(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
-      NewFriendManager.a(this.a).sendEmptyMessage(2);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    NewFriendManager.a(this.a).runOnUiThread(new zhx(this, paramBoolean));
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
-      NewFriendManager.a(this.a).sendEmptyMessage(2);
-    }
+    QLog.d("BrowserAppInterface", 2, "activity still running, cannot reboot");
   }
 }
 

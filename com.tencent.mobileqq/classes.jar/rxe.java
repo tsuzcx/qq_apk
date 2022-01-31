@@ -1,19 +1,34 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.XEditTextEx;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
-public final class rxe
-  implements DialogInterface.OnClickListener
+public class rxe
+  implements Runnable
 {
-  public rxe(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener, Bundle paramBundle) {}
+  public rxe(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_AndroidOsBundle);
+    int i = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length();
+    if ((BaseChatPie.c(this.a) == i) && (BaseChatPie.d(this.a) != 1)) {
+      BaseChatPie.e(this.a);
+    }
+    while (BaseChatPie.f(this.a) <= BaseChatPie.g(this.a))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendMsgSignal();
+      BaseChatPie.h(this.a);
+      ThreadManager.getSubThreadHandler().postDelayed(BaseChatPie.a(this.a), 2000L);
+      return;
+      BaseChatPie.c(this.a, i);
+      BaseChatPie.d(this.a, 0);
+    }
+    BaseChatPie.c(this.a, false);
+    BaseChatPie.e(this.a, 50);
+    BaseChatPie.d(this.a, 0);
+    BaseChatPie.f(this.a, 0);
   }
 }
 

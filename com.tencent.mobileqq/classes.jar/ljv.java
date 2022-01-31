@@ -1,25 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CreateCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager;
 
-public final class ljv
-  implements ArticleCommentModule.CreateCommentObserver
+public class ljv
+  implements DialogInterface.OnClickListener
 {
-  public ljv(ReadInJoyCommentUtils.CreateCommentInterface paramCreateCommentInterface) {}
+  public ljv(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentUtils", 2, "comment id = " + paramString1 + "err code = " + paramInt + "err msg " + paramString2);
-    }
-    this.a.a(paramString1, paramInt, paramString2);
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, String paramString, CommentInfo paramCommentInfo)
-  {
-    this.a.a(paramString, paramCommentInfo);
+    ReadInJoyCameraCaptureActivity.b(this.a, 6);
+    ReadInJoyCameraCaptureActivity.a(this.a);
+    ReadInJoyCameraCaptureActivity.a(this.a).a();
   }
 }
 

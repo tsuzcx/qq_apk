@@ -1,24 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.mobileqq.ar.ObjectBaseData;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aajz
-  implements aakm
+  implements Runnable
 {
-  public aajz(SplashPopupWin paramSplashPopupWin, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, View paramView) {}
+  public aajz(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
   
-  public void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void run()
   {
-    QLog.w("WorldCupMgr", 1, "SplashPopupWin, 异步加载图片[" + paramBoolean + "]");
-    if (paramBoolean)
+    if (ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).size() > 0)
     {
-      SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidViewView);
+      ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.b();
+    QLog.d("ObjectSurfaceView", 1, "the dataList is null, cancel the jump action.");
   }
 }
 

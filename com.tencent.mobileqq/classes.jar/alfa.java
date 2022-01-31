@@ -1,32 +1,36 @@
-import android.app.Activity;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi;
-import com.tencent.open.appcommon.now.download.local.DownloadTaskInfo;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.struct.PushBanner;
+import com.tencent.mobileqq.widget.WorkSpaceView;
 
 public class alfa
-  implements Runnable
+  extends Handler
 {
-  public alfa(DownloadNativeApi paramDownloadNativeApi, DownloadInfo paramDownloadInfo, DownloadTaskInfo paramDownloadTaskInfo, Activity paramActivity) {}
+  public alfa(WorkSpaceView paramWorkSpaceView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    Object localObject = new alfb(this);
-    alfc localalfc = new alfc(this);
-    LogUtility.b("DownloadNativeApi", "dialog create and show");
-    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131428555)).setPositiveButton(2131428552, localalfc).setNegativeButton(2131428553, (DialogInterface.OnClickListener)localObject).create();
-    ((Dialog)localObject).setCanceledOnTouchOutside(false);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      ((Dialog)localObject).show();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      int i = ((PushBanner)this.a.getChildAt(this.a.a).getTag()).a;
+      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
+        this.a.a(this.a.a() + 1);
+      }
+      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
+      continue;
+      WorkSpaceView.a(this.a).removeMessages(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alfa
  * JD-Core Version:    0.7.0.1
  */

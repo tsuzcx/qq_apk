@@ -1,12 +1,14 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.widget.GridView;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class mzh
+class mzh
+  implements Runnable
 {
-  public TextView a;
-  public VideoFeedsAlphaMaskView a;
-  public GridView a;
+  mzh(mzg parammzg) {}
+  
+  public void run()
+  {
+    this.a.a.dismiss();
+  }
 }
 
 

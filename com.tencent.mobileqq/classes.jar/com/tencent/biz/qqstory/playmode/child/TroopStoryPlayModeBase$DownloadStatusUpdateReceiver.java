@@ -39,7 +39,7 @@ public class TroopStoryPlayModeBase$DownloadStatusUpdateReceiver
       QQToast.a(VideoPlayModeBase.a(), 1, "已有其他下载任务在执行，请稍候", 0).a();
       return;
     case 2: 
-      QQToast.a(VideoPlayModeBase.a(), 2, StoryApi.a(2131432100), 0).a();
+      QQToast.a(VideoPlayModeBase.a(), 2, StoryApi.a(2131432111), 0).a();
       if (bool) {}
       for (paramTroopStoryPlayModeBase = "2";; paramTroopStoryPlayModeBase = "1")
       {

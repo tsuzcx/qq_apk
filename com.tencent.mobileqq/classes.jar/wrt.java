@@ -1,19 +1,51 @@
-import android.content.Context;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class wrt
-  implements View.OnTouchListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public wrt(MessageSearchDialog paramMessageSearchDialog) {}
+  public wrt(ContactsTroopAdapter paramContactsTroopAdapter, DiscussionHandler paramDiscussionHandler, DiscussionInfo paramDiscussionInfo, boolean paramBoolean, ActionSheet paramActionSheet) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo;
+    boolean bool;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      bool = true;
+      paramView.a((DiscussionInfo)localObject, bool);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label154;
+      }
+      paramInt = 1;
+      label43:
+      paramView = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.uin;
+      ((BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a.a(22)).a(18, true, new Object[] { paramView, Integer.valueOf(paramInt), Integer.valueOf(0), null });
+      localObject = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsTroopAdapter.a).a("dc00899").b("Grp_Dis_set").c("Grp_contactlist");
+      if (!this.jdField_a_of_type_Boolean) {
+        break label159;
+      }
+    }
+    label154:
+    label159:
+    for (paramView = "Clk_unstick";; paramView = "Clk_stick")
+    {
+      ((ReportTask)localObject).d(paramView).a();
+      return;
+      bool = false;
+      break;
+      paramInt = 0;
+      break label43;
+    }
   }
 }
 

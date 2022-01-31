@@ -1,18 +1,14 @@
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
+import com.tencent.widget.XListView;
+import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
 
 public class aoly
   implements Runnable
 {
-  public aoly(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite, String paramString) {}
+  public aoly(PoiListLayout paramPoiListLayout) {}
   
   public void run()
   {
-    CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite).setText(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
-    }
+    PoiListLayout.a(this.a).springBackOverScrollHeaderView();
   }
 }
 

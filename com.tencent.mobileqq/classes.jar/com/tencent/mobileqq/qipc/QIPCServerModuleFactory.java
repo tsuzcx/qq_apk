@@ -16,6 +16,7 @@ import com.tencent.mobileqq.realname.RealNameModule;
 import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCServer;
 import com.tencent.mobileqq.statistics.battery.BatteryIPCModule;
 import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.mobileqq.vas.VasApngIPCModule;
 import com.tencent.mobileqq.vas.VasMonitorIPCModule;
 import com.tencent.open.downloadnew.DownloaderGetCodeServer;
 import cooperation.comic.ipc.QQComicIPCModule;
@@ -92,6 +93,9 @@ public class QIPCServerModuleFactory
     }
     if ("BabyQIPCModule".equals(paramString)) {
       return BabyQIPCModule.a();
+    }
+    if ("VasApngIPCModule".equals(paramString)) {
+      return VasApngIPCModule.a();
     }
     return null;
   }

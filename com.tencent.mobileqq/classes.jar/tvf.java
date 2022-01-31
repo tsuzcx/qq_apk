@@ -1,17 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.util.Utils;
 
 public class tvf
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tvf(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public tvf(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.onClick(this.a.a.a);
-    this.a.a(0);
+    int j = 0;
+    String str = Utils.a(this.jdField_a_of_type_JavaLangString, this.b);
+    if ((str != null) && (str.length() == 6) && (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) != null) && (!str.equals(RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity))))
+    {
+      RegisterVerifyCodeActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity, str);
+      i = 0;
+      if (i >= 6) {
+        break label160;
+      }
+      Editable localEditable = RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity)[i].getText();
+      if ((localEditable == null) || (localEditable.toString().length() <= 0)) {}
+    }
+    label160:
+    for (int i = 0;; i = 1)
+    {
+      if (i != 0)
+      {
+        i = j;
+        for (;;)
+        {
+          if (i < 6)
+          {
+            RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity)[i].setText(str.substring(i, i + 1));
+            i += 1;
+            continue;
+            i += 1;
+            break;
+          }
+        }
+        RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity)[5].setSelection(1);
+      }
+      return;
+    }
   }
 }
 

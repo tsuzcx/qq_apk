@@ -1,49 +1,31 @@
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import java.io.File;
-import java.io.IOException;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
-class aoon
-  implements INetEngine.INetEngineListener
+public class aoon
+  implements Runnable
 {
-  aoon(aoom paramaoom) {}
+  public aoon(FlowCameraActivity2 paramFlowCameraActivity2, String paramString, int paramInt) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl + " resultcode: " + paramNetResp.c);
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Int == 2002) {
+      str = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.getString(2131428347);
     }
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo, false);
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUsable) {}
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a = DialogUtil.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.getString(2131428346), new aooo(this));
     try
     {
-      ZipUtils.a(new File(PtvTemplateManager.b, this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleName), PtvTemplateManager.c);
-      if (paramNetResp.jdField_a_of_type_Int == 0)
-      {
-        PreDownloadController localPreDownloadController = (PreDownloadController)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(192);
-        if (localPreDownloadController.a()) {
-          localPreDownloadController.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfo.doodleUrl, paramNetResp.jdField_a_of_type_Long);
-        }
-      }
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.setCancelable(false);
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.show();
       return;
     }
-    catch (IOException localIOException)
+    catch (WindowManager.BadTokenException localBadTokenException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localIOException.printStackTrace();
-        }
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.i("FlowCameraActivity", 2, "", localBadTokenException);
     }
   }
 }

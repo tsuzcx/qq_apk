@@ -409,8 +409,8 @@ public abstract class b
   {
     try
     {
-      this.mState = paramc;
       com.tencent.upload.common.b.b("BaseTask", "setState: " + this.mState + " ---> " + paramc);
+      this.mState = paramc;
       return;
     }
     finally {}

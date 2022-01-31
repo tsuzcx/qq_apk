@@ -1,42 +1,19 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.av.gvideo.IGVServiceForQQ.Stub;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.groupvideo.GroupVideoWrapper;
-import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
+import com.tencent.widget.VerticalGallery;
 
 public class amll
-  implements ServiceConnection
+  implements Runnable
 {
-  public amll(GroupVideoWrapper paramGroupVideoWrapper) {}
+  public amll(VerticalGallery paramVerticalGallery) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
-    }
-    this.a.jdField_a_of_type_ComTencentAvGvideoIGVServiceForQQ = IGVServiceForQQ.Stub.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_ComTencentAvGvideoIGVServiceForQQ != null) && (this.a.jdField_a_of_type_CooperationGroupvideoGroupVideoWrapper$OnGVideoReadyListener != null)) {
-      this.a.jdField_a_of_type_CooperationGroupvideoGroupVideoWrapper$OnGVideoReadyListener.a(this.a);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
-    }
-    this.a.jdField_a_of_type_ComTencentAvGvideoIGVServiceForQQ = null;
+    VerticalGallery.a(this.a, false);
+    this.a.selectionChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amll
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.StoryImageDialog;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.mobileqq.widget.QQProgressNotifier;
 
-public class oqd
-  implements View.OnClickListener
+class oqd
+  implements Runnable
 {
-  public oqd(StoryImageDialog paramStoryImageDialog) {}
+  oqd(oqc paramoqc) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.dismiss();
+    if (SlideShowPhotoListManager.a(this.a.a) != null) {
+      SlideShowPhotoListManager.a(this.a.a).a();
+    }
   }
 }
 

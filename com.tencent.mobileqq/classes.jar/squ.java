@@ -1,24 +1,21 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.data.TroopMemberCard;
 
 class squ
-  implements OnCompositionLoadedListener
+  implements Runnable
 {
-  squ(sqt paramsqt) {}
+  squ(sqs paramsqs, TroopMemberCard paramTroopMemberCard) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void run()
   {
-    if (paramLottieComposition == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, "onCompositionLoaded failed!");
-      }
-      return;
+      Intent localIntent = new Intent();
+      localIntent.putExtra("nick", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.card);
+      this.jdField_a_of_type_Sqs.a.setResult(-1, localIntent);
+      EditInfoActivity.e(this.jdField_a_of_type_Sqs.a);
     }
-    this.a.a.post(new sqv(this, paramLottieComposition));
   }
 }
 

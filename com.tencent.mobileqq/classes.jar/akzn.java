@@ -1,37 +1,26 @@
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import android.os.Handler;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
 
 public class akzn
   implements Runnable
 {
-  public akzn(MSFIntChkStrike paramMSFIntChkStrike, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, String paramString3, String paramString4, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public akzn(WereWolvesLoadingView paramWereWolvesLoadingView) {}
   
   public void run()
   {
-    try
+    if (this.a.b >= 100)
     {
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-      if (localQQCustomDialog == null) {
-        return;
-      }
-      localQQCustomDialog.setNegativeButton(this.c, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-      localQQCustomDialog.setPositiveButton(this.d, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-      localQQCustomDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-      localQQCustomDialog.setCancelable(false);
-      localQQCustomDialog.show();
+      this.a.setProgress(100);
+      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
+      return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+    WereWolvesLoadingView localWereWolvesLoadingView = this.a;
+    localWereWolvesLoadingView.b += 3;
+    if (this.a.b > 100) {
+      this.a.b = 100;
     }
-    MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike, true);
+    this.a.setProgress(this.a.b);
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 40L);
   }
 }
 

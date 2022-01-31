@@ -1,36 +1,21 @@
 import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
+import com.tencent.mobileqq.ark.ArkAiAppPanel;
+import java.util.ArrayList;
 
 public class aayk
+  implements ArkAppView.Callback
 {
-  public int a;
-  public long a;
-  public ArkAioContainerWrapper a;
-  public MessageForArkApp a;
-  public String a;
-  public WeakReference a;
-  public long b;
-  public String b;
-  public WeakReference b;
-  public String c;
-  public String d;
+  public aayk(ArkAiAppPanel paramArkAiAppPanel) {}
   
-  public aayk(ArkAioContainerWrapper paramArkAioContainerWrapper, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  public void a()
   {
-    a(paramArkAioContainerWrapper, paramString1, paramLong1, paramLong2, paramString2, paramInt, paramString3, paramMessageForArkApp);
-  }
-  
-  public void a(ArkAioContainerWrapper paramArkAioContainerWrapper, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper = paramArkAioContainerWrapper;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.d = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
+    boolean bool = ((ArkAioContainerWrapper)ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a))).checkShare();
+    if (bool != ArkAiAppPanel.a(this.a))
+    {
+      ArkAiAppPanel.a(this.a, bool);
+      ArkAiAppPanel.a(this.a, ArkAiAppPanel.a(this.a));
+    }
   }
 }
 

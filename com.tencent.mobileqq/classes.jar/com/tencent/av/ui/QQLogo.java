@@ -9,7 +9,7 @@ import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.av.AVLog;
-import jzd;
+import kbh;
 
 public class QQLogo
   extends ImageView
@@ -94,7 +94,7 @@ public class QQLogo
     AVLog.c("QQLogo", "dispearLogo:");
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setAnimationListener(new jzd(this));
+    localAlphaAnimation.setAnimationListener(new kbh(this));
     clearAnimation();
     startAnimation(localAlphaAnimation);
   }
@@ -117,7 +117,7 @@ public class QQLogo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.QQLogo
  * JD-Core Version:    0.7.0.1
  */

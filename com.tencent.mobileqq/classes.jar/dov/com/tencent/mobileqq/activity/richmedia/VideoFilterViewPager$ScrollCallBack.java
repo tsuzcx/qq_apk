@@ -2,7 +2,7 @@ package dov.com.tencent.mobileqq.activity.richmedia;
 
 public abstract interface VideoFilterViewPager$ScrollCallBack
 {
-  public abstract void B();
+  public abstract void F();
 }
 
 

@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.FTSSearchResultItem;
+import java.util.Comparator;
 
 public class ahyn
-  implements Runnable
+  implements Comparator
 {
-  public ahyn(PtvTemplateManager paramPtvTemplateManager) {}
+  public ahyn(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
   
-  public void run()
+  public int a(FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem1, FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem2)
   {
-    this.a.a();
+    int j = Long.signum(paramFTSSearchResultItem1.b - paramFTSSearchResultItem2.b);
+    int i = j;
+    if (j == 0)
+    {
+      j = Long.signum(paramFTSSearchResultItem1.c - paramFTSSearchResultItem2.c);
+      i = j;
+      if (j == 0) {
+        i = Long.signum(-paramFTSSearchResultItem1.a + paramFTSSearchResultItem2.a);
+      }
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahyn
  * JD-Core Version:    0.7.0.1
  */

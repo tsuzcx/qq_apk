@@ -1,31 +1,26 @@
-import android.graphics.drawable.Drawable;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.av.widget.stageview.StageEffectView;
-import com.tencent.av.widget.stageview.StageMemberView;
+import android.os.Handler;
+import com.tencent.av.utils.PhoneStatusMonitor;
+import com.tencent.av.utils.PhoneStatusTools;
+import com.tencent.qphone.base.util.QLog;
 
 public class kii
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public kii(StageEffectView paramStageEffectView, boolean paramBoolean, StageMemberView paramStageMemberView, Drawable paramDrawable, ImageView paramImageView, float paramFloat1, float paramFloat2) {}
+  public kii(PhoneStatusMonitor paramPhoneStatusMonitor) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable run");
     }
-    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.post(new kij(this));
+    if ((this.a.jdField_a_of_type_AndroidContentContext != null) && (!PhoneStatusTools.d(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.jdField_a_of_type_AndroidOsHandler != null)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new kij(this));
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     kii
  * JD-Core Version:    0.7.0.1
  */

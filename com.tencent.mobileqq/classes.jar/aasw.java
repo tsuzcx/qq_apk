@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.arcard.ARCardRender;
 
 public class aasw
-  implements BusinessObserver
+  implements Runnable
 {
-  public aasw(ArkAppCGI paramArkAppCGI, ArkAppCGI.ArkAppCGICallback paramArkAppCGICallback, Object paramObject) {}
+  public aasw(ARCardRender paramARCardRender, ARBaseRender paramARBaseRender) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (!paramBoolean)
-    {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", "queryAppInfoByAppNameBatch, sso request failed");
-      paramObject = null;
-    }
-    for (;;)
-    {
-      paramObject = ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI, (String)paramObject);
-      if (this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$ArkAppCGICallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$ArkAppCGICallback.a(paramObject, this.jdField_a_of_type_JavaLangObject);
-      }
-      return;
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasw
  * JD-Core Version:    0.7.0.1
  */

@@ -6,12 +6,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import xgr;
+import xml;
 
 public class RedPacketInfoBase
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new xgr();
+  public static final Parcelable.Creator CREATOR = new xml();
   public static final String ICON_DEF = "icon_def";
   public static final String ICON_SP = "icon_sp";
   public static final String ICON_TXT = "icon_txt";

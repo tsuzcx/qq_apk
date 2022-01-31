@@ -1,31 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class mfv
-  extends Handler
+public final class mfv
+  implements Animation.AnimationListener
 {
-  public mfv(VideoUIManager paramVideoUIManager) {}
+  public mfv(View paramView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
+    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
     {
-    default: 
-      return;
-    case 100: 
-      VideoUIManager.a(this.a);
-      return;
-    case 101: 
-      this.a.f();
-      return;
-    case 102: 
-      VideoUIManager.b(this.a);
-      sendEmptyMessageDelayed(102, 1000L);
-      return;
+      this.a.clearAnimation();
+      this.a.setVisibility(8);
     }
-    VideoUIManager.a(this.a, 3);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

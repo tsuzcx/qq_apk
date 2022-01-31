@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlResult;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public final class angu
-  implements Parcelable.Creator
+public class angu
+  implements Runnable
 {
-  public WadlResult a(Parcel paramParcel)
-  {
-    return new WadlResult(paramParcel);
-  }
+  public angu(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public WadlResult[] a(int paramInt)
+  public void run()
   {
-    return new WadlResult[paramInt];
+    QQToast.a(this.a, this.a.a.msg.get(), 0).a();
   }
 }
 

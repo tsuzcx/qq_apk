@@ -1,46 +1,20 @@
-import android.os.Handler;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class amtk
-  extends OnQZonePluginInstallListner.Stub
+public final class amtk
+  implements IPluginManager.OnPluginReadyListener
 {
-  private long jdField_a_of_type_Long = -1L;
-  
-  public amtk(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
-  
-  public void a(String paramString)
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallBegin] pluginId=" + paramString);
-    if (this.jdField_a_of_type_Long < 0L) {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
     }
-  }
-  
-  public void a(String paramString, float paramFloat, long paramLong)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallDownloadProgress] pluginId=" + paramString + " progress=" + paramFloat + " total=" + paramLong);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
-    paramString = QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).obtainMessage();
-    paramString.what = 1010;
-    if (8 == paramInt) {}
-    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
-    {
-      QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendMessage(paramString);
-      return;
+    if (paramBoolean) {
+      IPluginManager.c(paramContext, paramPluginParams);
     }
-  }
-  
-  public void b(String paramString)
-  {
-    QLog.i("QzoneVerticalVideoDownloadActivity", 1, "[onInstallFinish] pluginId=" + paramString);
-    QzoneVerticalVideoDownloadActivity.a("vertical_layer", "vertical_layer_time_cost", "plugin_install_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
   }
 }
 

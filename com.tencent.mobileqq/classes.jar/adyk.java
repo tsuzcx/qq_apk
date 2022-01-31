@@ -1,17 +1,16 @@
+import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class adyk
-  implements View.OnClickListener
+  implements StaggeredGridLayoutManager.ExceptionListener
 {
-  public adyk(LebaFeedsAdapter paramLebaFeedsAdapter) {}
+  public adyk(HotPicPageView paramHotPicPageView) {}
   
-  public void onClick(View paramView)
+  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
   {
-    if ((LebaFeedsAdapter.a(this.a) != null) && (LebaFeedsAdapter.a(this.a) == 4)) {
-      LebaFeedsAdapter.a(this.a).ag_();
-    }
+    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
   }
 }
 

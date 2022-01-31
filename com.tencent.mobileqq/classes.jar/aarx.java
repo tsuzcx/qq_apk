@@ -1,30 +1,21 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.ark.ArkAiBubbleView;
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
 
 public class aarx
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aarx(ArkAiBubbleView paramArkAiBubbleView) {}
+  public aarx(ARBlessWordFragment paramARBlessWordFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ViewParent localViewParent = this.a.jdField_a_of_type_AndroidViewView.getParent();
-    if ((localViewParent instanceof ViewGroup)) {
-      ((ViewGroup)localViewParent).removeView(this.a.jdField_a_of_type_AndroidViewView);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar = null;
-    }
+    this.a.a();
+    ARBlessWordFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aarx
  * JD-Core Version:    0.7.0.1
  */

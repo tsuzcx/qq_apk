@@ -1,28 +1,16 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ApolloPanelManager;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.apollo.script.SpriteBridge;
+import com.tencent.mobileqq.apollo.script.SpriteContext;
 
 public class yys
   implements Runnable
 {
-  public yys(ApolloPanel paramApolloPanel) {}
+  public yys(SpriteBridge paramSpriteBridge) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null)) {}
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (ApolloPanel.a(this.a) != null) {}
-      for (int i = ApolloPanel.a(this.a).a.get(); i > 0; i = 0)
-      {
-        this.a.b.setVisibility(0);
-        return;
-      }
+    if ((SpriteBridge.a(this.a) != null) && (SpriteBridge.a(this.a).a() != null)) {
+      SpriteBridge.a(this.a).a().f();
     }
   }
 }

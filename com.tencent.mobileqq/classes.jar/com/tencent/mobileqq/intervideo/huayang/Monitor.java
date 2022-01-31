@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import adum;
+import aecw;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class Monitor
@@ -16,7 +16,7 @@ public class Monitor
   
   public static void b(String paramString)
   {
-    ThreadManager.executeOnNetWorkThread(new adum("http://cgi.pub.qq.com/report/report_vm?monitors=[$ID$]&t=$TIMESTAMP$".replace("$ID$", paramString).replace("$TIMESTAMP$", String.valueOf(System.currentTimeMillis()))));
+    ThreadManager.executeOnNetWorkThread(new aecw("http://cgi.pub.qq.com/report/report_vm?monitors=[$ID$]&t=$TIMESTAMP$".replace("$ID$", paramString).replace("$TIMESTAMP$", String.valueOf(System.currentTimeMillis()))));
   }
 }
 

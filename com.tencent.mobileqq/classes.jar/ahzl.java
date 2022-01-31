@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import android.widget.ImageView;
+import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
 
 public class ahzl
   implements Runnable
 {
-  public ahzl(ShortVideoPreDownloader paramShortVideoPreDownloader, ShortVideoReq paramShortVideoReq) {}
+  public ahzl(SearchTemplatePresenter paramSearchTemplatePresenter, ImageView paramImageView, boolean paramBoolean) {}
   
   public void run()
   {
-    ShortVideoPreDownloader.a("consumeShortVideo", "start pre download short video type=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.b + " uniseq=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_Long + ", uuid=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.a.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloader.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq);
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845575);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845574);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahzl
  * JD-Core Version:    0.7.0.1
  */

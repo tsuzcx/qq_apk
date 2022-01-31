@@ -1,20 +1,38 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.ApolloTicker;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ytj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ytj(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  private final long jdField_a_of_type_Long;
+  public final ApolloSurfaceView a;
+  private final long b;
   
-  public void onClick(View paramView)
+  ytj(ApolloTicker paramApolloTicker, ApolloSurfaceView paramApolloSurfaceView, long paramLong1, long paramLong2)
   {
-    paramView = new Intent();
-    this.a.setResult(2, paramView);
-    VipUtils.a(this.a.app, "cmshow", "Apollo", "dresscheckai", this.a.d, 0, new String[0]);
-    this.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = paramApolloSurfaceView;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.b = paramLong1;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView == null) {}
+    while ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mIsDestroy == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mIsDestroy.get()) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mRenderMode != 0)) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker.nativeCallbackTicker(this.b, l, 0.01666666666666667D * this.jdField_a_of_type_Long);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ApolloTicker", 1, "[onDrawFrame]");
+    }
   }
 }
 

@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class yaq
-  extends FriendListObserver
+  implements Runnable
 {
-  public yaq(SelectMemberActivity paramSelectMemberActivity) {}
+  public yaq(VideoFilterViewPager paramVideoFilterViewPager) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
+  public void run()
+  {
+    VideoFilterViewPager.a(this.a).onPageSelected(this.a.getCurrentItem());
+  }
 }
 
 

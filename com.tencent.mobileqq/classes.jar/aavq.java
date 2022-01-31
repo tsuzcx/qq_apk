@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.util.WeakReferenceHandler;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
 
-public class aavq
+class aavq
   implements Runnable
 {
-  public aavq(ArkLocalAppMgr paramArkLocalAppMgr, aavu paramaavu, aawb paramaawb) {}
+  aavq(aavo paramaavo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aavu.a = NetworkUtil.g(BaseApplication.getContext());
-    ArkLocalAppMgr localArkLocalAppMgr = (ArkLocalAppMgr)ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr).get();
-    if (localArkLocalAppMgr != null) {
-      ArkLocalAppMgr.a(localArkLocalAppMgr).post(new aavr(this));
+    if (ArkAppEventObserverManager.a(this.a.a) != null) {
+      ArkAppEventObserverManager.a(this.a.a).a(false, 0.0D, 0.0D);
     }
+    SosoInterface.b(ArkAppEventObserverManager.a(this.a.a));
+    ArkAppEventObserverManager.a(this.a.a, null);
   }
 }
 

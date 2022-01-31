@@ -1,65 +1,43 @@
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 public class aekv
-  implements BusinessObserver
+  extends CardObserver
 {
-  public aekv(MusicPlayerActivity paramMusicPlayerActivity, Intent paramIntent) {}
+  public aekv(LoginWelcomeManager paramLoginWelcomeManager) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void b(boolean paramBoolean, String paramString)
   {
-    if (paramBoolean) {}
-    try
+    int i = 1;
+    if (QLog.isColorLevel())
     {
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject != null)
-      {
-        paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-        paramBundle.mergeFrom((byte[])localObject);
-        if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+      QLog.d("LoginWelcomeManager", 2, String.format("mCardObserver.onUpdateAvatar isSuccess=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+      if (TextUtils.equals(LoginWelcomeManager.a(this.a).getCurrentAccountUin(), paramString)) {
+        if (LoginWelcomeManager.a(this.a) != null)
         {
-          GetAppInfoProto.AndroidInfo localAndroidInfo = paramBundle.androidInfo;
-          localObject = Share.a(paramBundle.iconsURL, 16);
-          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_url", localAndroidInfo.sourceUrl.get());
-          Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
-          paramBundle = (Bundle)localObject;
-          if (localObject == null) {
-            paramBundle = "";
+          paramString = LoginWelcomeManager.a(this.a).getBundle("request");
+          if (paramString != null) {
+            if (!paramBoolean) {
+              break label136;
+            }
           }
-          localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_name", localAndroidInfo.messagetail.get());
-          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_a_action_data", localAndroidInfo.packName.get());
         }
       }
     }
-    catch (Exception paramBundle)
+    for (;;)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MusicPlayerActivity", 2, paramBundle.getMessage());
-        }
-      }
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 0);
-    }
-    paramBundle = StructMsgFactory.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
-    if (paramBundle == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicPlayerActivity", 2, "build struct msg fail");
-      }
+      paramString.putInt("result", i);
+      paramString.putString("path", LoginWelcomeManager.a(this.a));
+      LoginWelcomeManager.a(this.a, null);
+      this.a.b();
+      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
       return;
+      label136:
+      i = 0;
     }
   }
 }

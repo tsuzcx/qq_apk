@@ -1,46 +1,218 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
-import com.tencent.mobileqq.shortvideo.util.ShortVideoJsApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Build.VERSION;
+import com.tencent.av.core.VcSystemInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.PendantVersionManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr;
+import com.tencent.mobileqq.shortvideo.ShortVideoPortraitResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.ShortVideoTrackingResourceMgr;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import com.tencent.mobileqq.utils.quic.QuicResProcess;
 
 public class aidx
-  extends BroadcastReceiver
 {
-  public aidx(ShortVideoJsApiPlugin paramShortVideoJsApiPlugin) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    String str1 = paramIntent.getStringExtra("uuid");
-    String str2 = paramIntent.getStringExtra("md5");
-    String str3 = paramIntent.getStringExtra("imgurl");
-    String str4 = paramIntent.getStringExtra("mediaType");
-    boolean bool = CaptureUtil.g();
-    paramIntent = new JSONObject();
-    try
+    VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:APPID=" + AppSetting.a + " subVersion=" + "7.6.8" + " buildnum=" + "3615", null);
+    String str;
+    if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_video_"))
     {
-      paramIntent.put("uuid", str1);
-      paramIntent.put("md5", str2);
-      paramIntent.put("imgurl", str3);
-      paramIntent.put("mediaType", str4);
-      paramIntent.put("hasGesture", bool);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoJsApiPlugin", 2, "call webView, uuid" + str1 + ", md5:" + str2 + ", imgurl:" + str3 + ", mediaType:" + str4 + ", hasGesture:" + bool);
-      }
-      this.a.callJs(paramContext, new String[] { paramIntent.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      str = "new_qq_android_native_short_video_" + paramSVConfigItem.versionCode;
+      if (paramSVConfigItem.name.equalsIgnoreCase(str))
       {
-        localJSONException.printStackTrace();
+        if (paramSVConfigItem.versionCode < 58)
+        {
+          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInShortVideo=" + 58, null);
+          return -2;
+        }
+      }
+      else {
+        return -4;
       }
     }
+    else if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_filter_"))
+    {
+      str = "new_qq_android_native_short_filter_" + paramSVConfigItem.versionCode;
+      if (paramSVConfigItem.name.equalsIgnoreCase(str))
+      {
+        if (paramSVConfigItem.versionCode < 7)
+        {
+          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInPendant=" + 7, null);
+          return -2;
+        }
+      }
+      else {
+        return -4;
+      }
+    }
+    else if (paramSVConfigItem.name.startsWith("new_qq_android_native_art_filter_"))
+    {
+      str = "new_qq_android_native_art_filter_" + paramSVConfigItem.versionCode;
+      if (paramSVConfigItem.name.equalsIgnoreCase(str))
+      {
+        if (paramSVConfigItem.versionCode < 5)
+        {
+          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInArt=" + 5, null);
+          return -2;
+        }
+      }
+      else {
+        return -4;
+      }
+    }
+    else if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_other_"))
+    {
+      str = "new_qq_android_native_short_other_" + paramSVConfigItem.versionCode;
+      if (paramSVConfigItem.name.equalsIgnoreCase(str))
+      {
+        if (paramSVConfigItem.versionCode < 1)
+        {
+          VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInOther=" + 1, null);
+          return -2;
+        }
+      }
+      else {
+        return -4;
+      }
+    }
+    else
+    {
+      if (paramSVConfigItem.name.startsWith("msf_quic_lib")) {
+        return QuicResProcess.a(paramSVConfigItem);
+      }
+      if (paramSVConfigItem.name.startsWith("new_qq_android_native_portrait_filter_"))
+      {
+        str = "new_qq_android_native_portrait_filter_" + paramSVConfigItem.versionCode;
+        if (paramSVConfigItem.name.equalsIgnoreCase(str))
+        {
+          if (paramSVConfigItem.versionCode < 5)
+          {
+            VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:item.versionCode=" + paramSVConfigItem.versionCode + " buildInPortrait=" + 5, null);
+            return -2;
+          }
+        }
+        else {
+          return -4;
+        }
+      }
+      else if (paramSVConfigItem.name.startsWith("new_qq_android_native_object_tracking_"))
+      {
+        return ShortVideoTrackingResourceMgr.a(paramSVConfigItem);
+      }
+    }
+    return 0;
+  }
+  
+  private static boolean a()
+  {
+    boolean bool = VcSystemInfo.e();
+    VideoEnvironment.a("ShortVideoResourceManager", "isArmV7aAndNeon:isNeon=" + bool + ",SDK_INT=" + Build.VERSION.SDK_INT, null);
+    return (bool) && (Build.VERSION.SDK_INT >= 15);
+  }
+  
+  public static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  {
+    boolean bool1 = true;
+    if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_video_"))
+    {
+      boolean bool2 = VideoEnvironment.a(paramSVConfigItem.versionCode);
+      VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload[Builtin Mode]:needDownload=" + bool2 + ",itemConfig.name=" + paramSVConfigItem.name, null);
+      bool1 = bool2;
+      if (bool2) {
+        bool1 = VideoEnvironment.d(paramAppInterface);
+      }
+    }
+    for (;;)
+    {
+      VideoEnvironment.a("ShortVideoResourceManager", "userCheckNeedDownload:needDownload=" + bool1 + ",itemConfig.name=" + paramSVConfigItem.name, null);
+      return bool1;
+      if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_filter_")) {
+        bool1 = a();
+      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_art_filter_")) {
+        bool1 = ShortVideoArtResourceMgr.a(paramAppInterface, paramSVConfigItem);
+      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_short_other_")) {
+        bool1 = aidy.a(paramAppInterface, paramSVConfigItem);
+      } else if (paramSVConfigItem.name.startsWith("msf_quic_lib")) {
+        bool1 = QuicResProcess.a(paramAppInterface, paramSVConfigItem);
+      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_portrait_filter_")) {
+        bool1 = ShortVideoPortraitResourceManager.a(paramAppInterface, paramSVConfigItem);
+      } else if (paramSVConfigItem.name.startsWith("new_qq_android_native_object_tracking_")) {
+        bool1 = ShortVideoTrackingResourceMgr.a(paramAppInterface, paramSVConfigItem);
+      }
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramString.startsWith("new_qq_android_native_short_video_")) {
+      return VideoEnvironment.e(paramQQAppInterface);
+    }
+    if (paramString.startsWith("new_qq_android_native_short_filter_")) {
+      return PtvFilterSoLoad.a(VideoEnvironment.a());
+    }
+    if (paramString.startsWith("new_qq_android_native_art_filter_")) {
+      return ShortVideoArtResourceMgr.a();
+    }
+    if (paramString.startsWith("new_qq_android_native_short_other_")) {
+      return aidy.a();
+    }
+    if (paramString.startsWith("msf_quic_lib")) {
+      return QuicResProcess.a(paramQQAppInterface);
+    }
+    if (paramString.startsWith("new_qq_android_native_portrait_filter_")) {
+      return ShortVideoPortraitResourceManager.a();
+    }
+    if (paramString.startsWith("new_qq_android_native_object_tracking_")) {
+      return ShortVideoTrackingResourceMgr.a();
+    }
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    boolean bool1 = true;
+    boolean bool2 = false;
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    {
+      bool1 = VideoEnvironment.a(paramQQAppInterface, paramString3, paramInt);
+      if (bool1) {
+        VideoEnvironment.a(false, paramQQAppInterface);
+      }
+    }
+    do
+    {
+      return bool1;
+      VideoEnvironment.a(true, paramQQAppInterface);
+      return bool1;
+      if (paramString1.startsWith("new_qq_android_native_short_filter_"))
+      {
+        bool2 = PendantVersionManager.a(paramString2, paramString3);
+        if (!bool2) {}
+        for (;;)
+        {
+          PendantVersionManager.a(bool1);
+          return bool2;
+          bool1 = false;
+        }
+      }
+      if (paramString1.startsWith("new_qq_android_native_art_filter_")) {
+        return ShortVideoArtResourceMgr.a(paramQQAppInterface, paramString2, paramString3, paramInt);
+      }
+      if (paramString1.startsWith("new_qq_android_native_short_other_")) {
+        return aidy.a(paramQQAppInterface, paramString2, paramString3, paramInt);
+      }
+      if (paramString1.startsWith("msf_quic_lib")) {
+        return QuicResProcess.a(paramQQAppInterface, paramString2, paramString3, paramInt);
+      }
+      if (paramString1.startsWith("new_qq_android_native_portrait_filter_")) {
+        return ShortVideoPortraitResourceManager.a(paramQQAppInterface, paramString2, paramString3, paramInt);
+      }
+      bool1 = bool2;
+    } while (!paramString1.startsWith("new_qq_android_native_object_tracking_"));
+    return ShortVideoTrackingResourceMgr.a(paramQQAppInterface, paramString2, paramString3, paramInt);
   }
 }
 

@@ -1,42 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.os.MqqHandler;
 
 public class smw
-  implements FavroamingDBManager.FavEmotionDataInPanelCallback
+  extends BroadcastReceiver
 {
-  public smw(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public smw(Conversation paramConversation) {}
   
-  public void a(List paramList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    try
-    {
-      Collections.reverse((List)localObject);
-      ((List)localObject).add(0, new EmoticonInfo());
-      if (this.a.a != null) {
-        this.a.a.obtainMessage(206, localObject).sendToTarget();
-      }
-      return;
-    }
-    catch (UnsupportedOperationException paramList)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FavEmoRoamingHandler", 2, paramList.getMessage());
-        }
-      }
-    }
+    paramContext = paramIntent.getStringExtra("wording");
+    int i = paramIntent.getIntExtra("timetowait", 360000);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_a_of_type_Int = i;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_a_of_type_JavaLangString = paramContext;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(16, 2);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new smx(this), i);
+    ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
   }
 }
 

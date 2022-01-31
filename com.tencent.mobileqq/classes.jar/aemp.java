@@ -1,62 +1,64 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.ShieldMsgManger;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.magicface.view.GLRender;
 
 public class aemp
-  extends MessageObserver
 {
-  public aemp(NearbyProxy paramNearbyProxy) {}
+  public float a;
+  public int a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public byte[] b;
+  public int c;
+  public int d;
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (paramInt != 1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyProxy", 2, "onRemoveFromBlackList from nearby");
-    }
-    if (paramBoolean)
-    {
-      ShieldMsgManger localShieldMsgManger = (ShieldMsgManger)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(paramString));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver);
-      localShieldMsgManger.b(1001, localArrayList, 1);
-      return;
-    }
-    NearbyProxy.a(this.a, 4116, new Object[] { Boolean.valueOf(false) });
-  }
+  public aemp(GLRender paramGLRender) {}
   
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean)
   {
-    if (((Integer)paramArrayOfObject[0]).intValue() != 1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyProxy", 2, "onInsertIntoBlackList from nearby");
-    }
-    if ((paramBoolean) && (paramArrayOfObject.length == 4))
+    if (paramArrayOfByte1 != null)
     {
-      ((Long)paramArrayOfObject[1]).longValue();
-      String str = (String)paramArrayOfObject[2];
-      int i = ((Integer)paramArrayOfObject[3]).intValue();
-      NearbySPUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "blacklist_sequence", Integer.valueOf(i));
-      paramArrayOfObject = new ArrayList();
-      paramArrayOfObject.add(Long.valueOf(str));
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver);
-      ((ShieldMsgManger)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15)).a(1001, paramArrayOfObject, 1);
-      return;
+      if (this.jdField_a_of_type_ArrayOfByte != null) {
+        break label28;
+      }
+      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
+      if (this.jdField_a_of_type_ArrayOfByte != null) {
+        break label49;
+      }
     }
-    NearbyProxy.a(this.a, 4115, new Object[] { Boolean.valueOf(false) });
+    for (;;)
+    {
+      return false;
+      label28:
+      if (this.jdField_a_of_type_ArrayOfByte.length == paramArrayOfByte1.length) {
+        break;
+      }
+      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
+      break;
+      label49:
+      System.arraycopy(paramArrayOfByte1, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte1.length);
+      if (this.jdField_b_of_type_ArrayOfByte == null) {
+        this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
+      }
+      while (this.jdField_b_of_type_ArrayOfByte != null)
+      {
+        System.arraycopy(paramArrayOfByte2, 0, this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte2.length);
+        this.jdField_a_of_type_Int = paramInt3;
+        this.jdField_b_of_type_Int = paramInt4;
+        this.c = paramInt1;
+        this.d = paramInt2;
+        this.jdField_a_of_type_Float = paramFloat;
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        return true;
+        if (this.jdField_b_of_type_ArrayOfByte.length != paramArrayOfByte2.length) {
+          this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemp
  * JD-Core Version:    0.7.0.1
  */

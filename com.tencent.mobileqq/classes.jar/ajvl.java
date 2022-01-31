@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.troop.utils.TroopAioNotifyManager;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ajvl
-  implements FrameSprite.OnFrameEndListener
+public final class ajvl
+  implements Runnable
 {
-  public ajvl(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, FrameSprite.OnFrameEndListener paramOnFrameEndListener) {}
+  public ajvl(QQAppInterface paramQQAppInterface, String paramString, TroopHandler paramTroopHandler) {}
   
-  public void a()
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
-    }
+    List localList = TroopAioNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    localList = TroopAioNotifyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ArrayList(), localList);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(94, true, new Object[] { this.jdField_a_of_type_JavaLangString, localList });
   }
 }
 

@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
+import com.tencent.mobileqq.search.activity.VADActivity;
+import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
 
-public final class ahxe
-  implements Parcelable.Creator
+public class ahxe
+  implements Runnable
 {
-  public FriendGroupListInfo a(Parcel paramParcel)
-  {
-    return new FriendGroupListInfo(paramParcel);
-  }
+  public ahxe(VADActivity paramVADActivity, ApproximateSearchEngine paramApproximateSearchEngine, SearchRequest paramSearchRequest) {}
   
-  public FriendGroupListInfo[] a(int paramInt)
+  public void run()
   {
-    return new FriendGroupListInfo[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineApproximateSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
   }
 }
 

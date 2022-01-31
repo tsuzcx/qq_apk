@@ -1,39 +1,88 @@
 package c.t.m.g;
 
-import java.util.Map;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class k
-  extends j
+public abstract class k
+  implements ab
 {
+  protected i a;
+  public String b;
+  public String c;
+  protected AtomicInteger d = new AtomicInteger(0);
+  protected aj e;
+  private int f;
+  private int g = 5000;
+  private long h;
+  private int i = 0;
+  
   public k(i parami)
   {
-    super(parami);
+    this.a = parami;
+    this.b = parami.a;
+    this.c = parami.a;
+    this.f = parami.e;
+    this.h = SystemClock.elapsedRealtime();
   }
   
-  public final aj a()
+  public ao a()
   {
-    by.c().a(1);
-    return super.a();
+    for (;;)
+    {
+      try
+      {
+        this.g = x.a.a("app_http_proxy_timeout", 0, 20000, 5000);
+        if (this.f <= 0) {
+          this.f = x.a.a("app_req_timeout", 1000, 1000000, 15000);
+        }
+        if ((this.a.j > 0) && (this.a.j < this.f)) {
+          this.f = this.a.j;
+        }
+        int j = this.f;
+        ao localao = a(j);
+        j = cn.a((int)(this.f - (SystemClock.elapsedRealtime() - this.h)), this.f);
+        String str;
+        if ((localao.a == 0) && (localao.c >= 300) && (localao.c < 400) && (this.a.d) && (j > 200))
+        {
+          str = localao.a("location");
+          if (TextUtils.isEmpty(str)) {
+            localao.a = -6;
+          }
+        }
+        else
+        {
+          boolean bool = this.a.i;
+          if (!this.a.m) {
+            break label296;
+          }
+          this.e.j = true;
+          this.e.i = true;
+          this.e.k = this.a.j;
+          this.e.a(false);
+          return localao;
+        }
+        this.c = str;
+        this.i += 1;
+        if (this.i > 5)
+        {
+          localao.a = -5;
+          continue;
+        }
+        this.e.a(true);
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        return new ao(-1, cn.a(localThrowable));
+      }
+      continue;
+      label296:
+      this.e.k = (SystemClock.elapsedRealtime() - this.h);
+    }
   }
   
-  protected final aj a(int paramInt)
-  {
-    Object localObject1 = this.c;
-    Object localObject2 = this.a;
-    localObject2 = this.a.c;
-    byte[] arrayOfByte = this.a.b;
-    String str = this.a.f;
-    boolean bool = this.a.h;
-    r localr = by.c().e();
-    i locali = this.a;
-    localObject1 = new ag((String)localObject1, (Map)localObject2, arrayOfByte, paramInt, str, bool, localr, null);
-    ((ag)localObject1).a = this.b;
-    ((ag)localObject1).n = this.d;
-    ((ag)localObject1).a("app");
-    this.e = ((ae)localObject1);
-    this.e.l = this.a.k;
-    return this.e.a();
-  }
+  protected abstract ao a(int paramInt);
 }
 
 

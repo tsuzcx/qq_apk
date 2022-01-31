@@ -133,9 +133,9 @@ public class TroopHomeworkHelper
     //   0: aconst_null
     //   1: astore 7
     //   3: aconst_null
-    //   4: astore 5
+    //   4: astore 4
     //   6: aconst_null
-    //   7: astore 4
+    //   7: astore 5
     //   9: aconst_null
     //   10: astore 6
     //   12: aload_0
@@ -209,14 +209,14 @@ public class TroopHomeworkHelper
     //   150: dup
     //   151: aload_1
     //   152: invokespecial 79	java/io/File:<init>	(Ljava/lang/String;)V
-    //   155: astore 5
+    //   155: astore 4
     //   157: new 231	java/io/BufferedInputStream
     //   160: dup
     //   161: new 231	java/io/BufferedInputStream
     //   164: dup
     //   165: new 233	java/io/FileInputStream
     //   168: dup
-    //   169: aload 5
+    //   169: aload 4
     //   171: invokespecial 236	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   174: invokespecial 239	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   177: invokespecial 239	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
@@ -245,12 +245,12 @@ public class TroopHomeworkHelper
     //   220: invokespecial 55	java/lang/StringBuilder:<init>	()V
     //   223: ldc 249
     //   225: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: aload 5
+    //   228: aload 4
     //   230: invokevirtual 111	java/io/File:length	()J
     //   233: invokevirtual 121	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   236: ldc 251
     //   238: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: aload 5
+    //   241: aload 4
     //   243: invokevirtual 254	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   246: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   249: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -262,7 +262,7 @@ public class TroopHomeworkHelper
     //   263: aload_0
     //   264: invokevirtual 263	java/net/HttpURLConnection:disconnect	()V
     //   267: aload_2
-    //   268: astore 5
+    //   268: astore 4
     //   270: aload_1
     //   271: invokevirtual 264	java/io/BufferedInputStream:close	()V
     //   274: iconst_0
@@ -282,7 +282,7 @@ public class TroopHomeworkHelper
     //   300: new 269	java/lang/StringBuffer
     //   303: dup
     //   304: invokespecial 270	java/lang/StringBuffer:<init>	()V
-    //   307: astore 5
+    //   307: astore 4
     //   309: new 272	java/io/BufferedReader
     //   312: dup
     //   313: new 274	java/io/InputStreamReader
@@ -294,11 +294,11 @@ public class TroopHomeworkHelper
     //   327: astore_1
     //   328: aload_1
     //   329: invokevirtual 285	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   332: astore 4
-    //   334: aload 4
+    //   332: astore 5
+    //   334: aload 5
     //   336: ifnull +130 -> 466
-    //   339: aload 5
-    //   341: aload 4
+    //   339: aload 4
+    //   341: aload 5
     //   343: invokevirtual 288	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   346: ldc_w 290
     //   349: invokevirtual 288	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
@@ -341,15 +341,15 @@ public class TroopHomeworkHelper
     //   414: aload 4
     //   416: astore_0
     //   417: aload_2
-    //   418: astore 5
+    //   418: astore 4
     //   420: aload_1
-    //   421: astore 4
+    //   421: astore 5
     //   423: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   426: ifeq +19 -> 445
     //   429: aload_2
-    //   430: astore 5
+    //   430: astore 4
     //   432: aload_1
-    //   433: astore 4
+    //   433: astore 5
     //   435: ldc 52
     //   437: iconst_2
     //   438: ldc_w 292
@@ -366,7 +366,7 @@ public class TroopHomeworkHelper
     //   461: iconst_m1
     //   462: istore_3
     //   463: goto -64 -> 399
-    //   466: aload 5
+    //   466: aload 4
     //   468: invokevirtual 296	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   471: pop
     //   472: aload_1
@@ -397,7 +397,7 @@ public class TroopHomeworkHelper
     //   515: astore_0
     //   516: aconst_null
     //   517: astore_2
-    //   518: aload 5
+    //   518: aload 4
     //   520: astore_1
     //   521: aload_1
     //   522: ifnull +7 -> 529
@@ -429,9 +429,9 @@ public class TroopHomeworkHelper
     //   564: astore_0
     //   565: goto -44 -> 521
     //   568: astore_0
-    //   569: aload 5
+    //   569: aload 4
     //   571: astore_2
-    //   572: aload 4
+    //   572: aload 5
     //   574: astore_1
     //   575: goto -54 -> 521
     //   578: astore 4
@@ -492,17 +492,17 @@ public class TroopHomeworkHelper
     //   0	658	1	paramString1	String
     //   0	658	2	paramString2	String
     //   194	461	3	i	int
-    //   7	335	4	str1	String
+    //   4	336	4	localObject1	Object
     //   356	7	4	localException	Exception
-    //   401	7	4	localObject1	Object
+    //   401	7	4	localObject2	Object
     //   410	5	4	localOutOfMemoryError1	OutOfMemoryError
-    //   421	13	4	str2	String
-    //   546	7	4	localObject2	Object
-    //   558	15	4	localObject3	Object
-    //   578	5	4	localObject4	Object
+    //   418	101	4	str1	String
+    //   546	7	4	localObject3	Object
+    //   558	12	4	localObject4	Object
+    //   578	5	4	localObject5	Object
     //   597	7	4	localOutOfMemoryError2	OutOfMemoryError
-    //   627	5	4	localObject5	Object
-    //   4	566	5	localObject6	Object
+    //   627	5	4	localObject6	Object
+    //   7	566	5	str2	String
     //   10	633	6	localObject7	Object
     //   1	610	7	localObject8	Object
     //   35	167	8	localObject9	Object
@@ -1344,7 +1344,7 @@ public class TroopHomeworkHelper
   
   public static String b(String paramString)
   {
-    Object localObject = AppConstants.be;
+    Object localObject = AppConstants.bf;
     long l = System.currentTimeMillis();
     String str = new SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date(l));
     localObject = new StringBuilder((String)localObject).append("stream").append(str);

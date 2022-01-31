@@ -1,23 +1,14 @@
-import java.util.HashMap;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCloseListener;
 
 public class ahnu
-  extends ahnt
+  implements GuideVideoView.OnCloseListener
 {
-  public HashMap a(String paramString)
+  public ahnu(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  
+  public void a()
   {
-    if ("ShortVideo.Save".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      return paramString;
-    }
-    return null;
+    EffectsCameraCaptureFragment.c(this.a);
   }
 }
 

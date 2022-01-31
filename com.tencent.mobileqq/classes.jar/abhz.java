@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abhz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public abhz(ARMapLoadingActivity paramARMapLoadingActivity, int paramInt1, int paramInt2, String paramString) {}
+  public abhz(ARMapActivity paramARMapActivity) {}
   
-  public void run()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("failType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("subType", String.valueOf(this.b));
-    localHashMap.put("failInfo", this.jdField_a_of_type_JavaLangString);
-    StatisticCollector.a(BaseApplication.getContext()).a("", "REPORT_TAG_LOADING_FAIL", false, 0L, 0L, localHashMap, "", false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

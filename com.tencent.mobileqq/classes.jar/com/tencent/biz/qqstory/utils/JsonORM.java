@@ -6,10 +6,10 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.Map;
-import ook;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import osz;
 
 public class JsonORM
 {
@@ -47,7 +47,7 @@ public class JsonORM
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (ook[])a.get(paramClass);
+    Object localObject2 = (osz[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -122,7 +122,7 @@ public class JsonORM
       throw new IllegalArgumentException("object should not be null");
     }
     Class localClass = paramObject.getClass();
-    Object localObject2 = (ook[])a.get(localClass);
+    Object localObject2 = (osz[])a.get(localClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -269,7 +269,7 @@ public class JsonORM
       {
         i += 1;
         break;
-        paramArrayList.add(new ook(localColumn.a(), a(localField.getType()), localField));
+        paramArrayList.add(new osz(localColumn.a(), a(localField.getType()), localField));
       }
     }
   }
@@ -302,7 +302,7 @@ public class JsonORM
     return arrayOfObject;
   }
   
-  private static ook[] a(Class paramClass)
+  private static osz[] a(Class paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -310,7 +310,7 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new ook[localArrayList.size()];
+    paramClass = new osz[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }

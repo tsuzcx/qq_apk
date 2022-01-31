@@ -1,24 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.scribble.ScribbleBaseOperator;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 
 public class ahpy
   implements Runnable
 {
-  public ahpy(ScribbleBaseOperator paramScribbleBaseOperator, MessageForScribble paramMessageForScribble) {}
+  public ahpy(CameraCaptureView paramCameraCaptureView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleBaseOperator.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble, this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleBaseOperator.a.getCurrentAccountUin());
-    this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleBaseOperator.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.localFildPath, null);
-    QLog.i("SCRIBBLEMSG", 2, "!!!addMessage uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq);
+    Toast.makeText(BaseApplicationImpl.getContext(), "麦克风被禁用", 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahpy
  * JD-Core Version:    0.7.0.1
  */

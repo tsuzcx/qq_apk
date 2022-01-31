@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.activity.MainFragment;
 
 class tfy
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  tfy(tfx paramtfx) {}
+  tfy(tfx paramtfx, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Tfx.a.a(36, 16, Integer.valueOf(this.jdField_a_of_type_Int));
+    VideoMsgTools.a(MainFragment.a(this.jdField_a_of_type_Tfx.a));
   }
 }
 

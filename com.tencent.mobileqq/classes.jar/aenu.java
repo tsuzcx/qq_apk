@@ -1,55 +1,29 @@
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.mobileqq.data.TroopRemindSettingData;
+import com.tencent.mobileqq.managers.TroopRemindSettingManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class aenu
-  implements WerewolvesHandler.Callback
+  implements Runnable
 {
-  public aenu(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aenu(TroopRemindSettingManager paramTroopRemindSettingManager, QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void run()
   {
-    if ((paramInt == 0) || (paramInt == 1004))
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if ((TroopRemindSettingData)localEntityManager.a(TroopRemindSettingData.class, this.jdField_a_of_type_JavaLangString) == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.d();
-      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Long = this.a.app.getLongAccountUin();
-      this.a.jdField_b_of_type_JavaLangString = null;
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
-      this.a.jdField_a_of_type_JavaUtilList = null;
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (this.a.jdField_b_of_type_JavaUtilList != null) {
-        this.a.jdField_b_of_type_JavaUtilList.clear();
-      }
-      this.a.f = false;
-      this.a.a();
-      paramRspBody = this.a.a();
-      if ((paramRspBody != null) && (paramRspBody.jdField_a_of_type_Boolean)) {
-        QQToast.a(this.a, "已成功退出组队", 0).a();
-      }
-      this.a.jdField_a_of_type_Aeos.notifyDataSetChanged();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_AndroidViewView.setEnabled(true);
-      return;
-      this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+      TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
+      localTroopRemindSettingData.troopUin = this.jdField_a_of_type_JavaLangString;
+      localTroopRemindSettingData.isOpenState = 0;
+      localEntityManager.b(localTroopRemindSettingData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 
 public class lmb
-  implements Runnable
 {
-  public lmb(ReadInJoyLogicEngine paramReadInJoyLogicEngine, ReadInJoyEntityManagerFactory paramReadInJoyEntityManagerFactory) {}
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public ReadInJoyHeadImageView a;
+  public ReadInJoyNickNameTextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
+  public TextView i;
+  public TextView j;
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyEntityManagerFactory.verifyAuthentication();
-  }
+  public lmb(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter) {}
 }
 
 

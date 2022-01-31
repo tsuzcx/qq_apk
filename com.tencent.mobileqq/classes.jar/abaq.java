@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.graphics.Bitmap;
 
-public class abaq
+public final class abaq
   implements Runnable
 {
-  public abaq(ARMapActivity paramARMapActivity) {}
+  public abaq(abax paramabax) {}
   
   public void run()
   {
-    ARMapActivity.j(this.a);
+    if (this.a.a != null)
+    {
+      this.a.a.recycle();
+      this.a.a = null;
+    }
   }
 }
 

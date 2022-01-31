@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.extendfriend.pulltorefresh;
 
-import acjl;
-import acjm;
-import acjn;
-import acjp;
-import acjq;
+import acrs;
+import acrt;
+import acru;
+import acrw;
+import acrx;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -30,7 +30,7 @@ public abstract class PullToRefreshBase
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private acjq jdField_a_of_type_Acjq;
+  private acrx jdField_a_of_type_Acrx;
   public View a;
   private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
@@ -69,7 +69,7 @@ public abstract class PullToRefreshBase
   
   private LinearLayout.LayoutParams a()
   {
-    switch (acjo.a[a().ordinal()])
+    switch (acrv.a[a().ordinal()])
     {
     default: 
       return new LinearLayout.LayoutParams(-1, -2);
@@ -82,12 +82,12 @@ public abstract class PullToRefreshBase
     a(paramInt, paramLong, 0L, null);
   }
   
-  private final void a(int paramInt, long paramLong1, long paramLong2, acjp paramacjp)
+  private final void a(int paramInt, long paramLong1, long paramLong2, acrw paramacrw)
   {
-    if (this.jdField_a_of_type_Acjq != null) {
-      this.jdField_a_of_type_Acjq.a();
+    if (this.jdField_a_of_type_Acrx != null) {
+      this.jdField_a_of_type_Acrx.a();
     }
-    switch (acjo.a[a().ordinal()])
+    switch (acrv.a[a().ordinal()])
     {
     }
     for (int i = getScrollY();; i = getScrollX())
@@ -97,21 +97,21 @@ public abstract class PullToRefreshBase
         if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {
           this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
         }
-        this.jdField_a_of_type_Acjq = new acjq(this, i, paramInt, paramLong1, paramacjp);
+        this.jdField_a_of_type_Acrx = new acrx(this, i, paramInt, paramLong1, paramacrw);
         if (paramLong2 <= 0L) {
           break;
         }
-        postDelayed(this.jdField_a_of_type_Acjq, paramLong2);
+        postDelayed(this.jdField_a_of_type_Acrx, paramLong2);
       }
       return;
     }
-    post(this.jdField_a_of_type_Acjq);
+    post(this.jdField_a_of_type_Acrx);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     TypedArray localTypedArray;
-    switch (acjo.a[a().ordinal()])
+    switch (acrv.a[a().ordinal()])
     {
     default: 
       setOrientation(1);
@@ -170,7 +170,7 @@ public abstract class PullToRefreshBase
   
   private int d()
   {
-    switch (acjo.a[a().ordinal()])
+    switch (acrv.a[a().ordinal()])
     {
     default: 
       return Math.round(getHeight() / 2.0F);
@@ -180,7 +180,7 @@ public abstract class PullToRefreshBase
   
   private boolean e()
   {
-    switch (acjo.c[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
+    switch (acrv.c[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
     {
     }
     do
@@ -219,12 +219,12 @@ public abstract class PullToRefreshBase
     int i;
     label88:
     int j;
-    switch (acjo.a[a().ordinal()])
+    switch (acrv.a[a().ordinal()])
     {
     default: 
       f2 = this.jdField_d_of_type_Float;
       f1 = this.jdField_b_of_type_Float;
-      switch (acjo.c[this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
+      switch (acrv.c[this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
       {
       default: 
         if (this.g)
@@ -235,7 +235,7 @@ public abstract class PullToRefreshBase
           if ((i != 0) && (!b()))
           {
             f1 = Math.abs(i) / j;
-            switch (acjo.c[this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
+            switch (acrv.c[this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
             {
             default: 
               this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshLoadingLayoutBase.a(f1);
@@ -334,7 +334,7 @@ public abstract class PullToRefreshBase
     }
     for (;;)
     {
-      switch (acjo.a[a().ordinal()])
+      switch (acrv.a[a().ordinal()])
       {
       default: 
         return;
@@ -359,7 +359,7 @@ public abstract class PullToRefreshBase
   protected final void a(int paramInt1, int paramInt2)
   {
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-    switch (acjo.a[a().ordinal()])
+    switch (acrv.a[a().ordinal()])
     {
     }
     do
@@ -376,9 +376,9 @@ public abstract class PullToRefreshBase
     this.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
   }
   
-  protected final void a(int paramInt, acjp paramacjp)
+  protected final void a(int paramInt, acrw paramacrw)
   {
-    a(paramInt, c(), 0L, paramacjp);
+    a(paramInt, c(), 0L, paramacrw);
   }
   
   protected void a(TypedArray paramTypedArray) {}
@@ -398,7 +398,7 @@ public abstract class PullToRefreshBase
   final void a(PullToRefreshBase.State paramState, boolean... paramVarArgs)
   {
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$State = paramState;
-    switch (acjo.b[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$State.ordinal()])
+    switch (acrv.b[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$State.ordinal()])
     {
     }
     for (;;)
@@ -429,15 +429,15 @@ public abstract class PullToRefreshBase
     {
       if (this.jdField_b_of_type_Boolean)
       {
-        acjm localacjm = new acjm(this);
-        switch (acjo.c[this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
+        acrt localacrt = new acrt(this);
+        switch (acrv.c[this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
         {
         case 2: 
         default: 
-          a(-b(), localacjm);
+          a(-b(), localacrt);
           return;
         }
-        a(a(), localacjm);
+        a(a(), localacrt);
         return;
       }
       b(0);
@@ -471,7 +471,7 @@ public abstract class PullToRefreshBase
   {
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshLoadingLayoutBase.d();
     this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshLoadingLayoutBase.d();
-    postDelayed(new acjl(this), 1000L);
+    postDelayed(new acrs(this), 1000L);
   }
   
   protected final void b(int paramInt)
@@ -493,7 +493,7 @@ public abstract class PullToRefreshBase
   
   protected void c()
   {
-    switch (acjo.c[this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
+    switch (acrv.c[this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
     {
     default: 
       return;
@@ -508,7 +508,7 @@ public abstract class PullToRefreshBase
   
   protected void d()
   {
-    switch (acjo.c[this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
+    switch (acrv.c[this.jdField_b_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
     {
     default: 
       return;
@@ -537,7 +537,7 @@ public abstract class PullToRefreshBase
     int n = getPaddingRight();
     int m = getPaddingBottom();
     int i;
-    switch (acjo.a[a().ordinal()])
+    switch (acrv.a[a().ordinal()])
     {
     default: 
       i = m;
@@ -653,7 +653,7 @@ public abstract class PullToRefreshBase
         float f3 = paramMotionEvent.getY();
         float f4 = paramMotionEvent.getX();
         float f2;
-        switch (acjo.a[a().ordinal()])
+        switch (acrv.a[a().ordinal()])
         {
         default: 
           f2 = f3 - this.jdField_b_of_type_Float;
@@ -749,7 +749,7 @@ public abstract class PullToRefreshBase
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     f();
     a(paramInt1, paramInt2);
-    post(new acjn(this));
+    post(new acru(this));
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)

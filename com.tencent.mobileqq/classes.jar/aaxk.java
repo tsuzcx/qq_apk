@@ -1,36 +1,24 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.AppSchemeHandler;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaxk
-  implements Runnable
+  extends ArkAppCGI.ArkAppCGICallback
 {
-  public aaxk(ArkRecommendController paramArkRecommendController, ChatMessage paramChatMessage, SessionInfo paramSessionInfo) {}
+  public aaxk(ArkAppSchemeCenter.AppSchemeHandler paramAppSchemeHandler, String paramString) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
   {
-    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) == null) {
-      return;
-    }
-    int i = "@babyQ".length();
-    String str;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.length() > i) {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.charAt(i) != ' ') {
-        str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.substring(i);
-      }
-    }
-    for (;;)
+    if (!paramBoolean)
     {
-      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController);
-      ArkAppDataReport.e(ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a);
+      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
       return;
-      str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.substring(i + 1);
-      continue;
-      str = "";
     }
+    ArkAppSchemeCenter.AppSchemeHandler.a((ArkAppSchemeCenter.AppSchemeHandler)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, paramString1);
+    BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
   }
 }
 

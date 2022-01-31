@@ -1,24 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
 
-public class mrk
-  implements DialogInterface.OnClickListener
+class mrk
+  implements Runnable
 {
-  public mrk(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  mrk(mrj parammrj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new mrl(this), 10, null, true);
-      return;
-    }
-    paramDialogInterface.dismiss();
+    ReadInJoyLogicEngineEventDispatcher.a().b();
   }
 }
 

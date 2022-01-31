@@ -1,91 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimeZone;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.Map;
 
-public class sba
-  implements Runnable
+public final class sba
+  implements DialogInterface.OnClickListener
 {
-  public sba(ChatHistoryForC2C paramChatHistoryForC2C, boolean paramBoolean, View paramView) {}
+  public sba(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, boolean paramBoolean1, Context paramContext, String paramString3, String paramString4, ChatActivityUtils.StartVideoListener paramStartVideoListener, String paramString5, Map paramMap, boolean paramBoolean2, boolean paramBoolean3) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool1 = false;
-    if (VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_JavaLangString = "svip";
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b = "2";
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app, "vip", "0X8004FAB", "0X8004FAB", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_JavaLangString });
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_Boolean) {
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
     }
-    for (;;)
-    {
-      try
-      {
-        SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
-        if (1 != localSharedPreferences.getInt("setting_guide_tips_flag" + this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app.getCurrentAccountUin(), -1))
-        {
-          SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-          int j = localSharedPreferences.getInt("setting_guide_tips_show_time" + this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app.getCurrentAccountUin(), 1);
-          if (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b.equals("2")) {
-            continue;
-          }
-          i = 1;
-          if (i != 0) {
-            localEditor.putInt("setting_guide_tips_flag" + this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app.getCurrentAccountUin(), 1);
-          }
-          i = TimeZone.getTimeZone("GMT+8").getRawOffset();
-          i = (int)Math.ceil((System.currentTimeMillis() + i) / 86400000L);
-          if (j != i) {
-            bool1 = true;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ChatHistoryForC2C", 2, "settingGuideFlag isShow: " + bool1 + ", showDay: " + j + ", nowDay: " + i);
-          }
-          if (bool1)
-          {
-            localEditor.putInt("setting_guide_tips_show_time" + this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app.getCurrentAccountUin(), i).commit();
-            this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10, this.jdField_a_of_type_AndroidViewView));
-          }
-        }
-        return;
-        if (VipUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.app))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_JavaLangString = "vip";
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b = "1";
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_JavaLangString = "notvip";
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b = "0";
-        break;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b.equals("1"))
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_Int >= 3) {
-            i = 1;
-          }
-        }
-        else
-        {
-          boolean bool2 = this.jdField_a_of_type_Boolean;
-          if (bool2)
-          {
-            i = 1;
-            continue;
-          }
-        }
-        int i = 0;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("ChatHistoryForC2C", 2, "settingGuideFlag Exception: " + localException.getMessage());
-        return;
-      }
-    }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.d, false, true, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.e, this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean, false);
+    paramDialogInterface.dismiss();
   }
 }
 

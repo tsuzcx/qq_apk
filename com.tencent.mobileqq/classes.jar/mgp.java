@@ -1,26 +1,58 @@
-import com.tencent.biz.pubaccount.readinjoy.view.RainView;
-import com.tencent.biz.pubaccount.readinjoy.view.RainView.AnimationEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class mgp
-  implements Action.OnActionEndListener
+  implements Runnable
 {
-  public mgp(RainView paramRainView, Sprite paramSprite) {}
+  public mgp(VideoFeedsPlayActivity paramVideoFeedsPlayActivity, VideoInfo paramVideoInfo) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
-    if ((RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).get()) && (RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView) != null))
+    for (;;)
     {
-      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
-      RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
-      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("SpriteGLView", 2, "rain animation end");
+      int j;
+      try
+      {
+        boolean bool = VideoFeedsHelper.a(VideoFeedsPlayActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayActivity), Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j).longValue());
+        Object localObject = VideoFeedsPlayActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayActivity);
+        if (localObject != null)
+        {
+          i = 0;
+          localObject = ((ArrayList)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            VideoInfo localVideoInfo = (VideoInfo)((Iterator)localObject).next();
+            j = i;
+            if (localVideoInfo.j == null) {
+              break label146;
+            }
+            j = i;
+            if (!localVideoInfo.j.equals(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j)) {
+              break label146;
+            }
+            if (localVideoInfo.g != bool) {
+              i = 1;
+            }
+            localVideoInfo.g = bool;
+            j = i;
+            break label146;
+          }
+          if (i != 0) {
+            VideoFeedsPlayActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayActivity).c(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.j);
+          }
+        }
+        return;
       }
+      catch (Exception localException)
+      {
+        return;
+      }
+      label146:
+      int i = j;
     }
   }
 }

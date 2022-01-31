@@ -1,11 +1,11 @@
 package cooperation.qzone.plugin;
 
-import amxf;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
+import anet;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.DownloaderFactory;
 import com.tencent.component.network.downloader.Downloader;
@@ -79,7 +79,7 @@ public class QZoneLiveSoDownloader
       if (QLog.isColorLevel()) {
         QLog.d("QZoneLiveSoDownloader", 2, "downloadSoInner url:" + QZoneLiveSoDownloader.DownloadSoRecord.a(paramDownloadSoRecord) + "     path:" + (String)localObject);
       }
-      if (!this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(QZoneLiveSoDownloader.DownloadSoRecord.a(paramDownloadSoRecord), (String)localObject, new amxf(this, paramDownloadSoRecord)))
+      if (!this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(QZoneLiveSoDownloader.DownloadSoRecord.a(paramDownloadSoRecord), (String)localObject, new anet(this, paramDownloadSoRecord)))
       {
         localObject = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 3);
         ((Message)localObject).obj = paramDownloadSoRecord;
@@ -101,7 +101,7 @@ public class QZoneLiveSoDownloader
   private void b(QZoneLiveSoDownloader.DownloadSoRecord paramDownloadSoRecord)
   {
     if (paramDownloadSoRecord != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.cancel(QZoneLiveSoDownloader.DownloadSoRecord.a(paramDownloadSoRecord), new amxf(this, paramDownloadSoRecord));
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.cancel(QZoneLiveSoDownloader.DownloadSoRecord.a(paramDownloadSoRecord), new anet(this, paramDownloadSoRecord));
     }
   }
   

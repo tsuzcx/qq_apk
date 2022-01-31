@@ -1,12 +1,21 @@
-import android.view.animation.Interpolator;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
+import com.tencent.widget.ActionSheet.WatchDismissActions;
 
-public final class mjc
-  implements Interpolator
+public class mjc
+  implements ActionSheet.WatchDismissActions
 {
-  public float getInterpolation(float paramFloat)
+  public mjc(VideoShareHelper paramVideoShareHelper) {}
+  
+  public void a()
   {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+    if (VideoShareHelper.c(this.a))
+    {
+      VideoShareHelper.c(this.a, false);
+      VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), true, false);
+      return;
+    }
+    VideoShareHelper.a(this.a).a(VideoShareHelper.a(this.a), VideoShareHelper.b(this.a), true, true);
   }
 }
 

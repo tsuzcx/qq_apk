@@ -1,18 +1,18 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.InfoStickerDrawable;
+import java.util.ArrayList;
 
 public class aokj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aokj(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aokj(InfoStickerDrawable paramInfoStickerDrawable) {}
   
-  public void onGlobalLayout()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ThreadManager.post(this.a, 8, null, false);
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
+    this.a.a = paramValueAnimator;
+    this.a.invalidateSelf();
   }
 }
 

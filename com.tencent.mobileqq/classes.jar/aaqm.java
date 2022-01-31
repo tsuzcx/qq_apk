@@ -1,19 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.animation.Animator;
+import com.tencent.mobileqq.activity.richmedia.AnimatorAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class aaqm
-  implements Runnable
+class aaqm
+  extends AnimatorAdapter
 {
-  public aaqm(ArkAppMusicModule paramArkAppMusicModule) {}
+  aaqm(aaqk paramaaqk) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof FragmentActivity)) {
-      QQPlayerService.b(localBaseActivity);
-    }
+    QLog.w("WorldCupMgr", 1, "loadMovingAnimation动画结束");
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    QLog.w("WorldCupMgr", 1, "loadMovingAnimation动画开始");
   }
 }
 

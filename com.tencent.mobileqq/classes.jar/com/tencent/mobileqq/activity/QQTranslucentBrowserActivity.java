@@ -16,7 +16,7 @@ public class QQTranslucentBrowserActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     getWindow().setBackgroundDrawableResource(2131492924);
-    paramBundle = findViewById(2131363454);
+    paramBundle = findViewById(2131363473);
     if (paramBundle != null) {
       paramBundle.setBackgroundResource(2131492924);
     }

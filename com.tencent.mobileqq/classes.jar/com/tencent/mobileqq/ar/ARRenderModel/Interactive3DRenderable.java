@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import aabc;
-import aabd;
-import aabe;
-import aabf;
-import aabg;
-import aabh;
-import aabi;
-import aabj;
-import aabk;
-import aabl;
+import aahr;
+import aahs;
+import aaht;
+import aahu;
+import aahv;
+import aahw;
+import aahx;
+import aahy;
+import aahz;
+import aaia;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
@@ -102,7 +102,7 @@ public class Interactive3DRenderable
       a(11);
       return;
     case 9: 
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aabc(this));
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(new aahr(this));
       return;
     case 8: 
       this.jdField_a_of_type_ComTencentMobileqqArARNativeBridge.nativePause(this.b);
@@ -125,7 +125,7 @@ public class Interactive3DRenderable
       QLog.d("AREngine_Interactive3DRenderable", 2, "setBinHaiGameState, state=" + paramInt1 + ", result=" + paramInt2 + ", param=" + paramString);
     }
     if (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null) {
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aabl(this, paramInt1, paramInt2, paramString));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aaia(this, paramInt1, paramInt2, paramString));
     }
   }
   
@@ -139,7 +139,7 @@ public class Interactive3DRenderable
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_Interactive3DRenderable", 2, "playEffectMusic, " + paramString);
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aabd(this, paramString));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aahs(this, paramString));
   }
   
   public boolean a()
@@ -176,33 +176,33 @@ public class Interactive3DRenderable
       i = paramMotionEvent.getPointerId(0);
       f1 = arrayOfFloat1[0];
       f2 = arrayOfFloat2[0];
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aabg(this, i, f1, f2, l));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aahv(this, i, f1, f2, l));
       return false;
     case 5: 
       i = paramMotionEvent.getAction() >> 8;
       j = paramMotionEvent.getPointerId(i);
       f1 = paramMotionEvent.getX(i);
       f2 = paramMotionEvent.getY(i);
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aabf(this, j, f1, f2, l));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aahu(this, j, f1, f2, l));
       return false;
     case 2: 
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aabh(this, arrayOfInt, arrayOfFloat1, arrayOfFloat2, l));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aahw(this, arrayOfInt, arrayOfFloat1, arrayOfFloat2, l));
       return false;
     case 6: 
       i = paramMotionEvent.getAction() >> 8;
       j = paramMotionEvent.getPointerId(i);
       f1 = paramMotionEvent.getX(i);
       f2 = paramMotionEvent.getY(i);
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aabi(this, j, f1, f2, l));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aahx(this, j, f1, f2, l));
       return false;
     case 1: 
       i = paramMotionEvent.getPointerId(0);
       f1 = arrayOfFloat1[0];
       f2 = arrayOfFloat2[0];
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aabj(this, i, f1, f2, l));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aahy(this, i, f1, f2, l));
       return false;
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aabk(this, arrayOfInt, arrayOfFloat1, arrayOfFloat2, l));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aahz(this, arrayOfInt, arrayOfFloat1, arrayOfFloat2, l));
     return false;
   }
   
@@ -250,7 +250,7 @@ public class Interactive3DRenderable
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_Interactive3DRenderable", 2, "playBgMusic, " + paramString);
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aabe(this, paramString));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aaht(this, paramString));
   }
   
   public boolean b()

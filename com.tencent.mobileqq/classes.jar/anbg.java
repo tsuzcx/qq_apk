@@ -1,26 +1,22 @@
-import android.graphics.drawable.Drawable;
-import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import cooperation.qzone.cache.CacheManager;
+import cooperation.qzone.cache.FileStorageHandler.Collector;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
 public final class anbg
-  implements InvocationHandler
+  implements FileStorageHandler.Collector
 {
-  public anbg(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
-  
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public Collection a()
   {
-    if (paramMethod.getName().equals("onFailed")) {
-      if (this.a != null) {
-        this.a.onFailed();
-      }
-    }
-    for (;;)
+    synchronized ()
     {
-      return null;
-      if ((paramMethod.getName().equals("onLoaded")) && (this.a != null)) {
-        this.a.onLoaded((Drawable)paramArrayOfObject[0]);
+      if (CacheManager.a().size() <= 0)
+      {
+        localObject1 = null;
+        return localObject1;
       }
+      Object localObject1 = new ArrayList(CacheManager.a().values());
     }
   }
 }

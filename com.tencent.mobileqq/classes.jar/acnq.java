@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter;
+import java.util.List;
 
-public class acnq
-  implements View.OnClickListener
+class acnq
+  implements Runnable
 {
-  public acnq(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  acnq(acnp paramacnp, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    LocalFileBrowserActivity.a(this.a);
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+      this.jdField_a_of_type_Acnp.a.a(this.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

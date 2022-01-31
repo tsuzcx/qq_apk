@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.startup.director.StartupDirector;
-import mqq.app.AppActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
+import java.util.List;
 
-public class aieo
+public final class aieo
   implements Runnable
 {
-  public aieo(StartupDirector paramStartupDirector, AppActivity paramAppActivity) {}
+  public aieo(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
   
   public void run()
   {
-    this.jdField_a_of_type_MqqAppAppActivity.superFinish();
-    System.exit(0);
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_portrait_filter_");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aieo
  * JD-Core Version:    0.7.0.1
  */

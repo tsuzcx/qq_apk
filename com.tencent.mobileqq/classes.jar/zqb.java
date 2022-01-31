@@ -1,27 +1,32 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class zqb
-  extends FriendListObserver
+  implements Comparator
 {
-  private zqb(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
+  public zqb(PhoneContactManagerImp paramPhoneContactManagerImp, FriendsManager paramFriendsManager) {}
   
-  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    int i = 0;
-    if (!paramBoolean1) {
-      this.a.a(6);
-    }
-    for (;;)
+    boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramPhoneContact1.unifiedCode, true);
+    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramPhoneContact2.unifiedCode, true);
+    if ((bool1) && (bool2)) {}
+    while (paramPhoneContact2.samFriend > paramPhoneContact1.samFriend)
     {
-      if (i != 0) {
-        this.a.a(7);
-      }
-      return;
-      if (paramBoolean2) {
-        i = 1;
+      do
+      {
+        return 1;
+      } while (bool1);
+      if (bool2) {
+        return -1;
       }
     }
+    if (paramPhoneContact2.samFriend < paramPhoneContact1.samFriend) {
+      return -1;
+    }
+    return PhoneContactManagerImp.a(paramPhoneContact1, paramPhoneContact2);
   }
 }
 

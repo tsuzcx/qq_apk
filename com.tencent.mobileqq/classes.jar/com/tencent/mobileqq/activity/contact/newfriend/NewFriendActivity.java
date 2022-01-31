@@ -22,8 +22,8 @@ import com.tencent.mobileqq.app.NewFriendManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import wjn;
-import wjo;
+import wox;
+import woy;
 
 public class NewFriendActivity
   extends BaseForwardSelectionActivity
@@ -36,7 +36,7 @@ public class NewFriendActivity
   private SystemMsgListView jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView;
   NewFriendManager jdField_a_of_type_ComTencentMobileqqAppNewFriendManager;
   public QQProgressDialog a;
-  private wjo jdField_a_of_type_Wjo;
+  private woy jdField_a_of_type_Woy;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   private TextView b;
   private TextView c;
@@ -50,7 +50,7 @@ public class NewFriendActivity
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838600);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838606);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
@@ -64,7 +64,7 @@ public class NewFriendActivity
     if ((!isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new wjn(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new wox(this));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
@@ -75,9 +75,9 @@ public class NewFriendActivity
   public boolean a()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Wjo.hasMessages(1))
+    if (this.jdField_a_of_type_Woy.hasMessages(1))
     {
-      this.jdField_a_of_type_Wjo.removeMessages(1);
+      this.jdField_a_of_type_Woy.removeMessages(1);
       bool = true;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
@@ -102,8 +102,8 @@ public class NewFriendActivity
   
   public void c()
   {
-    Message localMessage = this.jdField_a_of_type_Wjo.obtainMessage(1, 2131434453, 0);
-    this.jdField_a_of_type_Wjo.sendMessageDelayed(localMessage, 1000L);
+    Message localMessage = this.jdField_a_of_type_Woy.obtainMessage(1, 2131434469, 0);
+    this.jdField_a_of_type_Woy.sendMessageDelayed(localMessage, 1000L);
   }
   
   void d()
@@ -137,26 +137,26 @@ public class NewFriendActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    this.jdField_a_of_type_Wjo = new wjo(this);
+    this.jdField_a_of_type_Woy = new woy(this);
     this.jdField_a_of_type_ComTencentMobileqqAppNewFriendManager = ((NewFriendManager)this.app.getManager(33));
-    setContentView(2130970496);
-    setContentBackgroundResource(2130838214);
-    paramBundle = (LinearLayout)findViewById(2131362840);
+    setContentView(2130970508);
+    setContentBackgroundResource(2130838219);
+    paramBundle = (LinearLayout)findViewById(2131362845);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.a(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131366488));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363381));
-    this.b = ((TextView)findViewById(2131363245));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131366486));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363400));
+    this.b = ((TextView)findViewById(2131363262));
     this.b.setOnClickListener(this);
-    this.b.setText(2131433271);
-    this.c = ((TextView)findViewById(2131363428));
+    this.b.setText(2131433285);
+    this.c = ((TextView)findViewById(2131363447));
     this.c.setVisibility(0);
     this.c.setOnClickListener(this);
-    this.c.setText(2131435484);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433315);
+    this.c.setText(2131435500);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433329);
     d();
     if (AppSetting.b)
     {

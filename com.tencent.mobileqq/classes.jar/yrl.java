@@ -1,30 +1,56 @@
 import android.app.Activity;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
-import com.tencent.mobileqq.apollo.utils.ApolloSoLoader;
-import com.tencent.mobileqq.apollo.utils.ApolloSoLoader.OnCmSoLoadCompleteCallback;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class yrl
-  implements ApolloSoLoader.OnCmSoLoadCompleteCallback
+public final class yrl
+  implements Runnable
 {
-  public yrl(CmGameLauncher paramCmGameLauncher) {}
+  public yrl(long paramLong, int paramInt, View paramView, ApolloRender paramApolloRender) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
-    ApolloSoLoader.b(CmGameLauncher.a(this.a));
-    Activity localActivity = this.a.a();
-    if (paramInt == 0) {
-      if ((localActivity != null) && (!CmGameLauncher.b(this.a)))
+    try
+    {
+      ApolloRender.access$002(this.jdField_a_of_type_Long);
+      Intent localIntent;
+      if (this.jdField_a_of_type_Int == 0)
       {
-        CmGameLauncher.a(this.a, true);
-        this.a.a(localActivity, CmGameLauncher.a(this.a));
+        localIntent = new Intent("android.intent.action.PICK");
+        localIntent.setType("image/*");
+        ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).startActivityForResult(localIntent, 14006);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        localIntent = new Intent();
+        localIntent.setAction("android.media.action.IMAGE_CAPTURE");
+        localIntent.addCategory("android.intent.category.DEFAULT");
+        ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
+        ApolloRender.access$102(new File(ApolloRender.CMSHOW_FILE_PATH));
+        localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
+        ApolloRender.access$100().createNewFile();
+        localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
+        localIntent.putExtra("output", Uri.fromFile(ApolloRender.access$100()));
+        ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).startActivityForResult(localIntent, 14005);
+        return;
       }
     }
-    while (localActivity == null) {
-      return;
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ApolloRender", 2, localOutOfMemoryError.getMessage());
+        return;
+      }
     }
-    localActivity.finish();
+    catch (Exception localException)
+    {
+      QLog.e("ApolloRender", 2, "imageselector  fail e=" + localException.toString());
+    }
   }
 }
 

@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agjw
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public agjw(ScanIconAnimateView paramScanIconAnimateView) {}
+  public agjw(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    ScanTorchActivity.c(this.a, true);
+    ScanTorchActivity.l(this.a);
+    ScanTorchActivity.d(this.a, true);
   }
 }
 

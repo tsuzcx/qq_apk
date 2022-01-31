@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.ar.ARLBSObserver;
-import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload;
-import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudLBSLocationCheckCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aaev
-  extends ARLBSObserver
+  implements Runnable
 {
-  public aaev(ARCloudFileUpload paramARCloudFileUpload) {}
+  public aaev(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
   
-  public void a(ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult)
+  public void run()
   {
-    if (ARCloudFileUpload.a(this.a) != null) {
-      ARCloudFileUpload.a(this.a).a(paramARCloudLBSLocationCheckResult);
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "AR视频保存失败，请重新录制。", 1).a();
   }
 }
 

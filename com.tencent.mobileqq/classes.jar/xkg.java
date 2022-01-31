@@ -1,15 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class xkg
-  implements BubblePopupWindow.OnDismissListener
+public final class xkg
+  implements Runnable
 {
-  public xkg(RecentAdapter paramRecentAdapter, View paramView) {}
+  public xkg(MessageRecord paramMessageRecord, boolean paramBoolean) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    GoldMsgChatHelper.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
   }
 }
 

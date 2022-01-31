@@ -1,9 +1,9 @@
 package cooperation.qzone.plugin;
 
-import amxb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import anep;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class PluginRecord
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new amxb();
+  public static final Parcelable.Creator CREATOR = new anep();
   public float a;
   public int a;
   public long a;

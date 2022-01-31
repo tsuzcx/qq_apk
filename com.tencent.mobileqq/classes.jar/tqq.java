@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 class tqq
   implements Runnable
 {
-  tqq(tqp paramtqp) {}
+  tqq(tqn paramtqn) {}
   
   public void run()
   {
-    RegisterVerifyCodeActivity.a(this.a.a.a, true);
+    this.a.a.B();
   }
 }
 

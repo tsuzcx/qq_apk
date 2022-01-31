@@ -1,30 +1,9 @@
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import java.util.List;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
-class xmx
-  extends Filter
+public class xmx
 {
-  xmx(xmw paramxmw) {}
-  
-  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
-  {
-    paramCharSequence = new Filter.FilterResults();
-    paramCharSequence.values = this.a.a.a;
-    paramCharSequence.count = this.a.a.a.size();
-    return paramCharSequence;
-  }
-  
-  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
-  {
-    if (paramFilterResults.count > 0)
-    {
-      this.a.notifyDataSetChanged();
-      return;
-    }
-    this.a.notifyDataSetInvalidated();
-  }
+  public static final IRedPacket a = new RedPacketManager();
 }
 
 

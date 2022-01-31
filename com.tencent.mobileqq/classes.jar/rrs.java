@@ -1,21 +1,29 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.FTSDBManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
+import com.tencent.mobileqq.utils.DBUtils;
 
 public class rrs
   implements Runnable
 {
-  public rrs(BaseChatPie paramBaseChatPie, String paramString) {}
+  public rrs(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e))
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new rrt(this));
-      return;
+      ProxyManager localProxyManager = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app.a();
+      if (localProxyManager != null)
+      {
+        localProxyManager.d();
+        FTSDBManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app, this.jdField_a_of_type_JavaLangString, true);
+        new MessageRecordManagerImpl().a(this.jdField_a_of_type_JavaLangString);
+        DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new rru(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.runOnUiThread(new rrt(this));
   }
 }
 

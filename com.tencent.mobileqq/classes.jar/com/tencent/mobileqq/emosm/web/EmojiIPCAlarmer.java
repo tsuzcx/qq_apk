@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm.web;
 
-import acas;
+import acis;
 import android.os.Handler;
 import android.os.HandlerThread;
 
@@ -16,9 +16,9 @@ public class EmojiIPCAlarmer
   
   public Runnable a(int paramInt, long paramLong)
   {
-    acas localacas = new acas(this, paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(localacas, paramLong);
-    return localacas;
+    acis localacis = new acis(this, paramInt);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(localacis, paramLong);
+    return localacis;
   }
   
   public void a()

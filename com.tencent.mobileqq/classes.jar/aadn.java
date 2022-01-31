@@ -1,67 +1,40 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.ar.RemoteArConfigManager;
-import com.tencent.mobileqq.ar.aidl.IArFaceCallback.Stub;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.PokeBigResHandler;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
 
 public class aadn
-  extends IArFaceCallback.Stub
+  implements Runnable
 {
-  public aadn(RemoteArConfigManager paramRemoteArConfigManager) {}
+  public aadn(PokeBigResHandler paramPokeBigResHandler) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
-    }
-    if (RemoteArConfigManager.a(this.a) == null)
+    PokeBigResHandler.a(true);
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.a.b.getApp());
+    String str = this.a.b.getAccount();
+    PokeBigResHandler.a(localSharedPreferences.getString(str + "_" + "aio_poke_res_url", ""));
+    PokeBigResHandler.b(localSharedPreferences.getString(str + "_" + "aio_poke_res_md5", ""));
+    if (TextUtils.isEmpty(PokeBigResHandler.a()))
     {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
+      PokeBigResHandler.a(false);
       return;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 6;
-    localMessage.arg1 = paramInt;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
-    }
-    if (RemoteArConfigManager.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadProcess error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 7;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
-    }
-    if (RemoteArConfigManager.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 8;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = PokeBigResHandler.a(this.a);
+    localHttpNetReq.jdField_a_of_type_JavaLangString = PokeBigResHandler.a();
+    localHttpNetReq.jdField_a_of_type_Int = 0;
+    localHttpNetReq.c = (PokeBigResHandler.b() + "poke.zip");
+    ((OldHttpEngine)this.a.a.getNetEngine(0)).a(localHttpNetReq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aadn
  * JD-Core Version:    0.7.0.1
  */

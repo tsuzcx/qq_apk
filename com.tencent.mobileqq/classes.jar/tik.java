@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class tik
-  implements TabBarView.OnTabChangeListener
+  extends CardObserver
 {
-  final WeakReference a;
+  public tik(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public tik(QQBrowserActivity paramQQBrowserActivity)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    this.a = new WeakReference(paramQQBrowserActivity);
-  }
-  
-  public void onTabSelected(int paramInt1, int paramInt2)
-  {
-    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
-    if (localQQBrowserActivity == null) {}
-    while (paramInt1 == paramInt2) {
-      return;
+    if (paramBoolean1)
+    {
+      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
+      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
     }
-    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
   }
 }
 

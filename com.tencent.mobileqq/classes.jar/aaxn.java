@@ -1,50 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiInfo;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendController.ReferencCount;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import com.tencent.mobileqq.data.RecommendCommonMessage.ArkContextInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aaxn
-  implements Runnable
+class aaxn
+  implements DialogInterface.OnClickListener
 {
-  public aaxn(ArkRecommendController paramArkRecommendController, RecommendCommonMessage paramRecommendCommonMessage, RecommendCommonMessage.ArkContextInfo paramArkContextInfo, ArkAiInfo paramArkAiInfo, String paramString) {}
+  aaxn(aaxl paramaaxl, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mContextList.add(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage$ArkContextInfo);
-    this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mEchoType = this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.a;
-    this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mContextMatchType = this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.b;
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localQQAppInterface == null) {}
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       return;
-      ArkRecommendController.ReferencCount localReferencCount = new ArkRecommendController.ReferencCount();
-      localReferencCount.a = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mContextList.size();
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.mContextList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (RecommendCommonMessage.ArkContextInfo)localIterator.next();
-        String[] arrayOfString = ((RecommendCommonMessage.ArkContextInfo)localObject).context.split("\\.");
-        if (arrayOfString.length != 2)
-        {
-          localReferencCount.a -= 1;
-        }
-        else
-        {
-          ArkAppCenter localArkAppCenter = (ArkAppCenter)localQQAppInterface.getManager(120);
-          localObject = new aaxo(this, (RecommendCommonMessage.ArkContextInfo)localObject);
-          localArkAppCenter.a().a(arrayOfString[0], arrayOfString[1], 1, null, null, localReferencCount, (ArkLocalAppMgr.IGetAppPathByActionCallback)localObject);
-        }
-      }
     }
+    catch (Exception paramDialogInterface) {}
   }
 }
 

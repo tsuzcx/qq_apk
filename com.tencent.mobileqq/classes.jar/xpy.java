@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
 
 public class xpy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xpy(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xpy(DrawerFrame paramDrawerFrame) {}
   
-  public void run()
-  {
-    this.a.a.notifyDataSetChanged();
-  }
+  public void onClick(View paramView) {}
 }
 
 

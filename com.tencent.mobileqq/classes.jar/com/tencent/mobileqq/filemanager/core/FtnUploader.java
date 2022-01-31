@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acwq;
-import acwr;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -17,12 +15,12 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class FtnUploader
-  implements acwr, IHttpCommunicatorListener
+  implements IHttpUploader, IHttpCommunicatorListener
 {
   private final int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
-  private acwq jdField_a_of_type_Acwq;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private IHttpUploadSink jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink;
   private HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
   private boolean jdField_a_of_type_Boolean;
   private final byte[] jdField_a_of_type_ArrayOfByte;
@@ -82,7 +80,7 @@ public class FtnUploader
     {
       localDataInputStream.skip(4L);
       if (localDataInputStream.readInt() != 0) {
-        this.jdField_a_of_type_Acwq.a(9001, "httpServer retCode!=0");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(9001, "httpServer retCode!=0");
       }
     }
     catch (IOException localIOException)
@@ -94,7 +92,7 @@ public class FtnUploader
         long l2;
         localIOException.printStackTrace();
         QLog.e("FtnHttpUploader<FileAssistant>", 1, "unPackageData exception:" + localIOException.toString());
-        this.jdField_a_of_type_Acwq.a(9001, "httpServer flag!=0 flag!=1");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(9001, "httpServer flag!=0 flag!=1");
         try
         {
           paramArrayOfByte.close();
@@ -105,7 +103,7 @@ public class FtnUploader
         {
           return;
         }
-        this.jdField_a_of_type_Acwq.a(9001, "httpServer flag!=0 flag!=1");
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(9001, "httpServer flag!=0 flag!=1");
       }
     }
     finally
@@ -135,7 +133,7 @@ public class FtnUploader
       i = localDataInputStream.readInt();
       l1 = localDataInputStream.readInt();
       l2 = i;
-      this.jdField_a_of_type_Acwq.a(l1 << 32 | l2, null);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(l1 << 32 | l2, null);
     }
     for (;;)
     {
@@ -152,7 +150,7 @@ public class FtnUploader
       if (i != 1) {
         break;
       }
-      this.jdField_a_of_type_Acwq.b();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.b();
     }
     label232:
   }
@@ -213,19 +211,24 @@ public class FtnUploader
     }
   }
   
+  protected HttpCommunicator a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort();
+  }
+  
   public void a()
   {
     this.jdField_a_of_type_Boolean = true;
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+      a().a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
       this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg = null;
     }
   }
   
-  public void a(acwq paramacwq)
+  public void a(IHttpUploadSink paramIHttpUploadSink)
   {
-    this.jdField_a_of_type_Acwq = paramacwq;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink = paramIHttpUploadSink;
   }
   
   public void a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
@@ -264,7 +267,7 @@ public class FtnUploader
     {
       if (0L != l)
       {
-        this.jdField_a_of_type_Acwq.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
         return;
       }
       a(paramHttpMsg2.a());
@@ -279,7 +282,7 @@ public class FtnUploader
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Acwq.a(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(paramString);
   }
   
   public boolean a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
@@ -307,10 +310,13 @@ public class FtnUploader
     this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a("Net-type", paramString);
     this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.b("POST");
     this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.b(1);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+    }
     this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
     this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.c = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a = String.valueOf(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+    a().a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
     return true;
   }
   
@@ -321,10 +327,10 @@ public class FtnUploader
     }
     if (paramHttpMsg2 != null)
     {
-      this.jdField_a_of_type_Acwq.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
       return;
     }
-    this.jdField_a_of_type_Acwq.a(0, "null", "null");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIHttpUploadSink.a(0, "null", "null");
   }
 }
 

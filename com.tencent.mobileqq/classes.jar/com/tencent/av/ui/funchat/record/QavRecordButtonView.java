@@ -13,7 +13,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import kdg;
+import kfk;
 
 public class QavRecordButtonView
   extends View
@@ -74,10 +74,10 @@ public class QavRecordButtonView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130840302);
-    this.b = a(2130840304);
-    this.c = a(2130840305);
-    super.setOnTouchListener(new kdg(this));
+    this.jdField_a_of_type_AndroidGraphicsBitmap = a(2130840317);
+    this.b = a(2130840319);
+    this.c = a(2130840320);
+    super.setOnTouchListener(new kfk(this));
   }
   
   public int a()
@@ -186,7 +186,7 @@ public class QavRecordButtonView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavRecordButtonView
  * JD-Core Version:    0.7.0.1
  */

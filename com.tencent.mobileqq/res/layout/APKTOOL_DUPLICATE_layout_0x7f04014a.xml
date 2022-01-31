@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a070b" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="输入" />
-    <LinearLayout android:gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="提交" />
-    </LinearLayout>
+    <com.tencent.widget.TCWNumberPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0982" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
+    <com.tencent.widget.TCWNumberPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0983" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
+    <com.tencent.widget.TCWNumberPicker android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0984" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="95.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" />
 </LinearLayout>

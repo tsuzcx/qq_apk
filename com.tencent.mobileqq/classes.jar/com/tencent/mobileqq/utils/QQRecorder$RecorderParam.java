@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import akfr;
+import aknf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class QQRecorder$RecorderParam
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new akfr();
+  public static final Parcelable.Creator CREATOR = new aknf();
   public int a;
   public Object a;
   public int b;

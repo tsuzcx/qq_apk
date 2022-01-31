@@ -48,8 +48,8 @@ public class ContactSearchResultGroupPresenter
         if (i < j)
         {
           ISearchResultModel localISearchResultModel = (ISearchResultModel)localList.get(i);
-          View localView1 = LayoutInflater.from(paramISearchResultGroupView.a().getContext()).inflate(2130971535, null);
-          View localView2 = localView1.findViewById(2131365685);
+          View localView1 = LayoutInflater.from(paramISearchResultGroupView.a().getContext()).inflate(2130971561, null);
+          View localView2 = localView1.findViewById(2131365690);
           ContactSearchResultView localContactSearchResultView = new ContactSearchResultView(localView1);
           localView1.setTag(2131362079, localISearchResultModel);
           localView1.setTag(2131362078, localContactSearchResultView);
@@ -62,7 +62,7 @@ public class ContactSearchResultGroupPresenter
           if (bool)
           {
             localView1.setBackgroundColor(localResources.getColor(2131492948));
-            localView2.setBackgroundResource(2130838580);
+            localView2.setBackgroundResource(2130838586);
           }
           for (;;)
           {
@@ -71,7 +71,7 @@ public class ContactSearchResultGroupPresenter
             i += 1;
             break;
             localView1.setBackgroundColor(localResources.getColor(2131492969));
-            localView2.setBackgroundResource(2130838579);
+            localView2.setBackgroundResource(2130838585);
           }
         }
       }

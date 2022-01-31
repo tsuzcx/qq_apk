@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import andz;
+import anlz;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
@@ -27,7 +27,7 @@ public class QzoneWebViewBaseBuilder
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqWebprocessWebAccelerateHelper$CommonJsPluginFactory = new andz();
+    jdField_a_of_type_ComTencentMobileqqWebprocessWebAccelerateHelper$CommonJsPluginFactory = new anlz();
   }
   
   public QzoneWebViewBaseBuilder(Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface, boolean paramBoolean)

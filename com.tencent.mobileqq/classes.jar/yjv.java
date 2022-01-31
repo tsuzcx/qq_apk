@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.apollo.utils.ApolloSoLoader;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class yjv
-  implements INetInfoHandler
+  implements Runnable
 {
-  public void onNetMobile2None() {}
+  public yjv(ShortVideoPlayActivity paramShortVideoPlayActivity, int paramInt) {}
   
-  public void onNetMobile2Wifi(String paramString)
+  public void run()
   {
-    ApolloSoLoader.a("onNetMobile2Wifi");
+    this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.b(this.jdField_a_of_type_Int);
   }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ApolloSoLoader.a("onNetNone2Wifi");
-  }
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yjv
  * JD-Core Version:    0.7.0.1
  */

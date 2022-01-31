@@ -28,7 +28,7 @@ public class StoryReportor
   
   static
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a(2131432088);
+    jdField_a_of_type_JavaLangString = StoryApi.a(2131432099);
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   

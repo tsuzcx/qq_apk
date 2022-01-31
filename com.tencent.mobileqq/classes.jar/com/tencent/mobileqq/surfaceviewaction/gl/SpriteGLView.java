@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ailh;
-import ailj;
-import ailk;
+import aiqc;
+import aiqe;
+import aiqf;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -78,7 +78,7 @@ public class SpriteGLView
       ((GLSurfaceView)localObject).setEGLContextClientVersion(2);
       ((GLSurfaceView)localObject).getHolder().setFormat(-3);
       ((GLSurfaceView)localObject).setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-      ((GLSurfaceView)localObject).setRenderer(new ailk(this, null));
+      ((GLSurfaceView)localObject).setRenderer(new aiqf(this, null));
       ((GLSurfaceView)localObject).setZOrderOnTop(true);
     }
     for (;;)
@@ -88,7 +88,7 @@ public class SpriteGLView
       localObject = new GLTextureView(getContext());
       this.jdField_a_of_type_AndroidViewView = ((View)localObject);
       addView((View)localObject, -1, -1);
-      ((GLTextureView)localObject).setRenderer(new ailk(this, null));
+      ((GLTextureView)localObject).setRenderer(new aiqf(this, null));
     }
   }
   
@@ -243,16 +243,16 @@ public class SpriteGLView
     if (QLog.isColorLevel()) {
       QLog.d("SpriteGLView", 2, "stopDraw");
     }
-    ailj localailj = new ailj(this);
+    aiqe localaiqe = new aiqe(this);
     if ((this.jdField_a_of_type_AndroidViewView instanceof GLSurfaceView))
     {
       ((GLSurfaceView)this.jdField_a_of_type_AndroidViewView).onPause();
-      ((GLSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(localailj);
+      ((GLSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(localaiqe);
     }
     while (!(this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
       return;
     }
-    ((GLTextureView)this.jdField_a_of_type_AndroidViewView).a(localailj);
+    ((GLTextureView)this.jdField_a_of_type_AndroidViewView).a(localaiqe);
   }
   
   public void o()
@@ -277,7 +277,7 @@ public class SpriteGLView
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      if (((this.jdField_a_of_type_JavaUtilList.get(i) instanceof ailh)) && (((ailh)this.jdField_a_of_type_JavaUtilList.get(i)).a(paramMotionEvent, getWidth(), getHeight()))) {
+      if (((this.jdField_a_of_type_JavaUtilList.get(i) instanceof aiqc)) && (((aiqc)this.jdField_a_of_type_JavaUtilList.get(i)).a(paramMotionEvent, getWidth(), getHeight()))) {
         return true;
       }
       i += 1;

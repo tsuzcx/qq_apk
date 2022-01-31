@@ -1,25 +1,28 @@
-import android.view.KeyEvent;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import cooperation.qzone.util.XMPCoreUtil.XMPCoreJarLoadListener;
 
 public class xcw
-  implements TextView.OnEditorActionListener
+  implements XMPCoreUtil.XMPCoreJarLoadListener
 {
-  public xcw(CommonHbFragment paramCommonHbFragment) {}
+  public xcw(PhotoListActivity paramPhotoListActivity, LocalMediaInfo paramLocalMediaInfo) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(boolean paramBoolean)
   {
-    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    if (paramBoolean)
     {
-      if (CommonHbFragment.a(this.a).isEnabled()) {
-        CommonHbFragment.a(this.a).performClick();
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation == 90) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight))
+      {
+        int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = i;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
       }
-      InputMethodUtil.b(CommonHbFragment.a(this.a));
     }
-    return false;
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.setPanoramaType();
   }
 }
 

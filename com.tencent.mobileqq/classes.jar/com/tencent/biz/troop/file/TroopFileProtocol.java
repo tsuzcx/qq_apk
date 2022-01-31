@@ -3,6 +3,8 @@ package com.tencent.biz.troop.file;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.ProtoUtils;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
@@ -16,6 +18,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr.ProtoRequest;
 import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -28,7 +32,7 @@ import java.util.HashMap;
 import java.util.UUID;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oyn;
+import pdf;
 import tencent.im.cs.cmd0x383.cmd0x383.ApplyCopyToReqBody;
 import tencent.im.cs.cmd0x383.cmd0x383.ReqBody;
 import tencent.im.cs.group_file_common.group_file_common.FeedsInfo;
@@ -50,9 +54,147 @@ import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.ReqBody;
 import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.FeedsReqBody;
 import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.ReqBody;
 import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileReqBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class TroopFileProtocol
 {
+  public static TroopFileProtoReqMgr.ProtoRequest a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, boolean paramBoolean, TroopFileProtocol.ReqDownloadFileObserver paramReqDownloadFileObserver)
+  {
+    if ((paramLong == 0L) || (paramItem == null)) {
+      return null;
+    }
+    int i = FileManagerUtil.a(FileUtil.a(paramItem.FileName));
+    oidb_0x6d6.DownloadFileReqBody localDownloadFileReqBody = new oidb_0x6d6.DownloadFileReqBody();
+    localDownloadFileReqBody.uint32_bus_id.set(paramItem.BusId);
+    localDownloadFileReqBody.uint32_app_id.set(3);
+    localDownloadFileReqBody.uint64_group_code.set(paramLong);
+    localDownloadFileReqBody.str_file_id.set(paramItem.FilePath);
+    Object localObject = localDownloadFileReqBody.bool_thumbnail_req;
+    boolean bool;
+    if (paramInt != 0)
+    {
+      bool = true;
+      ((PBBoolField)localObject).set(bool);
+      localDownloadFileReqBody.bool_preview_req.set(paramBoolean);
+      if (i == 2)
+      {
+        if (paramInt == 0) {
+          break label236;
+        }
+        localDownloadFileReqBody.bool_thumbnail_req.set(false);
+        localDownloadFileReqBody.bool_preview_req.set(true);
+      }
+    }
+    for (;;)
+    {
+      localDownloadFileReqBody.uint32_url_type.set(0);
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("itemKey", paramItem.Id.toString());
+      ((Bundle)localObject).putLong("troopUin", paramLong);
+      ((Bundle)localObject).putInt("thumbNail", paramInt);
+      ((Bundle)localObject).putBoolean("isPreview", paramBoolean);
+      paramItem = new oidb_0x6d6.ReqBody();
+      paramItem.download_file_req.set(localDownloadFileReqBody);
+      return a(paramQQAppInterface, paramReqDownloadFileObserver, paramItem.toByteArray(), "OidbSvc.0x6d6_2", 1750, 2, (Bundle)localObject);
+      bool = false;
+      break;
+      label236:
+      localDownloadFileReqBody.bool_thumbnail_req.set(false);
+      localDownloadFileReqBody.bool_preview_req.set(false);
+    }
+  }
+  
+  public static TroopFileProtoReqMgr.ProtoRequest a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, TroopFileProtocol.ReqResendFileObserver paramReqResendFileObserver)
+  {
+    if ((paramLong == 0L) || (paramItem == null)) {
+      return null;
+    }
+    Object localObject = new oidb_0x6d6.ResendReqBody();
+    ((oidb_0x6d6.ResendReqBody)localObject).uint32_bus_id.set(paramItem.BusId);
+    ((oidb_0x6d6.ResendReqBody)localObject).uint32_app_id.set(3);
+    ((oidb_0x6d6.ResendReqBody)localObject).uint64_group_code.set(paramLong);
+    ((oidb_0x6d6.ResendReqBody)localObject).str_file_id.set(paramItem.FilePath);
+    ((oidb_0x6d6.ResendReqBody)localObject).bytes_sha.set(ByteStringMicro.copyFrom(paramItem.Sha));
+    oidb_0x6d6.ReqBody localReqBody = new oidb_0x6d6.ReqBody();
+    localReqBody.resend_file_req.set((MessageMicro)localObject);
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("itemKey", paramItem.Id.toString());
+    ((Bundle)localObject).putLong("troopUin", paramLong);
+    return a(paramQQAppInterface, paramReqResendFileObserver, localReqBody.toByteArray(), "OidbSvc.0x6d6_1", 1750, 1, (Bundle)localObject);
+  }
+  
+  public static TroopFileProtoReqMgr.ProtoRequest a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, TroopFileProtocol.ReqUploadFileObserver paramReqUploadFileObserver)
+  {
+    if ((paramLong == 0L) || (paramItem == null)) {
+      return null;
+    }
+    Object localObject1 = new oidb_0x6d6.UploadFileReqBody();
+    ((oidb_0x6d6.UploadFileReqBody)localObject1).uint32_bus_id.set(paramItem.BusId);
+    ((oidb_0x6d6.UploadFileReqBody)localObject1).uint32_app_id.set(3);
+    ((oidb_0x6d6.UploadFileReqBody)localObject1).uint64_group_code.set(paramLong);
+    ((oidb_0x6d6.UploadFileReqBody)localObject1).bytes_md5.set(ByteStringMicro.copyFrom(paramItem.Md5));
+    ((oidb_0x6d6.UploadFileReqBody)localObject1).bytes_sha.set(ByteStringMicro.copyFrom(paramItem.Sha));
+    Object localObject2;
+    if (TextUtils.isEmpty(paramItem.mParentId))
+    {
+      ((oidb_0x6d6.UploadFileReqBody)localObject1).str_parent_folder_id.set("/");
+      ((oidb_0x6d6.UploadFileReqBody)localObject1).str_file_name.set(paramItem.FileName);
+      ((oidb_0x6d6.UploadFileReqBody)localObject1).str_local_path.set(paramItem.LocalFile);
+      localObject2 = ((oidb_0x6d6.UploadFileReqBody)localObject1).uint32_entrance;
+      if (!paramItem.isFromAIO) {
+        break label246;
+      }
+    }
+    label246:
+    for (int i = 5;; i = 4)
+    {
+      ((PBUInt32Field)localObject2).set(i);
+      ((oidb_0x6d6.UploadFileReqBody)localObject1).uint64_file_size.set(paramItem.ProgressTotal);
+      localObject2 = new oidb_0x6d6.ReqBody();
+      ((oidb_0x6d6.ReqBody)localObject2).upload_file_req.set((MessageMicro)localObject1);
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("itemKey", paramItem.Id.toString());
+      ((Bundle)localObject1).putLong("troopUin", paramLong);
+      return a(paramQQAppInterface, paramReqUploadFileObserver, ((oidb_0x6d6.ReqBody)localObject2).toByteArray(), "OidbSvc.0x6d6_0", 1750, 0, (Bundle)localObject1);
+      ((oidb_0x6d6.UploadFileReqBody)localObject1).str_parent_folder_id.set(paramItem.mParentId);
+      break;
+    }
+  }
+  
+  public static TroopFileProtoReqMgr.ProtoRequest a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt, TroopFileProtocol.GetFilePreviewObserver paramGetFilePreviewObserver)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TroopFileProtocol", 4, "getFilePreviewList" + paramLong + ",filePath:" + paramString + ",busId:" + paramInt);
+    }
+    oidb_0x6d8.GetFilePreviewReqBody localGetFilePreviewReqBody = new oidb_0x6d8.GetFilePreviewReqBody();
+    localGetFilePreviewReqBody.uint64_group_code.set(paramLong);
+    localGetFilePreviewReqBody.uint32_app_id.set(3);
+    localGetFilePreviewReqBody.uint32_bus_id.set(paramInt);
+    localGetFilePreviewReqBody.str_file_id.set(paramString);
+    paramString = new oidb_0x6d8.ReqBody();
+    paramString.file_preview_req.set(localGetFilePreviewReqBody);
+    return a(paramQQAppInterface, paramGetFilePreviewObserver, paramString.toByteArray(), "OidbSvc.0x6d8_4", 1752, 4, null);
+  }
+  
+  private static TroopFileProtoReqMgr.ProtoRequest a(QQAppInterface paramQQAppInterface, ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver, byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(paramInt1);
+    localOIDBSSOPkg.uint32_service_type.set(paramInt2);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    localOIDBSSOPkg.str_client_version.set(AppSetting.c());
+    paramArrayOfByte = new TroopFileProtoReqMgr.ProtoRequest();
+    paramArrayOfByte.jdField_a_of_type_JavaLangString = paramString;
+    paramArrayOfByte.jdField_a_of_type_ArrayOfByte = localOIDBSSOPkg.toByteArray();
+    paramArrayOfByte.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    paramArrayOfByte.jdField_a_of_type_ComTencentBizProtoUtils$TroopProtocolObserver = paramTroopProtocolObserver;
+    paramQQAppInterface.getTroopFileProtoReqMgr().a(paramArrayOfByte);
+    return paramArrayOfByte;
+  }
+  
   public static void a(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString, int paramInt6, long paramLong2, int paramInt7, ByteStringMicro paramByteStringMicro, TroopFileProtocol.GetFileListObserver paramGetFileListObserver)
   {
     boolean bool;
@@ -75,7 +217,7 @@ public class TroopFileProtocol
       localGetFileListReqBody.uint64_uin.set(paramLong2);
       localGetFileListReqBody.uint32_start_index.set(paramInt7);
       if (paramByteStringMicro != null) {
-        break label310;
+        break label322;
       }
       localGetFileListReqBody.bytes_context.set(ByteStringMicro.copyFromUtf8(""));
     }
@@ -94,7 +236,7 @@ public class TroopFileProtocol
       return;
       bool = false;
       break;
-      label310:
+      label322:
       localGetFileListReqBody.bytes_context.set(paramByteStringMicro);
     }
   }
@@ -190,58 +332,6 @@ public class TroopFileProtocol
     ProtoUtils.b(paramQQAppInterface, paramReqTransFileObserver, paramTroopFileInfo.toByteArray(), "OidbSvc.0x6d9_0", 1753, 0, localBundle);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, boolean paramBoolean, TroopFileProtocol.ReqDownloadFileObserver paramReqDownloadFileObserver)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {
-      return;
-    }
-    int i = FileManagerUtil.a(FileUtil.a(paramItem.FileName));
-    oidb_0x6d6.DownloadFileReqBody localDownloadFileReqBody = new oidb_0x6d6.DownloadFileReqBody();
-    localDownloadFileReqBody.uint32_bus_id.set(paramItem.BusId);
-    localDownloadFileReqBody.uint32_app_id.set(3);
-    localDownloadFileReqBody.uint64_group_code.set(paramLong);
-    localDownloadFileReqBody.str_file_id.set(paramItem.FilePath);
-    Object localObject = localDownloadFileReqBody.bool_thumbnail_req;
-    boolean bool;
-    if (paramInt != 0)
-    {
-      bool = true;
-      label89:
-      ((PBBoolField)localObject).set(bool);
-      localDownloadFileReqBody.bool_preview_req.set(paramBoolean);
-      if (i == 2)
-      {
-        if (paramInt == 0) {
-          break label329;
-        }
-        localDownloadFileReqBody.bool_thumbnail_req.set(false);
-        localDownloadFileReqBody.bool_preview_req.set(true);
-      }
-    }
-    for (;;)
-    {
-      localDownloadFileReqBody.uint32_url_type.set(0);
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("itemKey", paramItem.Id.toString());
-      ((Bundle)localObject).putLong("troopUin", paramLong);
-      ((Bundle)localObject).putInt("thumbNail", paramInt);
-      ((Bundle)localObject).putBoolean("isPreview", paramBoolean);
-      paramItem = new oidb_0x6d6.ReqBody();
-      paramItem.download_file_req.set(localDownloadFileReqBody);
-      ProtoUtils.b(paramQQAppInterface, paramReqDownloadFileObserver, paramItem.toByteArray(), "OidbSvc.0x6d6_2", 1750, 2, (Bundle)localObject);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(".troop.troop_file_video", 2, "reqDownloadFile:thumbSize=" + paramInt + ", isPreview=" + paramBoolean + ", fileType=" + i + ", bool_thumbnail_req=" + localDownloadFileReqBody.bool_thumbnail_req.get() + ", bool_preview_req=" + localDownloadFileReqBody.bool_preview_req.get());
-      return;
-      bool = false;
-      break label89;
-      label329:
-      localDownloadFileReqBody.bool_thumbnail_req.set(false);
-      localDownloadFileReqBody.bool_preview_req.set(false);
-    }
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, TroopFileProtocol.ReqFeedsObserver paramReqFeedsObserver)
   {
     if ((paramLong == 0L) || (paramItem == null)) {
@@ -281,79 +371,6 @@ public class TroopFileProtocol
         localJSONException.printStackTrace();
       }
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, TroopFileProtocol.ReqResendFileObserver paramReqResendFileObserver)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {
-      return;
-    }
-    Object localObject = new oidb_0x6d6.ResendReqBody();
-    ((oidb_0x6d6.ResendReqBody)localObject).uint32_bus_id.set(paramItem.BusId);
-    ((oidb_0x6d6.ResendReqBody)localObject).uint32_app_id.set(3);
-    ((oidb_0x6d6.ResendReqBody)localObject).uint64_group_code.set(paramLong);
-    ((oidb_0x6d6.ResendReqBody)localObject).str_file_id.set(paramItem.FilePath);
-    ((oidb_0x6d6.ResendReqBody)localObject).bytes_sha.set(ByteStringMicro.copyFrom(paramItem.Sha));
-    oidb_0x6d6.ReqBody localReqBody = new oidb_0x6d6.ReqBody();
-    localReqBody.resend_file_req.set((MessageMicro)localObject);
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("itemKey", paramItem.Id.toString());
-    ((Bundle)localObject).putLong("troopUin", paramLong);
-    ProtoUtils.b(paramQQAppInterface, paramReqResendFileObserver, localReqBody.toByteArray(), "OidbSvc.0x6d6_1", 1750, 1, (Bundle)localObject);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, TroopFileProtocol.ReqUploadFileObserver paramReqUploadFileObserver)
-  {
-    if ((paramLong == 0L) || (paramItem == null)) {
-      return;
-    }
-    Object localObject1 = new oidb_0x6d6.UploadFileReqBody();
-    ((oidb_0x6d6.UploadFileReqBody)localObject1).uint32_bus_id.set(paramItem.BusId);
-    ((oidb_0x6d6.UploadFileReqBody)localObject1).uint32_app_id.set(3);
-    ((oidb_0x6d6.UploadFileReqBody)localObject1).uint64_group_code.set(paramLong);
-    ((oidb_0x6d6.UploadFileReqBody)localObject1).bytes_md5.set(ByteStringMicro.copyFrom(paramItem.Md5));
-    ((oidb_0x6d6.UploadFileReqBody)localObject1).bytes_sha.set(ByteStringMicro.copyFrom(paramItem.Sha));
-    Object localObject2;
-    if (TextUtils.isEmpty(paramItem.mParentId))
-    {
-      ((oidb_0x6d6.UploadFileReqBody)localObject1).str_parent_folder_id.set("/");
-      ((oidb_0x6d6.UploadFileReqBody)localObject1).str_file_name.set(paramItem.FileName);
-      ((oidb_0x6d6.UploadFileReqBody)localObject1).str_local_path.set(paramItem.LocalFile);
-      localObject2 = ((oidb_0x6d6.UploadFileReqBody)localObject1).uint32_entrance;
-      if (!paramItem.isFromAIO) {
-        break label248;
-      }
-    }
-    label248:
-    for (int i = 5;; i = 4)
-    {
-      ((PBUInt32Field)localObject2).set(i);
-      ((oidb_0x6d6.UploadFileReqBody)localObject1).uint64_file_size.set(paramItem.ProgressTotal);
-      localObject2 = new oidb_0x6d6.ReqBody();
-      ((oidb_0x6d6.ReqBody)localObject2).upload_file_req.set((MessageMicro)localObject1);
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("itemKey", paramItem.Id.toString());
-      ((Bundle)localObject1).putLong("troopUin", paramLong);
-      ProtoUtils.b(paramQQAppInterface, paramReqUploadFileObserver, ((oidb_0x6d6.ReqBody)localObject2).toByteArray(), "OidbSvc.0x6d6_0", 1750, 0, (Bundle)localObject1);
-      return;
-      ((oidb_0x6d6.UploadFileReqBody)localObject1).str_parent_folder_id.set(paramItem.mParentId);
-      break;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt, TroopFileProtocol.GetFilePreviewObserver paramGetFilePreviewObserver)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("TroopFileProtocol", 4, "getFilePreviewList" + paramLong + ",filePath:" + paramString + ",busId:" + paramInt);
-    }
-    oidb_0x6d8.GetFilePreviewReqBody localGetFilePreviewReqBody = new oidb_0x6d8.GetFilePreviewReqBody();
-    localGetFilePreviewReqBody.uint64_group_code.set(paramLong);
-    localGetFilePreviewReqBody.uint32_app_id.set(3);
-    localGetFilePreviewReqBody.uint32_bus_id.set(paramInt);
-    localGetFilePreviewReqBody.str_file_id.set(paramString);
-    paramString = new oidb_0x6d8.ReqBody();
-    paramString.file_preview_req.set(localGetFilePreviewReqBody);
-    ProtoUtils.b(paramQQAppInterface, paramGetFilePreviewObserver, paramString.toByteArray(), "OidbSvc.0x6d8_4", 1752, 4);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, TroopFileProtocol.DeleteFolderObserver paramDeleteFolderObserver)
@@ -403,9 +420,17 @@ public class TroopFileProtocol
     ProtoUtils.b(paramQQAppInterface, paramRenameFolderObserver, localReqBody.toByteArray(), "OidbSvc.0x6d7_2", 1751, 2, (Bundle)localObject);
   }
   
+  public static void a(QQAppInterface paramQQAppInterface, TroopFileProtoReqMgr.ProtoRequest paramProtoRequest)
+  {
+    if ((paramQQAppInterface == null) || (paramProtoRequest == null)) {
+      return;
+    }
+    paramQQAppInterface.getTroopFileProtoReqMgr().b(paramProtoRequest);
+  }
+  
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, FileManagerEntity paramFileManagerEntity, TroopFileProtocol.OnGetZipFileList paramOnGetZipFileList)
   {
-    paramString1 = new HttpWebCgiAsyncTask2("http://" + paramString1 + ":" + paramString2 + "/ftn_compress_list/rkey=" + paramString3 + "&filetype=" + paramInt + "&path=" + URLUtil.a(paramString4) + "&", "GET", new oyn(new ArrayList(), paramString4, paramFileManagerEntity, paramQQAppInterface, paramInt, paramOnGetZipFileList), 1000, null);
+    paramString1 = new HttpWebCgiAsyncTask2("http://" + paramString1 + ":" + paramString2 + "/ftn_compress_list/rkey=" + paramString3 + "&filetype=" + paramInt + "&path=" + URLUtil.a(paramString4) + "&", "GET", new pdf(new ArrayList(), paramString4, paramFileManagerEntity, paramQQAppInterface, paramInt, paramOnGetZipFileList), 1000, null);
     paramString2 = new Bundle();
     paramString2.putString("version", DeviceInfoUtil.d());
     paramString2.putString("Cookie", paramString5);

@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pbc;
+import pfu;
 
 public class HbEventPlugin
   extends WebViewPlugin
@@ -63,16 +63,16 @@ public class HbEventPlugin
     return -1;
   }
   
-  pbc a(int paramInt)
+  pfu a(int paramInt)
   {
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(12);
     }
-    Object localObject = new pbc(this, null);
-    ((pbc)localObject).jdField_a_of_type_Int = paramInt;
+    Object localObject = new pfu(this, null);
+    ((pfu)localObject).jdField_a_of_type_Int = paramInt;
     localObject = new WeakReference(localObject);
     this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
-    return (pbc)((WeakReference)localObject).get();
+    return (pfu)((WeakReference)localObject).get();
   }
   
   void a(BroadcastReceiver paramBroadcastReceiver, String paramString)
@@ -100,7 +100,7 @@ public class HbEventPlugin
     if (localObject == null) {
       return false;
     }
-    localObject = (pbc)((WeakReference)localObject).get();
+    localObject = (pfu)((WeakReference)localObject).get();
     if (localObject == null) {
       return false;
     }
@@ -171,9 +171,9 @@ public class HbEventPlugin
       int i = 0;
       while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
       {
-        pbc localpbc = (pbc)((WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).get();
-        if (localpbc != null) {
-          a(localpbc.jdField_a_of_type_Int);
+        pfu localpfu = (pfu)((WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).get();
+        if (localpfu != null) {
+          a(localpfu.jdField_a_of_type_Int);
         }
         i += 1;
       }

@@ -1,11 +1,11 @@
 package cooperation.qzone.webviewplugin;
 
 import NS_QMALL_COVER.AlbumThemeSkin;
-import anbq;
-import anbr;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anjq;
+import anjr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.magicface.model.MagicfaceResLoader;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -82,9 +82,14 @@ public class QZonePassivePraiseJsPlugin
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramWebViewPlugin);
   }
   
+  private void b()
+  {
+    RemoteHandleManager.a().a().u();
+  }
+  
   private void b(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new anbq(this, paramArrayOfString));
+    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new anjq(this, paramArrayOfString));
   }
   
   private void c(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
@@ -130,7 +135,7 @@ public class QZonePassivePraiseJsPlugin
       } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
       this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController = new QzoneGiftFullScreenViewController(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
     } while (!QzoneGiftFullScreenViewController.a());
-    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.a(paramWebViewPlugin, paramArrayOfString, true, new anbr(this, paramPluginRuntime));
+    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.a(paramWebViewPlugin, paramArrayOfString, true, new anjr(this, paramPluginRuntime));
   }
   
   private void d(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
@@ -229,6 +234,11 @@ public class QZonePassivePraiseJsPlugin
     if ("SetAlbumListThemeSkin".equalsIgnoreCase(paramString3))
     {
       d(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
+      return true;
+    }
+    if ("hasClickedHighFiveFromLikeList".equalsIgnoreCase(paramString3))
+    {
+      b();
       return true;
     }
     return false;

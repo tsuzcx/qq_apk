@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
 
 public class aeai
   implements Runnable
 {
-  public aeai(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeai(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
   public void run()
   {
-    if (LebaWithFeeds.a(this.a) != null) {
-      LebaWithFeeds.a(this.a).b();
-    }
+    this.a.a.b(3);
+    this.a.f();
   }
 }
 

@@ -1,30 +1,41 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
 
-class srd
-  implements Runnable
+public class srd
+  implements View.OnClickListener
 {
-  srd(src paramsrc) {}
+  public srd(EmosmActivity paramEmosmActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = (FriendsManager)this.a.a.app.getManager(50);
-    if (localObject == null) {}
-    do
+    if (!this.a.b)
     {
-      return;
-      localObject = ((FriendsManager)localObject).c(this.a.a.a.a.a);
-    } while ((localObject == null) || ((((Friends)localObject).abilityBits & 0x2) == 0L));
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "mReportPCCameraAblibityRunnable-->report");
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131436091);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(true);
+      this.a.b = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpsEdit", 0, 0, "", "", "", "");
     }
-    ReportController.b(null, "CliOper", "", "", "0X8004991", "0X8004991", 0, 0, "", "", "", "");
+    while ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 1)) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131436088);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(false);
+    this.a.e();
+    this.a.b = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a();
+    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
   }
 }
 

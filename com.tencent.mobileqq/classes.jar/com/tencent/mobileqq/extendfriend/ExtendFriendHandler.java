@@ -121,7 +121,7 @@ public class ExtendFriendHandler
     QLog.i("ExtendFriendHandler", 1, String.format("editExtendFriendInfo uin=%s, declaration=%s, url=%s, duration=%d", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt) }));
     if (!NetworkState.isNetworkConnected(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
     {
-      QQToast.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131433213, 0).a();
+      QQToast.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131433227, 0).a();
       a(1, false, null);
       return;
     }

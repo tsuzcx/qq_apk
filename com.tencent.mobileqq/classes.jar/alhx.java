@@ -1,15 +1,14 @@
-import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.downloadnew.MyAppApi;
 
-public class alhx
-  implements Runnable
+class alhx
+  implements DialogInterface.OnClickListener
 {
-  public alhx(MyAppApi paramMyAppApi, String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
+  alhx(alhw paramalhw) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidAppActivity);
+    paramDialogInterface.dismiss();
   }
 }
 

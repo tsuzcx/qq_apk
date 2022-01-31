@@ -1,44 +1,30 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.utils.UITools;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.pendant.EffectPendantTips;
 
 public class jid
   implements Runnable
 {
-  WeakReference a;
-  
-  public jid(AVNotifyCenter paramAVNotifyCenter)
-  {
-    this.a = new WeakReference(paramAVNotifyCenter);
-  }
+  public jid(EffectPendantTips paramEffectPendantTips, String paramString, int paramInt) {}
   
   public void run()
   {
-    AVNotifyCenter localAVNotifyCenter = (AVNotifyCenter)this.a.get();
-    if (localAVNotifyCenter == null) {}
-    do
+    try
     {
-      do
-      {
-        return;
-      } while (localAVNotifyCenter.a(String.valueOf(localAVNotifyCenter.b.jdField_a_of_type_Long)));
-      if (localAVNotifyCenter.a != null) {
-        localAVNotifyCenter.a.postDelayed(this, 1000L);
+      String str = this.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(str)) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.b(this.jdField_a_of_type_Int, str);
       }
-    } while (!localAVNotifyCenter.i);
-    String str = UITools.a(localAVNotifyCenter.c);
-    if (localAVNotifyCenter.b.jdField_a_of_type_Int == 3)
-    {
-      localAVNotifyCenter.a(29, 0, Long.toString(localAVNotifyCenter.b.jdField_a_of_type_Long), str);
       return;
     }
-    localAVNotifyCenter.a(29, 0, localAVNotifyCenter.b.b, str);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jid
  * JD-Core Version:    0.7.0.1
  */

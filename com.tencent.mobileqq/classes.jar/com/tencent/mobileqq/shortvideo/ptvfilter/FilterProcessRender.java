@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter;
 
-import aicp;
-import aicq;
+import aihj;
+import aihk;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.opengl.GLES20;
@@ -59,7 +59,7 @@ public class FilterProcessRender
   private double jdField_a_of_type_Double;
   public int a;
   private long jdField_a_of_type_Long;
-  private aicq jdField_a_of_type_Aicq = new aicq(null);
+  private aihk jdField_a_of_type_Aihk = new aihk(null);
   BeautyRender jdField_a_of_type_ComTencentAvVideoEffectBeautyBeautyRender = null;
   BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter(GLSLRender.FILTER_SHADER_NONE);
   Frame jdField_a_of_type_ComTencentFilterFrame = new Frame();
@@ -162,21 +162,21 @@ public class FilterProcessRender
     }
   }
   
-  private void a(int paramInt, aicq paramaicq)
+  private void a(int paramInt, aihk paramaihk)
   {
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
     int n = RetrieveDataManager.DATA_TYPE.RGBA.value;
     if (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector != null) {
       n = this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.getDataType().value;
     }
-    paramaicq.jdField_a_of_type_ArrayOfByte = RetrieveDataManager.getInstance().retrieveData(n, paramInt, paramaicq.jdField_a_of_type_Int, paramaicq.jdField_b_of_type_Int);
+    paramaihk.jdField_a_of_type_ArrayOfByte = RetrieveDataManager.getInstance().retrieveData(n, paramInt, paramaihk.jdField_a_of_type_Int, paramaihk.jdField_b_of_type_Int);
     this.jdField_b_of_type_Long = SystemClock.elapsedRealtimeNanos();
     if (QLog.isColorLevel()) {
       QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[doFaceDetectInitAndFlip " + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L + "us]");
     }
   }
   
-  private void a(aicq paramaicq, boolean paramBoolean)
+  private void a(aihk paramaihk, boolean paramBoolean)
   {
     for (;;)
     {
@@ -191,7 +191,7 @@ public class FilterProcessRender
             QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[doTrackProceses=" + l1 + "us] forceDetect=" + paramBoolean);
           }
           if ((paramBoolean) || (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.needDetectFace())) {
-            this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.postJob(new aicp(this, paramaicq));
+            this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.postJob(new aihj(this, paramaihk));
           }
           if (this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.detectExpression(2))
           {
@@ -201,14 +201,14 @@ public class FilterProcessRender
         }
         else
         {
-          this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.doTrack(paramaicq.jdField_a_of_type_ArrayOfByte, paramaicq.jdField_a_of_type_Int, paramaicq.jdField_b_of_type_Int);
+          this.jdField_a_of_type_ComTencentTtpicFacedetectFaceDetector.doTrack(paramaihk.jdField_a_of_type_ArrayOfByte, paramaihk.jdField_a_of_type_Int, paramaihk.jdField_b_of_type_Int);
           continue;
         }
         this.jdField_b_of_type_Boolean = false;
       }
-      catch (Throwable paramaicq)
+      catch (Throwable paramaihk)
       {
-        paramaicq.printStackTrace();
+        paramaihk.printStackTrace();
         return;
       }
     }
@@ -377,12 +377,12 @@ public class FilterProcessRender
         }
         if (this.jdField_d_of_type_Boolean)
         {
-          this.jdField_a_of_type_Aicq.jdField_a_of_type_Int = this.jdField_e_of_type_Int;
-          this.jdField_a_of_type_Aicq.jdField_b_of_type_Int = this.jdField_f_of_type_Int;
+          this.jdField_a_of_type_Aihk.jdField_a_of_type_Int = this.jdField_e_of_type_Int;
+          this.jdField_a_of_type_Aihk.jdField_b_of_type_Int = this.jdField_f_of_type_Int;
           if (this.k)
           {
-            a(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Aicq);
-            a(this.jdField_a_of_type_Aicq, false);
+            a(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_Aihk);
+            a(this.jdField_a_of_type_Aihk, false);
           }
         }
         if (this.jdField_e_of_type_Boolean)

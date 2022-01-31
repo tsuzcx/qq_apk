@@ -83,12 +83,12 @@ import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ywu;
-import ywv;
-import yww;
-import ywx;
-import ywy;
-import ywz;
+import zdo;
+import zdp;
+import zdq;
+import zdr;
+import zds;
+import zdt;
 
 public class ApolloUtil
 {
@@ -103,7 +103,7 @@ public class ApolloUtil
     jdField_a_of_type_JavaLangString = ApolloConstant.jdField_c_of_type_JavaLangString + "action_v730.json";
     b = ApolloConstant.n + "game_v2.json";
     jdField_c_of_type_JavaLangString = ApolloConstant.n + "pic";
-    jdField_a_of_type_JavaUtilComparator = new ywz();
+    jdField_a_of_type_JavaUtilComparator = new zdt();
   }
   
   public static float a(float paramFloat)
@@ -776,7 +776,7 @@ public class ApolloUtil
   
   public static void a()
   {
-    ThreadManager.post(new ywy(), 5, null, true);
+    ThreadManager.post(new zds(), 5, null, true);
   }
   
   private static void a(int paramInt, String paramString, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
@@ -1095,28 +1095,28 @@ public class ApolloUtil
     switch (paramInt)
     {
     default: 
-      paramImageView.setImageResource(2130838164);
-      return;
-    case 1: 
-      paramImageView.setImageResource(2130838164);
-      return;
-    case 2: 
-      paramImageView.setImageResource(2130838165);
-      return;
-    case 3: 
-      paramImageView.setImageResource(2130838166);
-      return;
-    case 4: 
-      paramImageView.setImageResource(2130838167);
-      return;
-    case 5: 
-      paramImageView.setImageResource(2130838168);
-      return;
-    case 6: 
       paramImageView.setImageResource(2130838169);
       return;
+    case 1: 
+      paramImageView.setImageResource(2130838169);
+      return;
+    case 2: 
+      paramImageView.setImageResource(2130838170);
+      return;
+    case 3: 
+      paramImageView.setImageResource(2130838171);
+      return;
+    case 4: 
+      paramImageView.setImageResource(2130838172);
+      return;
+    case 5: 
+      paramImageView.setImageResource(2130838173);
+      return;
+    case 6: 
+      paramImageView.setImageResource(2130838174);
+      return;
     }
-    paramImageView.setImageResource(2130838170);
+    paramImageView.setImageResource(2130838175);
   }
   
   public static void a(BaseChatPie paramBaseChatPie, int paramInt)
@@ -1226,7 +1226,7 @@ public class ApolloUtil
           QLog.d("ApolloUtil", 2, "[playApolloEmoticonAction] set apollo emoticon action play status true");
         }
         paramChatMessage.saveExtInfoToExtStr("is_apollo_emoticon_action_checked", "1");
-        ThreadManager.post(new ywv(paramChatMessage), 5, null, false);
+        ThreadManager.post(new zdp(paramChatMessage), 5, null, false);
         if (paramInt1 != paramInt2 - 1) {
           break;
         }
@@ -1246,7 +1246,7 @@ public class ApolloUtil
           break;
         }
         paramChatMessage.saveExtInfoToExtStr("is_apollo_emoticon_action_played", "2");
-        ThreadManager.post(new yww(paramAnimationTextView, paramQQAppInterface, paramSessionInfo, paramChatMessage), 5, null, false);
+        ThreadManager.post(new zdq(paramAnimationTextView, paramQQAppInterface, paramSessionInfo, paramChatMessage), 5, null, false);
         return;
       }
       catch (Exception localException)
@@ -1284,9 +1284,11 @@ public class ApolloUtil
   public static void a(MessageForApollo paramMessageForApollo, QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
     if ((paramMessageForApollo != null) && (paramQQAppInterface != null)) {
-      ThreadManager.getFileThreadHandler().post(new ywu(paramMessageForApollo, paramQQAppInterface, paramString, paramInt));
+      ThreadManager.getFileThreadHandler().post(new zdo(paramMessageForApollo, paramQQAppInterface, paramString, paramInt));
     }
   }
+  
+  public static void a(QQCustomMenu paramQQCustomMenu, String paramString) {}
   
   public static void a(DownloadTask paramDownloadTask) {}
   
@@ -1299,6 +1301,8 @@ public class ApolloUtil
       jdField_a_of_type_Long = l;
     }
   }
+  
+  public static void a(String paramString1, String paramString2, ApolloUtil.DownLoadHandler paramDownLoadHandler) {}
   
   public static boolean a()
   {
@@ -1514,7 +1518,7 @@ public class ApolloUtil
       {
         int k = arrayOfEmoticonSpan[i].a();
         if ((com.tencent.mobileqq.text.TextUtils.a(k)) && (k >= 0) && (k < MessageUtils.a.length)) {
-          paramList.add(Integer.valueOf(f(MessageUtils.a[k])));
+          paramList.add(Integer.valueOf(g(MessageUtils.a[k])));
         }
         i += 1;
       }
@@ -1547,7 +1551,7 @@ public class ApolloUtil
     if (ApolloGameUtil.a(paramMessageForApollo.msgType)) {}
     for (localObject1 = ((ApolloDaoManager)localObject1).a(paramMessageForApollo.gameId);; localObject1 = null)
     {
-      if ((ApolloManager.c("gameSwitch") != 1) || ((localObject1 != null) && (!ApolloConfigUtils.a("7.6.3", ((ApolloGameData)localObject1).minVer, ((ApolloGameData)localObject1).maxVer))))
+      if ((ApolloManager.c("gameSwitch") != 1) || ((localObject1 != null) && (!ApolloConfigUtils.a("7.6.8", ((ApolloGameData)localObject1).minVer, ((ApolloGameData)localObject1).maxVer))))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ApolloUtil", 2, "play apollo game msg but switch is 0 or version is incorrect");
@@ -1751,6 +1755,18 @@ public class ApolloUtil
     return localStringBuilder.toString();
   }
   
+  public static String b(QQAppInterface paramQQAppInterface, MessageForApollo paramMessageForApollo)
+  {
+    if (!android.text.TextUtils.isEmpty(paramMessageForApollo.gameName)) {
+      return paramMessageForApollo.gameName;
+    }
+    paramQQAppInterface = ((ApolloDaoManager)paramQQAppInterface.getManager(154)).a(paramMessageForApollo.gameId);
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.name;
+    }
+    return "";
+  }
+  
   public static String b(ApolloActionPackage paramApolloActionPackage)
   {
     return null;
@@ -1781,28 +1797,28 @@ public class ApolloUtil
     switch (paramInt)
     {
     default: 
-      paramImageView.setImageResource(2130838132);
-      return;
-    case 1: 
-      paramImageView.setImageResource(2130838132);
-      return;
-    case 2: 
-      paramImageView.setImageResource(2130838133);
-      return;
-    case 3: 
       paramImageView.setImageResource(2130838134);
       return;
-    case 4: 
+    case 1: 
+      paramImageView.setImageResource(2130838134);
+      return;
+    case 2: 
       paramImageView.setImageResource(2130838135);
       return;
-    case 5: 
+    case 3: 
       paramImageView.setImageResource(2130838136);
       return;
-    case 6: 
+    case 4: 
       paramImageView.setImageResource(2130838137);
       return;
+    case 5: 
+      paramImageView.setImageResource(2130838138);
+      return;
+    case 6: 
+      paramImageView.setImageResource(2130838139);
+      return;
     }
-    paramImageView.setImageResource(2130838138);
+    paramImageView.setImageResource(2130838140);
   }
   
   private static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, QQText paramQQText, List paramList)
@@ -1971,43 +1987,43 @@ public class ApolloUtil
     //   0: aconst_null
     //   1: astore_2
     //   2: invokestatic 209	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   5: invokevirtual 1481	com/tencent/common/app/BaseApplicationImpl:getAssets	()Landroid/content/res/AssetManager;
+    //   5: invokevirtual 1483	com/tencent/common/app/BaseApplicationImpl:getAssets	()Landroid/content/res/AssetManager;
     //   8: aload_0
-    //   9: invokevirtual 1487	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   9: invokevirtual 1489	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   12: astore_0
     //   13: aload_0
     //   14: ifnull +37 -> 51
     //   17: aload_0
     //   18: aload_0
-    //   19: invokevirtual 1492	java/io/InputStream:available	()I
+    //   19: invokevirtual 1494	java/io/InputStream:available	()I
     //   22: i2l
-    //   23: invokestatic 1498	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   26: invokestatic 1504	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   23: invokestatic 1500	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   26: invokestatic 1506	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   29: astore_1
     //   30: aload_1
     //   31: astore_2
     //   32: aload_0
     //   33: ifnull +9 -> 42
     //   36: aload_0
-    //   37: invokevirtual 1507	java/io/InputStream:close	()V
+    //   37: invokevirtual 1509	java/io/InputStream:close	()V
     //   40: aload_1
     //   41: astore_2
     //   42: aload_2
     //   43: areturn
     //   44: astore_0
     //   45: aload_0
-    //   46: invokevirtual 1510	java/io/IOException:printStackTrace	()V
+    //   46: invokevirtual 1512	java/io/IOException:printStackTrace	()V
     //   49: aload_1
     //   50: areturn
     //   51: aload_0
     //   52: ifnull -10 -> 42
     //   55: aload_0
-    //   56: invokevirtual 1507	java/io/InputStream:close	()V
+    //   56: invokevirtual 1509	java/io/InputStream:close	()V
     //   59: aconst_null
     //   60: areturn
     //   61: astore_0
     //   62: aload_0
-    //   63: invokevirtual 1510	java/io/IOException:printStackTrace	()V
+    //   63: invokevirtual 1512	java/io/IOException:printStackTrace	()V
     //   66: aconst_null
     //   67: areturn
     //   68: astore_0
@@ -2016,12 +2032,12 @@ public class ApolloUtil
     //   71: aload_0
     //   72: ifnull -30 -> 42
     //   75: aload_0
-    //   76: invokevirtual 1507	java/io/InputStream:close	()V
+    //   76: invokevirtual 1509	java/io/InputStream:close	()V
     //   79: aconst_null
     //   80: areturn
     //   81: astore_0
     //   82: aload_0
-    //   83: invokevirtual 1510	java/io/IOException:printStackTrace	()V
+    //   83: invokevirtual 1512	java/io/IOException:printStackTrace	()V
     //   86: aconst_null
     //   87: areturn
     //   88: astore_1
@@ -2030,12 +2046,12 @@ public class ApolloUtil
     //   91: aload_0
     //   92: ifnull +7 -> 99
     //   95: aload_0
-    //   96: invokevirtual 1507	java/io/InputStream:close	()V
+    //   96: invokevirtual 1509	java/io/InputStream:close	()V
     //   99: aload_1
     //   100: athrow
     //   101: astore_0
     //   102: aload_0
-    //   103: invokevirtual 1510	java/io/IOException:printStackTrace	()V
+    //   103: invokevirtual 1512	java/io/IOException:printStackTrace	()V
     //   106: goto -7 -> 99
     //   109: astore_1
     //   110: goto -19 -> 91
@@ -2186,13 +2202,27 @@ public class ApolloUtil
   
   public static String d(String paramString)
   {
-    if (android.text.TextUtils.isEmpty(paramString)) {
-      return "";
+    if ((android.text.TextUtils.isEmpty(paramString)) || (paramString.length() < 4)) {
+      return paramString;
     }
-    if (paramString.length() > 5) {
-      return paramString.substring(0, 5);
+    return paramString.substring(0, 4) + "*";
+  }
+  
+  public static int e(int paramInt)
+  {
+    int i;
+    if (paramInt == 1) {
+      i = 3;
     }
-    return "";
+    do
+    {
+      return i;
+      if (paramInt == 4) {
+        return 1;
+      }
+      i = paramInt;
+    } while (paramInt != 5);
+    return 2;
   }
   
   public static String e(int paramInt)
@@ -2210,7 +2240,7 @@ public class ApolloUtil
       if (!FileUtils.a((String)localObject)) {
         break label281;
       }
-      localObject = new File((String)localObject).list(new ywx());
+      localObject = new File((String)localObject).list(new zdr());
       if (localObject == null) {
         break label266;
       }
@@ -2265,7 +2295,7 @@ public class ApolloUtil
     return paramString.substring(0, 2048);
   }
   
-  private static int f(int paramInt)
+  private static int g(int paramInt)
   {
     if (paramInt < 229) {
       return paramInt + 10000;

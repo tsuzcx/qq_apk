@@ -1,18 +1,34 @@
 import android.view.View;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.animation.AlphaAnimation;
+import com.tencent.mobileqq.ark.ArkAiBubbleView;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import com.tencent.qphone.base.util.QLog;
 
-class aayq
-  implements ActionSheet.OnButtonClickListener
+public class aayq
+  implements Runnable
 {
-  aayq(aayo paramaayo, ActionSheet paramActionSheet) {}
+  public aayq(ArkAiBubbleView paramArkAiBubbleView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Aayo.a.e();
-    this.jdField_a_of_type_Aayo.a.b("本地APP已删除成功");
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ark.ai", 2, String.format("ArkAiBubbleView.mScrollBar == null: %h", new Object[] { this.a }));
+      }
+      this.a.c();
+      return;
+    }
+    this.a.b = true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar.b())
+    {
+      this.a.c();
+      return;
+    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(500L);
+    localAlphaAnimation.setAnimationListener(this.a);
+    this.a.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
 }
 

@@ -1,30 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class wun
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public wun(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
+  public wun(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
-      paramDialogInterface.putExtra("main_tab_id", 1);
-      paramDialogInterface.setFlags(603979776);
-      BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
-      return;
+    Object localObject = (EmoticonFromGroupDBManager)EmoticonGroupStoreFragment.a(this.a).getManager(258);
+    if (localObject != null) {
+      ((EmoticonFromGroupDBManager)localObject).b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
+    localObject = new CopyOnWriteArrayList(EmoticonGroupStoreFragment.a(this.a).a());
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      int i = ((List)localObject).size();
+      if (i < 50)
+      {
+        EmoticonGroupStoreFragment.a(this.a, (List)localObject);
+        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a));
+        EmoticonGroupStoreFragment.a(this.a);
+        EmoticonGroupStoreFragment.b(this.a);
+      }
+      for (;;)
+      {
+        if (EmoticonGroupStoreFragment.b(this.a) != null) {
+          EmoticonGroupStoreFragment.c(this.a);
+        }
+        return;
+        EmoticonGroupStoreFragment.a(this.a, ((List)localObject).subList(0, 50));
+        int j = EmoticonGroupStoreFragment.c(this.a).size();
+        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a));
+        EmoticonGroupStoreFragment.b(this.a);
+        EmoticonGroupStoreFragment.a(this.a, ((List)localObject).subList(50, i));
+        EmoticonGroupStoreFragment.a(this.a);
+        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a).subList(j, EmoticonGroupStoreFragment.c(this.a).size()));
+        EmoticonGroupStoreFragment.b(this.a);
+      }
+    }
+    EmoticonGroupStoreFragment.d(this.a);
   }
 }
 

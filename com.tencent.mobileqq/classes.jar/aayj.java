@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.ark.ArkTipsManager;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.ark.ArkAiAppPanel;
+import com.tencent.widget.HorizontalListView;
 
 public class aayj
   implements Runnable
 {
-  public aayj(ArkTipsManager paramArkTipsManager, long paramLong) {}
+  public aayj(ArkAiAppPanel paramArkAiAppPanel) {}
   
   public void run()
   {
-    if ((ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager) != null) && (this.jdField_a_of_type_Long == ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager).b))
-    {
-      ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, this.jdField_a_of_type_Long);
-      ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, new WeakReference(ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager).a));
-      this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager.b();
+    View localView = ArkAiAppPanel.a(this.a).getSelectedView();
+    if (localView != null) {
+      localView.setSelected(true);
     }
   }
 }

@@ -27,7 +27,7 @@ public class CouponActivity$CouponWebViewFragment
   int jdField_a_of_type_Int = 0;
   boolean jdField_a_of_type_Boolean = false;
   
-  private void f()
+  private void h()
   {
     NewIntent localNewIntent = new NewIntent(super.getActivity(), ProtoServlet.class);
     localNewIntent.putExtra("cmd", "CouponSvr.coup_markBizupdate");
@@ -45,7 +45,7 @@ public class CouponActivity$CouponWebViewFragment
     {
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText(2131430174);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText(2131430177);
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(this);
       return i;
     }
@@ -91,7 +91,7 @@ public class CouponActivity$CouponWebViewFragment
     {
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText(2131430174);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText(2131430177);
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setClickable(false);
       return;
     }
@@ -106,7 +106,7 @@ public class CouponActivity$CouponWebViewFragment
     this.jdField_a_of_type_AndroidContentIntent.putExtra("webStyle", "noBottomBar");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("title", super.getResources().getString(2131430173));
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("title", super.getResources().getString(2131430176));
       this.jdField_a_of_type_Boolean = true;
       super.a(paramBundle);
       if (this.jdField_a_of_type_Boolean)
@@ -135,7 +135,7 @@ public class CouponActivity$CouponWebViewFragment
     {
       this.jdField_a_of_type_AndroidContentIntent.putExtra("url", paramBundle);
       this.jdField_a_of_type_AndroidContentIntent.putExtra("from", this.jdField_a_of_type_Int & 0x1C | 0x10);
-      f();
+      h();
       ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
       return true;
       this.jdField_a_of_type_AndroidContentIntent.removeExtra("title");

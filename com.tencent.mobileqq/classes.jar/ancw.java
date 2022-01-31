@@ -1,20 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class ancw
-  extends BroadcastReceiver
+  implements andz
 {
-  public ancw(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
+  public ancw(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if (paramIntent.getAction().equals("com.tencent.qq.syncQunMsg"))
-    {
-      int i = paramIntent.getIntExtra("com.tencent.qq.unreadcount", 0);
-      QzoneQunFeedJsPlugin.a(this.a, i);
-    }
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusic(this.jdField_a_of_type_JavaLangString);
   }
 }
 

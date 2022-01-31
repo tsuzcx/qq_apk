@@ -30,6 +30,7 @@ import com.tencent.mobileqq.data.MessageForRichText;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -122,6 +123,9 @@ public class MultiMsgProxy
     if (!MessageForArkApp.getArkMutiForwardConf(paramChatMessage)) {
       return false;
     }
+    if (MessageForTroopConfess.class.isInstance(paramChatMessage)) {
+      return false;
+    }
     Object localObject = jdField_a_of_type_ArrayOfJavaLangClass;
     int j = localObject.length;
     int i = 0;
@@ -161,42 +165,42 @@ public class MultiMsgProxy
   public static byte[] a(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +29 -> 32
-    //   6: ldc 175
+    //   6: ldc 177
     //   8: iconst_2
-    //   9: new 177	java/lang/StringBuilder
+    //   9: new 179	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 180
-    //   18: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   16: ldc 182
+    //   18: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: aload_0
     //   22: arraylength
-    //   23: invokevirtual 187	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   32: new 197	java/io/ByteArrayInputStream
+    //   23: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   29: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: new 199	java/io/ByteArrayInputStream
     //   35: dup
     //   36: aload_0
-    //   37: invokespecial 200	java/io/ByteArrayInputStream:<init>	([B)V
+    //   37: invokespecial 202	java/io/ByteArrayInputStream:<init>	([B)V
     //   40: astore_3
-    //   41: new 202	java/io/ByteArrayOutputStream
+    //   41: new 204	java/io/ByteArrayOutputStream
     //   44: dup
-    //   45: invokespecial 203	java/io/ByteArrayOutputStream:<init>	()V
+    //   45: invokespecial 205	java/io/ByteArrayOutputStream:<init>	()V
     //   48: astore 4
     //   50: sipush 1024
     //   53: newarray byte
     //   55: astore_0
-    //   56: new 205	java/util/zip/GZIPOutputStream
+    //   56: new 207	java/util/zip/GZIPOutputStream
     //   59: dup
     //   60: aload 4
-    //   62: invokespecial 208	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   62: invokespecial 210	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   65: astore_2
     //   66: aload_3
     //   67: aload_0
     //   68: iconst_0
     //   69: sipush 1024
-    //   72: invokevirtual 212	java/io/ByteArrayInputStream:read	([BII)I
+    //   72: invokevirtual 214	java/io/ByteArrayInputStream:read	([BII)I
     //   75: istore_1
     //   76: iload_1
     //   77: iconst_m1
@@ -205,162 +209,162 @@ public class MultiMsgProxy
     //   82: aload_0
     //   83: iconst_0
     //   84: iload_1
-    //   85: invokevirtual 216	java/util/zip/GZIPOutputStream:write	([BII)V
+    //   85: invokevirtual 218	java/util/zip/GZIPOutputStream:write	([BII)V
     //   88: goto -22 -> 66
     //   91: astore_2
     //   92: aconst_null
     //   93: astore_0
-    //   94: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   94: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   97: ifeq +31 -> 128
-    //   100: ldc 175
+    //   100: ldc 177
     //   102: iconst_2
-    //   103: new 177	java/lang/StringBuilder
+    //   103: new 179	java/lang/StringBuilder
     //   106: dup
-    //   107: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   110: ldc 218
-    //   112: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   110: ldc 220
+    //   112: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: aload_2
-    //   116: invokevirtual 221	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   119: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   116: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   119: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   128: aload 4
-    //   130: invokevirtual 224	java/io/ByteArrayOutputStream:close	()V
+    //   130: invokevirtual 226	java/io/ByteArrayOutputStream:close	()V
     //   133: aload_3
-    //   134: invokevirtual 225	java/io/ByteArrayInputStream:close	()V
+    //   134: invokevirtual 227	java/io/ByteArrayInputStream:close	()V
     //   137: aload_0
     //   138: astore_2
     //   139: aload_2
     //   140: areturn
     //   141: aload_2
-    //   142: invokevirtual 228	java/util/zip/GZIPOutputStream:flush	()V
+    //   142: invokevirtual 230	java/util/zip/GZIPOutputStream:flush	()V
     //   145: aload_2
-    //   146: invokevirtual 229	java/util/zip/GZIPOutputStream:close	()V
+    //   146: invokevirtual 231	java/util/zip/GZIPOutputStream:close	()V
     //   149: aload 4
-    //   151: invokevirtual 233	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   151: invokevirtual 235	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   154: astore_0
-    //   155: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   155: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   158: ifeq +29 -> 187
-    //   161: ldc 175
+    //   161: ldc 177
     //   163: iconst_2
-    //   164: new 177	java/lang/StringBuilder
+    //   164: new 179	java/lang/StringBuilder
     //   167: dup
-    //   168: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   171: ldc 235
-    //   173: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   171: ldc 237
+    //   173: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: aload_0
     //   177: arraylength
-    //   178: invokevirtual 187	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   181: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   184: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   178: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   181: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   187: aload 4
-    //   189: invokevirtual 224	java/io/ByteArrayOutputStream:close	()V
+    //   189: invokevirtual 226	java/io/ByteArrayOutputStream:close	()V
     //   192: aload_3
-    //   193: invokevirtual 225	java/io/ByteArrayInputStream:close	()V
+    //   193: invokevirtual 227	java/io/ByteArrayInputStream:close	()V
     //   196: aload_0
     //   197: areturn
     //   198: astore_3
     //   199: aload_0
     //   200: astore_2
-    //   201: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   201: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   204: ifeq -65 -> 139
-    //   207: ldc 175
+    //   207: ldc 177
     //   209: iconst_2
-    //   210: new 177	java/lang/StringBuilder
+    //   210: new 179	java/lang/StringBuilder
     //   213: dup
-    //   214: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   217: ldc 237
-    //   219: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   217: ldc 239
+    //   219: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   222: aload_3
-    //   223: invokevirtual 238	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   226: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   229: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   232: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   223: invokevirtual 240	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   226: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   232: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   235: aload_0
     //   236: areturn
     //   237: astore_3
     //   238: aload_0
     //   239: astore_2
-    //   240: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   240: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   243: ifeq -104 -> 139
-    //   246: ldc 175
+    //   246: ldc 177
     //   248: iconst_2
-    //   249: new 177	java/lang/StringBuilder
+    //   249: new 179	java/lang/StringBuilder
     //   252: dup
-    //   253: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   256: ldc 237
-    //   258: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   253: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   256: ldc 239
+    //   258: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   261: aload_3
-    //   262: invokevirtual 238	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   265: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   271: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   262: invokevirtual 240	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   265: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   271: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   274: aload_0
     //   275: areturn
     //   276: astore_2
     //   277: aconst_null
     //   278: astore_0
-    //   279: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   279: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   282: ifeq +31 -> 313
-    //   285: ldc 175
+    //   285: ldc 177
     //   287: iconst_2
-    //   288: new 177	java/lang/StringBuilder
+    //   288: new 179	java/lang/StringBuilder
     //   291: dup
-    //   292: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   295: ldc 240
-    //   297: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   292: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   295: ldc 242
+    //   297: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   300: aload_2
-    //   301: invokevirtual 241	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   304: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   307: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   310: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   301: invokevirtual 243	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   304: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   307: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   310: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   313: aload 4
-    //   315: invokevirtual 224	java/io/ByteArrayOutputStream:close	()V
+    //   315: invokevirtual 226	java/io/ByteArrayOutputStream:close	()V
     //   318: aload_3
-    //   319: invokevirtual 225	java/io/ByteArrayInputStream:close	()V
+    //   319: invokevirtual 227	java/io/ByteArrayInputStream:close	()V
     //   322: aload_0
     //   323: areturn
     //   324: astore_3
     //   325: aload_0
     //   326: astore_2
-    //   327: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   327: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   330: ifeq -191 -> 139
-    //   333: ldc 175
+    //   333: ldc 177
     //   335: iconst_2
-    //   336: new 177	java/lang/StringBuilder
+    //   336: new 179	java/lang/StringBuilder
     //   339: dup
-    //   340: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   343: ldc 237
-    //   345: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   340: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   343: ldc 239
+    //   345: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   348: aload_3
-    //   349: invokevirtual 238	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   352: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   355: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   358: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   349: invokevirtual 240	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   352: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   355: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   358: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   361: aload_0
     //   362: areturn
     //   363: astore_0
     //   364: aload 4
-    //   366: invokevirtual 224	java/io/ByteArrayOutputStream:close	()V
+    //   366: invokevirtual 226	java/io/ByteArrayOutputStream:close	()V
     //   369: aload_3
-    //   370: invokevirtual 225	java/io/ByteArrayInputStream:close	()V
+    //   370: invokevirtual 227	java/io/ByteArrayInputStream:close	()V
     //   373: aload_0
     //   374: athrow
     //   375: astore_2
-    //   376: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   376: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   379: ifeq -6 -> 373
-    //   382: ldc 175
+    //   382: ldc 177
     //   384: iconst_2
-    //   385: new 177	java/lang/StringBuilder
+    //   385: new 179	java/lang/StringBuilder
     //   388: dup
-    //   389: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   392: ldc 237
-    //   394: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   389: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   392: ldc 239
+    //   394: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   397: aload_2
-    //   398: invokevirtual 238	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   401: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   404: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   407: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   398: invokevirtual 240	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   401: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   404: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   407: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   410: goto -37 -> 373
     //   413: astore_2
     //   414: goto -135 -> 279
@@ -444,42 +448,42 @@ public class MultiMsgProxy
   public static byte[] b(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +29 -> 32
-    //   6: ldc 175
+    //   6: ldc 177
     //   8: iconst_2
-    //   9: new 177	java/lang/StringBuilder
+    //   9: new 179	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 251
-    //   18: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   16: ldc 253
+    //   18: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: aload_0
     //   22: arraylength
-    //   23: invokevirtual 187	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   32: new 197	java/io/ByteArrayInputStream
+    //   23: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   29: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: new 199	java/io/ByteArrayInputStream
     //   35: dup
     //   36: aload_0
-    //   37: invokespecial 200	java/io/ByteArrayInputStream:<init>	([B)V
+    //   37: invokespecial 202	java/io/ByteArrayInputStream:<init>	([B)V
     //   40: astore_3
-    //   41: new 202	java/io/ByteArrayOutputStream
+    //   41: new 204	java/io/ByteArrayOutputStream
     //   44: dup
-    //   45: invokespecial 203	java/io/ByteArrayOutputStream:<init>	()V
+    //   45: invokespecial 205	java/io/ByteArrayOutputStream:<init>	()V
     //   48: astore 4
     //   50: sipush 1024
     //   53: newarray byte
     //   55: astore_0
-    //   56: new 253	java/util/zip/GZIPInputStream
+    //   56: new 255	java/util/zip/GZIPInputStream
     //   59: dup
     //   60: aload_3
-    //   61: invokespecial 256	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   61: invokespecial 258	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   64: astore_2
     //   65: aload_2
     //   66: aload_0
     //   67: iconst_0
     //   68: sipush 1024
-    //   71: invokevirtual 257	java/util/zip/GZIPInputStream:read	([BII)I
+    //   71: invokevirtual 259	java/util/zip/GZIPInputStream:read	([BII)I
     //   74: istore_1
     //   75: iload_1
     //   76: iconst_m1
@@ -488,160 +492,160 @@ public class MultiMsgProxy
     //   82: aload_0
     //   83: iconst_0
     //   84: iload_1
-    //   85: invokevirtual 258	java/io/ByteArrayOutputStream:write	([BII)V
+    //   85: invokevirtual 260	java/io/ByteArrayOutputStream:write	([BII)V
     //   88: goto -23 -> 65
     //   91: astore_2
     //   92: aconst_null
     //   93: astore_0
-    //   94: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   94: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   97: ifeq +32 -> 129
-    //   100: ldc 175
+    //   100: ldc 177
     //   102: iconst_2
-    //   103: new 177	java/lang/StringBuilder
+    //   103: new 179	java/lang/StringBuilder
     //   106: dup
-    //   107: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   110: ldc_w 260
-    //   113: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   110: ldc_w 262
+    //   113: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: aload_2
-    //   117: invokevirtual 221	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   120: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   117: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   120: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   126: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   129: aload 4
-    //   131: invokevirtual 224	java/io/ByteArrayOutputStream:close	()V
+    //   131: invokevirtual 226	java/io/ByteArrayOutputStream:close	()V
     //   134: aload_3
-    //   135: invokevirtual 225	java/io/ByteArrayInputStream:close	()V
+    //   135: invokevirtual 227	java/io/ByteArrayInputStream:close	()V
     //   138: aload_0
     //   139: astore_2
     //   140: aload_2
     //   141: areturn
     //   142: aload_2
-    //   143: invokevirtual 261	java/util/zip/GZIPInputStream:close	()V
+    //   143: invokevirtual 263	java/util/zip/GZIPInputStream:close	()V
     //   146: aload 4
-    //   148: invokevirtual 233	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   148: invokevirtual 235	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   151: astore_0
-    //   152: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   152: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   155: ifeq +30 -> 185
-    //   158: ldc 175
+    //   158: ldc 177
     //   160: iconst_2
-    //   161: new 177	java/lang/StringBuilder
+    //   161: new 179	java/lang/StringBuilder
     //   164: dup
-    //   165: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   168: ldc_w 263
-    //   171: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   168: ldc_w 265
+    //   171: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: aload_0
     //   175: arraylength
-    //   176: invokevirtual 187	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   179: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   176: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   179: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   182: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   185: aload 4
-    //   187: invokevirtual 224	java/io/ByteArrayOutputStream:close	()V
+    //   187: invokevirtual 226	java/io/ByteArrayOutputStream:close	()V
     //   190: aload_3
-    //   191: invokevirtual 225	java/io/ByteArrayInputStream:close	()V
+    //   191: invokevirtual 227	java/io/ByteArrayInputStream:close	()V
     //   194: aload_0
     //   195: areturn
     //   196: astore_3
     //   197: aload_0
     //   198: astore_2
-    //   199: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   199: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   202: ifeq -62 -> 140
-    //   205: ldc 175
+    //   205: ldc 177
     //   207: iconst_2
-    //   208: new 177	java/lang/StringBuilder
+    //   208: new 179	java/lang/StringBuilder
     //   211: dup
-    //   212: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   215: ldc_w 265
-    //   218: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   215: ldc_w 267
+    //   218: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   221: aload_3
-    //   222: invokevirtual 238	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   225: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   231: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   222: invokevirtual 240	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   225: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   231: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   234: aload_0
     //   235: areturn
     //   236: astore_3
     //   237: aload_0
     //   238: astore_2
-    //   239: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   239: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   242: ifeq -102 -> 140
-    //   245: ldc 175
+    //   245: ldc 177
     //   247: iconst_2
-    //   248: new 177	java/lang/StringBuilder
+    //   248: new 179	java/lang/StringBuilder
     //   251: dup
-    //   252: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   255: ldc_w 265
-    //   258: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   255: ldc_w 267
+    //   258: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   261: aload_3
-    //   262: invokevirtual 238	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   265: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   268: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   271: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   262: invokevirtual 240	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   265: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   271: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   274: aload_0
     //   275: areturn
     //   276: astore_2
     //   277: aconst_null
     //   278: astore_0
-    //   279: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   279: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   282: ifeq +32 -> 314
-    //   285: ldc 175
+    //   285: ldc 177
     //   287: iconst_2
-    //   288: new 177	java/lang/StringBuilder
+    //   288: new 179	java/lang/StringBuilder
     //   291: dup
-    //   292: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   295: ldc_w 260
-    //   298: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   292: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   295: ldc_w 262
+    //   298: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   301: aload_2
-    //   302: invokevirtual 241	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   305: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   308: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   311: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   302: invokevirtual 243	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   305: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   311: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   314: aload 4
-    //   316: invokevirtual 224	java/io/ByteArrayOutputStream:close	()V
+    //   316: invokevirtual 226	java/io/ByteArrayOutputStream:close	()V
     //   319: aload_3
-    //   320: invokevirtual 225	java/io/ByteArrayInputStream:close	()V
+    //   320: invokevirtual 227	java/io/ByteArrayInputStream:close	()V
     //   323: aload_0
     //   324: areturn
     //   325: astore_3
     //   326: aload_0
     //   327: astore_2
-    //   328: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   328: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   331: ifeq -191 -> 140
-    //   334: ldc 175
+    //   334: ldc 177
     //   336: iconst_2
-    //   337: new 177	java/lang/StringBuilder
+    //   337: new 179	java/lang/StringBuilder
     //   340: dup
-    //   341: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   344: ldc_w 265
-    //   347: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   341: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   344: ldc_w 267
+    //   347: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   350: aload_3
-    //   351: invokevirtual 238	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   354: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   357: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   360: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   351: invokevirtual 240	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   354: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   357: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   360: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   363: aload_0
     //   364: areturn
     //   365: astore_0
     //   366: aload 4
-    //   368: invokevirtual 224	java/io/ByteArrayOutputStream:close	()V
+    //   368: invokevirtual 226	java/io/ByteArrayOutputStream:close	()V
     //   371: aload_3
-    //   372: invokevirtual 225	java/io/ByteArrayInputStream:close	()V
+    //   372: invokevirtual 227	java/io/ByteArrayInputStream:close	()V
     //   375: aload_0
     //   376: athrow
     //   377: astore_2
-    //   378: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   378: invokestatic 175	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   381: ifeq -6 -> 375
-    //   384: ldc 175
+    //   384: ldc 177
     //   386: iconst_2
-    //   387: new 177	java/lang/StringBuilder
+    //   387: new 179	java/lang/StringBuilder
     //   390: dup
-    //   391: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   394: ldc_w 265
-    //   397: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   391: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   394: ldc_w 267
+    //   397: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   400: aload_2
-    //   401: invokevirtual 238	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   404: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   407: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   410: invokestatic 195	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   401: invokevirtual 240	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   404: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   407: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   410: invokestatic 197	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   413: goto -38 -> 375
     //   416: astore_2
     //   417: goto -138 -> 279

@@ -1,15 +1,36 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
+import mqq.os.MqqHandler;
 
 public class ajhi
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public ajhi(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public ajhi(TroopAioKeywordTipBar paramTroopAioKeywordTipBar, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    PublishHomeWorkFragment.a(this.a).a();
+    if (TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar) != null)
+    {
+      TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar).a.clearAnimation();
+      TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar).a.setVisibility(8);
+    }
+    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, false);
+    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, null);
+    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, null);
+    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, -1);
+    if ((!this.jdField_a_of_type_Boolean) && (!TroopAioKeywordTipBar.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar)))
+    {
+      ThreadManager.getUIHandler().post(TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar));
+      TroopAioKeywordTipBar.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, true);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQNoResultBuilder;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
+import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.AnimListener;
+import java.util.List;
 
 public class uud
-  implements View.OnClickListener
+  implements NumAnim.AnimListener
 {
-  public uud(ArkAppBabyQNoResultBuilder paramArkAppBabyQNoResultBuilder, int paramInt) {}
+  public uud(GoldMsgNumAnim paramGoldMsgNumAnim) {}
   
-  public void onClick(View paramView)
+  public void onFinished()
   {
-    if ((paramView instanceof TextView))
-    {
-      paramView = ((TextView)paramView).getText();
-      ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "@babyQ " + paramView);
-      ArkAppDataReport.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int + 1);
+    if (this.a.jdField_a_of_type_JavaUtilList.size() < 1) {
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, GoldMsgNumAnim.a(this.a));
     }
   }
 }

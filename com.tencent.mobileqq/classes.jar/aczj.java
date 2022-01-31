@@ -1,39 +1,46 @@
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
 public class aczj
-  implements Runnable
+  extends IClickListener_Ver51
 {
-  public aczj(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public aczj(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void run()
+  public void a()
   {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (UniformDownloadMgr.a(this.a))
-    {
-      if (UniformDownloadMgr.a(this.a).size() > 0)
-      {
-        Iterator localIterator = UniformDownloadMgr.a(this.a).entrySet().iterator();
-        while (localIterator.hasNext())
-        {
-          aczv localaczv = (aczv)((Map.Entry)localIterator.next()).getValue();
-          if ((localaczv != null) && (localaczv.a != null) && (localaczv.a.b()) && (2 == localaczv.a.g())) {
-            localArrayList.add(localaczv);
-          }
-        }
-      }
-    }
-    ??? = localObject2.iterator();
-    while (((Iterator)???).hasNext()) {
-      ((aczv)((Iterator)???).next()).a.e();
-    }
-    UniformDownloadMgr.b(this.a);
+    this.a.a.a().c();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().k();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().F();
   }
 }
 

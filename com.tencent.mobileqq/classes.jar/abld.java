@@ -1,17 +1,50 @@
-import android.animation.AnimatorSet;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.RemoteArConfigManager;
+import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class abld
-  implements Runnable
+  implements TVK_SDKMgr.InstallListener
 {
-  public abld(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimHolder paramAnimHolder) {}
+  public abld(ShopScanActivity paramShopScanActivity) {}
   
-  public void run()
+  public void onInstallProgress(float paramFloat)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.start();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShopScanActivity", 1, "video sdk, onInstallProgress, v=" + paramFloat + ", mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
     }
+    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new ablh(this, paramFloat));
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShopScanActivity", 1, "video sdk, onInstalledFailed, i=" + paramInt + ", mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
+    }
+    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new ablg(this));
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShopScanActivity", 2, "video sdk, onInstalledSuccessed, mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
+    }
+    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
+      return;
+    }
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.a())
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new able(this));
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new ablf(this));
   }
 }
 

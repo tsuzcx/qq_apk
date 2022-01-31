@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IStatusListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 
-public class tlf
-  implements IStatusListener
+public final class tlf
+  implements Parcelable.Creator
 {
-  public tlf(QQSettingMe paramQQSettingMe) {}
-  
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject)
+  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
   {
-    if (this.a.c)
-    {
-      if (paramInt != 100) {
-        this.a.a(2131435280);
-      }
-      this.a.B();
-    }
+    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
+    localCardContactInfo.a = paramParcel.readString();
+    localCardContactInfo.c = paramParcel.readString();
+    localCardContactInfo.b = paramParcel.readString();
+    return localCardContactInfo;
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, boolean paramBoolean) {}
+  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  {
+    return new ProfileActivity.CardContactInfo[paramInt];
+  }
 }
 
 

@@ -1,19 +1,23 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
-import mqq.os.MqqHandler;
+import Wallet.PopDialog;
+import Wallet.SkinInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
+import cooperation.qwallet.plugin.TenUtils;
 
-public class xiz
-  implements ImageLoader.ImageLoadListener
+class xiz
+  implements DialogInterface.OnClickListener
 {
-  public xiz(BannerManager paramBannerManager, Bundle paramBundle, Message paramMessage) {}
+  xiz(xiy paramxiy, HbSkinInfo paramHbSkinInfo) {}
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putParcelable("iconURLBitmap", paramBitmap);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).post(new xja(this));
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentHbSkinInfo.a.pop_dialog.left_url;
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      TenUtils.startQQBrowser(this.jdField_a_of_type_Xiy.a.getActivity(), paramDialogInterface);
+    }
   }
 }
 

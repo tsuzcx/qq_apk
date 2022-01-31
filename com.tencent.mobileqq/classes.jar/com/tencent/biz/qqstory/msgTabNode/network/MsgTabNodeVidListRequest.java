@@ -26,6 +26,7 @@ public class MsgTabNodeVidListRequest
   public static MsgTabNodeVidListRequest.MsgTabNodeVidListResponse a(MsgTabNodeInfo paramMsgTabNodeInfo, byte[] paramArrayOfByte)
   {
     qqstory_service.RspMsgTabNodeVideoList localRspMsgTabNodeVideoList = new qqstory_service.RspMsgTabNodeVideoList();
+    if (paramArrayOfByte != null) {}
     try
     {
       localRspMsgTabNodeVideoList.mergeFrom(paramArrayOfByte);

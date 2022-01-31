@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.TroopStoryPlayModeBase;
+import com.tencent.biz.qqstory.newshare.model.Job;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor;
 
 public class nlw
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public nlw(TroopStoryPlayModeBase paramTroopStoryPlayModeBase) {}
+  public nlw(JobExecutor paramJobExecutor, Job paramJob) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.s();
+    JobExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a);
   }
 }
 

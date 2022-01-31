@@ -41,17 +41,17 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import jmx;
-import jmz;
-import jnb;
-import jnd;
-import jne;
-import jnf;
-import jng;
-import jnh;
-import jni;
-import jnj;
-import jnk;
+import jpa;
+import jpc;
+import jpe;
+import jpg;
+import jph;
+import jpi;
+import jpj;
+import jpk;
+import jpl;
+import jpm;
+import jpn;
 import mqq.app.AppRuntime;
 import mqq.app.AppService;
 import mqq.app.MobileQQ;
@@ -65,11 +65,11 @@ public class QQServiceForAV
   public static IBinder a;
   public int a;
   long jdField_a_of_type_Long = -1L;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new jne(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new jph(this);
   public final RemoteCallbackList a;
-  final IQQServiceForAV.Stub jdField_a_of_type_ComTencentAvServiceIQQServiceForAV$Stub = new jnk(this);
+  final IQQServiceForAV.Stub jdField_a_of_type_ComTencentAvServiceIQQServiceForAV$Stub = new jpn(this);
   public FriendListObserver a;
-  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new jnb(this);
+  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new jpe(this);
   public TroopObserver a;
   public NearbyCardObserver a;
   public QCallCardHandler.OnGetQCallCardListener a;
@@ -77,8 +77,8 @@ public class QQServiceForAV
   public FaceDecoder a;
   public String a;
   public ArrayList a;
-  private jni jdField_a_of_type_Jni;
-  private jnj jdField_a_of_type_Jnj;
+  private jpl jdField_a_of_type_Jpl;
+  private jpm jdField_a_of_type_Jpm;
   public boolean a;
   public int b;
   public long b;
@@ -99,15 +99,15 @@ public class QQServiceForAV
     this.jdField_b_of_type_Long = 9223372036854775807L;
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = null;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener = new jmx(this);
-    this.jdField_a_of_type_ComTencentMobileqqQcallQCallCardHandler$OnGetQCallCardListener = new jmz(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener = new jpa(this);
+    this.jdField_a_of_type_ComTencentMobileqqQcallQCallCardHandler$OnGetQCallCardListener = new jpc(this);
     this.jdField_a_of_type_AndroidOsRemoteCallbackList = new RemoteCallbackList();
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new jnf(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new jng(this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new jpi(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new jpj(this);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new jnh(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new jpk(this);
   }
   
   public static boolean a()
@@ -308,7 +308,7 @@ public class QQServiceForAV
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("client_ver", "7.6.3");
+      localJSONObject.put("client_ver", "7.6.8");
       localJSONObject.put("from", paramString2);
       if ("1".equals(paramString2))
       {
@@ -330,7 +330,7 @@ public class QQServiceForAV
       localWebSsoRequestBody.type.set(0);
       localWebSsoRequestBody.data.set(localJSONObject.toString());
       paramString2.putExtra("data", localWebSsoRequestBody.toByteArray());
-      paramString2.setObserver(new jnd(this, paramString1, paramString3));
+      paramString2.setObserver(new jpg(this, paramString1, paramString3));
       localQQAppInterface.startServlet(paramString2);
       return;
     }
@@ -598,7 +598,7 @@ public class QQServiceForAV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.service.QQServiceForAV
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
 
 public class ahuw
   implements Runnable
 {
-  public ahuw(SearchTemplatePresenter paramSearchTemplatePresenter, ImageView paramImageView, boolean paramBoolean) {}
+  public ahuw(ScribbleResMgr paramScribbleResMgr, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845492);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845491);
+    ScribbleResMgr.a(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahuw
  * JD-Core Version:    0.7.0.1
  */

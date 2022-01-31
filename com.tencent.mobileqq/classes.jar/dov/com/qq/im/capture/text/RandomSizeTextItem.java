@@ -13,7 +13,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.util.DisplayMetrics;
-import anoi;
+import anwv;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -144,7 +144,7 @@ public class RandomSizeTextItem
       return;
     }
     super.a(paramInt, paramString);
-    paramString = a(paramInt, new anoi(this));
+    paramString = a(paramInt, new anwv(this));
     this.jdField_a_of_type_JavaLangString = paramString;
     if (0 == 0) {}
     for (paramString = a(paramString);; paramString = null)
@@ -204,9 +204,10 @@ public class RandomSizeTextItem
     int i = 0;
     int j = 0;
     int k = paramString.length();
+    String[] arrayOfString1;
     if (k <= 7)
     {
-      String[] arrayOfString2 = new String[k];
+      arrayOfString2 = new String[k];
       i = j;
       for (;;)
       {
@@ -218,21 +219,19 @@ public class RandomSizeTextItem
         i += 1;
       }
     }
-    String[] arrayOfString1 = new String[7];
+    String[] arrayOfString2 = new String[7];
     j = 0;
-    if (i < 7)
+    for (;;)
     {
-      int m = k - (7 - i);
-      if (i == 7) {}
-      for (;;)
-      {
-        k -= m;
-        arrayOfString1[i] = paramString.substring(j, j + m);
-        j += m;
-        i += 1;
+      arrayOfString1 = arrayOfString2;
+      if (i >= 7) {
         break;
-        m = this.jdField_a_of_type_JavaUtilRandom.nextInt(m + 1) + 1;
       }
+      int m = this.jdField_a_of_type_JavaUtilRandom.nextInt(k - (7 - i) + 1) + 1;
+      k -= m;
+      arrayOfString2[i] = paramString.substring(j, j + m);
+      j += m;
+      i += 1;
     }
     return arrayOfString1;
   }

@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiManager;
 
-class aclb
-  implements DialogInterface.OnClickListener
+public class aclb
+  implements Runnable
 {
-  aclb(acla paramacla) {}
+  public aclb(EmojiManager paramEmojiManager, EmoticonPackage paramEmoticonPackage, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    Face2FaceAddFriendActivity.e(this.a.a);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType != 2) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.c, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Int);
+    }
   }
 }
 

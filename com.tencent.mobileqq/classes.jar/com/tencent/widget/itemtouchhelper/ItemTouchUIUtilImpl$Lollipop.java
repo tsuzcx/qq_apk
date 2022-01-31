@@ -37,22 +37,22 @@ public class ItemTouchUIUtilImpl$Lollipop
   
   public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    if ((paramBoolean) && (paramView.getTag(2131362517) == null))
+    if ((paramBoolean) && (paramView.getTag(2131362521) == null))
     {
       float f = ViewCompat.getElevation(paramView);
       ViewCompat.setElevation(paramView, 1.0F + a(paramRecyclerView, paramView));
-      paramView.setTag(2131362517, Float.valueOf(f));
+      paramView.setTag(2131362521, Float.valueOf(f));
     }
     super.a(paramCanvas, paramRecyclerView, paramView, paramFloat1, paramFloat2, paramInt, paramBoolean);
   }
   
   public void a(View paramView)
   {
-    Object localObject = paramView.getTag(2131362517);
+    Object localObject = paramView.getTag(2131362521);
     if ((localObject != null) && ((localObject instanceof Float))) {
       ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
     }
-    paramView.setTag(2131362517, null);
+    paramView.setTag(2131362521, null);
     super.a(paramView);
   }
 }

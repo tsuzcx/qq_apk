@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.app.HotChatShare;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 
 public class zfm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public zfm(HotChatShare paramHotChatShare) {}
+  public zfm(ApolloPanel paramApolloPanel) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a == null) || (!this.a.a.isShowing())) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatShare", 2, "30s has gone, goto share....");
-    }
-    this.a.c();
-    HotChatShare.a(this.a);
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zfm
  * JD-Core Version:    0.7.0.1
  */

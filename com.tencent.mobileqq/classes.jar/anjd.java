@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.WebEventListener;
 
-public class anjd
-  implements Runnable
+public final class anjd
+  implements WebEventListener
 {
-  public anjd(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anjd(Handler paramHandler) {}
   
-  public void run()
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    CaptureUtil.b();
+    if ("cmd.uploadCommentVideo".equals(paramString))
+    {
+      paramString = new Message();
+      paramString.obj = paramBundle;
+      this.a.sendMessage(paramString);
+      if ((paramBundle.getBundle("data") != null) && (paramBundle.getBundle("data").getInt("status") != 2)) {
+        RemoteHandleManager.a().b(this);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjd
  * JD-Core Version:    0.7.0.1
  */

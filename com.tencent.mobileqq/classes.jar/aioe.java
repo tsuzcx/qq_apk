@@ -1,26 +1,56 @@
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
+import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mobileqq.theme.ThemeSwitchManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutNew2;
+import com.tencent.qphone.base.util.QLog;
 
 public class aioe
-  implements Runnable
+  extends URLDrawableDownListener.Adapter
 {
-  public aioe(ThemeSwitchManager paramThemeSwitchManager) {}
+  public aioe(StructMsgItemLayoutNew2 paramStructMsgItemLayoutNew2) {}
   
-  public void run()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    ViewGroup localViewGroup = (ViewGroup)this.a.jdField_a_of_type_AndroidWidgetImageView.getParent();
-    if (localViewGroup != null)
-    {
-      localViewGroup.removeView(this.a.jdField_a_of_type_AndroidWidgetImageView);
-      localViewGroup.clearDisappearingChildren();
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.u, 2, "onLoadCancelled");
     }
-    this.a.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.a.b.set(false);
-    this.a.jdField_a_of_type_AndroidWidgetImageView = null;
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.u, 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.u, 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    do
+    {
+      return;
+      paramView.setBackgroundDrawable(null);
+      if ((paramView instanceof ImageView))
+      {
+        ((URLImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.a.u, 2, "onLoadSuccessed");
   }
 }
 
